@@ -1,0 +1,26 @@
+<%= error_messages_for :user %>
+<p>
+  Fill out the form below with your details so we can get you started.
+</p>
+<% form_for :user, :url => users_path do |f| -%>
+  <div class='field'>
+    <%= f.label :login %>
+    <%= f.text_field :login %>
+  </div>
+  <div class='field'>
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+  </div>
+  <div class='field'>
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+  </div>
+  <div class='field'>
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation %>
+  </div>
+  <% if just_installed? %>
+    <%= f.hidden_field :plugins, :value => (($plugins.collect {|p| p.title}).collect {|x| x + ","}).to_s.chop  %>
+  <% end %>
+  <p><%= submit_tag 'Sign up' %></p>
+<% end -%>

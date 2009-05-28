@@ -1,0 +1,62 @@
+<div id='actions'>
+	<h2>Details</h2>
+	<p>
+		<strong>Status:</strong> <%= @inquiry.open? ? "Open" : "Closed" %><br/>
+		<strong>Age:</strong> <%= time_ago_in_words(@inquiry.created_at) %>
+	</p>
+	<h2>Actions</h2>
+	<ul>
+		<li>
+			<%= link_to "Back to all Inquiries", {:action => 'index'}, :class => "back_icon" %>
+		</li>
+	</ul>
+</div>
+<div id='records'>
+	<h2>Inquiry</h2>
+	<table id='inquiry'>
+		<tr>
+			<td>
+				<strong>To</strong>
+			</td>
+			<td>
+				<%= RefinerySetting[:site_name] %>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<strong>From</strong>
+			</td>
+			<td>
+				<%= @inquiry.name %> [<%= mail_to @inquiry.email, @inquiry.email, {:title => "Click to email this address"} %>]
+			</td>
+		</tr>
+		<% unless @inquiry.phone.blank? %>
+			<tr>
+				<td>
+					<strong>Phone</strong>
+				</td>
+				<td>
+					<%= @inquiry.phone %>
+				</td>
+			</tr>
+		<% end %>
+		<tr>
+			<td>
+				<strong>Date</strong>
+			</td>
+			<td>
+				<%= @inquiry.created_at.strftime("%A, %d of %b, %Y") %>
+			</td>
+		</tr>
+		<tr>
+			<td valign='top'>
+				<strong>Message</strong>
+			</td>
+			<td>
+				<p style='margin-top: 0px'>
+					<%= @inquiry.message.gsub("\r\n\r\n", "\r\n").gsub("\r\n", "</p><p>") %>
+				</p>
+			</td>
+		</tr>
+	</table>
+</div>

@@ -1,0 +1,39 @@
+<div id='actions'>
+	<h2>Actions</h2>
+	<ul>
+		<li>
+			<%= link_to "Upload New File", new_admin_resource_url, :class => "add_icon" %>
+		</li>
+	</ul>
+</div>
+<div id='records'>
+  <% if @resources.size > 0 -%>
+  	<h2>Files</h2>
+  	<%= will_paginate @resources, :prev_label => '&laquo;', :next_label => '&raquo;' %>
+  	<ul>
+  	<% @resources.each do |resource| %>
+  		<li class='clearfix record <%= cycle("on", "on-hover") %>'>
+  			<span class='title'>
+  				<span class='actions'>
+  					<%= link_to image_tag('refinery/icons/page_white_put.png'),	resource.public_filename,
+  															:title => "Download this file (#{number_to_human_size(resource.size)})" %>
+  					<%= link_to image_tag('refinery/icons/application_edit.png'), edit_admin_resource_url(resource),
+  															:title => "Edit this file" %>
+  					<%= link_to image_tag('refinery/icons/delete.png'), admin_resource_path(resource),
+  															:confirm => "Are you sure you want to delete #{resource.public_filename}?", 
+  															:class => "cancel",	:method => :delete,
+  															:title => "Remove this file forever" %>
+  				</span>
+  				<%=h resource.title %>
+  				<span class="preview">- <%= number_to_human_size(resource.size) %> - <%= resource.public_filename -%></span>
+  			</span>
+  		</li>
+  	<% end -%>
+  	</ul>
+  	<%= will_paginate @resources, :prev_label => '&laquo;', :next_label => '&raquo;' %>
+  <% else -%>
+  	<p>
+  		<strong>There are no files yet. Click "Upload New Files" to add your first file.</strong>
+  	</p>
+  <% end -%>
+</div>

@@ -1,0 +1,12 @@
+<% if page.in_menu? %>
+<li<%= " class='selected'" if selected_page?(page) or descendant_page_selected?(page) %>>
+	<%= link_to page.title, page.url -%>
+	<% unless page.children.empty? %>
+	<ul>
+	<% page.children.each do |child| %>
+		<%= render :partial => "/shared/submenu_branch", :locals => {:page => child } %>
+	<% end %>
+	</ul>
+	<% end %>
+</li>
+<% end %>

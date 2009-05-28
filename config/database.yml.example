@@ -1,0 +1,19 @@
+login: &login
+  adapter: mysql
+  host: localhost
+  username: root
+  password: root
+
+development:
+  database: your_local_database
+  <<: *login
+
+test:
+  database: your_test_database
+  <<: *login
+
+production:
+  database: your_production_database
+  host: localhost
+  username: your_production_database_login
+  password: your_production_database_password

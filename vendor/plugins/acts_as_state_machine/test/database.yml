@@ -1,0 +1,18 @@
+sqlite:
+  :adapter: sqlite
+  :dbfile: state_machine.sqlite.db
+sqlite3:
+  :adapter: sqlite3
+  :dbfile: state_machine.sqlite3.db
+postgresql:
+  :adapter: postgresql
+  :username: postgres
+  :password: postgres
+  :database: state_machine_test
+  :min_messages: ERROR
+mysql:
+  :adapter: mysql
+  :host: localhost
+  :username: rails
+  :password:
+  :database: state_machine_test

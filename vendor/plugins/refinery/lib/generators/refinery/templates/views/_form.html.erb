@@ -1,0 +1,14 @@
+<%%= error_messages_for :<%= singular_name %> %>
+<%% form_for [:admin, @<%= singular_name %>] do |f| %>
+	<% for attribute in attributes -%>
+<div class='field'>
+		<%%= f.label :<%= attribute.name %> %>
+    <%%= f.<%= attribute.field_type %> :<%= attribute.name %> %>
+  </div>
+	<% end -%>
+<div class='form-actions'>
+    <%%= f.submit 'Save' %> 
+		or 
+		<%%= link_to "Cancel", admin_<%= plural_name %>_url %>
+	</div>
+<%% end -%>

@@ -1,0 +1,8 @@
+<h2>Recent Posts</h2>
+<ul>
+	<% @news_items.each do |item| %>
+		<li>
+			<%= link_to item.title, news_item_url(item) %>
+		</li>
+	<% end %>
+</ul>

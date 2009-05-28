@@ -1,0 +1,39 @@
+<div class='clearfix'>
+	<div id='records'>
+		<h2>
+			Latest Activity
+		</h2>
+		<% if @recent_activity.size > 0 %>
+			<table id='recent_activity'>
+		<% @recent_activity.each do |change| 
+			if $plugins.find_activity_by_model(change.class).respond_to?('url_prefix')	%>
+		  	<tr class='<%= cycle("on", "") %>'>
+		      <%= activity_message_for(change) %>
+		  	</tr>
+		<% end
+		end %>
+			</table>
+		<% else %>
+			<p>
+				Nothing has happened yet.
+			</p>
+		<% end %>
+	</div>
+	<div id='actions'>
+		<h2>Common Tasks</h2>
+		<ul>
+			<li>
+				<%= link_to "Add a new page", new_admin_page_url, :class => "add_icon" %>
+			</li>
+			<li>
+				<%= link_to "Update a page", admin_pages_url, :class => "edit_icon" %>
+			</li>
+			<li>
+				<%= link_to "Upload a file", new_admin_resource_url, :class => "add_icon" %>
+			</li>
+			<li>
+				<%= link_to "Upload an image", new_admin_image_url(:dialog => true, :width => 400, :height => 200), :class => "add_icon" %>
+			</li>
+		</ul>
+	</div>
+</div>

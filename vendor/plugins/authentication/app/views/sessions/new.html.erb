@@ -1,0 +1,19 @@
+<% form_for :session, :url => session_path do |f| -%>
+	<div class='clearfix'>
+		<div class='field session_username'>
+			<%= f.label :login %>
+			<%= f.text_field :login, {:style => 'width: 255px'} %>
+		</div>
+		<div class='field session_password'>
+			<%= f.label :password %>
+			<%= f.password_field :password, {:style => 'width: 255px'} %>
+		</div>
+	</div>
+	<div class='field'>
+		<%= f.label :remember_me, nil, :style => "display: inline;" %>
+		<%= f.check_box :remember_me %>
+	</div>
+	<div class='actions'>
+		<%= submit_tag 'Log in' %>
+	</div>
+<% end -%>

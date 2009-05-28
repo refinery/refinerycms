@@ -1,0 +1,129 @@
+<%= error_messages_for :page %>
+
+<% form_for [:admin, @page] do |f| %>
+	<div class='field'>
+		<%= f.label :title %>
+		<%= f.text_field :title, :class => "larger", :style => 'width: 954px' %>
+	</div>
+	<div class='clearfix'>
+	  <div class='clearfix'>
+  	  <ul id='page_parts'>
+    	  <% @page.parts.each do |p| %>
+    	    <li class='tab'>
+            <%= link_to p.title.titleize, "#part_#{p.id}" %>
+      		</li>
+    		<% end %>
+  		</ul>
+  		<%= link_to image_tag("/images/refinery/add.png", :style => "vertical-align: middle"), new_admin_page_page_part_url(@page, :dialog => true), :id => "add_page_part" %>
+    </div>
+		
+		<% f.fields_for :parts do |p| %>
+  		<div class='field' id='part_<%= p.object.id %>'>
+  			<%= p.text_area :body, :rows => 20, :cols => 140, :class => 'wymeditor' %>
+  		</div>
+  	<% end %>
+	</div>
+	<p>
+		<%= link_to "&raquo; Hide/Show Advanced Options", "", :id => "toggle_advanced_options", 
+					:rel => "Click to access meta tag settings and menu options" %>
+	</p>
+	<div id='more_options' style="display:none;">
+		<div class='field'>
+			<%= label_tag :custom_title %>
+			<%= label_tag "", 'Type:', :class => "stripped" %>
+		<% ["none", "text", "image"].each do |type| %>
+			<%= f.radio_button :custom_title_type, "#{type}" %>
+			<%= label_tag "page_custom_title_type_#{type}", "#{type.titleize}", :class => "stripped" %>
+		<% end %>
+			<br/>
+			<div id='custom_title_none'></div>
+			<div id='custom_title_text' style='display: <%= @page.custom_title_type == 'text' ? 'block' : 'none' %>'>
+				<p>
+					<%= f.text_field :custom_title, {:size => 103} %><br/>
+					<small>
+						If you want the page to have a different title than the one that shows in the menu and browser title then enter it here.<br/>
+					</small>
+				</p>
+			</div>
+			<div id='custom_title_image' style='display: <%= @page.custom_title_type == 'image' ? 'block' : 'none' %>'>
+				<p>
+					<%= f.select :custom_title_image, Image.find_all_by_parent_id(nil).collect {|i| [i.filename, i.id] } %>
+				</p>
+			</div>
+		</div>
+		<div class='field'>
+			<%= f.label :link_url, "Custom URL" %>
+			<%= f.text_field :link_url, {:size => 103} %><br/>
+			<small>
+				Enter a URL if this page links to an external site or to a pre-existing resource e.g. a contact page.<br/>
+				Note: This URL must point to a location that exists; a new one will not be created.
+			</small>
+		</div>
+		<h2>Search Engine Optimization</h2>
+		<div class='field'>
+			<%= f.label :browser_title %>
+			<%= f.text_field :browser_title, :size => 63 %><br/>
+			<small>If you want to override the default browser title, do it here.</small>
+		</div>
+		<div class='field'>
+			<%= f.label :meta_keywords %>
+			<%= f.text_field :meta_keywords, :size => 63 %><br/>
+			<small>Enter 5-10 keywords that relate to this page. Separate keywords by a comma.</small>
+		</div>
+		<div class='field'>
+			<%= f.label :meta_description %>
+			<%= f.text_area :meta_description, :cols => 95, :rows => 3 %><br/>
+  		<small>Enter a concise two or three sentences describing what this page is about.</small>
+		</div>
+		<div class='field'>
+			<%= f.label :show_in_menu %>
+			<%= f.check_box :show_in_menu %>
+			<small><%= f.label :show_in_menu, "Check this box if this page should appear in the site menu" %></small>
+		</div>
+	</div>
+	<div class='field'>
+		<label>Draft</label>
+		<%= f.check_box :draft %><%= f.label :draft, "Save as Draft", :class => "stripped" %>
+	</div>
+	<div class='form-actions'>
+		<%= f.submit 'Save', :class => "wymupdate" %> 
+		or 
+		<%= link_to "Cancel", admin_pages_url, :title => "Cancelling will lose all changes you've made to this page"%>
+	</div>
+<% end %>
+<% content_for :head do %>
+<script type='text/javascript'>
+	switch_custom_title_type = function(type)
+	{
+		$('custom_title_text').hide();
+		$('custom_title_image').hide();
+		
+		$('custom_title_' + type).show();
+	}
+	
+	FastInit.addOnLoad(function(){
+		$('toggle_advanced_options').observe('click', function(e)
+		{
+			$('more_options').toggle();
+			e.stop();
+		});
+		
+		$$('input[type=radio]').each(function(radio)
+		{
+			if (radio.name == 'page[custom_title_type]')
+			{
+				radio.observe('change', function(e)
+				{
+					switch_custom_title_type(this.value);
+				});
+			}
+		});
+	})
+	
+	WYMeditor.loaded = function()
+	{
+		new Control.Tabs('page_parts').first();
+	}
+	
+</script>
+<% end %>

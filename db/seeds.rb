@@ -1,0 +1,91 @@
+[{:name => "site_name", :value => "Company Name"}, 
+  {:name => "signup_enabled", :value => true}, 
+  {:name => "analytics_page_code", :value => "UA-xxxxxx-x"},
+  {:name => "image_thumbnails", :value => "{
+:lightbox => '500x500>',
+:dialog_thumb => 'c106x106',
+:thumb => '50x50',
+:medium => '225x255',
+:side_body => '300x500',
+:preview => 'c96x96'
+}"}].each do |setting|
+	RefinerySetting[setting[:name].to_sym] = setting[:value]
+	RefinerySetting.find_by_name(setting[:name].to_s).update_attributes({:destroyable => false})
+end
+
+InquirySetting.create(:name => "Confirmation Body", :value => "Thank you for your inquiry %name%,\n\nThis email is a receipt to confirm we have received your inquiry and we'll be in touch shortly.\n\nThanks.", :destroyable => false)
+InquirySetting.create(:name => "Notification Recipients", :value => "", :destroyable => false)
+
+Page.create(:title => "Home", 
+            :deletable => false,
+            :link_url => "/",
+            :menu_match => "^/$",
+            :position => 0).parts.create(
+            {
+              :title => "body", 
+              :body => "<p>Welcome to our site. This is just a place holder page while we gather our content.</p>"
+            }).page.parts.create(
+            {
+              :title => "side_body",
+              :body => "<p>This is another block of content over here.</p>"
+            })
+                              
+Page.create(:title => "About Us", 
+            :deletable => true,
+            :position => 1).parts.create(
+            {
+              :title => "body", 
+              :body => "<p>This is just a standard text page example. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin metus dolor, hendrerit sit amet, aliquet nec, posuere sed, purus. Nullam et velit iaculis odio sagittis placerat. Duis metus tellus, pellentesque ut, luctus id, egestas a, lorem. Praesent vitae mauris. Aliquam sed nulla. Sed id nunc vitae leo suscipit viverra. Proin at leo ut lacus consequat rhoncus. In hac habitasse platea dictumst. Nunc quis tortor sed libero hendrerit dapibus.\n\nInteger interdum purus id erat. Duis nec velit vitae dolor mattis euismod. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse pellentesque dignissim lacus. Nulla semper euismod arcu. Suspendisse egestas, erat a consectetur dapibus, felis orci cursus eros, et sollicitudin purus urna et metus. Integer eget est sed nunc euismod vestibulum. Integer nulla dui, tristique in, euismod et, interdum imperdiet, enim. Mauris at lectus. Sed egestas tortor nec mi.</p>"
+            }).page.parts.create(
+            {
+              :title => "side_body",
+              :body => "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus fringilla nisi a elit. Duis ultricies orci ut arcu. Ut ac nibh. Duis blandit rhoncus magna. Pellentesque semper risus ut magna. Etiam pulvinar tellus eget diam. Morbi blandit. Donec pulvinar mauris at ligula. Sed pellentesque, ipsum id congue molestie, lectus risus egestas pede, ac viverra diam lacus ac urna. Aenean elit.</p>"
+            })
+                              
+Page.create(:title => "News", 
+            :link_url => "/news",
+            :menu_match => "^/news.*$", 
+            :deletable => false,
+            :position => 3).parts.create(
+            {
+              :title => "body", 
+              :body => "<p>Want to know the latest? Here's what has been happening.</p>"
+            }).page.parts.create(
+            {
+              :title => "side_body",
+              :body => "<p>Here we post up the latest about us, along with events and updates you don't want to miss!</p>"
+            })
+                              
+Page.create(:title => "Contact Us", 
+            :link_url => "/inquiries/new",
+            :menu_match => "^/inquiries.*$", 
+            :deletable => false,
+            :position => 4).parts.create(
+            {
+              :title => "body", 
+              :body => "<p>Get in touch with us. Just use the form below and we'll get back to you as soon as we can.</p>"
+            }).page.parts.create(
+            {
+              :title => "side_body",
+              :body => "<p>163 Evergreen Terrace<br/>Happyville<br/>USA.<br/>Phone: 1-800 CALLUSNOW</p>"
+            })
+            
+Page.create(:title => "Thank You",
+            :menu_match => "^/inquiries/thank_you$",
+            :show_in_menu => false,
+            :deletable => false,
+            :position => 5).parts.create(
+            {
+              :title => "body", 
+              :body => "<p>We've received your inquiry and will get back to you with a response shortly.</p><a href='/'>Return to the home page</a>"
+            })
+
+Page.create(:title => "Page not found",
+            :menu_match => "^/404$",
+            :show_in_menu => false,
+            :deletable => false,
+            :position => 6).parts.create(
+            {
+              :title => "body", 
+              :body => "<h2>Sorry, there was a problem...</h2><p>The page you requested was not found.</p><p><a href='/'>Return to the home page</a></p>"
+            })

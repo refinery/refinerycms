@@ -1,0 +1,22 @@
+<%= error_messages_for :image %>
+<% form_for [:admin, @image], :url => {:controller => "admin/image_dialogs"},
+                              :html => {:multipart => true, :style => 'float: left; width: 70%'} do |f| %>
+	<div class='field'>
+		<%= f.label :uploaded_data, 'Image' %>
+		<% if params[:action] =~ /(edit)|(update)/ %>
+			Use current image
+			<em>or</em>, replace it with this one... 
+		<% end %>
+		<%= f.file_field :uploaded_data %>
+	</div>
+	<div class='form-actions'>
+		<%= f.submit 'Upload' %>
+	</div>
+<% end %>
+
+<% if params[:action] =~ /(edit)|(update)/ %>
+	<div style='float: right; width: 25%;'>
+		<label>Current Image</label>
+		<%= image_tag(@image.public_filename(:medium), :class => "brown_border") %>
+	</div>
+<% end %>

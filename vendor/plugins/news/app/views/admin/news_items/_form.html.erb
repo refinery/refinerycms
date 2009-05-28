@@ -1,0 +1,33 @@
+<%= error_messages_for :news_item %>
+<% form_for [:admin, @news_item] do |f| %>
+	<div class='field'>
+		<%= f.label :title %>
+		<%= f.text_field :title, :class => "larger", :style => 'width: 954px' %>
+	</div>
+	<div class='field'>
+		<%= f.label :publish_date %>
+		<%= f.datetime_select :publish_date %>
+	</div>
+	<div class='clearfix' style='width:963px'>
+		<div class='field'>
+			<%= f.label :blurb %>
+			<p>
+				<small>
+					Write something that leads the reader into wanting to read the full article.
+					This should just be a 1 paragraph max intro into the article.
+				</small>
+			</p>
+			<%= f.text_area :blurb, :rows => "5", :class => "wymeditor"%>
+		</div>
+		<div class='field'>
+			<%= f.label :content %>
+			<%= f.text_area :content, :rows => "20", :class => "wymeditor" %>
+		</div>
+	</div>
+
+	<div class='form-actions'>
+		<%= f.submit 'Save', :class => "wymupdate" %> 
+		or 
+		<%= link_to "Cancel", admin_news_items_url, :title => "Cancelling will lose all changes you've made to this news item" %>
+	</div>
+<% end %>

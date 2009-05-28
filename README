@@ -1,0 +1,35 @@
+== About Refinery
+
+Refinery is a simple, easy to use, well presented content manager for small businesses.
+
+Refinery was born out of Resolve Digital (resolvedigital.co.nz). After building 40 real client
+sites, we began making our own content manager which would suit the small businesses we
+worked with. We learnt all the common requests and included them and nothing more.
+
+== License
+
+Refinery is released under the MIT license and is copyright (c) 2005-2009
+Resolve Digital Ltd. A copy of the MIT license can be found in the
+LICENSE file.
+
+== Setup
+
+mkdir mynewsite.com
+cd mynewsite.com
+git clone git@github.com:resolve/refinery.git
+git remote add origin git@github.com:you/yournewsite.git
+
+Edit /config/database.yml to your database server details.
+
+Then run this to create your databases:
+rake db:create:all
+
+Now run this to load the tables in with useful default pages of a basic site
+rake db:migrate
+
+== Starting up your site
+ruby script/server
+
+Now in your browser go to http://localhost:3000 and your site should be running.
+
+You will be prompted to setup your first user.

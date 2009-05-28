@@ -1,0 +1,21 @@
+<%= error_messages_for :refinery_setting %>
+<% form_for [:admin, @refinery_setting] do |f| %>
+	<div class='field'>
+	<% if params[:action] =~ /(new)|(create)/ %>
+		<%= f.label :name %>
+		<%= f.text_field :name, :class => "larger", :size => 67 %>
+	<% else %>
+		<label>Name</label>
+    <%= @refinery_setting.name.titleize %> <span class="preview">- (<%= h @refinery_setting.name %>)</span>
+	<% end %>
+  </div>
+	<div class='field'>
+		<%= f.label :value %>
+		<%= f.text_area :value, :rows => 5, :cols => 100 %>
+  </div>
+	<div class='form-actions'>
+    <%= f.submit 'Save' %> 
+		or 
+		<%= link_to "Cancel", admin_refinery_settings_url %>
+	</div>
+<% end -%>

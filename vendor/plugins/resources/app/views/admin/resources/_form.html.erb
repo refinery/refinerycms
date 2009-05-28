@@ -1,0 +1,20 @@
+<%= error_messages_for :resource -%>
+<% form_for [:admin, @resource], :html => {:multipart => true} do |f| -%>
+	<div class='field'>
+		<%= f.label :title -%>
+		<%= f.text_field :title, :class => "larger", :style => 'width: 954px' -%>
+	</div>
+	<div class='field'>
+		<%= f.label :uploaded_data, 'File to upload' -%>
+		<% if params[:action] =~ /(edit)|(update)/ -%>
+			<%= link_to "Download current file", @resource.public_filename, {:title => @resource.title} -%>
+			<em>or</em>, replace it with this one... 
+		<% end -%>
+		<%= f.file_field :uploaded_data -%>
+	</div>
+	<div class='form-actions'>
+		<%= f.submit 'Save' %> 
+		or 
+		<%= link_to "Cancel", admin_resources_url, :title => "Cancelling will lose all changes you've made to this file" -%>
+	</div>
+<% end -%>

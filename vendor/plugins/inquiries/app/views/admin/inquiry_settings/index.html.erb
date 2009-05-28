@@ -1,0 +1,40 @@
+<h1>Inquiries Settings</h1>
+<div id='actions'>
+	<h2>Actions</h2>
+	<ul>
+		<li>
+			<%= link_to "#{image_tag 'refinery/icons/user_comment.png'} Update who gets notified", 
+			    edit_admin_inquiry_setting_url(InquirySetting.notification_recipients) %>
+		</li>
+		<li>
+			<%= link_to "#{image_tag 'refinery/icons/email_edit.png'} Edit confirmation email", 
+			            edit_admin_inquiry_setting_url(InquirySetting.confirmation_body) %>
+		</li>
+	</ul>
+</div>
+<div id='records'>
+	<h2>Existing Settings</h2>
+	<% if @inquiry_settings.size > 0 %>
+		<ul>
+		<% @inquiry_settings.each do |setting| -%>
+		  <li class='clearfix record <%= cycle("on", "on-hover") %>'>
+				<span class='title'>
+					<span class='actions'>
+						<%= link_to image_tag("refinery/icons/application_edit.png", :alt => "Edit"), edit_admin_inquiry_setting_path(setting) %>
+						<%= link_to image_tag("refinery/icons/delete.png", :alt => "Delete"), admin_inquiry_setting_path(setting), 
+															:confirm => "Are you sure you want to delete #{setting.name}?", 
+															:class => "cancel", :method => :delete ,
+															:title => "Remove this inquiry setting forever"	if setting.destroyable? %>
+					</span>
+					<span><%=h setting.name %></span>
+				</span>
+			</li>
+		<% end -%>
+		</ul>
+	<% else -%>
+		<p>
+		  There are currently no settings. Would you like to
+		  <%= link_to "create one", :controller => "/admin/inquiries_settings", :action => "new"%>?
+		</p>
+	<% end -%>
+</div>

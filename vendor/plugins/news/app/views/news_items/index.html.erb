@@ -1,0 +1,23 @@
+<div id='body_content' class='clearfix'>
+	<div id='body_content_left'>
+	  <h1><%= page_title %></h1>
+		<%= @page[:body] %>
+	
+		<% if @news_items.size > 0 %>
+			<% @news_items.each do |item| %>
+				<h3><%= link_to item.title, news_item_url(item) %></h3>
+				<p>
+					<small>Published <%= item.publish_date.strftime("%A %d of %B, %Y") %></small>
+				</p>
+				<p>
+					<%= item.blurb %> <%= link_to "Read more", news_item_url(item) %>
+				</p>
+			<% end %>
+		<% else %>
+			<p><em>Sorry we haven't posted up any news yet.</em></p>
+		<% end %>
+	</div>
+	<div id='body_content_right'>
+		<%= @page[:side_body] %>
+	</div>
+</div>

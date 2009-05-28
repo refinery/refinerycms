@@ -1,0 +1,123 @@
+/* default refinery css */
+body {
+    background: #E1E1E1;
+    
+}
+#page {
+    background: white;
+    padding: 20px;
+    width: 1000px;
+    margin: 0px auto;
+}
+#header {
+    height: 71px;
+    margin-bottom: 10px;
+}
+#header h1 {
+    float: left;
+}
+#menu {
+    list-style: none;
+    float: right;
+    margin-top: 20px;
+}
+#menu li {
+    float: left;
+    margin: 0px 9px;
+}
+
+#menu li a {
+    font-size: 18px;
+}
+
+#footer {
+    margin-top: 12px;
+    font-size: 11px;
+}
+
+#body_content_left {
+    float: left;
+    width: 600px;
+}
+#body_content_right {
+    float: right;
+    margin: 0px 12px;
+    width: 360px;
+}
+
+.inquiries form label {
+    width: 150px;
+    float: left;
+}
+.inquiries form input {
+    
+}
+
+.inquiries form .actions input {
+    margin-left: 150px;
+}
+
+.inquiries .field {
+    margin: 12px 0px;
+}
+
+.inquiries form {
+    padding-top: 12px;
+}
+
+/* put your main css here */
+
+
+/* Default error colouring */
+
+div.fieldWithErrors {
+    display: inline;
+}
+
+#errorExplanation {
+	border-top: 3px solid #F27F7F;
+	background: #FFBEBE;
+	padding: 10px;
+}
+
+#errorExplanation, #errorExplanation *, .fieldWithErrors, .fieldWithErrors * {
+	color: #9C2626;
+}
+
+/* Browser Hacks */
+
+/* remove borders from images */
+
+a img {
+    border: 0px none;
+}
+
+/*
+Firefox Dotted Line Fix
+  - http://sonspring.com/journal/removing-dotted-links
+*/
+a:focus {
+	outline: none;
+}
+
+/*
+Clearfix docs
+ - Main docs: http://positioniseverything.net/easyclearing.html
+ - IE7 change: http://www.456bereastreet.com/archive/200603/new_clearing_method_needed_for_ie7/
+*/
+.clearfix:after {
+	content: ".";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+}
+.clearfix {
+	display: inline-block;
+}
+
+/* Hide from IE Mac \*/
+.clearfix {
+	display:block;
+}
+/* End hide from IE Mac */

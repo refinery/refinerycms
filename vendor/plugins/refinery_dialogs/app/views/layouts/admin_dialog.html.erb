@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>	
+		<% unless local_request? %>
+			<script src="http://www.google.com/jsapi"></script>
+			<script>
+				google.load("prototype", "1.6");
+				google.load("scriptaculous", "1.8.2");
+			</script>
+		<% else %>
+			<%= javascript_include_tag "prototype", "scriptaculous" %>
+		<% end %>
+		<%= javascript_include_tag "fastinit", "tooltips", "dialog" %>
+		<%= stylesheet_link_tag 'refinery' %>
+		<%= yield :head %>
+		<script type='text/javascript'>
+			document.observe('dom:loaded', function() {
+			  $$('a[title]').each(function(element) {
+					new Tooltip(element, {mouseFollow:false, delay: 0, opacity: 1, appearDuration:0, hideDuration: 0});
+			  });
+
+				<% if @flash %>$('flash').appear();<% end %>
+			});
+		</script>
+	</head>
+	<body class='dialog'>
+		<%= yield %>
+	</body>
+</html>

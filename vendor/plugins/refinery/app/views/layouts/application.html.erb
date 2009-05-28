@@ -1,0 +1,30 @@
+<% setup # sets up any meta tags and page title -%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title><%= yield :title %> - <%= RefinerySetting[:site_name] %></title>
+		<%= stylesheet_link_tag 'application' %>
+		<%= stylesheet_link_tag 'formatting' %>
+		<%= stylesheet_link_tag 'home' if @page.home? %>
+		<!--[if IE 7]>
+			<%= stylesheet_link_tag 'ie7' %>
+		<![endif]-->
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<%= yield :head %>
+	</head>
+	<body>
+		<div id='page'>
+			<div id='header' class='clearfix'>
+				<h1><%= link_to RefinerySetting[:site_name], root_url %></h1>
+				<%= render :partial => "/shared/menu" %>
+			</div>
+			<div id='body' class='clearfix'>
+				<%= yield %>
+			</div>
+			<div id='footer'>
+				<%= render :partial => "/shared/footer" %>
+			</div>
+		</div>
+		<%= render :partial => 'shared/google_analytics' unless local_request? %>
+	</body>
+</html>

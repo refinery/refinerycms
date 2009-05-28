@@ -1,0 +1,18 @@
+<% content_for :title, "#{@news_item.title} - " -%>
+<div id='body_content' class='clearfix'>
+	<div id='body_content_left'>
+		<h1>
+			<%= @news_item.title %>
+		</h1>
+		<p>
+			<small>Published <%= @news_item.publish_date.strftime("%A %d of %B, %Y") %></small>
+		</p>
+		<%= @news_item.body %>
+		<p>
+			<%= link_to "Back to all news", news_items_url %>
+		</p>
+	</div>
+	<div id='body_content_right'>
+		<%= render :partial => 'recent_posts' %>
+	</div>
+</div>

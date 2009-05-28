@@ -1,0 +1,8 @@
+<h1>
+	<%%= @<%= singular_name %>.<%= attributes.first.name %> %>
+</h1>
+<% for a in attributes %>
+<div>
+	<strong><%= a.name.titleize %>:</strong> <%%= @<%= singular_name %>.<%= a.name %> %>
+</div>
+<% end %>

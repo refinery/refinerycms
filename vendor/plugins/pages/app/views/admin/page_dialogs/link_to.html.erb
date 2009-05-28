@@ -1,0 +1,198 @@
+<div class='clearfix dialog_link_to'>
+	<div id='dialog_menu_left'>
+		<span id='your_page_radio' class='radio selected_radio'>
+			<input type='radio' name='link_to' value='your_page' id='link_to_your_page' checked='true' />
+			<label for='link_to_your_page' class='stripped'>Your page</label>
+		</span>
+		<span id='web_address_radio' class='radio'>
+			<input type='radio' name='link_to' value='web_address' id='link_to_web_address' />
+			<label for='link_to_web_address' class='stripped'>Web address</label>
+		</span>
+
+		<span id='email_address_radio' class='radio'>
+			<input type='radio' name='link_to' value='email_address' id='link_to_email_address' />
+			<label for='link_to_email_address' class='stripped'>Email address</label>
+		</span>
+<%
+#		<span id='your_file_radio' class='radio'>
+#			<input type='radio' name='link_to' value='your_file' id='link_to_your_file' />
+#			<label for='link_to_your_file' class='stripped'>Your file</label>
+#		</span>
+	%>
+	</div>
+
+	<div id='dialog_main' style='height: 380px'>
+		<div id='your_page_area' class='dialog_area'>
+			<input type='hidden' name='selected_image' id='selected_image' />
+			<div id='your_page_content' class='clearfix'>
+				<div id='pages_list'>
+					<ul>
+				<% @pages.each do |page| -%>
+						<%= render :partial => "link_list_tree", :locals => {:page => page, :child => false} %>
+				<% end -%>
+					</ul>
+				</div>
+			</div>
+			<%= will_paginate @pages, :prev_label => '&laquo; Previous', :next_label => 'Next &raquo;' %>
+		</div>
+		<div id='web_address_area'  style='display: none' class='dialog_area'>
+			<div id='web_address_content'>
+				<label for='web_address_text'>Location</label>
+				<input type='text' id='web_address_text' style='width: 70%' value='http://' />
+				<img id='web_address_test_loader' src='/images/refinery/ajax-loader.gif' alt='Testing...' style='display: none;'>
+				<span id='web_address_test_result'></span>
+				
+				<p>
+					<strong>Not sure what to put in the box above?</strong> 
+					<ol>
+						<li>Find the page on the web you want to link to.</li>
+						<li>Copy the web address from your browser's address bar and paste it into the box above.</li>
+					</ol>
+				</p>
+			</div>
+		</div>
+		<div id='email_address_area' style='display: none' class='dialog_area'>
+			<div id='email_address_content'>
+				<div class='field'>
+					<label for='email_address_text'>Email Address</label>
+					<input type'text' id='email_address_text' style='width: 70%' />
+					<img id='web_address_test_loader' src='/images/refinery/ajax-loader.gif' alt='Testing...' style='display: none;'>
+					<span id='email_address_test_result'></span>
+				</div>
+				
+				<div class='field'>
+					<label for='email_default_subject_text'>Subject Line (optional)</label>
+					<input type='text' id='email_default_subject_text' style='width: 70%' />
+				</div>
+				
+				<div class='field'>
+					<label for='email_default_body_text'>Email Body (optional)</label>
+					<textarea id='email_default_body_text' style='width: 70%'></textarea>
+				</div>
+				
+				<p>
+					<strong>Not sure what to put in the boxes above?</strong> 
+				</p>
+				<ol style='margin-top: 3px'>
+					<li>
+					  Write or copy and paste (e.g. from your address book) the email address to link 
+					  to into the '<strong>Email Address</strong>' box above.
+					</li>
+					<li>
+					  Use the '<strong>Subject Line</strong>' box above if you want the message to 
+					  be composed with a <strong>pre-written subject line</strong>
+					</li>
+					<li>
+					  Use the <strong>Email Body</strong> box above if you want the message to be 
+					  composed with a <strong>pre-written message</strong>.
+					</li>
+				</ol>
+			</div>
+		</div>
+<%
+	#	<div id='your_file_area' style='display: none' class='dialog_area'>
+	#</div>
+%>
+	</div>
+</div>
+<%
+#<div id='link_title'>
+#	<label for='link_title_text'>Text to display:</label>
+#	<input type='text' id='link_title_text' />
+#</div>
+%>
+
+<% content_for :head do %>
+  <script type='text/javascript'>
+
+  	FastInit.addOnLoad(function()
+  	{
+  		$$('#pages_list ul li').each(function(li)
+  		{
+  			li.observe('click', function(e)
+  			{
+  				$$('#pages_list ul li.linked').each(function(linked)
+  				{
+  					linked.removeClassName('linked');
+  				});
+				
+  				this.addClassName('linked');
+  				parent.document.getElementById('wym_href').value = this.down('a.page_link').href;
+  			});
+  		});
+		
+  		$('web_address_text').observe('change', function(e)
+  		{
+  			prefix = 'web_address_';
+  			$(prefix + 'test_loader').show();
+
+  			$('web_address_test_result').hide();
+			
+  			req = new Ajax.Request("/admin/pages/dialogs/test_url", 
+  			{
+  				asynchronous: true
+  				, method: 'get'
+  				, parameters: {url: this.value}
+  				, onComplete: function(e)
+  				{
+  					$(prefix + 'test_result').update(e.transport.responseText).show();
+  					$(prefix + 'test_loader').hide();
+  				}
+  			});
+
+  			parent.document.getElementById('wym_href').value = $('web_address_text').value;
+  			parent.document.getElementById('wym_title').value = $('web_address_text').value;
+  		});
+		
+  		$$('#email_address_text', '#email_default_subject_text', '#email_default_body_text').each(function(input)
+  		{
+  			input.observe('change', function(e)
+  			{
+  				default_subject = $('email_default_subject_text').value;
+  				default_body = $('email_default_body_text').value;
+  				mailto = "mailto:" + $('email_address_text').value.replace('mailto:', '');
+  				$('email_address_test_result').hide();
+  				req = new Ajax.Request("/admin/pages/dialogs/test_email", 
+  				{
+  					asynchronous: true
+  					, method: 'get'
+  					, parameters: {email: mailto}
+  					, onComplete: function(e)
+  					{
+  						$('email_address_test_result').update(e.transport.responseText).show();
+  						$('email_address_test_loader').hide();
+  					}
+  				});
+				
+  				modifier = "?";
+  				if (default_subject.length > 0)
+  				{
+  					mailto += modifier + "subject=" + default_subject;
+  					modifier = "&";
+  				}
+  				if (default_body.length > 0)
+  				{
+  					mailto += modifier + "body=" + default_body;
+  					modifier = "&";
+  				}
+  				parent.document.getElementById('wym_href').value = mailto;
+  				parent.document.getElementById('wym_title').value = $('email_address_text').value.replace('mailto:', '');
+  			});
+  		});
+				
+  		$('link_to_your_page').observe('click', function(e)
+  		{
+  			$$('li.linked').each(function(li)
+  			{
+  				parent.document.getElementById('wym_href').value = this.down('a.page_link').href;
+  				parent.document.getElementById('wym_title').value = this.down('span').innerHTML;
+  			});
+  		});
+  		$('link_to_web_address').observe('click', function(e)
+  		{
+  			parent.document.getElementById('wym_href').value = $('web_address_text').value;
+  			parent.document.getElementById('wym_title').value = $('web_address_text').value;
+  		});
+  	});
+  </script>
+<% end %>

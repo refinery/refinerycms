@@ -1,0 +1,20 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+ 	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<%= render :partial => "/admin/head" %>
+	<body>
+		<div id='page'<%= " class='login'" unless logged_in? %><%= " class='splash'" if logged_in? and params[:action] == "index" %>>
+			<div class='clearfix' id='header'>
+				<h1><%= just_installed? ? "Welcome to Refinery" : RefinerySetting[:site_name].titleize %></h1>
+			<% if logged_in? %>
+				<%= image_tag "refinery/logo.png", :alt => "refinery (tm) content manager", :id => "logo" -%>
+				<%= render :partial => "/admin/menu" %>
+			<% end %>
+			</div>
+			<div id='content' class='clearfix'>
+				<%= render :partial => '/shared/message' %>
+				<%= yield %>
+			</div>
+		</div>
+	</body>
+</html>

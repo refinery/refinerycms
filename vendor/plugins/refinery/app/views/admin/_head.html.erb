@@ -1,0 +1,27 @@
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+	<title>
+		<%= RefinerySetting[:site_name].titleize %> - Refinery
+	</title>
+	<% unless local_request? %>
+		<script src="http://www.google.com/jsapi"></script>
+		<script>
+			google.load("prototype", "1.6");
+			google.load("scriptaculous", "1.8.2");
+		</script>
+	<% else %>
+		<%= javascript_include_tag 'prototype', 'scriptaculous' %>
+	<% end %>
+	<%= stylesheet_link_tag 'thickbox', 'refinery', 'tooltips' %>
+	<%= javascript_include_tag 'prototype.enhancements.js', 'fastinit', 'tooltips', 'livepipe', 'tabs', 'jquery/jquery', 'thickbox', "/wymeditor/jquery.refinery.wymeditor.js", 'boot_wym', 'admin' %>
+	<%= "<script type='text/javascript' src='http://getfirebug.com/releases/lite/1.2/firebug-lite-compressed.js'></script>" if (RefinerySetting[:show_firebug_lite] ||= false) == true %>
+<% unless flash.empty? %>
+	<script type='text/javascript'>
+		FastInit.addOnLoad(function()
+		{
+			$('flash').appear();
+		});			
+	</script>
+<% end %>
+	<%= yield :head %>
+</head>

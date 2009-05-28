@@ -1,0 +1,41 @@
+<div id='actions'>
+	<h2>Actions</h2>
+	<ul>
+		<li>
+			<%= link_to "Create News Item", new_admin_news_item_url, :class => "add_icon" %>
+		</li>
+	</ul>
+</div>
+<div id='records'>
+	<% if @news_items.size > 0 %>
+		<h2>News Items</h2>
+			<%= will_paginate @news_items, :prev_label => '&laquo;', :next_label => '&raquo;' %>
+	    <ul>
+				<% @news_items.each do |news_item| %>
+					<li class='clearfix record <%= cycle("on", "on-hover") %>'>
+						<span class='title'>
+							<span class='actions'>
+								<%= link_to image_tag('refinery/icons/application_go.png'), news_item_url(news_item),
+										:title => 'View this news item live <br/><em>(opens in a new window)</em>', :target => "_blank" %>
+								<%= link_to image_tag('refinery/icons/application_edit.png'), edit_admin_news_item_path(news_item),
+								            :title => 'Edit this news item' %>
+								<%= link_to image_tag('refinery/icons/delete.png'), admin_news_item_path(news_item),
+																			 :confirm => "Are you sure you want to delete #{news_item.title}?",
+																			 :class => "cancel", :method => :delete,
+																			 :title => "Remove this news item forever" %>
+							</span>
+							<%=h news_item.title %> <span class="preview">&nbsp;</span>
+						</span>
+					</li>
+				<% end %>
+	    </ul>
+			<%= will_paginate @news_items, :prev_label => '&laquo;', :next_label => '&raquo;' %>
+	<% else %>
+		<p>
+			<strong>
+				There are no news items yet.
+				Click "Create News Item" to add your first news item.
+			</strong>
+		</p>
+	<% end %>
+</div>

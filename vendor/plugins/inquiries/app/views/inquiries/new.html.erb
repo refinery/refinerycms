@@ -1,0 +1,33 @@
+<div id="body_content" class='clearfix'>
+	<div id="body_content_left" class='inquiries'>
+	  <h1><%= page_title %></h1>
+		<%= @page[:body] %>
+
+		<%= error_messages_for :inquiry, :header_message => "Whoops there was a small problem",
+		 																 :message => "The following problems need to be corrected:" %>
+		<% form_for @inquiry do |f| %>
+			<div class='field'>
+				<%= f.required_label :name %>
+				<%= f.text_field :name %>
+			</div>
+			<div class='field'>
+				<%= f.required_label :email %>
+				<%= f.text_field :email %>
+			</div>
+			<div class='field'>
+				<%= f.label :phone %>
+				<%= f.text_field :phone %>
+			</div>
+			<div class='field'>
+				<%= f.label :message %>
+				<%= f.text_area :message %>
+			</div>
+			<div class='actions'>
+				<%= f.submit 'Send Message' %>
+			</div>
+		<% end %>	
+	</div>
+	<div id='body_content_right'>
+		<%= @page[:side_body] %>
+	</div>
+</div>

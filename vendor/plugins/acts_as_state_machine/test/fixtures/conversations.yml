@@ -1,0 +1,11 @@
+first:
+  id: 1
+  state_machine: read
+  subject: This is a test
+  closed: false
+  
+second:
+  id: 2
+  state_machine: read
+  subject: Foo
+  closed: false

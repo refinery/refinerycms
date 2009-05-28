@@ -1,0 +1,10 @@
+<ul id='<%= dom_id ||= "menu" %>' class='menu clearfix'>
+	<% @menu_pages.each do |page| -%>
+	  <%= render :partial => '/shared/menu_branch', :locals => {
+	  		:page => page, 
+	  		:position => @menu_pages.index(page), 
+	  		:root => true,
+	  		:hide_children => RefinerySetting[:menu_hide_children] ||= false
+	  } -%>
+	<% end -%>
+</ul>
