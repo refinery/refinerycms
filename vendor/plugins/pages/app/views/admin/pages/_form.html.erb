@@ -14,7 +14,7 @@
       		</li>
     		<% end %>
   		</ul>
-  		<%= link_to image_tag("/images/refinery/add.png"), new_admin_page_page_part_url(@page, :dialog => true), :id => "add_page_part", :title => "Create Content Section", :name => "Create Content Section" %>
+  		<%= link_to image_tag("/images/refinery/add.png"), new_admin_page_page_part_url(@page, {:dialog => true, :width => 600, :height => 300}), :id => "add_page_part", :title => "Create Content Section", :name => "Create Content Section" %>
     </div>
 		
 		<% f.fields_for :parts do |p| %>
@@ -118,7 +118,7 @@
 				});
 			}
 		});
-	})
+	});
 	
 	// Hook into the loaded function. This will be called when WYMeditor has done its thing.
 	WYMeditor.loaded = function()

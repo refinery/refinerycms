@@ -13,11 +13,21 @@ class Admin::PagePartsController < Admin::BaseController
     @page = Page.find(params[:page_id])
     @page_part = @page.parts.new(params[:page_part])
     
-    if @page_part.save  
+    saved = @page_part.save
+    flash[:error] = "You must enter a title for the part to be added to this page" unless saved
+    
+    unless request.xhr?
       redirect_to edit_admin_page_url(@page)
     else
-      flash[:error] = "You must enter a title for the part to be added to this page"
-      redirect_to edit_admin_page_url(@page)
+      if saved
+        flash.now[:notice] = "The new content section was added. Please close this dialog and reload the page to use it. Make sure you save any changes you have made."
+      end
+
+      render :update do |page|
+        page.replace_html 'flash_container', :partial => "/shared/message"
+        page[:flash].appear
+      end
+      flash.discard # Get rid of the flash message, we don't need it anymore.. otherwise it'll show up on next page load.
     end
   end
   
