@@ -1171,8 +1171,6 @@ WYMeditor.editor.prototype.dialog = function( dialogType ) {
 			break;
 		}
 	}
-	
-	if (this._options.dialogDraggable) new Draggable(this._options.dialogId);
 
 };
 
@@ -1517,8 +1515,16 @@ WYMeditor.INIT_DIALOG = function(wym,isIframe) {
 		
 				if (!jQuery.browser.safari)
 				{
-					replaceable.after(image);
-					replaceable.remove();
+					if (replaceable != null)
+					{
+		//				console.log(this._selected_image);
+		//				console.log(replaceable.parentNode);
+						if (this._selected_image == null || (this._selected_image != null && replaceable.parentNode != null))
+						{
+							replaceable.after(image);
+							replaceable.remove();
+						}
+					}
 				}
 			}
 			

@@ -1,6 +1,6 @@
 <%= error_messages_for :image %>
 
-<% form_for [:admin, @image], :html => {:multipart => true, :style => 'float: left; width: 70%'} do |f| %>
+<% send :"form_#{'remote_' if params[:dialog]}for", [:admin, @image], :url => admin_images_url(:dialog => params[:dialog], :insert => (insert ||= false)), :html => {:multipart => true, :style => 'float: left; width: 70%'} do |f| %>
 	<div class='field'>
 		<%= f.label :uploaded_data, 'Image' %>
 		<% if params[:action] =~ /(edit)|(update)/ %>

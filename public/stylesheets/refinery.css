@@ -884,6 +884,9 @@ ul#page_parts li a.active {
 		display: block;
 		float: left;
 }
+#add_page_part img {
+	vertical-align: middle;
+}
 
 /* dialog stuff */
 #dialog_frame {

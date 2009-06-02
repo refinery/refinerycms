@@ -43,9 +43,12 @@
 			parts = img.src.split('/images/system');
 			relevant_src = parts[parts.length-1].split('?');
 			relevant_src = relevant_src[0].replace('_dialog_thumb', '');
-			parent.document.getElementById('wym_src').value = '/images/system' + relevant_src;
-			parent.document.getElementById('wym_title').value = img.title;
-			parent.document.getElementById('wym_alt').value = img.alt;
+			if (parent.document.getElementById('wym_src') != null)
+			{
+				parent.document.getElementById('wym_src').value = '/images/system' + relevant_src;
+				parent.document.getElementById('wym_title').value = img.title;
+				parent.document.getElementById('wym_alt').value = img.alt;
+			}
 		}
 		
 		FastInit.addOnLoad(function()

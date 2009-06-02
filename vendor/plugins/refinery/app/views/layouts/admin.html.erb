@@ -12,7 +12,9 @@
 			<% end %>
 			</div>
 			<div id='content' class='clearfix'>
-				<%= render :partial => '/shared/message' %>
+				<div id="flash_container">
+					<%= render :partial => '/shared/message' %>
+				</div>
 				<%= yield %>
 			</div>
 		</div>

@@ -4,11 +4,15 @@ class Admin::ImagesController < Admin::BaseController
   
   def new
     @image = Image.new
+    logger.warn("from dialog: #{params}")
+    if from_dialog?
+      render :layout => 'admin_dialog'
+    end
   end
   
   def create
     @image = Image.create(params[:image])
-    unless from_dialog?
+    if not (from_dialog? and params[:insert_dialog])
       if @image.valid?
         flash[:notice] = "'#{@image.title}' was successfully created."
         redirect_to :action => 'index'
@@ -21,6 +25,14 @@ class Admin::ImagesController < Admin::BaseController
       paginate_images
       render :action => "insert"
     end
+  end
+  
+protected
+  def paginate_images
+    @images = Image.paginate :page => params[:page],
+                             :conditions => 'parent_id is null',
+                             :order => 'created_at DESC',
+                             :per_page => Image.per_page(dialog = params[:dialog])
   end
   
 end

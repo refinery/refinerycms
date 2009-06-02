@@ -4,7 +4,7 @@ switch_area = function(area)
 	{
 		span.removeClassName('selected_radio');
 	});
-	$(area).parentNode.addClassName('selected_radio');
+	$($(area).parentNode).addClassName('selected_radio');
 
 	$$('#dialog_main div.dialog_area').each(function(div)
 	{
