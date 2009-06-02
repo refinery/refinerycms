@@ -13,7 +13,7 @@ FastInit.addOnLoad(function()
 
 	$$('a([href*="dialog=true"])').each(function(anchor)
 	{
-		['modal=true', 'width=928', 'height=473', 'titlebar=true'].each(function(feature)
+		['modal=true', 'width=928', 'height=473', 'titlebar=true', 'draggable=true'].each(function(feature)
 		{
 			if (anchor.href.indexOf(feature.split('=')[0] + '=') == -1)
 			{

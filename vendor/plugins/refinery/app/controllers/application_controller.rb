@@ -32,7 +32,7 @@ class ApplicationController < ActionController::Base
   end
   
   def from_dialog?
-    params[:dialog] == true
+    params[:dialog] == "true"
   end
 
 protected

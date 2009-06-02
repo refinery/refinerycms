@@ -19,7 +19,7 @@ jQuery(document).ready(function(){
 //add thickbox to href & area elements that have a class of .thickbox
 function tb_init(domChunk){
 	jQuery(domChunk).click(function(){
-	var t = this.title || this.name || null;
+	var t = this.title || this.name || this.innerHTML || null;
 	var a = this.href || this.alt;
 	var g = this.rel || false;
 	tb_show(t,a,g);
@@ -267,10 +267,29 @@ function tb_show(caption, url, imageGroup, ajax_loaded_callback) {//function cal
 			document.body.style.overflow = 'hidden';
 		}
 		
+		if (params['draggable'])
+		{
+			new Draggable('TB_window', {handle: 'TB_title', starteffect:null, endeffect:null});
+			/*, {
+				starteffect:function(){
+					$$("#TB_title", "#TB_window", "#TB_iframe").each(function(element){
+						new Effect.Highlight(element, {endcolor: '#ffff99', restorecolor: '#ffff99', duration: 0.25, keepBackgroundImage: true});
+					});
+				}
+				, endeffect:function()
+				{
+					$$("#TB_title", "#TB_window", "#TB_iframe").each(function(element){
+						current_bg_color = element.style.backgroundColor;
+						new Effect.Highlight(element, {startcolor: '#ffff99', duration: 0.25, keepBackgroundImage: true});
+					});
+				}
+			});*/
+		}
+		
 		return 'TB_window';
 		
 	} catch(e) {
-		if (console) { console.log(e); }
+		//if (console) { console.log(e); }
 		//nothing here
 	}
 }
