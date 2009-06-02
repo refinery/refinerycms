@@ -4,6 +4,5 @@ tmp/**/*
 .DS_Store
 doc/api
 doc/app
-db/schema.rb
 config/database.yml
 public/images/*
