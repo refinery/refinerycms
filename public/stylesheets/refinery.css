@@ -944,3 +944,7 @@ textarea.wymeditor {
 #TB_window .form-actions {
 	margin-top: 12px;
 }
+
+#dialog_container {
+	padding: 0px 12px 12px 12px;
+}

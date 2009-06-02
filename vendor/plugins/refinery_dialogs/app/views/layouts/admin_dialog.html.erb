@@ -14,17 +14,15 @@
 		<%= stylesheet_link_tag 'refinery' %>
 		<%= yield :head %>
 		<%= "<script type='text/javascript' src='http://getfirebug.com/releases/lite/1.2/firebug-lite-compressed.js'></script>" if (RefinerySetting[:show_firebug_lite] ||= false) == true %>
+		<% if @flash %>
 		<script type='text/javascript'>
 			document.observe('dom:loaded', function() {
-			  $$('a[title]').each(function(element) {
-					new Tooltip(element, {mouseFollow:false, delay: 0, opacity: 1, appearDuration:0, hideDuration: 0});
-			  });
-
-				<% if @flash %>$('flash').appear();<% end %>
+				$('flash').appear();
 			});
 		</script>
+		<% end %>
 	</head>
-	<body class='dialog'>
+	<body id='dialog_container' class='dialog'>
 		<div id="flash_container">
 			<%= render :partial => '/shared/message' %>
 		</div>
