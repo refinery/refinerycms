@@ -9,25 +9,3 @@
 		<%= link_to "Cancel", edit_admin_page_url(@page), :class => "close_dialog" %>
 	</div>
 <% end %>
-<% content_for :head do %>
-<script type='text/javascript'>
-	FastInit.addOnLoad(function(e) {
-		$$('.close_dialog').each(function(close) {
-			close.observe('click', function(e)
-			{
-				if (parent && typeof(parent.tb_remove) == "function") {
-					parent.tb_remove();
-				}
-				else if (typeof(tb_remove) == 'function') {
-					tb_remove();
-				}
-				
-				if (e)
-				{
-					e.stop();
-				}
-			});
-		});
-	});
-</script>
-<% end if from_dialog? %>

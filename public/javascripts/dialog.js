@@ -32,4 +32,21 @@ FastInit.addOnLoad(function()
 		selected.checked = true;
 		switch_area(selected);
 	}
+	
+	$$('.close_dialog').each(function(close) {
+		close.observe('click', function(e)
+		{
+			if (parent && typeof(parent.tb_remove) == "function") {
+				parent.tb_remove();
+			}
+			else if (typeof(tb_remove) == 'function') {
+				tb_remove();
+			}
+
+			if (e)
+			{
+				e.stop();
+			}
+		});
+	});
 });
