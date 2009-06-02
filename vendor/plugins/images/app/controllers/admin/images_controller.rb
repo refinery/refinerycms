@@ -4,7 +4,6 @@ class Admin::ImagesController < Admin::BaseController
   
   def new
     @image = Image.new
-    logger.warn("from dialog: #{params}")
     if from_dialog?
       render :layout => 'admin_dialog'
     end
@@ -12,12 +11,17 @@ class Admin::ImagesController < Admin::BaseController
   
   def create
     @image = Image.create(params[:image])
-    if not (from_dialog? and params[:insert_dialog])
-      if @image.valid?
-        flash[:notice] = "'#{@image.title}' was successfully created."
-        redirect_to :action => 'index'
-      else 
-        render :action => 'new'
+    saved = @image.valid?
+    flash[:notice] = "'#{@image.title}' was successfully created." if saved
+    unless params[:insert_dialog]
+      if saved
+        unless from_dialog?
+          redirect_to :action => 'index'
+        else
+          render :text => "<script type='text/javascript'>parent.window.location = '#{admin_images_url}';</script>"
+        end
+      else
+        render :action => 'new', :layout => (from_dialog? ? 'admin_dialog' : 'admin')
       end
     else
       # set the last page as the current page for image grid.
