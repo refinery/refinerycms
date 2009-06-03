@@ -4,7 +4,7 @@ class Page < ActiveRecord::Base
   
   acts_as_tree :order => "position"
   
-  has_friendly_id :title
+  has_friendly_id :title, :use_slug => true, :strip_diacritics => true
   
   belongs_to :image
   
