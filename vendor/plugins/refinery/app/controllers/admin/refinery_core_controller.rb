@@ -6,7 +6,6 @@ class Admin::RefineryCoreController < Admin::BaseController
   end
   
   def render_flash_messages
-    flash[:notice] = "foosberries #{Time.now}"
     render :partial => "/shared/message"
   end
   
