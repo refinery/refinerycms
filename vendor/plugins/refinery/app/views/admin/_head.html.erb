@@ -3,6 +3,7 @@
 	<title>
 		<%= RefinerySetting[:site_name].titleize %> - Refinery
 	</title>
+	<%= stylesheet_link_tag 'thickbox', 'refinery', 'tooltips' %>
 	<% unless local_request? %>
 		<script type='text/javascript' src="http://www.google.com/jsapi"></script>
 		<script type='text/javascript'>
@@ -12,7 +13,6 @@
 	<% else %>
 		<%= javascript_include_tag 'prototype', 'scriptaculous' %>
 	<% end %>
-	<%= stylesheet_link_tag 'thickbox', 'refinery', 'tooltips' %>
 	<%= javascript_include_tag 'prototype.enhancements.js', 'fastinit', 'tooltips', 'livepipe', 'tabs', 'jquery/jquery', 'thickbox', "/wymeditor/jquery.refinery.wymeditor.js", 'boot_wym', 'admin' %>
 	<%= "<script type='text/javascript' src='http://getfirebug.com/releases/lite/1.2/firebug-lite-compressed.js'></script>" if (RefinerySetting[:show_firebug_lite] ||= false) == true %>
 <% unless flash.empty? %>

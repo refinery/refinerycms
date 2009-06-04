@@ -1,6 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-	<head>	
+	<head>
+		<%= stylesheet_link_tag 'refinery' %>
 		<% unless local_request? %>
 			<script type='text/javascript' src="http://www.google.com/jsapi"></script>
 			<script type='text/javascript'>
@@ -11,7 +12,6 @@
 			<%= javascript_include_tag "prototype", "scriptaculous" %>
 		<% end %>
 		<%= javascript_include_tag "fastinit", "tooltips", "dialog" %>
-		<%= stylesheet_link_tag 'refinery' %>
 		<%= yield :head %>
 		<%= "<script type='text/javascript' src='http://getfirebug.com/releases/lite/1.2/firebug-lite-compressed.js'></script>" if (RefinerySetting[:show_firebug_lite] ||= false) == true %>
 		<% if @flash %>
