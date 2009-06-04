@@ -8,20 +8,34 @@
 	<div class='clearfix'>
 	  <div class='clearfix'>
   	  <ul id='page_parts'>
-    	  <% @page.parts.each do |p| %>
+    	  <% if @page.parts.size > 0 %>
+      	  <% @page.parts.each do |p| %>
+      	    <li class='tab'>
+              <%= link_to p.title.titleize, "#part_#{p.id}" %>
+        		</li>
+      		<% end %>
+    		<% else %>
     	    <li class='tab'>
-            <%= link_to p.title.titleize, "#part_#{p.id}" %>
+            <%= link_to "Body", "#part_new" %>
       		</li>
     		<% end %>
   		</ul>
-  		<%= link_to image_tag("/images/refinery/add.png"), new_admin_page_page_part_url(@page, {:dialog => true, :width => 600, :height => 300}), :id => "add_page_part", :title => "Create Content Section", :name => "Create Content Section" %>
+  		<% if RefinerySetting[:new_page_parts] %>
+  		  <%= link_to image_tag("/images/refinery/add.png"), new_admin_page_page_part_url(@page, {:dialog => true, :width => 600, :height => 300}), :id => "add_page_part", :title => "Create Content Section", :name => "Create Content Section" %>
+  		<% end %>
     </div>
 		
-		<% f.fields_for :parts do |p| %>
-  		<div class='field' id='part_<%= p.object.id %>'>
-  			<%= p.text_area :body, :rows => 20, :cols => 140, :class => 'wymeditor' %>
+		<% if @page.parts.size > 0 %>
+  		<% f.fields_for :parts do |p| %>
+    		<div class='field' id='part_<%= p.object.id %>'>
+    			<%= p.text_area :body, :rows => 20, :cols => 140, :class => 'wymeditor' %>
+    		</div>
+    	<% end %>
+    <% else %>
+  		<div class='field' id='part_new'>
+  			<%= text_area :page_part, :body, :rows => 20, :cols => 140, :class => 'wymeditor' %>
   		</div>
-  	<% end %>
+    <% end%>
 	</div>
 	<p>
 		<%= link_to "&raquo; Hide/Show Advanced Options", "", :id => "toggle_advanced_options", 

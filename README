@@ -21,11 +21,10 @@ git remote add origin git@github.com:you/yournewsite.git
 
 Edit /config/database.yml to your database server details.
 
-Then run this to create your databases:
-rake db:create:all
-
-Now run this to load the tables in with useful default pages of a basic site
-rake db:migrate
+Then run these to create your database and fill it with Refinery's default data.:
+rake db:create
+rake db:schema:load
+rake db:seed
 
 == Starting up your site
 ruby script/server

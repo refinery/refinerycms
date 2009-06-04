@@ -1,5 +1,6 @@
 [{:name => "site_name", :value => "Company Name"}, 
   {:name => "signup_enabled", :value => true}, 
+  {:name => "new_page_parts", :value => true}, 
   {:name => "analytics_page_code", :value => "UA-xxxxxx-x"},
   {:name => "image_thumbnails", :value => "{
 :lightbox => '500x500>',
