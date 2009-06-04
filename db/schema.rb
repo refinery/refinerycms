@@ -23,12 +23,20 @@ ActiveRecord::Schema.define(:version => 0) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-  
+
+  create_table "images_portfolio_entries", :id => false, :force => true do |t|
+    t.integer "image_id"
+    t.integer "portfolio_entry_id"
+  end
+
+  add_index "images_portfolio_entries", ["image_id", "portfolio_entry_id"], :name => "composite_key_index", :unique => true
+
   create_table "inquiries", :force => true do |t|
     t.string   "name"
     t.string   "email"
     t.string   "phone"
     t.text     "message"
+    t.integer  "position"
     t.boolean  "open",       :default => true
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -81,6 +89,15 @@ ActiveRecord::Schema.define(:version => 0) do
     t.string   "browser_title"
   end
 
+  create_table "portfolio_entries", :force => true do |t|
+    t.string   "title"
+    t.text     "body"
+    t.integer  "position"
+    t.integer  "parent_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "refinery_settings", :force => true do |t|
     t.string   "name"
     t.text     "value"
@@ -128,5 +145,6 @@ ActiveRecord::Schema.define(:version => 0) do
     t.datetime "updated_at"
     t.string   "plugins"
   end
+
 
 end

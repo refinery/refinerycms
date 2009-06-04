@@ -22,7 +22,7 @@
 										:class => "cancel", :method => :delete,
 										:title => 'Remove this setting forever' if refinery_setting.destroyable %>
 							</span>
-							<%=h refinery_setting.name.titleize %> <span class="preview">- (<%= h refinery_setting.name %>)</span>
+							<%=h refinery_setting.name.titleize %> <span class="preview">- <%=h truncate(refinery_setting.value.to_s, :length =>  40) %></span>
 						</span>
 					</li>
 				<% end %>
