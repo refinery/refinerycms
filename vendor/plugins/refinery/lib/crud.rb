@@ -80,7 +80,7 @@ module Crud
       if options[:sortable]
         module_eval %(
           def update_positions
-            unless params[:tree]
+            unless params[:tree] == "true"
               params[:sortable_list].each do |i|
                 #{class_name}.find(i).update_attribute(:position, params[:sortable_list].index(i))
               end
