@@ -20,10 +20,6 @@ class RefineryGenerator < Rails::Generator::NamedBase
       m.template "model.rb", "vendor/plugins/#{plural_name}/app/models/#{singular_name}.rb"
       m.template "config/routes.rb", "vendor/plugins/#{plural_name}/config/routes.rb"
       
-      m.directory 'db/migrate/'
-
-      m.migration_template 'migration.rb', 'db/migrate', :assigns => {:migration_name => "Create#{class_name.pluralize}"}, :migration_file_name => "create_#{singular_name.pluralize}"
-      
       # Create view directory
       view_dir = File.join("vendor/plugins/#{plural_name}/app/views/admin", plural_name)
       m.directory view_dir
@@ -44,6 +40,9 @@ class RefineryGenerator < Rails::Generator::NamedBase
 
       # Add in the init file that ties the plugin to the app.
       m.template "init.rb", "vendor/plugins/#{plural_name}/init.rb"
+
+      m.directory 'db/migrate/'
+      m.migration_template 'migration.rb', 'db/migrate', :assigns => {:migration_name => "Create#{class_name.pluralize}"}, :migration_file_name => "create_#{singular_name.pluralize}"
 
       puts "IMPORTANT"
       puts "---------------------------------------"
