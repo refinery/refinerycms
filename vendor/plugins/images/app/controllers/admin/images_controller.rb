@@ -1,6 +1,7 @@
 class Admin::ImagesController < Admin::BaseController
 
   crudify :image, :order => "created_at DESC", :conditions => "parent_id is NULL", :sortable => false
+  before_filter :change_list_mode_if_specified
   
   def new
     @image = Image.new
@@ -37,6 +38,12 @@ protected
                              :conditions => 'parent_id is null',
                              :order => 'created_at DESC',
                              :per_page => Image.per_page(dialog = params[:dialog])
+  end
+  
+  def change_list_mode_if_specified
+    if params[:action] == "index" and not params[:view].blank?
+      session[:image_view] = params[:view] if ["grid", "list"].include?(params[:view])
+    end
   end
   
 end
