@@ -8,7 +8,7 @@
 	<div class='clearfix'>
 	  <div class='clearfix'>
   	  <ul id='page_parts'>
-    	  <% if @page.parts.size > 0 %>
+    	  <% unless @page.new_record? %>
       	  <% @page.parts.each do |p| %>
       	    <li class='tab'>
               <%= link_to p.title.titleize, "#part_#{p.id}" %>
@@ -27,16 +27,17 @@
   		<% end %>
     </div>
 		
-		<% if @page.parts.size > 0 %>
+		<% unless @page.new_record? %>
   		<% f.fields_for :parts do |p| %>
     		<div class='field' id='part_<%= p.object.id %>'>
     			<%= p.text_area :body, :rows => 20, :cols => 140, :class => 'wymeditor' %>
     		</div>
     	<% end %>
     <% else %>
-			<% RefinerySetting[:default_page_parts].each do |part_id| %>
+			<% (page_parts = RefinerySetting[:default_page_parts]).each do |part_id| %>
   	    <div class='field' id='part_<%= part_id %>'>
-	  			<%= text_area :page_part, part_id.to_sym, :rows => 20, :cols => 140, :class => 'wymeditor' %>
+					<input type='hidden' id='page_parts_attributes_<%= page_parts.index(part_id) %>_title' name='page[parts_attributes][<%= page_parts.index(part_id) %>][title]' value='<%= part_id.titleize %>' />
+	  			<textarea id='page_parts_attributes_<%= page_parts.index(part_id) %>_body' name='page[parts_attributes][<%= page_parts.index(part_id) %>][body]' class='wymeditor' cols='140' rows='20'><%= params[:page][:parts_attributes][page_parts.index(part_id).to_s][:body] rescue nil %></textarea>
 	  		</div>
 			<% end %>
     <% end %>
