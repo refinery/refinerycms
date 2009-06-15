@@ -15,9 +15,11 @@
         		</li>
       		<% end %>
     		<% else %>
-    	    <li class='tab'>
-            <%= link_to "Body", "#part_new" %>
-      		</li>
+					<% (RefinerySetting[:default_page_parts] ||= ["body", "side_body"]).each do |part_id| %>
+	    	    <li class='tab'>
+	            <%= link_to part_id.titleize, "#part_#{part_id}" %>
+	      		</li>
+					<% end %>
     		<% end %>
   		</ul>
   		<% if (RefinerySetting[:new_page_parts] ||= false) and not @page.new_record? %>
@@ -32,9 +34,11 @@
     		</div>
     	<% end %>
     <% else %>
-  		<div class='field' id='part_new'>
-  			<%= text_area :page_part, :body, :rows => 20, :cols => 140, :class => 'wymeditor' %>
-  		</div>
+			<% RefinerySetting[:default_page_parts].each do |part_id| %>
+  	    <div class='field' id='part_<%= part_id %>'>
+	  			<%= text_area :page_part, part_id.to_sym, :rows => 20, :cols => 140, :class => 'wymeditor' %>
+	  		</div>
+			<% end %>
     <% end %>
 	</div>
 	<p>
