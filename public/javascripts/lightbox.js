@@ -278,6 +278,12 @@ Lightbox.prototype = {
         var widthNew  = (imgWidth  + LightboxOptions.borderSize * 2);
         var heightNew = (imgHeight + LightboxOptions.borderSize * 2);
 
+				// ensure the lightbox is wide enough for the close image.
+				if (widthNew < 80)
+				{
+					widthNew = 80
+				}
+
         // scalars based on change from old to new
         var xScale = (widthNew  / widthCurrent)  * 100;
         var yScale = (heightNew / heightCurrent) * 100;

@@ -890,7 +890,7 @@ ul#page_parts li a.active {
 
 /* dialog stuff */
 #dialog_frame {
-	width:928px;
+	width:952px;
 	height:430px;
 	padding: 0px;
 	border: 0px solid #F2F1ED;
@@ -947,4 +947,18 @@ textarea.wymeditor {
 
 #dialog_container {
 	padding: 0px 12px 12px 12px;
+}
+#dialog_container .form-actions {
+	position: absolute;
+	bottom: 0px;
+	left: 0px;
+	width: 930px;
+	border-right: 0px;
+	border-left: 0px;
+	border-bottom: 0px;
+}
+#dialog_main .form-actions {
+	position: inherit;
+	width: 97%;
+	border: 1px solid #E8E8E8;
 }

@@ -88,7 +88,7 @@ jQuery(function()
 				+ "</form>"
 			+ "</div>"
 
-	  , dialogFeatures: "?width=928&height=460&modal=true&titlebar=true&auto_size_content=true&draggable=true"
+	  , dialogFeatures: "?width=958&height=460&modal=true&titlebar=true&auto_size_content=true&draggable=true"
 		, dialogInlineFeatures: "?width=600&height=320&modal=true&titlebar=true&auto_size_content=true&draggable=true"
 
 		, dialogId: 'TB_window'
