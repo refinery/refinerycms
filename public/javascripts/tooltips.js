@@ -46,11 +46,6 @@ Tooltip.prototype = {
 		});
 		this.tooltip.insert(xbottom);
 		
-		document.body.insertBefore(this.tooltip, document.body.childNodes[0]);
-		
-		this.options.width = this.tooltip.getWidth() + 2 // adding 2 seems to display tooltips on one line in FF, yay;
-		this.tooltip.style.minWidth = (this.options.width < this.options.maxWidth ? this.options.width : this.options.maxWidth) + 'px'; // IE7 needs width to be defined. Use min-width because we can sacrifice older browser compatibility.
-		
 		return this;
 	},
 	setOptions: function(options) {
@@ -72,6 +67,16 @@ Tooltip.prototype = {
 	},
 	show: function(e) {
 		this.update();
+		
+		if (!this.insertedIntoDocument)
+		{
+			document.body.insertBefore(this.tooltip, document.body.childNodes[0]);
+		
+			this.options.width = this.tooltip.getWidth() + 2 // adding 2 seems to display tooltips on one line in FF, yay;
+			this.tooltip.style.minWidth = (this.options.width < this.options.maxWidth ? this.options.width : this.options.maxWidth) + 'px'; // IE7 needs width to be defined. Use min-width because we can sacrifice older browser compatibility.
+			
+			this.insertedIntoDocument = true;
+		}
 		
 		if(!this.initialized)
 			this.timeout = window.setTimeout(this.appear.bind(this), this.options.delay);
