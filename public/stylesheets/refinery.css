@@ -952,13 +952,18 @@ textarea.wymeditor {
 	position: absolute;
 	bottom: 0px;
 	left: 0px;
-	width: 930px;
+	width: 100%;
 	border-right: 0px;
 	border-left: 0px;
 	border-bottom: 0px;
+	padding: 10px 0px;
+}
+#dialog_container .form-actions #submit_button {
+	margin-left: 10px;
 }
 #dialog_main .form-actions {
 	position: inherit;
 	width: 97%;
 	border: 1px solid #E8E8E8;
+	padding: 10px;
 }
