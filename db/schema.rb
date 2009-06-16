@@ -146,5 +146,4 @@ ActiveRecord::Schema.define(:version => 0) do
     t.string   "plugins"
   end
 
-
 end
