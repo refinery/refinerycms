@@ -108,11 +108,6 @@ jQuery(function()
 	  , postInit: function(wym)
 	  {
 			wym._iframe.style.height = wym._element.height() + "px";
-
-			$$('.wym_area_top a[title]').each(function(element) 
-			{
-				new Tooltip(element, {mouseFollow:false, delay: 0, opacity: 1, appearDuration:0, hideDuration: 0, rounded:false});
-			});
 			
 			wym_editors_loaded += 1;			
 			if(WYMeditor.INSTANCES.length == wym_editors_loaded){
