@@ -9,4 +9,11 @@ class Admin::PagesController < Admin::BaseController
                   :include => :children
   end
   
+  def new
+    @page = Page.new
+    (RefinerySetting[:default_page_parts] ||= ["body", "side_body"]).each do |page_part|
+      @page.parts << PagePart.new(:title => page_part)
+    end
+  end
+  
 end
