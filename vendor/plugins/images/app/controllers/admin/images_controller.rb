@@ -10,6 +10,11 @@ class Admin::ImagesController < Admin::BaseController
     paginate_images
     self.new if @image.nil?
     @dialog = params[:dialog] ||= true
+    @thickbox = !params[:thickbox].blank?
+    @field = params[:field]
+    @update_image = params[:update_image]
+    @thumbnail = params[:thumbnail]
+    @callback = params[:callback]
     
     render :action => "insert"
   end
@@ -26,7 +31,7 @@ class Admin::ImagesController < Admin::BaseController
           render :text => "<script type='text/javascript'>parent.window.location = '#{admin_images_url}';</script>"
         end
       else
-        render :action => 'new', :layout => (from_dialog? ? 'admin_dialog' : 'admin')
+        render :action => 'new'
       end
     else
       # set the last page as the current page for image grid.
