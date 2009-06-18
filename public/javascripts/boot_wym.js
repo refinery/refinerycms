@@ -83,7 +83,7 @@ jQuery(function()
 					+ "<div class='form-actions'>"
 						+ "<input class='wym_submit' type='button' value='{Insert}' />"
 						+ " or "
-						+ "<a class='wym_cancel' type='button' href=''>{Cancel}</a>"
+						+ "<a class='wym_cancel close_dialog' type='button' href=''>{Cancel}</a>"
 					+ "</div>"
 				+ "</form>"
 			+ "</div>"

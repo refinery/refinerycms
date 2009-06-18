@@ -9,7 +9,7 @@
 <div id='records'>
 	<% if @images.size > 0 %>
 		<h2>Images</h2>
-			<%= will_paginate @images, :prev_label => '&laquo;', :next_label => '&raquo;' %>
+			<%= will_paginate @images, :previous_label => '&laquo;', :next_label => '&raquo;' %>
 	    <ul>
 				<% @images.each do |image| -%>
 				<li id="sortable_<%= image.id %>" class='clearfix record <%= cycle("on", "on-hover") %>'>
@@ -29,7 +29,7 @@
 				</li>
 				<% end -%>
 	    </ul>
-			<%= will_paginate @images, :prev_label => '&laquo;', :next_label => '&raquo;' %>
+			<%= will_paginate @images, :previous_label => '&laquo;', :next_label => '&raquo;' %>
 	<% else %>
 		<p>
 			<strong>

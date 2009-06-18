@@ -1138,6 +1138,14 @@ WYMeditor.editor.prototype.dialog = function( dialogType ) {
 	// change undo or redo on cancel to true to have this happen when a user closes (cancels) a dialogue
 	this._undo_on_cancel = false;
 	this._redo_on_cancel = false;
+	
+	//set to P if parent = BODY
+	if (dialogType != WYMeditor.DIALOG_TABLE)
+	{
+  	var container = this.selected();
+  	if(container.tagName.toLowerCase() == WYMeditor.BODY)
+      	this._exec(WYMeditor.FORMAT_BLOCK, WYMeditor.P);
+	}
 
 	// wrap the current selection with a funky span (not required for safari)
 	if (!jQuery.browser.safari)
@@ -1517,8 +1525,6 @@ WYMeditor.INIT_DIALOG = function(wym,isIframe) {
 				{
 					if (replaceable != null)
 					{
-		//				console.log(this._selected_image);
-		//				console.log(replaceable.parentNode);
 						if (this._selected_image == null || (this._selected_image != null && replaceable.parentNode != null))
 						{
 							replaceable.after(image);
