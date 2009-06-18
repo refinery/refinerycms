@@ -1,36 +1,46 @@
-<div id='dialog_menu_left'>
-	<span id='existing_image_radio' class='radio'>
-		<input type='radio' name='image_type' value='existing_image' id='image_type_existing' checked='true' />
-		<label for='image_type_existing' class='stripped'>Existing Image</label>
-	</span>
-	<span id='upload_image_radio' class='radio<%= " selected_radio" if @image.errors.size > 0 %>'>
-		<input type='radio' name='image_type' value='upload_image' id='image_type_upload' <%= "checked='true'" if @image.errors.size > 0 %> />
-		<label for='image_type_upload' class='stripped'>New Image</label>
-	</span>
-</div>
+<div class='clearfix'>
+	<div id='dialog_menu_left'>
+		<span id='existing_image_radio' class='radio'>
+			<input type='radio' name='image_type' value='existing_image' id='image_type_existing' checked='true' />
+			<label for='image_type_existing' class='stripped'>Existing Image</label>
+		</span>
+		<span id='upload_image_radio' class='radio<%= " selected_radio" if @image.errors.size > 0 %>'>
+			<input type='radio' name='image_type' value='upload_image' id='image_type_upload' <%= "checked='true'" if @image.errors.size > 0 %> />
+			<label for='image_type_upload' class='stripped'>New Image</label>
+		</span>
+	</div>
 
-<div id='dialog_main'>
-	<div id='existing_image_area' class='dialog_area' <%= "style='display:none;'" if @image.errors.size > 0 %>>
-		<input type='hidden' name='selected_image' id='selected_image' />
-		<div id='existing_image_area_content' class='clearfix'>
-			<ul>
-			<% @images.each do |image| %>
-			<% onload = "set_image(this);" if @image_id == image.id %>
-				<li<%= " class='selected'" if @image_id == image.id %>>
-					<%= image_tag image.public_filename(:dialog_thumb), 
-						:alt => image.title, 
-						:title => image.title,
-						:onload => onload -%>
-				</li>
-			<% end -%>
-			</ul>
+	<div id='dialog_main'>
+		<div id='existing_image_area' class='dialog_area' <%= "style='display:none;'" if @image.errors.size > 0 %>>
+			<input type='hidden' name='selected_image' id='selected_image' />
+			<div id='existing_image_area_content' class='clearfix'>
+				<ul>
+				<% @images.each do |image| %>
+				<% onload = "set_image(this);" if @image_id == image.id %>
+					<li<%= " class='selected'" if @image_id == image.id %>>
+						<%= image_tag image.public_filename(:dialog_thumb), 
+							:alt => image.title, 
+							:title => image.title,
+							:id => "image_#{image.id}",
+							:onload => onload -%>
+					</li>
+				<% end -%>
+				</ul>
+			</div>
+			<%= will_paginate @images, :previous_label => '&laquo; Previous', :next_label => 'Next &raquo;' %>
 		</div>
-		<%= will_paginate @images, :previous_label => '&laquo; Previous', :next_label => 'Next &raquo;' %>
-	</div>
-	<div id='upload_image_area' class='dialog_area' style='display:none;'>
-		<%= render :partial => "form", :locals => {:insert => true} %>
+		<div id='upload_image_area' class='dialog_area' style='display:none;'>
+			<%= render :partial => "form", :locals => {:insert => true} %>
+		</div>
 	</div>
 </div>
+<% if @thickbox %>
+<div class='form-actions'>
+	<%= submit_tag 'Insert', :id => "submit_button" %> 
+	or 
+	<%= link_to "Cancel", "", :id => "cancel_button", :class => "close_dialog" %>
+</div>
+<% end %>
 <% content_for :head do %>
 	<script type='text/javascript'>
 		set_image = function(img)
@@ -43,12 +53,14 @@
 			parts = img.src.split('/images/system');
 			relevant_src = parts[parts.length-1].split('?');
 			relevant_src = relevant_src[0].replace('_dialog_thumb', '');
+<% unless @thickbox %>
 			if (parent.document.getElementById('wym_src') != null)
 			{
 				parent.document.getElementById('wym_src').value = '/images/system' + relevant_src;
 				parent.document.getElementById('wym_title').value = img.title;
 				parent.document.getElementById('wym_alt').value = img.alt;
 			}
+<% end %>
 		}
 		
 		FastInit.addOnLoad(function()
@@ -57,6 +69,36 @@
 			{
 				img.observe('click', function(){set_image(this);});
 			});
+			
+<% if @thickbox %>
+			$('submit_button').observe('click', function(e)
+			{
+				selected = null;
+				$$('#existing_image_area_content ul li.selected img').each(function(selected_img)
+				{
+					selected = selected_img;
+				});
+				if (selected != null)
+				{
+					if ('<%= @field %>'.length > 0)
+					{
+						field = parent.document.getElementById('<%= @field %>');
+						if (field != null)
+						{
+							field.value = selected.id.replace("image_", "");
+						}
+						image = parent.document.getElementById('<%= @update_image %>');
+						if (image != null)
+						{
+							image.src = selected.src.replace("_dialog_thumb", '<%= "_#{@thumbnail}" unless @thumbnail.blank? %>');
+						}
+					}
+					<%= "self.parent.#{@callback}();" unless @callback.blank? %>
+					self.parent.tb_remove();
+				}
+				e.stop();
+			});
+<% end %>
 		});
 	</script>
 <% end %>
