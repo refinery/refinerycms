@@ -15,8 +15,8 @@
 		<div id='existing_image_area_content' class='clearfix'>
 			<ul>
 			<% @images.each do |image| %>
-			<% onload = "set_image(this);" if @image.id == image.id %>
-				<li<%= " class='selected'" if @image.id == image.id %>>
+			<% onload = "set_image(this);" if @image_id == image.id %>
+				<li<%= " class='selected'" if @image_id == image.id %>>
 					<%= image_tag image.public_filename(:dialog_thumb), 
 						:alt => image.title, 
 						:title => image.title,

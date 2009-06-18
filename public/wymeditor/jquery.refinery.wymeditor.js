@@ -1190,6 +1190,7 @@ WYMeditor.editor.prototype.dialog_ajax_callback = function() {
 		iframe.observe('load', function(e)
 		{
 			WYMeditor.INIT_DIALOG(this);
+			iframe.stopObserving('load');
 		}.bind(this));
 	}
 	else
@@ -1418,6 +1419,11 @@ WYMeditor.INIT_DIALOG = function(wym,isIframe) {
 	var dialogType = doc.getElementById('wym_dialog_type').value;
 	var replaceable = wym._selected_image ? jQuery(wym._selected_image) : jQuery(wym._doc.body).find('#replace_me_with_' + wym._current_unique_stamp);
 
+	[dialog.select(".close_dialog"), doc.body.select(".close_dialog")].flatten().uniq().each(function(button)
+	{
+		button.observe('click', function(e){this.close_dialog(e, true)}.bind(wym));
+	});
+
 	switch(dialogType) {   
 		case WYMeditor.DIALOG_LINK:
 		//ensure that we select the link to populate the fields
@@ -1451,11 +1457,6 @@ WYMeditor.INIT_DIALOG = function(wym,isIframe) {
 	   jQuery(wym._options.dialogImageSelector + " " + wym._options.altSelector)
 	   .val(jQuery(wym._selected_image).attr(WYMeditor.ALT));
 	}
-	
-	[dialog.select(".close_dialog"), doc.body.select(".close_dialog")].flatten().uniq().each(function(button)
-	{
-		button.observe('click', function(e){this.close_dialog(e, true)}.bind(wym));
-	});
 
 	jQuery(wym._options.dialogLinkSelector + " " + wym._options.submitSelector).click(function() {
 
