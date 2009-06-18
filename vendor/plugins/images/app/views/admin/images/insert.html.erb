@@ -25,10 +25,10 @@
 			<% end -%>
 			</ul>
 		</div>
-		<%= will_paginate @images, :prev_label => '&laquo; Previous', :next_label => 'Next &raquo;' %>
+		<%= will_paginate @images, :previous_label => '&laquo; Previous', :next_label => 'Next &raquo;' %>
 	</div>
 	<div id='upload_image_area' class='dialog_area' style='display:none;'>
-		<%= render :file => "admin/image_dialogs/new" %>
+		<%= render :partial => "form", :locals => {:insert => true} %>
 	</div>
 </div>
 <% content_for :head do %>

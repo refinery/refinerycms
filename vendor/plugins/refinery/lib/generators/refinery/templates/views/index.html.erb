@@ -15,7 +15,7 @@
 <div id='records'>
 	<%% if @<%= plural_name %>.size > 0 %>
 		<h2><%= $title_name.pluralize %></h2>
-			<%%= will_paginate @<%= plural_name %>, :prev_label => '&laquo;', :next_label => '&raquo;' %>
+			<%%= will_paginate @<%= plural_name %>, :previous_label => '&laquo;', :next_label => '&raquo;' %>
 	    <ul>
 				<%% for <%= singular_name %> in @<%= plural_name %> %>
 					<li class='clearfix record <%%= cycle("on", "on-hover") %>'>
@@ -35,7 +35,7 @@
 					</li>
 				<%% end %>
 	    </ul>
-			<%%= will_paginate @<%= plural_name %>, :prev_label => '&laquo;', :next_label => '&raquo;' %>
+			<%%= will_paginate @<%= plural_name %>, :previous_label => '&laquo;', :next_label => '&raquo;' %>
 	<%% else %>
 		<p>
 			<strong>

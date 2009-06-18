@@ -8,7 +8,7 @@ class Admin::DialogsController < Admin::BaseController
       @submit_button_text = "Insert"
       
       if @dialog_type == "image"
-        @iframe_src = insert_admin_images_dialogs_url
+        @iframe_src = insert_admin_images_url(:dialog => true)
       elsif @dialog_type == "link"
         @iframe_src = link_to_admin_pages_dialogs_url
       end

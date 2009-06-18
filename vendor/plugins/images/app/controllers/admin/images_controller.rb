@@ -4,16 +4,22 @@ class Admin::ImagesController < Admin::BaseController
   
   def new
     @image = Image.new
-    if from_dialog?
-      render :layout => 'admin_dialog'
-    end
+  end
+  
+  def insert
+    paginate_images
+    self.new if @image.nil?
+    
+    @dialog = params[:dialog] ||= true
+    
+    render :action => "insert"
   end
   
   def create
     @image = Image.create(params[:image])
     saved = @image.valid?
     flash[:notice] = "'#{@image.title}' was successfully created." if saved
-    unless params[:insert_dialog]
+    unless params[:insert]
       if saved
         unless from_dialog?
           redirect_to :action => 'index'
@@ -25,9 +31,9 @@ class Admin::ImagesController < Admin::BaseController
       end
     else
       # set the last page as the current page for image grid.
-      params[:page] = Image.last_page(Image.find_all_by_parent_id(nil, :order => "created_at DESC"), dialog = true)
-      paginate_images
-      render :action => "insert"
+      params[:page] = Image.last_page(Image.find_all_by_parent_id(nil, :order => "created_at DESC"), params[:dialog])
+      @image = nil
+      self.insert
     end
   end
   
@@ -36,7 +42,7 @@ protected
     @images = Image.paginate :page => params[:page],
                              :conditions => 'parent_id is null',
                              :order => 'created_at DESC',
-                             :per_page => Image.per_page(dialog = params[:dialog])
+                             :per_page => Image.per_page(params[:dialog])
   end
   
 end
