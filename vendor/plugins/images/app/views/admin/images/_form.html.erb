@@ -1,6 +1,6 @@
 <%= error_messages_for :image %>
 
-<% form_for [:admin, @image], :url => admin_images_url(:dialog => params[:dialog], :insert => (insert ||= false)), 
+<% form_for [:admin, @image], :url => @url, 
 															:html => {:multipart => true, :style => 'float: left; width: 70%'} do |f| %>
 	<div class='field'>
 		<%= f.label :uploaded_data, 'Image' %>
