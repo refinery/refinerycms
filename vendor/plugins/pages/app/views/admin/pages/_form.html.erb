@@ -48,10 +48,22 @@
 					</small>
 				</p>
 			</div>
-			<div id='custom_title_image' style='display: <%= @page.custom_title_type == 'image' ? 'block' : 'none' %>'>
-				<p>
-					<%= f.select :custom_title_image, Image.find_all_by_parent_id(nil).collect {|i| [i.filename, i.id] } %>
-				</p>
+			<div id='custom_title_image' style='display: <%= @page.custom_title_type == 'image' ? 'block' : 'none' %>' class='clearfix'>
+				<%= f.hidden_field :custom_title_image_id %>
+				<div>
+					<a id='current_image_link' href="<%= insert_admin_images_url %>?thickbox=true&amp;field=page_custom_title_image_id&amp;update_image=current_custom_title_image&amp;callback=custom_title_image_changed&amp;thumbnail=&amp;KeepThis=true&amp;TB_iframe=true&amp;width=950&amp;height=510" style='border: 0px' title='Change Image' name='Change Image' class='thickbox'>
+					<% unless @page.custom_title_image.nil? %>
+						<%= image_tag @page.custom_title_image.public_filename, :class => "brown_border", :id => "current_custom_title_image" %>
+					<% else %>
+						<%= image_tag "", :class => "", :id => "current_custom_title_image" %>
+					<% end %>
+					<span id='no_custom_title_image_selected' style='display: <%= @page.custom_title_image.nil? ? '' : 'none' %>'>There is currently no image selected. Click here to add one</span>
+					</a>
+					<br/>
+					<a id='remove_custom_title_image' href="" style='margin-top: 8px;display:inline-block;width: auto<%= ";display:none;" if @page.custom_title_image.nil? %>'>
+						Remove Current Image
+					</a>
+				</div>
 			</div>
 		</div>
 		<div class='field'>
@@ -121,7 +133,24 @@
 				});
 			}
 		});
+
+		$('remove_custom_title_image').observe('click', function(e)
+		{
+			$('current_custom_title_image').removeClassName('brown_border');
+			$('current_custom_title_image').src = '';
+			$('current_custom_title_image').alt = 'There is currently no image selected. Click here to add one.';
+			$('page_custom_title_image_id').value = '';
+			this.hide();
+			e.stop();
+		});
 	});
+
+	custom_title_image_changed = function()
+	{
+		$('remove_custom_title_image').show();
+		$('current_custom_title_image').addClassName('brown_border');
+		$('no_custom_title_image_selected').hide();
+	}
 	
 	// Hook into the loaded function. This will be called when WYMeditor has done its thing.
 	WYMeditor.loaded = function()
