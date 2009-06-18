@@ -9,7 +9,6 @@ class Admin::ImagesController < Admin::BaseController
   def insert
     paginate_images
     self.new if @image.nil?
-    
     @dialog = params[:dialog] ||= true
     
     render :action => "insert"
@@ -31,7 +30,9 @@ class Admin::ImagesController < Admin::BaseController
       end
     else
       # set the last page as the current page for image grid.
-      params[:page] = Image.last_page(Image.find_all_by_parent_id(nil, :order => "created_at DESC"), params[:dialog])
+      #@paginate_page_number = Image.last_page(Image.find_all_by_parent_id(nil, :order => "created_at DESC"), params[:dialog])
+      # currently images are sorting by date desc so the first page is always the selected page now.
+      @image_id = @image.id
       @image = nil
       self.insert
     end
@@ -39,7 +40,7 @@ class Admin::ImagesController < Admin::BaseController
   
 protected
   def paginate_images
-    @images = Image.paginate :page => params[:page],
+    @images = Image.paginate :page => (@paginate_page_number ||= params[:page]),
                              :conditions => 'parent_id is null',
                              :order => 'created_at DESC',
                              :per_page => Image.per_page(params[:dialog])
