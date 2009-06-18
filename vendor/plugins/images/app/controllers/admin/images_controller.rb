@@ -16,6 +16,7 @@ class Admin::ImagesController < Admin::BaseController
     @thumbnail = params[:thumbnail]
     @callback = params[:callback]
     
+    @url = admin_images_url(:dialog => @dialog, :insert => true)
     render :action => "insert"
   end
   
