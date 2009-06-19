@@ -14,6 +14,11 @@ class Page < ActiveRecord::Base
     
   before_destroy :deletable?
   
+  # deletable needs to check a couple other fields too
+  def deletable?
+    self.deletable && self.link_url.blank? and self.menu_match.blank?
+  end
+  
   # used for the browser title to get the full path to this page
   def path(reverse = true)
     unless self.parent.nil?
