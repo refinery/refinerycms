@@ -16,6 +16,7 @@ jQuery(function()
 	      ,{'name': 'InsertImage', 'title': 'Image', 'css': 'wym_tools_image'}
 	      ,{'name': 'InsertTable', 'title': 'Table', 'css': 'wym_tools_table'}
 	      ,{'name': 'ToggleHtml', 'title': 'HTML', 'css': 'wym_tools_html'}
+				,{'name': 'Paste', 'title': 'Paste_From_Word', 'css': 'wym_tools_paste'}
 	  ]
  
 		,toolsHtml: "<ul class='wym_tools wym_section'>" + WYMeditor.TOOLS_ITEMS  + "</ul>"
@@ -79,6 +80,22 @@ jQuery(function()
 					+ "<div class='field'>"
 						+ "<label for='wym_cols'>{Number_Of_Cols}</label>"
 						+ "<input type='text' id='wym_cols' class='wym_cols' value='2' size='3' />"
+					+ "</div>"
+					+ "<div class='form-actions'>"
+						+ "<input class='wym_submit' type='button' value='{Insert}' />"
+						+ " or "
+						+ "<a class='wym_cancel close_dialog' type='button' href=''>{Cancel}</a>"
+					+ "</div>"
+				+ "</form>"
+			+ "</div>"
+			
+		, dialogPasteHtml:  
+			"<div class='wym_dialog wym_dialog_paste'>"
+				+ "<form>"
+					+ "<input type='hidden' id='wym_dialog_type' class='wym_dialog_type' value='" + WYMeditor.DIALOG_PASTE + "' />"
+					+ "<div class='field'>"
+						+ "<label for='wym_text'>{Text_From_Word}</label"
+						+ "<textarea class='wym_text' rows='10' cols='50'></textarea>"
 					+ "</div>"
 					+ "<div class='form-actions'>"
 						+ "<input class='wym_submit' type='button' value='{Insert}' />"
