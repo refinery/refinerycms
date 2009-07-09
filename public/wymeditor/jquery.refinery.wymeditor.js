@@ -1140,7 +1140,7 @@ WYMeditor.editor.prototype.dialog = function( dialogType ) {
 	this._redo_on_cancel = false;
 	
 	//set to P if parent = BODY
-	if (dialogType != WYMeditor.DIALOG_TABLE)
+	if (![WYMeditor.DIALOG_TABLE, WYMeditor.DIALOG_PASTE].include(dialogType))
 	{
   	var container = this.selected();
   	if(container.tagName.toLowerCase() == WYMeditor.BODY)
@@ -1167,6 +1167,16 @@ WYMeditor.editor.prototype.dialog = function( dialogType ) {
 			dialog_container = document.createElement("div");
 			dialog_container.id = 'inline_dialog_container';
 			dialog_container.innerHTML = this.replaceStrings(this._options.dialogTableHtml);
+			jQuery(document.body).after(dialog_container);
+
+			tb_show(dialog_title, "#" + this._options.dialogInlineFeatures + "&inlineId=inline_dialog_container&TB_inline=true&modal=true", imageGroup);
+			ajax_loaded_callback();
+			break;
+		}
+		case WYMeditor.DIALOG_PASTE: {
+			dialog_container = document.createElement("div");
+			dialog_container.id = 'inline_dialog_container';
+			dialog_container.innerHTML = this.replaceStrings(this._options.dialogPasteHtml);
 			jQuery(document.body).after(dialog_container);
 
 			tb_show(dialog_title, "#" + this._options.dialogInlineFeatures + "&inlineId=inline_dialog_container&TB_inline=true&modal=true", imageGroup);
@@ -1608,6 +1618,11 @@ WYMeditor.editor.prototype.close_dialog = function(e, cancelled) {
 	if (jQuery.browser.msie && parseInt(jQuery.browser.version) < 8)
 	{
 		this._iframe.contentWindow.focus();
+	}
+	
+	if ((inline_dialog_container = $('inline_dialog_container')) != null)
+	{
+		inline_dialog_container.remove();
 	}
 	
 	tb_remove();
