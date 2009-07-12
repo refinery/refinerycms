@@ -7,7 +7,6 @@ class Admin::ImagesController < Admin::BaseController
   end
   
   def insert
-    paginate_images
     self.new if @image.nil?
     @dialog = params[:dialog] ||= true
     @thickbox = !params[:thickbox].blank?
@@ -16,7 +15,9 @@ class Admin::ImagesController < Admin::BaseController
     @thumbnail = params[:thumbnail]
     @callback = params[:callback]
     
-    @url = admin_images_url(:dialog => @dialog, :insert => true)
+    @url_override = admin_images_url(:dialog => @dialog, :insert => true)
+    
+    paginate_images
     render :action => "insert"
   end
   
