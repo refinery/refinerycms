@@ -27,3 +27,6 @@ h2 {
 #menu li ul li.selected a, #menu li ul li a.on, #menu li ul li a:hover {
 	text-decoration: underline;
 }
+.inquiries .message_field label {
+	vertical-align: top;
+}
