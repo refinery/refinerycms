@@ -6,7 +6,6 @@ class Admin::ImagesController < Admin::BaseController
     @image = Image.new
     
     @url_override = admin_images_url(:dialog => from_dialog?)
-    logger.warn("url_override: #{@url_override}")
   end
   
   def insert
