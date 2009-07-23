@@ -4,13 +4,12 @@ class Admin::DialogsController < Admin::BaseController
   
   def show
     unless (@dialog_type = params[:id]).blank?
-      @dialog_type = @dialog_type.downcase.split("&")[0] # easier
       @submit_button_text = "Insert"
       
-      if @dialog_type == "image"
-        @iframe_src = insert_admin_images_url(:dialog => true)
-      elsif @dialog_type == "link"
-        @iframe_src = link_to_admin_pages_dialogs_url
+      if @dialog_type.downcase.split("&")[0] == "image"
+        @iframe_src = insert_admin_images_url(params.merge({:dialog => true}))
+      elsif @dialog_type.downcase.split("&")[0] == "link"
+        @iframe_src = link_to_admin_pages_dialogs_url(params)
       end
       
       render :layout => false#"admin_dialog"

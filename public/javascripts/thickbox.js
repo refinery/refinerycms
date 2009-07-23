@@ -56,17 +56,19 @@ function tb_show(caption, url, imageGroup, ajax_loaded_callback) {//function cal
 		jQuery('#TB_load').show();//show loader
 		
 		var baseURL;
-	   if(url.indexOf("?")!==-1){ //ff there is a query string involved
+	  if(url.indexOf("?")!==-1){ //ff there is a query string involved
 			baseURL = url.substr(0, url.indexOf("?"));
-	   }else{ 
-	   		baseURL = url;
-	   }
+	  }
+		else { 
+	  	baseURL = url;
+		}
 	   
-	   var urlString = /\.jpg$|\.jpeg$|\.png$|\.gif$|\.bmp$/;
-	   var urlType = baseURL.toLowerCase().match(urlString);
+		var urlString = /\.jpg$|\.jpeg$|\.png$|\.gif$|\.bmp$/;
+		var urlType = baseURL.toLowerCase().match(urlString);
 
-		if(urlType == '.jpg' || urlType == '.jpeg' || urlType == '.png' || urlType == '.gif' || urlType == '.bmp'){//code to show images
-				
+		if(urlType == '.jpg' || urlType == '.jpeg' || urlType == '.png' || urlType == '.gif' || urlType == '.bmp')
+		{
+			//code to show images	
 			TB_PrevCaption = "";
 			TB_PrevURL = "";
 			TB_PrevHTML = "";
