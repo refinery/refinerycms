@@ -1624,11 +1624,13 @@ WYMeditor.editor.prototype.close_dialog = function(e, cancelled) {
 	{
 		// if span exists, repalce it with its own html contents.
 		replaceable = jQuery(this._doc.body).find('#replace_me_with_' + this._current_unique_stamp);
-		if (replaceable[0] != null && replaceable[0].tagName.toLowerCase() != WYMeditor.A) {
-			replaceable.replaceWith(replaceable.html());
-		}
-		else {
-			replaceable[0].id = replaceable[0]._id_before_replaceable;
+		if (replaceable[0] != null) {
+			if (replaceable[0].tagName.toLowerCase() != WYMeditor.A) {
+				replaceable.replaceWith(replaceable.html());
+			}
+			else {
+				replaceable[0].id = replaceable[0]._id_before_replaceable;
+			}
 		}
 		
 		if (this._undo_on_cancel == true) {
