@@ -1153,24 +1153,24 @@ WYMeditor.editor.prototype.dialog = function( dialogType ) {
 	imageGroup = null;
 	ajax_loaded_callback = function(){this.dialog_ajax_callback(selected)}.bind(this, selected);
 	
-	// wrap the current selection with a funky span (not required for safari)
-	if (!jQuery.browser.safari)
-	{
-		// don't need to wrap the image as wymeditor remembers _selected_image even with dialog open.
-		if (!this._selected_image)
-		{	
-			parent = this._iframe.contentWindow.getSelection().anchorNode.parentNode;
-			if (parent.tagName.toLowerCase() != WYMeditor.A)
+	// don't need to wrap the image as wymeditor remembers _selected_image even with dialog open.
+	if (!this._selected_image)
+	{	
+		parent = this._iframe.contentWindow.getSelection().anchorNode.parentNode;
+		if (parent.tagName.toLowerCase() != WYMeditor.A)
+		{
+			// wrap the current selection with a funky span (not required for safari)
+			if (!jQuery.browser.safari)
 			{
 				this.wrap("<span id='replace_me_with_" + this._current_unique_stamp + "'>", "</span>");
 			}
-			else {
-				parent._id_before_replaceable = parent.id;
-				parent.id = 'replace_me_with_' + this._current_unique_stamp;
-				
-				path += (this._wym._options.dialogFeatures.length == 0) ? "?" : "&"
-				path += "current_link=" + parent.href.gsub(window.location.protocol + "//" + window.location.hostname, "");
-			}
+		}
+		else {
+			parent._id_before_replaceable = parent.id;
+			parent.id = 'replace_me_with_' + this._current_unique_stamp;
+			
+			path += (this._wym._options.dialogFeatures.length == 0) ? "?" : "&"
+			path += "current_link=" + parent.href.gsub(window.location.protocol + "//" + window.location.hostname, "");
 		}
 	}
 
@@ -1491,8 +1491,7 @@ WYMeditor.INIT_DIALOG = function(wym, selected, isIframe) {
 	  var sUrl = jQuery(wym._options.hrefSelector).val();
 	  if(sUrl.length > 0) 
 		{
-			if (!jQuery.browser.safari)
-			{
+			if (replaceable[0] != null) {
 				link = wym._doc.createElement("a");
 				link.href = sUrl;
 				link.title = jQuery(wym._options.titleSelector).val();
