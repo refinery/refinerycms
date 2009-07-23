@@ -844,7 +844,9 @@ a img {
 
 .back_icon {
 	background-image: url('/images/refinery/icons/arrow_left.png');
-
+}
+.go_icon {
+	background-image: url('/images/refinery/icons/application_go.png');
 }
 
 /* page parts */
