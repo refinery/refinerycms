@@ -16,7 +16,6 @@ class Admin::ImagesController < Admin::BaseController
     @update_image = params[:update_image]
     @thumbnail = params[:thumbnail]
     @callback = params[:callback]
-    
     @url_override = admin_images_url(:dialog => @dialog, :insert => true)
     
     paginate_images

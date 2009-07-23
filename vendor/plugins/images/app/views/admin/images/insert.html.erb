@@ -1,35 +1,37 @@
 <div class='clearfix'>
 	<div id='dialog_menu_left'>
+		<% unless @images.empty? %>
 		<span id='existing_image_radio' class='radio'>
-			<input type='radio' name='image_type' value='existing_image' id='image_type_existing' checked='true' />
+			<input type='radio' name='image_type' value='existing_image' id='image_type_existing' <%= "checked='true'" if @image.errors.empty? %> />
 			<label for='image_type_existing' class='stripped'>Existing Image</label>
 		</span>
+		<% end %>
 		<span id='upload_image_radio' class='radio<%= " selected_radio" if @image.errors.size > 0 %>'>
-			<input type='radio' name='image_type' value='upload_image' id='image_type_upload' <%= "checked='true'" if @image.errors.size > 0 %> />
+			<input type='radio' name='image_type' value='upload_image' id='image_type_upload' <%= "checked='true'" if @images.empty? or !@image.errors.empty? %> />
 			<label for='image_type_upload' class='stripped'>New Image</label>
 		</span>
 	</div>
 
 	<div id='dialog_main'>
-		<div id='existing_image_area' class='dialog_area' <%= "style='display:none;'" if @image.errors.size > 0 %>>
+		<% unless @images.empty? %>
+		<div id='existing_image_area' class='dialog_area' <%= "style='display:none;'" unless @image.errors.empty? %>>
 			<input type='hidden' name='selected_image' id='selected_image' />
 			<div id='existing_image_area_content' class='clearfix'>
 				<ul>
 				<% @images.each do |image| %>
-				<% onload = "set_image(this);" if @image_id == image.id %>
 					<li<%= " class='selected'" if @image_id == image.id %>>
 						<%= image_tag image.public_filename(:dialog_thumb), 
 							:alt => image.title, 
 							:title => image.title,
-							:id => "image_#{image.id}",
-							:onload => onload -%>
+							:id => "image_#{image.id}" -%>
 					</li>
 				<% end -%>
 				</ul>
 			</div>
 			<%= will_paginate @images, :previous_label => '&laquo; Previous', :next_label => 'Next &raquo;' %>
 		</div>
-		<div id='upload_image_area' class='dialog_area' style='display:none;'>
+		<% end %>
+		<div id='upload_image_area' class='dialog_area' <%= "style='display:none;'" unless @images.empty? %>
 			<%= render :partial => "form", :locals => {:insert => true} %>
 		</div>
 	</div>
@@ -54,7 +56,7 @@
 			relevant_src = parts[parts.length-1].split('?');
 			relevant_src = relevant_src[0].replace('_dialog_thumb', '');
 <% unless @thickbox %>
-			if (parent.document.getElementById('wym_src') != null)
+			if (parent != null && parent.document != null && typeof(parent.document.getElementById) == "function" && parent.document.getElementById('wym_src') != null)
 			{
 				parent.document.getElementById('wym_src').value = '/images/system' + relevant_src;
 				parent.document.getElementById('wym_title').value = img.title;
@@ -65,6 +67,9 @@
 		
 		FastInit.addOnLoad(function()
 		{
+<% unless @image_id.nil? %>
+			set_image($('image_<%= @image_id %>'));
+<% end %>
 			$$('#existing_image_area_content ul li img').each(function(img) 
 			{
 				img.observe('click', function(){set_image(this);});
