@@ -4,7 +4,7 @@ class NewsItemsController < ApplicationController
   before_filter :load_page, :only => [:index, :show]
   
 	def show
-	  @news_item = NewsItem.find(params[:id], :conditions => "publish_date < NOW()")
+	  @news_item = NewsItem.find(params[:id], :conditions => ["publish_date < ?", Time.now])
 	end
 
 protected

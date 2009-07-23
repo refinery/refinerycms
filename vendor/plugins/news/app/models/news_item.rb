@@ -6,7 +6,7 @@ class NewsItem < ActiveRecord::Base
 
   def self.latest(amount = 10)
     find(:all, :order => "publish_date DESC", :limit => amount,
-               :conditions => "publish_date < NOW()")
+               :conditions => ["publish_date < ?", Time.now])
   end
 
   def not_published? # has the published date not yet arrived?
