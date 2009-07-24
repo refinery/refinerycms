@@ -133,7 +133,7 @@
   				this.addClassName('linked');
 					url = this.down('a.page_link').href.gsub(window.location.protocol + "//" + window.location.hostname, "");
   				parent.document.getElementById('wym_href').value = url;
-					parent.document.getElementById('wym_title').value = this.down('span').innerHTML;
+					parent.document.getElementById('wym_title').value = this.down('span').innerHTML.gsub(/<em>\((\w)*\)<\/em>/, "").trim();
   			});
   		});
 		
@@ -201,7 +201,7 @@
   			$$('li.linked').each(function(li)
   			{
   				parent.document.getElementById('wym_href').value = li.down('a.page_link').href;
-  				parent.document.getElementById('wym_title').value = li.down('span').innerHTML;
+  				parent.document.getElementById('wym_title').value = li.down('span').innerHTML.gsub(/<em>\((\w)*\)<\/em>/, "").trim();
   			});
   		});
   		$('link_to_web_address').observe('click', function(e)
