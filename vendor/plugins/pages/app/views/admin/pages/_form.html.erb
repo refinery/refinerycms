@@ -55,7 +55,7 @@
 					<% unless @page.custom_title_image.nil? %>
 						<%= image_tag @page.custom_title_image.public_filename, :class => "brown_border", :id => "current_custom_title_image" %>
 					<% else %>
-						<%= image_tag "", :class => "", :id => "current_custom_title_image" %>
+            <img id="current_custom_title_image" class="" src="" alt="" />
 					<% end %>
 					<span id='no_custom_title_image_selected' style='display: <%= @page.custom_title_image.nil? ? '' : 'none' %>'>
 						There is currently no image selected. Click here to add one
