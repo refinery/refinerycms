@@ -2140,6 +2140,21 @@ WYMeditor.XhtmlValidator = {
       ]
     },
     "23":"i",
+		"iframe":
+		{
+			"attributes":[
+				"src",
+				"width",
+				"height",
+				"frameborder",
+				"scrolling",
+				"marginheight",
+				"marginwidth"
+			],
+			"required":[
+				"src"
+			]
+		},
     "img":
     {
       "attributes":[
@@ -3005,7 +3020,7 @@ WYMeditor.Lexer.prototype._decodeSpecial = function(mode)
 WYMeditor.Lexer.prototype._invokeParser = function(content, is_match)
 {
 
-  if (!/ +/.test(content) && ((content === '') || (content == false))) {
+  if (!/ +/.test(content) && ((content === '') || (content === false))) {
     return true;
   }
   var current = this._mode.getCurrent();
@@ -3487,7 +3502,7 @@ WYMeditor.XhtmlSaxListener = function()
     "base", "bdo", "big", "blockquote", "body", "button",
     "caption", "cite", "code", "col", "colgroup", "dd", "del", "div",
     "dfn", "dl", "dt", "em", "embed", "fieldset", "form", "head", "h1", "h2",
-    "h3", "h4", "h5", "h6", "html", "i", "ins",
+    "h3", "h4", "h5", "h6", "html", "i", "iframe", "ins",
     "kbd", "label", "legend", "li", "map", "noscript",
     "object", "ol", "optgroup", "option", "p", "param", "pre", "q",
     "samp", "script", "select", "small", "span", "strong", "style",
