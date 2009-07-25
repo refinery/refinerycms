@@ -56,17 +56,19 @@ function tb_show(caption, url, imageGroup, ajax_loaded_callback) {//function cal
 		jQuery('#TB_load').show();//show loader
 		
 		var baseURL;
-	   if(url.indexOf("?")!==-1){ //ff there is a query string involved
+	  if(url.indexOf("?")!==-1){ //ff there is a query string involved
 			baseURL = url.substr(0, url.indexOf("?"));
-	   }else{ 
-	   		baseURL = url;
-	   }
+	  }
+		else { 
+	  	baseURL = url;
+		}
 	   
-	   var urlString = /\.jpg$|\.jpeg$|\.png$|\.gif$|\.bmp$/;
-	   var urlType = baseURL.toLowerCase().match(urlString);
+		var urlString = /\.jpg$|\.jpeg$|\.png$|\.gif$|\.bmp$/;
+		var urlType = baseURL.toLowerCase().match(urlString);
 
-		if(urlType == '.jpg' || urlType == '.jpeg' || urlType == '.png' || urlType == '.gif' || urlType == '.bmp'){//code to show images
-				
+		if(urlType == '.jpg' || urlType == '.jpeg' || urlType == '.png' || urlType == '.gif' || urlType == '.bmp')
+		{
+			//code to show images	
 			TB_PrevCaption = "";
 			TB_PrevURL = "";
 			TB_PrevHTML = "";
@@ -193,13 +195,13 @@ function tb_show(caption, url, imageGroup, ajax_loaded_callback) {//function cal
 					urlNoQuery = url.split('TB_');
 					jQuery("#TB_iframeContent").remove();
 					if(params['modal'] != "true"){//iframe no modal
-						jQuery("#TB_window").append("<div id='TB_title'><div id='TB_ajaxWindowTitle'>"+caption+"</div><div id='TB_closeAjaxWindow'><a href='#' id='TB_closeWindowButton' class='close_dialog' title='Close'><img src='" + tb_pathToImages + "cross.png' alt='close'/></a></div></div><iframe frameborder='0' hspace='0' src='"+urlNoQuery[0]+"' id='TB_iframeContent' name='TB_iframeContent"+Math.round(Math.random()*1000)+"' onload='tb_showIframe()' style='width:"+(ajaxContentW + 29)+"px;height:"+(ajaxContentH + 17)+"px;' > </iframe>");
+						jQuery("#TB_window").append("<div id='TB_title'><div id='TB_ajaxWindowTitle'>"+caption+"</div><div id='TB_closeAjaxWindow'><a href='#' id='TB_closeWindowButton' class='close_dialog' title='Close'><img src='" + tb_pathToImages + "cross.png' alt='close'/></a></div></div><iframe frameborder='0' hspace='0' src='"+urlNoQuery[0]+"' id='TB_iframeContent' name='TB_iframeContent"+Math.round(Math.random()*1000)+"' onload='tb_showIframe()' style='width:"+(ajaxContentW + 30)+"px;height:"+(ajaxContentH + 17)+"px;' > </iframe>");
 					}else{//iframe modal
 						jQuery("#TB_overlay").unbind();
 						if (params['titlebar'] == 'true') {
 							jQuery("#TB_window").append("<div id='TB_title'><div id='TB_ajaxWindowTitle'>"+caption+"</div><div id='TB_closeAjaxWindow'><a href='#' id='TB_closeWindowButton' class='close_dialog' title='Close'><img src='" + tb_pathToImages + "cross.png' alt='close'/></a></div></div>");
 						}
-						jQuery("#TB_window").append("<iframe frameborder='0' hspace='0' src='"+urlNoQuery[0]+"' id='TB_iframeContent' name='TB_iframeContent"+Math.round(Math.random()*1000)+"' onload='tb_showIframe()' style='width:"+(ajaxContentW + 29)+"px;height:"+(ajaxContentH + 17)+"px;'> </iframe>");
+						jQuery("#TB_window").append("<iframe frameborder='0' hspace='0' src='"+urlNoQuery[0]+"' id='TB_iframeContent' name='TB_iframeContent"+Math.round(Math.random()*1000)+"' onload='tb_showIframe()' style='width:"+(ajaxContentW + 30)+"px;height:"+(ajaxContentH + 17)+"px;'> </iframe>");
 					}
 			}else{// not an iframe, ajax
 					if(jQuery("#TB_window").css("display") != "block"){

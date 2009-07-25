@@ -9,7 +9,7 @@
 <div id='records'>
   <% if @resources.size > 0 -%>
   	<h2>Files</h2>
-  	<%= will_paginate @resources, :prev_label => '&laquo;', :next_label => '&raquo;' %>
+  	<%= will_paginate @resources, :previous_label => '&laquo;', :next_label => '&raquo;' %>
   	<ul>
   	<% @resources.each do |resource| %>
   		<li class='clearfix record <%= cycle("on", "on-hover") %>'>
@@ -30,7 +30,7 @@
   		</li>
   	<% end -%>
   	</ul>
-  	<%= will_paginate @resources, :prev_label => '&laquo;', :next_label => '&raquo;' %>
+  	<%= will_paginate @resources, :previous_label => '&laquo;', :next_label => '&raquo;' %>
   <% else -%>
   	<p>
   		<strong>There are no files yet. Click "Upload New Files" to add your first file.</strong>

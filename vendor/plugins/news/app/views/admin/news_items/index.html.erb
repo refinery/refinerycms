@@ -9,7 +9,7 @@
 <div id='records'>
 	<% if @news_items.size > 0 %>
 		<h2>News Items</h2>
-			<%= will_paginate @news_items, :prev_label => '&laquo;', :next_label => '&raquo;' %>
+			<%= will_paginate @news_items, :previous_label => '&laquo;', :next_label => '&raquo;' %>
 	    <ul>
 				<% @news_items.each do |news_item| %>
 					<li class='clearfix record <%= cycle("on", "on-hover") %>'>
@@ -29,7 +29,7 @@
 					</li>
 				<% end %>
 	    </ul>
-			<%= will_paginate @news_items, :prev_label => '&laquo;', :next_label => '&raquo;' %>
+			<%= will_paginate @news_items, :previous_label => '&laquo;', :next_label => '&raquo;' %>
 	<% else %>
 		<p>
 			<strong>

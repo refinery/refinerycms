@@ -7,11 +7,17 @@ class Page < ActiveRecord::Base
   has_friendly_id :title, :use_slug => true, :strip_diacritics => true
   
   belongs_to :image
+  belongs_to :custom_title_image, :class_name => "Image"
   
   has_many :parts, :class_name => "PagePart"
   accepts_nested_attributes_for :parts, :allow_destroy => true
     
   before_destroy :deletable?
+  
+  # deletable needs to check a couple other fields too
+  def deletable?
+    self.deletable && self.link_url.blank? and self.menu_match.blank?
+  end
   
   # used for the browser title to get the full path to this page
   def path(reverse = true)

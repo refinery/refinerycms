@@ -5,4 +5,5 @@ tmp/**/*
 doc/api
 doc/app
 config/database.yml
-public/images/*
+public/images/system/*
+nbproject

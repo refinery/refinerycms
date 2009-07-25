@@ -18,9 +18,9 @@
 				<%= f.label :phone %>
 				<%= f.text_field :phone %>
 			</div>
-			<div class='field'>
-				<%= f.label :message %>
-				<%= f.text_area :message %>
+			<div class='field message_field'>
+				<%= f.label :message  %>
+				<%= f.text_area :message, :rows => 8 %>
 			</div>
 			<div class='actions'>
 				<%= f.submit 'Send Message' %>

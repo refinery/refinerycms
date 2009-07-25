@@ -9,7 +9,7 @@
 <div id='records'>
 	<% if @refinery_settings.size > 0 %>
 		<h2>Settings</h2>
-			<%= will_paginate @refinery_settings, :prev_label => '&laquo;', :next_label => '&raquo;' %>
+			<%= will_paginate @refinery_settings, :previous_label => '&laquo;', :next_label => '&raquo;' %>
 	    <ul>
 				<% for refinery_setting in @refinery_settings %>
 					<li class='clearfix record <%= cycle("on", "on-hover") %>'>
@@ -27,7 +27,7 @@
 					</li>
 				<% end %>
 	    </ul>
-			<%= will_paginate @refinery_settings, :prev_label => '&laquo;', :next_label => '&raquo;' %>
+			<%= will_paginate @refinery_settings, :previous_label => '&laquo;', :next_label => '&raquo;' %>
 	<% else %>
 		<p>
 			<strong>

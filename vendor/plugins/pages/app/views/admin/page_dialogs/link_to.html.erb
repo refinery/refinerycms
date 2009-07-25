@@ -33,12 +33,18 @@
 					</ul>
 				</div>
 			</div>
-			<%= will_paginate @pages, :prev_label => '&laquo; Previous', :next_label => 'Next &raquo;' %>
+			<%= will_paginate @pages, :previous_label => '&laquo; Previous', :next_label => 'Next &raquo;' %>
 		</div>
+		<%
+			web_address_text = "http://"
+			unless params[:current_link].blank?
+				web_address_text = params[:current_link] if params[:current_link] =~ /^http:\/\//
+			end
+		%>
 		<div id='web_address_area'  style='display: none' class='dialog_area'>
 			<div id='web_address_content'>
 				<label for='web_address_text'>Location</label>
-				<input type='text' id='web_address_text' style='width: 70%' value='http://' />
+				<%= text_field :web_address, :text, :value => web_address_text, :style => "width: 70%" %>
 				<img id='web_address_test_loader' src='/images/refinery/ajax-loader.gif' alt='Testing...' style='display: none;'>
 				<span id='web_address_test_result'></span>
 				
@@ -51,23 +57,32 @@
 				</p>
 			</div>
 		</div>
+		<% 
+			unless params[:current_link].blank? 
+				if params[:current_link] =~ /^mailto:/
+					email_address_text = params[:current_link].split("mailto:")[1].split('?')[0]
+				end
+				email_default_subject_text = params[:current_link].split('?subject=')[1] || params[:subject]
+				email_default_body_text = params[:current_link].split('?body=')[1] || params[:body]
+			end
+		%>
 		<div id='email_address_area' style='display: none' class='dialog_area'>
 			<div id='email_address_content'>
 				<div class='field'>
 					<label for='email_address_text'>Email Address</label>
-					<input type'text' id='email_address_text' style='width: 70%' />
+					<%= text_field :email_address, :text, :value => email_address_text, :style => "width: 70%"%>
 					<img id='web_address_test_loader' src='/images/refinery/ajax-loader.gif' alt='Testing...' style='display: none;'>
 					<span id='email_address_test_result'></span>
 				</div>
 				
 				<div class='field'>
 					<label for='email_default_subject_text'>Subject Line (optional)</label>
-					<input type='text' id='email_default_subject_text' style='width: 70%' />
+					<%= text_field :email_default_subject, :text, :value => email_default_subject_text, :style => "width: 70%" %>
 				</div>
 				
 				<div class='field'>
 					<label for='email_default_body_text'>Email Body (optional)</label>
-					<textarea id='email_default_body_text' style='width: 70%'></textarea>
+					<%= text_area :email_default_body, :text, :value => email_default_body_text, :style => "width: 70%", :rows => '' %>
 				</div>
 				
 				<p>
@@ -101,7 +116,6 @@
 #	<input type='text' id='link_title_text' />
 #</div>
 %>
-
 <% content_for :head do %>
   <script type='text/javascript'>
 
@@ -117,7 +131,9 @@
   				});
 				
   				this.addClassName('linked');
-  				parent.document.getElementById('wym_href').value = this.down('a.page_link').href;
+					url = this.down('a.page_link').href.gsub(window.location.protocol + "//" + window.location.hostname, "");
+  				parent.document.getElementById('wym_href').value = url;
+					parent.document.getElementById('wym_title').value = this.down('span').innerHTML.gsub(/<em>\((\w)*\)<\/em>/, "").trim();
   			});
   		});
 		
@@ -128,7 +144,7 @@
 
   			$('web_address_test_result').hide();
 			
-  			req = new Ajax.Request("/admin/pages/dialogs/test_url", 
+  			req = new Ajax.Request("<%= test_url_admin_pages_dialogs_url %>", 
   			{
   				asynchronous: true
   				, method: 'get'
@@ -152,7 +168,7 @@
   				default_body = $('email_default_body_text').value;
   				mailto = "mailto:" + $('email_address_text').value.replace('mailto:', '');
   				$('email_address_test_result').hide();
-  				req = new Ajax.Request("/admin/pages/dialogs/test_email", 
+  				req = new Ajax.Request("<%= test_email_admin_pages_dialogs_url %>", 
   				{
   					asynchronous: true
   					, method: 'get'
@@ -184,8 +200,8 @@
   		{
   			$$('li.linked').each(function(li)
   			{
-  				parent.document.getElementById('wym_href').value = this.down('a.page_link').href;
-  				parent.document.getElementById('wym_title').value = this.down('span').innerHTML;
+  				parent.document.getElementById('wym_href').value = li.down('a.page_link').href;
+  				parent.document.getElementById('wym_title').value = li.down('span').innerHTML.gsub(/<em>\((\w)*\)<\/em>/, "").trim();
   			});
   		});
   		$('link_to_web_address').observe('click', function(e)

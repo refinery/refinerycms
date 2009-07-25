@@ -2,8 +2,8 @@ module Admin::DashboardHelper
   
   def activity_message_for(record)
     activity = $plugins.find_activity_by_model(record.class)
-    unless activity.nil?
-      title = eval("record.#{activity.title}")
+    unless activity.nil? or activity.title.blank?
+      title = eval "record.#{activity.title}"
       link = link_to truncate(title, :length => 60), eval("#{activity.url_prefix}admin_#{record.class.name.underscore.downcase}_url(record)"), 
         :title => "See '#{title}'"
         
