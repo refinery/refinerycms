@@ -8,34 +8,23 @@
 	<div class='clearfix'>
 	  <div class='clearfix'>
   	  <ul id='page_parts'>
-    	  <% if @page.parts.size > 0 %>
-      	  <% @page.parts.each do |p| %>
-      	    <li class='tab'>
-              <%= link_to p.title.titleize, "#part_#{p.id}" %>
-        		</li>
-      		<% end %>
-    		<% else %>
-    	    <li class='tab'>
-            <%= link_to "Body", "#part_new" %>
-      		</li>
-    		<% end %>
+			<% @page.parts.each do |p| %>
+				<li class='tab'>
+					<%= link_to p.title.titleize, "#part_#{p.title}" %>
+				</li>
+			<% end %>
   		</ul>
   		<% if (RefinerySetting[:new_page_parts] ||= false) and not @page.new_record? %>
   		  <%= link_to image_tag("/images/refinery/add.png"), new_admin_page_page_part_url(@page, {:dialog => true, :width => 600, :height => 300}), :id => "add_page_part", :title => "Create Content Section", :name => "Create Content Section" %>
   		<% end %>
     </div>
 		
-		<% if @page.parts.size > 0 %>
-  		<% f.fields_for :parts do |p| %>
-    		<div class='field' id='part_<%= p.object.id %>'>
-    			<%= p.text_area :body, :rows => 20, :cols => 140, :class => 'wymeditor' %>
-    		</div>
-    	<% end %>
-    <% else %>
-  		<div class='field' id='part_new'>
-  			<%= text_area :page_part, :body, :rows => 20, :cols => 140, :class => 'wymeditor' %>
-  		</div>
-    <% end %>
+ 	<% f.fields_for :parts do |p| %>
+   	<div class='field' id='part_<%= p.object.title.downcase.gsub(" ", "_") %>'>
+			<%= p.hidden_field :title if @page.new_record? %>
+   		<%= p.text_area :body, :rows => 20, :cols => 140, :class => 'wymeditor' %>
+   	</div>
+   <% end %>
 	</div>
 	<p>
 		<%= link_to "&raquo; Hide/Show Advanced Options", "", :id => "toggle_advanced_options", 
@@ -59,17 +48,32 @@
 					</small>
 				</p>
 			</div>
-			<div id='custom_title_image' style='display: <%= @page.custom_title_type == 'image' ? 'block' : 'none' %>'>
-				<p>
-					<%= f.select :custom_title_image, Image.find_all_by_parent_id(nil).collect {|i| [i.filename, i.id] } %>
-				</p>
+			<div id='custom_title_image' style='display: <%= @page.custom_title_type == 'image' ? 'block' : 'none' %>' class='clearfix'>
+				<%= f.hidden_field :custom_title_image_id %>
+				<div>
+					<a id='current_image_link' href="<%= insert_admin_images_url %>?thickbox=true&amp;modal=true&amp;titlebar=true&amp;field=page_custom_title_image_id&amp;update_image=current_custom_title_image&amp;callback=custom_title_image_changed&amp;thumbnail=&amp;KeepThis=true&amp;TB_iframe=true&amp;width=950&amp;height=510" style='border: 0px' title='Change Image' name='Change Image' class='thickbox'>
+					<% unless @page.custom_title_image.nil? %>
+						<%= image_tag @page.custom_title_image.public_filename, :class => "brown_border", :id => "current_custom_title_image" %>
+					<% else %>
+            <img id="current_custom_title_image" class="" src="" alt="" />
+					<% end %>
+					<span id='no_custom_title_image_selected' style='display: <%= @page.custom_title_image.nil? ? '' : 'none' %>'>
+						There is currently no image selected. Click here to add one
+					</span>
+					</a>
+					<br/>
+					<a id='remove_custom_title_image' href="" style='margin-top: 8px;display:inline-block;width: auto<%= ";display:none;" if @page.custom_title_image.nil? %>'>
+						Remove Current Image
+					</a>
+				</div>
 			</div>
 		</div>
 		<div class='field'>
 			<%= f.label :link_url, "Custom URL" %>
 			<%= f.text_field :link_url, {:size => 103} %><br/>
 			<small>
-				Enter a URL if this page links to an external site or to a pre-existing resource e.g. a contact page.<br/>
+				Enter a URL if this page links to an external site or to a pre-existing resource e.g. a contact page.
+				<br/>
 				Note: This URL must point to a location that exists; a new one will not be created.
 			</small>
 		</div>
@@ -77,27 +81,36 @@
 		<div class='field'>
 			<%= f.label :browser_title %>
 			<%= f.text_field :browser_title, :size => 63 %><br/>
-			<small>If you want to override the default browser title, do it here.</small>
+			<small>
+				If you want to override the default browser title, do it here.
+			</small>
 		</div>
 		<div class='field'>
 			<%= f.label :meta_keywords %>
 			<%= f.text_field :meta_keywords, :size => 63 %><br/>
-			<small>Enter 5-10 keywords that relate to this page. Separate keywords by a comma.</small>
+			<small>
+				Enter 5-10 keywords that relate to this page. Separate keywords by a comma.
+			</small>
 		</div>
 		<div class='field'>
 			<%= f.label :meta_description %>
 			<%= f.text_area :meta_description, :cols => 95, :rows => 3 %><br/>
-  		<small>Enter a concise two or three sentences describing what this page is about.</small>
+  		<small>
+				Enter a concise two or three sentences describing what this page is about.
+			</small>
 		</div>
 		<div class='field'>
 			<%= f.label :show_in_menu %>
 			<%= f.check_box :show_in_menu %>
-			<small><%= f.label :show_in_menu, "Check this box if this page should appear in the site menu" %></small>
+			<small>
+				<%= f.label :show_in_menu, "Check this box if this page should appear in the site menu" %>
+			</small>
 		</div>
 	</div>
 	<div class='field'>
 		<label>Draft</label>
-		<%= f.check_box :draft %><%= f.label :draft, "Save as Draft", :class => "stripped" %>
+		<%= f.check_box :draft %>
+		<%= f.label :draft, "Save as Draft", :class => "stripped" %>
 	</div>
 	<div class='form-actions'>
 		<%= f.submit 'Save', :class => "wymupdate" %> 
@@ -132,7 +145,24 @@
 				});
 			}
 		});
+
+		$('remove_custom_title_image').observe('click', function(e)
+		{
+			$('current_custom_title_image').removeClassName('brown_border');
+			$('current_custom_title_image').src = '';
+			$('current_custom_title_image').alt = 'There is currently no image selected. Click here to add one.';
+			$('page_custom_title_image_id').value = '';
+			this.hide();
+			e.stop();
+		});
 	});
+
+	custom_title_image_changed = function()
+	{
+		$('remove_custom_title_image').show();
+		$('current_custom_title_image').addClassName('brown_border');
+		$('no_custom_title_image_selected').hide();
+	}
 	
 	// Hook into the loaded function. This will be called when WYMeditor has done its thing.
 	WYMeditor.loaded = function()

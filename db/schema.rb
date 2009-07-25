@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 0) do
+ActiveRecord::Schema.define(:version => 20090618044141) do
 
   create_table "images", :force => true do |t|
     t.integer  "parent_id"
@@ -78,14 +78,14 @@ ActiveRecord::Schema.define(:version => 0) do
     t.datetime "updated_at"
     t.string   "meta_keywords"
     t.text     "meta_description"
-    t.boolean  "show_in_menu",       :default => true
+    t.boolean  "show_in_menu",          :default => true
     t.string   "link_url"
     t.string   "menu_match"
-    t.boolean  "deletable",          :default => true
+    t.boolean  "deletable",             :default => true
     t.string   "custom_title"
-    t.string   "custom_title_type",  :default => "none"
-    t.integer  "custom_title_image"
-    t.boolean  "draft",              :default => false
+    t.string   "custom_title_type",     :default => "none"
+    t.integer  "custom_title_image_id"
+    t.boolean  "draft",                 :default => false
     t.string   "browser_title"
   end
 
@@ -145,6 +145,5 @@ ActiveRecord::Schema.define(:version => 0) do
     t.datetime "updated_at"
     t.string   "plugins"
   end
-
 
 end

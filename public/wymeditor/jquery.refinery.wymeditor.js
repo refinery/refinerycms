@@ -1132,26 +1132,49 @@ WYMeditor.editor.prototype.update = function() {
  * @description Opens a dialog box
  */
 WYMeditor.editor.prototype.dialog = function( dialogType ) {
-	var path = "/admin/dialogs/" + dialogType.toLowerCase() + this._wym._options.dialogFeatures;
+	var path = "/admin/dialogs/" + dialogType + this._wym._options.dialogFeatures;
 
 	this._current_unique_stamp = this.uniqueStamp();
 	// change undo or redo on cancel to true to have this happen when a user closes (cancels) a dialogue
 	this._undo_on_cancel = false;
 	this._redo_on_cancel = false;
-
-	// wrap the current selection with a funky span (not required for safari)
-	if (!jQuery.browser.safari)
+	
+	//set to P if parent = BODY
+	if (![WYMeditor.DIALOG_TABLE, WYMeditor.DIALOG_PASTE].include(dialogType))
 	{
-		// don't need to wrap the image as wymeditor remembers _selected_image even with dialog open.
-		if (!this._selected_image)
-		{	
-			this.wrap("<span id='replace_me_with_" + this._current_unique_stamp + "'>", "</span>");
+  	var container = this.selected();
+  	if(container.tagName.toLowerCase() == WYMeditor.BODY)
+      	this._exec(WYMeditor.FORMAT_BLOCK, WYMeditor.P);
+	}
+	
+	selected = this.selected();
+
+	// set up handlers.
+	imageGroup = null;
+	ajax_loaded_callback = function(){this.dialog_ajax_callback(selected)}.bind(this, selected);
+	
+	// don't need to wrap the image as wymeditor remembers _selected_image even with dialog open.
+	if (!this._selected_image)
+	{	
+		parent = this._iframe.contentWindow.getSelection().anchorNode.parentNode;
+		if (parent.tagName.toLowerCase() != WYMeditor.A)
+		{
+			// wrap the current selection with a funky span (not required for safari)
+			if (!jQuery.browser.safari)
+			{
+				this.wrap("<span id='replace_me_with_" + this._current_unique_stamp + "'>", "</span>");
+			}
+		}
+		else {
+			parent._id_before_replaceable = parent.id;
+			parent.id = 'replace_me_with_' + this._current_unique_stamp;
+			
+			path += (this._wym._options.dialogFeatures.length == 0) ? "?" : "&"
+			path += "current_link=" + parent.href.gsub(window.location.protocol + "//" + window.location.hostname, "");
 		}
 	}
 
 	// launch thickbox
-	imageGroup = null;
-	ajax_loaded_callback = function(){this.dialog_ajax_callback()}.bind(this);
 
 	dialog_title = this.replaceStrings(this.encloseString( dialogType ));
 	switch(dialogType) {
@@ -1159,6 +1182,16 @@ WYMeditor.editor.prototype.dialog = function( dialogType ) {
 			dialog_container = document.createElement("div");
 			dialog_container.id = 'inline_dialog_container';
 			dialog_container.innerHTML = this.replaceStrings(this._options.dialogTableHtml);
+			jQuery(document.body).after(dialog_container);
+
+			tb_show(dialog_title, "#" + this._options.dialogInlineFeatures + "&inlineId=inline_dialog_container&TB_inline=true&modal=true", imageGroup);
+			ajax_loaded_callback();
+			break;
+		}
+		case WYMeditor.DIALOG_PASTE: {
+			dialog_container = document.createElement("div");
+			dialog_container.id = 'inline_dialog_container';
+			dialog_container.innerHTML = this.replaceStrings(this._options.dialogPasteHtml);
 			jQuery(document.body).after(dialog_container);
 
 			tb_show(dialog_title, "#" + this._options.dialogInlineFeatures + "&inlineId=inline_dialog_container&TB_inline=true&modal=true", imageGroup);
@@ -1174,19 +1207,20 @@ WYMeditor.editor.prototype.dialog = function( dialogType ) {
 
 };
 
-WYMeditor.editor.prototype.dialog_ajax_callback = function() {
+WYMeditor.editor.prototype.dialog_ajax_callback = function(selected) {
 	
 	// look for iframes
 	if ((iframes = $(this._options.dialogId).select('iframe')).length > 0 && (iframe = $(iframes[0])) != null)
 	{
-		iframe.observe('load', function(e)
+		iframe.observe('load', function(selected, e)
 		{
-			WYMeditor.INIT_DIALOG(this);
-		}.bind(this));
+			WYMeditor.INIT_DIALOG(this, selected);
+			iframe.stopObserving('load');
+		}.bind(this, selected));
 	}
 	else
 	{
-		WYMeditor.INIT_DIALOG(this);
+		WYMeditor.INIT_DIALOG(this, selected);
 	}
 };
 
@@ -1393,8 +1427,7 @@ WYMeditor.editor.prototype.loadSkin = function() {
     }
 
     //init the skin, if needed
-    if(WYMeditor.SKINS[this._options.skin]
-    && WYMeditor.SKINS[this._options.skin].init)
+    if(WYMeditor.SKINS[this._options.skin] && WYMeditor.SKINS[this._options.skin].init)
        WYMeditor.SKINS[this._options.skin].init(this);
 
 };
@@ -1402,29 +1435,38 @@ WYMeditor.editor.prototype.loadSkin = function() {
 
 /********** DIALOGS **********/
 
-WYMeditor.INIT_DIALOG = function(wym,isIframe) {
+WYMeditor.INIT_DIALOG = function(wym, selected, isIframe) {
 
-	var selected = wym.selected();
+	var selected = selected || wym.selected();
 	var dialog = $(wym._options.dialogId);
 	var doc = (isIframe ? dialog.select('iframe')[0].document() : document);
 	var dialogType = doc.getElementById('wym_dialog_type').value;
 	var replaceable = wym._selected_image ? jQuery(wym._selected_image) : jQuery(wym._doc.body).find('#replace_me_with_' + wym._current_unique_stamp);
 
+	[dialog.select(".close_dialog"), doc.body.select(".close_dialog")].flatten().uniq().each(function(button)
+	{
+		button.observe('click', function(e){this.close_dialog(e, true)}.bind(wym));
+	});
+/*
 	switch(dialogType) {   
 		case WYMeditor.DIALOG_LINK:
-		//ensure that we select the link to populate the fields
-		if(selected && selected.tagName && selected.tagName.toLowerCase != WYMeditor.A)
-		  selected = jQuery(selected).parentsOrSelf(WYMeditor.A);
+			//ensure that we select the link to populate the fields
+			if (replaceable[0] != null && replaceable[0].tagName.toLowerCase() == WYMeditor.A)
+			{
+				jQuery(wym._options.hrefSelector).val(jQuery(replaceable).attr(WYMeditor.HREF));
+				jQuery(wym._options.hrefSelector);
+			}
 
-		//fix MSIE selection if link image has been clicked
-		if(!selected && wym._selected_image)
-		  selected = jQuery(wym._selected_image).parentsOrSelf(WYMeditor.A);
-		break;
+			//fix MSIE selection if link image has been clicked
+			if(!selected && wym._selected_image)
+			  selected = jQuery(wym._selected_image).parentsOrSelf(WYMeditor.A);
+			break;
 	}
+	*/
 	  //pre-init functions
 	if(jQuery.isFunction(wym._options.preInitDialog))
 	   wym._options.preInitDialog(wym,window);
-
+/*
 
 	//auto populate fields if selected container (e.g. A)
 	if(selected) {
@@ -1432,7 +1474,7 @@ WYMeditor.INIT_DIALOG = function(wym,isIframe) {
 	   jQuery(wym._options.srcSelector).val(jQuery(selected).attr(WYMeditor.SRC));
 	   jQuery(wym._options.titleSelector).val(jQuery(selected).attr(WYMeditor.TITLE));
 	   jQuery(wym._options.altSelector).val(jQuery(selected).attr(WYMeditor.ALT));
-	}
+	}*/
 
 	//auto populate image fields if selected image
 	if(wym._selected_image) {
@@ -1443,18 +1485,13 @@ WYMeditor.INIT_DIALOG = function(wym,isIframe) {
 	   jQuery(wym._options.dialogImageSelector + " " + wym._options.altSelector)
 	   .val(jQuery(wym._selected_image).attr(WYMeditor.ALT));
 	}
-	
-	[dialog.select(".close_dialog"), doc.body.select(".close_dialog")].flatten().uniq().each(function(button)
+
+	jQuery(wym._options.dialogLinkSelector + " " + wym._options.submitSelector).click(function() 
 	{
-		button.observe('click', function(e){this.close_dialog(e, true)}.bind(wym));
-	});
-
-	jQuery(wym._options.dialogLinkSelector + " " + wym._options.submitSelector).click(function() {
-
 	  var sUrl = jQuery(wym._options.hrefSelector).val();
-	  if(sUrl.length > 0) {
-			if (!jQuery.browser.safari)
-			{
+	  if(sUrl.length > 0) 
+		{
+			if (replaceable[0] != null) {
 				link = wym._doc.createElement("a");
 				link.href = sUrl;
 				link.title = jQuery(wym._options.titleSelector).val();
@@ -1517,8 +1554,6 @@ WYMeditor.INIT_DIALOG = function(wym,isIframe) {
 				{
 					if (replaceable != null)
 					{
-		//				console.log(this._selected_image);
-		//				console.log(replaceable.parentNode);
 						if (this._selected_image == null || (this._selected_image != null && replaceable.parentNode != null))
 						{
 							replaceable.after(image);
@@ -1588,7 +1623,14 @@ WYMeditor.editor.prototype.close_dialog = function(e, cancelled) {
 	{
 		// if span exists, repalce it with its own html contents.
 		replaceable = jQuery(this._doc.body).find('#replace_me_with_' + this._current_unique_stamp);
-		replaceable.replaceWith(replaceable.html());
+		if (replaceable[0] != null) {
+			if (replaceable[0].tagName.toLowerCase() != WYMeditor.A) {
+				replaceable.replaceWith(replaceable.html());
+			}
+			else {
+				replaceable[0].id = replaceable[0]._id_before_replaceable;
+			}
+		}
 		
 		if (this._undo_on_cancel == true) {
 			this._exec("undo");
@@ -1601,6 +1643,11 @@ WYMeditor.editor.prototype.close_dialog = function(e, cancelled) {
 	if (jQuery.browser.msie && parseInt(jQuery.browser.version) < 8)
 	{
 		this._iframe.contentWindow.focus();
+	}
+	
+	if ((inline_dialog_container = $('inline_dialog_container')) != null)
+	{
+		inline_dialog_container.remove();
 	}
 	
 	tb_remove();
@@ -2093,6 +2140,21 @@ WYMeditor.XhtmlValidator = {
       ]
     },
     "23":"i",
+		"iframe":
+		{
+			"attributes":[
+				"src",
+				"width",
+				"height",
+				"frameborder",
+				"scrolling",
+				"marginheight",
+				"marginwidth"
+			],
+			"required":[
+				"src"
+			]
+		},
     "img":
     {
       "attributes":[
@@ -2958,7 +3020,7 @@ WYMeditor.Lexer.prototype._decodeSpecial = function(mode)
 WYMeditor.Lexer.prototype._invokeParser = function(content, is_match)
 {
 
-  if (!/ +/.test(content) && ((content === '') || (content == false))) {
+  if (!/ +/.test(content) && ((content === '') || (content === false))) {
     return true;
   }
   var current = this._mode.getCurrent();
@@ -3440,7 +3502,7 @@ WYMeditor.XhtmlSaxListener = function()
     "base", "bdo", "big", "blockquote", "body", "button",
     "caption", "cite", "code", "col", "colgroup", "dd", "del", "div",
     "dfn", "dl", "dt", "em", "embed", "fieldset", "form", "head", "h1", "h2",
-    "h3", "h4", "h5", "h6", "html", "i", "ins",
+    "h3", "h4", "h5", "h6", "html", "i", "iframe", "ins",
     "kbd", "label", "legend", "li", "map", "noscript",
     "object", "ol", "optgroup", "option", "p", "param", "pre", "q",
     "samp", "script", "select", "small", "span", "strong", "style",

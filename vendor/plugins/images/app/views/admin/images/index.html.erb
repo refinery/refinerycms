@@ -25,11 +25,11 @@
 			<% end %>
 			</li>
 		</ul>
-		<%= will_paginate @images, :prev_label => '&laquo;', :next_label => '&raquo;' %>
+		<%= will_paginate @images, :previous_label => '&laquo;', :next_label => '&raquo;' %>
     <ul>
 			<%= render :partial => "#{session[:image_view] ||= "list"}_view" %>
     </ul>
-		<%= will_paginate @images, :prev_label => '&laquo;', :next_label => '&raquo;' %>
+		<%= will_paginate @images, :previous_label => '&laquo;', :next_label => '&raquo;' %>
 	<% else %>
 		<p>
 			<strong>

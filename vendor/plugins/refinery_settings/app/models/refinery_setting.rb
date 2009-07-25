@@ -4,6 +4,8 @@ class RefinerySetting < ActiveRecord::Base
   validates_presence_of :name
   validates_uniqueness_of :name
   
+  serialize :value
+  
   def title
     self.name.titleize
   end
@@ -35,7 +37,7 @@ class RefinerySetting < ActiveRecord::Base
 	
 	def self.[](name)
 		if setting = find_by_name(name.to_s)
-			setting.value
+		  setting.value
 		elsif @@refinery_settings_defaults[name.to_s]
 			@@refinery_settings_defaults[name.to_s]
 		else

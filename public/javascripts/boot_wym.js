@@ -16,6 +16,7 @@ jQuery(function()
 	      ,{'name': 'InsertImage', 'title': 'Image', 'css': 'wym_tools_image'}
 	      ,{'name': 'InsertTable', 'title': 'Table', 'css': 'wym_tools_table'}
 	      ,{'name': 'ToggleHtml', 'title': 'HTML', 'css': 'wym_tools_html'}
+				,{'name': 'Paste', 'title': 'Paste_From_Word', 'css': 'wym_tools_paste'}
 	  ]
  
 		,toolsHtml: "<ul class='wym_tools wym_section'>" + WYMeditor.TOOLS_ITEMS  + "</ul>"
@@ -83,12 +84,28 @@ jQuery(function()
 					+ "<div class='form-actions'>"
 						+ "<input class='wym_submit' type='button' value='{Insert}' />"
 						+ " or "
-						+ "<a class='wym_cancel' type='button' href=''>{Cancel}</a>"
+						+ "<a class='wym_cancel close_dialog' type='button' href=''>{Cancel}</a>"
+					+ "</div>"
+				+ "</form>"
+			+ "</div>"
+			
+		, dialogPasteHtml:  
+			"<div class='wym_dialog wym_dialog_paste'>"
+				+ "<form>"
+					+ "<input type='hidden' id='wym_dialog_type' class='wym_dialog_type' value='" + WYMeditor.DIALOG_PASTE + "' />"
+					+ "<div class='field'>"
+						+ "<label for='wym_text'>{Text_From_Word}</label"
+						+ "<textarea class='wym_text' rows='10' cols='50'></textarea>"
+					+ "</div>"
+					+ "<div class='form-actions'>"
+						+ "<input class='wym_submit' type='button' value='{Insert}' />"
+						+ " or "
+						+ "<a class='wym_cancel close_dialog' type='button' href=''>{Cancel}</a>"
 					+ "</div>"
 				+ "</form>"
 			+ "</div>"
 
-	  , dialogFeatures: "?width=928&height=460&modal=true&titlebar=true&auto_size_content=true&draggable=true"
+	  , dialogFeatures: "?width=958&height=460&modal=true&titlebar=true&auto_size_content=true&draggable=true"
 		, dialogInlineFeatures: "?width=600&height=320&modal=true&titlebar=true&auto_size_content=true&draggable=true"
 
 		, dialogId: 'TB_window'
@@ -108,11 +125,6 @@ jQuery(function()
 	  , postInit: function(wym)
 	  {
 			wym._iframe.style.height = wym._element.height() + "px";
-
-			$$('.wym_area_top a[title]').each(function(element) 
-			{
-				new Tooltip(element, {mouseFollow:false, delay: 0, opacity: 1, appearDuration:0, hideDuration: 0, rounded:false});
-			});
 			
 			wym_editors_loaded += 1;			
 			if(WYMeditor.INSTANCES.length == wym_editors_loaded){
