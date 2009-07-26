@@ -9,7 +9,7 @@ class Page < ActiveRecord::Base
   belongs_to :image
   belongs_to :custom_title_image, :class_name => "Image"
   
-  has_many :parts, :class_name => "PagePart"
+  has_many :parts, :class_name => "PagePart", :order => "position ASC"
   accepts_nested_attributes_for :parts, :allow_destroy => true
     
   before_destroy :deletable?
