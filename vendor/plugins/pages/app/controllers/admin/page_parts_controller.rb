@@ -12,6 +12,7 @@ class Admin::PagePartsController < Admin::BaseController
   def create
     @page = Page.find(params[:page_id])
     @page_part = @page.parts.new(params[:page_part])
+    @page_part.title = @page_part.title.downcase.gsub(" ", "_")
     
     saved = @page_part.save
     flash[:error] = "You must enter a title for the part to be added to this page" unless saved
