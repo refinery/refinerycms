@@ -40,6 +40,7 @@
 			unless params[:current_link].blank?
 				web_address_text = params[:current_link] if params[:current_link] =~ /^http:\/\//
 			end
+			web_address_target_blank = params[:target_blank] == "true"
 		%>
 		<div id='web_address_area'  style='display: none' class='dialog_area'>
 			<div id='web_address_content'>
@@ -48,6 +49,9 @@
 				<img id='web_address_test_loader' src='/images/refinery/ajax-loader.gif' alt='Testing...' style='display: none;'>
 				<span id='web_address_test_result'></span>
 				
+				<label>New Window</label>
+				<input type='checkbox' name='web_address_target_blank' id='web_address_target_blank' <%= "checked='checked'" if web_address_target_blank %> />
+				<label for='web_address_target_blank' class='stripped'>Check this box to have the link open in a new browser window.</label>
 				<p>
 					<strong>Not sure what to put in the box above?</strong> 
 					<ol>
@@ -131,7 +135,8 @@
   				});
 				
   				this.addClassName('linked');
-					url = this.down('a.page_link').href.gsub(window.location.protocol + "//" + window.location.hostname, "");
+					port = (window.location.port.length > 0 ? (":" + window.location.port) : "")
+					url = this.down('a.page_link').href.gsub(window.location.protocol + "//" + window.location.hostname + port, "");
   				parent.document.getElementById('wym_href').value = url;
 					parent.document.getElementById('wym_title').value = this.down('span').innerHTML.gsub(/<em>\((\w)*\)<\/em>/, "").trim();
   			});
@@ -142,7 +147,7 @@
   			prefix = 'web_address_';
   			$(prefix + 'test_loader').show();
 
-  			$('web_address_test_result').hide();
+  			$(prefix + 'test_result').hide();
 			
   			req = new Ajax.Request("<%= test_url_admin_pages_dialogs_url %>", 
   			{
@@ -156,9 +161,15 @@
   				}
   			});
 
-  			parent.document.getElementById('wym_href').value = $('web_address_text').value;
-  			parent.document.getElementById('wym_title').value = $('web_address_text').value;
+  			parent.document.getElementById('wym_href').value = $(prefix + 'text').value;
+  			parent.document.getElementById('wym_title').value = $(prefix + 'text').value;
+				parent.document.getElementById('wym_target').value = ($(prefix + 'target_blank').checked ? "_blank" : "");
   		});
+
+			$('web_address_target_blank').observe('click', function(e)
+			{
+				parent.document.getElementById('wym_target').value = this.checked ? "_blank" : "";
+			})
 		
   		$$('#email_address_text', '#email_default_subject_text', '#email_default_body_text').each(function(input)
   		{
@@ -208,6 +219,7 @@
   		{
   			parent.document.getElementById('wym_href').value = $('web_address_text').value;
   			parent.document.getElementById('wym_title').value = $('web_address_text').value;
+				parent.document.getElementById('wym_target').value = ($('web_address_target_blank').checked ? "_blank" : "");
   		});
   	});
   </script>

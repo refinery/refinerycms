@@ -181,6 +181,7 @@ jQuery.extend(WYMeditor, {
     HREF                : "href",
     SRC                 : "src",
     TITLE               : "title",
+		TARGET							: "target",
     ALT                 : "alt",
     DIALOG_LINK         : "Link",
     DIALOG_IMAGE        : "Image",
@@ -490,6 +491,7 @@ jQuery.fn.wymeditor = function(options) {
     hrefSelector:      ".wym_href",
     srcSelector:       ".wym_src",
     titleSelector:     ".wym_title",
+		targetSelector: 	 ".wym_target",
     altSelector:       ".wym_alt",
     textSelector:      ".wym_text",
     
@@ -1170,7 +1172,9 @@ WYMeditor.editor.prototype.dialog = function( dialogType ) {
 			parent.id = 'replace_me_with_' + this._current_unique_stamp;
 			
 			path += (this._wym._options.dialogFeatures.length == 0) ? "?" : "&"
-			path += "current_link=" + parent.href.gsub(window.location.protocol + "//" + window.location.hostname, "");
+			port = (window.location.port.length > 0 ? (":" + window.location.port) : "")
+			path += "current_link=" + parent.href.gsub(window.location.protocol + "//" + window.location.hostname + port, "");
+			path += "&target_blank=" + (parent.target == "_blank" ? "true" : "false")
 		}
 	}
 
@@ -1495,6 +1499,10 @@ WYMeditor.INIT_DIALOG = function(wym, selected, isIframe) {
 				link = wym._doc.createElement("a");
 				link.href = sUrl;
 				link.title = jQuery(wym._options.titleSelector).val();
+				target = jQuery(wym._options.targetSelector).val();
+				if (target != null && target.length > 0) {
+					link.target = target;
+				}
 				replaceable.after(link);
 
 				// now grab what was selected in the editor and chuck it inside the link.
@@ -1518,7 +1526,8 @@ WYMeditor.INIT_DIALOG = function(wym, selected, isIframe) {
 
         jQuery("a[@href=" + wym._current_unique_stamp + "]", wym._doc.body)
             .attr(WYMeditor.HREF, sUrl)
-            .attr(WYMeditor.TITLE, jQuery(wym._options.titleSelector).val());			
+            .attr(WYMeditor.TITLE, jQuery(wym._options.titleSelector).val())
+						.attr(WYMeditor.TARGET, jQuery(wym._options.targetSelector).val());			
 			}
 	  }
 	  // fire a click event on the dialogs close button
