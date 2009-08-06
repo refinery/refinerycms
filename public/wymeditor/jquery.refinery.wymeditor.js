@@ -1155,27 +1155,32 @@ WYMeditor.editor.prototype.dialog = function( dialogType ) {
 	imageGroup = null;
 	ajax_loaded_callback = function(){this.dialog_ajax_callback(selected)}.bind(this, selected);
 	
-	// don't need to wrap the image as wymeditor remembers _selected_image even with dialog open.
-	if (!this._selected_image)
-	{	
+	parent = null
+	if (this._selected_image) {
+		parent = this._selected_image.parentNode;
+	}
+	else {
 		parent = this._iframe.contentWindow.getSelection().anchorNode.parentNode;
-		if (parent.tagName.toLowerCase() != WYMeditor.A)
+	}
+	
+	if (parent != null && parent.tagName.toLowerCase() != WYMeditor.A)
+	{
+		// wrap the current selection with a funky span (not required for safari)
+		if (!this._selected_image && !jQuery.browser.safari)
 		{
-			// wrap the current selection with a funky span (not required for safari)
-			if (!jQuery.browser.safari)
-			{
-				this.wrap("<span id='replace_me_with_" + this._current_unique_stamp + "'>", "</span>");
-			}
+			this.wrap("<span id='replace_me_with_" + this._current_unique_stamp + "'>", "</span>");
 		}
-		else {
+	}
+	else {
+		if (!this._selected_image) {
 			parent._id_before_replaceable = parent.id;
 			parent.id = 'replace_me_with_' + this._current_unique_stamp;
-			
-			path += (this._wym._options.dialogFeatures.length == 0) ? "?" : "&"
-			port = (window.location.port.length > 0 ? (":" + window.location.port) : "")
-			path += "current_link=" + parent.href.gsub(window.location.protocol + "//" + window.location.hostname + port, "");
-			path += "&target_blank=" + (parent.target == "_blank" ? "true" : "false")
 		}
+		
+		path += (this._wym._options.dialogFeatures.length == 0) ? "?" : "&"
+		port = (window.location.port.length > 0 ? (":" + window.location.port) : "")
+		path += "current_link=" + parent.href.gsub(window.location.protocol + "//" + window.location.hostname + port, "");
+		path += "&target_blank=" + (parent.target == "_blank" ? "true" : "false")
 	}
 
 	// launch thickbox
@@ -1503,22 +1508,24 @@ WYMeditor.INIT_DIALOG = function(wym, selected, isIframe) {
 				if (target != null && target.length > 0) {
 					link.target = target;
 				}
-				replaceable.after(link);
 
 				// now grab what was selected in the editor and chuck it inside the link.
 				if (!wym._selected_image)
 				{
+					replaceable.after(link);
 					link.innerHTML = replaceable.html();
 					replaceable.remove();
 				}
 				else
 				{
-					if (replaceable.parentNode.tagName.toUpperCase() == "A") {
-						currentLink = replaceable.parentNode;
-						replaceable.after(currentLink);
-						currentLink.remove();
+					if ((parent = replaceable[0].parentNode) != null && parent.tagName.toUpperCase() == "A") {
+						parent.href = link.href;
+						parent.title = jQuery(wym._options.titleSelector).val();
+						parent.target = target;
 					}
-					jQuery(link).append(replaceable);
+					else {
+						jQuery(link).append(replaceable[0]);
+					}
 				}
 			}
 			else {
