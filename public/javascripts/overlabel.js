@@ -55,7 +55,7 @@ function hideLabel (field_id, hide) {
   for (var i = 0; i < labels.length; i++) {
     field_for = labels[i].htmlFor || labels[i].getAttribute('for');
     if (field_for == field_id) {
-      labels[i].style.textIndent = (hide) ? '-1000px' : '0px';
+      labels[i].style.textIndent = (hide) ? '-10000px' : '0px';
       return true;
     }
   }
