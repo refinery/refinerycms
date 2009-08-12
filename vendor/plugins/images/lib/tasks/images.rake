@@ -2,7 +2,7 @@ namespace :images do
 
   desc "Regenerate all thumbnails. Useful for when you've changed size or cropping on the images after images have been uploaded."
   task :regenerate => :environment do
-    thumbnails_size = Image.count :conditions => {:parent_id => !nil}
+    thumbnails_size = Image.count(:conditions => "parent_id IS NOT NULL")
     puts "Preparing to delete #{thumbnails_size} generated thumbnails"
         
     if Image.destroy_all("parent_id IS NOT null")
