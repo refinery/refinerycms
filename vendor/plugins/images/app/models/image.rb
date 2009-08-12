@@ -38,4 +38,12 @@ class Image < ActiveRecord::Base
     end
   end
   
+  def self.thumbnails
+    find(:all, :conditions => "parent_id not null")
+  end
+  
+  def self.originals
+    find_all_by_parent_id(nil)
+  end
+  
 end
