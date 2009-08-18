@@ -1,4 +1,3 @@
-<%= stylesheet_link_tag 'refinery' %>
 <form class='wym_dialog wym_dialog_<%= @dialog_type.downcase.split("&")[0] %>'>
 	<input type='hidden' id='wym_dialog_type' class='wym_dialog_type' value='<%= @dialog_type %>' />
 	<iframe src='<%= @iframe_src %>' id='dialog_frame' frameborder='0'></iframe>

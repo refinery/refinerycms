@@ -652,7 +652,7 @@ body.dialog form {
 .dialog #dialog_main {
 	float: left;
 	min-height: 415px;
-	width: 780px;
+	width: 755px;
 }
 
 .dialog #existing_image_content {
@@ -685,11 +685,11 @@ body.dialog form {
 .dialog #existing_image_area_content ul li.selected img {
 	border: 4px solid black;
 }
-
+/*
 #dialog_main {
 	position: relative;
 }
-
+*/
 #existing_image_area_content {
 	height: 342px;
 }
@@ -930,8 +930,7 @@ a#TB_closeWindowButton {
 #existing_image_area {
 	padding-top:6px;
 }
-.dialog #dialog_main {
-}
+
 textarea.wymeditor {
 }
 #TB_closeAjaxWindow {
