@@ -35,6 +35,10 @@
 			<input type='radio' name='link_to' value='email_address' id='link_to_email_address' <%= "checked='true'" if email_address_area_selected %> />
 			<label for='link_to_email_address' class='stripped'>Email address</label>
 		</span>
+    <span id="resource_file_radio" class="radio">
+      <input type="radio" name="link_to" value="resource_file" id="link_to_resource_file" />
+      <label for="link_to_resource_file" class="stripped">Resource File</label>
+    </span>
 <%
 #		<span id='your_file_radio' class='radio'>
 #			<input type='radio' name='link_to' value='your_file' id='link_to_your_file' />
@@ -114,6 +118,17 @@
 				</ol>
 			</div>
 		</div>
+    <div id="resource_file_area" class="dialog_area" style="display:none">
+      <div id='pages_list'>
+        <ul id="resources-list">
+          <% Resource.all.each do |resource| -%>
+            <li>
+              <%= link_to resource.title, resource.public_filename, :class => 'page_link', :style => 'display:none' %>
+              <span><%= resource.title %></span></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
 <%
 	#	<div id='your_file_area' style='display: none' class='dialog_area'>
 	#</div>
@@ -132,7 +147,7 @@
   	FastInit.addOnLoad(function()
   	{
   		$$('#pages_list ul li').each(function(li)
-  		{
+  		{ <%# TODO: generalize this, see resources links %>
   			li.observe('click', function(e)
   			{
   				$$('#pages_list ul li.linked').each(function(linked)
@@ -229,6 +244,12 @@
   			parent.document.getElementById('wym_title').value = $('web_address_text').value;
 				parent.document.getElementById('wym_target').value = ($('web_address_target_blank').checked ? "_blank" : "");
   		});
+
+      $$('#resources-list .page_link').each(function(link){
+        $(link).observe('click', function(ev){
+          ev.preventDefault();
+        });
+      });
   	});
   </script>
 <% end %>
