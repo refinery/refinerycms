@@ -9,11 +9,11 @@ class UsersController < ApplicationController
   layout 'admin'
 
   def new
-    render :text => "User signup is disabled", :layout => true unless RefinerySetting[:signup_enabled] ||= false
+    render :text => "User signup is disabled", :layout => true unless RefinerySetting.find_or_set(:signup_enabled, false)
   end
   
   def create
-    unless RefinerySetting[:signup_enabled] ||= false
+    unless RefinerySetting.find_or_set(:signup_enabled, false)
       render :text => "User signup is disabled", :layout => true 
     else
       begin

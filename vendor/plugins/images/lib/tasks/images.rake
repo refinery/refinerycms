@@ -13,12 +13,13 @@ namespace :images do
     
     originals = Image.originals
     puts "Preparing to regenerate thumbnails for #{originals.size} images"
-    amount_done = 0
     
     originals.each do |image|
-      image.save
-      amount_done += 1
-      puts "--> #{amount_done}/#{originals.size} complete"
+      begin
+        image.save
+      rescue Exception => e  
+        puts "--> ERROR image #{image.id} could not be saved because #{e.message}"
+      end
     end
     
     puts "Image regeneration complete."

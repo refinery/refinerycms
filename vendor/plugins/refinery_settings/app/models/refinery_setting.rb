@@ -12,9 +12,6 @@ class RefinerySetting < ActiveRecord::Base
 
 	# internals
 	
-	cattr_accessor :defaults
-	@@refinery_settings_defaults = {}.with_indifferent_access
-	
 	def self.method_missing(method, *args)
 		method_name = method.to_s
 		super(method, *args)
@@ -35,14 +32,12 @@ class RefinerySetting < ActiveRecord::Base
 		settings.with_indifferent_access
 	end
 	
+	def self.find_or_set(name, or_this_value)
+	  setting_value = find_or_create_by_name(:name => name.to_s, :value => or_this_value).value
+  end
+	
 	def self.[](name)
-		if setting = find_by_name(name.to_s)
-		  setting.value
-		elsif @@refinery_settings_defaults[name.to_s]
-			@@refinery_settings_defaults[name.to_s]
-		else
-			nil
-		end
+	  setting_value = find_by_name(name.to_s).value rescue nil
 	end
 	
 	def self.[]=(name, value)

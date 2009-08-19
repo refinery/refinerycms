@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
   rescue_from ActionController::UnknownAction, :with => :error_404
 
   def error_404
-    @page = Page.find_by_menu_match("^/404$")
+    @page = Page.find_by_menu_match("^/404$", :include => [:parts, :slugs, :children])
     render :template => "/pages/show"
   end
   
@@ -44,7 +44,7 @@ protected
   end
 
   def find_pages_for_menu
-		@menu_pages = Page.top_level
+		@menu_pages = Page.top_level(include_children=true)
   end
   
 end

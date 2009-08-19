@@ -4,7 +4,9 @@ class Admin::DashboardController < Admin::BaseController
     @recent_activity = []
     $plugins.each do |plugin|
       plugin.activity.each do |activity|
-        @recent_activity += activity.class.find(:all, :order => activity.order, :limit => activity.limit, :conditions => activity.conditions)
+        include_associations = []
+        include_associations.push(:slugs) if activity.class.methods.include?("find_one_with_friendly") # wee performance gain if slugs are used.
+        @recent_activity += activity.class.find(:all, :order => activity.order, :limit => activity.limit, :conditions => activity.conditions, :include => include_associations)
       end rescue nil
     end
 
