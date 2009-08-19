@@ -3,7 +3,7 @@ class InquiriesController < ApplicationController
   before_filter :find_page, :only => [:create, :new]
   
   def thank_you
-    @page = Page.find_by_menu_match("^/inquiries/thank_you$")
+    @page = Page.find_by_menu_match("^/inquiries/thank_you$", :include => [:parts, :slugs, :children])
   end
   
   def new
@@ -35,7 +35,7 @@ class InquiriesController < ApplicationController
 protected
 
   def find_page
-    @page = Page.find_by_link_url('/inquiries/new')
+    @page = Page.find_by_link_url('/inquiries/new', :include => [:parts, :slugs, :children])
   end
   
 end

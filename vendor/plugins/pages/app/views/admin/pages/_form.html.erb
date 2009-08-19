@@ -14,7 +14,7 @@
 				</li>
 			<% end %>
   		</ul>
-  		<% if (RefinerySetting[:new_page_parts] ||= false) and not @page.new_record? %>
+  		<% if RefinerySetting.find_or_set(:new_page_parts, false) and not @page.new_record? %>
   		  <%= link_to image_tag("/images/refinery/add.png"), new_admin_page_page_part_url(@page, {:dialog => true, :width => 600, :height => 300}), :id => "add_page_part", :title => "Create Content Section", :name => "Create Content Section" %>
   		<% end %>
     </div>
