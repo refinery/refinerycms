@@ -13,7 +13,7 @@
 		<% end %>
 		<%= javascript_include_tag "fastinit", "tooltips", "dialog" %>
 		<%= yield :head %>
-		<%= "<script type='text/javascript' src='http://getfirebug.com/releases/lite/1.2/firebug-lite-compressed.js'></script>" if (RefinerySetting[:show_firebug_lite] ||= false) == true %>
+		<%= "<script type='text/javascript' src='http://getfirebug.com/releases/lite/1.2/firebug-lite-compressed.js'></script>" if RefinerySetting.find_or_set(:show_firebug_lite, false) == true %>
 		<% if @flash %>
 		<script type='text/javascript'>
 			document.observe('dom:loaded', function() {

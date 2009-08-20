@@ -5,12 +5,12 @@ class Admin::PagePartsController < Admin::BaseController
   crudify :page_part, :order => "position ASC"
   
   def new
-    @page = Page.find(params[:page_id])
+    @page = Page.find(params[:page_id], :include => [:parts, :slugs, :children])
     @page_part = @page.parts.new
   end
   
   def create
-    @page = Page.find(params[:page_id])
+    @page = Page.find(params[:page_id], :include => [:parts, :slugs, :children])
     @page_part = @page.parts.new(params[:page_part])
     @page_part.title = @page_part.title.downcase.gsub(" ", "_")
     

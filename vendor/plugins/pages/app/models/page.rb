@@ -56,16 +56,20 @@ class Page < ActiveRecord::Base
 		self.siblings.reject { |sibling| not sibling.in_menu? }
 	end
 	
-	def self.top_level
-		find_all_by_parent_id(nil, :order => "position ASC")
+	def self.top_level(include_children = false)
+	  include_associations = [:parts, :slugs]
+	  include_associations.push(:children) if include_children
+		find_all_by_parent_id(nil, :order => "position ASC", :include => include_associations)
 	end
 	
 	def [](part_title)
+	  # don't want to override a super method when trying to call a page part.
+	  # the way that we call page parts seems flawed, will probably revert to page.parts[:title] in a future release.
 	  if (super_value = super).blank?
-	    part = self.parts.find_by_title(part_title.to_s)
-	    unless part.nil?
-	      return part.body
-      end
+	    # self.parts is already eager loaded so we can now just grab the first element matching the title we specified.
+	    part = self.parts.reject {|part| part.title != part_title.to_s}.first
+	    
+      return part.body unless part.nil?
     end
     super_value
 	end
