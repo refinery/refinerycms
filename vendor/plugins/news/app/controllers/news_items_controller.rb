@@ -14,7 +14,7 @@ protected
   end
 
   def load_page
-    @page = Page.find_by_link_url("/news", :include => [:parts, :slugs, :children])
+    @page = Page.find_by_link_url("/news", :include => [:parts, :slugs])
   end
   
 end

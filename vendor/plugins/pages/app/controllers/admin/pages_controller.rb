@@ -6,7 +6,7 @@ class Admin::PagesController < Admin::BaseController
     @pages = Page.paginate :page => params[:page],
                   :order => "position ASC",
                   :conditions => "parent_id IS NULL",
-                  :include => [:parts, :slugs, :children]
+                  :include => [:parts, :slugs]
   end
   
   def new
