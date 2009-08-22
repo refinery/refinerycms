@@ -7,6 +7,12 @@ class PagesController < ApplicationController
 
 	def show
 	  @page = Page.find(params[:id], :include => [:parts, :slugs])
+		
+		# if the admin wants this to be a "placeholder" page which goes to its first child, go to that instead.
+		if @page.skip_to_first_child
+			first_live_child = @page.children.find_by_draft(false, :order => "position ASC")
+			redirect_to page_url(first_live_child) unless first_live_child.nil?
+		end
 	end
 
 end
