@@ -40,28 +40,30 @@ module ActiveRecord
 				# * <tt>foreign_key</tt> - specifies the column name to use for tracking of the tree (default: +parent_id+)
 				# * <tt>order</tt> - makes it possible to sort the children according to this SQL snippet.
 				# * <tt>counter_cache</tt> - keeps a count in a +children_count+ column if set to +true+ (default: +false+).
+				# * <tt>include</tt> - ability to add eager loading to tree finds by specifying associations to include. 'children' association eager loaded by default. Disable by supplying :include => nil or :include => []
 				def acts_as_tree(options = {})
-					configuration = { :foreign_key => "parent_id", :order => nil, :counter_cache => nil }
-					configuration.update(options) if options.is_a?(Hash)
+					configuration = { :foreign_key => "parent_id", :order => nil, :counter_cache => nil, :include => [:children] }
+					configuration.update(options) if options.is_a?(Hash) # to avoid something nasty happening check for Hash here.
+					configuration.update({:include => []}) if configuration[:include].nil? # if calling class really doesn't want to eager load its children.
 
-					belongs_to :parent, :class_name => name, :foreign_key => configuration[:foreign_key], :counter_cache => configuration[:counter_cache]
-					has_many :children, :class_name => name, :foreign_key => configuration[:foreign_key], :order => configuration[:order], :dependent => :delete_all
+					belongs_to :parent, :class_name => name, :foreign_key => configuration[:foreign_key], :counter_cache => configuration[:counter_cache], :include => configuration[:include]
+					has_many :children, :class_name => name, :foreign_key => configuration[:foreign_key], :order => configuration[:order], :dependent => :delete_all, :include => configuration[:include]
 
 					class_eval <<-EOV
 						include ActiveRecord::Acts::Tree::InstanceMethods
 
 						def self.roots
-							find(:all, :conditions => "#{configuration[:foreign_key]} IS NULL", :order => #{configuration[:order].nil? ? "nil" : %Q{"#{configuration[:order]}"}})
+							find :all, :conditions => "#{configuration[:foreign_key]} IS NULL", :order => #{configuration[:order].nil? ? "nil" : %Q{"#{configuration[:order]}"}}, :include => %W{#{configuration[:include].join(' ')}}
 						end
 
 						def self.root
-							find(:first, :conditions => "#{configuration[:foreign_key]} IS NULL", :order => #{configuration[:order].nil? ? "nil" : %Q{"#{configuration[:order]}"}})
+							find :first, :conditions => "#{configuration[:foreign_key]} IS NULL", :order => #{configuration[:order].nil? ? "nil" : %Q{"#{configuration[:order]}"}}, :include => %W{#{configuration[:include].join(' ')}}
 						end
 						
 						def self.childless
 							nodes = []
 
-							find(:all).each do |node|
+							find(:all, :include => configuration[:include]).each do |node|
 								nodes << node if node.children.empty?
 							end
 
