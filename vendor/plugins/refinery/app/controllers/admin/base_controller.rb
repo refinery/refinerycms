@@ -7,7 +7,7 @@ class Admin::BaseController < ApplicationController
 protected
 
   def error_404
-    @page = Page.find_by_menu_match("^/404$", :include => [:parts, :slugs, :children])
+    @page = Page.find_by_menu_match("^/404$", :include => [:parts, :slugs])
     @page[:body] = @page[:body].gsub(/href=(\'|\")\/(\'|\")/, "href='/admin'").gsub("home page", "Dashboard")
     render :template => "/pages/show"
   end
