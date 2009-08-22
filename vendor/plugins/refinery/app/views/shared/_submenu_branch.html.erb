@@ -1,11 +1,9 @@
-<% if page.in_menu? %>
-<li<%= " class='selected'" if selected_page?(page) or descendant_page_selected?(page) %>>
-	<%= link_to page.title, page.url -%>
-	<% unless page.children.empty? %>
+<% if submenu_branch.in_menu? %>
+<li<%= " class='selected'" if selected_page?(submenu_branch) or descendant_page_selected?(submenu_branch) %>>
+	<%= link_to submenu_branch.title, submenu_branch.url -%>
+	<% unless (children = submenu_branch.children).empty? %>
 	<ul>
-	<% page.children.each do |child| %>
-		<%= render :partial => "/shared/submenu_branch", :locals => {:page => child } %>
-	<% end %>
+		<%= render :partial => "/shared/submenu_branch", :collection => children %>
 	</ul>
 	<% end %>
 </li>
