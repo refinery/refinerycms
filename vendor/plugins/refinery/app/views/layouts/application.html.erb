@@ -2,7 +2,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
-		<title><%= yield :title %> - <%= RefinerySetting[:site_name] ||= "Company Name" %></title>
+		<title><%= yield :title %> - <%= RefinerySetting.find_or_set(:site_name, "Company Name") %></title>
 		<%= stylesheet_link_tag 'application' %>
 		<%= stylesheet_link_tag 'formatting' %>
 		<%= stylesheet_link_tag 'home' if @page.home? %>
