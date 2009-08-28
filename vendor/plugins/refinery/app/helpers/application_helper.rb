@@ -32,7 +32,7 @@ module ApplicationHelper
       when "text"
         @page.custom_title
       when "image"
-        image_tag Image.find(@page.custom_title_image).public_filename rescue @page.title
+        image_fu @page.custom_title_image, nil, {:alt => @page.title} rescue @page.title
     end
   end
   
@@ -42,6 +42,11 @@ module ApplicationHelper
   
   def selected_page?(page)
     selected = current_page?(page) or (request.path =~ Regexp.new(page.menu_match) unless page.menu_match.blank?) or (request.path == page.link_url)
-  end
+  end	
+
+	def image_fu(image, thumbnail, options={})
+		image = image.thumbnails.find_by_thumbnail(thumbnail.to_s) unless thumbnail.nil?
+		image_tag image.public_filename, {:width => image.width, :height => image.height}.merge!(options)
+	end
   
 end

@@ -29,6 +29,6 @@
 <% if params[:action] =~ /(edit)|(update)/ %>
 	<div style='float: right; width: 25%;'>
 		<label>Current Image</label>
-		<%= image_tag @image.public_filename(:medium), :class => "brown_border" %>
+		<%= image_fu @image, :medium, { :class => "brown_border" } %>
 	</div>
 <% end %>

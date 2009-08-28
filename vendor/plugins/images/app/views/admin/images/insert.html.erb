@@ -20,10 +20,7 @@
 				<ul>
 				<% @images.each do |image| %>
 					<li<%= " class='selected'" if @image_id == image.id %>>
-						<%= image_tag image.public_filename(:dialog_thumb), 
-							:alt => image.title, 
-							:title => image.title,
-							:id => "image_#{image.id}" -%>
+						<%= image_fu image, :dialog_thumb, {:alt => image.title, :title => image.title, :id => "image_#{image.id}"} -%>
 					</li>
 				<% end -%>
 				</ul>
