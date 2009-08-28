@@ -16,7 +16,7 @@
 					<span class='title'>
 						<span class='actions'>
 							<%= link_to image_tag('refinery/icons/eye.png'), image.public_filename,
-							                      :target => "_blank", :title => "#{image_tag image.public_filename(:preview)}" %>
+							                      :target => "_blank", :title => "#{image_fu image, :preview}" %>
 							<%= link_to image_tag('refinery/icons/application_edit.png'), edit_admin_image_path(image),
 							                      :title => 'Edit this image' %>
 							<%= link_to image_tag('refinery/icons/delete.png'), admin_image_path(image),
