@@ -1524,6 +1524,7 @@ WYMeditor.INIT_DIALOG = function(wym, selected, isIframe) {
 						parent.target = target;
 					}
 					else {
+						replaceable.before(link);
 						jQuery(link).append(replaceable[0]);
 					}
 				}
