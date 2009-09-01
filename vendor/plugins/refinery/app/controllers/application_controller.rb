@@ -3,7 +3,7 @@
 
 class ApplicationController < ActionController::Base
   
-  helper_method :home_page?, :local_request?, :just_installed?, :from_dialog?
+  helper_method :home_page?, :local_request?, :just_installed?, :from_dialog?, :admin?
 
   protect_from_forgery # See ActionController::RequestForgeryProtection
   
@@ -35,6 +35,10 @@ class ApplicationController < ActionController::Base
     params[:dialog] == "true"
   end
 
+	def admin?
+		params[:controller] =~ /admin\/(.*)/
+	end
+
 protected
 
   def show_welcome_page
@@ -44,7 +48,7 @@ protected
   end
 
   def find_pages_for_menu
-		@menu_pages = Page.top_level(include_children=true)
+		@menu_pages = Page.top_level(include_children=true) unless admin?
   end
   
 end
