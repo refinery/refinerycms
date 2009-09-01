@@ -4,6 +4,10 @@ class Admin::BaseController < ApplicationController
   
   before_filter :login_required, :restrict_plugins, :restrict_controller
 
+	def admin?
+		true # we're in the admin base controller, so always true.
+	end
+
 protected
 
   def error_404
