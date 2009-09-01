@@ -41,7 +41,7 @@ class RefinerySetting < ActiveRecord::Base
 	end
 	
 	def self.[]=(name, value)
-		setting = find_by_name(name.to_s) || new(:name => name.to_s)
+		setting = find_or_create_by_name(name.to_s)
 		setting.value = value
 		setting.save!
 	end
