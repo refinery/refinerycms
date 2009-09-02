@@ -49,7 +49,7 @@ module ApplicationHelper
 			image = image.thumbnails.reject!{|t| t.thumbnail != thumbnail.to_s}.first unless thumbnail.nil?
 			image_tag image.public_filename, {:width => image.width, :height => image.height}.merge!(options)
 		rescue
-			image_tag image.public_filename(thumbnail, options)
+			image_tag image.public_filename(thumbnail), options
 		end
 	end
   
