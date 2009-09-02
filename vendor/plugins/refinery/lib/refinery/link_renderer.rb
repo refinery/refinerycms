@@ -17,6 +17,7 @@ class Refinery::LinkRenderer < WillPaginate::LinkRenderer
       end
 
 			url = @template.url_for((@options[:url]||{}).merge!(@url_params))
+			@options.delete(:url)
       return url if page_one
       
       if complex
