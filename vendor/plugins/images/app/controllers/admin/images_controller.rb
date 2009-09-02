@@ -51,7 +51,7 @@ protected
     @images = Image.paginate 	:page => (@paginate_page_number ||= params[:page]),
                              	:conditions => 'parent_id is null',
                              	:order => 'created_at DESC',
-                             	:per_page => Image.per_page(params[:dialog]),
+                             	:per_page => Image.per_page(from_dialog?),
 															:include => :thumbnails
   end
   
