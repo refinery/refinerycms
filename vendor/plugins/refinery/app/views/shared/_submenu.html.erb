@@ -1,9 +1,4 @@
-<% page = @page.root %>
-<ul id='submenu'<%= " class='empty'" if page.children.empty? %>>
-<% 
-unless page.children.empty?
-	page.children.each do |child| %>
-	<%= render :partial => "/shared/submenu_branch", :locals => {:page => child} %>
-<% end
-end %>
+<% children = @page.root.children %>
+<ul id='submenu'<%= " class='empty'" if children.empty? %>>
+	<%= render :partial => "/shared/submenu_branch", :collection => children %>
 </ul>

@@ -53,7 +53,7 @@
 				<div>
 					<a id='current_image_link' href="<%= insert_admin_images_url %>?thickbox=true&amp;modal=true&amp;titlebar=true&amp;field=page_custom_title_image_id&amp;update_image=current_custom_title_image&amp;callback=custom_title_image_changed&amp;thumbnail=&amp;KeepThis=true&amp;TB_iframe=true&amp;width=950&amp;height=510" style='border: 0px' title='Change Image' name='Change Image' class='thickbox'>
 					<% unless @page.custom_title_image.nil? %>
-						<%= image_tag @page.custom_title_image.public_filename, :class => "brown_border", :id => "current_custom_title_image" %>
+						<%= image_fu @page.custom_title_image, nil, {:class => "brown_border", :id => "current_custom_title_image"} %>
 					<% else %>
             <img id="current_custom_title_image" class="" src="" alt="" />
 					<% end %>
@@ -68,6 +68,11 @@
 				</div>
 			</div>
 		</div>
+		<div class='field'>
+	    <%= label_tag :skip_to_first_child? %>
+	    <%= f.check_box :skip_to_first_child %>
+	    <%= f.label :skip_to_first_child, "Check this box if you want the visitor to be redirected to this page's first child page if this page is selected.", :class => "stripped" %>
+	  </div>
 		<div class='field'>
 			<%= f.label :link_url, "Custom URL" %>
 			<%= f.text_field :link_url, {:size => 103} %><br/>

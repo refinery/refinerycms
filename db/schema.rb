@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090618044141) do
+ActiveRecord::Schema.define(:version => 20090822092032) do
 
   create_table "images", :force => true do |t|
     t.integer  "parent_id"
@@ -87,6 +87,7 @@ ActiveRecord::Schema.define(:version => 20090618044141) do
     t.integer  "custom_title_image_id"
     t.boolean  "draft",                 :default => false
     t.string   "browser_title"
+    t.boolean  "skip_to_first_child",   :default => false
   end
 
   create_table "portfolio_entries", :force => true do |t|
