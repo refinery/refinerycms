@@ -2,13 +2,8 @@
 module ApplicationHelper
 
   def add_meta_tags
-    unless @page.meta_keywords.blank?
-      content_for :head, "<meta name=\"keywords\" content=\"#{@page.meta_keywords}\" />"
-    end
-    
-    unless @page.meta_description.blank?
-      content_for :head, "<meta name=\"description\" content=\"#{@page.meta_description}\" />"
-    end
+		content_for :head, "<meta name=\"keywords\" content=\"#{@page.meta_keywords}\" />" unless @page.meta_keywords.blank?
+		content_for :head, "<meta name=\"description\" content=\"#{@page.meta_description}\" />" unless @page.meta_description.blank?
   end
   
   def add_page_title
