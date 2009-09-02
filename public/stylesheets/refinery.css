@@ -661,7 +661,7 @@ body.dialog form {
 .dialog #dialog_main {
 	float: left;
 	min-height: 415px;
-	width: 780px;
+	width: 756px;
 }
 
 .dialog #existing_image_content {
