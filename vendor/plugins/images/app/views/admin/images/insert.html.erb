@@ -92,10 +92,10 @@
 						{
 							field.value = selected.id.replace("image_", "");
 						}
-						image = parent.document.getElementById('<%= @update_image %>');
-						if (image != null)
+						if ((image = parent.document.getElementById('<%= @update_image %>')) != null)
 						{
 							image.src = selected.src.replace("_dialog_thumb", '<%= "_#{@thumbnail}" unless @thumbnail.blank? %>');
+							$(image).writeAttribute("width", null).writeAttribute("height", null);
 						}
 					}
 					<%= "self.parent.#{@callback}();" unless @callback.blank? %>
