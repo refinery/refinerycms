@@ -2108,17 +2108,6 @@ WYMeditor.XhtmlValidator = {
     "13":"dl",
     "14":"dt",
     "15":"em",
-	"embed":
-	{
-		"attributes": [
-			"allowscriptaccess",
-			"allowfullscreen",
-			"height",
-			"src",
-			"type",
-			"width"
-		]
-	},
     "fieldset":
     {
       "inside":"form"
@@ -2264,23 +2253,6 @@ WYMeditor.XhtmlValidator = {
       ]
     },
     "27":"noscript",
-    "object":
-    {
-      "attributes":[
-      "archive",
-      "classid",
-      "codebase",
-      "codetype",
-      "data",
-      "declare",
-      "height",
-      "name",
-      "standby",
-      "type",
-      "usemap",
-      "width"
-      ]
-    },
     "28":"ol",
     "optgroup":
     {
@@ -2308,15 +2280,45 @@ WYMeditor.XhtmlValidator = {
     "param":
     {
       "attributes":
-      {
-		"0":"name",
-		"1":"type",
-        "valuetype":/^(data|ref|object)$/,
-        "2":"valuetype",
-        "3":"value"
-      },
+      [
+        "type",
+        "value",
+		"name"
+      ],
       "required":[
       "name"
+      ],
+      "inside":"object"
+    },
+		"embed":
+    {
+      "attributes":
+      [
+        "width",
+        "height",
+        "allowfullscreen",
+        "allowscriptaccess",
+        "wmode",
+        "type",
+        "src"
+      ],
+	  "inside":"object"
+    },
+		"object":
+    {
+      "attributes":[
+      "archive",
+      "classid",
+      "codebase",
+      "codetype",
+      "data",
+      "declare",
+      "height",
+      "name",
+      "standby",
+      "type",
+      "usemap",
+      "width"
       ]
     },
     "30":"pre",
@@ -3518,16 +3520,16 @@ WYMeditor.XhtmlSaxListener = function()
     this.block_tags = ["a", "abbr", "acronym", "address", "area", "b",
     "base", "bdo", "big", "blockquote", "body", "button",
     "caption", "cite", "code", "col", "colgroup", "dd", "del", "div",
-    "dfn", "dl", "dt", "em", "embed", "fieldset", "form", "head", "h1", "h2",
+    "dfn", "dl", "dt", "em", "fieldset", "form", "head", "h1", "h2",
     "h3", "h4", "h5", "h6", "html", "i", "iframe", "ins",
     "kbd", "label", "legend", "li", "map", "noscript",
-    "object", "ol", "optgroup", "option", "p", "param", "pre", "q",
+    "object", "ol", "optgroup", "option", "p", "pre", "q",
     "samp", "script", "select", "small", "span", "strong", "style",
     "sub", "sup", "table", "tbody", "td", "textarea", "tfoot", "th",
     "thead", "title", "tr", "tt", "ul", "var", "extends"];
 
 
-    this.inline_tags = ["br", "hr", "img", "input"];
+    this.inline_tags = ["br", "embed", "hr", "img", "input", "param"];
 
     return this;
 };
