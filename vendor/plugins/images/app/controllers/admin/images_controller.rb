@@ -10,7 +10,6 @@ class Admin::ImagesController < Admin::BaseController
   
   def insert
     self.new if @image.nil?
-		@dialog = false
     @dialog = from_dialog?
     @thickbox = !params[:thickbox].blank?
     @field = params[:field]
