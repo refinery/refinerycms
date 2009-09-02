@@ -1155,15 +1155,15 @@ WYMeditor.editor.prototype.dialog = function( dialogType ) {
 	imageGroup = null;
 	ajax_loaded_callback = function(){this.dialog_ajax_callback(selected)}.bind(this, selected);
 	
-	parent = null
+	var parent_node = null;
 	if (this._selected_image) {
-		parent = this._selected_image.parentNode;
+		parent_node = this._selected_image.parentNode;
 	}
 	else {
-		parent = this._iframe.contentWindow.getSelection().anchorNode.parentNode;
+		parent_node = selected;
 	}
-	
-	if (parent != null && parent.tagName.toLowerCase() != WYMeditor.A)
+
+	if (parent_node != null && parent_node.tagName.toLowerCase() != WYMeditor.A)
 	{
 		// wrap the current selection with a funky span (not required for safari)
 		if (!this._selected_image && !jQuery.browser.safari)
@@ -1173,14 +1173,14 @@ WYMeditor.editor.prototype.dialog = function( dialogType ) {
 	}
 	else {
 		if (!this._selected_image) {
-			parent._id_before_replaceable = parent.id;
-			parent.id = 'replace_me_with_' + this._current_unique_stamp;
+			parent_node._id_before_replaceable = parent.id;
+			parent_node.id = 'replace_me_with_' + this._current_unique_stamp;
 		}
 		
 		path += (this._wym._options.dialogFeatures.length == 0) ? "?" : "&"
 		port = (window.location.port.length > 0 ? (":" + window.location.port) : "")
-		path += "current_link=" + parent.href.gsub(window.location.protocol + "//" + window.location.hostname + port, "");
-		path += "&target_blank=" + (parent.target == "_blank" ? "true" : "false")
+		path += "current_link=" + parent_node.href.gsub(window.location.protocol + "//" + window.location.hostname + port, "");
+		path += "&target_blank=" + (parent_node.target == "_blank" ? "true" : "false")
 	}
 
 	// launch thickbox
@@ -1452,7 +1452,7 @@ WYMeditor.INIT_DIALOG = function(wym, selected, isIframe) {
 	var dialogType = doc.getElementById('wym_dialog_type').value;
 	var replaceable = wym._selected_image ? jQuery(wym._selected_image) : jQuery(wym._doc.body).find('#replace_me_with_' + wym._current_unique_stamp);
 
-	[dialog.select(".close_dialog"), doc.body.select(".close_dialog")].flatten().uniq().each(function(button)
+	[dialog.select(".close_dialog"), $(doc.body).select(".close_dialog")].flatten().uniq().each(function(button)
 	{
 		button.observe('click', function(e){this.close_dialog(e, true)}.bind(wym));
 	});
