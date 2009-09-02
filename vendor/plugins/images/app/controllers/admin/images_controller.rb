@@ -10,14 +10,15 @@ class Admin::ImagesController < Admin::BaseController
   
   def insert
     self.new if @image.nil?
-    @dialog = params[:dialog] ||= true
+		@dialog = false
+    @dialog = from_dialog?
     @thickbox = !params[:thickbox].blank?
     @field = params[:field]
     @update_image = params[:update_image]
     @thumbnail = params[:thumbnail]
     @callback = params[:callback]
     @url_override = admin_images_url(:dialog => @dialog, :insert => true)
-    
+
     paginate_images
     render :action => "insert"
   end
@@ -25,7 +26,7 @@ class Admin::ImagesController < Admin::BaseController
   def create
     @image = Image.create(params[:image])
     saved = @image.valid?
-    flash[:notice] = "'#{@image.title}' was successfully created." if saved
+    flash.now[:notice] = "'#{@image.title}' was successfully created." if saved
     unless params[:insert]
       if saved
         unless from_dialog?
@@ -48,10 +49,11 @@ class Admin::ImagesController < Admin::BaseController
   
 protected
   def paginate_images
-    @images = Image.paginate :page => (@paginate_page_number ||= params[:page]),
-                             :conditions => 'parent_id is null',
-                             :order => 'created_at DESC',
-                             :per_page => Image.per_page(params[:dialog])
+    @images = Image.paginate 	:page => (@paginate_page_number ||= params[:page]),
+                             	:conditions => 'parent_id is null',
+                             	:order => 'created_at DESC',
+                             	:per_page => Image.per_page(params[:dialog]),
+															:include => :thumbnails
   end
   
 end
