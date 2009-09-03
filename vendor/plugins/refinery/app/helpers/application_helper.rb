@@ -2,13 +2,8 @@
 module ApplicationHelper
 
   def add_meta_tags
-    unless @page.meta_keywords.blank?
-      content_for :head, "<meta name=\"keywords\" content=\"#{@page.meta_keywords}\" />"
-    end
-    
-    unless @page.meta_description.blank?
-      content_for :head, "<meta name=\"description\" content=\"#{@page.meta_description}\" />"
-    end
+		content_for :head, "<meta name=\"keywords\" content=\"#{@page.meta_keywords}\" />" unless @page.meta_keywords.blank?
+		content_for :head, "<meta name=\"description\" content=\"#{@page.meta_description}\" />" unless @page.meta_description.blank?
   end
   
   def add_page_title
@@ -45,8 +40,12 @@ module ApplicationHelper
   end	
 
 	def image_fu(image, thumbnail, options={})
-		image = image.thumbnails.find_by_thumbnail(thumbnail.to_s) unless thumbnail.nil?
-		image_tag image.public_filename, {:width => image.width, :height => image.height}.merge!(options)
+		begin
+			image = image.thumbnails.reject!{|t| t.thumbnail != thumbnail.to_s}.first unless thumbnail.nil?
+			image_tag image.public_filename, {:width => image.width, :height => image.height}.merge!(options)
+		rescue
+			image_tag image.public_filename(thumbnail), options
+		end
 	end
   
 end

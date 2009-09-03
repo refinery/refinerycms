@@ -36,7 +36,7 @@ protected
 	end
 	
 	def pick_refinery_admin_layout
-	  params[:dialog].to_s.downcase != "true" ? "admin" : "admin_dialog"
+	  "admin#{"_dialog" if from_dialog?}"
   end
   
 end

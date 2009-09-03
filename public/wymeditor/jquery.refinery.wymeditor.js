@@ -1155,15 +1155,15 @@ WYMeditor.editor.prototype.dialog = function( dialogType ) {
 	imageGroup = null;
 	ajax_loaded_callback = function(){this.dialog_ajax_callback(selected)}.bind(this, selected);
 	
-	parent = null
+	var parent_node = null;
 	if (this._selected_image) {
-		parent = this._selected_image.parentNode;
+		parent_node = this._selected_image.parentNode;
 	}
 	else {
-		parent = this._iframe.contentWindow.getSelection().anchorNode.parentNode;
+		parent_node = selected;
 	}
-	
-	if (parent != null && parent.tagName.toLowerCase() != WYMeditor.A)
+
+	if (parent_node != null && parent_node.tagName.toLowerCase() != WYMeditor.A)
 	{
 		// wrap the current selection with a funky span (not required for safari)
 		if (!this._selected_image && !jQuery.browser.safari)
@@ -1173,14 +1173,14 @@ WYMeditor.editor.prototype.dialog = function( dialogType ) {
 	}
 	else {
 		if (!this._selected_image) {
-			parent._id_before_replaceable = parent.id;
-			parent.id = 'replace_me_with_' + this._current_unique_stamp;
+			parent_node._id_before_replaceable = parent.id;
+			parent_node.id = 'replace_me_with_' + this._current_unique_stamp;
 		}
 		
 		path += (this._wym._options.dialogFeatures.length == 0) ? "?" : "&"
 		port = (window.location.port.length > 0 ? (":" + window.location.port) : "")
-		path += "current_link=" + parent.href.gsub(window.location.protocol + "//" + window.location.hostname + port, "");
-		path += "&target_blank=" + (parent.target == "_blank" ? "true" : "false")
+		path += "current_link=" + parent_node.href.gsub(window.location.protocol + "//" + window.location.hostname + port, "");
+		path += "&target_blank=" + (parent_node.target == "_blank" ? "true" : "false")
 	}
 
 	// launch thickbox
@@ -1452,7 +1452,7 @@ WYMeditor.INIT_DIALOG = function(wym, selected, isIframe) {
 	var dialogType = doc.getElementById('wym_dialog_type').value;
 	var replaceable = wym._selected_image ? jQuery(wym._selected_image) : jQuery(wym._doc.body).find('#replace_me_with_' + wym._current_unique_stamp);
 
-	[dialog.select(".close_dialog"), doc.body.select(".close_dialog")].flatten().uniq().each(function(button)
+	[dialog.select(".close_dialog"), $(doc.body).select(".close_dialog")].flatten().uniq().each(function(button)
 	{
 		button.observe('click', function(e){this.close_dialog(e, true)}.bind(wym));
 	});
@@ -2108,17 +2108,6 @@ WYMeditor.XhtmlValidator = {
     "13":"dl",
     "14":"dt",
     "15":"em",
-	"embed":
-	{
-		"attributes": [
-			"allowscriptaccess",
-			"allowfullscreen",
-			"height",
-			"src",
-			"type",
-			"width"
-		]
-	},
     "fieldset":
     {
       "inside":"form"
@@ -2264,23 +2253,6 @@ WYMeditor.XhtmlValidator = {
       ]
     },
     "27":"noscript",
-    "object":
-    {
-      "attributes":[
-      "archive",
-      "classid",
-      "codebase",
-      "codetype",
-      "data",
-      "declare",
-      "height",
-      "name",
-      "standby",
-      "type",
-      "usemap",
-      "width"
-      ]
-    },
     "28":"ol",
     "optgroup":
     {
@@ -2308,15 +2280,45 @@ WYMeditor.XhtmlValidator = {
     "param":
     {
       "attributes":
-      {
-		"0":"name",
-		"1":"type",
-        "valuetype":/^(data|ref|object)$/,
-        "2":"valuetype",
-        "3":"value"
-      },
+      [
+        "type",
+        "value",
+		"name"
+      ],
       "required":[
       "name"
+      ],
+      "inside":"object"
+    },
+		"embed":
+    {
+      "attributes":
+      [
+        "width",
+        "height",
+        "allowfullscreen",
+        "allowscriptaccess",
+        "wmode",
+        "type",
+        "src"
+      ],
+	  "inside":"object"
+    },
+		"object":
+    {
+      "attributes":[
+      "archive",
+      "classid",
+      "codebase",
+      "codetype",
+      "data",
+      "declare",
+      "height",
+      "name",
+      "standby",
+      "type",
+      "usemap",
+      "width"
       ]
     },
     "30":"pre",
@@ -3518,16 +3520,16 @@ WYMeditor.XhtmlSaxListener = function()
     this.block_tags = ["a", "abbr", "acronym", "address", "area", "b",
     "base", "bdo", "big", "blockquote", "body", "button",
     "caption", "cite", "code", "col", "colgroup", "dd", "del", "div",
-    "dfn", "dl", "dt", "em", "embed", "fieldset", "form", "head", "h1", "h2",
+    "dfn", "dl", "dt", "em", "fieldset", "form", "head", "h1", "h2",
     "h3", "h4", "h5", "h6", "html", "i", "iframe", "ins",
     "kbd", "label", "legend", "li", "map", "noscript",
-    "object", "ol", "optgroup", "option", "p", "param", "pre", "q",
+    "object", "ol", "optgroup", "option", "p", "pre", "q",
     "samp", "script", "select", "small", "span", "strong", "style",
     "sub", "sup", "table", "tbody", "td", "textarea", "tfoot", "th",
     "thead", "title", "tr", "tt", "ul", "var", "extends"];
 
 
-    this.inline_tags = ["br", "hr", "img", "input"];
+    this.inline_tags = ["br", "embed", "hr", "img", "input", "param"];
 
     return this;
 };
