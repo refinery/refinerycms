@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090822092032) do
+ActiveRecord::Schema.define(:version => 20090903030652) do
 
   create_table "images", :force => true do |t|
     t.integer  "parent_id"
@@ -110,7 +110,6 @@ ActiveRecord::Schema.define(:version => 20090822092032) do
   add_index "refinery_settings", ["name"], :name => "index_refinery_settings_on_name"
 
   create_table "resources", :force => true do |t|
-    t.string   "title"
     t.string   "content_type"
     t.string   "filename"
     t.integer  "size"
