@@ -428,6 +428,15 @@ ul.reordering li {
 	background: #A8B9C1;
 }
 
+#dialog-form-actions .pagination {
+	margin: -4px 6px -4px 0px;
+	float: right;
+	width: auto;
+}
+#dialog-form-actions .pagination a, #dialog-form-actions .pagination .current, #dialog-form-actions .pagination .disabled {
+	line-height: 15px;
+}
+
 textarea {
 	line-height: 20px;
 }
@@ -652,7 +661,7 @@ body.dialog form {
 .dialog #dialog_main {
 	float: left;
 	min-height: 415px;
-	width: 755px;
+	width: 756px;
 }
 
 .dialog #existing_image_content {

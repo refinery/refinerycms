@@ -1,10 +1,10 @@
 <div class='clearfix'>
 	<div id='dialog_menu_left'>
 		<% unless @images.empty? %>
-		<span id='existing_image_radio' class='radio'>
-			<input type='radio' name='image_type' value='existing_image' id='image_type_existing' <%= "checked='true'" if @image.errors.empty? %> />
-			<label for='image_type_existing' class='stripped'>Existing Image</label>
-		</span>
+  		<span id='existing_image_radio' class='radio'>
+  			<input type='radio' name='image_type' value='existing_image' id='image_type_existing' <%= "checked='true'" if @image.errors.empty? %> />
+  			<label for='image_type_existing' class='stripped'>Existing Image</label>
+  		</span>
 		<% end %>
 		<span id='upload_image_radio' class='radio<%= " selected_radio" if @image.errors.size > 0 %>'>
 			<input type='radio' name='image_type' value='upload_image' id='image_type_upload' <%= "checked='true'" if @images.empty? or !@image.errors.empty? %> />
@@ -14,31 +14,33 @@
 
 	<div id='dialog_main'>
 		<% unless @images.empty? %>
-		<div id='existing_image_area' class='dialog_area' <%= "style='display:none;'" unless @image.errors.empty? %>>
-			<input type='hidden' name='selected_image' id='selected_image' />
-			<div id='existing_image_area_content' class='clearfix'>
-				<ul>
-				<% @images.each do |image| %>
-					<li<%= " class='selected'" if @image_id == image.id %>>
-						<%= image_fu image, :dialog_thumb, {:alt => image.title, :title => image.title, :id => "image_#{image.id}"} -%>
-					</li>
-				<% end -%>
-				</ul>
-			</div>
-			<%= will_paginate @images, :previous_label => '&laquo; Previous', :next_label => 'Next &raquo;' %>
-		</div>
+  		<div id='existing_image_area' class='dialog_area' <%= "style='display:none;'" unless @image.errors.empty? %>>
+  			<input type='hidden' name='selected_image' id='selected_image' />
+  			<div id='existing_image_area_content' class='clearfix'>
+  				<ul>
+    				<% @images.each do |image| %>
+    					<li<%= " class='selected'" if @image_id == image.id %>>
+    						<%= image_fu image, :dialog_thumb, {:alt => image.title, :title => image.title, :id => "image_#{image.id}"} -%>
+    					</li>
+    				<% end -%>
+  				</ul>
+  			</div>
+  			<%= will_paginate @images, :previous_label => '&laquo; Previous', :next_label => 'Next &raquo;', :renderer => Refinery::LinkRenderer, :url => {:controller => "admin/images", :action => "insert", :dialog => @dialog} unless @thickbox %>
+  		</div>
 		<% end %>
-		<div id='upload_image_area' class='dialog_area' <%= "style='display:none;'" unless @images.empty? %>
+		<div id='upload_image_area' class='dialog_area' <%= "style='display:none;'" unless @images.empty? %>>
 			<%= render :partial => "form", :locals => {:insert => true} %>
 		</div>
 	</div>
 </div>
 <% if @thickbox %>
-<div class='form-actions'>
-	<%= submit_tag 'Insert', :id => "submit_button" %> 
-	or 
-	<%= link_to "Cancel", "", :id => "cancel_button", :class => "close_dialog" %>
-</div>
+  <div id='dialog-form-actions' class='form-actions'>
+  	<%= submit_tag 'Insert', :id => "submit_button" %> 
+  	or 
+  	<%= link_to "Cancel", "", :id => "cancel_button", :class => "close_dialog" %>
+    
+  	<%= will_paginate @images, :previous_label => '&laquo; Previous', :next_label => 'Next &raquo;', :renderer => Refinery::LinkRenderer, :url => {:controller => "admin/images", :action => "insert", :dialog => @dialog } %>
+  </div>
 <% end %>
 <% content_for :head do %>
 	<script type='text/javascript'>
@@ -50,15 +52,16 @@
 			});
 			$(img.parentNode).addClassName('selected');
 			parts = img.src.split('/images/system');
-			relevant_src = parts[parts.length-1].split('?');
-			relevant_src = relevant_src[0].replace('_dialog_thumb', '');
+			relevant_src = parts.last().split('?');
+			relevant_src = relevant_src.first().replace('_dialog_thumb', '');
 <% unless @thickbox %>
-			if (parent != null && parent.document != null && typeof(parent.document.getElementById) == "function" && parent.document.getElementById('wym_src') != null)
-			{
+      try {
 				parent.document.getElementById('wym_src').value = '/images/system' + relevant_src;
 				parent.document.getElementById('wym_title').value = img.title;
 				parent.document.getElementById('wym_alt').value = img.alt;
 			}
+			catch($e){}
+			
 <% end %>
 		}
 		
@@ -89,10 +92,10 @@
 						{
 							field.value = selected.id.replace("image_", "");
 						}
-						image = parent.document.getElementById('<%= @update_image %>');
-						if (image != null)
+						if ((image = parent.document.getElementById('<%= @update_image %>')) != null)
 						{
 							image.src = selected.src.replace("_dialog_thumb", '<%= "_#{@thumbnail}" unless @thumbnail.blank? %>');
+							$(image).writeAttribute("width", null).writeAttribute("height", null);
 						}
 					}
 					<%= "self.parent.#{@callback}();" unless @callback.blank? %>
