@@ -1,7 +1,5 @@
 class Resource < ActiveRecord::Base
     
-  validates_presence_of :title
-  
   has_attachment :storage => :file_system,
 		      :size => 0.kilobytes..50.megabytes,
           :path_prefix => 'public/system/resources'
@@ -19,5 +17,9 @@ class Resource < ActiveRecord::Base
     end
     
   end
+
+	def title
+		(split_filename = self[:filename].split('.')).pop and return split_filename.join('.').titleize
+	end
   
 end

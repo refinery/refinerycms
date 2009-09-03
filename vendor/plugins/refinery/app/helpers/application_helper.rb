@@ -47,11 +47,5 @@ module ApplicationHelper
 			image_tag image.public_filename(thumbnail), options
 		end
 	end
-  
-  def title_meta(page)
-    title = page.title
-    title += " <em>(hidden)</em>" unless page.show_in_menu?
-    title += " <em>(draft)</em>" if page.draft?
-    title
-  end
+	
 end

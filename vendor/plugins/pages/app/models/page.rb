@@ -72,4 +72,8 @@ class Page < ActiveRecord::Base
 		super_value
 	end
 	
+	def title_with_meta
+    "#{self.title} #{"<em>(hidden)</em>" unless self.show_in_menu?} #{"<em>(draft)</em>" if self.draft?}"
+	end
+	
 end

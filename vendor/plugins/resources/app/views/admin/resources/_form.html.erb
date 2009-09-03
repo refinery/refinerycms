@@ -1,10 +1,6 @@
 <%= error_messages_for :resource -%>
 <% form_for [:admin, @resource], :html => {:multipart => true} do |f| -%>
 	<div class='field'>
-		<%= f.label :title -%>
-		<%= f.text_field :title, :class => "larger", :style => 'width: 954px' -%>
-	</div>
-	<div class='field'>
 		<%= f.label :uploaded_data, 'File to upload' -%>
 		<% if params[:action] =~ /(edit)|(update)/ -%>
 			<%= link_to "Download current file", @resource.public_filename, {:title => @resource.title} -%>
