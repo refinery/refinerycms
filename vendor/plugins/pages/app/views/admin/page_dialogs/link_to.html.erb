@@ -39,12 +39,6 @@
       <input type="radio" name="link_to" value="resource_file" id="link_to_resource_file" />
       <label for="link_to_resource_file" class="stripped">Resource File</label>
     </span>
-<%
-#		<span id='your_file_radio' class='radio'>
-#			<input type='radio' name='link_to' value='your_file' id='link_to_your_file' />
-#			<label for='link_to_your_file' class='stripped'>Your file</label>
-#		</span>
-	%>
 	</div>
 
 	<div id='dialog_main'>
@@ -52,7 +46,7 @@
 			<input type='hidden' name='selected_image' id='selected_image' />
 			<div id='your_page_content' class='clearfix'>
 				<div id='pages_list'>
-					<ul>
+					<ul class="link_list">
 				<% @pages.each do |page| -%>
 						<%= render :partial => "link_list_tree", :locals => {:page => page, :child => false} %>
 				<% end -%>
@@ -120,58 +114,54 @@
 		</div>
     <div id="resource_file_area" class="dialog_area" style="display:none">
       <div id='pages_list'>
-        <ul id="resources-list">
+        <ul class="link_list">
           <% Resource.all.each do |resource| -%>
             <li>
-              <%= link_to resource.title, resource.public_filename, :class => 'page_link', :style => 'display:none' %>
-              <span><%= resource.title %></span></li>
+              <%= link_to resource.title, resource.public_filename, :title => 'Link to this Resource', 
+                          :rel => resource.title, :class => 'page_link' %>
+            </li>
           <% end %>
         </ul>
       </div>
     </div>
-<%
-	#	<div id='your_file_area' style='display: none' class='dialog_area'>
-	#</div>
-%>
 	</div>
 </div>
-<%
-#<div id='link_title'>
-#	<label for='link_title_text'>Text to display:</label>
-#	<input type='text' id='link_title_text' />
-#</div>
-%>
+
 <% content_for :head do %>
   <script type='text/javascript'>
 
   	FastInit.addOnLoad(function()
   	{
-  		$$('#pages_list ul li').each(function(li)
-  		{ <%# TODO: generalize this, see resources links %>
-  			li.observe('click', function(e)
+  		$$('.link_list li').each(function(li)
+  		{
+  			li.observe('click', function(ev)
   			{
-  				$$('#pages_list ul li.linked').each(function(linked)
+          ev.preventDefault();
+
+  				$$('.link_list li.linked').each(function(linked)
   				{
   					linked.removeClassName('linked');
   				});
 
   				this.addClassName('linked');
-					port = (window.location.port.length > 0 ? (":" + window.location.port) : "")
-					url = this.down('a.page_link').href.gsub(window.location.protocol + "//" + window.location.hostname + port, "");
+          var link = this.down('a.page_link');
+					var port = (window.location.port.length > 0 ? (":" + window.location.port) : "")
+					var url = link.href.gsub(window.location.protocol + "//" + window.location.hostname + port, "");
+
   				parent.document.getElementById('wym_href').value = url;
-					parent.document.getElementById('wym_title').value = this.down('span').innerHTML.gsub(/<em>\((\w)*\)<\/em>/, "").trim();
+					parent.document.getElementById('wym_title').value = link.rel;
 					parent.document.getElementById('wym_target').value = '';
   			});
   		});
 		
   		$('web_address_text').observe('change', function(e)
   		{
-  			prefix = 'web_address_';
+  			var prefix = 'web_address_';
   			$(prefix + 'test_loader').show();
 
   			$(prefix + 'test_result').hide();
 			
-  			req = new Ajax.Request("<%= test_url_admin_pages_dialogs_url %>", 
+  			var req = new Ajax.Request("<%= test_url_admin_pages_dialogs_url %>",
   			{
   				asynchronous: true
   				, method: 'get'
@@ -197,11 +187,12 @@
   		{
   			input.observe('change', function(e)
   			{
-  				default_subject = $('email_default_subject_text').value;
-  				default_body = $('email_default_body_text').value;
-  				mailto = "mailto:" + $('email_address_text').value.replace('mailto:', '');
+  				var default_subject = $('email_default_subject_text').value;
+  				var default_body = $('email_default_body_text').value;
+  				var mailto = "mailto:" + $('email_address_text').value.replace('mailto:', '');
   				$('email_address_test_result').hide();
-  				req = new Ajax.Request("<%= test_email_admin_pages_dialogs_url %>", 
+
+          var req = new Ajax.Request("<%= test_email_admin_pages_dialogs_url %>",
   				{
   					asynchronous: true
   					, method: 'get'
@@ -213,7 +204,7 @@
   					}
   				});
 				
-  				modifier = "?";
+  				var modifier = "?";
   				if (default_subject.length > 0)
   				{
   					mailto += modifier + "subject=" + default_subject;
@@ -224,6 +215,7 @@
   					mailto += modifier + "body=" + default_body;
   					modifier = "&";
   				}
+          
   				parent.document.getElementById('wym_href').value = mailto;
   				parent.document.getElementById('wym_title').value = $('email_address_text').value.replace('mailto:', '');
 					parent.document.getElementById('wym_target').value = '';
@@ -244,12 +236,6 @@
   			parent.document.getElementById('wym_title').value = $('web_address_text').value;
 				parent.document.getElementById('wym_target').value = ($('web_address_target_blank').checked ? "_blank" : "");
   		});
-
-      $$('#resources-list .page_link').each(function(link){
-        $(link).observe('click', function(ev){
-          ev.preventDefault();
-        });
-      });
   	});
   </script>
 <% end %>
