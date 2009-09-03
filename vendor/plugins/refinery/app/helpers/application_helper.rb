@@ -41,8 +41,8 @@ module ApplicationHelper
 
 	def image_fu(image, thumbnail, options={})
 		begin
-			image = image.thumbnails.reject!{|t| t.thumbnail != thumbnail.to_s}.first unless thumbnail.nil?
-			image_tag image.public_filename, {:width => image.width, :height => image.height}.merge!(options)
+			image_to_use = thumbnail.nil? ? image : image.thumbnails.reject!{|t| t.thumbnail != thumbnail.to_s}.first
+			image_tag image_to_use.public_filename, {:width => image_to_use.width, :height => image_to_use.height}.merge!(options)
 		rescue
 			image_tag image.public_filename(thumbnail), options
 		end
