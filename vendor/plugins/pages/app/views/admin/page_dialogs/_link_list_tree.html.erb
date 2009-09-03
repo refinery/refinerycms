@@ -3,15 +3,11 @@
 		linked = (page.url == params[:current_link])
 	end
 %>
-<li class='clearfix record on<%= " child" if child %><%= " linked" if linked%>' id="<%= dom_id(page) -%>">
-	<%= link_to image_tag('refinery/icons/page_link.png'), page.url,
-	            :title => "Link to this Page", :class => "page_link",
-	            :style => "display: none" %>
-	<span><%= h page.title %><%= " <em>(hidden)</em>" unless page.show_in_menu? %><%= " <em>(draft)</em>" if page.draft? %></span>
-	
-<% unless page.children.empty? -%>
-	<% for page in page.children %>
-  	<%= render :partial => 'link_list_tree', :locals => {:page => page, :child => true} %>
-	<% end %>
-<% end -%>
+<li class='clearfix<%= " child" if child %><%= " linked" if linked%>' id="<%= dom_id(page) -%>">
+  <%= link_to title_meta(page), page.url, :title => 'Link to this Page', :rel => page.title, :class => 'page_link' %>
+  <% unless page.children.empty? -%>
+    <% for page in page.children %>
+      <%= render :partial => 'link_list_tree', :locals => {:page => page, :child => true} %>
+    <% end %>
+  <% end -%>
 </li>

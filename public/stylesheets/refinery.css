@@ -745,13 +745,19 @@ body.dialog form {
 #dialog_main #pages_list ul li.child {
 	padding-left: 20px;
 }
-
+/*
 #dialog_main #pages_list ul li span	{
 	display: block;
 	padding: 3px;
 	margin-left: 24px;
+}*/
+#dialog_main #pages_list ul li a	{
+	display: block;
+	padding: 3px;
+	margin-left: 24px;
+  text-decoration: none;
+  border-bottom: none;
 }
-
 #dialog_main #pages_list li:hover {
 	background-color: #C9DAE2 !important;
 }
