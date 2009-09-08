@@ -12,7 +12,7 @@
 				<%= link_to "Update a page", admin_pages_url, :class => "edit_icon" %>
 			</li>
 			<li>
-				<%= link_to "Upload a file", new_admin_resource_url, :class => "add_icon" %>
+				<%= link_to "Upload a file", new_admin_resource_url(:dialog => true, :width => 600, :height => 300), :class => "add_icon" %>
 			</li>
 			<li>
 				<%= link_to "Upload an image", new_admin_image_url(:dialog => true, :width => 600, :height => 300), :class => "add_icon" %>
