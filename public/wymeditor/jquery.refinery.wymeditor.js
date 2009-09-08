@@ -2163,15 +2163,16 @@ WYMeditor.XhtmlValidator = {
 		},
     "img":
     {
-      "attributes":[
-      "alt",
-      "src",
-      "height",
-      "ismap",
-      "longdesc",
-      "usemap",
-      "width"
-      ],
+      "attributes":{
+      "align":/^(right|left|center|justify)$/,
+      "0":"alt",
+      "1":"src",
+      "2":"height",
+      "3":"ismap",
+      "4":"longdesc",
+      "5":"usemap",
+      "6":"width"
+      },
       "required":[
       "alt",
       "src"
