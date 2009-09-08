@@ -12,6 +12,11 @@ Refinery is released under the MIT license and is copyright (c) 2005-2009
 Resolve Digital Ltd. A copy of the MIT license can be found in the
 LICENSE file.
 
+== Help
+
+For help and general discussion about RefineryCMS, we have set up a Google Group at:
+http://groups.google.com/group/refinery-cms
+
 == Setup
 
 git clone git://github.com/resolve/Refinery.git mynewsite.com
