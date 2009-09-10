@@ -10,12 +10,12 @@
 }
 
 /* block alignment styles */
-.block-align-left {
+.image-align-left {
 	float: left;
 	margin-right: 6px;
 	margin-bottom: 6px;
 }
-.block-align-right {
+.image-align-right {
 	float: right;
 	margin-left: 6px;
 	margin-bottom: 6px;
