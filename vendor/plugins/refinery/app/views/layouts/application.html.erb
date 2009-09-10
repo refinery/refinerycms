@@ -4,7 +4,7 @@
 	<head>
 		<title><%= yield :title %> - <%= RefinerySetting.find_or_set(:site_name, "Company Name") %></title>
 		<%= stylesheet_link_tag 'application' %>
-		<%= stylesheet_link_tag 'formatting' %>
+		<%= stylesheet_link_tag 'formatting', 'theme' %>
 		<%= stylesheet_link_tag 'home' if @page.home? %>
 		<!--[if IE 7]>
 			<%= stylesheet_link_tag 'ie7' %>

@@ -3,15 +3,15 @@ WYMeditor.SKINS['refinery'] = {
     init: function(wym) {
 
         //render following sections as panels
-        jQuery(wym._box).find(wym._options.classesSelector)
-          .addClass("wym_panel");
+/*        jQuery(wym._box).find(wym._options.classesSelector)
+          .addClass("wym_panel"); */
 
         //render following sections as buttons
         jQuery(wym._box).find(wym._options.toolsSelector)
           .addClass("wym_buttons");
 
         //render following sections as dropdown menus
- /*       jQuery(wym._box).find(wym._options.containersSelector)
+ /*       jQuery(wym._box).find(wym._options.classesSelector)
           .addClass("wym_dropdown")
           .find(WYMeditor.H2)
           .append("<span>&nbsp;&gt;</span>");
