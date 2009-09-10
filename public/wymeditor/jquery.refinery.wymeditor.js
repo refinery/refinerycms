@@ -890,6 +890,10 @@ WYMeditor.editor.prototype.bindEvents = function() {
 			
 			wym.toggleClass(sName, jqexpr);
 		}
+		
+		// now hide the menu
+		jQuery(wym._box).find(wym._options.classUnhiddenSelector).toggleClass(wym._options.classHiddenSelector.substring(1));
+		
 		return(false);
 	});
 	
