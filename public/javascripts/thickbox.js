@@ -288,6 +288,8 @@ function tb_show(caption, url, imageGroup, ajax_loaded_callback) {//function cal
 			});*/
 		}
 		
+		Event.observe(document.onresize ? document : window, "resize", tb_position);
+		
 		return 'TB_window';
 		
 	} catch(e) {
@@ -314,13 +316,17 @@ function tb_remove() {
 	document.onkeydown = "";
 	document.onkeyup = "";
 	document.body.style.overflow = document.body.oldOverflow || "";
+	Event.stopObserving(document.onresize ? document : window, "resize", tb_position);  
 	return false;
 }
 
 function tb_position() {
 jQuery("#TB_window").css({marginLeft: '-' + parseInt((TB_WIDTH / 2),10) + 'px', width: TB_WIDTH + 'px'});
 	if ( !(jQuery.browser.msie && jQuery.browser.version < 7)) { // take away IE6
-		jQuery("#TB_window").css({marginTop: '-' + parseInt((TB_HEIGHT / 2),10) + 'px'});
+		marginTopAdjustment = parseInt((TB_HEIGHT / 2),10);
+		jQuery("#TB_window").css({marginTop: '-' + marginTopAdjustment + 'px'});
+		topAdjustment = marginTopAdjustment + ((tb_getPageSize()[1] - TB_HEIGHT) / 2);
+		jQuery("#TB_window").css({top: ((topAdjustment > marginTopAdjustment) ? topAdjustment : marginTopAdjustment) + "px"});
 	}
 }
 
