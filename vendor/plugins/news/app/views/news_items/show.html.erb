@@ -1,6 +1,6 @@
 <% content_for :title, "#{@news_item.title} - " -%>
 <div id='body_content' class='clearfix'>
-	<div id='body_content_left'>
+	<div id='body_content_left' class='clearfix'>
 		<h1>
 			<%= @news_item.title %>
 		</h1>
@@ -12,7 +12,7 @@
 			<%= link_to "Back to all news", news_items_url %>
 		</p>
 	</div>
-	<div id='body_content_right'>
+	<div id='body_content_right' class='clearfix'>
 		<%= render :partial => 'recent_posts' %>
 	</div>
 </div>

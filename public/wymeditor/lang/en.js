@@ -43,6 +43,6 @@ WYMeditor.STRINGS['en'] = {
     Classes:          'Classes',
     Status:           'Status',
     Source_Code:      'Source code',
-		Text_From_Word: 	'Text From Word', 
+		Text_From_Word: 	'Text From Word',
+		Css_Class: 				'Apply CSS Class'
 };
-

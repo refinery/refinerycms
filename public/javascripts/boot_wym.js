@@ -5,7 +5,7 @@ jQuery(function()
 	jQuery('.wymeditor').wymeditor(
 	{
 	  skin: 'refinery'
-	  , iframeBasePath: '/wymeditor/iframe/refinery/'
+	  , iframeBasePath: '/'
 	  , toolsItems: [
 	      {'name': 'Bold', 'title': 'Bold', 'css': 'wym_tools_strong'} 
 	      ,{'name': 'Italic', 'title': 'Emphasis', 'css': 'wym_tools_emphasis'}
@@ -19,7 +19,7 @@ jQuery(function()
 				,{'name': 'Paste', 'title': 'Paste_From_Word', 'css': 'wym_tools_paste'}
 	  ]
  
-		,toolsHtml: "<ul class='wym_tools wym_section'>" + WYMeditor.TOOLS_ITEMS  + "</ul>"
+		,toolsHtml: "<ul class='wym_tools wym_section'>" + WYMeditor.TOOLS_ITEMS + WYMeditor.CLASSES + "</ul>"
 
 		,toolsItemHtml: 
 			"<li class='" + WYMeditor.TOOL_CLASS + "'>"
@@ -33,6 +33,13 @@ jQuery(function()
 	      ,{'name': 'h3', 'title':'Heading_3', 'css':'wym_containers_h3'}
 	      ,{'name': 'p', 'title':'Paragraph', 'css':'wym_containers_p'}
 	  ]    
+
+		, classesHtml: "<li class='wym_tools_class'><a href='#' name='" + WYMeditor.APPLY_CLASS + "' title='"+ WYMeditor.APPLY_CLASS +"'></a><ul class='wym_classes wym_classes_hidden'>" + WYMeditor.CLASSES_ITEMS + "</ul></li>"
+
+    , classesItemHtml: "<li><a href='#' name='"+ WYMeditor.CLASS_NAME + "'>"+ WYMeditor.CLASS_TITLE+ "</a></li>"
+		, classesItemHtmlMultiple: "<li class='wym_tools_class_multiple_rules'><span>" + WYMeditor.CLASS_TITLE + "</span><ul>{classesItemHtml}</ul></li>"
+		 
+    , classesItems: [{name:'text-align', rules:['left', 'right', 'justify'], join: '-'}, {name: 'block-align', rules:['left', 'right'], join: '-'}]
 
 		, containersHtml: "<ul class='wym_containers wym_section'>" + WYMeditor.CONTAINERS_ITEMS + "</ul>"
 
@@ -56,8 +63,8 @@ jQuery(function()
                  
 		, iframeHtml:   
 			"<div class='wym_iframe wym_section'>"
-	     	+ "<iframe src='" + WYMeditor.IFRAME_BASE_PATH + "wymiframe.html' frameborder='0'"
-	      	+ "onload='this.contentWindow.parent.WYMeditor.INSTANCES[" + WYMeditor.INDEX + "].initIframe(this)'>"
+	     	+ "<iframe src='" + WYMeditor.IFRAME_BASE_PATH + "wymiframe' frameborder='0'"
+	      	+ "onload='this.contentWindow.parent.WYMeditor.INSTANCES[" + WYMeditor.INDEX + "].initIframe(this); init_tooltips();'>"
 				+ "</iframe>"
 			+"</div>"
 
@@ -105,6 +112,7 @@ jQuery(function()
 				+ "</form>"
 			+ "</div>"
 
+		,	dialogPath: "/admin/dialogs/"
 	  , dialogFeatures: "?width=958&height=460&modal=true&titlebar=true&auto_size_content=true&draggable=true"
 		, dialogInlineFeatures: "?width=600&height=320&modal=true&titlebar=true&auto_size_content=true&draggable=true"
 

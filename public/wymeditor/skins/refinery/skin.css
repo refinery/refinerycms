@@ -51,7 +51,7 @@
         .wym_skin_refinery .wym_section h2,
         .wym_skin_refinery .wym_section h3         { padding: 1px 3px; margin: 0; }
         .wym_skin_refinery .wym_section a          { padding: 0 3px; display: block; text-decoration: none; color: black; }
-        .wym_skin_refinery .wym_section a:hover    { background-color: yellow; }
+        .wym_skin_refinery .wym_section a:hover, .wym_skin_refinery .wym_section a.selected    { background-color: yellow; }
       /*hide section titles by default*/
         .wym_skin_refinery .wym_section h2         { display: none; }
       /*disable any margin-collapse*/
@@ -94,12 +94,12 @@
         .wym_skin_refinery .wym_buttons li.wym_tools_preview a       { background-position: 0 -408px;}
 
         /* make tools and containers play nicely next to eachother */
-        .wym_skin_refinery .wym_area_top .wym_dropdown { display: none; }
+        
         .wym_skin_refinery .wym_tools, .wym_skin_refinery .wym_containers   { float: left; margin: 0px 0px 5px 0px; }
         
         /* image replacements for containers */
 				.wym_skin_refinery .wym_containers li { float: left; }
-        .wym_skin_refinery .wym_containers li a {background-repeat: no-repeat; background-position: center center;width: 20px; height: 20px; overflow: hidden; padding: 2px; border: 0px none;}
+        .wym_skin_refinery .wym_containers li a, .wym_skin_refinery li.wym_tools_class a {background-repeat: no-repeat; background-position: center center;width: 20px; height: 20px; overflow: hidden; padding: 2px; border: 0px none;}
         
         .wym_skin_refinery li.wym_containers_h1 a   { background-image: url('h1.png'); }
         .wym_skin_refinery li.wym_containers_h2 a   { background-image: url('h2.png');}
@@ -108,6 +108,7 @@
         .wym_skin_refinery li.wym_containers_h5 a   { background-image: url('h5.png');}
         .wym_skin_refinery li.wym_containers_h6 a   { background-image: url('h6.png');}
         .wym_skin_refinery li.wym_containers_p a   { background-image: url('paragraph.png');}
+		.wym_skin_refinery li.wym_tools_class a { background-image: url('css.png');}
 
 /*DECORATION*/
         .wym_skin_refinery .wym_section h2             { background: #DDD; border: solid gray; border-width: 0 0 1px;}
@@ -158,4 +159,53 @@
 }
 .wym_hideables {
     display: none;
+}
+
+.wym_classes {
+	display: block;
+	position: absolute;
+	left: 0px;
+	top: 29px;
+	width: 200px;
+	background-color: #F6F5F4;
+	border-color: gray;
+	border-style: solid;
+	border-width: 0px 1px 1px 1px !important;
+}
+.wym_classes_hidden {
+	display: none;
+}
+.wym_tools_class {
+	position: relative;
+}
+.wym_skin_refinery .wym_buttons .wym_tools_class .wym_classes li {
+	float: left;
+	width: 200px;
+	cursor: pointer;
+}
+.wym_skin_refinery .wym_buttons .wym_tools_class .wym_classes li a {
+	text-indent: 0px;
+	background-image: none;
+	background-repeat: none;
+	background-position: 0px 0px;
+	width: auto;
+}
+.wym_skin_refinery .wym_tools_class .wym_classes .wym_tools_class_multiple_rules span {
+	display: block;
+	cursor: auto;
+	font-size: 13px;
+	font-weight: bold;
+	font-style: italic;
+	margin: 3px 0px 0px 6px;
+	background: #EDEEDE;
+	
+}
+.wym_skin_refinery .wym_tools_class .wym_tools_class_multiple_rules ul li {
+	
+}
+.wym_skin_refinery .wym_tools_class .wym_classes .wym_tools_class_multiple_rules ul li a {
+	width: 186px;
+	padding-left: 12px;
+	height: 16px;
+	line-height: 18px;
 }

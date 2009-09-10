@@ -38,13 +38,15 @@ class ApplicationController < ActionController::Base
 	def admin?
 		params[:controller] =~ /admin\/(.*)/
 	end
+	
+	def wymiframe
+		render :template => "/wymiframe", :layout => false
+	end
 
 protected
 
   def show_welcome_page
-    if just_installed? and params[:controller] != "users"
-      render :template => "/pages/welcome", :layout => "admin" 
-    end
+		render :template => "/welcome", :layout => "admin" if just_installed? and params[:controller] != "users"
   end
 
   def find_pages_for_menu

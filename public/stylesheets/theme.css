@@ -1,0 +1,22 @@
+/* alignment styles */
+.text-align-left  {
+	text-align: left;
+}
+.text-align-right {
+	text-align: right;
+}
+.text-align-justify {
+	text-align: justify;
+}
+
+/* block alignment styles */
+.block-align-left {
+	float: left;
+	margin-right: 6px;
+	margin-bottom: 6px;
+}
+.block-align-right {
+	float: right;
+	margin-left: 6px;
+	margin-bottom: 6px;
+}
