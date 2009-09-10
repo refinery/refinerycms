@@ -10,9 +10,9 @@
 -%>
 <li<%= " class='#{css.join(' ')}'" unless css.blank? -%><%= " id='#{domid}'" unless domid.blank? -%>>
   <%= link_to page.title, page.url %>
-	<% unless hide_children or page.children.empty? %>  
+	<% unless hide_children or (children = page.children.collect{|c| c if c.in_menu? }.compact).empty? %>  
   	<ul class='clearfix'>
-  		<% page.children.collect{|c| c if c.in_menu? }.compact.each do |child| -%>
+  		<% children.each do |child| -%>
 				<% shown_siblings = child.shown_siblings %>
     		<%= render :partial => '/shared/menu_branch', :locals => {
 					:page => child, 
