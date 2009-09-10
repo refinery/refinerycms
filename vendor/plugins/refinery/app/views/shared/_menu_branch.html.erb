@@ -12,7 +12,7 @@
   <%= link_to page.title, page.url %>
 	<% unless hide_children or page.children.empty? %>  
   	<ul class='clearfix'>
-  		<% page.children.each do |child| -%>
+  		<% page.children.collect{|c| c if c.in_menu? }.compact.each do |child| -%>
 				<% shown_siblings = child.shown_siblings %>
     		<%= render :partial => '/shared/menu_branch', :locals => {
 					:page => child, 
