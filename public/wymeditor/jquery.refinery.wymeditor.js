@@ -194,7 +194,7 @@ jQuery.extend(WYMeditor, {
 		INSERT_IMAGE					: "InsertImage",
 		INSERT_TABLE					: "InsertTable",
 		INSERT_HTML				 		: "InsertHTML",
-		APPLY_CLASS						: "ApplyClass",
+		APPLY_CLASS						: "Apply_Style",
 		PASTE							 		: "Paste",
 		INDENT								: "Indent",
 		OUTDENT						 		: "Outdent",
