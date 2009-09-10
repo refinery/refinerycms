@@ -892,7 +892,7 @@ WYMeditor.editor.prototype.bindEvents = function() {
 		}
 		
 		// now hide the menu
-		jQuery(wym._box).find(wym._options.classUnhiddenSelector).toggleClass(wym._options.classHiddenSelector.substring(1));
+		wym.exec(WYMeditor.APPLY_CLASS);
 		
 		return(false);
 	});
