@@ -1,1 +1,18 @@
-grid view. implement me.
+<div id="image_grid" class="clearfix">
+  <% @images.each do |image| -%>
+  <div id="image_<%= image.id %>" class="image_grid_item">
+    <p><%= image_tag( image.public_filename(:preview), :title => h(image.title) ) %></p>
+    <p title="<%=h image.title %>">
+      <%=h truncate(image.title, :length => 15) %>
+    </p>
+    <p>
+      <%= link_to image_tag('refinery/icons/application_edit.png'), edit_admin_image_path(image),
+                            :title => 'Edit this image' %>
+      <%= link_to image_tag('refinery/icons/delete.png'), admin_image_path(image),
+                             :confirm => "Are you sure you want to delete #{image.title}?",
+                             :class => "cancel", :method => :delete,
+                             :title => "Remove this image forever" %>
+    </p>
+  </div>
+  <% end -%>
+</div>
