@@ -43,6 +43,7 @@
   </div>
 <% end %>
 <% content_for :head do %>
+  <%= javascript_include_tag 'parse_url' %>
 	<script type='text/javascript'>
 		set_image = function(img)
 		{
@@ -51,12 +52,15 @@
 				$(selected).removeClassName('selected');
 			});
 			$(img.parentNode).addClassName('selected');
-			parts = img.src.split('/images/system');
-			relevant_src = parts.last().split('?');
-			relevant_src = relevant_src.first().replace('_dialog_thumb', '');
+			imageUrl = parseURL(img.src);
+			relevant_src = imageUrl.pathname.replace('_dialog_thumb', '');			
+			// Add any alternate image stores that need a absolute URL in the regex below
+			if( imageUrl.hostname.match(/s3.amazonaws.com/) ) {
+			  relevant_src = imageUrl.protocol + '//' + imageUrl.host + relevant_src;
+			}
 <% unless @thickbox %>
       try {
-				parent.document.getElementById('wym_src').value = '/images/system' + relevant_src;
+				parent.document.getElementById('wym_src').value = relevant_src;
 				parent.document.getElementById('wym_title').value = img.title;
 				parent.document.getElementById('wym_alt').value = img.alt;
 			}
