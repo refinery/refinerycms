@@ -982,19 +982,30 @@ textarea.wymeditor {
 	padding: 10px;
 }
 
-/* Image Grid Styles */
+ul#image_grid {
+	width: 580px;
+	padding: 0px;
+	margin: 0px;
+}
 
-.image_grid_item {
-  float: left; 
-  padding: 5px 15px; 
-  text-align: center; 
-  margin: 5px 7px;
-  background-color: #EEE;
-  border: 1px solid #666;
+ul#image_grid li {
+  	float: left;
+	margin: 0px 13px 12px 0px;
+	padding: 0px;
+	width: 135px;
+  	text-align: center; 
+	height: 176px;
 }
-.image_grid_item a {
-  border: 0 none;
+ul#image_grid li.row-end {
+	margin-right: 0px;
+	float: right;
 }
-.image_grid_item p {
-  margin: 3px 0;
+ul#image_grid li a {
+  	border: 0 none;
+}
+ul#image_grid li p {
+  	margin: 3px 0;
+}
+ul#image_grid li span.actions {
+	width: 100%;
 }
