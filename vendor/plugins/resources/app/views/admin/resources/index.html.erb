@@ -1,5 +1,4 @@
 <div id='actions'>
-	<h2>Actions</h2>
 	<ul>
 		<li>
 			<%= link_to "Upload New File", new_admin_resource_url, :class => "add_icon" %>
@@ -8,7 +7,6 @@
 </div>
 <div id='records'>
   <% if @resources.size > 0 -%>
-  	<h2>Files</h2>
   	<%= will_paginate @resources, :previous_label => '&laquo;', :next_label => '&raquo;' %>
   	<ul>
   	  <% @resources.each do |resource| %>

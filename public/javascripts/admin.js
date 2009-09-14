@@ -1,5 +1,5 @@
 init_tooltips = function(){
-	$$('a[title]').each(function(element)
+	$$('a[title]', '#image_grid img[title]').each(function(element)
 	{
 		new Tooltip(element, {mouseFollow:false, delay: 0, opacity: 1, appearDuration:0, hideDuration: 0, rounded: false});
 	})

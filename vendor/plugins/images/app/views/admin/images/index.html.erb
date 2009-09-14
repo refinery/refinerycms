@@ -1,24 +1,24 @@
 <div id='actions'>
-  <h2>Actions</h2>
   <ul>
     <li>
       <%= link_to "Create New Image", new_admin_image_url, :class => "add_icon" %>
     </li>
   </ul>
   <ul>
-    <li>
-      <%= link_to "Switch to #{alternate_image_view.capitalize} View", 
-        admin_images_url(:view => alternate_image_view, :page => params[:page]), 
-        :class => "reorder_icon"  %>
-    </li>
+		<% image_views.delete_if {|image_view| image_view.to_s == current_image_view.to_s }.each do |image_view| %>
+	    <li>
+	      <%= link_to "Switch to #{image_view.to_s.titleize} View", 
+	        admin_images_url(:view => image_view, :page => params[:page]), 
+	        :class => "reorder_icon"  %>
+	    </li>
+		<% end %>
   </ul>
 </div>
 <div id='records'>
   <% if @images.size > 0 %>
-    <h2>Images</h2>
-      <%= will_paginate @images, :previous_label => '&laquo;', :next_label => '&raquo;' %>
-      <%= render :partial => "#{current_image_view}_view" %>
-      <%= will_paginate @images, :previous_label => '&laquo;', :next_label => '&raquo;' %>
+		<%= will_paginate @images, :previous_label => '&laquo;', :next_label => '&raquo;' %>
+		<%= render :partial => "#{current_image_view}_view" %>
+		<%= will_paginate @images, :previous_label => '&laquo;', :next_label => '&raquo;' %>
   <% else %>
     <p>
       <strong>
