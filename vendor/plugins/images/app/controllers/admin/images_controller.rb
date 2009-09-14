@@ -1,6 +1,6 @@
 class Admin::ImagesController < Admin::BaseController
   include Admin::ImagesHelper
-  
+
   crudify :image, :order => "created_at DESC", :conditions => "parent_id is NULL", :sortable => false
   before_filter :change_list_mode_if_specified
   
@@ -46,7 +46,7 @@ class Admin::ImagesController < Admin::BaseController
       @image = nil
       self.insert
     end
-  end
+  end	
   
 protected
   def paginate_images

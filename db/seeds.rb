@@ -2,14 +2,16 @@
   {:name => "signup_enabled", :value => true}, 
   {:name => "new_page_parts", :value => true}, 
   {:name => "analytics_page_code", :value => "UA-xxxxxx-x"},
-  {:name => "image_thumbnails", :value => "{
-:lightbox => '500x500>',
-:dialog_thumb => 'c106x106',
-:thumb => '50x50',
-:medium => '225x255',
-:side_body => '300x500',
-:preview => 'c96x96'
-}"}].each do |setting|
+  {:name => "image_thumbnails", :value => {
+		:lightbox => '500x500>',
+		:dialog_thumb => 'c106x106',
+		:grid => 'c135x135',
+		:thumb => '50x50',
+		:medium => '225x255',
+		:side_body => '300x500',
+		:preview => 'c96x96'
+		}
+	}].each do |setting|
 	RefinerySetting[setting[:name].to_sym] = setting[:value]
 	RefinerySetting.find_by_name(setting[:name].to_s).update_attributes({:destroyable => false})
 end
