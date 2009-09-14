@@ -1,5 +1,4 @@
 <div id='actions'>
-  <h2>Actions</h2>
   <ul>
     <li>
       <%= link_to "Create New Image", new_admin_image_url, :class => "add_icon" %>
@@ -17,7 +16,6 @@
 </div>
 <div id='records'>
   <% if @images.size > 0 %>
-    <h2>Images</h2>
 		<%= will_paginate @images, :previous_label => '&laquo;', :next_label => '&raquo;' %>
 		<%= render :partial => "#{current_image_view}_view" %>
 		<%= will_paginate @images, :previous_label => '&laquo;', :next_label => '&raquo;' %>

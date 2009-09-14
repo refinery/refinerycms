@@ -1,5 +1,4 @@
 <div id='actions'>
-	<h2>Actions</h2>
 	<ul>
 		<li>
 			<%= link_to "Create New Setting", new_admin_refinery_setting_url, :class => "add_icon" %>
@@ -8,26 +7,25 @@
 </div>
 <div id='records'>
 	<% if @refinery_settings.size > 0 %>
-		<h2>Settings</h2>
-			<%= will_paginate @refinery_settings, :previous_label => '&laquo;', :next_label => '&raquo;' %>
-	    <ul>
-				<% for refinery_setting in @refinery_settings %>
-					<li class='clearfix record <%= cycle("on", "on-hover") %>'>
-						<span class='title'>
-							<span class='actions'>
-								<%= link_to image_tag("refinery/icons/application_edit.png"), edit_admin_refinery_setting_path(refinery_setting),
-								 		:title => 'Edit this setting' %>
-								<%= link_to image_tag("refinery/icons/delete.png"), admin_refinery_setting_path(refinery_setting),
-										:confirm => 'Are you sure you want to remove this setting forever?',
-										:class => "cancel", :method => :delete,
-										:title => 'Remove this setting forever' if refinery_setting.destroyable %>
-							</span>
-							<%=h refinery_setting.name.titleize %> <span class="preview">- <%=h truncate(refinery_setting.value.to_s, :length =>  40) %></span>
+		<%= will_paginate @refinery_settings, :previous_label => '&laquo;', :next_label => '&raquo;' %>
+    <ul>
+			<% for refinery_setting in @refinery_settings %>
+				<li class='clearfix record <%= cycle("on", "on-hover") %>'>
+					<span class='title'>
+						<span class='actions'>
+							<%= link_to image_tag("refinery/icons/application_edit.png"), edit_admin_refinery_setting_path(refinery_setting),
+							 		:title => 'Edit this setting' %>
+							<%= link_to image_tag("refinery/icons/delete.png"), admin_refinery_setting_path(refinery_setting),
+									:confirm => 'Are you sure you want to remove this setting forever?',
+									:class => "cancel", :method => :delete,
+									:title => 'Remove this setting forever' if refinery_setting.destroyable %>
 						</span>
-					</li>
-				<% end %>
-	    </ul>
-			<%= will_paginate @refinery_settings, :previous_label => '&laquo;', :next_label => '&raquo;' %>
+						<%=h refinery_setting.name.titleize %> <span class="preview">- <%=h truncate(refinery_setting.value.to_s, :length =>  40) %></span>
+					</span>
+				</li>
+			<% end %>
+    </ul>
+		<%= will_paginate @refinery_settings, :previous_label => '&laquo;', :next_label => '&raquo;' %>
 	<% else %>
 		<p>
 			<strong>
