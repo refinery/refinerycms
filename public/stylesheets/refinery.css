@@ -981,3 +981,20 @@ textarea.wymeditor {
 	border: 1px solid #E8E8E8;
 	padding: 10px;
 }
+
+/* Image Grid Styles */
+
+.image_grid_item {
+  float: left; 
+  padding: 5px 15px; 
+  text-align: center; 
+  margin: 5px 7px;
+  background-color: #EEE;
+  border: 1px solid #666;
+}
+.image_grid_item a {
+  border: 0 none;
+}
+.image_grid_item p {
+  margin: 3px 0;
+}
