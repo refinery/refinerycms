@@ -1,0 +1,9 @@
+<h2>Add a New User</h2>
+<%= error_messages_for :user %>
+<p>
+  Fill out the form below with the new users details.
+</p>
+<% form_for [:admin, @user] do |f| -%>
+  <%= render :partial => 'form', :locals => { :f => f } %>
+  <p><%= f.submit %> or <%= link_to 'cancel', admin_users_path %></p>
+<% end -%>

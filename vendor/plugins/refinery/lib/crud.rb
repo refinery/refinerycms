@@ -48,6 +48,10 @@ module Crud
             render :action => 'new'
           end
         end
+        
+        def edit
+          @#{singular_name} = #{class_name}.find(params[:id])
+        end
 
         def update
           @#{singular_name}.update_attributes(params[:#{singular_name}])

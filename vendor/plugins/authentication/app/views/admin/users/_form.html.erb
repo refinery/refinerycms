@@ -1,0 +1,28 @@
+  <div class='field'>
+    <%= f.label :login %>
+    <%= f.text_field :login %>
+  </div>
+  <div class='field'>
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+  </div>
+  <div class='field'>
+    <%= f.label :password %>
+    <%= f.password_field :password %><br />
+    <span class="preview">Leaving password blank keeps the current password</span>
+  </div>
+  <div class='field'>
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation %>
+  </div>
+  <div class='field'>
+    <%= f.label :plugin_access %>
+    <% @available_plugins.each do |plugin| -%>
+      <%# Since the dashboard is always included by the framework, this will maintain the user's order %>
+      <%- if plugin == 'Dashboard' -%>
+        <%= hidden_field_tag 'plugins[]', plugin %>
+      <%- else -%>
+        <%= check_box_tag 'plugins[]', plugin, @user.plugins.include?(plugin) %> <%= plugin %><br />
+      <%- end -%>
+    <% end -%>
+  </div>
