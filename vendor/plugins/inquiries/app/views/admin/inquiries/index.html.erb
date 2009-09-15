@@ -22,6 +22,10 @@
 													{:title => "Move this inquiry to closed"} -%>
 							<%= link_to image_tag('refinery/icons/email_open.png'), {:action => 'show', :id => inquiry.id},
 							     				:title => "Read this inquiry" %>
+							<%= link_to image_tag('refinery/icons/delete.png'), admin_inquiry_url(inquiry),
+							                                                  :method => :delete, :class => "cancel",
+														                                    :confirm => "Are you sure you want to delete #{inquiry.name}?",
+														                                    :title => "Remove this inquiry forever" -%>
 						</span>
 						<%=h inquiry.name %> 
   					<span class="preview">
