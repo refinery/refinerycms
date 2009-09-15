@@ -19,6 +19,9 @@ module Refinery
       plugin = find_by_model(model)
       plugin.activity.reject {|activity| activity.class != model}.first unless plugin.nil?
     end
-  
+    
+    def [](title)
+      self.find { |plugin| plugin.title == title }
+    end
   end
 end

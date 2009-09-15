@@ -4,7 +4,7 @@
 <% if @recent_activity.size > 0 %>
 	<table id='recent_activity'>
 <% @recent_activity.each do |change| 
-	if $plugins.find_activity_by_model(change.class).respond_to?('url_prefix')	%>
+	if Refinery::Plugin.active.find_activity_by_model(change.class).respond_to?('url_prefix')	%>
   	<tr class='<%= cycle("on", "") %>'>
       <%= activity_message_for(change) %>
   	</tr>
