@@ -5,11 +5,14 @@
 	<body>
 		<div id='page'<%= " class='login'" unless logged_in? %><%= " class='splash'" if logged_in? and params[:action] == "index" %>>
 			<div class='clearfix' id='header'>
-				<h1><%= just_installed? ? "Welcome to Refinery" : RefinerySetting[:site_name].titleize %></h1>
-			<% if logged_in? %>
-				<%= link_to image_tag("refinery/logo.png", :alt => "refinery (tm) content manager"), "http://www.refinerycms.com", :target => "_blank", :id => "logo" -%>
-				<%= render :partial => "/admin/menu" %>
-			<% end %>
+				<h1>
+				  <%= just_installed? ? "Welcome to Refinery" : RefinerySetting[:site_name].titleize %>
+				</h1>
+			  <%= link_to "View public site", "/", :target => "_blank", :id => "site_link" %>
+  			<% if logged_in? %>
+  				<%= link_to image_tag("refinery/logo.png", :alt => "refinery (tm) content manager"), "http://www.refinerycms.com", :target => "_blank", :id => "logo" -%>
+  				<%= render :partial => "/admin/menu" %>
+  			<% end %>
 			</div>
 			<div id='content' class='clearfix'>
 				<div id="flash_container">

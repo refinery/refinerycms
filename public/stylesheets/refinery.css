@@ -10,9 +10,11 @@ body {
 	font: 10px/1.5em Verdana;
 	background: black url('/images/refinery/page_bg.png') repeat;
 }
+
 div.login {
 	width: 300px !important;
 }
+
 div.login h1 {
 	margin: 0; 
 	padding: 5px; 
@@ -172,7 +174,7 @@ a:hover {
 #header ul#menu {
 	display: block;
 	margin: 0;
-	padding: 22px 15px 0 0;
+	padding: 32px 15px 0 0;
 }
 
 #header ul#menu li#logout {
@@ -230,10 +232,20 @@ pre {
 	position: relative;
 }
 
+#site_link {
+	display: block;
+	color: white;
+	float: left;
+}
+
+#site_link:hover {
+	text-decoration: underline;
+}
+
 #header #logo {
 	position: absolute;
-	right: 5px;
-	top: 29px;
+	right: 20px;
+	top: 25px;
 }
 
 #header h1 {
@@ -242,6 +254,7 @@ pre {
 	font-weight: normal;
 	margin-bottom: 0;
 	padding-bottom: 4px;
+	margin-top: 0;
 }
 
 #header p {
