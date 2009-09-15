@@ -8,5 +8,5 @@ class Admin::RefineryCoreController < Admin::BaseController
   def render_flash_messages
     render :partial => "/shared/message"
   end
-  
+
 end
