@@ -59,4 +59,5 @@ Rails::Initializer.run do |config|
   # 
   
   config.gem "unicode"
+  
 end
