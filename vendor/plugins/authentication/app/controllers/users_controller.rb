@@ -1,19 +1,19 @@
 class UsersController < ApplicationController
-  
+
   # Protect these actions behind an admin login
   # before_filter :admin_required, :only => [:suspend, :unsuspend, :destroy, :purge]
   before_filter :find_user, :only => [:suspend, :unsuspend, :destroy, :purge]
-  
+
   filter_parameter_logging 'password', 'password_confirmation'
-  
+
   layout 'admin'
 
   def new
-    render :text => "User signup is disabled", :layout => true unless RefinerySetting.find_or_set(:signup_enabled, false)
+    render :text => "User signup is disabled", :layout => true unless can_create_public_user
   end
-  
+
   def create
-    unless RefinerySetting.find_or_set(:signup_enabled, false)
+    unless can_create_public_user
       render :text => "User signup is disabled", :layout => true 
     else
       begin
@@ -29,7 +29,7 @@ class UsersController < ApplicationController
             self.current_user = @user
             current_user.activate!
             redirect_back_or_default(admin_root_url)
-            
+
             flash[:notice] = "Welcome to Refinery, #{current_user.login}."
             if User.count == 1 or RefinerySetting[:site_name] == "Company Name"
               refinery_setting = RefinerySetting.find_by_name("site_name")
@@ -75,6 +75,10 @@ protected
 
   def find_user
     @user = User.find(params[:id])
+  end
+
+  def can_create_public_user
+    User.count == 0
   end
 
 end
