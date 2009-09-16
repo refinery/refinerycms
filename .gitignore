@@ -7,3 +7,4 @@ doc/app
 config/database.yml
 public/images/system/*
 nbproject
+index/
