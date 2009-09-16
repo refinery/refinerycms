@@ -24,14 +24,6 @@ class RefinerySetting < ActiveRecord::Base
 		end
 	end
 	
-	def self.all
-		settings = {}
-		find(:all).each do |setting|
-			settings[setting.name] = setting.value
-		end
-		settings.with_indifferent_access
-	end
-	
 	def self.find_or_set(name, or_this_value)
 	  setting_value = find_or_create_by_name(:name => name.to_s, :value => or_this_value).value
   end
@@ -45,13 +37,20 @@ class RefinerySetting < ActiveRecord::Base
 		setting.value = value
 		setting.save!
 	end
-	
+
+	REPLACEMENTS = {"true" => true, "false" => false}
+
 	def value
-	  begin
-		  eval(self[:value])
-  	rescue
-  	  self[:value]
-    end
+		_value = self[:value]
+		
+	 unless _value.nil?
+			REPLACEMENTS.each do |current_value, new_value|
+				_value = new_value if _value == current_value
+			end
+			_value = _value.to_i if _value.to_i.to_s == _value rescue _value
+		end
+		
+		return _value
 	end
 	
 	def value=(new_value)
