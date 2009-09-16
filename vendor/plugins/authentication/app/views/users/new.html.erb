@@ -20,7 +20,7 @@
     <%= f.password_field :password_confirmation %>
   </div>
   <% if just_installed? %>
-    <%= f.hidden_field :plugins, :value => (($plugins.collect {|p| p.title}).collect {|x| x + ","}).to_s.chop  %>
+    <%= f.hidden_field :plugins, :value => ((Refinery::Plugin.active.collect {|p| p.title}).collect {|x| x + ","}).to_s.chop  %>
   <% end %>
   <p><%= submit_tag 'Sign up' %></p>
 <% end -%>

@@ -1,6 +1,6 @@
 <ul id="menu">
 <% 
-$plugins.each do |plugin| 
+Refinery::Plugin.active.each do |plugin| 
 	unless plugin.hide_from_menu
 -%>
 	<li class='tab' id='plugin_<%= plugin.title %>'>

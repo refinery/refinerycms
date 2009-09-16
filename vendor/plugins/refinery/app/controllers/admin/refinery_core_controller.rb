@@ -1,7 +1,7 @@
 class Admin::RefineryCoreController < Admin::BaseController
 
 	def update_plugin_positions
-	  current_user.update_attribute(:plugins, params[:menu].join(","))
+	  current_user.update_attribute(:plugins, params[:menu])
 	  render :nothing => true
   end
   
