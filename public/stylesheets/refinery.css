@@ -234,12 +234,17 @@ pre {
 
 #site_link {
 	display: block;
-	color: white;
+	color: #C2C2B3;
 	float: left;
+	
 }
 
 #site_link:hover {
 	text-decoration: underline;
+}
+
+#list_actions {
+
 }
 
 #header #logo {

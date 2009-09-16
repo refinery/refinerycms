@@ -3,7 +3,9 @@ class NewsItem < ActiveRecord::Base
   validates_presence_of :title, :content
 
   has_friendly_id :title, :use_slug => true, :strip_diacritics => true
-
+  
+  acts_as_indexed :fields => [:title, :body]
+  
   def self.latest(amount = 10)
     find(:all, :order => "publish_date DESC", :limit => amount,
                :conditions => ["publish_date < ?", Time.now])

@@ -5,6 +5,8 @@ class Inquiry < ActiveRecord::Base
                       :with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i,
                       :message => 'must be valid'                          
   
+  acts_as_indexed :fields => [:name, :email, :message, :phone]
+  
   def self.closed
     find_all_by_open(false, :order => "created_at DESC")
   end

@@ -3,10 +3,14 @@ class Admin::PagesController < Admin::BaseController
   crudify :page, :conditions => "parent_id IS NULL", :order => "position ASC", :include => [:parts, :slugs, :children, :images]
   
   def index
-    @pages = Page.paginate :page => params[:page],
-                  :order => "position ASC",
-                  :conditions => "parent_id IS NULL",
-                  :include => [:parts, :slugs]
+    unless params[:search].nil?
+      @pages = Page.paginate_search params[:search], :page => params[:page]
+    else
+      @pages = Page.paginate :page => params[:page],
+                    :order => "position ASC",
+                    :conditions => "parent_id IS NULL",
+                    :include => [:parts, :slugs]
+    end
   end
   
   def new

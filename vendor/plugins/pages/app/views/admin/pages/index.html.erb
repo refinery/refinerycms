@@ -12,14 +12,31 @@
 	</ul>
 </div>
 <div id='records' class='tree'>
-	<% if @pages.size > 0 %>
-		<ul id='sortable_list'>
-			<%= render :partial => "sortable_list" %>
-		</ul>
+  <div id='list_actions'>
+  	<%= render :partial => "/shared/admin/search", :locals => {:url => admin_pages_url} %>
+  </div>
+  
+  <% if searching? %>
+  	<% if @pages.size > 0 %>
+  	  <h2>Search Results for "<%= params[:search] %>"</h2>
+  		<ul id='sortable_list'>
+  			<%= render :partial => "sortable_list" %>
+  		</ul>
+  	<% else %>
+  		<p>
+  			<strong>Sorry, no results found.</strong>
+  		</p>
+  	<% end %>
 	<% else %>
-		<p>
-			<strong>There are no pages yet.  Click "Create New Page" to add your first page.</strong>
-		</p>
+  	<% if @pages.size > 0 %>
+  		<ul id='sortable_list'>
+  			<%= render :partial => "sortable_list" %>
+  		</ul>
+  	<% else %>
+  		<p>
+  			<strong>There are no pages yet.  Click "Create New Page" to add your first page.</strong>
+  		</p>
+  	<% end %>
 	<% end %>
 </div>
 <%= render :partial => "/shared/admin/make_sortable", :locals => {:tree => true } if Page.count > 1 %>

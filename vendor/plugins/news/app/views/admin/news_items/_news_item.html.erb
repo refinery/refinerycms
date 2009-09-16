@@ -1,0 +1,15 @@
+<li class='clearfix record <%= cycle("on", "on-hover") %>'>
+	<span class='title'>
+		<span class='actions'>
+			<%= link_to image_tag('refinery/icons/application_go.png'), news_item_url(news_item),
+					:title => 'View this news item live <br/><em>(opens in a new window)</em>', :target => "_blank" %>
+			<%= link_to image_tag('refinery/icons/application_edit.png'), edit_admin_news_item_path(news_item),
+			            :title => 'Edit this news item' %>
+			<%= link_to image_tag('refinery/icons/delete.png'), admin_news_item_path(news_item),
+														 :confirm => "Are you sure you want to delete #{news_item.title}?",
+														 :class => "cancel", :method => :delete,
+														 :title => "Remove this news item forever" %>
+		</span>
+		<%=h news_item.title %> <span class="preview">&nbsp;</span>
+	</span>
+</li>

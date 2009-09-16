@@ -1,4 +1,5 @@
 class Admin::ImagesController < Admin::BaseController
+  
   include Admin::ImagesHelper
 
   crudify :image, :order => "created_at DESC", :conditions => "parent_id is NULL", :sortable => false
@@ -6,7 +7,6 @@ class Admin::ImagesController < Admin::BaseController
   
   def new
     @image = Image.new
-    
     @url_override = admin_images_url(:dialog => from_dialog?)
   end
   
@@ -28,6 +28,7 @@ class Admin::ImagesController < Admin::BaseController
     @image = Image.create(params[:image])
     saved = @image.valid?
     flash.now[:notice] = "'#{@image.title}' was successfully created." if saved
+    
     unless params[:insert]
       if saved
         unless from_dialog?
@@ -49,6 +50,7 @@ class Admin::ImagesController < Admin::BaseController
   end	
   
 protected
+
   def paginate_images
     @images = Image.paginate 	:page => (@paginate_page_number ||= params[:page]),
                              	:conditions => 'parent_id is null',

@@ -11,7 +11,9 @@ class Page < ActiveRecord::Base
 	
 	has_many :parts, :class_name => "PagePart", :order => "position ASC"
 	accepts_nested_attributes_for :parts, :allow_destroy => true
-		
+	
+	acts_as_indexed :fields => [:title, :meta_keywords, :meta_description, :custom_title, :browser_title, :all_page_part_content]
+	
 	before_destroy :deletable?
 	
 	# deletable needs to check a couple other fields too
@@ -69,11 +71,23 @@ class Page < ActiveRecord::Base
 			
 			return part.body unless part.nil?
 		end
+		
 		super_value
 	end
 	
 	def title_with_meta
     "#{self.title} #{"<em>(hidden)</em>" unless self.show_in_menu?} #{"<em>(draft)</em>" if self.draft?}"
+	end
+	
+	# used for search only
+	def all_page_part_content
+	  content = ""
+	  
+	  self.parts.each do |part|
+	    content << " #{part.body}"
+	  end
+	  
+	  content
 	end
 	
 end

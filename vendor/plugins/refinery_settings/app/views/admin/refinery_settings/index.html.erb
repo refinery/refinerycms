@@ -6,32 +6,28 @@
 	</ul>
 </div>
 <div id='records'>
-	<% if @refinery_settings.size > 0 %>
-		<%= will_paginate @refinery_settings, :previous_label => '&laquo;', :next_label => '&raquo;' %>
-    <ul>
-			<% for refinery_setting in @refinery_settings %>
-				<li class='clearfix record <%= cycle("on", "on-hover") %>'>
-					<span class='title'>
-						<span class='actions'>
-							<%= link_to image_tag("refinery/icons/application_edit.png"), edit_admin_refinery_setting_path(refinery_setting),
-							 		:title => 'Edit this setting' %>
-							<%= link_to image_tag("refinery/icons/delete.png"), admin_refinery_setting_path(refinery_setting),
-									:confirm => 'Are you sure you want to remove this setting forever?',
-									:class => "cancel", :method => :delete,
-									:title => 'Remove this setting forever' if refinery_setting.destroyable %>
-						</span>
-						<%=h refinery_setting.name.titleize %> <span class="preview">- <%=h truncate(refinery_setting.value.to_s, :length =>  40) %></span>
-					</span>
-				</li>
-			<% end %>
-    </ul>
-		<%= will_paginate @refinery_settings, :previous_label => '&laquo;', :next_label => '&raquo;' %>
-	<% else %>
-		<p>
-			<strong>
-				There are no settings yet.
-				Click "Create New Setting" to add your first setting.
-			</strong>
-		</p>
-	<% end %>
+  <% if searching? %>
+    <% if @refinery_settings.size > 0 %>
+      <ul>
+  			<%= render :partial => 'refinery_setting', :collection => @refinery_settings %>
+      </ul>
+    <% else %>
+      <p>Sorry, no results found</p>
+    <% end %>
+  <% else %>
+  	<% if @refinery_settings.size > 0 %>
+  		<%= will_paginate @refinery_settings, :previous_label => '&laquo;', :next_label => '&raquo;' %>
+      <ul>
+  			<%= render :partial => 'refinery_setting', :collection => @refinery_settings %>
+      </ul>
+  		<%= will_paginate @refinery_settings, :previous_label => '&laquo;', :next_label => '&raquo;' %>
+  	<% else %>
+  		<p>
+  			<strong>
+  				There are no settings yet.
+  				Click "Create New Setting" to add your first setting.
+  			</strong>
+  		</p>
+  	<% end %>
+  <% end %>
 </div>

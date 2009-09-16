@@ -18,7 +18,7 @@ module Crud
   module ClassMethods
 
     def crudify(model_name, new_options = {})
-      options = {:title_attribute => "title", :order => 'position ASC', :conditions => '', :sortable => true}
+      options = {:title_attribute => "title", :order => 'position ASC', :conditions => '', :sortable => true, :searchable => true}
       options.merge!(new_options)
 
       singular_name = model_name.to_s
@@ -28,12 +28,6 @@ module Crud
       module_eval %(
         before_filter :find_#{singular_name}, :only => [:update, :destroy, :edit]
         before_filter :find_all_#{plural_name}, :only => :reorder
-        
-        def index
-          @#{plural_name} = #{class_name}.paginate :page => params[:page],
-                                                   :order => "#{options[:order]}",
-                                                   :conditions => "#{options[:conditions]}"
-        end
         
         def new
           @#{singular_name} = #{class_name}.new
@@ -76,6 +70,28 @@ module Crud
         
         protected :find_#{singular_name}, :find_all_#{plural_name}
       )
+      
+      if options[:searchable]
+        module_eval %(
+          def index
+            unless params[:search].blank?
+              @#{plural_name} = #{class_name}.paginate_search params[:search], :page => params[:page]
+            else
+              @#{plural_name} = #{class_name}.paginate :page => params[:page],
+                                                       :order => "#{options[:order]}",
+                                                       :conditions => "#{options[:conditions]}"
+            end
+          end
+				)
+      else
+        module_eval %(
+          def index
+            @#{plural_name} = #{class_name}.paginate :page => params[:page],
+                                                     :order => "#{options[:order]}",
+                                                     :conditions => "#{options[:conditions]}"
+					end
+				)
+      end
       
       if options[:sortable]
         module_eval %(
