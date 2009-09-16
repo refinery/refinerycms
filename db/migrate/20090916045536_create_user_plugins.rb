@@ -22,6 +22,20 @@ class CreateUserPlugins < ActiveRecord::Migration
   end
 
   def self.down
+		add_column :users, :plugins_column, :string
+		
+		User.find(:all).each do |user|
+			plugins_for_user = []
+			
+			UserPlugin.find(:all, :conditions => "user_id = #{user.id}").each do |plugin|
+				plugins_for_user.push(plugin.title)
+			end
+			
+			user.update_attribute(:plugins_column, plugins_for_user)
+		end
+	
 		drop_table :user_plugins
+		
+		rename_column :users, :plugins_column, :plugins
   end
 end
