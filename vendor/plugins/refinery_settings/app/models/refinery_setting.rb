@@ -5,7 +5,7 @@ class RefinerySetting < ActiveRecord::Base
   validates_uniqueness_of :name
   
   serialize :value
-  
+
   def title
     self.name.titleize
   end
@@ -37,7 +37,7 @@ class RefinerySetting < ActiveRecord::Base
   end
 	
 	def self.[](name)
-	  setting_value = find_by_name(name.to_s).value rescue nil
+	  self.find_by_name(name.to_s).value rescue nil
 	end
 	
 	def self.[]=(name, value)

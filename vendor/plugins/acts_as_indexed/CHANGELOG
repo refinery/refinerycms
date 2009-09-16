@@ -1,0 +1,74 @@
+===0.5.1 [11 June 2009]
+- Fixed Ruby 1.8.6 compatibility.
+
+===0.5.0 [24 April 2009]
+- Ruby 1.9 and Rails 2.3 compatibility.
+- Index location can now be set. Provides Heroku compatibility.
+- Better errors on bad options.
+- ActiveRecord order argument overrides ranking returned by find_by_index.
+- Various test environment improvements
+- Various Bugfixes
+
+===0.4.6 [10 August 2008]
+- Rolled in pagination.
+
+===0.4.5 [04 February 2008]
+- Fixed a bug where the find_options :limit would be added to the :offset, which caused incorrectly sized collections to be returned.
+- Fixed an 'ambiguous column' error when using the :includes find_options key.
+
+===0.4.4 [29 November 2007]
+- Fixed a bug causing the weighting section of the code to error out.
+
+===0.4.3 [27 September 2007]
+- Fixed a bug causing records to be deleted from index during record updates.
+
+===0.4.2 [27 September 2007]
+- Fixed a bug causing identically ranked records to be lost.
+
+===0.4.1 [22 September 2007]
+- Fixed a bug in the main search method.
+
+===0.4.0 [22 September 2007]
+- Search results now ranked by relevance.
+
+===0.3.3 [20 September 2007]
+- Fixed index update bug where deleted atoms were not removed from index.
+- Improved performance of quoted queries.
+- Improved performance of index updates.
+- When building a full index, records are retrieved and indexed in batches to reduce memory consumption.
+
+===0.3.2 [19 September 2007]
+- Fixed index update bug.
+
+===0.3.1 [18 September 2007]
+- Added RDoc documentation comments.
+
+===0.3.0 [18 September 2007]
+- Minor bug fixes.
+- min_word_size now works properly, with quieries containing small words in 
+  quotes or being preceded by a '+' symbol are now searched on.
+
+===0.2.2 [06 September 2007]
+- Search now caches query results within a session. Call the search twice in an 
+  action? Only runs once!
+
+===0.2.1 [05 September 2007]
+- AR find options can now be passed to the search to allow finer control of 
+  returned Model Objects.
+
+===0.2.0 [04 September 2007]
+- Major performance improvements.
+- Index segmentation can now be tuned.
+
+===0.1.1 [31 August 2007]
+- Added a full set of tests.
+- Fixed various set-manipulation based errors.
+- Fixed a bug when searching for quoted phrases.
+
+===0.1.01 [31 August 2007]
+
+- Fixed a casting bug occurring when adding non-string fields to the index.
+
+===0.1 [31 August 2007]
+
+- Initial release.

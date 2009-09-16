@@ -8,7 +8,9 @@ class Image < ActiveRecord::Base
                  :processor => 'Rmagick', 
                  :thumbnails => ((RefinerySetting.image_thumbnails ||= Hash.new) rescue Hash.new),
                  :max_size => 5.megabytes
-                 
+
+  acts_as_indexed :fields => [:title]
+      
   def validate
    errors.add_to_base("You must choose a file to upload") unless self.filename
 

@@ -6,32 +6,28 @@
 	</ul>
 </div>
 <div id='records'>
-  <% if @resources.size > 0 -%>
-  	<%= will_paginate @resources, :previous_label => '&laquo;', :next_label => '&raquo;' %>
-  	<ul>
-  	  <% @resources.each do |resource| %>
-    		<li class='clearfix record <%= cycle("on", "on-hover") %>'>
-    			<span class='title'>
-    				<span class='actions'>
-    					<%= link_to image_tag('refinery/icons/page_white_put.png'),	resource.public_filename,
-    															:title => "Download this file (#{number_to_human_size(resource.size)})" %>
-    					<%= link_to image_tag('refinery/icons/application_edit.png'), edit_admin_resource_url(resource),
-    															:title => "Edit this file" %>
-    					<%= link_to image_tag('refinery/icons/delete.png'), admin_resource_path(resource),
-    															:confirm => "Are you sure you want to delete '#{resource.title}'?", 
-    															:class => "cancel",	:method => :delete,
-    															:title => "Remove this file forever" %>
-    				</span>
-    				<%=h resource.title %>
-    				<span class="preview">- <%= number_to_human_size(resource.size) %> - <%= resource.public_filename -%></span>
-    			</span>
-    		</li>
-    	<% end -%>
-  	</ul>
-  	<%= will_paginate @resources, :previous_label => '&laquo;', :next_label => '&raquo;' %>
-  <% else -%>
-  	<p>
-  		<strong>There are no files yet. Click "Upload New Files" to add your first file.</strong>
-  	</p>
-  <% end -%>
+  <div id='list_actions'>
+    <%= render :partial => "/shared/admin/search", :locals => {:url => admin_resources_url} %>
+  </div>
+
+  <% if searching? %>
+    <h2>Search Results for "<%= params[:search] %>"</h2>
+    <% if @resources.size > 0 %>
+  			<%= render :partial => "resource", :collection => @resources %>
+    <% else %>
+      <p>Sorry, no results found.</p>
+    <% end %>
+	<% else %>
+    <% if @resources.size > 0 -%>
+    	<%= will_paginate @resources, :previous_label => '&laquo;', :next_label => '&raquo;' %>
+    	<ul>
+    	  <%= render :partial => "resource", :collection => @resources %>
+    	</ul>
+    	<%= will_paginate @resources, :previous_label => '&laquo;', :next_label => '&raquo;' %>
+    <% else -%>
+    	<p>
+    		<strong>There are no files yet. Click "Upload New Files" to add your first file.</strong>
+    	</p>
+    <% end -%>
+  <% end %>
 </div>

@@ -1,0 +1,114 @@
+= acts_as_indexed
+
+If you find this plugin useful, please consider a donation to show your support!
+
+http://www.paypal.com/cgi-bin/webscr?cmd=_send-money
+  
+Paypal address: mailto:dougal.s@gmail.com
+  
+
+== Instructions
+
+This plugin allows boolean-queried fulltext search to be added to any Rails app
+with no dependencies and minimal setup.
+
+
+== Resources
+
+=== Install
+  ./script/plugin install git://github.com/dougal/acts_as_indexed.git
+
+If you don't have git installed, you can download the plugin from the GitHub page (http://github.com/dougal/acts_as_indexed) and unpack it into the +vendor/plugins+ directory of your rails app. 
+
+== Usage
+
+
+=== Setup
+
+Add +acts_as_indexed+ to the top of any models you want to index, along with a
+list of the fields you wish to be indexed.
+
+	class Post < ActiveRecord::Base
+	  acts_as_indexed :fields => [:title, :body]
+  
+	  ...
+	end
+
+The fields are not limited to model fields, but can be any instance method of
+the current model.
+
+	class User < ActiveRecord::Base
+	  acts_as_indexed :fields => [:address, :fullname]
+
+		def fullname
+			return self.firstname + ' ' + self.lastname
+		end
+
+	  ...
+	end
+	
+Acts_as_indexed automatically filters out query words shorter than 3 characters, for
+performance sake. This value can be changed by passing +min_word_size+ along
+with the fields. NOTE: The index files must be rebuilt by deleting the 'index'
+directory in your app's root directory.
+
+	class Post < ActiveRecord::Base
+	  acts_as_indexed :fields => [:title, :body], :min_word_size => 5
+
+	  ...
+	end
+
+
+=== Searching
+
+To search, call the +find_with_index+ method on your model, passing a query as 
+the first argument. The optional +ids_only+ parameter, when set to true, will
+return only the IDs of any matching records.
+
+	# Returns array of Post objects.
+	my_search_results = Post.find_with_index('my search query')
+	
+	# Pass any of the ActiveRecord find options to the search.
+	my_search_results = Post.find_with_index('my search query',{:limit => 10}) # return the first 10 matches.
+	
+	# Returns array of IDs.
+	my_search_results = Post.find_with_index('my search query',{},{:ids_only => true}) # =>  [12,19,33...
+	
+	
+=== Query Options
+
+The following query operators are supported:
+
+AND:: This is the default option. 'cat dog' will find records matching 'cat' AND 'dog'.
+NOT:: 'cat -dog' will find records matching 'cat' AND NOT 'dog'
+INCLUDE:: 'cat +me' will find records matching 'cat' and 'me', even if 'me' is smaller than the +min_word_size+
+"":: Quoted terms are matched as phrases. '"cat dog"' will find records matching the whole phrase. Quoted terms can be preceded by the NOT operator; 'cat -"big dog"' etc. Quoted terms can include words shorter than the +min_word_size+.
+
+=== Pagination
+
+Pagination is supported via the +paginate_search+ method whose first argument is the search query, followed all the standard will_paginate arguments.
+
+  @images = Image.paginate_search 'girl', :page => 1, :per_page => 5
+
+== RDoc Documentation
+
+To generate the RDoc documentation, run the <tt>rake rdoc</tt> task in the acts_as_indexed 
+plugin folder. Then point your browser at <tt>/vendor/plugins/acts_as_indexed/rdoc/index.html</tt>.
+
+Alternatively, you can view the rdoc documentation online[http://douglasfshearer.com/rdoc/acts_as_indexed/].
+
+== Problems, Comments, Suggestions?
+
+All of the above are most welcome. mailto:dougal.s@gmail.com
+
+
+== Credits
+
+Douglas F Shearer - http:douglasfshearer.com
+
+
+== Future Releases
+
+Future releases will be looking to add the following features:
+* Optional html scrubbing during indexing.
+* Ranking affected by field weightings.

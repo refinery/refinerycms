@@ -15,16 +15,29 @@
   </ul>
 </div>
 <div id='records'>
-  <% if @images.size > 0 %>
-		<%= will_paginate @images, :previous_label => '&laquo;', :next_label => '&raquo;' %>
-		<%= render :partial => "#{current_image_view}_view" %>
-		<%= will_paginate @images, :previous_label => '&laquo;', :next_label => '&raquo;' %>
+  <div id='list_actions'>
+  	<%= render :partial => "/shared/admin/search", :locals => {:url => admin_images_url} %>
+  </div>
+  
+  <% if searching? %>
+    <h2>Search Results for "<%= params[:search] %>"</h2>
+    <% if @images.size > 0 %>
+      <%= render :partial => "#{current_image_view}_view" %>
+    <% else %>
+      <p>Sorry, no results found.</p>
+    <% end %>
   <% else %>
-    <p>
-      <strong>
-        There are no images yet.
-        Click "Create New Image" to add your first image.
-      </strong>
-    </p>
+    <% if @images.size > 0 %>
+  		<%= will_paginate @images, :previous_label => '&laquo;', :next_label => '&raquo;' %>
+  		<%= render :partial => "#{current_image_view}_view" %>
+  		<%= will_paginate @images, :previous_label => '&laquo;', :next_label => '&raquo;' %>
+    <% else %>
+      <p>
+        <strong>
+          There are no images yet.
+          Click "Create New Image" to add your first image.
+        </strong>
+      </p>
+    <% end %>
   <% end %>
 </div>
