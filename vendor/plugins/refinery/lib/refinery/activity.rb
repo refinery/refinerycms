@@ -9,7 +9,7 @@ module Refinery
     end
     
     def url_prefix
-      "#{@url_prefix}_".gsub("__", "_") unless @url_prefix.blank?
+      @url_prefix.blank? ? "" : "#{@url_prefix}_".gsub("__", "_")
     end
   
   end

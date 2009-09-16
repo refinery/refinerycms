@@ -6,7 +6,7 @@ Refinery::Plugin.register do |plugin|
   plugin.activity = {
     :class => User, 
     :url_prefix => "edit_", 
-    :title => "title", 
+    :title => "login", 
     :created_image => "page_add.png", 
     :updated_image => "page_edit.png"
   }

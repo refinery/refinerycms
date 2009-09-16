@@ -13,7 +13,9 @@
 		<%= f.label :remember_me, nil, :style => "display: inline;" %>
 		<%= f.check_box :remember_me %>
 	</div>
-	<div class='actions'>
+	<div class='form-actions'>
 		<%= submit_tag 'Log in' %>
+		or
+		<%= link_to "Cancel", root_url %>
 	</div>
 <% end -%>

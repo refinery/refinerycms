@@ -1,28 +1,42 @@
-  <div class='field'>
-    <%= f.label :login %>
-    <%= f.text_field :login %>
-  </div>
-  <div class='field'>
-    <%= f.label :email %>
-    <%= f.text_field :email %>
-  </div>
-  <div class='field'>
-    <%= f.label :password %>
-    <%= f.password_field :password %><br />
-    <span class="preview">Leaving password blank keeps the current password</span>
-  </div>
-  <div class='field'>
-    <%= f.label :password_confirmation %>
-    <%= f.password_field :password_confirmation %>
-  </div>
-  <div class='field'>
-    <%= f.label :plugin_access %>
-    <% @available_plugins.each do |plugin| -%>
-      <%# Since the dashboard is always included by the framework, this will maintain the user's order %>
-      <%- if plugin == 'Dashboard' -%>
-        <%= hidden_field_tag 'plugins[]', plugin %>
-      <%- else -%>
-        <%= check_box_tag 'plugins[]', plugin, @user.plugins.include?(plugin) %> <%= plugin %><br />
-      <%- end -%>
-    <% end -%>
-  </div>
+<%= error_messages_for :user %>
+<% form_for [:admin, @user] do |f| %>
+	<div class='field'>
+		<%= f.label :login %>
+		<%= f.text_field :login %>
+	</div>
+	<div class='field'>
+		<%= f.label :email %>
+		<%= f.text_field :email %>
+	</div>
+	<div class='field'>
+		<%= f.label :password %>
+		<%= f.password_field :password %><br />
+		<span class="preview">Leaving password blank keeps the current password</span>
+	</div>
+	<div class='field'>
+		<%= f.label :password_confirmation %>
+		<%= f.password_field :password_confirmation %>
+	</div>
+	<div class='field'>
+		<%= f.label :plugin_access %>
+		<ul id='plugins'>
+			<% @available_plugins.each do |plugin| -%>
+			  <%# Since the dashboard is always included by the framework, this will maintain the user's order %>
+			  <% if Refinery::Plugins.always_allowed.titles.include?(plugin) or (plugin == 'Users' and @user.id == current_user.id) %>
+			    <%= hidden_field_tag 'user[plugins][]', plugin %>
+			  <% else %>
+					<li>
+				    <%= check_box_tag 'user[plugins][]', plugin, @selected_plugin_titles.include?(plugin), :id => "plugins_#{plugin.downcase.gsub(" ", "_")}" %>
+						<%= f.label 'user[plugins][]', plugin, :class => "stripped", :for => "plugins_#{plugin.downcase.gsub(" ", "_")}" %>
+					</li>
+			  <% end %>
+			<% end %>
+		</ul>
+	</div>
+	<div class='form-actions'>
+		<%= f.submit 'Save' %> 
+		or 
+		<%= link_to "Cancel", admin_users_url, :title => "Cancelling will lose all changes you've made to this news item" %>
+	</div>
+	
+<% end %>

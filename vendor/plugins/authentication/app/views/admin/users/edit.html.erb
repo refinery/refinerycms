@@ -1,6 +1,1 @@
-<h2>Editing User '<%= h @user.login %>'</h2>
-<%= error_messages_for :user %>
-<% form_for [:admin, @user] do |f| -%>
-  <%= render :partial => 'form', :locals => { :f => f } %>
-  <p><%= f.submit %> or <%= link_to 'cancel', admin_users_path %></p>
-<% end -%>
+<%= render :partial => 'form' %>

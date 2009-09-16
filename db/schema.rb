@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090916025552) do
+ActiveRecord::Schema.define(:version => 20090916055243) do
 
   create_table "images", :force => true do |t|
     t.integer  "parent_id"
@@ -130,6 +130,15 @@ ActiveRecord::Schema.define(:version => 20090916025552) do
   add_index "slugs", ["name", "sluggable_type", "scope", "sequence"], :name => "index_slugs_on_name_and_sluggable_type_and_scope_and_sequence", :unique => true
   add_index "slugs", ["sluggable_id"], :name => "index_slugs_on_sluggable_id"
 
+  create_table "user_plugins", :force => true do |t|
+    t.integer "user_id"
+    t.string  "title"
+    t.integer "position"
+  end
+
+  add_index "user_plugins", ["title"], :name => "index_user_plugins_on_title"
+  add_index "user_plugins", ["user_id", "title"], :name => "index_unique_user_plugins", :unique => true
+
   create_table "users", :force => true do |t|
     t.string   "login"
     t.string   "email"
@@ -143,7 +152,6 @@ ActiveRecord::Schema.define(:version => 20090916025552) do
     t.datetime "deleted_at"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "plugins"
   end
 
 end
