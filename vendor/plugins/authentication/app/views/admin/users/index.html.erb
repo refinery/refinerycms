@@ -1,0 +1,41 @@
+<div id='actions'>
+  <ul>
+    <li>
+      <%= link_to "Create New User", new_admin_user_url, :class => "add_icon" %>
+    </li>
+  </ul>
+</div>
+<div id='records'>
+  <% if @users.size > 0 %>
+    <%= will_paginate @users, :previous_label => '&laquo;', :next_label => '&raquo;' %>
+    <ul>
+      <% @users.each do |user| -%>
+        <li id="sortable_<%= user.id %>" class='clearfix record <%= cycle("on", "on-hover") %>'>
+          <span class='title'>
+            <span class='actions'>
+              <%= link_to image_tag('refinery/icons/delete.png'), admin_user_path(user),
+                :confirm => "Are you sure you want to delete #{user.login}?",
+                :class => "cancel", :method => :delete,
+                :title => "Remove this user forever" %>
+              <%= link_to image_tag('refinery/icons/application_edit.png'), edit_admin_user_path(user),
+                :title => 'Edit this user' %>
+              <%= mail_to user.email, image_tag('refinery/icons/email_go.png'), :title => 'Email this user' %>
+            </span>
+            <strong><%= user.login %></strong>
+            <span class="preview">
+              (<%= user.email %>) created <%= user.created_at.strftime("%b %d, %Y") %>
+            </span>
+          </span>
+        </li>
+      <% end -%>
+    </ul>
+    <%= will_paginate @users, :previous_label => '&laquo;', :next_label => '&raquo;' %>
+  <% else %>
+    <p>
+      <strong>
+        There are no users yet.
+        Click "Create New User" to add your first user.
+      </strong>
+    </p>
+  <% end %>
+</div>

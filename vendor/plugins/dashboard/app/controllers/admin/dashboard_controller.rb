@@ -2,7 +2,7 @@ class Admin::DashboardController < Admin::BaseController
 
   def index
     @recent_activity = []
-    $plugins.each do |plugin|
+    Refinery::Plugin.active.each do |plugin|
       plugin.activity.each do |activity|
         include_associations = []
         include_associations.push(:slugs) if activity.class.methods.include?("find_one_with_friendly") # wee performance gain if slugs are used.
