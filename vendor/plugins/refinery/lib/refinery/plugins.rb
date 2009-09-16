@@ -1,8 +1,6 @@
 module Refinery
   class Plugins < Array
   
-    attr_accessor :plugins
-  
     def initialize
       @plugins = []
     end
@@ -23,5 +21,33 @@ module Refinery
     def [](title)
       self.find { |plugin| plugin.title == title }
     end
+
+		def self.registered
+		  @registered_plugins ||= self.new
+		end
+		
+		def titles
+			self.collect { |p| p.title }
+		end
+		
+		def in_menu
+			self.reject{ |p| p.hide_from_menu }
+		end
+
+		def self.active
+		  @active_plugins ||= self.new
+		end
+		
+		def self.always_allowed
+			registered.reject { |p| !p.always_allow_access }
+		end
+
+		def self.set_active(titles)
+			active.clear
+		  titles.each do |title|
+		    active << registered[title] if registered[title]
+		  end
+		end
+
   end
 end

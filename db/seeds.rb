@@ -1,5 +1,4 @@
-[{:name => "site_name", :value => "Company Name"}, 
-  {:name => "signup_enabled", :value => true}, 
+[{:name => "site_name", :value => "Company Name"},
   {:name => "new_page_parts", :value => true}, 
   {:name => "activity_show_limit", :value => 10}, 
   {:name => "preferred_image_view", :value => :grid}, 

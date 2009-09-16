@@ -1027,3 +1027,10 @@ ul#image_grid li p {
 ul#image_grid li span.actions {
 	width: 100%;
 }
+ul#plugins {
+	margin: 0px;
+	padding: 0px;
+}
+ul#plugins li {
+	list-style: none;
+}

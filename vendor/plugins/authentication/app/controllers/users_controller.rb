@@ -23,9 +23,11 @@ class UsersController < ApplicationController
           # uncomment at your own risk
           # reset_session
           @user = User.new(params[:user])
+					@selected_plugin_titles = params[:user][:plugins] || []
 
           @user.register! if @user.valid?
           if @user.errors.empty?
+						@user.plugins = @selected_plugin_titles
             self.current_user = @user
             current_user.activate!
             redirect_back_or_default(admin_root_url)

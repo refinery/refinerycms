@@ -11,15 +11,17 @@ class Admin::UsersController < Admin::BaseController
   
   layout 'admin'
   
-  def new
-    @user = User.new
-  end
-  
+	def new
+		@user = User.new
+		@selected_plugin_titles = []
+	end
+
   def create
     @user = User.new(params[:user])
-    @user.plugins = update_plugins_from_params
-    # render :inline => "<%= debug params; debug @user.plugins; %>" and return
+		@selected_plugin_titles = params[:user][:plugins] || []
+		
     if @user.save
+			@user.plugins = @selected_plugin_titles
       @user.activate!
       flash[:notice] = "'#{@user.login}' was successfully created."
       redirect_to :action => 'index'
@@ -28,29 +30,25 @@ class Admin::UsersController < Admin::BaseController
     end
   end
   
-  def edit
-    
-  end
-  
-  def new
-    @user = User.new
-    @user.plugins = @available_plugins.join(',')
-  end
-  
+	def edit
+		@user = User.find params[:id]
+		@selected_plugin_titles = @user.plugins.collect{|p| p.title}
+	end
+
   def update
-    @user.attributes = params[:user]
-    @user.plugins = update_plugins_from_params
-    # render :inline => "<%= debug params; debug @user.plugins; %>" and return
-    
+		@selected_plugin_titles = params[:user][:plugins]
     # Prevent the current user from locking themselves out of the User manager
-    if current_user.id == @user.id && !@user.plugins.include?('Users')
+    if current_user.id == @user.id and !params[:user][:plugins].include?("Users")
       flash.now[:error] = "You cannot remove the 'Users' plugin from the currently logged in account."
       render :action => "edit"
     else
-      if @user.save
+			@previously_selected_plugins_titles = @user.plugins.collect{|p| p.title}
+      if @user.update_attributes params[:user]
         flash[:notice] = "'#{@user.login}' was successfully updated."
         redirect_to admin_users_url
       else
+				@user.plugins = @previously_selected_plugins_titles
+				@user.save
         render :action => 'edit'
       end
     end
@@ -68,6 +66,7 @@ class Admin::UsersController < Admin::BaseController
 
   def destroy
     @user.delete!
+		@user.destroy
     flash[:notice] = "'#{@user.login}' was successfully deleted."
     redirect_to admin_users_path
   end
@@ -87,20 +86,8 @@ protected
     User.count == 0
   end
   
-  # This converts the check box array into a storable plugin list 
-  # maintaining the users current sort order
-  def update_plugins_from_params
-    return @user.plugins unless params[:plugins]
-    updated = @user.plugins.clone
-    # Add newly accessible
-    params[:plugins].each { |p| updated << p unless updated.include?(p) }
-    # Remove protected
-    updated.delete_if{ |p| !params[:plugins].include?(p) }
-    updated
-  end
-  
   def load_available_plugins
-    @available_plugins = Refinery::Plugin.registered.reject{ |p| p.hide_from_menu }.collect { |p| p.title }.sort
+    @available_plugins = Refinery::Plugins.registered.in_menu.titles.sort
   end
 
 end

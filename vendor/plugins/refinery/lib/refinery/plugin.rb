@@ -1,35 +1,14 @@
 module Refinery
   class Plugin
 
-    class << self
-      
-      def registered
-        @registered_plugins ||= Refinery::Plugins.new
-      end
-      
-      def active
-        @active_plugins ||= Refinery::Plugins.new
-      end
-      
-      def set_active(titles)
-        active.clear
-        titles.each do |title|
-          active << registered[title] if registered[title]
-        end
-      end
-      
-      def register(&block)
-        p = self.new
-        yield p
-      end
-    
-    end
+		def self.register(&block)
+		  yield self.new
+		end
 
-    attr_accessor :title, :version, :description, :url, :menu_match, :plugin_activity, :directory, :hide_from_menu
+    attr_accessor :title, :version, :description, :url, :menu_match, :plugin_activity, :directory, :hide_from_menu, :always_allow_access
     
     def initialize
-      # add itself to the group of plugins
-      self.class.registered << self
+      Refinery::Plugins.registered << self # add me to the collection of registered plugins
     end
 
     def highlighted?(params)
@@ -59,6 +38,10 @@ module Refinery
   	def hide_from_menu
   	  @hide_from_menu
 	  end
+	
+		def always_allow_access
+			@always_allow_access ||= false
+		end
   
   end
 end

@@ -1,5 +1,7 @@
-plugin = Refinery::Plugin.new
-plugin.directory = directory
-plugin.title = "Dashboard"
-plugin.description = "Gives an overview of activity in Refinery"
-plugin.version = 1.0
+Refinery::Plugin.register do |plugin|
+	plugin.directory = directory
+	plugin.title = "Dashboard"
+	plugin.description = "Gives an overview of activity in Refinery"
+	plugin.version = 1.0
+	plugin.always_allow_access = true
+end

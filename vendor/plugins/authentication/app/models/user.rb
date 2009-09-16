@@ -3,8 +3,8 @@ class User < ActiveRecord::Base
   # Virtual attribute for the unencrypted password
   attr_accessor :password
 
-  validates_presence_of     :login, :email
-  validates_presence_of     :password,                   :if => :password_required?
+  #validates_presence_of     :login, :email # handled by other checks
+  #validates_presence_of     :password,                   :if => :password_required? # handled by other checks
   validates_presence_of     :password_confirmation,      :if => :password_required?
   validates_length_of       :password, :within => 4..40, :if => :password_required?
   validates_confirmation_of :password,                   :if => :password_required?
@@ -13,7 +13,9 @@ class User < ActiveRecord::Base
   validates_uniqueness_of   :login, :email, :case_sensitive => false
   before_save :encrypt_password
   
-  serialize :plugins
+	serialize :plugins_column, Array
+
+	has_many :plugins, :class_name => "UserPlugin", :order => "position ASC"
   
   # prevents a user from submitting a crafted form that bypasses activation
   # anything else you want your user to change should be added here.
@@ -68,6 +70,16 @@ class User < ActiveRecord::Base
     crypted_password == encrypt(password)
   end
 
+	def plugins=(plugin_titles)
+		self.plugins.delete_all
+		
+		plugin_titles.each do |plugin_title|
+			if plugin_title.is_a?(String)
+				self.plugins.find_or_create_by_title(plugin_title)
+			end
+		end
+	end
+
   def remember_token?
     remember_token_expires_at && Time.now.utc < remember_token_expires_at 
   end
@@ -96,17 +108,6 @@ class User < ActiveRecord::Base
   # Returns true if the user has just been activated.
   def recently_activated?
     @activated
-  end
-  
-  # Convert legacy string to array
-  def plugins
-    p = self[:plugins] || []
-    p.is_a?(String) ? p.split(',') : p
-  end
-  
-  # Convert to an array for serialization if it's a string
-  def plugins=(val)
-    self[:plugins] = val.is_a?(String) ? val.split(/ +, +/) : val
   end
 
   protected

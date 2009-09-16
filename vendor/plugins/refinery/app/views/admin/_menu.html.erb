@@ -1,19 +1,19 @@
 <ul id="menu">
-<% 
-Refinery::Plugin.active.each do |plugin| 
-	unless plugin.hide_from_menu
--%>
-	<li class='tab' id='plugin_<%= plugin.title %>'>
-		<% class_name = plugin.highlighted?(params) ? "active" : "" -%>
-		<%= link_to plugin.title, plugin.url, :class => class_name %>
-	</li>
-<% end 
-end -%>
-
-  <li>
-		<%= link_to "&nbsp;", "#", :id => "menu_reorder", :title => "Reorder menu" %>
-		<%= link_to "&nbsp;", "#", :id => "menu_reorder_done", :title => "I'm done reordering the menu", :style => "display: none;" %>
-  </li>
+	<% 
+	Refinery::Plugins.active.each do |plugin| 
+		unless plugin.hide_from_menu
+	-%>
+		<li class='tab' id='plugin_<%= plugin.title %>'>
+			<%= link_to plugin.title, plugin.url, :class => (plugin.highlighted?(params) ? "active" : "") %>
+		</li>
+	<% end 
+	end -%>
+	<% if Refinery::Plugins.active.reject{|p| p.hide_from_menu }.size > 1 %>
+	  <li>
+			<%= link_to "&nbsp;", "#", :id => "menu_reorder", :title => "Reorder menu" %>
+			<%= link_to "&nbsp;", "#", :id => "menu_reorder_done", :title => "I'm done reordering the menu", :style => "display: none;" %>
+	  </li>
+	<% end %>
 	<li id='logout'>
 		<%= link_to "Log out", logout_url %>
 	</li> 
