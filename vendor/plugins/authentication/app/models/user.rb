@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
   validates_uniqueness_of   :login, :email, :case_sensitive => false
   before_save :encrypt_password
   
-	serialize :plugins_column, Array
+	serialize :plugins_column#, Array
 
 	has_many :plugins, :class_name => "UserPlugin", :order => "position ASC"
   
