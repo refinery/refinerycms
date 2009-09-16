@@ -18,9 +18,19 @@ class Admin::ImagesController < Admin::BaseController
     @update_image = params[:update_image]
     @thumbnail = params[:thumbnail]
     @callback = params[:callback]
+		@conditions = params[:conditions]
     @url_override = admin_images_url(:dialog => @dialog, :insert => true)
 
-    paginate_images
+		unless params[:conditions].blank?
+			extra_condition = params[:conditions].split(',')
+			
+			extra_condition[1] = true if extra_condition[1] == "true"
+			extra_condition[1] = false if extra_condition[1] == "false"
+			extra_condition[1] = nil if extra_condition[1] == "nil"
+	    paginate_images({extra_condition[0].to_sym => extra_condition[1]})
+		else
+			paginate_images
+		end
     render :action => "insert"
   end
   
@@ -51,12 +61,12 @@ class Admin::ImagesController < Admin::BaseController
   
 protected
 
-  def paginate_images
-    @images = Image.paginate 	:page => (@paginate_page_number ||= params[:page]),
-                             	:conditions => 'parent_id is null',
-                             	:order => 'created_at DESC',
-                             	:per_page => Image.per_page(from_dialog?),
+	def paginate_images(conditions={})
+	  @images = Image.paginate 	:page => (@paginate_page_number ||= params[:page]),
+	                           	:conditions => {:parent_id => nil}.merge!(conditions),
+	                           	:order => 'created_at DESC',
+	                           	:per_page => Image.per_page(from_dialog?),
 															:include => :thumbnails
-  end
+	end
   
 end
