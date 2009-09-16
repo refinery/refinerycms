@@ -11,7 +11,9 @@ class CreateUserPlugins < ActiveRecord::Migration
 		add_index :user_plugins, [:user_id, :title], :unique => true, :name => "index_unique_user_plugins"
 		
 		User.find(:all).each do |user|
-			user.plugins_column.each do |plugin_title|
+			p = user[:plugins_column].is_a?(String) ? user[:plugins_column].split(',') : user[:plugins_column]
+			
+			p.each do |plugin_title|
 				user.plugins.create(:title => plugin_title)
 			end
 		end
