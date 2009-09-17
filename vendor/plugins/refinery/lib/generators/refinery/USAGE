@@ -1,2 +1,2 @@
-./script/generate refinery singular_model_name [attribute:type attribute:type ...]
-./script/generate refinery team_member title:string description:text
+Usage:
+  ./script/generate refinery team_member title:string description:text

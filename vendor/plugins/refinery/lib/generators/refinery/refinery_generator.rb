@@ -1,8 +1,12 @@
 class RefineryGenerator < Rails::Generator::NamedBase
-  
+
   def initialize(*runtime_args)
     super(*runtime_args)
     $title_name = singular_name.gsub("_", " ").gsub(/\b([a-z])/) { $1.capitalize }
+  end
+
+  def banner
+	  "Usage: ./script/generate refinery singular_model_name attribute:type [attribute2:type ...]"
   end
   
   def manifest
@@ -51,10 +55,10 @@ class RefineryGenerator < Rails::Generator::NamedBase
       m.directory 'db/migrate/'
       m.migration_template 'migration.rb', 'db/migrate', :assigns => {:migration_name => "Create#{class_name.pluralize}"}, :migration_file_name => "create_#{singular_name.pluralize}"
 
-      puts "IMPORTANT"
-      puts "---------------------------------------"
-      puts "Don't forgot to run 'rake db:migrate' to add the table to the DB"
-      puts "---------------------------------------"
+		  puts "IMPORTANT"
+		  puts "---------------------------------------"
+		  puts "Now run 'rake db:migrate' to add the table to the DB"
+		  puts "---------------------------------------"
     end
   end
 

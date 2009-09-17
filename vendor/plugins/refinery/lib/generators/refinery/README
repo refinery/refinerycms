@@ -10,11 +10,11 @@ The first attribute should always be the one which is the title or name of the m
 There must be at least one attribute.
 
 == Usage
-./script/generate refinery singular_model_name attribute:type [attribute2:type ...]
+./script/generate refinery singular_name attribute:type [attribute2:type ...]
 
 == Examples
-./script/generate refinery team_members title:string description:text
-./script/generate refinery team_members title:string
+./script/generate refinery team_member title:string description:text
+./script/generate refinery team_member title:string
 
 Results in:
 create  app/controllers/admin/team_members_controller.rb
