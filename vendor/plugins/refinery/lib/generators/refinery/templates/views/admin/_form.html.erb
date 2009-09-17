@@ -3,7 +3,11 @@
 	<% attributes.each do |attribute| -%>
 <div class='field'>
 		<%%= f.label :<%= attribute.name %> %>
-    <%%= f.<%= attribute.field_type %> :<%= attribute.name %> %>
+		<% if attribute.field_type.to_s == "text_area" %>
+		  <%%= f.text_area :<%= attribute.name %>, :rows => 20, :cols => 140, :class => 'wymeditor' %>
+		<% else %>
+      <%%= f.<%= attribute.field_type %> :<%= attribute.name %> %>
+    <% end %>
   </div>
 	<% end -%>
 <div class='form-actions'>
