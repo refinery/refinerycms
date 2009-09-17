@@ -53,12 +53,12 @@
 			});
 			if (img != null) {
 				$(img.parentNode).addClassName('selected');
-				imageUrl = parseURL(img.src);
-				relevant_src = imageUrl.pathname.replace('_dialog_thumb', '');      
-				// Add any alternate image stores that need a absolute URL in the regex below
-				if( imageUrl.hostname.match(/s3.amazonaws.com/) ) {
-					relevant_src = imageUrl.protocol + '//' + imageUrl.host + relevant_src;
-				}
+        imageUrl = parseURL(img.src);
+        relevant_src = imageUrl.pathname.replace('_dialog_thumb', '');
+        // Add any alternate image stores that need a absolute URL in the regex below
+        if( imageUrl.hostname.match(/s3.amazonaws.com/) ) {
+          relevant_src = imageUrl.protocol + '//' + imageUrl.host + relevant_src;
+        }
 <% unless @thickbox %>
 	      try {
 					parent.document.getElementById('wym_src').value = relevant_src;
