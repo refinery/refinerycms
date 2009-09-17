@@ -1,8 +1,0 @@
-<ul id='sortable_list'>
-	<%% for <%= singular_name %> in @<%= plural_name %> -%>
-	<li id='page_<%%= <%= singular_name %>.id -%>'>
-	    <%%=h <%= singular_name %>.<%= attributes.first.name %> %>
-	</li>
-	<%% end -%>
-</ul>
-<%%= render :partial => 'make_sortable' %>
