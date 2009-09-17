@@ -1003,15 +1003,15 @@ textarea.wymeditor {
 ul#image_grid {
 	width: 580px;
 	padding: 0px;
-	margin: 0px;
+	margin: 15px 0;
 }
 
 ul#image_grid li {
-  	float: left;
+	float: left;
 	margin: 0px 13px 12px 0px;
 	padding: 0px;
 	width: 135px;
-  	text-align: center; 
+	text-align: center; 
 	height: 176px;
 }
 ul#image_grid li.row-end {

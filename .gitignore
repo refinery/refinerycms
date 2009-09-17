@@ -7,4 +7,6 @@ doc/app
 config/database.yml
 public/images/system/*
 nbproject
-index/
+index/**/*
+db/*.sqlite3
+*.tmproj
