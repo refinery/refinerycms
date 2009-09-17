@@ -1,6 +1,6 @@
 <%%= error_messages_for :<%= singular_name %> %>
 <%% form_for [:admin, @<%= singular_name %>] do |f| %>
-	<% for attribute in attributes -%>
+	<% attributes.each do |attribute| -%>
 <div class='field'>
 		<%%= f.label :<%= attribute.name %> %>
     <%%= f.<%= attribute.field_type %> :<%= attribute.name %> %>

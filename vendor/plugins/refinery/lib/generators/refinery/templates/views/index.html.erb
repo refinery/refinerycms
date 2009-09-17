@@ -1,47 +1,7 @@
-<div id='actions'>
-	<h2>Actions</h2>
-	<ul>
+<ul id="<%= plural_name %>">
+	<%% @<%= plural_name %>.each do |<%= singular_name %>| %>
 		<li>
-			<%%= link_to "Create New <%= $title_name %>", new_admin_<%= singular_name %>_url, :class => "add_icon" %>
-		</li>
-	<%% if @<%= plural_name %>.size > 1 %>
-		<li>
-			<%%= link_to "Reorder <%= $title_name.pluralize %>", "", :class => "reorder_icon" %>
-			<%%= link_to "Done Reordering <%= $title_name.pluralize %>", "", :class => "reorder_icon", :style => "display: none" %>
+			<%%= link_to <%= singular_name %>.<%= attributes.first.name %>, <%= singular_name %>_url(<%= singular_name %>) %>
 		</li>
 	<%% end %>
-	</ul>
-</div>
-<div id='records'>
-	<%% if @<%= plural_name %>.size > 0 %>
-		<h2><%= $title_name.pluralize %></h2>
-			<%%= will_paginate @<%= plural_name %>, :previous_label => '&laquo;', :next_label => '&raquo;' %>
-	    <ul>
-				<%% for <%= singular_name %> in @<%= plural_name %> %>
-					<li class='clearfix record <%%= cycle("on", "on-hover") %>'>
-						<span class='title'>
-							<span class='actions'>
-								<%%= link_to image_tag("refinery/icons/application_go.png"), <%= singular_name %>_url(<%= singular_name %>), 
-										:title => 'View this <%= $title_name.downcase %>' %>
-								<%%= link_to image_tag("refinery/icons/application_edit.png"), edit_admin_<%= singular_name %>_path(<%= singular_name %>),
-								 		:title => 'Edit this <%= $title_name.downcase %>' %>
-								<%%= link_to image_tag("refinery/icons/delete.png"), admin_<%= singular_name %>_path(<%= singular_name %>),
-										:confirm => 'Are you sure you want to remove this <%= $title_name.downcase %> forever?',
-										:class => "cancel", :method => :delete,
-										:title => 'Remove this <%= $title_name.downcase %> forever' %>
-							</span>
-							<%%=h <%= singular_name %>.<%= attributes.first.name %> %> <span class="preview">&nbsp;</span>
-						</span>
-					</li>
-				<%% end %>
-	    </ul>
-			<%%= will_paginate @<%= plural_name %>, :previous_label => '&laquo;', :next_label => '&raquo;' %>
-	<%% else %>
-		<p>
-			<strong>
-				There are no <%= $title_name.pluralize.downcase %> yet.
-				Click "Create New <%= $title_name %>" to add your first <%= $title_name.downcase %>.
-			</strong>
-		</p>
-	<%% end %>
-</div>
+</ul>
