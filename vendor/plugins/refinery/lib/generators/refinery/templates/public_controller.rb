@@ -7,6 +7,7 @@ class <%= class_name.pluralize %>Controller < ApplicationController
 	end
 
   def show
+		@<%= plural_name %> = <%= class_name %>.find(:all, :order => "position ASC") # for body_content_right
     @<%= singular_name %> = <%= class_name %>.find(params[:id])
   end
   
