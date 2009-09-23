@@ -1,11 +1,11 @@
 <li class='clearfix record <%%= cycle("on", "on-hover") %>' id="<%%= dom_id(<%= singular_name %>) -%>">
 	<span class='title'>
 		<span class='actions'>
-			<%%= link_to image_tag("refinery/icons/application_go.png"), <%= singular_name %>_url(<%= singular_name %>), 
+			<%%= link_to refinery_icon_tag("application_go.png"), <%= singular_name %>_url(<%= singular_name %>), 
 					:title => 'View this <%= $title_name.downcase %>' %>
-			<%%= link_to image_tag("refinery/icons/application_edit.png"), edit_admin_<%= singular_name %>_path(<%= singular_name %>),
+			<%%= link_to refinery_icon_tag("application_edit.png"), edit_admin_<%= singular_name %>_path(<%= singular_name %>),
 			 		:title => 'Edit this <%= $title_name.downcase %>' %>
-			<%%= link_to image_tag("refinery/icons/delete.png"), admin_<%= singular_name %>_path(<%= singular_name %>),
+			<%%= link_to refinery_icon_tag("delete.png"), admin_<%= singular_name %>_path(<%= singular_name %>),
 					:confirm => 'Are you sure you want to remove this <%= $title_name.downcase %> forever?',
 					:class => "cancel", :method => :delete,
 					:title => 'Remove this <%= $title_name.downcase %> forever' %>

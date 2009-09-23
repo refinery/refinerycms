@@ -5,6 +5,9 @@ jQuery(function()
 	jQuery('.wymeditor').wymeditor(
 	{
 	  skin: 'refinery'
+		, cssSkinPath: "/stylesheets/wymeditor/skins/"
+		, jsSkinPath: "/javascripts/wymeditor/skins/"
+		,	langPath: "/javascripts/wymeditor/lang/"
 	  , iframeBasePath: '/'
 	  , toolsItems: [
 	      {'name': 'Bold', 'title': 'Bold', 'css': 'wym_tools_strong'} 

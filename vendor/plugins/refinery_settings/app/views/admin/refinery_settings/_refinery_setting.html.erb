@@ -1,9 +1,9 @@
 <li class='clearfix record <%= cycle("on", "on-hover") %>'>
 	<span class='title'>
 		<span class='actions'>
-			<%= link_to image_tag("refinery/icons/application_edit.png"), edit_admin_refinery_setting_path(refinery_setting),
+			<%= link_to refinery_icon_tag("application_edit.png"), edit_admin_refinery_setting_path(refinery_setting),
 			 		:title => 'Edit this setting' %>
-			<%= link_to image_tag("refinery/icons/delete.png"), admin_refinery_setting_path(refinery_setting),
+			<%= link_to refinery_icon_tag("delete.png"), admin_refinery_setting_path(refinery_setting),
 					:confirm => 'Are you sure you want to remove this setting forever?',
 					:class => "cancel", :method => :delete,
 					:title => 'Remove this setting forever' if refinery_setting.destroyable %>
