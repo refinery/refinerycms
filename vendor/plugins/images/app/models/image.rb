@@ -6,11 +6,11 @@ class Image < ActiveRecord::Base
                  :storage => :file_system,
                  :path_prefix => 'public/images/system',
                  :processor => 'Rmagick', 
-                 :thumbnails => ((RefinerySetting.image_thumbnails ||= Hash.new) rescue Hash.new),
+                 :thumbnails => ((RefinerySetting.find_or_set(:image_thumbnails, Hash.new)) rescue Hash.new),
                  :max_size => 5.megabytes
 
   acts_as_indexed :fields => [:title]
-      
+
   def validate
    errors.add_to_base("You must choose a file to upload") unless self.filename
 
