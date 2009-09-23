@@ -48,4 +48,8 @@ module ApplicationHelper
 		end
 	end
 	
+	def refinery_icon_tag(filename, options = {})
+		image_tag "refinery/icons/#{filename}", {:width => 16, :height => 16}.merge!(options)
+	end
+	
 end

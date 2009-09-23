@@ -1,11 +1,11 @@
 <div id='actions'>
 	<ul>
 		<li>
-			<%= link_to "#{image_tag 'refinery/icons/user_comment.png'} Update who gets notified", 
+			<%= link_to "#{refinery_icon_tag( '/user_comment.png'} Update who gets notified", 
 			    edit_admin_inquiry_setting_url(InquirySetting.notification_recipients) %>
 		</li>
 		<li>
-			<%= link_to "#{image_tag 'refinery/icons/email_edit.png'} Edit confirmation email", 
+			<%= link_to "#{refinery_icon_tag( '/email_edit.png'} Edit confirmation email", 
 			            edit_admin_inquiry_setting_url(InquirySetting.confirmation_body) %>
 		</li>
 	</ul>
@@ -17,8 +17,8 @@
 			  <li class='clearfix record <%= cycle("on", "on-hover") %>'>
 					<span class='title'>
 						<span class='actions'>
-							<%= link_to image_tag("refinery/icons/application_edit.png", :alt => "Edit"), edit_admin_inquiry_setting_path(setting) %>
-							<%= link_to image_tag("refinery/icons/delete.png", :alt => "Delete"), admin_inquiry_setting_path(setting), 
+							<%= link_to refinery_icon_tag("application_edit.png", :alt => "Edit"), edit_admin_inquiry_setting_path(setting) %>
+							<%= link_to refinery_icon_tag("delete.png", :alt => "Delete"), admin_inquiry_setting_path(setting), 
 																:confirm => "Are you sure you want to delete #{setting.name}?", 
 																:class => "cancel", :method => :delete ,
 																:title => "Remove this inquiry setting forever"	if setting.destroyable? %>

@@ -2,15 +2,15 @@
   <span class='title'>
 	  <span class='actions'>
 	    <% if inquiry.open? %>
-  			<%= link_to image_tag('refinery/icons/accept.png'), {:action => 'toggle_status', :id => inquiry.id},
+  			<%= link_to refinery_icon_tag('accept.png'), {:action => 'toggle_status', :id => inquiry.id},
   									{:title => "Move this inquiry to closed"} -%>
 	    <% else %>
-  		  <%= link_to image_tag('refinery/icons/arrow_up.png'), {:action => 'toggle_status', :id => inquiry.id},
+  		  <%= link_to refinery_icon_tag('arrow_up.png'), {:action => 'toggle_status', :id => inquiry.id},
   		                                                        {:title => "Move this inquiry to open"} -%>
       <% end %>
-			<%= link_to image_tag('refinery/icons/email_open.png'), {:action => 'show', :id => inquiry.id},
+			<%= link_to refinery_icon_tag('email_open.png'), {:action => 'show', :id => inquiry.id},
 				  					                                          {:title => "Read this inquiry"} -%>
-			<%= link_to image_tag('refinery/icons/delete.png'), admin_inquiry_url(inquiry),
+			<%= link_to refinery_icon_tag('delete.png'), admin_inquiry_url(inquiry),
 			                                                  :method => :delete, :class => "cancel",
 										                                    :confirm => "Are you sure you want to delete #{inquiry.name}?",
 										                                    :title => "Remove this inquiry forever" -%>

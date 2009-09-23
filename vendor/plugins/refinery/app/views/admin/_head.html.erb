@@ -13,7 +13,7 @@
 	<% else %>
 		<%= javascript_include_tag 'prototype', 'scriptaculous' %>
 	<% end %>
-	<%= javascript_include_tag 'prototype.enhancements.js', 'fastinit', 'tooltips', 'livepipe', 'tabs', 'jquery/jquery', 'thickbox', "/wymeditor/jquery.refinery.wymeditor.js", 'boot_wym', 'admin' %>
+	<%= javascript_include_tag 'prototype.enhancements.js', 'fastinit', 'tooltips', 'livepipe', 'tabs', 'jquery/jquery', 'thickbox', "wymeditor/jquery.refinery.wymeditor.js", 'wymeditor/boot_wym', 'admin' %>
 	<%= "<script type='text/javascript' src='http://getfirebug.com/releases/lite/1.2/firebug-lite-compressed.js'></script>" if RefinerySetting.find_or_set(:show_firebug_lite, false) == true %>
 <% unless flash.empty? %>
 	<script type='text/javascript'>

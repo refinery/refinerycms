@@ -128,7 +128,7 @@ jQuery.extend(WYMeditor, {
 		BASE_PATH					 		: "{Wym_Base_Path}",
 		CSS_PATH							: "{Wym_Css_Path}",
 		WYM_PATH							: "{Wym_Wym_Path}",
-		SKINS_DEFAULT_PATH		: "skins/",
+		SKINS_DEFAULT_PATH		: "/images/wymeditor/skins/",
 		SKINS_DEFAULT_CSS			: "skin.css",
 		SKINS_DEFAULT_JS			: "skin.js",
 		LANG_DEFAULT_PATH	 		: "lang/",
@@ -277,6 +277,9 @@ jQuery.extend(WYMeditor, {
 				this._options.skinPath = this._options.skinPath
 				|| this._options.basePath + WYMeditor.SKINS_DEFAULT_PATH
 					 + this._options.skin + '/';
+				// set css and js skin paths
+				this._options.cssSkinPath = (this._options.cssSkinPath || this._options.skinPath) + this._options.skin + "/";
+				this._options.jsSkinPath = (this._options.jsSkinPath || this._options.skinPath) + this._options.skin + "/";
 				//get or compute the main JS file location
 				this._options.wymPath = this._options.wymPath
 				|| this.computeWymPath();
@@ -329,6 +332,8 @@ jQuery.fn.wymeditor = function(options) {
 		basePath:	 false,
 		
 		skinPath:		false,
+		jsSkinPath: false,
+		cssSkinPath: false,
 		
 		wymPath:		false,
 		
@@ -1486,7 +1491,7 @@ WYMeditor.editor.prototype.loadSkin = function() {
 				});
 
 				//load it, using the skin path
-				if(!found) WYMeditor.loadCss( this._options.skinPath
+				if(!found) WYMeditor.loadCss( this._options.cssSkinPath
 						+ WYMeditor.SKINS_DEFAULT_CSS );
 		}
 
@@ -1497,7 +1502,7 @@ WYMeditor.editor.prototype.loadSkin = function() {
 		//also check if it hasn't already been loaded by another instance
 		if(this._options.initSkin && !WYMeditor.SKINS[this._options.skin]) {
 
-				eval(jQuery.ajax({url:this._options.skinPath
+				eval(jQuery.ajax({url:this._options.jsSkinPath
 						+ WYMeditor.SKINS_DEFAULT_JS, async:false}).responseText);
 		}
 

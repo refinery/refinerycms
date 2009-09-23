@@ -55,15 +55,15 @@
   td            { height: 1.6em; }
  
 /* labels */
-  p         { background-image: url(lbl-p.png); }
-  h1        { background-image: url(lbl-h1.png); }
-  h2        { background-image: url(lbl-h2.png); }
-  h3        { background-image: url(lbl-h3.png); }
-  h4        { background-image: url(lbl-h4.png); }
-  h5        { background-image: url(lbl-h5.png); }
-  h6        { background-image: url(lbl-h6.png); }
-  blockquote{ background-image: url(lbl-blockquote.png); }
-  pre       { background-image: url(lbl-pre.png); }
+  p         { background-image: url('/images/wymeditor/skins/refinery/iframe/lbl-p.png'); }
+  h1        { background-image: url('/images/wymeditor/skins/refinery/iframe/lbl-h1.png'); }
+  h2        { background-image: url('/images/wymeditor/skins/refinery/iframe/lbl-h2.png'); }
+  h3        { background-image: url('/images/wymeditor/skins/refinery/iframe/lbl-h3.png'); }
+  h4        { background-image: url('/images/wymeditor/skins/refinery/iframe/lbl-h4.png'); }
+  h5        { background-image: url('/images/wymeditor/skins/refinery/iframe/lbl-h5.png'); }
+  h6        { background-image: url('/images/wymeditor/skins/refinery/iframe/lbl-h6.png'); }
+  blockquote{ background-image: url('/images/wymeditor/skins/refinery/iframe/lbl-blockquote.png'); }
+  pre       { background-image: url('/images/wymeditor/skins/refinery/iframe/lbl-pre.png'); }
 
 /* specific HTML elements */
   caption   { text-align: left; }

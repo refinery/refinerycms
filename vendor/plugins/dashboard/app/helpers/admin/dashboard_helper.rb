@@ -10,7 +10,7 @@ module Admin::DashboardHelper
       # next work out which action occured and how long ago it happened
       action = record.updated_at.eql?(record.created_at) ? "created" : "updated"
     
-      message = "<td>#{image_tag("refinery/icons/#{eval("activity.#{action}_image")}")}</td>"
+      message = "<td>#{refinery_icon_tag("#{eval("activity.#{action}_image")}")}</td>"
       message << "<td>#{link} #{record.class.name.titleize.downcase} was #{action}</td>"
       message << "<td align='right'>#{time_ago_in_words(eval("record.#{action}_at"))} ago</td>"
     end

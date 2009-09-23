@@ -24,23 +24,23 @@ class Admin::PageDialogsController < Admin::DialogsController
     
       render :text => case response
         when Net::HTTPSuccess, Net::HTTPRedirection
-          "<img src='/images/refinery/icons/tick.png' alt='valid url' title='valid url' />"
+          "<img src='/images/refinery/icons/tick.png' alt='valid url' title='valid url' width='16' height='16' />"
         else
-          "<img src='/images/refinery/icons/cross.png' alt='invalid url' title='invalid url' />"
+          "<img src='/images/refinery/icons/cross.png' alt='invalid url' title='invalid url' width='16' height='16' />"
         end
     end
     
     rescue 
-      render :text => "<img src='/images/refinery/icons/cross.png' alt='invalid url' title='invalid url' />"
+      render :text => "<img src='/images/refinery/icons/cross.png' alt='invalid url' title='invalid url' width='16' height='16' />"
   end
   
   def test_email
     unless params[:email].blank?
       valid = params[:email] =~ /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i
       render :text => if valid
-        "<img src='/images/refinery/icons/tick.png' alt='valid email address' title='valid email address' />"
+        "<img src='/images/refinery/icons/tick.png' alt='valid email address' title='valid email address' width='16' height='16' />"
       else
-        "<img src='/images/refinery/icons/cross.png' alt='invalid email address' title='invalid email address' />"
+        "<img src='/images/refinery/icons/cross.png' alt='invalid email address' title='invalid email address' width='16' height='16' />"
       end
     end
   end

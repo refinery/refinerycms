@@ -3,11 +3,11 @@
  		<li id="image_<%= image.id %>" <%= "class='row-end'" if (@images.index(image)+1) % 4 == 0 %>>
  			<%= image_fu image, :grid, :title => image.title %>
  		  <span class='actions'>
- 				<%= link_to image_tag('refinery/icons/eye.png'), image.public_filename,
+ 				<%= link_to refinery_icon_tag('eye.png'), image.public_filename,
                                :target => "_blank", :title => "Click to view '#{image.title}'<br/><em>Opens in a new window</em>" %>
- 		    <%= link_to image_tag('refinery/icons/application_edit.png'), edit_admin_image_path(image),
+ 		    <%= link_to refinery_icon_tag('application_edit.png'), edit_admin_image_path(image),
  		                          	:title => 'Edit this image' %>
- 		    <%= link_to image_tag('refinery/icons/delete.png'), admin_image_path(image),
+ 		    <%= link_to refinery_icon_tag('delete.png'), admin_image_path(image),
  		                           	:confirm => "Are you sure you want to delete #{image.title}?",
  		                           	:class => "cancel", :method => :delete,
  		                           	:title => "Remove this image forever" %>
