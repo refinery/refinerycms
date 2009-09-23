@@ -39,9 +39,9 @@ module ApplicationHelper
     selected = current_page?(page) or (request.path =~ Regexp.new(page.menu_match) unless page.menu_match.blank?) or (request.path == page.link_url)
   end	
 
-	def image_fu(image, thumbnail, options={})
+	def image_fu(image, thumbnail = nil , options={})
 		begin
-			image_thumbnail = image.thumbnails.collect {|t| t if t.thumbnail == thumbnail.to_s}.compact.first unless thumbnail.nil?
+			image_thumbnail = thumbnail.nil? ? image : image.thumbnails.collect {|t| t if t.thumbnail == thumbnail.to_s}.compact.first 
 			image_tag image_thumbnail.public_filename, {:width => image_thumbnail.width, :height => image_thumbnail.height}.merge!(options)
 		rescue
 			image_tag image.public_filename(thumbnail), options
