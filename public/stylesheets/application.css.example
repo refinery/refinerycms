@@ -55,6 +55,9 @@ body {
 .inquiries form input, .inquiries form textarea {
 	
 }
+.inquiries form textarea {
+	
+}
 .inquiries form .actions {
     margin-left: 150px;
 }
