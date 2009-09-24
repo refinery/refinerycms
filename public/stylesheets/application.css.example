@@ -53,8 +53,11 @@ body {
     
 }
 
-.inquiries form .actions input {
+.inquiries form .actions {
     margin-left: 150px;
+}
+
+.inquiries form .actions input {
 }
 
 .inquiries .field {
