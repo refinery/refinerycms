@@ -20,15 +20,29 @@ module ApplicationHelper
     add_page_title
   end
   
-  def page_title
-    case @page.custom_title_type
-      when "none"
-        @page.title
-      when "text"
-        @page.custom_title
-      when "image"
-        image_fu @page.custom_title_image, nil, {:alt => @page.title} rescue @page.title
-    end
+  def page_title(options = {})
+		options = RefinerySetting.find_or_set(:page_title, { :chain_page_title => false, :ancestors_separator => " | ", :ancestors_class => 'ancestors', :ancestors_tag => 'span'}).merge!(options)
+		
+		title = []
+    pages = options[:chain_page_title] ? [@page.ancestors, @page].flatten : [@page]
+
+		pages.flatten.each do |page|
+			title << case page.custom_title_type
+	      when "none"
+	        page.title
+	      when "text"
+	        page.custom_title
+	      when "image"
+	        image_fu page.custom_title_image, nil, {:alt => page.title} rescue page.title
+	    end
+		end
+		
+		final_title = title.pop
+		if (title.empty?)
+			final_title
+		else
+			"<#{options[:ancestors_tag]}>#{title.join options[:ancestors_separator]}#{options[:ancestors_separator]}</#{options[:ancestors_tag]}>#{final_title}"
+		end
   end
   
   def descendant_page_selected?(page)
