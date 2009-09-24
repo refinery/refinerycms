@@ -21,7 +21,19 @@ module ApplicationHelper
   end
   
   def page_title(options = {})
-		options = RefinerySetting.find_or_set(:page_title, { :chain_page_title => false, :ancestors_separator => " | ", :ancestors_class => 'ancestors', :ancestors_tag => 'span'}).merge(options)
+		options = RefinerySetting.find_or_set(:page_title, {
+			:chain_page_title => false, 
+			:ancestors => {
+				:separator => " | ",
+				:class => 'ancestors',
+				:tag => 'span'
+			},
+			:page_title => {
+				:class => nil,
+				:tag => nil,
+				:wrap_if_not_chained => false
+			}
+		}).merge(options)
 		
 		title = []
     pages = options[:chain_page_title] ? [@page.ancestors, @page].flatten : [@page]
@@ -38,10 +50,13 @@ module ApplicationHelper
 		end
 		
 		final_title = title.pop
+		if (options[:page_title][:wrap_if_not_chained] and title.empty?) and !options[:page_title][:tag].blank?
+			final_title = "<#{options[:page_title][:tag]}#{" class='#{options[:page_title][:class]}'" unless options[:page_title][:class].blank?}>#{final_title}</#{options[:page_title][:tag]}>"
+		end
 		if (title.empty?)
 			final_title
 		else
-			"<#{options[:ancestors_tag]} class='#{options[:ancestors_class]}'>#{title.join options[:ancestors_separator]}#{options[:ancestors_separator]}</#{options[:ancestors_tag]}>#{final_title}"
+			"<#{options[:ancestors][:tag]} class='#{options[:ancestors][:class]}'>#{title.join options[:ancestors][:separator]}#{options[:ancestors][:separator]}</#{options[:ancestors][:tag]}>#{final_title}"
 		end
   end
   
