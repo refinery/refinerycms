@@ -78,7 +78,8 @@ Page.create(:title => "Thank You",
             :menu_match => "^/inquiries/thank_you$",
             :show_in_menu => false,
             :deletable => false,
-            :position => 5).parts.create(
+            :position => 0,
+						:parent_id => 4).parts.create(
             {
               :title => "body", 
               :body => "<p>We've received your inquiry and will get back to you with a response shortly.</p><a href='/'>Return to the home page</a>"
@@ -88,8 +89,21 @@ Page.create(:title => "Page not found",
             :menu_match => "^/404$",
             :show_in_menu => false,
             :deletable => false,
-            :position => 6).parts.create(
+            :position => 5).parts.create(
             {
               :title => "body", 
               :body => "<h2>Sorry, there was a problem...</h2><p>The page you requested was not found.</p><p><a href='/'>Return to the home page</a></p>"
+            })
+
+Page.create(:title => "Privacy Policy", 
+            :deletable => true,
+						:show_in_menu => false,
+            :position => 6).parts.create(
+            {
+              :title => "body", 
+              :body => "<p><strong>We respect your privacy. We do not market, rent or sell our email list to any outside parties.</p><p>We need your e-mail address so that we can ensure that the people using our forms are bona fide. It also allows us to send you e-mail newsletters and other communications, if you opt-in. Your postal address is required in order to send you information and pricing, if you request it.</p><p>Please call us at 123 456 7890 if you have any questions or concerns.</p>"
+            }).page.parts.create(
+            {
+              :title => "side_body",
+              :body => "<p></p>"
             })
