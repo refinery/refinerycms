@@ -42,7 +42,7 @@ jQuery(function()
     , classesItemHtml: "<li><a href='#' name='"+ WYMeditor.CLASS_NAME + "'>"+ WYMeditor.CLASS_TITLE+ "</a></li>"
 		, classesItemHtmlMultiple: "<li class='wym_tools_class_multiple_rules'><span>" + WYMeditor.CLASS_TITLE + "</span><ul>{classesItemHtml}</ul></li>"
 		 
-    , classesItems: [{name:'text-align', rules:['left', 'right', 'justify'], join: '-'}, {name: 'image-align', rules:['left', 'right'], join: '-'}, {name: 'font-size', rules:['small','normal','large'], join: '-'}]
+    , classesItems: [{name:'text-align', rules:['left', 'center', 'right', 'justify'], join: '-'}, {name: 'image-align', rules:['left', 'right'], join: '-'}, {name: 'font-size', rules:['small','normal','large'], join: '-'}]
 
 		, containersHtml: "<ul class='wym_containers wym_section'>" + WYMeditor.CONTAINERS_ITEMS + "</ul>"
 
