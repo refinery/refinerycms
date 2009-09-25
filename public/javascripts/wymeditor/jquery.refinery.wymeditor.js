@@ -1071,11 +1071,10 @@ WYMeditor.editor.prototype.container = function(sType) {
  * @description Toggles class on selected element, or one of its parents
  */
 WYMeditor.editor.prototype.toggleClass = function(sClass, jqexpr) {
-
-	var container = jQuery((this._selected_image ? this._selected_image : jQuery(this.selected())));
+	
+	var container = jQuery((this._selected_image ? this._selected_image : this.selected(true)));
 	if (jqexpr != null) { container = jQuery(container.parentsOrSelf(jqexpr)); }
 	container.toggleClass(sClass);
-
 	if(!container.attr(WYMeditor.CLASS)) container.removeAttr(this._class);
 
 };
@@ -1085,7 +1084,7 @@ WYMeditor.editor.prototype.toggleClass = function(sClass, jqexpr) {
  */
 WYMeditor.editor.prototype.removeClass = function(sClass, jqexpr) {
 	
-	var container = jQuery((this._selected_image ? this._selected_image : jQuery(this.selected())));
+	var container = jQuery((this._selected_image ? this._selected_image : jQuery(this.selected(true))));
 	if (jqexpr != null) { container = jQuery(container.parentsOrSelf(jqexpr)); }
 	container.removeClass(sClass);
 
@@ -1139,13 +1138,23 @@ WYMeditor.editor.prototype.findUp = function(node, filter) {
 /* @name switchTo
  * @description Switch the node's type
  */
-WYMeditor.editor.prototype.switchTo = function(node,sType) {
+WYMeditor.editor.prototype.switchTo = function(selectionOrNode,sType) {
 
+	if (selectionOrNode.getRangeAt) {
+		// We have a selection object so we need to create a temporary node around it (bold is easy). This node will be replaced anyway.
+		this.exec(WYMeditor.BOLD);
+		selectionOrNode = selectionOrNode.focusNode.parentNode;		
+	}
+	
+	// we have a node.
+	var html = jQuery(selectionOrNode).html();
 	var newNode = this._doc.createElement(sType);
-	var html = jQuery(node).html();
-	node.parentNode.replaceChild(newNode,node);
+	selectionOrNode.parentNode.replaceChild(newNode,selectionOrNode);
+	
 	jQuery(newNode).html(html);
 	this.setFocusToNode(newNode);
+	
+	return newNode;
 };
 
 WYMeditor.editor.prototype.replaceStrings = function(sVal) {
@@ -1354,19 +1363,21 @@ WYMeditor.editor.prototype.insert = function(html) {
 		}
 };
 
-WYMeditor.editor.prototype.wrap = function(left, right) {
+WYMeditor.editor.prototype.wrap = function(left, right, selection) {
 		// Do we have a selection?
-		if (this._iframe.contentWindow.getSelection().focusNode != null) {
+		if (selection == null) { selection = this._iframe.contentWindow.getSelection();}
+		if (selection.focusNode != null) {
 				// Wrap selection with provided html
-				this._exec( WYMeditor.INSERT_HTML, left + this._iframe.contentWindow.getSelection().toString() + right);
+				this._exec( WYMeditor.INSERT_HTML, left + selection.toString() + right);
 		}
 };
 
-WYMeditor.editor.prototype.unwrap = function() {
+WYMeditor.editor.prototype.unwrap = function(selection) {
 		// Do we have a selection?
-		if (this._iframe.contentWindow.getSelection().focusNode != null) {
+		if (selection == null) { selection = this._iframe.contentWindow.getSelection();}
+		if (selection.focusNode != null) {
 				// Unwrap selection
-				this._exec( WYMeditor.INSERT_HTML, this._iframe.contentWindow.getSelection().toString() );
+				this._exec( WYMeditor.INSERT_HTML, selection.toString() );
 		}
 };
 
@@ -4375,21 +4386,42 @@ WYMeditor.WymClassMozilla.prototype._exec = function(cmd,param) {
 /* @name selected
  * @description Returns the selected container
  */
-WYMeditor.WymClassMozilla.prototype.selected = function() {
+WYMeditor.WymClassMozilla.prototype.selected = function(upgrade_text_nodes) {
 	
+	if (upgrade_text_nodes == null || upgrade_text_nodes.toString() != "true") { upgrade_text_nodes = false; }
 	var sel = this._iframe.contentWindow.getSelection();
 	var node = sel.focusNode;
 	if(node) {
-			if(node.nodeName == "#text") return(node.parentNode);
+			if(node.nodeName == "#text"){
+				if (upgrade_text_nodes && sel.toString().length > 0) {
+					actual_node = null;
+					parent_node = sel.focusNode.parentNode;
+					if (parent_node != null) {
+						for (i=0;i<parent_node.childNodes.length;i++){
+							child_node = parent_node.childNodes[i];
+							if (child_node.nodeName != "#text" && child_node.innerHTML == sel.toString()){
+								actual_node = child_node;
+							}
+						}
+					}
+
+					if (actual_node == null) {
+						return this.switchTo(sel, 'span');
+					} else {
+						return actual_node;
+					}
+				}
+				else {
+					return node.parentNode;
+				}
+			}
 			else return(node);
 	} 
 	else return(null);
 };
 
 WYMeditor.WymClassMozilla.prototype.addCssRule = function(styles, oCss) {
-
-		styles.insertRule(oCss.name + " {" + oCss.css + "}",
-				styles.cssRules.length);
+		styles.insertRule(oCss.name + " {" + oCss.css + "}", styles.cssRules.length);
 };
 
 
@@ -4763,14 +4795,58 @@ WYMeditor.WymClassSafari.prototype._exec = function(cmd,param) {
 /* @name selected
  * @description Returns the selected container
  */
-WYMeditor.WymClassSafari.prototype.selected = function() {
+WYMeditor.WymClassSafari.prototype.selected = function(upgrade_text_nodes) {
 
-		var sel = this._iframe.contentWindow.getSelection();
-		var node = sel.focusNode;
-		if(node) {
-				if(node.nodeName == "#text") return(node.parentNode);
-				else return(node);
-		} else return(null);
+	if (upgrade_text_nodes == null || upgrade_text_nodes.toString() != "true") { upgrade_text_nodes = false; }
+	var sel = this._iframe.contentWindow.getSelection();
+	var node = sel.focusNode;
+	if(node) {
+			if(node.nodeName == "#text"){
+				if (upgrade_text_nodes && sel.toString().length > 0) {
+					actual_node = null;
+					parent_node = sel.focusNode.parentNode;
+					if (parent_node != null) {
+						for (i=0;i<parent_node.childNodes.length;i++){
+							child_node = parent_node.childNodes[i];
+							if (child_node.textContent == sel.toString()){
+								actual_node = child_node.parentNode;
+							}
+						}
+					}
+
+					if (actual_node == null) {
+						this._selected_item = this.switchTo(sel, 'span');
+						return this._selected_item;
+					} else {
+						return actual_node;
+					}
+				}
+				else {
+					return node.parentNode;
+				}
+			}
+			else return(node);
+	} 
+	else return(null);
+};
+
+/* @name toggleClass
+ * @description Toggles class on selected element, or one of its parents
+ */
+WYMeditor.WymClassSafari.prototype.toggleClass = function(sClass, jqexpr) {
+	
+	var container = null;
+	if (this._selected_image) {
+		container = jQuery(this._selected_image);
+	}
+	else {
+		container = jQuery(this.selected(true) || this._selected_item);
+	}
+	
+	if (jqexpr != null) { container = jQuery(container.parentsOrSelf(jqexpr)); }
+	container.toggleClass(sClass);
+	if(!container.attr(WYMeditor.CLASS)) container.removeAttr(this._class);
+
 };
 
 WYMeditor.WymClassSafari.prototype.addCssRule = function(styles, oCss) {
