@@ -29,20 +29,20 @@ Tooltip.prototype = {
 		
 		// Building tooltip container
 		tooltipClassName = this.options.rounded ? "tooltip tooltip-rounded" : "tooltip tooltip-square";
-		this.tooltip = new Element("div", {className: tooltipClassName, style: "display: none;"});
+		this.tooltip = new Element("div", {style: 'display:none'}).addClassName(tooltipClassName);
 
-		xtop = new Element("div", {className:'xtop'});
+		xtop = new Element("div").addClassName("xtop");
 		rounding.each(function(rounder)
 		{
-			xtop.insert(new Element("div", {className:rounder}));
+			xtop.insert(new Element("div").addClassName(rounder));
 		});
 		this.tooltip.insert(xtop);
-		this.tooltip.insert(new Element("div", {className: "xboxcontent"}).update(this.content));
+		this.tooltip.insert(new Element("div").addClassName("xboxcontent").update(this.content));
 
-		xbottom = new Element("div", {className:'xbottom'});
+		xbottom = new Element("div").addClassName("xbottom");
 		rounding.reverse(false).each(function(rounder)
 		{
-			xbottom.insert(new Element("div", {className:rounder}));
+			xbottom.insert(new Element("div").addClassName(rounder));
 		});
 		this.tooltip.insert(xbottom);
 		
