@@ -321,6 +321,8 @@ function tb_remove() {
 }
 
 function tb_position() {
+	TB_HEIGHT = jQuery("#TB_window").height();
+	TB_WIDTH = jQuery("#TB_window").width();
 	jQuery("#TB_window").css({marginLeft: '-' + parseInt((TB_WIDTH / 2),10) + 'px', width: TB_WIDTH + 'px'});
 	if ( !(jQuery.browser.msie && jQuery.browser.version < 7)) { // take away IE6
 		marginTopAdjustment = parseInt((TB_HEIGHT / 2),10);
