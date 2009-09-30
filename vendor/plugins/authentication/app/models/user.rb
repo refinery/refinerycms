@@ -1,5 +1,5 @@
 require 'digest/sha1'
-require 'assm'
+require 'aasm'
 class User < ActiveRecord::Base
 	include AASM # include the library which will give us state machine functionality.
 	
