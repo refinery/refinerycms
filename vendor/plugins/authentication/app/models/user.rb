@@ -1,5 +1,7 @@
 require 'digest/sha1'
 class User < ActiveRecord::Base
+	include AASM # include the library which will give us state machine functionality.
+	
   # Virtual attribute for the unencrypted password
   attr_accessor :password
 
@@ -21,30 +23,31 @@ class User < ActiveRecord::Base
   # anything else you want your user to change should be added here.
   attr_accessible :login, :email, :password, :password_confirmation, :plugins
 
-  acts_as_state_machine :initial => :pending
-  state :passive
-  state :pending, :enter => :make_activation_code
-  state :active,  :enter => :do_activate
-  state :suspended
-  state :deleted, :enter => :do_delete
+	aasm_column :state
+  aasm_initial_state :pending
+  aasm_state :passive
+  aasm_state :pending, :enter => :make_activation_code
+  aasm_state :active,  :enter => :do_activate
+  aasm_state :suspended
+  aasm_state :deleted, :enter => :do_delete
 
-  event :register do
+  aasm_event :register do
     transitions :from => :passive, :to => :pending, :guard => Proc.new {|u| !(u.crypted_password.blank? && u.password.blank?) }
   end
   
-  event :activate do
+  aasm_event :activate do
     transitions :from => :pending, :to => :active 
   end
   
-  event :suspend do
+  aasm_event :suspend do
     transitions :from => [:passive, :pending, :active], :to => :suspended
   end
   
-  event :delete do
+  aasm_event :delete do
     transitions :from => [:passive, :pending, :active, :suspended], :to => :deleted
   end
 
-  event :unsuspend do
+  aasm_event :unsuspend do
     transitions :from => :suspended, :to => :active,  :guard => Proc.new {|u| !u.activated_at.blank? }
     transitions :from => :suspended, :to => :pending, :guard => Proc.new {|u| !u.activation_code.blank? }
     transitions :from => :suspended, :to => :passive

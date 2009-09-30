@@ -5,12 +5,19 @@
 # ENV['RAILS_ENV'] ||= 'production'
 
 # Specifies gem version of Rails to use when vendor/rails is not present
-RAILS_GEM_VERSION = '2.3.2' unless defined? RAILS_GEM_VERSION
+RAILS_GEM_VERSION = '2.3.4' unless defined? RAILS_GEM_VERSION
 
 # Bootstrap the Rails environment, frameworks, and default configuration
 require File.join(File.dirname(__FILE__), 'boot')
 
 Rails::Initializer.run do |config|
+	config.gem "rake", :version => ">= 0.8.3", :lib => "rake"
+	config.gem "friendly_id", :version => ">= 2.1.4", :lib => "friendly_id"
+	config.gem "mislav-will_paginate", :version => ">= 2.3.11", :lib => "will_paginate"
+  config.gem "rails", :version => ">= 2.3.2", :lib => "rails"
+	config.gem "rubyist-aasm", :version => ">= 2.1.1", :lib => "aasm"
+  config.gem "unicode", :version => ">= 0.1", :lib => "unicode"
+
   # Settings in config/environments/* take precedence over those specified here.
   # Application configuration should go into files in config/initializers
   # -- all .rb files in that directory are automatically loaded.
@@ -23,7 +30,7 @@ Rails::Initializer.run do |config|
   # Only load the plugins named here, in the order given. By default, all plugins 
   # in vendor/plugins are loaded in alphabetical order.
   # :all can be used as a placeholder for all plugins not explicitly named
-  config.plugins = [ :acts_as_state_machine, :authentication, :friendly_id, :acts_as_tree, :attachment_fu, :all ]
+  config.plugins = [ :authentication, :acts_as_tree, :attachment_fu, :all ]
 
   # Add additional load paths for your own custom dirs
   # config.load_paths += %W( #{RAILS_ROOT}/extras )
@@ -57,7 +64,4 @@ Rails::Initializer.run do |config|
   # Make Active Record use UTC-base instead of local time
   # config.active_record.default_timezone = :utc
   # 
-  
-  config.gem "unicode"
-  
 end
