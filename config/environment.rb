@@ -11,13 +11,6 @@ RAILS_GEM_VERSION = '2.3.4' unless defined? RAILS_GEM_VERSION
 require File.join(File.dirname(__FILE__), 'boot')
 
 Rails::Initializer.run do |config|
-	config.gem "rake", :version => ">= 0.8.3", :lib => "rake"
-	config.gem "friendly_id", :version => ">= 2.1.4", :lib => "friendly_id"
-	config.gem "mislav-will_paginate", :version => ">= 2.3.11", :lib => "will_paginate"
-  config.gem "rails", :version => ">= 2.3.2", :lib => "rails"
-	config.gem "rubyist-aasm", :version => ">= 2.1.1", :lib => "aasm"
-  config.gem "unicode", :version => ">= 0.1", :lib => "unicode"
-
   # Settings in config/environments/* take precedence over those specified here.
   # Application configuration should go into files in config/initializers
   # -- all .rb files in that directory are automatically loaded.
@@ -64,4 +57,11 @@ Rails::Initializer.run do |config|
   # Make Active Record use UTC-base instead of local time
   # config.active_record.default_timezone = :utc
   # 
+
+	config.gem "rake", :version => ">= 0.8.3", :lib => "rake"
+	config.gem "friendly_id", :version => ">= 2.1.4", :lib => "friendly_id"
+	config.gem "mislav-will_paginate", :version => ">= 2.3.11", :lib => "will_paginate", :source => "http://gems.github.com"
+  config.gem "rails", :version => ">= 2.3.2", :lib => "rails"
+	config.gem "rubyist-aasm", :version => ">= 2.1.1", :lib => "aasm", :source => "http://gems.github.com"
+  config.gem "unicode", :version => ">= 0.1", :lib => "unicode"
 end
