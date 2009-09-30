@@ -1,0 +1,6 @@
+rake --version '>= 0.8.3'
+friendly_id --version '>= 2.1.4'
+mislav-will_paginate --version '>= 2.3.11'
+rails --version '>= 2.3.2'
+rubyist-aasm --version '>= 2.1.1'
+unicode --version '>= 0.1'
