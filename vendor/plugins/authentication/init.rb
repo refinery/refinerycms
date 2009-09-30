@@ -7,7 +7,7 @@ Refinery::Plugin.register do |plugin|
     :class => User, 
     :url_prefix => "edit_", 
     :title => "login", 
-    :created_image => "page_add.png", 
-    :updated_image => "page_edit.png"
+    :created_image => "user_add.png", 
+    :updated_image => "user_edit.png"
   }
 end
