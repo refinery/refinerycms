@@ -4,7 +4,7 @@ class Image < ActiveRecord::Base
 
   has_attachment :content_type => :image, 
                  :storage => :file_system,
-                 :path_prefix => 'public/images/system',
+                 :path_prefix => 'public/system/images',
                  :processor => 'Rmagick', 
                  :thumbnails => ((RefinerySetting.find_or_set(:image_thumbnails, Hash.new)) rescue Hash.new),
                  :max_size => 5.megabytes
