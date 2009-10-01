@@ -8,5 +8,21 @@ namespace :refinery do
 			Dir.mkdir dir unless File.directory? dir
 		end
   end
+
+  desc "Required to upgrade from <= 0.9.0 to 0.9.1 and above"
+  task :fix_image_paths_in_content => :environment do
+    Page.all.each do |p|
+      p.parts.each do |pp|
+        pp.update_attribute(:body, pp.body.gsub(/\/images\/system\//, "/system/images/"))
+      end
+    end
+
+    NewsItem.all.each do |ni|
+      ni.update_attribute(:body, ni.body.gsub(/\/images\/system\//, "/system/images/"))
+      ni.update_attribute(:blurb, ni.body.gsub(/\/images\/system\//, "/system/images/"))
+    end
+
+  end
   
 end
+
