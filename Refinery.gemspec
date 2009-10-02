@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
 	
-  s.name = %q{refinery}
+  s.name = %q{Refinery}
   s.version = "0.9.0"
 
   s.authors = ["Resolve Digital", "David Jones", "Philip Arndt"]
