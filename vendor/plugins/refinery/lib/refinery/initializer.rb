@@ -1,3 +1,9 @@
+begin
+  # Try to include the rails initializer. If this isn't in a gem, this will fail.
+  require 'initializer'
+rescue LoadError => load_error
+end
+
 module Refinery
   if defined? Rails::Configuration
     class Configuration < Rails::Configuration
