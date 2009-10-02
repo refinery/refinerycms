@@ -10,7 +10,7 @@
 # Bootstrap the Rails environment, frameworks, and default configuration
 require File.join(File.dirname(__FILE__), 'boot')
 
-Refinery::Initializer.run do |config|
+eval("#{(defined? Refinery::Initializer) ? Refinery::Initializer : Rails::Initializer}").run do |config|
   # Settings in config/environments/* take precedence over those specified here.
   # Application configuration should go into files in config/initializers
   # -- all .rb files in that directory are automatically loaded.

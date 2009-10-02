@@ -1,8 +1,6 @@
 # pick the refinery root path
-if File.exist?("#{RAILS_ROOT}/lib/init.rb")
-  REFINERY_ROOT = RAILS_ROOT
-elsif File.exist?("#{RAILS_ROOT}/vendor/refinery")
-  REFINERY_ROOT = "#{RAILS_ROOT}/vendor/refinery"
+if File.exist?("#{RAILS_ROOT}/lib/refinery_initializer.rb")
+  require "#{RAILS_ROOT}/lib/refinery_initializer.rb"
 else
   require 'rubygems'
   version = if defined? REFINERY_GEM_VERSION
@@ -21,5 +19,6 @@ else
   
   require 'refinery_initializer'
 end
+
 
 REFINERY_ROOT = RAILS_ROOT unless defined? REFINERY_ROOT
