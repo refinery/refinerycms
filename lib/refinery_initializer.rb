@@ -6,9 +6,4 @@ unless REFINERY_ROOT == RAILS_ROOT # e.g. only if we're in a gem.
   
   require 'refinery'
   require 'refinery/initializer'
-  
-  # it's important to include refinery first because it declares the refinery namespace.
-#  module Refinery; end
-
-  #Dir["#{REFINERY_ROOT}/vendor/plugins/**/*.rb"].sort.each { |lib| require lib }
 end
