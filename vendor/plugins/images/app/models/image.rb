@@ -6,9 +6,7 @@ class Image < ActiveRecord::Base
                  :storage => :file_system,
                  :path_prefix => 'public/system/images',
                  :processor => 'Rmagick', 
-                 :thumbnails => (returning({}) { |thumbnails|
-                   thumbnails = (((thumbnails = RefinerySetting.find_or_set(:image_thumbnails, {})).is_a?(Hash) ? thumbnails : (RefinerySetting[:image_thumbnails] = {})))
-                  }),
+                 :thumbnails => (((thumbnails = RefinerySetting.find_or_set(:image_thumbnails, {})).is_a?(Hash) ? thumbnails : (RefinerySetting[:image_thumbnails] = {}))),
                  :max_size => 5.megabytes
 
   acts_as_indexed :fields => [:title]
@@ -30,8 +28,8 @@ class Image < ActiveRecord::Base
     self.filename.gsub(/\.\w+$/, '').titleize
   end
   
-  def self.per_page(dialog=false)
-    size = !dialog ? 20 : 18
+  def self.per_page(dialog = false)
+    size = (dialog ? 18 : 20)
   end
   
   def self.last_page(images, dialog=false)
