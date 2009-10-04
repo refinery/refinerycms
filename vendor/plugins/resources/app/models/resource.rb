@@ -28,5 +28,9 @@ class Resource < ActiveRecord::Base
 	def title
 		(split_filename = self[:filename].split('.')).pop and return split_filename.join('.').titleize
 	end
+
+	def self.per_page(dialog = false)
+	  size = (dialog ? 12 : 20)
+  end
   
 end

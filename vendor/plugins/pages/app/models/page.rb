@@ -90,4 +90,8 @@ class Page < ActiveRecord::Base
 	  content
 	end
 	
+	def self.per_page(dialog = false)
+	  size = (dialog ? 14 : 20)
+  end
+	
 end
