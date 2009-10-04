@@ -1,8 +1,5 @@
 <form method="GET" action="<%= url %>"> 
-  <% value = params[:search].nil? ? "" : params[:search] %>
 	Search 
-	<input id="search" name="search" size="30" type="search"
-	  value="<%= params[:search].nil? ? "" : params[:search] %>" 
-	/>
+	<input id="search" name="search" size="30" type="search" value="<%= params[:search] %>" />
 	<%= submit_tag 'Go' %>
 </form>

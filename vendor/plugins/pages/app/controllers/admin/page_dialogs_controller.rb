@@ -8,9 +8,9 @@ class Admin::PageDialogsController < Admin::DialogsController
     @pages = Page.paginate :page => params[:page],
                              :conditions => 'parent_id is null',
                              :order => 'position ASC',
-                             :per_page => 14
+                             :per_page => Page.per_page(dialog=true)
 
-		@resources = Resource.paginate :page => params[:page], :order => 'created_at DESC', :per_page => 12
+		@resources = Resource.paginate :page => params[:resource_page], :order => 'created_at DESC', :per_page => Resource.per_page(dialog=true)
   end
   
   def test_url

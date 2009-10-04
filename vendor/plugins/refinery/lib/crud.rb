@@ -78,7 +78,7 @@ module Crud
       if options[:searchable]
         module_eval %(
           def index
-            unless params[:search].blank?
+            if searching?
               @#{plural_name} = #{class_name}.paginate_search params[:search], :page => params[:page]
             else
               @#{plural_name} = #{class_name}.paginate :page => params[:page],

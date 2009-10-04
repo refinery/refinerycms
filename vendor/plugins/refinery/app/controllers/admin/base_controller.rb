@@ -4,9 +4,15 @@ class Admin::BaseController < ApplicationController
   
   before_filter :login_required, :restrict_plugins, :restrict_controller
 
+  helper_method :searching?
+
 	def admin?
 		true # we're in the admin base controller, so always true.
 	end
+	
+	def searching?
+    not params[:search].blank?
+  end
 
 protected
 

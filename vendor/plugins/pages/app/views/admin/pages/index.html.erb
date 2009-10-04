@@ -3,7 +3,7 @@
 		<li>
 			<%= link_to "Create New Page", new_admin_page_url, :class => "add_icon" %>
 		</li>
-	<% if Page.count > 1 %>
+	<% if Page.count > 1 and not searching? %>
 		<li>
 			<%= link_to "Reorder Pages", "", :id => "reorder_action", :class => "reorder_icon" %>
 			<%= link_to "Done Reordering Pages", "", :id => "reorder_action_done", :style => "display: none;", :class => "reorder_icon" %>
