@@ -6,7 +6,7 @@ class Image < ActiveRecord::Base
                  :storage => :file_system,
                  :path_prefix => 'public/system/images',
                  :processor => 'Rmagick', 
-                 :thumbnails => (((thumbnails = RefinerySetting.find_or_set(:image_thumbnails, {})).is_a?(Hash) ? thumbnails : (RefinerySetting[:image_thumbnails] = {}))),
+                 :thumbnails => ((((thumbnails = RefinerySetting.find_or_set(:image_thumbnails, {})).is_a?(Hash) ? thumbnails : (RefinerySetting[:image_thumbnails] = {}))) rescue {}),
                  :max_size => 5.megabytes
 
   acts_as_indexed :fields => [:title]

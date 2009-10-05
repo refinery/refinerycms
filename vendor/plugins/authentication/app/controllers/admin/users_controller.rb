@@ -22,6 +22,7 @@ class Admin::UsersController < Admin::BaseController
 		
     if @user.save
 			@user.plugins = @selected_plugin_titles
+			@user.register!
       @user.activate!
       flash[:notice] = "'#{@user.login}' was successfully created."
       redirect_to :action => 'index'
