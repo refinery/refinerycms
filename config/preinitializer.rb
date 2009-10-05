@@ -12,9 +12,9 @@ else
   end
   
   if version
-    gem 'Refinery', version
+    gem 'refinerycms', version
   else
-    gem 'Refinery'
+    gem 'refinerycms'
   end
   
   require 'refinery_initializer'
