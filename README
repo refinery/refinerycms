@@ -19,7 +19,7 @@ http://groups.google.com/group/refinery-cms
 
 == Setup
 
-git clone git://github.com/resolve/Refinery.git mynewsite.com
+git clone git://github.com/resolve/refinerycms.git mynewsite.com
 cd ./mynewsite.com
 git remote rm origin
 git remote add origin git@github.com:you/yournewsite.git
