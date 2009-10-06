@@ -3,7 +3,9 @@
 	font-family: Arial;
 	font-size: 13px;
 }
-
+html {
+    min-height: 100%;
+}
 body {
 	margin: 0;
 	padding: 0;
