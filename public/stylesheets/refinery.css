@@ -7,6 +7,7 @@ html {
     min-height: 100%;
 }
 body {
+    min-height: 100%;
 	margin: 0;
 	padding: 0;
 	font: 10px/1.5em Verdana;
