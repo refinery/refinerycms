@@ -256,7 +256,7 @@ pre {
 	top: 25px;
 }
 
-#header h1 {
+#header h1, #header h1 a {
 	color: white;
 	font-size: 20px;
 	font-weight: normal;
