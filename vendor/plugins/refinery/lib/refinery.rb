@@ -16,7 +16,7 @@ module Refinery
     ActiveRecord::Base.class_eval do
   	  def self.has_friendly_id(column, options = {}, &block)
 	    end
-	  end unless ActiveRecord::Base.instance_methods.include? 'has_friendly_id'
+	  end unless ActiveRecord::Base.methods.include? 'has_friendly_id'
   end
   
 end

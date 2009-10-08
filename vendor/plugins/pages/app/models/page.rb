@@ -57,7 +57,8 @@ class Page < ActiveRecord::Base
 	end
 	
 	def self.top_level(include_children = false)
-		include_associations = [:parts, :slugs]
+		include_associations = [:parts]
+		include_associations.push(:slugs) if self.class.methods.include? "find_one_with_friendly"
 		include_associations.push(:children) if include_children
 		find_all_by_parent_id(nil, :order => "position ASC", :include => include_associations)
 	end
