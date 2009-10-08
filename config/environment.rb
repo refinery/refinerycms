@@ -64,5 +64,4 @@ eval("#{(defined? Refinery::Initializer) ? Refinery::Initializer : Rails::Initia
   config.gem "rails", :version => ">= 2.3.4", :lib => "rails"
   config.gem "rubyist-aasm", :version => ">= 2.1.1", :lib => "aasm", :source => "http://gems.github.com"
   config.gem "unicode", :version => ">= 0.1", :lib => "unicode"
-  config.gem "portfolio", :lib => "portfolio"
 end
