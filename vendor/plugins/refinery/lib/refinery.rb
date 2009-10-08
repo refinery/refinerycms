@@ -10,6 +10,13 @@ module Refinery
   			# this will stop us running rake gems:install which we don't really want so just trap this error.
   		end
   	end
+  	
+  	# Stub has_friendly_id unless it is already included.
+  	# The config will still complain that the gem is missing but this allows it to do so.
+    ActiveRecord::Base.class_eval do
+  	  def self.has_friendly_id(column, options = {}, &block)
+	    end
+	  end unless ActiveRecord::Base.instance_methods.include? 'has_friendly_id'
   end
   
 end
