@@ -1,10 +1,10 @@
 Gem::Specification.new do |s|
 	
   s.name = %q{refinerycms}
-  s.version = "0.9.1.2"
+  s.version = "0.9.2"
 
   s.authors = ["Resolve Digital", "David Jones", "Philip Arndt"]
-  s.date = %q{2009-10-06}
+  s.date = %q{2009-10-09}
 
   s.description = %q{A beautiful open source Ruby on Rails content manager for small business. Easy to extend, easy to use, lightweight and all wrapped up in a super slick UI.}
   s.summary = %q{A beautiful open source Ruby on Rails content manager for small business.}
@@ -19,7 +19,7 @@ Gem::Specification.new do |s|
 	
   s.add_runtime_dependency(%q<rake>, [">= 0.8.3"])
 	s.add_runtime_dependency(%q<unicode>, [">= 0.1"])
-	s.add_runtime_dependency(%q<rails>, [">= 2.3.2"])
+	s.add_runtime_dependency(%q<rails>, [">= 2.3.4"])
 	s.add_runtime_dependency(%q<mislav-will_paginate>, [">= 2.3.11"])
 	s.add_runtime_dependency(%q<friendly_id>, [">= 2.1.4"])
 	s.add_runtime_dependency(%q<rubyist-aasm>, [">= 2.1.1"])
