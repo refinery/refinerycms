@@ -1037,3 +1037,16 @@ ul#plugins {
 ul#plugins li {
 	list-style: none;
 }
+.label_inline_with_link label {
+    float: left;
+    margin-right: 6px;
+}
+.label_inline_with_link a {
+    border: 0px none;
+    margin-top: 19px;
+    line-height: 17px;
+    float: left;
+}
+.label_inline_with_link a img {
+    vertical-align: middle;
+}
