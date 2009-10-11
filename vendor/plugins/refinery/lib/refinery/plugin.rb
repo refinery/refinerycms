@@ -32,7 +32,7 @@ module Refinery
   	end
 	
   	def menu_match
-  		@menu_match ||= /admin\/#{self.title.downcase}$/
+  		@menu_match ||= /admin\/#{self.title.gsub(" ", "_").downcase}$/
   	end
   	
   	def hide_from_menu
