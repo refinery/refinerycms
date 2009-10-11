@@ -12,7 +12,7 @@ module Refinery
     end
 
     def highlighted?(params)
-      params[:controller] =~ menu_match
+      params[:controller] =~ self.menu_match
     end
   
     def activity
@@ -32,7 +32,7 @@ module Refinery
   	end
 	
   	def menu_match
-  		@menu_match ||= /admin\/#{self.title.downcase}/
+  		@menu_match ||= /admin\/#{self.title.downcase}$/
   	end
   	
   	def hide_from_menu
