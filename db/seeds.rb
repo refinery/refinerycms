@@ -1,5 +1,5 @@
 [{:name => "site_name", :value => "Company Name"},
-  {:name => "new_page_parts", :value => true}, 
+  {:name => "new_page_parts", :value => false}, 
   {:name => "activity_show_limit", :value => 10}, 
   {:name => "preferred_image_view", :value => :grid}, 
   {:name => "analytics_page_code", :value => "UA-xxxxxx-x"},
