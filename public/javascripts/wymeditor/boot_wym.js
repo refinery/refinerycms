@@ -1,10 +1,15 @@
-jQuery.noConflict(); 
+jQuery.noConflict();
+var wymeditor_inputs = [];
 jQuery(function()
 {
 	var wym_editors_loaded = 0;
-	jQuery('.wymeditor').wymeditor(
+  wymeditor_inputs = jQuery('.wymeditor');
+  wymeditor_inputs.hide();
+	wymeditor_inputs.wymeditor(
 	{
 	  skin: 'refinery'
+	  , basePath: "/javascripts/wymeditor/"
+	  , wymPath: "/javascripts/wymeditor/jquery.refinery.wymeditor.js"
 		, cssSkinPath: "/stylesheets/wymeditor/skins/"
 		, jsSkinPath: "/javascripts/wymeditor/skins/"
 		,	langPath: "/javascripts/wymeditor/lang/"
@@ -136,28 +141,14 @@ jQuery(function()
 	  , postInit: function(wym)
 	  {
 			wym._iframe.style.height = wym._element.height() + "px";
-			
 			wym_editors_loaded += 1;			
-			if(WYMeditor.INSTANCES.length == wym_editors_loaded){
+			if(WYMeditor.INSTANCES.length == wym_editors_loaded){	  
 				WYMeditor.loaded();
 			}
 		}
 	});
 
 });
-
-WYMeditor.XhtmlParser.prototype.normalizeTag = function(tag)
-{
-    // hack to solve unknown issue of whole page being eaten by safari on dialog open. (TODO: revisit)
-    if (jQuery.browser.safari && tag.id == "content")
-    {}
-    else
-    {
-        tag = tag.replace(/^([\s<\/>]*)|([\s<\/>]*)$/gm,'').toLowerCase();
-    }
-    var tags = this._Listener.getTagReplacements();
-    return tags[tag] ? tags[tag] : tag;
-};
 
 // custom function added by us to hook into when all wymeditor instances on the page have finally loaded:
 WYMeditor.loaded = function(){}
