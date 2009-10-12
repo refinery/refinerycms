@@ -1387,8 +1387,7 @@ WYMeditor.editor.prototype.addCssRules = function(doc, aCss) {
 
 WYMeditor.editor.prototype.computeBasePath = function() {
   if ((script_path = this.computeWymPath()) != null) {
-    src_parts = this.computeWymPath().split('/');
-    if (src_parts.length > 1) { src_parts.pop(); }
+    if ((src_parts = script_path.split('/')).length > 1) { src_parts.pop(); }
     return src_parts.join('/') + "/";
   }
   else {
