@@ -4,7 +4,7 @@ Gem::Specification.new do |s|
   s.version = "0.9.3"
 
   s.authors = ["Resolve Digital", "David Jones", "Philip Arndt"]
-  s.date = %q{2009-10-09}
+  s.date = %q{2009-10-12}
 
   s.description = %q{A beautiful open source Ruby on Rails content manager for small business. Easy to extend, easy to use, lightweight and all wrapped up in a super slick UI.}
   s.summary = %q{A beautiful open source Ruby on Rails content manager for small business.}
