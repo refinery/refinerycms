@@ -30,17 +30,16 @@ if(!WYMeditor) var WYMeditor = {};
 
 //Wrap the Firebug console in WYMeditor.console
 (function() {
-		if ( !window.console || !console.firebug ) {
-				var names = ["log", "debug", "info", "warn", "error", "assert", "dir", "dirxml",
-				"group", "groupEnd", "time", "timeEnd", "count", "trace", "profile", "profileEnd"];
+    if ( !window.console || !console.firebug ) {
+        var names = ["log", "debug", "info", "warn", "error", "assert", "dir", "dirxml",
+        "group", "groupEnd", "time", "timeEnd", "count", "trace", "profile", "profileEnd"];
 
-				WYMeditor.console = {};
-				for (var i = 0; i < names.length; ++i)
-						WYMeditor.console[names[i]] = function() {}
+        WYMeditor.console = {};
+        for (var i = 0; i < names.length; ++i)
+            WYMeditor.console[names[i]] = function() {}
 
-		} else WYMeditor.console = window.console;
+    } else WYMeditor.console = window.console;
 })();
-
 jQuery.extend(WYMeditor, {
 
 /*
@@ -238,7 +237,6 @@ jQuery.extend(WYMeditor, {
 		*/
 
 		editor : function(elem, options) {
-
 				/*
 						Constructor: WYMeditor.editor
 
@@ -271,31 +269,23 @@ jQuery.extend(WYMeditor, {
 				//store the HTML option, if any
 				if(this._options.html) this._html = this._options.html;
 				//get or compute the base path (where the main JS file is located)
-				this._options.basePath = this._options.basePath
-				|| this.computeBasePath();
+				this._options.basePath = this._options.basePath || this.computeBasePath();
 				//get or set the skin path (where the skin files are located)
-				this._options.skinPath = this._options.skinPath
-				|| this._options.basePath + WYMeditor.SKINS_DEFAULT_PATH
-					 + this._options.skin + '/';
+				this._options.skinPath = this._options.skinPath	|| this._options.basePath + WYMeditor.SKINS_DEFAULT_PATH + this._options.skin + '/';
 				// set css and js skin paths
 				this._options.cssSkinPath = (this._options.cssSkinPath || this._options.skinPath) + this._options.skin + "/";
 				this._options.jsSkinPath = (this._options.jsSkinPath || this._options.skinPath) + this._options.skin + "/";
 				//get or compute the main JS file location
-				this._options.wymPath = this._options.wymPath
-				|| this.computeWymPath();
+				this._options.wymPath = this._options.wymPath || this.computeWymPath();
 				//get or set the language files path
-				this._options.langPath = this._options.langPath
-				|| this._options.basePath + WYMeditor.LANG_DEFAULT_PATH;
+				this._options.langPath = this._options.langPath || this._options.basePath + WYMeditor.LANG_DEFAULT_PATH;
 				//get or set the designmode iframe's base path
-				this._options.iframeBasePath = this._options.iframeBasePath
-				|| this._options.basePath + WYMeditor.IFRAME_DEFAULT;
+				this._options.iframeBasePath = this._options.iframeBasePath || this._options.basePath + WYMeditor.IFRAME_DEFAULT;
 				//get or compute the jQuery JS file location
-				this._options.jQueryPath = this._options.jQueryPath
-				|| this.computeJqueryPath();
+				this._options.jQueryPath = this._options.jQueryPath || this.computeJqueryPath();
 
 				//initialize the editor instance
 				this.init();
-	
 	}
 
 });
@@ -1165,7 +1155,9 @@ WYMeditor.editor.prototype.replaceStrings = function(sVal) {
 			eval(jQuery.ajax({url:this._options.langPath
 				+ this._options.lang + '.js', async:false}).responseText);
 		} catch(e) {
+		  if (WYMeditor.console) {
 				WYMeditor.console.error("WYMeditor: error while parsing language file.");
+			}
 				return sVal;
 		}
 	}
@@ -1394,27 +1386,30 @@ WYMeditor.editor.prototype.addCssRules = function(doc, aCss) {
 /********** CONFIGURATION **********/
 
 WYMeditor.editor.prototype.computeBasePath = function() {
-	return jQuery(jQuery.grep(jQuery('script'), function(s){
-		return (s.src && s.src.match(/jquery\.refinery\.wymeditor(\.pack){0,1}\.js(\?.*)?$/ ))
-	})).attr('src').replace(/jquery\.refinery\.wymeditor(\.pack){0,1}\.js(\?.*)?$/, '');
+  if ((script_path = this.computeWymPath()) != null) {
+    src_parts = this.computeWymPath().split('/');
+    if (src_parts.length > 1) { src_parts.pop(); }
+    return src_parts.join('/') + "/";
+  }
+  else {
+    return null;
+  }
 };
 
 WYMeditor.editor.prototype.computeWymPath = function() {
-	return jQuery(jQuery.grep(jQuery('script'), function(s){
-		return (s.src && s.src.match(/jquery\.refinery\.wymeditor(\.pack){0,1}\.js(\?.*)?$/ ))
-	})).attr('src');
+  return jQuery('script[src*=jquery.refinery.wymeditor]').attr('src');
 };
 
 WYMeditor.editor.prototype.computeJqueryPath = function() {
-	return jQuery(jQuery.grep(jQuery('script'), function(s){
-		return (s.src && s.src.match(/jquery(-(.*)){0,1}(\.pack){0,1}\.js(\?.*)?$/ ))
-	})).attr('src');
+  return jQuery(jQuery.grep(jQuery('script'), function(s){
+    return (s.src && s.src.match(/jquery(-(.*)){0,1}(\.pack|\.min|\.packed)?\.js(\?.*)?$/ ))
+  })).attr('src');
 };
 
 WYMeditor.editor.prototype.computeCssPath = function() {
-	return jQuery(jQuery.grep(jQuery('link'), function(s){
-	 return (s.href && s.href.match(/wymeditor\/skins\/(.*)screen\.css(\?.*)?$/ ))
-	})).attr('href');
+  return jQuery(jQuery.grep(jQuery('link'), function(s){
+   return (s.href && s.href.match(/wymeditor\/skins\/(.*)screen\.css(\?.*)?$/ ))
+  })).attr('href');
 };
 
 WYMeditor.editor.prototype.configureEditorUsingRawCss = function() {
