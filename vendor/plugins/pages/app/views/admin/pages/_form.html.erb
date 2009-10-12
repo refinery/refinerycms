@@ -10,7 +10,7 @@
   	  <ul id='page_parts'>
 			<% @page.parts.each do |p| %>
 				<li class='tab'>
-					<%= link_to p.title.titleize, "#part_#{p.title}" %>
+					<%= link_to p.title.titleize, "#part_#{p.title}", :class => ((@page.parts.index(p) == 0) ? "active" : nil) %>
 				</li>
 			<% end %>
   		</ul>
@@ -133,7 +133,7 @@
 		$('custom_title_' + type).show();
 	}
 	
-	FastInit.addOnLoad(function(){
+	FastInit.addOnLoad(function(){		
 		$('toggle_advanced_options').observe('click', function(e)
 		{
 			$('more_options').toggle();
