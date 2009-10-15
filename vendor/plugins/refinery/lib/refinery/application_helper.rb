@@ -1,5 +1,5 @@
 # Methods added to this helper will be available to all templates in the application.
-module ApplicationHelper
+module Refinery::ApplicationHelper
 
   def add_meta_tags
 		content_for :head, "<meta name=\"keywords\" content=\"#{@page.meta_keywords}\" />" unless @page.meta_keywords.blank?

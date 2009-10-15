@@ -79,7 +79,10 @@ module Crud
         module_eval %(
           def index
             if searching?
-              @#{plural_name} = #{class_name}.paginate_search params[:search], :page => params[:page]
+              @#{plural_name} = #{class_name}.paginate_search params[:search],
+                                                       :page => params[:page],
+                                                       :order => "#{options[:order]}",
+                                                       :conditions => "#{options[:conditions]}"
             else
               @#{plural_name} = #{class_name}.paginate :page => params[:page],
                                                        :order => "#{options[:order]}",
