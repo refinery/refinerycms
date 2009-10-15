@@ -1,4 +1,4 @@
-class Admin::BaseController < ApplicationController
+class Refinery::AdminBaseController < ApplicationController
   
   layout proc { |controller| "admin#{"_dialog" if controller.from_dialog?}" }
   
