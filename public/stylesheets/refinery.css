@@ -912,7 +912,7 @@ ul#page_parts li a {
 	margin-top: 6px;
 }
 
-ul#page_parts li.active a {
+ul#page_parts li.active a, ul#page_parts li a.active {
 	background: #808080;
 	line-height: 33px;
 	color: white;
