@@ -38,3 +38,14 @@ ruby script/server
 Now in your browser go to http://localhost:3000 and your site should be running.
 
 You will be prompted to setup your first user.
+
+== Environment required
+
+Refinery runs using a number of gems which (as of version 0.9.4.1) are outlined below:
+
+- "rake", :version => ">= 0.8.3"
+- "friendly_id", :version => ">= 2.1.4"
+- "mislav-will_paginate", :version => ">= 2.3.11"
+- "rails", :version => ">= 2.3.4"
+- "rubyist-aasm", :version => ">= 2.1.1"
+- "unicode", :version => ">= 0.1"
