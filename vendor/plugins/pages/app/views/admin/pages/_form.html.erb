@@ -29,7 +29,7 @@
 		<div id='page_part_editors'>
 			<% part_index = -1 %>
 			<% f.fields_for :parts do |p| %>
-				<%= render :partial => "page_part_field", :locals => {:title => p.object.title, :body => p.object.body, :part_index => (part_index += 1), :new_part => false} %>
+				<%= render :partial => "page_part_field", :locals => {:title => p.object.title, :body => p.object.body, :part_index => (part_index += 1), :new_part => @page.new_record?} %>
 			<% end %>
 		</div>
 	</div>
