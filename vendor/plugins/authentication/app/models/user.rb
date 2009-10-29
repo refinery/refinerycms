@@ -86,6 +86,10 @@ class User < ActiveRecord::Base
 			end
 		end
 	end
+	
+  def authorized_plugins
+    self.plugins.collect {|p| p.title} | Refinery::Plugins.always_allowed.titles
+  end
 
   def remember_token?
     remember_token_expires_at && Time.now.utc < remember_token_expires_at 

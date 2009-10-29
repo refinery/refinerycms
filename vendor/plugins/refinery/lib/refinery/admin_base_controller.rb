@@ -23,7 +23,7 @@ protected
   end
   
   def restrict_plugins
-    Refinery::Plugins.set_active( current_user.plugins.collect {|p| p.title} | Refinery::Plugins.always_allowed.titles ) if current_user.respond_to? :plugins
+    Refinery::Plugins.set_active( current_user.authorized_plugins ) if current_user.respond_to? :plugins
   end
 
 	def restrict_controller
