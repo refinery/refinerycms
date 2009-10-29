@@ -19,7 +19,6 @@ namespace :refinery do
 
     NewsItem.all.each do |ni|
       ni.update_attribute(:body, ni.body.gsub(/\/images\/system\//, "/system/images/"))
-      ni.update_attribute(:blurb, ni.body.gsub(/\/images\/system\//, "/system/images/"))
     end
 
   end

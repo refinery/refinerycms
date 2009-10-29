@@ -81,4 +81,39 @@ module Refinery::ApplicationHelper
 		image_tag "refinery/icons/#{filename}", {:width => 16, :height => 16}.merge!(options)
 	end
 	
+	def truncate(text, *args)
+    truncated = super
+    unless truncated === text
+      options = args.extract_options!
+      if options[:preserve_html_tags]
+        truncated = truncated[0, truncated.length - options[:omission].length]
+        # scan for all HTML tags then the last tag
+        unless (tag_matches = truncated.scan(/<[^<>]{1,}>?/)).empty? or
+          (last_tag = tag_matches.last.gsub(/<|\/|\>/, "").split(" ").first).nil? or
+          last_tag.downcase == "p" or (tag_matches.last.split("<").last.first == "/")
+      
+          # scan until we find the exact tag we're looking for.
+          full_tag = text.scan(Regexp.new("(#{tag_matches.last})([^<]*)(<\/#{last_tag}>)"))[0..2].join("") # 0..2 because it'll be found as 3 tags together.
+          truncated.gsub!(tag_matches.last, full_tag)
+      
+        end
+      
+        truncated = truncated[0, truncated.length-1] if truncated.last == "<" # If a tag almost started, get rid of it.
+
+        # add back on the omission
+        truncated = "#{truncated}#{options[:omission]}"
+
+        # close the paragraph unless it closes already.
+        start_index = truncated.length-"</p>".length-options[:omission].length
+        length = (end_index = options[:omission].length + "</p>".length)
+        unless truncated[start_index, length].downcase == "</p>"
+          truncated = "#{truncated}</p>"
+        end
+      
+      end
+    end
+    
+    truncated
+  end
+	
 end
