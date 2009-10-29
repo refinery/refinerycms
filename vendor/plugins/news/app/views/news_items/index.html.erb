@@ -9,9 +9,7 @@
 				<p>
 					<small>Published <%= item.publish_date.strftime("%A %d of %B, %Y") %></small>
 				</p>
-				<p>
-					<%= item.blurb %> <%= link_to "Read more", news_item_url(item) %>
-				</p>
+				<%= truncate(item.body, :length => 200, :omission => " ... #{link_to "Read more", news_item_url(item)}", :preserve_html_tags => true) %>
 			<% end %>
 		<% else %>
 			<p><em>Sorry we haven't posted up any news yet.</em></p>

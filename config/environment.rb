@@ -59,7 +59,7 @@ eval("#{(defined? Refinery::Initializer) ? Refinery::Initializer : Rails::Initia
   # 
 
   config.gem "rake", :version => ">= 0.8.3", :lib => "rake"
-  config.gem "friendly_id", :version => ">= 2.1.4", :lib => "friendly_id"
+  config.gem "friendly_id", :version => ">= 2.2.2", :lib => "friendly_id"
   config.gem "mislav-will_paginate", :version => ">= 2.3.11", :lib => "will_paginate", :source => "http://gems.github.com"
   config.gem "rails", :version => ">= 2.3.4", :lib => "rails"
   config.gem "rubyist-aasm", :version => ">= 2.1.1", :lib => "aasm", :source => "http://gems.github.com"
