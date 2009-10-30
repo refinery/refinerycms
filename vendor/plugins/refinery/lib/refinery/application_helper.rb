@@ -115,5 +115,16 @@ module Refinery::ApplicationHelper
     
     truncated
   end
+  
+  # replace all system images with a thumbnail version of them (handy for all images inside a page part)
+  def content_fu(content, thumbnail)
+    content.scan(/\/system\/images([^\"\ ]*)/).flatten.each do |match|
+			parts = match.split(".")
+			extension = parts.pop
+			content.gsub!(match, "#{parts.join(".")}_#{thumbnail}.#{extension}")
+		end
+		
+		return content
+  end
 	
 end
