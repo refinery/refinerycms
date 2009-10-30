@@ -20,8 +20,8 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency(%q<rake>, [">= 0.8.3"])
 	s.add_runtime_dependency(%q<unicode>, [">= 0.1"])
 	s.add_runtime_dependency(%q<rails>, [">= 2.3.4"])
-	s.add_runtime_dependency(%q<mislav-will_paginate>, [">= 2.3.11"])
-	s.add_runtime_dependency(%q<friendly_id>, [">= 2.1.4"])
-	s.add_runtime_dependency(%q<rubyist-aasm>, [">= 2.1.1"])
+	s.add_runtime_dependency(%q<will_paginate>, [">= 2.3.11"])
+	s.add_runtime_dependency(%q<friendly_id>, [">= 2.2.2"])
+	s.add_runtime_dependency(%q<aasm>, [">= 2.1.3"])
 	
 end
