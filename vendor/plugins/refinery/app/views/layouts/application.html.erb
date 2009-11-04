@@ -15,15 +15,14 @@
 	</head>
 	<body>
 		<%= render :partial => "/shared/ie6check" if request.env['HTTP_USER_AGENT'] =~ /MSIE/ %>
-		<div id='page'>
+		<div id='page' class='clearfix'>
 			<div id='header' class='clearfix'>
-				<h1><%= link_to RefinerySetting[:site_name], root_url %></h1>
-				<%= render :partial => "/shared/menu" %>
+				<%= render :partial => "/shared/header" %>
 			</div>
 			<div id='body' class='clearfix'>
 				<%= yield %>
 			</div>
-			<div id='footer'>
+			<div id='footer' class='clearfix'>
 				<%= render :partial => "/shared/footer" %>
 			</div>
 		</div>
