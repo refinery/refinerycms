@@ -1,7 +1,7 @@
 <%= render :partial => "/shared/submenu" if RefinerySetting.find_or_set(:show_submenu_on_content_pages, true) %>
 <div id='body_content' class='clearfix'>
+	<h1 id='body_content_page_title'><%= page_title %></h1>
 	<div id='body_content_left' class='clearfix'>
-	  <h1><%= page_title %></h1>
 		<%= @page[:body] %>
 	</div>
 	<div id='body_content_right' class='clearfix'>
