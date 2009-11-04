@@ -1,6 +1,8 @@
 <div id='actions'>
-	<h2>Actions</h2>
 	<ul>
+		<li>
+	    <%%= render :partial => "/shared/admin/search", :locals => {:url => admin_<%= plural_name %>_url} %>
+	  </li>
 		<li>
 			<%%= link_to "Create New <%= $title_name %>", new_admin_<%= singular_name %>_url, :class => "add_icon" %>
 		</li>
@@ -12,11 +14,7 @@
 	<%% end %>
 	</ul>
 </div>
-<div id='records'>
-	<div id='list_actions'>
-    <%%= render :partial => "/shared/admin/search", :locals => {:url => admin_<%= plural_name %>_url} %>
-  </div>
-  
+<div id='records'>  
   <%% if searching? %>
     <h2>Search Results for "<%%= params[:search] %>"</h2>
     <%% if @<%= plural_name %>.size > 0 %>
@@ -26,12 +24,11 @@
     <%% end %>
 	<%% else %>
 		<%% if @<%= plural_name %>.size > 0 %>
-			<h2><%= $title_name.pluralize %></h2>
-				<%%= will_paginate @<%= plural_name %>, :previous_label => '&laquo;', :next_label => '&raquo;' %>
-		    <ul id='sortable_list'>
-					<%%= render :partial => "sortable_list" %>
-		    </ul>
-				<%%= will_paginate @<%= plural_name %>, :previous_label => '&laquo;', :next_label => '&raquo;' %>
+			<%%= will_paginate @<%= plural_name %>, :previous_label => '&laquo;', :next_label => '&raquo;' %>
+		   <ul id='sortable_list'>
+				<%%= render :partial => "sortable_list" %>
+		   </ul>
+			<%%= will_paginate @<%= plural_name %>, :previous_label => '&laquo;', :next_label => '&raquo;' %>
 		<%% else %>
 			<p>
 				<strong>

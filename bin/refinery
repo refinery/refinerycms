@@ -1,0 +1,53 @@
+#!/usr/bin/env ruby
+require 'fileutils'
+REFINERY_ROOT = File.expand_path(File.dirname(__FILE__) << "/..")
+unless (RAILS_ROOT = ARGV.shift).nil? or RAILS_ROOT.length == 0
+  if File.exists? RAILS_ROOT
+    if ARGV.include?("--force")
+      # remove the contents of the current directory
+      Dir[File.join(RAILS_ROOT, "*")].each {|dir| FileUtils::rm_rf(dir, :secure => true) }
+    else
+      puts "The path you specified already exists. If you want to override this directory (i.e. delete all the current contents) run this again with --force"
+    end
+  end
+
+  unless File.exists? RAILS_ROOT and !ARGV.include?("--force")
+    # make the application path directory
+    FileUtils::makedirs RAILS_ROOT
+  
+    # copy in all of the relevant directories and root files.
+    to_copy = %w(app config db public script CONTRIBUTORS LICENSE Rakefile README).map do |dir| 
+      File.join REFINERY_ROOT, dir
+    end
+    FileUtils::cp_r to_copy, RAILS_ROOT, :verbose => false
+    
+    # add in the database config file.
+    FileUtils::move File.join(RAILS_ROOT, %w(config database.yml.example)), File.join(RAILS_ROOT, %w(config database.yml))
+
+    # update the environment file with a new secret key.
+    require 'digest/sha1'
+    new_digest = ""
+    3.times { new_digest << Digest::SHA1.hexdigest("--refinery--#{Time.now.to_s}--#{rand(10000000)}--") }
+    
+    # read in the file and split up the lines
+    lines = File.open(File.join(RAILS_ROOT, %w(config environment.rb)), "r").read.split("\n")
+    lines.each do |line|
+      match = line.scan(/(:secret)([^']*)([\'])([^\']*)/).flatten.last
+      line.gsub!(match, new_digest) unless match.nil?
+    end
+    File.open(File.join(RAILS_ROOT, %w(config environment.rb)), "w").puts(lines.join("\n"))
+
+  	puts "---------"
+  	puts "Refinery installed in #{RAILS_ROOT}."
+
+    # update core script files with symlinks.
+    system "refinery-update-core #{RAILS_ROOT}"
+  
+    puts "---------"    
+  	puts "** Remember to run rake gems:install from inside your application's directory (#{RAILS_ROOT}) **"
+  	puts "Enjoy creating your new application using Refinery."
+  	puts "---------"
+  end
+else
+  puts "Please specify the path where you want to install Refinery. i.e. refinery /path/to/project"
+end

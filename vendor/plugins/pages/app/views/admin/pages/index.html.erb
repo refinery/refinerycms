@@ -1,6 +1,9 @@
 <div id='actions'>
 	<ul>
 		<li>
+	  	<%= render :partial => "/shared/admin/search", :locals => {:url => admin_pages_url} %>
+	  </li>
+		<li>
 			<%= link_to "Create New Page", new_admin_page_url, :class => "add_icon" %>
 		</li>
 	<% if Page.count > 1 and not searching? %>
@@ -11,11 +14,7 @@
 	<% end %>
 	</ul>
 </div>
-<div id='records' class='tree'>
-  <div id='list_actions'>
-  	<%= render :partial => "/shared/admin/search", :locals => {:url => admin_pages_url} %>
-  </div>
-  
+<div id='records' class='tree'>  
   <% if searching? %>
   	<% if @pages.size > 0 %>
   	  <h2>Search Results for "<%= params[:search] %>"</h2>

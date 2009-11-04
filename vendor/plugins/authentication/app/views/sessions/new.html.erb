@@ -2,15 +2,15 @@
 	<div class='clearfix'>
 		<div class='field session_username'>
 			<%= f.label :login %>
-			<%= f.text_field :login, {:style => 'width: 255px'} %>
+			<%= f.text_field :login %>
 		</div>
 		<div class='field session_password'>
 			<%= f.label :password %>
-			<%= f.password_field :password, {:style => 'width: 255px'} %>
+			<%= f.password_field :password %>
 		</div>
 	</div>
-	<div class='field'>
-		<%= f.label :remember_me, nil, :style => "display: inline;" %>
+	<div class='field remember_me'>
+		<%= f.label :remember_me, nil %>
 		<%= f.check_box :remember_me %>
 	</div>
 	<div class='form-actions'>

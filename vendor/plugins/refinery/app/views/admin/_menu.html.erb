@@ -10,8 +10,8 @@
 	end -%>
 	<% if Refinery::Plugins.active.in_menu.size > 1 %>
 	  <li>
-			<%= link_to "&nbsp;", "#", :id => "menu_reorder", :title => "Reorder menu" %>
-			<%= link_to "&nbsp;", "#", :id => "menu_reorder_done", :title => "I'm done reordering the menu", :style => "display: none;" %>
+			<%= link_to "&nbsp;", "", :id => "menu_reorder", :title => "Reorder menu" %>
+			<%= link_to "&nbsp;", "", :id => "menu_reorder_done", :title => "I'm done reordering the menu", :style => "display: none;" %>
 	  </li>
 	<% end %>
 	<li id='logout'>

@@ -1,6 +1,9 @@
 <div id='actions'>
 	<ul>
 		<li>
+	  	<%= render :partial => "/shared/admin/search", :locals => {:url => admin_inquiries_url} %>
+	  </li>
+		<li>
 			<%= link_to "Update who gets notified", edit_admin_inquiry_setting_url(InquirySetting.notification_recipients),
 			                                        :class => "user_comment_icon" %>
 		</li>
@@ -11,10 +14,6 @@
 	</ul>
 </div>
 <div id='records'>
-  <div id='list_actions'>
-  	<%= render :partial => "/shared/admin/search", :locals => {:url => admin_inquiries_url} %>
-  </div>
-
   <% if searching? %>
     <h2>Search Results for "<%= params[:search] %>"</h2>
     <%= render :partial => "inquiry", :collection => @inquiries %>
