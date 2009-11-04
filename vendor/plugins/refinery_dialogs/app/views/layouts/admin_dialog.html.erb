@@ -11,7 +11,7 @@
 		<% else %>
 			<%= javascript_include_tag "prototype", "scriptaculous" %>
 		<% end %>
-		<%= javascript_include_tag "fastinit", "tooltips", "dialog" %>
+		<%= javascript_include_tag "fastinit", "refinery/tooltips", "refinery/dialog" %>
 		<%= yield :head %>
 		<%= "<script type='text/javascript' src='http://getfirebug.com/releases/lite/1.2/firebug-lite-compressed.js'></script>" if RefinerySetting.find_or_set(:show_firebug_lite, false) == true %>
 		<% if @flash %>

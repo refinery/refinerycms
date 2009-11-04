@@ -14,7 +14,7 @@
 				</li>
 			<% end %>
   		</ul>
-  		<% if RefinerySetting.find_or_set(:new_page_parts, false) and not @page.new_record? %>
+  		<% if RefinerySetting.find_or_set(:new_page_parts, false) %>
 				<ul id='page_parts_controls'>
 					<li>
 						<%= link_to refinery_icon_tag("add.png"), "#", :id => "add_page_part", :title => "Create Content Section" %>
@@ -177,7 +177,8 @@
 			this.hide();
 			e.stop();
 		});
-	
+		
+<% if RefinerySetting.find_or_set(:new_page_parts, false) %>
 		$('add_page_part').observe('click', function(e) {
 			tb_show('Create Content Section', '#?auto_size_content=true&draggable=true&titlebar=true&inlineId=new_page_part_dialog&TB_inline=true&modal=true');
 			
@@ -251,6 +252,7 @@
 			
 			e.stop();
 		});
+<% end %>
 	});
 
 	custom_title_image_changed = function()

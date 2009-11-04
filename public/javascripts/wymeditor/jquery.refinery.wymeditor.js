@@ -1192,7 +1192,7 @@ WYMeditor.editor.prototype.status = function(sMessage) {
  */
 WYMeditor.editor.prototype.update = function() {
 
-	var html = this.xhtml().gsub(/<\/([A-Za-z0-9]*)></, function(m){return "</" + m[1] +">\n<"});
+	var html = this.xhtml().gsub(/<\/([A-Za-z0-9]*)></, function(m){return "</" + m[1] +">\n<"}).gsub(/src=\"system\/images/, 'src="/system/images'); // make system/images calls absolute.
 	jQuery(this._element).val(html);
 	jQuery(this._box).find(this._options.htmlValSelector).val(html);
 };
@@ -1317,7 +1317,7 @@ WYMeditor.editor.prototype.uniqueStamp = function() {
 };
 
 WYMeditor.editor.prototype.paste = function(sData) {
-
+console.log('pasting..');
 	var sTmp;
 	var container = this.selected();
 	
@@ -1608,7 +1608,7 @@ WYMeditor.INIT_DIALOG = function(wym, selected, isIframe) {
 			else {
 				wym._exec(WYMeditor.CREATE_LINK, wym._current_unique_stamp);
 
-				jQuery("a[@href=" + wym._current_unique_stamp + "]", wym._doc.body)
+				jQuery("a[href=" + wym._current_unique_stamp + "]", wym._doc.body)
 						.attr(WYMeditor.HREF, sUrl)
 						.attr(WYMeditor.TITLE, jQuery(wym._options.titleSelector).val())
 						.attr(WYMeditor.TARGET, jQuery(wym._options.targetSelector).val());			
@@ -3275,7 +3275,7 @@ WYMeditor.XhtmlParser.prototype.parse = function(raw)
 WYMeditor.XhtmlParser.prototype.beforeParsing = function(raw)
 {
 	if(raw.match(/class="MsoNormal"/) || raw.match(/ns = "urn:schemas-microsoft-com/)){
-		// Usefull for cleaning up content pasted from other sources (MSWord)
+		// Useful for cleaning up content pasted from other sources (MSWord)
 		this._Listener.avoidStylingTagsAndAttributes();
 	}
 	return this._Listener.beforeParsing(raw);
@@ -4466,7 +4466,6 @@ WYMeditor.WymClassMozilla.prototype.keyup = function(evt) {
 			 && evt.keyCode != 224
 			 && !evt.metaKey
 			 && !evt.ctrlKey) {
-			
 		//NOT BACKSPACE, NOT DELETE, NOT CTRL, NOT COMMAND
 		//text nodes replaced by P
 		

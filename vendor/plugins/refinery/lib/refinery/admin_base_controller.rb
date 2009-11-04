@@ -27,10 +27,9 @@ protected
   end
 
 	def restrict_controller
-    if params[:controller] != "admin/base" and Refinery::Plugins.active.reject {|plugin| params[:controller] !~ Regexp.new(plugin.menu_match) }.empty?
+    if Refinery::Plugins.active.reject {|plugin| params[:controller] !~ Regexp.new(plugin.menu_match) }.empty?
 			flash[:error] = "You do not have permission to access the #{params[:controller]} controller on this plugin."
-			logger.warn("'#{current_user.login}' tried to access '#{params[:controller]}'")
-			#redirect_to admin_root_url
+			logger.warn "'#{current_user.login}' tried to access '#{params[:controller]}'"
 		end
 	end
   

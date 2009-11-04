@@ -14,18 +14,6 @@ body {
 	background: black url('/images/refinery/page_bg.png') repeat;
 }
 
-div.login {
-	width: 300px !important;
-}
-
-div.login h1 {
-	margin: 0; 
-	padding: 5px; 
-	font-size: 20px; 
-	text-align: center;
-	line-height:22px
-}
-
 acronym {
 	cursor: help;
 }
@@ -114,7 +102,7 @@ hr {
 	width: 545px;
 }
 .login #flash {
-	width: 230px;
+	width: 520px;
 }
 #message, #flash {
 	padding: 8px 8px 8px 30px;
@@ -167,11 +155,48 @@ a:hover {
 	border-bottom: 1px solid #727272;
 }
 
-#page {
+#page_container {
 	margin: 0px auto 10px auto;
 	text-align: left;
 	width: 990px;
+}
+#page_container #page {
 	background: #f6f5f4;
+}
+
+#page_container.login {
+	width: 590px;
+}
+
+#page_container.login #page h1 {
+	margin: 0; 
+	padding: 5px; 
+	font-size: 20px; 
+	line-height:22px
+}
+
+#page_container.login div.session_username, #page_container.login div.session_password {
+    float: left;
+}
+
+#page_container.login div.session_password {
+    margin-left: 25px;
+}
+
+#page_container.login div.remember_me {
+    margin-top: 12px;
+}
+
+#page_container.login div.remember_me label {
+    display: inline;
+}
+
+#page_container.login div.session_username input, #page_container.login div.session_password input {
+    width: 260px;
+}
+
+#page_container.login div.actions {
+    margin-top: 12px;
 }
 
 #header ul#menu {
@@ -232,7 +257,11 @@ pre {
 #header {
 	background: url('/images/refinery/header_background.png') #50504B repeat-x bottom;
 	padding: 26px 15px 0 15px;
-	position: relative;
+	position: relative;	
+}
+
+#page_container.login #header {
+    padding: 42px 15px 42px 15px;
 }
 
 #site_link {
@@ -244,10 +273,6 @@ pre {
 
 #site_link:hover {
 	text-decoration: underline;
-}
-
-#list_actions {
-
 }
 
 #header #logo {
@@ -273,16 +298,21 @@ pre {
 }
 
 #footer {
-	display: block; background: #CDCCBB; text-align: right; padding-right: 5px; 
+    margin: 0px auto;
+    text-align: center;
 }
 
-#footer a {
-	font-size: 100%;
+#footer_logo {
+    border: 0px none;
+    display:inline-block;
+    *display:inline;
+    margin: 50px auto 40px auto;
+    width: auto;
 }
 
-#footer, #footer * {
-	color: #99998B;
-	font-size: 85%;
+#footer p, #footer a {
+    color: white;
+    font-size: 11px;
 }
 
 #submenu {
@@ -759,12 +789,23 @@ body.dialog form {
 #dialog_main #pages_list ul li {
 	cursor: pointer;
 	line-height: 24px;
-	border: 1px solid transparent;
 	list-style: none;
 }
 
-#dialog_main #pages_list ul li.child {
-	padding-left: 20px;
+#dialog_main #pages_list li.child a {
+	padding-left: 27px;
+}
+#dialog_main #pages_list li.child1 a {
+    padding-left: 47px;
+}
+#dialog_main #pages_list li.child2 a {
+    padding-left: 67px;
+}
+#dialog_main #pages_list li.child3 a {
+    padding-left: 87px;
+}
+#dialog_main #pages_list li.child4 a {
+    padding-left: 107px;
 }
 /*
 #dialog_main #pages_list ul li span	{
@@ -772,22 +813,22 @@ body.dialog form {
 	padding: 3px;
 	margin-left: 24px;
 }*/
-#dialog_main #pages_list ul li a	{
+#dialog_main #pages_list ul li a {
 	display: block;
-	padding: 3px;
-	margin-left: 24px;
-  text-decoration: none;
-  border-bottom: none;
+	padding: 3px 3px 3px 27px;
+    text-decoration: none;
+    border-bottom: none;
+	border: 1px solid transparent;
 }
-#dialog_main #pages_list li:hover {
-	background-color: #C9DAE2 !important;
+#dialog_main #pages_list li a:hover {
+	background-color: #C9DAE2;
 }
 
 #dialog_main .actions {
 	margin-right: 48px;
 }
 
-#dialog_main #pages_list .linked, #dialog_main #pages_list .linked:hover {
+#dialog_main #pages_list .linked a, #dialog_main #pages_list .linked a:hover {
 	border: 1px solid #00A017;
 	color: #00A017;
 	background: 7px 7px no-repeat url('/images/refinery/icons/accept.png') #E0F5E0;
