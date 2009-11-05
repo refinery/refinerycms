@@ -38,10 +38,8 @@ Step Two: Configuration
 
 Edit ./config/database.yml to your database server details.
 
-Then run these to create your database and fill it with Refinery's default data.:
-rake db:create
-rake db:schema:load
-rake db:seed
+Then run this to create your database and fill it with Refinery's default data:
+rake db:setup
 
 == Starting up your site
 ruby script/server
