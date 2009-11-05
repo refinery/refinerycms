@@ -20,9 +20,13 @@ unless RAILS_ROOT.nil? or RAILS_ROOT.length == 0
   # copy any rake tasks from plugins to the main lib directory so they can be run.
   FileUtils::cp Dir[File.join(REFINERY_ROOT, %w(** tasks *.rake))], File.join(RAILS_ROOT, %w(lib tasks))
 	
-	puts "---------"
-	puts "Copied new Refinery core assets."
-	puts "Please run rake db:migrate to ensure your database is at the correct version."
+	unless ARGV.include?("--from-refinery-installer")
+	  puts "---------"
+	  puts "Copied new Refinery core assets."
+	  puts "Please run rake db:migrate to ensure your database is at the correct version."
+  end
 else
-  puts "Please specify the path of the refinery project that you want to update, i.e. refinery-update-core /path/to/project"
+  unless ARGV.include?("--from-refinery-installer")
+    puts "Please specify the path of the refinery project that you want to update, i.e. refinery-update-core /path/to/project"
+  end
 end

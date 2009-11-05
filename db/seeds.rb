@@ -82,7 +82,7 @@ Page.create(:title => "Thank You",
 						:parent_id => 4).parts.create(
             {
               :title => "body", 
-              :body => "<p>We've received your inquiry and will get back to you with a response shortly.</p><a href='/'>Return to the home page</a>"
+              :body => "<p>We've received your inquiry and will get back to you with a response shortly.</p><p><a href='/'>Return to the home page</a></p>"
             })
 
 Page.create(:title => "Page not found",
@@ -105,5 +105,5 @@ Page.create(:title => "Privacy Policy",
             }).page.parts.create(
             {
               :title => "side_body",
-              :body => "<p></p>"
+              :body => ""
             })
