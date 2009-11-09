@@ -13,7 +13,7 @@ class Refinery::ApplicationController < ActionController::Base
 
 	  def error_404
 	    @page = Page.find_by_menu_match("^/404$", :include => [:parts, :slugs])
-	    render :template => "/pages/show"
+	    render :template => "/pages/show", :status => 404
 	  end
 
 	  def home_page?
