@@ -1,8 +1,8 @@
 <div id='body_content' class='clearfix'>
+  <h1>
+		<%%= @<%= singular_name %>.<%= attributes.first.name %> %>
+	</h1>
 	<div id='body_content_left' class='clearfix'>
-		<h1>
-			<%%= @<%= singular_name %>.<%= attributes.first.name %> %>
-		</h1>
 		<% attributes.each do |attribute| %>
 		<div>
 			<h3><%= attribute.name.titleize %></h3>

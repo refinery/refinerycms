@@ -1,29 +1,22 @@
 <%= f.hidden_field field %>
 <div>
-	<a id='current_resource_link' href="<%= insert_admin_resources_url %>?thickbox=true&amp;modal=true&amp;titlebar=true&amp;field=<%= "#{f.object.class.name.downcase}_#{field}" %><%= "&amp;current_link=#{resource.public_filename unless resource.nil?}" %>&amp;update_resource=current_resource&amp;update_text=current_resource_text&amp;callback=resource_changed&amp;thumbnail=&amp;KeepThis=true&amp;TB_iframe=true&amp;width=<%= width ||= 950 %>&amp;height=<%= height ||= 510 %>" style='border: 0px' title='Change Resource' name='Change Resource' class='thickbox'>
+	<a id='current_resource_link' href="<%= insert_admin_resources_url %>?thickbox=true&amp;modal=true&amp;titlebar=true&amp;field=<%= "#{f.object.class.name.underscore.downcase}_#{field}" %><%= "&amp;current_link=#{resource.public_filename unless resource.nil?}" %>&amp;update_resource=current_resource&amp;update_text=current_resource_text&amp;callback=resource_changed&amp;KeepThis=true&amp;TB_iframe=true&amp;width=<%= width ||= 950 %>&amp;height=<%= height ||= 510 %>" style='border: 0px' title='Add <%= (description ||= "resource").titleize %>' name='Add <%= (description ||= "resource").titleize %>' class='thickbox'>
 		<span id='no_resource_selected' <%= "style='display: none;'" unless resource.nil? %>>
-			There is currently no message file selected, click here to add one.
+			There is currently no <%= description ||= "resource" %> selected, click here to add one.
 		</span>
 	</a>
-	<div id='current_resource_container'>
-	<% unless resource.nil? %>
-	  Current message file: 
-	  <span id='current_resource_text'>
-	    <%= "#{resource.title} (#{resource.public_filename})" %>
-	  </span>
-	  <br/>
-	  <%= link_to "#{refinery_icon_tag("page_white_put.png")} Download current message file (<em>Opens in a new window</em>)", resource.public_filename, 
-	              :id => "current_resource",
-	              :target => "_blank" %>
-	<% else %>
-	  <%= link_to "#{refinery_icon_tag("page_white_put.png")} Download current message file (<em>Opens in a new window</em>)", "", 
-	              :id => "current_resource", 
-	              :style => "display:none;",
-	              :target => "_blank" %>
-	<% end %>
+	<div id='current_resource_container' <%= "style='display:none'" if resource.nil? %>>
+    Current <%= description ||= "resource" %>: 
+    <span id='current_resource_text'>
+      <%= "#{resource.title} (#{resource.public_filename})" unless resource.nil? %>
+    </span>
+    <br/>
+    <%= link_to "#{refinery_icon_tag("page_white_put.png")} Download current #{description ||= "resource"} (<em>Opens in a new window</em>)", "#{resource.public_filename unless resource.nil?}", 
+            :id => "current_resource",
+            :target => "_blank" %>
 	</div>
 	<br/>
-	<%= link_to "Remove Current Resource", "", 
+	<%= link_to "Remove current #{description ||= "resource"}", "", 
 	              :id => "remove_resource", 
 	              :style => "margin-top:8px;display:inline-block;width:auto;#{"display:none;" if resource.nil?}" %>
 </div>
@@ -39,7 +32,7 @@
     
     FastInit.addOnLoad(function() {
       $('remove_resource').observe('click', function(e) {
-        $('<%= f.object.class.name.downcase %>_<%= field %>').value = "";
+        $('<%= f.object.class.name.underscore.downcase %>_<%= field %>').value = "";
         $('current_resource_container').hide();
         $('current_resource_text').innerHTML = '';
         $('no_resource_selected').show();
