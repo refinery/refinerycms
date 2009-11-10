@@ -17,10 +17,12 @@ unless (app_path = ARGV.shift).nil? or app_path.length == 0
     FileUtils::makedirs RAILS_ROOT
   
     # copy in all of the relevant directories and root files.
-    to_copy = %w(app config db public script CONTRIBUTORS LICENSE Rakefile README).map do |dir| 
+    to_copy = %w(app config db lib public script CONTRIBUTORS LICENSE Rakefile README).map do |dir| 
       File.join REFINERY_ROOT, dir
     end
     FileUtils::cp_r to_copy, RAILS_ROOT, :verbose => false
+    # ensure lib/refinery_initializer.rb doesn't make it in.
+    FileUtils::rm File.join(RAILS_ROOT, %w(lib refinery_initializer.rb)) if File.exists?(File.join(RAILS_ROOT, %w(lib refinery_initializer.rb)))
     
     # add in the database config file.
     FileUtils::move File.join(RAILS_ROOT, %w(config database.yml.example)), File.join(RAILS_ROOT, %w(config database.yml))

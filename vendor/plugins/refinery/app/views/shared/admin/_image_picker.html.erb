@@ -1,0 +1,42 @@
+<%= f.hidden_field field %>
+<div>
+	<a id='current_image_link' href="<%= insert_admin_images_url %>?thickbox=true&amp;modal=true&amp;titlebar=true&amp;field=<%= f.object.class.name.downcase %>_<%= field %>&amp;update_image=current_picked_image&amp;callback=picked_image_changed&amp;thumbnail=&amp;KeepThis=true&amp;TB_iframe=true&amp;width=<%= width ||= 950 %>&amp;height=<%= height ||= 510 %>" style='border: 0px' title='Change Image' name='Change Image' class='thickbox'>
+		<% unless image.nil? %>
+			<%= image_fu image, nil, {:class => "brown_border", :id => "current_picked_image"} %>
+		<% else %>
+      <img id="current_picked_image" class="" src="" alt="" style='display: none' />
+		<% end %>
+		<p id='no_picked_image_selected' <%= "style='display: none;'" unless image.nil? %>>
+			There is currently no image selected, please click here to add one.
+		</p>
+	</a>
+	<br/>
+  <%= link_to "Remove Current Image", "", :id => "remove_picked_image", :style => "margin-top:8px;display:inline-block;width:auto;#{"display:none;" if image.nil?}" %>
+</div>
+<% content_for :head do %>
+  <script type='text/javascript'>
+  	picked_image_changed = function()
+  	{
+  		$('remove_picked_image').show();
+  		$('current_picked_image').show();
+  		$('current_picked_image').addClassName('brown_border');
+  		$('no_picked_image_selected').hide();
+  	}
+  
+    FastInit.addOnLoad(function() {
+      $('remove_picked_image').observe('click', function(e)
+  		{
+  			$('current_picked_image').removeClassName('brown_border');
+  			$('current_picked_image').src = '';
+  			$('current_picked_image').alt = 'There is currently no image selected. Click here to add one.';
+  			$('<%= f.object.class.name.downcase %>_<%= field %>').value = '';
+  			$('current_picked_image').style.width = "auto";
+  			$('current_picked_image').style.height = "auto";
+  			$('no_picked_image_selected').show();
+  			$('current_picked_image').hide();
+  			this.hide();
+  			e.stop();
+  		});
+    });
+  </script>
+<% end %>

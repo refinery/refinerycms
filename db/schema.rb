@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091029034951) do
+ActiveRecord::Schema.define(:version => 20091109012126) do
 
   create_table "images", :force => true do |t|
     t.integer  "parent_id"
@@ -23,6 +23,8 @@ ActiveRecord::Schema.define(:version => 20091029034951) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "images", ["parent_id"], :name => "index_images_on_parent_id"
 
   create_table "inquiries", :force => true do |t|
     t.string   "name"
@@ -60,6 +62,9 @@ ActiveRecord::Schema.define(:version => 20091029034951) do
     t.datetime "updated_at"
   end
 
+  add_index "page_parts", ["id"], :name => "index_page_parts_on_id"
+  add_index "page_parts", ["page_id"], :name => "index_page_parts_on_page_id"
+
   create_table "pages", :force => true do |t|
     t.string   "title"
     t.integer  "parent_id"
@@ -81,6 +86,11 @@ ActiveRecord::Schema.define(:version => 20091029034951) do
     t.string   "browser_title"
     t.boolean  "skip_to_first_child",   :default => false
   end
+
+  add_index "pages", ["custom_title_image_id"], :name => "index_pages_on_custom_title_image_id"
+  add_index "pages", ["id"], :name => "index_pages_on_id"
+  add_index "pages", ["image_id"], :name => "index_pages_on_image_id"
+  add_index "pages", ["parent_id"], :name => "index_pages_on_parent_id"
 
   create_table "refinery_settings", :force => true do |t|
     t.string   "name"
@@ -136,5 +146,7 @@ ActiveRecord::Schema.define(:version => 20091029034951) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "users", ["id"], :name => "index_users_on_id"
 
 end

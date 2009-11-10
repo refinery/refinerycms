@@ -2,7 +2,8 @@
 	<span class='title'>
 		<span class='actions'>
 			<%%= link_to refinery_icon_tag("application_go.png"), <%= singular_name %>_url(<%= singular_name %>), 
-					:title => 'View this <%= $title_name.downcase %>' %>
+					:title => 'View this <%= $title_name.downcase %><br/><em>Opens in a new window</em>', 
+					:target => "_blank" %>
 			<%%= link_to refinery_icon_tag("application_edit.png"), edit_admin_<%= singular_name %>_path(<%= singular_name %>),
 			 		:title => 'Edit this <%= $title_name.downcase %>' %>
 			<%%= link_to refinery_icon_tag("delete.png"), admin_<%= singular_name %>_path(<%= singular_name %>),
