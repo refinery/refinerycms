@@ -56,21 +56,13 @@
 				</p>
 			</div>
 			<div id='custom_title_image' style='display: <%= @page.custom_title_type == 'image' ? 'block' : 'none' %>' class='clearfix'>
-				<%= f.hidden_field :custom_title_image_id %>
-				<div>
-					<a id='current_image_link' href="<%= insert_admin_images_url %>?thickbox=true&amp;modal=true&amp;titlebar=true&amp;field=page_custom_title_image_id&amp;update_image=current_custom_title_image&amp;callback=custom_title_image_changed&amp;thumbnail=&amp;KeepThis=true&amp;TB_iframe=true&amp;width=950&amp;height=510" style='border: 0px' title='Change Image' name='Change Image' class='thickbox'>
-						<% unless @page.custom_title_image.nil? %>
-							<%= image_fu @page.custom_title_image, nil, {:class => "brown_border", :id => "current_custom_title_image"} %>
-						<% else %>
-	            <img id="current_custom_title_image" class="" src="" alt="" />
-						<% end %>
-						<span id='no_custom_title_image_selected' <%= "style='display: none;'" unless @page.custom_title_image.nil? %>>
-							There is currently no image selected. Click here to add one
-						</span>
-					</a>
-					<br/>
-					<%= link_to "Remove Current Image", "", :id => "remove_custom_title_image", :style => "margin-top:8px;display:inline-block;width:auto;#{"display:none;" if @page.custom_title_image.nil?}" %>
-				</div>
+				<%= render :partial => "/shared/admin/image_picker", :locals => 
+				  {
+				    :f => f, 
+				    :field => :custom_title_image_id,
+				    :image => @page.custom_title_image
+				  } 
+				%>
 			</div>
 		</div>
 		<div class='field'>
@@ -136,7 +128,7 @@
 		<div id='dialog-form-actions' class='form-actions'>
 			<%= f.submit 'Save', :id => "new_page_part_save" %> 
 			or 
-			<%= link_to "Cancel", "#", :id => "new_page_part_cancel", :class => "close_dialog" %>
+			<%= link_to "Cancel", "", :id => "new_page_part_cancel", :class => "close_dialog" %>
 		</div>
 	</div>
 <% end %>
@@ -154,7 +146,7 @@
 		$('toggle_advanced_options').observe('click', function(e)
 		{
 			$('more_options').toggle();
-			e.stop();
+			e.preventDefault();
 		});
 		
 		$$('input[type=radio]').each(function(radio)
@@ -167,22 +159,12 @@
 				});
 			}
 		});
-
-		$('remove_custom_title_image').observe('click', function(e)
-		{
-			$('current_custom_title_image').removeClassName('brown_border');
-			$('current_custom_title_image').src = '';
-			$('current_custom_title_image').alt = 'There is currently no image selected. Click here to add one.';
-			$('page_custom_title_image_id').value = '';
-			this.hide();
-			e.stop();
-		});
 		
 <% if RefinerySetting.find_or_set(:new_page_parts, false) %>
 		$('add_page_part').observe('click', function(e) {
 			tb_show('Create Content Section', '#?auto_size_content=true&draggable=true&titlebar=true&inlineId=new_page_part_dialog&TB_inline=true&modal=true');
 			
-			e.stop();
+			e.preventDefault();
 		});
 		
 		$('new_page_part_save').observe('click', function(e) {
@@ -224,7 +206,7 @@
 		$('new_page_part_cancel').observe('click', function(e) {
 			$('new_page_part_title').value = "";
 			tb_remove();
-			e.stop();
+			e.preventDefault();
 		});
 		
 		$('delete_page_part').observe('click', function(e) {
@@ -250,17 +232,10 @@
 				WYMeditor.loaded();
 			}
 			
-			e.stop();
+			e.preventDefault();
 		});
 <% end %>
 	});
-
-	custom_title_image_changed = function()
-	{
-		$('remove_custom_title_image').show();
-		$('current_custom_title_image').addClassName('brown_border');
-		$('no_custom_title_image_selected').hide();
-	}
 	
 	// Hook into the loaded function. This will be called when WYMeditor has done its thing.
 	WYMeditor.loaded = function()

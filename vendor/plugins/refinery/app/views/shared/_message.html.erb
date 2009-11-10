@@ -1,9 +1,10 @@
 <% flash.each do |key, value| %>
 <div id="flash" class="flash_<%= key %>" style='display: none;' >
-	<%= value %> (<%= link_to "close", "#", {:id => "close"} %>)
+	<%= value %> (<%= link_to "close", "", {:id => "close"} %>)
 	<script type="text/javascript">
-	   $('close').observe('click', function(){
+	   $('close').observe('click', function(e){
 	    $('flash').fade({ duration: 0.3 });
+	    e.preventDefault();
 	   });
 	</script>
 </div>

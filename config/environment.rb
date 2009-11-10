@@ -66,4 +66,5 @@ eval("#{(defined? Refinery::Initializer) ? Refinery : Rails}::Initializer").run 
   config.gem "rails", :version => ">= 2.3.4", :lib => "rails"
   config.gem "aasm", :version => ">= 2.1.3", :lib => "aasm", :source => "http://gemcutter.org"
   config.gem "unicode", :version => ">= 0.1", :lib => "unicode"
+  config.gem "slim_scrooge", :source => "http://gemcutter.org"
 end

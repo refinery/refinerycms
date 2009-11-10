@@ -82,7 +82,7 @@
 			});
 			
 <% if @thickbox %>
-			$('submit_button').observe('click', function(e)
+			$('dialog-form-actions').down('#submit_button').observe('click', function(e)
 			{
 				selected = null;
 				$$('#existing_image_area_content ul li.selected img').each(function(selected_img)
@@ -91,19 +91,17 @@
 				});
 				if (selected != null)
 				{
-					if ('<%= @field %>'.length > 0)
+	<% unless @field.blank? %>
+					if ((field = parent.document.getElementById('<%= @field %>')) != null)
 					{
-						field = parent.document.getElementById('<%= @field %>');
-						if (field != null)
-						{
-							field.value = selected.id.replace("image_", "");
-						}
-						if ((image = parent.document.getElementById('<%= @update_image %>')) != null)
-						{
-							image.src = selected.src.replace("_dialog_thumb", '<%= "_#{@thumbnail}" unless @thumbnail.blank? %>');
-							$(image).writeAttribute("width", null).writeAttribute("height", null);
-						}
+						field.value = selected.id.replace("image_", "");
 					}
+					if ((image = parent.document.getElementById('<%= @update_image %>')) != null)
+					{
+						image.src = selected.src.replace("_dialog_thumb", '<%= "_#{@thumbnail}" unless @thumbnail.blank? %>');
+						$(image).writeAttribute("width", null).writeAttribute("height", null);
+					}
+	<% end %>
 					<%= "self.parent.#{@callback}();" unless @callback.blank? %>
 					self.parent.tb_remove();
 				}

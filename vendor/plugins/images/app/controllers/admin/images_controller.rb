@@ -36,11 +36,9 @@ class Admin::ImagesController < Admin::BaseController
   
   def create
     @image = Image.create(params[:image])
-    saved = @image.valid?
-    flash.now[:notice] = "'#{@image.title}' was successfully created." if saved
-    
     unless params[:insert]
-      if saved
+      if @image.valid?
+        flash[:notice] = "'#{@image.title}' was successfully created."
         unless from_dialog?
           redirect_to :action => 'index'
         else

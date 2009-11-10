@@ -1,13 +1,13 @@
-<%%= error_messages_for :<%= singular_name %> %>
-<%% form_for [:admin, @<%= singular_name %>] do |f| %>
+<%%= error_messages_for :<%= singular_name %> -%>
+<%% form_for [:admin, @<%= singular_name %>] do |f| -%>
 	<% attributes.each do |attribute| -%>
 <div class='field'>
-		<%%= f.label :<%= attribute.name %> %>
-		<% if attribute.field_type.to_s == "text_area" %>
-		  <%%= f.text_area :<%= attribute.name %>, :rows => 20, :cols => 140, :class => 'wymeditor' %>
-		<% else %>
-      <%%= f.<%= attribute.field_type %> :<%= attribute.name %> %>
-    <% end %>
+    <%%= f.label :<%= attribute.name %> -%>
+<% if attribute.field_type.to_s == "text_area" -%>
+    <%%= f.text_area :<%= attribute.name %>, :rows => 20, :cols => 140, :class => 'wymeditor' -%>
+<% else -%>
+    <%%= f.<%= attribute.field_type -%> :<%= attribute.name -%> -%>
+<% end -%>
   </div>
 	<% end -%>
 <div class='form-actions'>

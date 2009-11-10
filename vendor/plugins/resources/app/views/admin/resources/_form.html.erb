@@ -15,4 +15,15 @@
 		or 
 		<%= link_to "Cancel", admin_resources_url, :title => "Cancelling will lose all changes you've made to this file", :class => "close_dialog" -%>
 	</div>
+
+	<% if @thickbox %>
+  	<input type='hidden' name='thickbox' value='<%= @thickbox %>' />
+  	<input type='hidden' name='field' value='<%= @field %>' />
+  	<input type='hidden' name='update_resource' value='<%= @update_resource %>' />
+  	<input type='hidden' name='update_text' value='<%= @update_text %>' />
+  	<input type='hidden' name='thumbnail' value='<%= @thumbnail %>' />
+  	<input type='hidden' name='callback' value='<%= @callback %>' />
+		<input type='hidden' name='conditions' value='<%= @conditions %>' />
+		<input type='hidden' name='current_link' value='<%= @current_link %>' />
+	<% end %>
 <% end -%>

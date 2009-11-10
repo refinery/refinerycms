@@ -9,6 +9,8 @@ class <%= migration_name %> < ActiveRecord::Migration
 
       t.timestamps
     end
+    
+		add_index :<%= table_name %>, :id
 
 		User.find(:all).each do |user|
 			user.plugins.create(:title => "<%= class_name.pluralize.underscore.titleize %>", :position => (user.plugins.maximum(:position) || -1) +1)
@@ -17,8 +19,7 @@ class <%= migration_name %> < ActiveRecord::Migration
 		page = Page.create(:title => "<%= class_name.pluralize.underscore.titleize %>", :link_url => "/<%= plural_name %>", :deletable => false, :position => ((Page.maximum(:position, :conditions => "parent_id IS NULL") || -1)+1))
 		RefinerySetting.find_or_set(:default_page_parts, ["body", "side_body"]).each do |default_page_part|
 			page.parts.create(:title => default_page_part, :body => nil)
-		end
-		
+		end		
   end
 
   def self.down
