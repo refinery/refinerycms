@@ -37,7 +37,11 @@ module Crud
           @#{singular_name} = #{class_name}.create(params[:#{singular_name}])
           if @#{singular_name}.valid?
             flash[:notice] = "'\#{@#{singular_name}.#{options[:title_attribute]}}' was successfully created."
-            redirect_to :action => 'index'
+            unless params[:continue_editing] =~ /true|on|1/
+              redirect_to admin_#{plural_name}_url
+            else
+              redirect_to :back
+            end
           else 
             render :action => 'new'
           end
@@ -51,7 +55,11 @@ module Crud
           @#{singular_name}.update_attributes(params[:#{singular_name}])
           if @#{singular_name}.valid?
             flash[:notice] = "'\#{@#{singular_name}.#{options[:title_attribute]}}' was successfully updated."
-            redirect_to admin_#{plural_name}_url
+            unless params[:continue_editing] =~ /true|on|1/
+              redirect_to admin_#{plural_name}_url
+            else
+              redirect_to :back
+            end
           else
             render :action => 'edit'
           end
