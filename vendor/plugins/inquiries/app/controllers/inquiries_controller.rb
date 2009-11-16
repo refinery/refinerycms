@@ -4,6 +4,7 @@ class InquiriesController < ApplicationController
 
   def thank_you
     @page = Page.find_by_menu_match("^/inquiries/thank_you$", :include => [:parts, :slugs])
+    
     respond_to do |wants|
       wants.html
     end
@@ -11,6 +12,7 @@ class InquiriesController < ApplicationController
 
   def new
     @inquiry = Inquiry.new
+    
     respond_to do |wants|
       wants.html
     end

@@ -11,6 +11,7 @@ class NewsItemsController < ApplicationController
 
   def show
     @news_item = NewsItem.find(params[:id], :conditions => ["publish_date < ?", Time.now])
+    
     respond_to do |wants|
      wants.html
     end
