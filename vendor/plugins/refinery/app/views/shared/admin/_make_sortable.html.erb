@@ -6,6 +6,7 @@
 	content_for :head do 
 %>
 <script type='text/javascript'>
+  reordering_button_enabled = true;
 	FastInit.addOnLoad(function()
 	{
 		$('reorder_action').observe('click', enable_reordering);
@@ -14,17 +15,15 @@
 	
 	disable_reordering = function(e)
 	{
-		$('<%= list_id %>').removeClassName('reordering');
+	  if (reordering_button_enabled) {
+  		$('<%= list_id %>').removeClassName('reordering');
 		
-		Sortable.destroy("<%= list_id %>");
+  		Sortable.destroy("<%= list_id %>");
 		
-		$('reorder_action_done').hide();
-		$('reorder_action').show();
-		
-		if (e)
-		{
-			e.stop();
-		}
+  		$('reorder_action_done').hide();
+  		$('reorder_action').show();
+	  }
+	  if (e) { e.stop(); }
 	}
 	
 	enable_reordering = function(e)
@@ -50,11 +49,13 @@
 			, scroll: window
 			, tree: <%= tree %>
 			, onUpdate:function() {
+			  reordering_button_enabled = false;
 				new Ajax.Updater('<%= list_id %>', '<%= update_url %>', 
 				{
 					asynchronous:true
 					, evalScripts:true
 					, parameters: Sortable.serialize('<%= list_id %>') + '&tree=<%= tree %>' + '&authenticity_token=' + encodeURIComponent($('reorder_authenticity_token').value)
+					, onComplete: function(e) { reordering_button_enabled = true; }
 				});
 			}
 		});
@@ -62,10 +63,7 @@
 		$('reorder_action').hide();
 		$('reorder_action_done').show();
 		
-		if (e) 
-		{
-			e.stop();
-		}
+		if (e) { e.stop(); }
 	}
 </script>
 <% end %>
