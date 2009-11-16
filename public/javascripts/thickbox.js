@@ -129,7 +129,7 @@ function tb_show(caption, url, imageGroup, ajax_loaded_callback) {//function cal
 			TB_HEIGHT = imageHeight + 60;
 			jQuery("#TB_window").append("<a href='' id='TB_ImageOff' title='Close'><img id='TB_Image' src='"+url+"' width='"+imageWidth+"' height='"+imageHeight+"' alt='"+caption+"'/></a>" + "<div id='TB_caption'>"+caption+"<div id='TB_secondLine'>" + TB_imageCount + TB_PrevHTML + TB_NextHTML + "</div></div><div id='TB_closeWindow'><a href='#' id='TB_closeWindowButton' title='Close'>close</a> or Esc Key</div>"); 		
 			
-			jQuery(".close_dialog").click(tb_remove);
+			jQuery("#TB_window .close_dialog").click(tb_remove);
 			
 			if (!(TB_PrevHTML === "")) {
 				function goPrev(){
@@ -222,7 +222,7 @@ function tb_show(caption, url, imageGroup, ajax_loaded_callback) {//function cal
 					}
 			}
 					
-			jQuery(".close_dialog").click(tb_remove);
+			jQuery("#TB_window .close_dialog").click(tb_remove);
 			
 			if(url.indexOf('TB_inline') != -1){	
 				jQuery("#TB_ajaxContent").append(jQuery('#' + params['inlineId']).children());
@@ -306,7 +306,7 @@ function tb_showIframe(){
 
 function tb_remove() {
  	jQuery("#TB_imageOff").unbind("click");
-	jQuery(".close_dialog").unbind("click");
+	jQuery("#TB_window .close_dialog").unbind("click");
 	jQuery("#TB_window").fadeOut("fast",function(){jQuery('#TB_window,#TB_overlay,#TB_HideSelect').trigger("unload").unbind().remove();});
 	jQuery("#TB_load").remove();
 	if (typeof document.body.style.maxHeight == "undefined") {//if IE 6
