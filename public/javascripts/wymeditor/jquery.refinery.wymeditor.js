@@ -1528,7 +1528,7 @@ WYMeditor.INIT_DIALOG = function(wym, selected, isIframe) {
 	var dialogType = doc.getElementById('wym_dialog_type').value;
 	var replaceable = wym._selected_image ? jQuery(wym._selected_image) : jQuery(wym._doc.body).find('#replace_me_with_' + wym._current_unique_stamp);
 
-	[dialog.select(".close_dialog"), $(doc.body).select(".close_dialog")].flatten().uniq().each(function(button)
+	[dialog.select("#TB_window .close_dialog"), $(doc.body).select("#TB_window .close_dialog")].flatten().uniq().each(function(button)
 	{
 		button.observe('click', function(e){this.close_dialog(e, true)}.bind(wym));
 	});
