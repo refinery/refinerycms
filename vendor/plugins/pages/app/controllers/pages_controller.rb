@@ -18,10 +18,10 @@ class PagesController < ApplicationController
     if @page.skip_to_first_child
       first_live_child = @page.children.find_by_draft(false, :order => "position ASC")
       redirect_to first_live_child.url unless first_live_child.nil?
-    end
-    
-    respond_to do |wants|
-      wants.html
+    else    
+      respond_to do |wants|
+        wants.html
+      end
     end
   end
 
