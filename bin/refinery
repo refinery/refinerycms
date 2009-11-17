@@ -2,7 +2,8 @@
 require 'fileutils'
 REFINERY_ROOT = File.expand_path(File.dirname(__FILE__) << "/..")
 unless (app_path = ARGV.shift).nil? or app_path.length == 0
-  RAILS_ROOT = app_path =~ /(\.(\/)?)/ ? Dir.getwd : app_path
+  # if "" or "." or "./" is specified then get the current directory otherwise accept the specified app_path.
+  RAILS_ROOT = (app_path.length <= 2 and ((is_current_dir = app_path =~ /(\.(\/)?)/).nil? or is_current_dir < 2)) ? Dir.getwd : app_path
   if File.exists? RAILS_ROOT
     if ARGV.include?("--force")
       # remove the contents of the current directory
