@@ -25,7 +25,7 @@ module Refinery::HtmlTruncationHelper
 
   # Like the Rails _truncate_ helper but doesn't break HTML tags, entities, and optionally. words.
   def truncate(text, *args)
-    return super unless args.include?(:preserve_html_tags)
+    return super unless ((arguments = args.dup).extract_options![:preserve_html_tags] == true) # don't ruin the current args object
     return if text.nil?
 
     options = args.extract_options!
@@ -45,12 +45,13 @@ module Refinery::HtmlTruncationHelper
         word_length = actual_length - (truncated_doc.inner_html.mb_chars.length - truncated_doc.inner_html.rindex(' '))
         truncated_doc = doc.truncate(word_length)
       end
-
-      last_child = truncated_doc.children.last
-      if last_child.inner_html.nil?
-        truncated_doc.inner_html + omission + options[:link] if options[:link]
+      
+      if (last_child = truncated_doc.children.last).inner_html.nil?
+        "#{truncated_doc.inner_html}#{omission}#{options[:link]}" if options[:link]
       else
-        last_child.inner_html = last_child.inner_html.gsub(/\W.[^\s]+$/, "") + omission
+        logger.warn(last_child)
+        logger.warn(last_child.inner_html)
+        last_child.inner_html = "#{last_child.inner_html.gsub(/\W.[^\s]+$/, "")}#{omission}"
         last_child.inner_html += options[:link] if options[:link]
         truncated_doc
       end
