@@ -7,7 +7,7 @@
 # Specifies gem version of Rails to use when vendor/rails is not present
 RAILS_GEM_VERSION = '2.3.4' unless defined? RAILS_GEM_VERSION
 # Freeze to a specific version of refinerycms when running as a gem
-# REFINERY_GEM_VERSION = 0.9.5.1 unless defined? REFINERY_GEM_VERSION
+# REFINERY_GEM_VERSION = 0.9.5.10 unless defined? REFINERY_GEM_VERSION
 
 # Bootstrap the Rails environment, frameworks, and default configuration
 require File.join(File.dirname(__FILE__), 'boot')
@@ -59,7 +59,10 @@ eval("#{(defined? Refinery::Initializer) ? Refinery : Rails}::Initializer").run 
   # Make Active Record use UTC-base instead of local time
   # config.active_record.default_timezone = :utc
   # 
-
+  
+  # Please add your gems above the Refinery required gems here:
+  
+  #===REFINERY REQUIRED GEMS===
   config.gem "rake", :version => ">= 0.8.3", :lib => "rake"
   config.gem "friendly_id", :version => ">= 2.2.2", :lib => "friendly_id"
   config.gem "will_paginate", :version => ">= 2.3.11", :lib => "will_paginate", :source => "http://gemcutter.org"
@@ -67,4 +70,6 @@ eval("#{(defined? Refinery::Initializer) ? Refinery : Rails}::Initializer").run 
   config.gem "aasm", :version => ">= 2.1.3", :lib => "aasm", :source => "http://gemcutter.org"
   config.gem "unicode", :version => ">= 0.1", :lib => "unicode"
   config.gem "slim_scrooge", :source => "http://gemcutter.org"
+  config.gem "hpricot", :version => "0.8.1", :lib => "hpricot", :source => "http://gemcutter.org"
+  #===REFINERY END OF REQUIRED GEMS===
 end

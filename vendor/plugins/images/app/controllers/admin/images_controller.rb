@@ -5,6 +5,28 @@ class Admin::ImagesController < Admin::BaseController
   crudify :image, :order => "created_at DESC", :conditions => "parent_id is NULL", :sortable => false
   before_filter :change_list_mode_if_specified
   
+  def index
+    if searching?
+      @images = Image.paginate_search params[:search],
+                                               :page => params[:page],
+                                               :order => "created_at DESC",
+                                               :conditions => "parent_id IS NULL"
+    else
+      @images = Image.paginate :page => params[:page],
+                                               :order => "created_at DESC",
+                                               :conditions => "parent_id IS NULL"
+    end
+    
+    if RefinerySetting.find_or_set(:group_images_by_date_uploaded, false)
+      @grouped_images = []
+      @images.each do |image|
+        key = image.created_at.strftime("%Y-%m-%d")
+        image_group = @grouped_images.collect{|images| images.last if images.first == key }.flatten.compact << image
+        (@grouped_images.delete_if {|i| i.first == key}) << [key, image_group]
+      end
+    end
+  end
+  
   def new
     @image = Image.new
     @url_override = admin_images_url(:dialog => from_dialog?)
