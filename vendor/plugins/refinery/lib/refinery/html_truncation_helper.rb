@@ -25,53 +25,50 @@ module Refinery::HtmlTruncationHelper
 
   # Like the Rails _truncate_ helper but doesn't break HTML tags, entities, and optionally. words.
   def truncate(text, *args)
+    return super unless args.include?(:preserve_html_tags)
     return if text.nil?
+
     options = args.extract_options!
-    unless (options[:preserve_html_tags] == true)
-      return super
-    else
-      max_length = options[:length] || 30
-      omission = options[:omission] || "..."
-      # use :link => link_to('more', post_path), or something to that effect
+    max_length = options[:length] || 30
+    omission = options[:omission] || "..."
+    # use :link => link_to('more', post_path), or something to that effect
+
+    doc = Hpricot(text.to_s)
+    omission_length = Hpricot(omission).inner_text.mb_chars.length
+    content_length = doc.inner_text.mb_chars.length
+    actual_length = max_length - omission_length
+
+    if content_length > max_length
+      truncated_doc = doc.truncate(actual_length)
   
-      doc = Hpricot(text.to_s)
-      omission_length = Hpricot(omission).inner_text.mb_chars.length
-      content_length = doc.inner_text.mb_chars.length
-      actual_length = max_length - omission_length
+      if (options[:preserve_full_words] || false)
+        word_length = actual_length - (truncated_doc.inner_html.mb_chars.length - truncated_doc.inner_html.rindex(' '))
+        truncated_doc = doc.truncate(word_length)
+      end
 
-      if content_length > max_length
-        truncated_doc = doc.truncate(actual_length)
-    
-        if (options[:preserve_full_words] || false)
-          word_length = actual_length - (truncated_doc.inner_html.mb_chars.length - truncated_doc.inner_html.rindex(' '))
-          truncated_doc = doc.truncate(word_length)
-        end
-
-        last_child = truncated_doc.children.last
-        if last_child.inner_html.nil?
-          truncated_doc.inner_html + omission + options[:link] if options[:link]
-        else
-          last_child.inner_html = last_child.inner_html.gsub(/\W.[^\s]+$/, "") + omission
-          last_child.inner_html += options[:link] if options[:link]
-          truncated_doc
-        end
+      last_child = truncated_doc.children.last
+      if last_child.inner_html.nil?
+        truncated_doc.inner_html + omission + options[:link] if options[:link]
       else
-        if options[:link]
-          last_child = doc.children.last
-          if last_child.inner_html.nil?
-            doc.inner_html + options[:link]
-          else
-            last_child.inner_html = last_child.inner_html.gsub(/\W.[^\s]+$/, "") + options[:link]
-            doc
-          end      
+        last_child.inner_html = last_child.inner_html.gsub(/\W.[^\s]+$/, "") + omission
+        last_child.inner_html += options[:link] if options[:link]
+        truncated_doc
+      end
+    else
+      if options[:link]
+        last_child = doc.children.last
+        if last_child.inner_html.nil?
+          doc.inner_html + options[:link]
         else
-          text.to_s
-        end
+          last_child.inner_html = last_child.inner_html.gsub(/\W.[^\s]+$/, "") + options[:link]
+          doc
+        end      
+      else
+        text.to_s
       end
     end
   end
-
-
+  
 end
 
 module HpricotTruncator
