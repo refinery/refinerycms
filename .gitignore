@@ -10,3 +10,5 @@ nbproject
 index/**/*
 db/*.sqlite3
 *.tmproj
+*.autobackupbyrefinery.*
+refinerycms*.gem

@@ -29,6 +29,26 @@ class Admin::ResourcesController < Admin::BaseController
 		end
   end
   
+  def index
+    if searching?
+      @resources = Resource.paginate_search params[:search],
+                                            :page => params[:page],
+                                            :order => "created_at DESC"
+    else
+      @resources = Resource.paginate  :page => params[:page],
+                                      :order => "created_at DESC"
+    end
+    
+    if RefinerySetting.find_or_set(:group_resources_by_date_uploaded, false)
+      @grouped_resources = []
+      @resources.each do |resource|
+        key = resource.created_at.strftime("%Y-%m-%d")
+        resource_group = @grouped_resources.collect{|resources| resources.last if resources.first == key }.flatten.compact << resource
+        (@grouped_resources.delete_if {|i| i.first == key}) << [key, resource_group]
+      end
+    end
+  end
+  
   def insert
     self.new if @resource.nil?
     @dialog = from_dialog?

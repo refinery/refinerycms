@@ -1222,6 +1222,20 @@ WYMeditor.editor.prototype.dialog = function( dialogType ) {
 	}
 	
 	selected = this.selected();
+	if (dialogType == WYMeditor.DIALOG_LINK && jQuery.browser.mozilla) {
+	  selection = this._iframe.contentWindow.getSelection();
+	  matches = selected.innerHTML.match(new RegExp(selection.anchorNode.textContent + "(.*)" + selection.focusNode.textContent));
+	  if (matches != null && matches.length > 0 && (possible_anchor_tag = matches.last()) != null) {
+      if ((href = possible_anchor_tag.match(/href="([^"]*)"/).last()) != null) {
+        possible_anchors = this._iframe.document().getElementsByTagName('a');
+        for (i=0;i<possible_anchors.length;i++) {
+          if ((possible_match = possible_anchors[i]).innerHTML == selection) {
+            selected = possible_match;
+          }
+        }
+      }
+	  }
+	}
 
 	// set up handlers.
 	imageGroup = null;
