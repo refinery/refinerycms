@@ -33,7 +33,7 @@ FastInit.addOnLoad(function()
 		switch_area(selected);
 	}
 	
-	$$('#TB_window .close_dialog').each(function(close) {
+	$$('#TB_title .close_dialog', '#dialog_container .close_dialog').each(function(close) {
 		close.observe('click', function(e)
 		{
 			if (parent && typeof(parent.tb_remove) == "function") {

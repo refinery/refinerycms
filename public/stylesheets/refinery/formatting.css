@@ -1,7 +1,7 @@
 /* Default error colouring */
 
 div.fieldWithErrors {
-    display: inline;
+	display: inline;
 }
 
 #errorExplanation {
@@ -19,12 +19,12 @@ div.fieldWithErrors {
 /* remove borders from images */
 
 a img {
-    border: 0px none;
+	border: 0px none;
 }
 
 /*
 Firefox Dotted Line Fix
-  - http://sonspring.com/journal/removing-dotted-links
+	- http://sonspring.com/journal/removing-dotted-links
 */
 a:focus {
 	outline: none;

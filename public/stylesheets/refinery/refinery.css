@@ -4,10 +4,10 @@
 	font-size: 13px;
 }
 html {
-    min-height: 100%;
+	min-height: 100%;
 }
 body {
-    min-height: 100%;
+	min-height: 100%;
 	margin: 0;
 	padding: 0;
 	font: 10px/1.5em Verdana;
@@ -176,27 +176,27 @@ a:hover {
 }
 
 #page_container.login div.session_username, #page_container.login div.session_password {
-    float: left;
+	float: left;
 }
 
 #page_container.login div.session_password {
-    margin-left: 25px;
+	margin-left: 25px;
 }
 
 #page_container.login div.remember_me {
-    margin-top: 12px;
+	margin-top: 12px;
 }
 
 #page_container.login div.remember_me label {
-    display: inline;
+	display: inline;
 }
 
 #page_container.login div.session_username input, #page_container.login div.session_password input {
-    width: 260px;
+	width: 260px;
 }
 
 #page_container.login div.actions {
-    margin-top: 12px;
+	margin-top: 12px;
 }
 
 #header ul#menu {
@@ -261,7 +261,7 @@ pre {
 }
 
 #page_container.login #header {
-    padding: 42px 15px 42px 15px;
+	padding: 42px 15px 42px 15px;
 }
 
 #site_link {
@@ -298,21 +298,21 @@ pre {
 }
 
 #footer {
-    margin: 0px auto;
-    text-align: center;
+	margin: 0px auto;
+	text-align: center;
 }
 
 #footer_logo {
-    border: 0px none;
-    display:inline-block;
-    *display:inline;
-    margin: 50px auto 40px auto;
-    width: auto;
+	border: 0px none;
+	display:inline-block;
+	*display:inline;
+	margin: 50px auto 40px auto;
+	width: auto;
 }
 
 #footer p, #footer a {
-    color: white;
-    font-size: 11px;
+	color: white;
+	font-size: 11px;
 }
 
 #submenu {
@@ -628,6 +628,11 @@ label.stripped {
 	padding: 5px;
 }
 
+#recent_activity td.time_ago {
+	text-align: right;
+	width: 80px;
+}
+
 #recent_activity tr.on {
 	background: #E6E5DC;
 }
@@ -796,16 +801,16 @@ body.dialog form {
 	padding-left: 27px;
 }
 #dialog_main #pages_list li.child1 a {
-    padding-left: 47px;
+	padding-left: 47px;
 }
 #dialog_main #pages_list li.child2 a {
-    padding-left: 67px;
+	padding-left: 67px;
 }
 #dialog_main #pages_list li.child3 a {
-    padding-left: 87px;
+	padding-left: 87px;
 }
 #dialog_main #pages_list li.child4 a {
-    padding-left: 107px;
+	padding-left: 107px;
 }
 /*
 #dialog_main #pages_list ul li span	{
@@ -816,8 +821,8 @@ body.dialog form {
 #dialog_main #pages_list ul li a {
 	display: block;
 	padding: 3px 3px 3px 27px;
-    text-decoration: none;
-    border-bottom: none;
+	text-decoration: none;
+	border-bottom: none;
 	border: 1px solid transparent;
 }
 #dialog_main #pages_list li a:hover {
@@ -929,13 +934,13 @@ a img {
 /* page parts */
 
 ul#page_parts {
-    float: left;
-    width: 95%;
+	float: left;
+	width: 95%;
 }
 
 ul#page_parts, ul#page_parts_controls {
-    margin: 20px 0 0 0;
-    padding: 0;
+	margin: 20px 0 0 0;
+	padding: 0;
 }
 
 ul#page_parts li {
@@ -945,7 +950,7 @@ ul#page_parts li {
 }
 
 ul#page_parts li a {
-  float: left;
+	float: left;
 	line-height: 27px;
 	background: #c2c3b3;
 	padding: 0px 8px;
@@ -960,18 +965,18 @@ ul#page_parts li.active a, ul#page_parts li a.active {
 	margin-top: 0px;
 }
 ul#page_parts_controls {
-    float: right;
-    width: 5%;
+	float: right;
+	width: 5%;
 }
 
 ul#page_parts_controls li {
-    list-style: none;
-    float: right;
-    margin: 12px 3px 0px 3px;
+	list-style: none;
+	float: right;
+	margin: 12px 3px 0px 3px;
 }
 
 ul#page_parts_controls li a {
-    border: 0px none;
+	border: 0px none;
 }
 
 ul#page_parts_controls img {
@@ -1074,10 +1079,10 @@ ul#image_grid li.row-end {
 	float: right;
 }
 ul#image_grid li a {
-  	border: 0 none;
+		border: 0 none;
 }
 ul#image_grid li p {
-  	margin: 3px 0;
+		margin: 3px 0;
 }
 ul#image_grid li span.actions {
 	width: 100%;
@@ -1090,15 +1095,15 @@ ul#plugins li {
 	list-style: none;
 }
 .label_inline_with_link label {
-    float: left;
-    margin-right: 6px;
+	float: left;
+	margin-right: 6px;
 }
 .label_inline_with_link a {
-    border: 0px none;
-    margin-top: 19px;
-    line-height: 17px;
-    float: left;
+	border: 0px none;
+	margin-top: 19px;
+	line-height: 17px;
+	float: left;
 }
 .label_inline_with_link a img {
-    vertical-align: middle;
+	vertical-align: middle;
 }

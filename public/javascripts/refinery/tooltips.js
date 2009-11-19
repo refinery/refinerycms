@@ -4,47 +4,47 @@ Tooltip.prototype = {
 	initialize: function(el, options) {
 		this.el = $(el);
 		// Removing title from DOM element to avoid showing it
-    	if ((this.content = this.el.title) != null && this.content.length > 0) {
-    		this.el.tooltip = this;
-    		this.initialized = false;
-    		this.setOptions(options);
-    		this.options.relativeTo = $(this.options.relativeTo);
+		if ((this.content = this.el.title) != null && this.content.length > 0) {
+			this.el.tooltip = this;
+			this.initialized = false;
+			this.setOptions(options);
+			this.options.relativeTo = $(this.options.relativeTo);
 		
-    		// Event handlers
-    		this.showEvent = this.show.bindAsEventListener(this);
-    		this.hideEvent = this.hide.bindAsEventListener(this);
-    		this.updateEvent = this.update.bindAsEventListener(this);
-    		Event.observe(this.el, "mouseover", this.showEvent );
-    		Event.observe(this.el, "mouseout", this.hideEvent );
+			// Event handlers
+			this.showEvent = this.show.bindAsEventListener(this);
+			this.hideEvent = this.hide.bindAsEventListener(this);
+			this.updateEvent = this.update.bindAsEventListener(this);
+			Event.observe(this.el, "mouseover", this.showEvent );
+			Event.observe(this.el, "mouseout", this.hideEvent );
 
-    		// If descendant elements has 'alt' attribute defined, clear it
-    		this.el.descendants().each(function(el){
-    			if(Element.readAttribute(el, 'alt'))
-    				el.alt = "";
-    		});
+			// If descendant elements has 'alt' attribute defined, clear it
+			this.el.descendants().each(function(el){
+				if(Element.readAttribute(el, 'alt'))
+					el.alt = "";
+			});
 		
-    		rounding = this.options.rounded ? ["xb1", "xb2", "xb3", "xb4"] : [];
+			rounding = this.options.rounded ? ["xb1", "xb2", "xb3", "xb4"] : [];
 		
-    		// Building tooltip container
-    		tooltipClassName = this.options.rounded ? "tooltip tooltip-rounded" : "tooltip tooltip-square";
-    		this.tooltip = new Element("div", {style: 'display:none'}).addClassName(tooltipClassName);
+			// Building tooltip container
+			tooltipClassName = this.options.rounded ? "tooltip tooltip-rounded" : "tooltip tooltip-square";
+			this.tooltip = new Element("div", {style: 'display:none'}).addClassName(tooltipClassName);
 
-    		xtop = new Element("div").addClassName("xtop");
-    		rounding.each(function(rounder)
-    		{
-    			xtop.insert(new Element("div").addClassName(rounder));
-    		});
-    		this.tooltip.insert(xtop);
-    		this.tooltip.insert(new Element("div").addClassName("xboxcontent").update(this.content));
+			xtop = new Element("div").addClassName("xtop");
+			rounding.each(function(rounder)
+			{
+				xtop.insert(new Element("div").addClassName(rounder));
+			});
+			this.tooltip.insert(xtop);
+			this.tooltip.insert(new Element("div").addClassName("xboxcontent").update(this.content));
 
-    		xbottom = new Element("div").addClassName("xbottom");
-    		rounding.reverse(false).each(function(rounder)
-    		{
-    			xbottom.insert(new Element("div").addClassName(rounder));
-    		});
-    		this.tooltip.insert(xbottom);
+			xbottom = new Element("div").addClassName("xbottom");
+			rounding.reverse(false).each(function(rounder)
+			{
+				xbottom.insert(new Element("div").addClassName(rounder));
+			});
+			this.tooltip.insert(xbottom);
 		
-    		return this;
+			return this;
 		}
 	},
 	setOptions: function(options) {
