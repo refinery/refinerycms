@@ -2,7 +2,7 @@ module RedArtisan
   module CoreImage
     module Filters
       module Scale
-        
+
         def resize(width, height)
           create_core_image_context(width, height)
 
@@ -33,14 +33,14 @@ module RedArtisan
           scale = size.to_f / (original_size.width > original_size.height ? original_size.width : original_size.height)
           resize (original_size.width * scale).to_i, (original_size.height * scale).to_i
         end
-        
+
         private
-        
+
           def scale(width, height)
             original_size = @original.extent.size
             return width.to_f / original_size.width.to_f, height.to_f / original_size.height.to_f
           end
-          
+
       end
     end
   end

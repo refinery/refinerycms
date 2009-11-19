@@ -89,7 +89,7 @@ class ActsAsIndexedTest < ActiveSupport::TestCase
 
   end
 
-  # When a atom already in a record is duplicated, it removes 
+  # When a atom already in a record is duplicated, it removes
   # all records with that same atom from the index.
   def test_update_record_bug
     assert_equal 2, Post.find_with_index('crane',{},{:ids_only => true}).size
@@ -98,5 +98,5 @@ class ActsAsIndexedTest < ActiveSupport::TestCase
     assert_equal 2, Post.find_with_index('crane',{},{:ids_only => true}).size
     assert_equal 2, Post.find_with_index('ship',{},{:ids_only => true}).size
   end
-  
+
 end

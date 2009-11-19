@@ -104,7 +104,7 @@ module Foo #:nodoc:
           positive_quoted = run_quoted_queries(queries[:positive_quoted])
           negative = run_queries(queries[:negative])
           negative_quoted = run_quoted_queries(queries[:negative_quoted])
-          
+
           if !queries[:positive].empty? && !queries[:positive_quoted].empty?
             p = positive.delete_if{ |r_id,w| !positive_quoted.include?(r_id) }
             pq = positive_quoted.delete_if{ |r_id,w| !positive.include?(r_id) }
@@ -114,7 +114,7 @@ module Foo #:nodoc:
           else
             results = positive_quoted
           end
-          
+
           negative_results = (negative.keys + negative_quoted.keys)
           results.delete_if { |r_id, w| negative_results.include?(r_id) }
           #p results
@@ -189,7 +189,7 @@ module Foo #:nodoc:
           end
           @prefix_cache[prefix]
         end
-        
+
         # Allows compatibility with 1.8.6 which has no ord method.
         def encode_character(char)
           if @@has_ord ||= char.respond_to?(:ord)
@@ -236,7 +236,7 @@ module Foo #:nodoc:
           atoms.uniq.each do |atom|
             interim_results = {}
             if include_atom?(atom)
-              
+
               interim_results = @atoms[atom].weightings(@records_size)
             end
             if results.empty?
@@ -269,7 +269,7 @@ module Foo #:nodoc:
               matches = @atoms[atom_name].preceded_by(matches)
             end
             #results += matches.record_ids
-            
+
             interim_results = matches.weightings(@records_size)
             if results.empty?
               results = interim_results
@@ -281,7 +281,7 @@ module Foo #:nodoc:
               #p results.class
               results = rr
             end
-            
+
           end
           return results
         end

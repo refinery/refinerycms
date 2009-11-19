@@ -55,14 +55,14 @@ class UsersControllerTest < Test::Unit::TestCase
       assert_response :success
     end
   end
-  
+
   def test_should_sign_up_user_in_pending_state
     create_user
     assigns(:user).reload
     assert assigns(:user).pending?
   end
 
-  
+
   def test_should_sign_up_user_with_activation_code
     create_user
     assigns(:user).reload
@@ -76,7 +76,7 @@ class UsersControllerTest < Test::Unit::TestCase
     assert_not_nil flash[:notice]
     assert_equal users(:aaron), User.authenticate('aaron', 'test')
   end
-  
+
   def test_should_not_activate_user_without_key
     get :activate
     assert_nil flash[:notice]

@@ -158,9 +158,9 @@ module Technoweenie # :nodoc:
       #
       # Niether <tt>base_path</tt> or <tt>full_filename</tt> include the bucket name as part of the path.
       # You can retrieve the bucket name using the <tt>bucket_name</tt> method.
-      # 
+      #
       # === Accessing CloudFront URLs
-      # 
+      #
       # You can get an object's CloudFront URL using the cloudfront_url accessor.  Using the example from above:
       # @postcard.cloudfront_url # => http://XXXX.cloudfront.net/photos/1/mexico.jpg
       #
@@ -216,7 +216,7 @@ module Technoweenie # :nodoc:
         def self.port_string
           @port_string ||= (s3_config[:port].nil? || s3_config[:port] == (s3_config[:use_ssl] ? 443 : 80)) ? '' : ":#{s3_config[:port]}"
         end
-        
+
         def self.distribution_domain
           @distribution_domain = s3_config[:distribution_domain]
         end
@@ -233,7 +233,7 @@ module Technoweenie # :nodoc:
           def s3_port_string
             Technoweenie::AttachmentFu::Backends::S3Backend.port_string
           end
-          
+
           def cloudfront_distribution_domain
             Technoweenie::AttachmentFu::Backends::S3Backend.distribution_domain
           end
@@ -275,7 +275,7 @@ module Technoweenie # :nodoc:
         def s3_url(thumbnail = nil)
           File.join(s3_protocol + s3_hostname + s3_port_string, bucket_name, full_filename(thumbnail))
         end
-        
+
         # All public objects are accessible via a GET request to CloudFront. You can generate a
         # url for an object using the cloudfront_url method.
         #
@@ -288,7 +288,7 @@ module Technoweenie # :nodoc:
         def cloudfront_url(thumbnail = nil)
           "http://" + cloudfront_distribution_domain + "/" + full_filename(thumbnail)
         end
-        
+
         def public_filename(*args)
           if attachment_options[:cloudfront]
             cloudfront_url(args)
@@ -347,7 +347,7 @@ module Technoweenie # :nodoc:
         def s3_port_string
           Technoweenie::AttachmentFu::Backends::S3Backend.port_string
         end
-        
+
         def cloudfront_distribution_domain
           Technoweenie::AttachmentFu::Backends::S3Backend.distribution_domain
         end

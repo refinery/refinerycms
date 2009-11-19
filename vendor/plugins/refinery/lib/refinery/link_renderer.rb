@@ -1,7 +1,7 @@
 class Refinery::LinkRenderer < WillPaginate::LinkRenderer
-	
-	def url_for(page)
-		page_one = page == 1
+
+  def url_for(page)
+    page_one = page == 1
     @url_params = {}
     # page links should preserve GET parameters
     stringified_merge @url_params, @template.params if @template.request.get?
@@ -9,16 +9,16 @@ class Refinery::LinkRenderer < WillPaginate::LinkRenderer
 
     if complex = param_name.index(/[^\w-]/)
       page_param = parse_query_parameters("#{param_name}=#{page}")
-      
+
       stringified_merge @url_params, page_param
     else
       @url_params[param_name] = page_one ? 1 : 2
     end
 
-		url = @template.url_for(@url_params.merge!(@options[:url]||{}).to_options)
-		#@options.delete(:url) # no, don't! We want it to use the url every time.
+    url = @template.url_for(@url_params.merge!(@options[:url]||{}).to_options)
+    #@options.delete(:url) # no, don't! We want it to use the url every time.
     return url if page_one
-    
+
     if complex
       @url_string = url.sub(%r!((?:\?|&amp;)#{CGI.escape param_name}=)#{page}!, '\1@')
       return url
@@ -34,12 +34,12 @@ class Refinery::LinkRenderer < WillPaginate::LinkRenderer
     end
     # finally!
     @url_string.sub '@', page.to_s
-	end
-	
+  end
+
 private
-	
-	def param_name
+
+  def param_name
     @options[:param_name].to_s
   end
-	
+
 end

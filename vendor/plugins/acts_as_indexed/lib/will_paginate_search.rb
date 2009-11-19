@@ -12,7 +12,7 @@ module WillPaginate
       def paginate_search(query, options)
 
         page, per_page, total_entries = wp_parse_options(options)
-        
+
         total_entries ||= find_with_index(query,{},{:ids_only => true}).size
 
         returning WillPaginate::Collection.new(page, per_page, total_entries) do |pager|
