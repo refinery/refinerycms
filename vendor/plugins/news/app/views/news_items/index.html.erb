@@ -1,21 +1,21 @@
 <div id='body_content' class='clearfix'>
-	<h1 id='body_content_page_title'><%= page_title %></h1>
-	<div id='body_content_left' class='clearfix'>
-		<%= @page[:body] %>
-	
-		<% if @news_items.size > 0 %>
-			<% @news_items.each do |item| %>
-				<h3><%= link_to item.title, news_item_url(item) %></h3>
-				<p>
-					<small>Published <%= item.publish_date.strftime("%A %d of %B, %Y") %></small>
-				</p>
-				<%= truncate(item.body, :length => 200, :omission => " ... #{link_to "Read more", news_item_url(item)}", :preserve_html_tags => true) %>
-			<% end %>
-		<% else %>
-			<p><em>Sorry we haven't posted up any news yet.</em></p>
-		<% end %>
-	</div>
-	<div id='body_content_right' class='clearfix'>
-		<%= @page[:side_body] %>
-	</div>
+  <h1 id='body_content_page_title'><%= page_title %></h1>
+  <div id='body_content_left' class='clearfix'>
+    <%= @page[:body] %>
+
+    <% if @news_items.size > 0 %>
+      <% @news_items.each do |item| %>
+        <h3><%= link_to item.title, news_item_url(item) %></h3>
+        <p>
+          <small>Published <%= item.publish_date.strftime("%A %d of %B, %Y") %></small>
+        </p>
+        <%= truncate(item.body, :length => 200, :omission => " ... #{link_to "Read more", news_item_url(item)}", :preserve_html_tags => true) %>
+      <% end %>
+    <% else %>
+      <p><em>Sorry we haven't posted up any news yet.</em></p>
+    <% end %>
+  </div>
+  <div id='body_content_right' class='clearfix'>
+    <%= @page[:side_body] %>
+  </div>
 </div>

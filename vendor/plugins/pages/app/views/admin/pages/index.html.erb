@@ -1,41 +1,41 @@
 <div id='actions'>
-	<ul>
-		<li>
-	  	<%= render :partial => "/shared/admin/search", :locals => {:url => admin_pages_url} %>
-	  </li>
-		<li>
-			<%= link_to "Create New Page", new_admin_page_url, :class => "add_icon" %>
-		</li>
-	<% if Page.count > 1 and not searching? %>
-		<li>
-			<%= link_to "Reorder Pages", "", :id => "reorder_action", :class => "reorder_icon" %>
-			<%= link_to "Done Reordering Pages", "", :id => "reorder_action_done", :style => "display: none;", :class => "reorder_icon" %>
-		</li>
-	<% end %>
-	</ul>
+  <ul>
+    <li>
+      <%= render :partial => "/shared/admin/search", :locals => {:url => admin_pages_url} %>
+    </li>
+    <li>
+      <%= link_to "Create New Page", new_admin_page_url, :class => "add_icon" %>
+    </li>
+  <% if Page.count > 1 and not searching? %>
+    <li>
+      <%= link_to "Reorder Pages", "", :id => "reorder_action", :class => "reorder_icon" %>
+      <%= link_to "Done Reordering Pages", "", :id => "reorder_action_done", :style => "display: none;", :class => "reorder_icon" %>
+    </li>
+  <% end %>
+  </ul>
 </div>
-<div id='records' class='tree'>  
+<div id='records' class='tree'>
   <% if searching? %>
-  	<% if @pages.size > 0 %>
-  	  <h2>Search Results for "<%= params[:search] %>"</h2>
-  		<ul id='sortable_list'>
-  			<%= render :partial => "sortable_list" %>
-  		</ul>
-  	<% else %>
-  		<p>
-  			<strong>Sorry, no results found.</strong>
-  		</p>
-  	<% end %>
-	<% else %>
-  	<% if @pages.size > 0 %>
-  		<ul id='sortable_list'>
-  			<%= render :partial => "sortable_list" %>
-  		</ul>
-  	<% else %>
-  		<p>
-  			<strong>There are no pages yet.  Click "Create New Page" to add your first page.</strong>
-  		</p>
-  	<% end %>
-	<% end %>
+    <% if @pages.size > 0 %>
+      <h2>Search Results for "<%= params[:search] %>"</h2>
+      <ul id='sortable_list'>
+        <%= render :partial => "sortable_list" %>
+      </ul>
+    <% else %>
+      <p>
+        <strong>Sorry, no results found.</strong>
+      </p>
+    <% end %>
+  <% else %>
+    <% if @pages.size > 0 %>
+      <ul id='sortable_list'>
+        <%= render :partial => "sortable_list" %>
+      </ul>
+    <% else %>
+      <p>
+        <strong>There are no pages yet.  Click "Create New Page" to add your first page.</strong>
+      </p>
+    <% end %>
+  <% end %>
 </div>
 <%= render :partial => "/shared/admin/make_sortable", :locals => {:tree => true } if Page.count > 1 %>

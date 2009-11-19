@@ -18,7 +18,7 @@ module Refinery
         Rails.configuration = configuration
         super
       end
-  
+
       def load_plugins
         Refinery.add_gems
         super

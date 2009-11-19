@@ -14,7 +14,7 @@ ActiveRecord::Base.logger = Logger.new(File.dirname(__FILE__) + "/debug.log")
 db_adapter = ENV['DB']
 
 # no db passed, try one of these fine config-free DBs before bombing.
-db_adapter ||= 
+db_adapter ||=
   begin
     require 'rubygems'
     require 'sqlite'
@@ -53,7 +53,7 @@ class Test::Unit::TestCase #:nodoc:
     DbFile.transaction { [Attachment, FileAttachment, OrphanAttachment, MinimalAttachment, DbFile].each { |klass| klass.delete_all } }
     attachment_model self.class.attachment_model
   end
-  
+
   def teardown
     FileUtils.rm_rf File.join(File.dirname(__FILE__), 'files')
   end
@@ -62,7 +62,7 @@ class Test::Unit::TestCase #:nodoc:
   self.use_instantiated_fixtures  = false
 
   def self.attachment_model(klass = nil)
-    @attachment_model = klass if klass 
+    @attachment_model = klass if klass
     @attachment_model
   end
 
@@ -94,7 +94,7 @@ class Test::Unit::TestCase #:nodoc:
         return att
       end
     end
-    
+
     def use_temp_file(fixture_filename)
       temp_path = File.join('/tmp', File.basename(fixture_filename))
       FileUtils.mkdir_p File.join(fixture_path, 'tmp')
@@ -115,11 +115,11 @@ class Test::Unit::TestCase #:nodoc:
         end
       end
     end
-    
+
     def assert_not_created
       assert_created(0) { yield }
     end
-    
+
     def should_reject_by_size_with(klass)
       attachment_model klass
       assert_not_created do
@@ -129,19 +129,19 @@ class Test::Unit::TestCase #:nodoc:
         assert_nil attachment.db_file if attachment.respond_to?(:db_file)
       end
     end
-    
+
     def assert_difference(object, method = nil, difference = 1)
       initial_value = object.send(method)
       yield
       assert_equal initial_value + difference, object.send(method)
     end
-    
+
     def assert_no_difference(object, method, &block)
       assert_difference object, method, 0, &block
     end
-    
+
     def attachment_model(klass = nil)
-      @attachment_model = klass if klass 
+      @attachment_model = klass if klass
       @attachment_model
     end
 end

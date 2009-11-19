@@ -12,18 +12,18 @@ module Technoweenie # :nodoc:
         def create_temp_file
           write_to_temp_file current_data
         end
-        
+
         # Gets the current data from the database
         def current_data
           db_file.data
         end
-        
+
         protected
           # Destroys the file.  Called in the after_destroy callback
           def destroy_file
             db_file.destroy if db_file
           end
-          
+
           # Saves the data to the DbFile model
           def save_to_storage
             if save_attachment?

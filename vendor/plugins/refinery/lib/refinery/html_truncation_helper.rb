@@ -40,12 +40,12 @@ module Refinery::HtmlTruncationHelper
 
     if content_length > max_length
       truncated_doc = doc.truncate(actual_length)
-  
+
       if (options[:preserve_full_words] || false)
         word_length = actual_length - (truncated_doc.inner_html.mb_chars.length - truncated_doc.inner_html.rindex(' '))
         truncated_doc = doc.truncate(word_length)
       end
-      
+
       if (last_child = truncated_doc.children.last).inner_html.nil?
         "#{truncated_doc.inner_html}#{omission}#{options[:link]}" if options[:link]
       else
@@ -63,13 +63,13 @@ module Refinery::HtmlTruncationHelper
         else
           last_child.inner_html = last_child.inner_html.gsub(/\W.[^\s]+$/, "") + options[:link]
           doc
-        end      
+        end
       else
         text.to_s
       end
     end
   end
-  
+
 end
 
 module HpricotTruncator

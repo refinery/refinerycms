@@ -1,35 +1,35 @@
 <div id='actions'>
-	<ul>
-		<li>
-	    <%= render :partial => "/shared/admin/search", :locals => {:url => admin_news_items_url} %>
-	  </li>
-		<li>
-			<%= link_to "Create News Item", new_admin_news_item_url, :class => "add_icon" %>
-		</li>
-	</ul>
+  <ul>
+    <li>
+      <%= render :partial => "/shared/admin/search", :locals => {:url => admin_news_items_url} %>
+    </li>
+    <li>
+      <%= link_to "Create News Item", new_admin_news_item_url, :class => "add_icon" %>
+    </li>
+  </ul>
 </div>
-<div id='records'> 
+<div id='records'>
   <% if searching? %>
     <h2>Search Results for "<%= params[:search] %>"</h2>
     <% if @news_items.size > 0 %>
-  			<%= render :partial => "news_item", :collection => @news_items %>
+        <%= render :partial => "news_item", :collection => @news_items %>
     <% else %>
       <p>Sorry, no results found.</p>
     <% end %>
-	<% else %>
-	  <% if @news_items.size > 0 %>
-  		<%= will_paginate @news_items, :previous_label => '&laquo;', :next_label => '&raquo;' %>
+  <% else %>
+    <% if @news_items.size > 0 %>
+      <%= will_paginate @news_items, :previous_label => '&laquo;', :next_label => '&raquo;' %>
       <ul>
-  			<%= render :partial => "news_item", :collection => @news_items %>
+        <%= render :partial => "news_item", :collection => @news_items %>
       </ul>
-  		<%= will_paginate @news_items, :previous_label => '&laquo;', :next_label => '&raquo;' %>
-  	<% else %>
-  		<p>
-  			<strong>
-  				There are no news items yet.
-  				Click "Create News Item" to add your first news item.
-  			</strong>
-  		</p>
-  	<% end %>
-	<% end %>
+      <%= will_paginate @news_items, :previous_label => '&laquo;', :next_label => '&raquo;' %>
+    <% else %>
+      <p>
+        <strong>
+          There are no news items yet.
+          Click "Create News Item" to add your first news item.
+        </strong>
+      </p>
+    <% end %>
+  <% end %>
 </div>

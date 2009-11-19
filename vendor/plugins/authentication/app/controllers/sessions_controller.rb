@@ -1,8 +1,8 @@
 class SessionsController < ApplicationController
-  
+
   layout 'admin'
   filter_parameter_logging 'password', 'password_confirmation'
-    
+
   def create
     self.current_user = User.authenticate(params[:session][:login], params[:session][:password])
     if logged_in?
@@ -26,5 +26,5 @@ class SessionsController < ApplicationController
     flash[:notice] = "You have been logged out."
     redirect_back_or_default(new_session_url)
   end
-  
+
 end

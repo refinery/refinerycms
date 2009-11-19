@@ -10,13 +10,13 @@ else
   else
     $1 if File.read("#{RAILS_ROOT}/config/environment.rb") =~ /^[^#]*REFINERY_GEM_VERSION\s*=\s*["']([!~<>=]*\s*[\d.]+)["']/
   end
-  
+
   if version
     gem 'refinerycms', version
   else
     gem 'refinerycms'
   end
-  
+
   require 'refinery_initializer'
 end
 

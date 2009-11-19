@@ -14,20 +14,20 @@ class UsersController < ApplicationController
 
   def create
     unless can_create_public_user
-      render :text => "User signup is disabled", :layout => true 
+      render :text => "User signup is disabled", :layout => true
     else
       begin
           cookies.delete :auth_token
-          # protects against session fixation attacks, wreaks havoc with 
+          # protects against session fixation attacks, wreaks havoc with
           # request forgery protection.
           # uncomment at your own risk
           # reset_session
           @user = User.new(params[:user])
-					@selected_plugin_titles = params[:user][:plugins] || []
+          @selected_plugin_titles = params[:user][:plugins] || []
 
           @user.register! if @user.valid?
           if @user.errors.empty?
-						@user.plugins = @selected_plugin_titles
+            @user.plugins = @selected_plugin_titles
             self.current_user = @user
             current_user.activate!
             redirect_back_or_default(admin_root_url)
@@ -54,12 +54,12 @@ class UsersController < ApplicationController
   end
 
   def suspend
-    @user.suspend! 
+    @user.suspend!
     redirect_to users_path
   end
 
   def unsuspend
-    @user.unsuspend! 
+    @user.unsuspend!
     redirect_to users_path
   end
 
