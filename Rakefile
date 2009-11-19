@@ -8,3 +8,8 @@ require 'rake/testtask'
 require 'rake/rdoctask'
  
 require 'tasks/rails'
+
+desc 'Removes trailing whitespace'
+task :whitespace do
+  sh %{find . -name '*.*rb' -exec sed -i '' 's/\t/  /g' {} \\; -exec sed -i '' 's/ *$//g' {} \\; }
+end
