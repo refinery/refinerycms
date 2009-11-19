@@ -11,6 +11,6 @@ class DbFileTest < Test::Unit::TestCase
     end
     assert_equal 1, attachment_model.saves
   end
-  
+
   test_against_subclass :test_should_call_after_attachment_saved, Attachment
 end

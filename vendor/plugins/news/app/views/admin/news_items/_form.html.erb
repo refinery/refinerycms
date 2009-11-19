@@ -1,19 +1,19 @@
 <%= error_messages_for :news_item %>
 <% form_for [:admin, @news_item] do |f| %>
-	<div class='field'>
-		<%= f.label :title %>
-		<%= f.text_field :title, :class => "larger", :style => 'width: 954px' %>
-	</div>
-	<div class='field'>
-		<%= f.label :publish_date %>
-		<%= f.datetime_select :publish_date %>
-	</div>
-	<div class='clearfix' style='width:963px'>
-		<div class='field'>
-			<%= f.label :content %>
-			<%= f.text_area :content, :rows => "20", :class => "wymeditor" %>
-		</div>
-	</div>
+  <div class='field'>
+    <%= f.label :title %>
+    <%= f.text_field :title, :class => "larger", :style => 'width: 954px' %>
+  </div>
+  <div class='field'>
+    <%= f.label :publish_date %>
+    <%= f.datetime_select :publish_date %>
+  </div>
+  <div class='clearfix' style='width:963px'>
+    <div class='field'>
+      <%= f.label :content %>
+      <%= f.text_area :content, :rows => "20", :class => "wymeditor" %>
+    </div>
+  </div>
 
-	<%= render :partial => "/shared/admin/form_actions", :locals => {:f => f, :continue_editing => true} %>
+  <%= render :partial => "/shared/admin/form_actions", :locals => {:f => f, :continue_editing => true} %>
 <% end %>

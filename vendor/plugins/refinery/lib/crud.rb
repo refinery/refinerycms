@@ -14,7 +14,7 @@ module Crud
     super
     base.extend(ClassMethods)
   end
-  
+
   module ClassMethods
 
     def crudify(model_name, new_options = {})
@@ -28,7 +28,7 @@ module Crud
       module_eval %(
         before_filter :find_#{singular_name}, :only => [:update, :destroy, :edit]
         before_filter :find_all_#{plural_name}, :only => :reorder
-        
+
         def new
           @#{singular_name} = #{class_name}.new
         end
@@ -49,7 +49,7 @@ module Crud
                 render :partial => "/shared/message"
               end
             end
-          else 
+          else
             unless request.xhr?
               render :action => 'new'
             else
@@ -57,7 +57,7 @@ module Crud
             end
           end
         end
-        
+
         def edit
           @#{singular_name} = #{class_name}.find(params[:id])
         end
@@ -81,7 +81,7 @@ module Crud
           else
             unless request.xhr?
               render :action => 'edit'
-            else  
+            else
               render :partial => "/shared/admin/error_messages_for", :locals => {:symbol => :#{singular_name}, :object => @#{singular_name}}
             end
           end
@@ -95,14 +95,14 @@ module Crud
         def find_#{singular_name}
           @#{singular_name} = #{class_name}.find(params[:id])
         end
-          
+
         def find_all_#{plural_name}
           @#{plural_name} = #{class_name}.find(:all, :order => "#{options[:order]}", :conditions => "#{options[:conditions]}")
         end
-        
+
         protected :find_#{singular_name}, :find_all_#{plural_name}
       )
-      
+
       if options[:searchable]
         module_eval %(
           def index
@@ -117,17 +117,17 @@ module Crud
                                                        :conditions => "#{options[:conditions]}"
             end
           end
-				)
+        )
       else
         module_eval %(
           def index
             @#{plural_name} = #{class_name}.paginate :page => params[:page],
                                                      :order => "#{options[:order]}",
                                                      :conditions => "#{options[:conditions]}"
-					end
-				)
+          end
+        )
       end
-      
+
       if options[:sortable]
         module_eval %(
           def update_positions
@@ -137,14 +137,14 @@ module Crud
               end
             else
               params[:sortable_list].each do |position, id_hash|
-              	parse_branch(position, id_hash, nil)
+                parse_branch(position, id_hash, nil)
               end
             end
 
             find_all_#{plural_name}
             render :partial => 'sortable_list', :layout => false
           end
-        
+
           # takes in a single branch and saves the nodes inside it
           def parse_branch(position, id_hash, parent_id)
             id_hash.each do |pos, id|
@@ -153,11 +153,11 @@ module Crud
 
             #{class_name}.update(id_hash["id"], :parent_id => parent_id, :position => position)
           end
-          
+
           protected :parse_branch
         )
       end
-      
+
     end
 
   end

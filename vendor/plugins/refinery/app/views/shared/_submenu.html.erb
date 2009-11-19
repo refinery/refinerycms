@@ -1,4 +1,4 @@
 <% children = @page.root.children %>
 <ul id='submenu'<%= " class='empty'" if children.empty? %>>
-	<%= render :partial => "/shared/submenu_branch", :collection => children %>
+  <%= render :partial => "/shared/submenu_branch", :collection => children %>
 </ul>

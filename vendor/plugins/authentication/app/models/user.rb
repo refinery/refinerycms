@@ -1,41 +1,41 @@
 require 'digest/sha1'
-class User < ActiveRecord::Base	
-	# Hack: Allow "rake gems:install" to run when this class is missing its gem dependency.
-	# For further clarification on why, refer to:
-	# https://rails.lighthouseapp.com/projects/8994/tickets/780-rake-gems-install-doesn-t-work-if-plugins-are-missing-gem-dependencies
-	if defined? AASM
-		include AASM # include the library which will give us state machine functionality.
-		aasm_column :state
-	  aasm_initial_state :pending
-	  aasm_state :passive
-	  aasm_state :pending, :enter => :make_activation_code
-	  aasm_state :active,  :enter => :do_activate
-	  aasm_state :suspended
-	  aasm_state :deleted, :enter => :do_delete
+class User < ActiveRecord::Base
+  # Hack: Allow "rake gems:install" to run when this class is missing its gem dependency.
+  # For further clarification on why, refer to:
+  # https://rails.lighthouseapp.com/projects/8994/tickets/780-rake-gems-install-doesn-t-work-if-plugins-are-missing-gem-dependencies
+  if defined? AASM
+    include AASM # include the library which will give us state machine functionality.
+    aasm_column :state
+    aasm_initial_state :pending
+    aasm_state :passive
+    aasm_state :pending, :enter => :make_activation_code
+    aasm_state :active,  :enter => :do_activate
+    aasm_state :suspended
+    aasm_state :deleted, :enter => :do_delete
 
-	  aasm_event :register do
-	    transitions :from => :passive, :to => :pending, :guard => Proc.new {|u| !(u.crypted_password.blank? && u.password.blank?) }
-	  end
-  
-	  aasm_event :activate do
-	    transitions :from => :pending, :to => :active 
-	  end
-  
-	  aasm_event :suspend do
-	    transitions :from => [:passive, :pending, :active], :to => :suspended
-	  end
-  
-	  aasm_event :delete do
-	    transitions :from => [:passive, :pending, :active, :suspended], :to => :deleted
-	  end
+    aasm_event :register do
+      transitions :from => :passive, :to => :pending, :guard => Proc.new {|u| !(u.crypted_password.blank? && u.password.blank?) }
+    end
 
-	  aasm_event :unsuspend do
-	    transitions :from => :suspended, :to => :active,  :guard => Proc.new {|u| !u.activated_at.blank? }
-	    transitions :from => :suspended, :to => :pending, :guard => Proc.new {|u| !u.activation_code.blank? }
-	    transitions :from => :suspended, :to => :passive
-	  end
-	end	
-	
+    aasm_event :activate do
+      transitions :from => :pending, :to => :active
+    end
+
+    aasm_event :suspend do
+      transitions :from => [:passive, :pending, :active], :to => :suspended
+    end
+
+    aasm_event :delete do
+      transitions :from => [:passive, :pending, :active, :suspended], :to => :deleted
+    end
+
+    aasm_event :unsuspend do
+      transitions :from => :suspended, :to => :active,  :guard => Proc.new {|u| !u.activated_at.blank? }
+      transitions :from => :suspended, :to => :pending, :guard => Proc.new {|u| !u.activation_code.blank? }
+      transitions :from => :suspended, :to => :passive
+    end
+  end
+
   # Virtual attribute for the unencrypted password
   attr_accessor :password
 
@@ -48,11 +48,11 @@ class User < ActiveRecord::Base
   validates_length_of       :email,    :within => 3..100
   validates_uniqueness_of   :login, :email, :case_sensitive => false
   before_save :encrypt_password
-  
-	serialize :plugins_column#, Array
 
-	has_many :plugins, :class_name => "UserPlugin", :order => "position ASC"
-  
+  serialize :plugins_column#, Array
+
+  has_many :plugins, :class_name => "UserPlugin", :order => "position ASC"
+
   # prevents a user from submitting a crafted form that bypasses activation
   # anything else you want your user to change should be added here.
   attr_accessible :login, :email, :password, :password_confirmation, :plugins
@@ -77,22 +77,22 @@ class User < ActiveRecord::Base
     crypted_password == encrypt(password)
   end
 
-	def plugins=(plugin_titles)
-		self.plugins.delete_all
-		
-		plugin_titles.each do |plugin_title|
-			if plugin_title.is_a?(String)
-				self.plugins.find_or_create_by_title(plugin_title)
-			end
-		end
-	end
-	
+  def plugins=(plugin_titles)
+    self.plugins.delete_all
+
+    plugin_titles.each do |plugin_title|
+      if plugin_title.is_a?(String)
+        self.plugins.find_or_create_by_title(plugin_title)
+      end
+    end
+  end
+
   def authorized_plugins
     self.plugins.collect {|p| p.title} | Refinery::Plugins.always_allowed.titles
   end
 
   def remember_token?
-    remember_token_expires_at && Time.now.utc < remember_token_expires_at 
+    remember_token_expires_at && Time.now.utc < remember_token_expires_at
   end
 
   # These create and unset the fields required for remembering users between browser closes
@@ -122,22 +122,22 @@ class User < ActiveRecord::Base
   end
 
   protected
-    # before filter 
+    # before filter
     def encrypt_password
       return if password.blank?
       self.salt = Digest::SHA1.hexdigest("--#{Time.now.to_s}--#{login}--") if new_record?
       self.crypted_password = encrypt(password)
     end
-      
+
     def password_required?
       crypted_password.blank? || !password.blank?
     end
-    
+
     def make_activation_code
       self.deleted_at = nil
       self.activation_code = Digest::SHA1.hexdigest( Time.now.to_s.split(//).sort_by {rand}.join )
     end
-    
+
     def do_delete
       self.deleted_at = Time.now.utc
     end

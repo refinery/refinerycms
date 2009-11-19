@@ -29,7 +29,7 @@ module Foo #:nodoc:
         # min_word_size:: Sets the minimum length for a word in a query. Words
         #                 shorter than this value are ignored in searches
         #                 unless preceded by the '+' operator. Default is 3.
-        # index_file:: Sets the location for the index. By default this is 
+        # index_file:: Sets the location for the index. By default this is
         #              RAILS_ROOT/index. Specify as an array. Heroku, for
         #              example would use RAILS_ROOT/tmp/index, which would be
         #              set as [RAILS_ROOT,'tmp','index]
@@ -47,7 +47,7 @@ module Foo #:nodoc:
           cattr_accessor :aai_config
 
           # default config
-          self.aai_config = { 
+          self.aai_config = {
             :index_file => [RAILS_ROOT,'index'],
             :index_file_depth => 3,
             :min_word_size => 3,
@@ -84,11 +84,11 @@ module Foo #:nodoc:
           @query_cache = {}
           true
         end
-        
+
         # Updates the index.
         # 1. Removes the previous version of the record from the index
         # 2. Adds the new version to the index.
-        
+
         def index_update(record)
           build_index if !File.exists?(File.join(aai_config[:index_file]))
           index = SearchIndex.new(aai_config[:index_file], aai_config[:index_file_depth], aai_config[:fields], aai_config[:min_word_size])
@@ -109,7 +109,7 @@ module Foo #:nodoc:
         #
         # ====find_options
         # Same as ActiveRecord#find options hash. An :order key will override
-        # the relevance ranking 
+        # the relevance ranking
         #
         # ====options
         # ids_only:: Method returns an array of integer IDs when set to true.
@@ -128,22 +128,22 @@ module Foo #:nodoc:
             logger.debug('Query held in cache.')
           end
           return @query_cache[query].sort.reverse.map(&:first) if (options.has_key?(:ids_only) && options[:ids_only]) || @query_cache[query].empty?
-          
+
           # slice up the results by offset and limit
           offset = find_options[:offset] || 0
           limit = find_options.include?(:limit) ? find_options[:limit] : @query_cache[query].size
           part_query = @query_cache[query].sort.reverse.slice(offset,limit).map(&:first)
-          
+
           # Set these to nil as we are dealing with the pagination by setting
           # exactly what records we want.
           find_options[:offset] = nil
           find_options[:limit] = nil
-          
+
           with_scope :find => find_options do
             # Doing the find like this eliminates the possibility of errors occuring
             # on either missing records (out-of-sync) or an empty results array.
             records = find(:all, :conditions => [ "#{class_name.tableize}.id IN (?)", part_query])
-            
+
             if find_options.include?(:order)
              records # Just return the records without ranking them.
            else
@@ -152,11 +152,11 @@ module Foo #:nodoc:
              records.each do |r|
                ranked_records[r] = @query_cache[query][r.id]
              end
-          
+
              ranked_records.to_a.sort_by{|a| a.last }.reverse.map(&:first)
            end
           end
-          
+
         end
 
         private

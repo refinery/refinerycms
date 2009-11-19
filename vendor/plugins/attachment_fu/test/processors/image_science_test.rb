@@ -11,14 +11,14 @@ class ImageScienceTest < Test::Unit::TestCase
       # test image science thumbnail
       assert_equal 42, attachment.width
       assert_equal 55, attachment.height
-      
+
       thumb      = attachment.thumbnails.detect { |t| t.filename =~ /_thumb/ }
       geo        = attachment.thumbnails.detect { |t| t.filename =~ /_geometry/ }
-      
+
       # test exact resize dimensions
       assert_equal 50, thumb.width
       assert_equal 51, thumb.height
-      
+
       # test geometry string
       assert_equal 31, geo.width
       assert_equal 41, geo.height

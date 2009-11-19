@@ -1,5 +1,5 @@
 module InquiriesHelper
-  
+
   def open_close_link(inquiry)
     if inquiry.open?
       link_to("Open", {:action => 'toggle_status', :id => inquiry.id},
@@ -9,5 +9,5 @@ module InquiriesHelper
                         {:title => "Click to open this inquiry back up"})
     end
   end
-  
+
 end

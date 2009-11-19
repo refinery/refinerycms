@@ -8,7 +8,7 @@ module Technoweenie # :nodoc:
           base.send :extend, ClassMethods
           base.alias_method_chain :process_attachment, :processing
         end
-        
+
         module ClassMethods
           # Yields a block containing a GD2 Image for the given binary data.
           def with_image(file, &block)
@@ -33,12 +33,12 @@ module Technoweenie # :nodoc:
             size = size.first if size.is_a?(Array) && size.length == 1
             if size.is_a?(Fixnum) || (size.is_a?(Array) && size.first.is_a?(Fixnum))
               if size.is_a?(Fixnum)
-                # Borrowed from image science's #thumbnail method and adapted 
+                # Borrowed from image science's #thumbnail method and adapted
                 # for this.
                 scale = size.to_f / (img.width > img.height ? img.width.to_f : img.height.to_f)
                 img.resize!((img.width * scale).round(1), (img.height * scale).round(1), false)
               else
-                img.resize!(size.first, size.last, false) 
+                img.resize!(size.first, size.last, false)
               end
             else
               w, h = [img.width, img.height] / size.to_s

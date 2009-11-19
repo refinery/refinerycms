@@ -22,7 +22,7 @@ eval("#{(defined? Refinery::Initializer) ? Refinery : Rails}::Initializer").run 
   # To use Rails without a database, you must remove the Active Record framework
   # config.frameworks -= [ :active_record, :active_resource, :action_mailer ]
 
-  # Only load the plugins named here, in the order given. By default, all plugins 
+  # Only load the plugins named here, in the order given. By default, all plugins
   # in vendor/plugins are loaded in alphabetical order.
   # :all can be used as a placeholder for all plugins not explicitly named
   # config.plugins = [ :authentication, :acts_as_tree, :attachment_fu, :all ]
@@ -36,7 +36,7 @@ eval("#{(defined? Refinery::Initializer) ? Refinery : Rails}::Initializer").run 
 
   # Your secret key for verifying cookie session data integrity.
   # If you change this key, all old sessions will become invalid!
-  # Make sure the secret is at least 30 characters and all random, 
+  # Make sure the secret is at least 30 characters and all random,
   # no regular words or you'll be exposed to dictionary attacks.
   config.action_controller.session = {
     :session_key => '_refinery_session',
@@ -58,10 +58,10 @@ eval("#{(defined? Refinery::Initializer) ? Refinery : Rails}::Initializer").run 
 
   # Make Active Record use UTC-base instead of local time
   # config.active_record.default_timezone = :utc
-  # 
-  
+  #
+
   # Please add your gems above the Refinery required gems here:
-  
+
   #===REFINERY REQUIRED GEMS===
   config.gem "rake", :version => ">= 0.8.3", :lib => "rake"
   config.gem "friendly_id", :version => ">= 2.2.2", :lib => "friendly_id"

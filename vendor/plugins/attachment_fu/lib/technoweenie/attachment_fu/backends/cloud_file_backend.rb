@@ -9,13 +9,13 @@ module Technoweenie # :nodoc:
       #
       # == Requirements
       #
-      # Requires the {Cloud Files Gem}[http://www.mosso.com/cloudfiles.jsp] by Rackspace 
+      # Requires the {Cloud Files Gem}[http://www.mosso.com/cloudfiles.jsp] by Rackspace
       #
       # == Configuration
       #
       # Configuration is done via <tt>RAILS_ROOT/config/rackspace_cloudfiles.yml</tt> and is loaded according to the <tt>RAILS_ENV</tt>.
       # The minimum connection options that you must specify are a container name, your Mosso login name and your Mosso API key.
-      # You can sign up for Cloud Files and get access keys by visiting https://www.mosso.com/buy.htm 
+      # You can sign up for Cloud Files and get access keys by visiting https://www.mosso.com/buy.htm
       #
       # Example configuration (RAILS_ROOT/config/rackspace_cloudfiles.yml)
       #
@@ -125,7 +125,7 @@ module Technoweenie # :nodoc:
           @@container_name = @@cloudfiles_config[:container_name]
           @@cf = CloudFiles::Connection.new(@@cloudfiles_config[:username], @@cloudfiles_config[:api_key])
           @@container = @@cf.container(@@container_name)
-          
+
           base.before_update :rename_file
         end
 

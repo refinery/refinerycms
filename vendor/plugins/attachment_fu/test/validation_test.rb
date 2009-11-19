@@ -5,11 +5,11 @@ class ValidationTest < Test::Unit::TestCase
     @attachment = SmallAttachment.new
     assert !@attachment.valid?
     assert @attachment.errors.on(:size)
-    
+
     @attachment.size = 2000
     assert !@attachment.valid?
     assert @attachment.errors.on(:size), @attachment.errors.full_messages.to_sentence
-    
+
     @attachment.size = 1000
     assert !@attachment.valid?
     assert_nil @attachment.errors.on(:size)
@@ -19,16 +19,16 @@ class ValidationTest < Test::Unit::TestCase
     @attachment = BigAttachment.new
     assert !@attachment.valid?
     assert @attachment.errors.on(:size)
-    
+
     @attachment.size = 2000
     assert !@attachment.valid?
     assert @attachment.errors.on(:size), @attachment.errors.full_messages.to_sentence
-    
+
     @attachment.size = 1.megabyte
     assert !@attachment.valid?
     assert_nil @attachment.errors.on(:size)
   end
-  
+
   def test_should_validate_content_type
     @attachment = PdfAttachment.new
     assert !@attachment.valid?
@@ -47,7 +47,7 @@ class ValidationTest < Test::Unit::TestCase
     @attachment = Attachment.new
     assert !@attachment.valid?
     assert @attachment.errors.on(:filename)
-    
+
     @attachment.filename = 'foo'
     assert !@attachment.valid?
     assert_nil @attachment.errors.on(:filename)

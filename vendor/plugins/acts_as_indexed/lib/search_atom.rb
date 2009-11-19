@@ -15,7 +15,7 @@ module Foo #:nodoc:
         # http://www.perlmonks.com/index.pl?node_id=27509
         # W(T, D) = tf(T, D) * log ( DN / df(T))
         # weighting = frequency_in_this_record * log (total_number_of_records / number_of_matching_records)
-        
+
         def initialize
           @records = {}
         end
@@ -71,8 +71,8 @@ module Foo #:nodoc:
                 matches.add_position(record_id,p)
               end
             end
-            
-          end  
+
+          end
           return matches
         end
 
@@ -81,14 +81,14 @@ module Foo #:nodoc:
         def weightings(records_size)
           out = {}
           @records.each do |r_id, pos|
-            
+
             # Fixes a bug when the records_size is zero. i.e. The only record
             # contaning the word has been deleted.
             if records_size < 1
               out[r_id] = 0.0
               next
             end
-            
+
             # weighting = frequency * log (records.size / records_with_atom)
             out[r_id] = pos.size * Math.log(records_size / @records.size)
           end
@@ -96,7 +96,7 @@ module Foo #:nodoc:
         end
 
         protected
-      
+
         def include_position?(record_id,pos)
           @records[record_id].include?(pos)
         end

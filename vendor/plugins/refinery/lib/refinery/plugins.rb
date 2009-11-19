@@ -1,6 +1,6 @@
 module Refinery
   class Plugins < Array
-  
+
     def initialize
       @plugins = []
     end
