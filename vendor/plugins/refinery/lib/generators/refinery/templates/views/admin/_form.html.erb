@@ -1,7 +1,7 @@
 <%%= error_messages_for :<%= singular_name %> -%>
 <%% form_for [:admin, @<%= singular_name %>] do |f| -%>
-	<% attributes.each do |attribute| -%>
-<div class='field'>
+	<% attributes.each do |attribute| %>
+  <div class='field'>
     <%%= f.label :<%= attribute.name %> -%>
 <% if attribute.field_type.to_s == "text_area" -%>
     <%%= f.text_area :<%= attribute.name %>, :rows => 20, :cols => 140, :class => 'wymeditor' -%>
@@ -9,10 +9,6 @@
     <%%= f.<%= attribute.field_type -%> :<%= attribute.name -%> -%>
 <% end -%>
   </div>
-	<% end -%>
-<div class='form-actions'>
-    <%%= f.submit 'Save', :id => "submit_button", :class => "wymupdate" %> 
-		or 
-		<%%= link_to "Cancel", admin_<%= plural_name %>_url, :class => "close_dialog", :id => "cancel_button" %>
-	</div>
+	<% end %>
+  <%%= render :partial => "/shared/admin/form_actions", :locals => {:f => f, :continue_editing => false} %>
 <%% end -%>

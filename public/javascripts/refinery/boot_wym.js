@@ -66,9 +66,8 @@ var wymeditor_boot_options = {
                
 	, iframeHtml:   
 		"<div class='wym_iframe wym_section'>"
-     	+ "<iframe src='" + WYMeditor.IFRAME_BASE_PATH + "wymiframe' frameborder='0'"
-      	+ "onload='this.contentWindow.parent.WYMeditor.INSTANCES[" + WYMeditor.INDEX + "].initIframe(this); init_tooltips();'>"
-			+ "</iframe>"
+     	+ "<iframe id='WYMeditor_" + WYMeditor.INDEX + "' src='" + WYMeditor.IFRAME_BASE_PATH + "wymiframe' frameborder='0'"
+      	+ " onload='this.contentWindow.parent.WYMeditor.INSTANCES[" + WYMeditor.INDEX + "].initIframe(this);'></iframe>"
 		+"</div>"
 
 	, dialogImageHtml: ""

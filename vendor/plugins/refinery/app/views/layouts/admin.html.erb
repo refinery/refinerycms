@@ -2,6 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<%= render :partial => "/admin/head" %>
 	<body>
+	  <div id='tooltip_container'></div>
 		<div id="page_container"<%= " class='login'" unless logged_in? %><%= " class='splash'" if logged_in? and params[:action] == "index" %>>
 			<div id="page">
 				<div class="clearfix" id="header">

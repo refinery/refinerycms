@@ -1,8 +1,9 @@
 init_tooltips = function(){
-	$$('a[title]', '#image_grid img[title]').each(function(element)
+    arguments = arguments.length > 0 ? arguments : ['a[title]', '#image_grid img[title]'];
+	$$(arguments).each(function(element)
 	{
 		new Tooltip(element, {mouseFollow:false, delay: 0, opacity: 1, appearDuration:0, hideDuration: 0, rounded: false});
-	})
+	});
 };
 
 FastInit.addOnLoad(function()
