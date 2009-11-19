@@ -4,13 +4,13 @@
  * Copyright (c) 2007 cody lindley
  * Licensed under the MIT License: http://www.opensource.org/licenses/mit-license.php
 */
-		  
+			
 var tb_pathToImages = "/images/thickbox/";
 
 /*!!!!!!!!!!!!!!!!! edit below this line at your own risk !!!!!!!!!!!!!!!!!!!!!!!*/
 
 //on page load call tb_init
-jQuery(document).ready(function(){   
+jQuery(document).ready(function(){	 
 	tb_init('a.thickbox, area.thickbox, input.thickbox');//pass where to apply thickbox
 	imgLoader = new Image();// preload image
 	imgLoader.src = tb_pathToImages + "loadingAnimation.gif";
@@ -56,13 +56,13 @@ function tb_show(caption, url, imageGroup, ajax_loaded_callback) {//function cal
 		jQuery('#TB_load').show();//show loader
 		
 		var baseURL;
-	  if(url.indexOf("?")!==-1){ //ff there is a query string involved
+		if(url.indexOf("?")!==-1){ //ff there is a query string involved
 			baseURL = url.substr(0, url.indexOf("?"));
-	  }
-		else { 
-	  	baseURL = url;
 		}
-	   
+		else { 
+			baseURL = url;
+		}
+		 
 		var urlString = /\.jpg$|\.jpeg$|\.png$|\.gif$|\.bmp$/;
 		var urlType = baseURL.toLowerCase().match(urlString);
 
@@ -316,7 +316,7 @@ function tb_remove() {
 	document.onkeydown = "";
 	document.onkeyup = "";
 	document.body.style.overflow = document.body.oldOverflow || "";
-	Event.stopObserving(document.onresize ? document : window, "resize", tb_position);  
+	Event.stopObserving(document.onresize ? document : window, "resize", tb_position);	
 	return false;
 }
 
@@ -333,18 +333,18 @@ function tb_position() {
 }
 
 function tb_parseQuery ( query ) {
-   var Params = {};
-   if ( ! query ) {return Params;}// return empty object
-   var Pairs = query.split(/[;&]/);
-   for ( var i = 0; i < Pairs.length; i++ ) {
-      var KeyVal = Pairs[i].split('=');
-      if ( ! KeyVal || KeyVal.length != 2 ) {continue;}
-      var key = unescape( KeyVal[0] );
-      var val = unescape( KeyVal[1] );
-      val = val.replace(/\+/g, ' ');
-      Params[key] = val;
-   }
-   return Params;
+	 var Params = {};
+	 if ( ! query ) {return Params;}// return empty object
+	 var Pairs = query.split(/[;&]/);
+	 for ( var i = 0; i < Pairs.length; i++ ) {
+		var KeyVal = Pairs[i].split('=');
+		if ( ! KeyVal || KeyVal.length != 2 ) {continue;}
+		var key = unescape( KeyVal[0] );
+		var val = unescape( KeyVal[1] );
+		val = val.replace(/\+/g, ' ');
+		Params[key] = val;
+	 }
+	 return Params;
 }
 
 function tb_getPageSize(){
@@ -356,8 +356,8 @@ function tb_getPageSize(){
 }
 
 function tb_detectMacXFF() {
-  var userAgent = navigator.userAgent.toLowerCase();
-  if (userAgent.indexOf('mac') != -1 && userAgent.indexOf('firefox')!=-1) {
-    return true;
-  }
+	var userAgent = navigator.userAgent.toLowerCase();
+	if (userAgent.indexOf('mac') != -1 && userAgent.indexOf('firefox')!=-1) {
+	return true;
+	}
 }

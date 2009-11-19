@@ -656,7 +656,7 @@ jQuery.extend({
 			else
 				script.text = data;
 
-			// Use insertBefore instead of appendChild  to circumvent an IE6 bug.
+			// Use insertBefore instead of appendChild	to circumvent an IE6 bug.
 			// This arises when a base node is used (#2709).
 			head.insertBefore( script, head.firstChild );
 			head.removeChild( script );
@@ -1018,7 +1018,7 @@ jQuery.extend({
 				return elem[ name ];
 			}
 
-			if ( !jQuery.support.style && notxml &&  name == "style" )
+			if ( !jQuery.support.style && notxml &&	name == "style" )
 				return jQuery.attr( elem.style, "cssText", value );
 
 			if ( set )
@@ -1412,9 +1412,9 @@ jQuery.fn.extend({
 	}
 });/*!
  * Sizzle CSS Selector Engine - v0.9.3
- *  Copyright 2009, The Dojo Foundation
- *  Released under the MIT, BSD, and GPL Licenses.
- *  More information: http://sizzlejs.com/
+ *	Copyright 2009, The Dojo Foundation
+ *	Released under the MIT, BSD, and GPL Licenses.
+ *	More information: http://sizzlejs.com/
  */
 (function(){
 
@@ -1960,13 +1960,13 @@ var Expr = Sizzle.selectors = {
 			switch (type) {
 				case 'only':
 				case 'first':
-					while (node = node.previousSibling)  {
+					while (node = node.previousSibling)	{
 						if ( node.nodeType === 1 ) return false;
 					}
 					if ( type == 'first') return true;
 					node = elem;
 				case 'last':
-					while (node = node.nextSibling)  {
+					while (node = node.nextSibling)	{
 						if ( node.nodeType === 1 ) return false;
 					}
 					return true;
@@ -2329,7 +2329,7 @@ function dirCheck( dir, cur, doneName, checkSet, nodeCheck, isXML ) {
 	}
 }
 
-var contains = document.compareDocumentPosition ?  function(a, b){
+var contains = document.compareDocumentPosition ?	function(a, b){
 	return a.compareDocumentPosition(b) & 16;
 } : function(a, b){
 	return a !== b && (a.contains ? a.contains(b) : true);
@@ -2779,7 +2779,7 @@ jQuery.event = {
 			setup: function( selector, namespaces ){
 				jQuery.event.add( this, namespaces[0], liveHandler );
 			},
-			teardown:  function( namespaces ){
+			teardown:	function( namespaces ){
 				if ( namespaces.length ) {
 					var remove = 0, name = RegExp("(^|\\.)" + namespaces[0] + "(\\.|$)");
 					
@@ -2888,7 +2888,7 @@ jQuery.each({
 		teardown: function(){
 			jQuery.event.remove( this, orig, withinElement );
 		}
-	};			   
+	};				 
 });
 
 jQuery.fn.extend({
@@ -3119,7 +3119,7 @@ jQuery( window ).bind( 'unload', function(){
 		id = "script" + (new Date).getTime();
 
 	div.style.display = "none";
-	div.innerHTML = '   <link/><table></table><a href="/a" style="color:red;float:left;opacity:.5;">a</a><select><option>text</option></select><object><param/></object>';
+	div.innerHTML = '	 <link/><table></table><a href="/a" style="color:red;float:left;opacity:.5;">a</a><select><option>text</option></select><object><param/></object>';
 
 	var all = div.getElementsByTagName("*"),
 		a = div.getElementsByTagName("a")[0];
@@ -3318,7 +3318,7 @@ jQuery.each( "ajaxStart,ajaxStop,ajaxComplete,ajaxError,ajaxSuccess,ajaxSend".sp
 var jsc = now();
 
 jQuery.extend({
-  
+	
 	get: function( url, data, callback, type ) {
 		// shift arguments if data argument was ommited
 		if ( jQuery.isFunction( data ) ) {
@@ -4173,9 +4173,9 @@ if ( document.documentElement["getBoundingClientRect"] )
 	jQuery.fn.offset = function() {
 		if ( !this[0] ) return { top: 0, left: 0 };
 		if ( this[0] === this[0].ownerDocument.body ) return jQuery.offset.bodyOffset( this[0] );
-		var box  = this[0].getBoundingClientRect(), doc = this[0].ownerDocument, body = doc.body, docElem = doc.documentElement,
+		var box	= this[0].getBoundingClientRect(), doc = this[0].ownerDocument, body = doc.body, docElem = doc.documentElement,
 			clientTop = docElem.clientTop || body.clientTop || 0, clientLeft = docElem.clientLeft || body.clientLeft || 0,
-			top  = box.top  + (self.pageYOffset || jQuery.boxModel && docElem.scrollTop  || body.scrollTop ) - clientTop,
+			top	= box.top	+ (self.pageYOffset || jQuery.boxModel && docElem.scrollTop	|| body.scrollTop ) - clientTop,
 			left = box.left + (self.pageXOffset || jQuery.boxModel && docElem.scrollLeft || body.scrollLeft) - clientLeft;
 		return { top: top, left: left };
 	};
@@ -4197,22 +4197,22 @@ else
 			if ( elem === offsetParent ) {
 				top += elem.offsetTop, left += elem.offsetLeft;
 				if ( jQuery.offset.doesNotAddBorder && !(jQuery.offset.doesAddBorderForTableAndCells && /^t(able|d|h)$/i.test(elem.tagName)) )
-					top  += parseInt( computedStyle.borderTopWidth,  10) || 0,
+					top	+= parseInt( computedStyle.borderTopWidth,	10) || 0,
 					left += parseInt( computedStyle.borderLeftWidth, 10) || 0;
 				prevOffsetParent = offsetParent, offsetParent = elem.offsetParent;
 			}
 			if ( jQuery.offset.subtractsBorderForOverflowNotVisible && computedStyle.overflow !== "visible" )
-				top  += parseInt( computedStyle.borderTopWidth,  10) || 0,
+				top	+= parseInt( computedStyle.borderTopWidth,	10) || 0,
 				left += parseInt( computedStyle.borderLeftWidth, 10) || 0;
 			prevComputedStyle = computedStyle;
 		}
 
 		if ( prevComputedStyle.position === "relative" || prevComputedStyle.position === "static" )
-			top  += body.offsetTop,
+			top	+= body.offsetTop,
 			left += body.offsetLeft;
 
 		if ( prevComputedStyle.position === "fixed" )
-			top  += Math.max(docElem.scrollTop, body.scrollTop),
+			top	+= Math.max(docElem.scrollTop, body.scrollTop),
 			left += Math.max(docElem.scrollLeft, body.scrollLeft);
 
 		return { top: top, left: left };
@@ -4249,7 +4249,7 @@ jQuery.offset = {
 		jQuery.offset.initialized || jQuery.offset.initialize();
 		var top = body.offsetTop, left = body.offsetLeft;
 		if ( jQuery.offset.doesNotIncludeMarginInBodyOffset )
-			top  += parseInt( jQuery.curCSS(body, 'marginTop',  true), 10 ) || 0,
+			top	+= parseInt( jQuery.curCSS(body, 'marginTop',	true), 10 ) || 0,
 			left += parseInt( jQuery.curCSS(body, 'marginLeft', true), 10 ) || 0;
 		return { top: top, left: left };
 	}
@@ -4265,22 +4265,22 @@ jQuery.fn.extend({
 			var offsetParent = this.offsetParent(),
 
 			// Get correct offsets
-			offset       = this.offset(),
+			offset		 = this.offset(),
 			parentOffset = /^body|html$/i.test(offsetParent[0].tagName) ? { top: 0, left: 0 } : offsetParent.offset();
 
 			// Subtract element margins
 			// note: when an element has margin: auto the offsetLeft and marginLeft 
 			// are the same in Safari causing offset.left to incorrectly be 0
-			offset.top  -= num( this, 'marginTop'  );
+			offset.top	-= num( this, 'marginTop'	);
 			offset.left -= num( this, 'marginLeft' );
 
 			// Add offsetParent borders
-			parentOffset.top  += num( offsetParent, 'borderTopWidth'  );
+			parentOffset.top	+= num( offsetParent, 'borderTopWidth'	);
 			parentOffset.left += num( offsetParent, 'borderLeftWidth' );
 
 			// Subtract the two offsets
 			results = {
-				top:  offset.top  - parentOffset.top,
+				top:	offset.top	- parentOffset.top,
 				left: offset.left - parentOffset.left
 			};
 		}
@@ -4327,7 +4327,7 @@ jQuery.each( ['Left', 'Top'], function(i, name) {
 // Create innerHeight, innerWidth, outerHeight and outerWidth methods
 jQuery.each([ "Height", "Width" ], function(i, name){
 
-	var tl = i ? "Left"  : "Top",  // top or left
+	var tl = i ? "Left"	: "Top",	// top or left
 		br = i ? "Right" : "Bottom", // bottom or right
 		lower = name.toLowerCase();
 
