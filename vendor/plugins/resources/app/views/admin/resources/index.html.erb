@@ -19,7 +19,7 @@
 	<% else %>
     <% if @resources.size > 0 -%>
     	<%= will_paginate @resources, :previous_label => '&laquo;', :next_label => '&raquo;' %>
-    	<% if RefinerySetting.find_or_set(:group_resources_by_date_uploaded, false) %>
+    	<% if RefinerySetting.find_or_set(:group_resources_by_date_uploaded, true) %>
     	  <% @grouped_resources.each do |container| %>
           <h3><%= (resource_group = container.last).first.created_at.strftime("%A, %d %B %Y") %></h3>
           <ul>

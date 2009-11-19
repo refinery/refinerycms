@@ -10,10 +10,8 @@
 		<% end %>
 		<%= f.file_field :uploaded_data %>
 	</div>
-	<div class='form-actions'>
-		<%= f.submit 'Save', :id => "submit_button" %>
-		<%= "or #{link_to "Cancel", admin_images_url, :title => "Cancelling will lose all changes you've made to this image", :class => "close_dialog"}" if !from_dialog? or @thickbox %>
-	</div>
+
+	<%= render :partial => "/shared/admin/form_actions", :locals => {:f => f, :continue_editing => false, :hide_cancel => (from_dialog? and !@thickbox)} %>
 
   <% if @thickbox %>
   	<input type='hidden' name='thickbox' value='<%= @thickbox %>' />

@@ -17,7 +17,7 @@ class Admin::ImagesController < Admin::BaseController
                                                :conditions => "parent_id IS NULL"
     end
     
-    if RefinerySetting.find_or_set(:group_images_by_date_uploaded, false)
+    if RefinerySetting.find_or_set(:group_images_by_date_uploaded, true)
       @grouped_images = []
       @images.each do |image|
         key = image.created_at.strftime("%Y-%m-%d")

@@ -39,7 +39,7 @@ class Admin::ResourcesController < Admin::BaseController
                                       :order => "created_at DESC"
     end
     
-    if RefinerySetting.find_or_set(:group_resources_by_date_uploaded, false)
+    if RefinerySetting.find_or_set(:group_resources_by_date_uploaded, true)
       @grouped_resources = []
       @resources.each do |resource|
         key = resource.created_at.strftime("%Y-%m-%d")

@@ -34,16 +34,27 @@ module Crud
         end
 
         def create
-          @#{singular_name} = #{class_name}.create(params[:#{singular_name}])
-          if @#{singular_name}.valid?
-            flash[:notice] = "'\#{@#{singular_name}.#{options[:title_attribute]}}' was successfully created."
+          if (@#{singular_name} = #{class_name}.create(params[:#{singular_name}])).valid?
+            unless request.xhr?
+              flash[:notice] = "'\#{@#{singular_name}.#{options[:title_attribute]}}' was successfully created."
+            else
+              flash.now[:notice] = "'\#{@#{singular_name}.#{options[:title_attribute]}}' was successfully created."
+            end
             unless params[:continue_editing] =~ /true|on|1/
               redirect_to admin_#{plural_name}_url
             else
-              redirect_to :back
+              unless request.xhr?
+                redirect_to :back
+              else
+                render :partial => "/shared/message"
+              end
             end
           else 
-            render :action => 'new'
+            unless request.xhr?
+              render :action => 'new'
+            else
+              render :partial => "/shared/admin/error_messages_for", :locals => {:symbol => :#{singular_name}, :object => @#{singular_name}}
+            end
           end
         end
         
@@ -52,23 +63,32 @@ module Crud
         end
 
         def update
-          @#{singular_name}.update_attributes(params[:#{singular_name}])
-          if @#{singular_name}.valid?
-            flash[:notice] = "'\#{@#{singular_name}.#{options[:title_attribute]}}' was successfully updated."
+          if @#{singular_name}.update_attributes(params[:#{singular_name}])
+            unless request.xhr?
+              flash[:notice] = "'\#{@#{singular_name}.#{options[:title_attribute]}}' was successfully updated."
+            else
+              flash.now[:notice] = "'\#{@#{singular_name}.#{options[:title_attribute]}}' was successfully updated."
+            end
             unless params[:continue_editing] =~ /true|on|1/
               redirect_to admin_#{plural_name}_url
             else
-              redirect_to :back
+              unless request.xhr?
+                redirect_to :back
+              else
+                render :partial => "/shared/message"
+              end
             end
           else
-            render :action => 'edit'
+            unless request.xhr?
+              render :action => 'edit'
+            else  
+              render :partial => "/shared/admin/error_messages_for", :locals => {:symbol => :#{singular_name}, :object => @#{singular_name}}
+            end
           end
         end
 
         def destroy
-          if @#{singular_name}.destroy
-            flash[:notice] = "'\#{@#{singular_name}.#{options[:title_attribute]}}' was successfully deleted."
-          end
+          flash[:notice] = "'\#{@#{singular_name}.#{options[:title_attribute]}}' was successfully deleted." if @#{singular_name}.destroy
           redirect_to admin_#{plural_name}_url
         end
 

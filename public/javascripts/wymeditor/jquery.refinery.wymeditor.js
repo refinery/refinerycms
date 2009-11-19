@@ -1223,19 +1223,19 @@ WYMeditor.editor.prototype.dialog = function( dialogType ) {
 	
 	selected = this.selected();
 	if (dialogType == WYMeditor.DIALOG_LINK && jQuery.browser.mozilla) {
-	  selection = this._iframe.contentWindow.getSelection();
-	  matches = selected.innerHTML.match(new RegExp(selection.anchorNode.textContent + "(.*)" + selection.focusNode.textContent));
-	  if (matches != null && matches.length > 0 && (possible_anchor_tag = matches.last()) != null) {
-      if ((href = possible_anchor_tag.match(/href="([^"]*)"/).last()) != null) {
-        possible_anchors = this._iframe.document().getElementsByTagName('a');
-        for (i=0;i<possible_anchors.length;i++) {
-          if ((possible_match = possible_anchors[i]).innerHTML == selection) {
-            selected = possible_match;
-          }
-        }
-      }
-	  }
-	}
+		selection = this._iframe.contentWindow.getSelection();
+		matches = selected.innerHTML.match(new RegExp(RegExp.escape(selection.anchorNode.textContent) + "(.*)" + RegExp.escape(selection.focusNode.textContent)));
+		if (matches != null && matches.length > 0 && (possible_anchor_tag = matches.last()) != null) {
+			if (((href_matches = possible_anchor_tag.match(/href="([^"]*)"/)) != null) && (href = href_matches.last()) != null) {
+				possible_anchors = this._iframe.document().getElementsByTagName('a');
+				for (i=0;i<possible_anchors.length;i++) {
+					if ((possible_match = possible_anchors[i]).innerHTML == selection) {
+						selected = possible_match;
+					}
+				}
+			}
+		}
+  	}
 
 	// set up handlers.
 	imageGroup = null;
@@ -4142,9 +4142,9 @@ WYMeditor.WymClassExplorer.prototype.initIframe = function(iframe) {
 		//init designMode
 		this._doc.designMode="on";
 		try{
-				// (bermi's note) noticed when running unit tests on IE6
-				// Is this really needed, it trigger an unexisting property on IE6
-				this._doc = iframe.contentWindow.document; 
+			// (bermi's note) noticed when running unit tests on IE6
+			// Is this really needed, it trigger an unexisting property on IE6
+			this._doc = iframe.contentWindow.document; 
 		}catch(e){}
 };
 
