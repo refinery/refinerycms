@@ -4,11 +4,11 @@ class Admin::InquiriesController < Admin::BaseController
 
   before_filter :find_inquiry, :only => [:show, :toggle_status, :destroy]
   before_filter :find_all_inquiries, :only => [:index]
-  
+
   def toggle_status
     @inquiry.toggle!(:open)
 
-    flash[:notice] = "'#{@inquiry.name}' has been " + 
+    flash[:notice] = "'#{@inquiry.name}' has been " +
     if @inquiry.open?
       "reopened"
     else
@@ -25,5 +25,5 @@ protected
     @closed_inquiries = Inquiry.closed
     @inquiries = @open_inquiries
   end
-  
+
 end

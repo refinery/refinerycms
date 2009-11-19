@@ -1,9 +1,9 @@
 class Admin::PagePartsController < Admin::BaseController
-  
+
   def new
     render :partial => "/admin/pages/page_part_field", :locals => {:title => params[:title], :body => params[:body], :new_part => true, :part_index => params[:part_index]}
   end
-  
+
   def destroy
     part = PagePart.find(params[:id])
     if part.destroy
@@ -12,5 +12,5 @@ class Admin::PagePartsController < Admin::BaseController
       render :text => "'#{part.title}' not deleted."
     end
   end
-  
+
 end

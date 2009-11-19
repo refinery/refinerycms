@@ -4,15 +4,15 @@ ActionController::Routing::Routes.draw do |map|
 
   # The priority is based upon order of creation: first created -> highest priority.
   map.root :controller => "pages", :action => "home"
-  
-  map.namespace(:admin) do |admin| 
+
+  map.namespace(:admin) do |admin|
     admin.root :controller => 'dashboard', :action => 'index'
   end
-  
+
   # Install the default routes as the lowest priority.
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
-  
+
   map.connect 'admin/*path', :controller => 'admin/base', :action => 'error_404'
   map.connect '*path', :controller => 'application', :action => 'error_404'
 

@@ -1,16 +1,16 @@
-<% 
-	# cache important lookups
-	hide_children = RefinerySetting.find_or_set(:menu_hide_children, false)
-	siblings = nil # all pages in the top level menu have the same siblings, basically.
+<%
+  # cache important lookups
+  hide_children = RefinerySetting.find_or_set(:menu_hide_children, false)
+  siblings = nil # all pages in the top level menu have the same siblings, basically.
 %>
 <ul id='<%= dom_id ||= "menu" %>' class='menu clearfix'>
-	<% @menu_pages.each do |page| -%>
-	  <%= render :partial => '/shared/menu_branch', :locals => {
-	  		:page => page, 
-	  		:position => @menu_pages.index(page), 
-	  		:root => true,
-				:siblings => ((siblings ||= page.shown_siblings) - [self]),
-	  		:hide_children => hide_children
-	  } -%>
-	<% end -%>
+  <% @menu_pages.each do |page| -%>
+    <%= render :partial => '/shared/menu_branch', :locals => {
+        :page => page,
+        :position => @menu_pages.index(page),
+        :root => true,
+        :siblings => ((siblings ||= page.shown_siblings) - [self]),
+        :hide_children => hide_children
+    } -%>
+  <% end -%>
 </ul>

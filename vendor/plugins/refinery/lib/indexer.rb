@@ -1,15 +1,15 @@
 module Indexer
-  
-  
+
+
   def self.sortalize(array)
     Marshal.load(Marshal.dump(array)).each do |element|
       element.sort! if element.is_a?(Array)
     end
   end
-  
+
   def self.check_for_indexes(migration_format = false)
     model_names = []
-    Dir.chdir(Rails.root) do 
+    Dir.chdir(Rails.root) do
       model_names = Dir["**/app/models/*.rb"].collect {|filename| File.basename(filename) }.uniq
     end
 
@@ -32,7 +32,7 @@ module Indexer
 
     model_classes.each do |class_name|
 
-      # check if this is an STI child instance      
+      # check if this is an STI child instance
       if class_name.base_class.name != class_name.name && (class_name.column_names.include?(class_name.base_class.inheritance_column) || class_name.column_names.include?(class_name.inheritance_column))
         # add the inharitance column on the parent table
         if !(migration_format)
@@ -101,14 +101,14 @@ module Indexer
 
   def self.scan_finds
     file_names = []
-    Dir.chdir(Rails.root) do 
+    Dir.chdir(Rails.root) do
       file_names = Dir["**/app/**/*.rb"].uniq.reject {|file_with_path| file_with_path.include?('test')}
     end
 
     puts "Found #{file_names.size} files."
 
     @indexes_required = Hash.new([])
-    file_names.each do |file_name| 
+    file_names.each do |file_name|
       current_file = File.open(File.join(Rails.root, file_name), 'r')
 
       current_file.each do |line|
@@ -117,9 +117,9 @@ module Indexer
 
           model_name, column_names, options = matches[1], matches[6], matches[7]
         #  puts "Model: #{model_name}, columns: #{column_names}, options: #{options}"
-          
+
           if model_name.respond_to?(:constantize)
-            if model_name.constantize.respond_to?(:table_name)             
+            if model_name.constantize.respond_to?(:table_name)
               table_name = model_name.constantize.table_name
             else
               puts "Unable to get the table_name for #{model_name.to_s}. it could be an ActiveResource"
@@ -161,15 +161,15 @@ module Indexer
         @missing_indexes[table_name] = keys_to_add unless keys_to_add.empty?
       end
     end
-    
+
     @indexes_required
   end
-  
-  def self.key_exists?(table,key_columns)     
+
+  def self.key_exists?(table,key_columns)
     result = (key_columns.to_a - ActiveRecord::Base.connection.indexes(table).map { |i| i.columns }.flatten)
     result.empty?
   end
-  
+
   def self.simple_migration
     migration_format = true
     missing_indexes = check_for_indexes(migration_format)
@@ -189,14 +189,14 @@ module Indexer
             add << "add_index :#{table_name}, :#{key}"
             remove << "remove_index :#{table_name}, :#{key}"
           end
-          
+
         end
       end
-      
-      migration = <<EOM  
+
+      migration = <<EOM
 class AddMissingIndexes < ActiveRecord::Migration
   def self.up
-    
+
     # These indexes were found by searching for AR::Base finds on your application
     # It is strongly recommanded that you will consult a professional DBA about your infrastucture and implemntation before
     # changing your database in that matter.
@@ -207,10 +207,10 @@ class AddMissingIndexes < ActiveRecord::Migration
     # http://www.railstutor.org
     # http://guides.rubyonrails.org
 
-    
+
     #{add.uniq.join("\n    ")}
   end
-  
+
   def self.down
     #{remove.uniq.join("\n    ")}
   end
@@ -221,16 +221,16 @@ EOM
       puts migration
     end
   end
-  
+
   def self.indexes_list
     check_for_indexes.each do |table_name, keys_to_add|
       puts "Table '#{table_name}' => #{keys_to_add.to_sentence}"
     end
   end
-  
+
   def self.ar_find_indexes
     find_indexes = self.scan_finds
-    
+
     unless find_indexes.keys.empty?
       add = []
       remove = []
@@ -246,14 +246,14 @@ EOM
             add << "add_index :#{table_name}, :#{key}"
             remove << "remove_index :#{table_name}, :#{key}"
           end
-          
+
         end
       end
-      
-      migration = <<EOM      
+
+      migration = <<EOM
 class AddFindsMissingIndexes < ActiveRecord::Migration
   def self.up
-    
+
     # These indexes were found by searching for AR::Base finds on your application
     # It is strongly recommanded that you will consult a professional DBA about your infrastucture and implemntation before
     # changing your database in that matter.
@@ -263,10 +263,10 @@ class AddFindsMissingIndexes < ActiveRecord::Migration
     # http://www.railsmentors.org
     # http://www.railstutor.org
     # http://guides.rubyonrails.org
-    
+
     #{add.uniq.join("\n    ")}
   end
-  
+
   def self.down
     #{remove.uniq.join("\n    ")}
   end

@@ -1,10 +1,10 @@
 class Admin::ImagesController < Admin::BaseController
-  
+
   include Admin::ImagesHelper
 
   crudify :image, :order => "created_at DESC", :conditions => "parent_id is NULL", :sortable => false
   before_filter :change_list_mode_if_specified
-  
+
   def index
     if searching?
       @images = Image.paginate_search params[:search],
@@ -16,7 +16,7 @@ class Admin::ImagesController < Admin::BaseController
                                                :order => "created_at DESC",
                                                :conditions => "parent_id IS NULL"
     end
-    
+
     if RefinerySetting.find_or_set(:group_images_by_date_uploaded, true)
       @grouped_images = []
       @images.each do |image|
@@ -26,12 +26,12 @@ class Admin::ImagesController < Admin::BaseController
       end
     end
   end
-  
+
   def new
     @image = Image.new
     @url_override = admin_images_url(:dialog => from_dialog?)
   end
-  
+
   def insert
     self.new if @image.nil?
     @dialog = from_dialog?
@@ -40,22 +40,22 @@ class Admin::ImagesController < Admin::BaseController
     @update_image = params[:update_image]
     @thumbnail = params[:thumbnail]
     @callback = params[:callback]
-		@conditions = params[:conditions]
+    @conditions = params[:conditions]
     @url_override = admin_images_url(:dialog => @dialog, :insert => true)
 
-		unless params[:conditions].blank?
-			extra_condition = params[:conditions].split(',')
-			
-			extra_condition[1] = true if extra_condition[1] == "true"
-			extra_condition[1] = false if extra_condition[1] == "false"
-			extra_condition[1] = nil if extra_condition[1] == "nil"
-	    paginate_images({extra_condition[0].to_sym => extra_condition[1]})
-		else
-			paginate_images
-		end
+    unless params[:conditions].blank?
+      extra_condition = params[:conditions].split(',')
+
+      extra_condition[1] = true if extra_condition[1] == "true"
+      extra_condition[1] = false if extra_condition[1] == "false"
+      extra_condition[1] = nil if extra_condition[1] == "nil"
+      paginate_images({extra_condition[0].to_sym => extra_condition[1]})
+    else
+      paginate_images
+    end
     render :action => "insert"
   end
-  
+
   def create
     @image = Image.create(params[:image])
     unless params[:insert]
@@ -77,16 +77,16 @@ class Admin::ImagesController < Admin::BaseController
       @image = nil
       self.insert
     end
-  end	
-  
+  end
+
 protected
 
-	def paginate_images(conditions={})
-	  @images = Image.paginate 	:page => (@paginate_page_number ||= params[:page]),
-	                           	:conditions => {:parent_id => nil}.merge!(conditions),
-	                           	:order => 'created_at DESC',
-	                           	:per_page => Image.per_page(from_dialog?),
-															:include => :thumbnails
-	end
-  
+  def paginate_images(conditions={})
+    @images = Image.paginate   :page => (@paginate_page_number ||= params[:page]),
+                               :conditions => {:parent_id => nil}.merge!(conditions),
+                               :order => 'created_at DESC',
+                               :per_page => Image.per_page(from_dialog?),
+                              :include => :thumbnails
+  end
+
 end

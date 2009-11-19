@@ -1,5 +1,5 @@
 <% if list_view_image.parent_id.nil? %>
-	<li id="sortable_<%= list_view_image.id %>" class='clearfix record <%= cycle("on", "on-hover") %>'>
+  <li id="sortable_<%= list_view_image.id %>" class='clearfix record <%= cycle("on", "on-hover") %>'>
     <span class='title'>
       <span class='actions'>
         <%= link_to refinery_icon_tag('eye.png'), list_view_image.public_filename,

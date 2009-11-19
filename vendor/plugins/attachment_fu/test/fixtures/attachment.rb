@@ -48,11 +48,11 @@ class FileAttachmentWithStringId < ActiveRecord::Base
   set_table_name 'file_attachments_with_string_id'
   has_attachment :path_prefix => 'vendor/plugins/attachment_fu/test/files', :processor => :rmagick
   validates_as_attachment
-  
+
   before_validation :auto_generate_id
   before_save :auto_generate_id
   @@last_id = 0
-  
+
   private
     def auto_generate_id
       @@last_id += 1
@@ -64,11 +64,11 @@ class FileAttachmentWithUuid < ActiveRecord::Base
   set_table_name 'file_attachments_with_string_id'
   has_attachment :path_prefix => 'vendor/plugins/attachment_fu/test/files', :processor => :rmagick, :uuid_primary_key => true
   validates_as_attachment
-  
+
   before_validation :auto_generate_id
   before_save :auto_generate_id
   @@last_id = 0
-  
+
   private
     def auto_generate_id
       @@last_id += 1
@@ -110,7 +110,7 @@ end
 class MinimalAttachment < ActiveRecord::Base
   has_attachment :path_prefix => 'vendor/plugins/attachment_fu/test/files', :processor => :rmagick
   validates_as_attachment
-  
+
   def filename
     "#{id}.file"
   end
@@ -165,7 +165,7 @@ begin
   class ImageThumbnailCrop < MiniMagickAttachment
     has_attachment :path_prefix => 'vendor/plugins/attachment_fu/test/files',
     :thumbnails => { :square => "50x50c", :vertical => "30x60c", :horizontal => "60x30c"}
-    
+
     # TODO this is a bad duplication, this method is in the MiniMagick Processor
     def self.calculate_offset(image_width,image_height,image_aspect,thumb_width,thumb_height,thumb_aspect)
     # only crop if image is not smaller in both dimensions
@@ -179,7 +179,7 @@ begin
         command = "#{thumb_width}x#{image_height}+#{offset}+0"
 
       # normal thumbnail generation
-      # calculate height and offset y, width is fixed                 
+      # calculate height and offset y, width is fixed
       elsif (image_aspect <= thumb_aspect or image_width < thumb_width) and image_height > thumb_height
         height = image_width / thumb_aspect
         offset = (image_height / 2) - (height / 2)
@@ -205,7 +205,7 @@ begin
     has_attachment :storage => :s3, :processor => :rmagick, :s3_config_path => File.join(File.dirname(__FILE__), '../amazon_s3.yml')
     validates_as_attachment
   end
-  
+
   class CloudFilesAttachment < ActiveRecord::Base
     has_attachment :storage => :cloud_files, :processor => :rmagick, :cloudfiles_config_path => File.join(File.dirname(__FILE__), '../rackspace_cloudfiles.yml')
     validates_as_attachment
@@ -215,12 +215,12 @@ begin
     has_attachment :storage => :s3, :path_prefix => 'some/custom/path/prefix', :processor => :rmagick
     validates_as_attachment
   end
-  
+
   class CloudFilesWithPathPrefixAttachment < CloudFilesAttachment
     has_attachment :storage => :cloud_files, :path_prefix => 'some/custom/path/prefix', :processor => :rmagick
     validates_as_attachment
   end
-  
+
 rescue
   puts "S3 error: #{$!}"
 end

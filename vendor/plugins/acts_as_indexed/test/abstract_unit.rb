@@ -24,24 +24,24 @@ class ActiveSupport::TestCase #:nodoc:
   self.fixture_path = File.dirname(__FILE__) + '/fixtures/'
   self.use_transactional_fixtures = true
   self.use_instantiated_fixtures  = false
-  
+
   def destroy_index
     FileUtils::rm_rf(index_loc) if File.exists?(index_loc)
     assert !File.exists?(index_loc)
     true
   end
-  
+
   def build_index
     # Makes a query to invoke the index build.
     assert_equal [], Post.find_with_index('badger')
     assert File.exists?(index_loc)
     true
   end
-  
+
   protected
-  
+
   def index_loc
     File.join(RAILS_ROOT,'index')
   end
-  
+
 end

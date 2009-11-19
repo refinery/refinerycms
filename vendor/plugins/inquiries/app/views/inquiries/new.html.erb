@@ -1,34 +1,34 @@
 <div id="body_content" class='clearfix'>
-	<h1 id='body_content_page_title'><%= page_title %></h1>
-	<div id="body_content_left" class='inquiries'>
-		<%= @page[:body] %>
+  <h1 id='body_content_page_title'><%= page_title %></h1>
+  <div id="body_content_left" class='inquiries'>
+    <%= @page[:body] %>
 
-		<%= error_messages_for :inquiry, :header_message => "Whoops there was a small problem",
-		 																 :message => "The following problems need to be corrected:" %>
-		<% form_for @inquiry do |f| %>
-			<div class='field'>
-				<%= f.required_label :name %>
-				<%= f.text_field :name %>
-			</div>
-			<div class='field'>
-				<%= f.required_label :email %>
-				<%= f.text_field :email %>
-			</div>
-			<div class='field'>
-				<%= f.label :phone %>
-				<%= f.text_field :phone %>
-			</div>
-			<div class='field message_field'>
-				<%= f.label :message  %>
-				<%= f.text_area :message, :rows => 8 %>
-			</div>
-			<div class='actions'>
-				<%= f.submit 'Send Message' %>
-				<%= link_to "We value your privacy", "/pages/privacy-policy", :id => "privacy_link" if RefinerySetting.find_or_set(:show_contact_privacy_link, false) %>
-			</div>
-		<% end %>	
-	</div>
-	<div id='body_content_right' class='clearfix'>
-		<%= @page[:side_body] %>
-	</div>
+    <%= error_messages_for :inquiry, :header_message => "Whoops there was a small problem",
+                                      :message => "The following problems need to be corrected:" %>
+    <% form_for @inquiry do |f| %>
+      <div class='field'>
+        <%= f.required_label :name %>
+        <%= f.text_field :name %>
+      </div>
+      <div class='field'>
+        <%= f.required_label :email %>
+        <%= f.text_field :email %>
+      </div>
+      <div class='field'>
+        <%= f.label :phone %>
+        <%= f.text_field :phone %>
+      </div>
+      <div class='field message_field'>
+        <%= f.label :message  %>
+        <%= f.text_area :message, :rows => 8 %>
+      </div>
+      <div class='actions'>
+        <%= f.submit 'Send Message' %>
+        <%= link_to "We value your privacy", "/pages/privacy-policy", :id => "privacy_link" if RefinerySetting.find_or_set(:show_contact_privacy_link, false) %>
+      </div>
+    <% end %>
+  </div>
+  <div id='body_content_right' class='clearfix'>
+    <%= @page[:side_body] %>
+  </div>
 </div>

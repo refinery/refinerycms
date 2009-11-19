@@ -29,7 +29,7 @@ class Geometry
 
   def self.from_s(str)
     raise(ArgumentError, "no geometry string specified") unless str
-  
+
     if m = RE.match(str)
       new(m[1].to_i, m[2].to_i, m[3].to_i, m[4].to_i, RFLAGS[m[5]])
     else
@@ -46,7 +46,7 @@ class Geometry
     str << "%+d%+d" % [@x, @y] if (@x != 0 || @y != 0)
     str << FLAGS[@flag.to_i]
   end
-  
+
   # attempts to get new dimensions for the current geometry string given these old dimensions.
   # This doesn't implement the aspect flag (!) or the area flag (@).  PDI
   def new_dimensions_for(orig_width, orig_height)
