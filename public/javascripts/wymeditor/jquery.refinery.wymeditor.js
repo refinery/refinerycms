@@ -688,6 +688,7 @@ WYMeditor.editor.prototype.init = function() {
 
 	//load subclass - browser specific
 	//unsupported browsers: do nothing
+
 	if (jQuery.browser.msie) {
 		var WymClass = new WYMeditor.WymClassExplorer(this);
 	}
@@ -4048,6 +4049,14 @@ WYMeditor.Helper = {
 		}
 };
 
+function titleize(words) {
+	parts = [];
+	words.gsub(/\./, '').gsub(/[-_]/, ' ').split(' ').each(function(part){
+		parts.push(part[0].toUpperCase() + part.substring(1));
+	});
+
+	return parts.join(" ");
+}
 
 /*
  * WYMeditor : what you see is What You Mean web-based editor
@@ -4493,9 +4502,9 @@ WYMeditor.WymClassMozilla.prototype.keyup = function(evt) {
 WYMeditor.WymClassMozilla.prototype.paste = function(evt) {
 
 	var wym = WYMeditor.INSTANCES[this.title];
-	
+
 	wym.format_block();
-	
+
 };
 
 WYMeditor.WymClassMozilla.prototype.format_block = function(selected) {
@@ -5006,12 +5015,3 @@ WYMeditor.WymClassSafari.prototype.getTagForStyle = function(style) {
 	if(/super/.test(style)) return 'sup';
 	return false;
 };
-
-function titleize(words) {
-	parts = [];
-	words.gsub(/\./, '').gsub(/[-_]/, ' ').split(' ').each(function(part){
-		parts.push(part[0].toUpperCase() + part.substring(1));
-	});
-
-	return parts.join(" ");
-}
