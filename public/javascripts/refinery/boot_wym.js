@@ -10,7 +10,7 @@ var wymeditor_boot_options = {
   ,  langPath: "/javascripts/wymeditor/lang/"
   , iframeBasePath: '/'
   , toolsItems: [
-    {'name': 'Bold', 'title': 'Bold', 'css': 'wym_tools_strong'} 
+    {'name': 'Bold', 'title': 'Bold', 'css': 'wym_tools_strong'}
     ,{'name': 'Italic', 'title': 'Emphasis', 'css': 'wym_tools_emphasis'}
     ,{'name': 'InsertOrderedList', 'title': 'Ordered_List', 'css': 'wym_tools_ordered_list'}
     ,{'name': 'InsertUnorderedList', 'title': 'Unordered_List', 'css': 'wym_tools_unordered_list'}
@@ -24,7 +24,7 @@ var wymeditor_boot_options = {
 
   ,toolsHtml: "<ul class='wym_tools wym_section'>" + WYMeditor.TOOLS_ITEMS + WYMeditor.CLASSES + "</ul>"
 
-  ,toolsItemHtml: 
+  ,toolsItemHtml:
     "<li class='" + WYMeditor.TOOL_CLASS + "'>"
       + "<a href='#' name='" + WYMeditor.TOOL_NAME + "' title='" + WYMeditor.TOOL_TITLE + "'>"  + WYMeditor.TOOL_TITLE  + "</a>"
     + "</li>"
@@ -35,13 +35,13 @@ var wymeditor_boot_options = {
     ,{'name': 'h2', 'title':'Heading_2', 'css':'wym_containers_h2'}
     ,{'name': 'h3', 'title':'Heading_3', 'css':'wym_containers_h3'}
     ,{'name': 'p', 'title':'Paragraph', 'css':'wym_containers_p'}
-  ]  
+  ]
 
   , classesHtml: "<li class='wym_tools_class'><a href='#' name='" + WYMeditor.APPLY_CLASS + "' title='"+ titleize(WYMeditor.APPLY_CLASS) +"'></a><ul class='wym_classes wym_classes_hidden'>" + WYMeditor.CLASSES_ITEMS + "</ul></li>"
 
   , classesItemHtml: "<li><a href='#' name='"+ WYMeditor.CLASS_NAME + "'>"+ WYMeditor.CLASS_TITLE+ "</a></li>"
   , classesItemHtmlMultiple: "<li class='wym_tools_class_multiple_rules'><span>" + WYMeditor.CLASS_TITLE + "</span><ul>{classesItemHtml}</ul></li>"
-   
+
   , classesItems: [{name:'text-align', rules:['left', 'center', 'right', 'justify'], join: '-'}, {name: 'image-align', rules:['left', 'right'], join: '-'}, {name: 'font-size', rules:['small','normal','large'], join: '-'}]
 
   , containersHtml: "<ul class='wym_containers wym_section'>" + WYMeditor.CONTAINERS_ITEMS + "</ul>"
@@ -51,10 +51,10 @@ var wymeditor_boot_options = {
         + "<a href='#' name='" + WYMeditor.CONTAINER_NAME + "' title='" + WYMeditor.CONTAINER_TITLE + "'></a>"
       + "</li>"
 
-  , boxHtml: 
+  , boxHtml:
   "<div class='wym_box'>"
-    + "<div class='wym_area_top'>" 
-      + WYMeditor.TOOLS 
+    + "<div class='wym_area_top'>"
+      + WYMeditor.TOOLS
       + WYMeditor.CONTAINERS
     + "</div>"
     + "<div class='wym_area_main'>"
@@ -63,8 +63,8 @@ var wymeditor_boot_options = {
       + WYMeditor.STATUS
     + "</div>"
   + "</div>"
-         
-  , iframeHtml:   
+
+  , iframeHtml:
     "<div class='wym_iframe wym_section'>"
      + "<iframe id='WYMeditor_" + WYMeditor.INDEX + "' src='" + WYMeditor.IFRAME_BASE_PATH + "wymiframe' frameborder='0'"
       + " onload='this.contentWindow.parent.WYMeditor.INSTANCES[" + WYMeditor.INDEX + "].initIframe(this);'></iframe>"
@@ -74,7 +74,7 @@ var wymeditor_boot_options = {
 
   , dialogLinkHtml: ""
 
-  , dialogTableHtml: 
+  , dialogTableHtml:
     "<div class='wym_dialog wym_dialog_table'>"
     + "<form>"
       + "<input type='hidden' id='wym_dialog_type' class='wym_dialog_type' value='"+ WYMeditor.DIALOG_TABLE + "' />"
@@ -97,8 +97,8 @@ var wymeditor_boot_options = {
         + "</div>"
       + "</form>"
     + "</div>"
-    
-  , dialogPasteHtml:  
+
+  , dialogPasteHtml:
     "<div class='wym_dialog wym_dialog_paste'>"
       + "<form>"
         + "<input type='hidden' id='wym_dialog_type' class='wym_dialog_type' value='" + WYMeditor.DIALOG_PASTE + "' />"
@@ -135,15 +135,15 @@ var wymeditor_boot_options = {
   , postInit: function(wym)
   {
     wym._iframe.style.height = wym._element.height() + "px";
-    wymeditors_loaded += 1;      
-    if(WYMeditor.INSTANCES.length == wymeditors_loaded){    
+    wymeditors_loaded += 1;
+    if(WYMeditor.INSTANCES.length == wymeditors_loaded){
       WYMeditor.loaded();
     }
   }
 };
 
 // custom function added by us to hook into when all wymeditor instances on the page have finally loaded:
-WYMeditor.loaded = function(){}
+WYMeditor.loaded = function(){};
 
 jQuery(function()
 {
