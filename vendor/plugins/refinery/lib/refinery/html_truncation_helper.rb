@@ -49,8 +49,6 @@ module Refinery::HtmlTruncationHelper
       if (last_child = truncated_doc.children.last).inner_html.nil?
         "#{truncated_doc.inner_html}#{omission}#{options[:link]}" if options[:link]
       else
-        logger.warn(last_child)
-        logger.warn(last_child.inner_html)
         last_child.inner_html = "#{last_child.inner_html.gsub(/\W.[^\s]+$/, "")}#{omission}"
         last_child.inner_html += options[:link] if options[:link]
         truncated_doc
