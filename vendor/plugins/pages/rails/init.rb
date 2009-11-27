@@ -1,5 +1,4 @@
 Refinery::Plugin.register do |plugin|
-  plugin.directory = directory
   plugin.title = "Pages"
   plugin.description = "Manage content pages"
   plugin.version = 1.0

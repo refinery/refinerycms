@@ -1,16 +1,16 @@
 Gem::Specification.new do |s|
   s.name = %q{refinerycms}
-  s.version = "0.9.5.15"
+  s.version = "0.9.5.16"
 
   s.authors = ["Resolve Digital", "David Jones", "Philip Arndt"]
-  s.date = %q{2009-11-23}
+  s.date = %q{2009-11-26}
 
   s.description = %q{A beautiful open source Ruby on Rails content manager for small business. Easy to extend, easy to use, lightweight and all wrapped up in a super slick UI.}
   s.summary = %q{A beautiful open source Ruby on Rails content manager for small business.}
 
   s.email = %q{info@refinerycms.com}
   s.extra_rdoc_files = ["README", "CONTRIBUTORS", "LICENSE"]
-  s.executables = ["refinery", "refinery-update-core"]
+  s.executables = ["refinery", "refinery-override", "refinery-update-core"]
   s.default_executable = %q{refinery}
   s.homepage = %q{http://refinerycms.com}
   s.rubygems_version = %q{1.3.4}
@@ -24,6 +24,7 @@ Gem::Specification.new do |s|
     "app/controllers/application_controller.rb",
     "app/helpers/application_helper.rb",
     "bin/refinery",
+    "bin/refinery-override",
     "bin/refinery-update-core",
     "config/amazon_s3.yml",
     "config/boot.rb",
@@ -320,7 +321,7 @@ Gem::Specification.new do |s|
     "vendor/plugins/authentication/app/views/user_mailer/signup_notification.html.erb",
     "vendor/plugins/authentication/app/views/users/new.html.erb",
     "vendor/plugins/authentication/config/routes.rb",
-    "vendor/plugins/authentication/init.rb",
+    "vendor/plugins/authentication/rails/init.rb",
     "vendor/plugins/authentication/lib/authenticated_system.rb",
     "vendor/plugins/authentication/lib/authenticated_test_helper.rb",
     "vendor/plugins/authentication/Rakefile",
@@ -339,7 +340,7 @@ Gem::Specification.new do |s|
     "vendor/plugins/dashboard/app/views/admin/dashboard/_recent_activity.html.erb",
     "vendor/plugins/dashboard/app/views/admin/dashboard/index.html.erb",
     "vendor/plugins/dashboard/config/routes.rb",
-    "vendor/plugins/dashboard/init.rb",
+    "vendor/plugins/dashboard/rails/init.rb",
     "vendor/plugins/images/app/controllers/admin/images_controller.rb",
     "vendor/plugins/images/app/helpers/admin/images_helper.rb",
     "vendor/plugins/images/app/models/image.rb",
@@ -352,7 +353,7 @@ Gem::Specification.new do |s|
     "vendor/plugins/images/app/views/admin/images/insert.html.erb",
     "vendor/plugins/images/app/views/admin/images/new.html.erb",
     "vendor/plugins/images/config/routes.rb",
-    "vendor/plugins/images/init.rb",
+    "vendor/plugins/images/rails/init.rb",
     "vendor/plugins/images/lib/tasks/images.rake",
     "vendor/plugins/inquiries/app/controllers/admin/inquiries_controller.rb",
     "vendor/plugins/inquiries/app/controllers/admin/inquiry_settings_controller.rb",
@@ -373,7 +374,7 @@ Gem::Specification.new do |s|
     "vendor/plugins/inquiries/app/views/inquiry_mailer/confirmation.html.erb",
     "vendor/plugins/inquiries/app/views/inquiry_mailer/notification.html.erb",
     "vendor/plugins/inquiries/config/routes.rb",
-    "vendor/plugins/inquiries/init.rb",
+    "vendor/plugins/inquiries/rails/init.rb",
     "vendor/plugins/news/app/controllers/admin/news_items_controller.rb",
     "vendor/plugins/news/app/controllers/news_items_controller.rb",
     "vendor/plugins/news/app/models/news_item.rb",
@@ -386,7 +387,7 @@ Gem::Specification.new do |s|
     "vendor/plugins/news/app/views/news_items/index.html.erb",
     "vendor/plugins/news/app/views/news_items/show.html.erb",
     "vendor/plugins/news/config/routes.rb",
-    "vendor/plugins/news/init.rb",
+    "vendor/plugins/news/rails/init.rb",
     "vendor/plugins/pages/app/controllers/admin/page_dialogs_controller.rb",
     "vendor/plugins/pages/app/controllers/admin/page_parts_controller.rb",
     "vendor/plugins/pages/app/controllers/admin/pages_controller.rb",
@@ -406,7 +407,7 @@ Gem::Specification.new do |s|
     "vendor/plugins/pages/app/views/pages/home.html.erb",
     "vendor/plugins/pages/app/views/pages/show.html.erb",
     "vendor/plugins/pages/config/routes.rb",
-    "vendor/plugins/pages/init.rb",
+    "vendor/plugins/pages/rails/init.rb",
     "vendor/plugins/refinery/app/controllers/admin/refinery_core_controller.rb",
     "vendor/plugins/refinery/app/views/admin/_head.html.erb",
     "vendor/plugins/refinery/app/views/admin/_menu.html.erb",
@@ -432,7 +433,7 @@ Gem::Specification.new do |s|
     "vendor/plugins/refinery/app/views/welcome.html.erb",
     "vendor/plugins/refinery/app/views/wymiframe.html.erb",
     "vendor/plugins/refinery/config/routes.rb",
-    "vendor/plugins/refinery/init.rb",
+    "vendor/plugins/refinery/rails/init.rb",
     "vendor/plugins/refinery/lib/crud.rb",
     "vendor/plugins/refinery/lib/generators/refinery/install.rb",
     "vendor/plugins/refinery/lib/generators/refinery/Rakefile",
@@ -440,7 +441,7 @@ Gem::Specification.new do |s|
     "vendor/plugins/refinery/lib/generators/refinery/refinery_generator.rb",
     "vendor/plugins/refinery/lib/generators/refinery/templates/config/routes.rb",
     "vendor/plugins/refinery/lib/generators/refinery/templates/controller.rb",
-    "vendor/plugins/refinery/lib/generators/refinery/templates/init.rb",
+    "vendor/plugins/refinery/lib/generators/refinery/templates/rails/init.rb",
     "vendor/plugins/refinery/lib/generators/refinery/templates/migration.rb",
     "vendor/plugins/refinery/lib/generators/refinery/templates/model.rb",
     "vendor/plugins/refinery/lib/generators/refinery/templates/public_controller.rb",
@@ -471,7 +472,7 @@ Gem::Specification.new do |s|
     "vendor/plugins/refinery_dialogs/app/views/admin/dialogs/show.html.erb",
     "vendor/plugins/refinery_dialogs/app/views/layouts/admin_dialog.html.erb",
     "vendor/plugins/refinery_dialogs/config/routes.rb",
-    "vendor/plugins/refinery_dialogs/init.rb",
+    "vendor/plugins/refinery_dialogs/rails/init.rb",
     "vendor/plugins/refinery_settings/app/controllers/admin/refinery_settings_controller.rb",
     "vendor/plugins/refinery_settings/app/models/refinery_setting.rb",
     "vendor/plugins/refinery_settings/app/views/admin/refinery_settings/_form.html.erb",
@@ -481,7 +482,7 @@ Gem::Specification.new do |s|
     "vendor/plugins/refinery_settings/app/views/admin/refinery_settings/index.html.erb",
     "vendor/plugins/refinery_settings/app/views/admin/refinery_settings/new.html.erb",
     "vendor/plugins/refinery_settings/config/routes.rb",
-    "vendor/plugins/refinery_settings/init.rb",
+    "vendor/plugins/refinery_settings/rails/init.rb",
     "vendor/plugins/resources/app/controllers/admin/resources_controller.rb",
     "vendor/plugins/resources/app/models/resource.rb",
     "vendor/plugins/resources/app/views/admin/resources/_form.html.erb",
@@ -491,6 +492,6 @@ Gem::Specification.new do |s|
     "vendor/plugins/resources/app/views/admin/resources/insert.html.erb",
     "vendor/plugins/resources/app/views/admin/resources/new.html.erb",
     "vendor/plugins/resources/config/routes.rb",
-    "vendor/plugins/resources/init.rb"
+    "vendor/plugins/resources/rails/init.rb"
   ]
 end

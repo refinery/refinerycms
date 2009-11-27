@@ -1,5 +1,4 @@
 Refinery::Plugin.register do |plugin|
-  plugin.directory = directory
   plugin.title = "Refinery"
   plugin.description = "Core refinery plugin"
   plugin.version = 1.0

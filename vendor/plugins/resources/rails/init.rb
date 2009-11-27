@@ -1,5 +1,4 @@
 Refinery::Plugin.register do |plugin|
-  plugin.directory = directory
   plugin.title = "Resources"
   plugin.description = "Upload and link to files"
   plugin.version = 1.0

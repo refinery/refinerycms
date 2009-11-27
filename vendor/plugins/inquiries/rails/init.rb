@@ -1,5 +1,4 @@
 Refinery::Plugin.register do |plugin|
-  plugin.directory = directory
   plugin.title = "Inquiries"
   plugin.description = "Provides a contact form and stores inquiries"
   plugin.version = 1.0
