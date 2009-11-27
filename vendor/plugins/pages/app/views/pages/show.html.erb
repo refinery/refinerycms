@@ -1,15 +1,1 @@
-<%= render :partial => "/shared/submenu" if RefinerySetting.find_or_set(:show_submenu_on_content_pages, true) %>
-<div id='body_content' class='clearfix'>
-  <h1 id='body_content_page_title'><%= page_title %></h1>
-  <div id='body_content_left' class='clearfix'>
-    <%= @page[:body] %>
-  </div>
-  <div id='body_content_right' class='clearfix'>
-    <%= @page[:side_body] %>
-  </div>
-</div>
-<% unless @page.live? %>
-  <div style='border: 1px solid #A00027;color: #A00027;background: #FFB1B1;padding:3px 9px;font-weight:bold;width:auto'>
-    This page is NOT live for public viewing.
-  </div>
-<% end %>
+<%= render :partial => "/shared/content_page" %>
