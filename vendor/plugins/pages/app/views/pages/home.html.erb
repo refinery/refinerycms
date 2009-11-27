@@ -1,9 +1,1 @@
-<div id='body_content' class='clearfix'>
-  <h1 id='body_content_page_title'><%= page_title %></h1>
-  <div id='body_content_left' class='clearfix'>
-    <%= @page[:body] %>
-  </div>
-  <div id='body_content_right' class='clearfix'>
-    <%= @page[:side_body] %>
-  </div>
-</div>
+<%= render :partial => "/shared/content_page", :locals => {:show_submenu => false} %>
