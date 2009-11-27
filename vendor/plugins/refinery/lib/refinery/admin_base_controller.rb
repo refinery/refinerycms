@@ -28,7 +28,7 @@ protected
 
   def restrict_controller
     if Refinery::Plugins.active.reject {|plugin| params[:controller] !~ Regexp.new(plugin.menu_match) }.empty?
-      flash[:error] = "You do not have permission to access the #{params[:controller]} controller on this plugin."
+      flash.now[:error] = "You do not have permission to access the #{params[:controller]} controller on this plugin."
       logger.warn "'#{current_user.login}' tried to access '#{params[:controller]}'"
     end
   end

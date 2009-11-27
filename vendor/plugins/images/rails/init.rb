@@ -1,5 +1,4 @@
 Refinery::Plugin.register do |plugin|
-  plugin.directory = directory
   plugin.title = "Images"
   plugin.description = "Manage images"
   plugin.version = 1.0

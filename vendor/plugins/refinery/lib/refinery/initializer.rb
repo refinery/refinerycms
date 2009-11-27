@@ -12,21 +12,11 @@ module Refinery
       end
     end
   end
-  if defined? Rails::Plugin::Loader
-    class PluginLoader < Rails::Plugin::Loader
-      def add_plugin_load_paths
-        super
-        engines.each do |engine|
-          ActiveSupport::Dependencies.load_once_paths -= engine.load_paths
-        end if RAILS_ENV =~ /development/
-      end
-    end
-  end
   if defined? Rails::Initializer
     class Initializer < Rails::Initializer
       def self.run(command = :process, configuration = Configuration.new)
         Rails.configuration = configuration
-        configuration.plugin_loader = Refinery::PluginLoader
+        configuration.reload_plugins = true if RAILS_ENV =~ /development/ and REFINERY_ROOT == RAILS_ROOT # seems to work, don't in gem.
         super
       end
 
