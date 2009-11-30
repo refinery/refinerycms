@@ -1,9 +1,9 @@
 Gem::Specification.new do |s|
   s.name = %q{refinerycms}
-  s.version = "0.9.5.17"
+  s.version = "0.9.5.18"
 
   s.authors = ["Resolve Digital", "David Jones", "Philip Arndt"]
-  s.date = %q{2009-11-27}
+  s.date = %q{2009-11-30}
 
   s.description = %q{A beautiful open source Ruby on Rails content manager for small business. Easy to extend, easy to use, lightweight and all wrapped up in a super slick UI.}
   s.summary = %q{A beautiful open source Ruby on Rails content manager for small business.}
