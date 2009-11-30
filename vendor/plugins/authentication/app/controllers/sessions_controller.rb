@@ -27,4 +27,7 @@ class SessionsController < ApplicationController
     redirect_back_or_default(new_session_url)
   end
 
+protected
+  def take_down_for_maintenance?;end
+
 end
