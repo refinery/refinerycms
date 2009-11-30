@@ -40,6 +40,7 @@ Gem::Specification.new do |s|
     "config/routes.rb",
     "db/migrate/20091029034951_remove_blurb_from_news_items.rb",
     "db/migrate/20091109012126_add_missing_indexes.rb",
+    "db/migrate/20091130040711_add_down_for_maintenance_page.rb",
     "db/schema.rb",
     "db/seeds.rb",
     "lib/refinery_initializer.rb",
