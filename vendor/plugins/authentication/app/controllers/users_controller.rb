@@ -74,6 +74,7 @@ class UsersController < ApplicationController
   end
 
 protected
+  def take_down_for_maintenance?;end
 
   def find_user
     @user = User.find(params[:id])
