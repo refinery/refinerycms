@@ -8,9 +8,7 @@
     <%= stylesheet_link_tag 'application' %>
     <%= stylesheet_link_tag 'formatting', 'theme' %>
     <%= stylesheet_link_tag 'home' if @page.home? %>
-    <!--[if IE 7]>
-      <%= stylesheet_link_tag 'ie7' %>
-    <![endif]-->
+    <!--[if IE 7]><%= stylesheet_link_tag 'ie7' %><![endif]-->
     <link rel="shortcut icon" href="/favicon.ico" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <%= yield :head %>

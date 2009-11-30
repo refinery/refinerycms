@@ -107,3 +107,12 @@ Page.create(:title => "Privacy Policy",
               :title => "side_body",
               :body => ""
             })
+
+Page.create(:title => "Down for maintenance",
+            :menu_match => "^/maintenance$",
+            :show_in_menu => false,
+            :position => 7).parts.create(
+            {
+              :title => "body",
+              :body => "Our site is currently down for maintenance. Please try back later."
+            })
