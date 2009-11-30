@@ -169,9 +169,9 @@ a:hover {
 }
 
 #page_container.login #page h1 {
-	margin: 0; 
-	padding: 5px; 
-	font-size: 20px; 
+	margin: 0;
+	padding: 5px;
+	font-size: 20px;
 	line-height:22px
 }
 
@@ -243,10 +243,10 @@ pre {
 }
 
 .clearfix:after {
-	content: "."; 
-	display: block; 
-	height: 0; 
-	clear: both; 
+	content: ".";
+	display: block;
+	height: 0;
+	clear: both;
 	visibility: hidden;
 }
 
@@ -257,7 +257,7 @@ pre {
 #header {
 	background: url('/images/refinery/header_background.png') #50504B repeat-x bottom;
 	padding: 26px 15px 0 15px;
-	position: relative;	
+	position: relative;
 }
 
 #page_container.login #header {
@@ -268,7 +268,7 @@ pre {
 	display: block;
 	color: #C2C2B3;
 	float: left;
-	
+
 }
 
 #site_link:hover {
@@ -317,9 +317,9 @@ pre {
 
 #submenu {
 	clear: both;
-	padding-left: 10px; 
+	padding-left: 10px;
 	background: url('/images/refinery/nav-3-background.gif') #EFEE8 repeat-x bottom;
-}					
+}
 
 #submenu ul {
 	list-style: none;
@@ -498,7 +498,7 @@ label {
 	display: block;
 }
 
-textarea { 
+textarea {
 	padding: 5px;
 }
 
@@ -558,8 +558,8 @@ label.stripped {
 }
 
 #side_body_field {
-	float: left;	
-	width: 38%; 
+	float: left;
+	width: 38%;
 	margin-left: 18px;
 }
 
@@ -630,7 +630,8 @@ label.stripped {
 
 #recent_activity td.time_ago {
 	text-align: right;
-	width: 80px;
+	min-width: 80px;
+	max-width: 125px;
 }
 
 #recent_activity tr.on {
@@ -1071,7 +1072,7 @@ ul#image_grid li {
 	margin: 0px 13px 12px 0px;
 	padding: 0px;
 	width: 135px;
-	text-align: center; 
+	text-align: center;
 	height: 176px;
 }
 ul#image_grid li.row-end {
