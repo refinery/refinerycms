@@ -1,7 +1,7 @@
 class AddDownForMaintenancePage < ActiveRecord::Migration
   def self.up
     page = Page.create(:title => "Down for maintenance", :menu_match => "^/maintenance$", :show_in_menu => false)
-    page.parts.create(:title => "body", :body => "Our site is currently down for maintenance. Please try back later.")
+    page.parts.create(:title => "body", :body => "<p>Our site is currently down for maintenance. Please try back later.</p>")
   end
 
   def self.down

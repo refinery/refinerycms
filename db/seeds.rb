@@ -114,5 +114,5 @@ Page.create(:title => "Down for maintenance",
             :position => 7).parts.create(
             {
               :title => "body",
-              :body => "Our site is currently down for maintenance. Please try back later."
+              :body => "<p>Our site is currently down for maintenance. Please try back later.</p>"
             })
