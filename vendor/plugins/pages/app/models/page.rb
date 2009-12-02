@@ -21,6 +21,29 @@ class Page < ActiveRecord::Base
     self.deletable && self.link_url.blank? and self.menu_match.blank?
   end
 
+  # provide helpful feedback
+  def destroy
+    if self.deletable?
+      super
+    else
+      puts "This page is not deletable. Please use .destroy! if you really want it gone or first"
+      puts "unset .link_url" unless self.link_url.blank?
+      puts "unset .menu_match" unless self.menu_match.blank?
+      puts "set .deletable to true" unless self.deletable
+      return false
+    end
+  end
+
+  # provide a method to definitely get rid of the page.
+  def destroy!
+    self.update_attributes({
+      :menu_match => nil,
+      :link_url => nil,
+      :deletable => true
+    })
+    self.destroy
+  end
+
   # used for the browser title to get the full path to this page
   def path(reverse = true)
     unless self.parent.nil?
