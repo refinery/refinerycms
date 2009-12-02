@@ -1332,7 +1332,7 @@ WYMeditor.editor.prototype.uniqueStamp = function() {
 };
 
 WYMeditor.editor.prototype.paste = function(sData) {
-console.log('pasting..');
+//console.log('pasting..');
 	var sTmp;
 	var container = this.selected();
 
