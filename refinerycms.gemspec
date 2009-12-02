@@ -14,7 +14,7 @@ Gem::Specification.new do |s|
   s.default_executable = %q{refinery}
   s.homepage = %q{http://refinerycms.com}
   s.rubygems_version = %q{1.3.4}
-	s.files = [
+  s.files = [
     "CONTRIBUTORS",
     "LICENSE",
     "README",
