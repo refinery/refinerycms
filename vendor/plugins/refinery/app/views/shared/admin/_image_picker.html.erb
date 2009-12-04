@@ -1,5 +1,6 @@
+<%= link_to "Show", "", :id => "current_image_toggler" if (toggle_image_display ||= false) %>
 <%= f.hidden_field field %>
-<div>
+<div id='current_image_container'<%= " style='display: none'" if (toggle_image_display ||= false) %>>
   <a id='current_image_link' href="<%= insert_admin_images_url %>?thickbox=true&amp;modal=true&amp;titlebar=true&amp;field=<%= f.object.class.name.underscore.downcase %>_<%= field %>&amp;update_image=current_picked_image&amp;callback=picked_image_changed&amp;thumbnail=&amp;KeepThis=true&amp;TB_iframe=true&amp;width=<%= width ||= 950 %>&amp;height=<%= height ||= 510 %>" style='border: 0px' title='Change <%= (description ||= "image").titleize %>' name='Change <%= (description ||= "image").titleize %>' class='thickbox'>
     <% unless image.nil? %>
       <%= image_fu image, nil, {:class => "brown_border", :id => "current_picked_image"} %>
@@ -37,6 +38,13 @@
         this.hide();
         e.stop();
       });
+<% if toggle_image_display ||= false -%>
+      jQuery('#current_image_toggler').click(function(e){
+        jQuery(this).html((jQuery(this).html() == 'Show' ? 'Hide' : 'Show'));
+        jQuery("#current_image_container").toggle();
+        e.preventDefault();
+      });
+<% end -%>
     });
   </script>
 <% end %>
