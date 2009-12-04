@@ -1,4 +1,4 @@
-require File.join(REFINERY_ROOT, %w(vendor plugins refinery lib indexer.rb))
+require File.join(File.dirname(__FILE__), "../lib/indexer.rb")
 
 namespace :db do
   desc "collect indexes based on AR::Base.find calls."
