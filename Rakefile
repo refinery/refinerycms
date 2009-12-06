@@ -9,6 +9,11 @@ require 'rake/rdoctask'
 
 require 'tasks/rails'
 
+unless REFINERY_ROOT == RAILS_ROOT
+  # Load any custom rakefile extensions (for the gem only)
+  Dir[File.join(REFINERY_ROOT, %w(vendor plugins * ** tasks ** *.rake))].sort.each { |ext| load ext }
+end
+
 desc 'Removes trailing whitespace'
 task :whitespace do
   sh %{find . -name '*.*rb' -exec sed -i '' 's/\t/  /g' {} \\; -exec sed -i '' 's/ *$//g' {} \\; }
@@ -23,7 +28,7 @@ begin
     s.email = %q{info@refinerycms.com}
     s.homepage = %q{http://refinerycms.com}
     s.authors = ["Resolve Digital", "David Jones", "Philip Arndt"]
-    s.extra_rdoc_files = %w(README CONTRIBUTORS LICENSE)
+    s.extra_rdoc_files = %w(README CONTRIBUTORS LICENSE VERSION)
   end
 
   namespace :version do
@@ -37,6 +42,6 @@ begin
       end
     end
   end
-rescue   LoadError
+rescue LoadError
   puts "Jeweler not available. Install it with: sudo gem install jeweler"
 end
