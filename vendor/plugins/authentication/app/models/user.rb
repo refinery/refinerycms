@@ -49,7 +49,7 @@ class User < ActiveRecord::Base
   validates_uniqueness_of   :login, :email, :case_sensitive => false
   before_save :encrypt_password
 
-  serialize :plugins_column#, Array
+  serialize :plugins_column#, Array # this is seriously deprecated and will be removed later.
 
   has_many :plugins, :class_name => "UserPlugin", :order => "position ASC"
 
@@ -78,11 +78,11 @@ class User < ActiveRecord::Base
   end
 
   def plugins=(plugin_titles)
-    self.plugins.delete_all
+    unless self.new_record? # don't add plugins when the user_id is NULL.
+      self.plugins.delete_all
 
-    plugin_titles.each do |plugin_title|
-      if plugin_title.is_a?(String)
-        self.plugins.find_or_create_by_title(plugin_title)
+      plugin_titles.each do |plugin_title|
+        self.plugins.find_or_create_by_title(plugin_title) if plugin_title.is_a?(String)
       end
     end
   end
