@@ -16,7 +16,7 @@
               <%= link_to refinery_icon_tag('delete.png'), admin_user_path(user),
                 :confirm => "Are you sure you want to delete '#{user.login}'?",
                 :class => "cancel", :method => :delete,
-                :title => "Remove this user forever" if @users.size > 1 and user.id != current_user.id %>
+                :title => "Remove this user forever" if user.ui_deletable?(current_user) %>
               <%= link_to refinery_icon_tag('application_edit.png'), edit_admin_user_path(user),
                 :title => 'Edit this user' %>
               <%= mail_to user.email, refinery_icon_tag('email_go.png'), :title => 'Email this user' %>
