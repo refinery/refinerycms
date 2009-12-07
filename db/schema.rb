@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091130040711) do
+ActiveRecord::Schema.define(:version => 20091207033335) do
 
   create_table "images", :force => true do |t|
     t.integer  "parent_id"
@@ -145,6 +145,7 @@ ActiveRecord::Schema.define(:version => 20091130040711) do
     t.datetime "deleted_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "superuser",                               :default => false
   end
 
   add_index "users", ["id"], :name => "index_users_on_id"

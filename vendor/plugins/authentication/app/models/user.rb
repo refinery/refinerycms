@@ -121,6 +121,10 @@ class User < ActiveRecord::Base
     @activated
   end
 
+  def ui_deletable?(current_user = self)
+    !self.superuser and User.count > 1 and (current_user.nil? or self.id != current_user.id)
+  end
+
   protected
     # before filter
     def encrypt_password

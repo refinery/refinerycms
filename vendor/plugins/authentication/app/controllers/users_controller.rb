@@ -17,29 +17,30 @@ class UsersController < ApplicationController
       render :text => "User signup is disabled", :layout => true
     else
       begin
-          cookies.delete :auth_token
-          # protects against session fixation attacks, wreaks havoc with
-          # request forgery protection.
-          # uncomment at your own risk
-          # reset_session
-          @user = User.new(params[:user])
-          @selected_plugin_titles = params[:user][:plugins] || []
+        cookies.delete :auth_token
+        # protects against session fixation attacks, wreaks havoc with
+        # request forgery protection.
+        # uncomment at your own risk
+        # reset_session
+        @user = User.new(params[:user])
+        @selected_plugin_titles = params[:user][:plugins] || []
 
-          @user.register! if @user.valid?
-          if @user.errors.empty?
-            @user.plugins = @selected_plugin_titles
-            self.current_user = @user
-            current_user.activate!
-            redirect_back_or_default(admin_root_url)
+        @user.register! if @user.valid?
+        if @user.errors.empty?
+          @user.plugins = @selected_plugin_titles
+          self.current_user = @user
+          current_user.activate!
+          current_user.update_attribute(:superuser, true) if User.count == 1 # this is the superuser if this user is the only user.
+          redirect_back_or_default(admin_root_url)
 
-            flash[:notice] = "Welcome to Refinery, #{current_user.login}."
-            if User.count == 1 or RefinerySetting[:site_name] == "Company Name"
-              refinery_setting = RefinerySetting.find_by_name("site_name")
-              flash[:notice] << " First let's give the site a name. <a href='#{edit_admin_refinery_setting_url(refinery_setting)}'>Go here</a> to edit your website's name"
-            end
-          else
-            render :action => 'new'
+          flash[:notice] = "Welcome to Refinery, #{current_user.login}."
+          if User.count == 1 or RefinerySetting[:site_name] == "Company Name"
+            refinery_setting = RefinerySetting.find_by_name("site_name")
+            flash[:notice] << "<br/>First let's give the site a name. <a href='#{edit_admin_refinery_setting_url(refinery_setting)}'>Go here</a> to edit your website's name"
           end
+        else
+          render :action => 'new'
+        end
       end
     end
   end
@@ -50,7 +51,7 @@ class UsersController < ApplicationController
       current_user.activate!
       flash[:notice] = "Signup complete!"
     end
-    redirect_back_or_default('/')
+    redirect_back_or_default(root_url)
   end
 
   def suspend
