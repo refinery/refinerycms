@@ -1,15 +1,32 @@
+<%
+  body_content_page_title = (title = yield :body_content_page_title).blank? ? page_title : title
+  body_content_left = (body_content_left = yield :body_content_left).blank? ? @page[:body] : body_content_left
+  body_content_right = (body_content_right = yield :body_content_right).blank? ? @page[:side_body] : body_content_right
+  extra_body_content_classes = []
+  extra_body_content_classes << "no_title" if body_content_page_title.blank?
+  extra_body_content_classes << "no_left" if body_content_left.blank?
+  extra_body_content_classes << "no_right" if body_content_right.blank?
+-%>
 <%= render :partial => "/shared/submenu" if (show_submenu ||= true) and RefinerySetting.find_or_set(:show_submenu_on_content_pages, true) %>
-<div id='body_content' class='clearfix'>
-  <h1 id='body_content_page_title'><%= page_title %></h1>
+<div id='body_content' class='clearfix<%= " #{extra_body_content_classes.join(" ")}" unless extra_body_content_classes.empty? %>'>
+<% unless body_content_page_title.blank? and !(show_empty_sections ||= false) -%>
+  <h1 id='body_content_page_title'>
+    <%= body_content_page_title %>
+  </h1>
+<% end -%>
+<% unless body_content_left.blank? and !(show_empty_sections ||= false) -%>
   <div id='body_content_left' class='clearfix'>
-    <%= (body_content_left = yield :body_content_left).blank? ? @page[:body] : body_content_left %>
+    <%= body_content_left %>
   </div>
+<% end -%>
+<% unless body_content_right.blank? and !(show_empty_sections ||= false) -%>
   <div id='body_content_right' class='clearfix'>
-    <%= (body_content_right = yield :body_content_right).blank? ? @page[:side_body] : body_content_right %>
+    <%= body_content_right %>
   </div>
+<% end -%>
 </div>
-<% unless @page.live? %>
+<% unless @page.live? -%>
   <div class='page_not_live'>
     This page is NOT live for public viewing.
   </div>
-<% end %>
+<% end -%>

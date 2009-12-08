@@ -50,7 +50,7 @@ You will be prompted to setup your first user.
 
 == Environment required
 
-Refinery runs using a number of gems which (as of Refinery version 0.9.5.21) are outlined below:
+Refinery runs using a number of gems which (as of Refinery version 0.9.5.22) are outlined below:
 
 - "rake", :version => ">= 0.8.3"
 - "friendly_id", :version => ">= 2.2.2"
