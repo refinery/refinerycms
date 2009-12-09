@@ -35,5 +35,8 @@ protected
       logger.warn "'#{current_user.login}' tried to access '#{params[:controller]}'"
     end
   end
+  
+  # Override method from application_controller. Not needed in this controller.
+  def find_pages_for_menu; end
 
 end
