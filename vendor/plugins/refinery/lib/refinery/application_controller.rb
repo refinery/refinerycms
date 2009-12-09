@@ -58,7 +58,7 @@ protected
   end
 
   def find_pages_for_menu
-    @menu_pages = Page.top_level(include_children=true) unless admin?
+    @menu_pages = Page.top_level(include_children=true)
   end
 
 end
