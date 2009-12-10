@@ -17,3 +17,6 @@ config.action_controller.perform_caching             = true
 
 # Disable delivery errors, bad email addresses will be ignored
 # config.action_mailer.raise_delivery_errors = false
+
+# We don't really need all the other stuff:
+config.log_level = :warn
