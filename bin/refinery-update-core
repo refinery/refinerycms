@@ -17,6 +17,9 @@ unless RAILS_ROOT.nil? or RAILS_ROOT.length == 0
   # copy in any new migrations.
   FileUtils::cp Dir[File.join(REFINERY_ROOT, %w(db migrate *.rb))], File.join(RAILS_ROOT, %w(db migrate))
 
+  # replace rakefile.
+  FileUtils::cp File.join(REFINERY_ROOT, %w(Rakefile)), File.join(RAILS_ROOT, %w(Rakefile))
+
 	# read in the config files
 	app_config = File.open(File.join(RAILS_ROOT, %w(config environment.rb)), "r").read
 	environment_updated = false

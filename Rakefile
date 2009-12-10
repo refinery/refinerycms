@@ -1,7 +1,13 @@
 # Add your own tasks in files placed in lib/tasks ending in .rake,
 # for example lib/tasks/capistrano.rake, and they will automatically be available to Rake.
 
-require(File.join(File.dirname(__FILE__), 'config', 'boot'))
+begin
+  # Load up the environment instead of just the boot file because we want all of the tasks available.
+  require(File.join(File.dirname(__FILE__), 'config', 'environment'))
+rescue
+  # Load up the boot file instead because there's something wrong with the environment.
+  require(File.join(File.dirname(__FILE__), 'config', 'boot'))
+end
 
 require 'rake'
 require 'rake/testtask'
@@ -9,9 +15,16 @@ require 'rake/rdoctask'
 
 require 'tasks/rails'
 
+# When running Refinery from a gem we lose the rake tasks, so add them back in:
 unless REFINERY_ROOT == RAILS_ROOT
-  # Load any custom rakefile extensions (for the gem only)
   Dir[File.join(REFINERY_ROOT, %w(vendor plugins * ** tasks ** *.rake))].sort.each { |ext| load ext }
+end
+
+# We also need to load in the rake tasks from gem plugins whether Refinery is a gem or not:
+if defined?($refinery_gem_plugin_lib_paths) && !$refinery_gem_plugin_lib_paths.nil?
+  $refinery_gem_plugin_lib_paths.each do |path|
+    Dir[File.join(path, %w(tasks ** *.rake))].sort.each { |ext| load ext }
+  end
 end
 
 desc 'Removes trailing whitespace'
