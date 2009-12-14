@@ -1,13 +1,14 @@
-jQuery.noConflict();
 var wymeditor_inputs = [];
 var wymeditors_loaded = 0;
-var wymeditor_boot_options = {
+// supply custom_wymeditor_boot_options if you want to override anything here.
+if (typeof(custom_wymeditor_boot_options) == "undefined") { custom_wymeditor_boot_options = {}; }
+var wymeditor_boot_options = jQuery.extend({
   skin: 'refinery'
   , basePath: "/javascripts/wymeditor/"
   , wymPath: "/javascripts/wymeditor/jquery.refinery.wymeditor.js"
   , cssSkinPath: "/stylesheets/wymeditor/skins/"
   , jsSkinPath: "/javascripts/wymeditor/skins/"
-  ,  langPath: "/javascripts/wymeditor/lang/"
+  , langPath: "/javascripts/wymeditor/lang/"
   , iframeBasePath: '/'
   , toolsItems: [
     {'name': 'Bold', 'title': 'Bold', 'css': 'wym_tools_strong'}
@@ -19,7 +20,7 @@ var wymeditor_boot_options = {
     ,{'name': 'InsertImage', 'title': 'Image', 'css': 'wym_tools_image'}
     ,{'name': 'InsertTable', 'title': 'Table', 'css': 'wym_tools_table'}
     ,{'name': 'ToggleHtml', 'title': 'HTML', 'css': 'wym_tools_html'}
-      ,{'name': 'Paste', 'title': 'Paste_From_Word', 'css': 'wym_tools_paste'}
+    ,{'name': 'Paste', 'title': 'Paste_From_Word', 'css': 'wym_tools_paste'}
   ]
 
   ,toolsHtml: "<ul class='wym_tools wym_section'>" + WYMeditor.TOOLS_ITEMS + WYMeditor.CLASSES + "</ul>"
@@ -140,7 +141,7 @@ var wymeditor_boot_options = {
       WYMeditor.loaded();
     }
   }
-};
+}, custom_wymeditor_boot_options);
 
 // custom function added by us to hook into when all wymeditor instances on the page have finally loaded:
 WYMeditor.loaded = function(){};
