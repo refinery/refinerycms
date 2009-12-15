@@ -1,0 +1,26 @@
+<%= error_messages_for :resource -%>
+
+<% form_for [:admin, @resource],   :url => @url_override || @url,
+                                  :html => {:multipart => true} do |f| -%>
+  <div class='field'>
+    <%= f.label :uploaded_data, 'File to upload' -%>
+    <% if params[:action] =~ /(edit)|(update)/ -%>
+      <%= link_to "Download current file", @resource.public_filename, {:title => @resource.title} -%>
+      <em>or</em>, replace it with this one...
+    <% end -%>
+    <%= f.file_field :uploaded_data -%>
+  </div>
+
+  <%= render :partial => "/shared/admin/form_actions", :locals => {:f => f, :continue_editing => false} %>
+
+  <% if @thickbox %>
+    <input type='hidden' name='thickbox' value='<%= @thickbox %>' />
+    <input type='hidden' name='field' value='<%= @field %>' />
+    <input type='hidden' name='update_resource' value='<%= @update_resource %>' />
+    <input type='hidden' name='update_text' value='<%= @update_text %>' />
+    <input type='hidden' name='thumbnail' value='<%= @thumbnail %>' />
+    <input type='hidden' name='callback' value='<%= @callback %>' />
+    <input type='hidden' name='conditions' value='<%= @conditions %>' />
+    <input type='hidden' name='current_link' value='<%= @current_link %>' />
+  <% end %>
+<% end -%>
