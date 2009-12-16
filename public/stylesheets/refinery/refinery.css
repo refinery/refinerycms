@@ -217,7 +217,7 @@ a:hover {
 
 #header li a {
 	display: block;
-	padding: 9px 12px;
+	padding: 9px;
 	font-size: 14px;
 	background-color: #c2c2b3;
 	margin-top: 6px;
@@ -872,6 +872,7 @@ ul#menu.reordering_menu li a {
 	background-position: 7px;
 	width: 4px;
 	_margin-top: 6px;
+	padding: 9px 12px;
 }
 #header #menu li a#menu_reorder:hover, #header #menu li a#menu_reorder_done:hover {
 	background-color: #a1a18b;
