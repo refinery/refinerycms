@@ -12,3 +12,5 @@ db/*.sqlite3
 *.tmproj
 *.autobackupbyrefinery.*
 refinerycms*.gem
+public/javascripts/cache
+public/stylesheets/cache
