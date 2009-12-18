@@ -5,6 +5,7 @@
     <title>
       <%= yield :title %> - <%= RefinerySetting.find_or_set(:site_name, "Company Name") %>
     </title>
+    <%= render :partial => 'shared/google_analytics' unless local_request? %>
     <%= stylesheet_link_tag 'application' %>
     <%= stylesheet_link_tag 'formatting', 'theme' %>
     <%= stylesheet_link_tag 'home' if @page.home? %>
@@ -12,7 +13,6 @@
     <link rel="shortcut icon" href="/favicon.ico" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <%= yield :head %>
-    <%= render :partial => 'shared/google_analytics' unless local_request? %>
   </head>
   <body>
     <%= render :partial => "/shared/ie6check" if request.env['HTTP_USER_AGENT'] =~ /MSIE/ %>
