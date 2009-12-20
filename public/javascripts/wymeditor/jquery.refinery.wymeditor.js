@@ -2437,7 +2437,8 @@ WYMeditor.XhtmlValidator = {
 				"allowscriptaccess",
 				"wmode",
 				"type",
-				"src"
+				"src",
+				"flashvars"
 			],
 		"inside":"object"
 		},
