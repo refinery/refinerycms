@@ -1193,9 +1193,13 @@ WYMeditor.editor.prototype.status = function(sMessage) {
  */
 WYMeditor.editor.prototype.update = function() {
 
-	var html = this.xhtml().gsub(/<\/([A-Za-z0-9]*)></, function(m){return "</" + m[1] +">\n<"}).gsub(/src=\"system\/images/, 'src="/system/images'); // make system/images calls absolute.
+	var html = this.xhtml().gsub(/<\/([A-Za-z0-9]*)></, function(m){return "</" + m[1] +">\n<"});
+	html = html.gsub(/src=\"system\/images/, 'src="/system/images'); // make system/images calls absolute.
+	html = html.gsub(/(replace_me_with_wym-[0-9]*)/, ""); // get rid of replace_me_with_wym id tags that were forgotten about.
+
 	jQuery(this._element).val(html);
 	jQuery(this._box).find(this._options.htmlValSelector).val(html);
+
 };
 
 /* @name dialog
@@ -1353,7 +1357,7 @@ WYMeditor.editor.prototype.paste = function(sData) {
   		sTmp = aP[x];
   		//simple newlines are replaced by a break
   		sTmp = sTmp.replace(rExp, "<br />");
-  		if (x == aP.length-1 && jQuery(container).html().gsub(/<br\ ?\/?>/, "").length == 0) {
+  		if (x == 0 && jQuery(container).html().gsub(/<br\ ?\/?>/, "").length == 0) {
 		    jQuery(container).html(sTmp);
 		  } else {
   		  jQuery(container).after("<p>" + sTmp + "</p>");
