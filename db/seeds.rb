@@ -4,7 +4,6 @@
   {:name => "preferred_image_view", :value => :grid},
   {:name => "analytics_page_code", :value => "UA-xxxxxx-x"},
   {:name => "image_thumbnails", :value => {
-    :lightbox => '500x500>',
     :dialog_thumb => 'c106x106',
     :grid => 'c135x135',
     :thumb => '50x50',
