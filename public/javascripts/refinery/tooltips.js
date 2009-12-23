@@ -5,6 +5,7 @@ Tooltip.prototype = {
 		this.el = $(el);
 		// Removing title from DOM element to avoid showing it
 		if ((this.content = this.el.title) != null && this.content.length > 0) {
+		  this.el.title = '';
 			this.el.tooltip = this;
 			this.initialized = false;
 			this.setOptions(options);
