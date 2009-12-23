@@ -1,6 +1,5 @@
-init_tooltips = function(){
-  arguments = arguments.length > 0 ? arguments : ['a[title]', '#image_grid img[title]'];
-  jQuery(arguments).each(function(index, element)
+init_tooltips = function(args){
+  jQuery(jQuery(args != null ? args : 'a[title], #image_grid img[title]')).each(function(index, element)
   {
     new Tooltip(element, {mouseFollow:false, delay: 0, opacity: 1, appearDuration:0, hideDuration: 0, rounded: false});
   });
