@@ -22,25 +22,26 @@ class Admin::PageDialogsController < Admin::DialogsController
 
       response = http.request request
 
-      render :text => case response
-        when Net::HTTPSuccess, Net::HTTPRedirection
-          "<img src='/images/refinery/icons/tick.png' alt='valid url' title='valid url' width='16' height='16' />"
-        else
-          "<img src='/images/refinery/icons/cross.png' alt='invalid url' title='invalid url' width='16' height='16' />"
-        end
+      render :json => case response
+      when Net::HTTPSuccess, Net::HTTPRedirection
+        {:result => 'success'}
+      else
+        {:result => 'failure'}
+      end
     end
 
     rescue
-      render :text => "<img src='/images/refinery/icons/cross.png' alt='invalid url' title='invalid url' width='16' height='16' />"
+      render :json => {:result => 'failure'}
   end
 
   def test_email
     unless params[:email].blank?
       valid = params[:email] =~ /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i
-      render :text => if valid
-        "<img src='/images/refinery/icons/tick.png' alt='valid email address' title='valid email address' width='16' height='16' />"
+
+      render :json => if valid
+        {:result => 'success'}
       else
-        "<img src='/images/refinery/icons/cross.png' alt='invalid email address' title='invalid email address' width='16' height='16' />"
+        {:result => 'failure'}
       end
     end
   end

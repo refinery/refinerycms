@@ -925,6 +925,16 @@ a img {
 	background-image: url('/images/refinery/icons/application_go.png');
 }
 
+.success_icon {
+  background-image: url('/images/refinery/icons/tick.png');
+  padding: 0px 8px;
+}
+
+.failure_icon {
+  background-image: url('/images/refinery/icons/cross.png');
+  padding: 0px 8px;
+}
+
 /* page parts */
 
 ul#page_parts {
