@@ -2,12 +2,14 @@
 $j = jQuery.noConflict();
 
 $j(document).ready(function(){
-  //init_sortable_menu();
+  init_sortable_menu();
 });
 
 
 function init_sortable_menu(){
   var $menu = $j('#menu');
+
+  if($menu.length == 0){ return }
 
   $menu.sortable({
     axis: 'x',
@@ -197,7 +199,112 @@ var link_dialog = {
       parent.document.getElementById('wym_title').value = title;
       parent.document.getElementById('wym_target').value = target || '';
   }
-
-
-
 }
+
+
+  var page_options = {
+    init: function(enable_parts, new_part_url, del_part_url){
+      this.enable_parts = enable_parts;
+      this.new_part_url = new_part_url;
+      this.del_part_url = del_part_url;
+      this.show_options();
+      this.title_type();
+
+      // Hook into the loaded function. This will be called when WYMeditor has done its thing.
+      WYMeditor.loaded = function(){
+        page_options.tabs = $j('#page-tabs').tabs();
+      }
+
+      if(this.enable_parts){
+        this.page_part_dialog();
+      }
+    },
+
+    show_options: function(){
+      $j('#toggle_advanced_options').click(function(ev){
+        ev.preventDefault();
+        $j('#more_options').toggle();
+      });
+    },
+
+    title_type: function(){
+      $j("input[name=page\[custom_title_type\]]").change(function(){
+        $j('#custom_title_text, #custom_title_image').hide();
+        $j('#custom_title_' + this.value).show();
+      });
+    },
+
+    page_part_dialog: function(){
+      $j('#new_page_part_dialog').dialog({
+        title: 'Create Content Section',
+        modal: true,
+        resizable: false,
+        autoOpen: false
+      });
+
+      $j('#add_page_part').click(function(ev){
+        ev.preventDefault();
+        $j('#new_page_part_dialog').dialog('open');
+      });
+
+      $j('#new_page_part_save').click(function(ev){
+        ev.preventDefault();
+
+        var part_title = $j('#new_page_part_title').val();
+
+        if(part_title.length > 0){
+          var tab_title = part_title.toLowerCase().gsub(" ", "_");
+
+          if ($j('#part_' + tab_title).size() == 0){
+            $j.get(page_options.new_part_url,
+                    {title: tab_title, part_index: $j('#new_page_part_index').val(), body: ''},
+                    function(data, status){
+                      // Add a new tab for the new content section.
+                      $j('#page_part_editors').append(data);
+                      page_options.tabs.tabs('add', '#part_' + tab_title, part_title);
+                      page_options.tabs.tabs('select', '#part_' + tab_title);
+                      // turn the new textarea into a wymeditor.
+                      $j('#page_parts_attributes_' + $j('#new_page_part_index').val() + "_body").wymeditor(wymeditor_boot_options);
+                      // Wipe the title and increment the index counter by one.
+                      $j('#new_page_part_index').val(parseInt($j('#new_page_part_index').val()) + 1);
+                      $j('#new_page_part_title').val('');
+                    }
+            );
+          }else{
+            alert("A content section with that title already exists, please choose another.");
+          }
+        }else{
+          alert("You have not entered a title for the content section, please enter one.");
+        }
+
+
+        $j('#new_page_part_dialog').dialog('close');
+      });
+
+      $j('#new_page_part_cancel').click(function(ev){
+        ev.preventDefault();
+        $j('#new_page_part_dialog').dialog('close');
+        $j('#new_page_part_title').val('');
+      });
+
+      $j('#delete_page_part').click(function(ev){
+        ev.preventDefault();
+        var stab_id = page_options.tabs.tabs('option', 'selected');
+        var part_id = $j('#page_parts_attributes_' + stab_id + '_id').val();
+        //console.log('stab_id: ' + stab_id + ' part_id: ' + part_id);
+
+        var result = confirm("This will remove the content section '" + $j('#page_parts .ui-tabs-selected a').html() + "' when the page is saved and erase all content that has been entered into it, Are you sure?");
+        if(part_id && result){
+          $j.ajax({
+            url: page_options.del_part_url + '/' + part_id,
+            type: 'DELETE'
+          });
+          page_options.tabs.tabs('remove', stab_id);
+          //WYMeditor.loaded();
+        }
+
+      });
+
+    }
+
+  }
