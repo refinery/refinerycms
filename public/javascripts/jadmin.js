@@ -2,6 +2,7 @@
 $j = jQuery.noConflict();
 
 $j(document).ready(function(){
+  $j('#flash').fadeIn(550);
   init_sortable_menu();
 });
 
