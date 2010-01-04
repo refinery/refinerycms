@@ -490,15 +490,6 @@ ul.reordering li {
 
 textarea {
 	line-height: 20px;
-}
-
-label {
-	font-size: 90%;
-	margin-bottom: 5px;
-	display: block;
-}
-
-textarea {
 	padding: 5px;
 }
 
@@ -517,6 +508,7 @@ label {
 	margin-bottom: 5px;
 	font-weight: bold;
 	margin-top: 20px;
+	display: block;
 }
 
 label.input_label {
