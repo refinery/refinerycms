@@ -4105,7 +4105,6 @@ function titleize(words) {
 	jQuery.each(words.replace(/\./, '').replace(/[-_]/, ' ').split(' '), function(index, part){
 		parts.push(part[0].toUpperCase() + part.substring(1));
 	});
-
 	return parts.join(" ");
 }
 
