@@ -366,3 +366,66 @@ var image_dialog = {
     catch($e){}
   }
 }
+
+
+  var list_reorder = {
+    init: function(){
+      this.reordering_button_enabled = true;
+      this.sortable_list = $j(this.sortable_list);
+
+      $j('#reorder_action').click(list_reorder.enable_reordering);
+      $j('#reorder_action_done').click(list_reorder.disable_reordering);
+    },
+
+    enable_reordering: function(ev){
+      if(ev){
+        ev.preventDefault();
+      }
+
+      var nest_id = 0;
+      list_reorder.sortable_list.addClass('reordering');
+      list_reorder.sortable_list.find('ul.nested').each(function(){
+        this.id = this.id.length > 0 ? this.id : "nested_" + nest_id++;
+        Sortable.create(this.id,{
+          constraint: list_reorder.tree ? "false" : "'vertical'",
+          hoverclass: 'hover',
+          scroll: window,
+          tree: list_reorder.tree
+        });
+      });
+
+      Sortable.create(list_reorder.sortable_list.get(0), {
+        constraint: list_reorder.tree ? 'false' : 'vertical',
+        hoverclass: 'hover',
+        scroll: window,
+        tree: list_reorder.tree,
+        onUpdate:function(){
+          list_reorder.reordering_button_enabled = false;
+          $j.post(list_reorder.update_url,
+                  Sortable.serialize(list_reorder.sortable_list.get(0)) + '&tree=' + list_reorder.tree + '&authenticity_token=' + encodeURIComponent($j('#reorder_authenticity_token').val()),
+                  function(data){
+                    $j(list_reorder.sortable_list.get(0)).html(data);
+                    list_reorder.reordering_button_enabled = true;
+                  });
+        }
+      });
+
+      $j('#reorder_action').hide();
+      $j('#reorder_action_done').show();
+    },
+
+    disable_reordering: function(ev){
+      if(ev){
+        ev.preventDefault();
+      }
+
+      if(list_reorder.reordering_button_enabled){
+        list_reorder.sortable_list.removeClass('reordering');
+
+        Sortable.destroy(list_reorder.sortable_list.get(0));
+
+        $j('#reorder_action_done').hide();
+        $j('#reorder_action').show();
+      }
+    }
+  }
