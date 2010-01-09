@@ -35,13 +35,13 @@ class Admin::ImagesController < Admin::BaseController
   def insert
     self.new if @image.nil?
     @dialog = from_dialog?
-    #@thickbox = !params[:thickbox].blank?
+    @thickbox = !params[:thickbox].blank?
+    @url_override = admin_images_url(:dialog => @dialog, :insert => true)
     #@field = params[:field]
     #@update_image = params[:update_image]
     #@thumbnail = params[:thumbnail]
     #@callback = params[:callback]
     #@conditions = params[:conditions]
-    @url_override = admin_images_url(:dialog => @dialog, :insert => true)
 
 #    unless params[:conditions].blank?
 #      extra_condition = params[:conditions].split(',')

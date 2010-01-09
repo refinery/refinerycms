@@ -709,7 +709,7 @@ body.dialog form {
 
 .dialog #dialog_main {
 	float: left;
-	min-height: 415px;
+	min-height: 405px;
 	width: 756px;
 }
 
@@ -749,17 +749,18 @@ body.dialog form {
 }
 */
 #existing_image_area_content {
-	height: 342px;
+	height: 365px;
 }
 
 #existing_image_area .pagination {
 	background: #FFF;
-	bottom: 0px;
-	right: 0px;
+	/*bottom: 0px;*/
+	/*right: 0px;*/
 	text-align: right;
-	position: absolute;
+  float: right;
+	/*position: absolute;*/
 	margin: 0px;
-	width: 766px;
+	width: 763px;
 }
 
 #upload_image_area {

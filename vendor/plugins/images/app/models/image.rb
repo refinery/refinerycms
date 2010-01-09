@@ -30,7 +30,7 @@ class Image < ActiveRecord::Base
   end
 
   def self.per_page(dialog = false)
-    size = (dialog ? 18 : 20)
+    size = (dialog ? 3 : 20)
   end
 
   def self.last_page(images, dialog=false)

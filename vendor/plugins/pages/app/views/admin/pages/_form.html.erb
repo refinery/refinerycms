@@ -53,14 +53,11 @@
         </p>
       </div>
       <div id='custom_title_image' style='display: <%= @page.custom_title_type == 'image' ? 'block' : 'none' %>' class='clearfix'>
-        <%= render :partial => "/shared/admin/image_picker", :locals =>
-          {
+        <%= render :partial => "/shared/admin/image_picker", :locals =>{
             :f => f,
             :field => :custom_title_image_id,
             :image => @page.custom_title_image,
-            :toggle_image_display => false
-          }
-        %>
+            :toggle_image_display => false }-%>
       </div>
     </div>
     <div class='field'>
