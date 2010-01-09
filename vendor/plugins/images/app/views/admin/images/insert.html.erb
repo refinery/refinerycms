@@ -25,7 +25,9 @@
             <% end -%>
           </ul>
         </div>
-        <%= will_paginate @images, :previous_label => '&laquo; Previous', :next_label => 'Next &raquo;', :renderer => Refinery::LinkRenderer, :url => {:controller => "admin/images", :action => "insert", :dialog => @dialog} unless @thickbox %>
+        <%# will_paginate @images %>
+        <%= images_paginator @images, @dialog %>
+        <%# will_paginate @images, :previous_label => '&laquo; Previous', :next_label => 'Next &raquo;', :renderer => Refinery::LinkRenderer, :url => {:controller => "admin/images", :action => "insert", :dialog => @dialog} unless @thickbox %>
       </div>
     <% end %>
     <div id='upload_image_area' class='dialog_area' <%= "style='display:none;'" unless @images.empty? %>>
@@ -33,6 +35,14 @@
     </div>
   </div>
 </div>
+<% if @thickbox %>
+  <div id='dialog-form-actions' class='form-actions'>
+    <%= submit_tag 'Insert', :id => "submit_button" %>
+    or
+    <%= link_to "Cancel", "", :id => "cancel_button", :class => "close_dialog" %>
+  </div>
+<% end %>
+
 
 <% content_for :head do %>
   <%= javascript_include_tag 'refinery/parse_url' %>
