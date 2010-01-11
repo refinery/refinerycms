@@ -105,13 +105,7 @@ class Page < ActiveRecord::Base
 
   # used for search only
   def all_page_part_content
-    content = ""
-
-    self.parts.each do |part|
-      content << " #{part.body}"
-    end
-
-    content
+    self.parts.collect {|p| p.body}.join(" ")
   end
 
   def self.per_page(dialog = false)
