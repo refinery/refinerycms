@@ -20,3 +20,6 @@ config.action_controller.perform_caching             = true
 
 # We don't really need all the other stuff:
 config.log_level = :warn
+
+# Set to true if using Heroku on production machine
+HEROKU = false

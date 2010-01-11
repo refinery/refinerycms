@@ -12,6 +12,9 @@ RAILS_GEM_VERSION = '2.3.5' unless defined? RAILS_GEM_VERSION
 # Bootstrap the Rails environment, frameworks, and default configuration
 require File.join(File.dirname(__FILE__), 'boot')
 
+# Set to true in production.rb to use heroku
+HEROKU = false
+
 eval("#{(defined? Refinery::Initializer) ? Refinery : Rails}::Initializer").run do |config|
   # Settings in config/environments/* take precedence over those specified here.
   # Application configuration should go into files in config/initializers

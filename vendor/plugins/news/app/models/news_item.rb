@@ -5,7 +5,8 @@ class NewsItem < ActiveRecord::Base
 
   has_friendly_id :title, :use_slug => true, :strip_diacritics => true
 
-  acts_as_indexed :fields => [:title, :body]
+  acts_as_indexed :fields => [:title, :body],
+          :index_file => (HEROKU ? [RAILS_ROOT,"tmp","index"] : [RAILS_ROOT,"index"])
 
   def self.latest(amount = 10)
     find(:all, :order => "publish_date DESC", :limit => amount,
