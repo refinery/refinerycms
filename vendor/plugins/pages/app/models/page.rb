@@ -115,8 +115,7 @@ class Page < ActiveRecord::Base
   end
 
   def self.per_page(dialog = false)
-    2
-    #size = (dialog ? 14 : 20)
+    size = (dialog ? 14 : 20)
   end
 
 end
