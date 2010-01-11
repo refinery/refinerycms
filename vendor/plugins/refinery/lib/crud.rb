@@ -18,8 +18,16 @@ module Crud
   module ClassMethods
 
     def crudify(model_name, new_options = {})
-      options = {:title_attribute => "title", :order => 'position ASC', :conditions => '', :sortable => true, :searchable => true}
-      options.merge!(new_options)
+      options = {
+        :title_attribute => "title",
+        :order => 'position ASC',
+        :conditions => '',
+        :sortable => true,
+        :searchable => true,
+        :include => [],
+        :paging => true,
+        :search_conditions => ''
+      }.merge!(new_options)
 
       singular_name = model_name.to_s
       class_name = singular_name.camelize
@@ -27,7 +35,6 @@ module Crud
 
       module_eval %(
         before_filter :find_#{singular_name}, :only => [:update, :destroy, :edit]
-        before_filter :find_all_#{plural_name}, :only => :reorder
 
         def new
           @#{singular_name} = #{class_name}.new
@@ -98,43 +105,88 @@ module Crud
         end
 
         def find_#{singular_name}
-          @#{singular_name} = #{class_name}.find(params[:id])
+          @#{singular_name} = #{class_name}.find(params[:id], :include => %w(#{options[:include].join(' ')}))
         end
 
         def find_all_#{plural_name}
-          @#{plural_name} = #{class_name}.find(:all, :order => "#{options[:order]}", :conditions => "#{options[:conditions]}")
+          @#{plural_name} = #{class_name}.find  :all,
+                                                :order => "#{options[:order]}",
+                                                :conditions => "#{options[:conditions]}",
+                                                :include => %w(#{options[:include].join(' ')})
         end
 
-        protected :find_#{singular_name}, :find_all_#{plural_name}
+        def paginate_all_#{plural_name}
+          @#{plural_name} = #{class_name}.paginate :page => params[:page],
+                                                   :order => "#{options[:order]}",
+                                                   :conditions => "#{options[:conditions]}",
+                                                   :include => %w(#{options[:include].join(' ')})
+        end
+
+        def search_all_#{plural_name}
+          @#{plural_name} = #{class_name}.find_with_index params[:search],
+                                                   :order => "#{options[:order]}",
+                                                   :conditions => "#{options[:search_conditions]}",
+                                                   :include => %w(#{options[:include].join(' ')})
+        end
+
+        def search_and_paginate_all_#{plural_name}
+          @#{plural_name} = #{class_name}.paginate_search params[:search],
+                                                   :page => params[:page],
+                                                   :order => "#{options[:order]}",
+                                                   :conditions => "#{options[:search_conditions]}",
+                                                   :include => %w(#{options[:include].join(' ')})
+        end
+
+        protected :find_#{singular_name}, :find_all_#{plural_name}, :paginate_all_#{plural_name}, :search_all_#{plural_name}, :search_and_paginate_all_#{plural_name}
+
       )
 
       if options[:searchable]
-        module_eval %(
-          def index
-            if searching?
-              @#{plural_name} = #{class_name}.paginate_search params[:search],
-                                                       :page => params[:page],
-                                                       :order => "#{options[:order]}",
-                                                       :conditions => "#{options[:conditions]}"
-            else
-              @#{plural_name} = #{class_name}.paginate :page => params[:page],
-                                                       :order => "#{options[:order]}",
-                                                       :conditions => "#{options[:conditions]}"
+        if options[:paging]
+          module_eval %(
+            def index
+              if searching?
+                search_and_paginate_all_#{plural_name}
+              else
+                paginate_all_#{plural_name}
+              end
             end
-          end
-        )
+          )
+        else
+          module_eval %(
+            def index
+              if searching?
+                search_all_#{plural_name}
+              else
+                find_all_#{plural_name}
+              end
+            end
+          )
+        end
+
       else
-        module_eval %(
-          def index
-            @#{plural_name} = #{class_name}.paginate :page => params[:page],
-                                                     :order => "#{options[:order]}",
-                                                     :conditions => "#{options[:conditions]}"
-          end
-        )
+        if options[:paging]
+          module_eval %(
+            def index
+              paginate_all_#{plural_name}
+            end
+          )
+        else
+          module_eval %(
+            def index
+              find_all_#{plural_name}
+            end
+          )
+        end
+
       end
 
       if options[:sortable]
         module_eval %(
+          def reorder
+            find_all_#{plural_name}
+          end
+
           def update_positions
             unless params[:tree] == "true"
               params[:sortable_list].each do |i|
