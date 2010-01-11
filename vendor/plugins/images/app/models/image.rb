@@ -3,13 +3,14 @@ class Image < ActiveRecord::Base
   has_many :pages
 
   has_attachment :content_type => :image,
-                 :storage => :file_system,
-                 :path_prefix => 'public/system/images',
+                 :storage => (HEROKU ? :s3 : :file_system),
+#                 :path_prefix => (HEROKU ? nil : 'public/system/images'),
                  :processor => 'Rmagick',
                  :thumbnails => ((((thumbnails = RefinerySetting.find_or_set(:image_thumbnails, {})).is_a?(Hash) ? thumbnails : (RefinerySetting[:image_thumbnails] = {}))) rescue {}),
                  :max_size => 5.megabytes
 
-  acts_as_indexed :fields => [:title]
+  acts_as_indexed :fields => [:title],
+          :index_file => (HEROKU ? [RAILS_ROOT,"tmp","index"] : [RAILS_ROOT,"index"])
 
   def validate
    errors.add_to_base("You must choose a file to upload") unless self.filename
