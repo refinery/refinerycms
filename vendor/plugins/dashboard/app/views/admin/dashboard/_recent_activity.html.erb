@@ -1,5 +1,5 @@
 <h2>Latest Activity</h2>
-<% if @recent_activity.size > 0 %>
+<% unless @recent_activity.empty? %>
   <table id='recent_activity'>
     <% @recent_activity.each do |change| %>
       <tr class='<%= cycle("on", "") %>'>
