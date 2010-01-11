@@ -9,27 +9,23 @@
   </ul>
 </div>
 <div id='records'>
-  <% if searching? %>
-    <h2>Search Results for "<%= params[:search] %>"</h2>
-    <% if @news_items.size > 0 %>
-        <%= render :partial => "news_item", :collection => @news_items %>
-    <% else %>
-      <p>Sorry, no results found.</p>
-    <% end %>
+  <%= "<h2>Search Results for \"#{params[:search]}\"</h2>" if searching? %>
+  <% unless @news_items.empty? %>
+    <%= will_paginate @news_items, :previous_label => '&laquo;', :next_label => '&raquo;' %>
+    <ul>
+      <%= render :partial => "news_item", :collection => @news_items %>
+    </ul>
+    <%= will_paginate @news_items, :previous_label => '&laquo;', :next_label => '&raquo;' %>
   <% else %>
-    <% if @news_items.size > 0 %>
-      <%= will_paginate @news_items, :previous_label => '&laquo;', :next_label => '&raquo;' %>
-      <ul>
-        <%= render :partial => "news_item", :collection => @news_items %>
-      </ul>
-      <%= will_paginate @news_items, :previous_label => '&laquo;', :next_label => '&raquo;' %>
-    <% else %>
+    <% unless searching? %>
       <p>
         <strong>
           There are no news items yet.
           Click "Create News Item" to add your first news item.
         </strong>
       </p>
+    <% else %>
+      <p>Sorry, no results found.</p>
     <% end %>
   <% end %>
 </div>

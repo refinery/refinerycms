@@ -16,7 +16,7 @@
 </div>
 <div id='records' class='tree'>
   <% if searching? %>
-    <% if @pages.size > 0 %>
+    <% unless @pages.empty? %>
       <h2>Search Results for "<%= params[:search] %>"</h2>
       <ul id='sortable_list'>
         <%= render :partial => "sortable_list" %>
@@ -27,7 +27,7 @@
       </p>
     <% end %>
   <% else %>
-    <% if @pages.size > 0 %>
+    <% unless @pages.empty? %>
       <ul id='sortable_list'>
         <%= render :partial => "sortable_list" %>
       </ul>
