@@ -31,7 +31,7 @@ module Refinery
     class Initializer < Rails::Initializer
       def self.run(command = :process, configuration = Configuration.new)
         Rails.configuration = configuration
-        configuration.reload_plugins = true if RAILS_ENV =~ /development/ and REFINERY_ROOT == RAILS_ROOT # seems to work, don't in gem.
+        #configuration.reload_plugins = true if RAILS_ENV =~ /development/ and REFINERY_ROOT == RAILS_ROOT # seems to work, don't in gem.
         configuration.plugin_loader = Refinery::PluginLoader
         super
       end
