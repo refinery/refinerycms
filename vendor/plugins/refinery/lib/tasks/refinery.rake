@@ -22,6 +22,14 @@ namespace :refinery do
     end
 
   end
-  
+
+  namespace :cache do
+    desc "Eliminate existing cache files for javascript and stylesheet resources in default directories"
+    task :clear => :environment do
+      FileUtils.rm(Dir[File.join(RAILS_ROOT, %w(public javascripts cache [^.]*))])
+      FileUtils.rm(Dir[File.join(RAILS_ROOT, %w(public stylesheets cache [^.]*))])
+    end
+  end
+
 end
 

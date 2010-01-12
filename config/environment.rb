@@ -68,7 +68,6 @@ eval("#{(defined? Refinery::Initializer) ? Refinery : Rails}::Initializer").run 
   config.gem "will_paginate", :version => ">= 2.3.11", :lib => "will_paginate", :source => "http://gemcutter.org"
   config.gem "rails", :version => ">= 2.3.5", :lib => "rails"
   config.gem "aasm", :version => ">= 2.1.3", :lib => "aasm", :source => "http://gemcutter.org"
-  config.gem "unicode", :version => ">= 0.1", :lib => "unicode"
   config.gem "slim_scrooge", :version => ">= 1.0.3", :lib => "slim_scrooge", :source => "http://gemcutter.org" #unless RUBY_PLATFORM =~ /mswin|mingw/ # kill gem when windows is running.
   config.gem "hpricot", :version => "= 0.8.1", :lib => "hpricot", :source => "http://gemcutter.org"
   #===REFINERY END OF REQUIRED GEMS===

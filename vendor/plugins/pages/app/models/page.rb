@@ -26,7 +26,7 @@ class Page < ActiveRecord::Base
     if self.deletable?
       super
     else
-      puts "This page is not deletable. Please use .destroy! if you really want it gone or first"
+      puts "This page is not deletable. Please use .destroy! if you really want it gone or first:"
       puts "unset .link_url" unless self.link_url.blank?
       puts "unset .menu_match" unless self.menu_match.blank?
       puts "set .deletable to true" unless self.deletable
@@ -105,13 +105,7 @@ class Page < ActiveRecord::Base
 
   # used for search only
   def all_page_part_content
-    content = ""
-
-    self.parts.each do |part|
-      content << " #{part.body}"
-    end
-
-    content
+    self.parts.collect {|p| p.body}.join(" ")
   end
 
   def self.per_page(dialog = false)

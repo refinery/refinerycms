@@ -5,6 +5,7 @@
     <title>
       <%= yield :title %> - <%= RefinerySetting.find_or_set(:site_name, "Company Name") %>
     </title>
+    <%= render :partial => 'shared/google_analytics' unless local_request? %>
     <%= stylesheet_link_tag 'application' %>
     <%= stylesheet_link_tag 'formatting', 'theme' %>
     <%= stylesheet_link_tag 'home' if @page.home? %>
@@ -28,6 +29,5 @@
         </div>
       </div>
     </div>
-    <%= render :partial => 'shared/google_analytics' unless local_request? %>
   </body>
 </html>

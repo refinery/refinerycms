@@ -59,4 +59,8 @@ class RefinerySetting < ActiveRecord::Base
     self[:value] = new_value
   end
 
+  def self.per_page
+    10
+  end
+
 end
