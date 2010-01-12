@@ -774,12 +774,13 @@ WYMeditor.editor.prototype.init = function() {
 				if(oClass.name)	{
 					if (oClass.rules && oClass.rules.length > 0) {
 						var sRules = "";
-						oClass.rules.each(function(rule){
-							sClass = this._options.classesItemHtml;
+						var wym = this;
+						jQuery.each(oClass.rules, function(index, rule) {
+							sClass = wym._options.classesItemHtml;
 							sClass = h.replaceAll(sClass, WYMeditor.CLASS_NAME, oClass.name + (oClass.join || "") + rule);
 							sClass = h.replaceAll(sClass, WYMeditor.CLASS_TITLE, rule.title || titleize(rule));
 							sRules += sClass;
-						}.bind(this)); // need to bind 'this' or else it will think 'this' is the window.
+						});
 
 						var sClassMultiple = this._options.classesItemHtmlMultiple;
 						sClassMultiple = h.replaceAll(sClassMultiple, WYMeditor.CLASS_TITLE, oClass.title || titleize(oClass.name));
