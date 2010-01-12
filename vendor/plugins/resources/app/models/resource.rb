@@ -1,11 +1,11 @@
 class Resource < ActiveRecord::Base
 
-  has_attachment :storage => (HEROKU ? :s3 : :file_system),
+  has_attachment :storage => (USE_S3_BACKEND ? :s3 : :file_system),
           :size => 0.kilobytes..50.megabytes,
-          :path_prefix => (HEROKU ? nil : 'public/system/resources')
+          :path_prefix => (USE_S3_BACKEND ? nil : 'public/system/resources')
 
   acts_as_indexed :fields => [:title, :type_of_content],
-          :index_file => (HEROKU ? [RAILS_ROOT,"tmp","index"] : [RAILS_ROOT,"index"])
+          :index_file => [RAILS_ROOT,"tmp","index"]
 
   def validate
     errors.add_to_base("You must choose a file to upload") unless self.filename
