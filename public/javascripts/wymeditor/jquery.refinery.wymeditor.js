@@ -4101,7 +4101,7 @@ WYMeditor.Helper = {
 
 function titleize(words) {
 	parts = [];
-	words.gsub(/\./, '').gsub(/[-_]/, ' ').split(' ').each(function(part){
+	jQuery.each(words.replace(/\./, '').replace(/[-_]/, ' ').split(' '), function(index, part){
 		parts.push(part[0].toUpperCase() + part.substring(1));
 	});
 
