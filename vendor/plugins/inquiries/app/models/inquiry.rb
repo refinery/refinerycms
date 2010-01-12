@@ -6,7 +6,7 @@ class Inquiry < ActiveRecord::Base
                       :message => 'must be valid'
 
   acts_as_indexed :fields => [:name, :email, :message, :phone],
-          :index_file => (HEROKU ? [RAILS_ROOT,"tmp","index"] : [RAILS_ROOT,"index"])
+          :index_file => [RAILS_ROOT,"tmp","index"]
 
   def self.closed
     find_all_by_open(false, :order => "created_at DESC")

@@ -13,7 +13,7 @@ class Page < ActiveRecord::Base
   accepts_nested_attributes_for :parts, :allow_destroy => true
 
   acts_as_indexed :fields => [:title, :meta_keywords, :meta_description, :custom_title, :browser_title, :all_page_part_content],
-          :index_file => (HEROKU ? [RAILS_ROOT,"tmp","index"] : [RAILS_ROOT,"index"])
+          :index_file => [RAILS_ROOT,"tmp","index"]
 
   before_destroy :deletable?
 
