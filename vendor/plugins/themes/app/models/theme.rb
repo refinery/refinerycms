@@ -11,7 +11,7 @@ class Theme < ActiveRecord::Base
 	# Once a zip is uploaded it unzips it into the themes directory
 	def after_attachment_saved
 	  Zip::ZipFile.open(self.path).each do |single_file|
-	    single_file.extract(File.join(RAILS_ROOT, "themes", single_file.name)
+	    single_file.extract(File.join(RAILS_ROOT, "themes", single_file.name))
 	  end
 	end
 	

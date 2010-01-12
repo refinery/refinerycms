@@ -3,6 +3,7 @@
   {:name => "activity_show_limit", :value => 25},
   {:name => "preferred_image_view", :value => :grid},
   {:name => "analytics_page_code", :value => "UA-xxxxxx-x"},
+	{:name => "theme", :value => "demolicious"},
   {:name => "image_thumbnails", :value => {
     :dialog_thumb => 'c106x106',
     :grid => 'c135x135',
