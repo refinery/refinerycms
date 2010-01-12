@@ -17,7 +17,7 @@ protected
   def render_theme_item(type, file, mime = nil)
     mime ||= mime_for(file)
 
-    file_path = RefinerySetting[:theme] + "/#{type}/#{file}"
+    file_path = File.join(RAILS_ROOT, "themes", RefinerySetting[:theme], "#{type}/#{file}#{params[:extension]}")
 
  		if File.exists? file_path
     	send_file(file_path, :type => mime, :disposition => 'inline', :stream => true)

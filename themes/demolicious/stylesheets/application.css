@@ -29,7 +29,7 @@ body {
     margin: 0px auto;
 }
 #header {
-    background: url('/images/header_background.png') repeat-x;
+    background: url('/images/theme/header_background.png') repeat-x;
 }
 #header_content {
     position: relative;
@@ -84,7 +84,7 @@ body {
 }
 #footer {
     margin-top: 120px;
-    background: url('/images/footer_background.png') repeat-x;
+    background: url('/images/theme/footer_background.png') repeat-x;
 }
 #footer_content {
     height: 103px;
