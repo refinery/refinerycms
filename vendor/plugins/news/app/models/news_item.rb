@@ -23,4 +23,8 @@ class NewsItem < ActiveRecord::Base
     self.body = value
   end
 
+  def self.per_page
+    20
+  end
+
 end

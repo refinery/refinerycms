@@ -8,15 +8,15 @@
     </li>
   <% if Page.count > 1 and not searching? %>
     <li>
-      <%= link_to "Reorder Pages", "", :id => "reorder_action", :class => "reorder_icon" %>
-      <%= link_to "Done Reordering Pages", "", :id => "reorder_action_done", :style => "display: none;", :class => "reorder_icon" %>
+      <%= link_to "Reorder Pages", admin_pages_url, :id => "reorder_action", :class => "reorder_icon" %>
+      <%= link_to "Done Reordering Pages", admin_pages_url, :id => "reorder_action_done", :style => "display: none;", :class => "reorder_icon" %>
     </li>
   <% end %>
   </ul>
 </div>
 <div id='records' class='tree'>
   <% if searching? %>
-    <% if @pages.size > 0 %>
+    <% unless @pages.empty? %>
       <h2>Search Results for "<%= params[:search] %>"</h2>
       <ul id='sortable_list'>
         <%= render :partial => "sortable_list" %>
@@ -27,7 +27,7 @@
       </p>
     <% end %>
   <% else %>
-    <% if @pages.size > 0 %>
+    <% unless @pages.empty? %>
       <ul id='sortable_list'>
         <%= render :partial => "sortable_list" %>
       </ul>

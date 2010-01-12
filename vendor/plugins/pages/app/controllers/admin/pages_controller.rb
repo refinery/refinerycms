@@ -1,14 +1,6 @@
 class Admin::PagesController < Admin::BaseController
 
-  crudify :page, :conditions => "parent_id IS NULL", :order => "position ASC", :include => [:parts, :slugs, :children, :images]
-
-  def index
-    if searching?
-      @pages = Page.find_with_index params[:search]
-    else
-      @pages = Page.find_all_by_parent_id(nil, :order => "position ASC")
-    end
-  end
+  crudify :page, :conditions => "parent_id IS NULL", :order => "position ASC", :include => [:parts, :slugs, :children], :paging => false
 
   def new
     @page = Page.new

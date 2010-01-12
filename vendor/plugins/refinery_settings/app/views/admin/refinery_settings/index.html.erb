@@ -6,28 +6,22 @@
   </ul>
 </div>
 <div id='records'>
-  <% if searching? %>
-    <% if @refinery_settings.size > 0 %>
-      <ul>
-        <%= render :partial => 'refinery_setting', :collection => @refinery_settings %>
-      </ul>
-    <% else %>
-      <p>Sorry, no results found</p>
-    <% end %>
+  <% unless @refinery_settings.empty? %>
+    <%= will_paginate @refinery_settings, :previous_label => '&laquo;', :next_label => '&raquo;' unless searching? %>
+    <ul>
+      <%= render :partial => 'refinery_setting', :collection => @refinery_settings %>
+    </ul>
+    <%= will_paginate @refinery_settings, :previous_label => '&laquo;', :next_label => '&raquo;' unless searching? %>
   <% else %>
-    <% if @refinery_settings.size > 0 %>
-      <%= will_paginate @refinery_settings, :previous_label => '&laquo;', :next_label => '&raquo;' %>
-      <ul>
-        <%= render :partial => 'refinery_setting', :collection => @refinery_settings %>
-      </ul>
-      <%= will_paginate @refinery_settings, :previous_label => '&laquo;', :next_label => '&raquo;' %>
-    <% else %>
-      <p>
+    <p>
+      <% if searching? %>
+        Sorry, no results found
+      <% else %>
         <strong>
           There are no settings yet.
           Click "Create New Setting" to add your first setting.
         </strong>
-      </p>
-    <% end %>
+      <% end %>
+    </p>
   <% end %>
 </div>

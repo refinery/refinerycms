@@ -1,6 +1,5 @@
-init_tooltips = function(){
-  arguments = arguments.length > 0 ? arguments : ['a[title]', '#image_grid img[title]'];
-  $$(arguments).each(function(element)
+init_tooltips = function(args){
+  jQuery(jQuery(args != null ? args : 'a[title], #image_grid img[title]')).each(function(index, element)
   {
     new Tooltip(element, {mouseFollow:false, delay: 0, opacity: 1, appearDuration:0, hideDuration: 0, rounded: false});
   });
@@ -35,19 +34,13 @@ FastInit.addOnLoad(function()
     }
 
     jQuery('#continue_editing').val(true);
-
-    if ((flash=$('flash')) != null) {
-      flash.hide();
-    }
+    jQuery('#flash').fadeOut(250)
 
     jQuery.post(this.form.action, this.form.serialize(), function(data) {
       if ((flash_container = $('flash_container')) != null) {
         flash_container.update(data);
 
-        if ((flash = $('flash')) != null) {
-          flash.style.width = 'auto';
-          flash.appear();
-        }
+        jQuery('#flash').css('width', 'auto').fadeIn(550);
 
         jQuery('.errorExplanation').each(function(i, node) {
           if (node.parentNode.id != 'flash_container') {

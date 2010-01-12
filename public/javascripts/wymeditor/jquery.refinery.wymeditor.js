@@ -774,12 +774,13 @@ WYMeditor.editor.prototype.init = function() {
 				if(oClass.name)	{
 					if (oClass.rules && oClass.rules.length > 0) {
 						var sRules = "";
-						oClass.rules.each(function(rule){
-							sClass = this._options.classesItemHtml;
+						var wym = this;
+						jQuery.each(oClass.rules, function(index, rule) {
+							sClass = wym._options.classesItemHtml;
 							sClass = h.replaceAll(sClass, WYMeditor.CLASS_NAME, oClass.name + (oClass.join || "") + rule);
 							sClass = h.replaceAll(sClass, WYMeditor.CLASS_TITLE, rule.title || titleize(rule));
 							sRules += sClass;
-						}.bind(this)); // need to bind 'this' or else it will think 'this' is the window.
+						});
 
 						var sClassMultiple = this._options.classesItemHtmlMultiple;
 						sClassMultiple = h.replaceAll(sClassMultiple, WYMeditor.CLASS_TITLE, oClass.title || titleize(oClass.name));
@@ -1193,9 +1194,13 @@ WYMeditor.editor.prototype.status = function(sMessage) {
  */
 WYMeditor.editor.prototype.update = function() {
 
-	var html = this.xhtml().gsub(/<\/([A-Za-z0-9]*)></, function(m){return "</" + m[1] +">\n<"}).gsub(/src=\"system\/images/, 'src="/system/images'); // make system/images calls absolute.
+	var html = this.xhtml().gsub(/<\/([A-Za-z0-9]*)></, function(m){return "</" + m[1] +">\n<"});
+	html = html.gsub(/src=\"system\/images/, 'src="/system/images'); // make system/images calls absolute.
+	html = html.gsub(/(replace_me_with_wym-[0-9]*)/, ""); // get rid of replace_me_with_wym id tags that were forgotten about.
+
 	jQuery(this._element).val(html);
 	jQuery(this._box).find(this._options.htmlValSelector).val(html);
+
 };
 
 /* @name dialog
@@ -1353,7 +1358,7 @@ WYMeditor.editor.prototype.paste = function(sData) {
   		sTmp = aP[x];
   		//simple newlines are replaced by a break
   		sTmp = sTmp.replace(rExp, "<br />");
-  		if (x == aP.length-1 && jQuery(container).html().gsub(/<br\ ?\/?>/, "").length == 0) {
+  		if (x == 0 && jQuery(container).html().gsub(/<br\ ?\/?>/, "").length == 0) {
 		    jQuery(container).html(sTmp);
 		  } else {
   		  jQuery(container).after("<p>" + sTmp + "</p>");
@@ -2437,7 +2442,8 @@ WYMeditor.XhtmlValidator = {
 				"allowscriptaccess",
 				"wmode",
 				"type",
-				"src"
+				"src",
+				"flashvars"
 			],
 		"inside":"object"
 		},
@@ -4096,7 +4102,7 @@ WYMeditor.Helper = {
 
 function titleize(words) {
 	parts = [];
-	words.gsub(/\./, '').gsub(/[-_]/, ' ').split(' ').each(function(part){
+	jQuery.each(words.replace(/\./, '').replace(/[-_]/, ' ').split(' '), function(index, part){
 		parts.push(part[0].toUpperCase() + part.substring(1));
 	});
 

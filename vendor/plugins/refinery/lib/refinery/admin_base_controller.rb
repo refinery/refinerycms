@@ -2,7 +2,7 @@ class Refinery::AdminBaseController < ApplicationController
 
   layout proc { |controller| "admin#{"_dialog" if controller.from_dialog?}" }
 
-  before_filter :login_required, :restrict_plugins, :restrict_controller
+  before_filter :correct_accept_header, :login_required, :restrict_plugins, :restrict_controller
 
   helper_method :searching?
 
@@ -35,8 +35,21 @@ protected
       logger.warn "'#{current_user.login}' tried to access '#{params[:controller]}'"
     end
   end
-  
+
   # Override method from application_controller. Not needed in this controller.
   def find_pages_for_menu; end
+
+private
+  # This fixes the issue where Internet Explorer browsers are presented with a basic auth dialogue
+  # rather than the xhtml one that they *can* accept but don't think they can.
+  def correct_accept_header
+    if request.user_agent =~ /MSIE (6|7|8)/
+      if request.accept == "*/*"
+        request.env["HTTP_ACCEPT"] = request.cookies[:http_accept] ||= "application/xml"
+      else
+        request.cookies[:http_accept] = (request.env["HTTP_ACCEPT"] = (["text/html"] | request.accept.split(', ')).join(', '))
+      end
+    end
+  end
 
 end
