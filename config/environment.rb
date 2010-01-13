@@ -7,14 +7,10 @@
 # Specifies gem version of Rails to use when vendor/rails is not present
 RAILS_GEM_VERSION = '2.3.5' unless defined? RAILS_GEM_VERSION
 # Freeze to a specific version of refinerycms when running as a gem
-# REFINERY_GEM_VERSION = '0.9.5.18' unless defined? REFINERY_GEM_VERSION
+# REFINERY_GEM_VERSION = '0.9.5.29' unless defined? REFINERY_GEM_VERSION
 
 # Bootstrap the Rails environment, frameworks, and default configuration
 require File.join(File.dirname(__FILE__), 'boot')
-
-# Set to true in production.rb to use Amazon's Simple Storage Service
-# instead of the default file system for resources and images
-USE_S3_BACKEND = false
 
 eval("#{(defined? Refinery::Initializer) ? Refinery : Rails}::Initializer").run do |config|
   # Settings in config/environments/* take precedence over those specified here.

@@ -22,3 +22,7 @@ end
 
 
 REFINERY_ROOT = RAILS_ROOT unless defined? REFINERY_ROOT
+
+# Set to true in your environment specific file (e.g. production.rb) to use Amazon's Simple
+# Storage Service instead of the default file system for resources and images
+USE_S3_BACKEND = false unless defined?(USE_S3_BACKEND)
