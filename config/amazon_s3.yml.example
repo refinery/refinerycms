@@ -3,16 +3,16 @@ login: &login
   secret_access_key: 
 
 development:
-  bucket_name: 
+  bucket_name: your_local_amazon_s3
   <<: *login
   distribution_domain: 
 
 test:
-  bucket_name: 
+  bucket_name: your_test_amazon_s3
   <<: *login
   distribution_domain: 
 
 production:
-  bucket_name: 
+  bucket_name: your_production_amazon_s3
   <<: *login
   distribution_domain: 
