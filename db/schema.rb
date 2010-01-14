@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091207033335) do
+ActiveRecord::Schema.define(:version => 20100114092849) do
 
   create_table "images", :force => true do |t|
     t.integer  "parent_id"
@@ -122,6 +122,17 @@ ActiveRecord::Schema.define(:version => 20091207033335) do
 
   add_index "slugs", ["name", "sluggable_type", "scope", "sequence"], :name => "index_slugs_on_name_and_sluggable_type_and_scope_and_sequence", :unique => true
   add_index "slugs", ["sluggable_id"], :name => "index_slugs_on_sluggable_id"
+
+  create_table "themes", :force => true do |t|
+    t.integer  "size"
+    t.string   "content_type"
+    t.string   "filename"
+    t.string   "title"
+    t.text     "description"
+    t.text     "licence"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "user_plugins", :force => true do |t|
     t.integer "user_id"
