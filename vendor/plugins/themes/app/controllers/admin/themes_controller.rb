@@ -1,4 +1,4 @@
-class Admin::ResourcesController < Admin::BaseController
+class Admin::ThemesController < Admin::BaseController
 
   crudify :theme, :order => "updated_at DESC"
 	

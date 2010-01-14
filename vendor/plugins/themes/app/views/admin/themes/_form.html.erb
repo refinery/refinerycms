@@ -1,0 +1,11 @@
+<%= error_messages_for :theme -%>
+
+<% form_for [:admin, @theme], :url => @url_override || @url,
+                              :html => {:multipart => true} do |f| -%>
+  <div class='field'>
+    <%= f.label :uploaded_data, 'Theme' -%>
+    <%= f.file_field :uploaded_data -%>
+  </div>
+
+  <%= render :partial => "/shared/admin/form_actions", :locals => {:f => f, :continue_editing => false} %>
+<% end -%>
