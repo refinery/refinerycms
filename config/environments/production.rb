@@ -20,3 +20,7 @@ config.action_controller.perform_caching             = true
 
 # We don't really need all the other stuff:
 config.log_level = :warn
+
+# Set to true in order to use Amazon's Simple Storage Service on your production machine
+# instead of the default file system for resources and images
+USE_S3_BACKEND = false

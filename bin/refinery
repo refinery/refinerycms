@@ -44,6 +44,20 @@ unless (app_path = ARGV.shift).nil? or app_path.length == 0
       database_name = "your_local_database"
     end
 
+    # figure out the bucket name from the install path and swap out appname with this name.
+    unless RAILS_ROOT == "/" or RUBY_PLATFORM =~ /mswin/
+      bucket_name = RAILS_ROOT.split(File::SEPARATOR).last
+      # read in the file and split up the lines
+      lines = File.open(File.join(RAILS_ROOT, %w(config amazon_s3.yml)), "r").read.split("\n")
+      lines.each do |line|
+        line.gsub!("appname", bucket_name)
+      end
+      # write the new content into the file.
+      File.open(File.join(RAILS_ROOT, %w(config database.yml)), "w").puts(lines.join("\n"))
+    else
+      bucket_name = "appname"
+    end
+
     # update the environment file with a new secret key.
     require 'digest/sha1'
     new_digest = ""
