@@ -24,40 +24,26 @@ unless (app_path = ARGV.shift).nil? or app_path.length == 0
     FileUtils::cp_r to_copy, RAILS_ROOT, :verbose => false
     # ensure lib/refinery_initializer.rb doesn't make it in.
     FileUtils::rm File.join(RAILS_ROOT, %w(lib refinery_initializer.rb)) if File.exists?(File.join(RAILS_ROOT, %w(lib refinery_initializer.rb)))
-    
-    # add in the database config file.
-    FileUtils::move File.join(RAILS_ROOT, %w(config database.yml.example)), File.join(RAILS_ROOT, %w(config database.yml))
-    
-    # figure out the database name from the install path and swap out your_local_database with this name.
-    unless RAILS_ROOT == "/" or RUBY_PLATFORM =~ /mswin/
-      database_name = RAILS_ROOT.split(File::SEPARATOR).last
-      # read in the file and split up the lines
-      lines = File.open(File.join(RAILS_ROOT, %w(config database.yml)), "r").read.split("\n")
-      lines.each do |line|
-        line.gsub!("your_local_database", database_name)
-        line.gsub!("your_test_database", "#{database_name}_test")
-        line.gsub!("your_production_database", "#{database_name}_production")
-      end
-      # write the new content into the file.
-      File.open(File.join(RAILS_ROOT, %w(config database.yml)), "w").puts(lines.join("\n"))
-    else
-      database_name = "your_local_database"
-    end
 
-    # figure out the bucket name from the install path and swap out appname with this name.
-    unless RAILS_ROOT == "/" or RUBY_PLATFORM =~ /mswin/
-      bucket_name = RAILS_ROOT.split(File::SEPARATOR).last
-      # read in the file and split up the lines
-      lines = File.open(File.join(RAILS_ROOT, %w(config amazon_s3.yml)), "r").read.split("\n")
-      lines.each do |line|
-        line.gsub!("appname", bucket_name)
-      end
-      # write the new content into the file.
-      File.open(File.join(RAILS_ROOT, %w(config database.yml)), "w").puts(lines.join("\n"))
-    else
-      bucket_name = "appname"
-    end
+    # add in the config files
+    for config in ["database", "amazon_s3", "rackspace_cloudfiles"]
+      FileUtils::move File.join(RAILS_ROOT, %W(config #{config}.yml.example)), File.join(RAILS_ROOT, %W(config #{config}.yml))
 
+      # figure out the app name from the install path and swap out your_local_xxx with this name.
+      unless RAILS_ROOT == "/" or RUBY_PLATFORM =~ /mswin/
+        app_name = RAILS_ROOT.split(File::SEPARATOR).last
+        # read in the file and split up the lines
+        lines = File.open(File.join(RAILS_ROOT, %W(config #{config}.yml)), "r").read.split("\n")
+        lines.each do |line|
+          line.gsub!("your_local_#{config}", "#{app_name}_development")
+          line.gsub!("your_test_#{config}", "#{app_name}_test")
+          line.gsub!("your_production_#{config}", "#{app_name}_production")
+        end
+        # write the new content into the file.
+        File.open(File.join(RAILS_ROOT, %W(config #{config}.yml)), "w").puts(lines.join("\n"))
+      end
+    end
+   
     # update the environment file with a new secret key.
     require 'digest/sha1'
     new_digest = ""
@@ -84,7 +70,7 @@ unless (app_path = ARGV.shift).nil? or app_path.length == 0
     puts "rake gems:install"
     puts "rake db:setup"
     puts "\nruby script/server"
-    puts "\nThis will install all the required gems, set up your database (named '#{database_name}') and launches the built-in webserver."
+    puts "\nThis will install all the required gems, set up your database, and launches the built-in webserver."
     puts "You can now see your site running in your browser at http://localhost:3000"
     puts "\nThanks for installing Refinery, enjoy creating your new application!"
   	puts "---------\n\n"
