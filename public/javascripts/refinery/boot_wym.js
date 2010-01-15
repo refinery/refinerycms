@@ -146,9 +146,9 @@ var wymeditor_boot_options = jQuery.extend({
 // custom function added by us to hook into when all wymeditor instances on the page have finally loaded:
 WYMeditor.loaded = function(){};
 
-jQuery(function()
+$j(function()
 {
-  wymeditor_inputs = jQuery('.wymeditor');
+  wymeditor_inputs = $j('.wymeditor');
   wymeditor_inputs.hide();
   wymeditor_inputs.wymeditor(wymeditor_boot_options);
 });

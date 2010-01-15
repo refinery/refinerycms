@@ -9,7 +9,7 @@ $j(document).ready(function(){
   init_tooltips();
 
   // focus first field in an admin form.
-  jQuery('form input[type=text]:first').focus();
+  $j('form input[type=text]:first').focus();
 });
 
 init_modal_dialogs = function(){
