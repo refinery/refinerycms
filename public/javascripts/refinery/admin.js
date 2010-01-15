@@ -47,7 +47,7 @@ init_sortable_menu = function(){
   $menu.find('#menu_reorder').click(function(ev){
     ev.preventDefault();
     $j('#menu_reorder, #menu_reorder_done').toggle();
-    $j('#header >*:not(#menu, script), #content, #logout').fadeTo(500, 0.5);
+    $j('#header >*:not(#menu, script), #content, #logout').fadeTo(500, 0.2);
     $menu.find('.tab a').click(function(ev){
       ev.preventDefault();
     });
@@ -55,8 +55,8 @@ init_sortable_menu = function(){
     $menu.sortable('enable');
   });
 
-  $menu.find('#menu_reorder_done').click(function(ev){
-    ev.preventDefault();
+  $menu.find('#menu_reorder_done').click(function(e){
+    e.preventDefault();
     $j('#menu_reorder, #menu_reorder_done').toggle();
     $j('#header >*:not(#menu, script), #content, #logout').fadeTo(500, 1);
     $menu.find('.tab a').unbind('click');
@@ -66,12 +66,12 @@ init_sortable_menu = function(){
 }
 
 init_submit_continue = function(){
-  $j('#submit_continue_button').bind('click', function(e) {
+  $j('#submit_continue_button').click(function(e) {
     // ensure wymeditors are up to date.
     if ($j(this).hasClass('wymupdate')) {
-      WYMeditor.INSTANCES.each(function(wym)
+      $j.each(WYMeditor.INSTANCES, function(index, wym)
       {
-        wym.update();
+        $j(wym).update();
       });
     }
 
@@ -84,11 +84,7 @@ init_submit_continue = function(){
 
         $j('#flash').css('width', 'auto').fadeIn(550);
 
-        $j('.errorExplanation').each(function(i, node) {
-          if (node.parentNode.id != 'flash_container') {
-            node.remove();
-          }
-        });
+        $j('.errorExplanation').not($j('#flash_container .errorExplanation')).remove();
 
         $j('.fieldWithErrors').each(function(i, field) {
           field.removeClassName('fieldWithErrors').addClassName('field');
@@ -105,10 +101,12 @@ init_submit_continue = function(){
 }
 
 init_tooltips = function(args){
-  $j($j(args != null ? args : 'a[title], #image_grid img[title]')).each(function(index, element)
-  {
-    new Tooltip(element, {mouseFollow:false, delay: 0, opacity: 1, appearDuration:0, hideDuration: 0, rounded: false});
-  });
+  if (typeof(Tooltip) != "undefined") {
+    $j($j(args != null ? args : 'a[title], #image_grid img[title]')).each(function(index, element)
+    {
+      new Tooltip(element, {mouseFollow:false, delay: 0, opacity: 1, appearDuration:0, hideDuration: 0, rounded: false});
+    });
+  }
 }
 
 var link_dialog = {
@@ -126,10 +124,8 @@ var link_dialog = {
     var radios = $j('#dialog_menu_left input:radio');
     var selected = radios.filter('.selected_radio')[0] || radios[0];
 
-    radios.each(function(){
-      $j(this).click(function(){
-        link_dialog.switch_area(this);
-      });
+    radios.click(function(){
+      link_dialog.switch_area($j(this));
     });
 
     selected.checked = true;
@@ -137,46 +133,35 @@ var link_dialog = {
   },
 
   init_close: function(){
-    $j('#TB_title .close_dialog', '#dialog_container .close_dialog').each(function(){
-      $j(this).click(function(ev){
-        ev.preventDefault();
+    $j('#TB_title .close_dialog', '#dialog_container .close_dialog').click(function(e) {
+      e.preventDefault();
 
-        if(parent && typeof(parent.tb_remove) == "function"){
-          parent.tb_remove();
-        }
-        else if(typeof(tb_remove) == 'function'){
-          tb_remove();
-        }
-      });
+      if(parent && typeof(parent.tb_remove) == "function"){
+        parent.tb_remove();
+      }
+      else if(typeof(tb_remove) == 'function'){
+        tb_remove();
+      }
     });
   },
 
   switch_area: function(area){
-    $j('#dialog_menu_left .selected_radio').each(function(){
-      $j(this).removeClass('selected_radio');
-    });
-
+    $j('#dialog_menu_left .selected_radio').removeClass('selected_radio');
     $j(area).parent().addClass('selected_radio');
-
-    $j('#dialog_main .dialog_area').each(function(){
-      $j(this).hide();
-    });
-
-    $j('#' + area.value + '_area').show();
+    $j('#dialog_main .dialog_area').hide();
+    $j('#' + $j(area).val() + '_area').show();
   },
 
   //Same for resources tab
   page_tab: function(){
-    $j('.link_list li').click(function(ev){
-      ev.preventDefault();
+    $j('.link_list li').click(function(e){
+      e.preventDefault();
 
       remove_linked_class();
       $j(this).addClass('linked');
 
       function remove_linked_class(){
-        $j('.link_list li.linked').each(function(){
-          $j(this).removeClass('linked');
-        });
+        $j('.link_list li.linked').removeClass('linked');
       }
 
       var link = $j(this).children('a.page_link').get(0);
@@ -220,41 +205,39 @@ var link_dialog = {
   },
 
   email_tab: function(){
-    $j('#email_address_text, #email_default_subject_text, #email_default_body_text').each(function(){
-      $j(this).change(function(){
-        var default_subject = $j('#email_default_subject_text').val(),
-            default_body = $j('#email_default_body_text').val(),
-            mailto = "mailto:" + $j('#email_address_text').val(),
-            modifier = "?",
-            icon = '';
+    $j('#email_address_text, #email_default_subject_text, #email_default_body_text').change(function(e){
+      var default_subject = $j('#email_default_subject_text').val(),
+          default_body = $j('#email_default_body_text').val(),
+          mailto = "mailto:" + $j('#email_address_text').val(),
+          modifier = "?",
+          icon = '';
 
-        $j('#email_address_test_loader').show();
-        $j('#email_address_test_result').hide();
-        $j('#email_address_test_result').removeClass('success_icon').removeClass('failure_icon');
+      $j('#email_address_test_loader').show();
+      $j('#email_address_test_result').hide();
+      $j('#email_address_test_result').removeClass('success_icon').removeClass('failure_icon');
 
-        $j.getJSON(link_dialog.test_email, {email: mailto}, function(data){
-          if(data.result == 'success'){
-            icon = 'success_icon';
-          }else{
-            icon = 'failure_icon';
-          }
-
-          $j('#email_address_test_result').addClass(icon).show();
-          $j('#email_address_test_loader').hide();
-        });
-
-        if(default_subject.length > 0){
-          mailto += modifier + "subject=" + default_subject;
-          modifier = "&";
+      $j.getJSON(link_dialog.test_email, {email: mailto}, function(data){
+        if(data.result == 'success'){
+          icon = 'success_icon';
+        }else{
+          icon = 'failure_icon';
         }
 
-        if(default_body.length > 0){
-          mailto += modifier + "body=" + default_body;
-          modifier = "&";
-        }
-
-        link_dialog.update_parent(mailto, mailto.replace('mailto:', ''))
+        $j('#email_address_test_result').addClass(icon).show();
+        $j('#email_address_test_loader').hide();
       });
+
+      if(default_subject.length > 0){
+        mailto += modifier + "subject=" + default_subject;
+        modifier = "&";
+      }
+
+      if(default_body.length > 0){
+        mailto += modifier + "body=" + default_body;
+        modifier = "&";
+      }
+
+      link_dialog.update_parent(mailto, mailto.replace('mailto:', ''));
     });
   },
 
@@ -404,9 +387,7 @@ var image_dialog = {
         image_dialog.set_image(this);
     });
     //Select any currently selected, just uploaded...
-    $j('#existing_image_area_content ul li.selected img').each(function(){
-      image_dialog.set_image(this);
-    });
+    $j('#existing_image_area_content ul li.selected img').set_image(this);
   },
 
   set_image: function(img){
