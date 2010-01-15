@@ -234,7 +234,7 @@ function tb_show(caption, url, imageGroup, ajax_loaded_callback) {//function cal
 				$j("#TB_window").css({display:"block"}); 
 			}else if(url.indexOf('TB_iframe') != -1 || url.indexOf('dialog=true') != -1){
 				tb_position();
-				if(jQuery.browser.safari){//safari needs help because it will not fire iframe onload
+				if($j.browser.safari){//safari needs help because it will not fire iframe onload
 					$j("#TB_load").remove();
 					$j("#TB_window").css({display:"block"});
 				}
@@ -324,7 +324,7 @@ function tb_position() {
 	TB_HEIGHT = $j("#TB_window").height();
 	TB_WIDTH = $j("#TB_window").width();
 	$j("#TB_window").css({marginLeft: '-' + parseInt((TB_WIDTH / 2),10) + 'px', width: TB_WIDTH + 'px'});
-	if ( !(jQuery.browser.msie && jQuery.browser.version < 7)) { // take away IE6
+	if ( !($j.browser.msie && $j.browser.version < 7)) { // take away IE6
 		marginTopAdjustment = parseInt((TB_HEIGHT / 2),10);
 		$j("#TB_window").css({marginTop: '-' + marginTopAdjustment + 'px'});
 		topAdjustment = marginTopAdjustment + ((tb_getPageSize()[1] - TB_HEIGHT) / 2);
