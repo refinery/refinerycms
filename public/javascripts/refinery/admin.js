@@ -1,5 +1,3 @@
-$j = jQuery.noConflict();
-
 $j(document).ready(function(){
   $j('#flash').fadeIn(550);
 
@@ -80,7 +78,7 @@ init_submit_continue = function(){
     $j('#continue_editing').val(true);
     $j('#flash').fadeOut(250)
 
-    jQuery.post(this.form.action, this.form.serialize(), function(data) {
+    $j.post(this.form.action, this.form.serialize(), function(data) {
       if ((flash_container = $('flash_container')) != null) {
         flash_container.update(data);
 
@@ -106,7 +104,7 @@ init_submit_continue = function(){
   });
 }
 
-init_tooltips = function(){
+init_tooltips = function(args){
   $j($j(args != null ? args : 'a[title], #image_grid img[title]')).each(function(index, element)
   {
     new Tooltip(element, {mouseFollow:false, delay: 0, opacity: 1, appearDuration:0, hideDuration: 0, rounded: false});

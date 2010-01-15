@@ -40,7 +40,7 @@ if(!WYMeditor) var WYMeditor = {};
 
 	} else WYMeditor.console = window.console;
 })();
-jQuery.extend(WYMeditor, {
+$j.extend(WYMeditor, {
 
 /*
 		Constants: Global WYMeditor constants.
@@ -313,9 +313,9 @@ jQuery.extend(WYMeditor, {
  * @cat Plugins/WYMeditor
  * @author Jean-Francois Hovinne
  */
-jQuery.fn.wymeditor = function(options) {
+$j.fn.wymeditor = function(options) {
 
-	options = jQuery.extend({
+	options = $j.extend({
 
 		html:			 "",
 
@@ -669,7 +669,7 @@ jQuery.fn.wymeditor = function(options) {
 /* @name extend
  * @description Returns the WYMeditor instance based on its index
  */
-jQuery.extend({
+$j.extend({
 	wymeditors: function(i) {
 		return (WYMeditor.INSTANCES[i]);
 	}
@@ -689,25 +689,25 @@ WYMeditor.editor.prototype.init = function() {
 	//load subclass - browser specific
 	//unsupported browsers: do nothing
 
-	if (jQuery.browser.msie) {
+	if ($j.browser.msie) {
 		var WymClass = new WYMeditor.WymClassExplorer(this);
 	}
-	else if (jQuery.browser.mozilla) {
+	else if ($j.browser.mozilla) {
 		var WymClass = new WYMeditor.WymClassMozilla(this);
 	}
-	else if (jQuery.browser.opera) {
+	else if ($j.browser.opera) {
 		var WymClass = new WYMeditor.WymClassOpera(this);
 	}
-	else if (jQuery.browser.safari) {
+	else if ($j.browser.safari) {
 		var WymClass = new WYMeditor.WymClassSafari(this);
 	}
 
 	if(WymClass) {
 
-			if(jQuery.isFunction(this._options.preInit)) this._options.preInit(this);
+			if($j.isFunction(this._options.preInit)) this._options.preInit(this);
 
 			var SaxListener = new WYMeditor.XhtmlSaxListener();
-			jQuery.extend(SaxListener, WymClass);
+			$j.extend(SaxListener, WymClass);
 			this.parser = new WYMeditor.XhtmlParser(SaxListener);
 
 			if(this._options.styles || this._options.stylesheet){
@@ -717,8 +717,8 @@ WYMeditor.editor.prototype.init = function() {
 			this.helper = new WYMeditor.XmlHelper();
 
 			//extend the Wymeditor object
-			//don't use jQuery.extend since 1.1.4
-			//jQuery.extend(this, WymClass);
+			//don't use $j.extend since 1.1.4
+			//$j.extend(this, WymClass);
 			for (var prop in WymClass) { this[prop] = WymClass[prop]; }
 
 			//load wymbox
@@ -726,8 +726,8 @@ WYMeditor.editor.prototype.init = function() {
 
 			//store the instance index in the wymbox element
 			//but keep it compatible with jQuery < 1.2.3, see #122
-			if( jQuery.isFunction( jQuery.fn.data ) )
-				jQuery.data(this._box.get(0), WYMeditor.WYM_INDEX, this._index);
+			if( $j.isFunction( $j.fn.data ) )
+				$j.data(this._box.get(0), WYMeditor.WYM_INDEX, this._index);
 
 			var h = WYMeditor.Helper;
 
@@ -775,7 +775,7 @@ WYMeditor.editor.prototype.init = function() {
 					if (oClass.rules && oClass.rules.length > 0) {
 						var sRules = "";
 						var wym = this;
-						jQuery.each(oClass.rules, function(index, rule) {
+						$j.each(oClass.rules, function(index, rule) {
 							sClass = wym._options.classesItemHtml;
 							sClass = h.replaceAll(sClass, WYMeditor.CLASS_NAME, oClass.name + (oClass.join || "") + rule);
 							sClass = h.replaceAll(sClass, WYMeditor.CLASS_TITLE, rule.title || titleize(rule));
@@ -1154,7 +1154,7 @@ WYMeditor.editor.prototype.replaceStrings = function(sVal) {
 	//if not, get it via a synchronous ajax call
 	if(!WYMeditor.STRINGS[this._options.lang]) {
 		try {
-			eval(jQuery.ajax({url:this._options.langPath
+			eval($j.ajax({url:this._options.langPath
 				+ this._options.lang + '.js', async:false}).responseText);
 		} catch(e) {
 			if (WYMeditor.console) {
@@ -1228,7 +1228,7 @@ WYMeditor.editor.prototype.dialog = function( dialogType ) {
 	}
 
 	selected = this.selected();
-	if (dialogType == WYMeditor.DIALOG_LINK && jQuery.browser.mozilla) {
+	if (dialogType == WYMeditor.DIALOG_LINK && $j.browser.mozilla) {
 		selection = this._iframe.contentWindow.getSelection();
 		matches = selected.innerHTML.match(new RegExp(RegExp.escape(selection.anchorNode.textContent) + "(.*)" + RegExp.escape(selection.focusNode.textContent)));
 		if (matches != null && matches.length > 0 && (possible_anchor_tag = matches.last()) != null) {
@@ -1258,7 +1258,7 @@ WYMeditor.editor.prototype.dialog = function( dialogType ) {
 	if ((parent_node != null) && (dialogType != WYMeditor.DIALOG_PASTE) && (parent_node.tagName.toLowerCase() != WYMeditor.A))
 	{
 		// wrap the current selection with a funky span (not required for safari)
-		if (!this._selected_image && !jQuery.browser.safari)
+		if (!this._selected_image && !$j.browser.safari)
 		{
 			this.wrap("<span id='replace_me_with_" + this._current_unique_stamp + "'>", "</span>");
 		}
@@ -1465,13 +1465,13 @@ WYMeditor.editor.prototype.computeWymPath = function() {
 };
 
 WYMeditor.editor.prototype.computeJqueryPath = function() {
-	return $j(jQuery.grep($j('script'), function(s){
+	return $j($j.grep($j('script'), function(s){
 	return (s.src && s.src.match(/jquery(-(.*)){0,1}(\.pack|\.min|\.packed)?\.js(\?.*)?$/ ))
 	})).attr('src');
 };
 
 WYMeditor.editor.prototype.computeCssPath = function() {
-	return $j(jQuery.grep($j('link'), function(s){
+	return $j($j.grep($j('link'), function(s){
 	 return (s.href && s.href.match(/wymeditor\/skins\/(.*)screen\.css(\?.*)?$/ ))
 	})).attr('href');
 };
@@ -1480,7 +1480,7 @@ WYMeditor.editor.prototype.configureEditorUsingRawCss = function() {
 
 	var CssParser = new WYMeditor.WymCssParser();
 	if(this._options.stylesheet){
-		CssParser.parse(jQuery.ajax({url: this._options.stylesheet,async:false}).responseText);
+		CssParser.parse($j.ajax({url: this._options.stylesheet,async:false}).responseText);
 	}else{
 		CssParser.parse(this._options.styles, false);
 	}
@@ -1500,7 +1500,7 @@ WYMeditor.editor.prototype.configureEditorUsingRawCss = function() {
 
 WYMeditor.editor.prototype.listen = function() {
 
-	//don't use jQuery.find() on the iframe body
+	//don't use $j.find() on the iframe body
 	//because of MSIE + jQuery + expando issue (#JQ1143)
 	//$j(this._doc.body).find("*").bind("mouseup", this.mouseup);
 
@@ -1572,7 +1572,7 @@ WYMeditor.editor.prototype.loadSkin = function() {
 		//also check if it hasn't already been loaded by another instance
 		if(this._options.initSkin && !WYMeditor.SKINS[this._options.skin]) {
 
-				eval(jQuery.ajax({url:this._options.jsSkinPath
+				eval($j.ajax({url:this._options.jsSkinPath
 						+ WYMeditor.SKINS_DEFAULT_JS, async:false}).responseText);
 		}
 
@@ -1614,7 +1614,7 @@ WYMeditor.INIT_DIALOG = function(wym, selected, isIframe) {
 	}
 	*/
 		//pre-init functions
-	if(jQuery.isFunction(wym._options.preInitDialog))
+	if($j.isFunction(wym._options.preInitDialog))
 		 wym._options.preInitDialog(wym,window);
 /*
 
@@ -1690,7 +1690,7 @@ WYMeditor.INIT_DIALOG = function(wym, selected, isIframe) {
 		var sAlt = form.find(wym._options.altSelector).val();
 		if (sUrl != null && sUrl.length > 0) {
 		 	wym._exec(WYMeditor.INSERT_IMAGE, wym._current_unique_stamp, selected);
-			//don't use jQuery.find() see #JQ1143
+			//don't use $j.find() see #JQ1143
 			//var image = $j(wym._doc.body).find("img[@src=" + sStamp + "]");
 			var image = null;
 			var nodes = wym._doc.body.getElementsByTagName(WYMeditor.IMG);
@@ -1708,7 +1708,7 @@ WYMeditor.INIT_DIALOG = function(wym, selected, isIframe) {
 				image.attr(WYMeditor.TITLE, sTitle);
 				image.attr(WYMeditor.ALT, sAlt);
 
-				if (!jQuery.browser.safari)
+				if (!$j.browser.safari)
 				{
 					if (replaceable != null)
 					{
@@ -1772,7 +1772,7 @@ WYMeditor.INIT_DIALOG = function(wym, selected, isIframe) {
 	.html(wym.xhtml());
 
 	//post-init functions
-	if(jQuery.isFunction(wym._options.postInitDialog))
+	if($j.isFunction(wym._options.postInitDialog))
 	 wym._options.postInitDialog(wym,window);
 };
 
@@ -1798,7 +1798,7 @@ WYMeditor.editor.prototype.close_dialog = function(e, cancelled) {
 		}
 	}
 
-	if (jQuery.browser.msie && parseInt(jQuery.browser.version) < 8)
+	if ($j.browser.msie && parseInt($j.browser.version) < 8)
 	{
 		this._iframe.contentWindow.focus();
 	}
@@ -3231,7 +3231,7 @@ WYMeditor.Lexer.prototype._reduce = function(raw)
 */
 WYMeditor.XhtmlLexer = function(parser)
 {
-	jQuery.extend(this, new WYMeditor.Lexer(parser, 'Text'));
+	$j.extend(this, new WYMeditor.Lexer(parser, 'Text'));
 
 	this.mapHandler('Text', 'Text');
 
@@ -3866,7 +3866,7 @@ WYMeditor.WymCssLexer = function(parser, only_wym_blocks)
 {
 	var only_wym_blocks = (typeof only_wym_blocks == 'undefined' ? true : only_wym_blocks);
 
-	jQuery.extend(this, new WYMeditor.Lexer(parser, (only_wym_blocks?'Ignore':'WymCss')));
+	$j.extend(this, new WYMeditor.Lexer(parser, (only_wym_blocks?'Ignore':'WymCss')));
 
 	this.mapHandler('WymCss', 'Ignore');
 
@@ -4017,7 +4017,7 @@ WYMeditor.WymCssParser.prototype.addStyleSetting = function(style_details)
 /********** HELPERS **********/
 
 // Returns true if it is a text node with whitespaces only
-jQuery.fn.isPhantomNode = function() {
+$j.fn.isPhantomNode = function() {
 	if (this[0].nodeType == 3)
 		return !(/[^\t\n\r ]/.test(this[0].data));
 
@@ -4037,7 +4037,7 @@ WYMeditor.isPhantomString = function(str) {
 
 // Returns the Parents or the node itself
 // jqexpr = a jQuery expression
-jQuery.fn.parentsOrSelf = function(jqexpr) {
+$j.fn.parentsOrSelf = function(jqexpr) {
 	var n = this;
 
 	if (n[0].nodeType == 3)
@@ -4102,7 +4102,7 @@ WYMeditor.Helper = {
 
 function titleize(words) {
 	parts = [];
-	jQuery.each(words.replace(/\./, '').replace(/[-_]/, ' ').split(' '), function(index, part){
+	$j.each(words.replace(/\./, '').replace(/[-_]/, ' ').split(' '), function(index, part){
 		parts.push(part[0].toUpperCase() + part.substring(1));
 	});
 	return parts.join(" ");
@@ -4184,13 +4184,13 @@ WYMeditor.WymClassExplorer.prototype.initIframe = function(iframe) {
 		if(this._initialized) {
 
 			//pre-bind functions
-			if(jQuery.isFunction(this._options.preBind)) this._options.preBind(this);
+			if($j.isFunction(this._options.preBind)) this._options.preBind(this);
 
 			//bind external events
 			this._wym.bindEvents();
 
 			//post-init functions
-			if(jQuery.isFunction(this._options.postInit)) this._options.postInit(this);
+			if($j.isFunction(this._options.postInit)) this._options.postInit(this);
 
 			//add event listeners to doc elements, e.g. images
 			this.listen();
@@ -4361,7 +4361,7 @@ WYMeditor.WymClassMozilla.prototype.initIframe = function(iframe) {
 		this.enableDesignMode();
 
 		//pre-bind functions
-		if(jQuery.isFunction(this._options.preBind)) this._options.preBind(this);
+		if($j.isFunction(this._options.preBind)) this._options.preBind(this);
 
 		//bind external events
 		this._wym.bindEvents();
@@ -4379,7 +4379,7 @@ WYMeditor.WymClassMozilla.prototype.initIframe = function(iframe) {
 		$j(this._doc).bind("focus", this.enableDesignMode);
 
 		//post-init functions
-		if(jQuery.isFunction(this._options.postInit)) this._options.postInit(this);
+		if($j.isFunction(this._options.postInit)) this._options.postInit(this);
 
 		//add event listeners to doc elements, e.g. images
 		this.listen();
@@ -4645,7 +4645,7 @@ WYMeditor.WymClassOpera.prototype.initIframe = function(iframe) {
 		this.html(this._wym._html);
 
 		//pre-bind functions
-		if(jQuery.isFunction(this._options.preBind)) this._options.preBind(this);
+		if($j.isFunction(this._options.preBind)) this._options.preBind(this);
 
 		//bind external events
 		this._wym.bindEvents();
@@ -4657,7 +4657,7 @@ WYMeditor.WymClassOpera.prototype.initIframe = function(iframe) {
 		$j(this._doc).bind("keyup", this.keyup);
 
 		//post-init functions
-		if(jQuery.isFunction(this._options.postInit)) this._options.postInit(this);
+		if($j.isFunction(this._options.postInit)) this._options.postInit(this);
 
 		//add event listeners to doc elements, e.g. images
 		this.listen();
@@ -4773,7 +4773,7 @@ WYMeditor.WymClassSafari.prototype.initIframe = function(iframe) {
 		this.html(this._wym._html);
 
 		//pre-bind functions
-		if(jQuery.isFunction(this._options.preBind)) this._options.preBind(this);
+		if($j.isFunction(this._options.preBind)) this._options.preBind(this);
 
 		//bind external events
 		this._wym.bindEvents();
@@ -4785,7 +4785,7 @@ WYMeditor.WymClassSafari.prototype.initIframe = function(iframe) {
 		$j(this._doc).bind("keyup", this.keyup);
 
 		//post-init functions
-		if(jQuery.isFunction(this._options.postInit)) this._options.postInit(this);
+		if($j.isFunction(this._options.postInit)) this._options.postInit(this);
 
 		//add event listeners to doc elements, e.g. images
 		this.listen();
