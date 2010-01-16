@@ -19,18 +19,10 @@
   <% else %>
     <% if @themes.size > 0 -%>
       <%= will_paginate @themes, :previous_label => '&laquo;', :next_label => '&raquo;' %>
-      <% if RefinerySetting.find_or_set(:group_themes_by_date_uploaded, true) %>
-        <% @grouped_themes.each do |container| %>
-          <h3><%= (resource_group = container.last).first.created_at.strftime("%A, %d %B %Y") %></h3>
-          <ul>
-            <%= render :partial => "theme", :collection => theme_group %>
-          </ul>
-        <% end %>
-      <% else %>
-        <ul>
-          <%= render :partial => "theme", :collection => @themes %>
-        </ul>
-      <% end %>
+      <ul>
+        <%= render :partial => "theme", :collection => @themes %>
+      </ul>
+
       <%= will_paginate @themes, :previous_label => '&laquo;', :next_label => '&raquo;' %>
     <% else -%>
       <p>

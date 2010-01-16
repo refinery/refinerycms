@@ -7,7 +7,7 @@ class AddThemesTable < ActiveRecord::Migration
 	    t.string "filename"
 	    t.string "title"
 	    t.text "description"
-	    t.text "licence"
+	    t.text "license"
 			t.timestamps
 		end
   end
