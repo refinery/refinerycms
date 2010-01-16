@@ -11,6 +11,8 @@
                           :title => "Remove this theme forever" %>
     </span>
     <%=h theme.title %>
-    <span class="preview">- <%= number_to_human_size(theme.size) %> - <%= theme.public_filename -%></span>
+    <span class="preview">
+      - <%= number_to_human_size(theme.size) %> - <%= theme.theme_path -%>
+    </span>
   </span>
 </li>

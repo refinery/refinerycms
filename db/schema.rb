@@ -129,7 +129,7 @@ ActiveRecord::Schema.define(:version => 20100114092849) do
     t.string   "filename"
     t.string   "title"
     t.text     "description"
-    t.text     "licence"
+    t.text     "license"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
