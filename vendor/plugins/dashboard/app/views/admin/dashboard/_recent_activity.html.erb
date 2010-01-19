@@ -1,4 +1,4 @@
-<h2>Latest Activity</h2>
+<h2><%= t(:latest_activity)%></h2>
 <% unless @recent_activity.empty? %>
   <table id='recent_activity'>
     <% @recent_activity.each do |change| %>
@@ -9,6 +9,6 @@
   </table>
 <% else %>
   <p>
-    Nothing has happened yet.
+    <%= t(:nothing_has_happened_yet) %>
   </p>
 <% end %>
