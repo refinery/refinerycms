@@ -1,10 +1,12 @@
 <div id='actions'>
-  <h2>Details</h2>
+  <h2><%= t :Details, :default => "Details" %></h2>
   <p>
-    <strong>Status:</strong> <%= @inquiry.open? ? "Open" : "Closed" %><br/>
-    <strong>Age:</strong> <%= time_ago_in_words(@inquiry.created_at) %>
+    <strong><%= t :Status, :default => "Status" %>:</strong>
+    <%= @inquiry.open? ? "#{t :Open, :default => "Open"}" : "#{t :Closed, :default => "Closed"}" %>
+    <br/>
+    <strong><%= t :Age, :default => "Age" %>:</strong> <%= time_ago_in_words(@inquiry.created_at) %>
   </p>
-  <h2>Actions</h2>
+  <h2><%= t :Actions, :default => "Actions" %></h2>
   <ul>
     <li>
       <%= link_to "Back to all Inquiries", {:action => 'index'}, :class => "back_icon" %>
@@ -12,11 +14,11 @@
   </ul>
 </div>
 <div id='records'>
-  <h2>Inquiry</h2>
+  <h2><%= t :Inquiry, :default => "Inquiry" %></h2>
   <table id='inquiry'>
     <tr>
       <td>
-        <strong>To</strong>
+        <strong><%= t :To, :default => "To" %></strong>
       </td>
       <td>
         <%= RefinerySetting[:site_name] %>
@@ -24,16 +26,16 @@
     </tr>
     <tr>
       <td>
-        <strong>From</strong>
+        <strong><%= t :From, :default => "From" %></strong>
       </td>
       <td>
-        <%= @inquiry.name %> [<%= mail_to @inquiry.email, @inquiry.email, {:title => "Click to email this address"} %>]
+        <%= @inquiry.name %> [<%= mail_to @inquiry.email, @inquiry.email, {:title => "#{t :Click_to_email, :default => "Click to email this address"}"} %>]
       </td>
     </tr>
     <% unless @inquiry.phone.blank? %>
       <tr>
         <td>
-          <strong>Phone</strong>
+          <strong><%= t :Phone, :default => "Phone" %></strong>
         </td>
         <td>
           <%= @inquiry.phone %>
@@ -42,7 +44,7 @@
     <% end %>
     <tr>
       <td>
-        <strong>Date</strong>
+        <strong><%= t :Date, :default => "Date" %></strong>
       </td>
       <td>
         <%= @inquiry.created_at.strftime("%A, %d of %b, %Y") %>
@@ -50,7 +52,7 @@
     </tr>
     <tr>
       <td valign='top'>
-        <strong>Message</strong>
+        <strong><%= t :Message, :default => "Message" %></strong>
       </td>
       <td>
         <p style='margin-top: 0px'>
