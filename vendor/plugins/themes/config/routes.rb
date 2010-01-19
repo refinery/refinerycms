@@ -1,7 +1,7 @@
 ActionController::Routing::Routes.draw do |map|
 
   map.namespace(:admin) do |admin|
-    admin.resources :themes
+    admin.resources :themes, :member => {:preview_image => :get, :activate => :get}
   end
 
  	map.connect 'stylesheets/theme/:filename*extension', :controller => 'themes', :action => 'stylesheets'

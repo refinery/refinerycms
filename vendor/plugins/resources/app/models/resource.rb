@@ -1,8 +1,8 @@
 class Resource < ActiveRecord::Base
 
   has_attachment :storage => (USE_S3_BACKEND ? :s3 : :file_system),
-          :size => 0.kilobytes..50.megabytes,
-          :path_prefix => (USE_S3_BACKEND ? nil : 'public/system/resources')
+                 :size => 0.kilobytes..50.megabytes,
+                 :path_prefix => (USE_S3_BACKEND ? nil : 'public/system/resources')
 
   acts_as_indexed :fields => [:title, :type_of_content],
           :index_file => [RAILS_ROOT,"tmp","index"]
