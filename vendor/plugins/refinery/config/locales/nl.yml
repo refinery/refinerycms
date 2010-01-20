@@ -80,7 +80,6 @@ nl:
           tab_name: Een bestand
           link_to_this_resource: Link naar dit bestand
 
-
   activerecord: 
     models:
       page: pagina
@@ -90,9 +89,3 @@ nl:
       resource: bestand
       refinery_setting: instelling
       inquiry_setting: instelling voor vragen
-      
-# Doesn't work yet! 2.3.6 should fix the form label i18n
-  views:
-    labels:
-      page:
-        title: titel
