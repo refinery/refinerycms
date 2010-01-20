@@ -1,13 +1,13 @@
 <p>
-  <strong>There are no users yet, so we'll set you up first.</strong>
+  <strong><%=t('.there_are_no_users')%></strong>
 </p>
 <p>
-  Remember your Refinery admin area is at:
+  <%=t('.remember_admin_location')%>
 </p>
 <p>
   <strong>http://<%= request.host %>/admin</strong>
 </p>
 <p>
-  Alright let's get you setup so you can login...
+  <%= t('.lets_start') %>
 </p>
-<%= button_to "Continue...", new_user_url %>
+<%= button_to t('.continue'), new_user_url %>
