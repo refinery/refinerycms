@@ -1,0 +1,584 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta name="Content-Type" content="text/html; charset=UTF-8" />
+<title>Class: Refinery::ApplicationController</title>
+<link rel="stylesheet" href="../css/style.css" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="../css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '..';
+  if (relpath != '') relpath += '/';
+</script>
+<script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../_index.html">Index (A)</a> &raquo; 
+    <span class='title'><a href="../Refinery.html" title="Refinery (module)">Refinery</a></span>
+     &raquo; 
+    <span class="title">ApplicationController</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  <a id="class_list_link" href="#">Class List</a>
+  <a id="method_list_link" href="#">Method List</a>
+  <a id ="file_list_link" href="#">File List</a>
+</div>
+
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Class: Refinery::ApplicationController 
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName">ActionController::Base</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">ActionController::Base</li>
+          
+            <li class="next">Refinery::ApplicationController</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+      <dt class="r2">Includes:</dt>
+      <dd class="r2"><a href="../AuthenticatedSystem.html" title="AuthenticatedSystem (module)">AuthenticatedSystem</a>, <a href="../Crud.html" title="Crud (module)">Crud</a></dd>
+      
+    
+  
+  
+    <dt class="r1 last">Defined in:</dt>
+    <dd class="r1 last">vendor/plugins/refinery/lib/refinery/application_controller.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+  <h2>Instance Method Summary</h2>
+
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#admin%3F-instance_method" title="#admin? (instance method)">- (Boolean) <strong>admin?</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#error_404-instance_method" title="#error_404 (instance method)">- (Object) <strong>error_404</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#from_dialog%3F-instance_method" title="#from_dialog? (instance method)">- (Boolean) <strong>from_dialog?</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#home_page%3F-instance_method" title="#home_page? (instance method)">- (Boolean) <strong>home_page?</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#just_installed%3F-instance_method" title="#just_installed? (instance method)">- (Boolean) <strong>just_installed?</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#local_request%3F-instance_method" title="#local_request? (instance method)">- (Boolean) <strong>local_request?</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#wymiframe-instance_method" title="#wymiframe (instance method)">- (Object) <strong>wymiframe</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"></span>
+  
+</li>
+
+    
+  </ul>
+
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <a href="../Crud.html" title="Crud (module)">Crud</a></h3>
+  <p class="inherited"><a href="../Crud.html#append_features-class_method" title="Crud.append_features (method)">append_features</a></p>
+
+  
+  
+  
+  
+  
+  
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="admin?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>admin?</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+35
+36
+37</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/refinery/lib/refinery/application_controller.rb', line 35</span>
+
+<span class='def def kw'>def</span> <span class='admin? fid id'>admin?</span>
+  <span class='params identifier id'>params</span><span class='lbrack token'>[</span><span class='symbol val'>:controller</span><span class='rbrack token'>]</span> <span class='match op'>=~</span> <span class='regexp val'>/admin\/(.*)/</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="error_404-instance_method">
+  
+    - (<tt>Object</tt>) <strong>error_404</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+14
+15
+16
+17</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/refinery/lib/refinery/application_controller.rb', line 14</span>
+
+<span class='def def kw'>def</span> <span class='error_404 identifier id'>error_404</span>
+  <span class='@page ivar id'>@page</span> <span class='assign token'>=</span> <span class='Page constant id'>Page</span><span class='dot token'>.</span><span class='find_by_menu_match identifier id'>find_by_menu_match</span><span class='lparen token'>(</span><span class='string val'>&quot;^/404$&quot;</span><span class='comma token'>,</span> <span class='symbol val'>:include</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='lbrack token'>[</span><span class='symbol val'>:parts</span><span class='comma token'>,</span> <span class='symbol val'>:slugs</span><span class='rbrack token'>]</span><span class='rparen token'>)</span>
+  <span class='render identifier id'>render</span> <span class='symbol val'>:template</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;/pages/show&quot;</span><span class='comma token'>,</span> <span class='symbol val'>:status</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='integer val'>404</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="from_dialog?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>from_dialog?</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+31
+32
+33</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/refinery/lib/refinery/application_controller.rb', line 31</span>
+
+<span class='def def kw'>def</span> <span class='from_dialog? fid id'>from_dialog?</span>
+  <span class='params identifier id'>params</span><span class='lbrack token'>[</span><span class='symbol val'>:dialog</span><span class='rbrack token'>]</span> <span class='eq op'>==</span> <span class='string val'>&quot;true&quot;</span> <span class='or or kw'>or</span> <span class='params identifier id'>params</span><span class='lbrack token'>[</span><span class='symbol val'>:modal</span><span class='rbrack token'>]</span> <span class='eq op'>==</span> <span class='string val'>&quot;true&quot;</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="home_page?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>home_page?</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+19
+20
+21</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/refinery/lib/refinery/application_controller.rb', line 19</span>
+
+<span class='def def kw'>def</span> <span class='home_page? fid id'>home_page?</span>
+  <span class='params identifier id'>params</span><span class='lbrack token'>[</span><span class='symbol val'>:action</span><span class='rbrack token'>]</span> <span class='eq op'>==</span> <span class='string val'>&quot;home&quot;</span> <span class='and and kw'>and</span> <span class='params identifier id'>params</span><span class='lbrack token'>[</span><span class='symbol val'>:controller</span><span class='rbrack token'>]</span> <span class='eq op'>==</span> <span class='string val'>&quot;pages&quot;</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="just_installed?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>just_installed?</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+27
+28
+29</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/refinery/lib/refinery/application_controller.rb', line 27</span>
+
+<span class='def def kw'>def</span> <span class='just_installed? fid id'>just_installed?</span>
+  <span class='User constant id'>User</span><span class='dot token'>.</span><span class='count identifier id'>count</span> <span class='eq op'>==</span> <span class='integer val'>0</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="local_request?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>local_request?</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+23
+24
+25</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/refinery/lib/refinery/application_controller.rb', line 23</span>
+
+<span class='def def kw'>def</span> <span class='local_request? fid id'>local_request?</span>
+  <span class='request identifier id'>request</span><span class='dot token'>.</span><span class='remote_ip identifier id'>remote_ip</span> <span class='match op'>=~</span> <span class='regexp val'>/(::1)|(127.0.0.1)|((192.168).*)/</span> <span class='or or kw'>or</span> <span class='ENV constant id'>ENV</span><span class='lbrack token'>[</span><span class='string val'>&quot;RAILS_ENV&quot;</span><span class='rbrack token'>]</span> <span class='eq op'>==</span> <span class='string val'>&quot;development&quot;</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="wymiframe-instance_method">
+  
+    - (<tt>Object</tt>) <strong>wymiframe</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+39
+40
+41</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/refinery/lib/refinery/application_controller.rb', line 39</span>
+
+<span class='def def kw'>def</span> <span class='wymiframe identifier id'>wymiframe</span>
+  <span class='render identifier id'>render</span> <span class='symbol val'>:template</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;/wymiframe&quot;</span><span class='comma token'>,</span> <span class='symbol val'>:layout</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='false false kw'>false</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+    
+    <div id="footer">
+  Generated on Wed 20 Jan 14:32:47 2010 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
+  0.5.3 (ruby-1.8.7).
+</div>
+
+  </body>
+</html>

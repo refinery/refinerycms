@@ -1,0 +1,248 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta name="Content-Type" content="text/html; charset=UTF-8" />
+<title>File: Themes</title>
+<link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '';
+  if (relpath != '') relpath += '/';
+</script>
+<script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html" title="Index">Index</a> &raquo; 
+    <span class="title">File: Themes</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  <a id="class_list_link" href="#">Class List</a>
+  <a id="method_list_link" href="#">Method List</a>
+  <a id ="file_list_link" href="#">File List</a>
+</div>
+
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><div id='filecontents'><h1>Themes</h1>
+<h2>Introduction</h2>
+<p>
+Themes allow you to wrap up the design of your Refinery site into a single
+folder that is portable.
+</p>
+<p>
+Refinery doesn&#8217;t force you to learn a special templating language,
+but rather just uses the regular ERB views you&#8217;re used to in Rails.
+This means creating a theme from your existing site is extremely easy.
+</p>
+<p>
+Think of a theme as your <tt>app/views</tt> directory with a few extra things like
+images, css and javascript.
+</p>
+<p>
+It&#8217;s worth noting you don&#8217;t need to use a theme if you
+don&#8217;t want to. Placing files in the <tt>app/views</tt> directory like any
+other Rails app will work just fine. It&#8217;s only if you want to wrap
+your design up into a single location that you would use a theme or allow
+your client to easily change designs.
+</p>
+<h2>The structure of a theme</h2>
+<p>
+Themes sit in your Rails app like this
+</p>
+<pre class="code">
+  <span class='app identifier id'>app</span><span class='div op'>/</span>
+  <span class='config identifier id'>config</span><span class='div op'>/</span>
+  <span class='db identifier id'>db</span><span class='div op'>/</span>
+  <span class='lib identifier id'>lib</span><span class='div op'>/</span>
+  <span class='public identifier id'>public</span><span class='div op'>/</span>
+  <span class='themes identifier id'>themes</span><span class='div op'>/</span>
+    <span class='bitor op'>|</span><span class='minus op'>-</span> <span class='mytheme identifier id'>mytheme</span><span class='div op'>/</span>
+    <span class='bitor op'>|</span><span class='minus op'>-</span> <span class='othertheme identifier id'>othertheme</span><span class='div op'>/</span>
+  <span class='plugins identifier id'>plugins</span><span class='div op'>/</span>
+  <span class='tests identifier id'>tests</span><span class='div op'>/</span>
+</pre>
+<p>
+So let&#8217;s take the <tt>&quot;mytheme&quot;</tt> example theme shown above.
+This is how the theme is structured:
+</p>
+<pre class="code">
+  <span class='mytheme identifier id'>mytheme</span><span class='div op'>/</span>
+     <span class='bitor op'>|</span><span class='minus op'>-</span> <span class='images identifier id'>images</span>
+     <span class='bitor op'>|</span>    <span class='bitor op'>|</span><span class='minus op'>-</span> <span class='whatever identifier id'>whatever</span><span class='dot token'>.</span><span class='png identifier id'>png</span>
+     <span class='bitor op'>|</span>    <span class='bitor op'>|</span><span class='minus op'>-</span> <span class='foo identifier id'>foo</span><span class='dot token'>.</span><span class='jpg identifier id'>jpg</span>
+     <span class='bitor op'>|</span><span class='minus op'>-</span> <span class='javascripts identifier id'>javascripts</span>
+     <span class='bitor op'>|</span>    <span class='bitor op'>|</span><span class='minus op'>-</span> <span class='whatever identifier id'>whatever</span><span class='dot token'>.</span><span class='js identifier id'>js</span>
+     <span class='bitor op'>|</span><span class='minus op'>-</span> <span class='LICENSE constant id'>LICENSE</span>
+     <span class='bitor op'>|</span><span class='minus op'>-</span> <span class='preview identifier id'>preview</span><span class='dot token'>.</span><span class='png identifier id'>png</span>
+     <span class='bitor op'>|</span><span class='minus op'>-</span> <span class='README constant id'>README</span>
+     <span class='bitor op'>|</span><span class='minus op'>-</span> <span class='stylesheets identifier id'>stylesheets</span><span class='div op'>/</span>
+     <span class='bitor op'>|</span>    <span class='bitor op'>|</span><span class='minus op'>-</span> <span class='application identifier id'>application</span><span class='dot token'>.</span><span class='css identifier id'>css</span>
+     <span class='bitor op'>|</span>    <span class='bitor op'>|</span><span class='minus op'>-</span> <span class='whatever identifier id'>whatever</span><span class='dot token'>.</span><span class='css identifier id'>css</span>
+     <span class='bitor op'>|</span><span class='minus op'>-</span> <span class='views identifier id'>views</span>
+          <span class='bitor op'>|</span><span class='minus op'>-</span> <span class='pages identifier id'>pages</span>
+          <span class='bitor op'>|</span>    <span class='bitor op'>|</span><span class='minus op'>-</span> <span class='show identifier id'>show</span><span class='dot token'>.</span><span class='html identifier id'>html</span><span class='dot token'>.</span><span class='erb identifier id'>erb</span>
+          <span class='bitor op'>|</span>    <span class='bitor op'>|</span><span class='minus op'>-</span> <span class='index identifier id'>index</span><span class='dot token'>.</span><span class='html identifier id'>html</span><span class='dot token'>.</span><span class='erb identifier id'>erb</span>
+          <span class='bitor op'>|</span><span class='minus op'>-</span> <span class='layouts identifier id'>layouts</span>
+               <span class='bitor op'>|</span><span class='minus op'>-</span> <span class='application identifier id'>application</span><span class='dot token'>.</span><span class='html identifier id'>html</span><span class='dot token'>.</span><span class='erb identifier id'>erb</span>
+</pre>
+<p>
+<b>Images</b>
+</p>
+<p>
+Usually this would be just what you have in <tt>public/images</tt> except we move
+that to the theme instead.
+</p>
+<p>
+<b>Javascripts</b>
+</p>
+<p>
+Same with javascripts, just what you normally have in <tt>public/javascripts</tt>
+just in this theme directory instead.
+</p>
+<p>
+<b>Readme</b>
+</p>
+<p>
+The <tt>README</tt> file is just a description of your theme.
+</p>
+<p>
+<b>Views</b>
+</p>
+<p>
+This is exactly the same as how you lay your views out in app/views/ just
+instead of putting them in <tt>app/views/</tt> you put them into
+<tt>themes/mytheme/views/</tt>
+</p>
+<p>
+<b>Preview</b> <b>Image</b>
+</p>
+<p>
+The <tt>preview.png</tt> image is used when selecting the theme in the backend. It
+must be a png and ideally is 135x135 pixels.
+</p>
+<h2>How do I make my own theme?</h2>
+<p>
+Create a folder with the name if your theme inside /themes e.g.
+/themes/mytheme and follow the directory structure outlined in &#8216;The
+structure of a theme&#8217;.
+</p>
+<h2>How do I select which theme Refinery should use?</h2>
+<p>
+In the admin area of Refinery go to the &quot;Settings&quot; area, locate
+the setting called &quot;theme&quot; and edit it.
+</p>
+<p>
+Set the value of that setting to the name of your themes folder. For
+example if your theme is sitting in:
+</p>
+<pre class="code">
+  <span class='themes identifier id'>themes</span><span class='div op'>/</span><span class='my_theme identifier id'>my_theme</span>
+</pre>
+<p>
+set it to <tt>&quot;my_theme&quot;</tt> and hit save.
+</p>
+<h2>How do I zip my theme to use it on other sites</h2>
+<p>
+If you want to share a theme and install it on another site you have to zip
+it first.
+</p>
+<p>
+It&#8217;s important to note you don&#8217;t zip the theme&#8217;s
+directory itself just the contents.
+</p>
+<p>
+If I had a theme sitting in:
+</p>
+<pre class="code">
+  <span class='themes identifier id'>themes</span><span class='div op'>/</span><span class='mytheme identifier id'>mytheme</span><span class='div op'>/</span><span class='lbrack token'>[</span><span class='theme identifier id'>theme</span> <span class='files identifier id'>files</span> <span class='here identifier id'>here</span><span class='rbrack token'>]</span>
+</pre>
+<p>
+The zip file would look like this
+</p>
+<pre class="code">
+  <span class='mytheme identifier id'>mytheme</span><span class='dot token'>.</span><span class='zip identifier id'>zip</span>
+    <span class='bitor op'>|</span><span class='minus op'>-</span> <span class='lbrack token'>[</span><span class='theme identifier id'>theme</span> <span class='files identifier id'>files</span> <span class='here identifier id'>here</span><span class='rbrack token'>]</span>
+</pre>
+<p>
+Read &#8216;How do I install someone else&#8217;s theme?&#8217; to take
+that zip file and install the theme.
+</p>
+<h2>How do I install someone else&#8217;s theme?</h2>
+<p>
+If you have the themes plugin added to your admin user, you should see in
+the admin area of Refinery a &quot;Themes&quot; tab in the main navigation.
+Click on that, then click &quot;Upload new theme&quot;. Upload the theme
+zip file and then click on the &quot;star&quot; below the preview image for
+the theme to activate that theme as the one to use right now.
+</p>
+<h2>How can I convert my current views into a theme?</h2>
+<p>
+This should be fairly straightforward just following the directory
+structure outlined in &#8216;The structure of a theme&#8217;.
+</p>
+<p>
+But there is one important difference that need to be addressed to convert
+your current site into a theme.
+</p>
+<p>
+If you have some CSS which refers to an image or URL:
+</p>
+<pre class="code">
+  <span class='comment val'>#footer {</span>
+    <span class='background identifier id'>background</span><span class='colon op'>:</span> <span class='url identifier id'>url</span><span class='lparen token'>(</span><span class='string val'>'/images/footer_background.png'</span><span class='rparen token'>)</span> <span class='repeat identifier id'>repeat</span><span class='minus op'>-</span><span class='x identifier id'>x</span><span class='semicolon token'>;</span>
+  <span class='rbrace token'>}</span>
+</pre>
+<p>
+You need to update the URL so it requests /images/themes instead of
+/images. This tells Refinery we need to actually load this image from the
+theme and not just the public directory.
+</p>
+<p>
+So the result is simply:
+</p>
+<pre class="code">
+  <span class='comment val'>#footer {</span>
+    <span class='background identifier id'>background</span><span class='colon op'>:</span> <span class='url identifier id'>url</span><span class='lparen token'>(</span><span class='string val'>'/images/theme/footer_background.png'</span><span class='rparen token'>)</span> <span class='repeat identifier id'>repeat</span><span class='minus op'>-</span><span class='x identifier id'>x</span><span class='semicolon token'>;</span>
+  <span class='rbrace token'>}</span>
+</pre>
+<p>
+This is the same with linking to Javascript and Stylesheets in your view.
+Say our <tt>application.html.erb</tt> layout had something like this:
+</p>
+<pre class="code">
+  <span class='lt op'>&lt;</span><span class='string val'>%= stylesheet_link_tag 'application' %&gt;
+</span></pre>
+<p>
+You just need to change that to:
+</p>
+<pre class="code">
+  <span class='lt op'>&lt;</span><span class='string val'>%= stylesheet_link_tag 'theme/application' %&gt;
+</span></pre>
+</div></div>
+    
+    <div id="footer">
+  Generated on Wed 20 Jan 14:32:46 2010 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
+  0.5.3 (ruby-1.8.7).
+</div>
+
+  </body>
+</html>

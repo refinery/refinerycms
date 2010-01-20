@@ -1,0 +1,225 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta name="Content-Type" content="text/html; charset=UTF-8" />
+<title>Class: InquiryMailer</title>
+<link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '';
+  if (relpath != '') relpath += '/';
+</script>
+<script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html">Index (I)</a> &raquo; 
+    
+    
+    <span class="title">InquiryMailer</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  <a id="class_list_link" href="#">Class List</a>
+  <a id="method_list_link" href="#">Method List</a>
+  <a id ="file_list_link" href="#">File List</a>
+</div>
+
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Class: InquiryMailer 
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName">ActionMailer::Base</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">ActionMailer::Base</li>
+          
+            <li class="next">InquiryMailer</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">vendor/plugins/inquiries/app/models/inquiry_mailer.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+
+
+  
+
+  <h2>Instance Method Summary</h2>
+
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#confirmation-instance_method" title="#confirmation (instance method)">- (Object) <strong>confirmation</strong>(inquiry, request) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#notification-instance_method" title="#notification (instance method)">- (Object) <strong>notification</strong>(inquiry, request) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"></span>
+  
+</li>
+
+    
+  </ul>
+
+  
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="confirmation-instance_method">
+  
+    - (<tt>Object</tt>) <strong>confirmation</strong>(inquiry, request) 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+3
+4
+5
+6
+7
+8
+9
+10</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/inquiries/app/models/inquiry_mailer.rb', line 3</span>
+
+<span class='def def kw'>def</span> <span class='confirmation identifier id'>confirmation</span><span class='lparen token'>(</span><span class='inquiry identifier id'>inquiry</span><span class='comma token'>,</span> <span class='request identifier id'>request</span><span class='rparen token'>)</span>
+  <span class='subject identifier id'>subject</span>     <span class='string val'>&quot;Thank you for your inquiry&quot;</span>
+  <span class='recipients identifier id'>recipients</span>  <span class='inquiry identifier id'>inquiry</span><span class='dot token'>.</span><span class='email identifier id'>email</span>
+  <span class='from identifier id'>from</span>        <span class='dstring node'>&quot;\&quot;#{RefinerySetting[:site_name]}\&quot; &lt;no-reply@#{request.domain(RefinerySetting.find_or_set(:tld_length, 1))}&gt;&quot;</span>
+  <span class='reply_to identifier id'>reply_to</span>    <span class='InquirySetting constant id'>InquirySetting</span><span class='dot token'>.</span><span class='notification_recipients identifier id'>notification_recipients</span><span class='dot token'>.</span><span class='value identifier id'>value</span><span class='dot token'>.</span><span class='split identifier id'>split</span><span class='lparen token'>(</span><span class='string val'>','</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='first identifier id'>first</span>
+  <span class='sent_on identifier id'>sent_on</span>     <span class='Time constant id'>Time</span><span class='dot token'>.</span><span class='now identifier id'>now</span>
+  <span class='body identifier id'>body</span>        <span class='symbol val'>:inquiry</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='inquiry identifier id'>inquiry</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="notification-instance_method">
+  
+    - (<tt>Object</tt>) <strong>notification</strong>(inquiry, request) 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+12
+13
+14
+15
+16
+17
+18</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/inquiries/app/models/inquiry_mailer.rb', line 12</span>
+
+<span class='def def kw'>def</span> <span class='notification identifier id'>notification</span><span class='lparen token'>(</span><span class='inquiry identifier id'>inquiry</span><span class='comma token'>,</span> <span class='request identifier id'>request</span><span class='rparen token'>)</span>
+  <span class='subject identifier id'>subject</span>     <span class='string val'>&quot;New inquiry from your website&quot;</span>
+  <span class='recipients identifier id'>recipients</span>  <span class='InquirySetting constant id'>InquirySetting</span><span class='dot token'>.</span><span class='notification_recipients identifier id'>notification_recipients</span><span class='dot token'>.</span><span class='value identifier id'>value</span>
+  <span class='from identifier id'>from</span>        <span class='dstring node'>&quot;\&quot;#{RefinerySetting[:site_name]}\&quot; &lt;no-reply@#{request.domain(RefinerySetting.find_or_set(:tld_length, 1))}&gt;&quot;</span>
+  <span class='sent_on identifier id'>sent_on</span>     <span class='Time constant id'>Time</span><span class='dot token'>.</span><span class='now identifier id'>now</span>
+  <span class='body identifier id'>body</span>        <span class='symbol val'>:inquiry</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='inquiry identifier id'>inquiry</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+    
+    <div id="footer">
+  Generated on Wed 20 Jan 14:32:55 2010 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
+  0.5.3 (ruby-1.8.7).
+</div>
+
+  </body>
+</html>

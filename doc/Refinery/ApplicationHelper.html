@@ -1,0 +1,725 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta name="Content-Type" content="text/html; charset=UTF-8" />
+<title>Module: Refinery::ApplicationHelper</title>
+<link rel="stylesheet" href="../css/style.css" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="../css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '..';
+  if (relpath != '') relpath += '/';
+</script>
+<script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../_index.html">Index (A)</a> &raquo; 
+    <span class='title'><a href="../Refinery.html" title="Refinery (module)">Refinery</a></span>
+     &raquo; 
+    <span class="title">ApplicationHelper</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  <a id="class_list_link" href="#">Class List</a>
+  <a id="method_list_link" href="#">Method List</a>
+  <a id ="file_list_link" href="#">File List</a>
+</div>
+
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Module: Refinery::ApplicationHelper 
+  
+  
+</h1>
+
+<dl class="box">
+  
+  
+    
+  
+    
+      <dt class="r1">Includes:</dt>
+      <dd class="r1"><a href="HtmlTruncationHelper.html" title="Refinery::HtmlTruncationHelper (module)">HtmlTruncationHelper</a></dd>
+      
+    
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">vendor/plugins/refinery/lib/refinery/application_helper.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>
+Methods added to this helper will be available to all templates in the
+application.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div>
+
+  
+  
+  
+  
+
+  <h2>Instance Method Summary</h2>
+
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#add_meta_tags-instance_method" title="#add_meta_tags (instance method)">- (Object) <strong>add_meta_tags</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#add_page_title-instance_method" title="#add_page_title (instance method)">- (Object) <strong>add_page_title</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#content_fu-instance_method" title="#content_fu (instance method)">- (Object) <strong>content_fu</strong>(content, thumbnail) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc">
+replace all system images with a thumbnail version of them (handy for all
+images inside a page part).
+
+</span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#descendant_page_selected%3F-instance_method" title="#descendant_page_selected? (instance method)">- (Boolean) <strong>descendant_page_selected?</strong>(page) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#image_fu-instance_method" title="#image_fu (instance method)">- (Object) <strong>image_fu</strong>(image, thumbnail = nil, options = {}) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#page_title-instance_method" title="#page_title (instance method)">- (Object) <strong>page_title</strong>(options = {}) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#refinery_icon_tag-instance_method" title="#refinery_icon_tag (instance method)">- (Object) <strong>refinery_icon_tag</strong>(filename, options = {}) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#selected_page%3F-instance_method" title="#selected_page? (instance method)">- (Boolean) <strong>selected_page?</strong>(page) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#setup-instance_method" title="#setup (instance method)">- (Object) <strong>setup</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"></span>
+  
+</li>
+
+    
+  </ul>
+
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <a href="HtmlTruncationHelper.html" title="Refinery::HtmlTruncationHelper (module)">HtmlTruncationHelper</a></h3>
+  <p class="inherited"><a href="HtmlTruncationHelper.html#truncate-instance_method" title="Refinery::HtmlTruncationHelper#truncate (method)">#truncate</a></p>
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="add_meta_tags-instance_method">
+  
+    - (<tt>Object</tt>) <strong>add_meta_tags</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+5
+6
+7
+8</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/refinery/lib/refinery/application_helper.rb', line 5</span>
+
+<span class='def def kw'>def</span> <span class='add_meta_tags identifier id'>add_meta_tags</span>
+  <span class='content_for identifier id'>content_for</span> <span class='symbol val'>:head</span><span class='comma token'>,</span> <span class='dstring node'>&quot;&lt;meta name=\&quot;keywords\&quot; content=\&quot;#{@page.meta_keywords}\&quot; /&gt;&quot;</span> <span class='unless unless_mod kw'>unless</span> <span class='@page ivar id'>@page</span><span class='dot token'>.</span><span class='meta_keywords identifier id'>meta_keywords</span><span class='dot token'>.</span><span class='blank? fid id'>blank?</span>
+  <span class='content_for identifier id'>content_for</span> <span class='symbol val'>:head</span><span class='comma token'>,</span> <span class='dstring node'>&quot;&lt;meta name=\&quot;description\&quot; content=\&quot;#{@page.meta_description}\&quot; /&gt;&quot;</span> <span class='unless unless_mod kw'>unless</span> <span class='@page ivar id'>@page</span><span class='dot token'>.</span><span class='meta_description identifier id'>meta_description</span><span class='dot token'>.</span><span class='blank? fid id'>blank?</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="add_page_title-instance_method">
+  
+    - (<tt>Object</tt>) <strong>add_page_title</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+10
+11
+12
+13
+14
+15
+16
+17</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/refinery/lib/refinery/application_helper.rb', line 10</span>
+
+<span class='def def kw'>def</span> <span class='add_page_title identifier id'>add_page_title</span>
+  <span class='content_for identifier id'>content_for</span> <span class='symbol val'>:title</span><span class='comma token'>,</span>
+  <span class='if if kw'>if</span> <span class='@page ivar id'>@page</span><span class='dot token'>.</span><span class='browser_title identifier id'>browser_title</span><span class='dot token'>.</span><span class='blank? fid id'>blank?</span>
+    <span class='@page ivar id'>@page</span><span class='dot token'>.</span><span class='path identifier id'>path</span>
+  <span class='else else kw'>else</span>
+    <span class='@page ivar id'>@page</span><span class='dot token'>.</span><span class='browser_title identifier id'>browser_title</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="content_fu-instance_method">
+  
+    - (<tt>Object</tt>) <strong>content_fu</strong>(content, thumbnail) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+replace all system images with a thumbnail version of them (handy for all
+images inside a page part)
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+86
+87
+88
+89
+90
+91
+92
+93
+94</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/refinery/lib/refinery/application_helper.rb', line 86</span>
+
+<span class='def def kw'>def</span> <span class='content_fu identifier id'>content_fu</span><span class='lparen token'>(</span><span class='content identifier id'>content</span><span class='comma token'>,</span> <span class='thumbnail identifier id'>thumbnail</span><span class='rparen token'>)</span>
+  <span class='content identifier id'>content</span><span class='dot token'>.</span><span class='scan identifier id'>scan</span><span class='lparen token'>(</span><span class='regexp val'>/\/system\/images([^\&quot;\ ]*)/</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='flatten identifier id'>flatten</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='match identifier id'>match</span><span class='bitor op'>|</span>
+    <span class='parts identifier id'>parts</span> <span class='assign token'>=</span> <span class='match identifier id'>match</span><span class='dot token'>.</span><span class='split identifier id'>split</span><span class='lparen token'>(</span><span class='string val'>&quot;.&quot;</span><span class='rparen token'>)</span>
+    <span class='extension identifier id'>extension</span> <span class='assign token'>=</span> <span class='parts identifier id'>parts</span><span class='dot token'>.</span><span class='pop identifier id'>pop</span>
+    <span class='content identifier id'>content</span><span class='dot token'>.</span><span class='gsub! fid id'>gsub!</span><span class='lparen token'>(</span><span class='match identifier id'>match</span><span class='comma token'>,</span> <span class='dstring node'>&quot;#{parts.join(&quot;.&quot;)}_#{thumbnail}.#{extension}&quot;</span><span class='rparen token'>)</span>
+  <span class='end end kw'>end</span>
+
+  <span class='return return kw'>return</span> <span class='content identifier id'>content</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="descendant_page_selected?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>descendant_page_selected?</strong>(page) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+64
+65
+66</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/refinery/lib/refinery/application_helper.rb', line 64</span>
+
+<span class='def def kw'>def</span> <span class='descendant_page_selected? fid id'>descendant_page_selected?</span><span class='lparen token'>(</span><span class='page identifier id'>page</span><span class='rparen token'>)</span>
+  <span class='not not kw'>not</span> <span class='page identifier id'>page</span><span class='dot token'>.</span><span class='descendants identifier id'>descendants</span><span class='dot token'>.</span><span class='reject identifier id'>reject</span> <span class='lbrace token'>{</span><span class='bitor op'>|</span><span class='descendant identifier id'>descendant</span><span class='bitor op'>|</span> <span class='not not kw'>not</span> <span class='selected_page? fid id'>selected_page?</span><span class='lparen token'>(</span><span class='descendant identifier id'>descendant</span><span class='rparen token'>)</span> <span class='rbrace token'>}</span><span class='dot token'>.</span><span class='empty? fid id'>empty?</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="image_fu-instance_method">
+  
+    - (<tt>Object</tt>) <strong>image_fu</strong>(image, thumbnail = nil, options = {}) 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+72
+73
+74
+75
+76
+77
+78
+79</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/refinery/lib/refinery/application_helper.rb', line 72</span>
+
+<span class='def def kw'>def</span> <span class='image_fu identifier id'>image_fu</span><span class='lparen token'>(</span><span class='image identifier id'>image</span><span class='comma token'>,</span> <span class='thumbnail identifier id'>thumbnail</span> <span class='assign token'>=</span> <span class='nil nil kw'>nil</span> <span class='comma token'>,</span> <span class='options identifier id'>options</span><span class='assign token'>=</span><span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='rparen token'>)</span>
+  <span class='begin begin kw'>begin</span>
+    <span class='image_thumbnail identifier id'>image_thumbnail</span> <span class='assign token'>=</span> <span class='thumbnail identifier id'>thumbnail</span><span class='dot token'>.</span><span class='nil? fid id'>nil?</span> <span class='integer val'>? </span><span class='image identifier id'>image</span> <span class='colon op'>:</span> <span class='image identifier id'>image</span><span class='dot token'>.</span><span class='thumbnails identifier id'>thumbnails</span><span class='dot token'>.</span><span class='collect identifier id'>collect</span> <span class='lbrace token'>{</span><span class='bitor op'>|</span><span class='t identifier id'>t</span><span class='bitor op'>|</span> <span class='t identifier id'>t</span> <span class='if if_mod kw'>if</span> <span class='t identifier id'>t</span><span class='dot token'>.</span><span class='thumbnail identifier id'>thumbnail</span> <span class='eq op'>==</span> <span class='thumbnail identifier id'>thumbnail</span><span class='dot token'>.</span><span class='to_s identifier id'>to_s</span><span class='rbrace token'>}</span><span class='dot token'>.</span><span class='compact identifier id'>compact</span><span class='dot token'>.</span><span class='first identifier id'>first</span>
+    <span class='image_tag identifier id'>image_tag</span> <span class='image_thumbnail identifier id'>image_thumbnail</span><span class='dot token'>.</span><span class='public_filename identifier id'>public_filename</span><span class='comma token'>,</span> <span class='lbrace token'>{</span><span class='symbol val'>:alt</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='image identifier id'>image</span><span class='dot token'>.</span><span class='title identifier id'>title</span><span class='comma token'>,</span> <span class='symbol val'>:width</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='image_thumbnail identifier id'>image_thumbnail</span><span class='dot token'>.</span><span class='width identifier id'>width</span><span class='comma token'>,</span> <span class='symbol val'>:height</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='image_thumbnail identifier id'>image_thumbnail</span><span class='dot token'>.</span><span class='height identifier id'>height</span><span class='rbrace token'>}</span><span class='dot token'>.</span><span class='merge! fid id'>merge!</span><span class='lparen token'>(</span><span class='options identifier id'>options</span><span class='rparen token'>)</span>
+  <span class='rescue rescue kw'>rescue</span>
+    <span class='image_tag identifier id'>image_tag</span> <span class='image identifier id'>image</span><span class='dot token'>.</span><span class='public_filename identifier id'>public_filename</span><span class='lparen token'>(</span><span class='thumbnail identifier id'>thumbnail</span><span class='rparen token'>)</span><span class='comma token'>,</span> <span class='lbrace token'>{</span><span class='symbol val'>:alt</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='image identifier id'>image</span><span class='dot token'>.</span><span class='title identifier id'>title</span><span class='rbrace token'>}</span><span class='dot token'>.</span><span class='merge! fid id'>merge!</span><span class='lparen token'>(</span><span class='options identifier id'>options</span><span class='rparen token'>)</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="page_title-instance_method">
+  
+    - (<tt>Object</tt>) <strong>page_title</strong>(options = {}) 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/refinery/lib/refinery/application_helper.rb', line 24</span>
+
+<span class='def def kw'>def</span> <span class='page_title identifier id'>page_title</span><span class='lparen token'>(</span><span class='options identifier id'>options</span> <span class='assign token'>=</span> <span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='rparen token'>)</span>
+  <span class='options identifier id'>options</span> <span class='assign token'>=</span> <span class='RefinerySetting constant id'>RefinerySetting</span><span class='dot token'>.</span><span class='find_or_set identifier id'>find_or_set</span><span class='lparen token'>(</span><span class='symbol val'>:page_title</span><span class='comma token'>,</span> <span class='lbrace token'>{</span>
+    <span class='symbol val'>:chain_page_title</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='false false kw'>false</span><span class='comma token'>,</span>
+    <span class='symbol val'>:ancestors</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='lbrace token'>{</span>
+      <span class='symbol val'>:separator</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot; | &quot;</span><span class='comma token'>,</span>
+      <span class='symbol val'>:class</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>'ancestors'</span><span class='comma token'>,</span>
+      <span class='symbol val'>:tag</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>'span'</span>
+    <span class='rbrace token'>}</span><span class='comma token'>,</span>
+    <span class='symbol val'>:page_title</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='lbrace token'>{</span>
+      <span class='symbol val'>:class</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='nil nil kw'>nil</span><span class='comma token'>,</span>
+      <span class='symbol val'>:tag</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='nil nil kw'>nil</span><span class='comma token'>,</span>
+      <span class='symbol val'>:wrap_if_not_chained</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='false false kw'>false</span>
+    <span class='rbrace token'>}</span>
+  <span class='rbrace token'>}</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='merge identifier id'>merge</span><span class='lparen token'>(</span><span class='options identifier id'>options</span><span class='rparen token'>)</span>
+
+  <span class='title identifier id'>title</span> <span class='assign token'>=</span> <span class='lbrack token'>[</span><span class='rbrack token'>]</span>
+  <span class='pages identifier id'>pages</span> <span class='assign token'>=</span> <span class='options identifier id'>options</span><span class='lbrack token'>[</span><span class='symbol val'>:chain_page_title</span><span class='rbrack token'>]</span> <span class='question op'>?</span> <span class='lbrack token'>[</span><span class='@page ivar id'>@page</span><span class='dot token'>.</span><span class='ancestors identifier id'>ancestors</span><span class='comma token'>,</span> <span class='@page ivar id'>@page</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='flatten identifier id'>flatten</span> <span class='colon op'>:</span> <span class='lbrack token'>[</span><span class='@page ivar id'>@page</span><span class='rbrack token'>]</span>
+
+  <span class='pages identifier id'>pages</span><span class='dot token'>.</span><span class='flatten identifier id'>flatten</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='page identifier id'>page</span><span class='bitor op'>|</span>
+    <span class='title identifier id'>title</span> <span class='lshft op'>&lt;&lt;</span> <span class='case case kw'>case</span> <span class='page identifier id'>page</span><span class='dot token'>.</span><span class='custom_title_type identifier id'>custom_title_type</span>
+      <span class='when when kw'>when</span> <span class='string val'>&quot;none&quot;</span>
+        <span class='page identifier id'>page</span><span class='dot token'>.</span><span class='title identifier id'>title</span>
+      <span class='when when kw'>when</span> <span class='string val'>&quot;text&quot;</span>
+        <span class='page identifier id'>page</span><span class='dot token'>.</span><span class='custom_title identifier id'>custom_title</span>
+      <span class='when when kw'>when</span> <span class='string val'>&quot;image&quot;</span>
+        <span class='image_fu identifier id'>image_fu</span> <span class='page identifier id'>page</span><span class='dot token'>.</span><span class='custom_title_image identifier id'>custom_title_image</span><span class='comma token'>,</span> <span class='nil nil kw'>nil</span><span class='comma token'>,</span> <span class='lbrace token'>{</span><span class='symbol val'>:alt</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='page identifier id'>page</span><span class='dot token'>.</span><span class='title identifier id'>title</span><span class='rbrace token'>}</span> <span class='rescue rescue kw'>rescue</span> <span class='page identifier id'>page</span><span class='dot token'>.</span><span class='title identifier id'>title</span>
+    <span class='end end kw'>end</span>
+  <span class='end end kw'>end</span>
+
+  <span class='final_title identifier id'>final_title</span> <span class='assign token'>=</span> <span class='title identifier id'>title</span><span class='dot token'>.</span><span class='pop identifier id'>pop</span>
+  <span class='if if kw'>if</span> <span class='lparen token'>(</span><span class='options identifier id'>options</span><span class='lbrack token'>[</span><span class='symbol val'>:page_title</span><span class='rbrack token'>]</span><span class='lbrack token'>[</span><span class='symbol val'>:wrap_if_not_chained</span><span class='rbrack token'>]</span> <span class='and and kw'>and</span> <span class='title identifier id'>title</span><span class='dot token'>.</span><span class='empty? fid id'>empty?</span><span class='rparen token'>)</span> <span class='and and kw'>and</span> <span class='notop op'>!</span><span class='options identifier id'>options</span><span class='lbrack token'>[</span><span class='symbol val'>:page_title</span><span class='rbrack token'>]</span><span class='lbrack token'>[</span><span class='symbol val'>:tag</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='blank? fid id'>blank?</span>
+    <span class='final_title identifier id'>final_title</span> <span class='assign token'>=</span> <span class='dstring node'>&quot;&lt;#{options[:page_title][:tag]}#{&quot; class='#{options[:page_title][:class]}'&quot; unless options[:page_title][:class].blank?}&gt;#{final_title}&lt;/#{options[:page_title][:tag]}&gt;&quot;</span>
+  <span class='end end kw'>end</span>
+  <span class='if if kw'>if</span> <span class='lparen token'>(</span><span class='title identifier id'>title</span><span class='dot token'>.</span><span class='empty? fid id'>empty?</span><span class='rparen token'>)</span>
+    <span class='final_title identifier id'>final_title</span>
+  <span class='else else kw'>else</span>
+    <span class='dstring node'>&quot;&lt;#{options[:ancestors][:tag]} class='#{options[:ancestors][:class]}'&gt;#{title.join options[:ancestors][:separator]}#{options[:ancestors][:separator]}&lt;/#{options[:ancestors][:tag]}&gt;#{final_title}&quot;</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="refinery_icon_tag-instance_method">
+  
+    - (<tt>Object</tt>) <strong>refinery_icon_tag</strong>(filename, options = {}) 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+81
+82
+83</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/refinery/lib/refinery/application_helper.rb', line 81</span>
+
+<span class='def def kw'>def</span> <span class='refinery_icon_tag identifier id'>refinery_icon_tag</span><span class='lparen token'>(</span><span class='filename identifier id'>filename</span><span class='comma token'>,</span> <span class='options identifier id'>options</span> <span class='assign token'>=</span> <span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='rparen token'>)</span>
+  <span class='image_tag identifier id'>image_tag</span> <span class='dstring node'>&quot;refinery/icons/#{filename}&quot;</span><span class='comma token'>,</span> <span class='lbrace token'>{</span><span class='symbol val'>:width</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='integer val'>16</span><span class='comma token'>,</span> <span class='symbol val'>:height</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='integer val'>16</span><span class='rbrace token'>}</span><span class='dot token'>.</span><span class='merge! fid id'>merge!</span><span class='lparen token'>(</span><span class='options identifier id'>options</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="selected_page?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>selected_page?</strong>(page) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+68
+69
+70</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/refinery/lib/refinery/application_helper.rb', line 68</span>
+
+<span class='def def kw'>def</span> <span class='selected_page? fid id'>selected_page?</span><span class='lparen token'>(</span><span class='page identifier id'>page</span><span class='rparen token'>)</span>
+  <span class='selected identifier id'>selected</span> <span class='assign token'>=</span> <span class='current_page? fid id'>current_page?</span><span class='lparen token'>(</span><span class='page identifier id'>page</span><span class='rparen token'>)</span> <span class='or or kw'>or</span> <span class='lparen token'>(</span><span class='request identifier id'>request</span><span class='dot token'>.</span><span class='path identifier id'>path</span> <span class='match op'>=~</span> <span class='Regexp constant id'>Regexp</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='page identifier id'>page</span><span class='dot token'>.</span><span class='menu_match identifier id'>menu_match</span><span class='rparen token'>)</span> <span class='unless unless_mod kw'>unless</span> <span class='page identifier id'>page</span><span class='dot token'>.</span><span class='menu_match identifier id'>menu_match</span><span class='dot token'>.</span><span class='blank? fid id'>blank?</span><span class='rparen token'>)</span> <span class='or or kw'>or</span> <span class='lparen token'>(</span><span class='request identifier id'>request</span><span class='dot token'>.</span><span class='path identifier id'>path</span> <span class='eq op'>==</span> <span class='page identifier id'>page</span><span class='dot token'>.</span><span class='link_url identifier id'>link_url</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="setup-instance_method">
+  
+    - (<tt>Object</tt>) <strong>setup</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+19
+20
+21
+22</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/refinery/lib/refinery/application_helper.rb', line 19</span>
+
+<span class='def def kw'>def</span> <span class='setup identifier id'>setup</span>
+  <span class='add_meta_tags identifier id'>add_meta_tags</span>
+  <span class='add_page_title identifier id'>add_page_title</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+    
+    <div id="footer">
+  Generated on Wed 20 Jan 14:32:50 2010 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
+  0.5.3 (ruby-1.8.7).
+</div>
+
+  </body>
+</html>

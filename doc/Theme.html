@@ -1,0 +1,476 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta name="Content-Type" content="text/html; charset=UTF-8" />
+<title>Class: Theme</title>
+<link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '';
+  if (relpath != '') relpath += '/';
+</script>
+<script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html">Index (T)</a> &raquo; 
+    
+    
+    <span class="title">Theme</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  <a id="class_list_link" href="#">Class List</a>
+  <a id="method_list_link" href="#">Method List</a>
+  <a id ="file_list_link" href="#">File List</a>
+</div>
+
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Class: Theme 
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName">ActiveRecord::Base</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">ActiveRecord::Base</li>
+          
+            <li class="next">Theme</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">vendor/plugins/themes/app/models/theme.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+
+
+  
+
+  <h2>Instance Method Summary</h2>
+
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#after_attachment_saved-instance_method" title="#after_attachment_saved (instance method)">- (Object) <strong>after_attachment_saved</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc">
+Once a zip is uploaded it unzips it into the themes directory if writable.
+
+</span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#preview_image-instance_method" title="#preview_image (instance method)">- (Object) <strong>preview_image</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#read_theme-instance_method" title="#read_theme (instance method)">- (Object) <strong>read_theme</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#theme_directory_is_writable%3F-instance_method" title="#theme_directory_is_writable? (instance method)">- (Boolean) <strong>theme_directory_is_writable?</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#theme_folder_title-instance_method" title="#theme_folder_title (instance method)">- (Object) <strong>theme_folder_title</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#theme_path-instance_method" title="#theme_path (instance method)">- (Object) <strong>theme_path</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"></span>
+  
+</li>
+
+    
+  </ul>
+
+  
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="after_attachment_saved-instance_method">
+  
+    - (<tt>Object</tt>) <strong>after_attachment_saved</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Once a zip is uploaded it unzips it into the themes directory if writable
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/themes/app/models/theme.rb', line 14</span>
+
+<span class='def def kw'>def</span> <span class='after_attachment_saved identifier id'>after_attachment_saved</span>
+  <span class='if if kw'>if</span> <span class='theme_directory_is_writable? fid id'>theme_directory_is_writable?</span>
+    <span class='comment val'># make the folder for the them</span>
+    <span class='FileUtils constant id'>FileUtils</span><span class='dot token'>.</span><span class='mkdir identifier id'>mkdir</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='dot token'>.</span><span class='theme_path identifier id'>theme_path</span><span class='rparen token'>)</span> <span class='unless unless_mod kw'>unless</span> <span class='File constant id'>File</span><span class='dot token'>.</span><span class='exists? fid id'>exists?</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='theme_path identifier id'>theme_path</span>
+  
+    <span class='comment val'># extracts the contents of the zip file into the theme directory</span>
+    <span class='Zip constant id'>Zip</span><span class='colon2 op'>::</span><span class='ZipFile constant id'>ZipFile</span><span class='dot token'>.</span><span class='foreach identifier id'>foreach</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='dot token'>.</span><span class='filename identifier id'>filename</span><span class='rparen token'>)</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='entry identifier id'>entry</span><span class='bitor op'>|</span>
+      <span class='FileUtils constant id'>FileUtils</span><span class='dot token'>.</span><span class='mkdir_p identifier id'>mkdir_p</span><span class='lparen token'>(</span><span class='File constant id'>File</span><span class='dot token'>.</span><span class='dirname identifier id'>dirname</span><span class='lparen token'>(</span><span class='dstring node'>&quot;#{theme_path}/#{entry}&quot;</span><span class='rparen token'>)</span><span class='rparen token'>)</span>
+      <span class='entry identifier id'>entry</span><span class='dot token'>.</span><span class='extract identifier id'>extract</span><span class='lparen token'>(</span><span class='dstring node'>&quot;#{theme_path}/#{entry}&quot;</span><span class='rparen token'>)</span> <span class='lbrace token'>{</span> <span class='true true kw'>true</span> <span class='rbrace token'>}</span>
+    <span class='end end kw'>end</span>
+  <span class='else else kw'>else</span>
+    <span class='raise identifier id'>raise</span> <span class='string val'>&quot;Theme directory not writable&quot;</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="preview_image-instance_method">
+  
+    - (<tt>Object</tt>) <strong>preview_image</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+37
+38
+39</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/themes/app/models/theme.rb', line 37</span>
+
+<span class='def def kw'>def</span> <span class='preview_image identifier id'>preview_image</span>
+  <span class='File constant id'>File</span><span class='dot token'>.</span><span class='join identifier id'>join</span><span class='lparen token'>(</span><span class='theme_path identifier id'>theme_path</span><span class='comma token'>,</span> <span class='string val'>&quot;preview.png&quot;</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="read_theme-instance_method">
+  
+    - (<tt>Object</tt>) <strong>read_theme</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/themes/app/models/theme.rb', line 41</span>
+
+<span class='def def kw'>def</span> <span class='read_theme identifier id'>read_theme</span>
+  <span class='self self kw'>self</span><span class='dot token'>.</span><span class='title identifier id'>title</span> <span class='assign token'>=</span> <span class='File constant id'>File</span><span class='dot token'>.</span><span class='basename identifier id'>basename</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='dot token'>.</span><span class='filename identifier id'>filename</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='split identifier id'>split</span><span class='lparen token'>(</span><span class='string val'>&quot;.&quot;</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='first identifier id'>first</span><span class='dot token'>.</span><span class='titleize identifier id'>titleize</span>
+  
+  <span class='if if kw'>if</span> <span class='File constant id'>File</span><span class='dot token'>.</span><span class='exists? fid id'>exists?</span> <span class='File constant id'>File</span><span class='dot token'>.</span><span class='join identifier id'>join</span><span class='lparen token'>(</span><span class='theme_path identifier id'>theme_path</span><span class='comma token'>,</span> <span class='string val'>&quot;LICENSE&quot;</span><span class='rparen token'>)</span>
+    <span class='self self kw'>self</span><span class='dot token'>.</span><span class='license identifier id'>license</span> <span class='assign token'>=</span>  <span class='File constant id'>File</span><span class='dot token'>.</span><span class='open identifier id'>open</span><span class='lparen token'>(</span><span class='File constant id'>File</span><span class='dot token'>.</span><span class='join identifier id'>join</span><span class='lparen token'>(</span><span class='theme_path identifier id'>theme_path</span><span class='comma token'>,</span> <span class='string val'>&quot;LICENSE&quot;</span><span class='rparen token'>)</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='read identifier id'>read</span>
+  <span class='end end kw'>end</span>
+  
+  <span class='if if kw'>if</span> <span class='File constant id'>File</span><span class='dot token'>.</span><span class='exists? fid id'>exists?</span> <span class='File constant id'>File</span><span class='dot token'>.</span><span class='join identifier id'>join</span><span class='lparen token'>(</span><span class='theme_path identifier id'>theme_path</span><span class='comma token'>,</span> <span class='string val'>&quot;README&quot;</span><span class='rparen token'>)</span>
+    <span class='self self kw'>self</span><span class='dot token'>.</span><span class='description identifier id'>description</span> <span class='assign token'>=</span>  <span class='File constant id'>File</span><span class='dot token'>.</span><span class='open identifier id'>open</span><span class='lparen token'>(</span><span class='File constant id'>File</span><span class='dot token'>.</span><span class='join identifier id'>join</span><span class='lparen token'>(</span><span class='theme_path identifier id'>theme_path</span><span class='comma token'>,</span> <span class='string val'>&quot;README&quot;</span><span class='rparen token'>)</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='read identifier id'>read</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="theme_directory_is_writable?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>theme_directory_is_writable?</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+53
+54
+55</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/themes/app/models/theme.rb', line 53</span>
+
+<span class='def def kw'>def</span> <span class='theme_directory_is_writable? fid id'>theme_directory_is_writable?</span>
+  <span class='File constant id'>File</span><span class='dot token'>.</span><span class='writable? fid id'>writable?</span> <span class='File constant id'>File</span><span class='dot token'>.</span><span class='join identifier id'>join</span><span class='lparen token'>(</span><span class='RAILS_ROOT constant id'>RAILS_ROOT</span><span class='comma token'>,</span> <span class='string val'>&quot;themes&quot;</span><span class='rparen token'>)</span> <span class='comment val'># Heroku users will receive false here</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="theme_folder_title-instance_method">
+  
+    - (<tt>Object</tt>) <strong>theme_folder_title</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+29
+30
+31</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/themes/app/models/theme.rb', line 29</span>
+
+<span class='def def kw'>def</span> <span class='theme_folder_title identifier id'>theme_folder_title</span>
+  <span class='File constant id'>File</span><span class='dot token'>.</span><span class='basename identifier id'>basename</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='dot token'>.</span><span class='filename identifier id'>filename</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='split identifier id'>split</span><span class='lparen token'>(</span><span class='string val'>&quot;.&quot;</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='first identifier id'>first</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="theme_path-instance_method">
+  
+    - (<tt>Object</tt>) <strong>theme_path</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+33
+34
+35</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/themes/app/models/theme.rb', line 33</span>
+
+<span class='def def kw'>def</span> <span class='theme_path identifier id'>theme_path</span>
+  <span class='File constant id'>File</span><span class='dot token'>.</span><span class='join identifier id'>join</span><span class='lparen token'>(</span><span class='RAILS_ROOT constant id'>RAILS_ROOT</span><span class='comma token'>,</span> <span class='string val'>&quot;themes&quot;</span><span class='comma token'>,</span> <span class='theme_folder_title identifier id'>theme_folder_title</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+    
+    <div id="footer">
+  Generated on Wed 20 Jan 14:32:47 2010 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
+  0.5.3 (ruby-1.8.7).
+</div>
+
+  </body>
+</html>

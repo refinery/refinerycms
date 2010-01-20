@@ -1,0 +1,163 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta name="Content-Type" content="text/html; charset=UTF-8" />
+<title>Module: HpricotTruncator::NodeWithChildren</title>
+<link rel="stylesheet" href="../css/style.css" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="../css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '..';
+  if (relpath != '') relpath += '/';
+</script>
+<script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../_index.html">Index (N)</a> &raquo; 
+    <span class='title'><a href="../HpricotTruncator.html" title="HpricotTruncator (module)">HpricotTruncator</a></span>
+     &raquo; 
+    <span class="title">NodeWithChildren</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  <a id="class_list_link" href="#">Class List</a>
+  <a id="method_list_link" href="#">Method List</a>
+  <a id ="file_list_link" href="#">File List</a>
+</div>
+
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Module: HpricotTruncator::NodeWithChildren 
+  
+  
+</h1>
+
+<dl class="box">
+  
+  
+    
+  
+    
+  
+  
+    <dt class="r1 last">Defined in:</dt>
+    <dd class="r1 last">vendor/plugins/refinery/lib/refinery/html_truncation_helper.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+
+
+
+  <h2>Instance Method Summary</h2>
+
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#truncate-instance_method" title="#truncate (instance method)">- (Object) <strong>truncate</strong>(max_length) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"></span>
+  
+</li>
+
+    
+  </ul>
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="truncate-instance_method">
+  
+    - (<tt>Object</tt>) <strong>truncate</strong>(max_length) 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/refinery/lib/refinery/html_truncation_helper.rb', line 75</span>
+
+<span class='def def kw'>def</span> <span class='truncate identifier id'>truncate</span><span class='lparen token'>(</span><span class='max_length identifier id'>max_length</span><span class='rparen token'>)</span>
+  <span class='return return kw'>return</span> <span class='self self kw'>self</span> <span class='if if_mod kw'>if</span> <span class='inner_text identifier id'>inner_text</span><span class='dot token'>.</span><span class='mb_chars identifier id'>mb_chars</span><span class='dot token'>.</span><span class='length identifier id'>length</span> <span class='leq op'>&lt;=</span> <span class='max_length identifier id'>max_length</span>
+  <span class='truncated_node identifier id'>truncated_node</span> <span class='assign token'>=</span> <span class='if if kw'>if</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='is_a? fid id'>is_a?</span><span class='lparen token'>(</span><span class='Hpricot constant id'>Hpricot</span><span class='colon2 op'>::</span><span class='Doc constant id'>Doc</span><span class='rparen token'>)</span>
+    <span class='self self kw'>self</span><span class='dot token'>.</span><span class='dup identifier id'>dup</span>
+  <span class='else else kw'>else</span>
+    <span class='self self kw'>self</span><span class='dot token'>.</span><span class='class identifier id'>class</span><span class='dot token'>.</span><span class='send identifier id'>send</span><span class='lparen token'>(</span><span class='symbol val'>:new</span><span class='comma token'>,</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='name identifier id'>name</span><span class='comma token'>,</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='attributes identifier id'>attributes</span><span class='rparen token'>)</span>
+  <span class='end end kw'>end</span>
+  <span class='truncated_node identifier id'>truncated_node</span><span class='dot token'>.</span><span class='children identifier id'>children</span> <span class='assign token'>=</span> <span class='lbrack token'>[</span><span class='rbrack token'>]</span>
+  <span class='each_child identifier id'>each_child</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='node identifier id'>node</span><span class='bitor op'>|</span>
+    <span class='remaining_length identifier id'>remaining_length</span> <span class='assign token'>=</span> <span class='max_length identifier id'>max_length</span> <span class='minus op'>-</span> <span class='truncated_node identifier id'>truncated_node</span><span class='dot token'>.</span><span class='inner_text identifier id'>inner_text</span><span class='dot token'>.</span><span class='mb_chars identifier id'>mb_chars</span><span class='dot token'>.</span><span class='length identifier id'>length</span>
+    <span class='break break kw'>break</span> <span class='if if_mod kw'>if</span> <span class='remaining_length identifier id'>remaining_length</span> <span class='leq op'>&lt;=</span> <span class='integer val'>0</span>
+    <span class='truncated_node identifier id'>truncated_node</span><span class='dot token'>.</span><span class='children identifier id'>children</span> <span class='lshft op'>&lt;&lt;</span> <span class='node identifier id'>node</span><span class='dot token'>.</span><span class='truncate identifier id'>truncate</span><span class='lparen token'>(</span><span class='remaining_length identifier id'>remaining_length</span><span class='rparen token'>)</span>
+  <span class='end end kw'>end</span>
+  <span class='truncated_node identifier id'>truncated_node</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+    
+    <div id="footer">
+  Generated on Wed 20 Jan 14:32:53 2010 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
+  0.5.3 (ruby-1.8.7).
+</div>
+
+  </body>
+</html>
