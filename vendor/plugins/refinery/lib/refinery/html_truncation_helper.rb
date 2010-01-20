@@ -45,7 +45,6 @@ module Refinery::HtmlTruncationHelper
         word_length = actual_length - (truncated_doc.inner_html.mb_chars.length - truncated_doc.inner_html.rindex(' '))
         truncated_doc = doc.truncate(word_length)
       end
-
       if (last_child = truncated_doc.children.last).inner_html.nil?
         "#{truncated_doc.inner_html}#{omission}#{options[:link]}" if options[:link]
       else
@@ -77,7 +76,8 @@ module HpricotTruncator
       truncated_node = if self.is_a?(Hpricot::Doc)
         self.dup
       else
-        self.class.send(:new, self.name, self.attributes)
+        # only pass self.attributes if it's able to use map, otherwise nil works. (Fix for Hpricot 0.8.2)
+        self.class.send(:new, self.name, self.attributes.respond_to?("map") ? self.attributes : nil)
       end
       truncated_node.children = []
       each_child do |node|
