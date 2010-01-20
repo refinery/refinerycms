@@ -1,0 +1,582 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta name="Content-Type" content="text/html; charset=UTF-8" />
+<title>Class: RefinerySetting</title>
+<link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '';
+  if (relpath != '') relpath += '/';
+</script>
+<script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html">Index (R)</a> &raquo; 
+    
+    
+    <span class="title">RefinerySetting</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  <a id="class_list_link" href="#">Class List</a>
+  <a id="method_list_link" href="#">Method List</a>
+  <a id ="file_list_link" href="#">File List</a>
+</div>
+
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Class: RefinerySetting 
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName">ActiveRecord::Base</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">ActiveRecord::Base</li>
+          
+            <li class="next">RefinerySetting</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">vendor/plugins/refinery_settings/app/models/refinery_setting.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+
+  <h2>Constant Summary</h2>
+  
+    <dl class="constants">
+      
+        <dt id="REPLACEMENTS-constant" class="">REPLACEMENTS =
+            <span class="summary_desc"></span>
+        </dt>
+        <dd><pre class="code"><span class='lbrace token'>{</span><span class='string val'>&quot;true&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='true true kw'>true</span><span class='comma token'>,</span> <span class='string val'>&quot;false&quot;</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='false false kw'>false</span><span class='rbrace token'>}</span>
+</pre></dd>
+      
+    </dl>
+  
+
+
+  
+
+  <h2>Class Method Summary</h2>
+
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#%5B%5D-class_method" title="[] (class method)">+ (Object) <strong>[]</strong>(name) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#%5B%5D%3D-class_method" title="[]= (class method)">+ (Object) <strong>[]</strong>(name, value) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#find_or_set-class_method" title="find_or_set (class method)">+ (Object) <strong>find_or_set</strong>(name, or_this_value) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#method_missing-class_method" title="method_missing (class method)">+ (Object) <strong>method_missing</strong>(method, *args) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc">
+internals.
+
+</span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#per_page-class_method" title="per_page (class method)">+ (Object) <strong>per_page</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"></span>
+  
+</li>
+
+    
+  </ul>
+
+  <h2>Instance Method Summary</h2>
+
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#title-instance_method" title="#title (instance method)">- (Object) <strong>title</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#value-instance_method" title="#value (instance method)">- (Object) <strong>value</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#value%3D-instance_method" title="#value= (instance method)">- (Object) <strong>value</strong>(new_value) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"></span>
+  
+</li>
+
+    
+  </ul>
+
+  
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="[]-class_method">
+  
+    + (<tt>Object</tt>) <strong>[]</strong>(name) 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+31
+32
+33</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/refinery_settings/app/models/refinery_setting.rb', line 31</span>
+
+<span class='def def kw'>def</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='lbrack token'>[</span><span class='rbrack token'>]</span><span class='lparen token'>(</span><span class='name identifier id'>name</span><span class='rparen token'>)</span>
+  <span class='self self kw'>self</span><span class='dot token'>.</span><span class='find_by_name identifier id'>find_by_name</span><span class='lparen token'>(</span><span class='name identifier id'>name</span><span class='dot token'>.</span><span class='to_s identifier id'>to_s</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='value identifier id'>value</span> <span class='rescue rescue kw'>rescue</span> <span class='nil nil kw'>nil</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="[]=-class_method">
+  
+    + (<tt>Object</tt>) <strong>[]=</strong>(name, value) 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+35
+36
+37
+38
+39</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/refinery_settings/app/models/refinery_setting.rb', line 35</span>
+
+<span class='def def kw'>def</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='lbrack token'>[</span><span class='rbrack token'>]</span><span class='assign token'>=</span><span class='lparen token'>(</span><span class='name identifier id'>name</span><span class='comma token'>,</span> <span class='value identifier id'>value</span><span class='rparen token'>)</span>
+  <span class='setting identifier id'>setting</span> <span class='assign token'>=</span> <span class='find_or_create_by_name identifier id'>find_or_create_by_name</span><span class='lparen token'>(</span><span class='name identifier id'>name</span><span class='dot token'>.</span><span class='to_s identifier id'>to_s</span><span class='rparen token'>)</span>
+  <span class='setting identifier id'>setting</span><span class='dot token'>.</span><span class='value identifier id'>value</span> <span class='assign token'>=</span> <span class='value identifier id'>value</span>
+  <span class='setting identifier id'>setting</span><span class='dot token'>.</span><span class='save! fid id'>save!</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="find_or_set-class_method">
+  
+    + (<tt>Object</tt>) <strong>find_or_set</strong>(name, or_this_value) 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+27
+28
+29</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/refinery_settings/app/models/refinery_setting.rb', line 27</span>
+
+<span class='def def kw'>def</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='find_or_set identifier id'>find_or_set</span><span class='lparen token'>(</span><span class='name identifier id'>name</span><span class='comma token'>,</span> <span class='or_this_value identifier id'>or_this_value</span><span class='rparen token'>)</span>
+  <span class='setting_value identifier id'>setting_value</span> <span class='assign token'>=</span> <span class='find_or_create_by_name identifier id'>find_or_create_by_name</span><span class='lparen token'>(</span><span class='symbol val'>:name</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='name identifier id'>name</span><span class='dot token'>.</span><span class='to_s identifier id'>to_s</span><span class='comma token'>,</span> <span class='symbol val'>:value</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='or_this_value identifier id'>or_this_value</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='value identifier id'>value</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="method_missing-class_method">
+  
+    + (<tt>Object</tt>) <strong>method_missing</strong>(method, *args) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+internals
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/refinery_settings/app/models/refinery_setting.rb', line 15</span>
+
+<span class='def def kw'>def</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='method_missing identifier id'>method_missing</span><span class='lparen token'>(</span><span class='method identifier id'>method</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
+  <span class='method_name identifier id'>method_name</span> <span class='assign token'>=</span> <span class='method identifier id'>method</span><span class='dot token'>.</span><span class='to_s identifier id'>to_s</span>
+  <span class='super super kw'>super</span><span class='lparen token'>(</span><span class='method identifier id'>method</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
+
+<span class='rescue rescue kw'>rescue</span> <span class='NoMethodError constant id'>NoMethodError</span>
+  <span class='if if kw'>if</span> <span class='method_name identifier id'>method_name</span> <span class='match op'>=~</span> <span class='regexp val'>/=$/</span>
+    <span class='self self kw'>self</span><span class='lbrack token'>[</span><span class='method_name identifier id'>method_name</span><span class='dot token'>.</span><span class='gsub identifier id'>gsub</span><span class='lparen token'>(</span><span class='string val'>'='</span><span class='comma token'>,</span> <span class='string val'>''</span><span class='rparen token'>)</span><span class='rbrack token'>]</span> <span class='assign token'>=</span> <span class='args identifier id'>args</span><span class='dot token'>.</span><span class='first identifier id'>first</span>
+  <span class='else else kw'>else</span>
+    <span class='self self kw'>self</span><span class='lbrack token'>[</span><span class='method_name identifier id'>method_name</span><span class='rbrack token'>]</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="per_page-class_method">
+  
+    + (<tt>Object</tt>) <strong>per_page</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+62
+63
+64</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/refinery_settings/app/models/refinery_setting.rb', line 62</span>
+
+<span class='def def kw'>def</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='per_page identifier id'>per_page</span>
+  <span class='integer val'>10</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="title-instance_method">
+  
+    - (<tt>Object</tt>) <strong>title</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+9
+10
+11</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/refinery_settings/app/models/refinery_setting.rb', line 9</span>
+
+<span class='def def kw'>def</span> <span class='title identifier id'>title</span>
+  <span class='self self kw'>self</span><span class='dot token'>.</span><span class='name identifier id'>name</span><span class='dot token'>.</span><span class='titleize identifier id'>titleize</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="value-instance_method">
+  
+    - (<tt>Object</tt>) <strong>value</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/refinery_settings/app/models/refinery_setting.rb', line 43</span>
+
+<span class='def def kw'>def</span> <span class='value identifier id'>value</span>
+  <span class='_value identifier id'>_value</span> <span class='assign token'>=</span> <span class='self self kw'>self</span><span class='lbrack token'>[</span><span class='symbol val'>:value</span><span class='rbrack token'>]</span>
+
+ <span class='unless unless kw'>unless</span> <span class='_value identifier id'>_value</span><span class='dot token'>.</span><span class='nil? fid id'>nil?</span>
+    <span class='REPLACEMENTS constant id'>REPLACEMENTS</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='current_value identifier id'>current_value</span><span class='comma token'>,</span> <span class='new_value identifier id'>new_value</span><span class='bitor op'>|</span>
+      <span class='_value identifier id'>_value</span> <span class='assign token'>=</span> <span class='new_value identifier id'>new_value</span> <span class='if if_mod kw'>if</span> <span class='_value identifier id'>_value</span> <span class='eq op'>==</span> <span class='current_value identifier id'>current_value</span>
+    <span class='end end kw'>end</span>
+    <span class='_value identifier id'>_value</span> <span class='assign token'>=</span> <span class='_value identifier id'>_value</span><span class='dot token'>.</span><span class='to_i identifier id'>to_i</span> <span class='if if_mod kw'>if</span> <span class='_value identifier id'>_value</span><span class='dot token'>.</span><span class='to_i identifier id'>to_i</span><span class='dot token'>.</span><span class='to_s identifier id'>to_s</span> <span class='eq op'>==</span> <span class='_value identifier id'>_value</span> <span class='rescue rescue kw'>rescue</span> <span class='_value identifier id'>_value</span>
+  <span class='end end kw'>end</span>
+
+  <span class='return return kw'>return</span> <span class='_value identifier id'>_value</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="value=-instance_method">
+  
+    - (<tt>Object</tt>) <strong>value=</strong>(new_value) 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+56
+57
+58
+59
+60</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/refinery_settings/app/models/refinery_setting.rb', line 56</span>
+
+<span class='def def kw'>def</span> <span class='value= identifier id'>value=</span><span class='lparen token'>(</span><span class='new_value identifier id'>new_value</span><span class='rparen token'>)</span>
+  <span class='comment val'># must convert to string if true or false supplied otherwise it becomes 0 or 1, unfortunately.</span>
+  <span class='new_value identifier id'>new_value</span> <span class='assign token'>=</span> <span class='new_value identifier id'>new_value</span><span class='dot token'>.</span><span class='to_s identifier id'>to_s</span> <span class='if if_mod kw'>if</span> <span class='lbrack token'>[</span><span class='string val'>&quot;trueclass&quot;</span><span class='comma token'>,</span><span class='string val'>&quot;falseclass&quot;</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='include? fid id'>include?</span><span class='lparen token'>(</span><span class='new_value identifier id'>new_value</span><span class='dot token'>.</span><span class='class identifier id'>class</span><span class='dot token'>.</span><span class='to_s identifier id'>to_s</span><span class='dot token'>.</span><span class='downcase identifier id'>downcase</span><span class='rparen token'>)</span>
+  <span class='self self kw'>self</span><span class='lbrack token'>[</span><span class='symbol val'>:value</span><span class='rbrack token'>]</span> <span class='assign token'>=</span> <span class='new_value identifier id'>new_value</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+    
+    <div id="footer">
+  Generated on Wed 20 Jan 14:32:54 2010 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
+  0.5.3 (ruby-1.8.7).
+</div>
+
+  </body>
+</html>

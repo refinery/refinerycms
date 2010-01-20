@@ -1,0 +1,314 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta name="Content-Type" content="text/html; charset=UTF-8" />
+<title>Class: Admin::PageDialogsController</title>
+<link rel="stylesheet" href="../css/style.css" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="../css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '..';
+  if (relpath != '') relpath += '/';
+</script>
+<script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../_index.html">Index (P)</a> &raquo; 
+    <span class='title'>Admin</span>
+     &raquo; 
+    <span class="title">PageDialogsController</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  <a id="class_list_link" href="#">Class List</a>
+  <a id="method_list_link" href="#">Method List</a>
+  <a id ="file_list_link" href="#">File List</a>
+</div>
+
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Class: Admin::PageDialogsController 
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName">DialogsController</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">DialogsController</li>
+          
+            <li class="next">Admin::PageDialogsController</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">vendor/plugins/pages/app/controllers/admin/page_dialogs_controller.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+
+
+  
+
+  <h2>Instance Method Summary</h2>
+
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#link_to-instance_method" title="#link_to (instance method)">- (Object) <strong>link_to</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#test_email-instance_method" title="#test_email (instance method)">- (Object) <strong>test_email</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#test_url-instance_method" title="#test_url (instance method)">- (Object) <strong>test_url</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"></span>
+  
+</li>
+
+    
+  </ul>
+
+  
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="link_to-instance_method">
+  
+    - (<tt>Object</tt>) <strong>link_to</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+7
+8
+9
+10
+11
+12
+13
+14</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/pages/app/controllers/admin/page_dialogs_controller.rb', line 7</span>
+
+<span class='def def kw'>def</span> <span class='link_to identifier id'>link_to</span>
+  <span class='@pages ivar id'>@pages</span> <span class='assign token'>=</span> <span class='Page constant id'>Page</span><span class='dot token'>.</span><span class='paginate identifier id'>paginate</span> <span class='symbol val'>:page</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='params identifier id'>params</span><span class='lbrack token'>[</span><span class='symbol val'>:page</span><span class='rbrack token'>]</span><span class='comma token'>,</span>
+                           <span class='symbol val'>:conditions</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>'parent_id is null'</span><span class='comma token'>,</span>
+                           <span class='symbol val'>:order</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>'position ASC'</span><span class='comma token'>,</span>
+                           <span class='symbol val'>:per_page</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='Page constant id'>Page</span><span class='dot token'>.</span><span class='per_page identifier id'>per_page</span><span class='lparen token'>(</span><span class='dialog identifier id'>dialog</span><span class='assign token'>=</span><span class='true true kw'>true</span><span class='rparen token'>)</span>
+
+  <span class='@resources ivar id'>@resources</span> <span class='assign token'>=</span> <span class='Resource constant id'>Resource</span><span class='dot token'>.</span><span class='paginate identifier id'>paginate</span> <span class='symbol val'>:page</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='params identifier id'>params</span><span class='lbrack token'>[</span><span class='symbol val'>:resource_page</span><span class='rbrack token'>]</span><span class='comma token'>,</span> <span class='symbol val'>:order</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>'created_at DESC'</span><span class='comma token'>,</span> <span class='symbol val'>:per_page</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='Resource constant id'>Resource</span><span class='dot token'>.</span><span class='per_page identifier id'>per_page</span><span class='lparen token'>(</span><span class='dialog identifier id'>dialog</span><span class='assign token'>=</span><span class='true true kw'>true</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="test_email-instance_method">
+  
+    - (<tt>Object</tt>) <strong>test_email</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/pages/app/controllers/admin/page_dialogs_controller.rb', line 37</span>
+
+<span class='def def kw'>def</span> <span class='test_email identifier id'>test_email</span>
+  <span class='unless unless kw'>unless</span> <span class='params identifier id'>params</span><span class='lbrack token'>[</span><span class='symbol val'>:email</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='blank? fid id'>blank?</span>
+    <span class='valid identifier id'>valid</span> <span class='assign token'>=</span> <span class='params identifier id'>params</span><span class='lbrack token'>[</span><span class='symbol val'>:email</span><span class='rbrack token'>]</span> <span class='match op'>=~</span> <span class='regexp val'>/^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i</span>
+    <span class='render identifier id'>render</span> <span class='symbol val'>:text</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='if if kw'>if</span> <span class='valid identifier id'>valid</span>
+      <span class='string val'>&quot;&lt;img src='/images/refinery/icons/tick.png' alt='valid email address' title='valid email address' width='16' height='16' /&gt;&quot;</span>
+    <span class='else else kw'>else</span>
+      <span class='string val'>&quot;&lt;img src='/images/refinery/icons/cross.png' alt='invalid email address' title='invalid email address' width='16' height='16' /&gt;&quot;</span>
+    <span class='end end kw'>end</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="test_url-instance_method">
+  
+    - (<tt>Object</tt>) <strong>test_url</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/pages/app/controllers/admin/page_dialogs_controller.rb', line 16</span>
+
+<span class='def def kw'>def</span> <span class='test_url identifier id'>test_url</span>
+  <span class='unless unless kw'>unless</span> <span class='params identifier id'>params</span><span class='lbrack token'>[</span><span class='symbol val'>:url</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='blank? fid id'>blank?</span>
+    <span class='url identifier id'>url</span> <span class='assign token'>=</span> <span class='URI constant id'>URI</span><span class='dot token'>.</span><span class='parse identifier id'>parse</span><span class='lparen token'>(</span><span class='params identifier id'>params</span><span class='lbrack token'>[</span><span class='symbol val'>:url</span><span class='rbrack token'>]</span><span class='rparen token'>)</span>
+
+    <span class='http identifier id'>http</span> <span class='assign token'>=</span> <span class='Net constant id'>Net</span><span class='colon2 op'>::</span><span class='HTTP constant id'>HTTP</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='url identifier id'>url</span><span class='dot token'>.</span><span class='host identifier id'>host</span><span class='rparen token'>)</span>
+    <span class='request identifier id'>request</span> <span class='assign token'>=</span> <span class='Net constant id'>Net</span><span class='colon2 op'>::</span><span class='HTTP constant id'>HTTP</span><span class='colon2 op'>::</span><span class='Get constant id'>Get</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='url identifier id'>url</span><span class='dot token'>.</span><span class='path identifier id'>path</span><span class='dot token'>.</span><span class='blank? fid id'>blank?</span> <span class='integer val'>? </span><span class='string val'>&quot;/&quot;</span> <span class='colon op'>:</span> <span class='url identifier id'>url</span><span class='dot token'>.</span><span class='path identifier id'>path</span><span class='rparen token'>)</span>
+
+    <span class='response identifier id'>response</span> <span class='assign token'>=</span> <span class='http identifier id'>http</span><span class='dot token'>.</span><span class='request identifier id'>request</span> <span class='request identifier id'>request</span>
+
+    <span class='render identifier id'>render</span> <span class='symbol val'>:text</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='case case kw'>case</span> <span class='response identifier id'>response</span>
+      <span class='when when kw'>when</span> <span class='Net constant id'>Net</span><span class='colon2 op'>::</span><span class='HTTPSuccess constant id'>HTTPSuccess</span><span class='comma token'>,</span> <span class='Net constant id'>Net</span><span class='colon2 op'>::</span><span class='HTTPRedirection constant id'>HTTPRedirection</span>
+        <span class='string val'>&quot;&lt;img src='/images/refinery/icons/tick.png' alt='valid url' title='valid url' width='16' height='16' /&gt;&quot;</span>
+      <span class='else else kw'>else</span>
+        <span class='string val'>&quot;&lt;img src='/images/refinery/icons/cross.png' alt='invalid url' title='invalid url' width='16' height='16' /&gt;&quot;</span>
+      <span class='end end kw'>end</span>
+  <span class='end end kw'>end</span>
+
+  <span class='rescue rescue kw'>rescue</span>
+    <span class='render identifier id'>render</span> <span class='symbol val'>:text</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;&lt;img src='/images/refinery/icons/cross.png' alt='invalid url' title='invalid url' width='16' height='16' /&gt;&quot;</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+    
+    <div id="footer">
+  Generated on Wed 20 Jan 14:32:55 2010 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
+  0.5.3 (ruby-1.8.7).
+</div>
+
+  </body>
+</html>

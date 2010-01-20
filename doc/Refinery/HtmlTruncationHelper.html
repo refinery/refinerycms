@@ -1,0 +1,235 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta name="Content-Type" content="text/html; charset=UTF-8" />
+<title>Module: Refinery::HtmlTruncationHelper</title>
+<link rel="stylesheet" href="../css/style.css" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="../css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '..';
+  if (relpath != '') relpath += '/';
+</script>
+<script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../_index.html">Index (H)</a> &raquo; 
+    <span class='title'><a href="../Refinery.html" title="Refinery (module)">Refinery</a></span>
+     &raquo; 
+    <span class="title">HtmlTruncationHelper</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  <a id="class_list_link" href="#">Class List</a>
+  <a id="method_list_link" href="#">Method List</a>
+  <a id ="file_list_link" href="#">File List</a>
+</div>
+
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Module: Refinery::HtmlTruncationHelper 
+  
+  
+</h1>
+
+<dl class="box">
+  
+  
+    
+  
+    
+  
+  
+    <dt class="r1 last">Defined in:</dt>
+    <dd class="r1 last">vendor/plugins/refinery/lib/refinery/html_truncation_helper.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+
+
+
+  <h2>Instance Method Summary</h2>
+
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#truncate-instance_method" title="#truncate (instance method)">- (Object) <strong>truncate</strong>(text, *args) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc">
+Like the Rails <em>truncate</em> helper but doesn&#8217;t break HTML tags,
+entities, and optionally.
+
+</span>
+  
+</li>
+
+    
+  </ul>
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="truncate-instance_method">
+  
+    - (<tt>Object</tt>) <strong>truncate</strong>(text, *args) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Like the Rails <em>truncate</em> helper but doesn&#8217;t break HTML tags,
+entities, and optionally. words.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/refinery/lib/refinery/html_truncation_helper.rb', line 27</span>
+
+<span class='def def kw'>def</span> <span class='truncate identifier id'>truncate</span><span class='lparen token'>(</span><span class='text identifier id'>text</span><span class='comma token'>,</span> <span class='mult op'>*</span><span class='args identifier id'>args</span><span class='rparen token'>)</span>
+  <span class='return return kw'>return</span> <span class='super super kw'>super</span> <span class='unless unless_mod kw'>unless</span> <span class='lparen token'>(</span><span class='lparen token'>(</span><span class='arguments identifier id'>arguments</span> <span class='assign token'>=</span> <span class='args identifier id'>args</span><span class='dot token'>.</span><span class='dup identifier id'>dup</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='extract_options! fid id'>extract_options!</span><span class='lbrack token'>[</span><span class='symbol val'>:preserve_html_tags</span><span class='rbrack token'>]</span> <span class='eq op'>==</span> <span class='true true kw'>true</span><span class='rparen token'>)</span> <span class='comment val'># don't ruin the current args object</span>
+  <span class='return return kw'>return</span> <span class='if if_mod kw'>if</span> <span class='text identifier id'>text</span><span class='dot token'>.</span><span class='nil? fid id'>nil?</span>
+
+  <span class='options identifier id'>options</span> <span class='assign token'>=</span> <span class='args identifier id'>args</span><span class='dot token'>.</span><span class='extract_options! fid id'>extract_options!</span>
+  <span class='max_length identifier id'>max_length</span> <span class='assign token'>=</span> <span class='options identifier id'>options</span><span class='lbrack token'>[</span><span class='symbol val'>:length</span><span class='rbrack token'>]</span> <span class='orop op'>||</span> <span class='integer val'>30</span>
+  <span class='omission identifier id'>omission</span> <span class='assign token'>=</span> <span class='options identifier id'>options</span><span class='lbrack token'>[</span><span class='symbol val'>:omission</span><span class='rbrack token'>]</span> <span class='orop op'>||</span> <span class='string val'>&quot;...&quot;</span>
+  <span class='comment val'># use :link =&gt; link_to('more', post_path), or something to that effect</span>
+
+  <span class='doc identifier id'>doc</span> <span class='assign token'>=</span> <span class='Hpricot constant id'>Hpricot</span><span class='lparen token'>(</span><span class='text identifier id'>text</span><span class='dot token'>.</span><span class='to_s identifier id'>to_s</span><span class='rparen token'>)</span>
+  <span class='omission_length identifier id'>omission_length</span> <span class='assign token'>=</span> <span class='Hpricot constant id'>Hpricot</span><span class='lparen token'>(</span><span class='omission identifier id'>omission</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='inner_text identifier id'>inner_text</span><span class='dot token'>.</span><span class='mb_chars identifier id'>mb_chars</span><span class='dot token'>.</span><span class='length identifier id'>length</span>
+  <span class='content_length identifier id'>content_length</span> <span class='assign token'>=</span> <span class='doc identifier id'>doc</span><span class='dot token'>.</span><span class='inner_text identifier id'>inner_text</span><span class='dot token'>.</span><span class='mb_chars identifier id'>mb_chars</span><span class='dot token'>.</span><span class='length identifier id'>length</span>
+  <span class='actual_length identifier id'>actual_length</span> <span class='assign token'>=</span> <span class='max_length identifier id'>max_length</span> <span class='minus op'>-</span> <span class='omission_length identifier id'>omission_length</span>
+
+  <span class='if if kw'>if</span> <span class='content_length identifier id'>content_length</span> <span class='gt op'>&gt;</span> <span class='max_length identifier id'>max_length</span>
+    <span class='truncated_doc identifier id'>truncated_doc</span> <span class='assign token'>=</span> <span class='doc identifier id'>doc</span><span class='dot token'>.</span><span class='truncate identifier id'>truncate</span><span class='lparen token'>(</span><span class='actual_length identifier id'>actual_length</span><span class='rparen token'>)</span>
+
+    <span class='if if kw'>if</span> <span class='lparen token'>(</span><span class='options identifier id'>options</span><span class='lbrack token'>[</span><span class='symbol val'>:preserve_full_words</span><span class='rbrack token'>]</span> <span class='orop op'>||</span> <span class='false false kw'>false</span><span class='rparen token'>)</span>
+      <span class='word_length identifier id'>word_length</span> <span class='assign token'>=</span> <span class='actual_length identifier id'>actual_length</span> <span class='minus op'>-</span> <span class='lparen token'>(</span><span class='truncated_doc identifier id'>truncated_doc</span><span class='dot token'>.</span><span class='inner_html identifier id'>inner_html</span><span class='dot token'>.</span><span class='mb_chars identifier id'>mb_chars</span><span class='dot token'>.</span><span class='length identifier id'>length</span> <span class='minus op'>-</span> <span class='truncated_doc identifier id'>truncated_doc</span><span class='dot token'>.</span><span class='inner_html identifier id'>inner_html</span><span class='dot token'>.</span><span class='rindex identifier id'>rindex</span><span class='lparen token'>(</span><span class='string val'>' '</span><span class='rparen token'>)</span><span class='rparen token'>)</span>
+      <span class='truncated_doc identifier id'>truncated_doc</span> <span class='assign token'>=</span> <span class='doc identifier id'>doc</span><span class='dot token'>.</span><span class='truncate identifier id'>truncate</span><span class='lparen token'>(</span><span class='word_length identifier id'>word_length</span><span class='rparen token'>)</span>
+    <span class='end end kw'>end</span>
+
+    <span class='if if kw'>if</span> <span class='lparen token'>(</span><span class='last_child identifier id'>last_child</span> <span class='assign token'>=</span> <span class='truncated_doc identifier id'>truncated_doc</span><span class='dot token'>.</span><span class='children identifier id'>children</span><span class='dot token'>.</span><span class='last identifier id'>last</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='inner_html identifier id'>inner_html</span><span class='dot token'>.</span><span class='nil? fid id'>nil?</span>
+      <span class='dstring node'>&quot;#{truncated_doc.inner_html}#{omission}#{options[:link]}&quot;</span> <span class='if if_mod kw'>if</span> <span class='options identifier id'>options</span><span class='lbrack token'>[</span><span class='symbol val'>:link</span><span class='rbrack token'>]</span>
+    <span class='else else kw'>else</span>
+      <span class='last_child identifier id'>last_child</span><span class='dot token'>.</span><span class='inner_html identifier id'>inner_html</span> <span class='assign token'>=</span> <span class='dstring node'>&quot;#{last_child.inner_html.gsub(/\W.[^\s]+$/, &quot;&quot;)}#{omission}&quot;</span>
+      <span class='last_child identifier id'>last_child</span><span class='dot token'>.</span><span class='inner_html identifier id'>inner_html</span> <span class='opasgn op'>+=</span> <span class='options identifier id'>options</span><span class='lbrack token'>[</span><span class='symbol val'>:link</span><span class='rbrack token'>]</span> <span class='if if_mod kw'>if</span> <span class='options identifier id'>options</span><span class='lbrack token'>[</span><span class='symbol val'>:link</span><span class='rbrack token'>]</span>
+      <span class='truncated_doc identifier id'>truncated_doc</span>
+    <span class='end end kw'>end</span>
+  <span class='else else kw'>else</span>
+    <span class='if if kw'>if</span> <span class='options identifier id'>options</span><span class='lbrack token'>[</span><span class='symbol val'>:link</span><span class='rbrack token'>]</span>
+      <span class='last_child identifier id'>last_child</span> <span class='assign token'>=</span> <span class='doc identifier id'>doc</span><span class='dot token'>.</span><span class='children identifier id'>children</span><span class='dot token'>.</span><span class='last identifier id'>last</span>
+      <span class='if if kw'>if</span> <span class='last_child identifier id'>last_child</span><span class='dot token'>.</span><span class='inner_html identifier id'>inner_html</span><span class='dot token'>.</span><span class='nil? fid id'>nil?</span>
+        <span class='doc identifier id'>doc</span><span class='dot token'>.</span><span class='inner_html identifier id'>inner_html</span> <span class='plus op'>+</span> <span class='options identifier id'>options</span><span class='lbrack token'>[</span><span class='symbol val'>:link</span><span class='rbrack token'>]</span>
+      <span class='else else kw'>else</span>
+        <span class='last_child identifier id'>last_child</span><span class='dot token'>.</span><span class='inner_html identifier id'>inner_html</span> <span class='assign token'>=</span> <span class='last_child identifier id'>last_child</span><span class='dot token'>.</span><span class='inner_html identifier id'>inner_html</span><span class='dot token'>.</span><span class='gsub identifier id'>gsub</span><span class='lparen token'>(</span><span class='regexp val'>/\W.[^\s]+$/</span><span class='comma token'>,</span> <span class='string val'>&quot;&quot;</span><span class='rparen token'>)</span> <span class='plus op'>+</span> <span class='options identifier id'>options</span><span class='lbrack token'>[</span><span class='symbol val'>:link</span><span class='rbrack token'>]</span>
+        <span class='doc identifier id'>doc</span>
+      <span class='end end kw'>end</span>
+    <span class='else else kw'>else</span>
+      <span class='text identifier id'>text</span><span class='dot token'>.</span><span class='to_s identifier id'>to_s</span>
+    <span class='end end kw'>end</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+    
+    <div id="footer">
+  Generated on Wed 20 Jan 14:32:53 2010 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
+  0.5.3 (ruby-1.8.7).
+</div>
+
+  </body>
+</html>

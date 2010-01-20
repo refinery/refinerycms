@@ -1,0 +1,1323 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta name="Content-Type" content="text/html; charset=UTF-8" />
+<title>Class: UserTest</title>
+<link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '';
+  if (relpath != '') relpath += '/';
+</script>
+<script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html">Index (U)</a> &raquo; 
+    
+    
+    <span class="title">UserTest</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  <a id="class_list_link" href="#">Class List</a>
+  <a id="method_list_link" href="#">Method List</a>
+  <a id ="file_list_link" href="#">File List</a>
+</div>
+
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Class: UserTest 
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName">Test::Unit::TestCase</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">Test::Unit::TestCase</li>
+          
+            <li class="next">UserTest</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+      <dt class="r2">Includes:</dt>
+      <dd class="r2"><a href="AuthenticatedTestHelper.html" title="AuthenticatedTestHelper (module)">AuthenticatedTestHelper</a></dd>
+      
+    
+  
+  
+    <dt class="r1 last">Defined in:</dt>
+    <dd class="r1 last">vendor/plugins/authentication/test/unit/user_test.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+
+
+  
+  
+  
+  
+  
+
+  <h2>Instance Method Summary</h2>
+
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#test_should_authenticate_user-instance_method" title="#test_should_authenticate_user (instance method)">- (Object) <strong>test_should_authenticate_user</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#test_should_create_and_start_in_pending_state-instance_method" title="#test_should_create_and_start_in_pending_state (instance method)">- (Object) <strong>test_should_create_and_start_in_pending_state</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#test_should_create_user-instance_method" title="#test_should_create_user (instance method)">- (Object) <strong>test_should_create_user</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#test_should_delete_user-instance_method" title="#test_should_delete_user (instance method)">- (Object) <strong>test_should_delete_user</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#test_should_initialize_activation_code_upon_creation-instance_method" title="#test_should_initialize_activation_code_upon_creation (instance method)">- (Object) <strong>test_should_initialize_activation_code_upon_creation</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#test_should_not_rehash_password-instance_method" title="#test_should_not_rehash_password (instance method)">- (Object) <strong>test_should_not_rehash_password</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#test_should_register_passive_user-instance_method" title="#test_should_register_passive_user (instance method)">- (Object) <strong>test_should_register_passive_user</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#test_should_remember_me_default_two_weeks-instance_method" title="#test_should_remember_me_default_two_weeks (instance method)">- (Object) <strong>test_should_remember_me_default_two_weeks</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#test_should_remember_me_for_one_week-instance_method" title="#test_should_remember_me_for_one_week (instance method)">- (Object) <strong>test_should_remember_me_for_one_week</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#test_should_remember_me_until_one_week-instance_method" title="#test_should_remember_me_until_one_week (instance method)">- (Object) <strong>test_should_remember_me_until_one_week</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#test_should_require_email-instance_method" title="#test_should_require_email (instance method)">- (Object) <strong>test_should_require_email</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#test_should_require_login-instance_method" title="#test_should_require_login (instance method)">- (Object) <strong>test_should_require_login</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#test_should_require_password-instance_method" title="#test_should_require_password (instance method)">- (Object) <strong>test_should_require_password</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#test_should_require_password_confirmation-instance_method" title="#test_should_require_password_confirmation (instance method)">- (Object) <strong>test_should_require_password_confirmation</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#test_should_reset_password-instance_method" title="#test_should_reset_password (instance method)">- (Object) <strong>test_should_reset_password</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#test_should_set_remember_token-instance_method" title="#test_should_set_remember_token (instance method)">- (Object) <strong>test_should_set_remember_token</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#test_should_suspend_user-instance_method" title="#test_should_suspend_user (instance method)">- (Object) <strong>test_should_suspend_user</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#test_should_unset_remember_token-instance_method" title="#test_should_unset_remember_token (instance method)">- (Object) <strong>test_should_unset_remember_token</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#test_should_unsuspend_user_to_active_state-instance_method" title="#test_should_unsuspend_user_to_active_state (instance method)">- (Object) <strong>test_should_unsuspend_user_to_active_state</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#test_should_unsuspend_user_with_activation_code_and_nil_activated_at_to_pending_state-instance_method" title="#test_should_unsuspend_user_with_activation_code_and_nil_activated_at_to_pending_state (instance method)">- (Object) <strong>test_should_unsuspend_user_with_activation_code_and_nil_activated_at_to_pending_state</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#test_should_unsuspend_user_with_nil_activation_code_and_activated_at_to_passive_state-instance_method" title="#test_should_unsuspend_user_with_nil_activation_code_and_activated_at_to_passive_state (instance method)">- (Object) <strong>test_should_unsuspend_user_with_nil_activation_code_and_activated_at_to_passive_state</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#test_suspended_user_should_not_authenticate-instance_method" title="#test_suspended_user_should_not_authenticate (instance method)">- (Object) <strong>test_suspended_user_should_not_authenticate</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"></span>
+  
+</li>
+
+    
+  </ul>
+
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <a href="AuthenticatedTestHelper.html" title="AuthenticatedTestHelper (module)">AuthenticatedTestHelper</a></h3>
+  <p class="inherited"><a href="AuthenticatedTestHelper.html#authorize_as-instance_method" title="AuthenticatedTestHelper#authorize_as (method)">#authorize_as</a>, <a href="AuthenticatedTestHelper.html#login_as-instance_method" title="AuthenticatedTestHelper#login_as (method)">#login_as</a></p>
+
+  
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="test_should_authenticate_user-instance_method">
+  
+    - (<tt>Object</tt>) <strong>test_should_authenticate_user</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+67
+68
+69</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/authentication/test/unit/user_test.rb', line 67</span>
+
+<span class='def def kw'>def</span> <span class='test_should_authenticate_user identifier id'>test_should_authenticate_user</span>
+  <span class='assert_equal identifier id'>assert_equal</span> <span class='users identifier id'>users</span><span class='lparen token'>(</span><span class='symbol val'>:quentin</span><span class='rparen token'>)</span><span class='comma token'>,</span> <span class='User constant id'>User</span><span class='dot token'>.</span><span class='authenticate identifier id'>authenticate</span><span class='lparen token'>(</span><span class='string val'>'quentin'</span><span class='comma token'>,</span> <span class='string val'>'test'</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="test_should_create_and_start_in_pending_state-instance_method">
+  
+    - (<tt>Object</tt>) <strong>test_should_create_and_start_in_pending_state</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+22
+23
+24
+25
+26</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/authentication/test/unit/user_test.rb', line 22</span>
+
+<span class='def def kw'>def</span> <span class='test_should_create_and_start_in_pending_state identifier id'>test_should_create_and_start_in_pending_state</span>
+  <span class='user identifier id'>user</span> <span class='assign token'>=</span> <span class='create_user identifier id'>create_user</span>
+  <span class='user identifier id'>user</span><span class='dot token'>.</span><span class='reload identifier id'>reload</span>
+  <span class='assert identifier id'>assert</span> <span class='user identifier id'>user</span><span class='dot token'>.</span><span class='pending? fid id'>pending?</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="test_should_create_user-instance_method">
+  
+    - (<tt>Object</tt>) <strong>test_should_create_user</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+9
+10
+11
+12
+13
+14</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/authentication/test/unit/user_test.rb', line 9</span>
+
+<span class='def def kw'>def</span> <span class='test_should_create_user identifier id'>test_should_create_user</span>
+  <span class='assert_difference identifier id'>assert_difference</span> <span class='string val'>'User.count'</span> <span class='do do kw'>do</span>
+    <span class='user identifier id'>user</span> <span class='assign token'>=</span> <span class='create_user identifier id'>create_user</span>
+    <span class='assert identifier id'>assert</span> <span class='notop op'>!</span><span class='user identifier id'>user</span><span class='dot token'>.</span><span class='new_record? fid id'>new_record?</span><span class='comma token'>,</span> <span class='dstring node'>&quot;#{user.errors.full_messages.to_sentence}&quot;</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="test_should_delete_user-instance_method">
+  
+    - (<tt>Object</tt>) <strong>test_should_delete_user</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+151
+152
+153
+154
+155
+156</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/authentication/test/unit/user_test.rb', line 151</span>
+
+<span class='def def kw'>def</span> <span class='test_should_delete_user identifier id'>test_should_delete_user</span>
+  <span class='assert_nil identifier id'>assert_nil</span> <span class='users identifier id'>users</span><span class='lparen token'>(</span><span class='symbol val'>:quentin</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='deleted_at identifier id'>deleted_at</span>
+  <span class='users identifier id'>users</span><span class='lparen token'>(</span><span class='symbol val'>:quentin</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='delete! fid id'>delete!</span>
+  <span class='assert_not_nil identifier id'>assert_not_nil</span> <span class='users identifier id'>users</span><span class='lparen token'>(</span><span class='symbol val'>:quentin</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='deleted_at identifier id'>deleted_at</span>
+  <span class='assert identifier id'>assert</span> <span class='users identifier id'>users</span><span class='lparen token'>(</span><span class='symbol val'>:quentin</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='deleted? fid id'>deleted?</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="test_should_initialize_activation_code_upon_creation-instance_method">
+  
+    - (<tt>Object</tt>) <strong>test_should_initialize_activation_code_upon_creation</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+16
+17
+18
+19
+20</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/authentication/test/unit/user_test.rb', line 16</span>
+
+<span class='def def kw'>def</span> <span class='test_should_initialize_activation_code_upon_creation identifier id'>test_should_initialize_activation_code_upon_creation</span>
+  <span class='user identifier id'>user</span> <span class='assign token'>=</span> <span class='create_user identifier id'>create_user</span>
+  <span class='user identifier id'>user</span><span class='dot token'>.</span><span class='reload identifier id'>reload</span>
+  <span class='assert_not_nil identifier id'>assert_not_nil</span> <span class='user identifier id'>user</span><span class='dot token'>.</span><span class='activation_code identifier id'>activation_code</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="test_should_not_rehash_password-instance_method">
+  
+    - (<tt>Object</tt>) <strong>test_should_not_rehash_password</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+62
+63
+64
+65</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/authentication/test/unit/user_test.rb', line 62</span>
+
+<span class='def def kw'>def</span> <span class='test_should_not_rehash_password identifier id'>test_should_not_rehash_password</span>
+  <span class='users identifier id'>users</span><span class='lparen token'>(</span><span class='symbol val'>:quentin</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='update_attributes identifier id'>update_attributes</span><span class='lparen token'>(</span><span class='symbol val'>:login</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>'quentin2'</span><span class='rparen token'>)</span>
+  <span class='assert_equal identifier id'>assert_equal</span> <span class='users identifier id'>users</span><span class='lparen token'>(</span><span class='symbol val'>:quentin</span><span class='rparen token'>)</span><span class='comma token'>,</span> <span class='User constant id'>User</span><span class='dot token'>.</span><span class='authenticate identifier id'>authenticate</span><span class='lparen token'>(</span><span class='string val'>'quentin2'</span><span class='comma token'>,</span> <span class='string val'>'test'</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="test_should_register_passive_user-instance_method">
+  
+    - (<tt>Object</tt>) <strong>test_should_register_passive_user</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+110
+111
+112
+113
+114
+115
+116</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/authentication/test/unit/user_test.rb', line 110</span>
+
+<span class='def def kw'>def</span> <span class='test_should_register_passive_user identifier id'>test_should_register_passive_user</span>
+  <span class='user identifier id'>user</span> <span class='assign token'>=</span> <span class='create_user identifier id'>create_user</span><span class='lparen token'>(</span><span class='symbol val'>:password</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='nil nil kw'>nil</span><span class='comma token'>,</span> <span class='symbol val'>:password_confirmation</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='nil nil kw'>nil</span><span class='rparen token'>)</span>
+  <span class='assert identifier id'>assert</span> <span class='user identifier id'>user</span><span class='dot token'>.</span><span class='passive? fid id'>passive?</span>
+  <span class='user identifier id'>user</span><span class='dot token'>.</span><span class='update_attributes identifier id'>update_attributes</span><span class='lparen token'>(</span><span class='symbol val'>:password</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>'new password'</span><span class='comma token'>,</span> <span class='symbol val'>:password_confirmation</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>'new password'</span><span class='rparen token'>)</span>
+  <span class='user identifier id'>user</span><span class='dot token'>.</span><span class='register! fid id'>register!</span>
+  <span class='assert identifier id'>assert</span> <span class='user identifier id'>user</span><span class='dot token'>.</span><span class='pending? fid id'>pending?</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="test_should_remember_me_default_two_weeks-instance_method">
+  
+    - (<tt>Object</tt>) <strong>test_should_remember_me_default_two_weeks</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+101
+102
+103
+104
+105
+106
+107
+108</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/authentication/test/unit/user_test.rb', line 101</span>
+
+<span class='def def kw'>def</span> <span class='test_should_remember_me_default_two_weeks identifier id'>test_should_remember_me_default_two_weeks</span>
+  <span class='before identifier id'>before</span> <span class='assign token'>=</span> <span class='float val'>2</span><span class='dot token'>.</span><span class='weeks identifier id'>weeks</span><span class='dot token'>.</span><span class='from_now identifier id'>from_now</span><span class='dot token'>.</span><span class='utc identifier id'>utc</span>
+  <span class='users identifier id'>users</span><span class='lparen token'>(</span><span class='symbol val'>:quentin</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='remember_me identifier id'>remember_me</span>
+  <span class='after identifier id'>after</span> <span class='assign token'>=</span> <span class='float val'>2</span><span class='dot token'>.</span><span class='weeks identifier id'>weeks</span><span class='dot token'>.</span><span class='from_now identifier id'>from_now</span><span class='dot token'>.</span><span class='utc identifier id'>utc</span>
+  <span class='assert_not_nil identifier id'>assert_not_nil</span> <span class='users identifier id'>users</span><span class='lparen token'>(</span><span class='symbol val'>:quentin</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='remember_token identifier id'>remember_token</span>
+  <span class='assert_not_nil identifier id'>assert_not_nil</span> <span class='users identifier id'>users</span><span class='lparen token'>(</span><span class='symbol val'>:quentin</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='remember_token_expires_at identifier id'>remember_token_expires_at</span>
+  <span class='assert identifier id'>assert</span> <span class='users identifier id'>users</span><span class='lparen token'>(</span><span class='symbol val'>:quentin</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='remember_token_expires_at identifier id'>remember_token_expires_at</span><span class='dot token'>.</span><span class='between? fid id'>between?</span><span class='lparen token'>(</span><span class='before identifier id'>before</span><span class='comma token'>,</span> <span class='after identifier id'>after</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="test_should_remember_me_for_one_week-instance_method">
+  
+    - (<tt>Object</tt>) <strong>test_should_remember_me_for_one_week</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+84
+85
+86
+87
+88
+89
+90
+91</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/authentication/test/unit/user_test.rb', line 84</span>
+
+<span class='def def kw'>def</span> <span class='test_should_remember_me_for_one_week identifier id'>test_should_remember_me_for_one_week</span>
+  <span class='before identifier id'>before</span> <span class='assign token'>=</span> <span class='float val'>1</span><span class='dot token'>.</span><span class='week identifier id'>week</span><span class='dot token'>.</span><span class='from_now identifier id'>from_now</span><span class='dot token'>.</span><span class='utc identifier id'>utc</span>
+  <span class='users identifier id'>users</span><span class='lparen token'>(</span><span class='symbol val'>:quentin</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='remember_me_for identifier id'>remember_me_for</span> <span class='float val'>1</span><span class='dot token'>.</span><span class='week identifier id'>week</span>
+  <span class='after identifier id'>after</span> <span class='assign token'>=</span> <span class='float val'>1</span><span class='dot token'>.</span><span class='week identifier id'>week</span><span class='dot token'>.</span><span class='from_now identifier id'>from_now</span><span class='dot token'>.</span><span class='utc identifier id'>utc</span>
+  <span class='assert_not_nil identifier id'>assert_not_nil</span> <span class='users identifier id'>users</span><span class='lparen token'>(</span><span class='symbol val'>:quentin</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='remember_token identifier id'>remember_token</span>
+  <span class='assert_not_nil identifier id'>assert_not_nil</span> <span class='users identifier id'>users</span><span class='lparen token'>(</span><span class='symbol val'>:quentin</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='remember_token_expires_at identifier id'>remember_token_expires_at</span>
+  <span class='assert identifier id'>assert</span> <span class='users identifier id'>users</span><span class='lparen token'>(</span><span class='symbol val'>:quentin</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='remember_token_expires_at identifier id'>remember_token_expires_at</span><span class='dot token'>.</span><span class='between? fid id'>between?</span><span class='lparen token'>(</span><span class='before identifier id'>before</span><span class='comma token'>,</span> <span class='after identifier id'>after</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="test_should_remember_me_until_one_week-instance_method">
+  
+    - (<tt>Object</tt>) <strong>test_should_remember_me_until_one_week</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+93
+94
+95
+96
+97
+98
+99</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/authentication/test/unit/user_test.rb', line 93</span>
+
+<span class='def def kw'>def</span> <span class='test_should_remember_me_until_one_week identifier id'>test_should_remember_me_until_one_week</span>
+  <span class='time identifier id'>time</span> <span class='assign token'>=</span> <span class='float val'>1</span><span class='dot token'>.</span><span class='week identifier id'>week</span><span class='dot token'>.</span><span class='from_now identifier id'>from_now</span><span class='dot token'>.</span><span class='utc identifier id'>utc</span>
+  <span class='users identifier id'>users</span><span class='lparen token'>(</span><span class='symbol val'>:quentin</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='remember_me_until identifier id'>remember_me_until</span> <span class='time identifier id'>time</span>
+  <span class='assert_not_nil identifier id'>assert_not_nil</span> <span class='users identifier id'>users</span><span class='lparen token'>(</span><span class='symbol val'>:quentin</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='remember_token identifier id'>remember_token</span>
+  <span class='assert_not_nil identifier id'>assert_not_nil</span> <span class='users identifier id'>users</span><span class='lparen token'>(</span><span class='symbol val'>:quentin</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='remember_token_expires_at identifier id'>remember_token_expires_at</span>
+  <span class='assert_equal identifier id'>assert_equal</span> <span class='users identifier id'>users</span><span class='lparen token'>(</span><span class='symbol val'>:quentin</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='remember_token_expires_at identifier id'>remember_token_expires_at</span><span class='comma token'>,</span> <span class='time identifier id'>time</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="test_should_require_email-instance_method">
+  
+    - (<tt>Object</tt>) <strong>test_should_require_email</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+50
+51
+52
+53
+54
+55</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/authentication/test/unit/user_test.rb', line 50</span>
+
+<span class='def def kw'>def</span> <span class='test_should_require_email identifier id'>test_should_require_email</span>
+  <span class='assert_no_difference identifier id'>assert_no_difference</span> <span class='string val'>'User.count'</span> <span class='do do kw'>do</span>
+    <span class='u identifier id'>u</span> <span class='assign token'>=</span> <span class='create_user identifier id'>create_user</span><span class='lparen token'>(</span><span class='symbol val'>:email</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='nil nil kw'>nil</span><span class='rparen token'>)</span>
+    <span class='assert identifier id'>assert</span> <span class='u identifier id'>u</span><span class='dot token'>.</span><span class='errors identifier id'>errors</span><span class='dot token'>.</span><span class='on identifier id'>on</span><span class='lparen token'>(</span><span class='symbol val'>:email</span><span class='rparen token'>)</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="test_should_require_login-instance_method">
+  
+    - (<tt>Object</tt>) <strong>test_should_require_login</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+29
+30
+31
+32
+33
+34</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/authentication/test/unit/user_test.rb', line 29</span>
+
+<span class='def def kw'>def</span> <span class='test_should_require_login identifier id'>test_should_require_login</span>
+  <span class='assert_no_difference identifier id'>assert_no_difference</span> <span class='string val'>'User.count'</span> <span class='do do kw'>do</span>
+    <span class='u identifier id'>u</span> <span class='assign token'>=</span> <span class='create_user identifier id'>create_user</span><span class='lparen token'>(</span><span class='symbol val'>:login</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='nil nil kw'>nil</span><span class='rparen token'>)</span>
+    <span class='assert identifier id'>assert</span> <span class='u identifier id'>u</span><span class='dot token'>.</span><span class='errors identifier id'>errors</span><span class='dot token'>.</span><span class='on identifier id'>on</span><span class='lparen token'>(</span><span class='symbol val'>:login</span><span class='rparen token'>)</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="test_should_require_password-instance_method">
+  
+    - (<tt>Object</tt>) <strong>test_should_require_password</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+36
+37
+38
+39
+40
+41</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/authentication/test/unit/user_test.rb', line 36</span>
+
+<span class='def def kw'>def</span> <span class='test_should_require_password identifier id'>test_should_require_password</span>
+  <span class='assert_no_difference identifier id'>assert_no_difference</span> <span class='string val'>'User.count'</span> <span class='do do kw'>do</span>
+    <span class='u identifier id'>u</span> <span class='assign token'>=</span> <span class='create_user identifier id'>create_user</span><span class='lparen token'>(</span><span class='symbol val'>:password</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='nil nil kw'>nil</span><span class='rparen token'>)</span>
+    <span class='assert identifier id'>assert</span> <span class='u identifier id'>u</span><span class='dot token'>.</span><span class='errors identifier id'>errors</span><span class='dot token'>.</span><span class='on identifier id'>on</span><span class='lparen token'>(</span><span class='symbol val'>:password</span><span class='rparen token'>)</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="test_should_require_password_confirmation-instance_method">
+  
+    - (<tt>Object</tt>) <strong>test_should_require_password_confirmation</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+43
+44
+45
+46
+47
+48</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/authentication/test/unit/user_test.rb', line 43</span>
+
+<span class='def def kw'>def</span> <span class='test_should_require_password_confirmation identifier id'>test_should_require_password_confirmation</span>
+  <span class='assert_no_difference identifier id'>assert_no_difference</span> <span class='string val'>'User.count'</span> <span class='do do kw'>do</span>
+    <span class='u identifier id'>u</span> <span class='assign token'>=</span> <span class='create_user identifier id'>create_user</span><span class='lparen token'>(</span><span class='symbol val'>:password_confirmation</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='nil nil kw'>nil</span><span class='rparen token'>)</span>
+    <span class='assert identifier id'>assert</span> <span class='u identifier id'>u</span><span class='dot token'>.</span><span class='errors identifier id'>errors</span><span class='dot token'>.</span><span class='on identifier id'>on</span><span class='lparen token'>(</span><span class='symbol val'>:password_confirmation</span><span class='rparen token'>)</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="test_should_reset_password-instance_method">
+  
+    - (<tt>Object</tt>) <strong>test_should_reset_password</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+57
+58
+59
+60</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/authentication/test/unit/user_test.rb', line 57</span>
+
+<span class='def def kw'>def</span> <span class='test_should_reset_password identifier id'>test_should_reset_password</span>
+  <span class='users identifier id'>users</span><span class='lparen token'>(</span><span class='symbol val'>:quentin</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='update_attributes identifier id'>update_attributes</span><span class='lparen token'>(</span><span class='symbol val'>:password</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>'new password'</span><span class='comma token'>,</span> <span class='symbol val'>:password_confirmation</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>'new password'</span><span class='rparen token'>)</span>
+  <span class='assert_equal identifier id'>assert_equal</span> <span class='users identifier id'>users</span><span class='lparen token'>(</span><span class='symbol val'>:quentin</span><span class='rparen token'>)</span><span class='comma token'>,</span> <span class='User constant id'>User</span><span class='dot token'>.</span><span class='authenticate identifier id'>authenticate</span><span class='lparen token'>(</span><span class='string val'>'quentin'</span><span class='comma token'>,</span> <span class='string val'>'new password'</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="test_should_set_remember_token-instance_method">
+  
+    - (<tt>Object</tt>) <strong>test_should_set_remember_token</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+71
+72
+73
+74
+75</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/authentication/test/unit/user_test.rb', line 71</span>
+
+<span class='def def kw'>def</span> <span class='test_should_set_remember_token identifier id'>test_should_set_remember_token</span>
+  <span class='users identifier id'>users</span><span class='lparen token'>(</span><span class='symbol val'>:quentin</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='remember_me identifier id'>remember_me</span>
+  <span class='assert_not_nil identifier id'>assert_not_nil</span> <span class='users identifier id'>users</span><span class='lparen token'>(</span><span class='symbol val'>:quentin</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='remember_token identifier id'>remember_token</span>
+  <span class='assert_not_nil identifier id'>assert_not_nil</span> <span class='users identifier id'>users</span><span class='lparen token'>(</span><span class='symbol val'>:quentin</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='remember_token_expires_at identifier id'>remember_token_expires_at</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="test_should_suspend_user-instance_method">
+  
+    - (<tt>Object</tt>) <strong>test_should_suspend_user</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+118
+119
+120
+121</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/authentication/test/unit/user_test.rb', line 118</span>
+
+<span class='def def kw'>def</span> <span class='test_should_suspend_user identifier id'>test_should_suspend_user</span>
+  <span class='users identifier id'>users</span><span class='lparen token'>(</span><span class='symbol val'>:quentin</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='suspend! fid id'>suspend!</span>
+  <span class='assert identifier id'>assert</span> <span class='users identifier id'>users</span><span class='lparen token'>(</span><span class='symbol val'>:quentin</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='suspended? fid id'>suspended?</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="test_should_unset_remember_token-instance_method">
+  
+    - (<tt>Object</tt>) <strong>test_should_unset_remember_token</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+77
+78
+79
+80
+81
+82</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/authentication/test/unit/user_test.rb', line 77</span>
+
+<span class='def def kw'>def</span> <span class='test_should_unset_remember_token identifier id'>test_should_unset_remember_token</span>
+  <span class='users identifier id'>users</span><span class='lparen token'>(</span><span class='symbol val'>:quentin</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='remember_me identifier id'>remember_me</span>
+  <span class='assert_not_nil identifier id'>assert_not_nil</span> <span class='users identifier id'>users</span><span class='lparen token'>(</span><span class='symbol val'>:quentin</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='remember_token identifier id'>remember_token</span>
+  <span class='users identifier id'>users</span><span class='lparen token'>(</span><span class='symbol val'>:quentin</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='forget_me identifier id'>forget_me</span>
+  <span class='assert_nil identifier id'>assert_nil</span> <span class='users identifier id'>users</span><span class='lparen token'>(</span><span class='symbol val'>:quentin</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='remember_token identifier id'>remember_token</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="test_should_unsuspend_user_to_active_state-instance_method">
+  
+    - (<tt>Object</tt>) <strong>test_should_unsuspend_user_to_active_state</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+128
+129
+130
+131
+132
+133</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/authentication/test/unit/user_test.rb', line 128</span>
+
+<span class='def def kw'>def</span> <span class='test_should_unsuspend_user_to_active_state identifier id'>test_should_unsuspend_user_to_active_state</span>
+  <span class='users identifier id'>users</span><span class='lparen token'>(</span><span class='symbol val'>:quentin</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='suspend! fid id'>suspend!</span>
+  <span class='assert identifier id'>assert</span> <span class='users identifier id'>users</span><span class='lparen token'>(</span><span class='symbol val'>:quentin</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='suspended? fid id'>suspended?</span>
+  <span class='users identifier id'>users</span><span class='lparen token'>(</span><span class='symbol val'>:quentin</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='unsuspend! fid id'>unsuspend!</span>
+  <span class='assert identifier id'>assert</span> <span class='users identifier id'>users</span><span class='lparen token'>(</span><span class='symbol val'>:quentin</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='active? fid id'>active?</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="test_should_unsuspend_user_with_activation_code_and_nil_activated_at_to_pending_state-instance_method">
+  
+    - (<tt>Object</tt>) <strong>test_should_unsuspend_user_with_activation_code_and_nil_activated_at_to_pending_state</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+143
+144
+145
+146
+147
+148
+149</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/authentication/test/unit/user_test.rb', line 143</span>
+
+<span class='def def kw'>def</span> <span class='test_should_unsuspend_user_with_activation_code_and_nil_activated_at_to_pending_state identifier id'>test_should_unsuspend_user_with_activation_code_and_nil_activated_at_to_pending_state</span>
+  <span class='users identifier id'>users</span><span class='lparen token'>(</span><span class='symbol val'>:quentin</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='suspend! fid id'>suspend!</span>
+  <span class='User constant id'>User</span><span class='dot token'>.</span><span class='update_all identifier id'>update_all</span> <span class='symbol val'>:activation_code</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>'foo-bar'</span><span class='comma token'>,</span> <span class='symbol val'>:activated_at</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='nil nil kw'>nil</span>
+  <span class='assert identifier id'>assert</span> <span class='users identifier id'>users</span><span class='lparen token'>(</span><span class='symbol val'>:quentin</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='suspended? fid id'>suspended?</span>
+  <span class='users identifier id'>users</span><span class='lparen token'>(</span><span class='symbol val'>:quentin</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='reload identifier id'>reload</span><span class='dot token'>.</span><span class='unsuspend! fid id'>unsuspend!</span>
+  <span class='assert identifier id'>assert</span> <span class='users identifier id'>users</span><span class='lparen token'>(</span><span class='symbol val'>:quentin</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='pending? fid id'>pending?</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="test_should_unsuspend_user_with_nil_activation_code_and_activated_at_to_passive_state-instance_method">
+  
+    - (<tt>Object</tt>) <strong>test_should_unsuspend_user_with_nil_activation_code_and_activated_at_to_passive_state</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+135
+136
+137
+138
+139
+140
+141</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/authentication/test/unit/user_test.rb', line 135</span>
+
+<span class='def def kw'>def</span> <span class='test_should_unsuspend_user_with_nil_activation_code_and_activated_at_to_passive_state identifier id'>test_should_unsuspend_user_with_nil_activation_code_and_activated_at_to_passive_state</span>
+  <span class='users identifier id'>users</span><span class='lparen token'>(</span><span class='symbol val'>:quentin</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='suspend! fid id'>suspend!</span>
+  <span class='User constant id'>User</span><span class='dot token'>.</span><span class='update_all identifier id'>update_all</span> <span class='symbol val'>:activation_code</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='nil nil kw'>nil</span><span class='comma token'>,</span> <span class='symbol val'>:activated_at</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='nil nil kw'>nil</span>
+  <span class='assert identifier id'>assert</span> <span class='users identifier id'>users</span><span class='lparen token'>(</span><span class='symbol val'>:quentin</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='suspended? fid id'>suspended?</span>
+  <span class='users identifier id'>users</span><span class='lparen token'>(</span><span class='symbol val'>:quentin</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='reload identifier id'>reload</span><span class='dot token'>.</span><span class='unsuspend! fid id'>unsuspend!</span>
+  <span class='assert identifier id'>assert</span> <span class='users identifier id'>users</span><span class='lparen token'>(</span><span class='symbol val'>:quentin</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='passive? fid id'>passive?</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="test_suspended_user_should_not_authenticate-instance_method">
+  
+    - (<tt>Object</tt>) <strong>test_suspended_user_should_not_authenticate</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+123
+124
+125
+126</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/plugins/authentication/test/unit/user_test.rb', line 123</span>
+
+<span class='def def kw'>def</span> <span class='test_suspended_user_should_not_authenticate identifier id'>test_suspended_user_should_not_authenticate</span>
+  <span class='users identifier id'>users</span><span class='lparen token'>(</span><span class='symbol val'>:quentin</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='suspend! fid id'>suspend!</span>
+  <span class='assert_not_equal identifier id'>assert_not_equal</span> <span class='users identifier id'>users</span><span class='lparen token'>(</span><span class='symbol val'>:quentin</span><span class='rparen token'>)</span><span class='comma token'>,</span> <span class='User constant id'>User</span><span class='dot token'>.</span><span class='authenticate identifier id'>authenticate</span><span class='lparen token'>(</span><span class='string val'>'quentin'</span><span class='comma token'>,</span> <span class='string val'>'test'</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+    
+    <div id="footer">
+  Generated on Wed 20 Jan 14:32:52 2010 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
+  0.5.3 (ruby-1.8.7).
+</div>
+
+  </body>
+</html>
