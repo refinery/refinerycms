@@ -79,3 +79,14 @@ en:
         your_resource:
           tab_name: A resource
           link_to_this_resource: Link to this resource
+
+  activerecord: 
+    models:
+      page: page
+      user: user
+      image: image
+      inquery: inquery
+      resource: resource
+      refinery_setting: refinery setting
+      inquiry_setting: inquiry setting
+          
