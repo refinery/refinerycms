@@ -64,7 +64,7 @@ eval("#{(defined? Refinery::Initializer) ? Refinery : Rails}::Initializer").run 
 
   #===REFINERY REQUIRED GEMS===
   config.gem "rake", :version => ">= 0.8.3", :lib => "rake"
-	#config.gem "rubyzip", :version => ">= 0.9.1", :lib => "rubyzip"
+	config.gem "rubyzip", :version => ">= 0.9.1", :lib => "rubyzip"
   config.gem "friendly_id", :version => ">= 2.2.2", :lib => "friendly_id"
   config.gem "will_paginate", :version => ">= 2.3.11", :lib => "will_paginate", :source => "http://gemcutter.org"
   config.gem "rails", :version => ">= 2.3.5", :lib => "rails"
