@@ -1,18 +1,18 @@
-<%= link_to "Show", "", :id => "current_image_toggler" if (toggle_image_display ||= false) %>
+<%= link_to t('.show'), "", :id => "current_image_toggler" if (toggle_image_display ||= false) %>
 <%= f.hidden_field field %>
 <div id='current_image_container'<%= " style='display: none'" if (toggle_image_display ||= false) %>>
-  <a id='current_image_link' href="<%= insert_admin_images_url %>?thickbox=true&amp;modal=true&amp;titlebar=true&amp;field=<%= f.object.class.name.underscore.downcase %>_<%= field %>&amp;update_image=current_picked_image&amp;callback=picked_image_changed&amp;thumbnail=&amp;KeepThis=true&amp;TB_iframe=true&amp;width=<%= width ||= 950 %>&amp;height=<%= height ||= 510 %>" style='border: 0px' title='Change <%= (description ||= "image").titleize %>' name='Change <%= (description ||= "image").titleize %>' class='thickbox'>
+  <a id='current_image_link' href="<%= insert_admin_images_url %>?thickbox=true&amp;modal=true&amp;titlebar=true&amp;field=<%= f.object.class.name.underscore.downcase %>_<%= field %>&amp;update_image=current_picked_image&amp;callback=picked_image_changed&amp;thumbnail=&amp;KeepThis=true&amp;TB_iframe=true&amp;width=<%= width ||= 950 %>&amp;height=<%= height ||= 510 %>" style='border: 0px' title='<%= t('.change') %> <%= (description ||= "image").titleize %>' name='<%= t('.change')%> <%= (description ||= "image").titleize %>' class='thickbox'>
     <% unless image.nil? %>
       <%= image_fu image, nil, {:class => "brown_border", :id => "current_picked_image"} %>
     <% else %>
       <img id="current_picked_image" class="" src="" alt="" style='display: none' />
     <% end %>
     <p id='no_picked_image_selected' <%= "style='display: none;'" unless image.nil? %>>
-      There is currently no <%= description ||= "image" %> selected, please click here to add one.
+      <%= t('.none_selected', :what => t('.' + (description ||= "image"))) %>
     </p>
   </a>
   <br/>
-  <%= link_to "Remove current #{description ||= "image"}", "", :id => "remove_picked_image", :style => "margin-top:8px;display:inline-block;width:auto;#{"display:none;" if image.nil?}" %>
+  <%= link_to t('.remove_current', :what => t('.' + (description ||= "image"))), "", :id => "remove_picked_image", :style => "margin-top:8px;display:inline-block;width:auto;#{"display:none;" if image.nil?}" %>
 </div>
 <% content_for :head do %>
   <script type='text/javascript'>
@@ -29,7 +29,7 @@
       {
         $('current_picked_image').removeClassName('brown_border');
         $('current_picked_image').src = '';
-        $('current_picked_image').alt = 'There is currently no <%= description ||= "image" %> selected, please click here to add one.';
+        $('current_picked_image').alt = '<%= t('.none_selected', :what => t('.' + (description ||= "image"))) %>';
         $('<%= f.object.class.name.underscore.downcase %>_<%= field %>').value = '';
         $('current_picked_image').style.width = "auto";
         $('current_picked_image').style.height = "auto";
