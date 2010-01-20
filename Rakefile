@@ -42,6 +42,7 @@ begin
     s.homepage = %q{http://refinerycms.com}
     s.authors = ["Resolve Digital", "David Jones", "Philip Arndt"]
     s.extra_rdoc_files = %w(README CONTRIBUTORS LICENSE VERSION)
+    s.doc_task = :yard
   end
 
   namespace :version do
