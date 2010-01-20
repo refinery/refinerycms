@@ -3,7 +3,7 @@
     <li>
       <%= render :partial => "/shared/admin/search", :locals => {:url => admin_themes_url} %>
     </li>
-    <% if Theme.first.theme_directory_is_writable? %>
+    <% if Theme::directory_is_writable? %>
       <li>
         <%= link_to "Upload New Theme", new_admin_theme_url, :class => "add_icon" %>
       </li>
