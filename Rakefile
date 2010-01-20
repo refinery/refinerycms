@@ -33,7 +33,6 @@ task :whitespace do
 end
 
 begin
-  
   require 'jeweler'
   Jeweler::Tasks.new do |s|
     s.name = %q{refinerycms}
