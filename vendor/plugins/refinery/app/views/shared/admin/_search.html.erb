@@ -1,5 +1,5 @@
 <form method="GET" action="<%= url %>">
-  Search
+  <%=t(:search) %>
   <input id="search" name="search" size="35" type="search" value="<%= params[:search] %>" />
-  <%= submit_tag 'Go', :name => "" %>
+  <%= submit_tag t(:search_submit), :name => "" %>
 </form>
