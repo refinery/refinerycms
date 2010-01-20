@@ -36,23 +36,24 @@ class Admin::ImagesController < Admin::BaseController
     self.new if @image.nil?
     @dialog = from_dialog?
     @thickbox = !params[:thickbox].blank?
-    @field = params[:field]
-    @update_image = params[:update_image]
-    @thumbnail = params[:thumbnail]
-    @callback = params[:callback]
-    @conditions = params[:conditions]
     @url_override = admin_images_url(:dialog => @dialog, :insert => true)
+    #@field = params[:field]
+    #@update_image = params[:update_image]
+    #@thumbnail = params[:thumbnail]
+    #@callback = params[:callback]
+    #@conditions = params[:conditions]
 
-    unless params[:conditions].blank?
-      extra_condition = params[:conditions].split(',')
-
-      extra_condition[1] = true if extra_condition[1] == "true"
-      extra_condition[1] = false if extra_condition[1] == "false"
-      extra_condition[1] = nil if extra_condition[1] == "nil"
-      paginate_images({extra_condition[0].to_sym => extra_condition[1]})
-    else
-      paginate_images
-    end
+#    unless params[:conditions].blank?
+#      extra_condition = params[:conditions].split(',')
+#
+#      extra_condition[1] = true if extra_condition[1] == "true"
+#      extra_condition[1] = false if extra_condition[1] == "false"
+#      extra_condition[1] = nil if extra_condition[1] == "nil"
+#      paginate_images({extra_condition[0].to_sym => extra_condition[1]})
+#    else
+#      paginate_images
+#    end
+    paginate_images
     render :action => "insert"
   end
 
