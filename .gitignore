@@ -6,6 +6,8 @@ tmp/**/*
 doc/api
 doc/app
 config/database.yml
+config/amazon_s3.yml
+config/rackspace_cloudfiles.yml
 public/images/system/*
 nbproject
 index/**/*
