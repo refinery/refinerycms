@@ -30,6 +30,7 @@ nl:
       image_picker:
         none_selected: "Er is op dit moment geen {{what}} geselecteerd. Klik a.u.b. hier om er een toe te voegen."
         remove_current: "Verwijder de huidige {{what}}"
+        change: Klik hier om de afbeelding te wijzigen
         image: afbeelding
       resource_picker:
         none_selected: "Er is op dit moment geen {{what}} geselecteerd. Klik a.u.b. hier om er een toe te voegen."
