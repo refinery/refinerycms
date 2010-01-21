@@ -1,0 +1,85 @@
+body{
+	color:#444;
+}
+#header, #primary{
+	background:#FFF;
+}
+
+#secondary{
+	background:#F3F3F3;
+}
+
+body, #ancillary{
+	background:#D8D8D8;
+}
+
+a, .story .details a, .story .details a:hover{
+	color:#000;
+}
+.story .details a:hover{
+	text-decoration:underline;
+}
+.story .details{ border-top:1px solid #7F7F7F; }
+
+h1, h2, h3{ color:#000; }
+
+#primary h2{ color:#333; }
+
+blockquote{ color:#333; }
+
+table th{ color:#FFF; background:#333; }
+table td{ color:#000; background:#EAEAEA; }
+
+#header h2{ border-right:1px solid #7F7F7F; }
+.secondary dd a:hover {
+	color: #000;
+}
+.secondary .featured p{
+	border-bottom:1px solid #CCC;
+	border-top: 1px solid #CCC;
+}
+.secondary .featured dl{
+	border-bottom:1px solid #CCC;
+}
+.secondary .featured dt{
+	color:#333;
+}
+#primary .story h2, #primary .primary h2, #primary .single-story .primary h3, .story h3, .story h3 a{
+	color:#333;
+}
+
+#secondary{
+	border-top:1px solid #E3E3E3;
+}
+.comment-head{
+	border-bottom:1px solid #E3E3E3;
+}
+
+ul.dates, ul.counts, ul.blogroll li ul, ul.pages{
+	border-top:1px solid #C2C2C2;
+}
+ul.dates li, ul.counts li, ul.blogroll li ul li, ul.pages li{
+	border-bottom:1px solid #C2C2C2;
+}
+ul.dates .date, ul.counts .count{
+	color:#7A7A7A;
+}
+ul.dates a, ul.counts a, ul.blogroll a, ul.pages a{
+	color:#404040;
+}
+ul.dates a:hover, ul.dates a:hover .date, ul.counts a:hover, ul.counts a:hover .count, ul.blogroll a:hover, ul.pages a:hover{ color:#000; }
+
+#footer a, #footer p.attributes a{
+	color:#333;
+}
+#footer a:hover, #footer p.attributes a:hover{ color:#000; }
+
+
+/* Images */
+
+#footer .inside{
+	background:url(white/footer.gif) 50% 0 repeat-x;
+}
+#search .searchimg{
+	background:url(white/search.gif) 0 0 no-repeat;
+}
