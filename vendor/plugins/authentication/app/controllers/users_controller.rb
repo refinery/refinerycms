@@ -9,12 +9,12 @@ class UsersController < ApplicationController
   layout 'admin'
 
   def new
-    render :text => "User signup is disabled", :layout => true unless can_create_public_user
+    render :text => t('.signup_disabled') , :layout => true unless can_create_public_user
   end
 
   def create
     unless can_create_public_user
-      render :text => "User signup is disabled", :layout => true
+      render :text => t('.signup_disabled'), :layout => true
     else
       begin
         cookies.delete :auth_token
@@ -33,10 +33,10 @@ class UsersController < ApplicationController
           current_user.update_attribute(:superuser, true) if User.count == 1 # this is the superuser if this user is the only user.
           redirect_back_or_default(admin_root_url)
 
-          flash[:notice] = "Welcome to Refinery, #{current_user.login}."
+          flash[:notice] = t('.welcome', :who => current_user.login + ' ')
           if User.count == 1 or RefinerySetting[:site_name] == "Company Name"
             refinery_setting = RefinerySetting.find_by_name("site_name")
-            flash[:notice] << "<br/>First let's give the site a name. <a href='#{edit_admin_refinery_setting_url(refinery_setting)}'>Go here</a> to edit your website's name"
+            flash[:notice] << t('.setup_website_name', :link => edit_admin_refinery_setting_url(refinery_setting))
           end
         else
           render :action => 'new'
@@ -49,7 +49,7 @@ class UsersController < ApplicationController
     self.current_user = params[:activation_code].blank? ? false : User.find_by_activation_code(params[:activation_code])
     if logged_in? && !current_user.active?
       current_user.activate!
-      flash[:notice] = "Signup complete!"
+      flash[:notice] = t('.signup_complete')
     end
     redirect_back_or_default(root_url)
   end

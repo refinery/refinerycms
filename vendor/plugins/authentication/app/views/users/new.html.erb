@@ -1,6 +1,6 @@
 <%= error_messages_for :user %>
 <p>
-  Fill out the form below with your details so we can get you started.
+  <%= t('.fill_form') %>
 </p>
 <% form_for :user, :url => users_path do |f| -%>
   <div class='field'>
@@ -24,5 +24,5 @@
       <%= hidden_field_tag 'user[plugins][]', plugin, :id => "plugins_#{plugin.downcase.gsub(" ", "_")}"  %>
     <% end %>
   <% end %>
-  <p><%= submit_tag 'Sign up' %></p>
+  <p><%= submit_tag t('.sign_up') %></p>
 <% end -%>
