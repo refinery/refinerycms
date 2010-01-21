@@ -1,0 +1,40 @@
+en:
+  admin:
+    users:
+      cannot_remove_user_plugin_from_current_user: "You cannot remove the 'Users' plugin from the currently logged in account."
+    form:
+      blank_password_keeps_current: Leaving password blank keeps the current password
+    index:
+      create_new_user: Create New User
+      confirm_delete_message: "Are you sure you want to delete '{{who}}'?"
+      conform_delete_title: Remove this user forever 
+      edit_user: Edit this user 
+      email_user: Email this user
+      preview: ({{who}}) created {{created_at}}
+      no_users_yet:  There are no users yet. Click "Create New User" to add your first user.
+  sessions:
+    login_successfull: Logged in successfully
+    login_failed: Sorry, your password or username was incorrect.
+    logged_out: You have been logged out.
+    new:
+      log_in: Log in
+      cancel_log_in: Cancel
+  users:
+    setup_website_name: "<br/>First let's give the site a name. <a href='{{link}}'>Go here</a> to edit your website's name"
+    new:
+      fill_form: Fill out the form below with your details so we can get you started.
+      sign_up: Sign up
+    index:
+      welcome: Welcome to Refinery, {{who}}
+      signup_disabled: User signup is disabled
+      signup_complete: Signup complete!
+  user_mailer:
+    please_activate: Please activate your new account
+    activated: Your account has been activated!
+    activated_email: "{{who}}, your account has been activated. You may now start adding your plugins:"
+    account_created: Your account has been created.
+    user_name: Username {{name}}
+    password: Password {{password}}
+    visit_url: "Visit this url to activate your account:"
+
+
