@@ -42,6 +42,8 @@ begin
     s.homepage = %q{http://refinerycms.com}
     s.authors = ["Resolve Digital", "David Jones", "Philip Arndt"]
     s.extra_rdoc_files = %w(README CONTRIBUTORS LICENSE VERSION)
+    s.rdoc_options << "--inline-source"
+    s.has_rdoc = true
   end
 
   namespace :version do
