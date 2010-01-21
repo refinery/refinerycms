@@ -1,0 +1,39 @@
+nl:
+  admin: 
+    pages:
+      form:
+        create_content_section: Maak een nieuw content sectie aan
+        delete_content_section: Verwijder een content sectie
+        hide_or_show_advanced_options: Verberg/toon uitgebreide opties
+        explain_page_different_title: Als u de pagina een andere titel wilt geven, dan diegene die in het menu staat, voer deze dan hier in.
+        redirect_to_first_child: Vink dit aan als u deze pagina wilt laten doorverwijzen naar het eerst onderliggende 'kind' 
+        title_type: "Type:"
+        title_types:
+          none: Geen
+          text: Tekst
+          image: Afbeelding
+        redirect_to_first_child: "Vink dit aan, als u de bezoeker naar het eerste kind van de pagina wilt doorsturen, als deze pagina bezocht wordt."
+        custom_url: Aangepaste URL
+        custom_url_explanation: "Voer een adres in dit veld, als u deze pagina wilt doorlinken naar een externe website, een bestand, afbeelding, of een andere afbeelding. <br/> Let op: Dit adres moet naar een bestaande pagina, afbeelding, etc verwijzen. Er wordt niet automatisch een nieuwe aangemaakt."
+        seo: Zoekmachine optimalisatie
+        seo_override_title: Als u de standaard title van het browservenster wilt wijzigen, kunt u hier een alternatief invullen.
+        meta_keywords: Voeg 5 tot 10 meta zoekwoorden toe. Gebruik een komma om de zoekwoorden te scheiden.
+        meta_description: Voer een compacte (twee a drie zinnen) pagina beschrijving in.
+        draft: Concept
+        show_in_menu_description: Vink deze box aan als de pagina in het menu moet worden getoond.
+        draft: Concept
+        save_as_draft: Sla op als concept
+        save: Opslaan
+        cancel: Annuleren
+        js:
+          content_section:
+            create: Maak een nieuwe sectie
+            already_exists: Er bestaat al een sectie met die naam. Kies a.u.b. een andere naam.
+            title_empty: U heeft nog geen naam voor dezee sectie ingevoerd. Kies a.u.b. een naam.
+            confirm_delete: Deze actie zal de complete inhoud van de sectie {{section_name}} geheel verwijderen. Weet u zeker dat u dit wilt?
+      index:
+        create_new_page: Maak een nieuwe pagina
+        reorder_pages: "Wijzig de volgorde van de pagina's"
+        reorder_pages_done: "Klaar met het wijzingen van de volgorde van de pagina's"
+        sorry_no_results: Helaas! Er zijn geen resultaten gevonden.
+        no_pages_yet: "Er zijn nog geen pagina's. Druk op 'Maak een nieuwe pagina' om de eerste aan te maken."
