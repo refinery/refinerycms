@@ -1,7 +1,7 @@
 <div id='actions'>
   <ul>
     <li>
-      <%= link_to "Create New User", new_admin_user_url, :class => "add_icon" %>
+      <%= link_to t('.create_new_user'), new_admin_user_url, :class => "add_icon" %>
     </li>
   </ul>
 </div>
@@ -14,16 +14,16 @@
           <span class='title'>
             <span class='actions'>
               <%= link_to refinery_icon_tag('delete.png'), admin_user_path(user),
-                :confirm => "Are you sure you want to delete '#{user.login}'?",
+                :confirm => t('.confirm_delete_message', :who => user.login),
                 :class => "cancel", :method => :delete,
-                :title => "Remove this user forever" if user.ui_deletable?(current_user) %>
+                :title => t('.confirm_delete_title') if user.ui_deletable?(current_user) %>
               <%= link_to refinery_icon_tag('application_edit.png'), edit_admin_user_path(user),
-                :title => 'Edit this user' %>
-              <%= mail_to user.email, refinery_icon_tag('email_go.png'), :title => 'Email this user' %>
+                :title => t('.edit_user')%>
+              <%= mail_to user.email, refinery_icon_tag('email_go.png'), :title => t('.email_user') %>
             </span>
             <strong><%= user.login %></strong>
             <span class="preview">
-              (<%= user.email %>) created <%= user.created_at.strftime("%b %d, %Y") %>
+              <%= t('.preview', :who => user.email, :created_at => l(user.created_at, :format => :short)) %>
             </span>
           </span>
         </li>
@@ -33,8 +33,7 @@
   <% else %>
     <p>
       <strong>
-        There are no users yet.
-        Click "Create New User" to add your first user.
+        <%= t('.no_users_yet') %>
       </strong>
     </p>
   <% end %>
