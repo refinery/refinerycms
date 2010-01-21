@@ -1,0 +1,38 @@
+en:
+  admin: 
+    pages:
+      form:
+        create_content_section: Create content section
+        delete_content_section: Delete content section
+        hide_or_show_advanced_options: Hide/Show Advanced Options
+        explain_page_different_title: If you want the page to have a different title than the one that shows in the menu and browser title then enter it here.
+        redirect_to_first_child: "Check this box if you want the visitor to be redirected to this page's first child page if this page is selected."
+        title_type: "Type:"
+        title_types:
+          none: None
+          text: Text
+          image: Image
+        custom_url: Custom URL
+        custom_url_explanation: "Enter a URL if this page links to an external site or to a pre-existing resource e.g. a contact page. <br/> Note: This URL must point to a location that exists; a new one will not be created."
+        seo: Search Engine Optimization
+        seo_override_title: If you want to override the default browser title, do it here.
+        meta_keywords: Enter 5-10 keywords that relate to this page. Separate keywords by a comma.
+        meta_description: Enter a concise two or three sentences describing what this page is about.
+        draft: Draft
+        show_in_menu_description: Check this box if this page should appear in the site menu
+        draft: Draft
+        save_as_draft: Save as Draft
+        save: Save
+        cancel: Cancel
+        js:
+          content_section:
+            create: Create Content Section
+            already_exists: A content section with that title already exists, please choose another.
+            title_empty: You have not entered a title for the content section, please enter one.
+            confirm_delete: This will remove the content section {{section_name}} when the page is saved and erase all content that has been entered into it, Are you sure?
+      index:
+        create_new_page: Create a new page
+        reorder_pages: Reorder the Pages
+        reorder_pages_done: Done reordering Pages
+        sorry_no_results: Sorry! There are no results found. 
+        no_pages_yet: There are no pages yet.  Click "Create New Page" to add your first page.
