@@ -11,7 +11,7 @@ module Admin::DashboardHelper
       action = record.updated_at.eql?(record.created_at) ? :created : :updated
 
       message = "<td>#{refinery_icon_tag("#{activity.send "#{action}_image"}")}</td>"
-      message << "<td>#{link} #{record.class.name.titleize.downcase} #{t(action)}</td>"
+      message << "<td>#{link} #{record.class.human_name.titleize.downcase} #{t(action)}</td>"
       message << "<td class='time_ago'>#{time_ago_in_words(record.send "#{action}_at")} #{t(:ago)}</td>"
     end
   end

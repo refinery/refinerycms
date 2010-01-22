@@ -17,10 +17,10 @@
       <% if RefinerySetting.find_or_set(:new_page_parts, false) %>
         <ul id='page_parts_controls'>
           <li>
-            <%= link_to refinery_icon_tag("add.png"), "#", :id => "add_page_part", :title => "Create Content Section" %>
+            <%= link_to refinery_icon_tag("add.png"), "#", :id => "add_page_part", :title => t('.create_content_section') %>
           </li>
           <li>
-            <%= link_to(refinery_icon_tag("delete.png"), "#", :title => 'Delete content section', :class => 'delete_page_part', :name => "Delete Content Section", :id => "delete_page_part") %>
+            <%= link_to(refinery_icon_tag("delete.png"), "#", :title => t('.delete_content_section'), :class => 'delete_page_part',  :id => "delete_page_part") %>
           </li>
         </ul>
       <% end %>
@@ -34,16 +34,16 @@
     </div>
   </div>
   <p>
-    <%= link_to "&raquo; Hide/Show Advanced Options", "", :id => "toggle_advanced_options",
+    <%= link_to "&raquo;" + t('.hide_or_show_advanced_options'), "", :id => "toggle_advanced_options",
           :rel => "Click to access meta tag settings and menu options" %>
   </p>
   <div id='more_options' style="display:none;">
     <div class='field'>
       <%= label_tag :custom_title %>
-      <%= label_tag "", 'Type:', :class => "stripped" %>
+      <%= label_tag "", t('.title_type'), :class => "stripped" %>
       <% ["none", "text", "image"].each do |type| %>
         <%= f.radio_button :custom_title_type, "#{type}" %>
-        <%= label_tag "page_custom_title_type_#{type}", "#{type.titleize}", :class => "stripped" %>
+        <%= label_tag "page_custom_title_type_#{type}", t(".title_types.#{type}").titleize, :class => "stripped" %>
       <% end %>
       <br/>
       <div id='custom_title_none'></div>
@@ -51,7 +51,8 @@
         <p>
           <%= f.text_field :custom_title, {:size => 103} %><br/>
           <small>
-            If you want the page to have a different title than the one that shows in the menu and browser title then enter it here.<br/>
+            <%=t('.explain_page_different_title')%>
+            <br/>
           </small>
         </p>
       </div>
@@ -69,51 +70,49 @@
     <div class='field'>
       <%= label_tag :skip_to_first_child? %>
       <%= f.check_box :skip_to_first_child %>
-      <%= f.label :skip_to_first_child, "Check this box if you want the visitor to be redirected to this page's first child page if this page is selected.", :class => "stripped" %>
+      <%= f.label :skip_to_first_child, t('.redirect_to_first_child'), :class => "stripped" %>
     </div>
     <div class='field'>
-      <%= f.label :link_url, "Custom URL" %>
+      <%= f.label :link_url, t('.custom_url') %>
       <%= f.text_field :link_url, {:size => 103} %><br/>
       <small>
-        Enter a URL if this page links to an external site or to a pre-existing resource e.g. a contact page.
-        <br/>
-        Note: This URL must point to a location that exists; a new one will not be created.
+        <%= t('.custom_url_explanation') %>
       </small>
     </div>
-    <h2>Search Engine Optimization</h2>
+    <h2><%= t('.seo') %></h2>
     <div class='field'>
       <%= f.label :browser_title %>
       <%= f.text_field :browser_title, :size => 63 %><br/>
       <small>
-        If you want to override the default browser title, do it here.
+        <%= t('.seo_override_title') %>
       </small>
     </div>
     <div class='field'>
       <%= f.label :meta_keywords %>
       <%= f.text_field :meta_keywords, :size => 63 %><br/>
       <small>
-        Enter 5-10 keywords that relate to this page. Separate keywords by a comma.
-      </small>
+        <%= t('.meta_keywords') %>
+              </small>
     </div>
     <div class='field'>
       <%= f.label :meta_description %>
       <%= f.text_area :meta_description, :cols => 95, :rows => 3 %><br/>
       <small>
-        Enter a concise two or three sentences describing what this page is about.
+        <%= t('.meta_description') %>
       </small>
     </div>
     <div class='field'>
       <%= f.label :show_in_menu %>
       <%= f.check_box :show_in_menu %>
       <small>
-        <%= f.label :show_in_menu, "Check this box if this page should appear in the site menu" %>
+        <%= f.label :show_in_menu, t('.show_in_menu_description')  %>
       </small>
     </div>
   </div>
   <div class='field'>
-    <label>Draft</label>
+    <label><%= t('.draft') %></label>
     <%= f.check_box :draft %>
-    <%= f.label :draft, "Save as Draft", :class => "stripped" %>
+    <%= f.label :draft, t('.save_as_draft'),  :class => "stripped" %>
   </div>
   <%= render :partial => "/shared/admin/form_actions", :locals => {:f => f, :continue_editing => true} %>
   <div id='new_page_part_dialog' style='display: none'>
@@ -123,9 +122,9 @@
       <input id='new_page_part_index' type='hidden' value='<%= @page.parts.size %>' />
     </div>
     <div id='dialog-form-actions' class='form-actions'>
-      <%= f.submit 'Save', :id => "new_page_part_save" %>
+      <%= f.submit t('.save'), :id => "new_page_part_save" %>
       or
-      <%= link_to "Cancel", "", :id => "new_page_part_cancel", :class => "close_dialog" %>
+      <%= link_to t('.cancel'), "", :id => "new_page_part_cancel", :class => "close_dialog" %>
     </div>
   </div>
 <% end %>
@@ -159,7 +158,7 @@
 
 <% if RefinerySetting.find_or_set(:new_page_parts, false) %>
     $('add_page_part').observe('click', function(e) {
-      tb_show('Create Content Section', '#?auto_size_content=true&draggable=true&titlebar=true&inlineId=new_page_part_dialog&TB_inline=true&modal=true');
+      tb_show('<%= t('.js.content_section.create')%>', '#?auto_size_content=true&draggable=true&titlebar=true&inlineId=new_page_part_dialog&TB_inline=true&modal=true');
 
       e.preventDefault();
     });
@@ -193,10 +192,10 @@
 
           tb_remove();
         }  else {
-          alert("A content section with that title already exists, please choose another.");
+          alert("<%= t('.js.content_section.already_exists') %>");
         }
       } else {
-        alert("You have not entered a title for the content section, please enter one.");
+        alert("<%= t('.js.content_section.title_empty') %>");
       }
     });
 
@@ -209,7 +208,7 @@
     $('delete_page_part').observe('click', function(e) {
       selected_part_link = $$('#page_parts li.active a').first();
       part_container = $(selected_part_link.getAttribute('href').gsub("#", ""));
-      result = confirm("This will remove the content section '" + selected_part_link.innerHTML + "' when the page is saved and erase all content that has been entered into it, Are you sure?");
+      result = confirm("<%= t('.js.content_section.confirm_delete', :section_name => '" + selected_part_link.innerHTML + "' )%>");
       if (result) {
         if ((part_id = $(part_container.down('textarea').id.gsub('_body', '_id'))) != null) {
           new Ajax.Request("<%= admin_page_parts_url %>/" + part_id.value, {

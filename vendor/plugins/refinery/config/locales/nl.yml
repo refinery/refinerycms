@@ -1,0 +1,85 @@
+nl:
+  welcome:
+    there_are_no_users: "Er zijn nog geen gebruikers, dus zullen we er nu eerst een voor je maken"
+    remember_admin_location: "Onthoud dat u het beheerders gedeelte hieronder vindt:"
+    lets_start: "Goed, laten we nu jouw gebruikersaccount instellen."
+    continue: "Ga verder..."
+  reorder_menu: Wijzig menu volgorde
+  reorder_menu_done: Ik ben klaar met het wijzigen van de volgorde
+  log_out: Afmelden
+  search: Zoek naar
+  search_submit: Zoek
+  refinery:
+    crudify:
+      created: "{{what}} is met success aangemaakt"
+      updated: "{{what}} is met success aangepast"
+      destroyed: "{{what}} is met success verwijderd"
+  layouts:
+    admin:
+      view_public_site: Bekijk de website
+  shared:
+    admin:
+      continue_editing:
+        save_and_continue_editing: Sla op en ga verder met bewerken
+      form_actions:
+        save: Sla op
+        or_cancel: of
+        cancel: Annuleer
+        or_continue: of
+        cancel_loose_changes: "Als u annuleert, zullen alle wijzingen voor '{{object_name}}' niet worden opgeslagen!"
+      image_picker:
+        none_selected: "Er is op dit moment geen {{what}} geselecteerd. Klik a.u.b. hier om er een toe te voegen."
+        remove_current: "Verwijder de huidige {{what}}"
+        change: Klik hier om de afbeelding te wijzigen
+        image: afbeelding
+      resource_picker:
+        none_selected: "Er is op dit moment geen {{what}} geselecteerd. Klik a.u.b. hier om er een toe te voegen."
+        current: "Huidige {{what}}"
+        download_current: "Download huidige {{what}}"
+        opens_in_new_window: Opend in een nieuw venster
+        remove_current: "Verwijder huidige {{what}}"
+        resource: bestand
+  admin:
+    pages:
+      list:
+        view_live: Bekijk deze pagina op de website <br/><em>(opent een nieuw venster)</em> 
+        edit_this_page: Bewerk deze pagina
+        confirm_delete_page_title: Verwijder deze pagina
+        confirm_delete_page_message: Weet u zeker dat u de pagina '{{title}}' wilt verwijderen?
+        hidden: verborgen
+        draft: concept
+    page_dialogs:
+      page_link:
+        link_to_this_page: Maak een link naar deze pagina
+      link_to:
+        your_page:
+          tab_name: Een pagina
+        web_address:
+          tab_name: Website
+          location: Locatie
+          new_window: Nieuw Venster
+          new_window_label: Klik dit vinkje aan om de link in een nieuw venster te laten openen.
+          not_sure: Bent u niet zeker over wat u in het bovenstaande veld moet invoeren?
+          step1: Zoek de pagina op het internet waar u naar wilt linken.
+          step2: Kopieer het website adres van de adresbalk uit uw browser, en plak het in het tekstveld hierboven. 
+        email_address:
+          tab_name: Email adres
+          subject_line_optional: Onderwerp (niet verplicht)
+          body_optional: Inhoud (niet verplicht)
+          not_sure: Bent u niet zeker over wat u in het bovenstaande velden moet invoeren?
+          step1: "Type, of knip &amp; plak (van bijvoorbeeld uw adresboek) het email adres waar u naar wilt linken in het bovenstaande'<strong>Email adres</strong>' veld."
+          step2: "Gebruik het '<strong>Onderwerp</strong>'-veld als u het bericht een voorbedacht onderwerp wilt laten hebben. (deze is nog aan te passend oor de bezoeker van uw site)"
+          step3: "Gebruik het '<strong>Inhoud</strong>'-veld als u het bericht een standaard inhoud wilt geven (deze is nog aan te passen door de bezoeker van uw site."
+        your_resource:
+          tab_name: Een bestand
+          link_to_this_resource: Link naar dit bestand
+
+  activerecord: 
+    models:
+      page: pagina
+      user: gebruiker
+      image: afbeelding
+      inquery: vraag
+      resource: bestand
+      refinery_setting: instelling
+      inquiry_setting: instelling voor vragen
