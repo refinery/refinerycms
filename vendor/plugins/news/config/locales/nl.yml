@@ -1,0 +1,34 @@
+nl:
+  admin:
+    news_items:
+      news_item:
+        view_live: Bekijk dit bericht op de website.<br/><em>(opent in een nieuw venster.)</em>
+        edit: Bewerk dit bericht
+        delete:
+          message:  Weet u zeker dat u bericht {{title}} wilt verwijderen? 
+          title: Verwijder dit bericht permanent
+      index:
+        create_new: Maak een nieuw nieuwsbericht
+        search_results_for: "Zoekresultaten voor: {{query}}"
+        no_results_found: Sorry, er zijn geen resultaten gevonden.
+        no_items_yet: Er zijn nog geen nieuwsberichten. Klik op "Maak een nieuw niewsbericht" om het eerste bericht te maken.
+  news_items:
+    recent_posts:
+      recent_posts: Laatste nieuws
+    index:
+      published_at: Gepubliceerd op {{at}}
+      read_more: Lees meer
+      no_items_yet: Sorry, er zijn nog geen nieuwsberichten geplaatst.
+      no_results_found: Sorry, geen resultaten gevonden.
+    show:
+      published_at: Gepubliceerd op {{at}}
+      back_to_index: Terug naar de andere berichten
+
+  activerecord:
+    errors:
+      models:
+        news_item:
+          attributes:
+            content:
+              blank: U kunt geen leeg nieuwsbericht toevoegen!
+
