@@ -141,6 +141,7 @@ var wymeditor_boot_options = jQuery.extend({
       WYMeditor.loaded();
     }
   }
+  , lang: locale
 }, custom_wymeditor_boot_options);
 
 // custom function added by us to hook into when all wymeditor instances on the page have finally loaded:

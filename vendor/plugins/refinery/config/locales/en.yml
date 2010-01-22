@@ -1,0 +1,86 @@
+en:
+  welcome:
+    there_are_no_users: "There are no users yet, so we'll set you up first."
+    remember_admin_location: "Remember your Refinery admin area is at:"
+    lets_start: "Alright let's get you setup so you can login..."
+    continue: "Continue..."
+  reorder_menu: Reorder menu
+  reorder_menu_done: "I'm done reordering the menu"
+  log_out: Log out
+  search: Search
+  search_submit: Go
+  refinery:
+    crudify:
+      created: "{{what}} was successfully created"
+      updated: "{{what}} was successfully created"
+      destroyed: "{{what}} was successfully destroyed"
+  layouts:
+    admin:
+      view_public_site: View public site
+  shared:
+    admin:
+      continue_editing:
+        save_and_continue_editing: "Save &amp; continue editing"
+      form_actions:
+        save: Save
+        or_cancel: or
+        cancel: Cancel
+        or_continue: or
+        cancel_loose_changes: "Cancelling will lose all changes you've made to this {{object_name}}"
+      image_picker:
+        none_selected: "There is currently no {{what}} selected, please click here to add one."
+        remove_current: "Remove current {{what}}"
+        change: Click here to pick a image
+        image: image
+      resource_picker:
+        none_selected: "There is currently no {{what}} selected, please click here to add one."
+        current: "Current {{what}}"
+        download_current: "Download current {{what}}"
+        opens_in_new_window: Opens in a new window
+        remove_current: "Remove current {{what}}"
+        resource: resource
+  admin:
+    pages:
+      list:
+        view_live: View this page live <br/><em>(opens in a new window)</em> 
+        edit_this_page: Edit this page
+        confirm_delete_page_title: Delete this page
+        confirm_delete_page_message: Are you sure you want to delete the page '{{title}}'?
+        hidden: hidden
+        draft: draft
+    page_dialogs:
+      page_link:
+        link_to_this_page: Link to this page
+      link_to:
+        your_page:
+          tab_name: A page
+        web_address:
+          tab_name: Website
+          location: Location
+          new_window: New window
+          new_window_label: Check this box to have the link open in a new browser window.
+          not_sure: Not sure what to put in the box above?
+          step1: Find the page on the web you want to link to.
+          step2: "Copy the web address from your browser's address bar and paste it into the box above."
+        email_address:
+          tab_name: Email adres
+          subject_line_optional: Optional subject
+          body_optional: Optional body
+          not_sure: Not sure what to put in the boxes above?
+          step1: "Write or copy and paste (e.g. from your address book) the email address to link to into the '<strong>Email Address</strong>' box above."
+          step2: "Use the '<strong>Subject Line</strong>' box above if you want the message to be composed with a <strong>pre-written subject line</strong>."
+          step3: "Use the <strong>Email Body</strong> box above if you want the message to be composed with a <strong>pre-written message</strong>."
+        your_resource:
+          tab_name: A resource
+          link_to_this_resource: Link to this resource
+
+  activerecord: 
+    models:
+      page: page
+      user: user
+      image: image
+      inquery: inquery
+      resource: resource
+      refinery_setting: refinery setting
+      inquiry_setting: inquiry setting
+          

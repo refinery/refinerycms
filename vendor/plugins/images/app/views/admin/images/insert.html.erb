@@ -3,12 +3,12 @@
     <% unless @images.empty? %>
       <span id='existing_image_radio' class='radio'>
         <input type='radio' name='image_type' value='existing_image' id='image_type_existing' <%= "checked='true'" if @image.errors.empty? %> />
-        <label for='image_type_existing' class='stripped'>Existing Image</label>
+        <label for='image_type_existing' class='stripped'><%=t('.existing_image')%></label>
       </span>
     <% end %>
     <span id='upload_image_radio' class='radio<%= " selected_radio" if @image.errors.size > 0 %>'>
       <input type='radio' name='image_type' value='upload_image' id='image_type_upload' <%= "checked='true'" if @images.empty? or !@image.errors.empty? %> />
-      <label for='image_type_upload' class='stripped'>New Image</label>
+      <label for='image_type_upload' class='stripped'><%= t('.new_image') %></label>
     </span>
   </div>
 
@@ -25,7 +25,7 @@
             <% end -%>
           </ul>
         </div>
-        <%= will_paginate @images, :previous_label => '&laquo; Previous', :next_label => 'Next &raquo;', :renderer => Refinery::LinkRenderer, :url => {:controller => "admin/images", :action => "insert", :dialog => @dialog} unless @thickbox %>
+        <%= will_paginate @images, :previous_label => '&laquo; ' + t('.previous'), :next_label => t('.next') + ' &raquo;', :renderer => Refinery::LinkRenderer, :url => {:controller => "admin/images", :action => "insert", :dialog => @dialog} unless @thickbox %>
       </div>
     <% end %>
     <div id='upload_image_area' class='dialog_area' <%= "style='display:none;'" unless @images.empty? %>>
@@ -35,11 +35,10 @@
 </div>
 <% if @thickbox %>
   <div id='dialog-form-actions' class='form-actions'>
-    <%= submit_tag 'Insert', :id => "submit_button" %>
-    or
-    <%= link_to "Cancel", "", :id => "cancel_button", :class => "close_dialog" %>
-
-    <%= will_paginate @images, :previous_label => '&laquo; Previous', :next_label => 'Next &raquo;', :renderer => Refinery::LinkRenderer, :url => {:controller => "admin/images", :action => "insert", :dialog => @dialog } %>
+    <%= submit_tag t('.submit_insert'), :id => "submit_button" %>
+    <%= t('.or') %>
+    <%= link_to t('.cancel'), "", :id => "cancel_button", :class => "close_dialog" %>
+    <%= will_paginate @images, :previous_label => '&laquo; ' + t('.previous'), :next_label => t('.next') + ' &raquo;', :renderer => Refinery::LinkRenderer, :url => {:controller => "admin/images", :action => "insert", :dialog => @dialog} %>
   </div>
 <% end %>
 <% content_for :head do %>
