@@ -17,10 +17,10 @@
 </div>
 <div id='records'>
   <% if searching? %>
-    <h2><%= t :search_results_for, :default => "Search Results for" %> "<%= params[:search] %>"</h2>
+    <h2><%= t :search_results_for, :query => params[:search] %>"</h2>
     <%= render :partial => "inquiry", :collection => @inquiries %>
   <% else %>
-    <h2><%= t :open_inquiries, :default => "Open Inquiries" %></h2>
+    <h2><%= t :open_inquiries %></h2>
     <% unless @open_inquiries.empty? -%>
       <ul>
         <%= render :partial => "inquiry", :collection => @open_inquiries %>
@@ -28,17 +28,17 @@
     <% else -%>
       <p>
         <%= refinery_icon_tag('accept.png', :style => 'vertical-align: bottom') %>
-        <%= t :no_open_inquiries, :default => "Hooray! There are no open inquiries because you've dealt with them all." %>
+        <%= t :no_open_inquiries %>
       </p>
     <% end -%>
-    <h2><%= t :closed_inquiries, :default => "Closed Inquiries" %></h2>
+    <h2><%= t :closed_inquiries %></h2>
     <% unless @closed_inquiries.empty? -%>
       <ul>
         <%= render :partial => "inquiry", :collection => @closed_inquiries %>
       </ul>
     <% else -%>
       <p>
-        <%= t :havent_closed_any_inquiries, :default => "You haven't closed any inquiries yet." %>
+        <%= t :havent_closed_any_inquiries %>
       </p>
     <% end -%>
   <% end %>
