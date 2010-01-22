@@ -5,11 +5,11 @@
       <%= @news_item.title %>
     </h1>
     <p>
-      <small>Published <%= @news_item.publish_date.strftime("%A %d of %B, %Y") %></small>
+      <small><%=t('.published_at', :at => l(@news_item.publish_date, :format => :long)) %></small>
     </p>
     <%= @news_item.body %>
     <p>
-      <%= link_to "Back to all news", news_items_url %>
+      <%= link_to t('.back_to_index'), news_items_url %>
     </p>
   </div>
   <div id='body_content_right' class='clearfix'>
