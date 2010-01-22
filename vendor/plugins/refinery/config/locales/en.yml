@@ -40,13 +40,6 @@ en:
         remove_current: "Remove current {{what}}"
         resource: resource
   admin:
-    images:
-      form:
-        image: Image
-        use_current_image: Use current image
-        or: or
-        replace_image: Replace it with this one ...
-        current_image: Current Image
     pages:
       list:
         view_live: View this page live <br/><em>(opens in a new window)</em> 

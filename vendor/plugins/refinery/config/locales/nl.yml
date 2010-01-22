@@ -40,13 +40,6 @@ nl:
         remove_current: "Verwijder huidige {{what}}"
         resource: bestand
   admin:
-    images:
-      form:
-        image: Afbeelding
-        use_current_image: Gebruik huidige afbeelding
-        or: of
-        replace_image: Vervang de afbeelding door deze
-        current_image: Huidige afbeelding
     pages:
       list:
         view_live: Bekijk deze pagina op de website <br/><em>(opent een nieuw venster)</em> 
