@@ -4,13 +4,13 @@
       <%= render :partial => "/shared/admin/search", :locals => {:url => admin_images_url} %>
     </li>
     <li>
-      <%= link_to "Create New Image", new_admin_image_url, :class => "add_icon" %>
+      <%= link_to t('.create_new_image'), new_admin_image_url, :class => "add_icon" %>
     </li>
   </ul>
   <ul>
     <% image_views.delete_if {|image_view| image_view.to_s == current_image_view.to_s }.each do |image_view| %>
       <li>
-        <%= link_to "Switch to #{image_view.to_s.titleize} View",
+        <%= link_to t('.view.switch_to', :view_name => t('.view.' + image_view.to_s)),
           admin_images_url(:view => image_view, :page => params[:page]),
           :class => "reorder_icon"  %>
       </li>
@@ -19,7 +19,7 @@
 </div>
 <div id='records'>
   <% if searching? %>
-    <h2>Search Results for "<%= params[:search] %>"</h2>
+    <h2><%= t('.search.results_for', :query => params[:search]) %></h2>
     <% if @images.size > 0 %>
       <%= render :partial => "#{current_image_view}_view" %>
     <% else %>
@@ -33,8 +33,7 @@
     <% else %>
       <p>
         <strong>
-          There are no images yet.
-          Click "Create New Image" to add your first image.
+          <%= t('.no_images_yet') %>
         </strong>
       </p>
     <% end %>
