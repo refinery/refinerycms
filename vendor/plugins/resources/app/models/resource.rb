@@ -8,13 +8,13 @@ class Resource < ActiveRecord::Base
           :index_file => [RAILS_ROOT,"tmp","index"]
 
   def validate
-    errors.add_to_base("You must choose a file to upload") unless self.filename
+    errors.add_to_base(t('.must_choose_file')) unless self.filename
 
     unless self.filename.nil?
       [:size].each do |attr_name|
         enum = attachment_options[attr_name]
         unless enum.nil? || enum.include?(send(attr_name))
-          errors.add_to_base("Files should be smaller than 50 MB in size")
+          errors.add_to_base(t('.file_should_be_smaller_than_50mb'))
         end
       end
     end
