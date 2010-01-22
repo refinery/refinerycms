@@ -272,20 +272,6 @@ function tb_show(caption, url, imageGroup, ajax_loaded_callback) {//function cal
 		if (params['draggable'])
 		{
 			new Draggable('TB_window', {handle: 'TB_title', starteffect:null, endeffect:null});
-			/*, {
-				starteffect:function(){
-					$$("#TB_title", "#TB_window", "#TB_iframe").each(function(element){
-						new Effect.Highlight(element, {endcolor: '#ffff99', restorecolor: '#ffff99', duration: 0.25, keepBackgroundImage: true});
-					});
-				}
-				, endeffect:function()
-				{
-					$$("#TB_title", "#TB_window", "#TB_iframe").each(function(element){
-						current_bg_color = element.style.backgroundColor;
-						new Effect.Highlight(element, {startcolor: '#ffff99', duration: 0.25, keepBackgroundImage: true});
-					});
-				}
-			});*/
 		}
 		
 		Event.observe(document.onresize ? document : window, "resize", tb_position);

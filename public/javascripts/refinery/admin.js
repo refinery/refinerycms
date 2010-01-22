@@ -1,6 +1,6 @@
 $j(document).ready(function(){
-  $j('#flash').fadeIn(550);
 
+  init_flash_messages();
   init_sortable_menu();
   init_submit_continue();
   init_modal_dialogs();
@@ -9,6 +9,14 @@ $j(document).ready(function(){
   // focus first field in an admin form.
   $j('form input[type=text]:first').focus();
 });
+
+init_flash_messages = function(){
+  $j('#flash').fadeIn(550);
+  $j('#flash_close').click(function(e) {
+     $j('#flash').fadeOut({duration: 330});
+     e.preventDefault();
+   });
+}
 
 init_modal_dialogs = function(){
   $j('a[href*="dialog=true"]').each(function(i, anchor)
@@ -71,28 +79,31 @@ init_submit_continue = function(){
     if ($j(this).hasClass('wymupdate')) {
       $j.each(WYMeditor.INSTANCES, function(index, wym)
       {
-        $j(wym).update();
+        wym.update();
       });
     }
 
     $j('#continue_editing').val(true);
     $j('#flash').fadeOut(250)
 
+    $j('.fieldWithErrors').removeClass('fieldWithErrors').addClass('field');
+    $j('#flash_container .errorExplanation').remove();
+
     $j.post(this.form.action, this.form.serialize(), function(data) {
-      if ((flash_container = $('flash_container')) != null) {
-        flash_container.update(data);
+      if ((flash_container = $j('#flash_container')).length > 0) {
+        $j(flash_container).html(data);
 
         $j('#flash').css('width', 'auto').fadeIn(550);
 
         $j('.errorExplanation').not($j('#flash_container .errorExplanation')).remove();
 
-        $j('.fieldWithErrors').each(function(i, field) {
-          field.removeClassName('fieldWithErrors').addClassName('field');
+        $j.each($j('#fieldsWithErrors').val().split(','), function() {
+          $j("#" + this).wrap("<div class='fieldWithErrors' />");
         });
 
-        $j('#continue_editing').val(false);
-
         $j('.fieldWithErrors:first :input:first').focus();
+
+        $j('#continue_editing').val(false);
       }
     });
 
@@ -122,13 +133,13 @@ var link_dialog = {
 
   init_tabs: function(){
     var radios = $j('#dialog_menu_left input:radio');
-    var selected = radios.filter('.selected_radio')[0] || radios[0];
+    var selected = radios.parent().filter(".selected_radio").find('input:radio').first() || radios.first();
 
     radios.click(function(){
       link_dialog.switch_area($j(this));
     });
 
-    selected.checked = true;
+    selected.attr('checked', 'true');
     link_dialog.switch_area(selected);
   },
 
@@ -136,9 +147,10 @@ var link_dialog = {
     $j('#TB_title .close_dialog', '#dialog_container .close_dialog').click(function(e) {
       e.preventDefault();
 
+      // if we're in a frame
       if(parent && typeof(parent.tb_remove) == "function"){
         parent.tb_remove();
-      }
+      } // if we're not in a frame
       else if(typeof(tb_remove) == 'function'){
         tb_remove();
       }
@@ -365,21 +377,21 @@ var image_dialog = {
 
   init_tabs: function(){
     var radios = $j('#dialog_menu_left input:radio');
-    var selected = radios.filter('.selected_radio')[0] || radios[0];
+    var selected = radios.parent().filter(".selected_radio").find('input:radio').first() || radios.first();
 
     radios.click(function(){
-        image_dialog.switch_area(this);
+      link_dialog.switch_area($j(this));
     });
 
-    selected.checked = true;
-    image_dialog.switch_area(selected);
+    selected.attr('checked', 'true');
+    link_dialog.switch_area(selected);
   },
 
-  switch_area: function(area){
+  switch_area: function(radio){
     $j('#dialog_menu_left .selected_radio').removeClass('selected_radio');
-    $j(area).parent().addClass('selected_radio');
+    $j(radio).parent().addClass('selected_radio');
     $j('#dialog_main .dialog_area').hide();
-    $j('#' + area.value + '_area').show();
+    $j('#' + radio.value + '_area').show();
   },
 
   init_select: function(){
@@ -387,26 +399,33 @@ var image_dialog = {
         image_dialog.set_image(this);
     });
     //Select any currently selected, just uploaded...
-    $j('#existing_image_area_content ul li.selected img').set_image(this);
+    if ((selected_image = $j('#existing_image_area_content ul li.selected img')).length > 0) {
+      image_dialog.set_image(selected_image.first());
+    }
   },
 
   set_image: function(img){
-    $j('#existing_image_area_content ul li.selected').removeClass('selected');
+    if ($j(img).length > 0) {
+      $j('#existing_image_area_content ul li.selected').removeClass('selected');
 
-    $j(img).parent().addClass('selected');
-    var imageUrl = parseURL(img.src);
-    var relevant_src = imageUrl.pathname.replace('_dialog_thumb', '');
+      $j(img).parent().addClass('selected');
+      var imageUrl = parseURL($j(img).attr('src'));
+      var relevant_src = imageUrl.pathname.replace('_dialog_thumb', '');
+      if (imageUrl.protocol == "" && imageUrl.hostname == "system") {
+        relevant_src = "/system" + relevant_src;
+      }
 
-    if(imageUrl.hostname.match(/s3.amazonaws.com/)){
-      relevant_src = imageUrl.protocol + '//' + imageUrl.host + relevant_src;
+      if(imageUrl.hostname.match(/s3.amazonaws.com/)){
+        relevant_src = imageUrl.protocol + '//' + imageUrl.host + relevant_src;
+      }
+
+      try {
+        parent.document.getElementById('wym_src').value = relevant_src;
+        parent.document.getElementById('wym_title').value = img.title;
+        parent.document.getElementById('wym_alt').value = img.alt;
+      }
+      catch(e){}
     }
-
-    try {
-      parent.document.getElementById('wym_src').value = relevant_src;
-      parent.document.getElementById('wym_title').value = img.title;
-      parent.document.getElementById('wym_alt').value = img.alt;
-    }
-    catch(e){}
   },
 
   init_submit: function(){
@@ -531,4 +550,43 @@ var image_picker = {
     $j('#remove_picked_image').show();
     $j('#no_picked_image_selected').hide();
   }
+}
+
+//parse a URL to form an object of properties
+parseURL = function(url)
+{
+	//save the unmodified url to href property
+	//so that the object we get back contains
+	//all the same properties as the built-in location object
+	var loc = { 'href' : url };
+
+	//split the URL by single-slashes to get the component parts
+	var parts = url.replace('//', '/').split('/');
+
+	//store the protocol and host
+	loc.protocol = parts[0];
+	loc.host = parts[1];
+
+	//extract any port number from the host
+	//from which we derive the port and hostname
+	parts[1] = parts[1].split(':');
+	loc.hostname = parts[1][0];
+	loc.port = parts[1].length > 1 ? parts[1][1] : '';
+
+	//splice and join the remainder to get the pathname
+	parts.splice(0, 2);
+	loc.pathname = '/' + parts.join('/');
+
+	//extract any hash and remove from the pathname
+	loc.pathname = loc.pathname.split('#');
+	loc.hash = loc.pathname.length > 1 ? '#' + loc.pathname[1] : '';
+	loc.pathname = loc.pathname[0];
+
+	//extract any search query and remove from the pathname
+	loc.pathname = loc.pathname.split('?');
+	loc.search = loc.pathname.length > 1 ? '?' + loc.pathname[1] : '';
+	loc.pathname = loc.pathname[0];
+
+	//return the final object
+	return loc;
 }
