@@ -4,12 +4,12 @@
       <%= render :partial => "/shared/admin/search", :locals => {:url => admin_inquiries_url} %>
     </li>
     <li>
-      <%= link_to t(:update_notified, :default => "Update who gets notified"),
+      <%= link_to t('.update_notified'),
                     edit_admin_inquiry_setting_url(InquirySetting.notification_recipients),
                     :class => "user_comment_icon" %>
     </li>
     <li>
-      <%= link_to t(:edit_confirmation_email, :default => "Edit confirmation email"),
+      <%= link_to t('.edit_confirmation_email'),
                   edit_admin_inquiry_setting_url(InquirySetting.confirmation_body),
                   :class => "edit_email_icon" %>
     </li>
@@ -17,10 +17,10 @@
 </div>
 <div id='records'>
   <% if searching? %>
-    <h2><%= t :search_results_for, :query => params[:search] %>"</h2>
+    <h2><%= t('.search_results_for', :query => params[:search]) %>"</h2>
     <%= render :partial => "inquiry", :collection => @inquiries %>
   <% else %>
-    <h2><%= t :open_inquiries %></h2>
+    <h2><%= t('.open_inquiries') %></h2>
     <% unless @open_inquiries.empty? -%>
       <ul>
         <%= render :partial => "inquiry", :collection => @open_inquiries %>
@@ -28,17 +28,17 @@
     <% else -%>
       <p>
         <%= refinery_icon_tag('accept.png', :style => 'vertical-align: bottom') %>
-        <%= t :no_open_inquiries %>
+        <%= t('.no_open_inquiries') %>
       </p>
     <% end -%>
-    <h2><%= t :closed_inquiries %></h2>
+    <h2><%= t('.closed_inquiries') %></h2>
     <% unless @closed_inquiries.empty? -%>
       <ul>
         <%= render :partial => "inquiry", :collection => @closed_inquiries %>
       </ul>
     <% else -%>
       <p>
-        <%= t :havent_closed_any_inquiries %>
+        <%= t('.havent_closed_any_inquiries') %>
       </p>
     <% end -%>
   <% end %>

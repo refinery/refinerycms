@@ -3,13 +3,13 @@
     <span class='actions'>
       <% if inquiry.open? %>
         <%= link_to refinery_icon_tag('accept.png'), {:action => 'toggle_status', :id => inquiry.id},
-                    {:title => t(:move_inquiry_to_closed)} -%>
+                    {:title => t('.move_inquiry_to_closed')} -%>
       <% else %>
         <%= link_to refinery_icon_tag('arrow_up.png'), {:action => 'toggle_status', :id => inquiry.id},
-                    {:title => t(:move_inquiry_to_open)} -%>
+                    {:title => t('.move_inquiry_to_open')} -%>
       <% end %>
       <%= link_to refinery_icon_tag('email_open.png'), {:action => 'show', :id => inquiry.id},
-                    {:title => t(:read_inquiry)} -%>
+                    {:title => t('.read_inquiry')} -%>
       <%= link_to refinery_icon_tag('delete.png'), admin_inquiry_url(inquiry),
                                                         :method => :delete, :class => "cancel",
                                                         :confirm => t('.delete.message', :name => inquiry.name),
