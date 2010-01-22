@@ -3,17 +3,17 @@
     <span class='actions'>
       <% if inquiry.open? %>
         <%= link_to refinery_icon_tag('accept.png'), {:action => 'toggle_status', :id => inquiry.id},
-                    {:title => t(:move_inquiry_to_closed, :default => "Move this inquiry to closed")} -%>
+                    {:title => t(:move_inquiry_to_closed)} -%>
       <% else %>
         <%= link_to refinery_icon_tag('arrow_up.png'), {:action => 'toggle_status', :id => inquiry.id},
-                    {:title => t(:move_inquiry_to_open, :default => "Move this inquiry to open")} -%>
+                    {:title => t(:move_inquiry_to_open)} -%>
       <% end %>
       <%= link_to refinery_icon_tag('email_open.png'), {:action => 'show', :id => inquiry.id},
-                    {:title => t(:read_inquiry, :default => "Read this inquiry")} -%>
+                    {:title => t(:read_inquiry)} -%>
       <%= link_to refinery_icon_tag('delete.png'), admin_inquiry_url(inquiry),
                                                         :method => :delete, :class => "cancel",
-                                                        :confirm => "#{t :are_you_sure_delete, :default => "Are you sure you want to delete"} #{inquiry.name}?",
-                                                        :title => "Remove this inquiry forever" -%>
+                                                        :confirm => t('.delete.message', :name => inquiry.name),
+                                                        :title => t('.delete.title') -%>
     </span>
     <%=h inquiry.name %>
     <span class="preview">

@@ -1,24 +1,24 @@
 <div id='actions'>
-  <h2><%= t :Details, :default => "Details" %></h2>
+  <h2><%= t('.details')%></h2>
   <p>
-    <strong><%= t :Status, :default => "Status" %>:</strong>
-    <%= @inquiry.open? ? "#{t :Open, :default => "Open"}" : "#{t :Closed, :default => "Closed"}" %>
+    <strong><%= t('.status') %>:</strong>
+    <%= @inquiry.open? ? t('.open') : t('.closed') %>
     <br/>
-    <strong><%= t :Age, :default => "Age" %>:</strong> <%= time_ago_in_words(@inquiry.created_at) %>
+    <strong><%= t('.age') %>:</strong> <%= time_ago_in_words(@inquiry.created_at) %>
   </p>
-  <h2><%= t :Actions, :default => "Actions" %></h2>
+  <h2><%= t('.actions') %></h2>
   <ul>
     <li>
-      <%= link_to "Back to all Inquiries", {:action => 'index'}, :class => "back_icon" %>
+      <%= link_to t('.back_to_all_inquiries'), {:action => 'index'}, :class => "back_icon" %>
     </li>
   </ul>
 </div>
 <div id='records'>
-  <h2><%= t :Inquiry, :default => "Inquiry" %></h2>
+  <h2><%= t('.inquiry') %></h2>
   <table id='inquiry'>
     <tr>
       <td>
-        <strong><%= t :To, :default => "To" %></strong>
+        <strong><%= t('.to')  %></strong>
       </td>
       <td>
         <%= RefinerySetting[:site_name] %>
@@ -26,16 +26,16 @@
     </tr>
     <tr>
       <td>
-        <strong><%= t :From, :default => "From" %></strong>
+        <strong><%= t('.from') %></strong>
       </td>
       <td>
-        <%= @inquiry.name %> [<%= mail_to @inquiry.email, @inquiry.email, {:title => "#{t :Click_to_email, :default => "Click to email this address"}"} %>]
+        <%= @inquiry.name %> [<%= mail_to @inquiry.email, @inquiry.email, {:title => t('.click_to_email')} %>]
       </td>
     </tr>
     <% unless @inquiry.phone.blank? %>
       <tr>
         <td>
-          <strong><%= t :Phone, :default => "Phone" %></strong>
+          <strong><%= t('.phone') %></strong>
         </td>
         <td>
           <%= @inquiry.phone %>
@@ -44,15 +44,15 @@
     <% end %>
     <tr>
       <td>
-        <strong><%= t :Date, :default => "Date" %></strong>
+        <strong><%= t('.date')  %></strong>
       </td>
       <td>
-        <%= @inquiry.created_at.strftime("%A, %d of %b, %Y") %>
+        <%= l(Date.parse(@inquiry.created_at.to_s), :format => :long) %>
       </td>
     </tr>
     <tr>
       <td valign='top'>
-        <strong><%= t :Message, :default => "Message" %></strong>
+        <strong><%= t('.message') %></strong>
       </td>
       <td>
         <p style='margin-top: 0px'>
