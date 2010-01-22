@@ -1,17 +1,13 @@
 <%= error_messages_for :inquiry_setting %>
 <% form_for [:admin, @inquiry_setting] do |f| %>
-  <p>
-    Every time someone contacts you on your website, Refinery sends
-    out an email to say there is a new inquiry.
-  </p>
+  <p><%= t '.explanation' %></p>
   <div class='field'>
-    <%= f.label :value, 'Send notifications to' %>
+    <%= f.label :value, t('.inquiry_settings_value_name') %>
     <%= f.text_field :value, :class => "larger", :style => 'width: 954px' %>
 
     <p>
-      Enter an email address above. Want the notification to go to more than one person?
-      Enter multiple email addresses separated by commas.<br/>
-      E.g. me@domain.com, friend@msn.com, workmate@work.com
+      <%= t '.hint' %><br />
+      <%= t '.example' %>
     </p>
   </div>
   <%= render :partial => "/shared/admin/form_actions", :locals => {:f => f, :continue_editing => false, :cancel_url => admin_inquiries_url} %>
