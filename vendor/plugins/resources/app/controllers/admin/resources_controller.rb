@@ -13,7 +13,7 @@ class Admin::ResourcesController < Admin::BaseController
 
     unless params[:insert]
       if @resource.valid?
-        flash[:notice] = "'#{@resource.title}' was successfully created."
+        flash[:notice] = t('refinery.crudify.created', :what => @resource.title)
         unless from_dialog?
           redirect_to :action => 'index'
         else
