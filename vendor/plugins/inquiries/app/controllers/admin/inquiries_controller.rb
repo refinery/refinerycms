@@ -8,17 +8,12 @@ class Admin::InquiriesController < Admin::BaseController
   def toggle_status
     @inquiry.toggle!(:open)
 
-    flash[:notice] = "'#{@inquiry.name}' has been " +
-    if @inquiry.open?
-      "reopened"
-    else
-      "closed"
-    end
+    flash[:notice] = I18n.translate(@inquiry.open? ? 'reopened' : 'closed', :scope => 'admin.inquiries.toggle_status', :inquiry => @inquiry.name)
 
     redirect_to :action => 'index'
   end
 
-protected
+  protected
 
   def find_all_inquiries
     @open_inquiries = Inquiry.opened

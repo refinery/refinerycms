@@ -1,4 +1,21 @@
 en:
+  activerecord:
+    models:
+      inquiry: Inquiry
+    attributes:
+      inquiry:
+        to: To
+        from: From
+        click_to_email: Click to email this address
+        phone: Phone
+        date: Date
+        message: Message
+  inquiries:
+    new:
+      header_message: "Whoops there was a small problem"
+      message: "The following problems need to be corrected:"
+      send: Send message
+      privacy_policy: "We value your privacy"
   admin:
     inquiries:
       inquiry:
@@ -6,30 +23,32 @@ en:
         move_inquery_to_open: Move this inquiry to open
         read_inquiry: Read the inquiry
         delete:
-          message: Are you sure you want to delete {{name}}?
-          title: Remove this inquiry forever
-    index:
-      update_notified: Update who gts notified
-      edit_confirmation_email: Edit confirmation email
-      search_results_for: Search results for {{query}}
-      open_inquiries: Open queries
-      no_open_inquiries: "Hooray! There are no open inquiries because you've dealt with them all."
-      closed_inquiries: Closed Inqueries
-      havent_closed_any_inquiries: "You haven't closed any inquiries yet."
-    show:
-      details: Details
-      status: Status
-      open: Open
-      closed: Closed
-      age: Age
-      actions: Actions
-      back_to_all_inquiries: Back to all Inqueries
-      inquiry: Inquiry
-      to: To
-      from: From
-      click_to_email: Click to email this address
-      phone: Phone
-      date: Date
-      message: Message
-  inquiry_settings:
-    confirmation_email_form:
+          message: "Are you sure you want to delete '{{name}}'?"
+          title: Remove this inquiry forever.
+      toggle_status:
+        closed: "Inquiry '{{inquiry}}' is closed"
+        reopened: "Inquiry '{{inquiry}}' is reopened"
+      index:
+        update_notified: Update who gets notified
+        edit_confirmation_email: Edit confirmation email
+        search_results_for: Search results for {{query}}
+        open_inquiries: Open queries
+        no_open_inquiries: "Hooray! There are no open inquiries because you've dealt with them all."
+        closed_inquiries: Closed Inqueries
+        havent_closed_any_inquiries: "You haven't closed any inquiries yet."
+      show:
+        details: Details
+        status: Status
+        open: Open
+        closed: Closed
+        age: Age
+        actions: Actions
+        back_to_all_inquiries: Back to all Inquiries
+    inquiry_settings:
+      update: 
+        updated: "'{{setting}}' was successfully updated."
+      notification_recipients_form:
+        inquiry_settings_value_name: Send notifications to
+        explanation: "Every time someone contacts you on your website, Refinery sends out an email to say there is a new inquiry."
+        hint: "Enter an email address above. Want the notification to go to more than one person? Enter multiple email addresses separated by commas."
+        example: "E.g. me@domain.com, friend@msn.com, workmate@work.com"

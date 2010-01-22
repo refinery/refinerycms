@@ -6,7 +6,7 @@ class Admin::InquirySettingsController < Admin::BaseController
     @inquiry_setting.update_attributes(params[:inquiry_setting])
 
     if @inquiry_setting.valid?
-      flash[:notice] = "'#{@inquiry_setting.name}' was successfully updated."
+      flash[:notice] = I18n.translate('updated', :scope => 'admin.inquiry_settings.update', :setting => @inquiry_setting.name)
       redirect_to admin_inquiries_url
     else
       render :action => 'edit'
