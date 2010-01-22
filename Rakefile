@@ -15,17 +15,12 @@ require 'rake/rdoctask'
 
 require 'tasks/rails'
 
+extra_rake_tasks = []
 # When running Refinery from a gem we lose the rake tasks, so add them back in:
-unless REFINERY_ROOT == RAILS_ROOT
-  Dir[File.join(REFINERY_ROOT, %w(vendor plugins * ** tasks ** *.rake))].sort.each { |ext| load ext }
-end
-
+extra_rake_tasks << Dir[File.join(REFINERY_ROOT, %w(vendor plugins * ** tasks ** *.rake))].sort unless REFINERY_ROOT == RAILS_ROOT
 # We also need to load in the rake tasks from gem plugins whether Refinery is a gem or not:
-if defined?($refinery_gem_plugin_lib_paths) && !$refinery_gem_plugin_lib_paths.nil?
-  $refinery_gem_plugin_lib_paths.each do |path|
-    Dir[File.join(path, %w(tasks ** *.rake))].sort.each { |ext| load ext }
-  end
-end
+extra_rake_tasks << $refinery_gem_plugin_lib_paths.collect {|path| Dir[File.join(%W(#{path} tasks ** *.rake))].sort}
+extra_rake_tasks.flatten.compact.uniq.each {|rake| load rake }
 
 desc 'Removes trailing whitespace'
 task :whitespace do
