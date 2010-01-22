@@ -5,12 +5,12 @@
     <% @news_items.each do |item| %>
       <h3><%= link_to item.title, news_item_url(item) %></h3>
       <p>
-        <small>Published <%= item.publish_date.strftime("%A %d of %B, %Y") %></small>
+        <small><%= t('.published_at', :at => l(item.publish_date, :format => :long)) %></small>
       </p>
-      <%= truncate(item.body, :length => 200, :omission => " ... #{link_to "Read more", news_item_url(item)}", :preserve_html_tags => true) %>
+      <%= truncate(item.body, :length => 200, :omission => " ... #{link_to t('.read_more'), news_item_url(item)}", :preserve_html_tags => true) %>
     <% end %>
   <% else %>
-    <p><em>Sorry we haven't posted up any news yet.</em></p>
+    <p><em><%= t('.no_items_yet') %></em></p>
   <% end %>
 <% end %>
 
