@@ -38,6 +38,7 @@ en:
         havent_closed_any_inquiries: "You haven't closed any inquiries yet."
       show:
         details: Details
+        click_to_email: Click to email
         status: Status
         open: Open
         closed: Closed
