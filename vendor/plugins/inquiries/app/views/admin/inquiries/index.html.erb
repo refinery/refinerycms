@@ -4,7 +4,7 @@
       <%= render :partial => "/shared/admin/search", :locals => {:url => admin_inquiries_url} %>
     </li>
     <li>
-      <%= link_to t('.update_notified'),
+      <%= link_to t(:update_notified, :default => "Update who gets notified"),
                     edit_admin_inquiry_setting_url(InquirySetting.notification_recipients),
                     :class => "user_comment_icon" %>
     </li>
@@ -22,6 +22,7 @@
   <% else %>
     <h2><%= t('.open_inquiries') %></h2>
     <% unless @open_inquiries.empty? -%>
+    <ul>
       <ul>
         <%= render :partial => "inquiry", :collection => @open_inquiries %>
       </ul>

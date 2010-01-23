@@ -1,13 +1,5 @@
 <ul id="menu">
-  <%
-  Refinery::Plugins.active.each do |plugin|
-    unless plugin.hide_from_menu
-  -%>
-    <li class='tab' id='plugin_<%= plugin.title %>'>
-      <%= link_to plugin.title, plugin.url, :class => (plugin.highlighted?(params) ? "active" : "") %>
-    </li>
-  <% end
-  end -%>
+  <%= render :partial => "/admin/menu_tab", :collection => Refinery::Plugins.active.in_menu %>
   <% if Refinery::Plugins.active.in_menu.size > 1 %>
     <li>
       <%= link_to "&nbsp;", "", :id => "menu_reorder", :title => t(:reorder_menu) %>
