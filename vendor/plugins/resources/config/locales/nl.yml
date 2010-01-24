@@ -16,7 +16,8 @@ nl:
           title: Verwijder dit bestand permanent.
       index:
         upload_new: Upload een nieuw bestand.
-        search_no_result: Sorry, er zijn zoekresultaten gevonden.
+        search_results: Zoek resultaten voor '{{search_string}}'
+        search_no_results: Sorry, er zijn zoekresultaten gevonden.
         no_files_yet: Er zijn nog geen bestanden. Klik op "Upload een nieuw bestand" om uw eerste bestand toe te voegen.
       insert:
         existing_file: Bestaand bestand
