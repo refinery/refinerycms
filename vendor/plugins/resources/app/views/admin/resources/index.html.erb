@@ -10,7 +10,7 @@
 </div>
 <div id='records'>
   <% if searching? %>
-    <h2>Search Results for "<%= params[:search] %>"</h2>
+    <h2><%= t '.search_results', :search_string => params[:search] %></h2>
     <% if @resources.size > 0 %>
         <%= render :partial => "resource", :collection => @resources %>
     <% else %>
