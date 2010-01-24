@@ -1,11 +1,10 @@
 <%= error_messages_for :refinery_setting %>
 <% form_for [:admin, @refinery_setting] do |f| %>
   <div class='field'>
+  <%= f.label :name %>
   <% if params[:action] =~ /(new)|(create)/ %>
-    <%= f.label :name %>
     <%= f.text_field :name, :class => "larger", :size => 67 %>
   <% else %>
-    <label>Name</label>
     <%= @refinery_setting.name.titleize %> <span class="preview">- (<%= h @refinery_setting.name %>)</span>
   <% end %>
   </div>
