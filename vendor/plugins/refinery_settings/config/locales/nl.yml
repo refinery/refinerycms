@@ -1,0 +1,21 @@
+nl:
+  activerecord:
+    models:
+      refinery_setting: Refinery instelling
+    attributes:
+      refinery_setting:
+        name: Naam
+        value: Waarde
+  admin:
+    refinery_settings:
+      refinery_setting:
+        edit: Bewerk deze instelling
+        confirm: 'Weet u zeker dat u deze instelling voorgoed wilt verwijderen?'
+        remove: Verwijder deze instelling voorgoed
+      index:
+        new: Maak een nieuwe instelling aan
+        empty_set: Er zijn nog geen instellingen aangemaakt
+        create_first: Klik "{{link}}" om je eerste instelling aan te maken.
+      edit:
+        restart_may_be_in_order: "<strong>Let op</strong>, na een aanpassing moet wellicht uw webapplicatie herstart worden" 
+
