@@ -16,7 +16,7 @@ For help and general discussion about RefineryCMS, we have set up a Google Group
 http://groups.google.com/group/refinery-cms
 
 Developer documentation is available here:
-http://yardoc.org/docs/resolve-refinerycms
+http://api.refinerycms.org
 
 == Setup
 
