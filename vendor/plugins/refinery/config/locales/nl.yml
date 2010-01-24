@@ -9,6 +9,7 @@ nl:
   log_out: Afmelden
   search: Zoek naar
   search_submit: Zoek
+  no_results_found: "Sorry, no results found"
   refinery:
     crudify:
       created: "{{what}} is met success aangemaakt"
@@ -79,7 +80,7 @@ nl:
       page: pagina
       user: gebruiker
       image: afbeelding
-      inquery: vraag
+      inquiry: vraag
       resource: bestand
       refinery_setting: instelling
       inquiry_setting: instelling voor vragen
