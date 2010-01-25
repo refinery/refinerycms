@@ -1,4 +1,7 @@
 nl:
+  plugins:
+    refinery_news:
+      title: Nieuws
   admin:
     news_items:
       news_item:
