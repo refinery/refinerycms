@@ -4,7 +4,7 @@
       <%= render :partial => "/shared/admin/search", :locals => {:url => admin_inquiries_url} %>
     </li>
     <li>
-      <%= link_to t(:update_notified, :default => "Update who gets notified"),
+      <%= link_to t('.update_notified'),
                     edit_admin_inquiry_setting_url(InquirySetting.notification_recipients),
                     :class => "user_comment_icon" %>
     </li>
