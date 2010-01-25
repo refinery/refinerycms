@@ -9,7 +9,7 @@
   <% unless (hide_cancel ||= false) %>
     <%= t('.or_cancel') %>
     <%= link_to t('.cancel'), (cancel_url ||= send("admin_#{f.object.class.name.pluralize.underscore}_url")),
-          :title => (title ||= t('.cancel_loose_changes', :object_name => f.object.class.human_name.underscore.gsub("_", " "))),
+          :title => (title ||= t('.cancel_lose_changes', :object_name => f.object.class.human_name.underscore.gsub("_", " "))),
           :id => "cancel_button", :class => "close_dialog" %>
   <% end %>
 </div>

@@ -11,6 +11,9 @@
       <%= link_to refinery_icon_tag('email_open.png'), {:action => 'show', :id => inquiry.id},
                     {:title => t('.read_inquiry')} -%>
       <%= link_to refinery_icon_tag('delete.png'), admin_inquiry_url(inquiry),
+                                                        :method => :delete, :class => "cancel",
+                                                        :confirm => t('.delete.message', :name => inquiry.name),
+                                                        :title => t('.delete.title') -%>
     </span>
     <%=h inquiry.name %>
     <span class="preview">
