@@ -46,6 +46,7 @@
     Sortable.create($('menu'), {
       constraint: 'horizontal'
       , only: 'tab'
+      , format: /^plugin(?:[A-Za-z0-9\-\_])(.*)$/
       , onUpdate:function() {
         new Ajax.Request('<%= url_for :controller => "/admin", :action => "update_menu_positions" %>',
         {

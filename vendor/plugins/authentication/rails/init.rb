@@ -1,8 +1,10 @@
 Refinery::Plugin.register do |plugin|
   plugin.title = "Users"
+  plugin.name = "refinery_users"
   plugin.description = "Manage users"
   plugin.version = 1.0
   plugin.menu_match = /admin\/users$/
+  plugin.directory = "users"
   plugin.activity = {
     :class => User,
     :url_prefix => "edit_",

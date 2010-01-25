@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091207033335) do
+ActiveRecord::Schema.define(:version => 20100125003944) do
 
   create_table "images", :force => true do |t|
     t.integer  "parent_id"
@@ -125,12 +125,12 @@ ActiveRecord::Schema.define(:version => 20091207033335) do
 
   create_table "user_plugins", :force => true do |t|
     t.integer "user_id"
-    t.string  "title"
+    t.string  "name"
     t.integer "position"
   end
 
-  add_index "user_plugins", ["title"], :name => "index_user_plugins_on_title"
-  add_index "user_plugins", ["user_id", "title"], :name => "index_unique_user_plugins", :unique => true
+  add_index "user_plugins", ["name"], :name => "index_user_plugins_on_title"
+  add_index "user_plugins", ["user_id", "name"], :name => "index_unique_user_plugins", :unique => true
 
   create_table "users", :force => true do |t|
     t.string   "login"

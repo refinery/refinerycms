@@ -32,7 +32,7 @@ module Refinery
     end
 
     def menu_match
-      @menu_match ||= /admin\/#{self.name}$/
+      @menu_match ||= /#{self.url.gsub(/^\//, "")}$/
     end
 
     def name
