@@ -1,4 +1,8 @@
 nl:
+  plugins:
+    refinery_images:
+      title: Afbeeldingen
+
   no_file_chosen: U moet een bestand kiezen om te uploaden.
   file_should_be_smaller_then_50mb: Bestanden mogen niet groter dan 50 MB zijn.
   admin:
