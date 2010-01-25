@@ -1,4 +1,7 @@
 nl:
+  plugins:
+    refinery_inquiries:
+      title: Contact aanvragen
   activerecord:
     models:
       inquiry: Vraag

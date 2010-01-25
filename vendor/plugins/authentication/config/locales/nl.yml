@@ -1,4 +1,7 @@
 nl:
+  plugins:
+    refinery_users:
+      title: Gebruikers
   admin:
     users:
       update:
