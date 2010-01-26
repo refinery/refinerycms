@@ -1,26 +1,23 @@
 class ThemesController < ApplicationController
  
   def stylesheets
-    render_theme_item(:stylesheets, params[:filename], 'text/css; charset=utf-8')
-  end
- 
-  def javascripts
-    render_theme_item(:javascripts, params[:filename], 'text/javascript; charset=utf-8')
+    render_theme_item(:stylesheets, params[:filepath])
+  end                                                
+                                                     
+  def javascripts                                    
+    render_theme_item(:javascripts, params[:filepath])
   end
  
   def images
-    render_theme_item(:images, params[:filename])
+    render_theme_item(:images, params[:filepath])
   end
  
 protected
  
-  def render_theme_item(type, file, mime = nil)
-    mime ||= mime_for(file)
-
-    file_path = File.join(RAILS_ROOT, "themes", RefinerySetting[:theme], "#{type}/#{file}#{params[:extension]}")
-
+  def render_theme_item(type, relative_path)
+    file_path = File.join(RAILS_ROOT, "themes", RefinerySetting[:theme], type.to_s, relative_path)
  		if File.exists? file_path
-    	send_file(file_path, :type => mime, :disposition => 'inline', :stream => true)
+    	send_file(file_path, :type => mime_for(relative_path), :disposition => 'inline', :stream => true)
 		else
 			return error_404
 		end
@@ -28,11 +25,11 @@ protected
  
   def mime_for(filename)
 		# could we use the built in Rails mime types to work this out?
-    case filename.downcase
+    case filename.last.downcase
     when /\.js$/
-      'text/javascript'
+      'text/javascript; charset=utf-8'
     when /\.css$/
-      'text/css'
+      'text/css; charset=utf-8'
     when /\.gif$/
       'image/gif'
     when /(\.jpg|\.jpeg)$/

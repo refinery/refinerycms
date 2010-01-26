@@ -9,3 +9,4 @@ Minor Contributors
 - avit - Andrew Vit - {http://avit.ca}
 - stevenheidel - Steven Heidel - {http://www.livingskywebdesign.com}
 - moretea - Maarten Hoogendoorn
+- csessions - Chris Sessions - {http://www.flying-saucer.net}
