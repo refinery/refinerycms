@@ -19,7 +19,7 @@ extra_rake_tasks = []
 # When running Refinery from a gem we lose the rake tasks, so add them back in:
 extra_rake_tasks << Dir[File.join(REFINERY_ROOT, %w(vendor plugins * ** tasks ** *.rake))].sort unless REFINERY_ROOT == RAILS_ROOT
 # We also need to load in the rake tasks from gem plugins whether Refinery is a gem or not:
-extra_rake_tasks << $refinery_gem_plugin_lib_paths.collect {|path| Dir[File.join(%W(#{path} tasks ** *.rake))].sort}
+extra_rake_tasks << $refinery_gem_plugin_lib_paths.collect {|path| Dir[File.join(%W(#{path} tasks ** *.rake))].sort} if defined?($refinery_gem_plugin_lib_paths) && !$refinery_gem_plugin_lib_paths.nil?
 extra_rake_tasks.flatten.compact.uniq.each {|rake| load rake }
 
 desc 'Removes trailing whitespace'
@@ -36,7 +36,7 @@ begin
     s.email = %q{info@refinerycms.com}
     s.homepage = %q{http://refinerycms.com}
     s.authors = ["Resolve Digital", "David Jones", "Philip Arndt"]
-    s.extra_rdoc_files = %w(README CONTRIBUTORS LICENSE VERSION)
+    s.extra_rdoc_files = %w(README.rdoc CONTRIBUTORS LICENSE VERSION)
     s.rdoc_options << "--inline-source"
     s.has_rdoc = true
   end
