@@ -1,0 +1,5 @@
+= The Magical Mixin: CRUD (create, read, update & delete)
+
+== Introduction
+
+Coming soon.
