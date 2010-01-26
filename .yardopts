@@ -1,5 +1,5 @@
 --title "Refinery CMS"
-lib/**/*.rb'
+lib/**/*.rb
 app/**/*.rb
 db/seeds.rb
 config/preinitializer.rb
@@ -15,9 +15,9 @@ vendor/plugins/refinery_settings/**/*.rb
 vendor/plugins/resources/**/*.rb
 vendor/plugins/themes/**/*.rb
 -
-README.rdoc
-LICENSE
-CONTRIBUTORS
+readme.rdoc
 vendor/plugins/themes/themes.rdoc
 vendor/plugins/refinery/plugins.rdoc
 vendor/plugins/refinery/crud.rdoc
+license.rdoc
+contributors.rdoc
