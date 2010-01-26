@@ -16,9 +16,9 @@ unless (app_path = ARGV.shift).nil? or app_path.length == 0
   unless File.exists? RAILS_ROOT and !ARGV.include?("--force")
     # make the application path directory
     FileUtils::makedirs RAILS_ROOT
-  
+
     # copy in all of the relevant directories and root files.
-    to_copy = %w(app config db lib public script CONTRIBUTORS LICENSE Rakefile README).map do |dir| 
+    to_copy = %w(app config db lib public script CONTRIBUTORS LICENSE Rakefile README.rdoc).map do |dir|
       File.join REFINERY_ROOT, dir
     end
     FileUtils::cp_r to_copy, RAILS_ROOT, :verbose => false
@@ -43,18 +43,18 @@ unless (app_path = ARGV.shift).nil? or app_path.length == 0
         File.open(File.join(RAILS_ROOT, %W(config #{config}.yml)), "w").puts(lines.join("\n"))
       end
     end
-   
+
     # update the environment file with a new secret key.
     require 'digest/sha1'
     new_digest = ""
     3.times { new_digest << Digest::SHA1.hexdigest("--refinery--#{Time.now.to_s}--#{rand(10000000)}--") }
-    
+
     # read in the file and split up the lines
     lines = File.open(File.join(RAILS_ROOT, %w(config environment.rb)), "r").read.split("\n")
     lines.each do |line|
       match = line.scan(/(:secret)([^']*)([\'])([^\']*)/).flatten.last
       line.gsub!(match, new_digest) unless match.nil?
-    end  
+    end
     # write the new content into the file.
     File.open(File.join(RAILS_ROOT, %w(config environment.rb)), "w").puts(lines.join("\n"))
 
@@ -63,7 +63,7 @@ unless (app_path = ARGV.shift).nil? or app_path.length == 0
 
     # update core script files with symlinks.
     system "refinery-update-core #{RAILS_ROOT} --from-refinery-installer"
-  
+
     puts "=== ACTION REQUIRED ==="
     puts "\nNow run these commands:"
     puts "\ncd #{RAILS_ROOT}"
