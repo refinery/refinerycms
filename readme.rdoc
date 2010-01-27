@@ -77,6 +77,14 @@ http://api.refinerycms.org
 
 A 26 minute developer video can be viewed here: http://refinerycms.com/pages/for-developers
 
+== Setting Up on Heroku
+
+If you're using Heroku you will want to put
+
+  USE_S3_BACKEND = true
+  
+in your config/production.rb file.
+
 == Updates to core files
 
 If you are running Refinery as a gem, updates are simple to incorporate into your project.
