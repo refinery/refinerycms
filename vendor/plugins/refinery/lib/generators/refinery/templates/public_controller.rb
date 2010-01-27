@@ -19,14 +19,4 @@ protected
     Page.find_by_link_url("/<%= plural_name %>")
   end
 
-  def present(model)
-    presenter_name = "#{model.class}Presenter"
-    presenter = begin
-      Object.const_get(presenter_name)
-    rescue NameError => e
-      BasePresenter
-    end
-    @page = presenter.new(model)
-  end
-
 end
