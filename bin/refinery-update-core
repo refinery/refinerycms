@@ -15,13 +15,16 @@ unless RAILS_ROOT.nil? or RAILS_ROOT.length == 0
   end
 
   # copy in any new migrations.
-  FileUtils::cp Dir[File.join(REFINERY_ROOT, %w(db migrate *.rb))], File.join(RAILS_ROOT, %w(db migrate))
+  FileUtils::cp Dir[File.join(%W(#{REFINERY_ROOT} db migrate *.rb))], File.join(%W(#{RAILS_ROOT} db migrate))
 
   # replace rakefile.
-  FileUtils::cp File.join(REFINERY_ROOT, %w(Rakefile)), File.join(RAILS_ROOT, %w(Rakefile))
+  FileUtils::cp File.join(%W(#{REFINERY_ROOT} Rakefile)), File.join(%W(#{RAILS_ROOT} Rakefile))
+
+  # replace the preinitializer.
+  FileUtils::cp File.join(%W(#{REFINERY_ROOT config preinitializer.rb})), File.join(%W(#{RAILS_ROOT config preinitializer.rb}))
 
 	# read in the config files
-	app_config = File.open(File.join(RAILS_ROOT, %w(config environment.rb)), "r").read
+	app_config = File.open(File.join(%W(#{RAILS_ROOT} config environment.rb)), "r").read
 	environment_updated = false
 
   # backup app's environment.rb
@@ -29,10 +32,10 @@ unless RAILS_ROOT.nil? or RAILS_ROOT.length == 0
   unless (app_refinery_gems_section = app_config.scan(matcher).join("")).length == 0
     # read in the config file in the gem
   	refinery_config = File.open(File.join(REFINERY_ROOT, %w(config environment.rb)), "r").read
-  	FileUtils.cp File.join(RAILS_ROOT, %w(config environment.rb)), File.join(RAILS_ROOT, %w(config environment.autobackupbyrefinery.rb))
+  	FileUtils.cp File.join(%W(#{RAILS_ROOT} config environment.rb)), File.join(%W(#{RAILS_ROOT} config environment.autobackupbyrefinery.rb))
 
     # write the new content into the file.
-    File.open(File.join(RAILS_ROOT, %w(config environment.rb)), "w").puts(app_config.gsub!(
+    File.open(File.join(%W(#{RAILS_ROOT} config environment.rb)), "w").puts(app_config.gsub!(
   	  app_refinery_gems_section,
   	  refinery_config.scan(matcher).join("")
   	))

@@ -116,3 +116,13 @@ Page.create(:title => "Down for maintenance",
               :title => "body",
               :body => "<p>Our site is currently down for maintenance. Please try back later.</p>"
             })
+
+# Install default themes.
+Dir[File.join(%W(#{REFINERY_ROOT} themes *.zip))].each do |theme|
+  Theme.create(:uploaded_data => {
+    "size" => File.size(theme),
+    "content_type" => "application/zip",
+    "filename" => theme.split('/').last,
+    'tempfile' => File.open(theme)
+  }).read_theme
+end
