@@ -123,16 +123,6 @@ ActiveRecord::Schema.define(:version => 20100127004649) do
   add_index "slugs", ["name", "sluggable_type", "scope", "sequence"], :name => "index_slugs_on_name_and_sluggable_type_and_scope_and_sequence", :unique => true
   add_index "slugs", ["sluggable_id"], :name => "index_slugs_on_sluggable_id"
 
-  create_table "team_members", :force => true do |t|
-    t.string   "title"
-    t.text     "description"
-    t.integer  "position"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "team_members", ["id"], :name => "index_team_members_on_id"
-
   create_table "themes", :force => true do |t|
     t.integer  "size"
     t.string   "content_type"
