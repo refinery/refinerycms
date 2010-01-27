@@ -4,8 +4,8 @@
 
 All Refinery's images are stored in one place and are available to view 
 
-# Reports recent activity on all the core plugins
-# Provides convenient links to common tasks.
+* Reports recent activity on all the core plugins
+* Provides convenient links to common tasks.
 
 == Generating Thumbnails
 

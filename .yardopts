@@ -25,5 +25,6 @@ vendor/plugins/authentication/authentication.rdoc
 vendor/plugins/dashboard/dashboard.rdoc
 vendor/plugins/inquiries/inquiries.rdoc
 vendor/plugins/news/news.rdoc
+vendor/plugins/resources/resources.rdoc
 license.rdoc
 contributors.rdoc
