@@ -2,13 +2,16 @@
 
 A Ruby on Rails content management system for small business.
 
-== About
+== What it's good at
 
-Refinery is a simple, easy to use, well presented content manager for small businesses.
+Refinery is great for small business sites where the client needs to be able to update their website themselves without being bombarded with anything too complicated.
 
-Refinery was born out of Resolve Digital (http://resolvedigital.co.nz).
+Unlike other content managers, Refinery is truly aimed at the end user making it easy for them to pick up and make changes themselves.
 
-After building 40 real client sites, we began making our own content manager which would suit the small businesses we worked with. We learnt all the common requests and included them and nothing more.
+For developers Refinery makes it easy to:
+* Get a small business site up and running ridiculously quickly
+* Theme and customise the look to suit the business
+* Extend with custom areas that meet the clients' needs.
 
 == Requirements
 
@@ -101,6 +104,10 @@ If you are running using a git clone, you can update by running these commands:
   git pull refinerycms master
 
 This will pull in all of the updated files in the project and may result in some merge conflicts which you will need to resolve.
+
+== What comes included with Refinery
+
+
 
 == License
 
