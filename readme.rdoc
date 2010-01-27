@@ -2,7 +2,7 @@
 
 A Ruby on Rails content management system for small business.
 
-* Live demo frontend: http://demo.refinerycms.com/
+* Live demo frontend: http://demo.refinerycms.com
 * Live demo backend: http://demo.refinerycms.com/admin
 
 For screenshots, example sites & high level information: http://refinerycms.com
