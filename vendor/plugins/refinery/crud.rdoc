@@ -42,7 +42,7 @@ If you used the Refinery generator you're plugin will already be using Crudify.
 
   end
 
-== What can you configure with Crudify
+== What can you configure with Crudify?
 
 === :title_attribute
 
@@ -157,7 +157,7 @@ class PagesController < ApplicationController
 
 end
 
-== Overriding Crudify
+== Overriding or Extending Crudify
 
 Before overriding anything, the best thing to do is check out how the default works. Read the +vendor/plugins/refinery/lib/crud.rb+ and see what code it's injecting into your controller.
 
