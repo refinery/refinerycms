@@ -107,23 +107,28 @@ This will pull in all of the updated files in the project and may result in some
 
 == What comes included with Refinery
 
-# Pages
-  * Easily edit and manage pages with a WYSIWYG visual editor
-  * Manage you site's structure
-# Images & Resources
-  * Easily upload and insert images
-  * Upload and link to resources like PDF documents
-# Inquiries
-  * Collect inquiries from a contact form
-  * Manage your inquiries and be notified when new ones come in
-# News
-  * Post news about your company and update your visitors
-# Settings
-  * Manage various aspects of Refinery
-# Dashboard
-  * Get an overview of what has been updated recently
+=== Pages
+* Easily edit and manage pages with a WYSIWYG visual editor
+* Manage you site's structure
+
+=== Images & Resources
+* Easily upload and insert images
+* Upload and link to resources like PDF documents
+
+=== Inquiries
+* Collect inquiries from a contact form
+* Manage your inquiries and be notified when new ones come in
+
+=== News
+* Post news about your company and update your visitors
+
+=== Settings
+* Manage various aspects of Refinery
+
+===  Dashboard
+* Get an overview of what has been updated recently
   
-=== Want more?
+=== ...Want more?
 
 Extend Refinery easily by running the Refinery generator
 
