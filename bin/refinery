@@ -18,29 +18,29 @@ unless (app_path = ARGV.shift).nil? or app_path.length == 0
     FileUtils::makedirs RAILS_ROOT
 
     # copy in all of the relevant directories and root files.
-    to_copy = %w(app config db lib public script CONTRIBUTORS LICENSE Rakefile README.rdoc).map do |dir|
+    to_copy = %w(app config db lib public script themes contributors.rdoc license.rdoc Rakefile readme.rdoc VERSION).map do |dir|
       File.join REFINERY_ROOT, dir
     end
     FileUtils::cp_r to_copy, RAILS_ROOT, :verbose => false
     # ensure lib/refinery_initializer.rb doesn't make it in.
-    FileUtils::rm File.join(RAILS_ROOT, %w(lib refinery_initializer.rb)) if File.exists?(File.join(RAILS_ROOT, %w(lib refinery_initializer.rb)))
+    FileUtils::rm File.join(%W(#{RAILS_ROOT} lib refinery_initializer.rb)) if File.exists?(File.join(%W(#{RAILS_ROOT} lib refinery_initializer.rb)))
 
     # add in the config files
-    for config in ["database", "amazon_s3", "rackspace_cloudfiles"]
-      FileUtils::move File.join(RAILS_ROOT, %W(config #{config}.yml.example)), File.join(RAILS_ROOT, %W(config #{config}.yml))
+    for config in %w(database amazon_s3 rackspace_cloudfiles)
+      FileUtils::move File.join(%W(#{RAILS_ROOT} config #{config}.yml.example)), File.join(%W(#{RAILS_ROOT} config #{config}.yml))
 
       # figure out the app name from the install path and swap out your_local_xxx with this name.
       unless RAILS_ROOT == "/" or RUBY_PLATFORM =~ /mswin/
         app_name = RAILS_ROOT.split(File::SEPARATOR).last
         # read in the file and split up the lines
-        lines = File.open(File.join(RAILS_ROOT, %W(config #{config}.yml)), "r").read.split("\n")
+        lines = File.open(File.join(%W(#{RAILS_ROOT} config #{config}.yml)), "r").read.split("\n")
         lines.each do |line|
           line.gsub!("your_local_#{config}", "#{app_name}_development")
           line.gsub!("your_test_#{config}", "#{app_name}_test")
           line.gsub!("your_production_#{config}", "#{app_name}_production")
         end
         # write the new content into the file.
-        File.open(File.join(RAILS_ROOT, %W(config #{config}.yml)), "w").puts(lines.join("\n"))
+        File.open(File.join(%W(#{RAILS_ROOT} config #{config}.yml)), "w").puts(lines.join("\n"))
       end
     end
 
@@ -50,13 +50,13 @@ unless (app_path = ARGV.shift).nil? or app_path.length == 0
     3.times { new_digest << Digest::SHA1.hexdigest("--refinery--#{Time.now.to_s}--#{rand(10000000)}--") }
 
     # read in the file and split up the lines
-    lines = File.open(File.join(RAILS_ROOT, %w(config environment.rb)), "r").read.split("\n")
+    lines = File.open(File.join(%W(#{RAILS_ROOT} config environment.rb)), "r").read.split("\n")
     lines.each do |line|
       match = line.scan(/(:secret)([^']*)([\'])([^\']*)/).flatten.last
       line.gsub!(match, new_digest) unless match.nil?
     end
     # write the new content into the file.
-    File.open(File.join(RAILS_ROOT, %w(config environment.rb)), "w").puts(lines.join("\n"))
+    File.open(File.join(%W(#{RAILS_ROOT} config environment.rb)), "w").puts(lines.join("\n"))
 
   	puts "\n---------"
   	puts "Refinery successfully installed in '#{RAILS_ROOT}'!\n\n"
