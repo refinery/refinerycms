@@ -23,6 +23,13 @@ Refinery runs using a number of gems which (as of Refinery version 0.9.5.29) are
 * slim_scrooge >= 1.0.3
 * hpricot >= 0.8.1
 
+Other dependancies
+
+* RMagick
+
+Install docs here http://rmagick.rubyforge.org/install-faq.html
+Mac OS users might find this easier: http://github.com/maddox/magick-installer
+
 == Installing and Setting Up Refinery
 
 === 1. Getting the Refinery code!
