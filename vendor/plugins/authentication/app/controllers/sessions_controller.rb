@@ -5,12 +5,14 @@ class SessionsController < ApplicationController
 
   def create
     self.current_user = User.authenticate(params[:session][:login], params[:session][:password])
+
     if logged_in?
       if params[:session][:remember_me] == "1"
         current_user.remember_me unless current_user.remember_token?
         cookies[:auth_token] = {:value => self.current_user.remember_token ,
                                 :expires => self.current_user.remember_token_expires_at}
       end
+
       redirect_back_or_default(admin_root_url)
       flash[:notice] = "Logged in successfully"
     else
@@ -28,6 +30,7 @@ class SessionsController < ApplicationController
   end
 
 protected
+
   def take_down_for_maintenance?;end
 
 end

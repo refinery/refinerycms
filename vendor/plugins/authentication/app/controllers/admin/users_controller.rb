@@ -3,7 +3,6 @@ class Admin::UsersController < Admin::BaseController
   crudify :user, :order => 'login', :title_attribute => 'login', :conditions => "state = 'active'"
 
   # Protect these actions behind an admin login
-  # before_filter :admin_required, :only => [:suspend, :unsuspend, :destroy, :purge]
   before_filter :find_user, :except => [:new, :create]
   before_filter :load_available_plugins, :only => [:new, :create, :edit, :update]
 
@@ -55,33 +54,7 @@ class Admin::UsersController < Admin::BaseController
     end
   end
 
-  def suspend
-    @user.suspend!
-    redirect_to admin_users_path
-  end
-
-  def unsuspend
-    @user.unsuspend!
-    redirect_to admin_users_path
-  end
-
-  def destroy
-    @user.delete!
-    @user.destroy
-    flash[:notice] = "'#{@user.login}' was successfully deleted."
-    redirect_to admin_users_path
-  end
-
-  def purge
-    @user.destroy
-    redirect_to admin_users_path
-  end
-
 protected
-
-  def find_user
-    @user = User.find(params[:id])
-  end
 
   def can_create_public_user
     User.count == 0

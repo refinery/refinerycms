@@ -187,6 +187,13 @@ a:hover {
 	margin-top: 12px;
 }
 
+#page_container.login div.forgot_password {
+  float: right;
+
+	margin-top: 11px;
+	margin-right: 3px;
+}
+
 #page_container.login div.remember_me label {
 	display: inline;
 }
