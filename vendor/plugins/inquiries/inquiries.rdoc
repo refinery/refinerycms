@@ -5,9 +5,10 @@
 Refinery gives you a simple contact form that notifies you and the customer when an inquiry is made.
 
 In summary you can
-# Collect and manage inquiries
-# Specify who is notified when a new inquiry comes in
-# Customise auto responder email that is sent to the person making the inquiry
+
+* Collect and manage inquiries
+* Specify who is notified when a new inquiry comes in
+* Customise auto responder email that is sent to the person making the inquiry
 
 When inquiries come in, you and the customer are notified. The inquiry will now show up as an "open" inquiry. The idea is to deal with the inquiry and then "close" it so you know it's been sorted.
 

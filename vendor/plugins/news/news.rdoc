@@ -6,8 +6,8 @@ Refinery's news plugin allows you to post updates to the news section of your we
 
 Key features
 
-# Default news page shows a summary of recent news posts
-# A detail view shows the full post and also linked to recent news on the "side bar"
+* Default news page shows a summary of recent news posts
+* A detail view shows the full post and also linked to recent news on the "side bar"
 
 == But I don't want a news section, how do I kill it?
 

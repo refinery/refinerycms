@@ -4,8 +4,8 @@
 
 Refinery's dashboard is a plugin that does two simple things
 
-# Reports recent activity on all the core plugins
-# Provides convenient links to common tasks.
+* Reports recent activity on all the core plugins
+* Provides convenient links to common tasks.
 
 == How do I hook my custom plugin into the recent activity log?
 
