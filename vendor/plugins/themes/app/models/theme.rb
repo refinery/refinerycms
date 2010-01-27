@@ -22,7 +22,7 @@ class Theme < ActiveRecord::Base
 			FileUtils.mkdir(self.theme_path) unless File.exists? self.theme_path
 
 			# extracts the contents of the zip file into the theme directory
-		 	Zip::ZipFile.foreach(self.filename) do |entry|
+		 	Zip::ZipFile.foreach(self.full_filename) do |entry|
 				FileUtils.mkdir_p(File.dirname("#{theme_path}/#{entry}"))
 				entry.extract("#{theme_path}/#{entry}") { true }
 		  end
@@ -32,7 +32,7 @@ class Theme < ActiveRecord::Base
 	end
 
 	def theme_folder_title
-		File.basename(self.filename).split(".").first
+		File.basename(self.full_filename).split(".").first
 	end
 
 	def theme_path
@@ -44,7 +44,7 @@ class Theme < ActiveRecord::Base
 	end
 
 	def read_theme
-		self.title = File.basename(self.filename).split(".").first.titleize
+		self.title = File.basename(self.full_filename).split(".").first.titleize
 
 		if File.exists? File.join(theme_path, "LICENSE")
 			self.license =  File.open(File.join(theme_path, "LICENSE")).read
