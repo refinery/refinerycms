@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100114092849) do
+ActiveRecord::Schema.define(:version => 20100127004649) do
 
   create_table "images", :force => true do |t|
     t.integer  "parent_id"
@@ -123,6 +123,16 @@ ActiveRecord::Schema.define(:version => 20100114092849) do
   add_index "slugs", ["name", "sluggable_type", "scope", "sequence"], :name => "index_slugs_on_name_and_sluggable_type_and_scope_and_sequence", :unique => true
   add_index "slugs", ["sluggable_id"], :name => "index_slugs_on_sluggable_id"
 
+  create_table "team_members", :force => true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.integer  "position"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "team_members", ["id"], :name => "index_team_members_on_id"
+
   create_table "themes", :force => true do |t|
     t.integer  "size"
     t.string   "content_type"
@@ -157,6 +167,7 @@ ActiveRecord::Schema.define(:version => 20100114092849) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "superuser",                               :default => false
+    t.string   "reset_code"
   end
 
   add_index "users", ["id"], :name => "index_users_on_id"

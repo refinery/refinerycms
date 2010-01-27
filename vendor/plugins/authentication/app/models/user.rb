@@ -1,5 +1,6 @@
 require 'digest/sha1'
 class User < ActiveRecord::Base
+	
   # Hack: Allow "rake gems:install" to run when this class is missing its gem dependency.
   # For further clarification on why, refer to:
   # https://rails.lighthouseapp.com/projects/8994/tickets/780-rake-gems-install-doesn-t-work-if-plugins-are-missing-gem-dependencies
@@ -10,8 +11,6 @@ class User < ActiveRecord::Base
     aasm_state :passive
     aasm_state :pending, :enter => :make_activation_code
     aasm_state :active,  :enter => :do_activate
-    aasm_state :suspended
-    aasm_state :deleted, :enter => :do_delete
 
     aasm_event :register do
       transitions :from => :passive, :to => :pending, :guard => Proc.new {|u| !(u.crypted_password.blank? && u.password.blank?) }
@@ -19,20 +18,6 @@ class User < ActiveRecord::Base
 
     aasm_event :activate do
       transitions :from => :pending, :to => :active
-    end
-
-    aasm_event :suspend do
-      transitions :from => [:passive, :pending, :active], :to => :suspended
-    end
-
-    aasm_event :delete do
-      transitions :from => [:passive, :pending, :active, :suspended], :to => :deleted
-    end
-
-    aasm_event :unsuspend do
-      transitions :from => :suspended, :to => :active,  :guard => Proc.new {|u| !u.activated_at.blank? }
-      transitions :from => :suspended, :to => :pending, :guard => Proc.new {|u| !u.activation_code.blank? }
-      transitions :from => :suspended, :to => :passive
     end
   end
 
@@ -49,13 +34,13 @@ class User < ActiveRecord::Base
   validates_uniqueness_of   :login, :email, :case_sensitive => false
   before_save :encrypt_password
 
-  serialize :plugins_column#, Array # this is seriously deprecated and will be removed later.
+  serialize :plugins_column # Array # this is seriously deprecated and will be removed later.
 
   has_many :plugins, :class_name => "UserPlugin", :order => "position ASC"
 
   # prevents a user from submitting a crafted form that bypasses activation
   # anything else you want your user to change should be added here.
-  attr_accessible :login, :email, :password, :password_confirmation, :plugins
+  attr_accessible :login, :email, :password, :password_confirmation, :plugins, :reset_code
 
   # Authenticates a user by their login name and unencrypted password.  Returns the user or nil.
   def self.authenticate(login, password)
@@ -125,30 +110,44 @@ class User < ActiveRecord::Base
     !self.superuser and User.count > 1 and (current_user.nil? or self.id != current_user.id)
   end
 
-  protected
-    # before filter
-    def encrypt_password
-      return if password.blank?
-      self.salt = Digest::SHA1.hexdigest("--#{Time.now.to_s}--#{login}--") if new_record?
-      self.crypted_password = encrypt(password)
-    end
+  def create_reset_code
+    @reset = true
+		code = Digest::SHA1.hexdigest( Time.now.to_s.split(//).sort_by {rand}.join )
+    self.attributes = {:reset_code => code[0..6]}
+    save(false)
+  end 
+  
+  def recently_reset?
+    @reset
+  end
 
-    def password_required?
-      crypted_password.blank? || !password.blank?
-    end
+  def delete_reset_code
+    self.attributes = {:reset_code => nil}
+    save(false)
+  end
 
-    def make_activation_code
-      self.deleted_at = nil
-      self.activation_code = Digest::SHA1.hexdigest( Time.now.to_s.split(//).sort_by {rand}.join )
-    end
+protected
 
-    def do_delete
-      self.deleted_at = Time.now.utc
-    end
+  # before filter
+  def encrypt_password
+    return if password.blank?
+    self.salt = Digest::SHA1.hexdigest("--#{Time.now.to_s}--#{login}--") if new_record?
+    self.crypted_password = encrypt(password)
+  end
 
-    def do_activate
-      @activated = true
-      self.activated_at = Time.now.utc
-      self.deleted_at = self.activation_code = nil
-    end
+  def password_required?
+    crypted_password.blank? || !password.blank?
+  end
+
+  def make_activation_code
+    self.deleted_at = nil
+    self.activation_code = Digest::SHA1.hexdigest( Time.now.to_s.split(//).sort_by {rand}.join )
+  end
+
+  def do_activate
+    @activated = true
+    self.activated_at = Time.now.utc
+    self.deleted_at = self.activation_code = nil
+  end
+
 end

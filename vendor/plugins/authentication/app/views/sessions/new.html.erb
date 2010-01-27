@@ -9,6 +9,9 @@
       <%= f.password_field :password %>
     </div>
   </div>
+  <div class='field forgot_password'>
+    <%= link_to "I forgot my password", forgot_url %>
+  </div>
   <div class='field remember_me'>
     <%= f.label :remember_me, nil %>
     <%= f.check_box :remember_me %>
