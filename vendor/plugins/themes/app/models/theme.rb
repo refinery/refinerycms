@@ -8,10 +8,10 @@ end
 
 class Theme < ActiveRecord::Base
 
-	before_save :read_theme
+  before_save :read_theme
 
   has_attachment :storage => (USE_S3_BACKEND ? :s3 : :file_system),
-          			 :size => 0.kilobytes..15.megabytes,
+          			 :size => 0.kilobytes..25.megabytes,
 								 :path_prefix => (USE_S3_BACKEND ? nil : 'public/system/themes'),
 								 :content_type => 'application/zip'
 
@@ -19,7 +19,7 @@ class Theme < ActiveRecord::Base
 	def after_attachment_saved
 		if Theme::directory_is_writable?
 			# make the folder for the them
-			FileUtils.mkdir(self.theme_path) unless File.exists? self.theme_path
+			FileUtils.mkdir(self.theme_path) unless File.directory? self.theme_path
 
 			# extracts the contents of the zip file into the theme directory
 		 	Zip::ZipFile.foreach(self.full_filename) do |entry|
@@ -45,14 +45,8 @@ class Theme < ActiveRecord::Base
 
 	def read_theme
 		self.title = File.basename(self.full_filename).split(".").first.titleize
-
-		if File.exists? File.join(theme_path, "LICENSE")
-			self.license =  File.open(File.join(theme_path, "LICENSE")).read
-		end
-
-		if File.exists? File.join(theme_path, "README")
-			self.description =  File.open(File.join(theme_path, "README")).read
-		end
+		self.license = File.open(File.join(theme_path, "LICENSE")).read if File.exists? File.join(theme_path, "LICENSE")
+    self.description = File.open(File.join(theme_path, "README")).read if File.exists? File.join(theme_path, "README")
 	end
 
 	def self.directory_is_writable?
