@@ -6,7 +6,7 @@ A Ruby on Rails content management system for small business.
 
 Refinery is a simple, easy to use, well presented content manager for small businesses.
 
-Refinery was born out of Resolve Digital ({http://resolvedigital.co.nz}).
+Refinery was born out of Resolve Digital (http://resolvedigital.co.nz).
 
 After building 40 real client sites, we began making our own content manager which would suit the small businesses we worked with. We learnt all the common requests and included them and nothing more.
 
@@ -14,7 +14,7 @@ After building 40 real client sites, we began making our own content manager whi
 
 Refinery runs using a number of gems which (as of Refinery version 0.9.5.29) are outlined below:
 
-* rake, version >= 0.8.3
+* rake >= 0.8.3
 * friendly_id >= 2.2.2
 * will_paginate >= 2.3.11
 * rails >= 2.3.5
@@ -42,29 +42,33 @@ Or cloning our Git repository:
 
 === 2. Configuration
 
-Edit +config/database.yml+ to your database server details.
+Now, edit config/database.yml to your database server details.
 
 Then run this to create your database and fill it with Refinery's default data:
 
   rake db:setup
 
+After your database exists you will need to install the gems that Refinery depends on by running this command:
+
+  rake gems:install
+
 === 3. Starting up your site
 
   ruby script/server
 
-Now in your browser go to {http://localhost:3000} and your site should be running.
+Now in your browser go to http://localhost:3000 and your site should be running.
 
 You will be prompted to setup your first user.
 
 == Help and Developer Documentation
 
 For help and general discussion about RefineryCMS, we have set up a Google Group at:
-{http://groups.google.com/group/refinery-cms}
+http://groups.google.com/group/refinery-cms
 
 Developer documentation is available here:
-{http://api.refinerycms.org}
+http://api.refinerycms.org
 
-A 26 minute developer video can be viewed here: {http://refinerycms.com/pages/for-developers}
+A 26 minute developer video can be viewed here: http://refinerycms.com/pages/for-developers
 
 == Updates to core files
 
@@ -72,7 +76,7 @@ If you are running Refinery as a gem, updates are simple to incorporate into you
 Simply run the command:
 
   refinery-update-core /path/to/project
-  
+
 and the up-to-date core files will be copied from the latest gem into your project's directory.
 Note: the directory that you specify here must be the Rails root for the project.
 
