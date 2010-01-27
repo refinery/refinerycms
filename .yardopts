@@ -19,5 +19,11 @@ readme.rdoc
 vendor/plugins/themes/themes.rdoc
 vendor/plugins/refinery/plugins.rdoc
 vendor/plugins/refinery/crud.rdoc
+vendor/plugins/pages/pages.rdoc
+vendor/plugins/images/images.rdoc
+vendor/plugins/authentication/authentication.rdoc
+vendor/plugins/dashboard/dashboard.rdoc
+vendor/plugins/inquiries/inquiries.rdoc
+vendor/plugins/news/news.rdoc
 license.rdoc
 contributors.rdoc
