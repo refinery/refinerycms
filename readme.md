@@ -22,6 +22,7 @@ Refinery makes it easy to:
 * Get a small business site up and running __ridiculously quickly__
 * __Theme and customise__ the look to suit the business
 * __Extend with custom plugins__ to do anything Refinery doesn't do out of the box
+* Tries to stick to __"the Rails way"__ as much as possible
 
 ## Requirements
 
@@ -83,6 +84,7 @@ You will be prompted to setup your first user.
 * [Google Group Discussion](http://groups.google.com/group/refinery-cms)
 * [Developer/API documentation](http://api.refinerycms.org)
 * [Developer video - 26 mins](http://refinerycms.com/pages/for-developers)
+* [IRC Channel](irc://irc.freenode.net/refinerycms)
 
 ## Setting Up on Heroku
 
