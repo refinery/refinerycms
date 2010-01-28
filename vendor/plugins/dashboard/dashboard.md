@@ -1,19 +1,21 @@
-= Dashboard
+# Dashboard
 
-== About
+![Refinery Dashboard](http://refinerycms.com/system/images/0000/0576/dashboard.png)
+
+## About
 
 Refinery's dashboard is a plugin that does two simple things
 
 * Reports recent activity on all the core plugins
 * Provides convenient links to common tasks.
 
-== How do I hook my custom plugin into the recent activity log?
+## How do I hook my custom plugin into the recent activity log?
 
 Read in plugins.rdoc the section titled "Getting your plugin to report activity in the dashboard"
 
-== Related Settings
+## Related Settings
 
-=== "Activity Show Limit"
+### "Activity Show Limit"
 
 This allows you to specify how many items should show up in your recent activity list.
 
