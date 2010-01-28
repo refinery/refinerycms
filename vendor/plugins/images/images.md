@@ -4,10 +4,7 @@
 
 ## About
 
-All Refinery's images are stored in one place, the images plugin. This plugin: 
-
-* Reports recent activity on all the core plugins
-* Provides convenient links to common tasks.
+All Refinery's images are stored in one place, the images plugin. You can customise what sized thumbnails are generated when an image is uploaded and use them in your themes/views.
 
 ## Generating Thumbnails
 
