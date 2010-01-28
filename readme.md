@@ -15,7 +15,9 @@ __Refinery is great for small business sites where the client needs to be able t
 
 Unlike other content managers, Refinery is truly aimed at the end user making it easy for them to pick up and make changes themselves.
 
-For developers Refinery makes it easy to:
+### For developers
+
+Refinery makes it easy to:
 
 * Get a small business site up and running __ridiculously quickly__
 * __Theme and customise__ the look to suit the business
@@ -72,7 +74,7 @@ After your database exists, you'll need to install the gems that Refinery depend
 
     ruby script/server
 
-Now in your browser go to [http://localhost:3000](http://localhost:3000) and your site should be running.
+Now visit [http://localhost:3000](http://localhost:3000) and your site should be running.
 
 You will be prompted to setup your first user.
 
@@ -132,7 +134,7 @@ This will pull in all of the updated files in the project and may result in some
 
 ### Settings
 
-* Manage various aspects of Refinery
+* Manage the behaviour of Refinery
 
 ### Dashboard
 
