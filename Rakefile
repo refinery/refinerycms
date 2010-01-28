@@ -36,7 +36,7 @@ begin
     s.email = %q{info@refinerycms.com}
     s.homepage = %q{http://refinerycms.com}
     s.authors = ["Resolve Digital", "David Jones", "Philip Arndt"]
-    s.extra_rdoc_files = %w(readme.rdoc contributors.rdoc license.rdoc VERSION)
+    s.extra_rdoc_files = %w(readme.md contributors.md license.md VERSION)
     s.rdoc_options << "--inline-source"
     s.has_rdoc = true
   end
