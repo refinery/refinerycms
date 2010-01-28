@@ -31,7 +31,7 @@ Refinery runs using a number of gems which (as of Refinery version 0.9.5.29) are
 * slim_scrooge >= 1.0.3
 * hpricot >= 0.8.1
 
-Other dependancies
+Other dependencies
 
 * RMagick
 
@@ -90,7 +90,7 @@ A 26 minute developer video can be viewed here: http://refinerycms.com/pages/for
 If you're using Heroku you will want to put
 
   USE_S3_BACKEND = true
-  
+
 in your config/production.rb file.
 
 == Updates to core files
@@ -132,13 +132,13 @@ This will pull in all of the updated files in the project and may result in some
 
 ===  Dashboard
 * Get an overview of what has been updated recently
-  
+
 === ...Want more?
 
 Extend Refinery easily by running the Refinery generator
 
   ruby script/generate refinery
-  
+
 to get help on how to use that.
 
 === What about a portfolio?

@@ -20,6 +20,7 @@
     <% end %>
   <% end %>
   <script type='text/javascript'>jQuery.noConflict();</script>
+  <%= javascript_include_tag 'admin' %>
   <%= javascript_include_tag 'refinery/prototype.enhancements.js', 'fastinit', 'refinery/tooltips', 'livepipe', 'tabs', 'thickbox', "wymeditor/jquery.refinery.wymeditor.js", 'refinery/boot_wym', 'refinery/admin', :cache => (use_caching ? "cache/admin" : false) %>
   <%= "<script type='text/javascript' src='http://getfirebug.com/releases/lite/1.2/firebug-lite-compressed.js'></script>" if RefinerySetting.find_or_set(:show_firebug_lite, false) == true -%>
   <%= "<script type='text/javascript'>jQuery(document).ready(function(){ jQuery('#flash').fadeIn(550); });</script>" unless flash.empty? -%>

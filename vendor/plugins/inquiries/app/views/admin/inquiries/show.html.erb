@@ -27,7 +27,7 @@
         <strong>From</strong>
       </td>
       <td>
-        <%= @inquiry.name %> [<%= mail_to @inquiry.email, @inquiry.email, {:title => "Click to email this address"} %>]
+        <%=h @inquiry.name %> [<%= mail_to @inquiry.email, @inquiry.email, {:title => "Click to email this address"} %>]
       </td>
     </tr>
     <% unless @inquiry.phone.blank? %>
@@ -36,7 +36,7 @@
           <strong>Phone</strong>
         </td>
         <td>
-          <%= @inquiry.phone %>
+          <%=h @inquiry.phone %>
         </td>
       </tr>
     <% end %>
@@ -54,7 +54,7 @@
       </td>
       <td>
         <p style='margin-top: 0px'>
-          <%= @inquiry.message.gsub("\r\n\r\n", "\r\n").gsub("\r\n", "</p><p>") %>
+          <%=h @inquiry.message.gsub("\r\n\r\n", "\r\n").gsub("\r\n", "</p><p>") %>
         </p>
       </td>
     </tr>

@@ -1,29 +1,19 @@
 class NewsItemsController < ApplicationController
 
-  before_filter :get_latest_posts
-  before_filter :load_page, :only => [:index, :show]
-
-  def index
-    respond_to do |wants|
-      wants.html
-    end
-  end
-
-  def show
-    @news_item = NewsItem.find(params[:id], :conditions => ["publish_date < ?", Time.now])
-
-    respond_to do |wants|
-     wants.html
-    end
-  end
+  before_filter :find_latest_news_items, :find_page
+  before_filter :find_news_item, :only => [:show]
 
 protected
 
-  def get_latest_posts
+  def find_latest_news_items
     @news_items = NewsItem.latest
   end
 
-  def load_page
+  def find_news_item
+    @news_item = NewsItem.find(params[:id], :conditions => ["publish_date < ?", Time.now])
+  end
+
+  def find_page
     @page = Page.find_by_link_url("/news", :include => [:parts, :slugs])
   end
 

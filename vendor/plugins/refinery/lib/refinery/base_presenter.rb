@@ -1,11 +1,11 @@
-class BasePresenter
+class Refinery::BasePresenter
+
   DEFAULT_FIELDS = {
-    :custom_title_type => 'none',
-    :title             => Proc.new { |p| p.model.class.name.titleize },
-    :path              => Proc.new { |p| p.title },
-    :browser_title     => nil,
-    :meta_description  => nil,
-    :meta_keywords     => nil
+    :title              => Proc.new { |p| p.model.class.name.titleize },
+    :path               => Proc.new { |p| p.title },
+    :browser_title      => nil,
+    :meta_description   => nil,
+    :meta_keywords      => nil
   }
 
   attr_reader :model
@@ -15,12 +15,13 @@ class BasePresenter
   end
 
   def method_missing(method, *args)
-    if DEFAULT_FIELDS.has_key? method
-      value = DEFAULT_FIELDS[method]
-      return value.is_a?(Proc) ? value.call(self) : value
+    if @model.respond_to? method
+      @model.send method
+    elsif DEFAULT_FIELDS.has_key? method
+      (value = DEFAULT_FIELDS[method]).is_a?(Proc) ? value.call(self) : value
     else
-      msg = "#{self.class.name} doesn't know #{method}. Define or delegate it."
-      raise NoMethodError.new(msg, method)
+      raise NoMethodError.new("#{self.class.name} doesn't know #{method}. Define or delegate it.", method)
     end
   end
+
 end

@@ -13,7 +13,7 @@ class Page < ActiveRecord::Base
   accepts_nested_attributes_for :parts, :allow_destroy => true
 
   acts_as_indexed :fields => [:title, :meta_keywords, :meta_description, :custom_title, :browser_title, :all_page_part_content],
-          :index_file => [RAILS_ROOT,"tmp","index"]
+          :index_file => %W(#{RAILS_ROOT} tmp index)
 
   before_destroy :deletable?
 
@@ -28,8 +28,8 @@ class Page < ActiveRecord::Base
       super
     else
       puts "This page is not deletable. Please use .destroy! if you really want it gone or first:"
-      puts "unset .link_url" unless self.link_url.blank?
-      puts "unset .menu_match" unless self.menu_match.blank?
+      puts "unset .link_url" if self.link_url.present?
+      puts "unset .menu_match" if self.menu_match.present?
       puts "set .deletable to true" unless self.deletable
       return false
     end
@@ -57,9 +57,9 @@ class Page < ActiveRecord::Base
   end
 
   def url
-    if not (self.link_url.blank?)
+    if self.link_url.present?
       self.link_url
-    elsif not self.to_param.blank?
+    elsif self.to_param.present?
       "/pages/#{self.to_param}"
     end
   end

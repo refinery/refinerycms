@@ -7,7 +7,8 @@ class Refinery::ApplicationController < ActionController::Base
   include Crud # basic create, read, update and delete methods
   include AuthenticatedSystem
 
-  before_filter :find_pages_for_menu, :setup_theme, :show_welcome_page, :take_down_for_maintenance?
+  before_filter :take_down_for_maintenance?, :setup_theme, :find_pages_for_menu, :show_welcome_page
+
   rescue_from ActiveRecord::RecordNotFound, :with => :error_404
   rescue_from ActionController::UnknownAction, :with => :error_404
 
@@ -43,13 +44,12 @@ class Refinery::ApplicationController < ActionController::Base
 protected
 
 	def setup_theme
-	  self.view_paths = ::ActionController::Base.view_paths.dup.unshift("#{RAILS_ROOT}/themes/#{RefinerySetting[:theme]}/views")
+	  self.view_paths = ::ActionController::Base.view_paths.dup.unshift(File.join(%W(#{RAILS_ROOT} themes #{RefinerySetting[:theme]} views)))
 	end
 
   def take_down_for_maintenance?
     if RefinerySetting.find_or_set(:down_for_maintenance, false)
-      @page = Page.find_by_menu_match("^/maintenance$", :include => [:parts, :slugs])
-      unless @page.nil?
+      if (@page = Page.find_by_menu_match("^/maintenance$", :include => [:parts, :slugs])).present?
         render :template => "/pages/show", :status => 503
       else
         render :text => "Our website is currently down for maintenance. Please try back soon."
@@ -61,18 +61,21 @@ protected
     render :template => "/welcome", :layout => "admin" if just_installed? and params[:controller] != "users"
   end
 
+  # get all the pages to be displayed in the site menu.
   def find_pages_for_menu
     @menu_pages = Page.top_level(include_children=true)
   end
 
+  # use a different model for the meta information.
   def present(model)
-    presenter_name = "#{model.class}Presenter"
-    presenter = begin
-      Object.const_get(presenter_name)
-    rescue NameError => e
-      BasePresenter
-    end
-    @page = presenter.new(model)
+    presenter = Object.const_get("#{model.class}Presenter") rescue Refinery::BasePresenter
+    @meta = presenter.new(model)
+  end
+
+  # this hooks into the Rails render method.
+  def render(action = nil, options = {}, &blk)
+    present(@page) unless admin? or @meta.present?
+    super
   end
 
 end
