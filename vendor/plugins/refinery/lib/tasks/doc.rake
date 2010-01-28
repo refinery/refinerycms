@@ -5,7 +5,7 @@ namespace :doc do
 	desc "Generate documentation for the application"
 	Rake::RDocTask.new(:refinery) { |rdoc|
 	  rdoc.title    = "Refinery CMS Documentation"
-	  rdoc.main = "readme.rdoc"
+	  rdoc.main = "readme.md"
 	  rdoc.options = ['--inline-source']
 	  rdoc.rdoc_files.include('lib/**/*.rb',
 	              						 'lib/*',
@@ -23,7 +23,7 @@ namespace :doc do
 	              						 'vendor/plugins/refinery_settings/**/*.rb',
 	              						 'vendor/plugins/resources/**/*.rb',
 	              						 'vendor/plugins/themes/**/*.rb',
-														 'readme.rdoc', 'license.rdoc', 'contributors.rdoc', 'vendor/plugins/themes/themes.rdoc')
+														 'readme.md', 'license.rdoc', 'contributors.rdoc', 'vendor/plugins/themes/themes.rdoc')
 	}
 
 end
