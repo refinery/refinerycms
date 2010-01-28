@@ -14,15 +14,15 @@ In summary you can:
 
 When inquiries come in, you and the customer are notified. The inquiry will now show up as an "open" inquiry. The idea is to deal with the inquiry and then "close" it so you know it's been sorted.
 
-== How do I get notified?
+## How do I get notified?
 
 Go into your inquiries section and click on "Update who gets notified"
 
-== How do I edit the auto confirmation email
+## How do I edit the auto confirmation email
 
 Go into your inquiries section and click on "Edit confirmation email"
 
-== But I don't want a contact form how do I kill it?
+## But I don't want a contact form how do I kill it?
 
 Your contact form loads because you have a page in your site that is told to not just render a normal page, but load the contact form instead.
 
