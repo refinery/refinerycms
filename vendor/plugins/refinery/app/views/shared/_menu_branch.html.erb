@@ -1,28 +1,23 @@
-<%# this is pretty bad code - need to rethink this one -%>
 <%
   css = []
-  css << "selected" if selected_page?(page) or descendant_page_selected?(page)
-  css << "first" if position == 0
-  css << "last" if position == (siblings ||= page.shown_siblings).size
-  domid = "#{page.title.gsub(" ", "_").downcase}_item" unless page.title.blank?
-
-   if page.in_menu?
+  css << "selected" if selected_page?(menu_branch) or descendant_page_selected?(menu_branch)
+  css << "first" if menu_branch_counter == 0
+  css << "last" if menu_branch_counter == menu_branch.shown_siblings.size
+  domid = "item_#{menu_branch_counter}" unless menu_branch.parent_id.present? or menu_branch.title.blank?
 -%>
-<li<%= " class='#{css.join(' ')}'" unless css.blank? -%><%= " id='#{domid}'" unless domid.blank? -%>>
-  <%= link_to page.title, page.url %>
-  <% unless hide_children or (children = page.children.collect{|c| c if c.in_menu? }.compact).empty? %>
-    <ul class='clearfix'>
-      <% children.each do |child| -%>
-        <% shown_siblings = child.shown_siblings %>
-        <%= render :partial => '/shared/menu_branch', :locals => {
-          :page => child,
-          :position => page.children.index(child),
-          :root => false,
-          :siblings => shown_siblings,
-          :hide_children => hide_children
-        } -%>
-      <% end %>
-    </ul>
-  <% end %>
-</li>
+<% if menu_branch.in_menu? %>
+  <li<%= " class='#{css.join(' ')}'" if css.present? -%><%= " id='#{domid}'" if domid.present? -%>>
+    <%= link_to menu_branch.title, menu_branch.url %>
+    <% 
+      unless hide_children or       
+        menu_branch.parent_id.present? or       
+        (children = menu_branch.children.collect{|c| c if c.in_menu? }.compact).empty? 
+    -%>
+      <ul class='clearfix'>
+        <%= render :partial => "/shared/menu_branch",
+                    :collection => children,
+                    :locals => {:hide_children => hide_children} -%>
+      </ul>
+    <% end -%>
+  </li>
 <% end -%>
