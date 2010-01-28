@@ -1,6 +1,6 @@
 # Refinery CMS
 
-A Ruby on Rails content management system for small business.
+An open source Ruby on Rails content management system for small business.
 
 * [Front end live demo ](http://demo.refinerycms.com)
 * [Back end live demo ](http://demo.refinerycms.com/admin)
@@ -34,14 +34,14 @@ Refinery runs using a number of gems which (as of Refinery version 0.9.5.29) are
 * [slim_scrooge >= 1.0.3](http://gemcutter.org/gems/slim_scrooge)
 * [hpricot >= 0.8.1](http://gemcutter.org/gems/hpricot)
 
-Other dependancies
+### Other dependancies
 
-* RMagick - [Install docs](http://rmagick.rubyforge.org/install-faq.html) or for
+* [RMagick](http://github.com/rmagick/rmagick) - [Install docs](http://rmagick.rubyforge.org/install-faq.html) or for
 Mac OS users [this install script](http://github.com/maddox/magick-installer) will be easier.
 
 ## Installing and Setting Up Refinery
 
-### 1. Get the Refinery code!
+### 1. Get the Refinery code
 
 #### Install the Gem
 
@@ -58,13 +58,13 @@ Mac OS users [this install script](http://github.com/maddox/magick-installer) wi
 
 ### 2. Configuration
 
-Now, edit ``config/database.yml`` to your database server details.
+Firstly, edit ``config/database.yml`` to reflect your database server details.
 
-Then run this to create your database and fill it with Refinery's default data:
+Next create your database and fill it with Refinery's default data:
 
     rake db:setup
 
-After your database exists you'll need to install the gems that Refinery depends on by running this command:
+After your database exists, you'll need to install the gems that Refinery depends on. You can do this by running:
 
     rake gems:install
 
@@ -113,7 +113,7 @@ This will pull in all of the updated files in the project and may result in some
 
 ### Pages
 
-* Easily edit and manage pages with a WYSIWYG visual editor
+* Easily edit and manage pages with a [WYSIWYG visual editor](http://www.wymeditor.org/)
 * Manage you site's structure
 
 ### Images & Resources
