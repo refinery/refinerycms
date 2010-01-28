@@ -15,7 +15,7 @@ vendor/plugins/refinery_settings/**/*.rb
 vendor/plugins/resources/**/*.rb
 vendor/plugins/themes/**/*.rb
 -
-readme.rdoc
+readme.md
 vendor/plugins/themes/themes.rdoc
 vendor/plugins/refinery/plugins.rdoc
 vendor/plugins/refinery/crud.rdoc
