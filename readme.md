@@ -115,30 +115,30 @@ This will pull in all of the updated files in the project and may result in some
 
 ## What comes included with Refinery
 
-### Pages
+### [Pages](http://github.com/resolve/refinerycms/blob/master/vendor/plugins/pages/pages.md)
 
 * Easily edit and manage pages with a [WYSIWYG visual editor](http://www.wymeditor.org/)
 * Manage you site's structure
 
-### Images & Resources
+### [Images](http://github.com/resolve/refinerycms/blob/master/vendor/plugins/images/images.md) & [Resources](http://github.com/resolve/refinerycms/blob/master/vendor/plugins/resources/resources.md)
 
 * Easily upload and insert images
 * Upload and link to resources like PDF documents
 
-### Inquiries
+### [Inquiries](http://github.com/resolve/refinerycms/blob/master/vendor/plugins/inquiries/inquiries.md)
 
 * Collect inquiries from a contact form
 * Manage your inquiries and be notified when new ones come in
 
-### News
+### [News](http://github.com/resolve/refinerycms/blob/master/vendor/plugins/news/news.md)
 
 * Post news about your company and update your visitors
 
-### Settings
+### [Settings](http://github.com/resolve/refinerycms/blob/master/vendor/plugins/refinery_settings/settings.md)
 
 * Manage the behaviour of Refinery
 
-### Dashboard
+### [Dashboard](http://github.com/resolve/refinerycms/blob/master/vendor/plugins/dashboard/dashboard.md)
 
 * Get an overview of what has been updated recently
   
