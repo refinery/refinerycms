@@ -15,7 +15,7 @@
   <% end %>
   <% if !using_google_libs or local_request? %>
     <% if use_caching %>
-      <%= javascript_include_tag 'prototype', 'scriptaculous', 'builder', 'effects', 'dragdrop', 'controls', 'slider', 'jquery', 'jquery-ui-1.7.2.min.js', :cache => "cache/libraries" %>
+      <%= javascript_include_tag 'jquery', 'jquery-ui-1.7.2.min.js', :cache => "cache/libraries" %>
     <% else %>
       <%= javascript_include_tag 'prototype', 'scriptaculous', 'jquery', 'jquery-ui-1.7.2.min.js' %>
     <% end %>

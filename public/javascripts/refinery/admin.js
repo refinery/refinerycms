@@ -15,7 +15,7 @@ init_flash_messages = function(){
   $j('#flash_close').click(function(e) {
      $j('#flash').fadeOut({duration: 330});
      e.preventDefault();
-   });
+  });
 }
 
 init_modal_dialogs = function(){
@@ -52,8 +52,8 @@ init_sortable_menu = function(){
   //Initial status disabled
   $menu.sortable('disable');
 
-  $menu.find('#menu_reorder').click(function(ev){
-    ev.preventDefault();
+  $menu.find('#menu_reorder').click(function(e){
+    e.preventDefault();
     $j('#menu_reorder, #menu_reorder_done').toggle();
     $j('#header >*:not(#menu, script), #content, #logout').fadeTo(500, 0.2);
     $menu.find('.tab a').click(function(ev){
@@ -91,7 +91,7 @@ init_submit_continue = function(){
 
     $j.post(this.form.action, this.form.serialize(), function(data) {
       if ((flash_container = $j('#flash_container')).length > 0) {
-        $j(flash_container).html(data);
+        flash_container.html(data);
 
         $j('#flash').css('width', 'auto').fadeIn(550);
 
@@ -280,8 +280,8 @@ var page_options = {
   },
 
   show_options: function(){
-    $j('#toggle_advanced_options').click(function(ev){
-      ev.preventDefault();
+    $j('#toggle_advanced_options').click(function(e){
+      e.preventDefault();
       $j('#more_options').toggle();
     });
   },
@@ -301,13 +301,13 @@ var page_options = {
       autoOpen: false
     });
 
-    $j('#add_page_part').click(function(ev){
-      ev.preventDefault();
+    $j('#add_page_part').click(function(e){
+      e.preventDefault();
       $j('#new_page_part_dialog').dialog('open');
     });
 
-    $j('#new_page_part_save').click(function(ev){
-      ev.preventDefault();
+    $j('#new_page_part_save').click(function(e){
+      e.preventDefault();
 
       var part_title = $j('#new_page_part_title').val();
 
@@ -316,18 +316,18 @@ var page_options = {
 
         if ($j('#part_' + tab_title).size() == 0){
           $j.get(page_options.new_part_url,
-                  {title: tab_title, part_index: $j('#new_page_part_index').val(), body: ''},
-                  function(data, status){
-                    // Add a new tab for the new content section.
-                    $j('#page_part_editors').append(data);
-                    page_options.tabs.tabs('add', '#part_' + tab_title, part_title);
-                    page_options.tabs.tabs('select', '#part_' + tab_title);
-                    // turn the new textarea into a wymeditor.
-                    $j('#page_parts_attributes_' + $j('#new_page_part_index').val() + "_body").wymeditor(wymeditor_boot_options);
-                    // Wipe the title and increment the index counter by one.
-                    $j('#new_page_part_index').val(parseInt($j('#new_page_part_index').val()) + 1);
-                    $j('#new_page_part_title').val('');
-                  }
+            {title: tab_title, part_index: $j('#new_page_part_index').val(), body: ''},
+            function(data, status){
+              // Add a new tab for the new content section.
+              $j('#page_part_editors').append(data);
+              page_options.tabs.tabs('add', '#part_' + tab_title, part_title);
+              page_options.tabs.tabs('select', '#part_' + tab_title);
+              // turn the new textarea into a wymeditor.
+              $j('#page_parts_attributes_' + $j('#new_page_part_index').val() + "_body").wymeditor(wymeditor_boot_options);
+              // Wipe the title and increment the index counter by one.
+              $j('#new_page_part_index').val(parseInt($j('#new_page_part_index').val()) + 1);
+              $j('#new_page_part_title').val('');
+            }
           );
         }else{
           alert("A content section with that title already exists, please choose another.");
@@ -340,14 +340,14 @@ var page_options = {
       $j('#new_page_part_dialog').dialog('close');
     });
 
-    $j('#new_page_part_cancel').click(function(ev){
-      ev.preventDefault();
+    $j('#new_page_part_cancel').click(function(e){
+      e.preventDefault();
       $j('#new_page_part_dialog').dialog('close');
       $j('#new_page_part_title').val('');
     });
 
-    $j('#delete_page_part').click(function(ev){
-      ev.preventDefault();
+    $j('#delete_page_part').click(function(e){
+      e.preventDefault();
       var stab_id = page_options.tabs.tabs('option', 'selected');
       var part_id = $j('#page_parts_attributes_' + stab_id + '_id').val();
       //console.log('stab_id: ' + stab_id + ' part_id: ' + part_id);
@@ -429,8 +429,8 @@ var image_dialog = {
   },
 
   init_submit: function(){
-    $j('#dialog-form-actions #submit_button').click(function(ev){
-      ev.preventDefault();
+    $j('#dialog-form-actions #submit_button').click(function(e){
+      e.preventDefault();
       var img_selected = $j('#existing_image_area_content ul li.selected img').get(0);
 
       if(img_selected){
@@ -440,8 +440,8 @@ var image_dialog = {
       self.parent.tb_remove();
     });
 
-    $j('#dialog-form-actions #cancel_button').click(function(ev){
-      ev.preventDefault();
+    $j('#dialog-form-actions #cancel_button').click(function(e){
+      e.preventDefault();
       parent.tb_remove();
     });
   }
@@ -457,9 +457,9 @@ var image_dialog = {
       $j('#reorder_action_done').click(list_reorder.disable_reordering);
     },
 
-    enable_reordering: function(ev){
-      if(ev){
-        ev.preventDefault();
+    enable_reordering: function(e){
+      if(e){
+        e.preventDefault();
       }
 
       var nest_id = 0;
@@ -494,9 +494,9 @@ var image_dialog = {
       $j('#reorder_action_done').show();
     },
 
-    disable_reordering: function(ev){
-      if(ev){
-        ev.preventDefault();
+    disable_reordering: function(e){
+      if(e){
+        e.preventDefault();
       }
 
       if(list_reorder.reordering_button_enabled){
@@ -516,8 +516,8 @@ var image_picker = {
   toggle_image_display: false,
 
   init: function(){
-    $j('#remove_picked_image').click(function(ev){
-      ev.preventDefault();
+    $j('#remove_picked_image').click(function(e){
+      e.preventDefault();
       $j('#current_picked_image').removeClass('brown_border')
                                  .attr('src', '')
                                  .attr('width', '').attr('height','')
