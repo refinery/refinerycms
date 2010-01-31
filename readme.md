@@ -124,7 +124,7 @@ This will pull in all of the updated files in the project and may result in some
 
 * Easily upload and insert images
 * Upload and link to resources such as PDF documents
-* Uses the popular (attachment_fu)[http://github.com/technoweenie/attachment_fu] Rails plugin
+* Uses the popular [attachment_fu](http://github.com/technoweenie/attachment_fu) Rails plugin
 
 ### [Inquiries](http://github.com/resolve/refinerycms/blob/master/vendor/plugins/inquiries/inquiries.md)
 
