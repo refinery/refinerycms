@@ -148,7 +148,7 @@ This will pull in all of the updated files in the project and may result in some
 
 * Manage who can access Refinery
 * Control which plugins each user has access to
-* Uses the popular (RESTful authentication)[http://github.com/technoweenie/restful-authentication] Rails plugin
+* Uses the popular [RESTful authentication](http://github.com/technoweenie/restful-authentication) Rails plugin
   
 ### ...Want more?
 
