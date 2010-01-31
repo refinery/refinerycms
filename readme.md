@@ -124,6 +124,7 @@ This will pull in all of the updated files in the project and may result in some
 
 * Easily upload and insert images
 * Upload and link to resources such as PDF documents
+* Uses the popular (attachment_fu)[http://github.com/technoweenie/attachment_fu] Rails plugin
 
 ### [Inquiries](http://github.com/resolve/refinerycms/blob/master/vendor/plugins/inquiries/inquiries.md)
 
@@ -142,6 +143,12 @@ This will pull in all of the updated files in the project and may result in some
 ### [Dashboard](http://github.com/resolve/refinerycms/blob/master/vendor/plugins/dashboard/dashboard.md)
 
 * Get an overview of what has been updated recently
+
+### [Authentication & Users](http://github.com/resolve/refinerycms/blob/master/vendor/plugins/authentication/authentication.md)
+
+* Manage who can access Refinery
+* Control which plugins each user has access to
+* Uses the popular (RESTful authentication)[http://github.com/technoweenie/restful-authentication] Rails plugin
   
 ### ...Want more?
 
