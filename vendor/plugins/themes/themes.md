@@ -1,7 +1,5 @@
 # Themes
 
-![Refinery Dashboard](http://refinerycms.com/system/images/0000/0576/dashboard.png)
-
 ## Introduction
 
 __Themes allow you to wrap up the design of your Refinery site into a single folder that is portable.__
@@ -11,9 +9,9 @@ ERB views you're used to in Rails. This means creating a theme from your existin
 
 Think of a theme as your ``app/views`` directory with a few extra things like images, css and javascript.
 
-It's worth noting you don't need to use a theme if you don't want to. Placing files in the ``app/views`` directory like any other Rails app will work just fine. It's only if you want to wrap your design up into a single location that you would use a theme or allow your client to easily change designs.
+It's worth noting you don't need to use a theme if you don't want to. Placing files in the ``app/views`` directory like any other Rails app will work just fine. It's only if you want to wrap your design up into a single location that you would use a theme or allow your client to easily change between designs.
 
-## The structure of a theme
+## The Structure of a Theme
 
 Themes sit in your Rails app like this
 
@@ -28,7 +26,7 @@ Themes sit in your Rails app like this
     plugins/
     tests/
 
-So let's take the ``mytheme`` example theme shown above. This is how the theme is structured:
+Let's take the ``mytheme`` example theme shown above. This is how the theme is structured:
 
     mytheme/
        |- images
@@ -55,7 +53,7 @@ Usually this would be just what you have in ``public/images`` except we move tha
 
 ### Javascripts
 
-Same with javascripts, just what you normally have in ``public/javascripts`` just in this theme directory instead.
+Same with javascripts, just what you normally have in ``public/javascripts`` but in this theme directory instead.
 
 ### Readme
 
@@ -63,21 +61,21 @@ The ``README`` file is just a description of your theme.
 
 ### Views
 
-This is exactly the same as how you lay your views out in app/views/ just instead of putting them in ``app/views/`` you put them into ``themes/mytheme/views/``
+This is exactly the same as how you lay your views out in ``app/views/`` just instead of putting them in ``app/views/`` you put them into ``themes/mytheme/views/``
 
 ### Preview Image
 
-The ``preview.png`` image is used when selecting the theme in the backend. It must be a png and ideally is 135x135 pixels.
+The ``preview.png`` image is used when selecting the theme in the backend. It must be a png file and is ideally 135 x 135 pixels.
 
-## How do I make my own theme?
+## How do I make my own Theme?
 
-Create a folder with the name if your theme inside ``/themes`` e.g. ``/themes/mytheme`` and follow the directory structure outlined in 'The structure of a theme'.
+Create a folder with the name if your theme inside ``/themes`` e.g. ``/themes/mytheme`` and follow the directory structure outlined in 'The structure of a Theme'.
 
-## How do I select which theme Refinery should use?
+## How do I select which Theme Refinery should use?
 
 In the admin area of Refinery go to the "Settings" area, locate the setting called "theme" and edit it.
 
-Set the value of that setting to the name of your themes folder. For example if your theme is sitting in:
+Set the value of that setting to the name of your themes folder. For example, if your theme is sitting in:
 
     themes/my_theme
 
@@ -87,7 +85,7 @@ set it to ``my_theme`` and hit save.
 
 If you want to share a theme and install it on another site you have to zip it first.
 
-It's important to note you don't zip the theme's directory itself just the contents.
+It's important to note you don't zip the theme's directory itself, just the contents.
 
 If I had a theme sitting in:
 
@@ -98,15 +96,15 @@ The zip file would look like this
     mytheme.zip
       |- [theme files here]
 
-Read 'How do I install someone else's theme?' to take that zip file and install the theme.
+Read 'How do I install someone else's Theme?' to take that zip file and install the theme.
 
-## How do I install someone else's theme?
+## How do I install someone else's Theme?
 
 If you have the themes plugin added to your admin user, you should see in the admin area of Refinery a "Themes" tab in the main navigation. Click on that, then click "Upload new theme". Upload the theme zip file and then click on the "star" below the preview image for the theme to activate that theme as the one to use right now.
 
-## How can I convert my current views into a theme?
+## How can I Convert my Current Views into a Theme?
 
-This should be fairly straightforward just following the directory structure outlined in 'The structure of a theme'. 
+This should be fairly straightforward, just follow the directory structure outlined in 'The structure of a Theme'. 
 
 But there is one important difference that need to be addressed to convert your current site into a theme.
 
@@ -116,7 +114,7 @@ If you have some CSS which refers to an image or URL:
       background: url('/images/footer_background.png') repeat-x;
     }
 
-You need to update the URL so it requests /images/themes instead of /images. This tells Refinery we need to actually load this image from the theme and not just the public directory.
+You need to update the URL so it requests ``/images/themes`` instead of just ``/images``. This tells Refinery we need to actually load this image from the theme and not just the public directory.
 
 So the result is simply:
 
@@ -131,3 +129,7 @@ This is the same with linking to Javascript and Stylesheets in your view. Say ou
 You just need to change that to:
 
     <%= stylesheet_link_tag 'theme/application' %>
+    
+## I'm Stuck, is there an Example Theme?
+
+Yep, there is an example theme called "demolicious" that comes with Refinery located in ``/themes/demolicious``. If you find yourself getting stuck, just check out that theme and get a feel for how it works.
