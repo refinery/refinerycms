@@ -1,6 +1,8 @@
 # Refinery CMS
 
-An open source Ruby on Rails content management system for small business.
+__An open source Ruby on Rails content management system for small business.__
+
+## Demo Site
 
 * [Front end live demo ](http://demo.refinerycms.com)
 * [Back end live demo ](http://demo.refinerycms.com/admin)
@@ -17,12 +19,10 @@ Unlike other content managers, Refinery is truly aimed at the end user making it
 
 ### For developers
 
-Refinery makes it easy to:
-
-* Get a small business site up and running __ridiculously quickly__
-* __Theme and customise__ the look to suit the business
-* __Extend with custom plugins__ to do anything Refinery doesn't do out of the box
-* Tries to stick to __"the Rails way"__ as much as possible
+* Allows you to get a small business site completed __ridiculously quickly__
+* Easily __[Theme and customise](http://github.com/resolve/refinerycms/blob/master/vendor/plugins/themes/themes.md)__ the look to suit the business
+* __[Extend with custom plugins](http://github.com/resolve/refinerycms/blob/master/vendor/plugins/refinery/plugins.md)__ to do anything Refinery doesn't do out of the box
+* Sticks to __"the Rails way"__ as much as possible. We don't force you to learn new templating languages.
 
 ## Requirements
 
@@ -40,7 +40,7 @@ Refinery runs using a number of gems which (as of Refinery version 0.9.5.29) are
 ### Other dependancies
 
 * [RMagick](http://github.com/rmagick/rmagick) - [Install docs](http://rmagick.rubyforge.org/install-faq.html) or for
-Mac OS users [this install script](http://github.com/maddox/magick-installer) will be easier.
+Mac OS users [shell install script](http://github.com/maddox/magick-installer) will be easier.
 
 ## Installing and Setting Up Refinery
 
@@ -49,9 +49,9 @@ Mac OS users [this install script](http://github.com/maddox/magick-installer) wi
 #### Install the Gem
 
     gem install refinerycms --source http://gemcutter.org
-    refinery /path/to/project
+    refinery path/to/project
 
-#### Or, clone Refinery's Git repository
+#### Or, clone Refinery's GIT repository
 
     git clone git://github.com/resolve/refinerycms.git mynewsite.com
     cd ./mynewsite.com
@@ -75,7 +75,7 @@ After your database exists, you'll need to install the gems that Refinery depend
 
     ruby script/server
 
-Now visit [http://localhost:3000](http://localhost:3000) and your site should be running.
+Now visit [http://localhost:3000](http://localhost:3000) and your Refinery site should be running.
 
 You will be prompted to setup your first user.
 
@@ -86,13 +86,13 @@ You will be prompted to setup your first user.
 * [Developer video - 26 mins](http://refinerycms.com/pages/for-developers)
 * [IRC Channel](irc://irc.freenode.net/refinerycms)
 
-## Setting Up on Heroku
+## Setting Up on Heroku or Using S3 for Storage
 
 If you're using [Heroku](http://heroku.com/) you will want to put
 
     USE_S3_BACKEND = true
   
-in your ``config/production.rb`` file.
+in your ``config/production.rb`` file to make Refinery store files uploaded on Amazon S3.
 
 ## Updating to the latest Refinery
 
@@ -100,11 +100,11 @@ in your ``config/production.rb`` file.
 
 Simply run the command:
 
-    refinery-update-core /path/to/project/root/
+    refinery-update-core path/to/project/root/
 
 and the up-to-date core files will be copied from the latest gem into your project.
 
-### When using Git
+### When using GIT
 
 You can update by running these commands:
 
@@ -123,7 +123,7 @@ This will pull in all of the updated files in the project and may result in some
 ### [Images](http://github.com/resolve/refinerycms/blob/master/vendor/plugins/images/images.md) & [Resources](http://github.com/resolve/refinerycms/blob/master/vendor/plugins/resources/resources.md)
 
 * Easily upload and insert images
-* Upload and link to resources like PDF documents
+* Upload and link to resources such as PDF documents
 
 ### [Inquiries](http://github.com/resolve/refinerycms/blob/master/vendor/plugins/inquiries/inquiries.md)
 
@@ -137,6 +137,7 @@ This will pull in all of the updated files in the project and may result in some
 ### [Settings](http://github.com/resolve/refinerycms/blob/master/vendor/plugins/refinery_settings/settings.md)
 
 * Manage the behaviour of Refinery
+* Easily integrate with [Google Analytics](https://www.google.com/analytics/)
 
 ### [Dashboard](http://github.com/resolve/refinerycms/blob/master/vendor/plugins/dashboard/dashboard.md)
 
@@ -148,7 +149,7 @@ Extend Refinery easily by running the Refinery generator
 
     ruby script/generate refinery
   
-to get help on how to use that.
+to get help on how to use that. Or read the full documentation on [writing plugins for Refinery](http://github.com/resolve/refinerycms/blob/master/vendor/plugins/refinery/plugins.md)
 
 ### What about a portfolio?
 
@@ -158,4 +159,4 @@ Check out the [portfolio plugin gem](http://github.com/resolve/portfolio)
 
 Refinery is released under the MIT license and is copyright (c) 2005-2009 [Resolve Digital Ltd.](http://www.resolvedigital.co.nz)
 
-A copy of the MIT license can be found in the license.md file.
+[Read the license](http://github.com/resolve/refinerycms/blob/master/license.md)
