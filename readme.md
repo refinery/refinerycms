@@ -34,8 +34,8 @@ Refinery runs using a number of gems which (as of Refinery version 0.9.5.29) are
 * [rails >= 2.3.5](http://gemcutter.org/gems/rails)
 * [aasm >= 2.1.3](http://gemcutter.org/gems/aasm)
 * [unicode >= 0.1](http://gemcutter.org/gems/unicode)
-* [slim_scrooge >= 1.0.3](http://gemcutter.org/gems/slim_scrooge)
 * [hpricot >= 0.8.1](http://gemcutter.org/gems/hpricot)
+* [slim_scrooge >= 1.0.3](http://gemcutter.org/gems/slim_scrooge) (__Windows & JRuby users can ignore this one__)
 
 ### Other dependancies
 
