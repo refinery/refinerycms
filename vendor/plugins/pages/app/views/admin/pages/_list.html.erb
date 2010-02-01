@@ -20,10 +20,12 @@
     <%= h page.title %> <%= "<em>(hidden)</em>" unless page.show_in_menu? %>
     <%= "<em>(draft)</em>" if page.draft? %>
   </div>
-  <ul<%= " class='#{page.children.empty? ? 'empty' : 'nested'}'" %>>
-  <% page.children.each do |child| %>
-    <%= render :partial => 'list', :locals => {:page => child} %>
+  <% unless (children = page.children).empty? %>
+    <ul<%= " class='#{page.children.empty? ? 'empty' : 'nested'}'" %>>
+      <% children.each do |child| %>
+        <%= render :partial => 'list', :locals => {:page => child} %>
+      <% end %>
+      <span class='spacing'>&nbsp;</span>
+    </ul>
   <% end %>
-    <span class='spacing'>&nbsp;</span>
-  </ul>
 </li>
