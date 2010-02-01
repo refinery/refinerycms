@@ -7,17 +7,15 @@
   <% if (using_google_libs = RefinerySetting.find_or_set(:use_google_ajax_libraries, true)) and !local_request? -%>
     <script type='text/javascript' src="http://www.google.com/jsapi"></script>
     <script type='text/javascript'>
-      google.load("prototype", "1.6.1");
-      google.load("scriptaculous", "1.8.3");
       google.load("jquery", "1.4");
-      google.load("jqueryui", "1.7.2");
+      google.load("jqueryui", "1.8");
     </script>
   <% end %>
   <% if !using_google_libs or local_request? %>
     <% if use_caching %>
-      <%= javascript_include_tag 'jquery', 'jquery-ui-1.7.2.min.js', :cache => "cache/libraries" %>
+      <%= javascript_include_tag 'jquery', 'jquery-ui-1.8rc1.min.js', :cache => "cache/libraries" %>
     <% else %>
-      <%= javascript_include_tag 'prototype', 'scriptaculous', 'jquery', 'jquery-ui-1.7.2.min.js' %>
+      <%= javascript_include_tag 'prototype', 'scriptaculous', 'jquery', 'jquery-ui-1.8rc1.min.js' %>
     <% end %>
   <% end %>
   <script type='text/javascript'>$j = jQuery.noConflict();</script>

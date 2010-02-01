@@ -10,7 +10,7 @@
         google.load("jqueryui", "1.7.2");
       </script>
     <% end %>
-    <%= javascript_include_tag('jquery.js', 'jquery-ui-1.7.2.min.js', :cache => (use_caching ? "cache/libraries" : false)) if !using_google_libs or local_request? %>
+    <%= javascript_include_tag('jquery.js', 'jquery-ui-1.8rc1.min.js', :cache => (use_caching ? "cache/libraries" : false)) if !using_google_libs or local_request? %>
     <script type='text/javascript'>$j = jQuery.noConflict();</script>
     <%= javascript_include_tag 'refinery/admin', :cache => (use_caching ? "cache/admin_dialog" : false) %>
     <%= yield :head %>
