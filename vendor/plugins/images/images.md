@@ -6,7 +6,7 @@
 
 All Refinery's images are stored in one place, the images plugin. You can customise what sized thumbnails are generated when an image is uploaded.
 
-Images and other file uploads are handled using (attachment_fu)[http://github.com/technoweenie/attachment_fu]
+Images and other file uploads are handled using [attachment_fu](http://github.com/technoweenie/attachment_fu)
 
 ## Generating Thumbnails
 
@@ -14,7 +14,7 @@ Refinery lets you generate a range of thumbnails when an image is uploaded so yo
 
 To specify the sizes of your thumbnails edit the "Image Thumbnails" setting.
 
-This setting is stored as a serialized hash and is directly passed to (attachment_fu)[http://github.com/technoweenie/attachment_fu]
+This setting is stored as a serialized hash and is directly passed to [attachment_fu](http://github.com/technoweenie/attachment_fu)
 
 Here's what the default looks like
 
@@ -27,9 +27,9 @@ Here's what the default looks like
     :thumb: 50x50
     :side_body: 300x500
 
-Refinery requires some of these, so you won't want to delete any, but add new ones to meet your design needs. Each thumbnail is not just a size guide but a (RMagick geometry string)[http://www.imagemagick.org/RMagick/doc/imusage.html#geometry] that allows you to define min and max size too.
+Refinery requires some of these, so you won't want to delete any, but add new ones to meet your design needs. Each thumbnail is not just a size guide but a [RMagick geometry string](http://www.imagemagick.org/RMagick/doc/imusage.html#geometry) that allows you to define min and max size too.
 
-Refinery also extends the (geometry string)[http://www.imagemagick.org/RMagick/doc/imusage.html#geometry] support to allow cropping. Here's some examples
+Refinery also extends the [geometry string](http://www.imagemagick.org/RMagick/doc/imusage.html#geometry) support to allow cropping. Here's some examples
 
     :grid: c135x135
   
