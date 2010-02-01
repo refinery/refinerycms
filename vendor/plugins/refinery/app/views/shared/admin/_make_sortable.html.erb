@@ -1,23 +1,10 @@
-<style type='text/css'>
-  #content .ui-sortable, #content .ui-sortable ul{ list-style:none;  margin:0; padding: 0 0 0 1px; min-height:10px; height:auto !important; height:10px; }
-	#content .ui-sortable li{ padding:0; margin:1px; border-left:15px solid #9ff; }
-	#content .ui-sortable li span{ float:left; }
-</style>
-<%
-  list_id     ||= "sortable_list"
-  update_url  ||= url_for(:action => "update_positions")
-  tree        ||= false
-
-  content_for :head do
-%>
+<% content_for :head do -%>
 <script type='text/javascript'>
-
   $(document).ready(function(){
-    list_reorder.update_url     = '<%= update_url %>';
-    list_reorder.sortable_list  = '#<%= list_id %>';
-    list_reorder.tree           = <%= tree %>;
+    list_reorder.update_url     = '<%= update_url ||= url_for(:action => "update_positions") %>';
+    list_reorder.sortable_list  = '#<%= list_id ||= "sortable_list" %>';
+    list_reorder.tree           = <%= tree ||= false %>;
     list_reorder.init();
   });
-
 </script>
 <% end %>

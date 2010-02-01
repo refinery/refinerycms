@@ -2,15 +2,8 @@
 <% unless params[(list_id ||= "sortable_list").to_sym].blank? %>
   <script type='text/javascript'>
     $(document).ready(function(){
-      list_reorder.enable_reordering();
+      <%= "list_reorder.enable_reordering();" if (defined?(continue_reordering) ? continue_reordering : true) -%>
       init_tooltips();
     });
-/*
-    FastInit.addOnLoad(function()
-    {
-      enable_reordering();
-      init_tooltips();
-    });
-*/
   </script>
 <% end %>

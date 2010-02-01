@@ -432,18 +432,14 @@ pre {
 	padding: 6px 10px 0px 40px !important;
 }
 
-#content .ui-sortable ul.empty {
-	margin: 0;
-	display: block !important;
-}
-
 #content ul.ui-sortable li {
 	background: #E6E5DC !important;
 	cursor: move;
 	border: 1px solid #b7b7a8;
-	line-height: 16px;
 	margin-bottom: 2px !important;
 	padding: 3px 0px 0px 3px !important;
+	height: 38px;
+	display: block;
 }
 #content .ui-sortable .actions {
 	display: none !important;
