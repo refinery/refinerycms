@@ -149,8 +149,13 @@ This will pull in all of the updated files in the project and may result in some
 * Manage who can access Refinery
 * Control which plugins each user has access to
 * Uses the popular [RESTful authentication](http://github.com/technoweenie/restful-authentication) Rails plugin
-  
-### ...Want more?
+
+### [Themes](http://github.com/resolve/refinerycms/blob/master/vendor/plugins/themes/themes.md)
+
+* Customise Refinery to look exactly how you want
+* The Rails Way: use regular Rails erb views, no templating languages here!
+
+### ...Want more? [Extend with Plugins](http://github.com/resolve/refinerycms/blob/master/vendor/plugins/refinery/plugins.md)
 
 Extend Refinery easily by running the Refinery generator
 
