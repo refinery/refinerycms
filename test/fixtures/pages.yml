@@ -1,0 +1,51 @@
+# this page links to the inquiries plugin through a custom link_url
+contact_us:
+  title: Contact Us
+  position: 4
+  show_in_menu: 1
+  link_url: /inquiries/new
+  menu_match: ^/inquiries.*$
+  deletable: true
+
+# this page is a draft
+draft_page:
+  title: Secret Product
+  position: 3
+  show_in_menu: 1
+  deletable: true
+  draft: true
+  
+# page inside draft_page
+draft_page_child:
+  title: Secret information about secret product
+  position: 0
+  show_in_menu: 1
+  deletable: true
+  draft: false # hopefully will actually be hidden from the menu becaues of it's parent
+  parent: draft_page # this is a child page.
+  
+# this page has a few "SEO" bits that change the page around
+services_page:
+  title: Services
+  position: 2
+  show_in_menu: 1
+  deletable: true
+  draft: false
+  browser_title: "Programming, Ruby, Rails"
+  custom_title_type: text
+  custom_title: Programming Services
+
+# this page is the home page
+home_page:
+  title: Home Page
+  position: 0
+  show_in_menu: 1
+  deletable: false
+  link_url: /
+  
+# this page is the generic 404 page
+page_not_found:
+  title: Page Not Found
+  position: 0
+  show_in_menu: false
+  deletable: false
