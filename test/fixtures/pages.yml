@@ -2,7 +2,7 @@
 contact_us:
   title: Contact Us
   position: 4
-  show_in_menu: 1
+  show_in_menu: true
   link_url: /inquiries/new
   menu_match: ^/inquiries.*$
   deletable: true
@@ -11,7 +11,7 @@ contact_us:
 draft_page:
   title: Secret Product
   position: 3
-  show_in_menu: 1
+  show_in_menu: true
   deletable: true
   draft: true
   
@@ -19,16 +19,16 @@ draft_page:
 draft_page_child:
   title: Secret information about secret product
   position: 0
-  show_in_menu: 1
+  show_in_menu: true
   deletable: true
   draft: false # hopefully will actually be hidden from the menu becaues of it's parent
   parent: draft_page # this is a child page.
-  
+
 # this page has a few "SEO" bits that change the page around
-services_page:
+services:
   title: Services
   position: 2
-  show_in_menu: 1
+  show_in_menu: true
   deletable: true
   draft: false
   browser_title: "Programming, Ruby, Rails"
@@ -39,10 +39,38 @@ services_page:
 home_page:
   title: Home Page
   position: 0
-  show_in_menu: 1
+  show_in_menu: true
   deletable: false
   link_url: /
   
+# this is a products page that has 3 children, 1 that is hidden from the menu
+products:
+  title: Products
+  position: 1
+  show_in_menu: true
+  deletable: true
+  
+blue_jelly:
+  title: Blue Jelly
+  position: 0
+  show_in_menu: true
+  deletable: true
+  parent: products
+  
+green_jelly:
+  title: Green Jelly
+  position: 1
+  show_in_menu: true
+  deletable: true
+  parent: products
+
+rainbow_jelly:
+  title: Rainbow Jelly
+  position: 2
+  show_in_menu: true
+  deletable: true
+  parent: products
+
 # this page is the generic 404 page
 page_not_found:
   title: Page Not Found
