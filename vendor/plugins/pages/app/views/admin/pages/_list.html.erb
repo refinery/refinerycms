@@ -5,7 +5,7 @@
     "branch_start"
   end
 -%>
-<li class='clearfix record<%= " #{branch}" %>' id="<%= dom_id(page) -%>">
+<li class='record<%= " #{branch}" %>' id="<%= dom_id(page) -%>">
   <div class='clearfix'>
     <span class='actions'>
     <%= link_to refinery_icon_tag('application_go.png'), page.url, :target => "_blank",
@@ -21,11 +21,10 @@
     <%= "<em>(draft)</em>" if page.draft? %>
   </div>
   <% unless (children = page.children).empty? %>
-    <ul<%= " class='#{page.children.empty? ? 'empty' : 'nested'}'" %>>
+    <ul<%= " class='nested'" %>>
       <% children.each do |child| %>
         <%= render :partial => 'list', :locals => {:page => child} %>
       <% end %>
-      <span class='spacing'>&nbsp;</span>
     </ul>
   <% end %>
 </li>

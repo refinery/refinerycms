@@ -29,3 +29,10 @@
     <%= image_fu @image, :medium, { :class => "brown_border" } %>
   </div>
 <% end %>
+<% content_for :head do %>
+  <script type='text/javascript'>
+    $(document).ready(function(){
+      image_dialog.init();
+    });
+  </script>
+<% end if from_dialog? %>

@@ -29,7 +29,11 @@
             </ul>
           </div>
         </div>
-        <%= will_paginate @resources, :previous_label => '&laquo; Previous', :next_label => 'Next &raquo;', :renderer => Refinery::LinkRenderer, :url => {:controller => "admin/resources", :action => "insert", :dialog => @dialog} unless @thickbox %>
+        <%= will_paginate @resources, 
+                          :previous_label => '&laquo; Previous', 
+                          :next_label => 'Next &raquo;', 
+                          :renderer => Refinery::LinkRenderer, 
+                          :url => {:controller => "admin/resources", :action => "insert", :dialog => from_dialog?} unless @thickbox %>
       </div>
     <% end %>
     <div id='upload_resource_area' class='dialog_area' <%= "style='display:none;'" if @resources.empty? %>>
@@ -43,7 +47,11 @@
     or
     <%= link_to "Cancel", "", :id => "cancel_button", :class => "close_dialog" %>
 
-    <%= will_paginate @resources, :previous_label => '&laquo; Previous', :next_label => 'Next &raquo;', :renderer => Refinery::LinkRenderer, :url => {:controller => "admin/resources", :action => "insert", :dialog => @dialog } %>
+    <%= will_paginate @resources, 
+                          :previous_label => '&laquo; Previous', 
+                          :next_label => 'Next &raquo;', 
+                          :renderer => Refinery::LinkRenderer, 
+                          :url => {:controller => "admin/resources", :action => "insert", :dialog => from_dialog? } %>
   </div>
 <% end %>
 

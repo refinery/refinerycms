@@ -25,7 +25,7 @@
             <% end -%>
           </ul>
         </div>
-        <%= images_paginator @images, @dialog %>
+        <%= images_paginator @images, from_dialog? %>
       </div>
     <% end %>
     <div id='upload_image_area' class='dialog_area' <%= "style='display:none;'" unless @images.empty? %>>
