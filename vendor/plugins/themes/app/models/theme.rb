@@ -31,12 +31,12 @@ class Theme < ActiveRecord::Base
 		end
 	end
 
-	def theme_folder_title
+	def folder_title
 		File.basename(self.full_filename).split(".").first
 	end
 
 	def theme_path
-		File.join(RAILS_ROOT, "themes", theme_folder_title)
+		File.join(RAILS_ROOT, "themes", folder_title)
 	end
 
 	def preview_image
@@ -50,7 +50,7 @@ class Theme < ActiveRecord::Base
 	end
 
 	def self.directory_is_writable?
-		File.writable? File.join(RAILS_ROOT, "themes") # Heroku users will receive false here
+		File.writable? File.join(RAILS_ROOT, "themes") # Heroku users (or users with read-only filesystem) will receive false here
 	end
 
 end
