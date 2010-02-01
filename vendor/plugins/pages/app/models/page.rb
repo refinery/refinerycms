@@ -39,10 +39,14 @@ class Page < ActiveRecord::Base
     if self.deletable?
       super
     else
-      puts "This page is not deletable. Please use .destroy! if you really want it deleted"
-      puts "unset .link_url" if self.link_url.present?
-      puts "unset .menu_match" if self.menu_match.present?
-      puts "set .deletable to true" unless self.deletable
+			unless RAILS_ENV == "test"
+				# give useful feedback when trying to delete from console
+	      puts "This page is not deletable. Please use .destroy! if you really want it deleted "
+	      puts "unset .link_url," if self.link_url.present?
+	      puts "unset .menu_match," if self.menu_match.present?
+	      puts "set .deletable to true" unless self.deletable
+			end
+		
       return false
     end
   end
