@@ -95,7 +95,9 @@ class Page < ActiveRecord::Base
 	
 	# Return true if this page can be shown in the navigation. If it's a draft or is set to not show in the menu it will return false.
   def in_menu?
-    self.live? and self.show_in_menu?
+    is_in_menu = self.live? and self.show_in_menu?
+    self.ancestors.each {|a| is_in_menu = false unless a.in_menu? }
+    is_in_menu
   end
 	
 	# Returns true if this page is the home page or links to it.
@@ -103,6 +105,7 @@ class Page < ActiveRecord::Base
     self.link_url == "/"
   end
 	
+	# Returns all visible sibling pages that can be rendered for the menu
   def shown_siblings
     self.siblings.reject { |sibling| not sibling.in_menu? }
   end
@@ -126,7 +129,7 @@ class Page < ActiveRecord::Base
     # the way that we call page parts seems flawed, will probably revert to page.parts[:title] in a future release.
     if (super_value = super).blank?
       # self.parts is already eager loaded so we can now just grab the first element matching the title we specified.
-      part = self.parts.reject {|part| part.title != part_title.to_s}.first
+      part = self.parts.reject {|part| part.title.downcase != part_title.to_s.downcase}.first
 
       return part.body unless part.nil?
     end
@@ -136,7 +139,11 @@ class Page < ActiveRecord::Base
 	
 	# In the admin area we use a slightly different title to inform the which pages are draft or hidden pages
   def title_with_meta
-    "#{self.title} #{"<em>(hidden)</em>" unless self.show_in_menu?} #{"<em>(draft)</em>" if self.draft?}"
+		title = self.title
+		title << " <em>(hidden)</em>" unless self.show_in_menu?
+		title << " <em>(draft)</em>" if self.draft?
+		
+		title.strip
   end
 
   # Used to index all the content on this page so it can be easily searched.
