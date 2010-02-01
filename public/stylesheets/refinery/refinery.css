@@ -418,26 +418,26 @@ pre {
 .tree li span.spacing {
 	display: none;
 }
-.reordering .hover {
+#content .ui-sortable .hover {
 	height: 300%;
 	display: block;
 }
 
-.reordering {
+#content .ui-sortable {
 	margin: 0;
 	padding: 0;
 }
 
-.reordering li ul{
+#content .ui-sortable li ul{
 	padding: 6px 10px 0px 40px !important;
 }
 
-.reordering ul.empty {
+#content .ui-sortable ul.empty {
 	margin: 0;
 	display: block !important;
 }
 
-ul.reordering li {
+#content ul.ui-sortable li {
 	background: #E6E5DC !important;
 	cursor: move;
 	border: 1px solid #b7b7a8;
@@ -445,11 +445,21 @@ ul.reordering li {
 	margin-bottom: 2px !important;
 	padding: 3px 0px 0px 3px !important;
 }
-.reordering .actions {
+#content .ui-sortable .actions {
 	display: none !important;
 }
-.reordering li span.spacing {
+#content .ui-sortable li span.spacing {
 	display: block;
+}
+#content .ui-sortable li.placeholder {
+    opacity: 0.4;
+    border-width: 2px;
+    border-style: dashed;
+    height: 38px;
+}
+
+.ui-sortable-helper {
+    opacity: 0.7;
 }
 
 #content h2 {

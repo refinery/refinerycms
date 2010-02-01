@@ -463,9 +463,38 @@ var image_dialog = {
       }
 
       var nest_id = 0;
-      list_reorder.sortable_list.addClass('reordering');
+      $j(list_reorder.sortable_list).find('li').each(function(index, li) {
+        if ($j('ul', li).length) { return; }
+        $j('<ul></ul>').appendTo(li);
+      });
+
+      $j(list_reorder.sortable_list, list_reorder.sortable_list + ' ul').sortable({
+        'connectWith':$j(list_reorder.sortable_list, list_reorder.sortable_list + ' ul')
+  			, 'tolerance': 'pointer'
+  			, 'placeholder': 'placeholder'
+  			, 'cursor': 'drag'
+  			, 'items': 'li'
+  			,	update: function(e, ui) {
+  			  to_post = "";
+  			  $j(list_reorder.sortable_list).find('>li').each(function(index, li) {
+  			    if (index > 0) { to_post += "&amp;"; }
+  			    to_post += "sortable_list[" + index + "][id]=" + $j($j(li).attr('id').split('_')).last().get(0);
+  			    li.find('> li, > ul li').each(function(i, child) {
+  			      to_post += "&amp;sortable_list[" + index + "][" + i + "][id]=" + $j($j(child).attr('id').split('_')).last().get(0);
+  			    });
+  			  });
+console.log(to_post);
+          // this needs to be written correctly
+          if (1 == 2) {
+  			    $j.post(list_reorder.update_url, to_post); 
+			    }
+
+  			}
+      });
+
+      /*
       list_reorder.sortable_list.find('ul.nested').each(function(){
-        this.id = this.id.length > 0 ? this.id : "nested_" + nest_id++;
+        this.id = this.id.length > 0 ? this.id : 'nested_" + nest_id++;
         Sortable.create(this.id,{
           constraint: list_reorder.tree ? "false" : "'vertical'",
           hoverclass: 'hover',
@@ -489,7 +518,7 @@ var image_dialog = {
                   });
         }
       });
-
+      */
       $j('#reorder_action').hide();
       $j('#reorder_action_done').show();
     },
@@ -502,7 +531,7 @@ var image_dialog = {
       if(list_reorder.reordering_button_enabled){
         list_reorder.sortable_list.removeClass('reordering');
 
-        Sortable.destroy(list_reorder.sortable_list.get(0));
+        $j(list_reorder.sortable_list).sortable('destroy');
 
         $j('#reorder_action_done').hide();
         $j('#reorder_action').show();
