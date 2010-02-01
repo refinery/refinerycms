@@ -13,7 +13,7 @@
 
   <%= render :partial => "/shared/admin/form_actions", :locals => {:f => f, :continue_editing => false} %>
 
-  <% if @thickbox %>
+  <% if @thickbox -%>
     <input type='hidden' name='thickbox' value='<%= @thickbox %>' />
     <input type='hidden' name='field' value='<%= @field %>' />
     <input type='hidden' name='update_resource' value='<%= @update_resource %>' />
@@ -22,5 +22,12 @@
     <input type='hidden' name='callback' value='<%= @callback %>' />
     <input type='hidden' name='conditions' value='<%= @conditions %>' />
     <input type='hidden' name='current_link' value='<%= @current_link %>' />
-  <% end %>
+  <% end -%>
 <% end -%>
+<% content_for :head do %>
+  <script type='text/javascript'>
+    $(document).ready(function(){
+      link_dialog.init();
+    });
+  </script>
+<% end if from_dialog? %>

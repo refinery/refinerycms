@@ -144,12 +144,13 @@ var link_dialog = {
   },
 
   init_close: function(){
-    $('#TB_title .close_dialog', '#dialog_container .close_dialog').click(function(e) {
+    $('#TB_title .close_dialog, #dialog_container .close_dialog').click(function(e) {
       e.preventDefault();
 
       // if we're in a frame
       if(parent && typeof(parent.tb_remove) == "function"){
         parent.tb_remove();
+
       } // if we're not in a frame
       else if(typeof(tb_remove) == 'function'){
         tb_remove();
@@ -373,6 +374,7 @@ var image_dialog = {
     this.init_tabs();
     this.init_select();
     this.init_submit();
+    this.init_close();
   },
 
   init_tabs: function(){
@@ -431,93 +433,100 @@ var image_dialog = {
   init_submit: function(){
     $('#dialog-form-actions #submit_button').click(function(e){
       e.preventDefault();
-      var img_selected = $('#existing_image_area_content ul li.selected img').get(0);
-
-      if(img_selected){
+      if(img_selected = $('#existing_image_area_content ul li.selected img').get(0)) {
         parent.image_picker.changed(img_selected);
       }
 
-      self.parent.tb_remove();
+      if(parent && typeof(parent.tb_remove) == "function"){
+        parent.tb_remove();
+      }
     });
 
     $('#dialog-form-actions #cancel_button').click(function(e){
       e.preventDefault();
       parent.tb_remove();
     });
+  },
+
+  init_close: function(){
+    $('#TB_title .close_dialog, #dialog_container .close_dialog').click(function(e) {
+      e.preventDefault();
+
+      // if we're in a frame
+      if(parent && typeof(parent.tb_remove) == "function"){
+        parent.tb_remove();
+
+      } // if we're not in a frame
+      else if(typeof(tb_remove) == 'function'){
+        tb_remove();
+      }
+    });
   }
 }
 
+var list_reorder = {
+  init: function() {
+    this.sortable_list = $(this.sortable_list);
 
-  var list_reorder = {
-    init: function(){
-      this.reordering_button_enabled = true;
-      this.sortable_list = $(this.sortable_list);
-
-      $('#reorder_action').click(list_reorder.enable_reordering);
-      $('#reorder_action_done').click(list_reorder.disable_reordering);
-    }
-
-    , enable_reordering: function(e){
-      if(e){ e.preventDefault(); }
-
-      var nest_id = 0;
-      $(list_reorder.sortable_list).find('li').each(function(index, li) {
-        if ($('ul', li).length) { return; }
-        $('<ul></ul>').appendTo(li);
-      });
-
-      $(list_reorder.sortable_list, list_reorder.sortable_list + ' ul').sortable({
-        'connectWith':$(list_reorder.sortable_list, list_reorder.sortable_list + ' ul')
-  			, 'tolerance': 'pointer'
-  			, 'placeholder': 'placeholder'
-  			, 'cursor': 'drag'
-  			, 'items': 'li, li > ul'
-      });
-
-      $('#reorder_action').hide();
-      $('#reorder_action_done').show();
-    }
-
-    , parse_branch: function(indexes, li) {
-      branch = "&sortable_list";
-      $.each(indexes, function(i, index) {
-        branch += "[" + index + "]";
-      });
-      branch += "[id]=" + $($(li).attr('id').split('_')).last().get(0);
-
-      // parse any children branches too.
-	    $(li).find('> li, > ul li').each(function(i, child) {
-	      branch += list_reorder.parse_branch(indexes + [i], child);
-	    });
-
-	    return branch;
-    }
-
-    , disable_reordering: function(e){
-      if(e){
-        e.preventDefault();
-      }
-
-      if(list_reorder.reordering_button_enabled){
-        serialized = "";
-
-			  $(list_reorder.sortable_list).find('> li').each(function(index, li) {
-			    serialized += list_reorder.parse_branch([index], li);
-			  });
-
-			  serialized += "&tree=" + list_reorder.tree + "&authenticity_token=" + encodeURIComponent($('#reorder_authenticity_token').val() + "&continue_reordering=false");
-		    $.post(list_reorder.update_url, serialized, function(data) {
-		      $(list_reorder.sortable_list.get(0)).html(data);
-		      list_reorder.sortable_list.removeClass('reordering');
-
-          $(list_reorder.sortable_list).sortable('destroy');
-
-          $('#reorder_action_done').hide();
-          $('#reorder_action').show();
-		    });
-      }
-    }
+    $('#reorder_action').click(list_reorder.enable_reordering);
+    $('#reorder_action_done').click(list_reorder.disable_reordering);
   }
+
+  , enable_reordering: function(e) {
+    if(e) { e.preventDefault(); }
+
+    var nest_id = 0;
+    $(list_reorder.sortable_list).find('li').each(function(index, li) {
+      if ($('ul', li).length) { return; }
+      $("<ul class='spacing'><li></li></ul>").appendTo(li);
+    });
+
+    $(list_reorder.sortable_list, list_reorder.sortable_list + ' ul').sortable({
+      'connectWith':$(list_reorder.sortable_list, list_reorder.sortable_list.find('ul'))
+			, 'tolerance': 'pointer'
+			, 'placeholder': 'placeholder'
+			, 'cursor': 'drag'
+			, 'items': 'li'
+    });
+
+    $('#reorder_action').hide();
+    $('#reorder_action_done').show();
+  }
+
+  , parse_branch: function(indexes, li) {
+    branch = "&sortable_list";
+    $.each(indexes, function(i, index) {
+      branch += "[" + index + "]";
+    });
+    branch += "[id]=" + $($(li).attr('id').split('_')).last().get(0);
+
+    // parse any children branches too.
+    $(li).find('> li[id], > ul li[id]').each(function(i, child) {
+      branch += list_reorder.parse_branch(indexes + [i], child);
+    });
+
+    return branch;
+  }
+
+  , disable_reordering: function(e) {
+    if(e) { e.preventDefault(); }
+
+    serialized = "";
+	  $(list_reorder.sortable_list).find('> li[id]').each(function(index, li) {
+	    serialized += list_reorder.parse_branch([index], li);
+	  });
+	  serialized += "&tree=" + list_reorder.tree + "&authenticity_token=" + encodeURIComponent($('#reorder_authenticity_token').val() + "&continue_reordering=false");
+
+    $.post(list_reorder.update_url, serialized, function(data) {
+      $(list_reorder.sortable_list.get(0)).html(data);
+
+      $(list_reorder.sortable_list).removeClass('reordering').sortable('destroy');
+
+      $('#reorder_action_done').hide();
+      $('#reorder_action').show();
+    });
+  }
+}
 
 var image_picker = {
   selected: '',

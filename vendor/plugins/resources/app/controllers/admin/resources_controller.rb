@@ -1,9 +1,10 @@
 class Admin::ResourcesController < Admin::BaseController
 
   crudify :resource, :order => "updated_at DESC"
+  before_filter :init_dialog
 
   def new
-    @resource = Resource.new
+    @resource = Resource.new unless @resource.present?
 
     @url_override = admin_resources_url(:dialog => from_dialog?)
   end
@@ -20,6 +21,7 @@ class Admin::ResourcesController < Admin::BaseController
           render :text => "<script type='text/javascript'>parent.window.location = '#{admin_resources_url}';</script>"
         end
       else
+        self.new # important for dialogs
         render :action => 'new'
       end
     else
@@ -51,16 +53,8 @@ class Admin::ResourcesController < Admin::BaseController
 
   def insert
     self.new if @resource.nil?
-    @dialog = from_dialog?
-    @thickbox = !params[:thickbox].blank?
-    @field = params[:field]
-    @update_resource = params[:update_resource]
-    @update_text = params[:update_text]
-    @thumbnail = params[:thumbnail]
-    @callback = params[:callback]
-    @conditions = params[:conditions]
-    @current_link = params[:current_link]
-    @url_override = admin_resources_url(:dialog => @dialog, :insert => true)
+
+    @url_override = admin_resources_url(:dialog => from_dialog?, :insert => true)
 
     unless params[:conditions].blank?
       extra_condition = params[:conditions].split(',')
@@ -76,6 +70,17 @@ class Admin::ResourcesController < Admin::BaseController
   end
 
 protected
+
+  def init_dialog
+    @thickbox = params[:thickbox].present?
+    @field = params[:field]
+    @update_resource = params[:update_resource]
+    @update_text = params[:update_text]
+    @thumbnail = params[:thumbnail]
+    @callback = params[:callback]
+    @conditions = params[:conditions]
+    @current_link = params[:current_link]
+  end
 
   def paginate_resources(conditions={})
     @resources = Resource.paginate   :page => (@paginate_page_number ||= params[:page]),

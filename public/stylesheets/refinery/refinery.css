@@ -418,7 +418,7 @@ pre {
 .tree li span.spacing {
 	display: none;
 }
-#content .ui-sortable .hover {
+#content .ui-sortable li.hover {
 	height: 300%;
 	display: block;
 }
@@ -438,14 +438,19 @@ pre {
 	border: 1px solid #b7b7a8;
 	margin-bottom: 2px !important;
 	padding: 3px 0px 0px 3px !important;
-	height: 38px;
-	display: block;
+}
+#content ul.ui-sortable li ul.empty {
+    display: block;
 }
 #content .ui-sortable .actions {
 	display: none !important;
 }
-#content .ui-sortable li span.spacing {
+#content .ui-sortable ul.spacing li {
 	display: block;
+	border: 0px none;
+}
+#content .ui-sortable ul {
+    min-height: 30px;
 }
 #content .ui-sortable li.placeholder {
     opacity: 0.4;
