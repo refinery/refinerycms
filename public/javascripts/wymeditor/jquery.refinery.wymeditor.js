@@ -946,8 +946,9 @@ WYMeditor.editor.prototype.exec = function(cmd) {
 	//open a dialog or exec
 	switch(cmd) {
 		case WYMeditor.CREATE_LINK:
-			var container = this.container();
-			if(container || this._selected_image) this.dialog(WYMeditor.DIALOG_LINK);
+			if((container = this.container()) || this._selected_image) {
+			  this.dialog(WYMeditor.DIALOG_LINK);
+		  }
 		break;
 
 		case WYMeditor.INSERT_IMAGE:
@@ -967,8 +968,9 @@ WYMeditor.editor.prototype.exec = function(cmd) {
 			this.toggleHtml();
 
 			//partially fixes #121 when the user manually inserts an image
-			if(!$(this._box).find(this._options.htmlSelector).is(':visible'))
+			if(!$(this._box).find(this._options.htmlSelector).is(':visible')) {
 				this.listen();
+			}
 		break;
 
 		case WYMeditor.PREVIEW:
@@ -976,9 +978,17 @@ WYMeditor.editor.prototype.exec = function(cmd) {
 		break;
 
 		case WYMeditor.APPLY_CLASS:
-			$(this._box).find(this._options.classUnhiddenSelector).toggleClass(this._options.classHiddenSelector.substring(1)); // substring(1) to remove the . at the start
-			$(this._box).find("a[name=" + WYMeditor.APPLY_CLASS +"]").toggleClass('selected');
-			//this.dialog(WYMeditor.DIALOG_CLASS);
+		  wym = this;
+			$(wym._box).find(this._options.classUnhiddenSelector).toggleClass(this._options.classHiddenSelector.substring(1)); // substring(1) to remove the . at the start
+			$(wym._box).find("a[name=" + WYMeditor.APPLY_CLASS +"]").toggleClass('selected');
+			// determine whether any classes are already selected and add the enabled class to them.
+			$(wym._box).find(this._options.classUnhiddenSelector).find("a[name]").each(function(index, rule){
+			  if ($(wym.selected()).hasClass($(rule).attr('name'))) {
+			    $(rule).parent().addClass('enabled');
+			  } else {
+			    $(rule).parent().removeClass('enabled');
+			  }
+			});
 		break;
 
 		default:
