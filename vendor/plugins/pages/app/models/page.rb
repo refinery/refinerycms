@@ -3,12 +3,14 @@ class Page < ActiveRecord::Base
   validates_presence_of :title
 
   acts_as_tree :order => "position ASC", :include => [:children, :slugs]
-
+	
+	# Docs for friendly_id http://github.com/norman/friendly_id
   has_friendly_id :title, :use_slug => true, :strip_diacritics => true
 
   has_many :parts, :class_name => "PagePart", :order => "position ASC"
   accepts_nested_attributes_for :parts, :allow_destroy => true
 	
+	# Docs for acts_as_indexed http://github.com/dougal/acts_as_indexed
   acts_as_indexed :fields => [:title, :meta_keywords, :meta_description, :custom_title, :browser_title, :all_page_part_content],
           			  :index_file => %W(#{RAILS_ROOT} tmp index)
 
@@ -150,7 +152,7 @@ class Page < ActiveRecord::Base
 	
 	# Returns how many pages per page should there be when paginating pages
   def self.per_page(dialog = false)
-    size = (dialog ? PAGES_PER_DIALOG : PAGES_PER_ADMIN_INDEX)
+    dialog ? PAGES_PER_DIALOG : PAGES_PER_ADMIN_INDEX
   end
 
 end
