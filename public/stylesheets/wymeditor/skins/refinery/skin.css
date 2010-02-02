@@ -204,8 +204,15 @@
 	
 }
 .wym_skin_refinery .wym_tools_class .wym_classes .wym_tools_class_multiple_rules ul li a {
-	width: 186px;
+	width: 167px;
 	padding-left: 12px;
+	padding-right: 21px;
 	height: 16px;
 	line-height: 18px;
+}
+
+.wym_skin_refinery .wym_tools_class .wym_classes li.enabled a {
+    background-image: url('/images/refinery/icons/star.png');
+    background-repeat: no-repeat;
+    background-position: 181px 2px;
 }
