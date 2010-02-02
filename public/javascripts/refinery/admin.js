@@ -1,6 +1,7 @@
 $(document).ready(function(){
 
   init_flash_messages();
+  init_delete_confirmations();
   init_sortable_menu();
   init_submit_continue();
   init_modal_dialogs();
@@ -9,6 +10,18 @@ $(document).ready(function(){
   // focus first field in an admin form.
   $('form input[type=text]:first').focus();
 });
+
+init_delete_confirmations = function() {
+  $('a.confirm-delete').click(function(e) {
+    if (confirm("Are you sure you want to " + (t=$(this).attr('title'))[0].toLowerCase() + t.substring(1) + "?")) {
+      $("<form method='POST' action='" + $(this).attr('href') + "'></form>")
+        .append("<input type='hidden' name='_method' value='delete' />")
+        .append("<input type='hidden' name='authenticity_token' value='" + $('#admin_authenticity_token').val() + "'/>")
+        .appendTo('body').submit();
+    }
+    e.preventDefault();
+  });
+}
 
 init_flash_messages = function(){
   $('#flash').fadeIn(550);
@@ -44,7 +57,7 @@ init_sortable_menu = function(){
     items: '.tab',
     update: function(){
       var ser   = $menu.sortable('serialize', {key: 'menu[]'}),
-          token = escape($('#admin_menu_reorder_authenticity_token').val());
+          token = escape($('#admin_authenticity_token').val());
 
       $.get('/admin/update_menu_positions?' + ser, {authenticity_token: token});
     }
@@ -89,7 +102,7 @@ init_submit_continue = function(){
     $('.fieldWithErrors').removeClass('fieldWithErrors').addClass('field');
     $('#flash_container .errorExplanation').remove();
 
-    $.post(this.form.action, this.form.serialize(), function(data) {
+    $.post(this.form.action, $(this.form).serialize(), function(data) {
       if ((flash_container = $('#flash_container')).length > 0) {
         flash_container.html(data);
 
@@ -97,9 +110,11 @@ init_submit_continue = function(){
 
         $('.errorExplanation').not($('#flash_container .errorExplanation')).remove();
 
-        $.each($('#fieldsWithErrors').val().split(','), function() {
-          $("#" + this).wrap("<div class='fieldWithErrors' />");
-        });
+        if ((error_fields = $('#fieldsWithErrors').val()) != null) {
+          $.each(error_fields.split(','), function() {
+            $("#" + this).wrap("<div class='fieldWithErrors' />");
+          });
+        }
 
         $('.fieldWithErrors:first :input:first').focus();
 

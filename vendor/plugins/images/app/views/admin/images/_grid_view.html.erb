@@ -8,8 +8,7 @@
          <%= link_to refinery_icon_tag('application_edit.png'), edit_admin_image_path(image),
                                  :title => 'Edit this image' %>
          <%= link_to refinery_icon_tag('delete.png'), admin_image_path(image),
-                                  :confirm => "Are you sure you want to delete #{image.title}?",
-                                  :class => "cancel", :method => :delete,
+                                                                    :class => "cancel confirm-delete",
                                   :title => "Remove this image forever" %>
        </span>
      </li>

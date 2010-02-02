@@ -13,9 +13,8 @@
     <%= link_to refinery_icon_tag('application_edit.png'), edit_admin_page_path(page),
                  :title => "Edit this page" %>
     <%= link_to refinery_icon_tag('delete.png'), admin_page_path(page),
-                          :confirm => "Are you sure you want to delete '#{page.title}'?",
-                          :class => "cancel", :method => :delete,
-                          :title => "Remove this page forever" if page.deletable? %>
+                  :class => "cancel confirm-delete",
+                  :title => "Remove this page forever" if page.deletable? %>
     </span>
     <%= h page.title %> <%= "<em>(hidden)</em>" unless page.show_in_menu? %>
     <%= "<em>(draft)</em>" if page.draft? %>

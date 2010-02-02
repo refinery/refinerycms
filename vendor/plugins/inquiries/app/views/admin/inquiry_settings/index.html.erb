@@ -19,8 +19,7 @@
             <span class='actions'>
               <%= link_to refinery_icon_tag("application_edit.png", :alt => "Edit"), edit_admin_inquiry_setting_path(setting) %>
               <%= link_to refinery_icon_tag("delete.png", :alt => "Delete"), admin_inquiry_setting_path(setting),
-                                :confirm => "Are you sure you want to delete #{setting.name}?",
-                                :class => "cancel", :method => :delete ,
+                                                                :class => "cancel confirm-delete" ,
                                 :title => "Remove this inquiry setting forever"  if setting.destroyable? %>
             </span>
             <span><%=h setting.name %></span>
