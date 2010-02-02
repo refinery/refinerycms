@@ -854,7 +854,6 @@ WYMeditor.editor.prototype.bindEvents = function() {
 		$(wym._doc.body).html($(this).val());
 	});
 
-/* TODO STILL NEEDS WORK */
 	//handle click event on classes buttons
 	$(this._box).find(this._options.classSelector).click(function() {
 
@@ -868,7 +867,7 @@ WYMeditor.editor.prototype.bindEvents = function() {
 					if ((indexOf = $.inArray(sName.replace(classRule.name + (classRule.join || ""), ""), classRule.rules)) > -1) {
 					  $.each(classRule.rules, function(i, rule) {
 					    if (i != indexOf) {
-					      replacers.add(classRule.name + (classRule.join || "") + rule);
+					      replacers.push(classRule.name + (classRule.join || "") + rule);
 					    }
 					  });
 
@@ -879,13 +878,12 @@ WYMeditor.editor.prototype.bindEvents = function() {
 		}
 
 		if(oClass) {
-			var jqexpr = oClass.expr;
 			// remove all related classes.
-			replacers.each(function(removable_class){
-				wym.removeClass(removable_class, jqexpr);
+			replacers.each(function(index, removable_class){
+				wym.removeClass(removable_class, oClass.expr);
 			});
 
-			wym.toggleClass(sName, jqexpr);
+			wym.toggleClass(sName, oClass.expr);
 		}
 
 		// now hide the menu
