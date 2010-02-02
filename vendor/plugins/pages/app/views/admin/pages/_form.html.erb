@@ -41,7 +41,7 @@
     <div class='field'>
       <%= label_tag :custom_title %>
       <%= label_tag "", 'Type:', :class => "stripped" %>
-      <% ["none", "text", "image"].each do |type| %>
+      <% ["none", "text"].each do |type| %>
         <%= f.radio_button :custom_title_type, "#{type}" %>
         <%= label_tag "page_custom_title_type_#{type}", "#{type.titleize}", :class => "stripped" %>
       <% end %>
@@ -54,16 +54,6 @@
             If you want the page to have a different title than the one that shows in the menu and browser title then enter it here.<br/>
           </small>
         </p>
-      </div>
-      <div id='custom_title_image' style='display: <%= @page.custom_title_type == 'image' ? 'block' : 'none' %>' class='clearfix'>
-        <%= render :partial => "/shared/admin/image_picker", :locals =>
-          {
-            :f => f,
-            :field => :custom_title_image_id,
-            :image => @page.custom_title_image,
-            :toggle_image_display => false
-          }
-        %>
       </div>
     </div>
     <div class='field'>
@@ -134,7 +124,6 @@
   switch_custom_title_type = function(type)
   {
     $('custom_title_text').hide();
-    $('custom_title_image').hide();
 
     $('custom_title_' + type).show();
   }

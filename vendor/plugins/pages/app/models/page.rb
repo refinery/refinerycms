@@ -6,9 +6,6 @@ class Page < ActiveRecord::Base
 
   has_friendly_id :title, :use_slug => true, :strip_diacritics => true
 
-  belongs_to :image
-  belongs_to :custom_title_image, :class_name => "Image"
-
   has_many :parts, :class_name => "PagePart", :order => "position ASC"
   accepts_nested_attributes_for :parts, :allow_destroy => true
 	
