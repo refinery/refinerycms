@@ -1641,6 +1641,8 @@ WYMeditor.INIT_DIALOG = function(wym, selected, isIframe) {
 				// now grab what was selected in the editor and chuck it inside the link.
 				if (!wym._selected_image)
 				{
+				  // ensure some attributes are copied across to the new link.
+				  link.attr({'style': replaceable.attr('style'), 'class': replaceable.attr('class')});
 					replaceable.after(link);
 					link.html(replaceable.html());
 					replaceable.remove();
