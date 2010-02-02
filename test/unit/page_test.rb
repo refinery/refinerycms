@@ -124,8 +124,5 @@ class PageTest < ActiveSupport::TestCase
 		# but make sure we can still access other fields through []
 		assert_equal "Home Page", pages(:home_page)[:title]
 	end
-	
-	# need to test custom_title_image and image
-	# do we even need image anymore?
 
 end

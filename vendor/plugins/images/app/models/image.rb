@@ -1,7 +1,5 @@
 class Image < ActiveRecord::Base
 
-  has_many :pages
-
   has_attachment :content_type => :image,
                  :storage => (USE_S3_BACKEND ? :s3 : :file_system),
                  :path_prefix => (USE_S3_BACKEND ? nil : 'public/system/images'),
@@ -10,7 +8,7 @@ class Image < ActiveRecord::Base
                  :max_size => 5.megabytes
 
   acts_as_indexed :fields => [:title],
-          :index_file => [RAILS_ROOT,"tmp","index"]
+          				:index_file => [RAILS_ROOT,"tmp","index"]
 
   def validate
    errors.add_to_base("You must choose a file to upload") unless self.filename
