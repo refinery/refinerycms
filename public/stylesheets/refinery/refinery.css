@@ -1116,6 +1116,12 @@ ul#plugins li {
 	vertical-align: middle;
 }
 
+#remove_picked_image {
+    margin-top:8px;
+    display:inline-block;
+    width:auto;
+}
+
 
 .ui-widget-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: .75;filter:Alpha(Opacity=75); }
 .ui-widget-overlay {background: #000; }

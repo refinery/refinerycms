@@ -1,9 +1,10 @@
 <%
-  toggle_image_display ||= false
   description ||= "image"
+  thumbnail ||= "medium"
+  toggle_image_display ||= false
 -%>
-<%= link_to "Show", "", :id => "current_image_toggler" if toggle_image_display %>
-<%= f.hidden_field field, :id => 'custom_title_field' %>
+<%= link_to "Show", "", :id => "current_image_toggler" if toggle_image_display -%>
+<%= f.hidden_field field, :id => 'custom_title_field' -%>
 
 <div id='current_image_container'<%= " style='display: none'" if toggle_image_display %> style="margin-top: 10px;">
   <a id='current_image_link' href="<%= insert_admin_images_url %>?thickbox=true&amp;modal=true&amp;titlebar=true&amp;field=custom_title_field&amp;thumbnail=&amp;KeepThis=true&amp;TB_iframe=true&amp;width=958&amp;height=510" style='border: 0px' title='Change <%= description.titleize %>' name='Change <%= description.titleize %>' class='thickbox'>
@@ -17,13 +18,17 @@
     </p>
   </a>
   <br/>
-  <%= link_to "Remove current #{description}", "#", :id => "remove_picked_image", :style => "margin-top:8px;display:inline-block;width:auto;#{"display:none;" if image.nil?}" %>
+  <%= link_to "Remove current #{description}", "#", :id => "remove_picked_image", :style => "#{"display:none;" if image.nil?}" %>
 </div>
 
 <% content_for :head do -%>
   <script type='text/javascript'>
     $(document).ready(function(){
-      image_picker.init();
+      image_picker.init({
+        thumbnail: '<%= thumbnail %>'
+        , toggle_image_display: <%= toggle_image_display.to_s %>
+        , description: '<%= description %>'
+      });
     });
   </script>
 <% end %>
