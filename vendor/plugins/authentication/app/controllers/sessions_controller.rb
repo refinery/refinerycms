@@ -16,7 +16,7 @@ class SessionsController < ApplicationController
       redirect_back_or_default(admin_root_url)
       flash[:notice] = "Logged in successfully"
     else
-      flash[:error] = "Sorry, your password or username was incorrect."
+      flash.now[:error] = "Sorry, your password or username was incorrect."
       render :action => 'new'
     end
   end
