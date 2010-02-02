@@ -481,8 +481,6 @@ var image_dialog = {
 
 var list_reorder = {
   init: function() {
-    this.sortable_list = $(this.sortable_list);
-
     $('#reorder_action').click(list_reorder.enable_reordering);
     $('#reorder_action_done').click(list_reorder.disable_reordering);
   }
@@ -490,13 +488,12 @@ var list_reorder = {
   , enable_reordering: function(e) {
     if(e) { e.preventDefault(); }
 
-    var nest_id = 0;
-    $(list_reorder.sortable_list).find('li').each(function(index, li) {
+    list_reorder.sortable_list.find('li').each(function(index, li) {
       if ($('ul', li).length) { return; }
       $("<ul class='spacing'><li></li></ul>").appendTo(li);
     });
 
-    $(list_reorder.sortable_list, list_reorder.sortable_list + ' ul').sortable({
+    list_reorder.sortable_list.add(list_reorder.sortable_list.find('ul')).sortable({
       'connectWith':$(list_reorder.sortable_list, list_reorder.sortable_list.find('ul'))
 			, 'tolerance': 'pointer'
 			, 'placeholder': 'placeholder'
@@ -527,7 +524,7 @@ var list_reorder = {
     if(e) { e.preventDefault(); }
 
     serialized = "";
-	  $(list_reorder.sortable_list).find('> li[id]').each(function(index, li) {
+	  list_reorder.sortable_list.find('> li[id]').each(function(index, li) {
 	    serialized += list_reorder.parse_branch([index], li);
 	  });
 	  serialized += "&tree=" + list_reorder.tree + "&authenticity_token=" + encodeURIComponent($('#reorder_authenticity_token').val() + "&continue_reordering=false");
@@ -544,24 +541,26 @@ var list_reorder = {
 }
 
 var image_picker = {
-  selected: '',
-  thumbnail: '',
-  toggle_image_display: false,
+  options: {
+    selected: '',
+    thumbnail: '',
+    toggle_image_display: false
+  }
 
-  init: function(){
+  , init: function(new_options){
+    this.options = $.extend(this.options, new_options);
     $('#remove_picked_image').click(function(e){
       e.preventDefault();
       $('#current_picked_image').removeClass('brown_border')
-                                 .attr('src', '')
-                                 .attr('width', '').attr('height','')
-                                 .css('width', 'auto').css('height','auto')
-                                 .hide();
+                                .attr({'src': '', 'width': '', 'height': ''})
+                                .css({'width': 'auto', 'height': 'auto'})
+                                .hide();
       $('#custom_title_field').val('');
       $('#no_picked_image_selected').show();
       $(this).hide();
     });
 
-    if(this.toggle_image_display){
+    if(this.options.toggle_image_display){
       $('#current_image_toggler').click(function(e){
         $(this).html(($(this).html() == 'Show' ? 'Hide' : 'Show'));
         $("#current_image_container").toggle();
@@ -569,17 +568,16 @@ var image_picker = {
       });
     }
 
-  },
+  }
 
-  changed: function(image){
+  , changed: function(image){
     var current_img = $('#current_picked_image');
     $('#custom_title_field').val(image.id.replace("image_", ""));
 
-    if(this.thumbnail != ''){
-      image.src = image.src.replace('_dialog_thumb', this.thumbnail);
+    if(this.options.thumbnail != ''){
+      image.src = image.src.replace('_dialog_thumb', '_' + this.options.thumbnail);
     }
-    current_img.attr('src', image.src)
-    current_img.addClass('brown_border').show();
+    current_img.attr('src', image.src).addClass('brown_border').show();
     $('#remove_picked_image').show();
     $('#no_picked_image_selected').hide();
   }
