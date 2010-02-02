@@ -5,9 +5,7 @@
                           :title => "Download this file (#{number_to_human_size(resource.size)})" %>
       <%= link_to refinery_icon_tag('application_edit.png'), edit_admin_resource_url(resource),
                           :title => "Edit this file" %>
-      <%= link_to refinery_icon_tag('delete.png'), admin_resource_path(resource),
-                          :confirm => "Are you sure you want to delete '#{resource.title}'?",
-                          :class => "cancel",  :method => :delete,
+      <%= link_to refinery_icon_tag('delete.png'), admin_resource_path(resource), :class => "cancel confirm-delete",
                           :title => "Remove this file forever" %>
     </span>
     <%=h resource.title %>

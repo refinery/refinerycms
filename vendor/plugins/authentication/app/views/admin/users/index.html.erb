@@ -14,8 +14,7 @@
           <span class='title'>
             <span class='actions'>
               <%= link_to refinery_icon_tag('delete.png'), admin_user_path(user),
-                :confirm => "Are you sure you want to delete '#{user.login}'?",
-                :class => "cancel", :method => :delete,
+                                :class => "cancel confirm-delete",
                 :title => "Remove this user forever" if user.ui_deletable?(current_user) %>
               <%= link_to refinery_icon_tag('application_edit.png'), edit_admin_user_path(user),
                 :title => 'Edit this user' %>

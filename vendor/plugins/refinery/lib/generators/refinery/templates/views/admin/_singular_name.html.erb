@@ -8,7 +8,7 @@
            :title => 'Edit this <%= $title_name.downcase %>' %>
       <%%= link_to refinery_icon_tag("delete.png"), admin_<%= singular_name %>_path(<%= singular_name %>),
           :confirm => 'Are you sure you want to remove this <%= $title_name.downcase %> forever?',
-          :class => "cancel", :method => :delete,
+          :class => "cancel confirm-delete",
           :title => 'Remove this <%= $title_name.downcase %> forever' %>
     </span>
     <%%=h <%= singular_name %>.<%= attributes.first.name %> %> <span class="preview">&nbsp;</span>

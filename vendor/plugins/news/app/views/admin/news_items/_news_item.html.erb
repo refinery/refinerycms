@@ -6,8 +6,7 @@
       <%= link_to refinery_icon_tag('application_edit.png'), edit_admin_news_item_path(news_item),
                   :title => 'Edit this news item' %>
       <%= link_to refinery_icon_tag('delete.png'), admin_news_item_path(news_item),
-                             :confirm => "Are you sure you want to delete #{news_item.title}?",
-                             :class => "cancel", :method => :delete,
+                                                          :class => "cancel confirm-delete",
                              :title => "Remove this news item forever" %>
     </span>
     <%=h news_item.title %> <span class="preview">&nbsp;</span>
