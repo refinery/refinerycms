@@ -1,13 +1,13 @@
 <div class='clearfix'>
   <div id='dialog_menu_left'>
     <% unless @images.empty? %>
-      <span id='existing_image_radio' class='radio'>
+      <span id="existing_image_radio" class="radio<%= " selected_radio" if @image.errors.empty? || !@images.empty? %>">
         <input type='radio' name='image_type' value='existing_image' id='image_type_existing' <%= "checked='true'" if @image.errors.empty? %> />
         <label for='image_type_existing' class='stripped'>Existing Image</label>
       </span>
     <% end %>
-    <span id='upload_image_radio' class='radio<%= " selected_radio" if @image.errors.size > 0 %>'>
-      <input type='radio' name='image_type' value='upload_image' id='image_type_upload' <%= "checked='true'" if @images.empty? or !@image.errors.empty? %> />
+    <span id="upload_image_radio" class="radio<%= " selected_radio" if @image.errors.size > 0 || @images.empty? %>">
+      <input type='radio' name='image_type' value='upload_image' id='image_type_upload' <%= "checked='true'" if @images.empty? || !@image.errors.empty? %> />
       <label for='image_type_upload' class='stripped'>New Image</label>
     </span>
   </div>
@@ -25,7 +25,7 @@
             <% end -%>
           </ul>
         </div>
-        <%= will_paginate @images, :previous_label => '&laquo; Previous', :next_label => 'Next &raquo;', :renderer => Refinery::LinkRenderer, :url => {:controller => "admin/images", :action => "insert", :dialog => @dialog} unless @thickbox %>
+        <%= images_paginator @images, from_dialog? %>
       </div>
     <% end %>
     <div id='upload_image_area' class='dialog_area' <%= "style='display:none;'" unless @images.empty? %>>
@@ -38,76 +38,13 @@
     <%= submit_tag 'Insert', :id => "submit_button" %>
     or
     <%= link_to "Cancel", "", :id => "cancel_button", :class => "close_dialog" %>
-
-    <%= will_paginate @images, :previous_label => '&laquo; Previous', :next_label => 'Next &raquo;', :renderer => Refinery::LinkRenderer, :url => {:controller => "admin/images", :action => "insert", :dialog => @dialog } %>
   </div>
 <% end %>
+
 <% content_for :head do %>
-  <%= javascript_include_tag 'refinery/parse_url' %>
   <script type='text/javascript'>
-    set_image = function(img)
-    {
-      $$('#existing_image_area_content ul li.selected').each(function(selected)
-      {
-        $(selected).removeClassName('selected');
-      });
-      if (img != null) {
-        $(img.parentNode).addClassName('selected');
-        imageUrl = parseURL(img.src);
-        relevant_src = imageUrl.pathname.replace('_dialog_thumb', '');
-        // Add any alternate image stores that need a absolute URL in the regex below
-        if( imageUrl.hostname.match(/s3.amazonaws.com/) ) {
-          relevant_src = imageUrl.protocol + '//' + imageUrl.host + relevant_src;
-        }
-<% unless @thickbox %>
-        try {
-          parent.document.getElementById('wym_src').value = relevant_src;
-          parent.document.getElementById('wym_title').value = img.title;
-          parent.document.getElementById('wym_alt').value = img.alt;
-        }
-        catch($e){}
-
-<% end %>
-      }
-    }
-
-    FastInit.addOnLoad(function()
-    {
-<% unless @image_id.nil? %>
-      set_image($('image_<%= @image_id %>'));
-<% end %>
-      $$('#existing_image_area_content ul li img').each(function(img)
-      {
-        img.observe('click', function(){set_image(this);});
-      });
-
-<% if @thickbox %>
-      $('dialog-form-actions').down('#submit_button').observe('click', function(e)
-      {
-        selected = null;
-        $$('#existing_image_area_content ul li.selected img').each(function(selected_img)
-        {
-          selected = selected_img;
-        });
-        if (selected != null)
-        {
-  <% unless @field.blank? %>
-          if ((field = parent.document.getElementById('<%= @field %>')) != null)
-          {
-            field.value = selected.id.replace("image_", "");
-          }
-          if ((image = parent.document.getElementById('<%= @update_image %>')) != null)
-          {
-            image.src = selected.src.replace("_dialog_thumb", '<%= "_#{@thumbnail}" unless @thumbnail.blank? %>');
-            $(image).writeAttribute("width", null).writeAttribute("height", null);
-          }
-  <% end %>
-          <%= "self.parent.#{@callback}();" unless @callback.blank? %>
-          self.parent.tb_remove();
-        }
-        e.stop();
-      });
-<% end %>
+    $(document).ready(function(){
+      image_dialog.init();
     });
   </script>
 <% end %>

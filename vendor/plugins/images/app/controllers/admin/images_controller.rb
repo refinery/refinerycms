@@ -3,7 +3,7 @@ class Admin::ImagesController < Admin::BaseController
   include Admin::ImagesHelper
 
   crudify :image, :order => "created_at DESC", :conditions => "parent_id is NULL", :sortable => false
-  before_filter :change_list_mode_if_specified
+  before_filter :change_list_mode_if_specified, :init_dialog
 
   def index
     if searching?
@@ -28,20 +28,15 @@ class Admin::ImagesController < Admin::BaseController
   end
 
   def new
-    @image = Image.new
+    @image = Image.new unless @image.present?
+
     @url_override = admin_images_url(:dialog => from_dialog?)
   end
 
   def insert
     self.new if @image.nil?
-    @dialog = from_dialog?
-    @thickbox = !params[:thickbox].blank?
-    @field = params[:field]
-    @update_image = params[:update_image]
-    @thumbnail = params[:thumbnail]
-    @callback = params[:callback]
-    @conditions = params[:conditions]
-    @url_override = admin_images_url(:dialog => @dialog, :insert => true)
+
+    @url_override = admin_images_url(:dialog => from_dialog?, :insert => true)
 
     unless params[:conditions].blank?
       extra_condition = params[:conditions].split(',')
@@ -53,6 +48,7 @@ class Admin::ImagesController < Admin::BaseController
     else
       paginate_images
     end
+
     render :action => "insert"
   end
 
@@ -67,6 +63,7 @@ class Admin::ImagesController < Admin::BaseController
           render :text => "<script type='text/javascript'>parent.window.location = '#{admin_images_url}';</script>"
         end
       else
+        self.new # important for dialogs
         render :action => 'new'
       end
     else
@@ -80,6 +77,15 @@ class Admin::ImagesController < Admin::BaseController
   end
 
 protected
+
+  def init_dialog
+    @thickbox = params[:thickbox].present?
+    @field = params[:field]
+    @update_image = params[:update_image]
+    @thumbnail = params[:thumbnail]
+    @callback = params[:callback]
+    @conditions = params[:conditions]
+  end
 
   def paginate_images(conditions={})
     @images = Image.paginate   :page => (@paginate_page_number ||= params[:page]),

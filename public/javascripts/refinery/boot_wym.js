@@ -2,7 +2,7 @@ var wymeditor_inputs = [];
 var wymeditors_loaded = 0;
 // supply custom_wymeditor_boot_options if you want to override anything here.
 if (typeof(custom_wymeditor_boot_options) == "undefined") { custom_wymeditor_boot_options = {}; }
-var wymeditor_boot_options = jQuery.extend({
+var wymeditor_boot_options = $.extend({
   skin: 'refinery'
   , basePath: "/javascripts/wymeditor/"
   , wymPath: "/javascripts/wymeditor/jquery.refinery.wymeditor.js"
@@ -146,9 +146,9 @@ var wymeditor_boot_options = jQuery.extend({
 // custom function added by us to hook into when all wymeditor instances on the page have finally loaded:
 WYMeditor.loaded = function(){};
 
-jQuery(function()
+$(function()
 {
-  wymeditor_inputs = jQuery('.wymeditor');
+  wymeditor_inputs = $('.wymeditor');
   wymeditor_inputs.hide();
   wymeditor_inputs.wymeditor(wymeditor_boot_options);
 });

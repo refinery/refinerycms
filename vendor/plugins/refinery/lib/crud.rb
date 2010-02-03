@@ -199,7 +199,7 @@ module Crud
             end
 
             find_all_#{plural_name}
-            render :partial => 'sortable_list', :layout => false
+            render :partial => 'sortable_list', :layout => false, :locals => {:continue_reordering => params[:continue_reordering]}
           end
 
           # takes in a single branch and saves the nodes inside it

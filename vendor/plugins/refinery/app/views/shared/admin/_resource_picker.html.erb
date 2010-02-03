@@ -1,14 +1,14 @@
 <%= f.hidden_field field %>
 <div>
-  <a id='current_resource_link' href="<%= insert_admin_resources_url %>?thickbox=true&amp;modal=true&amp;titlebar=true&amp;field=<%= "#{f.object.class.name.underscore.downcase}_#{field}" %><%= "&amp;current_link=#{resource.public_filename unless resource.nil?}" %>&amp;update_resource=current_resource&amp;update_text=current_resource_text&amp;callback=resource_changed&amp;KeepThis=true&amp;TB_iframe=true&amp;width=<%= width ||= 950 %>&amp;height=<%= height ||= 510 %>" style='border: 0px' title='Add <%= (description ||= "resource").titleize %>' name='Add <%= (description ||= "resource").titleize %>' class='thickbox'>
-    <span id='no_resource_selected' <%= "style='display: none;'" unless resource.nil? %>>
+  <a id='current_resource_link' href="<%= insert_admin_resources_url %>?thickbox=true&amp;modal=true&amp;titlebar=true&amp;field=<%= "#{f.object.class.name.underscore.downcase}_#{field}" %><%= "&amp;current_link=#{resource.public_filename if resource.present?}" %>&amp;update_resource=current_resource&amp;update_text=current_resource_text&amp;callback=resource_changed&amp;KeepThis=true&amp;TB_iframe=true&amp;width=<%= width ||= 950 %>&amp;height=<%= height ||= 510 %>" style='border: 0px' title='Add <%= (description ||= "resource").titleize %>' name='Add <%= (description ||= "resource").titleize %>' class='thickbox'>
+    <span id='no_resource_selected' <%= "style='display: none;'" if resource.present? %>>
       There is currently no <%= description ||= "resource" %> selected, click here to add one.
     </span>
   </a>
-  <div id='current_resource_container' <%= "style='display:none'" if resource.nil? %>>
+  <div id='current_resource_container' <%= "style='display:none'" unless resource.present? %>>
     Current <%= description ||= "resource" %>:
     <span id='current_resource_text'>
-      <%= "#{resource.title} (#{resource.public_filename})" unless resource.nil? %>
+      <%= "#{resource.title} (#{resource.public_filename})" if resource.present? %>
     </span>
     <br/>
     <%= link_to "#{refinery_icon_tag("page_white_put.png")} Download current #{description ||= "resource"} (<em>Opens in a new window</em>)", "#{resource.public_filename unless resource.nil?}",
@@ -24,20 +24,20 @@
 <% content_for :head do %>
   <script type='text/javascript'>
     resource_changed = function() {
-      $('current_resource_link').href = $('current_resource_link').href.gsub(/current_link=([^&])*&/, "current_link=" + $('current_resource').href + "&");
-      $('remove_resource').show();
-      $('current_resource_container').show();
-      $('no_resource_selected').hide();
+      $('#current_resource_link').attr('href', $('#current_resource_link').attr('href').replace(/current_link=([^&])*&/, "current_link=" + $('#current_resource').attr('href') + "&");
+      $('#remove_resource').show();
+      $('#current_resource_container').show();
+      $('#no_resource_selected').hide();
     }
 
-    FastInit.addOnLoad(function() {
-      $('remove_resource').observe('click', function(e) {
-        $('<%= f.object.class.name.underscore.downcase %>_<%= field %>').value = "";
-        $('current_resource_container').hide();
-        $('current_resource_text').innerHTML = '';
-        $('no_resource_selected').show();
-        $('current_resource_link').href = $('current_resource_link').href.gsub(/current_link=([^&])*&/, "current_link=&");
-        this.hide();
+    $(document).ready(function(e) {
+      $('#remove_resource').click(function(e) {
+        $('#<%= f.object.class.name.underscore.downcase %>_<%= field %>').value = "";
+        $('#current_resource_container').hide();
+        $('#current_resource_text').innerHTML = '';
+        $('#no_resource_selected').show();
+        $('#current_resource_link').attr('href', $('#current_resource_link').attr('href').replace(/current_link=([^&])*&/, "current_link=&");
+        $(this).hide();
         e.preventDefault();
       });
     });

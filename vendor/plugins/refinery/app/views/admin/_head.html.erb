@@ -7,22 +7,13 @@
   <% if (using_google_libs = RefinerySetting.find_or_set(:use_google_ajax_libraries, true)) and !local_request? -%>
     <script type='text/javascript' src="http://www.google.com/jsapi"></script>
     <script type='text/javascript'>
-      google.load("prototype", "1.6.1");
-      google.load("scriptaculous", "1.8.3");
-      google.load("jquery", "1.3");
+      google.load("jquery", "1.4");
+      google.load("jqueryui", "1.8");
     </script>
   <% end %>
-  <% if !using_google_libs or local_request? %>
-    <% if use_caching %>
-      <%= javascript_include_tag 'prototype', 'scriptaculous', 'builder', 'effects', 'dragdrop', 'controls', 'slider', 'jquery', :cache => "cache/libraries" %>
-    <% else %>
-      <%= javascript_include_tag 'prototype', 'scriptaculous', 'jquery' %>
-    <% end %>
-  <% end %>
-  <script type='text/javascript'>jQuery.noConflict();</script>
-  <%= javascript_include_tag 'admin' %>
-  <%= javascript_include_tag 'refinery/prototype.enhancements.js', 'fastinit', 'refinery/tooltips', 'livepipe', 'tabs', 'thickbox', "wymeditor/jquery.refinery.wymeditor.js", 'refinery/boot_wym', 'refinery/admin', :cache => (use_caching ? "cache/admin" : false) %>
-  <%= "<script type='text/javascript' src='http://getfirebug.com/releases/lite/1.2/firebug-lite-compressed.js'></script>" if RefinerySetting.find_or_set(:show_firebug_lite, false) == true -%>
+  <%= javascript_include_tag 'jquery', 'jquery-ui-1.8rc1.min.js', :cache => (use_caching ? "cache/libraries" : nil) if !using_google_libs or local_request? %>
+  <%= javascript_include_tag 'admin', 'thickbox', 'wymeditor/jquery.refinery.wymeditor.js', 'refinery/boot_wym', 'refinery/admin', :cache => (use_caching ? "cache/admin" : false) %>
+  <%= javascript_include_tag "http://getfirebug.com/releases/lite/1.2/firebug-lite-compressed.js" if RefinerySetting.find_or_set(:show_firebug_lite, false) -%>
   <%= "<script type='text/javascript'>jQuery(document).ready(function(){ jQuery('#flash').fadeIn(550); });</script>" unless flash.empty? -%>
   <%= yield :head %>
 </head>

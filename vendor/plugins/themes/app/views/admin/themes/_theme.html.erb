@@ -11,10 +11,8 @@
                             :title => "Download this theme (#{number_to_human_size(theme.size)})" %>
       <%= link_to refinery_icon_tag('application_edit.png'), edit_admin_theme_url(theme),
                             :title => "Edit this theme" if Theme::directory_is_writable? %>
-      <%= link_to refinery_icon_tag('delete.png'), admin_theme_path(theme),
-                            :confirm => "Are you sure you want to delete '#{theme.title}'?",
-                            :class => "cancel",  :method => :delete,
-                            :title => "Remove this theme forever" %>
+      <%= link_to refinery_icon_tag('delete.png'), admin_theme_path(theme), :class => "cancel confirm-delete",
+                          :title => "Remove this theme forever" %>
       </span>
     </p>
 </li>
