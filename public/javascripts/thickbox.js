@@ -271,7 +271,8 @@ function tb_show(caption, url, imageGroup, ajax_loaded_callback) {//function cal
 
 		if (params['draggable'])
 		{
-			new Draggable('TB_window', {handle: 'TB_title', starteffect:null, endeffect:null});
+			$("#TB_window").draggable();
+			$("#TB_window").draggable('option', 'handle', '#TB_title');
 		}
 
 		$(document.onresize ? document : window).bind('resize', tb_position);
