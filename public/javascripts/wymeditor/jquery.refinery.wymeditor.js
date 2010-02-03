@@ -1252,7 +1252,7 @@ WYMeditor.editor.prototype.dialog = function( dialogType ) {
 		selection = wym._iframe.contentWindow.getSelection();
 		matches = $($(selected).html().match(new RegExp(selection.anchorNode.textContent + "(.*)" + selection.focusNode.textContent)));
 		if (matches != null && matches.length > 0 && (possible_anchor_tag = matches.last()).length > 0) {
-			if (((href_matches = possible_anchor_tag[0].match(/href="([^"]*)"/)) != null) && (href = $(href_matches).last()[0]) != null) {
+			if (((href_matches = possible_anchor_tag.get(0).match(/href="([^"]*)"/)) != null) && (href = $(href_matches).last().get(0)) != null) {
 				$(wym._doc).find('a').each(function(index, possible_match) {
 				  if ($(possible_match).html() == selection) {
 				    selected = possible_match;
@@ -1608,7 +1608,7 @@ WYMeditor.INIT_DIALOG = function(wym, selected, isIframe) {
 
 	var selected = selected || wym.selected();
 	var dialog = $("#"+wym._options.dialogId);
-	var doc = (isIframe ? dialog.find('iframe')[0].document() : document);
+	var doc = (isIframe ? dialog.find('iframe').get(0).document() : document);
 	var dialogType = dialog.find('#wym_dialog_type').val();
 	var replaceable = wym._selected_image ? $(wym._selected_image) : $(wym._doc.body).find('#replace_me_with_' + wym._current_unique_stamp);
 
@@ -4049,7 +4049,7 @@ WYMeditor.Helper = {
 function titleize(words) {
 	parts = [];
 	$.each(words.replace(/\./, '').replace(/[-_]/, ' ').split(' '), function(index, part){
-		parts.push(part[0].toUpperCase() + part.substring(1));
+		parts.push(part.substring(0,1).toUpperCase() + part.substring(1));
 	});
 	return parts.join(" ");
 }
