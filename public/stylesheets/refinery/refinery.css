@@ -201,8 +201,12 @@ a:hover {
 
 #header ul#menu {
 	display: block;
-	margin: 0;
-	padding: 32px 15px 0 0;
+	margin: 0px;
+	padding: 0px;
+	position: absolute;
+	bottom: 0px;
+	left: 15px;
+	right: 15px;
 }
 
 #header ul#menu li#logout {
@@ -258,6 +262,7 @@ pre {
 	background: url('/images/refinery/header_background.png') #50504B repeat-x bottom;
 	padding: 26px 15px 0 15px;
 	position: relative;
+	height: 93px;
 }
 
 #page_container.login #header {
