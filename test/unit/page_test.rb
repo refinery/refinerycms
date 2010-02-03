@@ -86,7 +86,7 @@ class PageTest < ActiveSupport::TestCase
 	
 	def test_shown_siblings
 		assert_equal 3, pages(:products).children.size
-		assert_equal 2, pages(:products).shown_siblings.size # I purposely hid one of the sub pages from the menu
+		assert_equal 3, pages(:products).shown_siblings.size
 	end
 	
 	def test_top_level_page_output
