@@ -94,7 +94,7 @@ class Page < ActiveRecord::Base
 	
 	# Return true if this page can be shown in the navigation. If it's a draft or is set to not show in the menu it will return false.
   def in_menu?
-    is_in_menu = self.live? and self.show_in_menu?
+    is_in_menu = self.live? && self.show_in_menu?
     self.ancestors.each {|a| is_in_menu = false unless a.in_menu? }
     is_in_menu
   end
