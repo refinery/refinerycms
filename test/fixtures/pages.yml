@@ -7,6 +7,15 @@ contact_us:
   menu_match: ^/inquiries.*$
   deletable: true
 
+# A child page that is hidden
+thank_you:
+  title: Thank You
+  position: 5
+  show_in_menu: false
+  menu_match: ^/inquiries/thank_you$
+  deletable: true
+  parent: contact_us
+
 # this page is a draft
 draft_page:
   title: Secret Product

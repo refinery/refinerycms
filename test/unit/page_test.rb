@@ -80,6 +80,8 @@ class PageTest < ActiveSupport::TestCase
 		
 		pages(:home_page).toggle!(:show_in_menu) # now let's hide the home page from the menu
 		assert_equal false, pages(:home_page).in_menu? # yep, it's hidden.
+    
+    assert_equal false,  pages(:thank_you).in_menu? # a live page that's hidden should not show in menu
 	end
 	
 	def test_shown_siblings
