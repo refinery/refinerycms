@@ -1,12 +1,12 @@
-<%= error_messages_for :image %>
+<%= error_messages_for(:image).gsub("Content type is not included in the list", "Your image must be either a JPG, PNG or GIF") %>
 
-<% form_for [:admin, @image], :url => @url_override || @url, 
+<% form_for [:admin, @image], :url => @url_override || @url,
                               :html => {:multipart => true, :style => 'float: left; width: 70%'} do |f| %>
   <div class='field'>
     <%= f.label :uploaded_data, 'Image' %>
     <% if params[:action] =~ /(edit)|(update)/ %>
       Use current image
-      <em>or</em>, replace it with this one... 
+      <em>or</em>, replace it with this one...
     <% end %>
     <%= f.file_field :uploaded_data %>
   </div>
@@ -29,3 +29,10 @@
     <%= image_fu @image, :medium, { :class => "brown_border" } %>
   </div>
 <% end %>
+<% content_for :head do %>
+  <script type='text/javascript'>
+    $(document).ready(function(){
+      image_dialog.init();
+    });
+  </script>
+<% end if from_dialog? %>

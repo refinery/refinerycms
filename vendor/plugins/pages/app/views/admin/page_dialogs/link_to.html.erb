@@ -68,7 +68,7 @@
       <div id='web_address_content'>
         <label for='web_address_text'>Location</label>
         <%= text_field :web_address, :text, :value => web_address_text, :style => "width: 70%" %>
-        <img id='web_address_test_loader' src='/images/refinery/ajax-loader.gif' alt='Testing...' style='display: none;'>
+        <img id='web_address_test_loader' src='/images/refinery/ajax-loader.gif' alt='Testing...' style='display: none;'/>
         <span id='web_address_test_result'></span>
 
         <label>New Window</label>
@@ -88,7 +88,7 @@
         <div class='field'>
           <label for='email_address_text'>Email Address</label>
           <%= text_field :email_address, :text, :value => email_address_text, :style => "width: 70%"%>
-          <img id='web_address_test_loader' src='/images/refinery/ajax-loader.gif' alt='Testing...' style='display: none;'>
+          <img id='email_address_test_loader' src='/images/refinery/ajax-loader.gif' alt='Testing...' style='display: none;'/>
           <span id='email_address_test_result'></span>
         </div>
 
@@ -140,114 +140,10 @@
 </div>
 
 <% content_for :head do %>
-  <script type='text/javascript'>
-
-    FastInit.addOnLoad(function()
-    {
-      $$('.link_list li').each(function(li)
-      {
-        li.observe('click', function(ev)
-        {
-          ev.preventDefault();
-
-          $$('.link_list li.linked').each(function(linked)
-          {
-            linked.removeClassName('linked');
-          });
-
-          this.addClassName('linked');
-          var link = this.down('a.page_link');
-          var port = (window.location.port.length > 0 ? (":" + window.location.port) : "")
-          var url = link.href.gsub(window.location.protocol + "//" + window.location.hostname + port, "");
-
-          parent.document.getElementById('wym_href').value = url;
-          parent.document.getElementById('wym_title').value = link.rel;
-          parent.document.getElementById('wym_target').value = '';
-        });
-      });
-
-      $('web_address_text').observe('change', function(e)
-      {
-        var prefix = 'web_address_';
-        $(prefix + 'test_loader').show();
-
-        $(prefix + 'test_result').hide();
-
-        var req = new Ajax.Request("<%= test_url_admin_pages_dialogs_url %>",
-        {
-          asynchronous: true
-          , method: 'get'
-          , parameters: {url: this.value}
-          , onComplete: function(e)
-          {
-            $(prefix + 'test_result').update(e.transport.responseText).show();
-            $(prefix + 'test_loader').hide();
-          }
-        });
-
-        parent.document.getElementById('wym_href').value = $(prefix + 'text').value;
-        parent.document.getElementById('wym_title').value = $(prefix + 'text').value;
-        parent.document.getElementById('wym_target').value = ($(prefix + 'target_blank').checked ? "_blank" : "");
-      });
-
-      $('web_address_target_blank').observe('click', function(e)
-      {
-        parent.document.getElementById('wym_target').value = this.checked ? "_blank" : "";
-      })
-
-      $$('#email_address_text', '#email_default_subject_text', '#email_default_body_text').each(function(input)
-      {
-        input.observe('change', function(e)
-        {
-          var default_subject = $('email_default_subject_text').value;
-          var default_body = $('email_default_body_text').value;
-          var mailto = "mailto:" + $('email_address_text').value.replace('mailto:', '');
-          $('email_address_test_result').hide();
-
-          var req = new Ajax.Request("<%= test_email_admin_pages_dialogs_url %>",
-          {
-            asynchronous: true
-            , method: 'get'
-            , parameters: {email: mailto}
-            , onComplete: function(e)
-            {
-              $('email_address_test_result').update(e.transport.responseText).show();
-              $('email_address_test_loader').hide();
-            }
-          });
-
-          var modifier = "?";
-          if (default_subject.length > 0)
-          {
-            mailto += modifier + "subject=" + default_subject;
-            modifier = "&";
-          }
-          if (default_body.length > 0)
-          {
-            mailto += modifier + "body=" + default_body;
-            modifier = "&";
-          }
-
-          parent.document.getElementById('wym_href').value = mailto;
-          parent.document.getElementById('wym_title').value = $('email_address_text').value.replace('mailto:', '');
-          parent.document.getElementById('wym_target').value = '';
-        });
-      });
-
-      $('link_to_your_page').observe('click', function(e)
-      {
-        $$('li.linked').each(function(li)
-        {
-          parent.document.getElementById('wym_href').value = li.down('a.page_link').href;
-          parent.document.getElementById('wym_title').value = li.down('span').innerHTML.gsub(/<em>\((\w)*\)<\/em>/, "").trim();
-        });
-      });
-      $('link_to_web_address').observe('click', function(e)
-      {
-        parent.document.getElementById('wym_href').value = $('web_address_text').value;
-        parent.document.getElementById('wym_title').value = $('web_address_text').value;
-        parent.document.getElementById('wym_target').value = ($('web_address_target_blank').checked ? "_blank" : "");
-      });
-    });
-  </script>
+<script type='text/javascript'>
+  $(document).ready(function(){
+    link_dialog.init('<%= test_url_admin_pages_dialogs_url %>',
+                     '<%= test_email_admin_pages_dialogs_url %>');
+  });
+</script>
 <% end %>

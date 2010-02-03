@@ -1,69 +1,10 @@
-<%
-  list_id ||= "sortable_list"
-  update_url ||= url_for(:action => "update_positions")
-  tree ||= false
-
-  content_for :head do
-%>
+<% content_for :head do -%>
 <script type='text/javascript'>
-  reordering_button_enabled = true;
-  FastInit.addOnLoad(function()
-  {
-    $('reorder_action').observe('click', enable_reordering);
-    $('reorder_action_done').observe('click', disable_reordering);
+  $(document).ready(function(){
+    list_reorder.update_url     = '<%= update_url ||= url_for(:action => "update_positions") %>';
+    list_reorder.sortable_list  = $('#<%= list_id ||= "sortable_list" %>');
+    list_reorder.tree           = <%= tree ||= false %>;
+    list_reorder.init();
   });
-
-  disable_reordering = function(e)
-  {
-    if (reordering_button_enabled) {
-      $('<%= list_id %>').removeClassName('reordering');
-
-      Sortable.destroy("<%= list_id %>");
-
-      $('reorder_action_done').hide();
-      $('reorder_action').show();
-    }
-    if (e) { e.stop(); }
-  }
-
-  enable_reordering = function(e)
-  {
-    sortable_list = $('<%= list_id %>');
-    sortable_list.addClassName('reordering');
-
-    nest_id = 0;
-    sortable_list.select('ul.nested').each(function(nested)
-    {
-      nested.id = nested.id.length > 0 ? nested.id : "nested_" + nest_id++;
-      Sortable.create(nested.id, {
-        constraint: <%= tree ? "false" : "'vertical'" %>
-        , hoverclass: 'hover'
-        , scroll: window
-        , tree: <%= tree %>
-      });
-    });
-
-    Sortable.create("<%= list_id %>", {
-      constraint: <%= tree ? "false" : "'vertical'" %>
-      , hoverclass: 'hover'
-      , scroll: window
-      , tree: <%= tree %>
-      , onUpdate:function() {
-        reordering_button_enabled = false;
-        new Ajax.Updater('<%= list_id %>', '<%= update_url %>',
-        {
-          asynchronous:true
-          , evalScripts:true
-          , parameters: Sortable.serialize('<%= list_id %>') + '&tree=<%= tree %>' + '&authenticity_token=' + encodeURIComponent($('reorder_authenticity_token').value)
-          , onComplete: function(e) { reordering_button_enabled = true; }
-        });
-      }
-    });
-
-    $('reorder_action').hide();
-    $('reorder_action_done').show();
-
-    if (e) { e.stop(); }
-  }
 </script>
 <% end %>

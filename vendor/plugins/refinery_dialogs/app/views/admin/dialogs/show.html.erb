@@ -1,12 +1,12 @@
-<form class='wym_dialog wym_dialog_<%= @dialog_type.downcase.split("&")[0] %>'>
+<form class='wym_dialog wym_dialog_<%= @dialog_type %>'>
   <input type='hidden' id='wym_dialog_type' class='wym_dialog_type' value='<%= @dialog_type %>' />
   <iframe src='<%= @iframe_src %>' id='dialog_frame' frameborder='0'></iframe>
   <div class='wym_hideables'>
-  <% if @dialog_type.downcase.split("&")[0] == "image" %>
+  <% if @dialog_type == "image" %>
     <input type='text' id='wym_src' class='wym_src' value='' size='40' />
     <input type='text' id='wym_alt' class='wym_alt' value='' size='40' />
     <input type='text' id='wym_title' class='wym_title' value='' size='40' />
-  <% elsif @dialog_type.downcase.split("&")[0] == "link" %>
+  <% elsif @dialog_type == "link" %>
     <input type='text' id='wym_href' class='wym_href' value='' size='40' />
     <input type='text' id='wym_title' class='wym_title' value='' size='40' />
     <input type='text' id='wym_target' class='wym_target' value='' size='40' />

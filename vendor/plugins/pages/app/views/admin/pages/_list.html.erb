@@ -5,7 +5,7 @@
     "branch_start"
   end
 -%>
-<li class='clearfix record<%= " #{branch}" %>' id="<%= dom_id(page) -%>">
+<li class='record<%= " #{branch}" %>' id="<%= dom_id(page) -%>">
   <div class='clearfix'>
     <span class='actions'>
     <%= link_to refinery_icon_tag('application_go.png'), page.url, :target => "_blank",
@@ -13,17 +13,17 @@
     <%= link_to refinery_icon_tag('application_edit.png'), edit_admin_page_path(page),
                  :title => "Edit this page" %>
     <%= link_to refinery_icon_tag('delete.png'), admin_page_path(page),
-                          :confirm => "Are you sure you want to delete '#{page.title}'?",
-                          :class => "cancel", :method => :delete,
-                          :title => "Remove this page forever" if page.deletable? %>
+                  :class => "cancel confirm-delete",
+                  :title => "Remove this page forever" if page.deletable? %>
     </span>
     <%= h page.title %> <%= "<em>(hidden)</em>" unless page.show_in_menu? %>
     <%= "<em>(draft)</em>" if page.draft? %>
   </div>
-  <ul<%= " class='#{page.children.empty? ? 'empty' : 'nested'}'" %>>
-  <% page.children.each do |child| %>
-    <%= render :partial => 'list', :locals => {:page => child} %>
+  <% unless (children = page.children).empty? %>
+    <ul<%= " class='nested'" %>>
+      <% children.each do |child| %>
+        <%= render :partial => 'list', :locals => {:page => child} %>
+      <% end %>
+    </ul>
   <% end %>
-    <span class='spacing'>&nbsp;</span>
-  </ul>
 </li>

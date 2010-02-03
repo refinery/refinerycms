@@ -29,7 +29,11 @@
             </ul>
           </div>
         </div>
-        <%= will_paginate @resources, :previous_label => '&laquo; Previous', :next_label => 'Next &raquo;', :renderer => Refinery::LinkRenderer, :url => {:controller => "admin/resources", :action => "insert", :dialog => @dialog} unless @thickbox %>
+        <%= will_paginate @resources, 
+                          :previous_label => '&laquo; Previous', 
+                          :next_label => 'Next &raquo;', 
+                          :renderer => Refinery::LinkRenderer, 
+                          :url => {:controller => "admin/resources", :action => "insert", :dialog => from_dialog?} unless @thickbox %>
       </div>
     <% end %>
     <div id='upload_resource_area' class='dialog_area' <%= "style='display:none;'" if @resources.empty? %>>
@@ -43,68 +47,18 @@
     or
     <%= link_to "Cancel", "", :id => "cancel_button", :class => "close_dialog" %>
 
-    <%= will_paginate @resources, :previous_label => '&laquo; Previous', :next_label => 'Next &raquo;', :renderer => Refinery::LinkRenderer, :url => {:controller => "admin/resources", :action => "insert", :dialog => @dialog } %>
+    <%= will_paginate @resources, 
+                          :previous_label => '&laquo; Previous', 
+                          :next_label => 'Next &raquo;', 
+                          :renderer => Refinery::LinkRenderer, 
+                          :url => {:controller => "admin/resources", :action => "insert", :dialog => from_dialog? } %>
   </div>
 <% end %>
+
 <% content_for :head do %>
-  <%= javascript_include_tag 'refinery/parse_url' %>
   <script type='text/javascript'>
-    set_resource = function(anchor)
-    {
-      if (anchor != null) {
-        $$('#existing_resource_area_content ul li.linked').each(function(linked)
-        {
-          $(linked).removeClassName('linked');
-        });
-        $(anchor.parentNode).addClassName('linked');
-      }
-    }
-
-    FastInit.addOnLoad(function()
-    {
-<% unless @resource_id.nil? %>
-      set_resource($('resource_<%= @resource_id %>'));
-<% end %>
-      $$('#existing_resource_area_content ul li a').each(function(anchor)
-      {
-        anchor.observe('click', function(e){set_resource(this);e.preventDefault()});
-      });
-
-<% if @thickbox %>
-      $('dialog-form-actions').down('#submit_button').observe('click', function(e)
-      {
-        linked = null;
-        $$('#existing_resource_area_content ul li.linked a').each(function(linked_anchor)
-        {
-          linked = linked_anchor;
-        });
-        if (linked != null)
-        {
-  <% unless @field.blank? %>
-          if ((field = parent.document.getElementById('<%= @field %>')) != null)
-          {
-            field.value = linked.id.replace("resource_", "");
-          }
-          if ((resource = parent.document.getElementById('<%= @update_resource %>')) != null)
-          {
-            resourceUrl = parseURL(linked.href);
-            relevant_href = resourceUrl.pathname;
-            // Add any alternate resource stores that need a absolute URL in the regex below
-            if( resourceUrl.hostname.match(/s3.amazonaws.com/) ) {
-              relevant_href = resourceUrl.protocol + '//' + resourceUrl.host + relevant_href;
-            }
-            resource.href = relevant_href;
-          }
-          if ((text = parent.document.getElementById('<%= @update_text %>')) != null) {
-            text.innerHTML = linked.innerHTML;
-          }
-  <% end %>
-          <%= "self.parent.#{@callback}();" unless @callback.blank? %>
-          self.parent.tb_remove();
-        }
-        e.stop();
-      });
-<% end %>
+    $(document).ready(function(){
+      link_dialog.init();
     });
   </script>
 <% end %>

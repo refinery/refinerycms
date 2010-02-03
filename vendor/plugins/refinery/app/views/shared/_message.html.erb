@@ -1,11 +1,5 @@
 <% flash.each do |key, value| %>
 <div id="flash" class="flash_<%= key %>" style='display: none;' >
   <%= value %> (<%= link_to "close", "", {:id => "flash_close"} %>)
-  <script type="text/javascript">
-     jQuery('#flash_close').click(function(e) {
-       jQuery('#flash').fadeOut({duration: 330});
-       e.preventDefault();
-     });
-  </script>
 </div>
 <% end %>

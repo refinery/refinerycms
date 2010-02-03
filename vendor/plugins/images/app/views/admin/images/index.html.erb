@@ -4,7 +4,7 @@
       <%= render :partial => "/shared/admin/search", :locals => {:url => admin_images_url} %>
     </li>
     <li>
-      <%= link_to "Create New Image", new_admin_image_url, :class => "add_icon" %>
+      <%= link_to "Create New Image", new_admin_image_url(:dialog => true, :width => 600, :height => 300), :class => "add_icon" %>
     </li>
   </ul>
   <ul>

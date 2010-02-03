@@ -8,7 +8,7 @@
     </li>
   <% end
   end -%>
-  <% if Refinery::Plugins.active.in_menu.size > 1 %>
+  <% if Refinery::Plugins.active.in_menu.size > 1 -%>
     <li>
       <%= link_to "&nbsp;", "", :id => "menu_reorder", :title => "Reorder menu" %>
       <%= link_to "&nbsp;", "", :id => "menu_reorder_done", :title => "I'm done reordering the menu", :style => "display: none;" %>
@@ -18,68 +18,6 @@
     <%= link_to "Log out", logout_url %>
   </li>
 </ul>
-<input type='hidden' id='admin_menu_reorder_authenticity_token' value='<%= form_authenticity_token %>' />
-<script type='text/javascript'>
-  disable_menu_reordering = function(e)
-  {
-    Sortable.destroy("menu");
 
-    menu = $('menu');
-    menu.removeClassName('reordering_menu');
+<input type='hidden' id='admin_authenticity_token' value='<%= form_authenticity_token %>' />
 
-    $('menu_reorder_done').hide();
-    $('menu_reorder').show();
-
-    [$('header').childElements().without(menu), $('content'), $('logout')].flatten().each(function(element) {
-      new Effect.Appear(element, { duration: 0.5});
-    });
-
-    $$('#menu li a').each(function(anchor) {
-      if (!anchor.id.startsWith("menu_reorder")) {
-        anchor.stopObserving('click');
-      }
-    });
-
-    e.stop();
-  }
-
-  enable_menu_reordering = function(e)
-  {
-    $('menu_reorder_done').show();
-    $('menu_reorder').hide();
-
-    menu = $('menu');
-    menu.addClassName('reordering_menu');
-
-    Sortable.create($('menu'), {
-      constraint: 'horizontal'
-      , only: 'tab'
-      , onUpdate:function() {
-        new Ajax.Request('<%= url_for :controller => "/admin", :action => "update_menu_positions" %>',
-        {
-          asynchronous:true
-          , evalScripts:true
-          , parameters: Sortable.serialize('menu') + '&authenticity_token=' + encodeURIComponent($('admin_menu_reorder_authenticity_token').value)
-        });
-      }
-    });
-
-    [$('header').childElements().without(menu), $('content'), $('logout')].flatten().each(function(element) {
-      new Effect.Fade(element, { duration: 0.5, from: 1, to: 0.2 });
-    });
-
-    $$('#menu li a').each(function(anchor) {
-      if (!anchor.id.startsWith("menu_reorder")) {
-        anchor.observe('click', function(e){e.stop();});
-      }
-    });
-
-    e.stop();
-  }
-
-  FastInit.addOnLoad(function()
-  {
-    $('menu_reorder').observe('click', enable_menu_reordering);
-    $('menu_reorder_done').observe('click', disable_menu_reordering);
-  });
-</script>

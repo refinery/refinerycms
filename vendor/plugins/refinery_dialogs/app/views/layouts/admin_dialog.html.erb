@@ -1,26 +1,19 @@
+<% use_caching = RefinerySetting.find_or_set(:use_resource_caching, false) -%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <%= stylesheet_link_tag 'refinery/refinery' %>
-    <% unless local_request? %>
+    <% if (using_google_libs = RefinerySetting.find_or_set(:use_google_ajax_libraries, true)) and !local_request? -%>
       <script type='text/javascript' src="http://www.google.com/jsapi"></script>
       <script type='text/javascript'>
-        google.load("prototype", "1.6");
-        google.load("scriptaculous", "1.8.2");
+        google.load("jquery", "1.4");
+        google.load("jqueryui", "1.7.2");
       </script>
-    <% else %>
-      <%= javascript_include_tag "prototype", "scriptaculous" %>
     <% end %>
-    <%= javascript_include_tag "fastinit", "refinery/tooltips", "refinery/dialog" %>
+    <%= javascript_include_tag('jquery.js', 'jquery-ui-1.8rc1.min.js', :cache => (use_caching ? "cache/libraries" : false)) if !using_google_libs or local_request? %>
+    <%= javascript_include_tag 'refinery/admin', :cache => (use_caching ? "cache/admin_dialog" : false) %>
     <%= yield :head %>
-    <%= "<script type='text/javascript' src='http://getfirebug.com/releases/lite/1.2/firebug-lite-compressed.js'></script>" if RefinerySetting.find_or_set(:show_firebug_lite, false) == true %>
-    <% if @flash %>
-    <script type='text/javascript'>
-      document.observe('dom:loaded', function() {
-        $('flash').appear();
-      });
-    </script>
-    <% end %>
+    <%= javascript_include_tag "http://getfirebug.com/releases/lite/1.2/firebug-lite-compressed.js" if RefinerySetting.find_or_set(:show_firebug_lite, false) -%>
   </head>
   <body id='dialog_container' class='dialog'>
     <div id="flash_container">
