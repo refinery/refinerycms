@@ -1158,12 +1158,12 @@ WYMeditor.editor.prototype.switchTo = function(selectionOrNode,sType) {
 	// we have a node.
 	var html = $(selectionOrNode).html();
 	var newNode = this._doc.createElement(sType);
-	
+
 	// copy across the css class names.
 	$.each($(selectionOrNode).attr('class').split(" "), function(index, className) {
 	  $(newNode).addClass(className);
 	});
-	
+
 	selectionOrNode.parentNode.replaceChild(newNode,selectionOrNode);
 
 	$(newNode).html(html);
@@ -4122,6 +4122,7 @@ WYMeditor.WymClassExplorer.prototype.initIframe = function(iframe) {
 
 		this._doc.body.onpaste = function() {
 			wym._iframe.contentWindow.event.returnValue = false;
+			// Trident doesn't need to intercept the paste as it can access the clipboard easily.
 			wym.paste(window.clipboardData.getData("Text"));
 		};
 
