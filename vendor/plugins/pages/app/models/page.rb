@@ -60,6 +60,10 @@ class Page < ActiveRecord::Base
     self.destroy
   end
 
+  def indented_title
+    "#{"--" * self.ancestors.size} #{self.title}".chomp
+  end
+
   # Used for the browser title to get the full path to this page
   # It automatically prints out this page title and all of it's parent page titles joined by a PATH_SEPERATOR
   def path(reverse = true)

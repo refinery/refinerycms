@@ -40,6 +40,10 @@
   </p>
   <div id='more_options' style="display:none;">
     <div class='field'>
+      <%= f.label :parent_id %>
+      <%= f.collection_select :parent_id, Page.find(:all, :order => "parent_id, position ASC"), :id, :indented_title, :include_blank => true %>
+    </div>
+    <div class='field'>
       <%= label_tag :custom_title %>
       <%= label_tag "", 'Type:', :class => "stripped" %>
       <% ["none", "text"].each do |type| %>

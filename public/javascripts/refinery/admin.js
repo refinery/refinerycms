@@ -34,15 +34,18 @@ init_flash_messages = function(){
 init_modal_dialogs = function(){
   $('a[href*="dialog=true"]').each(function(i, anchor)
   {
-    $.each(['modal=true', 'width=928', 'height=473', 'titlebar=true', 'draggable=true'], function(index, feature)
-    {
-      if (anchor.href.indexOf(feature.split('=')[0] + '=') == -1)
-      {
-        anchor.href += "&" + feature;
-      }
+    $(anchor).click(function(e){
+      iframe = $("<iframe id='dialog_iframe' src='" + $(this).attr('href') + "'></iframe>");
+      iframe.dialog({
+        title: $(anchor).attr('title') || $(anchor).attr('name') || $(anchor).html() || null,
+        modal: true,
+        resizable: false,
+        autoOpen: true,
+        width: (parseInt($(anchor.href.match("width=([0-9]*)")).last().get(0))||928),
+        height: (parseInt($(anchor.href.match("height=([0-9]*)")).last().get(0))||473)
+      });
+      e.preventDefault();
     });
-
-    tb_init(anchor);
   });
 }
 
@@ -350,7 +353,7 @@ var page_options = {
               // Wipe the title and increment the index counter by one.
               $('#new_page_part_index').val(parseInt($('#new_page_part_index').val()) + 1);
               $('#new_page_part_title').val('');
-              
+
               $('#page-tabs').tabs();
             }
           );
@@ -499,17 +502,18 @@ var list_reorder = {
 
     list_reorder.sortable_list.find('li').each(function(index, li) {
       if ($('ul', li).length) { return; }
-      $("<ul class='spacing'><li></li></ul>").appendTo(li);
+      $("<ul></ul>").appendTo(li);
     });
 
     list_reorder.sortable_list.add(list_reorder.sortable_list.find('ul')).sortable({
-      'connectWith':$(list_reorder.sortable_list, list_reorder.sortable_list.find('ul'))
+      'connectWith': $(list_reorder.sortable_list.find('ul'))
 			, 'tolerance': 'pointer'
 			, 'placeholder': 'placeholder'
 			, 'cursor': 'drag'
 			, 'items': 'li'
+			, 'axis': 'y'
     });
-
+    
     $('#reorder_action').hide();
     $('#reorder_action_done').show();
   }
