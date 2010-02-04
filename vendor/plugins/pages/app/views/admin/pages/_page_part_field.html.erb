@@ -1,4 +1,4 @@
-<div class='page_part field' id='part_<%= title.downcase.gsub(" ", "_") %>'>
-  <%= hidden_field_tag "page[parts_attributes][#{part_index}][title]", title if new_part %>
-  <%= text_area_tag "page[parts_attributes][#{part_index}][body]", body, :rows => 20, :cols => 140, :class => 'wymeditor' %>
+<div class='page_part field' id='<%= new_part ? "page_part_new_#{part_index}" : dom_id(part) %>'>
+  <%= hidden_field_tag "page[parts_attributes][#{part_index}][title]", part.title if new_part %>
+  <%= text_area_tag "page[parts_attributes][#{part_index}][body]", part.body, :rows => 20, :cols => 140, :class => 'wymeditor' %>
 </div>
