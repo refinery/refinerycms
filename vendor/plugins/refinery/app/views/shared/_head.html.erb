@@ -5,6 +5,7 @@
   <%= stylesheet_link_tag "#{'theme/' if theme}application", "#{'theme/' if theme}formatting", "theme" %>
   <%= stylesheet_link_tag "#{'theme/' if theme}home" if home_page? %>
   <%= "<!--[if IE 7]>#{stylesheet_link_tag 'ie7'}<![endif]-->" if request.env['HTTP_USER_AGENT'] =~ /MSIE/ -%>
+  <%= auto_discovery_link_tag(:rss, news_items_url(:format => 'rss')) %>
   <link rel="shortcut icon" href="/favicon.ico" />
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <%= "<meta name=\"keywords\" content=\"#{@meta.meta_keywords}\" />" if @meta.meta_keywords.present? %>
