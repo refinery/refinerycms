@@ -4,7 +4,7 @@
     or
     <%= render :partial => "/shared/admin/continue_editing", :locals => {:f => f} -%>
   <% end -%>
-  <% unless (hide_cancel ||= false) -%>
+  <% unless (hide_cancel ||= from_dialog?) -%>
     or
     <%= link_to "Cancel", (cancel_url ||= send("admin_#{f.object.class.name.pluralize.underscore}_url")),
           :title => (title ||= "Cancelling will lose all changes you've made to this #{f.object.class.name.underscore.gsub("_", " ")}"),
