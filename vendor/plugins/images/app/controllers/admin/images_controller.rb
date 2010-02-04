@@ -54,6 +54,7 @@ class Admin::ImagesController < Admin::BaseController
 
   def create
     @image = Image.create(params[:image])
+
     unless params[:insert]
       if @image.valid?
         flash[:notice] = "'#{@image.title}' was successfully created."
@@ -67,9 +68,6 @@ class Admin::ImagesController < Admin::BaseController
         render :action => 'new'
       end
     else
-      # set the last page as the current page for image grid.
-      #@paginate_page_number = Image.last_page(Image.find_all_by_parent_id(nil, :order => "created_at DESC"), params[:dialog])
-      # currently images are sorting by date desc so the first page is always the selected page now.
       @image_id = @image.id
       @image = nil
       self.insert
