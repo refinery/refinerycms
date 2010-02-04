@@ -23,6 +23,7 @@ Unlike other content managers, Refinery is truly aimed at the end user making it
 * Easily __[Theme and customise](http://github.com/resolve/refinerycms/blob/master/vendor/plugins/themes/themes.md)__ the look to suit the business
 * __[Extend with custom plugins](http://github.com/resolve/refinerycms/blob/master/vendor/plugins/refinery/plugins.md)__ to do anything Refinery doesn't do out of the box
 * Sticks to __"the Rails way"__ as much as possible. We don't force you to learn new templating languages.
+* Uses [jQuery](http://jquery.com/) for fast and concise JavaScript
 
 ## Requirements
 
