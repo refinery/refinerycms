@@ -5,7 +5,7 @@ class Admin::PagesController < Admin::BaseController
 
   def new
     @page = Page.new
-    RefinerySetting.find_or_set(:default_page_parts, ["body", "side_body"]).each do |page_part|
+    RefinerySetting.find_or_set(:default_page_parts, ["Body", "Side Body"]).each do |page_part|
       @page.parts << PagePart.new(:title => page_part)
     end
   end

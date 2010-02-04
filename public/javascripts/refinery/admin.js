@@ -287,7 +287,7 @@ var page_options = {
 
     // Hook into the loaded function. This will be called when WYMeditor has done its thing.
     WYMeditor.loaded = function(){
-      page_options.tabs = $('#page-tabs').tabs();
+      page_options.tabs = $('#page-tabs').tabs({tabTemplate: '<li><a href="#{href}">#{label}</a></li>'});
     }
 
     if(this.enable_parts){
@@ -314,7 +314,8 @@ var page_options = {
       title: 'Create Content Section',
       modal: true,
       resizable: false,
-      autoOpen: false
+      autoOpen: false,
+      width: 600
     });
 
     $('#add_page_part').click(function(e){
@@ -328,21 +329,29 @@ var page_options = {
       var part_title = $('#new_page_part_title').val();
 
       if(part_title.length > 0){
-        var tab_title = part_title.toLowerCase().gsub(" ", "_");
+        var tab_title = part_title.toLowerCase().replace(" ", "_");
 
-        if ($('#part_' + tab_title).size() == 0){
+        if ($('#part_' + tab_title).size() == 0) {
           $.get(page_options.new_part_url,
-            {title: tab_title, part_index: $('#new_page_part_index').val(), body: ''},
-            function(data, status){
+            {
+              title: part_title
+              , part_index: $('#new_page_part_index').val()
+              , body: ''
+            }
+            , function(data, status){
               // Add a new tab for the new content section.
               $('#page_part_editors').append(data);
-              page_options.tabs.tabs('add', '#part_' + tab_title, part_title);
-              page_options.tabs.tabs('select', '#part_' + tab_title);
+              page_options.tabs.tabs('add', '#page_part_new_' + $('#new_page_part_index').val(), part_title);
+              page_options.tabs.tabs('select', '#page_part_new_' + $('#new_page_part_index').val());
+
               // turn the new textarea into a wymeditor.
               $('#page_parts_attributes_' + $('#new_page_part_index').val() + "_body").wymeditor(wymeditor_boot_options);
+
               // Wipe the title and increment the index counter by one.
               $('#new_page_part_index').val(parseInt($('#new_page_part_index').val()) + 1);
               $('#new_page_part_title').val('');
+              
+              $('#page-tabs').tabs();
             }
           );
         }else{

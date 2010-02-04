@@ -1,4 +1,4 @@
-<% linked = (page_link.url == params[:current_link]) unless params[:current_link].blank? %>
+<% linked = (page_link.url == params[:current_link]) if params[:current_link].present? %>
 <li class='clearfix<%= " child#{child}" if child %><%= " linked" if linked%>' id="<%= dom_id(page_link) -%>">
   <%= link_to page_link.title_with_meta, page_link.url, :title => 'Link to this Page', :rel => page_link.title, :class => 'page_link' %>
 </li>

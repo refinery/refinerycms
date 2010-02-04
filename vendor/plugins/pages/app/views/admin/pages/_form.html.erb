@@ -7,9 +7,9 @@
   </div>
   <div id="page-tabs" class="clearfix">
     <ul id="page_parts">
-    <% @page.parts.each do |p| %>
+    <% @page.parts.each_with_index do |part, part_index| %>
       <li>
-        <%= link_to p.title.titleize, "#part_#{p.title}" %>
+        <%= link_to part.title, "##{@page.new_record? ? "page_part_new_#{part_index}" : dom_id(part)}" %>
       </li>
     <% end %>
     </ul>
@@ -27,7 +27,11 @@
     <div id='page_part_editors' style="clear:left">
       <% part_index = -1 %>
       <% f.fields_for :parts do |p| %>
-        <%= render :partial => "page_part_field", :locals => {:title => p.object.title, :body => p.object.body, :part_index => (part_index += 1), :new_part => @page.new_record?} %>
+        <%= render :partial => "page_part_field", :locals => {
+          :part => p.object,
+          :part_index => (part_index += 1),
+          :new_part => @page.new_record?
+        } %>
       <% end %>
     </div>
   </div>
@@ -103,18 +107,21 @@
     <%= f.label :draft, "Save as Draft", :class => "stripped" %>
   </div>
   <%= render :partial => "/shared/admin/form_actions", :locals => {:f => f, :continue_editing => true} %>
-  <div id='new_page_part_dialog' style='display: none'>
-    <div class='field'>
-      <label for='new_page_part_title'>Title</label>
-      <input id='new_page_part_title' value='' class='larger' size='40' />
-      <input id='new_page_part_index' type='hidden' value='<%= @page.parts.size %>' />
+  <% if RefinerySetting.find_or_set(:new_page_parts, false) %>
+    <div id='new_page_part_dialog' style='display: none'>
+      <div class='field'>
+        <label for='new_page_part_title'>Title</label>
+        <input id='new_page_part_title' value='' class='larger' size='40' />
+        <input id='new_page_part_index' type='hidden' value='<%= @page.parts.size %>' />
+      </div>
+      <%= render :partial => "/shared/admin/form_actions", :locals => {
+        :f => f, 
+        :continue_editing => false,
+        :submit_button_id => "new_page_part_save",
+        :cancel_button_id => "new_page_part_cancel"
+      } %>
     </div>
-    <div id='dialog-form-actions' class='form-actions'>
-      <%= f.submit 'Save', :id => "new_page_part_save" %>
-      or
-      <%= link_to "Cancel", "", :id => "new_page_part_cancel", :class => "close_dialog" %>
-    </div>
-  </div>
+  <% end %>
 <% end %>
 
 <% content_for :head do %>
