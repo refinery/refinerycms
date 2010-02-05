@@ -1,12 +1,12 @@
 <%%= error_messages_for :<%= singular_name %> -%>
 <%% form_for [:admin, @<%= singular_name %>] do |f| -%>
-  <% attributes.each do |attribute| %>
+  <% attributes.each_with_index do |attribute, index| %>
   <div class='field'>
     <%%= f.label :<%= attribute.name %> -%>
 <% if attribute.field_type.to_s == "text_area" -%>
     <%%= f.text_area :<%= attribute.name %>, :rows => 20, :cols => 140, :class => 'wymeditor' -%>
 <% else -%>
-    <%%= f.<%= attribute.field_type -%> :<%= attribute.name -%> -%>
+    <%%= f.<%= attribute.field_type -%> :<%= attribute.name -%><%= ", :class => 'larger'" if (index == 0 && attribute.field_type == :text_field) -%> -%>
 <% end -%>
   </div>
   <% end %>

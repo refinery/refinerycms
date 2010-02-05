@@ -23,7 +23,7 @@ class <%= migration_name %> < ActiveRecord::Migration
       :position => ((Page.maximum(:position, :conditions => "parent_id IS NULL") || -1)+1),
       :menu_match => "^/<%= plural_name %>(\/|\/.+?|)$"
     )
-    RefinerySetting.find_or_set(:default_page_parts, ["body", "side_body"]).each do |default_page_part|
+    RefinerySetting.find_or_set(:default_page_parts, ["Body", "Side Body"]).each do |default_page_part|
       page.parts.create(:title => default_page_part, :body => nil)
     end
   end
