@@ -1,7 +1,7 @@
 <div class='clearfix'>
   <div id='dialog_menu_left'>
     <% unless @resources.empty? %>
-      <span id='existing_resource_radio' class='radio'>
+      <span id='existing_resource_radio' class='radio<%= " selected_radio" if @resource.errors.empty? and @resources.size > 0 %>'>
         <input type='radio' name='resource_type' value='existing_resource' id='resource_type_existing' <%= "checked='true'" if @resource.errors.empty? %> />
         <label for='resource_type_existing' class='stripped'>Existing File</label>
       </span>
@@ -59,6 +59,12 @@
   <script type='text/javascript'>
     $(document).ready(function(){
       link_dialog.init();
+      resource_picker.init({
+        <%= "callback: self.parent.#{@callback}," if @callback.present? %>
+        <%= "field: '#{@field}'," if @field.present? %>
+        <%= "update_text: '#{@update_text}'," if @update_text.present? %>
+        <%= "update_resource: '#{@update_resource}'" if @update_resource.present? %>
+      });
     });
   </script>
 <% end %>
