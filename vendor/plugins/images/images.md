@@ -41,7 +41,9 @@ _Note: you will have to restart your web server after changing this setting for 
 
 Take the default thumbnails above to use the ``:side_body`` thumbnail I would collect that image out of the database and apply it like this in my view:
 
-    <%= image_tag(@image.public_filename(:side_body)) %>
+    <%= image_fu @image, :side_body %>
+    
+image_fu is a command we have created that automatically adds width and height attributes to the generated image so that web browsers render your pages more smoothly as they know in advance how big an image is going to be before it is fully downloaded.
 
 ## Related Settings
 

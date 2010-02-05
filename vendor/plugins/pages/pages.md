@@ -21,8 +21,8 @@ Think of a page part is a single piece of content on your page. At [Resolve Digi
 You can change what the default page parts are called or add more by editing the "Default Page Parts" setting. This is a serialized array of names. The default looks like this
 
     --- 
-    - body
-    - side_body
+    - Body
+    - Side Body
   
 Edit this setting to suit your taste.
 
