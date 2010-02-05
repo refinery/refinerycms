@@ -1216,13 +1216,13 @@ WYMeditor.editor.prototype.status = function(sMessage) {
  */
 WYMeditor.editor.prototype.update = function() {
 
-  var html = this.xhtml().replace(/<\/([A-Za-z0-9]*)></, function(m){return "</" + m[1] +">\n<"});
+  // the replace function below makes the HTML source code easier to read when end users need to use this view.
+  var html = this.xhtml().replace(/<\/([A-Za-z0-9]*)></g, function(m){return m.split(">").join(">\n")});
   html = html.replace(/src=\"system\/images/, 'src="/system/images'); // make system/images calls absolute.
   html = html.replace(/(replace_me_with_wym-[0-9]*)/, ""); // get rid of replace_me_with_wym id tags that were forgotten about.
 
   $(this._element).val(html);
   $(this._box).find(this._options.htmlValSelector).val(html);
-
 };
 
 /* @name dialog
