@@ -143,6 +143,7 @@ var link_dialog = {
     this.test_url = test_url;
     this.test_email = test_email;
     this.init_tabs();
+    this.init_resources_submit();
     this.init_close();
     this.page_tab();
     this.web_tab();
@@ -159,6 +160,40 @@ var link_dialog = {
 
     selected.attr('checked', 'true');
     link_dialog.switch_area(selected);
+  },
+
+  init_resources_submit: function(){
+    $('#dialog-form-actions #submit_button').click(function(e){
+      e.preventDefault();
+      if(resource_selected = $('#existing_resource_area_content ul li.linked a').get(0)) {
+        if (resource_picker.field != null && (field = parent.document.getElementById(resource_picker.field)) != null){
+          field.value = resource_selected.attr('id').replace("resource_", "");
+        }
+        if (resource_picker.update_resource != null && (update_resource = parent.document.getElementById(resource_picker.update_resource))) {
+          resourceUrl = parseURL(resource_selected.attr('href'));
+          relevant_href = resourceUrl.pathname;
+          // Add any alternate resource stores that need a absolute URL in the regex below
+          if( resourceUrl.hostname.match(/s3.amazonaws.com/) ) {
+            relevant_href = resourceUrl.protocol + '//' + resourceUrl.host + relevant_href;
+          }
+          resource.href = relevant_href;
+        }
+        if (resource_picker.update_text != null && (text = parent.document.getElementById(resource_picker.update_text)) != null) {
+          text.innerHTML = resource_selected.html();
+        }
+      }
+      if (typeof(resource_picker.callback) == "function") {
+        resource_picker.callback();
+      }
+      if(parent && typeof(parent.tb_remove) == "function"){
+        parent.tb_remove();
+      }
+    });
+
+    $('#dialog-form-actions #cancel_button').click(function(e){
+      e.preventDefault();
+      parent.tb_remove();
+    });
   },
 
   init_close: function(){
@@ -273,9 +308,12 @@ var link_dialog = {
   },
 
   update_parent: function(url, title, target){
+    try {
       parent.document.getElementById('wym_href').value = url;
       parent.document.getElementById('wym_title').value = title;
       parent.document.getElementById('wym_target').value = target || '';
+    }
+    catch(e) {}
   }
 }
 
@@ -513,7 +551,7 @@ var list_reorder = {
 			, 'items': 'li'
 			, 'axis': 'y'
     });
-    
+
     $('#reorder_action').hide();
     $('#reorder_action_done').show();
   }
@@ -593,6 +631,19 @@ var image_picker = {
     current_img.attr('src', image.src).addClass('brown_border').show();
     $('#remove_picked_image').show();
     $('#no_picked_image_selected').hide();
+  }
+}
+
+var resource_picker = {
+  options: {
+    selected: '',
+    callback: null,
+    field: null,
+    update_text: null
+  }
+
+  , init: function(new_options) {
+    this.options = $.extend(this.options, new_options);
   }
 }
 
