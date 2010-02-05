@@ -118,6 +118,7 @@ Page.create(:title => "Down for maintenance",
             })
 
 # Install default themes.
+FileUtils::mkdir File.join(%W(#{RAILS_ROOT} themes)) unless File.directory? File.join(%W(#{RAILS_ROOT} themes))
 Dir[File.join(%W(#{REFINERY_ROOT} themes *.zip))].each do |theme|
   Theme.create(:uploaded_data => {
     "size" => File.size(theme),
