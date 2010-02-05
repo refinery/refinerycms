@@ -789,13 +789,13 @@ body.dialog form {
 	/*bottom: 0px;*/
 	/*right: 0px;*/
 	text-align: right;
-  float: right;
+    float: right;
 	/*position: absolute;*/
 	margin: 0px;
 	width: 763px;
 }
 
-#upload_image_area {
+#upload_image_area, #upload_resource_area {
 	padding: 12px;
 }
 

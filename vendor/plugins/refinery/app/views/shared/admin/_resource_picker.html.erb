@@ -24,7 +24,7 @@
 <% content_for :head do %>
   <script type='text/javascript'>
     resource_changed = function() {
-      $('#current_resource_link').attr('href', $('#current_resource_link').attr('href').replace(/current_link=([^&])*&/, "current_link=" + $('#current_resource').attr('href') + "&");
+      $('#current_resource_link').attr('href', $('#current_resource_link').attr('href').replace(/current_link=([^&])*&/, "current_link=" + $('#current_resource').attr('href') + "&"));
       $('#remove_resource').show();
       $('#current_resource_container').show();
       $('#no_resource_selected').hide();
@@ -36,7 +36,7 @@
         $('#current_resource_container').hide();
         $('#current_resource_text').innerHTML = '';
         $('#no_resource_selected').show();
-        $('#current_resource_link').attr('href', $('#current_resource_link').attr('href').replace(/current_link=([^&])*&/, "current_link=&");
+        $('#current_resource_link').attr('href', $('#current_resource_link').attr('href').replace(/current_link=([^&])*&/, "current_link=&"));
         $(this).hide();
         e.preventDefault();
       });
