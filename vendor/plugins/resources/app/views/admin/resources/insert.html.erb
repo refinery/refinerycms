@@ -6,7 +6,7 @@
         <label for='resource_type_existing' class='stripped'>Existing File</label>
       </span>
     <% end %>
-    <span id='upload_resource_radio' class='radio<%= " selected_radio" if @resource.errors.size > 0 %>'>
+    <span id='upload_resource_radio' class='radio<%= " selected_radio" if @resource.errors.size > 0 or @resources.empty? %>'>
       <input type='radio' name='resource_type' value='upload_resource' id='resource_type_upload' <%= "checked='true'" if @resources.empty? or !@resource.errors.empty? %> />
       <label for='resource_type_upload' class='stripped'>New File</label>
     </span>
@@ -29,14 +29,14 @@
             </ul>
           </div>
         </div>
-        <%= will_paginate @resources, 
-                          :previous_label => '&laquo; Previous', 
-                          :next_label => 'Next &raquo;', 
-                          :renderer => Refinery::LinkRenderer, 
+        <%= will_paginate @resources,
+                          :previous_label => '&laquo; Previous',
+                          :next_label => 'Next &raquo;',
+                          :renderer => Refinery::LinkRenderer,
                           :url => {:controller => "admin/resources", :action => "insert", :dialog => from_dialog?} unless @thickbox %>
       </div>
     <% end %>
-    <div id='upload_resource_area' class='dialog_area' <%= "style='display:none;'" if @resources.empty? %>>
+    <div id='upload_resource_area' class='dialog_area' <%= "style='display:none;'" unless @resources.empty? %>>
       <%= render :partial => "form", :locals => {:insert => true} %>
     </div>
   </div>
@@ -47,10 +47,10 @@
     or
     <%= link_to "Cancel", "", :id => "cancel_button", :class => "close_dialog" %>
 
-    <%= will_paginate @resources, 
-                          :previous_label => '&laquo; Previous', 
-                          :next_label => 'Next &raquo;', 
-                          :renderer => Refinery::LinkRenderer, 
+    <%= will_paginate @resources,
+                          :previous_label => '&laquo; Previous',
+                          :next_label => 'Next &raquo;',
+                          :renderer => Refinery::LinkRenderer,
                           :url => {:controller => "admin/resources", :action => "insert", :dialog => from_dialog? } %>
   </div>
 <% end %>
