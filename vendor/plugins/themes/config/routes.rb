@@ -5,8 +5,8 @@ ActionController::Routing::Routes.draw do |map|
   end
 
 	# allows theme files that are not in the Rails public directory to be served back to the client
-  map.connect 'stylesheets/theme/*filepath', :controller => 'themes', :action => 'stylesheets'
-  map.connect 'javascripts/theme/*filepath', :controller => 'themes', :action => 'javascripts'
-  map.connect 'images/theme/*filepath', :controller => 'themes', :action => 'images'
+  map.connect 'theme/stylesheets/*filepath', :controller => 'themes', :action => 'stylesheets'
+  map.connect 'theme/javascripts/*filepath', :controller => 'themes', :action => 'javascripts'
+  map.connect 'theme/images/*filepath', :controller => 'themes', :action => 'images'
 
 end

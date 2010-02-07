@@ -17,7 +17,7 @@ require 'tasks/rails'
 
 extra_rake_tasks = []
 # When running Refinery from a gem we lose the rake tasks, so add them back in:
-extra_rake_tasks << Dir[File.join(REFINERY_ROOT, %w(vendor plugins * ** tasks ** *.rake))].sort unless REFINERY_ROOT == RAILS_ROOT
+extra_rake_tasks << Dir[File.join(REFINERY_ROOT, %w(vendor plugins * ** tasks ** *.rake))].sort unless REFINERY_ROOT.to_s == Rails.root.to_s
 # We also need to load in the rake tasks from gem plugins whether Refinery is a gem or not:
 extra_rake_tasks << $refinery_gem_plugin_lib_paths.collect {|path| Dir[File.join(%W(#{path} tasks ** *.rake))].sort} if defined?($refinery_gem_plugin_lib_paths) && !$refinery_gem_plugin_lib_paths.nil?
 extra_rake_tasks.flatten.compact.uniq.each {|rake| load rake }
@@ -45,7 +45,7 @@ begin
     namespace :bump do
       desc "Bump the gemspec by a build version."
       task :build => [:version_required, :version] do
-        version = Jeweler::VersionHelper.new(RAILS_ROOT)
+        version = Jeweler::VersionHelper.new(Rails.root.to_s)
         version.update_to(version.major, version.minor, version.patch, ((version.build || 0).to_i + 1))
         version.write
         $stdout.puts "Updated version: #{version.to_s}"
