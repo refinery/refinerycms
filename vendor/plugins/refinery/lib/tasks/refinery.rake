@@ -4,8 +4,8 @@ namespace :refinery do
   task :override => :environment do
     dirs = ["app", "app/views", "app/views/layouts", "app/views/admin", "app/views/shared", "app/controllers", "app/models", "app/controllers/admin", "app/helpers", "app/helpers/admin"]
 		dirs.each do |dir|
-			dir = File.join([RAILS_ROOT] | dir.split('/'))
-			Dir.mkdir dir unless File.directory? dir
+			dir = Rails.root.join(dir.split('/').join(File::SEPARATOR))
+			dir.mkdir unless dir.directory?
 		end
   end
 
@@ -26,8 +26,8 @@ namespace :refinery do
   namespace :cache do
     desc "Eliminate existing cache files for javascript and stylesheet resources in default directories"
     task :clear => :environment do
-      FileUtils.rm(Dir[File.join(RAILS_ROOT, %w(public javascripts cache [^.]*))])
-      FileUtils.rm(Dir[File.join(RAILS_ROOT, %w(public stylesheets cache [^.]*))])
+      FileUtils.rm(Dir[Rails.root.join("public", "javascripts", "cache", "[^.]*")])
+      FileUtils.rm(Dir[Rails.root.join("public", "stylesheets", "cache", "[^.]*")])
     end
   end
 

@@ -3,10 +3,10 @@ class NewsItem < ActiveRecord::Base
   validates_presence_of :title, :content
   alias_attribute :content, :body
 
-  has_friendly_id :title, :use_slug => true, :strip_diacritics => true
+  has_friendly_id :title, :use_slug => true
 
   acts_as_indexed :fields => [:title, :body],
-          :index_file => [RAILS_ROOT,"tmp","index"]
+                  :index_file => [Rails.root.to_s, "tmp", "index"]
 
   def self.latest(amount = 10)
     find(:all, :order => "publish_date DESC", :limit => amount,

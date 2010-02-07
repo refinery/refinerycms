@@ -1218,3 +1218,7 @@ ul#plugins li {
 	_margin-bottom:1px;
 	width: 100% !important;
 }
+
+.hide-overflow {
+    overflow: hidden;
+}

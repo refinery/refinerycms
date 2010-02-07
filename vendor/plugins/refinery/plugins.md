@@ -169,7 +169,7 @@ In our example above we extended Refinery to manage a products area. The problem
 
 To achieve this all you need to do is open up the product model (found in ``/vendor/plugins/products/app/models/product.rb``) and add the following line inside your class:
 
-    has_friendly_id :title, :use_slug => true, :strip_diacritics => true
+    has_friendly_id :title, :use_slug => true
   
 Note you want to change ``:title`` to the field which you want to show up in the URL.
 

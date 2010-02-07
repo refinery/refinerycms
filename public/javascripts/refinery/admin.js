@@ -35,15 +35,16 @@ init_modal_dialogs = function(){
   $('a[href*="dialog=true"]').each(function(i, anchor)
   {
     $(anchor).click(function(e){
-      iframe = $("<iframe id='dialog_iframe' src='" + $(this).attr('href') + "'></iframe>");
-      iframe.dialog({
+      $("<iframe id='dialog_iframe' src='" + $(this).attr('href') + "'></iframe>").dialog({
         title: $(anchor).attr('title') || $(anchor).attr('name') || $(anchor).html() || null,
         modal: true,
         resizable: false,
         autoOpen: true,
         width: (parseInt($(anchor.href.match("width=([0-9]*)")).last().get(0))||928),
-        height: (parseInt($(anchor.href.match("height=([0-9]*)")).last().get(0))||473)
+        height: (parseInt($(anchor.href.match("height=([0-9]*)")).last().get(0))||473),
+        beforeclose: function(){$(document.body).removeClass('hide-overflow')}
       });
+      $(document.body).addClass('hide-overflow');
       e.preventDefault();
     });
   });
