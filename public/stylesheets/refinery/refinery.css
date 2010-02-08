@@ -1012,6 +1012,10 @@ ul#page_parts_controls img {
 	vertical-align: middle;
 }
 
+#page_part_editors {
+    clear:left;
+}
+
 /* dialog stuff */
 #dialog_frame {
 	width:952px;
