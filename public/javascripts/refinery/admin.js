@@ -166,26 +166,27 @@ var link_dialog = {
   init_resources_submit: function(){
     $('#dialog-form-actions #submit_button').click(function(e){
       e.preventDefault();
-      if(resource_selected = $('#existing_resource_area_content ul li.linked a').get(0)) {
-        if (resource_picker.field != null && (field = parent.document.getElementById(resource_picker.field)) != null){
-          field.value = resource_selected.attr('id').replace("resource_", "");
+      if((resource_selected = $('#existing_resource_area_content ul li.linked a')).length > 0) {
+        resourceUrl = parseURL(resource_selected.attr('href'));
+        relevant_href = resourceUrl.pathname;
+        if (resourceUrl.protocol == "" && resourceUrl.hostname == "system") {
+          relevant_href = "/system" + relevant_href;
         }
-        if (resource_picker.update_resource != null && (update_resource = parent.document.getElementById(resource_picker.update_resource))) {
-          resourceUrl = parseURL(resource_selected.attr('href'));
-          relevant_href = resourceUrl.pathname;
-          // Add any alternate resource stores that need a absolute URL in the regex below
-          if( resourceUrl.hostname.match(/s3.amazonaws.com/) ) {
-            relevant_href = resourceUrl.protocol + '//' + resourceUrl.host + relevant_href;
-          }
-          resource.href = relevant_href;
+
+        // Add any alternate resource stores that need a absolute URL in the regex below
+        if( resourceUrl.hostname.match(/s3.amazonaws.com/) ) {
+          relevant_href = resourceUrl.protocol + '//' + resourceUrl.host + relevant_href;
         }
-        if (resource_picker.update_text != null && (text = parent.document.getElementById(resource_picker.update_text)) != null) {
-          text.innerHTML = resource_selected.html();
+
+        if (typeof(resource_picker.callback) == "function") {
+          resource_picker.callback({
+            id: resource_selected.attr('id').replace("resource_", "")
+            , href: relevant_href
+            , html: resource_selected.html()
+          });
         }
       }
-      if (typeof(resource_picker.callback) == "function") {
-        resource_picker.callback();
-      }
+
       if(parent && typeof(parent.tb_remove) == "function"){
         parent.tb_remove();
       }
@@ -271,7 +272,7 @@ var link_dialog = {
 
   },
 
-  email_tab: function(){
+  email_tab: function() {
     $('#email_address_text, #email_default_subject_text, #email_default_body_text').change(function(e){
       var default_subject = $('#email_default_subject_text').val(),
           default_body = $('#email_default_body_text').val(),
@@ -308,16 +309,20 @@ var link_dialog = {
     });
   },
 
-  update_parent: function(url, title, target){
-    try {
-      parent.document.getElementById('wym_href').value = url;
-      parent.document.getElementById('wym_title').value = title;
-      parent.document.getElementById('wym_target').value = target || '';
+  update_parent: function(url, title, target) {
+    if (parent != null) {
+      if ((wym_href = parent.document.getElementById('wym_href')) != null) {
+        wym_href.value = url;
+      }
+      if ((wym_title = parent.document.getElementById('wym_title')) != null) {
+        wym_title.value = title;
+      }
+      if ((wym_target = parent.document.getElementById('wym_target')) != null) {
+        wym_target.value = target || "";
+      }
     }
-    catch(e) {}
   }
 }
-
 
 var page_options = {
   init: function(enable_parts, new_part_url, del_part_url){
@@ -636,15 +641,10 @@ var image_picker = {
 }
 
 var resource_picker = {
-  options: {
-    selected: '',
-    callback: null,
-    field: null,
-    update_text: null
-  }
+  callback: null
 
-  , init: function(new_options) {
-    this.options = $.extend(this.options, new_options);
+  , init: function(callback) {
+    this.callback = callback;
   }
 }
 

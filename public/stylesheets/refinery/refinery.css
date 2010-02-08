@@ -1222,3 +1222,8 @@ ul#plugins li {
 .hide-overflow {
     overflow: hidden;
 }
+#remove_resource {
+    margin-top:8px;
+    display:inline-block;
+    width:auto;
+}

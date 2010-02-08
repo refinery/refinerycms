@@ -1365,7 +1365,7 @@ WYMeditor.editor.prototype.paste = function(sData) {
   wym.format_block();
 
   var sTmp;
-  replaceable = jQuery(wym._doc.body).find('#replace_me_with_' + wym._current_unique_stamp);
+  replaceable = $(wym._doc.body).find('#replace_me_with_' + wym._current_unique_stamp);
 
   // replaceable doesn't actually get replaced here, it's just used as a marker for where the cursor was.
   var container = replaceable.get(0) || this.selected();
@@ -1380,10 +1380,10 @@ WYMeditor.editor.prototype.paste = function(sData) {
       sTmp = aP[x];
       //simple newlines are replaced by a break
       sTmp = sTmp.replace(rExp, "<br />");
-      if (x == 0 && jQuery(container).html().replace(/<br\ ?\/?>/, "").length == 0) {
-        jQuery(container).html(sTmp);
+      if (x == 0 && $(container).html().replace(/<br\ ?\/?>/, "").length == 0) {
+        $(container).html(sTmp);
       } else {
-        jQuery(container).after("<p>" + sTmp + "</p>");
+        $(container).after("<p>" + sTmp + "</p>");
       }
     }
   } else {
@@ -1391,10 +1391,10 @@ WYMeditor.editor.prototype.paste = function(sData) {
       sTmp = aP[x];
       //simple newlines are replaced by a break
       sTmp = sTmp.replace(rExp, "<br />");
-      if (x == 0 && jQuery(container).html().replace(/<br\ ?\/?>/, "").length == 0) {
-        jQuery(container).html(sTmp);
+      if (x == 0 && $(container).html().replace(/<br\ ?\/?>/, "").length == 0) {
+        $(container).html(sTmp);
       } else {
-        jQuery(wym._doc.body).append("<p>" + sTmp + "</p>");
+        $(wym._doc.body).append("<p>" + sTmp + "</p>");
       }
     }
   }
@@ -4312,7 +4312,7 @@ WYMeditor.WymClassMozilla.prototype.initIframe = function(iframe) {
     $(this._doc).bind("keyup", this.keyup);
 
     //bind editor paste events
-    jQuery(this._doc).bind("paste", this.intercept_paste);
+    $(this._doc).bind("paste", this.intercept_paste);
 
     //bind editor focus events (used to reset designmode - Gecko bug)
     $(this._doc).bind("focus", this.enableDesignMode);
@@ -4596,7 +4596,7 @@ WYMeditor.WymClassOpera.prototype.initIframe = function(iframe) {
     $(this._doc).bind("keyup", this.keyup);
 
     // bind paste events for when this is supported.
-    jQuery(this._doc).bind("paste", this.intercept_paste);
+    $(this._doc).bind("paste", this.intercept_paste);
 
     //post-init functions
     if($.isFunction(this._options.postInit)) this._options.postInit(this);
@@ -4725,7 +4725,7 @@ WYMeditor.WymClassSafari.prototype.initIframe = function(iframe) {
     $(this._doc).bind("keyup", this.keyup);
 
     // bind paste events
-    jQuery(this._doc).bind("paste", this.intercept_paste);
+    $(this._doc).bind("paste", this.intercept_paste);
 
     //post-init functions
     if($.isFunction(this._options.postInit)) this._options.postInit(this);

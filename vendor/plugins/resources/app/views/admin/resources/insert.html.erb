@@ -44,8 +44,6 @@
 <% if @thickbox %>
   <div id='dialog-form-actions' class='form-actions'>
     <%= submit_tag 'Insert', :id => "submit_button" %>
-    or
-    <%= link_to "Cancel", "", :id => "cancel_button", :class => "close_dialog" %>
 
     <%= will_paginate @resources,
                           :previous_label => '&laquo; Previous',
@@ -59,12 +57,7 @@
   <script type='text/javascript'>
     $(document).ready(function(){
       link_dialog.init();
-      resource_picker.init({
-        <%= "callback: self.parent.#{@callback}," if @callback.present? %>
-        <%= "field: '#{@field}'," if @field.present? %>
-        <%= "update_text: '#{@update_text}'," if @update_text.present? %>
-        <%= "update_resource: '#{@update_resource}'" if @update_resource.present? %>
-      });
+      resource_picker.init(<%= @callback.present? ? "self.parent.#{@callback}" : "null" %>);
     });
   </script>
 <% end %>
