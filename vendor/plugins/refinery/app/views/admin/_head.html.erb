@@ -14,6 +14,5 @@
   <%= javascript_include_tag 'jquery', 'jquery-ui-1.8rc1.min.js', :cache => (use_caching ? "cache/libraries" : nil) if !using_google_libs or local_request? %>
   <%= javascript_include_tag 'admin', 'thickbox', 'wymeditor/jquery.refinery.wymeditor.js', 'refinery/boot_wym', 'refinery/admin', :cache => (use_caching ? "cache/admin" : false) %>
   <%= javascript_include_tag "http://getfirebug.com/releases/lite/1.2/firebug-lite-compressed.js" if RefinerySetting.find_or_set(:show_firebug_lite, false) -%>
-  <%= "<script type='text/javascript'>jQuery(document).ready(function(){ jQuery('#flash').fadeIn(550); });</script>" unless flash.empty? -%>
   <%= yield :head %>
 </head>
