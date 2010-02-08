@@ -24,7 +24,7 @@
       </ul>
     <% end %>
 
-    <div id='page_part_editors' style="clear:left">
+    <div id='page_part_editors'>
       <% part_index = -1 %>
       <% f.fields_for :parts do |p| %>
         <%= render :partial => "page_part_field", :locals => {
@@ -119,7 +119,7 @@
         <input id='new_page_part_index' type='hidden' value='<%= @page.parts.size %>' />
       </div>
       <%= render :partial => "/shared/admin/form_actions", :locals => {
-        :f => f, 
+        :f => f,
         :continue_editing => false,
         :submit_button_id => "new_page_part_save",
         :cancel_button_id => "new_page_part_cancel"
