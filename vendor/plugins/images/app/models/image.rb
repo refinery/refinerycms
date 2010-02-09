@@ -1,6 +1,6 @@
 class Image < ActiveRecord::Base
 
-	# Docs for attachment_fu http://github.com/technoweenie/attachment_fu
+  # Docs for attachment_fu http://github.com/technoweenie/attachment_fu
   has_attachment :content_type => :image,
                  :storage => (USE_S3_BACKEND ? :s3 : :file_system),
                  :path_prefix => (USE_S3_BACKEND ? nil : 'public/system/images'),
@@ -8,28 +8,28 @@ class Image < ActiveRecord::Base
                  :thumbnails => ((((thumbnails = RefinerySetting.find_or_set(:image_thumbnails, {})).is_a?(Hash) ? thumbnails : (RefinerySetting[:image_thumbnails] = {}))) rescue {}),
                  :max_size => 50.megabytes
 
- 	validates_as_attachment
+   validates_as_attachment
 
   # Docs for acts_as_indexed http://github.com/dougal/acts_as_indexed
   acts_as_indexed :fields => [:title],
-          				:index_file => [Rails.root.to_s, "tmp", "index"]
+                  :index_file => [Rails.root.to_s, "tmp", "index"]
 
-	named_scope :thumbnails, :conditions => "parent_id NOT NULL"
-	named_scope :originals, :conditions => {:parent_id => nil}
+  named_scope :thumbnails, :conditions => "parent_id IS NOT NULL"
+  named_scope :originals, :conditions => {:parent_id => nil}
 
-	# when a dialog pops up with images, how many images per page should there be
-	PAGES_PER_DIALOG = 18
+  # when a dialog pops up with images, how many images per page should there be
+  PAGES_PER_DIALOG = 18
 
-	# when listing images out in the admin area, how many images should show per page
-	PAGES_PER_ADMIN_INDEX = 20
+  # when listing images out in the admin area, how many images should show per page
+  PAGES_PER_ADMIN_INDEX = 20
 
-	# How many images per page should be displayed?
+  # How many images per page should be displayed?
   def self.per_page(dialog = false)
     dialog ? PAGES_PER_DIALOG : PAGES_PER_ADMIN_INDEX
   end
-  
+
   # Returns a titleized version of the filename
-	# my_file.jpg returns My File
+  # my_file.jpg returns My File
   def title
     self.filename.gsub(/\.\w+$/, '').titleize
   end

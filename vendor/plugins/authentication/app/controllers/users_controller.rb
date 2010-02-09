@@ -62,12 +62,12 @@ class UsersController < ApplicationController
       if user
         user.create_reset_code
 
-				begin
-					flash[:notice] = "An email has been sent to #{user.email} with a link to reset your password."
-					UserMailer.deliver_reset_notification(user, request)
-				rescue
-					info.logger "error: email could not be sent for user password reset"
-				end
+        begin
+          flash[:notice] = "An email has been sent to #{user.email} with a link to reset your password."
+          UserMailer.deliver_reset_notification(user, request)
+        rescue
+          info.logger "error: email could not be sent for user password reset"
+        end
       else
         flash[:notice] = "Sorry, #{params[:user][:email]} isn't associated with any acounts. Are you sure you typed the correct email address?"
       end
@@ -76,21 +76,21 @@ class UsersController < ApplicationController
     end
   end
 
-	def reset
-		@user = User.find_by_reset_code(params[:reset_code]) unless params[:reset_code].nil?
+  def reset
+    @user = User.find_by_reset_code(params[:reset_code]) unless params[:reset_code].nil?
 
-		if request.post?
-			if @user.update_attributes(:password => params[:user][:password], :password_confirmation => params[:user][:password_confirmation])
-				self.current_user = @user
-				@user.delete_reset_code
+    if request.post?
+      if @user.update_attributes(:password => params[:user][:password], :password_confirmation => params[:user][:password_confirmation])
+        self.current_user = @user
+        @user.delete_reset_code
 
-				flash[:notice] = "Password reset successfully for #{@user.email}"
-				redirect_back_or_default(admin_root_url)
-			else
-				render :action => :reset
-			end
-		end
-	end
+        flash[:notice] = "Password reset successfully for #{@user.email}"
+        redirect_back_or_default(admin_root_url)
+      else
+        render :action => :reset
+      end
+    end
+  end
 
 protected
 
