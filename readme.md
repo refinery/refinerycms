@@ -92,7 +92,7 @@ You will be prompted to setup your first user.
 If you're using [Heroku](http://heroku.com/) you will want to put
 
     USE_S3_BACKEND = true
-  
+
 in your ``config/production.rb`` file to make Refinery store files uploaded on Amazon S3.
 
 ## Updating to the latest Refinery
@@ -161,12 +161,12 @@ This will pull in all of the updated files in the project and may result in some
 Extend Refinery easily by running the Refinery generator
 
     ruby script/generate refinery
-  
+
 to get help on how to use that. Or read the full documentation on [writing plugins for Refinery](http://github.com/resolve/refinerycms/blob/master/vendor/plugins/refinery/plugins.md)
 
 ### What about a portfolio?
 
-Check out the [portfolio plugin gem](http://github.com/resolve/portfolio)
+Check out the [portfolio plugin gem](http://github.com/resolve/refinery-portfolio)
 
 ## License
 
