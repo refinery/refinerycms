@@ -1,11 +1,11 @@
 module Admin::DashboardHelper
 
   def activity_message_for(record)
-    unless (activity = Refinery::Plugins.active.find_activity_by_model(record.class)).nil? or activity.title.blank?
+    if (activity = Refinery::Plugins.active.find_activity_by_model(record.class)).present? and activity.title.present?
       title = record.send activity.title
-      link = link_to truncate(title, :length => 45),
-        eval("#{activity.url_prefix}admin_#{record.class.name.underscore.downcase}_url(record)"),
-        :title => "See '#{title}'"
+      link = link_to  truncate(title, :length => 45),
+                      eval("#{activity.url}(#{activity.nesting("record")}record)"),
+                      :title => "See '#{title}'"
 
       # next work out which action occured and how long ago it happened
       action = record.updated_at.eql?(record.created_at) ? "created" : "updated"
