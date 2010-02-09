@@ -1,11 +1,11 @@
 <li class='clearfix record <%= cycle("on", "on-hover") %>'>
   <span class='title'>
     <span class='actions'>
-      <%= link_to refinery_icon_tag("#{inquiry.open? ? 'accept' : 'arrow_up'}.png"), {:action => "toggle_status", :id => inquiry.id}, 
+      <%= link_to refinery_icon_tag("#{inquiry.open? ? 'accept' : 'arrow_up'}.png"), {:action => "toggle_status", :id => inquiry.id},
                                                     {:title => "Move this inquiry to #{inquiry.open? ? 'closed' : 'open'}"} %>
-      <%= link_to refinery_icon_tag('email_open.png'), {:action => 'show', :id => inquiry.id}, 
+      <%= link_to refinery_icon_tag('email_open.png'), {:action => 'show', :id => inquiry.id},
                                                     {:title => "Read this inquiry"} -%>
-      <%= link_to refinery_icon_tag('delete.png'), admin_inquiry_url(inquiry), :class => "cancel confirm-delete", 
+      <%= link_to refinery_icon_tag('delete.png'), admin_inquiry_url(inquiry), :class => "cancel confirm-delete",
                                                     :title => "Remove this inquiry forever" -%>
     </span>
     <%=h inquiry.name %>

@@ -43,9 +43,9 @@ class Refinery::ApplicationController < ActionController::Base
 
 protected
 
-	def setup_theme
-	  self.view_paths = ::ActionController::Base.view_paths.dup.unshift(Rails.root.join("themes", RefinerySetting[:theme], "views").to_s)
-	end
+  def setup_theme
+    self.view_paths = ::ActionController::Base.view_paths.dup.unshift(Rails.root.join("themes", RefinerySetting[:theme], "views").to_s)
+  end
 
   def take_down_for_maintenance?
     if RefinerySetting.find_or_set(:down_for_maintenance, false)

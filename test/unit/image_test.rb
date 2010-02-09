@@ -2,13 +2,13 @@ require 'test_helper'
 
 class ImageTest < ActiveSupport::TestCase
 
-	fixtures :images
+  fixtures :images
 
-	def test_titles
-	end
-	
-	def test_per_page
-		
-	end
+  def test_titles
+  end
+
+  def test_per_page
+
+  end
 
 end

@@ -16,14 +16,14 @@ protected
 
   def render_theme_item(type, relative_path)
     if File.exist?(file_path = File.join(Rails.root, "themes", RefinerySetting[:theme], type.to_s, relative_path))
-    	send_file(file_path, :type => mime_for(relative_path), :disposition => 'inline', :stream => true)
-		else
-			return error_404
-		end
+      send_file(file_path, :type => mime_for(relative_path), :disposition => 'inline', :stream => true)
+    else
+      return error_404
+    end
   end
 
   def mime_for(filename)
-		# could we use the built in Rails mime types to work this out?
+    # could we use the built in Rails mime types to work this out?
     case filename.last.downcase
     when /\.js$/
       'text/javascript; charset=utf-8'

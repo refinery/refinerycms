@@ -1,6 +1,6 @@
 require 'digest/sha1'
 class User < ActiveRecord::Base
-	
+
   # Hack: Allow "rake gems:install" to run when this class is missing its gem dependency.
   # For further clarification on why, refer to:
   # https://rails.lighthouseapp.com/projects/8994/tickets/780-rake-gems-install-doesn-t-work-if-plugins-are-missing-gem-dependencies
@@ -112,11 +112,11 @@ class User < ActiveRecord::Base
 
   def create_reset_code
     @reset = true
-		code = Digest::SHA1.hexdigest( Time.now.to_s.split(//).sort_by {rand}.join )
+    code = Digest::SHA1.hexdigest( Time.now.to_s.split(//).sort_by {rand}.join )
     self.attributes = {:reset_code => code[0..6]}
     save(false)
-  end 
-  
+  end
+
   def recently_reset?
     @reset
   end
