@@ -8,13 +8,11 @@ class Image < ActiveRecord::Base
                  :thumbnails => ((((thumbnails = RefinerySetting.find_or_set(:image_thumbnails, {})).is_a?(Hash) ? thumbnails : (RefinerySetting[:image_thumbnails] = {}))) rescue {}),
                  :max_size => 50.megabytes
 
-   validates_as_attachment
-
   # Docs for acts_as_indexed http://github.com/dougal/acts_as_indexed
   acts_as_indexed :fields => [:title],
-                  :index_file => [Rails.root.to_s, "tmp", "index"]
+                  :index_file => [RAILS_ROOT,"tmp","index"]
 
-  named_scope :thumbnails, :conditions => "parent_id IS NOT NULL"
+  named_scope :thumbnails, :conditions => "parent_id NOT NULL"
   named_scope :originals, :conditions => {:parent_id => nil}
 
   # when a dialog pops up with images, how many images per page should there be
@@ -23,15 +21,17 @@ class Image < ActiveRecord::Base
   # when listing images out in the admin area, how many images should show per page
   PAGES_PER_ADMIN_INDEX = 20
 
-  # How many images per page should be displayed?
-  def self.per_page(dialog = false)
-    dialog ? PAGES_PER_DIALOG : PAGES_PER_ADMIN_INDEX
-  end
+  validates_as_attachment
 
   # Returns a titleized version of the filename
   # my_file.jpg returns My File
   def title
-    self.filename.gsub(/\.\w+$/, '').titleize
+    CGI::unescape(self.filename).gsub(/\.\w+$/, '').titleize
+  end
+
+  # How many images per page should be displayed?
+  def self.per_page(dialog = false)
+    dialog ? PAGES_PER_DIALOG : PAGES_PER_ADMIN_INDEX
   end
 
 end
