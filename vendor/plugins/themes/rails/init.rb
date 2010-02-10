@@ -10,3 +10,5 @@ Refinery::Plugin.register do |plugin|
     :updated_image => "layout_edit.png"
   }
 end
+
+config.middleware.use "ThemeServer"
