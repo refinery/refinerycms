@@ -8,10 +8,10 @@
 <% if menu_branch.in_menu? %>
   <li<%= " class='#{css.join(' ')}'" if css.present? -%><%= " id='#{domid}'" if domid.present? -%>>
     <%= link_to menu_branch.title, menu_branch.url %>
-    <% 
-      unless hide_children or       
-        menu_branch.parent_id.present? or       
-        (children = menu_branch.children.collect{|c| c if c.in_menu? }.compact).empty? 
+    <%
+      unless hide_children or
+        menu_branch.parent_id.present? or
+        (children = menu_branch.children.collect{|c| c if c.in_menu? }.compact).empty?
     -%>
       <ul class='clearfix'>
         <%= render :partial => "/shared/menu_branch",

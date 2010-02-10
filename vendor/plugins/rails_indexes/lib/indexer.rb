@@ -113,49 +113,8 @@ module Indexer
           @indexes_required[table_name] += [primary_key] unless @indexes_required[table_name].include?(primary_key)
         end
 
-        find_regexp = Regexp.new(/([A-Z]{1}[A-Za-z]+|self).(find){1}((_all){0,1}(_by_){0,1}([A-Za-z_]+))?\(([0-9A-Za-z"\':=>. \[\]{},]*)\)/)
-        if matches = find_regexp.match(line)
+        check_line_for_find_indexes(file_name, line)
 
-          model_name, column_names, options = matches[1], matches[6], matches[7]
-
-          if model_name == "self"
-            model_name = File.basename(file_name).sub(/\.rb$/,'').camelize
-            table_name = model_name.constantize.table_name
-          else
-            if model_name.respond_to?(:constantize)
-              if model_name.constantize.respond_to?(:table_name)
-                table_name = model_name.constantize.table_name
-              else
-                #puts "Unable to get the table_name for #{model_name.to_s}. it could be an ActiveResource"
-                next
-              end
-            else
-              #puts "Unable to constantize #{model_name.to_s}, if you are sure that #{model_name.to_s} is a valid class name, please file an issue on\nhttp://github.com/eladmeidar/rails_indexes\nPlease supply the relevant code as well, thanks. =)"
-              next
-            end
-          end
-
-          primary_key = model_name.constantize.primary_key
-          @indexes_required[table_name] += [primary_key] unless @indexes_required[table_name].include?(primary_key)
-
-          if column_names.present?
-            column_names = column_names.split('_and_')
-
-            # remove find_by_sql references.
-            column_names.delete("sql")
-
-            column_names = model_name.constantize.column_names & column_names
-
-            # Check if there were more than 1 column
-            if column_names.size == 1
-              column_name = column_names.first
-              @indexes_required[table_name] += [column_name] unless @indexes_required[table_name].include?(column_name)
-            else
-              @indexes_required[table_name] += [column_names] unless @indexes_required[table_name].include?(column_names)
-              @indexes_required[table_name] += [column_names.reverse] unless @indexes_required[table_name].include?(column_names.reverse)
-            end
-          end
-        end
       end
     end
 
@@ -178,6 +137,53 @@ module Indexer
     end
 
     @indexes_required
+  end
+
+
+  def self.check_line_for_find_indexes(file_name, line)
+    find_regexp = Regexp.new(/([A-Z]{1}[A-Za-z]+|self).(find){1}((_all){0,1}(_by_){0,1}([A-Za-z_]+))?\(([0-9A-Za-z"\':=>. \[\]{},]*)\)/)
+    if matches = find_regexp.match(line)
+
+      model_name, column_names, options = matches[1], matches[6], matches[7]
+
+      if model_name == "self"
+        model_name = File.basename(file_name).sub(/\.rb$/,'').camelize
+        table_name = model_name.constantize.table_name
+      else
+        if model_name.respond_to?(:constantize)
+          if model_name.constantize.respond_to?(:table_name)
+            table_name = model_name.constantize.table_name
+          else
+            #puts "Unable to get the table_name for #{model_name.to_s}. it could be an ActiveResource"
+            next
+          end
+        else
+          #puts "Unable to constantize #{model_name.to_s}, if you are sure that #{model_name.to_s} is a valid class name, please file an issue on\nhttp://github.com/eladmeidar/rails_indexes\nPlease supply the relevant code as well, thanks. =)"
+          next
+        end
+      end
+
+      primary_key = model_name.constantize.primary_key
+      @indexes_required[table_name] += [primary_key] unless @indexes_required[table_name].include?(primary_key)
+
+      if column_names.present?
+        column_names = column_names.split('_and_')
+
+        # remove find_by_sql references.
+        column_names.delete("sql")
+
+        column_names = model_name.constantize.column_names & column_names
+
+        # Check if there were more than 1 column
+        if column_names.size == 1
+          column_name = column_names.first
+          @indexes_required[table_name] += [column_name] unless @indexes_required[table_name].include?(column_name)
+        else
+          @indexes_required[table_name] += [column_names] unless @indexes_required[table_name].include?(column_names)
+          @indexes_required[table_name] += [column_names.reverse] unless @indexes_required[table_name].include?(column_names.reverse)
+        end
+      end
+    end
   end
 
   def self.key_exists?(table,key_columns)
@@ -234,8 +240,6 @@ EOM
 
       puts "## Drop this into a file in db/migrate ##"
       puts migration
-    else
-      puts "Didn't find any models requiring indexing in your app/models directory."
     end
   end
 
@@ -293,8 +297,6 @@ EOM
 
         puts "## Drop this into a file in db/migrate ##"
         puts migration
-      else
-        puts "Didn't find any models requiring indexing in your app/models directory."
       end
     end
   else

@@ -7,7 +7,7 @@
 # Specifies gem version of Rails to use when vendor/rails is not present
 RAILS_GEM_VERSION = '2.3.5' unless defined? RAILS_GEM_VERSION
 # Freeze to a specific version of refinerycms when running as a gem
-# REFINERY_GEM_VERSION = '0.9.5.29' unless defined? REFINERY_GEM_VERSION
+# REFINERY_GEM_VERSION = '0.9.6' unless defined? REFINERY_GEM_VERSION
 
 # Bootstrap the Rails environment, frameworks, and default configuration
 require File.join(File.dirname(__FILE__), 'boot')
@@ -64,7 +64,7 @@ eval("#{(defined? Refinery::Initializer) ? Refinery : Rails}::Initializer").run 
 
   #===REFINERY REQUIRED GEMS===
   config.gem "rake", :version => ">= 0.8.3", :lib => "rake"
-	config.gem "rubyzip", :version => ">= 0.9.1", :lib => "zip/zip"
+  config.gem "rubyzip", :version => ">= 0.9.1", :lib => "zip/zip"
   config.gem "friendly_id", :version => ">= 2.2.2", :lib => "friendly_id"
   config.gem "will_paginate", :version => ">= 2.3.11", :lib => "will_paginate", :source => "http://gemcutter.org"
   config.gem "rails", :version => ">= 2.3.5", :lib => "rails"

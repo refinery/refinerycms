@@ -1,23 +1,25 @@
-<div id='body_content' class='clearfix'>
-  <h1>
-    <%%= @<%= singular_name %>.<%= attributes.first.name %> %>
-  </h1>
-  <div id='body_content_left' class='clearfix'>
-    <% attributes.each do |attribute| %>
-    <div>
-      <h3><%= attribute.name.titleize %></h3>
-      <%%= @<%= singular_name %>.<%= attribute.name %> %>
-    </div>
-    <% end %>
+<%% content_for :body_content_title do %>
+  <%%= @<%= singular_name %>.<%= attributes.first.name %> %>
+<%% end %>
+
+<%% content_for :body_content_left do %>
+  <% attributes.each do |attribute| %>
+  <div>
+    <h3><%= attribute.name.titleize %></h3>
+    <%%= @<%= singular_name %>.<%= attribute.name %> %>
   </div>
-  <div id='body_content_right' class='clearfix'>
-    <h2>Other <%= $title_name.pluralize %></h2>
-    <ul id="<%= plural_name %>">
-      <%% @<%= plural_name %>.each do |<%= singular_name %>| %>
-        <li>
-          <%%= link_to <%= singular_name %>.<%= attributes.first.name %>, <%= singular_name %>_url(<%= singular_name %>) %>
-        </li>
-      <%% end %>
-    </ul>
-  </div>
-</div>
+  <% end %>
+<%% end %>
+
+<%% content_for :body_content_right do %>
+  <h2>Other <%= $title_name.pluralize %></h2>
+  <ul id="<%= plural_name %>">
+    <%% @<%= plural_name %>.each do |<%= singular_name %>| %>
+      <li>
+        <%%= link_to <%= singular_name %>.<%= attributes.first.name %>, <%= singular_name %>_url(<%= singular_name %>) %>
+      </li>
+    <%% end %>
+  </ul>
+<%% end %>
+
+<%%= render :partial => "/shared/content_page" %>

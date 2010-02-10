@@ -1,6 +1,6 @@
 # pick the refinery root path
-if File.exist?("#{RAILS_ROOT}/lib/refinery_initializer.rb")
-  require "#{RAILS_ROOT}/lib/refinery_initializer.rb"
+if File.exist?(File.join(%W(#{RAILS_ROOT} lib refinery_initializer.rb)))
+  require File.join(%W(#{RAILS_ROOT} lib refinery_initializer.rb))
 else
   require 'rubygems'
   version = if defined? REFINERY_GEM_VERSION
@@ -21,7 +21,7 @@ else
 end
 
 
-REFINERY_ROOT = RAILS_ROOT unless defined? REFINERY_ROOT
+REFINERY_ROOT = Rails.root.to_s unless defined? REFINERY_ROOT
 
 # Set to true in your environment specific file (e.g. production.rb) to use Amazon's Simple
 # Storage Service instead of the default file system for resources and images

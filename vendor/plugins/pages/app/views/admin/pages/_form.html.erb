@@ -24,7 +24,7 @@
       </ul>
     <% end %>
 
-    <div id='page_part_editors' style="clear:left">
+    <div id='page_part_editors'>
       <% part_index = -1 %>
       <% f.fields_for :parts do |p| %>
         <%= render :partial => "page_part_field", :locals => {
@@ -39,6 +39,10 @@
     <a href="#" id="toggle_advanced_options" rel="Click to access meta tag settings and menu options">&raquo; Hide/Show Advanced Options</a>
   </p>
   <div id='more_options' style="display:none;">
+    <div class='field'>
+      <%= f.label :parent_id %>
+      <%= f.collection_select :parent_id, Page.find(:all, :order => "parent_id, position ASC"), :id, :indented_title, :include_blank => true %>
+    </div>
     <div class='field'>
       <%= label_tag :custom_title %>
       <%= label_tag "", 'Type:', :class => "stripped" %>
@@ -115,7 +119,7 @@
         <input id='new_page_part_index' type='hidden' value='<%= @page.parts.size %>' />
       </div>
       <%= render :partial => "/shared/admin/form_actions", :locals => {
-        :f => f, 
+        :f => f,
         :continue_editing => false,
         :submit_button_id => "new_page_part_save",
         :cancel_button_id => "new_page_part_cancel"

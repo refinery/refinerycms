@@ -119,7 +119,7 @@ You need to update the URL so it requests ``/images/themes`` instead of just ``/
 So the result is simply:
 
     #footer {
-      background: url('/images/theme/footer_background.png') repeat-x;
+      background: url('/theme/images/footer_background.png') repeat-x;
     }
 
 This is the same with linking to Javascript and Stylesheets in your view. Say our ``application.html.erb`` layout had something like this:
@@ -128,7 +128,7 @@ This is the same with linking to Javascript and Stylesheets in your view. Say ou
 
 You just need to change that to:
 
-    <%= stylesheet_link_tag 'theme/application' %>
+    <%= stylesheet_link_tag 'application', :theme => true %>
     
 ## I'm Stuck, is there an Example Theme?
 

@@ -438,11 +438,11 @@ pre {
 
 #content .ui-sortable {
 	margin: 0;
-	padding: 0;
+	padding: 12px 0px;
 }
 
 #content .ui-sortable li ul{
-	padding: 6px 10px 0px 40px !important;
+	padding: 6px 10px 12px 40px !important;
 }
 
 #content ul.ui-sortable li {
@@ -455,6 +455,9 @@ pre {
 #content ul.ui-sortable li ul.empty {
     display: block;
 }
+#content ul.ui-sortable li ul li.empty {
+    border: 0px none;
+}
 #content .ui-sortable .actions {
 	display: none !important;
 }
@@ -463,7 +466,7 @@ pre {
 	border: 0px none;
 }
 #content .ui-sortable ul {
-    min-height: 30px;
+    min-height: 12px;
 }
 #content .ui-sortable li.placeholder {
     opacity: 0.4;
@@ -471,7 +474,12 @@ pre {
     border-style: dashed;
     height: 38px;
 }
-
+#content ul.ui-sortable li.ui-sortable-helper {
+    height: 38px !important;
+}
+#content ul.ui-sortable li.ui-sortable-helper ul {
+    display: none;
+}
 .ui-sortable-helper {
     opacity: 0.7;
 }
@@ -781,13 +789,13 @@ body.dialog form {
 	/*bottom: 0px;*/
 	/*right: 0px;*/
 	text-align: right;
-  float: right;
+    float: right;
 	/*position: absolute;*/
 	margin: 0px;
 	width: 763px;
 }
 
-#upload_image_area {
+#upload_image_area, #upload_resource_area {
 	padding: 12px;
 }
 
@@ -1004,6 +1012,10 @@ ul#page_parts_controls img {
 	vertical-align: middle;
 }
 
+#page_part_editors {
+    clear:left;
+}
+
 /* dialog stuff */
 #dialog_frame {
 	width:952px;
@@ -1137,14 +1149,14 @@ ul#plugins li {
 
 .ui-widget-overlay {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    width: auto !important;
+    height: auto !important;
     opacity: .75;
     filter:Alpha(Opacity=75);
-}
-.ui-widget-overlay {
     background: #000;
 }
 
@@ -1201,4 +1213,21 @@ ul#plugins li {
     color: #fff;
     line-height: 33px;
     margin-top: 0px;
+}
+.ui-dialog iframe {
+    clear:both;
+	border:none;
+	margin-bottom:-1px;
+	margin-top:1px;
+	_margin-bottom:1px;
+	width: 100% !important;
+}
+
+.hide-overflow {
+    overflow: hidden;
+}
+#remove_resource {
+    margin-top:8px;
+    display:inline-block;
+    width:auto;
 }
