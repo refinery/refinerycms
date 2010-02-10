@@ -44,7 +44,7 @@
 <% content_for :head do %>
   <script type='text/javascript'>
     $(document).ready(function(){
-      image_dialog.init();
+      image_dialog.init(<%= @callback.present? ? "self.parent.#{@callback}" : "null" %>);
     });
   </script>
 <% end %>
