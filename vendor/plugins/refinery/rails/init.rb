@@ -9,6 +9,6 @@ end
 require_dependency 'refinery/form_helpers'
 require_dependency 'refinery/base_presenter'
 
-presenters_path = "#{RAILS_ROOT}/app/presenters/"
+presenters_path = Rails.root.join("app", "presenters").to_s
 $LOAD_PATH << presenters_path
 ::ActiveSupport::Dependencies.load_paths << presenters_path

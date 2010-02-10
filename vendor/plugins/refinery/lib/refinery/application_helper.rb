@@ -3,16 +3,53 @@ module Refinery::ApplicationHelper
 
   include Refinery::HtmlTruncationHelper
 
-  def setup
-    logger.warn("*** Refinery::ApplicationHelper::setup has now been deprecated from the Refinery API. ***")
-  end
-
   def browser_title(yield_title=nil)
     [
       yield_title.present? ? yield_title : nil,
       @meta.browser_title.present? ? @meta.browser_title : @meta.path,
       RefinerySetting.find_or_set(:site_name, "Company Name")
     ].compact.join(" - ")
+  end
+
+  # replace all system images with a thumbnail version of them (handy for all images inside a page part)
+  def content_fu(content, thumbnail)
+    content.scan(/\/system\/images([^\"\ ]*)/).flatten.each do |match|
+      parts = match.split(".")
+      extension = parts.pop
+      content.gsub!(match, "#{parts.join(".")}_#{thumbnail}.#{extension}")
+    end
+
+    return content
+  end
+
+  def descendant_page_selected?(page)
+    page.descendants.any? {|descendant| selected_page?(descendant) }
+  end
+
+  def image_fu(image, thumbnail = nil , options={})
+    if image.present?
+      image_thumbnail = image.thumbnails.detect {|t| t.thumbnail == thumbnail.to_s}
+      image_thumbnail = image unless image_thumbnail.present?
+      image_tag image_thumbnail.public_filename, {:alt => image.title, :width => image_thumbnail.width, :height => image_thumbnail.height}.merge!(options)
+    end
+  end
+
+  def image_tag(source, options={})
+    theme = (options.delete(:theme) == true)
+    tag = super
+    # inject /theme/ into the image tag src if this is themed.
+    tag.gsub!(/src=[\"|\']/) { |m| "#{m}/theme/" }.gsub!("//", "/") if theme
+
+    tag
+  end
+
+  def javascript_include_tag(*sources)
+    theme = (arguments = sources.dup).extract_options![:theme] == true # don't ruin the current sources object
+    tag = super
+    # inject /theme/ into the javascript include tag src if this is themed.
+    tag.gsub!(/\/javascripts\//, "/theme/javascripts/").gsub!(/theme=(.+?)\ /, '') if theme
+
+    tag
   end
 
   # you can override the object used for the title by supplying options[:object]
@@ -64,36 +101,25 @@ module Refinery::ApplicationHelper
     end
   end
 
-  def descendant_page_selected?(page)
-    page.descendants.any? {|descendant| selected_page?(descendant) }
+  def refinery_icon_tag(filename, options = {})
+    image_tag "refinery/icons/#{filename}", {:width => 16, :height => 16}.merge!(options)
   end
 
   def selected_page?(page)
     selected = current_page?(page) or (request.path =~ Regexp.new(page.menu_match) unless page.menu_match.blank?) or (request.path == page.link_url)
   end
 
-  def image_fu(image, thumbnail = nil , options={})
-    begin
-      image_thumbnail = thumbnail.nil? ? image : image.thumbnails.collect {|t| t if t.thumbnail == thumbnail.to_s}.compact.first
-      image_tag image_thumbnail.public_filename, {:alt => image.title, :width => image_thumbnail.width, :height => image_thumbnail.height}.merge!(options)
-    rescue
-      image_tag image.public_filename(thumbnail), {:alt => image.title}.merge!(options)
-    end
+  def stylesheet_link_tag(*sources)
+    theme = (arguments = sources.dup).extract_options![:theme] == true # don't ruin the current sources object
+    tag = super
+    # inject /theme/ into the stylesheet link tag href if this is themed.
+    tag.gsub!(/\/stylesheets\//, "/theme/stylesheets/").gsub!(/theme=(.+?)\ /, '') if theme
+
+    tag
   end
 
-  def refinery_icon_tag(filename, options = {})
-    image_tag "refinery/icons/#{filename}", {:width => 16, :height => 16}.merge!(options)
-  end
-
-  # replace all system images with a thumbnail version of them (handy for all images inside a page part)
-  def content_fu(content, thumbnail)
-    content.scan(/\/system\/images([^\"\ ]*)/).flatten.each do |match|
-      parts = match.split(".")
-      extension = parts.pop
-      content.gsub!(match, "#{parts.join(".")}_#{thumbnail}.#{extension}")
-    end
-
-    return content
+  def setup
+    logger.warn("*** Refinery::ApplicationHelper::setup has now been deprecated from the Refinery API. ***")
   end
 
 end

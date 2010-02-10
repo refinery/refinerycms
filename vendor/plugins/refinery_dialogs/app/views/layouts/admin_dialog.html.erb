@@ -7,7 +7,7 @@
       <script type='text/javascript' src="http://www.google.com/jsapi"></script>
       <script type='text/javascript'>
         google.load("jquery", "1.4");
-        google.load("jqueryui", "1.7.2");
+        google.load("jqueryui", "1.8");
       </script>
     <% end %>
     <%= javascript_include_tag('jquery.js', 'jquery-ui-1.8rc1.min.js', :cache => (use_caching ? "cache/libraries" : false)) if !using_google_libs or local_request? %>
