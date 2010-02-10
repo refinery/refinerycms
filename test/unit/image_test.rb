@@ -7,7 +7,7 @@ class ImageTest < ActiveSupport::TestCase
   def test_titles
     assert_equal "The%20world!.gif", images(:the_world).filename
     assert_equal "The World!", images(:the_world).title
-    
+
     assert_equal "car-wallpapers19.jpg", images(:our_car).filename
     assert_equal "Car Wallpapers19", images(:our_car).title
   end
