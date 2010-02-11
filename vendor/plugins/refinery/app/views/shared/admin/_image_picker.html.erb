@@ -27,7 +27,7 @@
     // We're so un-object-oriented here. We need to rewrite the jQuery admin.js file to use OO.
     var image_picker_<%= randomiser %>_options = {
       thumbnail: '<%= thumbnail %>'
-      , toggle_image_display: <%= toggle_image_display.to_s %>
+      , image_toggler: '<%= toggle_image_display ? "#current_image_toggler_#{randomiser}" : "null" %>'
       , description: '<%= description %>'
       , field: '#current_image_id_<%= randomiser %>'
       , image_display: '#current_picked_image_<%= randomiser %>'

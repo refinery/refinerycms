@@ -609,25 +609,25 @@ var image_picker = {
 
   , init: function(new_options){
     this.options = $.extend(this.options, new_options);
-    $(this.options.remove_image_button).click(function(e){
-      e.preventDefault();
-      $(this.options.image_display).removeClass('brown_border')
-                                .attr({'src': '', 'width': '', 'height': ''})
-                                .css({'width': 'auto', 'height': 'auto'})
-                                .hide();
-      $(this.options.field).val('');
-      $(this.options.no_image_message).show();
-      $(this).hide();
-    });
+    $(this.options.remove_image_button).click($.proxy(this.remove_image, this));
+    $(this.options.image_toggler).click($.proxy(this.toggle_image, this));
+  }
 
-    if(this.options.image_toggler != null){
-      $(this.options.image_toggler).click(function(e){
-        $(this).html(($(this).html() == 'Show' ? 'Hide' : 'Show'));
-        $(this.options.image_container).toggle();
-        e.preventDefault();
-      });
-    }
+  , remove_image: function(e) {
+    e.preventDefault();
+    $(this.options.image_display).removeClass('brown_border')
+                              .attr({'src': '', 'width': '', 'height': ''})
+                              .css({'width': 'auto', 'height': 'auto'})
+                              .hide();
+    $(this.options.field).val('');
+    $(this.options.no_image_message).show();
+    $(this).hide();
+  }
 
+  , toggle_image: function(e) {
+    $(this.options.image_toggler).html(($(this.options.image_toggler).html() == 'Show' ? 'Hide' : 'Show'));
+    $(this.options.image_container).toggle();
+    e.preventDefault();
   }
 
   , changed: function(image) {
