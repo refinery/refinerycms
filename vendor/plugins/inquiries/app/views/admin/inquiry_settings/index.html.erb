@@ -11,7 +11,7 @@
   </ul>
 </div>
 <div id='records'>
-  <% if @inquiry_settings.size > 0 %>
+  <% if @inquiry_settings.any? %>
     <ul>
       <% @inquiry_settings.each do |setting| -%>
         <li class='clearfix record <%= cycle("on", "on-hover") %>'>

@@ -6,7 +6,7 @@
   </ul>
 </div>
 <div id='records'>
-  <% if @users.size > 0 %>
+  <% if @users.any? %>
     <%= will_paginate @users, :previous_label => '&laquo;', :next_label => '&raquo;' %>
     <ul>
       <% @users.each do |user| -%>
