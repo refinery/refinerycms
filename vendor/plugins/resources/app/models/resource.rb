@@ -5,7 +5,18 @@ class Resource < ActiveRecord::Base
                  :size => 0.kilobytes..50.megabytes,
                  :path_prefix => (USE_S3_BACKEND ? nil : 'public/system/resources')
 
-  validates_as_attachment
+  def validate
+    if self.filename.nil?
+      errors.add_to_base("You must choose a file to upload")
+    else
+      [:size].each do |attr_name|
+        enum = attachment_options[attr_name]
+        unless enum.nil? || enum.include?(send(attr_name))
+          errors.add_to_base("Files should be smaller than 50 MB in size") if attr_name == :size
+        end
+      end
+    end
+  end
 
   # Docs for acts_as_indexed http://github.com/dougal/acts_as_indexed
   acts_as_indexed :fields => [:title, :type_of_content],

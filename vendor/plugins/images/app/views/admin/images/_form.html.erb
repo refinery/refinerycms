@@ -1,4 +1,4 @@
-<%= error_messages_for(:image).gsub("Content type is not included in the list", "Your image must be either a JPG, PNG or GIF") %>
+<%= error_messages_for :image %>
 
 <% form_for [:admin, @image], :url => @url_override || @url,
                               :html => {:multipart => true, :style => 'float: left; width: 70%'} do |f| %>
