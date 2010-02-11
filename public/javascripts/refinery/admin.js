@@ -580,7 +580,12 @@ var list_reorder = {
 
     serialized = "";
 	  list_reorder.sortable_list.find('> li[id]').each(function(index, li) {
-	    serialized += list_reorder.parse_branch([index], li);
+      if (list_reorder.tree) {
+	      serialized += list_reorder.parse_branch([index], li);
+      }
+      else {
+        serialized += "&sortable_list[]=" + $($(li).attr('id').split('_')).last().get(0);
+      }
 	  });
 	  serialized += "&tree=" + list_reorder.tree + "&authenticity_token=" + encodeURIComponent($('#reorder_authenticity_token').val() + "&continue_reordering=false");
 
