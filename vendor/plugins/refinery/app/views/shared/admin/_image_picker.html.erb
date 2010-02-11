@@ -10,7 +10,7 @@
 <div id='current_image_container_<%= randomiser %>'<%= " style='display: none'" if toggle_image_display %> style="margin-top: 10px;">
   <a id='current_image_link_<%= randomiser %>' href="<%= insert_admin_images_url %>?thickbox=true&amp;modal=true&amp;titlebar=true&amp;callback=image_picker_<%= randomiser %>_changed&amp;KeepThis=true&amp;TB_iframe=true&amp;width=958&amp;height=510" style='border: 0px' title='Change <%= description.titleize %>' name='Change <%= description.titleize %>' class='thickbox'>
     <% unless image.nil? -%>
-      <%= image_fu image, nil, {:class => "brown_border", :id => "current_picked_image"} %>
+      <%= image_fu image, nil, {:class => "brown_border", :id => "current_picked_image_#{randomiser}"} %>
     <% else -%>
       <img id="current_picked_image_<%= randomiser %>" class="" src="" alt="" style='display: none' />
     <% end -%>
