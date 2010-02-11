@@ -7,7 +7,7 @@ class Refinery::ApplicationController < ActionController::Base
   include Crud # basic create, read, update and delete methods
   include AuthenticatedSystem
 
-  before_filter :take_down_for_maintenance?, :setup_theme, :find_pages_for_menu, :show_welcome_page
+  before_filter :take_down_for_maintenance?, :find_pages_for_menu, :show_welcome_page
 
   rescue_from ActiveRecord::RecordNotFound, :with => :error_404
   rescue_from ActionController::UnknownAction, :with => :error_404
@@ -42,10 +42,6 @@ class Refinery::ApplicationController < ActionController::Base
   end
 
 protected
-
-  def setup_theme
-    self.view_paths = ::ActionController::Base.view_paths.dup.unshift(Rails.root.join("themes", RefinerySetting[:theme], "views").to_s)
-  end
 
   def take_down_for_maintenance?
     if RefinerySetting.find_or_set(:down_for_maintenance, false)
