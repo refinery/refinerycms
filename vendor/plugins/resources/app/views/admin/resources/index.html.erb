@@ -11,13 +11,13 @@
 <div id='records'>
   <% if searching? %>
     <h2>Search Results for "<%= params[:search] %>"</h2>
-    <% if @resources.size > 0 %>
+    <% if @resources.any? %>
         <%= render :partial => "resource", :collection => @resources %>
     <% else %>
       <p>Sorry, no results found.</p>
     <% end %>
   <% else %>
-    <% if @resources.size > 0 -%>
+    <% if @resources.any? -%>
       <%= will_paginate @resources, :previous_label => '&laquo;', :next_label => '&raquo;' %>
       <% if RefinerySetting.find_or_set(:group_resources_by_date_uploaded, true) %>
         <% @grouped_resources.each do |container| %>

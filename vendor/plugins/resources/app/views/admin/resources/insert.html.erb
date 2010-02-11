@@ -1,29 +1,33 @@
 <div class='clearfix'>
   <div id='dialog_menu_left'>
-    <% unless @resources.empty? %>
-      <span id='existing_resource_radio' class='radio<%= " selected_radio" if @resource.errors.empty? and @resources.size > 0 %>'>
+    <% if @resources.any? %>
+      <span id='existing_resource_radio' class='radio<%= " selected_radio" if @resource.errors.empty? %>'>
         <input type='radio' name='resource_type' value='existing_resource' id='resource_type_existing' <%= "checked='true'" if @resource.errors.empty? %> />
         <label for='resource_type_existing' class='stripped'>Existing File</label>
       </span>
     <% end %>
-    <span id='upload_resource_radio' class='radio<%= " selected_radio" if @resource.errors.size > 0 or @resources.empty? %>'>
-      <input type='radio' name='resource_type' value='upload_resource' id='resource_type_upload' <%= "checked='true'" if @resources.empty? or !@resource.errors.empty? %> />
+    <span id='upload_resource_radio' class='radio<%= " selected_radio" if @resource.errors.any? or @resources.empty? %>'>
+      <input type='radio' name='resource_type' value='upload_resource' id='resource_type_upload' <%= "checked='true'" if @resources.empty? or @resource.errors.any? %> />
       <label for='resource_type_upload' class='stripped'>New File</label>
     </span>
   </div>
 
   <div id='dialog_main'>
-    <% unless @resources.empty? %>
-      <div id='existing_resource_area' class='dialog_area' <%= "style='display:none;'" unless @resource.errors.empty? %>>
+    <% if @resources.any? %>
+      <div id='existing_resource_area' class='dialog_area' <%= "style='display:none;'" if @resource.errors.any? %>>
         <input type='hidden' name='linked_resource' id='linked_resource' />
         <div id='existing_resource_area_content' class='clearfix'>
           <div id='pages_list'>
             <ul class='link_list'>
               <% @resources.each do |resource| -%>
-                <% resource_linked = (resource.public_filename == params[:current_link]) unless params[:current_link].blank? %>
+                <% resource_linked = (resource.public_filename == params[:current_link]) if params[:current_link].present? %>
                 <li<%= " class='linked'" if resource_linked %>>
-                  <%= link_to "#{resource.title} (#{resource.public_filename})", resource.public_filename, :title => 'Link to this Resource',
-                              :rel => resource.title, :class => 'page_link', :id => "resource_#{resource.id}" %>
+                  <%= link_to "#{resource.title} (#{resource.public_filename})",
+                              resource.public_filename,
+                              :title => 'Link to this Resource',
+                              :rel => resource.title,
+                              :class => 'page_link',
+                              :id => "resource_#{resource.id}" %>
                 </li>
               <% end %>
             </ul>
@@ -36,7 +40,7 @@
                           :url => {:controller => "admin/resources", :action => "insert", :dialog => from_dialog?} unless @thickbox %>
       </div>
     <% end %>
-    <div id='upload_resource_area' class='dialog_area' <%= "style='display:none;'" unless @resources.empty? %>>
+    <div id='upload_resource_area' class='dialog_area' <%= "style='display:none;'" if @resources.any? and @resource.errors.empty? %>>
       <%= render :partial => "form", :locals => {:insert => true} %>
     </div>
   </div>
@@ -46,10 +50,10 @@
     <%= submit_tag 'Insert', :id => "submit_button" %>
 
     <%= will_paginate @resources,
-                          :previous_label => '&laquo; Previous',
-                          :next_label => 'Next &raquo;',
-                          :renderer => Refinery::LinkRenderer,
-                          :url => {:controller => "admin/resources", :action => "insert", :dialog => from_dialog? } %>
+                      :previous_label => '&laquo; Previous',
+                      :next_label => 'Next &raquo;',
+                      :renderer => Refinery::LinkRenderer,
+                      :url => {:controller => "admin/resources", :action => "insert", :dialog => from_dialog? } %>
   </div>
 <% end %>
 

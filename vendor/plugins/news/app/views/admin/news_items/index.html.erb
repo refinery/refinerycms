@@ -10,7 +10,7 @@
 </div>
 <div id='records'>
   <%= "<h2>Search Results for \"#{params[:search]}\"</h2>" if searching? %>
-  <% unless @news_items.empty? %>
+  <% if @news_items.any? %>
     <%= will_paginate @news_items, :previous_label => '&laquo;', :next_label => '&raquo;' %>
     <ul>
       <%= render :partial => "news_item", :collection => @news_items %>

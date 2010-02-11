@@ -30,7 +30,7 @@ unless (override_path = ARGV.shift).nil? or (override_path.length == 0)
     # copy the controller
     unless controller_with_admin =~ /\*(\*)?/ and !action.nil?
       refinery_controllers = Dir[File.join(REFINERY_ROOT, %w(vendor plugins ** app controllers), "#{controller_with_admin}_controller.rb")]
-      unless refinery_controllers.compact.empty? # the controllers may not exist.
+      if refinery_controllers.compact.any? # the controllers may not exist.
         refinery_controllers.each do |refinery_controller|
           # make the directories
           FileUtils.mkdir_p(copy_to = File.join(RAILS_ROOT, %w(app controllers), admin))

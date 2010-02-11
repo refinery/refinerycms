@@ -1,7 +1,7 @@
 <% content_for :body_content_left do %>
   <%= @page[:body] %>
 
-  <% unless @news_items.empty? %>
+  <% if @news_items.any? %>
     <% @news_items.each do |item| %>
       <h3><%= link_to item.title, news_item_url(item) %></h3>
       <p>
