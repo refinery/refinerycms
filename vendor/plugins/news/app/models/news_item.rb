@@ -1,17 +1,15 @@
 class NewsItem < ActiveRecord::Base
 
-  validates_presence_of :title, :content
-  alias_attribute :content, :body
+  validates_presence_of :title, :body
 
   has_friendly_id :title, :use_slug => true
 
   acts_as_indexed :fields => [:title, :body],
                   :index_file => [Rails.root.to_s, "tmp", "index"]
-
-  def self.latest(amount = 10)
-    find(:all, :order => "publish_date DESC", :limit => amount,
-               :conditions => ["publish_date < ?", Time.now])
-  end
+  
+  default_scope :order => "publish_date DESC"
+  named_scope :latest, :conditions => ["publish_date < ?", Time.now], :limit => 10
+  named_scope :published, :conditions => ["publish_date < ?", Time.now]
 
   def not_published? # has the published date not yet arrived?
     publish_date > Time.now
