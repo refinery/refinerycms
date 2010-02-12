@@ -1,4 +1,5 @@
 require 'digest/sha1'
+
 class User < ActiveRecord::Base
 
   # Hack: Allow "rake gems:install" to run when this class is missing its gem dependency.
