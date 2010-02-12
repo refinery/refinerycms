@@ -25,5 +25,9 @@ class ResourceTest < ActiveSupport::TestCase
       assert_equal 'public/system/resources', Resource.attachment_options[:path_prefix]
     end
   end
+  
+  def test_type_of_content
+    assert_equal "application pdf", resources(:pdf_document).type_of_content
+  end
 
 end
