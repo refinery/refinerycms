@@ -12,4 +12,6 @@ Refinery::Plugin.register do |plugin|
 end
 
 config.middleware.use "ThemeServer"
-::ActionController::Base.module_eval %(view_paths.unshift(Rails.root.join("themes", RefinerySetting[:theme], "views").to_s))
+::ActionController::Base.module_eval %(
+  view_paths.unshift Rails.root.join("themes", RefinerySetting[:theme], "views").to_s if RefinerySetting[:theme].present?
+)
