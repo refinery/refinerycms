@@ -7,13 +7,10 @@ class Inquiry < ActiveRecord::Base
 
   acts_as_indexed :fields => [:name, :email, :message, :phone],
                   :index_file => [Rails.root.to_s, "tmp", "index"]
-
-  def self.closed
-    find_all_by_open(false, :order => "created_at DESC")
-  end
-
-  def self.opened
-    find_all_by_open(true, :order => "created_at DESC")
-  end
+  
+  default_scope :order => 'created_at DESC'
+  
+  named_scope :closed, :conditions => {:open => false}
+  named_scope :closed, :conditions => {:open => false}
 
 end

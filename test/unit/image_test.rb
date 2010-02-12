@@ -19,6 +19,8 @@ class ImageTest < ActiveSupport::TestCase
 
   def test_attachment_fu_options
     assert_equal 50.megabytes, Image.attachment_options[:max_size]
+    
+    # want to change this to ImageScience at some point. Rmagick sucks.
     assert_equal 'Rmagick', Image.attachment_options[:processor]
   end
 
