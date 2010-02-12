@@ -58,7 +58,7 @@ protected
   end
 
   def show_welcome_page
-    render :template => "/welcome", :layout => "admin" if just_installed? and params[:controller] != "users"
+    render :template => "/welcome", :layout => "admin" if just_installed? and controller_name != "users"
   end
 
   # get all the pages to be displayed in the site menu.
