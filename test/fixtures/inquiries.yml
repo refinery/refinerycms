@@ -4,7 +4,7 @@ dave:
   phone: 955 955555
   message: Hi - I would like to buy stuff. Please call me
   open: true
-  created_at: 3.days.ago
+  created_at: <%= Date.today - 3.days %>
 
 phil:
   name: Phil
@@ -12,7 +12,7 @@ phil:
   phone: 188 8181812
   message: Call me. Cheers.
   open: true
-  created_at: 1.days.ago
+  created_at: <%= Date.today - 1.day %>
 
 barry:
   name: Barry

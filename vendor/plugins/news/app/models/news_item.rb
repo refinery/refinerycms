@@ -1,6 +1,6 @@
 class NewsItem < ActiveRecord::Base
 
-  validates_presence_of :title, :body
+  validates_presence_of :title, :body, :publish_date
 
   has_friendly_id :title, :use_slug => true
 
