@@ -10,10 +10,10 @@
   </div>
   <div class='clearfix' style='width:963px'>
     <div class='field'>
-      <%= f.label :content %>
-      <%= f.text_area :content, :rows => "20", :class => "wymeditor" %>
+      <%= f.label :body %>
+      <%= f.text_area :body, :rows => "20", :class => "wymeditor" %>
     </div>
   </div>
-
-  <%= render :partial => "/shared/admin/form_actions", :locals => {:f => f, :continue_editing => true} %>
+  <%= render :partial => "/shared/admin/form_actions", :locals => {:f => f,
+                                                                   :continue_editing => true} %>
 <% end %>

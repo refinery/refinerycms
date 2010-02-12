@@ -6,11 +6,11 @@ class NewsItemsController < ApplicationController
 protected
 
   def find_latest_news_items
-    @news_items = NewsItem.latest
+    @news_items = NewsItem.latest # 10 items
   end
 
   def find_news_item
-    @news_item = NewsItem.find(params[:id], :conditions => ["publish_date < ?", Time.now])
+    @news_item = NewsItem.published.find(params[:id])
   end
 
   def find_page
