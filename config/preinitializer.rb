@@ -1,6 +1,9 @@
+# until Rails 3
+ENV["GEM_HOME"] = File.expand_path('../../vendor/bundler_gems', __FILE__)
+
 # pick the refinery root path
-if File.exist?(File.join(%W(#{RAILS_ROOT} lib refinery_initializer.rb)))
-  require File.join(%W(#{RAILS_ROOT} lib refinery_initializer.rb))
+if File.exist?(non_gem_path=File.join(%W(#{RAILS_ROOT} lib refinery_initializer.rb)))
+  require non_gem_path
 else
   require 'rubygems'
   version = if defined? REFINERY_GEM_VERSION
@@ -8,7 +11,7 @@ else
   elsif ENV.include?("REFINERY_GEM_VERSION")
     ENV["REFINERY_GEM_VERSION"]
   else
-    $1 if File.read("#{RAILS_ROOT}/config/environment.rb") =~ /^[^#]*REFINERY_GEM_VERSION\s*=\s*["']([!~<>=]*\s*[\d.]+)["']/
+    $1 if File.read(File.join(%W(#{RAILS_ROOT} config environment.rb))) =~ /^[^#]*REFINERY_GEM_VERSION\s*=\s*["']([!~<>=]*\s*[\d.]+)["']/
   end
 
   if version
@@ -21,7 +24,7 @@ else
 end
 
 
-REFINERY_ROOT = Rails.root.to_s unless defined? REFINERY_ROOT
+REFINERY_ROOT = RAILS_ROOT unless defined? REFINERY_ROOT
 
 # Set to true in your environment specific file (e.g. production.rb) to use Amazon's Simple
 # Storage Service instead of the default file system for resources and images
