@@ -1,26 +1,34 @@
 class Image < ActiveRecord::Base
 
+  # What is the max image size a user can upload
+  MAX_SIZE_IN_MB = 20
+
   # Docs for attachment_fu http://github.com/technoweenie/attachment_fu
   has_attachment :content_type => :image,
                  :storage => (USE_S3_BACKEND ? :s3 : :file_system),
                  :path_prefix => (USE_S3_BACKEND ? nil : 'public/system/images'),
                  :processor => 'Rmagick',
                  :thumbnails => ((((thumbnails = RefinerySetting.find_or_set(:image_thumbnails, {})).is_a?(Hash) ? thumbnails : (RefinerySetting[:image_thumbnails] = {}))) rescue {}),
-                 :max_size => 50.megabytes
+                 :max_size => MAX_SIZE_IN_MB.megabytes
 
-   def validate
-     if self.filename.nil?
-       errors.add_to_base("You must choose an image to upload")
-     else
-       [:size, :content_type].each do |attr_name|
-         enum = attachment_options[attr_name]
-         unless enum.nil? || enum.include?(send(attr_name))
-           errors.add_to_base("Images should be smaller than 50 MB in size") if attr_name == :size
-           errors.add_to_base("Your image must be either a JPG, PNG or GIF") if attr_name == :content_type
-         end
-       end
-     end
-   end
+  # we could use validates_as_attachment but it produces 4 odd errors like
+  # "size is not in list". So we basically here enforce the same validation
+  # rules here accept display the error messages we want
+  # This is a known bug in attachment_fu
+  def validate
+    if self.filename.nil?
+      errors.add_to_base("You must choose an image to upload")
+    else
+      [:size, :content_type].each do |attr_name|
+        enum = attachment_options[attr_name]
+      
+        unless enum.nil? || enum.include?(send(attr_name))
+          errors.add_to_base("Images should be smaller than #{MAX_SIZE_IN_MB} MB in size") if attr_name == :size
+          errors.add_to_base("Your image must be either a JPG, PNG or GIF") if attr_name == :content_type
+        end
+      end
+    end
+  end
 
   # Docs for acts_as_indexed http://github.com/dougal/acts_as_indexed
   acts_as_indexed :fields => [:title],
