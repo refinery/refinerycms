@@ -45,12 +45,13 @@ class PageTest < ActiveSupport::TestCase
   end
 
   def test_should_have_custom_url_override
-    assert_equal "/inquiries/new", pages(:contact_us).url # the contact us page links to the inquiries plugin form
-    assert_equal "/", pages(:home_page).url # the home page has a special "/" url
+    assert_equal({:controller => "/inquiries/new"}, pages(:contact_us).url) # the contact us page links to the inquiries plugin form
+    assert_equal({:controller => "/"}, pages(:home_page).url) # the home page has a special "/" url
+    assert_equal "http://www.resolvedigital.co.nz", pages(:resolve_digital_page).url # this page links to an external url
   end
 
   def test_should_have_regular_url
-    assert pages(:services).url.include? "/pages/"
+    assert pages(:services).url[:controller] == "pages"
     # not sure how I get it to render the friendly_id url /pages/services
     # test seems to reduce the id instead e.g. /pages/234423
   end
@@ -86,22 +87,22 @@ class PageTest < ActiveSupport::TestCase
 
   def test_shown_siblings
     assert_equal 3, pages(:products).children.size
-    assert_equal 3, pages(:products).shown_siblings.size
+    assert_equal 4, pages(:products).shown_siblings.size
   end
 
   def test_top_level_page_output
-    assert_equal 4, Page.top_level.size
+    assert_equal 5, Page.top_level.size
 
     # testing the order of pages.
     assert_equal pages(:home_page), Page.top_level.first
-    assert_equal pages(:contact_us), Page.top_level.last
-    assert_equal pages(:products), Page.top_level[1]
-    assert_equal pages(:services), Page.top_level[2]
+    assert_equal pages(:resolve_digital_page), Page.top_level.last
+    assert_equal pages(:products), Page.top_level.second
+    assert_equal pages(:services), Page.top_level.third
   end
 
   def test_order_of_children
     assert_equal pages(:blue_jelly), pages(:products).children.first
-    assert_equal pages(:green_jelly), pages(:products).children[1]
+    assert_equal pages(:green_jelly), pages(:products).children.second
     assert_equal pages(:rainbow_jelly), pages(:products).children.last
   end
 
@@ -121,7 +122,9 @@ class PageTest < ActiveSupport::TestCase
 
   def test_page_parts
     assert_equal page_parts(:home_page_body).body, pages(:home_page)[:body]
+    assert_equal page_parts(:home_page_body).body, pages(:home_page)["BODY"]
     assert_equal page_parts(:home_page_side_body).body, pages(:home_page)[:side_body]
+    assert_equal page_parts(:home_page_side_body).body, pages(:home_page)["SidE BoDy"]
 
     # but make sure we can still access other fields through []
     assert_equal "Home Page", pages(:home_page)[:title]

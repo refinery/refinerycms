@@ -2,7 +2,7 @@ Refinery::Plugin.register do |plugin|
   plugin.title = "Images"
   plugin.description = "Manage images"
   plugin.version = 1.0
-  plugin.menu_match = /admin\/((images)|(image_dialogs))$/
+  plugin.menu_match = /admin\/image(_dialog)?s$/
   plugin.activity = {
     :class => Image,
     :title => 'title',
