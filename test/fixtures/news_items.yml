@@ -1,0 +1,14 @@
+website_launched:
+  title: New website launched!
+  body: Oh yes our brand new website is here and it is running on Refinery CMS.
+  publish_date: <%= Date.today - 4.days %>
+  
+new_team_member:
+  title: Amanda joins Resolve Digital
+  body: Welcome Amanda to the Resolve Digital team.
+  publish_date: <%= Date.today - 2.days %>
+  
+product_launch:
+  title: Secret new product launched
+  body: Oh yes our brand new website is here and it is running on Refinery CMS.
+  publish_date: <%= Date.today.tomorrow %>
