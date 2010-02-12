@@ -1,4 +1,8 @@
-h2. Tests
+= Todo
+
+What are some of the known things that need to be done?
+
+== Tests
 
 * Add unit test coverage for user, user plugin and user mailer
 * Add unit test coverage for inquiry mailer and inquiry setting
