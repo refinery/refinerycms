@@ -19,7 +19,7 @@
     <%= render :partial => "inquiry", :collection => @inquiries %>
   <% else %>
     <h2>Open Inquiries</h2>
-    <% if @open_inquiries.size > 0 -%>
+    <% if @open_inquiries.any? -%>
       <ul>
         <%= render :partial => "inquiry", :collection => @open_inquiries %>
       </ul>
@@ -30,7 +30,7 @@
       </p>
     <% end -%>
     <h2>Closed Inquiries</h2>
-    <% if @closed_inquiries.size > 0 -%>
+    <% if @closed_inquiries.any? -%>
       <ul>
         <%= render :partial => "inquiry", :collection => @closed_inquiries %>
       </ul>

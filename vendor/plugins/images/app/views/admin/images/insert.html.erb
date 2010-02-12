@@ -1,20 +1,20 @@
 <div class='clearfix'>
   <div id='dialog_menu_left'>
-    <% unless @images.empty? %>
-      <span id="existing_image_radio" class="radio<%= " selected_radio" if @image.errors.empty? || !@images.empty? %>">
+    <% if @images.any? %>
+      <span id="existing_image_radio" class="radio<%= " selected_radio" if @image.errors.empty? %>">
         <input type='radio' name='image_type' value='existing_image' id='image_type_existing' <%= "checked='true'" if @image.errors.empty? %> />
         <label for='image_type_existing' class='stripped'>Existing Image</label>
       </span>
     <% end %>
-    <span id="upload_image_radio" class="radio<%= " selected_radio" if @image.errors.size > 0 || @images.empty? %>">
-      <input type='radio' name='image_type' value='upload_image' id='image_type_upload' <%= "checked='true'" if @images.empty? || !@image.errors.empty? %> />
+    <span id="upload_image_radio" class="radio<%= " selected_radio" if @image.errors.any? or @images.empty? %>">
+      <input type='radio' name='image_type' value='upload_image' id='image_type_upload' <%= "checked='true'" if @images.empty? || @image.errors.any? %> />
       <label for='image_type_upload' class='stripped'>New Image</label>
     </span>
   </div>
 
   <div id='dialog_main'>
-    <% unless @images.empty? %>
-      <div id='existing_image_area' class='dialog_area' <%= "style='display:none;'" unless @image.errors.empty? %>>
+    <% if @images.any? %>
+      <div id='existing_image_area' class='dialog_area' <%= "style='display:none;'" if @image.errors.any? %>>
         <input type='hidden' name='selected_image' id='selected_image' />
         <div id='existing_image_area_content' class='clearfix'>
           <ul>
@@ -28,7 +28,7 @@
         <%= images_paginator @images, from_dialog? %>
       </div>
     <% end %>
-    <div id='upload_image_area' class='dialog_area' <%= "style='display:none;'" unless @images.empty? %>>
+    <div id='upload_image_area' class='dialog_area' <%= "style='display:none;'" if @images.any? and @image.errors.empty? %>>
       <%= render :partial => "form", :locals => {:insert => true} %>
     </div>
   </div>
@@ -44,7 +44,7 @@
 <% content_for :head do %>
   <script type='text/javascript'>
     $(document).ready(function(){
-      image_dialog.init();
+      image_dialog.init(<%= @callback.present? ? "self.parent.#{@callback}" : "null" %>);
     });
   </script>
 <% end %>

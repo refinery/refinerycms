@@ -189,8 +189,8 @@ module Crud
 
           def update_positions
             unless params[:tree] == "true"
-              params[:sortable_list].each do |i|
-                #{class_name}.find(i).update_attribute(:position, params[:sortable_list].index(i))
+              params[:sortable_list].each_with_index do |i, index|
+                #{class_name}.find(i).update_attribute(:position, index)
               end
             else
               params[:sortable_list].each do |position, id_hash|

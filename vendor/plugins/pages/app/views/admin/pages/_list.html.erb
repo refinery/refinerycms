@@ -19,7 +19,7 @@
     <%= h page.title %> <%= "<em>(hidden)</em>" unless page.show_in_menu? %>
     <%= "<em>(draft)</em>" if page.draft? %>
   </div>
-  <% unless (children = page.children).empty? %>
+  <% if (children = page.children).any? %>
     <ul<%= " class='nested'" %>>
       <% children.each do |child| %>
         <%= render :partial => 'list', :locals => {:page => child} %>
