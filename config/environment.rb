@@ -59,4 +59,18 @@ eval("#{(defined? Refinery::Initializer) ? Refinery : Rails}::Initializer").run 
   # Make Active Record use UTC-base instead of local time
   # config.active_record.default_timezone = :utc
   #
+
+  #===REFINERY REQUIRED GEMS===
+  config.gem "bundler", :version => ">= 0.9.4"
+  if Rails.version.to_f < 3.0
+    config.gem "rake", :version => ">= 0.8.3", :lib => "rake"
+    config.gem "rubyzip", :version => ">= 0.9.1", :lib => "zip/zip"
+    config.gem "friendly_id", :version => ">= 2.2.2", :lib => "friendly_id"
+    config.gem "will_paginate", :version => ">= 2.3.11", :lib => "will_paginate", :source => "http://gemcutter.org"
+    config.gem "rails", :version => ">= 2.3.5", :lib => "rails"
+    config.gem "aasm", :version => ">= 2.1.3", :lib => "aasm", :source => "http://gemcutter.org"
+    config.gem "slim_scrooge", :version => ">= 1.0.3", :lib => "slim_scrooge", :source => "http://gemcutter.org" unless RUBY_PLATFORM =~ /mswin|mingw/ # kill gem when windows is running.
+    config.gem "hpricot", :version => ">= 0.8.1", :lib => "hpricot", :source => "http://gemcutter.org"
+  end
+  #===REFINERY END OF REQUIRED GEMS===
 end
