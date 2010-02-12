@@ -45,7 +45,7 @@ class Theme < ActiveRecord::Base
 
   def read_theme
     self.title = File.basename(self.full_filename).split(".").first.titleize
-    self.license = File.open(File.join(theme_path, "LICENSE")).read if File.exists? File.join(theme_path, "LICENSE")
+    self.licence = File.open(File.join(theme_path, "LICENCE")).read if File.exists? File.join(theme_path, "LICENCE")
     self.description = File.open(File.join(theme_path, "README")).read if File.exists? File.join(theme_path, "README")
   end
 
