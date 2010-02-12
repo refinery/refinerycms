@@ -20,13 +20,13 @@
 <div id='records'>
   <% if searching? %>
     <h2>Search Results for "<%= params[:search] %>"</h2>
-    <% if @images.size > 0 %>
+    <% if @images.any? %>
       <%= render :partial => "#{current_image_view}_view" %>
     <% else %>
       <p>Sorry, no results found.</p>
     <% end %>
   <% else %>
-    <% if @images.size > 0 %>
+    <% if @images.any? %>
       <%= will_paginate @images, :previous_label => '&laquo;', :next_label => '&raquo;' %>
       <%= render :partial => "#{current_image_view}_view" %>
       <%= will_paginate @images, :previous_label => '&laquo;', :next_label => '&raquo;' %>

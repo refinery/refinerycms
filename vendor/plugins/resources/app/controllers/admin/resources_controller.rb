@@ -4,13 +4,13 @@ class Admin::ResourcesController < Admin::BaseController
   before_filter :init_dialog
 
   def new
-    @resource = Resource.new unless @resource.present?
+    @resource = Resource.new if @resource.nil?
 
     @url_override = admin_resources_url(:dialog => from_dialog?)
   end
 
   def create
-    @resource = Resource.create params[:resource]
+    @resource = Resource.create(params[:resource])
 
     unless params[:insert]
       if @resource.valid?
@@ -25,8 +25,10 @@ class Admin::ResourcesController < Admin::BaseController
         render :action => 'new'
       end
     else
-      @resource_id = @resource.id
-      @resource = nil
+      if @resource.valid?
+        @resource_id = @resource.id
+        @resource = nil
+      end
       self.insert
     end
   end
@@ -56,7 +58,7 @@ class Admin::ResourcesController < Admin::BaseController
 
     @url_override = admin_resources_url(:dialog => from_dialog?, :insert => true)
 
-    unless params[:conditions].blank?
+    if params[:conditions].present?
       extra_condition = params[:conditions].split(',')
 
       extra_condition[1] = true if extra_condition[1] == "true"

@@ -28,7 +28,7 @@ class Admin::ImagesController < Admin::BaseController
   end
 
   def new
-    @image = Image.new unless @image.present?
+    @image = Image.new if @image.nil?
 
     @url_override = admin_images_url(:dialog => from_dialog?)
   end
@@ -38,7 +38,7 @@ class Admin::ImagesController < Admin::BaseController
 
     @url_override = admin_images_url(:dialog => from_dialog?, :insert => true)
 
-    unless params[:conditions].blank?
+    if params[:conditions].present?
       extra_condition = params[:conditions].split(',')
 
       extra_condition[1] = true if extra_condition[1] == "true"
@@ -68,8 +68,10 @@ class Admin::ImagesController < Admin::BaseController
         render :action => 'new'
       end
     else
-      @image_id = @image.id
-      @image = nil
+      if @image.valid?
+        @image_id = @image.id
+        @image = nil
+      end
       self.insert
     end
   end

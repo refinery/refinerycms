@@ -6,7 +6,7 @@
   </ul>
 </div>
 <div id='records'>
-  <% unless @refinery_settings.empty? %>
+  <% if @refinery_settings.any? %>
     <%= will_paginate @refinery_settings, :previous_label => '&laquo;', :next_label => '&raquo;' unless searching? %>
     <ul>
       <%= render :partial => 'refinery_setting', :collection => @refinery_settings %>

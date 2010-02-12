@@ -2,33 +2,47 @@
   description ||= "image"
   thumbnail ||= "medium"
   toggle_image_display ||= false
+  randomiser = rand(Time.now.yesterday.to_i * Time.now.to_i)
 -%>
-<%= link_to "Show", "", :id => "current_image_toggler" if toggle_image_display -%>
-<%= f.hidden_field field, :id => 'custom_title_field' -%>
+<%= link_to "Show", "", :id => "current_image_toggler_#{randomiser}" if toggle_image_display -%>
+<%= f.hidden_field field, :id => "current_image_id_#{randomiser}" -%>
 
-<div id='current_image_container'<%= " style='display: none'" if toggle_image_display %> style="margin-top: 10px;">
-  <a id='current_image_link' href="<%= insert_admin_images_url %>?thickbox=true&amp;modal=true&amp;titlebar=true&amp;field=custom_title_field&amp;thumbnail=&amp;KeepThis=true&amp;TB_iframe=true&amp;width=958&amp;height=510" style='border: 0px' title='Change <%= description.titleize %>' name='Change <%= description.titleize %>' class='thickbox'>
+<div id='current_image_container_<%= randomiser %>'<%= " style='display: none'" if toggle_image_display %> style="margin-top: 10px;">
+  <a id='current_image_link_<%= randomiser %>' href="<%= insert_admin_images_url %>?thickbox=true&amp;modal=true&amp;titlebar=true&amp;callback=image_picker_<%= randomiser %>_changed&amp;KeepThis=true&amp;TB_iframe=true&amp;width=958&amp;height=510" style='border: 0px' title='Change <%= description.titleize %>' name='Change <%= description.titleize %>' class='thickbox'>
     <% unless image.nil? -%>
-      <%= image_fu image, nil, {:class => "brown_border", :id => "current_picked_image"} %>
+      <%= image_fu image, nil, {:class => "brown_border", :id => "current_picked_image_#{randomiser}"} %>
     <% else -%>
-      <img id="current_picked_image" class="" src="" alt="" style='display: none' />
+      <img id="current_picked_image_<%= randomiser %>" class="" src="" alt="" style='display: none' />
     <% end -%>
-    <p id='no_picked_image_selected' <%= "style='display: none;'" unless image.nil? %>>
+    <p id='no_picked_image_selected_<%= randomiser %>' <%= "style='display: none;'" if image.present? %>>
       There is currently no <%= description %> selected, please click here to add one.
     </p>
   </a>
   <br/>
-  <%= link_to "Remove current #{description}", "#", :id => "remove_picked_image", :style => "#{"display:none;" if image.nil?}" %>
+  <%= link_to "Remove current #{description}", "#", :id => "remove_picked_image_#{randomiser}", :style => "#{"display:none;" if image.nil?}" %>
 </div>
 
 <% content_for :head do -%>
   <script type='text/javascript'>
-    $(document).ready(function(){
-      image_picker.init({
-        thumbnail: '<%= thumbnail %>'
-        , toggle_image_display: <%= toggle_image_display.to_s %>
-        , description: '<%= description %>'
-      });
+    // We're so un-object-oriented here. We need to rewrite the jQuery admin.js file to use OO.
+    var image_picker_<%= randomiser %>_options = {
+      thumbnail: '<%= thumbnail %>'
+      , image_toggler: '<%= toggle_image_display ? "#current_image_toggler_#{randomiser}" : "null" %>'
+      , description: '<%= description %>'
+      , field: '#current_image_id_<%= randomiser %>'
+      , image_display: '#current_picked_image_<%= randomiser %>'
+      , no_image_message: '#no_picked_image_selected_<%= randomiser %>'
+      , remove_image_button: '#remove_picked_image_<%= randomiser %>'
+      , image_container: '#current_image_container_<%= randomiser %>'
+    };
+
+    $(document).ready(function(e) {
+      image_picker.init(image_picker_<%= randomiser %>_options);
     });
+
+    image_picker_<%= randomiser %>_changed = function(args) {
+      image_picker.init(image_picker_<%= randomiser %>_options);
+      image_picker.changed(args);
+    }
   </script>
 <% end %>

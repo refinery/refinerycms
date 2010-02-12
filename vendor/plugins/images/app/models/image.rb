@@ -8,7 +8,19 @@ class Image < ActiveRecord::Base
                  :thumbnails => ((((thumbnails = RefinerySetting.find_or_set(:image_thumbnails, {})).is_a?(Hash) ? thumbnails : (RefinerySetting[:image_thumbnails] = {}))) rescue {}),
                  :max_size => 50.megabytes
 
-  validates_as_attachment
+   def validate
+     if self.filename.nil?
+       errors.add_to_base("You must choose an image to upload")
+     else
+       [:size, :content_type].each do |attr_name|
+         enum = attachment_options[attr_name]
+         unless enum.nil? || enum.include?(send(attr_name))
+           errors.add_to_base("Images should be smaller than 50 MB in size") if attr_name == :size
+           errors.add_to_base("Your image must be either a JPG, PNG or GIF") if attr_name == :content_type
+         end
+       end
+     end
+   end
 
   # Docs for acts_as_indexed http://github.com/dougal/acts_as_indexed
   acts_as_indexed :fields => [:title],
