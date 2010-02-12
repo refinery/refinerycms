@@ -111,7 +111,7 @@ This file runs when your site is started up. All is does is registers this plugi
       plugin.title = "Pages"
       plugin.description = "Manage content pages"
       plugin.version = 1.0
-      plugin.menu_match = /admin\/((pages)|(page_dialogs)|(page_parts))$/
+      plugin.menu_match = /admin\/page(_dialog|part)?s$/
       plugin.activity = {
         :class => Page,
         :url_prefix => "edit_",
@@ -131,7 +131,7 @@ In our example above we showed the use of ``plugin.activity`` for the pages plug
       plugin.title = "Pages"
       plugin.description = "Manage content pages"
       plugin.version = 1.0
-      plugin.menu_match = /admin\/((pages)|(page_dialogs)|(page_parts))$/
+      plugin.menu_match = /admin\/page(_dialog|part)?s$/
       plugin.activity = {
         :class => Page,
         :url_prefix => "edit_",

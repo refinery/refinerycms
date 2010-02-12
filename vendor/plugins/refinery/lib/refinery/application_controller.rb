@@ -9,24 +9,28 @@ class Refinery::ApplicationController < ActionController::Base
 
   before_filter :take_down_for_maintenance?, :find_pages_for_menu, :show_welcome_page
 
-  rescue_from ActiveRecord::RecordNotFound, :with => :error_404
-  rescue_from ActionController::UnknownAction, :with => :error_404
+  rescue_from ActiveRecord::RecordNotFound, ActionController::UnknownAction, :with => :error_404
 
   def error_404
-    @page = Page.find_by_menu_match("^/404$", :include => [:parts, :slugs])
-    render :template => "/pages/show", :status => 404
+    if (@page = Page.find_by_menu_match("^/404$", :include => [:parts, :slugs])).present?
+      # render the application's custom 404 page with layout.
+      render :template => "/pages/show", :status => 404
+    else
+      # fallback to the default 404.html page.
+      render :file => Rails.root.join("public", "404.html"), :layout => false, :status => 404
+    end
   end
 
   def home_page?
-    params[:action] == "home" and params[:controller] == "pages"
+    action_name == "home" and controller_name == "pages"
   end
 
   def local_request?
-    request.remote_ip =~ /(::1)|(127.0.0.1)|((192.168).*)/ or ENV["RAILS_ENV"] == "development"
+    ENV["RAILS_ENV"] == "development" or request.remote_ip =~ /(::1)|(127.0.0.1)|((192.168).*)/
   end
 
   def just_installed?
-    User.count == 0
+    !User.exists?
   end
 
   def from_dialog?
@@ -34,7 +38,7 @@ class Refinery::ApplicationController < ActionController::Base
   end
 
   def admin?
-    params[:controller] =~ /admin\/(.*)/
+    controller_name =~ /^admin\//
   end
 
   def wymiframe
