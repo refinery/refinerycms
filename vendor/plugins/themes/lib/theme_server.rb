@@ -15,7 +15,7 @@ class ThemeServer
       if (file_path = Rails.root.join("themes", RefinerySetting[:theme], relative_path)).exist?
         # generate an etag for client-side caching.
         etag = Digest::MD5.hexdigest("#{file_path.to_s}#{file_path.mtime}")
-        unless env["HTTP_IF_NONE_MATCH"] == etag
+        unless (env["HTTP_IF_NONE_MATCH"] == etag and RefinerySetting.find_or_set(:themes_use_etags, false))
           [200, {
                   "Content-Type" => Rack::Mime.mime_type(file_path.extname),
                   "ETag" => etag
