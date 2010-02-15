@@ -24,18 +24,25 @@ unless RAILS_ROOT.nil? or RAILS_ROOT.length == 0
   FileUtils::cp File.join(%W(#{REFINERY_ROOT} config preinitializer.rb)), File.join(%W(#{RAILS_ROOT} config preinitializer.rb))
 
 	# read in the config files
-	app_config = File.open(File.join(%W(#{RAILS_ROOT} config environment.rb)), "r").read
+	if File.exist?(File.join(%W(#{RAILS_ROOT} config application.rb)))
+	  app_config_file = "application.rb"
+  else
+    FileUtils::cp File.join(%W(#{REFINERY_ROOT} config application.rb)), File.join(%W(#{RAILS_ROOT} config application.rb))
+    app_config_file = "environment.rb"
+  end
+
+	app_config = File.open(File.join(%W(#{RAILS_ROOT} config #{app_config_file})), "r").read
 	environment_updated = false
 
   # backup app's environment.rb
   matcher = /(#===REFINERY REQUIRED GEMS===)(.+?)(#===REFINERY END OF REQUIRED GEMS===)/m
   unless (app_refinery_gems_section = app_config.scan(matcher).join("")).length == 0
     # read in the config file in the gem
-  	refinery_config = File.open(File.join(REFINERY_ROOT, %w(config environment.rb)), "r").read
-  	FileUtils.cp File.join(%W(#{RAILS_ROOT} config environment.rb)), File.join(%W(#{RAILS_ROOT} config environment.autobackupbyrefinery.rb))
+  	refinery_config = File.open(File.join(%W(#{REFINERY_ROOT} config #{app_config_file})), "r").read
+  	FileUtils.cp File.join(%W(#{RAILS_ROOT} config #{app_config_file})), File.join(%W(#{RAILS_ROOT} config #{app_config_file.gsub(".rb", "")}.autobackupbyrefinery.rb))
 
     # write the new content into the file.
-    File.open(File.join(%W(#{RAILS_ROOT} config environment.rb)), "w").puts(app_config.gsub!(
+    File.open(File.join(%W(#{RAILS_ROOT} config #{app_config_file})), "w").puts(app_config.gsub!(
   	  app_refinery_gems_section,
   	  refinery_config.scan(matcher).join("")
   	))
@@ -47,8 +54,8 @@ unless RAILS_ROOT.nil? or RAILS_ROOT.length == 0
 	  puts "---------"
 	  puts "Copied new Refinery core assets."
 	  if environment_updated
-  	  puts "I've made a backup of your current config/environment.rb file as it has been updated with the latest Refinery RubyGem requirements."
-  	  puts "The backup is located at config/environment.autobackupbyrefinery.rb incase you need it."
+  	  puts "I've made a backup of your current config/#{app_config_file} file as it has been updated with the latest Refinery RubyGem requirements."
+  	  puts "The backup is located at config/#{app_config_file.gsub(".rb", "")}.autobackupbyrefinery.rb incase you need it."
     end
 	  puts ""
 	  puts "=== ACTION REQUIRED ==="
