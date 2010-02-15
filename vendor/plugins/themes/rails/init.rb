@@ -15,3 +15,11 @@ config.middleware.use "ThemeServer"
 ::ActionController::Base.module_eval %(
   view_paths.unshift Rails.root.join("themes", RefinerySetting[:theme], "views").to_s if RefinerySetting[:theme].present?
 )
+
+# set up controller paths.
+if RefinerySetting[:theme].present?
+  controller_path = Rails.root.join("themes", RefinerySetting[:theme], "controllers").to_s
+
+  ::ActiveSupport::Dependencies.load_paths.unshift controller_path
+  config.controller_paths.unshift controller_path
+end
