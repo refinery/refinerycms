@@ -26,6 +26,7 @@ unless RAILS_ROOT.nil? or RAILS_ROOT.length == 0
 	# read in the config files
 	if File.exist?(File.join(%W(#{RAILS_ROOT} config application.rb)))
 	  app_config_file = "application.rb"
+	  FileUtils::cp File.join(%W(#{REFINERY_ROOT} config environment.rb)), File.join(%W(#{RAILS_ROOT} config environment.rb))
   else
     FileUtils::cp File.join(%W(#{REFINERY_ROOT} config application.rb)), File.join(%W(#{RAILS_ROOT} config application.rb))
     app_config_file = "environment.rb"
