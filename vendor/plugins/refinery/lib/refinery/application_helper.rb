@@ -52,6 +52,18 @@ module Refinery::ApplicationHelper
     tag
   end
 
+  def jquery_include_tags(use_caching=RefinerySetting.find_or_set(:use_resource_caching, false))
+    if !local_request? and RefinerySetting.find_or_set(:use_google_ajax_libraries, true)
+      "#{javascript_include_tag "http://www.google.com/jsapi"}
+      <script type='text/javascript'>
+        google.load('jquery', '1.4');
+        google.load('jqueryui', '1.8');
+      </script>"
+    else
+      javascript_include_tag 'jquery', 'jquery-ui-1.8rc1.min.js', :cache => (use_caching ? "cache/libraries" : nil)
+    end
+  end
+
   # you can override the object used for the title by supplying options[:object]
   # this object must support custom_title_type if you want custom titles.
   def page_title(options = {})
