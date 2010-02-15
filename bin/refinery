@@ -51,13 +51,14 @@ unless (app_path = ARGV.shift).nil? or app_path.length == 0
     3.times { new_digest << Digest::SHA1.hexdigest("--refinery--#{Time.now.to_s}--#{rand(10000000)}--") }
 
     # read in the file and split up the lines
-    lines = File.open(File.join(%W(#{RAILS_ROOT} config environment.rb)), "r").read.split("\n")
+    app_config_file = File.exist?(File.join(%W(#{RAILS_ROOT} config application.rb))) ? "application.rb" : "environment.rb"
+    lines = File.open(File.join(%W(#{RAILS_ROOT} config #{app_config_file})), "r").read.split("\n")
     lines.each do |line|
       match = line.scan(/(:secret)([^']*)([\'])([^\']*)/).flatten.last
       line.gsub!(match, new_digest) unless match.nil?
     end
     # write the new content into the file.
-    File.open(File.join(%W(#{RAILS_ROOT} config environment.rb)), "w").puts(lines.join("\n"))
+    File.open(File.join(%W(#{RAILS_ROOT} config #{app_config_file})), "w").puts(lines.join("\n"))
 
   	puts "\n---------"
   	puts "Refinery successfully installed in '#{RAILS_ROOT}'!\n\n"
