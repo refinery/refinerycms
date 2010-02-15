@@ -51,7 +51,7 @@ class PageTest < ActiveSupport::TestCase
   end
 
   def test_should_have_regular_url
-    assert pages(:services).url[:controller] == "pages"
+    assert pages(:services).url[:controller] == "/pages"
     # not sure how I get it to render the friendly_id url /pages/services
     # test seems to reduce the id instead e.g. /pages/234423
   end
