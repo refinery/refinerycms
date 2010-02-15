@@ -18,8 +18,7 @@ config.action_controller.perform_caching             = true
 # Disable delivery errors, bad email addresses will be ignored
 # config.action_mailer.raise_delivery_errors = false
 
-# We don't really need all the other stuff:
-config.log_level = :warn
+config.log_level = :info
 
 # Set to true in order to use Amazon's Simple Storage Service on your production machine
 # instead of the default file system for resources and images
