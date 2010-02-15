@@ -85,8 +85,5 @@ else
     config.gem "slim_scrooge", :version => ">= 1.0.3", :lib => "slim_scrooge", :source => "http://gemcutter.org" unless RUBY_PLATFORM =~ /mswin|mingw/ # kill gem when windows is running.
     config.gem "hpricot", :version => ">= 0.8.1", :lib => "hpricot", :source => "http://gemcutter.org"
     #===REFINERY END OF REQUIRED GEMS===
-
-    # Pull in attachment_fu patch for windows
-    require 'attachment_fu_patch' if RUBY_PLATFORM =~ /mswin/
   end
 end
