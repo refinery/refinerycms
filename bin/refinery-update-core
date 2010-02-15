@@ -25,12 +25,31 @@ unless RAILS_ROOT.nil? or RAILS_ROOT.length == 0
 
 	# read in the config files
 	if File.exist?(File.join(%W(#{RAILS_ROOT} config application.rb)))
-	  app_config_file = "application.rb"
 	  FileUtils::cp File.join(%W(#{REFINERY_ROOT} config environment.rb)), File.join(%W(#{RAILS_ROOT} config environment.rb))
   else
+    # update secret key if environment still exists
+    lines = File.open(File.join(%W(#{RAILS_ROOT} config environment.rb)), "r").read.split("\n")
+    secret_key = ""
+    lines.each do |line|
+      match = line.scan(/(:secret)([^']*)([\'])([^\']*)/).flatten.last
+      secret_key = match unless match.nil?
+    end
+    # write the new content into the file.
     FileUtils::cp File.join(%W(#{REFINERY_ROOT} config application.rb)), File.join(%W(#{RAILS_ROOT} config application.rb))
-    app_config_file = "environment.rb"
+
+    app_rb_lines = File.open(File.join(%W(#{RAILS_ROOT} config application.rb)), "r").read.split("\n")
+    app_rb_lines.each do |line|
+      match = line.scan(/(:secret)([^']*)([\'])([^\']*)/).flatten.last
+      line.gsub!(match, secret_key) unless match.nil?
+    end
+
+    # write the new content into the file.
+    File.open(File.join(%W(#{RAILS_ROOT} config application.rb)), "w").puts(app_rb_lines.join("\n"))
+
+    FileUtils::cp File.join(%W(#{REFINERY_ROOT} config environment.rb)), File.join(%W(#{RAILS_ROOT} config environment.rb))
   end
+
+  app_config_file = "application.rb"
 
 	app_config = File.open(File.join(%W(#{RAILS_ROOT} config #{app_config_file})), "r").read
 	environment_updated = false
