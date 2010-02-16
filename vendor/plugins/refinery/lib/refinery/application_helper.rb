@@ -54,11 +54,13 @@ module Refinery::ApplicationHelper
 
   def jquery_include_tags(use_caching=RefinerySetting.find_or_set(:use_resource_caching, false))
     if !local_request? and RefinerySetting.find_or_set(:use_google_ajax_libraries, true)
-      "#{javascript_include_tag "http://www.google.com/jsapi"}
+      "#{javascript_include_tag("http://www.google.com/jsapi").gsub(".js", "")}
       <script type='text/javascript'>
         google.load('jquery', '1.4');
-        google.load('jqueryui', '1.8');
-      </script>"
+        //google.load('jqueryui', '1.8');
+        // google isn't using jqueryui 1.8 yet although it was before.
+      </script>
+      #{javascript_include_tag 'jquery-ui-1.8rc1.min.js'}"
     else
       javascript_include_tag 'jquery', 'jquery-ui-1.8rc1.min.js', :cache => (use_caching ? "cache/libraries" : nil)
     end
