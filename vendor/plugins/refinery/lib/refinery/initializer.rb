@@ -21,7 +21,7 @@ module Refinery
         # add plugin lib paths to the $LOAD_PATH so that rake tasks etc. can be run when using a gem for refinery or gems for plugins.
         search_for = Regexp.new(File.join(%W(\( #{Refinery.root.join("vendor", "plugins")} \)? .+? lib)))
         paths = plugins.collect{ |plugin| plugin.load_paths }.flatten.reject{|path| path.scan(search_for).empty? or path.include?('/rails-') }
-        paths = paths.reject{ |path| path.include?(Refinery.root) } if Refinery.root === Rails.root # superfluous when not in gem.
+        paths = paths.reject{ |path| path.include?(Refinery.root.to_s) } if Refinery.root == Rails.root # superfluous when not in gem.
         ($refinery_gem_plugin_lib_paths = paths).each do |path|
           $LOAD_PATH.unshift path
         end
