@@ -1,15 +1,17 @@
 #!/usr/bin/env ruby
+require 'pathname'
 require 'fileutils'
-REFINERY_ROOT = File.expand_path(File.dirname(__FILE__) << "/..")
+
+REFINERY_ROOT = Pathname.new(File.expand_path(File.dirname(__FILE__) << "/..")) unless defined?(REFINERY_ROOT) && REFINERY_ROOT.is_a?(Pathname)
 unless (override_path = ARGV.shift).nil? or (override_path.length == 0)
   # if "" or "." or "./" is specified then get the current directory otherwise accept the specified app_path.
   if ((app_path = ARGV.shift).nil? or app_path.length <= 2) and ((is_current_dir = app_path =~ /(\.(\/)?)/).nil? or !is_current_dir or is_current_dir < 2)
-    RAILS_ROOT = Dir.getwd
+    RAILS_ROOT = Pathname.new(Dir.getwd)
   else
-    RAILS_ROOT = app_path
+    RAILS_ROOT = Pathname.new(app_path)
   end
 
-  if File.exists? RAILS_ROOT
+  if RAILS_ROOT.exists?
     # figure out what to override
     override_parts = override_path.downcase.split('/').compact.collect {|part| part if part.length > 0 }.compact
     admin = ""
@@ -29,11 +31,11 @@ unless (override_path = ARGV.shift).nil? or (override_path.length == 0)
 
     # copy the controller
     unless controller_with_admin =~ /\*(\*)?/ and !action.nil?
-      refinery_controllers = Dir[File.join(REFINERY_ROOT, %w(vendor plugins ** app controllers), "#{controller_with_admin}_controller.rb")]
+      refinery_controllers = Dir[REFINERY_ROOT.join("vendor", "plugins", "**", "app", "controllers", "#{controller_with_admin}_controller.rb")]
       if refinery_controllers.compact.any? # the controllers may not exist.
         refinery_controllers.each do |refinery_controller|
           # make the directories
-          FileUtils.mkdir_p(copy_to = File.join(RAILS_ROOT, %w(app controllers), admin))
+          FileUtils.mkdir_p(copy_to = RAILS_ROOT.join("app" "controllers", admin))
           FileUtils.cp(refinery_controller, copy_to)
         end
       else
@@ -44,7 +46,7 @@ unless (override_path = ARGV.shift).nil? or (override_path.length == 0)
     # copy the action, if it exists
     unless action.nil? or action.length == 0
       # get all the matching files
-      looking_for = File.join(REFINERY_ROOT, %w(vendor plugins ** app views), controller_with_admin.split('/'), "#{action}*.erb")
+      looking_for = REFINERY_ROOT.join("vendor", "plugins", "**", "app", "views", controller_with_admin.split('/'), "#{action}*.erb")
       action_files = Dir[looking_for]
 
       # copy in the action template
@@ -53,8 +55,8 @@ unless (override_path = ARGV.shift).nil? or (override_path.length == 0)
         action_file_dir = action_file_path.split('/')
         action_file_dir.pop # get rid of the file.
 
-        FileUtils.mkdir_p(File.join(RAILS_ROOT, %w(app views), action_file_dir))
-        FileUtils.cp action_file, File.join(RAILS_ROOT, %w(app views), action_file_path)
+        FileUtils.mkdir_p(RAILS_ROOT.join("app", "views", action_file_dir))
+        FileUtils.cp action_file, RAILS_ROOT.join("app", "views", action_file_path)
       end
     else
       puts "Note: No action was specified."
