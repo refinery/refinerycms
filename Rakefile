@@ -17,7 +17,7 @@ require 'tasks/rails'
 
 extra_rake_tasks = []
 # When running Refinery from a gem we lose the rake tasks, so add them back in:
-extra_rake_tasks << Dir[File.join(REFINERY_ROOT, %w(vendor plugins * ** tasks ** *.rake))].sort unless REFINERY_ROOT.to_s == Rails.root.to_s
+extra_rake_tasks << Dir[Refinery.root.join("vendor", "plugins", "*", "**", "tasks", "**", "*", "*.rake")].sort unless Refinery.root == Rails.root
 # We also need to load in the rake tasks from gem plugins whether Refinery is a gem or not:
 extra_rake_tasks << $refinery_gem_plugin_lib_paths.collect {|path| Dir[File.join(%W(#{path} tasks ** *.rake))].sort} if defined?($refinery_gem_plugin_lib_paths) && !$refinery_gem_plugin_lib_paths.nil?
 extra_rake_tasks.flatten.compact.uniq.each {|rake| load rake }

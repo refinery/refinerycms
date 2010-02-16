@@ -39,7 +39,8 @@ else
     # Only load the plugins named here, in the order given. By default, all plugins
     # in vendor/plugins are loaded in alphabetical order.
     # :all can be used as a placeholder for all plugins not explicitly named
-    # config.plugins = [ :authentication, :acts_as_tree, :attachment_fu, :all ]
+    # Loading gem plugins that other plugins may rely on first.
+    config.plugins = [ :friendly_id, :will_paginate, :aasm, :all ]
 
     # Add additional load paths for your own custom dirs
     # config.load_paths += %W( #{RAILS_ROOT}/extras )

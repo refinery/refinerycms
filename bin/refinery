@@ -1,6 +1,8 @@
 #!/usr/bin/env ruby
+require 'pathname'
 require 'fileutils'
-REFINERY_ROOT = File.expand_path(File.dirname(__FILE__) << "/..")
+
+REFINERY_ROOT = Pathname.new(File.expand_path(File.dirname(__FILE__) << "/..")) unless defined?(REFINERY_ROOT) && REFINERY_ROOT.is_a?(Pathname)
 unless (app_path = ARGV.shift).nil? or app_path.length == 0
   # if "" or "." or "./" is specified then get the current directory otherwise accept the specified app_path.
   RAILS_ROOT = (app_path.length <= 2 and ((is_current_dir = app_path =~ /(\.(\/)?)/).nil? or is_current_dir < 2)) ? Dir.getwd : app_path
@@ -19,7 +21,7 @@ unless (app_path = ARGV.shift).nil? or app_path.length == 0
 
     # copy in all of the relevant directories and root files.
     to_copy = %w(app config db lib public script contributors.md license.md Rakefile readme.md VERSION).map do |dir|
-      File.join REFINERY_ROOT, dir
+      REFINERY_ROOT.join(dir).to_s
     end
     FileUtils::cp_r to_copy, RAILS_ROOT, :verbose => false
     FileUtils::mkdir File.join(%W(#{RAILS_ROOT} themes))

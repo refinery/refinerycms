@@ -10,4 +10,4 @@ Refinery::Plugin.register do |plugin|
 end
 
 # Set the actionmailer root so that it'll work for delivering emails from this plugin.
-ActionMailer::Base.template_root = "#{REFINERY_ROOT}/vendor/plugins/inquiries/app/views"
+ActionMailer::Base.template_root = Refinery.root.join("vendor", "plugins", "inquiries", "app", "views").to_s
