@@ -491,12 +491,17 @@ var image_dialog = {
         relevant_src = imageUrl.protocol + '//' + imageUrl.host + relevant_src;
       }
 
-      try {
-        parent.document.getElementById('wym_src').value = relevant_src;
-        parent.document.getElementById('wym_title').value = img.title;
-        parent.document.getElementById('wym_alt').value = img.alt;
+      if (parent) {
+        if ((wym_src = parent.document.getElementById('wym_src')) != null) {
+          wym_src.value = relevant_src;
+        }
+        if ((wym_title = parent.document.getElementById('wym_title')) != null) {
+          wym_title.value = img.title;
+        }
+        if ((wym_alt = parent.document.getElementById('wym_alt')) != null) {
+          wym_alt.value = img.alt;
+        }
       }
-      catch(e){}
     }
   }
 
