@@ -1,7 +1,7 @@
 # Allow the metal piece to run in isolation
 require(File.dirname(__FILE__) + "/../../config/environment") unless defined?(Rails)
 
-# Servers theme files from the them directory without touching Rails too much
+# Serves theme files from the theme directory without touching Rails too much
 class ThemeServer
 
   def initialize(app)
@@ -15,13 +15,14 @@ class ThemeServer
       if (file_path = Rails.root.join("themes", RefinerySetting[:theme], relative_path)).exist?
         # generate an etag for client-side caching.
         etag = Digest::MD5.hexdigest("#{file_path.to_s}#{file_path.mtime}")
-        unless (env["HTTP_IF_NONE_MATCH"] == etag and RefinerySetting.find_or_set(:themes_use_etags, false))
+        unless (env["HTTP_IF_NONE_MATCH"] == etag and RefinerySetting.find_or_set(:themes_use_etags, false) == true)
           [200, {
                   "Content-Type" => Rack::Mime.mime_type(file_path.extname),
+                  "Cache-Control" => "public",
                   "ETag" => etag
                 }, file_path.open]
         else
-          [304, {"Content-Type" => Rack::Mime.mime_type(file_path.extname)}, "Not Modified"]
+          [304, {}, []]
         end
       else
         [404, {"Content-Type" => "text/html"}, ["Not Found"]]
