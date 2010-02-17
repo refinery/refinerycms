@@ -8,7 +8,7 @@
 		.wym_skin_refinery .wym_area_right		 { display: block; }
 
 
-/*TYPO*/	
+/*TYPO*/
 		.wym_skin_refinery				{ font-size: 62.5%; font-family: Verdana, Arial, sans-serif; }
 		.wym_skin_refinery h2			 { font-size: 110%; /* = 11px */}
 		.wym_skin_refinery h3			 { font-size: 100%; /* = 10px */}
@@ -31,7 +31,7 @@
 /*WYM_IFRAME*/
 		.wym_skin_refinery .wym_iframe			 { width: 100%;}
 		.wym_skin_refinery .wym_iframe iframe		{ width: 99%; border: 1px solid gray; background: white }
-		
+
 /* adjust for two rows of icons */
 		.wym_two_column .wym_skin_refinery .wym_iframe iframe, .wym_two_column .wym_skin_refinery .wym_html textarea { height: 376px; }
 
@@ -55,7 +55,7 @@
 		/*hide section titles by default*/
 		.wym_skin_refinery .wym_section h2		 { display: none; }
 		/*disable any margin-collapse*/
-		.wym_skin_refinery .wym_section			{ padding: 0px;}	
+		.wym_skin_refinery .wym_section			{ padding: 0px;}
 		/*auto-clear sections*/
 		.wym_skin_refinery .wym_section ul:after	 { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
  * html .wym_skin_refinery .wym_section ul		 { height: 1%;}
@@ -74,7 +74,7 @@
 		.wym_skin_refinery .wym_buttons li		 { float:left;}
 		.wym_skin_refinery .wym_buttons a 				 { width: 20px; height: 20px; overflow: hidden; padding: 2px }
 		/*image replacements*/
-		.wym_skin_refinery .wym_buttons li a						 { background: url('/images/wymeditor/skins/refinery/icons.png') no-repeat; text-indent: -9999px;} 
+		.wym_skin_refinery .wym_buttons li a						 { background: url('/images/wymeditor/skins/refinery/icons.png') no-repeat; text-indent: -9999px;}
 		.wym_skin_refinery .wym_buttons li.wym_tools_strong a		{ background-position: 0 -382px;}
 		.wym_skin_refinery .wym_buttons li.wym_tools_emphasis a		{ background-position: 0 -22px;}
 		.wym_skin_refinery .wym_buttons li.wym_tools_superscript a	 { background-position: 0 -430px;}
@@ -94,13 +94,13 @@
 		.wym_skin_refinery .wym_buttons li.wym_tools_preview a		 { background-position: 0 -408px;}
 
 		/* make tools and containers play nicely next to eachother */
-		
+
 		.wym_skin_refinery .wym_tools, .wym_skin_refinery .wym_containers	 { float: left; margin: 0px 0px 5px 0px; }
-		
+
 		/* image replacements for containers */
 				.wym_skin_refinery .wym_containers li { float: left; }
 		.wym_skin_refinery .wym_containers li a, .wym_skin_refinery li.wym_tools_class a {background-repeat: no-repeat; background-position: center center;width: 20px; height: 20px; overflow: hidden; padding: 2px; border: 0px none;}
-		
+
 		.wym_skin_refinery li.wym_containers_h1 a	 { background-image: url('/images/wymeditor/skins/refinery/h1.png'); }
 		.wym_skin_refinery li.wym_containers_h2 a	 { background-image: url('/images/wymeditor/skins/refinery/h2.png');}
 		.wym_skin_refinery li.wym_containers_h3 a	 { background-image: url('/images/wymeditor/skins/refinery/h3.png');}
@@ -113,24 +113,24 @@
 /*DECORATION*/
 		.wym_skin_refinery .wym_section h2			 { background: #DDD; border: solid gray; border-width: 0 0 1px;}
 		.wym_skin_refinery .wym_section h2 span		{ color: gray;}
-		.wym_skin_refinery .wym_panel					{ padding: 0; border: solid gray; border-width: 1px; background: white;}	
-		.wym_skin_refinery .wym_panel ul				 { margin: 2px 0 5px; }		
+		.wym_skin_refinery .wym_panel					{ padding: 0; border: solid gray; border-width: 1px; background: white;}
+		.wym_skin_refinery .wym_panel ul				 { margin: 2px 0 5px; }
 		.wym_skin_refinery .wym_dropdown				 { padding: 0; border: solid gray; border-width: 1px 1px 0 1px; }
 		.wym_skin_refinery .wym_dropdown ul			{ border: solid gray; border-width: 0 1px 1px 1px; margin-left: -1px; padding: 5px 10px 5px 3px;}
-		
+
 /*DIALOGS*/
 		.wym_dialog div.row		 { margin-bottom: 5px;}
 		.wym_dialog div.row input	 { margin-right: 5px;}
 		.wym_dialog div.row label	 { float: left; width: 150px; display: block; text-align: right; margin-right: 10px; }
 		.wym_dialog div.row-indent	{ padding-left: 160px; }
-		/*autoclearing*/		
+		/*autoclearing*/
 		.wym_dialog div.row:after			{ content: "."; display: block; height: 0; clear: both; visibility: hidden; }
 		.wym_dialog div.row					{ display: inline-block; }
 			/* Hides from IE-mac \*/
 			* html .wym_dialog div.row		 { height: 1%; }
 			.wym_dialog div.row				{ display: block; }
-			/* End hide from IE-mac */				
-			
+			/* End hide from IE-mac */
+
 /*WYMEDITOR_LINK*/
 		a.wym_wymeditor_link		{ text-indent: -9999px; float: right; display: block; width: 50px; height: 15px; background: url(../wymeditor_icon.png);	overflow: hidden; text-decoration: none;	}
 
@@ -175,7 +175,7 @@
 .wym_classes_hidden {
 	display: none;
 }
-.wym_tools_class {
+.wym_tools_class.activated {
 	position: relative;
 }
 .wym_skin_refinery .wym_buttons .wym_tools_class .wym_classes li {
@@ -198,10 +198,10 @@
 	font-style: italic;
 	margin: 3px 0px 0px 6px;
 	background: #EDEEDE;
-	
+
 }
 .wym_skin_refinery .wym_tools_class .wym_tools_class_multiple_rules ul li {
-	
+
 }
 .wym_skin_refinery .wym_tools_class .wym_classes .wym_tools_class_multiple_rules ul li a {
 	width: 167px;

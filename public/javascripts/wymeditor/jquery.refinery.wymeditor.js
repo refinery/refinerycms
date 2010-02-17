@@ -980,7 +980,7 @@ WYMeditor.editor.prototype.exec = function(cmd) {
     case WYMeditor.APPLY_CLASS:
       wym = this;
       $(wym._box).find(this._options.classUnhiddenSelector).toggleClass(this._options.classHiddenSelector.substring(1)); // substring(1) to remove the . at the start
-      $(wym._box).find("a[name=" + WYMeditor.APPLY_CLASS +"]").toggleClass('selected');
+      $(wym._box).find("a[name=" + WYMeditor.APPLY_CLASS +"]").toggleClass('selected').parent().toggleClass('activated');
       // determine whether any classes are already selected and add the enabled class to them.
       $(wym._box).find(this._options.classUnhiddenSelector).find("a[name]").each(function(index, rule){
         if ($(wym.selected()).hasClass($(rule).attr('name'))) {
