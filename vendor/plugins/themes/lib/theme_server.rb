@@ -9,27 +9,17 @@ class ThemeServer
   end
 
   def call(env)
-    if env["PATH_INFO"] =~ /^\/theme/
-      relative_path = env["PATH_INFO"].gsub(/^\/theme\//, '')
-
-      if (file_path = Rails.root.join("themes", RefinerySetting[:theme], relative_path)).exist?
-        # generate an etag for client-side caching.
-        etag = Digest::MD5.hexdigest("#{file_path.to_s}#{file_path.mtime}")
-        unless (env["HTTP_IF_NONE_MATCH"] == etag and RefinerySetting.find_or_set(:themes_use_etags, false) == true)
-          [200, {
-                  "Content-Type" => Rack::Mime.mime_type(file_path.extname),
-                  "Cache-Control" => "public",
-                  "ETag" => etag
-                }, file_path.open]
-        else
-          [304, {}, []]
-        end
+    relative_path = env["PATH_INFO"].gsub(/^\/theme\//, '')
+    if (env["PATH_INFO"]) =~ /^\/theme/ and (file_path=Rails.root.join("themes", RefinerySetting[:theme], relative_path)).exist?
+      unless ((etag = Digest::MD5.hexdigest("#{file_path.to_s}#{file_path.mtime}")) == env["HTTP_IF_NONE_MATCH"])
+        env["PATH_INFO"] = relative_path
+        status, headers, body = Rack::File.new(Rails.root.join("themes", RefinerySetting[:theme])).call(env)
+        [status, headers.update({"ETag" => etag}), body]
       else
-        [404, {"Content-Type" => "text/html"}, ["Not Found"]]
+        [304, {"ETag" => etag}, []]
       end
     else
-      status, headers, response = @app.call(env)
-      [status, headers, response]
+      @app.call(env)
     end
   end
 
