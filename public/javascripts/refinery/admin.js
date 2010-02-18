@@ -583,25 +583,32 @@ var list_reorder = {
   , disable_reordering: function(e) {
     if(e) { e.preventDefault(); }
 
-    serialized = "";
-	  list_reorder.sortable_list.find('> li[id]').each(function(index, li) {
-      if (list_reorder.tree) {
-	      serialized += list_reorder.parse_branch([index], li);
-      }
-      else {
-        serialized += "&sortable_list[]=" + $($(li).attr('id').split('_')).last().get(0);
-      }
-	  });
-	  serialized += "&tree=" + list_reorder.tree + "&authenticity_token=" + encodeURIComponent($('#reorder_authenticity_token').val() + "&continue_reordering=false");
+    if (list_reorder.update_url != null) {
+      serialized = "";
+  	  list_reorder.sortable_list.find('> li[id]').each(function(index, li) {
+        if (list_reorder.tree) {
+  	      serialized += list_reorder.parse_branch([index], li);
+        }
+        else {
+          serialized += "&sortable_list[]=" + $($(li).attr('id').split('_')).last().get(0);
+        }
+  	  });
+  	  serialized += "&tree=" + list_reorder.tree + "&authenticity_token=" + encodeURIComponent($('#reorder_authenticity_token').val() + "&continue_reordering=false");
 
-    $.post(list_reorder.update_url, serialized, function(data) {
-      $(list_reorder.sortable_list.get(0)).html(data);
+      $.post(list_reorder.update_url, serialized, function(data) {
+        $(list_reorder.sortable_list.get(0)).html(data);
 
+        $(list_reorder.sortable_list).removeClass('reordering').sortable('destroy');
+
+        $('#reorder_action_done').hide();
+        $('#reorder_action').show();
+      });
+    } else {
       $(list_reorder.sortable_list).removeClass('reordering').sortable('destroy');
 
       $('#reorder_action_done').hide();
       $('#reorder_action').show();
-    });
+    }
   }
 }
 

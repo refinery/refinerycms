@@ -10,8 +10,8 @@ class Resource < ActiveRecord::Base
 
   # we could use validates_as_attachment but it produces 4 odd errors like
   # "size is not in list". So we basically here enforce the same validation
-  # rules here accept display the error messages we want
-  # This is a known bug in attachment_fu
+  # rules here except display the error messages we want
+  # This is a known problem when using attachment_fu
   def validate
     if self.filename.nil?
       errors.add_to_base("You must choose a file to upload")
