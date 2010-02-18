@@ -164,6 +164,12 @@ Extend Refinery easily by running the Refinery generator
 
 to get help on how to use that. Or read the full documentation on [writing plugins for Refinery](http://github.com/resolve/refinerycms/blob/master/vendor/plugins/refinery/plugins.md)
 
+### Run the Tests
+
+If you have installed Refinery using GIT (described above in step 1 of installing Refinery) then you'll be able to run the tests. At your Rails root run:
+
+    rake test
+
 ### What about a portfolio?
 
 Check out the [portfolio plugin gem](http://github.com/resolve/refinery-portfolio)
