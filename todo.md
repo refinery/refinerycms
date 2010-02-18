@@ -19,3 +19,5 @@ We need to have support for build in Refinery field types like "image". So I cou
   ./script/generate refinery staff name:string bio:text mugshot:image
   
 And it will automatically create a form field that pops open the image picker on the staff form.
+
+There is now a partial to easily call an image picker.
