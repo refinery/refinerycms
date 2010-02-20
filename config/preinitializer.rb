@@ -14,7 +14,7 @@ else
   elsif ENV.include?("REFINERY_GEM_VERSION")
     ENV["REFINERY_GEM_VERSION"]
   else
-    $1 if rails_root.join("config", "application.rb") =~ /^[^#]*REFINERY_GEM_VERSION\s*=\s*["']([!~<>=]*\s*[\d.]+)["']/
+    $1 if rails_root.join("config", "application.rb").to_s =~ /^[^#]*REFINERY_GEM_VERSION\s*=\s*["']([!~<>=]*\s*[\d.]+)["']/
   end
 
   if version
