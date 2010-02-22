@@ -22,6 +22,7 @@ module Refinery
         search_for = Regexp.new(File.join(%W(\( #{Refinery.root.join("vendor", "plugins")} \)? .+? lib)))
         paths = plugins.collect{ |plugin| plugin.load_paths }.flatten.reject{|path| path.scan(search_for).empty? or path.include?('/rails-') }
         paths = paths.reject{ |path| path.include?(Refinery.root.to_s) } if Refinery.root == Rails.root # superfluous when not in gem.
+        paths.uniq!
         ($refinery_gem_plugin_lib_paths = paths).each do |path|
           $LOAD_PATH.unshift path
         end
