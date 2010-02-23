@@ -57,19 +57,17 @@ class UsersController < ApplicationController
 
   def forgot
     if request.post?
-      user = User.find_by_email(params[:user][:email])
-
-      if user
+      if (user = User.find_by_email(params[:user][:email])).present?
         user.create_reset_code
 
         begin
           flash[:notice] = "An email has been sent to #{user.email} with a link to reset your password."
           UserMailer.deliver_reset_notification(user, request)
         rescue
-          info.logger "error: email could not be sent for user password reset"
+          logger.info "Error: email could not be sent for user password reset for user #{user.id} with email #{user.email}"
         end
       else
-        flash[:notice] = "Sorry, #{params[:user][:email]} isn't associated with any acounts. Are you sure you typed the correct email address?"
+        flash[:notice] = "Sorry, #{params[:user][:email]} isn't associated with any accounts. Are you sure you typed the correct email address?"
       end
 
       redirect_back_or_default(forgot_url)
