@@ -1,7 +1,7 @@
 require 'pathname'
 
 # until Rails 3
-ENV["GEM_HOME"] = File.expand_path('../../vendor/bundler_gems', __FILE__)
+# ENV["GEM_HOME"] = File.expand_path('../../vendor/bundler_gems', __FILE__)
 
 # pick the refinery root path
 rails_root = (defined?(Rails.root) ? Rails.root : Pathname.new(RAILS_ROOT)).cleanpath

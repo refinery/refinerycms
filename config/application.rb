@@ -80,11 +80,11 @@ else
     config.gem "rake", :version => ">= 0.8.3", :lib => "rake"
     config.gem "rubyzip", :version => ">= 0.9.1", :lib => "zip/zip"
     config.gem "friendly_id", :version => ">= 2.2.2", :lib => "friendly_id"
-    config.gem "will_paginate", :version => ">= 2.3.11", :lib => "will_paginate", :source => "http://gemcutter.org"
+    config.gem "will_paginate", :version => ">= 2.3.11", :lib => "will_paginate"
     config.gem "rails", :version => ">= 2.3.5", :lib => "rails"
-    config.gem "aasm", :version => ">= 2.1.3", :lib => "aasm", :source => "http://gemcutter.org"
-    config.gem "slim_scrooge", :version => ">= 1.0.5", :lib => "slim_scrooge", :source => "http://gemcutter.org"
-    config.gem "hpricot", :version => ">= 0.8.1", :lib => "hpricot", :source => "http://gemcutter.org"
+    config.gem "aasm", :version => ">= 2.1.3", :lib => "aasm"
+    config.gem "slim_scrooge", :version => ">= 1.0.5", :lib => "slim_scrooge"
+    config.gem "hpricot", :version => ">= 0.8.1", :lib => "hpricot"
     #===REFINERY END OF REQUIRED GEMS===
   end
 end
