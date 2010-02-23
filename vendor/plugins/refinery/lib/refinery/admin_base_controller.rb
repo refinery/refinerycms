@@ -11,7 +11,7 @@ class Refinery::AdminBaseController < ApplicationController
   end
 
   def searching?
-    not params[:search].blank?
+    params[:search].present?
   end
 
 protected
@@ -31,8 +31,9 @@ protected
 
   def restrict_controller
     if Refinery::Plugins.active.reject {|plugin| params[:controller] !~ Regexp.new(plugin.menu_match) }.empty?
-      flash.now[:error] = "You do not have permission to access the #{params[:controller]} controller on this plugin."
-      logger.warn "'#{current_user.login}' tried to access '#{params[:controller]}'"
+      flash[:error] = "You do not have permission to access this feature."
+      logger.warn "'#{current_user.login}' tried to access '#{params[:controller]}' but was rejected."
+      redirect_back_or_default(admin_root_url)
     end
   end
 
