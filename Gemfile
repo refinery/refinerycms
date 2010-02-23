@@ -1,7 +1,7 @@
 # Please add your gems above the Refinery required gems here:
 
 #===REFINERY REQUIRED GEMS===
-source "http://gemcutter.org"
+source "http://rubygems.org"
 gem "aasm", ">= 2.1.3", :require => "aasm"
 gem "friendly_id", ">= 2.2.2", :require => "friendly_id"
 gem "hpricot", ">= 0.8.1", :require => "hpricot"

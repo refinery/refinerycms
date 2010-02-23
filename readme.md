@@ -29,14 +29,14 @@ Unlike other content managers, Refinery is truly aimed at the end user making it
 
 Refinery runs using a number of gems which (as of Refinery version 0.9.5.29) are outlined below:
 
-* [rake >= 0.8.3](http://gemcutter.org/gems/rake)
-* [friendly_id >= 2.2.2](http://gemcutter.org/gems/friendly_id)
-* [will_paginate >= 2.3.11](http://gemcutter.org/gems/will_paginate)
-* [rails >= 2.3.5](http://gemcutter.org/gems/rails)
-* [aasm >= 2.1.3](http://gemcutter.org/gems/aasm)
-* [unicode >= 0.1](http://gemcutter.org/gems/unicode)
-* [hpricot >= 0.8.1](http://gemcutter.org/gems/hpricot)
-* [slim_scrooge >= 1.0.3](http://gemcutter.org/gems/slim_scrooge) (_Windows & JRuby users can ignore this one_)
+* [rake >= 0.8.3](http://rubygems.org/gems/rake)
+* [friendly_id >= 2.2.2](http://rubygems.org/gems/friendly_id)
+* [will_paginate >= 2.3.11](http://rubygems.org/gems/will_paginate)
+* [rails >= 2.3.5](http://rubygems.org/gems/rails)
+* [aasm >= 2.1.3](http://rubygems.org/gems/aasm)
+* [unicode >= 0.1](http://rubygems.org/gems/unicode)
+* [hpricot >= 0.8.1](http://rubygems.org/gems/hpricot)
+* [slim_scrooge >= 1.0.5](http://rubygems.org/gems/slim_scrooge)
 
 ### Other dependancies
 
@@ -49,7 +49,7 @@ Mac OS users [shell install script](http://github.com/maddox/magick-installer) w
 
 #### Install the Gem
 
-    gem install refinerycms --source http://gemcutter.org
+    gem install refinerycms
     refinery path/to/project
 
 #### Or, clone Refinery's GIT repository
