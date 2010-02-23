@@ -34,24 +34,6 @@ module Refinery::ApplicationHelper
     end
   end
 
-  def image_tag(source, options={})
-    theme = (options.delete(:theme) == true)
-    tag = super
-    # inject /theme/ into the image tag src if this is themed.
-    tag.gsub!(/src=[\"|\']/) { |m| "#{m}/theme/" }.gsub!("//", "/") if theme
-
-    tag
-  end
-
-  def javascript_include_tag(*sources)
-    theme = (arguments = sources.dup).extract_options![:theme] == true # don't ruin the current sources object
-    tag = super
-    # inject /theme/ into the javascript include tag src if this is themed.
-    tag.gsub!(/\/javascripts\//, "/theme/javascripts/").gsub!(/theme=(.+?)\ /, '') if theme
-
-    tag
-  end
-
   def jquery_include_tags(use_caching=RefinerySetting.find_or_set(:use_resource_caching, false))
     if !local_request? and RefinerySetting.find_or_set(:use_google_ajax_libraries, true)
       "#{javascript_include_tag("http://www.google.com/jsapi").gsub(".js", "")}
@@ -121,15 +103,6 @@ module Refinery::ApplicationHelper
 
   def selected_page?(page)
     selected = current_page?(page) or (request.path =~ Regexp.new(page.menu_match) unless page.menu_match.blank?) or (request.path == page.link_url)
-  end
-
-  def stylesheet_link_tag(*sources)
-    theme = (arguments = sources.dup).extract_options![:theme] == true # don't ruin the current sources object
-    tag = super
-    # inject /theme/ into the stylesheet link tag href if this is themed.
-    tag.gsub!(/\/stylesheets\//, "/theme/stylesheets/").gsub!(/theme=(.+?)\ /, '') if theme
-
-    tag
   end
 
   def setup
