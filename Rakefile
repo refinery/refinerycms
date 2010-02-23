@@ -3,30 +3,44 @@
 
 begin
   # Load up the environment instead of just the boot file because we want all of the tasks available.
-  require(File.join(File.dirname(__FILE__), 'config', 'environment'))
+  require File.join(File.dirname(__FILE__), 'config', 'environment')
 rescue Exception
+  # Log the exception to the console/logfile.
+  puts "*** Couldn't load the config/environment file because something went wrong. Trace below: ***"
+  puts $!.backtrace
+  puts "\n*** So, we'll attempt to load in config/boot instead... ***"
+
   # Load up the boot file instead because there's something wrong with the environment.
-  require(File.join(File.dirname(__FILE__), 'config', 'boot'))
+  require File.join(File.dirname(__FILE__), 'config', 'boot')
 end
 
+# Require the standard stuff
 require 'rake'
 require 'rake/testtask'
 require 'rake/rdoctask'
-
 require 'tasks/rails'
 
+# Because we use plugins that are shipped via gems, we lose their rake tasks.
+# So here, we find them (if there are any) and include them into rake.
 extra_rake_tasks = []
-# When running Refinery from a gem we lose the rake tasks, so add them back in:
-extra_rake_tasks << Dir[Refinery.root.join("vendor", "plugins", "*", "**", "tasks", "**", "*", "*.rake")].sort unless Refinery.root == Rails.root
+if Refinery.is_a_gem
+  extra_rake_tasks << Dir[Refinery.root.join("vendor", "plugins", "*", "**", "tasks", "**", "*", "*.rake")].sort
+end
+
 # We also need to load in the rake tasks from gem plugins whether Refinery is a gem or not:
-extra_rake_tasks << $refinery_gem_plugin_lib_paths.collect {|path| Dir[File.join(%W(#{path} tasks ** *.rake))].sort} if defined?($refinery_gem_plugin_lib_paths) && !$refinery_gem_plugin_lib_paths.nil?
+if defined?($refinery_gem_plugin_lib_paths) && !$refinery_gem_plugin_lib_paths.nil?
+  extra_rake_tasks << $refinery_gem_plugin_lib_paths.collect {|path| Dir[File.join(%W(#{path} tasks ** *.rake))].sort}
+end
+
+# Load in any extra tasks that we've found.
 extra_rake_tasks.flatten.compact.uniq.each {|rake| load rake }
 
-desc 'Removes trailing whitespace'
+desc 'Removes trailing whitespace across the entire application.'
 task :whitespace do
   sh %{find . -name '*.*rb' -exec sed -i '' 's/\t/  /g' {} \\; -exec sed -i '' 's/ *$//g' {} \\; }
 end
 
+# You don't need to worry about this unless you're releasing Refinery gems.
 begin
   require 'jeweler'
   Jeweler::Tasks.new do |s|
