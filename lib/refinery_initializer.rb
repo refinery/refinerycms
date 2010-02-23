@@ -9,7 +9,7 @@ else
 end
 
 # Now we need to set some things that are used by the rest of the application.
-Refinery.root = root_directory
+Refinery.root = root_directory.cleanpath
 if (Refinery.is_a_gem = (Refinery.root.realpath != rails_root.realpath))
   # If Refinery is installed from a gem then we need to load in a few extra files.
   $LOAD_PATH.unshift Refinery.root.join("vendor", "plugins").to_s
