@@ -1,16 +1,21 @@
 require 'pathname'
-root_directory = File.expand_path(File.dirname(__FILE__) << "/..")
-if File.exists?(File.join(root_directory, %w(vendor plugins refinery lib refinery)))
-  require 'vendor/plugins/refinery/lib/refinery' # this won't exist when using a gem.
+root_directory = Pathname.new(File.expand_path(File.dirname(__FILE__) << "/.."))
+rails_root = ((defined?(Rails.root) && Rails.root.realpath.length > 0) ? Rails.root : Pathname.new(RAILS_ROOT))
+
+if (non_gem_refinery = rails_root.join("vendor", "plugins", "refinery", "lib", "refinery.rb")).exist?
+  require non_gem_refinery.realpath.to_s # this won't exist when using a gem.
+else
+  require root_directory.join("vendor", "plugins", "refinery", "lib", "refinery.rb").realpath.to_s
 end
 
-refinery_root = Pathname.new((defined?(Refinery.root) ? Refinery.root.to_s : root_directory))
-unless refinery_root == (defined?(Rails.root) ? Rails.root : Pathname.new(RAILS_ROOT)) # e.g. only if we're in a gem.
-  $LOAD_PATH.unshift refinery_root.join("vendor", "plugins").to_s
-  $LOAD_PATH.unshift refinery_root.join("vendor", "plugins", "refinery", "lib").to_s
+# Now we need to set some things that are used by the rest of the application.
+Refinery.root = root_directory
+if (Refinery.is_a_gem = (Refinery.root.realpath != rails_root.realpath))
+  # If Refinery is installed from a gem then we need to load in a few extra files.
+  $LOAD_PATH.unshift Refinery.root.join("vendor", "plugins").to_s
+  $LOAD_PATH.unshift Refinery.root.join("vendor", "plugins", "refinery", "lib").to_s
 
-  require 'refinery'
-  Refinery.root = refinery_root
+  # We also need the refinery initializer when using a gem because this won't be autoloaded.
   require 'refinery/initializer'
 end
 

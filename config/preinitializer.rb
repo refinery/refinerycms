@@ -14,7 +14,7 @@ else
   elsif ENV.include?("REFINERY_GEM_VERSION")
     ENV["REFINERY_GEM_VERSION"]
   else
-    $1 if rails_root.join("config", "application.rb").to_s =~ /^[^#]*REFINERY_GEM_VERSION\s*=\s*["']([!~<>=]*\s*[\d.]+)["']/
+    $1 if rails_root.join("config", "application.rb").read =~ /^[^#]*REFINERY_GEM_VERSION\s*=\s*["']([!~<>=]*\s*[\d.]+)["']/
   end
 
   if version
@@ -25,8 +25,6 @@ else
 
   require 'refinery_initializer'
 end
-
-Refinery.root = rails_root unless defined?(Refinery.root) && Refinery.root.is_a?(Pathname) && Refinery.root.to_s.length > 0
 
 # Set to true in your environment specific file (e.g. production.rb) to use Amazon's Simple
 # Storage Service instead of the default file system for resources and images
