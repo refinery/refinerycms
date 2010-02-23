@@ -5,7 +5,7 @@ source "http://gemcutter.org"
 gem "aasm", ">= 2.1.3", :require => "aasm"
 gem "friendly_id", ">= 2.2.2", :require => "friendly_id"
 gem "hpricot", ">= 0.8.1", :require => "hpricot"
-gem "slim_scrooge", ">= 1.0.3", :require => "slim_scrooge" unless RUBY_PLATFORM =~ /mswin|mingw/ # kill gem requirement when windows is running.
+gem "slim_scrooge", ">= 1.0.5", :require => "slim_scrooge"
 gem "will_paginate", ">= 2.3.11", :require => "will_paginate"
 gem "rails", ">= 2.3.5", :require => "rails"
 gem "rubyzip", ">= 0.9.1", :require => "zip/zip"
