@@ -22,4 +22,6 @@ if RefinerySetting[:theme].present?
 
   ::ActiveSupport::Dependencies.load_paths.unshift controller_path
   config.controller_paths.unshift controller_path
+
+  Refinery::ApplicationHelper.send :include, ThemesHelper
 end
