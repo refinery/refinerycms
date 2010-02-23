@@ -3,7 +3,7 @@ module Admin::DashboardHelper
   def activity_message_for(record)
     if (activity = Refinery::Plugins.active.find_activity_by_model(record.class)).present? and activity.title.present?
       title = record.send activity.title
-      link = link_to  truncate(title, :length => 45),
+      link = link_to  truncate(title.to_s, :length => 45),
                       eval("#{activity.url}(#{activity.nesting("record")}record)"),
                       :title => "See '#{title}'"
 
