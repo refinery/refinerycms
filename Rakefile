@@ -57,7 +57,7 @@ begin
 
   namespace :version do
     namespace :bump do
-      desc "Bump the gemspec by a build version."
+      desc "Bump the application's version by a build version."
       task :build => [:version_required, :version] do
         version = Jeweler::VersionHelper.new(Rails.root.to_s)
         version.update_to(version.major, version.minor, version.patch, ((version.build || 0).to_i + 1))
