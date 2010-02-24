@@ -35,7 +35,6 @@ Let's take the ``mytheme`` example theme shown above. This is how the theme is s
        |- javascripts
        |    |- whatever.js
        |- LICENSE
-       |- preview.png
        |- README
        |- stylesheets/
        |    |- application.css
@@ -63,10 +62,6 @@ The ``README`` file is just a description of your theme.
 
 This is exactly the same as how you lay your views out in ``app/views/`` just instead of putting them in ``app/views/`` you put them into ``themes/mytheme/views/``
 
-### Preview Image
-
-The ``preview.png`` image is used when selecting the theme in the backend. It must be a png file and is ideally 135 x 135 pixels.
-
 ## How do I make my own Theme?
 
 Create a folder with the name if your theme inside ``/themes`` e.g. ``/themes/mytheme`` and follow the directory structure outlined in 'The structure of a Theme'.
@@ -81,26 +76,9 @@ Set the value of that setting to the name of your themes folder. For example, if
 
 set it to ``my_theme`` and hit save.
 
-## How do I zip my theme to use it on other sites
-
-If you want to share a theme and install it on another site you have to zip it first.
-
-It's important to note you don't zip the theme's directory itself, just the contents.
-
-If I had a theme sitting in:
-
-    themes/mytheme/[theme files here]
-
-The zip file would look like this
-
-    mytheme.zip
-      |- [theme files here]
-
-Read 'How do I install someone else's Theme?' to take that zip file and install the theme.
-
 ## How do I install someone else's Theme?
 
-If you have the themes plugin added to your admin user, you should see in the admin area of Refinery a "Themes" tab in the main navigation. Click on that, then click "Upload new theme". Upload the theme zip file and then click on the "star" below the preview image for the theme to activate that theme as the one to use right now.
+Just copy their theme directory into your themes folder and Refinery will see it.
 
 ## How can I Convert my Current Views into a Theme?
 

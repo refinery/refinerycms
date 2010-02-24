@@ -8,6 +8,5 @@ gem "hpricot", ">= 0.8.1", :require => "hpricot"
 gem "slim_scrooge", ">= 1.0.5", :require => "slim_scrooge"
 gem "will_paginate", ">= 2.3.11", :require => "will_paginate"
 gem "rails", ">= 2.3.5", :require => "rails"
-gem "rubyzip", ">= 0.9.1", :require => "zip/zip"
 gem "rake", ">= 0.8.3", :require => "rake"
 #===REFINERY END OF REQUIRED GEMS===
