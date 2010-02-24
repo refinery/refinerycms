@@ -117,5 +117,5 @@ Page.create(:title => "Down for maintenance",
               :body => "<p>Our site is currently down for maintenance. Please try back later.</p>"
             })
 
-# Install default themes.
+# Create a default themes directory.
 Rails.root.join("themes").mkdir unless Rails.root.join("themes").directory?
