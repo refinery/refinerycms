@@ -12,11 +12,13 @@ config.middleware.use "ThemeServer"
   end
 )
 
-# Set up controller paths, which can only be brought in with a server restart, sorry. (But for good reason)
-controller_path = Rails.root.join("themes", RefinerySetting[:theme], "controllers").to_s
+if (theme = RefinerySetting[:theme]).present?
+  # Set up controller paths, which can only be brought in with a server restart, sorry. (But for good reason)
+  controller_path = Rails.root.join("themes", theme, "controllers").to_s
 
-::ActiveSupport::Dependencies.load_paths.unshift controller_path
-config.controller_paths.unshift controller_path
+  ::ActiveSupport::Dependencies.load_paths.unshift controller_path
+  config.controller_paths.unshift controller_path
+end
 
 # Include theme functions into application helper.
 Refinery::ApplicationHelper.send :include, ThemesHelper
