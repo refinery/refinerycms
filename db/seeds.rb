@@ -119,11 +119,3 @@ Page.create(:title => "Down for maintenance",
 
 # Install default themes.
 Rails.root.join("themes").mkdir unless Rails.root.join("themes").directory?
-Dir[Refinery.root.join("themes", "*.zip")].each do |theme|
-  Theme.create(:uploaded_data => {
-    "size" => File.size(theme),
-    "content_type" => "application/zip",
-    "filename" => theme.split('/').last,
-    'tempfile' => File.open(theme)
-  }).read_theme
-end

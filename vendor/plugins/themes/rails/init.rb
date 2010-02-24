@@ -1,27 +1,22 @@
-Refinery::Plugin.register do |plugin|
-  plugin.title = "Themes"
-  plugin.description = "Upload and manage themes"
-  plugin.version = 1.0
-  plugin.activity = {
-    :class => Theme,
-    :title => 'title',
-    :url_prefix => 'edit',
-    :created_image => "layout_add.png",
-    :updated_image => "layout_edit.png"
-  }
-end
-
+# Set up middleware to serve theme files
 config.middleware.use "ThemeServer"
-::ActionController::Base.module_eval %(
-  view_paths.unshift Rails.root.join("themes", RefinerySetting[:theme], "views").to_s if RefinerySetting[:theme].present?
+
+# Add or remove theme paths to/from Refinery application
+::Refinery::ApplicationController.module_eval %(
+  before_filter do |controller|
+    controller.view_paths.reject! { |v| v.to_s =~ %r{^themes/} }
+    if (theme = RefinerySetting[:theme]).present?
+      # Set up view path again for the current theme.
+      controller.view_paths.unshift Rails.root.join("themes", theme, "views").to_s
+    end
+  end
 )
 
-# set up controller paths.
-if RefinerySetting[:theme].present?
-  controller_path = Rails.root.join("themes", RefinerySetting[:theme], "controllers").to_s
+# Set up controller paths, which can only be brought in with a server restart, sorry. (But for good reason)
+controller_path = Rails.root.join("themes", RefinerySetting[:theme], "controllers").to_s
 
-  ::ActiveSupport::Dependencies.load_paths.unshift controller_path
-  config.controller_paths.unshift controller_path
+::ActiveSupport::Dependencies.load_paths.unshift controller_path
+config.controller_paths.unshift controller_path
 
-  Refinery::ApplicationHelper.send :include, ThemesHelper
-end
+# Include theme functions into application helper.
+Refinery::ApplicationHelper.send :include, ThemesHelper

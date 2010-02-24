@@ -9,14 +9,18 @@ class ThemeServer
   end
 
   def call(env)
-    relative_path = env["PATH_INFO"].gsub(/^\/theme\//, '')
-    if (env["PATH_INFO"]) =~ /^\/theme/ and (file_path=Rails.root.join("themes", RefinerySetting[:theme], relative_path)).exist?
-      unless ((etag = Digest::MD5.hexdigest("#{file_path.to_s}#{file_path.mtime}")) == env["HTTP_IF_NONE_MATCH"])
-        env["PATH_INFO"] = relative_path
-        status, headers, body = Rack::File.new(Rails.root.join("themes", RefinerySetting[:theme])).call(env)
-        [status, headers.update({"ETag" => etag}), body]
+    if env["PATH_INFO"] =~ /^\/theme/
+      env["PATH_INFO"].gsub!(/^\/theme\//, '')
+      if (file_path = (dir=Rails.root.join("themes", RefinerySetting[:theme])).join(env["PATH_INFO"])).exist?
+        etag = Digest::MD5.hexdigest("#{file_path.to_s}#{file_path.mtime}")
+        unless (etag == env["HTTP_IF_NONE_MATCH"])
+          status, headers, body = Rack::File.new(dir).call(env)
+          [status, headers.update({"ETag" => etag}), body]
+        else
+          [304, {"ETag" => etag}, []]
+        end
       else
-        [304, {"ETag" => etag}, []]
+        [404, {}, []]
       end
     else
       @app.call(env)

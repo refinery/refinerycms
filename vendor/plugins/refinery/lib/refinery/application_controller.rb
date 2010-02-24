@@ -1,7 +1,6 @@
 class Refinery::ApplicationController < ActionController::Base
 
   helper_method :home_page?, :local_request?, :just_installed?, :from_dialog?, :admin?
-
   protect_from_forgery # See ActionController::RequestForgeryProtection
 
   include Crud # basic create, read, update and delete methods

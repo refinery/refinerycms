@@ -1,0 +1,36 @@
+@import url('/stylesheets/refinery/formatting.css');
+/*  
+    Override default refinery formatting below. 
+    Formatting applies to backend WYSIWYG editors and all frontend. 
+*/
+body {
+    font-family: Verdana;
+    font-size: 12px;
+}
+#body_content_left *, #body_content_right * {
+    line-height: 22px;
+    color: #585858;
+}
+h1, #body_content h1, h1#body_content_page_title {
+    color: #eb1313;
+    font-size: 25px;
+    font-weight: normal;
+    font-family: "Trebuchet MS", Trebuchet;
+}
+#body_content_left p, #body_content_right p {
+    margin-bottom: 23px;
+}
+h2, h3 {
+    color: #8f8f8f;
+    font-weight: normal;
+}
+h2 {
+    font-size: 18px;
+}
+h3 {
+    font-size: 16px;
+}
+#footer_content * {
+    color: #c7c7c7;
+    font-size: 11px;
+}
