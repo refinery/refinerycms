@@ -9,7 +9,7 @@ unless RAILS_ROOT.nil? or RAILS_ROOT.length == 0
   FileUtils::makedirs dirs.map {|dir| File.join(RAILS_ROOT, dir) }
 
   # copy in the new assets.
-  assets = [%w(public stylesheets refinery), %w(public javascripts refinery), %w(public javascripts wymeditor)]
+  assets = [%w(public stylesheets refinery), %w(public javascripts refinery), %w(public javascripts wymeditor), %w(VERSION)]
 	assets.each do |asset|
 	  FileUtils::rm_rf File.join(RAILS_ROOT, asset), :secure => true # ensure the destination is clear.
 	  FileUtils::cp_r File.join(REFINERY_ROOT, asset), File.join(RAILS_ROOT, asset) # copy the new assets into the project.
