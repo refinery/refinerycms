@@ -9,7 +9,7 @@
     <ul id="page_parts">
     <% @page.parts.each_with_index do |part, part_index| %>
       <li>
-        <%= link_to part.title, "##{@page.new_record? ? "page_part_new_#{part_index}" : dom_id(part)}" %>
+        <%= link_to part.title, "##{@page.new_record? ? "page_part_new_#{part_index}" : part.to_param}" %>
       </li>
     <% end %>
     </ul>

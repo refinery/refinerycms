@@ -5,6 +5,8 @@ class PagePart < ActiveRecord::Base
   validates_presence_of :title
   alias_attribute :content, :body
 
-  has_friendly_id :title, :use_slug => true
+  def to_param
+    "page_part_#{self.title.downcase.gsub(" ", "_")}"
+  end
 
 end
