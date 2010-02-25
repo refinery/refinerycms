@@ -54,7 +54,7 @@
       </td>
       <td>
         <p style='margin-top: 0px'>
-          <%=h @inquiry.message.gsub("\r\n\r\n", "\r\n").gsub("\r\n", "</p><p>") %>
+          <%= h(@inquiry.message).gsub("\r\n\r\n", "\r\n").gsub("\r\n", "</p><p>") %>
         </p>
       </td>
     </tr>
