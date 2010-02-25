@@ -1,4 +1,4 @@
-if defined?(Rails::Application)
+if defined?(Rails::Application) # e.g. Rails 3
   module Refinery
     class Application < Rails::Application
       config.action_controller.session = {
@@ -8,7 +8,7 @@ if defined?(Rails::Application)
     end
 
     def gem_version
-      #0.9.6
+      #"0.9.6.14"
     end
   end
 else
@@ -21,20 +21,19 @@ else
   # Specifies gem version of Rails to use when vendor/rails is not present
   RAILS_GEM_VERSION = '2.3.5' unless defined? RAILS_GEM_VERSION
   # Freeze to a specific version of refinerycms when running as a gem
-  # REFINERY_GEM_VERSION = '0.9.6.13' unless defined? REFINERY_GEM_VERSION
+  # REFINERY_GEM_VERSION = '0.9.6.14' unless defined? REFINERY_GEM_VERSION
 
   # Bootstrap the Rails environment, frameworks, and default configuration
   require File.join(File.dirname(__FILE__), 'boot')
 
-  eval("#{(defined? Refinery::Initializer) ? Refinery : Rails}::Initializer").run do |config|
+  # require the refinery initializer.
+  require Refinery.root.join("lib", "refinery_initializer").to_s
+
+  Refinery::Initializer.run do |config|
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
     # See Rails::Configuration for more options.
-
-    # Skip frameworks you're not going to use (only works if using vendor/rails).
-    # To use Rails without a database, you must remove the Active Record framework
-    # config.frameworks -= [ :active_record, :active_resource, :action_mailer ]
 
     # Only load the plugins named here, in the order given. By default, all plugins
     # in vendor/plugins are loaded in alphabetical order.
@@ -78,7 +77,7 @@ else
     #===REFINERY REQUIRED GEMS===
     config.gem "bundler", :version => ">= 0.9.4"
     config.gem "rake", :version => ">= 0.8.3", :lib => "rake"
-    config.gem "friendly_id", :version => ">= 2.2.2", :lib => "friendly_id"
+    config.gem "friendly_id", :version => ">= 2.3.2", :lib => "friendly_id"
     config.gem "will_paginate", :version => ">= 2.3.11", :lib => "will_paginate"
     config.gem "rails", :version => ">= 2.3.5", :lib => "rails"
     config.gem "aasm", :version => ">= 2.1.3", :lib => "aasm"
