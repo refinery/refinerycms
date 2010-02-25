@@ -420,8 +420,8 @@ var page_options = {
       var part_id = $('#page_parts_attributes_' + stab_id + '_id').val();
       //console.log('stab_id: ' + stab_id + ' part_id: ' + part_id);
 
-      var result = confirm("This will remove the content section '" + $('#page_parts .ui-tabs-selected a').html() + "' when the page is saved and erase all content that has been entered into it, Are you sure?");
-      if(part_id && result){
+      var result = confirm("This will remove the content section '" + $('#page_parts .ui-tabs-selected a').html() + "' and erase all content that has been entered into it even if you don't save the page, are you sure?");
+      if(part_id && result) {
         $.ajax({
           url: page_options.del_part_url + '/' + part_id,
           type: 'DELETE'
