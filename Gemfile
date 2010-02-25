@@ -3,7 +3,7 @@
 #===REFINERY REQUIRED GEMS===
 source "http://rubygems.org"
 gem "aasm", ">= 2.1.3", :require => "aasm"
-gem "friendly_id", ">= 2.2.2", :require => "friendly_id"
+gem "friendly_id", ">= 2.3.2", :require => "friendly_id"
 gem "hpricot", ">= 0.8.1", :require => "hpricot"
 gem "slim_scrooge", ">= 1.0.5", :require => "slim_scrooge"
 gem "will_paginate", ">= 2.3.11", :require => "will_paginate"

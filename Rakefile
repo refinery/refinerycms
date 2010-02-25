@@ -6,9 +6,8 @@ begin
   require File.join(File.dirname(__FILE__), 'config', 'environment')
 rescue Exception
   # Log the exception to the console/logfile.
-  puts "*** Couldn't load the config/environment file because something went wrong. Trace below: ***"
-  puts $!.backtrace
-  puts "\n*** So, we'll attempt to load in config/boot instead... ***"
+  puts "*** Couldn't load the config/environment file because something went wrong... ***"
+  puts "*** Don't worry, we'll do it the normal way and load in config/boot instead... ***"
 
   # Load up the boot file instead because there's something wrong with the environment.
   require File.join(File.dirname(__FILE__), 'config', 'boot')
@@ -23,12 +22,12 @@ require 'tasks/rails'
 # Because we use plugins that are shipped via gems, we lose their rake tasks.
 # So here, we find them (if there are any) and include them into rake.
 extra_rake_tasks = []
-if Refinery.is_a_gem
+if defined?(Refinery) && Refinery.is_a_gem
   extra_rake_tasks << Dir[Refinery.root.join("vendor", "plugins", "*", "**", "tasks", "**", "*", "*.rake")].sort
 end
 
 # We also need to load in the rake tasks from gem plugins whether Refinery is a gem or not:
-if defined?($refinery_gem_plugin_lib_paths) && !$refinery_gem_plugin_lib_paths.nil?
+if $refinery_gem_plugin_lib_paths.present?
   extra_rake_tasks << $refinery_gem_plugin_lib_paths.collect {|path| Dir[File.join(%W(#{path} tasks ** *.rake))].sort}
 end
 
