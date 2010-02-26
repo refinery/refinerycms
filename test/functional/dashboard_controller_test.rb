@@ -11,11 +11,11 @@ class DashboardControllerTest < ActionController::TestCase
     @controller = Admin::DashboardController.new
     @request    = ActionController::TestRequest.new
     @response   = ActionController::TestResponse.new
+    
+    login_as(:quentin)
   end
   
   def test_should_get_index
-    login_as(:quentin)
-    
     get :index
     assert_response :success
     
@@ -24,8 +24,6 @@ class DashboardControllerTest < ActionController::TestCase
   end
   
   def test_recent_activity_should_report_activity
-    login_as(:quentin)
-    
     sleep 1
     pages(:home_page).update_attribute(:updated_at, Time.now)
 
@@ -36,6 +34,8 @@ class DashboardControllerTest < ActionController::TestCase
   end
   
   def test_should_require_login_and_redirect
+    logout
+    
     get :index
     assert_response :redirect
     assert_nil assigns(:recent_activity)
