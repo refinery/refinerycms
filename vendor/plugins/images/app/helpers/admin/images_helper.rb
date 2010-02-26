@@ -22,6 +22,6 @@ module Admin::ImagesHelper
     will_paginate collection, :previous_label => '&laquo; Previous',
                               :next_label => 'Next &raquo;',
                               :renderer => Refinery::LinkRenderer
-                              #:params => {:controller => "admin/images", :action => "insert", :dialog => dialog }
   end
+  
 end
