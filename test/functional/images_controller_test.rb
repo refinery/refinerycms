@@ -54,15 +54,40 @@ class ImagesControllerTest < ActionController::TestCase
   end
   
   def test_insert
+    get :insert
     
+    assert_not_nil assigns(:image)
+    assert_not_nil assigns(:url_override)
   end
   
-  def test_create
+  def test_update
+    put :update, :id => images(:the_world).id, :post => {}
+    assert_redirected_to admin_images_path
+  end
+  
+  def test_create_with_errors
+    post :create # didn't provide an image to upload
+    assert_not_nil assigns(:image)
+    assert_response :success
+  end
+  
+  def test_successful_create
+    # This needs to be sorted out yet. I'm not sure how to upload
+    # a file through tests
     
+    # assert_difference('Image.count', +1) do
+    #   post :create, :post => {} # didn't provide an image to upload
+    #   assert_not_nil assigns(:image)
+    #   assert_redirected_to admin_images_path
+    # end
   end
   
   def test_destroy
-    
+    assert_difference('Image.count', -1) do
+      delete :destroy, :id => images(:the_world).id
+    end
+
+    assert_redirected_to admin_images_path
   end
 
 end
