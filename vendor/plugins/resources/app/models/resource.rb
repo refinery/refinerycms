@@ -18,7 +18,7 @@ class Resource < ActiveRecord::Base
     else
       [:size].each do |attr_name|
         enum = attachment_options[attr_name]
-      
+
         unless enum.nil? || enum.include?(send(attr_name))
           errors.add_to_base("Files should be smaller than #{MAX_SIZE_IN_MB} MB in size") if attr_name == :size
         end
