@@ -1,14 +1,10 @@
 <ul id="menu">
-  <%
-  Refinery::Plugins.active.each do |plugin|
-    unless plugin.hide_from_menu
-  -%>
+  <% Refinery::Plugins.active.in_menu.each do |plugin| -%>
     <li class='tab' id='plugin_<%= plugin.title %>'>
       <%= link_to plugin.title, plugin.url, :class => (plugin.highlighted?(params) ? "active" : "") %>
     </li>
-  <% end
-  end -%>
-  <% if Refinery::Plugins.active.in_menu.size > 1 -%>
+  <% end -%>
+  <% if Refinery::Plugins.active.in_menu.many? -%>
     <li>
       <%= link_to "&nbsp;", "", :id => "menu_reorder", :title => "Reorder menu" %>
       <%= link_to "&nbsp;", "", :id => "menu_reorder_done", :title => "I'm done reordering the menu", :style => "display: none;" %>

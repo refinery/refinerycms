@@ -6,7 +6,7 @@
     <%= f.text_field :name, :class => "larger", :size => 67 %>
   <% else %>
     <label>Name</label>
-    <%= @refinery_setting.name.titleize %> <span class="preview">- (<%= h @refinery_setting.name %>)</span>
+    <%= h(@refinery_setting.name).titleize %> <span class="preview">- (<%= h @refinery_setting.name %>)</span>
   <% end %>
   </div>
   <div class='field'>
