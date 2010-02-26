@@ -16,14 +16,23 @@ class DashboardControllerTest < ActionController::TestCase
   def test_should_get_index
     login_as(:quentin)
     
-    # update a page to generate recent activity
-    pages(:home_page).update_attribute(:title, "Welcome")
-    
     get :index
     assert_response :success
-    assert_not_nil assigns(:recent_activity)
     
-    raise assigns(:recent_activity).inspect
+    assert_not_nil assigns(:recent_activity)
+
+  end
+  
+  def test_recent_activity_should_report_activity
+    login_as(:quentin)
+    
+    sleep 1
+    pages(:home_page).update_attribute(:updated_at, Time.now)
+
+    get :index
+
+    # now the home page is updated is it at the top?
+    assert_equal pages(:home_page).id, assigns(:recent_activity).first.id
   end
   
   def test_should_require_login_and_redirect
@@ -31,9 +40,5 @@ class DashboardControllerTest < ActionController::TestCase
     assert_response :redirect
     assert_nil assigns(:recent_activity)
   end
-  
-  # we need to somehow make it so that recent activity comes
-  # into tests so we can check the order.
-  # not sure why the recent activity assign has no activity
-  
+
 end
