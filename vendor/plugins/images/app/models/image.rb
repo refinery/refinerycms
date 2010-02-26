@@ -21,7 +21,7 @@ class Image < ActiveRecord::Base
     else
       [:size, :content_type].each do |attr_name|
         enum = attachment_options[attr_name]
-      
+
         unless enum.nil? || enum.include?(send(attr_name))
           errors.add_to_base("Images should be smaller than #{MAX_SIZE_IN_MB} MB in size") if attr_name == :size
           errors.add_to_base("Your image must be either a JPG, PNG or GIF") if attr_name == :content_type

@@ -17,7 +17,7 @@ class ResourceTest < ActiveSupport::TestCase
   def test_attachment_fu_options
     assert_equal 50.megabytes, Resource.attachment_options[:max_size]
 
-    if USE_S3_BACKEND 
+    if USE_S3_BACKEND
       assert_equal :s3, Resource.attachment_options[:storage]
       assert_nil Resource.attachment_options[:path_prefix]
     else
@@ -25,7 +25,7 @@ class ResourceTest < ActiveSupport::TestCase
       assert_equal 'public/system/resources', Resource.attachment_options[:path_prefix]
     end
   end
-  
+
   def test_type_of_content
     assert_equal "application pdf", resources(:pdf_document).type_of_content
   end
