@@ -61,7 +61,7 @@ class ImagesControllerTest < ActionController::TestCase
   end
   
   def test_update
-    put :update, :id => images(:the_world).id, :post => {}
+    put :update, :id => images(:the_world).id, :image => {}
     assert_redirected_to admin_images_path
   end
   
