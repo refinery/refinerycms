@@ -12,7 +12,7 @@ class ImagesControllerTest < ActionController::TestCase
     @request    = ActionController::TestRequest.new
     @response   = ActionController::TestResponse.new
   end
-  
+
   def test_should_get_index
     login_as(:quentin)
 
