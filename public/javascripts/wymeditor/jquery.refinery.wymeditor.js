@@ -1300,27 +1300,21 @@ WYMeditor.editor.prototype.dialog = function( dialogType ) {
     }
   }
 
-  // launch thickbox
+  // launch dialog
 
-  dialog_title = this.replaceStrings(this.encloseString( dialogType ));
+  dialog_title = wym.replaceStrings(wym.encloseString( dialogType ));
   switch(dialogType) {
     case WYMeditor.DIALOG_TABLE: {
-      dialog_container = document.createElement("div");
-      dialog_container.id = 'inline_dialog_container';
-      dialog_container.innerHTML = this.replaceStrings(this._options.dialogTableHtml);
-      $(document.body).after(dialog_container);
+      $(document.body).after($("<div id='inline_dialog_container'></div>").html(wym.replaceStrings(wym._options.dialogTableHtml)));
 
-      tb_show(dialog_title, "#" + this._options.dialogInlineFeatures + "&inlineId=inline_dialog_container&TB_inline=true&modal=true", imageGroup);
+      tb_show(dialog_title, "#" + wym._options.dialogInlineFeatures + "&inlineId=inline_dialog_container&TB_inline=true&modal=true", imageGroup);
       ajax_loaded_callback();
       break;
     }
     case WYMeditor.DIALOG_PASTE: {
-      dialog_container = document.createElement("div");
-      dialog_container.id = 'inline_dialog_container';
-      dialog_container.innerHTML = this.replaceStrings(this._options.dialogPasteHtml);
-      $(document.body).after(dialog_container);
+      $(document.body).after($("<div id='inline_dialog_container'></div>").html(wym.replaceStrings(wym._options.dialogPasteHtml)));
 
-      tb_show(dialog_title, "#" + this._options.dialogInlineFeatures + "&inlineId=inline_dialog_container&TB_inline=true&modal=true", imageGroup);
+      tb_show(dialog_title, "#" + wym._options.dialogInlineFeatures + "&inlineId=inline_dialog_container&TB_inline=true&modal=true", imageGroup);
       ajax_loaded_callback();
       break;
     }
@@ -1616,7 +1610,7 @@ WYMeditor.INIT_DIALOG = function(wym, selected, isIframe) {
   var replaceable = wym._selected_image ? $(wym._selected_image) : $(wym._doc.body).find('#replace_me_with_' + wym._current_unique_stamp);
 
   // focus first textarea or input type text element
-  dialog.find('input[text], textarea').first().focus();
+  dialog.find('input[type=text], textarea').first().focus();
 
   dialog.find(".close_dialog").click(function(e){
     wym.close_dialog(e, true);
