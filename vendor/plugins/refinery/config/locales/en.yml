@@ -19,6 +19,7 @@ en:
   layouts:
     admin:
       view_public_site: View public site
+      welcome_to_refinery: Welcome to Refinery
   shared:
     admin:
       continue_editing:
@@ -28,7 +29,7 @@ en:
         or_cancel: or
         cancel: Cancel
         or_continue: or
-        cancel_loose_changes: "Cancelling will lose all changes you've made to this {{object_name}}"
+        cancel_lose_changes: "Cancelling will lose all changes you've made to this {{object_name}}"
       image_picker:
         none_selected: "There is currently no {{what}} selected, please click here to add one."
         remove_current: "Remove current {{what}}"

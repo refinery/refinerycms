@@ -18,4 +18,6 @@ nl:
         create_first: Klik "{{link}}" om je eerste instelling aan te maken.
       edit:
         restart_may_be_in_order: "<strong>Let op</strong>, na een aanpassing moet wellicht uw webapplicatie herstart worden" 
-
+  plugins:
+    refinery_settings:
+      title: Instellingen
