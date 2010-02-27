@@ -13,8 +13,8 @@
 
   <%= render :partial => "/shared/admin/form_actions", :locals => {:f => f, :continue_editing => false} %>
 
-  <% if @thickbox -%>
-    <input type='hidden' name='thickbox' value='<%= @thickbox %>' />
+  <% if @app_dialog -%>
+    <input type='hidden' name='app_dialog' value='<%= @app_dialog %>' />
     <input type='hidden' name='field' value='<%= @field %>' />
     <input type='hidden' name='update_resource' value='<%= @update_resource %>' />
     <input type='hidden' name='update_text' value='<%= @update_text %>' />

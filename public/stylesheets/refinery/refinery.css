@@ -865,6 +865,10 @@ body.dialog form {
 	background: 7px 7px no-repeat url('/images/refinery/icons/accept.png') #E0F5E0;
 }
 
+#dialog_main #pages_list .linked a em {
+    color: #00A017;
+}
+
 #dialog_main #web_address_area, #dialog_main #email_address_area {
 	padding: 12px;
 }
@@ -1029,7 +1033,7 @@ ul#page_parts_controls img {
 #TB_ajaxContent, #TB_ajaxContent.TB_modal {
 	padding: 0px;
 }
-.wym_dialog .form-actions {
+.wym_dialog .form-actions, .ui-dialog .form-actions {
 	margin-top: 0px;
 	border: 0px none;
 	border-top: 1px solid #E8E8E8;
@@ -1063,10 +1067,10 @@ textarea.wymeditor {
 	margin-bottom: 0px;
 	padding: 0px;
 }
-#TB_window div.field {
+#TB_window div.field, .ui-dialog div.field {
 	margin: 0px 10px;
 }
-#TB_window .form-actions {
+#TB_window .form-actions, .ui-dialog .form-actions {
 	margin-top: 12px;
 }
 
@@ -1077,13 +1081,13 @@ textarea.wymeditor {
 	position: absolute;
 	bottom: 0px;
 	left: 0px;
-	width: 100%;
+	right: 0px;
 	border-right: 0px;
 	border-left: 0px;
 	border-bottom: 0px;
 	padding: 10px 0px;
 }
-#dialog_container .form-actions #submit_button {
+#dialog_container .form-actions #submit_button, #dialog_container .form-actions .wym_submit {
 	margin-left: 10px;
 }
 #dialog_main .form-actions {
@@ -1091,6 +1095,15 @@ textarea.wymeditor {
 	width: 97%;
 	border: 1px solid #E8E8E8;
 	padding: 10px;
+}
+
+.ui-dialog #dialog_loading {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 208px;
+    height: 13px;
+    margin: -6px 0 0 -104px;
 }
 
 ul#image_grid {

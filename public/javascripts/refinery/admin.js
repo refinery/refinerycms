@@ -237,7 +237,7 @@ var link_dialog = {
       var port = (window.location.port.length > 0 ? (":" + window.location.port) : "");
       var url = link.href.replace(window.location.protocol + "//" + window.location.hostname + port, "");
 
-      link_dialog.update_parent(url, link.rel);
+      link_dialog.update_parent(url, link.rel.replace(/\ ?<em>.+?<\/em>/, ''));
     });
   },
 
