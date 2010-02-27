@@ -35,7 +35,8 @@ init_modal_dialogs = function(){
   $('a[href*="dialog=true"]').each(function(i, anchor)
   {
     $(anchor).click(function(e){
-      $("<iframe id='dialog_iframe' src='" + $(this).attr('href') + "'></iframe>").dialog({
+      iframe = $("<iframe id='dialog_iframe' src='" + $(this).attr('href') + "'></iframe>");
+      iframe.dialog({
         title: $(anchor).attr('title') || $(anchor).attr('name') || $(anchor).html() || null,
         modal: true,
         resizable: false,
@@ -44,6 +45,10 @@ init_modal_dialogs = function(){
         height: (parseInt($(anchor.href.match("height=([0-9]*)")).last().get(0))||473),
         beforeclose: function(){$(document.body).removeClass('hide-overflow')}
       });
+      if ($.browser.msie) {
+        iframe.css({'margin':'-2px 2px 2px -2px'});
+//        iframe..css('overflow: hidden');
+      }
       $(document.body).addClass('hide-overflow');
       e.preventDefault();
     });
