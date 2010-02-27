@@ -17,7 +17,7 @@
 </div>
 <div id='records'>
   <% if searching? %>
-    <h2><%= t('.search_results_for', :query => params[:search]) %>"</h2>
+    <h2><%= t('search_results_for', :query => params[:search]) %>"</h2>
     <%= render :partial => "inquiry", :collection => @inquiries %>
   <% else %>
     <h2><%= t('.open_inquiries') %></h2>

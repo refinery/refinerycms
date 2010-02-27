@@ -71,4 +71,7 @@ eval("#{(defined? Refinery::Initializer) ? Refinery : Rails}::Initializer").run 
   config.gem "slim_scrooge", :version => ">= 1.0.3", :lib => "slim_scrooge", :source => "http://gemcutter.org" #unless RUBY_PLATFORM =~ /mswin|mingw/ # kill gem when windows is running.
   config.gem "hpricot", :version => ">= 0.8.1", :lib => "hpricot", :source => "http://gemcutter.org"
   #===REFINERY END OF REQUIRED GEMS===
+  
+
+  config.i18n.default_locale = 'nl'
 end

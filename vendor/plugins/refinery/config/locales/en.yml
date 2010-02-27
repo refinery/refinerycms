@@ -9,6 +9,7 @@ en:
   log_out: Log out
   search: Search
   search_submit: Go
+  search_results_for: "Search results for '{{query}}'"
   no_results_found: "Excuses, geen resultaten gevonden"
   refinery:
     crudify:
