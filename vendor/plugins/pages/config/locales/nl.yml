@@ -1,4 +1,7 @@
 nl:
+  plugins:
+    refinery_pages:
+      title: "Pagina's"
   admin: 
     pages:
       form:

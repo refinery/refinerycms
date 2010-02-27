@@ -4,7 +4,7 @@ en:
   admin:
     resources:
       form:
-        file_to_upload: File to upload 
+        file_to_upload: File to upload
         download_current: Download current file
         or: or
         replace: ,replace it with this one...
@@ -13,7 +13,7 @@ en:
         edit: Edit this file
         delete:
           message: Are you sure you want to delete '{{title}}'?
-          title: Remove this file forever 
+          title: Remove this file forever
       index:
         upload_new: Upload New File
         search_results: Zoek resultaten voor '{{results}}'

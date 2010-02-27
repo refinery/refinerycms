@@ -28,7 +28,7 @@ nl:
         or_cancel: of
         cancel: Annuleer
         or_continue: of
-        cancel_loose_changes: "Als u annuleert, zullen alle wijzingen voor '{{object_name}}' niet worden opgeslagen!"
+        cancel_lose_changes: "Als u annuleert, zullen alle wijzingen voor '{{object_name}}' niet worden opgeslagen!"
       image_picker:
         none_selected: "Er is op dit moment geen {{what}} geselecteerd. Klik a.u.b. hier om er een toe te voegen."
         remove_current: "Verwijder de huidige {{what}}"

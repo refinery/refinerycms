@@ -22,6 +22,7 @@
   <% else %>
     <h2><%= t('.open_inquiries') %></h2>
     <% unless @open_inquiries.empty? -%>
+    <ul>
       <ul>
         <%= render :partial => "inquiry", :collection => @open_inquiries %>
       </ul>

@@ -1,4 +1,7 @@
 nl:
+  plugins:
+    refinery_inquiries:
+      title: Contact aanvragen
   activerecord:
     models:
       inquiry: Vraag
@@ -38,6 +41,7 @@ nl:
         havent_closed_any_inquiries: Je hebt nog geen enkele vraag verwerkt
       show:
         details: Details
+        click_to_email: Klik hier om een email te sturen
         status: Status
         open: Openstaand
         closed: Behandeld

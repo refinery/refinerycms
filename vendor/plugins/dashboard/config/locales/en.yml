@@ -6,7 +6,11 @@ en:
   upload_a_image: Upload a image
   see_home_page: See home page
 
-  latest_activity: Latest activity
+  admin:
+    dashboard:
+      recent_activity:
+        latest_activity: Latest activity
+        nothing_has_happened_yet: Nothing has happened yet
   updated: updated
   created: created
   ago: ago
