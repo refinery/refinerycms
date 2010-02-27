@@ -1615,6 +1615,9 @@ WYMeditor.INIT_DIALOG = function(wym, selected, isIframe) {
   var dialogType = dialog.find('#wym_dialog_type').val();
   var replaceable = wym._selected_image ? $(wym._selected_image) : $(wym._doc.body).find('#replace_me_with_' + wym._current_unique_stamp);
 
+  // focus first textarea or input type text element
+  dialog.find('input[text], textarea').first().focus();
+
   dialog.find(".close_dialog").click(function(e){
     wym.close_dialog(e, true);
   });
