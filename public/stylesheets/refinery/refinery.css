@@ -1216,10 +1216,9 @@ ul#plugins li {
 }
 .ui-dialog iframe {
     clear:both;
-	border:none;
+	border: 0px none;
 	margin-bottom:-1px;
 	margin-top:1px;
-	_margin-bottom:1px;
 	width: 100% !important;
 }
 
