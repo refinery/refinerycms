@@ -9,6 +9,8 @@ en:
   log_out: Log out
   search: Search
   search_submit: Go
+  search_results_for: "Search results for '{{query}}'"
+  no_results_found: "Excuses, geen resultaten gevonden"
   refinery:
     crudify:
       created: "{{what}} was successfully created"
@@ -43,7 +45,7 @@ en:
   admin:
     pages:
       list:
-        view_live: View this page live <br/><em>(opens in a new window)</em> 
+        view_live: View this page live <br/><em>(opens in a new window)</em>
         edit_this_page: Edit this page
         confirm_delete_page_title: Delete this page
         confirm_delete_page_message: Are you sure you want to delete the page '{{title}}'?
@@ -75,7 +77,7 @@ en:
           tab_name: A resource
           link_to_this_resource: Link to this resource
 
-  activerecord: 
+  activerecord:
     models:
       page: page
       user: user
@@ -84,4 +86,4 @@ en:
       resource: resource
       refinery_setting: refinery setting
       inquiry_setting: inquiry setting
-          
+
