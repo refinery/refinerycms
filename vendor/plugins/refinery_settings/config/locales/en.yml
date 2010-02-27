@@ -1,0 +1,23 @@
+en:
+  activerecord:
+    models:
+      refinery_setting: Refinery setting
+    attributes:
+      refinery_setting:
+        name: Name
+        value: Value
+  admin:
+    refinery_settings:
+      refinery_setting:
+        edit: 'Edit this setting'
+        confirm: 'Are you sure you want to remove this setting forever?'
+        remove: 'Remove this setting forever'
+      index:
+        new: Create new setting
+        empty_set: There are no settings yet.
+        create_first: Click "{{link}}" to add your first setting.
+      edit:
+        restart_may_be_in_order: "<strong>Please note</strong> that you may need to restart the website for this setting to take effect."
+  plugins:
+    refinery_settings:
+      title: Settings
