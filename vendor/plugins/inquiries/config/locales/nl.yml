@@ -41,7 +41,7 @@ nl:
         havent_closed_any_inquiries: Je hebt nog geen enkele vraag verwerkt
       show:
         details: Details
-        click_to_email: Klik hier om een email te sturen
+        click_to_email: Klik hier om een e-mail te sturen
         status: Status
         open: Openstaand
         closed: Behandeld
