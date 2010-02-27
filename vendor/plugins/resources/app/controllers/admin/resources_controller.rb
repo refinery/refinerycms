@@ -74,7 +74,7 @@ class Admin::ResourcesController < Admin::BaseController
 protected
 
   def init_dialog
-    @thickbox = params[:thickbox].present?
+    @app_dialog = params[:app_dialog].present?
     @field = params[:field]
     @update_resource = params[:update_resource]
     @update_text = params[:update_text]

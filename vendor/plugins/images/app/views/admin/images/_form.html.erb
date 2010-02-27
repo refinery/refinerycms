@@ -11,10 +11,10 @@
     <%= f.file_field :uploaded_data %>
   </div>
 
-  <%= render :partial => "/shared/admin/form_actions", :locals => {:f => f, :continue_editing => false, :hide_cancel => (@thickbox or params[:action] == "insert")} %>
+  <%= render :partial => "/shared/admin/form_actions", :locals => {:f => f, :continue_editing => false, :hide_cancel => (@app_dialog or params[:action] == "insert")} %>
 
-  <% if @thickbox %>
-    <input type='hidden' name='thickbox' value='<%= @thickbox %>' />
+  <% if @app_dialog %>
+    <input type='hidden' name='app_dialog' value='<%= @app_dialog %>' />
     <input type='hidden' name='field' value='<%= @field %>' />
     <input type='hidden' name='update_image' value='<%= @update_image %>' />
     <input type='hidden' name='thumbnail' value='<%= @thumbnail %>' />

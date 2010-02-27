@@ -27,7 +27,7 @@ Unlike other content managers, Refinery is truly aimed at the end user making it
 
 ## Requirements
 
-Refinery runs using a number of gems which (as of Refinery version 0.9.5.29) are outlined below:
+Refinery runs using a number of gems which (as of Refinery version 0.9.6.14) are outlined below:
 
 * [rake >= 0.8.3](http://rubygems.org/gems/rake)
 * [friendly_id >= 2.3.2](http://rubygems.org/gems/friendly_id)
