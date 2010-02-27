@@ -20,6 +20,8 @@ nl:
     admin:
       view_public_site: Bekijk de website
   shared:
+    message:
+      close: sluiten
     admin:
       continue_editing:
         save_and_continue_editing: Sla op en ga verder met bewerken
