@@ -18,4 +18,6 @@ en:
         create_first: Click "{{link}}" to add your first setting.
       edit:
         restart_may_be_in_order: "<strong>Please note</strong> that you may need to restart the website for this setting to take effect."
-
+  plugins:
+    refinery_settings:
+      title: Settings
