@@ -7,12 +7,14 @@ nl:
       inquiry: Vraag
     attributes:
       inquiry:
-        to: Aan
-        from: Van
+        to: aan
+        from: van
         click_to_email: Klik om dit adres te emailen
-        phone: Telefoon
-        date: Datum
-        message: Bericht
+        name: naam
+        email: 'e-mail'
+        phone: telefoon
+        date: datum
+        message: bericht
   inquiries:
     new:
       header_message: Oeps er is een klein probleem opgetreden
