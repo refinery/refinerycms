@@ -50,7 +50,7 @@ class RefineryGenerator < Rails::Generator::NamedBase
       m.template "public_controller.rb", "vendor/plugins/#{plural_name}/app/controllers/#{plural_name}_controller.rb"
 
       # Add in the init file that ties the plugin to the app.
-      m.template "rails/init.rb", "vendor/plugins/#{plural_name}/rails/init.rb"
+      m.template "init.rb", "vendor/plugins/#{plural_name}/init.rb"
 
       m.directory 'db/migrate/'
       m.migration_template 'migration.rb', 'db/migrate', :assigns => {:migration_name => "Create#{class_name.pluralize}"}, :migration_file_name => "create_#{singular_name.pluralize}"
