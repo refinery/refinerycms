@@ -1,5 +1,6 @@
 ENV["RAILS_ENV"] = "test"
-require File.expand_path(File.dirname(__FILE__) + "/../config/environment")
+# this allows us to run rake test:refinery from an application using the Refinery gem.
+require (ENV["RAILS_ROOT"] ||= (File.expand_path(File.dirname(__FILE__)) + "/..")) + "/config/environment"
 require 'test_help'
 
 class ActiveSupport::TestCase
@@ -39,7 +40,7 @@ class ActiveSupport::TestCase
   def login_as(user)
     @request.session[:user_id] = user ? users(user).id : nil
   end
-  
+
   def logout
     @request.session[:user_id] = nil
   end
