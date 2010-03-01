@@ -16,6 +16,8 @@ config.action_controller.perform_caching             = false
 # Don't care if the mailer can't send
 config.action_mailer.raise_delivery_errors = false
 
+config.log_level = :info
+
 # Uncomment the following lines if you're getting
 # "A copy of XX has been removed from the module tree but is still active!"
 # or you want to develop a plugin and don't want to restart every time a change is made:

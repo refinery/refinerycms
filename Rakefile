@@ -6,8 +6,8 @@ begin
   require File.join(File.dirname(__FILE__), 'config', 'environment')
 rescue Exception
   # Log the exception to the console/logfile.
-  puts "*** Couldn't load the config/environment file because something went wrong... ***"
-  puts "*** Don't worry, we'll do it the normal way and load in config/boot instead... ***"
+  puts "*** Couldn't load the application's configuration because something went wrong... ***"
+  puts "*** Don't worry, we'll bypass the application's configuration and just boot instead... ***"
 
   # Load up the boot file instead because there's something wrong with the environment.
   require File.join(File.dirname(__FILE__), 'config', 'boot')

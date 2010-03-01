@@ -91,7 +91,7 @@ You will be prompted to setup your first user.
 
 If you're using [Heroku](http://heroku.com/) you will want to put
 
-    USE_S3_BACKEND = true
+    Refinery.s3_backend = true
 
 in your ``config/production.rb`` file to make Refinery store files uploaded on Amazon S3.
 
