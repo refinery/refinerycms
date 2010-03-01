@@ -1,6 +1,6 @@
 require 'pathname'
 root_directory = Pathname.new(File.expand_path(File.dirname(__FILE__) << "/.."))
-rails_root = ((defined?(Rails.root) && Rails.root.realpath.length > 0) ? Rails.root : Pathname.new(RAILS_ROOT))
+rails_root = ((defined?(Rails.root) && Rails.root.realpath.to_s.length > 0) ? Rails.root : Pathname.new(Rails.root))
 
 if (non_gem_refinery = rails_root.join("vendor", "plugins", "refinery", "lib", "refinery.rb")).exist?
   require non_gem_refinery.realpath.to_s # this won't exist when using a gem.
