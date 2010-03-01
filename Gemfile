@@ -6,7 +6,7 @@ gem 'rails', '3.0.0.beta1'
 gem 'sqlite3-ruby', :require => 'sqlite3'
 
 # Use mongrel as the web server
-# gem 'mongrel'
+gem 'mongrel', :group => :development
 
 # Deploy with Capistrano
 # gem 'capistrano'
