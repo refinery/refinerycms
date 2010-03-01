@@ -1,72 +1,76 @@
 #!/usr/bin/env ruby
 require 'pathname'
 require 'fileutils'
-REFINERY_ROOT = Pathname.new(File.expand_path(File.dirname(__FILE__) << "/..")) unless defined?(REFINERY_ROOT) && REFINERY_ROOT.is_a?(Pathname)
-RAILS_ROOT = ARGV.first unless defined? RAILS_ROOT
-unless RAILS_ROOT.nil? or RAILS_ROOT.length == 0
+refinery_root = (defined?(REFINERY_ROOT) && REFINERY_ROOT.is_a?(Pathname) ? REFINERY_ROOT : Pathname.new(File.expand_path(File.dirname(__FILE__) << "/..")))
+rails_root = (defined?(RAILS_ROOT) ? RAILS_ROOT : ARGV.first)
+unless rails_root.nil? or rails_root.length == 0
   # ensure asset directories exist.
   dirs = [%w(public stylesheets), %w(public javascripts), %w(db migrate)]
-  FileUtils::makedirs dirs.map {|dir| File.join(RAILS_ROOT, dir) }
+  FileUtils::makedirs dirs.map {|dir| File.join(rails_root, dir) }
 
   # copy in the new assets.
   assets = [%w(public stylesheets refinery), %w(public javascripts refinery), %w(public javascripts wymeditor), %w(VERSION)]
 	assets.each do |asset|
-	  FileUtils::rm_rf File.join(RAILS_ROOT, asset), :secure => true # ensure the destination is clear.
-	  FileUtils::cp_r File.join(REFINERY_ROOT, asset), File.join(RAILS_ROOT, asset) # copy the new assets into the project.
+	  FileUtils::rm_rf File.join(rails_root, asset), :secure => true # ensure the destination is clear.
+	  FileUtils::cp_r File.join(refinery_root, asset), File.join(rails_root, asset) # copy the new assets into the project.
   end
 
   # copy in any new migrations.
-  FileUtils::cp Dir[File.join(%W(#{REFINERY_ROOT} db migrate *.rb))], File.join(%W(#{RAILS_ROOT} db migrate))
+  FileUtils::cp Dir[File.join(%W(#{refinery_root} db migrate *.rb))], File.join(%W(#{rails_root} db migrate))
 
   # replace rakefile.
-  FileUtils::cp File.join(%W(#{REFINERY_ROOT} Rakefile)), File.join(%W(#{RAILS_ROOT} Rakefile))
+  FileUtils::cp File.join(%W(#{refinery_root} Rakefile)), File.join(%W(#{rails_root} Rakefile))
 
   # replace the preinitializer.
-  FileUtils::cp File.join(%W(#{REFINERY_ROOT} config preinitializer.rb)), File.join(%W(#{RAILS_ROOT} config preinitializer.rb))
+  FileUtils::cp File.join(%W(#{refinery_root} config preinitializer.rb)), File.join(%W(#{rails_root} config preinitializer.rb))
+
+  # get current secret key
+  if !File.exist?(File.join(%W(#{rails_root} config application.rb)))
+    lines = File.open(File.join(%W(#{rails_root} config environment.rb)), "r").read.split("\n")
+  else
+    lines = File.open(File.join(%W(#{rails_root} config application.rb)), "r").read.split("\n")
+  end
+  secret_key = ""
+  lines.each do |line|
+    match = line.scan(/(:secret)([^']*)([\'])([^\']*)/).flatten.last
+    secret_key = match unless match.nil?
+  end
 
 	# read in the config files
-	if File.exist?(File.join(%W(#{RAILS_ROOT} config application.rb)))
-	  FileUtils::cp File.join(%W(#{REFINERY_ROOT} config environment.rb)), File.join(%W(#{RAILS_ROOT} config environment.rb))
+	if File.exist?(File.join(%W(#{rails_root} config application.rb)))
+	  FileUtils::cp File.join(%W(#{refinery_root} config environment.rb)), File.join(%W(#{rails_root} config environment.rb))
   else
-    # update secret key if environment still exists
-    lines = File.open(File.join(%W(#{RAILS_ROOT} config environment.rb)), "r").read.split("\n")
-    secret_key = ""
-    lines.each do |line|
-      match = line.scan(/(:secret)([^']*)([\'])([^\']*)/).flatten.last
-      secret_key = match unless match.nil?
-    end
     # write the new content into the file.
-    FileUtils::cp File.join(%W(#{REFINERY_ROOT} config application.rb)), File.join(%W(#{RAILS_ROOT} config application.rb))
+    FileUtils::cp File.join(%W(#{refinery_root} config application.rb)), File.join(%W(#{rails_root} config application.rb))
 
-    app_rb_lines = File.open(File.join(%W(#{RAILS_ROOT} config application.rb)), "r").read.split("\n")
+    app_rb_lines = File.open(File.join(%W(#{rails_root} config application.rb)), "r").read.split("\n")
     app_rb_lines.each do |line|
       match = line.scan(/(:secret)([^']*)([\'])([^\']*)/).flatten.last
       line.gsub!(match, secret_key) unless match.nil?
     end
 
     # write the new content into the file.
-    File.open(File.join(%W(#{RAILS_ROOT} config application.rb)), "w").puts(app_rb_lines.join("\n"))
+    File.open(File.join(%W(#{rails_root} config application.rb)), "w").puts(app_rb_lines.join("\n"))
 
-    FileUtils::cp File.join(%W(#{REFINERY_ROOT} config environment.rb)), File.join(%W(#{RAILS_ROOT} config environment.rb))
+    FileUtils::cp File.join(%W(#{refinery_root} config environment.rb)), File.join(%W(#{rails_root} config environment.rb))
   end
 
   app_config_file = "application.rb"
 
-	app_config = File.open(File.join(%W(#{RAILS_ROOT} config #{app_config_file})), "r").read
-	environment_updated = false
+	app_config = File.open(File.join(%W(#{rails_root} config #{app_config_file})), "r").read
 
-  # backup app's environment.rb
+  # backup app's config file and replace it, if required.
+	environment_updated = false
   matcher = /(#===REFINERY REQUIRED GEMS===)(.+?)(#===REFINERY END OF REQUIRED GEMS===)/m
   unless (app_refinery_gems_section = app_config.scan(matcher).join("")).length == 0
-    # read in the config file in the gem
-  	refinery_config = File.open(File.join(%W(#{REFINERY_ROOT} config #{app_config_file})), "r").read
-  	FileUtils.cp File.join(%W(#{RAILS_ROOT} config #{app_config_file})), File.join(%W(#{RAILS_ROOT} config #{app_config_file.gsub(".rb", "")}.autobackupbyrefinery.rb))
+    # backup the config file.
+  	FileUtils.cp File.join(%W(#{rails_root} config #{app_config_file})), File.join(%W(#{rails_root} config #{app_config_file.gsub(".rb", "")}.autobackupbyrefinery.rb))
 
-    # write the new content into the file.
-    File.open(File.join(%W(#{RAILS_ROOT} config #{app_config_file})), "w").puts(app_config.gsub!(
-  	  app_refinery_gems_section,
-  	  refinery_config.scan(matcher).join("")
-  	))
+    # copy the new config file.
+    FileUtils.cp File.join(%W(#{refinery_root} config #{app_config_file})), File.join(%W(#{rails_root} config #{app_config_file}))
+    
+    # Write the secret key back into the file.
+    
 
   	environment_updated = true
 	end
@@ -75,7 +79,7 @@ unless RAILS_ROOT.nil? or RAILS_ROOT.length == 0
 	  puts "---------"
 	  puts "Copied new Refinery core assets."
 	  if environment_updated
-  	  puts "I've made a backup of your current config/#{app_config_file} file as it has been updated with the latest Refinery RubyGem requirements."
+  	  puts "I've made a backup of your current config/#{app_config_file} file as it has been updated with the latest Refinery requirements."
   	  puts "The backup is located at config/#{app_config_file.gsub(".rb", "")}.autobackupbyrefinery.rb incase you need it."
     end
 	  puts ""

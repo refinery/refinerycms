@@ -4,9 +4,9 @@ class Resource < ActiveRecord::Base
   MAX_SIZE_IN_MB = 50
 
   # Docs for attachment_fu http://github.com/technoweenie/attachment_fu
-  has_attachment :storage => (USE_S3_BACKEND ? :s3 : :file_system),
+  has_attachment :storage => (Refinery.s3_backend ? :s3 : :file_system),
                  :max_size => MAX_SIZE_IN_MB.megabytes,
-                 :path_prefix => (USE_S3_BACKEND ? nil : 'public/system/resources')
+                 :path_prefix => (Refinery.s3_backend ? nil : 'public/system/resources')
 
   # we could use validates_as_attachment but it produces 4 odd errors like
   # "size is not in list". So we basically here enforce the same validation

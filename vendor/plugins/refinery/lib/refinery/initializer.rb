@@ -14,11 +14,11 @@ module Refinery
     def default_plugin_paths
       paths = super.push(Refinery.root.join("vendor", "plugins").to_s).uniq
     end
-  end if defined?(Rails::Configuration)
+  end
 
   class PluginLoader < Rails::Plugin::Loader
     def add_plugin_load_paths
-      # call rails' add_plugin_load_paths
+      # call Rails' add_plugin_load_paths
       super
 
       # add plugin lib paths to the $LOAD_PATH so that rake tasks etc. can be run when using a gem for refinery or gems for plugins.
@@ -41,15 +41,27 @@ module Refinery
         raise LoadError, load_error.to_s unless load_error.to_s =~ /friendly_id|aasm|will_paginate/
       end
     end
-  end if defined?(Rails::Plugin::Loader)
+  end
 
   class Initializer < Rails::Initializer
     def self.run(command = :process, configuration = Configuration.new)
-      configuration.plugin_loader = Refinery::PluginLoader
+      # Set up configuration that is rather specific to Refinery. We make sure we check that things haven't already been set in the application.
+      configuration.plugin_loader = Refinery::PluginLoader unless configuration.plugin_loader != Rails::Plugin::Loader
+      configuration.plugins = [ :friendly_id, :will_paginate, :aasm, :all ] if configuration.plugins.nil?
+      configuration.gem "aasm", :version => "~> 2.1.3", :lib => "aasm"
+      configuration.gem "friendly_id", :version => "~> 2.3.2", :lib => "friendly_id"
+      configuration.gem "hpricot", :version => "~> 0.8.1", :lib => "hpricot"
+      configuration.gem "slim_scrooge", :version => "~> 1.0.5", :lib => "slim_scrooge"
+      configuration.gem "will_paginate", :version => "~> 2.3.11", :lib => "will_paginate"
+
+      # Pass our configuration along to Rails.
       Rails.configuration = configuration
 
-      # call rails' run
+      # call Rails' run
       super
+
+      # Create deprecations for variables that we've stopped using (possibly remove in 1.0?)
+      require 'refinery/deprecations'
     end
 
     def load_plugins
@@ -72,9 +84,8 @@ module Refinery
         end
       end
 
-      # call rails' load_plugins
+      # call Rails' load_plugins
       super
     end
-  end if defined?(Rails::Initializer)
-
+  end
 end
