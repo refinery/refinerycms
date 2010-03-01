@@ -7,10 +7,10 @@ class Inquiry < ActiveRecord::Base
 
   acts_as_indexed :fields => [:name, :email, :message, :phone],
                   :index_file => [Rails.root.to_s, "tmp", "index"]
-  
+
   default_scope :order => 'created_at DESC'
-  
+
   named_scope :closed, :conditions => {:open => false}
-  named_scope :open, :conditions => {:open => true}
+  # Rails 3 FIXME: named_scope :open, :conditions => {:open => true}
 
 end

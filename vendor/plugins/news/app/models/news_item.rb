@@ -2,7 +2,7 @@ class NewsItem < ActiveRecord::Base
 
   validates_presence_of :title, :body, :publish_date
 
-  has_friendly_id :title, :use_slug => true
+  # FIXME for Rails 3 (gem not yet compatible) has_friendly_id :title, :use_slug => true
 
   acts_as_indexed :fields => [:title, :body],
                   :index_file => [Rails.root.to_s, "tmp", "index"]

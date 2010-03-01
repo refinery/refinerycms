@@ -24,8 +24,9 @@ gem 'sqlite3-ruby', :require => 'sqlite3'
 # end
 
 #===REFINERY REQUIRED GEMS===
-gem "aasm", ">= 2.1.3", :require => "aasm"
-gem "friendly_id", ">= 2.2.2", :require => "friendly_id"
+git 'git://github.com/rubyist/aasm.git'
+gem "aasm", ">= 2.1.5", :require => "aasm"
+# FIXME for Rails 3 (gem not yet compatible) gem "friendly_id", ">= 2.2.2", :require => "friendly_id"
 gem "hpricot", ">= 0.8.1", :require => "hpricot"
 gem "slim_scrooge", ">= 1.0.5", :require => "slim_scrooge"
 gem "will_paginate", ">= 2.3.11", :require => "will_paginate"
