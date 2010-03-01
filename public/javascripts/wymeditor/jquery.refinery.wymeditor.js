@@ -830,7 +830,6 @@ WYMeditor.editor.prototype.init = function() {
 
       //enable the skin
       this.loadSkin();
-
     }
 };
 
@@ -1537,6 +1536,9 @@ WYMeditor.editor.prototype.listen = function() {
   for(var i=0; i < images.length; i++) {
     $(images[i]).bind("mousedown", this.mousedown);
   }
+    
+  // ensure links can't be navigated to.
+  $(this._doc).find('a[href]').click(function(e){e.preventDefault();});
 };
 
 WYMeditor.editor.prototype.mousedown = function(evt) {
@@ -1761,6 +1763,9 @@ WYMeditor.editor.prototype.close_dialog = function(e, cancelled) {
   }
 
   $("#" + wym._options.dialogId).dialog("close").remove();
+
+  // ensure links can't be navigated to.
+  $(this._doc).find('a[href]').click(function(e){e.preventDefault();});
 
   if (e) {
     e.preventDefault();
@@ -4151,6 +4156,7 @@ WYMeditor.WymClassExplorer.prototype.initIframe = function(iframe) {
 
     //init designMode
     this._doc.designMode="on";
+    
     try{
       // (bermi's note) noticed when running unit tests on IE6
       // Is this really needed, it trigger an unexisting property on IE6
