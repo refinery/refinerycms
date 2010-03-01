@@ -1,24 +1,11 @@
 # Add your own tasks in files placed in lib/tasks ending in .rake,
 # for example lib/tasks/capistrano.rake, and they will automatically be available to Rake.
 
-begin
-  # Load up the environment instead of just the boot file because we want all of the tasks available.
-  require File.join(File.dirname(__FILE__), 'config', 'environment')
-rescue Exception
-  # Log the exception to the console/logfile.
-  puts "*** Couldn't load the config/environment file because something went wrong. Trace below: ***"
-  puts $!.backtrace
-  puts "\n*** So, we'll attempt to load in config/boot instead... ***"
+require File.expand_path('../config/application', __FILE__)
 
-  # Load up the boot file instead because there's something wrong with the environment.
-  require File.join(File.dirname(__FILE__), 'config', 'boot')
-end
-
-# Require the standard stuff
 require 'rake'
 require 'rake/testtask'
 require 'rake/rdoctask'
-require 'tasks/rails'
 
 # Because we use plugins that are shipped via gems, we lose their rake tasks.
 # So here, we find them (if there are any) and include them into rake.
@@ -69,3 +56,5 @@ begin
 rescue LoadError
   #puts "Jeweler not available. Install it with: sudo gem install jeweler"
 end
+
+Rails::Application.load_tasks

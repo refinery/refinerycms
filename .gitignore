@@ -1,3 +1,4 @@
+.bundle
 public/system/*
 public/themes/*
 log/*.log
