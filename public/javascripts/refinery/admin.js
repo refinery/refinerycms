@@ -42,13 +42,15 @@ init_modal_dialogs = function(){
         resizable: false,
         autoOpen: true,
         width: (parseInt($(anchor.href.match("width=([0-9]*)")).last().get(0))||928),
-        height: (parseInt($(anchor.href.match("height=([0-9]*)")).last().get(0))||473),
-        beforeclose: function(){$(document.body).removeClass('hide-overflow')}
+        height: (parseInt($(anchor.href.match("height=([0-9]*)")).last().get(0))||473)/*,
+        beforeclose: function(){
+          $(document.body).removeClass('hide-overflow');
+        }*/
       });
       if ($.browser.msie) {
         iframe.css({'margin':'-2px 2px 2px -2px'});
       }
-      $(document.body).addClass('hide-overflow');
+      //$(document.body).addClass('hide-overflow');
       e.preventDefault();
     });
   });
@@ -203,16 +205,13 @@ var link_dialog = {
   },
 
   init_close: function(){
-    $('#TB_title .close_dialog, #dialog_container .close_dialog').click(function(e) {
-      e.preventDefault();
-
-      // if we're in a frame
-      if(parent && typeof(parent.tb_remove) == "function"){
-        parent.tb_remove();
-
-      } // if we're not in a frame
-      else if(typeof(tb_remove) == 'function'){
-        tb_remove();
+    $('#dialog-form-actions #cancel_button').click(function(e){
+      if (parent && typeof(parent.$) == "function") {
+    //    parent.$(document.body).removeClass('hide-overflow');
+        parent.$('.ui-dialog').dialog('close').remove();
+      } else {
+        $('.ui-dialog').dialog('close').remove();
+    //    $(document.body).removeClass('hide-overflow');
       }
     });
   },
@@ -515,28 +514,25 @@ var image_dialog = {
       this.callback(img_selected);
     }
 
-    this.cancel_image_dialog(e);
+    this.close_dialog(e);
   }
 
-  , cancel_image_dialog: function(e) {
-    e.preventDefault();
-
-    // if we're in a frame
-    if(parent && typeof(parent.$) == "function"){
-      parent.$(".ui-dialog").dialog("close").remove();
-
-    } // if we're not in a frame
-    else {
-      $('.ui-dialog').dialog("close").remove();
+  , close_dialog: function(e) {
+    if (parent && typeof(parent.$) == "function") {
+//      parent.parent.$(document.body).removeClass('hide-overflow');
+      parent.$('.ui-dialog').dialog('close').remove();
+    } else {
+      $('.ui-dialog').dialog('close').remove();
+//      $(document.body).removeClass('hide-overflow');
     }
+
+    e.preventDefault();
   }
 
   , init_actions: function(){
     var _this = this;
     $('#dialog-form-actions #submit_button').click($.proxy(_this.submit_image_choice, _this));
-    $('#dialog-form-actions #cancel_button, #TB_title .close_dialog, #dialog_container .close_dialog').click(
-      $.proxy(_this.cancel_image_dialog, _this)
-    );
+    $('#dialog-form-actions #cancel_button').click($.proxy(_this.close_dialog, _this));
   }
 }
 
@@ -640,6 +636,7 @@ var image_picker = {
                               .hide();
     $(this.options.field).val('');
     $(this.options.no_image_message).show();
+    $(this.options.remove_image_button).hide();
     $(this).hide();
   }
 
