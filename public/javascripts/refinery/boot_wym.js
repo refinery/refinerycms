@@ -94,7 +94,7 @@ var wymeditor_boot_options = $.extend({
         + "<div id='dialog-form-actions' class='form-actions'>"
           + "<input class='wym_submit' type='button' value='{Insert}' />"
           + " or "
-          + "<a class='wym_cancel close_dialog' type='button' href=''>{Cancel}</a>"
+          + "<a href='' class='wym_cancel close_dialog'>{Cancel}</a>"
         + "</div>"
       + "</form>"
     + "</div>"
@@ -110,16 +110,30 @@ var wymeditor_boot_options = $.extend({
         + "<div id='dialog-form-actions' class='form-actions'>"
           + "<input class='wym_submit' type='button' value='{Insert}' />"
           + " or "
-          + "<a class='wym_cancel close_dialog' type='button' href=''>{Cancel}</a>"
+          + "<a href='' class='wym_cancel close_dialog'>{Cancel}</a>"
         + "</div>"
       + "</form>"
     + "</div>"
 
   , dialogPath: "/admin/dialogs/"
-  , dialogFeatures: "?width=958&height=460&modal=true&titlebar=true&auto_size_content=true&draggable=true"
-  , dialogInlineFeatures: "?width=600&height=320&modal=true&titlebar=true&auto_size_content=true&draggable=true"
+  , dialogFeatures: {
+      width: 958
+    , height: 570
+    , modal: true
+    , draggable: true
+    , resizable: false
+    , autoOpen: true
+  }
+  , dialogInlineFeatures: {
+      width: 600
+    , height: 530
+    , modal: true
+    , draggable: true
+    , resizable: false
+    , autoOpen: true
+  }
 
-  , dialogId: 'TB_window'
+  , dialogId: 'editor_dialog'
 
   , dialogHtml:
     "<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Strict//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd'>"

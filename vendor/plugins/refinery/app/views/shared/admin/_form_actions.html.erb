@@ -6,8 +6,10 @@
   <% end -%>
   <% unless (hide_cancel ||= from_dialog?) -%>
     or
-    <%= link_to "Cancel", (cancel_url ||= send("admin_#{f.object.class.name.pluralize.underscore}_url")),
-          :title => (title ||= "Cancelling will lose all changes you've made to this #{f.object.class.name.underscore.gsub("_", " ")}"),
-          :id => "#{cancel_button_id ||= "cancel_button"}", :class => "close_dialog" %>
+    <%= link_to "Cancel",
+                (cancel_url ||= ((back=url_for(:back)).include?('javascript') ? send("admin_#{f.object.class.name.pluralize.underscore}_url") : back)),
+                :title => (title ||= "Cancelling will lose all changes you've made to this #{f.object.class.name.underscore.gsub("_", " ")}"),
+                :id => "#{cancel_button_id ||= "cancel_button"}",
+                :class => "close_dialog" %>
   <% end -%>
 </div>

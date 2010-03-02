@@ -27,10 +27,10 @@ Unlike other content managers, Refinery is truly aimed at the end user making it
 
 ## Requirements
 
-Refinery runs using a number of gems which (as of Refinery version 0.9.5.29) are outlined below:
+Refinery runs using a number of gems which (as of Refinery version 0.9.6.14) are outlined below:
 
 * [rake >= 0.8.3](http://rubygems.org/gems/rake)
-* [friendly_id >= 2.2.2](http://rubygems.org/gems/friendly_id)
+* [friendly_id >= 2.3.2](http://rubygems.org/gems/friendly_id)
 * [will_paginate >= 2.3.11](http://rubygems.org/gems/will_paginate)
 * [rails >= 2.3.5](http://rubygems.org/gems/rails)
 * [aasm >= 2.1.3](http://rubygems.org/gems/aasm)
@@ -91,7 +91,7 @@ You will be prompted to setup your first user.
 
 If you're using [Heroku](http://heroku.com/) you will want to put
 
-    USE_S3_BACKEND = true
+    Refinery.s3_backend = true
 
 in your ``config/production.rb`` file to make Refinery store files uploaded on Amazon S3.
 

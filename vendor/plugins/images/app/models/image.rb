@@ -5,8 +5,8 @@ class Image < ActiveRecord::Base
 
   # Docs for attachment_fu http://github.com/technoweenie/attachment_fu
   has_attachment :content_type => :image,
-                 :storage => (USE_S3_BACKEND ? :s3 : :file_system),
-                 :path_prefix => (USE_S3_BACKEND ? nil : 'public/system/images'),
+                 :storage => (Refinery.s3_backend ? :s3 : :file_system),
+                 :path_prefix => (Refinery.s3_backend ? nil : 'public/system/images'),
                  :processor => 'Rmagick',
                  :thumbnails => ((((thumbnails = RefinerySetting.find_or_set(:image_thumbnails, {})).is_a?(Hash) ? thumbnails : (RefinerySetting[:image_thumbnails] = {}))) rescue {}),
                  :max_size => MAX_SIZE_IN_MB.megabytes
@@ -21,7 +21,7 @@ class Image < ActiveRecord::Base
     else
       [:size, :content_type].each do |attr_name|
         enum = attachment_options[attr_name]
-      
+
         unless enum.nil? || enum.include?(send(attr_name))
           errors.add_to_base("Images should be smaller than #{MAX_SIZE_IN_MB} MB in size") if attr_name == :size
           errors.add_to_base("Your image must be either a JPG, PNG or GIF") if attr_name == :content_type

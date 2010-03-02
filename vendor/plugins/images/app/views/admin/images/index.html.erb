@@ -8,7 +8,7 @@
     </li>
   </ul>
   <ul>
-    <% image_views.delete_if {|image_view| image_view.to_s == current_image_view.to_s }.each do |image_view| %>
+    <% other_image_views.each do |image_view| %>
       <li>
         <%= link_to "Switch to #{image_view.to_s.titleize} View",
           admin_images_url(:view => image_view, :page => params[:page]),

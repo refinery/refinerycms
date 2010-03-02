@@ -513,10 +513,12 @@ $.fn.wymeditor = function(options) {
     updateSelector:    ".wymupdate",
     updateEvent:       "click",
 
-    dialogFeatures:    "menubar=no,titlebar=no,toolbar=no,resizable=no"
-                      + ",width=560,height=300,top=0,left=0",
+    dialogFeatures:    {
+        width: 560
+      , height: 300
+    }
 
-    dialogHtml:      "<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Strict//EN'"
+    , dialogHtml:      "<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Strict//EN'"
                       + " 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd'>"
                       + "<html dir='"
                       + WYMeditor.DIRECTION
@@ -828,7 +830,6 @@ WYMeditor.editor.prototype.init = function() {
 
       //enable the skin
       this.loadSkin();
-
     }
 };
 
@@ -1229,7 +1230,7 @@ WYMeditor.editor.prototype.update = function() {
  * @description Opens a dialog box
  */
 WYMeditor.editor.prototype.dialog = function( dialogType ) {
-  var path = this._wym._options.dialogPath + dialogType + this._wym._options.dialogFeatures;
+  var path = this._wym._options.dialogPath + dialogType;
 
   this._current_unique_stamp = this.uniqueStamp();
   // change undo or redo on cancel to true to have this happen when a user closes (cancels) a dialogue
@@ -1266,7 +1267,6 @@ WYMeditor.editor.prototype.dialog = function( dialogType ) {
   }
 
   // set up handlers.
-  imageGroup = null;
   wym = this;
   ajax_loaded_callback = function(){wym.dialog_ajax_callback(selected)}
 
@@ -1292,41 +1292,42 @@ WYMeditor.editor.prototype.dialog = function( dialogType ) {
       parent_node.id = 'replace_me_with_' + this._current_unique_stamp;
     }
 
-    if (dialogType != WYMeditor.DIALOG_PASTE) {
-      path += (this._wym._options.dialogFeatures.length == 0) ? "?" : "&";
+    if (dialogType != WYMeditor.DIALOG_PASTE && dialogType != WYMeditor.DIALOG_TABLE) {
+      path += path.indexOf("?") == -1 ? "?" : "&";
       port = (window.location.port.length > 0 ? (":" + window.location.port) : "")
       path += "current_link=" + parent_node.href.replace(window.location.protocol + "//" + window.location.hostname + port, "");
       path += "&target_blank=" + (parent_node.target == "_blank" ? "true" : "false");
     }
   }
 
-  // launch thickbox
+  // launch dialog
 
-  dialog_title = this.replaceStrings(this.encloseString( dialogType ));
+  dialog_title = wym.replaceStrings(wym.encloseString( dialogType ));
+  dialog_container = $("<div id='" + wym._options.dialogId + "' class='editor_dialog'></div>");
   switch(dialogType) {
     case WYMeditor.DIALOG_TABLE: {
-      dialog_container = document.createElement("div");
-      dialog_container.id = 'inline_dialog_container';
-      dialog_container.innerHTML = this.replaceStrings(this._options.dialogTableHtml);
-      $(document.body).after(dialog_container);
+      // create and open dialog
+      dialog_container.html(wym.replaceStrings(wym._options.dialogTableHtml)).dialog($.extend(wym._options.dialogInlineFeatures, {
+        title: dialog_title
+      }));
 
-      tb_show(dialog_title, "#" + this._options.dialogInlineFeatures + "&inlineId=inline_dialog_container&TB_inline=true&modal=true", imageGroup);
       ajax_loaded_callback();
       break;
     }
     case WYMeditor.DIALOG_PASTE: {
-      dialog_container = document.createElement("div");
-      dialog_container.id = 'inline_dialog_container';
-      dialog_container.innerHTML = this.replaceStrings(this._options.dialogPasteHtml);
-      $(document.body).after(dialog_container);
+      dialog_container.html(wym.replaceStrings(wym._options.dialogPasteHtml)).dialog($.extend(wym._options.dialogInlineFeatures, {
+        title: dialog_title
+      }));
 
-      tb_show(dialog_title, "#" + this._options.dialogInlineFeatures + "&inlineId=inline_dialog_container&TB_inline=true&modal=true", imageGroup);
       ajax_loaded_callback();
       break;
     }
     default:
     {
-      tb_show(dialog_title, path, imageGroup, ajax_loaded_callback);
+      $("<img id='dialog_loading' src='/images/refinery/dialogLoadingAnimation.gif />").appendTo(dialog_container);
+      dialog_container.dialog($.extend(wym._options.dialogFeatures, {
+        title: dialog_title
+      })).load(path, ajax_loaded_callback);
       break;
     }
   }
@@ -1335,8 +1336,12 @@ WYMeditor.editor.prototype.dialog = function( dialogType ) {
 
 WYMeditor.editor.prototype.dialog_ajax_callback = function(selected) {
 
-  // look for iframes
+  // set variables
   wym = this; _selected = selected;
+  // now fix the height;
+  $("#" + wym._options.dialogId + ".editor_dialog").css('height', 'auto');
+
+  // look for iframes
   (iframes = $("#" + this._options.dialogId).find('iframe')).load(function() {
     WYMeditor.INIT_DIALOG(wym, _selected);
     $(this).unbind('load');
@@ -1474,11 +1479,11 @@ WYMeditor.editor.prototype.format_block = function(selected) {
 
 WYMeditor.editor.prototype.computeBasePath = function() {
   if ((script_path = this.computeWymPath()) != null) {
-  if ((src_parts = script_path.split('/')).length > 1) { src_parts.pop(); }
-  return src_parts.join('/') + "/";
+    if ((src_parts = script_path.split('/')).length > 1) { src_parts.pop(); }
+    return src_parts.join('/') + "/";
   }
   else {
-  return null;
+    return null;
   }
 };
 
@@ -1488,13 +1493,13 @@ WYMeditor.editor.prototype.computeWymPath = function() {
 
 WYMeditor.editor.prototype.computeJqueryPath = function() {
   return $($.grep($('script'), function(s){
-  return (s.src && s.src.match(/jquery(-(.*)){0,1}(\.pack|\.min|\.packed)?\.js(\?.*)?$/ ))
+    return (s.src && s.src.match(/jquery(-(.*)){0,1}(\.pack|\.min|\.packed)?\.js(\?.*)?$/ ))
   })).attr('src');
 };
 
 WYMeditor.editor.prototype.computeCssPath = function() {
   return $($.grep($('link'), function(s){
-   return (s.href && s.href.match(/wymeditor\/skins\/(.*)screen\.css(\?.*)?$/ ))
+    return (s.href && s.href.match(/wymeditor\/skins\/(.*)screen\.css(\?.*)?$/ ))
   })).attr('href');
 };
 
@@ -1531,6 +1536,9 @@ WYMeditor.editor.prototype.listen = function() {
   for(var i=0; i < images.length; i++) {
     $(images[i]).bind("mousedown", this.mousedown);
   }
+    
+  // ensure links can't be navigated to.
+  $(this._doc).find('a[href]').click(function(e){e.preventDefault();});
 };
 
 WYMeditor.editor.prototype.mousedown = function(evt) {
@@ -1550,13 +1558,7 @@ WYMeditor.editor.prototype.mousedown = function(evt) {
  *      href - The CSS path.
  */
 WYMeditor.loadCss = function(href) {
-
-    var link = document.createElement('link');
-    link.rel = 'stylesheet';
-    link.href = href;
-
-    var head = $('head').get(0);
-    head.appendChild(link);
+  $("<link rel='stylesheet' />").attr('href', href).appendTo($('head').get(0));
 };
 
 /*
@@ -1565,42 +1567,41 @@ WYMeditor.loadCss = function(href) {
  */
 WYMeditor.editor.prototype.loadSkin = function() {
 
-    //does the user want to automatically load the CSS (default: yes)?
-    //we also test if it hasn't been already loaded by another instance
-    //see below for a better (second) test
-    if(this._options.loadSkin && !WYMeditor.SKINS[this._options.skin]) {
+  //does the user want to automatically load the CSS (default: yes)?
+  //we also test if it hasn't been already loaded by another instance
+  //see below for a better (second) test
+  if(this._options.loadSkin && !WYMeditor.SKINS[this._options.skin]) {
+    //check if it hasn't been already loaded
+    //so we don't load it more than once
+    //(we check the existing <link> elements)
 
-        //check if it hasn't been already loaded
-        //so we don't load it more than once
-        //(we check the existing <link> elements)
+    var found = false;
+    var rExp = new RegExp(this._options.skin
+         + '\/' + WYMeditor.SKINS_DEFAULT_CSS + '$');
 
-        var found = false;
-        var rExp = new RegExp(this._options.skin
-             + '\/' + WYMeditor.SKINS_DEFAULT_CSS + '$');
+    $('link').each( function() {
+        if(this.href.match(rExp)) found = true;
+    });
 
-        $('link').each( function() {
-            if(this.href.match(rExp)) found = true;
-        });
-
-        //load it, using the skin path
-        if(!found) WYMeditor.loadCss( this._options.cssSkinPath
-            + WYMeditor.SKINS_DEFAULT_CSS );
+    // if not found, load it, using the skin path
+    if(!found) {
+      WYMeditor.loadCss( this._options.cssSkinPath + WYMeditor.SKINS_DEFAULT_CSS );
     }
+  }
 
-    //put the classname (ex. wym_skin_default) on wym_box
-    $(this._box).addClass( "wym_skin_" + this._options.skin );
+  //put the classname (ex. wym_skin_default) on wym_box
+  $(this._box).addClass( "wym_skin_" + this._options.skin );
 
-    //does the user want to use some JS to initialize the skin (default: yes)?
-    //also check if it hasn't already been loaded by another instance
-    if(this._options.initSkin && !WYMeditor.SKINS[this._options.skin]) {
+  //does the user want to use some JS to initialize the skin (default: yes)?
+  //also check if it hasn't already been loaded by another instance
+  if(this._options.initSkin && !WYMeditor.SKINS[this._options.skin]) {
+    eval($.ajax({url:this._options.jsSkinPath + WYMeditor.SKINS_DEFAULT_JS, async:false}).responseText);
+  }
 
-        eval($.ajax({url:this._options.jsSkinPath
-            + WYMeditor.SKINS_DEFAULT_JS, async:false}).responseText);
-    }
-
-    //init the skin, if needed
-    if(WYMeditor.SKINS[this._options.skin] && WYMeditor.SKINS[this._options.skin].init)
-       WYMeditor.SKINS[this._options.skin].init(this);
+  //init the skin, if needed
+  if(WYMeditor.SKINS[this._options.skin] && WYMeditor.SKINS[this._options.skin].init) {
+    WYMeditor.SKINS[this._options.skin].init(this);
+  }
 
 };
 
@@ -1614,6 +1615,9 @@ WYMeditor.INIT_DIALOG = function(wym, selected, isIframe) {
   var doc = (isIframe ? dialog.find('iframe').get(0).document() : document);
   var dialogType = dialog.find('#wym_dialog_type').val();
   var replaceable = wym._selected_image ? $(wym._selected_image) : $(wym._doc.body).find('#replace_me_with_' + wym._current_unique_stamp);
+
+  // focus first textarea or input type text element
+  dialog.find('input[type=text], textarea').first().focus();
 
   dialog.find(".close_dialog").click(function(e){
     wym.close_dialog(e, true);
@@ -1648,11 +1652,13 @@ WYMeditor.INIT_DIALOG = function(wym, selected, isIframe) {
           link.attr({'style': replaceable.attr('style'), 'class': replaceable.attr('class')});
           replaceable.after(link);
           link.html(replaceable.html());
+
+          // now we can get rid of the replaceable element.
           replaceable.remove();
         }
         else
         {
-          if ((parent = replaceable.get(0).parentNode) != null && parent.tagName.toUpperCase() == "A") {
+          if ((parent = replaceable.parent().get(0)) != null && parent.tagName.toUpperCase() == "A") {
             $(parent).attr({href: link.attr('href'), title: $(wym._options.titleSelector).val(), target: target});
           }
           else {
@@ -1671,7 +1677,7 @@ WYMeditor.INIT_DIALOG = function(wym, selected, isIframe) {
       }
     }
     // fire a click event on the dialogs close button
-    wym.close_dialog()
+    wym.close_dialog();
   });
 
   $(wym._options.dialogImageSelector).find(wym._options.submitSelector).click(function() {
@@ -1756,9 +1762,10 @@ WYMeditor.editor.prototype.close_dialog = function(e, cancelled) {
     this._iframe.contentWindow.focus();
   }
 
-  $('#inline_dialog_container').remove();
+  $("#" + wym._options.dialogId).dialog("close").remove();
 
-  tb_remove();
+  // ensure links can't be navigated to.
+  $(this._doc).find('a[href]').click(function(e){e.preventDefault();});
 
   if (e) {
     e.preventDefault();
@@ -4149,6 +4156,7 @@ WYMeditor.WymClassExplorer.prototype.initIframe = function(iframe) {
 
     //init designMode
     this._doc.designMode="on";
+    
     try{
       // (bermi's note) noticed when running unit tests on IE6
       // Is this really needed, it trigger an unexisting property on IE6

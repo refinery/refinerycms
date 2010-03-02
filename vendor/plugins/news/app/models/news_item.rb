@@ -6,7 +6,7 @@ class NewsItem < ActiveRecord::Base
 
   acts_as_indexed :fields => [:title, :body],
                   :index_file => [Rails.root.to_s, "tmp", "index"]
-  
+
   default_scope :order => "publish_date DESC"
   named_scope :latest, :conditions => ["publish_date < ?", Time.now], :limit => 10
   named_scope :published, :conditions => ["publish_date < ?", Time.now]

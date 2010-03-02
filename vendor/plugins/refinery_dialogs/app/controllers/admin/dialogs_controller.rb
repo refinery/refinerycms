@@ -7,16 +7,17 @@ class Admin::DialogsController < Admin::BaseController
 
     if @dialog_type
       @submit_button_text = "Insert"
+      @cancel_button_text = "Cancel"
 
       url_params = params.reject {|key, value| key =~ /(action)|(controller)/}
 
-      if @dialog_type == 'image'
-        @iframe_src = insert_admin_images_url(:dialog => true)
+      @iframe_src = if @dialog_type == 'image'
+        insert_admin_images_url(:dialog => true)
       elsif @dialog_type == 'link'
-        @iframe_src = link_to_admin_pages_dialogs_url(url_params)
+        link_to_admin_pages_dialogs_url(url_params)
       end
 
-      render :layout => false #"admin_dialog"
+      render :layout => false
 
     else
       render :nothing => true

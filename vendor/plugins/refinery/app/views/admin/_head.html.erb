@@ -2,10 +2,10 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
   <title><%= RefinerySetting.find_or_set(:site_name, 'Company Name').titleize %> - Refinery</title>
-  <%= stylesheet_link_tag 'refinery/thickbox', 'refinery/refinery', 'refinery/tooltips', :cache => (use_caching ? "cache/refinery" : false) %>
+  <%= stylesheet_link_tag 'refinery/refinery', 'refinery/tooltips', :cache => (use_caching ? "cache/refinery" : false) %>
   <%= render :partial => "/shared/admin/head_before_javascript_libraries" -%>
   <%= jquery_include_tags(use_caching) %>
-  <%= javascript_include_tag 'admin', 'thickbox', 'wymeditor/jquery.refinery.wymeditor.js', 'refinery/boot_wym', 'refinery/admin', :cache => (use_caching ? "cache/admin" : false) %>
+  <%= javascript_include_tag 'admin', 'wymeditor/jquery.refinery.wymeditor.js', 'refinery/boot_wym', 'refinery/admin', :cache => (use_caching ? "cache/admin" : false) %>
   <%= javascript_include_tag "http://getfirebug.com/releases/lite/1.2/firebug-lite-compressed.js" if RefinerySetting.find_or_set(:show_firebug_lite, false) -%>
   <%= yield :head %>
 </head>
