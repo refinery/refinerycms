@@ -1,5 +1,6 @@
 ENV["RAILS_ENV"] = "test"
-require File.expand_path('../../config/environment', __FILE__)
+# this allows us to run rake test:refinery from an application using the Refinery gem.
+require (ENV["RAILS_ROOT"] ||= (File.expand_path(File.dirname(__FILE__)) + "/..")) + "/config/environment"
 require 'rails/test_help'
 
 class ActiveSupport::TestCase
@@ -32,12 +33,17 @@ class ActiveSupport::TestCase
   #
   # Note: You'll currently still have to declare fixtures explicitly in integration tests
   # -- they do not yet inherit this setting
+  self.fixture_path = Refinery.root.join("test", "fixtures").to_s
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
-  
+
   def login_as(user)
     @request.session[:user_id] = user ? users(user).id : nil
   end
-  
+
+  def logout
+    @request.session[:user_id] = nil
+  end
+
 end

@@ -8,6 +8,10 @@ module Admin::ImagesHelper
     RefinerySetting.find_or_set(:preferred_image_view, :list)
   end
 
+  def other_image_views
+    image_views.reject {|image_view| image_view.to_s == current_image_view.to_s }
+  end
+
   def change_list_mode_if_specified
     unless params[:action] != "index" or params[:view].blank? or !image_views.include? params[:view].to_sym
       RefinerySetting[:preferred_image_view] = params[:view]
@@ -18,6 +22,6 @@ module Admin::ImagesHelper
     will_paginate collection, :previous_label => '&laquo; Previous',
                               :next_label => 'Next &raquo;',
                               :renderer => Refinery::LinkRenderer
-                              #:params => {:controller => "admin/images", :action => "insert", :dialog => dialog }
   end
+  
 end

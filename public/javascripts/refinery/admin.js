@@ -35,7 +35,8 @@ init_modal_dialogs = function(){
   $('a[href*="dialog=true"]').each(function(i, anchor)
   {
     $(anchor).click(function(e){
-      $("<iframe id='dialog_iframe' src='" + $(this).attr('href') + "'></iframe>").dialog({
+      iframe = $("<iframe id='dialog_iframe' src='" + $(this).attr('href') + "'></iframe>");
+      iframe.dialog({
         title: $(anchor).attr('title') || $(anchor).attr('name') || $(anchor).html() || null,
         modal: true,
         resizable: false,
@@ -44,6 +45,10 @@ init_modal_dialogs = function(){
         height: (parseInt($(anchor.href.match("height=([0-9]*)")).last().get(0))||473),
         beforeclose: function(){$(document.body).removeClass('hide-overflow')}
       });
+      if ($.browser.msie) {
+        iframe.css({'margin':'-2px 2px 2px -2px'});
+//        iframe..css('overflow: hidden');
+      }
       $(document.body).addClass('hide-overflow');
       e.preventDefault();
     });
@@ -232,7 +237,7 @@ var link_dialog = {
       var port = (window.location.port.length > 0 ? (":" + window.location.port) : "");
       var url = link.href.replace(window.location.protocol + "//" + window.location.hostname + port, "");
 
-      link_dialog.update_parent(url, link.rel);
+      link_dialog.update_parent(url, link.rel.replace(/\ ?<em>.+?<\/em>/, ''));
     });
   },
 
@@ -420,8 +425,8 @@ var page_options = {
       var part_id = $('#page_parts_attributes_' + stab_id + '_id').val();
       //console.log('stab_id: ' + stab_id + ' part_id: ' + part_id);
 
-      var result = confirm("This will remove the content section '" + $('#page_parts .ui-tabs-selected a').html() + "' when the page is saved and erase all content that has been entered into it, Are you sure?");
-      if(part_id && result){
+      var result = confirm("This will remove the content section '" + $('#page_parts .ui-tabs-selected a').html() + "' and erase all content that has been entered into it even if you don't save the page, are you sure?");
+      if(part_id && result) {
         $.ajax({
           url: page_options.del_part_url + '/' + part_id,
           type: 'DELETE'

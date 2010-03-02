@@ -37,7 +37,7 @@
                           :previous_label => '&laquo; Previous',
                           :next_label => 'Next &raquo;',
                           :renderer => Refinery::LinkRenderer,
-                          :url => {:controller => "admin/resources", :action => "insert", :dialog => from_dialog?} unless @thickbox %>
+                          :url => {:controller => "admin/resources", :action => "insert", :dialog => from_dialog?} unless @app_dialog %>
       </div>
     <% end %>
     <div id='upload_resource_area' class='dialog_area' <%= "style='display:none;'" if @resources.any? and @resource.errors.empty? %>>
@@ -45,7 +45,7 @@
     </div>
   </div>
 </div>
-<% if @thickbox %>
+<% if @app_dialog %>
   <div id='dialog-form-actions' class='form-actions'>
     <%= submit_tag 'Insert', :id => "submit_button" %>
 
