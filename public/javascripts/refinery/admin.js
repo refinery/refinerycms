@@ -35,7 +35,7 @@ init_modal_dialogs = function(){
   $('a[href*="dialog=true"]').each(function(i, anchor)
   {
     $(anchor).click(function(e){
-      iframe = $("<iframe id='dialog_iframe' src='" + $(this).attr('href') + "'></iframe>");
+      iframe = $("<iframe id='dialog_iframe' src='" + $(this).attr('href') + "&amp;app_dialog=true" + "'></iframe>");
       iframe.dialog({
         title: $(anchor).attr('title') || $(anchor).attr('name') || $(anchor).html() || null,
         modal: true,
@@ -47,7 +47,6 @@ init_modal_dialogs = function(){
       });
       if ($.browser.msie) {
         iframe.css({'margin':'-2px 2px 2px -2px'});
-//        iframe..css('overflow: hidden');
       }
       $(document.body).addClass('hide-overflow');
       e.preventDefault();
@@ -516,21 +515,19 @@ var image_dialog = {
       this.callback(img_selected);
     }
 
-    if(parent && typeof(parent.tb_remove) == "function"){
-      parent.tb_remove();
-    }
-
+    this.cancel_image_dialog(e);
   }
 
   , cancel_image_dialog: function(e) {
     e.preventDefault();
+
     // if we're in a frame
-    if(parent && typeof(parent.tb_remove) == "function"){
-      parent.tb_remove();
+    if(parent && typeof(parent.$) == "function"){
+      parent.$(".ui-dialog").dialog("close").remove();
 
     } // if we're not in a frame
-    else if(typeof(tb_remove) == 'function'){
-      tb_remove();
+    else {
+      $('.ui-dialog').dialog("close").remove();
     }
   }
 
