@@ -1,5 +1,5 @@
-ActionController::Routing::Routes.draw do |map|
-  map.namespace(:admin) do |admin|
-    admin.resources :dashboard
+Rails::Application.routes.draw do
+  namespace(:admin) do
+    resources :dashboard
   end
 end

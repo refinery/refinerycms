@@ -50,22 +50,24 @@ Refinerycms::Application.routes.draw do |map|
   # just remember to delete public/index.html.
   # root :to => "welcome#index"
 
+  root :to => 'pages#home'
+
+  namespace(:admin) do
+    root :to => 'dashboard#index'
+  end
+
   # See how all your routes lay out with "rake routes"
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id(.:format)))'
 
-  map.root :controller => "pages", :action => "home"
-
-  map.namespace(:admin) do |admin|
-    admin.root :controller => 'dashboard', :action => 'index'
-  end
+  # match ':controller/:action/:id'
+  # match ':controller/:action/:id.:format'
 
   # Install the default routes as the lowest priority.
-  map.connect ':controller/:action/:id'
-  map.connect ':controller/:action/:id.:format'
-  map.connect 'admin/*path', :controller => 'admin/base', :action => 'error_404'
-  map.connect '*path', :controller => 'application', :action => 'error_404'
+
+  match 'admin/*path', :to => 'admin/base#error_404'
+  match '*path',       :to => 'application#error_404'
 
 end

@@ -1,7 +1,7 @@
 # Base methods for CRUD actions
 # Simply override any methods in your action controller you want to be customised
 # Don't forget to add:
-#   map.resources :plural_model_name_here
+#   resources :plural_model_name_here
 # to your routes.rb file.
 # Full documentation about CRUD and resources go here:
 # -> http://caboo.se/doc/classes/ActionController/Resources.html#M003716

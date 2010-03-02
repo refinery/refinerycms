@@ -1,8 +1,12 @@
-ActionController::Routing::Routes.draw do |map|
-  map.resources :inquiries, :collection => {:thank_you => :get}
+Rails::Application.routes.draw do
+  resources :inquiries do
+    collection do
+      get :thank_you
+    end
+  end
 
-  map.namespace(:admin) do |admin|
-    admin.resources :inquiries
-    admin.resources :inquiry_settings
+  namespace(:admin) do
+    resources :inquiries
+    resources :inquiry_settings
   end
 end

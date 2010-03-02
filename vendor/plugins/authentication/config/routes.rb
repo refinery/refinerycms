@@ -1,15 +1,15 @@
-ActionController::Routing::Routes.draw do |map|
+Rails::Application.routes.draw do
 
-  map.resources :users
-  map.resource :session
+  resources :users
+  resource :session
 
-  map.namespace(:admin) do |admin|
-    admin.resources :users
+  namespace(:admin) do
+    resources :users
   end
 
-  map.login  '/login', :controller => 'sessions', :action => 'new'
-  map.logout '/logout', :controller => 'sessions', :action => 'destroy'
-  map.forgot '/forgot', :controller => 'users', :action => 'forgot'
-  map.reset 'reset/:reset_code', :controller => 'users', :action => 'reset'
+  match 'login',  :to => 'sessions#new'
+  match 'logout', :to => 'sessions#destroy'
+  match 'forgot', :to => 'users#forgot'
+  match 'reset/:reset_code', :to => 'users#reset'
 
 end
