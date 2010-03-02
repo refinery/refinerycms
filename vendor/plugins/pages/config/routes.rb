@@ -1,11 +1,17 @@
-ActionController::Routing::Routes.draw do |map|
-  map.resources :pages
+Rails::Application.routes.draw do
+  resources :pages
 
-  map.namespace(:admin) do |admin|
-    admin.resources :pages
-    admin.resources :page_parts
+  namespace(:admin) do
+    resources :pages
+    resources :page_parts
 
-    admin.resources :pages_dialogs, :as => "pages/dialogs", :controller => :page_dialogs,
-                    :collection => {:link_to => :get, :test_url => :get, :test_email => :get}
+    resources :pages_dialogs, :as => "pages/dialogs", :controller => :page_dialogs do
+      collection do
+        get :link_to
+        get :test_url
+        get :test_email
+      end
+    end
+
   end
 end

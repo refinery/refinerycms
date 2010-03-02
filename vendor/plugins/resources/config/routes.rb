@@ -1,9 +1,13 @@
-ActionController::Routing::Routes.draw do |map|
+Rails::Application.routes.draw do
 
-  map.resources :resources
+  resources :resources
 
-  map.namespace(:admin) do |admin|
-    admin.resources :resources, :collection => {:insert => :get}
+  namespace(:admin) do
+    resources :resources do
+      collection do
+        get :insert
+      end
+    end
   end
 
 end
