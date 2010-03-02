@@ -8,7 +8,7 @@
 <%= f.hidden_field field, :id => "current_image_id_#{randomiser}" -%>
 
 <div id='current_image_container_<%= randomiser %>'<%= " style='display: none'" if toggle_image_display %> style="margin-top: 10px;">
-  <a id='current_image_link_<%= randomiser %>' href="<%= insert_admin_images_url %>?dialog=true&amp;modal=true&amp;titlebar=true&amp;callback=image_picker_<%= randomiser %>_changed&amp;KeepThis=true&amp;TB_iframe=true&amp;width=958&amp;height=510" style='border: 0px' title='Change <%= description.titleize %>' name='Change <%= description.titleize %>' class='dialog'>
+  <a id='current_image_link_<%= randomiser %>' href="<%= insert_admin_images_url(:dialog => true, :callback => "image_picker_#{randomiser}", :width => 958, :height => 510) %>" style='border: 0px' title='Change <%= description.titleize %>' name='Change <%= description.titleize %>' class='dialog'>
     <% unless image.nil? -%>
       <%= image_fu image, nil, {:class => "brown_border", :id => "current_picked_image_#{randomiser}"} %>
     <% else -%>
