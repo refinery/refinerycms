@@ -8,6 +8,3 @@ Refinery::Plugin.register do |plugin|
     {:class => InquirySetting, :url_prefix => "edit", :title => 'name', :url_prefix => 'edit', :created_image => "user_comment.png", :updated_image => "user_edit.png"}
   ]
 end
-
-# Set the actionmailer root so that it'll work for delivering emails from this plugin.
-ActionMailer::Base.template_root = Refinery.root.join("vendor", "plugins", "inquiries", "app", "views").to_s
