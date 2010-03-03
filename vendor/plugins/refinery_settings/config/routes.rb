@@ -1,5 +1,5 @@
-Rails::Application.routes.draw do |map|
-  map.namespace(:admin) do |admin|
-    admin.resources :refinery_settings, :as => :settings
+Rails::Application.routes.draw do
+  namespace(:admin) do
+    resources :refinery_settings, :as => :settings
   end
 end
