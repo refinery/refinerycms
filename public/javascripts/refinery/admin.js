@@ -649,8 +649,11 @@ var image_picker = {
   , changed: function(image) {
     $(this.options.field).val(image.id.replace("image_", ""));
 
-    image.src = image.src.replace('_dialog_thumb', '_' + this.options.thumbnail);
-    $(this.options.image_display).attr('src', image.src).addClass('brown_border').show();
+    image.src = image.src.replace('_dialog_thumb', '_' + this.options.thumbnail).replace(/\?\d*/, '');
+
+    current_image = $(this.options.image_display);
+    current_image.replaceWith($("<img src='"+image.src+"?"+Math.floor(Math.random() * 1000000000)+"' id='"+current_image.attr('id')+"' class='brown_border' />"));
+
     $(this.options.remove_image_button).show();
     $(this.options.no_image_message).hide();
   }

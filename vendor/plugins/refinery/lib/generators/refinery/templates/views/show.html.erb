@@ -6,7 +6,11 @@
   <% attributes.each do |attribute| %>
   <div>
     <h3><%= attribute.name.titleize %></h3>
+<% unless attribute.type.to_s == 'image' -%>
     <%%= @<%= singular_name %>.<%= attribute.name %> %>
+<% else -%>
+    <%%= image_fu @<%= singular_name %>.<%= attribute.name %>, nil %>
+<% end -%>
   </div>
   <% end %>
 <%% end %>
