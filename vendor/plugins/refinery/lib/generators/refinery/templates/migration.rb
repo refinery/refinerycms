@@ -2,7 +2,14 @@ class <%= migration_name %> < ActiveRecord::Migration
 
   def self.up
     create_table :<%= table_name %> do |t|
-<% attributes.each do |attribute| -%>
+<%
+  attributes.each do |attribute|
+    # turn image into what it was supposed to be which is an integer reference to an image.
+    if attribute.type.to_s == 'image'
+      attribute.type = 'integer'
+      attribute.name = "#{attribute.name}_id".gsub("_id_id", "_id")
+    end
+-%>
       t.<%= attribute.type %> :<%= attribute.name %>
 <% end -%>
       t.integer :position
