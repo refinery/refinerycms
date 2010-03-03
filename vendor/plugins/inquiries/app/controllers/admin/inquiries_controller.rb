@@ -21,7 +21,7 @@ class Admin::InquiriesController < Admin::BaseController
 protected
 
   def find_all_inquiries
-    @open_inquiries = Inquiry.open
+    @open_inquiries = Inquiry.opened
     @closed_inquiries = Inquiry.closed
     @inquiries = @open_inquiries
   end
