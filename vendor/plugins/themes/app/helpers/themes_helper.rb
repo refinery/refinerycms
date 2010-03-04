@@ -22,4 +22,13 @@ module ThemesHelper
     tag.gsub!(/\/stylesheets\//, "/theme/stylesheets/") if theme
     tag.gsub(/theme=(.+?)\ /, '') # we need to remove any addition of theme='false' etc.
   end
+  
+  def image_submit_tag(source, options = {})
+    theme = (options.delete(:theme) == true)
+    
+    tag = super
+    # inject /theme/ into the image tag src if this is themed.
+    tag.gsub!(/src=[\"|\']/) { |m| "#{m}/theme/" }.gsub!("//", "/") if theme
+    tag.gsub(/theme=(.+?)\ /, '') # we need to remove any addition of theme='false' etc.
+  end
 end
