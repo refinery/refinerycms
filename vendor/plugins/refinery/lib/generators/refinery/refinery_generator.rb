@@ -55,10 +55,7 @@ class RefineryGenerator < Rails::Generator::NamedBase
       m.directory 'db/migrate/'
       m.migration_template 'migration.rb', 'db/migrate', :assigns => {:migration_name => "Create#{class_name.pluralize}"}, :migration_file_name => "create_#{singular_name.pluralize}"
 
-      puts "IMPORTANT"
-      puts "---------------------------------------"
-      puts "Now run 'rake db:migrate' to add the table to the DB"
-      puts "---------------------------------------"
+      m.readme "MIGRATE"
     end
   end
 

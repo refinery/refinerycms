@@ -23,5 +23,5 @@ module Admin::ImagesHelper
                               :next_label => 'Next &raquo;',
                               :renderer => Refinery::LinkRenderer
   end
-  
+
 end

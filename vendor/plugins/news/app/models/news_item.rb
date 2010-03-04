@@ -5,11 +5,13 @@ class NewsItem < ActiveRecord::Base
   # FIXME for Rails 3 (gem not yet compatible) has_friendly_id :title, :use_slug => true
 
   acts_as_indexed :fields => [:title, :body],
-                  :index_file => [Rails.root.to_s, "tmp", "index"]
+                  :index_file => %W(#{Rails.root} tmp index)
 
   default_scope :order => "publish_date DESC"
-  named_scope :latest, :conditions => ["publish_date < ?", Time.now], :limit => 10
-  named_scope :published, :conditions => ["publish_date < ?", Time.now]
+  # If you're using a named scope that includes a changing variable you need to wrap it in a lambda
+  # This avoids the query being cached thus becoming unaffected by changes (i.e. Time.now is constant)
+  named_scope :latest, lambda { { :conditions => ["publish_date < ?", Time.now], :limit => 10 } }
+  named_scope :published, lambda { { :conditions => ["publish_date < ?", Time.now] } }
 
   def not_published? # has the published date not yet arrived?
     publish_date > Time.now
