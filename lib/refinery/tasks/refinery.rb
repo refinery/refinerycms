@@ -10,7 +10,7 @@ if $refinery_gem_plugin_lib_paths.present?
   extra_rake_tasks << $refinery_gem_plugin_lib_paths.collect {|path| Dir[File.join(%W(#{path} tasks ** *.rake))].sort}
 end
 
-extra_rake_tasks << Dir[Rails.root.join("lib", "refinery", "tasks", "*.rake")]
+extra_rake_tasks << Dir[Rails.root.join("lib", "refinery", "tasks", "*.rake").to_s]
 
 # Load in any extra tasks that we've found.
 extra_rake_tasks.flatten.compact.uniq.each {|rake| load rake }

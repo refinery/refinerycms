@@ -572,7 +572,8 @@ var list_reorder = {
 
     // parse any children branches too.
     $(li).find('> li[id], > ul li[id]').each(function(i, child) {
-      branch += list_reorder.parse_branch(indexes + [i], child);
+      current_indexes = $.merge($.merge([], indexes), [i]);
+      branch += list_reorder.parse_branch(current_indexes, child);
     });
 
     return branch;
