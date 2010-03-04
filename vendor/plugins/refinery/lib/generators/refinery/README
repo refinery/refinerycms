@@ -15,6 +15,7 @@ There must be at least one attribute.
 == Examples
 ./script/generate refinery team_member title:string description:text
 ./script/generate refinery team_member title:string
+./script/generate refinery team_member title:string description:text image:image
 
 Results in:
 create  app/controllers/admin/team_members_controller.rb
