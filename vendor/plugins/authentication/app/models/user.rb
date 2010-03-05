@@ -37,8 +37,8 @@ class User < ActiveRecord::Base
     self.plugins.collect {|p| p.title} | Refinery::Plugins.always_allowed.titles
   end
 
-  def ui_deletable?(current_user = self)
-    !self.superuser and User.count > 1 and (current_user.nil? or self.id != current_user.id)
+  def can_delete?(other_user = self)
+    !other_user.superuser and User.count > 1 and (other_user.nil? or self.id != other_user.id)
   end
 
 protected
