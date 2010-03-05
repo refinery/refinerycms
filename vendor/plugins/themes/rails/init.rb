@@ -9,6 +9,7 @@ if RefinerySetting.table_exists?
       controller.view_paths.reject! { |v| v.to_s =~ %r{^themes/} }
       if (theme = RefinerySetting[:theme]).present?
         # Set up view path again for the current theme.
+        puts controller.view_paths.inspect
         controller.view_paths.unshift Rails.root.join("themes", theme, "views").to_s
 
         RefinerySetting[:refinery_menu_cache_action_suffix] = "#{theme}_site_menu"
@@ -16,6 +17,10 @@ if RefinerySetting.table_exists?
         # Set the cache key for the site menu (thus expiring the fragment cache if theme changes).
         RefinerySetting[:refinery_menu_cache_action_suffix] = "site_menu"
       end
+      
+      # TODO: ensure that routes within the application are top priority.
+      # Here we would grab all the routes that are under Rails.root.join("app", "views") 
+      # and promote them ahead of any themes routes.
     end
   end
 
