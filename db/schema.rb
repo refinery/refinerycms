@@ -45,14 +45,6 @@ ActiveRecord::Schema.define(:version => 20100223211536) do
     t.datetime "updated_at"
   end
 
-  create_table "news_items", :force => true do |t|
-    t.string   "title"
-    t.text     "body"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.datetime "publish_date"
-  end
-
   create_table "page_parts", :force => true do |t|
     t.integer  "page_id"
     t.string   "title"
