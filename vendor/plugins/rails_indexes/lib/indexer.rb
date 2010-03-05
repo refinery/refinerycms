@@ -155,11 +155,9 @@ module Indexer
             table_name = model_name.constantize.table_name
           else
             #puts "Unable to get the table_name for #{model_name.to_s}. it could be an ActiveResource"
-            next
           end
         else
           #puts "Unable to constantize #{model_name.to_s}, if you are sure that #{model_name.to_s} is a valid class name, please file an issue on\nhttp://github.com/eladmeidar/rails_indexes\nPlease supply the relevant code as well, thanks. =)"
-          next
         end
       end
 
