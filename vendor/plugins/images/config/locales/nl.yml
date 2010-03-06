@@ -4,7 +4,7 @@ nl:
       title: Afbeeldingen
 
   no_file_chosen: U moet een bestand kiezen om te uploaden.
-  file_should_be_smaller_then_50mb: Bestanden mogen niet groter dan 50 MB zijn.
+  file_should_be_smaller_than_max_image_size: Bestanden mogen niet groter dan {{max_image_size}} zijn.
   admin:
     images:
       form:

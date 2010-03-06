@@ -17,3 +17,5 @@ config.action_controller.perform_caching             = false
 config.action_mailer.raise_delivery_errors = false
 
 MAX_FILE_SIZE = 50.megabytes
+
+MAX_IMAGE_SIZE = 5.megabytes
