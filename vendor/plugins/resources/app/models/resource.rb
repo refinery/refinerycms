@@ -1,20 +1,20 @@
 class Resource < ActiveRecord::Base
 
   has_attachment :storage => (USE_S3_BACKEND ? :s3 : :file_system),
-          :size => 0.kilobytes..50.megabytes,
+          :size => 0.kilobytes..MAX_FILE_SIZE,
           :path_prefix => (USE_S3_BACKEND ? nil : 'public/system/resources')
 
   acts_as_indexed :fields => [:title, :type_of_content],
           :index_file => [RAILS_ROOT,"tmp","index"]
 
   def validate
-    errors.add_to_base(t('.must_choose_file')) unless self.filename
+    errors.add_to_base(I18n.translate('must_choose_file')) unless self.filename
 
     unless self.filename.nil?
       [:size].each do |attr_name|
         enum = attachment_options[attr_name]
         unless enum.nil? || enum.include?(send(attr_name))
-          errors.add_to_base(t('.file_should_be_smaller_than_50mb'))
+          errors.add_to_base(I18n.translate('file_should_be_smaller_than_max_file_size', :max_file_size => ActionController::Base.helpers.number_to_human_size(MAX_FILE_SIZE) ))
         end
       end
     end
