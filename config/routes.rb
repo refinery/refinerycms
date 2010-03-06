@@ -53,7 +53,7 @@ Refinerycms::Application.routes.draw do |map|
   root :to => 'pages#home'
 
   namespace(:admin) do
-    root :to => 'dashboard#index'
+    root :to => 'admin/dashboard#index'
   end
 
   # See how all your routes lay out with "rake routes"
@@ -67,7 +67,7 @@ Refinerycms::Application.routes.draw do |map|
 
   # Install the default routes as the lowest priority.
 
-  match 'admin/*path', :to => 'admin/base#error_404'
-  match '*path',       :to => 'application#error_404'
+  #match 'admin/*path', :to => 'admin/base#error_404'
+  #match '*path',       :to => 'application#error_404'
 
 end
