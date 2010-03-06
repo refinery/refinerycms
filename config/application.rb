@@ -3,11 +3,14 @@ require File.expand_path('../boot', __FILE__)
 # Specified gem version of Refinery to use when vendor/plugins/refinery/lib/refinery.rb is not present.
 REFINERY_GEM_VERSION = '0.9.6.20' unless defined? REFINERY_GEM_VERSION
 
-require 'pathname'
 require 'rails/all'
 
 # Auto-require default libraries and those for the current Rails environment.
 Bundler.require :default, Rails.env
+
+$LOAD_PATH << File.expand_path('../../vendor/engines/refinery/lib', __FILE__)
+require 'refinery'
+require File.expand_path('../../lib/refinery_initializer', __FILE__)
 
 module Refinerycms
   class Application < Rails::Application
@@ -16,7 +19,7 @@ module Refinerycms
     # -- all .rb files in that directory are automatically loaded.
 
     # Add additional load paths for your own custom dirs
-    # config.load_paths += %W( #{config.root}/extras )
+    # config.load_paths += %W( #{Rails.root}/vendor/engines/refinery/lib )
 
     # Only load the plugins named here, in the order given (default is alphabetical).
     # :all can be used as a placeholder for all plugins not explicitly named
@@ -44,32 +47,3 @@ module Refinerycms
     config.filter_parameters << :password
   end
 end
-
-# pick the refinery root path
-rails_root = (defined?(Rails.root) ? Rails.root : Pathname.new(Rails.root)).cleanpath
-if (non_gem_path = rails_root.join("lib", "refinery_initializer.rb")).exist?
-  require non_gem_path.to_s
-else
-  require 'rubygems'
-  version = if defined? REFINERY_GEM_VERSION
-    REFINERY_GEM_VERSION
-  elsif ENV.include?("REFINERY_GEM_VERSION")
-    ENV["REFINERY_GEM_VERSION"]
-  else
-    $1 if rails_root.join("config", "application.rb").read =~ /^[^#]*REFINERY_GEM_VERSION\s*=\s*["']([!~<>=]*\s*[\d.]+)["']/
-  end
-
-  if version
-    gem 'refinerycms', version
-  else
-    gem 'refinerycms'
-  end
-
-  require 'refinery_initializer'
-end
-
-# Set to true in your environment specific file (e.g. production.rb) to use Amazon's Simple
-# Storage Service instead of the default file system for resources and images
-USE_S3_BACKEND = false unless defined?(USE_S3_BACKEND)
-
-require Refinery.root.join("lib", "refinery_initializer").cleanpath.to_s
