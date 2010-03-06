@@ -7,19 +7,19 @@ class Image < ActiveRecord::Base
                  :path_prefix => (USE_S3_BACKEND ? nil : 'public/system/images'),
                  :processor => 'Rmagick',
                  :thumbnails => ((((thumbnails = RefinerySetting.find_or_set(:image_thumbnails, {})).is_a?(Hash) ? thumbnails : (RefinerySetting[:image_thumbnails] = {}))) rescue {}),
-                 :max_size => 5.megabytes
+                 :max_size => MAX_IMAGE_SIZE
 
   acts_as_indexed :fields => [:title],
           :index_file => [RAILS_ROOT,"tmp","index"]
 
   def validate
-   errors.add_to_base(t('.no_file_chosen')) unless self.filename
+   errors.add_to_base(I18n.translate('no_file_chosen')) unless self.filename
 
    unless self.filename.nil?
      [:size].each do |attr_name|
        enum = attachment_options[attr_name]
 
-       errors.add_to_base(t('.file_should_be_smaller_then_50mb')) unless enum.nil? || enum.include?(send(attr_name))
+       errors.add_to_base(I18n.translate('file_should_be_smaller_than_max_image_size', :max_image_size => ActionController::Base.helpers.number_to_human_size(MAX_IMAGE_SIZE) )) unless enum.nil? || enum.include?(send(attr_name))
      end
    end
 
