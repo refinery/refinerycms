@@ -25,3 +25,4 @@ config.log_level = :warn
 # instead of the default file system for resources and images
 # Make sure to your bucket info is correct in amazon_s3.yml
 USE_S3_BACKEND = false
+MAX_FILE_SIZE = 50.megabytes
