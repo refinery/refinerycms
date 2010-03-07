@@ -2,7 +2,7 @@ class Admin::PagesController < Admin::BaseController
 
   crudify :page, :conditions => "parent_id IS NULL", :order => "position ASC", :include => [:parts, :slugs, :children], :paging => false
   before_filter :find_pages_for_parents_list, :only => [:new, :create, :edit, :update]
-  after_filter :expire_menu_fragment_caching, :only => [:create, :update, :destroy]
+  after_filter :expire_menu_fragment_caching, :only => [:create, :update, :destroy, :update_positions]
 
   def new
     @page = Page.new
