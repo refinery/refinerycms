@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100305023036) do
+ActiveRecord::Schema.define(:version => 20100305023037) do
 
   create_table "images", :force => true do |t|
     t.integer  "parent_id"
@@ -126,9 +126,7 @@ ActiveRecord::Schema.define(:version => 20100305023036) do
     t.string   "crypted_password",                         :null => false
     t.string   "password_salt",                            :null => false
     t.string   "persistence_token",                        :null => false
-    t.datetime "activated_at"
     t.string   "state",             :default => "passive"
-    t.datetime "deleted_at"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "superuser",         :default => false
