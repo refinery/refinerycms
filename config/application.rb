@@ -28,3 +28,5 @@ Refinery::Initializer.run do |config|
   config.gem "refinerycms-news", :lib => "news", :version => "~> 0.9.7"
   # config.gem "refinerycms-portfolio", :lib => "portfolio", :version => "~> 0.9.3.8"
 end
+
+#RefinerySetting.login_field = 'email'

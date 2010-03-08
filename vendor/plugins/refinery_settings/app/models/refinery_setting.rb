@@ -115,4 +115,18 @@ class RefinerySetting < ActiveRecord::Base
     self[:value] = new_value
   end
 
+  #-------------------------------------------------------------------------------------------------
+  # Some settings cannot be stored in the database and be changable by the user. For example,
+  # login_field, if it were to be changed in the database while the app were running, would cause the
+  # views to believe it were set to one value (since they are reloaded immediately) while the models
+  # still believed it was the new value.
+  #
+  # Those settings can be listed here and can be specified in config/application.rb.
+  #
+  # (We could also use a gem like configatron for this purpose and store these settings in
+  # config/config.yml.)
+
+  @@login_field = 'login'
+  cattr_accessor :login_field
+
 end
