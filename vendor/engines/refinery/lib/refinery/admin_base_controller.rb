@@ -26,7 +26,6 @@ protected
   end
 
   def restrict_plugins
-    puts Refinery::Plugins.active.inspect
     Refinery::Plugins.set_active( current_user.authorized_plugins ) if current_user.respond_to? :plugins
   end
 
@@ -34,8 +33,7 @@ protected
     if Refinery::Plugins.active.reject {|plugin| params[:controller] !~ Regexp.new(plugin.menu_match) }.empty?
       flash[:error] = "You do not have permission to access this feature."
       logger.warn "'#{current_user.login}' tried to access '#{params[:controller]}' but was rejected."
-      # FIXME: causing recursive redirect
-      # redirect_back_or_default(admin_root_url)
+      redirect_back_or_default(admin_root_url)
     end
   end
 
