@@ -29,6 +29,7 @@ gem "aasm", ">= 2.1.5", :require => "aasm"
 # FIXME for Rails 3 (gem not yet compatible) gem "friendly_id", ">= 2.2.2", :require => "friendly_id"
 gem "hpricot", ">= 0.8.1", :require => "hpricot"
 gem "slim_scrooge", ">= 1.0.5", :require => "slim_scrooge"
-gem "will_paginate", ">= 2.3.11", :require => "will_paginate"
+#git 'git://github.com/mislav/will_paginate.git', 'branch' => 'rails3'
+gem "will_paginate", "3.0.pre"
 gem "rake", ">= 0.8.3", :require => "rake"
 #===REFINERY END OF REQUIRED GEMS===
