@@ -2,12 +2,11 @@
 # Copyright (c) 2007 Douglas F Shearer.
 # http://douglasfshearer.com
 
-module WillPaginate
+module Foo::Acts::Indexed
 
-  module Finder
+  module WillPaginate
 
-    module ClassMethods
-
+    module Search
 
       def paginate_search(query, options)
 
@@ -15,7 +14,7 @@ module WillPaginate
 
         total_entries ||= find_with_index(query,{},{:ids_only => true}).size
 
-        returning WillPaginate::Collection.new(page, per_page, total_entries) do |pager|
+        returning ::WillPaginate::Collection.new(page, per_page, total_entries) do |pager|
           options.update :offset => pager.offset, :limit => pager.per_page
 
           options = options.delete_if {|key, value| [:page, :per_page].include?(key) }
@@ -26,4 +25,8 @@ module WillPaginate
 
     end
   end
+end
+
+class ActiveRecord::Base
+  extend Foo::Acts::Indexed::WillPaginate::Search
 end
