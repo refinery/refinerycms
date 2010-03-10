@@ -1,4 +1,8 @@
-class Refinery::LinkRenderer < WillPaginate::LinkRenderer
+class Refinery::LinkRenderer < WillPaginate::ViewHelpers::LinkRenderer
+
+# TODO: Rewrite for WillPaginate 3 API
+
+=begin
 
   def url_for(page)
     page_one = page == 1
@@ -41,5 +45,7 @@ private
   def param_name
     @options[:param_name].to_s
   end
+
+=end
 
 end
