@@ -13,6 +13,7 @@ module Admin::DashboardHelper
       message = "<td>#{refinery_icon_tag("#{activity.send "#{action}_image"}")}</td>"
       message << "<td>#{link} #{record.class.name.titleize.downcase} was #{action}</td>"
       message << "<td class='time_ago'>#{time_ago_in_words(record.send "#{action}_at").gsub("about ", "")} ago</td>"
+      message.html_safe
     end
   end
 

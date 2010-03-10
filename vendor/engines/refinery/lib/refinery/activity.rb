@@ -33,5 +33,12 @@ module Refinery
       "#{self.url_prefix}#{@url ||= "admin_#{self.class.name.underscore.downcase}_url"}"
     end
 
+    def class
+      if    @class == Class  then @class
+      else
+        Object.const_get(@class.to_sym)
+      end
+    end
+
   end
 end
