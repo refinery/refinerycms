@@ -1,5 +1,5 @@
 <% flash.each do |key, value| %>
 <div id="flash" class="flash_<%= key %>" style='display: none;' >
-  <%= value %> (<%= link_to "close", "", {:id => "flash_close"} %>)
+  <%= value %> (<%= link_to t('.close'), "", {:id => "flash_close"} %>)
 </div>
 <% end %>

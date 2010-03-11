@@ -4,22 +4,23 @@
   toggle_image_display ||= false
   randomiser = rand(Time.now.yesterday.to_i * Time.now.to_i)
 -%>
-<%= link_to "Show", "", :id => "current_image_toggler_#{randomiser}" if toggle_image_display -%>
+<%= link_to t('.show'), "", :id => "current_image_toggler_#{randomiser}" if toggle_image_display %>
 <%= f.hidden_field field, :id => "current_image_id_#{randomiser}" -%>
 
 <div id='current_image_container_<%= randomiser %>'<%= " style='display: none'" if toggle_image_display %> style="margin-top: 10px;">
-  <a id='current_image_link_<%= randomiser %>' href="<%= insert_admin_images_url(:dialog => true, :callback => "image_picker_#{randomiser}_changed", :width => 958, :height => 510) %>" style='border: 0px' title='Change <%= description.titleize %>' name='Change <%= description.titleize %>' class='dialog'>
+<#% TODO translate update :what of .change %>
+  <a id='current_image_link_<%= randomiser %>' href="<%= insert_admin_images_url(:dialog => true, :callback => "image_picker_#{randomiser}_changed", :width => 958, :height => 510) %>" style='border: 0px' title='<%= t('.change', :what =>  description.titleize) %>' name='<%= t.('change', :what => description.titleize) %>' class='dialog'>
     <% unless image.nil? -%>
       <%= image_fu image, :medium, {:class => "brown_border", :id => "current_picked_image_#{randomiser}"} %>
     <% else -%>
       <img id="current_picked_image_<%= randomiser %>" class="" src="" alt="" style='display: none' />
     <% end -%>
     <p id='no_picked_image_selected_<%= randomiser %>' <%= "style='display: none;'" if image.present? %>>
-      There is currently no <%= description %> selected, please click here to add one.
+      <%= t('.none_selected', :what => t('.' + description )) %>
     </p>
   </a>
   <br/>
-  <%= link_to "Remove current #{description}", "#", :id => "remove_picked_image_#{randomiser}", :style => "#{"display:none;" if image.nil?}" %>
+  <%= link_to t('.remove_current', :what => t('.' + description )), "#", :id => "remove_picked_image_#{randomiser}", :style => "#{"display:none;" if image.nil?}" %>
 </div>
 
 <% content_for :head do -%>

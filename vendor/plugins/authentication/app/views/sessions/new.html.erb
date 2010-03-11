@@ -17,8 +17,8 @@
     <%= f.check_box :remember_me %>
   </div>
   <div class='form-actions'>
-    <%= submit_tag 'Log in' %>
-    or
-    <%= link_to "Cancel", root_url %>
+    <%= submit_tag t('.log_in') %>
+    <%= t '.or' %>
+    <%= link_to t('.cancel_log_in'), root_url %>
   </div>
 <% end -%>

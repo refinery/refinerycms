@@ -1,19 +1,14 @@
 <ul id="menu">
-  <% Refinery::Plugins.active.in_menu.each do |plugin| -%>
-    <li class='tab' id='plugin_<%= plugin.title %>'>
-      <%= link_to plugin.title, plugin.url, :class => (plugin.highlighted?(params) ? "active" : "") %>
-    </li>
-  <% end -%>
+  <%= render :partial => "/admin/menu_tab", :collection => Refinery::Plugins.active.in_menu %>
   <% if Refinery::Plugins.active.in_menu.many? -%>
     <li>
-      <%= link_to "&nbsp;", "", :id => "menu_reorder", :title => "Reorder menu" %>
-      <%= link_to "&nbsp;", "", :id => "menu_reorder_done", :title => "I'm done reordering the menu", :style => "display: none;" %>
+      <%= link_to "&nbsp;", "", :id => "menu_reorder", :title => t(:reorder_menu) %>
+      <%= link_to "&nbsp;", "", :id => "menu_reorder_done", :title => t(:reorder_menu_done), :style => "display: none;" %>
     </li>
   <% end %>
   <li id='logout'>
-    <%= link_to "Log out", logout_url %>
+    <%= link_to t(:log_out), logout_url %>
   </li>
 </ul>
 
 <input type='hidden' id='admin_authenticity_token' value='<%= form_authenticity_token %>' />
-

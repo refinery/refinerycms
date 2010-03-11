@@ -7,9 +7,9 @@
       <div id="page">
         <div class="clearfix" id="header">
           <h1>
-            <%= just_installed? ? "Welcome to Refinery" : link_to(RefinerySetting[:site_name].titleize, admin_root_url) %>
+            <%= link_to((!just_installed? ? RefinerySetting[:site_name].titleize : t('layouts.admin.welcome_to_refinery')), admin_root_url) %>
           </h1>
-          <%= link_to "View public site", "/", :target => "_blank", :id => "site_link" if logged_in? %>
+          <%= link_to t('.view_public_site'), "/", :target => "_blank", :id => "site_link" if logged_in? %>
           <%= link_to image_tag("#{"http://www.refinerycms.com/images/" unless local_request?}refinery/logo.png", :alt => "Refinery (tm) Content Manager"), "http://www.refinerycms.com", :target => "_blank", :id => "logo" -%>
           <%= render :partial => "/admin/menu" if logged_in? %>
         </div>

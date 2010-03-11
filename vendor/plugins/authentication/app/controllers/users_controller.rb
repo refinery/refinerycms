@@ -7,13 +7,14 @@ class UsersController < ApplicationController
 
   layout 'admin'
 
+  #TODO translate
   def new
     render :text => "User signup is disabled", :layout => true unless can_create_public_user
   end
 
   def create
     unless can_create_public_user
-      render :text => "User signup is disabled", :layout => true
+      render :text => t('users.signup_disabled'), :layout => true unless can_create_public_user
     else
       begin
         cookies.delete :auth_token
@@ -31,11 +32,11 @@ class UsersController < ApplicationController
           current_user.activate!
           current_user.update_attribute(:superuser, true) if User.count == 1 # this is the superuser if this user is the only user.
           redirect_back_or_default(admin_root_url)
-          flash[:notice] = "Welcome to Refinery, #{current_user.login}."
+          flash[:notice] = t('users.create.welcome', :who => current_user.login)
 
           if User.count == 1 or RefinerySetting[:site_name] == "Company Name"
             refinery_setting = RefinerySetting.find_by_name("site_name")
-            flash[:notice] << "<br/>First let's give the site a name. <a href='#{edit_admin_refinery_setting_url(refinery_setting)}'>Go here</a> to edit your website's name"
+            flash[:notice] << t('users.setup_website_name', :link => edit_admin_refinery_setting_url(refinery_setting))
           end
         else
           render :action => 'new'
@@ -49,12 +50,13 @@ class UsersController < ApplicationController
 
     if logged_in? && !current_user.active?
       current_user.activate!
-      flash[:notice] = "Signup complete!"
+      flash[:notice] = t('.signup_complete')
     end
 
     redirect_back_or_default(root_url)
   end
 
+  #TODO: TRANSLATE
   def forgot
     if request.post?
       if (user = User.find_by_email(params[:user][:email])).present?
@@ -74,6 +76,7 @@ class UsersController < ApplicationController
     end
   end
 
+  #TODO: TRANSLATE
   def reset
     @user = User.find_by_reset_code(params[:reset_code]) unless params[:reset_code].nil?
 

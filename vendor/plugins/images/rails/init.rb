@@ -1,5 +1,7 @@
 Refinery::Plugin.register do |plugin|
   plugin.title = "Images"
+  plugin.name = "refinery_images"
+  plugin.directory = "images"
   plugin.description = "Manage images"
   plugin.version = 1.0
   plugin.menu_match = /admin\/image(_dialog)?s$/

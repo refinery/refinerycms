@@ -1,0 +1,61 @@
+nl:
+  plugins:
+    refinery_inquiries:
+      title: Contact aanvragen
+  activerecord:
+    models:
+      inquiry: Vraag
+    attributes:
+      inquiry:
+        to: aan
+        from: van
+        click_to_email: Klik om dit adres te emailen
+        name: naam
+        email: 'e-mail'
+        phone: telefoon
+        date: datum
+        message: bericht
+  inquiries:
+    new:
+      header_message: Oeps er is een klein probleem opgetreden
+      message: De volgende problemen moeten opgelost worden
+      send: Verstuur uw vraag
+      privacy_policy: Wij respecteren uw privacy
+  admin:
+    inquiries:
+      inquiry:
+        move_inquiry_to_closed: Verplaats deze vraag naar 'verwerkt'
+        move_inquiry_to_open: Verplaats deze vraag naar 'te verwerken'
+        read_inquiry: Lees de vraag
+        delete:
+          message: "Weet u zeker dat u de vraag '{{name}}' wilt verwijderen?"
+          title: Verwijder de vraag permanent.
+      toggle_status:
+        closed: "Vraag '{{inquiry}}' is behandeld"
+        reopened: "Vraag '{{inquiry}}' is heropend"
+      index:
+        update_notified: Wijzig wie een notificatie ontvangt
+        edit_confirmation_email: Bewerk notificatie email
+        search_results_for: Zoekresultaten voor {{query}}
+        open_inquiries: Open vragen
+        no_open_inquiries: "Jeej! Er zijn geen onverwerkte vragen!"
+        closed_inquiries: Verwerkte vragen
+        havent_closed_any_inquiries: Je hebt nog geen enkele vraag verwerkt
+      show:
+        details: Details
+        click_to_email: Klik hier om een e-mail te sturen
+        status: Status
+        open: Openstaand
+        closed: Behandeld
+        age: Leeftijd
+        actions: Acties
+        back_to_all_inquiries: Terug naar alle vragen
+    inquiry_settings:
+      update:
+        updated: "'{{setting}}' is aangepast."
+      notification_recipients_form:
+        inquiry_settings_value_name: Stuur notificaties naar
+        explanation: "Iedere keer wanneer iemand het vraag formulier invult op uw website, stuurt Refinery een email waarin staat dat er een nieuwe vraag ontvangen is."
+        hint: "Vul hierboven een email adres in. Wilt u naar meerdere adressen notificaties sturen? Vul dan meerdere email adressen in gescheiden door comma's"
+        example: "Bijvoorbeeld: ik@domein.com, vrienden@msn.com, collegas@werk.com"
+      confirmation_email_form:

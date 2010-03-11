@@ -5,7 +5,7 @@ module Refinery
       yield self.new
     end
 
-    attr_accessor :title, :version, :description, :url, :menu_match, :plugin_activity, :directory, :hide_from_menu, :always_allow_access
+    attr_accessor :name, :title, :version, :description, :url, :menu_match, :plugin_activity, :directory, :hide_from_menu, :always_allow_access
 
     def initialize
       Refinery::Plugins.registered << self # add me to the collection of registered plugins
@@ -32,11 +32,11 @@ module Refinery
     end
 
     def menu_match
-      @menu_match ||= /admin\/#{self.title.gsub(" ", "_").downcase}$/
+      @menu_match ||= /#{self.url.gsub(/^\//, "")}$/
     end
 
-    def hide_from_menu
-      @hide_from_menu
+    def name
+      @name ||= self.title.gsub(" ", "_").downcase
     end
 
     def always_allow_access

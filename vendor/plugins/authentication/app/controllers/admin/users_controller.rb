@@ -23,7 +23,7 @@ class Admin::UsersController < Admin::BaseController
       @user.plugins = @selected_plugin_titles
       @user.register!
       @user.activate!
-      flash[:notice] = "'#{@user.login}' was successfully created."
+      flash[:notice] = t('refinery.crudify.created', :what => @user.login)
       redirect_to :action => 'index'
     else
       render :action => 'new'
@@ -39,12 +39,12 @@ class Admin::UsersController < Admin::BaseController
     @selected_plugin_titles = params[:user][:plugins]
     # Prevent the current user from locking themselves out of the User manager
     if current_user.id == @user.id and !params[:user][:plugins].include?("Users")
-      flash.now[:error] = "You cannot remove the 'Users' plugin from the currently logged in account."
+      flash.now[:error] = t('admin.users.update.cannot_remove_user_plugin_from_current_user')
       render :action => "edit"
     else
       @previously_selected_plugins_titles = @user.plugins.collect{|p| p.title}
       if @user.update_attributes params[:user]
-        flash[:notice] = "'#{@user.login}' was successfully updated."
+        flash[:notice] = t('refinery.crudify.updated', :what => @user.login)
         redirect_to admin_users_url
       else
         @user.plugins = @previously_selected_plugins_titles
@@ -52,6 +52,18 @@ class Admin::UsersController < Admin::BaseController
         render :action => 'edit'
       end
     end
+  end
+
+  def destroy
+    @user.delete!
+    @user.destroy
+    flash[:notice] = t('refinery.crudify.destroyed', :what => @user.login)
+    redirect_to admin_users_path
+  end
+
+  def purge
+    @user.destroy
+    redirect_to admin_users_path
   end
 
 protected

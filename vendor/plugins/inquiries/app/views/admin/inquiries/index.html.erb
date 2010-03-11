@@ -4,21 +4,23 @@
       <%= render :partial => "/shared/admin/search", :locals => {:url => admin_inquiries_url} %>
     </li>
     <li>
-      <%= link_to "Update who gets notified", edit_admin_inquiry_setting_url(InquirySetting.notification_recipients),
-                                              :class => "user_comment_icon" %>
+      <%= link_to t('.update_notified'),
+                    edit_admin_inquiry_setting_url(InquirySetting.notification_recipients),
+                    :class => "user_comment_icon" %>
     </li>
     <li>
-      <%= link_to "Edit confirmation email", edit_admin_inquiry_setting_url(InquirySetting.confirmation_body),
-                                             :class => "edit_email_icon" %>
+      <%= link_to t('.edit_confirmation_email'),
+                  edit_admin_inquiry_setting_url(InquirySetting.confirmation_body),
+                  :class => "edit_email_icon" %>
     </li>
   </ul>
 </div>
 <div id='records'>
   <% if searching? %>
-    <h2>Search Results for "<%= params[:search] %>"</h2>
+    <h2><%= t('search_results_for', :query => params[:search]) %>"</h2>
     <%= render :partial => "inquiry", :collection => @inquiries %>
   <% else %>
-    <h2>Open Inquiries</h2>
+    <h2><%= t('.open_inquiries') %></h2>
     <% if @open_inquiries.any? -%>
       <ul>
         <%= render :partial => "inquiry", :collection => @open_inquiries %>
@@ -26,17 +28,17 @@
     <% else -%>
       <p>
         <%= refinery_icon_tag('accept.png', :style => 'vertical-align: bottom') %>
-        Hooray! There are no open inquiries because you've dealt with them all.
+        <%= t('.no_open_inquiries') %>
       </p>
     <% end -%>
-    <h2>Closed Inquiries</h2>
+    <h2><%= t('.closed_inquiries') %></h2>
     <% if @closed_inquiries.any? -%>
       <ul>
         <%= render :partial => "inquiry", :collection => @closed_inquiries %>
       </ul>
     <% else -%>
       <p>
-        You haven't closed any inquiries yet.
+        <%= t('.havent_closed_any_inquiries') %>
       </p>
     <% end -%>
   <% end %>

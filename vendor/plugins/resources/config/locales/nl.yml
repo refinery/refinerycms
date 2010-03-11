@@ -1,0 +1,33 @@
+nl:
+  plugins:
+    refinery_resources:
+      title: Bestanden
+  must_choose_file: U moet een bestand kiezen dat u wilt uploaden. 
+  file_should_be_smaller_than_max_file_size: Bestanden mogen niet groter dan {{max_file_size}} zijn.
+  admin:
+    resources:
+      form:
+        file_to_upload: Het up te loaden bestand.
+        download_current: Download het huidige bestand
+        or: or
+        replace: ,vervang het door dit...
+      resource:
+        download: Download dit bestand ({{size}})
+        edit: Bewerk dit bestand.
+        delete:
+          message: Weet u zeker dat u '{{title}}' wilt verwijderen?
+          title: Verwijder dit bestand permanent.
+      index:
+        upload_new: Upload een nieuw bestand.
+        search_results: Zoek resultaten voor '{{search_string}}'
+        search_no_results: Sorry, er zijn zoekresultaten gevonden.
+        no_files_yet: Er zijn nog geen bestanden. Klik op "Upload een nieuw bestand" om uw eerste bestand toe te voegen.
+      insert:
+        existing_file: Bestaand bestand
+        new: Nieuw bestand
+        link_to_resource: Link naar dit bestand
+        previous: Vorige
+        next: Volgende
+        submit_insert: Voeg in
+        or: of
+        cancel: Annuleer

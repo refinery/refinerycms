@@ -5,19 +5,19 @@
     "branch_start"
   end
 -%>
-<li class='record<%= " #{branch}" %>' id="<%= dom_id(page) -%>">
+<li class='clearfix record<%= " #{branch}" %>' id="<%= dom_id(page) -%>">
   <div class='clearfix'>
     <span class='actions'>
     <%= link_to refinery_icon_tag('application_go.png'), page.url, :target => "_blank",
-                 :title => "View this page live <br/><em>(opens in a new window)</em>" %>
+                 :title => t('.view_live') %> <%#"" %>
     <%= link_to refinery_icon_tag('application_edit.png'), edit_admin_page_path(page),
-                 :title => "Edit this page" %>
+                 :title => t('.edit_this_page') %>
     <%= link_to refinery_icon_tag('delete.png'), admin_page_path(page),
                   :class => "cancel confirm-delete",
-                  :title => "Remove this page forever" if page.deletable? %>
+                  :title => t('.confirm_delete_page_title') if page.deletable? %>
     </span>
-    <%= h page.title %> <%= "<em>(hidden)</em>" unless page.show_in_menu? %>
-    <%= "<em>(draft)</em>" if page.draft? %>
+    <%= h page.title %> <%= "<em>(" + t('.hidden') + ")</em>" unless page.show_in_menu? %>
+    <%= "<em>(" + t('.draft') + ")</em>" if page.draft? %>
   </div>
   <% if (children = page.children).any? %>
     <ul<%= " class='nested'" %>>
