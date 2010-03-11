@@ -26,7 +26,7 @@ gem 'mongrel', :group => :development
 #===REFINERY REQUIRED GEMS===
 git 'git://github.com/rubyist/aasm.git'
 gem "aasm", ">= 2.1.5", :require => "aasm"
-# FIXME for Rails 3 (gem not yet compatible) gem "friendly_id", ">= 2.2.2", :require => "friendly_id"
+gem "friendly_id", ">= 2.3.2", :require => 'friendly_id'
 gem "hpricot", ">= 0.8.1", :require => "hpricot"
 gem "slim_scrooge", ">= 1.0.5", :require => "slim_scrooge"
 #git 'git://github.com/mislav/will_paginate.git', 'branch' => 'rails3'

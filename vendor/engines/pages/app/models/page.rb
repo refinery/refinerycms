@@ -5,7 +5,7 @@ class Page < ActiveRecord::Base
   acts_as_tree :order => "position ASC", :include => [:children, :slugs]
 
   # Docs for friendly_id http://github.com/norman/friendly_id
-  # FIXME for Rails 3 (gem not yet compatible) has_friendly_id :title, :use_slug => true
+  has_friendly_id :title, :use_slug => true
 
   has_many :parts, :class_name => "PagePart", :order => "position ASC"
   accepts_nested_attributes_for :parts, :allow_destroy => true
@@ -85,7 +85,7 @@ class Page < ActiveRecord::Base
   # to "/inquiries/new"
   def url
     if self.link_url.present?
-      self.link_url =~ /^\// ? {:controller => self.link_url} : self.link_url
+      self.link_url
     elsif self.to_param.present?
       {:controller => "/pages", :action => "show", :id => self.to_param}
     end

@@ -16,8 +16,8 @@
                   :class => "cancel confirm-delete",
                   :title => "Remove this page forever" if page.deletable? %>
     </span>
-    <%= h page.title %> <%= "<em>(hidden)</em>" unless page.show_in_menu? %>
-    <%= "<em>(draft)</em>" if page.draft? %>
+    <%= h page.title %> <%=raw "<em>(hidden)</em>" unless page.show_in_menu? %>
+    <%=raw "<em>(draft)</em>" if page.draft? %>
   </div>
   <% if (children = page.children).any? %>
     <ul<%= " class='nested'" %>>
