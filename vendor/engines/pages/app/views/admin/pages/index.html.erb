@@ -38,4 +38,7 @@
     <% end %>
   <% end %>
 </div>
-<%= render :partial => "/shared/admin/make_sortable", :locals => {:tree => true } if Page.count > 1 %>
+<%# FIXME: Rails 3 - hitting issues with url_for and Hash parameters, i.e.
+           {:controller=>"admin/pages", :action=>"update_positions"}
+%>
+<%# render :partial => "/shared/admin/make_sortable", :locals => {:tree => true } if Page.count > 1 %>
