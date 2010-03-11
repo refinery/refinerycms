@@ -8,12 +8,7 @@ class Admin::InquiriesController < Admin::BaseController
   def toggle_status
     @inquiry.toggle!(:open)
 
-    flash[:notice] = "'#{@inquiry.name}' has been " +
-    if @inquiry.open?
-      "reopened"
-    else
-      "closed"
-    end
+    flash[:notice] = "'#{@inquiry.name}' has been #{@inquiry.open? ? "reopened" : "closed"}"
 
     redirect_to :action => 'index'
   end
