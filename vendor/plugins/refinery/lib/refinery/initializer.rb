@@ -49,7 +49,6 @@ module Refinery
       configuration.plugin_loader = Refinery::PluginLoader unless configuration.plugin_loader != Rails::Plugin::Loader
       configuration.plugins = [ :friendly_id, :will_paginate, :aasm, :all ] if configuration.plugins.nil?
       configuration.gem "aasm", :version => "~> 2.1.3", :lib => "aasm"
-      configuration.gem "friendly_id", :version => "~> 2.2.2", :lib => "friendly_id"
       configuration.gem "hpricot", :version => "~> 0.8.1", :lib => "hpricot"
       configuration.gem "slim_scrooge", :version => "~> 1.0.5", :lib => "slim_scrooge"
       configuration.gem "will_paginate", :version => "~> 2.3.11", :lib => "will_paginate"
