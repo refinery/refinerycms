@@ -14,9 +14,9 @@ class SessionsController < ApplicationController
       end
 
       redirect_back_or_default(admin_root_url)
-      flash[:notice] = "Logged in successfully"
+      flash[:notice] = t('sessions.login_successfull')
     else
-      flash.now[:error] = "Sorry, your password or username was incorrect."
+      flash.now[:error] = t('sessions.login_failed')
       render :action => 'new'
     end
   end
@@ -25,7 +25,7 @@ class SessionsController < ApplicationController
     self.current_user.forget_me if logged_in?
     cookies.delete :auth_token
     reset_session
-    flash[:notice] = "You have been logged out."
+    flash[:notice] = t('sessions.logged_out') 
     redirect_back_or_default(new_session_url)
   end
 

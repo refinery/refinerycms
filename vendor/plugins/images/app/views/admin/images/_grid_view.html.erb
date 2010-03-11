@@ -6,10 +6,10 @@
          <%= link_to refinery_icon_tag('eye.png'), image.public_filename,
                                :target => "_blank", :title => "Click to view '#{image.title}'<br/><em>Opens in a new window</em>" %>
          <%= link_to refinery_icon_tag('application_edit.png'), edit_admin_image_path(image),
-                                 :title => 'Edit this image' %>
+                                 :title => t('.edit') %>
          <%= link_to refinery_icon_tag('delete.png'), admin_image_path(image),
-                                                                    :class => "cancel confirm-delete",
-                                  :title => "Remove this image forever" %>
+                     :class => "cancel confirm-delete",
+                     :title => t('.confirm_delete.title') %>
        </span>
      </li>
   <% end -%>

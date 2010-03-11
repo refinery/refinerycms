@@ -1,0 +1,53 @@
+nl:
+  activerecord:
+    models:
+      session: session
+    attributes:
+      session:
+        login: login
+        password: wachtwoord
+        remember_me: Onthoud mijn gegevens
+  plugins:
+    refinery_users:
+      title: Gebruikers
+  admin:
+    users:
+      update:
+        cannot_remove_user_plugin_from_current_user: "U kunt de 'Gebruikers' plugin niet deactiveren voor uw huidige ingelogde account."
+      form:
+        blank_password_keeps_current: Als u dit veld leeg laat, blijft het oude wachtwoord behouden.
+      index:
+        create_new_user: Maak een nieuwe gebruiker
+        confirm_delete_message: "Weet u zeker dat u de gebruiker '{{who}}' wilt verwijderen?"
+        conform_delete_title: Verwijder deze gebruiker permanent.
+        edit_user: Bewerk deze gebruiker
+        email_user: Email deze gebruiker
+        preview: ({{who}}) is aangemaakt op {{created_at}}
+        no_users_yet:  Er zijn nog geen gebruikers. Klik op "Maak een nieuwe gebruiker" om de eerste toe te voegen.
+  sessions:
+    login_successfull: Successvol ingelogd.
+    login_failed: Sorry, uw wachtwoord of gebruikersnaam was niet juist.
+    logged_out: U bent uitgelogd.
+    new:
+      log_in: Log in
+      or: of
+      cancel_log_in: Annuleren
+  users:
+    setup_website_name: "<br/>Laten we eerst de website een naam geven. <a href='{{link}}'>Klik hier</a> om de naam van de website te bewerken"
+    signup_disabled: Het registreren van gebruikers is uitgeschakeld
+    new:
+      fill_form: Vul het onderstaande formulier in, zodat u kan beginnen. 
+      sign_up: Registreer
+    create:
+      welcome: Welkom bij Refinery, {{who}}
+      signup_complete: Registratie compleet!
+  user_mailer:
+    please_activate: A.u.b. uw gebruikersaccount activeren.
+    activated: Uw gebruikersaccount is geactiveerd!
+    activated_email: "{{who}}, uw gebruikersaccount is geactiveerd. U mag nu plugins toevoegen:"
+    account_created: Uw account is aangemaakt.
+    user_name: Gebruiker {{name}}
+    password: Wachtwoord {{password}}
+    visit_url: "Bezoek dit adres om uw gebruikersaacount te activeren:"
+
+

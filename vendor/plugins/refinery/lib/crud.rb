@@ -48,9 +48,9 @@ module Crud
 
           if (@#{singular_name} = #{class_name}.create(params[:#{singular_name}])).valid?
             unless request.xhr?
-              flash[:notice] = "'\#{@#{singular_name}.#{options[:title_attribute]}}' was successfully created."
+              flash[:notice] = t('refinery.crudify.created', :what => "'\#{@#{singular_name}.#{options[:title_attribute]}}'")
             else
-              flash.now[:notice] = "'\#{@#{singular_name}.#{options[:title_attribute]}}' was successfully created."
+              flash.now[:notice] = t('refinery.crudify.created', :what => "'\#{@#{singular_name}.#{options[:title_attribute]}}'")
             end
             unless params[:continue_editing] =~ /true|on|1/
               redirect_to admin_#{plural_name}_url
@@ -77,9 +77,9 @@ module Crud
         def update
           if @#{singular_name}.update_attributes(params[:#{singular_name}])
             unless request.xhr?
-              flash[:notice] = "'\#{@#{singular_name}.#{options[:title_attribute]}}' was successfully updated."
+              flash[:notice] = t('refinery.crudify.updated', :what => "'\#{@#{singular_name}.#{options[:title_attribute]}}'")
             else
-              flash.now[:notice] = "'\#{@#{singular_name}.#{options[:title_attribute]}}' was successfully updated."
+              flash.now[:notice] = t('refinery.crudify.updated', :what => "'\#{@#{singular_name}.#{options[:title_attribute]}}'")
             end
             unless params[:continue_editing] =~ /true|on|1/
               redirect_to admin_#{plural_name}_url
@@ -100,7 +100,7 @@ module Crud
         end
 
         def destroy
-          flash[:notice] = "'\#{@#{singular_name}.#{options[:title_attribute]}}' was successfully deleted." if @#{singular_name}.destroy
+          flash.now[:notice] = t('refinery.crudify.destroyed', :what => "'\#{@#{singular_name}.#{options[:title_attribute]}}'") if @#{singular_name}.destroy
           redirect_to admin_#{plural_name}_url
         end
 

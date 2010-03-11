@@ -2,8 +2,7 @@
   <div class='inquiries'>
     <%= @page[:body] %>
 
-    <%= error_messages_for :inquiry, :header_message => "Whoops there was a small problem",
-                                      :message => "The following problems need to be corrected:" %>
+    <%= error_messages_for :inquiry, :header_message => t('.header_message'), :message => t('.message') %>
     <% form_for @inquiry do |f| %>
       <div class='field'>
         <%= f.required_label :name %>
@@ -22,8 +21,8 @@
         <%= f.text_area :message, :rows => 8 %>
       </div>
       <div class='actions'>
-        <%= f.submit 'Send Message' %>
-        <%= link_to "We value your privacy", "/pages/privacy-policy", :id => "privacy_link" if RefinerySetting.find_or_set(:show_contact_privacy_link, false) %>
+        <%= f.submit t('.send') %>
+        <%= link_to t('.privacy_policy'), "/pages/privacy-policy", :id => "privacy_link" if RefinerySetting.find_or_set(:show_contact_privacy_link, false) %>
       </div>
     <% end %>
   </div>

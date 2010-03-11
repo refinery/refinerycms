@@ -3,12 +3,13 @@
     <% if @images.any? %>
       <span id="existing_image_radio" class="radio<%= " selected_radio" if @image.errors.empty? %>">
         <input type='radio' name='image_type' value='existing_image' id='image_type_existing' <%= "checked='true'" if @image.errors.empty? %> />
-        <label for='image_type_existing' class='stripped'>Existing Image</label>
+        <label for='image_type_existing' class='stripped'><%=t('.existing_image')%></label>
       </span>
     <% end %>
+<<<<<<< HEAD:vendor/plugins/images/app/views/admin/images/insert.html.erb
     <span id="upload_image_radio" class="radio<%= " selected_radio" if @image.errors.any? or @images.empty? %>">
       <input type='radio' name='image_type' value='upload_image' id='image_type_upload' <%= "checked='true'" if @images.empty? || @image.errors.any? %> />
-      <label for='image_type_upload' class='stripped'>New Image</label>
+      <label for='image_type_upload' class='stripped'><%= t('.new_image') %></label>
     </span>
   </div>
 
@@ -35,9 +36,9 @@
 </div>
 <% if @app_dialog %>
   <div id='dialog-form-actions' class='form-actions'>
-    <%= submit_tag 'Insert', :id => "submit_button" %>
-    or
-    <%= link_to "Cancel", "", :id => "cancel_button", :class => "close_dialog" %>
+    <%= submit_tag t('.submit_insert'), :id => "submit_button" %>
+    <%= t('.or') %>
+    <%= link_to t('.cancel'), "", :id => "cancel_button", :class => "close_dialog" %>
   </div>
 <% end %>
 

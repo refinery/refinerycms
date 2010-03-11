@@ -3,10 +3,10 @@
 <% form_for [:admin, @image], :url => @url_override || @url,
                               :html => {:multipart => true, :style => 'float: left; width: 70%'} do |f| %>
   <div class='field'>
-    <%= f.label :uploaded_data, 'Image' %>
+    <%= f.label :uploaded_data, t('.image').titleize %>
     <% if params[:action] =~ /(edit)|(update)/ %>
-      Use current image
-      <em>or</em>, replace it with this one...
+      <%= t('.use_current_image') %>
+      <em><%= t('.or') %></em>, <%= t('.replace_image') %>
     <% end %>
     <%= f.file_field :uploaded_data %>
   </div>
@@ -25,7 +25,7 @@
 
 <% if params[:action] =~ /(edit)|(update)/ %>
   <div style='float: right; width: 25%;'>
-    <label>Current Image</label>
+    <label><%=t('.current_image') %></label>
     <%= image_fu @image, :medium, { :class => "brown_border" } %>
   </div>
 <% end %>

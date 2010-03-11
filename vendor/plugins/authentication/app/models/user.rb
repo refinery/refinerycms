@@ -63,18 +63,18 @@ class User < ActiveRecord::Base
     crypted_password == encrypt(password)
   end
 
-  def plugins=(plugin_titles)
+  def plugins=(plugin_names)
     unless self.new_record? # don't add plugins when the user_id is NULL.
       self.plugins.delete_all
 
-      plugin_titles.each do |plugin_title|
-        self.plugins.find_or_create_by_title(plugin_title) if plugin_title.is_a?(String)
+      plugin_names.each do |plugin_name|
+        self.plugins.find_or_create_by_name(plugin_name) if plugin_name.is_a?(String)
       end
     end
   end
 
   def authorized_plugins
-    self.plugins.collect {|p| p.title} | Refinery::Plugins.always_allowed.titles
+    self.plugins.collect {|p| p.name} | Refinery::Plugins.always_allowed.names
   end
 
   def remember_token?

@@ -57,7 +57,7 @@ class Admin::ImagesController < Admin::BaseController
 
     unless params[:insert]
       if @image.valid?
-        flash[:notice] = "'#{@image.title}' was successfully created."
+        flash[:notice] = t('refinery.crudify.created', :what => "'#{@image.title}'")
         unless from_dialog?
           redirect_to :action => 'index'
         else
