@@ -29,7 +29,6 @@ Unlike other content managers, Refinery is truly aimed at the end user making it
 
 Refinery runs using a number of gems which (as of Refinery version 0.9.6.20) are outlined below:
 
-* [friendly_id ~> 2.2.2](http://rubygems.org/gems/friendly_id)
 * [will_paginate ~> 2.3.11](http://rubygems.org/gems/will_paginate)
 * [rails ~> 2.3.5](http://rubygems.org/gems/rails)
 * [aasm ~> 2.1.3](http://rubygems.org/gems/aasm)
