@@ -7,17 +7,17 @@ if RefinerySetting.table_exists?
   # Add or remove theme paths to/from Refinery application
   ::Refinery::ApplicationController.module_eval do
     before_filter do |controller|
+      # remove any paths relating to any theme.
       controller.view_paths.reject! { |v| v.to_s =~ %r{^themes/} }
+
+      # add back theme paths if there is a theme present.
       if (theme = RefinerySetting[:theme]).present?
         # Set up view path again for the current theme.
         controller.view_paths.unshift Rails.root.join("themes", theme, "views").to_s
-
-        # Set up menu caching for this theme
-        RefinerySetting[:refinery_menu_cache_action_suffix] = "#{theme}_site_menu"
-      else
-        # Set the cache key for the site menu (thus expiring the fragment cache if theme changes).
-        RefinerySetting[:refinery_menu_cache_action_suffix] = "site_menu"
       end
+
+      # Set up menu caching for this theme or lack thereof
+      RefinerySetting[:refinery_menu_cache_action_suffix] = "#{"#{theme}_" if theme.present?}site_menu"
 
       # Ensure that routes within the application are top priority.
       # Here we grab all the routes that are under the application's view folder
