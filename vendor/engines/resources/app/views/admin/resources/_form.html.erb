@@ -1,7 +1,7 @@
 <%= error_messages_for :resource -%>
 
-<% form_for [:admin, @resource],   :url => @url_override || @url,
-                                  :html => {:multipart => true} do |f| -%>
+<%= form_for([:admin, @resource],   :url => @url_override || @url,
+                                  :html => {:multipart => true}) do |f| -%>
   <div class='field'>
     <%= f.label :uploaded_data, 'File to upload' -%>
     <% if params[:action] =~ /(edit)|(update)/ -%>

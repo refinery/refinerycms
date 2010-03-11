@@ -1,4 +1,4 @@
-<% form_for :session, :url => session_path do |f| -%>
+<%= form_for(:session, :url => session_path) do |f| %>
   <div class='clearfix'>
     <div class='field session_username'>
       <%= f.label :login %>
@@ -21,4 +21,4 @@
     or
     <%= link_to "Cancel", root_url %>
   </div>
-<% end -%>
+<% end %>

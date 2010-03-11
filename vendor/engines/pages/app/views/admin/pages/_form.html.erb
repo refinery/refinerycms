@@ -1,6 +1,6 @@
 <%= error_messages_for :page %>
 
-<% form_for [:admin, @page] do |f| %>
+<%= form_for([:admin, @page]) do |f| %>
   <div class="field">
     <%= f.label :title %>
     <%= f.text_field :title, :class => "larger", :style => 'width: 954px' %>
