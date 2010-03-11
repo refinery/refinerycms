@@ -6,7 +6,11 @@ Rails::Application.routes.draw do
   end
 
   namespace(:admin) do
-    resources :inquiries
+    resources :inquiries do
+      member do
+        get :toggle_status
+      end
+    end
     resources :inquiry_settings
   end
 end
