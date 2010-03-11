@@ -1,5 +1,5 @@
 <%= error_messages_for :refinery_setting %>
-<% form_for [:admin, @refinery_setting] do |f| %>
+<%= form_for([:admin, @refinery_setting]) do |f| %>
   <div class='field'>
   <% if params[:action] =~ /(new)|(create)/ %>
     <%= f.label :name %>

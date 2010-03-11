@@ -1,5 +1,5 @@
 <%= error_messages_for :user %>
-<% form_for [:admin, @user] do |f| %>
+<%= form_for([:admin, @user]) do |f| %>
   <div class='field'>
     <%= f.label :login %>
     <%= f.text_field :login %>
