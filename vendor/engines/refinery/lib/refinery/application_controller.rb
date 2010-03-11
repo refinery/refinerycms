@@ -25,7 +25,7 @@ class Refinery::ApplicationController < ActionController::Base
   end
 
   def local_request?
-    ENV["RAILS_ENV"] == "development" or request.remote_ip =~ /(::1)|(127.0.0.1)|((192.168).*)/
+    Rails.env.development? or request.remote_ip =~ /(::1)|(127.0.0.1)|((192.168).*)/
   end
 
   def just_installed?

@@ -1,7 +1,6 @@
 class SessionsController < ApplicationController
 
   layout 'admin'
-  filter_parameter_logging 'password', 'password_confirmation'
 
   def create
     self.current_user = User.authenticate(params[:session][:login], params[:session][:password])
