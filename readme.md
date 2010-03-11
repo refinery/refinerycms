@@ -139,7 +139,7 @@ This will pull in all of the updated files in the project and may result in some
 * Collect inquiries from a contact form
 * Manage your inquiries and be notified when new ones come in
 
-### [News](http://github.com/resolve/refinerycms/blob/master/vendor/plugins/news/news.md)
+### [News](http://github.com/resolve/refinerycms-news)
 
 * Post news about your company and update your visitors
 
