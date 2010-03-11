@@ -21,7 +21,7 @@
         <strong>From</strong>
       </td>
       <td>
-        <%= "#{RefinerySetting[:site_name]} &lt;no-reply@#{request.domain(RefinerySetting.find_or_set(:tld_length, 1))}&gt;" %>
+        <%= "#{RefinerySetting[:site_name]} &lt;no-reply@#{request.domain(RefinerySetting.find_or_set(:tld_length, 1))}&gt;".html_safe %>
       </td>
     </tr>
     <tr>

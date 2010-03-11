@@ -6,7 +6,7 @@
   domid = "item_#{menu_branch_counter}" unless menu_branch.parent_id.present? or menu_branch.title.blank?
 -%>
 <% if menu_branch.in_menu? %>
-  <li<%= " class='#{css.join(' ')}'" if css.present? -%><%= " id='#{domid}'" if domid.present? -%>>
+  <li<%=raw " class='#{css.join(' ')}'" if css.present? -%><%=raw " id='#{domid}'" if domid.present? -%>>
     <%= link_to menu_branch.title, menu_branch.url %>
     <%
       unless hide_children or

@@ -15,17 +15,17 @@
 <div id='body_content' class='clearfix<%= " #{extra_body_content_classes.join(" ")}" if extra_body_content_classes.any? %>'>
 <% if body_content_title.present? or (show_empty_sections and !remove_automatic_sections) -%>
   <h1 id='body_content_page_title'>
-    <%= body_content_title %>
+    <%=raw body_content_title %>
   </h1>
 <% end -%>
 <% if body_content_left.present? or (show_empty_sections and !remove_automatic_sections) -%>
   <div id='body_content_left' class='clearfix'>
-    <%= body_content_left %>
+    <%=raw body_content_left %>
   </div>
 <% end -%>
 <% if body_content_right.present? or (show_empty_sections and !remove_automatic_sections)  -%>
   <div id='body_content_right' class='clearfix'>
-    <%= body_content_right %>
+    <%=raw body_content_right %>
   </div>
 <% end -%>
 </div>
