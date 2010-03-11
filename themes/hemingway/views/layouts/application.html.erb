@@ -20,18 +20,7 @@
     <div id="ancillary">
       <div class="inside">
         <div class="block first" style='margin: 0;'>
-          <h2>Recent Posts</h2>
-          <% if NewsItem.latest.empty? %>
-            <p>No news posts yet</p>
-          <% else %>
-            <ul>
-              <% NewsItem.latest.each do |item| %>
-                <li>
-                  <%= link_to item.title, news_item_url(item) %>
-                </li>
-              <% end %>
-            </ul>
-          <% end %>
+
         </div>
         <div class="block pages">
           <h2>
