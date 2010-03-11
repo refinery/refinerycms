@@ -27,19 +27,14 @@ Unlike other content managers, Refinery is truly aimed at the end user making it
 
 ## Requirements
 
-Refinery runs using a number of gems which (as of Refinery version 0.9.6.20) are outlined below:
+Refinery's gem requirements are:
 
-* [will_paginate ~> 2.3.11](http://rubygems.org/gems/will_paginate)
 * [rails ~> 2.3.5](http://rubygems.org/gems/rails)
-* [aasm ~> 2.1.3](http://rubygems.org/gems/aasm)
-* [unicode ~> 0.1](http://rubygems.org/gems/unicode)
-* [hpricot ~> 0.8.1](http://rubygems.org/gems/hpricot)
-* [slim_scrooge ~> 1.0.5](http://rubygems.org/gems/slim_scrooge)
 
 ### Other dependancies
 
 * [RMagick](http://github.com/rmagick/rmagick) - [Install docs](http://rmagick.rubyforge.org/install-faq.html) or for
-Mac OS users [shell install script](http://github.com/maddox/magick-installer) will be easier.
+Mac OS 10.5 or 10.6 users [this shell install script](http://github.com/maddox/magick-installer) will be easier.
 
 ## Installing and Setting Up Refinery
 
@@ -69,14 +64,14 @@ Next create your database and fill it with Refinery's default data:
 After your database exists, you'll need to install the gems that Refinery depends on. You can do this by running:
 
     rake gems:install
-    
+
 As of version 0.9.6.20, the news engine was extracted into a separate gem. This is included by default in config/application.rb
 If you don't want this engine on your site, just remove the config.gem line for it in config/application.rb
 If you do want it, please run the following commands to get it up and running:
 
     script/generate news
     rake db:migrate
-    
+
 Now, news should be up and running.
 
 ### 3. Starting up your site
