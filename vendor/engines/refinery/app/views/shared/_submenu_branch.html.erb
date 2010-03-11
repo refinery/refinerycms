@@ -1,5 +1,5 @@
 <% if submenu_branch.in_menu? %>
-<li<%= " class='selected'" if selected_page?(submenu_branch) or descendant_page_selected?(submenu_branch) %>>
+<li<%=raw " class='selected'" if selected_page?(submenu_branch) or descendant_page_selected?(submenu_branch) %>>
   <%= link_to submenu_branch.title, submenu_branch.url -%>
   <% if (children = submenu_branch.children).any? %>
   <ul>
