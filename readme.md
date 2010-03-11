@@ -69,6 +69,15 @@ Next create your database and fill it with Refinery's default data:
 After your database exists, you'll need to install the gems that Refinery depends on. You can do this by running:
 
     rake gems:install
+    
+As of version 0.9.6.20, the news engine was extracted into a separate gem. This is included by default in config/application.rb
+If you don't want this engine on your site, just remove the config.gem line for it in config/application.rb
+If you do want it, please run the following commands to get it up and running:
+
+    script/generate news
+    rake db:migrate
+    
+Now, news should be up and running.
 
 ### 3. Starting up your site
 
