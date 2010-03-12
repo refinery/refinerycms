@@ -9,6 +9,8 @@ class User < ActiveRecord::Base
     c.perishable_token_valid_for 10.minutes
 
     # http://www.binarylogic.com/2008/11/23/tutorial-easily-migrate-from-restful_authentication-to-authlogic/
+    # Unfortunately, this seems to cause problems when you add Refinery to an app that already had
+    # an Authlogic-created users table. You may need to comment these 2 lines out if that is the case.
     c.act_like_restful_authentication = true
     c.transition_from_restful_authentication = true
 
