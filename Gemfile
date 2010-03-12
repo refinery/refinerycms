@@ -32,6 +32,7 @@ gem "slim_scrooge", ">= 1.0.5", :require => "slim_scrooge"
 #git 'git://github.com/mislav/will_paginate.git', 'branch' => 'rails3'
 gem "will_paginate", "3.0.pre"
 gem "rake", ">= 0.8.3", :require => "rake"
+git 'git://github.com/stephencelis/authlogic.git'
 gem "authlogic", "~> 2.1.3"
 #===REFINERY END OF REQUIRED GEMS===
 
