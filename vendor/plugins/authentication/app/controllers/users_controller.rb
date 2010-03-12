@@ -21,14 +21,13 @@ class UsersController < ApplicationController
         # request forgery protection.
         # uncomment at your own risk
         # reset_session
-        @user = User.new(params[:user])
+        @user = User.create(params[:user])
         @selected_plugin_titles = params[:user][:plugins] || []
 
-        @user.register! if @user.valid?
         if @user.errors.empty?
           @user.plugins = @selected_plugin_titles
+          @user.save if @user.valid?
           self.current_user = @user
-          current_user.activate!
           current_user.update_attribute(:superuser, true) if User.count == 1 # this is the superuser if this user is the only user.
           redirect_back_or_default(admin_root_url)
           flash[:notice] = "Welcome to Refinery, #{current_user.login}."
@@ -42,17 +41,6 @@ class UsersController < ApplicationController
         end
       end
     end
-  end
-
-  def activate
-    self.current_user = params[:activation_code].blank? ? false : User.find_by_activation_code(params[:activation_code])
-
-    if logged_in? && !current_user.active?
-      current_user.activate!
-      flash[:notice] = "Signup complete!"
-    end
-
-    redirect_back_or_default(root_url)
   end
 
   def forgot
@@ -75,12 +63,12 @@ class UsersController < ApplicationController
   end
 
   def reset
-    @user = User.find_by_reset_code(params[:reset_code]) unless params[:reset_code].nil?
+    @user = User.find_by_reset_code(params[:reset_code]) if params[:reset_code].present?
 
     if request.post?
       if @user.update_attributes(:password => params[:user][:password], :password_confirmation => params[:user][:password_confirmation])
         self.current_user = @user
-        @user.delete_reset_code
+        @user.delete_reset_code!
 
         flash[:notice] = "Password reset successfully for #{@user.email}"
         redirect_back_or_default(admin_root_url)
