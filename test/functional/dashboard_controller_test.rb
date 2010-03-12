@@ -20,7 +20,6 @@ class DashboardControllerTest < ActionController::TestCase
     assert_response :success
 
     assert_not_nil assigns(:recent_activity)
-
   end
 
   def test_recent_activity_should_report_activity
