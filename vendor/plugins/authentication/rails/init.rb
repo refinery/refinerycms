@@ -11,3 +11,12 @@ Refinery::Plugin.register do |plugin|
     :updated_image => "user_edit.png"
   }
 end
+
+module ::Refinery
+  class << self
+    attr_accessor :authentication_login_field
+    def authentication_login_field
+      @authentication_login_field ||= 'login'
+    end
+  end
+end
