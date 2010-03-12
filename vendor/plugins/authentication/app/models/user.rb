@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
     # config/application.rb
     # This currently only affects which field is displayed in the login form. As long as we have
     # find_by_login_method :find_by_login_or_email, they can still actually use either one.
-    c.login_field = RefinerySetting.login_field
+    c.login_field = defined?(Refinery.authentication_login_field) ? Refinery.authentication_login_field : "login"
   end
 
   # Allow users to log in with either their username *or* email, even though we only ask for one of those.
