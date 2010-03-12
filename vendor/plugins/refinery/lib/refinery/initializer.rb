@@ -39,6 +39,7 @@ module Refinery
       # We do make sure we check that things haven't already been set in the application.
       configuration.plugin_loader = Refinery::PluginLoader unless configuration.plugin_loader != Rails::Plugin::Loader
       configuration.plugins = [ :friendly_id, :will_paginate, :all ] if configuration.plugins.nil?
+      configuration.gem "authlogic", :version => "~> 2.1.3"
 
       # Pass our configuration along to Rails.
       Rails.configuration = configuration
