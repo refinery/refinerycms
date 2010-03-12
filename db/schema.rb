@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100305023037) do
+ActiveRecord::Schema.define(:version => 20100312160327) do
 
   create_table "images", :force => true do |t|
     t.integer  "parent_id"
@@ -125,12 +125,12 @@ ActiveRecord::Schema.define(:version => 20100305023037) do
     t.string   "email",                                    :null => false
     t.string   "crypted_password",                         :null => false
     t.string   "password_salt",                            :null => false
-    t.string   "persistence_token",                        :null => false
+    t.string   "persistence_token"
     t.string   "state",             :default => "passive"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "superuser",         :default => false
-    t.string   "perishable_token",                         :null => false
+    t.string   "perishable_token"
   end
 
   add_index "users", ["id"], :name => "index_users_on_id"
