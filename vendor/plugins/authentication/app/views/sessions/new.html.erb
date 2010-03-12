@@ -2,8 +2,8 @@
   <%= f.error_messages %>
   <div class='clearfix'>
     <div class='field session_username'>
-      <%= f.label RefinerySetting.login_field %>
-      <%= f.text_field RefinerySetting.login_field %>
+      <%= f.label Refinery.authentication_login_field %>
+      <%= f.text_field :login %>
     </div>
     <div class='field session_password'>
       <%= f.label :password %>
