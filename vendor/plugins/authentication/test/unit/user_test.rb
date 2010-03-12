@@ -111,7 +111,6 @@ class UserTest < Test::Unit::TestCase
     user = create_user(:password => nil, :password_confirmation => nil)
     assert user.passive?
     user.update_attributes(:password => 'new password', :password_confirmation => 'new password')
-    user.register!
     assert user.pending?
   end
 
@@ -157,8 +156,6 @@ class UserTest < Test::Unit::TestCase
 
 protected
   def create_user(options = {})
-    record = User.new({ :login => 'quire', :email => 'quire@example.com', :password => 'quire', :password_confirmation => 'quire' }.merge(options))
-    record.register! if record.valid?
-    record
+    User.create({ :login => 'quire', :email => 'quire@example.com', :password => 'quire', :password_confirmation => 'quire' }.merge(options))
   end
 end

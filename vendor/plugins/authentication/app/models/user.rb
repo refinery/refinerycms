@@ -2,24 +2,12 @@ require 'digest/sha1'
 
 class User < ActiveRecord::Base
 
-  # Hack: Allow "rake gems:install" to run when this class is missing its gem dependency.
-  # For further clarification on why, refer to:
-  # https://rails.lighthouseapp.com/projects/8994/tickets/780-rake-gems-install-doesn-t-work-if-plugins-are-missing-gem-dependencies
-  if defined? AASM
-    include AASM # include the library which will give us state machine functionality.
-    aasm_column :state
-    aasm_initial_state :pending
-    aasm_state :passive
-    aasm_state :pending, :enter => :make_activation_code
-    aasm_state :active,  :enter => :do_activate
+  def register!
+    logger.warn("*** User::register! has now been deprecated from the Refinery API. ***")
+  end
 
-    aasm_event :register do
-      transitions :from => :passive, :to => :pending, :guard => Proc.new {|u| !(u.crypted_password.blank? && u.password.blank?) }
-    end
-
-    aasm_event :activate do
-      transitions :from => :pending, :to => :active
-    end
+  def activate!
+    logger.warn("*** User::activate! has now been deprecated from the Refinery API. ***")
   end
 
   # Virtual attribute for the unencrypted password
@@ -41,17 +29,22 @@ class User < ActiveRecord::Base
 
   # prevents a user from submitting a crafted form that bypasses activation
   # anything else you want your user to change should be added here.
-  attr_accessible :login, :email, :password, :password_confirmation, :plugins, :reset_code
+  attr_accessible :login, :email, :password, :password_confirmation, :plugins, :reset_code, :state
 
   # Authenticates a user by their login name and unencrypted password.  Returns the user or nil.
   def self.authenticate(login, password)
-    u = find_in_state :first, :active, :conditions => {:login => login} # need to get the salt
-    u && u.authenticated?(password) ? u : nil
+    user = find_by_state :active.to_s, :conditions => {:login => login} # need to get the salt
+    user.present? && user.authenticated?(password) ? user : nil
   end
 
   # Encrypts some data with the salt.
   def self.encrypt(password, salt)
     Digest::SHA1.hexdigest("--#{salt}--#{password}--")
+  end
+
+  # Activate by default.
+  def before_create
+    self.state = 'active'
   end
 
   # Encrypts the password with the user salt
@@ -70,6 +63,8 @@ class User < ActiveRecord::Base
       plugin_titles.each do |plugin_title|
         self.plugins.find_or_create_by_title(plugin_title) if plugin_title.is_a?(String)
       end
+
+      self.save(false)
     end
   end
 
@@ -122,7 +117,7 @@ class User < ActiveRecord::Base
     @reset
   end
 
-  def delete_reset_code
+  def delete_reset_code!
     self.attributes = {:reset_code => nil}
     save(false)
   end
@@ -138,17 +133,6 @@ protected
 
   def password_required?
     crypted_password.blank? || !password.blank?
-  end
-
-  def make_activation_code
-    self.deleted_at = nil
-    self.activation_code = Digest::SHA1.hexdigest( Time.now.to_s.split(//).sort_by {rand}.join )
-  end
-
-  def do_activate
-    @activated = true
-    self.activated_at = Time.now.utc
-    self.deleted_at = self.activation_code = nil
   end
 
 end
