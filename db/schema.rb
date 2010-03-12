@@ -133,4 +133,6 @@ ActiveRecord::Schema.define(:version => 20100305023037) do
     t.string   "perishable_token",                         :null => false
   end
 
+  add_index "users", ["id"], :name => "index_users_on_id"
+
 end
