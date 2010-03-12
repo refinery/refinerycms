@@ -174,7 +174,7 @@ If you have installed Refinery using GIT (described above in step 1 of installin
 
 ### What about a portfolio?
 
-Check out the [portfolio plugin gem](http://github.com/resolve/refinery-portfolio)
+Check out the [portfolio plugin gem](http://github.com/resolve/refinerycms-portfolio)
 
 ## License
 
