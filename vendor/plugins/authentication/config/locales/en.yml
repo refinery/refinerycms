@@ -18,8 +18,11 @@ en:
     login_failed: Sorry, your password or username was incorrect.
     logged_out: You have been logged out.
     new:
+      login: Login name
       log_in: Log in
       cancel: Cancel
+      password: Password
+      remember_me: Remember me
       or: or
   users:
     setup_website_name: "<br/>First let's give the site a name. <a href='{{link}}'>Go here</a> to edit your website's name"
