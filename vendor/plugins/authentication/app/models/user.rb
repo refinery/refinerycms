@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
     # This currently only affects which field is displayed in the login form. As long as we have
     # find_by_login_method :find_by_login_or_email, they can still actually use either one.
     c.login_field = defined?(Refinery.authentication_login_field) ? Refinery.authentication_login_field : "login"
-  end
+  end if self.table_exists?
 
   # Allow users to log in with either their username *or* email, even though we only ask for one of those.
   def self.find_by_login_or_email(login_or_email)
