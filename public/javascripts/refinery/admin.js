@@ -137,12 +137,19 @@ init_submit_continue = function(){
 }
 
 init_tooltips = function(args){
-  if (typeof(Tooltip) != "undefined") {
-    $($(args != null ? args : 'a[title], #image_grid img[title]')).each(function(index, element)
-    {
-      new Tooltip(element, {mouseFollow:false, delay: 0, opacity: 1, appearDuration:0, hideDuration: 0, rounded: false});
-    });
-  }
+  $($(args != null ? args : 'a[title], #image_grid img[title]')).each(function(index, element)
+  {
+    // create tooltip on hover and destroy it on hoveroff.
+    $(element).hover(function(e) {
+      tooltip = $("<div class='tooltip'></div>").html($(this).attr('tooltip')).appendTo($('#tooltip_container'));
+      tooltip.css({
+          'left': ((left = $(this).offset().left - (tooltip.outerWidth() / 2) + ($(this).outerWidth() / 2)) >= 0 ? left : 0)
+        , 'top': $(this).offset().top - tooltip.outerHeight() - 6
+      }).show();        
+    }, function(e) {
+      $('.tooltip').remove();
+    }).attr({'tooltip': $(element).attr('title'), 'title': ''}).children('img').attr('title', '');
+  });
 }
 
 var link_dialog = {
@@ -499,10 +506,10 @@ var image_dialog = {
           wym_src.value = relevant_src;
         }
         if ((wym_title = parent.document.getElementById('wym_title')) != null) {
-          wym_title.value = img.title;
+          wym_title.value = $(img).attr('title');
         }
         if ((wym_alt = parent.document.getElementById('wym_alt')) != null) {
-          wym_alt.value = img.alt;
+          wym_alt.value = $(img).attr('alt');
         }
       }
     }
