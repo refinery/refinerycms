@@ -38,7 +38,7 @@ module Refinery
       # Set up configuration that is rather specific to Refinery. (some plugins require on other more 'core' plugins).
       # We do make sure we check that things haven't already been set in the application.
       configuration.plugin_loader = Refinery::PluginLoader unless configuration.plugin_loader != Rails::Plugin::Loader
-      configuration.plugins = [ :friendly_id, :will_paginate, :all ] if configuration.plugins.nil?
+      configuration.plugins = [ :authlogic, :friendly_id, :will_paginate, :all ] if configuration.plugins.nil?
 
       # Pass our configuration along to Rails.
       Rails.configuration = configuration

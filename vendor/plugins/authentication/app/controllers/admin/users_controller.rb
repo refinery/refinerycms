@@ -18,6 +18,7 @@ class Admin::UsersController < Admin::BaseController
   def create
     @user = User.new(params[:user])
     @selected_plugin_titles = params[:user][:plugins] || []
+    @user.state = 'active' # activate the user
 
     if @user.save
       @user.plugins = @selected_plugin_titles
