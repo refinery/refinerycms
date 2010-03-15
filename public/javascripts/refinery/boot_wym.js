@@ -165,4 +165,8 @@ $(function()
   wymeditor_inputs = $('.wymeditor');
   wymeditor_inputs.hide();
   wymeditor_inputs.wymeditor(wymeditor_boot_options);
+  $('.wym_iframe iframe').each(function(index, wym) {
+    // adjust for border width.
+    $(wym).css({'height':$(wym).parent().height()-2, 'width':$(wym).parent().width()-2});
+  });
 });

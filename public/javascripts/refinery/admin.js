@@ -145,7 +145,7 @@ init_tooltips = function(args){
       tooltip.css({
           'left': ((left = $(this).offset().left - (tooltip.outerWidth() / 2) + ($(this).outerWidth() / 2)) >= 0 ? left : 0)
         , 'top': $(this).offset().top - tooltip.outerHeight() - 6
-      }).show();        
+      }).show();
     }, function(e) {
       $('.tooltip').remove();
     }).attr({'tooltip': $(element).attr('title'), 'title': ''}).children('img').attr('title', '');
@@ -332,6 +332,13 @@ var link_dialog = {
 
 var page_options = {
   init: function(enable_parts, new_part_url, del_part_url){
+    // set the page tabs up, but ensure that all tabs are shown so that when wymeditor loads it has a proper height.
+    // also disable page overflow so that scrollbars don't appear while the page is loading.
+    $(document.body).addClass('hide-overflow');
+    page_options.tabs = $('#page-tabs').tabs({tabTemplate: '<li><a href="#{href}">#{label}</a></li>'});
+    part_shown = $('#page-tabs .page_part.field').not('.ui-tabs-hide');
+    $('#page-tabs .page_part.field').removeClass('ui-tabs-hide');
+
     this.enable_parts = enable_parts;
     this.new_part_url = new_part_url;
     this.del_part_url = del_part_url;
@@ -340,7 +347,9 @@ var page_options = {
 
     // Hook into the loaded function. This will be called when WYMeditor has done its thing.
     WYMeditor.loaded = function(){
-      page_options.tabs = $('#page-tabs').tabs({tabTemplate: '<li><a href="#{href}">#{label}</a></li>'});
+      // hide the tabs that are supposed to be hidden and re-enable overflow.
+      $(document.body).removeClass('hide-overflow');
+      $('#page-tabs .page_part.field').not(part_shown).addClass('ui-tabs-hide');
     }
 
     if(this.enable_parts){
