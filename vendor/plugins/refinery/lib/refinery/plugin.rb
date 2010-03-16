@@ -32,7 +32,7 @@ module Refinery
     end
 
     def menu_match
-      @menu_match ||= /#{self.url.gsub(/^\//, "")}$/
+      @menu_match ||= /#{self.name.gsub(/^\//, "")}$/
     end
 
     def name
