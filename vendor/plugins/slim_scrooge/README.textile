@@ -1,0 +1,104 @@
+h1. SlimScrooge - serious optimisation for activerecord
+
+h2. What is it?
+
+It's an optimization layer to ensure your application only fetches the database content needed to minimize wire traffic, excessive SQL queries and reduce conversion overheads to native Ruby types.
+
+SlimScrooge implements inline query optimisation, automatically restricting the columns fetched based on what was used during previous passes through the same part of your code.
+
+SlimScrooge is similar to (and is partly derived from) "Scrooge":http://github.com/methodmissing/scrooge but has many fewer lines of code and is faster.
+
+h2. Benchmark
+
+SlimScrooge performs best when the database is not on the same machine as your rails app.  In this case the overhead of fetching unnecessary data from the database can become more important.
+
+I ran a benchmark that consisted of fetching 400 real urls (culled from the log file) from our complex web app.  In this test I found a consistent *12% improvement* in performance over plain active record.  Not earth-shattering, but worthwhile.
+
+Note that this result was for comparing the time taken for running complete requests through rails - of which database accesses are only one part.  So the result is better than it at first sounds.
+
+In future releases I expect further gains.
+
+h2. Installation
+
+Requirements: Rails 2.2 or above, Ruby 1.8.6 or above.
+
+<pre>
+  # if you haven't already, add gemcutter to your gem sources
+  sudo gem install gemcutter
+  gem tumble
+  # install slim_scrooge
+  sudo gem install slim_scrooge
+</pre>
+
+Note that the C extension will only build in MRI Ruby 1.8 on non-windows at present, but do not worry, for other platforms the backup callsite mechanism is used.
+
+Next add this to your Rails::Initializer section in environment.rb:
+
+<pre>
+  config.gem 'slim_scrooge'
+</pre>
+
+h2. What it does
+
+<pre>
+  # 1st request, sql is unchanged but columns accesses are recorded
+  Brochure Load SlimScrooged 1st time (27.1ms)   SELECT * FROM `brochures` WHERE (expires_at IS NULL)
+  
+  # 2nd request, only fetch columns that were used the first time
+  Brochure Load SlimScrooged (4.5ms)   SELECT `brochures`.expires_at,`brochures`.operator_id,`brochures`.id FROM 
+  `brochures` WHERE (expires_at IS NULL)
+
+  # 2nd request, later in code we need another column which causes a reload of all remaining columns
+  Brochure Reload SlimScrooged (0.6ms) `brochures`.name,`brochures`.comment,`brochures`.image_height,`brochures`.id,
+  `brochures`.tel,`brochures`.long_comment,`brochures`.image_name,`brochures`.image_width FROM 
+  `brochures` WHERE `brochures`.id IN ('5646','5476','4562','3456','4567','7355')
+
+  # 3rd request
+  Brochure Load SlimScrooged (4.5ms)   SELECT `brochures`.expires_at,`brochures`.operator_id,`brochures`.name,
+  `brochures`.id FROM `brochures` WHERE (expires_at IS NULL)
+</pre>
+
+h2. Technical discussion
+
+SlimScrooge hooks in at just one particular place in ActiveRecord - and that place is the find_all_by_sql method.  All select queries pass through this method.
+
+SlimScrooge is able to record each call (and where it came from in your code), and to modify queries that do SELECT * FROM en-route to the database so that they only select the rows that are actually used by that piece of code.
+
+How does SlimScrooge know which columns are actually used?
+
+It tracks them using a monitored hash - the hash is a subclass of Hash that has is instantiated with a proc for its default value.  In this proc we handle any attributes that were not fetched from the DB - fetching the remaining columns as needed.
+
+In fact for efficiency, column accesses are only recorded when they are for newly accessed columns.  Columns we already know about are accessed completely normally, and there is no additional overhead.
+
+h2. Caveats
+
+* It is possible to delete an object and then to try to use its attributes to access another object that perhaps must be also deleted (like the option :dependent=>:destroy in Rails associations).
+
+This situation is likely to be found rarely because SlimScrooge particularly checks for columns used by :dependent=>:destroy, but if you are doing something similar manually in your code then you may run into problems.  Your attempt to access the key of the dependent object could cause a reload if the column is not already noted by SlimScrooge, and the reload will fail if you have already destroyed the parent object.
+
+* Some users have complained that running their test suite is slower when SlimScrooge is enabled.  This is expected - it's doing a little more work for each query, and most queries in tests are only executed once.
+
+If it proves to be a problem, you can try this in environment.rb:
+
+<pre>
+  config.gem 'slim_scrooge' unless Rails.env.test?
+</pre>
+
+I do recommend you test with SlimScrooge enabled at some point though, to make sure that everything is working as expected.
+
+h2. Tests
+
+SlimScrooge performs the full activerecord test suite without errors, except for a couple of tests that check the number of queries performed.
+
+To run the tests you need to set your database up with appropriate access for the rails user, and make activerecord_unittest and activerecord_unittest2 databases.  Then run:
+
+<pre>
+  rake test_with_active_record
+</pre>
+
+h2. References
+* "Scrooge":http://github.com/methodmissing/scrooge
+
+h2. Authors
+* Stephen Sykes (sdsykes)
+* Special thanks to Lourens Naudé (methodmissing) for the original idea, and the C implementation of callsite_hash as well as some other bits of code that I borrowed from the original project.

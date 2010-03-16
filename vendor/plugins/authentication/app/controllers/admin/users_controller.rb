@@ -18,11 +18,10 @@ class Admin::UsersController < Admin::BaseController
   def create
     @user = User.new(params[:user])
     @selected_plugin_titles = params[:user][:plugins] || []
+    @user.state = 'active' # activate the user
 
     if @user.save
       @user.plugins = @selected_plugin_titles
-      @user.register!
-      @user.activate!
       flash[:notice] = t('refinery.crudify.created', :what => @user.login)
       redirect_to :action => 'index'
     else
@@ -52,18 +51,6 @@ class Admin::UsersController < Admin::BaseController
         render :action => 'edit'
       end
     end
-  end
-
-  def destroy
-    @user.delete!
-    @user.destroy
-    flash[:notice] = t('refinery.crudify.destroyed', :what => @user.login)
-    redirect_to admin_users_path
-  end
-
-  def purge
-    @user.destroy
-    redirect_to admin_users_path
   end
 
 protected
