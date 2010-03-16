@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100125033146) do
+ActiveRecord::Schema.define(:version => 20100312160327) do
 
   create_table "images", :force => true do |t|
     t.integer  "parent_id"
@@ -62,7 +62,6 @@ ActiveRecord::Schema.define(:version => 20100125033146) do
     t.integer  "parent_id"
     t.integer  "position"
     t.string   "path"
-    t.integer  "image_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "meta_keywords"
@@ -114,30 +113,24 @@ ActiveRecord::Schema.define(:version => 20100125033146) do
 
   create_table "user_plugins", :force => true do |t|
     t.integer "user_id"
-    #TODO: Move from title to name, and use i18n to lookup the title
     t.string  "title"
-    t.string  "name"
     t.integer "position"
   end
 
-  add_index "user_plugins", ["name"], :name => "index_user_plugins_on_title"
-  add_index "user_plugins", ["user_id", "name"], :name => "index_unique_user_plugins", :unique => true
+  add_index "user_plugins", ["title"], :name => "index_user_plugins_on_title"
+  add_index "user_plugins", ["user_id", "title"], :name => "index_unique_user_plugins", :unique => true
 
   create_table "users", :force => true do |t|
-    t.string   "login"
-    t.string   "email"
-    t.string   "crypted_password",          :limit => 40
-    t.string   "salt",                      :limit => 40
-    t.string   "remember_token"
-    t.datetime "remember_token_expires_at"
-    t.string   "activation_code",           :limit => 40
-    t.datetime "activated_at"
-    t.string   "state",                                   :default => "passive"
-    t.datetime "deleted_at"
+    t.string   "login",                                    :null => false
+    t.string   "email",                                    :null => false
+    t.string   "crypted_password",                         :null => false
+    t.string   "password_salt",                            :null => false
+    t.string   "persistence_token"
+    t.string   "state",             :default => "passive"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "superuser",                               :default => false
-    t.string   "reset_code"
+    t.boolean  "superuser",         :default => false
+    t.string   "perishable_token"
   end
 
   add_index "users", ["id"], :name => "index_users_on_id"

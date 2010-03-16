@@ -2,6 +2,7 @@ ENV["RAILS_ENV"] = "test"
 # this allows us to run rake test:refinery from an application using the Refinery gem.
 require (ENV["RAILS_ROOT"] ||= (File.expand_path(File.dirname(__FILE__)) + "/..")) + "/config/environment"
 require 'test_help'
+require 'authlogic/test_case'
 
 class ActiveSupport::TestCase
   # Transactional fixtures accelerate your tests by wrapping each test method
@@ -37,13 +38,13 @@ class ActiveSupport::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
-
   def login_as(user)
-    @request.session[:user_id] = user ? users(user).id : nil
+    activate_authlogic
+    UserSession.create(users(user)) # logs a user in
   end
 
   def logout
-    @request.session[:user_id] = nil
+    UserSession.find.destroy
   end
 
 end
