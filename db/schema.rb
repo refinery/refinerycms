@@ -114,7 +114,9 @@ ActiveRecord::Schema.define(:version => 20100125033146) do
 
   create_table "user_plugins", :force => true do |t|
     t.integer "user_id"
+    #TODO: Move from title to name, and use i18n to lookup the title
     t.string  "title"
+    t.string  "name"
     t.integer "position"
   end
 
