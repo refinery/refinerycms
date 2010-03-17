@@ -32,7 +32,7 @@ module Refinery
     end
 
     def menu_match
-      @menu_match ||= /#{self.name.gsub(/^\//, "")}$/
+      @menu_match ||= /admin\/#{self.title.gsub(" ", "_").downcase}$/
     end
 
     def name
