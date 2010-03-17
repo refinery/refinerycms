@@ -6,12 +6,12 @@ module SlimScrooge
         new(ary)
       end
     end
- 
+
     # Create a new SimpleSet containing the unique members of _arr_
     def initialize(arr = [])
       Array(arr).each {|x| self[x] = true}
     end
- 
+
     # Add a value to the set, and return it
     def <<(value)
       self[value] = true

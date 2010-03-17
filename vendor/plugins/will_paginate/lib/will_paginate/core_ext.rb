@@ -19,7 +19,7 @@ unless Hash.instance_methods.include_method? :except
       rejected = Set.new(respond_to?(:convert_key) ? keys.map { |key| convert_key(key) } : keys)
       reject { |key,| rejected.include?(key) }
     end
- 
+
     # Replaces the hash without only the given keys.
     def except!(*keys)
       replace(except(*keys))

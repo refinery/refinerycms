@@ -15,7 +15,7 @@ module Authlogic
     #   persist
     #   after_persisting
     #   [save record if record.changed?]
-    #   
+    #
     #   before_validation
     #   before_validation_on_create
     #   before_validation_on_update
@@ -24,7 +24,7 @@ module Authlogic
     #   after_validation_on_create
     #   after_validation
     #   [save record if record.changed?]
-    #   
+    #
     #   before_save
     #   before_create
     #   before_update
@@ -32,7 +32,7 @@ module Authlogic
     #   after_create
     #   after_save
     #   [save record if record.changed?]
-    #   
+    #
     #   before_destroy
     #   [save record if record.changed?]
     #   destroy
@@ -60,11 +60,11 @@ module Authlogic
         "before_save", "before_create", "before_update", "after_update", "after_create", "after_save",
         "before_destroy", "after_destroy"
       ]
-      
+
       def self.included(base) #:nodoc:
         base.send :include, ActiveSupport::Callbacks
         base.define_callbacks *METHODS
-        
+
         # If Rails 3, support the new callback syntax
         if base.metaclass.method_defined?(:set_callback)
           METHODS.each do |method|
@@ -76,7 +76,7 @@ module Authlogic
           end
         end
       end
-      
+
       private
         METHODS.each do |method|
           class_eval <<-"end_eval", __FILE__, __LINE__
@@ -85,11 +85,11 @@ module Authlogic
             end
           end_eval
         end
-      
+
         def persist
           run_callbacks(:persist) { |result, object| result == true }
         end
-        
+
         def save_record(alternate_record = nil)
           r = alternate_record || record
           r.save_without_session_maintenance(false) if r && r.changed? && !r.readonly?

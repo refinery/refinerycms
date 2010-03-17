@@ -13,12 +13,12 @@ class TestParser < Test::Unit::TestCase
     assert_equal 4, @basic.search('//p').find_all { |x| x['class'] == 'para' }.length
   end
 
-  # Test creating a new element 
-  def test_new_element 
-    elem = Hpricot::Elem.new('form') 
-    assert_not_nil(elem) 
-    assert_not_nil(elem.attributes) 
-  end 
+  # Test creating a new element
+  def test_new_element
+    elem = Hpricot::Elem.new('form')
+    assert_not_nil(elem)
+    assert_not_nil(elem.attributes)
+  end
 
   def test_scan_text
     assert_equal 'FOO', Hpricot.make("FOO").children.first.content
@@ -31,7 +31,7 @@ class TestParser < Test::Unit::TestCase
     link = 'http://www.youtube.com/watch?v=TvSNXyNw26g&search=chris%20ware'
     assert_equal link, @boingboing.at("a[@href='#{link}']")['href']
   end
-  
+
   def test_filter_contains
     @basic = Hpricot.parse(TestFiles::BASIC)
     assert_equal '<title>Sample XHTML</title>', @basic.search("title:contains('Sample')").to_s
@@ -48,7 +48,7 @@ class TestParser < Test::Unit::TestCase
     assert_equal 'link1', @basic.get_elements_by_tag_name('a')[0].get_attribute('id')
     assert_equal 'link1', @basic.get_elements_by_tag_name('body')[0].get_element_by_id('link1').get_attribute('id')
   end
-  
+
   def test_get_elements_by_tag_name_star
     simple = Hpricot.parse("<div><p id='first'>First</p><p id='second'>Second</p></div>")
     assert_equal 3, simple.get_elements_by_tag_name("*").size
@@ -68,8 +68,8 @@ class TestParser < Test::Unit::TestCase
   end
 
   def scan_basic doc
-    assert_kind_of Hpricot::XMLDecl, doc.children.first 
-    assert_not_equal doc.children.first.to_s, doc.children[1].to_s 
+    assert_kind_of Hpricot::XMLDecl, doc.children.first
+    assert_not_equal doc.children.first.to_s, doc.children[1].to_s
     assert_equal 'link1', doc.at('#link1')['id']
     assert_equal 'link1', doc.at("p a")['id']
     assert_equal 'link1', (doc/:p/:a).first['id']
@@ -181,12 +181,12 @@ class TestParser < Test::Unit::TestCase
     assert_equal 1, @boingboing.search('//input[@checked]').length
   end
 
-  def test_tag_case 
-    @tenderlove = Hpricot.parse(TestFiles::TENDERLOVE) 
-    assert_equal 2, @tenderlove.search('//a').length 
-    assert_equal 3, @tenderlove.search('//area').length 
-    assert_equal 2, @tenderlove.search('//meta').length 
-  end 
+  def test_tag_case
+    @tenderlove = Hpricot.parse(TestFiles::TENDERLOVE)
+    assert_equal 2, @tenderlove.search('//a').length
+    assert_equal 3, @tenderlove.search('//area').length
+    assert_equal 2, @tenderlove.search('//meta').length
+  end
 
   def test_alt_predicates
     @boingboing = Hpricot.parse(TestFiles::BOINGBOING)
@@ -322,11 +322,11 @@ class TestParser < Test::Unit::TestCase
   def test_youtube_attr
     str = <<-edoc
     <html><body>
-    Lorem ipsum. Jolly roger, ding-dong sing-a-long 
+    Lorem ipsum. Jolly roger, ding-dong sing-a-long
     <object width="425" height="350">
       <param name="movie" value="http://www.youtube.com/v/NbDQ4M_cuwA"></param>
       <param name="wmode" value="transparent"></param>
-        <embed src="http://www.youtube.com/v/NbDQ4M_cuwA" 
+        <embed src="http://www.youtube.com/v/NbDQ4M_cuwA"
           type="application/x-shockwave-flash" wmode="transparent" width="425" height="350">
         </embed>
     </object>
@@ -334,7 +334,7 @@ class TestParser < Test::Unit::TestCase
     <object width="425" height="350">
       <param name="movie" value="http://www.youtube.com/v/foobar"></param>
       <param name="wmode" value="transparent"></param>
-        <embed src="http://www.youtube.com/v/foobar" 
+        <embed src="http://www.youtube.com/v/foobar"
           type="application/x-shockwave-flash" wmode="transparent" width="425" height="350">
         </embed>
     </object>
@@ -344,7 +344,7 @@ class TestParser < Test::Unit::TestCase
     assert_equal "http://www.youtube.com/v/NbDQ4M_cuwA",
       doc.at("//object/param[@value='http://www.youtube.com/v/NbDQ4M_cuwA']")['value']
   end
-  
+
   # ticket #84 by jamezilla
   def test_screwed_xmlns
     doc = Hpricot(<<-edoc)
@@ -388,7 +388,7 @@ class TestParser < Test::Unit::TestCase
     END
     doc = Hpricot::XML(chunk)
     assert (doc/"//t:sam").size > 0 # at least this should probably work
-    # assert (doc/"//sam").size > 0  # this would be nice 
+    # assert (doc/"//sam").size > 0  # this would be nice
   end
 
   def test_uxs_ignores_non_entities

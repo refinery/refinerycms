@@ -6,13 +6,13 @@ module Authlogic
         klass.class_eval do
           extend Config
           include InstanceMethods
-          
+
           class << self
             attr_accessor :configured_klass_methods
           end
         end
       end
-      
+
       module Config
         # Lets you change which model to use for authentication.
         #
@@ -23,7 +23,7 @@ module Authlogic
           @klass = klass
         end
         alias_method :authenticate_with=, :authenticate_with
-        
+
         # The name of the class that this session is authenticating with. For example, the UserSession class will
         # authenticate with the User class unless you specify otherwise in your configuration. See authenticate_with
         # for information on how to change this value.
@@ -35,19 +35,19 @@ module Authlogic
               nil
             end
         end
-        
+
         # Same as klass, just returns a string instead of the actual constant.
         def klass_name
           @klass_name ||= guessed_klass_name
         end
-        
+
         # The string of the model name class guessed from the actual session class name.
         def guessed_klass_name
           guessed_name = name.scan(/(.*)Session/)[0]
           guessed_name[0] if guessed_name
         end
       end
-      
+
       module InstanceMethods
         # Creating an alias method for the "record" method based on the klass name, so that we can do:
         #
@@ -63,7 +63,7 @@ module Authlogic
           end
           super
         end
-        
+
         private
           def klass
             self.class.klass

@@ -20,9 +20,9 @@ module Hpricot
       # Hide the method named +name+ in the BlankSlate class.  Don't
       # hide +instance_eval+ or any method beginning with "__".
       def hide(name)
-	undef_method name if
-	  instance_methods.include?(name.to_s) and
-	  name !~ /^(__|instance_eval)/
+  undef_method name if
+    instance_methods.include?(name.to_s) and
+    name !~ /^(__|instance_eval)/
       end
     end
 

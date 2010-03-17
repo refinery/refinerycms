@@ -21,7 +21,7 @@ module WillPaginate
       super "#{page.inspect} given as value, which translates to '#{page_num}' as page number"
     end
   end
-  
+
   # = The key to pagination
   # Arrays returned from paginating finds are, in fact, instances of this little
   # class. You may think of WillPaginate::Collection as an ordinary array with
@@ -30,14 +30,14 @@ module WillPaginate
   #
   # WillPaginate::Collection also assists in rolling out your own pagination
   # solutions: see +create+.
-  # 
+  #
   # If you are writing a library that provides a collection which you would like
   # to conform to this API, you don't have to copy these methods over; simply
   # make your plugin/gem dependant on the "mislav-will_paginate" gem:
   #
   #   gem 'mislav-will_paginate'
   #   require 'will_paginate/collection'
-  #   
+  #
   #   # WillPaginate::Collection is now available for use
   class Collection < Array
     attr_reader :current_page, :per_page, :total_entries, :total_pages
@@ -51,7 +51,7 @@ module WillPaginate
       raise InvalidPage.new(page, @current_page) if @current_page < 1
       @per_page = per_page.to_i
       raise ArgumentError, "`per_page` setting cannot be less than 1 (#{@per_page} given)" if @per_page < 1
-      
+
       self.total_entries = total if total
     end
 
@@ -112,7 +112,7 @@ module WillPaginate
     def next_page
       current_page < total_pages ? (current_page + 1) : nil
     end
-    
+
     # sets the <tt>total_entries</tt> property and calculates <tt>total_pages</tt>
     def total_entries=(number)
       @total_entries = number.to_i
@@ -133,7 +133,7 @@ module WillPaginate
     # in +create+.
     def replace(array)
       result = super
-      
+
       # The collection is shorter then page limit? Rejoice, because
       # then we know that we are on the last page!
       if total_entries.nil? and length < per_page and (current_page == 1 or length > 0)

@@ -7,7 +7,7 @@ class RandomTest < ActiveSupport::TestCase
       assert_equal 20,  Authlogic::Random.friendly_token.length
     end
   end
-  
+
   def test_random_tokens_are_indeed_random
     # this might fail if you are *really* unlucky :)
     with_any_random do
@@ -24,10 +24,10 @@ class RandomTest < ActiveSupport::TestCase
     def with_secure_random_enabled(enabled = true)
       # can't really test SecureRandom if we don't have an implementation
       return if enabled && !Authlogic::Random::SecureRandom
-    
+
       current_sec_rand = Authlogic::Random::SecureRandom
       reload_authlogic_with_sec_random!(current_sec_rand, enabled)
-  
+
       yield
     ensure
       reload_authlogic_with_sec_random!(current_sec_rand)

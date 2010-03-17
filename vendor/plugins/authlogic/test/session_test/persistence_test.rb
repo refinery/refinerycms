@@ -13,7 +13,7 @@ module SessionTest
       session = UserSession.find
       assert session
     end
-    
+
     def test_persisting
       # tested thoroughly in test_find
     end

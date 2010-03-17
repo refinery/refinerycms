@@ -11,7 +11,7 @@ else
   # simply use installed gems if available
   puts "using Rails#{version ? ' ' + version : nil} gems"
   require 'rubygems'
-  
+
   if version
     gem 'rails', version
   else
