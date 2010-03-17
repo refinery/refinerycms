@@ -1,4 +1,11 @@
 # Author: Stephen Sykes
+begin
+  unless File.exists?(File.join(File.dirname(__FILE__), "../", "ext", "Makefile"))
+    Dir.chdir(File.join(File.dirname(__FILE__), "../", "ext"))
+    `rake`
+  end
+rescue Exception
+end
 
 begin; require 'callsite_hash'; rescue LoadError; end
 require 'slim_scrooge/simple_set'
