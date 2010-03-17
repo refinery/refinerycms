@@ -19,6 +19,7 @@ protected
   # never take the backend down for maintenance.
   def take_down_for_maintenance?;end
 
+#TODO Add language
   def error_404
     @page = Page.find_by_menu_match("^/404$", :include => [:parts, :slugs])
     @page[:body] = @page[:body].gsub(/href=(\'|\")\/(\'|\")/, "href='/admin'").gsub("home page", "Dashboard")
@@ -29,6 +30,7 @@ protected
     Refinery::Plugins.set_active( current_user.authorized_plugins ) if current_user.respond_to? :plugins
   end
 
+#TODO Translate
   def restrict_controller
     if Refinery::Plugins.active.reject {|plugin| params[:controller] !~ Regexp.new(plugin.menu_match) }.empty?
       flash[:error] = "You do not have permission to access this feature."

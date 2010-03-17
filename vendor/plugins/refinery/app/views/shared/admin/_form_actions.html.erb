@@ -1,3 +1,8 @@
+<%
+  cancel_url ||= ((back=url_for(:back)).include?('javascript') ? send("admin_#{f.object.class.name.pluralize.underscore}_url") : back)
+  title ||= t('.cancel_lose_changes', :object_name => f.object.class.name.underscore.gsub("_", " "))
+  cancel_button_id ||= "cancel_button"
+%>
 <div class='form-actions'>
   <%= f.submit t('.save'), :id => "#{submit_button_id ||= "submit_button"}", :class => "wymupdate" %>
   <% if (continue_editing ||= false and !f.object.new_record?) -%>
@@ -7,10 +12,6 @@
   <% unless (hide_cancel ||= from_dialog?) -%>
     or
     <%# TODO add :what to t('.cancel_lose_changes') %>
-    <%= link_to t('.cancel',
-                (cancel_url ||= ((back=url_for(:back)).include?('javascript') ? send("admin_#{f.object.class.name.pluralize.underscore}_url") : back)),
-                :title => (title ||= t('.cancel_lose_changes', :what => f.object.class.name.underscore.gsub("_", " "))),
-                :id => "#{cancel_button_id ||= "cancel_button"}",
-                :class => "close_dialog" %>
+    <%= link_to t('.cancel'), cancel_url, :title => title, :id => cancel_button_id, :class => "close_dialog" %>
   <% end -%>
 </div>
