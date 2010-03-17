@@ -181,13 +181,3 @@ Check out the [portfolio plugin gem](http://github.com/resolve/refinerycms-portf
 Refinery is released under the MIT license and is copyright (c) 2005-2009 [Resolve Digital Ltd.](http://www.resolvedigital.co.nz)
 
 [Read the license](http://github.com/resolve/refinerycms/blob/master/license.md)
-
-<script type="text/javascript">
-var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-</script>
-<script type="text/javascript">
-try {
-var pageTracker = _gat._getTracker("UA-336546-10");
-pageTracker._trackPageview();
-} catch(err) {}</script>
