@@ -17,22 +17,22 @@ module WillPaginate
     end
 
     # = Paginating finders for ActiveRecord models
-    # 
+    #
     # WillPaginate adds +paginate+, +per_page+ and other methods to
     # ActiveRecord::Base class methods and associations. It also hooks into
     # +method_missing+ to intercept pagination calls to dynamic finders such as
     # +paginate_by_user_id+ and translate them to ordinary finders
     # (+find_all_by_user_id+ in this case).
-    # 
+    #
     # In short, paginating finders are equivalent to ActiveRecord finders; the
     # only difference is that we start with "paginate" instead of "find" and
     # that <tt>:page</tt> is required parameter:
     #
     #   @posts = Post.paginate :all, :page => params[:page], :order => 'created_at DESC'
-    # 
+    #
     # In paginating finders, "all" is implicit. There is no sense in paginating
     # a single record, right? So, you can drop the <tt>:all</tt> argument:
-    # 
+    #
     #   Post.paginate(...)              =>  Post.find :all
     #   Post.paginate_all_by_something  =>  Post.find_all_by_something
     #   Post.paginate_by_something      =>  Post.find_all_by_something
@@ -75,12 +75,12 @@ module WillPaginate
 
         WillPaginate::Collection.create(page, per_page, total_entries) do |pager|
           count_options = options.except :page, :per_page, :total_entries, :finder
-          find_options = count_options.except(:count).update(:offset => pager.offset, :limit => pager.per_page) 
-          
+          find_options = count_options.except(:count).update(:offset => pager.offset, :limit => pager.per_page)
+
           args << find_options
           # @options_from_last_find = nil
           pager.replace(send(finder, *args) { |*a| yield(*a) if block_given? })
-          
+
           # magic counting for user convenience:
           pager.total_entries = wp_count(count_options, args, finder) unless pager.total_entries
         end
@@ -101,8 +101,8 @@ module WillPaginate
         options[:page] = options[:page].to_i
         options[:total_entries] = 0 # skip the individual count queries
         total = 0
-        
-        begin 
+
+        begin
           collection = paginate(options)
           with_exclusive_scope(:find => {}) do
             # using exclusive scope so that the block is yielded in scope-free context
@@ -110,16 +110,16 @@ module WillPaginate
           end
           options[:page] += 1
         end until collection.size < collection.per_page
-        
+
         total
       end
-      
+
       # Wraps +find_by_sql+ by simply adding LIMIT and OFFSET to your SQL string
       # based on the params otherwise used by paginating finds: +page+ and
       # +per_page+.
       #
       # Example:
-      # 
+      #
       #   @developers = Developer.paginate_by_sql ['select * from developers where salary > ?', 80000],
       #                          :page => params[:page], :per_page => 3
       #
@@ -127,7 +127,7 @@ module WillPaginate
       # supply <tt>:total_entries</tt>. If you experience problems with this
       # generated SQL, you might want to perform the count manually in your
       # application.
-      # 
+      #
       def paginate_by_sql(sql, options)
         WillPaginate::Collection.create(*wp_parse_options(options)) do |pager|
           query = sanitize_sql(sql.dup)
@@ -136,11 +136,11 @@ module WillPaginate
           add_limit! query, :offset => pager.offset, :limit => pager.per_page
           # perfom the find
           pager.replace find_by_sql(query)
-          
+
           unless pager.total_entries
             count_query = original_query.sub /\bORDER\s+BY\s+[\w`,\s]+$/mi, ''
             count_query = "SELECT COUNT(*) FROM (#{count_query})"
-            
+
             unless self.connection.adapter_name =~ /^(oracle|oci$)/i
               count_query << ' AS count_table'
             end
@@ -160,27 +160,27 @@ module WillPaginate
       end
 
     protected
-      
+
       def method_missing_with_paginate(method, *args) #:nodoc:
         # did somebody tried to paginate? if not, let them be
         unless method.to_s.index('paginate') == 0
           if block_given?
             return method_missing_without_paginate(method, *args) { |*a| yield(*a) }
           else
-            return method_missing_without_paginate(method, *args) 
+            return method_missing_without_paginate(method, *args)
           end
         end
-        
+
         # paginate finders are really just find_* with limit and offset
         finder = method.to_s.sub('paginate', 'find')
         finder.sub!('find', 'find_all') if finder.index('find_by_') == 0
-        
+
         options = args.pop
         raise ArgumentError, 'parameter hash expected' unless options.respond_to? :symbolize_keys
         options = options.dup
         options[:finder] = finder
         args << options
-        
+
         paginate(*args) { |*a| yield(*a) if block_given? }
       end
 
@@ -242,7 +242,7 @@ module WillPaginate
         raise ArgumentError, 'parameter hash expected' unless options.respond_to? :symbolize_keys
         options = options.symbolize_keys
         raise ArgumentError, ':page parameter required' unless options.key? :page
-        
+
         if options[:count] and options[:total_entries]
           raise ArgumentError, ':count and :total_entries are mutually exclusive'
         end

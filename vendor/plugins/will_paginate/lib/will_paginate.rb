@@ -15,7 +15,7 @@ module WillPaginate
       enable_actionpack
       enable_activerecord
     end
-    
+
     # hooks WillPaginate::ViewHelpers into ActionView::Base
     def enable_actionpack
       return if ActionView::Base.instance_methods.include_method? :will_paginate
@@ -26,7 +26,7 @@ module WillPaginate
         ActionController::Base.rescue_responses['WillPaginate::InvalidPage'] = :not_found
       end
     end
-    
+
     # hooks WillPaginate::Finder into ActiveRecord::Base and classes that deal
     # with associations
     def enable_activerecord
@@ -45,7 +45,7 @@ module WillPaginate
         klass.send :include, Finder::ClassMethods
         klass.class_eval { alias_method_chain :method_missing, :paginate }
       end
-      
+
       # monkeypatch Rails ticket #2189: "count breaks has_many :through"
       ActiveRecord::Base.class_eval do
         protected

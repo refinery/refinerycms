@@ -10,7 +10,7 @@ module SlimScrooge
   #
   class MonitoredHash < Hash
     attr_accessor :callsite, :result_set, :monitored_columns
-    
+
     # Create a monitored hash.  The unmonitored_columns are accessed like a regular
     # hash.  The monitored columns kept separately, and new_column_access is called
     # before they are returned.
@@ -22,7 +22,7 @@ module SlimScrooge
       hash.callsite = callsite
       hash
     end
-    
+
     # Called when an unknown column is requested, through the default proc.
     # If the column requested is valid, and the result set is not completely
     # loaded, then we reload.  Otherwise just note the column with add_seen_column.
@@ -34,7 +34,7 @@ module SlimScrooge
       end
       @monitored_columns[name]
     end
-    
+
     # Reload if needed before allowing assignment
     #
     def []=(name, value)
@@ -46,41 +46,41 @@ module SlimScrooge
       end
       @monitored_columns[name] = value
     end
-    
+
     # Returns the column names
     #
     def keys
       @result_set ? @callsite.columns_hash.keys : super | @monitored_columns.keys
     end
-    
+
     # Check for a column name
     #
     def has_key?(name)
       @result_set ? @callsite.columns_hash.has_key?(name) : super || @monitored_columns.has_key?(name)
     end
-    
+
     alias_method :include?, :has_key?
-    
+
     # Called by Hash#update when reload is called on an ActiveRecord object
     #
     def to_hash
       @result_set.reload! if @result_set
       @monitored_columns.merge(self)
     end
-    
+
     def freeze
       @result_set.reload! if @result_set
       @monitored_columns.freeze
       super
     end
-    
+
     # Marshal
     # Dump a real hash - can't dump a monitored hash due to default proc
     #
     def _dump(depth)
       Marshal.dump(to_hash)
     end
-    
+
     def self._load(str)
       Marshal.load(str)
     end

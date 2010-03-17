@@ -9,7 +9,7 @@ module Hpricot
 #   Hpricot::Elements[ele1, ele2, ele3]
 #
 # Assuming that ele1, ele2 and ele3 contain element objects (Hpricot::Elem,
-# Hpricot::Doc, etc.)  
+# Hpricot::Doc, etc.)
 #
 # == Continuing Searches
 #
@@ -29,7 +29,7 @@ module Hpricot
 #   doc = Hpricot("That's my <b>spoon</b>, Tyler.")
 #   doc.at("b").swap("<i>fork</i>")
 #   doc.to_html
-#     #=> "That's my <i>fork</i>, Tyler." 
+#     #=> "That's my <i>fork</i>, Tyler."
 #
 # == Getting More Detailed
 #
@@ -50,7 +50,7 @@ module Hpricot
 # Most of the useful element methods are in the mixins Hpricot::Traverse
 # and Hpricot::Container::Trav.
   class Elements < Array
-  
+
     # Searches this list for any elements (or children of these elements) matching
     # the CSS or XPath expression +expr+.  Root is assumed to be the element scanned.
     #
@@ -138,7 +138,7 @@ module Hpricot
     def prepend(str = nil, &blk)
       each { |x| x.html(x.make(str, &blk) + x.children) }
     end
- 
+
     # Add some HTML just previous to each element in this list.
     # Pass in an HTML +str+, which is turned into Hpricot elements.
     def before(str = nil, &blk)
@@ -151,7 +151,7 @@ module Hpricot
       each { |x| x.parent.insert_after x.make(str, &blk), x }
     end
 
-    # Wraps each element in the list inside the element created by HTML +str+. 
+    # Wraps each element in the list inside the element created by HTML +str+.
     # If more than one element is found in the string, Hpricot locates the
     # deepest spot inside the first element.
     #
@@ -175,7 +175,7 @@ module Hpricot
     # Gets and sets attributes on all matched elements.
     #
     # Pass in a +key+ on its own and this method will return the string value
-    # assigned to that attribute for the first elements.  Or +nil+ if the 
+    # assigned to that attribute for the first elements.  Or +nil+ if the
     # attribute isn't found.
     #
     #   doc.search("a").attr("href")
@@ -185,11 +185,11 @@ module Hpricot
     # matched elements.
     #
     #   doc.search("p").attr("class", "basic")
-    # 
+    #
     # You may also use a Hash to set a series of attributes:
     #
     #   (doc/"a").attr(:class => "basic", :href => "http://hackety.org/")
-    # 
+    #
     # Lastly, a block can be used to rewrite an attribute based on the element
     # it belongs to.  The block will pass in an element.  Return from the block
     # the new value of the attribute.
@@ -203,8 +203,8 @@ module Hpricot
         each do |el|
           el.set_attribute(key, value || blk[el])
         end
-        return self      
-      end    
+        return self
+      end
       if key.is_a? Hash
         key.each { |k,v| self.attr(k,v) }
         return self
@@ -213,7 +213,7 @@ module Hpricot
       end
     end
     alias_method :set, :attr
-  
+
     # Adds the class to all matched elements.
     #
     #   (doc/"p").add_class("bacon")
@@ -237,7 +237,7 @@ module Hpricot
         next unless el.respond_to? :remove_attribute
         el.remove_attribute(name)
       end
-      self      
+      self
     end
 
     # Removes a class from all matched elements.
@@ -247,7 +247,7 @@ module Hpricot
     # Or, to remove all classes:
     #
     #   (doc/"span").remove_class
-    # 
+    #
     def remove_class name = nil
       each do |el|
         next unless el.respond_to? :get_attribute
@@ -258,7 +258,7 @@ module Hpricot
           el.remove_attribute("class")
         end
       end
-      self      
+      self
     end
 
     ATTR_RE = %r!\[ *(?:(@)([\w\(\)-]+)|([\w\(\)-]+\(\))) *([~\!\|\*$\^=]*) *'?"?([^'"]*)'?"? *\]!i
@@ -301,7 +301,7 @@ module Hpricot
                     end
                 end
                 args << -1
-                nodes = Elements[*nodes.find_all do |x| 
+                nodes = Elements[*nodes.find_all do |x|
                                       args[-1] += 1
                                       x.send(meth, *args) ? truth : !truth
                                   end]
@@ -419,7 +419,7 @@ module Hpricot
     end
 
     filter ':nth-child' do |arg,i|
-      case arg 
+      case arg
       when 'even'; (parent.containers.index(self) + 1) % 2 == 0
       when 'odd';  (parent.containers.index(self) + 1) % 2 == 1
       else         self == (parent.containers[arg.to_i - 1])
@@ -429,7 +429,7 @@ module Hpricot
     filter ":last-child" do |i|
       self == parent.containers.last
     end
-    
+
     filter ":nth-last-child" do |arg,i|
       self == parent.containers[-1-arg.to_i]
     end
@@ -457,7 +457,7 @@ module Hpricot
     filter :root do |*a|
       self.is_a? Hpricot::Doc
     end
-    
+
     filter 'text' do |*a|
       self.text?
     end
@@ -469,13 +469,13 @@ module Hpricot
     filter :contains do |arg, ignore|
       html.include? arg
     end
-    
-    
+
+
 
     pred_procs =
       {'text()' => proc { |ele, *_| ele.inner_text.strip },
        '@'      => proc { |ele, attr, *_| ele.get_attribute(attr).to_s if ele.elem? }}
-    
+
     oper_procs =
       {'='      => proc { |a,b| a == b },
        '!='     => proc { |a,b| a != b },
