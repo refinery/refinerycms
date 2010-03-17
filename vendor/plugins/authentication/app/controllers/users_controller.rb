@@ -49,21 +49,7 @@ class UsersController < ApplicationController
     end
   end
 
-<<<<<<< HEAD:vendor/plugins/authentication/app/controllers/users_controller.rb
-  def activate
-    self.current_user = params[:activation_code].blank? ? false : User.find_by_activation_code(params[:activation_code])
-
-    if logged_in? && !current_user.active?
-      current_user.activate!
-      flash[:notice] = t('.signup_complete')
-    end
-
-    redirect_back_or_default(root_url)
-  end
-
   #TODO: TRANSLATE
-=======
->>>>>>> resolve/master:vendor/plugins/authentication/app/controllers/users_controller.rb
   def forgot
     if request.post?
       if (user = User.find_by_email(params[:user][:email])).present?
