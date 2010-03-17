@@ -8,7 +8,7 @@ class Refinery::ApplicationController < ActionController::Base
 
   before_filter :take_down_for_maintenance?, :find_pages_for_menu, :show_welcome_page
 
-  rescue_from ActiveRecord::RecordNotFound, ActionController::UnknownAction, :with => :error_404
+  rescue_from(ActiveRecord::RecordNotFound, ActionController::UnknownAction, :with => :error_404) unless RAILS_ENV == "development"
 
   def error_404
     if (@page = Page.find_by_menu_match("^/404$", :include => [:parts, :slugs])).present?
