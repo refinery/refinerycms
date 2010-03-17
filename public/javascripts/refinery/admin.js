@@ -13,7 +13,7 @@ $(document).ready(function(){
 
 init_delete_confirmations = function() {
   $('a.confirm-delete').click(function(e) {
-    if (confirm("Are you sure you want to " + (t=$(this).attr('title'))[0].toLowerCase() + t.substring(1) + "?")) {
+    if (confirm("Are you sure you want to " + (t=($(this).attr('title') || $(this).attr('tooltip')))[0].toLowerCase() + t.substring(1) + "?")) {
       $("<form method='POST' action='" + $(this).attr('href') + "'></form>")
         .append("<input type='hidden' name='_method' value='delete' />")
         .append("<input type='hidden' name='authenticity_token' value='" + $('#admin_authenticity_token').val() + "'/>")
@@ -137,12 +137,19 @@ init_submit_continue = function(){
 }
 
 init_tooltips = function(args){
-  if (typeof(Tooltip) != "undefined") {
-    $($(args != null ? args : 'a[title], #image_grid img[title]')).each(function(index, element)
-    {
-      new Tooltip(element, {mouseFollow:false, delay: 0, opacity: 1, appearDuration:0, hideDuration: 0, rounded: false});
-    });
-  }
+  $($(args != null ? args : 'a[title], #image_grid img[title]')).each(function(index, element)
+  {
+    // create tooltip on hover and destroy it on hoveroff.
+    $(element).hover(function(e) {
+      tooltip = $("<div class='tooltip'></div>").html($(this).attr('tooltip')).appendTo($('#tooltip_container'));
+      tooltip.css({
+          'left': ((left = $(this).offset().left - (tooltip.outerWidth() / 2) + ($(this).outerWidth() / 2)) >= 0 ? left : 0)
+        , 'top': $(this).offset().top - tooltip.outerHeight() - 6
+      }).show();
+    }, function(e) {
+      $('.tooltip').remove();
+    }).attr({'tooltip': $(element).attr('title'), 'title': ''}).children('img').attr('title', '');
+  });
 }
 
 var link_dialog = {
@@ -325,6 +332,13 @@ var link_dialog = {
 
 var page_options = {
   init: function(enable_parts, new_part_url, del_part_url){
+    // set the page tabs up, but ensure that all tabs are shown so that when wymeditor loads it has a proper height.
+    // also disable page overflow so that scrollbars don't appear while the page is loading.
+    $(document.body).addClass('hide-overflow');
+    page_options.tabs = $('#page-tabs').tabs({tabTemplate: '<li><a href="#{href}">#{label}</a></li>'});
+    part_shown = $('#page-tabs .page_part.field').not('.ui-tabs-hide');
+    $('#page-tabs .page_part.field').removeClass('ui-tabs-hide');
+
     this.enable_parts = enable_parts;
     this.new_part_url = new_part_url;
     this.del_part_url = del_part_url;
@@ -333,7 +347,9 @@ var page_options = {
 
     // Hook into the loaded function. This will be called when WYMeditor has done its thing.
     WYMeditor.loaded = function(){
-      page_options.tabs = $('#page-tabs').tabs({tabTemplate: '<li><a href="#{href}">#{label}</a></li>'});
+      // hide the tabs that are supposed to be hidden and re-enable overflow.
+      $(document.body).removeClass('hide-overflow');
+      $('#page-tabs .page_part.field').not(part_shown).addClass('ui-tabs-hide');
     }
 
     if(this.enable_parts){
@@ -499,10 +515,10 @@ var image_dialog = {
           wym_src.value = relevant_src;
         }
         if ((wym_title = parent.document.getElementById('wym_title')) != null) {
-          wym_title.value = img.title;
+          wym_title.value = $(img).attr('title');
         }
         if ((wym_alt = parent.document.getElementById('wym_alt')) != null) {
-          wym_alt.value = img.alt;
+          wym_alt.value = $(img).attr('alt');
         }
       }
     }

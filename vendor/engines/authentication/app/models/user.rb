@@ -9,6 +9,8 @@ class User < ActiveRecord::Base
     c.perishable_token_valid_for 10.minutes
 
     # http://www.binarylogic.com/2008/11/23/tutorial-easily-migrate-from-restful_authentication-to-authlogic/
+    # Unfortunately, this seems to cause problems when you add Refinery to an app that already had
+    # an Authlogic-created users table. You may need to comment these 2 lines out if that is the case.
     c.act_like_restful_authentication = true
     c.transition_from_restful_authentication = true
 
@@ -17,7 +19,7 @@ class User < ActiveRecord::Base
     # This currently only affects which field is displayed in the login form. As long as we have
     # find_by_login_method :find_by_login_or_email, they can still actually use either one.
     c.login_field = defined?(Refinery.authentication_login_field) ? Refinery.authentication_login_field : "login"
-  end
+  end if self.table_exists?
 
   # Allow users to log in with either their username *or* email, even though we only ask for one of those.
   def self.find_by_login_or_email(login_or_email)

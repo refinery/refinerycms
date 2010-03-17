@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <title>WYMeditor iframe</title>
+    <%= "<meta http-equiv='X-UA-Compatible' content='IE-EmulateIE7' />" if request.env['HTTP_USER_AGENT'] =~ /MSIE/ %>
+    <title>WYMeditor</title>
     <%= stylesheet_link_tag "wymeditor/skins/refinery/wymiframe", "formatting", "theme", :media => "all" %>
   </head>
   <body class="wym_iframe"></body>
