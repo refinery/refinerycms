@@ -1,6 +1,6 @@
 class Admin::UsersController < Admin::BaseController
 
-  crudify :user, :order => 'login', :title_attribute => 'login', :conditions => "state = 'active'"
+  crudify :user, :order => 'login', :title_attribute => 'login'
 
   # Protect these actions behind an admin login
   before_filter :find_user, :except => [:new, :create]

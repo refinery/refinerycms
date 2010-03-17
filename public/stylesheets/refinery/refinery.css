@@ -1242,3 +1242,14 @@ ul#plugins li {
     display:inline-block;
     width:auto;
 }
+
+/**** Tooltip Icons *****/
+.tooltip {
+  background: white;
+  border: 4px solid #606060;
+  padding: 6px;
+	word-wrap:break-word;
+}
+.tooltip * {
+  color: black;
+}

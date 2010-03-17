@@ -2,7 +2,8 @@ class SessionsController < ApplicationController
   layout 'admin'
 
   def create
-    if (@session = UserSession.create(params[:session]))
+    @session = UserSession.new(params[:session])
+    if @session.save
       redirect_back_or_default(admin_root_url)
       flash[:notice] = "Logged in successfully"
     else
