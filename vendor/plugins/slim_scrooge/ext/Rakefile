@@ -18,7 +18,7 @@ task :build do
       raise "Makefile not found:\n\n#{results.join "\n"}" 
     end
 
-    dest_path = ENV["RUBYARCHDIR"]
+    dest_path = ENV["RUBYARCHDIR"] || File.join(File.dirname(__FILE__), "..", "lib")
 
     mf = File.read('Makefile')
     mf = mf.gsub(/^RUBYARCHDIR\s*=\s*\$[^$]*/, "RUBYARCHDIR = #{dest_path}")

@@ -1,6 +1,6 @@
 class Admin::UsersController < Admin::BaseController
 
-  crudify :user, :order => 'login', :title_attribute => 'login', :conditions => "state = 'active'"
+  crudify :user, :order => 'login', :title_attribute => 'login'
 
   # Protect these actions behind an admin login
   before_filter :find_user, :except => [:new, :create]
@@ -18,7 +18,6 @@ class Admin::UsersController < Admin::BaseController
   def create
     @user = User.new(params[:user])
     @selected_plugin_titles = params[:user][:plugins] || []
-    @user.state = 'active' # activate the user
 
     if @user.save
       @user.plugins = @selected_plugin_titles
