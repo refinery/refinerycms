@@ -9,9 +9,6 @@ class ImagesControllerTest < ActionController::TestCase
 
   def setup
     @controller = Admin::ImagesController.new
-    @request    = ActionController::TestRequest.new
-    @response   = ActionController::TestResponse.new
-
     login_as(:quentin)
   end
 
