@@ -24,12 +24,12 @@
     <ul id='plugins'>
       <% @available_plugins.each do |plugin| -%>
         <%# Since the dashboard is always included by the framework, this will maintain the user's order %>
-        <% if Refinery::Plugins.always_allowed.names.include?(plugin.name) or (plugin.name == 'refinery_users' and @user.id == current_user.id) %>
-          <%= hidden_field_tag 'user[plugins][]', plugin.name %>
+        <% if Refinery::Plugins.always_allowed.names.include?(plugin) or (plugin== 'refinery_users' and @user.id == current_user.id) %>
+          <%= hidden_field_tag 'user[plugins][]', plugin %>
         <% else %>
           <li>
-            <%= check_box_tag 'user[plugins][]', plugin.name, @selected_plugin_names.include?(plugin.name), :id => "plugins_#{plugin.name}" %>
-            <%= f.label 'user[plugins][]', plugin.title, :class => "stripped", :for => "plugins_#{plugin.name}" %>
+            <%= check_box_tag 'user[plugins][]', plugin, @selected_plugin_titles.include?(plugin), :id => "plugins_#{plugin}" %>
+            <%= f.label 'user[plugins][]', plugin, :class => "stripped", :for => "plugins_#{plugin}" %>
           </li>
         <% end %>
       <% end %>
