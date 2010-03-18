@@ -22,6 +22,8 @@ en:
       welcome_to_refinery: Welcome to Refinery
   shared:
     admin:
+      message:
+        close: Close
       continue_editing:
         save_and_continue_editing: "Save &amp; continue editing"
       form_actions:
