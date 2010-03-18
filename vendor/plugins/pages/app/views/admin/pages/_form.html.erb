@@ -1,3 +1,9 @@
+<% content_for :head_after_javascript_libraries do %>
+  <script language="javascript">
+    var window.locale = "<%= I18n.locale %>";
+  </script>
+<% end %>
+
 <%= error_messages_for :page %>
 
 <% form_for [:admin, @page] do |f| %>
