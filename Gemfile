@@ -24,8 +24,6 @@ gem 'mongrel', :group => :development
 # end
 
 #===REFINERY REQUIRED GEMS===
-git 'git://github.com/rubyist/aasm.git'
-gem "aasm", ">= 2.1.5", :require => "aasm"
 gem "friendly_id", ">= 2.3.2", :require => 'friendly_id'
 gem "hpricot", ">= 0.8.1", :require => "hpricot"
 gem "slim_scrooge", ">= 1.0.5", :require => "slim_scrooge"
