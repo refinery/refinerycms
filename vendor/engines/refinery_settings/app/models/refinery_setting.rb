@@ -4,21 +4,21 @@ class RefinerySetting < ActiveRecord::Base
   validates_uniqueness_of :name
 
   serialize :value # stores into YAML format
-  #after_save do |object|
-  #  cache_write(object.name, object.value)
-  #end
+  after_save do |object|
+    object.class.cache_write(object.name, object.value)
+  end
 
-  #def self.cache_key(name)
-  #  "refinery_setting_#{name}"
-  #end
+  def self.cache_key(name)
+    "refinery_setting_#{name}"
+  end
 
-  #def self.cache_write(name, value)
-  #  Rails.cache.write(cache_key(name), value)
-  #end
+  def self.cache_write(name, value)
+    Rails.cache.write(cache_key(name), value)
+  end
 
-  #def self.cache_read(name)
-  #  Rails.cache.read(cache_key(name))
-  #end
+  def self.cache_read(name)
+    Rails.cache.read(cache_key(name))
+  end
 
   # Number of settings to show per page when using will_paginate
   def self.per_page
@@ -48,12 +48,12 @@ class RefinerySetting < ActiveRecord::Base
 
   def self.find_or_set(name, the_value)
     # Try to get the value from cache first.
-    #unless (value = cache_read(name)).present?
+    unless (value = cache_read(name)).present?
       # Either find the record or create one with the defined value
       value = find_or_create_by_name(:name => name.to_s, :value => the_value).value
       # Cache it
-    #  cache_write(name, value)
-    #end
+      cache_write(name, value)
+    end
 
     # Return what we found.
     value
@@ -61,27 +61,25 @@ class RefinerySetting < ActiveRecord::Base
 
   def self.[](name)
     # Try to get the value from cache first.
-    #unless (value = cache_read(name)).present?
+    unless (value = cache_read(name)).present?
       # Not found in cache, try to find the record
-      #value = if (setting = self.find_by_name(name.to_s)).present?
+      value = if (setting = self.find_by_name(name.to_s)).present?
         # Cache it
-        #cache_write(name, setting.value)
-      #else
+        cache_write(name, setting.value)
+      else
         # Still cache the nil to prevent more lookups to find nothing.
-        #cache_write(name, nil)
-      #end
-    #end
-    setting = self.find_by_name(name.to_s)
-    value   = setting.value if setting.present?
+        cache_write(name, nil)
+      end
+    end
+
     # Return what we found.
     value
   end
 
   def self.[]=(name, value)
-    setting = self.find_or_initialize_by_name(:name => name.to_s)
+    setting = find_or_initialize_by_name(name.to_s)
     setting.value = value
     setting.save!
-    setting
   end
 
   # Below is not very nice, but seems to be required
