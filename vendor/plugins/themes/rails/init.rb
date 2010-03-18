@@ -4,7 +4,7 @@ if RefinerySetting.table_exists?
   config.middleware.use "ThemeServer"
 
   ::Refinery::ApplicationController.module_eval do
-    
+
     # Add or remove theme paths to/from Refinery application
     before_filter do |controller|
       # remove any paths relating to any theme.
@@ -14,7 +14,7 @@ if RefinerySetting.table_exists?
       if (theme = Theme.current_theme(controller.request)).present?
         # Set up view path again for the current theme.
         controller.view_paths.unshift Rails.root.join("themes", theme, "views").to_s
-        
+
         # Ensure that routes within the application are top priority.
         # Here we grab all the routes that are under the application's view folder
         # and promote them ahead of any other path.
@@ -31,5 +31,5 @@ if RefinerySetting.table_exists?
 
   # Include theme functions into application helper.
   Refinery::ApplicationHelper.send :include, ThemesHelper
-  
+
 end
