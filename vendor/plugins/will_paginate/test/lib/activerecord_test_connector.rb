@@ -25,7 +25,7 @@ class ActiveRecordTestConnector
   end
 
   private
-  
+
   def self.add_load_path(path)
     dep = defined?(ActiveSupport::Dependencies) ? ActiveSupport::Dependencies : ::Dependencies
     dep.load_paths.unshift path
@@ -33,16 +33,16 @@ class ActiveRecordTestConnector
 
   def self.setup_connection
     db = ENV['DB'].blank?? 'sqlite3' : ENV['DB']
-    
+
     configurations = YAML.load_file(File.join(File.dirname(__FILE__), '..', 'database.yml'))
     raise "no configuration for '#{db}'" unless configurations.key? db
     configuration = configurations[db]
-    
+
     ActiveRecord::Base.logger = Logger.new(STDOUT) if $0 == 'irb'
     puts "using #{configuration['adapter']} adapter" unless ENV['DB'].blank?
-    
+
     gem 'sqlite3-ruby' if 'sqlite3' == db
-    
+
     ActiveRecord::Base.establish_connection(configuration)
     ActiveRecord::Base.configurations = { db => configuration }
     prepare ActiveRecord::Base.connection

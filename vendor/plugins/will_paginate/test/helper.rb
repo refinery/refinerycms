@@ -13,7 +13,7 @@ class Test::Unit::TestCase
       [method.to_s, method.to_sym].each { |m| assert_respond_to object, m }
     end
   end
-  
+
   def collect_deprecations
     old_behavior = WillPaginate::Deprecation.behavior
     deprecations = []

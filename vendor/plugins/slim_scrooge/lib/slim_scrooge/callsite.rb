@@ -5,7 +5,7 @@ module SlimScrooge
   # query is made from a particular place in the app
   #
   class Callsite
-    ScroogeComma = ",".freeze 
+    ScroogeComma = ",".freeze
     ScroogeRegexJoin = /(?:LEFT|INNER|OUTER|CROSS)*\s*(?:STRAIGHT_JOIN|JOIN)/i
 
     attr_accessor :seen_columns
@@ -25,11 +25,11 @@ module SlimScrooge
       # Check if query can be optimised
       #
       def use_scrooge?(model_class, original_sql)
-        original_sql =~ select_regexp(model_class.table_name) && 
-        model_class.columns_hash.has_key?(model_class.primary_key) && 
+        original_sql =~ select_regexp(model_class.table_name) &&
+        model_class.columns_hash.has_key?(model_class.primary_key) &&
         original_sql !~ ScroogeRegexJoin
       end
-      
+
       # The regexp that enables us to replace the * from SELECT * with
       # the list of columns we actually need
       #
@@ -65,13 +65,13 @@ module SlimScrooge
     def scrooged_sql(seen_columns, sql)
       sql.gsub(@select_regexp, "SELECT #{scrooge_select_sql(seen_columns)} FROM")
     end
-    
+
     # List if columns what were not fetched
     #
     def missing_columns(fetched_columns)
       (@all_columns - SimpleSet.new(fetched_columns)) << @primary_key
     end
-    
+
     # Returns sql for fetching the unfetched columns for all the rows
     # in the result set, specified by primary_keys
     #

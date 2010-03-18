@@ -14,7 +14,7 @@ module Authlogic
           persist :persist_by_http_auth, :if => :persist_by_http_auth?
         end
       end
-      
+
       # Configuration for the HTTP basic auth feature of Authlogic.
       module Config
         # Do you want to allow your users to log in via HTTP basic auth?
@@ -29,14 +29,14 @@ module Authlogic
         end
         alias_method :allow_http_basic_auth=, :allow_http_basic_auth
       end
-      
+
       # Instance methods for the HTTP basic auth feature of authlogic.
       module InstanceMethods
         private
           def persist_by_http_auth?
             allow_http_basic_auth? && login_field && password_field
           end
-        
+
           def persist_by_http_auth
             controller.authenticate_with_http_basic do |login, password|
               if !login.blank? && !password.blank?
@@ -45,10 +45,10 @@ module Authlogic
                 return valid?
               end
             end
-        
+
             false
           end
-        
+
           def allow_http_basic_auth?
             self.class.allow_http_basic_auth == true
           end

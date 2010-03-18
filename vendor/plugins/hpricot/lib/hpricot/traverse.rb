@@ -106,16 +106,16 @@ module Hpricot
     # Find all preceding nodes.
     def preceding
       sibs = parent.children
-      si = sibs.index(self) 
-      return Elements[*sibs[0...si]] 
-    end 
- 
+      si = sibs.index(self)
+      return Elements[*sibs[0...si]]
+    end
+
     # Find all nodes which follow the current one.
     def following
-      sibs = parent.children 
-      si = sibs.index(self) + 1 
-      return Elements[*sibs[si...sibs.length]] 
-    end 
+      sibs = parent.children
+      si = sibs.index(self) + 1
+      return Elements[*sibs[si...sibs.length]]
+    end
 
     # Adds elements immediately after this element, contained in the +html+ string.
     def after(html = nil, &blk)
@@ -296,7 +296,7 @@ module Hpricot
               mt = after[%r!:[a-z0-9\\*_-]+!i, 0]
               oop = false
               if mt and not (mt == ":not" or Traverse.method_defined? "filter[#{mt}]")
-                after = $' 
+                after = $'
                 m[2] += mt
                 expr = after
               end
@@ -348,10 +348,10 @@ module Hpricot
     #
     # If _names_ are empty, it yields all elements.
     # If non-empty _names_ are given, it should be list of universal names.
-    # 
+    #
     # A nested element is yielded in depth first order as follows.
     #
-    #   t = Hpricot('<a id=0><b><a id=1 /></b><c id=2 /></a>') 
+    #   t = Hpricot('<a id=0><b><a id=1 /></b><c id=2 /></a>')
     #   t.traverse_element("a", "c") {|e| p e}
     #   # =>
     #   {elem <a id="0"> {elem <b> {emptyelem <a id="1">} </b>} {emptyelem <c id="2">} </a>}
@@ -363,7 +363,7 @@ module Hpricot
     #   t = Hpricot(<<'End')
     #   <html>
     #   <meta name="robots" content="index,nofollow">
-    #   <meta name="author" content="Who am I?">    
+    #   <meta name="author" content="Who am I?">
     #   </html>
     #   End
     #   t.traverse_element("{http://www.w3.org/1999/xhtml}meta") {|e| p e}
@@ -424,19 +424,19 @@ module Hpricot
 
     # Find all preceding sibling elements.   Like the other "sibling" methods, this weeds
     # out text and comment nodes.
-    def preceding_siblings() 
-      sibs = parent.containers 
-      si = sibs.index(self) 
-      return Elements[*sibs[0...si]] 
-    end 
- 
+    def preceding_siblings()
+      sibs = parent.containers
+      si = sibs.index(self)
+      return Elements[*sibs[0...si]]
+    end
+
     # Find sibling elements which follow the current one.   Like the other "sibling" methods, this weeds
     # out text and comment nodes.
-    def following_siblings() 
-      sibs = parent.containers 
-      si = sibs.index(self) + 1 
-      return Elements[*sibs[si...sibs.length]] 
-    end 
+    def following_siblings()
+      sibs = parent.containers
+      si = sibs.index(self) + 1
+      return Elements[*sibs[si...sibs.length]]
+    end
 
     # Puts together an array of neighboring sibling elements based on their proximity
     # to this element.
@@ -507,7 +507,7 @@ module Hpricot
     end
 
     # +find_element+ searches an element which universal name is specified by
-    # the arguments. 
+    # the arguments.
     # It returns nil if not found.
     def find_element(*names)
       traverse_element(*names) {|e| return e }
@@ -777,7 +777,7 @@ module Hpricot
           return author if !author.empty?
         rescue IndexError
         end
-      } 
+      }
 
       if channel = find_element('{http://purl.org/rss/1.0/}channel')
         channel.traverse_element('{http://purl.org/dc/elements/1.1/}creator') {|e|

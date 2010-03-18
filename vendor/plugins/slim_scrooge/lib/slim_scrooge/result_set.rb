@@ -8,17 +8,17 @@ module SlimScrooge
   #
   class ResultSet
     attr_reader :rows, :callsite_key
-    
+
     def initialize(rows, callsite_key, fetched_columns)
       @rows = rows
       @callsite_key = callsite_key
       @fetched_columns = fetched_columns
     end
-    
+
     def rows_by_key(key)
       @rows.inject({}) {|hash, row| hash[row[key]] = row; hash}
     end
-    
+
     # Reload all the rows in the sql result at once
     # Reloads only those columns we didn't fetch the first time
     #

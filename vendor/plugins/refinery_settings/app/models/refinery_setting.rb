@@ -8,12 +8,16 @@ class RefinerySetting < ActiveRecord::Base
     cache_write(object.name, object.value)
   end
 
+  def self.cache_key(name)
+    "refinery_setting_#{name}"
+  end
+
   def self.cache_write(name, value)
-    Rails.cache.write("refinery_setting_#{name}", value)
+    Rails.cache.write(cache_key(name), value)
   end
 
   def self.cache_read(name)
-    Rails.cache.read("refinery_setting_#{name}")
+    Rails.cache.read(cache_key(name))
   end
 
   # Number of settings to show per page when using will_paginate

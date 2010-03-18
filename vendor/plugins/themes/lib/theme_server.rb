@@ -11,7 +11,7 @@ class ThemeServer
   def call(env)
     if env["PATH_INFO"] =~ /^\/theme/
       env["PATH_INFO"].gsub!(/^\/theme\//, '')
-      if (file_path = (dir=Rails.root.join("themes", RefinerySetting[:theme])).join(env["PATH_INFO"])).exist?
+      if (file_path = (dir = Rails.root.join("themes", Theme.current_theme(env))).join(env["PATH_INFO"])).exist?
         etag = Digest::MD5.hexdigest("#{file_path.to_s}#{file_path.mtime}")
         unless (etag == env["HTTP_IF_NONE_MATCH"])
           status, headers, body = Rack::File.new(dir).call(env)

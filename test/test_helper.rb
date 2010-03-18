@@ -39,7 +39,6 @@ class ActiveSupport::TestCase
 
   # Add more helper methods to be used by all tests here...
   def login_as(user)
-    activate_authlogic
     UserSession.create(users(user)) # logs a user in
   end
 
@@ -47,4 +46,8 @@ class ActiveSupport::TestCase
     UserSession.find.destroy
   end
 
+end
+
+class ActionController::TestCase
+  setup :activate_authlogic
 end

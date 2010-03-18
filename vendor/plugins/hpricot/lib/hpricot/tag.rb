@@ -43,7 +43,7 @@ module Hpricot
     def initialize e
       @element = e
     end
-    def [] k 
+    def [] k
       Hpricot.uxs((@element.raw_attributes || {})[k])
     end
     def []= k, v
@@ -195,7 +195,7 @@ module Hpricot
     def pathname; "procins()" end
     def raw_string; output("") end
     def output(out, opts = {})
-      out << 
+      out <<
         if_output(opts) do
           "<?#{target}" +
            (content ? " #{content}" : "") +
