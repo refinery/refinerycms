@@ -9,7 +9,7 @@
     <ul id="page_parts">
     <% @page.parts.each_with_index do |part, part_index| %>
       <li>
-        <%= link_to part.title, "##{@page.new_record? ? "page_part_new_#{part_index}" : part.to_param}" %>
+        <%= link_to part.title, "#" << (@page.new_record? ? "page_part_new_#{part_index}" : part.to_param) %>
       </li>
     <% end %>
     </ul>
@@ -22,6 +22,7 @@
           <%= link_to(refinery_icon_tag("delete.png"), "#", :title => t('.delete_content_section'), :class => 'delete_page_part', :name => t('.delete_content_section'), :id => "delete_page_part") %>
         </li>
       </ul>
+    <% end %>
 
     <div id='page_part_editors'>
       <% part_index = -1 %>
@@ -35,7 +36,7 @@
     </div>
   </div>
   <p>
-    <% # TODO Translate :rel %>
+    <%# TODO Translate :rel %>
     <%= link_to "&raquo;" + t('.hide_or_show_advanced_options'), "#", :id => "toggle_advanced_options",
           :rel => "Click to access meta tag settings and menu options" %>
   </p>
@@ -114,7 +115,7 @@
   <% if RefinerySetting.find_or_set(:new_page_parts, false) %>
     <div id='new_page_part_dialog' style='display: none'>
       <div class='field'>
-        <% # TODO Translate %>
+        <%# TODO Translate %>
         <label for='new_page_part_title'>Title</label>
         <input id='new_page_part_title' value='' class='larger' size='40' />
         <input id='new_page_part_index' type='hidden' value='<%= @page.parts.size %>' />
