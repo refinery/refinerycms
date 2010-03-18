@@ -24,7 +24,7 @@ if RefinerySetting.table_exists?
       end
 
       # Set up menu caching for this theme or lack thereof
-      #RefinerySetting[:refinery_menu_cache_action_suffix] = "#{"#{theme}_" if theme.present?}site_menu"
+      RefinerySetting[:refinery_menu_cache_action_suffix] = "#{"#{theme}_" if theme.present?}site_menu"
     end
 
   end
