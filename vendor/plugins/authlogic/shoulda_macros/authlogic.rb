@@ -2,7 +2,7 @@
 # Place this file into your test/shoulda_macros directory
 #
 # Example:
-# 
+#
 # class UserTest
 #   should_have_authlogic
 # end
@@ -39,24 +39,24 @@ module Authlogic
           "have Authlogic"
         end
       end
-      
+
     end
-    
+
     module Macros
       include Matchers
-      
+
       def should_have_authlogic
         klass = described_type rescue model_class
         matcher = HaveAuthlogic.new
-        
+
         should matcher.description do
           assert matcher.matches?(klass.new), matcher.failure_message
         end
       end
       alias_method :should_be_authentic, :should_have_authlogic
-      
+
     end
-    
+
   end
 end
 

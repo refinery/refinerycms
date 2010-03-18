@@ -23,7 +23,7 @@ module Authlogic
       #
       # * <tt>session_class:</tt> default: "#{name}Session",
       #   This is the related session class.
-      #   
+      #
       # * <tt>relationship_name:</tt> default: options[:session_class].klass_name.underscore.pluralize,
       #   This is the name of the relationship you want to use to scope everything. For example an Account has many Users. There should be a relationship
       #   called :users that you defined with a has_many. The reason we use the relationship is so you don't have to repeat yourself. The relatonship
@@ -49,7 +49,7 @@ module Authlogic
         end_eval
       end
     end
-    
+
     ::ActiveRecord::Base.extend(Base) if defined?(::ActiveRecord)
   end
 end

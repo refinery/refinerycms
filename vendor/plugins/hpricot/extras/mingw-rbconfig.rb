@@ -2,7 +2,7 @@
 # This rbconfig.rb corresponds to a Ruby installation for win32 cross-compiled
 # with mingw under i686-linux. It can be used to cross-compile extensions for
 # win32 using said toolchain.
-# 
+#
 # This file assumes that a cross-compiled mingw32 build (compatible with the
 # mswin32 builds) is installed under $HOME/ruby-mingw32.
 
@@ -154,16 +154,16 @@ module Config
   def Config::expand(val, config = CONFIG)
     val.gsub!(/\$\$|\$\(([^()]+)\)|\$\{([^{}]+)\}/) do |var|
       if !(v = $1 || $2)
-	'$'
+  '$'
       elsif key = config[v = v[/\A[^:]+(?=(?::(.*?)=(.*))?\z)/]]
-	pat, sub = $1, $2
-	config[v] = false
-	Config::expand(key, config)
-	config[v] = key
-	key = key.gsub(/#{Regexp.quote(pat)}(?=\s|\z)/n) {sub} if pat
-	key
+  pat, sub = $1, $2
+  config[v] = false
+  Config::expand(key, config)
+  config[v] = key
+  key = key.gsub(/#{Regexp.quote(pat)}(?=\s|\z)/n) {sub} if pat
+  key
       else
-	var
+  var
       end
     end
     val

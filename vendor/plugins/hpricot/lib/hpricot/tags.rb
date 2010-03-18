@@ -6,7 +6,7 @@ module Hpricot
   # Common sets of attributes.
   AttrCore = [:id, :class, :style, :title]
   AttrI18n = [:lang, 'xml:lang'.intern, :dir]
-  AttrEvents = [:onclick, :ondblclick, :onmousedown, :onmouseup, :onmouseover, :onmousemove, 
+  AttrEvents = [:onclick, :ondblclick, :onmousedown, :onmouseup, :onmouseover, :onmousemove,
       :onmouseout, :onkeypress, :onkeydown, :onkeyup]
   AttrFocus = [:accesskey, :tabindex, :onfocus, :onblur]
   AttrHAlign = [:align, :char, :charoff]
@@ -113,11 +113,11 @@ module Hpricot
     @tagset = XHTMLStrict.tagset.merge \
       :strike => Attrs,
       :center => Attrs,
-      :dir => Attrs + [:compact], 
+      :dir => Attrs + [:compact],
       :noframes => Attrs,
-      :basefont => [:id, :size, :color, :face], 
+      :basefont => [:id, :size, :color, :face],
       :u => Attrs,
-      :menu => Attrs + [:compact], 
+      :menu => Attrs + [:compact],
       :iframe => AttrCore + [:longdesc, :name, :src, :frameborder, :marginwidth, :marginheight, :scrolling, :align, :height, :width],
       :font => AttrCore + AttrI18n + [:size, :color, :face],
       :s => Attrs,
