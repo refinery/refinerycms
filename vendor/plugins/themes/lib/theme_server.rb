@@ -10,7 +10,7 @@ class ThemeServer
 
   def call(env)
     theme = Theme.current_theme(env)
-    
+
     if env["PATH_INFO"] =~ /^\/theme/
       env["PATH_INFO"].gsub!(/^\/theme\//, '')
       if (file_path = (dir = Rails.root.join("themes", theme)).join(env["PATH_INFO"])).exist?
