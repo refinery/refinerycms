@@ -22,6 +22,8 @@ h2. Installation
 
 Requirements: Rails 2.2 or above, Ruby 1.8.6 or above.
 
+h3. Gem
+
 <pre>
   # if you haven't already, add gemcutter to your gem sources
   sudo gem install gemcutter
@@ -36,6 +38,12 @@ Next add this to your Rails::Initializer section in environment.rb:
 
 <pre>
   config.gem 'slim_scrooge'
+</pre>
+
+h3. Plugin
+
+<pre>
+script/plugin install git://github.com/sdsykes/slim_scrooge.git
 </pre>
 
 h2. What it does
