@@ -4,8 +4,8 @@ class <%= migration_name %> < ActiveRecord::Migration
     create_table :<%= table_name %> do |t|
 <%
   attributes.each do |attribute|
-    # turn image into what it was supposed to be which is an integer reference to an image.
-    if attribute.type.to_s == 'image' || attribute.type.to_s == 'resource'
+    # turn image or resource into what it was supposed to be which is an integer reference to an image or resource.
+    if attribute.type.to_s =~ /^(image|resource)$/
       attribute.type = 'integer'
       attribute.name = "#{attribute.name}_id".gsub("_id_id", "_id")
     end
