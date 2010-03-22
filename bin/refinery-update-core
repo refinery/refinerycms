@@ -33,6 +33,7 @@ unless rails_root.nil? or rails_root.length == 0
   else
     lines = File.open(File.join(%W(#{rails_root} config application.rb)), "r").read.split("\n")
   end
+
   secret_key = ""
   lines.each do |line|
     match = line.scan(/(:secret)([^']*)([\'])([^\']*)/).flatten.last
@@ -58,6 +59,10 @@ unless rails_root.nil? or rails_root.length == 0
     FileUtils::cp File.join(%W(#{refinery_root} config environment.rb)), File.join(%W(#{rails_root} config environment.rb))
   end
 
+  unless File.exist?(File.join(%W(#{rails_root} config settings.rb)))
+    FileUtils::cp(File.join(%W(#{refinery_root} config settings.rb)), File.join(%W(#{rails_root} config settings.rb)))
+  end
+
   app_config_file = "application.rb"
 
 	app_config = File.open(File.join(%W(#{rails_root} config #{app_config_file})), "r").read
@@ -71,9 +76,9 @@ unless rails_root.nil? or rails_root.length == 0
 
     # copy the new config file.
     FileUtils.cp File.join(%W(#{refinery_root} config #{app_config_file})), File.join(%W(#{rails_root} config #{app_config_file}))
-    
+
     # Write the secret key back into the file.
-    
+
 
   	environment_updated = true
 	end

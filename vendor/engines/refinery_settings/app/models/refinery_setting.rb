@@ -79,7 +79,7 @@ class RefinerySetting < ActiveRecord::Base
   def self.[]=(name, value)
     setting = find_or_initialize_by_name(name.to_s)
     setting.value = value
-    setting.save!
+    setting.save
   end
 
   # Below is not very nice, but seems to be required

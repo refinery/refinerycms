@@ -65,7 +65,7 @@ After your database exists, you'll need to install the gems that Refinery depend
 
     rake gems:install
 
-As of version 0.9.6.20, the news engine was extracted into a separate gem. This is included by default in config/application.rb
+As of version 0.9.6.21, the news engine was extracted into a separate gem. This is included by default in config/application.rb
 If you don't want this engine on your site, just remove the config.gem line for it in config/application.rb
 If you do want it, please run the following commands to get it up and running:
 
