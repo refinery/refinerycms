@@ -1,0 +1,2 @@
+var I18n = I18n || {};
+I18n.translations = {"en":{"date":{"formats":{"default":"%Y-%m-%d","long":"%B %d, %Y","short":"%b %d"}},"time":{"formats":{"default":"%a, %d %b %Y %H:%M:%S %z","long":"%B %d, %Y %H:%M","short":"%d %b %H:%M"}}},"fr":{"date":{"formats":{"default":"%d/%m/%Y","long":"%e %B %Y","long_ordinal":"%e %B %Y","only_day":"%e","short":"%e %b"}},"time":{"formats":{"default":"%d %B %Y %H:%M","long":"%A %d %B %Y %H:%M:%S %Z","long_ordinal":"%A %d %B %Y %H:%M:%S %Z","only_second":"%S","short":"%d %b %H:%M","time":"%H:%M"}}}};
