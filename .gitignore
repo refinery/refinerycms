@@ -26,3 +26,4 @@ vendor/cache
 *.lock
 callsite_hash.*
 **/*/slim_scrooge/ext/Makefile
+public/javascripts/messages.js

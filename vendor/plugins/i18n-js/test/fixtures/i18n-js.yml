@@ -1,0 +1,22 @@
+i18n_dir: "public/javascripts"
+translations:
+  default:
+    file: "public/javascripts/messages.js"
+  basic_scope:
+    file: "public/javascripts/basic_scope.js"
+    only: "*.number.currency.format"
+  simple_scope:
+    file: "public/javascripts/simple_scope.js"
+    only: "*.date.formats"
+  completion_scope:
+    file: "public/javascripts/completion_scope.js"
+    only: "*.*.formats"
+  deep_completion_scope:
+    file: "public/javascripts/deep_completion_scope.js"
+    only: "*.admin.*.title"
+  multi_comletion:
+    file: "public/javascripts/multi_completion.js"
+    only: "*.date.*"
+  multi_scopes:
+    file: "public/javascripts/folder/multi_scopes.js"
+    only: ["*.date.formats", "*.date.month_names", "*.time.invalid"]

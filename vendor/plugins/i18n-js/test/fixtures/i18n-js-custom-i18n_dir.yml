@@ -1,0 +1,4 @@
+i18n_dir: "public/javascripts/folder"
+translations:
+  default:
+    file: "public/javascripts/messages.js"
