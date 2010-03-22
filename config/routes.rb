@@ -1,4 +1,5 @@
 ActionController::Routing::Routes.draw do |map|
+  map.filter(:locale)
 
   # NB: Engine routes are loaded FIRST from Rails v2.3 onward.
   # These routes are contained within vendor/plugins/engine_name/config/routes.rb
