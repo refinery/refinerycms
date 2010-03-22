@@ -23,8 +23,10 @@ config.log_level = :debug
 # Uncomment the following lines if you're getting
 # "A copy of XX has been removed from the module tree but is still active!"
 # or you want to develop a plugin and don't want to restart every time a change is made:
-#config.after_initialize do
-#  ::ActiveSupport::Dependencies.load_once_paths = ::ActiveSupport::Dependencies.load_once_paths.select do |path|
-#    (path =~ /app/).nil?
-#  end
-#end
+=begin
+config.after_initialize do
+  ::ActiveSupport::Dependencies.load_once_paths = ::ActiveSupport::Dependencies.load_once_paths.select do |path|
+    (path =~ /app/).nil?
+  end
+end
+=end
