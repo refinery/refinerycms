@@ -137,7 +137,7 @@ init_submit_continue = function(){
 }
 
 init_tooltips = function(args){
-  $($(args != null ? args : 'a[title], #image_grid img[title]')).each(function(index, element)
+  $($(args != null ? args : 'a[title], span[title], #image_grid img[title], *[tooltip]')).each(function(index, element)
   {
     // create tooltip on hover and destroy it on hoveroff.
     $(element).hover(function(e) {
@@ -148,7 +148,12 @@ init_tooltips = function(args){
       }).show();
     }, function(e) {
       $('.tooltip').remove();
-    }).attr({'tooltip': $(element).attr('title'), 'title': ''}).children('img').attr('title', '');
+    });
+    if ($(element).attr('tooltip') == null) {
+      $(element).attr({'tooltip': $(element).attr('title'), 'title': ''});
+    }
+    // wipe clean the title on any children too.
+    $(element).children('img').attr('title', '')
   });
 }
 
