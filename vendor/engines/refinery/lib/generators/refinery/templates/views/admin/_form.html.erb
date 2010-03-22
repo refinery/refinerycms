@@ -10,6 +10,12 @@
       :image => @<%= singular_name %>.<%= attribute.name.gsub("_id", "") %>,
       :toggle_image_display => false
     } %>
+<% elsif attribute.type.to_s == 'resource' %>
+    <%%= render :partial => "/shared/admin/resource_picker", :locals => {
+      :f => f,
+      :field => :<%= "#{attribute.name}_id".gsub("_id_id", "_id") %>,
+      :resource => @<%= singular_name %>.<%= attribute.name.gsub("_id", "") %>,
+    } %>
 <% elsif attribute.field_type.to_s == "text_area" -%>
     <%%= f.text_area :<%= attribute.name %>, :rows => 20, :cols => 140, :class => 'wymeditor' -%>
 <% else -%>
