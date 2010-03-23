@@ -18,14 +18,27 @@ protected
 
   # This finds all of the pages that could possibly be assigned as the current page's parent.
   def find_pages_for_parents_list
-    @pages_for_parents_list = Page.find(:all, :order => "parent_id, position ASC")
-
+    @pages_for_parents_list = []
+    Page.find_all_by_parent_id(nil, :order => "position ASC").each do |page|
+      @pages_for_parents_list << page
+      @pages_for_parents_list += add_pages_branch_to_parents_list(page)
+    end
+    @pages_for_parents_list.flatten.compact!
     # We need to remove all references to the current page or any of its decendants or we get a nightmare.
     unless @page.nil? or @page.new_record?
       @pages_for_parents_list.reject! do |page|
         page.id == @page.id or @page.descendants.include?(page)
       end
     end
+  end
+  
+  def add_pages_branch_to_parents_list(page)
+    list = []
+    page.children.each do |child|
+      list << child
+      list += add_pages_branch_to_parents_list if child.children.any?
+    end
+    list
   end
 
 end
