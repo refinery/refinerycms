@@ -24,7 +24,8 @@ gem 'mongrel', :group => :development
 # end
 
 #===REFINERY REQUIRED GEMS===
-gem "friendly_id", ">= 2.3.2", :require => 'friendly_id'
+git 'git://github.com/norman/friendly_id.git', :branch => 'rails3'
+gem "friendly_id", ">= 3.0.0", :require => 'friendly_id'
 gem "hpricot", ">= 0.8.1", :require => "hpricot"
 gem "slim_scrooge", ">= 1.0.5", :require => "slim_scrooge"
 #git 'git://github.com/mislav/will_paginate.git', 'branch' => 'rails3'
