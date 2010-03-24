@@ -10,7 +10,16 @@ What are some of the known things that need to be done?
 
 # Rails 3.0 Support
 
-We've started an effort to move to Rails 3.0 - that just needs to be completed.
+We've started an effort to move to Rails 3.0 - in fact, you are currently
+viewing the Rails 3.0 branch.
+
+Work items still to do:
+
+* Replace or fix friendly\_id upstream.
+* Replace or fix attachment\_fu upstream (possibly with Paperclip, Carrierwave).
+* Fix theme middleware (high).
+* Migrate to new Mailer API (low).
+* Fix other deprecations (low).
 
 # Improve the Generator
 
