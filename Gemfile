@@ -18,10 +18,11 @@ gem 'mongrel', :group => :development
 # gem 'aws-s3', :require => 'aws/s3'
 
 # Bundle gems for certain environments:
-# gem 'rspec', :group => :test
-# group :test do
-#   gem 'webrat'
-# end
+group :test do
+  gem 'capybara'
+  gem 'database_cleaner'
+  gem 'cucumber-rails'
+end
 
 #===REFINERY REQUIRED GEMS===
 git 'git://github.com/norman/friendly_id.git', :branch => 'rails3'
