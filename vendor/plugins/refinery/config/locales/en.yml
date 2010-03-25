@@ -43,7 +43,9 @@ en:
         download_current: "Download current {{what}}"
         opens_in_new_window: Opens in a new window
         remove_current: "Remove current {{what}}"
-        resource: resource
+        resource: resource    
+    message:
+      close: Close  
   admin:
     pages:
       list:
