@@ -1,15 +1,13 @@
 <%
-  title ||= t('.cancel_lose_changes', :object_name => f.object.class.name.underscore.gsub("_", " "))
+  title              ||= t('.cancel_lose_changes', :object_name => f.object.class.name.underscore.gsub("_", " "))
   submit_button_text ||= t('.save')
+  submit_button_id   ||= "submit_button"
   cancel_button_text ||= t('.cancel')
-  cancel_url ||= ((back=url_for(:back)).include?('javascript') ? send("admin_#{f.object.class.name.pluralize.underscore}_url") : back)
-  cancel_button_id ||= "cancel_button"
+  cancel_button_id   ||= "cancel_button"
+  cancel_url         ||= (( back = url_for(:back)).include?('javascript') ? send("admin_#{f.object.class.name.pluralize.underscore}_url") : back)
 %>
 <div class='form-actions'>
-  <%= f.submit submit_button_text, :id => "#{submit_button_id ||= "submit_button"}", :class => "wymupdate" %>
-=======
-  <%= f.submit "#{submit_button_text ||= 'Save'}", :id => "#{submit_button_id ||= "submit_button"}", :class => "wymupdate" -%>
->>>>>>> resolve/master:vendor/plugins/refinery/app/views/shared/admin/_form_actions.html.erb
+  <%= f.submit submit_button_text, :id => submit_button_id, :class => "wymupdate" %>
   <% if (continue_editing ||= false and !f.object.new_record?) -%>
     or
     <%= render :partial => "/shared/admin/continue_editing", :locals => {:f => f} -%>
