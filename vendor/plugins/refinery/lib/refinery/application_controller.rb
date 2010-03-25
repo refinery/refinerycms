@@ -6,20 +6,11 @@ class Refinery::ApplicationController < ActionController::Base
   include Crud # basic create, read, update and delete methods
   include AuthenticatedSystem
 
-  before_filter :take_down_for_maintenance?, :find_pages_for_menu, :show_welcome_page
-  before_filter :set_locale
+  before_filter :set_locale, :take_down_for_maintenance?, :find_pages_for_menu, :show_welcome_page
 
   rescue_from(ActiveRecord::RecordNotFound, ActionController::UnknownAction, :with => :error_404) unless RAILS_ENV == "development"
 
-  def set_locale
-    locale = params[:locale] || cookies[:locale]
-    I18n.locale = locale.to_s
-    cookies[:locale] = locale unless (cookies[:locale] && cookies[:locale] == locale)
-  end
 
-  def default_url_options(options={})
-    { :locale => I18n.locale }
-  end
 
   def error_404
     if (@page = Page.find_by_menu_match("^/404$", :include => [:parts, :slugs])).present?
@@ -86,6 +77,16 @@ protected
   def render(action = nil, options = {}, &blk)
     present(@page) unless admin? or @meta.present?
     super
+  end
+  
+  def set_locale
+    locale = params[:locale] || cookies[:locale]
+    I18n.locale = locale.to_s
+    cookies[:locale] = locale unless (cookies[:locale] && cookies[:locale] == locale)
+  end
+
+  def default_url_options(options={})
+    { :locale => I18n.locale }
   end
 
 end
