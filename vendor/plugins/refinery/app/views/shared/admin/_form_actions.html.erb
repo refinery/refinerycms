@@ -1,10 +1,15 @@
 <%
-  cancel_url ||= ((back=url_for(:back)).include?('javascript') ? send("admin_#{f.object.class.name.pluralize.underscore}_url") : back)
   title ||= t('.cancel_lose_changes', :object_name => f.object.class.name.underscore.gsub("_", " "))
+  submit_button_text ||= t('.save')
+  cancel_button_text ||= t('.cancel')
+  cancel_url ||= ((back=url_for(:back)).include?('javascript') ? send("admin_#{f.object.class.name.pluralize.underscore}_url") : back)
   cancel_button_id ||= "cancel_button"
 %>
 <div class='form-actions'>
-  <%= f.submit t('.save'), :id => "#{submit_button_id ||= "submit_button"}", :class => "wymupdate" %>
+  <%= f.submit submit_button_text, :id => "#{submit_button_id ||= "submit_button"}", :class => "wymupdate" %>
+=======
+  <%= f.submit "#{submit_button_text ||= 'Save'}", :id => "#{submit_button_id ||= "submit_button"}", :class => "wymupdate" -%>
+>>>>>>> resolve/master:vendor/plugins/refinery/app/views/shared/admin/_form_actions.html.erb
   <% if (continue_editing ||= false and !f.object.new_record?) -%>
     or
     <%= render :partial => "/shared/admin/continue_editing", :locals => {:f => f} -%>
@@ -12,6 +17,6 @@
   <% unless (hide_cancel ||= from_dialog?) -%>
     or
     <%# TODO add :what to t('.cancel_lose_changes') %>
-    <%= link_to t('.cancel'), cancel_url, :title => title, :id => cancel_button_id, :class => "close_dialog" %>
+    <%= link_to cancel_button_text, cancel_url, :title => title, :id => cancel_button_id, :class => "close_dialog" %>
   <% end -%>
 </div>
