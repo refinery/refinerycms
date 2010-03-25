@@ -1,13 +1,17 @@
-<% form_for :session, :url => session_path do |f| -%>
+<% form_for :session, @session, :url => session_path do |f| -%>
+  <%= f.error_messages %>
   <div class='clearfix'>
     <div class='field session_username'>
-      <%= f.label :login %>
-      <%= f.text_field :login %>
+      <%= f.label Refinery.authentication_login_field %>
+      <%= f.text_field Refinery.authentication_login_field %>
     </div>
     <div class='field session_password'>
       <%= f.label :password %>
-      <%= f.password_field :password %>
+      <%= f.password_field :password, :autocomplete => 'off' %>
     </div>
+  </div>
+  <div class='field forgot_password'>
+    <%= link_to "I forgot my password", forgot_url %>
   </div>
   <div class='field remember_me'>
     <%= f.label :remember_me, nil %>

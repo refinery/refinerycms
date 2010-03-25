@@ -1,7 +1,0 @@
-<%= sortable_element('sortable_list',
-                    :loading => "$('sort-status').innerHTML = 'Saving order...'",
-                    :loaded => "$('sort-status').innerHTML = 'New Order Saved.';
-                                new Effect.Highlight('sort-status', {startcolor:'#00a017', endcolor:'#f2f1ed'})",
-                    :update => 'refinery_settings_list',
-                    :url => {:action => :update_positions}
-) -%>

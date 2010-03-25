@@ -189,8 +189,8 @@ module Crud
 
           def update_positions
             unless params[:tree] == "true"
-              params[:sortable_list].each do |i|
-                #{class_name}.find(i).update_attribute(:position, params[:sortable_list].index(i))
+              params[:sortable_list].each_with_index do |i, index|
+                #{class_name}.find(i).update_attribute(:position, index)
               end
             else
               params[:sortable_list].each do |position, id_hash|
@@ -199,7 +199,7 @@ module Crud
             end
 
             find_all_#{plural_name}
-            render :partial => 'sortable_list', :layout => false
+            render :partial => 'sortable_list', :layout => false, :locals => {:continue_reordering => params[:continue_reordering]}
           end
 
           # takes in a single branch and saves the nodes inside it

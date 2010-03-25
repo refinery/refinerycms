@@ -1,4 +1,4 @@
 <% @pages.each do |page| %>
    <%= render :partial => 'list', :locals => {:page => page} %>
 <% end %>
-<%= render :partial => "/shared/admin/sortable_list" %>
+<%= render :partial => "/shared/admin/sortable_list", :locals => {:continue_reordering => (defined?(continue_reordering) ? continue_reordering : true)} %>

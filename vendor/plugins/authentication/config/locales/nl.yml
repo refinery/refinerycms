@@ -7,6 +7,11 @@ nl:
         login: login
         password: wachtwoord
         remember_me: Onthoud mijn gegevens
+      user:
+        login: Gebruikersnaam
+        email: E-mail adres
+        password: Wachtwoord
+        password_confirmation: Bevestig wachtwoord
   plugins:
     refinery_users:
       title: Gebruikers
@@ -49,5 +54,3 @@ nl:
     user_name: Gebruiker {{name}}
     password: Wachtwoord {{password}}
     visit_url: "Bezoek dit adres om uw gebruikersaacount te activeren:"
-
-

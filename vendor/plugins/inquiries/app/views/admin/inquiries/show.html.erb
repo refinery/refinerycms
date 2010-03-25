@@ -17,50 +17,49 @@
   <h2><%= t('inquiry', :scope => 'activerecord.models') %></h2>
   <table id='inquiry'>
     <%- with_options :scope => 'activerecord.attributes.inquiry' do |o| -%>
+    <tr>
+      <td>
+        <strong><%= o.t(:to)  %></strong>
+      </td>
+      <td>
+        <%= RefinerySetting[:site_name] %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <strong><%= o.t(:from)%></strong>
+      </td>
+      <td>
+        <%=h @inquiry.name %> [<%= mail_to @inquiry.email, @inquiry.email, {:title => t(:click_to_email)} %>]
+      </td>
+    </tr>
+    <% unless @inquiry.phone.blank? %>
       <tr>
         <td>
-          <strong><%= o.t(:to)  %></strong>
+          <strong><%= o.t(:phone) %></strong>
         </td>
         <td>
-          <%= RefinerySetting[:site_name] %>
+          <%=h @inquiry.phone %>
         </td>
       </tr>
-      <tr>
-        <td>
-          <strong><%= o.t(:from) %></strong>
-        </td>
-        <td>
-          <%= @inquiry.name %> [<%= mail_to @inquiry.email, @inquiry.email, {:title => t('.click_to_email')} %>]
-        </td>
-      </tr>
-      <% unless @inquiry.phone.blank? %>
-        <tr>
-          <td>
-            <strong><%= o.t(:phone) %></strong>
-          </td>
-          <td>
-            <%= @inquiry.phone %>
-          </td>
-        </tr>
-      <% end %>
-      <tr>
-        <td>
-          <strong><%= o.t(:date)  %></strong>
-        </td>
-        <td>
-          <%= l(Date.parse(@inquiry.created_at.to_s), :format => :long) %>
-        </td>
-      </tr>
-      <tr>
-        <td valign='top'>
-          <strong><%= o.t(:message) %></strong>
-        </td>
-        <td>
-          <p style='margin-top: 0px'>
-            <%= @inquiry.message.gsub("\r\n\r\n", "\r\n").gsub("\r\n", "</p><p>") %>
-          </p>
-        </td>
-      </tr>
-    <%- end -%>
+    <% end %>
+    <tr>
+      <td>
+        <strong><%= o.t(:date) %></strong>
+      </td>
+      <td>
+        <%= l(Date.parse(@inquiry.created_at.to_s), :format => :long) %>
+      </td>
+    </tr>
+    <tr>
+      <td valign='top'>
+        <strong><%= o.t(:message) %></strong>
+      </td>
+      <td>
+        <p style='margin-top: 0px'>
+          <%= h(@inquiry.message).gsub("\r\n\r\n", "\r\n").gsub("\r\n", "</p><p>") %>
+        </p>
+      </td>
+    </tr>
   </table>
 </div>

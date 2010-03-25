@@ -17,13 +17,13 @@
 <div id='records'>
   <%% if searching? %>
     <h2>Search Results for "<%%= params[:search] %>"</h2>
-    <%% if @<%= plural_name %>.size > 0 %>
+    <%% if @<%= plural_name %>.any? %>
       <%%= render :partial => "<%= singular_name %>", :collection => @<%= plural_name %> %>
     <%% else %>
       <p>Sorry, no results found.</p>
     <%% end %>
   <%% else %>
-    <%% if @<%= plural_name %>.size > 0 %>
+    <%% if @<%= plural_name %>.any? %>
       <%%= will_paginate @<%= plural_name %>, :previous_label => '&laquo;', :next_label => '&raquo;' %>
        <ul id='sortable_list'>
         <%%= render :partial => "sortable_list" %>

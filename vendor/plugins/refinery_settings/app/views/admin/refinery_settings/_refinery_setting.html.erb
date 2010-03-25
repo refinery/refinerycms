@@ -2,11 +2,9 @@
   <span class='title'>
     <span class='actions'>
       <%= link_to refinery_icon_tag("application_edit.png"), edit_admin_refinery_setting_path(refinery_setting),
-           :title => 'Edit this setting' %>
+           :title => t('.edit') %>
       <%= link_to refinery_icon_tag("delete.png"), admin_refinery_setting_path(refinery_setting),
-          :confirm => 'Are you sure you want to remove this setting forever?',
-          :class => "cancel", :method => :delete,
-          :title => 'Remove this setting forever' if refinery_setting.destroyable %>
+          :title => t('.remove') if refinery_setting.destroyable %>
     </span>
     <%=h refinery_setting.name.titleize %> <span class="preview">- <%=h truncate(refinery_setting.value.to_s, :length => 40) %></span>
   </span>

@@ -1,11 +1,12 @@
 class Admin::PagesController < Admin::BaseController
 
   crudify :page, :conditions => "parent_id IS NULL", :order => "position ASC", :include => [:parts, :slugs, :children], :paging => false
-  after_filter :expire_menu_fragment_caching, :only => [:create, :update, :destroy]
+  before_filter :find_pages_for_parents_list, :only => [:new, :create, :edit, :update]
+  after_filter :expire_menu_fragment_caching, :only => [:create, :update, :destroy, :update_positions]
 
   def new
     @page = Page.new
-    RefinerySetting.find_or_set(:default_page_parts, ["body", "side_body"]).each do |page_part|
+    RefinerySetting.find_or_set(:default_page_parts, ["Body", "Side Body"]).each do |page_part|
       @page.parts << PagePart.new(:title => page_part)
     end
   end
@@ -13,6 +14,18 @@ class Admin::PagesController < Admin::BaseController
 protected
   def expire_menu_fragment_caching
     expire_fragment(%r{site_menu})
+  end
+
+  # This finds all of the pages that could possibly be assigned as the current page's parent.
+  def find_pages_for_parents_list
+    @pages_for_parents_list = Page.find(:all, :order => "parent_id, position ASC")
+
+    # We need to remove all references to the current page or any of its decendants or we get a nightmare.
+    unless @page.nil? or @page.new_record?
+      @pages_for_parents_list.reject! do |page|
+        page.id == @page.id or @page.descendants.include?(page)
+      end
+    end
   end
 
 end

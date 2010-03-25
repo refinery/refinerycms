@@ -1,0 +1,88 @@
+= 0.8.2
+=== 5 November, 2009
+* Bring JRuby support up to speed, including Java-based hpricot_css support
+* Change JRuby fast_xs to have same escaping behavior as C fast_xs
+
+= 0.8.1
+=== 3 April, 2009
+* fix for issue #2, downcasing of html attributes inside the parser.
+* solve issue #3 with bogus etags being preserved in `to_s` rather than just `to_original_html`.
+* fix error when attempting to reparent cleared node. (issue #5)
+* Hpricot::Attributes proxy object for using `ele.attributes[k] = v` directly.
+  however, it is preferred to use the jquery-like `elements.attr(k, v)`.
+
+= 0.8
+=== 31st March, 2009
+* Saving memory and speed by using RStruct-based elements in the C extension.
+* Bug in tag parsing, causing runaway <script> and <style> tags in HTML.
+* Problem compiling under Ruby 1.9, due to our_rb_hash_lookup function meant for Ruby 1.8.
+* CData was missing inner_text method.
+
+= 0.7
+=== 17th March, 2009
+* Rewritten parser routine, much lighter on memory, quite a bit faster.
+* Friendlier with Ruby 1.9.
+* Fixes to nth-child and text() selectors.
+
+= 0.6
+=== 15th June, 2007
+* Hpricot for JRuby -- nice work Ola Bini!
+* Inline Markaby for Hpricot documents.
+* XML tags and attributes are no longer downcased like HTML is.
+* new syntax for grabbing everything between two elements using a Range in the search method: (doc/("font".."font/br")) or in nodes_at like so: (doc/"font").nodes_at("*".."br"). Only works with either a pair of siblings or a set of a parent and a sibling. 
+* Ignore self-closing endings on tags (such as form) which are containers. Treat them like open parent tags. Reported by Jonathan Nichols on the hpricot list.
+* Escaping of attributes, yanked from Jim Weirich and Sam Ruby's work in Builder.
+* Element#raw_attributes gives unescaped data.  Element#attributes gives escaped.
+* Added: Elements#attr, Elements#remove_attr, Elements#remove_class.
+* Added: Traverse#preceding, Traverse#following, Traverse#previous, Traverse#next. 
+
+= 0.5
+=== 31rd January, 2007
+
+* support for a[text()="Click Me!"] and h3[text()*="space"] and the like.
+* Hpricot.buffer_size accessor for increasing Hpricot's buffer if you're encountering huge ASP.NET viewstate attribs.
+* some support for colons in tag names (not full namespace support yet.)
+* Element.to_original_html will attempt to preserve the original HTML while merging your changes.
+* Element.to_plain_text converts an element's contents to a simple text format.
+* Element.inner_text removes all tags and returns text nodes concatenated into a single string.
+* no @raw_string variable kept for comments, text, and cdata -- as it's redundant.
+* xpath-style indices (//p/a[1]) but keep in mind that they aren't zero-based.
+* node_position is the index among all sibling nodes, while position is the position among children of identical type.
+* comment() and text() search criteria, like: //p/text(), which selects all text inside paragraph tags.
+* every element has css_path and xpath methods which return respective absolute paths.
+* more flexibility all around: in parsing attributes, tags, comments and cdata.
+
+= 0.4
+=== 11th August, 2006
+
+* The :fixup_tags option will try to sort out the hierarchy so elements end up with the right parents.
+* Elements such as *script* and *style* (identified as having CDATA contents) receive a single text node as their children now.  Previously, Hpricot was parsing out tags found in scripts.
+* Better scanning of partially quoted attributes (found by Brent Beardsly on http://uswebgen.com/)
+* Better scanning of unquoted attributes -- thanks to Aaron Patterson for the test cases!
+* Some tags were being output in the empty tag style, although browsers hated that.  FIXED!
+* Added Elements#at for finding single elements.
+* Added Elem::Trav#[] and Elem::Trav#[]= for reading and writing attributes.
+
+= 0.3
+=== 7th July, 2006
+
+* Fixed negative string size error on empty tokens. (news.bbc.co.uk)
+* Allow the parser to accept just text nodes. (such as: <tt>Hpricot.parse('TEXT')</tt>)
+* from JQuery to Hpricot::Elements: remove, empty, append, prepend, before, after, wrap, set, 
+  html(...), to_html, to_s. 
+* on containers: to_html, replace_child, insert_before, insert_after, innerHTML=.
+* Hpricot(...) is an alias for parse.
+* open up all properties to setters, let people do as they may. 
+* use to_html for the full html of a node or set of elements.
+* doctypes were messed.
+
+= 0.2
+=== 4th July, 2006
+
+* Rewrote the HTree parser to be simpler, more adequate for the common man.  Will add encoding back in later.
+
+= 0.1
+=== 3rd July, 2006
+
+* For whatever reason, wrote this HTML parser in C.
+  I guess Ragel is addictive and I want to improve HTree.

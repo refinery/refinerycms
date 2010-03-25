@@ -7,8 +7,7 @@
         <%= link_to refinery_icon_tag('application_edit.png'), edit_admin_image_path(list_view_image),
                               :title => t('.edit_this_image') %>
         <%= link_to refinery_icon_tag('delete.png'), admin_image_path(list_view_image),
-                               :confirm => t('.delete.message', :title => list_view_image.title),
-                               :class => "cancel", :method => :delete,
+                               :class => "cancel confirm-delete",
                                :title => t('.delete.title') %>
       </span>
       <%= list_view_image.title %> <span class="preview">&nbsp;</span>

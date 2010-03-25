@@ -28,11 +28,11 @@ module Refinery
     end
 
     def url
-      @url ||= "/admin/#{self.directory.blank? ? self.name : self.directory.split('/').pop}"
+      @url ||= {:controller => "admin/#{self.directory.blank? ? self.title.gsub(" ", "_").downcase : self.directory.split('/').pop}"}
     end
 
     def menu_match
-      @menu_match ||= /#{self.url.gsub(/^\//, "")}$/
+      @menu_match ||= /admin\/#{self.title.gsub(" ", "_").downcase}$/
     end
 
     def name

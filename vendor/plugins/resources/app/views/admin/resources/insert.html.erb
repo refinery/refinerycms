@@ -1,110 +1,68 @@
 <div class='clearfix'>
   <div id='dialog_menu_left'>
-    <% unless @resources.empty? %>
-      <span id='existing_resource_radio' class='radio'>
+    <% if @resources.any? %>
+      <span id='existing_resource_radio' class='radio<%= " selected_radio" if @resource.errors.empty? %>'>
         <input type='radio' name='resource_type' value='existing_resource' id='resource_type_existing' <%= "checked='true'" if @resource.errors.empty? %> />
         <label for='resource_type_existing' class='stripped'><%=t('.existing')%></label>
       </span>
     <% end %>
-    <span id='upload_resource_radio' class='radio<%= " selected_radio" if @resource.errors.size > 0 %>'>
-      <input type='radio' name='resource_type' value='upload_resource' id='resource_type_upload' <%= "checked='true'" if @resources.empty? or !@resource.errors.empty? %> />
+    <#% TODO [BUG] any? or empy? == always true, not? %>
+    <span id='upload_resource_radio' class='radio<%= " selected_radio" if @resource.errors.any? or @resources.empty? %>'>
+      <input type='radio' name='resource_type' value='upload_resource' id='resource_type_upload' <%= "checked='true'" if @resources.empty? or @resource.errors.any? %> />
       <label for='resource_type_upload' class='stripped'><%= t('.new') %></label>
     </span>
   </div>
 
   <div id='dialog_main'>
-    <% unless @resources.empty? %>
-      <div id='existing_resource_area' class='dialog_area' <%= "style='display:none;'" unless @resource.errors.empty? %>>
+    <% if @resources.any? %>
+      <div id='existing_resource_area' class='dialog_area' <%= "style='display:none;'" if @resource.errors.any? %>>
         <input type='hidden' name='linked_resource' id='linked_resource' />
         <div id='existing_resource_area_content' class='clearfix'>
           <div id='pages_list'>
             <ul class='link_list'>
               <% @resources.each do |resource| -%>
-                <% resource_linked = (resource.public_filename == params[:current_link]) unless params[:current_link].blank? %>
+                <% resource_linked = (resource.public_filename == params[:current_link]) if params[:current_link].present? %>
                 <li<%= " class='linked'" if resource_linked %>>
-                  <%= link_to "#{resource.title} (#{resource.public_filename})", resource.public_filename, :title => t('.link_to_resource'),
-                              :rel => resource.title, :class => 'page_link', :id => "resource_#{resource.id}" %>
+                  <%= link_to "#{resource.title} (#{resource.public_filename})",
+                              resource.public_filename,
+                              :title => t('.link_to_resource'),
+                              :rel => resource.title,
+                              :class => 'page_link',
+                              :id => "resource_#{resource.id}" %>
                 </li>
               <% end %>
             </ul>
           </div>
         </div>
-        <%= will_paginate @resources, :previous_label => '&laquo; ' + t('.previous'), :next_label => t('.next') + ' &raquo;', :renderer => Refinery::LinkRenderer, :url => {:controller => "admin/resources", :action => "insert", :dialog => @dialog} unless @thickbox %>
+        <%= will_paginate @resources,
+                          :previous_label => '&laquo; ' + t('.previous'),
+                          :next_label => t('.next') + ' &raquo;',
+                          :renderer => Refinery::LinkRenderer,
+                          :url => {:controller => "admin/resources", :action => "insert", :dialog => from_dialog?} unless @app_dialog %>
       </div>
     <% end %>
-    <div id='upload_resource_area' class='dialog_area' <%= "style='display:none;'" if @resources.empty? %>>
+    <div id='upload_resource_area' class='dialog_area' <%= "style='display:none;'" if @resources.any? and @resource.errors.empty? %>>
       <%= render :partial => "form", :locals => {:insert => true} %>
     </div>
   </div>
 </div>
-<% if @thickbox %>
+<% if @app_dialog %>
   <div id='dialog-form-actions' class='form-actions'>
     <%= submit_tag t('.submit_insert'), :id => "submit_button" %>
-    <%= t('.or') %>
-    <%= link_to t('.cancel'), "", :id => "cancel_button", :class => "close_dialog" %>
 
-    <%= will_paginate @resources, :previous_label => '&laquo; Previous', :next_label => 'Next &raquo;', :renderer => Refinery::LinkRenderer, :url => {:controller => "admin/resources", :action => "insert", :dialog => @dialog } %>
+    <%= will_paginate @resources,
+                      :previous_label => '&laquo; Previous',
+                      :next_label => 'Next &raquo;',
+                      :renderer => Refinery::LinkRenderer,
+                      :url => {:controller => "admin/resources", :action => "insert", :dialog => from_dialog? } %>
   </div>
 <% end %>
+
 <% content_for :head do %>
-  <%= javascript_include_tag 'refinery/parse_url' %>
   <script type='text/javascript'>
-    set_resource = function(anchor)
-    {
-      if (anchor != null) {
-        $$('#existing_resource_area_content ul li.linked').each(function(linked)
-        {
-          $(linked).removeClassName('linked');
-        });
-        $(anchor.parentNode).addClassName('linked');
-      }
-    }
-
-    FastInit.addOnLoad(function()
-    {
-<% unless @resource_id.nil? %>
-      set_resource($('resource_<%= @resource_id %>'));
-<% end %>
-      $$('#existing_resource_area_content ul li a').each(function(anchor)
-      {
-        anchor.observe('click', function(e){set_resource(this);e.preventDefault()});
-      });
-
-<% if @thickbox %>
-      $('dialog-form-actions').down('#submit_button').observe('click', function(e)
-      {
-        linked = null;
-        $$('#existing_resource_area_content ul li.linked a').each(function(linked_anchor)
-        {
-          linked = linked_anchor;
-        });
-        if (linked != null)
-        {
-  <% unless @field.blank? %>
-          if ((field = parent.document.getElementById('<%= @field %>')) != null)
-          {
-            field.value = linked.id.replace("resource_", "");
-          }
-          if ((resource = parent.document.getElementById('<%= @update_resource %>')) != null)
-          {
-            resourceUrl = parseURL(linked.href);
-            relevant_href = resourceUrl.pathname;
-            // Add any alternate resource stores that need a absolute URL in the regex below
-            if( resourceUrl.hostname.match(/s3.amazonaws.com/) ) {
-              relevant_href = resourceUrl.protocol + '//' + resourceUrl.host + relevant_href;
-            }
-            resource.href = relevant_href;
-          }
-          if ((text = parent.document.getElementById('<%= @update_text %>')) != null) {
-            text.innerHTML = linked.innerHTML;
-          }
-  <% end %>
-          <%= "self.parent.#{@callback}();" unless @callback.blank? %>
-          self.parent.tb_remove();
-        }
-        e.stop();
-      });
-<% end %>
+    $(document).ready(function(){
+      link_dialog.init();
+      resource_picker.init(<%= @callback.present? ? "self.parent.#{@callback}" : "null" %>);
     });
   </script>
 <% end %>
