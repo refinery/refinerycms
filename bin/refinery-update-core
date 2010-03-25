@@ -67,6 +67,10 @@ unless rails_root.nil? or rails_root.length == 0
 
 	app_config = File.open(File.join(%W(#{rails_root} config #{app_config_file})), "r").read
 
+  # copy new jquery javascripts.
+  FileUtils.cp File.join(%W(#{refinery_root} public javascripts jquery.js)), File.join(%W(#{rails_root} public javascripts jquery.js))
+  FileUtils.cp File.join(%W(#{refinery_root} public javascripts jquery-ui-1.8.min.js)), File.join(%W(#{rails_root} public javascripts jquery-ui-1.8.min.js))
+
   # backup app's config file and replace it, if required.
 	environment_updated = false
   matcher = /(#===REFINERY REQUIRED GEMS===)(.+?)(#===REFINERY END OF REQUIRED GEMS===)/m
