@@ -1,7 +1,2 @@
 <%= error_messages_for symbol %>
-<% fields = []; object.errors.each { |attrib, msg| fields << "#{object.class.name.underscore}_#{attrib}" } %>
-<script type='text/javascript'>
-  $$('#<%= fields.join("','#") %>').each(function(error_field) {
-    error_field.up('div.field').addClassName('fieldWithErrors').removeClassName('field');
-  });
-</script>
+<input type='hidden' id='fieldsWithErrors' value='<%= object.errors.collect { |attrib, msg| "#{object.class.name.underscore}_#{attrib}"}.join(",") %>' />

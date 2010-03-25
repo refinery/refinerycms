@@ -2,7 +2,14 @@ class <%= migration_name %> < ActiveRecord::Migration
 
   def self.up
     create_table :<%= table_name %> do |t|
-<% attributes.each do |attribute| -%>
+<%
+  attributes.each do |attribute|
+    # turn image or resource into what it was supposed to be which is an integer reference to an image or resource.
+    if attribute.type.to_s =~ /^(image|resource)$/
+      attribute.type = 'integer'
+      attribute.name = "#{attribute.name}_id".gsub("_id_id", "_id")
+    end
+-%>
       t.<%= attribute.type %> :<%= attribute.name %>
 <% end -%>
       t.integer :position
@@ -23,7 +30,7 @@ class <%= migration_name %> < ActiveRecord::Migration
       :position => ((Page.maximum(:position, :conditions => "parent_id IS NULL") || -1)+1),
       :menu_match => "^/<%= plural_name %>(\/|\/.+?|)$"
     )
-    RefinerySetting.find_or_set(:default_page_parts, ["body", "side_body"]).each do |default_page_part|
+    RefinerySetting.find_or_set(:default_page_parts, ["Body", "Side Body"]).each do |default_page_part|
       page.parts.create(:title => default_page_part, :body => nil)
     end
   end

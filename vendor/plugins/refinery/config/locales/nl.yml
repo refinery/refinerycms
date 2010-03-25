@@ -83,7 +83,7 @@ nl:
       page: pagina
       user: gebruiker
       image: afbeelding
-      inquery: vraag
+      inquiry: vraag
       resource: bestand
       refinery_setting: instelling
       inquiry_setting: instelling voor vragen

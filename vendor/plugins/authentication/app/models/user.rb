@@ -1,154 +1,71 @@
 require 'digest/sha1'
+
 class User < ActiveRecord::Base
-  # Hack: Allow "rake gems:install" to run when this class is missing its gem dependency.
-  # For further clarification on why, refer to:
-  # https://rails.lighthouseapp.com/projects/8994/tickets/780-rake-gems-install-doesn-t-work-if-plugins-are-missing-gem-dependencies
-  if defined? AASM
-    include AASM # include the library which will give us state machine functionality.
-    aasm_column :state
-    aasm_initial_state :pending
-    aasm_state :passive
-    aasm_state :pending, :enter => :make_activation_code
-    aasm_state :active,  :enter => :do_activate
-    aasm_state :suspended
-    aasm_state :deleted, :enter => :do_delete
+  #-------------------------------------------------------------------------------------------------
+  # Authentication
 
-    aasm_event :register do
-      transitions :from => :passive, :to => :pending, :guard => Proc.new {|u| !(u.crypted_password.blank? && u.password.blank?) }
-    end
+  # See http://rdoc.info/rdoc/binarylogic/authlogic/blob/85b2a6b3e9993b18c7fb1e4f7b9c6d01cc8b5d17/Authlogic/ActsAsAuthentic
+  acts_as_authentic do |c|
+    c.perishable_token_valid_for 10.minutes
 
-    aasm_event :activate do
-      transitions :from => :pending, :to => :active
-    end
+    # http://www.binarylogic.com/2008/11/23/tutorial-easily-migrate-from-restful_authentication-to-authlogic/
+    # Unfortunately, this seems to cause problems when you add Refinery to an app that already had
+    # an Authlogic-created users table. You may need to comment these 2 lines out if that is the case.
+    c.act_like_restful_authentication = true
+    c.transition_from_restful_authentication = true
 
-    aasm_event :suspend do
-      transitions :from => [:passive, :pending, :active], :to => :suspended
-    end
+    # If users prefer to use their e-mail address to log in, change this setting to 'email' in
+    # config/application.rb
+    # This currently only affects which field is displayed in the login form. As long as we have
+    # find_by_login_method :find_by_login_or_email, they can still actually use either one.
+    c.login_field = defined?(Refinery.authentication_login_field) ? Refinery.authentication_login_field : "login"
+  end if self.table_exists?
 
-    aasm_event :delete do
-      transitions :from => [:passive, :pending, :active, :suspended], :to => :deleted
-    end
-
-    aasm_event :unsuspend do
-      transitions :from => :suspended, :to => :active,  :guard => Proc.new {|u| !u.activated_at.blank? }
-      transitions :from => :suspended, :to => :pending, :guard => Proc.new {|u| !u.activation_code.blank? }
-      transitions :from => :suspended, :to => :passive
-    end
+  # Allow users to log in with either their username *or* email, even though we only ask for one of those.
+  def self.find_by_login_or_email(login_or_email)
+    find_by_login(login_or_email) || find_by_email(login_or_email)
   end
 
-  # Virtual attribute for the unencrypted password
-  attr_accessor :password
+  def deliver_password_reset_instructions!(request)
+    reset_perishable_token!
+    UserMailer.deliver_reset_notification(self, request)
+  end
 
-  #validates_presence_of     :login, :email # handled by other checks
-  #validates_presence_of     :password,                   :if => :password_required? # handled by other checks
-  validates_presence_of     :password_confirmation,      :if => :password_required?
-  validates_length_of       :password, :within => 4..40, :if => :password_required?
-  validates_confirmation_of :password,                   :if => :password_required?
-  validates_length_of       :login,    :within => 3..40
-  validates_length_of       :email,    :within => 3..100
-  validates_uniqueness_of   :login, :email, :case_sensitive => false
-  before_save :encrypt_password
+  #-------------------------------------------------------------------------------------------------
 
-  serialize :plugins_column#, Array # this is seriously deprecated and will be removed later.
+  serialize :plugins_column # Array # this is seriously deprecated and will be removed later.
 
   has_many :plugins, :class_name => "UserPlugin", :order => "position ASC"
 
-  # prevents a user from submitting a crafted form that bypasses activation
-  # anything else you want your user to change should be added here.
-  attr_accessible :login, :email, :password, :password_confirmation, :plugins
-
-  # Authenticates a user by their login name and unencrypted password.  Returns the user or nil.
-  def self.authenticate(login, password)
-    u = find_in_state :first, :active, :conditions => {:login => login} # need to get the salt
-    u && u.authenticated?(password) ? u : nil
-  end
-
-  # Encrypts some data with the salt.
-  def self.encrypt(password, salt)
-    Digest::SHA1.hexdigest("--#{salt}--#{password}--")
-  end
-
-  # Encrypts the password with the user salt
-  def encrypt(password)
-    self.class.encrypt(password, salt)
-  end
-
-  def authenticated?(password)
-    crypted_password == encrypt(password)
-  end
-
-  def plugins=(plugin_names)
+  def plugins=(plugin_titles)
     unless self.new_record? # don't add plugins when the user_id is NULL.
       self.plugins.delete_all
 
-      plugin_names.each do |plugin_name|
-        self.plugins.find_or_create_by_name(plugin_name) if plugin_name.is_a?(String)
+      plugin_titles.each do |plugin_title|
+        self.plugins.find_or_create_by_title(plugin_title) if plugin_title.is_a?(String)
       end
     end
   end
 
   def authorized_plugins
-    self.plugins.collect {|p| p.name} | Refinery::Plugins.always_allowed.names
+    self.plugins.collect { |p| p.title.underscore } | Refinery::Plugins.always_allowed.titles
   end
 
-  def remember_token?
-    remember_token_expires_at && Time.now.utc < remember_token_expires_at
+  def can_delete?(other_user = self)
+    !other_user.superuser and User.count > 1 and (other_user.nil? or self.id != other_user.id)
   end
 
-  # These create and unset the fields required for remembering users between browser closes
-  def remember_me
-    remember_me_for 2.weeks
+protected
+
+  # before filter
+  def encrypt_password
+    return if password.blank?
+    self.password_salt = Digest::SHA1.hexdigest("--#{Time.now.to_s}--#{login}--") if new_record?
+    self.crypted_password = encrypt(password)
   end
 
-  def remember_me_for(time)
-    remember_me_until time.from_now.utc
+  def password_required?
+    crypted_password.blank? || !password.blank?
   end
 
-  def remember_me_until(time)
-    self.remember_token_expires_at = time
-    self.remember_token            = encrypt("#{email}--#{remember_token_expires_at}")
-    save(false)
-  end
-
-  def forget_me
-    self.remember_token_expires_at = nil
-    self.remember_token            = nil
-    save(false)
-  end
-
-  # Returns true if the user has just been activated.
-  def recently_activated?
-    @activated
-  end
-
-  def ui_deletable?(current_user = self)
-    !self.superuser and User.count > 1 and (current_user.nil? or self.id != current_user.id)
-  end
-
-  protected
-    # before filter
-    def encrypt_password
-      return if password.blank?
-      self.salt = Digest::SHA1.hexdigest("--#{Time.now.to_s}--#{login}--") if new_record?
-      self.crypted_password = encrypt(password)
-    end
-
-    def password_required?
-      crypted_password.blank? || !password.blank?
-    end
-
-    def make_activation_code
-      self.deleted_at = nil
-      self.activation_code = Digest::SHA1.hexdigest( Time.now.to_s.split(//).sort_by {rand}.join )
-    end
-
-    def do_delete
-      self.deleted_at = Time.now.utc
-    end
-
-    def do_activate
-      @activated = true
-      self.activated_at = Time.now.utc
-      self.deleted_at = self.activation_code = nil
-    end
 end

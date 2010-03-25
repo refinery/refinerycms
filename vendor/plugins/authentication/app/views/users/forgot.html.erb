@@ -1,0 +1,13 @@
+<%= error_messages_for :user %>
+<% form_for :user do |f| -%>
+  <p>Enter the email address for your account.</p>
+  <div class='field'>
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+  </div>
+  <div class='form-actions'>
+    <%= submit_tag 'Reset password' %>
+    or
+    <%= link_to "Cancel", login_url %>
+  </div>
+<% end -%>

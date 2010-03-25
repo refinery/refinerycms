@@ -1,24 +1,22 @@
 class UserMailer < ActionMailer::Base
 
-  def signup_notification(user)
+    #TODO: ADJUST TRANSALTION
+  def reset_notification(user, request)
     setup_email(user)
-    @subject    += t('.please_activate')
-    @body[:url]  = "http://YOURSITE/activate/#{user.activation_code}"
-  end
-
-  def activation(user)
-    setup_email(user)
-    @subject    += t('.activated')
-    @body[:url]  = "http://YOURSITE/"
+    #@subject    += 'Link to reset your password'
+    subject    I18n.translate('controller.user.link_to_reset_your_password')
+    @body[:url]  =  url_prefix(request) + "/reset/#{user.perishable_token}"
   end
 
 protected
 
+  def url_prefix(request)
+    "#{request.protocol}#{request.host_with_port}"
+  end
+
   def setup_email(user)
-    @recipients  = "#{user.email}"
-    @from        = "ADMINEMAIL"
-    @subject     = "[YOURSITE] "
-    @sent_on     = Time.now
+    recipients    user.email
+    sent_on       Time.now
     @body[:user] = user
   end
 

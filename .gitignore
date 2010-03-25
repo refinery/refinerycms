@@ -1,9 +1,11 @@
 public/system/*
+public/themes/*
 log/*.log
 tmp/**/*
 .DS_Store
 doc/api
 doc/app
+doc/*
 config/database.yml
 config/amazon_s3.yml
 config/rackspace_cloudfiles.yml
@@ -16,3 +18,12 @@ db/*.sqlite3
 refinerycms*.gem
 public/javascripts/cache
 public/stylesheets/cache
+config/database.yml.example
+.yardoc/
+refinerycms.gemspec
+.bundle
+vendor/cache
+*.lock
+callsite_hash.*
+**/*/slim_scrooge/ext/Makefile
+public/javascripts/messages.js

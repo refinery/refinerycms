@@ -2,7 +2,7 @@ var wymeditor_inputs = [];
 var wymeditors_loaded = 0;
 // supply custom_wymeditor_boot_options if you want to override anything here.
 if (typeof(custom_wymeditor_boot_options) == "undefined") { custom_wymeditor_boot_options = {}; }
-var wymeditor_boot_options = jQuery.extend({
+var wymeditor_boot_options = $.extend({
   skin: 'refinery'
   , basePath: "/javascripts/wymeditor/"
   , wymPath: "/javascripts/wymeditor/jquery.refinery.wymeditor.js"
@@ -43,7 +43,7 @@ var wymeditor_boot_options = jQuery.extend({
   , classesItemHtml: "<li><a href='#' name='"+ WYMeditor.CLASS_NAME + "'>"+ WYMeditor.CLASS_TITLE+ "</a></li>"
   , classesItemHtmlMultiple: "<li class='wym_tools_class_multiple_rules'><span>" + WYMeditor.CLASS_TITLE + "</span><ul>{classesItemHtml}</ul></li>"
 
-  , classesItems: [{name:'text-align', rules:['left', 'center', 'right', 'justify'], join: '-'}, {name: 'image-align', rules:['left', 'right'], join: '-'}, {name: 'font-size', rules:['small','normal','large'], join: '-'}]
+  , classesItems: wymeditorClassesItems
 
   , containersHtml: "<ul class='wym_containers wym_section'>" + WYMeditor.CONTAINERS_ITEMS + "</ul>"
 
@@ -94,7 +94,7 @@ var wymeditor_boot_options = jQuery.extend({
         + "<div id='dialog-form-actions' class='form-actions'>"
           + "<input class='wym_submit' type='button' value='{Insert}' />"
           + " or "
-          + "<a class='wym_cancel close_dialog' type='button' href=''>{Cancel}</a>"
+          + "<a href='' class='wym_cancel close_dialog'>{Cancel}</a>"
         + "</div>"
       + "</form>"
     + "</div>"
@@ -110,16 +110,30 @@ var wymeditor_boot_options = jQuery.extend({
         + "<div id='dialog-form-actions' class='form-actions'>"
           + "<input class='wym_submit' type='button' value='{Insert}' />"
           + " or "
-          + "<a class='wym_cancel close_dialog' type='button' href=''>{Cancel}</a>"
+          + "<a href='' class='wym_cancel close_dialog'>{Cancel}</a>"
         + "</div>"
       + "</form>"
     + "</div>"
 
   , dialogPath: "/admin/dialogs/"
-  , dialogFeatures: "?width=958&height=460&modal=true&titlebar=true&auto_size_content=true&draggable=true"
-  , dialogInlineFeatures: "?width=600&height=320&modal=true&titlebar=true&auto_size_content=true&draggable=true"
+  , dialogFeatures: {
+      width: 958
+    , height: 570
+    , modal: true
+    , draggable: true
+    , resizable: false
+    , autoOpen: true
+  }
+  , dialogInlineFeatures: {
+      width: 600
+    , height: 530
+    , modal: true
+    , draggable: true
+    , resizable: false
+    , autoOpen: true
+  }
 
-  , dialogId: 'TB_window'
+  , dialogId: 'editor_dialog'
 
   , dialogHtml:
     "<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Strict//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd'>"
@@ -147,9 +161,13 @@ var wymeditor_boot_options = jQuery.extend({
 // custom function added by us to hook into when all wymeditor instances on the page have finally loaded:
 WYMeditor.loaded = function(){};
 
-jQuery(function()
+$(function()
 {
-  wymeditor_inputs = jQuery('.wymeditor');
+  wymeditor_inputs = $('.wymeditor');
   wymeditor_inputs.hide();
   wymeditor_inputs.wymeditor(wymeditor_boot_options);
+  $('.wym_iframe iframe').each(function(index, wym) {
+    // adjust for border width.
+    $(wym).css({'height':$(wym).parent().height()-2, 'width':$(wym).parent().width()-2});
+  });
 });

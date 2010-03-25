@@ -21,7 +21,7 @@
     <%= render :partial => "inquiry", :collection => @inquiries %>
   <% else %>
     <h2><%= t('.open_inquiries') %></h2>
-    <% unless @open_inquiries.empty? -%>
+    <% if @open_inquiries.any? -%>
       <ul>
         <%= render :partial => "inquiry", :collection => @open_inquiries %>
       </ul>
@@ -32,7 +32,7 @@
       </p>
     <% end -%>
     <h2><%= t('.closed_inquiries') %></h2>
-    <% unless @closed_inquiries.empty? -%>
+    <% if @closed_inquiries.any? -%>
       <ul>
         <%= render :partial => "inquiry", :collection => @closed_inquiries %>
       </ul>

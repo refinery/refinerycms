@@ -12,10 +12,10 @@ class RefineryGenerator < Rails::Generator::NamedBase
   def manifest
     record do |m|
       # Copy controller, model and migration
-      directories = ["vendor/plugins/#{plural_name}", "vendor/plugins/#{plural_name}/app", "vendor/plugins/#{plural_name}/app/controllers",
-        "vendor/plugins/#{plural_name}/app/controllers/admin", "vendor/plugins/#{plural_name}/app/models", "vendor/plugins/#{plural_name}/app/views",
-        "vendor/plugins/#{plural_name}/app/helpers", "vendor/plugins/#{plural_name}/app/views", "vendor/plugins/#{plural_name}/app/views/admin",
-        "vendor/plugins/#{plural_name}/config", "vendor/plugins/#{plural_name}/rails"]
+      directories = ["#{plural_name}", "#{plural_name}/app", "#{plural_name}/app/controllers",
+        "#{plural_name}/app/controllers/admin", "#{plural_name}/app/models", "#{plural_name}/app/views",
+        "#{plural_name}/app/helpers", "#{plural_name}/app/views", "#{plural_name}/app/views/admin",
+        "#{plural_name}/config", "#{plural_name}/rails"].map { |d| "vendor/plugins/#{d}" }
 
       directories.each do |dir|
         m.directory dir
@@ -55,10 +55,7 @@ class RefineryGenerator < Rails::Generator::NamedBase
       m.directory 'db/migrate/'
       m.migration_template 'migration.rb', 'db/migrate', :assigns => {:migration_name => "Create#{class_name.pluralize}"}, :migration_file_name => "create_#{singular_name.pluralize}"
 
-      puts "IMPORTANT"
-      puts "---------------------------------------"
-      puts "Now run 'rake db:migrate' to add the table to the DB"
-      puts "---------------------------------------"
+      m.readme "MIGRATE"
     end
   end
 

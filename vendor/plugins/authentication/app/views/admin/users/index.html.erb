@@ -6,7 +6,7 @@
   </ul>
 </div>
 <div id='records'>
-  <% if @users.size > 0 %>
+  <% if @users.any? %>
     <%= will_paginate @users, :previous_label => '&laquo;', :next_label => '&raquo;' %>
     <ul>
       <% @users.each do |user| -%>
@@ -14,11 +14,11 @@
           <span class='title'>
             <span class='actions'>
               <%= link_to refinery_icon_tag('delete.png'), admin_user_path(user),
-                :confirm => t('.confirm_delete_message', :who => user.login),
-                :class => "cancel", :method => :delete,
-                :title => t('.confirm_delete_title') if user.ui_deletable?(current_user) %>
+                                :class => "cancel confirm-delete",
+                :title => t('.confirm_delete_title') if current_user.can_delete?(user) %>
               <%= link_to refinery_icon_tag('application_edit.png'), edit_admin_user_path(user),
                 :title => t('.edit_user')%>
+              <%= mail_to user.email, refinery_icon_tag('email_go.png'), :title => t('.email_user') %>
               <%= mail_to user.email, refinery_icon_tag('email_go.png'), :title => t('.email_user') %>
             </span>
             <strong><%= user.login %></strong>

@@ -1,6 +1,6 @@
 en:
   must_choose_file: You must choose a file to upload
-  file_should_be_smaller_than_50mb: Files should be smaller than 50 MB in size
+  file_should_be_smaller_than_max_file_size: Files should be smaller than {{max_file_size}} in size
   admin:
     resources:
       form:
@@ -16,7 +16,8 @@ en:
           title: Remove this file forever
       index:
         upload_new: Upload New File
-        search_no_result: Sorry, no results found.
+        search_results: Zoek resultaten voor '{{results}}'
+        search_no_results: Sorry, no results found.
         no_files_yet: There are no files yet. Click "Upload New Files" to add your first file.
       insert:
         existing_file: Existing File

@@ -1,0 +1,9 @@
+home_page_body:
+  title: Body
+  page: home_page
+  body: This is the body
+
+home_page_side_body:
+  title: Side Body
+  page: home_page
+  body: This is the side body

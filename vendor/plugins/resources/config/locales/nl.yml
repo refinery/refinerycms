@@ -3,7 +3,7 @@ nl:
     refinery_resources:
       title: Bestanden
   must_choose_file: U moet een bestand kiezen dat u wilt uploaden. 
-  file_should_be_smaller_than_50mb: Bestanden mogen niet groter dan 50 MB zijn.
+  file_should_be_smaller_than_max_file_size: Bestanden mogen niet groter dan {{max_file_size}} zijn.
   admin:
     resources:
       form:
@@ -19,7 +19,8 @@ nl:
           title: Verwijder dit bestand permanent.
       index:
         upload_new: Upload een nieuw bestand.
-        search_no_result: Sorry, er zijn zoekresultaten gevonden.
+        search_results: Zoek resultaten voor '{{search_string}}'
+        search_no_results: Sorry, er zijn zoekresultaten gevonden.
         no_files_yet: Er zijn nog geen bestanden. Klik op "Upload een nieuw bestand" om uw eerste bestand toe te voegen.
       insert:
         existing_file: Bestaand bestand

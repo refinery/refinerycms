@@ -1,0 +1,15 @@
+<% theme ||= false -%>
+<head>
+  <title><%= browser_title(yield(:title)) %></title>
+  <%= render :partial => 'shared/google_analytics' unless local_request? %>
+  <%= stylesheet_link_tag "application", "formatting", :theme => theme %>
+  <%= stylesheet_link_tag "theme" %>
+  <%= stylesheet_link_tag "home", :theme => theme if home_page? %>
+  <%= "<!--[if IE 7]>#{stylesheet_link_tag 'ie7'}<![endif]-->" if request.env['HTTP_USER_AGENT'] =~ /MSIE/ -%>
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <%= "<meta name=\"keywords\" content=\"#{@meta.meta_keywords}\" />" if @meta.meta_keywords.present? %>
+  <%= "<meta name=\"description\" content=\"#{@meta.meta_description}\" />" if @meta.meta_description.present? -%>
+  <%= yield :head_libraries %>
+  <%= yield :head %>
+</head>

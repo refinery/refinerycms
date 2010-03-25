@@ -1,0 +1,22 @@
+dave:
+  name: Dave
+  email: dave@test.com
+  phone: 955 955555
+  message: Hi - I would like to buy stuff. Please call me
+  open: true
+  created_at: <%= Date.today - 3.days %>
+
+phil:
+  name: Phil
+  email: phil@test.com
+  phone: 188 8181812
+  message: Call me. Cheers.
+  open: true
+  created_at: <%= Date.today - 1.day %>
+
+barry:
+  name: Barry
+  email: barryl@test.com
+  phone: 92393332
+  message: Hey I found a problem with your website. Email me to find out what is the problem.
+  open: false

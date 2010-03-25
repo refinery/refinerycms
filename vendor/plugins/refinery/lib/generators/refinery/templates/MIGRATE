@@ -1,0 +1,4 @@
+IMPORTANT
+---------------------------------------
+Now run 'rake db:migrate' to add the table to the DB
+---------------------------------------

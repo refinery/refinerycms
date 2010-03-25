@@ -1,15 +1,16 @@
 class Admin::ResourcesController < Admin::BaseController
 
   crudify :resource, :order => "updated_at DESC"
+  before_filter :init_dialog
 
   def new
-    @resource = Resource.new
+    @resource = Resource.new if @resource.nil?
 
     @url_override = admin_resources_url(:dialog => from_dialog?)
   end
 
   def create
-    @resource = Resource.create params[:resource]
+    @resource = Resource.create(params[:resource])
 
     unless params[:insert]
       if @resource.valid?
@@ -20,11 +21,14 @@ class Admin::ResourcesController < Admin::BaseController
           render :text => "<script type='text/javascript'>parent.window.location = '#{admin_resources_url}';</script>"
         end
       else
+        self.new # important for dialogs
         render :action => 'new'
       end
     else
-      @resource_id = @resource.id
-      @resource = nil
+      if @resource.valid?
+        @resource_id = @resource.id
+        @resource = nil
+      end
       self.insert
     end
   end
@@ -51,18 +55,10 @@ class Admin::ResourcesController < Admin::BaseController
 
   def insert
     self.new if @resource.nil?
-    @dialog = from_dialog?
-    @thickbox = !params[:thickbox].blank?
-    @field = params[:field]
-    @update_resource = params[:update_resource]
-    @update_text = params[:update_text]
-    @thumbnail = params[:thumbnail]
-    @callback = params[:callback]
-    @conditions = params[:conditions]
-    @current_link = params[:current_link]
-    @url_override = admin_resources_url(:dialog => @dialog, :insert => true)
 
-    unless params[:conditions].blank?
+    @url_override = admin_resources_url(:dialog => from_dialog?, :insert => true)
+
+    if params[:conditions].present?
       extra_condition = params[:conditions].split(',')
 
       extra_condition[1] = true if extra_condition[1] == "true"
@@ -76,6 +72,17 @@ class Admin::ResourcesController < Admin::BaseController
   end
 
 protected
+
+  def init_dialog
+    @app_dialog = params[:app_dialog].present?
+    @field = params[:field]
+    @update_resource = params[:update_resource]
+    @update_text = params[:update_text]
+    @thumbnail = params[:thumbnail]
+    @callback = params[:callback]
+    @conditions = params[:conditions]
+    @current_link = params[:current_link]
+  end
 
   def paginate_resources(conditions={})
     @resources = Resource.paginate   :page => (@paginate_page_number ||= params[:page]),

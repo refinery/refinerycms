@@ -1,0 +1,2 @@
+var I18n = I18n || {};
+I18n.translations = {"en":{"date":{"formats":{"default":"%Y-%m-%d","long":"%B %d, %Y","short":"%b %d"}}},"fr":{"date":{"formats":{"default":"%d/%m/%Y","long":"%e %B %Y","long_ordinal":"%e %B %Y","only_day":"%e","short":"%e %b"}}}};

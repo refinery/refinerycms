@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100125033146) do
+ActiveRecord::Schema.define(:version => 20100315203301) do
 
   create_table "images", :force => true do |t|
     t.integer  "parent_id"
@@ -45,14 +45,6 @@ ActiveRecord::Schema.define(:version => 20100125033146) do
     t.datetime "updated_at"
   end
 
-  create_table "news_items", :force => true do |t|
-    t.string   "title"
-    t.text     "body"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.datetime "publish_date"
-  end
-
   create_table "page_parts", :force => true do |t|
     t.integer  "page_id"
     t.string   "title"
@@ -70,26 +62,22 @@ ActiveRecord::Schema.define(:version => 20100125033146) do
     t.integer  "parent_id"
     t.integer  "position"
     t.string   "path"
-    t.integer  "image_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "meta_keywords"
     t.text     "meta_description"
-    t.boolean  "show_in_menu",          :default => true
+    t.boolean  "show_in_menu",        :default => true
     t.string   "link_url"
     t.string   "menu_match"
-    t.boolean  "deletable",             :default => true
+    t.boolean  "deletable",           :default => true
     t.string   "custom_title"
-    t.string   "custom_title_type",     :default => "none"
-    t.integer  "custom_title_image_id"
-    t.boolean  "draft",                 :default => false
+    t.string   "custom_title_type",   :default => "none"
+    t.boolean  "draft",               :default => false
     t.string   "browser_title"
-    t.boolean  "skip_to_first_child",   :default => false
+    t.boolean  "skip_to_first_child", :default => false
   end
 
-  add_index "pages", ["custom_title_image_id"], :name => "index_pages_on_custom_title_image_id"
   add_index "pages", ["id"], :name => "index_pages_on_id"
-  add_index "pages", ["image_id"], :name => "index_pages_on_image_id"
   add_index "pages", ["parent_id"], :name => "index_pages_on_parent_id"
 
   create_table "refinery_settings", :force => true do |t|
@@ -133,19 +121,15 @@ ActiveRecord::Schema.define(:version => 20100125033146) do
   add_index "user_plugins", ["user_id", "name"], :name => "index_unique_user_plugins", :unique => true
 
   create_table "users", :force => true do |t|
-    t.string   "login"
-    t.string   "email"
-    t.string   "crypted_password",          :limit => 40
-    t.string   "salt",                      :limit => 40
-    t.string   "remember_token"
-    t.datetime "remember_token_expires_at"
-    t.string   "activation_code",           :limit => 40
-    t.datetime "activated_at"
-    t.string   "state",                                   :default => "passive"
-    t.datetime "deleted_at"
+    t.string   "login",                                :null => false
+    t.string   "email",                                :null => false
+    t.string   "crypted_password",                     :null => false
+    t.string   "password_salt",                        :null => false
+    t.string   "persistence_token"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "superuser",                               :default => false
+    t.boolean  "superuser",         :default => false
+    t.string   "perishable_token"
   end
 
   add_index "users", ["id"], :name => "index_users_on_id"
