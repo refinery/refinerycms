@@ -8,6 +8,8 @@ en:
 
   admin:
     dashboard:
+      index:
+        change_language: Change Language
       recent_activity:
         latest_activity: Latest activity
         nothing_has_happened_yet: Nothing has happened yet

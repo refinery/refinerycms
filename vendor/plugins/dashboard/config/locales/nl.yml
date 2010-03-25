@@ -11,6 +11,8 @@ nl:
 
   admin:
     dashboard:
+      index:
+        change_language: Verander de taal
       recent_activity:
         latest_activity: Laatste wijzigingen
         nothing_has_happened_yet: Er is nog niets gebeurd.

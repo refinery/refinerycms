@@ -28,5 +28,15 @@
         <%= link_to t(:see_home_page), root_url, :class => "go_icon", :target => "_blank" %>
       </li>
     </ul>
+    <h2><%= t('.change_language') %></h2>
+    <ul>
+      <% Refinery.i18n_available.each do |locale| %>
+        <li>
+          <%= link_to_if (params[:locale] != locale.to_s),
+                          locale.to_s.titleize, {:controller => controller_name,
+                          :action => action_name, :locale => locale.to_s } %>
+        </li>
+      <% end %>
+    <ul>
   </div>
 </div>
