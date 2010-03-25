@@ -20,6 +20,7 @@ en:
     new:
       log_in: Log in
       cancel_log_in: Cancel
+      or: or
   users:
     setup_website_name: "<br/>First let's give the site a name. <a href='{{link}}'>Go here</a> to edit your website's name"
     signup_disabled: User signup is disabled
