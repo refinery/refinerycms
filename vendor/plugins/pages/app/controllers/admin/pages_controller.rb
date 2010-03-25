@@ -31,7 +31,7 @@ protected
       end
     end
   end
-  
+
   def add_pages_branch_to_parents_list(page)
     list = []
     page.children.each do |child|
