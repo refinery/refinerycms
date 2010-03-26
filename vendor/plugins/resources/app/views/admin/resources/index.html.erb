@@ -22,7 +22,7 @@
       <% if RefinerySetting.find_or_set(:group_resources_by_date_uploaded, true) %>
         <% @grouped_resources.each do |container| %>
         <% date_time = (resource_group = container.last).first.created_at %>
-        <% date = Date.parse (date_time.to_s) %>
+        <% date = Date.parse(date_time.to_s) %>
           <h3><%= l(date, :format => :long ) %></h3>
           <ul>
             <%= render :partial => "resource", :collection => resource_group %>
