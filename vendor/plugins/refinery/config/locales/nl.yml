@@ -26,6 +26,7 @@ nl:
       continue_editing:
         save_and_continue_editing: Sla op en ga verder met bewerken
       form_actions:
+        or: of
         save: Sla op
         or_cancel: of
         cancel: Annuleer

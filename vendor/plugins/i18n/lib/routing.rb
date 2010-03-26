@@ -5,7 +5,7 @@ module RoutingFilter
       locale = nil
       path.sub! %r(^/([a-zA-Z]{2})(?=/|$)) do locale = $1; '' end
       returning yield do |params|
-        params[:locale] = locale || 'en'
+        params[:locale] = (locale ||= 'en')
       end
     end
     def around_generate(*args, &block)

@@ -1,7 +1,7 @@
 module Refinery
 
   class << self
-    attr_accessor :is_a_gem, :root, :s3_backend, :i18n_enabled, :i18n_available
+    attr_accessor :is_a_gem, :root, :s3_backend
     def is_a_gem
       @is_a_gem ||= false
     end

@@ -9,7 +9,7 @@ nl:
       form:
         file_to_upload: Het up te loaden bestand.
         download_current: Download het huidige bestand
-        or: or
+        or: of
         replace: ,vervang het door dit...
       resource:
         download: Download dit bestand ({{size}})

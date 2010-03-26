@@ -15,13 +15,13 @@ class InquiryTest < ActiveSupport::TestCase
     assert !@new_inquiry.save
 
     assert_equal "can't be blank", @new_inquiry.errors.on('name')
-    assert_equal "must be valid", @new_inquiry.errors.on('email')
+    assert_equal "is invalid", @new_inquiry.errors.on('email')
 
     assert_nil @new_inquiry.errors.on('phone')
     assert_nil @new_inquiry.errors.on('message')
 
     assert !@bad_email_inquiry.save
-    assert_equal "must be valid", @bad_email_inquiry.errors.on('email')
+    assert_equal "is invalid", @bad_email_inquiry.errors.on('email')
     assert_nil @bad_email_inquiry.errors.on('phone')
     assert_nil @bad_email_inquiry.errors.on('message')
     assert_nil @bad_email_inquiry.errors.on('name')

@@ -9,12 +9,12 @@
 <div class='form-actions'>
   <%= f.submit submit_button_text, :id => submit_button_id, :class => "wymupdate" %>
   <% if (continue_editing ||= false and !f.object.new_record?) -%>
-    <%= t '.or' %>
+    <%= t('.or') %>
     <%= render :partial => "/shared/admin/continue_editing", :locals => {:f => f} -%>
   <% end -%>
   <% unless (hide_cancel ||= from_dialog?) -%>
-    <%= t '.or' %>
-    <%# TODO add :what to t('.cancel_lose_changes') %>
+    <%= t('.or') %>
+    <%# TODO add :what to t('.cancel_lose_changes') -%>
     <%= link_to cancel_button_text, cancel_url, :title => title, :id => cancel_button_id, :class => "close_dialog" %>
   <% end -%>
 </div>

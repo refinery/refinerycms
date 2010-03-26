@@ -1,3 +1,0 @@
-[submodule "config/locales/default"]
-	path = config/locales/default
-	url = git://github.com/svenfuchs/rails-i18n.git

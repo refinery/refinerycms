@@ -28,15 +28,18 @@
         <%= link_to t(:see_home_page), root_url, :class => "go_icon", :target => "_blank" %>
       </li>
     </ul>
-    <h2><%= t('.change_language') %></h2>
-    <ul>
-      <% Refinery.i18n_available.each do |locale| %>
-        <li>
-          <%= link_to_if (params[:locale] != locale.to_s),
-                          locale.to_s.titleize, {:controller => controller_name,
-                          :action => action_name, :locale => locale.to_s } %>
-        </li>
-      <% end %>
-    <ul>
+
+    <% if RefinerySetting.find_or_set(:refinery_i18n_enabled, false) %>
+      <h2><%= t('.change_language') %></h2>
+      <ul>
+        <% RefinerySetting.find_or_set(:refinery_i18n_locales, {:en => "English", :nl => "Nederlands"}).each_pair do |locale_key, locale_title| %>
+          <li<%= " class='selected'" if locale_key == params[:locale] %>>
+            <%= link_to locale_title, 
+                        {:controller => controller_name, :action => action_name, :locale => locale_key },
+                        :style => "background-image: url('/images/refinery/icons/flags/#{locale_key}.png');" %>
+          </li>
+        <% end %>
+      <ul>
+    <% end %>
   </div>
 </div>

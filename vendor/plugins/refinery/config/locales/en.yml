@@ -27,6 +27,7 @@ en:
       continue_editing:
         save_and_continue_editing: "Save &amp; continue editing"
       form_actions:
+        or: or
         save: Save
         or_cancel: or
         cancel: Cancel
