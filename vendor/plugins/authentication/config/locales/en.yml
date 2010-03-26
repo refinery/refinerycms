@@ -19,7 +19,7 @@ en:
     logged_out: You have been logged out.
     new:
       log_in: Log in
-      cancel_log_in: Cancel
+      cancel: Cancel
       or: or
   users:
     setup_website_name: "<br/>First let's give the site a name. <a href='{{link}}'>Go here</a> to edit your website's name"

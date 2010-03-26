@@ -36,7 +36,7 @@ nl:
     new:
       log_in: Log in
       or: of
-      cancel_log_in: Annuleren
+      cancel: Annuleren
   users:
     setup_website_name: "<br/>Laten we eerst de website een naam geven. <a href='{{link}}'>Klik hier</a> om de naam van de website te bewerken"
     signup_disabled: Het registreren van gebruikers is uitgeschakeld
