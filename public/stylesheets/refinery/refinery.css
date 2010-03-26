@@ -44,6 +44,9 @@ acronym {
 	display:block;
 	padding:9px 12px 9px 36px;
 }
+#actions li.selected a {
+  background-color: yellow;
+}
 #actions li a:hover {
 	text-decoration: underline;
 }
