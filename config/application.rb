@@ -12,9 +12,6 @@ $LOAD_PATH << File.expand_path('../../vendor/engines/refinery/lib', __FILE__)
 require 'refinery'
 require File.expand_path('../../lib/refinery_initializer', __FILE__)
 
-# Hack to get current working version of friendly_id (somewhat) working with Rails 3
-require 'friendly_id/active_record2'
-
 module Refinerycms
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
