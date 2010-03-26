@@ -12,7 +12,7 @@ module RoutingFilter
       end
 
       def locales
-        @@locales ||= I18n.available_locales.map(&:to_sym)
+        @@locales ||= RefinerySetting.refinery_i18n_locales.collect{|l|l.first.to_sym}
       end
 
       def locales=(locales)
@@ -56,7 +56,7 @@ module RoutingFilter
       end
 
       def valid_locale?(locale)
-        locale && self.class.locales.include?(locale.to_sym)
+        locale.present? && self.class.locales.include?(locale.to_sym)
       end
 
       def default_locale?(locale)
