@@ -16,9 +16,7 @@ module Refinery
         File.dirname(call_stack.detect { |p| p !~ %r[railties[\w\-\.]*/lib/rails|rack[\w\-\.]*/lib/rack] })
       end
       puts new_called_from
-      klass = Class.new(Rails::Engine) do
-        engine_name  plugin.title.to_sym
-      end
+      klass = Class.new(Rails::Engine)
       klass.class_eval <<-RUBY
         def self.called_from; "#{new_called_from}"; end
       RUBY
