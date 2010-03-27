@@ -65,8 +65,7 @@ After your database exists, you'll need to install the gems that Refinery depend
 
     rake gems:install
 
-As of version 0.9.6.22, the news engine was extracted into a separate gem.
-This is found here:
+Note: The news engine that was previously in Refinery's core was extracted into a separate gem / plugin to be found here:
 
     http://github.com/resolve/refinerycms-news
 
