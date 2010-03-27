@@ -1,6 +1,6 @@
 class Theme
 
-  def self.current_theme(request = nil)
+  def self.current_theme(env)
     RefinerySetting[:theme]
   end
 

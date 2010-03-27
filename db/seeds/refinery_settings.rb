@@ -13,6 +13,5 @@
     :preview => 'c96x96'
     }
   }].each do |setting|
-  RefinerySetting[setting[:name].to_sym] = setting[:value]
-  RefinerySetting.find_by_name(setting[:name].to_s).update_attributes({:destroyable => false})
+  RefinerySetting.create(:name => setting[:name].to_s, :value => setting[:value], :destroyable => false)
 end

@@ -2,7 +2,7 @@
 RAILS_GEM_VERSION = '2.3.5' unless defined? RAILS_GEM_VERSION
 
 # Specified gem version of Refinery to use when vendor/plugins/refinery/lib/refinery.rb is not present.
-REFINERY_GEM_VERSION = '0.9.6.21' unless defined? REFINERY_GEM_VERSION
+REFINERY_GEM_VERSION = '0.9.6.23' unless defined? REFINERY_GEM_VERSION
 
 # Boot Rails
 require File.join(File.dirname(__FILE__), 'boot')
@@ -24,8 +24,8 @@ Refinery::Initializer.run do |config|
     :secret      => 'eec8fffc3637c05895f8e6a355179eaad0003ac5617e5368955baf7989e1faca4d8ab37140d690c20b05d5815609b7c680c644277b6a892be316a85c6596d75c'
   }
 
-  # Specify your application's gem requirements here. See the example below:
-  config.gem "refinerycms-news", :lib => "news", :version => "~> 0.9.7"
+  # Specify your application's gem requirements here. See the examples below:
+  # config.gem "refinerycms-news", :lib => "news", :version => "~> 0.9.7"
   # config.gem "refinerycms-portfolio", :lib => "portfolio", :version => "~> 0.9.3.8"
 end
 
