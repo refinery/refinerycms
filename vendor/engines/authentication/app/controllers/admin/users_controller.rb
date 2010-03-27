@@ -3,7 +3,7 @@ class Admin::UsersController < Admin::BaseController
   crudify :user, :order => 'login', :title_attribute => 'login'
 
   # Protect these actions behind an admin login
-  before_filter :find_user, :except => [:new, :create]
+  before_filter :find_user, :except => [:index, :new, :create]
   before_filter :load_available_plugins, :only => [:new, :create, :edit, :update]
 
   filter_parameter_logging 'password', 'password_confirmation'
