@@ -7,14 +7,13 @@
   {:name => "image_thumbnails", :value => {
     :dialog_thumb => 'c106x106',
     :grid => 'c135x135',
-    :thumb => '50x50>',
-    :medium => '225x255>',
-    :side_body => '300x500>',
+    :thumb => '50x50',
+    :medium => '225x255',
+    :side_body => '300x500',
     :preview => 'c96x96'
     }
   }].each do |setting|
-  RefinerySetting[setting[:name].to_sym] = setting[:value]
-  RefinerySetting.find_by_name(setting[:name].to_s).update_attributes({:destroyable => false})
+  RefinerySetting.create(:name => setting[:name].to_s, :value => setting[:value], :destroyable => false)
 end
 
 InquirySetting.create(:name => "Confirmation Body", :value => "Thank you for your inquiry %name%,\n\nThis email is a receipt to confirm we have received your inquiry and we'll be in touch shortly.\n\nThanks.", :destroyable => false)
@@ -50,7 +49,7 @@ Page.create(:title => "Contact Us",
             :link_url => "/inquiries/new",
             :menu_match => "^/inquiries.*$",
             :deletable => false,
-            :position => 3).parts.create(
+            :position => 2).parts.create(
             {
               :title => "Body",
               :body => "<p>Get in touch with us. Just use the form below and we'll get back to you as soon as we can.</p>"
@@ -64,8 +63,8 @@ Page.create(:title => "Thank You",
             :menu_match => "^/inquiries/thank_you$",
             :show_in_menu => false,
             :deletable => false,
-            :position => 0,
-            :parent_id => 3).parts.create(
+            :position => 3,
+            :parent_id => 4).parts.create(
             {
               :title => "Body",
               :body => "<p>We've received your inquiry and will get back to you with a response shortly.</p><p><a href='/'>Return to the home page</a></p>"
@@ -87,7 +86,7 @@ Page.create(:title => "Privacy Policy",
             :position => 5).parts.create(
             {
               :title => "Body",
-              :body => "<p>We respect your privacy. We do not market, rent or sell our email list to any outside parties.</p><p>We need your e-mail address so that we can ensure that the people using our forms are bona fide. It also allows us to send you e-mail newsletters and other communications, if you opt-in. Your postal address is required in order to send you information and pricing, if you request it.</p><p>Please call us at 123 456 7890 if you have any questions or concerns.</p>"
+              :body => "<p><strong>We respect your privacy. We do not market, rent or sell our email list to any outside parties.</p><p>We need your e-mail address so that we can ensure that the people using our forms are bona fide. It also allows us to send you e-mail newsletters and other communications, if you opt-in. Your postal address is required in order to send you information and pricing, if you request it.</p><p>Please call us at 123 456 7890 if you have any questions or concerns.</p>"
             }).page.parts.create(
             {
               :title => "Side Body",
