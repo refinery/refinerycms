@@ -36,7 +36,7 @@ protected
     list = []
     page.children.each do |child|
       list << child
-      list += add_pages_branch_to_parents_list if child.children.any?
+      list += add_pages_branch_to_parents_list(child) if child.children.any?
     end
     list
   end
