@@ -12,7 +12,7 @@ module RoutingFilter
       end
 
       def locales
-        @@locales ||= RefinerySetting.refinery_i18n_locales.collect{|l|l.first.to_sym}
+        @@locales ||= RefinerySetting.find_or_set(:refinery_i18n_locales, {:en => "English", :nl => "Nederlands"}).collect{|l|l.first.to_sym}
       end
 
       def locales=(locales)
