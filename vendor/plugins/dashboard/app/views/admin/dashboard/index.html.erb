@@ -29,12 +29,12 @@
       </li>
     </ul>
 
-    <% if RefinerySetting.find_or_set(:refinery_i18n_enabled, false) %>
+    <% if ::RoutingFilter::Locale.i18n_enabled? %>
       <h2><%= t('.change_language') %></h2>
       <ul>
-        <% RefinerySetting.find_or_set(:refinery_i18n_locales, {:en => "English", :nl => "Nederlands"}).each_pair do |locale_key, locale_title| %>
+        <% ::RoutingFilter::Locale.default_locales.each_pair do |locale_key, locale_title| %>
           <li<%= " class='selected'" if locale_key == params[:locale] %>>
-            <%= link_to locale_title, 
+            <%= link_to locale_title,
                         {:controller => controller_name, :action => action_name, :locale => locale_key },
                         :style => "background-image: url('/images/refinery/icons/flags/#{locale_key}.png');" %>
           </li>

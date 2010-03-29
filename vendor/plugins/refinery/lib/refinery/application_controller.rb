@@ -48,6 +48,15 @@ class Refinery::ApplicationController < ActionController::Base
 
 protected
 
+  def default_url_options(options={})
+    { :locale => I18n.locale }
+  end
+
+  # get all the pages to be displayed in the site menu.
+  def find_pages_for_menu
+    @menu_pages = Page.top_level(include_children=true)
+  end
+  
   def take_down_for_maintenance?
     if RefinerySetting.find_or_set(:down_for_maintenance, false)
       if (@page = Page.find_by_menu_match("^/maintenance$", :include => [:parts, :slugs])).present?
@@ -56,15 +65,6 @@ protected
         render :text => "Our website is currently down for maintenance. Please try back soon."
       end
     end
-  end
-
-  def show_welcome_page
-    render :template => "/welcome", :layout => "admin" if just_installed? and controller_name != "users"
-  end
-
-  # get all the pages to be displayed in the site menu.
-  def find_pages_for_menu
-    @menu_pages = Page.top_level(include_children=true)
   end
 
   # use a different model for the meta information.
@@ -78,15 +78,16 @@ protected
     present(@page) unless admin? or @meta.present?
     super
   end
-  
+
   def set_locale
     locale = params[:locale] || cookies[:locale]
     I18n.locale = locale.to_s
     cookies[:locale] = locale unless (cookies[:locale] && cookies[:locale] == locale)
   end
 
-  def default_url_options(options={})
-    { :locale => I18n.locale }
+  def show_welcome_page
+    I18n.locale = RefinerySetting.find_or_set(:refinery_i18n_locale, RoutingFilter::Locale.locales.first)
+    render :template => "/welcome", :layout => "admin" if just_installed? and controller_name != "users"
   end
-
+  
 end

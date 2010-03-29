@@ -1,4 +1,5 @@
 require 'routing_filter/base'
+require 'routing_filter/locale'
 module RoutingFilter
   class Locale < Base
     def around_recognize(path, env, &block)

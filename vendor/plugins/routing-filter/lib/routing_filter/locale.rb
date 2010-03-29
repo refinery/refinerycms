@@ -11,8 +11,17 @@ module RoutingFilter
         @@include_default_locale
       end
 
+      def default_locales
+        RefinerySetting.find_or_set(:refinery_i18n_locales, {:en => "English", :nl => "Nederlands"})
+      end
+
+      def i18n_enabled?
+        RefinerySetting.find_or_set(:refinery_i18n_enabled, false)
+      end
+
+      # returns an array like [:en, :nl, :fr]
       def locales
-        @@locales ||= RefinerySetting.find_or_set(:refinery_i18n_locales, {:en => "English", :nl => "Nederlands"}).collect{|l|l.first.to_sym}
+        @@locales ||= default_locales.collect{|l| l.first}.map(&:to_sym)
       end
 
       def locales=(locales)

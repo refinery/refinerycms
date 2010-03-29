@@ -16,21 +16,17 @@ class Refinery::AdminBaseController < ApplicationController
 
 protected
 
-  # never take the backend down for maintenance.
-  def take_down_for_maintenance?;end
-
-#TODO Add language
+  #TODO Add language
   def error_404
     @page = Page.find_by_menu_match("^/404$", :include => [:parts, :slugs])
     @page[:body] = @page[:body].gsub(/href=(\'|\")\/(\'|\")/, "href='/admin'").gsub("home page", "Dashboard")
     render :template => "/pages/show", :status => 404
   end
 
-  def restrict_plugins
-    Refinery::Plugins.set_active( current_user.authorized_plugins ) if current_user.respond_to? :plugins
-  end
+  # Override method from application_controller. Not needed in this controller.
+  def find_pages_for_menu; end
 
-#TODO Translate
+  #TODO Translate
   def restrict_controller
     if Refinery::Plugins.active.reject {|plugin| params[:controller] !~ Regexp.new(plugin.menu_match) }.empty?
       flash[:error] = "You do not have permission to access this feature."
@@ -39,8 +35,16 @@ protected
     end
   end
 
-  # Override method from application_controller. Not needed in this controller.
-  def find_pages_for_menu; end
+  def restrict_plugins
+    Refinery::Plugins.set_active(current_user.authorized_plugins) if current_user.respond_to? :plugins
+  end
+
+  def set_locale
+    I18n.locale = RefinerySetting.find_or_set(:refinery_i18n_locale, RoutingFilter::Locale.locales.first)
+  end
+
+  # never take the backend down for maintenance.
+  def take_down_for_maintenance?;end
 
 private
   # This fixes the issue where Internet Explorer browsers are presented with a basic auth dialogue

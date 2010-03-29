@@ -1,6 +1,7 @@
 en:
   no_file_chosen: You must choose a file to upload
   file_should_be_smaller_than_max_file_size: Files should be smaller than {{max_file_size}} in size
+  file_must_be_these_formats: Your image must be either a JPG, PNG or GIF
   admin:
     images:
       form:

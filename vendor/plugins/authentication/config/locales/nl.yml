@@ -54,3 +54,24 @@ nl:
     user_name: Gebruiker {{name}}
     password: Wachtwoord {{password}}
     visit_url: "Bezoek dit adres om uw gebruikersaacount te activeren:"
+  authlogic:
+    error_messages:
+      login_blank: TODO
+      login_not_found: TODO
+      login_invalid: TODO
+      consecutive_failed_logins_limit_exceeded: TODO
+      email_invalid: TODO
+      password_blank: TODO
+      password_invalid: TODO
+      not_active: TODO
+      not_confirmed: TODO
+      not_approved: TODO
+      no_authentication_details: TODO
+    models:
+      user_session: UserSession
+    attributes:
+      user_session:
+        login: TODO
+        email: TODO
+        password: TODO
+        remember_me: TODO
