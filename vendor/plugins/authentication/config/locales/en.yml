@@ -38,5 +38,25 @@ en:
     user_name: Username {{name}}
     password: Password {{password}}
     visit_url: "Visit this url to activate your account:"
-
+  authlogic:
+    error_messages:
+      login_blank: can not be blank
+      login_not_found: is not valid
+      login_invalid: should use only letters, numbers, spaces, and .-_@ please.
+      consecutive_failed_logins_limit_exceeded: Consecutive failed logins limit exceeded, account is disabled.
+      email_invalid: should look like an email address.
+      password_blank: can not be blank
+      password_invalid: is not valid
+      not_active: Your account is not active
+      not_confirmed: Your account is not confirmed
+      not_approved: Your account is not approved
+      no_authentication_details: You did not provide any details for authentication.
+    models:
+      user_session: UserSession
+    attributes:
+      user_session:
+        login: login
+        email: email
+        password: password
+        remember_me: remember me
 

@@ -5,6 +5,7 @@ nl:
 
   no_file_chosen: U moet een bestand kiezen om te uploaden.
   file_should_be_smaller_than_max_image_size: Bestanden mogen niet groter dan {{max_image_size}} zijn.
+  file_must_be_these_formats: Uw afbeelding moet een JPG, PNG of GIF
   admin:
     images:
       form:

@@ -18,14 +18,15 @@ class Resource < ActiveRecord::Base
   # This is a known problem when using attachment_fu
   def validate
     if self.filename.nil?
-      errors.add_to_base(I18n.translate('must_choose_file')) 
+      errors.add_to_base(I18n.translate('must_choose_file'))
       errors.add_to_base("You must choose a file to upload")
     else
       [:size].each do |attr_name|
         enum = attachment_options[attr_name]
 
         unless enum.nil? || enum.include?(send(attr_name))
-          errors.add_to_base(I18n.translate('file_should_be_smaller_than_max_file_size', :max_file_size => ActionController::Base.helpers.number_to_human_size(MAX_FILE_SIZE) ))
+          errors.add_to_base(I18n.translate('file_should_be_smaller_than_max_file_size',
+                              :max_file_size => ActionController::Base.helpers.number_to_human_size(MAX_SIZE_IN_MB) ))
         end
       end
     end
