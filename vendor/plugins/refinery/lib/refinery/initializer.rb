@@ -22,7 +22,7 @@ module Refinery
       super
 
       # add plugin lib paths to the $LOAD_PATH so that rake tasks etc. can be run when using a gem for refinery or gems for plugins.
-      search_for = Regexp.new(Refinery.root.join("vendor", "plugins", ".+?", "lib"))
+      search_for = Regexp.new(Refinery.root.join("vendor", "plugins", ".+?", "lib").to_s)
 
       # find all the plugin paths
       paths = plugins.collect{ |plugin| plugin.load_paths }.flatten
