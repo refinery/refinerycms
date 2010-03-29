@@ -10,8 +10,8 @@
   </div>
   <div class='field'>
     <%= f.label :password %>
-    <%= f.password_field :password %><br />
-    <% unless @user.new_record? %><span class="preview">Leaving password blank keeps the current password</span><% end %>
+    <%= f.password_field :password %>
+    <%= "<br /><span class='preview'>Leaving password blank keeps the current password</span>" unless @user.new_record? %>
   </div>
   <div class='field'>
     <%= f.label :password_confirmation %>
