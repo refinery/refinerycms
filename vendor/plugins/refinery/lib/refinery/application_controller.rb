@@ -56,7 +56,7 @@ protected
   def find_pages_for_menu
     @menu_pages = Page.top_level(include_children=true)
   end
-  
+
   def take_down_for_maintenance?
     if RefinerySetting.find_or_set(:down_for_maintenance, false)
       if (@page = Page.find_by_menu_match("^/maintenance$", :include => [:parts, :slugs])).present?
@@ -83,11 +83,14 @@ protected
     locale = params[:locale] || cookies[:locale]
     I18n.locale = locale.to_s
     cookies[:locale] = locale unless (cookies[:locale] && cookies[:locale] == locale)
+
+    # we need to do something here to eliminate the locale from the route so that menus match properly.
+    request.path.gsub!(%r(^/#{locale.to_s}), "")
   end
 
   def show_welcome_page
     I18n.locale = RefinerySetting.find_or_set(:refinery_i18n_locale, RoutingFilter::Locale.locales.first)
     render :template => "/welcome", :layout => "admin" if just_installed? and controller_name != "users"
   end
-  
+
 end

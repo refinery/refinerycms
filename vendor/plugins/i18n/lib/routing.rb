@@ -20,7 +20,7 @@ module RoutingFilter
         end
       end
     end
-    
+
     class << self
       def i18n_enabled?
         RefinerySetting.find_or_set(:refinery_i18n_enabled, false)

@@ -12,8 +12,8 @@ module RoutingFilter
       end
 
       def current_locale
-        RefinerySetting[:refinery_i18n_locale] = :en unless i18n_enabled?        
-        @@current_locale ||= RefinerySetting.find_or_set(:refinery_i18n_locale, :en)        
+        RefinerySetting[:refinery_i18n_locale] = :en unless i18n_enabled?
+        @@current_locale ||= RefinerySetting.find_or_set(:refinery_i18n_locale, :en)
       end
 
       def current_locale=(locale)
