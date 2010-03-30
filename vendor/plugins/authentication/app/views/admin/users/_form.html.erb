@@ -10,10 +10,8 @@
   </div>
   <div class='field'>
     <%= f.label :password %>
-    <%= f.password_field :password %><br />
-    <% unless @user.new_record? %>
-    <span class="preview"><%=t('.blank_password_keeps_current')%></span>
-    <% end %>
+    <%= f.password_field :password %>
+    <%= "<br /><span class='preview'>#{t('.blank_password_keeps_current')}</span>" unless @user.new_record? %>
   </div>
   <div class='field'>
     <%= f.label :password_confirmation %>

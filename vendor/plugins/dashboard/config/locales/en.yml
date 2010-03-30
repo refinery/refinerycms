@@ -13,7 +13,7 @@ en:
       recent_activity:
         latest_activity: Latest activity
         nothing_has_happened_yet: Nothing has happened yet
-        see: 
+        see: See '{{what}}'
   updated: updated
   created: created
   ago: ago

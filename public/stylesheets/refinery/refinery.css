@@ -658,7 +658,7 @@ label.stripped {
 #recent_activity td.time_ago {
 	text-align: right;
 	min-width: 80px;
-	max-width: 135px;
+	max-width: 170px;
 }
 
 #recent_activity tr.on {

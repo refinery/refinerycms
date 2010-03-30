@@ -16,6 +16,7 @@ nl:
       recent_activity:
         latest_activity: Laatste wijzigingen
         nothing_has_happened_yet: Er is nog niets gebeurd.
+        see: Bezoek de '{{what}}'
   updated: bewerkt
   created: aangemaakt
   ago: geleden
