@@ -33,9 +33,9 @@
       <h2><%= t('.change_language') %></h2>
       <ul>
         <% ::RoutingFilter::Locale.default_locales.each_pair do |locale_key, locale_title| %>
-          <li<%= " class='selected'" if locale_key == params[:locale] %>>
+          <li<%= " class='selected'" if locale_key.to_sym == ::RoutingFilter::Locale.current_locale %>>
             <%= link_to locale_title,
-                        {:controller => controller_name, :action => action_name, :locale => locale_key },
+                        {:controller => controller_name, :action => action_name, :set_locale => locale_key },
                         :style => "background-image: url('/images/refinery/icons/flags/#{locale_key}.png');" %>
           </li>
         <% end %>

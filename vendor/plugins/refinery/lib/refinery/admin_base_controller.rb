@@ -40,6 +40,11 @@ protected
   end
 
   def set_locale
+    if params[:set_locale].present? and ::RoutingFilter::Locale.i18n_enabled? and ::RoutingFilter::Locale.default_locales.include?(params[:set_locale].to_sym)
+      ::RoutingFilter::Locale.current_locale = params[:set_locale].to_sym
+      redirect_to url_for({:controller => controller_name, :action => action_name})
+    end
+
     I18n.locale = RefinerySetting.find_or_set(:refinery_i18n_locale, RoutingFilter::Locale.locales.first)
   end
 
