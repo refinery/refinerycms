@@ -12,7 +12,7 @@ en:
         current_image: Current Image
       index:
         create_new_image: Create New Image
-        no_images_yet: There are no images yet.<br/> Click "Create New Image" to add your first image.
+        no_images_yet: There are no images yet.  Click "Create New Image" to add your first image.
         view:
           switch_to: Switch to {{view_name}} view
           list: list

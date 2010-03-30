@@ -16,7 +16,7 @@ nl:
         current_image: Huidige afbeelding
       index:
         create_new_image: Maak een nieuwe afbeelding
-        no_images_yet: Er zijn nog geen afbeeldingen! <br/> Klik op "Maak een nieuwe afbeelding" om uw eerste afbleelding toe te voegen.
+        no_images_yet: Er zijn nog geen afbeeldingen! Klik op "Maak een nieuwe afbeelding" om uw eerste afbleelding toe te voegen.
         view:
           switch_to: Bekijk de {{view_name}} versie
           list: lijst

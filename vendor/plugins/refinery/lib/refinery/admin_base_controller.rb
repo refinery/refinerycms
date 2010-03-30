@@ -44,8 +44,8 @@ protected
       ::RoutingFilter::Locale.current_locale = params[:set_locale].to_sym
       redirect_to url_for({:controller => controller_name, :action => action_name})
     end
-
-    I18n.locale = RefinerySetting.find_or_set(:refinery_i18n_locale, RoutingFilter::Locale.locales.first)
+    
+    I18n.locale = ::RoutingFilter::Locale.current_locale
   end
 
   # never take the backend down for maintenance.
