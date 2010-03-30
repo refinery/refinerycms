@@ -11,12 +11,17 @@ module RoutingFilter
         @@include_default_locale
       end
 
-      def default_locales
-        RefinerySetting.find_or_set(:refinery_i18n_locales, {:en => "English", :nl => "Nederlands"})
+      def current_locale
+        @@current_locale ||= RefinerySetting.find_or_set(:refinery_i18n_locale, :en)
       end
 
-      def i18n_enabled?
-        RefinerySetting.find_or_set(:refinery_i18n_enabled, false)
+      def current_locale=(locale)
+        @@current_locale = locale.to_sym
+        RefinerySetting[:refinery_i18n_locale] = @@current_locale
+      end
+
+      def default_locales
+        RefinerySetting.find_or_set(:refinery_i18n_locales, {:en => "English", :nl => "Nederlands"})
       end
 
       # returns an array like [:en, :nl, :fr]
@@ -36,20 +41,27 @@ module RoutingFilter
     def around_recognize(path, env, &block)
       locale = extract_locale!(path)                 # remove the locale from the beginning of the path
       returning yield do |params|                    # invoke the given block (calls more filters and finally routing)
-        params[:locale] = locale if locale           # set recognized locale to the resulting params hash
+        if locale and ::RoutingFilter::Locale.i18n_enabled?
+          # set recognized locale to the resulting params hash
+          ::RoutingFilter::Locale.current_locale = params[:locale] = locale
+        end
       end
     end
 
     def around_generate(*args, &block)
-      locale = args.extract_options!.delete(:locale) # extract the passed :locale option
-      locale = I18n.locale if locale.nil?            # default to I18n.locale when locale is nil (could also be false)
-      locale = nil unless valid_locale?(locale)      # reset to no locale when locale is not valid
+      if ::RoutingFilter::Locale.i18n_enabled?
+        locale = args.extract_options!.delete(:locale) # extract the passed :locale option
+        locale = I18n.locale if locale.nil?            # default to I18n.locale when locale is nil (could also be false)
+        locale = nil unless valid_locale?(locale)      # reset to no locale when locale is not valid
 
-      returning yield do |result|
-        if locale && prepend_locale?(locale)
-          url = result.is_a?(Array) ? result.first : result
-          prepend_locale!(url, locale)
+        returning yield do |result|
+          if locale && prepend_locale?(locale)
+            url = result.is_a?(Array) ? result.first : result
+            prepend_locale!(url, locale)
+          end
         end
+      else
+        return yield
       end
     end
 
