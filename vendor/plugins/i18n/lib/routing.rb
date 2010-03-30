@@ -12,9 +12,10 @@ module RoutingFilter
     def around_generate(*args, &block)
       locale = args.extract_options!.delete(:locale) || 'uk'
       returning yield do |result|
-        if locale != 'en'
+        # we want to ensure we're not routing the admin urls.
+        if locale != 'en' and !(result =~ %r(^/admin))
           result.sub!(%r(^(http.?://[^/]*)?(.*))){ "#{$1}/#{locale}#{$2}" }
-        end 
+        end
       end
     end
   end
