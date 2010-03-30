@@ -21,5 +21,7 @@ Dir[Rails.root.join("config", "locales", "*.yml").to_s].each do |yml|
   I18n.load_path.unshift(yml)
 end
 
-# set up a default locale.
-I18n.locale = RefinerySetting.find_or_set(:refinery_i18n_locale, RoutingFilter::Locale.locales.first)
+# set up a default locale, if the database exists.
+if RefinerySetting.table_exists?
+  I18n.locale = RefinerySetting.find_or_set(:refinery_i18n_locale, RoutingFilter::Locale.locales.first)
+end

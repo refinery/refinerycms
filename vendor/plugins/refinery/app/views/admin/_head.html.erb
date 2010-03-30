@@ -6,9 +6,8 @@
   <%= render :partial => "/shared/admin/head_before_javascript_libraries" -%>
   <%= jquery_include_tags(use_caching) %>
   <%= javascript_include_tag 'i18n' %>
-  <script>
-    var I18n = I18n || {};
-    var I18n.locale = '<%= I18n.locale %>';
+  <script type='text/javascript'>
+    I18n.locale = '<%= I18n.locale %>';
   </script>
   <%= yield :head_after_javascript_libraries %>
   <%= javascript_include_tag 'admin', 'wymeditor/jquery.refinery.wymeditor.js', 'refinery/boot_wym', 'refinery/admin', :cache => (use_caching ? "cache/admin" : false) %>

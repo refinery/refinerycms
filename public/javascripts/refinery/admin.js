@@ -8,7 +8,7 @@ $(document).ready(function(){
   init_tooltips();
 
   // focus first field in an admin form.
-  $('form input[type=text]:first').focus();
+  $('form:first input[type=text]:first, form:first .fieldWithErrors :input:first').last().focus();
 });
 
 init_delete_confirmations = function() {
