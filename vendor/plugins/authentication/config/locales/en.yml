@@ -14,7 +14,7 @@ en:
         preview: ({{who}}) created {{created_at}}
         no_users_yet:  There are no users yet. Click "Create New User" to add your first user.
   sessions:
-    login_successfull: Logged in successfully
+    login_successful: Logged in successfully
     login_failed: Sorry, your password or username was incorrect.
     logged_out: You have been logged out.
     new:
@@ -63,3 +63,4 @@ en:
         email: email
         password: password
         remember_me: remember me
+        incorrect: "Sorry, your {{login_field}} or password was incorrect."
