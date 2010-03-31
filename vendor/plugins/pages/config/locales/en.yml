@@ -1,4 +1,7 @@
 en:
+  plugins:
+    refinery_pages:
+      title: Pages
   admin:
     pages:
       form:
