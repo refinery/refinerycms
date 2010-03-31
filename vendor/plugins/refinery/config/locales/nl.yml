@@ -50,10 +50,11 @@ nl:
         view_live: Bekijk deze pagina op de website <br/><em>(opent een nieuw venster)</em>
         edit_this_page: Bewerk deze pagina
         confirm_delete_page_title: Verwijder deze pagina
-        confirm_delete_page_message: Weet u zeker dat u de pagina '{{title}}' wilt verwijderen?
+        confirm_delete_page_message: "Weet u zeker dat u de pagina '{{title}}' wilt verwijderen?"
         hidden: verborgen
         draft: concept
     page_dialogs:
+      not_allowed: U heeft geen toegang tot deze optie.
       page_link:
         link_to_this_page: Maak een link naar deze pagina
       link_to:
@@ -66,7 +67,7 @@ nl:
           new_window_label: Klik dit vinkje aan om de link in een nieuw venster te laten openen.
           not_sure: Bent u niet zeker over wat u in het bovenstaande veld moet invoeren?
           step1: Zoek de pagina op het internet waar u naar wilt linken.
-          step2: Kopieer het website adres van de adresbalk uit uw browser, en plak het in het tekstveld hierboven.
+          step2: "Kopieer het website adres van de adresbalk uit uw browser, en plak het in het tekstveld hierboven."
         email_address:
           tab_name: Email adres
           subject_line_optional: Onderwerp (niet verplicht)

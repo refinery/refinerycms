@@ -62,6 +62,7 @@ en:
         hidden: hidden
         draft: draft
     page_dialogs:
+      not_allowed: You do not have permission to access this feature.
       page_link:
         link_to_this_page: Link to this page
       link_to:

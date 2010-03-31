@@ -29,7 +29,7 @@ protected
   #TODO Translate
   def restrict_controller
     if Refinery::Plugins.active.reject {|plugin| params[:controller] !~ Regexp.new(plugin.menu_match) }.empty?
-      flash[:error] = "You do not have permission to access this feature."
+      flash[:error] = t('admin.page_dialogs.not_allowed')
       logger.warn "'#{current_user.login}' tried to access '#{params[:controller]}' but was rejected."
       redirect_back_or_default(admin_root_url)
     end
