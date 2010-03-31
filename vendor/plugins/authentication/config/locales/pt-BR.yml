@@ -1,0 +1,62 @@
+pt-BR:
+  plugins:
+    refinery_users:
+      title: Usuários
+  admin:
+    users:
+      update:
+        cannot_remove_user_plugin_from_current_user: "Você não pode remover o plugin 'Usuários' a partir da conta atualmente logada."
+      form:
+        blank_password_keeps_current: Deixar a senha em branco mantém a senha atual
+      index:
+        create_new_user: Criar Novo Usuário
+        confirm_delete_message: "Tem certeza que você deseja remover '{{who}}'?"
+        conform_delete_title: Remover este usuário para sempre
+        edit_user: Editar este usuário
+        email_user: Enviar e-mail para este usuário
+        preview: ({{who}}) criado em {{created_at}}
+        no_users_yet: Ainda não existem usuários. Clique em "Criar Novo Usuário" para adicionar seu primeiro usuário.
+  sessions:
+    login_successfull: Logado com sucesso
+    login_failed: Desculpe, sua senha ou nome de usuário estavam incorretos.
+    logged_out: Você foi deslogado.
+    new:
+      log_in: Entrar
+      cancel: Cancelar
+      or: ou
+  users:
+    setup_website_name: "<br/>Primeiro vamos dar um nome ao site. <a href='{{link}}'>Clique aqui</a> para editar o nome do seu site"
+    signup_disabled: Cadastro de usuários está desabilitado
+    new:
+      fill_form: Preencha o formulário abaixo com seus detalhes pra que você possa começar.
+      sign_up: Cadastrar
+    create:
+      welcome: Bem-vindo ao Refinery, {{who}}
+      signup_complete: Cadastro completo!
+  user_mailer:
+    please_activate: Por favor, ative sua nova conta
+    activated: Sua conta foi ativada!
+    activated_email: "{{who}}, sua conta foi ativada. Agora você pode começar a adicionar seus plugins:"
+    account_created: Sua conta foi criada.
+    user_name: Nome de usuário {{name}}
+    password: Senha {{password}}
+    visit_url: "Visite esta url para ativar sua conta:"
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              error_messages:
+                email_invalid: deveria se parecer com um endereço de email.
+            login:
+              error_messages:
+                login_invalid: deveria usar apenas letras, números, espaços e .-_@, por favor.
+    models:
+      user: Usuário
+    attributes:
+      user:
+        password: Senha
+        password_confirmation: Confirmação da senha
+
+

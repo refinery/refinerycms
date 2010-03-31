@@ -26,12 +26,12 @@ class UsersController < ApplicationController
         # uncomment at your own risk
         # reset_session
         @user = User.create(params[:user])
-        @selected_plugin_titles = params[:user][:plugins] || []
+        @selected_plugin_names = params[:user][:plugins] || []
 
         @user.save if @user.valid?
 
         if @user.errors.empty?
-          @user.plugins = @selected_plugin_titles
+          @user.plugins = @selected_plugin_names
           @user.save
           UserSession.create!(@user)
           current_user.update_attribute(:superuser, true) if User.count == 1 # this is the superuser if this user is the only user.
