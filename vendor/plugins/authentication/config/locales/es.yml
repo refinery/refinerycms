@@ -20,6 +20,7 @@ es:
         email: email
         password: contraseña
         remember_me: Recordarme
+        incorrect: "Lo sentimos, su {{login_field}} o la contraseña son correctos."
   plugins:
     refinery_users:
       title: Usuarios
@@ -43,7 +44,7 @@ es:
         preview: ({{who}}) created {{created_at}}
         no_users_yet:  No se ha creado ningún usuario todavía. Pulse en "Crear usuario nuevo" para añadir el primer usuario
   sessions:
-    login_successfull: Ha iniciado sesión correctamente.
+    login_successful: Ha iniciado sesión correctamente.
     login_failed: El password o el nombre de usuario es incorrecto.
     logged_out: La sesión ha sido cerrada.
     new:

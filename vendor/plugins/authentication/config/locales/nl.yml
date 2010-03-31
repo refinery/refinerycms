@@ -30,7 +30,7 @@ nl:
         preview: ({{who}}) is aangemaakt op {{created_at}}
         no_users_yet:  Er zijn nog geen gebruikers. Klik op "Maak een nieuwe gebruiker" om de eerste toe te voegen.
   sessions:
-    login_successfull: Successvol ingelogd.
+    login_successful: Successvol ingelogd.
     login_failed: Sorry, uw wachtwoord of gebruikersnaam was niet juist.
     logged_out: U bent uitgelogd.
     new:
@@ -79,3 +79,4 @@ nl:
         email: e-mail
         password: Wachtwoord
         remember_me: Onthoud mijn gegevens
+        incorrect: "Sorry, uw {{login_field}} of wachtwoord was niet juist."

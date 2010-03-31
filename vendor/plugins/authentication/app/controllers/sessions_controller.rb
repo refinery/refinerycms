@@ -3,12 +3,9 @@ class SessionsController < ApplicationController
   filter_parameter_logging 'password', 'password_confirmation'
 
   def create
-    @session = UserSession.new(params[:session])
-    if @session.save
+    if (@session = UserSession.new(params[:session])).save
       redirect_back_or_default(admin_root_url)
-      flash[:notice] = t('sessions.login_successfull')
     else
-      flash.now[:error] = t('sessions.login_failed')
       render :action => 'new'
     end
   end
