@@ -27,7 +27,7 @@
         <% else %>
           <li>
             <%= check_box_tag 'user[plugins][]', plugin[:name], @selected_plugin_names.include?(plugin[:name]), :id => "plugins_#{plugin[:name]}" %>
-            <%= f.label 'user[plugins][]', t("plugins.#{plugin[:name].downcase}.title"), :class => "stripped", :for => "plugins_#{plugin[:name]}" %>
+            <%= f.label 'user[plugins][]', t("plugins.#{plugin[:name].downcase}.title", :default => plugin[:title]), :class => "stripped", :for => "plugins_#{plugin[:name]}" %>
           </li>
         <% end %>
       <% end %>

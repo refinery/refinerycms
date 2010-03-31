@@ -1,4 +1,7 @@
 en:
+  plugins:
+    refinery_inquiries:
+      title: Inquiries
   activerecord:
     models:
       inquiry: Inquiry
@@ -46,7 +49,7 @@ en:
         actions: Actions
         back_to_all_inquiries: Back to all Inquiries
     inquiry_settings:
-      update: 
+      update:
         updated: "'{{setting}}' was successfully updated."
       notification_recipients_form:
         inquiry_settings_value_name: Send notifications to
