@@ -24,6 +24,8 @@ group :test do
   gem 'cucumber-rails'
 end
 
+gem 'image_science'
+
 #===REFINERY REQUIRED GEMS===
 #git 'git://github.com/norman/friendly_id.git', :branch => '3.0'
 gem "friendly_id", '3.0.1', :require => 'friendly_id'
