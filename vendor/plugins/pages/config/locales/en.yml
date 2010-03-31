@@ -1,5 +1,5 @@
 en:
-  admin: 
+  admin:
     pages:
       form:
         create_content_section: Create content section
@@ -34,5 +34,6 @@ en:
         create_new_page: Create a new page
         reorder_pages: Reorder the Pages
         reorder_pages_done: Done reordering Pages
-        sorry_no_results: Sorry! There are no results found. 
+        sorry_no_results: Sorry! There are no results found.
         no_pages_yet: There are no pages yet.  Click "Create New Page" to add your first page.
+        search_results_for: "Search results for {{what}}"

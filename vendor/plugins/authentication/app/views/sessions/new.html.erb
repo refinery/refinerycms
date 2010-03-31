@@ -2,16 +2,16 @@
   <%= f.error_messages %>
   <div class='clearfix'>
     <div class='field session_username'>
-      <%= f.label Refinery.authentication_login_field %>
+      <%= f.label Refinery.authentication_login_field, t(".#{Refinery.authentication_login_field.downcase}") %>
       <%= f.text_field Refinery.authentication_login_field %>
     </div>
     <div class='field session_password'>
-      <%= f.label :password %>
+      <%= f.label :password, t('.password') %>
       <%= f.password_field :password, :autocomplete => 'off' %>
     </div>
   </div>
   <div class='field forgot_password'>
-    <%= link_to "I forgot my password", forgot_url %>
+    <%= link_to t('.forgot_password'), forgot_url %>
   </div>
   <div class='field remember_me'>
     <%= f.label t('.remember_me'), nil %>
