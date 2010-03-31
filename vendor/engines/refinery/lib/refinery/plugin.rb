@@ -6,7 +6,6 @@ module Refinery
     def self.register(&block)
       plugin = self.new
       yield plugin
-      puts "Registering #{plugin.title}..."
       klass_name = plugin.title == 'Refinery' ? 'RefineryEngine' : plugin.title
       # Set the root as Rails::Engine.called_from will always be
       #                 vendor/engines/refinery/lib/refinery
@@ -15,7 +14,6 @@ module Refinery
         call_stack = caller.map { |p| p.split(':')[0..-2].join(':') }
         File.dirname(call_stack.detect { |p| p !~ %r[railties[\w\-\.]*/lib/rails|rack[\w\-\.]*/lib/rack] })
       end
-      puts new_called_from
       klass = Class.new(Rails::Engine)
       klass.class_eval <<-RUBY
         def self.called_from; "#{new_called_from}"; end
