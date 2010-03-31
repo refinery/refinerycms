@@ -26,13 +26,17 @@
           <%= hidden_field_tag 'user[plugins][]', plugin[:name] %>
         <% else %>
           <li>
-            <%= check_box_tag 'user[plugins][]', plugin[:name], @selected_plugin_names.include?(plugin[:name]), :id => "plugins_#{plugin[:name]}" %>
-            <%= f.label 'user[plugins][]', t("plugins.#{plugin[:name].downcase}.title", :default => plugin[:title]), :class => "stripped", :for => "plugins_#{plugin[:name]}" %>
+            <%= check_box_tag 'user[plugins][]',
+                              plugin[:name], @selected_plugin_names.include?(plugin[:name]),
+                              :id => "plugins_#{plugin[:name]}" %>
+            <%= f.label 'user[plugins][]',
+                        t("plugins.#{plugin[:name].downcase}.title", :default => plugin[:title]),
+                        :class => "stripped",
+                        :for => "plugins_#{plugin[:name]}" %>
           </li>
         <% end %>
       <% end %>
     </ul>
   </div>
   <%= render :partial => "/shared/admin/form_actions", :locals => {:f => f, :continue_editing => false} %>
-
 <% end %>
