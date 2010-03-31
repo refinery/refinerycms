@@ -26,9 +26,9 @@ es:
   admin:
     users:
       update:
-        cannot_remove_user_plugin_from_current_user: "No se puede eliminar el plugin 'Users' desde la cuenta actual" 
+        cannot_remove_user_plugin_from_current_user: "No se puede eliminar el plugin 'Users' desde la cuenta actual"
       form:
-        login: Nombre de usuario 
+        login: Nombre de usuario
         email: Dirección de email
         password: Contraseña
         password_confirmation: Confirmar contraseña
@@ -53,6 +53,7 @@ es:
       remember_me: Recordarme
       cancel_log_in: Cancelar
       or: o
+      forgot_password: He olvidado mi contraseña
   users:
     setup_website_name: "Lo primero es proporcionar un nombre para el sitio web.<br/><a href='{{link}}'>Pulse aquí</a> editar el nombre del sitio web"
     signup_disabled: El registro de usuario ha sido deshabilitado.

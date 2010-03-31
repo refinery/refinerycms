@@ -34,10 +34,13 @@ nl:
     login_failed: Sorry, uw wachtwoord of gebruikersnaam was niet juist.
     logged_out: U bent uitgelogd.
     new:
+      login: Gebruikersnaam
+      password: Wachtwoord
       log_in: Log in
       or: of
       cancel: Annuleren
       remember_me: Onthoud mijn gegevens
+      forgot_password: Ik ben mijn wachtwoord vergeten
   users:
     setup_website_name: "<br/>Laten we eerst de website een naam geven. <a href='{{link}}'>Klik hier</a> om de naam van de website te bewerken"
     signup_disabled: Het registreren van gebruikers is uitgeschakeld
