@@ -41,8 +41,8 @@ class User < ActiveRecord::Base
     unless self.new_record? # don't add plugins when the user_id is NULL.
       self.plugins.delete_all
 
-      plugin_names.each do |plugin_name|
-        self.plugins.find_or_create_by_name(plugin_name) if plugin_name.is_a?(String)
+      plugin_names.each_with_index do |plugin_name, index|
+        self.plugins.create(:name => plugin_name, :position => index) if plugin_name.is_a?(String)
       end
     end
   end
