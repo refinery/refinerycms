@@ -2,7 +2,7 @@
 # So here, we find them (if there are any) and include them into rake.
 extra_rake_tasks = []
 if defined?(Refinery) && Refinery.is_a_gem
-  extra_rake_tasks << Dir[Refinery.root.join("vendor", "plugins", "*", "**", "tasks", "**", "*", "*.rake")].sort
+  extra_rake_tasks << Dir[Refinery.root.join("vendor", "plugins", "*", "**", "tasks", "**", "*", "*.rake").to_s].sort
 end
 
 # We also need to load in the rake tasks from gem plugins whether Refinery is a gem or not:
