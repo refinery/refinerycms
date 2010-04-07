@@ -18,7 +18,7 @@ pt-BR:
         email_user: Enviar e-mail para este usuário
         preview: ({{who}}) criado em {{created_at}}
   sessions:
-    login_successfull: Logado com sucesso
+    login_successful: Logado com sucesso
     login_failed: Desculpe, sua senha ou nome de usuário estavam incorretos.
     logged_out: Você foi deslogado.
     new:
