@@ -12,6 +12,12 @@
     :side_body => '300x500>',
     :preview => 'c96x96'
     }
+  },
+  {:name => 'refinery_i18n_locales', :value => {
+      :en => 'English',
+      :nl => 'Nederlands',
+      :'pt-BR' => 'Português'
+    }
   }].each do |setting|
   RefinerySetting.create(:name => setting[:name].to_s, :value => setting[:value], :destroyable => false)
 end
