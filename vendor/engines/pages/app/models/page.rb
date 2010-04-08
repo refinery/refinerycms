@@ -23,7 +23,7 @@ class Page < ActiveRecord::Base
   PAGES_PER_ADMIN_INDEX = 20
 
   # when collecting the pages path how is each of the pages seperated?
-  PATH_SEPERATOR = " - "
+  PATH_SEPARATOR = " - "
 
   # Am I allowed to delete this page?
   # If a link_url is set we don't want to break the link so we don't allow them to delete
@@ -65,12 +65,12 @@ class Page < ActiveRecord::Base
   end
 
   # Used for the browser title to get the full path to this page
-  # It automatically prints out this page title and all of it's parent page titles joined by a PATH_SEPERATOR
+  # It automatically prints out this page title and all of it's parent page titles joined by a PATH_SEPARATOR
   def path(reverse = true)
     unless self.parent.nil?
       parts = [self.title, self.parent.path(reverse)]
       parts.reverse! if reverse
-      parts.join(PATH_SEPERATOR)
+      parts.join(PATH_SEPARATOR)
     else
       self.title
     end
