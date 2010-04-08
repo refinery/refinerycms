@@ -3,11 +3,11 @@
   <%= render :partial => "/admin/head" %>
   <body>
     <div id='tooltip_container'></div>
-    <div id="page_container"<%= " class='login'" unless logged_in? %><%= " class='splash'" if logged_in? and params[:action] == "index" %>>
+    <div id="page_container"<%= " class='login'" unless logged_in? %><%= " class='splash'" if logged_in? and action_name == "index" %>>
       <div id="page">
         <div class="clearfix" id="header">
           <h1>
-            <%= just_installed? ? "Welcome to Refinery" : link_to(RefinerySetting[:site_name].titleize, admin_root_url) %>
+            <%= just_installed? ? "Welcome to Refinery" : link_to(RefinerySetting[:site_name], admin_root_url) %>
           </h1>
           <%= link_to "View public site", "/", :target => "_blank", :id => "site_link" if logged_in? %>
           <%= link_to image_tag("#{"http://www.refinerycms.com/images/" unless local_request?}refinery/logo.png", :alt => "Refinery (tm) Content Manager"), "http://www.refinerycms.com", :target => "_blank", :id => "logo" -%>
