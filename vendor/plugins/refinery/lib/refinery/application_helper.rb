@@ -51,7 +51,7 @@ module Refinery::ApplicationHelper
   # you can override the object used for the title by supplying options[:object]
   # this object must support custom_title_type if you want custom titles.
   def page_title(options = {})
-    object = options.fetch(:object, @page)
+    object = options.fetch(:object, @meta)
     options.delete(:object)
     options = RefinerySetting.find_or_set(:page_title, {
       :chain_page_title => false,
