@@ -32,7 +32,7 @@ init_flash_messages = function(){
 }
 
 init_modal_dialogs = function(){
-  $('a[href*="dialog=true"]').each(function(i, anchor)
+  $('a[href*="dialog=true"]').not('#dialog_container a').each(function(i, anchor)
   {
     $(anchor).click(function(e){
       iframe = $("<iframe id='dialog_iframe' src='" + $(this).attr('href') + "&amp;app_dialog=true" + "'></iframe>");

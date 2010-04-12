@@ -2,6 +2,14 @@ class ChangeUsersColumnsForAuthlogic < ActiveRecord::Migration
   def self.up
     # Change users table to use Authlogic-compatible schema
     change_table "users" do |t|
+      User.all(:conditions => "`users`.reset_code IS NULL").each do |user|
+        new_code = Authlogic::Random.friendly_token
+        user.update_attribute(:reset_code, new_code)
+      end
+      User.all(:conditions => "`users`.remember_token IS NULL").each do |user|
+        new_code = Authlogic::Random.friendly_token
+        user.update_attribute(:remember_token, new_code)
+      end
       t.change    :login             , :string , :null => false                # optional , you can use email instead             , or both
       t.change    :email             , :string , :null => false                # optional , you can use login instead             , or both
       t.change    :crypted_password  , :string , :null => false                # optional , see below
