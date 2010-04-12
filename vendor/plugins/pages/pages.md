@@ -4,7 +4,7 @@
 
 ## About
 
-One core part of is Pages. Plugins such as News and Inquiries hook to pages. The menu is rendered based off the structure of your pages.
+One core part of Refinery is Pages. Plugins such as News and Inquiries hook to pages. The menu is rendered based off the structure of your pages.
 
 Pages have one key thing about them that is unique - page parts.
 
