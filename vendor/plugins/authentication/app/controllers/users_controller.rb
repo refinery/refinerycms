@@ -53,8 +53,8 @@ class UsersController < ApplicationController
   def forgot
     if request.post?
       if (user = User.find_by_email(params[:user][:email])).present?
-        flash[:notice] = "An email has been sent to #{user.email} with a link to reset your password."
         user.deliver_password_reset_instructions!(request)
+        flash[:notice] = "An email has been sent to #{user.email} with a link to reset your password."
         redirect_back_or_default forgot_url
       else
         flash[:notice] = "Sorry, #{params[:user][:email]} isn't associated with any accounts. Are you sure you typed the correct email address?"
