@@ -55,17 +55,4 @@ class User < ActiveRecord::Base
     !other_user.superuser and User.count > 1 and (other_user.nil? or self.id != other_user.id)
   end
 
-protected
-
-  # before filter
-  def encrypt_password
-    return if password.blank?
-    self.password_salt = Digest::SHA1.hexdigest("--#{Time.now.to_s}--#{login}--") if new_record?
-    self.crypted_password = encrypt(password)
-  end
-
-  def password_required?
-    crypted_password.blank? || !password.blank?
-  end
-
 end
