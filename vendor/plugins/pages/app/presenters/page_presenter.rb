@@ -1,3 +1,7 @@
 class PagePresenter < Refinery::BasePresenter
-  #delegate DEFAULT_FIELDS.keys :to => :model
+
+  def custom_title_type
+    @model.custom_title_type
+  end
+
 end
