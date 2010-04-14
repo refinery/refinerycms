@@ -4,7 +4,7 @@
                                   :html => {:multipart => true} do |f| -%>
   <div class='field'>
     <%= f.label :uploaded_data, 'File to upload' -%>
-    <% if params[:action] =~ /(edit)|(update)/ -%>
+    <% if action_name =~ /(edit)|(update)/ -%>
       <%= link_to "Download current file", @resource.public_filename, {:title => @resource.title} -%>
       <em>or</em>, replace it with this one...
     <% end -%>
