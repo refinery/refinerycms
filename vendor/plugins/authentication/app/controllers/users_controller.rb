@@ -34,7 +34,19 @@ class UsersController < ApplicationController
           @user.plugins = @selected_plugin_titles
           @user.save
           UserSession.create!(@user)
-          current_user.update_attribute(:superuser, true) if User.count == 1 # this is the superuser if this user is the only user.
+          if User.count == 1
+            # this is the superuser if this user is the only user.
+            current_user.update_attribute(:superuser, true)
+
+            # set this user as the recipient of inquiry notifications
+            if (notification_recipients = InquirySetting.find_or_create_by_name("Notification Recipients")).present?
+              notification_recipients.update_attributes({
+                :value => current_user.email,
+                :destroyable => false
+              })
+            end
+          end
+
           redirect_back_or_default(admin_root_url)
           flash[:notice] = "Welcome to Refinery, #{current_user.login}."
 
