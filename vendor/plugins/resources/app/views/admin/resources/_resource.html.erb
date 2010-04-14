@@ -1,5 +1,8 @@
 <li class='clearfix record <%= cycle("on", "on-hover") %>'>
   <span class='title'>
+    <%=h resource.title %>
+    <span class="preview">- <%= number_to_human_size(resource.size) %> - <%= resource.public_filename -%></span>
+
     <span class='actions'>
       <%= link_to refinery_icon_tag('page_white_put.png'),  resource.public_filename,
                           :title => t('.download', :size => number_to_human_size(resource.size)) %>
@@ -8,7 +11,5 @@
       <%= link_to refinery_icon_tag('delete.png'), admin_resource_path(resource), :class => "cancel confirm-delete",
                           :title => t('.delete.title') %>
     </span>
-    <%=h resource.title %>
-    <span class="preview">- <%= number_to_human_size(resource.size) %> - <%= resource.public_filename -%></span>
   </span>
 </li>
