@@ -2,7 +2,7 @@
 RAILS_GEM_VERSION = '2.3.5' unless defined? RAILS_GEM_VERSION
 
 # Specified gem version of Refinery to use when vendor/plugins/refinery/lib/refinery.rb is not present.
-REFINERY_GEM_VERSION = '0.9.6.28' unless defined? REFINERY_GEM_VERSION
+REFINERY_GEM_VERSION = '0.9.6.29' unless defined? REFINERY_GEM_VERSION
 
 # Boot Rails
 require File.join(File.dirname(__FILE__), 'boot')
