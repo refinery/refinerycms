@@ -35,7 +35,8 @@ class RefinerySetting < ActiveRecord::Base
   end
 
   def self.[](name)
-    self.find_by_name(name.to_s).value
+    setting = self.find_by_name(name.to_s)
+    setting.value unless setting.nil?
   end
 
   def self.[]=(name, value)
