@@ -762,7 +762,10 @@ body.dialog form {
 	margin: 0px 6px;
 	float: left;
 	height: 114px;
+	max-height: 114px;
 	width: 114px;
+	max-width: 114px;
+	overflow: hidden;
 	cursor: pointer;
 	text-align: center;
 	vertical-align: middle;
@@ -1119,6 +1122,9 @@ ul#image_grid li {
 	width: 135px;
 	text-align: center;
 	height: 176px;
+	overflow: hidden;
+	max-width: 135px;
+	max-height: 176px;
 }
 ul#image_grid li.row-end {
 	margin-right: 0px;
