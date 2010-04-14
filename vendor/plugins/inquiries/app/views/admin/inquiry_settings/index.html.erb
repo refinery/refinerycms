@@ -1,10 +1,14 @@
 <div id='actions'>
   <ul>
     <li>
-      <%= link_to refinery_icon_tag( '/user_comment.png') +  t(:update_notified, :default => "Update who gets notified"), edit_admin_inquiry_setting_url(InquirySetting.notification_recipients), :class => "user_comment_icon" %>
+      <%= link_to t(:update_notified, :default => "Update who gets notified"),
+                  edit_admin_inquiry_setting_url(InquirySetting.notification_recipients),
+                  :class => "user_comment_icon" %>
     </li>
     <li>
-      <%= link_to  refinery_icon_tag( '/email_edit.png') + t(:edit_confirmation_email, :default => "Edit confirmation email"), edit_admin_inquiry_setting_url(InquirySetting.confirmation_body), :class => "edit_email_icon" %>
+      <%= link_to t(:edit_confirmation_email, :default => "Edit confirmation email"),
+                  edit_admin_inquiry_setting_url(InquirySetting.confirmation_body),
+                  :class => "edit_email_icon" %>
     </li>
   </ul>
 </div>

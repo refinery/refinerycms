@@ -1,11 +1,14 @@
 <li class='clearfix record <%= cycle("on", "on-hover") %>'>
   <span class='title'>
+    <%=h refinery_setting.name.titleize %>
+    <span class="preview">- <%=h truncate(refinery_setting.value.to_s, :length => 40) %></span>
+
     <span class='actions'>
       <%= link_to refinery_icon_tag("application_edit.png"), edit_admin_refinery_setting_path(refinery_setting),
-           :title => t('.edit') %>
+                  :title => t('.edit') %>
       <%= link_to refinery_icon_tag("delete.png"), admin_refinery_setting_path(refinery_setting),
-          :title => t('.remove') if refinery_setting.destroyable %>
+                  :class => "cancel confirm-delete",
+                  :title => t('.remove') if refinery_setting.destroyable %>
     </span>
-    <%=h refinery_setting.name.titleize %> <span class="preview">- <%=h truncate(refinery_setting.value.to_s, :length => 40) %></span>
   </span>
 </li>
