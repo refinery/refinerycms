@@ -1,8 +1,8 @@
 <li class='clearfix record <%%= cycle("on", "on-hover") %>' id="<%%= dom_id(<%= singular_name %>) -%>">
   <span class='title'>
-    <%%=h <%= singular_name %>.<%= attributes.first.name %> %> 
+    <%%=h <%= singular_name %>.<%= attributes.first.name %> %>
     <span class="preview">&nbsp;</span>
-    
+
     <span class='actions'>
       <%%= link_to refinery_icon_tag("application_go.png"), <%= singular_name %>_url(<%= singular_name %>),
           :title => t('.view_live'),
