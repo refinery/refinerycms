@@ -4,9 +4,10 @@
                                   :html => {:multipart => true} do |f| -%>
   <div class='field'>
     <%= f.label :uploaded_data, t('.file_to_upload')-%>
-    <% if params[:action] =~ /(edit)|(update)/ -%>
+    <% if action_name =~ /(edit)|(update)/ -%>
       <%= link_to t('.download_current'), @resource.public_filename, {:title => @resource.title} -%>
-      <em><%= t('.or')%></em><%=t('.replace') %>    <% end -%>
+      <em><%= t('.or')%></em><%=t('.replace') %>
+    <% end -%>
     <%= f.file_field :uploaded_data -%>
   </div>
 
