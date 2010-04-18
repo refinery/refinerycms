@@ -59,7 +59,7 @@ protected
   end
 
   def load_available_plugins
-    @available_plugins = Refinery::Plugins.registered.in_menu.collect{|a| {:name => a.name, :title => a.title} }.sort_by {|a| a[:title]}
+    @available_plugins = ::Refinery::Plugins.registered.in_menu.collect{|a| {:name => a.name, :title => a.title} }.sort_by {|a| a[:title]}
   end
 
 end

@@ -27,6 +27,7 @@ en:
         confirm_delete:
           message: Are you sure you want to delete {{title}}? 
           title: Remove this image forever
+        view_live: View this image <br/><em>Opens in a new window</em>
       list_view_image:
         edit_this_image: Edit this image
         delete:

@@ -10,12 +10,13 @@ pt-BR:
         blank_password_keeps_current: Deixar a senha em branco mantém a senha atual
       index:
         create_new_user: Criar Novo Usuário
+        no_users_yet: Ainda não existem usuários. Clique em "Criar Novo Usuário" para adicionar seu primeiro usuário.
+      user:
         confirm_delete_message: "Tem certeza que você deseja remover '{{who}}'?"
         conform_delete_title: Remover este usuário para sempre
         edit_user: Editar este usuário
         email_user: Enviar e-mail para este usuário
         preview: ({{who}}) criado em {{created_at}}
-        no_users_yet: Ainda não existem usuários. Clique em "Criar Novo Usuário" para adicionar seu primeiro usuário.
   sessions:
     login_successfull: Logado com sucesso
     login_failed: Desculpe, sua senha ou nome de usuário estavam incorretos.

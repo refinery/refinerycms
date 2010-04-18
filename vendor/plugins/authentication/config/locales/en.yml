@@ -7,12 +7,13 @@ en:
         blank_password_keeps_current: Leaving password blank keeps the current password
       index:
         create_new_user: Create New User
+        no_users_yet:  There are no users yet. Click "Create New User" to add your first user.
+      user:
         confirm_delete_message: "Are you sure you want to delete '{{who}}'?"
         conform_delete_title: Remove this user forever
         edit_user: Edit this user
         email_user: Email this user
         preview: ({{who}}) created {{created_at}}
-        no_users_yet:  There are no users yet. Click "Create New User" to add your first user.
   sessions:
     login_successful: Logged in successfully
     login_failed: Sorry, your password or username was incorrect.

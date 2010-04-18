@@ -2,6 +2,7 @@ class UsersController < ApplicationController
 
   # Protect these actions behind an admin login
   before_filter :find_user, :only => [:suspend, :unsuspend, :destroy, :purge]
+  before_filter :load_available_plugins, :only => [:new, :create]
 
   # authlogic default
   #before_filter :require_no_user, :only => [:new, :create]
@@ -95,10 +96,14 @@ class UsersController < ApplicationController
 
 protected
 
-  def take_down_for_maintenance?;end
-
   def can_create_public_user
-    User.count == 0
+    !User.exists?
   end
+
+  def load_available_plugins
+    @available_plugins = ::Refinery::Plugins.registered.in_menu.collect{|a| {:name => a.name, :title => a.title} }.sort_by {|a| a[:title]}
+  end
+
+  def take_down_for_maintenance?;end
 
 end
