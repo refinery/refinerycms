@@ -2,6 +2,10 @@ class InquiriesController < ApplicationController
 
   before_filter :find_page, :only => [:create, :new]
 
+  def index
+    redirect_to :action => "new"
+  end
+
   def thank_you
     @page = Page.find_by_menu_match("^/inquiries/thank_you$", :include => [:parts, :slugs])
   end
