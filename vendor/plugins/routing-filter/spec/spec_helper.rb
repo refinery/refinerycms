@@ -96,9 +96,9 @@ module RoutingFilterHelpers
     @locale_filter = @set.filters.first
     @pagination_filter = @set.filters.last
   end
-  
+
   def with_deactivated_filters(*filters, &block)
-    states = filters.inject({}) do |states, filter| 
+    states = filters.inject({}) do |states, filter|
       states[filter], filter.active = filter.active, false
       states
     end

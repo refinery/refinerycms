@@ -18,7 +18,7 @@
         # Number of decimals, behind the separator (the number 1 with a precision of 2 :gives => 1.00)
         :precision => 3
       },
-      
+
       # Used in number_to_currency()
       :currency => {
         :format => {
@@ -31,7 +31,7 @@
           :precision => 2
         }
       },
-        
+
       # Used in number_to_percentage()
       :percentage => {
         :format => {
@@ -41,7 +41,7 @@
           # :precision => 3
         }
       },
-        
+
       # Used in number_to_precision()
       :precision => {
         :format => {
@@ -51,7 +51,7 @@
           # :precision => 3
         }
       },
-        
+
       # Used in number_to_human_size()
       :human => {
         :format => {
@@ -60,7 +60,7 @@
           :delimiter => ",",
           :precision => 1
         },
-        
+
         :storage_units => {
           # Storage units output formatting.
           # %u is the storage unit, %n is the number :(default => 2 MB)
@@ -114,7 +114,7 @@
         }
       }
     },
-        
+
     :activerecord => {
       :errors => {
         # The values :model, :attribute and :value are always available for interpolation
@@ -153,20 +153,20 @@
         #       :attributes =>
         #         :login =>
         #           :blank => "This is a custom blank message for User login"
-        # Will define custom blank validation message for User model and 
+        # Will define custom blank validation message for User model and
         # custom blank validation message for login attribute of User model.
         # models => {
-        # 
+        #
         # },
       },
-        
+
       # Translate model names. Used in Model.human_name().
       # :models => {
       #   For example,
       #   :user => "Dude"
       #   will translate User model name to "Dude"
       # },
-    
+
       # Translate model attribute names. Used in Model.human_attribute_name(attribute).
       # :attributes => {
       #   For example,
@@ -185,10 +185,10 @@
         :short => "%e %b",
         :long => lambda { |date, opts| "%e %B #{date.year + 543}" },
       },
-      
+
       :day_names => ["อาทิตย์", "จันทร์", "อังคาร", "พุธ", "พฤหัสบดี", "ศุกร์", "เสาร์"],
       :abbr_day_names => ["อา", "จ", "อ", "พ", "พฤ", "ศ", "ส"],
-      
+
       # Don't forget the nil at the beginning; there's no such thing as a 0th month
       :month_names => [nil, "มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน", "กรกฎาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม"],
       :abbr_month_names => [nil, "ม.ค.", "ก.พ.", "มี.ค.", "เม.ย.", "พ.ค.", "มิ.ย.", "ก.ค.", "ส.ค.", "ก.ย.", "ต.ค.", "พ.ย.", "ธ.ค."],
@@ -205,7 +205,7 @@
       :am => "",
       :pm => "",
     },
-      
+
     # Used in array.to_sentence.
     :support => {
       :array => {

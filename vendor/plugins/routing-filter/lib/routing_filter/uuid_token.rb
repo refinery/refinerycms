@@ -4,7 +4,7 @@
 # URL scheme: http://example.com/d00fbbd1-82b6-4c1a-a57d-098d529d6854/your_route
 #
 # To enable this filter add map.filter :uuid_token to your routes.rb
-# 
+#
 # To make your restful path helpers use this :uuid_token use:
 # new_post_path(:uuid_token => params[:uuid_token])
 #
@@ -12,31 +12,31 @@
 # like this to your RAILS_ROOT/lib directory:
 #
 #   module AccessToken
-#     
+#
 #     class << self
 #       def current=(token)
 #         Thread.current[:uuid_token] = token
 #       end
-#       
+#
 #       def current
 #         Thread.current[:uuid_token] ||= ""
 #       end
 #     end
-#     
+#
 #   end
 #
 # Now in your application_controller you can set a before_filter which sets that
 # token for every request:
-# 
+#
 #   before_filter :set_token
-#   
+#
 #   protected
-#   
+#
 #     def set_token
 #       AccessToken.current = params[:uuid_token] if params[:uuid_token]
 #     end
 #
-# As you can see below in the around_generate method, if you don't provide a 
+# As you can see below in the around_generate method, if you don't provide a
 # :uuid_token argument for your restful path helpers it will try to get the
 # current :uuid_token from the AccessToken module.
 

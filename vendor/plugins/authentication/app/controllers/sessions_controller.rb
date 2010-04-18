@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
 
   def destroy
     current_user_session.destroy if logged_in?
-    flash[:notice] = t('sessions.logged_out') 
+    flash[:notice] = t('sessions.logged_out')
     redirect_back_or_default(new_session_url)
   end
 

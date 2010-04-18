@@ -5,17 +5,17 @@ class Translate::Keys
   def self.files
     @@files ||= Translate::Keys.new.files
   end
-  
+
   # Allows flushing of the files cache
   def self.files=(files)
     @@files = files
   end
-  
+
   def files
     @files ||= extract_files
-  end  
+  end
   alias_method :to_hash, :files
-  
+
   def keys
     files.keys
   end
@@ -25,9 +25,9 @@ class Translate::Keys
     I18n.backend.send(:init_translations) unless I18n.backend.initialized?
     extract_i18n_keys(I18n.backend.send(:translations)[locale.to_sym]).sort
   end
-  
+
   # Convert something like:
-  # 
+  #
   # {
   #  :pressrelease => {
   #    :label => {
@@ -35,9 +35,9 @@ class Translate::Keys
   #    }
   #   }
   # }
-  # 
+  #
   # to:
-  # 
+  #
   #  {'pressrelease.label.one' => "Pressmeddelande"}
   #
   def self.to_shallow_hash(hash)
@@ -52,13 +52,13 @@ class Translate::Keys
       shallow_hash
     end
   end
-  
+
   # Convert something like:
-  # 
+  #
   #  {'pressrelease.label.one' => "Pressmeddelande"}
-  # 
+  #
   # to:
-  # 
+  #
   # {
   #  :pressrelease => {
   #    :label => {
@@ -66,7 +66,7 @@ class Translate::Keys
   #    }
   #   }
   # }
-  def self.to_deep_hash(hash)    
+  def self.to_deep_hash(hash)
     hash.inject({}) do |deep_hash, (key, value)|
       keys = key.to_s.split('.').reverse
       leaf_key = keys.shift
@@ -96,7 +96,7 @@ class Translate::Keys
       keys
     end
   end
-  
+
   def extract_files
     files_to_scan.inject(HashWithIndifferentAccess.new) do |files, file|
       IO.read(file).scan(i18n_lookup_pattern).flatten.map(&:to_sym).each do |key|
@@ -116,7 +116,7 @@ class Translate::Keys
     Dir.glob(File.join(files_root_dir, "{app,config,lib}", "**","*.{rb,erb,rhtml}")) +
       Dir.glob(File.join(files_root_dir, "public", "javascripts", "**","*.js"))
   end
-  
+
   def files_root_dir
     Rails.root
   end

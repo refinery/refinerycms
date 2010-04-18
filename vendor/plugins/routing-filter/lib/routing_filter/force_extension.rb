@@ -28,11 +28,11 @@ module RoutingFilter
         path.sub! /\.#{extension}$/, ''
         $1
       end
-      
+
       def append_extension?(url)
         !(url.blank? || excluded?(url) || mime_extension?(url))
       end
-      
+
       def excluded?(url)
         case exclude
         when Regexp
@@ -41,11 +41,11 @@ module RoutingFilter
           exclude.call(url)
         end
       end
-      
+
       def mime_extension?(url)
         url =~ /\.#{Mime::EXTENSION_LOOKUP.keys.join('|')}(\?|$)/
       end
-      
+
       def append_extension!(url)
         url.replace url.sub(/(\?|$)/, ".#{extension}\\1")
       end
