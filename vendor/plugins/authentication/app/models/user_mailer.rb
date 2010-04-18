@@ -1,6 +1,6 @@
 class UserMailer < ActionMailer::Base
 
-    #TODO: ADJUST TRANSALTION
+  #TODO: ADJUST TRANSLATION
   def reset_notification(user, request)
     setup_email(user)
     #@subject    += 'Link to reset your password'
