@@ -41,15 +41,15 @@ describe 'RoutingFilter::ForceExtension' do
     it 'works with url query params' do
       section_path(:id => 1, :foo => 'bar').should == '/sections/1.html?foo=bar'
     end
-    
+
     it 'excludes / by default' do
       home_path.should == '/'
     end
-    
+
     it 'excludes http://test.host/ by default' do
       home_url.should == 'http://test.host/'
     end
-    
+
     it 'excludes with custom regexp' do
       setup_environment { |map| map.filter :force_extension, :exclude => %r(^/(admin|$)) }
       home_path.should == '/'

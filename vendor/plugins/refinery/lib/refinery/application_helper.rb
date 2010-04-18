@@ -102,8 +102,8 @@ module Refinery::ApplicationHelper
   end
 
   def selected_page?(page)
-    selected = current_page?(page) or 
-                (request.path =~ Regexp.new(page.menu_match) unless page.menu_match.blank?) or 
+    selected = current_page?(page) or
+                (request.path =~ Regexp.new(page.menu_match) unless page.menu_match.blank?) or
                 (request.path == page.link_url)
   end
 
