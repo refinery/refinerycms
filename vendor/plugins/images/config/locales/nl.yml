@@ -28,6 +28,7 @@ nl:
         confirm_delete:
           message: Weet u zeker dat u {{title}} wilt verwijderen?
           title: Verwijder deze afbeelding permanent
+        view_live: Bekijk deze image <br/><em>(opent een nieuw venster)</em>
       list_view_image:
         edit_this_image: Bewerk deze afbeelding
         delete:

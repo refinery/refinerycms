@@ -20,8 +20,8 @@
     <%= f.password_field :password_confirmation %>
   </div>
   <% if just_installed? %>
-    <% Refinery::Plugins.registered.names.each do |name| %>
-      <%= hidden_field_tag 'user[plugins][]', name, :id => "plugins_#{name}"  %>
+    <% @available_plugins.each do |plugin| %>
+      <%= hidden_field_tag 'user[plugins][]', plugin[:name], :id => "plugins_#{plugin[:name]}"  %>
     <% end %>
   <% end %>
   <p><%= submit_tag t('.sign_up') %></p>

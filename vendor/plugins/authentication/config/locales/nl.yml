@@ -23,12 +23,13 @@ nl:
         blank_password_keeps_current: Als u dit veld leeg laat, blijft het oude wachtwoord behouden.
       index:
         create_new_user: Maak een nieuwe gebruiker
+        no_users_yet:  Er zijn nog geen gebruikers. Klik op "Maak een nieuwe gebruiker" om de eerste toe te voegen.
+      user:
         confirm_delete_message: "Weet u zeker dat u de gebruiker '{{who}}' wilt verwijderen?"
         conform_delete_title: Verwijder deze gebruiker permanent.
         edit_user: Bewerk deze gebruiker
         email_user: Email deze gebruiker
         preview: ({{who}}) is aangemaakt op {{created_at}}
-        no_users_yet:  Er zijn nog geen gebruikers. Klik op "Maak een nieuwe gebruiker" om de eerste toe te voegen.
   sessions:
     login_successful: Successvol ingelogd.
     login_failed: Sorry, uw wachtwoord of gebruikersnaam was niet juist.

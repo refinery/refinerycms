@@ -37,12 +37,13 @@ es:
         blank_password_keeps_current: Si deja el campo de la contraseña en blanco se mantendrá la contraseña que existiera anteriormente
       index:
         create_new_user: Crear usuario nuevo
+        no_users_yet:  No se ha creado ningún usuario todavía. Pulse en "Crear usuario nuevo" para añadir el primer usuario
+      user:
         confirm_delete_message: "¿Seguro que quiere eliminar el usuario '{{who}}'?"
         confirm_delete_title: Borrar este usuario permanentemente
         edit_user: Editar usuario
         email_user: Enviar email a este usuario
         preview: ({{who}}) created {{created_at}}
-        no_users_yet:  No se ha creado ningún usuario todavía. Pulse en "Crear usuario nuevo" para añadir el primer usuario
   sessions:
     login_successful: Ha iniciado sesión correctamente.
     login_failed: El password o el nombre de usuario es incorrecto.
