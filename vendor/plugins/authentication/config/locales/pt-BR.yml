@@ -42,6 +42,7 @@ pt-BR:
     user_name: Nome de usuário {{name}}
     password: Senha {{password}}
     visit_url: "Visite esta url para ativar sua conta:"
+    link_to_reset_your_password: Link para redefinir sua senha
   activerecord:
     errors:
       models:

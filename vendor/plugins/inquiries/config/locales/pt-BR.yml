@@ -29,9 +29,8 @@ pt-BR:
         move_inquiry_to_closed: Mover este inquérito para fechados
         move_inquiry_to_open: Mover este inquérito para abertos
         read_inquiry: Ler o inquérito
-        delete:
-          message: "Tem certeza que deseja remover '{{name}}'?"
-          title: Remover este inquérito para sempre.
+        remove_inquiry: "Tem certeza que deseja remover o inquérito de '{{name}}'?"
+        title: Remover este inquérito para sempre.
       toggle_status:
         closed: "Inquérito '{{inquiry}}' está fechado"
         reopened: "Inquérito '{{inquiry}}' está reaberto"
@@ -52,6 +51,7 @@ pt-BR:
         age: Idade
         actions: Ações
         back_to_all_inquiries: Voltar para todos os Inquéritos
+        inquiry: Inquérito
     inquiry_settings:
       update:
         updated: "'{{setting}}' foi atualizada com sucesso."
@@ -62,7 +62,7 @@ pt-BR:
         example: "P.e. eu@dominio.com, amigo@msn.com, colegadetrabalho@trabalho.com"
       confirmation_email_form:
         click_to_edit_subject: Clique aqui para editar o assunto
-        explanation: "Toda vez que alguém lhe contactar em seu site, o Refinery envia um e-mail para confirmar o inquérito com a pessoa que fez isso."
+        explanation: Toda vez que alguém contatar você no seu website, o Refinery envia um email para confirmar o inquérito com esta pessoa.
         below_edit_email_sent: Abaixo você pode editar o e-mail que é enviado para fora.
         the_customer_making_inquiry: O cliente fazendo o inquérito
         to: Para
