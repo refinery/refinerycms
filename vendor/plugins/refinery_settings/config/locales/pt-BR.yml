@@ -8,16 +8,16 @@ pt-BR:
         value: Valor
   admin:
     refinery_settings:
+      edit:
+        restart_may_be_in_order: <strong>Por favor note</strong> que você pode precisar reiniciar o website para que esta configuração tenha efeito.
+      index:
+        new: Criar nova configuração
+        empty_set: Ainda não há configurações.
+        create_first: "Clique em '{{link}}' para adicionar sua primeira configuração."
       refinery_setting:
         edit: 'Editar esta configuração'
         confirm: 'Tem certeza que deseja remover esta configuração para sempre?'
         remove: 'Remover esta configuração para sempre'
-      index:
-        new: Criar nova configuração
-        empty_set: Ainda não há configurações.
-        create_first: Clique em "{{link}}" para adicionar sua primeira configuração.
-      edit:
-        restart_may_be_in_order: "<strong>Por favor note</strong> que você pode precisar reiniciar o website para que esta configuração tenha efeito."
   plugins:
     refinery_settings:
       title: Configuração

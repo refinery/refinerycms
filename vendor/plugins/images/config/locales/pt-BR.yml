@@ -26,7 +26,7 @@ pt-BR:
           results_for: Resultados da busca por {{query}}
       grid_view:
         edit: Editar esta imagem
-        view: "Clique para ver '{{who}}'<br/><em>Abre em uma nova janela</em>"
+        view_live: "Clique para ver imagen<br/><em>Abre em uma nova janela</em>"
         confirm_delete:
           message: Você tem certeza que quer remover {{title}}?
           title: Remover esta imagem para sempre
