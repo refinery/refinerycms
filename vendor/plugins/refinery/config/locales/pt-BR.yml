@@ -49,7 +49,7 @@ pt-BR:
       close: Fechar
   admin:
     pages:
-      list:
+      page:
         view_live: Ver esta página ao vivo <br/><em>(abre em uma nova janela)</em>
         edit_this_page: Editar esta página
         confirm_delete_page_title: Remover esta página

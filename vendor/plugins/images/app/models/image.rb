@@ -15,7 +15,6 @@ class Image < ActiveRecord::Base
   # "size is not in list". So we basically here enforce the same validation
   # rules here except display the error messages we want
   # This is a known problem when using attachment_fu
-  #TODO Translate errors
   def validate
     if self.filename.nil?
       errors.add_to_base(I18n.translate('no_file_chosen')) unless self.filename

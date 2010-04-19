@@ -29,7 +29,8 @@
         <strong>Subject</strong>
       </td>
       <td>
-        Thank you for your inquiry
+        <%= link_to InquirySetting.confirmation_subject.value, edit_admin_inquiry_setting_url(InquirySetting.confirmation_subject),
+            :title => t('.click_to_edit_subject') %>
       </td>
     </tr>
     <tr>

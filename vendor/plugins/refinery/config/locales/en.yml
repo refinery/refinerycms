@@ -54,7 +54,7 @@ en:
       close: Close
   admin:
     pages:
-      list:
+      page:
         view_live: View this page live <br/><em>(opens in a new window)</em>
         edit_this_page: Edit this page
         confirm_delete_page_title: Delete this page

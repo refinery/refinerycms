@@ -1,10 +1,8 @@
 class UserMailer < ActionMailer::Base
 
-  #TODO: ADJUST TRANSLATION
   def reset_notification(user, request)
     setup_email(user)
-    #@subject    += 'Link to reset your password'
-    subject    I18n.translate('controller.user.link_to_reset_your_password')
+    subject    I18n.translate('.link_to_reset_your_password')
     @body[:url]  =  url_prefix(request) + "/reset/#{user.perishable_token}"
   end
 

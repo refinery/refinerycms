@@ -28,7 +28,7 @@ unless rails_root.nil? or rails_root.length == 0
   FileUtils::cp_r File.join(%W(#{refinery_root} lib refinery)), File.join(rails_root, "lib")
 
   # get current secret key
-  if !File.exist?(File.join(%W(#{rails_root} config application.rb)))
+  unless File.exist?(File.join(%W(#{rails_root} config application.rb)))
     lines = File.open(File.join(%W(#{rails_root} config environment.rb)), "r").read.split("\n")
   else
     lines = File.open(File.join(%W(#{rails_root} config application.rb)), "r").read.split("\n")
@@ -80,9 +80,6 @@ unless rails_root.nil? or rails_root.length == 0
 
     # copy the new config file.
     FileUtils.cp File.join(%W(#{refinery_root} config #{app_config_file})), File.join(%W(#{rails_root} config #{app_config_file}))
-
-    # Write the secret key back into the file.
-
 
   	environment_updated = true
 	end

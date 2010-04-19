@@ -19,6 +19,7 @@ nl:
   layouts:
     admin:
       view_public_site: Bekijk de website
+      welcome_to_refinery: Welkom bij Refinery
   shared:
     message:
       close: sluiten
@@ -46,7 +47,7 @@ nl:
         resource: bestand
   admin:
     pages:
-      list:
+      page:
         view_live: Bekijk deze pagina op de website <br/><em>(opent een nieuw venster)</em>
         edit_this_page: Bewerk deze pagina
         confirm_delete_page_title: Verwijder deze pagina

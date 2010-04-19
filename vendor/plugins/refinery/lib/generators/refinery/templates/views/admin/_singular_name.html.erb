@@ -2,16 +2,15 @@
   <span class='title'>
     <%%=h <%= singular_name %>.<%= attributes.first.name %> %>
     <span class="preview">&nbsp;</span>
-
-    <span class='actions'>
-      <%%= link_to refinery_icon_tag("application_go.png"), <%= singular_name %>_url(<%= singular_name %>),
-          :title => t('.view_live'),
-          :target => "_blank" %>
-      <%%= link_to refinery_icon_tag("application_edit.png"), edit_admin_<%= singular_name %>_path(<%= singular_name %>),
-           :title => t('.edit') %>
-      <%%= link_to refinery_icon_tag("delete.png"), admin_<%= singular_name %>_path(<%= singular_name %>),
-          :class => "cancel confirm-delete",
-          :title => t('.delete') %>
-    </span>
+  </span>
+  <span class='actions'>
+    <%%= link_to refinery_icon_tag("application_go.png"), <%= singular_name %>_url(<%= singular_name %>),
+        :title => t('.view_live'),
+        :target => "_blank" %>
+    <%%= link_to refinery_icon_tag("application_edit.png"), edit_admin_<%= singular_name %>_path(<%= singular_name %>),
+         :title => t('.edit') %>
+    <%%= link_to refinery_icon_tag("delete.png"), admin_<%= singular_name %>_path(<%= singular_name %>),
+        :class => "cancel confirm-delete",
+        :title => t('.delete') %>
   </span>
 </li>

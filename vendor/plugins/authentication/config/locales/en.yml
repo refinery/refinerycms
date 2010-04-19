@@ -43,6 +43,7 @@ en:
     user_name: Username {{name}}
     password: Password {{password}}
     visit_url: "Visit this url to activate your account:"
+    link_to_reset_your_password: Link to reset your password
   authlogic:
     error_messages:
       login_blank: can not be blank
