@@ -71,5 +71,13 @@ pt-BR:
         example: "P.e. eu@dominio.com, amigo@msn.com, colegadetrabalho@trabalho.com"
       confirmation_email_form:
         click_to_edit_subject: Clique aqui para editar o assunto
+        explanation: "Toda vez que alguém lhe em seu site, Refinery envia um e-mail para confirmar o inquérito com a pessoa que fez isso."
+        below_edit_email_sent: Abaixo você pode editar o e-mail que é enviado para fora.
+        the_customer_making_inquiry: O cliente que efectua o inquérito
+        to: Para
+        from: De
+        subject: Assunto
+        thankyou: Obrigado pela sua consulta
+        message: Mensagem
       subject_form:
         subject_value_name: Assunto
