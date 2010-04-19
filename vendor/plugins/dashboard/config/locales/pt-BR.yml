@@ -16,7 +16,7 @@ pt-BR:
       recent_activity:
         latest_activity: Atividade Recente
         nothing_has_happened_yet: Nada aconteceu ainda
-        see: Ver
+        see: Ver '{{what}}'
   updated: atualizado
   created: criado
   ago: atrás

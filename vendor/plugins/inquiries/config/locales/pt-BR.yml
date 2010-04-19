@@ -69,7 +69,7 @@ pt-BR:
         explanation: "Toda vez que alguém contatar você no seu website, o Refinery envia um email para dizer que existe uma nova consulta."
         hint: "Entre um endereço de email acima. Deseja que a notificação vá para mais de uma pessoa? Entre vários endereços de email separados por vírgulas."
         example: "P.e. eu@dominio.com, amigo@msn.com, colegadetrabalho@trabalho.com"
-      confirmation_email:
+      confirmation_email_form:
         click_to_edit_subject: Clique aqui para editar o assunto
       subject_form:
         subject_value_name: Assunto

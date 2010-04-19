@@ -1132,10 +1132,10 @@ ul#image_grid li {
   padding: 0px;
   width: 124px;
   text-align: center;
-  height: 160px;
+  height: 165px;
   overflow: hidden;
   max-width: 124px;
-  max-height: 160px;
+  max-height: 165px;
 }
 ul#image_grid li.image_4 {
   margin-right: 0px;
