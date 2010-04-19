@@ -20,13 +20,13 @@ acronym {
 
 #actions {
   float: right;
-  width: 36.1%;
+  width: 26.9%;
   padding-left: 15px;
 }
 
 #records {
   float: left;
-  width: 60.6%;
+  width: 69.8%;
   padding-right: 15px;
 }
 
@@ -45,7 +45,7 @@ acronym {
   padding:9px 12px 9px 36px;
 }
 #actions li.selected a {
-  background-color: yellow;
+  background-color: #E6E5DC;
 }
 #actions li a:hover {
   text-decoration: underline;
@@ -53,6 +53,10 @@ acronym {
 
 #actions li {
   margin-top: 10px;
+}
+
+#actions input#search {
+  width: 165px;
 }
 
 #sort-status {
@@ -597,6 +601,10 @@ label.stripped {
 .record .title span {
   line-height: 30px;
 }
+#records .record .title {
+  max-width: 540px;
+  float: left;
+}
 #records  .actions {
   float: right;
   width: 120px;
@@ -1113,23 +1121,23 @@ textarea.wymeditor {
 }
 
 ul#image_grid {
-  width: 580px;
+  width: 670px;/*580px;*/
   padding: 0px;
   margin: 15px 0;
 }
 
 ul#image_grid li {
   float: left;
-  margin: 0px 13px 12px 0px;
+  margin: 0px 12px 12px 0px;
   padding: 0px;
-  width: 135px;
+  width: 124px;
   text-align: center;
-  height: 176px;
+  height: 160px;
   overflow: hidden;
-  max-width: 135px;
-  max-height: 176px;
+  max-width: 124px;
+  max-height: 160px;
 }
-ul#image_grid li.row-end {
+ul#image_grid li.image_4 {
   margin-right: 0px;
   float: right;
 }

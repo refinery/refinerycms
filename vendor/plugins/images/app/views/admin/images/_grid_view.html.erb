@@ -1,6 +1,6 @@
 <ul id="image_grid" class="clearfix">
-  <% @images.each do |image| -%>
-    <li id="image_<%= image.id %>" <%= "class='row-end'" if (@images.index(image)+1) % 4 == 0 %>>
+  <% @images.each_with_index do |image, index| -%>
+    <li id="image_<%= image.id %>" class='image_<%= index % 5 %>'>
       <%= image_fu image, :grid, :title => image.title %>
       <span class='actions'>
         <%= link_to refinery_icon_tag('eye.png'), image.public_filename,
@@ -11,7 +11,7 @@
         <%= link_to refinery_icon_tag('delete.png'), admin_image_path(image),
                     :class => "cancel confirm-delete",
                     :title => t('.confirm_delete.title') %>
-        </span>
+      </span>
     </li>
   <% end -%>
 </ul>

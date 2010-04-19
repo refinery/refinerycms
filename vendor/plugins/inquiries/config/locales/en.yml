@@ -22,12 +22,11 @@ en:
   admin:
     inquiries:
       inquiry:
-        move_inquery_to_closed: Move this inquiry to closed
-        move_inquery_to_open: Move this inquiry to open
+        move_inquiry_to_closed: Move this inquiry to closed
+        move_inquiry_to_open: Move this inquiry to open
         read_inquiry: Read the inquiry
-        delete:
-          message: "Are you sure you want to delete '{{name}}'?"
-          title: Remove this inquiry forever.
+        remove_inquiry: "Are you sure you want to delete the inquiry from '{{name}}'?"
+        title: Remove this inquiry forever.
       toggle_status:
         closed: "Inquiry '{{inquiry}}' is closed"
         reopened: "Inquiry '{{inquiry}}' is reopened"
@@ -48,6 +47,7 @@ en:
         age: Age
         actions: Actions
         back_to_all_inquiries: Back to all Inquiries
+        inquiry: Inquiry
     inquiry_settings:
       update:
         updated: "'{{setting}}' was successfully updated."
@@ -56,3 +56,7 @@ en:
         explanation: "Every time someone contacts you on your website, Refinery sends out an email to say there is a new inquiry."
         hint: "Enter an email address above. Want the notification to go to more than one person? Enter multiple email addresses separated by commas."
         example: "E.g. me@domain.com, friend@msn.com, workmate@work.com"
+      confirmation_email_form:
+        click_to_edit_subject: Click here to edit the subject
+      subject_form:
+        subject_value_name: Subject
