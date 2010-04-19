@@ -58,5 +58,8 @@ en:
         example: "E.g. me@domain.com, friend@msn.com, workmate@work.com"
       confirmation_email_form:
         click_to_edit_subject: Click here to edit the subject
+        explanation: "Every time someone contacts you on your website, Refinery sends out an email to confirm the inquiry with the person who made it."
+        below_edit_email_sent: Below you can edit the email that is sent out.
+        the_customer_making_inquiry: The customer making the inquiry
       subject_form:
         subject_value_name: Subject
