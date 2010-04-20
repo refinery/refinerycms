@@ -12,11 +12,11 @@ nl:
   search_results_for: "Zoekresultaten voor '{{query}}'"
   no_results_found: "Excuses, geen resultaten gevonden"
   refinery:
-      other: "Other {{what}}"
-      reorder: "Reorder {{what}}"
-      reorder_done: "Done Reordering {{what}}"
-      search_no_results: "Excuses, geen resultaten gevonden"
-      search_results_for: "Zoek resultaten voor {{what}}"
+    other: "Other {{what}}"
+    reorder: "Reorder {{what}}"
+    reorder_done: "Done Reordering {{what}}"
+    search_no_results: "Excuses, geen resultaten gevonden"
+    search_results_for: "Zoek resultaten voor {{what}}"
     crudify:
       created: "{{what}} is met success aangemaakt"
       updated: "{{what}} is met success aangepast"
