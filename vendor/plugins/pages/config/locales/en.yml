@@ -10,6 +10,7 @@ en:
         hide_or_show_advanced_options: Hide/Show Advanced Options
         explain_page_different_title: If you want the page to have a different title than the one that shows in the menu and browser title then enter it here.
         redirect_to_first_child: "Check this box if you want the visitor to be redirected to this page's first child page if this page is selected."
+        custom_title: Custom title
         title_type: "Type:"
         title_types:
           none: None
@@ -18,10 +19,13 @@ en:
         custom_url: Custom URL
         custom_url_explanation: "Enter a URL if this page links to an external site or to a pre-existing resource e.g. a contact page. <br/> Note: This URL must point to a location that exists; a new one will not be created."
         seo: Search Engine Optimization
-        seo_override_title: If you want to override the default browser title, do it here.
+        seo_override_title: Browser title
+        seo_override_title_description: If you want to override the default browser title, do it here.
+        meta_keywords_title: Meta keywords
         meta_keywords: Enter 5-10 keywords that relate to this page. Separate keywords by a comma.
         meta_description: Enter a concise two or three sentences describing what this page is about.
         draft: Draft
+        show_in_menu_title: Show in menu
         show_in_menu_description: Check this box if this page should appear in the site menu
         draft: Draft
         save_as_draft: Save as Draft
