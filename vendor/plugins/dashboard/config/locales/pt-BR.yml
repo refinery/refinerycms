@@ -1,6 +1,6 @@
 pt-BR:
   plugins:
-    dashboard:
+    refinery_dashboard:
       title: Painel
   common_tasks: Tarefas comuns
   add_a_new_page: Adicionar uma nova página
