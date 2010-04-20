@@ -43,5 +43,5 @@ WYMeditor.STRINGS['en'] = {
 	Classes:			'Classes',
 	Status:			 'Status',
 	Source_Code:		'Source code',
-		Css_Class: 				'Apply CSS Class'
+	Css_Class: 				'Apply CSS Class'
 };
