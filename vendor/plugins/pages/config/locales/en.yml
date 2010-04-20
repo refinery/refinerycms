@@ -5,11 +5,13 @@ en:
   admin:
     pages:
       form:
+        title: Title
         create_content_section: Create content section
         delete_content_section: Delete content section
         hide_or_show_advanced_options: Hide/Show Advanced Options
         explain_page_different_title: If you want the page to have a different title than the one that shows in the menu and browser title then enter it here.
         redirect_to_first_child: "Check this box if you want the visitor to be redirected to this page's first child page if this page is selected."
+        parent_id_title: Parent
         custom_title: Custom title
         title_type: "Type:"
         title_types:
@@ -23,6 +25,7 @@ en:
         seo_override_title_description: If you want to override the default browser title, do it here.
         meta_keywords_title: Meta keywords
         meta_keywords: Enter 5-10 keywords that relate to this page. Separate keywords by a comma.
+        meta_description_title: Meta description
         meta_description: Enter a concise two or three sentences describing what this page is about.
         draft: Draft
         show_in_menu_title: Show in menu
