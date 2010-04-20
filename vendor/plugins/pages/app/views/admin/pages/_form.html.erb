@@ -8,7 +8,7 @@
 
 <% form_for [:admin, @page] do |f| %>
   <div class="field">
-    <%= f.label :title %>
+    <%= f.label :title, t('.title') %>
     <%= f.text_field :title, :class => "larger", :style => 'width: 954px' %>
   </div>
   <div id="page-tabs" class="clearfix">
@@ -48,7 +48,7 @@
   </p>
   <div id='more_options' style="display:none;">
     <div class='field'>
-      <%= f.label :parent_id %>
+      <%= f.label :parent_id, t('.parent_id_title') %>
       <%= f.collection_select :parent_id, @pages_for_parents_list, :id, :indented_title, :include_blank => true %>
     </div>
     <div class='field'>
@@ -98,7 +98,7 @@
               </small>
     </div>
     <div class='field'>
-      <%= f.label :meta_description %>
+      <%= f.label :meta_description,t('.meta_description_title') %>
       <%= f.text_area :meta_description, :cols => 95, :rows => 3 %><br/>
       <small>
         <%= t('.meta_description') %>
