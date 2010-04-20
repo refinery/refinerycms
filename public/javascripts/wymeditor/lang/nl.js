@@ -1,5 +1,6 @@
 WYMeditor.STRINGS['nl'] = {
 	Strong:			 'Sterk benadrukken',
+	Bold:			 'Vet',
 	Emphasis:		 'Benadrukken',
 	Superscript:		'Bovenschrift',
 	Subscript:		'Onderschrift',
@@ -31,6 +32,7 @@ WYMeditor.STRINGS['nl'] = {
 	Summary:			'Summary',
 	Number_Of_Rows:	 'Aantal rijen',
 	Number_Of_Cols:	 'Aantal kolommen',
+	Insert:			 'Invoegen',
 	Submit:			 'Versturen',
 	Cancel:			 'Annuleren',
 	Choose:			 'Kiezen',
@@ -40,6 +42,6 @@ WYMeditor.STRINGS['nl'] = {
 	Containers:		 'Teksttypes',
 	Classes:			'Klassen',
 	Status:			 'Status',
-	Source_Code:		'Broncode'
+	Source_Code:		'Broncode',
+	Css_Class: 			'Gebruik CSS klasse'
 };
-
