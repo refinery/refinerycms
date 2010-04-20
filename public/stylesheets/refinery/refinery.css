@@ -1270,3 +1270,7 @@ ul#plugins li {
 .tooltip * {
   color: black;
 }
+
+.wym_dialog_paste .field textarea {
+  width: 98%;
+}
