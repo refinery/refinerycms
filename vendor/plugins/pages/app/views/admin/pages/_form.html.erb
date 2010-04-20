@@ -52,7 +52,7 @@
       <%= f.collection_select :parent_id, @pages_for_parents_list, :id, :indented_title, :include_blank => true %>
     </div>
     <div class='field'>
-      <%= label_tag :custom_title, t('.custom_title)' %>
+      <%= label_tag :custom_title, t('.custom_title') %>
       <%= label_tag "", t('.title_type'), :class => "stripped" %>
       <% ["none", "text", "image"].each do |type| %>
         <%= f.radio_button :custom_title_type, "#{type}" %>
