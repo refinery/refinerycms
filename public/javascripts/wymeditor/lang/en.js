@@ -37,12 +37,11 @@ WYMeditor.STRINGS['en'] = {
 	Cancel:			 'Cancel',
 	Choose:			 'Choose',
 	Preview:			'Preview',
-	Paste_From_Word:	'Paste from Word',
+	Paste_From_Word:	'Paste',
 	Tools:			'Tools',
 	Containers:		 'Containers',
 	Classes:			'Classes',
 	Status:			 'Status',
 	Source_Code:		'Source code',
-		Text_From_Word: 	'Text From Word',
 		Css_Class: 				'Apply CSS Class'
 };

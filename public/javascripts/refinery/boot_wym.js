@@ -104,7 +104,6 @@ var wymeditor_boot_options = $.extend({
       + "<form>"
         + "<input type='hidden' id='wym_dialog_type' class='wym_dialog_type' value='" + WYMeditor.DIALOG_PASTE + "' />"
         + "<div class='field'>"
-          + "<label for='wym_text'>{Text_From_Word}</label"
           + "<textarea class='wym_text' rows='10' cols='50'></textarea>"
         + "</div>"
         + "<div id='dialog-form-actions' class='form-actions'>"
