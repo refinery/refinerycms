@@ -95,7 +95,7 @@ $.extend(WYMeditor, {
     DIALOG_LINK         - A link dialog type.
     DIALOG_IMAGE        - An image dialog type.
     DIALOG_TABLE        - A table dialog type.
-    DIALOG_PASTE        - A 'Paste from Word' dialog type.
+    DIALOG_PASTE        - A 'Paste' dialog type.
     BOLD                - Command: (un)set selection to <strong>.
     ITALIC              - Command: (un)set selection to <em>.
     CREATE_LINK         - Command: open the link dialog or (un)set link.
@@ -1277,8 +1277,8 @@ WYMeditor.editor.prototype.dialog = function( dialogType ) {
   else {
     parent_node = selected;
   }
-
-  if ((parent_node != null) && (dialogType != WYMeditor.DIALOG_PASTE) && (parent_node.tagName.toLowerCase() != WYMeditor.A))
+  
+  if ((parent_node != null) && (parent_node.tagName.toLowerCase() != WYMeditor.A))
   {
     // wrap the current selection with a funky span (not required for safari)
     if (!this._selected_image && !$.browser.safari)
@@ -1381,14 +1381,51 @@ WYMeditor.editor.prototype.paste = function(sData) {
 
   //add a P for each item
   if(container && container.tagName.toLowerCase() != WYMeditor.BODY) {
+    contentAfterBreak = "";
+    insertedContentAfterBreak = "";
     for(x = aP.length - 1; x >= 0; x--) {
-      sTmp = aP[x];
       //simple newlines are replaced by a break
-      sTmp = sTmp.replace(rExp, "<br />");
-      if (x == 0 && $(container).html().replace(/<br\ ?\/?>/, "").length == 0) {
-        $(container).html(sTmp);
+      sTmp = aP[x].replace(rExp, "<br />");
+      if (x == 0) {
+        // if we're inside a p tag but the container is not a p tag
+        // then we need to close the p tag first before starting a new one.
+        // Only if we placed more items after it (aP.length)
+        if (aP.length > 1
+            && $(container).get(0).tagName.toLowerCase() == "span"
+            && $(container).attr('id') == ('replace_me_with_' + wym._current_unique_stamp)
+            && $(container).parent().get(0).tagName.toLowerCase() == "p")
+        {
+          p = $(container).parent();
+          matches = p.html().match(new RegExp("([\\s\\S]*)\<span id=[\'|\"]replace_me_with_" + wym._current_unique_stamp + "[\'|\"]\>.*\<\/span\>"));
+          sTmp = matches[1] + sTmp + $(container).html();
+          p.html(sTmp);
+          if (insertedContentAfterBreak != null && insertedContentAfterBreak.length > 0) {
+            p.after(insertedContentAfterBreak);
+          }
+          if (contentAfterBreak != null && contentAfterBreak.length > 0) {
+            if ((last_paste = p.parent().find('p#last_paste')).length == 1) {
+              last_paste.attr('id', null).html(last_paste.html() + contentAfterBreak);
+            } else {
+              p.next().after("<p>" + contentAfterBreak + "</p>");
+            }
+          }
+
+        } else {
+          $(container).html($(container).html() + sTmp);
+        }
       } else {
-        $(container).after("<p>" + sTmp + "</p>");
+        if ((aP.length -1) == x) {
+          contentAfterBreak = $(container).parent().html().match(new RegExp("\<span id=[\'|\"]replace_me_with_" + wym._current_unique_stamp + "[\'|\"]\>.*\<\/span\>([\\s\\S]*)"))[1].split('</p>')[0];
+          sTmp = "<p id='last_paste'>" + sTmp + "</p>";
+        } else {
+          sTmp = "<p>" + sTmp + "</p>";
+        }
+
+        if (insertedContentAfterBreak == "") {
+          insertedContentAfterBreak = insertedContentAfterBreak + sTmp;
+        } else {
+          insertedContentAfterBreak = sTmp + insertedContentAfterBreak;
+        }
       }
     }
   } else {
@@ -1406,37 +1443,40 @@ WYMeditor.editor.prototype.paste = function(sData) {
 
   if (replaceable.get(0) != null) {
     // set the id of the container back.
-    replaceable.get(0).id = replaceable.get(0)._id_before_replaceable;
+    if (replaceable.get(0).tagName.toLowerCase() == 'span') {
+      replaceable.replaceWith(replaceable.html());
+    }
+    replaceable.attr('id', replaceable.get(0)._id_before_replaceable || null);
   }
 };
 
 WYMeditor.editor.prototype.insert = function(html) {
-    // Do we have a selection?
-    if (this._iframe.contentWindow.getSelection().focusNode != null) {
-        // Overwrite selection with provided html
-        this._exec(WYMeditor.INSERT_HTML, html);
-    } else {
-        // Fall back to the internal paste function if there's no selection
-        this.paste(html);
-    }
+  // Do we have a selection?
+  if (this._iframe.contentWindow.getSelection().focusNode != null) {
+    // Overwrite selection with provided html
+    this._exec(WYMeditor.INSERT_HTML, html);
+  } else {
+    // Fall back to the internal paste function if there's no selection
+    this.paste(html);
+  }
 };
 
 WYMeditor.editor.prototype.wrap = function(left, right, selection) {
-    // Do we have a selection?
-    if (selection == null) { selection = this._iframe.contentWindow.getSelection();}
-    if (selection.focusNode != null) {
-        // Wrap selection with provided html
-        this._exec( WYMeditor.INSERT_HTML, left + selection.toString() + right);
-    }
+  // Do we have a selection?
+  if (selection == null) { selection = this._iframe.contentWindow.getSelection();}
+  if (selection.focusNode != null) {
+    // Wrap selection with provided html
+    this._exec( WYMeditor.INSERT_HTML, left + selection.toString() + right);
+  }
 };
 
 WYMeditor.editor.prototype.unwrap = function(selection) {
-    // Do we have a selection?
-    if (selection == null) { selection = this._iframe.contentWindow.getSelection();}
-    if (selection.focusNode != null) {
-        // Unwrap selection
-        this._exec( WYMeditor.INSERT_HTML, selection.toString() );
-    }
+  // Do we have a selection?
+  if (selection == null) { selection = this._iframe.contentWindow.getSelection();}
+  if (selection.focusNode != null) {
+    // Unwrap selection
+    this._exec( WYMeditor.INSERT_HTML, selection.toString() );
+  }
 };
 
 WYMeditor.editor.prototype.addCssRules = function(doc, aCss) {
@@ -4739,6 +4779,53 @@ WYMeditor.WymClassSafari.prototype.initIframe = function(iframe) {
 
     //add event listeners to doc elements, e.g. images
     this.listen();
+};
+
+WYMeditor.WymClassSafari.prototype.paste = function(sData) {
+
+  wym = this;
+
+  wym.format_block();
+
+  var sTmp;
+  replaceable = $(wym._doc.body).find('#replace_me_with_' + wym._current_unique_stamp);
+
+  // replaceable doesn't actually get replaced here, it's just used as a marker for where the cursor was.
+  var container = replaceable.get(0) || this.selected();
+
+  //split the data, using double newlines as the separator
+  var aP = sData.split(wym._newLine + wym._newLine);
+  var rExp = new RegExp(wym._newLine, "g");
+
+  //add a P for each item
+  if(container && container.tagName.toLowerCase() != WYMeditor.BODY) {
+    for(x = aP.length - 1; x >= 0; x--) {
+      sTmp = aP[x];
+      //simple newlines are replaced by a break
+      sTmp = sTmp.replace(rExp, "<br />");
+      if (x == 0 && $(container).html().replace(/<br\ ?\/?>/, "").length == 0) {
+        $(container).html(sTmp);
+      } else {
+        $(container).after("<p>" + sTmp + "</p>");
+      }
+    }
+  } else {
+    for(x = 0; x < aP.length; x++) {
+      sTmp = aP[x];
+      //simple newlines are replaced by a break
+      sTmp = sTmp.replace(rExp, "<br />");
+      if (x == 0 && $(container).html().replace(/<br\ ?\/?>/, "").length == 0) {
+        $(container).html(sTmp);
+      } else {
+        $(wym._doc.body).append("<p>" + sTmp + "</p>");
+      }
+    }
+  }
+
+  if (replaceable.get(0) != null) {
+    // set the id of the container back.
+    replaceable.get(0).id = replaceable.get(0)._id_before_replaceable;
+  }
 };
 
 WYMeditor.WymClassSafari.prototype._exec = function(cmd,param) {

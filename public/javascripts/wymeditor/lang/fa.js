@@ -36,7 +36,7 @@ WYMeditor.STRINGS['fa'] = {
 	Cancel:			 'لغو',//Cancel
 	Choose:			 'انتخاب',//Choose
 	Preview:			'پیش‌نمایش',//Preview
-	Paste_From_Word:	'انتقال از ورد',//Paste from Word
+	Paste_From_Word:	'انتقال از ورد',//Paste
 	Tools:			'ابزار',//Tools
 	Containers:		 '‌قالب‌ها',//Containers
 	Classes:			'کلاس‌ها',//Classes
