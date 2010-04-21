@@ -7,7 +7,7 @@ nl:
   admin:
     resources:
       form:
-        file_to_upload: Het up te loaden bestand.
+        file_to_upload: Het te uploaden bestand.
         download_current: Download het huidige bestand
         or: of
         replace: ,vervang het door dit...
@@ -19,7 +19,7 @@ nl:
           title: Verwijder dit bestand permanent.
       index:
         upload_new: Upload een nieuw bestand.
-        search_results: Zoek resultaten voor '{{search_string}}'
+        search_results: Zoekresultaten voor '{{search_string}}'
         search_no_results: Sorry, er zijn zoekresultaten gevonden.
         no_files_yet: Er zijn nog geen bestanden. Klik op "Upload een nieuw bestand" om uw eerste bestand toe te voegen.
       insert:
