@@ -1,6 +1,6 @@
 <li class='clearfix record <%= cycle("on", "on-hover") %>'>
   <span class='title'>
-    <%=h refinery_setting.name.titleize %>
+    <%= t(refinery_setting.name, :default => h(refinery_setting.name.titleize)) %>
     <span class="preview">- <%=h truncate(refinery_setting.value.to_s, :length => 40) %></span>
   </span>
   <span class='actions'>
