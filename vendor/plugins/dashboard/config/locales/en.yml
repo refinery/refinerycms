@@ -16,5 +16,5 @@ en:
         see: See '{{what}}'
   updated: updated
   created: created
-  ago: ago
+  ago: "{{time}} ago"
   see: See
