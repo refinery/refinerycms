@@ -19,5 +19,5 @@ nl:
         see: Bezoek de '{{what}}'
   updated: bewerkt
   created: aangemaakt
-  ago: geleden
+  ago: "{{time}} geleden"
   see: Zie

@@ -19,5 +19,5 @@ pt-BR:
         see: Ver '{{what}}'
   updated: atualizado
   created: criado
-  ago: atrás
+  ago: "{{time}} atrás"
   see: Ver
