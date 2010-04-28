@@ -11,6 +11,11 @@ class UsersController < ApplicationController
   filter_parameter_logging 'password', 'password_confirmation'
 
   layout 'admin'
+  
+  # this should probably return true for admin.
+  def admin?
+    true
+  end
 
   def new
     @user = User.new

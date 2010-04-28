@@ -1,4 +1,5 @@
-[{:name => "site_name", :value => "Company Name"},
+[
+  {:name => "site_name", :value => "Company Name"},
   {:name => "new_page_parts", :value => false},
   {:name => "activity_show_limit", :value => 18},
   {:name => "preferred_image_view", :value => :grid},
@@ -15,9 +16,11 @@
   },
   {:name => 'refinery_i18n_locales', :value => {
       :en => 'English',
+      :fr => 'Français',
       :nl => 'Nederlands',
       :'pt-BR' => 'Português'
     }
-  }].each do |setting|
+  }
+].each do |setting|
   RefinerySetting.create(:name => setting[:name].to_s, :value => setting[:value], :destroyable => false)
 end
