@@ -1,0 +1,44 @@
+de:
+  plugins:
+    refinery_images:
+      title: Bilder
+  no_file_chosen: Sie müssen eine Datei zum Hochladen wählen.
+  file_should_be_smaller_than_max_file_size: Dateien sollten kleiner als {{max_file_size}} sein
+  file_must_be_these_formats: Ihr Bild muss im Format JPG, PNG oder GIF vorliegen
+  admin:
+    images:
+      form:
+        image: Bild
+        use_current_image: Aktuelles Bild verwenden
+        or: oder
+        replace_image: Oder durch dieses ersetzen ...
+        current_image: Aktuelles Bild
+      index:
+        create_new_image: Neues Bild erstellen
+        no_images_yet: Es wurden noch keine Bilder erstellt. Klicken Sie auf "Neues Bild erstellen" um Ihr erstes Bild zu erstellen.
+        view:
+          switch_to: Zur Ansicht "{{view_name}}" wechseln
+          list: Liste
+          grid: Gitter
+        search:
+          results_for: Suchergebnisse für {{query}}
+      grid_view:
+        edit: Dieses Bild bearbeiten
+        confirm_delete:
+          message: Sind Sie sicher, dass Sie {{title}} löschen möchten?
+          title: Dieses Bild für immer löschen
+        view_live: Dieses Bild anzeigen <br/><em>Öffnet ein neues Fenster</em>
+      list_view_image:
+        edit_this_image: Dieses Bild bearbeiten
+        delete:
+          message: Sind Sie sicher, dass Sie {{title}} löschen möchten?
+          title: Dieses Bild für immer löschen
+      insert:
+        existing_image: Existierendes Bild
+        new_image: Neues Bild
+        previous: vorheriges
+        next: nächstes
+        submit_insert: Einfügen
+        or: oder
+        cancel: Abbrechen
+
