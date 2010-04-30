@@ -1,6 +1,5 @@
-<%= error_messages_for :page %>
-
 <% form_for [:admin, @page] do |f| %>
+  <%= f.error_messages  %>
   <div class="field">
     <%= f.label :title %>
     <%= f.text_field :title, :class => "larger", :style => 'width: 954px' %>
@@ -35,97 +34,12 @@
       <% end %>
     </div>
   </div>
-  <p>
-    <a href="#" id="toggle_advanced_options" rel="Click to access meta tag settings and menu options">&raquo; Hide/Show Advanced Options</a>
-  </p>
-  <div id='more_options' style="display:none;">
-    <div class='field'>
-      <%= f.label :parent_id %>
-      <%= f.collection_select :parent_id, @pages_for_parents_list, :id, :indented_title, :include_blank => true %>
-    </div>
-    <div class='field'>
-      <%= label_tag :custom_title %>
-      <%= label_tag "", 'Type:', :class => "stripped" %>
-      <% ["none", "text"].each do |type| %>
-        <%= f.radio_button :custom_title_type, "#{type}" %>
-        <%= label_tag "page_custom_title_type_#{type}", "#{type.titleize}", :class => "stripped" %>
-      <% end %>
-      <br/>
-      <div id='custom_title_none'></div>
-      <div id='custom_title_text' style='display: <%= @page.custom_title_type == 'text' ? 'block' : 'none' %>'>
-        <p>
-          <%= f.text_field :custom_title, {:size => 103} %><br/>
-          <small>
-            If you want the page to have a different title than the one that shows in the menu and browser title then enter it here.<br/>
-          </small>
-        </p>
-      </div>
-    </div>
-    <div class='field'>
-      <%= label_tag :skip_to_first_child? %>
-      <%= f.check_box :skip_to_first_child %>
-      <%= f.label :skip_to_first_child, "Check this box if you want the visitor to be redirected to this page's first child page if this page is selected.", :class => "stripped" %>
-    </div>
-    <div class='field'>
-      <%= f.label :link_url, "Custom URL" %>
-      <%= f.text_field :link_url, {:size => 103} %><br/>
-      <small>
-        Enter a URL if this page links to an external site or to a pre-existing resource e.g. a contact page.
-        <br/>
-        Note: This URL must point to a location that exists; a new one will not be created.
-      </small>
-    </div>
-    <h2>Search Engine Optimization</h2>
-    <div class='field'>
-      <%= f.label :browser_title %>
-      <%= f.text_field :browser_title, :size => 63 %><br/>
-      <small>
-        If you want to override the default browser title, do it here.
-      </small>
-    </div>
-    <div class='field'>
-      <%= f.label :meta_keywords %>
-      <%= f.text_field :meta_keywords, :size => 63 %><br/>
-      <small>
-        Enter 5-10 keywords that relate to this page. Separate keywords by a comma.
-      </small>
-    </div>
-    <div class='field'>
-      <%= f.label :meta_description %>
-      <%= f.text_area :meta_description, :cols => 95, :rows => 3 %><br/>
-      <small>
-        Enter a concise two or three sentences describing what this page is about.
-      </small>
-    </div>
-    <div class='field'>
-      <%= f.label :show_in_menu %>
-      <%= f.check_box :show_in_menu %>
-      <small>
-        <%= f.label :show_in_menu, "Check this box if this page should appear in the site menu" %>
-      </small>
-    </div>
-  </div>
-  <div class='field'>
-    <label>Draft</label>
-    <%= f.check_box :draft %>
-    <%= f.label :draft, "Save as Draft", :class => "stripped" %>
-  </div>
+
+  <%= render :partial => "form_advanced_options", :locals => {:f => f} %>
+
   <%= render :partial => "/shared/admin/form_actions", :locals => {:f => f, :continue_editing => true} %>
-  <% if RefinerySetting.find_or_set(:new_page_parts, false) %>
-    <div id='new_page_part_dialog' style='display: none'>
-      <div class='field'>
-        <label for='new_page_part_title'>Title</label>
-        <input id='new_page_part_title' value='' class='larger' size='40' />
-        <input id='new_page_part_index' type='hidden' value='<%= @page.parts.size %>' />
-      </div>
-      <%= render :partial => "/shared/admin/form_actions", :locals => {
-        :f => f,
-        :continue_editing => false,
-        :submit_button_id => "new_page_part_save",
-        :cancel_button_id => "new_page_part_cancel"
-      } %>
-    </div>
-  <% end %>
+
+  <%= render :partial => "form_new_page_parts", :locals => {:f => f} if RefinerySetting.find_or_set(:new_page_parts, false) %>
 <% end %>
 
 <% content_for :head do %>
