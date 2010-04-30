@@ -54,17 +54,18 @@ de:
       notification_recipients_form:
         inquiry_settings_value_name: Benachrichtigungen senden an
         explanation: "Jedesmal wenn jemand Sie auf Ihrer Webseite kontaktiert, wird eine E-Mail mit einem Hinweis zur neuen Kontaktanfrage versendet."
-        hint: "Enter an email address above. Want the notification to go to more than one person? Enter multiple email addresses separated by commas."
+        hint: "Geben Sie eine E-Mail-Adresse ein. Soll die Benachrichtigung an mehrere Personen versendet werden? Geben Sie mehrere E-Mail-Adresse Komma-Separiert ein."
         example: "z.B. me@domain.com, friend@msn.com, workmate@work.com"
       confirmation_email_form:
         to: An
         from: Von
         subject: Betreff
         click_to_edit_subject: Klicken Sie hier, um den Betreff zu bearbeiten
-        explanation: "Every time someone contacts you on your website, Refinery sends out an email to confirm the inquiry with the person who made it."
+        explanation: "Jedesmal wenn jemand Sie auf Ihrer Webseite kontaktiert, wird eine E-mail an die anfragende Person zur Bestätigung der Kontaktanfrage versendet."
         below_edit_email_sent: Unten können Sie die E-Mail bearbeiten, die versendet wird.
         the_customer_making_inquiry: Der Kunde, der die Kontaktanfrage gestellt hat.
         message: Nachricht
-        note: "Note: place the text %name% where you'd like the customer's name to appear in the email"
+        note: "Hinweis: Verwenden Sie den Text %name% um den Namen des Kunden in der E-Mail einzufügen."
       subject_form:
         subject_value_name: Betreff
+
