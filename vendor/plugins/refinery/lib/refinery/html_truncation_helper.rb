@@ -1,24 +1,26 @@
-# By Henrik Nyh <http://henrik.nyh.se> 2008-01-30.
-# Free to modify and redistribute with credit.
+=begin
+By Henrik Nyh <http://henrik.nyh.se> 2008-01-30.
+Free to modify and redistribute with credit.
 
-# modified by Dave Nolan <http://textgoeshere.org.uk> 2008-02-06
-# Ellipsis appended to text of last HTML node
-# Ellipsis inserted after final word break
+modified by Dave Nolan <http://textgoeshere.org.uk> 2008-02-06
+Ellipsis appended to text of last HTML node
+Ellipsis inserted after final word break
 
-# modified by Mark Dickson <mark@sitesteaders.com> 2008-12-18
-# Option to truncate to last full word
-# Option to include a 'more' link
-# Check for nil last child
+modified by Mark Dickson <mark@sitesteaders.com> 2008-12-18
+Option to truncate to last full word
+Option to include a 'more' link
+Check for nil last child
 
-# modified by Ken-ichi Ueda <http://kueda.net> 2009-09-02
-# Rails 2.3 compatability (chars -> mb_chars), via Henrik
-# Hpricot 0.8 compatability (avoid dup on Hpricot::Elem)
+modified by Ken-ichi Ueda <http://kueda.net> 2009-09-02
+Rails 2.3 compatability (chars -> mb_chars), via Henrik
+Hpricot 0.8 compatability (avoid dup on Hpricot::Elem)
 
-# modified by Philip Arndt <http://www.resolvedigital.co.nz> 2009-11-18
-# renamed function to truncate and activated html truncation when :preserve_html_tags is supplied and true.
-# modified namespace to Refinery namespace and renamed module.
+modified by Philip Arndt <http://www.resolvedigital.co.nz> 2009-11-18
+renamed function to truncate and activated html truncation when :preserve_html_tags is supplied and true.
+modified namespace to Refinery namespace and renamed module.
+removed rubygems requirement
+=end
 
-require "rubygems"
 require "hpricot"
 
 module Refinery::HtmlTruncationHelper
@@ -26,7 +28,7 @@ module Refinery::HtmlTruncationHelper
   # Like the Rails _truncate_ helper but doesn't break HTML tags, entities, and optionally. words.
   def truncate(text, *args)
     return super unless ((arguments = args.dup).extract_options![:preserve_html_tags] == true) # don't ruin the current args object
-    return if text.nil?
+    return unless text.present?
 
     options = args.extract_options!
     max_length = options[:length] || 30
