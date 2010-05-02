@@ -1,7 +1,7 @@
 # Methods added to this helper will be available to all templates in the application.
 module Refinery::ApplicationHelper
 
-  include Refinery::HtmlTruncationHelper
+  include Refinery::HtmlTruncationHelper rescue puts "#{__FILE__}:#{__LINE__} Could not load hpricot"
 
   def browser_title(yield_title=nil)
     [
@@ -76,7 +76,7 @@ module Refinery::ApplicationHelper
           when "text"
             obj.custom_title
           when "image"
-            image_fu obj.custom_title_image, nil, {:alt => obj.title} rescue obj.title
+            image_fu(obj.custom_title_image, nil, {:alt => obj.title}) rescue obj.title
           else
             obj.title
           end
@@ -86,11 +86,12 @@ module Refinery::ApplicationHelper
     end
 
     final_title = title.pop
-    if (options[:page_title][:wrap_if_not_chained] and title.empty?) and !options[:page_title][:tag].blank?
+    if (options[:page_title][:wrap_if_not_chained] and title.empty?) and options[:page_title][:tag].present?
       css = options[:page_title][:class].present? ? " class='#{options[:page_title][:class]}'" : nil
       final_title = "<#{options[:page_title][:tag]}#{css}>#{final_title}</#{options[:page_title][:tag]}>"
     end
-    if (title.empty?)
+
+    if title.empty?
       return final_title
     else
       return "<#{options[:ancestors][:tag]} class='#{options[:ancestors][:class]}'>#{title.join options[:ancestors][:separator]}#{options[:ancestors][:separator]}</#{options[:ancestors][:tag]}>#{final_title}"
@@ -102,7 +103,9 @@ module Refinery::ApplicationHelper
   end
 
   def selected_page?(page)
-    selected = current_page?(page) or (request.path =~ Regexp.new(page.menu_match) unless page.menu_match.blank?) or (request.path == page.link_url)
+    current_page?(page) or
+      (request.path =~ Regexp.new(page.menu_match) if page.menu_match.present?) or
+      (request.path == page.link_url)
   end
 
   def setup

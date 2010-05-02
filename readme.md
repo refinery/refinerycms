@@ -92,7 +92,7 @@ If you're using [Heroku](http://heroku.com/) you will want to put
 
     Refinery.s3_backend = true
 
-in your ``config/production.rb`` file to make Refinery store files uploaded on Amazon S3.
+in your ``config/environments/production.rb`` file to make Refinery store files uploaded on Amazon S3.
 
 ## Updating to the latest Refinery
 
