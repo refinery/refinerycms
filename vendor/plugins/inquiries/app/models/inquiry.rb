@@ -10,7 +10,4 @@ class Inquiry < ActiveRecord::Base
 
   default_scope :order => 'created_at DESC'
 
-  named_scope :closed, :conditions => {:open => false}
-  named_scope :open, :conditions => {:open => true}
-
 end
