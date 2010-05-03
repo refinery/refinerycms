@@ -38,7 +38,7 @@
       Note: This URL must point to a location that exists; a new one will not be created.
     </small>
   </div>
-  
+
   <%= render :partial => "form_advanced_options_seo", :locals => {:f => f} if RefinerySetting.find_or_set(:pages_advanced_options_include_seo, true) %>
 </div>
 <div class='field'>
