@@ -125,7 +125,7 @@ module Foo #:nodoc:
         #--
         # TODO: Make a private method called 'root_exists?' which checks for the root directory.
         def exists?
-          File.exists?(File.join(@root))
+          File.exists?(File.join(@root + ['size']))
         end
 
         private
