@@ -1,7 +1,6 @@
 <div id='actions'>
   <h2>Details</h2>
   <p>
-    <strong>Status:</strong> <%= @inquiry.open? ? "Open" : "Closed" %><br/>
     <strong>Age:</strong> <%= time_ago_in_words(@inquiry.created_at) %>
   </p>
   <h2>Actions</h2>

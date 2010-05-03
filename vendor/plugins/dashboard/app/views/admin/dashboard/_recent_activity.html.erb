@@ -2,7 +2,7 @@
 <% if @recent_activity.any? %>
   <table id='recent_activity'>
     <% @recent_activity.each do |change| %>
-      <tr class='<%= cycle("on", "") %>'>
+      <tr class='<%= cycle("on", "on-hover") %>'>
         <%= activity_message_for change %>
       </tr>
     <% end %>
