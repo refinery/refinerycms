@@ -1,0 +1,49 @@
+<p>
+  <%# TODO Translate :rel %>
+  <%= link_to "&raquo;" + t('.hide_or_show_advanced_options'), "#", :id => "toggle_advanced_options",
+        :rel => "Click to access meta tag settings and menu options" %>
+</p>
+<div id='more_options' style="display:none;">
+  <div class='field'>
+    <%= f.label :parent_id, t('.parent_id_title') %>
+    <%= f.collection_select :parent_id, @pages_for_parents_list, :id, :indented_title, :include_blank => true %>
+  </div>
+  <div class='field'>
+    <%= label_tag :custom_title, t('.custom_title') %>
+    <%= label_tag "", t('.title_type'), :class => "stripped" %>
+    <% ["none", "text", "image"].each do |type| %>
+      <%= f.radio_button :custom_title_type, "#{type}" %>
+      <%= label_tag "page_custom_title_type_#{type}", t(".title_types.#{type}").titleize, :class => "stripped" %>
+    <% end %>
+    <br/>
+    <div id='custom_title_none'></div>
+    <div id='custom_title_text' style='display: <%= @page.custom_title_type == 'text' ? 'block' : 'none' %>'>
+      <p>
+        <%= f.text_field :custom_title, {:size => 103} %><br/>
+        <small>
+          <%=t('.explain_page_different_title')%>
+          <br/>
+        </small>
+      </p>
+    </div>
+  </div>
+  <div class='field'>
+    <%= label_tag :skip_to_first_child?, t('activerecord.attributes.page.skip_to_first_child') %>
+    <%= f.check_box :skip_to_first_child %>
+    <%= f.label :skip_to_first_child, t('.redirect_to_first_child'), :class => "stripped" %>
+  </div>
+  <div class='field'>
+    <%= f.label :link_url, t('.custom_url') %>
+    <%= f.text_field :link_url, {:size => 103} %><br/>
+    <small>
+      <%= t('.custom_url_explanation') %>
+    </small>
+  </div>
+
+  <%= render :partial => "form_advanced_options_seo", :locals => {:f => f} if RefinerySetting.find_or_set(:pages_advanced_options_include_seo, true) %>
+</div>
+<div class='field'>
+  <label><%= t('.draft') %></label>
+  <%= f.check_box :draft %>
+  <%= f.label :draft, t('.save_as_draft'),  :class => "stripped" %>
+</div>

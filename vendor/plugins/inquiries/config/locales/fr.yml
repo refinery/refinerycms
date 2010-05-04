@@ -35,7 +35,7 @@ fr:
         edit_confirmation_email: Modifier le couriel de confirmation
         search_results_for: "Résultat de recherche pour {{query}}"
         open_inquiries: Demande de renseignement ouverte
-        no_open_inquiries: "Hourra! Il n'y a pas de requête ouvertes, vous les avez toutes faites."
+        no_inquiries: "Hourra! Il n'y a pas de requête ouvertes, vous les avez toutes faites."
         closed_inquiries: Demande de renseignement fermé
         havent_closed_any_inquiries: "Vous n'avez pas de demande de renseignements fermé pour le moment."
       show:

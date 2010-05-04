@@ -1,9 +1,6 @@
 <div id='actions'>
   <h2><%= t('.details')%></h2>
   <p>
-    <strong><%= t('.status') %>:</strong>
-    <%= @inquiry.open? ? t('.open') : t('.closed') %>
-    <br/>
     <strong><%= t('.age') %>:</strong> <%= time_ago_in_words(@inquiry.created_at) %>
   </p>
   <h2><%= t('.actions') %></h2>

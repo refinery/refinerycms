@@ -39,7 +39,7 @@ pt-BR:
         edit_confirmation_email: Editar email de confirmação
         search_results_for: Resultados da busca por {{query}}
         open_inquiries: Inquéritos abertos
-        no_open_inquiries: "Urra! Não exitem inquéritos abertos porque você lidou com todos eles."
+        no_inquiries: "Urra! Não exitem inquéritos abertos porque você lidou com todos eles."
         closed_inquiries: Inquéritos fechados
         havent_closed_any_inquiries: "Você ainda não fechou nenhum inquérito."
       show:

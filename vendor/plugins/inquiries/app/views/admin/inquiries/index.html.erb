@@ -20,25 +20,16 @@
     <h2><%= t('search_results_for', :query => params[:search]) %>"</h2>
     <%= render :partial => "inquiry", :collection => @inquiries %>
   <% else %>
-    <h2><%= t('.open_inquiries') %></h2>
-    <% if @open_inquiries.any? -%>
-      <ul>
-        <%= render :partial => "inquiry", :collection => @open_inquiries %>
-      </ul>
+    <% if @grouped_inquiries.any? -%>
+      <% @grouped_inquiries.each do |container| %>
+        <h3><%= (inquiry_group = container.last).first.created_at.strftime("%A, %d %B %Y") %></h3>
+        <ul>
+          <%= render :partial => 'inquiry', :collection => inquiry_group %>
+        </ul>
+      <% end %>
     <% else -%>
       <p>
-        <%= refinery_icon_tag('accept.png', :style => 'vertical-align: bottom') %>
-        <%= t('.no_open_inquiries') %>
-      </p>
-    <% end -%>
-    <h2><%= t('.closed_inquiries') %></h2>
-    <% if @closed_inquiries.any? -%>
-      <ul>
-        <%= render :partial => "inquiry", :collection => @closed_inquiries %>
-      </ul>
-    <% else -%>
-      <p>
-        <%= t('.havent_closed_any_inquiries') %>
+        <strong><%= t('.no_inquiries') %></strong>
       </p>
     <% end -%>
   <% end %>
