@@ -40,6 +40,14 @@
   </div>
 
   <%= render :partial => "form_advanced_options_seo", :locals => {:f => f} if RefinerySetting.find_or_set(:pages_advanced_options_include_seo, true) %>
+
+  <div class='field'>
+    <%= f.label :show_in_menu %>
+    <%= f.check_box :show_in_menu %>
+    <small>
+      <%= f.label :show_in_menu, "Check this box if this page should appear in the site menu" %>
+    </small>
+  </div>
 </div>
 <div class='field'>
   <label>Draft</label>
