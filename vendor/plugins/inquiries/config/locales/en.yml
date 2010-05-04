@@ -34,10 +34,7 @@ en:
         update_notified: Update who gets notified
         edit_confirmation_email: Edit confirmation email
         search_results_for: Search results for {{query}}
-        open_inquiries: Open queries
-        no_open_inquiries: "Hooray! There are no open inquiries because you've dealt with them all."
-        closed_inquiries: Closed Inqueries
-        havent_closed_any_inquiries: "You haven't closed any inquiries yet."
+        no_inquiries: You have not received any inquiries yet.
       show:
         details: Details
         click_to_email: Click to email

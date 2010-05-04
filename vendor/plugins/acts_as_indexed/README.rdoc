@@ -95,7 +95,7 @@ Pagination is supported via the +paginate_search+ method whose first argument is
 To generate the RDoc documentation, run the <tt>rake rdoc</tt> task in the acts_as_indexed 
 plugin folder. Then point your browser at <tt>/vendor/plugins/acts_as_indexed/rdoc/index.html</tt>.
 
-Alternatively, you can view the rdoc documentation online[http://douglasfshearer.com/rdoc/acts_as_indexed/].
+Alternatively, you can view the rdoc documentation online[http://rdoc.info/projects/dougal/acts_as_indexed/].
 
 == Problems, Comments, Suggestions?
 

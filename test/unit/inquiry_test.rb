@@ -30,12 +30,4 @@ class InquiryTest < ActiveSupport::TestCase
     assert @full_valid_inquiry.save
   end
 
-  def test_named_scopes
-    assert_equal 2, Inquiry.open.size
-    assert_equal 1, Inquiry.closed.size
-
-    # check the order. Phil is the newest person to inquire
-    assert_equal inquiries(:phil), Inquiry.open.first
-  end
-
 end
