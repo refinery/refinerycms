@@ -66,12 +66,28 @@ contact_us_page.parts.create({
               :body => "<p>163 Evergreen Terrace<br/>Happyville<br/>USA.<br/>Phone: 1-800 CALLUSNOW</p>",
               :position => 1
             })
+contact_us_page_position = -1
+privacy_policy_page = Page.create(:title => "Privacy Policy",
+            :deletable => true,
+            :show_in_menu => false,
+            :position => (contact_us_page_position += 1),
+            :parent_id => contact_us_page.id)
+privacy_policy_page.parts.create({
+              :title => "Body",
+              :body => "<p><strong>We respect your privacy. We do not market, rent or sell our email list to any outside parties.</p><p>We need your e-mail address so that we can ensure that the people using our forms are bona fide. It also allows us to send you e-mail newsletters and other communications, if you opt-in. Your postal address is required in order to send you information and pricing, if you request it.</p><p>Please call us at 123 456 7890 if you have any questions or concerns.</p>",
+              :position => 0
+            })
+privacy_policy_page.parts.create({
+              :title => "Side Body",
+              :body => "",
+              :position => 1
+            })
 
 thank_you_page = Page.create(:title => "Thank You",
             :menu_match => "^/inquiries/thank_you$",
             :show_in_menu => false,
             :deletable => false,
-            :position => 0,
+            :position => (contact_us_page_position += 1),
             :parent_id => contact_us_page.id)
 thank_you_page.parts.create({
               :title => "Body",
@@ -88,21 +104,6 @@ page_not_found_page.parts.create({
               :title => "Body",
               :body => "<h2>Sorry, there was a problem...</h2><p>The page you requested was not found.</p><p><a href='/'>Return to the home page</a></p>",
               :position => 0
-            })
-
-privacy_policy_page = Page.create(:title => "Privacy Policy",
-            :deletable => true,
-            :show_in_menu => false,
-            :position =>  (page_position += 1))
-privacy_policy_page.parts.create({
-              :title => "Body",
-              :body => "<p><strong>We respect your privacy. We do not market, rent or sell our email list to any outside parties.</p><p>We need your e-mail address so that we can ensure that the people using our forms are bona fide. It also allows us to send you e-mail newsletters and other communications, if you opt-in. Your postal address is required in order to send you information and pricing, if you request it.</p><p>Please call us at 123 456 7890 if you have any questions or concerns.</p>",
-              :position => 0
-            })
-privacy_policy_page.parts.create({
-              :title => "Side Body",
-              :body => "",
-              :position => 1
             })
 
 down_for_maintenance_page = Page.create(:title => "Down for maintenance",
