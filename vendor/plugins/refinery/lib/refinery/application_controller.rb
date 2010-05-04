@@ -83,6 +83,7 @@ protected
   def take_down_for_maintenance?
     if RefinerySetting.find_or_set(:down_for_maintenance, false)
       if (@page = Page.find_by_menu_match("^/maintenance$", :include => [:parts, :slugs])).present?
+        find_pages_for_menu
         render :template => "/pages/show", :status => 503
       else
         render :text => "Our website is currently down for maintenance. Please try back soon."
