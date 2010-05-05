@@ -28,7 +28,7 @@ module Refinery::ApplicationHelper
 
   def image_fu(image, thumbnail = nil , options={})
     if image.present?
-      image_thumbnail = image.thumbnails.detect {|t| t.thumbnail == thumbnail.to_s}
+      image_thumbnail = image.thumbnails.detect {|t| t.thumbnail == thumbnail.to_s} unless thumbnail.nil?
       image_thumbnail = image unless image_thumbnail.present?
       image_tag image_thumbnail.public_filename, {:alt => image.title, :width => image_thumbnail.width, :height => image_thumbnail.height}.merge!(options)
     end
