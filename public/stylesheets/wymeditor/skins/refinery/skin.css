@@ -74,24 +74,24 @@
 		.wym_skin_refinery .wym_buttons li		 { float:left;}
 		.wym_skin_refinery .wym_buttons a 				 { width: 20px; height: 20px; overflow: hidden; padding: 2px }
 		/*image replacements*/
-		.wym_skin_refinery .wym_buttons li a						 { background: url('/images/wymeditor/skins/refinery/icons.png') no-repeat; text-indent: -9999px;}
-		.wym_skin_refinery .wym_buttons li.wym_tools_strong a		{ background-position: 0 -382px;}
-		.wym_skin_refinery .wym_buttons li.wym_tools_emphasis a		{ background-position: 0 -22px;}
-		.wym_skin_refinery .wym_buttons li.wym_tools_superscript a	 { background-position: 0 -430px;}
-		.wym_skin_refinery .wym_buttons li.wym_tools_subscript a	 { background-position: 0 -454px;}
-		.wym_skin_refinery .wym_buttons li.wym_tools_ordered_list a	{ background-position: 0 -48px;}
-		.wym_skin_refinery .wym_buttons li.wym_tools_unordered_list a{ background-position: 0 -72px;}
-		.wym_skin_refinery .wym_buttons li.wym_tools_indent a		{ background-position: 0 -574px;}
-		.wym_skin_refinery .wym_buttons li.wym_tools_outdent a		 { background-position: 0 -598px;}
-		.wym_skin_refinery .wym_buttons li.wym_tools_undo a			{ background-position: 0 -502px;}
-		.wym_skin_refinery .wym_buttons li.wym_tools_redo a			{ background-position: 0 -526px;}
-		.wym_skin_refinery .wym_buttons li.wym_tools_link a			{ background-position: 0 -96px;}
-		.wym_skin_refinery .wym_buttons li.wym_tools_unlink a		{ background-position: 0 -168px;}
-		.wym_skin_refinery .wym_buttons li.wym_tools_image a		 { background-position: 0 -121px;}
-		.wym_skin_refinery .wym_buttons li.wym_tools_table a		 { background-position: 0 -144px;}
-		.wym_skin_refinery .wym_buttons li.wym_tools_paste a		 { background-position: 0 -552px;}
-		.wym_skin_refinery .wym_buttons li.wym_tools_html a			{ background-position: 0 -193px;}
-		.wym_skin_refinery .wym_buttons li.wym_tools_preview a		 { background-position: 0 -408px;}
+		.wym_skin_refinery .wym_buttons li a						 { text-indent: -9999px;background-repeat: no-repeat;background-position: 4px 4px;}
+		.wym_skin_refinery .wym_buttons li.wym_tools_strong a		{ background-image: url('/images/wymeditor/skins/refinery/text_bold.png');}
+		.wym_skin_refinery .wym_buttons li.wym_tools_emphasis a		{ background-image: url('/images/wymeditor/skins/refinery/text_italic.png');}
+		.wym_skin_refinery .wym_buttons li.wym_tools_superscript a	 { background-image: url('/images/wymeditor/skins/refinery/text_superscript.png');}
+		.wym_skin_refinery .wym_buttons li.wym_tools_subscript a	 { background-image: url('/images/wymeditor/skins/refinery/text_subscript.png');}
+		.wym_skin_refinery .wym_buttons li.wym_tools_ordered_list a	{ background-image: url('/images/wymeditor/skins/refinery/text_list_numbers.png');}
+		.wym_skin_refinery .wym_buttons li.wym_tools_unordered_list a{ background-image: url('/images/wymeditor/skins/refinery/text_list_bullets.png');}
+		.wym_skin_refinery .wym_buttons li.wym_tools_indent a		{ background-image: url('/images/wymeditor/skins/refinery/text_indent.png');}
+		.wym_skin_refinery .wym_buttons li.wym_tools_outdent a		{ background-image: url('/images/wymeditor/skins/refinery/text_outdent.png');}
+		.wym_skin_refinery .wym_buttons li.wym_tools_undo a			{ background-image: url('/images/wymeditor/skins/refinery/arrow_undo.png');}
+		.wym_skin_refinery .wym_buttons li.wym_tools_redo a			{ background-image: url('/images/wymeditor/skins/refinery/arrow_redo.png');}
+		.wym_skin_refinery .wym_buttons li.wym_tools_link a			{ background-image: url('/images/wymeditor/skins/refinery/link_add.png');}
+		.wym_skin_refinery .wym_buttons li.wym_tools_unlink a		{ background-image: url('/images/wymeditor/skins/refinery/link_break.png');}
+		.wym_skin_refinery .wym_buttons li.wym_tools_image a		 { background-image: url('/images/wymeditor/skins/refinery/photo_add.png');}
+		.wym_skin_refinery .wym_buttons li.wym_tools_table a		 { background-image: url('/images/wymeditor/skins/refinery/table_add.png');}
+		.wym_skin_refinery .wym_buttons li.wym_tools_paste a		 { background-image: url('/images/wymeditor/skins/refinery/page_paste.png');}
+		.wym_skin_refinery .wym_buttons li.wym_tools_html a			{ background-image: url('/images/wymeditor/skins/refinery/page_code.png');}
+		.wym_skin_refinery .wym_buttons li.wym_tools_preview a		 { background-image: url('/images/wymeditor/skins/refinery/page_go.png');}
 
 		/* make tools and containers play nicely next to eachother */
 
@@ -101,14 +101,14 @@
 				.wym_skin_refinery .wym_containers li { float: left; }
 		.wym_skin_refinery .wym_containers li a, .wym_skin_refinery li.wym_tools_class a {background-repeat: no-repeat; background-position: center center;width: 20px; height: 20px; overflow: hidden; padding: 2px; border: 0px none;}
 
-		.wym_skin_refinery li.wym_containers_h1 a	 { background-image: url('/images/wymeditor/skins/refinery/h1.png'); }
-		.wym_skin_refinery li.wym_containers_h2 a	 { background-image: url('/images/wymeditor/skins/refinery/h2.png');}
-		.wym_skin_refinery li.wym_containers_h3 a	 { background-image: url('/images/wymeditor/skins/refinery/h3.png');}
-		.wym_skin_refinery li.wym_containers_h4 a	 { background-image: url('/images/wymeditor/skins/refinery/h4.png');}
-		.wym_skin_refinery li.wym_containers_h5 a	 { background-image: url('/images/wymeditor/skins/refinery/h5.png');}
-		.wym_skin_refinery li.wym_containers_h6 a	 { background-image: url('/images/wymeditor/skins/refinery/h6.png');}
-		.wym_skin_refinery li.wym_containers_p a	 { background-image: url('/images/wymeditor/skins/refinery/paragraph.png');}
-		.wym_skin_refinery li.wym_tools_class a { background-image: url('/images/wymeditor/skins/refinery/css.png');}
+		.wym_skin_refinery li.wym_containers_h1 a	 { background-image: url('/images/wymeditor/skins/refinery/text_heading_1.png'); }
+		.wym_skin_refinery li.wym_containers_h2 a	 { background-image: url('/images/wymeditor/skins/refinery/text_heading_2.png');}
+		.wym_skin_refinery li.wym_containers_h3 a	 { background-image: url('/images/wymeditor/skins/refinery/text_heading_3.png');}
+		.wym_skin_refinery li.wym_containers_h4 a	 { background-image: url('/images/wymeditor/skins/refinery/text_heading_4.png');}
+		.wym_skin_refinery li.wym_containers_h5 a	 { background-image: url('/images/wymeditor/skins/refinery/text_heading_5.png');}
+		.wym_skin_refinery li.wym_containers_h6 a	 { background-image: url('/images/wymeditor/skins/refinery/text_heading_6.png');}
+		.wym_skin_refinery li.wym_containers_p a	 { background-image: url('/images/wymeditor/skins/refinery/text_paragraph.png');}
+		.wym_skin_refinery li.wym_tools_class a { background-image: url('/images/wymeditor/skins/refinery/style.png');}
 
 /*DECORATION*/
 		.wym_skin_refinery .wym_section h2			 { background: #DDD; border: solid gray; border-width: 0 0 1px;}
