@@ -91,7 +91,7 @@
 		.wym_skin_refinery .wym_buttons li.wym_tools_table a		 { background-image: url('/images/wymeditor/skins/refinery/table_add.png');}
 		.wym_skin_refinery .wym_buttons li.wym_tools_paste a		 { background-image: url('/images/wymeditor/skins/refinery/page_paste.png');}
 		.wym_skin_refinery .wym_buttons li.wym_tools_html a			{ background-image: url('/images/wymeditor/skins/refinery/page_code.png');}
-		.wym_skin_refinery .wym_buttons li.wym_tools_preview a		 { background-image: url('/images/wymeditor/skins/refinery/page_go.png');}
+		.wym_skin_refinery .wym_buttons li.wym_tools_preview a		 { background-image: url('/images/wymeditor/skins/refinery/eye.png');}
 
 		/* make tools and containers play nicely next to eachother */
 
