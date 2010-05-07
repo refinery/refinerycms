@@ -2,9 +2,10 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
   <title><%= RefinerySetting.find_or_set(:site_name, 'Company Name') %> - Refinery</title>
-  <%= stylesheet_link_tag 'refinery/refinery', 'refinery/tooltips', "wymeditor/skins/refinery/skin", :cache => (use_caching ? "cache/refinery" : false) %>
+  <%= stylesheet_link_tag 'refinery/refinery', 'refinery/ui', 'refinery/tooltips', "wymeditor/skins/refinery/skin", :cache => (use_caching ? "cache/refinery" : false) %>
   <%= (y = yield :head_before_javascript_libraries).present? ? y : render(:partial => "/shared/admin/head_before_javascript_libraries") rescue "" -%>
   <%= jquery_include_tags(use_caching) %>
+  <%= javascript_include_tag 'jquery/jquery.corner.js', :cache => (use_caching ? "cache/jquery-plugins" : false) %>
   <%= javascript_include_tag 'i18n' %>
   <script type='text/javascript'>I18n.locale = '<%= I18n.locale %>';</script>
   <%= yield :head_after_javascript_libraries -%>

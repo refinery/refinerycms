@@ -227,6 +227,12 @@ a:hover {
   float: right;
 }
 
+#header #menu.ui-sortable li a {
+  cursor: move;
+}
+#header #menu.ui-sortable-disabled li a {
+  cursor: pointer;
+}
 #header  li {
   float: left;
   margin-right: 2px;
@@ -235,10 +241,10 @@ a:hover {
 
 #header li a {
   display: block;
-  padding: 9px;
+  padding: 9px 13px;
   font-size: 14px;
   background-color: #c2c2b3;
-  margin-top: 6px;
+  margin-top:4px;
 }
 
 #header li a:hover {
@@ -247,8 +253,29 @@ a:hover {
 
 #header li a.active {
   background-color: #f6f5f4;
-  padding: 12px;
+  padding: 11px 13px;
   margin-top: 0px;
+}
+
+#header #menu li a#menu_reorder, #header #menu li a#menu_reorder_done {
+  height: 10px;
+  margin-top: 11px;
+  cursor: pointer;
+  background-color: #8a8a72;
+  background-repeat: no-repeat;
+  background-position: 7px;
+  width: 4px;
+  _margin-top: 8px;
+  padding: 8px 12px;
+}
+#header #menu li a#menu_reorder:hover, #header #menu li a#menu_reorder_done:hover {
+  background-color: #a1a18b;
+}
+#header #menu li a#menu_reorder {
+  background-image: url('/images/refinery/icons/arrow_switch.png');
+}
+#header #menu li a#menu_reorder_done {
+  background-image: url('/images/refinery/icons/tick.png');
 }
 
 #content {
@@ -906,27 +933,6 @@ ul#menu.reordering_menu li a {
   cursor: move;
 }
 
-#header #menu li a#menu_reorder, #header #menu li a#menu_reorder_done {
-  height: 10px;
-  margin-top: 11px;
-  cursor: pointer !important;
-  background-color: #8a8a72;
-  background-repeat: no-repeat;
-  background-position: 7px;
-  width: 4px;
-  _margin-top: 6px;
-  padding: 9px 12px;
-}
-#header #menu li a#menu_reorder:hover, #header #menu li a#menu_reorder_done:hover {
-  background-color: #a1a18b;
-}
-#header #menu li a#menu_reorder {
-  background-image: url('/images/refinery/icons/arrow_switch.png');
-}
-#header #menu li a#menu_reorder_done {
-  background-image: url('/images/refinery/icons/tick.png');
-}
-
 .clearfix:after {
   content:".";
   display:block;
@@ -998,19 +1004,6 @@ ul#page_parts, ul#page_parts_controls {
   padding: 0;
 }
 
-ul#page_parts li {
-  float: left;
-  list-style: none;
-  margin-right: 2px;
-}
-
-ul#page_parts li a {
-  display: block;
-  padding: 0px 8px;
-  border-bottom: none;
-}
-
-ul#page_parts li.active a, ul#page_parts li a.active {}
 ul#page_parts_controls {
   float: right;
   width: 5%;
@@ -1111,15 +1104,6 @@ textarea.wymeditor {
   padding: 10px;
 }
 
-.ui-dialog #dialog_loading {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  width: 208px;
-  height: 13px;
-  margin: -6px 0 0 -104px;
-}
-
 ul#image_grid {
   width: 670px;/*580px;*/
   padding: 0px;
@@ -1177,78 +1161,8 @@ ul#plugins li {
   width:auto;
 }
 
-.ui-widget-overlay {
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  right: 0px;
-  bottom: 0px;
-  width: auto !important;
-  opacity: .75;
-  filter:Alpha(Opacity=75);
-  background: #000;
-}
-
-.ui-dialog {
-  position: relative;
-  background-color: #fff;
-  color: #000;
-  border: 4px solid #525252;
-  width: auto;
-}
-.ui-dialog .ui-dialog-titlebar {
-  float: left;
-  position: relative;
-  width: 100%;
-  background-color: #e8e8e8;
-}
-.ui-dialog .ui-dialog-title {
-  float: left;
-  height: 33px;
-  line-height: 33px;
-  font-size: 16px;
-  padding-left: 10px;
-}
-.ui-dialog .ui-dialog-titlebar-close {
-  position: absolute;
-  right: 10px;
-  top: 5px;
-  width: 19px;
-  border: none;
-}
-.ui-dialog .ui-dialog-titlebar-close span {
-  display: block;
-  margin: 1px;
-  background: transparent url('/images/thickbox/cross.png') top left no-repeat;
-  text-indent:-10000px;
-}
-.ui-dialog .ui-dialog-titlebar-close:hover, .ui-dialog .ui-dialog-titlebar-close:focus {
-  padding: 0;
-}
 #new_page_part_dialog .field {
   padding: 30px 10px;
-}
-
-.ui-tabs-hide {
-  display:none;
-}
-.ui-tabs .ui-state-default, .ui-tabs .ui-state-default a {
-  background-color: #c2c3b3;
-  line-height: 27px;
-  margin-top: 3px;
-}
-.ui-tabs .ui-state-active, .ui-tabs .ui-state-active a {
-  background-color: #808080;
-  color: #fff;
-  line-height: 33px;
-  margin-top: 0px;
-}
-.ui-dialog iframe {
-  clear:both;
-  border: 0px none;
-  margin-bottom:-1px;
-  margin-top:1px;
-  width: 100% !important;
 }
 
 .hide-overflow {

@@ -82,12 +82,12 @@ protected
       ::RoutingFilter::Locale.current_locale = params[:set_locale].to_sym
       redirect_to url_for({:controller => controller_name, :action => action_name})
     end
-    
+
     unless admin? or (locale = params[:locale] || cookies[:locale]).blank?
       I18n.locale = locale.to_s
       cookies[:locale] = locale unless (cookies[:locale] && cookies[:locale] == locale)
     end
-    
+
     I18n.locale = ::RoutingFilter::Locale.current_locale
 
     # we need to do something here to eliminate the locale from the route so that menus match properly.

@@ -22,7 +22,7 @@ Go into your 'Inquiries' tab in the Refinery admin area and click on "Update who
 
 Go into your 'Inquiries' tab in the Refinery admin area and click on "Edit confirmation email"
 
-## But I don't ant a Contact Form how do I kill it?
+## But I don't want a Contact Form how do I kill it?
 
 Your contact form loads because you have a page in your site that is told to not just render a normal page, but load the contact form instead.
 
