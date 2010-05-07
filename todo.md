@@ -2,6 +2,10 @@
 
 What are some of the known things that need to be done?
 
+## Internationalization
+
+We've got a branch for it and we need to merge that into the master.
+
 ## Tests
 
 * Add unit test coverage for user, user plugin and user mailer
@@ -11,13 +15,3 @@ What are some of the known things that need to be done?
 # Rails 3.0 Support
 
 We've started an effort to move to Rails 3.0 - that just needs to be completed.
-
-# Improve the Generator
-
-We need to have support for build in Refinery field types like "image". So I could run
-
-  ./script/generate refinery staff name:string bio:text mugshot:image
-  
-And it will automatically create a form field that pops open the image picker on the staff form.
-
-There is now a partial to easily call an image picker.
