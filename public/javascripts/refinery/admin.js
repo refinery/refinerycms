@@ -94,6 +94,8 @@ init_sortable_menu = function(){
 
     $menu.sortable('disable');
   });
+  
+  $menu.find('> li a').corner('top 5px');
 }
 
 init_submit_continue = function(){
@@ -340,7 +342,7 @@ var page_options = {
     // set the page tabs up, but ensure that all tabs are shown so that when wymeditor loads it has a proper height.
     // also disable page overflow so that scrollbars don't appear while the page is loading.
     $(document.body).addClass('hide-overflow');
-    page_options.tabs = $('#page-tabs').tabs({tabTemplate: '<li><a href="#{href}">#{label}</a></li>'});
+    page_options.tabs = $('#page-tabs').tabs({tabTemplate: '<li><a href="#{href}">#{label}</a></li>'}).find(' > ul li a').corner('top 5px');
     part_shown = $('#page-tabs .page_part.field').not('.ui-tabs-hide');
     $('#page-tabs .page_part.field').removeClass('ui-tabs-hide');
 
@@ -355,6 +357,7 @@ var page_options = {
       // hide the tabs that are supposed to be hidden and re-enable overflow.
       $(document.body).removeClass('hide-overflow');
       $('#page-tabs .page_part.field').not(part_shown).addClass('ui-tabs-hide');
+      $('#page-tabs > ul li a').corner('top 5px');
     }
 
     if(this.enable_parts){
@@ -418,7 +421,7 @@ var page_options = {
               $('#new_page_part_index').val(parseInt($('#new_page_part_index').val()) + 1);
               $('#new_page_part_title').val('');
 
-              $('#page-tabs').tabs();
+              $('#page-tabs').tabs().find('> ul li a').corner('top 5px');
             }
           );
         }else{
