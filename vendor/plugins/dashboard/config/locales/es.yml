@@ -1,0 +1,20 @@
+es:
+  common_tasks: Tareas comunes
+  add_a_new_page: Agregar nueva pagina
+  update_a_page: Actualizar una pagina
+  upload_a_file: Subir archivo
+  upload_a_image: Subir una imagen
+  see_home_page: Ver pagina principal
+
+  admin:
+    dashboard:
+      index:
+        change_language: Cambiar lenguaje
+      recent_activity:
+        latest_activity: Ultima actividad
+        nothing_has_happened_yet: No ha pasado nada
+        see: Vee '{{what}}'
+  updated: actualizado
+  created: creado
+  ago: "hace {{time}}"
+  see: Ver
