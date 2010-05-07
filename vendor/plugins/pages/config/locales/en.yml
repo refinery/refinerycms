@@ -4,7 +4,7 @@ en:
       title: Pages
   admin:
     pages:
-      form:
+      form_advanced_options:
         title: Title
         create_content_section: Create content section
         delete_content_section: Delete content section
@@ -20,13 +20,6 @@ en:
           image: Image
         custom_url: Custom URL
         custom_url_explanation: "Enter a URL if this page links to an external site or to a pre-existing resource e.g. a contact page. <br/> Note: This URL must point to a location that exists; a new one will not be created."
-        seo: Search Engine Optimization
-        seo_override_title: Browser title
-        seo_override_title_description: If you want to override the default browser title, do it here.
-        meta_keywords_title: Meta keywords
-        meta_keywords: Enter 5-10 keywords that relate to this page. Separate keywords by a comma.
-        meta_description_title: Meta description
-        meta_description: Enter a concise two or three sentences describing what this page is about.
         draft: Draft
         show_in_menu_title: Show in menu
         show_in_menu_description: Check this box if this page should appear in the site menu
@@ -34,6 +27,14 @@ en:
         save_as_draft: Save as Draft
         save: Save
         cancel: Cancel
+      form_advanced_options_seo:
+        seo: Search Engine Optimization
+        seo_override_title: Browser title
+        seo_override_title_description: If you want to override the default browser title, do it here.
+        meta_keywords_title: Meta keywords
+        meta_keywords: Enter 5-10 keywords that relate to this page. Separate keywords by a comma.
+        meta_description_title: Meta description
+        meta_description: Enter a concise two or three sentences describing what this page is about.
         js:
           content_section:
             create: Create Content Section
@@ -47,3 +48,7 @@ en:
         sorry_no_results: Sorry! There are no results found.
         no_pages_yet: There are no pages yet.  Click "Create New Page" to add your first page.
         search_results_for: "Search results for {{what}}"
+  activerecord:
+    attributes:
+      page:
+        skip_to_first_child: "Skip to first child?"
