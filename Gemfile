@@ -2,7 +2,7 @@ source 'http://gemcutter.org'
 
 git 'git://github.com/rails/rails.git'
 
-gem 'rails', '3.0.0.beta1'
+gem 'rails', '3.0.0.beta3'
 gem 'sqlite3-ruby', :require => 'sqlite3'
 
 # Use mongrel as the web server
