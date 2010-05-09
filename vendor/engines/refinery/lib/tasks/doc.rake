@@ -12,18 +12,18 @@ namespace :doc do
 	              						 'app/**/*.rb',
 	              						 'db/seeds.rb',
 	              						 'config/preinitializer.rb',
-	              						 'vendor/plugins/images/**/*.rb',
-	              						 'vendor/plugins/authentication/**/*.rb',
-	              						 'vendor/plugins/dashboard/**/*.rb',
-	              						 'vendor/plugins/inquiries/**/*.rb',
-	              						 'vendor/plugins/news/**/*.rb',
-	              						 'vendor/plugins/pages/**/*.rb',
-	              						 'vendor/plugins/refinery/**/*.rb',
-	              						 'vendor/plugins/refinery_dialogs/**/*.rb',
-	              						 'vendor/plugins/refinery_settings/**/*.rb',
-	              						 'vendor/plugins/resources/**/*.rb',
-	              						 'vendor/plugins/themes/**/*.rb',
-														 'readme.md', 'license.md', 'contributors.md', 'vendor/plugins/themes/themes.md')
+	              						 'vendor/engines/images/**/*.rb',
+	              						 'vendor/engines/authentication/**/*.rb',
+	              						 'vendor/engines/dashboard/**/*.rb',
+	              						 'vendor/engines/inquiries/**/*.rb',
+	              						 'vendor/engines/news/**/*.rb',
+	              						 'vendor/engines/pages/**/*.rb',
+	              						 'vendor/engines/refinery/**/*.rb',
+	              						 'vendor/engines/refinery_dialogs/**/*.rb',
+	              						 'vendor/engines/refinery_settings/**/*.rb',
+	              						 'vendor/engines/resources/**/*.rb',
+	              						 'vendor/engines/themes/**/*.rb',
+														 'readme.md', 'license.md', 'contributors.md', 'vendor/engines/themes/themes.md')
 	}
 
 end
