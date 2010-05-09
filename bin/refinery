@@ -20,7 +20,7 @@ unless (app_path = ARGV.shift).nil? or app_path.length == 0
     FileUtils::makedirs rails_root
 
     # copy in all of the relevant directories and root files.
-    to_copy = %w(app config db lib public themes script contributors.md license.md Rakefile readme.md VERSION).map do |dir|
+    to_copy = %w(app config db lib public themes script license.md Rakefile readme.md VERSION).map do |dir|
       refinery_root.join(dir).to_s
     end
     FileUtils::cp_r to_copy, rails_root, :verbose => false

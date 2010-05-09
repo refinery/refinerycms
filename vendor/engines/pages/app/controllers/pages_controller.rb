@@ -1,8 +1,7 @@
 class PagesController < ApplicationController
 
   def home
-    @page = Page.find_by_link_url("/", :include => [:parts, :slugs])
-    error_404 unless @page.present?
+    error_404 unless (@page = Page.find_by_link_url("/", :include => [:parts, :slugs])).present?
   end
 
   def show

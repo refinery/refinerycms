@@ -18,8 +18,8 @@ var wymeditor_boot_options = $.extend({
     ,{'name': 'CreateLink', 'title': 'Link', 'css': 'wym_tools_link'}
     ,{'name': 'Unlink', 'title': 'Unlink', 'css': 'wym_tools_unlink'}
     ,{'name': 'InsertImage', 'title': 'Image', 'css': 'wym_tools_image'}
-    ,{'name': 'InsertTable', 'title': 'Table', 'css': 'wym_tools_table'}
     ,{'name': 'ToggleHtml', 'title': 'HTML', 'css': 'wym_tools_html'}
+    ,{'name': 'InsertTable', 'title': 'Table', 'css': 'wym_tools_table'}
     ,{'name': 'Paste', 'title': 'Paste_From_Word', 'css': 'wym_tools_paste'}
   ]
 
@@ -104,7 +104,6 @@ var wymeditor_boot_options = $.extend({
       + "<form>"
         + "<input type='hidden' id='wym_dialog_type' class='wym_dialog_type' value='" + WYMeditor.DIALOG_PASTE + "' />"
         + "<div class='field'>"
-          + "<label for='wym_text'>{Text_From_Word}</label"
           + "<textarea class='wym_text' rows='10' cols='50'></textarea>"
         + "</div>"
         + "<div id='dialog-form-actions' class='form-actions'>"

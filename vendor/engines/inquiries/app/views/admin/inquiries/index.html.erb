@@ -18,25 +18,17 @@
     <h2>Search Results for "<%= params[:search] %>"</h2>
     <%= render :partial => "inquiry", :collection => @inquiries %>
   <% else %>
-    <h2>Open Inquiries</h2>
-    <% if @open_inquiries.any? -%>
-      <ul>
-        <%= render :partial => "inquiry", :collection => @open_inquiries %>
-      </ul>
+    <% if @grouped_inquiries.any? -%>
+      <% @grouped_inquiries.each do |container| %>
+        <h3><%= (inquiry_group = container.last).first.created_at.strftime("%A, %d %B %Y") %></h3>
+        <ul>
+          <%= render :partial => 'inquiry', :collection => inquiry_group %>
+        </ul>
+      <% end %>
     <% else -%>
       <p>
         <%= refinery_icon_tag('accept.png', :style => 'vertical-align: bottom') %>
         Hooray! There are no open inquiries because you've dealt with them all.
-      </p>
-    <% end -%>
-    <h2>Closed Inquiries</h2>
-    <% if @closed_inquiries.any? -%>
-      <ul>
-        <%= render :partial => "inquiry", :collection => @closed_inquiries %>
-      </ul>
-    <% else -%>
-      <p>
-        You haven't closed any inquiries yet.
       </p>
     <% end -%>
   <% end %>
