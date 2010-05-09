@@ -1,19 +1,19 @@
 #page {
-	padding: 20px;
-	width: 1000px;
-	margin: 0px auto;
+  padding: 20px;
+  width: 1000px;
+  margin: 0px auto;
 }
 #body_content_left {
-	float: left;
-	width: 600px;
+  float: left;
+  width: 600px;
 }
 #body_content_right {
-	float: right;
-	width: 360px;
+  float: right;
+  width: 360px;
 }
 .inquiries form label {
-	width: 150px;
-	float: left;
+  width: 150px;
+  float: left;
 }
 .inquiries form input {
 
@@ -25,21 +25,21 @@
 
 }
 .inquiries form .actions {
-	margin-left: 150px;
+  margin-left: 150px;
 }
 .inquiries form .actions input {
 }
 .inquiries .field {
-	margin: 12px 0px;
+  margin: 12px 0px;
 }
 .inquiries form {
-	padding-top: 12px;
+  padding-top: 12px;
 }
 .page_not_live {
-    border: 1px solid #A00027;
-    color: #A00027;
-    background: #FFB1B1;
-    padding:3px 9px;
-    font-weight:bold;
-    width:auto;
+  border: 1px solid #A00027;
+  color: #A00027;
+  background: #FFB1B1;
+  padding:3px 9px;
+  font-weight:bold;
+  width:auto;
 }

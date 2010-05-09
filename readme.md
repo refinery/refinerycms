@@ -65,7 +65,7 @@ After your database exists, you'll need to install the gems that Refinery depend
 
     rake gems:install
 
-Note: The news engine that was previously in Refinery's core was extracted into a separate gem / plugin to be found here:p
+Note: The news engine that was previously in Refinery's core was extracted into a separate gem / plugin to be found here:
 
     http://github.com/resolve/refinerycms-news
 
@@ -92,7 +92,7 @@ If you're using [Heroku](http://heroku.com/) you will want to put
 
     Refinery.s3_backend = true
 
-in your ``config/production.rb`` file to make Refinery store files uploaded on Amazon S3.
+in your ``config/environments/production.rb`` file to make Refinery store files uploaded on Amazon S3.
 
 ## Updating to the latest Refinery
 
@@ -148,7 +148,7 @@ This will pull in all of the updated files in the project and may result in some
 
 * Manage who can access Refinery
 * Control which plugins each user has access to
-* Uses the popular [RESTful authentication](http://github.com/technoweenie/restful-authentication) Rails plugin
+* Uses the popular [authlogic](http://github.com/binarylogic/authlogic) authentication Rails plugin
 
 ### [Themes](http://github.com/resolve/refinerycms/blob/master/vendor/plugins/themes/themes.md)
 

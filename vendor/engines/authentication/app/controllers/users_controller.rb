@@ -34,7 +34,19 @@ class UsersController < ApplicationController
           @user.plugins = @selected_plugin_titles
           @user.save
           UserSession.create!(@user)
-          current_user.update_attribute(:superuser, true) if User.count == 1 # this is the superuser if this user is the only user.
+          if User.count == 1
+            # this is the superuser if this user is the only user.
+            current_user.update_attribute(:superuser, true)
+
+            # set this user as the recipient of inquiry notifications
+            if (notification_recipients = InquirySetting.find_or_create_by_name("Notification Recipients")).present?
+              notification_recipients.update_attributes({
+                :value => current_user.email,
+                :destroyable => false
+              })
+            end
+          end
+
           redirect_back_or_default(admin_root_url)
           flash[:notice] = "Welcome to Refinery, #{current_user.login}."
 
@@ -52,8 +64,8 @@ class UsersController < ApplicationController
   def forgot
     if request.post?
       if (user = User.find_by_email(params[:user][:email])).present?
-        flash[:notice] = "An email has been sent to #{user.email} with a link to reset your password."
         user.deliver_password_reset_instructions!(request)
+        flash[:notice] = "An email has been sent to #{user.email} with a link to reset your password."
         redirect_back_or_default forgot_url
       else
         flash[:notice] = "Sorry, #{params[:user][:email]} isn't associated with any accounts. Are you sure you typed the correct email address?"
