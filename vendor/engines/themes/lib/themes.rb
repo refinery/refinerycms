@@ -1,37 +1,51 @@
 # Before the application gets setup this will fail badly if there's no database.
-=begin
-# Set up middleware to serve theme files
-config.middleware.use "ThemeServer"
+require 'theme_server'
 
-::Refinery::ApplicationController.module_eval do
+module Refinery
+  class ThemesEngine < ::Rails::Engine
 
-  # Add or remove theme paths to/from Refinery application
-  prepend_before_filter :attach_theme_to_refinery
+    initializer 'themes.middleware' do |app|
+      app.config.middleware.use ThemeServer
+    end
 
-  def attach_theme_to_refinery
-    # remove any paths relating to any theme.
-    view_paths.reject! { |v| v.to_s =~ %r{^themes/} }
+    initializer 'themes.configuration' do |app|
+      ::Refinery::ApplicationController.module_eval do
 
-    # add back theme paths if there is a theme present.
-    if (theme = Theme.current_theme(request.env)).present?
-      # Set up view path again for the current theme.
-      view_paths.unshift Rails.root.join("themes", theme, "views").to_s
+        # Add or remove theme paths to/from Refinery application
+        prepend_before_filter :attach_theme_to_refinery
 
-      # Ensure that routes within the application are top priority.
-      # Here we grab all the routes that are under the application's view folder
-      # and promote them ahead of any other path.
-      view_paths.select{|p| p.to_s =~ /^app\/views/}.each do |app_path|
-        view_paths.unshift app_path
+        def attach_theme_to_refinery
+          # remove any paths relating to any theme.
+          view_paths.reject! { |v| v.to_s =~ %r{^themes/} }
+
+          # add back theme paths if there is a theme present.
+          if (theme = Theme.current_theme(request.env)).present?
+            # Set up view path again for the current theme.
+            view_paths.unshift Rails.root.join("themes", theme, "views").to_s
+
+            # Ensure that routes within the application are top priority.
+            # Here we grab all the routes that are under the application's view folder
+            # and promote them ahead of any other path.
+            view_paths.select{|p| p.to_s =~ /^app\/views/}.each do |app_path|
+              view_paths.unshift app_path
+            end
+          end
+
+          # Set up menu caching for this theme or lack thereof
+          RefinerySetting[:refinery_menu_cache_action_suffix] = "#{"#{theme}_" if theme.present?}site_menu" if RefinerySetting.table_exists?
+        end
+        protected :attach_theme_to_refinery
+
       end
     end
 
-    # Set up menu caching for this theme or lack thereof
-    RefinerySetting[:refinery_menu_cache_action_suffix] = "#{"#{theme}_" if theme.present?}site_menu" if RefinerySetting.table_exists?
+    initializer 'themes.helper' do |app|
+      # Include theme functions into application helper.
+      # ::Refinery::ApplicationHelper.send :include, ThemesHelper
+      # FIXME: we have to call include on the application's ApplicationHelper,
+      # as our helper methods do not get overriden otherwise.
+      ::ApplicationHelper.send :include, ThemesHelper
+    end
+
   end
-  protected :attach_theme_to_refinery
-
 end
-
-# Include theme functions into application helper.
-Refinery::ApplicationHelper.send :include, ThemesHelper
-=end
