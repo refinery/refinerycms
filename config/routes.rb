@@ -53,7 +53,7 @@ Refinerycms::Application.routes.draw do |map|
   root :to => 'pages#home'
 
   namespace(:admin) do
-    root :to => 'admin/dashboard#index'
+    root :to => 'dashboard#index'
   end
 
   # See how all your routes lay out with "rake routes"
