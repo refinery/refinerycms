@@ -15,9 +15,7 @@ viewing the Rails 3.0 branch.
 
 Work items still to do:
 
-* Replace or fix friendly\_id upstream.
 * Replace or fix attachment\_fu upstream (possibly with Paperclip, Carrierwave).
-* Fix theme middleware (high).
 * Migrate to new Mailer API (low).
 * Fix other deprecations (low).
 
