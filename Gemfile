@@ -27,8 +27,7 @@ end
 gem 'image_science'
 
 #===REFINERY REQUIRED GEMS===
-#git 'git://github.com/norman/friendly_id.git', :branch => '3.0'
-gem "friendly_id", '3.0.1', :require => 'friendly_id'
+gem "friendly_id", '~> 3.0', :require => 'friendly_id'
 gem "hpricot", ">= 0.8.1", :require => "hpricot"
 gem "slim_scrooge", ">= 1.0.5", :require => "slim_scrooge"
 #git 'git://github.com/mislav/will_paginate.git', 'branch' => 'rails3'
