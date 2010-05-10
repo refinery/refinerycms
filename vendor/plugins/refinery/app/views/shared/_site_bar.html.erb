@@ -2,9 +2,9 @@
   <div id='site_bar_content' class='clearfix'>
     <div id='editor_switch'>
       <% if admin? %>
-        <%= link_to "Switch to live view", "/" %>
+        <%= link_to "Switch to live view", begin request.request_uri.to_s.match(/\/admin(.*)\/edit/)[1] rescue "/" end %>
       <% else %>
-        <%= link_to "Switch to editor view", admin_root_url %>
+        <%= link_to "Switch to editor view", (request.request_uri.to_s == "/") ? admin_root_url : "/admin" + request.request_uri.to_s + "/edit" %>
       <% end %>
     </div>
     <div id='site_bar_branding'>
