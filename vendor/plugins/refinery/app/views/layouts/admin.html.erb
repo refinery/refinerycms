@@ -1,6 +1,5 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-  <% content_for :head, stylesheet_link_tag('refinery/site_bar') %>
+<!DOCTYPE html>
+<html>
   <%= render :partial => "/admin/head" %>
   <body<%= " class='login'" unless logged_in? %><%= " class='splash'" if logged_in? and action_name == "index" %>>
     <%= render :partial => '/shared/site_bar'  %>
