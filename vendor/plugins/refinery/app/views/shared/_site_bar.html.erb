@@ -1,0 +1,18 @@
+<div id='site_bar'>
+  <div id='site_bar_content' class='clearfix'>
+    <div id='editor_switch'>
+      <% if admin? %>
+        <%= link_to "Switch to live view", "/" %>
+      <% else %>
+        <%= link_to "Switch to editor view", admin_root_url %>
+      <% end %>
+    </div>
+    <div id='site_bar_branding'>
+      <%= RefinerySetting[:site_name] %>
+      <%= link_to image_tag("#{"http://refinerycms.com/images/" unless local_request?}refinery/logo-tiny.png",
+                    :alt => "Refinery (tm) Content Manager"), "http://refinerycms.com",
+                    :target => "_blank" %>
+    </div>
+  </div>
+</div>
+<%= stylesheet_link_tag('refinery/site_bar') %>

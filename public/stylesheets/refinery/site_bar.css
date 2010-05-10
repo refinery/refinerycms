@@ -1,0 +1,38 @@
+#editor_switch {
+  float: left;
+}
+
+#site_bar_branding {
+  float: right;
+}
+
+#site_bar, #site_bar * {
+  color: #a7a79d;
+  font-family: Arial;
+  font-size: 13px;
+}
+
+#site_bar a:hover {
+  color: white;
+}
+
+#site_bar * {
+  line-height: 40px;
+}
+
+#site_bar {
+  height: 40px;
+  background: url('/images/refinery/page_bg.png') repeat;
+  padding: 0px 15px;
+}
+
+#site_bar img {
+  vertical-align: middle;
+  margin-top: -5px;
+  padding-left: 10px;
+}
+
+#site_bar_branding a {
+  border-bottom: none;
+  
+}
