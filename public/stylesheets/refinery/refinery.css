@@ -160,49 +160,63 @@ a:hover {
   text-align: left;
   width: 990px;
 }
-#page_container #page {
+
+body.login #page_container #page, #page_container.splash #page {
   background: #f6f5f4;
 }
 
-#page_container.login {
+body.login #page_container, body.login #site_bar_content, body.login #site_bar_branding  {
   width: 590px;
 }
 
-#page_container.login #page h1 {
+body.login #header {
+  display: none;
+}
+
+body.login #editor_switch {
+  display: none;
+}
+
+body.login #site_bar_branding img {
+  float: right;
+  margin-top: 10px;
+}
+
+#page_container .login #page h1 {
   margin: 0;
   padding: 5px;
   font-size: 20px;
   line-height:22px
 }
 
-#page_container.login div.session_username, #page_container.login div.session_password {
+body.login #page_container div.session_username, body.login #page_container div.session_password {
   float: left;
 }
 
-#page_container.login div.session_password {
+body.login #page_container div.session_password {
   margin-left: 25px;
 }
 
-#page_container.login div.remember_me {
+body.login #page_container div.remember_me {
   margin-top: 12px;
 }
 
-#page_container.login div.forgot_password {
+body.login #page_container div.forgot_password {
   float: right;
 
   margin-top: 11px;
   margin-right: 3px;
 }
 
-#page_container.login div.remember_me label {
+body.login #page_container div.remember_me label {
   display: inline;
 }
 
-#page_container.login div.session_username input, #page_container.login div.session_password input {
+body.login #page_container div.session_username input, body.login #page_container div.session_password input {
   width: 260px;
 }
 
-#page_container.login div.actions {
+body.login #page_container div.actions {
   margin-top: 12px;
 }
 
@@ -293,13 +307,12 @@ pre {
 }
 
 #header {
-  background: url('/images/refinery/header_background.png') #50504B repeat-x bottom;
   padding: 26px 15px 0 15px;
   position: relative;
-  height: 93px;
+  height: 18px;
 }
 
-#page_container.login #header {
+body.login #page_container #header {
   padding: 42px 15px 42px 15px;
   height: 35px;
 }
@@ -920,6 +933,16 @@ body.dialog form {
 
 ul#menu.reordering_menu li a {
   cursor: move;
+}
+
+#site_bar {
+  background: none;
+}
+
+
+#site_bar_content {
+  width: 958px;
+  margin: 0px auto;
 }
 
 .clearfix:after {

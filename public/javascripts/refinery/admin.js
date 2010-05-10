@@ -9,6 +9,7 @@ $(document).ready(function(){
 
   // focus first field in an admin form.
   $('form input[type=text]:first').focus();
+  $('#content').corner('2px');
 });
 
 init_delete_confirmations = function() {
