@@ -132,7 +132,8 @@ a {
 }
 
 .splash #content {
-  background: url('/images/refinery/admin_bg.png') repeat-y;
+  background-image: url('/images/refinery/admin_bg.png');
+  background-repeat: repeat-y;
 }
 #content h1 {
   font-size: 18px;
@@ -161,8 +162,8 @@ a:hover {
   width: 990px;
 }
 
-body.login #page_container #page, #page_container.splash #page {
-  background: #f6f5f4;
+body.login #page_container #page, #page_container.splash #page, #content {
+  background-color: #f6f5f4;
 }
 
 body.login #page_container, body.login #site_bar_content, body.login #site_bar_branding  {

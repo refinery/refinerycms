@@ -1,3 +1,4 @@
+<% content_for :head, stylesheet_link_tag('refinery/site_bar') unless admin? %>
 <div id='site_bar'>
   <div id='site_bar_content' class='clearfix'>
     <div id='editor_switch'>
@@ -15,4 +16,3 @@
     </div>
   </div>
 </div>
-<%= stylesheet_link_tag('refinery/site_bar') %>
