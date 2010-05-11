@@ -359,7 +359,7 @@ body.login #page_container #header {
 #footer_logo {
   border: 0px none;
   display:inline-block;
-  *display:inline;
+  _display:block;
   margin: 50px auto 40px auto;
   width: auto;
 }
