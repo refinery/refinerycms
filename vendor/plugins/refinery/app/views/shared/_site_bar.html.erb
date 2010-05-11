@@ -1,17 +1,29 @@
 <div id='site_bar'>
   <div id='site_bar_content' class='clearfix'>
     <div id='editor_switch'>
-      <% if admin? %>
-        <%= link_to "Switch to live view", begin request.request_uri.to_s.match(/\/admin(.*)\/edit/)[1] rescue "/" end %>
-      <% else %>
-        <%= link_to "Switch to editor view", (request.request_uri.to_s == "/") ? admin_root_url : "/admin" + request.request_uri.to_s + "/edit" %>
-      <% end %>
+      <%
+        if admin?
+          (r = ::ActionController::TestRequest.new(request.env)).path = (request.request_uri.to_s.match(/\/admin(.*)\/edit/)[1] rescue root_url)
+          public_route = ((c = ActionController::Routing::Routes.recognize(r)).present? and c != ApplicationController) ? r.path : root_url rescue root_url
+        else
+          if @page.present? and !@page.home?
+            editor_route = edit_admin_page_url(@page)
+          else
+            editor_route = (request.request_uri.to_s == '/') ? admin_root_url : "/admin#{request.request_uri}/edit"
+          end
+        end
+      -%>
+      <%=
+        link_to_if(admin?, "Switch to live view", public_route) do
+          link_to "Switch to editor view", editor_route
+        end
+      -%>
     </div>
     <div id='site_bar_branding'>
       <%= RefinerySetting[:site_name] %>
       <%= link_to image_tag("#{"http://refinerycms.com/images/" unless local_request?}refinery/logo-tiny.png",
-                    :alt => "Refinery (tm) Content Manager"), "http://refinerycms.com",
-                    :target => "_blank" %>
+                  :alt => "Refinery (tm) Content Manager"), "http://refinerycms.com",
+                  :target => "_blank" %>
     </div>
   </div>
 </div>
