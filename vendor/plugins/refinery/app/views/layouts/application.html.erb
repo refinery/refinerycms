@@ -5,14 +5,14 @@
     <%= render :partial => "/shared/site_bar" if logged_in? %>
     <%= render :partial => "/shared/ie6check" if request.env['HTTP_USER_AGENT'] =~ /MSIE/ -%>
     <div id='page_container'>
-      <div id='page' class='clearfix'>
+      <div id='page'>
         <div id='header' class='clearfix'>
           <%= render :partial => "/shared/header" %>
         </div>
         <div id='body' class='clearfix'>
           <%= yield %>
         </div>
-        <div id='footer' class='clearfix'>
+        <div id='footer'>
           <%= render :partial => "/shared/footer" %>
         </div>
       </div>
