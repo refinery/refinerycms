@@ -1,21 +1,14 @@
+<%= stylesheet_link_tag('refinery/site_bar') %>
 <div id='site_bar'>
   <div id='site_bar_content' class='clearfix'>
     <div id='editor_switch'>
-      <%
-        if admin?
-          (r = ::ActionController::TestRequest.new(request.env)).path = (request.request_uri.to_s.match(/\/admin(.*)\/edit/)[1] rescue root_url)
-          public_route = ((c = ActionController::Routing::Routes.recognize(r)).present? and c != ApplicationController) ? r.path : root_url rescue root_url
-        else
-          if @page.present? and !@page.home?
-            editor_route = edit_admin_page_url(@page)
-          else
-            editor_route = (request.request_uri.to_s == '/') ? admin_root_url : "/admin#{request.request_uri}/edit"
-          end
-        end
-      -%>
       <%=
-        link_to_if(admin?, "Switch to live view", public_route) do
-          link_to "Switch to editor view", editor_route
+        link_to_if(admin?, "Switch to live view", root_url) do
+          link_to "Switch to editor view", (if @page.present? and !@page.home?
+                                             edit_admin_page_url(@page)
+                                           else
+                                             (request.request_uri.to_s == '/') ? admin_root_url : "/admin#{request.request_uri}/edit"
+                                           end rescue admin_root_url)
         end
       -%>
     </div>
@@ -27,4 +20,3 @@
     </div>
   </div>
 </div>
-<%= stylesheet_link_tag('refinery/site_bar') %>
