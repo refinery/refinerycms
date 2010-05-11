@@ -3,7 +3,7 @@
   <head>
     <%= "<meta http-equiv='X-UA-Compatible' content='IE-EmulateIE7' />" if request.env['HTTP_USER_AGENT'] =~ /MSIE/ %>
     <title>WYMeditor</title>
-    <%= stylesheet_link_tag "wymeditor/skins/refinery/wymiframe", "formatting", "theme", :media => "all" %>
+    <%= stylesheet_link_tag "wymeditor/skins/refinery/wymiframe", "#{"/theme/stylesheets/" if RefinerySetting[:theme].present?}formatting", "theme", :media => "all" %>
   </head>
   <body class="wym_iframe"></body>
 </html>
