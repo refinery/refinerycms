@@ -20,7 +20,7 @@ pt-BR:
         show_in_menu: Mostrar no menu
   admin: 
     pages:
-      form:
+      form_advanced_options:
         create_content_section: Criar seção de conteúdoCreate content section
         delete_content_section: Remover seção de conteúdo
         hide_or_show_advanced_options: Esconder/Mostrar Opções Avançadas
@@ -33,15 +33,19 @@ pt-BR:
           image: Imagem
         custom_url: URL personalizada
         custom_url_explanation: "Entre uma URL caso esta página se ligue a site externo ou a um recurso pré-existente, p.e. uma página de contato. <br/> Nota: Esta URL deve apontar para uma localização existente; uma nova não será criada."
-        seo: Otimização de Motor de Busca
-        seo_override_title: Se você quiser sobrescrever o título padrão do navegador, faça isso aqui.
-        meta_keywords: Entre entre 5-10 palavras-chave que se relacionam a esta página. Separe as palavras-chave por vírgula.
-        meta_description: Entre duas ou três sentenças concisas descrevendo sobre o que é essa página.
         draft: Rascunho
         show_in_menu_description: Marque esta caixa se esta página deve aparecer no menu do site
         save_as_draft: Salvar como Rascunho
         save: Salvar
         cancel: Cancelar
+      form_advanced_options_seo:
+        seo: Otimização de Motor de Busca
+        seo_override_title: Se você quiser sobrescrever o título padrão do navegador, faça isso aqui.
+        seo_override_title_description: Se você quiser substituir o título do navegador padrão, fazê-lo aqui.
+        meta_keywords_title: Meta palavras-chave
+        meta_keywords: Entre entre 5-10 palavras-chave que se relacionam a esta página. Separe as palavras-chave por vírgula.
+        meta_description_title: Meta descrição
+        meta_description: Entre duas ou três sentenças concisas descrevendo sobre o que é essa página.
         js:
           content_section:
             create: Criar Seção de Conteúdo

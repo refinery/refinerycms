@@ -4,7 +4,7 @@ de:
       title: Seiten
   admin:
     pages:
-      form:
+      form_advanced_options:
         title: Title
         create_content_section: Inhaltsbereich erstellen
         delete_content_section: Inhaltsbereich löschen
@@ -20,6 +20,13 @@ de:
           image: Bild
         custom_url: Eigene URL
         custom_url_explanation: "Geben Sie eine URL ein, wenn diese Seite zu einer externen Seite oder einer bereits existierenden Ressource (z.B. eine Kontaktseite) verlinken soll.<br />Hinweis: Diese URL muss zu einem bereits existierenden Ort verlinken, eine neue Seite wird nicht angelegt."
+        show_in_menu_title: Im Menü anzeigen
+        show_in_menu_description: Checken Sie diese Box, wenn diese Seite im Seitenmenü angezeigt werden soll.
+        draft: Entwurf
+        save_as_draft: Als Entwurf speichern
+        save: Speichern
+        cancel: Abbrechen
+      form_advanced_options_seo:        
         seo: Suchmaschinen-Optimierung
         seo_override_title: Browser Titel
         seo_override_title_description: Hier können Sie den Standard-Browser-Titel überschreiben.
@@ -27,12 +34,6 @@ de:
         meta_keywords: Geben Sie 5-10 Schlüsselbegriffe mit Bezug zu dieser Seite ein. Trennen Sie Schlüsselbegriffe mit Kommas.
         meta_description_title: Meta description
         meta_description: Geben Sie zwei bis drei kurze Sätze über den Inhalt dieser Seite ein.
-        show_in_menu_title: Im Menü anzeigen
-        show_in_menu_description: Checken Sie diese Box, wenn diese Seite im Seitenmenü angezeigt werden soll.
-        draft: Entwurf
-        save_as_draft: Als Entwurf speichern
-        save: Speichern
-        cancel: Abbrechen
         js:
           content_section:
             create: Inhaltsbereich erstellen.

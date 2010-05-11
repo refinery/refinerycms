@@ -4,7 +4,7 @@ fr:
       title: Pages
   admin:
     pages:
-      form:
+      form_advanced_options:
         title: Titre
         create_content_section: Créer une section de contenu
         delete_content_section: Supprimer une section de contenu
@@ -20,6 +20,14 @@ fr:
           image: Image
         custom_url: URL personnalisée
         custom_url_explanation: "Entrez une URL, si cette page est un lien vers un site externe ou une ressource existante, par exemple une page de contact. <br/> Note: Cette URL doit pointer vers un emplacement qui existe déjà; une nouvelle page ne sera pas créé."
+        draft: Brouillon
+        show_in_menu_title: Afficher dans le menu
+        show_in_menu_description: Cochez cette case si la page doit apparaître dans le menu du site
+        draft: Brouillon
+        save_as_draft: Enregistrer comme un Brouillon
+        save: Enregistrer
+        cancel: Annuler
+      form_advanced_options_seo:
         seo: Search Engine Optimization
         seo_override_title: Titre du navigateur
         seo_override_title_description: "Si vous voulez remplacer le titre du navigateur par défaut, le faite le ici."
@@ -27,12 +35,6 @@ fr:
         meta_keywords: Saisissez les mots clés qui ont relation avec le contenu de cette page. Séparez les mots clés par une virgule.
         meta_description_title: Meta description
         meta_description: Entrez un deux ou trois phrases concises décrivant ce que cette page contient.
-        draft: Brouillon
-        show_in_menu_title: Afficher dans le menu
-        show_in_menu_description: Cochez cette case si la page doit apparaître dans le menu du site
-        save_as_draft: Enregistrer comme un Brouillon
-        save: Enregistrer
-        cancel: Annuler
         js:
           content_section:
             create: Créer une section de contenu
