@@ -7,13 +7,9 @@
 }
 
 #site_bar, #site_bar * {
-  color: #a7a79d;
+  color: white;
   font-family: Arial;
   font-size: 13px;
-}
-
-#site_bar a:hover {
-  color: white;
 }
 
 #site_bar * {
@@ -26,6 +22,15 @@
   padding: 0px 15px;
 }
 
+#site_bar a {
+  border-bottom: 1px dotted white;
+  text-decoration: none;
+}
+
+#site_bar a:hover {
+  border-bottom: 1px solid white;
+}
+
 #site_bar img {
   vertical-align: middle;
   margin-top: -5px;
@@ -34,5 +39,4 @@
 
 #site_bar_branding a {
   border-bottom: none;
-  
 }
