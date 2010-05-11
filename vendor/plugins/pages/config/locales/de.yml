@@ -20,6 +20,7 @@ de:
           image: Bild
         custom_url: Eigene URL
         custom_url_explanation: "Geben Sie eine URL ein, wenn diese Seite zu einer externen Seite oder einer bereits existierenden Ressource (z.B. eine Kontaktseite) verlinken soll.<br />Hinweis: Diese URL muss zu einem bereits existierenden Ort verlinken, eine neue Seite wird nicht angelegt."
+        draft: Entwurf
         show_in_menu_title: Im Menü anzeigen
         show_in_menu_description: Checken Sie diese Box, wenn diese Seite im Seitenmenü angezeigt werden soll.
         draft: Entwurf
@@ -47,3 +48,7 @@ de:
         sorry_no_results: Entschuldigung! Es wurden keine Suchergebnisse gefunden.
         no_pages_yet: Es wurden noch keine Seiten erstellt. Klicken Sie auf "Neue Seite erstellen" um Ihre erste Seite zu erstellen..
         search_results_for: "Suchergebnisse für {{what}}"
+  activerecord:
+    attributes:
+      page:
+        skip_to_first_child: "Skip to first child?"
