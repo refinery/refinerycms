@@ -4,7 +4,7 @@ es:
       title: Paginas
   admin:
     pages:
-      form:
+      form_advanced_options:
         title: Titulo
         create_content_section: "Crear contenido de la sección"
         delete_content_section: "Borrar contenido de la sección"
@@ -20,13 +20,6 @@ es:
           image: Imagen
         custom_url: URL Personalizado
         custom_url_explanation: "Ingresa un URL si la pagina se liga a una pagina externa a este sitio o algun recurso pre-creado ejemplo una pagina de contacto. <br/> Nota: Este URL debe de dirigirse a un lugar existente si no no será creado."
-        seo: "Optimización para Motores de Busqueda"
-        seo_override_title: Titulo del Navegador
-        seo_override_title_description: "Si tu quieres cambiar el titulo del navegador, alzo aquí."
-        meta_keywords_title: Meta palabras
-        meta_keywords: Ingresa 5-10 palabras relacionadas a esta pagina.  Separadas por comas.
-        meta_description_title: "Meta descripción"
-        meta_description: "Ingresa una descripción concisa de 2 a 3 renglones que describan esta pagina."
         draft: Borrador
         show_in_menu_title: "Ver en menú"
         show_in_menu_description: "Marque esta casilla si esta página debe aparecer en el menú del sitio" 
@@ -34,6 +27,14 @@ es:
         save_as_draft: Guardar como Borrador
         save: Guardar
         cancel: Cancelar
+      form_advanced_options_seo:
+        seo: "Optimización para Motores de Busqueda"
+        seo_override_title: Titulo del Navegador
+        seo_override_title_description: "Si tu quieres cambiar el titulo del navegador, alzo aquí."
+        meta_keywords_title: Meta palabras
+        meta_keywords: Ingresa 5-10 palabras relacionadas a esta pagina.  Separadas por comas.
+        meta_description_title: "Meta descripción"
+        meta_description: "Ingresa una descripción concisa de 2 a 3 renglones que describan esta pagina."
         js:
           content_section:
             create: "Crear Contenido de la Sección"
@@ -47,3 +48,7 @@ es:
         sorry_no_results: Disculpe! No hay resultados de la busqueda.
         no_pages_yet: No hay ninguna pagina aun.  Click "Crear nueva Pagina" para agregar tus primeras paginas.
         search_results_for: "Resultados de busqueda para {{what}}"
+  activerecord:
+    attributes:
+      page:
+        skip_to_first_child: "¿Saltar hasta el primero nodo?"
