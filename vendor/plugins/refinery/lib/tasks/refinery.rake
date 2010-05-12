@@ -22,7 +22,16 @@ namespace :refinery do
     end
 
   end
-
+  
+  desc "Update the core files with the gem"
+  task :update => :environment do
+    
+  end
+  
+  namespace :override do
+    
+  end
+  
   namespace :cache do
     desc "Eliminate existing cache files for javascript and stylesheet resources in default directories"
     task :clear => :environment do
