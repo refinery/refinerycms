@@ -5,7 +5,7 @@
 
     <span class='actions'>
       <%= link_to refinery_icon_tag("application_edit.png"),
-                  edit_admin_refinery_setting_path(refinery_setting),
+                  edit_admin_refinery_setting_path(refinery_setting, :dialog => true, :width => 725, :height => 350),
                   :title => 'Edit this setting' %>
       <%= link_to refinery_icon_tag("delete.png"),
                   admin_refinery_setting_path(refinery_setting),
