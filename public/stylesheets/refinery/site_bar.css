@@ -1,0 +1,66 @@
+#site_bar, #site_bar * {
+  color: white;
+  font-family: Arial;
+  font-size: 14px;
+  font-weight: normal;
+}
+
+#editor_switch, #site_bar_branding, a#site_bar_refinery_cms_logo {
+  position: absolute;
+}
+
+#editor_switch {
+  left: 0px;
+}
+
+#site_bar_branding {
+  right: 0px;
+}
+
+#site_bar #site_bar_company_name {
+  font-weight: bold;
+}
+
+#site_bar site_bar_branding a {
+  font-weight: normal;
+}
+
+#site_bar * {
+  line-height: 46px;
+}
+
+#site_bar {
+  height: 46px;
+  background: #22a7f2;
+  padding: 0px;
+  border-bottom: 1px solid #1b82bd;
+}
+
+#site_bar a {
+  border-bottom: 1px dotted white;
+  text-decoration: none;
+}
+
+#site_bar a:hover {
+  border-bottom: 1px solid white;
+}
+
+#site_bar img {
+  vertical-align: middle;
+  margin-top: -5px;
+  padding-left: 10px;
+}
+
+#site_bar_content {
+  position: relative;
+}
+
+a#site_bar_refinery_cms_logo {
+  left: 44.5%;
+  opacity: 0.5;
+  border-bottom: none;
+}
+a#site_bar_refinery_cms_logo:hover {
+  border-bottom: none;
+  opacity: 1;
+}

@@ -1,140 +1,25 @@
-<%= error_messages_for :page %>
-
 <%= form_for([:admin, @page]) do |f| %>
+  <%= f.error_messages  %>
   <div class="field">
     <%= f.label :title %>
     <%= f.text_field :title, :class => "larger", :style => 'width: 954px' %>
   </div>
-  <div id="page-tabs" class="clearfix">
-    <ul id="page_parts">
-    <% @page.parts.each_with_index do |part, part_index| %>
-      <li>
-        <%= link_to part.title, "##{@page.new_record? ? "page_part_new_#{part_index}" : part.to_param}" %>
-      </li>
-    <% end %>
-    </ul>
-    <% if RefinerySetting.find_or_set(:new_page_parts, false) %>
-      <ul id="page_parts_controls">
-        <li>
-          <%= link_to refinery_icon_tag("add.png"), "#", :id => "add_page_part", :title => "Create Content Section" %>
-        </li>
-        <li>
-          <%= link_to(refinery_icon_tag("delete.png"), "#", :title => 'Delete content section', :class => 'delete_page_part', :name => "Delete Content Section", :id => "delete_page_part") %>
-        </li>
-      </ul>
-    <% end %>
+  <%= render :partial => "form_page_parts", :locals => {:f => f} %>
 
-    <div id='page_part_editors'>
-      <% part_index = -1 %>
-      <%= f.fields_for(:parts) do |p| %>
-        <%= render :partial => "page_part_field", :locals => {
-          :part => p.object,
-          :part_index => (part_index += 1),
-          :new_part => @page.new_record?
-        } %>
-      <% end %>
-    </div>
-  </div>
-  <p>
-    <a href="#" id="toggle_advanced_options" rel="Click to access meta tag settings and menu options">&raquo; Hide/Show Advanced Options</a>
-  </p>
-  <div id='more_options' style="display:none;">
-    <div class='field'>
-      <%= f.label :parent_id %>
-      <%= f.collection_select :parent_id, @pages_for_parents_list, :id, :indented_title, :include_blank => true %>
-    </div>
-    <div class='field'>
-      <%= label_tag :custom_title %>
-      <%= label_tag "", 'Type:', :class => "stripped" %>
-      <% ["none", "text"].each do |type| %>
-        <%= f.radio_button :custom_title_type, "#{type}" %>
-        <%= label_tag "page_custom_title_type_#{type}", "#{type.titleize}", :class => "stripped" %>
-      <% end %>
-      <br/>
-      <div id='custom_title_none'></div>
-      <div id='custom_title_text' style='display: <%= @page.custom_title_type == 'text' ? 'block' : 'none' %>'>
-        <p>
-          <%= f.text_field :custom_title, {:size => 103} %><br/>
-          <small>
-            If you want the page to have a different title than the one that shows in the menu and browser title then enter it here.<br/>
-          </small>
-        </p>
-      </div>
-    </div>
-    <div class='field'>
-      <%= label_tag :skip_to_first_child? %>
-      <%= f.check_box :skip_to_first_child %>
-      <%= f.label :skip_to_first_child, "Check this box if you want the visitor to be redirected to this page's first child page if this page is selected.", :class => "stripped" %>
-    </div>
-    <div class='field'>
-      <%= f.label :link_url, "Custom URL" %>
-      <%= f.text_field :link_url, {:size => 103} %><br/>
-      <small>
-        Enter a URL if this page links to an external site or to a pre-existing resource e.g. a contact page.
-        <br/>
-        Note: This URL must point to a location that exists; a new one will not be created.
-      </small>
-    </div>
-    <h2>Search Engine Optimization</h2>
-    <div class='field'>
-      <%= f.label :browser_title %>
-      <%= f.text_field :browser_title, :size => 63 %><br/>
-      <small>
-        If you want to override the default browser title, do it here.
-      </small>
-    </div>
-    <div class='field'>
-      <%= f.label :meta_keywords %>
-      <%= f.text_field :meta_keywords, :size => 63 %><br/>
-      <small>
-        Enter 5-10 keywords that relate to this page. Separate keywords by a comma.
-      </small>
-    </div>
-    <div class='field'>
-      <%= f.label :meta_description %>
-      <%= f.text_area :meta_description, :cols => 95, :rows => 3 %><br/>
-      <small>
-        Enter a concise two or three sentences describing what this page is about.
-      </small>
-    </div>
-    <div class='field'>
-      <%= f.label :show_in_menu %>
-      <%= f.check_box :show_in_menu %>
-      <small>
-        <%= f.label :show_in_menu, "Check this box if this page should appear in the site menu" %>
-      </small>
-    </div>
-  </div>
-  <div class='field'>
-    <label>Draft</label>
-    <%= f.check_box :draft %>
-    <%= f.label :draft, "Save as Draft", :class => "stripped" %>
-  </div>
+  <%= render :partial => "form_advanced_options", :locals => {:f => f} %>
+
   <%= render :partial => "/shared/admin/form_actions", :locals => {:f => f, :continue_editing => true} %>
-  <% if RefinerySetting.find_or_set(:new_page_parts, false) %>
-    <div id='new_page_part_dialog' style='display: none'>
-      <div class='field'>
-        <label for='new_page_part_title'>Title</label>
-        <input id='new_page_part_title' value='' class='larger' size='40' />
-        <input id='new_page_part_index' type='hidden' value='<%= @page.parts.size %>' />
-      </div>
-      <%= render :partial => "/shared/admin/form_actions", :locals => {
-        :f => f,
-        :continue_editing => false,
-        :submit_button_id => "new_page_part_save",
-        :cancel_button_id => "new_page_part_cancel"
-      } %>
-    </div>
-  <% end %>
+
+  <%= render :partial => "form_new_page_parts", :locals => {:f => f} if RefinerySetting.find_or_set(:new_page_parts, false) %>
 <% end %>
 
 <% content_for :head do %>
-<script type='text/javascript'>
-  $(document).ready(function(){
-    var page_parts = <%= RefinerySetting.find_or_set(:new_page_parts, false) == true ? 'true' : 'false' %>;
-    var new_part_url = "<%= new_admin_page_part_url %>";
-    var del_part_url = "<%= admin_page_parts_url %>";
-    page_options.init(page_parts, new_part_url, del_part_url);
-  });
-</script>
+  <script type='text/javascript'>
+    $(document).ready(function(){
+      var page_parts = <%= RefinerySetting.find_or_set(:new_page_parts, false) == true ? 'true' : 'false' %>;
+      var new_part_url = "<%= new_admin_page_part_url %>";
+      var del_part_url = "<%= admin_page_parts_url %>";
+      page_options.init(page_parts, new_part_url, del_part_url);
+    });
+  </script>
 <% end %>

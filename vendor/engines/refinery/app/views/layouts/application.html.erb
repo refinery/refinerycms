@@ -1,17 +1,18 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
   <%= render :partial => "/shared/head" %>
   <body>
+    <%= render :partial => "/shared/site_bar" if logged_in? %>
     <%= render :partial => "/shared/ie6check" if request.env['HTTP_USER_AGENT'] =~ /MSIE/ -%>
     <div id='page_container'>
-      <div id='page' class='clearfix'>
+      <div id='page'>
         <div id='header' class='clearfix'>
           <%= render :partial => "/shared/header" %>
         </div>
         <div id='body' class='clearfix'>
           <%= yield %>
         </div>
-        <div id='footer' class='clearfix'>
+        <div id='footer'>
           <%= render :partial => "/shared/footer" %>
         </div>
       </div>

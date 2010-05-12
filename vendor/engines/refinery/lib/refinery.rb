@@ -33,6 +33,12 @@ end
 require_dependency 'refinery/form_helpers'
 require_dependency 'refinery/base_presenter'
 
-#presenters_path = Rails.root.join("app", "presenters").to_s
-#$LOAD_PATH << presenters_path
-#::ActiveSupport::Dependencies.load_paths << presenters_path
+[ Refinery.root.join("vendor", "plugins", "*", "app", "presenters").to_s,
+  Rails.root.join("vendor", "plugins", "*", "app", "presenters").to_s,
+  Rails.root.join("app", "presenters").to_s
+].uniq.each do |path|
+  Dir[path].each do |presenters_path|
+    $LOAD_PATH << presenters_path
+    ::ActiveSupport::Dependencies.load_paths << presenters_path
+  end
+end
