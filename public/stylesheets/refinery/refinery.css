@@ -253,16 +253,18 @@ body.login #page_container div.actions {
   display: block;
   padding: 9px 13px;
   font-size: 14px;
-  background-color: #c2c2b3;
+  background-color: #d8d8d8;
   margin-top:4px;
+  color: #0073ea;
 }
 
 #header li a:hover {
-  background-color: #deded9;
+  background-color: #e9e9e9;
 }
 
 #header li a.active {
-  background-color: #f6f5f4;
+  background-color: white;
+  color: #ff5500;
   padding: 11px 13px;
   margin-top: 0px;
 }
