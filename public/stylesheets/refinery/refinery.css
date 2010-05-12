@@ -172,17 +172,12 @@ a#site_bar_refinery_cms_logo {
   background-color: #f6f5f4;
 }
 
-body.login #page_container, body.login #site_bar_content, body.login #site_bar_branding  {
+body.login #page_container, body.login #site_bar_content {
   width: 590px;
 }
 
-body.login #editor_switch {
-  display: none;
-}
-
-body.login #site_bar_branding img {
-  float: right;
-  margin-top: 5px;
+body.login #site_bar_content a#site_bar_refinery_cms_logo {
+  left: 247px;
 }
 
 #page_container .login #page h1 {
