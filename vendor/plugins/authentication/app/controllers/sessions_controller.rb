@@ -2,10 +2,11 @@ class SessionsController < ApplicationController
   layout 'admin'
   filter_parameter_logging 'password', 'password_confirmation'
   before_filter :redirect?, :only => [:new, :create]
+  before_filter :redirect_to_new, :only => [:index, :show]
 
   def new
     @session = UserSession.new
-    flash[:notice] = "Welcome. Sign into #{RefinerySetting[:site_name]}"
+    flash.now[:notice] = "Hello, please sign into #{RefinerySetting[:site_name]}"
   end
 
   def create
@@ -27,6 +28,10 @@ protected
 
   def redirect?
     redirect_to admin_root_url if logged_in?
+  end
+
+  def redirect_to_new
+    redirect_to :action => "new"
   end
 
   def take_down_for_maintenance?;end
