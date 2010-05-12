@@ -3,8 +3,13 @@ class SessionsController < ApplicationController
   filter_parameter_logging 'password', 'password_confirmation'
   before_filter :redirect?, :only => [:new, :create]
 
+  def new
+    @session = UserSession.new
+    flash[:notice] = "Welcome. Sign into #{RefinerySetting[:site_name]}"
+  end
+
   def create
-    if UserSession.create(params[:session])
+    if (@session = UserSession.create(params[:session])).valid?
       redirect_back_or_default(admin_root_url)
       flash[:notice] = "Logged in successfully"
     else
