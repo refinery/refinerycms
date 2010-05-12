@@ -92,7 +92,7 @@ module Refinery::ApplicationHelper
     title = []
     objects = (options[:chain_page_title] and object.respond_to?(:ancestors)) ? [object.ancestors, object] : [object]
 
-    objects.flatten.each do |obj|
+    objects.flatten.compact.each do |obj|
       if obj.respond_to?(:custom_title_type)
         title << case obj.custom_title_type
           when "text"
