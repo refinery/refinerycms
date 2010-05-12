@@ -156,22 +156,24 @@ a:hover {
   border-bottom: 1px solid #727272;
 }
 
-#page_container {
+#page_container, #site_bar_content {
   margin: 0px auto 10px auto;
   text-align: left;
   width: 990px;
 }
+#site_bar_content {
+  margin-bottom: 0px;
+}
+a#site_bar_refinery_cms_logo {
+  left: 447px;
+}
 
-body.login #page_container #page, #page_container.splash #page, #content {
+#content {
   background-color: #f6f5f4;
 }
 
 body.login #page_container, body.login #site_bar_content, body.login #site_bar_branding  {
   width: 590px;
-}
-
-body.login #header {
-  display: none;
 }
 
 body.login #editor_switch {
@@ -180,7 +182,7 @@ body.login #editor_switch {
 
 body.login #site_bar_branding img {
   float: right;
-  margin-top: 10px;
+  margin-top: 5px;
 }
 
 #page_container .login #page h1 {
@@ -204,7 +206,6 @@ body.login #page_container div.remember_me {
 
 body.login #page_container div.forgot_password {
   float: right;
-
   margin-top: 11px;
   margin-right: 3px;
 }
@@ -219,6 +220,12 @@ body.login #page_container div.session_username input, body.login #page_containe
 
 body.login #page_container div.actions {
   margin-top: 12px;
+}
+
+#header {
+  padding: 36px 15px 0 15px;
+  position: relative;
+  height: 18px;
 }
 
 #header ul#menu {
@@ -305,17 +312,6 @@ pre {
 
 .preview {
   color: #A3A093;
-}
-
-#header {
-  padding: 26px 15px 0 15px;
-  position: relative;
-  height: 18px;
-}
-
-body.login #page_container #header {
-  padding: 42px 15px 42px 15px;
-  height: 35px;
 }
 
 #site_link {
@@ -937,13 +933,7 @@ ul#menu.reordering_menu li a {
 }
 
 #site_bar {
-  background: none;
-}
-
-
-#site_bar_content {
-  width: 958px;
-  margin: 0px auto;
+  background: #22a7f2;
 }
 
 .clearfix:after {
