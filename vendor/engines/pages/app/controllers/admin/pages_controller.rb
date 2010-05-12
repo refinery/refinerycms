@@ -13,7 +13,7 @@ class Admin::PagesController < Admin::BaseController
 
 protected
   def expire_menu_fragment_caching
-    expire_fragment(%r{site_menu})
+    expire_fragment(%r{#{RefinerySetting.find_or_set(:refinery_menu_cache_action_suffix, "site_menu")}})
   end
 
   # This finds all of the pages that could possibly be assigned as the current page's parent.

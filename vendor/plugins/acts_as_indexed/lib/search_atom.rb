@@ -90,7 +90,9 @@ module Foo #:nodoc:
             end
 
             # weighting = frequency * log (records.size / records_with_atom)
-            out[r_id] = pos.size * Math.log(records_size / @records.size)
+            ## parndt 2010/05/03 changed to records_size.to_f to avoid -Infinity Errno::ERANGE exceptions
+            ## which would happen for example Math.log(1 / 20) == -Infinity but Math.log(1.0 / 20) == -2.99573227355399
+            out[r_id] = pos.size * Math.log(records_size.to_f / @records.size)
           end
           out
         end

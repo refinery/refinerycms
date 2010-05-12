@@ -1,7 +1,13 @@
 Rails::Application.routes.draw do
 
-  resources :users
   resource :session
+  resources :users, :only => [:new, :create] do
+    collection do
+      get :forgot
+      get :reset
+    end
+  end
+  match '/users/reset/:reset_code', :to => 'users#reset', :as => '/users/reset'
 
   namespace(:admin) do
     resources :users
@@ -9,7 +15,5 @@ Rails::Application.routes.draw do
 
   match '/login',  :to => 'sessions#new',     :as => 'login'
   match '/logout', :to => 'sessions#destroy', :as => 'logout'
-  match '/forgot', :to => 'users#forgot',     :as => 'forgot'
-  match '/reset/:reset_code', :to => 'users#reset', :as => 'reset'
 
 end

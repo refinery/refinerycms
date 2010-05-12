@@ -1,0 +1,26 @@
+<%= stylesheet_link_tag('refinery/site_bar') unless admin? %>
+<div id='site_bar'>
+  <div id='site_bar_content' class='clearfix'>
+    <div id='editor_switch'>
+      <%=
+        link_to_if(admin?, "Switch to your website", root_url) do
+          link_to "Switch to your website editor",
+                  (if defined?(@page) and @page.present? and !@page.home?
+                     edit_admin_page_url(@page)
+                   else
+                     (request.request_uri.to_s == '/') ? admin_root_url : "/admin#{request.request_uri}/edit"
+                   end rescue admin_root_url)
+        end
+      -%>
+    </div>
+    <%= link_to image_tag("#{"http://refinerycms.com/images/" unless local_request?}refinery/logo-small.png",
+                :alt => "Refinery (tm) Content Manager"), "http://refinerycms.com",
+                :target => "_blank",
+                :id => "site_bar_refinery_cms_logo" %>
+    <div id='site_bar_branding'>
+      <span id='site_bar_company_name'>
+        <%= RefinerySetting[:site_name] %>
+      </span>
+    </div>
+  </div>
+</div>

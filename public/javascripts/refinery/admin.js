@@ -9,6 +9,7 @@ $(document).ready(function(){
 
   // focus first field in an admin form.
   $('form input[type=text]:first').focus();
+  $('#content').corner('2px');
 });
 
 init_delete_confirmations = function() {
@@ -32,7 +33,7 @@ init_flash_messages = function(){
 }
 
 init_modal_dialogs = function(){
-  $('a[href*="dialog=true"]').each(function(i, anchor)
+  $('a[href*="dialog=true"]').not('#dialog_container a').each(function(i, anchor)
   {
     $(anchor).click(function(e){
       iframe = $("<iframe id='dialog_iframe' src='" + $(this).attr('href') + "&amp;app_dialog=true" + "'></iframe>");
@@ -94,6 +95,8 @@ init_sortable_menu = function(){
 
     $menu.sortable('disable');
   });
+
+  $menu.find('> li a').corner('top 5px');
 }
 
 init_submit_continue = function(){
@@ -143,7 +146,7 @@ init_tooltips = function(args){
     $(element).hover(function(e) {
       tooltip = $("<div class='tooltip'></div>").html($(this).attr('tooltip')).appendTo($('#tooltip_container'));
       tooltip.css({
-          'left': ((left = $(this).offset().left - (tooltip.outerWidth() / 2) + ($(this).outerWidth() / 2)) >= 0 ? left : 0)
+        'left': ((left = $(this).offset().left - (tooltip.outerWidth() / 2) + ($(this).outerWidth() / 2)) >= 0 ? left : 0)
         , 'top': $(this).offset().top - tooltip.outerHeight() - 6
       }).show();
     }, function(e) {
@@ -340,7 +343,7 @@ var page_options = {
     // set the page tabs up, but ensure that all tabs are shown so that when wymeditor loads it has a proper height.
     // also disable page overflow so that scrollbars don't appear while the page is loading.
     $(document.body).addClass('hide-overflow');
-    page_options.tabs = $('#page-tabs').tabs({tabTemplate: '<li><a href="#{href}">#{label}</a></li>'});
+    page_options.tabs = $('#page-tabs').tabs({tabTemplate: '<li><a href="#{href}">#{label}</a></li>'}).find(' > ul li a').corner('top 5px');
     part_shown = $('#page-tabs .page_part.field').not('.ui-tabs-hide');
     $('#page-tabs .page_part.field').removeClass('ui-tabs-hide');
 
@@ -355,6 +358,7 @@ var page_options = {
       // hide the tabs that are supposed to be hidden and re-enable overflow.
       $(document.body).removeClass('hide-overflow');
       $('#page-tabs .page_part.field').not(part_shown).addClass('ui-tabs-hide');
+      $('#page-tabs > ul li a').corner('top 5px');
     }
 
     if(this.enable_parts){
@@ -418,7 +422,7 @@ var page_options = {
               $('#new_page_part_index').val(parseInt($('#new_page_part_index').val()) + 1);
               $('#new_page_part_title').val('');
 
-              $('#page-tabs').tabs();
+              $('#page-tabs').tabs().find('> ul li a').corner('top 5px');
             }
           );
         }else{
