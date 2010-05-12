@@ -273,15 +273,11 @@ body.login #page_container div.actions {
   height: 10px;
   margin-top: 11px;
   cursor: pointer;
-  background-color: #8a8a72;
   background-repeat: no-repeat;
   background-position: 7px;
   width: 4px;
   _margin-top: 8px;
   padding: 8px 12px;
-}
-#header #menu li a#menu_reorder:hover, #header #menu li a#menu_reorder_done:hover {
-  background-color: #a1a18b;
 }
 #header #menu li a#menu_reorder {
   background-image: url('/images/refinery/icons/arrow_switch.png');
