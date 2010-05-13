@@ -55,16 +55,18 @@ end
 # You don't need to worry about this unless you're releasing Refinery gems.
 begin
   require 'jeweler'
-  Jeweler::Tasks.new do |s|
-    s.name = %q{refinerycms}
-    s.description = %q{A beautiful open source Ruby on Rails content manager for small business. Easy to extend, easy to use, lightweight and all wrapped up in a super slick UI.}
-    s.summary = %q{A beautiful open source Ruby on Rails content manager for small business.}
-    s.email = %q{info@refinerycms.com}
-    s.homepage = %q{http://refinerycms.com}
-    s.authors = ["Resolve Digital", "David Jones", "Philip Arndt"]
-    s.extra_rdoc_files = %w(readme.md contributors.md license.md VERSION)
-    s.rdoc_options << "--inline-source"
-    s.has_rdoc = true
+  Jeweler::Tasks.new do |g|
+    g.name = %q{refinerycms}
+    g.description = %q{A beautiful open source Ruby on Rails content manager for small business. Easy to extend, easy to use, lightweight and all wrapped up in a super slick UI.}
+    g.summary = %q{A beautiful open source Ruby on Rails content manager for small business.}
+    g.email = %q{info@refinerycms.com}
+    g.homepage = %q{http://refinerycms.com}
+    g.authors = ["Resolve Digital", "David Jones", "Philip Arndt"]
+    g.extra_rdoc_files = %w(readme.md contributors.md license.md VERSION)
+    g.rdoc_options << "--inline-source"
+    g.add_dependency("hpricot", "~> 0.8.1")
+    g.add_dependency("slim_scrooge", "~> 1.0.9")
+    g.has_rdoc = true
   end
 
   namespace :version do
