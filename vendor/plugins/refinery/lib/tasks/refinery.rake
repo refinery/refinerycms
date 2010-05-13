@@ -1,12 +1,71 @@
 namespace :refinery do
 
-  desc "Prepare a basic environment with blank directories ready to override core files safely."
+  desc "Override files for use in an application"
   task :override => :environment do
-    dirs = ["app", "app/views", "app/views/layouts", "app/views/admin", "app/views/shared", "app/controllers", "app/models", "app/controllers/admin", "app/helpers", "app/helpers/admin"]
-		dirs.each do |dir|
-			dir = Rails.root.join(dir.split('/').join(File::SEPARATOR))
-			dir.mkdir unless dir.directory?
+    require 'fileutils'
+    
+    if THEME.exist?
+      # Prepare the basic structure for the theme directory
+      dirs = ["themes", "themes/#{THEME}", "themes/#{THEME}/views", "themes/#{THEME}/views/layouts", "themes/#{THEME}/views/shared", "themes/#{THEME}/views/pages", "themes/#{THEME}/stylesheets", "themes/#{THEME}/javascripts", "themes/#{THEME}/images"]
+		  dirs.each do |dir|
+			  dir = Rails.root.join(dir.split('/').join(File::SEPARATOR))
+			  dir.mkdir unless dir.directory?
+		  end
+		else
+		  # Prepare the basic structure for the app directory
+      dirs = ["app", "app/views", "app/views/layouts", "app/views/admin", "app/views/shared", "app/controllers", "app/models", "app/controllers/admin", "app/helpers", "app/helpers/admin"]
+		  dirs.each do |dir|
+			  dir = Rails.root.join(dir.split('/').join(File::SEPARATOR))
+			  dir.mkdir unless dir.directory?
+		  end
 		end
+    
+    if VIEW.exist? || CONTROLLER.exist? || MODEL.exist?
+    
+=begin
+      # copy the controller
+      unless controller_with_admin =~ /\*(\*)?/ and !action.nil?
+        refinery_controllers = Dir[refinery_root.join("vendor", "plugins", "**", "app", "controllers", "#{controller_with_admin}_controller.rb")].compact
+        if refinery_controllers.any? # the controllers may not exist.
+          refinery_controllers.each do |refinery_controller|
+            # make the directories
+            FileUtils.mkdir_p(copy_to = rails_root.join("app", "controllers", admin).to_s)
+            FileUtils.cp(refinery_controller, copy_to)
+          end
+        else
+          puts "Note: Couldn't find a matching controller to override."
+        end
+      end
+
+      # copy the action, if it exists
+      unless action.nil? or action.length == 0
+        # get all the matching files
+        looking_for = refinery_root.join("vendor", "plugins", "**", "app", "views", controller_with_admin.split("/").join(File::SEPARATOR), "#{action}*.erb")
+        action_files = Dir[looking_for]
+
+        # copy in the action template
+        action_files.each do |action_file|
+          action_file_path = action_file.split("/app/views/").last
+          action_file_dir = action_file_path.split('/')
+          action_file_dir.pop # get rid of the file.
+
+          FileUtils.mkdir_p(rails_root.join("app", "views", action_file_dir.join(File::SEPARATOR)))
+          FileUtils.cp action_file, rails_root.join("app", "views", action_file_path)
+        end
+      else
+        puts "Note: No action was specified."
+      end
+    else
+      puts "You didn't specify anything to override. Here's some examples:"
+      puts "refinery-override /pages/* /path/to/my/project"
+      puts "refinery-override /pages/show /path/to/my/project"
+      puts "refinery-override /admin/pages/index"
+      puts "refinery-override /shared/_menu /path/to/my/project"
+      puts "refinery-override **/*menu /path/to/my/project"
+      puts "refinery-override /shared/_menu_branch"
+    end
+=end
+
   end
 
   desc "Required to upgrade from <= 0.9.0 to 0.9.1 and above"
@@ -115,10 +174,6 @@ namespace :refinery do
     end
   end
 
-  end
-  
-  namespace :override do
-    
   end
   
   namespace :cache do
