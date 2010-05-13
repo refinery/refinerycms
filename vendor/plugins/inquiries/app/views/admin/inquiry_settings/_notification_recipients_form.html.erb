@@ -1,12 +1,12 @@
-<%= error_messages_for :inquiry_setting %>
 <% form_for [:admin, @inquiry_setting] do |f| %>
+  <%= f.error_messages %>
   <p>
     Every time someone contacts you on your website, Refinery sends
     out an email to say there is a new inquiry.
   </p>
   <div class='field'>
     <%= f.label :value, 'Send notifications to' %>
-    <%= f.text_field :value, :class => "larger", :style => 'width: 954px' %>
+    <%= f.text_field :value, :class => "larger", :style => 'width: 944px' %>
 
     <p>
       Enter an email address above. Want the notification to go to more than one person?

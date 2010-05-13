@@ -9,7 +9,7 @@ $(document).ready(function(){
 
   // focus first field in an admin form.
   $('form input[type=text]:first').focus();
-  $('#content').corner('2px');
+  $('#content').corner('2px bottom');
 });
 
 init_delete_confirmations = function() {
@@ -79,7 +79,8 @@ init_sortable_menu = function(){
   $menu.find('#menu_reorder').click(function(e){
     e.preventDefault();
     $('#menu_reorder, #menu_reorder_done').toggle();
-    $('#header >*:not(#menu, script), #content, #logout').fadeTo(500, 0.2);
+    $('#site_bar, #header >*:not(#menu, script), #content').fadeTo(500, 0.65);
+    $('#logout').fadeTo(500, 0.3);
     $menu.find('.tab a').click(function(ev){
       ev.preventDefault();
     });
@@ -90,7 +91,7 @@ init_sortable_menu = function(){
   $menu.find('#menu_reorder_done').click(function(e){
     e.preventDefault();
     $('#menu_reorder, #menu_reorder_done').toggle();
-    $('#header >*:not(#menu, script), #content, #logout').fadeTo(500, 1);
+    $('#site_bar, #header >*:not(#menu, script), #content, #logout').fadeTo(500, 1);
     $menu.find('.tab a').unbind('click');
 
     $menu.sortable('disable');

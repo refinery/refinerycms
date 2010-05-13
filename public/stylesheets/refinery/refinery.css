@@ -20,13 +20,14 @@ acronym {
 
 #actions {
   float: right;
-  width: 36.1%;
+  width: 32%;
   padding-left: 15px;
+  padding-top: 3px;
 }
 
 #records {
   float: left;
-  width: 60.6%;
+  width: 64.7%;
   padding-right: 15px;
 }
 
@@ -37,10 +38,10 @@ acronym {
 }
 
 #actions li a {
-  background-color:#F6F5F4;
+  background-color:#dbedff;
   background-position: 12px;
   background-repeat: no-repeat;
-  border:1px solid #B7B7A8;
+  border:1px solid #0073ea;
   display:block;
   padding:9px 12px 9px 36px;
 }
@@ -98,12 +99,6 @@ hr {
   background-color: #FFECF0;
 }
 
-#flash {
-  width: 545px;
-}
-.login #flash {
-  width: 520px;
-}
 #message, #flash {
   padding: 8px 8px 8px 30px;
   margin-bottom: 5px;
@@ -132,7 +127,7 @@ a {
 }
 
 .splash #content {
-  background-image: url('/images/refinery/admin_bg.png');
+  background-color: white;
   background-repeat: repeat-y;
 }
 #content h1 {
@@ -169,7 +164,7 @@ a#site_bar_refinery_cms_logo {
 }
 
 #content {
-  background-color: #f6f5f4;
+  background-color: white;
 }
 
 body.login #page_container, body.login #site_bar_content {
@@ -187,40 +182,86 @@ body.login #site_bar_content a#site_bar_refinery_cms_logo {
   line-height:22px
 }
 
-body.login #page_container div.session_username, body.login #page_container div.session_password {
-  float: left;
-}
-
-body.login #page_container div.session_password {
-  margin-left: 25px;
-}
-
-body.login #page_container div.remember_me {
-  margin-top: 12px;
-}
-
-body.login #page_container div.forgot_password {
-  float: right;
-  margin-top: 11px;
-  margin-right: 3px;
-}
-
 body.login #page_container div.remember_me label {
   display: inline;
 }
 
-body.login #page_container div.session_username input, body.login #page_container div.session_password input {
-  width: 260px;
+body.login input.larger {
+  width: 543px;
 }
 
 body.login #page_container div.actions {
   margin-top: 12px;
 }
 
+body.login label {
+  margin-top: 0px;
+}
+
+body.login .field {
+  margin-bottom: 20px;
+}
+
+body.login .field.remember_me, body.login .field.forgot_password {
+  margin-bottom: 0px;
+  margin-top: 0px;
+}
+body.login .field.forgot_password {
+  text-align: right;
+}
+body.login .field.remember_me label {
+  margin-top: 20px;
+}
+
+body.login #page_container div.remember_me {
+  width: 300px;
+  float: left;
+}
+
+body.login #page_container div.forgot_password {
+  float: right;
+  width: 200px;
+  padding-top: 2px;
+}
+
+body.login label, body.login a {
+  font-size: 14px;
+}
+
+body.login #flash_container, body.login .errorExplanation {
+  margin-bottom: 12px;
+}
+
+div.field.plugin_access {
+  margin-top: 20px;
+}
+div.field.plugin_access label.title_label {
+  width: auto;
+  display: inline;
+}
+div.field.plugin_access ul#plugins {
+  margin-top: 3px;
+}
+
 #header {
-  padding: 36px 15px 0 15px;
+  padding: 0px 20px;
   position: relative;
-  height: 18px;
+  height: 60px;
+  background: #eaeaea;
+}
+
+body.login #header {
+  padding: 0px 20px 0px 20px;
+}
+
+body.login #header h1 {
+  color: #41403c;
+  vertical-align: middle;
+  text-align: center;
+  font-weight: bold;
+  font-size: 18px;
+  padding-bottom: 0px;
+  line-height: 60px;
 }
 
 #header ul#menu {
@@ -228,13 +269,9 @@ body.login #page_container div.actions {
   margin: 0px;
   padding: 0px;
   position: absolute;
-  bottom: 0px;
-  left: 15px;
-  right: 15px;
-}
-
-#header ul#menu li#logout {
-  float: right;
+  bottom: -1px;
+  left: 20px;
+  right: 20px;
 }
 
 #header #menu.ui-sortable li a {
@@ -243,23 +280,30 @@ body.login #page_container div.actions {
 #header #menu.ui-sortable-disabled li a {
   cursor: pointer;
 }
-#header  li {
+#header li {
   float: left;
   margin-right: 2px;
   list-style: none;
+}
+
+#header ul#menu li#logout {
+  float: right;
+  margin-right: 0px;
 }
 
 #header li a {
   display: block;
   padding: 9px 13px;
   font-size: 14px;
-  background-color: #d8d8d8;
+  background-color: #b3b3b3;
   margin-top:4px;
-  color: #0073ea;
+  color: white;
+  border: 1px solid transparent;
+  border-bottom: 0px none;
 }
 
-#header li a:hover {
-  background-color: #e9e9e9;
+#header li a:hover, #header li a:focus {
+  background-color: #22A7F2;
 }
 
 #header li a.active {
@@ -267,6 +311,8 @@ body.login #page_container div.actions {
   color: #ff5500;
   padding: 11px 13px;
   margin-top: 0px;
+  border: 1px solid #b3b3b3;
+  border-bottom: 0px none;
 }
 
 #header #menu li a#menu_reorder, #header #menu li a#menu_reorder_done {
@@ -287,7 +333,8 @@ body.login #page_container div.actions {
 }
 
 #content {
-  padding: 15px;
+  padding: 30px 20px;
+  border-top: 1px solid #b3b3b3;
 }
 
 pre {
@@ -400,9 +447,10 @@ pre {
 }
 
 #records li {
-  padding: 2px 5px;
+  padding: 0px 5px;
   vertical-align: top;
   margin-bottom: 2px;
+  line-height: 35px;
 }
 
 #records .left-column {
@@ -423,14 +471,14 @@ pre {
 }
 
 #records .on {
-  background-color: #E6E5DC !important;
+  background-color: #EAEAEA;
 }
-#records .off {
-  background-color: #f6f5f4 !important;
+#records .off, #records .on-hover {
+  background-color: white;
 }
 
-#records .on-hover, #pagination ul a:hover, #pagination .on {
-  background: url('/images/refinery/hover-gradient.jpg') repeat-x bottom #D4D4C6
+#pagination ul a:hover, #pagination .on {
+  background: url('/images/refinery/hover-gradient.jpg') repeat-x bottom #D4D4C6;
 }
 #records ul.empty {
   display: none;
@@ -443,7 +491,7 @@ pre {
 
 .tree ul li {
   margin: 0 !important;
-  padding: 5px 0 0 40px !important;
+  padding: 4px 0 0 40px !important;
   background: url('/images/refinery/branch.gif') no-repeat 15px 0px;
 }
 
@@ -458,9 +506,21 @@ pre {
   background-image: url('/images/refinery/branch-end.gif');
 }
 
+#records.tree li {
+  line-height: 19px;
+}
+
 .tree li span.spacing {
   display: none;
 }
+
+#records ul#sortable_list {
+  margin-top: 8px;
+}
+#records ul#sortable_list.ui-sortable {
+  margin-top: 0px;
+}
+
 #content .ui-sortable li.hover {
   height: 300%;
   display: block;
@@ -644,10 +704,18 @@ label.stripped {
   display: block;
   float: right;
   margin: 3px;
-  line-height: 16px;
+  line-height: inherit;
 }
 .actions a * {
   padding: 4px 4px 1px 4px;
+}
+.actions a img {
+  vertical-align: middle;
+  padding: 2px 4px 4px 4px;
+}
+#image_grid .actions a img {
+  padding: 4px 4px 1px 4px;
+  vertical-align: top;
 }
 
 .actions a:hover {
@@ -676,6 +744,11 @@ label.stripped {
 #recent_activity {
   border-collapse: collapse;
   width: 100%;
+  margin-top: 3px;
+}
+
+#recent_activity tr {
+  line-height: 25px;
 }
 
 #recent_activity td {
@@ -688,8 +761,10 @@ label.stripped {
   max-width: 135px;
 }
 
-#recent_activity tr.on {
-  background: #E6E5DC;
+#recent_activity td img {
+  padding-left: 3px;
+  vertical-align: middle;
+  margin-top: -3px;
 }
 
 #common_actions {

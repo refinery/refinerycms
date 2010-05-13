@@ -7,7 +7,11 @@
     <div id="page_container">
       <div id="page">
         <div class="clearfix" id="header">
-          <%= render :partial => "/admin/menu" if logged_in? %>
+          <% if logged_in? %>
+            <%= render :partial => "/admin/menu" %>
+          <% else %>
+            <h1><%= yield :header %></h1>
+          <% end %>
         </div>
         <div id="content" class="clearfix">
           <div id="flash_container">
