@@ -51,23 +51,23 @@ body {
     right: 0px;
     padding: 0px;
 }
-#menu li {
+#menu li, #menu > a, #menu div {
     float: left;
     list-style: none;
     position: relative;
 }
-#menu li a, #menu li:hover ul li a {
+#menu a, #menu li:hover ul li a, #menu a:hover nav a {
     color: #969792;
     display: block;
     padding: 10px 18px;
     text-decoration: none;
     cursor: pointer;
 }
-#menu li.selected a, #menu li:hover a, #menu li a:hover, #menu li ul li a:hover {
+#menu li.selected a, #menu li:hover a, #menu li a:hover, #menu li ul li a:hover, #menu div.selected a, #menu a.selected, #menu a:hover, #menu div:hover > a {
     color: #32322b;
     background: white;
 }
-#menu li ul {
+#menu li ul, #menu nav {
     position: absolute;
     left: -99999px;
     padding: 0px;
@@ -76,10 +76,10 @@ body {
     max-width: 300px;
     background: white;
 }
-#menu li ul li {
+#menu li ul li, #menu nav a {
     float: left;
 }
-#menu li:hover ul {
+#menu li:hover ul, #menu div:hover nav {
     left: auto;
 }
 #footer {

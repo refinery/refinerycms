@@ -13,14 +13,14 @@
     <% unless login? %>
       <div id='editor_switch'>
         <%=
-          link_to_if(admin?, "Switch to your website", root_url) do
+          link_to_if(admin?, "Switch to your website", root_url(:only_path => true)) do
             link_to "Switch to your website editor",
                     (if defined?(@page) and @page.present? and !@page.home?
-                       edit_admin_page_url(@page)
+                       edit_admin_page_url(@page, :only_path => true)
                      else
-                       (request.request_uri.to_s == '/') ? admin_root_url : "/admin#{request.request_uri}/edit"
-                     end rescue admin_root_url)
-          end unless login?
+                       (request.request_uri.to_s == '/') ? admin_root_url(:only_path => true) : "/admin#{request.request_uri}/edit"
+                     end rescue admin_root_url(:only_path => true))
+          end
         -%>
       </div>
     <% end %>

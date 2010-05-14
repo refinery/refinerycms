@@ -60,7 +60,7 @@ class UsersController < ApplicationController
     if request.post?
       if (params[:user].present? and params[:user][:email].present? and user = User.find_by_email(params[:user][:email])).present?
         user.deliver_password_reset_instructions!(request)
-        flash.now[:notice] = "An email has been sent to #{user.email} with a link to reset your password."
+        flash[:notice] = "An email has been sent to you with a link to reset your password."
         redirect_back_or_default new_session_url
       else
         @user = User.new(params[:user])
