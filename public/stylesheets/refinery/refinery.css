@@ -38,12 +38,12 @@ acronym {
 }
 
 #actions li a {
-  background-color:#dbedff;
+  background-color: #dbedff;
   background-position: 12px;
   background-repeat: no-repeat;
-  border:1px solid #0073ea;
-  display:block;
-  padding:9px 12px 9px 36px;
+  border: 1px solid #65C3F7;
+  display: block;
+  padding: 9px 12px 9px 36px;
 }
 #actions li a:hover {
   text-decoration: underline;
@@ -151,7 +151,7 @@ a:hover {
   border-bottom: 1px solid #727272;
 }
 
-#page_container, #site_bar_content {
+#page_container, #site_bar_content, #header_content {
   margin: 0px auto 10px auto;
   text-align: left;
   width: 990px;
@@ -244,18 +244,17 @@ div.field.plugin_access ul#plugins {
 }
 
 #header {
-  padding: 0px 20px;
-  position: relative;
+  background: #22a7f2;
+  border-bottom: 1px solid #65c3f7;
+}
+#header_content {
   height: 60px;
-  background: #eaeaea;
+  position: relative;
+  margin-bottom: -1px;
 }
 
-body.login #header {
-  padding: 0px 20px 0px 20px;
-}
-
-body.login #header h1 {
-  color: #41403c;
+body.login #header_content h1 {
+  color: white;/*#41403c*/
   vertical-align: middle;
   text-align: center;
   font-weight: bold;
@@ -264,58 +263,55 @@ body.login #header h1 {
   line-height: 60px;
 }
 
-#header ul#menu {
+#menu {
   display: block;
   margin: 0px;
   padding: 0px;
   position: absolute;
-  bottom: -1px;
-  left: 20px;
-  right: 20px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  background: transparent;
 }
 
-#header #menu.ui-sortable li a {
+#menu.ui-sortable a {
   cursor: move;
 }
-#header #menu.ui-sortable-disabled li a {
+#menu.ui-sortable-disabled a {
   cursor: pointer;
 }
-#header li {
-  float: left;
-  margin-right: 2px;
-  list-style: none;
-}
 
-#header ul#menu li#logout {
+#menu #logout {
   float: right;
   margin-right: 0px;
 }
 
-#header li a {
+#menu a {
   display: block;
   padding: 9px 13px;
-  font-size: 14px;
-  background-color: #b3b3b3;
+  font-size: 13px;
+  background-color: #65c3f7;
   margin-top:4px;
   color: white;
+  font-weight: normal;
   border: 1px solid transparent;
   border-bottom: 0px none;
+  float: left;
+  margin-right: 2px;
 }
 
-#header li a:hover, #header li a:focus {
-  background-color: #22A7F2;
-}
-
-#header li a.active {
+#menu a.active, #menu a:hover, #menu a:focus {
   background-color: white;
   color: #ff5500;
+}
+
+#menu a.active {
   padding: 11px 13px;
   margin-top: 0px;
-  border: 1px solid #b3b3b3;
   border-bottom: 0px none;
 }
 
-#header #menu li a#menu_reorder, #header #menu li a#menu_reorder_done {
+#menu a#menu_reorder, #header #menu a#menu_reorder_done {
   height: 10px;
   margin-top: 11px;
   cursor: pointer;
@@ -325,16 +321,15 @@ body.login #header h1 {
   _margin-top: 8px;
   padding: 8px 12px;
 }
-#header #menu li a#menu_reorder {
+#menu a#menu_reorder {
   background-image: url('/images/refinery/icons/arrow_switch.png');
 }
-#header #menu li a#menu_reorder_done {
+#menu a#menu_reorder_done {
   background-image: url('/images/refinery/icons/tick.png');
 }
 
 #content {
   padding: 30px 20px;
-  border-top: 1px solid #b3b3b3;
 }
 
 pre {
@@ -411,17 +406,17 @@ pre {
   background: url('/images/refinery/nav-3-background.gif') #EFEE8 repeat-x bottom;
 }
 
-#submenu ul {
+#submenu ul, #submenu nav {
   list-style: none;
   margin: 0;
   padding: 0 0 0 10px;
 }
 
-#submenu li {
+#submenu li, #submenu > div {
   float: left;
 }
 
-#submenu li a {
+#submenu li a, #submenu > a {
   display: block;
   padding: 6px;
 }
@@ -575,10 +570,11 @@ pre {
 }
 
 #content h2 {
-  font-size: 140%;
-  color:#41403C;
+  font-size: 18px;
+  color:#41403c;
   margin-bottom: 15px;
   margin-top: 10px;
+  font-weight: bold;
 }
 
 .pagination {
@@ -1002,6 +998,18 @@ ul#menu.reordering_menu li a {
 
 #site_bar {
   background: #22a7f2;
+  border-bottom: 0px none;
+}
+
+#search {
+  border: 1px solid #b3b3b3;
+  line-height: 16px;
+  padding: 2px;
+  font-size: 16px;
+}
+
+form input:submit {
+  background: #65c3f7;
 }
 
 .clearfix:after {

@@ -6,15 +6,11 @@ class Admin::DashboardController < Admin::BaseController
     Refinery::Plugins.active.each do |plugin|
       begin
         plugin.activity.each do |activity|
-          include_associations = []
-          include_associations.push(:slugs) if activity.class.methods.include? "find_one_with_friendly" # wee performance gain if slugs are used.
-
-          @recent_activity += activity.class.find(:all,
-            :conditions => activity.conditions,
-            :order => activity.order,
-            :limit => activity.limit,
-            :include => include_associations
-          )
+          @recent_activity << {
+            :activity_class => activity.class,
+            :count => activity.class.count(:conditions => activity.conditions),
+            :latest_action => activity.class.maximum(:updated_at)
+          }
         end
       rescue
         logger.info "#{$!.class.name} raised while getting recent activity for dashboard."
@@ -22,7 +18,7 @@ class Admin::DashboardController < Admin::BaseController
       end
     end
 
-    @recent_activity = @recent_activity.compact.uniq.sort{|x,y| y.updated_at <=> x.updated_at}[0..(RefinerySetting.find_or_set(:activity_show_limit, 15)-1)]
+    @recent_activity = @recent_activity.collect{|a| a if a[:count] > 0}.compact.sort{|a,b| b[:latest_action] <=> a[:latest_action]}
   end
 
 end

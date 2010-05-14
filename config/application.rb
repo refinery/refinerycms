@@ -28,8 +28,8 @@ Refinery::Initializer.run do |config|
   # Specify your application's gem requirements here. See the examples below:
   # config.gem "refinerycms-news", :lib => "news", :version => "~> 0.9.7"
   # config.gem "refinerycms-portfolio", :lib => "portfolio", :version => "~> 0.9.3.8"
-  
-  
+
+
   #===REFINERY END OF REQUIRED GEMS===
 end
 

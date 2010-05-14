@@ -9,7 +9,7 @@ $(document).ready(function(){
 
   // focus first field in an admin form.
   $('form input[type=text]:first').focus();
-  $('#content').corner('2px bottom');
+  $('#content').corner('5px bottom');
 });
 
 init_delete_confirmations = function() {
@@ -65,21 +65,20 @@ init_sortable_menu = function(){
   $menu.sortable({
     axis: 'x',
     cursor: 'crosshair',
-    items: '.tab',
     update: function(){
       var ser   = $menu.sortable('serialize', {key: 'menu[]'}),
           token = escape($('#admin_authenticity_token').val());
 
       $.get('/admin/update_menu_positions?' + ser, {authenticity_token: token});
     }
-  });
+  }).tabs();
   //Initial status disabled
   $menu.sortable('disable');
 
   $menu.find('#menu_reorder').click(function(e){
     e.preventDefault();
     $('#menu_reorder, #menu_reorder_done').toggle();
-    $('#site_bar, #header >*:not(#menu, script), #content').fadeTo(500, 0.65);
+    $('#site_bar, #header >*:not(#header_content, #menu, script), #content').fadeTo(500, 0.65);
     $('#logout').fadeTo(500, 0.3);
     $menu.find('.tab a').click(function(ev){
       ev.preventDefault();
@@ -91,13 +90,13 @@ init_sortable_menu = function(){
   $menu.find('#menu_reorder_done').click(function(e){
     e.preventDefault();
     $('#menu_reorder, #menu_reorder_done').toggle();
-    $('#site_bar, #header >*:not(#menu, script), #content, #logout').fadeTo(500, 1);
+    $('#site_bar, #header >*:not(#header_content, #menu, script), #content, #logout').fadeTo(500, 1);
     $menu.find('.tab a').unbind('click');
 
     $menu.sortable('disable');
   });
 
-  $menu.find('> li a').corner('top 5px');
+  $menu.find('> a').corner('top 5px');
 }
 
 init_submit_continue = function(){
