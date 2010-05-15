@@ -24,9 +24,6 @@ Refinery::Initializer.run do |config|
     :secret      => 'eec8fffc3637c05895f8e6a355179eaad0003ac5617e5368955baf7989e1faca4d8ab37140d690c20b05d5815609b7c680c644277b6a892be316a85c6596d75c'
   }
 
-  # Specify your application's gem requirements here. See the examples below:
-  # config.gem "refinerycms-news", :lib => "news", :version => "~> 0.9.7"
-  # config.gem "refinerycms-portfolio", :lib => "portfolio", :version => "~> 0.9.3.8"
 end
 
 # You can set things in the following file and we'll try hard not to destroy them in updates, promise.
