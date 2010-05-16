@@ -24,7 +24,7 @@ body {
     padding: 0px;
     margin: 0px;
 }
-#body, #header_content, #footer_content {
+#body, #header_content, #footer_content, #site_bar_content {
     width: 960px;
     margin: 0px auto;
 }

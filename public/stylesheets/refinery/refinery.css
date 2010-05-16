@@ -132,7 +132,8 @@ a {
 }
 
 .splash #content {
-  background: url('/images/refinery/admin_bg.png') repeat-y;
+  background-image: url('/images/refinery/admin_bg.png');
+  background-repeat: repeat-y;
 }
 #content h1 {
   font-size: 18px;
@@ -155,55 +156,76 @@ a:hover {
   border-bottom: 1px solid #727272;
 }
 
-#page_container {
+#page_container, #site_bar_content {
   margin: 0px auto 10px auto;
   text-align: left;
   width: 990px;
 }
-#page_container #page {
-  background: #f6f5f4;
+#site_bar_content {
+  margin-bottom: 0px;
+}
+a#site_bar_refinery_cms_logo {
+  left: 447px;
 }
 
-#page_container.login {
+#content {
+  background-color: #f6f5f4;
+}
+
+body.login #page_container, body.login #site_bar_content, body.login #site_bar_branding  {
   width: 590px;
 }
 
-#page_container.login #page h1 {
+body.login #editor_switch {
+  display: none;
+}
+
+body.login #site_bar_branding img {
+  float: right;
+  margin-top: 5px;
+}
+
+#page_container .login #page h1 {
   margin: 0;
   padding: 5px;
   font-size: 20px;
   line-height:22px
 }
 
-#page_container.login div.session_username, #page_container.login div.session_password {
+body.login #page_container div.session_username, body.login #page_container div.session_password {
   float: left;
 }
 
-#page_container.login div.session_password {
+body.login #page_container div.session_password {
   margin-left: 25px;
 }
 
-#page_container.login div.remember_me {
+body.login #page_container div.remember_me {
   margin-top: 12px;
 }
 
-#page_container.login div.forgot_password {
+body.login #page_container div.forgot_password {
   float: right;
-
   margin-top: 11px;
   margin-right: 3px;
 }
 
-#page_container.login div.remember_me label {
+body.login #page_container div.remember_me label {
   display: inline;
 }
 
-#page_container.login div.session_username input, #page_container.login div.session_password input {
+body.login #page_container div.session_username input, body.login #page_container div.session_password input {
   width: 260px;
 }
 
-#page_container.login div.actions {
+body.login #page_container div.actions {
   margin-top: 12px;
+}
+
+#header {
+  padding: 36px 15px 0 15px;
+  position: relative;
+  height: 18px;
 }
 
 #header ul#menu {
@@ -292,18 +314,6 @@ pre {
   color: #A3A093;
 }
 
-#header {
-  background: url('/images/refinery/header_background.png') #50504B repeat-x bottom;
-  padding: 26px 15px 0 15px;
-  position: relative;
-  height: 93px;
-}
-
-#page_container.login #header {
-  padding: 42px 15px 42px 15px;
-  height: 35px;
-}
-
 #site_link {
   display: block;
   color: #C2C2B3;
@@ -345,7 +355,7 @@ pre {
 #footer_logo {
   border: 0px none;
   display:inline-block;
-  *display:inline;
+  _display:block;
   margin: 50px auto 40px auto;
   width: auto;
 }
@@ -397,7 +407,7 @@ pre {
 }
 
 #records li {
-  padding: 5px;
+  padding: 2px 5px;
   vertical-align: top;
   margin-bottom: 2px;
 }
@@ -644,7 +654,7 @@ label.stripped {
   line-height: 16px;
 }
 .actions a * {
-  padding: 4px;
+  padding: 4px 4px 1px 4px;
 }
 
 .actions a:hover {
@@ -920,6 +930,10 @@ body.dialog form {
 
 ul#menu.reordering_menu li a {
   cursor: move;
+}
+
+#site_bar {
+  background: #22a7f2;
 }
 
 .clearfix:after {
