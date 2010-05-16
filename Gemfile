@@ -1,20 +1,23 @@
 source :rubygems
 
-# Specify the database driver as appropriate for your application
-gem 'sqlite3-ruby', :require => 'sqlite3'
+# Specify the database driver as appropriate for your application (only one).
+gem 'mysql', :require => 'mysql'
+#gem 'sqlite3-ruby', :require => 'sqlite3'
 
-# Use mongrel as the web server
-gem 'mongrel', :group => :development
+# Specify your favourite web server (only one).
+gem 'unicorn', :group => :development
+#gem 'mongrel', :group => :development
 
 # Deploy with Capistrano
 # gem 'capistrano'
 
 #===REFINERY REQUIRED GEMS===
-gem 'rails',         '~> 2.3.5'
-gem 'hpricot',       '~> 0.8'
-gem 'authlogic',     '2.1.3'
-gem 'friendly_id',   '2.3.3'
-gem 'will_paginate', '2.3.12'
+gem 'rmagick',        '~> 2.13.1'
+gem 'rails',          '~> 2.3.5'
+gem 'hpricot',        '~> 0.8'
+gem 'authlogic',      '2.1.3'
+gem 'friendly_id',    '2.3.3'
+gem 'will_paginate',  '2.3.12'
 #==REFINERY END OF REQUIRED GEMS===
 
 # Bundle gems for certain environments:
