@@ -29,7 +29,12 @@ Unlike other content managers, Refinery is truly aimed at the end user making it
 
 Refinery's gem requirements are:
 
+* [authlogic ~> 2.1.3](http://rubygems.org/gems/authlogic)
+* [friendly_id ~> 2.3.3](http://rubygems.org/gems/friendly_id)
+* [hpricot ~> 0.8](http://rubygems.org/gems/hpricot)
 * [rails ~> 2.3.5](http://rubygems.org/gems/rails)
+* [rmagick ~> 2.13.1](http://rubygems.org/gems/rmagick)
+* [will_paginate ~> 2.3.12](http://rubygems.org/gems/will_paginate)
 
 ### Other dependancies
 
