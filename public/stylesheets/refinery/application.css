@@ -1,7 +1,12 @@
-#page {
-  padding: 20px;
+body {
+  margin: 0px;
+}
+#page, #site_bar_content {
   width: 1000px;
   margin: 0px auto;
+}
+#page {
+  padding: 20px;
 }
 #body_content_left {
   float: left;

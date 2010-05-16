@@ -1,7 +1,5 @@
 Rails::Application.routes.draw do
-
-  match '/contact' => 'inquiries#new'
-
+  match '/contact', :to => 'inquiries#new', :as => 'new_inquiry'
   resources :inquiries do
     collection do
       get :thank_you

@@ -9,6 +9,7 @@ $(document).ready(function(){
 
   // focus first field in an admin form.
   $('form input[type=text]:first').focus();
+  $('#content').corner('2px');
 });
 
 init_delete_confirmations = function() {
@@ -94,7 +95,7 @@ init_sortable_menu = function(){
 
     $menu.sortable('disable');
   });
-  
+
   $menu.find('> li a').corner('top 5px');
 }
 
@@ -145,7 +146,7 @@ init_tooltips = function(args){
     $(element).hover(function(e) {
       tooltip = $("<div class='tooltip'></div>").html($(this).attr('tooltip')).appendTo($('#tooltip_container'));
       tooltip.css({
-          'left': ((left = $(this).offset().left - (tooltip.outerWidth() / 2) + ($(this).outerWidth() / 2)) >= 0 ? left : 0)
+        'left': ((left = $(this).offset().left - (tooltip.outerWidth() / 2) + ($(this).outerWidth() / 2)) >= 0 ? left : 0)
         , 'top': $(this).offset().top - tooltip.outerHeight() - 6
       }).show();
     }, function(e) {

@@ -6,8 +6,6 @@ class Admin::UsersController < Admin::BaseController
   before_filter :find_user, :except => [:index, :new, :create]
   before_filter :load_available_plugins, :only => [:new, :create, :edit, :update]
 
-  filter_parameter_logging 'password', 'password_confirmation'
-
   layout 'admin'
 
   def new

@@ -33,8 +33,6 @@ end
 require_dependency 'refinery/form_helpers'
 require_dependency 'refinery/base_presenter'
 
-=begin
-FIXME for Rails 3
 [ Refinery.root.join("vendor", "plugins", "*", "app", "presenters").to_s,
   Rails.root.join("vendor", "plugins", "*", "app", "presenters").to_s,
   Rails.root.join("app", "presenters").to_s
@@ -44,4 +42,3 @@ FIXME for Rails 3
     ::ActiveSupport::Dependencies.load_paths << presenters_path
   end
 end
-=end

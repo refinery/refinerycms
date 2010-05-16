@@ -6,7 +6,7 @@ class RefinerySetting < ActiveRecord::Base
 
   # Number of settings to show per page when using will_paginate
   def self.per_page
-    10
+    12
   end
 
   # prettier version of the name.
