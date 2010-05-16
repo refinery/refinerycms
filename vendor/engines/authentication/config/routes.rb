@@ -7,7 +7,7 @@ Rails::Application.routes.draw do
       get :reset
     end
   end
-  match '/users/reset/:reset_code', :to => 'users#reset', :as => '/users/reset'
+  match '/users/reset/:reset_code', :to => 'users#reset', :as => 'reset_users'
 
   namespace(:admin) do
     resources :users
