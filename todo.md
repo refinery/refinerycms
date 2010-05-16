@@ -15,7 +15,3 @@ We've got a branch for it and we need to merge that into the master.
 # Rails 3.0 Support
 
 We've started an effort to move to Rails 3.0 - that just needs to be completed.
-
-# Bundler
-
-We really would prefer to move to bundler for gem management instead of using vendor/plugins for third party plugins like authlogic.

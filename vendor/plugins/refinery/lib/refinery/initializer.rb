@@ -46,7 +46,7 @@ module Refinery
       # Set up configuration that is rather specific to Refinery. (some plugins require on other more 'core' plugins).
       # We do make sure we check that things haven't already been set in the application.
       configuration.plugin_loader = Refinery::PluginLoader unless configuration.plugin_loader != Rails::Plugin::Loader
-      configuration.plugins = [ :acts_as_indexed, :authlogic, :friendly_id, :will_paginate, :all ] if configuration.plugins.nil?
+      configuration.plugins = [ :acts_as_indexed, :all ] if configuration.plugins.nil?
 
       # We require the hpricot gem and the slim_scrooge gem
       configuration.gem "hpricot", :version => "~> 0.8.1", :lib => "hpricot"
