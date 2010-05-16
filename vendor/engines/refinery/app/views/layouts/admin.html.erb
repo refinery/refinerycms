@@ -16,7 +16,6 @@
           <%= yield %>
         </div>
       </div>
-      <%= render :partial => "/admin/footer" if RefinerySetting.find_or_set(:show_backend_branding, false) %>
     </div>
   </body>
 </html>
