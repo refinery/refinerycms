@@ -1,6 +1,6 @@
 class Refinery::ApplicationController < ActionController::Base
 
-  helper_method :home_page?, :local_request?, :just_installed?, :from_dialog?, :admin?
+  helper_method :home_page?, :local_request?, :just_installed?, :from_dialog?, :admin?, :login?
   protect_from_forgery # See ActionController::RequestForgeryProtection
 
   include Crud # basic create, read, update and delete methods
@@ -49,6 +49,10 @@ class Refinery::ApplicationController < ActionController::Base
 
   def local_request?
     Rails.env.development? or request.remote_ip =~ /(::1)|(127.0.0.1)|((192.168).*)/
+  end
+
+  def login?
+    controller_name =~ /session|s/ and action_name =~ /new|create/
   end
 
   def wymiframe
