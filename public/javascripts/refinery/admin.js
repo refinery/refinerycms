@@ -156,7 +156,7 @@ init_tooltips = function(args){
       $(element).attr({'tooltip': $(element).attr('title'), 'title': ''});
     }
     // wipe clean the title on any children too.
-    $(element).children('img').attr('title', '')
+    $(element).children('img').attr('title', '');
   });
 }
 
