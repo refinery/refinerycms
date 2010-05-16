@@ -57,13 +57,32 @@ Mac OS 10.5 or 10.6 users [this shell install script](http://github.com/maddox/m
 
 Firstly, edit ``config/database.yml`` to reflect your database server details.
 
+Next you'll need to install bundler if you don't have it already:
+
+    gem install bundler
+
+Now you will need to make sure that you specify the correct database driver and web server.
+The default choices are mysql and unicorn but to change them open up ``Gemfile`` which is in your application's root directory.
+You'll see a section like this:
+
+    # Specify the database driver as appropriate for your application (only one).
+    gem 'mysql', :require => 'mysql'
+    #gem 'sqlite3-ruby', :require => 'sqlite3'
+
+    # Specify your favourite web server (only one).
+    gem 'unicorn', :group => :development
+    #gem 'mongrel', :group => :development
+
+To choose a different driver or web server just comment out the one we've pre-selected and uncomment or write the one you want instead.
+
+After you have bundler and you've chosen your database driver and web server, you'll need to install the gems that Refinery depends on.
+You can do this by running:
+
+    bundle install
+
 Next create your database and fill it with Refinery's default data:
 
     rake db:setup
-
-After your database exists, you'll need to install the gems that Refinery depends on. You can do this by running:
-
-    rake gems:install
 
 Note: The news engine that was previously in Refinery's core was extracted into a separate gem / plugin to be found here:
 
