@@ -48,9 +48,6 @@ module Refinery
       configuration.plugin_loader = Refinery::PluginLoader unless configuration.plugin_loader != Rails::Plugin::Loader
       configuration.plugins = [ :acts_as_indexed, :all ] if configuration.plugins.nil?
 
-      # We require the hpricot gem and the slim_scrooge gem
-      configuration.gem "hpricot", :version => "~> 0.8.1", :lib => "hpricot"
-
       # Pass our configuration along to Rails.
       Rails.configuration = configuration
 
