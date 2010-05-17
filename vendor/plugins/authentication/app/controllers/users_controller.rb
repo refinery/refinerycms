@@ -58,12 +58,13 @@ class UsersController < ApplicationController
 
   def forgot
     if request.post?
-      if (user = User.find_by_email(params[:user][:email])).present?
+      if (params[:user].present? and params[:user][:email].present? and user = User.find_by_email(params[:user][:email])).present?
         user.deliver_password_reset_instructions!(request)
-        flash[:notice] = "An email has been sent to #{user.email} with a link to reset your password."
-        redirect_back_or_default forgot_users_url
+        flash[:notice] = "An email has been sent to you with a link to reset your password."
+        redirect_back_or_default new_session_url
       else
-        flash[:notice] = "Sorry, #{params[:user][:email]} isn't associated with any accounts. Are you sure you typed the correct email address?"
+        @user = User.new(params[:user])
+        flash.now[:error] = "Sorry, '#{params[:user][:email]}' isn't associated with any accounts.<br/>Are you sure you typed the correct email address?"
       end
     end
   end
@@ -78,7 +79,7 @@ class UsersController < ApplicationController
         end
       end
     else
-      flash[:notice] = "We're sorry, but this reset code has expired or is invalid." +
+      flash[:error] = "We're sorry, but this reset code has expired or is invalid." +
         "If you are having issues try copying and pasting the URL " +
         "from your email into your browser or restarting the " +
         "reset password process."

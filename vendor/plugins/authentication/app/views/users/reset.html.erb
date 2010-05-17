@@ -1,5 +1,5 @@
-<%= error_messages_for :user %>
 <% form_for :user do |f| -%>
+  <%= f.error_messages %>
   <p>Pick a new password for <%= @user.email %></p>
   <div class='field'>
     <%= f.label :password %>
