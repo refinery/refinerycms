@@ -167,7 +167,7 @@ a#site_bar_refinery_cms_logo {
   background-color: white;
 }
 
-body.login #page_container, body.login #site_bar_content {
+body.login #page_container, body.login #site_bar_content, body.login #header_content {
   width: 590px;
 }
 
@@ -243,14 +243,11 @@ div.field.plugin_access ul#plugins {
   margin-top: 3px;
 }
 
-#header {
-  background: #22a7f2;
-  border-bottom: 1px solid #65c3f7;
-}
 #header_content {
   height: 60px;
   position: relative;
   margin-bottom: -1px;
+  background: #153134;
 }
 
 body.login #header_content h1 {
@@ -269,8 +266,8 @@ body.login #header_content h1 {
   padding: 0px;
   position: absolute;
   bottom: 0px;
-  left: 0px;
-  right: 0px;
+  left: 15px;
+  right: 15px;
   background: transparent;
 }
 
