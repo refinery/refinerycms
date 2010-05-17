@@ -2,9 +2,9 @@
   <div class='inquiries'>
     <%= @page[:body] %>
 
-    <%= error_messages_for :inquiry, :header_message => "Whoops there was a small problem",
-                                      :message => "The following problems need to be corrected:" %>
     <% form_for @inquiry do |f| %>
+      <%= f.error_messages :header_message => "Whoops there was a small problem",
+                           :message => "The following problems need to be corrected:" %>
       <div class='field'>
         <%= f.required_label :name %>
         <%= f.text_field :name %>
