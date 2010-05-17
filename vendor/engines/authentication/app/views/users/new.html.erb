@@ -1,8 +1,6 @@
-<%= error_messages_for :user %>
-<p>
-  Fill out the form below with your details so we can get you started.
-</p>
-<%= form_for(:user, :url => users_path) do |f| %>
+<% content_for :header, "Fill out your details below so that we can get you started." %>
+<%= form_for :user, :url => users_path do |f| -%>
+  <%= f.error_messages %>
   <div class='field'>
     <%= f.label :login %>
     <%= f.text_field :login %>
@@ -25,4 +23,4 @@
     <% end -%>
   <% end -%>
   <p><%= submit_tag 'Sign up' %></p>
-<% end %>
+<% end -%>

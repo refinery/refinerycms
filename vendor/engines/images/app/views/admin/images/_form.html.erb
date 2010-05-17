@@ -1,7 +1,6 @@
-<%= error_messages_for :image %>
-
-<%= form_for([:admin, @image], :url => @url_override || @url,
-                              :html => {:multipart => true, :style => 'float: left; width: 70%'}) do |f| %>
+<%= form_for [:admin, @image], :url => @url_override || @url,
+                               :html => {:multipart => true, :style => 'float: left; width: 70%'} do |f| %>
+  <%= f.error_messages %>
   <div class='field'>
     <%= f.label :uploaded_data, 'Image' %>
     <% if action_name =~ /(edit)|(update)/ %>
