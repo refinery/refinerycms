@@ -50,7 +50,6 @@ module Refinery
 
       # We require the hpricot gem and the slim_scrooge gem
       configuration.gem "hpricot", :version => "~> 0.8.1", :lib => "hpricot"
-      configuration.gem "slim_scrooge", :version => "~> 1.0", :lib => "slim_scrooge"
 
       # Pass our configuration along to Rails.
       Rails.configuration = configuration

@@ -17,7 +17,7 @@ gem 'rails',          '~> 2.3.5'
 gem 'hpricot',        '~> 0.8'
 gem 'authlogic',      '2.1.3'
 gem 'friendly_id',    '2.3.3'
-gem 'slim_scrooge',   '1.0.10'
+gem 'slim_scrooge',   '~> 1.0.10'
 gem 'will_paginate',  '2.3.12'
 #==REFINERY END OF REQUIRED GEMS===
 
