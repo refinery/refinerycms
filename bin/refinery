@@ -70,22 +70,23 @@ unless (app_path = ARGV.shift).nil? or app_path.length == 0
     # write the new content into the file.
     File.open(File.join(%W(#{rails_root} Gemfile)), "w").puts(lines.join("\n"))
 
-  	puts "\n---------"
-  	puts "Refinery successfully installed in '#{rails_root}'!\n\n"
+    puts "\n---------"
+    puts "Refinery successfully installed in '#{rails_root}'!\n\n"
 
-    # update core script files with symlinks.
-    system "refinery-update-core #{rails_root} --from-refinery-installer"
-
+    # output helpful messages.
     puts "=== ACTION REQUIRED ==="
     puts "\nNow run these commands:"
     puts "\ncd #{rails_root}"
     puts "bundle install"
     puts "rake db:setup"
-    puts "\nunicorn_rails -p3000 or ruby script/server"
+    puts "rake refinery:update"
+    puts "\nunicorn_rails -p3000"
+    puts "or"
+    puts "ruby script/server"
     puts "\nThis will install all the required gems, set up your database, and launches the  webserver."
     puts "You can now see your site running in your browser at http://localhost:3000"
     puts "\nThanks for installing Refinery, enjoy creating your new application!"
-  	puts "---------\n\n"
+    puts "---------\n\n"
   end
 else
   puts "Please specify the path where you want to install Refinery. i.e. refinery /path/to/project"

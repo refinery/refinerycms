@@ -4,7 +4,7 @@ namespace :refinery do
   task :override => :environment do
     require 'fileutils'
 
-    if THEME.exist?
+    if defined?(THEME)
       # Prepare the basic structure for the theme directory
       dirs = ["themes", "themes/#{THEME}", "themes/#{THEME}/views", "themes/#{THEME}/views/layouts", "themes/#{THEME}/views/shared", "themes/#{THEME}/views/pages", "themes/#{THEME}/stylesheets", "themes/#{THEME}/javascripts", "themes/#{THEME}/images"]
 		  dirs.each do |dir|
@@ -20,7 +20,8 @@ namespace :refinery do
 		  end
 		end
 
-    if VIEW.exist? || CONTROLLER.exist? || MODEL.exist?
+    if defined?(VIEW) || defined?(CONTROLLER) || defined?(MODEL)
+    end
 
 =begin
       # copy the controller
@@ -91,34 +92,34 @@ namespace :refinery do
     FileUtils::makedirs dirs.map {|dir| File.join(Rails.root, dir) }
 
     # copy in the new assets.
-    assets = [%w(public stylesheets refinery), %w(public javascripts refinery), %w(public javascripts wymeditor), %w(VERSION), %w(public images wymeditor skins refinery), %w(public images refinery), %w(public stylesheets wymeditor skins refinery), %w(public javascripts jquery), %w(Gemfile)]
+    assets = [%w(public stylesheets refinery), %w(public javascripts refinery), %w(public javascripts wymeditor), %w(VERSION), %w(public images wymeditor skins refinery), %w(public images refinery), %w(public stylesheets wymeditor skins refinery), %w(public javascripts jquery)]
     assets.each do |asset|
       FileUtils::rm_rf File.join(Rails.root, asset), :secure => true # ensure the destination is clear.
       FileUtils::cp_r File.join(Refinery.root, asset), File.join(Rails.root, asset) # copy the new assets into the project.
     end
 
     # copy in any new migrations.
-    FileUtils::cp Dir[File.join(%W(#{Refinery.root} db migrate *.rb))], File.join(%W(#{Rails.root} db migrate))
+    FileUtils::cp Dir[Refinery.root.join("db", "migrate", "*.rb").cleanpath.to_s], Rails.root.join("db", "migrate").cleanpath.to_s
 
     # replace rakefile and gemfile.
-    FileUtils::cp File.join(%W(#{refinery_root} Rakefile)), File.join(%W(#{rails_root} Rakefile))
-    unless File.exist?(File.join("%W(#{rails_root} Gemfile)"))
-      FileUtils::cp File.join(%W(#{refinery_root} Gemfile)), File.join(%W(#{rails_root} Gemfile))
+    FileUtils::cp Refinery.root.join("Rakefile").cleanpath.to_s, Rails.root.join("Rakefile").cleanpath.to_s
+    unless Rails.root.join("Gemfile").exist?
+      FileUtils::cp Refinery.root.join("Gemfile").cleanpath.to_s, Rails.root.join("Gemfile").cleanpath.to_s
     else
       # TODO only override refinery gems here.
     end
 
     # replace the preinitializer.
-    FileUtils::cp File.join(%W(#{Refinery.root} config preinitializer.rb)), File.join(%W(#{Rails.root} config preinitializer.rb))
+    FileUtils::cp Refinery.root.join("config", "preinitializer.rb").cleanpath.to_s, Rails.root.join("config", "preinitializer.rb").cleanpath.to_s
 
     # copy the lib/refinery directory in
-    FileUtils::cp_r File.join(%W(#{Refinery.root} lib refinery)), File.join(Rails.root, "lib")
+    FileUtils::cp_r Refinery.root.join("lib", "refinery").cleanpath.to_s, Rails.root.join("lib").cleanpath.to_s
 
     # get current secret key
-    if !File.exist?(File.join(%W(#{Rails.root} config application.rb)))
-      lines = File.open(File.join(%W(#{Rails.root} config environment.rb)), "r").read.split("\n")
+    unless Rails.root.join("config", "application.rb").exist?
+      lines = Rails.root.join("config", "environment.rb").read.split("\n")
     else
-      lines = File.open(File.join(%W(#{Rails.root} config application.rb)), "r").read.split("\n")
+      lines = Rails.root.join("config", "application.rb").read.split("\n")
     end
 
     secret_key = ""
@@ -130,43 +131,42 @@ namespace :refinery do
     end
 
     # read in the config files
-    if File.exist?(File.join(%W(#{Rails.root} config application.rb)))
-      FileUtils::cp File.join(%W(#{Refinery.root} config environment.rb)), File.join(%W(#{Rails.root} config environment.rb))
+    if Rails.root.join("config", "application.rb").exist?
+      FileUtils::cp Refinery.root.join("config", "environment.rb").cleanpath.to_s, Rails.root.join("config", "environment.rb").cleanpath.to_s
     else
       # write the new content into the file.
-      FileUtils::cp File.join(%W(#{Refinery.root} config application.rb)), File.join(%W(#{Rails.root} config application.rb))
+      FileUtils::cp Refinery.root.join("config", "application.rb").cleanpath.to_s, Rails.root.join("config", "application.rb").cleanpath.to_s
 
-      app_rb_lines = File.open(File.join(%W(#{Rails.root} config application.rb)), "r").read.split("\n")
-      app_rb_lines.each do |line|
+      (app_rb_lines = Rails.root.join("config", "application.rb").read.split('\n')).each do |line|
         secret_match = line.scan(/(:secret)([^']*)([\'])([^\']*)/).flatten.last
         line.gsub!(secret_match, secret_key) unless secret_match.nil?
       end
 
       # write the new content into the file.
-      File.open(File.join(%W(#{Rails.root} config application.rb)), "w").puts(app_rb_lines.join("\n"))
+      Rails.root.join("config", "application.rb").open("w").puts(app_rb_lines.join('\n'))
 
-      FileUtils::cp File.join(%W(#{Refinery.root} config environment.rb)), File.join(%W(#{Rails.root} config environment.rb))
+      FileUtils::cp Refinery.root.join('config', 'environment.rb').cleanpath.to_s, Rails.root.join('config', 'environment.rb').cleanpath.to_s
     end
 
-    unless File.exist?(File.join(%W(#{Rails.root} config settings.rb)))
-      FileUtils::cp(File.join(%W(#{Refinery.root} config settings.rb)), File.join(%W(#{Rails.root} config settings.rb)))
+    unless Rails.root.join("config", "settings.rb").exist?
+      FileUtils::cp(Refinery.root.join('config', 'settings.rb').cleanpath.to_s, Rails.root.join('config', 'settings.rb').cleanpath.to_s)
     end
 
     app_config_file = "application.rb"
 
-    app_config = File.open(File.join(%W(#{Rails.root} config #{app_config_file})), "r").read
+    app_config = Rails.root.join("config", app_config_file).read
 
     # copy new jquery javascripts.
-    FileUtils.cp File.join(%W(#{Refinery.root} public javascripts jquery.js)), File.join(%W(#{Rails.root} public javascripts jquery.js))
-    FileUtils.cp File.join(%W(#{Refinery.root} public javascripts jquery-ui-1.8.min.js)), File.join(%W(#{Rails.root} public javascripts jquery-ui-1.8.min.js))
+    FileUtils.cp Refinery.root.join('public', 'javascripts', 'jquery.js').cleanpath.to_s, Rails.root.join('public', 'javascripts', 'jquery.js').cleanpath.to_s
+    FileUtils.cp Refinery.root.join('public', 'javascripts', 'jquery-ui.js').cleanpath.to_s, Rails.root.join('public', 'javascripts', 'jquery-ui.js').cleanpath.to_s
 
     # backup the config file.
-    FileUtils.cp File.join(%W(#{Rails.root} config #{app_config_file})), File.join(%W(#{Rails.root} config #{app_config_file.gsub(".rb", "")}.autobackupbyrefinery.rb))
+    FileUtils.cp Rails.root.join('config', app_config_file).cleanpath.to_s, Rails.root.join('config', "#{app_config_file.gsub('.rb', '')}.autobackup.rb").cleanpath.to_s
 
     # copy the new config file.
-    FileUtils.cp File.join(%W(#{Refinery.root} config #{app_config_file})), File.join(%W(#{Rails.root} config #{app_config_file}))
+    FileUtils.cp Refinery.root.join('config', app_config_file).cleanpath.to_s, Rails.root.join('config', app_config_file).cleanpath.to_s
 
-    unless ARGV.include?("--from-refinery-installer")
+    unless (ENV["from_installer"] || 'false').to_s == 'true'
       puts "---------"
       puts "Copied new Refinery core assets."
       puts "I've made a backup of your current config/#{app_config_file} file as it has been updated with the latest Refinery requirements."
@@ -174,18 +174,16 @@ namespace :refinery do
       puts ""
       puts "=== ACTION REQUIRED ==="
       puts "Please run rake db:migrate to ensure your database is at the correct version."
-      puts "Please also run rake gems:install to ensure you have the currently specified gems."
+      puts "Please also run bundle install to ensure you have the currently specified gems."
       puts ""
     end
-  end
-
   end
 
   namespace :cache do
     desc "Eliminate existing cache files for javascript and stylesheet resources in default directories"
     task :clear => :environment do
-      FileUtils.rm(Dir[Rails.root.join("public", "javascripts", "cache", "[^.]*")])
-      FileUtils.rm(Dir[Rails.root.join("public", "stylesheets", "cache", "[^.]*")])
+      FileUtils.rm(Dir[Rails.root.join("public", "javascripts", "cache", "[^.]*").cleanpath.to_s])
+      FileUtils.rm(Dir[Rails.root.join("public", "stylesheets", "cache", "[^.]*").cleanpath.to_s])
     end
   end
 

@@ -9,7 +9,7 @@ unless rails_root.nil? or rails_root.length == 0
   FileUtils::makedirs dirs.map {|dir| File.join(rails_root, dir) }
 
   # copy in the new assets.
-  assets = [%w(public stylesheets refinery), %w(public javascripts refinery), %w(public javascripts wymeditor), %w(VERSION), %w(public images wymeditor skins refinery), %w(public images refinery), %w(public stylesheets wymeditor skins refinery), %w(public javascripts jquery), %w(Gemfile)]
+  assets = [%w(public stylesheets refinery), %w(public javascripts refinery), %w(public javascripts wymeditor), %w(VERSION), %w(public images wymeditor skins refinery), %w(public images refinery), %w(public stylesheets wymeditor skins refinery), %w(public javascripts jquery)]
 	assets.each do |asset|
 	  FileUtils::rm_rf File.join(rails_root, asset), :secure => true # ensure the destination is clear.
 	  FileUtils::cp_r File.join(refinery_root, asset), File.join(rails_root, asset) # copy the new assets into the project.
@@ -82,7 +82,7 @@ unless rails_root.nil? or rails_root.length == 0
 
   # copy new jquery javascripts.
   FileUtils.cp File.join(%W(#{refinery_root} public javascripts jquery.js)), File.join(%W(#{rails_root} public javascripts jquery.js))
-  FileUtils.cp File.join(%W(#{refinery_root} public javascripts jquery-ui-1.8.min.js)), File.join(%W(#{rails_root} public javascripts jquery-ui-1.8.min.js))
+  FileUtils.cp File.join(%W(#{refinery_root} public javascripts jquery-ui.js)), File.join(%W(#{rails_root} public javascripts jquery-ui.js))
 
   # backup app's config file and replace it, if required.
 	environment_updated = false
