@@ -1,5 +1,5 @@
 begin
-	
+
   require 'yard'
 
 	YARD::Rake::YardocTask.new do |t|
@@ -19,12 +19,12 @@ begin
 							 'vendor/engines/refinery_settings/**/*.rb',
 							 'vendor/engines/resources/**/*.rb',
 							 'vendor/engines/themes/**/*.rb',
-							 '-', 'License', 'Contributors',
+							 '-', 'License',
 							 'vendor/engines/themes/Themes.rdoc']
   end
-  
+
 rescue LoadError
-	
+
   task :yard do
     abort "YARD is not available. In order to run yardoc, you must: sudo gem install yard"
   end

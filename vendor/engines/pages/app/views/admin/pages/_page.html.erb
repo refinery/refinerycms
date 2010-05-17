@@ -9,8 +9,8 @@
   <div class='clearfix'>
     <span class='title'>
       <%= h page.title %>
-      <%= "<em>(hidden)</em>" unless page.show_in_menu? %>
-      <%= "<em>(draft)</em>" if page.draft? %>
+      <%=raw "<em>(hidden)</em>" unless page.show_in_menu? %>
+      <%=raw "<em>(draft)</em>" if page.draft? %>
     </span>
 
     <span class='actions'>

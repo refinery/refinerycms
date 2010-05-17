@@ -1,26 +1,41 @@
-<%= stylesheet_link_tag('refinery/site_bar') unless admin? %>
+<% unless admin? or login? %>
+  <%# jquery scripts should already be cached when using the site bar as login has happened. %>
+  <%= stylesheet_link_tag('refinery/site_bar') %>
+  <%= jquery_include_tags %>
+  <script type='text/javascript'>
+    $(document).ready(function() {
+      logo = $('#site_bar_content #site_bar_refinery_cms_logo');
+      logo.css('left', ($('#site_bar_content').width() / 2) - (logo.width() / 2));
+    });
+  </script>
+<% end -%>
 <div id='site_bar'>
   <div id='site_bar_content' class='clearfix'>
-    <div id='editor_switch'>
-      <%=
-        link_to_if(admin?, "Switch to your website", root_url) do
-          link_to "Switch to your website editor",
-                  (if defined?(@page) and @page.present? and !@page.home?
-                     edit_admin_page_url(@page)
-                   else
-                     (request.request_uri.to_s == '/') ? admin_root_url : "/admin#{request.request_uri}/edit"
-                   end rescue admin_root_url)
-        end
-      -%>
-    </div>
-    <%= link_to image_tag("#{"http://refinerycms.com/images/" unless local_request?}refinery/logo-small.png",
+    <% unless login? %>
+      <div id='editor_switch'>
+        <%=
+          link_to_if(admin?, "Switch to your website", root_url(:only_path => true)) do
+            link_to "Switch to your website editor",
+                    (if defined?(@page) and @page.present? and !@page.home?
+                       edit_admin_page_url(@page, :only_path => true)
+                     else
+                       (request.request_uri.to_s == '/') ? admin_root_url(:only_path => true) : "/admin#{request.request_uri}/edit"
+                     end rescue admin_root_url(:only_path => true))
+          end
+        -%>
+      </div>
+    <% end %>
+    <%= link_to image_tag("#{"http://refinerycms.com/images/" unless local_request?}refinery/logo-site-bar.png",
                 :alt => "Refinery (tm) Content Manager"), "http://refinerycms.com",
                 :target => "_blank",
                 :id => "site_bar_refinery_cms_logo" %>
-    <div id='site_bar_branding'>
-      <span id='site_bar_company_name'>
-        <%= RefinerySetting[:site_name] %>
-      </span>
-    </div>
+
+    <% unless login? %>
+      <div id='site_bar_branding'>
+        <span id='site_bar_company_name'>
+          <%= RefinerySetting[:site_name] %>
+        </span>
+      </div>
+    <% end %>
   </div>
 </div>

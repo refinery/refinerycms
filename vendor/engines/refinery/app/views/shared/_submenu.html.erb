@@ -1,5 +1,5 @@
 <% if (children = @page.root.children).any? -%>
-  <ul id='submenu'>
+  <nav id='submenu'>
     <%= render :partial => "/shared/submenu_branch", :collection => children %>
-  </ul>
+  </nav>
 <% end -%>

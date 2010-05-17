@@ -45,7 +45,7 @@ module Refinery::ApplicationHelper
 
       # call rails' image tag function with default alt, width and height options.
       # if any other options were supplied these are merged in and can replace the defaults.
-      image_tag(image_thumbnail.public_filename, {:alt => image.title,
+      image_tag(image_thumbnail.public_filename, {:alt => image.respond_to?(:title) ? image.title : image.filename,
                                                   :width => image_thumbnail.width,
                                                   :height => image_thumbnail.height
                                                  }.merge!(options))
@@ -60,7 +60,7 @@ module Refinery::ApplicationHelper
                           use_google = RefinerySetting.find_or_set(:use_google_ajax_libraries, false))
     # render the tags normally unless
     unless use_google and !local_request?
-      javascript_include_tag 'jquery', 'jquery-ui-1.8.min.js', :cache => (use_caching ? "cache/libraries" : nil)
+      javascript_include_tag 'jquery', 'jquery-ui', :cache => (use_caching ? "cache/libraries" : nil)
     else
       "#{javascript_include_tag("http://www.google.com/jsapi").gsub(".js", "")}
       <script type='text/javascript'>
@@ -92,7 +92,7 @@ module Refinery::ApplicationHelper
     title = []
     objects = (options[:chain_page_title] and object.respond_to?(:ancestors)) ? [object.ancestors, object] : [object]
 
-    objects.flatten.each do |obj|
+    objects.flatten.compact.each do |obj|
       if obj.respond_to?(:custom_title_type)
         title << case obj.custom_title_type
           when "text"
