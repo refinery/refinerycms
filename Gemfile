@@ -14,10 +14,10 @@ gem 'unicorn', :group => :development
 #===REFINERY REQUIRED GEMS===
 gem 'rmagick',        '~> 2.13.1'
 gem 'rails',          '~> 2.3.5'
-gem 'hpricot',        '~> 0.8'
-gem 'authlogic',      '~> 2.1.3'
-gem 'friendly_id',    '~> 2.3.3'
-gem 'will_paginate',  '~> 2.3.12'
+gem 'hpricot',        '~> 0.8', :require => 'hpricot'
+gem 'authlogic',      '~> 2.1.3', :require => 'authlogic'
+gem 'friendly_id',    '~> 2.3.3', :require => 'friendly_id'
+gem 'will_paginate',  '~> 2.3.12', :require => 'will_paginate'
 #===REFINERY END OF REQUIRED GEMS===
 
 #===REQUIRED FOR REFINERY GEM INSTALL===
