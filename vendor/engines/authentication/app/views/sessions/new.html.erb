@@ -1,25 +1,22 @@
 <%= form_for(:session, @session, :url => session_path) do |f| -%>
   <%= f.error_messages %>
+  <div class='field session_username clearfix'>
+    <%= f.label Refinery.authentication_login_field %>
+    <%= f.text_field Refinery.authentication_login_field, :class => 'larger' %>
+  </div>
+  <div class='field session_password clearfix'>
+    <%= f.label :password %>
+    <%= f.password_field :password, :autocomplete => 'off', :class => 'larger' %>
+  </div>
   <div class='clearfix'>
-    <div class='field session_username'>
-      <%= f.label Refinery.authentication_login_field %>
-      <%= f.text_field Refinery.authentication_login_field %>
+    <div class='field remember_me'>
+      <%= f.label :remember_me, nil %>
+      <%= f.check_box :remember_me %>
     </div>
-    <div class='field session_password'>
-      <%= f.label :password %>
-      <%= f.password_field :password, :autocomplete => 'off' %>
+    <div class='field forgot_password'>
+      <%= link_to "I forgot my password", forgot_users_url %>
     </div>
   </div>
-  <div class='field forgot_password'>
-    <%= link_to "I forgot my password", forgot_users_url %>
-  </div>
-  <div class='field remember_me'>
-    <%= f.label :remember_me, nil %>
-    <%= f.check_box :remember_me %>
-  </div>
-  <div class='form-actions'>
-    <%= f.submit 'Sign in' %>
-    or
-    <%= link_to "Cancel", root_url %>
-  </div>
-<% end %>
+  <%= render :partial => "/shared/admin/form_actions", :locals => {:f => f, :submit_button_text => "Sign in", :hide_cancel => true} %>
+<% end -%>
+<% content_for :header, "Hello, please sign in." %>

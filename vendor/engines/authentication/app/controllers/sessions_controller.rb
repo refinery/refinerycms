@@ -6,7 +6,6 @@ class SessionsController < ApplicationController
 
   def new
     @session = UserSession.new
-    flash.now[:notice] = "Hello, please sign into #{RefinerySetting[:site_name]}"
   end
 
   def create

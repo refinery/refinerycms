@@ -6,18 +6,18 @@
   domid = "item_#{menu_branch_counter}" unless menu_branch.parent_id.present? or menu_branch.title.blank?
 -%>
 <% if menu_branch.in_menu? %>
-  <li<%=raw " class='#{css.join(' ')}'" if css.present? -%><%=raw " id='#{domid}'" if domid.present? -%>>
+  <div<%=raw " class='#{css.join(' ')}'" if css.present? -%><%=raw " id='#{domid}'" if domid.present? -%>>
     <%= link_to menu_branch.title, menu_branch.url %>
     <%
       unless hide_children or
         menu_branch.parent_id.present? or
         (children = menu_branch.children.collect{|c| c if c.in_menu?}.compact).empty?
     -%>
-      <ul class='clearfix'>
+      <nav class='clearfix'>
         <%= render :partial => "/shared/menu_branch",
                     :collection => children,
                     :locals => {:hide_children => hide_children, :sibling_count => children.size-1} -%>
-      </ul>
+      </nav>
     <% end -%>
-  </li>
+  </div>
 <% end -%>
