@@ -91,7 +91,7 @@ namespace :refinery do
     FileUtils::makedirs dirs.map {|dir| File.join(Rails.root, dir) }
 
     # copy in the new assets.
-    assets = [%w(public stylesheets refinery), %w(public javascripts refinery), %w(public javascripts wymeditor), %w(VERSION), %w(public images wymeditor skins refinery), %w(public images refinery), %w(public stylesheets wymeditor skins refinery), %w(public javascripts jquery)]
+    assets = [%w(public stylesheets refinery), %w(public javascripts refinery), %w(public javascripts wymeditor), %w(VERSION), %w(public images wymeditor skins refinery), %w(public images refinery), %w(public stylesheets wymeditor skins refinery), %w(public javascripts jquery), %w(Gemfile)]
     assets.each do |asset|
       FileUtils::rm_rf File.join(Rails.root, asset), :secure => true # ensure the destination is clear.
       FileUtils::cp_r File.join(Refinery.root, asset), File.join(Rails.root, asset) # copy the new assets into the project.
@@ -100,8 +100,13 @@ namespace :refinery do
     # copy in any new migrations.
     FileUtils::cp Dir[File.join(%W(#{Refinery.root} db migrate *.rb))], File.join(%W(#{Rails.root} db migrate))
 
-    # replace rakefile.
-    FileUtils::cp File.join(%W(#{Refinery.root} Rakefile)), File.join(%W(#{Rails.root} Rakefile))
+    # replace rakefile and gemfile.
+    FileUtils::cp File.join(%W(#{refinery_root} Rakefile)), File.join(%W(#{rails_root} Rakefile))
+    unless File.exist?(File.join("%W(#{rails_root} Gemfile)"))
+      FileUtils::cp File.join(%W(#{refinery_root} Gemfile)), File.join(%W(#{rails_root} Gemfile))
+    else
+      # TODO only override refinery gems here.
+    end
 
     # replace the preinitializer.
     FileUtils::cp File.join(%W(#{Refinery.root} config preinitializer.rb)), File.join(%W(#{Rails.root} config preinitializer.rb))
