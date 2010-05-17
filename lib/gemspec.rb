@@ -6,8 +6,6 @@ files = %w( .gems .gitignore .yardopts Gemfile Rakefile readme.md license.md VER
   files += Dir.glob("#{dir}/**/*")
 end
 
-save = ARGV.delete('-s')
-
 gemspec = <<EOF
 Gem::Specification.new do |s|
   s.name              = %q{refinerycms}
@@ -30,7 +28,7 @@ Gem::Specification.new do |s|
 end
 EOF
 
-if save
+if (save = ARGV.delete('-s'))
   if File.exist?(file = "refinerycms.gemspec")
     File.delete(file)
   end
