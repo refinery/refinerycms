@@ -60,7 +60,7 @@ module Refinery::ApplicationHelper
                           use_google = RefinerySetting.find_or_set(:use_google_ajax_libraries, false))
     # render the tags normally unless
     unless use_google and !local_request?
-      javascript_include_tag 'jquery', 'jquery-ui-1.8.min.js', :cache => (use_caching ? "cache/libraries" : nil)
+      javascript_include_tag 'jquery', 'jquery-ui', :cache => (use_caching ? "cache/libraries" : nil)
     else
       "#{javascript_include_tag("http://www.google.com/jsapi").gsub(".js", "")}
       <script type='text/javascript'>
