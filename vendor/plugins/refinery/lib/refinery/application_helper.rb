@@ -45,7 +45,7 @@ module Refinery::ApplicationHelper
 
       # call rails' image tag function with default alt, width and height options.
       # if any other options were supplied these are merged in and can replace the defaults.
-      image_tag(image_thumbnail.public_filename, {:alt => image.title,
+      image_tag(image_thumbnail.public_filename, {:alt => image.respond_to?(:title) ? image.title : image.filename,
                                                   :width => image_thumbnail.width,
                                                   :height => image_thumbnail.height
                                                  }.merge!(options))
