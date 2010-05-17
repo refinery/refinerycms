@@ -14,12 +14,6 @@ begin
   # Set up load paths for all bundled gems
   ENV["BUNDLE_GEMFILE"] = File.expand_path("../../Gemfile", __FILE__)
   Bundler.setup
-  
-  if Rails.env.production?
-    require_dependency 'will_paginate'
-    require_dependency 'authlogic'
-    require_dependency 'friendly_id'
-  end
 
   if File.exist?(non_gem_refinery_file = File.expand_path("../../vendor/plugins/refinery/lib/refinery.rb", __FILE__))
     require non_gem_refinery_file.to_s
