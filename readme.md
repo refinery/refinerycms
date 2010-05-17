@@ -36,7 +36,7 @@ Refinery's gem requirements are:
 * [rmagick ~> 2.13.1](http://rubygems.org/gems/rmagick)
 * [will_paginate ~> 2.3.12](http://rubygems.org/gems/will_paginate)
 
-### Other dependancies
+### Other dependencies
 
 * [RMagick](http://github.com/rmagick/rmagick) - [Install docs](http://rmagick.rubyforge.org/install-faq.html) or for
 Mac OS 10.5 or 10.6 users [this shell install script](http://github.com/maddox/magick-installer) will be easier.
