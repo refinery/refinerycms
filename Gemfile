@@ -15,10 +15,15 @@ gem 'unicorn', :group => :development
 gem 'rmagick',        '~> 2.13.1'
 gem 'rails',          '~> 2.3.5'
 gem 'hpricot',        '~> 0.8'
-gem 'authlogic',      '2.1.3'
-gem 'friendly_id',    '2.3.3'
-gem 'will_paginate',  '2.3.12'
-#==REFINERY END OF REQUIRED GEMS===
+gem 'authlogic',      '~> 2.1.3'
+gem 'friendly_id',    '~> 2.3.3'
+gem 'will_paginate',  '~> 2.3.12'
+#===REFINERY END OF REQUIRED GEMS===
+
+#===REQUIRED FOR REFINERY GEM INSTALL===
+# Leave the gem below disabled (commented out) if you're not using the gem install method.
+#gem 'refinerycms',    '= 0.9.7.dev'
+#===END OF REFINERY GEM INSTALL REQUIREMENTS===
 
 # Bundle gems for certain environments:
 group :test do
