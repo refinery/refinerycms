@@ -37,6 +37,9 @@ unless rails_root.nil? or rails_root.length == 0
   # replace the preinitializer.
   FileUtils::cp File.join(%W(#{refinery_root} config preinitializer.rb)), File.join(%W(#{rails_root} config preinitializer.rb))
 
+  # replace the boot file.
+  FileUtils::cp File.join(%W(#{refinery_root} config boot.rb)), File.join(%W(#{rails_root} config boot.rb))
+
   # copy the lib/refinery directory in
   FileUtils::cp_r File.join(%W(#{refinery_root} lib refinery)), File.join(rails_root, "lib")
 

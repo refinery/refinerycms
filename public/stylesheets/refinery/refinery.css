@@ -158,9 +158,10 @@ a:hover {
 }
 #site_bar_content {
   margin-bottom: 0px;
+  width: 960px;
 }
 a#site_bar_refinery_cms_logo {
-  left: 447px;
+  left: 432px;
 }
 
 #content {
