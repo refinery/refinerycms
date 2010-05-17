@@ -79,5 +79,5 @@ begin
     end
   end
 rescue LoadError
-  #puts "Jeweler not available. Install it with: sudo gem install jeweler"
+  # puts "Jeweler not available. Install it with: gem install jeweler"
 end

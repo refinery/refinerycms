@@ -3,7 +3,7 @@ namespace :refinery do
   desc "Override files for use in an application"
   task :override => :environment do
     require 'fileutils'
-    
+
     if THEME.exist?
       # Prepare the basic structure for the theme directory
       dirs = ["themes", "themes/#{THEME}", "themes/#{THEME}/views", "themes/#{THEME}/views/layouts", "themes/#{THEME}/views/shared", "themes/#{THEME}/views/pages", "themes/#{THEME}/stylesheets", "themes/#{THEME}/javascripts", "themes/#{THEME}/images"]
@@ -19,9 +19,9 @@ namespace :refinery do
 			  dir.mkdir unless dir.directory?
 		  end
 		end
-    
+
     if VIEW.exist? || CONTROLLER.exist? || MODEL.exist?
-    
+
 =begin
       # copy the controller
       unless controller_with_admin =~ /\*(\*)?/ and !action.nil?
@@ -81,7 +81,7 @@ namespace :refinery do
     end
 
   end
-  
+
   desc "Update the core files with the gem"
   task :update => :environment do
     require 'fileutils'
@@ -175,7 +175,7 @@ namespace :refinery do
   end
 
   end
-  
+
   namespace :cache do
     desc "Eliminate existing cache files for javascript and stylesheet resources in default directories"
     task :clear => :environment do
