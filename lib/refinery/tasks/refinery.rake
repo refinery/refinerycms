@@ -64,8 +64,6 @@ begin
     g.authors = ["Resolve Digital", "David Jones", "Philip Arndt"]
     g.extra_rdoc_files = %w(readme.md contributors.md license.md VERSION)
     g.rdoc_options << "--inline-source"
-    g.add_dependency("hpricot", "~> 0.8.1")
-    g.add_dependency("slim_scrooge", "~> 1.0.9")
     g.has_rdoc = true
   end
 
