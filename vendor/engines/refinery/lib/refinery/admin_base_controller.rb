@@ -19,7 +19,7 @@ protected
   # never take the backend down for maintenance.
   def take_down_for_maintenance?;end
 
-  def error_404
+  def error_404(exception=nil)
     @page = Page.find_by_menu_match("^/404$", :include => [:parts, :slugs])
     @page[:body] = @page[:body].gsub(/href=(\'|\")\/(\'|\")/, "href='/admin'").gsub("home page", "Dashboard")
     render :template => "/pages/show", :status => 404

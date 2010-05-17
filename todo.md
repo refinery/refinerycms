@@ -22,7 +22,3 @@ Work items still to do:
 * Replace or fix attachment\_fu upstream (possibly with Paperclip, Carrierwave).
 * Migrate to new Mailer API (low).
 * Fix other deprecations (low).
-
-# Bundler
-
-We really would prefer to move to bundler for gem management instead of using vendor/plugins for third party plugins like authlogic.

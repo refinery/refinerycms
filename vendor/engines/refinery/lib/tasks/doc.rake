@@ -23,7 +23,7 @@ namespace :doc do
 	              						 'vendor/engines/refinery_settings/**/*.rb',
 	              						 'vendor/engines/resources/**/*.rb',
 	              						 'vendor/engines/themes/**/*.rb',
-														 'readme.md', 'license.md', 'contributors.md', 'vendor/engines/themes/themes.md')
+														 'readme.md', 'license.md', 'vendor/engines/themes/themes.md')
 	}
 
 end

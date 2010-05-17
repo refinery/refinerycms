@@ -26,14 +26,13 @@
 }
 
 #site_bar * {
-  line-height: 46px;
+  line-height: 47px;
 }
 
 #site_bar {
-  height: 46px;
+  height: 47px;
   background: #22a7f2;
   padding: 0px;
-  border-bottom: 1px solid #1b82bd;
 }
 
 #site_bar a {
@@ -45,22 +44,22 @@
   border-bottom: 1px solid white;
 }
 
-#site_bar img {
-  vertical-align: middle;
-  margin-top: -5px;
-  padding-left: 10px;
-}
-
 #site_bar_content {
   position: relative;
 }
 
 a#site_bar_refinery_cms_logo {
   left: 44.5%;
-  opacity: 0.5;
   border-bottom: none;
+  line-height: 29px;
+  height: 29px;
+  margin-top: 9px;
+  overflow: hidden;
 }
 a#site_bar_refinery_cms_logo:hover {
   border-bottom: none;
   opacity: 1;
+}
+a#site_bar_refinery_cms_logo:hover img {
+  margin-top: -29px;
 }

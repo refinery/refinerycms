@@ -29,9 +29,14 @@ Unlike other content managers, Refinery is truly aimed at the end user making it
 
 Refinery's gem requirements are:
 
+* [authlogic ~> 2.1.3](http://rubygems.org/gems/authlogic)
+* [friendly_id ~> 2.3.3](http://rubygems.org/gems/friendly_id)
+* [hpricot ~> 0.8](http://rubygems.org/gems/hpricot)
 * [rails ~> 2.3.5](http://rubygems.org/gems/rails)
+* [rmagick ~> 2.13.1](http://rubygems.org/gems/rmagick)
+* [will_paginate ~> 2.3.12](http://rubygems.org/gems/will_paginate)
 
-### Other dependancies
+### Other dependencies
 
 * [RMagick](http://github.com/rmagick/rmagick) - [Install docs](http://rmagick.rubyforge.org/install-faq.html) or for
 Mac OS 10.5 or 10.6 users [this shell install script](http://github.com/maddox/magick-installer) will be easier.
@@ -57,13 +62,32 @@ Mac OS 10.5 or 10.6 users [this shell install script](http://github.com/maddox/m
 
 Firstly, edit ``config/database.yml`` to reflect your database server details.
 
+Next you'll need to install bundler if you don't have it already:
+
+    gem install bundler
+
+Now you will need to make sure that you specify the correct database driver and web server.
+The default choices are mysql and unicorn but to change them open up ``Gemfile`` which is in your application's root directory.
+You'll see a section like this:
+
+    # Specify the database driver as appropriate for your application (only one).
+    gem 'mysql', :require => 'mysql'
+    #gem 'sqlite3-ruby', :require => 'sqlite3'
+
+    # Specify your favourite web server (only one).
+    gem 'unicorn', :group => :development
+    #gem 'mongrel', :group => :development
+
+To choose a different driver or web server just comment out the one we've pre-selected and uncomment or write the one you want instead.
+
+After you have bundler and you've chosen your database driver and web server, you'll need to install the gems that Refinery depends on.
+You can do this by running:
+
+    bundle install
+
 Next create your database and fill it with Refinery's default data:
 
     rake db:setup
-
-After your database exists, you'll need to install the gems that Refinery depends on. You can do this by running:
-
-    rake gems:install
 
 Note: The news engine that was previously in Refinery's core was extracted into a separate gem / plugin to be found here:
 

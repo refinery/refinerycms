@@ -2,9 +2,14 @@ class SessionsController < ApplicationController
   layout 'admin'
 
   before_filter :redirect?, :only => [:new, :create]
+  before_filter :redirect_to_new, :only => [:index, :show]
+
+  def new
+    @session = UserSession.new
+  end
 
   def create
-    if UserSession.create(params[:session])
+    if (@session = UserSession.create(params[:session])).valid?
       redirect_back_or_default(admin_root_url)
       flash[:notice] = "Logged in successfully"
     else
@@ -22,6 +27,10 @@ protected
 
   def redirect?
     redirect_to admin_root_url if logged_in?
+  end
+
+  def redirect_to_new
+    redirect_to :action => "new"
   end
 
   def take_down_for_maintenance?;end
