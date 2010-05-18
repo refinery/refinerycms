@@ -20,3 +20,10 @@ config.action_controller.allow_forgery_protection    = false
 # The :test delivery method accumulates sent emails in the
 # ActionMailer::Base.deliveries array.
 config.action_mailer.delivery_method = :test
+
+# Bundler has shown a weakness in test mode using Rails 2.3.5 so we are going to
+# require these dependencies here until we can find another solution or until we move to
+# Rails 3.0 which should fix the issue (or until Bundler fixes the issue).
+require_dependency 'will_paginate'
+require_dependency 'authlogic'
+require_dependency 'friendly_id'
