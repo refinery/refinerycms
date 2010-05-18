@@ -6,19 +6,22 @@ class Admin::DashboardController < Admin::BaseController
     Refinery::Plugins.active.each do |plugin|
       begin
         plugin.activity.each do |activity|
-          @recent_activity << {
-            :activity_class => activity.class,
-            :count => activity.class.count(:conditions => activity.conditions),
-            :latest_action => activity.class.maximum(:updated_at)
-          }
+          @recent_activity += activity.class.find(:all,
+            :conditions => activity.conditions,
+            :order => activity.order,
+            :limit => activity.limit
+          )
         end
       rescue
-        logger.info "#{$!.class.name} raised while getting recent activity for dashboard."
+        logger.warn "#{$!.class.name} raised while getting recent activity for dashboard."
+        logger.warn $!.message
         logger.warn $!.backtrace.collect { |b| " > #{b}" }.join("\n")
       end
     end
 
-    @recent_activity = @recent_activity.collect{|a| a if a[:count] > 0}.compact.sort{|a,b| b[:latest_action] <=> a[:latest_action]}
+    @recent_activity = @recent_activity.compact.uniq.sort { |x,y|
+      y.updated_at <=> x.updated_at
+    }.first(RefinerySetting.find_or_set(:activity_show_limit, 7))
   end
 
 end
