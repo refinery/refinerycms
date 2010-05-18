@@ -3,6 +3,10 @@
   font-family: Arial;
   font-size: 13px;
 }
+p {
+  font-size: 14px;
+  line-height: 18px;
+}
 html {
   min-height: 100%;
 }
