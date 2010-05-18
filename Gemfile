@@ -12,7 +12,7 @@ gem 'unicorn', :group => :development
 # gem 'capistrano'
 
 #===REFINERY REQUIRED GEMS===
-gem 'rmagick',        '~> 2.13.1'
+gem 'rmagick',        '~> 2.12.2'
 gem 'rails',          '~> 2.3.5'
 gem 'hpricot',        '~> 0.8', :require => 'hpricot'
 gem 'authlogic',      '~> 2.1.3', :require => 'authlogic'
