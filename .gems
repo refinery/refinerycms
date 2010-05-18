@@ -1,0 +1,6 @@
+rmagick
+rails          --version '~> 2.3.5'
+hpricot        --version '~> 0.8'
+authlogic      --version '~> 2.1.3'
+friendly_id    --version '~> 2.3.3'
+will_paginate  --version '~> 2.3.12'
