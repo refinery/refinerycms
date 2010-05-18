@@ -28,7 +28,7 @@ acronym {
   padding-right: 15px;
 }
 #actions ul {
-  margin: 0;
+  margin: 0px 0px 18px 0px;
   padding: 0;
   list-style: none;
 }
@@ -87,7 +87,7 @@ hr {
   padding: 8px 8px 8px 30px;
   margin-bottom: 5px;
 }
-.flash_notice {
+.flash_notice, .flash_message {
   border: 1px solid #00A017;
   color: #00A017;
   background: 7px 7px no-repeat url('/images/refinery/icons/accept.png') #E0F5E0;
@@ -99,6 +99,32 @@ hr {
   border: 1px solid #A00027;
   color: #A00027;
   background: 7px 7px no-repeat url('/images/refinery/icons/cancel.png') #FFB1B1;
+}
+#flash.flash_notice #flash_close, #flash.flash_error #flash_close {
+  text-transform: lowercase;
+}
+#flash.flash_message {
+  background: #E0F5E0;
+  padding: 9px;
+  position: relative;
+  margin-bottom: 32px;
+}
+#flash.flash_message h2 {
+  margin-top: 12px;
+}
+.flash_message, .flash_message * {
+  color: #262719;
+  font-size: 14px;
+}
+#flash a, #flash a:hover {
+  color: #e20003;
+  border-bottom-color: #e20003;
+}
+.flash_message a#flash_close {
+  position: absolute;
+  right: 9px;
+  top: 21px;
+  text-transform: titlecase;
 }
 a {
   color: #41403C;
@@ -478,6 +504,9 @@ pre {
   margin-bottom: 15px;
   margin-top: 10px;
   font-weight: bold;
+}
+#records h2, #actions h2 {
+  margin-top: 0px;
 }
 .pagination {
   background-color: #C9DAE2;
