@@ -30,6 +30,7 @@ init_flash_messages = function(){
      $('#flash').fadeOut({duration: 330});
      e.preventDefault();
   });
+  $('#flash.flash_message').prependTo('#records');
 }
 
 init_modal_dialogs = function(){
