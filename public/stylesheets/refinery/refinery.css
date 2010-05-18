@@ -260,11 +260,11 @@ body.login #header_content h1 {
   margin-top: 0px;
 }
 #menu a#menu_reorder, #header #menu a#menu_reorder_done {
-  height: 16px;
+  height: 14px;
+  width: 14px;
   margin-top: 11px;
+  padding: 6px;
   cursor: pointer;
-  width: 16px;
-  padding: 5px;
   vertical-align: middle;
   text-align: center;
 }
