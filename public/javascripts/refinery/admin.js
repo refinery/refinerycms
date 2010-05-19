@@ -70,7 +70,7 @@ init_sortable_menu = function(){
       var ser   = $menu.sortable('serialize', {key: 'menu[]'}),
           token = escape($('#admin_authenticity_token').val());
 
-      $.get('/admin/update_menu_positions?' + ser, {authenticity_token: token});
+      $.get('/refinery/update_menu_positions?' + ser, {authenticity_token: token});
     }
   }).tabs();
   //Initial status disabled

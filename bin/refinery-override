@@ -15,9 +15,9 @@ unless (override_path = ARGV.shift).nil? or (override_path.length == 0)
     # figure out what to override
     override_parts = override_path.downcase.split('/').compact.collect {|part| part if part.length > 0 }.compact
     admin = ""
-    if override_parts.first == "admin"
+    if override_parts.first =~ /admin|refinery/
       # we're inside the admin namespace
-      admin = override_parts.shift
+      admin = override_parts.shift.gsub('refinery', 'admin')
     end
 
     if override_parts.length > 1
@@ -69,7 +69,7 @@ else
   puts "You didn't specify anything to override. Here's some examples:"
   puts "refinery-override /pages/* /path/to/my/project"
   puts "refinery-override /pages/show /path/to/my/project"
-  puts "refinery-override /admin/pages/index"
+  puts "refinery-override /refinery/pages/index"
   puts "refinery-override /shared/_menu /path/to/my/project"
   puts "refinery-override **/*menu /path/to/my/project"
   puts "refinery-override /shared/_menu_branch"
