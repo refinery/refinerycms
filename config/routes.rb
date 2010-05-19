@@ -14,6 +14,7 @@ ActionController::Routing::Routes.draw do |map|
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
 
+
   map.redirect 'admin/*path', :controller => 'admin/base'
   map.connect 'refinery/*path', :controller => 'admin/base', :action => 'error_404'
 
