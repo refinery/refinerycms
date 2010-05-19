@@ -89,7 +89,7 @@ hr {
 }
 #message, #flash {
   padding: 8px 8px 8px 30px;
-  margin-bottom: 5px;
+  margin-bottom: 15px;
 }
 .flash_notice, .flash_message {
   border: 1px solid #00A017;
