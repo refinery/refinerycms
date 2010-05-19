@@ -1,7 +1,7 @@
 ActionController::Routing::Routes.draw do |map|
   map.resources :pages
 
-  map.with_options(:path_prefix => "refinery", :name_prefix => "admin_", :namespace => "admin/") do |admin|
+  map.namespace(:admin, :path_prefix => 'refinery') do |admin|
     admin.resources :pages
     admin.resources :page_parts
 

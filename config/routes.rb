@@ -6,7 +6,7 @@ ActionController::Routing::Routes.draw do |map|
   # The priority is based upon order of creation: first created -> highest priority.
   map.root :controller => "pages", :action => "home"
 
-  map.with_options(:path_prefix => "refinery", :name_prefix => "admin_", :namespace => "admin/") do |admin|
+  map.namespace(:admin, :path_prefix => 'refinery') do |admin|
     admin.root :controller => 'dashboard', :action => 'index'
   end
 
