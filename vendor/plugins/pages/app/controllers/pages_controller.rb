@@ -16,7 +16,7 @@ class PagesController < ApplicationController
   #
   def show
     @page = if params[:path] && (path = params[:path].dup)
-      Page.find(path.pop, :include => [:parts, :slugs])
+      Page.find(path.pop, :include => [:parts, :slugs], :scope => path.pop)
     else
       Page.find(params[:id], :include => [:parts, :slugs])
     end
