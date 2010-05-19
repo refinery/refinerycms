@@ -4,7 +4,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :users, :only => [:new, :create], :collection => {:forgot => :get, :reset => :get}
   map.reset_users '/users/reset/:reset_code', :controller => 'users', :action => 'reset'
 
-  map.with_options(:path_prefix => "refinery", :name_prefix => "admin_", :namespace => "admin/") do |admin|
+  map.namespace(:admin, :path_prefix => 'refinery') do |admin|
     admin.resources :users
   end
 
