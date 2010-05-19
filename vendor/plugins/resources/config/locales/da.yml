@@ -18,7 +18,7 @@ da:
           message: Er du sikker på du vil slette filen '{{title}}'?
           title: Slet fil
       index:
-        upload_new: Upload fil
+        upload_new: Upload en fil
         search_results: Søgeresultat
         search_no_results: Desværre, din søgning gav ingen resultater.
         no_files_yet: Der er ingen filer endnu. Klik på "Upload fil" for at oprette den første.
