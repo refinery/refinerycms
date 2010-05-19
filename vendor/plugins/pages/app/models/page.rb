@@ -96,8 +96,12 @@ class Page < ActiveRecord::Base
     if self.link_url.present?
       self.link_url =~ /^\// ? {:controller => self.link_url} : self.link_url
     elsif self.to_param.present?
-      {:controller => "/pages", :action => "show", :id => self.to_param}
+      {:controller => "/pages", :action => "show", :path => self.nested_url}
     end
+  end
+
+  def nested_url
+    self.parent ? [parent.nested_url, self.to_param].flatten : [self.to_param]
   end
 
   # Returns true if this page is "published"
