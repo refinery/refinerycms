@@ -5,7 +5,7 @@ pt-BR:
     refinery_images:
       title: Imagens
   no_file_chosen: Você deve escolher um arquivo para enviar
-  file_should_be_smaller_than_max_file_size: Arquivos devem possuir menos de {{max_file_size}} de tamanho
+  file_should_be_smaller_than_max_image_size: Arquivos devem possuir menos de {{max_image_size}} de tamanho
   admin:
     images:
       form:
