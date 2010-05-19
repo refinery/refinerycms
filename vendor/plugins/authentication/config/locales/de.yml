@@ -10,7 +10,7 @@ de:
         no_users_yet:  Es wurden noch keine Benutzer erstellt. Klicken Sie auf "Neuen Benutzer erstellen" um Ihren ersten Benutzer zu erstellen.
       user:
         confirm_delete_message: "Sind Sie sicher, dass Sie '{{who}}' löschen möchten?"
-        conform_delete_title: Diesen Benutzer für immer löschen.
+        confirm_delete_title: Diesen Benutzer für immer löschen.
         edit_user: Diesen Benutzer bearbeiten
         email_user: Diesem Benutzer eine E-Mail schicken
         preview: ({{who}}) wurde erstellt am {{created_at}}
