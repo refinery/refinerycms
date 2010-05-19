@@ -3,7 +3,7 @@ fr:
     refinery_images:
       title: Images
   no_file_chosen: Vous devez choisir un image à télécharger
-  file_should_be_smaller_than_max_file_size: Le poid des fichiers doit être plus petit que {{max_file_size}}
+  file_should_be_smaller_than_max_image_size: Le poid des fichiers doit être plus petit que {{max_image_size}}
   file_must_be_these_formats: "Votre image doit être un fichier JPG, PNG ou GIF"
   admin:
     images:

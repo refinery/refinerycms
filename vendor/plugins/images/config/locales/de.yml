@@ -3,7 +3,7 @@ de:
     refinery_images:
       title: Bilder
   no_file_chosen: Sie müssen eine Datei zum Hochladen wählen.
-  file_should_be_smaller_than_max_file_size: Dateien sollten kleiner als {{max_file_size}} sein
+  file_should_be_smaller_than_max_image_size: Dateien sollten kleiner als {{max_image_size}} sein
   file_must_be_these_formats: Ihr Bild muss im Format JPG, PNG oder GIF vorliegen
   admin:
     images:
