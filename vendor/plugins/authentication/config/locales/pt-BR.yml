@@ -13,7 +13,7 @@ pt-BR:
         no_users_yet: Ainda não existem usuários. Clique em "Criar Novo Usuário" para adicionar seu primeiro usuário.
       user:
         confirm_delete_message: "Tem certeza que você deseja remover '{{who}}'?"
-        conform_delete_title: Remover este usuário para sempre
+        confirm_delete_title: Remover este usuário para sempre
         edit_user: Editar este usuário
         email_user: Enviar e-mail para este usuário
         preview: ({{who}}) criado em {{created_at}}
