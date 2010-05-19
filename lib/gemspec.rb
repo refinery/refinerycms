@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 version = File.read(File.expand_path('../../VERSION', __FILE__)).strip
 raise "Could not get version so gemspec can not be built" if version.nil?
-files = %w( .gems .gitignore .yardopts Gemfile Rakefile readme.md license.md VERSION todo.md )
+files = %w( .gems .gitignore .yardopts Gemfile Rakefile readme.md license.md VERSION todo.md public/.htaccess )
 %w(app bin config db lib public script test themes vendor).each do |dir|
   files += Dir.glob("#{dir}/**/*")
 end
