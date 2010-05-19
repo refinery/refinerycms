@@ -131,7 +131,7 @@ module Refinery::ApplicationHelper
     current_page?(page) or
       (request.path =~ Regexp.new(page.menu_match) if page.menu_match.present?) or
       (request.path == page.link_url) or
-      (request.path == page.url)
+      (request.path == page.nested_path)
   end
 
 end
