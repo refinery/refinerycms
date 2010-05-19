@@ -104,6 +104,10 @@ class Page < ActiveRecord::Base
     self.parent ? [parent.nested_url, self.to_param].flatten : [self.to_param]
   end
 
+  def nested_path
+    @nested_path ||= "/#{nested_url.join('/')}"
+  end
+
   # Returns true if this page is "published"
   def live?
     not self.draft?
