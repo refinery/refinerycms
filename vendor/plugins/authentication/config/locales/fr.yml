@@ -10,7 +10,7 @@ fr:
         no_users_yet:  Il n'y a pas encore d'utilisateurs. Cliquez sur "Créer un nouvel utilisateur" pour ajouter votre premier utilisateur.
       user:
         confirm_delete_message: "Etes-vous sûr de vouloir supprimer '{{who}}'?"
-        conform_delete_title: Supprimer cet utilisateur pour toujours
+        confirm_delete_title: Supprimer cet utilisateur pour toujours
         edit_user: Modifier cet utilisateur
         email_user: Envoyer un courriel cet utilisateur
         preview: ({{who}}) créé le {{created_at}}
