@@ -13,7 +13,7 @@ da:
   no_results_found: "Desværre, din søgning gav ingen resultater"
   refinery:
     other: "Anden {{what}}"
-    reorder: "Opdatér rækkefølgen af {{what}}"
+    reorder: "Redigér rækkefølgen af {{what}}"
     reorder_done: "Gem rækkefølgen af {{what}}"
     search_no_results: "Desværre, din søgning gav ingen resultater."
     search_results_for: "Søgeresultat for '{{what}}'"

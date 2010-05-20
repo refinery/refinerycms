@@ -31,8 +31,8 @@ da:
         closed: "Henvendelsen '{{inquiry}}' er lukket"
         reopened: "Henvendelsen '{{inquiry}}' er genåbnet"
       index:
-        update_notified: Opdatér hvem der modtager besked
-        edit_confirmation_email: Redigér e-mail bekræftelse
+        update_notified: Opdatér, hvem der får besked
+        edit_confirmation_email: Redigér e-mailbekræftelse
         search_results_for: Søgeresultat for '{{query}}'
         no_inquiries: Du har endnu ikke modtaget nogen henvendelser.
       show:
@@ -60,7 +60,7 @@ da:
         click_to_edit_subject: Klik her for at redigere emnet
         explanation: "Hver gang kontaktformularen benyttes, sender Refinery en e-mail til den person, der udfyldte formularen, for at bekræfte henvendelsen."
         below_edit_email_sent: Nedenfor kan du redigere e-mailen, der sendes ud.
-        the_customer_making_inquiry: Kunden der har henvendt sig
+        the_customer_making_inquiry: Kunden, der har henvendt sig
         message: Besked
         note: "Bemærk: Anbring teksten %name%, der hvor du vil have kundens navn skal være i e-mailen"
       subject_form:
