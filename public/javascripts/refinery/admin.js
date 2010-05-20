@@ -1,5 +1,10 @@
 $(document).ready(function(){
 
+  $('input:submit').not('.button').addClass('button');
+  $('.button, #editor_switch a').corner("6px");
+  $('<span></span>').prependTo('#editor_switch').corner('6px');
+  $('#editor_switch a').appendTo('#editor_switch span:first');
+
   init_flash_messages();
   init_delete_confirmations();
   init_sortable_menu();

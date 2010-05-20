@@ -1,5 +1,5 @@
 <div class='form-actions'>
-  <%= f.submit "#{submit_button_text ||= 'Save'}", :id => "#{submit_button_id ||= "submit_button"}", :class => "wymupdate" -%>
+  <%= f.submit "#{submit_button_text ||= 'Save'}", :id => "#{submit_button_id ||= "submit_button"}", :class => "wymupdate button" -%>
   <% if (continue_editing ||= false and !f.object.new_record?) -%>
     or
     <%= render :partial => "/shared/admin/continue_editing", :locals => {:f => f} -%>
@@ -10,6 +10,6 @@
                 (cancel_url ||= ((back=url_for(:back)).include?('javascript') ? send("admin_#{f.object.class.name.pluralize.underscore}_url") : back)),
                 :title => (title ||= "Cancelling will lose all changes you've made to this #{f.object.class.name.underscore.gsub("_", " ")}"),
                 :id => "#{cancel_button_id ||= "cancel_button"}",
-                :class => "close_dialog" %>
+                :class => "close_dialog button" %>
   <% end -%>
 </div>

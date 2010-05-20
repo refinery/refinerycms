@@ -1,10 +1,13 @@
 <% unless admin? or login? # jquery scripts should already be cached when using the site bar as login has happened. %>
   <%= stylesheet_link_tag('refinery/site_bar') %>
   <%= jquery_include_tags %>
+  <%= javascript_include_tag 'jquery/jquery.corner.js' %>
   <script type='text/javascript'>
     $(document).ready(function() {
       logo = $('#site_bar_content #site_bar_refinery_cms_logo');
       logo.css('left', ($('#site_bar_content').width() / 2) - (logo.width() / 2));
+      $('<span></span>').prependTo('#editor_switch').corner('6px');
+      $('#editor_switch a').corner('6px').appendTo('#editor_switch span:first');
     });
   </script>
 <% end -%>
