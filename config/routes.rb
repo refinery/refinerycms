@@ -16,6 +16,8 @@ ActionController::Routing::Routes.draw do |map|
 
   map.redirect 'admin/*path', :controller => 'admin/base'
   map.connect 'refinery/*path', :controller => 'admin/base', :action => 'error_404'
+
+  # Marketable URLs
   map.connect '*path', :controller => 'pages', :action => 'show'
 
 end
