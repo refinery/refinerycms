@@ -52,8 +52,11 @@ Mac OS 10.5 or 10.6 users [this shell install script](http://github.com/maddox/m
 
 #### Or, clone Refinery's GIT repository
 
+The git repository is where all of the changes are made when any new code is written or existing code is updated. For this reason it is often better to use the gem or to checkout a particular tag (the latest is usually considered the most stable). So unless you want to use the latest code, checkout the latest tag by replacing 0.9.X.XX below with the appropriate version:
+
     git clone git://github.com/resolve/refinerycms.git mynewsite.com
     cd ./mynewsite.com
+    git checkout 0.9.X.XX
     git remote rm origin
     git remote add origin git@github.com:you/yournewsite.git
     mv ./config/database.yml.example ./config/database.yml
