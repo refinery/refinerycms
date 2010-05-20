@@ -3,7 +3,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :inquiries, :collection => {:thank_you => :get}
 
   map.namespace(:admin, :path_prefix => 'refinery') do |admin|
-    admin.resources :inquiries, :collection => {:update_positions => :post}
-    admin.resources :inquiry_settings, :collection => {:update_positions => :post}
+    admin.resources :inquiries
+    admin.resources :inquiry_settings
   end
 end
