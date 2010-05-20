@@ -1126,3 +1126,33 @@ input.button:active, a.button:active{
 .form-actions a.button {
   margin-left: 4px;
 }
+
+/* ## Advanced Page Options --------------------------------------------- */
+#more_options{
+	overflow:hidden;
+}
+.hemisquare{
+	padding:10px;
+	margin:0 5px;
+	border:1px solid #ddd;
+	float:left;
+	width:435px;
+	font:normal 1em "Helvetica Neue", Helvetica, Verdana, sans-serif !important;
+}
+.hemisquare input[type=text], .hemisquare textarea{
+	width:90%;
+	border:1px solid #666;
+}
+
+.hemisquare label{
+	margin:0;
+}
+
+.hemisquare .field{
+	margin:0 0 20px;
+}
+
+.hemisquare small{
+	font-size:0.9em;
+	color:#999;
+}
