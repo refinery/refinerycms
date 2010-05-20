@@ -386,12 +386,12 @@ pre {
 .filter {
   float: right;
 }
-#records ul {
-  list-style: none;
+#records > ul {
   margin-left: 0;
   padding-left: 0;
 }
-#records li {
+#records > ul li {
+  list-style: none;
   padding: 0px 5px;
   vertical-align: top;
   margin-bottom: 2px;
