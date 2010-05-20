@@ -618,7 +618,9 @@ var list_reorder = {
           serialized += "&sortable_list[]=" + $($(li).attr('id').split('_')).last().get(0);
         }
   	  });
-  	  serialized += "&tree=" + list_reorder.tree + "&authenticity_token=" + encodeURIComponent($('#reorder_authenticity_token').val() + "&continue_reordering=false");
+  	  serialized += "&tree=" + list_reorder.tree;
+  	  serialized += "&authenticity_token=" + encodeURIComponent($('#reorder_authenticity_token').val());
+  	  serialized += "&continue_reordering=false";
 
       $.post(list_reorder.update_url, serialized, function(data) {
         $(list_reorder.sortable_list.get(0)).html(data);
