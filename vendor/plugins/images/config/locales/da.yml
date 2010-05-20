@@ -17,7 +17,7 @@ da:
         create_new_image: Upload et billede
         no_images_yet: Der er ingen billeder endnu. Klik "Upload et billede" for at oprette det første.
         view:
-          switch_to: Skift til {{view_name}} visning
+          switch_to: Skift til {{view_name}}visning
           list: liste
           grid: gitter
         search:

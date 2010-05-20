@@ -43,7 +43,7 @@ da:
             confirm_delete: Indholdselementet {{section_name}} slettes når siden gemmes, og alt indhold indtastet i elementet vil blive slettet. Er du sikker?
       index:
         create_new_page: Tilføj en ny side
-        reorder_pages: Opdatér rækkefølgen af siderne
+        reorder_pages: Redigér rækkefølgen af siderne
         reorder_pages_done: Gem rækkefølgen
         sorry_no_results: Desværre, din søgning gav ingen resultater.
         no_pages_yet: Der er ingen sider endnu. Klik på "Tilføj en ny side" for at oprette den første.

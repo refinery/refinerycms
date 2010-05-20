@@ -4,10 +4,10 @@ da:
       title: Overblik
   common_tasks: Handlinger
   add_a_new_page: Tilføj en ny side
-  update_a_page: Opdatér en side
+  update_a_page: Redigér en side
   upload_a_file: Upload en fil
   upload_a_image: Upload et billede
-  see_home_page: Vis hjemmeside
+  see_home_page: Vis forside
 
   admin:
     dashboard:
