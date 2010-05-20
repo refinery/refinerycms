@@ -18,7 +18,8 @@
       :en => 'English',
       :fr => 'Français',
       :nl => 'Nederlands',
-      :'pt-BR' => 'Português'
+      :'pt-BR' => 'Português',
+      :da => 'Dansk'
     }
   }
 ].each do |setting|
