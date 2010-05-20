@@ -96,7 +96,7 @@ da:
       inquiry: henvendelse
       resource: fil
       refinery_setting: parameter
-      inquiry_setting: parameter for henvendelse
+      inquiry_setting: parameter
     attributes:
       user:
         login: Brugernavn

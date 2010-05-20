@@ -28,7 +28,7 @@ da:
         save: Gem
         cancel: Annullér
       form_advanced_options_seo:
-        seo: Søgemaskine optimering
+        seo: Søgemaskineoptimering
         seo_override_title: Browser titel
         seo_override_title_description: Hvis du vil tilpasse browser titlen.
         meta_keywords_title: Meta keywords
