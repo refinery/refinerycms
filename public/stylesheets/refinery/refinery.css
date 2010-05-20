@@ -1110,11 +1110,18 @@ ul#plugins li {
 }
 
 input.button, a.button {
+	cursor:pointer;
   background: #22a7f2;
   border: 0px none;
   color: white;
   padding: 4px 14px;
   font-size: 14px;
+}
+input.button:hover, a.button:hover{
+	background:#62bef2;
+}
+input.button:active, a.button:active{
+	background:#004a8f;
 }
 .form-actions a.button {
   margin-left: 4px;
