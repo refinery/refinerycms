@@ -19,7 +19,7 @@ nl:
   show_submenu_on_content_pages: Laat submenu op pagina's zien
   theme: Thema
   tld_length: Tld lengte
-  use_resource_cacheing: Gebruik cacheing
+  use_resource_caching: Gebruik cacheing
   menu_hide_children: Verberg sub menu's
   page_title: Pagina titel
   activerecord:
