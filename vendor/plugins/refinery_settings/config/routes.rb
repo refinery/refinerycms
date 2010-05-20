@@ -1,5 +1,5 @@
 ActionController::Routing::Routes.draw do |map|
   map.namespace(:admin, :path_prefix => 'refinery') do |admin|
-    admin.resources :refinery_settings, :as => :settings
+    admin.resources :refinery_settings, :as => :settings, :collection => {:update_positions => :post}
   end
 end
