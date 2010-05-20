@@ -1108,3 +1108,14 @@ ul#plugins li {
 .wym_dialog_paste .field textarea {
   width: 98%;
 }
+
+input.button, a.button {
+  background: #22a7f2;
+  border: 0px none;
+  color: white;
+  padding: 4px 14px;
+  font-size: 14px;
+}
+.form-actions a.button {
+  margin-left: 4px;
+}
