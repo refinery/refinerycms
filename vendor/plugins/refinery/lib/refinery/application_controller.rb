@@ -98,8 +98,8 @@ protected
 private
   def store_current_location!
     if admin?
-      session[:refinery_return_to] = request.path
-    else
+      session[:refinery_return_to] = request.path if request.get? and !request.xhr? # don't want to redirect to AJAX or POST/PUT/DELETE urls
+    elsif request.path !~ /wymiframe|\/system.*/
       session[:website_return_to] = request.path
     end
   end
