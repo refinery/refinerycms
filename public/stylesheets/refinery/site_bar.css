@@ -59,6 +59,7 @@ a#site_bar_refinery_cms_logo:hover img {
   padding: 4px 14px;
   border: 1px solid #fca87f;
   line-height: 24px;
+  cursor: pointer;
 }
 #editor_switch span {
   border: 1px solid #0280c7;
@@ -66,4 +67,5 @@ a#site_bar_refinery_cms_logo:hover img {
   line-height: 26px;
   margin-top: 9px;
   display: block;
+  cursor: pointer;
 }

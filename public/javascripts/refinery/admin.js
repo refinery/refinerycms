@@ -106,43 +106,57 @@ init_sortable_menu = function(){
 }
 
 init_submit_continue = function(){
-  $('#submit_continue_button').click(function(e) {
-    // ensure wymeditors are up to date.
-    if ($(this).hasClass('wymupdate')) {
-      $.each(WYMeditor.INSTANCES, function(index, wym)
-      {
-        wym.update();
-      });
-    }
+  $('#submit_continue_button').click(submit_and_continue);
 
-    $('#continue_editing').val(true);
-    $('#flash').fadeOut(250)
-
-    $('.fieldWithErrors').removeClass('fieldWithErrors').addClass('field');
-    $('#flash_container .errorExplanation').remove();
-
-    $.post(this.form.action, $(this.form).serialize(), function(data) {
-      if ((flash_container = $('#flash_container')).length > 0) {
-        flash_container.html(data);
-
-        $('#flash').css('width', 'auto').fadeIn(550);
-
-        $('.errorExplanation').not($('#flash_container .errorExplanation')).remove();
-
-        if ((error_fields = $('#fieldsWithErrors').val()) != null) {
-          $.each(error_fields.split(','), function() {
-            $("#" + this).wrap("<div class='fieldWithErrors' />");
-          });
-        }
-
-        $('.fieldWithErrors:first :input:first').focus();
-
-        $('#continue_editing').val(false);
+  if ($('#continue_editing').length > 0) {
+    $('#editor_switch a').click(function(e) {
+      if (confirm("Save changes first?")) {
+        submit_and_continue(e, $(this).attr('href'));
       }
     });
+  }
+}
 
-    e.preventDefault();
+submit_and_continue = function(e, redirect_to) {
+  // ensure wymeditors are up to date.
+  if ($(this).hasClass('wymupdate')) {
+    $.each(WYMeditor.INSTANCES, function(index, wym)
+    {
+      wym.update();
+    });
+  }
+
+  $('#continue_editing').val(true);
+  $('#flash').fadeOut(250)
+
+  $('.fieldWithErrors').removeClass('fieldWithErrors').addClass('field');
+  $('#flash_container .errorExplanation').remove();
+
+  $.post($('#continue_editing').get(0).form.action, $($('#continue_editing').get(0).form).serialize(), function(data) {
+    if ((flash_container = $('#flash_container')).length > 0) {
+      flash_container.html(data);
+
+      $('#flash').css('width', 'auto').fadeIn(550);
+
+      $('.errorExplanation').not($('#flash_container .errorExplanation')).remove();
+
+      if ((error_fields = $('#fieldsWithErrors').val()) != null) {
+        $.each(error_fields.split(','), function() {
+          $("#" + this).wrap("<div class='fieldWithErrors' />");
+        });
+      } else if (redirect_to) {
+        window.location = redirect_to;
+      }
+
+      $('.fieldWithErrors:first :input:first').focus();
+
+      $('#continue_editing').val(false);
+
+      init_flash_messages();
+    }
   });
+
+  e.preventDefault();
 }
 
 init_tooltips = function(args){
