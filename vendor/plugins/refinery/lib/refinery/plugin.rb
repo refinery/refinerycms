@@ -2,7 +2,11 @@ module Refinery
   class Plugin
 
     def self.register(&block)
-      yield self.new
+      yield (new_plugin = self.new)
+      if defined?(Page) && new_plugin.title
+        # Prevent page slugs from being this plugin's controller name
+        Page.friendly_id_config.reserved_words << new_plugin.title.gsub(" ", "_").downcase
+      end
     end
 
     attr_accessor :title, :version, :description, :url, :menu_match, :plugin_activity, :directory, :hide_from_menu, :always_allow_access

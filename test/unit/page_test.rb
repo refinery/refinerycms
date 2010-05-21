@@ -56,6 +56,38 @@ class PageTest < ActiveSupport::TestCase
     # test seems to reduce the id instead e.g. /pages/234423
   end
 
+  def test_should_have_paramaterized_url
+    # Save the page to generate the friendly_id slug
+    pages(:products).save
+    assert_equal "products", pages(:products).to_param
+  end
+
+  def test_should_have_nested_url
+    pages(:blue_jelly).save
+    pages(:products).save
+    assert_equal ['products','blue-jelly'], pages(:blue_jelly).nested_url # returns ancestors' to_param with its own
+  end
+
+  def test_regular_url_should_include_path
+    pages(:blue_jelly).save
+    pages(:products).save
+    assert_equal ['products','blue-jelly'], pages(:blue_jelly).url[:path]
+  end
+
+  def test_friendly_id_default_reserved_words
+    reserved_words = Page.friendly_id_config.reserved_words
+    %W(session login logout refinery users admin pages wymiframe).each do |page_slug|
+      assert reserved_words.include?(page_slug), "missing #{page_slug}"
+    end
+  end
+
+  def test_dynamic_addition_of_reserved_words
+    plugin = Refinery::Plugin.register do |plugin|
+      plugin.title = "Foo Bar"
+    end
+    assert_equal("foo_bar", Page.friendly_id_config.reserved_words.last)
+  end
+
   def test_drafts
     assert_equal false, pages(:draft_page).live? # the draft page is indeed a draft
     assert_equal true, pages(:home_page).live? # the home page is not a draft
