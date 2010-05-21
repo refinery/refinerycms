@@ -1,15 +1,17 @@
 <p>
-  <a href="#" id="toggle_advanced_options" rel="Click to access meta tag settings and menu options">&raquo; Hide/Show Advanced Options</a>
+  <%= link_to "&raquo; Hide/Show Advanced Options", "#",
+              :id => 'toggle_advanced_options',
+              :rel => 'Click to access meta tag settings and menu options' %>
 </p>
 <div id='more_options' style="display:none;">
   <div class="hemisquare">
+    <h2>Page Options</h2>
     <div class='field'>
       <%= f.label :parent_id %>
       <%= f.collection_select :parent_id, @pages_for_parents_list, :id, :indented_title, :include_blank => true %>
     </div>
     <div class='field'>
       <%= label_tag :custom_title %>
-      <%= label_tag "", 'Type:', :class => "stripped" %>
       <% ["none", "text"].each do |type| %>
         <%= f.radio_button :custom_title_type, "#{type}" %>
         <%= label_tag "page_custom_title_type_#{type}", "#{type.titleize}", :class => "stripped" %>
@@ -28,14 +30,14 @@
     <div class='field'>
       <%= label_tag :skip_to_first_child? %>
       <%= f.check_box :skip_to_first_child %>
-      <%= f.label :skip_to_first_child, "Check this box if you want the visitor to be redirected to this page's first child page if this page is selected.", :class => "stripped" %>
+      <%= f.label :skip_to_first_child, "Check this to redirect visitors to the first subpage instead.", :class => "stripped" %>
     </div>
     <div class='field'>
       <%= f.label :link_url, "Custom URL" %>
-      Enter a URL if this page links to an external site or to a pre-existing resource e.g. a contact page.
       <%= f.text_field :link_url, {:size => 103} %><br/>
       <small>
-        Note: This URL must point to a location that exists; a new one will not be created.        
+        Enter a URL if this page links somewhere else, e.g. your contact page. <br/>
+        Note: This must link to an existing location, nothing will not be created.
       </small>
     </div>
     <div class='field'>
@@ -46,9 +48,8 @@
       </small>
     </div>
   </div>
-  
-    <%= render :partial => "form_advanced_options_seo", :locals => {:f => f} if RefinerySetting.find_or_set(:pages_advanced_options_include_seo, true) %>
-  
+
+  <%= render :partial => "form_advanced_options_seo", :locals => {:f => f} if RefinerySetting.find_or_set(:pages_advanced_options_include_seo, true) %>
 </div>
 <div class='field'>
   <label>Draft</label>
