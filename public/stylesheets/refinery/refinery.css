@@ -163,10 +163,10 @@ a:hover {
 }
 #site_bar_content {
   margin-bottom: 0px;
-  width: 960px;
+  width: 990px;
 }
 a#site_bar_refinery_cms_logo {
-  left: 432px;
+  left: 448px;
 }
 #content {
   background-color: white;
@@ -873,6 +873,9 @@ ul#menu.reordering_menu li a {
   padding: 2px;
   font-size: 16px;
 }
+.search_form .button {
+  float: right;
+}
 form input:submit {
   background: #65c3f7;
 }
@@ -1131,28 +1134,39 @@ input.button:active, a.button:active{
 #more_options{
 	overflow:hidden;
 }
-.hemisquare{
-	padding:10px;
-	margin:0 5px;
-	border:1px solid #ddd;
-	float:left;
-	width:435px;
-	font:normal 1em "Helvetica Neue", Helvetica, Verdana, sans-serif !important;
+.hemisquare {
+	padding: 10px;
+	margin: 0px 0px;
+	border: 1px solid #ddd;
+	float: left;
+	width: 448px;
 }
-.hemisquare input[type=text], .hemisquare textarea{
-	width:90%;
-	border:1px solid #666;
+.hemisquare.right_side {
+  margin-left: 10px;
 }
-
-.hemisquare label{
-	margin:0;
+#content .hemisquare h2 {
+  margin-top: 0px;
 }
-
-.hemisquare .field{
-	margin:0 0 20px;
+.hemisquare input[type=text] {
+	width: 97%;
 }
-
-.hemisquare small{
-	font-size:0.9em;
-	color:#999;
+.hemisquare textarea {
+  width: 95%;
+}
+.hemisquare input[type=text], .hemisquare textarea {
+}
+.hemisquare input, .hemisquare textarea, .hemisquare select {
+	margin: 7px 0px
+}
+.hemisquare textarea {
+  margin-bottom: 8px;
+}
+.hemisquare label {
+	margin: 0px;
+}
+.hemisquare .field {
+	margin: 0 0 20px 0px;
+}
+.hemisquare small {
+	font-size: 0.9em;
 }
