@@ -6,7 +6,7 @@ class Refinery::ApplicationController < ActionController::Base
   include Crud # basic create, read, update and delete methods
   include AuthenticatedSystem
 
-  before_filter :take_down_for_maintenance?, :find_pages_for_menu, :show_welcome_page?
+  before_filter :take_down_for_maintenance?, :find_pages_for_menu, :show_welcome_page?, :store_current_location!
 
   rescue_from ActiveRecord::RecordNotFound, ActionController::UnknownAction, ActionView::MissingTemplate, :with => :error_404
 
@@ -92,6 +92,15 @@ protected
       else
         render :text => "Our website is currently down for maintenance. Please try back soon."
       end
+    end
+  end
+
+private
+  def store_current_location!
+    if admin?
+      session[:refinery_return_to] = request.path
+    else
+      session[:website_return_to] = request.path
     end
   end
 
