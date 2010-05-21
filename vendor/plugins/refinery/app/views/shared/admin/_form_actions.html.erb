@@ -4,6 +4,7 @@
     or
     <%= render :partial => "/shared/admin/continue_editing", :locals => {:f => f} -%>
   <% end -%>
+  <%= hidden_field_tag :continue_editing, false %>
   <% unless (hide_cancel ||= from_dialog?) -%>
     or
     <%= link_to "#{cancel_button_text ||= 'Cancel'}",
