@@ -96,9 +96,19 @@ class Page < ActiveRecord::Base
   def url
     if self.link_url.present?
       self.link_url =~ /^\// ? {:controller => self.link_url} : self.link_url
+    elsif RefinerySetting.find_or_set(:use_marketable_urls, "true")
+      url_marketable
     elsif self.to_param.present?
-      {:controller => "/pages", :action => "show", :path => self.nested_url}
+      url_normal
     end
+  end
+
+  def url_marketable
+    {:controller => "/pages", :action => "show", :path => self.nested_url}
+  end
+
+  def url_normal
+    {:controller => "/pages", :action => "show", :id => self.to_param}
   end
 
   def nested_url
