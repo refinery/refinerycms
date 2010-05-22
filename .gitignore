@@ -22,7 +22,3 @@ config/database.yml.example
 .yardoc/
 refinerycms.gemspec
 .bundle
-vendor/cache
-*.lock
-callsite_hash.*
-**/*/slim_scrooge/ext/Makefile
