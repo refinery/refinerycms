@@ -1,5 +1,4 @@
 class Page < ActiveRecord::Base
-
   validates_presence_of :title
 
   acts_as_tree :order => "position ASC", :include => [:children, :slugs]
@@ -17,6 +16,10 @@ class Page < ActiveRecord::Base
 
   before_destroy :deletable?
   after_save :reposition_parts!
+
+  if RefinerySetting.find_or_set(:use_marketable_urls, "true")
+    after_save :invalidate_child_cached_url
+  end
 
   # when a dialog pops up to link to a page, how many pages per page should there be
   PAGES_PER_DIALOG = 14
@@ -111,10 +114,22 @@ class Page < ActiveRecord::Base
     {:controller => "/pages", :action => "show", :id => self.to_param}
   end
 
+  # Returns an array with all ancestors to_param, allow with its own
+  # Ex: with an About page and a Mission underneath,
+  # Page.find('mission').nested_url would return:
+  #
+  #   ['about', 'mission']
+  #
   def nested_url
+    Rails.cache.fetch("#{cache_key}#nested_url") { uncached_nested_url }
+  end
+
+  def uncached_nested_url
     self.parent ? [parent.nested_url, self.to_param].flatten : [self.to_param]
   end
 
+  # Returns the string version of nested_url, i.e., the path that should be generated
+  # by the router
   def nested_path
     @nested_path ||= "/#{nested_url.join('/')}"
   end
@@ -187,4 +202,11 @@ class Page < ActiveRecord::Base
     dialog ? PAGES_PER_DIALOG : PAGES_PER_ADMIN_INDEX
   end
 
+  private
+
+  def invalidate_child_cached_url
+    children.each do |child|
+      Rails.cache.delete("#{child.cache_key}#nested_url")
+    end
+  end
 end
