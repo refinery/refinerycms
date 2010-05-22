@@ -81,13 +81,6 @@ class PageTest < ActiveSupport::TestCase
     end
   end
 
-  def test_dynamic_addition_of_reserved_words
-    plugin = Refinery::Plugin.register do |plugin|
-      plugin.title = "Foo Bar"
-    end
-    assert_equal("foo_bar", Page.friendly_id_config.reserved_words.last)
-  end
-
   def test_reserved_words_raise_exception
     assert_raise(FriendlyId::ReservedError) { Page.create!(:title => "Refinery") }
   end
