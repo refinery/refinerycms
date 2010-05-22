@@ -1,5 +1,7 @@
 Refinery::Plugin.register do |plugin|
-  plugin.title = "Resources"
+  plugin.title = "Files"
+  plugin.url = "/refinery/resources"
+  plugin.menu_match = /admin\/resources$/
   plugin.description = "Upload and link to files"
   plugin.version = 1.0
   plugin.activity = {
