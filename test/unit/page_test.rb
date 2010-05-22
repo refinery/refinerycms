@@ -88,6 +88,10 @@ class PageTest < ActiveSupport::TestCase
     assert_equal("foo_bar", Page.friendly_id_config.reserved_words.last)
   end
 
+  def test_reserved_words_raise_exception
+    assert_raise(FriendlyId::ReservedError) { Page.create!(:title => "Refinery") }
+  end
+
   def test_drafts
     assert_equal false, pages(:draft_page).live? # the draft page is indeed a draft
     assert_equal true, pages(:home_page).live? # the home page is not a draft
