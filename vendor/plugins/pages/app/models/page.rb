@@ -7,7 +7,7 @@ class Page < ActiveRecord::Base
   # Docs for friendly_id http://github.com/norman/friendly_id
   has_friendly_id :title, :use_slug => true
 
-  has_many :parts, :class_name => "PagePart", :order => "position ASC"
+  has_many :parts, :class_name => "PagePart", :order => "position ASC", :inverse_of => :page
   accepts_nested_attributes_for :parts, :allow_destroy => true
 
   # Docs for acts_as_indexed http://github.com/dougal/acts_as_indexed

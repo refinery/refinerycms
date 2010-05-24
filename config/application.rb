@@ -14,8 +14,8 @@ Refinery::Initializer.run do |config|
   # See Rails::Configuration for more options.
 
   config.action_controller.session = {
-    :session_key => '_refinery_session',
-    :secret      => 'eec8fffc3637c05895f8e6a355179eaad0003ac5617e5368955baf7989e1faca4d8ab37140d690c20b05d5815609b7c680c644277b6a892be316a85c6596d75c'
+    :key    => '_refinery_session',
+    :secret => 'eec8fffc3637c05895f8e6a355179eaad0003ac5617e5368955baf7989e1faca4d8ab37140d690c20b05d5815609b7c680c644277b6a892be316a85c6596d75c'
   }
 
 end

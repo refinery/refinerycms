@@ -13,10 +13,10 @@ gem 'unicorn', :group => :development
 
 #===REFINERY REQUIRED GEMS===
 gem 'rmagick',        '~> 2.12.2'
-gem 'rails',          '~> 2.3.5'
+gem 'rails',          '~> 2.3.6'
 gem 'hpricot',        '~> 0.8', :require => 'hpricot'
-gem 'authlogic',      '~> 2.1.3', :require => 'authlogic'
-gem 'friendly_id',    '~> 2.3.3', :require => 'friendly_id'
+gem 'authlogic',      '~> 2.1.4', :require => 'authlogic'
+gem 'friendly_id',    '~> 3.0.4', :require => 'friendly_id'
 gem 'will_paginate',  '~> 2.3.12', :require => 'will_paginate'
 #===REFINERY END OF REQUIRED GEMS===
 
