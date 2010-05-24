@@ -1,0 +1,20 @@
+nb:
+  common_tasks: Vanlige oppgaver
+  add_a_new_page: Legg til en ny side
+  update_a_page: Oppdater en side
+  upload_a_file: Last opp fil
+  upload_a_image: Last opp bilde
+  see_home_page: Se hjemmesiden
+
+  admin:
+    dashboard:
+      index:
+        change_language: Endre Språk
+      recent_activity:
+        latest_activity: Siste aktivitet
+        nothing_has_happened_yet: Ingenting har skjedd enda
+        see: Se '{{what}}'
+  updated: oppdatert
+  created: opprettet
+  ago: "{{time}} siden"
+  see: Se
