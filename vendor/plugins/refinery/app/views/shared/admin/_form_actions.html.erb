@@ -1,16 +1,15 @@
 <div class='form-actions'>
-  <%= f.submit "#{submit_button_text ||= 'Save'}", :id => "#{submit_button_id ||= "submit_button"}", :class => "wymupdate button" -%>
-  <% if (continue_editing ||= false and !f.object.new_record?) -%>
-    or
-    <%= render :partial => "/shared/admin/continue_editing", :locals => {:f => f} -%>
-  <% end -%>
+  <%= f.submit  "#{submit_button_text ||= 'Save'}",
+                :id => "#{submit_button_id ||= "submit_button"}",
+                :class => "wymupdate button" -%>
+
+  <%= render :partial => "/shared/admin/continue_editing", :locals => {:f => f} if (continue_editing ||= false and !f.object.new_record?) -%>
+
   <%= hidden_field_tag :continue_editing, false %>
-  <% unless (hide_cancel ||= from_dialog?) -%>
-    or
-    <%= link_to "#{cancel_button_text ||= 'Cancel'}",
-                (cancel_url ||= ((back=url_for(:back)).include?('javascript') ? send("admin_#{f.object.class.name.pluralize.underscore}_url") : back)),
-                :title => (title ||= "Cancelling will lose all changes you've made to this #{f.object.class.name.underscore.gsub("_", " ")}"),
-                :id => "#{cancel_button_id ||= "cancel_button"}",
-                :class => "close_dialog button" %>
-  <% end -%>
+
+  <%= link_to("#{cancel_button_text ||= 'Cancel'}",
+              (cancel_url ||= ((back=url_for(:back)).include?('javascript') ? send("admin_#{f.object.class.name.pluralize.underscore}_url") : back)),
+              :title => (title ||= "Cancelling will lose all changes you've made to this #{f.object.class.name.underscore.gsub("_", " ")}"),
+              :id => "#{cancel_button_id ||= "cancel_button"}",
+              :class => "close_dialog button") unless (hide_cancel ||= from_dialog?) %>
 </div>
