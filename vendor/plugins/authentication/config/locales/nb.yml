@@ -42,7 +42,7 @@ nb:
     account_created: Din konto er opprettet.
     user_name: Brukernavn {{name}}
     password: Passord {{password}}
-    visit_url: "Gå til denne addressen for å aktivere kontoen din:"
+    visit_url: "Gå til denne adressen for å aktivere kontoen din:"
     link_to_reset_your_password: Lenke for å nullstille passordet ditt
   authlogic:
     error_messages:
@@ -50,7 +50,7 @@ nb:
       login_not_found: er ikke gyldig
       login_invalid: kan bare innholde bokstaver, nummer, mellomrom og .-_@.
       consecutive_failed_logins_limit_exceeded: Grensen for antall for misslykkete innloggingsforsøk nådd, kontoen er deaktivert.
-      email_invalid: skal se ut som en epost-addresse.
+      email_invalid: skal se ut som en epost-adresse.
       password_blank: kan ikke være blank
       password_invalid: er ikke gyldig
       not_active: Din konto er ikke aktivert

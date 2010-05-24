@@ -1,0 +1,33 @@
+nb:
+  plugins:
+    refinery_resources:
+      title: Ressurser
+  must_choose_file: Du må velge en fil å laste opp
+  file_should_be_smaller_than_max_file_size: Filene må være mindre enn {{max_file_size}}
+  admin:
+    resources:
+      form:
+        file_to_upload: Fil å laste opp
+        download_current: Last ned gjeldende fil
+        or: or
+        replace: ,erstatt den med denne...
+      resource:
+        download: Last ned denne filen ({{size}})
+        edit: Rediger denne filen
+        delete:
+          message: "Er du sikker på at du ønsker å slette '{{title}}'?"
+          title: Fjern denne filen for alltid
+      index:
+        upload_new: Last Opp Ny Fil
+        search_results: "Søkeresultat for '{{results}}'"
+        search_no_results: "Beklager, ingen resultat funnet."
+        no_files_yet: Det er ingen filer her enda. Trykk "Last Opp Ny Fil" for å legge til din første fil.
+      insert:
+        existing_file: Eksisterende Fil
+        new: Ny Fil
+        link_to_resource: 'Link til denne ressursen'
+        previous: Forrige
+        next: Neste
+        submit_insert: Sett inn
+        or: eller
+        cancel: Avbryt
