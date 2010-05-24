@@ -1,4 +1,0 @@
-i18n_dir_invalid: "public/javascripts"
-translations:
-  default:
-    file: "public/javascripts/messages.js"
