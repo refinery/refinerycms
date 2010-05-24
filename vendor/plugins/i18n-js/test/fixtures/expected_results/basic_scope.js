@@ -1,2 +1,0 @@
-var I18n = I18n || {};
-I18n.translations = {"en":{"number":{"currency":{"format":{"delimiter":",","format":"%u%n","precision":2,"separator":".","unit":"$"}}}},"fr":{"number":{"currency":{"format":{"format":"%n %u","precision":2,"unit":"\u20ac"}}}}};

@@ -39,6 +39,15 @@ new Test.Unit.Runner({
 				    month_names: [null, "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"],
 				    abbr_month_names: [null, "Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"]
 				},
+				number: {
+					percentage: {
+						format: {
+							delimiter: "",
+							separator: ",",
+							precision: 2
+						}
+					}
+				},
 				time: {
 					formats: {
 						"default": "%A, %d de %B de %Y, %H:%M h",
@@ -512,6 +521,14 @@ new Test.Unit.Runner({
 		assertEqual("07/01, 09:12 h", I18n.localize("time.formats.short", "2009-01-07 09:12:35"));
 		assertEqual("Domingo, 29 de Novembro de 2009, 15:07 h", I18n.localize("time.formats.long", "2009-11-29 15:07:59"));
 	}},
+
+	// Localize percentage
+	testLocalizePercentage: function() { with(this) {
+		I18n.locale = "pt";
+		assertEqual("123,45%", I18n.localize("percentage", 123.45));
+	}},
+
+
 
 	// Default value for simple translation
 	testDefaultValueForSimpleTranslation: function() { with(this) {

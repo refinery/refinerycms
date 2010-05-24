@@ -1,6 +1,6 @@
 namespace :i18n do
-  desc "Copy i18n.js and export the messages files"
-  task :setup => :require_lib do
+  desc "Copy i18n.js and configuration file"
+  task :setup => :environment do
     SimplesIdeias::I18n.setup!
   end
 
@@ -9,7 +9,8 @@ namespace :i18n do
     SimplesIdeias::I18n.export!
   end
 
-  task :require_lib do
-    require File.dirname(__FILE__) + "/../i18n-js"
+  desc "Update the JavaScript library"
+  task :update => :environment do
+    SimplesIdeias::I18n.update!
   end
 end
