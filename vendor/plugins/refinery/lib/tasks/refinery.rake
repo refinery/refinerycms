@@ -3,24 +3,55 @@ namespace :refinery do
   desc "Override files for use in an application"
   task :override => :environment do
     require 'fileutils'
+    theme = env["theme"].presence
+    view = env["view"].presence
+    controller = env["controller"].presence
+    model = env["model"].presence
 
-    if defined?(THEME)
-      # Prepare the basic structure for the theme directory
-      dirs = ["themes", "themes/#{THEME}", "themes/#{THEME}/views", "themes/#{THEME}/views/layouts", "themes/#{THEME}/views/shared", "themes/#{THEME}/views/pages", "themes/#{THEME}/stylesheets", "themes/#{THEME}/javascripts", "themes/#{THEME}/images"]
-		  dirs.each do |dir|
-			  dir = Rails.root.join(dir.split('/').join(File::SEPARATOR))
-			  dir.mkdir unless dir.directory?
-		  end
-		else
-		  # Prepare the basic structure for the app directory
-      dirs = ["app", "app/views", "app/views/layouts", "app/views/admin", "app/views/shared", "app/controllers", "app/models", "app/controllers/admin", "app/helpers", "app/helpers/admin"]
-		  dirs.each do |dir|
-			  dir = Rails.root.join(dir.split('/').join(File::SEPARATOR))
-			  dir.mkdir unless dir.directory?
-		  end
-		end
+    files_to_copy = []
 
-    if defined?(VIEW) || defined?(CONTROLLER) || defined?(MODEL)
+    if view
+      looking_for = [Refinery_root.join("vendor", "plugins", "**", "app", "views", controller_with_admin.split("/").join(File::SEPARATOR), "#{action}*.erb"), Rails.root.join("vendor", "plugins", "**", "app", "views", controller_with_admin.split("/").join(File::SEPARATOR), "#{action}*.erb")]
+      view_files = Dir[looking_for]
+
+      # copy in the action template
+      view_files.each do |view_file|
+        view_file_path = view_file.split("/app/views/").last
+        view_file_dir = view_file_path.split('/')
+        view_file_dir.pop # get rid of the file.
+
+        FileUtils.mkdir_p(rails_root.join("app", "views", view_file_dir.join(File::SEPARATOR)))
+        FileUtils.cp view_file, rails_root.join("app", "views", view_file_path)
+      end
+    elsif controller
+
+    elsif model
+    else
+      puts "You didn't specify anything to override. Here's some examples:"
+      puts "rake refinery:override view=pages/home"
+      puts "rake refinery:override controller=pages"
+      puts "rake refinery:override model=page"
+      puts "rake refinery:override view=pages/home theme=demolicious"
+      puts "rake refinery:override **/*menu"
+      puts "rake refinery:override shared/_menu_branch"
+    end
+
+    if files_to_copy.any?
+      if theme
+        # Prepare the basic structure for the theme directory
+        dirs = %W(themes themes/#{theme} themes/#{theme}/views themes/#{theme}/views/layouts themes/#{theme}/views/shared themes/#{theme}/views/pages themes/#{theme}/stylesheets themes/#{theme}/javascripts themes/#{theme}/images)
+  		  dirs.each do |dir|
+  			  dir = Rails.root.join(dir.split('/').join(File::SEPARATOR))
+  			  dir.mkdir unless dir.directory?
+  		  end
+  		else
+  		  # Prepare the basic structure for the app directory
+        dirs = %w(app app/views app/views/layouts app/views/admin app/views/shared app/controllers app/models app/controllers/admin app/helpers app/helpers/admin)
+  		  dirs.each do |dir|
+  			  dir = Rails.root.join(dir.split('/').join(File::SEPARATOR))
+  			  dir.mkdir unless dir.directory?
+  		  end
+  		end
     end
 
 =begin
@@ -42,16 +73,16 @@ namespace :refinery do
       unless action.nil? or action.length == 0
         # get all the matching files
         looking_for = refinery_root.join("vendor", "plugins", "**", "app", "views", controller_with_admin.split("/").join(File::SEPARATOR), "#{action}*.erb")
-        action_files = Dir[looking_for]
+        view_files = Dir[looking_for]
 
         # copy in the action template
-        action_files.each do |action_file|
-          action_file_path = action_file.split("/app/views/").last
-          action_file_dir = action_file_path.split('/')
-          action_file_dir.pop # get rid of the file.
+        view_files.each do |view_file|
+          view_file_path = view_file.split("/app/views/").last
+          view_file_dir = view_file_path.split('/')
+          view_file_dir.pop # get rid of the file.
 
-          FileUtils.mkdir_p(rails_root.join("app", "views", action_file_dir.join(File::SEPARATOR)))
-          FileUtils.cp action_file, rails_root.join("app", "views", action_file_path)
+          FileUtils.mkdir_p(rails_root.join("app", "views", view_file_dir.join(File::SEPARATOR)))
+          FileUtils.cp view_file, rails_root.join("app", "views", view_file_path)
         end
       else
         puts "Note: No action was specified."
