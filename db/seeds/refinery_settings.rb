@@ -19,7 +19,8 @@
       :fr => 'Français',
       :nl => 'Nederlands',
       :'pt-BR' => 'Português',
-      :da => 'Dansk'
+      :da => 'Dansk',
+      :nb => 'Norsk Bokmål'
     }
   }
 ].each do |setting|
