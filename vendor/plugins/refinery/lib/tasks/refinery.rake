@@ -3,43 +3,83 @@ namespace :refinery do
   desc "Override files for use in an application"
   task :override => :environment do
     require 'fileutils'
-    theme = ENV["theme"].presence
-    view = ENV["view"].presence
-    controller = ENV["controller"].presence
-    model = ENV["model"].presence
 
-    files_to_copy = []
-    if view.present?
-      view_pattern = "#{view.split("/").join(File::SEPARATOR)}*.erb"
+    if (view = ENV["view"]).present?
+      pattern = "#{view.split("/").join(File::SEPARATOR)}*.erb"
       looking_for = [
-        Refinery.root.join("vendor", "plugins", "**", "app", "views", view_pattern).to_s,
-        Rails.root.join("vendor", "plugins", "**", "app", "views", view_pattern).to_s
+        Refinery.root.join("vendor", "plugins", "**", "app", "views", pattern).to_s,
+        Rails.root.join("vendor", "plugins", "**", "app", "views", pattern).to_s
       ]
 
-      # copy in the action template
-      templates = looking_for.collect{|d| Dir[d]}.flatten.compact.uniq
-      if templates.any?
-        templates.each do |template|
-          template_dir = template.split("/app/views/").last.split('/')
-          template_file = template_dir.pop # get rid of the file.
-          template_dir = template_dir.join(File::SEPARATOR) # join template directory back together
+      # copy in the matches
+      matches = looking_for.collect{|d| Dir[d]}.flatten.compact.uniq
+      if matches.any?
+        matches.each do |match|
+          dir = match.split("/app/views/").last.split('/')
+          file = dir.pop # get rid of the file.
+          dir = dir.join(File::SEPARATOR) # join directory back together
 
-          unless theme.present?
-            destination_dir = Rails.root.join("app", "views", template_dir)
+          unless (theme = ENV["theme"]).present?
+            destination_dir = Rails.root.join("app", "views", dir)
           else
-            destination_dir = Rails.root.join("themes", theme, "views", template_dir)
+            destination_dir = Rails.root.join("themes", theme, "views", dir)
           end
           FileUtils.mkdir_p(destination_dir)
-          FileUtils.cp template, (destination = File.join(destination_dir, template_file))
-          puts "Copied file to #{destination.gsub("#{Rails.root.to_s}#{File::SEPARATOR}", '')}"
+          FileUtils.cp match, (destination = File.join(destination_dir, file))
+
+          puts "Copied view template file to #{destination.gsub("#{Rails.root.to_s}#{File::SEPARATOR}", '')}"
         end
       else
-        puts "Couldn't match any files in any engines like #{view}"
+        puts "Couldn't match any view template files in any engines like #{view}"
       end
-    elsif controller.present?
+    elsif (controller = ENV["controller"]).present?
+      pattern = "#{controller.split("/").join(File::SEPARATOR)}*.rb"
+      looking_for = [
+        Refinery.root.join("vendor", "plugins", "**", "app", "controllers", pattern).to_s,
+        Rails.root.join("vendor", "plugins", "**", "app", "controllers", pattern).to_s
+      ]
 
-    elsif model.present?
+      # copy in the matches
+      matches = looking_for.collect{|d| Dir[d]}.flatten.compact.uniq
+      if matches.any?
+        matches.each do |match|
+          dir = match.split("/app/controllers/").last.split('/')
+          file = dir.pop # get rid of the file.
+          dir = dir.join(File::SEPARATOR) # join directory back together
 
+          destination_dir = Rails.root.join("app", "controllers", dir)
+          FileUtils.mkdir_p(destination_dir)
+          FileUtils.cp match, (destination = File.join(destination_dir, file))
+
+          puts "Copied controller file to #{destination.gsub("#{Rails.root.to_s}#{File::SEPARATOR}", '')}"
+        end
+      else
+        puts "Couldn't match any controller files in any engines like #{controller}"
+      end
+    elsif (model = ENV["model"]).present?
+      pattern = "#{model.split("/").join(File::SEPARATOR)}*.rb"
+      looking_for = [
+        Refinery.root.join("vendor", "plugins", "**", "app", "models", pattern).to_s,
+        Rails.root.join("vendor", "plugins", "**", "app", "models", pattern).to_s
+      ]
+
+      # copy in the matches
+      matches = looking_for.collect{|d| Dir[d]}.flatten.compact.uniq
+      if matches.any?
+        matches.each do |match|
+          dir = match.split("/app/models/").last.split('/')
+          file = dir.pop # get rid of the file.
+          dir = dir.join(File::SEPARATOR) # join directory back together
+
+          destination_dir = Rails.root.join("app", "models", dir)
+          FileUtils.mkdir_p(destination_dir)
+          FileUtils.cp match, (destination = File.join(destination_dir, file))
+
+          puts "Copied model file to #{destination.gsub("#{Rails.root.to_s}#{File::SEPARATOR}", '')}"
+        end
+      else
+        puts "Couldn't match any model files in any engines like #{model}"
+      end
     else
       puts "You didn't specify anything to override. Here's some examples:"
       puts "rake refinery:override view=pages/home"
