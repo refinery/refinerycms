@@ -1,0 +1,23 @@
+nb:
+  activerecord:
+    models:
+      refinery_setting: Refinery instilling
+    attributes:
+      refinery_setting:
+        name: Navn
+        value: Verdi
+  admin:
+    refinery_settings:
+      refinery_setting:
+        edit: 'Rediger denne instillingen'
+        confirm: 'Er du sikker på at du ønsker å fjerne denne instillingen for alltid?'
+        remove: 'Fjern denne instillingen for alltid'
+      index:
+        new: Opprett ny instilling
+        empty_set: Det er ingen instillinger enda.
+        create_first: "Trykk {{link}} for å legge til din første instilling."
+      edit:
+        restart_may_be_in_order: "<strong>Ver oppmerksom</strong> på at du må kanskje starte nettsiden din på nytt for at instillingen skal ha effekt."
+  plugins:
+    refinery_settings:
+      title: Instillinger
