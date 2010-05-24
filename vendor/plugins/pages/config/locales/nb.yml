@@ -1,0 +1,54 @@
+nb:
+  plugins:
+    refinery_pages:
+      title: Sider
+  admin:
+    pages:
+      form_advanced_options:
+        title: Tittel
+        create_content_section: Opprett innholdsseksjon
+        delete_content_section: Slett innholdsseksjon
+        hide_or_show_advanced_options: Vis/Skjul Avanserte Instillinger
+        explain_page_different_title: Om du ønsker at siden skal ha en annen tittel enn den som vises i menyen skriv inn en ny her.
+        redirect_to_first_child: "Kryss av om du ønsker at besøkende skal bli omdirigert til det første barnet til denne siden om denne siden er valgt"
+        parent_id_title: Forelder
+        custom_title: Egendefinert tittel
+        title_type: "Type:"
+        title_types:
+          none: Ingen
+          text: Tekst
+          image: Bilder
+        custom_url: Egendefinert URL
+        custom_url_explanation: "Skriv inn en URL om denne siden linker til en ekstern side eller til en allerede eksisterende ressurs f.eks. en kontaktside. <br /> NB: Denne URL'en må peke til en destinasjon som eksisterer; en ny vil ikke bli opprettet."
+        draft: Kladd
+        show_in_menu_title: Vis i meny
+        show_in_menu_description: Kryss av om denne siden skal vises i sidemenyen
+        draft: Kladd
+        save_as_draft: Lagre som en kladd
+        save: Lagre
+        cancel: Avbryt
+      form_advanced_options_seo:
+        seo: Søkemotoroptimalisering
+        seo_override_title: Tittel i nettleser
+        seo_override_title_description: Om du ønsker å overskrive standard nettlesertittel, gjør det her.
+        meta_keywords_title: Meta nøkkelord
+        meta_keywords: Skriv inn 5-10 nøkkelord relatert til denne siden. Seperer nøkkelordene med komma.
+        meta_description_title: Meta beskrivelse
+        meta_description: Skriv to eller tre linjer som beskriver innholdet på denne siden.
+        js:
+          content_section:
+            create: Opprett innholdsseksjon
+            already_exists: En innholdsseksjon med valgt tittel eksisterer allerede, velg en annen tittel.
+            title_empty: Du har ikke skrevet inn en tittel for innholdsseksjonen, skriv inn en tittel for å gå videre.
+            confirm_delete: Dette vil slette innholdsseksjonen {{section_name}} når siden blir lagret og slette alt innhold som er skrevet i den, er du sikker på at du vil fortsette?
+      index:
+        create_new_page: Opprett en ny side
+        reorder_pages: Sorter sidenene
+        reorder_pages_done: Sortering utført
+        sorry_no_results: Beklager! Ingen resultat funnet.
+        no_pages_yet: Det er ingen sider enda. Trykk "Opprett en ny side" for å legge til din første side.
+        search_results_for: "Søkeresultat for {{what}}"
+  activerecord:
+    attributes:
+      page:
+        skip_to_first_child: "Hopp til første barn?"
