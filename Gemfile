@@ -12,11 +12,11 @@ gem 'unicorn', :group => :development
 # gem 'capistrano'
 
 #===REFINERY REQUIRED GEMS===
-gem 'rmagick',        '~> 2.12.2'
-gem 'rails',          '~> 2.3.6'
-gem 'hpricot',        '~> 0.8', :require => 'hpricot'
 gem 'authlogic',      '~> 2.1.4', :require => 'authlogic'
 gem 'friendly_id',    '~> 3.0.4', :require => 'friendly_id'
+gem 'hpricot',        '~> 0.8', :require => 'hpricot'
+gem 'rails',          '~> 2.3.6'
+gem 'rmagick',        '~> 2.12.2'
 gem 'will_paginate',  '~> 2.3.12', :require => 'will_paginate'
 #===REFINERY END OF REQUIRED GEMS===
 
