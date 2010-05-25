@@ -91,69 +91,6 @@ namespace :refinery do
     end
   end
 
-=begin
-    if files_to_copy.any?
-      if theme
-        # Prepare the basic structure for the theme directory
-        dirs = %W(themes themes/#{theme} themes/#{theme}/views themes/#{theme}/views/layouts themes/#{theme}/views/shared themes/#{theme}/views/pages themes/#{theme}/stylesheets themes/#{theme}/javascripts themes/#{theme}/images)
-  		  dirs.each do |dir|
-  			  dir = Rails.root.join(dir.split('/').join(File::SEPARATOR))
-  			  dir.mkdir unless dir.directory?
-  		  end
-  		else
-  		  # Prepare the basic structure for the app directory
-        dirs = %w(app app/views app/views/layouts app/views/admin app/views/shared app/controllers app/models app/controllers/admin app/helpers app/helpers/admin)
-  		  dirs.each do |dir|
-  			  dir = Rails.root.join(dir.split('/').join(File::SEPARATOR))
-  			  dir.mkdir unless dir.directory?
-  		  end
-  		end
-    end
-=end
-=begin
-      # copy the controller
-      unless controller_with_admin =~ /\*(\*)?/ and !action.nil?
-        refinery_controllers = Dir[Refinery.root.join("vendor", "plugins", "**", "app", "controllers", "#{controller_with_admin}_controller.rb")].compact
-        if refinery_controllers.any? # the controllers may not exist.
-          refinery_controllers.each do |refinery_controller|
-            # make the directories
-            FileUtils.mkdir_p(copy_to = Rails.root.join("app", "controllers", admin).to_s)
-            FileUtils.cp(refinery_controller, copy_to)
-          end
-        else
-          puts "Note: Couldn't find a matching controller to override."
-        end
-      end
-
-      # copy the action, if it exists
-      unless action.nil? or action.length == 0
-        # get all the matching files
-        looking_for = Refinery.root.join("vendor", "plugins", "**", "app", "views", controller_with_admin.split("/").join(File::SEPARATOR), "#{action}*.erb")
-        view_files = Dir[looking_for]
-
-        # copy in the action template
-        view_files.each do |view_file|
-          template_path = view_file.split("/app/views/").last
-          template_dir = template_path.split('/')
-          template_dir.pop # get rid of the file.
-
-          FileUtils.mkdir_p(Rails.root.join("app", "views", template_dir.join(File::SEPARATOR)))
-          FileUtils.cp view_file, Rails.root.join("app", "views", template_path)
-        end
-      else
-        puts "Note: No action was specified."
-      end
-    else
-      puts "You didn't specify anything to override. Here's some examples:"
-      puts "refinery-override /pages/* /path/to/my/project"
-      puts "refinery-override /pages/show /path/to/my/project"
-      puts "refinery-override /admin/pages/index"
-      puts "refinery-override /shared/_menu /path/to/my/project"
-      puts "refinery-override **/*menu /path/to/my/project"
-      puts "refinery-override /shared/_menu_branch"
-    end
-=end
-
   desc "Required to upgrade from <= 0.9.0 to 0.9.1 and above"
   task :fix_image_paths_in_content => :environment do
     Page.all.each do |p|
