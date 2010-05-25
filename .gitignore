@@ -1,6 +1,6 @@
 public/system/*
 public/themes/*
-log/*.log
+*.log
 tmp/**/*
 .DS_Store
 doc/api
@@ -9,7 +9,6 @@ doc/*
 config/database.yml
 config/amazon_s3.yml
 config/rackspace_cloudfiles.yml
-public/images/system/*
 nbproject
 index/**/*
 db/*.sqlite3
