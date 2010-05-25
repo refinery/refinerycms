@@ -22,14 +22,13 @@ acronym {
 }
 #actions {
   float: right;
-  width: 32%;
+  width: 30.7%;
   padding-left: 15px;
   padding-top: 3px;
 }
 #records {
   float: left;
-  width: 64.7%;
-  padding-right: 15px;
+  width: 67.7%;
 }
 #actions ul {
   margin: 0px 0px 18px 0px;
@@ -386,17 +385,40 @@ pre {
 .filter {
   float: right;
 }
-#records > ul {
+#records > ul, #records > #recent_activity > ul, #records > #recent_inquiries > ul {
   margin-left: 0;
   padding-left: 0;
 }
-#records > ul li {
+#records > ul li, #records > #recent_activity > ul li, #records > #recent_inquiries > ul li {
   list-style: none;
   padding: 0px 5px;
   vertical-align: top;
   margin-bottom: 2px;
   line-height: 35px;
 }
+#records ul.clickable li {
+  padding: 0px;
+  margin-bottom: 0px;
+}
+#records ul.clickable li a {
+  padding: 0px 5px;
+  vertical-align: top;
+  margin-bottom: 2px;
+  line-height: 35px;
+  display: block;
+  border-bottom: 0px none;
+}
+#records > #recent_activity, #records > #recent_inquiries {
+  float: left;
+  width: 48%;
+}
+#records > #recent_inquiries {
+  margin-left: 21px;
+}
+#records.one_list > #recent_activity, #records.one_list > #recent_inquiries {
+  width: 100%;
+}
+
 #records .left-column {
   float: left;
   width: 65%;
@@ -646,27 +668,6 @@ label.stripped {
 #other_records {
   width: 68%;
 }
-#recent_activity {
-  border-collapse: collapse;
-  width: 100%;
-  margin-top: 3px;
-}
-#recent_activity tr {
-  line-height: 25px;
-}
-#recent_activity td {
-  padding: 5px;
-}
-#recent_activity td.time_ago {
-  text-align: right;
-  min-width: 80px;
-  max-width: 135px;
-}
-#recent_activity td img {
-  padding-left: 3px;
-  vertical-align: middle;
-  margin-top: -3px;
-}
 #common_actions {
   margin: 0;
   padding: 0;
@@ -869,9 +870,10 @@ ul#menu.reordering_menu li a {
 }
 #search {
   border: 1px solid #b3b3b3;
-  line-height: 16px;
+  line-height: 18px;
   padding: 2px;
   font-size: 16px;
+  width: 200px;
 }
 .search_form .button {
   float: right;

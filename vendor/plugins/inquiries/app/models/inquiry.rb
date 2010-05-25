@@ -9,5 +9,9 @@ class Inquiry < ActiveRecord::Base
                   :index_file => [Rails.root.to_s, "tmp", "index"]
 
   default_scope :order => 'created_at DESC'
+  
+  def self.latest(number=7)
+    find(:all, :limit => number)
+  end
 
 end
