@@ -33,6 +33,4 @@ protected
     redirect_to :action => "new"
   end
 
-  def take_down_for_maintenance?;end
-
 end

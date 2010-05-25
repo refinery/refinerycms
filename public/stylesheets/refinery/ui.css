@@ -65,7 +65,8 @@
   margin-right: 2px;
 }
 .ui-tabs .ui-state-default a {
-  background-color: #c2c3b3;
+  background-color: #bcbcbc;
+  color: white;
   padding: 9px 13px;
   border-bottom: none;
   display: block;
@@ -73,7 +74,6 @@
 }
 .ui-tabs .ui-state-active a {
   background-color: #808080;
-  color: #fff;
   padding: 11px 13px;
   margin-top: 0px;
 }
