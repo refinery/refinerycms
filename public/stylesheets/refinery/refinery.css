@@ -24,7 +24,7 @@ acronym {
   float: right;
   width: 30.7%;
   padding-left: 15px;
-  padding-top: 3px;
+  padding-top: 0px;
 }
 #records {
   float: left;
@@ -298,7 +298,7 @@ body.login #header_content h1 {
   text-align: center;
 }
 #content {
-  padding: 30px 20px;
+  padding: 30px 15px;
 }
 pre {
   margin: 0;
@@ -470,7 +470,7 @@ pre {
   display: none;
 }
 #records ul#sortable_list {
-  margin-top: 8px;
+  margin-top: 6px;
 }
 #records ul#sortable_list.ui-sortable {
   margin-top: 0px;
@@ -482,6 +482,9 @@ pre {
 #content .ui-sortable {
   margin: 0;
   padding: 12px 0px;
+}
+#content #records > .ui-sortable {
+  padding-top: 10px;
 }
 #content .ui-sortable li ul{
   padding: 6px 10px 12px 40px !important;
@@ -1053,7 +1056,7 @@ textarea.wymeditor {
 ul#image_grid {
   width: 580px;
   padding: 0px;
-  margin: 15px 0;
+  margin: 10px 0px 15px 0px;
 }
 ul#image_grid li {
   float: left;
