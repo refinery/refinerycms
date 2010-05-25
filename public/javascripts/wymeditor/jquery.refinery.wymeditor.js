@@ -1754,8 +1754,8 @@ WYMeditor.INIT_DIALOG = function(wym, selected, isIframe) {
           replaceable.after(image).remove();
         }
       }
-      
-      $(image).attr({width: $(image).width(), height: $(image).height()});
+
+      //$(image).attr({width: $(image).width(), height: $(image).height()});
 
       // fire a click event on the dialogs close button
       wym.close_dialog();
