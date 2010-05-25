@@ -15,7 +15,7 @@ index/**/*
 db/*.sqlite3
 *.tmproj
 *.autobackupbyrefinery.*
-refinerycms*.gem
+/refinerycms-*.gem
 public/javascripts/cache
 public/stylesheets/cache
 config/database.yml.example
