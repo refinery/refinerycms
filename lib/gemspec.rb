@@ -17,7 +17,7 @@ Gem::Specification.new do |s|
   s.homepage          = %q{http://refinerycms.com}
   s.authors           = %w(Resolve\ Digital David\ Jones Philip\ Arndt)
   s.require_paths     = %w(lib)
-  s.executables       = %w(refinery refinery-override refinery-update-core)
+  s.executables       = %w(refinery refinery-update-core)
 
   s.files             = [
     '#{files.join("',\n\t\t'")}'
