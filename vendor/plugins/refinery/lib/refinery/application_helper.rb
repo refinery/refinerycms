@@ -133,9 +133,4 @@ module Refinery::ApplicationHelper
       (request.path == page.link_url)
   end
 
-  # Old deprecated function. TODO: Remove
-  def setup
-    logger.warn("*** Refinery::ApplicationHelper::setup has now been deprecated from the Refinery API. ***")
-  end
-
 end

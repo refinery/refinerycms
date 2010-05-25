@@ -22,9 +22,9 @@ var wymeditor_boot_options = $.extend({
     ,{'name': 'CreateLink', 'title': 'Link', 'css': 'wym_tools_link'}
     ,{'name': 'Unlink', 'title': 'Unlink', 'css': 'wym_tools_unlink'}
     ,{'name': 'InsertImage', 'title': 'Image', 'css': 'wym_tools_image'}
-    ,{'name': 'ToggleHtml', 'title': 'HTML', 'css': 'wym_tools_html'}
     ,{'name': 'InsertTable', 'title': 'Table', 'css': 'wym_tools_table'}
-    ,{'name': 'Paste', 'title': 'Paste_From_Word', 'css': 'wym_tools_paste'}
+    //,{'name': 'Paste', 'title': 'Paste_From_Word', 'css': 'wym_tools_paste'}
+    ,{'name': 'ToggleHtml', 'title': 'HTML', 'css': 'wym_tools_html'}
   ]
 
   ,toolsHtml: "<ul class='wym_tools wym_section'>" + WYMeditor.TOOLS_ITEMS + WYMeditor.CLASSES + "</ul>"
@@ -59,8 +59,8 @@ var wymeditor_boot_options = $.extend({
   , boxHtml:
   "<div class='wym_box'>"
     + "<div class='wym_area_top'>"
-      + WYMeditor.TOOLS
       + WYMeditor.CONTAINERS
+      + WYMeditor.TOOLS
     + "</div>"
     + "<div class='wym_area_main'>"
       + WYMeditor.HTML

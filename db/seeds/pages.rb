@@ -84,13 +84,3 @@ page_not_found_page.parts.create({
               :body => "<h2>Sorry, there was a problem...</h2><p>The page you requested was not found.</p><p><a href='/'>Return to the home page</a></p>",
               :position => 0
             })
-
-down_for_maintenance_page = Page.create(:title => "Down for maintenance",
-            :menu_match => "^/maintenance$",
-            :show_in_menu => false,
-            :position =>  (page_position += 1))
-down_for_maintenance_page.parts.create({
-              :title => "Body",
-              :body => "<p>Our site is currently down for maintenance. Please try back later.</p>",
-              :position => 0
-            })

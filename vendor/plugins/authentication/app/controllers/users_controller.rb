@@ -97,8 +97,6 @@ protected
     end
   end
 
-  def take_down_for_maintenance?;end
-
   def can_create_public_user?
     User.count == 0
   end
