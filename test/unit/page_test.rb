@@ -86,6 +86,14 @@ class PageTest < ActiveSupport::TestCase
     assert_nothing_raised(FriendlyId::ReservedError) { Page.create(:title => "Refinery") }
   end
 
+  def test_dynamic_addition_of_reserved_words
+    plugin = Refinery::Plugin.register do |plugin|
+      plugin.title = "Foo Bar"
+    end
+    assert_equal("foo_bar", Page.friendly_id_config.reserved_words.last)
+    assert_nothing_raised(FriendlyId::ReservedError) { Page.create(:title => "Foo Bar") }
+  end
+
   def test_drafts
     assert_equal false, pages(:draft_page).live? # the draft page is indeed a draft
     assert_equal true, pages(:home_page).live? # the home page is not a draft
