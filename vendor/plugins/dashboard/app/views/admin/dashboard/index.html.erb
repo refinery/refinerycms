@@ -1,6 +1,7 @@
 <div class='clearfix'>
-  <div id='records'>
-    <%= render :partial => "recent_activity" %>
+  <div id='records' class='clearfix<%= ' one_list' if @recent_activity.empty? or @recent_inquiries.empty? %>'>
+    <%= render :partial => "recent_activity" if @recent_activity.any? %>
+    <%= render :partial => "recent_inquiries" if @recent_inquiries.any? %>
   </div>
   <div id='actions'>
     <h2>Quick Tasks</h2>
@@ -30,3 +31,4 @@
     </ul>
   </div>
 </div>
+<% content_for :head, javascript_include_tag('jquery/jquery.textTruncate') %>

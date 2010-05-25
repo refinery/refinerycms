@@ -1,0 +1,10 @@
+<div id='recent_inquiries'>
+  <h2>Latest Inquiries</h2>
+  <ul class='clickable'>
+    <% @recent_inquiries.each do |inquiry| %>
+      <li class='<%= cycle("on", "on-hover", :name => 'recent_inquiries_cycle') %>'>
+        <%= link_to "#{inquiry.name} - #{inquiry.message}", admin_inquiry_url(inquiry) %>
+      </li>
+    <% end %>
+  </ul>
+</div>

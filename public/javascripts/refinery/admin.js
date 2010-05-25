@@ -4,6 +4,12 @@ $(document).ready(function(){
   $('.button, #editor_switch a').corner("6px");
   $('<span></span>').prependTo('#editor_switch').corner('6px');
   $('#editor_switch a').appendTo('#editor_switch span:first');
+  $('#recent_activity li a, #recent_inquiries li a').each(function(i, a) {
+    $(this).textTruncate({
+      width: $(this).width()
+  		, tooltip: false
+  	})
+	});
 
   init_flash_messages();
   init_delete_confirmations();
@@ -19,7 +25,8 @@ $(document).ready(function(){
 
 init_delete_confirmations = function() {
   $('a.confirm-delete').click(function(e) {
-    if (confirm("Are you sure you want to " + (t=($(this).attr('title') || $(this).attr('tooltip')))[0].toLowerCase() + t.substring(1) + "?")) {
+    if (confirm("Are you sure you want to " + (t=($(this).attr('title') || $(this).attr('tooltip')))[0].toLowerCase() + t.substring(1) + "?")) 
+    {
       $("<form method='POST' action='" + $(this).attr('href') + "'></form>")
         .append("<input type='hidden' name='_method' value='delete' />")
         .append("<input type='hidden' name='authenticity_token' value='" + $('#admin_authenticity_token').val() + "'/>")
