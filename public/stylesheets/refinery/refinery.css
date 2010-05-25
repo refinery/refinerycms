@@ -707,12 +707,6 @@ body.dialog, body.wym_dialog {
 #wym_hide_fields {
   display: none;
 }
-body.dialog #dialog_main {
-  background: #f6f5f4;
-}
-body.dialog span.selected_radio {
-  background: #f6f5f4;
-}
 body.dialog form {
   width: 100% !important;
 }
@@ -762,7 +756,28 @@ body.dialog form {
   border: 4px solid transparent;
 }
 .dialog #existing_image_area_content ul li.selected img {
-  border: 4px solid black;
+  border: 4px solid #22A7F2;
+}
+.dialog #existing_image_size_area ul {
+  margin: 0px;
+  padding: 10px 0px 0px 0px;
+}
+.dialog #existing_image_size_area ul li {
+  float: left;
+  list-style: none;
+  margin: 0px 18px 0px 0px;
+  padding: 0px;
+}
+.dialog #existing_image_size_area ul li.selected {
+  margin-right: 16px;
+}
+.dialog #existing_image_size_area ul li a {
+  display: block;
+  border: 1px solid #999999;
+}
+.dialog #existing_image_size_area ul li.selected a {
+  margin-top: -1px;
+  border: 2px solid #22A7F2;
 }
 /*
 #dialog_main {
@@ -1102,13 +1117,13 @@ ul#plugins li {
 }
 /**** Tooltip Icons *****/
 .tooltip {
-  background: white;
-  border: 4px solid #606060;
+  background: #22A7F2;
+  border: 4px solid #22A7F2;
   padding: 6px;
   word-wrap:break-word;
 }
-.tooltip * {
-  color: black;
+.tooltip, .tooltip * {
+  color: white;
 }
 .wym_dialog_paste .field textarea {
   width: 98%;

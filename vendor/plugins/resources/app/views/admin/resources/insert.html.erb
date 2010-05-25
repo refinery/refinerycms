@@ -47,7 +47,7 @@
 </div>
 <% if @app_dialog %>
   <div id='dialog-form-actions' class='form-actions'>
-    <%= submit_tag 'Insert', :id => "submit_button" %>
+    <%= submit_tag 'Insert', :id => "submit_button", :class => 'button' %>
 
     <%= will_paginate @resources,
                       :previous_label => '&laquo; Previous',

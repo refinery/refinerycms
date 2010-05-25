@@ -27,7 +27,7 @@ var wymeditor_boot_options = $.extend({
     ,{'name': 'ToggleHtml', 'title': 'HTML', 'css': 'wym_tools_html'}
   ]
 
-  ,toolsHtml: "<ul class='wym_tools wym_section'>" + WYMeditor.TOOLS_ITEMS + WYMeditor.CLASSES + "</ul>"
+  ,toolsHtml: "<ul class='wym_tools wym_section wym_buttons'>" + WYMeditor.TOOLS_ITEMS + WYMeditor.CLASSES + "</ul>"
 
   ,toolsItemHtml:
     "<li class='" + WYMeditor.TOOL_CLASS + "'>"
@@ -96,9 +96,8 @@ var wymeditor_boot_options = $.extend({
           + "<input type='text' id='wym_cols' class='wym_cols' value='2' size='3' />"
         + "</div>"
         + "<div id='dialog-form-actions' class='form-actions'>"
-          + "<input class='wym_submit' type='button' value='{Insert}' />"
-          + " or "
-          + "<a href='' class='wym_cancel close_dialog'>{Cancel}</a>"
+          + "<input class='wym_submit' type='submit' value='{Insert}' class='button' />"
+          + "<a href='' class='wym_cancel close_dialog button'>{Cancel}</a>"
         + "</div>"
       + "</form>"
     + "</div>"
@@ -111,9 +110,8 @@ var wymeditor_boot_options = $.extend({
           + "<textarea class='wym_text' rows='10' cols='50'></textarea>"
         + "</div>"
         + "<div id='dialog-form-actions' class='form-actions'>"
-          + "<input class='wym_submit' type='button' value='{Insert}' />"
-          + " or "
-          + "<a href='' class='wym_cancel close_dialog'>{Cancel}</a>"
+          + "<input class='wym_submit' type='submit' value='{Insert}' class='button' />"
+          + "<a href='' class='wym_cancel close_dialog button'>{Cancel}</a>"
         + "</div>"
       + "</form>"
     + "</div>"
