@@ -25,7 +25,7 @@ $(document).ready(function(){
 
 init_delete_confirmations = function() {
   $('a.confirm-delete').click(function(e) {
-    if (confirm("Are you sure you want to " + (t=($(this).attr('title') || $(this).attr('tooltip')))[0].toLowerCase() + t.substring(1) + "?")) 
+    if (confirm("Are you sure you want to " + (t=($(this).attr('title') || $(this).attr('tooltip')))[0].toLowerCase() + t.substring(1) + "?"))
     {
       $("<form method='POST' action='" + $(this).attr('href') + "'></form>")
         .append("<input type='hidden' name='_method' value='delete' />")
@@ -175,7 +175,7 @@ init_tooltips = function(args){
       tooltip.css({
         'left': ((left = $(this).offset().left - (tooltip.outerWidth() / 2) + ($(this).outerWidth() / 2)) >= 0 ? left : 0)
         , 'top': $(this).offset().top - tooltip.outerHeight() - 6
-      }).show();
+      }).corner('6px').show();
     }, function(e) {
       $('.tooltip').remove();
     });
@@ -540,7 +540,7 @@ var image_dialog = {
 
       $(img).parent().addClass('selected');
       var imageUrl = parseURL($(img).attr('src'));
-      var relevant_src = imageUrl.pathname.replace('_dialog_thumb', '');
+      var relevant_src = imageUrl.pathname.replace('_dialog_thumb', $('#existing_image_size_area ul li.selected a').attr('href').replace('#', '_'));
       if (imageUrl.protocol == "" && imageUrl.hostname == "system") {
         relevant_src = "/system" + relevant_src;
       }
@@ -588,6 +588,11 @@ var image_dialog = {
     var _this = this;
     $('#dialog-form-actions #submit_button').click($.proxy(_this.submit_image_choice, _this));
     $('#dialog-form-actions #cancel_button').click($.proxy(_this.close_dialog, _this));
+    $('#existing_image_size_area ul li a').click(function(e) {
+      $('#existing_image_size_area ul li').removeClass('selected');
+      $(this).parent().addClass('selected');
+      e.preventDefault();
+    });
   }
 }
 

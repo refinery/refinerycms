@@ -1251,10 +1251,14 @@ WYMeditor.editor.prototype.dialog = function( dialogType ) {
   if (dialogType == WYMeditor.DIALOG_LINK && $.browser.mozilla) {
     selection = wym._iframe.contentWindow.getSelection();
     matches = $($(selected).html().match(new RegExp(selection.anchorNode.textContent + "(.*)" + selection.focusNode.textContent)));
-    if (matches != null && matches.length > 0 && (possible_anchor_tag = matches.last()).length > 0) {
-      if (((href_matches = possible_anchor_tag.get(0).match(/href="([^"]*)"/)) != null) && (href = $(href_matches).last().get(0)) != null) {
-        $(wym._doc).find('a').each(function(index, possible_match) {
-          if ($(possible_match).html() == selection) {
+    if (matches != null && matches.length > 0 && (possible_anchor_tag = matches.last()).length > 0)
+    {
+      if (((href_matches = possible_anchor_tag.get(0).match(/href="([^"]*)"/)) != null) && (href = $(href_matches).last().get(0)) != null)
+      {
+        $(wym._doc).find('a').each(function(index, possible_match)
+        {
+          if ($(possible_match).html() == selection)
+          {
             selected = possible_match;
           }
         })
@@ -1336,6 +1340,9 @@ WYMeditor.editor.prototype.dialog_ajax_callback = function(selected) {
   wym = this; _selected = selected;
   // now fix the height;
   $("#" + wym._options.dialogId + ".editor_dialog").css('height', 'auto');
+
+  // add corners to the buttons.
+  $('#' + wym._options.dialogId + " .button").corner('6px');
 
   // look for iframes
   (iframes = $("#" + this._options.dialogId).find('iframe')).load(function() {
@@ -1733,7 +1740,7 @@ WYMeditor.INIT_DIALOG = function(wym, selected, isIframe) {
   $(wym._options.dialogImageSelector).find(wym._options.submitSelector).click(function() {
     form = $(this.form);
     if ((url = form.find(wym._options.srcSelector).val()) != null && url.length > 0) {
-       wym._exec(WYMeditor.INSERT_IMAGE, wym._current_unique_stamp, selected);
+      wym._exec(WYMeditor.INSERT_IMAGE, wym._current_unique_stamp, selected);
 
       var image = $(wym._doc.body).find("img[src*=" + wym._current_unique_stamp + "]");
 
@@ -1747,6 +1754,8 @@ WYMeditor.INIT_DIALOG = function(wym, selected, isIframe) {
           replaceable.after(image).remove();
         }
       }
+      
+      $(image).attr({width: $(image).width(), height: $(image).height()});
 
       // fire a click event on the dialogs close button
       wym.close_dialog();
