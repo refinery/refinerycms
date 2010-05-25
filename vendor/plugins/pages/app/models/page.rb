@@ -202,6 +202,21 @@ class Page < ActiveRecord::Base
     dialog ? PAGES_PER_DIALOG : PAGES_PER_ADMIN_INDEX
   end
 
+  if RefinerySetting.find_or_set(:use_marketable_urls, "true")
+    ##
+    # Protects generated slugs from title if they are in the list of reserved words
+    # This applies mostly to plugin-generated pages.
+    #
+    # Returns the sluggified string
+    def normalize_friendly_id(slug_string)
+      sluggified = super
+      if self.class.friendly_id_config.reserved_words.include?(sluggified)
+        sluggified += "-page"
+      end
+      sluggified
+    end
+  end
+
   private
 
   def invalidate_child_cached_url
