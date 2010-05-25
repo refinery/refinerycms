@@ -17,9 +17,7 @@ class Page < ActiveRecord::Base
   before_destroy :deletable?
   after_save :reposition_parts!
 
-  if RefinerySetting.find_or_set(:use_marketable_urls, "true")
-    after_save :invalidate_child_cached_url
-  end
+  after_save :invalidate_child_cached_url
 
   # when a dialog pops up to link to a page, how many pages per page should there be
   PAGES_PER_DIALOG = 14
@@ -99,7 +97,7 @@ class Page < ActiveRecord::Base
   def url
     if self.link_url.present?
       self.link_url =~ /^\// ? {:controller => self.link_url} : self.link_url
-    elsif RefinerySetting.find_or_set(:use_marketable_urls, "true")
+    elsif use_marketable_urls?
       url_marketable
     elsif self.to_param.present?
       url_normal
@@ -121,7 +119,7 @@ class Page < ActiveRecord::Base
   #   ['about', 'mission']
   #
   def nested_url
-    Rails.cache.fetch("#{cache_key}#nested_url") { uncached_nested_url }
+    Rails.cache.fetch(url_cache_key) { uncached_nested_url }
   end
 
   def uncached_nested_url
@@ -132,6 +130,14 @@ class Page < ActiveRecord::Base
   # by the router
   def nested_path
     @nested_path ||= "/#{nested_url.join('/')}"
+  end
+
+  def url_cache_key
+    "#{cache_key}#nested_url"
+  end
+
+  def use_marketable_urls?
+    RefinerySetting.find_or_set(:use_marketable_urls, "true")
   end
 
   # Returns true if this page is "published"
@@ -202,26 +208,25 @@ class Page < ActiveRecord::Base
     dialog ? PAGES_PER_DIALOG : PAGES_PER_ADMIN_INDEX
   end
 
-  if RefinerySetting.find_or_set(:use_marketable_urls, "true")
-    ##
-    # Protects generated slugs from title if they are in the list of reserved words
-    # This applies mostly to plugin-generated pages.
-    #
-    # Returns the sluggified string
-    def normalize_friendly_id(slug_string)
-      sluggified = super
-      if self.class.friendly_id_config.reserved_words.include?(sluggified)
-        sluggified += "-page"
-      end
-      sluggified
+  ##
+  # Protects generated slugs from title if they are in the list of reserved words
+  # This applies mostly to plugin-generated pages.
+  #
+  # Returns the sluggified string
+  def normalize_friendly_id(slug_string)
+    sluggified = super
+    if use_marketable_urls? && self.class.friendly_id_config.reserved_words.include?(sluggified)
+      sluggified += "-page"
     end
+    sluggified
   end
 
   private
 
   def invalidate_child_cached_url
+    return true unless use_marketable_urls?
     children.each do |child|
-      Rails.cache.delete("#{child.cache_key}#nested_url")
+      Rails.cache.delete(child.url_cache_key)
     end
   end
 end
