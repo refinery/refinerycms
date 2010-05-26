@@ -5,6 +5,7 @@ files = %w( .gems .gitignore .yardopts Gemfile Rakefile readme.md license.md VER
 %w(app bin config db lib public script test themes vendor).each do |dir|
   files += Dir.glob("#{dir}/**/*")
 end
+files.reject!{|f| f =~ /public\/system/}
 
 gemspec = <<EOF
 Gem::Specification.new do |s|
