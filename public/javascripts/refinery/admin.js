@@ -373,6 +373,9 @@ var page_options = {
     page_options.tabs = $('#page-tabs').tabs({tabTemplate: '<li><a href="#{href}">#{label}</a></li>'}).find(' > ul li a').corner('top 5px');
     part_shown = $('#page-tabs .page_part.field').not('.ui-tabs-hide');
     $('#page-tabs .page_part.field').removeClass('ui-tabs-hide');
+    
+    page_options.tabs.tabs("remove", 2);
+    page_options.tabs.tabs("remove", 2);
 
     this.enable_parts = enable_parts;
     this.new_part_url = new_part_url;
