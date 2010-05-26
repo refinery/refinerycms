@@ -30,12 +30,12 @@
           <input type='hidden' name='selected_image_size' id='selected_image_size' />
           <h2>Size</h2>
           <ul>
-            <% (sizes = RefinerySetting.find_or_set(:image_dialogue_sizes, [:small, :medium, :large])).each_with_index do |size, index| 
+            <% (sizes = RefinerySetting.find_or_set(:image_dialogue_sizes, [:small, :medium, :large])).each_with_index do |size, index|
                 modifier = ((index + 1) * 10) + 10
             %>
               <li<%= " class='selected'" if size == :medium %> style="padding-top: <%= (((sizes.length * 10) - modifier) / 2) + 10 %>px">
                 <%= link_to "&nbsp;", "##{size}", :title => "#{size} image", :tooltip => "#{size} image",
-                            :style => "width: #{modifier}px; 
+                            :style => "width: #{modifier}px;
                                        height: #{modifier}px;" %>
               </li>
             <% end %>
