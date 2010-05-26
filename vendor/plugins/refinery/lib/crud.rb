@@ -34,7 +34,7 @@ module Crud
       plural_name = singular_name.pluralize
 
       module_eval %(
-        before_filter :find_#{singular_name}, :only => [:update, :destroy, :edit]
+        before_filter :find_#{singular_name}, :only => [:update, :destroy, :edit, :show]
 
         def new
           @#{singular_name} = #{class_name}.new
