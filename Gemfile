@@ -11,6 +11,9 @@ gem 'unicorn', :group => :development
 # Deploy with Capistrano
 # gem 'capistrano'
 
+# If you are using s3 you probably want this gem:
+# gem 'aws-s3'
+
 #===REFINERY REQUIRED GEMS===
 gem 'authlogic',      '~> 2.1.4', :require => 'authlogic'
 gem 'friendly_id',    '~> 3.0.4', :require => 'friendly_id'
