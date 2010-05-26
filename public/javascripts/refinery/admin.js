@@ -370,12 +370,12 @@ var page_options = {
     // set the page tabs up, but ensure that all tabs are shown so that when wymeditor loads it has a proper height.
     // also disable page overflow so that scrollbars don't appear while the page is loading.
     $(document.body).addClass('hide-overflow');
-    page_options.tabs = $('#page-tabs').tabs({tabTemplate: '<li><a href="#{href}">#{label}</a></li>'}).find(' > ul li a').corner('top 5px');
+    page_options.tabs = $('#page-tabs');
+    page_options.tabs.tabs({tabTemplate: '<li><a href="#{href}">#{label}</a></li>'})
+    page_options.tabs.find(' > ul li a').corner('top 5px');
+
     part_shown = $('#page-tabs .page_part.field').not('.ui-tabs-hide');
     $('#page-tabs .page_part.field').removeClass('ui-tabs-hide');
-    
-    page_options.tabs.tabs("remove", 2);
-    page_options.tabs.tabs("remove", 2);
 
     this.enable_parts = enable_parts;
     this.new_part_url = new_part_url;
@@ -420,7 +420,7 @@ var page_options = {
       resizable: false,
       autoOpen: false,
       width: 600
-    });
+    })
 
     $('#add_page_part').click(function(e){
       e.preventDefault();
@@ -444,18 +444,24 @@ var page_options = {
             }
             , function(data, status){
               // Add a new tab for the new content section.
-              $('#page_part_editors').append(data);
+              $(data).appendTo('#page_part_editors');
               page_options.tabs.tabs('add', '#page_part_new_' + $('#new_page_part_index').val(), part_title);
-              page_options.tabs.tabs('select', '#page_part_new_' + $('#new_page_part_index').val());
+              page_options.tabs.tabs('select', $('#new_page_part_index').val());
 
               // turn the new textarea into a wymeditor.
               $('#page_parts_attributes_' + $('#new_page_part_index').val() + "_body").wymeditor(wymeditor_boot_options);
+
+              // hook into wymedtior to instruct it to select this new tab again once it has loaded.
+              WYMeditor.loaded = function() {
+                page_options.tabs.tabs('select', $('#new_page_part_index').val());
+                WYMeditor.loaded = function(){}; // kill it again.
+              }
 
               // Wipe the title and increment the index counter by one.
               $('#new_page_part_index').val(parseInt($('#new_page_part_index').val()) + 1);
               $('#new_page_part_title').val('');
 
-              $('#page-tabs').tabs().find('> ul li a').corner('top 5px');
+              page_options.tabs.find('> ul li a').corner('top 5px');
             }
           );
         }else{
@@ -477,18 +483,14 @@ var page_options = {
 
     $('#delete_page_part').click(function(e){
       e.preventDefault();
-      var stab_id = page_options.tabs.tabs('option', 'selected');
-      var part_id = $('#page_parts_attributes_' + stab_id + '_id').val();
-      //console.log('stab_id: ' + stab_id + ' part_id: ' + part_id);
 
-      var result = confirm("This will remove the content section '" + $('#page_parts .ui-tabs-selected a').html() + "' and erase all content that has been entered into it even if you don't save the page, are you sure?");
-      if(part_id && result) {
+      if(confirm("This will remove the content section '" + $('#page_parts .ui-tabs-selected a').html() + "' immediately even if you don't save this page, are you sure?")) {
+        var tabId = page_options.tabs.tabs('option', 'selected');
         $.ajax({
-          url: page_options.del_part_url + '/' + part_id,
+          url: page_options.del_part_url + '/' + $('#page_parts_attributes_' + tabId + '_id').val(),
           type: 'DELETE'
         });
-        page_options.tabs.tabs('remove', stab_id);
-        //WYMeditor.loaded();
+        page_options.tabs.tabs('remove', tabId);
       }
 
     });
