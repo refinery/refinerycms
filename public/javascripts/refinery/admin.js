@@ -443,6 +443,7 @@ var page_options = {
               , body: ''
             }
             , function(data, status){
+              $('#submit_continue_button').remove();
               // Add a new tab for the new content section.
               $(data).appendTo('#page_part_editors');
               page_options.tabs.tabs('add', '#page_part_new_' + $('#new_page_part_index').val(), part_title);
@@ -491,6 +492,8 @@ var page_options = {
           type: 'DELETE'
         });
         page_options.tabs.tabs('remove', tabId);
+        $('#page_parts_attributes_' + tabId + '_id').remove();
+        $('#submit_continue_button').remove();
       }
 
     });
