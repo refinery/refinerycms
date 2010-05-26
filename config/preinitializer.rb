@@ -5,9 +5,8 @@ rescue LoadError
   raise "Could not load the bundler gem. Install it with `gem install bundler`."
 end
 
-if Gem::Version.new(Bundler::VERSION) <= Gem::Version.new("0.9.24")
-  raise RuntimeError, "Your bundler version is too old." +
-   "Run `gem install bundler` to upgrade."
+unless Gem::Version.new(Bundler::VERSION) > Gem::Version.new("0.9.20")
+  raise RuntimeError, "Your bundler version is too old. Run `gem install bundler` to upgrade."
 end
 
 begin
