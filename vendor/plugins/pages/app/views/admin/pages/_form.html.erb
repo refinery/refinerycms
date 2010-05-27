@@ -40,32 +40,12 @@
       <% end %>
     </div>
   </div>
-<<<<<<< HEAD
-  <%= render :partial => "/shared/admin/form_actions", :locals => {:f => f, :continue_editing => true} %>
-  <% if RefinerySetting.find_or_set(:new_page_parts, false) %>
-    <div id='new_page_part_dialog' style='display: none'>
-      <div class='field'>
-        <%# TODO Translate %>
-        <label for='new_page_part_title'>Title</label>
-        <input id='new_page_part_title' value='' class='larger' size='40' />
-        <input id='new_page_part_index' type='hidden' value='<%= @page.parts.size %>' />
-      </div>
-      <%= render :partial => "/shared/admin/form_actions", :locals => {
-        :f => f,
-        :continue_editing => false,
-        :submit_button_id => "new_page_part_save",
-        :cancel_button_id => "new_page_part_cancel"
-      } %>
-    </div>
-  <% end %>
-=======
 
   <%= render :partial => "form_advanced_options", :locals => {:f => f} %>
 
   <%= render :partial => "/shared/admin/form_actions", :locals => {:f => f, :continue_editing => true} %>
 
   <%= render :partial => "form_new_page_parts", :locals => {:f => f} if RefinerySetting.find_or_set(:new_page_parts, false) %>
->>>>>>> cbc6d9e081e80c6e0f04c86a97d79bc6130fa565
 <% end %>
 
 <% content_for :head do %>
