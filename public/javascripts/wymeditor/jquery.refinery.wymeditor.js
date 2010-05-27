@@ -696,8 +696,12 @@ WYMeditor.editor.prototype.init = function() {
 
       //construct the iframe
       var iframeHtml = this._options.iframeHtml;
+
       iframeHtml = h.replaceAll(iframeHtml, WYMeditor.INDEX, this._index);
       iframeHtml = h.replaceAll(iframeHtml, WYMeditor.IFRAME_BASE_PATH, this._options.iframeBasePath);
+      if (id_of_editor = this._element.parent().attr('id')) {
+        iframeHtml = h.replaceAll(iframeHtml, '/wymiframe', '/wymiframe/' + id_of_editor);
+      }
 
       //construct wymbox
       var boxHtml = $(this._box).html();
