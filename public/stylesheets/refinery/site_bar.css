@@ -25,7 +25,7 @@
 #site_bar {
   height: 47px;
   background: #22a7f2;
-  padding: 0px 10px;
+  padding: 0px;
 }
 #site_bar a {
   border-bottom: 1px dotted white;
