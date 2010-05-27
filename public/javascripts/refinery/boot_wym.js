@@ -31,7 +31,9 @@ var wymeditor_boot_options = $.extend({
 
   ,toolsItemHtml:
     "<li class='" + WYMeditor.TOOL_CLASS + "'>"
-      + "<a href='#' name='" + WYMeditor.TOOL_NAME + "' title='" + WYMeditor.TOOL_TITLE + "'>"  + WYMeditor.TOOL_TITLE  + "</a>"
+      + "<a href='#' name='" + WYMeditor.TOOL_NAME + "' title='" + WYMeditor.TOOL_TITLE + "'>"
+        + WYMeditor.TOOL_TITLE
+      + "</a>"
     + "</li>"
 
   //containersItems will be appended after tools in postInit.
@@ -42,10 +44,16 @@ var wymeditor_boot_options = $.extend({
     ,{'name': 'p', 'title':'Paragraph', 'css':'wym_containers_p'}
   ]
 
-  , classesHtml: "<li class='wym_tools_class'><a href='#' name='" + WYMeditor.APPLY_CLASS + "' title='"+ titleize(WYMeditor.APPLY_CLASS) +"'></a><ul class='wym_classes wym_classes_hidden'>" + WYMeditor.CLASSES_ITEMS + "</ul></li>"
+  , classesHtml: "<li class='wym_tools_class'>"
+                 + "<a href='#' name='" + WYMeditor.APPLY_CLASS + "' title='"+ titleize(WYMeditor.APPLY_CLASS) +"'></a>"
+                 + "<ul class='wym_classes wym_classes_hidden'>" + WYMeditor.CLASSES_ITEMS + "</ul>"
+                + "</li>"
 
   , classesItemHtml: "<li><a href='#' name='"+ WYMeditor.CLASS_NAME + "'>"+ WYMeditor.CLASS_TITLE+ "</a></li>"
-  , classesItemHtmlMultiple: "<li class='wym_tools_class_multiple_rules'><span>" + WYMeditor.CLASS_TITLE + "</span><ul>{classesItemHtml}</ul></li>"
+  , classesItemHtmlMultiple: "<li class='wym_tools_class_multiple_rules'>"
+                              + "<span>" + WYMeditor.CLASS_TITLE + "</span>"
+                              + "<ul>{classesItemHtml}</ul>"
+                            +"</li>"
 
   , classesItems: wymeditorClassesItems
 
@@ -137,7 +145,7 @@ var wymeditor_boot_options = $.extend({
   , dialogId: 'editor_dialog'
 
   , dialogHtml:
-    "<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Strict//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd'>"
+    "<!DOCTYPE html>"
     + "<html dir='" + WYMeditor.DIRECTION + "'>"
       + "<head>"
         + "<link rel='stylesheet' type='text/css' media='screen' href='" + WYMeditor.CSS_PATH + "' />"
@@ -145,7 +153,9 @@ var wymeditor_boot_options = $.extend({
         + "<script type='text/javascript' src='" + WYMeditor.JQUERY_PATH + "'></script>"
         + "<script type='text/javascript' src='" + WYMeditor.WYM_PATH + "'></script>"
       + "</head>"
-    + "<div id='page'>" + WYMeditor.DIALOG_BODY + "</div>"
+      + "<body>"
+        + "<div id='page'>" + WYMeditor.DIALOG_BODY + "</div>"
+      + "</body>"
     + "</html>"
 
   , postInit: function(wym)
