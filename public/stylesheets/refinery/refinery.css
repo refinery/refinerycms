@@ -989,46 +989,20 @@ ul#page_parts_controls img {
 .wym_hideables {
   display: none;
 }
-#TB_ajaxContent, #TB_ajaxContent.TB_modal {
-  padding: 0px;
-}
 .wym_dialog .form-actions, .ui-dialog .form-actions {
   margin-top: 0px;
   border: 0px none;
   border-top: 1px solid #E8E8E8;
-}
-a#TB_closeWindowButton {
-  text-decoration: none;
-  border-bottom: 0px none;
-  position: absolute;
-  float: none;
-  top: 7px;
-  right: 6px;
-}
-#TB_title {
-  height: 33px;
-  line-height: 33px;
-  position: relative;
-}
-#TB_ajaxWindowTitle {
-  float: none;
-  padding: 0px;
-  margin-left: 12px;
-  font-size: 16px;
 }
 #existing_image_area {
   padding-top:6px;
 }
 textarea.wymeditor {
 }
-#TB_closeAjaxWindow {
-  margin-bottom: 0px;
-  padding: 0px;
-}
-#TB_window div.field, .ui-dialog div.field {
+.ui-dialog div.field {
   margin: 0px 10px;
 }
-#TB_window .form-actions, .ui-dialog .form-actions {
+.ui-dialog .form-actions {
   margin-top: 12px;
 }
 #dialog_container {
@@ -1130,6 +1104,10 @@ ul#plugins li {
 }
 .wym_dialog_paste .field textarea {
   width: 98%;
+}
+.ui-dialog .wym_dialog_paste .field, .ui-dialog .wym_dialog_paste .field textarea {
+  margin: 0px 0px 45px 0px;
+  height: 300px;
 }
 
 input.button, a.button {
