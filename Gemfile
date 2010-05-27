@@ -15,7 +15,7 @@ gem 'unicorn', :group => :development
 # gem 'aws-s3'
 
 #===REFINERY REQUIRED GEMS===
-gem 'authlogic',      '~> 2.1.4', :require => 'authlogic'
+gem 'authlogic',      '~> 2.1.5', :require => 'authlogic'
 gem 'friendly_id',    '~> 3.0.4', :require => 'friendly_id'
 gem 'hpricot',        '~> 0.8', :require => 'hpricot'
 gem 'rails',          '= 2.3.8'
