@@ -1,6 +1,6 @@
 /*TRYING TO RESET STYLES THAT MAY INTERFERE WITH WYMEDITOR*/
 		.wym_skin_refinery p, .wym_skin_refinery h2, .wym_skin_refinery h3,
-		.wym_skin_refinery ul, .wym_skin_refinery li { background: transparent margin: 0; padding: 0; border-width:0; list-style: none; }
+		.wym_skin_refinery ul, .wym_skin_refinery li { background: transparent; margin: 0; padding: 0; border-width:0; list-style: none; }
 
 
 /*HIDDEN BY DEFAULT*/
