@@ -399,7 +399,11 @@ var page_options = {
   show_options: function(){
     $('#toggle_advanced_options').click(function(e){
       e.preventDefault();
-      $('#more_options').slideToggle(250);
+      $('#more_options').animate({
+        opacity: 'toggle'
+        , height: 'toggle'
+      }, 250);
+
       $('html,body').animate({
         scrollTop: $('#toggle_advanced_options').parent().offset().top
       }, 250);
