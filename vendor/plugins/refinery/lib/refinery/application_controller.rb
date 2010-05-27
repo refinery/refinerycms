@@ -91,8 +91,9 @@ protected
 private
   def store_current_location!
     if admin?
-      session[:refinery_return_to] = request.path if request.get? and !request.xhr? # don't want to redirect to AJAX or POST/PUT/DELETE urls
-    elsif request.path !~ /^\/(wymiframe|system\/|sessions?)/ and controller_name !~ /^(sessions|users)/
+      # ensure that we don't redirect to AJAX or POST/PUT/DELETE urls
+      session[:refinery_return_to] = request.path if request.get? and !request.xhr?
+    elsif request.path !~ /^(\/(wym(\-.*|iframe)|system\/|sessions?|.*\/dialogs))/ and !from_dialog? and controller_name !~ /^(sessions|users)/
       session[:website_return_to] = request.path
     end
   end
