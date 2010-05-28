@@ -1101,7 +1101,7 @@ ul#plugins li {
 .tooltip {
   background: #22A7F2;
   border: 4px solid #22A7F2;
-  padding: 6px;
+  padding: 5px;
   word-wrap:break-word;
 }
 .tooltip, .tooltip * {
