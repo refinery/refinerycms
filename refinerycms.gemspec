@@ -33,7 +33,6 @@ Gem::Specification.new do |s|
 		'config/amazon_s3.yml.example',
 		'config/application.rb',
 		'config/boot.rb',
-		'config/database.yml',
 		'config/database.yml.example',
 		'config/environment.rb',
 		'config/environments',
