@@ -117,8 +117,8 @@ init_submit_continue = function(){
 
   if ($('#continue_editing').length > 0) {
     $('#editor_switch a').click(function(e) {
-      if (confirm("Save changes first?")) {
-        submit_and_continue(e, $(this).attr('href'));
+      if (!confirm("Any changes you've made will be lost. Are you sure you want to continue without saving?")) {
+        e.preventDefault();
       }
     });
   }
@@ -171,11 +171,16 @@ init_tooltips = function(args){
   {
     // create tooltip on hover and destroy it on hoveroff.
     $(element).hover(function(e) {
-      tooltip = $("<div class='tooltip'></div>").html($(this).attr('tooltip')).appendTo($('#tooltip_container'));
-      tooltip.css({
-        'left': ((left = $(this).offset().left - (tooltip.outerWidth() / 2) + ($(this).outerWidth() / 2)) >= 0 ? left : 0)
-        , 'top': $(this).offset().top - tooltip.outerHeight() - 6
-      }).corner('6px').show();
+      tooltip = $("<div class='tooltip'></div>").html($(this).attr('tooltip')).corner('6px').appendTo($('#tooltip_container'));
+      tooltip.css('left', ((left = $(this).offset().left - (tooltip.outerWidth() / 2) + ($(this).outerWidth() / 2)) >= 0 ? left : 0));
+
+      if ((tooltip.offset().left + tooltip.outerWidth) > (window_width = $(window).width())) {
+        tooltip.css('left', window_width - tooltip.outerWidth);
+      }
+      
+      tooltip.css('top', $(this).offset().top - tooltip.outerHeight() - 8);
+
+      tooltip.show();
     }, function(e) {
       $('.tooltip').remove();
     });
@@ -424,7 +429,7 @@ var page_options = {
       resizable: false,
       autoOpen: false,
       width: 600
-    })
+    });
 
     $('#add_page_part').click(function(e){
       e.preventDefault();
