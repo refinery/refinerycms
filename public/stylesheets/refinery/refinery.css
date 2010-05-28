@@ -28,7 +28,7 @@ acronym {
 #site_bar_content {
   margin-bottom: 0px;
 }
-.field {
+#content .field {
   width: 954px;
 }
 input.widest, textarea.widest {
@@ -1123,11 +1123,20 @@ input.button, a.button {
   padding: 4px 14px;
   font-size: 14px;
 }
+input.button.close_dialog, a.button.close_dialog {
+  background: #bcbcbc;
+}
 input.button:hover, a.button:hover{
 	background:#62bef2;
 }
+input.button.close_dialog:hover, a.button.close_dialog:hover {
+  background: #cdcdcd;
+}
 input.button:active, a.button:active{
 	background:#004a8f;
+}
+input.button.close_dialog:active, a.button.close_dialog:active {
+  background: #808080;
 }
 .form-actions a.button {
   margin-left: 4px;
