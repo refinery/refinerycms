@@ -20,6 +20,20 @@ body {
 acronym {
   cursor: help;
 }
+#page_container, #site_bar_content, #header_content {
+  margin: 0px auto 10px auto;
+  text-align: left;
+  width: 990px;
+}
+#site_bar_content {
+  margin-bottom: 0px;
+}
+.field {
+  width: 954px;
+}
+input.widest, textarea.widest {
+  width: 100%;
+}
 #actions {
   float: right;
   width: 30.7%;
@@ -154,15 +168,6 @@ a {
 a:hover {
   color: #000;
   border-bottom: 1px solid #727272;
-}
-#page_container, #site_bar_content, #header_content {
-  margin: 0px auto 10px auto;
-  text-align: left;
-  width: 990px;
-}
-#site_bar_content {
-  margin-bottom: 0px;
-  width: 990px;
 }
 a#site_bar_refinery_cms_logo {
   left: 448px;
