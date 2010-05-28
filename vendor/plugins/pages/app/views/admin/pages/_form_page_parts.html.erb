@@ -22,7 +22,7 @@
     <% f.fields_for :parts do |p| %>
       <%= render :partial => "page_part_field", :locals => {
         :part => p.object,
-        :part_index => p.object.new_record? ? (part_index += 1) : p.object.position,
+        :part_index => (part_index += 1),
         :new_part => @page.new_record?
       } %>
     <% end %>

@@ -15,6 +15,7 @@ class Page < ActiveRecord::Base
                   :index_file => [Rails.root.to_s, "tmp", "index"]
 
   before_destroy :deletable?
+  before_save :reposition_parts!
 
   # when a dialog pops up to link to a page, how many pages per page should there be
   PAGES_PER_DIALOG = 14
@@ -30,6 +31,14 @@ class Page < ActiveRecord::Base
   # If deletable is set to false then we don't allow this page to be deleted. These are often Refinery system pages
   def deletable?
     self.deletable && self.link_url.blank? and self.menu_match.blank?
+  end
+
+  # Repositions the child page_parts that belong to this page.
+  # This ensures that they are in the correct 0,1,2,3,4... etc order.
+  def reposition_parts!
+    self.parts.each_with_index do |part, index|
+      part.update_attribute(:position, index)
+    end
   end
 
   # Before destroying a page we check to see if it's a deletable page or not
