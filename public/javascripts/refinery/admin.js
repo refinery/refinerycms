@@ -1,3 +1,4 @@
+var shiftHeld = false;
 $(document).ready(function(){
 
   $('input:submit').not('.button').addClass('button');
@@ -17,6 +18,28 @@ $(document).ready(function(){
   init_submit_continue();
   init_modal_dialogs();
   init_tooltips();
+
+  // make sure that users can tab to wymeditor fields.
+  $('textarea.wymeditor').each(function() {
+    textarea = $(this);
+    if ((instance = WYMeditor.INSTANCES[$(textarea.next('.wym_box').find('iframe').attr('id').split('_')).last().get(0)]) != null) {
+      textarea.parent().next().find('input, textarea').keydown($.proxy(function(e) {
+        shiftHeld = e.shiftKey;
+        if (shiftHeld && e.keyCode == $.ui.keyCode.TAB) {
+          this._iframe.contentWindow.focus();
+          e.preventDefault();
+        }
+      }, instance)).keyup(function(e) {
+        shiftHeld = false;
+      });
+      textarea.parent().prev().find('input, textarea').keydown($.proxy(function(e) {
+        if (e.keyCode == $.ui.keyCode.TAB) {
+          this._iframe.contentWindow.focus();
+          e.preventDefault();
+        }
+      }, instance));
+    }
+  });
 
   // focus first field in an admin form.
   $('form input[type=text]:first').focus();
@@ -177,7 +200,7 @@ init_tooltips = function(args){
       if ((tooltip.offset().left + tooltip.outerWidth) > (window_width = $(window).width())) {
         tooltip.css('left', window_width - tooltip.outerWidth);
       }
-      
+
       tooltip.css('top', $(this).offset().top - tooltip.outerHeight() - 8);
 
       tooltip.show();
