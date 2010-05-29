@@ -43,7 +43,7 @@ module Crud
         def create
           # if the position field exists, set this object as last object, given the conditions of this class.
           if #{class_name}.column_names.include?("position")
-            params[:#{singular_name}].merge!({:position => #{class_name}.maximum(:position, :conditions => "#{options[:conditions]}")})
+            params[:#{singular_name}].merge!({:position => #{class_name}.maximum(:position, :conditions => "#{options[:conditions]}") + 1})
           end
 
           if (@#{singular_name} = #{class_name}.create(params[:#{singular_name}])).valid?
