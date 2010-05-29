@@ -15,7 +15,7 @@ class Page < ActiveRecord::Base
                   :index_file => [Rails.root.to_s, "tmp", "index"]
 
   before_destroy :deletable?
-  before_save :reposition_parts!
+  after_save :reposition_parts!
 
   # when a dialog pops up to link to a page, how many pages per page should there be
   PAGES_PER_DIALOG = 14
