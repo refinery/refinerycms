@@ -7,45 +7,59 @@
   <div class="hemisquare">
     <h2>Page Options</h2>
     <div class='field'>
-      <%= f.label :parent_id %>
-      <%= f.collection_select :parent_id, @pages_for_parents_list, :id, :indented_title, :include_blank => true %>
+      <span class='label_with_help'>
+        <%= f.label :parent_id, "Parent page" %>
+        <span tooltip="Here you can specify which page this page is nested underneath for the menu." class='help'>
+          (help)
+        </span>
+      </span>
+      <%= f.collection_select :parent_id, @pages_for_parents_list, :id, :indented_title, {:include_blank => true}, :class => 'widest' %>
     </div>
     <div class='field'>
-      <%= label_tag :custom_title %>
+      <span class='label_with_help'>
+        <%= label_tag :custom_title %>
+        <span tooltip="If you want the page to have a different title than the one that shows in the menu and browser title then select 'Text' and enter it here." class='help'>
+          (help)
+        </span>
+      </span>
       <% ["none", "text"].each do |type| %>
         <%= f.radio_button :custom_title_type, "#{type}" %>
         <%= label_tag "page_custom_title_type_#{type}", "#{type.titleize}", :class => "stripped" %>
       <% end %>
-      <br/>
       <div id='custom_title_none'></div>
       <div id='custom_title_text' style='display: <%= @page.custom_title_type == 'text' ? 'block' : 'none' %>'>
-        <p>
-          <%= f.text_field :custom_title, {:size => 103} %><br/>
-          <small>
-            If you want the page to have a different title than the one that shows in the menu and browser title then enter it here.<br/>
-          </small>
-        </p>
+        <%= f.text_field :custom_title, {:size => 103} %>
       </div>
     </div>
     <div class='field'>
-      <%= label_tag :skip_to_first_child? %>
+      <span class='label_with_help'>
+        <%= label_tag :skip_to_first_child?, "Skip top-level page" %>
+        <span tooltip='This option makes this page link to the first page underneath it instead so this page is then only useful for grouping pages together under your menu.' class='help'>
+          (help)
+        </span>
+      </span>
       <%= f.check_box :skip_to_first_child %>
-      <%= f.label :skip_to_first_child, "Check this to redirect visitors to the first subpage instead.", :class => "stripped" %>
+      <%= f.label :skip_to_first_child, "Redirect visitors to the first sub-level page.", :class => "stripped" %>
     </div>
     <div class='field'>
-      <%= f.label :link_url, "Custom URL" %>
-      <%= f.text_field :link_url, {:size => 103} %><br/>
-      <small>
-        Enter a URL if this page links somewhere else, e.g. your contact page. <br/>
-        Note: This must link to an existing location, nothing will not be created.
-      </small>
+      <span class='label_with_help'>
+        <%= f.label :link_url, "Custom URL" %>
+        <span tooltip='Enter a URL if this page links somewhere else, e.g. your contact page. <br/>
+        Note: This must link to an existing location, nothing will not be created.' class='help'>
+          (help)
+        </span>
+      </span>
+      <%= f.text_field :link_url %>
     </div>
     <div class='field'>
-      <%= f.label :show_in_menu %>
+      <span class='label_with_help'>
+        <%= f.label :show_in_menu, "Show in menu", :id => 'page_show_in_menu_heading' %>
+        <span tooltip="You can prevent this page from showing up in your site's menu by unchecking this option, otherwise it will show." class='help'>
+          (help)
+        </span>
+      </span>
       <%= f.check_box :show_in_menu %>
-      <small>
-        <%= f.label :show_in_menu, "Check this box if this page should appear in the site menu" %>
-      </small>
+      <%= f.label :show_in_menu, "Display this page in the site menu", :class => "stripped" %>
     </div>
   </div>
 
