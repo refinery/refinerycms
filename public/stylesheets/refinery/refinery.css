@@ -550,7 +550,7 @@ pre {
 .pagination .disabled {
   color: #A8B9C1;
 }
-.pagination a, .current, .disabled  {
+.pagination a, .pagination .current, .disabled  {
   padding: 7px;
   line-height: 20px;
   border: none;
