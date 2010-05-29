@@ -1,24 +1,30 @@
 <div class="hemisquare right_side">
   <h2>Search Engine Optimization</h2>
   <div class='field'>
-    <%= f.label :browser_title %>
-    <%= f.text_field :browser_title, :size => 63 %><br/>
-    <small>
-      If you want to override the default browser title, do it here.
-    </small>
+    <span class='label_with_help'>
+     <%= f.label :browser_title %>
+     <span tooltip="If you want to override the default browser title, do it here." class='help'>
+       (help)
+     </span>
+    </span>
+    <%= f.text_field :browser_title, :size => 63 %>
   </div>
   <div class='field'>
-    <%= f.label :meta_keywords %>
-    <%= f.text_field :meta_keywords, :size => 63 %><br/>
-    <small>
-      Enter 5-10 keywords that relate to this page. Separate keywords by a comma.
-    </small>
+    <span class='label_with_help'>
+     <%= f.label :meta_keywords %>
+     <span tooltip="Enter 5-10 keywords that relate to this page. Separate keywords by a comma." class='help'>
+       (help)
+     </span>
+    </span>
+    <%= f.text_field :meta_keywords, :size => 63 %>
   </div>
   <div class='field'>
-    <%= f.label :meta_description %>
-    <%= f.text_area :meta_description, :cols => 95, :rows => 5 %><br/>
-    <small>
-      Enter a concise two or three sentences describing what this page is about.
-    </small>
+    <span class='label_with_help'>
+     <%= f.label :meta_description %>
+     <span tooltip="Enter a concise two or three sentences describing what this page is about." class='help'>
+       (help)
+     </span>
+    </span>
+    <%= f.text_area :meta_description, :cols => 95, :rows => 6 %>
   </div>
 </div>
