@@ -30,6 +30,7 @@ acronym {
 }
 #content .field {
   width: 954px;
+  position: relative;
 }
 input.widest, textarea.widest {
   width: 100%;
