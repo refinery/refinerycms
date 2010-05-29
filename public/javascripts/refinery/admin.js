@@ -195,6 +195,7 @@ init_tooltips = function(args){
     // create tooltip on hover and destroy it on hoveroff.
     $(element).hover(function(e) {
       tooltip = $("<div class='tooltip'></div>").html($(this).attr('tooltip')).corner('6px').appendTo($('#tooltip_container'));
+      tooltip.css('maxWidth', '300px');
       tooltip.css('left', ((left = $(this).offset().left - (tooltip.outerWidth() / 2) + ($(this).outerWidth() / 2)) >= 0 ? left : 0));
 
       if ((tooltip.offset().left + tooltip.outerWidth) > (window_width = $(window).width())) {
