@@ -35,6 +35,9 @@ acronym {
 input.widest, textarea.widest {
   width: 100%;
 }
+select.widest {
+  max-width: 100%;
+}
 #actions {
   float: right;
   width: 30.7%;
@@ -1177,8 +1180,9 @@ input.button.close_dialog:active, a.button.close_dialog:active {
 .hemisquare label {
 	margin: 0px;
 }
-.hemisquare .field {
+#content .hemisquare .field {
 	margin: 0 0 20px 0px;
+	width: 100%;
 }
 .hemisquare small {
 	font-size: 0.9em;
