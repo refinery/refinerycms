@@ -56,7 +56,7 @@ module Refinery::ApplicationHelper
   # If you use this function then whenever we update or relocate the version of jquery or jquery ui in use
   # we will update the reference here and your existing application starts to use it.
   # Use <%= jquery_include_tags %> to include it in your <head> section.
-  def jquery_include_tags(options)
+  def jquery_include_tags(options={})
     # Merge in options
     options = { :caching => RefinerySetting.find_or_set(:use_resource_caching, true),
                 :google => RefinerySetting.find_or_set(:use_google_ajax_libraries, false),
