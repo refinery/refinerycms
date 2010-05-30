@@ -10,4 +10,5 @@ Refinery::Plugin.register do |plugin|
     :created_image => "page_add.png",
     :updated_image => "page_edit.png"
   }
+  plugin.directory = directory # this tells refinery where this plugin is located on the filesystem.
 end
