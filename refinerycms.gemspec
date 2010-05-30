@@ -2,7 +2,7 @@ Gem::Specification.new do |s|
   s.name              = %q{refinerycms}
   s.version           = %q{0.9.7.dev}
   s.description       = %q{A beautiful open source Ruby on Rails content manager for small business. Easy to extend, easy to use, lightweight and all wrapped up in a super slick UI.}
-  s.date              = %q{2010-05-28}
+  s.date              = %q{2010-05-31}
   s.summary           = %q{A beautiful open source Ruby on Rails content manager for small business.}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
@@ -63,6 +63,7 @@ Gem::Specification.new do |s|
 		'db/migrate/20100522020225_rename_permissions_for_resources_plugin_to_files.rb',
 		'db/migrate/20100525084518_remove_take_down_for_maintenance_page.rb',
 		'db/migrate/20100525110237_add_small_and_large_thumbnail_sizes.rb',
+		'db/migrate/20100530205942_update_link_url_on_pages_from_inquiries_new_to_contact.rb',
 		'db/schema.rb',
 		'db/seeds',
 		'db/seeds/inquiry_settings.rb',
