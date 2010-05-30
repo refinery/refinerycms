@@ -93,7 +93,7 @@ class Page < ActiveRecord::Base
   #
   # For example if I had a "Contact Us" page I don't want it to just render a contact us page
   # I want it to show the Inquiries form so I can collect inquiries. So I would set the "link_url"
-  # to "/inquiries/new"
+  # to "/contact"
   def url
     if self.link_url.present?
       self.link_url =~ /^\// ? {:controller => self.link_url} : self.link_url
