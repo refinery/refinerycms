@@ -7,4 +7,5 @@ Refinery::Plugin.register do |plugin|
     :url_prefix => "edit",
     :title => '<%= attributes.first.name %>'
   }
+  plugin.directory = directory # this tells refinery where this plugin is located on the filesystem.
 end

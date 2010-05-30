@@ -6,4 +6,5 @@ Refinery::Plugin.register do |plugin|
   plugin.activity = [
     {:class => InquirySetting, :url_prefix => "edit", :title => 'name', :url_prefix => 'edit'}
   ]
+  plugin.directory = directory # this tells refinery where this plugin is located on the filesystem.
 end

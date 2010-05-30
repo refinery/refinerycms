@@ -9,9 +9,11 @@ module Refinery
       end
     end
 
-    attr_accessor :title, :version, :description, :url, :menu_match, :plugin_activity, :directory, :hide_from_menu, :always_allow_access
+    attr_accessor :title, :version, :description, :url, :menu_match, :plugin_activity, :directory, :hide_from_menu, :always_allow_access, :pathname
 
     def initialize
+      # save the pathname to where this plugin is.
+      self.pathname = Pathname.new(self.directory.present? ? self.directory : caller(3).first.split('/rails').first) rescue nil
       Refinery::Plugins.registered << self # add me to the collection of registered plugins
     end
 
