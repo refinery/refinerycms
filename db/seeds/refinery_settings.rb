@@ -7,11 +7,9 @@
   {:name => "image_thumbnails", :value => {
     :dialog_thumb => 'c106x106',
     :grid => 'c135x135',
-    :thumb => '50x50',
     :small => '110x110>',
     :medium => '225x255>',
     :large => '450x450>',
-    :side_body => '300x500',
     :preview => 'c96x96'
     }
   }].each do |setting|
