@@ -48,7 +48,7 @@ module Refinery::ApplicationHelper
       image_tag(image_thumbnail.public_filename, {:alt => image.respond_to?(:title) ? image.title : image.filename,
                                                   :width => image_thumbnail.width,
                                                   :height => image_thumbnail.height
-                                                 }.merge!(options))
+                                                 }.merge(options))
     end
   end
 
