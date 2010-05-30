@@ -31,8 +31,8 @@ about_us_page.parts.create({
             })
 
 contact_us_page = Page.create(:title => "Contact Us",
-            :link_url => "/inquiries/new",
-            :menu_match => "^/inquiries.*$",
+            :link_url => "/contact",
+            :menu_match => "^/(inquiries|contact).*$",
             :deletable => false,
             :position => (page_position += 1))
 contact_us_page.parts.create({
@@ -63,7 +63,8 @@ privacy_policy_page.parts.create({
             })
 
 thank_you_page = Page.create(:title => "Thank You",
-            :menu_match => "^/inquiries/thank_you$",
+            :link_url => "/contact/thank_you",
+            :menu_match => "^/(inquiries|contact)/thank_you$",
             :show_in_menu => false,
             :deletable => false,
             :position => (contact_us_page_position += 1),
