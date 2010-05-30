@@ -56,16 +56,25 @@ module Refinery::ApplicationHelper
   # If you use this function then whenever we update or relocate the version of jquery or jquery ui in use
   # we will update the reference here and your existing application starts to use it.
   # Use <%= jquery_include_tags %> to include it in your <head> section.
-  def jquery_include_tags(use_caching = RefinerySetting.find_or_set(:use_resource_caching, true),
-                          use_google = RefinerySetting.find_or_set(:use_google_ajax_libraries, false))
+  def jquery_include_tags(options)
+    # Merge in options
+    options = { :caching => RefinerySetting.find_or_set(:use_resource_caching, true),
+                :google => RefinerySetting.find_or_set(:use_google_ajax_libraries, false),
+                :jquery_ui => true
+              }.merge(options)
+
     # render the tags normally unless
-    unless use_google and !local_request?
-      javascript_include_tag 'jquery', 'jquery-ui', :cache => (use_caching ? "cache/libraries" : nil)
+    unless options[:google] and !local_request?
+      if options[:jquery_ui]
+        javascript_include_tag 'jquery', 'jquery-ui', :cache => (options[:caching] ? "cache/libraries" : nil)
+      else
+        javascript_include_tag 'jquery'
+      end
     else
       "#{javascript_include_tag("http://www.google.com/jsapi").gsub(".js", "")}
       <script type='text/javascript'>
         google.load('jquery', '1.4');
-        google.load('jqueryui', '1.8');
+        #{"google.load('jqueryui', '1.8');" if options[:jquery_ui]}
       </script>"
     end
   end
