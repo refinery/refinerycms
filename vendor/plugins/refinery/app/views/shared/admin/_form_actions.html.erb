@@ -14,10 +14,10 @@
               :class => "close_dialog button") unless (hide_cancel ||= from_dialog?) %>
 
   <%= link_to("#{delete_button_text ||= 'Delete'}",
-              delete_url ||= eval("admin_#{f.object.class.name.underscore}_url(#{f.object.id})"),
+              (delete_url ||= eval("admin_#{f.object.class.name.underscore}_url(#{f.object.id})")),
               :title => (delete_title ||= "Remove this #{f.object.class.name.underscore.gsub("_", " ")} forever"),
-              :id => "#{delete_butotn_id ||= "delete_button"}",
-              :class => "button confirm-delete") unless (hide_delete ||= from_dialog? or 
+              :id => "#{delete_button_id ||= "delete_button"}",
+              :class => "button confirm-delete") unless (hide_delete ||= from_dialog? or
                                                          f.object.new_record? or
                                                          (f.object.respond_to?(:deletable?) && !f.object.deletable?)) %>
 </div>
