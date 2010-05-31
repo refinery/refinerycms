@@ -45,7 +45,6 @@ var wymeditor_boot_options = $.extend({
       + "</a>"
     + "</li>"
 
-  //containersItems will be appended after tools in postInit.
   , containersItems: [
     {'name': 'h1', 'title':'Heading_1', 'css':'wym_containers_h1'}
     ,{'name': 'h2', 'title':'Heading_2', 'css':'wym_containers_h2'}

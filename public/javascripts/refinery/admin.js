@@ -578,7 +578,8 @@ var image_dialog = {
 
       $(img).parent().addClass('selected');
       var imageUrl = parseURL($(img).attr('src'));
-      var relevant_src = imageUrl.pathname.replace('_dialog_thumb', $('#existing_image_size_area ul li.selected a').attr('href').replace('#', '_'));
+      var imageThumbnailSize = $('#existing_image_size_area li.selected a').attr('rel');
+      var relevant_src = imageUrl.pathname.replace('_dialog_thumb', ('_' + imageThumbnailSize));
       if (imageUrl.protocol == "" && imageUrl.hostname == "system") {
         relevant_src = "/system" + relevant_src;
       }
@@ -596,6 +597,9 @@ var image_dialog = {
         }
         if ((wym_alt = parent.document.getElementById('wym_alt')) != null) {
           wym_alt.value = $(img).attr('alt');
+        }
+        if ((wym_size = parent.document.getElementById('wym_size')) != null) {
+          wym_size.value = imageThumbnailSize;
         }
       }
     }
@@ -629,6 +633,7 @@ var image_dialog = {
     $('#existing_image_size_area ul li a').click(function(e) {
       $('#existing_image_size_area ul li').removeClass('selected');
       $(this).parent().addClass('selected');
+      image_dialog.set_image($('#existing_image_area_content ul li.selected img'));
       e.preventDefault();
     });
   }
