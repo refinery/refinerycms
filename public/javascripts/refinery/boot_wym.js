@@ -80,7 +80,7 @@ var wymeditor_boot_options = $.extend({
   , iframeHtml:
     "<div class='wym_iframe wym_section'>"
      + "<iframe id='WYMeditor_" + WYMeditor.INDEX + "' src='" + WYMeditor.IFRAME_BASE_PATH + "wymiframe' frameborder='0'"
-      + " onload='this.contentWindow.parent.WYMeditor.INSTANCES[" + WYMeditor.INDEX + "].initIframe(this);'></iframe>"
+     + " onload='this.contentWindow.parent.WYMeditor.INSTANCES[" + WYMeditor.INDEX + "].initIframe(this);'></iframe>"
     +"</div>"
 
   , dialogImageHtml: ""
@@ -132,6 +132,8 @@ var wymeditor_boot_options = $.extend({
     , draggable: true
     , resizable: false
     , autoOpen: true
+    , open: onOpenDialog
+    , close: onCloseDialog
   }
   , dialogInlineFeatures: {
       width: 600
@@ -140,6 +142,8 @@ var wymeditor_boot_options = $.extend({
     , draggable: true
     , resizable: false
     , autoOpen: true
+    , open: onOpenDialog
+    , close: onCloseDialog
   }
 
   , dialogId: 'editor_dialog'

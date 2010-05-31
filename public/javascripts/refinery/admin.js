@@ -43,7 +43,8 @@ $(document).ready(function(){
 
   // focus first field in an admin form.
   $('form input[type=text]:first').focus();
-  $('#content').corner('5px bottom');
+  $('#content, .wym_box').corner('5px bottom');
+  $('.wym_iframe iframe').corner('2px bottom');
 });
 
 init_delete_confirmations = function() {
@@ -72,17 +73,16 @@ init_modal_dialogs = function(){
   $('a[href*="dialog=true"]').not('#dialog_container a').each(function(i, anchor)
   {
     $(anchor).click(function(e){
-      iframe = $("<iframe id='dialog_iframe' src='" + $(this).attr('href') + "&amp;app_dialog=true" + "'></iframe>");
+      iframe = $("<iframe id='dialog_iframe' src='" + $(this).attr('href') + "&amp;app_dialog=true" + "'></iframe>").corner('8px');
       iframe.dialog({
-        title: $(anchor).attr('title') || $(anchor).attr('name') || $(anchor).html() || null,
-        modal: true,
-        resizable: false,
-        autoOpen: true,
-        width: (parseInt($(anchor.href.match("width=([0-9]*)")).last().get(0))||928),
-        height: (parseInt($(anchor.href.match("height=([0-9]*)")).last().get(0))||473)/*,
-        beforeclose: function(){
-          $(document.body).removeClass('hide-overflow');
-        }*/
+        title: $(anchor).attr('title') || $(anchor).attr('name') || $(anchor).html() || null
+        , modal: true
+        , resizable: false
+        , autoOpen: true
+        , width: (parseInt($(anchor.href.match("width=([0-9]*)")).last().get(0))||928)
+        , height: (parseInt($(anchor.href.match("height=([0-9]*)")).last().get(0))||473)
+        , open: onOpenDialog
+        , close: onCloseDialog
       });
       if ($.browser.msie) {
         iframe.css({'margin':'-2px 2px 2px -2px'});

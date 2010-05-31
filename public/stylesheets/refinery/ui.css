@@ -69,10 +69,10 @@
 .ui-tabs .ui-state-default a {
   background-color: #bcbcbc;
   color: white;
-  padding: 9px 13px;
+  padding: 8px 13px;
   border-bottom: none;
   display: block;
-  margin-top: 4px;
+  margin-top: 6px;
 }
 .ui-tabs .ui-state-active a {
   background-color: #808080;

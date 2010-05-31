@@ -429,7 +429,6 @@ pre {
 #records.one_list > #recent_activity, #records.one_list > #recent_inquiries {
   width: 100%;
 }
-
 #records .left-column {
   float: left;
   width: 65%;
@@ -1120,7 +1119,6 @@ ul#plugins li {
   margin: 0px 0px 45px 0px;
   height: 300px;
 }
-
 input.button, a.button {
 	cursor:pointer;
   background: #22a7f2;
@@ -1132,13 +1130,13 @@ input.button, a.button {
 input.button.close_dialog, a.button.close_dialog {
   background: #bcbcbc;
 }
-input.button:hover, a.button:hover{
+input.button:hover, a.button:hover {
 	background:#62bef2;
 }
 input.button.close_dialog:hover, a.button.close_dialog:hover {
   background: #cdcdcd;
 }
-input.button:active, a.button:active{
+input.button:active, a.button:active {
 	background:#004a8f;
 }
 input.button.close_dialog:active, a.button.close_dialog:active {
@@ -1146,8 +1144,16 @@ input.button.close_dialog:active, a.button.close_dialog:active {
 }
 .form-actions a.button {
   margin-left: 4px;
+  padding: 5px 14px;
 }
-
+.form-actions a.confirm-delete {
+  background: #ee1100;
+  float: right;
+}
+.field input[type=text], .field textarea {
+  border: 1px solid #7f9db9;
+  padding: 3px 4px;
+}
 /* ## Advanced Page Options --------------------------------------------- */
 #more_options{
 	overflow:hidden;
@@ -1168,13 +1174,9 @@ input.button.close_dialog:active, a.button.close_dialog:active {
 }
 .hemisquare input[type=text] {
 	width: 97%;
-	padding: 3px;
 }
 .hemisquare textarea {
   width: 95%;
-}
-.hemisquare input[type=text], .hemisquare textarea {
-  border: 1px solid #829DB9;
 }
 .hemisquare input, .hemisquare textarea, .hemisquare select {
 	margin: 7px 0px;
