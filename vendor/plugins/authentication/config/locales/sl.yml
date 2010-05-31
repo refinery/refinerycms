@@ -1,0 +1,71 @@
+sl:
+  plugins:
+    refinery_users:
+      title: Uporabniki
+  admin:
+    users:
+      update:
+        cannot_remove_user_plugin_from_current_user: "Ne morete odstraniti vstavka 'Uporabniki' iz trenutno prijavljenega računa."
+      form:
+        blank_password_keeps_current: V kolikor ne boste vnesli gesla bo ostalo obstoječe
+      index:
+        create_new_user: Dodaj Novega Uporabnika
+        no_users_yet:  Tretnutno ni nobenega uporabnika. Kliknite "Dodaj Novega Uporabnika" da boste dodali prvega uporabnika.
+      user:
+        confirm_delete_message: "Ali ste prepričani da želite odstraniti uporabnika '{{who}}'?"
+        confirm_delete_title: Odstrani uporabnika
+        edit_user: Uredi uporabnika
+        email_user: Pošlji email spročilo uporabniku
+        preview: ({{who}}) je bil ustvarjen {{created_at}}
+  sessions:
+    login_successful: Prijava je uspela
+    login_failed: Oprostite, vaše geslo ali uporabniško ime je bilo napačno.
+    logged_out: Uspešno ste se odjavili.
+    new:
+      login: Uporabniško ime
+      log_in: Prijavi se
+      cancel: Prekliči
+      password: Geslo
+      remember_me: Zapomni se me
+      or: ali
+      forgot_password: Pozabil sem geslo
+  users:
+    setup_website_name: "<br/>Najprej morate poimenovati stran. <a href='{{link}}'>Pojdite sem</a> kjer lahko uredite naslov vaše strani."
+    signup_disabled: Registracija uporabnikov je onemogočena
+    new:
+      fill_form: Izpolnite spodnji obrazec z vašimi podatki.
+      sign_up: Registriraj se
+    create:
+      welcome: Pzdravljeni v Refinery, {{who}}
+      signup_complete: Registracija je končana!
+  user_mailer:
+    please_activate: Prosimo aktivirajte vaš nov račun
+    activated: Vaš račun je bil aktiviran!
+    activated_email: "{{who}}, vaš račun je bil aktiviran. Zdaj lahko pričnete z dodajanjem vaših vstavkov:"
+    account_created: Vaš račun je bil ustvarjen.
+    user_name: Uporabniško ime {{name}}
+    password: Geslo {{password}}
+    visit_url: "Za aktivacijo računa obiščite ta url: "
+    link_to_reset_your_password: Povezava za ponastavitev vašega gesla
+  authlogic:
+    error_messages:
+      login_blank: ne sme biti prazno
+      login_not_found: ni pravilno
+      login_invalid: dovoljena je uporaba črk, števil, presledkov, in  .-_@.
+      consecutive_failed_logins_limit_exceeded: "Število zaporednih neuspelih prijav je preseženo, vaš račun je onemogočen."
+      email_invalid: mora biti email naslov.
+      password_blank: ne sme biti prazno
+      password_invalid: ni pravilno
+      not_active: Vaš račun ni aktiven
+      not_confirmed: Vaš račun ni potrjen
+      not_approved: Vaš račun ni odobren
+      no_authentication_details: Niste navedlih nobenih podrobnosti za avtentikacijo.
+    models:
+      user_session: SejaUporabnika
+    attributes:
+      user_session:
+        login: uporabniško ime
+        email: email
+        password: geslo
+        remember_me: zapomni se me
+        incorrect: "Oprostite, {{login_field}} ali geslo je bilo napačno."
