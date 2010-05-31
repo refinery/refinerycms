@@ -1,0 +1,56 @@
+sl:
+  plugins:
+    refinery_pages:
+      title: Strani
+  admin:
+    pages:
+      form:
+        title: Naslov
+      form_advanced_options:
+        title: Naslov
+        create_content_section: Ustvari vsebinski sklop
+        delete_content_section: Izbriši vsebinski sklop
+        hide_or_show_advanced_options: Skrij/Prikaži Napredne Možnosti
+        explain_page_different_title: "Če želite da ima stran drugačen naslov od tistega ki se prikazuje v meniju in brskalniku ga vneseti tukaj."
+        redirect_to_first_child: "Obkljukajte, če želite da se obiskovalca preusmeri na prvo podstran te strani ko je ta stran izbrana."
+        parent_id_title: Starš
+        custom_title: Naslov po meri
+        title_type: "Tip:"
+        title_types:
+          none: Noben
+          text: Tekst
+          image: Slika
+        custom_url: URL po meri
+        custom_url_explanation: "Vnesite URL če se ta stran povezuje na zunanjo stran ali že obstoječi vir npr. kontaktno stran. <br/> Opomba: URL mora kazati na lokacijo, ki že obstaja; nova lokacija ne bo ustvarjena."
+        draft: Osnutek
+        show_in_menu_title: Prikaži v meniju
+        show_in_menu_description: Obkljukajte, če želite da se stran pojavi v glavnem meniju.
+        draft: Osnutek
+        save_as_draft: Shrani kot Osnutek
+        save: Shrani
+        cancel: Prekliči
+      form_advanced_options_seo:
+        seo: Optimitizacija za spletne iskalnike
+        seo_override_title: Naslov brskalnika
+        seo_override_title_description: "Če želite povoziti privzeti naslov brskalnika, ga spremenite tukaj."
+        meta_keywords_title: Meta ključne besede
+        meta_keywords: Vnesite 5-10 ključnih besed, ki se navezujejo na to spletno stran. Ključne besede ločite z vejicami.
+        meta_description_title: Meta opis
+        meta_description: V dveh do treh stavkih jedernato opišite kaj ta stran predstavlja.
+        js:
+          content_section:
+            create: Ustvari Vsebinski Sklop
+            already_exists: Vsebinski sklop s tem naslovom že obstaja, prosimo izberite drugega.
+            title_empty: Za vsebisnki sklop niste vnesli naslova, prosimo vnesite ga.
+            confirm_delete: Vsebinski sklop {{section_name}} bo odstranjen, ko se bo stran shranila in s tem vsa vsebina ki je bila vnešena v ta sklop, Ali ste prepričani?
+      index:
+        create_new_page: Dodaj novo stran
+        reorder_pages: Spremeni vrstni red Strani
+        reorder_pages_done: Končaj s prerazporeditvijo Strani
+        sorry_no_results: Oprostite! Ni bilo zadetkov.
+        no_pages_yet: Trenutno še ni nobene strani. Za dodajanje prve strani kliknite "Dodaj novo stran".
+        search_results_for: "Iskalni rezultati za {{what}}"
+  activerecord:
+    attributes:
+      page:
+        skip_to_first_child: "Preskoči na prvo podstran?"
