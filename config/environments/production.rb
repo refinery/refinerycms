@@ -25,10 +25,3 @@ config.log_level = :info
 # instead of the default file system for resources and images
 # Make sure to your bucket info is correct in amazon_s3.yml
 Refinery.s3_backend = false
-
-# Bundler has shown a weakness in production mode using Rails 2.3.5 so we are going to
-# require these dependencies here until we can find another solution or until we move to
-# Rails 3.0 which should fix the issue (or until Bundler fixes the issue).
-require_dependency 'will_paginate'
-require_dependency 'authlogic'
-require_dependency 'friendly_id'

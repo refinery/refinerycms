@@ -36,6 +36,7 @@ class User < ActiveRecord::Base
   serialize :plugins_column # Array # this is seriously deprecated and will be removed later.
 
   has_many :plugins, :class_name => "UserPlugin", :order => "position ASC"
+  has_friendly_id :login, :use_slug => false
 
   def plugins=(plugin_titles)
     unless self.new_record? # don't add plugins when the user_id is NULL.
