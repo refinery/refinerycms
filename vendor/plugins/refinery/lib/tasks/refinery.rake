@@ -6,10 +6,7 @@ namespace :refinery do
 
     if (view = ENV["view"]).present?
       pattern = "#{view.split("/").join(File::SEPARATOR)}*.erb"
-      looking_for = [
-        Refinery.root.join("vendor", "plugins", "**", "app", "views", pattern).to_s,
-        Rails.root.join("vendor", "plugins", "**", "app", "views", pattern).to_s
-      ]
+      looking_for = Refinery::Plugins.registered.pathnames.map{|p| p.join("app", "views", pattern).to_s}
 
       # copy in the matches
       matches = looking_for.collect{|d| Dir[d]}.flatten.compact.uniq
@@ -34,10 +31,7 @@ namespace :refinery do
       end
     elsif (controller = ENV["controller"]).present?
       pattern = "#{controller.split("/").join(File::SEPARATOR)}*.rb"
-      looking_for = [
-        Refinery.root.join("vendor", "plugins", "**", "app", "controllers", pattern).to_s,
-        Rails.root.join("vendor", "plugins", "**", "app", "controllers", pattern).to_s
-      ]
+      looking_for = Refinery::Plugins.registered.pathnames.map{|p| p.join("app", "controllers", pattern).to_s}
 
       # copy in the matches
       matches = looking_for.collect{|d| Dir[d]}.flatten.compact.uniq
@@ -58,10 +52,7 @@ namespace :refinery do
       end
     elsif (model = ENV["model"]).present?
       pattern = "#{model.split("/").join(File::SEPARATOR)}*.rb"
-      looking_for = [
-        Refinery.root.join("vendor", "plugins", "**", "app", "models", pattern).to_s,
-        Rails.root.join("vendor", "plugins", "**", "app", "models", pattern).to_s
-      ]
+      looking_for = Refinery::Plugins.registered.pathnames.map{|p| p.join("app", "models", pattern).to_s}
 
       # copy in the matches
       matches = looking_for.collect{|d| Dir[d]}.flatten.compact.uniq
