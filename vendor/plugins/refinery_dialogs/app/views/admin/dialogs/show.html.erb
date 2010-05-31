@@ -3,13 +3,14 @@
   <iframe src='<%= @iframe_src %>' id='dialog_frame' frameborder='0'></iframe>
   <div class='wym_hideables'>
   <% if @dialog_type == "image" %>
-    <input type='text' id='wym_src' class='wym_src' value='' size='40' />
-    <input type='text' id='wym_alt' class='wym_alt' value='' size='40' />
-    <input type='text' id='wym_title' class='wym_title' value='' size='40' />
+    <input type='hidden' id='wym_src' class='wym_src' value='' />
+    <input type='hidden' id='wym_alt' class='wym_alt' value='' />
+    <input type='hidden' id='wym_title' class='wym_title' value='' />
+    <input type='hidden' id='wym_size' class='wym_size' value='' />
   <% elsif @dialog_type == "link" %>
-    <input type='text' id='wym_href' class='wym_href' value='' size='40' />
-    <input type='text' id='wym_title' class='wym_title' value='' size='40' />
-    <input type='text' id='wym_target' class='wym_target' value='' size='40' />
+    <input type='hidden' id='wym_href' class='wym_href' value='' />
+    <input type='hidden' id='wym_title' class='wym_title' value='' />
+    <input type='hidden' id='wym_target' class='wym_target' value='' />
   <% end %>
   </div>
   <div id='dialog-form-actions' class='form-actions'>
