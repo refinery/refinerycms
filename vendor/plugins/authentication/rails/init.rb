@@ -2,7 +2,7 @@ Refinery::Plugin.register do |plugin|
   plugin.title = "Users"
   plugin.description = "Manage users"
   plugin.version = 1.0
-  plugin.menu_match = /admin\/users$/
+  plugin.menu_match = /(refinery|admin)\/users$/
   plugin.activity = {
     :class => User,
     :url_prefix => "edit_",
@@ -12,6 +12,7 @@ Refinery::Plugin.register do |plugin|
   }
   # this tells refinery where this plugin is located on the filesystem and helps with urls.
   plugin.directory = directory
+  plugin.url = {:controller => "/refinery/users"}
 end
 
 module ::Refinery

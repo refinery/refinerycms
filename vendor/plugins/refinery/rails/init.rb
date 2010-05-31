@@ -4,7 +4,7 @@ Refinery::Plugin.register do |plugin|
   plugin.version = 1.0
   plugin.hide_from_menu = true
   plugin.always_allow_access = true
-  plugin.menu_match = /admin\/(refinery_core|base)$/
+  plugin.menu_match = /(refinery|admin)\/(refinery_core|base)$/
   # this tells refinery where this plugin is located on the filesystem and helps with urls.
   plugin.directory = directory
 end
