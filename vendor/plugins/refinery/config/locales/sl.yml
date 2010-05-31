@@ -1,0 +1,99 @@
+sl:
+  welcome:
+    there_are_no_users: "Trenutno še ni nobenega uporabnika, zato vas moramo najprej nastaviti."
+    remember_admin_location: "Zapomnite se vaše administracijsko področje v Refinery je:"
+    lets_start: "Vredu najprej vas bomo nastavili da se boste lahko prijavili..."
+    continue: "Nadaljuj..."
+  reorder_menu: Spremeni vrsti red zavihkov
+  reorder_menu_done: "Končal sem z urejanjem vrstnega reda zavihkov."
+  log_out: Odjavi se
+  search: Išči
+  search_submit: Pojdi
+  search_results_for: "Rezultati iskanja za '{{query}}'"
+  no_results_found: "Oprostite, ni bilo zadetkov"
+  refinery:
+    other: "Drugo {{what}}"
+    reorder: "Spremeni vrstni red {{what}}"
+    reorder_done: "Končaj s prerazporeditvijo {{what}}"
+    search_no_results: "Oprostite, ni bilo zadetkov"
+    search_results_for: "Rezultati iskanja za {{what}}"
+    crudify:
+      created: "{{what}} je bil uspešno ustvarjen"
+      updated: "{{what}} je bil uspešno ustvarjen"
+      destroyed: "{{what}} je bil uspešno odstranjen"
+  layouts:
+    admin:
+      view_public_site: Poglej javno dostopno stran
+      welcome_to_refinery: Pozdravljeni v Refinery
+  shared:
+    admin:
+      message:
+        close: Zapri
+      continue_editing:
+        save_and_continue_editing: "Shrani &amp; nadaljuj z urejanjem"
+      form_actions:
+        or: ali
+        save: Shrani
+        or_cancel: ali
+        cancel: Prekliči
+        or_continue: ali
+        cancel_lose_changes: "S preklicem bodo izgubljene vse spremembe, ki ste jih naredili na {{object_name}}."
+      image_picker:
+        none_selected: "Trenutno ni izbrana nobena {{what}}, prosimo kliknite tukaj da dodate eno."
+        remove_current: "Odstrani trenutno {{what}}"
+        change: Kliknite tukaj za izbiro slike
+        image: slika
+      resource_picker:
+        none_selected: "Trenutno ni izbrana nobena {{what}}, prosimo kliknite tukaj da dodate eno."
+        current: "Trenutna {{what}}"
+        download_current: "Prenesi trenutno {{what}}"
+        opens_in_new_window: Odpri v novem oknu
+        remove_current: "Odstrani trnutno {{what}}"
+        resource: vir
+    message:
+      close: Zapri
+  admin:
+    pages:
+      page:
+        view_live: Poglej si to stran v živo <br/><em>(odpre se v novem oknu)</em>
+        edit_this_page: Uredi to stran
+        confirm_delete_page_title: Odstrani to stran
+        confirm_delete_page_message: Ali ste prepričani da želide odstraniti stran '{{title}}'?
+        hidden: skrito
+        draft: osnutek
+    page_dialogs:
+      not_allowed: Nimate pravic za dostop do te funkcionalnosti.
+      page_link:
+        link_to_this_page: Naredi povezavo do te strani
+      link_to:
+        your_page:
+          tab_name: Stran
+        web_address:
+          tab_name: Spletna stran
+          location: Lokacija
+          new_window: Novo okno
+          new_window_label: Obkljukajte tukaj, če želite da se povezava odpre v novem oknu.
+          not_sure: Niste prepričani kaj vnesti v zgornje okno?
+          step1: Poiščite stran na spletu na katero želite da kaže povezava.
+          step2: "Prekopirajte spletni naslov iz naslovne vrstice vašega brskalnika in jo prilepite v zgornje okno."
+        email_address:
+          tab_name: Email naslov
+          subject_line_optional: Opcijska zadeva
+          body_optional: Opcijsko telo
+          not_sure: Niste prepričani kaj vnesti v zgornja okna?
+          step1: "Vnesite ali kopirajte ter prilepite (npr. iz vašega imenika) email naslov, ki ga želite kot '<strong>Email Naslov</strong>' v zgornjem oknu."
+          step2: "Uporabite '<strong>Zadeva</strong>' v zgornjem oknu, če želite nova sporočila s <strong>predhodno nastavljeno zadevo</strong>."
+          step3: "Uporabite <strong>Email Telo</strong> v zgornjem oknu, če želite novo sporočilo s <strong>predhodno nastavljenim sporočilom</strong>."
+        your_resource:
+          tab_name: Vir
+          link_to_this_resource: Povezava do tega vira
+
+  activerecord:
+    models:
+      page: stran
+      user: uporabnik
+      image: slika
+      inquiry: poizvedba
+      resource: vir
+      refinery_setting: refinery nastavitev
+      inquiry_setting: poizvedbena nastavitev
