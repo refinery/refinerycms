@@ -21,3 +21,4 @@ config/database.yml.example
 .yardoc/
 refinerycms.gemspec
 .bundle
+*.rbc
