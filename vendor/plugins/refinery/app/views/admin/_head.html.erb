@@ -8,7 +8,7 @@
   <%= jquery_include_tags(:caching => use_caching) %>
   <%= javascript_include_tag 'jquery/jquery.corner.js', :cache => (use_caching ? "cache/jquery-plugins" : false) %>
   <%= yield :head_after_javascript_libraries %>
-  <%= javascript_include_tag 'admin', 'wymeditor/jquery.refinery.wymeditor.js', 'refinery/boot_wym', 'refinery/admin', :cache => (use_caching ? "cache/admin" : false) %>
+  <%= javascript_include_tag 'wymeditor/jquery.refinery.wymeditor.js', 'admin', 'refinery/boot_wym', 'refinery/admin', :cache => (use_caching ? "cache/admin" : false) %>
   <%= javascript_include_tag "http://fbug.googlecode.com/svn/lite/branches/firebug1.3/build/firebug-lite.js" if RefinerySetting.find_or_set(:show_firebug_lite, false) -%>
   <%= yield :head %>
 </head>
