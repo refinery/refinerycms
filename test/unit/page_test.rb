@@ -45,7 +45,7 @@ class PageTest < ActiveSupport::TestCase
   end
 
   def test_should_have_custom_url_override
-    assert_equal({:controller => "/inquiries/new"}, pages(:contact_us).url) # the contact us page links to the inquiries plugin form
+    assert_equal({:controller => "/contact"}, pages(:contact_us).url) # the contact us page links to the inquiries plugin form
     assert_equal({:controller => "/"}, pages(:home_page).url) # the home page has a special "/" url
     assert_equal "http://www.resolvedigital.co.nz", pages(:resolve_digital_page).url # this page links to an external url
   end
