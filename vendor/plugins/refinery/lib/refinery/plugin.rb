@@ -13,7 +13,7 @@ module Refinery
 
     def initialize
       # save the pathname to where this plugin is.
-      self.pathname = Pathname.new(self.directory.present? ? self.directory : caller(3).first.split('/rails').first) rescue nil
+      self.pathname = (Pathname.new(self.directory.present? ? self.directory : caller(3).first.split('/rails').first) rescue nil)
       Refinery::Plugins.registered << self # add me to the collection of registered plugins
     end
 
