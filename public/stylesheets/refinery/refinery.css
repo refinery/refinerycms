@@ -154,9 +154,14 @@ hr {
   text-transform: titlecase;
 }
 #header a, #content a {
+  border-bottom: 1px dotted #727272;
+}
+a {
   color: #41403C;
   text-decoration: none;
-  border-bottom: 1px dotted #727272;
+}
+#content .wym_box a, #content .ui-tabs a {
+  border-bottom: 0px none;
 }
 .splash #content {
   background-color: white;

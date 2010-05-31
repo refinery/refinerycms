@@ -168,7 +168,6 @@
 	left: 0px;
 	top: 29px;
 	width: 200px;
-	background-color: #F6F5F4;
 	border-color: gray;
 	border-style: solid;
 	border-width: 0px 1px 1px 1px !important;
@@ -183,6 +182,7 @@
 	float: left;
 	width: 200px;
 	cursor: pointer;
+	background-color: #F6F5F4;
 }
 .wym_skin_refinery .wym_buttons .wym_tools_class .wym_classes li a {
 	text-indent: 0px;
