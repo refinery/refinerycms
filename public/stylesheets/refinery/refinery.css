@@ -935,6 +935,9 @@ a img {
 .add_icon {
   background-image: url('/images/refinery/icons/add.png');
 }
+.delete_icon {
+  background-image: url('/images/refinery/icons/delete.png');
+}
 .edit_icon {
   background-image: url('/images/refinery/icons/application_edit.png');
 }
