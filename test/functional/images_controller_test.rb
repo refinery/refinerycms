@@ -1,4 +1,4 @@
-require File.dirname(__FILE__) + '/../test_helper'
+require File.expand_path(File.dirname(__FILE__) + '/../test_helper')
 require 'admin/images_controller'
 
 class Admin::ImagesController; def rescue_action(e) raise e end; end
