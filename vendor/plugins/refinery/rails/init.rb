@@ -5,7 +5,8 @@ Refinery::Plugin.register do |plugin|
   plugin.hide_from_menu = true
   plugin.always_allow_access = true
   plugin.menu_match = /admin\/(refinery_core|base)$/
-  plugin.directory = directory # this tells refinery where this plugin is located on the filesystem.
+  # this tells refinery where this plugin is located on the filesystem and helps with urls.
+  plugin.directory = directory
 end
 require_dependency 'refinery/form_helpers'
 require_dependency 'refinery/base_presenter'
