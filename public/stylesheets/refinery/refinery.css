@@ -65,6 +65,10 @@ select.widest {
 }
 #actions li a:hover {
   text-decoration: underline;
+  background-color: #cae7fb;
+}
+#actions li a:active {
+  background-color: #cbdeff;
 }
 #actions li {
   margin-top: 10px;
@@ -149,7 +153,7 @@ hr {
   top: 21px;
   text-transform: titlecase;
 }
-a {
+#header a, #content a {
   color: #41403C;
   text-decoration: none;
   border-bottom: 1px dotted #727272;
@@ -555,10 +559,10 @@ pre {
 .pagination .disabled {
   color: #A8B9C1;
 }
-.pagination a, .pagination .current, .disabled  {
+.pagination a, #content .pagination a, .pagination .current, .disabled  {
   padding: 7px;
   line-height: 20px;
-  border: none;
+  border-bottom: 0px none;
 }
 .pagination .current, .pagination a:hover {
   background: #A8B9C1;
@@ -646,11 +650,12 @@ label.stripped {
   width: 25px;
   text-align: center;
 }
-.actions a {
+#content .actions a {
   display: block;
   float: right;
   margin: 3px;
   line-height: inherit;
+  border-bottom: 0px none;
 }
 .actions a * {
   padding: 4px 4px 1px 4px;
@@ -1122,36 +1127,47 @@ ul#plugins li {
   margin: 0px 0px 45px 0px;
   height: 300px;
 }
-input.button, a.button {
+input.button, a.button, #content a.button {
 	cursor:pointer;
   background: #22a7f2;
-  border: 0px none;
   color: white;
   padding: 4px 14px;
   font-size: 14px;
 }
-input.button.close_dialog, a.button.close_dialog {
+input.button, a.button, #content a.button {
+  border: 0px none;
+}
+input.button.close_dialog, a.button.close_dialog, #content a.button.close_dialog {
   background: #bcbcbc;
 }
-input.button:hover, a.button:hover {
+input.button:hover, a.button:hover, #content a.button:hover {
 	background:#62bef2;
 }
-input.button.close_dialog:hover, a.button.close_dialog:hover {
+input.button.close_dialog:hover, a.button.close_dialog:hover, #content a.button.close_dialog:hover {
   background: #cdcdcd;
 }
-input.button:active, a.button:active {
+input.button:active, a.button:active, #content a.button:active {
 	background:#004a8f;
 }
-input.button.close_dialog:active, a.button.close_dialog:active {
+input.button.close_dialog:active, a.button.close_dialog:active, #content a.button.close_dialog:active {
   background: #808080;
 }
-.form-actions a.button {
+#content a.button.close_dialog:active {
+  color: white;
+}
+#content .form-actions a.button {
   margin-left: 4px;
   padding: 5px 14px;
 }
-.form-actions a.confirm-delete {
+.form-actions a.confirm-delete, #content .form-actions a.confirm-delete {
   background: #ee1100;
   float: right;
+}
+.form-actions a.confirm-delete:hover, #content .form-actions a.confirm-delete:hover {
+  background: #ff3322;
+}
+.form-actions a.confirm-delete:active, #content .form-actions a.confirm-delete:active {
+  background: #bb0000;
 }
 .field input[type=text], .field textarea {
   border: 1px solid #7f9db9;
