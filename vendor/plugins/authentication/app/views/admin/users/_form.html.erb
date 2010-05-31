@@ -34,7 +34,7 @@
       <% end %>
     </ul>
   </div>
-  <%= render :partial => "/shared/admin/form_actions", :locals => {:f => f, :continue_editing => false} %>
+  <%= render :partial => "/shared/admin/form_actions", :locals => {:f => f, :continue_editing => false, :hide_delete => !current_user.can_delete?(@user)} %>
 <% end %>
 
 <% content_for :head do %>
