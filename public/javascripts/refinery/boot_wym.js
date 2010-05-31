@@ -1,3 +1,12 @@
+onOpenDialog = function(dialog) {
+  $('.ui-dialog').corner('6px').find('.ui-dialog-titlebar').corner('1px top');
+  $(document.body).addClass('hide-overflow');
+}
+
+onCloseDialog = function(dialog) {
+  $(document.body).removeClass('hide-overflow');
+}
+
 var wymeditor_inputs = [];
 var wymeditors_loaded = 0;
 // supply custom_wymeditor_boot_options if you want to override anything here.
