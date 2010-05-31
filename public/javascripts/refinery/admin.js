@@ -190,7 +190,7 @@ submit_and_continue = function(e, redirect_to) {
 }
 
 init_tooltips = function(args){
-  $($(args != null ? args : 'a[title], span[title], #image_grid img[title], *[tooltip]')).each(function(index, element)
+  $($(args != null ? args : 'a[title], span[title], #image_grid img[title], *[tooltip]')).not('.no-tooltip').each(function(index, element)
   {
     // create tooltip on hover and destroy it on hoveroff.
     $(element).hover(function(e) {
