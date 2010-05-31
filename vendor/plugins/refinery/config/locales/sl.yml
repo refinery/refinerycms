@@ -5,7 +5,7 @@ sl:
     lets_start: "Vredu najprej vas bomo nastavili da se boste lahko prijavili..."
     continue: "Nadaljuj..."
   reorder_menu: Spremeni vrsti red zavihkov
-  reorder_menu_done: "Končal sem z urejanjem vrstnega reda zavihkov."
+  reorder_menu_done: "Končaj s prerazporeditvijo zavihkov."
   log_out: Odjavi se
   search: Išči
   search_submit: Pojdi
