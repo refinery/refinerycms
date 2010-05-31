@@ -1253,7 +1253,7 @@ WYMeditor.editor.prototype.dialog = function( dialogType ) {
   if ((parent_node != null) && (parent_node.tagName.toLowerCase() != WYMeditor.A))
   {
     // wrap the current selection with a funky span (not required for webkit)
-    if (!this._selected_image && !$.browser.webkit)
+    if (this._selected_image == null && !$.browser.webkit)
     {
       this.wrap("<span id='replace_me_with_" + this._current_unique_stamp + "'>", "</span>");
     }
@@ -1575,7 +1575,7 @@ WYMeditor.editor.prototype.listen = function() {
 WYMeditor.editor.prototype.mousedown = function(evt) {
 
   var wym = WYMeditor.INSTANCES[this.ownerDocument.title];
-  wym._selected_image = (this.tagName.toLowerCase() == WYMeditor.IMG) ? this : null;
+  wym._selected_image = (evt.target.tagName.toLowerCase() == WYMeditor.IMG) ? evt.target : null;
   evt.stopPropagation();
 };
 
@@ -5078,11 +5078,4 @@ WYMeditor.WymClassSafari.prototype.getTagForStyle = function(style) {
   if(/sub/.test(style)) return 'sub';
   if(/super/.test(style)) return 'sup';
   return false;
-};
-
-WYMeditor.WymClassSafari.prototype.mousedown = function(evt) {
-
-  var wym = WYMeditor.INSTANCES[this.ownerDocument.title];
-  wym._selected_image = (evt.target.tagName.toLowerCase() == WYMeditor.IMG) ? evt.target : null;
-  evt.stopPropagation();
 };
