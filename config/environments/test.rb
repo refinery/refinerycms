@@ -24,4 +24,4 @@ config.action_mailer.delivery_method = :test
 # Bundler has shown a weakness in test mode using Rails 2.3.5 so we are going to
 # require these dependencies here until we can find another solution or until we move to
 # Rails 3.0 which should fix the issue (or until Bundler fixes the issue).
--require_dependency 'will_paginate'
+require_dependency 'will_paginate'
