@@ -2,12 +2,18 @@ module Refinery
   class Plugin
 
     def self.register(&block)
-      yield self.new
+      yield (new_plugin = self.new)
+      if defined?(Page) && new_plugin.title
+        # Prevent page slugs from being this plugin's controller name
+        Page.friendly_id_config.reserved_words << new_plugin.title.gsub(" ", "_").downcase
+      end
     end
 
-    attr_accessor :name, :title, :version, :description, :url, :menu_match, :plugin_activity, :directory, :hide_from_menu, :always_allow_access
+    attr_accessor :name, :title, :version, :description, :url, :menu_match, :plugin_activity, :directory, :hide_from_menu, :always_allow_access, :pathname
 
     def initialize
+      # save the pathname to where this plugin is.
+      self.pathname = (Pathname.new(self.directory.present? ? self.directory : caller(3).first.split('/rails').first) rescue nil)
       Refinery::Plugins.registered << self # add me to the collection of registered plugins
     end
 
@@ -28,7 +34,7 @@ module Refinery
     end
 
     def url
-      @url ||= {:controller => "admin/#{self.directory.blank? ? self.title.gsub(" ", "_").downcase : self.directory.split('/').pop}"}
+      @url ||= {:controller => "/refinery/#{self.directory.blank? ? self.title.gsub(" ", "_").downcase : self.directory.split('/').pop}"}
     end
 
     def menu_match

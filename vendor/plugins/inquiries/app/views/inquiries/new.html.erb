@@ -2,8 +2,8 @@
   <div class='inquiries'>
     <%= @page[:body] %>
 
-    <%= error_messages_for :inquiry, :header_message => t('.header_message'), :message => t('.message') %>
     <% form_for @inquiry do |f| %>
+      <%= f.error_messages :header_message => t('.header_message'), :message => t('.message') %>
       <div class='field'>
         <%= f.required_label :name %>
         <%= f.text_field :name %>

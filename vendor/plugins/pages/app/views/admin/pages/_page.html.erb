@@ -17,9 +17,9 @@
       <%= link_to refinery_icon_tag('application_go.png'), page.url,
                   :target => "_blank",
                   :title => t('.view_live') %>
-      <%= link_to refinery_icon_tag('application_edit.png'), edit_admin_page_path(page),
+      <%= link_to refinery_icon_tag('application_edit.png'), edit_admin_page_path(page.id),
                   :title => t('.edit_this_page') %>
-      <%= link_to refinery_icon_tag('delete.png'), admin_page_path(page),
+      <%= link_to refinery_icon_tag('delete.png'), admin_page_path(page.id),
                   :class => "cancel confirm-delete",
                   :title => t('.confirm_delete_page_title') if page.deletable? %>
     </span>
