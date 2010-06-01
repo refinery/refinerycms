@@ -10,15 +10,21 @@ $(document).ready(function(){
 });
 
 init_interface = function() {
-  $('input:submit').not('.button').addClass('button');
-  $('.button, #editor_switch a').corner("6px");
+  $('input:submit:not(.button)').addClass('button');
+  // sigh for IE
+  try {
+    $('.button, #editor_switch a').corner('6px');
+  } catch(err) {
+    $('.button:not(input), #editor_switch a').corner('6px');
+  }
+
   $('<span></span>').prependTo('#editor_switch').corner('6px');
   $('#editor_switch a').appendTo('#editor_switch span:first');
   $('#recent_activity li a, #recent_inquiries li a').each(function(i, a) {
     $(this).textTruncate({
       width: $(this).width()
   		, tooltip: false
-  	})
+  	});
 	});
 
   // make sure that users can tab to wymeditor fields and add an overlay while loading.
