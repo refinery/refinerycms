@@ -1,6 +1,3 @@
-require 'i18n'
-require 'routing_filter/base'
-
 module RoutingFilter
   class Locale < Base
     @@include_default_locale = true
