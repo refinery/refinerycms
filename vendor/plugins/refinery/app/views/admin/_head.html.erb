@@ -10,6 +10,6 @@
   <%= yield :head_after_javascript_libraries %>
   <%= javascript_include_tag 'wymeditor/jquery.refinery.wymeditor.js', 'admin', 'refinery/boot_wym', 'refinery/admin', :cache => (use_caching ? "cache/admin" : false) %>
   <%= javascript_include_tag "http://fbug.googlecode.com/svn/lite/branches/firebug1.3/build/firebug-lite.js" if RefinerySetting.find_or_set(:show_firebug_lite, false) -%>
-  <%= "<!--[if lt IE 8]>#{stylesheet_link_tag 'refinery/refinery-ie'}<![endif]-->" if request.env['HTTP_USER_AGENT'] =~ /MSIE/ %>
+  <%= "<!--[if lt IE 8]>#{stylesheet_link_tag 'refinery/ie'}<![endif]-->" if request.env['HTTP_USER_AGENT'] =~ /MSIE/ %>
   <%= yield :head %>
 </head>
