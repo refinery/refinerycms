@@ -11,7 +11,7 @@
   delete_button_text ||= t('.delete')
   delete_title       ||= t('.delete_title', :object_name => f.object.class.name.underscore.gsub("_", " "))
   delete_button_id   ||= "delete_button"
-  delete_url         ||= eval("admin_#{f.object.class.name.underscore}_url(#{f.object.id})"))
+  delete_url         ||= eval("admin_#{f.object.class.name.underscore}_url(#{f.object.id})")
 %>
 <div class='form-actions'>
   <%= f.submit submit_button_text, :id => submit_button_id, :class => "wymupdate button" %>
@@ -32,6 +32,6 @@
   <% unless ((hide_delete ||= from_dialog?) or f.object.new_record? or (f.object.respond_to?(:deleteable?) && !f.object.deletable?)) -%>
     <%= t('.or') %>
     <%# TODO add :what to t('.cancel_lose_changes') -%>
-    <%= link_to(delete_button_text, delete_url, :title => delete_title, :id => delete_button_id, :class => "button confirm-delete"
+    <%= link_to(delete_button_text, delete_url, :title => delete_title, :id => delete_button_id, :class => "button confirm-delete") %>
   <% end -%>
 </div>
