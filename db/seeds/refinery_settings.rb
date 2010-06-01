@@ -16,11 +16,11 @@
   },
   {:name => 'refinery_i18n_locales', :value => {
       :en => 'English',
-      :fr => 'Français',
+      :fr => 'Fran&ccedil;ais',
       :nl => 'Nederlands',
-      :'pt-BR' => 'Português',
+      :'pt-BR' => 'Portugu&ecirc;s',
       :da => 'Dansk',
-      :nb => 'Norsk Bokmål',
+      :nb => 'Norsk Bokm&aring;l',
       :sl => 'Slovenian'
     }
   }
