@@ -80,9 +80,6 @@ hr {
   border: 0;
   border-top: 1px solid #484743;
 }
-.form-actions {
-  margin-top: 10px;
-}
 .actions img {
   border: none;
 }
@@ -579,11 +576,6 @@ label.stripped {
   margin: 0px;
   padding: 0px;
 }
-.form-actions {
-  background-color: white;
-  padding: 10px;
-  border: 1px solid #CCC;
-}
 #body_field {
   float: left;
   width: 60%;
@@ -972,8 +964,24 @@ ul#page_parts_controls img {
 .wym_hideables {
   display: none;
 }
+#content .form-actions {
+  position: relative;
+  background-color: white;
+  border: 1px solid #CCC;
+  margin-top: 10px;
+  height: 45px;
+}
+#content .form-actions .form-actions-left, #content .form-actions .form-actions-right {
+  position: absolute;
+  top: 10px;
+}
+#content .form-actions .form-actions-left {
+  left: 10px;
+}
+#content .form-actions .form-actions-right {
+  right: 10px;
+}
 .wym_dialog .form-actions, .ui-dialog .form-actions {
-  margin-top: 0px;
   border: 0px none;
   border-top: 1px solid #E8E8E8;
 }
@@ -984,9 +992,6 @@ textarea.wymeditor {
 }
 .ui-dialog div.field {
   margin: 0px 10px;
-}
-.ui-dialog .form-actions {
-  margin-top: 12px;
 }
 #dialog_container {
   padding: 0px 12px 12px 12px;
@@ -999,16 +1004,14 @@ textarea.wymeditor {
   border-right: 0px;
   border-left: 0px;
   border-bottom: 0px;
-  padding: 10px 0px;
 }
 #dialog_container .form-actions #submit_button, #dialog_container .form-actions .wym_submit {
   margin-left: 10px;
 }
 #dialog_main .form-actions {
   position: inherit;
-  width: 97%;
+  width: 100%;
   border: 1px solid #E8E8E8;
-  padding: 10px;
 }
 ul#image_grid {
   width: 580px;
@@ -1096,11 +1099,15 @@ input.button, a.button, #content a.button {
 	cursor:pointer;
   background: #22a7f2;
   color: white;
-  padding: 4px 14px;
+  padding: 0px 14px;
   font-size: 14px;
+  line-height: 25px;
+  display: inline-block;
 }
 input.button, a.button, #content a.button {
   border: 0px none;
+  margin-top: 0px;
+  margin-bottom: 0px;
 }
 input.button.close_dialog, a.button.close_dialog, #content a.button.close_dialog {
   background: #bcbcbc;
@@ -1121,12 +1128,15 @@ input.button.close_dialog:active, a.button.close_dialog:active, #content a.butto
   color: white;
 }
 #content .form-actions a.button {
+  /*
   margin-left: 4px;
   padding: 5px 14px;
+  */
 }
 .form-actions a.confirm-delete, #content .form-actions a.confirm-delete {
   background: #ee1100;
-  float: right;
+  position: absolute;
+  right: 0px;
 }
 .form-actions a.confirm-delete:hover, #content .form-actions a.confirm-delete:hover {
   background: #ff3322;
