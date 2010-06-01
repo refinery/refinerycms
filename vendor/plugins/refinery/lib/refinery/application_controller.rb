@@ -6,7 +6,7 @@ class Refinery::ApplicationController < ActionController::Base
   include Crud # basic create, read, update and delete methods
   include AuthenticatedSystem
 
-  before_filter :set_locale, :find_pages_for_menu, :show_welcome_page?, :store_current_location!
+  before_filter :find_locale, :find_pages_for_menu, :show_welcome_page?, :store_current_location!
 
   rescue_from ActiveRecord::RecordNotFound, ActionController::UnknownAction, ActionView::MissingTemplate, :with => :error_404
 
@@ -62,7 +62,7 @@ class Refinery::ApplicationController < ActionController::Base
 protected
 
   def default_url_options(options={})
-    { :locale => I18n.locale }
+    Refinery::I18n.enabled? ?  { :locale => I18n.locale } : {}
   end
 
   # get all the pages to be displayed in the site menu.
@@ -82,26 +82,21 @@ protected
     super
   end
 
-  def set_locale
-    if params[:set_locale].present? and ::RoutingFilter::Locale.i18n_enabled? and ::RoutingFilter::Locale.default_locales.include?(params[:set_locale].to_sym)
-      ::RoutingFilter::Locale.current_locale = params[:set_locale].to_sym
-      redirect_to url_for({:controller => controller_name, :action => action_name})
+  def find_locale
+    if Refinery::I18n.enabled?
+      if Refinery::I18n.has_locale? (locale = params[:locale].try(:to_sym))
+        I18n.locale = locale
+      else
+        params[:locale] = I18n.locale = I18n.default_locale
+        redirect_to params, :message => "The locale '#{locale.to_s}' is not supported."
+      end
     end
-
-    unless admin? or (locale = params[:locale] || cookies[:locale]).blank?
-      I18n.locale = locale.to_s
-      cookies[:locale] = locale unless (cookies[:locale] && cookies[:locale] == locale)
-    end
-
-    I18n.locale = ::RoutingFilter::Locale.current_locale
-
-    # we need to do something here to eliminate the locale from the route so that menus match properly.
-    request.path.gsub!(%r(^/#{locale.to_s}), "")
   end
 
   def show_welcome_page?
     render :template => "/welcome", :layout => "admin" if just_installed? and controller_name != "users"
   end
+
   # todo: make this break in the next major version rather than aliasing.
   alias_method :show_welcome_page, :show_welcome_page?
 

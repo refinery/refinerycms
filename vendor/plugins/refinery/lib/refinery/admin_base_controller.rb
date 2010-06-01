@@ -23,10 +23,13 @@ protected
     render :template => "/pages/show", :status => 404
   end
 
+  def restrict_plugins
+      Refinery::Plugins.set_active( current_user.authorized_plugins ) if current_user.respond_to? :plugins
+  end
 
   #TODO Translate
   def restrict_controller
-    if Refinery::Plugins.active.reject {|plugin|
+    if Refinery::Plugins.active.reject { |plugin|
       params[:controller] !~ Regexp.new(plugin.menu_match) and
       params[:controller] !~ Regexp.new(plugin.menu_match.to_s.gsub('admin\/', 'refinery/'))
     }.empty?
