@@ -34,13 +34,13 @@
       </li>
     </ul>
 
-    <% if ::RoutingFilter::Locale.i18n_enabled? %>
+    <% if Refinery::I18n.enabled? %>
       <h2><%= t('.change_language') %></h2>
       <ul>
-        <% ::RoutingFilter::Locale.default_locales.each_pair do |locale_key, locale_title| %>
-          <li<%= " class='selected'" if locale_key.to_sym == ::RoutingFilter::Locale.current_locale %>>
+        <% Refinery::I18n.locales.each do |locale_key, locale_title| %>
+          <li<%= " class='selected'" if locale_key.to_sym == I18n.locale %>>
             <%= link_to locale_title,
-                        {:controller => controller_name, :action => action_name, :set_locale => locale_key },
+                        params.dup.tap { |p| p[:locale] = locale_key },  # Use the current params, just change the locale
                         :style => "background-image: url('/images/refinery/icons/flags/#{locale_key}.png');" %>
           </li>
         <% end %>
