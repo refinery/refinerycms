@@ -4,3 +4,9 @@
   padding-top: 3px;
   padding-bottom: 3px;
 }
+#site_bar #editor_switch a {
+  height: 19px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  line-height: 20px;
+}
