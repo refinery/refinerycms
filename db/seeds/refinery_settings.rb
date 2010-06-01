@@ -20,8 +20,10 @@
       :nl => 'Nederlands',
       :'pt-BR' => 'Portugu&ecirc;s',
       :da => 'Dansk',
-      :nb => 'Norsk Bokm&aring;l',
-      :sl => 'Slovenian'
+      :nb => 'Norsk Bokmål',
+      :sl => 'Slovenian',
+      :es => 'Español',
+      :it => 'Italiano'
     }
   }
 ].each do |setting|
