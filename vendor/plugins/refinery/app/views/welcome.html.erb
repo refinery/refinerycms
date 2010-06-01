@@ -1,11 +1,9 @@
-<p>
-  <strong><%=t('.there_are_no_users')%></strong>
-</p>
+<% content_for :header, t('.there_are_no_users') %>
 <p>
   <%=t('.remember_admin_location')%>
 </p>
 <p>
-  <strong>http://<%= request.host %>/admin</strong>
+  <strong>http://<%= request.host %>/refinery</strong>
 </p>
 <p>
   <%= t('.lets_start') %>

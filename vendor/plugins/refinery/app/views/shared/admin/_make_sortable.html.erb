@@ -1,10 +1,10 @@
-<% content_for :head do -%>
-<script type='text/javascript'>
-  $(document).ready(function(){
-    list_reorder.update_url     = '<%= update_url ||= url_for(:action => "update_positions") %>';
-    list_reorder.sortable_list  = $('#<%= list_id ||= "sortable_list" %>');
-    list_reorder.tree           = <%= tree ||= false %>;
-    list_reorder.init();
-  });
-</script>
+<% content_for :head do %>
+  <script type='text/javascript'>
+    $(document).ready(function(){
+      list_reorder.update_url     = '<%= update_url ||= url_for(:action => "update_positions") %>';
+      list_reorder.sortable_list  = $('#<%= list_id ||= "sortable_list" %>');
+      list_reorder.tree           = <%= tree ||= false %>;
+      list_reorder.init();
+    });
+  </script>
 <% end %>

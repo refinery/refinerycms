@@ -4,8 +4,7 @@ the_world:
   width: 614
   height: 340
   size: 17535
-  # TODO: image_type? What's that used for?
-  
+
 our_car:
   content_type: image/jpg
   filename: car-wallpapers19.jpg

@@ -45,10 +45,10 @@ module Refinery::ApplicationHelper
 
       # call rails' image tag function with default alt, width and height options.
       # if any other options were supplied these are merged in and can replace the defaults.
-      image_tag(image_thumbnail.public_filename, {:alt => image.title,
+      image_tag(image_thumbnail.public_filename, {:alt => image.respond_to?(:title) ? image.title : image.filename,
                                                   :width => image_thumbnail.width,
                                                   :height => image_thumbnail.height
-                                                 }.merge!(options))
+                                                 }.merge(options))
     end
   end
 
@@ -56,16 +56,25 @@ module Refinery::ApplicationHelper
   # If you use this function then whenever we update or relocate the version of jquery or jquery ui in use
   # we will update the reference here and your existing application starts to use it.
   # Use <%= jquery_include_tags %> to include it in your <head> section.
-  def jquery_include_tags(use_caching = RefinerySetting.find_or_set(:use_resource_caching, false),
-                          use_google = RefinerySetting.find_or_set(:use_google_ajax_libraries, true))
+  def jquery_include_tags(options={})
+    # Merge in options
+    options = { :caching => RefinerySetting.find_or_set(:use_resource_caching, true),
+                :google => RefinerySetting.find_or_set(:use_google_ajax_libraries, false),
+                :jquery_ui => true
+              }.merge(options)
+
     # render the tags normally unless
-    unless use_google and !local_request?
-      javascript_include_tag 'jquery', 'jquery-ui-1.8.min.js', :cache => (use_caching ? "cache/libraries" : nil)
+    unless options[:google] and !local_request?
+      if options[:jquery_ui]
+        javascript_include_tag 'jquery', 'jquery-ui', :cache => (options[:caching] ? "cache/libraries" : nil)
+      else
+        javascript_include_tag 'jquery'
+      end
     else
       "#{javascript_include_tag("http://www.google.com/jsapi").gsub(".js", "")}
       <script type='text/javascript'>
         google.load('jquery', '1.4');
-        google.load('jqueryui', '1.8');
+        #{"google.load('jqueryui', '1.8');" if options[:jquery_ui]}
       </script>"
     end
   end
@@ -92,7 +101,7 @@ module Refinery::ApplicationHelper
     title = []
     objects = (options[:chain_page_title] and object.respond_to?(:ancestors)) ? [object.ancestors, object] : [object]
 
-    objects.flatten.each do |obj|
+    objects.flatten.compact.each do |obj|
       if obj.respond_to?(:custom_title_type)
         title << case obj.custom_title_type
           when "text"
@@ -130,7 +139,8 @@ module Refinery::ApplicationHelper
   def selected_page?(page)
     current_page?(page) or
       (request.path =~ Regexp.new(page.menu_match) if page.menu_match.present?) or
-      (request.path == page.link_url)
+      (request.path == page.link_url) or
+      (request.path == page.nested_path)
   end
 
   # Old deprecated function. TODO: Remove

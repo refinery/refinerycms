@@ -1,26 +1,26 @@
 [
   {:name => "site_name", :value => "Company Name"},
   {:name => "new_page_parts", :value => false},
-  {:name => "activity_show_limit", :value => 18},
+  {:name => "activity_show_limit", :value => 7},
   {:name => "preferred_image_view", :value => :grid},
   {:name => "analytics_page_code", :value => "UA-xxxxxx-x"},
   {:name => "theme", :value => "demolicious"},
   {:name => "image_thumbnails", :value => {
     :dialog_thumb => 'c106x106',
     :grid => 'c135x135',
-    :thumb => '50x50>',
+    :small => '110x110>',
     :medium => '225x255>',
-    :side_body => '300x500>',
+    :large => '450x450>',
     :preview => 'c96x96'
     }
   },
   {:name => 'refinery_i18n_locales', :value => {
       :en => 'English',
-      :fr => 'Français',
+      :fr => 'Fran&ccedil;ais',
       :nl => 'Nederlands',
-      :'pt-BR' => 'Português',
+      :'pt-BR' => 'Portugu&ecirc;s',
       :da => 'Dansk',
-      :nb => 'Norsk Bokmål',
+      :nb => 'Norsk Bokm&aring;l',
       :sl => 'Slovenian'
     }
   }

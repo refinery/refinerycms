@@ -1,6 +1,6 @@
 public/system/*
 public/themes/*
-log/*.log
+*.log
 tmp/**/*
 .DS_Store
 doc/api
@@ -9,13 +9,12 @@ doc/*
 config/database.yml
 config/amazon_s3.yml
 config/rackspace_cloudfiles.yml
-public/images/system/*
 nbproject
 index/**/*
 db/*.sqlite3
 *.tmproj
 *.autobackupbyrefinery.*
-refinerycms*.gem
+/refinerycms-*.gem
 public/javascripts/cache
 public/stylesheets/cache
 config/database.yml.example
@@ -27,3 +26,5 @@ vendor/cache
 callsite_hash.*
 **/*/slim_scrooge/ext/Makefile
 public/javascripts/messages.js
+*.rbc
+Gemfile

@@ -1,14 +1,9 @@
 <h2><%= t('.latest_activity')%></h2>
-<% if @recent_activity.any? %>
-  <table id='recent_activity'>
-    <% @recent_activity.each do |change| %>
-      <tr class='<%= cycle("on", "on-hover") %>'>
-        <%= activity_message_for change %>
-      </tr>
-    <% end %>
-  </table>
-<% else %>
-  <p>
-    <%= t('.nothing_has_happened_yet') %>
-  </p>
-<% end %>
+<ul class='clickable'>
+  <% @recent_activity.each do |change| %>
+    <li class='<%= cycle("on", "on-hover", :name => 'recent_activity_cycle') %>'>
+      <%= activity_message_for change %>
+    </li>
+  <% end %>
+</ul>
+</div>

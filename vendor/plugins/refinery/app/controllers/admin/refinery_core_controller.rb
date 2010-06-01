@@ -1,8 +1,10 @@
 class Admin::RefineryCoreController < Admin::BaseController
 
   def update_plugin_positions
-    params[:menu].each_with_index do |plugin_name, index|
-      current_user.plugins.find_by_name(plugin_name).update_attribute(:position, index)
+    params[:menu].each do |plugin_name|
+      if (plugin = current_user.plugins.find_by_name(plugin_name))
+        plugin.update_attribute(:position, params[:menu].index(plugin_name))
+      end
     end
     render :nothing => true
   end
