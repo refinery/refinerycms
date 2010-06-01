@@ -7,17 +7,18 @@
   <div<%= css -%><%= dom_id -%>>
     <%= link_to menu_branch.title, menu_branch.url %>
 
-    <%= render :partial => "/shared/menu",
-               :collection => children,
-               :locals => {
-                 :hide_children => hide_children,
-                 :sibling_count => children.size - 1,
-                 :css => "",
-                 :dom_id => ""
-               } unless hide_children or
-                        menu_branch.parent_id.present? or
-                        (children = menu_branch.children.collect{|c| c if c.in_menu?}.compact).empty?
-
-    -%>
+    <% unless hide_children or
+              menu_branch.parent_id.present? or
+              (children = menu_branch.children.collect{|c| c if c.in_menu?}.compact).empty? %>
+      <nav id='<%= dom_id ||= "menu" %>' class='<%= css ||= "menu" %>clearfix'>
+        <%= 
+          render :partial => "/shared/menu_branch",
+                 :collection => children,
+                 :locals => {
+                   :hide_children => hide_children,
+                   :sibling_count => children.size - 1
+                 } -%>
+      </nav>
+    <% end %>
   </div>
 <% end -%>
