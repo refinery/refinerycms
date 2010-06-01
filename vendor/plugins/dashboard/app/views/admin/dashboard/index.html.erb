@@ -1,27 +1,32 @@
 <div class='clearfix'>
-  <div id='records'>
-    <%= render :partial => "recent_activity" %>
+  <div id='records' class='clearfix<%= ' one_list' if @recent_activity.empty? or @recent_inquiries.empty? %>'>
+    <%= render :partial => "recent_activity" if @recent_activity.any? %>
+    <%= render :partial => "recent_inquiries" if @recent_inquiries.any? %>
   </div>
   <div id='actions'>
-    <h2><%= t(:common_tasks) %></h2>
+    <h2><%= t(:quick_tasks) %></h2>
     <ul>
       <%# I8N: How to translate tab names? %>
       <% if Refinery::Plugins.active.names.include?("refinery_pages") %>
         <li>
-          <%= link_to t(:add_a_new_page), new_admin_page_url, :class => "add_icon" %>
+          <%= link_to t('.add_a_new_page'), new_admin_page_url(:only_path => true),
+                      :class => "add_icon" %>
         </li>
         <li>
-          <%= link_to t(:update_a_page), admin_pages_url, :class => "edit_icon" %>
+          <%= link_to t('.update_a_page'), admin_pages_url(:only_path => true),
+                      :class => "edit_icon" %>
         </li>
       <% end %>
       <% if Refinery::Plugins.active.names.include?("refinery_resources") %>
         <li>
-          <%= link_to t(:upload_a_file), new_admin_resource_url(:dialog => true, :width => 600, :height => 300), :class => "add_icon" %>
+          <%= link_to t('.upload_a_file'), new_admin_resource_url(:dialog => true, :width => 600, :height => 300, :only_path => true),
+                      :class => "add_icon" %>
         </li>
       <% end %>
       <% if Refinery::Plugins.active.names.include?("refinery_images") %>
         <li>
-          <%= link_to t(:upload_a_image), new_admin_image_url(:dialog => true, :width => 600, :height => 300), :class => "add_icon" %>
+          <%= link_to t('.upload_a_image'), new_admin_image_url(:dialog => true, :width => 600, :height => 300, :only_path => true),
+                      :class => "add_icon" %>
         </li>
       <% end %>
       <li>
@@ -43,3 +48,4 @@
     <% end %>
   </div>
 </div>
+<% content_for :head, javascript_include_tag('jquery/jquery.textTruncate') %>

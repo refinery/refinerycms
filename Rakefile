@@ -3,7 +3,7 @@
 
 begin
   # Load up the environment instead of just the boot file because we want all of the tasks available.
-  require File.join(File.dirname(__FILE__), 'config', 'environment')
+  require File.join(File.dirname(__FILE__), 'config', 'application')
 rescue Exception
   # Load up the boot file instead because there's something wrong with the environment (like it's not set up yet).
   require File.join(File.dirname(__FILE__), 'config', 'boot')

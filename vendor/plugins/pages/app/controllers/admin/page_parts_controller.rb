@@ -10,7 +10,9 @@ class Admin::PagePartsController < Admin::BaseController
 
   def destroy
     part = PagePart.find(params[:id])
+    page = part.page
     if part.destroy
+      page.reposition_parts!
       render :text => "'#{part.title}' deleted."
     else
       render :text => "'#{part.title}' not deleted."

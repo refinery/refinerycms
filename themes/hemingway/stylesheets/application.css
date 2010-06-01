@@ -42,7 +42,7 @@ body{
 }
 
 /* This class sets the width and position for all rows */
-.inside{
+.inside, #site_bar_content {
   width:80%;
   min-width:65em;
   max-width:85em;

@@ -1,6 +1,6 @@
 /*TRYING TO RESET STYLES THAT MAY INTERFERE WITH WYMEDITOR*/
 		.wym_skin_refinery p, .wym_skin_refinery h2, .wym_skin_refinery h3,
-		.wym_skin_refinery ul, .wym_skin_refinery li { background: transparent margin: 0; padding: 0; border-width:0; list-style: none; }
+		.wym_skin_refinery ul, .wym_skin_refinery li { background: transparent; margin: 0; padding: 0; border-width:0; list-style: none; }
 
 
 /*HIDDEN BY DEFAULT*/
@@ -16,7 +16,7 @@
 
 
 /*WYM_BOX*/
-		.wym_skin_refinery				{ border: 1px solid gray; background: #F2F2F2; padding: 5px}
+		.wym_skin_refinery				{ border: 1px solid #999999; background: #F2F2F2; padding: 5px 5px 0px 5px}
 
 	/*auto-clear the wym_box*/
 		.wym_skin_refinery:after 			{ content: "."; display: block; height: 0; clear: both; visibility: hidden; }
@@ -29,8 +29,9 @@
 
 
 /*WYM_IFRAME*/
-		.wym_skin_refinery .wym_iframe			 { width: 100%;}
-		.wym_skin_refinery .wym_iframe iframe		{ width: 99%; border: 1px solid gray; background: white }
+		.wym_skin_refinery .wym_iframe			 { width: 100%; }
+		.wym_skin_refinery .wym_iframe iframe { border: 1px solid #999999;}
+		.wym_skin_refinery .wym_iframe iframe		{ width: 99%; background: white }
 
 /* adjust for two rows of icons */
 		.wym_two_column .wym_skin_refinery .wym_iframe iframe, .wym_two_column .wym_skin_refinery .wym_html textarea { height: 376px; }
@@ -82,7 +83,7 @@
 		.wym_skin_refinery .wym_buttons li.wym_tools_ordered_list a	{ background-image: url('/images/wymeditor/skins/refinery/text_list_numbers.png');}
 		.wym_skin_refinery .wym_buttons li.wym_tools_unordered_list a{ background-image: url('/images/wymeditor/skins/refinery/text_list_bullets.png');}
 		.wym_skin_refinery .wym_buttons li.wym_tools_indent a		{ background-image: url('/images/wymeditor/skins/refinery/text_indent.png');}
-		.wym_skin_refinery .wym_buttons li.wym_tools_outdent a		{ background-image: url('/images/wymeditor/skins/refinery/text_outdent.png');}
+		.wym_skin_refinery .wym_buttons li.wym_tools_outdent a		{ background-image: url('/images/wymeditor/skins/refinery/text_indent_remove.png');}
 		.wym_skin_refinery .wym_buttons li.wym_tools_undo a			{ background-image: url('/images/wymeditor/skins/refinery/arrow_undo.png');}
 		.wym_skin_refinery .wym_buttons li.wym_tools_redo a			{ background-image: url('/images/wymeditor/skins/refinery/arrow_redo.png');}
 		.wym_skin_refinery .wym_buttons li.wym_tools_link a			{ background-image: url('/images/wymeditor/skins/refinery/link_add.png');}
@@ -167,7 +168,6 @@
 	left: 0px;
 	top: 29px;
 	width: 200px;
-	background-color: #F6F5F4;
 	border-color: gray;
 	border-style: solid;
 	border-width: 0px 1px 1px 1px !important;
@@ -182,6 +182,7 @@
 	float: left;
 	width: 200px;
 	cursor: pointer;
+	background-color: #F6F5F4;
 }
 .wym_skin_refinery .wym_buttons .wym_tools_class .wym_classes li a {
 	text-indent: 0px;

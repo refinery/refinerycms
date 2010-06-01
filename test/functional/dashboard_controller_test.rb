@@ -1,4 +1,4 @@
-require File.dirname(__FILE__) + '/../test_helper'
+require File.expand_path(File.dirname(__FILE__) + '/../test_helper')
 require 'admin/dashboard_controller'
 
 class Admin::DashboardController; def rescue_action(e) raise e end; end

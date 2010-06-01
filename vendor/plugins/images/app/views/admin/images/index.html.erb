@@ -6,8 +6,6 @@
     <li>
       <%= link_to t('.create_new_image'), new_admin_image_url(:dialog => true, :width => 600, :height => 300), :class => "add_icon" %>
     </li>
-  </ul>
-  <ul>
     <% other_image_views.each do |image_view| %>
       <li>
         <%= link_to t('.view.switch_to', :view_name => t('.view.' + image_view.to_s)),

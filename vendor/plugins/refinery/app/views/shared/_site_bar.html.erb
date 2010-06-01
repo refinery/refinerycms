@@ -1,0 +1,50 @@
+<% unless admin? or login? # jquery scripts should already be cached when using the site bar as login has happened. %>
+  <%= stylesheet_link_tag('refinery/site_bar') %>
+  <%= jquery_include_tags %>
+  <%= javascript_include_tag 'jquery/jquery.corner.js' %>
+  <script type='text/javascript'>
+    $(document).ready(function() {
+      logo = $('#site_bar_content #site_bar_refinery_cms_logo');
+      logo.css('left', ($('#site_bar_content').width() / 2) - (logo.width() / 2));
+      $('<span></span>').prependTo('#editor_switch').corner('6px');
+      $('#editor_switch a').corner('6px').appendTo('#editor_switch span:first');
+    });
+  </script>
+<% end -%>
+<div id='site_bar'>
+  <div id='site_bar_content' class='clearfix'>
+    <% unless login? %>
+      <div id='editor_switch'>
+        <%=
+          link_to_if(admin?, "Switch to your website",
+                    (if session.keys.include?(:website_return_to) and session[:website_return_to].present?
+                      session[:website_return_to]
+                     else
+                      root_url(:only_path => true)
+                     end)) do
+            link_to "Switch to your website editor",
+                    (if session.keys.include?(:refinery_return_to) and session[:refinery_return_to].present?
+                      session[:refinery_return_to]
+                     elsif defined?(@page) and @page.present? and !@page.home?
+                       edit_admin_page_url(@page, :only_path => true)
+                     else
+                       (request.request_uri.to_s == '/') ? admin_root_url(:only_path => true) : "/admin#{request.request_uri}/edit"
+                     end rescue admin_root_url(:only_path => true))
+          end
+        -%>
+      </div>
+    <% end %>
+    <%= link_to image_tag("#{"http://refinerycms.com/images/" unless local_request?}refinery/logo-site-bar.png",
+                :alt => "Refinery (tm) Content Manager"), "http://refinerycms.com",
+                :target => "_blank",
+                :id => "site_bar_refinery_cms_logo" %>
+
+    <% unless login? %>
+      <div id='site_bar_branding'>
+        <span id='site_bar_company_name'>
+          <%= RefinerySetting[:site_name] %>
+        </span>
+      </div>
+    <% end %>
+  </div>
+</div>

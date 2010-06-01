@@ -34,7 +34,7 @@ module Crud
       plural_name = singular_name.pluralize
 
       module_eval %(
-        before_filter :find_#{singular_name}, :only => [:update, :destroy, :edit]
+        before_filter :find_#{singular_name}, :only => [:update, :destroy, :edit, :show]
 
         def new
           @#{singular_name} = #{class_name}.new
@@ -43,7 +43,7 @@ module Crud
         def create
           # if the position field exists, set this object as last object, given the conditions of this class.
           if #{class_name}.column_names.include?("position")
-            params[:#{singular_name}].merge!({:position => #{class_name}.maximum(:position, :conditions => "#{options[:conditions]}")})
+            params[:#{singular_name}].merge!({:position => ((#{class_name}.maximum(:position, :conditions => "#{options[:conditions]}")||-1) + 1)})
           end
 
           if (@#{singular_name} = #{class_name}.create(params[:#{singular_name}])).valid?
@@ -52,14 +52,18 @@ module Crud
             else
               flash.now[:notice] = t('refinery.crudify.created', :what => "'\#{@#{singular_name}.#{options[:title_attribute]}}'")
             end
-            unless params[:continue_editing] =~ /true|on|1/
-              redirect_to admin_#{plural_name}_url
-            else
-              unless request.xhr?
-                redirect_to :back
+            unless from_dialog?
+              unless params[:continue_editing] =~ /true|on|1/
+                redirect_to admin_#{plural_name}_url
               else
-                render :partial => "/shared/message"
+                unless request.xhr?
+                  redirect_to :back
+                else
+                  render :partial => "/shared/message"
+                end
               end
+            else
+              render :text => "<script type='text/javascript'>parent.window.location = '\#{admin_#{plural_name}_url}';</script>"
             end
           else
             unless request.xhr?
@@ -81,14 +85,18 @@ module Crud
             else
               flash.now[:notice] = t('refinery.crudify.updated', :what => "'\#{@#{singular_name}.#{options[:title_attribute]}}'")
             end
-            unless params[:continue_editing] =~ /true|on|1/
-              redirect_to admin_#{plural_name}_url
-            else
-              unless request.xhr?
-                redirect_to :back
+            unless from_dialog?
+              unless params[:continue_editing] =~ /true|on|1/
+                redirect_to admin_#{plural_name}_url
               else
-                render :partial => "/shared/message"
+                unless request.xhr?
+                  redirect_to :back
+                else
+                  render :partial => "/shared/message"
+                end
               end
+            else
+              render :text => "<script type='text/javascript'>parent.window.location = '\#{admin_#{plural_name}_url}';</script>"
             end
           else
             unless request.xhr?

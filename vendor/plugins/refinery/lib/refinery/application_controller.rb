@@ -1,12 +1,13 @@
 class Refinery::ApplicationController < ActionController::Base
 
-  helper_method :home_page?, :local_request?, :just_installed?, :from_dialog?, :admin?
+  helper_method :home_page?, :local_request?, :just_installed?, :from_dialog?, :admin?, :login?
   protect_from_forgery # See ActionController::RequestForgeryProtection
 
   include Crud # basic create, read, update and delete methods
   include AuthenticatedSystem
 
-  before_filter :set_locale, :take_down_for_maintenance?, :find_pages_for_menu, :show_welcome_page?
+  before_filter :set_locale, :find_pages_for_menu, :show_welcome_page?, :store_current_location!
+
   rescue_from ActiveRecord::RecordNotFound, ActionController::UnknownAction, ActionView::MissingTemplate, :with => :error_404
 
   def admin?
@@ -47,7 +48,11 @@ class Refinery::ApplicationController < ActionController::Base
   end
 
   def local_request?
-    Rails.env.development? or request.remote_ip =~ /(::1)|(127.0.0.1)|((192.168).*)/
+    ENV["RAILS_ENV"] == "development" or request.remote_ip =~ /(::1)|(127.0.0.1)|((192.168).*)/
+  end
+
+  def login?
+    controller_name =~ /^(user|session)(|s)/ and not admin?
   end
 
   def wymiframe
@@ -101,13 +106,17 @@ protected
   alias_method :show_welcome_page, :show_welcome_page?
 
   def take_down_for_maintenance?
-    if RefinerySetting.find_or_set(:down_for_maintenance, false)
-      if (@page = Page.find_by_menu_match("^/maintenance$", :include => [:parts, :slugs])).present?
-        find_pages_for_menu
-        render :template => "/pages/show", :status => 503
-      else
-        render :text => "Our website is currently down for maintenance. Please try back soon."
-      end
+    logger.warn("*** Refinery::ApplicationController::take_down_for_maintenance has now been deprecated from the Refinery API. ***")
+  end
+
+private
+  def store_current_location!
+    if admin?
+      # ensure that we don't redirect to AJAX or POST/PUT/DELETE urls
+      session[:refinery_return_to] = request.path if request.get? and !request.xhr?
+    elsif request.path !~ /^(\/(wym(\-.*|iframe)|system\/|sessions?|.*\/dialogs|javascripts|stylesheets|images))/ and
+      !from_dialog? and controller_name !~ /^(sessions|users)/
+      session[:website_return_to] = request.path
     end
   end
 

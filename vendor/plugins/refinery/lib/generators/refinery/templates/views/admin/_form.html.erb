@@ -1,5 +1,5 @@
-<%%= error_messages_for :<%= singular_name %> -%>
 <%% form_for [:admin, @<%= singular_name %>] do |f| -%>
+  <%%= f.error_messages %>
   <% attributes.each_with_index do |attribute, index| %>
   <div class='field'>
     <%%= f.label :<%= attribute.name %> -%>
