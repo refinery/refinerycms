@@ -8,7 +8,7 @@
   <% unless hide_children or
             menu_branch.parent_id.present? or
             (children = menu_branch.children.reject{|c| !c.in_menu?}).empty? %>
-    <nav id='<%= dom_id ||= "menu" %>' class='<%= css ||= "menu" %>clearfix'>
+    <nav class='clearfix'>
       <%=
         render :partial => "/shared/menu_branch",
                :collection => children,

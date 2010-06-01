@@ -177,7 +177,7 @@ a {
 .less-important {
   color: #727272;
 }
-#header a, #administration_tabnav a, #submenu a {
+#header a {
   border: 0px;
 }
 a:hover {
@@ -361,46 +361,6 @@ pre {
   font-size: 90%;
   padding: 0;
   margin: 0;
-}
-#footer {
-  margin: 0px auto;
-  text-align: center;
-}
-#footer_logo {
-  border: 0px none;
-  display:inline-block;
-  _display:block;
-  margin: 50px auto 40px auto;
-  width: auto;
-}
-#footer p, #footer a {
-  color: white;
-  font-size: 11px;
-}
-#submenu {
-  clear: both;
-  padding-left: 10px;
-  background: url('/images/refinery/nav-3-background.gif') #EFEE8 repeat-x bottom;
-}
-#submenu ul, #submenu nav {
-  list-style: none;
-  margin: 0;
-  padding: 0 0 0 10px;
-}
-#submenu li, #submenu > div {
-  float: left;
-}
-#submenu li a, #submenu > a {
-  display: block;
-  padding: 6px;
-}
-#submenu2 {
-  margin-left: 10px;
-  margin-right: 12px;
-}
-#submenu a {
-  color: #727272;
-  text-decoration: none;
 }
 .filter {
   float: right;
