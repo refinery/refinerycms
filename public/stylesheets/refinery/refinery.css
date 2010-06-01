@@ -1102,9 +1102,8 @@ input.button, a.button, #content a.button {
   padding: 0px 14px;
   font-size: 14px;
   line-height: 25px;
+  height: 25px;
   display: inline-block;
-}
-input.button, a.button, #content a.button {
   border: 0px none;
   margin-top: 0px;
   margin-bottom: 0px;
