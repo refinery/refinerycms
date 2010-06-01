@@ -53,7 +53,7 @@ init_interface = function() {
 
   // focus first field in an admin form.
   $('form input[type=text]:first').focus();
-  $('#content, .wym_box').corner('5px bottom');
+  $('#page > #content, .wym_box').corner('5px bottom');
   $('.wym_iframe iframe').corner('2px bottom');
 }
 

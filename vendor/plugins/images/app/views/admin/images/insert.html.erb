@@ -1,57 +1,55 @@
-<div class='clearfix'>
-  <div id='dialog_menu_left'>
-    <% if @images.any? %>
-      <span id="existing_image_radio" class="radio<%= " selected_radio" if @image.errors.empty? %>">
-        <input type='radio' name='image_type' value='existing_image' id='image_type_existing' <%= "checked='true'" if @image.errors.empty? %> />
-        <label for='image_type_existing' class='stripped'>Existing Image</label>
-      </span>
-    <% end %>
-    <span id="upload_image_radio" class="radio<%= " selected_radio" if @image.errors.any? or @images.empty? %>">
-      <input type='radio' name='image_type' value='upload_image' id='image_type_upload' <%= "checked='true'" if @images.empty? || @image.errors.any? %> />
-      <label for='image_type_upload' class='stripped'>New Image</label>
+<div id='dialog_menu_left'>
+  <% if @images.any? %>
+    <span id="existing_image_radio" class="radio<%= " selected_radio" if @image.errors.empty? %>">
+      <input type='radio' name='image_type' value='existing_image' id='image_type_existing' <%= "checked='true'" if @image.errors.empty? %> />
+      <label for='image_type_existing' class='stripped'>Existing Image</label>
     </span>
-  </div>
+  <% end %>
+  <span id="upload_image_radio" class="radio<%= " selected_radio" if @image.errors.any? or @images.empty? %>">
+    <input type='radio' name='image_type' value='upload_image' id='image_type_upload' <%= "checked='true'" if @images.empty? || @image.errors.any? %> />
+    <label for='image_type_upload' class='stripped'>New Image</label>
+  </span>
+</div>
 
-  <div id='dialog_main'>
-    <% if @images.any? %>
-      <div id='existing_image_area' class='dialog_area' <%= "style='display:none;'" if @image.errors.any? %>>
-        <input type='hidden' name='selected_image' id='selected_image' />
-        <div id='existing_image_area_content' class='clearfix'>
-          <ul>
-            <% @images.each do |image| %>
-              <li<%= " class='selected'" if @image_id == image.id %>>
-                <%= image_fu image, :dialog_thumb, {:alt => image.title, :title => image.title, :id => "image_#{image.id}"} -%>
-              </li>
-            <% end -%>
-          </ul>
-        </div>
-        <%= images_paginator @images, from_dialog? %>
-        <div id='existing_image_size_area'>
-          <input type='hidden' name='selected_image_size' id='selected_image_size' />
-          <h2>Size</h2>
-          <ul>
-            <%
-              thumbnail_sizes = RefinerySetting.find_or_set(:image_thumbnails, {})
-              (sizes = RefinerySetting.find_or_set(:image_dialogue_sizes, [:small, :medium, :large])).each_with_index do |size, index|
-                if thumbnail_sizes.keys.include?(size) and (pixels = thumbnail_sizes[size]).present?
-                  modifier = ((index + 1) * 10) + 10
-            -%>
-                  <li<%= " class='selected'" if size == :medium %> style="padding-top: <%= (((sizes.length * 10) - modifier) / 2) + 10 %>px">
-                    <%= link_to "&nbsp;", "##{size}",
-                                :rel => size.to_s, #pixels.gsub(/[^x?\d]/i, ''),
-                                :title => "#{size} image",
-                                :tooltip => "#{size} image",
-                                :style => "width: #{modifier}px; height: #{modifier}px;" %>
-                  </li>
-            <%  end
-              end -%>
-          </ul>
-        </div>
+<div id='dialog_main'>
+  <% if @images.any? %>
+    <div id='existing_image_area' class='dialog_area' <%= "style='display:none;'" if @image.errors.any? %>>
+      <input type='hidden' name='selected_image' id='selected_image' />
+      <div id='existing_image_area_content' class='clearfix'>
+        <ul>
+          <% @images.each do |image| %>
+            <li<%= " class='selected'" if @image_id == image.id %>>
+              <%= image_fu image, :dialog_thumb, {:alt => image.title, :title => image.title, :id => "image_#{image.id}"} -%>
+            </li>
+          <% end -%>
+        </ul>
       </div>
-    <% end %>
-    <div id='upload_image_area' class='dialog_area' <%= "style='display:none;'" if @images.any? and @image.errors.empty? %>>
-      <%= render :partial => "form", :locals => {:insert => true} %>
+      <%= images_paginator @images, from_dialog? %>
+      <div id='existing_image_size_area' class='clearfix'>
+        <input type='hidden' name='selected_image_size' id='selected_image_size' />
+        <h2>Size</h2>
+        <ul>
+          <%
+            thumbnail_sizes = RefinerySetting.find_or_set(:image_thumbnails, {})
+            (sizes = RefinerySetting.find_or_set(:image_dialogue_sizes, [:small, :medium, :large])).each_with_index do |size, index|
+              if thumbnail_sizes.keys.include?(size) and (pixels = thumbnail_sizes[size]).present?
+                modifier = ((index + 1) * 10) + 10
+          -%>
+                <li<%= " class='selected'" if size == :medium %> style="padding-top: <%= (((sizes.length * 10) - modifier) / 2) + 10 %>px">
+                  <%= link_to "&nbsp;", "##{size}",
+                              :rel => size.to_s, #pixels.gsub(/[^x?\d]/i, ''),
+                              :title => "#{size} image",
+                              :tooltip => "#{size} image",
+                              :style => "width: #{modifier}px; height: #{modifier}px;" %>
+                </li>
+          <%  end
+            end -%>
+        </ul>
+      </div>
     </div>
+  <% end %>
+  <div id='upload_image_area' class='dialog_area' <%= "style='display:none;'" if @images.any? and @image.errors.empty? %>>
+    <%= render :partial => "form", :locals => {:insert => true} %>
   </div>
 </div>
 <% if @app_dialog %>

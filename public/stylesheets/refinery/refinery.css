@@ -34,6 +34,9 @@ acronym {
   width: 954px;
   position: relative;
 }
+#dialog_container #content .field {
+  width: auto;
+}
 input.widest, textarea.widest {
   width: 100%;
 }
@@ -961,33 +964,47 @@ ul#page_parts_controls img {
 /* dialog stuff */
 #dialog_frame {
   width:952px;
-  height:430px;
+  height:460px;
   padding: 0px;
   border: 0px solid #F2F1ED;
 }
 .wym_hideables {
   display: none;
 }
-#content .form-actions {
+#content .form-actions, .wym_dialog .form-actions {
   position: relative;
   background-color: white;
   border: 1px solid #CCC;
   margin-top: 10px;
   height: 45px;
 }
-#content .form-actions .form-actions-left, #content .form-actions .form-actions-right {
+#content .form-actions .form-actions-left, #content .form-actions .form-actions-right, 
+  .wym_dialog .form-actions .form-actions-left, .wym_dialog .form-actions .form-actions-right {
   position: absolute;
   top: 10px;
 }
-#content .form-actions .form-actions-left {
+#content .form-actions .form-actions-left, .wym_dialog .form-actions .form-actions-left {
   left: 10px;
 }
-#content .form-actions .form-actions-right {
+#content .form-actions .form-actions-right, .wym_dialog .form-actions .form-actions-right {
   right: 10px;
 }
 .wym_dialog .form-actions, .ui-dialog .form-actions {
   border: 0px none;
   border-top: 1px solid #E8E8E8;
+}
+#dialog_iframe {
+  position: relative;
+}
+#dialog_container #content .form-actions {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  border-right: 0px;
+  border-left: 0px;
+  border-bottom: 0px;
+  width: auto;
 }
 #existing_image_area {
   padding-top:6px;
@@ -999,23 +1016,6 @@ textarea.wymeditor {
 }
 #dialog_container {
   padding: 0px 12px 12px 12px;
-}
-#dialog_container .form-actions {
-  position: absolute;
-  bottom: 0px;
-  left: 0px;
-  right: 0px;
-  border-right: 0px;
-  border-left: 0px;
-  border-bottom: 0px;
-}
-#dialog_container .form-actions #submit_button, #dialog_container .form-actions .wym_submit {
-  margin-left: 10px;
-}
-#dialog_main .form-actions {
-  position: inherit;
-  width: 100%;
-  border: 1px solid #E8E8E8;
 }
 ul#image_grid {
   width: 580px;
@@ -1129,12 +1129,6 @@ input.button.close_dialog:active, a.button.close_dialog:active, #content a.butto
 }
 #content a.button.close_dialog:active {
   color: white;
-}
-#content .form-actions a.button {
-  /*
-  margin-left: 4px;
-  padding: 5px 14px;
-  */
 }
 .form-actions a.confirm-delete, #content .form-actions a.confirm-delete {
   background: #ee1100;
