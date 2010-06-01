@@ -9,7 +9,7 @@ module Refinery
         :class => nil,
         :conditions => nil,
         :created_image => "add.png",
-        :limit => 10,
+        :limit => 7,
         :nested_with => [],
         :order => 'updated_at DESC',
         :title => nil,

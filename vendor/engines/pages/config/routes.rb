@@ -1,8 +1,12 @@
 Rails::Application.routes.draw do
   resources :pages
 
-  namespace(:admin) do
-    resources :pages
+  scope(:path => 'refinery', :name_prefix => 'admin', :module => 'admin') do
+    resources :pages do
+      collection do
+        post :update_positions
+      end
+    end
 
     resources :page_parts
 

@@ -9,8 +9,12 @@ Rails::Application.routes.draw do
   end
   match '/users/reset/:reset_code', :to => 'users#reset', :as => 'reset_users'
 
-  namespace(:admin) do
-    resources :users
+  scope(:path => 'refinery', :name_prefix => 'admin', :module => 'admin') do
+    resources :users do
+      collection do
+        post :update_positions
+      end
+    end
   end
 
   match '/login',  :to => 'sessions#new',     :as => 'login'

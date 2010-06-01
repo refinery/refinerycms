@@ -1,3 +1,12 @@
+onOpenDialog = function(dialog) {
+  $('.ui-dialog').corner('6px').find('.ui-dialog-titlebar').corner('1px top');
+  $(document.body).addClass('hide-overflow');
+}
+
+onCloseDialog = function(dialog) {
+  $(document.body).removeClass('hide-overflow');
+}
+
 var wymeditor_inputs = [];
 var wymeditors_loaded = 0;
 // supply custom_wymeditor_boot_options if you want to override anything here.
@@ -15,22 +24,27 @@ var wymeditor_boot_options = $.extend({
     ,{'name': 'Italic', 'title': 'Emphasis', 'css': 'wym_tools_emphasis'}
     ,{'name': 'InsertOrderedList', 'title': 'Ordered_List', 'css': 'wym_tools_ordered_list'}
     ,{'name': 'InsertUnorderedList', 'title': 'Unordered_List', 'css': 'wym_tools_unordered_list'}
+    /*,{'name': 'Indent', 'title': 'Indent', 'css': 'wym_tools_indent'}
+    ,{'name': 'Outdent', 'title': 'Outdent', 'css': 'wym_tools_outdent'}
+    ,{'name': 'Undo', 'title': 'Undo', 'css': 'wym_tools_undo'}
+    ,{'name': 'Redo', 'title': 'Redo', 'css': 'wym_tools_redo'}*/
     ,{'name': 'CreateLink', 'title': 'Link', 'css': 'wym_tools_link'}
     ,{'name': 'Unlink', 'title': 'Unlink', 'css': 'wym_tools_unlink'}
     ,{'name': 'InsertImage', 'title': 'Image', 'css': 'wym_tools_image'}
-    ,{'name': 'ToggleHtml', 'title': 'HTML', 'css': 'wym_tools_html'}
     ,{'name': 'InsertTable', 'title': 'Table', 'css': 'wym_tools_table'}
-    ,{'name': 'Paste', 'title': 'Paste_From_Word', 'css': 'wym_tools_paste'}
+    //,{'name': 'Paste', 'title': 'Paste_From_Word', 'css': 'wym_tools_paste'}
+    ,{'name': 'ToggleHtml', 'title': 'HTML', 'css': 'wym_tools_html'}
   ]
 
-  ,toolsHtml: "<ul class='wym_tools wym_section'>" + WYMeditor.TOOLS_ITEMS + WYMeditor.CLASSES + "</ul>"
+  ,toolsHtml: "<ul class='wym_tools wym_section wym_buttons'>" + WYMeditor.TOOLS_ITEMS + WYMeditor.CLASSES + "</ul>"
 
   ,toolsItemHtml:
     "<li class='" + WYMeditor.TOOL_CLASS + "'>"
-      + "<a href='#' name='" + WYMeditor.TOOL_NAME + "' title='" + WYMeditor.TOOL_TITLE + "'>"  + WYMeditor.TOOL_TITLE  + "</a>"
+      + "<a href='#' name='" + WYMeditor.TOOL_NAME + "' title='" + WYMeditor.TOOL_TITLE + "'>"
+        + WYMeditor.TOOL_TITLE
+      + "</a>"
     + "</li>"
 
-  //containersItems will be appended after tools in postInit.
   , containersItems: [
     {'name': 'h1', 'title':'Heading_1', 'css':'wym_containers_h1'}
     ,{'name': 'h2', 'title':'Heading_2', 'css':'wym_containers_h2'}
@@ -38,10 +52,16 @@ var wymeditor_boot_options = $.extend({
     ,{'name': 'p', 'title':'Paragraph', 'css':'wym_containers_p'}
   ]
 
-  , classesHtml: "<li class='wym_tools_class'><a href='#' name='" + WYMeditor.APPLY_CLASS + "' title='"+ titleize(WYMeditor.APPLY_CLASS) +"'></a><ul class='wym_classes wym_classes_hidden'>" + WYMeditor.CLASSES_ITEMS + "</ul></li>"
+  , classesHtml: "<li class='wym_tools_class'>"
+                 + "<a href='#' name='" + WYMeditor.APPLY_CLASS + "' title='"+ titleize(WYMeditor.APPLY_CLASS) +"'></a>"
+                 + "<ul class='wym_classes wym_classes_hidden'>" + WYMeditor.CLASSES_ITEMS + "</ul>"
+                + "</li>"
 
   , classesItemHtml: "<li><a href='#' name='"+ WYMeditor.CLASS_NAME + "'>"+ WYMeditor.CLASS_TITLE+ "</a></li>"
-  , classesItemHtmlMultiple: "<li class='wym_tools_class_multiple_rules'><span>" + WYMeditor.CLASS_TITLE + "</span><ul>{classesItemHtml}</ul></li>"
+  , classesItemHtmlMultiple: "<li class='wym_tools_class_multiple_rules'>"
+                              + "<span>" + WYMeditor.CLASS_TITLE + "</span>"
+                              + "<ul>{classesItemHtml}</ul>"
+                            +"</li>"
 
   , classesItems: wymeditorClassesItems
 
@@ -55,8 +75,8 @@ var wymeditor_boot_options = $.extend({
   , boxHtml:
   "<div class='wym_box'>"
     + "<div class='wym_area_top'>"
-      + WYMeditor.TOOLS
       + WYMeditor.CONTAINERS
+      + WYMeditor.TOOLS
     + "</div>"
     + "<div class='wym_area_main'>"
       + WYMeditor.HTML
@@ -68,7 +88,7 @@ var wymeditor_boot_options = $.extend({
   , iframeHtml:
     "<div class='wym_iframe wym_section'>"
      + "<iframe id='WYMeditor_" + WYMeditor.INDEX + "' src='" + WYMeditor.IFRAME_BASE_PATH + "wymiframe' frameborder='0'"
-      + " onload='this.contentWindow.parent.WYMeditor.INSTANCES[" + WYMeditor.INDEX + "].initIframe(this);'></iframe>"
+     + " onload='this.contentWindow.parent.WYMeditor.INSTANCES[" + WYMeditor.INDEX + "].initIframe(this);'></iframe>"
     +"</div>"
 
   , dialogImageHtml: ""
@@ -92,9 +112,8 @@ var wymeditor_boot_options = $.extend({
           + "<input type='text' id='wym_cols' class='wym_cols' value='2' size='3' />"
         + "</div>"
         + "<div id='dialog-form-actions' class='form-actions'>"
-          + "<input class='wym_submit' type='button' value='{Insert}' />"
-          + " or "
-          + "<a href='' class='wym_cancel close_dialog'>{Cancel}</a>"
+          + "<input class='wym_submit button' type='submit' value='{Insert}' class='button' />"
+          + "<a href='' class='wym_cancel close_dialog button'>{Cancel}</a>"
         + "</div>"
       + "</form>"
     + "</div>"
@@ -107,14 +126,13 @@ var wymeditor_boot_options = $.extend({
           + "<textarea class='wym_text' rows='10' cols='50'></textarea>"
         + "</div>"
         + "<div id='dialog-form-actions' class='form-actions'>"
-          + "<input class='wym_submit' type='button' value='{Insert}' />"
-          + " or "
-          + "<a href='' class='wym_cancel close_dialog'>{Cancel}</a>"
+          + "<input class='wym_submit button' type='submit' value='{Insert}' class='button' />"
+          + "<a href='' class='wym_cancel close_dialog button'>{Cancel}</a>"
         + "</div>"
       + "</form>"
     + "</div>"
 
-  , dialogPath: "/admin/dialogs/"
+  , dialogPath: "/refinery/dialogs/"
   , dialogFeatures: {
       width: 958
     , height: 570
@@ -122,6 +140,8 @@ var wymeditor_boot_options = $.extend({
     , draggable: true
     , resizable: false
     , autoOpen: true
+    , open: onOpenDialog
+    , close: onCloseDialog
   }
   , dialogInlineFeatures: {
       width: 600
@@ -130,12 +150,14 @@ var wymeditor_boot_options = $.extend({
     , draggable: true
     , resizable: false
     , autoOpen: true
+    , open: onOpenDialog
+    , close: onCloseDialog
   }
 
   , dialogId: 'editor_dialog'
 
   , dialogHtml:
-    "<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Strict//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd'>"
+    "<!DOCTYPE html>"
     + "<html dir='" + WYMeditor.DIRECTION + "'>"
       + "<head>"
         + "<link rel='stylesheet' type='text/css' media='screen' href='" + WYMeditor.CSS_PATH + "' />"
@@ -143,7 +165,9 @@ var wymeditor_boot_options = $.extend({
         + "<script type='text/javascript' src='" + WYMeditor.JQUERY_PATH + "'></script>"
         + "<script type='text/javascript' src='" + WYMeditor.WYM_PATH + "'></script>"
       + "</head>"
-    + "<div id='page'>" + WYMeditor.DIALOG_BODY + "</div>"
+      + "<body>"
+        + "<div id='page'>" + WYMeditor.DIALOG_BODY + "</div>"
+      + "</body>"
     + "</html>"
 
   , postInit: function(wym)

@@ -1,10 +1,11 @@
 #!/usr/bin/env ruby
 version = File.read(File.expand_path('../../VERSION', __FILE__)).strip
 raise "Could not get version so gemspec can not be built" if version.nil?
-files = %w( .gems .gitignore .yardopts Gemfile Rakefile readme.md license.md VERSION todo.md )
+files = %w( .gems .gitignore .yardopts Gemfile Rakefile readme.md license.md VERSION todo.md public/.htaccess )
 %w(app bin config db lib public script test themes vendor).each do |dir|
   files += Dir.glob("#{dir}/**/*")
 end
+files.reject!{|f| f =~ /public\/system/ or f =~ /config\/database.yml$/}
 
 gemspec = <<EOF
 Gem::Specification.new do |s|
@@ -17,7 +18,7 @@ Gem::Specification.new do |s|
   s.homepage          = %q{http://refinerycms.com}
   s.authors           = %w(Resolve\ Digital David\ Jones Philip\ Arndt)
   s.require_paths     = %w(lib)
-  s.executables       = %w(refinery refinery-override refinery-update-core)
+  s.executables       = %w(refinery refinery-update-core)
 
   s.files             = [
     '#{files.join("',\n\t\t'")}'

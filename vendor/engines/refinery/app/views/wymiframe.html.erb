@@ -1,9 +1,15 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
   <head>
-    <%= "<meta http-equiv='X-UA-Compatible' content='IE-EmulateIE7' />" if request.env['HTTP_USER_AGENT'] =~ /MSIE/ %>
+    <% if request.env['HTTP_USER_AGENT'] =~ /MSIE/%>
+      <!--[if lt IE 9]>
+        <%= javascript_include_tag('http://html5shiv.googlecode.com/svn/trunk/html5.js') %>
+      <![endif]-->
+      <meta http-equiv='X-UA-Compatible' content='IE-EmulateIE7' />
+    <% end %>
     <title>WYMeditor</title>
     <%= stylesheet_link_tag "wymeditor/skins/refinery/wymiframe", "#{"/theme/stylesheets/" if RefinerySetting[:theme].present?}formatting", "theme", :media => "all" %>
   </head>
-  <body class="wym_iframe"></body>
+  <body class="wym_iframe<%= " #{params[:id]}" if params[:id].present? %>">
+  </body>
 </html>

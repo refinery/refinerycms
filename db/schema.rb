@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100315203301) do
+ActiveRecord::Schema.define(:version => 20100530205942) do
 
   create_table "images", :force => true do |t|
     t.integer  "parent_id"

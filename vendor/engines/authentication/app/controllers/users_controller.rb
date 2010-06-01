@@ -42,11 +42,11 @@ class UsersController < ApplicationController
         end
 
         redirect_back_or_default(admin_root_url)
-        flash[:notice] = "Welcome to Refinery, #{current_user.login}."
+        flash[:message] = "<h2>Welcome to Refinery, #{current_user.login}.</h2>"
 
         if User.count == 1 or RefinerySetting[:site_name] == "Company Name"
           refinery_setting = RefinerySetting.find_by_name("site_name")
-          flash[:notice] << "<br/>First let's give the site a name. <a href='#{edit_admin_refinery_setting_url(refinery_setting)}'>Go here</a> to edit your website's name"
+          flash[:message] << "<br/>First let's give the site a name. <a href='#{edit_admin_refinery_setting_url(refinery_setting)}'>Go here</a> to edit your website's name"
         end
       else
         render :action => 'new'
@@ -94,8 +94,6 @@ protected
       redirect_to root_url unless can_create_public_user?
     end
   end
-
-  def take_down_for_maintenance?;end
 
   def can_create_public_user?
     User.count == 0

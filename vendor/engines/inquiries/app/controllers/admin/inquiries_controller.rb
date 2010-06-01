@@ -12,8 +12,4 @@ class Admin::InquiriesController < Admin::BaseController
     end
   end
 
-  def show
-    find_inquiry
-  end
-
 end
