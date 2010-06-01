@@ -22,7 +22,7 @@
       :da => 'Dansk',
       :nb => 'Norsk Bokmål',
       :sl => 'Slovenian',
-      :es => 'Español',
+      :es => 'Espa&ntilde;ol',
       :it => 'Italiano'
     }
   }
