@@ -232,6 +232,7 @@ Gem::Specification.new do |s|
 		'public/stylesheets/refinery/application.css',
 		'public/stylesheets/refinery/formatting.css',
 		'public/stylesheets/refinery/home.css',
+		'public/stylesheets/refinery/refinery-ie.css',
 		'public/stylesheets/refinery/refinery.css',
 		'public/stylesheets/refinery/site_bar.css',
 		'public/stylesheets/refinery/theme.css',
