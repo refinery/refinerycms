@@ -3,9 +3,9 @@ module Refinery
 
     def self.register(&block)
       yield (new_plugin = self.new)
-      if defined?(Page) && new_plugin.title
+      if defined?(Page) && new_plugin.name
         # Prevent page slugs from being this plugin's controller name
-        Page.friendly_id_config.reserved_words << new_plugin.title.gsub(" ", "_").downcase
+        Page.friendly_id_config.reserved_words << new_plugin.name
       end
     end
 
@@ -38,11 +38,11 @@ module Refinery
     end
 
     def menu_match
-      @menu_match ||= /admin\/#{self.title.gsub(" ", "_").downcase}$/
+      @menu_match ||= /admin\/#{self.name.gsub(" ", "_").downcase}$/
     end
 
-    def name
-      @name ||= self.title.gsub(" ", "_").downcase
+    def title
+      ::I18n.translate("plugins.#{name}.title", :default => @title)
     end
 
     def always_allow_access
