@@ -2,7 +2,7 @@
 cache(:action_suffix => RefinerySetting.find_or_set(:refinery_menu_cache_action_suffix, "site_menu")) do
   if (collection ||= @menu_pages).any?
 -%>
-    <nav id='<%= dom_id ||= "menu" %>' class='<%= css ||= "menu" %>clearfix'>
+    <nav id='<%= dom_id ||= "menu" %>' class='<%= [css ||= "menu", 'clearfix'].join(' ') %>'>
       <%= render :partial => "/shared/menu_branch",
                  :collection => collection,
                  :locals => {
@@ -11,7 +11,7 @@ cache(:action_suffix => RefinerySetting.find_or_set(:refinery_menu_cache_action_
                  }
       -%>
     </nav>
-<% 
-  end 
-end 
+<%
+  end
+end
 -%>
