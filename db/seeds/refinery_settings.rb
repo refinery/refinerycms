@@ -21,7 +21,8 @@
       :'pt-BR' => 'Português',
       :da => 'Dansk',
       :nb => 'Norsk Bokmål',
-      :sl => 'Slovenian'
+      :sl => 'Slovenian',
+      :es => 'Español'
     }
   }
 ].each do |setting|
