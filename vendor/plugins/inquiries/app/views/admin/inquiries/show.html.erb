@@ -8,6 +8,10 @@
     <li>
       <%= link_to t('.back_to_all_inquiries'), {:action => 'index'}, :class => "back_icon" %>
     </li>
+    <li>
+      <%= link_to "Remove this inquiry forever", admin_inquiry_url(@inquiry), :class => 'delete_icon no-tooltip confirm-delete',
+                                                                              :title => "Remove this inquiry forever" %>
+    </li>
   </ul>
 </div>
 <div id='records'>

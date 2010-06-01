@@ -2,14 +2,15 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
   <title><%= RefinerySetting.find_or_set(:site_name, 'Company Name') %> - Refinery</title>
-  <%= stylesheet_link_tag 'refinery/refinery', 'refinery/ui', 'refinery/tooltips', "wymeditor/skins/refinery/skin", :cache => (use_caching ? "cache/refinery" : false) %>
-  <%= (y = yield :head_before_javascript_libraries).present? ? y : render(:partial => "/shared/admin/head_before_javascript_libraries") rescue "" -%>
-  <%= jquery_include_tags(use_caching) %>
+  <%= "<!--[if lt IE 9]>#{javascript_include_tag('http://html5shiv.googlecode.com/svn/trunk/html5.js')}<![endif]-->" if request.env['HTTP_USER_AGENT'] =~ /MSIE/ %>
+  <%= stylesheet_link_tag 'refinery/site_bar', 'refinery/refinery', 'refinery/ui', 'refinery/tooltips', "wymeditor/skins/refinery/skin", :cache => (use_caching ? "cache/refinery" : false) %>
+  <%= render :partial => "/shared/admin/head_before_javascript_libraries" -%>
+  <%= jquery_include_tags(:caching => use_caching) %>
   <%= javascript_include_tag 'jquery/jquery.corner.js', :cache => (use_caching ? "cache/jquery-plugins" : false) %>
   <%= javascript_include_tag 'i18n' %>
   <script type='text/javascript'>I18n.locale = '<%= I18n.locale %>';</script>
-  <%= yield :head_after_javascript_libraries -%>
-  <%= javascript_include_tag 'admin', 'wymeditor/jquery.refinery.wymeditor.js', 'refinery/boot_wym', 'refinery/admin', :cache => (use_caching ? "cache/admin" : false) %>
-  <%= javascript_include_tag "http://getfirebug.com/releases/lite/1.2/firebug-lite-compressed.js" if RefinerySetting.find_or_set(:show_firebug_lite, false) -%>
+  <%= yield :head_after_javascript_libraries %>
+  <%= javascript_include_tag 'wymeditor/jquery.refinery.wymeditor.js', 'admin', 'refinery/boot_wym', 'refinery/admin', :cache => (use_caching ? "cache/admin" : false) %>
+  <%= javascript_include_tag "http://fbug.googlecode.com/svn/lite/branches/firebug1.3/build/firebug-lite.js" if RefinerySetting.find_or_set(:show_firebug_lite, false) -%>
   <%= yield :head %>
 </head>

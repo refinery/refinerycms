@@ -1,5 +1,5 @@
-<%= error_messages_for :inquiry_setting %>
 <% form_for [:admin, @inquiry_setting] do |f| %>
+  <%= f.error_messages %>
   <p>
     <%= t('.explanation') %>
   </p>

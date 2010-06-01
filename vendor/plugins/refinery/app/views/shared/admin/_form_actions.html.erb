@@ -1,20 +1,37 @@
 <%
-  title              ||= t('.cancel_lose_changes', :object_name => f.object.class.name.underscore.gsub("_", " "))
+
   submit_button_text ||= t('.save')
   submit_button_id   ||= "submit_button"
+
   cancel_button_text ||= t('.cancel')
+  cancel_title       ||= t('.cancel_lose_changes', :object_name => f.object.class.name.underscore.gsub("_", " "))
   cancel_button_id   ||= "cancel_button"
   cancel_url         ||= (( back = url_for(:back)).include?('javascript') ? send("admin_#{f.object.class.name.pluralize.underscore}_url") : back)
+
+  delete_button_text ||= t('.delete')
+  delete_title       ||= t('.delete_title', :object_name => f.object.class.name.underscore.gsub("_", " "))
+  delete_button_id   ||= "delete_button"
+  delete_url         ||= eval("admin_#{f.object.class.name.underscore}_url(#{f.object.id})")
 %>
 <div class='form-actions'>
-  <%= f.submit submit_button_text, :id => submit_button_id, :class => "wymupdate" %>
+  <%= f.submit submit_button_text, :id => submit_button_id, :class => "wymupdate button" %>
+
   <% if (continue_editing ||= false and !f.object.new_record?) -%>
     <%= t('.or') %>
     <%= render :partial => "/shared/admin/continue_editing", :locals => {:f => f} -%>
   <% end -%>
+
+  <%= hidden_field_tag :continue_editing, false %>
+
   <% unless (hide_cancel ||= from_dialog?) -%>
     <%= t('.or') %>
     <%# TODO add :what to t('.cancel_lose_changes') -%>
-    <%= link_to cancel_button_text, cancel_url, :title => title, :id => cancel_button_id, :class => "close_dialog" %>
+    <%= link_to cancel_button_text, cancel_url, :title => cancel_title, :id => cancel_button_id, :class => "close_dialog button" %>
+  <% end -%>
+
+  <% unless ((hide_delete ||= from_dialog?) or f.object.new_record? or (f.object.respond_to?(:deleteable?) && !f.object.deletable?)) -%>
+    <%= t('.or') %>
+    <%# TODO add :what to t('.cancel_lose_changes') -%>
+    <%= link_to(delete_button_text, delete_url, :title => delete_title, :id => delete_button_id, :class => "button confirm-delete") %>
   <% end -%>
 </div>

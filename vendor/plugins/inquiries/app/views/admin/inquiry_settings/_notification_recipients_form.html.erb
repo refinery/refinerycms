@@ -1,10 +1,9 @@
-<%= error_messages_for :inquiry_setting %>
 <% form_for [:admin, @inquiry_setting] do |f| %>
+  <%= f.error_messages %>
   <p><%= t '.explanation' %></p>
   <div class='field'>
     <%= f.label :value, t('.inquiry_settings_value_name') %>
     <%= f.text_field :value, :class => "larger", :style => 'width: 954px' %>
-
     <p>
       <%= t '.hint' %><br />
       <%= t '.example' %>

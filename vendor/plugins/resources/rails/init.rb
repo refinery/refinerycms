@@ -1,7 +1,7 @@
 Refinery::Plugin.register do |plugin|
-  plugin.title = "Resources"
-  plugin.name = "refinery_resources"
-  plugin.directory = "resources"
+  plugin.title = "Files"
+  plugin.name = "refinery_files"
+  plugin.menu_match = /(refinery|admin)\/resources$/
   plugin.description = "Upload and link to files"
   plugin.version = 1.0
   plugin.activity = {
@@ -11,4 +11,6 @@ Refinery::Plugin.register do |plugin|
     :created_image => "page_white_put.png",
     :updated_image => "page_white_edit.png"
   }
+  # this tells refinery where this plugin is located on the filesystem and helps with urls.
+  plugin.directory = directory
 end

@@ -1,8 +1,6 @@
-<%= error_messages_for :user %>
-<p>
-  <%= t('.fill_form') %>
-</p>
+<% content_for :header, t('.fill_form') %>
 <% form_for :user, :url => users_path do |f| -%>
+  <%= f.error_messages %>
   <div class='field'>
     <%= f.label :login %>
     <%= f.text_field :login %>
@@ -20,9 +18,9 @@
     <%= f.password_field :password_confirmation %>
   </div>
   <% if just_installed? %>
-    <% @available_plugins.each do |plugin| %>
-      <%= hidden_field_tag 'user[plugins][]', plugin[:name], :id => "plugins_#{plugin[:name]}"  %>
-    <% end %>
-  <% end %>
+    <% Refinery::Plugins.registered.in_menu.names.sort.each do |plugin| -%>
+      <%= hidden_field_tag 'user[plugins][]', plugin, :id => "plugins_#{plugin.downcase.gsub(" ", "_")}" %>
+    <% end -%>
+  <% end -%>
   <p><%= submit_tag t('.sign_up') %></p>
 <% end -%>

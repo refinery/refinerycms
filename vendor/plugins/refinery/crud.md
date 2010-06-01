@@ -32,7 +32,7 @@ If you used the Refinery generator you're plugin will already be using ``crudify
 
     class NewsItemsController < ApplicationController
 
-      crudify :news_item, :order => "created_at DESC"
+      crudify :news_item, :order => "created_at DESC",
                           :conditions => 'published = true',
                           :sortable => false,
                           :searchable => true,

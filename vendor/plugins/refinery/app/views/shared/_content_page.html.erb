@@ -3,15 +3,15 @@
   remove_automatic_sections ||= false
 
   body_content_title = page_title if (body_content_title = yield :body_content_title).blank? and !show_empty_sections and !remove_automatic_sections
-  body_content_left = @page[:body] if (body_content_left = yield :body_content_left).blank? and !show_empty_sections and !remove_automatic_sections
-  body_content_right = @page[:side_body] if (body_content_right = yield :body_content_right).blank? and !show_empty_sections and !remove_automatic_sections
+  body_content_left = @page[:body] if (body_content_left = yield :body_content_left).blank? and !show_empty_sections and !remove_automatic_sections and @page.present?
+  body_content_right = @page[:side_body] if (body_content_right = yield :body_content_right).blank? and !show_empty_sections and !remove_automatic_sections and @page.present?
 
   extra_body_content_classes = []
   extra_body_content_classes << "no_title" if body_content_title.blank?
   extra_body_content_classes << "no_left" if body_content_left.blank?
   extra_body_content_classes << "no_right" if body_content_right.blank?
 -%>
-<%= render :partial => "/shared/submenu" if !admin? and (show_submenu ||= true) and RefinerySetting.find_or_set(:show_submenu_on_content_pages, true) %>
+<%= render :partial => "/shared/submenu" if !admin? and (!defined?(show_submenu) or show_submenu == true) and RefinerySetting.find_or_set(:show_submenu_on_content_pages, false) %>
 <div id='body_content' class='clearfix<%= " #{extra_body_content_classes.join(" ")}" if extra_body_content_classes.any? %>'>
 <% if body_content_title.present? or (show_empty_sections and !remove_automatic_sections) -%>
   <h1 id='body_content_page_title'>
@@ -29,7 +29,7 @@
   </div>
 <% end -%>
 </div>
-<% unless @page.live? -%>
+<% unless @page.nil? or @page.live? -%>
   <div class='page_not_live'>
     This page is NOT live for public viewing.
   </div>

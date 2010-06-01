@@ -18,11 +18,27 @@ unless rails_root.nil? or rails_root.length == 0
   # copy in any new migrations.
   FileUtils::cp Dir[File.join(%W(#{refinery_root} db migrate *.rb))], File.join(%W(#{rails_root} db migrate))
 
-  # replace rakefile.
+  # replace rakefile and gemfile.
   FileUtils::cp File.join(%W(#{refinery_root} Rakefile)), File.join(%W(#{rails_root} Rakefile))
+  unless File.exist?(File.join("%W(#{rails_root} Gemfile)"))
+    FileUtils::cp File.join(%W(#{refinery_root} Gemfile)), File.join(%W(#{rails_root} Gemfile))
+  else
+    # TODO only override refinery gems here.
+  end
+
+  # read in the Gemfile and write it back out with the refinerycms gem enabled.
+  lines = File.open(File.join(%W(#{rails_root} Gemfile)), "r").read.split("\n")
+  lines.each do |line|
+    line.gsub!("#gem 'refinerycms'", "gem 'refinerycms'")
+  end
+  # write the new content into the file.
+  File.open(File.join(%W(#{rails_root} Gemfile)), "w").puts(lines.join("\n"))
 
   # replace the preinitializer.
   FileUtils::cp File.join(%W(#{refinery_root} config preinitializer.rb)), File.join(%W(#{rails_root} config preinitializer.rb))
+
+  # replace the boot file.
+  FileUtils::cp File.join(%W(#{refinery_root} config boot.rb)), File.join(%W(#{rails_root} config boot.rb))
 
   # copy the lib/refinery directory in
   FileUtils::cp_r File.join(%W(#{refinery_root} lib refinery)), File.join(rails_root, "lib")
@@ -69,7 +85,7 @@ unless rails_root.nil? or rails_root.length == 0
 
   # copy new jquery javascripts.
   FileUtils.cp File.join(%W(#{refinery_root} public javascripts jquery.js)), File.join(%W(#{rails_root} public javascripts jquery.js))
-  FileUtils.cp File.join(%W(#{refinery_root} public javascripts jquery-ui-1.8.min.js)), File.join(%W(#{rails_root} public javascripts jquery-ui-1.8.min.js))
+  FileUtils.cp File.join(%W(#{refinery_root} public javascripts jquery-ui.js)), File.join(%W(#{rails_root} public javascripts jquery-ui.js))
 
   # backup app's config file and replace it, if required.
 	environment_updated = false

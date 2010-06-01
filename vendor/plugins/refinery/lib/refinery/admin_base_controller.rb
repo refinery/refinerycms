@@ -2,7 +2,7 @@ class Refinery::AdminBaseController < ApplicationController
 
   layout proc { |controller| "admin#{"_dialog" if controller.from_dialog?}" }
 
-  before_filter :correct_accept_header, :login_required, :restrict_plugins, :restrict_controller
+  before_filter :redirect_if_old_url, :correct_accept_header, :login_required, :restrict_plugins, :restrict_controller
 
   helper_method :searching?
 
@@ -17,32 +17,37 @@ class Refinery::AdminBaseController < ApplicationController
 protected
 
   #TODO Add language
-  def error_404
+  def error_404(exception=nil)
     @page = Page.find_by_menu_match("^/404$", :include => [:parts, :slugs])
     @page[:body] = @page[:body].gsub(/href=(\'|\")\/(\'|\")/, "href='/admin'").gsub("home page", "Dashboard")
     render :template => "/pages/show", :status => 404
   end
 
-  # Override method from application_controller. Not needed in this controller.
-  def find_pages_for_menu; end
+  def restrict_plugins
+      Refinery::Plugins.set_active( current_user.authorized_plugins ) if current_user.respond_to? :plugins
+  end
 
   #TODO Translate
   def restrict_controller
-    if Refinery::Plugins.active.reject {|plugin| params[:controller] !~ Regexp.new(plugin.menu_match) }.empty?
+    if Refinery::Plugins.active.reject { |plugin|
+      params[:controller] !~ Regexp.new(plugin.menu_match) and
+      params[:controller] !~ Regexp.new(plugin.menu_match.to_s.gsub('admin\/', 'refinery/'))
+    }.empty?
       flash[:error] = t('admin.page_dialogs.not_allowed')
       logger.warn "'#{current_user.login}' tried to access '#{params[:controller]}' but was rejected."
       redirect_back_or_default(admin_root_url)
     end
   end
 
-  def restrict_plugins
-    Refinery::Plugins.set_active(current_user.authorized_plugins) if current_user.respond_to? :plugins
-  end
+  # Override method from application_controller. Not needed in this controller.
+  def find_pages_for_menu; end
 
-  # never take the backend down for maintenance.
-  def take_down_for_maintenance?;end
 
 private
+  def redirect_if_old_url
+    redirect_to request.path.gsub('admin', 'refinery') if request.path =~ /^(|\/)admin/
+  end
+
   # This fixes the issue where Internet Explorer browsers are presented with a basic auth dialogue
   # rather than the xhtml one that they *can* accept but don't think they can.
   def correct_accept_header
