@@ -1,4 +1,5 @@
 Refinery::Plugin.register do |plugin|
+  plugin.title = "Settings"
   plugin.name = "refinery_settings"
   plugin.url = {:controller => "/refinery/settings"}
   plugin.description = "Manage Refinery settings"
