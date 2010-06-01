@@ -17,7 +17,6 @@ init_interface = function() {
   } catch(err) {
     $('.button:not(input), #editor_switch a').corner('6px');
   }
-
   $('<span></span>').prependTo('#editor_switch').corner('6px');
   $('#editor_switch a').appendTo('#editor_switch span:first');
   $('#recent_activity li a, #recent_inquiries li a').each(function(i, a) {

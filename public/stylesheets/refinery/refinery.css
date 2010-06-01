@@ -865,8 +865,12 @@ ul#menu.reordering_menu li a {
   font-size: 16px;
   width: 200px;
 }
+.search_form {
+  position: relative;
+}
 .search_form .button {
-  float: right;
+  position: absolute;
+  right: 0px;
 }
 form input:submit {
   background: #65c3f7;
