@@ -127,7 +127,7 @@ $.extend(WYMeditor, {
     BASE_PATH               : "{Wym_Base_Path}",
     CSS_PATH              : "{Wym_Css_Path}",
     WYM_PATH              : "{Wym_Wym_Path}",
-    SKINS_DEFAULT_PATH    : "/images/wymeditor/skins/",
+    SKINS_DEFAULT_PATH    : "images/wymeditor/skins/",
     SKINS_DEFAULT_CSS      : "skin.css",
     SKINS_DEFAULT_JS      : "skin.js",
     LANG_DEFAULT_PATH       : "lang/",
@@ -269,19 +269,26 @@ $.extend(WYMeditor, {
 
         //store the HTML option, if any
         if(this._options.html) this._html = this._options.html;
+
         //get or compute the base path (where the main JS file is located)
         this._options.basePath = this._options.basePath || this.computeBasePath();
+
         //get or set the skin path (where the skin files are located)
-        this._options.skinPath = this._options.skinPath || this._options.basePath + WYMeditor.SKINS_DEFAULT_PATH + this._options.skin + '/';
+        this._options.skinPath = this._options.skinPath || (this._options.basePath + WYMeditor.SKINS_DEFAULT_PATH) + this._options.skin + '/';
+
         // set css and js skin paths
-        this._options.cssSkinPath = (this._options.cssSkinPath || this._options.skinPath) + this._options.skin + "/";
-        this._options.jsSkinPath = (this._options.jsSkinPath || this._options.skinPath) + this._options.skin + "/";
+        this._options.cssCompiledSkinPath = this._options.cssCompiledSkinPath || ((this._options.cssSkinPath || this._options.skinPath) + this._options.skin + "/");
+        this._options.jsCompiledSkinPath = this._options.jsCompiledSkinPath || ((this._options.jsSkinPath || this._options.skinPath) + this._options.skin + "/");
+
         //get or compute the main JS file location
         this._options.wymPath = this._options.wymPath || this.computeWymPath();
+
         //get or set the language files path
         this._options.langPath = this._options.langPath || this._options.basePath + WYMeditor.LANG_DEFAULT_PATH;
+
         //get or set the designmode iframe's base path
         this._options.iframeBasePath = this._options.iframeBasePath || this._options.basePath + WYMeditor.IFRAME_DEFAULT;
+
         //get or compute the jQuery JS file location
         this._options.jQueryPath = this._options.jQueryPath || this.computeJqueryPath();
 
@@ -1236,8 +1243,6 @@ WYMeditor.editor.prototype.dialog = function( dialogType ) {
     }
   }
 
-  console.log(wym._selected_image);
-
   // set up handlers.
   wym = this;
   ajax_loaded_callback = function(){wym.dialog_ajax_callback(selected)}
@@ -1615,7 +1620,7 @@ WYMeditor.editor.prototype.loadSkin = function() {
 
     // if not found, load it, using the skin path
     if(!found) {
-      WYMeditor.loadCss( this._options.cssSkinPath + WYMeditor.SKINS_DEFAULT_CSS );
+      WYMeditor.loadCss( this._options.cssCompiledSkinPath + WYMeditor.SKINS_DEFAULT_CSS );
     }
   }
 
@@ -1625,7 +1630,7 @@ WYMeditor.editor.prototype.loadSkin = function() {
   //does the user want to use some JS to initialize the skin (default: yes)?
   //also check if it hasn't already been loaded by another instance
   if(this._options.initSkin && !WYMeditor.SKINS[this._options.skin]) {
-    eval($.ajax({url:this._options.jsSkinPath + WYMeditor.SKINS_DEFAULT_JS, async:false}).responseText);
+    eval($.ajax({url:this._options.jsCompiledSkinPath + WYMeditor.SKINS_DEFAULT_JS, async:false}).responseText);
   }
 
   //init the skin, if needed

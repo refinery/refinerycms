@@ -1,6 +1,15 @@
 var shiftHeld = false;
 $(document).ready(function(){
+  init_interface();
+  init_flash_messages();
+  init_delete_confirmations();
+  init_sortable_menu();
+  init_submit_continue();
+  init_modal_dialogs();
+  init_tooltips();
+});
 
+init_interface = function() {
   $('input:submit').not('.button').addClass('button');
   $('.button, #editor_switch a').corner("6px");
   $('<span></span>').prependTo('#editor_switch').corner('6px');
@@ -12,16 +21,12 @@ $(document).ready(function(){
   	})
 	});
 
-  init_flash_messages();
-  init_delete_confirmations();
-  init_sortable_menu();
-  init_submit_continue();
-  init_modal_dialogs();
-  init_tooltips();
-
-  // make sure that users can tab to wymeditor fields.
+  // make sure that users can tab to wymeditor fields and add an overlay while loading.
   $('textarea.wymeditor').each(function() {
     textarea = $(this);
+    overlay = $("<div class='wym_loading_overlay'>&nbsp;</div>")
+              .css({'height': textarea.height(), 'width': textarea.width()});
+    textarea.before(overlay);
     if ((instance = WYMeditor.INSTANCES[$(textarea.next('.wym_box').find('iframe').attr('id').split('_')).last().get(0)]) != null) {
       textarea.parent().next().find('input, textarea').keydown($.proxy(function(e) {
         shiftHeld = e.shiftKey;
@@ -45,7 +50,7 @@ $(document).ready(function(){
   $('form input[type=text]:first').focus();
   $('#content, .wym_box').corner('5px bottom');
   $('.wym_iframe iframe').corner('2px bottom');
-});
+}
 
 init_delete_confirmations = function() {
   $('a.confirm-delete').click(function(e) {

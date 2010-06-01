@@ -13,7 +13,7 @@ var wymeditors_loaded = 0;
 if (typeof(custom_wymeditor_boot_options) == "undefined") { custom_wymeditor_boot_options = {}; }
 var wymeditor_boot_options = $.extend({
   skin: 'refinery'
-  , basePath: "/javascripts/wymeditor/"
+  , basePath: "/"
   , wymPath: "/javascripts/wymeditor/jquery.refinery.wymeditor.js"
   , cssSkinPath: "/stylesheets/wymeditor/skins/"
   , jsSkinPath: "/javascripts/wymeditor/skins/"
@@ -175,6 +175,7 @@ var wymeditor_boot_options = $.extend({
     wym._iframe.style.height = wym._element.height() + "px";
     wymeditors_loaded += 1;
     if(WYMeditor.INSTANCES.length == wymeditors_loaded){
+      $('.wym_loading_overlay').remove();
       WYMeditor.loaded();
     }
   }
