@@ -3,7 +3,7 @@
     Override default refinery formatting below. 
     Formatting applies to backend WYSIWYG editors and all frontend. 
 */
-body {
+body, input, textarea, select, p, li, blockquote {
     font-family: Verdana;
     font-size: 12px;
 }

@@ -1,4 +1,5 @@
-<%= form_for [:admin, @page] do |f| %>
+<% url_opts = action_name == 'edit' ? {:url => admin_page_path(@page.id)} : {} %>
+<%= form_for [:admin, @page], url_opts do |f| %>
   <%= f.error_messages  %>
   <div class="field">
     <%= f.label :title %>

@@ -25,8 +25,9 @@ unless (app_path = ARGV.shift).nil? or app_path.length == 0
     end
     FileUtils::cp_r to_copy, rails_root, :verbose => false
 
-    # ensure lib/refinery_initializer.rb doesn't make it in.
+    # ensure lib/refinery_initializer.rb and lib/gemspec.rb don't make it in.
     FileUtils::rm File.join(%W(#{rails_root} lib refinery_initializer.rb)) if File.exists?(File.join(%W(#{rails_root} lib refinery_initializer.rb)))
+    FileUtils::rm File.join(%W(#{rails_root} lib gemspec.rb)) if File.exists?(File.join(%W(#{rails_root} lib gemspec.rb)))
 
     # add in the config files
     for config in %w(database amazon_s3 rackspace_cloudfiles)

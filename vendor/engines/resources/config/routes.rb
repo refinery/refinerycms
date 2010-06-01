@@ -2,7 +2,7 @@ Rails::Application.routes.draw do
 
   resources :resources
 
-  namespace(:admin) do
+  scope(:path => 'refinery', :name_prefix => 'admin', :module => 'admin') do
     resources :resources do
       collection do
         get :insert

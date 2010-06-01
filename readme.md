@@ -29,11 +29,11 @@ Unlike other content managers, Refinery is truly aimed at the end user making it
 
 Refinery's gem requirements are:
 
-* [authlogic ~> 2.1.3](http://rubygems.org/gems/authlogic)
-* [friendly_id ~> 2.3.3](http://rubygems.org/gems/friendly_id)
+* [authlogic ~> 2.1.4](http://rubygems.org/gems/authlogic)
+* [friendly_id ~> 3.0.4](http://rubygems.org/gems/friendly_id)
 * [hpricot ~> 0.8](http://rubygems.org/gems/hpricot)
-* [rails ~> 2.3.5](http://rubygems.org/gems/rails)
-* [rmagick ~> 2.13.1](http://rubygems.org/gems/rmagick)
+* [rails ~> 2.3.6](http://rubygems.org/gems/rails)
+* [rmagick ~> 2.12.2](http://rubygems.org/gems/rmagick)
 * [will_paginate ~> 2.3.12](http://rubygems.org/gems/will_paginate)
 
 ### Other dependencies
@@ -52,8 +52,11 @@ Mac OS 10.5 or 10.6 users [this shell install script](http://github.com/maddox/m
 
 #### Or, clone Refinery's GIT repository
 
+The git repository is where all of the changes are made when any new code is written or existing code is updated. For this reason it is often better to use the gem or to checkout a particular tag (the latest is usually considered the most stable). So unless you want to use the latest code, checkout the latest tag by replacing 0.9.X.XX below with the appropriate version:
+
     git clone git://github.com/resolve/refinerycms.git mynewsite.com
     cd ./mynewsite.com
+    git checkout 0.9.X.XX
     git remote rm origin
     git remote add origin git@github.com:you/yournewsite.git
     mv ./config/database.yml.example ./config/database.yml
@@ -107,6 +110,7 @@ You will be prompted to setup your first user.
 
 * [Google Group Discussion](http://groups.google.com/group/refinery-cms)
 * [Developer/API documentation](http://api.refinerycms.org)
+* [GitHub repository](http://github.com/resolve/refinerycms)
 * [Developer video - 26 mins](http://refinerycms.com/pages/for-developers)
 * [IRC Channel](irc://irc.freenode.net/refinerycms)
 
@@ -124,7 +128,7 @@ in your ``config/environments/production.rb`` file to make Refinery store files 
 
 Simply run the command:
 
-    refinery-update-core path/to/project/root/
+    rake refinery:update
 
 and the up-to-date core files will be copied from the latest gem into your project.
 
@@ -144,7 +148,7 @@ This will pull in all of the updated files in the project and may result in some
 * Easily edit and manage pages with a [WYSIWYG visual editor](http://www.wymeditor.org/)
 * Manage you site's structure
 
-### [Images](http://github.com/resolve/refinerycms/blob/master/vendor/plugins/images/images.md) & [Resources](http://github.com/resolve/refinerycms/blob/master/vendor/plugins/resources/resources.md)
+### [Images](http://github.com/resolve/refinerycms/blob/master/vendor/plugins/images/images.md) & [Files](http://github.com/resolve/refinerycms/blob/master/vendor/plugins/resources/resources.md)
 
 * Easily upload and insert images
 * Upload and link to resources such as PDF documents

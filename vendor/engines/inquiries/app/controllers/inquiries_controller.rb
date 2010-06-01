@@ -7,7 +7,7 @@ class InquiriesController < ApplicationController
   end
 
   def thank_you
-    @page = Page.find_by_menu_match("^/inquiries/thank_you$", :include => [:parts, :slugs])
+    @page = Page.find_by_link_url("/contact/thank_you", :include => [:parts, :slugs])
   end
 
   def new
@@ -39,7 +39,7 @@ class InquiriesController < ApplicationController
 protected
 
   def find_page
-    @page = Page.find_by_link_url('/inquiries/new', :include => [:parts, :slugs])
+    @page = Page.find_by_link_url('/contact', :include => [:parts, :slugs])
   end
 
 end

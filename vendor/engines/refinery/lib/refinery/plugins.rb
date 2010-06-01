@@ -26,6 +26,10 @@ module Refinery
       @registered_plugins ||= self.new
     end
 
+    def pathnames
+      self.collect { |p| p.pathname }.compact
+    end
+
     def titles
       self.collect { |p| p.title }
     end

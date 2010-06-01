@@ -1,4 +1,16 @@
+var shiftHeld = false;
 $(document).ready(function(){
+
+  $('input:submit').not('.button').addClass('button');
+  $('.button, #editor_switch a').corner("6px");
+  $('<span></span>').prependTo('#editor_switch').corner('6px');
+  $('#editor_switch a').appendTo('#editor_switch span:first');
+  $('#recent_activity li a, #recent_inquiries li a').each(function(i, a) {
+    $(this).textTruncate({
+      width: $(this).width()
+  		, tooltip: false
+  	})
+	});
 
   init_flash_messages();
   init_delete_confirmations();
@@ -7,14 +19,38 @@ $(document).ready(function(){
   init_modal_dialogs();
   init_tooltips();
 
+  // make sure that users can tab to wymeditor fields.
+  $('textarea.wymeditor').each(function() {
+    textarea = $(this);
+    if ((instance = WYMeditor.INSTANCES[$(textarea.next('.wym_box').find('iframe').attr('id').split('_')).last().get(0)]) != null) {
+      textarea.parent().next().find('input, textarea').keydown($.proxy(function(e) {
+        shiftHeld = e.shiftKey;
+        if (shiftHeld && e.keyCode == $.ui.keyCode.TAB) {
+          this._iframe.contentWindow.focus();
+          e.preventDefault();
+        }
+      }, instance)).keyup(function(e) {
+        shiftHeld = false;
+      });
+      textarea.parent().prev().find('input, textarea').keydown($.proxy(function(e) {
+        if (e.keyCode == $.ui.keyCode.TAB) {
+          this._iframe.contentWindow.focus();
+          e.preventDefault();
+        }
+      }, instance));
+    }
+  });
+
   // focus first field in an admin form.
   $('form input[type=text]:first').focus();
-  $('#content').corner('5px bottom');
+  $('#content, .wym_box').corner('5px bottom');
+  $('.wym_iframe iframe').corner('2px bottom');
 });
 
 init_delete_confirmations = function() {
   $('a.confirm-delete').click(function(e) {
-    if (confirm("Are you sure you want to " + (t=($(this).attr('title') || $(this).attr('tooltip')))[0].toLowerCase() + t.substring(1) + "?")) {
+    if (confirm("Are you sure you want to " + (t=($(this).attr('title') || $(this).attr('tooltip')))[0].toLowerCase() + t.substring(1) + "?"))
+    {
       $("<form method='POST' action='" + $(this).attr('href') + "'></form>")
         .append("<input type='hidden' name='_method' value='delete' />")
         .append("<input type='hidden' name='authenticity_token' value='" + $('#admin_authenticity_token').val() + "'/>")
@@ -30,23 +66,23 @@ init_flash_messages = function(){
      $('#flash').fadeOut({duration: 330});
      e.preventDefault();
   });
+  $('#flash.flash_message').prependTo('#records');
 }
 
 init_modal_dialogs = function(){
   $('a[href*="dialog=true"]').not('#dialog_container a').each(function(i, anchor)
   {
     $(anchor).click(function(e){
-      iframe = $("<iframe id='dialog_iframe' src='" + $(this).attr('href') + "&amp;app_dialog=true" + "'></iframe>");
+      iframe = $("<iframe id='dialog_iframe' src='" + $(this).attr('href') + "&amp;app_dialog=true" + "'></iframe>").corner('8px');
       iframe.dialog({
-        title: $(anchor).attr('title') || $(anchor).attr('name') || $(anchor).html() || null,
-        modal: true,
-        resizable: false,
-        autoOpen: true,
-        width: (parseInt($(anchor.href.match("width=([0-9]*)")).last().get(0))||928),
-        height: (parseInt($(anchor.href.match("height=([0-9]*)")).last().get(0))||473)/*,
-        beforeclose: function(){
-          $(document.body).removeClass('hide-overflow');
-        }*/
+        title: $(anchor).attr('title') || $(anchor).attr('name') || $(anchor).html() || null
+        , modal: true
+        , resizable: false
+        , autoOpen: true
+        , width: (parseInt($(anchor.href.match("width=([0-9]*)")).last().get(0))||928)
+        , height: (parseInt($(anchor.href.match("height=([0-9]*)")).last().get(0))||473)
+        , open: onOpenDialog
+        , close: onCloseDialog
       });
       if ($.browser.msie) {
         iframe.css({'margin':'-2px 2px 2px -2px'});
@@ -69,7 +105,7 @@ init_sortable_menu = function(){
       var ser   = $menu.sortable('serialize', {key: 'menu[]'}),
           token = escape($('#admin_authenticity_token').val());
 
-      $.get('/admin/update_menu_positions?' + ser, {authenticity_token: token});
+      $.get('/refinery/update_menu_positions?' + ser, {authenticity_token: token});
     }
   }).tabs();
   //Initial status disabled
@@ -100,55 +136,75 @@ init_sortable_menu = function(){
 }
 
 init_submit_continue = function(){
-  $('#submit_continue_button').click(function(e) {
-    // ensure wymeditors are up to date.
-    if ($(this).hasClass('wymupdate')) {
-      $.each(WYMeditor.INSTANCES, function(index, wym)
-      {
-        wym.update();
-      });
-    }
+  $('#submit_continue_button').click(submit_and_continue);
 
-    $('#continue_editing').val(true);
-    $('#flash').fadeOut(250)
-
-    $('.fieldWithErrors').removeClass('fieldWithErrors').addClass('field');
-    $('#flash_container .errorExplanation').remove();
-
-    $.post(this.form.action, $(this.form).serialize(), function(data) {
-      if ((flash_container = $('#flash_container')).length > 0) {
-        flash_container.html(data);
-
-        $('#flash').css('width', 'auto').fadeIn(550);
-
-        $('.errorExplanation').not($('#flash_container .errorExplanation')).remove();
-
-        if ((error_fields = $('#fieldsWithErrors').val()) != null) {
-          $.each(error_fields.split(','), function() {
-            $("#" + this).wrap("<div class='fieldWithErrors' />");
-          });
-        }
-
-        $('.fieldWithErrors:first :input:first').focus();
-
-        $('#continue_editing').val(false);
+  if ($('#continue_editing').length > 0) {
+    $('#editor_switch a').click(function(e) {
+      if (!confirm("Any changes you've made will be lost. Are you sure you want to continue without saving?")) {
+        e.preventDefault();
       }
     });
+  }
+}
 
-    e.preventDefault();
+submit_and_continue = function(e, redirect_to) {
+  // ensure wymeditors are up to date.
+  if ($(this).hasClass('wymupdate')) {
+    $.each(WYMeditor.INSTANCES, function(index, wym)
+    {
+      wym.update();
+    });
+  }
+
+  $('#continue_editing').val(true);
+  $('#flash').fadeOut(250)
+
+  $('.fieldWithErrors').removeClass('fieldWithErrors').addClass('field');
+  $('#flash_container .errorExplanation').remove();
+
+  $.post($('#continue_editing').get(0).form.action, $($('#continue_editing').get(0).form).serialize(), function(data) {
+    if ((flash_container = $('#flash_container')).length > 0) {
+      flash_container.html(data);
+
+      $('#flash').css('width', 'auto').fadeIn(550);
+
+      $('.errorExplanation').not($('#flash_container .errorExplanation')).remove();
+
+      if ((error_fields = $('#fieldsWithErrors').val()) != null) {
+        $.each(error_fields.split(','), function() {
+          $("#" + this).wrap("<div class='fieldWithErrors' />");
+        });
+      } else if (redirect_to) {
+        window.location = redirect_to;
+      }
+
+      $('.fieldWithErrors:first :input:first').focus();
+
+      $('#continue_editing').val(false);
+
+      init_flash_messages();
+    }
   });
+
+  e.preventDefault();
 }
 
 init_tooltips = function(args){
-  $($(args != null ? args : 'a[title], span[title], #image_grid img[title], *[tooltip]')).each(function(index, element)
+  $($(args != null ? args : 'a[title], span[title], #image_grid img[title], *[tooltip]')).not('.no-tooltip').each(function(index, element)
   {
     // create tooltip on hover and destroy it on hoveroff.
     $(element).hover(function(e) {
-      tooltip = $("<div class='tooltip'></div>").html($(this).attr('tooltip')).appendTo($('#tooltip_container'));
-      tooltip.css({
-        'left': ((left = $(this).offset().left - (tooltip.outerWidth() / 2) + ($(this).outerWidth() / 2)) >= 0 ? left : 0)
-        , 'top': $(this).offset().top - tooltip.outerHeight() - 6
-      }).show();
+      tooltip = $("<div class='tooltip'></div>").html($(this).attr('tooltip')).corner('6px').appendTo($('#tooltip_container'));
+      tooltip.css('maxWidth', '300px');
+      tooltip.css('left', ((left = $(this).offset().left - (tooltip.outerWidth() / 2) + ($(this).outerWidth() / 2)) >= 0 ? left : 0));
+
+      if ((tooltip.offset().left + tooltip.outerWidth) > (window_width = $(window).width())) {
+        tooltip.css('left', window_width - tooltip.outerWidth);
+      }
+
+      tooltip.css('top', $(this).offset().top - tooltip.outerHeight() - 8);
+
+      tooltip.show();
     }, function(e) {
       $('.tooltip').remove();
     });
@@ -343,7 +399,10 @@ var page_options = {
     // set the page tabs up, but ensure that all tabs are shown so that when wymeditor loads it has a proper height.
     // also disable page overflow so that scrollbars don't appear while the page is loading.
     $(document.body).addClass('hide-overflow');
-    page_options.tabs = $('#page-tabs').tabs({tabTemplate: '<li><a href="#{href}">#{label}</a></li>'}).find(' > ul li a').corner('top 5px');
+    page_options.tabs = $('#page-tabs');
+    page_options.tabs.tabs({tabTemplate: '<li><a href="#{href}">#{label}</a></li>'})
+    page_options.tabs.find(' > ul li a').corner('top 5px');
+
     part_shown = $('#page-tabs .page_part.field').not('.ui-tabs-hide');
     $('#page-tabs .page_part.field').removeClass('ui-tabs-hide');
 
@@ -369,7 +428,11 @@ var page_options = {
   show_options: function(){
     $('#toggle_advanced_options').click(function(e){
       e.preventDefault();
-      $('#more_options').toggle();
+      $('#more_options').animate({opacity: 'toggle', height: 'toggle'}, 250);
+
+      $('html,body').animate({
+        scrollTop: $('#toggle_advanced_options').parent().offset().top
+      }, 250);
     });
   },
 
@@ -410,19 +473,26 @@ var page_options = {
               , body: ''
             }
             , function(data, status){
+              $('#submit_continue_button').remove();
               // Add a new tab for the new content section.
-              $('#page_part_editors').append(data);
+              $(data).appendTo('#page_part_editors');
               page_options.tabs.tabs('add', '#page_part_new_' + $('#new_page_part_index').val(), part_title);
-              page_options.tabs.tabs('select', '#page_part_new_' + $('#new_page_part_index').val());
+              page_options.tabs.tabs('select', $('#new_page_part_index').val());
 
               // turn the new textarea into a wymeditor.
               $('#page_parts_attributes_' + $('#new_page_part_index').val() + "_body").wymeditor(wymeditor_boot_options);
+
+              // hook into wymedtior to instruct it to select this new tab again once it has loaded.
+              WYMeditor.loaded = function() {
+                page_options.tabs.tabs('select', $('#new_page_part_index').val());
+                WYMeditor.loaded = function(){}; // kill it again.
+              }
 
               // Wipe the title and increment the index counter by one.
               $('#new_page_part_index').val(parseInt($('#new_page_part_index').val()) + 1);
               $('#new_page_part_title').val('');
 
-              $('#page-tabs').tabs().find('> ul li a').corner('top 5px');
+              page_options.tabs.find('> ul li a').corner('top 5px');
             }
           );
         }else{
@@ -444,18 +514,16 @@ var page_options = {
 
     $('#delete_page_part').click(function(e){
       e.preventDefault();
-      var stab_id = page_options.tabs.tabs('option', 'selected');
-      var part_id = $('#page_parts_attributes_' + stab_id + '_id').val();
-      //console.log('stab_id: ' + stab_id + ' part_id: ' + part_id);
 
-      var result = confirm("This will remove the content section '" + $('#page_parts .ui-tabs-selected a').html() + "' and erase all content that has been entered into it even if you don't save the page, are you sure?");
-      if(part_id && result) {
+      if(confirm("This will remove the content section '" + $('#page_parts .ui-tabs-selected a').html() + "' immediately even if you don't save this page, are you sure?")) {
+        var tabId = page_options.tabs.tabs('option', 'selected');
         $.ajax({
-          url: page_options.del_part_url + '/' + part_id,
+          url: page_options.del_part_url + '/' + $('#page_parts_attributes_' + tabId + '_id').val(),
           type: 'DELETE'
         });
-        page_options.tabs.tabs('remove', stab_id);
-        //WYMeditor.loaded();
+        page_options.tabs.tabs('remove', tabId);
+        $('#page_parts_attributes_' + tabId + '_id').remove();
+        $('#submit_continue_button').remove();
       }
 
     });
@@ -510,7 +578,8 @@ var image_dialog = {
 
       $(img).parent().addClass('selected');
       var imageUrl = parseURL($(img).attr('src'));
-      var relevant_src = imageUrl.pathname.replace('_dialog_thumb', '');
+      var imageThumbnailSize = $('#existing_image_size_area li.selected a').attr('rel');
+      var relevant_src = imageUrl.pathname.replace('_dialog_thumb', ('_' + imageThumbnailSize));
       if (imageUrl.protocol == "" && imageUrl.hostname == "system") {
         relevant_src = "/system" + relevant_src;
       }
@@ -528,6 +597,9 @@ var image_dialog = {
         }
         if ((wym_alt = parent.document.getElementById('wym_alt')) != null) {
           wym_alt.value = $(img).attr('alt');
+        }
+        if ((wym_size = parent.document.getElementById('wym_size')) != null) {
+          wym_size.value = imageThumbnailSize;
         }
       }
     }
@@ -558,6 +630,12 @@ var image_dialog = {
     var _this = this;
     $('#dialog-form-actions #submit_button').click($.proxy(_this.submit_image_choice, _this));
     $('#dialog-form-actions #cancel_button').click($.proxy(_this.close_dialog, _this));
+    $('#existing_image_size_area ul li a').click(function(e) {
+      $('#existing_image_size_area ul li').removeClass('selected');
+      $(this).parent().addClass('selected');
+      image_dialog.set_image($('#existing_image_area_content ul li.selected img'));
+      e.preventDefault();
+    });
   }
 }
 
@@ -617,7 +695,9 @@ var list_reorder = {
           serialized += "&sortable_list[]=" + $($(li).attr('id').split('_')).last().get(0);
         }
   	  });
-  	  serialized += "&tree=" + list_reorder.tree + "&authenticity_token=" + encodeURIComponent($('#reorder_authenticity_token').val() + "&continue_reordering=false");
+  	  serialized += "&tree=" + list_reorder.tree;
+  	  serialized += "&authenticity_token=" + encodeURIComponent($('#reorder_authenticity_token').val());
+  	  serialized += "&continue_reordering=false";
 
       $.post(list_reorder.update_url, serialized, function(data) {
         $(list_reorder.sortable_list.get(0)).html(data);

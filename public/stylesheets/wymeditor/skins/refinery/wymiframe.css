@@ -34,7 +34,7 @@
 	ol,
 	table,
 	blockquote,
-	pre			 { background: #FFFFFF no-repeat 2px 2px;
+	pre			 { background: transparent no-repeat 2px 2px;
 					padding:8px 5px 5px;
 					margin:6px 0px;
 					border: 1px dotted #cccccc;

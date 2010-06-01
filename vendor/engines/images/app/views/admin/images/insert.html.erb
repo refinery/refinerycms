@@ -26,6 +26,27 @@
           </ul>
         </div>
         <%= images_paginator @images, from_dialog? %>
+        <div id='existing_image_size_area'>
+          <input type='hidden' name='selected_image_size' id='selected_image_size' />
+          <h2>Size</h2>
+          <ul>
+            <%
+              thumbnail_sizes = RefinerySetting.find_or_set(:image_thumbnails, {})
+              (sizes = RefinerySetting.find_or_set(:image_dialogue_sizes, [:small, :medium, :large])).each_with_index do |size, index|
+                if thumbnail_sizes.keys.include?(size) and (pixels = thumbnail_sizes[size]).present?
+                  modifier = ((index + 1) * 10) + 10
+            -%>
+                  <li<%= " class='selected'" if size == :medium %> style="padding-top: <%= (((sizes.length * 10) - modifier) / 2) + 10 %>px">
+                    <%= link_to "&nbsp;", "##{size}",
+                                :rel => size.to_s, #pixels.gsub(/[^x?\d]/i, ''),
+                                :title => "#{size} image",
+                                :tooltip => "#{size} image",
+                                :style => "width: #{modifier}px; height: #{modifier}px;" %>
+                  </li>
+            <%  end
+              end -%>
+          </ul>
+        </div>
       </div>
     <% end %>
     <div id='upload_image_area' class='dialog_area' <%= "style='display:none;'" if @images.any? and @image.errors.empty? %>>
@@ -35,9 +56,8 @@
 </div>
 <% if @app_dialog %>
   <div id='dialog-form-actions' class='form-actions'>
-    <%= submit_tag 'Insert', :id => "submit_button" %>
-    or
-    <%= link_to "Cancel", "", :id => "cancel_button", :class => "close_dialog" %>
+    <%= submit_tag 'Insert', :id => "submit_button", :class => 'button' %>
+    <%= link_to "Cancel", "", :id => "cancel_button", :class => "close_dialog button" %>
   </div>
 <% end %>
 
@@ -45,6 +65,7 @@
   <script type='text/javascript'>
     $(document).ready(function(){
       image_dialog.init(<%= @callback.present? ? "self.parent.#{@callback}" : "null" %>);
+//      init_tooltips('#existing_image_size_area li a');
     });
   </script>
 <% end %>

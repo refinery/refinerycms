@@ -11,7 +11,8 @@ gem 'unicorn', :group => :development
 # Deploy with Capistrano
 # gem 'capistrano'
 
-# gem 'image_science'
+# If you are using s3 you probably want this gem:
+# gem 'aws-s3'
 
 #===REFINERY REQUIRED GEMS===
 git 'git://github.com/rails/rails.git'

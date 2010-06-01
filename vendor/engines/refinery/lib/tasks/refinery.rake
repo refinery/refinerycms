@@ -4,69 +4,82 @@ namespace :refinery do
   task :override => :environment do
     require 'fileutils'
 
-    if defined?(THEME)
-      # Prepare the basic structure for the theme directory
-      dirs = ["themes", "themes/#{THEME}", "themes/#{THEME}/views", "themes/#{THEME}/views/layouts", "themes/#{THEME}/views/shared", "themes/#{THEME}/views/pages", "themes/#{THEME}/stylesheets", "themes/#{THEME}/javascripts", "themes/#{THEME}/images"]
-		  dirs.each do |dir|
-			  dir = Rails.root.join(dir.split('/').join(File::SEPARATOR))
-			  dir.mkdir unless dir.directory?
-		  end
-		else
-		  # Prepare the basic structure for the app directory
-      dirs = ["app", "app/views", "app/views/layouts", "app/views/admin", "app/views/shared", "app/controllers", "app/models", "app/controllers/admin", "app/helpers", "app/helpers/admin"]
-		  dirs.each do |dir|
-			  dir = Rails.root.join(dir.split('/').join(File::SEPARATOR))
-			  dir.mkdir unless dir.directory?
-		  end
-		end
+    if (view = ENV["view"]).present?
+      pattern = "#{view.split("/").join(File::SEPARATOR)}*.erb"
+      looking_for = Refinery::Plugins.registered.pathnames.map{|p| p.join("app", "views", pattern).to_s}
 
-    if defined?(VIEW) || defined?(CONTROLLER) || defined?(MODEL)
-    end
+      # copy in the matches
+      matches = looking_for.collect{|d| Dir[d]}.flatten.compact.uniq
+      if matches.any?
+        matches.each do |match|
+          dir = match.split("/app/views/").last.split('/')
+          file = dir.pop # get rid of the file.
+          dir = dir.join(File::SEPARATOR) # join directory back together
 
-=begin
-      # copy the controller
-      unless controller_with_admin =~ /\*(\*)?/ and !action.nil?
-        refinery_controllers = Dir[refinery_root.join("vendor", "plugins", "**", "app", "controllers", "#{controller_with_admin}_controller.rb")].compact
-        if refinery_controllers.any? # the controllers may not exist.
-          refinery_controllers.each do |refinery_controller|
-            # make the directories
-            FileUtils.mkdir_p(copy_to = rails_root.join("app", "controllers", admin).to_s)
-            FileUtils.cp(refinery_controller, copy_to)
+          unless (theme = ENV["theme"]).present?
+            destination_dir = Rails.root.join("app", "views", dir)
+          else
+            destination_dir = Rails.root.join("themes", theme, "views", dir)
           end
-        else
-          puts "Note: Couldn't find a matching controller to override."
-        end
-      end
+          FileUtils.mkdir_p(destination_dir)
+          FileUtils.cp match, (destination = File.join(destination_dir, file))
 
-      # copy the action, if it exists
-      unless action.nil? or action.length == 0
-        # get all the matching files
-        looking_for = refinery_root.join("vendor", "plugins", "**", "app", "views", controller_with_admin.split("/").join(File::SEPARATOR), "#{action}*.erb")
-        action_files = Dir[looking_for]
-
-        # copy in the action template
-        action_files.each do |action_file|
-          action_file_path = action_file.split("/app/views/").last
-          action_file_dir = action_file_path.split('/')
-          action_file_dir.pop # get rid of the file.
-
-          FileUtils.mkdir_p(rails_root.join("app", "views", action_file_dir.join(File::SEPARATOR)))
-          FileUtils.cp action_file, rails_root.join("app", "views", action_file_path)
+          puts "Copied view template file to #{destination.gsub("#{Rails.root.to_s}#{File::SEPARATOR}", '')}"
         end
       else
-        puts "Note: No action was specified."
+        puts "Couldn't match any view template files in any engines like #{view}"
+      end
+    elsif (controller = ENV["controller"]).present?
+      pattern = "#{controller.split("/").join(File::SEPARATOR)}*.rb"
+      looking_for = Refinery::Plugins.registered.pathnames.map{|p| p.join("app", "controllers", pattern).to_s}
+
+      # copy in the matches
+      matches = looking_for.collect{|d| Dir[d]}.flatten.compact.uniq
+      if matches.any?
+        matches.each do |match|
+          dir = match.split("/app/controllers/").last.split('/')
+          file = dir.pop # get rid of the file.
+          dir = dir.join(File::SEPARATOR) # join directory back together
+
+          destination_dir = Rails.root.join("app", "controllers", dir)
+          FileUtils.mkdir_p(destination_dir)
+          FileUtils.cp match, (destination = File.join(destination_dir, file))
+
+          puts "Copied controller file to #{destination.gsub("#{Rails.root.to_s}#{File::SEPARATOR}", '')}"
+        end
+      else
+        puts "Couldn't match any controller files in any engines like #{controller}"
+      end
+    elsif (model = ENV["model"]).present?
+      pattern = "#{model.split("/").join(File::SEPARATOR)}*.rb"
+      looking_for = Refinery::Plugins.registered.pathnames.map{|p| p.join("app", "models", pattern).to_s}
+
+      # copy in the matches
+      matches = looking_for.collect{|d| Dir[d]}.flatten.compact.uniq
+      if matches.any?
+        matches.each do |match|
+          dir = match.split("/app/models/").last.split('/')
+          file = dir.pop # get rid of the file.
+          dir = dir.join(File::SEPARATOR) # join directory back together
+
+          destination_dir = Rails.root.join("app", "models", dir)
+          FileUtils.mkdir_p(destination_dir)
+          FileUtils.cp match, (destination = File.join(destination_dir, file))
+
+          puts "Copied model file to #{destination.gsub("#{Rails.root.to_s}#{File::SEPARATOR}", '')}"
+        end
+      else
+        puts "Couldn't match any model files in any engines like #{model}"
       end
     else
       puts "You didn't specify anything to override. Here's some examples:"
-      puts "refinery-override /pages/* /path/to/my/project"
-      puts "refinery-override /pages/show /path/to/my/project"
-      puts "refinery-override /admin/pages/index"
-      puts "refinery-override /shared/_menu /path/to/my/project"
-      puts "refinery-override **/*menu /path/to/my/project"
-      puts "refinery-override /shared/_menu_branch"
+      puts "rake refinery:override view=pages/home"
+      puts "rake refinery:override controller=pages"
+      puts "rake refinery:override model=page"
+      puts "rake refinery:override view=pages/home theme=demolicious"
+      puts "rake refinery:override **/*menu"
+      puts "rake refinery:override shared/_menu_branch"
     end
-=end
-
   end
 
   desc "Required to upgrade from <= 0.9.0 to 0.9.1 and above"

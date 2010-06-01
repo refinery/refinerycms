@@ -1,4 +1,4 @@
-require File.dirname(__FILE__) + '/../test_helper'
+require File.expand_path(File.dirname(__FILE__) + '/../test_helper')
 require 'admin/images_controller'
 
 class Admin::ImagesController; def rescue_action(e) raise e end; end
@@ -16,7 +16,7 @@ class ImagesControllerTest < ActionController::TestCase
     get :index
     assert_response :success
     assert_not_nil assigns(:images)
-    assert assigns(:images).size, Image.count
+    assert_equal assigns(:images).size, Image.count
   end
 
   def test_new_image_form
@@ -28,7 +28,7 @@ class ImagesControllerTest < ActionController::TestCase
   def test_search
     get :index, :search => "Car"
 
-    assert 1, assigns(:images).size
+    assert_equal 1, assigns(:images).size
     assert images(:the_world), assigns(:images).first
     assert_not_nil assigns(:images)
   end

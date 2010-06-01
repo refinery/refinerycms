@@ -52,7 +52,7 @@ Refinerycms::Application.routes.draw do |map|
 
   root :to => 'pages#home'
 
-  namespace(:admin) do
+  scope(:path => 'refinery', :name_prefix => 'admin', :module => 'admin') do
     root :to => 'dashboard#index'
   end
 
@@ -67,7 +67,10 @@ Refinerycms::Application.routes.draw do |map|
 
   # Install the default routes as the lowest priority.
 
-  #match 'admin/*path', :to => 'admin/base#error_404'
-  #match '*path',       :to => 'application#error_404'
+  #map.redirect 'admin/*path', :controller => 'admin/base'
+  #map.connect 'refinery/*path', :controller => 'admin/base', :action => 'error_404'
+
+  # Marketable URLs
+  #map.connect '*path', :controller => 'pages', :action => 'show'
 
 end

@@ -6,6 +6,10 @@ module Refinery
     def self.register(&block)
       plugin = self.new
       yield plugin
+      if defined?(Page) && new_plugin.title
+        # Prevent page slugs from being this plugin's controller name
+        Page.friendly_id_config.reserved_words << new_plugin.title.gsub(" ", "_").downcase
+      end
       klass_name = plugin.title == 'Refinery' ? 'RefineryEngine' : plugin.title
       # Set the root as Rails::Engine.called_from will always be
       #                 vendor/engines/refinery/lib/refinery
@@ -21,9 +25,11 @@ module Refinery
       Object.const_set(klass_name.to_sym, klass)
     end
 
-    attr_accessor :title, :version, :description, :url, :menu_match, :plugin_activity, :directory, :hide_from_menu, :always_allow_access
+    attr_accessor :title, :version, :description, :url, :menu_match, :plugin_activity, :directory, :hide_from_menu, :always_allow_access, :pathname
 
     def initialize
+      # save the pathname to where this plugin is.
+      self.pathname = (Pathname.new(self.directory.present? ? self.directory : caller(3).first.split('/rails').first) rescue nil)
       Refinery::Plugins.registered << self # add me to the collection of registered plugins
     end
 
