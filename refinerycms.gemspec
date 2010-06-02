@@ -2,7 +2,7 @@ Gem::Specification.new do |s|
   s.name              = %q{refinerycms}
   s.version           = %q{0.9.7.dev}
   s.description       = %q{A beautiful open source Ruby on Rails content manager for small business. Easy to extend, easy to use, lightweight and all wrapped up in a super slick UI.}
-  s.date              = %q{2010-06-02}
+  s.date              = %q{2010-06-03}
   s.summary           = %q{A beautiful open source Ruby on Rails content manager for small business.}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
@@ -190,7 +190,8 @@ Gem::Specification.new do |s|
 		'public/javascripts/jquery/jquery.corner.js',
 		'public/javascripts/jquery/jquery.textTruncate.js',
 		'public/javascripts/jquery/MIT-LICENSE.txt',
-		'public/javascripts/jquery-ui.js',
+		'public/javascripts/jquery-min.js',
+		'public/javascripts/jquery-ui-custom-min.js',
 		'public/javascripts/jquery.js',
 		'public/javascripts/refinery',
 		'public/javascripts/refinery/admin.js',
