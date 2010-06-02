@@ -76,9 +76,10 @@ module Refinery::ApplicationHelper
     # render the tags normally unless
     unless options[:google] and !local_request?
       if options[:jquery_ui]
-        javascript_include_tag 'jquery', 'jquery-ui', :cache => (options[:caching] ? "cache/libraries" : nil)
+        javascript_include_tag  "jquery#{"-min" if Rails.env.production?}", "jquery-ui-custom-min",
+                                :cache => (options[:caching] ? "cache/libraries" : nil)
       else
-        javascript_include_tag 'jquery'
+        javascript_include_tag "jquery#{"-min" if Rails.env.production?}"
       end
     else
       "#{javascript_include_tag("http://www.google.com/jsapi").gsub(".js", "")}
