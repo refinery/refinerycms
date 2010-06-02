@@ -54,7 +54,9 @@ init_interface = function() {
   // focus first field in an admin form.
   $('form input[type=text]:first').focus();
   $('#page > #content, .wym_box').corner('5px bottom');
-  $('.wym_iframe iframe').corner('2px bottom');
+  $('.wym_box').corner('5px tr');
+  $('.wym_iframe iframe').corner('2px');
+  $('.form-actions').corner('5px');
 }
 
 init_delete_confirmations = function() {
