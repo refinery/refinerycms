@@ -95,7 +95,7 @@ private
       # ensure that we don't redirect to AJAX or POST/PUT/DELETE urls
       session[:refinery_return_to] = request.path if request.get? and !request.xhr? and !from_dialog?
     elsif request.path !~ /^(\/(wym(\-.*|iframe)|system\/|sessions?|.*\/dialogs|javascripts|stylesheets|images))/ and
-      !from_dialog? and controller_name !~ /^(sessions|users)/
+      !from_dialog? and !request.xhr? and controller_name !~ /^(sessions|users)/
       session[:website_return_to] = request.path
     end
   end
