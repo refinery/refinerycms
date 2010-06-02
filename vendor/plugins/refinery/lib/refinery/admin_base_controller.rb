@@ -63,7 +63,7 @@ private
   # were at instead of the default e.g. admin_pages_url
   # right now we just want to snap back to index actions and definitely not to dialogues.
   def store_location?
-    store_location unless action_name !~ /index/ or from_dialog?
+    store_location unless action_name !~ /index/ or request.xhr? or from_dialog?
   end
 
 end
