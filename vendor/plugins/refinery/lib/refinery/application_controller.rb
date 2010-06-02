@@ -53,7 +53,7 @@ class Refinery::ApplicationController < ActionController::Base
   end
 
   def login?
-    controller_name =~ /^(user|session)(|s)/ and not admin?
+    (controller_name =~ /^(user|session)(|s)/ and not admin?) or just_installed?
   end
 
   def wymiframe

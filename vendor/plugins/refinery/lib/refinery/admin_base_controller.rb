@@ -3,6 +3,7 @@ class Refinery::AdminBaseController < ApplicationController
   layout proc { |controller| "admin#{"_dialog" if controller.from_dialog?}" }
 
   before_filter :redirect_if_old_url, :correct_accept_header, :login_required, :restrict_plugins, :restrict_controller
+  after_filter :store_location, :except => [:new, :create, :edit, :update, :destroy, :update_positions] # for redirect_back_or_default
 
   helper_method :searching?
 
@@ -16,7 +17,7 @@ class Refinery::AdminBaseController < ApplicationController
 
 protected
 
-  def error_404(exception=nil)\
+  def error_404(exception=nil)
     @page = Page.find_by_menu_match("^/404$", :include => [:parts, :slugs])
     @page[:body] = @page[:body].gsub(/href=(\'|\")\/(\'|\")/, "href='/admin'").gsub("home page", "Dashboard")
     render :template => "/pages/show", :status => 404

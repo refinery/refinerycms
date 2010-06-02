@@ -30,7 +30,7 @@ about_us_page.parts.create({
               :position => 1
             })
 
-contact_us_page = Page.create(:title => "Contact Us",
+contact_us_page = Page.create(:title => "Contact",
             :link_url => "/contact",
             :menu_match => "^/(inquiries|contact).*$",
             :deletable => false,
