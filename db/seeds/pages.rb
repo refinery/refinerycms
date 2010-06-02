@@ -16,7 +16,7 @@ home_page.parts.create({
               :position => 1
             })
 
-about_us_page = Page.create(:title => "About Us",
+about_us_page = Page.create(:title => "About",
             :deletable => true,
             :position => (page_position += 1))
 about_us_page.parts.create({
