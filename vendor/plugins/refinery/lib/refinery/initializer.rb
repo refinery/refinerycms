@@ -54,6 +54,20 @@ module Refinery
       # call Rails' run
       super
 
+      # Prevent page slugs from using any routes used by registered engines. (Needs updating for Rails3)
+      if defined?(Page)
+        # First we need to find out all of the routes in use by this application.
+        reserved_routes = ActionController::Routing::Routes.routes.collect do |route|
+          route.segments.inject("") {|str, segment| str << segment.to_s.gsub(/\(\.:format\)\?/, '') }
+        end
+
+        # Now we need just the first part of the routing segment.
+        reserved_routes = reserved_routes.collect { |segment| segment.gsub(/^\//, '').split('/').first}.compact.uniq.reject {|r| r =~ /^:/ }
+
+        # Now append all of the routes to the reserved words list and ensure they're all unique.
+        (Page.friendly_id_config.reserved_words += reserved_routes).uniq!
+      end
+
       # Create deprecations for variables that we've stopped using (possibly remove in 1.0?)
       require 'refinery/deprecations'
     end
