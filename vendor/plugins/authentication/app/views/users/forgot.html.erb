@@ -5,9 +5,10 @@
     <%= f.text_field :email, :class => "larger" %>
   </div>
   <div class='form-actions'>
-    <%= submit_tag 'Reset password' %>
-    or
-    <%= link_to "Cancel", login_url %>
+    <div class='form-actions-left'>
+      <%= submit_tag 'Reset password', :class => 'button' %>
+      <%= link_to "Cancel", login_url, :class => 'close_dialog button' %>
+    </div>
   </div>
 <% end -%>
 <% content_for :header, "Please enter the email address for your account." %>

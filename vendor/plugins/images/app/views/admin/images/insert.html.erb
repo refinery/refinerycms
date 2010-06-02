@@ -54,8 +54,10 @@
 </div>
 <% if @app_dialog %>
   <div id='dialog-form-actions' class='form-actions'>
-    <%= submit_tag 'Insert', :id => "submit_button", :class => 'button' %>
-    <%= link_to "Cancel", "", :id => "cancel_button", :class => "close_dialog button" %>
+    <div class='form-actions-left'>
+      <%= submit_tag 'Insert', :id => "submit_button", :class => 'button' %>
+      <%= link_to "Cancel", "", :id => "cancel_button", :class => "close_dialog button" %>
+    </div>
   </div>
 <% end %>
 

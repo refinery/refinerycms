@@ -47,13 +47,15 @@
 </div>
 <% if @app_dialog %>
   <div id='dialog-form-actions' class='form-actions'>
-    <%= submit_tag 'Insert', :id => "submit_button", :class => 'button' %>
+    <div class='form-actions-left'>
+      <%= submit_tag 'Insert', :id => "submit_button", :class => 'button' %>
 
-    <%= will_paginate @resources,
-                      :previous_label => '&laquo; Previous',
-                      :next_label => 'Next &raquo;',
-                      :renderer => Refinery::LinkRenderer,
-                      :url => {:controller => "admin/resources", :action => "insert", :dialog => from_dialog? } %>
+      <%= will_paginate @resources,
+                        :previous_label => '&laquo; Previous',
+                        :next_label => 'Next &raquo;',
+                        :renderer => Refinery::LinkRenderer,
+                        :url => {:controller => "admin/resources", :action => "insert", :dialog => from_dialog? } %>
+    </div>
   </div>
 <% end %>
 
