@@ -54,7 +54,7 @@ module Crud
             end
             unless from_dialog?
               unless params[:continue_editing] =~ /true|on|1/
-                redirect_to admin_#{plural_name}_url
+                redirect_back_or_default(admin_#{plural_name}_url)
               else
                 unless request.xhr?
                   redirect_to :back
@@ -87,7 +87,7 @@ module Crud
             end
             unless from_dialog?
               unless params[:continue_editing] =~ /true|on|1/
-                redirect_to admin_#{plural_name}_url
+                redirect_back_or_default(admin_#{plural_name}_url)
               else
                 unless request.xhr?
                   redirect_to :back
