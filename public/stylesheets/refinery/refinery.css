@@ -937,7 +937,7 @@ a img {
 
 ul#page_parts {
   float: left;
-  width: 95%;
+  width: 94%;
 }
 ul#page_parts, ul#page_parts_controls {
   margin: 20px 0 0 0;
@@ -946,6 +946,7 @@ ul#page_parts, ul#page_parts_controls {
 ul#page_parts_controls {
   float: right;
   width: 5%;
+  margin-right: 3px;
 }
 ul#page_parts_controls li {
   list-style: none;
@@ -973,8 +974,8 @@ ul#page_parts_controls img {
 }
 #content .form-actions, .wym_dialog .form-actions {
   position: relative;
-  background-color: white;
-  border: 1px solid #CCC;
+  background-color: #F2F2F2;
+  border: 1px solid #CCCCCC;
   margin-top: 10px;
   height: 45px;
 }
