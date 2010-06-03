@@ -19,7 +19,7 @@ class Admin::DashboardController < Admin::BaseController
       end
     end
 
-    @recent_activity = @recent_activity.compact.uniq.sort { |x,y|
+    @recent_activity = @recent_activity.compact.sort { |x,y|
       y.updated_at <=> x.updated_at
     }.first(activity_show_limit=RefinerySetting.find_or_set(:activity_show_limit, 7))
 
