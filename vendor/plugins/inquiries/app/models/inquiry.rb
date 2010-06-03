@@ -8,10 +8,10 @@ class Inquiry < ActiveRecord::Base
   acts_as_indexed :fields => [:name, :email, :message, :phone],
                   :index_file => [Rails.root.to_s, "tmp", "index"]
 
-  default_scope :order => 'created_at DESC'
+  named_scope :newest, :order => 'created_at DESC'
 
   def self.latest(number=7)
-    find(:all, :limit => number)
+    newest.find(:all, :limit => number)
   end
 
 end
