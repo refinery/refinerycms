@@ -11,7 +11,7 @@ class Admin::PageDialogsController < Admin::DialogsController
                              :per_page => Page.per_page(dialog=true)
 
     @resources = Resource.paginate :page => params[:resource_page], :order => 'created_at DESC', :per_page => Resource.per_page(dialog=true)
-    
+
     # web address link
     @web_address_text = "http://"
     @web_address_text = params[:current_link] if params[:current_link].present? and params[:current_link] =~ /^http:\/\//
