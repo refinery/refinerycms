@@ -83,8 +83,8 @@ function getWidth(fx, i, width) {
 
 $.fn.corner = function(options) {
   // kill IE support while maintaining chainability.
-  if($.browser.msie && $.browser.version < 8) {
-    return this.each(function({}));
+  if ($.browser.msie && $.browser.version < 8) {
+    return this.each(function(){});
   }
     // in 1.3+ we can fix mistakes with the ready state
 	if (this.length == 0) {
