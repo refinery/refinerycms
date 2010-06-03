@@ -34,7 +34,7 @@ acronym {
   width: 954px;
   position: relative;
 }
-#dialog_container #content .field {
+#dialog_container #content .field, .dialog_container .field {
   width: auto;
 }
 input.widest, textarea.widest {
@@ -1016,7 +1016,7 @@ ul#page_parts_controls img {
 #dialog_iframe {
   position: relative;
 }
-#dialog_container #content .form-actions, .ui-dialog .form-actions {
+#dialog_container #content .form-actions, .ui-dialog .form-actions, .dialog_container .form-actions {
   position: absolute;
   bottom: 0px;
   left: 0px;
@@ -1034,8 +1034,8 @@ textarea.wymeditor {
 .ui-dialog div.field {
   margin: 0px 10px;
 }
-#dialog_container {
-  padding: 12px 12px 12px 12px;
+#dialog_container, .dialog_container {
+  padding: 12px;
 }
 ul#image_grid {
   width: 580px;
