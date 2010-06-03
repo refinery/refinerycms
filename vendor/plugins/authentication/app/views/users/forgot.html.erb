@@ -1,14 +1,18 @@
+<% content_for :header, "Please enter the email address for your account." %>
+
 <% form_for :user do |f| -%>
   <%= f.error_messages %>
+  
   <div class='field'>
-    <%= f.label :email %>
-    <%= f.text_field :email, :class => "larger" %>
+    <%= f.text_field :email, :class => "larger widest", 
+                     :placeholder => "Email Address" %>
   </div>
-  <div class='form-actions'>
-    <div class='form-actions-left'>
-      <%= submit_tag 'Reset password', :class => 'button' %>
-      <%= link_to "Cancel", login_url, :class => 'close_dialog button' %>
-    </div>
-  </div>
+  
+  <%= render :partial => "/shared/admin/form_actions",
+             :locals => {
+               :f => f,
+               :continue_editing => false,
+               :submit_button_text => "Reset password",
+               :cancel_url => login_url
+             } -%>
 <% end -%>
-<% content_for :header, "Please enter the email address for your account." %>

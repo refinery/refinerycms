@@ -1,4 +1,4 @@
-<form class='wym_dialog wym_dialog_<%= @dialog_type %>'>
+<form id='wym_dialog_form' class='wym_dialog wym_dialog_<%= @dialog_type %>'>
   <input type='hidden' id='wym_dialog_type' class='wym_dialog_type' value='<%= @dialog_type %>' />
   <iframe src='<%= @iframe_src %>' id='dialog_frame' frameborder='0'></iframe>
   <div class='wym_hideables'>
@@ -12,11 +12,8 @@
     <input type='hidden' id='wym_title' class='wym_title' value='' />
     <input type='hidden' id='wym_target' class='wym_target' value='' />
   <% end %>
-  </div>
-  <div id='dialog-form-actions' class='form-actions'>
-    <div class='form-actions-left'>
-      <input class='wym_submit submit_dialog button' type='button' value='<%= @submit_button_text ||= 'Save' %>' />
-      <a href='' class='wym_cancel close_dialog button'><%= @cancel_button_text ||= 'Cancel' %></a>
-    </div>
+
+    <input id='wym_dialog_submit' class='wym_submit submit_dialog button' type='button' value='<%= @submit_button_text ||= 'Save' %>' />
+    <a id='wym_dialog_cancel' href='' class='wym_cancel close_dialog button'><%= @cancel_button_text ||= 'Cancel' %></a>
   </div>
 </form>

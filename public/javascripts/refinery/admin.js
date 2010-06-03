@@ -56,7 +56,7 @@ init_interface = function() {
   $('#page > #content, .wym_box').corner('5px bottom');
   $('.wym_box').corner('5px tr');
   $('.wym_iframe iframe').corner('2px');
-  $('.form-actions').corner('5px');
+  $('.form-actions:not(".form-actions-dialog")').corner('5px');
 }
 
 init_delete_confirmations = function() {
@@ -290,13 +290,23 @@ var link_dialog = {
   init_close: function(){
     $('#dialog-form-actions #cancel_button').click(function(e){
       if (parent && typeof(parent.$) == "function") {
-    //    parent.$(document.body).removeClass('hide-overflow');
         parent.$('.ui-dialog').dialog('close').remove();
       } else {
         $('.ui-dialog').dialog('close').remove();
-    //    $(document.body).removeClass('hide-overflow');
       }
     });
+    
+    if (parent 
+        && parent.document.location.href != document.location.href 
+        && parent.document.getElementById('wym_dialog_submit') != null) {
+      $('#dialog_container .form-actions input#submit_button').click(function(e) {
+        e.preventDefault();
+        $(parent.document.getElementById('wym_dialog_submit')).click();
+      });
+      $('#dialog_container .form-actions a.close_dialog').click(function(e) {
+        image_dialog.close_dialog(e);
+      });
+    }
   },
 
   switch_area: function(area){
@@ -628,11 +638,9 @@ var image_dialog = {
 
   , close_dialog: function(e) {
     if (parent && typeof(parent.$) == "function") {
-//      parent.parent.$(document.body).removeClass('hide-overflow');
       parent.$('.ui-dialog').dialog('close').remove();
     } else {
       $('.ui-dialog').dialog('close').remove();
-//      $(document.body).removeClass('hide-overflow');
     }
 
     e.preventDefault();
@@ -648,6 +656,18 @@ var image_dialog = {
       image_dialog.set_image($('#existing_image_area_content ul li.selected img'));
       e.preventDefault();
     });
+    
+    if (parent 
+        && parent.document.location.href != document.location.href 
+        && parent.document.getElementById('wym_dialog_submit') != null) {
+      $('#existing_image_area .form-actions input#submit_button').click(function(e) {
+        e.preventDefault();
+        $(parent.document.getElementById('wym_dialog_submit')).click();
+      });
+      $('#existing_image_area .form-actions a.close_dialog').click(function(e) {
+        image_dialog.close_dialog(e);
+      });
+    }
   }
 }
 

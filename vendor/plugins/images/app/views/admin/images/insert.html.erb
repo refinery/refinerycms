@@ -12,60 +12,17 @@
 </div>
 
 <div id='dialog_main'>
-  <% if @images.any? %>
-    <div id='existing_image_area' class='dialog_area' <%= "style='display:none;'" if @image.errors.any? %>>
-      <input type='hidden' name='selected_image' id='selected_image' />
-      <div id='existing_image_area_content' class='clearfix'>
-        <ul>
-          <% @images.each do |image| %>
-            <li<%= " class='selected'" if @image_id == image.id %>>
-              <%= image_fu image, :dialog_thumb, {:alt => image.title, :title => image.title, :id => "image_#{image.id}"} -%>
-            </li>
-          <% end -%>
-        </ul>
-      </div>
-      <%= images_paginator @images, from_dialog? %>
-      <div id='existing_image_size_area' class='clearfix'>
-        <input type='hidden' name='selected_image_size' id='selected_image_size' />
-        <h2>Size</h2>
-        <ul>
-          <%
-            thumbnail_sizes = RefinerySetting.find_or_set(:image_thumbnails, {})
-            (sizes = RefinerySetting.find_or_set(:image_dialogue_sizes, [:small, :medium, :large])).each_with_index do |size, index|
-              if thumbnail_sizes.keys.include?(size) and (pixels = thumbnail_sizes[size]).present?
-                modifier = ((index + 1) * 10) + 10
-          -%>
-                <li<%= " class='selected'" if size == :medium %> style="padding-top: <%= (((sizes.length * 10) - modifier) / 2) + 10 %>px">
-                  <%= link_to "&nbsp;", "##{size}",
-                              :rel => size.to_s, #pixels.gsub(/[^x?\d]/i, ''),
-                              :title => "#{size} image",
-                              :tooltip => "#{size} image",
-                              :style => "width: #{modifier}px; height: #{modifier}px;" %>
-                </li>
-          <%  end
-            end -%>
-        </ul>
-      </div>
-    </div>
-  <% end %>
+  <%= render :partial => "existing_image" if @images.any? %>
+
   <div id='upload_image_area' class='dialog_area' <%= "style='display:none;'" if @images.any? and @image.errors.empty? %>>
     <%= render :partial => "form", :locals => {:insert => true} %>
   </div>
 </div>
-<% if @app_dialog %>
-  <div id='dialog-form-actions' class='form-actions'>
-    <div class='form-actions-left'>
-      <%= submit_tag 'Insert', :id => "submit_button", :class => 'button' %>
-      <%= link_to "Cancel", "", :id => "cancel_button", :class => "close_dialog button" %>
-    </div>
-  </div>
-<% end %>
 
 <% content_for :head do %>
   <script type='text/javascript'>
     $(document).ready(function(){
       image_dialog.init(<%= @callback.present? ? "self.parent.#{@callback}" : "null" %>);
-//      init_tooltips('#existing_image_size_area li a');
     });
   </script>
 <% end %>
