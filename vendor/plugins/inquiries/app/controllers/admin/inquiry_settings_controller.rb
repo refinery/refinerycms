@@ -1,16 +1,12 @@
 class Admin::InquirySettingsController < Admin::BaseController
 
-  crudify :inquiry_setting, :title_attribute => "name", :order => 'name ASC'
+  crudify :inquiry_setting, :title_attribute => "name", :order => 'name ASC', :redirect_to_url => "admin_inquiries_url"
 
-  def update
-    @inquiry_setting.update_attributes(params[:inquiry_setting])
+  before_filter :set_url_override?, :only => [:edit]
 
-    if @inquiry_setting.valid?
-      flash[:notice] = "'#{@inquiry_setting.name}' was successfully updated."
-      redirect_to admin_inquiries_url
-    else
-      render :action => 'edit'
-    end
+protected
+  def set_url_override?
+    @url_override = admin_inquiry_setting_url(@inquiry_setting, :dialog => from_dialog?)
   end
 
 end

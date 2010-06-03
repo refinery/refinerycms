@@ -8,4 +8,8 @@ class InquirySetting < ActiveRecord::Base
     find_or_create_by_name("Notification Recipients")
   end
 
+  def deletable?
+    false
+  end
+
 end
