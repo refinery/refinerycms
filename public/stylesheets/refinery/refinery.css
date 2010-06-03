@@ -22,6 +22,9 @@ body {
 acronym {
   cursor: help;
 }
+label[for] {
+  cursor: pointer;
+}
 #page_container, #site_bar_content, #header_content {
   margin: 0px auto 10px auto;
   text-align: left;
