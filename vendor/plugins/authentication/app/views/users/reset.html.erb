@@ -5,12 +5,12 @@
 
   <div class='field'>
     <%= f.label :password %>
-    <%= f.password_field :password %>
+    <%= f.password_field :password, :class => 'larger widest' %>
   </div>
 
   <div class='field'>
     <%= f.label :password_confirmation %>
-    <%= f.password_field :password_confirmation %>
+    <%= f.password_field :password_confirmation, :class => 'larger widest' %>
   </div>
 
   <%= render :partial => "/shared/admin/form_actions",
