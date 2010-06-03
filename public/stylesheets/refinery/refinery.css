@@ -987,14 +987,14 @@ ul#page_parts_controls img {
 .wym_hideables {
   display: none;
 }
-#content .form-actions, .wym_dialog .form-actions {
+#content .form-actions, .wym_dialog .form-actions, .ui-dialog .form-actions {
   position: relative;
   background-color: #F2F2F2;
   border: 1px solid #CCCCCC;
   margin-top: 10px;
   height: 45px;
 }
-.wym_dialog .form-actions, #content.form-actions.dialog-form-actions {
+.wym_dialog .form-actions, #content.form-actions.dialog-form-actions, .ui-dialog .form-actions {
   margin-top: 16px;
 }
 #content .form-actions .form-actions-left, #content .form-actions .form-actions-right,
@@ -1002,10 +1002,10 @@ ul#page_parts_controls img {
   position: absolute;
   top: 10px;
 }
-#content .form-actions .form-actions-left, .wym_dialog .form-actions .form-actions-left {
+#content .form-actions .form-actions-left, .wym_dialog .form-actions .form-actions-left, .ui-dialog .form-actions .form-actions-left {
   left: 10px;
 }
-#content .form-actions .form-actions-right, .wym_dialog .form-actions .form-actions-right {
+#content .form-actions .form-actions-right, .wym_dialog .form-actions .form-actions-right, .ui-dialog .form-actions .form-actions-right {
   right: 10px;
 }
 .wym_dialog .form-actions, .ui-dialog .form-actions {
@@ -1015,7 +1015,7 @@ ul#page_parts_controls img {
 #dialog_iframe {
   position: relative;
 }
-#dialog_container #content .form-actions {
+#dialog_container #content .form-actions, .ui-dialog .form-actions {
   position: absolute;
   bottom: 0px;
   left: 0px;
