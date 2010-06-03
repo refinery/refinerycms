@@ -147,6 +147,9 @@ hr {
   color: #e20003;
   border-bottom-color: #e20003;
 }
+#flash.flash_error a, #flash.flash_error a:hover {
+  display: none;
+}
 .flash_message a#flash_close {
   position: absolute;
   right: 9px;
