@@ -1,0 +1,16 @@
+#content .form-actions .form-actions-left a.button {
+  height: 19px;
+  line-height: 19px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+#site_bar #editor_switch a {
+  height: 19px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  line-height: 20px;
+}
+.search_form input.button {
+  padding-left: 8px;
+  padding-right: 8px;
+}

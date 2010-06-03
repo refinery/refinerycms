@@ -151,7 +151,7 @@ Here's what the different activity options mean:
     :url_prefix
     # Just use "_edit" if you're not sure how this works.
     #
-    # When it says "'About Us' page was updated about 4 hours ago", the page title "About Us"
+    # When it says "'About' page was updated about 4 hours ago", the page title "About"
     # is linked to that page in a way we specify.  So by setting "_edit" as a :url_prefix what
     # we're doing is making it link to the page that allows us to edit this page.
     # So the next result is edit_admin_page_url(page)

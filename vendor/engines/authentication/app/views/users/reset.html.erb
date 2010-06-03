@@ -1,18 +1,23 @@
+<% content_for :header, "Pick a new password for #{@user.email}" %>
+
 <%= form_for :user do |f| -%>
   <%= f.error_messages %>
-  <p>Pick a new password for <%= @user.email %></p>
+
   <div class='field'>
     <%= f.label :password %>
-    <%= f.password_field :password %>
-  </div>
-  <div class='field'>
-    <%= f.label :password_confirmation %>
-    <%= f.password_field :password_confirmation %>
+    <%= f.password_field :password, :class => 'larger widest' %>
   </div>
 
-  <div class='form-actions'>
-    <%= submit_tag 'Reset password' %>
-    or
-    <%= link_to "Cancel", login_url %>
+  <div class='field'>
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation, :class => 'larger widest' %>
   </div>
+
+  <%= render :partial => "/shared/admin/form_actions",
+             :locals => {
+               :f => f,
+               :continue_editing => false,
+               :submit_button_text => "Reset password",
+               :cancel_url => login_url
+             } -%>
 <% end -%>

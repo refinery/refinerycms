@@ -11,9 +11,16 @@ var wymeditor_inputs = [];
 var wymeditors_loaded = 0;
 // supply custom_wymeditor_boot_options if you want to override anything here.
 if (typeof(custom_wymeditor_boot_options) == "undefined") { custom_wymeditor_boot_options = {}; }
+var form_actions =
+"<div id='dialog-form-actions' class='form-actions'>"
+  + "<div class='form-actions-left'>"
+    + "<input id='submit_button' class='wym_submit button' type='submit' value='{Insert}' class='button' />"
+    + "<a href='' class='wym_cancel close_dialog button'>{Cancel}</a>"
+  + "</div>"
++ "</div>";
 var wymeditor_boot_options = $.extend({
   skin: 'refinery'
-  , basePath: "/javascripts/wymeditor/"
+  , basePath: "/"
   , wymPath: "/javascripts/wymeditor/jquery.refinery.wymeditor.js"
   , cssSkinPath: "/stylesheets/wymeditor/skins/"
   , jsSkinPath: "/javascripts/wymeditor/skins/"
@@ -97,10 +104,10 @@ var wymeditor_boot_options = $.extend({
 
   , dialogTableHtml:
     "<div class='wym_dialog wym_dialog_table'>"
-    + "<form>"
-      + "<input type='hidden' id='wym_dialog_type' class='wym_dialog_type' value='"+ WYMeditor.DIALOG_TABLE + "' />"
-    + "<div class='field'>"
-      + "<label for='wym_caption'>{Caption}</label>"
+      + "<form>"
+        + "<input type='hidden' id='wym_dialog_type' class='wym_dialog_type' value='"+ WYMeditor.DIALOG_TABLE + "' />"
+        + "<div class='field'>"
+          + "<label for='wym_caption'>{Caption}</label>"
           + "<input type='text' id='wym_caption' class='wym_caption' value='' size='40' />"
         + "</div>"
         + "<div class='field'>"
@@ -111,10 +118,7 @@ var wymeditor_boot_options = $.extend({
           + "<label for='wym_cols'>{Number_Of_Cols}</label>"
           + "<input type='text' id='wym_cols' class='wym_cols' value='2' size='3' />"
         + "</div>"
-        + "<div id='dialog-form-actions' class='form-actions'>"
-          + "<input class='wym_submit button' type='submit' value='{Insert}' class='button' />"
-          + "<a href='' class='wym_cancel close_dialog button'>{Cancel}</a>"
-        + "</div>"
+        + form_actions
       + "</form>"
     + "</div>"
 
@@ -125,17 +129,14 @@ var wymeditor_boot_options = $.extend({
         + "<div class='field'>"
           + "<textarea class='wym_text' rows='10' cols='50'></textarea>"
         + "</div>"
-        + "<div id='dialog-form-actions' class='form-actions'>"
-          + "<input class='wym_submit button' type='submit' value='{Insert}' class='button' />"
-          + "<a href='' class='wym_cancel close_dialog button'>{Cancel}</a>"
-        + "</div>"
+        + form_actions
       + "</form>"
     + "</div>"
 
   , dialogPath: "/refinery/dialogs/"
   , dialogFeatures: {
       width: 958
-    , height: 570
+    , height: 500
     , modal: true
     , draggable: true
     , resizable: false
@@ -175,6 +176,7 @@ var wymeditor_boot_options = $.extend({
     wym._iframe.style.height = wym._element.height() + "px";
     wymeditors_loaded += 1;
     if(WYMeditor.INSTANCES.length == wymeditors_loaded){
+      $('.wym_loading_overlay').remove();
       WYMeditor.loaded();
     }
   }

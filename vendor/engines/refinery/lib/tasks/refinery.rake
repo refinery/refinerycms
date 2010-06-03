@@ -171,7 +171,8 @@ namespace :refinery do
 
     # copy new jquery javascripts.
     FileUtils.cp Refinery.root.join('public', 'javascripts', 'jquery.js').cleanpath.to_s, Rails.root.join('public', 'javascripts', 'jquery.js').cleanpath.to_s
-    FileUtils.cp Refinery.root.join('public', 'javascripts', 'jquery-ui.js').cleanpath.to_s, Rails.root.join('public', 'javascripts', 'jquery-ui.js').cleanpath.to_s
+    FileUtils.cp Refinery.root.join('public', 'javascripts', 'jquery-min.js').cleanpath.to_s, Rails.root.join('public', 'javascripts', 'jquery-min.js').cleanpath.to_s
+    FileUtils.cp Refinery.root.join('public', 'javascripts', 'jquery-ui-custom-min.js').cleanpath.to_s, Rails.root.join('public', 'javascripts', 'jquery-ui-custom-min.js').cleanpath.to_s
 
     # backup the config file.
     FileUtils.cp Rails.root.join('config', app_config_file).cleanpath.to_s, Rails.root.join('config', "#{app_config_file.gsub('.rb', '')}.autobackupbyrefinery.rb").cleanpath.to_s

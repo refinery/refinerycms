@@ -91,7 +91,7 @@ class Page < ActiveRecord::Base
   # If a custom "link_url" is set, it uses that otherwise it defaults to a normal page URL.
   # The "link_url" is often used to link to a plugin rather than a page.
   #
-  # For example if I had a "Contact Us" page I don't want it to just render a contact us page
+  # For example if I had a "Contact" page I don't want it to just render a contact us page
   # I want it to show the Inquiries form so I can collect inquiries. So I would set the "link_url"
   # to "/contact"
   def url

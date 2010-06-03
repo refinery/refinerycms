@@ -2,9 +2,11 @@
   <h2>Latest Activity</h2>
   <ul class='clickable'>
     <% @recent_activity.each do |change| %>
-      <li class='<%= cycle("on", "on-hover", :name => 'recent_activity_cycle') %>'>
-        <%= activity_message_for change %>
-      </li>
+      <% begin %>
+        <li class='<%= cycle("on", "on-hover", :name => 'recent_activity_cycle') %>'>
+          <%= activity_message_for change %>
+        </li>
+      <% rescue; end %>
     <% end %>
   </ul>
 </div>

@@ -16,7 +16,7 @@
 
 
 /*WYM_BOX*/
-		.wym_skin_refinery				{ border: 1px solid #999999; background: #F2F2F2; padding: 5px 5px 0px 5px}
+		.wym_skin_refinery				{ border: 1px solid #CCCCCC; background: #F2F2F2; padding: 5px 5px 0px 5px}
 
 	/*auto-clear the wym_box*/
 		.wym_skin_refinery:after 			{ content: "."; display: block; height: 0; clear: both; visibility: hidden; }
@@ -30,7 +30,7 @@
 
 /*WYM_IFRAME*/
 		.wym_skin_refinery .wym_iframe			 { width: 100%; }
-		.wym_skin_refinery .wym_iframe iframe { border: 1px solid #999999;}
+		.wym_skin_refinery .wym_iframe iframe { border: 1px solid #CCCCCC;}
 		.wym_skin_refinery .wym_iframe iframe		{ width: 99%; background: white }
 
 /* adjust for two rows of icons */
@@ -154,7 +154,7 @@
 
 #dialog_frame {
 	width:928px;
-	height:480px;
+	height:560px;
 	padding: 0px;
 	border: 0px solid #F2F1ED;
 }

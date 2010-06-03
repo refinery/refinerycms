@@ -7,7 +7,7 @@ body, input, textarea, select, p, li, blockquote {
     font-family: Verdana;
     font-size: 12px;
 }
-#body_content_left *, #body_content_right * {
+#body_content_left *, #body_content_right *, .page_part_body, .page_part_side_body {
     line-height: 22px;
     color: #585858;
 }
@@ -17,7 +17,7 @@ h1, #body_content h1, h1#body_content_page_title {
     font-weight: normal;
     font-family: "Trebuchet MS", Trebuchet;
 }
-#body_content_left p, #body_content_right p {
+#body_content_left p, #body_content_right p, .page_part_body p, .page_part_side_body p {
     margin-bottom: 12px;
 }
 h2, h3 {

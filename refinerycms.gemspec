@@ -2,7 +2,7 @@ Gem::Specification.new do |s|
   s.name              = %q{refinerycms}
   s.version           = %q{0.9.7.dev}
   s.description       = %q{A beautiful open source Ruby on Rails content manager for small business. Easy to extend, easy to use, lightweight and all wrapped up in a super slick UI.}
-  s.date              = %q{2010-05-31}
+  s.date              = %q{2010-06-03}
   s.summary           = %q{A beautiful open source Ruby on Rails content manager for small business.}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
@@ -190,7 +190,8 @@ Gem::Specification.new do |s|
 		'public/javascripts/jquery/jquery.corner.js',
 		'public/javascripts/jquery/jquery.textTruncate.js',
 		'public/javascripts/jquery/MIT-LICENSE.txt',
-		'public/javascripts/jquery-ui.js',
+		'public/javascripts/jquery-min.js',
+		'public/javascripts/jquery-ui-custom-min.js',
 		'public/javascripts/jquery.js',
 		'public/javascripts/refinery',
 		'public/javascripts/refinery/admin.js',
@@ -232,6 +233,7 @@ Gem::Specification.new do |s|
 		'public/stylesheets/refinery/application.css',
 		'public/stylesheets/refinery/formatting.css',
 		'public/stylesheets/refinery/home.css',
+		'public/stylesheets/refinery/ie.css',
 		'public/stylesheets/refinery/refinery.css',
 		'public/stylesheets/refinery/site_bar.css',
 		'public/stylesheets/refinery/theme.css',
@@ -612,6 +614,7 @@ Gem::Specification.new do |s|
 		'vendor/plugins/refinery/app/views/layouts/application.html.erb',
 		'vendor/plugins/refinery/app/views/shared',
 		'vendor/plugins/refinery/app/views/shared/_content_page.html.erb',
+		'vendor/plugins/refinery/app/views/shared/_draft_page_message.html.erb',
 		'vendor/plugins/refinery/app/views/shared/_footer.html.erb',
 		'vendor/plugins/refinery/app/views/shared/_google_analytics.html.erb',
 		'vendor/plugins/refinery/app/views/shared/_head.html.erb',
@@ -621,8 +624,6 @@ Gem::Specification.new do |s|
 		'vendor/plugins/refinery/app/views/shared/_menu_branch.html.erb',
 		'vendor/plugins/refinery/app/views/shared/_message.html.erb',
 		'vendor/plugins/refinery/app/views/shared/_site_bar.html.erb',
-		'vendor/plugins/refinery/app/views/shared/_submenu.html.erb',
-		'vendor/plugins/refinery/app/views/shared/_submenu_branch.html.erb',
 		'vendor/plugins/refinery/app/views/shared/admin',
 		'vendor/plugins/refinery/app/views/shared/admin/_continue_editing.html.erb',
 		'vendor/plugins/refinery/app/views/shared/admin/_error_messages_for.html.erb',

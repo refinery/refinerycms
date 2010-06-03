@@ -1,27 +1,37 @@
 var shiftHeld = false;
 $(document).ready(function(){
-
-  $('input:submit').not('.button').addClass('button');
-  $('.button, #editor_switch a').corner("6px");
-  $('<span></span>').prependTo('#editor_switch').corner('6px');
-  $('#editor_switch a').appendTo('#editor_switch span:first');
-  $('#recent_activity li a, #recent_inquiries li a').each(function(i, a) {
-    $(this).textTruncate({
-      width: $(this).width()
-  		, tooltip: false
-  	})
-	});
-
+  init_interface();
   init_flash_messages();
   init_delete_confirmations();
   init_sortable_menu();
   init_submit_continue();
   init_modal_dialogs();
   init_tooltips();
+});
 
-  // make sure that users can tab to wymeditor fields.
+init_interface = function() {
+  $('input:submit:not(.button)').addClass('button');
+  // sigh for IE
+  try {
+    $('.button, #editor_switch a').corner('6px');
+  } catch(err) {
+    $('.button:not(input), #editor_switch a').corner('6px');
+  }
+  $('<span></span>').prependTo('#editor_switch').corner('6px');
+  $('#editor_switch a').appendTo('#editor_switch span:first');
+  $('#recent_activity li a, #recent_inquiries li a').each(function(i, a) {
+    $(this).textTruncate({
+      width: $(this).width()
+  		, tooltip: false
+  	});
+	});
+
+  // make sure that users can tab to wymeditor fields and add an overlay while loading.
   $('textarea.wymeditor').each(function() {
     textarea = $(this);
+    /*overlay = $("<div class='wym_loading_overlay'>&nbsp;</div>")
+              .css({'height': textarea.height(), 'width': textarea.width()});
+    textarea.before(overlay);*/
     if ((instance = WYMeditor.INSTANCES[$(textarea.next('.wym_box').find('iframe').attr('id').split('_')).last().get(0)]) != null) {
       textarea.parent().next().find('input, textarea').keydown($.proxy(function(e) {
         shiftHeld = e.shiftKey;
@@ -43,9 +53,11 @@ $(document).ready(function(){
 
   // focus first field in an admin form.
   $('form input[type=text]:first').focus();
-  $('#content, .wym_box').corner('5px bottom');
-  $('.wym_iframe iframe').corner('2px bottom');
-});
+  $('#page > #content, .wym_box').corner('5px bottom');
+  $('.wym_box').corner('5px tr');
+  $('.wym_iframe iframe').corner('2px');
+  $('.form-actions:not(".form-actions-dialog")').corner('5px');
+}
 
 init_delete_confirmations = function() {
   $('a.confirm-delete').click(function(e) {
@@ -278,13 +290,23 @@ var link_dialog = {
   init_close: function(){
     $('#dialog-form-actions #cancel_button').click(function(e){
       if (parent && typeof(parent.$) == "function") {
-    //    parent.$(document.body).removeClass('hide-overflow');
         parent.$('.ui-dialog').dialog('close').remove();
       } else {
         $('.ui-dialog').dialog('close').remove();
-    //    $(document.body).removeClass('hide-overflow');
       }
     });
+
+    if (parent
+        && parent.document.location.href != document.location.href
+        && parent.document.getElementById('wym_dialog_submit') != null) {
+      $('#dialog_container .form-actions input#submit_button').click(function(e) {
+        e.preventDefault();
+        $(parent.document.getElementById('wym_dialog_submit')).click();
+      });
+      $('#dialog_container .form-actions a.close_dialog').click(function(e) {
+        image_dialog.close_dialog(e);
+      });
+    }
   },
 
   switch_area: function(area){
@@ -616,11 +638,9 @@ var image_dialog = {
 
   , close_dialog: function(e) {
     if (parent && typeof(parent.$) == "function") {
-//      parent.parent.$(document.body).removeClass('hide-overflow');
       parent.$('.ui-dialog').dialog('close').remove();
     } else {
       $('.ui-dialog').dialog('close').remove();
-//      $(document.body).removeClass('hide-overflow');
     }
 
     e.preventDefault();
@@ -636,6 +656,18 @@ var image_dialog = {
       image_dialog.set_image($('#existing_image_area_content ul li.selected img'));
       e.preventDefault();
     });
+
+    if (parent
+        && parent.document.location.href != document.location.href
+        && parent.document.getElementById('wym_dialog_submit') != null) {
+      $('#existing_image_area .form-actions input#submit_button').click(function(e) {
+        e.preventDefault();
+        $(parent.document.getElementById('wym_dialog_submit')).click();
+      });
+      $('#existing_image_area .form-actions a.close_dialog').click(function(e) {
+        image_dialog.close_dialog(e);
+      });
+    }
   }
 }
 

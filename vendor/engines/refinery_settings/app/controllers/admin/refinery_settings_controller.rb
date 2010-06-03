@@ -4,9 +4,8 @@ class Admin::RefinerySettingsController < Admin::BaseController
 
   def edit
     @refinery_setting = RefinerySetting.find(params[:id])
-    if request.xhr?
-      render :layout => false
-    end
+
+    render :layout => false if request.xhr?
   end
 
 end
