@@ -22,7 +22,7 @@
           (help)
         </span>
       </span>
-      <% ["none", "text"].each do |type| %>
+      <% %w(none text).each do |type| %>
         <%= f.radio_button :custom_title_type, "#{type}" %>
         <%= label_tag "page_custom_title_type_#{type}", "#{type.titleize}", :class => "stripped" %>
       <% end %>
