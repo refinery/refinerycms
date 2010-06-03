@@ -998,7 +998,8 @@ ul#page_parts_controls img {
   margin-top: 16px;
 }
 #content .form-actions .form-actions-left, #content .form-actions .form-actions-right,
-  .wym_dialog .form-actions .form-actions-left, .wym_dialog .form-actions .form-actions-right {
+  .wym_dialog .form-actions .form-actions-left, .wym_dialog .form-actions .form-actions-right,
+  .ui-dialog .form-actions .form-actions-left, .ui-dialog .form-actions .form-actions-right {
   position: absolute;
   top: 10px;
 }
