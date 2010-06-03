@@ -19,8 +19,7 @@ class Admin::UsersController < Admin::BaseController
 
     if @user.save
       @user.plugins = @selected_plugin_titles
-      flash[:notice] = "'#{@user.login}' was successfully created."
-      redirect_to :action => 'index'
+      redirect_to :action => 'index', :notice => "'#{@user.login}' was successfully created."
     else
       render :action => 'new'
     end
@@ -40,8 +39,7 @@ class Admin::UsersController < Admin::BaseController
     else
       @previously_selected_plugins_titles = @user.plugins.collect{|p| p.title}
       if @user.update_attributes params[:user]
-        flash[:notice] = "'#{@user.login}' was successfully updated."
-        redirect_to admin_users_url
+        redirect_to admin_users_url, :notice => "'#{@user.login}' was successfully updated."
       else
         @user.plugins = @previously_selected_plugins_titles
         @user.save

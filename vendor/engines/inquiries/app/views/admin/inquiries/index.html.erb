@@ -4,11 +4,11 @@
       <%= render :partial => "/shared/admin/search", :locals => {:url => admin_inquiries_url} %>
     </li>
     <li>
-      <%= link_to "Update who gets notified", edit_admin_inquiry_setting_url(InquirySetting.notification_recipients),
+      <%= link_to "Update who gets notified", edit_admin_inquiry_setting_url(InquirySetting.notification_recipients, :dialog => true),
                                               :class => "user_comment_icon" %>
     </li>
     <li>
-      <%= link_to "Edit confirmation email", edit_admin_inquiry_setting_url(InquirySetting.confirmation_body),
+      <%= link_to "Edit confirmation email", edit_admin_inquiry_setting_url(InquirySetting.confirmation_body, :dialog => true),
                                              :class => "edit_email_icon" %>
     </li>
   </ul>

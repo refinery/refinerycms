@@ -84,8 +84,10 @@ unless rails_root.nil? or rails_root.length == 0
 	app_config = File.open(File.join(%W(#{rails_root} config #{app_config_file})), "r").read
 
   # copy new jquery javascripts.
-  FileUtils.cp File.join(%W(#{refinery_root} public javascripts jquery.js)), File.join(%W(#{rails_root} public javascripts jquery.js))
-  FileUtils.cp File.join(%W(#{refinery_root} public javascripts jquery-ui.js)), File.join(%W(#{rails_root} public javascripts jquery-ui.js))
+  FileUtils.cp File.join(%W(#{refinery_root} public javascripts jquery.js)), File.join(%W(#{rails_root} public javascripts jquery.js)) if File.exist?(File.join(%W(#{refinery_root} public javascripts jquery.js)))
+  FileUtils.cp File.join(%W(#{refinery_root} public javascripts jquery-min.js)), File.join(%W(#{rails_root} public javascripts jquery-min.js)) if File.exist?(File.join(%W(#{refinery_root} public javascripts jquery-min.js)))
+  FileUtils.cp File.join(%W(#{refinery_root} public javascripts jquery-ui.js)), File.join(%W(#{rails_root} public javascripts jquery-ui.js)) if File.exist?(File.join(%W(#{refinery_root} public javascripts jquery-ui.js)))
+  FileUtils.cp File.join(%W(#{refinery_root} public javascripts jquery-ui-custom-min.js)), File.join(%W(#{rails_root} public javascripts if File.exist?(File.join(%W(#{refinery_root} public javascripts jquery-ui-custom-min.js))) jquery-ui-custom-min.js))
 
   # backup app's config file and replace it, if required.
 	environment_updated = false

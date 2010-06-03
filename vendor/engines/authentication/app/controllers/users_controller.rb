@@ -62,7 +62,11 @@ class UsersController < ApplicationController
         redirect_back_or_default new_session_url
       else
         @user = User.new(params[:user])
-        flash.now[:error] = "Sorry, '#{params[:user][:email]}' isn't associated with any accounts.<br/>Are you sure you typed the correct email address?"
+        if (email = params[:user][:email]).blank?
+          flash.now[:error] = "You did not enter an email address."
+        else
+          flash.now[:error] = "Sorry, '#{params[:user][:email]}' isn't associated with any accounts.<br/>Are you sure you typed the correct email address?"
+        end
       end
     end
   end
@@ -77,10 +81,10 @@ class UsersController < ApplicationController
         end
       end
     else
-      flash[:error] = "We're sorry, but this reset code has expired or is invalid." +
-        "If you are having issues try copying and pasting the URL " +
-        "from your email into your browser or restarting the " +
-        "reset password process."
+      flash[:error] = "We're sorry, but this reset code has expired or is invalid."
+      flash[:error] << "If you are having issues try copying and pasting the URL from your email"
+      flash[:error] << " into your browser or restarting the reset password process."
+
       redirect_to forgot_users_url
     end
   end

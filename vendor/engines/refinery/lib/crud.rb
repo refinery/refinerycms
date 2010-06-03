@@ -18,6 +18,10 @@ module Crud
   module ClassMethods
 
     def crudify(model_name, new_options = {})
+      singular_name = model_name.to_s
+      class_name = singular_name.camelize
+      plural_name = singular_name.pluralize
+
       options = {
         :title_attribute => "title",
         :order => 'position ASC',
@@ -26,12 +30,9 @@ module Crud
         :searchable => true,
         :include => [],
         :paging => true,
-        :search_conditions => ''
+        :search_conditions => '',
+        :redirect_to_url => "admin_#{plural_name}_url"
       }.merge!(new_options)
-
-      singular_name = model_name.to_s
-      class_name = singular_name.camelize
-      plural_name = singular_name.pluralize
 
       module_eval %(
         before_filter :find_#{singular_name}, :only => [:update, :destroy, :edit, :show]
@@ -54,7 +55,7 @@ module Crud
             end
             unless from_dialog?
               unless params[:continue_editing] =~ /true|on|1/
-                redirect_to admin_#{plural_name}_url
+                redirect_back_or_default(#{options[:redirect_to_url]})
               else
                 unless request.xhr?
                   redirect_to :back
@@ -63,7 +64,7 @@ module Crud
                 end
               end
             else
-              render :text => "<script type='text/javascript'>parent.window.location = '\#{admin_#{plural_name}_url}';</script>"
+              render :text => "<script type='text/javascript'>parent.window.location = '\#{#{options[:redirect_to_url]}}';</script>"
             end
           else
             unless request.xhr?
@@ -87,7 +88,7 @@ module Crud
             end
             unless from_dialog?
               unless params[:continue_editing] =~ /true|on|1/
-                redirect_to admin_#{plural_name}_url
+                redirect_back_or_default(#{options[:redirect_to_url]})
               else
                 unless request.xhr?
                   redirect_to :back
@@ -96,7 +97,7 @@ module Crud
                 end
               end
             else
-              render :text => "<script type='text/javascript'>parent.window.location = '\#{admin_#{plural_name}_url}';</script>"
+              render :text => "<script type='text/javascript'>parent.window.location = '\#{#{options[:redirect_to_url]}}';</script>"
             end
           else
             unless request.xhr?
@@ -109,7 +110,7 @@ module Crud
 
         def destroy
           flash[:notice] = "'\#{@#{singular_name}.#{options[:title_attribute]}}' was successfully deleted." if @#{singular_name}.destroy
-          redirect_to admin_#{plural_name}_url
+          redirect_to #{options[:redirect_to_url]}
         end
 
         def find_#{singular_name}

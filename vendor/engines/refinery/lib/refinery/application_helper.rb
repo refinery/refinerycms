@@ -25,6 +25,16 @@ module Refinery::ApplicationHelper
     return content
   end
 
+  # This was extracted from REFINERY_ROOT/vendor/plugins/refinery/app/views/shared/_menu_branch.html.erb
+  # to remove the complexity of that template by reducing logic in the view.
+  def css_for_menu_branch(menu_branch, menu_branch_counter)
+    css = []
+    css << "selected" if selected_page?(menu_branch) or descendant_page_selected?(menu_branch)
+    css << "first" if menu_branch_counter == 0
+    css << "last" if menu_branch_counter == (sibling_count ||= menu_branch.shown_siblings.size)
+    css
+  end
+
   # Determines whether any page underneath the supplied page is the current page according to rails.
   # Just calls selected_page? for each descendant of the supplied page.
   def descendant_page_selected?(page)
@@ -66,9 +76,10 @@ module Refinery::ApplicationHelper
     # render the tags normally unless
     unless options[:google] and !local_request?
       if options[:jquery_ui]
-        javascript_include_tag 'jquery', 'jquery-ui', :cache => (options[:caching] ? "cache/libraries" : nil)
+        javascript_include_tag  "jquery#{"-min" if Rails.env.production?}", "jquery-ui-custom-min",
+                                :cache => (options[:caching] ? "cache/libraries" : nil)
       else
-        javascript_include_tag 'jquery'
+        javascript_include_tag "jquery#{"-min" if Rails.env.production?}"
       end
     else
       "#{javascript_include_tag("http://www.google.com/jsapi").gsub(".js", "")}

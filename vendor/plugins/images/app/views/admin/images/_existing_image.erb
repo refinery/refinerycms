@@ -1,0 +1,43 @@
+<div id='existing_image_area' class='dialog_area' <%= "style='display:none;'" if @image.errors.any? %>>
+  <input type='hidden' name='selected_image' id='selected_image' />
+  <div id='existing_image_area_content' class='clearfix'>
+    <ul>
+      <% @images.each do |image| %>
+        <li<%= " class='selected'" if @image_id == image.id %>>
+          <%= image_fu image, :dialog_thumb, {:alt => image.title, :title => image.title, :id => "image_#{image.id}"} -%>
+        </li>
+      <% end -%>
+    </ul>
+  </div>
+  <%= images_paginator @images, from_dialog? %>
+  <div id='existing_image_size_area' class='clearfix'>
+    <input type='hidden' name='selected_image_size' id='selected_image_size' />
+    <h2>Size</h2>
+    <ul>
+      <%
+        thumbnail_sizes = RefinerySetting.find_or_set(:image_thumbnails, {})
+        (sizes = RefinerySetting.find_or_set(:image_dialogue_sizes, [:small, :medium, :large])).each_with_index do |size, index|
+          if thumbnail_sizes.keys.include?(size) and (pixels = thumbnail_sizes[size]).present?
+            modifier = ((index + 1) * 10) + 10
+      -%>
+            <li<%= " class='selected'" if size == :medium %> style="padding-top: <%= (((sizes.length * 10) - modifier) / 2) + 10 %>px">
+              <%= link_to "&nbsp;", "##{size}",
+                          :rel => size.to_s,
+                          :title => "#{size} image",
+                          :tooltip => "#{size} image",
+                          :style => "width: #{modifier}px; height: #{modifier}px;" %>
+            </li>
+      <%  end
+        end -%>
+    </ul>
+  </div>
+  <%= render :partial => "/shared/admin/form_actions",
+             :locals => {
+               :f => nil,
+               :cancel_url => '',
+               :submit_button_text => 'Insert',
+               :hide_cancel => false,
+               :hide_delete => true,
+               :cancel_title => ''
+             } if @app_dialog or @images.any? %>
+</div>

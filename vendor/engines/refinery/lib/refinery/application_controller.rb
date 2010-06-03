@@ -6,7 +6,8 @@ class Refinery::ApplicationController < ActionController::Base
   include Crud # basic create, read, update and delete methods
   include AuthenticatedSystem
 
-  before_filter :find_pages_for_menu, :show_welcome_page?, :store_current_location!
+  before_filter :find_pages_for_menu, :store_current_location!, :except => [:wymiframe]
+  before_filter :show_welcome_page?
 
   rescue_from ActiveRecord::RecordNotFound, ActionController::UnknownAction, ActionView::MissingTemplate, :with => :error_404
 
@@ -52,7 +53,7 @@ class Refinery::ApplicationController < ActionController::Base
   end
 
   def login?
-    controller_name =~ /^(user|session)(|s)/ and not admin?
+    (controller_name =~ /^(user|session)(|s)/ and not admin?) or just_installed?
   end
 
   def wymiframe
@@ -92,8 +93,9 @@ private
   def store_current_location!
     if admin?
       # ensure that we don't redirect to AJAX or POST/PUT/DELETE urls
-      session[:refinery_return_to] = request.path if request.get? and !request.xhr?
-    elsif request.path !~ /^(\/(wym(\-.*|iframe)|system\/|sessions?|.*\/dialogs))/ and !from_dialog? and controller_name !~ /^(sessions|users)/
+      session[:refinery_return_to] = request.path if request.get? and !request.xhr? and !from_dialog?
+    elsif request.path !~ /^(\/(wym(\-.*|iframe)|system\/|sessions?|.*\/dialogs|javascripts|stylesheets|images))/ and
+      !from_dialog? and !request.xhr? and controller_name !~ /^(sessions|users)/
       session[:website_return_to] = request.path
     end
   end

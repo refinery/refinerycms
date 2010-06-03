@@ -31,12 +31,11 @@ protected
       @pages_for_parents_list += add_pages_branch_to_parents_list(page)
     end
     @pages_for_parents_list.flatten.compact!
+
     # We need to remove all references to the current page or any of its decendants or we get a nightmare.
-    unless @page.nil? or @page.new_record?
-      @pages_for_parents_list.reject! do |page|
-        page.id == @page.id or @page.descendants.include?(page)
-      end
-    end
+    @pages_for_parents_list.reject! do |page|
+      page.id == @page.id or @page.descendants.include?(page)
+    end unless @page.nil? or @page.new_record?
   end
 
   def add_pages_branch_to_parents_list(page)

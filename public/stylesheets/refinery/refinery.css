@@ -22,6 +22,9 @@ body {
 acronym {
   cursor: help;
 }
+label[for] {
+  cursor: pointer;
+}
 #page_container, #site_bar_content, #header_content {
   margin: 0px auto 10px auto;
   text-align: left;
@@ -33,6 +36,9 @@ acronym {
 #content .field {
   width: 954px;
   position: relative;
+}
+#dialog_container #content .field, .dialog_container .field {
+  width: auto;
 }
 input.widest, textarea.widest {
   width: 100%;
@@ -80,9 +86,6 @@ hr {
   border: 0;
   border-top: 1px solid #484743;
 }
-.form-actions {
-  margin-top: 10px;
-}
 .actions img {
   border: none;
 }
@@ -113,6 +116,7 @@ hr {
 #message, #flash {
   padding: 8px 8px 8px 30px;
   margin-bottom: 15px;
+  position: relative;
 }
 .flash_notice, .flash_message {
   border: 1px solid #00A017;
@@ -147,11 +151,16 @@ hr {
   color: #e20003;
   border-bottom-color: #e20003;
 }
-.flash_message a#flash_close {
+#flash.flash_error a, #flash.flash_error a:hover {
+  display: none;
+}
+#flash a#flash_close {
   position: absolute;
   right: 9px;
+  top: 7px;
+}
+#flash.flash_message a#flash_close {
   top: 21px;
-  text-transform: titlecase;
 }
 #header a, #content a {
   border-bottom: 1px dotted #727272;
@@ -177,7 +186,7 @@ a {
 .less-important {
   color: #727272;
 }
-#header a, #administration_tabnav a, #submenu a {
+#header a {
   border: 0px;
 }
 a:hover {
@@ -208,8 +217,8 @@ body.login #site_bar_content a#site_bar_refinery_cms_logo {
 body.login #page_container div.remember_me label {
   display: inline;
 }
-body.login input.larger {
-  width: 543px;
+body.login #content .field {
+  width: 550px;
 }
 body.login #page_container div.actions {
   margin-top: 12px;
@@ -254,6 +263,18 @@ div.field.plugin_access label.title_label {
 }
 div.field.plugin_access ul#plugins {
   margin-top: 3px;
+}
+/* Works in Firefox, Safari, Chrome, IE8+ */
+body.login input.larger {
+  background: url('/images/refinery/text_field_background.png') repeat-x white;
+  height: 31px;
+}
+body.login input.larger:focus {
+  background-position: 0px -41px;
+}
+body.login .fieldWithErrors input.larger {
+  background-position: 0px -82px;
+  border: 1px solid red;
 }
 #header_content {
   height: 60px;
@@ -324,13 +345,6 @@ pre {
   margin: 0;
   padding: 0;
 }
-.clearfix:after {
-  content: ".";
-  display: block;
-  height: 0;
-  clear: both;
-  visibility: hidden;
-}
 .preview {
   color: #A3A093;
 }
@@ -361,46 +375,6 @@ pre {
   font-size: 90%;
   padding: 0;
   margin: 0;
-}
-#footer {
-  margin: 0px auto;
-  text-align: center;
-}
-#footer_logo {
-  border: 0px none;
-  display:inline-block;
-  _display:block;
-  margin: 50px auto 40px auto;
-  width: auto;
-}
-#footer p, #footer a {
-  color: white;
-  font-size: 11px;
-}
-#submenu {
-  clear: both;
-  padding-left: 10px;
-  background: url('/images/refinery/nav-3-background.gif') #EFEE8 repeat-x bottom;
-}
-#submenu ul, #submenu nav {
-  list-style: none;
-  margin: 0;
-  padding: 0 0 0 10px;
-}
-#submenu li, #submenu > div {
-  float: left;
-}
-#submenu li a, #submenu > a {
-  display: block;
-  padding: 6px;
-}
-#submenu2 {
-  margin-left: 10px;
-  margin-right: 12px;
-}
-#submenu a {
-  color: #727272;
-  text-decoration: none;
 }
 .filter {
   float: right;
@@ -619,11 +593,6 @@ label.stripped {
   margin: 0px;
   padding: 0px;
 }
-.form-actions {
-  background-color: white;
-  padding: 10px;
-  border: 1px solid #CCC;
-}
 #body_field {
   float: left;
   width: 60%;
@@ -718,8 +687,11 @@ label.stripped {
   width: 100%;
 }
 #inquiry td {
-  border-bottom: 1px solid #99998B;
+  border-bottom: 1px solid #CCCCCC;
   padding: 7px;
+}
+#inquiry tr:last-child td {
+  border-bottom: 0px;
 }
 body.dialog {
   background: #FFF;
@@ -913,8 +885,13 @@ ul#menu.reordering_menu li a {
   font-size: 16px;
   width: 200px;
 }
+.search_form {
+  position: relative;
+}
 .search_form .button {
-  float: right;
+  position: absolute;
+  right: 0px;
+  top: 0px;
 }
 form input:submit {
   background: #65c3f7;
@@ -978,7 +955,7 @@ a img {
 
 ul#page_parts {
   float: left;
-  width: 95%;
+  width: 94%;
 }
 ul#page_parts, ul#page_parts_controls {
   margin: 20px 0 0 0;
@@ -987,6 +964,7 @@ ul#page_parts, ul#page_parts_controls {
 ul#page_parts_controls {
   float: right;
   width: 5%;
+  margin-right: 3px;
 }
 ul#page_parts_controls li {
   list-style: none;
@@ -1005,17 +983,51 @@ ul#page_parts_controls img {
 /* dialog stuff */
 #dialog_frame {
   width:952px;
-  height:430px;
+  height:460px;
   padding: 0px;
   border: 0px solid #F2F1ED;
 }
 .wym_hideables {
   display: none;
 }
+#content .form-actions, .wym_dialog .form-actions, .ui-dialog .form-actions {
+  position: relative;
+  background-color: #F2F2F2;
+  border: 1px solid #CCCCCC;
+  margin-top: 10px;
+  height: 45px;
+}
+.wym_dialog .form-actions, #content.form-actions.dialog-form-actions, .ui-dialog .form-actions {
+  margin-top: 16px;
+}
+#content .form-actions .form-actions-left, #content .form-actions .form-actions-right,
+  .wym_dialog .form-actions .form-actions-left, .wym_dialog .form-actions .form-actions-right,
+  .ui-dialog .form-actions .form-actions-left, .ui-dialog .form-actions .form-actions-right {
+  position: absolute;
+  top: 10px;
+}
+#content .form-actions .form-actions-left, .wym_dialog .form-actions .form-actions-left, .ui-dialog .form-actions .form-actions-left {
+  left: 10px;
+}
+#content .form-actions .form-actions-right, .wym_dialog .form-actions .form-actions-right, .ui-dialog .form-actions .form-actions-right {
+  right: 10px;
+}
 .wym_dialog .form-actions, .ui-dialog .form-actions {
-  margin-top: 0px;
   border: 0px none;
   border-top: 1px solid #E8E8E8;
+}
+#dialog_iframe {
+  position: relative;
+}
+#dialog_container #content .form-actions, .ui-dialog .form-actions, .dialog_container .form-actions {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  border-right: 0px;
+  border-left: 0px;
+  border-bottom: 0px;
+  width: auto;
 }
 #existing_image_area {
   padding-top:6px;
@@ -1025,30 +1037,8 @@ textarea.wymeditor {
 .ui-dialog div.field {
   margin: 0px 10px;
 }
-.ui-dialog .form-actions {
-  margin-top: 12px;
-}
-#dialog_container {
-  padding: 0px 12px 12px 12px;
-}
-#dialog_container .form-actions {
-  position: absolute;
-  bottom: 0px;
-  left: 0px;
-  right: 0px;
-  border-right: 0px;
-  border-left: 0px;
-  border-bottom: 0px;
-  padding: 10px 0px;
-}
-#dialog_container .form-actions #submit_button, #dialog_container .form-actions .wym_submit {
-  margin-left: 10px;
-}
-#dialog_main .form-actions {
-  position: inherit;
-  width: 97%;
-  border: 1px solid #E8E8E8;
-  padding: 10px;
+#dialog_container, .dialog_container {
+  padding: 12px;
 }
 ul#image_grid {
   width: 580px;
@@ -1136,11 +1126,14 @@ input.button, a.button, #content a.button {
 	cursor:pointer;
   background: #22a7f2;
   color: white;
-  padding: 4px 14px;
+  padding: 0px 14px;
   font-size: 14px;
-}
-input.button, a.button, #content a.button {
+  line-height: 25px;
+  height: 25px;
+  display: inline-block;
   border: 0px none;
+  margin-top: 0px;
+  margin-bottom: 0px;
 }
 input.button.close_dialog, a.button.close_dialog, #content a.button.close_dialog {
   background: #bcbcbc;
@@ -1157,16 +1150,16 @@ input.button:active, a.button:active, #content a.button:active {
 input.button.close_dialog:active, a.button.close_dialog:active, #content a.button.close_dialog:active {
   background: #808080;
 }
+.wym_dialog a.button.wym_cancel.close_dialog {
+  margin-left: 6px;
+}
 #content a.button.close_dialog:active {
   color: white;
 }
-#content .form-actions a.button {
-  margin-left: 4px;
-  padding: 5px 14px;
-}
 .form-actions a.confirm-delete, #content .form-actions a.confirm-delete {
   background: #ee1100;
-  float: right;
+  position: absolute;
+  right: 0px;
 }
 .form-actions a.confirm-delete:hover, #content .form-actions a.confirm-delete:hover {
   background: #ff3322;
@@ -1174,7 +1167,7 @@ input.button.close_dialog:active, a.button.close_dialog:active, #content a.butto
 .form-actions a.confirm-delete:active, #content .form-actions a.confirm-delete:active {
   background: #bb0000;
 }
-.field input[type=text], .field textarea {
+.field input[type=text], .field input[type=password], .field textarea {
   border: 1px solid #7f9db9;
   padding: 3px 4px;
 }
@@ -1206,7 +1199,7 @@ input.button.close_dialog:active, a.button.close_dialog:active, #content a.butto
 	margin: 7px 0px;
 }
 .hemisquare textarea {
-  margin-bottom: 8px;
+  margin-bottom: 0px;
 }
 .hemisquare label {
 	margin: 0px;

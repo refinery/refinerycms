@@ -9,7 +9,7 @@
     <div class='field'>
       <span class='label_with_help'>
         <%= f.label :parent_id, "Parent page" %>
-        <span tooltip="Here you can specify which page this page is nested underneath for the menu." class='help'>
+        <span tooltip="You can put a page under another page by selecting it in the list. If you want this page to be a top-level page, just leave it blank." class='help'>
           (help)
         </span>
       </span>
@@ -18,11 +18,11 @@
     <div class='field'>
       <span class='label_with_help'>
         <%= label_tag :custom_title %>
-        <span tooltip="If you want the page to have a different title than the one that shows in the menu and browser title then select 'Text' and enter it here." class='help'>
+        <span tooltip="If you want the page to have a different title than the one that shows in the menu then select 'Text' and enter it here." class='help'>
           (help)
         </span>
       </span>
-      <% ["none", "text"].each do |type| %>
+      <% %w(none text).each do |type| %>
         <%= f.radio_button :custom_title_type, "#{type}" %>
         <%= label_tag "page_custom_title_type_#{type}", "#{type.titleize}", :class => "stripped" %>
       <% end %>
@@ -34,7 +34,7 @@
     <div class='field'>
       <span class='label_with_help'>
         <%= label_tag :skip_to_first_child?, "Skip top-level page" %>
-        <span tooltip='This option makes this page link to the first page underneath it instead so this page is then only useful for grouping pages together under your menu.' class='help'>
+        <span tooltip='This option makes this page link to the first page underneath. This can be useful when grouping pages together.' class='help'>
           (help)
         </span>
       </span>
@@ -43,9 +43,8 @@
     </div>
     <div class='field'>
       <span class='label_with_help'>
-        <%= f.label :link_url, "Custom URL" %>
-        <span tooltip='Enter a URL if this page links somewhere else, e.g. your contact page. <br/>
-        Note: This must link to an existing location, nothing will not be created.' class='help'>
+        <%= f.label :link_url, "Link to Another Website" %>
+        <span tooltip='If you want this page to go to another website when you click this page in the menu, enter the URL of that website here. e.g. http://google.com' class='help'>
           (help)
         </span>
       </span>
@@ -54,7 +53,7 @@
     <div class='field'>
       <span class='label_with_help'>
         <%= f.label :show_in_menu, "Show in menu", :id => 'page_show_in_menu_heading' %>
-        <span tooltip="You can prevent this page from showing up in your site's menu by unchecking this option, otherwise it will show." class='help'>
+        <span tooltip="Uncheck this box if you want to remove a page from your site menu. This can be handy if you have a page you want to link people to directly but don't want to show the page in the menu" class='help'>
           (help)
         </span>
       </span>
