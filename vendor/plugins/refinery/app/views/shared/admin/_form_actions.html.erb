@@ -11,7 +11,7 @@
 
     <%= link_to("#{cancel_button_text ||= 'Cancel'}",
                 (cancel_url ||= ((back=url_for(:back)).include?('javascript') ? send("admin_#{f.object.class.name.pluralize.underscore}_url") : back)),
-                :title => (cancel_title ||= "Cancelling will lose all changes you've made to this #{f.object.class.name.underscore.gsub("_", " ")}"),
+                :title => (cancel_title ||= "Cancelling will lose all changes you've made"),
                 :id => "#{cancel_button_id ||= "cancel_button"}",
                 :class => "close_dialog button") unless (defined?(hide_cancel) ? hide_cancel : from_dialog?) %>
   </div>
