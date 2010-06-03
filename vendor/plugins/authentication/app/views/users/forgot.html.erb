@@ -2,12 +2,12 @@
 
 <% form_for :user do |f| -%>
   <%= f.error_messages %>
-  
+
   <div class='field'>
-    <%= f.text_field :email, :class => "larger widest", 
+    <%= f.text_field :email, :class => "larger widest",
                      :placeholder => "Email Address" %>
   </div>
-  
+
   <%= render :partial => "/shared/admin/form_actions",
              :locals => {
                :f => f,
