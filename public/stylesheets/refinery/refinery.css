@@ -616,9 +616,7 @@ label.stripped {
   text-align: right;
   display: block;
 }
-.tree .actions {
-  margin-top: -6px;
-}
+
 .published {
   width: 25px;
   text-align: center;
@@ -1219,7 +1217,10 @@ input.button.close_dialog:active, a.button.close_dialog:active, #content a.butto
   border-bottom: 1px dotted #727272;
   cursor: help;
 }
-.nothing_selected {
+
+.tree div:hover{
+	background:#fff5b1;
+}.nothing_selected {
   border-bottom: 1px dotted #727272;
   width: auto;
   margin-bottom: 12px;
