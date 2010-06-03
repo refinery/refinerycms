@@ -17,7 +17,7 @@ h1, #body_content h1, h1#body_content_page_title {
     font-weight: normal;
     font-family: "Trebuchet MS", Trebuchet;
 }
-#body_content_left p, #body_content_right p {
+#body_content_left p, #body_content_right p, .page_part_body p, .page_part_side_body p {
     margin-bottom: 12px;
 }
 h2, h3 {

@@ -22,6 +22,9 @@ body {
 acronym {
   cursor: help;
 }
+label[for] {
+  cursor: pointer;
+}
 #page_container, #site_bar_content, #header_content {
   margin: 0px auto 10px auto;
   text-align: left;
@@ -34,7 +37,7 @@ acronym {
   width: 954px;
   position: relative;
 }
-#dialog_container #content .field {
+#dialog_container #content .field, .dialog_container .field {
   width: auto;
 }
 input.widest, textarea.widest {
@@ -684,8 +687,11 @@ label.stripped {
   width: 100%;
 }
 #inquiry td {
-  border-bottom: 1px solid #99998B;
+  border-bottom: 1px solid #CCCCCC;
   padding: 7px;
+}
+#inquiry tr:last-child td {
+  border-bottom: 0px;
 }
 body.dialog {
   background: #FFF;
@@ -984,25 +990,26 @@ ul#page_parts_controls img {
 .wym_hideables {
   display: none;
 }
-#content .form-actions, .wym_dialog .form-actions {
+#content .form-actions, .wym_dialog .form-actions, .ui-dialog .form-actions {
   position: relative;
   background-color: #F2F2F2;
   border: 1px solid #CCCCCC;
   margin-top: 10px;
   height: 45px;
 }
-.wym_dialog .form-actions, #content.form-actions.dialog-form-actions {
+.wym_dialog .form-actions, #content.form-actions.dialog-form-actions, .ui-dialog .form-actions {
   margin-top: 16px;
 }
 #content .form-actions .form-actions-left, #content .form-actions .form-actions-right,
-  .wym_dialog .form-actions .form-actions-left, .wym_dialog .form-actions .form-actions-right {
+  .wym_dialog .form-actions .form-actions-left, .wym_dialog .form-actions .form-actions-right,
+  .ui-dialog .form-actions .form-actions-left, .ui-dialog .form-actions .form-actions-right {
   position: absolute;
   top: 10px;
 }
-#content .form-actions .form-actions-left, .wym_dialog .form-actions .form-actions-left {
+#content .form-actions .form-actions-left, .wym_dialog .form-actions .form-actions-left, .ui-dialog .form-actions .form-actions-left {
   left: 10px;
 }
-#content .form-actions .form-actions-right, .wym_dialog .form-actions .form-actions-right {
+#content .form-actions .form-actions-right, .wym_dialog .form-actions .form-actions-right, .ui-dialog .form-actions .form-actions-right {
   right: 10px;
 }
 .wym_dialog .form-actions, .ui-dialog .form-actions {
@@ -1012,7 +1019,7 @@ ul#page_parts_controls img {
 #dialog_iframe {
   position: relative;
 }
-#dialog_container #content .form-actions {
+#dialog_container #content .form-actions, .ui-dialog .form-actions, .dialog_container .form-actions {
   position: absolute;
   bottom: 0px;
   left: 0px;
@@ -1030,8 +1037,8 @@ textarea.wymeditor {
 .ui-dialog div.field {
   margin: 0px 10px;
 }
-#dialog_container {
-  padding: 0px 12px 12px 12px;
+#dialog_container, .dialog_container {
+  padding: 12px;
 }
 ul#image_grid {
   width: 580px;

@@ -3,7 +3,6 @@
   <%= f.error_messages %>
 
   <div class='field'>
-    <%= f.label :uploaded_data, 'Image' %>
     <%= "Use current image <em>or</em>, replace it with this one..." if action_name =~ /(edit)|(update)/ %>
     <%= f.file_field :uploaded_data %>
   </div>

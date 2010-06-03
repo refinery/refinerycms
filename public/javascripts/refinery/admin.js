@@ -29,9 +29,9 @@ init_interface = function() {
   // make sure that users can tab to wymeditor fields and add an overlay while loading.
   $('textarea.wymeditor').each(function() {
     textarea = $(this);
-    overlay = $("<div class='wym_loading_overlay'>&nbsp;</div>")
+    /*overlay = $("<div class='wym_loading_overlay'>&nbsp;</div>")
               .css({'height': textarea.height(), 'width': textarea.width()});
-    textarea.before(overlay);
+    textarea.before(overlay);*/
     if ((instance = WYMeditor.INSTANCES[$(textarea.next('.wym_box').find('iframe').attr('id').split('_')).last().get(0)]) != null) {
       textarea.parent().next().find('input, textarea').keydown($.proxy(function(e) {
         shiftHeld = e.shiftKey;
@@ -295,9 +295,9 @@ var link_dialog = {
         $('.ui-dialog').dialog('close').remove();
       }
     });
-    
-    if (parent 
-        && parent.document.location.href != document.location.href 
+
+    if (parent
+        && parent.document.location.href != document.location.href
         && parent.document.getElementById('wym_dialog_submit') != null) {
       $('#dialog_container .form-actions input#submit_button').click(function(e) {
         e.preventDefault();
@@ -656,9 +656,9 @@ var image_dialog = {
       image_dialog.set_image($('#existing_image_area_content ul li.selected img'));
       e.preventDefault();
     });
-    
-    if (parent 
-        && parent.document.location.href != document.location.href 
+
+    if (parent
+        && parent.document.location.href != document.location.href
         && parent.document.getElementById('wym_dialog_submit') != null) {
       $('#existing_image_area .form-actions input#submit_button').click(function(e) {
         e.preventDefault();

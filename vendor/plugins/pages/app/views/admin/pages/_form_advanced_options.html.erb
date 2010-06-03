@@ -9,7 +9,7 @@
     <div class='field'>
       <span class='label_with_help'>
         <%= f.label :parent_id, "Parent page" %>
-        <span tooltip="You can put a page under another page by selected it in the list. If you want this page to be a top-level page, just leave it blank." class='help'>
+        <span tooltip="You can put a page under another page by selecting it in the list. If you want this page to be a top-level page, just leave it blank." class='help'>
           (help)
         </span>
       </span>
@@ -22,7 +22,7 @@
           (help)
         </span>
       </span>
-      <% ["none", "text"].each do |type| %>
+      <% %w(none text).each do |type| %>
         <%= f.radio_button :custom_title_type, "#{type}" %>
         <%= label_tag "page_custom_title_type_#{type}", "#{type.titleize}", :class => "stripped" %>
       <% end %>
