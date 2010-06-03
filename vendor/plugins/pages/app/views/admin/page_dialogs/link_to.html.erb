@@ -1,56 +1,26 @@
-<%
-  # web address link
-  web_address_text = "http://"
-  web_address_text = params[:current_link] if params[:current_link].present? and params[:current_link] =~ /^http:\/\//
-  web_address_target_blank = (params[:target_blank] == "true")
-
-  # mailto link
-  if params[:current_link].present?
-    if params[:current_link] =~ /^mailto:/
-      email_address_text = params[:current_link].split("mailto:")[1].split('?')[0]
-    end
-    email_default_subject_text = params[:current_link].split('?subject=')[1] || params[:subject]
-    email_default_body_text = params[:current_link].split('?body=')[1] || params[:body]
-  end
-
-  # resource link
-  if params[:current_link].present?
-    is_resource_link = params[:current_link].include?("/system/resources")
-  end
-
-  if params[:paginating].present?
-    page_area_selected = (params[:paginating] == "your_page")
-    resource_area_selected = (params[:paginating] == "resource_file")
-  else
-    page_area_selected = (!is_resource_link and web_address_text == "http://" and email_address_text.blank?)
-    web_address_area_selected = (web_address_text != "http://")
-    email_address_area_selected = !email_address_text.blank?
-    resource_area_selected = is_resource_link
-  end
-%>
 <div class='clearfix dialog_link_to'>
   <div id='dialog_menu_left'>
-    <span id='your_page_radio' class='radio<%= " selected_radio" if page_area_selected %>'>
-      <input type='radio' name='link_to' value='your_page' id='link_to_your_page' <%= "checked='true'" if page_area_selected %> />
+    <span id='your_page_radio' class='radio<%= " selected_radio" if @page_area_selected %>'>
+      <input type='radio' name='link_to' value='your_page' id='link_to_your_page' <%= "checked='true'" if @page_area_selected %> />
       <label for='link_to_your_page' class='stripped'>Your page</label>
     </span>
-    <span id='web_address_radio' class='radio<%= " selected_radio" if web_address_area_selected %>'>
-      <input type='radio' name='link_to' value='web_address' id='link_to_web_address' <%= "checked='true'" if web_address_area_selected %> />
+    <span id='web_address_radio' class='radio<%= " selected_radio" if @web_address_area_selected %>'>
+      <input type='radio' name='link_to' value='web_address' id='link_to_web_address' <%= "checked='true'" if @web_address_area_selected %> />
       <label for='link_to_web_address' class='stripped'>Web address</label>
     </span>
 
-    <span id='email_address_radio' class='radio<%= " selected_radio" if email_address_area_selected %>'>
-      <input type='radio' name='link_to' value='email_address' id='link_to_email_address' <%= "checked='true'" if email_address_area_selected %> />
+    <span id='email_address_radio' class='radio<%= " selected_radio" if @email_address_area_selected %>'>
+      <input type='radio' name='link_to' value='email_address' id='link_to_email_address' <%= "checked='true'" if @email_address_area_selected %> />
       <label for='link_to_email_address' class='stripped'>Email address</label>
     </span>
-    <span id="resource_file_radio" class="radio<%= " selected_radio" if resource_area_selected %>">
-      <input type="radio" name="link_to" value="resource_file" id="link_to_resource_file" <%= "checked='true'" if resource_area_selected %> />
+    <span id="resource_file_radio" class="radio<%= " selected_radio" if @resource_area_selected %>">
+      <input type="radio" name="link_to" value="resource_file" id="link_to_resource_file" <%= "checked='true'" if @resource_area_selected %> />
       <label for="link_to_resource_file" class="stripped">Your resource</label>
     </span>
   </div>
 
   <div id='dialog_main'>
-    <div id='your_page_area' class='dialog_area' <%= "style='display: none'" unless page_area_selected %>>
+    <div id='your_page_area' class='dialog_area' <%= "style='display: none'" unless @page_area_selected %>>
       <input type='hidden' name='selected_image' id='selected_image' />
       <div id='your_page_content' class='clearfix'>
         <div id='pages_list'>
@@ -59,18 +29,22 @@
           </ul>
         </div>
       </div>
-      <%= will_paginate @pages, :param_name => :page, :previous_label => '&laquo; Previous', :next_label => 'Next &raquo;',
-        :renderer => Refinery::LinkRenderer, :url => {:paginating => "your_page"} %>
+      <%= will_paginate @pages,
+                        :param_name => :page,
+                        :previous_label => '&laquo; Previous',
+                        :next_label => 'Next &raquo;',
+                        :renderer => Refinery::LinkRenderer,
+                        :url => {:paginating => "your_page"} %>
     </div>
-    <div id='web_address_area' <%= "style='display: none'" unless web_address_area_selected %> class='dialog_area'>
+    <div id='web_address_area' <%= "style='display: none'" unless @web_address_area_selected %> class='dialog_area'>
       <div id='web_address_content'>
         <label for='web_address_text'>Location</label>
-        <%= text_field :web_address, :text, :value => web_address_text, :style => "width: 70%" %>
+        <%= text_field :web_address, :text, :value => @web_address_text, :style => "width: 70%" %>
         <img id='web_address_test_loader' src='/images/refinery/ajax-loader.gif' alt='Testing...' style='display: none;'/>
         <span id='web_address_test_result'></span>
 
         <label>New Window</label>
-        <input type='checkbox' name='web_address_target_blank' id='web_address_target_blank' <%= "checked='checked'" if web_address_target_blank %> />
+        <input type='checkbox' name='web_address_target_blank' id='web_address_target_blank' <%= "checked='checked'" if @web_address_target_blank %> />
         <label for='web_address_target_blank' class='stripped'>Check this box to have the link open in a new browser window.</label>
         <p>
           <strong>Not sure what to put in the box above?</strong>
@@ -81,23 +55,23 @@
         </ol>
       </div>
     </div>
-    <div id='email_address_area' <%= "style='display: none'" unless email_address_area_selected %> class='dialog_area'>
+    <div id='email_address_area' <%= "style='display: none'" unless @email_address_area_selected %> class='dialog_area'>
       <div id='email_address_content'>
         <div class='field'>
           <label for='email_address_text'>Email Address</label>
-          <%= text_field :email_address, :text, :value => email_address_text, :style => "width: 70%"%>
+          <%= text_field :email_address, :text, :value => @email_address_text, :style => "width: 70%"%>
           <img id='email_address_test_loader' src='/images/refinery/ajax-loader.gif' alt='Testing...' style='display: none;'/>
           <span id='email_address_test_result'></span>
         </div>
 
         <div class='field'>
           <label for='email_default_subject_text'>Subject Line (optional)</label>
-          <%= text_field :email_default_subject, :text, :value => email_default_subject_text, :style => "width: 70%" %>
+          <%= text_field :email_default_subject, :text, :value => @email_default_subject_text, :style => "width: 70%" %>
         </div>
 
         <div class='field'>
           <label for='email_default_body_text'>Email Body (optional)</label>
-          <%= text_area :email_default_body, :text, :value => email_default_body_text, :style => "width: 70%", :rows => '' %>
+          <%= text_area :email_default_body, :text, :value => @email_default_body_text, :style => "width: 70%", :rows => '' %>
         </div>
 
         <p>
@@ -119,22 +93,35 @@
         </ol>
       </div>
     </div>
-    <div id="resource_file_area" <%= "style='display:none'" unless resource_area_selected %> class="dialog_area">
+    <div id="resource_file_area" <%= "style='display:none'" unless @resource_area_selected %> class="dialog_area">
       <div id='pages_list'>
         <ul class="link_list">
           <% @resources.each do |resource| -%>
             <% resource_linked = (resource.public_filename == params[:current_link]) unless params[:current_link].blank? %>
-            <li<%= " class='linked'" if resource_linked %>>
+            <li<%= " class='linked'" if @resource_linked %>>
               <%= link_to resource.title, resource.public_filename, :title => 'Link to this Resource',
                           :rel => resource.title, :class => 'page_link' %>
             </li>
           <% end %>
         </ul>
-        <%= will_paginate @resources, :param_name => :resource_page, :previous_label => '&laquo;', :next_label => '&raquo;',
-          :renderer => Refinery::LinkRenderer, :url => {:paginating => "resource_file"} %>
+        <%= will_paginate @resources,
+                          :param_name => :resource_page,
+                          :previous_label => '&laquo;',
+                          :next_label => '&raquo;',
+                          :renderer => Refinery::LinkRenderer,
+                          :url => {:paginating => "resource_file"} %>
       </div>
     </div>
   </div>
+  <%= render :partial => "/shared/admin/form_actions",
+             :locals => {
+               :f => nil,
+               :cancel_url => '',
+               :submit_button_text => 'Insert',
+               :hide_cancel => false,
+               :cancel_title => '',
+               :hide_delete => true
+             } %>
 </div>
 
 <% content_for :head do %>
