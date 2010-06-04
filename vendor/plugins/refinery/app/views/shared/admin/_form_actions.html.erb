@@ -6,12 +6,14 @@
   cancel_button_text ||= t('.cancel')
   cancel_title       ||= t('.cancel_lose_changes', :object_name => f.object.class.name.underscore.gsub("_", " "))
   cancel_button_id   ||= "cancel_button"
-  cancel_url         ||= (( back = url_for(:back)).include?('javascript') ? send("admin_#{f.object.class.name.pluralize.underscore}_url") : back)
+  hide_cancel        ||= from_dialog?
+  cancel_url         ||= (( back = url_for(:back)).include?('javascript') ? send("admin_#{f.object.class.name.pluralize.underscore}_url") : back) unless hide_cancel
 
   delete_button_text ||= t('.delete')
   delete_title       ||= t('.delete_title', :object_name => f.object.class.name.underscore.gsub("_", " "))
+  hide_delete        ||= from_dialog? || f.object.new_record? || (f.object.respond_to?(:deleteable?) && !f.object.deletable?)
   delete_button_id   ||= "delete_button"
-  delete_url         ||= eval("admin_#{f.object.class.name.underscore}_url(#{f.object.id})")
+  delete_url         ||= eval("admin_#{f.object.class.name.underscore}_url(#{f.object.id})") unless hide_delete
 %>
 <div class='form-actions'>
   <%= f.submit submit_button_text, :id => submit_button_id, :class => "wymupdate button" %>
@@ -23,13 +25,13 @@
 
   <%= hidden_field_tag :continue_editing, false %>
 
-  <% unless (hide_cancel ||= from_dialog?) -%>
+  <% unless hide_cancel -%>
     <%= t('.or') %>
     <%# TODO add :what to t('.cancel_lose_changes') -%>
     <%= link_to cancel_button_text, cancel_url, :title => cancel_title, :id => cancel_button_id, :class => "close_dialog button" %>
   <% end -%>
 
-  <% unless ((hide_delete ||= from_dialog?) or f.object.new_record? or (f.object.respond_to?(:deleteable?) && !f.object.deletable?)) -%>
+  <% unless hide_delete -%>
     <%= t('.or') %>
     <%# TODO add :what to t('.cancel_lose_changes') -%>
     <%= link_to(delete_button_text, delete_url, :title => delete_title, :id => delete_button_id, :class => "button confirm-delete") %>
