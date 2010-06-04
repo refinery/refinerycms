@@ -20,7 +20,7 @@
       :nl => 'Nederlands',
       :'pt-BR' => 'Portugu&ecirc;s',
       :da => 'Dansk',
-      :nb => 'Norsk Bokmål',
+      :nb => 'Norsk Bokm&aring;l',
       :sl => 'Slovenian',
       :es => 'Espa&ntilde;ol',
       :it => 'Italiano'
