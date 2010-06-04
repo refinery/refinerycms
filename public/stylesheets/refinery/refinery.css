@@ -1123,7 +1123,7 @@ ul#plugins li {
   height: 300px;
 }
 input.button, a.button, #content a.button {
-	cursor:pointer;
+  cursor:pointer;
   background: #22a7f2;
   color: white;
   padding: 0px 14px;
@@ -1139,13 +1139,13 @@ input.button.close_dialog, a.button.close_dialog, #content a.button.close_dialog
   background: #bcbcbc;
 }
 input.button:hover, a.button:hover, #content a.button:hover {
-	background:#62bef2;
+  background:#62bef2;
 }
 input.button.close_dialog:hover, a.button.close_dialog:hover, #content a.button.close_dialog:hover {
   background: #cdcdcd;
 }
 input.button:active, a.button:active, #content a.button:active {
-	background:#004a8f;
+  background:#004a8f;
 }
 input.button.close_dialog:active, a.button.close_dialog:active, #content a.button.close_dialog:active {
   background: #808080;
@@ -1173,14 +1173,14 @@ input.button.close_dialog:active, a.button.close_dialog:active, #content a.butto
 }
 /* ## Advanced Page Options --------------------------------------------- */
 #more_options{
-	overflow:hidden;
+  overflow:hidden;
 }
 .hemisquare {
-	padding: 10px;
-	margin: 0px 0px;
-	border: 1px solid #ddd;
-	float: left;
-	width: 448px;
+  padding: 10px;
+  margin: 0px 0px;
+  border: 1px solid #ddd;
+  float: left;
+  width: 448px;
 }
 .hemisquare.right_side {
   margin-left: 10px;
@@ -1190,26 +1190,26 @@ input.button.close_dialog:active, a.button.close_dialog:active, #content a.butto
   margin-top: 0px;
 }
 .hemisquare input[type=text] {
-	width: 97%;
+  width: 97%;
 }
 .hemisquare textarea {
   width: 95%;
 }
 .hemisquare input, .hemisquare textarea, .hemisquare select {
-	margin: 7px 0px;
+  margin: 7px 0px;
 }
 .hemisquare textarea {
   margin-bottom: 0px;
 }
 .hemisquare label {
-	margin: 0px;
+  margin: 0px;
 }
 #content .hemisquare .field {
-	margin: 0 0 20px 0px;
-	width: 100%;
+  margin: 0 0 20px 0px;
+  width: 100%;
 }
 .hemisquare small {
-	font-size: 0.9em;
+  font-size: 0.9em;
 }
 .label_with_help label, .label_with_help span.help {
   display: inline;
