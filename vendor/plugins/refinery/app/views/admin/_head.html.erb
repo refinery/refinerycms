@@ -27,13 +27,13 @@
 
   <%= javascript_include_tag 'jquery/jquery.corner.js',
                              'jquery/jquery.textTruncate.js',
-                             :cache => (js_caching ? "cache/jquery-plugins.js" : false) %>
+                             :cache => (js_caching ? "cache/jquery-plugins" : false) %>
 
   <%= javascript_include_tag 'wymeditor/jquery.refinery.wymeditor.js',
                              'admin',
                              'refinery/boot_wym',
                              'refinery/admin',
-                             :cache => (js_caching ? "cache/admin.js" : false) %>
+                             :cache => (js_caching ? "cache/admin" : false) %>
 
   <%= yield :head_after_javascript_libraries %>
 

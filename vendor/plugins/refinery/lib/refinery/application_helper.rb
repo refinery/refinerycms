@@ -77,7 +77,7 @@ module Refinery::ApplicationHelper
     unless options[:google] and !local_request?
       if options[:jquery_ui]
         javascript_include_tag  "jquery#{"-min" if Rails.env.production?}", "jquery-ui-custom-min",
-                                :cache => (options[:caching] ? "cache/libraries" : nil)
+                                :cache => (options[:caching] ? "cache/jquery" : nil)
       else
         javascript_include_tag "jquery#{"-min" if Rails.env.production?}"
       end
