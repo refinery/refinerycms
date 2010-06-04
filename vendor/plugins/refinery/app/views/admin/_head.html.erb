@@ -1,8 +1,8 @@
 <%
-  # Internet Explorer is fine with CSS caching, but cache JS and kaboom.
+  # Internet Explorer is fine with JS caching, but cache CSS and kaboom.
   # Would be great if someone could fix this?
-  css_caching = RefinerySetting.find_or_set(:use_resource_caching, false)
-  js_caching = css_caching && request.env['HTTP_USER_AGENT'] !~ /MSIE/
+  js_caching = RefinerySetting.find_or_set(:use_resource_caching, false)
+  css_caching = js_caching && request.env['HTTP_USER_AGENT'] !~ /MSIE/
 -%>
 <head>
 <% if request.env['HTTP_USER_AGENT'] =~ /MSIE/%>
