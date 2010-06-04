@@ -1487,8 +1487,7 @@ WYMeditor.editor.prototype.format_block = function(selected) {
 
   var container = selected || wym.selected();
 
-  var name = container.tagName.toLowerCase();
-
+  var name = ((typeof(container) != 'undefined' && typeof(container.tagName) != 'undefined') ? container.tagName.toLowerCase() : 'body');
   //fix forbidden main containers
   if(
     name == "strong" ||
