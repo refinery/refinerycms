@@ -4,7 +4,7 @@
   <title><%= RefinerySetting.find_or_set(:site_name, 'Company Name') %> - Refinery</title>
   <%= "<!--[if lt IE 9]>#{javascript_include_tag('http://html5shiv.googlecode.com/svn/trunk/html5.js')}<![endif]-->" if request.env['HTTP_USER_AGENT'] =~ /MSIE/ %>
   <%= stylesheet_link_tag 'refinery/site_bar', 'refinery/refinery', 'refinery/ui', 'refinery/tooltips', "wymeditor/skins/refinery/skin", :cache => (use_caching ? "cache/refinery" : false) %>
-  <%= render :partial => "/shared/admin/head_before_javascript_libraries" -%>
+  <%= yield :head_before_javascript_libraries -%>
   <%= jquery_include_tags(:caching => use_caching) %>
   <%= javascript_include_tag 'jquery/jquery.corner.js', :cache => (use_caching ? "cache/jquery-plugins" : false) %>
   <%= yield :head_after_javascript_libraries %>
