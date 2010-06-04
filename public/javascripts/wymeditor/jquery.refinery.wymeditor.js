@@ -1487,8 +1487,7 @@ WYMeditor.editor.prototype.format_block = function(selected) {
 
   var container = selected || wym.selected();
 
-  var name = container.tagName.toLowerCase();
-
+  var name = ((typeof(container) != 'undefined' && typeof(container.tagName) != 'undefined') ? container.tagName.toLowerCase() : 'body');
   //fix forbidden main containers
   if(
     name == "strong" ||
@@ -1580,6 +1579,7 @@ WYMeditor.editor.prototype.listen = function() {
 WYMeditor.editor.prototype.mousedown = function(evt) {
 
   var wym = WYMeditor.INSTANCES[this.ownerDocument.title];
+  wym.format_block();
   wym._selected_image = (evt.target.tagName.toLowerCase() == WYMeditor.IMG) ? evt.target : null;
   evt.stopPropagation();
 };
