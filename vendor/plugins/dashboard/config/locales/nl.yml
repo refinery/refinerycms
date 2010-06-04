@@ -2,20 +2,17 @@ nl:
   plugins:
     refinery_dashboard:
       title: Overzicht
-  common_tasks: Algemene taken
-  add_a_new_page: Voeg een nieuwe pagina toe
-  update_a_page: Bewerk een pagina
-  upload_a_file: Upload een bestand
-  upload_a_image: Upload een afbeelding
-  see_home_page: Bezoek de homepage
-
   admin:
     dashboard:
       index:
+        quick_tasks: Algemene taken
+        add_a_new_page: Voeg een nieuwe pagina toe
+        update_a_page: Bewerk een pagina
+        upload_a_image: Upload een afbeelding
         change_language: Verander de taal
+        see_home_page: Bezoek de homepage
       recent_activity:
         latest_activity: Laatste wijzigingen
-        nothing_has_happened_yet: Er is nog niets gebeurd.
         see: Bezoek de '{{what}}'
   updated: bewerkt
   created: aangemaakt
