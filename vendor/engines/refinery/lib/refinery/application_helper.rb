@@ -47,17 +47,19 @@ module Refinery::ApplicationHelper
   # <%= image_fu @model.image, :preview %> or with no thumbnail: <%= image_fu @model.image %>
   def image_fu(image, thumbnail = nil , options={})
     if image.present?
-      # if a thumbnail name was specified then find the thumbnail belonging to this image with that name, if existant.
-      image_thumbnail = image.thumbnails.detect {|t| t.thumbnail == thumbnail.to_s} unless thumbnail.nil?
-
-      # default back to using the image specified as the "thumbnail" if we didn't find one.
-      image_thumbnail = image unless image_thumbnail.present?
+      thumbnail_sizes = RefinerySetting.find_or_set(:image_thumbnails, {})
+      if (size = thumbnail_sizes[thumbnail])
+        image_thumbnail_url = image.url(size)
+      else
+        # default back to using the image specified as the "thumbnail" if we didn't find one.
+        image_thumbnail_url = image.url
+      end
 
       # call rails' image tag function with default alt, width and height options.
       # if any other options were supplied these are merged in and can replace the defaults.
-      image_tag(image_thumbnail.public_filename, {:alt => image.respond_to?(:title) ? image.title : image.filename,
-                                                  :width => image_thumbnail.width,
-                                                  :height => image_thumbnail.height
+      image_tag(image_thumbnail_url, {:alt => image.respond_to?(:title) ? image.title : image.image_name,
+                                                  #:width => image_thumbnail.width,
+                                                  #:height => image_thumbnail.height
                                                  }.merge(options))
     end
   end

@@ -4,11 +4,11 @@
 
   <div class='field'>
     <%= "Use current image <em>or</em>, replace it with this one..." if action_name =~ /(edit)|(update)/ %>
-    <%= f.file_field :uploaded_data %>
+    <%= f.file_field :image %>
   </div>
 
   <div class='field'>
-    <label>The maximum image size is <%= (Image.attachment_options[:max_size] / 1024 / 1024) %> megabytes.</label>
+    <label>The maximum image size is <%= Image::MAX_SIZE_IN_MB %> megabytes.</label>
   </div>
 
   <%= render :partial => "/shared/admin/form_actions",

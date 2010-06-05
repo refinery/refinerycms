@@ -97,9 +97,9 @@
       <div id='pages_list'>
         <ul class="link_list">
           <% @resources.each do |resource| -%>
-            <% resource_linked = (resource.public_filename == params[:current_link]) unless params[:current_link].blank? %>
+            <% resource_linked = (resource.url == params[:current_link]) unless params[:current_link].blank? %>
             <li<%= " class='linked'" if @resource_linked %>>
-              <%= link_to resource.title, resource.public_filename, :title => 'Link to this Resource',
+              <%= link_to resource.title, resource.url, :title => 'Link to this Resource',
                           :rel => resource.title, :class => 'page_link' %>
             </li>
           <% end %>

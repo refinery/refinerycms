@@ -20,10 +20,10 @@
           <div id='pages_list'>
             <ul class='link_list'>
               <% @resources.each do |resource| -%>
-                <% resource_linked = (resource.public_filename == params[:current_link]) if params[:current_link].present? %>
+                <% resource_linked = (resource.url == params[:current_link]) if params[:current_link].present? %>
                 <li<%= " class='linked'" if resource_linked %>>
-                  <%= link_to "#{resource.title} (#{resource.public_filename})",
-                              resource.public_filename,
+                  <%= link_to "#{resource.title} (#{resource.url})",
+                              resource.url,
                               :title => 'Link to this Resource',
                               :rel => resource.title,
                               :class => 'page_link',
