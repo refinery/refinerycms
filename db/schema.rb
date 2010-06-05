@@ -9,22 +9,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100530205942) do
+ActiveRecord::Schema.define(:version => 20100606135207) do
 
   create_table "images", :force => true do |t|
-    t.integer  "parent_id"
-    t.string   "content_type"
-    t.string   "filename"
-    t.string   "thumbnail"
-    t.integer  "size"
-    t.integer  "width"
-    t.integer  "height"
-    t.string   "image_type"
+    t.string   "image_mime_type"
+    t.string   "image_name"
+    t.integer  "image_size"
+    t.integer  "image_width"
+    t.integer  "image_height"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "image_uid",       :null => false
+    t.string   "image_ext"
   end
-
-  add_index "images", ["parent_id"], :name => "index_images_on_parent_id"
 
   create_table "inquiries", :force => true do |t|
     t.string   "name"
@@ -91,12 +88,13 @@ ActiveRecord::Schema.define(:version => 20100530205942) do
   add_index "refinery_settings", ["name"], :name => "index_refinery_settings_on_name"
 
   create_table "resources", :force => true do |t|
-    t.string   "content_type"
-    t.string   "filename"
-    t.integer  "size"
-    t.integer  "parent_id"
+    t.string   "file_mime_type"
+    t.string   "file_name"
+    t.integer  "file_size"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "file_uid",       :null => false
+    t.string   "file_ext"
   end
 
   create_table "slugs", :force => true do |t|

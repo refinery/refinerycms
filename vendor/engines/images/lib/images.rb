@@ -7,7 +7,6 @@ Refinery::Plugin.register do |plugin|
     :class => 'Image',
     :title => 'title',
     :url_prefix => 'edit',
-    :conditions => "parent_id IS NULL",
     :created_image => "image_add.png",
     :updated_image => "image_edit.png"
   }

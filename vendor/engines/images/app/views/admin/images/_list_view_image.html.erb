@@ -3,7 +3,7 @@
     <span class='title'>
       <%= list_view_image.title %> <span class="preview">&nbsp;</span>
       <span class='actions'>
-        <%= link_to refinery_icon_tag('eye.png'), list_view_image.public_filename,
+        <%= link_to refinery_icon_tag('eye.png'), list_view_image.url,
                     :target => "_blank",
                     :title => "#{image_fu list_view_image, :preview}" %>
         <%= link_to refinery_icon_tag('application_edit.png'), edit_admin_image_path(list_view_image),
