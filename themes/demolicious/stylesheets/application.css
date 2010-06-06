@@ -51,6 +51,10 @@ body {
     right: 0px;
     padding: 0px;
 }
+#language_switcher {
+    float:right;
+    padding-top:15px;
+}
 #menu li, #menu > a, #menu div {
     float: left;
     list-style: none;
