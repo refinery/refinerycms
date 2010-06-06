@@ -110,8 +110,11 @@ hr {
   font-weight: normal;
 }
 .fieldWithErrors input, .fieldWithErrors textarea {
-  border: 1px solid red;
-  background-color: #FFECF0;
+  border: 1px solid red !important;
+  background-color: #FFECF0 !important;
+}
+.fieldWithErrors iframe {
+  border: 1px solid red !important;
 }
 #message, #flash {
   padding: 8px 8px 8px 30px;
