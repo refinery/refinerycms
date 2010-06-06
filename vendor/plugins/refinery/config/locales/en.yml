@@ -4,13 +4,14 @@ en:
     remember_admin_location: "Remember your Refinery admin area is at:"
     lets_start: "Alright let's get you setup so you can login..."
     continue: "Continue..."
-  reorder_menu: Reorder menu
-  reorder_menu_done: "I'm done reordering the menu"
-  log_out: Log out
-  search: Search
-  search_submit: Go
-  search_results_for: "Search results for '{{query}}'"
-  no_results_found: "Sorry, no results found"
+  admin:
+    reorder_menu: Reorder menu
+    reorder_menu_done: "I'm done reordering the menu"
+    log_out: Log out
+    search: Search
+    search_submit: Go
+    search_results_for: "Search results for '{{query}}'"
+    no_results_found: "Sorry, no results found"
   refinery:
     other: "Other {{what}}"
     reorder: "Reorder {{what}}"
@@ -21,11 +22,10 @@ en:
       created: "{{what}} was successfully created"
       updated: "{{what}} was successfully created"
       destroyed: "{{what}} was successfully destroyed"
-  layouts:
-    admin:
-      view_public_site: View public site
-      welcome_to_refinery: Welcome to Refinery
   shared:
+    site_bar:
+      switch_to_your_website: Switch to your website
+      switch_to_your_website_editor: Switch to your website editor
     admin:
       message:
         close: Close
@@ -52,48 +52,4 @@ en:
         resource: resource
     message:
       close: Close
-  admin:
-    pages:
-      page:
-        view_live: View this page live <br/><em>(opens in a new window)</em>
-        edit_this_page: Edit this page
-        confirm_delete_page_title: Delete this page
-        confirm_delete_page_message: Are you sure you want to delete the page '{{title}}'?
-        hidden: hidden
-        draft: draft
-    page_dialogs:
-      not_allowed: You do not have permission to access this feature.
-      page_link:
-        link_to_this_page: Link to this page
-      link_to:
-        your_page:
-          tab_name: A page
-        web_address:
-          tab_name: Website
-          location: Location
-          new_window: New window
-          new_window_label: Check this box to have the link open in a new browser window.
-          not_sure: Not sure what to put in the box above?
-          step1: Find the page on the web you want to link to.
-          step2: "Copy the web address from your browser's address bar and paste it into the box above."
-        email_address:
-          tab_name: Email adres
-          subject_line_optional: Optional subject
-          body_optional: Optional body
-          not_sure: Not sure what to put in the boxes above?
-          step1: "Write or copy and paste (e.g. from your address book) the email address to link to into the '<strong>Email Address</strong>' box above."
-          step2: "Use the '<strong>Subject Line</strong>' box above if you want the message to be composed with a <strong>pre-written subject line</strong>."
-          step3: "Use the <strong>Email Body</strong> box above if you want the message to be composed with a <strong>pre-written message</strong>."
-        your_resource:
-          tab_name: A resource
-          link_to_this_resource: Link to this resource
-
-  activerecord:
-    models:
-      page: page
-      user: user
-      image: image
-      inquiry: inquiry
-      resource: resource
-      refinery_setting: refinery setting
-      inquiry_setting: inquiry setting
+      close_this_message: Close this message
