@@ -4379,6 +4379,9 @@ WYMeditor.WymClassMozilla.prototype.initIframe = function(iframe) {
     //set the text direction
     $('html', this._doc).attr('dir', this._options.direction);
 
+    //add error class to body if the containing iframe has an error class
+    $('.fieldWithErrors iframe').contents().find('body').addClass('fieldWithErrors');
+
     //init html value
     this.html(this._wym._html);
 

@@ -90,3 +90,6 @@
 	border: 1px solid red !important;
 	font-size: 12px !important;
 	font-weight: normal; }
+
+/* indicate invalid text area fields */
+	body.fieldWithErrors { background-color: #ffecf0 !important; }
