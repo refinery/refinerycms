@@ -16,14 +16,13 @@ gem 'unicorn', :group => :development
 
 #===REFINERY REQUIRED GEMS===
 git 'git://github.com/rails/rails.git'
-git 'git://github.com/stephencelis/authlogic.git'
 
 gem 'rails',          '3.0.0.beta3'
 gem 'rmagick',        '~> 2.13.1', :require => 'RMagick'
 gem 'rack-cache',     :require => 'rack/cache'
 gem 'dragonfly'
 gem 'hpricot',        '~> 0.8'
-gem 'authlogic',      '~> 2.1.3'
+gem 'authlogic',      '~> 2.1.5'
 gem 'friendly_id',    '~> 3.0'
 gem 'will_paginate',  '3.0.pre'
 #===REFINERY END OF REQUIRED GEMS===
