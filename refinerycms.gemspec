@@ -609,6 +609,8 @@ Gem::Specification.new do |s|
 		'vendor/plugins/refinery/app/controllers',
 		'vendor/plugins/refinery/app/controllers/admin',
 		'vendor/plugins/refinery/app/controllers/admin/refinery_core_controller.rb',
+		'vendor/plugins/refinery/app/controllers/refinery',
+		'vendor/plugins/refinery/app/controllers/refinery/fast_controller.rb',
 		'vendor/plugins/refinery/app/views',
 		'vendor/plugins/refinery/app/views/admin',
 		'vendor/plugins/refinery/app/views/admin/_head.html.erb',
