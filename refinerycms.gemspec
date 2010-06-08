@@ -2,7 +2,7 @@ Gem::Specification.new do |s|
   s.name              = %q{refinerycms}
   s.version           = %q{0.9.7.dev}
   s.description       = %q{A beautiful open source Ruby on Rails content manager for small business. Easy to extend, easy to use, lightweight and all wrapped up in a super slick UI.}
-  s.date              = %q{2010-06-03}
+  s.date              = %q{2010-06-09}
   s.summary           = %q{A beautiful open source Ruby on Rails content manager for small business.}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
@@ -64,6 +64,7 @@ Gem::Specification.new do |s|
 		'db/migrate/20100525084518_remove_take_down_for_maintenance_page.rb',
 		'db/migrate/20100525110237_add_small_and_large_thumbnail_sizes.rb',
 		'db/migrate/20100530205942_update_link_url_on_pages_from_inquiries_new_to_contact.rb',
+		'db/migrate/20100608062447_add_scoping_to_refinery_settings.rb',
 		'db/schema.rb',
 		'db/seeds',
 		'db/seeds/inquiry_settings.rb',
@@ -136,6 +137,7 @@ Gem::Specification.new do |s|
 		'public/images/refinery/orange_button.png',
 		'public/images/refinery/page_bg.png',
 		'public/images/refinery/resolve_digital_footer_logo.png',
+		'public/images/refinery/text_field_background.png',
 		'public/images/wymeditor',
 		'public/images/wymeditor/skins',
 		'public/images/wymeditor/skins/refinery',
@@ -188,6 +190,7 @@ Gem::Specification.new do |s|
 		'public/javascripts/jquery',
 		'public/javascripts/jquery/GPL-LICENSE.txt',
 		'public/javascripts/jquery/jquery.corner.js',
+		'public/javascripts/jquery/jquery.html5-placeholder-shim.js',
 		'public/javascripts/jquery/jquery.textTruncate.js',
 		'public/javascripts/jquery/MIT-LICENSE.txt',
 		'public/javascripts/jquery-min.js',
@@ -509,6 +512,7 @@ Gem::Specification.new do |s|
 		'vendor/plugins/images/app/views',
 		'vendor/plugins/images/app/views/admin',
 		'vendor/plugins/images/app/views/admin/images',
+		'vendor/plugins/images/app/views/admin/images/_existing_image.erb',
 		'vendor/plugins/images/app/views/admin/images/_form.html.erb',
 		'vendor/plugins/images/app/views/admin/images/_grid_view.html.erb',
 		'vendor/plugins/images/app/views/admin/images/_list_view.html.erb',
