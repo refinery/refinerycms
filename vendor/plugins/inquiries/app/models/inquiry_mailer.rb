@@ -1,7 +1,7 @@
 class InquiryMailer < ActionMailer::Base
 
   def confirmation(inquiry, request)
-    subject     "#{RefinerySetting[:site_name]} - Thank you for your inquiry"
+    subject     "Thank you for your inquiry"
     recipients  inquiry.email
     from        "\"#{RefinerySetting[:site_name]}\" <no-reply@#{request.domain(RefinerySetting.find_or_set(:tld_length, 1))}>"
     reply_to    InquirySetting.notification_recipients.value.split(',').first
