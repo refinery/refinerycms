@@ -56,10 +56,6 @@ class Refinery::ApplicationController < ActionController::Base
     (controller_name =~ /^(user|session)(|s)/ and not admin?) or just_installed?
   end
 
-  def wymiframe
-    render :template => "/wymiframe", :layout => false
-  end
-
 protected
 
   # get all the pages to be displayed in the site menu.
