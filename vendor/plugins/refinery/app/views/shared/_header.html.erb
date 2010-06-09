@@ -1,4 +1,5 @@
 <div id='header_content'>
   <h1><%= link_to RefinerySetting[:site_name], root_url(:only_path => true) %></h1>
+  <%= render :partial => "/shared/language_switcher" if Refinery::I18n.enabled? %>
   <%= render :partial => "/shared/menu" %>
 </div>

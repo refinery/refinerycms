@@ -1,18 +1,18 @@
 fr:
-  common_tasks: Tâches courantes
-  add_a_new_page: Ajouté une nouvelle page
-  update_a_page: Mise à jour d'une page
-  upload_a_file: "Envois d'un fichier"
-  upload_a_image: "Envois d'une image"
-  see_home_page: Voir la page d'accueil
-
+  plugins:
+    refinery_dashboard:
+      title: MISSING
   admin:
     dashboard:
       index:
+        quick_tasks: Tâches courantes
+        add_a_new_page: Ajouté une nouvelle page
+        update_a_page: Mise à jour d'une page
+        upload_a_image: "Envois d'une image"
         change_language: Changer la Langue
+        see_home_page: Voir la page d'accueil
       recent_activity:
         latest_activity: Activitées récente
-        nothing_has_happened_yet: "Il n'y a pas encore eu d'activité"
         see: Voir '{{what}}'
   updated: a été mis à jour
   created: a été créer

@@ -2,20 +2,17 @@ pt-BR:
   plugins:
     refinery_dashboard:
       title: Painel
-  common_tasks: Tarefas comuns
-  add_a_new_page: Adicionar uma nova página
-  update_a_page: Atualizar uma página
-  upload_a_file: Enviar um arquivo
-  upload_a_image: Enviar uma imagem
-  see_home_page: Ver página inicial
-
   admin:
     dashboard:
       index:
+        quick_tasks: Tarefas comuns
+        add_a_new_page: Adicionar uma nova página
+        update_a_page: Atualizar uma página
+        upload_a_image: Enviar uma imagem
+        see_home_page: Ver página inicial
         change_language: Mudar Língua
       recent_activity:
         latest_activity: Atividade Recente
-        nothing_has_happened_yet: Nada aconteceu ainda
         see: Ver '{{what}}'
   updated: atualizado
   created: criado

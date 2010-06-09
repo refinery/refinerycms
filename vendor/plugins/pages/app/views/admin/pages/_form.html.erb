@@ -1,9 +1,3 @@
-<% content_for :head_after_javascript_libraries do %>
-  <script language="javascript">
-    var locale = "<%= I18n.locale %>";
-  </script>
-<% end %>
-
 <% url_opts = action_name == 'edit' ? {:url => admin_page_path(@page.id)} : {} %>
 <% form_for [:admin, @page], url_opts do |f| %>
   <%= f.error_messages  %>

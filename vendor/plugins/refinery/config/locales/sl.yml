@@ -4,13 +4,14 @@ sl:
     remember_admin_location: "Zapomnite se vaše administracijsko področje v Refinery je:"
     lets_start: "Vredu najprej vas bomo nastavili da se boste lahko prijavili..."
     continue: "Nadaljuj..."
-  reorder_menu: Spremeni vrsti red zavihkov
-  reorder_menu_done: "Končaj s prerazporeditvijo zavihkov."
-  log_out: Odjavi se
-  search: Išči
-  search_submit: Pojdi
-  search_results_for: "Rezultati iskanja za '{{query}}'"
-  no_results_found: "Oprostite, ni bilo zadetkov"
+  admin:
+    reorder_menu: Spremeni vrsti red zavihkov
+    reorder_menu_done: "Končaj s prerazporeditvijo zavihkov."
+    log_out: Odjavi se
+    search: Išči
+    search_submit: Pojdi
+    search_results_for: "Rezultati iskanja za '{{query}}'"
+    no_results_found: "Oprostite, ni bilo zadetkov"
   refinery:
     other: "Drugo {{what}}"
     reorder: "Spremeni vrstni red {{what}}"
@@ -21,11 +22,10 @@ sl:
       created: "{{what}} je bil uspešno ustvarjen"
       updated: "{{what}} je bil uspešno ustvarjen"
       destroyed: "{{what}} je bil uspešno odstranjen"
-  layouts:
-    admin:
-      view_public_site: Poglej javno dostopno stran
-      welcome_to_refinery: Pozdravljeni v Refinery
   shared:
+    site_bar:
+      switch_to_your_website: MISSING
+      switch_to_your_website_editor: MISSING
     admin:
       message:
         close: Zapri

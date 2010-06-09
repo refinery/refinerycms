@@ -4,13 +4,14 @@ nl:
     remember_admin_location: "Onthoud dat u het beheerders gedeelte hieronder vindt:"
     lets_start: "Goed, laten we nu jouw gebruikersaccount instellen."
     continue: "Ga verder..."
-  reorder_menu: Wijzig menu volgorde
-  reorder_menu_done: Ik ben klaar met het wijzigen van de volgorde
-  log_out: Afmelden
-  search: Zoek naar
-  search_submit: Zoek
-  search_results_for: "Zoekresultaten voor '{{query}}'"
-  no_results_found: "Excuses, geen resultaten gevonden"
+  admin:
+    reorder_menu: Wijzig menu volgorde
+    reorder_menu_done: Ik ben klaar met het wijzigen van de volgorde
+    log_out: Afmelden
+    search: Zoek naar
+    search_submit: Zoek
+    search_results_for: "Zoekresultaten voor '{{query}}'"
+    no_results_found: "Excuses, geen resultaten gevonden"
   refinery:
     other: "Ander {{what}}"
     reorder: "Wijzig volgorde huidige {{what}}"
@@ -21,14 +22,13 @@ nl:
       created: "{{what}} is met success aangemaakt"
       updated: "{{what}} is met success aangepast"
       destroyed: "{{what}} is met success verwijderd"
-  layouts:
-    admin:
-      view_public_site: Bekijk de website
-      welcome_to_refinery: Welkom bij Refinery
   shared:
-    message:
-      close: sluiten
+    site_bar:
+      switch_to_your_website: Ga naar de website
+      switch_to_your_website_editor: Ga terug naar de editor
     admin:
+      message:
+        close: sluiten
       continue_editing:
         save_and_continue_editing: Sla op en ga verder met bewerken
       form_actions:

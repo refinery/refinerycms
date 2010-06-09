@@ -1,14 +1,16 @@
 <p>
-  <%# TODO Translate %>
   <%= link_to "&raquo;" + t('.hide_or_show_advanced_options'), "#", :id => "toggle_advanced_options",
         :rel => "Click to access meta tag settings and menu options" %>
 </p>
 <div id='more_options' style="display:none;">
   <div class="hemisquare">
     <h2>Page Options</h2>
+    <h3><%= t('.title') %></h3>
+    <h3><%= t('views.labels.page.custom_title') %></h3>
+    <h3><%= Page.human_attribute_name :parent_id %></h3>
     <div class='field'>
       <span class='label_with_help'>
-        <%= f.label :parent_id, "Parent page" %>
+        <%= f.label :parent_id %>
         <span tooltip="Here you can specify which page this page is nested underneath for the menu." class='help'>
           (help)
         </span>
