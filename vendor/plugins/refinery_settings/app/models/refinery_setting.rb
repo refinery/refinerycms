@@ -32,7 +32,7 @@ class RefinerySetting < ActiveRecord::Base
 
   def self.find_or_set(name, the_value, options={})
     options = {:scoping => nil}.merge(options)
-    find_or_create_by_name_and_scoping(:name => name.to_s, :value => the_value, :scoping => options[:scope]).value
+    find_or_create_by_name_and_scoping(:name => name.to_s, :value => the_value, :scoping => options[:scoping]).value
   end
 
   def self.[](name)
