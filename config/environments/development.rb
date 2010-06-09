@@ -30,3 +30,5 @@ config.after_initialize do
   end
 end
 =end
+
+require_dependency 'will_paginate'
