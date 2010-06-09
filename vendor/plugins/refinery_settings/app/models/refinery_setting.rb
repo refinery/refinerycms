@@ -47,10 +47,8 @@ class RefinerySetting < ActiveRecord::Base
   end
 
   # Below is not very nice, but seems to be required
-  # The problem is when Rails serialises a fields like booleans
-  # it doesn't retreieve it back out as a boolean
-  # it just returns a string. This code maps the two boolean
-  # values correctly so a boolean is returned
+  # The problem is when Rails serialises a fields like booleans it doesn't retrieve it back out as a boolean
+  # it just returns a string. This code maps the two boolean values correctly so a boolean is returned
   REPLACEMENTS = {"true" => true, "false" => false}
 
   def value
