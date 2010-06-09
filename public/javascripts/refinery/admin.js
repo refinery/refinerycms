@@ -19,6 +19,10 @@ init_interface = function() {
   }
   $('<span></span>').prependTo('#editor_switch').corner('6px');
   $('#editor_switch a').appendTo('#editor_switch span:first');
+  $('#page > #content, .wym_box').corner('5px bottom');
+  $('.wym_box').corner('5px tr');
+  $('.wym_iframe iframe').corner('2px');
+  $('.form-actions:not(".form-actions-dialog")').corner('5px');
   $('#recent_activity li a, #recent_inquiries li a').each(function(i, a) {
     $(this).textTruncate({
       width: $(this).width()
@@ -53,10 +57,6 @@ init_interface = function() {
 
   // focus first field in an admin form.
   $('form input[type=text]:first').focus();
-  $('#page > #content, .wym_box').corner('5px bottom');
-  $('.wym_box').corner('5px tr');
-  $('.wym_iframe iframe').corner('2px');
-  $('.form-actions:not(".form-actions-dialog")').corner('5px');
 }
 
 init_delete_confirmations = function() {
