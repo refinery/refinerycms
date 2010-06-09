@@ -63,11 +63,10 @@ class Page < ActiveRecord::Base
 
   # If you want to destroy a page that is set to be not deletable this is the way to do it.
   def destroy!
-    self.update_attributes({
-      :menu_match => nil,
-      :link_url => nil,
-      :deletable => true
-    })
+    self.menu_match = nil
+    self.link_url = nil
+    self.deletable = true
+
     self.destroy
   end
 
@@ -141,7 +140,7 @@ class Page < ActiveRecord::Base
   end
 
   def use_marketable_urls?
-    RefinerySetting.find_or_set(:use_marketable_urls, "true")
+    RefinerySetting.find_or_set(:use_marketable_urls, true, :scoping => 'pages')
   end
 
   # Returns true if this page is "published"
@@ -171,7 +170,10 @@ class Page < ActiveRecord::Base
     include_associations = [:parts]
     include_associations.push(:slugs) if self.class.methods.include? "find_one_with_friendly"
     include_associations.push(:children) if include_children
-    find_all_by_parent_id(nil,:conditions => {:show_in_menu => true, :draft => false}, :order => "position ASC", :include => include_associations)
+    find_all_by_parent_id(nil,
+                          :conditions => {:show_in_menu => true, :draft => false},
+                          :order => "position ASC",
+                          :include => include_associations)
   end
 
   # Accessor method to get a page part from a page.
