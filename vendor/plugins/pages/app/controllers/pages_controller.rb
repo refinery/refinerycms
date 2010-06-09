@@ -1,5 +1,7 @@
 class PagesController < ApplicationController
 
+  caches_action :home, :show, :cache_path => Proc.new { |c| "#{c.request.host_with_port}/views/pages/#{c.params[:path]}" }
+
   def home
     error_404 unless (@page = Page.find_by_link_url("/", :include => [:parts, :slugs])).present?
   end

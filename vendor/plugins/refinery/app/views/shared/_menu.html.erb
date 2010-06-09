@@ -1,5 +1,5 @@
 <%
-cache(:action_suffix => RefinerySetting.find_or_set(:refinery_menu_cache_action_suffix, "site_menu")) do
+cache("#{Refinery.base_cache_key}_#{RefinerySetting.find_or_set(:refinery_menu_cache_action_suffix, "site_menu")}_#{request.path}") do
   if (collection ||= @menu_pages).any?
 -%>
     <nav id='<%= dom_id ||= "menu" %>' class='<%= [css ||= "menu", 'clearfix'].join(' ') %>'>
