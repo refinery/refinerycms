@@ -2,20 +2,17 @@ da:
   plugins:
     refinery_dashboard:
       title: Overblik
-  common_tasks: Handlinger
-  add_a_new_page: Tilføj en ny side
-  update_a_page: Redigér en side
-  upload_a_file: Upload en fil
-  upload_a_image: Upload et billede
-  see_home_page: Vis forside
-
   admin:
     dashboard:
       index:
+        quick_tasks: Handlinger
+        add_a_new_page: Tilføj en ny side
+        update_a_page: Redigér en side
+        upload_a_image: Upload et billede
         change_language: Skift sprog
+        see_home_page: Vis forside
       recent_activity:
         latest_activity: Seneste aktiviteter
-        nothing_has_happened_yet: Ingen aktiviteter endnu
         see: Vis '{{what}}'
   updated: opdateret
   created: oprettet

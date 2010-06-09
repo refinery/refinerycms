@@ -1,0 +1,5 @@
+<div id="language_switcher">
+  <select onchange="location.href = this.options[this.selectedIndex].value;">
+    <%= options_for_select(Refinery::I18n.locales.collect { |key, value| [value.html_safe, url_for(params.dup.tap{ |p| p[:locale] = key })] }, :selected => request.path ) %>
+  </select>
+</div>

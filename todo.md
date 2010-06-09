@@ -25,11 +25,7 @@ There is now a partial to easily call an image picker.
 # I18n support
 
 * Check all the views for missing translations
-* Translate model attributes used in forms
-* Think about i18n in the javascript files. I've found a few options:
-  - http://tore.darell.no/posts/introducing_babilu_rails_i18n_for_your_javascript
+  - Write a small tool that extracts t('.whatever') and check which translation keys are missing, or which keys are not used at all.
+* Translate models and model attributes used in forms (Rails 2.3.8 supports translation form labels!)
+* Javascript messages etc:
   - http://github.com/fnando/i18n-js
-
-  We propably will have to modify one of these, to use the locales in the plugins.
-  UPDATE: I'm going for nr 2, since the first isn't that active anymore. (see github pages of both projects)
-

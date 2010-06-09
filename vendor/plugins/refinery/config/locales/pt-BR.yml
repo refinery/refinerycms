@@ -4,13 +4,14 @@ pt-BR:
     remember_admin_location: "Lembre-se que sua área de admin do Refinery fica em:"
     lets_start: "Beleza, vamos te arrumar pra que você possa fazer login..."
     continue: "Continuar..."
-  reorder_menu: Reordenar menu
-  reorder_menu_done: "Terminei de reordenar o menu"
-  log_out: Deslogar
-  search: Procurar
-  search_submit: Ir
-  search_results_for: "Resultados da busca por '{{query}}'"
-  no_results_found: "Desculpe, nenhum resultado foi encontrado"
+  admin:
+    reorder_menu: Reordenar menu
+    reorder_menu_done: "Terminei de reordenar o menu"
+    log_out: Deslogar
+    search: Procurar
+    search_submit: Ir
+    search_results_for: "Resultados da busca por '{{query}}'"
+    no_results_found: "Desculpe, nenhum resultado foi encontrado"
   refinery:
     crudify:
       created: "{{what}} foi criado com sucesso"
