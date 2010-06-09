@@ -136,6 +136,10 @@ class Page < ActiveRecord::Base
     "#{cache_key}#nested_url"
   end
 
+  def cache_key
+    "#{Refinery.base_cache_key}/#{super}"
+  end
+
   def use_marketable_urls?
     RefinerySetting.find_or_set(:use_marketable_urls, "true")
   end
