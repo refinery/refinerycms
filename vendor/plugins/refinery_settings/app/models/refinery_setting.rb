@@ -31,8 +31,13 @@ class RefinerySetting < ActiveRecord::Base
   end
 
   def self.find_or_set(name, the_value, options={})
-    options = {:scoping => nil}.merge(options)
-    find_or_create_by_name_and_scoping(:name => name.to_s, :value => the_value, :scoping => options[:scoping]).value
+    # if the database is not up to date yet then it won't know about scoping..
+    if self.column_names.include?('scoping')
+      options = {:scoping => nil}.merge(options)
+      find_or_create_by_name_and_scoping(:name => name.to_s, :value => the_value, :scoping => options[:scoping]).value
+    else
+      find_or_create_by_name(:name => name.to_s, :value => the_value).value
+    end
   end
 
   def self.[](name)
