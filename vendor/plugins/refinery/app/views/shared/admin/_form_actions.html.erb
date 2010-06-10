@@ -24,6 +24,14 @@
                   :title => (delete_title ||= "Remove this #{f.object.class.name.underscore.gsub("_", " ")} forever"),
                   :id => "#{delete_button_id ||= "delete_button"}",
                   :class => "button confirm-delete")  %>
+
+      <%= will_paginate paginate[:collection],
+                        :previous_label => '&laquo; Previous',
+                        :next_label => 'Next &raquo;',
+                        :renderer => Refinery::LinkRenderer,
+                        :url => paginate[:url] if ((paginate ||= {}).length > 0 &&
+                                                    paginate.keys.include?(:collection) &&
+                                                    paginate.keys.include?(:url)) %>
     </div>
   <% end %>
 </div>

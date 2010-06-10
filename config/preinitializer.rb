@@ -21,5 +21,5 @@ begin
   end
 
 rescue Bundler::GemNotFound
-  raise RuntimeError, "Bundler couldn't find some gems. Did you run `bundle install`?"
+  raise RuntimeError, "Bundler couldn't find some gems. Did you run `bundle install`?\nMessage was: #{$!.message}"
 end

@@ -71,7 +71,7 @@
 				border-style: solid;
 				border-color: gray;
 				border-width: 0; }
-	a img	 { border-width: 1px; border-color: blue; }
+	a img	 { border: 1px dotted blue !important; }
 	acronym	 { border: 1px solid gray; }
 	span		{ background-color: #eef; }
 
