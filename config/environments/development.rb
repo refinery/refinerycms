@@ -1,5 +1,4 @@
 # Settings specified here will take precedence over those in config/environment.rb
-
 config.reload_plugins = true
 
 # In the development environment your application's code is reloaded on
@@ -30,5 +29,3 @@ config.after_initialize do
   end
 end
 =end
-
-require_dependency 'will_paginate'

@@ -14,9 +14,9 @@
     <% else -%>
       <img id="current_picked_image_<%= randomiser %>" class="" src="" alt="" style='display: none' />
     <% end -%>
-    <p id='no_picked_image_selected_<%= randomiser %>' <%= "style='display: none;'" if image.present? %>>
+    <span id='no_picked_image_selected_<%= randomiser %>' class='nothing_selected' <%= "style='display: none;'" if image.present? %>>
       There is currently no <%= description %> selected, please click here to add one.
-    </p>
+    </span>
   </a>
   <br/>
   <%= link_to "Remove current #{description}", "#", :id => "remove_picked_image_#{randomiser}", :style => "#{"display:none;" if image.nil?}" %>
