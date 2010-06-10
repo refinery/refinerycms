@@ -6,7 +6,8 @@ class Refinery::ApplicationController < ActionController::Base
   include Crud # basic create, read, update and delete methods
   include AuthenticatedSystem
 
-  before_filter :find_pages_for_menu, :store_current_location!, :except => [:wymiframe]
+  before_filter :find_pages_for_menu
+  before_filter :store_current_location!, :if => Proc.new {|c| c.send(:logged_in?) }
   before_filter :show_welcome_page?
 
   rescue_from ActiveRecord::RecordNotFound, ActionController::UnknownAction, ActionView::MissingTemplate, :with => :error_404
