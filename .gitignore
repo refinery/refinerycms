@@ -20,6 +20,8 @@ public/stylesheets/cache
 config/database.yml.example
 .yardoc/
 refinerycms.gemspec
+vendor/cache
 .bundle
 *.rbc
-github.txt
+*.swp
+*~
