@@ -22,3 +22,4 @@ config/database.yml.example
 refinerycms.gemspec
 .bundle
 *.rbc
+github.txt
