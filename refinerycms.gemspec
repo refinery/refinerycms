@@ -2,7 +2,7 @@ Gem::Specification.new do |s|
   s.name              = %q{refinerycms}
   s.version           = %q{0.9.7.dev}
   s.description       = %q{A beautiful open source Ruby on Rails content manager for small business. Easy to extend, easy to use, lightweight and all wrapped up in a super slick UI.}
-  s.date              = %q{2010-06-09}
+  s.date              = %q{2010-06-10}
   s.summary           = %q{A beautiful open source Ruby on Rails content manager for small business.}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
@@ -742,6 +742,7 @@ Gem::Specification.new do |s|
 		'vendor/plugins/resources/app/views',
 		'vendor/plugins/resources/app/views/admin',
 		'vendor/plugins/resources/app/views/admin/resources',
+		'vendor/plugins/resources/app/views/admin/resources/_existing_resource.html.erb',
 		'vendor/plugins/resources/app/views/admin/resources/_form.html.erb',
 		'vendor/plugins/resources/app/views/admin/resources/_resource.html.erb',
 		'vendor/plugins/resources/app/views/admin/resources/edit.html.erb',
