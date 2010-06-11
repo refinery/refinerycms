@@ -20,7 +20,7 @@ module Refinery::ApplicationHelper
       parts = match.split(".")
       extension = parts.pop
       content.gsub!(match, "#{parts.join(".")}_#{thumbnail}.#{extension}")
-    end
+    end unless content.blank?
 
     return content
   end
