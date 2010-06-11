@@ -4,7 +4,7 @@ namespace :images do
   task :regenerate => :environment do
     thumbnails_size = Image.count(:conditions => "parent_id IS NOT NULL")
     puts "Preparing to delete #{thumbnails_size} generated thumbnails"
-        
+
     if Image.destroy_all("parent_id IS NOT null")
       puts "--> #{thumbnails_size} thumbnails deleted"
     else
@@ -16,7 +16,7 @@ namespace :images do
     
     originals.each do |image|
       begin
-        image.save
+        image.rebuild_thumbnails!
       rescue Exception => e  
         puts "--> ERROR image #{image.id} could not be saved because #{e.message}"
       end
@@ -33,7 +33,7 @@ namespace :images do
 
     originals.each do |image|
       begin
-        image.save
+        image.rebuild_missing_thumbnails!
       rescue Exception => e  
         puts "--> ERROR image #{image.id} could not be saved because #{e.message}"
       end
