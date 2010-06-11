@@ -94,7 +94,7 @@ init_modal_dialogs = function(){
       if ($.browser.msie) {
         iframe.css({'margin':'-2px 2px 2px -2px'});
       }
-      //$(document.body).addClass('hide-overflow');
+      $(document.body).addClass('hide-overflow');
       e.preventDefault();
     });
   });
@@ -283,13 +283,7 @@ var link_dialog = {
   },
 
   init_close: function(){
-    $('.form-actions-dialog #cancel_button').click(function(e){
-      if (parent && typeof(parent.$) == "function") {
-        parent.$('.ui-dialog').dialog('close').remove();
-      } else {
-        $('.ui-dialog').dialog('close').remove();
-      }
-    });
+    $('.form-actions-dialog #cancel_button').click(close_dialog);
 
     if (parent
         && parent.document.location.href != document.location.href
@@ -298,9 +292,7 @@ var link_dialog = {
         e.preventDefault();
         $(parent.document.getElementById('wym_dialog_submit')).click();
       });
-      $('#dialog_container .form-actions a.close_dialog').click(function(e) {
-        image_dialog.close_dialog(e);
-      });
+      $('#dialog_container .form-actions a.close_dialog').click(close_dialog);
     }
   },
 
@@ -625,27 +617,19 @@ var image_dialog = {
 
   , submit_image_choice: function(e) {
     e.preventDefault();
-    if((img_selected = $('#existing_image_area_content ul li.selected img').get(0)) && typeof(this.callback) == "function") {
+    if((img_selected = $('#existing_image_area_content ul li.selected img').get(0))
+      && typeof(this.callback) == "function")
+    {
       this.callback(img_selected);
     }
 
-    this.close_dialog(e);
-  }
-
-  , close_dialog: function(e) {
-    if (parent && typeof(parent.$) == "function") {
-      parent.$('.ui-dialog').dialog('close').remove();
-    } else {
-      $('.ui-dialog').dialog('close').remove();
-    }
-
-    e.preventDefault();
+    close_dialog(e);
   }
 
   , init_actions: function(){
     var _this = this;
     $('.form-actions-dialog #submit_button').click($.proxy(_this.submit_image_choice, _this));
-    $('.form-actions-dialog #cancel_button').click($.proxy(_this.close_dialog, _this));
+    $('.form-actions-dialog #cancel_button').click($.proxy(close_dialog, _this));
     $('#existing_image_size_area ul li a').click(function(e) {
       $('#existing_image_size_area ul li').removeClass('selected');
       $(this).parent().addClass('selected');
@@ -659,9 +643,7 @@ var image_dialog = {
         e.preventDefault();
         $(this.document.getElementById('wym_dialog_submit')).click();
       }, parent));
-      $('#existing_image_area .form-actions a.close_dialog').click(function(e) {
-        image_dialog.close_dialog(e);
-      });
+      $('#existing_image_area .form-actions a.close_dialog').click(close_dialog);
     }
   }
 }
@@ -798,6 +780,21 @@ var resource_picker = {
   , init: function(callback) {
     this.callback = callback;
   }
+}
+
+close_dialog = function(e) {
+  if (parent
+      && parent.document.location.href != document.location.href
+      && $.isFunction(parent.$))
+  {
+    $(parent.document.body).removeClass('hide-overflow');
+    parent.$('.ui-dialog').dialog('close').remove();
+  } else {
+    $(document.body).removeClass('hide-overflow');
+    $('.ui-dialog').dialog('close').remove();
+  }
+
+  e.preventDefault();
 }
 
 //parse a URL to form an object of properties
