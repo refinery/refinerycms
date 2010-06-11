@@ -3,19 +3,19 @@
   <%= f.error_messages %>
   <div class='field'>
     <%= f.label :login %>
-    <%= f.text_field :login %>
+    <%= f.text_field :login, :class => 'larger widest' %>
   </div>
   <div class='field'>
     <%= f.label :email %>
-    <%= f.text_field :email %>
+    <%= f.text_field :email, :class => 'larger widest' %>
   </div>
   <div class='field'>
     <%= f.label :password %>
-    <%= f.password_field :password %>
+    <%= f.password_field :password, :class => 'larger widest' %>
   </div>
   <div class='field'>
     <%= f.label :password_confirmation %>
-    <%= f.password_field :password_confirmation %>
+    <%= f.password_field :password_confirmation, :class => 'larger widest' %>
   </div>
   <% if just_installed? %>
     <% Refinery::Plugins.registered.in_menu.titles.sort.each do |plugin| -%>
