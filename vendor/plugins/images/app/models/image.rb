@@ -67,7 +67,7 @@ private
   def build_thumbnails!(only_missing = false)
     tmp = create_temp_file
     attachment_options[:thumbnails].each do |thumbnail, size|
-      unless only_missing and Image.find(:first, :conditions => {:thumbnail => thumbnail, :parent_id => self.id}).nil?
+      unless only_missing and !Image.find(:first, :conditions => {:thumbnail => thumbnail, :parent_id => self.id}).nil?
         self.create_or_update_thumbnail(tmp, thumbnail, *size)
       end
     end unless self.parent_id
