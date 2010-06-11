@@ -11,14 +11,9 @@ $(document).ready(function(){
 
 init_interface = function() {
   $('input:submit:not(.button)').addClass('button');
-  // sigh for IE
-  try {
-    $('.button, #editor_switch a').corner('6px');
-  } catch(err) {
-    $('.button:not(input), #editor_switch a').corner('6px');
-  }
-  $('<span></span>').prependTo('#editor_switch').corner('6px');
-  $('#editor_switch a').appendTo('#editor_switch span:first');
+
+  $('.button, #editor_switch a').corner('6px');
+  $('#editor_switch a').appendTo($('<span></span>').prependTo('#editor_switch').corner('6px'));
   $('#page > #content, .wym_box').corner('5px bottom');
   $('.wym_box').corner('5px tr');
   $('.wym_iframe iframe').corner('2px');
@@ -601,6 +596,7 @@ var image_dialog = {
       $(img).parent().addClass('selected');
       var imageUrl = parseURL($(img).attr('src'));
       var imageThumbnailSize = $('#existing_image_size_area li.selected a').attr('rel');
+      //alert(imageThumbnailSize);
       var relevant_src = imageUrl.pathname.replace('_dialog_thumb', ('_' + imageThumbnailSize));
       if (imageUrl.protocol == "" && imageUrl.hostname == "system") {
         relevant_src = "/system" + relevant_src;

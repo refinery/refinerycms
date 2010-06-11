@@ -1129,7 +1129,7 @@ input.button, a.button, #content a.button {
   cursor:pointer;
   background: #22a7f2;
   color: white;
-  padding: 0px 14px;
+  padding: 0px 14px 3px 14px;
   font-size: 14px;
   line-height: 25px;
   height: 25px;
