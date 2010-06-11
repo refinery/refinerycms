@@ -1,5 +1,5 @@
 Feature: Manage Pages
-  In order to create a page
+  In order to control the content on my website
   As an administrator
   I want to create and manage pages
   
@@ -7,4 +7,4 @@ Feature: Manage Pages
     Given I have pages titled Home, About
     When I go to the list of pages
     Then I should see "Home"
-    And "About"
+    And I should see "About"
