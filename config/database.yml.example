@@ -11,6 +11,10 @@ development:
 test:
   database: your_test_database
   <<: *login
+  
+cucumber:
+  database: your_cucumber_database
+  <<: *login
 
 production:
   database: your_production_database
