@@ -54,4 +54,22 @@ class Image < ActiveRecord::Base
     CGI::unescape(self.filename).gsub(/\.\w+$/, '').titleize
   end
 
+  # Rebuild thumbnails, for rake tasks
+  def rebuild_thumbnails!
+    build_thumbnails!
+  end
+  
+  def rebuild_missing_thumbnails!
+    build_thumbnails!(true)
+  end
+  
+private
+  def build_thumbnails!(only_missing = false)
+    tmp = create_temp_file
+    attachment_options[:thumbnails].each do |thumbnail, size|
+      unless only_missing and Image.find(:first, :conditions => {:thumbnail => thumbnail, :parent_id => self.id}).nil?
+        self.create_or_update_thumbnail(tmp, thumbnail, *size)
+      end
+    end unless self.parent_id
+  end
 end
