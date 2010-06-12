@@ -12,7 +12,7 @@ module NavigationHelpers
       '/'
 
     when /the list of pages/
-      admin_pages_path
+      '/refinery/pages'
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
