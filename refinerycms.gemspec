@@ -2,7 +2,7 @@ Gem::Specification.new do |s|
   s.name              = %q{refinerycms}
   s.version           = %q{0.9.7.dev}
   s.description       = %q{A beautiful open source Ruby on Rails content manager for small business. Easy to extend, easy to use, lightweight and all wrapped up in a super slick UI.}
-  s.date              = %q{2010-06-10}
+  s.date              = %q{2010-06-14}
   s.summary           = %q{A beautiful open source Ruby on Rails content manager for small business.}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
@@ -33,9 +33,11 @@ Gem::Specification.new do |s|
 		'config/amazon_s3.yml.example',
 		'config/application.rb',
 		'config/boot.rb',
+		'config/cucumber.yml',
 		'config/database.yml.example',
 		'config/environment.rb',
 		'config/environments',
+		'config/environments/cucumber.rb',
 		'config/environments/development.rb',
 		'config/environments/production.rb',
 		'config/environments/test.rb',
@@ -77,6 +79,8 @@ Gem::Specification.new do |s|
 		'lib/refinery/tasks/refinery.rake',
 		'lib/refinery/tasks/refinery.rb',
 		'lib/refinery_initializer.rb',
+		'lib/tasks',
+		'lib/tasks/cucumber.rake',
 		'public/404.html',
 		'public/422.html',
 		'public/500.html',
@@ -254,6 +258,7 @@ Gem::Specification.new do |s|
 		'public/wymeditor/README',
 		'script/about',
 		'script/console',
+		'script/cucumber',
 		'script/dbconsole',
 		'script/destroy',
 		'script/generate',

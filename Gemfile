@@ -35,6 +35,7 @@ group :cucumber do
   gem 'cucumber-rails'
   gem 'capybara'
   gem 'database_cleaner'
+  gem 'launchy'
 end
 
 # Specify your application's gem requirements here. See the examples below:
