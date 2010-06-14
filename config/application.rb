@@ -23,3 +23,12 @@ end
 # You can set things in the following file and we'll try hard not to destroy them in updates, promise.
 # Note: These are settings that aren't dependent on environment type. For those, use the files in config/environments/
 require Rails.root.join('config', 'settings.rb').to_s
+
+# Mislav trick to fallback to default for missing translations
+I18n.exception_handler = lambda do |e, locale, key, options|
+  if I18n::MissingTranslationData === e and locale != I18n.default_locale
+    I18n.translate(key, (options || {}).update(:locale => I18n.default_locale, :raise => true))
+  else
+    raise e
+  end
+end if Rails.env == 'production'
