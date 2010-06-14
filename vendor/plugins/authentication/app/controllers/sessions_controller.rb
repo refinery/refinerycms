@@ -19,8 +19,8 @@ class SessionsController < ApplicationController
 
   def destroy
     current_user_session.destroy if logged_in?
-    flash[:notice] = "You have been logged out."
-    redirect_back_or_default(root_url)
+    
+    redirect_to(root_url)
   end
 
 protected

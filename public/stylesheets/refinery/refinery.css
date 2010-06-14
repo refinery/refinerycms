@@ -309,10 +309,6 @@ body.login #header_content h1 {
 #menu.ui-sortable-disabled a {
   cursor: pointer;
 }
-#menu #logout {
-  float: right;
-  margin-right: 0px;
-}
 #menu a {
   display: block;
   padding: 9px 13px;
