@@ -31,8 +31,7 @@ class Image < ActiveRecord::Base
   end
 
   # Docs for acts_as_indexed http://github.com/dougal/acts_as_indexed
-  acts_as_indexed :fields => [:title],
-                  :index_file => [Rails.root.to_s, "tmp", "index"]
+  acts_as_indexed :fields => [:title]
 
   named_scope :thumbnails, :conditions => "parent_id IS NOT NULL"
   named_scope :originals, :conditions => {:parent_id => nil}

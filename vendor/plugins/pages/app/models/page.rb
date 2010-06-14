@@ -11,8 +11,7 @@ class Page < ActiveRecord::Base
   accepts_nested_attributes_for :parts, :allow_destroy => true
 
   # Docs for acts_as_indexed http://github.com/dougal/acts_as_indexed
-  acts_as_indexed :fields => [:title, :meta_keywords, :meta_description, :custom_title, :browser_title, :all_page_part_content],
-                  :index_file => [Rails.root.to_s, "tmp", "index"]
+  acts_as_indexed :fields => [:title, :meta_keywords, :meta_description, :custom_title, :browser_title, :all_page_part_content]
 
   before_destroy :deletable?
   after_save :reposition_parts!
