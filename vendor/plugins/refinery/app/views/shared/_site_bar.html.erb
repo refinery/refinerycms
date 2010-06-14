@@ -44,6 +44,8 @@
         <span id='site_bar_company_name'>
           <%= RefinerySetting[:site_name] %>
         </span>
+        
+        <%= link_to "Log out", logout_url(:only_path => true), :id => "logout" %>
       </div>
     <% end %>
   </div>
