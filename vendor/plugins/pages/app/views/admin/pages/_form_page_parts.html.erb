@@ -1,10 +1,16 @@
 <% if RefinerySetting.find_or_set(:new_page_parts, false) %>
   <ul id="page_parts_controls">
     <li>
-      <%= link_to refinery_icon_tag("add.png"), "#", :id => "add_page_part", :title => "Create Content Section" %>
+      <%= link_to refinery_icon_tag('add.png'), '#',
+                  :id => 'add_page_part',
+                  :title => 'Create Content Section' %>
     </li>
     <li>
-      <%= link_to(refinery_icon_tag("delete.png"), "#", :title => 'Delete content section', :class => 'delete_page_part', :name => "Delete Content Section", :id => "delete_page_part") %>
+      <%= link_to refinery_icon_tag('delete.png'), '#',
+                  :title => 'Delete content section',
+                  :class => 'delete_page_part',
+                  :name => 'Delete Content Section',
+                  :id => 'delete_page_part' %>
     </li>
   </ul>
 <% end %>
@@ -20,11 +26,12 @@
   <div id='page_part_editors'>
     <% part_index = -1 %>
     <% f.fields_for :parts do |p| %>
-      <%= render :partial => "page_part_field", :locals => {
-        :part => p.object,
-        :part_index => (part_index += 1),
-        :new_part => @page.new_record?
-      } %>
+      <%= render :partial => 'page_part_field',
+                 :locals => {
+                   :part => p.object,
+                   :part_index => (part_index += 1),
+                   :new_part => @page.new_record?
+                 } -%>
     <% end %>
   </div>
 </div>
