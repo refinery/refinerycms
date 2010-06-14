@@ -16,7 +16,7 @@ Gem::Specification.new do |s|
   s.summary           = %q{A beautiful open source Ruby on Rails content manager for small business.}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
-  s.authors           = %w(Resolve\ Digital David\ Jones Philip\ Arndt)
+  s.authors           = %w(Resolve\\ Digital David\\ Jones Philip\\ Arndt)
   s.require_paths     = %w(lib)
   s.executables       = %w(refinery refinery-update-core)
 
