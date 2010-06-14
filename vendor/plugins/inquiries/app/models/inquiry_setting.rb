@@ -11,7 +11,7 @@ class InquirySetting < ActiveRecord::Base
   def deletable?
     false
   end
-  
+
   # Access method that allows dot notation to work.
   # Say you had a setting called "site_name". You could access that by going RefinerySetting[:site_name]
   # but with this you can also access that by going RefinerySettting.site_name

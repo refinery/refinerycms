@@ -19,7 +19,7 @@ class SessionsController < ApplicationController
 
   def destroy
     current_user_session.destroy if logged_in?
-    
+
     redirect_to(root_url)
   end
 
