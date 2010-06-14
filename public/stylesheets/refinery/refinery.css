@@ -462,7 +462,7 @@ pre {
   display: none;
 }
 .tree ul li > div:hover {
-	background-color: #fff5b1;
+  background-color: #fff5b1;
 }
 #records ul#sortable_list {
   margin-top: 6px;

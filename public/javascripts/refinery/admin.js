@@ -21,9 +21,9 @@ init_interface = function() {
   $('#recent_activity li a, #recent_inquiries li a').each(function(i, a) {
     $(this).textTruncate({
       width: $(this).width()
-  		, tooltip: false
-  	});
-	});
+      , tooltip: false
+    });
+  });
 
   // make sure that users can tab to wymeditor fields and add an overlay while loading.
   $('textarea.wymeditor').each(function() {
@@ -663,11 +663,11 @@ var list_reorder = {
 
     list_reorder.sortable_list.add(list_reorder.sortable_list.find('ul')).sortable({
       'connectWith': $(list_reorder.sortable_list.find('ul'))
-			, 'tolerance': 'pointer'
-			, 'placeholder': 'placeholder'
-			, 'cursor': 'drag'
-			, 'items': 'li'
-			, 'axis': 'y'
+      , 'tolerance': 'pointer'
+      , 'placeholder': 'placeholder'
+      , 'cursor': 'drag'
+      , 'items': 'li'
+      , 'axis': 'y'
     });
 
     $('#reorder_action').hide();
@@ -695,17 +695,17 @@ var list_reorder = {
 
     if (list_reorder.update_url != null) {
       serialized = "";
-  	  list_reorder.sortable_list.find('> li[id]').each(function(index, li) {
+      list_reorder.sortable_list.find('> li[id]').each(function(index, li) {
         if (list_reorder.tree) {
-  	      serialized += list_reorder.parse_branch([index], li);
+          serialized += list_reorder.parse_branch([index], li);
         }
         else {
           serialized += "&sortable_list[]=" + $($(li).attr('id').split('_')).last().get(0);
         }
-  	  });
-  	  serialized += "&tree=" + list_reorder.tree;
-  	  serialized += "&authenticity_token=" + encodeURIComponent($('#reorder_authenticity_token').val());
-  	  serialized += "&continue_reordering=false";
+      });
+      serialized += "&tree=" + list_reorder.tree;
+      serialized += "&authenticity_token=" + encodeURIComponent($('#reorder_authenticity_token').val());
+      serialized += "&continue_reordering=false";
 
       $.post(list_reorder.update_url, serialized, function(data) {
         $(list_reorder.sortable_list.get(0)).html(data);
@@ -799,38 +799,38 @@ close_dialog = function(e) {
 //parse a URL to form an object of properties
 parseURL = function(url)
 {
-	//save the unmodified url to href property
-	//so that the object we get back contains
-	//all the same properties as the built-in location object
-	var loc = { 'href' : url };
+  //save the unmodified url to href property
+  //so that the object we get back contains
+  //all the same properties as the built-in location object
+  var loc = { 'href' : url };
 
-	//split the URL by single-slashes to get the component parts
-	var parts = url.replace('//', '/').split('/');
+  //split the URL by single-slashes to get the component parts
+  var parts = url.replace('//', '/').split('/');
 
-	//store the protocol and host
-	loc.protocol = parts[0];
-	loc.host = parts[1];
+  //store the protocol and host
+  loc.protocol = parts[0];
+  loc.host = parts[1];
 
-	//extract any port number from the host
-	//from which we derive the port and hostname
-	parts[1] = parts[1].split(':');
-	loc.hostname = parts[1][0];
-	loc.port = parts[1].length > 1 ? parts[1][1] : '';
+  //extract any port number from the host
+  //from which we derive the port and hostname
+  parts[1] = parts[1].split(':');
+  loc.hostname = parts[1][0];
+  loc.port = parts[1].length > 1 ? parts[1][1] : '';
 
-	//splice and join the remainder to get the pathname
-	parts.splice(0, 2);
-	loc.pathname = '/' + parts.join('/');
+  //splice and join the remainder to get the pathname
+  parts.splice(0, 2);
+  loc.pathname = '/' + parts.join('/');
 
-	//extract any hash and remove from the pathname
-	loc.pathname = loc.pathname.split('#');
-	loc.hash = loc.pathname.length > 1 ? '#' + loc.pathname[1] : '';
-	loc.pathname = loc.pathname[0];
+  //extract any hash and remove from the pathname
+  loc.pathname = loc.pathname.split('#');
+  loc.hash = loc.pathname.length > 1 ? '#' + loc.pathname[1] : '';
+  loc.pathname = loc.pathname[0];
 
-	//extract any search query and remove from the pathname
-	loc.pathname = loc.pathname.split('?');
-	loc.search = loc.pathname.length > 1 ? '?' + loc.pathname[1] : '';
-	loc.pathname = loc.pathname[0];
+  //extract any search query and remove from the pathname
+  loc.pathname = loc.pathname.split('?');
+  loc.search = loc.pathname.length > 1 ? '?' + loc.pathname[1] : '';
+  loc.pathname = loc.pathname[0];
 
-	//return the final object
-	return loc;
+  //return the final object
+  return loc;
 }

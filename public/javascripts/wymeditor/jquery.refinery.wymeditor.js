@@ -4247,7 +4247,7 @@ WYMeditor.WymClassExplorer.prototype._exec = function(cmd,param) {
         if(param) this._doc.execCommand(cmd,false,param);
         else this._doc.execCommand(cmd);
     break;
-	}
+  }
 
 };
 
@@ -4405,8 +4405,8 @@ WYMeditor.WymClassMozilla.prototype.initIframe = function(iframe) {
 
     //bind editor focus events (used to reset designmode - Gecko bug)
     $(this._doc).bind("focus", function (){
-     	// Fix scope
-     	wym.enableDesignMode.call(wym);
+       // Fix scope
+       wym.enableDesignMode.call(wym);
     });
 
     //post-init functions

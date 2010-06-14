@@ -21,10 +21,10 @@ Gem::Specification.new do |s|
   s.executables       = %w(refinery refinery-update-core)
 
   s.files             = [
-    '#{files.join("',\n\t\t'")}'
+    '#{files.join("',\n    '")}'
   ]
   s.test_files        = [
-    '#{Dir.glob("test/**/*.rb").join("',\n\t\t'")}'
+    '#{Dir.glob("test/**/*.rb").join("',\n    '")}'
   ]
 end
 EOF

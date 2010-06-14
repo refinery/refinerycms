@@ -57,11 +57,11 @@ class Image < ActiveRecord::Base
   def rebuild_thumbnails!
     build_thumbnails!
   end
-  
+
   def rebuild_missing_thumbnails!
     build_thumbnails!(true)
   end
-  
+
 private
   def build_thumbnails!(only_missing = false)
     tmp = create_temp_file
