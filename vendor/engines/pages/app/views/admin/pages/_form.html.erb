@@ -3,7 +3,7 @@
   <%= f.error_messages  %>
   <div class="field">
     <%= f.label :title %>
-    <%= f.text_field :title, :class => "larger", :style => 'width: 944px' %>
+    <%= f.text_field :title, :class => "larger widest" %>
   </div>
   <%= render :partial => "form_page_parts", :locals => {:f => f} %>
 
@@ -17,10 +17,9 @@
 <% content_for :head do %>
   <script type='text/javascript'>
     $(document).ready(function(){
-      var page_parts = <%= RefinerySetting.find_or_set(:new_page_parts, false) == true ? 'true' : 'false' %>;
-      var new_part_url = "<%= new_admin_page_part_url(:only_path => true) %>";
-      var del_part_url = "<%= admin_page_parts_url(:only_path => true) %>";
-      page_options.init(page_parts, new_part_url, del_part_url);
+      page_options.init(<%= RefinerySetting.find_or_set(:new_page_parts, false).to_s %>
+                        , "<%= new_admin_page_part_url(:only_path => true) %>"
+                        , "<%= admin_page_parts_url(:only_path => true) %>");
     });
   </script>
 <% end %>

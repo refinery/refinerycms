@@ -119,7 +119,40 @@ namespace :refinery do
     unless Rails.root.join("Gemfile").exist?
       FileUtils::cp Refinery.root.join("Gemfile").cleanpath.to_s, Rails.root.join("Gemfile").cleanpath.to_s
     else
-      # TODO only override refinery gems here.
+      # replace refinery's gem requirements in the Gemfile
+      refinery_gem_requirements = Refinery.root.join('Gemfile').read.to_s.scan(/(#===REFINERY REQUIRED GEMS===.+?#===REFINERY END OF REQUIRED GEMS===)/m).first.join('\n')
+
+      rails_gemfile_contents = Rails.root.join("Gemfile").read.to_s.gsub(/(#===REFINERY REQUIRED GEMS===.+?#===REFINERY END OF REQUIRED GEMS===)/m, refinery_gem_requirements)
+
+      Rails.root.join("Gemfile").open('w+') {|f| f.write(rails_gemfile_contents) }
+    end
+
+    # Make cucumber features paths
+    Rails.root.join('features', 'refinery').mkpath
+    Rails.root.join('features', 'step_definitions', 'refinery').mkpath
+    Rails.root.join('features', 'support').mkpath
+
+    # copy in cucumber features
+    FileUtils::cp_r Refinery.root.join('features', 'refinery').to_s, Rails.root.join('features', 'refinery').to_s
+    FileUtils::cp_r Refinery.root.join('features', 'step_definitions', 'refinery').to_s, Rails.root.join('features', 'step_definitions', 'refinery').to_s
+    FileUtils::cp_r Refinery.root.join('features', 'step_definitions', 'web_steps.rb').to_s, Rails.root.join('features', 'step_definitions', 'web_steps.rb').to_s
+    Dir[Refinery.root.join('features', 'support', '*.rb').to_s].each do |support|
+      FileUtils::cp support, Rails.root.join('features', 'support').to_s
+    end
+
+    # update the script directory for any fixes that have happened.
+    Dir[Refinery.root.join('script', '*')].each do |script|
+      FileUtils::cp_r script, Rails.root.join('script').to_s
+    end
+
+    # add the cucumber environment file if it's not present
+    unless (cucumber_environment_file = Rails.root.join('config', 'environments', 'cucumber.rb')).exist?
+      FileUtils::cp Refinery.root.join('config', 'environments', 'cucumber.rb').to_s, cucumber_environment_file.to_s
+      # Add cucumber database adapter (link to test)
+      existing_db_config = Rails.root.join('config', 'database.yml').read.to_s
+      Rails.root.join('config', 'database.yml').open('w+') do |f|
+        f.write "#{existing_db_config.gsub("test:\n", "test: &test\n")}\n\ncucumber:\n  <<: *test"
+      end
     end
 
     # replace the preinitializer.

@@ -309,10 +309,6 @@ body.login #header_content h1 {
 #menu.ui-sortable-disabled a {
   cursor: pointer;
 }
-#menu #logout {
-  float: right;
-  margin-right: 0px;
-}
 #menu a {
   display: block;
   padding: 9px 13px;
@@ -464,6 +460,9 @@ pre {
 }
 .tree li span.spacing {
   display: none;
+}
+.tree ul li > div:hover {
+  background-color: #fff5b1;
 }
 #records ul#sortable_list {
   margin-top: 6px;
@@ -620,9 +619,7 @@ label.stripped {
   text-align: right;
   display: block;
 }
-.tree .actions {
-  margin-top: -6px;
-}
+
 .published {
   width: 25px;
   text-align: center;
@@ -1129,7 +1126,7 @@ input.button, a.button, #content a.button {
   cursor:pointer;
   background: #22a7f2;
   color: white;
-  padding: 0px 14px 3px 14px;
+  padding: 0px 14px 0px 14px;
   font-size: 14px;
   line-height: 25px;
   height: 25px;
@@ -1137,6 +1134,10 @@ input.button, a.button, #content a.button {
   border: 0px none;
   margin-top: 0px;
   margin-bottom: 0px;
+}
+/* fixes firefox display */
+input.button {
+  padding-bottom: 3px;
 }
 input.button.close_dialog, a.button.close_dialog, #content a.button.close_dialog {
   background: #bcbcbc;

@@ -2,11 +2,11 @@ Gem::Specification.new do |s|
   s.name              = %q{refinerycms}
   s.version           = %q{0.9.7.dev}
   s.description       = %q{A beautiful open source Ruby on Rails content manager for small business. Easy to extend, easy to use, lightweight and all wrapped up in a super slick UI.}
-  s.date              = %q{2010-06-10}
+  s.date              = %q{2010-06-15}
   s.summary           = %q{A beautiful open source Ruby on Rails content manager for small business.}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
-  s.authors           = %w(Resolve Digital David Jones Philip Arndt)
+  s.authors           = %w(Resolve\ Digital David\ Jones Philip\ Arndt)
   s.require_paths     = %w(lib)
   s.executables       = %w(refinery refinery-update-core)
 
@@ -33,13 +33,16 @@ Gem::Specification.new do |s|
 		'config/amazon_s3.yml.example',
 		'config/application.rb',
 		'config/boot.rb',
+		'config/cucumber.yml',
 		'config/database.yml.example',
 		'config/environment.rb',
 		'config/environments',
+		'config/environments/cucumber.rb',
 		'config/environments/development.rb',
 		'config/environments/production.rb',
 		'config/environments/test.rb',
 		'config/initializers',
+		'config/initializers/acts_as_indexed_config.rb',
 		'config/initializers/dragonfly.rb',
 		'config/initializers/inflections.rb',
 		'config/initializers/mime_types.rb',
@@ -80,6 +83,8 @@ Gem::Specification.new do |s|
 		'lib/refinery/tasks/refinery.rake',
 		'lib/refinery/tasks/refinery.rb',
 		'lib/refinery_initializer.rb',
+		'lib/tasks',
+		'lib/tasks/cucumber.rake',
 		'public/404.html',
 		'public/422.html',
 		'public/500.html',
@@ -319,25 +324,6 @@ Gem::Specification.new do |s|
 		'themes/hemingway/views/layouts',
 		'themes/hemingway/views/layouts/application.html.erb',
 		'vendor/plugins',
-		'vendor/plugins/acts_as_indexed',
-		'vendor/plugins/acts_as_indexed/CHANGELOG',
-		'vendor/plugins/acts_as_indexed/init.rb',
-		'vendor/plugins/acts_as_indexed/lib',
-		'vendor/plugins/acts_as_indexed/lib/acts_as_indexed.rb',
-		'vendor/plugins/acts_as_indexed/lib/search_atom.rb',
-		'vendor/plugins/acts_as_indexed/lib/search_index.rb',
-		'vendor/plugins/acts_as_indexed/lib/will_paginate_search.rb',
-		'vendor/plugins/acts_as_indexed/MIT-LICENSE',
-		'vendor/plugins/acts_as_indexed/Rakefile',
-		'vendor/plugins/acts_as_indexed/README.rdoc',
-		'vendor/plugins/acts_as_indexed/test',
-		'vendor/plugins/acts_as_indexed/test/abstract_unit.rb',
-		'vendor/plugins/acts_as_indexed/test/acts_as_indexed_test.rb',
-		'vendor/plugins/acts_as_indexed/test/database.yml',
-		'vendor/plugins/acts_as_indexed/test/fixtures',
-		'vendor/plugins/acts_as_indexed/test/fixtures/post.rb',
-		'vendor/plugins/acts_as_indexed/test/fixtures/posts.yml',
-		'vendor/plugins/acts_as_indexed/test/schema.rb',
 		'vendor/plugins/acts_as_tree',
 		'vendor/plugins/acts_as_tree/init.rb',
 		'vendor/plugins/acts_as_tree/lib',

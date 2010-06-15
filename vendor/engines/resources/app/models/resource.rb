@@ -10,8 +10,7 @@ class Resource < ActiveRecord::Base
                         :message => "Files should be smaller than #{MAX_SIZE_IN_MB} MB in size"
 
   # Docs for acts_as_indexed http://github.com/dougal/acts_as_indexed
-  acts_as_indexed :fields => [:title, :type_of_content],
-                  :index_file => [Rails.root.to_s, "tmp", "index"]
+  acts_as_indexed :fields => [:title, :type_of_content]
 
   # when a dialog pops up with images, how many images per page should there be
   PAGES_PER_DIALOG = 12
