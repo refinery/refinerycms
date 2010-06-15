@@ -20,3 +20,9 @@ require_dependency 'refinery/base_presenter'
     ::ActiveSupport::Dependencies.load_paths << presenters_path
   end
 end
+
+# Ensure that apps updating to the gem versions of plugins can access their interfaces for the update task to work
+::ActiveRecord::Base.module_eval do
+  def self.acts_as_indexed(options={})
+  end
+end unless ::ActiveRecord::Base.methods.include?(:acts_as_indexed)
