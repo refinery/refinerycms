@@ -24,18 +24,14 @@
 
 
 /*WYM_HTML*/
-    .wym_skin_refinery .wym_html         { width: 98%;}
+    .wym_skin_refinery .wym_html         { width: 100%;}
     .wym_skin_refinery .wym_html textarea    { width: 100% !important; height:200px; border: 1px solid gray; background: white;  }
-
 
 /*WYM_IFRAME*/
     .wym_skin_refinery .wym_iframe       { width: 100%; }
     .wym_skin_refinery .wym_iframe iframe { border: 1px solid #CCCCCC;}
-    .wym_skin_refinery .wym_iframe iframe    { width: 99%; background: white }
-
-/* adjust for two rows of icons */
-    .wym_two_column .wym_skin_refinery .wym_iframe iframe, .wym_two_column .wym_skin_refinery .wym_html textarea { height: 376px; }
-
+    .wym_skin_refinery .wym_iframe iframe    { width: 100%; background: white }
+    textarea.wymeditor, .wym_skin_refinery .wym_iframe iframe { height: 400px; }
 
 /*AREAS*/
     .wym_skin_refinery .wym_area_left      { width: 150px; float: left;}
