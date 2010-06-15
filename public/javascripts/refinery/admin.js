@@ -14,7 +14,7 @@ init_interface = function() {
 
   $('.button, #editor_switch a').corner('6px');
   $('#editor_switch a').appendTo($('<span></span>').prependTo('#editor_switch').corner('6px'));
-  $('#page > #content, .wym_box').corner('5px bottom');
+  $('#page > #content, .wym_box').corner('5px bottom').corner('5px tr');
   $('.wym_box').corner('5px tr');
   $('.wym_iframe iframe').corner('2px');
   $('.form-actions:not(".form-actions-dialog")').corner('5px');
@@ -616,8 +616,7 @@ var image_dialog = {
 
   , submit_image_choice: function(e) {
     e.preventDefault();
-    if((img_selected = $('#existing_image_area_content ul li.selected img').get(0))
-      && typeof(this.callback) == "function")
+    if((img_selected = $('#existing_image_area_content ul li.selected img').get(0)) && $.isFunction(this.callback))
     {
       this.callback(img_selected);
     }
