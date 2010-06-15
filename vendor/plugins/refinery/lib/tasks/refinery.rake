@@ -127,6 +127,16 @@ namespace :refinery do
       Rails.root.join("Gemfile").open('w+') {|f| f.write(rails_gemfile_contents) }
     end
 
+    # Make cucumber features paths
+    Rails.root.join('features', 'refinery').mkpath
+    Rails.root.join('features', 'step_definitions', 'refinery').mkpath
+    Rails.root.join('features', 'support').mkpath
+
+    # copy in cucumber features
+    FileUtils::cp_r Refinery.root.join('features', 'refinery').to_s, Rails.root.join('features', 'refinery').to_s
+    FileUtils::cp_r Refinery.root.join('features', 'step_definitions', 'refinery').to_s, Rails.root.join('features', 'step_definitions', 'refinery').to_s
+    FileUtils::cp_r Refinery.root.join('features', 'step_definitions', 'web_steps.rb').to_s, Rails.root.join('features', 'step_definitions', 'web_steps.rb').to_s
+
     # replace the preinitializer.
     FileUtils::cp Refinery.root.join("config", "preinitializer.rb").cleanpath.to_s, Rails.root.join("config", "preinitializer.rb").cleanpath.to_s
 
