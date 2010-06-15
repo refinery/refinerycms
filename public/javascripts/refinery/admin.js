@@ -627,7 +627,7 @@ var image_dialog = {
 
   , init_actions: function(){
     var _this = this;
-    $('.form-actions-dialog #submit_button').click($.proxy(_this.submit_image_choice, _this));
+    $('#existing_image_area .form-actions-dialog #submit_button').click($.proxy(_this.submit_image_choice, _this));
     $('.form-actions-dialog #cancel_button').click($.proxy(close_dialog, _this));
     $('#existing_image_size_area ul li a').click(function(e) {
       $('#existing_image_size_area ul li').removeClass('selected');
