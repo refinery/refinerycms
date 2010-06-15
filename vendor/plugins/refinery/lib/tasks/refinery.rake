@@ -146,8 +146,8 @@ namespace :refinery do
     end
 
     # add the cucumber environment file if it's not present
-    unless (cucumber_environment_file = Refinery.root.join('config', 'environments', 'cucumber.rb')).exist?
-      FileUtils::cp cucumber_environment_file.to_s, Rails.root.join('config', 'environments').to_s
+    unless (cucumber_environment_file = Rails.root.join('config', 'environments', 'cucumber.rb')).exist?
+      FileUtils::cp Refinery.root.join('config', 'environments', 'cucumber.rb').to_s, cucumber_environment_file.to_s
     end
 
     # replace the preinitializer.
