@@ -1126,7 +1126,7 @@ input.button, a.button, #content a.button {
   cursor:pointer;
   background: #22a7f2;
   color: white;
-  padding: 0px 14px 3px 14px;
+  padding: 0px 14px 0px 14px;
   font-size: 14px;
   line-height: 25px;
   height: 25px;
@@ -1134,6 +1134,10 @@ input.button, a.button, #content a.button {
   border: 0px none;
   margin-top: 0px;
   margin-bottom: 0px;
+}
+/* fixes firefox display */
+input.button {
+  padding-bottom: 3px;
 }
 input.button.close_dialog, a.button.close_dialog, #content a.button.close_dialog {
   background: #bcbcbc;
