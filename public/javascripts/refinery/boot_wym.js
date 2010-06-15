@@ -81,7 +81,7 @@ var wymeditor_boot_options = $.extend({
 
   , boxHtml:
   "<div class='wym_box'>"
-    + "<div class='wym_area_top'>"
+    + "<div class='wym_area_top clearfix'>"
       + WYMeditor.CONTAINERS
       + WYMeditor.TOOLS
     + "</div>"
@@ -170,11 +170,12 @@ var wymeditor_boot_options = $.extend({
         + "<div id='page'>" + WYMeditor.DIALOG_BODY + "</div>"
       + "</body>"
     + "</html>"
-
   , postInit: function(wym)
   {
-    wym._iframe.style.height = wym._element.height() + "px";
+    // register loaded
     wymeditors_loaded += 1;
+
+    // fire loaded if all editors loaded
     if(WYMeditor.INSTANCES.length == wymeditors_loaded){
       $('.wym_loading_overlay').remove();
       WYMeditor.loaded();
@@ -190,8 +191,4 @@ $(function()
   wymeditor_inputs = $('.wymeditor');
   wymeditor_inputs.hide();
   wymeditor_inputs.wymeditor(wymeditor_boot_options);
-  $('.wym_iframe iframe').each(function(index, wym) {
-    // adjust for border width.
-    $(wym).css({'height':$(wym).parent().height()-2, 'width':$(wym).parent().width()-2});
-  });
 });
