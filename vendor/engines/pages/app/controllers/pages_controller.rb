@@ -1,5 +1,13 @@
 class PagesController < ApplicationController
 
+  caches_action :home, :show,
+                :cache_path => Proc.new { |c| "#{c.request.host_with_port}/views/pages/#{c.params[:path]}" },
+                :if => Proc.new { |c|
+                  c.send(:logged_in?) == false and
+                  (!RefinerySetting.table_exists? ||
+                    RefinerySetting.find_or_set(:page_caching_enabled, true, :scoping => 'pages'))
+                }
+
   def home
     error_404 unless (@page = Page.find_by_link_url("/", :include => [:parts, :slugs])).present?
   end

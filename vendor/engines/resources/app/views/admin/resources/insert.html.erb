@@ -13,51 +13,13 @@
   </div>
 
   <div id='dialog_main'>
-    <% if @resources.any? %>
-      <div id='existing_resource_area' class='dialog_area' <%= "style='display:none;'" if @resource.errors.any? %>>
-        <input type='hidden' name='linked_resource' id='linked_resource' />
-        <div id='existing_resource_area_content' class='clearfix'>
-          <div id='pages_list'>
-            <ul class='link_list'>
-              <% @resources.each do |resource| -%>
-                <% resource_linked = (resource.url == params[:current_link]) if params[:current_link].present? %>
-                <li<%= " class='linked'" if resource_linked %>>
-                  <%= link_to "#{resource.title} (#{resource.url})",
-                              resource.url,
-                              :title => 'Link to this Resource',
-                              :rel => resource.title,
-                              :class => 'page_link',
-                              :id => "resource_#{resource.id}" %>
-                </li>
-              <% end %>
-            </ul>
-          </div>
-        </div>
-        <%= will_paginate @resources,
-                          :previous_label => '&laquo; Previous',
-                          :next_label => 'Next &raquo;',
-                          :renderer => Refinery::LinkRenderer,
-                          :url => {:controller => "admin/resources", :action => "insert", :dialog => from_dialog?} unless @app_dialog %>
-      </div>
-    <% end %>
+    <%= render :partial => 'existing_resource' if @resources.any? %>
+
     <div id='upload_resource_area' class='dialog_area' <%= "style='display:none;'" if @resources.any? and @resource.errors.empty? %>>
       <%= render :partial => "form", :locals => {:insert => true} %>
     </div>
   </div>
 </div>
-<% if @app_dialog %>
-  <div id='dialog-form-actions' class='form-actions'>
-    <div class='form-actions-left'>
-      <%= submit_tag 'Insert', :id => "submit_button", :class => 'button' %>
-
-      <%= will_paginate @resources,
-                        :previous_label => '&laquo; Previous',
-                        :next_label => 'Next &raquo;',
-                        :renderer => Refinery::LinkRenderer,
-                        :url => {:controller => "admin/resources", :action => "insert", :dialog => from_dialog? } %>
-    </div>
-  </div>
-<% end %>
 
 <% content_for :head do %>
   <script type='text/javascript'>
