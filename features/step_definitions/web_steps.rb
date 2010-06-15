@@ -7,7 +7,7 @@
 
 require 'uri'
 require 'cgi'
-require Rails.root.join('features', 'support', 'paths').to_s
+require File.expand_path(File.join(File.dirname(__FILE__), '..', 'support', 'paths'))
 
 module WithinHelpers
   def with_scope(locator)
