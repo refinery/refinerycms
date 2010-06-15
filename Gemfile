@@ -22,6 +22,7 @@ gem 'rmagick',        '~> 2.13.1', :require => 'RMagick'
 gem 'rack-cache',     :require => 'rack/cache'
 gem 'dragonfly'
 gem 'hpricot',        '~> 0.8'
+gem 'acts_as_indexed', '= 0.6.2', :require => 'acts_as_indexed', :git => 'git://github.com/parndt/acts_as_indexed.git', :branch => 'master'
 gem 'authlogic',      '~> 2.1.5'
 gem 'friendly_id',    '~> 3.0'
 gem 'will_paginate',  '3.0.pre'
@@ -32,14 +33,22 @@ gem 'will_paginate',  '3.0.pre'
 #gem 'refinerycms',    '= 0.9.7.dev'
 #===END OF REFINERY GEM INSTALL REQUIREMENTS===
 
-# Bundle gems for certain environments:
 group :cucumber do
   gem 'rspec'
   gem 'rspec-rails'
   gem 'cucumber-rails'
   gem 'capybara'
   gem 'database_cleaner'
+  gem 'launchy'
 end
+#===REFINERY END OF REQUIRED GEMS===
+
+#===REQUIRED FOR REFINERY GEM INSTALL===
+# Leave the gem below disabled (commented out) if you're not using the gem install method.
+#gem 'refinerycms',    '= 0.9.7.dev'
+#===END OF REFINERY GEM INSTALL REQUIREMENTS===
+
+# Bundle gems for certain environments:
 
 # Specify your application's gem requirements here. See the examples below:
 # gem "refinerycms-news", "~> 0.9.7", :require => "news"

@@ -11,14 +11,14 @@ namespace :images do
     else
       puts "There may have been a problem deleting the thumbnails."
     end
-    
+
     originals = Image.originals
     puts "Preparing to regenerate thumbnails for #{originals.size} images"
-    
+
     originals.each do |image|
       begin
         image.rebuild_thumbnails!
-      rescue Exception => e  
+      rescue Exception => e
         puts "--> ERROR image #{image.id} could not be saved because #{e.message}"
       end
     end
@@ -30,14 +30,14 @@ namespace :images do
   desc "Update thumbnails. Useful for when you have added new thumbnail sizes and you just need to regenerate those without regenerating all the thumbnails again."
   task :update => :environment do
 =begin
-		originals = Image.originals
+  originals = Image.originals
 
     puts "Preparing to update #{originals.size} images. This may take a few minutes. Please wait..."
 
     originals.each do |image|
       begin
         image.rebuild_missing_thumbnails!
-      rescue Exception => e  
+      rescue Exception => e
         puts "--> ERROR image #{image.id} could not be saved because #{e.message}"
       end
     end
@@ -45,6 +45,6 @@ namespace :images do
     puts "Thumbnail update complete."
 =end
     puts "TODO: update task for Dragonfly"
-	end
-	
+ end
+
 end

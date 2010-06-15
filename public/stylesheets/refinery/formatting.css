@@ -1,17 +1,17 @@
 /* Default error colouring */
 
 div.fieldWithErrors {
-	display: inline;
+  display: inline;
 }
 
 #errorExplanation {
-	border-top: 3px solid #F27F7F;
-	background: #FFBEBE;
-	padding: 10px;
+  border-top: 3px solid #F27F7F;
+  background: #FFBEBE;
+  padding: 10px;
 }
 
 #errorExplanation, #errorExplanation *, .fieldWithErrors, .fieldWithErrors * {
-	color: #9C2626;
+  color: #9C2626;
 }
 
 /* Browser Hacks */
@@ -19,15 +19,15 @@ div.fieldWithErrors {
 /* remove borders from images */
 
 a img {
-	border: 0px none;
+  border: 0px none;
 }
 
 /*
 Firefox Dotted Line Fix
-	- http://sonspring.com/journal/removing-dotted-links
+  - http://sonspring.com/journal/removing-dotted-links
 */
 a:focus {
-	outline: none;
+  outline: none;
 }
 
 /*
@@ -36,18 +36,18 @@ Clearfix docs
  - IE7 change: http://www.456bereastreet.com/archive/200603/new_clearing_method_needed_for_ie7/
 */
 .clearfix:after {
-	content: ".";
-	display: block;
-	height: 0;
-	clear: both;
-	visibility: hidden;
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
 }
 .clearfix {
-	display: inline-block;
+  display: inline-block;
 }
 
 /* Hide from IE Mac \*/
 .clearfix {
-	display:block;
+  display:block;
 }
 /* End hide from IE Mac */

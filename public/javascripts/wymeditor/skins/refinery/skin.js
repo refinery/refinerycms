@@ -4,29 +4,32 @@ WYMeditor.SKINS['refinery'] = {
 
 		//render following sections as buttons
 		$(wym._box).find(wym._options.toolsSelector)
-			.addClass("wym_buttons");
+			.addClass('wym_buttons');
 
 		// auto add some margin to the main area sides if left area
 		// or right area are not empty (if they contain sections)
-		$(wym._box).find("div.wym_area_right ul")
-			.parents("div.wym_area_right").show()
+		$(wym._box).find('div.wym_area_right ul')
+			.parents('div.wym_area_right').show()
 			.parents(wym._options.boxSelector)
-			.find("div.wym_area_main")
-			.css({"margin-right": "155px"});
+			.find('div.wym_area_main')
+			.css({'margin-right': '155px'});
 
-		$(wym._box).find("div.wym_area_left ul")
-			.parents("div.wym_area_left").show()
+		$(wym._box).find('div.wym_area_left ul')
+			.parents('div.wym_area_left').show()
 			.parents(wym._options.boxSelector)
-			.find("div.wym_area_main")
-			.css({"margin-left": "155px"});
+			.find('div.wym_area_main')
+			.css({'margin-left': '155px'});
 
 		//make hover work under IE < 7
-		$(wym._box).find(".wym_section").hover(function(){
-			$(this).addClass("hover");
+		$(wym._box).find('.wym_section').hover(function(){
+			$(this).addClass('hover');
 		},function(){
-			$(this).removeClass("hover");
+			$(this).removeClass('hover');
 		});
 
-		$('.button').corner("6px");
+    // adjust sizing
+    $(wym._box).css('width', $(wym._element).width()).find('.wym_iframe iframe').css('width', $(wym._box).width() - 2);
+
+		$('.button').corner('6px');
 	}
 };
