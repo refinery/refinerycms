@@ -1,13 +1,13 @@
 the_world:
-  content_type: image/gif
-  filename: The%20world!.gif
-  width: 614
-  height: 340
-  size: 17535
+  image_mime_type: image/gif
+  image_name: The%20world!.gif
+  image_width: 614
+  image_height: 340
+  image_size: 17535
 
 our_car:
-  content_type: image/jpg
-  filename: car-wallpapers19.jpg
-  width: 640
-  height: 300
-  size: 87647
+  image_mime_type: image/jpg
+  image_name: car-wallpapers19.jpg
+  image_width: 640
+  image_height: 300
+  image_size: 87647
