@@ -119,7 +119,12 @@ namespace :refinery do
     unless Rails.root.join("Gemfile").exist?
       FileUtils::cp Refinery.root.join("Gemfile").cleanpath.to_s, Rails.root.join("Gemfile").cleanpath.to_s
     else
-      # TODO only override refinery gems here.
+      # replace refinery's gem requirements in the Gemfile
+      refinery_gem_requirements = Refinery.root.join('Gemfile').read.to_s.scan(/(#===REFINERY REQUIRED GEMS===.+?#===REFINERY END OF REQUIRED GEMS===)/m).first.join('\n')
+
+      rails_gemfile_contents = Rails.root.join("Gemfile").read.to_s.gsub(/(#===REFINERY REQUIRED GEMS===.+?#===REFINERY END OF REQUIRED GEMS===)/m, refinery_gem_requirements)
+
+      Rails.root.join("Gemfile").open('w+') {|f| f.write(rails_gemfile_contents) }
     end
 
     # replace the preinitializer.
