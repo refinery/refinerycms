@@ -235,4 +235,3 @@ namespace :refinery do
   end
 
 end
-

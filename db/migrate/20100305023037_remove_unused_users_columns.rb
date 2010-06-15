@@ -13,4 +13,3 @@ class RemoveUnusedUsersColumns < ActiveRecord::Migration
     end
   end
 end
-
