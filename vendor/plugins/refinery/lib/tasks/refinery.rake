@@ -148,6 +148,11 @@ namespace :refinery do
     # add the cucumber environment file if it's not present
     unless (cucumber_environment_file = Rails.root.join('config', 'environments', 'cucumber.rb')).exist?
       FileUtils::cp Refinery.root.join('config', 'environments', 'cucumber.rb').to_s, cucumber_environment_file.to_s
+      # Add cucumber database adapter (link to test)
+      existing_db_config = Rails.root.join('config', 'database.yml').read.to_s
+      Rails.root.join('config', 'database.yml').open('w+') do |f|
+        f.write "#{existing_db_config.gsub("test:\n", "test: &test\n")}\n\ncucumber:\n  <<: *test"
+      end
     end
 
     # replace the preinitializer.
