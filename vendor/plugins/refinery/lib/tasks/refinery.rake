@@ -136,6 +136,19 @@ namespace :refinery do
     FileUtils::cp_r Refinery.root.join('features', 'refinery').to_s, Rails.root.join('features', 'refinery').to_s
     FileUtils::cp_r Refinery.root.join('features', 'step_definitions', 'refinery').to_s, Rails.root.join('features', 'step_definitions', 'refinery').to_s
     FileUtils::cp_r Refinery.root.join('features', 'step_definitions', 'web_steps.rb').to_s, Rails.root.join('features', 'step_definitions', 'web_steps.rb').to_s
+    Dir[Refinery.root.join('features', 'support', '*.rb').to_s].each do |support|
+      FileUtils::cp support, Rails.root.join('features', 'support').to_s
+    end
+
+    # update the script directory for any fixes that have happened.
+    Dir[Refinery.root.join('script', '*')].each do |script|
+      FileUtils::cp_r script, Rails.root.join('script').to_s
+    end
+
+    # add the cucumber environment file if it's not present
+    unless (cucumber_environment_file = Refinery.root.join('config', 'environments', 'cucumber.rb')).exist?
+      FileUtils::cp cucumber_environment_file.to_s, Rails.root.join('config', 'environments').to_s
+    end
 
     # replace the preinitializer.
     FileUtils::cp Refinery.root.join("config", "preinitializer.rb").cleanpath.to_s, Rails.root.join("config", "preinitializer.rb").cleanpath.to_s
