@@ -1,15 +1,15 @@
 quentin_images:
   user: quentin
   title: Images
-  
+
 quentin_inquiries:
   user: quentin
   title: Inquiries
-  
+
 quentin_users:
   user: quentin
   title: Users
-  
+
 quentin_news:
   user: quentin
   title: News
@@ -21,16 +21,16 @@ quentin_pages:
 quentin_dialogs:
   user: quentin
   title: Dialogs
-  
+
 quentin_settings:
   user: quentin
   title: Settings
-  
+
 quentin_resources:
   user: quentin
   title: Resources
-  
-# TODO: I don't think we need this one  
+
+# TODO: I don't think we need this one
 quentin_refinery:
   user: quentin
   title: Refinery

@@ -1,14 +1,14 @@
 development:
     container_name: your_local_rackspace_cloudfiles
     username:
-    api_key: 
+    api_key:
 
 test:
     container_name: your_test_rackspace_cloudfiles
-    username: 
-    api_key: 
+    username:
+    api_key:
 
 production:
     container_name: your_production_rackspace_cloudfiles
-    username: 
-    api_key: 
+    username:
+    api_key:

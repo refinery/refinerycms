@@ -19,4 +19,3 @@ end
 Given /^I am a logged in user$/ do
   login
 end
-
