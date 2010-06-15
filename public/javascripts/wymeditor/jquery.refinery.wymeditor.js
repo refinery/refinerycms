@@ -1353,10 +1353,10 @@ WYMeditor.editor.prototype.paste = function(sData) {
   replaceable = $(wym._doc.body).find('#replace_me_with_' + wym._current_unique_stamp);
 
   // replaceable doesn't actually get replaced here, it's just used as a marker for where the cursor was.
-
+  container = replaceable.get(0) || this.selected();
 
   //split the data, using double newlines as the separator
-  var aP = sData.split(wym._newLine + wym._newLine);
+  var aP = sData.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").split(wym._newLine + wym._newLine);
   var rExp = new RegExp(wym._newLine, "g");
 
   //add a P for each item
@@ -1391,7 +1391,7 @@ WYMeditor.editor.prototype.paste = function(sData) {
           }
 
         } else {
-          $(container).html($(container).html() + sTmp);
+          $(container).html($(container).html().replace(/^<br\/?>$/, '') + sTmp);
         }
       } else {
         if ((aP.length -1) == x) {
@@ -4828,7 +4828,7 @@ WYMeditor.WymClassSafari.prototype.paste = function(sData) {
   var container = replaceable.get(0) || this.selected();
 
   //split the data, using double newlines as the separator
-  var aP = sData.split(wym._newLine + wym._newLine);
+  var aP = sData.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").split(wym._newLine + wym._newLine);
   var rExp = new RegExp(wym._newLine, "g");
 
   //add a P for each item
@@ -4843,7 +4843,11 @@ WYMeditor.WymClassSafari.prototype.paste = function(sData) {
         $(container).after("<p>" + sTmp + "</p>");
       }
     }
-  } else {
+  } 
+  
+  
+  
+  else {
     for(x = 0; x < aP.length; x++) {
       sTmp = aP[x];
       //simple newlines are replaced by a break
