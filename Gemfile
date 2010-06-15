@@ -33,10 +33,12 @@ gem 'will_paginate',  '3.0.pre'
 #===END OF REFINERY GEM INSTALL REQUIREMENTS===
 
 # Bundle gems for certain environments:
-group :test do
+group :cucumber do
+  gem 'rspec'
+  gem 'rspec-rails'
+  gem 'cucumber-rails'
   gem 'capybara'
   gem 'database_cleaner'
-  gem 'cucumber-rails'
 end
 
 # Specify your application's gem requirements here. See the examples below:

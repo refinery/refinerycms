@@ -7,7 +7,7 @@ class Admin::PagesController < Admin::BaseController
           :paging => false
 
   before_filter :find_pages_for_parents_list, :only => [:new, :create, :edit, :update]
-  after_filter :expire_menu_fragment_caching, :only => [:create, :update, :destroy, :update_positions]
+  after_filter :expire_caching, :only => [:create, :update, :destroy, :update_positions]
 
   rescue_from FriendlyId::ReservedError, :with => :show_errors_for_reserved_slug
 
@@ -19,8 +19,18 @@ class Admin::PagesController < Admin::BaseController
   end
 
 protected
+  def expire_caching
+    expire_menu_fragment_caching
+    expire_action_caching
+  end
+
   def expire_menu_fragment_caching
-    expire_fragment(%r{#{RefinerySetting.find_or_set(:refinery_menu_cache_action_suffix, "site_menu")}})
+    Rails.cache.delete("#{Refinery.base_cache_key}_menu_pages")
+    expire_fragment %r{#{RefinerySetting.find_or_set(:refinery_menu_cache_action_suffix, "site_menu")}}
+  end
+
+  def expire_action_caching
+    expire_fragment %r{.*/pages/.*}
   end
 
   # This finds all of the pages that could possibly be assigned as the current page's parent.

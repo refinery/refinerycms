@@ -5,10 +5,10 @@
   padding-bottom: 3px;
 }
 #site_bar #editor_switch a {
-  height: 19px;
-  padding-top: 3px;
-  padding-bottom: 3px;
-  line-height: 20px;
+  height: 26px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  line-height: 26px;
 }
 .search_form input.button {
   padding-left: 8px;

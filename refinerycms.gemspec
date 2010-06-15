@@ -2,7 +2,7 @@ Gem::Specification.new do |s|
   s.name              = %q{refinerycms}
   s.version           = %q{0.9.7.dev}
   s.description       = %q{A beautiful open source Ruby on Rails content manager for small business. Easy to extend, easy to use, lightweight and all wrapped up in a super slick UI.}
-  s.date              = %q{2010-06-03}
+  s.date              = %q{2010-06-10}
   s.summary           = %q{A beautiful open source Ruby on Rails content manager for small business.}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
@@ -67,6 +67,7 @@ Gem::Specification.new do |s|
 		'db/migrate/20100605132138_convert_resource_to_dragonfly.rb',
 		'db/migrate/20100605132208_convert_image_to_dragonfly.rb',
 		'db/migrate/20100606135207_change_thumbnail_sizes_for_dragonfly.rb',
+		'db/migrate/20100608062447_add_scoping_to_refinery_settings.rb',
 		'db/schema.rb',
 		'db/seeds',
 		'db/seeds/inquiry_settings.rb',
@@ -139,6 +140,7 @@ Gem::Specification.new do |s|
 		'public/images/refinery/orange_button.png',
 		'public/images/refinery/page_bg.png',
 		'public/images/refinery/resolve_digital_footer_logo.png',
+		'public/images/refinery/text_field_background.png',
 		'public/images/wymeditor',
 		'public/images/wymeditor/skins',
 		'public/images/wymeditor/skins/refinery',
@@ -191,6 +193,7 @@ Gem::Specification.new do |s|
 		'public/javascripts/jquery',
 		'public/javascripts/jquery/GPL-LICENSE.txt',
 		'public/javascripts/jquery/jquery.corner.js',
+		'public/javascripts/jquery/jquery.html5-placeholder-shim.js',
 		'public/javascripts/jquery/jquery.textTruncate.js',
 		'public/javascripts/jquery/MIT-LICENSE.txt',
 		'public/javascripts/jquery-min.js',

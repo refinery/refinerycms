@@ -58,6 +58,7 @@ a#site_bar_refinery_cms_logo:hover img {
   border-bottom: 0px none;
   padding: 4px 14px;
   border: 1px solid #fca87f;
+  height: 24px;
   line-height: 24px;
   cursor: pointer;
 }

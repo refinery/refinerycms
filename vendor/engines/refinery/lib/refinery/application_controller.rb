@@ -6,7 +6,8 @@ class Refinery::ApplicationController < ActionController::Base
   include Crud # basic create, read, update and delete methods
   include AuthenticatedSystem
 
-  before_filter :find_pages_for_menu, :store_current_location!, :except => [:wymiframe]
+  before_filter :find_pages_for_menu
+  before_filter :store_current_location!, :if => Proc.new {|c| c.send(:logged_in?) }
   before_filter :show_welcome_page?
 
   rescue_from ActiveRecord::RecordNotFound, ActionController::UnknownAction, ActionView::MissingTemplate, :with => :error_404
@@ -56,15 +57,12 @@ class Refinery::ApplicationController < ActionController::Base
     (controller_name =~ /^(user|session)(|s)/ and not admin?) or just_installed?
   end
 
-  def wymiframe
-    render :template => "/wymiframe", :layout => false
-  end
-
 protected
 
   # get all the pages to be displayed in the site menu.
   def find_pages_for_menu
-    @menu_pages = Page.top_level(include_children=true)
+    @menu_pages = Rails.cache.read(cache_key = "#{Refinery.base_cache_key}_menu_pages")
+    @menu_pages = Rails.cache.write(cache_key, Page.top_level(include_children=true)) if @menu_pages.nil?
   end
 
   # use a different model for the meta information.

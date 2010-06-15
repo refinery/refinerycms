@@ -5,8 +5,14 @@
                 :id => "plugin_#{plugin.title}" %>
   <% end -%>
   <% if Refinery::Plugins.active.in_menu.many? and RefinerySetting.find_or_set(:refinery_enable_backend_reordering, true) -%>
-    <%= link_to refinery_icon_tag('arrow_switch.png'), "", :id => "menu_reorder", :title => "Reorder menu" %>
-    <%= link_to refinery_icon_tag('tick.png'), "", :id => "menu_reorder_done", :title => "I'm done reordering the menu", :style => "display: none;" %>
+    <%= link_to refinery_icon_tag('arrow_switch.png'), "",
+                :id => "menu_reorder",
+                :title => "Reorder menu" %>
+
+    <%= link_to refinery_icon_tag('tick.png'), "",
+                :id => "menu_reorder_done",
+                :title => "I'm done reordering the menu",
+                :style => "display: none;" %>
   <% end %>
   <%= link_to "Log out", logout_url(:only_path => true), :id => "logout" %>
 </nav>

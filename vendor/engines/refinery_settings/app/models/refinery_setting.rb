@@ -30,8 +30,14 @@ class RefinerySetting < ActiveRecord::Base
     end
   end
 
-  def self.find_or_set(name, the_value)
-    find_or_create_by_name(:name => name.to_s, :value => the_value).value
+  def self.find_or_set(name, the_value, options={})
+    # if the database is not up to date yet then it won't know about scoping..
+    if self.column_names.include?('scoping')
+      options = {:scoping => nil}.merge(options)
+      find_or_create_by_name_and_scoping(:name => name.to_s, :value => the_value, :scoping => options[:scoping]).value
+    else
+      find_or_create_by_name(:name => name.to_s, :value => the_value).value
+    end
   end
 
   def self.[](name)
@@ -46,10 +52,8 @@ class RefinerySetting < ActiveRecord::Base
   end
 
   # Below is not very nice, but seems to be required
-  # The problem is when Rails serialises a fields like booleans
-  # it doesn't retreieve it back out as a boolean
-  # it just returns a string. This code maps the two boolean
-  # values correctly so a boolean is returned
+  # The problem is when Rails serialises a fields like booleans it doesn't retrieve it back out as a boolean
+  # it just returns a string. This code maps the two boolean values correctly so a boolean is returned
   REPLACEMENTS = {"true" => true, "false" => false}
 
   def value
