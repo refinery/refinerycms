@@ -70,11 +70,11 @@ select.widest {
   padding: 9px 12px 9px 36px;
 }
 #actions li a:hover {
-  text-decoration: underline;
   background-color: #cae7fb;
 }
 #actions li a:active {
-  background-color: #cbdeff;
+  background-color: #22A7F2;
+	color: white;
 }
 #actions li {
   margin-top: 10px;
@@ -462,7 +462,7 @@ pre {
   display: none;
 }
 .tree ul li > div:hover {
-  background-color: #fff5b1;
+  background-color: #e9e9e9;
 }
 #records ul#sortable_list {
   margin-top: 6px;
