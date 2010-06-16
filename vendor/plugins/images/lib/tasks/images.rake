@@ -27,7 +27,7 @@ namespace :images do
 
   desc "Update thumbnails. Useful for when you have added new thumbnail sizes and you just need to regenerate those without regenerating all the thumbnails again."
   task :update => :environment do
-		originals = Image.originals
+    originals = Image.originals
 
     puts "Preparing to update #{originals.size} images. This may take a few minutes. Please wait..."
 
@@ -40,6 +40,6 @@ namespace :images do
     end
 
     puts "Thumbnail update complete."
-	end
-	
+  end
+  
 end

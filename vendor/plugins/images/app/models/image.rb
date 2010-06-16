@@ -31,8 +31,7 @@ class Image < ActiveRecord::Base
   end
 
   # Docs for acts_as_indexed http://github.com/dougal/acts_as_indexed
-  acts_as_indexed :fields => [:title],
-                  :index_file => [Rails.root.to_s, "tmp", "index"]
+  acts_as_indexed :fields => [:title]
 
   named_scope :thumbnails, :conditions => "parent_id IS NOT NULL"
   named_scope :originals, :conditions => {:parent_id => nil}
@@ -58,11 +57,11 @@ class Image < ActiveRecord::Base
   def rebuild_thumbnails!
     build_thumbnails!
   end
-  
+
   def rebuild_missing_thumbnails!
     build_thumbnails!(true)
   end
-  
+
 private
   def build_thumbnails!(only_missing = false)
     tmp = create_temp_file

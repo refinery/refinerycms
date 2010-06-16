@@ -3,28 +3,22 @@
   <div class='field'>
     <span class='label_with_help'>
      <%= f.label :browser_title %>
-     <span tooltip="Enter a 5-10 word title that summarizes the contents of this page" class='help'>
-       (help)
-     </span>
+     <%= refinery_help_tag 'Enter a 5-10 word title that summarizes the contents of this page.'%>
     </span>
-    <%= f.text_field :browser_title, :size => 63 %>
+    <%= f.text_field :browser_title, :class => 'widest' %>
   </div>
   <div class='field'>
     <span class='label_with_help'>
      <%= f.label :meta_keywords %>
-     <span tooltip="Enter 5-10 keywords that relate to this page. Separate keywords by a comma." class='help'>
-       (help)
-     </span>
+     <%= refinery_help_tag 'Enter 5-10 keywords that relate to this page. Separate keywords by a comma.' %>
     </span>
-    <%= f.text_field :meta_keywords, :size => 63 %>
+    <%= f.text_field :meta_keywords, :class => 'widest' %>
   </div>
   <div class='field'>
     <span class='label_with_help'>
      <%= f.label :meta_description %>
-     <span tooltip="Enter a concise two or three sentences describing what this page is about." class='help'>
-       (help)
-     </span>
+     <%= refinery_help_tag 'Enter a concise two or three sentences describing what this page is about.' %>
     </span>
-    <%= f.text_area :meta_description, :cols => 95, :rows => 5 %>
+    <%= f.text_area :meta_description, :class => 'widest', :rows => 7 %>
   </div>
 </div>
