@@ -14,16 +14,16 @@ init_interface = function() {
 
   $('.button, #editor_switch a').corner('6px');
   $('#editor_switch a').appendTo($('<span></span>').prependTo('#editor_switch').corner('6px'));
-  $('#page > #content, .wym_box').corner('5px bottom');
+  $('#page > #content, .wym_box').corner('5px bottom').corner('5px tr');
   $('.wym_box').corner('5px tr');
   $('.wym_iframe iframe').corner('2px');
   $('.form-actions:not(".form-actions-dialog")').corner('5px');
   $('#recent_activity li a, #recent_inquiries li a').each(function(i, a) {
     $(this).textTruncate({
       width: $(this).width()
-  		, tooltip: false
-  	});
-	});
+      , tooltip: false
+    });
+  });
 
   // make sure that users can tab to wymeditor fields and add an overlay while loading.
   $('textarea.wymeditor').each(function() {
@@ -122,7 +122,6 @@ init_sortable_menu = function(){
     e.preventDefault();
     $('#menu_reorder, #menu_reorder_done').toggle();
     $('#site_bar, #header >*:not(#header_content, #menu, script), #content').fadeTo(500, 0.65);
-    $('#logout').fadeTo(500, 0.3);
     $menu.find('.tab a').click(function(ev){
       ev.preventDefault();
     });
@@ -133,7 +132,7 @@ init_sortable_menu = function(){
   $menu.find('#menu_reorder_done').click(function(e){
     e.preventDefault();
     $('#menu_reorder, #menu_reorder_done').toggle();
-    $('#site_bar, #header >*:not(#header_content, #menu, script), #content, #logout').fadeTo(500, 1);
+    $('#site_bar, #header >*:not(#header_content, #menu, script), #content').fadeTo(500, 1);
     $menu.find('.tab a').unbind('click');
 
     $menu.sortable('disable');
@@ -617,8 +616,7 @@ var image_dialog = {
 
   , submit_image_choice: function(e) {
     e.preventDefault();
-    if((img_selected = $('#existing_image_area_content ul li.selected img').get(0))
-      && typeof(this.callback) == "function")
+    if((img_selected = $('#existing_image_area_content ul li.selected img').get(0)) && $.isFunction(this.callback))
     {
       this.callback(img_selected);
     }
@@ -628,7 +626,7 @@ var image_dialog = {
 
   , init_actions: function(){
     var _this = this;
-    $('.form-actions-dialog #submit_button').click($.proxy(_this.submit_image_choice, _this));
+    $('#existing_image_area .form-actions-dialog #submit_button').click($.proxy(_this.submit_image_choice, _this));
     $('.form-actions-dialog #cancel_button').click($.proxy(close_dialog, _this));
     $('#existing_image_size_area ul li a').click(function(e) {
       $('#existing_image_size_area ul li').removeClass('selected');
@@ -664,11 +662,11 @@ var list_reorder = {
 
     list_reorder.sortable_list.add(list_reorder.sortable_list.find('ul')).sortable({
       'connectWith': $(list_reorder.sortable_list.find('ul'))
-			, 'tolerance': 'pointer'
-			, 'placeholder': 'placeholder'
-			, 'cursor': 'drag'
-			, 'items': 'li'
-			, 'axis': 'y'
+      , 'tolerance': 'pointer'
+      , 'placeholder': 'placeholder'
+      , 'cursor': 'drag'
+      , 'items': 'li'
+      , 'axis': 'y'
     });
 
     $('#reorder_action').hide();
@@ -696,17 +694,17 @@ var list_reorder = {
 
     if (list_reorder.update_url != null) {
       serialized = "";
-  	  list_reorder.sortable_list.find('> li[id]').each(function(index, li) {
+      list_reorder.sortable_list.find('> li[id]').each(function(index, li) {
         if (list_reorder.tree) {
-  	      serialized += list_reorder.parse_branch([index], li);
+          serialized += list_reorder.parse_branch([index], li);
         }
         else {
           serialized += "&sortable_list[]=" + $($(li).attr('id').split('_')).last().get(0);
         }
-  	  });
-  	  serialized += "&tree=" + list_reorder.tree;
-  	  serialized += "&authenticity_token=" + encodeURIComponent($('#reorder_authenticity_token').val());
-  	  serialized += "&continue_reordering=false";
+      });
+      serialized += "&tree=" + list_reorder.tree;
+      serialized += "&authenticity_token=" + encodeURIComponent($('#reorder_authenticity_token').val());
+      serialized += "&continue_reordering=false";
 
       $.post(list_reorder.update_url, serialized, function(data) {
         $(list_reorder.sortable_list.get(0)).html(data);
@@ -800,38 +798,38 @@ close_dialog = function(e) {
 //parse a URL to form an object of properties
 parseURL = function(url)
 {
-	//save the unmodified url to href property
-	//so that the object we get back contains
-	//all the same properties as the built-in location object
-	var loc = { 'href' : url };
+  //save the unmodified url to href property
+  //so that the object we get back contains
+  //all the same properties as the built-in location object
+  var loc = { 'href' : url };
 
-	//split the URL by single-slashes to get the component parts
-	var parts = url.replace('//', '/').split('/');
+  //split the URL by single-slashes to get the component parts
+  var parts = url.replace('//', '/').split('/');
 
-	//store the protocol and host
-	loc.protocol = parts[0];
-	loc.host = parts[1];
+  //store the protocol and host
+  loc.protocol = parts[0];
+  loc.host = parts[1];
 
-	//extract any port number from the host
-	//from which we derive the port and hostname
-	parts[1] = parts[1].split(':');
-	loc.hostname = parts[1][0];
-	loc.port = parts[1].length > 1 ? parts[1][1] : '';
+  //extract any port number from the host
+  //from which we derive the port and hostname
+  parts[1] = parts[1].split(':');
+  loc.hostname = parts[1][0];
+  loc.port = parts[1].length > 1 ? parts[1][1] : '';
 
-	//splice and join the remainder to get the pathname
-	parts.splice(0, 2);
-	loc.pathname = '/' + parts.join('/');
+  //splice and join the remainder to get the pathname
+  parts.splice(0, 2);
+  loc.pathname = '/' + parts.join('/');
 
-	//extract any hash and remove from the pathname
-	loc.pathname = loc.pathname.split('#');
-	loc.hash = loc.pathname.length > 1 ? '#' + loc.pathname[1] : '';
-	loc.pathname = loc.pathname[0];
+  //extract any hash and remove from the pathname
+  loc.pathname = loc.pathname.split('#');
+  loc.hash = loc.pathname.length > 1 ? '#' + loc.pathname[1] : '';
+  loc.pathname = loc.pathname[0];
 
-	//extract any search query and remove from the pathname
-	loc.pathname = loc.pathname.split('?');
-	loc.search = loc.pathname.length > 1 ? '?' + loc.pathname[1] : '';
-	loc.pathname = loc.pathname[0];
+  //extract any search query and remove from the pathname
+  loc.pathname = loc.pathname.split('?');
+  loc.search = loc.pathname.length > 1 ? '?' + loc.pathname[1] : '';
+  loc.pathname = loc.pathname[0];
 
-	//return the final object
-	return loc;
+  //return the final object
+  return loc;
 }

@@ -19,6 +19,9 @@
 #site_bar site_bar_branding a {
   font-weight: normal;
 }
+#site_bar #site_bar_branding a#logout {
+  margin-left: 12px;
+}
 #site_bar * {
   line-height: 47px;
 }
