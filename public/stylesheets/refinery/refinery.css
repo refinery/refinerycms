@@ -568,7 +568,7 @@ textarea {
   margin-bottom: 20px;
 }
 .submit {
-  border: auto;
+  border: inherit;
   width: auto;
   height: 25px;
 }
@@ -581,7 +581,7 @@ label, .label_with_help {
 }
 label.input_label {
   font-size: inherit;
-  margin-bottom: inerhit;
+  margin-bottom: inherit;
   display: inline;
   font-weight: normal;
   margin-top: inherit;
@@ -897,7 +897,7 @@ ul#menu.reordering_menu li a {
   right: 0px;
   top: 0px;
 }
-form input:submit {
+form input[type=submit]:hover {
   background: #65c3f7;
 }
 .clearfix:after {
