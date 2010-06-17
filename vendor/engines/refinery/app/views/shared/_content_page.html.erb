@@ -15,7 +15,7 @@
     section[:html] = (yield(section[:yield]))
 
     if section[:html].blank? and !show_empty_sections and !remove_automatic_sections
-      section[:html] = section[:fallback]
+      section[:html] = section[:fallback].html_safe
     end
 
     unless section[:html].blank?
@@ -30,6 +30,8 @@
   end
 -%>
 <div id='body_content' class='clearfix<%= " #{css.join(' ')}" if css.any? %>'>
-  <%= sections.collect {|s| s[:html] }.join("\n") %>
+  <% sections.each do |s| %>
+    <%= s[:html].html_safe %>
+  <% end %>
 </div>
 <%= render :partial => '/shared/draft_page_message' unless @page.nil? or @page.live? -%>
