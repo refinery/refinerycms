@@ -23,5 +23,9 @@ class Admin::DialogsController < Admin::BaseController
       render :nothing => true
     end
   end
+  
+  def from_dialog?
+    true
+  end
 
 end

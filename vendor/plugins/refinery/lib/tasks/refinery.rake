@@ -133,17 +133,14 @@ namespace :refinery do
     Rails.root.join('features', 'support').mkpath
 
     # copy in cucumber features
-    FileUtils::cp_r Refinery.root.join('features', 'refinery').to_s, Rails.root.join('features', 'refinery').to_s
-    FileUtils::cp_r Refinery.root.join('features', 'step_definitions', 'refinery').to_s, Rails.root.join('features', 'step_definitions', 'refinery').to_s
-    FileUtils::cp_r Refinery.root.join('features', 'step_definitions', 'web_steps.rb').to_s, Rails.root.join('features', 'step_definitions', 'web_steps.rb').to_s
-    Dir[Refinery.root.join('features', 'support', '*.rb').to_s].each do |support|
-      FileUtils::cp support, Rails.root.join('features', 'support').to_s
-    end
+    FileUtils::cp Dir[Refinery.root.join('features', 'refinery', '*.rb').to_s], Rails.root.join('features', 'refinery').to_s
+    FileUtils::cp Dir[Refinery.root.join('features', 'step_definitions', 'refinery', '*.rb').to_s], Rails.root.join('features', 'step_definitions', 'refinery').to_s
+    FileUtils::cp Dir[Refinery.root.join('features', 'step_definitions', 'web_steps.rb').to_s], Rails.root.join('features', 'step_definitions').to_s
+    FileUtils::cp Dir[Refinery.root.join('features', 'support', '*.rb').to_s], Rails.root.join('features', 'support').to_s
 
     # update the script directory for any fixes that have happened.
-    Dir[Refinery.root.join('script', '*')].each do |script|
-      FileUtils::cp_r script, Rails.root.join('script').to_s
-    end
+    FileUtils::cp_r Dir[Refinery.root.join('script', '*').to_s], Rails.root.join('script').to_s
+    FileUtils::chmod_R 0755, Rails.root.join('script').to_s
 
     # add the cucumber environment file if it's not present
     unless (cucumber_environment_file = Rails.root.join('config', 'environments', 'cucumber.rb')).exist?
