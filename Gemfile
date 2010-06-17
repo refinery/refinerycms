@@ -2,11 +2,9 @@ source :rubygems
 
 # Specify the database driver as appropriate for your application (only one).
 gem 'mysql', :require => 'mysql'
-#gem 'sqlite3-ruby', :require => 'sqlite3'
+gem 'sqlite3-ruby', :require => 'sqlite3'
 
 # Specify your favourite web server (only one).
-gem 'unicorn', :group => :development
-#gem 'mongrel', :group => :development
 
 # Deploy with Capistrano
 # gem 'capistrano'
@@ -24,7 +22,7 @@ gem 'dragonfly'
 gem 'hpricot',        '~> 0.8'
 gem 'authlogic',      '~> 2.1.5'
 gem 'friendly_id',    '~> 3.0'
-gem 'will_paginate',  '3.0.pre',:git => "git://github.com/mislav/will_paginate.git", :branch => 'rails3'
+gem 'will_paginate',  '3.0.pre', :git => "git://github.com/mislav/will_paginate.git", :branch => 'rails3'
 #===REFINERY END OF REQUIRED GEMS===
 
 #===REQUIRED FOR REFINERY GEM INSTALL===
@@ -37,7 +35,9 @@ group :test do
   gem 'capybara'
   gem 'database_cleaner'
   gem 'cucumber-rails'
+  gem 'rspec-rails'
 end
+
 
 # Specify your application's gem requirements here. See the examples below:
 # gem "refinerycms-news", "~> 0.9.7", :require => "news"
