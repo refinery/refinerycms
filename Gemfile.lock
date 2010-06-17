@@ -1,0 +1,175 @@
+--- 
+dependencies: 
+  rails: 
+    group: 
+    - :default
+    version: = 3.0.0.beta4
+  authlogic: 
+    group: 
+    - :default
+    version: ~> 2.1.5
+  sqlite3-ruby: 
+    group: 
+    - :default
+    version: ">= 0"
+    require: 
+    - sqlite3
+  mysql: 
+    group: 
+    - :default
+    version: ">= 0"
+    require: 
+    - mysql
+  rack-cache: 
+    group: 
+    - :default
+    version: ">= 0"
+    require: 
+    - rack/cache
+  dragonfly: 
+    group: 
+    - :default
+    version: ">= 0"
+  rspec-rails: 
+    group: 
+    - :test
+    version: ">= 0"
+  database_cleaner: 
+    group: 
+    - :test
+    version: ">= 0"
+  will_paginate: 
+    group: 
+    - :default
+    version: = 3.0.pre
+  friendly_id: 
+    group: 
+    - :default
+    version: ~> 3.0
+  cucumber-rails: 
+    group: 
+    - :test
+    version: ">= 0"
+  rmagick: 
+    group: 
+    - :default
+    version: ~> 2.13.1
+    require: 
+    - RMagick
+  hpricot: 
+    group: 
+    - :default
+    version: ~> 0.8
+  capybara: 
+    group: 
+    - :test
+    version: ">= 0"
+specs: 
+- rake: 
+    version: 0.8.7
+- abstract: 
+    version: 1.0.0
+- activesupport: 
+    version: 3.0.0.beta4
+- builder: 
+    version: 2.1.2
+- i18n: 
+    version: 0.4.1
+- activemodel: 
+    version: 3.0.0.beta4
+- erubis: 
+    version: 2.6.5
+- rack: 
+    version: 1.1.0
+- rack-mount: 
+    version: 0.6.4
+- rack-test: 
+    version: 0.5.4
+- tzinfo: 
+    version: 0.3.22
+- actionpack: 
+    version: 3.0.0.beta4
+- mime-types: 
+    version: "1.16"
+- polyglot: 
+    version: 0.3.1
+- treetop: 
+    version: 1.4.8
+- mail: 
+    version: 2.2.4
+- actionmailer: 
+    version: 3.0.0.beta4
+- arel: 
+    version: 0.4.0
+- activerecord: 
+    version: 3.0.0.beta4
+- activeresource: 
+    version: 3.0.0.beta4
+- authlogic: 
+    version: 2.1.5
+- bundler: 
+    version: 0.9.26
+- culerity: 
+    version: 0.2.10
+- nokogiri: 
+    version: 1.4.2
+- ffi: 
+    version: 0.6.3
+- json_pure: 
+    version: 1.4.3
+- selenium-webdriver: 
+    version: 0.0.24
+- capybara: 
+    version: 0.3.8
+- diff-lcs: 
+    version: 1.1.2
+- trollop: 
+    version: 1.16.2
+- gherkin: 
+    version: 2.0.2
+- term-ansicolor: 
+    version: 1.0.5
+- cucumber: 
+    version: 0.8.3
+- cucumber-rails: 
+    version: 0.3.2
+- database_cleaner: 
+    version: 0.5.2
+- dragonfly: 
+    version: 0.6.1
+- friendly_id: 
+    version: 3.0.6
+- hpricot: 
+    version: 0.8.2
+- mysql: 
+    version: 2.8.1
+- rack-cache: 
+    version: 0.5.2
+- thor: 
+    version: 0.13.6
+- railties: 
+    version: 3.0.0.beta4
+- rails: 
+    version: 3.0.0.beta4
+- rmagick: 
+    version: 2.13.1
+- rspec: 
+    version: 1.3.0
+- rspec-rails: 
+    version: 1.3.2
+- sqlite3-ruby: 
+    version: 1.3.0
+- will_paginate: 
+    version: 3.0.pre
+    source: 0
+hash: c373f9a86aaecf4318fae8d8d029c7c81142d710
+sources: 
+- Git: 
+    name: will_paginate
+    uri: git://github.com/mislav/will_paginate.git
+    branch: rails3
+    version: 3.0.pre
+    git: git://github.com/mislav/will_paginate.git
+    ref: 60aa1c7b2ef03ee7c7a5ed657efb479a69f7d128
+- Rubygems: 
+    uri: http://gemcutter.org
