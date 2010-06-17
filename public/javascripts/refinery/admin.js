@@ -14,7 +14,7 @@ init_interface = function() {
 
   $('.button, #editor_switch a').corner('6px');
   $('#editor_switch a').appendTo($('<span></span>').prependTo('#editor_switch').corner('6px'));
-  $('#page_container, .wym_box').corner('5px bottom').corner('5px tr');
+  $('#page_container, .wym_box').corner('5px bottom');
   $('.wym_box').corner('5px tr');
   $('.wym_iframe iframe').corner('2px');
   $('.form-actions:not(".form-actions-dialog")').corner('5px');
@@ -52,6 +52,12 @@ init_interface = function() {
 
   // focus first field in an admin form.
   $('form input[type=text]:first').focus();
+  
+  // ensure that the menu isn't wider than the page_container or else it looks silly to round that corner.
+  if (((last_item = $('#menu a:visible:last'))
+      .offset().left + last_item.outerWidth() - $('#menu').offset().left + 5) < $('#page_container').outerWidth()) {
+    $("#page_container:not('.login #page_container')").corner('5px tr');
+  }
 }
 
 init_delete_confirmations = function() {
