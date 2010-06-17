@@ -209,6 +209,9 @@ a#site_bar_refinery_cms_logo {
 body.login #page_container, body.login #site_bar_content, body.login #header_content {
   width: 590px;
 }
+body.login #page_container {
+  width: 560px;
+}
 body.login #header_content {
   background: #eaeaea;
 }
@@ -223,9 +226,6 @@ body.login #site_bar_content a#site_bar_refinery_cms_logo {
 }
 body.login #page_container div.remember_me label {
   display: inline;
-}
-body.login #content .field {
-  width: 550px;
 }
 body.login #page_container div.actions {
   margin-top: 12px;
@@ -323,6 +323,7 @@ body.login #header_content h1 {
   font-weight: normal;
   float: left;
   margin-right: 2px;
+  position: relative;
 }
 #menu a.active, #menu a:hover, #menu a:focus {
   background-color: white;
