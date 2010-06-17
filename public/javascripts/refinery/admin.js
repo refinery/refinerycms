@@ -200,7 +200,13 @@ init_tooltips = function(args){
   {
     // create tooltip on hover and destroy it on hoveroff.
     $(element).hover(function(e) {
-      tooltip = $("<div class='tooltip'></div>").html($(this).attr('tooltip')).corner('6px').appendTo($('#tooltip_container'));
+      tooltip = $("<div class='tooltip'><span></span></div>").corner('6px').appendTo($('#tooltip_container'));
+			tooltip.find("span").html($(this).attr('tooltip'));
+			tooltip.find("span").corner('6px');
+			
+			nib = $("<img src='/images/refinery/tooltip-nib.png' class='tooltip-nib'/>").appendTo($('#tooltip_container'));
+			
+      tooltip.css('opacity', '0');
       tooltip.css('maxWidth', '300px');
       tooltip.css('left', ((left = $(this).offset().left - (tooltip.outerWidth() / 2) + ($(this).outerWidth() / 2)) >= 0 ? left : 0));
 
@@ -208,11 +214,21 @@ init_tooltips = function(args){
         tooltip.css('left', window_width - tooltip.outerWidth);
       }
 
-      tooltip.css('top', $(this).offset().top - tooltip.outerHeight() - 8);
+      tooltip.css('top', $(this).offset().top - tooltip.outerHeight() - 2);
+			
+			nib.css('left', (tooltip.offset().left + (tooltip.outerWidth() / 2) - 5) + 'px');
+			nib.css('top', (tooltip.offset().top + tooltip.height() - 10) + 'px');
+			
+      //tooltip.show();
+			tooltip.animate({
+          top: ((tooltip.offset().top - 10) + 'px'),
+          opacity: 1
+      }, 200, 'swing' );
 
-      tooltip.show();
+
     }, function(e) {
       $('.tooltip').remove();
+			$('.tooltip-nib').remove();
     });
     if ($(element).attr('tooltip') == null) {
       $(element).attr({'tooltip': $(element).attr('title'), 'title': ''});

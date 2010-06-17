@@ -1107,10 +1107,19 @@ ul#plugins li {
 }
 /**** Tooltip Icons *****/
 .tooltip {
-  background: #22A7F2;
-  border: 4px solid #22A7F2;
-  padding: 5px;
+  background: #22a7f2;
+  border: 1px solid #1b82bd;
   word-wrap:break-word;
+	position: relative;
+}
+.tooltip span {
+	display: block;
+  padding: 10px;
+	border: 1px solid #62c1f6;
+}
+.tooltip-nib {
+	position: absolute;
+	z-index: 10001;
 }
 .tooltip, .tooltip * {
   color: white;
