@@ -30,21 +30,25 @@ label[for] {
   text-align: left;
   width: 990px;
 }
+#page_container {
+  width: 960px;
+  padding: 30px 15px;
+}
 #site_bar_content {
   margin-bottom: 0px;
 }
-#content .field {
-  width: 954px;
+#content .field, #content .form-actions {
+  width: 100%;
   position: relative;
 }
 #dialog_container #content .field, .dialog_container .field {
   width: auto;
 }
 input.widest, textarea.widest {
-  width: 100%;
+  width: 99%;
 }
 select.widest {
-  max-width: 100%;
+  max-width: 99%;
 }
 #actions {
   float: right;
@@ -199,7 +203,7 @@ a:hover {
 a#site_bar_refinery_cms_logo {
   left: 448px;
 }
-#content {
+#content, #page_container {
   background-color: white;
 }
 body.login #page_container, body.login #site_bar_content, body.login #header_content {
@@ -338,7 +342,7 @@ body.login #header_content h1 {
   text-align: center;
 }
 #content {
-  padding: 30px 15px;
+  padding: 0px;
 }
 pre {
   margin: 0;
@@ -1173,7 +1177,7 @@ input.button.close_dialog:active, a.button.close_dialog:active, #content a.butto
 }
 .field input[type=text], .field input[type=password], .field textarea {
   border: 1px solid #7f9db9;
-  padding: 3px 4px;
+  padding: 0.4% 0.5%;
 }
 /* ## Advanced Page Options --------------------------------------------- */
 #more_options{
