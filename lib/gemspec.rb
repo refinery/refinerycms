@@ -2,7 +2,7 @@
 version = File.read(File.expand_path('../../VERSION', __FILE__)).strip
 raise "Could not get version so gemspec can not be built" if version.nil?
 files = %w( .gems .gitignore .yardopts Gemfile Rakefile readme.md license.md VERSION todo.md public/.htaccess )
-%w(app bin config db lib public script test themes vendor).each do |dir|
+%w(app bin config db features lib public script test themes vendor).sort.each do |dir|
   files += Dir.glob("#{dir}/**/*")
 end
 files.reject!{|f| f =~ /^(public\/system)|(config\/database.yml$)|(vendor\/cache)/}
