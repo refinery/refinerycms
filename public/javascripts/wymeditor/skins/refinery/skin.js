@@ -28,7 +28,8 @@ WYMeditor.SKINS['refinery'] = {
 		});
 
     // adjust sizing
-    $(wym._box).css('width', $(wym._element).width()).find('.wym_iframe iframe').css('width', $(wym._box).width() - 2);
+    $(wym._box).css('width', $(wym._element).width() - 2)
+      .find('.wym_iframe iframe').css('width', $(wym._box).width() - 2);
 
 		$('.button').corner('6px');
 	}

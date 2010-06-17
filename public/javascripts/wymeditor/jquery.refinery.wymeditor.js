@@ -1200,8 +1200,9 @@ WYMeditor.editor.prototype.update = function() {
 
   // the replace function below makes the HTML source code easier to read when end users need to use this view.
   var html = this.xhtml().replace(/<\/([A-Za-z0-9]*)></g, function(m){return m.split(">").join(">\n")});
-  html = html.replace(/src=\"system\/images/, 'src="/system/images'); // make system/images calls absolute.
-  html = html.replace(/(replace_me_with_wym-[0-9]*)/, ""); // get rid of replace_me_with_wym id tags that were forgotten about.
+  html = html.replace(/src=\"system\/images/g, 'src="/system/images'); // make system/images calls absolute.
+  html = html.replace(/(\ ?id=(\"|\')replace_me_with_wym-[0-9]*(\"|\'))/g, ''); // get rid of replace_me_with_wym id tags that were forgotten about.
+  html = html.replace(/(\ ?id=(\"|\')last\_paste(\"|\'))/g, '') // get rid of id='last_page' that were forgotten about.
 
   $(this._element).val(html);
   $(this._box).find(this._options.htmlValSelector).not('.hasfocus').val(html); //#147
@@ -4843,10 +4844,8 @@ WYMeditor.WymClassSafari.prototype.paste = function(sData) {
         $(container).after("<p>" + sTmp + "</p>");
       }
     }
-  } 
-  
-  
-  
+  }
+
   else {
     for(x = 0; x < aP.length; x++) {
       sTmp = aP[x];

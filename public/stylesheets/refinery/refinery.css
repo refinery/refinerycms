@@ -30,21 +30,25 @@ label[for] {
   text-align: left;
   width: 990px;
 }
+#page_container {
+  width: 960px;
+  padding: 30px 15px;
+}
 #site_bar_content {
   margin-bottom: 0px;
 }
-#content .field {
-  width: 954px;
+#content .field, #content .form-actions {
+  width: 100%;
   position: relative;
 }
 #dialog_container #content .field, .dialog_container .field {
   width: auto;
 }
 input.widest, textarea.widest {
-  width: 100%;
+  width: 99%;
 }
 select.widest {
-  max-width: 100%;
+  max-width: 99%;
 }
 #actions {
   float: right;
@@ -70,11 +74,11 @@ select.widest {
   padding: 9px 12px 9px 36px;
 }
 #actions li a:hover {
-  text-decoration: underline;
   background-color: #cae7fb;
 }
 #actions li a:active {
-  background-color: #cbdeff;
+  background-color: #22A7F2;
+	color: white;
 }
 #actions li {
   margin-top: 10px;
@@ -199,11 +203,14 @@ a:hover {
 a#site_bar_refinery_cms_logo {
   left: 448px;
 }
-#content {
+#content, #page_container {
   background-color: white;
 }
 body.login #page_container, body.login #site_bar_content, body.login #header_content {
   width: 590px;
+}
+body.login #page_container {
+  width: 560px;
 }
 body.login #header_content {
   background: #eaeaea;
@@ -219,9 +226,6 @@ body.login #site_bar_content a#site_bar_refinery_cms_logo {
 }
 body.login #page_container div.remember_me label {
   display: inline;
-}
-body.login #content .field {
-  width: 550px;
 }
 body.login #page_container div.actions {
   margin-top: 12px;
@@ -319,6 +323,7 @@ body.login #header_content h1 {
   font-weight: normal;
   float: left;
   margin-right: 2px;
+  position: relative;
 }
 #menu a.active, #menu a:hover, #menu a:focus {
   background-color: white;
@@ -338,7 +343,7 @@ body.login #header_content h1 {
   text-align: center;
 }
 #content {
-  padding: 30px 15px;
+  padding: 0px;
 }
 pre {
   margin: 0;
@@ -462,7 +467,7 @@ pre {
   display: none;
 }
 .tree ul li > div:hover {
-  background-color: #fff5b1;
+  background-color: #EAEAEA;
 }
 #records ul#sortable_list {
   margin-top: 6px;
@@ -564,7 +569,7 @@ textarea {
   margin-bottom: 20px;
 }
 .submit {
-  border: auto;
+  border: inherit;
   width: auto;
   height: 25px;
 }
@@ -577,7 +582,7 @@ label, .label_with_help {
 }
 label.input_label {
   font-size: inherit;
-  margin-bottom: inerhit;
+  margin-bottom: inherit;
   display: inline;
   font-weight: normal;
   margin-top: inherit;
@@ -893,7 +898,7 @@ ul#menu.reordering_menu li a {
   right: 0px;
   top: 0px;
 }
-form input:submit {
+form input[type=submit]:hover {
   background: #65c3f7;
 }
 .clearfix:after {
@@ -1173,31 +1178,25 @@ input.button.close_dialog:active, a.button.close_dialog:active, #content a.butto
 }
 .field input[type=text], .field input[type=password], .field textarea {
   border: 1px solid #7f9db9;
-  padding: 3px 4px;
+  padding: 0.4% 0.5%;
 }
 /* ## Advanced Page Options --------------------------------------------- */
 #more_options{
   overflow:hidden;
 }
 .hemisquare {
-  padding: 10px;
+  padding: 1%;
   margin: 0px 0px;
   border: 1px solid #ddd;
   float: left;
-  width: 448px;
+  width: 47.25%;
 }
 .hemisquare.right_side {
-  margin-left: 10px;
+  margin-left: 1.5%;
   padding-bottom: 8px;
 }
 #content .hemisquare h2 {
   margin-top: 0px;
-}
-.hemisquare input[type=text] {
-  width: 97%;
-}
-.hemisquare textarea {
-  width: 95%;
 }
 .hemisquare input, .hemisquare textarea, .hemisquare select {
   margin: 7px 0px;
@@ -1210,7 +1209,7 @@ input.button.close_dialog:active, a.button.close_dialog:active, #content a.butto
 }
 #content .hemisquare .field {
   margin: 0 0 20px 0px;
-  width: 100%;
+  width: 98%;
 }
 .hemisquare small {
   font-size: 0.9em;
@@ -1223,6 +1222,9 @@ input.button.close_dialog:active, a.button.close_dialog:active, #content a.butto
   margin-left: 3px;
   border-bottom: 1px dotted #727272;
   cursor: help;
+}
+#draft_field {
+	float: right;
 }
 .nothing_selected {
   border-bottom: 1px dotted #727272;
