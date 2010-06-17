@@ -349,7 +349,6 @@ Gem::Specification.new do |s|
     'themes/hemingway/views/layouts',
     'themes/hemingway/views/layouts/application.html.erb',
     'vendor/plugins',
-    'vendor/plugins/acts_as_indexed',
     'vendor/plugins/acts_as_tree',
     'vendor/plugins/acts_as_tree/init.rb',
     'vendor/plugins/acts_as_tree/lib',
