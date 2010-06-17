@@ -23,3 +23,6 @@ config/database.yml.example
 refinerycms.gemspec
 vendor/cache
 *.rbc
+*.swp
+*~
+capybara*-html
