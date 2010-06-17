@@ -151,7 +151,7 @@ class Page < ActiveRecord::Base
   # If it's a draft or is set to not show in the menu it will return false.
   # If any of the page's ancestors aren't to be shown in the menu then this page is not either.
   def in_menu?
-    self.live? && self.show_in_menu? && !self.ancestors.any? { |a| !a.in_menu? }
+    self.live? && self.show_in_menu? && self.ancestors.all? { |a| a.in_menu? }
   end
 
   # Returns true if this page is the home page or links to it.
