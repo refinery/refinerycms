@@ -140,6 +140,7 @@ namespace :refinery do
 
     # update the script directory for any fixes that have happened.
     FileUtils::cp_r Dir[Refinery.root.join('script', '*').to_s], Rails.root.join('script').to_s
+    FileUtils::chmod_R 0755, Rails.root.join('script').to_s
 
     # add the cucumber environment file if it's not present
     unless (cucumber_environment_file = Rails.root.join('config', 'environments', 'cucumber.rb')).exist?
