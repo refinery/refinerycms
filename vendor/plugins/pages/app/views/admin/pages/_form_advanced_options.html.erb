@@ -1,3 +1,7 @@
+<p id='draft_field'>
+  <%= f.check_box :draft %>
+  <%= f.label :draft, "Save as Draft", :class => "stripped" %>
+</p>
 <p>
   <%= link_to "&raquo; Hide/Show Advanced Options", "#",
               :id => 'toggle_advanced_options',
@@ -54,9 +58,4 @@
   </div>
 
   <%= render :partial => "form_advanced_options_seo", :locals => {:f => f} if RefinerySetting.find_or_set(:pages_advanced_options_include_seo, true) %>
-</div>
-<div class='field'>
-  <label>Draft</label>
-  <%= f.check_box :draft %>
-  <%= f.label :draft, "Save as Draft", :class => "stripped" %>
 </div>
