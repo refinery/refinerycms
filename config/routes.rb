@@ -71,6 +71,6 @@ Refinerycms::Application.routes.draw do |map|
   #map.connect 'refinery/*path', :controller => 'admin/base', :action => 'error_404'
 
   # Marketable URLs
-  #map.connect '*path', :controller => 'pages', :action => 'show'
+  # match '*path' => 'pages#show'
 
 end
