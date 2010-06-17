@@ -49,7 +49,7 @@ class RefinerySetting < ActiveRecord::Base
   def self.find_or_set(name, the_value, options={})
     # Try to get the value from cache first.
     scoping = (options = {:scoping => nil}.merge(options))[:scoping]
-    unless (value = cache_read(name, scoping)).present? && !value.is_a?(FalseClass) # false returns !present? :(
+    if (value = cache_read(name, scoping)).nil?
       # if the database is not up to date yet then it won't know about scoping..
       if self.column_names.include?('scoping')
         setting = find_or_create_by_name_and_scoping(:name => name.to_s, :value => the_value, :scoping => scoping)
@@ -67,7 +67,7 @@ class RefinerySetting < ActiveRecord::Base
 
   def self.[](name)
     # Try to get the value from cache first.
-    unless (value = cache_read(name, (scoping = nil))).present? && !value.is_a?(FalseClass) # false returns !present? :(
+    if (value = cache_read(name, (scoping = nil))).nil?
       # Not found in cache, try to find the record itself and cache whatever we find.
       value = cache_write(name, scoping, self.find_by_name(name.to_s).try(:value))
     end
@@ -88,7 +88,7 @@ class RefinerySetting < ActiveRecord::Base
   REPLACEMENTS = {"true" => true, "false" => false}
 
   def value
-    if (current_value = self[:value]).present? # a FalseClass false is okay here.
+    unless (current_value = self[:value]).nil?
       # This bit handles true and false so that true and false are actually returned
       # not "0" and "1"
       REPLACEMENTS.each do |current, new_value|

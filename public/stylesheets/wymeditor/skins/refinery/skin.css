@@ -183,7 +183,7 @@
 .wym_skin_refinery .wym_buttons .wym_tools_class .wym_classes li a {
   text-indent: 0px;
   background-image: none;
-  background-repeat: none;
+  background-repeat: no-repeat;
   background-position: 0px 0px;
   width: auto;
 }
