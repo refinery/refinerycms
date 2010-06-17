@@ -66,14 +66,13 @@
   pre     { background-image: url('/images/wymeditor/skins/refinery/iframe/lbl-pre.png'); }
 
 /* specific HTML elements */
-  caption   { text-align: left; }
-  img     { margin-right: 5px;
-        border-style: solid;
-        border-color: gray;
-        border-width: 0; }
-  a img   { border: 1px dotted blue !important; }
-  acronym   { border: 1px solid gray; }
-  span    { background-color: #eef; }
+	caption	 { text-align: left; }
+	img		 { margin-right: 5px;
+				border-style: solid;
+				border-color: gray;
+				border-width: 0; }
+	a img	 { border: 1px dotted blue !important; }
+	acronym	 { border: 1px solid gray; }
 
 /* visual feedback for non-valid nesting of elements*/
   h1 h1, h1 h2, h1 h3, h1 h4, h1 h5, h1 h6, h1 p, h1 pre, h1 address,

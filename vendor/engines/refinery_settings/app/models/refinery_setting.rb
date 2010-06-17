@@ -9,6 +9,22 @@ class RefinerySetting < ActiveRecord::Base
     12
   end
 
+  after_save do |setting|
+    cache_write(setting.name, setting.try(:scoping), setting.value)
+  end
+
+  def self.cache_key(name, scoping)
+    "#{Refinery.base_cache_key}_refinery_setting_#{name}#{"_with_scoping_#{scoping}" if scoping.present?}"
+  end
+
+  def self.cache_read(name, scoping)
+    Rails.cache.read(cache_key(name, scoping))
+  end
+
+  def self.cache_write(name, scoping, value)
+    Rails.cache.write(cache_key(name, scoping), value)
+  end
+
   # prettier version of the name.
   # site_name becomes Site Name
   def title
@@ -31,18 +47,33 @@ class RefinerySetting < ActiveRecord::Base
   end
 
   def self.find_or_set(name, the_value, options={})
-    # if the database is not up to date yet then it won't know about scoping..
-    if self.column_names.include?('scoping')
-      options = {:scoping => nil}.merge(options)
-      find_or_create_by_name_and_scoping(:name => name.to_s, :value => the_value, :scoping => options[:scoping]).value
-    else
-      find_or_create_by_name(:name => name.to_s, :value => the_value).value
+    # Try to get the value from cache first.
+    scoping = (options = {:scoping => nil}.merge(options))[:scoping]
+    if (value = cache_read(name, scoping)).nil?
+      # if the database is not up to date yet then it won't know about scoping..
+      if self.column_names.include?('scoping')
+        setting = find_or_create_by_name_and_scoping(:name => name.to_s, :value => the_value, :scoping => scoping)
+      else
+        setting = find_or_create_by_name(:name => name.to_s, :value => the_value)
+      end
+
+      # cache whatever we found including its scope in the name, even if it's nil.
+      cache_write(name, scoping, (value = setting.try(:value)))
     end
+
+    # Return what we found.
+    value
   end
 
   def self.[](name)
-    setting = self.find_by_name(name.to_s)
-    setting.value unless setting.nil?
+    # Try to get the value from cache first.
+    if (value = cache_read(name, (scoping = nil))).nil?
+      # Not found in cache, try to find the record itself and cache whatever we find.
+      value = cache_write(name, scoping, self.find_by_name(name.to_s).try(:value))
+    end
+
+    # Return what we found.
+    value
   end
 
   def self.[]=(name, value)
@@ -57,7 +88,7 @@ class RefinerySetting < ActiveRecord::Base
   REPLACEMENTS = {"true" => true, "false" => false}
 
   def value
-    if (current_value = self[:value]).present?
+    unless (current_value = self[:value]).nil?
       # This bit handles true and false so that true and false are actually returned
       # not "0" and "1"
       REPLACEMENTS.each do |current, new_value|
