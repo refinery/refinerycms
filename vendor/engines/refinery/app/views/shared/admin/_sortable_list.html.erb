@@ -2,7 +2,7 @@
 <% unless params[(list_id ||= "sortable_list").to_sym].blank? %>
   <script type='text/javascript'>
     $(document).ready(function(){
-      <%= "list_reorder.enable_reordering();" if (defined?(continue_reordering) ? continue_reordering : true) -%>
+      <%= "list_reorder.enable_reordering();" if (defined?(continue_reordering) ? continue_reordering == "true" : true) %>
       init_tooltips();
     });
   </script>

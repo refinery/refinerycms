@@ -52,10 +52,10 @@ init_interface = function() {
 
   // focus first field in an admin form.
   $('form input[type=text]:first').focus();
-  
+
   // ensure that the menu isn't wider than the page_container or else it looks silly to round that corner.
-  if (((last_item = $('#menu a:visible:last'))
-      .offset().left + last_item.outerWidth() - $('#menu').offset().left + 5) < $('#page_container').outerWidth()) {
+  var last_item_offset = (last_item = $('#menu a:visible:last')).offset();
+  if (last_item_offset && ((last_item_offset.left + last_item.outerWidth() - $('#menu').offset().left + 5) < $('#page_container').outerWidth())) {
     $("#page_container:not('.login #page_container')").corner('5px tr');
   }
 }
@@ -175,8 +175,8 @@ submit_and_continue = function(e, redirect_to) {
   $('#flash_container .errorExplanation').remove();
 
   $.post($('#continue_editing').get(0).form.action, $($('#continue_editing').get(0).form).serialize(), function(data) {
-    if ((flash_container = $('#flash_container')).length > 0) {
-      flash_container.html(data);
+    if (($flash_container = $('#flash_container')).length > 0) {
+      $flash_container.html(data);
 
       $('#flash').css('width', 'auto').fadeIn(550);
 
@@ -206,19 +206,57 @@ init_tooltips = function(args){
   {
     // create tooltip on hover and destroy it on hoveroff.
     $(element).hover(function(e) {
-      tooltip = $("<div class='tooltip'></div>").html($(this).attr('tooltip')).corner('6px').appendTo($('#tooltip_container'));
-      tooltip.css('maxWidth', '300px');
-      tooltip.css('left', ((left = $(this).offset().left - (tooltip.outerWidth() / 2) + ($(this).outerWidth() / 2)) >= 0 ? left : 0));
+      $(this).oneTime(350, 'tooltip', $.proxy(function() {
+        $('.tooltip').remove();
+  			tooltip = $("<div class='tooltip'><div><span></span></div></div>").corner('6px').appendTo('#tooltip_container');
+  			tooltip.find("span").html($(this).attr('tooltip')).corner('6px');
 
-      if ((offset = tooltip.offset() != null) && (offset.left + tooltip.outerWidth) > (window_width = $(window).width())) {
-        tooltip.css('left', window_width - tooltip.outerWidth);
-      }
+  			nib = $("<img src='/images/refinery/tooltip-nib.png' class='tooltip-nib'/>").appendTo('#tooltip_container');
 
-      tooltip.css('top', $(this).offset().top - tooltip.outerHeight() - 8);
+        tooltip.css({
+          'opacity': 0
+          , 'maxWidth': '300px'
+          , 'left': ((left = $(this).offset().left - (tooltip.outerWidth() / 2) + ($(this).outerWidth() / 2)) >= 0 ? left : 0)
+        });
 
-      tooltip.show();
-    }, function(e) {
-      $('.tooltip').remove();
+        if ((offset = tooltip.offset() != null) && (offset.left + tooltip.outerWidth) > (window_width = $(window).width())) {
+          tooltip.css('left', window_width - tooltip.outerWidth);
+        }
+
+        tooltip.css({
+          'top': $(this).offset().top - tooltip.outerHeight() - 2
+        })
+
+  			nib.css({
+  			  'left': tooltip.offset().left + (tooltip.outerWidth() / 2) - 5
+  			  , 'top': tooltip.offset().top + tooltip.height()
+  			  , 'opacity': 0
+  		  });
+  		  
+		    tooltip.animate({
+          top: tooltip.offset().top - 10
+          , opacity: 1
+        }, 200, 'swing');
+        nib.animate({
+          top: nib.offset().top - 10
+          , opacity: 1
+        }, 200);
+      }, $(this)));
+      
+    }, function(e) {  
+      $(this).stopTime('tooltip');
+      (tooltip = $('.tooltip')).css('z-index', '-1').animate({
+        top: tooltip.offset().top - 20
+        , opacity: 0
+      }, 125, 'swing', function(){
+        $(this).remove();
+      });
+      (nib = $('.tooltip-nib')).animate({
+        top: nib.offset().top - 20
+        , opacity: 0
+      }, 125, 'swing', function(){
+        $(this).remove();
+      })
     });
     if ($(element).attr('tooltip') == null) {
       $(element).attr({'tooltip': $(element).attr('title'), 'title': ''});
@@ -661,19 +699,31 @@ var list_reorder = {
   , enable_reordering: function(e) {
     if(e) { e.preventDefault(); }
 
-    list_reorder.sortable_list.find('li').each(function(index, li) {
-      if ($('ul', li).length) { return; }
-      $("<ul></ul>").appendTo(li);
-    });
-
-    list_reorder.sortable_list.add(list_reorder.sortable_list.find('ul')).sortable({
-      'connectWith': $(list_reorder.sortable_list.find('ul'))
-      , 'tolerance': 'pointer'
+    sortable_options = {
+      'tolerance': 'pointer'
       , 'placeholder': 'placeholder'
       , 'cursor': 'drag'
       , 'items': 'li'
       , 'axis': 'y'
+    };
+
+    $(list_reorder.sortable_list).find('li').each(function(index, li) {
+      if ($('ul', li).length) { return; }
+      $("<ul></ul>").appendTo(li);
     });
+
+    if (list_reorder.tree && !$.browser.msie) {
+      $(list_reorder.sortable_list).parent().nestedSortable($.extend(sortable_options, {
+        'maxDepth': 1
+        , 'placeholderElement': 'li'
+      }));
+      $(list_reorder.sortable_list).addClass('ui-sortable');
+    } else {
+      $(list_reorder.sortable_list).sortable(sortable_options);
+    }
+
+    $('#site_bar, #header > *:not(script)').fadeTo(500, 0.3);
+    $('#actions *:not("#reorder_action_done, #reorder_action")').not($('#reorder_action_done').parents('li, ul')).fadeTo(500, 0.55);
 
     $('#reorder_action').hide();
     $('#reorder_action_done').show();
@@ -713,19 +763,28 @@ var list_reorder = {
       serialized += "&continue_reordering=false";
 
       $.post(list_reorder.update_url, serialized, function(data) {
-        $(list_reorder.sortable_list.get(0)).html(data);
+        $(list_reorder.sortable_list).html(data);
 
-        $(list_reorder.sortable_list).removeClass('reordering').sortable('destroy');
-
-        $('#reorder_action_done').hide();
-        $('#reorder_action').show();
+        list_reorder.restore_controls(e);
       });
     } else {
-      $(list_reorder.sortable_list).removeClass('reordering').sortable('destroy');
+      list_reorder.restore_controls(e);
+    }
+  }
 
+  , restore_controls: function(e) {
+    if (list_reorder.tree && !$.browser.msie) {
+      list_reorder.sortable_list.add(list_reorder.sortable_list.find('ul, li')).draggable('destroy');
+    } else {
+      $(list_reorder.sortable_list).sortable('destroy');
+    }
+    $(list_reorder.sortable_list).removeClass('reordering, ui-sortable');
+
+    $('#site_bar, #header > *:not(script)').fadeTo(250, 1);
+    $('#actions *:not("#reorder_action_done, #reorder_action")').not($('#reorder_action_done').parents('li, ul')).fadeTo(250, 1, function() {
       $('#reorder_action_done').hide();
       $('#reorder_action').show();
-    }
+    });
   }
 }
 

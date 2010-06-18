@@ -1,7 +1,6 @@
 WYMeditor.SKINS['refinery'] = {
 
 	init: function(wym) {
-
 		//render following sections as buttons
 		$(wym._box).find(wym._options.toolsSelector)
 			.addClass('wym_buttons');
@@ -32,5 +31,10 @@ WYMeditor.SKINS['refinery'] = {
       .find('.wym_iframe iframe').css('width', $(wym._box).width() - 2);
 
 		$('.button').corner('6px');
+		$(".wym_area_top li>a").corner("2px");
+
+		$(".wym_skin_refinery").animate({
+			opacity: 1
+		}, 800);
 	}
 };

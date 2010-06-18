@@ -442,32 +442,34 @@ pre {
 #records ul.empty {
   display: none;
 }
-/* order of specificity: class rules need to be ruled important otherwise id based rules override them */
-.tree ul li ul {
+#records.tree ul li ul, .tree ul li ul {
   padding: 0;
 }
-.tree ul li {
-  margin: 0 !important;
-  padding: 4px 0 0 40px !important;
+#records.tree ul li, .tree ul li {
+  margin: 0px;
+  padding: 4px 0 0 40px;
   background: url('/images/refinery/branch.gif') no-repeat 15px 0px;
 }
-.tree .on-hover, #pagination ul.tree a:hover, #pagination .tree .on {
+#records.tree .on-hover, #pagination ul.tree a:hover, #pagination .tree .on {
   background: url('/images/refinery/branch.gif') no-repeat 15px 0px;
 }
-.tree ul li.branch_start {
+#records.tree ul li.branch_start, .tree ul li.branch_start {
   background-image: url('/images/refinery/branch-start.gif');
 }
-.tree ul li.branch_end {
+#records.tree ul li.branch_end, .tree ul li.branch_end {
   background-image: url('/images/refinery/branch-end.gif');
 }
 #records.tree li {
-  line-height: 19px;
+  line-height: 22px;
 }
-.tree li span.spacing {
+#records.tree li span.spacing, .tree li span.spacing {
   display: none;
 }
-.tree ul li > div:hover {
+#records.tree ul li > div:hover, .tree ul li > div:hover {
   background-color: #EAEAEA;
+}
+#records.tree ul.ui-sortable li div:hover, .tree ul.ui-sortable li div:hover {
+  background-color: inherit;
 }
 #records ul#sortable_list {
   margin-top: 6px;
@@ -486,15 +488,19 @@ pre {
 #content #records > .ui-sortable {
   padding-top: 10px;
 }
-#content .ui-sortable li ul{
-  padding: 6px 10px 12px 40px !important;
+#content #records ul.ui-sortable li ul, #content .ui-sortable li ul {
+  padding: 6px 10px 12px 40px;
 }
-#content ul.ui-sortable li {
-  background: #E6E5DC !important;
+#content #records ul.ui-sortable li, #content ul.ui-sortable li {
+  background-image: none;
+  background-color: #EAEAEA;
   cursor: move;
-  border: 1px solid #b7b7a8;
-  margin-bottom: 2px !important;
-  padding: 3px 0px 0px 3px !important;
+  border: 1px solid #ccc;
+  margin-bottom: 6px;
+  padding: 3px 0px 0px 3px;
+}
+#content #records ul.ui-sortable li ul li, #content ul.ui-sortable li {
+  background-color: #F2F2F2;
 }
 #content ul.ui-sortable li ul.empty {
   display: block;
@@ -513,10 +519,21 @@ pre {
   min-height: 12px;
 }
 #content .ui-sortable li.placeholder {
-  opacity: 0.4;
+  opacity: 0.7;
   border-width: 2px;
   border-style: dashed;
   height: 38px;
+}
+#content .tree .ui-sortable li.placeholder {
+  height: 6px;
+  border-width: 2px;
+  position: absolute;
+  background: #22A7F2 !important;
+}
+#content #records .tree .ui-sortable li.helper, #content .tree .ui-sortable li.helper {
+  opacity: 0.5 !important;
+}
+#content .tree .ui-sortable li.below-placeholder {
 }
 #content ul.ui-sortable li.ui-sortable-helper {
   height: 38px !important;
@@ -574,7 +591,6 @@ textarea {
   height: 25px;
 }
 label, .label_with_help {
-  font-size: 110%;
   margin-bottom: 5px;
   font-weight: bold;
   margin-top: 20px;
@@ -618,13 +634,17 @@ label.stripped {
 .record .title span {
   line-height: 30px;
 }
-#records  .actions {
-  float: right;
+#records .record {
+  position: relative;
+}
+#records .actions {
+  position: absolute;
+  right: 0px;
+  top: 0px;
   width: 120px;
   text-align: right;
   display: block;
 }
-
 .published {
   width: 25px;
   text-align: center;
@@ -632,7 +652,7 @@ label.stripped {
 #content .actions a {
   display: block;
   float: right;
-  margin: 3px;
+  margin: 3px 3px 3px 3px;
   line-height: inherit;
   border-bottom: 0px none;
 }
@@ -893,7 +913,7 @@ ul#menu.reordering_menu li a {
 .search_form {
   position: relative;
 }
-.search_form .button {
+.search_form .button, .search_form .button-wrapper {
   position: absolute;
   right: 0px;
   top: 0px;
@@ -984,6 +1004,14 @@ ul#page_parts_controls img {
 }
 #page_part_editors {
   clear:left;
+}
+a#toggle_advanced_options {
+	background: url('/images/refinery/icons/page_white_gear.png') no-repeat 0px 3px;
+	padding: 5px 5px 5px 22px;
+	border-bottom: none;
+}
+a#toggle_advanced_options:hover {
+	border-bottom:1px dotted #727272;
 }
 /* dialog stuff */
 #dialog_frame {
@@ -1112,10 +1140,19 @@ ul#plugins li {
 }
 /**** Tooltip Icons *****/
 .tooltip {
-  background: #22A7F2;
-  border: 4px solid #22A7F2;
-  padding: 5px;
+  background: #22a7f2;
+  border: 1px solid #1b82bd;
   word-wrap:break-word;
+	position: relative;
+}
+.tooltip span {
+	display: block;
+  padding: 10px;
+	border: 1px solid #62c1f6;
+}
+.tooltip-nib {
+	position: absolute;
+	z-index: 10001;
 }
 .tooltip, .tooltip * {
   color: white;
@@ -1127,7 +1164,7 @@ ul#plugins li {
   margin: 0px 0px 45px 0px;
   height: 300px;
 }
-input.button, a.button, #content a.button {
+input.button, a.button, #content a.button, span.button-wrapper, span.button-wrapper input {
   cursor:pointer;
   background: #22a7f2;
   color: white;
@@ -1140,23 +1177,30 @@ input.button, a.button, #content a.button {
   margin-top: 0px;
   margin-bottom: 0px;
 }
+/* for those pesky IE browsers */
+span.button-wrapper {
+	padding: 0px;
+}
+span.button-wrapper input {
+	display: inherit;
+}
 /* fixes firefox display */
 input.button {
   padding-bottom: 3px;
 }
-input.button.close_dialog, a.button.close_dialog, #content a.button.close_dialog {
+input.button.close_dialog, a.button.close_dialog, #content a.button.close_dialog, span.button-wrapper.close_dialog, span.button-wrapper.close_dialog input {
   background: #bcbcbc;
 }
-input.button:hover, a.button:hover, #content a.button:hover {
+input.button:hover, a.button:hover, #content a.button:hover, span.button-wrapper:hover, span.button-wrapper:hover input {
   background:#62bef2;
 }
-input.button.close_dialog:hover, a.button.close_dialog:hover, #content a.button.close_dialog:hover {
+input.button.close_dialog:hover, a.button.close_dialog:hover, #content a.button.close_dialog:hover, span.button-wrapper.close_dialog:hover {
   background: #cdcdcd;
 }
-input.button:active, a.button:active, #content a.button:active {
-  background:#004a8f;
+input.button:active, a.button:active, #content a.button:active, span.button-wrapper:active, span.button-wrapper:active input {
+  background: #004a8f;
 }
-input.button.close_dialog:active, a.button.close_dialog:active, #content a.button.close_dialog:active {
+input.button.close_dialog:active, a.button.close_dialog:active, #content a.button.close_dialog:active, span.button-wrapper.close_dialog:active,  span.button-wrapper.close_dialog:active input {
   background: #808080;
 }
 .wym_dialog a.button.wym_cancel.close_dialog {
@@ -1185,15 +1229,14 @@ input.button.close_dialog:active, a.button.close_dialog:active, #content a.butto
   overflow:hidden;
 }
 .hemisquare {
-  padding: 1%;
+  padding: 10px;
   margin: 0px 0px;
-  border: 1px solid #ddd;
+  margin-left: 10px;
   float: left;
-  width: 47.25%;
+  width: 45%;
 }
 .hemisquare.right_side {
-  margin-left: 1.5%;
-  padding-bottom: 8px;
+	float: right;
 }
 #content .hemisquare h2 {
   margin-top: 0px;
