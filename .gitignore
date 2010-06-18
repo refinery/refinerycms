@@ -25,5 +25,5 @@ vendor/cache
 *.rbc
 *.swp
 *~
-capybara*-html
+capybara-*html
 .idea
