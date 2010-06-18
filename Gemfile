@@ -23,11 +23,16 @@ gem 'rails',           '= 2.3.8'
 gem 'rmagick',         '~> 2.12.2'
 gem 'will_paginate',   '= 2.3.14', :require => 'will_paginate'
 
-group :cucumber do
+group :test do
   gem 'rspec'
   gem 'rspec-rails'
+  gem 'factory_girl'
+end
+
+group :cucumber do
   gem 'cucumber-rails'
   gem 'capybara'
+  gem 'factory_girl'
   gem 'database_cleaner'
   gem 'launchy'
 end

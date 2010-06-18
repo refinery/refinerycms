@@ -5,7 +5,12 @@ def create_user
     "password" => "greenandjuicy",
     "password_confirmation" => "greenandjuicy"
   }
-  @user ||= User.create(params)
+  if @user.nil?
+    @user = User.create(params)
+    Refinery::Plugins.registered.each do |plugin|
+      @user.plugins.create(:title => plugin.title)
+    end
+  end
 end
 
 def login
