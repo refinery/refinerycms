@@ -5,7 +5,7 @@ Given /^I have pages titled (.+)$/ do |titles|
 end
 
 Given /^I have no pages$/ do
-  Page.delete_all  
+  Page.delete_all
 end
 
 Then /^I should have ([0-9]+) pages?$/ do |count|

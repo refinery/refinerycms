@@ -2,7 +2,7 @@ Gem::Specification.new do |s|
   s.name              = %q{refinerycms}
   s.version           = %q{0.9.7.dev}
   s.description       = %q{A beautiful open source Ruby on Rails content manager for small business. Easy to extend, easy to use, lightweight and all wrapped up in a super slick UI.}
-  s.date              = %q{2010-06-17}
+  s.date              = %q{2010-06-19}
   s.summary           = %q{A beautiful open source Ruby on Rails content manager for small business.}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
@@ -135,6 +135,7 @@ Gem::Specification.new do |s|
     'public/images/refinery/icons/page_add.png',
     'public/images/refinery/icons/page_edit.png',
     'public/images/refinery/icons/page_white_edit.png',
+    'public/images/refinery/icons/page_white_gear.png',
     'public/images/refinery/icons/page_white_put.png',
     'public/images/refinery/icons/star.png',
     'public/images/refinery/icons/tick.png',
@@ -155,6 +156,7 @@ Gem::Specification.new do |s|
     'public/images/refinery/page_bg.png',
     'public/images/refinery/resolve_digital_footer_logo.png',
     'public/images/refinery/text_field_background.png',
+    'public/images/refinery/tooltip-nib.png',
     'public/images/wymeditor',
     'public/images/wymeditor/skins',
     'public/images/wymeditor/skins/refinery',
@@ -208,7 +210,9 @@ Gem::Specification.new do |s|
     'public/javascripts/jquery/GPL-LICENSE.txt',
     'public/javascripts/jquery/jquery.corner.js',
     'public/javascripts/jquery/jquery.html5-placeholder-shim.js',
+    'public/javascripts/jquery/jquery.nestedsortables.js',
     'public/javascripts/jquery/jquery.textTruncate.js',
+    'public/javascripts/jquery/jquery.timers.js',
     'public/javascripts/jquery/MIT-LICENSE.txt',
     'public/javascripts/jquery-min.js',
     'public/javascripts/jquery-ui-custom-min.js',
