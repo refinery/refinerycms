@@ -4,14 +4,13 @@
   elsif page === @pages.first
     "branch_start"
   end
+  title = h(page.title)
+  title << "<em>(hidden)</em>" unless page.show_in_menu?
+  title << "<em>(draft)</em>" if page.draft?
 -%>
 <li class='record<%= " #{branch}" %>' id="<%= dom_id(page) -%>">
   <div class='clearfix'>
-    <span class='title'>
-      <%= h page.title %>
-      <%= "<em>(hidden)</em>" unless page.show_in_menu? %>
-      <%= "<em>(draft)</em>" if page.draft? %>
-    </span>
+    <span class='title'><%= title %></span>
 
     <span class='actions'>
       <%= link_to refinery_icon_tag('application_go.png'), page.url,
