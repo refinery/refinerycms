@@ -54,8 +54,8 @@ init_interface = function() {
   $('form input[type=text]:first').focus();
 
   // ensure that the menu isn't wider than the page_container or else it looks silly to round that corner.
-  if (((last_item = $('#menu a:visible:last'))
-      .offset().left + last_item.outerWidth() - $('#menu').offset().left + 5) < $('#page_container').outerWidth()) {
+  offset = (last_item = $('#menu a:visible:last')).offset();
+  if (offset && (offset().left + last_item.outerWidth() - $('#menu').offset().left + 5) < $('#page_container').outerWidth()) {
     $("#page_container:not('.login #page_container')").corner('5px tr');
   }
 }
@@ -209,9 +209,9 @@ init_tooltips = function(args){
       tooltip = $("<div class='tooltip'><span></span></div>").corner('6px').appendTo($('#tooltip_container'));
 			tooltip.find("span").html($(this).attr('tooltip'));
 			tooltip.find("span").corner('6px');
-			
+
 			nib = $("<img src='/images/refinery/tooltip-nib.png' class='tooltip-nib'/>").appendTo($('#tooltip_container'));
-			
+
       tooltip.css('opacity', '0');
       tooltip.css('maxWidth', '300px');
       tooltip.css('left', ((left = $(this).offset().left - (tooltip.outerWidth() / 2) + ($(this).outerWidth() / 2)) >= 0 ? left : 0));
@@ -221,15 +221,20 @@ init_tooltips = function(args){
       }
 
       tooltip.css('top', $(this).offset().top - tooltip.outerHeight() - 2);
-			
-			nib.css('left', (tooltip.offset().left + (tooltip.outerWidth() / 2) - 5) + 'px');
-			nib.css('top', (tooltip.offset().top + tooltip.height() - 10) + 'px');
-			
+
+      nib.css({
+        'top': parseInt(tooltip.css('top')) + tooltip.outerHeight()
+        , 'left': (tooltip.offset().left + (tooltip.outerWidth() / 2) - 5)
+      });
+			nib.animate({
+			  top: (tooltip.offset().top + tooltip.height() - 10)
+		  }, 200, 'swing')
+
       //tooltip.show();
 			tooltip.animate({
-          top: ((tooltip.offset().top - 10) + 'px'),
+          top: (tooltip.offset().top - 10),
           opacity: 1
-      }, 200, 'swing' );
+      }, 200, 'swing');
 
 
     }, function(e) {
@@ -757,7 +762,7 @@ var list_reorder = {
       $(list_reorder.sortable_list).sortable('destroy');
     }
     $(list_reorder.sortable_list).removeClass('reordering, ui-sortable');
-    
+
     $('#site_bar, #header > *:not(script)').fadeTo(250, 1);
     $('#actions *:not("#reorder_action_done, #reorder_action")').not($('#reorder_action_done').parents('li, ul')).fadeTo(250, 1, function() {
       $('#reorder_action_done').hide();
