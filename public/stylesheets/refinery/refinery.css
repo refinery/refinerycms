@@ -460,7 +460,7 @@ pre {
   background-image: url('/images/refinery/branch-end.gif');
 }
 #records.tree li {
-  line-height: 19px;
+  line-height: 22px;
 }
 #records.tree li span.spacing, .tree li span.spacing {
   display: none;
@@ -634,13 +634,17 @@ label.stripped {
 .record .title span {
   line-height: 30px;
 }
-#records  .actions {
-  float: right;
+#records .record {
+  position: relative;
+}
+#records .actions {
+  position: absolute;
+  right: 0px;
+  top: 0px;
   width: 120px;
   text-align: right;
   display: block;
 }
-
 .published {
   width: 25px;
   text-align: center;
@@ -648,7 +652,7 @@ label.stripped {
 #content .actions a {
   display: block;
   float: right;
-  margin: 3px;
+  margin: 3px 3px 3px 3px;
   line-height: inherit;
   border-bottom: 0px none;
 }
@@ -1009,7 +1013,6 @@ a#toggle_advanced_options {
 a#toggle_advanced_options:hover {
 	border-bottom:1px dotted #727272;
 }
-
 /* dialog stuff */
 #dialog_frame {
   width:952px;
