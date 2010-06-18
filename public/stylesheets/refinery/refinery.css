@@ -442,32 +442,34 @@ pre {
 #records ul.empty {
   display: none;
 }
-/* order of specificity: class rules need to be ruled important otherwise id based rules override them */
-.tree ul li ul {
+#records.tree ul li ul, .tree ul li ul {
   padding: 0;
 }
-.tree ul li {
-  margin: 0 !important;
-  padding: 4px 0 0 40px !important;
+#records.tree ul li, .tree ul li {
+  margin: 0px;
+  padding: 4px 0 0 40px;
   background: url('/images/refinery/branch.gif') no-repeat 15px 0px;
 }
-.tree .on-hover, #pagination ul.tree a:hover, #pagination .tree .on {
+#records.tree .on-hover, #pagination ul.tree a:hover, #pagination .tree .on {
   background: url('/images/refinery/branch.gif') no-repeat 15px 0px;
 }
-.tree ul li.branch_start {
+#records.tree ul li.branch_start, .tree ul li.branch_start {
   background-image: url('/images/refinery/branch-start.gif');
 }
-.tree ul li.branch_end {
+#records.tree ul li.branch_end, .tree ul li.branch_end {
   background-image: url('/images/refinery/branch-end.gif');
 }
 #records.tree li {
   line-height: 19px;
 }
-.tree li span.spacing {
+#records.tree li span.spacing, .tree li span.spacing {
   display: none;
 }
-.tree ul li > div:hover {
+#records.tree ul li > div:hover, .tree ul li > div:hover {
   background-color: #EAEAEA;
+}
+#records.tree ul.ui-sortable li div:hover, .tree ul.ui-sortable li div:hover {
+  background-color: inherit;
 }
 #records ul#sortable_list {
   margin-top: 6px;
@@ -486,15 +488,19 @@ pre {
 #content #records > .ui-sortable {
   padding-top: 10px;
 }
-#content .ui-sortable li ul{
-  padding: 6px 10px 12px 40px !important;
+#content #records ul.ui-sortable li ul, #content .ui-sortable li ul {
+  padding: 6px 10px 12px 40px;
 }
-#content ul.ui-sortable li {
-  background: #E6E5DC !important;
+#content #records ul.ui-sortable li, #content ul.ui-sortable li {
+  background-image: none;
+  background-color: #EAEAEA;
   cursor: move;
-  border: 1px solid #b7b7a8;
-  margin-bottom: 2px !important;
-  padding: 3px 0px 0px 3px !important;
+  border: 1px solid #ccc;
+  margin-bottom: 6px;
+  padding: 3px 0px 0px 3px;
+}
+#content #records ul.ui-sortable li ul li, #content ul.ui-sortable li {
+  background-color: #F2F2F2;
 }
 #content ul.ui-sortable li ul.empty {
   display: block;
@@ -513,10 +519,21 @@ pre {
   min-height: 12px;
 }
 #content .ui-sortable li.placeholder {
-  opacity: 0.4;
+  opacity: 0.7;
   border-width: 2px;
   border-style: dashed;
   height: 38px;
+}
+#content .tree .ui-sortable li.placeholder {
+  height: 6px;
+  border-width: 2px;
+  position: absolute;
+  background: #22A7F2 !important;
+}
+#content #records .tree .ui-sortable li.helper, #content .tree .ui-sortable li.helper {
+  opacity: 0.5 !important;
+}
+#content .tree .ui-sortable li.below-placeholder {
 }
 #content ul.ui-sortable li.ui-sortable-helper {
   height: 38px !important;

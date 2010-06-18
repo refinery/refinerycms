@@ -52,7 +52,7 @@ init_interface = function() {
 
   // focus first field in an admin form.
   $('form input[type=text]:first').focus();
-  
+
   // ensure that the menu isn't wider than the page_container or else it looks silly to round that corner.
   if (((last_item = $('#menu a:visible:last'))
       .offset().left + last_item.outerWidth() - $('#menu').offset().left + 5) < $('#page_container').outerWidth()) {
@@ -677,19 +677,31 @@ var list_reorder = {
   , enable_reordering: function(e) {
     if(e) { e.preventDefault(); }
 
-    list_reorder.sortable_list.find('li').each(function(index, li) {
-      if ($('ul', li).length) { return; }
-      $("<ul></ul>").appendTo(li);
-    });
-
-    list_reorder.sortable_list.add(list_reorder.sortable_list.find('ul')).sortable({
-      'connectWith': $(list_reorder.sortable_list.find('ul'))
-      , 'tolerance': 'pointer'
+    sortable_options = {
+      'tolerance': 'pointer'
       , 'placeholder': 'placeholder'
       , 'cursor': 'drag'
       , 'items': 'li'
       , 'axis': 'y'
+    };
+
+    $(list_reorder.sortable_list).find('li').each(function(index, li) {
+      if ($('ul', li).length) { return; }
+      $("<ul></ul>").appendTo(li);
     });
+
+    if (list_reorder.tree) {
+      $(list_reorder.sortable_list).parent().nestedSortable($.extend(sortable_options, {
+        'maxDepth': 1
+        , 'placeholderElement': 'li'
+      }));
+      $(list_reorder.sortable_list).addClass('ui-sortable');
+    } else {
+      $(list_reorder.sortable_list).sortable(sortable_options);
+    }
+
+    $('#site_bar, #header > *:not(script)').fadeTo(500, 0.3);
+    $('#actions *:not("#reorder_action_done, #reorder_action")').not($('#reorder_action_done').parents('li, ul')).fadeTo(500, 0.55);
 
     $('#reorder_action').hide();
     $('#reorder_action_done').show();
@@ -729,19 +741,28 @@ var list_reorder = {
       serialized += "&continue_reordering=false";
 
       $.post(list_reorder.update_url, serialized, function(data) {
-        $(list_reorder.sortable_list.get(0)).html(data);
+        $(list_reorder.sortable_list).html(data);
 
-        $(list_reorder.sortable_list).removeClass('reordering').sortable('destroy');
-
-        $('#reorder_action_done').hide();
-        $('#reorder_action').show();
+        list_reorder.restore_controls(e);
       });
     } else {
-      $(list_reorder.sortable_list).removeClass('reordering').sortable('destroy');
+      list_reorder.restore_controls(e);
+    }
+  }
 
+  , restore_controls: function(e) {
+    if (list_reorder.tree) {
+      list_reorder.sortable_list.add(list_reorder.sortable_list.find('ul, li')).draggable('destroy');
+    } else {
+      $(list_reorder.sortable_list).sortable('destroy');
+    }
+    $(list_reorder.sortable_list).removeClass('reordering, ui-sortable');
+    
+    $('#site_bar, #header > *:not(script)').fadeTo(250, 1);
+    $('#actions *:not("#reorder_action_done, #reorder_action")').not($('#reorder_action_done').parents('li, ul')).fadeTo(250, 1, function() {
       $('#reorder_action_done').hide();
       $('#reorder_action').show();
-    }
+    });
   }
 }
 
