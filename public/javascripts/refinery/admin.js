@@ -245,10 +245,16 @@ init_tooltips = function(args){
       
     }, function(e) {  
       $(this).stopTime('tooltip');
-      $('.tooltip, .tooltip-nib').css('z-index', '-1').animate({
-          top: tooltip.offset().top - 20
+      (tooltip = $('.tooltip')).css('z-index', '-1').animate({
+        top: tooltip.offset().top - 20
         , opacity: 0
-      }, 150, 'swing', function(){
+      }, 125, 'swing', function(){
+        $(this).remove();
+      });
+      (nib = $('.tooltip-nib')).animate({
+        top: nib.offset().top - 20
+        , opacity: 0
+      }, 125, 'swing', function(){
         $(this).remove();
       })
     });
