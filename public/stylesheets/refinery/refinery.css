@@ -985,6 +985,15 @@ ul#page_parts_controls img {
 #page_part_editors {
   clear:left;
 }
+a#toggle_advanced_options {
+	background: url('/images/refinery/icons/page_white_gear.png') no-repeat 0px 3px;
+	padding: 5px 5px 5px 22px;
+	border-bottom: none;
+}
+a#toggle_advanced_options:hover {
+	border-bottom:1px dotted #727272;
+}
+
 /* dialog stuff */
 #dialog_frame {
   width:952px;
