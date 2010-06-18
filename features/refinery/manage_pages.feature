@@ -28,3 +28,13 @@ Feature: Manage Pages
     And I press "Save"
     Then I should see "Title can't be blank"
     And I should have 0 pages
+
+  Scenario: Create Duplicate Page
+    Given I am a logged in user
+    And I only have pages titled Home, About
+    When I go to the list of pages
+    And I follow "Create New Page"
+    And I fill in "Title" with "About"
+    And I press "Save"
+    Then I should have 3 pages
+    And I should have a page at "/about--2"
