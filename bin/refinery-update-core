@@ -114,9 +114,9 @@ unless rails_root.nil? or rails_root.length == 0
     end
     puts ""
     puts "=== ACTION REQUIRED ==="
-    puts "Please run rake db:migrate to ensure your database is at the correct version."
-    puts "Please also run rake gems:install to ensure you have the currently specified gems." if environment_updated
-
+    puts "Please run 'rake db:migrate' to ensure your database is at the correct version."
+    puts "Please also run 'rake gems:install' to ensure you have the currently specified gems." if environment_updated
+    puts "It may also be necessary to run 'bundle install' in order to get the latest gems."
     puts ""
   end
 else
