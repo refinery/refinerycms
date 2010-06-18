@@ -30,7 +30,7 @@ unless (app_path = ARGV.shift).nil? or app_path.length == 0
     FileUtils::rm File.join(%W(#{rails_root} lib gemspec.rb)) if File.exists?(File.join(%W(#{rails_root} lib gemspec.rb)))
 
     # add in the config files
-    for config in %w(database amazon_s3 rackspace_cloudfiles)
+    %w(database amazon_s3 rackspace_cloudfiles).each do |config|
       FileUtils::move File.join(%W(#{rails_root} config #{config}.yml.example)), File.join(%W(#{rails_root} config #{config}.yml))
 
       # figure out the app name from the install path and swap out your_local_xxx with this name.
