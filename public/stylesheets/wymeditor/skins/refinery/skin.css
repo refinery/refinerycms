@@ -25,7 +25,7 @@
 
 /*WYM_HTML*/
     .wym_skin_refinery .wym_html         { width: 100%;}
-    .wym_skin_refinery .wym_html textarea    { width: 100% !important; height:200px; border: 1px solid gray; background: white;  }
+    .wym_skin_refinery .wym_html textarea    { width: 100% !important; height:400px; border: 1px solid gray; background: white;  }
 
 /*WYM_IFRAME*/
     .wym_skin_refinery .wym_iframe       { width: 100%; }
