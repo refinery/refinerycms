@@ -5,14 +5,14 @@ login: &login
 development:
   bucket_name: your_local_amazon_s3
   <<: *login
-  distribution_domain: 
+  distribution_domain: s3.amazonaws.com/your_local_amazon_s3
 
 test:
   bucket_name: your_test_amazon_s3
   <<: *login
-  distribution_domain: 
+  distribution_domain: s3.amazonaws.com/your_test_amazon_s3
 
 production:
   bucket_name: your_production_amazon_s3
   <<: *login
-  distribution_domain: 
+  distribution_domain: s3.amazonaws.com/your_production_amazon_s3
