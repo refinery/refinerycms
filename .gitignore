@@ -17,7 +17,6 @@ db/*.sqlite3
 /refinerycms-*.gem
 public/javascripts/cache
 public/stylesheets/cache
-config/database.yml.example
 .yardoc/
 refinerycms.gemspec
 vendor/cache
