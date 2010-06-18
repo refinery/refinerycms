@@ -180,6 +180,8 @@ var wymeditor_boot_options = $.extend({
       $('.wym_loading_overlay').remove();
       WYMeditor.loaded();
     }
+    
+    $('.field.hide-overflow').removeClass('hide-overflow').css('height', 'auto');
   }
 }, custom_wymeditor_boot_options);
 
@@ -189,6 +191,11 @@ WYMeditor.loaded = function(){};
 $(function()
 {
   wymeditor_inputs = $('.wymeditor');
-  wymeditor_inputs.hide();
+  wymeditor_inputs.each(function(input) {
+    if ((containing_field = $(this).parents('.field')).get(0).style.height == '') {
+      containing_field.addClass('hide-overflow').css('height', $(this).outerHeight() - containing_field.offset().top + $(this).offset().top + 45);
+    }
+    $(this).hide();
+  });
   wymeditor_inputs.wymeditor(wymeditor_boot_options);
 });
