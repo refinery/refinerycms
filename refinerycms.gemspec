@@ -2,7 +2,7 @@ Gem::Specification.new do |s|
   s.name              = %q{refinerycms}
   s.version           = %q{0.9.7.dev}
   s.description       = %q{A beautiful open source Ruby on Rails content manager for small business. Easy to extend, easy to use, lightweight and all wrapped up in a super slick UI.}
-  s.date              = %q{2010-06-17}
+  s.date              = %q{2010-06-18}
   s.summary           = %q{A beautiful open source Ruby on Rails content manager for small business.}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
@@ -28,9 +28,6 @@ Gem::Specification.new do |s|
     'app/controllers/application_controller.rb',
     'app/helpers',
     'app/helpers/application_helper.rb',
-    'app/models',
-    'app/views',
-    'app/views/layouts',
     'bin/refinery',
     'bin/refinery-update-core',
     'config/amazon_s3.yml.example',
@@ -503,10 +500,6 @@ Gem::Specification.new do |s|
     'vendor/engines/pages/app/views/admin/pages',
     'vendor/engines/pages/app/views/admin/pages/_form.html.erb',
     'vendor/engines/pages/app/views/admin/pages/_form_advanced_options.html.erb',
-    'vendor/engines/pages/app/views/admin/pages/_form_advanced_options.html.erb.BACKUP.19834.erb',
-    'vendor/engines/pages/app/views/admin/pages/_form_advanced_options.html.erb.BASE.19834.erb',
-    'vendor/engines/pages/app/views/admin/pages/_form_advanced_options.html.erb.LOCAL.19834.erb',
-    'vendor/engines/pages/app/views/admin/pages/_form_advanced_options.html.erb.REMOTE.19834.erb',
     'vendor/engines/pages/app/views/admin/pages/_form_advanced_options_seo.html.erb',
     'vendor/engines/pages/app/views/admin/pages/_form_new_page_parts.html.erb',
     'vendor/engines/pages/app/views/admin/pages/_form_page_parts.html.erb',
