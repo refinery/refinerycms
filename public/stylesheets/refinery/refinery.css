@@ -909,7 +909,7 @@ ul#menu.reordering_menu li a {
 .search_form {
   position: relative;
 }
-.search_form .button {
+.search_form .button, .search_form .button-wrapper {
   position: absolute;
   right: 0px;
   top: 0px;
@@ -1161,7 +1161,7 @@ ul#plugins li {
   margin: 0px 0px 45px 0px;
   height: 300px;
 }
-input.button, a.button, #content a.button {
+input.button, a.button, #content a.button, span.button-wrapper, span.button-wrapper input {
   cursor:pointer;
   background: #22a7f2;
   color: white;
@@ -1174,23 +1174,30 @@ input.button, a.button, #content a.button {
   margin-top: 0px;
   margin-bottom: 0px;
 }
+/* for those pesky IE browsers */
+span.button-wrapper {
+	padding: 0px;
+}
+span.button-wrapper input {
+	display: inherit;
+}
 /* fixes firefox display */
 input.button {
   padding-bottom: 3px;
 }
-input.button.close_dialog, a.button.close_dialog, #content a.button.close_dialog {
+input.button.close_dialog, a.button.close_dialog, #content a.button.close_dialog, span.button-wrapper.close_dialog, span.button-wrapper.close_dialog input {
   background: #bcbcbc;
 }
-input.button:hover, a.button:hover, #content a.button:hover {
+input.button:hover, a.button:hover, #content a.button:hover, span.button-wrapper:hover, span.button-wrapper:hover input {
   background:#62bef2;
 }
-input.button.close_dialog:hover, a.button.close_dialog:hover, #content a.button.close_dialog:hover {
+input.button.close_dialog:hover, a.button.close_dialog:hover, #content a.button.close_dialog:hover, span.button-wrapper.close_dialog:hover {
   background: #cdcdcd;
 }
-input.button:active, a.button:active, #content a.button:active {
-  background:#004a8f;
+input.button:active, a.button:active, #content a.button:active, span.button-wrapper:active, span.button-wrapper:active input {
+  background: #004a8f;
 }
-input.button.close_dialog:active, a.button.close_dialog:active, #content a.button.close_dialog:active {
+input.button.close_dialog:active, a.button.close_dialog:active, #content a.button.close_dialog:active, span.button-wrapper.close_dialog:active,  span.button-wrapper.close_dialog:active input {
   background: #808080;
 }
 .wym_dialog a.button.wym_cancel.close_dialog {
