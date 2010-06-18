@@ -712,7 +712,7 @@ var list_reorder = {
       $("<ul></ul>").appendTo(li);
     });
 
-    if (list_reorder.tree) {
+    if (list_reorder.tree && !$.browser.msie) {
       $(list_reorder.sortable_list).parent().nestedSortable($.extend(sortable_options, {
         'maxDepth': 1
         , 'placeholderElement': 'li'
@@ -773,7 +773,7 @@ var list_reorder = {
   }
 
   , restore_controls: function(e) {
-    if (list_reorder.tree) {
+    if (list_reorder.tree && !$.browser.msie) {
       list_reorder.sortable_list.add(list_reorder.sortable_list.find('ul, li')).draggable('destroy');
     } else {
       $(list_reorder.sortable_list).sortable('destroy');
