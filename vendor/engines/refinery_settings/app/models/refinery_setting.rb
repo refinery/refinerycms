@@ -10,7 +10,7 @@ class RefinerySetting < ActiveRecord::Base
   end
 
   after_save do |setting|
-    cache_write(setting.name, setting.try(:scoping), setting.value)
+    setting.class.cache_write(setting.name, setting.try(:scoping), setting.value)
   end
 
   def self.cache_key(name, scoping)
