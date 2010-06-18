@@ -122,6 +122,8 @@
 
 		// help IE *yet again*.
 		if ($.browser.msie && $.browser.version < 9) {
+		  elements = elements.not('.button');
+		  /*
 			(inputs = elements.find('input.button')).removeClass('button');
 			elements = elements.not('input');
 			inputs.each(function() {
@@ -130,6 +132,7 @@
 				wrapper.append($(this));
 			});
 			elements = elements.add($('span.button-wrapper'));
+			*/
 		}
 
 		return elements.each(function(index) {
