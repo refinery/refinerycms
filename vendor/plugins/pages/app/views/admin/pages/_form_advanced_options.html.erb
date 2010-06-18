@@ -1,12 +1,14 @@
-<p id='draft_field'>
-  <%= f.check_box :draft %>
-  <%= f.label :draft, "Save as Draft", :class => "stripped" %>
-</p>
-<p>
-  <%= link_to "Advanced Options", "#",
-              :id => 'toggle_advanced_options',
-              :rel => 'Click to access meta tag settings and menu options' %>
-</p>
+<div id='more_options_field'>
+  <p>
+    <%= link_to "Advanced Options", "#",
+                :id => 'toggle_advanced_options',
+                :rel => 'Click to access meta tag settings and menu options' %>
+  </p>
+  <span id='draft_field'>
+    <%= f.check_box :draft %>
+    <%= f.label :draft, "Save as Draft", :class => "stripped" %>
+  </span>
+</div>
 <div id='more_options' style="display:none;">
   <div class="hemisquare">
     <h2>Page Options</h2>
