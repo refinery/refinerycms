@@ -54,8 +54,8 @@ init_interface = function() {
   $('form input[type=text]:first').focus();
 
   // ensure that the menu isn't wider than the page_container or else it looks silly to round that corner.
-  var last_item = $('#menu a:visible:last');
-  if (last_item.offset() && ((last_item.offset().left + last_item.outerWidth() - $('#menu').offset().left + 5) < $('#page_container').outerWidth())) {
+  var last_item_offset = (last_item = $('#menu a:visible:last')).offset();
+  if (last_item_offset && ((last_item_offset.left + last_item.outerWidth() - $('#menu').offset().left + 5) < $('#page_container').outerWidth())) {
     $("#page_container:not('.login #page_container')").corner('5px tr');
   }
 }
