@@ -38,6 +38,6 @@
                              'refinery/admin',
                              :cache => (js_caching ? "cache/admin" : false) %>
 
-  <%= "<!--[if lt IE 8]>#{stylesheet_link_tag 'refinery/ie'}<![endif]-->" if request.env['HTTP_USER_AGENT'] =~ /MSIE/ %>
+  <%= "<!--[if lt IE 8]>#{stylesheet_link_tag 'refinery/ie'}<![endif]-->".html_safe if request.env['HTTP_USER_AGENT'] =~ /MSIE/ %>
   <%= yield :head %>
 </head>
