@@ -9,6 +9,22 @@ class RefinerySetting < ActiveRecord::Base
     12
   end
 
+  after_save do |setting|
+    setting.class.cache_write(setting.name, setting.try(:scoping), setting.value)
+  end
+
+  def self.cache_key(name, scoping)
+    "#{Refinery.base_cache_key}_refinery_setting_#{name}#{"_with_scoping_#{scoping}" if scoping.present?}"
+  end
+
+  def self.cache_read(name, scoping)
+    Rails.cache.read(cache_key(name, scoping))
+  end
+
+  def self.cache_write(name, scoping, value)
+    Rails.cache.write(cache_key(name, scoping), value)
+  end
+
   # prettier version of the name.
   # site_name becomes Site Name
   def title
