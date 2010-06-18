@@ -48,7 +48,7 @@
     .wym_skin_refinery .wym_section h2,
     .wym_skin_refinery .wym_section h3     { padding: 1px 3px; margin: 0; }
     .wym_skin_refinery .wym_section a      { padding: 0 3px; display: block; text-decoration: none; color: black; }
-    .wym_skin_refinery .wym_section a:hover, .wym_skin_refinery .wym_section a.selected  { background-color: yellow; }
+    .wym_skin_refinery .wym_section a:hover, .wym_skin_refinery .wym_section a.selected  { background-color: #BCBCBC; }
     /*hide section titles by default*/
     .wym_skin_refinery .wym_section h2     { display: none; }
     /*disable any margin-collapse*/

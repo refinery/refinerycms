@@ -32,5 +32,6 @@ WYMeditor.SKINS['refinery'] = {
       .find('.wym_iframe iframe').css('width', $(wym._box).width() - 2);
 
 		$('.button').corner('6px');
+		$(".wym_area_top li>a").corner("2px");
 	}
 };
