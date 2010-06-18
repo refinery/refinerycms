@@ -175,8 +175,8 @@ submit_and_continue = function(e, redirect_to) {
   $('#flash_container .errorExplanation').remove();
 
   $.post($('#continue_editing').get(0).form.action, $($('#continue_editing').get(0).form).serialize(), function(data) {
-    if ((flash_container = $('#flash_container')).length > 0) {
-      flash_container.html(data);
+    if (($flash_container = $('#flash_container')).length > 0) {
+      $flash_container.html(data);
 
       $('#flash').css('width', 'auto').fadeIn(550);
 
@@ -206,40 +206,51 @@ init_tooltips = function(args){
   {
     // create tooltip on hover and destroy it on hoveroff.
     $(element).hover(function(e) {
-      tooltip = $("<div class='tooltip'><span></span></div>").corner('6px').appendTo($('#tooltip_container'));
-			tooltip.find("span").html($(this).attr('tooltip'));
-			tooltip.find("span").corner('6px');
+      $(this).oneTime(350, 'tooltip', $.proxy(function() {
+        $('.tooltip').remove();
+  			tooltip = $("<div class='tooltip'><div><span></span></div></div>").corner('6px').appendTo('#tooltip_container');
+  			tooltip.find("span").html($(this).attr('tooltip')).corner('6px');
 
-			nib = $("<img src='/images/refinery/tooltip-nib.png' class='tooltip-nib'/>").appendTo($('#tooltip_container'));
+  			nib = $("<img src='/images/refinery/tooltip-nib.png' class='tooltip-nib'/>").appendTo('#tooltip_container');
 
-      tooltip.css('opacity', '0');
-      tooltip.css('maxWidth', '300px');
-      tooltip.css('left', ((left = $(this).offset().left - (tooltip.outerWidth() / 2) + ($(this).outerWidth() / 2)) >= 0 ? left : 0));
+        tooltip.css({
+          'opacity': 0
+          , 'maxWidth': '300px'
+          , 'left': ((left = $(this).offset().left - (tooltip.outerWidth() / 2) + ($(this).outerWidth() / 2)) >= 0 ? left : 0)
+        });
 
-      if ((offset = tooltip.offset() != null) && (offset.left + tooltip.outerWidth) > (window_width = $(window).width())) {
-        tooltip.css('left', window_width - tooltip.outerWidth);
-      }
+        if ((offset = tooltip.offset() != null) && (offset.left + tooltip.outerWidth) > (window_width = $(window).width())) {
+          tooltip.css('left', window_width - tooltip.outerWidth);
+        }
 
-      tooltip.css('top', $(this).offset().top - tooltip.outerHeight() - 2);
+        tooltip.css({
+          'top': $(this).offset().top - tooltip.outerHeight() - 2
+        })
 
-      nib.css({
-        'top': parseInt(tooltip.css('top')) + tooltip.outerHeight()
-        , 'left': (tooltip.offset().left + (tooltip.outerWidth() / 2) - 5)
-      });
-			nib.animate({
-			  top: (tooltip.offset().top + tooltip.height() - 10)
-		  }, 200, 'swing')
-
-      //tooltip.show();
-			tooltip.animate({
-          top: (tooltip.offset().top - 10),
-          opacity: 1
-      }, 200, 'swing');
-
-
-    }, function(e) {
-      $('.tooltip').remove();
-			$('.tooltip-nib').remove();
+  			nib.css({
+  			  'left': tooltip.offset().left + (tooltip.outerWidth() / 2) - 5
+  			  , 'top': tooltip.offset().top + tooltip.height()
+  			  , 'opacity': 0
+  		  });
+  		  
+		    tooltip.animate({
+          top: tooltip.offset().top - 10
+          , opacity: 1
+        }, 200, 'swing');
+        nib.animate({
+          top: nib.offset().top - 10
+          , opacity: 1
+        }, 200);
+      }, $(this)));
+      
+    }, function(e) {  
+      $(this).stopTime('tooltip');
+      $('.tooltip, .tooltip-nib').css('z-index', '-1').animate({
+          top: tooltip.offset().top - 20
+        , opacity: 0
+      }, 150, 'swing', function(){
+        $(this).remove();
+      })
     });
     if ($(element).attr('tooltip') == null) {
       $(element).attr({'tooltip': $(element).attr('title'), 'title': ''});
