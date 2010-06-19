@@ -52,12 +52,7 @@ var wymeditor_boot_options = $.extend({
       + "</a>"
     + "</li>"
 
-  , containersItems: [
-    {'name': 'h1', 'title':'Heading_1', 'css':'wym_containers_h1'}
-    ,{'name': 'h2', 'title':'Heading_2', 'css':'wym_containers_h2'}
-    ,{'name': 'h3', 'title':'Heading_3', 'css':'wym_containers_h3'}
-    ,{'name': 'p', 'title':'Paragraph', 'css':'wym_containers_p'}
-  ]
+  , containersItems: wymeditorContainersItems
 
   , classesHtml: "<li class='wym_tools_class'>"
                  + "<a href='#' name='" + WYMeditor.APPLY_CLASS + "' title='"+ titleize(WYMeditor.APPLY_CLASS) +"'></a>"
