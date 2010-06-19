@@ -19,14 +19,13 @@
           thumbnail_sizes = RefinerySetting.find_or_set(:image_thumbnails, {})
           (sizes = RefinerySetting.find_or_set(:image_dialogue_sizes, [:small, :medium, :large])).each_with_index do |size, index|
             if thumbnail_sizes.keys.include?(size) and (pixels = thumbnail_sizes[size]).present?
-              modifier = ((index + 1) * 10) + 10
+              pixels.to_s.gsub!(/[<>=]/, '')
         -%>
-              <li<%= " class='selected'" if size == :medium %> style="padding-top: <%= (((sizes.length * 10) - modifier) / 2) + 10 %>px">
-                <%= link_to "&nbsp;", "##{size}",
+              <li id="image_dialog_size_<%= index %>" class="image_dialog_size <%= 'selected' if size == :medium %>">
+                <%= link_to size.to_s, "##{size}",
                             :rel => size.to_s,
-                            :title => "#{size} image",
-                            :tooltip => "#{size} image",
-                            :style => "width: #{modifier}px; height: #{modifier}px;" %>
+                            :title   => "#{size} image (#{pixels} px)",
+                            :tooltip => "#{size} image (#{pixels} px)" %>
               </li>
         <%  end
           end -%>
