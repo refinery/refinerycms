@@ -18,9 +18,9 @@ gem 'unicorn', :group => :development
 gem 'acts_as_indexed', '= 0.6.2', :require => 'acts_as_indexed', :git => 'git://github.com/parndt/acts_as_indexed.git', :branch => 'master'
 gem 'authlogic',       '= 2.1.5', :require => 'authlogic'
 gem 'friendly_id',     '= 3.0.6', :require => 'friendly_id'
-gem 'hpricot',         '= 0.8.2', :require => 'hpricot'
 gem 'rails',           '= 2.3.8'
 gem 'rmagick',         '~> 2.12.2'
+gem 'truncate_html',   '= 0.3.2', :require => 'truncate_html'
 gem 'will_paginate',   '= 2.3.14', :require => 'will_paginate'
 
 group :test do

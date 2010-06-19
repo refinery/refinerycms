@@ -20,9 +20,9 @@
 
     unless section[:html].blank?
       unless section[:title]
-        section[:html] = "<div class='clearfix' id='#{dom_id}'>#{section[:html]}</div>"
+        section[:html] = "<div class='clearfix' id='#{dom_id}'>#{section[:html]}</div>".html_safe
       else
-        section[:html] = "<h1 id='#{dom_id}'>#{section[:html]}</h1>"
+        section[:html] = "<h1 id='#{dom_id}'>#{section[:html]}</h1>".html_safe
       end
     else
       css << "no_#{dom_id}"
