@@ -26,4 +26,13 @@ class Admin::DashboardController < Admin::BaseController
     @recent_inquiries = Inquiry.latest(activity_show_limit)
   end
 
+  def disable_upgrade_message
+    RefinerySetting.find(:first, :conditions => {
+        :name => 'show_internet_explorer_upgrade_message',
+        :scoping => 'refinery'
+      }
+    ).update_attribute(:value, false)
+    render :nothing => true
+  end
+
 end

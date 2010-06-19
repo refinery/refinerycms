@@ -14,3 +14,7 @@
   padding-left: 8px;
   padding-right: 8px;
 }
+body.login input.larger, body.login input.larger:focus {
+  background-image: none !important;
+  padding: 0px;
+}

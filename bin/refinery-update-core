@@ -87,7 +87,7 @@ unless rails_root.nil? or rails_root.length == 0
   FileUtils.cp File.join(%W(#{refinery_root} public javascripts jquery.js)), File.join(%W(#{rails_root} public javascripts jquery.js)) if File.exist?(File.join(%W(#{refinery_root} public javascripts jquery.js)))
   FileUtils.cp File.join(%W(#{refinery_root} public javascripts jquery-min.js)), File.join(%W(#{rails_root} public javascripts jquery-min.js)) if File.exist?(File.join(%W(#{refinery_root} public javascripts jquery-min.js)))
   FileUtils.cp File.join(%W(#{refinery_root} public javascripts jquery-ui.js)), File.join(%W(#{rails_root} public javascripts jquery-ui.js)) if File.exist?(File.join(%W(#{refinery_root} public javascripts jquery-ui.js)))
-  FileUtils.cp File.join(%W(#{refinery_root} public javascripts jquery-ui-custom-min.js)), File.join(%W(#{rails_root} public javascripts if File.exist?(File.join(%W(#{refinery_root} public javascripts jquery-ui-custom-min.js))) jquery-ui-custom-min.js))
+  FileUtils.cp File.join(%W(#{refinery_root} public javascripts jquery-ui-custom-min.js)), File.join(%W(#{rails_root} public javascripts jquery-ui-custom-min.js)) if File.exist?(File.join(%W(#{refinery_root} public javascripts jquery-ui-custom-min.js)))
 
   # backup app's config file and replace it, if required.
   environment_updated = false
@@ -114,9 +114,9 @@ unless rails_root.nil? or rails_root.length == 0
     end
     puts ""
     puts "=== ACTION REQUIRED ==="
-    puts "Please run rake db:migrate to ensure your database is at the correct version."
-    puts "Please also run rake gems:install to ensure you have the currently specified gems." if environment_updated
-
+    puts "Please run 'rake db:migrate' to ensure your database is at the correct version."
+    puts "Please also run 'rake gems:install' to ensure you have the currently specified gems." if environment_updated
+    puts "It may also be necessary to run 'bundle install' in order to get the latest gems."
     puts ""
   end
 else
