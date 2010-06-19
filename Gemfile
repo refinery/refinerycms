@@ -21,10 +21,10 @@ gem 'rails',          '3.0.0.beta4'
 gem 'rmagick',        '~> 2.13.1', :require => 'RMagick'
 gem 'rack-cache',     :require => 'rack/cache'
 gem 'dragonfly'
-gem 'hpricot',        '~> 0.8'
 gem 'acts_as_indexed', '= 0.6.2', :git => 'git://github.com/parndt/acts_as_indexed.git', :branch => 'rails3'
 gem 'authlogic',      '~> 2.1.5'
 gem 'friendly_id',    '~> 3.0'
+gem 'truncate_html',  '= 0.3.2'
 gem 'will_paginate',  '3.0.pre',:git => "git://github.com/mislav/will_paginate.git", :branch => 'rails3'
 #===REFINERY END OF REQUIRED GEMS===
 
@@ -33,11 +33,16 @@ gem 'will_paginate',  '3.0.pre',:git => "git://github.com/mislav/will_paginate.g
 #gem 'refinerycms',    '= 0.9.7.dev'
 #===END OF REFINERY GEM INSTALL REQUIREMENTS===
 
-group :cucumber do
+group :test do
   gem 'rspec'
   gem 'rspec-rails'
+  gem 'factory_girl'
+end
+
+group :cucumber do
   gem 'cucumber-rails'
   gem 'capybara'
+  gem 'factory_girl'
   gem 'database_cleaner'
   gem 'launchy'
 end

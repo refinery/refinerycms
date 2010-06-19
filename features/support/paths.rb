@@ -9,10 +9,10 @@ module NavigationHelpers
     case page_name
 
     when /the home\s?page/
-      '/'
+      root_url
 
     when /the list of pages/
-      '/refinery/pages'
+      admin_pages_path
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
