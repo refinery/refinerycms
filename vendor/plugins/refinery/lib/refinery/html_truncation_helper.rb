@@ -1,4 +1,3 @@
-require "truncate_html"
 module Refinery::HtmlTruncationHelper
 
   # Like the Rails _truncate_ helper but doesn't break HTML tags, entities, and words.
