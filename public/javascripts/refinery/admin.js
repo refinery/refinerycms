@@ -232,6 +232,7 @@ init_tooltips = function(args){
         nib.css({
           'opacity': 0
         });
+
         if (tooltip_offset = tooltip.offset()) {
           nib.css({
             'left': tooltip_offset.left + (tooltip_outer_width / 2) - 5
@@ -239,14 +240,19 @@ init_tooltips = function(args){
           });
         }
 
-        tooltip.animate({
-          top: parseInt(tooltip_offset.top, 0) - 10
-          , opacity: 1
-        }, 200, 'swing');
-        nib.animate({
-          top: nib.offset().top - 10
-          , opacity: 1
-        }, 200);
+        try {
+          tooltip.animate({
+            top: tooltip_offset.top - 10
+            , opacity: 1
+          }, 200, 'swing');
+          nib.animate({
+            top: nib.offset().top - 10
+            , opacity: 1
+          }, 200);
+        } catch(e) {
+          tooltip.show();
+          nib.show();
+        }
       }, $(this)));
 
     }, function(e) {
