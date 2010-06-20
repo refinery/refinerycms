@@ -789,7 +789,7 @@ body.dialog form {
   text-align:center;
 }
 .dialog #existing_image_size_area ul li.selected {
-  margin-right: 16px;
+
 }
 .dialog #existing_image_size_area ul li a {
   display: block;
@@ -802,7 +802,10 @@ body.dialog form {
 	margin-top:-20px
 }
 .dialog #existing_image_size_area ul li.selected a {
-  border: 2px solid #22A7F2;
+  border-color: #22A7F2;
+  background: #22A7F2;
+  color: white;
+  font-weight: bold;
 }
 .dialog #existing_image_size_area #image_dialog_size_0 a { height: 30px; width: 30px; line-height: 30px; margin-top: 10px}
 .dialog #existing_image_size_area #image_dialog_size_1 a { height: 50px; width: 50px; line-height: 50px; margin-top:  0px}
