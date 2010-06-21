@@ -1486,23 +1486,17 @@ WYMeditor.editor.prototype.format_block = function(selected) {
   //'this' should be the wymeditor instance.
   var wym = this;
 
-  var container = selected || wym.selected();
-
-  var name = ((typeof(container) != 'undefined' && typeof(container.tagName) != 'undefined') ? container.tagName.toLowerCase() : 'body');
+  var container = selected || wym.selected() || $(wym._iframe).contents().find('body').get(0);
+  var name = container.tagName.toLowerCase();
+  
   //fix forbidden main containers
-  if(
-    name == "strong" ||
-    name == "b" ||
-    name == "em" ||
-    name == "i" ||
-    name == "sub" ||
-    name == "sup" ||
-    name == "a"
-
-  ) name = container.parentNode.tagName.toLowerCase();
+  if($.inArray(name, ['strong', 'b', 'em', 'i', 'sub', 'sup', 'a']) > -1) {
+    name = container.parentNode.tagName.toLowerCase();
+  }
 
   if(name == WYMeditor.BODY) {
     wym._selected_image = null;
+    $(wym._iframe).contents().find('.selected_by_wym').removeClass('selected_by_wym');
     wym._exec(WYMeditor.FORMAT_BLOCK, WYMeditor.P);
   }
 };
@@ -1577,6 +1571,8 @@ WYMeditor.editor.prototype.mousedown = function(evt) {
 
   var wym = WYMeditor.INSTANCES[this.ownerDocument.title];
   wym._selected_image = (evt.target.tagName.toLowerCase() == WYMeditor.IMG) ? evt.target : null;
+  $(wym._iframe).contents().find('.selected_by_wym').removeClass('selected_by_wym');
+  $(wym._selected_image).addClass('selected_by_wym');
   if (!$.browser.webkit) evt.stopPropagation();
 };
 
@@ -4317,6 +4313,7 @@ WYMeditor.WymClassExplorer.prototype.unwrap = function() {
 //keyup handler
 WYMeditor.WymClassExplorer.prototype.keyup = function() {
   this._selected_image = null;
+  $(this._iframe).contents().find('.selected_by_wym').removeClass('selected_by_wym');
 };
 
 WYMeditor.WymClassExplorer.prototype.setFocusToNode = function(node, toStart) {
@@ -4553,32 +4550,24 @@ WYMeditor.WymClassMozilla.prototype.keydown = function(evt) {
 WYMeditor.WymClassMozilla.prototype.keyup = function(evt) {
 
   //'this' is the doc
-  var wym = WYMeditor.INSTANCES[this.title];
-  if (wym != null) {
+  if ((wym = WYMeditor.INSTANCES[this.title]) != null)
+  {
     wym._selected_image = null;
+    $(wym._iframe).contents().find('.selected_by_wym').removeClass('selected_by_wym');
     var container = null;
 
     if(evt.keyCode == 13 && !evt.shiftKey) {
-
-      //RETURN key
-      //cleanup <br><br> between paragraphs
+      //RETURN key - cleanup <br><br> between paragraphs
       $(wym._doc.body).children(WYMeditor.BR).remove();
 
       //fix PRE bug #73
-      container = wym.selected();
-      if(container && container.tagName.toLowerCase() == WYMeditor.PRE)
-          wym._exec(WYMeditor.FORMAT_BLOCK, WYMeditor.P); //create P after PRE
+      if((container = wym.selected()) && container.tagName.toLowerCase() == WYMeditor.PRE) {
+        wym._exec(WYMeditor.FORMAT_BLOCK, WYMeditor.P); //create P after PRE
+      }
     }
-
-    else if(evt.keyCode != 8
-         && evt.keyCode != 17
-         && evt.keyCode != 46
-         && evt.keyCode != 224
-         && !evt.metaKey
-         && !evt.ctrlKey) {
+    else if(($.inArray(evt.keyCode, [8, 17, 46, 224]) == -1) && !evt.metaKey && !evt.ctrlKey) {
       //NOT BACKSPACE, NOT DELETE, NOT CTRL, NOT COMMAND
       //text nodes replaced by P
-
       wym.format_block();
     }
   }
@@ -4589,7 +4578,8 @@ WYMeditor.WymClassMozilla.prototype.enableDesignMode = function() {
       try {
         this._doc.designMode = "on";
         this._doc.execCommand("styleWithCSS", '', false);
-      } catch(e) { }
+      } 
+      catch(e) { }
     }
 };
 
@@ -4598,14 +4588,14 @@ WYMeditor.WymClassMozilla.prototype.openBlockTag = function(tag, attributes)
   var attributes = this.validator.getValidTagAttributes(tag, attributes);
 
   // Handle Mozilla styled spans
-  if(tag == 'span' && attributes.style){
+  if(tag == 'span' && attributes.style) {
     var new_tag = this.getTagForStyle(attributes.style);
     if(new_tag){
       this._tag_stack.pop();
       var tag = new_tag;
       this._tag_stack.push(new_tag);
       attributes.style = '';
-    }else{
+    } else {
       return;
     }
   }
@@ -4739,6 +4729,7 @@ WYMeditor.WymClassOpera.prototype.keyup = function(evt) {
   //'this' is the doc
   var wym = WYMeditor.INSTANCES[this.title];
   wym._selected_image = null;
+  $(wym._iframe).contents().find('.selected_by_wym').removeClass('selected_by_wym');
 };
 
 /*
@@ -4814,21 +4805,19 @@ WYMeditor.WymClassSafari.prototype.initIframe = function(iframe) {
 
 WYMeditor.WymClassSafari.prototype.paste = function(sData) {
 
-  wym = this;
-
-  wym.format_block();
-
-  var sTmp;
+  (wym = this).format_block();
   replaceable = $(wym._doc.body).find('#replace_me_with_' + wym._current_unique_stamp);
 
   // replaceable doesn't actually get replaced here, it's just used as a marker for where the cursor was.
   var container = replaceable.get(0) || this.selected();
 
   //split the data, using double newlines as the separator
-  var aP = sData.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").split(wym._newLine + wym._newLine);
+  var aP = sData.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")
+            .split(wym._newLine + wym._newLine);
   var rExp = new RegExp(wym._newLine, "g");
 
   //add a P for each item
+  var sTmp;
   if(container && container.tagName.toLowerCase() != WYMeditor.BODY) {
     for(x = aP.length - 1; x >= 0; x--) {
       sTmp = aP[x];
@@ -4979,16 +4968,15 @@ WYMeditor.WymClassSafari.prototype.addCssRule = function(styles, oCss) {
 //keydown handler, mainly used for keyboard shortcuts
 WYMeditor.WymClassSafari.prototype.keydown = function(evt) {
 
-  //'this' is the doc
-  var wym = WYMeditor.INSTANCES[this.title];
-
   if(evt.ctrlKey){
-    if(evt.keyCode == 66){
+    //'this' is the doc
+    var wym = WYMeditor.INSTANCES[this.title];
+    
+    if(evt.keyCode == 66) {
       //CTRL+b => STRONG
       wym._exec(WYMeditor.BOLD);
       return false;
-    }
-    if(evt.keyCode == 73){
+    } else if(evt.keyCode == 73) {
       //CTRL+i => EMPHASIS
       wym._exec(WYMeditor.ITALIC);
       return false;
@@ -5003,32 +4991,27 @@ WYMeditor.WymClassSafari.prototype.keyup = function(evt) {
   var wym = WYMeditor.INSTANCES[this.title];
 
   wym._selected_image = null;
+  $(wym._iframe).contents().find('.selected_by_wym').removeClass('selected_by_wym');
   var container = null;
 
   if(evt.keyCode == 13 && !evt.shiftKey) {
-
     //RETURN key
     //cleanup <br><br> between paragraphs
     $(wym._doc.body).children(WYMeditor.BR).remove();
 
     //fix PRE bug #73
     container = wym.selected();
-    if(container && container.tagName.toLowerCase() == WYMeditor.PRE)
-        wym._exec(WYMeditor.FORMAT_BLOCK, WYMeditor.P); //create P after PRE
+    if(container && container.tagName.toLowerCase() == WYMeditor.PRE) {
+      wym._exec(WYMeditor.FORMAT_BLOCK, WYMeditor.P); //create P after PRE
+    }
   }
 
   //fix #112
   if(evt.keyCode == 13 && evt.shiftKey) {
     wym._exec('InsertLineBreak');
   }
-
-  if(evt.keyCode != 8
-       && evt.keyCode != 17
-       && evt.keyCode != 46
-       && evt.keyCode != 224
-       && !evt.metaKey
-       && !evt.ctrlKey) {
-
+  else if(($.inArray(evt.keyCode, [8, 17, 46, 224]) == -1) && !evt.metaKey && !evt.ctrlKey) 
+  {
     //NOT BACKSPACE, NOT DELETE, NOT CTRL, NOT COMMAND
     //text nodes replaced by P
 
@@ -5036,19 +5019,13 @@ WYMeditor.WymClassSafari.prototype.keyup = function(evt) {
     var name = container.tagName.toLowerCase();
 
     //fix forbidden main containers
-    if(
-      name == "strong" ||
-      name == "b" ||
-      name == "em" ||
-      name == "i" ||
-      name == "sub" ||
-      name == "sup" ||
-      name == "a" ||
-      name == "span" //fix #110
-
-    ) name = container.parentNode.tagName.toLowerCase();
-
-    if(name == WYMeditor.BODY || name == WYMeditor.DIV) wym._exec(WYMeditor.FORMAT_BLOCK, WYMeditor.P); //fix #110 for DIV
+    if($.inArray(name, ['strong', 'b', 'em', 'i', 'sub', 'sup', 'a', 'span']) > -1) {
+      name = container.parentNode.tagName.toLowerCase();
+    }
+    
+    if(name == WYMeditor.BODY || name == WYMeditor.DIV) {
+      wym._exec(WYMeditor.FORMAT_BLOCK, WYMeditor.P); //fix #110 for DIV
+    }
   }
 };
 
@@ -5058,16 +5035,16 @@ WYMeditor.WymClassSafari.prototype.openBlockTag = function(tag, attributes)
 
   // Handle Safari styled spans
   if(tag == 'span' && attributes.style) {
-    var new_tag = this.getTagForStyle(attributes.style);
-    if(new_tag){
+    if(new_tag = this.getTagForStyle(attributes.style)) {
       this._tag_stack.pop();
       var tag = new_tag;
       this._tag_stack.push(new_tag);
       attributes.style = '';
 
       //should fix #125 - also removed the xhtml() override
-      if(typeof attributes['class'] == 'string')
+      if(typeof attributes['class'] == 'string') {
         attributes['class'] = attributes['class'].replace(/apple-style-span/gi, '');
+      }
 
     } else {
       return;
