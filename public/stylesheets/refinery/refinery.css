@@ -447,7 +447,7 @@ pre {
 }
 #records.tree ul li, .tree ul li {
   margin: 0px;
-  padding: 4px 0 0 40px;
+  padding: 2px 0 2px 40px;
   background: url('/images/refinery/branch.gif') no-repeat 15px 0px;
 }
 #records.tree .on-hover, #pagination ul.tree a:hover, #pagination .tree .on {
@@ -460,7 +460,7 @@ pre {
   background-image: url('/images/refinery/branch-end.gif');
 }
 #records.tree li {
-  line-height: 22px;
+  line-height: 24px;
 }
 #records.tree li span.spacing, .tree li span.spacing {
   display: none;
@@ -1300,4 +1300,36 @@ input.button.close_dialog:active, a.button.close_dialog:active, #content a.butto
 }
 #upgrade_wrapper li a {
   line-height: 20px;
+}
+
+/* cornering */
+.button, #editor_switch a {
+  border-radius: 6px;
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+}
+#page_container, .wym_box {
+  border-radius-bottom: 5px;
+  -moz-border-radius-bottom: 5px;
+  -webkit-border-radius-bottom: 5px;
+}
+.wym_iframe iframe {
+  border-radius-bottom: 2px;
+  -moz-border-radius-bottom: 2px;
+  -webkit-border-radius-bottom: 2px;
+}
+.form-actions {
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+}
+.form-actions.form-actions-dialog {
+  border-radius: 0px;
+  -moz-border-radius: 0px;
+  -webkit-border-radius: 0px;
+}
+#menu > a {
+  border-radius-top: 5px;
+  -moz-border-radius-top: 5px;
+  -webkit-border-radius-top: 5px;
 }
