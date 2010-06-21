@@ -73,3 +73,9 @@ a#site_bar_refinery_cms_logo:hover img {
   display: block;
   cursor: pointer;
 }
+
+#editor_switch a, #editor_switch span {
+  border-radius: 6px;
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+}
