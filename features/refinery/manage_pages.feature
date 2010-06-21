@@ -36,4 +36,4 @@ Feature: Manage Pages
     And I fill in "Title" with "About"
     And I press "Save"
     Then I should have 3 pages
-    And I should have a page at "/about--2"
+    And I should have a page at /about--2

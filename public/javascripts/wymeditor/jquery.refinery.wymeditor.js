@@ -1563,15 +1563,11 @@ WYMeditor.editor.prototype.listen = function() {
   //because of MSIE + jQuery + expando issue (#JQ1143)
   //$(this._doc.body).find("*").bind("mouseup", this.mouseup);
 
-/*  $(this._doc.body).bind("mousedown", this.mousedown);
+  $(this._doc.body).bind("mousedown", this.mousedown);
   var images = this._doc.body.getElementsByTagName("img");
   for(var i=0; i < images.length; i++) {
     $(images[i]).bind("mousedown", this.mousedown);
   }
-*/
-
-  // this may make things better.
-  $(this._doc.body).bind("mousedown", this.mousedown);
 
   // ensure links can't be navigated to.
   $(this._doc).find('a[href]').click(function(e){e.preventDefault();});
@@ -1581,7 +1577,7 @@ WYMeditor.editor.prototype.mousedown = function(evt) {
 
   var wym = WYMeditor.INSTANCES[this.ownerDocument.title];
   wym._selected_image = (evt.target.tagName.toLowerCase() == WYMeditor.IMG) ? evt.target : null;
-  evt.stopPropagation();
+  if (!$.browser.webkit) evt.stopPropagation();
 };
 
 /********** SKINS **********/

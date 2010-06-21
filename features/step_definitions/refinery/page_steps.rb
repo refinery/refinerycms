@@ -13,6 +13,6 @@ Then /^I should have ([0-9]+) pages?$/ do |count|
   Page.count.should == count.to_i
 end
 
-Then /^I should have a page at "(.+)"$/ do |url|
-  true.should == true # TODO
+Then /^I should have a page at \/(.+)$/ do |url|
+  Page.all.count{|page| page.url[:path].to_s.include?(url)}.should == 1
 end

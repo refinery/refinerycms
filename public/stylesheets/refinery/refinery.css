@@ -786,19 +786,33 @@ body.dialog form {
   float: left;
   list-style: none;
   margin: 0px 18px 0px 0px;
-  padding: 0px;
+  text-align:center;
 }
 .dialog #existing_image_size_area ul li.selected {
-  margin-right: 16px;
+
 }
 .dialog #existing_image_size_area ul li a {
   display: block;
   border: 1px solid #999999;
+  font-size: 10px;
+  /* The following default values are overridden below */
+	height: 90px;
+	width: 90px;
+	line-height: 90px;
+	margin-top:-20px
 }
 .dialog #existing_image_size_area ul li.selected a {
-  margin-top: -1px;
-  border: 2px solid #22A7F2;
+  border-color: #22A7F2;
+  background: #22A7F2;
+  color: white;
+  font-weight: bold;
 }
+.dialog #existing_image_size_area #image_dialog_size_0 a { height: 30px; width: 30px; line-height: 30px; margin-top: 10px}
+.dialog #existing_image_size_area #image_dialog_size_1 a { height: 50px; width: 50px; line-height: 50px; margin-top:  0px}
+.dialog #existing_image_size_area #image_dialog_size_2 a { height: 70px; width: 70px; line-height: 70px; margin-top:-10px}
+.dialog #existing_image_size_area #image_dialog_size_3 a { height: 90px; width: 90px; line-height: 90px; margin-top:-20px}
+
+
 /*
 #dialog_main {
   position: relative;
