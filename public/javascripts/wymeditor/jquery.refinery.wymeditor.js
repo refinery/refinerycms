@@ -1567,13 +1567,13 @@ WYMeditor.editor.prototype.listen = function() {
   $(this._doc).find('a[href]').click(function(e){e.preventDefault();});
 };
 
-WYMeditor.editor.prototype.mousedown = function(evt) {
+WYMeditor.editor.prototype.mousedown = function(e) {
 
   var wym = WYMeditor.INSTANCES[this.ownerDocument.title];
-  wym._selected_image = (evt.target.tagName.toLowerCase() == WYMeditor.IMG) ? evt.target : null;
+  wym._selected_image = (e.target.tagName.toLowerCase() == WYMeditor.IMG) ? e.target : null;
   $(wym._iframe).contents().find('.selected_by_wym').removeClass('selected_by_wym');
   if (!$.browser.mozilla) $(wym._selected_image).addClass('selected_by_wym');
-  if (!$.browser.webkit) evt.stopPropagation();
+  if (!$.browser.webkit) e.stopPropagation();
 };
 
 /********** SKINS **********/
@@ -4517,29 +4517,29 @@ WYMeditor.WymClassMozilla.prototype.addCssRule = function(styles, oCss) {
 
 
 //keydown handler, mainly used for keyboard shortcuts
-WYMeditor.WymClassMozilla.prototype.keydown = function(evt) {
+WYMeditor.WymClassMozilla.prototype.keydown = function(e) {
 
   //'this' is the doc
   var wym = WYMeditor.INSTANCES[this.title];
 
-  if(evt.ctrlKey){
-    if(evt.keyCode == 66){
+  if(e.ctrlKey){
+    if(e.keyCode == 66){
       //CTRL+b => STRONG
       wym._exec(WYMeditor.BOLD);
       return false;
     }
-    if(evt.keyCode == 73){
+    if(e.keyCode == 73){
       //CTRL+i => EMPHASIS
       wym._exec(WYMeditor.ITALIC);
       return false;
     }
   }
-  else if(evt.keyCode == 13) {
-    if(!evt.shiftKey){
+  else if(e.keyCode == 13) {
+    if(!e.shiftKey){
       //fix PRE bug #73
       container = wym.selected();
       if(container && container.tagName.toLowerCase() == WYMeditor.PRE) {
-        evt.preventDefault();
+        e.preventDefault();
         wym.insert('<p></p>');
       }
     }
@@ -4547,7 +4547,7 @@ WYMeditor.WymClassMozilla.prototype.keydown = function(evt) {
 };
 
 //keyup handler, mainly used for cleanups
-WYMeditor.WymClassMozilla.prototype.keyup = function(evt) {
+WYMeditor.WymClassMozilla.prototype.keyup = function(e) {
 
   //'this' is the doc
   if ((wym = WYMeditor.INSTANCES[this.title]) != null)
@@ -4556,7 +4556,7 @@ WYMeditor.WymClassMozilla.prototype.keyup = function(evt) {
     $(wym._iframe).contents().find('.selected_by_wym').removeClass('selected_by_wym');
     var container = null;
 
-    if(evt.keyCode == 13 && !evt.shiftKey) {
+    if(e.keyCode == 13 && !e.shiftKey) {
       //RETURN key - cleanup <br><br> between paragraphs
       $(wym._doc.body).children(WYMeditor.BR).remove();
 
@@ -4565,7 +4565,7 @@ WYMeditor.WymClassMozilla.prototype.keyup = function(evt) {
         wym._exec(WYMeditor.FORMAT_BLOCK, WYMeditor.P); //create P after PRE
       }
     }
-    else if(($.inArray(evt.keyCode, [8, 17, 46, 224]) == -1) && !evt.metaKey && !evt.ctrlKey) {
+    else if(($.inArray(e.keyCode, [8, 17, 46, 224]) == -1) && !e.metaKey && !e.ctrlKey) {
       //NOT BACKSPACE, NOT DELETE, NOT CTRL, NOT COMMAND
       //text nodes replaced by P
       wym.format_block();
@@ -4702,7 +4702,7 @@ WYMeditor.WymClassOpera.prototype.addCssRule = function(styles, oCss) {
 };
 
 //keydown handler
-WYMeditor.WymClassOpera.prototype.keydown = function(evt) {
+WYMeditor.WymClassOpera.prototype.keydown = function(e) {
 
   //'this' is the doc
   var wym = WYMeditor.INSTANCES[this.title];
@@ -4712,19 +4712,19 @@ WYMeditor.WymClassOpera.prototype.keydown = function(evt) {
   //Get a P instead of no container
   if(!$(startNode).parentsOrSelf(WYMeditor.MAIN_CONTAINERS.join(","))[0]
       && !$(startNode).parentsOrSelf('li')
-      && evt.keyCode != WYMeditor.KEY.ENTER
-      && evt.keyCode != WYMeditor.KEY.LEFT
-      && evt.keyCode != WYMeditor.KEY.UP
-      && evt.keyCode != WYMeditor.KEY.RIGHT
-      && evt.keyCode != WYMeditor.KEY.DOWN
-      && evt.keyCode != WYMeditor.KEY.BACKSPACE
-      && evt.keyCode != WYMeditor.KEY.DELETE)
+      && e.keyCode != WYMeditor.KEY.ENTER
+      && e.keyCode != WYMeditor.KEY.LEFT
+      && e.keyCode != WYMeditor.KEY.UP
+      && e.keyCode != WYMeditor.KEY.RIGHT
+      && e.keyCode != WYMeditor.KEY.DOWN
+      && e.keyCode != WYMeditor.KEY.BACKSPACE
+      && e.keyCode != WYMeditor.KEY.DELETE)
       wym._exec(WYMeditor.FORMAT_BLOCK, WYMeditor.P);
 
 };
 
 //keyup handler
-WYMeditor.WymClassOpera.prototype.keyup = function(evt) {
+WYMeditor.WymClassOpera.prototype.keyup = function(e) {
 
   //'this' is the doc
   var wym = WYMeditor.INSTANCES[this.title];
@@ -4966,17 +4966,17 @@ WYMeditor.WymClassSafari.prototype.addCssRule = function(styles, oCss) {
 
 
 //keydown handler, mainly used for keyboard shortcuts
-WYMeditor.WymClassSafari.prototype.keydown = function(evt) {
+WYMeditor.WymClassSafari.prototype.keydown = function(e) {
 
-  if(evt.ctrlKey){
+  if(e.ctrlKey){
     //'this' is the doc
     var wym = WYMeditor.INSTANCES[this.title];
     
-    if(evt.keyCode == 66) {
+    if(e.keyCode == 66) {
       //CTRL+b => STRONG
       wym._exec(WYMeditor.BOLD);
       return false;
-    } else if(evt.keyCode == 73) {
+    } else if(e.keyCode == 73) {
       //CTRL+i => EMPHASIS
       wym._exec(WYMeditor.ITALIC);
       return false;
@@ -4985,7 +4985,7 @@ WYMeditor.WymClassSafari.prototype.keydown = function(evt) {
 };
 
 //keyup handler, mainly used for cleanups
-WYMeditor.WymClassSafari.prototype.keyup = function(evt) {
+WYMeditor.WymClassSafari.prototype.keyup = function(e) {
 
   //'this' is the doc
   var wym = WYMeditor.INSTANCES[this.title];
@@ -4994,7 +4994,7 @@ WYMeditor.WymClassSafari.prototype.keyup = function(evt) {
   $(wym._iframe).contents().find('.selected_by_wym').removeClass('selected_by_wym');
   var container = null;
 
-  if(evt.keyCode == 13 && !evt.shiftKey) {
+  if(e.keyCode == 13 && !e.shiftKey) {
     //RETURN key
     //cleanup <br><br> between paragraphs
     $(wym._doc.body).children(WYMeditor.BR).remove();
@@ -5007,10 +5007,10 @@ WYMeditor.WymClassSafari.prototype.keyup = function(evt) {
   }
 
   //fix #112
-  if(evt.keyCode == 13 && evt.shiftKey) {
+  if(e.keyCode == 13 && e.shiftKey) {
     wym._exec('InsertLineBreak');
   }
-  else if(($.inArray(evt.keyCode, [8, 17, 46, 224]) == -1) && !evt.metaKey && !evt.ctrlKey) 
+  else if(($.inArray(e.keyCode, [8, 17, 46, 224]) == -1) && !e.metaKey && !e.ctrlKey) 
   {
     //NOT BACKSPACE, NOT DELETE, NOT CTRL, NOT COMMAND
     //text nodes replaced by P
