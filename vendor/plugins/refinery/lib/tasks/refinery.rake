@@ -165,6 +165,10 @@ namespace :refinery do
       end
     end
 
+    unless (aai_config_file = Rails.root.join('config', 'acts_as_indexed_config.rb')).exist?
+      FileUtils::cp Refinery.root.join('config', 'acts_as_indexed_config.rb').to_s, aai_config_file.to_s
+    end
+
     # get current secret key
     unless Rails.root.join("config", "application.rb").exist?
       lines = Rails.root.join("config", "environment.rb").read.split("\n")
