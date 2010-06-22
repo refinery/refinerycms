@@ -61,8 +61,10 @@ protected
 
   # get all the pages to be displayed in the site menu.
   def find_pages_for_menu
-    @menu_pages = Rails.cache.read(cache_key = "#{Refinery.base_cache_key}_menu_pages")
-    @menu_pages = Rails.cache.write(cache_key, Page.top_level(include_children=true)) if @menu_pages.nil?
+    if (@menu_pages = Rails.cache.read(cache_key = "#{Refinery.base_cache_key}_menu_pages")).nil?
+      @menu_pages = Page.top_level(include_children = true)
+      Rails.cache.write(cache_key, @menu_pages) if @menu_pages.present?
+    end
   end
 
   # use a different model for the meta information.
