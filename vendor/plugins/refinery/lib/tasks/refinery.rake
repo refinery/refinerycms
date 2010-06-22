@@ -158,6 +158,13 @@ namespace :refinery do
     # copy the lib/refinery directory in
     FileUtils::cp_r Refinery.root.join("lib", "refinery").cleanpath.to_s, Rails.root.join("lib").cleanpath.to_s
 
+    # copy any initializers
+    Dir[Refinery.root.join('config', 'initializers', '*.rb').to_s].each do |initializer|
+      unless (rails_initializer = Rails.root.join('config', 'initializers', initializer.split(File::SEPARATOR).last)).exist?
+        FileUtils::cp initializer, rails_initializer
+      end
+    end
+
     # get current secret key
     unless Rails.root.join("config", "application.rb").exist?
       lines = Rails.root.join("config", "environment.rb").read.split("\n")
