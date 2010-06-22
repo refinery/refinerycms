@@ -204,6 +204,14 @@ namespace :refinery do
     FileUtils.cp Refinery.root.join('public', 'javascripts', 'jquery-min.js').cleanpath.to_s, Rails.root.join('public', 'javascripts', 'jquery-min.js').cleanpath.to_s
     FileUtils.cp Refinery.root.join('public', 'javascripts', 'jquery-ui-custom-min.js').cleanpath.to_s, Rails.root.join('public', 'javascripts', 'jquery-ui-custom-min.js').cleanpath.to_s
 
+    # Test the admin file to see if it's old
+    if ((admin_js_contents = Rails.root.join('public', 'javascripts', 'admin.js').readlines.join('')) == "if (!wymeditorClassesItems) {\n  var wymeditorClassesItems = [];\n}\n\nwymeditorClassesItems = $.extend([\n    {name: 'text-align', rules:['left', 'center', 'right', 'justify'], join: '-'}\n ,  {name: 'image-align', rules:['left', 'right'], join: '-'}\n ,  {name: 'font-size', rules:['small', 'normal', 'large'], join: '-'}\n], wymeditorClassesItems);")
+      FileUtils.cp Refinery.root.join('public', 'javascripts', 'admin.js'), Rails.root.join('public', 'javascripts', 'admin.js')
+    elsif admin_js_contents !~ Regexp.new("var custom_wymeditor_boot_options \\= \\{")
+      Rails.root.join('public', 'javascripts', 'admin.js').open('a') do |f|
+        f.write "#{Refinery.root.join('public', 'javascripts', 'admin.js').readlines.join()}\n"
+      end
+    end
     # backup the config file.
     FileUtils.cp Rails.root.join('config', app_config_file).cleanpath.to_s, Rails.root.join('config', "#{app_config_file.gsub('.rb', '')}.autobackupbyrefinery.rb").cleanpath.to_s
 
