@@ -133,7 +133,7 @@ namespace :refinery do
     Rails.root.join('features', 'support').mkpath
 
     # copy in cucumber features
-    FileUtils::cp Dir[Refinery.root.join('features', 'refinery', '*.rb').to_s], Rails.root.join('features', 'refinery').to_s
+    FileUtils::cp Dir[Refinery.root.join('features', 'refinery', '*.feature').to_s], Rails.root.join('features', 'refinery').to_s
     FileUtils::cp Dir[Refinery.root.join('features', 'step_definitions', 'refinery', '*.rb').to_s], Rails.root.join('features', 'step_definitions', 'refinery').to_s
     FileUtils::cp Dir[Refinery.root.join('features', 'step_definitions', 'web_steps.rb').to_s], Rails.root.join('features', 'step_definitions').to_s
     FileUtils::cp Dir[Refinery.root.join('features', 'support', '*.rb').to_s], Rails.root.join('features', 'support').to_s
