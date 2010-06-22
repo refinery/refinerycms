@@ -16,7 +16,7 @@
 #site_bar #site_bar_company_name {
   font-weight: bold;
 }
-#site_bar site_bar_branding a {
+#site_bar #site_bar_branding a {
   font-weight: normal;
 }
 #site_bar #site_bar_branding a#logout {
