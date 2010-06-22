@@ -4099,7 +4099,7 @@ WYMeditor.Helper = {
           break;
         }
       }
-      return(ret);
+      return ret;
     },
 
     //return 'item' object in 'arr' array, checking its 'name' property, or null
@@ -4108,11 +4108,12 @@ WYMeditor.Helper = {
         var item = arr[i];
         if(item.name == name) return(item);
       }
-      return(null);
+      return null;
     }
 };
 
 function titleize(words) {
+  if (words == null) return words;
   parts = [];
   $.each(words.replace(/\./, '').replace(/[-_]/, ' ').split(' '), function(index, part){
     parts.push(part.substring(0,1).toUpperCase() + part.substring(1));
