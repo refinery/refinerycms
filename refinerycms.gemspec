@@ -2,7 +2,7 @@ Gem::Specification.new do |s|
   s.name              = %q{refinerycms}
   s.version           = %q{0.9.7.dev}
   s.description       = %q{A beautiful open source Ruby on Rails content manager for small business. Easy to extend, easy to use, lightweight and all wrapped up in a super slick UI.}
-  s.date              = %q{2010-06-19}
+  s.date              = %q{2010-06-23}
   s.summary           = %q{A beautiful open source Ruby on Rails content manager for small business.}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
@@ -30,6 +30,7 @@ Gem::Specification.new do |s|
     'app/helpers/application_helper.rb',
     'bin/refinery',
     'bin/refinery-update-core',
+    'config/acts_as_indexed_config.rb',
     'config/amazon_s3.yml.example',
     'config/application.rb',
     'config/boot.rb',
@@ -42,7 +43,6 @@ Gem::Specification.new do |s|
     'config/environments/production.rb',
     'config/environments/test.rb',
     'config/initializers',
-    'config/initializers/acts_as_indexed_config.rb',
     'config/initializers/field_with_error_fix.rb',
     'config/initializers/inflections.rb',
     'config/initializers/mime_types.rb',
@@ -76,7 +76,13 @@ Gem::Specification.new do |s|
     'db/seeds/refinery_settings.rb',
     'db/seeds.rb',
     'features/refinery',
+    'features/refinery/dashboard.feature',
+    'features/refinery/manage_files.feature',
+    'features/refinery/manage_images.feature',
+    'features/refinery/manage_inquiries.feature',
     'features/refinery/manage_pages.feature',
+    'features/refinery/manage_refinery_settings.feature',
+    'features/refinery/manage_users.feature',
     'features/step_definitions',
     'features/step_definitions/refinery',
     'features/step_definitions/refinery/page_steps.rb',
@@ -502,6 +508,11 @@ Gem::Specification.new do |s|
     'vendor/plugins/dashboard/dashboard.md',
     'vendor/plugins/dashboard/rails',
     'vendor/plugins/dashboard/rails/init.rb',
+    'vendor/plugins/i18n',
+    'vendor/plugins/i18n/lib',
+    'vendor/plugins/i18n/lib/i18n.rb',
+    'vendor/plugins/i18n/rails',
+    'vendor/plugins/i18n/rails/init.rb',
     'vendor/plugins/images',
     'vendor/plugins/images/app',
     'vendor/plugins/images/app/controllers',
@@ -731,6 +742,8 @@ Gem::Specification.new do |s|
     'vendor/plugins/refinery_settings/app/views/admin/refinery_settings/index.html.erb',
     'vendor/plugins/refinery_settings/app/views/admin/refinery_settings/new.html.erb',
     'vendor/plugins/refinery_settings/config',
+    'vendor/plugins/refinery_settings/config/locales',
+    'vendor/plugins/refinery_settings/config/locales/en.yml',
     'vendor/plugins/refinery_settings/config/routes.rb',
     'vendor/plugins/refinery_settings/rails',
     'vendor/plugins/refinery_settings/rails/init.rb',
