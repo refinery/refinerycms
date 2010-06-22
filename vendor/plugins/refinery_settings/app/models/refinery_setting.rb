@@ -11,7 +11,7 @@ class RefinerySetting < ActiveRecord::Base
 
   after_save do |setting|
     if self.column_names.include?('scoping')
-      cache_write(setting.name, setting.try(:scoping), setting.value)
+      cache_write(setting.name, setting.scoping.presence, setting.value)
     else
       cache_write(setting.name, nil, setting.value)
     end
@@ -82,7 +82,15 @@ class RefinerySetting < ActiveRecord::Base
 
   def self.[]=(name, value)
     setting = find_or_create_by_name(name.to_s)
-    setting.value = value
+    
+    # you could also pass in {:value => 'something', :scoping => 'somewhere'}
+    unless value.is_a?(Hash)
+      setting.value = value
+    else
+      setting.value = value[:value]
+      setting.scoping = value[:scoping]
+    end
+    
     setting.save
   end
 
