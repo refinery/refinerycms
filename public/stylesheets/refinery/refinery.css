@@ -1093,6 +1093,7 @@ ul#image_grid {
   margin: 10px 0px 15px 0px;
 }
 ul#image_grid li {
+  position: relative;
   float: left;
   margin: 0px 13px 12px 0px;
   padding: 0px;
@@ -1102,6 +1103,11 @@ ul#image_grid li {
   overflow: hidden;
   max-width: 135px;
   max-height: 176px;
+}
+#records ul#image_grid li .actions {
+  top: auto;
+  bottom: 0px;
+  line-height: 24px;
 }
 ul#image_grid li.row-end {
   margin-right: 0px;
