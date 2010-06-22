@@ -1572,7 +1572,7 @@ WYMeditor.editor.prototype.mousedown = function(evt) {
   var wym = WYMeditor.INSTANCES[this.ownerDocument.title];
   wym._selected_image = (evt.target.tagName.toLowerCase() == WYMeditor.IMG) ? evt.target : null;
   $(wym._iframe).contents().find('.selected_by_wym').removeClass('selected_by_wym');
-  $(wym._selected_image).addClass('selected_by_wym');
+  if (!$.browser.mozilla) $(wym._selected_image).addClass('selected_by_wym');
   if (!$.browser.webkit) evt.stopPropagation();
 };
 
