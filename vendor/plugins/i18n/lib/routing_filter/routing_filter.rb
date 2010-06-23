@@ -32,7 +32,7 @@ end
 ActionController::Routing::RouteSet::Mapper.class_eval do
   def filter(name, options = {})
     unless Kernel.const_defined?(name.to_s.camelize) or !options.has_key?(:file)
-      require options.delete(:file) || "routing_filter/#{name}"
+      require options.delete(:file) || File.expand_path("../routing_filter/#{name}", __FILE__)
     end
     klass = RoutingFilter.const_get(name.to_s.camelize)
     @set.filters << klass.new(options)
