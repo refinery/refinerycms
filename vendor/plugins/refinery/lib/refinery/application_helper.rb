@@ -68,7 +68,7 @@ module Refinery::ApplicationHelper
   # Use <%= jquery_include_tags %> to include it in your <head> section.
   def jquery_include_tags(options={})
     # Merge in options
-    options = { :caching => RefinerySetting.find_or_set(:use_resource_caching, true),
+    options = { :caching => RefinerySetting.find_or_set(:use_resource_caching, !Refinery.s3_backend),
                 :google => RefinerySetting.find_or_set(:use_google_ajax_libraries, false),
                 :jquery_ui => true
               }.merge(options)
