@@ -36,6 +36,7 @@ module RoutingFilter
       end
     end
 
+    ### Implemented in lib/i18n_filter.rb
     def around_recognize(path, env, &block)
       locale = extract_locale!(path)                 # remove the locale from the beginning of the path
       returning yield do |params|                    # invoke the given block (calls more filters and finally routing)
@@ -46,13 +47,15 @@ module RoutingFilter
       end
     end
 
+    ### Implemented in lib/i18n_filter.rb
     def around_generate(*args, &block)
       locale = args.extract_options!.delete(:locale) # extract the passed :locale option
       locale = I18n.locale if locale.nil?            # default to I18n.locale when locale is nil (could also be false)
       locale = nil unless valid_locale?(locale)      # reset to no locale when locale is not valid
 
       returning yield do |result|
-        if ::RoutingFilter::Locale.i18n_enabled? && locale && prepend_locale?(locale)
+        # we want to ensure we're not routing the admin urls.
+        if ::RoutingFilter::Locale.i18n_enabled? && locale && prepend_locale?(locale) && result !~ %r{^/refinery}
           url = result.is_a?(Array) ? result.first : result
           prepend_locale!(url, locale)
         end

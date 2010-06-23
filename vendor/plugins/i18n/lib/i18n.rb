@@ -1,6 +1,8 @@
 class Refinery::I18n
   class << self
 
+    attr_accessor :enabled, :current_locale
+
     def locales
       RefinerySetting.find_or_set(:refinery_i18n_locales, { :en => "English" })
     end
@@ -11,6 +13,22 @@ class Refinery::I18n
 
     def enabled?
       RefinerySetting.find_or_set(:refinery_i18n_enabled, false)
+    end
+
+    def current_locale
+      unless enabled?
+        @current_locale = :en
+        RefinerySetting[:refinery_i18n_current_locale] = :en
+      else
+        @current_locale ||= RefinerySetting.find_or_set(:refinery_i18n_current_locale,
+                                                        RefinerySetting.find_or_set(:refinery_i18n_default_locale, :en))
+      end
+    end
+
+    def current_locale=(locale)
+      @current_locale = locale.to_sym
+      RefinerySetting[:refinery_i18n_current_locale] = locale.to_sym
+      ::I18n.locale = locale.to_sym
     end
 
     def setup!
@@ -33,7 +51,7 @@ class Refinery::I18n
     end
 
     def set_default_locale!
-      I18n.default_locale = RefinerySetting.find_or_set(:refinery_i18n_default_locale, {:en => "English"})
+      I18n.default_locale = current_locale
     end
 
     def load_locales locale_files
