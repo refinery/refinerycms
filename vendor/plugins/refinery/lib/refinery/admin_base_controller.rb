@@ -3,6 +3,7 @@ class Refinery::AdminBaseController < ApplicationController
   layout proc { |controller| "admin#{"_dialog" if controller.from_dialog?}" }
 
   before_filter :redirect_if_old_url, :correct_accept_header, :login_required, :restrict_plugins, :restrict_controller
+  after_filter :store_location?, :except => [:new, :create, :edit, :update, :destroy, :update_positions] # for redirect_back_or_default
 
   helper_method :searching?
 
@@ -18,9 +19,14 @@ protected
 
   #TODO Add language
   def error_404(exception=nil)
-    @page = Page.find_by_menu_match("^/404$", :include => [:parts, :slugs])
-    @page[:body] = @page[:body].gsub(/href=(\'|\")\/(\'|\")/, "href='/admin'").gsub("home page", "Dashboard")
-    render :template => "/pages/show", :status => 404
+    if (@page = Page.find_by_menu_match("^/404$", :include => [:parts, :slugs])).present?
+      params[:action] = 'error_404'
+      @page[:body] = @page[:body].gsub(/href=(\'|\")\/(\'|\")/, "href='/refinery'").gsub("home page", "Dashboard")
+      render :template => "/pages/show", :status => 404
+    else
+      # fallback to the default 404.html page.
+      render :file => Rails.root.join("public", "404.html").cleanpath.to_s, :layout => false, :status => 404
+    end
   end
 
   def restrict_plugins
@@ -33,9 +39,8 @@ protected
       params[:controller] !~ Regexp.new(plugin.menu_match) and
       params[:controller] !~ Regexp.new(plugin.menu_match.to_s.gsub('admin\/', 'refinery/'))
     }.empty?
-      flash[:error] = t('admin.page_dialogs.not_allowed')
       logger.warn "'#{current_user.login}' tried to access '#{params[:controller]}' but was rejected."
-      redirect_back_or_default(admin_root_url)
+      error_404
     end
   end
 
@@ -44,10 +49,6 @@ protected
 
 
 private
-  def redirect_if_old_url
-    redirect_to request.path.gsub('admin', 'refinery') if request.path =~ /^(|\/)admin/
-  end
-
   # This fixes the issue where Internet Explorer browsers are presented with a basic auth dialogue
   # rather than the xhtml one that they *can* accept but don't think they can.
   def correct_accept_header
@@ -58,6 +59,18 @@ private
         request.cookies[:http_accept] = (request.env["HTTP_ACCEPT"] = (["text/html"] | request.accept.split(', ')).join(', '))
       end
     end
+  end
+
+  # Just a simple redirect for old urls.
+  def redirect_if_old_url
+    redirect_to request.path.gsub('admin', 'refinery') if request.path =~ /^(|\/)admin/
+  end
+
+  # Check whether it makes sense to return the user to the last page they
+  # were at instead of the default e.g. admin_pages_url
+  # right now we just want to snap back to index actions and definitely not to dialogues.
+  def store_location?
+    store_location unless action_name !~ /index/ or request.xhr? or from_dialog?
   end
 
 end

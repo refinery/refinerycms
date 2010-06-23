@@ -8,7 +8,7 @@ da:
         title: Titel
         create_content_section: Tilføj indholdselement
         delete_content_section: Slet indholdselement
-        hide_or_show_advanced_options: Vis/skjul avancerede indstillinger
+        advanced_options: Avancerede indstillinger
         explain_page_different_title: Hvis siden skal have en anden titel end i menuen og browseroverskriften.
         redirect_to_first_child: "Afkryds hvis besøgende skal videresendes til sidens første underside, når siden vælges."
         parent_id_title: Overordnet side

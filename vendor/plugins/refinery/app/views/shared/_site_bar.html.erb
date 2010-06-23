@@ -5,9 +5,10 @@
   <script type='text/javascript'>
     $(document).ready(function() {
       logo = $('#site_bar_content #site_bar_refinery_cms_logo');
-      logo.css('left', ($('#site_bar_content').width() / 2) - (logo.width() / 2));
-      $('<span></span>').prependTo('#editor_switch').corner('6px');
-      $('#editor_switch a').corner('6px').appendTo('#editor_switch span:first');
+      $(logo).css('left', ($('#site_bar_content').width() / 2) - ($(logo).width() / 2));
+      $('#editor_switch a').corner('6px').appendTo(
+        $('<span></span>').prependTo('#editor_switch').corner('6px')
+      );
     });
   </script>
 <% end -%>
@@ -44,6 +45,8 @@
         <span id='site_bar_company_name'>
           <%= RefinerySetting[:site_name] %>
         </span>
+
+        <%= link_to "Log out", logout_url(:only_path => true), :id => "logout" %>
       </div>
     <% end %>
   </div>

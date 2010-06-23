@@ -1,6 +1,6 @@
 # this page links to the inquiries plugin through a custom link_url
 contact_us:
-  title: Contact Us
+  title: Contact
   position: 4
   show_in_menu: true
   link_url: /contact

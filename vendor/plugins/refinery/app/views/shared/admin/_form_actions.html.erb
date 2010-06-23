@@ -1,5 +1,4 @@
 <%
-
   submit_button_text ||= t('.save')
   submit_button_id   ||= "submit_button"
 
@@ -11,29 +10,43 @@
 
   delete_button_text ||= t('.delete')
   delete_title       ||= t('.delete_title', :object_name => f.object.class.name.underscore.gsub("_", " "))
-  hide_delete        ||= from_dialog? || f.object.new_record? || (f.object.respond_to?(:deleteable?) && !f.object.deletable?)
+
+  hide_delete = (from_dialog? or
+                 !f.object.present? or f.object.new_record? or
+                 (f.object.respond_to?(:deletable?) && !f.object.deletable?)) unless defined?(hide_delete)
+
   delete_button_id   ||= "delete_button"
   delete_url         ||= eval("admin_#{f.object.class.name.underscore}_url(#{f.object.id})") unless hide_delete
-%>
-<div class='form-actions'>
-  <%= f.submit submit_button_text, :id => submit_button_id, :class => "wymupdate button" %>
+-%>
+<div class='form-actions<%= ' form-actions-dialog' if from_dialog? %>'>
+  <div class='form-actions-left'>
+    <%= submit_tag submit_button_text, :id => submit_button_id, :class => "wymupdate button" %>
 
-  <% if (continue_editing ||= false and !f.object.new_record?) -%>
-    <%= t('.or') %>
-    <%= render :partial => "/shared/admin/continue_editing", :locals => {:f => f} -%>
-  <% end -%>
+    <%= render :partial => "/shared/admin/continue_editing", :locals => {:f => f} if continue_editing ||= false and
+                                                                                     (!f.object.present? or !f.object.new_record?) -%>
+    <%= hidden_field_tag :continue_editing, false %>
 
-  <%= hidden_field_tag :continue_editing, false %>
-
-  <% unless hide_cancel -%>
-    <%= t('.or') %>
     <%# TODO add :what to t('.cancel_lose_changes') -%>
-    <%= link_to cancel_button_text, cancel_url, :title => cancel_title, :id => cancel_button_id, :class => "close_dialog button" %>
-  <% end -%>
-
-  <% unless hide_delete -%>
-    <%= t('.or') %>
+    <%= link_to(cancel_button_text,
+                cancel_url,
+                :title => cancel_title,
+                :id => cancel_button_id,
+                :class => "close_dialog button") unless hide_cancel %>
+  </div>
+  <div class='form-actions-right'>
     <%# TODO add :what to t('.cancel_lose_changes') -%>
-    <%= link_to(delete_button_text, delete_url, :title => delete_title, :id => delete_button_id, :class => "button confirm-delete") %>
-  <% end -%>
+    <%= link_to(delete_button_text,
+                delete_url,
+                :title => delete_title,
+                :id => delete_button_id,
+                :class => "button confirm-delete") unless hide_delete %>
+
+    <%= will_paginate paginate[:collection],
+                      :previous_label => '&laquo; ' + t('.previous'),
+                      :next_label => t('.next') + ' &raquo;',
+                      :renderer => Refinery::LinkRenderer,
+                      :url => paginate[:url] if ((paginate ||= {}).length > 0 &&
+                                                  paginate.keys.include?(:collection) &&
+                                                  paginate.keys.include?(:url)) %>
+  </div>
 </div>

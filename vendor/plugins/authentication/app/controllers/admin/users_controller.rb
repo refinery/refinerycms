@@ -21,8 +21,7 @@ class Admin::UsersController < Admin::BaseController
 
     if @user.save
       @user.plugins = @selected_plugin_names
-      flash[:notice] = t('refinery.crudify.created', :what => @user.login)
-      redirect_to :action => 'index'
+      redirect_to :action => 'index', :notice => t('refinery.crudify.created', :what => @user.login)
     else
       render :action => 'new'
     end
@@ -42,8 +41,7 @@ class Admin::UsersController < Admin::BaseController
     else
       @previously_selected_plugin_names = @user.plugins.collect{|p| p.name}
       if @user.update_attributes params[:user]
-        flash[:notice] = t('refinery.crudify.updated', :what => @user.login)
-        redirect_to admin_users_url
+        redirect_to admin_users_url, :notice => t('refinery.crudify.updated', :what => @user.login)
       else
         @user.plugins = @previously_selected_plugin_names
         @user.save

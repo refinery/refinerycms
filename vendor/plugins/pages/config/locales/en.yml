@@ -34,7 +34,7 @@ en:
         title: Title
         create_content_section: Create content section
         delete_content_section: Delete content section
-        hide_or_show_advanced_options: Hide/Show Advanced Options
+        advanced_options: Advanced Options
         explain_page_different_title: If you want the page to have a different title than the one that shows in the menu and browser title then enter it here.
         redirect_to_first_child: "Check this box if you want the visitor to be redirected to this page's first child page if this page is selected."
         parent_id_title: Parent

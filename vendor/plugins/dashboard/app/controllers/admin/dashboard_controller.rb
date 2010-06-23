@@ -19,11 +19,20 @@ class Admin::DashboardController < Admin::BaseController
       end
     end
 
-    @recent_activity = @recent_activity.compact.uniq.sort { |x,y|
+    @recent_activity = @recent_activity.compact.sort { |x,y|
       y.updated_at <=> x.updated_at
     }.first(activity_show_limit=RefinerySetting.find_or_set(:activity_show_limit, 7))
 
     @recent_inquiries = Inquiry.latest(activity_show_limit)
+  end
+
+  def disable_upgrade_message
+    RefinerySetting.find(:first, :conditions => {
+        :name => 'show_internet_explorer_upgrade_message',
+        :scoping => 'refinery'
+      }
+    ).update_attribute(:value, false)
+    render :nothing => true
   end
 
 end

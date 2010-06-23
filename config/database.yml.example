@@ -8,9 +8,12 @@ development:
   database: your_local_database
   <<: *login
 
-test:
+test: &test
   database: your_test_database
   <<: *login
+
+cucumber:
+  <<: *test
 
 production:
   database: your_production_database

@@ -9,7 +9,7 @@ class Refinery::I18n
       locales.has_key? locale.try(:to_sym)
     end
 
-    def enabled? 
+    def enabled?
       RefinerySetting.find_or_set(:refinery_i18n_enabled, false)
     end
 
@@ -50,4 +50,3 @@ end
 if RefinerySetting.table_exists?
   Refinery::I18n.setup!
 end
-

@@ -15,12 +15,27 @@ gem 'mysql', :require => 'mysql'
 # gem 'aws-s3'
 
 #===REFINERY REQUIRED GEMS===
-gem 'authlogic',      '~> 2.1.5', :require => 'authlogic'
-gem 'friendly_id',    '~> 3.0.4', :require => 'friendly_id'
-gem 'hpricot',        '~> 0.8', :require => 'hpricot'
-gem 'rails',          '= 2.3.8'
-gem 'rmagick',        '~> 2.12.2'
-gem 'will_paginate',  '~> 2.3.12', :require => 'will_paginate'
+gem 'acts_as_indexed', '= 0.6.2', :require => 'acts_as_indexed', :git => 'git://github.com/parndt/acts_as_indexed.git', :branch => 'master'
+gem 'authlogic',       '= 2.1.5', :require => 'authlogic'
+gem 'friendly_id',     '= 3.0.6', :require => 'friendly_id'
+gem 'rails',           '= 2.3.8'
+gem 'rmagick',         '~> 2.12.2'
+gem 'truncate_html',   '= 0.3.2', :require => 'truncate_html'
+gem 'will_paginate',   '= 2.3.14', :require => 'will_paginate'
+
+group :test do
+  gem 'rspec'
+  gem 'rspec-rails'
+  gem 'factory_girl'
+end
+
+group :cucumber do
+  gem 'cucumber-rails'
+  gem 'capybara'
+  gem 'factory_girl'
+  gem 'database_cleaner'
+  gem 'launchy'
+end
 #===REFINERY END OF REQUIRED GEMS===
 
 #===REQUIRED FOR REFINERY GEM INSTALL===
@@ -29,10 +44,6 @@ gem 'will_paginate',  '~> 2.3.12', :require => 'will_paginate'
 #===END OF REFINERY GEM INSTALL REQUIREMENTS===
 
 # Bundle gems for certain environments:
-group :test do
-  # gem 'rspec',       '1.2.9'
-  # gem 'rspec-rails', '1.2.9'
-end
 
 # Specify your application's gem requirements here. See the examples below:
 # gem "refinerycms-news", "~> 0.9.7", :require => "news"

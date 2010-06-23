@@ -6,7 +6,7 @@ class PagePart < ActiveRecord::Base
   alias_attribute :content, :body
 
   def to_param
-    "page_part_#{self.title.downcase.gsub(" ", "_")}"
+    "page_part_#{self.title.downcase.gsub(/\W/, '_')}"
   end
 
   before_save :normalise_text_fields

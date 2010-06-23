@@ -1,16 +1,46 @@
-<% use_caching = RefinerySetting.find_or_set(:use_resource_caching, false) -%>
+<%
+  # Internet Explorer is fine with JS caching, but cache CSS and kaboom.
+  # Would be great if someone could fix this?
+  js_caching = RefinerySetting.find_or_set(:use_resource_caching, !Refinery.s3_backend)
+  css_caching = js_caching && request.env['HTTP_USER_AGENT'] !~ /MSIE/
+-%>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<% if request.env['HTTP_USER_AGENT'] =~ /MSIE/%>
+  <!--[if lt IE 9]>
+    <%= javascript_include_tag('http://html5shiv.googlecode.com/svn/trunk/html5.js') %>
+  <![endif]-->
+<% end %>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <title><%= RefinerySetting.find_or_set(:site_name, 'Company Name') %> - Refinery</title>
-  <%= "<!--[if lt IE 9]>#{javascript_include_tag('http://html5shiv.googlecode.com/svn/trunk/html5.js')}<![endif]-->" if request.env['HTTP_USER_AGENT'] =~ /MSIE/ %>
-  <%= stylesheet_link_tag 'refinery/site_bar', 'refinery/refinery', 'refinery/ui', 'refinery/tooltips', "wymeditor/skins/refinery/skin", :cache => (use_caching ? "cache/refinery" : false) %>
-  <%= render :partial => "/shared/admin/head_before_javascript_libraries" -%>
-  <%= jquery_include_tags(:caching => use_caching) %>
-  <%= javascript_include_tag 'jquery/jquery.corner.js', :cache => (use_caching ? "cache/jquery-plugins" : false) %>
+
+  <%= stylesheet_link_tag 'refinery/site_bar',
+                          'refinery/refinery',
+                          'refinery/ui',
+                          'refinery/tooltips',
+                          'wymeditor/skins/refinery/skin',
+                          :cache => (css_caching ? "cache/refinery" : false) %>
+
+  <%= yield :head_before_javascript_libraries -%>
+
+  <%= jquery_include_tags(:caching => js_caching) %>
+
+  <%= javascript_include_tag 'jquery/jquery.corner.js',
+                             'jquery/jquery.textTruncate.js',
+                             'jquery/jquery.html5-placeholder-shim.js',
+                             'jquery/jquery.timers.js',
+                             :cache => (js_caching ? "cache/jquery-plugins" : false) %>
+
   <%= javascript_include_tag 'i18n' %>
   <script type='text/javascript'>I18n.locale = '<%= I18n.locale %>';</script>
+
   <%= yield :head_after_javascript_libraries %>
-  <%= javascript_include_tag 'wymeditor/jquery.refinery.wymeditor.js', 'admin', 'refinery/boot_wym', 'refinery/admin', :cache => (use_caching ? "cache/admin" : false) %>
-  <%= javascript_include_tag "http://fbug.googlecode.com/svn/lite/branches/firebug1.3/build/firebug-lite.js" if RefinerySetting.find_or_set(:show_firebug_lite, false) -%>
+
+  <%= javascript_include_tag 'wymeditor/jquery.refinery.wymeditor.js',
+                             'admin',
+                             'refinery/boot_wym',
+                             'refinery/admin',
+                             :cache => (js_caching ? "cache/admin" : false) %>
+
+  <%= "<!--[if lt IE 8]>#{stylesheet_link_tag 'refinery/ie'}<![endif]-->".html_safe if request.env['HTTP_USER_AGENT'] =~ /MSIE/ %>
   <%= yield :head %>
 </head>

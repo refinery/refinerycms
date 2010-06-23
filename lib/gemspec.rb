@@ -2,10 +2,15 @@
 version = File.read(File.expand_path('../../VERSION', __FILE__)).strip
 raise "Could not get version so gemspec can not be built" if version.nil?
 files = %w( .gems .gitignore .yardopts Gemfile Rakefile readme.md license.md VERSION todo.md public/.htaccess )
-%w(app bin config db lib public script test themes vendor).each do |dir|
+%w(app bin config db features lib public script test themes vendor).sort.each do |dir|
   files += Dir.glob("#{dir}/**/*")
 end
-files.reject!{|f| f =~ /public\/system/ or f =~ /config\/database.yml$/}
+=begin
+File.readlines(File.expand_path('../../.gitignore', __FILE__)).each do |line|
+  files.reject!{|f| f =~ Regexp.new(line)} rescue nil
+end
+=end
+files.reject!{|f| f =~ /^(public\/system)|(config\/database.yml$)|(vendor\/cache)|(.+\.rbc)/}
 
 gemspec = <<EOF
 Gem::Specification.new do |s|
@@ -16,15 +21,15 @@ Gem::Specification.new do |s|
   s.summary           = %q{A beautiful open source Ruby on Rails content manager for small business.}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
-  s.authors           = %w(Resolve\ Digital David\ Jones Philip\ Arndt)
+  s.authors           = %w(Resolve\\ Digital David\\ Jones Philip\\ Arndt)
   s.require_paths     = %w(lib)
   s.executables       = %w(refinery refinery-update-core)
 
   s.files             = [
-    '#{files.join("',\n\t\t'")}'
+    '#{files.join("',\n    '")}'
   ]
   s.test_files        = [
-    '#{Dir.glob("test/**/*.rb").join("',\n\t\t'")}'
+    '#{Dir.glob("test/**/*.rb").join("',\n    '")}'
   ]
 end
 EOF

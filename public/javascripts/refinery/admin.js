@@ -1,27 +1,36 @@
 var shiftHeld = false;
 $(document).ready(function(){
-
-  $('input:submit').not('.button').addClass('button');
-  $('.button, #editor_switch a').corner("6px");
-  $('<span></span>').prependTo('#editor_switch').corner('6px');
-  $('#editor_switch a').appendTo('#editor_switch span:first');
-  $('#recent_activity li a, #recent_inquiries li a').each(function(i, a) {
-    $(this).textTruncate({
-      width: $(this).width()
-  		, tooltip: false
-  	})
-	});
-
+  init_interface();
   init_flash_messages();
   init_delete_confirmations();
   init_sortable_menu();
   init_submit_continue();
   init_modal_dialogs();
   init_tooltips();
+});
 
-  // make sure that users can tab to wymeditor fields.
+init_interface = function() {
+  $('input:submit:not(.button)').addClass('button');
+
+  $('.button, #editor_switch a').corner('6px');
+  $('#editor_switch a').appendTo($('<span></span>').prependTo('#editor_switch').corner('6px'));
+  $('#page_container, .wym_box').corner('5px bottom');
+  $('.wym_box').corner('5px tr');
+  $('.wym_iframe iframe').corner('2px');
+  $('.form-actions:not(".form-actions-dialog")').corner('5px');
+  $('#recent_activity li a, #recent_inquiries li a').each(function(i, a) {
+    $(this).textTruncate({
+      width: $(this).width()
+      , tooltip: false
+    });
+  });
+
+  // make sure that users can tab to wymeditor fields and add an overlay while loading.
   $('textarea.wymeditor').each(function() {
     textarea = $(this);
+    /*overlay = $("<div class='wym_loading_overlay'>&nbsp;</div>")
+              .css({'height': textarea.height(), 'width': textarea.width()});
+    textarea.before(overlay);*/
     if ((instance = WYMeditor.INSTANCES[$(textarea.next('.wym_box').find('iframe').attr('id').split('_')).last().get(0)]) != null) {
       textarea.parent().next().find('input, textarea').keydown($.proxy(function(e) {
         shiftHeld = e.shiftKey;
@@ -43,9 +52,13 @@ $(document).ready(function(){
 
   // focus first field in an admin form.
   $('form input[type=text]:first').focus();
-  $('#content, .wym_box').corner('5px bottom');
-  $('.wym_iframe iframe').corner('2px bottom');
-});
+
+  // ensure that the menu isn't wider than the page_container or else it looks silly to round that corner.
+  var last_item_offset = (last_item = $('#menu a:visible:last')).offset();
+  if (last_item_offset && ((last_item_offset.left + last_item.outerWidth() - $('#menu').offset().left + 5) < $('#page_container').outerWidth())) {
+    $("#page_container:not('.login #page_container')").corner('5px tr');
+  }
+}
 
 init_delete_confirmations = function() {
   $('a.confirm-delete').click(function(e) {
@@ -87,7 +100,7 @@ init_modal_dialogs = function(){
       if ($.browser.msie) {
         iframe.css({'margin':'-2px 2px 2px -2px'});
       }
-      //$(document.body).addClass('hide-overflow');
+      $(document.body).addClass('hide-overflow');
       e.preventDefault();
     });
   });
@@ -115,7 +128,6 @@ init_sortable_menu = function(){
     e.preventDefault();
     $('#menu_reorder, #menu_reorder_done').toggle();
     $('#site_bar, #header >*:not(#header_content, #menu, script), #content').fadeTo(500, 0.65);
-    $('#logout').fadeTo(500, 0.3);
     $menu.find('.tab a').click(function(ev){
       ev.preventDefault();
     });
@@ -126,7 +138,7 @@ init_sortable_menu = function(){
   $menu.find('#menu_reorder_done').click(function(e){
     e.preventDefault();
     $('#menu_reorder, #menu_reorder_done').toggle();
-    $('#site_bar, #header >*:not(#header_content, #menu, script), #content, #logout').fadeTo(500, 1);
+    $('#site_bar, #header >*:not(#header_content, #menu, script), #content').fadeTo(500, 1);
     $menu.find('.tab a').unbind('click');
 
     $menu.sortable('disable');
@@ -138,10 +150,16 @@ init_sortable_menu = function(){
 init_submit_continue = function(){
   $('#submit_continue_button').click(submit_and_continue);
 
-  if ($('#continue_editing').length > 0) {
+  $('form').change(function(e) {
+    $(this).attr('data-changes-made', true);
+  });
+
+  if ((continue_editing = $('#continue_editing')).length > 0 && continue_editing.attr('rel') != 'no-prompt') {
     $('#editor_switch a').click(function(e) {
-      if (!confirm("Any changes you've made will be lost. Are you sure you want to continue without saving?")) {
-        e.preventDefault();
+      if ($('form[data-changes-made]').length > 0) {
+        if (!confirm("Any changes you've made will be lost. Are you sure you want to continue without saving?")) {
+          e.preventDefault();
+        }
       }
     });
   }
@@ -163,8 +181,8 @@ submit_and_continue = function(e, redirect_to) {
   $('#flash_container .errorExplanation').remove();
 
   $.post($('#continue_editing').get(0).form.action, $($('#continue_editing').get(0).form).serialize(), function(data) {
-    if ((flash_container = $('#flash_container')).length > 0) {
-      flash_container.html(data);
+    if (($flash_container = $('#flash_container')).length > 0) {
+      $flash_container.html(data);
 
       $('#flash').css('width', 'auto').fadeIn(550);
 
@@ -194,19 +212,69 @@ init_tooltips = function(args){
   {
     // create tooltip on hover and destroy it on hoveroff.
     $(element).hover(function(e) {
-      tooltip = $("<div class='tooltip'></div>").html($(this).attr('tooltip')).corner('6px').appendTo($('#tooltip_container'));
-      tooltip.css('maxWidth', '300px');
-      tooltip.css('left', ((left = $(this).offset().left - (tooltip.outerWidth() / 2) + ($(this).outerWidth() / 2)) >= 0 ? left : 0));
+      $(this).oneTime(350, 'tooltip', $.proxy(function() {
+        $('.tooltip').remove();
+        tooltip = $("<div class='tooltip'><div><span></span></div></div>").corner('6px').appendTo('#tooltip_container');
+        tooltip.find("span").html($(this).attr('tooltip')).corner('6px');
 
-      if ((tooltip.offset().left + tooltip.outerWidth) > (window_width = $(window).width())) {
-        tooltip.css('left', window_width - tooltip.outerWidth);
-      }
+        nib = $("<img src='/images/refinery/tooltip-nib.png' class='tooltip-nib'/>").appendTo('#tooltip_container');
 
-      tooltip.css('top', $(this).offset().top - tooltip.outerHeight() - 8);
+        tooltip.css({
+          'opacity': 0
+          , 'maxWidth': '300px'
+          , 'left': ((left = $(this).offset().left - (tooltip.outerWidth() / 2) + ($(this).outerWidth() / 2)) >= 0 ? left : 0)
+        });
 
-      tooltip.show();
+        var tooltip_offset = tooltip.offset();
+        var tooltip_outer_width = tooltip.outerWidth();
+        if (tooltip_offset && (tooltip_offset.left + tooltip_outer_width) > (window_width = $(window).width())) {
+          tooltip.css('left', window_width - tooltip_outer_width);
+        }
+
+        tooltip.css({
+          'top': $(this).offset().top - tooltip.outerHeight() - 2
+        })
+
+        nib.css({
+          'opacity': 0
+        });
+
+        if (tooltip_offset = tooltip.offset()) {
+          nib.css({
+            'left': tooltip_offset.left + (tooltip_outer_width / 2) - 5
+            , 'top': tooltip_offset.top + tooltip.height()
+          });
+        }
+
+        try {
+          tooltip.animate({
+            top: tooltip_offset.top - 10
+            , opacity: 1
+          }, 200, 'swing');
+          nib.animate({
+            top: nib.offset().top - 10
+            , opacity: 1
+          }, 200);
+        } catch(e) {
+          tooltip.show();
+          nib.show();
+        }
+      }, $(this)));
+
     }, function(e) {
-      $('.tooltip').remove();
+      $(this).stopTime('tooltip');
+      (tooltip = $('.tooltip')).css('z-index', '-1').animate({
+        top: tooltip.offset().top - 20
+        , opacity: 0
+      }, 125, 'swing', function(){
+        $(this).remove();
+      });
+      (nib = $('.tooltip-nib')).animate({
+        top: nib.offset().top - 20
+        , opacity: 0
+      }, 125, 'swing', function(){
+        $(this).remove();
+      })
     });
     if ($(element).attr('tooltip') == null) {
       $(element).attr({'tooltip': $(element).attr('title'), 'title': ''});
@@ -241,7 +309,7 @@ var link_dialog = {
   },
 
   init_resources_submit: function(){
-    $('#dialog-form-actions #submit_button').click(function(e){
+    $('#existing_resource_area .form-actions-dialog #submit_button').click(function(e){
       e.preventDefault();
       if((resource_selected = $('#existing_resource_area_content ul li.linked a')).length > 0) {
         resourceUrl = parseURL(resource_selected.attr('href'));
@@ -269,22 +337,24 @@ var link_dialog = {
       }
     });
 
-    $('#dialog-form-actions #cancel_button').click(function(e){
+    $('.form-actions-dialog #cancel_button').click(function(e){
       e.preventDefault();
       parent.tb_remove();
     });
   },
 
   init_close: function(){
-    $('#dialog-form-actions #cancel_button').click(function(e){
-      if (parent && typeof(parent.$) == "function") {
-    //    parent.$(document.body).removeClass('hide-overflow');
-        parent.$('.ui-dialog').dialog('close').remove();
-      } else {
-        $('.ui-dialog').dialog('close').remove();
-    //    $(document.body).removeClass('hide-overflow');
-      }
-    });
+    $('.form-actions-dialog #cancel_button').click(close_dialog);
+
+    if (parent
+        && parent.document.location.href != document.location.href
+        && parent.document.getElementById('wym_dialog_submit') != null) {
+      $('#dialog_container .form-actions input#submit_button').click(function(e) {
+        e.preventDefault();
+        $(parent.document.getElementById('wym_dialog_submit')).click();
+      });
+      $('#dialog_container .form-actions a.close_dialog').click(close_dialog);
+    }
   },
 
   switch_area: function(area){
@@ -579,6 +649,7 @@ var image_dialog = {
       $(img).parent().addClass('selected');
       var imageUrl = parseURL($(img).attr('src'));
       var imageThumbnailSize = $('#existing_image_size_area li.selected a').attr('rel');
+      //alert(imageThumbnailSize);
       var relevant_src = imageUrl.pathname.replace('_dialog_thumb', ('_' + imageThumbnailSize));
       if (imageUrl.protocol == "" && imageUrl.hostname == "system") {
         relevant_src = "/system" + relevant_src;
@@ -607,35 +678,33 @@ var image_dialog = {
 
   , submit_image_choice: function(e) {
     e.preventDefault();
-    if((img_selected = $('#existing_image_area_content ul li.selected img').get(0)) && typeof(this.callback) == "function") {
+    if((img_selected = $('#existing_image_area_content ul li.selected img').get(0)) && $.isFunction(this.callback))
+    {
       this.callback(img_selected);
     }
 
-    this.close_dialog(e);
-  }
-
-  , close_dialog: function(e) {
-    if (parent && typeof(parent.$) == "function") {
-//      parent.parent.$(document.body).removeClass('hide-overflow');
-      parent.$('.ui-dialog').dialog('close').remove();
-    } else {
-      $('.ui-dialog').dialog('close').remove();
-//      $(document.body).removeClass('hide-overflow');
-    }
-
-    e.preventDefault();
+    close_dialog(e);
   }
 
   , init_actions: function(){
     var _this = this;
-    $('#dialog-form-actions #submit_button').click($.proxy(_this.submit_image_choice, _this));
-    $('#dialog-form-actions #cancel_button').click($.proxy(_this.close_dialog, _this));
+    $('#existing_image_area .form-actions-dialog #submit_button').click($.proxy(_this.submit_image_choice, _this));
+    $('.form-actions-dialog #cancel_button').click($.proxy(close_dialog, _this));
     $('#existing_image_size_area ul li a').click(function(e) {
       $('#existing_image_size_area ul li').removeClass('selected');
       $(this).parent().addClass('selected');
       image_dialog.set_image($('#existing_image_area_content ul li.selected img'));
       e.preventDefault();
     });
+
+    if (parent && parent.document.location.href != document.location.href
+        && parent.document.getElementById('wym_dialog_submit') != null) {
+      $('#existing_image_area .form-actions input#submit_button').click($.proxy(function(e) {
+        e.preventDefault();
+        $(this.document.getElementById('wym_dialog_submit')).click();
+      }, parent));
+      $('#existing_image_area .form-actions a.close_dialog').click(close_dialog);
+    }
   }
 }
 
@@ -648,19 +717,31 @@ var list_reorder = {
   , enable_reordering: function(e) {
     if(e) { e.preventDefault(); }
 
-    list_reorder.sortable_list.find('li').each(function(index, li) {
+    sortable_options = {
+      'tolerance': 'pointer'
+      , 'placeholder': 'placeholder'
+      , 'cursor': 'drag'
+      , 'items': 'li'
+      , 'axis': 'y'
+    };
+
+    $(list_reorder.sortable_list).find('li').each(function(index, li) {
       if ($('ul', li).length) { return; }
       $("<ul></ul>").appendTo(li);
     });
 
-    list_reorder.sortable_list.add(list_reorder.sortable_list.find('ul')).sortable({
-      'connectWith': $(list_reorder.sortable_list.find('ul'))
-			, 'tolerance': 'pointer'
-			, 'placeholder': 'placeholder'
-			, 'cursor': 'drag'
-			, 'items': 'li'
-			, 'axis': 'y'
-    });
+    if (list_reorder.tree && !$.browser.msie) {
+      $(list_reorder.sortable_list).parent().nestedSortable($.extend(sortable_options, {
+        'maxDepth': 1
+        , 'placeholderElement': 'li'
+      }));
+      $(list_reorder.sortable_list).addClass('ui-sortable');
+    } else {
+      $(list_reorder.sortable_list).sortable(sortable_options);
+    }
+
+    $('#site_bar, #header > *:not(script)').fadeTo(500, 0.3);
+    $('#actions *:not("#reorder_action_done, #reorder_action")').not($('#reorder_action_done').parents('li, ul')).fadeTo(500, 0.55);
 
     $('#reorder_action').hide();
     $('#reorder_action_done').show();
@@ -687,32 +768,41 @@ var list_reorder = {
 
     if (list_reorder.update_url != null) {
       serialized = "";
-  	  list_reorder.sortable_list.find('> li[id]').each(function(index, li) {
+      list_reorder.sortable_list.find('> li[id]').each(function(index, li) {
         if (list_reorder.tree) {
-  	      serialized += list_reorder.parse_branch([index], li);
+          serialized += list_reorder.parse_branch([index], li);
         }
         else {
           serialized += "&sortable_list[]=" + $($(li).attr('id').split('_')).last().get(0);
         }
-  	  });
-  	  serialized += "&tree=" + list_reorder.tree;
-  	  serialized += "&authenticity_token=" + encodeURIComponent($('#reorder_authenticity_token').val());
-  	  serialized += "&continue_reordering=false";
+      });
+      serialized += "&tree=" + list_reorder.tree;
+      serialized += "&authenticity_token=" + encodeURIComponent($('#reorder_authenticity_token').val());
+      serialized += "&continue_reordering=false";
 
       $.post(list_reorder.update_url, serialized, function(data) {
-        $(list_reorder.sortable_list.get(0)).html(data);
+        $(list_reorder.sortable_list).html(data);
 
-        $(list_reorder.sortable_list).removeClass('reordering').sortable('destroy');
-
-        $('#reorder_action_done').hide();
-        $('#reorder_action').show();
+        list_reorder.restore_controls(e);
       });
     } else {
-      $(list_reorder.sortable_list).removeClass('reordering').sortable('destroy');
+      list_reorder.restore_controls(e);
+    }
+  }
 
+  , restore_controls: function(e) {
+    if (list_reorder.tree && !$.browser.msie) {
+      list_reorder.sortable_list.add(list_reorder.sortable_list.find('ul, li')).draggable('destroy');
+    } else {
+      $(list_reorder.sortable_list).sortable('destroy');
+    }
+    $(list_reorder.sortable_list).removeClass('reordering, ui-sortable');
+
+    $('#site_bar, #header > *:not(script)').fadeTo(250, 1);
+    $('#actions *:not("#reorder_action_done, #reorder_action")').not($('#reorder_action_done').parents('li, ul')).fadeTo(250, 1, function() {
       $('#reorder_action_done').hide();
       $('#reorder_action').show();
-    }
+    });
   }
 }
 
@@ -773,41 +863,56 @@ var resource_picker = {
   }
 }
 
+close_dialog = function(e) {
+  if (parent
+      && parent.document.location.href != document.location.href
+      && $.isFunction(parent.$))
+  {
+    $(parent.document.body).removeClass('hide-overflow');
+    parent.$('.ui-dialog').dialog('close').remove();
+  } else {
+    $(document.body).removeClass('hide-overflow');
+    $('.ui-dialog').dialog('close').remove();
+  }
+
+  e.preventDefault();
+}
+
 //parse a URL to form an object of properties
 parseURL = function(url)
 {
-	//save the unmodified url to href property
-	//so that the object we get back contains
-	//all the same properties as the built-in location object
-	var loc = { 'href' : url };
+  //save the unmodified url to href property
+  //so that the object we get back contains
+  //all the same properties as the built-in location object
+  var loc = { 'href' : url };
 
-	//split the URL by single-slashes to get the component parts
-	var parts = url.replace('//', '/').split('/');
+  //split the URL by single-slashes to get the component parts
+  var parts = url.replace('//', '/').split('/');
 
-	//store the protocol and host
-	loc.protocol = parts[0];
-	loc.host = parts[1];
+  //store the protocol and host
+  loc.protocol = parts[0];
+  loc.host = parts[1];
 
-	//extract any port number from the host
-	//from which we derive the port and hostname
-	parts[1] = parts[1].split(':');
-	loc.hostname = parts[1][0];
-	loc.port = parts[1].length > 1 ? parts[1][1] : '';
+  //extract any port number from the host
+  //from which we derive the port and hostname
+  parts[1] = parts[1].split(':');
+  loc.hostname = parts[1][0];
+  loc.port = parts[1].length > 1 ? parts[1][1] : '';
 
-	//splice and join the remainder to get the pathname
-	parts.splice(0, 2);
-	loc.pathname = '/' + parts.join('/');
+  //splice and join the remainder to get the pathname
+  parts.splice(0, 2);
+  loc.pathname = '/' + parts.join('/');
 
-	//extract any hash and remove from the pathname
-	loc.pathname = loc.pathname.split('#');
-	loc.hash = loc.pathname.length > 1 ? '#' + loc.pathname[1] : '';
-	loc.pathname = loc.pathname[0];
+  //extract any hash and remove from the pathname
+  loc.pathname = loc.pathname.split('#');
+  loc.hash = loc.pathname.length > 1 ? '#' + loc.pathname[1] : '';
+  loc.pathname = loc.pathname[0];
 
-	//extract any search query and remove from the pathname
-	loc.pathname = loc.pathname.split('?');
-	loc.search = loc.pathname.length > 1 ? '?' + loc.pathname[1] : '';
-	loc.pathname = loc.pathname[0];
+  //extract any search query and remove from the pathname
+  loc.pathname = loc.pathname.split('?');
+  loc.search = loc.pathname.length > 1 ? '?' + loc.pathname[1] : '';
+  loc.pathname = loc.pathname[0];
 
-	//return the final object
-	return loc;
+  //return the final object
+  return loc;
 }

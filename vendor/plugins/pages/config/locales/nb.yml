@@ -8,7 +8,7 @@ nb:
         title: Tittel
         create_content_section: Opprett innholdsseksjon
         delete_content_section: Slett innholdsseksjon
-        hide_or_show_advanced_options: Vis/Skjul Avanserte Instillinger
+        advanced_options: Avanserte Instillinger
         explain_page_different_title: Om du ønsker at siden skal ha en annen tittel enn den som vises i menyen skriv inn en ny her.
         redirect_to_first_child: "Kryss av om du ønsker at besøkende skal bli omdirigert til det første barnet til denne siden om denne siden er valgt"
         parent_id_title: Forelder

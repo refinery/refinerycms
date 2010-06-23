@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100530205942) do
+ActiveRecord::Schema.define(:version => 20100608062447) do
 
   create_table "images", :force => true do |t|
     t.integer  "parent_id"
@@ -86,6 +86,7 @@ ActiveRecord::Schema.define(:version => 20100530205942) do
     t.boolean  "destroyable", :default => true
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "scoping"
   end
 
   add_index "refinery_settings", ["name"], :name => "index_refinery_settings_on_name"

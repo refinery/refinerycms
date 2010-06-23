@@ -1,7 +1,14 @@
-<p>
-  <%= link_to "&raquo;" + t('.hide_or_show_advanced_options'), "#", :id => "toggle_advanced_options",
-        :rel => "Click to access meta tag settings and menu options" %>
-</p>
+<div id='more_options_field'>
+  <p>
+    <%= link_to t('.advanced_options'), "#",
+                :id => 'toggle_advanced_options',
+                :rel => 'Click to access meta tag settings and menu options' %>
+  </p>
+  <span id='draft_field'>
+    <%= f.check_box :draft %>
+    <%= f.label :draft, t('.save_as_draft'), :class => "stripped" %>
+  </span>
+</div>
 <div id='more_options' style="display:none;">
   <div class="hemisquare">
     <h2>Page Options</h2>
@@ -10,55 +17,45 @@
     <h3><%= Page.human_attribute_name :parent_id %></h3>
     <div class='field'>
       <span class='label_with_help'>
-        <%= f.label :parent_id %>
-        <span tooltip="Here you can specify which page this page is nested underneath for the menu." class='help'>
-          (help)
-        </span>
+        <%= f.label :parent_id, "Parent page" %>
+        <%= refinery_help_tag 'You can put a page under another page by selecting it in the list. If you want this page to be a top-level page, just leave it blank.' %>
       </span>
       <%= f.collection_select :parent_id, @pages_for_parents_list, :id, :indented_title, {:include_blank => true}, :class => 'widest' %>
     </div>
     <div class='field'>
       <span class='label_with_help'>
         <%= label_tag :custom_title %>
-        <span tooltip="If you want the page to have a different title than the one that shows in the menu and browser title then select 'Text' and enter it here." class='help'>
-          (help)
-        </span>
+        <%= refinery_help_tag "If you want the page to have a different title than the one that shows in the menu then select 'Text' and enter it here." %>
       </span>
-      <% ["none", "text"].each do |type| %>
+      <% %w(none text).each do |type| %>
         <%= f.radio_button :custom_title_type, "#{type}" %>
         <%= label_tag "page_custom_title_type_#{type}", "#{type.titleize}", :class => "stripped" %>
       <% end %>
       <div id='custom_title_none'></div>
       <div id='custom_title_text' style='display: <%= @page.custom_title_type == 'text' ? 'block' : 'none' %>'>
-        <%= f.text_field :custom_title, {:size => 103} %>
+        <%= f.text_field :custom_title, :class => 'widest' %>
       </div>
     </div>
     <div class='field'>
       <span class='label_with_help'>
         <%= label_tag :skip_to_first_child?, "Skip top-level page" %>
-        <span tooltip='This option makes this page link to the first page underneath it instead so this page is then only useful for grouping pages together under your menu.' class='help'>
-          (help)
-        </span>
+        <%= refinery_help_tag 'This option makes this page link to the first page underneath. This can be useful when grouping pages together.' %>
       </span>
       <%= f.check_box :skip_to_first_child %>
       <%= f.label :skip_to_first_child, "Redirect visitors to the first sub-level page.", :class => "stripped" %>
     </div>
     <div class='field'>
       <span class='label_with_help'>
-        <%= f.label :link_url, "Custom URL" %>
-        <span tooltip='Enter a URL if this page links somewhere else, e.g. your contact page. <br/>
-        Note: This must link to an existing location, nothing will not be created.' class='help'>
-          (help)
-        </span>
+        <%= f.label :link_url, "Forward this page to another website or page" %>
+        <%= refinery_help_tag 'If you want this page to go to another website or page when you click this page in the menu, enter a URL. e.g. http://google.com otherwise leave it blank' %>
       </span>
-      <%= f.text_field :link_url %>
+      <%= f.text_field :link_url, :class => 'widest' %>
     </div>
     <div class='field'>
       <span class='label_with_help'>
         <%= f.label :show_in_menu, "Show in menu", :id => 'page_show_in_menu_heading' %>
-        <span tooltip="You can prevent this page from showing up in your site's menu by unchecking this option, otherwise it will show." class='help'>
-          (help)
-        </span>
+        <%= refinery_help_tag "Uncheck this box if you want to remove a page from your site menu.
+                               This can be handy if you have a page you want to link people to directly but don't want to show the page in the menu" %>
       </span>
       <%= f.check_box :show_in_menu %>
       <%= f.label :show_in_menu, "Display this page in the site menu", :class => "stripped" %>
@@ -66,9 +63,4 @@
   </div>
 
   <%= render :partial => "form_advanced_options_seo", :locals => {:f => f} if RefinerySetting.find_or_set(:pages_advanced_options_include_seo, true) %>
-</div>
-<div class='field'>
-  <label><%= t('.draft') %></label>
-  <%= f.check_box :draft %>
-  <%= f.label :draft, t('.save_as_draft'),  :class => "stripped" %>
 </div>

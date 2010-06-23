@@ -8,7 +8,7 @@ de:
         title: Title
         create_content_section: Inhaltsbereich erstellen
         delete_content_section: Inhaltsbereich löschen
-        hide_or_show_advanced_options: Erweiterte Optionen ein-/ausblenden
+        advanced_options: Erweiterte Optionen
         explain_page_different_title: Geben Sie hier einen Seitentitel ein, wenn Sie nicht möchten, dass der Menü- und Browsertitel als Seitentitel verwendet wird.
         redirect_to_first_child: "Checken Sie diese Box, wenn der Besucher zur ersten Unterseite dieser Seite weitergeleitet werden soll, wenn diese SEite aufgerufen wird."
         parent_id_title: Übergeordnet

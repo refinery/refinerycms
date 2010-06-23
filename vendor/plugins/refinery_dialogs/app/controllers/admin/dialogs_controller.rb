@@ -24,4 +24,8 @@ class Admin::DialogsController < Admin::BaseController
     end
   end
 
+  def from_dialog?
+    true
+  end
+
 end

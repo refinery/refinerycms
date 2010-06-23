@@ -46,13 +46,27 @@ module Refinery
       # Set up configuration that is rather specific to Refinery. (some plugins require on other more 'core' plugins).
       # We do make sure we check that things haven't already been set in the application.
       configuration.plugin_loader = Refinery::PluginLoader unless configuration.plugin_loader != Rails::Plugin::Loader
-      configuration.plugins = [ :i18n, :acts_as_indexed, :authlogic, :friendly_id, :all ] if configuration.plugins.nil?
+      configuration.plugins = [ :i18n, :authlogic, :friendly_id, :refinery, :all ] if configuration.plugins.nil?
 
       # Pass our configuration along to Rails.
       Rails.configuration = configuration
 
       # call Rails' run
       super
+
+      # Prevent page slugs from using any routes used by registered engines. (Needs updating for Rails3)
+      if defined?(Page)
+        # First we need to find out all of the routes in use by this application.
+        reserved_routes = ActionController::Routing::Routes.routes.collect do |route|
+          route.segments.inject("") {|str, segment| str << segment.to_s.gsub(/\(\.:format\)\?/, '') }
+        end
+
+        # Now we need just the first part of the routing segment.
+        reserved_routes = reserved_routes.collect { |segment| segment.gsub(/^\//, '').split('/').first}.compact.uniq.reject {|r| r =~ /^:/ }
+
+        # Now append all of the routes to the reserved words list and ensure they're all unique.
+        (Page.friendly_id_config.reserved_words += reserved_routes).uniq!
+      end
 
       # Create deprecations for variables that we've stopped using (possibly remove in 1.0?)
       require 'refinery/deprecations'

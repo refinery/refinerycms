@@ -20,9 +20,19 @@ module Refinery::ApplicationHelper
       parts = match.split(".")
       extension = parts.pop
       content.gsub!(match, "#{parts.join(".")}_#{thumbnail}.#{extension}")
-    end
+    end unless content.blank?
 
     return content
+  end
+
+  # This was extracted from REFINERY_ROOT/vendor/plugins/refinery/app/views/shared/_menu_branch.html.erb
+  # to remove the complexity of that template by reducing logic in the view.
+  def css_for_menu_branch(menu_branch, menu_branch_counter)
+    css = []
+    css << "selected" if selected_page?(menu_branch) or descendant_page_selected?(menu_branch)
+    css << "first" if menu_branch_counter == 0
+    css << "last" if menu_branch_counter == (sibling_count ||= menu_branch.shown_siblings.size)
+    css
   end
 
   # Determines whether any page underneath the supplied page is the current page according to rails.
@@ -58,7 +68,7 @@ module Refinery::ApplicationHelper
   # Use <%= jquery_include_tags %> to include it in your <head> section.
   def jquery_include_tags(options={})
     # Merge in options
-    options = { :caching => RefinerySetting.find_or_set(:use_resource_caching, true),
+    options = { :caching => RefinerySetting.find_or_set(:use_resource_caching, !Refinery.s3_backend),
                 :google => RefinerySetting.find_or_set(:use_google_ajax_libraries, false),
                 :jquery_ui => true
               }.merge(options)
@@ -66,9 +76,10 @@ module Refinery::ApplicationHelper
     # render the tags normally unless
     unless options[:google] and !local_request?
       if options[:jquery_ui]
-        javascript_include_tag 'jquery', 'jquery-ui', :cache => (options[:caching] ? "cache/libraries" : nil)
+        javascript_include_tag  "jquery#{"-min" if Rails.env.production?}", "jquery-ui-custom-min",
+                                :cache => (options[:caching] ? "cache/jquery" : nil)
       else
-        javascript_include_tag 'jquery'
+        javascript_include_tag "jquery#{"-min" if Rails.env.production?}"
       end
     else
       "#{javascript_include_tag("http://www.google.com/jsapi").gsub(".js", "")}
@@ -127,6 +138,12 @@ module Refinery::ApplicationHelper
     else
       return "<#{options[:ancestors][:tag]} class='#{options[:ancestors][:class]}'>#{title.join options[:ancestors][:separator]}#{options[:ancestors][:separator]}</#{options[:ancestors][:tag]}>#{final_title}"
     end
+  end
+
+  # Returns <span class='help' title='Your Input'>(help)</span>
+  # Remember to wrap your block with <span class='label_with_help'></span> if you're using a label next to the help tag.
+  def refinery_help_tag(title='')
+    "<span class='help' title='#{title}'>(help)</span>"
   end
 
   # This is just a quick wrapper to render an image tag that lives inside refinery/icons.
