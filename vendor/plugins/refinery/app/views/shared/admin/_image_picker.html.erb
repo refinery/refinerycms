@@ -9,7 +9,7 @@
 
 <div id='current_image_container_<%= randomiser %>'<%= " style='display: none'" if toggle_image_display %> style="margin-top: 10px;">
 <%# TODO translate update :what of .change %>
-  <a id='current_image_link_<%= randomiser %>' href="<%= insert_admin_images_url(:dialog => true, :callback => "image_picker_#{randomiser}_changed", :width => 958, :height => 510) %>" style='border: 0px' title='<%= t('.change', :what =>  description.titleize) %>' name='<%= t.('change', :what => description.titleize) %>' class='dialog'>
+  <a id='current_image_link_<%= randomiser %>' href="<%= insert_admin_images_url(:dialog => true, :callback => "image_picker_#{randomiser}_changed", :width => 958, :height => 510) %>" style='border: 0px' title='<%= t('.change', :what =>  description.titleize) %>' name='<%= t('.change', :what => description.titleize) %>' class='dialog'>
     <% unless image.nil? -%>
       <%= image_fu image, :medium, {:class => "brown_border", :id => "current_picked_image_#{randomiser}"} %>
     <% else -%>
