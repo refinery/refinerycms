@@ -48,7 +48,7 @@ class UsersController < ApplicationController
 
         if User.count == 1 or RefinerySetting[:site_name].to_s =~ /^(|Company\ Name)$/
           refinery_setting = RefinerySetting.find_by_name("site_name")
-          flash[:message] << "<br/>First let's give the site a name. <a href='#{edit_admin_refinery_setting_url(refinery_setting)}'>Go here</a> to edit your website's name"
+          flash[:message] << "First let's give the site a name. <a href='#{edit_admin_refinery_setting_url(refinery_setting)}'>Go here</a> to edit your website's name"
         end
       else
         render :action => 'new'
