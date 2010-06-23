@@ -10,7 +10,7 @@ nb:
         file_to_upload: Fil å laste opp
         download_current: Last ned gjeldende fil
         or: or
-        replace: ,erstatt den med denne...
+        replace: ", erstatt den med denne..."
       resource:
         download: Last ned denne filen ({{size}})
         edit: Rediger denne filen

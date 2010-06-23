@@ -30,11 +30,11 @@ nb:
       form_advanced_options_seo:
         seo: Søkemotoroptimalisering
         seo_override_title: Tittel i nettleser
-        seo_override_title_description: Om du ønsker å overskrive standard nettlesertittel, gjør det her.
+        seo_override_title_help: Om du ønsker å overskrive standard nettlesertittel, gjør det her.
         meta_keywords_title: Meta nøkkelord
-        meta_keywords: Skriv inn 5-10 nøkkelord relatert til denne siden. Seperer nøkkelordene med komma.
+        meta_description_help: Skriv inn 5-10 nøkkelord relatert til denne siden. Seperer nøkkelordene med komma.
         meta_description_title: Meta beskrivelse
-        meta_description: Skriv to eller tre linjer som beskriver innholdet på denne siden.
+        meta_description_help: Skriv to eller tre linjer som beskriver innholdet på denne siden.
         js:
           content_section:
             create: Opprett innholdsseksjon

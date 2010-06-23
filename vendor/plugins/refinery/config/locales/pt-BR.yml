@@ -5,8 +5,9 @@ pt-BR:
     lets_start: "Beleza, vamos te arrumar pra que você possa fazer login..."
     continue: "Continuar..."
   admin:
-    reorder_menu: Reordenar menu
-    reorder_menu_done: "Terminei de reordenar o menu"
+    menu:
+      reorder_menu: Reordenar menu
+      reorder_menu_done: "Terminei de reordenar o menu"
     log_out: Deslogar
     search: Procurar
     search_submit: Ir

@@ -398,6 +398,9 @@ pre {
   margin-bottom: 2px;
   line-height: 35px;
 }
+#content #records > ul li .actions a {
+  line-height: 29px;
+} 
 #records ul.clickable li {
   padding: 0px;
   margin-bottom: 0px;
@@ -464,7 +467,7 @@ pre {
   background-image: url('/images/refinery/branch-end.gif');
 }
 #records.tree li {
-  line-height: 22px;
+  line-height: 24px;
 }
 #records.tree li span.spacing, .tree li span.spacing {
   display: none;
@@ -656,9 +659,14 @@ label.stripped {
 #content .actions a {
   display: block;
   float: right;
-  margin: 3px 3px 3px 3px;
+  margin: 3px 3px;
   line-height: inherit;
   border-bottom: 0px none;
+}
+
+#content #records.tree > ul li .actions a {
+  margin: 4px 3px 0px 3px;
+  line-height: 24px;
 }
 .actions a * {
   padding: 4px 4px 1px 4px;

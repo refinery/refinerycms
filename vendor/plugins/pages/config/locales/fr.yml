@@ -30,11 +30,11 @@ fr:
       form_advanced_options_seo:
         seo: Search Engine Optimization
         seo_override_title: Titre du navigateur
-        seo_override_title_description: "Si vous voulez remplacer le titre du navigateur par défaut, le faite le ici."
+        seo_override_title_help: "Si vous voulez remplacer le titre du navigateur par défaut, le faite le ici."
         meta_keywords_title: Meta keywords
-        meta_keywords: Saisissez les mots clés qui ont relation avec le contenu de cette page. Séparez les mots clés par une virgule.
+        meta_description_help: Saisissez les mots clés qui ont relation avec le contenu de cette page. Séparez les mots clés par une virgule.
         meta_description_title: Meta description
-        meta_description: Entrez un deux ou trois phrases concises décrivant ce que cette page contient.
+        meta_description_help: Entrez un deux ou trois phrases concises décrivant ce que cette page contient.
         js:
           content_section:
             create: Créer une section de contenu

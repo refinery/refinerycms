@@ -30,11 +30,11 @@ de:
       form_advanced_options_seo:        
         seo: Suchmaschinen-Optimierung
         seo_override_title: Browser Titel
-        seo_override_title_description: Hier können Sie den Standard-Browser-Titel überschreiben.
+        seo_override_title_help: Hier können Sie den Standard-Browser-Titel überschreiben.
         meta_keywords_title: Meta keywords
-        meta_keywords: Geben Sie 5-10 Schlüsselbegriffe mit Bezug zu dieser Seite ein. Trennen Sie Schlüsselbegriffe mit Kommas.
+        meta_description_help: Geben Sie 5-10 Schlüsselbegriffe mit Bezug zu dieser Seite ein. Trennen Sie Schlüsselbegriffe mit Kommas.
         meta_description_title: Meta description
-        meta_description: Geben Sie zwei bis drei kurze Sätze über den Inhalt dieser Seite ein.
+        meta_description_help: Geben Sie zwei bis drei kurze Sätze über den Inhalt dieser Seite ein.
         js:
           content_section:
             create: Inhaltsbereich erstellen.

@@ -4,13 +4,15 @@ nb:
     remember_admin_location: "Husk at ditt Refinery admin område er på:"
     lets_start: "OK, la oss starte med å ordne det slik at du kan logge inn..."
     continue: "Fortsett..."
-  reorder_menu: Sorter meny
-  reorder_menu_done: "Jeg er ferdig med å sortere menyen"
-  log_out: Logg ut
-  search: Søk
-  search_submit: Søk
-  search_results_for: "Søkeresultat for '{{query}}'"
-  no_results_found: "Beklager, ingen resultat funnet."
+  admin:
+    menu:
+      reorder_menu: Sorter meny
+      reorder_menu_done: "Jeg er ferdig med å sortere menyen"
+    log_out: Logg ut
+    search: Søk
+    search_submit: Søk
+    search_results_for: "Søkeresultat for '{{query}}'"
+    no_results_found: "Beklager, ingen resultat funnet."
   refinery:
     other: "Andre {{what}}"
     reorder: "Sorter {{what}}"

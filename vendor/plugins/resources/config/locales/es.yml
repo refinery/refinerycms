@@ -10,7 +10,7 @@ es:
         file_to_upload: Archivo a Subir
         download_current: Descargar archivo actual
         or: o
-        replace: ,remplazarlo con este...
+        replace: ", remplazarlo con este..."
       resource:
         download: Descargar este archivo ({{size}})
         edit: Editar este archivo

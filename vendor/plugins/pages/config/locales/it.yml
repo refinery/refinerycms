@@ -30,11 +30,11 @@ it:
       form_advanced_options_seo:
         seo: Search Engine Optimization
         seo_override_title: Browser titolo
-        seo_override_title_description: Se si desidera sovrascrivere il titolo di browser predefinito, farlo qui.
+        seo_override_title_help: Se si desidera sovrascrivere il titolo di browser predefinito, farlo qui.
         meta_keywords_title: Meta parole chiave
-        meta_keywords: Inserisci le parole chiave che riguardano 50-10 a questa pagina. parole chiave separate da una virgola.
+        meta_description_help: Inserisci le parole chiave che riguardano 50-10 a questa pagina. parole chiave separate da una virgola.
         meta_description_title: Meta descrizione
-        meta_description: Inserire un conciso due o tre frasi che descrivono ciò che questa pagina è di circa.
+        meta_description_help: Inserire un conciso due o tre frasi che descrivono ciò che questa pagina è di circa.
         js:
           content_section:
             create: Crea sezione dei contenuti
