@@ -43,7 +43,7 @@ nl:
       remember_me: Onthoud mijn gegevens
       forgot_password: Ik ben mijn wachtwoord vergeten
   users:
-    setup_website_name: "<br/>Laten we eerst de website een naam geven. <a href='{{link}}'>Klik hier</a> om de naam van de website te bewerken"
+    setup_website_name: "Laten we eerst de website een naam geven. <a href='{{link}}'>Klik hier</a> om de naam van de website te bewerken"
     signup_disabled: Het registreren van gebruikers is uitgeschakeld
     new:
       fill_form: Vul het onderstaande formulier in, zodat u kan beginnen.

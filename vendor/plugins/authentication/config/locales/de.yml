@@ -27,7 +27,7 @@ de:
       or: oder
       forgot_password: Ich habe mein Passwort vergessen
   users:
-    setup_website_name: "<br/>Lassen Sie uns der Website als Erstes einen Namen geben. <a href='{{link}}'>Hier</a> können Sie den Namen Ihrer Website bearbeiten."
+    setup_website_name: "Lassen Sie uns der Website als Erstes einen Namen geben. <a href='{{link}}'>Hier</a> können Sie den Namen Ihrer Website bearbeiten."
     signup_disabled: Benutzerregistrierung ist deaktiviert
     new:
       fill_form: Füllen Sie das Formular unten mit Ihren Angaben aus, damit wir loslegen können.
