@@ -154,10 +154,14 @@ module Refinery::ApplicationHelper
 
   # Determine whether the supplied page is the currently open page according to Rails.
   def selected_page?(page)
+    # ensure we match the path without the locale.
+    path = request.path
+    path = path.split("/#{::Refinery::I18n.current_locale}").last if ::Refinery::I18n.enabled?
+
     current_page?(page) or
-      (request.path =~ Regexp.new(page.menu_match) if page.menu_match.present?) or
-      (request.path == page.link_url) or
-      (request.path == page.nested_path)
+      (path =~ Regexp.new(page.menu_match) if page.menu_match.present?) or
+      (path == page.link_url) or
+      (path == page.nested_path)
   end
 
   # Old deprecated function. TODO: Remove

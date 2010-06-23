@@ -74,13 +74,10 @@ select.widest {
   display: block;
   padding: 9px 12px 9px 36px;
 }
-#actions li.selected a {
-  background-color: #E6E5DC;
-}
 #actions li a:hover {
   background-color: #cae7fb;
 }
-#actions li a:active {
+#actions li a:active, #actions li.selected a {
   background-color: #22A7F2;
 	color: white;
 }

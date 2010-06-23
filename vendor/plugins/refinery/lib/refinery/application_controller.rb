@@ -6,7 +6,7 @@ class Refinery::ApplicationController < ActionController::Base
   include Crud # basic create, read, update and delete methods
   include AuthenticatedSystem
 
-  before_filter :find_locale, :find_pages_for_menu
+  before_filter :find_or_set_locale, :find_pages_for_menu
   before_filter :store_current_location!, :if => Proc.new {|c| c.send(:logged_in?) }
   before_filter :show_welcome_page?
 
@@ -83,9 +83,9 @@ protected
     super
   end
 
-  def find_locale
+  def find_or_set_locale
     if Refinery::I18n.enabled?
-      if Refinery::I18n.has_locale? (locale = params[:locale].try(:to_sym))
+      if Refinery::I18n.has_locale?(locale = params[:locale].try(:to_sym))
         I18n.locale = locale
       else
         params[:locale] = I18n.locale = I18n.default_locale

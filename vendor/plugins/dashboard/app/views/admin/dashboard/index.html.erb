@@ -40,7 +40,7 @@
         <% Refinery::I18n.locales.each do |locale_key, locale_title| %>
           <li<%= " class='selected'" if locale_key.to_sym == I18n.locale %>>
             <%= link_to locale_title,
-                        params.dup.tap { |p| p[:locale] = locale_key },  # Use the current params, just change the locale
+                        params.dup.tap { |p| p[:set_locale] = locale_key },  # Use the current params, just change the locale
                         :style => "background-image: url('/images/refinery/icons/flags/#{locale_key}.png');" %>
           </li>
         <% end %>

@@ -29,8 +29,17 @@ protected
     end
   end
 
+  def find_or_set_locale
+    if (params[:set_locale].present? and ::Refinery::I18n.locales.include?(params[:set_locale].to_sym))
+      ::Refinery::I18n.current_locale = params[:set_locale].to_sym
+      redirect_to url_for({:controller => controller_name, :action => action_name}) and return
+    else
+      I18n.locale = ::Refinery::I18n.current_locale
+    end
+  end
+
   def restrict_plugins
-      Refinery::Plugins.set_active( current_user.authorized_plugins ) if current_user.respond_to? :plugins
+    Refinery::Plugins.set_active( current_user.authorized_plugins ) if current_user.respond_to? :plugins
   end
 
   #TODO Translate
