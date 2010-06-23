@@ -8,7 +8,7 @@ def create_user
   if @user.nil?
     @user = User.create(params)
     Refinery::Plugins.registered.each do |plugin|
-      @user.plugins.create(:title => plugin.title)
+      @user.plugins.create(:name => plugin.name)
     end
   end
 end
