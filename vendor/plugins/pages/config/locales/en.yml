@@ -38,13 +38,13 @@ en:
         hidden: hidden
         draft: draft
       form_advanced_options:
+        toggle_advanced_options: Click to access meta tag settings and menu options
         parent_page: Parent page
         title: Title
         create_content_section: Create content section
         delete_content_section: Delete content section
         advanced_options: Advanced Options
         explain_page_different_title: If you want the page to have a different title than the one that shows in the menu and browser title then enter it here.
-        redirect_to_first_child: "Check this box if you want the visitor to be redirected to this page's first child page if this page is selected."
         parent_id_title: Parent
         custom_title: Custom title
         title_type: "Type:"
