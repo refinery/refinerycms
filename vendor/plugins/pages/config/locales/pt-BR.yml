@@ -15,8 +15,8 @@ pt-BR:
         skip_to_first_child: Pular para primeiro filho?
         link_url: URL Personalizada
         browser_title: Título do navegador
-        meta_keywords: Meta palavras-chave
-        meta_description: Meta descrição
+        meta_description_help: Meta palavras-chave
+        meta_description_help: Meta descrição
         show_in_menu: Mostrar no menu
   admin: 
     pages:
@@ -41,11 +41,11 @@ pt-BR:
       form_advanced_options_seo:
         seo: Otimização de Motor de Busca
         seo_override_title: Se você quiser sobrescrever o título padrão do navegador, faça isso aqui.
-        seo_override_title_description: Se você quiser substituir o título do navegador padrão, fazê-lo aqui.
+        seo_override_title_help: Se você quiser substituir o título do navegador padrão, fazê-lo aqui.
         meta_keywords_title: Meta palavras-chave
-        meta_keywords: Entre entre 5-10 palavras-chave que se relacionam a esta página. Separe as palavras-chave por vírgula.
+        meta_description_help: Entre entre 5-10 palavras-chave que se relacionam a esta página. Separe as palavras-chave por vírgula.
         meta_description_title: Meta descrição
-        meta_description: Entre duas ou três sentenças concisas descrevendo sobre o que é essa página.
+        meta_description_help: Entre duas ou três sentenças concisas descrevendo sobre o que é essa página.
         js:
           content_section:
             create: Criar Seção de Conteúdo

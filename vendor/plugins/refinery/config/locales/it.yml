@@ -4,13 +4,15 @@ it:
     remember_admin_location: "Ricordate tuo amministratore zona raffineria è a:"
     lets_start: "Alright Let's get si imposta in modo da poter login..."
     continue: "Proseguire..."
-  reorder_menu: Riordina menu
-  reorder_menu_done: "Ho finito riordino del menu"
-  log_out: Log out
-  search: Cerca
-  search_submit: Andare
-  search_results_for: "Risultati della ricerca per '{{query}}'"
-  no_results_found: "Spiacenti, nessun risultato trovato"
+  admin:
+    menu:
+      reorder_menu: Riordina menu
+      reorder_menu_done: "Ho finito riordino del menu"
+    log_out: Log out
+    search: Cerca
+    search_submit: Andare
+    search_results_for: "Risultati della ricerca per '{{query}}'"
+    no_results_found: "Spiacenti, nessun risultato trovato"
   refinery:
     other: "Altro {{what}}"
     reorder: "Riordina {{what}}"

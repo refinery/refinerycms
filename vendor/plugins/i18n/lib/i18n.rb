@@ -33,7 +33,7 @@ class Refinery::I18n
     end
 
     def set_default_locale!
-      I18n.default_locale = RefinerySetting.find_or_set(:refinery_i18n_default_locale, Refinery::I18n.locales.first)
+      I18n.default_locale = RefinerySetting.find_or_set(:refinery_i18n_default_locale, {:en => "English"})
     end
 
     def load_locales locale_files

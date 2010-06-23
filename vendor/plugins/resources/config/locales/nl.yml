@@ -10,7 +10,7 @@ nl:
         file_to_upload: Het te uploaden bestand.
         download_current: Download het huidige bestand
         or: of
-        replace: ,vervang het door dit...
+        replace: ", vervang het door dit..."
       resource:
         download: Download dit bestand ({{size}})
         edit: Bewerk dit bestand.

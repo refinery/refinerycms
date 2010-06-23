@@ -4,13 +4,15 @@ da:
     remember_admin_location: "Husk, du logger på Refinerys administration her:"
     lets_start: "Lad os få dig oprettet, så du kan logge på..."
     continue: "Fortsæt..."
-  reorder_menu: Omorganisér menuen
-  reorder_menu_done: "Jeg er færdig med omorganiseringen"
-  log_out: Log af
-  search: Søg
-  search_submit: Søg
-  search_results_for: "Søgeresultat for '{{query}}'"
-  no_results_found: "Desværre, din søgning gav ingen resultater"
+  admin:
+    menu:
+      reorder_menu: Omorganisér menuen
+      reorder_menu_done: "Jeg er færdig med omorganiseringen"
+    log_out: Log af
+    search: Søg
+    search_submit: Søg
+    search_results_for: "Søgeresultat for '{{query}}'"
+    no_results_found: "Desværre, din søgning gav ingen resultater"
   refinery:
     other: "Anden {{what}}"
     reorder: "Redigér rækkefølgen af {{what}}"

@@ -30,11 +30,11 @@ da:
       form_advanced_options_seo:
         seo: Søgemaskineoptimering
         seo_override_title: Browser titel
-        seo_override_title_description: Hvis du vil tilpasse browser titlen.
+        seo_override_title_help: Hvis du vil tilpasse browser titlen.
         meta_keywords_title: Meta keywords
-        meta_keywords: Indtast 5-10 nøgleord der er relaterede til siden. Adskil nøgleordene med kommaer.
+        meta_description_help: Indtast 5-10 nøgleord der er relaterede til siden. Adskil nøgleordene med kommaer.
         meta_description_title: Meta description
-        meta_description: Indtast to eller tre sætninger, der beskriver siden.
+        meta_description_help: Indtast to eller tre sætninger, der beskriver siden.
         js:
           content_section:
             create: Opret indholdselement

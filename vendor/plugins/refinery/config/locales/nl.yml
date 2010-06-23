@@ -5,8 +5,9 @@ nl:
     lets_start: "Goed, laten we nu jouw gebruikersaccount instellen."
     continue: "Ga verder..."
   admin:
-    reorder_menu: Wijzig menu volgorde
-    reorder_menu_done: Ik ben klaar met het wijzigen van de volgorde
+    menu:
+      reorder_menu: Wijzig menu volgorde
+      reorder_menu_done: Ik ben klaar met het wijzigen van de volgorde
     log_out: Afmelden
     search: Zoek naar
     search_submit: Zoek

@@ -32,11 +32,11 @@ sl:
       form_advanced_options_seo:
         seo: Optimitizacija za spletne iskalnike
         seo_override_title: Naslov brskalnika
-        seo_override_title_description: "Če želite povoziti privzeti naslov brskalnika, ga spremenite tukaj."
+        seo_override_title_help: "Če želite povoziti privzeti naslov brskalnika, ga spremenite tukaj."
         meta_keywords_title: Meta ključne besede
-        meta_keywords: Vnesite 5-10 ključnih besed, ki se navezujejo na to spletno stran. Ključne besede ločite z vejicami.
+        meta_description_help: Vnesite 5-10 ključnih besed, ki se navezujejo na to spletno stran. Ključne besede ločite z vejicami.
         meta_description_title: Meta opis
-        meta_description: V dveh do treh stavkih jedernato opišite kaj ta stran predstavlja.
+        meta_description_help: V dveh do treh stavkih jedernato opišite kaj ta stran predstavlja.
         js:
           content_section:
             create: Ustvari Vsebinski Sklop

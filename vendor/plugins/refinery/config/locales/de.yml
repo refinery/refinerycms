@@ -4,13 +4,15 @@ de:
     remember_admin_location: "Den Refinery Admin Bereich finden Sie unter:"
     lets_start: "Alles klar, lassen Sie uns Ihre Daten erfassen, damit Sie sich einloggen können..."
     continue: "Weiter..."
-  reorder_menu: Menü neu anordnen
-  reorder_menu_done: "Menü Anordnung speichern"
-  log_out: Logout
-  search: Suche
-  search_submit: Los
-  search_results_for: "Suchergebnisse für '{{query}}'"
-  no_results_found: "Entschuldigung, es wurden keine Ergebnisse gefunden"
+  admin:
+    menu:
+      reorder_menu: Menü neu anordnen
+      reorder_menu_done: "Menü Anordnung speichern"
+    log_out: Logout
+    search: Suche
+    search_submit: Los
+    search_results_for: "Suchergebnisse für '{{query}}'"
+    no_results_found: "Entschuldigung, es wurden keine Ergebnisse gefunden"
   refinery:
     other: "Other {{what}}"
     reorder: "Reorder {{what}}"

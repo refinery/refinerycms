@@ -5,8 +5,9 @@ en:
     lets_start: "Alright let's get you setup so you can login..."
     continue: "Continue..."
   admin:
-    reorder_menu: Reorder menu
-    reorder_menu_done: "I'm done reordering the menu"
+    menu:
+      reorder_menu: Reorder menu
+      reorder_menu_done: "I'm done reordering the menu"
     log_out: Log out
     search: Search
     search_submit: Go
@@ -38,6 +39,7 @@ en:
         cancel: Cancel
         or_continue: or
         cancel_lose_changes: "Cancelling will lose all changes you've made to this {{object_name}}"
+        delete: Delete
       image_picker:
         none_selected: "There is currently no {{what}} selected, please click here to add one."
         remove_current: "Remove current {{what}}"

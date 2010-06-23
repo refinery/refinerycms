@@ -30,11 +30,11 @@ es:
       form_advanced_options_seo:
         seo: "Optimización para Motores de Busqueda"
         seo_override_title: Titulo del Navegador
-        seo_override_title_description: "Si tu quieres cambiar el titulo del navegador, alzo aquí."
+        seo_override_title_help: "Si tu quieres cambiar el titulo del navegador, alzo aquí."
         meta_keywords_title: Meta palabras
-        meta_keywords: Ingresa 5-10 palabras relacionadas a esta pagina.  Separadas por comas.
+        meta_description_help: Ingresa 5-10 palabras relacionadas a esta pagina.  Separadas por comas.
         meta_description_title: "Meta descripción"
-        meta_description: "Ingresa una descripción concisa de 2 a 3 renglones que describan esta pagina."
+        meta_description_help: "Ingresa una descripción concisa de 2 a 3 renglones que describan esta pagina."
         js:
           content_section:
             create: "Crear Contenido de la Sección"

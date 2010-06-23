@@ -10,7 +10,7 @@ en:
         file_to_upload: File to upload
         download_current: Download current file
         or: or
-        replace: ,replace it with this one...
+        replace: ", replace it with this one..."
       resource:
         download: Download this file ({{size}})
         edit: Edit this file

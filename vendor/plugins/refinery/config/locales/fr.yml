@@ -4,13 +4,15 @@ fr:
     remember_admin_location: "N'oubliez pas que votre zone d'administration de Refinery est à:"
     lets_start: "Commencont par créer un compte pour que vous puissiez vous connecter..."
     continue: "Continuer..."
-  reorder_menu: Réorganiser le menu
-  reorder_menu_done: "J'ai fini de réorganiser le menu"
-  log_out: Déconnexion
-  search: Rechercher
-  search_submit: Envoyer
-  search_results_for: "Résultat de recherche pour '{{query}}'"
-  no_results_found: "Désolé, aucun résultat trouvé"
+  admin:
+    menu:
+      reorder_menu: Réorganiser le menu
+      reorder_menu_done: "J'ai fini de réorganiser le menu"
+    log_out: Déconnexion
+    search: Rechercher
+    search_submit: Envoyer
+    search_results_for: "Résultat de recherche pour '{{query}}'"
+    no_results_found: "Désolé, aucun résultat trouvé"
   refinery:
     other: "Other {{what}}"
     reorder: "Reordonner {{what}}"
