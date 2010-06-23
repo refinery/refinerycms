@@ -44,11 +44,10 @@ class UsersController < ApplicationController
         end
 
         redirect_back_or_default(admin_root_url)
-        flash[:message] = t('users.create.welcome', :who => current_user.login)
+        flash[:message] = "<h2>#{t('users.create.welcome', :who => current_user.login).gsub(/\.$/, '')}.</h2>"
 
         if User.count == 1 or RefinerySetting[:site_name].to_s =~ /^(|Company\ Name)$/
-          refinery_setting = RefinerySetting.find_by_name("site_name")
-          flash[:message] << t('users.setup_website_name', :link => edit_admin_refinery_setting_url(refinery_setting))
+          flash[:message] << "<p>#{t('users.setup_website_name', :link => edit_admin_refinery_setting_url(RefinerySetting.find_by_name("site_name")))}</p>"
         else
           render :action => 'new'
         end
@@ -58,41 +57,35 @@ class UsersController < ApplicationController
     end
   end
 
-  #TODO: TRANSLATE
   def forgot
     if request.post?
       if (params[:user].present? and params[:user][:email].present? and user = User.find_by_email(params[:user][:email])).present?
         user.deliver_password_reset_instructions!(request)
-        flash[:notice] = "An email has been sent to you with a link to reset your password."
+        flash[:notice] = t('users.forgot.email_reset_sent')
         redirect_back_or_default new_session_url
       else
         @user = User.new(params[:user])
         if (email = params[:user][:email]).blank?
-          flash.now[:error] = "You did not enter an email address."
+          flash.now[:error] = t('users.forgot.blank_email')
         else
-          flash.now[:error] = "Sorry, '#{params[:user][:email]}' isn't associated with any accounts.<br/>Are you sure you typed the correct email address?"
+          flash.now[:error] = t('users.forgot.email_not_associated_with_account', :email => params[:user][:email])
         end
       end
     end
   end
 
-  #TODO: TRANSLATE
   def reset
     if params[:reset_code] and @user = User.find_using_perishable_token(params[:reset_code])
       if request.post?
         UserSession.create(@user)
-        if @user.update_attributes(:password => params[:user][:password], 
+        if @user.update_attributes(:password => params[:user][:password],
                                    :password_confirmation => params[:user][:password_confirmation])
-          flash[:notice] = "Password reset successfully for #{@user.email}"
+          flash[:notice] = t('users.reset.successful', :email => @user.email)
           redirect_back_or_default admin_root_url
         end
       end
     else
-      flash[:error] = "We're sorry, but this reset code has expired or is invalid."
-      flash[:error] << "If you are having issues try copying and pasting the URL from your email"
-      flash[:error] << " into your browser or restarting the reset password process."
-
-      redirect_to forgot_users_url
+      redirect_to(forgot_users_url, :error => t('users.reset.code_invalid')
     end
   end
 

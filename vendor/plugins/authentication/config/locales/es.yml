@@ -57,7 +57,7 @@ es:
       or: o
       forgot_password: He olvidado mi contraseña
   users:
-    setup_website_name: " "Lo primero es proporcionar un nombre para el sitio web.<br/><a href='{{link}}'>Pulse aquí</a> editar el nombre del sitio web"
+    setup_website_name: "Lo primero es proporcionar un nombre para el sitio web.<br/><a href='{{link}}'>Pulse aquí</a> editar el nombre del sitio web"
     signup_disabled: El registro de usuario ha sido deshabilitado.
     new:
       fill_form: Rellene el siguiente formulario con su información de usuario para comenzar.
