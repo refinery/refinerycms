@@ -84,7 +84,7 @@ class RefinerySetting < ActiveRecord::Base
     setting = find_or_create_by_name(name.to_s)
     
     # you could also pass in {:value => 'something', :scoping => 'somewhere'}
-    unless value.is_a?(Hash)
+    unless value.is_a?(Hash) && value.has_key?(:value) && value.has_key?(:scoping)
       setting.value = value
     else
       setting.value = value[:value]
