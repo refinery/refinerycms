@@ -48,4 +48,7 @@
     <% end %>
   </div>
 </div>
-<% content_for :head, javascript_include_tag('jquery/jquery.textTruncate') %>
+<% if request.env["HTTP_USER_AGENT"] =~ /MSIE/ and
+        RefinerySetting.find_or_set(:show_internet_explorer_upgrade_message, true, :scoping => 'refinery') %>
+  <% flash.now[:message] = render(:partial => "/shared/ie6check")  %>
+<% end %>

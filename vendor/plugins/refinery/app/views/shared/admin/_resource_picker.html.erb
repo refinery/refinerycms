@@ -1,15 +1,16 @@
-<#% TODO: Move description ||= "resource" to top of file %>
+<%# TODO: Move description ||= "resource" to top of file %>
 <%= f.hidden_field field %>
 <div>
-<#% TODO translate %>
-  <%= link_to "<span id='no_resource_selected' #{"style='display: none;'" if resource.present?}>
+  <%# TODO translate %>
+  <%= link_to "<span id='no_resource_selected' class='nothing_selected' #{"style='display: none;'" if resource.present?}>
         There is currently no #{description ||= resource} selected, click here to add one.
       </span>", insert_admin_resources_url(:dialog => true,
                   :update_resource => 'current_resource',
                   :update_text => 'current_resource_text',
                   :callback => 'resource_changed',
                   :field => "#{f.object.class.name.underscore.downcase}_#{field}",
-                  :current_link => "#{resource.public_filename if resource.present?}"),
+                  :current_link => "#{resource.public_filename if resource.present?}",
+                  :height => 480),
                 :name => "Add #{(description ||= 'resource').titleize}",
                 :id => "current_resource_link"
   %>
@@ -19,7 +20,7 @@
       <%= "#{resource.title} (#{resource.public_filename})" if resource.present? %>
     </span>
     <br/>
-    <%= link_to "#{refinery_icon_tag("page_white_put.png")} #{t('.download_current, :what => t('.' + (description ||= "resource")))} (<em>#{t('.opens_in_new_window')}</em>)", "#{resource.public_filename if resource.present?}",
+    <%= link_to "#{refinery_icon_tag("page_white_put.png")} #{t('.download_current', :what => t('.' + (description ||= "resource")))} (<em>#{t('.opens_in_new_window')}</em>)", "#{resource.public_filename if resource.present?}",
             :id => "current_resource",
             :target => "_blank" %>
   </div>

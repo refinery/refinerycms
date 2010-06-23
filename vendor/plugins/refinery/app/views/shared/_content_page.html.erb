@@ -1,36 +1,35 @@
 <%
   show_empty_sections ||= false
   remove_automatic_sections ||= false
+  hide_sections ||= []
 
-  body_content_title = page_title if (body_content_title = yield :body_content_title).blank? and !show_empty_sections and !remove_automatic_sections
-  body_content_left = @page[:body] if (body_content_left = yield :body_content_left).blank? and !show_empty_sections and !remove_automatic_sections and @page.present?
-  body_content_right = @page[:side_body] if (body_content_right = yield :body_content_right).blank? and !show_empty_sections and !remove_automatic_sections and @page.present?
+  sections = [
+    {:yield => :body_content_title, :fallback => page_title, :id => 'body_content_page_title', :title => true},
+    {:yield => :body_content_left, :fallback => @page[:body]},
+    {:yield => :body_content_right, :fallback => @page[:side_body]}
+  ].reject {|section| hide_sections.include?(section[:yield]) }
 
-  extra_body_content_classes = []
-  extra_body_content_classes << "no_title" if body_content_title.blank?
-  extra_body_content_classes << "no_left" if body_content_left.blank?
-  extra_body_content_classes << "no_right" if body_content_right.blank?
+  css = []
+  sections.each do |section|
+    dom_id = (section[:id] ||= section[:yield].to_s)
+    section[:html] = (yield(section[:yield]))
+
+    if section[:html].blank? and !show_empty_sections and !remove_automatic_sections
+      section[:html] = section[:fallback]
+    end
+
+    unless section[:html].blank?
+      unless section[:title]
+        section[:html] = "<div class='clearfix' id='#{dom_id}'>#{section[:html]}</div>".html_safe
+      else
+        section[:html] = "<h1 id='#{dom_id}'>#{section[:html]}</h1>".html_safe
+      end
+    else
+      css << "no_#{dom_id}"
+    end
+  end
 -%>
-<%= render :partial => "/shared/submenu" if !admin? and (!defined?(show_submenu) or show_submenu == true) and RefinerySetting.find_or_set(:show_submenu_on_content_pages, false) %>
-<div id='body_content' class='clearfix<%= " #{extra_body_content_classes.join(" ")}" if extra_body_content_classes.any? %>'>
-<% if body_content_title.present? or (show_empty_sections and !remove_automatic_sections) -%>
-  <h1 id='body_content_page_title'>
-    <%= body_content_title %>
-  </h1>
-<% end -%>
-<% if body_content_left.present? or (show_empty_sections and !remove_automatic_sections) -%>
-  <div id='body_content_left' class='clearfix'>
-    <%= body_content_left %>
-  </div>
-<% end -%>
-<% if body_content_right.present? or (show_empty_sections and !remove_automatic_sections)  -%>
-  <div id='body_content_right' class='clearfix'>
-    <%= body_content_right %>
-  </div>
-<% end -%>
+<div id='body_content' class='clearfix<%= " #{css.join(' ')}" if css.any? %>'>
+  <%= sections.collect {|s| s[:html] }.join("\n") %>
 </div>
-<% unless @page.nil? or @page.live? -%>
-  <div class='page_not_live'>
-    This page is NOT live for public viewing.
-  </div>
-<% end -%>
+<%= render :partial => '/shared/draft_page_message' unless @page.nil? or @page.live? -%>

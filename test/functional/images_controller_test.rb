@@ -25,14 +25,6 @@ class ImagesControllerTest < ActionController::TestCase
     assert_not_nil assigns(:url_override)
   end
 
-  def test_search
-    get :index, :search => "Car"
-
-    assert_equal 1, assigns(:images).size
-    assert images(:the_world), assigns(:images).first
-    assert_not_nil assigns(:images)
-  end
-
   def test_should_require_login_and_redirect
     logout
 

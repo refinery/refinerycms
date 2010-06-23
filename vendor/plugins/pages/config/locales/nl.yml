@@ -2,15 +2,15 @@ nl:
   plugins:
     refinery_pages:
       title: "Pagina's"
-  admin: 
+  admin:
     pages:
       form_advanced_options:
         title: Titel
         create_content_section: Maak een nieuw content sectie aan
         delete_content_section: Verwijder een content sectie
-        hide_or_show_advanced_options: Verberg/toon uitgebreide opties
+        advanced_options: Uitgebreide opties
         explain_page_different_title: Als u de pagina een andere titel wilt geven, dan diegene die in het menu staat, voer deze dan hier in.
-        redirect_to_first_child: Vink dit aan als u deze pagina wilt laten doorverwijzen naar het eerst onderliggende 'kind' 
+        redirect_to_first_child: Vink dit aan als u deze pagina wilt laten doorverwijzen naar het eerst onderliggende 'kind'
         parent_id_title: Bovenliggend
         custom_title: Aangepaste titel
         title_type: "Type:"

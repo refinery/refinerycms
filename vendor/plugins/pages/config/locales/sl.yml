@@ -10,7 +10,7 @@ sl:
         title: Naslov
         create_content_section: Ustvari vsebinski sklop
         delete_content_section: Izbriši vsebinski sklop
-        hide_or_show_advanced_options: Skrij/Prikaži Napredne Možnosti
+        advanced_options: Napredne Možnosti
         explain_page_different_title: "Če želite da ima stran drugačen naslov od tistega ki se prikazuje v meniju in brskalniku ga vneseti tukaj."
         redirect_to_first_child: "Obkljukajte, če želite da se obiskovalca preusmeri na prvo podstran te strani ko je ta stran izbrana."
         parent_id_title: Starš

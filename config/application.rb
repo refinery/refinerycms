@@ -32,3 +32,8 @@ I18n.exception_handler = lambda do |e, locale, key, options|
     raise e
   end
 end if Rails.env == 'production'
+
+# Bundler has shown a weakness using Rails < 3 so we are going to
+# require these dependencies here until we can find another solution or until we move to
+# Rails 3.0 which should fix the issue (or until Bundler fixes the issue).
+require_dependency 'will_paginate'

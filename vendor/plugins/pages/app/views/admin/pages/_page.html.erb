@@ -4,22 +4,21 @@
   elsif page === @pages.first
     "branch_start"
   end
+  title = h(page.title)
+  title << " <em>(#{t('.hidden')})</em>".html_safe unless page.show_in_menu?
+  title << " <em>(#{t('.draft')})</em>".html_safe if page.draft?
 -%>
 <li class='clearfix record<%= " #{branch}" %>' id="<%= dom_id(page) -%>">
   <div class='clearfix'>
-    <span class='title'>
-      <%= h page.title %>
-      <%= "<em>(" + t('.hidden') + ")</em>" unless page.show_in_menu? %>
-      <%= "<em>(" + t('.draft') + ")</em>" if page.draft? %>
-    </span>
+    <span class='title'><%= title %></span>
 
     <span class='actions'>
       <%= link_to refinery_icon_tag('application_go.png'), page.url,
                   :target => "_blank",
                   :title => t('.view_live') %>
-      <%= link_to refinery_icon_tag('application_edit.png'), edit_admin_page_path(page.id),
+      <%= link_to refinery_icon_tag('application_edit.png'), edit_admin_page_url(page),
                   :title => t('.edit_this_page') %>
-      <%= link_to refinery_icon_tag('delete.png'), admin_page_path(page.id),
+      <%= link_to refinery_icon_tag('delete.png'), admin_page_url(page),
                   :class => "cancel confirm-delete",
                   :title => t('.confirm_delete_page_title') if page.deletable? %>
     </span>

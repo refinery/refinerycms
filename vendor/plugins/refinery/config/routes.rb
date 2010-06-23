@@ -1,5 +1,5 @@
 ActionController::Routing::Routes.draw do |map|
-  map.wymiframe '/wymiframe/:id', :controller => "application", :action => "wymiframe"
+  map.wymiframe '/wymiframe/:id', :controller => "refinery/fast", :action => "wymiframe"
 
   map.namespace(:admin, :path_prefix => 'refinery') do |admin|
     admin.resources :refinery_core

@@ -92,7 +92,7 @@ If you have some CSS which refers to an image or URL:
       background: url('/images/footer_background.png') repeat-x;
     }
 
-You need to update the URL so it requests ``/images/themes`` instead of just ``/images``. This tells Refinery we need to actually load this image from the theme and not just the public directory.
+You need to update the URL so it requests ``/theme/images/`` instead of just ``/images``. This tells Refinery we need to actually load this image from the theme and not just the public directory.
 
 So the result is simply:
 

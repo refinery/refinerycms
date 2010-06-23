@@ -23,7 +23,7 @@ pt-BR:
       form_advanced_options:
         create_content_section: Criar seção de conteúdoCreate content section
         delete_content_section: Remover seção de conteúdo
-        hide_or_show_advanced_options: Esconder/Mostrar Opções Avançadas
+        advanced_options: Opções Avançadas
         explain_page_different_title: Se você deseja que a página possua um título diferente do que o que aparece no menu e no título do navegador, então entre ele aqui.
         redirect_to_first_child: "Marque esta caixa se você quiser que o visitante seja redirecionado para o primeiro filho desta página se esta página for selecionada."
         title_type: "Tipo:"

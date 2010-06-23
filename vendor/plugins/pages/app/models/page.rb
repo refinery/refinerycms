@@ -11,8 +11,7 @@ class Page < ActiveRecord::Base
   accepts_nested_attributes_for :parts, :allow_destroy => true
 
   # Docs for acts_as_indexed http://github.com/dougal/acts_as_indexed
-  acts_as_indexed :fields => [:title, :meta_keywords, :meta_description, :custom_title, :browser_title, :all_page_part_content],
-                  :index_file => [Rails.root.to_s, "tmp", "index"]
+  acts_as_indexed :fields => [:title, :meta_keywords, :meta_description, :custom_title, :browser_title, :all_page_part_content]
 
   before_destroy :deletable?
   after_save :reposition_parts!
@@ -63,11 +62,10 @@ class Page < ActiveRecord::Base
 
   # If you want to destroy a page that is set to be not deletable this is the way to do it.
   def destroy!
-    self.update_attributes({
-      :menu_match => nil,
-      :link_url => nil,
-      :deletable => true
-    })
+    self.menu_match = nil
+    self.link_url = nil
+    self.deletable = true
+
     self.destroy
   end
 
@@ -91,7 +89,7 @@ class Page < ActiveRecord::Base
   # If a custom "link_url" is set, it uses that otherwise it defaults to a normal page URL.
   # The "link_url" is often used to link to a plugin rather than a page.
   #
-  # For example if I had a "Contact Us" page I don't want it to just render a contact us page
+  # For example if I had a "Contact" page I don't want it to just render a contact us page
   # I want it to show the Inquiries form so I can collect inquiries. So I would set the "link_url"
   # to "/contact"
   def url
@@ -136,8 +134,12 @@ class Page < ActiveRecord::Base
     "#{cache_key}#nested_url"
   end
 
+  def cache_key
+    "#{Refinery.base_cache_key}/#{super}"
+  end
+
   def use_marketable_urls?
-    RefinerySetting.find_or_set(:use_marketable_urls, "true")
+    RefinerySetting.find_or_set(:use_marketable_urls, true, :scoping => 'pages')
   end
 
   # Returns true if this page is "published"
@@ -149,7 +151,7 @@ class Page < ActiveRecord::Base
   # If it's a draft or is set to not show in the menu it will return false.
   # If any of the page's ancestors aren't to be shown in the menu then this page is not either.
   def in_menu?
-    self.live? && self.show_in_menu? && !self.ancestors.any? { |a| !a.in_menu? }
+    self.live? && self.show_in_menu? && self.ancestors.all? { |a| a.in_menu? }
   end
 
   # Returns true if this page is the home page or links to it.
@@ -167,7 +169,10 @@ class Page < ActiveRecord::Base
     include_associations = [:parts]
     include_associations.push(:slugs) if self.class.methods.include? "find_one_with_friendly"
     include_associations.push(:children) if include_children
-    find_all_by_parent_id(nil,:conditions => {:show_in_menu => true, :draft => false}, :order => "position ASC", :include => include_associations)
+    find_all_by_parent_id(nil,
+                          :conditions => {:show_in_menu => true, :draft => false},
+                          :order => "position ASC",
+                          :include => include_associations)
   end
 
   # Accessor method to get a page part from a page.

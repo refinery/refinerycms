@@ -8,7 +8,7 @@ fr:
         title: Titre
         create_content_section: Créer une section de contenu
         delete_content_section: Supprimer une section de contenu
-        hide_or_show_advanced_options: "Masquer/Afficher les options avancées"
+        advanced_options: "les Options avancées"
         explain_page_different_title: "Si vous voulez utilisé un titre différent de celui qui s'affiche dans le menu et de titre du navigateur, entrez-le ici."
         redirect_to_first_child: "Cochez cette case si vous souhaitez que le visiteur soit redirigé vers la première sous-page lorce que cette page est sélectionnée."
         parent_id_title: Origine

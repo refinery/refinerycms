@@ -8,7 +8,7 @@ es:
         title: Titulo
         create_content_section: "Crear contenido de la sección"
         delete_content_section: "Borrar contenido de la sección"
-        hide_or_show_advanced_options: Ocultar/Mostrar Opciones Avanzadas
+        advanced_options: Opciones Avanzadas
         explain_page_different_title: "Si desea que la página tenga un título distinto al que muestra en el menú de título del navegador y ingrese el titulo aquí."
         redirect_to_first_child: "Marque esta casilla si desea que el visitante sea redirigido de esta página a la primer pagina del arbol de navegación seleccionada."
         parent_id_title: Padre

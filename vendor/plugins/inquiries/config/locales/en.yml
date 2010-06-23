@@ -51,8 +51,8 @@ en:
       notification_recipients_form:
         inquiry_settings_value_name: Send notifications to
         explanation: "Every time someone contacts you on your website, Refinery sends out an email to say there is a new inquiry."
-        hint: "Enter an email address above. Want the notification to go to more than one person? Enter multiple email addresses separated by commas."
-        example: "E.g. me@domain.com, friend@msn.com, workmate@work.com"
+        hint: "When a new inquiry is submitted, Refinery will send an email notification to you."
+        example: "Enter your email address(es) like: jack@work.com, jill@office.com"
       confirmation_email_form:
         to: To
         from: From

@@ -46,7 +46,7 @@ class UsersController < ApplicationController
         redirect_back_or_default(admin_root_url)
         flash[:message] = t('users.create.welcome', :who => current_user.login)
 
-        if User.count == 1 or RefinerySetting[:site_name] == "Company Name"
+        if User.count == 1 or RefinerySetting[:site_name].to_s =~ /^(|Company\ Name)$/
           refinery_setting = RefinerySetting.find_by_name("site_name")
           flash[:message] << t('users.setup_website_name', :link => edit_admin_refinery_setting_url(refinery_setting))
         else
@@ -67,7 +67,11 @@ class UsersController < ApplicationController
         redirect_back_or_default new_session_url
       else
         @user = User.new(params[:user])
-        flash.now[:error] = "Sorry, '#{params[:user][:email]}' isn't associated with any accounts.<br/>Are you sure you typed the correct email address?"
+        if (email = params[:user][:email]).blank?
+          flash.now[:error] = "You did not enter an email address."
+        else
+          flash.now[:error] = "Sorry, '#{params[:user][:email]}' isn't associated with any accounts.<br/>Are you sure you typed the correct email address?"
+        end
       end
     end
   end
@@ -77,16 +81,17 @@ class UsersController < ApplicationController
     if params[:reset_code] and @user = User.find_using_perishable_token(params[:reset_code])
       if request.post?
         UserSession.create(@user)
-        if @user.update_attributes(:password => params[:user][:password], :password_confirmation => params[:user][:password_confirmation])
+        if @user.update_attributes(:password => params[:user][:password], 
+                                   :password_confirmation => params[:user][:password_confirmation])
           flash[:notice] = "Password reset successfully for #{@user.email}"
           redirect_back_or_default admin_root_url
         end
       end
     else
-      flash[:error] = "We're sorry, but this reset code has expired or is invalid." +
-        "If you are having issues try copying and pasting the URL " +
-        "from your email into your browser or restarting the " +
-        "reset password process."
+      flash[:error] = "We're sorry, but this reset code has expired or is invalid."
+      flash[:error] << "If you are having issues try copying and pasting the URL from your email"
+      flash[:error] << " into your browser or restarting the reset password process."
+
       redirect_to forgot_users_url
     end
   end
@@ -102,7 +107,7 @@ protected
   end
 
   def can_create_public_user?
-    User.count == 0
+    not User.exists?
   end
   alias_method :can_create_public_user, :can_create_public_user?
 

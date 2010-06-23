@@ -1,23 +1,21 @@
 <%
-  css = []
-  css << "selected" if selected_page?(menu_branch) or descendant_page_selected?(menu_branch)
-  css << "first" if menu_branch_counter == 0
-  css << "last" if menu_branch_counter == (sibling_count ||= menu_branch.shown_siblings.size)
-  domid = "item_#{menu_branch_counter}" unless menu_branch.parent_id.present? or menu_branch.title.blank?
+  css = (css = css_for_menu_branch(menu_branch, menu_branch_counter)).any? ? " class='#{css.join(' ')}'" : nil
+  dom_id = (menu_branch.parent_id.nil? and menu_branch.title.present?) ? " id='item_#{menu_branch_counter}'" : nil
 -%>
-<% if menu_branch.in_menu? %>
-  <div<%= " class='#{css.join(' ')}'" if css.present? -%><%= " id='#{domid}'" if domid.present? -%>>
-    <%= link_to menu_branch.title, menu_branch.url %>
-    <%
-      unless hide_children or
-        menu_branch.parent_id.present? or
-        (children = menu_branch.children.collect{|c| c if c.in_menu?}.compact).empty?
-    -%>
-      <nav class='clearfix'>
-        <%= render :partial => "/shared/menu_branch",
-                    :collection => children,
-                    :locals => {:hide_children => hide_children, :sibling_count => children.size-1} -%>
-      </nav>
-    <% end -%>
-  </div>
-<% end -%>
+<div<%= css -%><%= dom_id -%>>
+  <%= link_to menu_branch.title, menu_branch.url %>
+
+  <% unless hide_children or
+            menu_branch.parent_id.present? or
+            (children = menu_branch.children.reject{|c| !c.in_menu?}).empty? %>
+    <nav class='clearfix'>
+      <%=
+        render :partial => "/shared/menu_branch",
+               :collection => children,
+               :locals => {
+                 :hide_children => hide_children,
+                 :sibling_count => children.size - 1
+               } -%>
+    </nav>
+  <% end %>
+</div>

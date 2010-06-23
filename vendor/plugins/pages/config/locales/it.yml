@@ -8,7 +8,7 @@ it:
         title: Titolo
         create_content_section: Creare sezione dei contenuti
         delete_content_section: Elimina sezione dei contenuti
-        hide_or_show_advanced_options: Mostra/Nascondi opzioni avanzate
+        advanced_options: Opzioni avanzate
         explain_page_different_title: Se si desidera che la pagina di avere un titolo diverso da quello che mostra nel menu e il titolo del browser, quindi immettere qui.
         redirect_to_first_child: "Seleziona questa casella se vuoi che il visitatore di essere reindirizzati alla pagina di primo figlio di questa pagina, se questa pagina è selezionata."
         parent_id_title: Genitore
