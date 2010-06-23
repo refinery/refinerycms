@@ -20,8 +20,8 @@ de:
     search_no_results: "Sorry, no results found."
     search_results_for: "Search Results for {{what}}"
     crudify:
-      created: "{{what}} was successfully created"
-      updated: "{{what}} was successfully created"
+      created: "{{what}} was successfully created."
+      updated: "{{what}} was successfully created."
       destroyed: "{{what}} was successfully destroyed"
   layouts:
     admin:

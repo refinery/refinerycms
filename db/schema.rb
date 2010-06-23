@@ -1,4 +1,4 @@
-# This file is auto-generated from the current state of the database. Instead of editing this file,
+# This file is auto-generated from the current state of the database. Instead of editing this file, 
 # please use the migrations feature of Active Record to incrementally modify your database, and
 # then regenerate this schema definition.
 #
@@ -56,6 +56,12 @@ ActiveRecord::Schema.define(:version => 20100608062447) do
 
   add_index "page_parts", ["id"], :name => "index_page_parts_on_id"
   add_index "page_parts", ["page_id"], :name => "index_page_parts_on_page_id"
+
+  create_table "page_translations", :force => true do |t|
+    t.integer "page_id"
+    t.string  "custom_title"
+    t.string  "meta_keywords"
+  end
 
   create_table "pages", :force => true do |t|
     t.string   "title"

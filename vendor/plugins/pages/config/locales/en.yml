@@ -84,9 +84,9 @@ en:
             title_empty: "You have not entered a title for the content section, please enter one."
             confirm_delete: "This will remove the content section {{section_name}} when the page is saved and erase all content that has been entered into it, Are you sure?"
       index:
-        create_new_page: Create a new page
-        reorder_pages: Reorder the Pages
-        reorder_pages_done: Done reordering Pages
+        create_new_page: Create New Page
+        reorder_pages: Reorder Pages
+        reorder_pages_done: Done Reordering Pages
         sorry_no_results: Sorry! There are no results found.
         no_pages_yet: There are no pages yet.  Click "Create New Page" to add your first page.
         search_results_for: "Search results for {{what}}"
