@@ -26,6 +26,18 @@ var wymeditor_boot_options = $.extend({
   , jsSkinPath: "/javascripts/wymeditor/skins/"
   , langPath: "/javascripts/wymeditor/lang/"
   , iframeBasePath: '/'
+  , classesItems: [
+    {name: 'text-align', rules:['left', 'center', 'right', 'justify'], join: '-'}
+    , {name: 'image-align', rules:['left', 'right'], join: '-'}
+    , {name: 'font-size', rules:['small', 'normal', 'large'], join: '-'}
+  ]
+
+  , containersItems: [
+    {'name': 'h1', 'title':'Heading_1', 'css':'wym_containers_h1'}
+    , {'name': 'h2', 'title':'Heading_2', 'css':'wym_containers_h2'}
+    , {'name': 'h3', 'title':'Heading_3', 'css':'wym_containers_h3'}
+    , {'name': 'p', 'title':'Paragraph', 'css':'wym_containers_p'}
+  ]
   , toolsItems: [
     {'name': 'Bold', 'title': 'Bold', 'css': 'wym_tools_strong'}
     ,{'name': 'Italic', 'title': 'Emphasis', 'css': 'wym_tools_emphasis'}
@@ -52,8 +64,6 @@ var wymeditor_boot_options = $.extend({
       + "</a>"
     + "</li>"
 
-  , containersItems: wymeditorContainersItems
-
   , classesHtml: "<li class='wym_tools_class'>"
                  + "<a href='#' name='" + WYMeditor.APPLY_CLASS + "' title='"+ titleize(WYMeditor.APPLY_CLASS) +"'></a>"
                  + "<ul class='wym_classes wym_classes_hidden'>" + WYMeditor.CLASSES_ITEMS + "</ul>"
@@ -64,8 +74,6 @@ var wymeditor_boot_options = $.extend({
                               + "<span>" + WYMeditor.CLASS_TITLE + "</span>"
                               + "<ul>{classesItemHtml}</ul>"
                             +"</li>"
-
-  , classesItems: wymeditorClassesItems
 
   , containersHtml: "<ul class='wym_containers wym_section'>" + WYMeditor.CONTAINERS_ITEMS + "</ul>"
 
@@ -175,7 +183,7 @@ var wymeditor_boot_options = $.extend({
       $('.wym_loading_overlay').remove();
       WYMeditor.loaded();
     }
-    
+
     $('.field.hide-overflow').removeClass('hide-overflow').css('height', 'auto');
   }
 }, custom_wymeditor_boot_options);

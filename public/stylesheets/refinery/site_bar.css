@@ -16,7 +16,7 @@
 #site_bar #site_bar_company_name {
   font-weight: bold;
 }
-#site_bar site_bar_branding a {
+#site_bar #site_bar_branding a {
   font-weight: normal;
 }
 #site_bar #site_bar_branding a#logout {
@@ -72,4 +72,10 @@ a#site_bar_refinery_cms_logo:hover img {
   margin-top: 9px;
   display: block;
   cursor: pointer;
+}
+
+#editor_switch a, #editor_switch span {
+  border-radius: 6px;
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
 }
