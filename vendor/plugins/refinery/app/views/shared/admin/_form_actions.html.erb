@@ -9,7 +9,6 @@
   cancel_url         ||= (( back = url_for(:back)).include?('javascript') ? send("admin_#{f.object.class.name.pluralize.underscore}_url") : back) unless hide_cancel
 
   delete_button_text ||= t('.delete')
-  delete_title       ||= t('.delete_title', :object_name => f.object.class.name.underscore.gsub("_", " "))
 
   continue_editing = defined?(continue_editing) ? continue_editing : (f.object.present? and !f.object.new_record?)
 
@@ -20,6 +19,7 @@
   end
 
   unless hide_delete
+    delete_title       ||= t('.delete_title', :object_name => f.object.class.name.underscore.gsub("_", " "))
     delete_button_id   ||= "delete_button"
     delete_url         ||= eval("admin_#{f.object.class.name.underscore}_url(#{f.object.id})")
   end
