@@ -68,9 +68,7 @@
 /* specific HTML elements */
 	caption	 { text-align: left; }
 	img		 { margin-right: 5px;
-				border-style: solid;
-				border-color: gray;
-				border-width: 0; }
+				border: 1px solid transparent; }
 	a img	 { border: 1px dotted blue !important; }
 	acronym	 { border: 1px solid gray; }
 
@@ -92,3 +90,7 @@
 
 /* indicate invalid text area fields */
   body.fieldWithErrors { background-color: #ffecf0 !important; }
+
+  img.selected_by_wym {
+    border: 1px dashed #22a7f2;
+  }

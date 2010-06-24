@@ -46,3 +46,7 @@ require_dependency 'refinery/base_presenter'
     ::ActiveSupport::Dependencies.load_paths << presenters_path
   end
 end
+
+if (aai_config_file = Rails.root.join('config', 'acts_as_indexed_config.rb')).exist?
+  require aai_config_file.to_s
+end

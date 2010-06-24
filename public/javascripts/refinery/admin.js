@@ -150,10 +150,16 @@ init_sortable_menu = function(){
 init_submit_continue = function(){
   $('#submit_continue_button').click(submit_and_continue);
 
-  if ($('#continue_editing').length > 0) {
+  $('form').change(function(e) {
+    $(this).attr('data-changes-made', true);
+  });
+
+  if ((continue_editing = $('#continue_editing')).length > 0 && continue_editing.attr('rel') != 'no-prompt') {
     $('#editor_switch a').click(function(e) {
-      if (!confirm("Any changes you've made will be lost. Are you sure you want to continue without saving?")) {
-        e.preventDefault();
+      if ($('form[data-changes-made]').length > 0) {
+        if (!confirm("Any changes you've made will be lost. Are you sure you want to continue without saving?")) {
+          e.preventDefault();
+        }
       }
     });
   }

@@ -1093,6 +1093,7 @@ ul#image_grid {
   margin: 10px 0px 15px 0px;
 }
 ul#image_grid li {
+  position: relative;
   float: left;
   margin: 0px 13px 12px 0px;
   padding: 0px;
@@ -1102,6 +1103,11 @@ ul#image_grid li {
   overflow: hidden;
   max-width: 135px;
   max-height: 176px;
+}
+#records ul#image_grid li .actions {
+  top: auto;
+  bottom: 0px;
+  line-height: 24px;
 }
 ul#image_grid li.row-end {
   margin-right: 0px;
@@ -1300,4 +1306,55 @@ input.button.close_dialog:active, a.button.close_dialog:active, #content a.butto
 }
 #upgrade_wrapper li a {
   line-height: 20px;
+}
+
+/* cornering */
+.button, #editor_switch a, #editor_switch span {
+  border-radius: 6px;
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+}
+#page_container, .wym_box {
+  border-radius-bottom: 5px;
+  -webkit-border-radius-bottom-left: 5px;
+  -webkit-border-radius-bottom-right: 5px;
+  -webkit-border-bottom-left-radius: 5px;
+  -webkit-border-bottom-right-radius: 5px;
+}
+.wym_iframe iframe {
+  border-radius-bottom: 2px;
+  -webkit-border-radius-bottom-left: 2px;
+  -webkit-border-radius-bottom-right: 2px;
+  -webkit-border-bottom-left-radius: 2px;
+  -webkit-border-bottom-right-radius: 2px;
+}
+.form-actions {
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+}
+.form-actions.form-actions-dialog {
+  border-radius: 0px;
+  -moz-border-radius: 0px;
+  -webkit-border-radius: 0px;
+}
+#menu > a {
+  border-radius-top: 5px;
+  -moz-border-radius-topleft: 5px;
+  -moz-border-radius-topright: 5px;
+  -webkit-border-top-left-radius: 5px;
+  -webkit-border-top-right-radius: 5px;
+}
+.ui-tabs .ui-state-default a {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  -moz-border-radius-topleft: 5px;
+  -moz-border-radius-topright: 5px;
+  -webkit-border-top-left-radius: 5px;
+  -webkit-border-top-right-radius: 5px;
+}
+.tooltip, .tooltip span {
+  border-radius: 6px;
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
 }

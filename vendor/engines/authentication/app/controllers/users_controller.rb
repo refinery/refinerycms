@@ -44,9 +44,9 @@ class UsersController < ApplicationController
         redirect_back_or_default(admin_root_url)
         flash[:message] = "<h2>Welcome to Refinery, #{current_user.login}.</h2>"
 
-        if User.count == 1 or RefinerySetting[:site_name] == "Company Name"
+        if User.count == 1 or RefinerySetting[:site_name].to_s =~ /^(|Company\ Name)$/
           refinery_setting = RefinerySetting.find_by_name("site_name")
-          flash[:message] << "<br/>First let's give the site a name. <a href='#{edit_admin_refinery_setting_url(refinery_setting)}'>Go here</a> to edit your website's name"
+          flash[:message] << "First let's give the site a name. <a href='#{edit_admin_refinery_setting_url(refinery_setting)}'>Go here</a> to edit your website's name"
         end
       else
         render :action => 'new'
@@ -75,7 +75,8 @@ class UsersController < ApplicationController
     if params[:reset_code] and @user = User.find_using_perishable_token(params[:reset_code])
       if request.post?
         UserSession.create(@user)
-        if @user.update_attributes(:password => params[:user][:password], :password_confirmation => params[:user][:password_confirmation])
+        if @user.update_attributes(:password => params[:user][:password], 
+                                   :password_confirmation => params[:user][:password_confirmation])
           flash[:notice] = "Password reset successfully for #{@user.email}"
           redirect_back_or_default admin_root_url
         end
@@ -100,7 +101,7 @@ protected
   end
 
   def can_create_public_user?
-    User.count == 0
+    not User.exists?
   end
   alias_method :can_create_public_user, :can_create_public_user?
 
