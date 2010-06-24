@@ -18,6 +18,10 @@
       </span>
     </p>
   <% end %>
+  <% if current_user.superuser? %>
+    <%= f.label :restricted %>
+    <%= f.check_box :restricted %>
+  <% end %>
   </div>
   <div class='field'>
     <%= f.label :value %>
