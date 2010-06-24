@@ -47,12 +47,12 @@ contact_us_page.parts.create({
             })
 contact_us_page_position = -1
 
-thank_you_page = Page.create(:title => "Thank You",
-            :menu_match => "^/contact/thank_you$",
+thank_you_page = contact_us_page.children.create(:title => "Thank You",
+            :link_url => "/contact/thank_you",
+            :menu_match => "^/(inquiries|contact)/thank_you$",
             :show_in_menu => false,
             :deletable => false,
-            :position => (contact_us_page_position += 1),
-            :parent_id => contact_us_page.id)
+            :position => (contact_us_page_position += 1))
 thank_you_page.parts.create({
               :title => "Body",
               :body => "<p>We've received your inquiry and will get back to you with a response shortly.</p><p><a href='/'>Return to the home page</a></p>",
