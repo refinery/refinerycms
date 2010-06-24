@@ -11,7 +11,7 @@
     </label>
     <span class="preview">- (<%= h @refinery_setting.name %>)</span>
   <% end %>
-  <% if (help = I18n.translate("admin.refinery_settings.help.#{@refinery_setting.name}", :default => '').presence) %>
+  <% unless action_name =~ /(new)|(create)/ %>
     <p>
       <span>
         <%= I18n.translate("admin.refinery_settings.help.#{@refinery_setting.name}", :default => '') %>
