@@ -52,13 +52,14 @@ class RefinerySetting < ActiveRecord::Base
 
   def self.find_or_set(name, the_value, options={})
     # Try to get the value from cache first.
-    scoping = (options = {:scoping => nil}.merge(options))[:scoping]
+    scoping = options[:scoping]
+    required = options[:required]
     if (value = cache_read(name, scoping)).nil?
       # if the database is not up to date yet then it won't know about scoping..
       if self.column_names.include?('scoping')
-        setting = find_or_create_by_name_and_scoping(:name => name.to_s, :value => the_value, :scoping => scoping)
+        setting = find_or_create_by_name_and_scoping(:name => name.to_s, :value => the_value, :scoping => scoping, :required => required)
       else
-        setting = find_or_create_by_name(:name => name.to_s, :value => the_value)
+        setting = find_or_create_by_name(:name => name.to_s, :value => the_value, :required => required)
       end
 
       # cache whatever we found including its scope in the name, even if it's nil.
