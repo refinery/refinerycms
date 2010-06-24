@@ -59,7 +59,7 @@ class RefinerySetting < ActiveRecord::Base
       if self.column_names.include?('scoping')
         setting = find_or_create_by_name_and_scoping(:name => name.to_s, :value => the_value, :scoping => scoping, :restricted => restricted)
       else
-        setting = find_or_create_by_name(:name => name.to_s, :value => the_value, :required => restricted)
+        setting = find_or_create_by_name(:name => name.to_s, :value => the_value, :restricted => restricted)
       end
 
       # cache whatever we found including its scope in the name, even if it's nil.
