@@ -26,7 +26,7 @@ pt-BR:
       cancel: Cancelar
       or: ou
   users:
-    setup_website_name: "<br/>Primeiro vamos dar um nome ao site. <a href='{{link}}'>Clique aqui</a> para editar o nome do seu site"
+    setup_website_name: "Primeiro vamos dar um nome ao site. <a href='{{link}}'>Clique aqui</a> para editar o nome do seu site"
     signup_disabled: Cadastro de usuários está desabilitado
     new:
       fill_form: Preencha o formulário abaixo com seus detalhes pra que você possa começar.
