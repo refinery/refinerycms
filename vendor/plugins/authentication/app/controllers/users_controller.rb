@@ -85,7 +85,7 @@ class UsersController < ApplicationController
         end
       end
     else
-      redirect_to(forgot_users_url, :error => t('users.reset.code_invalid')
+      redirect_to(forgot_users_url, :error => t('users.reset.code_invalid'))
     end
   end
 
