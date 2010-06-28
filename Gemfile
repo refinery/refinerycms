@@ -27,9 +27,7 @@ group :test do
   gem 'rspec'
   gem 'rspec-rails'
   gem 'factory_girl'
-end
 
-group :cucumber do
   gem 'cucumber-rails'
   gem 'capybara'
   gem 'factory_girl'
