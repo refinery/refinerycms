@@ -56,10 +56,11 @@ class RefinerySetting < ActiveRecord::Base
     restricted = options[:restricted]
     if (value = cache_read(name, scoping)).nil?
       # if the database is not up to date yet then it won't know about scoping..
+      # it also won't know about restricted because that came after scoping too.
       if self.column_names.include?('scoping')
         setting = find_or_create_by_name_and_scoping(:name => name.to_s, :value => the_value, :scoping => scoping, :restricted => restricted)
       else
-        setting = find_or_create_by_name(:name => name.to_s, :value => the_value, :restricted => restricted)
+        setting = find_or_create_by_name(:name => name.to_s, :value => the_value)
       end
 
       # cache whatever we found including its scope in the name, even if it's nil.
