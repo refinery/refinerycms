@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
 
   def create
     if (@session = UserSession.create(params[:session])).valid?
-      flash[:notice] = t('sessions.login_successful')
+      flash[:notice] = t('sessions.login_successful') if refinery_user?
       redirect_back_or_default(admin_root_url)
     else
       render :action => 'new'
@@ -28,7 +28,13 @@ class SessionsController < ApplicationController
 protected
 
   def redirect?
-    redirect_to admin_root_url if logged_in?
+    if logged_in?
+      if refinery_user?
+        redirect_to admin_root_url
+      else
+        redirect_to root_url
+      end
+    end
   end
 
   def redirect_to_new

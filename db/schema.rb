@@ -1,4 +1,4 @@
-# This file is auto-generated from the current state of the database. Instead of editing this file, 
+# This file is auto-generated from the current state of the database. Instead of editing this file,
 # please use the migrations feature of Active Record to incrementally modify your database, and
 # then regenerate this schema definition.
 #
@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100608062447) do
+ActiveRecord::Schema.define(:version => 20100624024501) do
 
   create_table "images", :force => true do |t|
     t.integer  "parent_id"
@@ -93,6 +93,7 @@ ActiveRecord::Schema.define(:version => 20100608062447) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "scoping"
+    t.boolean  "restricted",  :default => false
   end
 
   add_index "refinery_settings", ["name"], :name => "index_refinery_settings_on_name"
@@ -104,6 +105,15 @@ ActiveRecord::Schema.define(:version => 20100608062447) do
     t.integer  "parent_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "roles", :force => true do |t|
+    t.string "title"
+  end
+
+  create_table "roles_users", :id => false, :force => true do |t|
+    t.integer "user_id"
+    t.integer "role_id"
   end
 
   create_table "slugs", :force => true do |t|

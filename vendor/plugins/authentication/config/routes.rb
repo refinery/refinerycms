@@ -1,8 +1,8 @@
 ActionController::Routing::Routes.draw do |map|
 
   map.resource :session
-  map.resources :users, :only => [:new, :create], :collection => {:forgot => :get, :reset => :get}
   map.reset_users '/users/reset/:reset_code', :controller => 'users', :action => 'reset'
+  map.resources :users, :only => [:new, :create], :collection => {:forgot => :get, :reset => :get}
 
   map.namespace(:admin, :path_prefix => 'refinery') do |admin|
     admin.resources :users, :collection => {:update_positions => :post}

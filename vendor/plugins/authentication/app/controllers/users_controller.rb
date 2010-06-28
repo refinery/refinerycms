@@ -16,6 +16,7 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+  # This method should only be used to create the first Refinery user.
   def create
     begin
       # protects against session fixation attacks, wreaks havoc with request forgery protection.
@@ -23,6 +24,7 @@ class UsersController < ApplicationController
       # reset_session
       @user = User.create(params[:user])
       @selected_plugin_titles = params[:user][:plugins] || []
+      @user.roles << Role.find_or_create_by_title('Refinery')
 
       @user.save if @user.valid?
 
@@ -80,7 +82,8 @@ class UsersController < ApplicationController
         UserSession.create(@user)
         if @user.update_attributes(:password => params[:user][:password],
                                    :password_confirmation => params[:user][:password_confirmation])
-          flash[:notice] = t('users.reset.successful', :email => @user.email)
+
+          flash[:notice] = t('users.reset.successful', :email => @user.email) if refinery_user?
           redirect_back_or_default admin_root_url
         end
       end
@@ -92,7 +95,7 @@ class UsersController < ApplicationController
 protected
 
   def redirect?
-    if logged_in?
+    if refinery_user?
       redirect_to admin_users_url
     else
       redirect_to root_url unless can_create_public_user?
