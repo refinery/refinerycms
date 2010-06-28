@@ -11,12 +11,16 @@
     </label>
     <span class="preview">- (<%= h @refinery_setting.name %>)</span>
   <% end %>
-  <% if (help = I18n.translate("admin.refinery_settings.help.#{@refinery_setting.name}", :default => '').presence) %>
+  <% unless action_name =~ /(new)|(create)/ %>
     <p>
       <span>
         <%= I18n.translate("admin.refinery_settings.help.#{@refinery_setting.name}", :default => '') %>
       </span>
     </p>
+  <% end %>
+  <% if current_user.superuser? %>
+    <%= f.label :restricted %>
+    <%= f.check_box :restricted %>
   <% end %>
   </div>
   <div class='field'>
