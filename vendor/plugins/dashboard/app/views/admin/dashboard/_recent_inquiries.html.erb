@@ -3,7 +3,7 @@
   <ul class='clickable'>
     <% @recent_inquiries.each do |inquiry| %>
       <li class='<%= cycle("on", "on-hover", :name => 'recent_inquiries_cycle') %>'>
-        <%= link_to "#{inquiry.name} - #{inquiry.message}", admin_inquiry_url(inquiry) %>
+        <%= link_to truncate("#{inquiry.name} - #{inquiry.message}", :length => 100, :preserve_html_tags => true).html_safe, admin_inquiry_url(inquiry) %>
       </li>
     <% end %>
   </ul>

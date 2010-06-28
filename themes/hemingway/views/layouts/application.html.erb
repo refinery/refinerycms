@@ -2,7 +2,7 @@
 <html>
   <%= render :partial => "/shared/head", :locals => {:theme => true} %>
   <body>
-    <%= render :partial => "/shared/site_bar" if logged_in? %>
+    <%= render :partial => "/shared/site_bar" if refinery_user? %>
     <div id="header">
       <div class="inside">
         <h2>
