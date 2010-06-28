@@ -82,4 +82,9 @@ private
     store_location unless action_name !~ /index/ or request.xhr? or from_dialog?
   end
 
+  # Override authorized? so that only users with the Refinery role can admin the website.
+  def authorized?
+    logged_in? && refinery_user?
+  end
+
 end

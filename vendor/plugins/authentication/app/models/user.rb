@@ -33,8 +33,7 @@ class User < ActiveRecord::Base
 
   #-------------------------------------------------------------------------------------------------
 
-  serialize :plugins_column # Array # this is seriously deprecated and will be removed later.
-
+  has_and_belongs_to_many :roles
   has_many :plugins, :class_name => "UserPlugin", :order => "position ASC"
   has_friendly_id :login, :use_slug => false
 

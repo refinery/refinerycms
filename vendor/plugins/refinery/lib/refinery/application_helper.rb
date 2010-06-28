@@ -1,7 +1,7 @@
 # Methods added to this helper will be available to all templates in the application.
 module Refinery::ApplicationHelper
 
-  include Refinery::HtmlTruncationHelper rescue puts "#{__FILE__}:#{__LINE__} Could not load hpricot"
+  include Refinery::HtmlTruncationHelper
 
   # This is used to display the title of the current object (normally a page) in the browser's titlebar.
   #
