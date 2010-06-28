@@ -6,5 +6,6 @@ Refinery::Plugin.register do |plugin|
   plugin.hide_from_menu = true
   plugin.always_allow_access = true
   # this tells refinery where this plugin is located on the filesystem and helps with urls.
+  plugin.menu_match = /(refinery|admin)\/(refinery_)?dialogs$/
   plugin.directory = directory
 end
