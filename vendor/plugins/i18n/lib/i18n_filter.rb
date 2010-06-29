@@ -4,7 +4,7 @@ module RoutingFilter
     def around_recognize(path, env, &block)
       if Refinery::I18n.enabled?
         locale = nil
-        path.sub! %r(^/(([a-zA-Z\-_])*)(?=/|$)) do locale = $1; '' end if path !~ %r{^/refinery}
+        path.sub! %r(^/(([a-zA-Z\-_])*)(?=/|$)) do locale = $1; '' end if path !~ %r{^/(refinery|wymiframe)}
 
         returning yield do |params|
           params[:locale] = (locale.presence || Refinery::I18n.current_locale)
@@ -18,7 +18,7 @@ module RoutingFilter
       if Refinery::I18n.enabled?
         locale = args.extract_options!.delete(:locale) || Refinery::I18n.current_locale
         returning yield do |result|
-          result.sub!(%r(^(http.?://[^/]*)?(.*))){ "#{$1}/#{locale}#{$2}" } if result !~ %r{^/refinery}
+          result.sub!(%r(^(http.?://[^/]*)?(.*))){ "#{$1}/#{locale}#{$2}" } if result !~ %r{^/(refinery|wymiframe)}
           result
         end
       else
