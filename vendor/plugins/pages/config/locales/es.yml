@@ -47,7 +47,6 @@ es:
         reorder_pages_done: Listo el re-ordenado de las paginas
         sorry_no_results: Disculpe! No hay resultados de la busqueda.
         no_pages_yet: No hay ninguna pagina aun.  Click "Crear nueva Pagina" para agregar tus primeras paginas.
-        search_results_for: "Resultados de busqueda para {{what}}"
   activerecord:
     attributes:
       page:

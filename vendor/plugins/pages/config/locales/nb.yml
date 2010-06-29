@@ -47,7 +47,6 @@ nb:
         reorder_pages_done: Sortering utført
         sorry_no_results: Beklager! Ingen resultat funnet.
         no_pages_yet: Det er ingen sider enda. Trykk "Opprett en ny side" for å legge til din første side.
-        search_results_for: "Søkeresultat for {{what}}"
   activerecord:
     attributes:
       page:

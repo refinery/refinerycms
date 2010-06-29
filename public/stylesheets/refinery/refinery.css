@@ -254,7 +254,6 @@ body.login #page_container div.remember_me {
 body.login #page_container div.forgot_password {
   float: right;
   width: 200px;
-  padding-top: 2px;
 }
 body.login label, body.login a {
   font-size: 14px;

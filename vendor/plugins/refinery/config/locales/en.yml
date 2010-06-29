@@ -21,7 +21,6 @@ en:
     reorder: "Reorder {{what}}"
     reorder_done: "Done Reordering {{what}}"
     search_no_results: "Sorry, no results found."
-    search_results_for: "Search Results for {{what}}"
     crudify:
       created: "{{what}} was successfully created."
       updated: "{{what}} was successfully created."

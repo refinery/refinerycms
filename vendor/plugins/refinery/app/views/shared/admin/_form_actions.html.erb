@@ -1,6 +1,7 @@
 <%
   submit_button_text ||= t('.save')
   submit_button_id   ||= "submit_button"
+  submit_button_title ||= nil
 
   cancel_button_text ||= t('.cancel')
   cancel_title       ||= t('.cancel_lose_changes', :object_name => f.object.class.name.underscore.gsub("_", " "))
@@ -19,19 +20,21 @@
   end
 
   unless hide_delete
-    delete_title       ||= t('.delete_title', :object_name => f.object.class.name.underscore.gsub("_", " "))
+    delete_title       ||= nil
     delete_button_id   ||= "delete_button"
     delete_url         ||= eval("admin_#{f.object.class.name.underscore}_url(#{f.object.id})")
   end
 -%>
 <div class='form-actions<%= ' form-actions-dialog' if from_dialog? %>'>
   <div class='form-actions-left'>
-    <%= submit_tag submit_button_text, :id => submit_button_id, :class => "wymupdate button" %>
+    <%= submit_tag submit_button_text, 
+                   :id => submit_button_id, 
+                   :class => "wymupdate button",
+                   :tooltip => submit_button_title %>
 
     <%= render :partial => "/shared/admin/continue_editing", :locals => {:f => f} if continue_editing -%>
     <%= hidden_field_tag :continue_editing, false %>
 
-    <%# TODO add :what to t('.cancel_lose_changes') -%>
     <%= link_to(cancel_button_text,
                 cancel_url,
                 :title => cancel_title,
@@ -39,7 +42,6 @@
                 :class => "close_dialog button") unless hide_cancel %>
   </div>
   <div class='form-actions-right'>
-    <%# TODO add :what to t('.cancel_lose_changes') -%>
     <%= link_to(delete_button_text,
                 delete_url,
                 :title => delete_title,

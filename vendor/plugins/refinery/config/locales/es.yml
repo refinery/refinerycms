@@ -18,7 +18,6 @@ es:
     reorder: "Re-ordenar {{what}}"
     reorder_done: "Listo el Re-ordenado {{what}}"
     search_no_results: "Lo sentimos, no se encontraron resultados."
-    search_results_for: "Resultados de la busqueda de {{what}}"
     crudify:
       created: "{{what}} fue creado exitosamente"
       updated: "{{what}} fue creado exitosamente"

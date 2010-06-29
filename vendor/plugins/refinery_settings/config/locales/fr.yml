@@ -15,8 +15,8 @@ fr:
       index:
         new: Créer un nouveau paramêtre
         empty_set: "Il n'y a pas encore de paramètre."
-        create_first: Cliquer "{{link}}" pour ajouter votre premier paramêtre.
-      edit:
+        create_first: "Cliquer '{{link}}' pour ajouter votre premier paramêtre."
+      form:
         restart_may_be_in_order: "<strong>SVP noté</strong> que vous deverez peu-être redémmarer votre site web pour que les paramêtre puisse prendre effet."
   plugins:
     refinery_settings:

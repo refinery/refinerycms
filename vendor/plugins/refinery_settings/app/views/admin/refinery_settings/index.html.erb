@@ -15,11 +15,11 @@
   <% else %>
     <p>
       <% if searching? %>
-        <%= t 'no_results_found' %>
+        <%= t('admin.no_results_found') %>
       <% else %>
         <strong>
-          <%= t '.empty_set' %>
-          <%= t '.create_first', :link => t('.new') %>
+          <%= t('.empty_set') %>
+          <%= t('.create_first', :link => t('.new')) %>
         </strong>
       <% end %>
     </p>

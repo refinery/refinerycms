@@ -41,8 +41,8 @@ da:
       index:
         new: Opret ny parameter
         empty_set: Der er ingen parametre endnu.
-        create_first: Klik "{{link}}" for at oprette den første parameter.
-      edit:
+        create_first: "Klik '{{link}}' for at oprette den første parameter."
+      form:
         restart_may_be_in_order: "<strong>Bemærk:</strong> Du skal muligvis genstarte websitet for at ændringen træder i kraft."
   plugins:
     refinery_settings:

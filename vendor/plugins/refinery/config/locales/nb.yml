@@ -18,7 +18,6 @@ nb:
     reorder: "Sorter {{what}}"
     reorder_done: "Ferdig å sortere {{what}}"
     search_no_results: "Beklager, ingen resultat funnet."
-    search_results_for: "Søkeresultat for {{what}}"
     crudify:
       created: "{{what}} ble opprettet"
       updated: "{{what}} er oppdatert"

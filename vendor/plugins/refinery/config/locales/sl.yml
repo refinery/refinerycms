@@ -18,7 +18,6 @@ sl:
     reorder: "Spremeni vrstni red {{what}}"
     reorder_done: "Končaj s prerazporeditvijo {{what}}"
     search_no_results: "Oprostite, ni bilo zadetkov"
-    search_results_for: "Rezultati iskanja za {{what}}"
     crudify:
       created: "{{what}} je bil uspešno ustvarjen"
       updated: "{{what}} je bil uspešno ustvarjen"

@@ -15,8 +15,8 @@ sl:
       index:
         new: Dodaj novo nastavitev
         empty_set: Tretnutno ni nobene nastavitve.
-        create_first: Kliknite "{{link}}" da boste dodali vašo prvo nastavitev.
-      edit:
+        create_first: "Kliknite '{{link}}' da boste dodali vašo prvo nastavitev."
+      form:
         restart_may_be_in_order: "<strong>Prosimo upoštevajte</strong> da boste morali včasih ponovno zagnati spletno stran, da bo nastavitev stopila v veljavo."
   plugins:
     refinery_settings:
