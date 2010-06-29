@@ -30,6 +30,10 @@ module Refinery
       @always_allow_access ||= false
     end
 
+    def name
+      @name ||= self.title.to_s.downcase.gsub(' ', '_')
+    end
+
     def dashboard?
       @dashboard ||= false
     end
@@ -43,7 +47,7 @@ module Refinery
     end
 
     def menu_match
-      @menu_match ||= /admin\/#{self.name.gsub(" ", "_").downcase}$/
+      @menu_match ||= /(admin|refinery)\/#{self.name}$/
     end
 
     def url

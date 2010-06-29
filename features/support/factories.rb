@@ -14,8 +14,8 @@ end
 Factory.define :refinery_user, :parent => :user do |u|
   u.roles { [ Factory(:refinery_role) ] }
   u.after_create do |user|
-    Refinery::Plugins.registered.each do |plugin|
-      user.plugins.create(:title => plugin.title)
+    Refinery::Plugins.registered.each_with_index do |plugin, index|
+      user.plugins.create(:name => plugin.name, :position => index)
     end
   end
 end
