@@ -20,7 +20,7 @@ class MigrateOldPluginTitlesToPluginNamesForUsers < ActiveRecord::Migration
         when "Settings"
           "refinery_settings"
         when "Resources"
-          "refinery_resources"
+          "refinery_files"
         else
           plugin.name
         end)
@@ -48,7 +48,7 @@ class MigrateOldPluginTitlesToPluginNamesForUsers < ActiveRecord::Migration
           "Refinery"
         when "refinery_settings"
           "Settings"
-        when "refinery_resources"
+        when "refinery_files"
           "Resources"
         else
           plugin.name
