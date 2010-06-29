@@ -1,4 +1,5 @@
 def login
+  @user ||= Factory(:refinery_user)
   visit '/refinery'
   fill_in("session_login", :with => @user.email)
   fill_in("session_password", :with => @user.password)
