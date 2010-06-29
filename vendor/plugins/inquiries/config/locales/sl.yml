@@ -34,7 +34,6 @@ sl:
       index:
         update_notified: Uredi prejemnike obvestila
         edit_confirmation_email: Uredni potrditveni email
-        search_results_for: Iskalni rezultati za {{query}}
         no_inquiries: Trenutno še ni nobenega povpraševanja.
       show:
         details: Podrobnosti
@@ -46,6 +45,7 @@ sl:
         actions: Možnosti
         back_to_all_inquiries: Nazaj na vsa povpraševanja
         inquiry: Povpraševanje
+    search_results_for: Iskalni rezultati za {{query}}
     inquiry_settings:
       update:
         updated: "'{{setting}}' je bila uspešno posodobljena."
