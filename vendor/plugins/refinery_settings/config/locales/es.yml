@@ -15,8 +15,8 @@ es:
       index:
         new: Crear nueva configuración
         empty_set: No hay ninguna configuración aun.
-        create_first: Click "{{link}}" para agregar tu primer configuración.
-      edit:
+        create_first: "Click '{{link}}' para agregar tu primer configuración."
+      form:
         restart_may_be_in_order: "<strong>Por favor</strong> necesitas re iniciar tu sitio para que estos cambios tengan efecto."
   plugins:
     refinery_settings:

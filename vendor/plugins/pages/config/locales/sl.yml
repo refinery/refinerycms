@@ -49,7 +49,6 @@ sl:
         reorder_pages_done: Končaj s prerazporeditvijo Strani
         sorry_no_results: Oprostite! Ni bilo zadetkov.
         no_pages_yet: Trenutno še ni nobene strani. Za dodajanje prve strani kliknite "Dodaj novo stran".
-        search_results_for: "Iskalni rezultati za {{what}}"
   activerecord:
     attributes:
       page:

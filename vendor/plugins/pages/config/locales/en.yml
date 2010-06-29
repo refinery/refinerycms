@@ -34,7 +34,7 @@ en:
         view_live: View this page live <br/><em>(opens in a new window)</em>
         edit_this_page: Edit this page
         confirm_delete_page_title: Delete this page
-        confirm_delete_page_message: Are you sure you want to delete the page '{{title}}'?
+        confirm_delete_page_message: "Are you sure you want to delete the page '{{title}}'?"
         hidden: hidden
         draft: draft
       form_advanced_options:
@@ -64,15 +64,15 @@ en:
         cancel: Cancel
         skip_to_first_child: Skip top-level page
         skip_to_first_child_label: Redirect visitors to the first sub-level page.
-        skip_to_first_child_help: 'This option makes this page link to the first page underneath. This can be useful when grouping pages together.'
+        skip_to_first_child_help: "This option makes this page link to the first page underneath. This can be useful when grouping pages together."
         link_url: "Forward this page to another website or page"
-        link_url_help: 'If you want this page to go to another website or page when you click this page in the menu, enter a URL. e.g. http://google.com otherwise leave it blank'
-        parent_page_help: 'You can put a page under another page by selecting it in the list. If you want this page to be a top-level page, just leave it blank.'
+        link_url_help: "If you want this page to go to another website or page when you click this page in the menu, enter a URL. e.g. http://google.com otherwise leave it blank"
+        parent_page_help: "You can put a page under another page by selecting it in the list. If you want this page to be a top-level page, just leave it blank."
         custom_title_help: "If you want the page to have a different title than the one that shows in the menu then select &apos;Text&apos; and enter it here."
       form_advanced_options_seo:
         seo: Search Engine Optimization
         seo_override_title: Browser title
-        seo_override_title_help: 'Enter a 5-10 word title that summarizes the contents of this page.'
+        seo_override_title_help: "Enter a 5-10 word title that summarizes the contents of this page."
         meta_keywords_title: Meta keywords
         meta_keywords_help: Enter 5-10 keywords that relate to this page. Separate keywords by a comma.
         meta_description_title: Meta description
@@ -89,7 +89,6 @@ en:
         reorder_pages_done: Done Reordering Pages
         sorry_no_results: Sorry! There are no results found.
         no_pages_yet: There are no pages yet.  Click "Create New Page" to add your first page.
-        search_results_for: "Search results for {{what}}"
   activerecord:
     attributes:
       page:

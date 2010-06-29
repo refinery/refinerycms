@@ -8,6 +8,7 @@ en:
         cannot_remove_user_plugin_from_current_user: "You cannot remove the 'Users' plugin from the currently logged in account."
       form:
         blank_password_keeps_current: Leaving password blank keeps the current password
+        enable_all: enable all
       index:
         create_new_user: Create New User
         no_users_yet:  There are no users yet. Click "Create New User" to add your first user.
@@ -67,8 +68,8 @@ en:
       user_session: UserSession
     attributes:
       user_session:
-        login: login
-        email: email
-        password: password
-        remember_me: remember me
+        login: Login
+        email: Email
+        password: Password
+        remember_me: Remember me
         incorrect: "Sorry, your {{login_field}} or password was incorrect."

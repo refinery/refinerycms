@@ -8,7 +8,7 @@ pt-BR:
         value: Valor
   admin:
     refinery_settings:
-      edit:
+      form:
         restart_may_be_in_order: <strong>Por favor note</strong> que você pode precisar reiniciar o website para que esta configuração tenha efeito.
       index:
         new: Criar nova configuração

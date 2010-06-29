@@ -46,8 +46,7 @@ da:
         reorder_pages: Redigér rækkefølgen af siderne
         reorder_pages_done: Gem rækkefølgen
         sorry_no_results: Desværre, din søgning gav ingen resultater.
-        no_pages_yet: Der er ingen sider endnu. Klik på "Tilføj en ny side" for at oprette den første.
-        search_results_for: "Søgeresultat for '{{what}}'"
+        no_pages_yet: Der er ingen sider endnu. Klik på "Tilføj en ny side" for at oprette den første."
   activerecord:
     attributes:
       page:

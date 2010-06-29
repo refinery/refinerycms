@@ -18,7 +18,6 @@ da:
     reorder: "Redigér rækkefølgen af {{what}}"
     reorder_done: "Gem rækkefølgen af {{what}}"
     search_no_results: "Desværre, din søgning gav ingen resultater."
-    search_results_for: "Søgeresultat for '{{what}}'"
     crudify:
       created: "{{what}} er oprettet"
       updated: "{{what}} er opdateret"
