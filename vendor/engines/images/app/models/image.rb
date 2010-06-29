@@ -13,8 +13,7 @@ class Image < ActiveRecord::Base
                           :message => 'Your image must be either a JPG, PNG or GIF'
 
   # Docs for acts_as_indexed http://github.com/dougal/acts_as_indexed
-  acts_as_indexed :fields => [:title],
-                  :index_file => [Rails.root.to_s, "tmp", "index"]
+  acts_as_indexed :fields => [:title]
 
   # when a dialog pops up with images, how many images per page should there be
   PAGES_PER_DIALOG = 18

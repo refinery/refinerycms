@@ -1,7 +1,7 @@
 # Methods added to this helper will be available to all templates in the application.
 module Refinery::ApplicationHelper
 
-  include Refinery::HtmlTruncationHelper rescue puts "#{__FILE__}:#{__LINE__} Could not load hpricot"
+  include Refinery::HtmlTruncationHelper
 
   # This is used to display the title of the current object (normally a page) in the browser's titlebar.
   #
@@ -20,7 +20,7 @@ module Refinery::ApplicationHelper
       parts = match.split(".")
       extension = parts.pop
       content.gsub!(match, "#{parts.join(".")}_#{thumbnail}.#{extension}")
-    end
+    end unless content.blank?
 
     return content
   end
@@ -70,7 +70,7 @@ module Refinery::ApplicationHelper
   # Use <%= jquery_include_tags %> to include it in your <head> section.
   def jquery_include_tags(options={})
     # Merge in options
-    options = { :caching => RefinerySetting.find_or_set(:use_resource_caching, true),
+    options = { :caching => RefinerySetting.find_or_set(:use_resource_caching, Rails.root.join('public', 'javascripts', 'cache').writable?),
                 :google => RefinerySetting.find_or_set(:use_google_ajax_libraries, false),
                 :jquery_ui => true
               }.merge(options)
@@ -142,6 +142,12 @@ module Refinery::ApplicationHelper
     end
   end
 
+  # Returns <span class='help' title='Your Input'>(help)</span>
+  # Remember to wrap your block with <span class='label_with_help'></span> if you're using a label next to the help tag.
+  def refinery_help_tag(title='')
+    "<span class='help' title='#{title}'>(help)</span>"
+  end
+
   # This is just a quick wrapper to render an image tag that lives inside refinery/icons.
   # They are all 16x16 so this is the default but is able to be overriden with supplied options.
   def refinery_icon_tag(filename, options = {})
@@ -159,6 +165,25 @@ module Refinery::ApplicationHelper
   # Old deprecated function. TODO: Remove
   def setup
     logger.warn("*** Refinery::ApplicationHelper::setup has now been deprecated from the Refinery API. ***")
+  end
+
+  # Generates the link to determine where the site bar switch button returns to.
+  def site_bar_switch_link
+    link_to_if(admin?, "Switch to your website",
+              (if session.keys.include?(:website_return_to) and session[:website_return_to].present?
+                session[:website_return_to]
+               else
+                root_url(:only_path => true)
+               end)) do
+      link_to "Switch to your website editor",
+              (if session.keys.include?(:refinery_return_to) and session[:refinery_return_to].present?
+                session[:refinery_return_to]
+               elsif defined?(@page) and @page.present? and !@page.home?
+                 edit_admin_page_url(@page, :only_path => true)
+               else
+                 (request.request_uri.to_s == '/') ? admin_root_url(:only_path => true) : "/admin#{request.request_uri}/edit"
+               end rescue admin_root_url(:only_path => true))
+    end
   end
 
 end

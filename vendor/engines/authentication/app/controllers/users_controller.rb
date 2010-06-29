@@ -14,6 +14,7 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+  # This method should only be used to create the first Refinery user.
   def create
     begin
       # protects against session fixation attacks, wreaks havoc with request forgery protection.
@@ -21,6 +22,7 @@ class UsersController < ApplicationController
       # reset_session
       @user = User.create(params[:user])
       @selected_plugin_titles = params[:user][:plugins] || []
+      @user.roles << Role.find_or_create_by_title('Refinery')
 
       @user.save if @user.valid?
 
@@ -44,9 +46,9 @@ class UsersController < ApplicationController
         redirect_back_or_default(admin_root_url)
         flash[:message] = "<h2>Welcome to Refinery, #{current_user.login}.</h2>"
 
-        if User.count == 1 or RefinerySetting[:site_name] == "Company Name"
+        if User.count == 1 or RefinerySetting[:site_name].to_s =~ /^(|Company\ Name)$/
           refinery_setting = RefinerySetting.find_by_name("site_name")
-          flash[:message] << "<br/>First let's give the site a name. <a href='#{edit_admin_refinery_setting_url(refinery_setting)}'>Go here</a> to edit your website's name"
+          flash[:message] << "First let's give the site a name. <a href='#{edit_admin_refinery_setting_url(refinery_setting)}'>Go here</a> to edit your website's name"
         end
       else
         render :action => 'new'
@@ -75,8 +77,9 @@ class UsersController < ApplicationController
     if params[:reset_code] and @user = User.find_using_perishable_token(params[:reset_code])
       if request.post?
         UserSession.create(@user)
-        if @user.update_attributes(:password => params[:user][:password], :password_confirmation => params[:user][:password_confirmation])
-          flash[:notice] = "Password reset successfully for #{@user.email}"
+        if @user.update_attributes(:password => params[:user][:password],
+                                   :password_confirmation => params[:user][:password_confirmation])
+          flash[:notice] = "Password reset successfully for #{@user.email}" if refinery_user?
           redirect_back_or_default admin_root_url
         end
       end
@@ -92,7 +95,7 @@ class UsersController < ApplicationController
 protected
 
   def redirect?
-    if logged_in?
+    if refinery_user?
       redirect_to admin_users_url
     else
       redirect_to root_url unless can_create_public_user?
@@ -100,7 +103,7 @@ protected
   end
 
   def can_create_public_user?
-    User.count == 0
+    not User.exists?
   end
   alias_method :can_create_public_user, :can_create_public_user?
 
