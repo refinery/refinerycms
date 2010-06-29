@@ -5,8 +5,8 @@
 
   sections = [
     {:yield => :body_content_title, :fallback => page_title, :id => 'body_content_page_title', :title => true},
-    {:yield => :body_content_left, :fallback => @page[:body]},
-    {:yield => :body_content_right, :fallback => @page[:side_body]}
+    {:yield => :body_content_left, :fallback => @page.present? ? @page[:body] : nil},
+    {:yield => :body_content_right, :fallback => @page.present? ? @page[:side_body] : nil}
   ].reject {|section| hide_sections.include?(section[:yield]) }
 
   css = []
