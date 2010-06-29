@@ -27,6 +27,7 @@ en:
         read_inquiry: Read the inquiry
         remove_inquiry: "Are you sure you want to delete the inquiry from '{{name}}'?"
         title: Remove this inquiry forever.
+        said: said
       toggle_status:
         closed: "Inquiry '{{inquiry}}' is closed"
         reopened: "Inquiry '{{inquiry}}' is reopened"
