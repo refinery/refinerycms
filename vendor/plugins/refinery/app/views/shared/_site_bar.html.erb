@@ -1,37 +1,41 @@
-<% unless admin? or login? # jquery scripts should already be cached when using the site bar as login has happened. %>
-  <%= stylesheet_link_tag('refinery/site_bar') %>
-  <%= jquery_include_tags %>
-  <%= javascript_include_tag 'jquery/jquery.corner.js' %>
-  <script type='text/javascript'>
-    $(document).ready(function() {
-      logo = $('#site_bar_content #site_bar_refinery_cms_logo');
-      $(logo).css('left', ($('#site_bar_content').width() / 2) - ($(logo).width() / 2));
-      $('#editor_switch a').corner('6px').appendTo(
-        $('<span></span>').prependTo('#editor_switch').corner('6px')
-      );
-    });
-  </script>
-<% end -%>
-<div id='site_bar'>
-  <div id='site_bar_content' class='clearfix'>
-    <% unless login? %>
-      <div id='editor_switch'>
-        <%= site_bar_switch_link -%>
-      </div>
-    <% end %>
-    <%= link_to image_tag("#{"http://refinerycms.com/images/" unless local_request?}refinery/logo-site-bar.png",
-                :alt => "Refinery (tm) Content Manager"), "http://refinerycms.com",
-                :target => "_blank",
-                :id => "site_bar_refinery_cms_logo" %>
+<% if refinery_user? %>
 
-    <% unless login? %>
-      <div id='site_bar_branding'>
-        <span id='site_bar_company_name'>
-          <%= RefinerySetting[:site_name] %>
-        </span>
+  <% unless admin? or login? # jquery scripts should already be cached when using the site bar as login has happened. %>
+    <%= stylesheet_link_tag('refinery/site_bar') %>
+    <%= jquery_include_tags %>
+    <%= javascript_include_tag 'jquery/jquery.corner.js' %>
+    <script type='text/javascript'>
+      $(document).ready(function() {
+        logo = $('#site_bar_content #site_bar_refinery_cms_logo');
+        $(logo).css('left', ($('#site_bar_content').width() / 2) - ($(logo).width() / 2));
+        $('#editor_switch a').corner('6px').appendTo(
+          $('<span></span>').prependTo('#editor_switch').corner('6px')
+        );
+      });
+    </script>
+  <% end -%>
+  
+  <div id='site_bar'>
+    <div id='site_bar_content' class='clearfix'>
+      <% unless login? %>
+        <div id='editor_switch'>
+          <%= site_bar_switch_link -%>
+        </div>
+      <% end %>
+      <%= link_to image_tag("#{"http://refinerycms.com/images/" unless local_request?}refinery/logo-site-bar.png",
+                  :alt => "Refinery (tm) Content Manager"), "http://refinerycms.com",
+                  :target => "_blank",
+                  :id => "site_bar_refinery_cms_logo" %>
 
-        <%= link_to "Log out", logout_url(:only_path => true), :id => "logout" %>
-      </div>
-    <% end %>
+      <% unless login? %>
+        <div id='site_bar_branding'>
+          <span id='site_bar_company_name'>
+            <%= RefinerySetting[:site_name] %>
+          </span>
+
+          <%= link_to "Log out", logout_url(:only_path => true), :id => "logout" %>
+        </div>
+      <% end %>
+    </div>
   </div>
-</div>
+<% end %>
