@@ -13,18 +13,6 @@
     :large => '450x450>',
     :preview => 'c96x96'
     }
-  },
-  {:name => 'refinery_i18n_locales', :value => {
-      :en => 'English',
-      :fr => 'Fran&ccedil;ais',
-      :nl => 'Nederlands',
-      :'pt-BR' => 'Portugu&ecirc;s',
-      :da => 'Dansk',
-      :nb => 'Norsk Bokm&aring;l',
-      :sl => 'Slovenian',
-      :es => 'Espa&ntilde;ol',
-      :it => 'Italiano'
-    }
   }
 ].each do |setting|
   RefinerySetting.create(:name => setting[:name].to_s, :value => setting[:value], :destroyable => false)
