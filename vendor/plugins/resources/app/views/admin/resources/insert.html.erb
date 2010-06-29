@@ -14,7 +14,7 @@
 
   <div id='dialog_main'>
     <%= render :partial => 'existing_resource' if @resources.any? %>
-    
+
     <div id='upload_resource_area' class='dialog_area' <%= "style='display:none;'" if @resources.any? and @resource.errors.empty? %>>
       <%= render :partial => "form", :locals => {:insert => true} %>
     </div>
