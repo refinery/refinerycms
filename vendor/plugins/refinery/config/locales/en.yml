@@ -23,7 +23,7 @@ en:
     search_no_results: "Sorry, no results found."
     crudify:
       created: "{{what}} was successfully created."
-      updated: "{{what}} was successfully created."
+      updated: "{{what}} was successfully updated."
       destroyed: "{{what}} was successfully destroyed"
   shared:
     site_bar:
