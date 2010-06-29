@@ -1,7 +1,7 @@
 module ActiveRecord
   module ModelTranslations
     module ClassMethods
-      def translates(*attributes)       
+      def translates(*attributes)
         add_translation_model_and_logic unless included_modules.include?(InstanceMethods)
         add_translatable_attributes(attributes)
       end
