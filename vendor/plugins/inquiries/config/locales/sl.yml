@@ -34,7 +34,6 @@ sl:
       index:
         update_notified: Uredi prejemnike obvestila
         edit_confirmation_email: Uredni potrditveni email
-        search_results_for: Iskalni rezultati za {{query}}
         no_inquiries: Trenutno še ni nobenega povpraševanja.
       show:
         details: Podrobnosti
