@@ -261,15 +261,14 @@ body.login label, body.login a {
 body.login #flash_container, body.login .errorExplanation {
   margin-bottom: 12px;
 }
+div.field.plugin_access ul#plugins li {
+  margin-top: 3px;
+}
 div.field.plugin_access {
   margin-top: 20px;
 }
-div.field.plugin_access label.title_label {
-  width: auto;
-  display: inline;
-}
-div.field.plugin_access ul#plugins {
-  margin-top: 3px;
+div.field.plugin_access .label_with_help a {
+  font-weight: normal;
 }
 /* Works in Firefox, Safari, Chrome, IE8+ */
 body.login input.larger {
