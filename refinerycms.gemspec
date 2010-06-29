@@ -2,7 +2,7 @@ Gem::Specification.new do |s|
   s.name              = %q{refinerycms}
   s.version           = %q{0.9.7.dev}
   s.description       = %q{A beautiful open source Ruby on Rails content manager for small business. Easy to extend, easy to use, lightweight and all wrapped up in a super slick UI.}
-  s.date              = %q{2010-06-23}
+  s.date              = %q{2010-06-29}
   s.summary           = %q{A beautiful open source Ruby on Rails content manager for small business.}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
@@ -21,6 +21,7 @@ Gem::Specification.new do |s|
     'VERSION',
     'todo.md',
     'public/.htaccess',
+    'config.ru',
     'app/controllers',
     'app/controllers/admin',
     'app/controllers/admin/base_controller.rb',
@@ -69,6 +70,8 @@ Gem::Specification.new do |s|
     'db/migrate/20100525110237_add_small_and_large_thumbnail_sizes.rb',
     'db/migrate/20100530205942_update_link_url_on_pages_from_inquiries_new_to_contact.rb',
     'db/migrate/20100608062447_add_scoping_to_refinery_settings.rb',
+    'db/migrate/20100623220402_add_restricted_to_refinery_settings.rb',
+    'db/migrate/20100624024501_add_roles.rb',
     'db/schema.rb',
     'db/seeds',
     'db/seeds/inquiry_settings.rb',
@@ -450,6 +453,7 @@ Gem::Specification.new do |s|
     'vendor/plugins/authentication/app/helpers/sessions_helper.rb',
     'vendor/plugins/authentication/app/helpers/users_helper.rb',
     'vendor/plugins/authentication/app/models',
+    'vendor/plugins/authentication/app/models/role.rb',
     'vendor/plugins/authentication/app/models/user.rb',
     'vendor/plugins/authentication/app/models/user_mailer.rb',
     'vendor/plugins/authentication/app/models/user_plugin.rb',
