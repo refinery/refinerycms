@@ -4,10 +4,11 @@
     <span class="preview"><%= truncate(strip_tags(inquiry.message), :length => 60) -%></span>
   </span>
   <span class='actions'>
-    <%= link_to refinery_icon_tag('zoom.png'), admin_inquiry_url(inquiry),
-                :title => t('.read_inquiry') -%>
     <%= link_to refinery_icon_tag('delete.png'), admin_inquiry_url(inquiry),
                 :class => "cancel confirm-delete",
                 :title => t('.remove_inquiry', :name => inquiry.name) -%>
+
+    <%= link_to refinery_icon_tag('zoom.png'), admin_inquiry_url(inquiry),
+                :title => t('.read_inquiry') -%>
   </span>
 </li>

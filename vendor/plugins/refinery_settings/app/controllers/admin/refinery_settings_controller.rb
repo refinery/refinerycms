@@ -1,7 +1,9 @@
 class Admin::RefinerySettingsController < Admin::BaseController
 
   crudify :refinery_setting, :title_attribute => :title, :order => "name ASC", :searchable => false
-          #:conditions => current_user.superuser? ? nil : {:restricted => false}
+
+  before_filter :sanitise_params, :only => [:create, :update]
+  after_filter :fire_setting_callback, :only => [:update]
 
   def edit
     @refinery_setting = RefinerySetting.find(params[:id])
@@ -19,6 +21,24 @@ class Admin::RefinerySettingsController < Admin::BaseController
     @refinery_settings = RefinerySetting.paginate :page => params[:page],
                                                   :order => "name ASC",
                                                   :conditions => current_user.superuser? ? nil : {:restricted => false}
+  end
+
+private
+  # this fires before an update or create to remove any attempts to pass sensitive arguments.
+  def sanitise_params
+    params.delete(:callback_proc_as_string)
+    params.delete(:scoping)
+  end
+
+  def fire_setting_callback
+    begin
+      @refinery_setting.callback_proc.call
+    rescue
+      logger.warn('Could not fire callback proc. Details:')
+      logger.warn(@refinery_setting.inspect)
+      logger.warn($!.message)
+      logger.warn($!.backtrace)
+    end unless @refinery_setting.callback_proc.nil?
   end
 
 end

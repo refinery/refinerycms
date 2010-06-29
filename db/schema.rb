@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100624024501) do
+ActiveRecord::Schema.define(:version => 20100629081543) do
 
   create_table "images", :force => true do |t|
     t.integer  "parent_id"
@@ -89,11 +89,12 @@ ActiveRecord::Schema.define(:version => 20100624024501) do
   create_table "refinery_settings", :force => true do |t|
     t.string   "name"
     t.text     "value"
-    t.boolean  "destroyable", :default => true
+    t.boolean  "destroyable",             :default => true
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "scoping"
-    t.boolean  "restricted",  :default => false
+    t.boolean  "restricted",              :default => false
+    t.string   "callback_proc_as_string"
   end
 
   add_index "refinery_settings", ["name"], :name => "index_refinery_settings_on_name"
