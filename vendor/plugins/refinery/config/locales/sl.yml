@@ -41,6 +41,7 @@ sl:
         cancel: Prekliči
         or_continue: ali
         cancel_lose_changes: "S preklicem bodo izgubljene vse spremembe, ki ste jih naredili na {{object_name}}."
+        delete_title: S tem bo stran odstranjena za vedno
         delete: Izbriši
       image_picker:
         none_selected: "Trenutno ni izbrana nobena {{what}}, prosimo kliknite tukaj da dodate eno."
