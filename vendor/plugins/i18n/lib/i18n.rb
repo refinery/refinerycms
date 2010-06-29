@@ -1,18 +1,17 @@
 class Refinery::I18n
   class << self
 
-    attr_accessor :enabled, :current_locale
-
-    def locales
-      RefinerySetting.find_or_set(:refinery_i18n_locales, { :en => "English" })
-    end
-
-    def has_locale? locale
-      locales.has_key? locale.try(:to_sym)
-    end
+    attr_accessor :enabled, :current_locale, :locales
 
     def enabled?
-      RefinerySetting.find_or_set(:refinery_i18n_enabled, false)
+      # cache this lookup as it gets very expensive.
+      if defined?(@enabled) && !@enabled.nil?
+        @enabled
+      else
+        @enabled = RefinerySetting.find_or_set(:refinery_i18n_enabled, false, {
+          :callback_proc_as_string => %q{::Refinery::I18n.setup!}
+        })
+      end
     end
 
     def current_locale
@@ -31,7 +30,30 @@ class Refinery::I18n
       ::I18n.locale = locale.to_sym
     end
 
+    def locales
+      @locales ||= RefinerySetting.find_or_set(:refinery_i18n_locales, {:en => 'English',
+                                                                        :fr => 'Fran&ccedil;ais',
+                                                                        :nl => 'Nederlands',
+                                                                        :'pt-BR' => 'Portugu&ecirc;s',
+                                                                        :da => 'Dansk',
+                                                                        :nb => 'Norsk Bokm&aring;l',
+                                                                        :sl => 'Slovenian',
+                                                                        :es => 'Espa&ntilde;ol',
+                                                                        :it => 'Italiano'},
+      {
+        :callback_proc_as_string => %q{::Refinery::I18n.setup!}
+      })
+    end
+
+    def has_locale? locale
+      locales.has_key? locale.try(:to_sym)
+    end
+
     def setup!
+      # Re-initialize variables.
+      @enabled = nil
+      @locales = nil
+
       self.load_base_locales!
       self.load_refinery_locales!
       self.load_app_locales!
