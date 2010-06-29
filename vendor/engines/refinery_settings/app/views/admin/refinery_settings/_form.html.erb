@@ -5,13 +5,27 @@
     <%= f.label :name %>
     <%= f.text_field :name, :class => "larger", :size => from_dialog? ? 50 : 67 %>
   <% else %>
-    <label>Name</label>
-    <%= h(@refinery_setting.name).titleize %> <span class="preview">- (<%= h @refinery_setting.name %>)</span>
+    <label for='refinery_setting_value'>Name</label>
+    <label class='stripped' for='refinery_setting_value'>
+      <%= h(@refinery_setting.name).titleize %>
+    </label>
+    <span class="preview">- (<%= h @refinery_setting.name %>)</span>
+  <% end %>
+  <% unless action_name =~ /(new)|(create)/ %>
+    <p>
+      <span>
+        <%= I18n.translate("admin.refinery_settings.help.#{@refinery_setting.name}", :default => '') %>
+      </span>
+    </p>
+  <% end %>
+  <% if current_user.superuser? %>
+    <%= f.label :restricted %>
+    <%= f.check_box :restricted %>
   <% end %>
   </div>
   <div class='field'>
     <%= f.label :value %>
-    <%= f.text_area :value, :rows => 5, :cols => 95 %>
+    <%= f.text_area :value, :rows => 5, :class => 'widest' %>
   </div>
   <input type='hidden' name='modal' value='<%= from_dialog? %>' />
   <input type='hidden' name='dialog' value='<%= from_dialog? %>' />

@@ -10,9 +10,9 @@ unless rails_root.nil? or rails_root.length == 0
 
   # copy in the new assets.
   assets = [%w(public stylesheets refinery), %w(public javascripts refinery), %w(public javascripts wymeditor), %w(VERSION), %w(public images wymeditor skins refinery), %w(public images refinery), %w(public stylesheets wymeditor skins refinery), %w(public javascripts jquery)]
-	assets.each do |asset|
-	  FileUtils::rm_rf File.join(rails_root, asset), :secure => true # ensure the destination is clear.
-	  FileUtils::cp_r File.join(refinery_root, asset), File.join(rails_root, asset) # copy the new assets into the project.
+  assets.each do |asset|
+    FileUtils::rm_rf File.join(rails_root, asset), :secure => true # ensure the destination is clear.
+    FileUtils::cp_r File.join(refinery_root, asset), File.join(rails_root, asset) # copy the new assets into the project.
   end
 
   # copy in any new migrations.
@@ -56,9 +56,9 @@ unless rails_root.nil? or rails_root.length == 0
     secret_key = match unless match.nil?
   end
 
-	# read in the config files
-	if File.exist?(File.join(%W(#{rails_root} config application.rb)))
-	  FileUtils::cp File.join(%W(#{refinery_root} config environment.rb)), File.join(%W(#{rails_root} config environment.rb))
+  # read in the config files
+  if File.exist?(File.join(%W(#{rails_root} config application.rb)))
+    FileUtils::cp File.join(%W(#{refinery_root} config environment.rb)), File.join(%W(#{rails_root} config environment.rb))
   else
     # write the new content into the file.
     FileUtils::cp File.join(%W(#{refinery_root} config application.rb)), File.join(%W(#{rails_root} config application.rb))
@@ -81,20 +81,20 @@ unless rails_root.nil? or rails_root.length == 0
 
   app_config_file = "application.rb"
 
-	app_config = File.open(File.join(%W(#{rails_root} config #{app_config_file})), "r").read
+  app_config = File.open(File.join(%W(#{rails_root} config #{app_config_file})), "r").read
 
   # copy new jquery javascripts.
   FileUtils.cp File.join(%W(#{refinery_root} public javascripts jquery.js)), File.join(%W(#{rails_root} public javascripts jquery.js)) if File.exist?(File.join(%W(#{refinery_root} public javascripts jquery.js)))
   FileUtils.cp File.join(%W(#{refinery_root} public javascripts jquery-min.js)), File.join(%W(#{rails_root} public javascripts jquery-min.js)) if File.exist?(File.join(%W(#{refinery_root} public javascripts jquery-min.js)))
   FileUtils.cp File.join(%W(#{refinery_root} public javascripts jquery-ui.js)), File.join(%W(#{rails_root} public javascripts jquery-ui.js)) if File.exist?(File.join(%W(#{refinery_root} public javascripts jquery-ui.js)))
-  FileUtils.cp File.join(%W(#{refinery_root} public javascripts jquery-ui-custom-min.js)), File.join(%W(#{rails_root} public javascripts if File.exist?(File.join(%W(#{refinery_root} public javascripts jquery-ui-custom-min.js))) jquery-ui-custom-min.js))
+  FileUtils.cp File.join(%W(#{refinery_root} public javascripts jquery-ui-custom-min.js)), File.join(%W(#{rails_root} public javascripts jquery-ui-custom-min.js)) if File.exist?(File.join(%W(#{refinery_root} public javascripts jquery-ui-custom-min.js)))
 
   # backup app's config file and replace it, if required.
-	environment_updated = false
+  environment_updated = false
   matcher = /(#===REFINERY REQUIRED GEMS===)(.+?)(#===REFINERY END OF REQUIRED GEMS===)/m
   unless (app_refinery_gems_section = app_config.scan(matcher).join("")).length == 0
     # backup the config file.
-  	FileUtils.cp File.join(%W(#{rails_root} config #{app_config_file})), File.join(%W(#{rails_root} config #{app_config_file.gsub(".rb", "")}.autobackupbyrefinery.rb))
+    FileUtils.cp File.join(%W(#{rails_root} config #{app_config_file})), File.join(%W(#{rails_root} config #{app_config_file.gsub(".rb", "")}.autobackupbyrefinery.rb))
 
     # copy the new config file.
     FileUtils.cp File.join(%W(#{refinery_root} config #{app_config_file})), File.join(%W(#{rails_root} config #{app_config_file}))
@@ -102,22 +102,22 @@ unless rails_root.nil? or rails_root.length == 0
     # Write the secret key back into the file.
 
 
-  	environment_updated = true
-	end
+    environment_updated = true
+  end
 
-	unless ARGV.include?("--from-refinery-installer")
-	  puts "---------"
-	  puts "Copied new Refinery core assets."
-	  if environment_updated
-  	  puts "I've made a backup of your current config/#{app_config_file} file as it has been updated with the latest Refinery requirements."
-  	  puts "The backup is located at config/#{app_config_file.gsub(".rb", "")}.autobackupbyrefinery.rb incase you need it."
+  unless ARGV.include?("--from-refinery-installer")
+    puts "---------"
+    puts "Copied new Refinery core assets."
+    if environment_updated
+      puts "I've made a backup of your current config/#{app_config_file} file as it has been updated with the latest Refinery requirements."
+      puts "The backup is located at config/#{app_config_file.gsub(".rb", "")}.autobackupbyrefinery.rb incase you need it."
     end
-	  puts ""
-	  puts "=== ACTION REQUIRED ==="
-	  puts "Please run rake db:migrate to ensure your database is at the correct version."
-	  puts "Please also run rake gems:install to ensure you have the currently specified gems." if environment_updated
-
-	  puts ""
+    puts ""
+    puts "=== ACTION REQUIRED ==="
+    puts "Please run 'rake db:migrate' to ensure your database is at the correct version."
+    puts "Please also run 'rake gems:install' to ensure you have the currently specified gems." if environment_updated
+    puts "It may also be necessary to run 'bundle install' in order to get the latest gems."
+    puts ""
   end
 else
   unless ARGV.include?("--from-refinery-installer")

@@ -1,12 +1,13 @@
 <%
   show_empty_sections ||= false
   remove_automatic_sections ||= false
+  hide_sections ||= []
 
   sections = [
     {:yield => :body_content_title, :fallback => page_title, :id => 'body_content_page_title', :title => true},
-    {:yield => :body_content_left, :fallback => @page[:body]},
-    {:yield => :body_content_right, :fallback => @page[:side_body]}
-  ]
+    {:yield => :body_content_left, :fallback => @page.present? ? @page[:body] : nil},
+    {:yield => :body_content_right, :fallback => @page.present? ? @page[:side_body] : nil}
+  ].reject {|section| hide_sections.include?(section[:yield]) }
 
   css = []
   sections.each do |section|
@@ -19,9 +20,9 @@
 
     unless section[:html].blank?
       unless section[:title]
-        section[:html] = "<div class='clearfix' id='#{dom_id}'>#{section[:html]}</div>"
+        section[:html] = "<div class='clearfix' id='#{dom_id}'>#{section[:html]}</div>".html_safe
       else
-        section[:html] = "<h1 id='#{dom_id}'>#{section[:html]}</h1>"
+        section[:html] = "<h1 id='#{dom_id}'>#{section[:html]}</h1>".html_safe
       end
     else
       css << "no_#{dom_id}"

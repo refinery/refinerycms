@@ -1,6 +1,6 @@
 @import url('/stylesheets/refinery/application.css');
-/*  
-    Override default refinery application CSS below. 
+/*
+    Override default refinery application CSS below.
     Formatting applies to all frontend.
 */
 body {
@@ -11,7 +11,7 @@ body {
     margin-top: 36px;
 }
 #body_content_left {
-    width: 544px;
+    width: 574px;
 }
 #body_content_right {
     width: 396px;
@@ -25,7 +25,7 @@ body {
     margin: 0px;
 }
 #body, #header_content, #footer_content, #site_bar_content {
-    width: 960px;
+    width: 990px;
     margin: 0px auto;
 }
 #header {
@@ -91,4 +91,11 @@ body {
     padding-top: 94px;
     background: url('/images/refinery/logo.png') 0px 80px no-repeat;
     text-align: right;
+}
+.inquiries .field input, .inquiries textarea {
+  border: 1px solid #75766f;
+  margin-left: 0px;
+}
+.inquiries textarea {
+  width: 375px;
 }

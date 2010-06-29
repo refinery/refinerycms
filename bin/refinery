@@ -20,7 +20,7 @@ unless (app_path = ARGV.shift).nil? or app_path.length == 0
     FileUtils::makedirs rails_root
 
     # copy in all of the relevant directories and root files.
-    to_copy = %w(app config db lib public themes script license.md Rakefile readme.md VERSION Gemfile).map do |dir|
+    to_copy = %w(app config db lib public themes script license.md Rakefile readme.md VERSION Gemfile .gitignore).map do |dir|
       refinery_root.join(dir).to_s
     end
     FileUtils::cp_r to_copy, rails_root, :verbose => false
@@ -30,7 +30,7 @@ unless (app_path = ARGV.shift).nil? or app_path.length == 0
     FileUtils::rm File.join(%W(#{rails_root} lib gemspec.rb)) if File.exists?(File.join(%W(#{rails_root} lib gemspec.rb)))
 
     # add in the config files
-    for config in %w(database amazon_s3 rackspace_cloudfiles)
+    %w(database amazon_s3 rackspace_cloudfiles).each do |config|
       FileUtils::move File.join(%W(#{rails_root} config #{config}.yml.example)), File.join(%W(#{rails_root} config #{config}.yml))
 
       # figure out the app name from the install path and swap out your_local_xxx with this name.
@@ -41,6 +41,7 @@ unless (app_path = ARGV.shift).nil? or app_path.length == 0
         lines.each do |line|
           line.gsub!("your_local_#{config}", "#{app_name}_development")
           line.gsub!("your_test_#{config}", "#{app_name}_test")
+          line.gsub!("your_cucumber_#{config}", "#{app_name}_cucumber")
           line.gsub!("your_production_#{config}", "#{app_name}_production")
         end
         # write the new content into the file.

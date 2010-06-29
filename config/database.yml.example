@@ -4,15 +4,19 @@ login: &login
   username: root
   password: root
 
-development:
+development: &development
   database: your_local_database
   <<: *login
 
-test:
+test: &test
   database: your_test_database
   <<: *login
 
-production:
+cucumber: &cucumber
+  database: your_cucumber_database
+  <<: *test
+
+production: &production
   database: your_production_database
   adapter: mysql
   host: localhost

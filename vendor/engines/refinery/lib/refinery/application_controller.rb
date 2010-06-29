@@ -6,8 +6,8 @@ class Refinery::ApplicationController < ActionController::Base
   include Crud # basic create, read, update and delete methods
   include AuthenticatedSystem
 
-  before_filter :find_pages_for_menu, :store_current_location!, :except => [:wymiframe]
-  before_filter :show_welcome_page?
+  before_filter :find_pages_for_menu, :show_welcome_page?
+  after_filter :store_current_location!, :if => Proc.new {|c| c.send(:logged_in?) && c.send(:refinery_user?) }
 
   rescue_from ActiveRecord::RecordNotFound, ActionController::UnknownAction, ActionView::MissingTemplate, :with => :error_404
 
@@ -56,15 +56,14 @@ class Refinery::ApplicationController < ActionController::Base
     (controller_name =~ /^(user|session)(|s)/ and not admin?) or just_installed?
   end
 
-  def wymiframe
-    render :template => "/wymiframe", :layout => false
-  end
-
 protected
 
   # get all the pages to be displayed in the site menu.
   def find_pages_for_menu
-    @menu_pages = Page.top_level(include_children=true)
+    if (@menu_pages = Rails.cache.read(cache_key = "#{Refinery.base_cache_key}_menu_pages")).nil?
+      @menu_pages = Page.top_level(include_children = true)
+      Rails.cache.write(cache_key, @menu_pages) if @menu_pages.present?
+    end
   end
 
   # use a different model for the meta information.
@@ -94,9 +93,8 @@ private
     if admin?
       # ensure that we don't redirect to AJAX or POST/PUT/DELETE urls
       session[:refinery_return_to] = request.path if request.get? and !request.xhr? and !from_dialog?
-    elsif request.path !~ /^(\/(wym(\-.*|iframe)|system\/|sessions?|.*\/dialogs|javascripts|stylesheets|images))/ and
-      !from_dialog? and !request.xhr? and controller_name !~ /^(sessions|users)/
-      session[:website_return_to] = request.path
+    elsif defined?(@page) and @page.present?
+      session[:website_return_to] = @page.url
     end
   end
 

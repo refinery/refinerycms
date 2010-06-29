@@ -9,7 +9,13 @@ module NavigationHelpers
     case page_name
 
     when /the home\s?page/
-      '/'
+      root_url
+
+    when /the list of pages/
+      admin_pages_path
+
+    when /the list of users/
+      admin_users_path
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
@@ -18,8 +24,14 @@ module NavigationHelpers
     #     user_profile_path(User.find_by_login($1))
 
     else
-      raise "Can't find mapping from \"#{page_name}\" to a path.\n" +
-        "Now, go and add a mapping in #{__FILE__}"
+      begin
+        page_name =~ /the (.*) page/
+        path_components = $1.split(/\s+/)
+        self.send(path_components.push('path').join('_').to_sym)
+      rescue Object => e
+        raise "Can't find mapping from \"#{page_name}\" to a path.\n" +
+          "Now, go and add a mapping in #{__FILE__}"
+      end
     end
   end
 end

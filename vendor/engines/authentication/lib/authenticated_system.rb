@@ -118,8 +118,12 @@ module AuthenticatedSystem
       session[:return_to] = nil
     end
 
+    def refinery_user?
+      logged_in? && current_user.roles.include?(Role.find_or_create_by_title('Refinery'))
+    end
+
     def self.included(base)
-      base.send :helper_method, :current_user, :current_user_session, :logged_in? if base.respond_to? :helper_method
+      base.send :helper_method, :current_user, :current_user_session, :logged_in?, :refinery_user? if base.respond_to? :helper_method
     end
 
 end

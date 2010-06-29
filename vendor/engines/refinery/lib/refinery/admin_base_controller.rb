@@ -18,9 +18,14 @@ class Refinery::AdminBaseController < ApplicationController
 protected
 
   def error_404(exception=nil)
-    @page = Page.find_by_menu_match("^/404$", :include => [:parts, :slugs])
-    @page[:body] = @page[:body].gsub(/href=(\'|\")\/(\'|\")/, "href='/admin'").gsub("home page", "Dashboard")
-    render :template => "/pages/show", :status => 404
+    if (@page = Page.find_by_menu_match("^/404$", :include => [:parts, :slugs])).present?
+      params[:action] = 'error_404'
+      @page[:body] = @page[:body].gsub(/href=(\'|\")\/(\'|\")/, "href='/refinery'").gsub("home page", "Dashboard")
+      render :template => "/pages/show", :status => 404
+    else
+      # fallback to the default 404.html page.
+      render :file => Rails.root.join("public", "404.html").cleanpath.to_s, :layout => false, :status => 404
+    end
   end
 
   def restrict_plugins
@@ -32,9 +37,8 @@ protected
       params[:controller] !~ Regexp.new(plugin.menu_match) and
       params[:controller] !~ Regexp.new(plugin.menu_match.to_s.gsub('admin\/', 'refinery/'))
     }.empty?
-      flash[:error] = "You do not have permission to access this feature."
       logger.warn "'#{current_user.login}' tried to access '#{params[:controller]}' but was rejected."
-      redirect_back_or_default(admin_root_url)
+      error_404
     end
   end
 
@@ -64,6 +68,11 @@ private
   # right now we just want to snap back to index actions and definitely not to dialogues.
   def store_location?
     store_location unless action_name !~ /index/ or request.xhr? or from_dialog?
+  end
+
+  # Override authorized? so that only users with the Refinery role can admin the website.
+  def authorized?
+    logged_in? && refinery_user?
   end
 
 end

@@ -1,0 +1,34 @@
+<div id='existing_resource_area' class='dialog_area' <%= "style='display:none;'" if @resource.errors.any? %>>
+  <input type='hidden' name='linked_resource' id='linked_resource' />
+  <div id='existing_resource_area_content' class='clearfix'>
+    <div id='pages_list'>
+      <ul class='link_list'>
+        <% @resources.each do |resource| -%>
+          <% resource_linked = (resource.public_filename == params[:current_link]) if params[:current_link].present? %>
+          <li<%= " class='linked'" if resource_linked %>>
+            <%= link_to "#{resource.title} (#{resource.public_filename})",
+                        resource.public_filename,
+                        :title => 'Link to this Resource',
+                        :rel => resource.title,
+                        :class => 'page_link',
+                        :id => "resource_#{resource.id}" %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+
+  <%= render :partial => "/shared/admin/form_actions",
+             :locals => {
+               :f => nil,
+               :cancel_url => '',
+               :submit_button_text => 'Insert',
+               :hide_cancel => false,
+               :hide_delete => true,
+               :cancel_title => '',
+               :paginate => {
+                 :collection => @resources,
+                 :url => {:controller => "admin/resources", :action => "insert", :dialog => from_dialog? }
+               }
+             } if @app_dialog or @resources.any? %>
+</div>
