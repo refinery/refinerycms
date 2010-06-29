@@ -2,13 +2,12 @@
   <span class='title'>
     <%= link_to h(inquiry.name), admin_inquiry_url(inquiry) %> said
     <span class="preview"><%= truncate(strip_tags(inquiry.message), :length => 60) -%></span>
-
-    <span class='actions'>
-      <%= link_to refinery_icon_tag('delete.png'), admin_inquiry_url(inquiry),
-                  :class => "cancel confirm-delete",
-                  :title => "Remove this inquiry forever" -%>
-      <%= link_to refinery_icon_tag('zoom.png'), admin_inquiry_url(inquiry),
-                  :title => "Read this inquiry" -%>
-    </span>
+  </span>
+  <span class='actions'>
+    <%= link_to refinery_icon_tag('delete.png'), admin_inquiry_url(inquiry),
+                :class => "cancel confirm-delete",
+                :title => "Remove this inquiry forever" -%>
+    <%= link_to refinery_icon_tag('zoom.png'), admin_inquiry_url(inquiry),
+                :title => "Read this inquiry" -%>
   </span>
 </li>
