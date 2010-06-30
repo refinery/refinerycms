@@ -28,6 +28,7 @@ group :test do
   gem 'rspec'
   gem 'rspec-rails'
   gem 'factory_girl'
+  gem 'test-unit', '1.2.3'
 
   gem 'cucumber-rails'
   gem 'capybara'
