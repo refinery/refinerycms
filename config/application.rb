@@ -24,15 +24,6 @@ end
 # Note: These are settings that aren't dependent on environment type. For those, use the files in config/environments/
 require Rails.root.join('config', 'settings.rb').to_s
 
-# Mislav trick to fallback to default for missing translations
-I18n.exception_handler = lambda do |e, locale, key, options|
-  if I18n::MissingTranslationData === e and locale != I18n.default_locale
-    I18n.translate(key, (options || {}).update(:locale => I18n.default_locale, :raise => true))
-  else
-    raise e
-  end
-end if Rails.env == 'production'
-
 # Bundler has shown a weakness using Rails < 3 so we are going to
 # require these dependencies here until we can find another solution or until we move to
 # Rails 3.0 which should fix the issue (or until Bundler fixes the issue).
