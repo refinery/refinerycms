@@ -1,4 +1,4 @@
 --colour
---format specdoc
+--format progress
 --loadby mtime
 --reverse
