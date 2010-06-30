@@ -13,7 +13,7 @@ class ImageTest < ActiveSupport::TestCase
   end
 
   def test_per_page
-    assert_equal 18, Image.per_page(dialog = true)
+    assert_equal 12, Image.per_page(dialog = true)
     assert_equal 20, Image.per_page # dialog = false
   end
 
