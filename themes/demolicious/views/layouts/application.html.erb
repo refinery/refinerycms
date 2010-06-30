@@ -2,7 +2,7 @@
 <html>
   <%= render :partial => "/shared/head", :locals => {:theme => true} %>
   <body>
-    <%= render :partial => "/shared/site_bar" if refinery_user? %>
+    <%= render :partial => "/shared/site_bar" %>
     <div id='page_container'>
       <div id='page'>
         <%= render :partial => "/shared/ie6check" if request.env['HTTP_USER_AGENT'] =~ /MSIE/ -%>
