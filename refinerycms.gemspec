@@ -2,7 +2,7 @@ Gem::Specification.new do |s|
   s.name              = %q{refinerycms}
   s.version           = %q{0.9.7.dev}
   s.description       = %q{A beautiful open source Ruby on Rails content manager for small business. Easy to extend, easy to use, lightweight and all wrapped up in a super slick UI.}
-  s.date              = %q{2010-06-29}
+  s.date              = %q{2010-06-30}
   s.summary           = %q{A beautiful open source Ruby on Rails content manager for small business.}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
@@ -11,7 +11,6 @@ Gem::Specification.new do |s|
   s.executables       = %w(refinery refinery-update-core)
 
   s.files             = [
-    '.gems',
     '.gitignore',
     '.yardopts',
     'Gemfile',
@@ -72,6 +71,7 @@ Gem::Specification.new do |s|
     'db/migrate/20100608062447_add_scoping_to_refinery_settings.rb',
     'db/migrate/20100623220402_add_restricted_to_refinery_settings.rb',
     'db/migrate/20100624024501_add_roles.rb',
+    'db/migrate/20100629081543_add_callback_proc_as_string_to_refinery_settings.rb',
     'db/schema.rb',
     'db/seeds',
     'db/seeds/inquiry_settings.rb',
@@ -86,6 +86,7 @@ Gem::Specification.new do |s|
     'features/refinery/manage_pages.feature',
     'features/refinery/manage_refinery_settings.feature',
     'features/refinery/manage_users.feature',
+    'features/refinery/site_bar.feature',
     'features/step_definitions',
     'features/step_definitions/refinery',
     'features/step_definitions/refinery/page_steps.rb',
@@ -93,6 +94,7 @@ Gem::Specification.new do |s|
     'features/step_definitions/web_steps.rb',
     'features/support',
     'features/support/env.rb',
+    'features/support/factories.rb',
     'features/support/negative_expectations_helper.rb',
     'features/support/paths.rb',
     'lib/gemspec.rb',
@@ -103,6 +105,7 @@ Gem::Specification.new do |s|
     'lib/refinery_initializer.rb',
     'lib/tasks',
     'lib/tasks/cucumber.rake',
+    'lib/tasks/rspec.rake',
     'public/404.html',
     'public/422.html',
     'public/500.html',
@@ -215,6 +218,10 @@ Gem::Specification.new do |s|
     'public/javascripts',
     'public/javascripts/admin.js',
     'public/javascripts/application.js',
+    'public/javascripts/cache',
+    'public/javascripts/cache/admin.js',
+    'public/javascripts/cache/jquery-plugins.js',
+    'public/javascripts/cache/jquery.js',
     'public/javascripts/jquery',
     'public/javascripts/jquery/GPL-LICENSE.txt',
     'public/javascripts/jquery/jquery.corner.js',
@@ -258,6 +265,8 @@ Gem::Specification.new do |s|
     'public/robots.txt',
     'public/stylesheets',
     'public/stylesheets/application.css',
+    'public/stylesheets/cache',
+    'public/stylesheets/cache/refinery.css',
     'public/stylesheets/formatting.css',
     'public/stylesheets/home.css',
     'public/stylesheets/ie6.css',
@@ -283,6 +292,7 @@ Gem::Specification.new do |s|
     'public/wymeditor/MIT-license.txt',
     'public/wymeditor/README',
     'script/about',
+    'script/autospec',
     'script/console',
     'script/cucumber',
     'script/dbconsole',
@@ -299,6 +309,7 @@ Gem::Specification.new do |s|
     'script/process/spawner',
     'script/runner',
     'script/server',
+    'script/spec',
     'test/files',
     'test/files/car-wallpapers19.jpg',
     'test/files/teng.pdf',
