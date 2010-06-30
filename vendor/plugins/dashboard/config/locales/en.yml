@@ -13,7 +13,7 @@ en:
         see_home_page: See home page
       recent_activity:
         latest_activity: Latest activity
-        see: See '{{what}}'
+        see: "See '{{what}}'"
   updated: updated
   created: created
   ago: "{{time}} ago"
