@@ -83,11 +83,11 @@ ActiveRecord::Schema.define(:version => 20100629081543) do
   create_table "refinery_settings", :force => true do |t|
     t.string   "name"
     t.text     "value"
-    t.boolean  "destroyable", :default => true
+    t.boolean  "destroyable",             :default => true
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "scoping"
-    t.boolean  "restricted",  :default => false
+    t.boolean  "restricted",              :default => false
     t.string   "callback_proc_as_string"
   end
 
