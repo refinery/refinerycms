@@ -86,7 +86,7 @@ protected
     if Refinery::I18n.enabled?
       if Refinery::I18n.has_locale?(locale = params[:locale].try(:to_sym))
         I18n.locale = locale
-      else
+      elsif Refinery::I18n.current_locale != I18n.default_locale
         params[:locale] = I18n.locale = I18n.default_locale
         redirect_to params, :message => "The locale '#{locale.to_s}' is not supported."
       end
