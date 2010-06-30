@@ -3,6 +3,7 @@ class RefinerySetting < ActiveRecord::Base
   validates_presence_of :name
 
   serialize :value # stores into YAML format
+  serialize :callback_proc_as_string
 
   # Number of settings to show per page when using will_paginate
   def self.per_page
@@ -53,14 +54,18 @@ class RefinerySetting < ActiveRecord::Base
 
   def self.find_or_set(name, the_value, options={})
     # Try to get the value from cache first.
-    scoping = (options = {:scoping => nil}.merge(options))[:scoping]
+    scoping = options[:scoping]
+    restricted = options[:restricted]
+    callback_proc_as_string = options[:callback_proc_as_string]
     if (value = cache_read(name, scoping)).nil?
-      # if the database is not up to date yet then it won't know about scoping..
-      if self.column_names.include?('scoping')
-        setting = find_or_create_by_name_and_scoping(:name => name.to_s, :value => the_value, :scoping => scoping)
-      else
-        setting = find_or_create_by_name(:name => name.to_s, :value => the_value)
-      end
+      setting = find_or_create_by_name(:name => name.to_s, :value => the_value)
+
+      # if the database is not up to date yet then it won't know about certain fields.
+      setting.scoping = scoping if self.column_names.include?('scoping')
+      setting.restricted = restricted if self.column_names.include?('restricted')
+      setting.callback_proc_as_string = callback_proc_as_string if callback_proc_as_string.is_a?(String) && self.column_names.include?('callback_proc_as_string')
+
+      setting.save
 
       # cache whatever we found including its scope in the name, even if it's nil.
       cache_write(name, scoping, (value = setting.try(:value)))
@@ -82,21 +87,16 @@ class RefinerySetting < ActiveRecord::Base
   end
 
   def self.[]=(name, value)
-<<<<<<< HEAD:vendor/engines/refinery_settings/app/models/refinery_setting.rb
-    setting = find_or_initialize_by_name(name.to_s)
-    setting.value = value
-=======
     setting = find_or_create_by_name(name.to_s)
-    
+
     # you could also pass in {:value => 'something', :scoping => 'somewhere'}
     unless value.is_a?(Hash) && value.has_key?(:value) && value.has_key?(:scoping)
       setting.value = value
     else
       setting.value = value[:value]
-      setting.scoping = value[:scoping]
+      setting.scoping = value[:scoping] if setting.column_names.include?('scoping')
     end
-    
->>>>>>> master:vendor/plugins/refinery_settings/app/models/refinery_setting.rb
+
     setting.save
   end
 
@@ -131,6 +131,10 @@ class RefinerySetting < ActiveRecord::Base
     # must convert to string if true or false supplied otherwise it becomes 0 or 1, unfortunately.
     new_value = new_value.to_s if ["trueclass","falseclass"].include?(new_value.class.to_s.downcase)
     self[:value] = new_value
+  end
+
+  def callback_proc
+    eval "Proc.new{|c| #{self.callback_proc_as_string} }" if RefinerySetting.column_names.include?('callback_proc_as_string') && self.callback_proc_as_string.present?
   end
 
 end

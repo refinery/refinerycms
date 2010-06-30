@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100608062447) do
+ActiveRecord::Schema.define(:version => 20100629081543) do
 
   create_table "images", :force => true do |t|
     t.string   "image_mime_type"
@@ -54,6 +54,12 @@ ActiveRecord::Schema.define(:version => 20100608062447) do
   add_index "page_parts", ["id"], :name => "index_page_parts_on_id"
   add_index "page_parts", ["page_id"], :name => "index_page_parts_on_page_id"
 
+  create_table "page_translations", :force => true do |t|
+    t.integer "page_id"
+    t.string  "custom_title"
+    t.string  "meta_keywords"
+  end
+
   create_table "pages", :force => true do |t|
     t.string   "title"
     t.integer  "parent_id"
@@ -80,10 +86,12 @@ ActiveRecord::Schema.define(:version => 20100608062447) do
   create_table "refinery_settings", :force => true do |t|
     t.string   "name"
     t.text     "value"
-    t.boolean  "destroyable", :default => true
+    t.boolean  "destroyable",             :default => true
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "scoping"
+    t.boolean  "restricted",              :default => false
+    t.string   "callback_proc_as_string"
   end
 
   add_index "refinery_settings", ["name"], :name => "index_refinery_settings_on_name"
@@ -96,6 +104,15 @@ ActiveRecord::Schema.define(:version => 20100608062447) do
     t.datetime "updated_at"
     t.string   "file_uid",       :null => false
     t.string   "file_ext"
+  end
+
+  create_table "roles", :force => true do |t|
+    t.string "title"
+  end
+
+  create_table "roles_users", :id => false, :force => true do |t|
+    t.integer "user_id"
+    t.integer "role_id"
   end
 
   create_table "slugs", :force => true do |t|

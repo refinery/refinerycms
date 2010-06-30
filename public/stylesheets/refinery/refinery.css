@@ -460,7 +460,7 @@ pre {
   background-image: url('/images/refinery/branch-end.gif');
 }
 #records.tree li {
-  line-height: 22px;
+  line-height: 24px;
 }
 #records.tree li span.spacing, .tree li span.spacing {
   display: none;
@@ -644,6 +644,11 @@ label.stripped {
   width: 120px;
   text-align: right;
   display: block;
+  line-height: 28px;
+}
+#records.tree .actions {
+  line-height: 22px;
+  margin-top: 1px;
 }
 .published {
   width: 25px;
@@ -662,6 +667,9 @@ label.stripped {
 .actions a img {
   vertical-align: middle;
   padding: 2px 4px 4px 4px;
+}
+#records.tree .actions a img {
+  padding-top: 4px;
 }
 #image_grid .actions a img {
   padding: 4px 4px 1px 4px;
@@ -749,9 +757,12 @@ body.dialog form {
   min-height: 405px;
   width: 756px;
 }
+.wym_dialog_table{
+	height:250px;
+}
 .dialog #existing_image_content {
   position: relative;
-  height: 391px;
+  height: 300px;
   padding: 12px;
 }
 .dialog #existing_image_area_content ul {
@@ -819,7 +830,7 @@ body.dialog form {
 }
 */
 #existing_image_area_content {
-  height: 365px;
+  height: 238px;
 }
 #existing_image_area .pagination {
   background: #FFF;

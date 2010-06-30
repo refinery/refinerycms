@@ -1,7 +1,7 @@
 # Methods added to this helper will be available to all templates in the application.
 module Refinery::ApplicationHelper
 
-  include Refinery::HtmlTruncationHelper rescue puts "#{__FILE__}:#{__LINE__} Could not load hpricot"
+  include Refinery::HtmlTruncationHelper
 
   # This is used to display the title of the current object (normally a page) in the browser's titlebar.
   #
@@ -165,6 +165,25 @@ module Refinery::ApplicationHelper
   # Old deprecated function. TODO: Remove
   def setup
     logger.warn("*** Refinery::ApplicationHelper::setup has now been deprecated from the Refinery API. ***")
+  end
+
+  # Generates the link to determine where the site bar switch button returns to.
+  def site_bar_switch_link
+    link_to_if(admin?, "Switch to your website",
+              (if session.keys.include?(:website_return_to) and session[:website_return_to].present?
+                session[:website_return_to]
+               else
+                root_url(:only_path => true)
+               end)) do
+      link_to "Switch to your website editor",
+              (if session.keys.include?(:refinery_return_to) and session[:refinery_return_to].present?
+                session[:refinery_return_to]
+               elsif defined?(@page) and @page.present? and !@page.home?
+                 edit_admin_page_url(@page, :only_path => true)
+               else
+                 (request.request_uri.to_s == '/') ? admin_root_url(:only_path => true) : "/admin#{request.request_uri}/edit"
+               end rescue admin_root_url(:only_path => true))
+    end
   end
 
 end

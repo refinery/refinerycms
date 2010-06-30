@@ -34,12 +34,12 @@ gem 'will_paginate',  '3.0.pre',:git => "git://github.com/mislav/will_paginate.g
 #===END OF REFINERY GEM INSTALL REQUIREMENTS===
 
 group :test do
+  gem 'json_pure', :require => 'json/pure', :git => 'git://github.com/parndt/json.git', :branch => 'master'
   gem 'rspec'
   gem 'rspec-rails'
   gem 'factory_girl'
-end
+  gem 'test-unit', '1.2.3'
 
-group :cucumber do
   gem 'cucumber-rails'
   gem 'capybara'
   gem 'factory_girl'
@@ -58,4 +58,3 @@ end
 # Specify your application's gem requirements here. See the examples below:
 # gem "refinerycms-news", "~> 0.9.7", :require => "news"
 # gem "refinerycms-portfolio", "~> 0.9.3.8", :require => "portfolio"
-

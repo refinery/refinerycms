@@ -16,7 +16,7 @@ class Image < ActiveRecord::Base
   acts_as_indexed :fields => [:title]
 
   # when a dialog pops up with images, how many images per page should there be
-  PAGES_PER_DIALOG = 18
+  PAGES_PER_DIALOG = 12
 
   # when listing images out in the admin area, how many images should show per page
   PAGES_PER_ADMIN_INDEX = 20
