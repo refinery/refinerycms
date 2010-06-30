@@ -133,7 +133,7 @@ class RefinerySetting < ActiveRecord::Base
   end
 
   def callback_proc
-    eval "Proc.new{ #{self.callback_proc_as_string} }" if RefinerySetting.column_names.include?('callback_proc_as_string') && self.callback_proc_as_string.present?
+    eval "Proc.new{|c| #{self.callback_proc_as_string} }" if RefinerySetting.column_names.include?('callback_proc_as_string') && self.callback_proc_as_string.present?
   end
 
 end
