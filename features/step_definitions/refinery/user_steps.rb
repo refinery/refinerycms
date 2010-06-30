@@ -16,7 +16,7 @@ Given /^I am a logged in customer$/ do
   login
 end
 
-Given /^I have a user named (.*)$/ do |name|
+Given /^I have a user named "(.*)"$/ do |name|
   Factory(:user, :login => name)
 end
 
