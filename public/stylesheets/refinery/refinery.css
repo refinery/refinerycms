@@ -769,7 +769,7 @@ body.dialog form {
 }
 .dialog #existing_image_content {
   position: relative;
-  height: 391px;
+  height: 300px;
   padding: 12px;
 }
 .dialog #existing_image_area_content ul {
@@ -837,7 +837,7 @@ body.dialog form {
 }
 */
 #existing_image_area_content {
-  height: 365px;
+  height: 238px;
 }
 #existing_image_area .pagination {
   background: #FFF;
