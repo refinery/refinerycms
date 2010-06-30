@@ -1,20 +1,5 @@
-def create_user
-  params = {
-    "login" => "cucumber",
-    "email" => "cucumber@isavegetable.com",
-    "password" => "greenandjuicy",
-    "password_confirmation" => "greenandjuicy"
-  }
-  if @user.nil?
-    @user = User.create(params)
-    Refinery::Plugins.registered.each do |plugin|
-      @user.plugins.create(:title => plugin.title)
-    end
-  end
-end
-
 def login
-  create_user
+  @user ||= Factory(:refinery_user)
   visit '/refinery'
   fill_in("session_login", :with => @user.email)
   fill_in("session_password", :with => @user.password)
@@ -22,5 +7,23 @@ def login
 end
 
 Given /^I am a logged in user$/ do
+  @user ||= Factory(:refinery_user)
   login
+end
+
+Given /^I am a logged in customer$/ do
+  @user ||= Factory(:user)
+  login
+end
+
+Given /^I have a user named "(.*)"$/ do |name|
+  Factory(:user, :login => name)
+end
+
+Given /^I have no users$/ do
+  User.delete_all
+end
+
+Then /^I should have ([0-9]+) users?$/ do |count|
+  User.count.should == count.to_i
 end

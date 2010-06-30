@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 version = File.read(File.expand_path('../../VERSION', __FILE__)).strip
 raise "Could not get version so gemspec can not be built" if version.nil?
-files = %w( .gems .gitignore .yardopts Gemfile Rakefile readme.md license.md VERSION todo.md public/.htaccess )
+files = %w( .gitignore .yardopts Gemfile Rakefile readme.md license.md VERSION todo.md public/.htaccess config.ru )
 %w(app bin config db features lib public script test themes vendor).sort.each do |dir|
   files += Dir.glob("#{dir}/**/*")
 end
@@ -10,7 +10,7 @@ File.readlines(File.expand_path('../../.gitignore', __FILE__)).each do |line|
   files.reject!{|f| f =~ Regexp.new(line)} rescue nil
 end
 =end
-files.reject!{|f| f =~ /^(public\/system)|(config\/database.yml$)|(vendor\/cache)|(.+\.rbc)/}
+files.reject!{|f| !File.exist?(f) or f =~ /^(public\/system)|(config\/database.yml$)|(vendor\/cache)|(.+\.rbc)/}
 
 gemspec = <<EOF
 Gem::Specification.new do |s|

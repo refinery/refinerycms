@@ -23,6 +23,7 @@ refinerycms.gemspec
 vendor/cache
 *.rbc
 *.swp
+*.swo
 *~
 capybara-*html
 .idea

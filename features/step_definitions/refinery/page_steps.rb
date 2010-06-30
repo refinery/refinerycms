@@ -1,3 +1,8 @@
+Given /^I (only )?have a page titled (.+)$/ do |only, title|
+  Page.delete_all if only
+  Page.create(:title => title)
+end
+
 Given /^I (only )?have pages titled (.+)$/ do |only, titles|
   Page.delete_all if only
   titles.split(', ').each do |title|

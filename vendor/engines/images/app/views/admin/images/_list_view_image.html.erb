@@ -1,6 +1,8 @@
-<li id="sortable_<%= list_view_image.id %>" class='clearfix record <%= cycle("on", "on-hover") %>'>
-  <span class='title'>
-    <%= list_view_image.title %> <span class="preview">&nbsp;</span>
+<% if list_view_image.parent_id.nil? %>
+  <li id="sortable_<%= list_view_image.id %>" class='clearfix record <%= cycle("on", "on-hover") %>'>
+    <span class='title'>
+      <%= list_view_image.title %> <span class="preview">&nbsp;</span>
+    </span>
     <span class='actions'>
       <%= link_to refinery_icon_tag('eye.png'), list_view_image.url,
                   :target => "_blank",
@@ -11,5 +13,5 @@
                   :class => "cancel confirm-delete",
                   :title => "Remove this image forever" %>
     </span>
-  </span>
-</li>
+  </li>
+<% end %>
