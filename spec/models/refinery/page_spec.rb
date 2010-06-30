@@ -11,4 +11,3 @@ describe Page do
     Page.create!(@valid_attributes)
   end
 end
-
