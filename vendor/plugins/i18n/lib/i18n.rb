@@ -66,7 +66,7 @@ class Refinery::I18n
         else
           raise e
         end
-      end if Rails.env == 'production'
+      end if Rails.env.production?
     end
 
     def load_base_locales!
