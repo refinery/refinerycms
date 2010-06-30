@@ -1,11 +1,11 @@
-<% content_for :header, "There are no users yet, so we'll set you up first." %>
+<% content_for :header, t('.there_are_no_users') %>
 <p>
-  Remember your Refinery admin area is at:
+  <%=t('.remember_admin_location')%>
 </p>
 <p>
   <strong>http://<%= request.host %>/refinery</strong>
 </p>
 <p>
-  Alright, let's get you set up so you can log in...
+  <%= t('.lets_start') %>
 </p>
-<%= button_to "Continue...", new_user_url %>
+<%= button_to t('.continue'), new_user_url %>

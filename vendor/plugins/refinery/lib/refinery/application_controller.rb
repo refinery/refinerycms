@@ -6,7 +6,7 @@ class Refinery::ApplicationController < ActionController::Base
   include Crud # basic create, read, update and delete methods
   include AuthenticatedSystem
 
-  before_filter :find_pages_for_menu, :show_welcome_page?
+  before_filter :find_or_set_locale, :find_pages_for_menu, :show_welcome_page?
   after_filter :store_current_location!, :if => Proc.new {|c| c.send(:logged_in?) && c.send(:refinery_user?) }
 
   rescue_from ActiveRecord::RecordNotFound, ActionController::UnknownAction, ActionView::MissingTemplate, :with => :error_404
@@ -49,7 +49,7 @@ class Refinery::ApplicationController < ActionController::Base
   end
 
   def local_request?
-    ENV["RAILS_ENV"] == "development" or request.remote_ip =~ /(::1)|(127.0.0.1)|((192.168).*)/
+    Rails.env.development? or request.remote_ip =~ /(::1)|(127.0.0.1)|((192.168).*)/
   end
 
   def login?
@@ -57,6 +57,10 @@ class Refinery::ApplicationController < ActionController::Base
   end
 
 protected
+
+  def default_url_options(options={})
+    Refinery::I18n.enabled? ?  { :locale => I18n.locale } : {}
+  end
 
   # get all the pages to be displayed in the site menu.
   def find_pages_for_menu
@@ -78,9 +82,21 @@ protected
     super
   end
 
+  def find_or_set_locale
+    if Refinery::I18n.enabled?
+      if Refinery::I18n.has_locale?(locale = params[:locale].try(:to_sym))
+        I18n.locale = locale
+      elsif Refinery::I18n.current_locale != I18n.default_locale
+        params[:locale] = I18n.locale = I18n.default_locale
+        redirect_to params, :message => "The locale '#{locale.to_s}' is not supported."
+      end
+    end
+  end
+
   def show_welcome_page?
     render :template => "/welcome", :layout => "admin" if just_installed? and controller_name != "users"
   end
+
   # todo: make this break in the next major version rather than aliasing.
   alias_method :show_welcome_page, :show_welcome_page?
 

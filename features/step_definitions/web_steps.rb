@@ -56,7 +56,7 @@ end
 #     | Note           | Nice guy   |
 #     | Wants Email?   |            |
 #
-# TODO: Add support for checkbox, select og option
+# TODO: Add support for checkbox, select or option
 # based on naming conventions.
 #
 When /^(?:|I )fill in the following(?: within "([^"]*)")?:$/ do |selector, fields|

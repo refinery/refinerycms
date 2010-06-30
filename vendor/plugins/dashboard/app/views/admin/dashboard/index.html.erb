@@ -4,31 +4,48 @@
     <%= render :partial => "recent_inquiries" if @recent_inquiries.any? %>
   </div>
   <div id='actions'>
-    <h2>Quick Tasks</h2>
+    <h2><%= t('.quick_tasks') %></h2>
     <ul>
-      <% if Refinery::Plugins.active.titles.include?("Pages") %>
+      <%# I8N: How to translate tab names? %>
+      <% if Refinery::Plugins.active.names.include?("refinery_pages") %>
         <li>
-          <%= link_to "Add a new page", new_admin_page_url(:only_path => true),
+          <%= link_to t('.add_a_new_page'), new_admin_page_url(:only_path => true),
                       :class => "add_icon" %>
         </li>
         <li>
-          <%= link_to "Update a page", admin_pages_url(:only_path => true),
+          <%= link_to t('.update_a_page'), admin_pages_url(:only_path => true),
                       :class => "edit_icon" %>
         </li>
       <% end %>
-      <% if Refinery::Plugins.active.titles.include?("Resources") %>
+      <% if Refinery::Plugins.active.names.include?("refinery_resources") %>
         <li>
-          <%= link_to "Upload a file", new_admin_resource_url(:dialog => true, :width => 600, :height => 300, :only_path => true),
+          <%= link_to t('.upload_a_file'), new_admin_resource_url(:dialog => true, :width => 600, :height => 300, :only_path => true),
                       :class => "add_icon" %>
         </li>
       <% end %>
-      <% if Refinery::Plugins.active.titles.include?("Images") %>
+      <% if Refinery::Plugins.active.names.include?("refinery_images") %>
         <li>
-          <%= link_to "Upload an image", new_admin_image_url(:dialog => true, :width => 600, :height => 300, :only_path => true),
+          <%= link_to t('.upload_a_image'), new_admin_image_url(:dialog => true, :width => 600, :height => 300, :only_path => true),
                       :class => "add_icon" %>
         </li>
       <% end %>
+      <li>
+        <%= link_to t('.see_home_page'), root_url, :class => "go_icon", :target => "_blank" %>
+      </li>
     </ul>
+
+    <% if Refinery::I18n.enabled? %>
+      <h2><%= t('.change_language') %></h2>
+      <ul>
+        <% Refinery::I18n.locales.each do |locale_key, locale_title| %>
+          <li<%= " class='selected'" if locale_key.to_sym == I18n.locale %>>
+            <%= link_to locale_title,
+                        params.dup.tap { |p| p[:set_locale] = locale_key },  # Use the current params, just change the locale
+                        :style => "background-image: url('/images/refinery/icons/flags/#{locale_key}.png');" %>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
   </div>
 </div>
 <% if request.env["HTTP_USER_AGENT"] =~ /MSIE/ and

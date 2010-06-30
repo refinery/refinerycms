@@ -1,37 +1,59 @@
+<%
+  submit_button_text ||= t('.save')
+  submit_button_id   ||= "submit_button"
+  submit_button_title ||= nil
+
+  cancel_button_text ||= t('.cancel')
+  cancel_title       ||= t('.cancel_lose_changes', :object_name => f.object.class.name.underscore.gsub("_", " "))
+  cancel_button_id   ||= "cancel_button"
+  hide_cancel        ||= from_dialog?
+  cancel_url         ||= (( back = url_for(:back)).include?('javascript') ? send("admin_#{f.object.class.name.pluralize.underscore}_url") : back) unless hide_cancel
+
+  delete_button_text ||= t('.delete')
+
+  continue_editing = defined?(continue_editing) ? continue_editing : (f.object.present? and !f.object.new_record?)
+
+  unless defined?(hide_delete).presence
+    hide_delete = (from_dialog? or
+                   f.object.nil? or f.object.new_record? or
+                   (f.object.respond_to?(:deletable?) && !f.object.deletable?))
+  end
+
+  unless hide_delete
+    delete_title       ||= nil
+    delete_button_id   ||= "delete_button"
+    delete_url         ||= eval("admin_#{f.object.class.name.underscore}_url(#{f.object.id})")
+  end
+-%>
 <div class='form-actions<%= ' form-actions-dialog' if from_dialog? %>'>
   <div class='form-actions-left'>
-    <%= submit_tag  "#{submit_button_text ||= 'Save'}",
-                    :id => "#{submit_button_id ||= "submit_button"}",
-                    :class => "wymupdate button" -%>
+    <%= submit_tag submit_button_text,
+                   :id => submit_button_id,
+                   :class => "wymupdate button",
+                   :tooltip => submit_button_title %>
 
-    <%= render :partial => "/shared/admin/continue_editing", :locals => {:f => f} if continue_editing ||= false and
-                                                                                     (!f.object.present? or !f.object.new_record?) -%>
-
+    <%= render :partial => "/shared/admin/continue_editing", :locals => {:f => f} if continue_editing -%>
     <%= hidden_field_tag :continue_editing, false %>
 
-    <%= link_to("#{cancel_button_text ||= 'Cancel'}",
-                (cancel_url ||= ((back=url_for(:back)).include?('javascript') ? send("admin_#{f.object.class.name.pluralize.underscore}_url") : back)),
-                :title => (cancel_title ||= "Cancelling will lose all changes you've made"),
-                :id => "#{cancel_button_id ||= "cancel_button"}",
-                :class => "close_dialog button") unless (defined?(hide_cancel) ? hide_cancel : from_dialog?) %>
+    <%= link_to(cancel_button_text,
+                cancel_url,
+                :title => cancel_title,
+                :id => cancel_button_id,
+                :class => "close_dialog button") unless hide_cancel %>
   </div>
-  <% unless ((defined?(hide_delete) ? hide_delete : from_dialog?) or
-             !f.object.present? or f.object.new_record? or
-             (f.object.respond_to?(:deletable?) && !f.object.deletable?)) %>
-    <div class='form-actions-right'>
-      <%= link_to("#{delete_button_text ||= 'Delete'}",
-                  (delete_url ||= eval("admin_#{f.object.class.name.underscore}_url(#{f.object.id})")),
-                  :title => (delete_title ||= "Remove this #{f.object.class.name.underscore.gsub("_", " ")} forever"),
-                  :id => "#{delete_button_id ||= "delete_button"}",
-                  :class => "button confirm-delete")  %>
+  <div class='form-actions-right'>
+    <%= link_to(delete_button_text,
+                delete_url,
+                :title => delete_title,
+                :id => delete_button_id,
+                :class => "button confirm-delete") unless hide_delete %>
 
-      <%= will_paginate paginate[:collection],
-                        :previous_label => '&laquo; Previous',
-                        :next_label => 'Next &raquo;',
-                        :renderer => Refinery::LinkRenderer,
-                        :url => paginate[:url] if ((paginate ||= {}).length > 0 &&
-                                                    paginate.keys.include?(:collection) &&
-                                                    paginate.keys.include?(:url)) %>
-    </div>
-  <% end %>
+    <%= will_paginate paginate[:collection],
+                      :previous_label => '&laquo; ' + t('.previous'),
+                      :next_label => t('.next') + ' &raquo;',
+                      :renderer => Refinery::LinkRenderer,
+                      :url => paginate[:url] if ((paginate ||= {}).length > 0 &&
+                                                  paginate.keys.include?(:collection) &&
+                                                  paginate.keys.include?(:url)) %>
+  </div>
 </div>

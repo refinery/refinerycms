@@ -1,0 +1,100 @@
+es:
+  welcome:
+    there_are_no_users: "No hay usuarios registrados, así que debemos de registrar al primero."
+    remember_admin_location: "Recuerda que tu area administrativa de Refinery esta en:"
+    lets_start: "Excelente, ahora vamos a configuraar tu cuenta para poder entrar..."
+    continue: "Contiunar..."
+  admin:
+    menu:
+      reorder_menu: Re-ordenar menu
+      reorder_menu_done: "He terminado de re ordenar el menu"
+    log_out: "Cerrar sesión"
+    search: Buscar
+    search_submit: Aceptar
+    search_results_for: "Resultados de busqueda de '{{query}}'"
+    no_results_found: "Lo sentimos, no se encontraron resultados"
+  refinery:
+    other: "Otra {{what}}"
+    reorder: "Re-ordenar {{what}}"
+    reorder_done: "Listo el Re-ordenado {{what}}"
+    search_no_results: "Lo sentimos, no se encontraron resultados."
+    crudify:
+      created: "{{what}} fue creado exitosamente"
+      updated: "{{what}} fue creado exitosamente"
+      destroyed: "{{what}} fue borrado exitosamente"
+  layouts:
+    admin:
+      view_public_site: Ver Sitio Publico
+      welcome_to_refinery: Bienvenido a Refinery
+  shared:
+    admin:
+      message:
+        close: Cerrar
+      continue_editing:
+        save_and_continue_editing: "Guardar &amp; continuar editando"
+      form_actions:
+        or: o
+        save: Guardar
+        or_cancel: o
+        cancel: Cancelar
+        or_continue: o
+        cancel_lose_changes: "Cancelar perdera todos los cambios que se han hecho en {{object_name}}"
+      image_picker:
+        none_selected: "No hay ningun {{what}} seleccionado, por favor dale click para seleccionar alguno."
+        remove_current: "Quitar el {{what}} actual"
+        change: Dale Click para seleccionar una imagen
+        image: imagen
+      resource_picker:
+        none_selected: "No hay ningun {{what}} seleccionado, por favor dale click para seleccionar alguno."
+        current: "{{what}} es seleccionado"
+        download_current: "Descargar {{what}} seleccionado"
+        opens_in_new_window: Abrir en una nueva ventana
+        remove_current: "Quitar el {{what}} seleccionado"
+        resource: recurso
+    message:
+      close: Cerrar
+  admin:
+    pages:
+      page:
+        view_live: Ver esta pagina en directo <br/><em>(se habre en una nueva ventana)</em>
+        edit_this_page: Editar esta pagina
+        confirm_delete_page_title: Borrar esta pagina
+        confirm_delete_page_message: Estas seguro que quieres borrar la pagina de '{{title}}'?
+        hidden: ocultar
+        draft: borrador
+    page_dialogs:
+      not_allowed: No tienes permiso para accesar estas caracteristicas.
+      page_link:
+        link_to_this_page: Link a esta pagina
+      link_to:
+        your_page:
+          tab_name: Una pagina
+        web_address:
+          tab_name: Pagina Web
+          location: "Locación"
+          new_window: Nueva ventana
+          new_window_label: Marque esta casilla para que el enlace se abra en una nueva ventana.
+          not_sure: ¿No está seguro de qué poner en el recuadro de arriba?
+          step1: Buscar la página en el Web que desea ligar
+          step2: "Copie la dirección web desde la barra de direcciones del navegador y pegarla en el cuadro de arriba."
+        email_address:
+          tab_name: Correo Electronico
+          subject_line_optional: Asunto opcional
+          body_optional: Comentario opcional
+          not_sure: ¿No está seguro de qué poner en el recuadro de arriba?
+          step1: "Escriba, copie o pegue (por ejemplo, de su libreta de direcciones) la dirección de correo electrónico para ligarse a en el cuadro de <strong>correo electrónico</strong> anterior."
+          step2: "Utilice el cuadro de <strong>Asunto</strong> si desea que el mensaje utilice una línea de <strong>asunto previamente escrita</strong>"
+          step3: "Utilice el <strong>Cuerpo del Email</strong> del cuadro supiero si usted quiere que el mensaje contenga el siguiente <strong>mensaje previamente escrito</strong>."
+        your_resource:
+          tab_name: Un recurso
+          link_to_this_resource: Link a este recurso
+
+  activerecord:
+    models:
+      page: pagina
+      user: usuario
+      image: imagen
+      inquiry: pregunta
+      resource: recurso
+      refinery_setting: ajustes refinery
+      inquiry_setting: ajustes pregunta

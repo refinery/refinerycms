@@ -1,5 +1,7 @@
+<%# TODO: Move description ||= "resource" to top of file %>
 <%= f.hidden_field field %>
 <div>
+  <%# TODO translate %>
   <%= link_to "<span id='no_resource_selected' class='nothing_selected' #{"style='display: none;'" if resource.present?}>
         There is currently no #{description ||= resource} selected, click here to add one.
       </span>", insert_admin_resources_url(:dialog => true,
@@ -18,12 +20,12 @@
       <%= "#{resource.title} (#{resource.public_filename})" if resource.present? %>
     </span>
     <br/>
-    <%= link_to "#{refinery_icon_tag("page_white_put.png")} Download current #{description ||= "resource"} (<em>Opens in a new window</em>)", "#{resource.public_filename if resource.present?}",
+    <%= link_to "#{refinery_icon_tag("page_white_put.png")} #{t('.download_current', :what => t('.' + (description ||= "resource")))} (<em>#{t('.opens_in_new_window')}</em>)", "#{resource.public_filename if resource.present?}",
             :id => "current_resource",
             :target => "_blank" %>
   </div>
   <br/>
-  <%= link_to "Remove current #{description ||= "resource"}", "",
+  <%= link_to t('.remove_current', :what => t('.'+ (description ||= "resource"))), "",
                 :id => "remove_resource",
                 :style => "#{"display:none;" unless resource.present?}" %>
 </div>

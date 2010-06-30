@@ -1,7 +1,7 @@
 <div id='actions'>
   <ul>
     <li>
-      <%= link_to "Create New User", new_admin_user_url, :class => "add_icon" %>
+      <%= link_to t('.create_new_user'), new_admin_user_url, :class => "add_icon" %>
     </li>
   </ul>
 </div>
@@ -15,8 +15,7 @@
   <% else %>
     <p>
       <strong>
-        There are no users yet.
-        Click "Create New User" to add your first user.
+        <%= t('.no_users_yet') %>
       </strong>
     </p>
   <% end %>

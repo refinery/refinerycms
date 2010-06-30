@@ -1,0 +1,53 @@
+es:
+  plugins:
+    refinery_pages:
+      title: Paginas
+  admin:
+    pages:
+      form_advanced_options:
+        title: Titulo
+        create_content_section: "Crear contenido de la sección"
+        delete_content_section: "Borrar contenido de la sección"
+        advanced_options: Opciones Avanzadas
+        explain_page_different_title: "Si desea que la página tenga un título distinto al que muestra en el menú de título del navegador y ingrese el titulo aquí."
+        redirect_to_first_child: "Marque esta casilla si desea que el visitante sea redirigido de esta página a la primer pagina del arbol de navegación seleccionada."
+        parent_id_title: Padre
+        custom_title: Titulo Personalizado
+        title_type: "Tipo:"
+        title_types:
+          none: Ninguna
+          text: Texto
+          image: Imagen
+        custom_url: URL Personalizado
+        custom_url_explanation: "Ingresa un URL si la pagina se liga a una pagina externa a este sitio o algun recurso pre-creado ejemplo una pagina de contacto. <br/> Nota: Este URL debe de dirigirse a un lugar existente si no no será creado."
+        draft: Borrador
+        show_in_menu_title: "Ver en menú"
+        show_in_menu_description: "Marque esta casilla si esta página debe aparecer en el menú del sitio" 
+        draft: Borrador
+        save_as_draft: Guardar como Borrador
+        save: Guardar
+        cancel: Cancelar
+      form_advanced_options_seo:
+        seo: "Optimización para Motores de Busqueda"
+        seo_override_title: Titulo del Navegador
+        seo_override_title_help: "Si tu quieres cambiar el titulo del navegador, alzo aquí."
+        meta_keywords_title: Meta palabras
+        meta_description_help: Ingresa 5-10 palabras relacionadas a esta pagina.  Separadas por comas.
+        meta_description_title: "Meta descripción"
+        meta_description_help: "Ingresa una descripción concisa de 2 a 3 renglones que describan esta pagina."
+        js:
+          content_section:
+            create: "Crear Contenido de la Sección"
+            already_exists: "Ya existe una sección del contenido con ese mismo titulo, por favor seleccione otro."
+            title_empty: "No has ingresado un titulo para el contenido de esta sección, por favor ingresa uno."
+            confirm_delete: "Esto quitara el contenido de la sección {{section_name}} cuando la pagina sea guardada y borre todo el contenido que ha sido ingresado, ¿Estás seguro?"
+      index:
+        create_new_page: Crear nueva pagina
+        reorder_pages: Re-ordenar las paginas
+        reorder_pages_done: Listo el re-ordenado de las paginas
+        sorry_no_results: Disculpe! No hay resultados de la busqueda.
+        no_pages_yet: No hay ninguna pagina aun.  Click "Crear nueva Pagina" para agregar tus primeras paginas.
+  activerecord:
+    attributes:
+      page:
+        skip_to_first_child: "¿Saltar hasta el primero nodo?"

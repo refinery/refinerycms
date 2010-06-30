@@ -5,7 +5,7 @@ gem 'mysql', :require => 'mysql'
 #gem 'sqlite3-ruby', :require => 'sqlite3'
 
 # Specify your favourite web server (only one).
-gem 'unicorn', :group => :development
+#gem 'unicorn', :group => :development
 #gem 'mongrel', :group => :development
 
 # Deploy with Capistrano

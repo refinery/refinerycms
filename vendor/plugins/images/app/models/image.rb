@@ -17,14 +17,15 @@ class Image < ActiveRecord::Base
   # This is a known problem when using attachment_fu
   def validate
     if self.filename.nil?
-      errors.add_to_base("You must choose an image to upload")
+      errors.add_to_base(I18n.translate('no_file_chosen')) unless self.filename
     else
       [:size, :content_type].each do |attr_name|
         enum = attachment_options[attr_name]
 
         unless enum.nil? || enum.include?(send(attr_name))
-          errors.add_to_base("Images should be smaller than #{MAX_SIZE_IN_MB} MB in size") if attr_name == :size
-          errors.add_to_base("Your image must be either a JPG, PNG or GIF") if attr_name == :content_type
+          errors.add_to_base(I18n.translate('file_should_be_smaller_than_max_image_size',
+                              :max_image_size => ActionController::Base.helpers.number_to_human_size(MAX_SIZE_IN_MB) ))
+          errors.add_to_base(I18n.translate('file_must_be_these_formats')) if attr_name == :content_type
         end
       end
     end

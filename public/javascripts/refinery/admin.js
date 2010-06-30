@@ -115,7 +115,7 @@ init_sortable_menu = function(){
     axis: 'x',
     cursor: 'crosshair',
     update: function(){
-      var ser   = $menu.sortable('serialize', {key: 'menu[]'}),
+      var ser   = $menu.sortable('serialize', {key: 'menu[]', expression: /plugin_([\w]*)$/}),
           token = escape($('#admin_authenticity_token').val());
 
       $.get('/refinery/update_menu_positions?' + ser, {authenticity_token: token});

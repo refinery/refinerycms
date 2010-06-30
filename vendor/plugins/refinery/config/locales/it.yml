@@ -1,0 +1,100 @@
+it:
+  welcome:
+    there_are_no_users: "Non ci sono ancora gli utenti, quindi ci si imposta prima."
+    remember_admin_location: "Ricordate tuo amministratore zona raffineria è a:"
+    lets_start: "Alright Let's get si imposta in modo da poter login..."
+    continue: "Proseguire..."
+  admin:
+    menu:
+      reorder_menu: Riordina menu
+      reorder_menu_done: "Ho finito riordino del menu"
+    log_out: Log out
+    search: Cerca
+    search_submit: Andare
+    search_results_for: "Risultati della ricerca per '{{query}}'"
+    no_results_found: "Spiacenti, nessun risultato trovato"
+  refinery:
+    other: "Altro {{what}}"
+    reorder: "Riordina {{what}}"
+    reorder_done: "Fatto Riordinare {{what}}"
+    search_no_results: "Spiacenti, nessun risultato trovato."
+    crudify:
+      created: "{{what}} stato creato con successo"
+      updated: "{{what}} stato creato con successo"
+      destroyed: "{{what}} è stato distrutto con successo"
+  layouts:
+    admin:
+      view_public_site: Vedi sito pubblico
+      welcome_to_refinery: Benvenuti a Refinery
+  shared:
+    admin:
+      message:
+        close: Fine
+      continue_editing:
+        save_and_continue_editing: "Salvare &amp; continuare ad apportare modifiche"
+      form_actions:
+        or: o
+        save: Salvare
+        or_cancel: o
+        cancel: Annullare
+        or_continue: o
+        cancel_lose_changes: "Annullamento perderà tutte le modifiche apportate a questa {{object_name}}"
+      image_picker:
+        none_selected: "Non ci sono attualmente {{what}} selezionato, clicca qui per aggiungerne uno."
+        remove_current: "Togliere corrente {{what}}"
+        change: Clicca qui per scegliere una immagine
+        image: immagine
+      resource_picker:
+        none_selected: "Non ci sono attualmente {{what}} selezionato, clicca qui per aggiungere una."
+        current: "Corrente {{what}}"
+        download_current: "Scarica il corrente {{what}}"
+        opens_in_new_window: Apre in una nuova finestra
+        remove_current: "Togliere corrente {{what}}"
+        resource: risorsa
+    message:
+      close: Fine
+  admin:
+    pages:
+      page:
+        view_live: Visualizza questa pagina in diretta <br/><em>(si apre in una nuova finestra)</em>
+        edit_this_page: Modifica questa pagina
+        confirm_delete_page_title: Cancella questa pagina
+        confirm_delete_page_message: Sei sicuro di voler eliminare la pagina '{{title}}'?
+        hidden: occulto
+        draft: bozza
+    page_dialogs:
+      not_allowed: Non hai i permessi per accedere a questa funzione.
+      page_link:
+        link_to_this_page: Collegamento a questa pagina
+      link_to:
+        your_page:
+          tab_name: Una pagina
+        web_address:
+          tab_name: Sito web
+          location: Posizione
+          new_window: Nuova finestra
+          new_window_label: Seleziona questa casella per avere il link apre in una nuova finestra del browser.
+          not_sure: Non sai cosa mettere nel box in alto?
+          step1: Trova la pagina sul web che si desidera collegare.
+          step2: "Copiare l'indirizzo web dalla barra degli indirizzi del browser e incollarlo nella casella di sopra."
+        email_address:
+          tab_name: Indirizzo e-mail
+          subject_line_optional: Materia facoltativa
+          body_optional: Facoltativo corpo
+          not_sure: Non sai cosa mettere nel box sopra?
+          step1: "Scrivere o copiare e incollare (ad esempio, dalla rubrica), l'indirizzo email al link per in'<strong>Indirizzo e-mail</strong>' box sopra."
+          step2: "Utilizzare il '<strong>Oggetto </strong>' box sopra se si desidera che il messaggio sia composto con <a <strong> linea pre-scritto soggetto</strong>."
+          step3: "Utilizzare il <strong> Email Body </ strong> sopra se si desidera che il messaggio sia composto con un <strong> messaggio pre-scritto / strong>."
+        your_resource:
+          tab_name: Una risorsa
+          link_to_this_resource: Link a questa risorsa
+
+  activerecord:
+    models:
+      page: pagina
+      user: utente
+      image: immagine
+      inquiry: inchiesta
+      resource: risorsa
+      refinery_setting: refinery regolazione
+      inquiry_setting: inchiesta regolazione
