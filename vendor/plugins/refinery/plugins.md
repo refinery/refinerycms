@@ -190,7 +190,7 @@ Refinery uses a standards compliant visual editor called [WYMeditor](http://www.
 
 _Note: When using the Refinery generator, if you apply a field type of "text" to any of your fields, they automatically load as a WYMEditor._
 
-The WYSIWYG editor can only be applied to a ``textarea``. All you need to do is add a class of "wymeditor" to a ``textarea`` in your form and a WYSIWYG WYMEditor will load right in place.
+The WYSIWYG editor can only be applied to a ``textarea``. All you need to do is add a class of "wymeditor widest" to a ``textarea`` in your form and a WYSIWYG WYMEditor will load right in place.
 
 ### Example
 
@@ -200,6 +200,6 @@ Again going back to our product plugin example if you had this in your ``vendor/
 
 Just change that to:
 
-    <%= f.text_area :description, :class => "wymeditor" %>
+    <%= f.text_area :description, :class => "wymeditor widest" %>
 
 Refresh and you're done.
