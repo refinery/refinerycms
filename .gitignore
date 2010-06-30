@@ -23,6 +23,7 @@ vendor/cache
 .bundle
 *.rbc
 *.swp
+*.swo
 *~
 capybara-*html
 .idea
