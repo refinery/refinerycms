@@ -23,7 +23,7 @@ Feature: Manage Users
     And I should have 1 user
 
   Scenario: User List
-    Given I have a user named resolve
+    Given I have a user named "resolve"
     And I am a logged in user
     When I go to the list of users
     Then I should see "resolve"
