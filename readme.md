@@ -205,6 +205,6 @@ Check out the [portfolio plugin gem](http://github.com/resolve/refinerycms-portf
 
 ## License
 
-Refinery is released under the MIT license and is copyright (c) 2005-2009 [Resolve Digital Ltd.](http://www.resolvedigital.co.nz)
+Refinery is released under the MIT license and is copyright (c) 2005-2010 [Resolve Digital Ltd.](http://www.resolvedigital.co.nz)
 
 [Read the license](http://github.com/resolve/refinerycms/blob/master/license.md)
