@@ -2,12 +2,12 @@
   <% if @images.any? %>
     <span id="existing_image_radio" class="radio<%= " selected_radio" if @image.errors.empty? %>">
       <input type='radio' name='image_type' value='existing_image' id='image_type_existing' <%= "checked='true'" if @image.errors.empty? %> />
-      <label for='image_type_existing' class='stripped'>Existing Image</label>
+      <label for='image_type_existing' class='stripped'><%=t('.existing_image')%></label>
     </span>
   <% end %>
   <span id="upload_image_radio" class="radio<%= " selected_radio" if @image.errors.any? or @images.empty? %>">
     <input type='radio' name='image_type' value='upload_image' id='image_type_upload' <%= "checked='true'" if @images.empty? || @image.errors.any? %> />
-    <label for='image_type_upload' class='stripped'>New Image</label>
+    <label for='image_type_upload' class='stripped'><%= t('.new_image') %></label>
   </span>
 </div>
 

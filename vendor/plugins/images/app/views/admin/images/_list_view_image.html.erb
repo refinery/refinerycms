@@ -8,10 +8,10 @@
                   :target => "_blank",
                   :title => "#{image_fu list_view_image, :preview}" %>
       <%= link_to refinery_icon_tag('application_edit.png'), edit_admin_image_path(list_view_image),
-                  :title => 'Edit this image' %>
+                  :title => t('.edit_this_image') %>
       <%= link_to refinery_icon_tag('delete.png'), admin_image_path(list_view_image),
                   :class => "cancel confirm-delete",
-                  :title => "Remove this image forever" %>
+                  :title => t('.delete.title') %>
     </span>
   </li>
 <% end %>

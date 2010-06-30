@@ -1,6 +1,8 @@
 <% if RefinerySetting.find_or_set(:group_images_by_date_uploaded, true) %>
   <% @grouped_images.each do |container| %>
-    <h3><%= (image_group = container.last).first.created_at.strftime("%A, %d %B %Y") %></h3>
+    <% date_time = (image_group = container.last).first.created_at %>
+    <% date = Date.parse(date_time.to_s) %>
+    <h3><%= l(date, :format => :long ) %></h3>
     <ul>
       <%= render :partial => 'list_view_image', :collection => image_group %>
     </ul>

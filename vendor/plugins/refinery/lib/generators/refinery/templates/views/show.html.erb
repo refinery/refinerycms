@@ -18,7 +18,7 @@
 <%% end %>
 
 <%% content_for :body_content_right do %>
-  <h2>Other <%= $title_name.pluralize %></h2>
+  <h2><%%= t('.other') %></h2>
   <ul id="<%= plural_name %>">
     <%% @<%= plural_name %>.each do |<%= singular_name %>| %>
       <li>

@@ -44,7 +44,7 @@ unless rails_root.nil? or rails_root.length == 0
   FileUtils::cp_r File.join(%W(#{refinery_root} lib refinery)), File.join(rails_root, "lib")
 
   # get current secret key
-  if !File.exist?(File.join(%W(#{rails_root} config application.rb)))
+  unless File.exist?(File.join(%W(#{rails_root} config application.rb)))
     lines = File.open(File.join(%W(#{rails_root} config environment.rb)), "r").read.split("\n")
   else
     lines = File.open(File.join(%W(#{rails_root} config application.rb)), "r").read.split("\n")

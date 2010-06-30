@@ -1,0 +1,100 @@
+nb:
+  welcome:
+    there_are_no_users: "Det er ingen brukere enda, så vi starter med å sette opp deg først."
+    remember_admin_location: "Husk at ditt Refinery admin område er på:"
+    lets_start: "OK, la oss starte med å ordne det slik at du kan logge inn..."
+    continue: "Fortsett..."
+  admin:
+    menu:
+      reorder_menu: Sorter meny
+      reorder_menu_done: "Jeg er ferdig med å sortere menyen"
+    log_out: Logg ut
+    search: Søk
+    search_submit: Søk
+    search_results_for: "Søkeresultat for '{{query}}'"
+    no_results_found: "Beklager, ingen resultat funnet."
+  refinery:
+    other: "Andre {{what}}"
+    reorder: "Sorter {{what}}"
+    reorder_done: "Ferdig å sortere {{what}}"
+    search_no_results: "Beklager, ingen resultat funnet."
+    crudify:
+      created: "{{what}} ble opprettet"
+      updated: "{{what}} er oppdatert"
+      destroyed: "{{what}} er nå slettet"
+  layouts:
+    admin:
+      view_public_site: Se siden din
+      welcome_to_refinery: Velkommen til Refinery
+  shared:
+    admin:
+      message:
+        close: Lukk
+      continue_editing:
+        save_and_continue_editing: "Lagre &amp; fortsett redigering"
+      form_actions:
+        or: eller
+        save: Lagre
+        or_cancel: eller
+        cancel: Avbryt
+        or_continue: eller
+        cancel_lose_changes: "Avbryt nå og du mister alle endringer du har gjort på {{object_name}}"
+      image_picker:
+        none_selected: "Det er for øyeblikket ingen {{what}} valgt, trykk her for å legge til en."
+        remove_current: "Fjern gjeldende {{what}}"
+        change: Trykk her for å velge bilde
+        image: bilde
+      resource_picker:
+        none_selected: "Det er for øyeblikket ingen {{what}} valgt, trykk her for å legge til en."
+        current: "Gjeldende {{what}}"
+        download_current: "Last ned gjeldende {{what}}"
+        opens_in_new_window: Åpner i et nytt vindu
+        remove_current: "Fjern gjeldende {{what}}"
+        resource: ressurs
+    message:
+      close: Lukk
+  admin:
+    pages:
+      page:
+        view_live: Se denne siden <br/><em>(åpner i et nytt vindu)</em>
+        edit_this_page: Rediger denne siden
+        confirm_delete_page_title: Slett denne siden
+        confirm_delete_page_message: "Er du sikker på at du ønsker å slette denne siden '{{title}}'?"
+        hidden: skjult
+        draft: kladd
+    page_dialogs:
+      not_allowed: Du har ikke nok rettigheter til å få tilgang til denne funksjonen.
+      page_link:
+        link_to_this_page: Link til denne siden
+      link_to:
+        your_page:
+          tab_name: En side
+        web_address:
+          tab_name: Nettside
+          location: Mål
+          new_window: Nytt vindu
+          new_window_label: Kryss av for at denne lenken skal åpne i et nytt vindu.
+          not_sure: Usikker på hva som skal inn i boksen over?
+          step1: Finn siden du ønsker å linke til.
+          step2: "Kopier nettadressen fra nettleseren din sin adressebar og lim den inn i boksen over."
+        email_address:
+          tab_name: Epost-adresse
+          subject_line_optional: Valgfritt emne
+          body_optional: Valgfri melding
+          not_sure: Usikker på hva som skal inn i boksen over?
+          step1: "Skriv eller kopier og lim inn (F.eks. fra adresseboken din) epost-adressen du ønsker å lenke til inn i '<strong>Epost-adresse</strong>'-boksen over"
+          step2: "Bruk '<strong>emne</strong>'-boksen over om du ønsker at eposten skal ha et <strong>predefinert emne</strong>."
+          step3: "Bruk <strong>Melding</strong>-boksen over om du ønsker at eposten skal ha en <strong>predefinert melding</strong>."
+        your_resource:
+          tab_name: En ressurs
+          link_to_this_resource: Link til denne ressursen
+
+  activerecord:
+    models:
+      page: side
+      user: bruker
+      image: bilde
+      inquiry: forespørsel
+      resource: ressurs
+      refinery_setting: refinery instilling
+      inquiry_setting: forespørsel instilling

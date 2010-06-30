@@ -37,18 +37,18 @@ class User < ActiveRecord::Base
   has_many :plugins, :class_name => "UserPlugin", :order => "position ASC"
   has_friendly_id :login, :use_slug => false
 
-  def plugins=(plugin_titles)
+  def plugins=(plugin_names)
     unless self.new_record? # don't add plugins when the user_id is NULL.
       self.plugins.delete_all
 
-      plugin_titles.each_with_index do |plugin_title, index|
-        self.plugins.create(:title => plugin_title, :position => index) if plugin_title.is_a?(String)
+      plugin_names.each_with_index do |plugin_name, index|
+        self.plugins.create(:name => plugin_name, :position => index) if plugin_name.is_a?(String)
       end
     end
   end
 
   def authorized_plugins
-    self.plugins.collect {|p| p.title} | Refinery::Plugins.always_allowed.titles
+    self.plugins.collect { |p| p.name } | Refinery::Plugins.always_allowed.names
   end
 
   def can_delete?(other_user = self)

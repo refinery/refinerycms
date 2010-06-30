@@ -1,0 +1,43 @@
+it:
+  plugins:
+    refinery_images:
+      title: Immagine
+  no_file_chosen: Devi scegliere un file da caricare
+  file_should_be_smaller_than_max_image_size: I file devono essere inferiori a {{max_image_size}} nel formato
+  file_must_be_these_formats: L'immagine deve essere un JPG, PNG or GIF
+  admin:
+    images:
+      form:
+        image: Immagine
+        use_current_image: Usa immagine corrente
+        or: o
+        replace_image: Sostituirlo con questo ...
+        current_image: Immagine corrente
+      index:
+        create_new_image: Crea nuova immagine
+        no_images_yet: Non ci sono immagini ancora. Fare clic su "Crea nuova immagine" per aggiungere la vostra prima immagine.
+        view:
+          switch_to: Passare a {{view_name}} vista
+          list: lista
+          grid: griglia
+        search:
+          results_for: Risultati della ricerca per {{query}}
+      grid_view:
+        edit: Modifica questa immagine
+        confirm_delete:
+          message: Sei sicuro di voler eliminare {{title}}? 
+          title: Rimuovere questa immagine per sempre
+        view_live: Visualizza questa immagine <br/><em>Apri in una nuova finestra</em>
+      list_view_image:
+        edit_this_image: Modifica questa immagine
+        delete:
+          message: Sei sicuro di voler eliminare {{title}}?
+          title: Eliminare questa immagine per sempre
+      insert:
+        existing_image: Esistenti Immagine
+        new_image: Nuova immagine
+        previous: Precedente
+        next: Prossimo
+        submit_insert: Inserire
+        or: o
+        cancel: Annullare

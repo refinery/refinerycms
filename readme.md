@@ -20,7 +20,7 @@ Unlike other content managers, Refinery is truly aimed at the end user making it
 ### For developers
 
 * Allows you to get a small business site completed __ridiculously quickly__
-* Easily __[Theme and customise](http://github.com/resolve/refinerycms/blob/master/vendor/plugins/themes/themes.md)__ the look to suit the business
+* Easily __[Theme and customise](http://github.com/resolve/refinerycms/blob/master/vendor/plugins/themes/readme.md)__ the look to suit the business
 * __[Extend with custom plugins](http://github.com/resolve/refinerycms/blob/master/vendor/plugins/refinery/plugins.md)__ to do anything Refinery doesn't do out of the box
 * Sticks to __"the Rails way"__ as much as possible. We don't force you to learn new templating languages.
 * Uses [jQuery](http://jquery.com/) for fast and concise JavaScript
@@ -145,18 +145,18 @@ This will pull in all of the updated files in the project and may result in some
 
 ## What comes included with Refinery
 
-### [Pages](http://github.com/resolve/refinerycms/blob/master/vendor/plugins/pages/pages.md)
+### [Pages](http://github.com/resolve/refinerycms/blob/master/vendor/plugins/pages/readme.md)
 
 * Easily edit and manage pages with a [WYSIWYG visual editor](http://www.wymeditor.org/)
 * Manage you site's structure
 
-### [Images](http://github.com/resolve/refinerycms/blob/master/vendor/plugins/images/images.md) & [Files](http://github.com/resolve/refinerycms/blob/master/vendor/plugins/resources/resources.md)
+### [Images](http://github.com/resolve/refinerycms/blob/master/vendor/plugins/images/readme.md) & [Files](http://github.com/resolve/refinerycms/blob/master/vendor/plugins/resources/readme.md)
 
 * Easily upload and insert images
 * Upload and link to resources such as PDF documents
 * Uses the popular [attachment_fu](http://github.com/technoweenie/attachment_fu) Rails plugin
 
-### [Inquiries](http://github.com/resolve/refinerycms/blob/master/vendor/plugins/inquiries/inquiries.md)
+### [Inquiries](http://github.com/resolve/refinerycms/blob/master/vendor/plugins/inquiries/readme.md)
 
 * Collect inquiries from a contact form
 * Manage your inquiries and be notified when new ones come in
@@ -165,22 +165,22 @@ This will pull in all of the updated files in the project and may result in some
 
 * Post news about your company and update your visitors
 
-### [Settings](http://github.com/resolve/refinerycms/blob/master/vendor/plugins/refinery_settings/settings.md)
+### [Settings](http://github.com/resolve/refinerycms/blob/master/vendor/plugins/refinery_settings/readme.md)
 
 * Manage the behaviour of Refinery
 * Easily integrate with [Google Analytics](https://www.google.com/analytics/)
 
-### [Dashboard](http://github.com/resolve/refinerycms/blob/master/vendor/plugins/dashboard/dashboard.md)
+### [Dashboard](http://github.com/resolve/refinerycms/blob/master/vendor/plugins/dashboard/readme.md)
 
 * Get an overview of what has been updated recently
 
-### [Authentication & Users](http://github.com/resolve/refinerycms/blob/master/vendor/plugins/authentication/authentication.md)
+### [Authentication & Users](http://github.com/resolve/refinerycms/blob/master/vendor/plugins/authentication/readme.md)
 
 * Manage who can access Refinery
 * Control which plugins each user has access to
 * Uses the popular [authlogic](http://github.com/binarylogic/authlogic) authentication Rails plugin
 
-### [Themes](http://github.com/resolve/refinerycms/blob/master/vendor/plugins/themes/themes.md)
+### [Themes](http://github.com/resolve/refinerycms/blob/master/vendor/plugins/themes/readme.md)
 
 * Customise Refinery to look exactly how you want
 * The Rails Way: use regular Rails erb views, no templating languages here!

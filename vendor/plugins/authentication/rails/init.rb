@@ -1,5 +1,6 @@
 Refinery::Plugin.register do |plugin|
   plugin.title = "Users"
+  plugin.name = "refinery_users"
   plugin.description = "Manage users"
   plugin.version = 1.0
   plugin.menu_match = /(refinery|admin)\/users$/

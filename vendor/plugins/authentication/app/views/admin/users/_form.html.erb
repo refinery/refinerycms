@@ -11,24 +11,32 @@
   <div class='field'>
     <%= f.label :password %>
     <%= f.password_field :password %>
-    <%= "<br /><span class='preview'>Leaving password blank keeps the current password</span>" unless @user.new_record? %>
+    <%= "<br /><span class='preview'>#{t('.blank_password_keeps_current')}</span>" unless @user.new_record? %>
   </div>
   <div class='field'>
     <%= f.label :password_confirmation %>
     <%= f.password_field :password_confirmation %>
   </div>
   <div class='field plugin_access'>
-    <%= f.label :plugin_access, t('.plugin_access', :default => "Plugin access"), :class => "title_label" %>
-    <%= link_to "(enable all)", "", :id => "user_plugins_enable_all" %>
+    <span class='label_with_help'>
+      <%= f.label :plugin_access, nil, :class => "title_label" %>
+      <%= link_to "(#{t('.enable_all')})", "", :id => "user_plugins_enable_all" %>
+    </span>
     <ul id='plugins'>
       <% @available_plugins.each do |plugin| -%>
-        <%# Since the dashboard is always included by the framework, this will maintain the user's order %>
-        <% if Refinery::Plugins.always_allowed.titles.include?(plugin) or (plugin == 'Users' and @user.id == current_user.id) %>
-          <%= hidden_field_tag 'user[plugins][]', plugin %>
+        <% if Refinery::Plugins.always_allowed.names.include?(plugin[:name]) or
+              (plugin[:name] == 'refinery_users' and @user.id == current_user.id) %>
+          <%= hidden_field_tag 'user[plugins][]', plugin[:name] %>
         <% else %>
           <li>
-            <%= check_box_tag 'user[plugins][]', plugin, @selected_plugin_titles.include?(plugin), :id => "plugins_#{plugin.downcase.gsub(" ", "_")}" %>
-            <%= f.label 'user[plugins][]', plugin, :class => "stripped", :for => "plugins_#{plugin.downcase.gsub(" ", "_")}" %>
+            <%= check_box_tag 'user[plugins][]',
+                              plugin[:name],
+                              @selected_plugin_names.include?(plugin[:name]),
+                              :id => "plugins_#{plugin[:name]}" %>
+            <%= f.label 'user[plugins][]',
+                        t("plugins.#{plugin[:name].downcase}.title", :default => plugin[:title]),
+                        :class => "stripped",
+                        :for => "plugins_#{plugin[:name]}" %>
           </li>
         <% end %>
       <% end %>

@@ -38,7 +38,7 @@ A new database migration has been added to add the products table in so run:
 
 Start up your app by running ``ruby script/server`` go to [http://localhost:3000](http://localhost:3000) and you'll see instantly a new menu item called "products". Click on that and you'll see there are no products yet.
 
-Now go to the backend of your site by visiting [http://localhost:3000/admin](http://localhost:3000/admin) and logging in. You'll see a new tab called "Products", click on that and then click "Add a new product", fill the form and add an example product. Now go back to the front end and you'll see your product is showing up in the products part of your site.
+Now go to the backend of your site by visiting [http://localhost:3000/refinery](http://localhost:3000/refinery) and logging in. You'll see a new tab called "Products", click on that and then click "Add a new product", fill the form and add an example product. Now go back to the front end and you'll see your product is showing up in the products part of your site.
 
 Now you have a fully managed products section in Refinery, nice.
 

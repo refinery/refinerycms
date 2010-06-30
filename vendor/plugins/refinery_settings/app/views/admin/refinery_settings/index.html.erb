@@ -1,7 +1,7 @@
 <div id='actions'>
   <ul>
     <li>
-      <%= link_to "Create New Setting", new_admin_refinery_setting_url(:dialog => true, :width => 725, :height => 425), :class => "add_icon" %>
+      <%= link_to t('.new'), new_admin_refinery_setting_url(:dialog => true, :width => 725, :height => 425), :class => "add_icon" %>
     </li>
   </ul>
 </div>
@@ -15,11 +15,11 @@
   <% else %>
     <p>
       <% if searching? %>
-        Sorry, no results found
+        <%= t('admin.no_results_found') %>
       <% else %>
         <strong>
-          There are no settings yet.
-          Click "Create New Setting" to add your first setting.
+          <%= t('.empty_set') %>
+          <%= t('.create_first', :link => t('.new')) %>
         </strong>
       <% end %>
     </p>

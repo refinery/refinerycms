@@ -1,4 +1,5 @@
-[{:name => "site_name", :value => "Company Name"},
+[
+  {:name => "site_name", :value => "Company Name"},
   {:name => "new_page_parts", :value => false},
   {:name => "activity_show_limit", :value => 7},
   {:name => "preferred_image_view", :value => :grid},
@@ -12,6 +13,7 @@
     :large => '450x450>',
     :preview => 'c96x96'
     }
-  }].each do |setting|
+  }
+].each do |setting|
   RefinerySetting.create(:name => setting[:name].to_s, :value => setting[:value], :destroyable => false)
 end

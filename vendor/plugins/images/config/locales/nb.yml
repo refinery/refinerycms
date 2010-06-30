@@ -1,0 +1,42 @@
+nb:
+  plugins:
+    refinery_images:
+      title: Bilder
+  no_file_chosen: Du må velge en fil å laste opp
+  file_should_be_smaller_than_max_image_size: Filer må være mindre enn {{max_image_size}}
+  file_must_be_these_formats: Bildet ditt må være enten JPG, PNG or GIF
+  admin:
+    images:
+      form:
+        image: Bilde
+        use_current_image: Bruk gjeldende bilde
+        replace_image: Erstatt det med dette ...
+        current_image: Gjeldende bilde
+      index:
+        create_new_image: Opprett nytt bilde
+        no_images_yet: Det er ingen bilder enda. Trykk "Opprett Nytt Bilde" for å legge til ditt første bilde.
+        view:
+          switch_to: Bytt til {{view_name}} visning
+          list: liste
+          grid: rutenett
+        search:
+          results_for: Søkeresultat for {{query}}
+      grid_view:
+        edit: Rediger dette bildet
+        confirm_delete:
+          message: Er du sikker på at du ønsker å slette {{title}}? 
+          title: Fjern dette bildet for alltid
+        view_live: Se dette bildet <br/><em>Åpner i et nytt vindu</em>
+      list_view_image:
+        edit_this_image: Rediger dette bildet
+        delete:
+          message: Er du sikker på at du ønsker å slette {{title}}? 
+          title: Fjern dette bildet for alltid
+      insert:
+        existing_image: Eksisterende Bilde
+        new_image: Nytt Bilde
+        previous: Forrige
+        next: Neste
+        submit_insert: Sett Inn
+        or: eller
+        cancel: Avbryt

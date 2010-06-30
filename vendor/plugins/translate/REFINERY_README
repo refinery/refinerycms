@@ -1,0 +1,8 @@
+Installed from moretea/translate
+script/plugin install git://github.com/moretea/translate.git
+
+This is handy for translating refinery to other languages.
+
+  $ rake translate:lost_in_translation LOCALE=nl
+
+Run this task to get a list of missing translations

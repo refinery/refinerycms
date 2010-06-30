@@ -1,15 +1,17 @@
 <li id="sortable_<%= user.id %>" class='clearfix record <%= cycle("on", "on-hover") %>'>
   <span class='title'>
     <strong><%= user.login %></strong>
-    <span class="preview">(<%= user.email %>) created <%= user.created_at.strftime("%b %d, %Y") %></span>
+    <span class="preview">
+      <%= t('.preview', :who => user.email, :created_at => l(user.created_at, :format => :short)) %>
+    </span>
   </span>
   <span class='actions'>
     <%= link_to refinery_icon_tag('delete.png'), admin_user_path(user),
                 :class => "cancel confirm-delete",
-                :title => "Remove this user forever" if current_user.can_delete?(user) %>
+                :title => t('.confirm_delete_title') if current_user.can_delete?(user) %>
     <%= link_to refinery_icon_tag('application_edit.png'), edit_admin_user_path(user),
-                :title => 'Edit this user' %>
+                :title => t('.edit_user')%>
     <%= mail_to user.email, refinery_icon_tag('email_go.png'),
-                :title => 'Email this user' %>
+                :title => t('.email_user') %>
   </span>
 </li>
