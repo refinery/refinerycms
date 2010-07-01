@@ -53,42 +53,6 @@ da:
         resource: fil
     message:
       close: Luk
-  admin:
-    pages:
-      page:
-        view_live: Vis siden på sitet<br/><em>(åbner i nyt vindue)</em>
-        edit_this_page: Redigér side
-        confirm_delete_page_title: Slet side
-        confirm_delete_page_message: Er du sikker på du vil slette siden '{{title}}'?
-        hidden: skjult
-        draft: kladde
-    page_dialogs:
-      not_allowed: Du har ikke adgang til denne funktion.
-      page_link:
-        link_to_this_page: Link til denne side
-      link_to:
-        your_page:
-          tab_name: En side
-        web_address:
-          tab_name: Webadresse
-          location: Adresse
-          new_window: Nyt vindue
-          new_window_label: Afkryds hvis linket skal åbne i et nyt browservindue.
-          not_sure: Usikker på hvad der skal stå i feltet ovenfor?
-          step1: Find den side på nettet du vil linke til.
-          step2: "Kopier addressen fra din browsers addresselinje og indsæt den i feltet ovenfor."
-        email_address:
-          tab_name: E-mail-adresse
-          subject_line_optional: Emnelinje (ikke påkrævet)
-          body_optional: Indhold (ikke påkrævet)
-          not_sure: Usikker på hvad der skal stå i felterne ovenfor?
-          step1: "Skriv eller kopier og indsæt (fx fra din adressebog) den e-mail-adresse du vil linke til i feltet '<strong>E-mail-adresse</strong>'."
-          step2: "Brug '<strong>Emnelinje</strong>' feltet, hvis beskeden skal have en <strong>forudfyldt emnelinje</strong>."
-          step3: "Brug '<strong>Indhold</strong>' feltet, hvis beskeden skal have et <strong>forudfyldt indhold</strong>."
-        your_resource:
-          tab_name: En fil
-          link_to_this_resource: Link til denne fil
-
   activerecord:
     models:
       page: side
