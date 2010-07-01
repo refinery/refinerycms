@@ -1,6 +1,9 @@
 ===0.9.7 [30 June 2010]
 
 - Full backend internationalisation (i18n) support.
+- Marketable URLs, such as /contact.
+- Switched to bundler and rack. [Philip Arndt]
+- Added :restricted settings. [Steven Heidel]
 
 ===0.9.6.34 [09 May 2010]
 
@@ -304,5 +307,4 @@
 
 ===0.9.1 [04 October 2009]
 
-- Minor release.
-
+- Initial public release.
