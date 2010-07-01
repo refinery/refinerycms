@@ -63,7 +63,7 @@ class User < ActiveRecord::Base
   end
 
   def has_role?(role)
-    roles.include? Role[role]
+    roles.include?(Role[role])
   end
 
 end

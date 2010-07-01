@@ -9,11 +9,10 @@ class AddRoles < ActiveRecord::Migration
       t.integer :role_id
     end
 
-    # All users at this point will be Refinery admin users, so add the Refinery role to
-    # each of them.
-    refinery = Role.find_or_create_by_title('Refinery')
+    # All users at this point will be Refinery admin users,
+    # so we add the Refinery role to each of them.
     User.all.each do |user|
-      user.roles << refinery
+      user.roles << Role['Refinery']
       user.save!
     end
   end
