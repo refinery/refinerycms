@@ -51,8 +51,19 @@ class User < ActiveRecord::Base
     self.plugins.collect { |p| p.name } | Refinery::Plugins.always_allowed.names
   end
 
-  def can_delete?(other_user = self)
-    !other_user.superuser and User.count > 1 and (other_user.nil? or self.id != other_user.id)
+  def can_delete?(user_to_delete = self)
+    !user_to_delete.new_record? and 
+      !user_to_delete.superuser and 
+      User.count > 1 and 
+      self.id != user_to_delete.id
+  end
+  
+  def add_role(role_to_add)
+    roles << Role[role_to_add]
+  end
+  
+  def has_role?(role)
+    roles.include? Role[role]
   end
 
 end

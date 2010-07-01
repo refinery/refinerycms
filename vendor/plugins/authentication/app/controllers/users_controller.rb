@@ -24,7 +24,7 @@ class UsersController < ApplicationController
       # reset_session
       @user = User.create(params[:user])
       @selected_plugin_titles = params[:user][:plugins] || []
-      @user.roles << Role.find_or_create_by_title('Refinery')
+      @user.add_role(:refinery)
 
       @user.save if @user.valid?
 
