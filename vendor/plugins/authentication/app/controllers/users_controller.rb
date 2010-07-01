@@ -101,7 +101,7 @@ protected
     elsif refinery_users_exist?
       redirect_to root_url
     end
-  end 
+  end
 
   def refinery_users_exist?
     Role[:refinery].users.any?
