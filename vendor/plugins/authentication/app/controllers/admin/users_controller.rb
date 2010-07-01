@@ -18,7 +18,7 @@ class Admin::UsersController < Admin::BaseController
   def create
     @user = User.new(params[:user])
     @selected_plugin_names = params[:user][:plugins] || []
-    @user.roles << Role.find_or_create_by_title('Refinery')
+    @user.add_role(:refinery)
 
     if @user.save
       @user.plugins = @selected_plugin_names
