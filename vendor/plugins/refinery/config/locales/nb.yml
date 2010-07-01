@@ -53,42 +53,6 @@ nb:
         resource: ressurs
     message:
       close: Lukk
-  admin:
-    pages:
-      page:
-        view_live: Se denne siden <br/><em>(åpner i et nytt vindu)</em>
-        edit_this_page: Rediger denne siden
-        confirm_delete_page_title: Slett denne siden
-        confirm_delete_page_message: "Er du sikker på at du ønsker å slette denne siden '{{title}}'?"
-        hidden: skjult
-        draft: kladd
-    page_dialogs:
-      not_allowed: Du har ikke nok rettigheter til å få tilgang til denne funksjonen.
-      page_link:
-        link_to_this_page: Link til denne siden
-      link_to:
-        your_page:
-          tab_name: En side
-        web_address:
-          tab_name: Nettside
-          location: Mål
-          new_window: Nytt vindu
-          new_window_label: Kryss av for at denne lenken skal åpne i et nytt vindu.
-          not_sure: Usikker på hva som skal inn i boksen over?
-          step1: Finn siden du ønsker å linke til.
-          step2: "Kopier nettadressen fra nettleseren din sin adressebar og lim den inn i boksen over."
-        email_address:
-          tab_name: Epost-adresse
-          subject_line_optional: Valgfritt emne
-          body_optional: Valgfri melding
-          not_sure: Usikker på hva som skal inn i boksen over?
-          step1: "Skriv eller kopier og lim inn (F.eks. fra adresseboken din) epost-adressen du ønsker å lenke til inn i '<strong>Epost-adresse</strong>'-boksen over"
-          step2: "Bruk '<strong>emne</strong>'-boksen over om du ønsker at eposten skal ha et <strong>predefinert emne</strong>."
-          step3: "Bruk <strong>Melding</strong>-boksen over om du ønsker at eposten skal ha en <strong>predefinert melding</strong>."
-        your_resource:
-          tab_name: En ressurs
-          link_to_this_resource: Link til denne ressursen
-
   activerecord:
     models:
       page: side

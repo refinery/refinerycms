@@ -20,8 +20,6 @@ it:
           switch_to: Passare a {{view_name}} vista
           list: lista
           grid: griglia
-        search:
-          results_for: Risultati della ricerca per {{query}}
       grid_view:
         edit: Modifica questa immagine
         confirm_delete:

@@ -53,42 +53,6 @@ es:
         resource: recurso
     message:
       close: Cerrar
-  admin:
-    pages:
-      page:
-        view_live: Ver esta pagina en directo <br/><em>(se habre en una nueva ventana)</em>
-        edit_this_page: Editar esta pagina
-        confirm_delete_page_title: Borrar esta pagina
-        confirm_delete_page_message: Estas seguro que quieres borrar la pagina de '{{title}}'?
-        hidden: ocultar
-        draft: borrador
-    page_dialogs:
-      not_allowed: No tienes permiso para accesar estas caracteristicas.
-      page_link:
-        link_to_this_page: Link a esta pagina
-      link_to:
-        your_page:
-          tab_name: Una pagina
-        web_address:
-          tab_name: Pagina Web
-          location: "Locación"
-          new_window: Nueva ventana
-          new_window_label: Marque esta casilla para que el enlace se abra en una nueva ventana.
-          not_sure: ¿No está seguro de qué poner en el recuadro de arriba?
-          step1: Buscar la página en el Web que desea ligar
-          step2: "Copie la dirección web desde la barra de direcciones del navegador y pegarla en el cuadro de arriba."
-        email_address:
-          tab_name: Correo Electronico
-          subject_line_optional: Asunto opcional
-          body_optional: Comentario opcional
-          not_sure: ¿No está seguro de qué poner en el recuadro de arriba?
-          step1: "Escriba, copie o pegue (por ejemplo, de su libreta de direcciones) la dirección de correo electrónico para ligarse a en el cuadro de <strong>correo electrónico</strong> anterior."
-          step2: "Utilice el cuadro de <strong>Asunto</strong> si desea que el mensaje utilice una línea de <strong>asunto previamente escrita</strong>"
-          step3: "Utilice el <strong>Cuerpo del Email</strong> del cuadro supiero si usted quiere que el mensaje contenga el siguiente <strong>mensaje previamente escrito</strong>."
-        your_resource:
-          tab_name: Un recurso
-          link_to_this_resource: Link a este recurso
-
   activerecord:
     models:
       page: pagina
