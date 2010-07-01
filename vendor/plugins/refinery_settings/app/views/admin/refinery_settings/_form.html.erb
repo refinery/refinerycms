@@ -16,7 +16,7 @@
       <span><%= help %></span>
     </p>
   <% end %>
-  <% if current_user.superuser? %>
+  <% if current_user.has_role?(:superuser) %>
     <span class='label_with_help'>
       <%= f.label :restricted %>
       <%= refinery_help_tag t('.help.restricted') %>

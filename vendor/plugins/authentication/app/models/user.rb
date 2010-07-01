@@ -53,8 +53,8 @@ class User < ActiveRecord::Base
 
   def can_delete?(user_to_delete = self)
     !user_to_delete.new_record? and 
-      !user_to_delete.superuser and 
-      User.count > 1 and 
+      !user_to_delete.has_role?(:superuser) and 
+      Role[:refinery].users.count > 1 and 
       self.id != user_to_delete.id
   end
   
