@@ -105,7 +105,7 @@ namespace :refinery do
     FileUtils::makedirs dirs.map {|dir| File.join(Rails.root, dir) }
 
     # copy in the new assets.
-    assets = [%w(public stylesheets refinery), %w(public javascripts refinery), %w(public javascripts wymeditor), %w(VERSION), %w(public images wymeditor skins refinery), %w(public images refinery), %w(public stylesheets wymeditor skins refinery), %w(public javascripts jquery)]
+    assets = [%w(public stylesheets refinery), %w(public javascripts refinery), %w(public javascripts wymeditor), %w(public images wymeditor skins refinery), %w(public images refinery), %w(public stylesheets wymeditor skins refinery), %w(public javascripts jquery)]
     assets.each do |asset|
       FileUtils::rm_rf File.join(Rails.root, asset), :secure => true # ensure the destination is clear.
       FileUtils::cp_r File.join(Refinery.root, asset), File.join(Rails.root, asset) # copy the new assets into the project.
@@ -154,6 +154,9 @@ namespace :refinery do
 
     # replace the preinitializer.
     FileUtils::cp Refinery.root.join("config", "preinitializer.rb").cleanpath.to_s, Rails.root.join("config", "preinitializer.rb").cleanpath.to_s
+
+    # replace the config.ru file
+    FileUtils::cp Refinery.root.join('config.ru').cleanpath.to_s, Rails.root.join('config.ru').cleanpath.to_s
 
     # copy the lib/refinery directory in
     FileUtils::cp_r Refinery.root.join("lib", "refinery").cleanpath.to_s, Rails.root.join("lib").cleanpath.to_s
