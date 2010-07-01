@@ -53,10 +53,6 @@ class Admin::UsersController < Admin::BaseController
 
 protected
 
-  def can_create_public_user
-    User.count == 0
-  end
-
   def load_available_plugins
     @available_plugins = ::Refinery::Plugins.registered.in_menu.collect{|a| {:name => a.name, :title => a.title} }.sort_by {|a| a[:title]}
   end
