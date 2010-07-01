@@ -33,7 +33,6 @@ it:
       index:
         update_notified: Aggiornamento chi viene notificata
         edit_confirmation_email: Modifica email di conferma
-        search_results_for: Risultati della ricerca per {{query}}
         no_inquiries: Non hai ancora ricevuto alcuna richiesta in.
       show:
         details: Dettagli
