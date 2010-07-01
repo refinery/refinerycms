@@ -89,11 +89,12 @@ class RefinerySetting < ActiveRecord::Base
     setting = find_or_initialize_by_name(name.to_s)
 
     # you could also pass in {:value => 'something', :scoping => 'somewhere'}
-    unless value.is_a?(Hash) && value.has_key?(:value) && value.has_key?(:scoping)
+    unless value.is_a?(Hash) and value.has_key?(:value) and (value.has_key?(:scoping) or value.has_key?(:callback_proc_as_string))
       setting.value = value
     else
       setting.value = value[:value]
-      setting.scoping = value[:scoping] if setting.column_names.include?('scoping')
+      setting.scoping = value[:scoping] if value.has_key?(:scoping) and setting.class.column_names.include?('scoping')
+      setting.callback_proc_as_string = value[:callback_proc_as_string] if value.has_key?(:callback_proc_as_string) and setting.class.column_names.include?('callback_proc_as_string')
     end
 
     setting.save
@@ -133,7 +134,7 @@ class RefinerySetting < ActiveRecord::Base
   end
 
   def callback_proc
-    eval "Proc.new{|c| #{self.callback_proc_as_string} }" if RefinerySetting.column_names.include?('callback_proc_as_string') && self.callback_proc_as_string.present?
+    eval "Proc.new{#{self.callback_proc_as_string} }" if RefinerySetting.column_names.include?('callback_proc_as_string') && self.callback_proc_as_string.present?
   end
 
 end
