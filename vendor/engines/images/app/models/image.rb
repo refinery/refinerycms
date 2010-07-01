@@ -6,11 +6,12 @@ class Image < ActiveRecord::Base
   image_accessor :image
 
   validates_presence_of   :image,
-                          :message => 'You must choose an image to upload'
+                          :message => I18n.translate('no_file_chosen')
   validates_size_of       :image, :maximum => MAX_SIZE_IN_MB.megabytes,
-                          :message => "Images should be smaller than #{MAX_SIZE_IN_MB} MB in size"
+                          :message => I18n.translate('file_should_be_smaller_than_max_image_size',
+                               ActionController::Base.helpers.number_to_human_size(MAX_SIZE_IN_MB) )
   validates_mime_type_of  :image, :in => %w(image/jpeg image/png image/gif),
-                          :message => 'Your image must be either a JPG, PNG or GIF'
+                          :message => I18n.translate('file_must_be_these_formats')
 
   # Docs for acts_as_indexed http://github.com/dougal/acts_as_indexed
   acts_as_indexed :fields => [:title]

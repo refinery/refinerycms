@@ -15,7 +15,7 @@ class RefineryGenerator < Rails::Generator::NamedBase
       directories = ["#{plural_name}", "#{plural_name}/app", "#{plural_name}/app/controllers",
         "#{plural_name}/app/controllers/admin", "#{plural_name}/app/models", "#{plural_name}/app/views",
         "#{plural_name}/app/helpers", "#{plural_name}/app/views", "#{plural_name}/app/views/admin",
-        "#{plural_name}/config", "#{plural_name}/rails"].map { |d| "vendor/plugins/#{d}" }
+        "#{plural_name}/config", "#{plural_name}/config/locales", "#{plural_name}/rails"].map { |d| "vendor/plugins/#{d}" }
 
       directories.each do |dir|
         m.directory dir
@@ -24,6 +24,10 @@ class RefineryGenerator < Rails::Generator::NamedBase
       m.template "controller.rb", "vendor/plugins/#{plural_name}/app/controllers/admin/#{plural_name}_controller.rb"
       m.template "model.rb", "vendor/plugins/#{plural_name}/app/models/#{singular_name}.rb"
       m.template "config/routes.rb", "vendor/plugins/#{plural_name}/config/routes.rb"
+      Dir[File.expand_path(File.dirname(__FILE__) + "/templates/config/locales/*.yml")].each do |yml|
+        yml_filename = yml.split(File::SEPARATOR).last
+        m.template "config/locales/#{yml_filename}", "vendor/plugins/#{plural_name}/config/locales/#{yml_filename}"
+      end
 
       # Create view directory
       admin_view_dir = File.join("vendor/plugins/#{plural_name}/app/views/admin", plural_name)

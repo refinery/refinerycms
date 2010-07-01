@@ -1,24 +1,23 @@
 <%= form_for([:admin, @inquiry_setting], :url => (@url_override || @url)) do |f| %>
   <%= f.error_messages %>
   <p>
-    Every time someone contacts you on your website, Refinery sends
-    out an email to confirm the inquiry with the person who made it.
+    <%= t('.explanation') %>
   </p>
   <p>
-    Below you can edit the email that is sent out.
+    <%= t('.below_edit_email_sent') %>
   </p>
   <table id='inquiry'>
     <tr>
       <td>
-        <strong>To</strong>
+        <strong><%= t('.to') %></strong>
       </td>
       <td>
-        The customer making the inquiry
+        <%= t('.the_customer_making_inquiry') %>
       </td>
     </tr>
     <tr>
       <td>
-        <strong>From</strong>
+        <strong><%= t('.from') %></strong>
       </td>
       <td>
         <%= "#{RefinerySetting[:site_name]} &lt;no-reply@#{request.domain(RefinerySetting.find_or_set(:tld_length, 1))}&gt;".html_safe %>
@@ -26,19 +25,20 @@
     </tr>
     <tr>
       <td>
-        <strong>Subject</strong>
+        <strong><%= t('.subject') %></strong>
       </td>
       <td>
-        Thank you for your inquiry
+        <%= link_to InquirySetting.confirmation_subject.value, edit_admin_inquiry_setting_url(InquirySetting.confirmation_subject),
+            :title => t('.click_to_edit_subject') %>
       </td>
     </tr>
     <tr>
       <td valign='top'>
-        <strong>Message</strong>
+        <strong><%= t('.message') %></strong>
       </td>
       <td>
         <%= f.text_area :value, :cols => "100", :rows => "5", :class => 'widest' %><br/>
-        <em>Note: place the text %name% where you'd like the customer's name to appear in the email</em>
+        <em><%= t('.note') %></em>
       </td>
     </tr>
   </table>

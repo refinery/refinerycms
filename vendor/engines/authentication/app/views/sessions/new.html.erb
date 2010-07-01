@@ -10,13 +10,13 @@
   </div>
   <div class='clearfix'>
     <div class='field remember_me'>
-      <%= f.label :remember_me, nil %>
       <%= f.check_box :remember_me %>
+      <%= f.label :remember_me %>
     </div>
     <div class='field forgot_password'>
-      <%= link_to "I forgot my password", forgot_users_url %>
+      <%= link_to t('.forgot_password'), forgot_users_url %>
     </div>
   </div>
-  <%= render :partial => "/shared/admin/form_actions", :locals => {:f => f, :submit_button_text => "Sign in", :hide_cancel => true} %>
+  <%= render :partial => "/shared/admin/form_actions", :locals => {:f => f, :submit_button_text => t('.sign_in'), :hide_cancel => true} %>
 <% end -%>
-<% content_for :header, "Hello, please sign in." %>
+<% content_for :header, t('.hello_please_sign_in') %>

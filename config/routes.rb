@@ -1,4 +1,8 @@
 Refinerycms::Application.routes.draw do |map|
+
+  # FIXME for Rails 3 + i18n
+  map.filter(:locale)
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

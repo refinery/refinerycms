@@ -1,0 +1,20 @@
+sl:
+  plugins:
+    refinery_dashboard:
+      title: Nadzorna plošča
+  admin:
+    dashboard:
+      index:
+        quick_tasks: Pogosta opravila
+        add_a_new_page: Dodaj novo stran
+        update_a_page: Uredi stran
+        upload_a_image: Prenesi sliko
+        change_language: Spremeni Jezik
+        see_home_page: Poglej domačo stran
+      recent_activity:
+        latest_activity: Zadnje aktivnosti
+        see: Poglej '{{what}}'
+  updated: posodobitev
+  created: ustvarjena
+  ago: "{{time}} nazaj"
+  see: Poglej

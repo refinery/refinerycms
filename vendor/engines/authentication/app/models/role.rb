@@ -8,4 +8,8 @@ class Role < ActiveRecord::Base
     self.title = title.camelize
   end
 
+  def self.[](title)
+    find_or_create_by_title(title.to_s)
+  end
+
 end

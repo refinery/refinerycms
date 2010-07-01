@@ -2,10 +2,6 @@
 
 What are some of the known things that need to be done?
 
-## Internationalization
-
-We've got a branch for it and we need to merge that into the master.
-
 ## Tests
 
 * Add unit test coverage for user, user plugin and user mailer
@@ -27,3 +23,21 @@ Work items still to do:
 * Migrate to new generator API  (low)..
 * Migrate to new Mailer API (low).
 * Fix other deprecations (low).
+
+# Improve the Generator
+
+We need to have support for build in Refinery field types like "image". So I could run
+
+  ./script/generate refinery staff name:string bio:text mugshot:image
+
+And it will automatically create a form field that pops open the image picker on the staff form.
+
+There is now a partial to easily call an image picker.
+
+# I18n support
+
+* Check all the views for missing translations
+  - Write a small tool that extracts t('.whatever') and check which translation keys are missing, or which keys are not used at all.
+* Translate models and model attributes used in forms (Rails 2.3.8 supports translation form labels!)
+* Javascript messages etc:
+  - http://github.com/fnando/i18n-js

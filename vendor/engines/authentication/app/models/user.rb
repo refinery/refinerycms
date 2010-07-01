@@ -37,22 +37,33 @@ class User < ActiveRecord::Base
   has_many :plugins, :class_name => "UserPlugin", :order => "position ASC"
   has_friendly_id :login, :use_slug => false
 
-  def plugins=(plugin_titles)
+  def plugins=(plugin_names)
     unless self.new_record? # don't add plugins when the user_id is NULL.
       self.plugins.delete_all
 
-      plugin_titles.each_with_index do |plugin_title, index|
-        self.plugins.create(:title => plugin_title, :position => index) if plugin_title.is_a?(String)
+      plugin_names.each_with_index do |plugin_name, index|
+        self.plugins.create(:name => plugin_name, :position => index) if plugin_name.is_a?(String)
       end
     end
   end
 
   def authorized_plugins
-    self.plugins.collect {|p| p.title} | Refinery::Plugins.always_allowed.titles
+    self.plugins.collect { |p| p.name } | Refinery::Plugins.always_allowed.names
   end
 
-  def can_delete?(other_user = self)
-    !other_user.superuser and User.count > 1 and (other_user.nil? or self.id != other_user.id)
+  def can_delete?(user_to_delete = self)
+    !user_to_delete.new_record? and
+      !user_to_delete.has_role?(:superuser) and
+      Role[:refinery].users.count > 1 and
+      self.id != user_to_delete.id
+  end
+
+  def add_role(role_to_add)
+    roles << Role[role_to_add]
+  end
+
+  def has_role?(role)
+    roles.include? Role[role]
   end
 
 end

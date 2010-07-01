@@ -3,7 +3,10 @@
   <%= f.error_messages %>
 
   <div class='field'>
-    <%= "Use current image <em>or</em>, replace it with this one..." if action_name =~ /(edit)|(update)/ %>
+    <% if action_name =~ /(edit)|(update)/ %>
+      <%= t('.use_current_image') %>
+      <em><%= t('.or') %></em>, <%= t('.replace_image') %>
+    <% end %>
     <%= f.file_field :image %>
   </div>
 
@@ -30,7 +33,7 @@
 
 <% if action_name =~ /(edit)|(update)/ %>
   <div style='float: right; width: 25%;'>
-    <label>Current Image</label>
+    <label><%=t('.current_image') %></label>
     <%= image_fu @image, :medium, { :class => "brown_border" } %>
   </div>
 <% end %>

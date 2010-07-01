@@ -5,5 +5,5 @@ class UserSession < Authlogic::Session::Base
 
   find_by_login_method :find_by_login_or_email
 
-  generalize_credentials_error_messages "Sorry, your #{Refinery.authentication_login_field} or password was incorrect."
+  generalize_credentials_error_messages I18n.translate('authlogic.attributes.user_session.incorrect', :login_field => I18n.translate("authlogic.attributes.user_session.#{Refinery.authentication_login_field.downcase}").downcase)
 end

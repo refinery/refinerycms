@@ -1,5 +1,7 @@
 Refinery::Plugin.register do |plugin|
   plugin.title = "Pages"
+  plugin.name = "refinery_pages"
+  plugin.directory = "pages"
   plugin.description = "Manage content pages"
   plugin.version = 1.0
   plugin.menu_match = /(refinery|admin)\/page(_dialog|_part)?s$/

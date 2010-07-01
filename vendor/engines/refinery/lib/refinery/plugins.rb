@@ -5,21 +5,26 @@ module Refinery
       @plugins = []
     end
 
+    def find_by_name(name)
+      self.detect { |plugin| plugin.name == name }
+    end
+
     def find_by_title(title)
-      self.reject { |plugin| plugin.title != title }.first
+      self.detect { |plugin| plugin.title == title }
     end
 
     def find_by_model(model)
-      self.reject { |plugin| plugin.activity.reject {|activity| activity.class != model }.empty? }.first
+      model = model.constantize if model.is_a? String
+      self.detect { |plugin| not plugin.activity.detect {|activity| activity.class == model }.nil? }
     end
 
     def find_activity_by_model(model)
       plugin = find_by_model(model)
-      plugin.activity.reject {|activity| activity.class != model}.first unless plugin.nil?
+      plugin.activity.detect {|activity| activity.class == model} unless plugin.nil?
     end
 
-    def [](title)
-      self.find { |plugin| plugin.title == title }
+    def [](name)
+      self.find_by_name(name)
     end
 
     def self.registered
@@ -28,6 +33,10 @@ module Refinery
 
     def pathnames
       self.collect { |p| p.pathname }.compact
+    end
+
+    def names
+      self.collect { |p| p.name }
     end
 
     def titles
@@ -46,10 +55,10 @@ module Refinery
       registered.reject { |p| !p.always_allow_access }
     end
 
-    def self.set_active(titles)
+    def self.set_active(names)
       active.clear
-      titles.each do |title|
-        active << registered[title] if registered[title]
+      names.each do |name|
+        active << registered[name] if registered[name]
       end
     end
 

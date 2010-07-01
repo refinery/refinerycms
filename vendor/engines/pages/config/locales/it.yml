@@ -1,0 +1,53 @@
+it:
+  plugins:
+    refinery_pages:
+      title: Pagine
+  admin:
+    pages:
+      form_advanced_options:
+        title: Titolo
+        create_content_section: Creare sezione dei contenuti
+        delete_content_section: Elimina sezione dei contenuti
+        advanced_options: Opzioni avanzate
+        explain_page_different_title: Se si desidera che la pagina di avere un titolo diverso da quello che mostra nel menu e il titolo del browser, quindi immettere qui.
+        redirect_to_first_child: "Seleziona questa casella se vuoi che il visitatore di essere reindirizzati alla pagina di primo figlio di questa pagina, se questa pagina è selezionata."
+        parent_id_title: Genitore
+        custom_title: Titolo personalizzato
+        title_type: "Genere:"
+        title_types:
+          none: Nessuno
+          text: Testo
+          image: Immagine
+        custom_url: URL personalizzato
+        custom_url_explanation: "Inserisci un URL, se questa pagina di link a un sito esterno o ad una risorsa pre-esistenti, ad esempio un contatto pagina. <br/> Nota: Questo URL deve puntare a una posizione che esiste, uno nuovo, non verrà creato."
+        draft: Bozza
+        show_in_menu_title: Mostra nel menu
+        show_in_menu_description: Seleziona questa casella se questa pagina dovrebbe apparire nel menu del sito
+        draft: Bozza
+        save_as_draft: Salva come bozza
+        save: Salva
+        cancel: Annullare
+      form_advanced_options_seo:
+        seo: Search Engine Optimization
+        seo_override_title: Browser titolo
+        seo_override_title_help: Se si desidera sovrascrivere il titolo di browser predefinito, farlo qui.
+        meta_keywords_title: Meta parole chiave
+        meta_description_help: Inserisci le parole chiave che riguardano 50-10 a questa pagina. parole chiave separate da una virgola.
+        meta_description_title: Meta descrizione
+        meta_description_help: Inserire un conciso due o tre frasi che descrivono ciò che questa pagina è di circa.
+        js:
+          content_section:
+            create: Crea sezione dei contenuti
+            already_exists: Una sezione di contenuti con quel titolo esiste già, si prega di scegliere un altro.
+            title_empty: Non è stato inserito un titolo per la sezione dei contenuti, inserisci uno.
+            confirm_delete: Ciò eliminerà la sezione dei contenuti {{section_name}} quando la pagina viene salvata e cancellare tutti i contenuti che sono stati inseriti in esso, Sei sicuro?
+      index:
+        create_new_page: Creare una nuova pagina
+        reorder_pages: Riordinare le pagine
+        reorder_pages_done: Fatto riordino Paginas
+        sorry_no_results: Non ci sono risultati.
+        no_pages_yet: Non ci sono ancora pagine. Fare clic su "Crea nuova pagina" per aggiungere la vostra prima pagina.
+  activerecord:
+    attributes:
+      page:
+        skip_to_first_child: "Passa al primo figlio?"

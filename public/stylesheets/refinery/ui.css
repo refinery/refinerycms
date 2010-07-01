@@ -57,9 +57,22 @@
 .ui-dialog .ui-dialog-titlebar-close:hover, .ui-dialog .ui-dialog-titlebar-close:focus {
   padding: 0;
 }
-
+/** Hide the tab without using display:none; This is required to hide flash embeds etc.**/
 .ui-tabs-hide {
-  display:none;
+  display: block !important;
+  height: 0 !important;
+  width: 0 !important;
+  border: 0px none !important;
+  visibility: hidden !important;
+  position: absolute;
+  left: -10000px;
+  top: -10000px;
+}
+/** Makes sure your embed does not have leftover height when hidden **/
+.ui-tabs-hide object,
+.ui-tabs-hide embed {
+  height: 0px !important;
+  width: 0px !important;
 }
 .ui-tabs li.ui-state-default {
   float: left;

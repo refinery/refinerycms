@@ -1,0 +1,67 @@
+nb:
+  plugins:
+    refinery_inquiries:
+      title: Forespørsler
+  activerecord:
+    models:
+      inquiry: Forespørsel
+    attributes:
+      inquiry:
+        to: Til
+        from: Fra
+        click_to_email: Trykk for å send epost til denne adressen
+        phone: Telefon
+        date: Dato
+        message: Melding
+  inquiries:
+    new:
+      header_message: "Det er et lite problem."
+      message: "Følgende problem må bli rettet opp i:"
+      send: Send melding
+      privacy_policy: "Vi respekterer ditt personvern"
+  admin:
+    inquiries:
+      inquiry:
+        move_inquiry_to_closed: Flytt forespørselen til lukket
+        move_inquiry_to_open: Flytt forespørselen til åpen
+        read_inquiry: Les forespørselen
+        remove_inquiry: "Er du sikker på at du ønsker å slette forespørselen fra '{{name}}'?"
+        title: Slett denne forespørselen for alltid.
+      toggle_status:
+        closed: "Forespørsel '{{inquiry}}' lukket"
+        reopened: "Forespørsel '{{inquiry}}' er åpnet igjen."
+      index:
+        update_notified: Oppdater hvem som blir varslet
+        edit_confirmation_email: Rediger bekreftelsesepost
+        search_results_for: Søkeresultat for {{query}}
+        no_inquiries: Du har ikke mottatt noen forespørsler enda.
+      show:
+        details: Detaljer
+        click_to_email: Trykk for å sende epost
+        status: Status
+        open: Åpen
+        closed: Lukket
+        age: Alder
+        actions: Handlinger
+        back_to_all_inquiries: Tilbake til alle forespørsler
+        inquiry: Forespørsel
+    inquiry_settings:
+      update:
+        updated: "'{{setting}}' er oppdatert."
+      notification_recipients_form:
+        inquiry_settings_value_name: Send varsler til
+        explanation: "Hver gang noen kontakter deg på siden din sender Refinery ut en epost for å varsle om en ny forespørsel."
+        hint: "Skriv inn en epost-adresse over. Ønsker du at flere enn en person skal motta varsling? Skriv inn epost-adresser seperert med komma."
+        example: "F.eks. me@domain.no, friend@msn.no, workmate@work.no"
+      confirmation_email_form:
+        to: Til
+        from: Fra
+        subject: Emne
+        click_to_edit_subject: Trykk her for å redigere emnet
+        explanation: "Hver gang noen kontakter deg på nettsiden din sender Refinery ut en epost for å bekrefte forespørselen med den personen som sendte den."
+        below_edit_email_sent: Under kan du redigere den eposten som blir sendt ut.
+        the_customer_making_inquiry: Kunden som sender forespørselen
+        message: Melding
+        note: "NB: plasser %name% der du ønsker at kundens navn skal være i eposten."
+      subject_form:
+        subject_value_name: Emne
