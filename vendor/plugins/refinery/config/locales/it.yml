@@ -53,41 +53,9 @@ it:
         resource: risorsa
     message:
       close: Fine
-  admin:
-    pages:
-      page:
-        view_live: Visualizza questa pagina in diretta <br/><em>(si apre in una nuova finestra)</em>
-        edit_this_page: Modifica questa pagina
-        confirm_delete_page_title: Cancella questa pagina
-        confirm_delete_page_message: Sei sicuro di voler eliminare la pagina '{{title}}'?
-        hidden: occulto
-        draft: bozza
-    page_dialogs:
-      not_allowed: Non hai i permessi per accedere a questa funzione.
-      page_link:
-        link_to_this_page: Collegamento a questa pagina
-      link_to:
-        your_page:
-          tab_name: Una pagina
-        web_address:
-          tab_name: Sito web
-          location: Posizione
-          new_window: Nuova finestra
-          new_window_label: Seleziona questa casella per avere il link apre in una nuova finestra del browser.
-          not_sure: Non sai cosa mettere nel box in alto?
-          step1: Trova la pagina sul web che si desidera collegare.
-          step2: "Copiare l'indirizzo web dalla barra degli indirizzi del browser e incollarlo nella casella di sopra."
-        email_address:
-          tab_name: Indirizzo e-mail
-          subject_line_optional: Materia facoltativa
-          body_optional: Facoltativo corpo
-          not_sure: Non sai cosa mettere nel box sopra?
-          step1: "Scrivere o copiare e incollare (ad esempio, dalla rubrica), l'indirizzo email al link per in'<strong>Indirizzo e-mail</strong>' box sopra."
-          step2: "Utilizzare il '<strong>Oggetto </strong>' box sopra se si desidera che il messaggio sia composto con <a <strong> linea pre-scritto soggetto</strong>."
-          step3: "Utilizzare il <strong> Email Body </ strong> sopra se si desidera che il messaggio sia composto con un <strong> messaggio pre-scritto / strong>."
-        your_resource:
-          tab_name: Una risorsa
-          link_to_this_resource: Link a questa risorsa
+    site_bar:
+      switch_to_your_website: Switch to your website
+      switch_to_your_website_editor: Switch to your website editor
 
   activerecord:
     models:

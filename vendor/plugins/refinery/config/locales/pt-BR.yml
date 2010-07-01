@@ -49,42 +49,6 @@ pt-BR:
         resource: recurso
     message:
       close: Fechar
-  admin:
-    pages:
-      page:
-        view_live: Ver esta página ao vivo <br/><em>(abre em uma nova janela)</em>
-        edit_this_page: Editar esta página
-        confirm_delete_page_title: Remover esta página
-        confirm_delete_page_message: Você tem certeza que deseja remover a página '{{title}}'?
-        hidden: escondido
-        draft: rascunho
-    page_dialogs:
-      not_allowed: Você não tem permissão para acessar esta funcionalidade.
-      page_link:
-        link_to_this_page: Link para esta página
-      link_to:
-        your_page:
-          tab_name: Uma página
-        web_address:
-          tab_name: Website
-          location: Localização
-          new_window: Nova janela
-          new_window_label: Marque esta caixa para que o link abra em uma nova janela do navegador.
-          not_sure: Não tem certeza do que colocar na caixa acima?
-          step1: Encontre a página na web que você deseja linkar.
-          step2: "Copie o endereço da barra de endereços do seu navegador e cole na caixa acima."
-        email_address:
-          tab_name: Endereço de email
-          subject_line_optional: Opcional assunto
-          body_optional: Opcional corpo
-          not_sure: Não tem certeza do que colocar nas caixas acima?
-          step1: "Escreva o endereço de email ou copie e cole (p.e. do seu livro de contatos) para linkar na caixa '<strong>Endereço de email</strong>' acima."
-          step2: "Use a caixa '<strong>Assunto</strong>' acima se você quiser que a mensagem seja composta com um <strong>assunto pré-definido</strong>."
-          step3: "Use the <strong>Email Body</strong> box above if you want the message to be composed with a <strong>pre-written message</strong>."
-        your_resource:
-          tab_name: A resource
-          link_to_this_resource: Link to this resource
-
   activerecord:
     models:
       page: página

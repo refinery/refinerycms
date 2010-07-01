@@ -1,7 +1,7 @@
 nb:
   plugins:
     refinery_dashboard:
-      title: MISSING
+      title: Dashboard
   admin:
     dashboard:
       index:
