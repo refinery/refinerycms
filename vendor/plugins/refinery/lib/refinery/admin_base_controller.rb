@@ -84,7 +84,7 @@ private
 
   # Override authorized? so that only users with the Refinery role can admin the website.
   def authorized?
-    logged_in? && refinery_user?
+    refinery_user?
   end
 
 end
