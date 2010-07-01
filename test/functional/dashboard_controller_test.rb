@@ -9,7 +9,7 @@ class DashboardControllerTest < ActionController::TestCase
 
   def setup
     @controller = Admin::DashboardController.new
-    users(:quentin).roles << Role.find_or_create_by_title('Refinery')
+    users(:quentin).add_role(:refinery)
     login_as(:quentin)
   end
 
