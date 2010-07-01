@@ -1,5 +1,7 @@
 source :rubygems
 
+RSPEC_VERSION = '~> 2.0.0.beta.15'
+
 # Specify the database driver as appropriate for your application (only one).
 gem 'mysql', :require => 'mysql'
 #gem 'sqlite3-ruby', :require => 'sqlite3'
@@ -29,8 +31,11 @@ gem 'will_paginate',  '3.0.pre',:git => "git://github.com/mislav/will_paginate.g
 
 group :test do
   gem 'json_pure', :require => 'json/pure', :git => 'git://github.com/parndt/json.git', :branch => 'master'
-  gem 'rspec'
-  gem 'rspec-rails'
+  gem 'rspec',              RSPEC_VERSION
+  gem 'rspec-core',         RSPEC_VERSION, :require => 'rspec/core'
+  gem 'rspec-expectations', RSPEC_VERSION, :require => 'rspec/expectations'
+  gem 'rspec-mocks',        RSPEC_VERSION, :require => 'rspec/mocks'
+  gem 'rspec-rails',        RSPEC_VERSION
   gem 'factory_girl'
   gem 'test-unit', '1.2.3'
 
