@@ -31,7 +31,8 @@ module Refinery
     end
 
     def name
-      @name ||= self.title.to_s.downcase.gsub(' ', '_')
+      # we have to use @title not def title because def title translates based on name (circular reference)
+      @name ||= @title.to_s.downcase.gsub(' ', '_')
     end
 
     def dashboard?

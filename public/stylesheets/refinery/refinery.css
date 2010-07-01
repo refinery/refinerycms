@@ -19,7 +19,6 @@ body {
   line-height: 1.5em;
   background: black url('/images/refinery/page_bg.png') repeat;
 }
-
 acronym {
   cursor: help;
 }
@@ -395,7 +394,7 @@ pre {
 }
 #content #records > ul li .actions a {
   line-height: 29px;
-} 
+}
 #records ul.clickable li {
   padding: 0px;
   margin-bottom: 0px;

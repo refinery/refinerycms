@@ -4,7 +4,7 @@
     <%= render :partial => "recent_inquiries" if @recent_inquiries.any? %>
   </div>
   <div id='actions'>
-    <h2><%= t('.quick_tasks') %></h2>
+    <h2><%= t('.quick_tasks').titleize %></h2>
     <ul>
       <%# I8N: How to translate tab names? %>
       <% if Refinery::Plugins.active.names.include?("refinery_pages") %>

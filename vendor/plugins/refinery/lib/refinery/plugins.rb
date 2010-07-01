@@ -9,6 +9,10 @@ module Refinery
       self.detect { |plugin| plugin.name == name }
     end
 
+    def find_by_title(title)
+      self.detect { |plugin| plugin.title == title }
+    end
+
     def find_by_model(model)
       model = model.constantize if model.is_a? String
       self.detect { |plugin| not plugin.activity.detect {|activity| activity.class == model }.nil? }
