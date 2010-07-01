@@ -26,12 +26,10 @@ class SessionsController < ApplicationController
 protected
 
   def redirect?
-    if logged_in?
-      if refinery_user?
-        redirect_to admin_root_url
-      else
-        redirect_to root_url
-      end
+    if refinery_user?
+      redirect_to admin_root_url
+    elsif logged_in?
+      redirect_to root_url
     end
   end
 

@@ -83,7 +83,7 @@ class UsersController < ApplicationController
         if @user.update_attributes(:password => params[:user][:password],
                                    :password_confirmation => params[:user][:password_confirmation])
 
-          flash[:notice] = t('users.reset.successful', :email => @user.email) if refinery_user?
+          flash[:notice] = t('users.reset.successful', :email => @user.email)
           redirect_back_or_default admin_root_url
         end
       end
