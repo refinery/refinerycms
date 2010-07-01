@@ -32,9 +32,10 @@ class UsersController < ApplicationController
         @user.plugins = @selected_plugin_titles
         @user.save
         UserSession.create!(@user)
-        if User.count == 1
+        if Role[:refinery].users.count == 1
           # this is the superuser if this user is the only user.
-          current_user.update_attribute(:superuser, true)
+          current_user.add_role(:superuser)
+          current_user.save
 
           # set this user as the recipient of inquiry notifications
           if (notification_recipients = InquirySetting.find_or_create_by_name("Notification Recipients")).present?
@@ -48,7 +49,7 @@ class UsersController < ApplicationController
         redirect_back_or_default(admin_root_url)
         flash[:message] = "<h2>#{t('users.create.welcome', :who => current_user.login).gsub(/\.$/, '')}.</h2>"
 
-        if User.count == 1 or RefinerySetting[:site_name].to_s =~ /^(|Company\ Name)$/
+        if Role[:refinery].users.count == 1 or RefinerySetting[:site_name].to_s =~ /^(|Company\ Name)$/
           flash[:message] << "<p>#{t('users.setup_website_name', :link => edit_admin_refinery_setting_url(RefinerySetting.find_by_name("site_name")))}</p>"
         else
           render :action => 'new'
@@ -97,14 +98,13 @@ protected
   def redirect?
     if refinery_user?
       redirect_to admin_users_url
-    else
-      redirect_to root_url unless can_create_public_user?
+    elsif refinery_users_exist?
+      redirect_to root_url
     end
-  end
+  end 
 
-  def can_create_public_user?
-    not User.exists?
+  def refinery_users_exist?
+    Role[:refinery].users.any?
   end
-  alias_method :can_create_public_user, :can_create_public_user?
 
 end
