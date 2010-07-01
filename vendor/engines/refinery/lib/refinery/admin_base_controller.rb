@@ -17,6 +17,7 @@ class Refinery::AdminBaseController < ApplicationController
 
 protected
 
+  #TODO Add language
   def error_404(exception=nil)
     if (@page = Page.find_by_menu_match("^/404$", :include => [:parts, :slugs])).present?
       params[:action] = 'error_404'
@@ -28,12 +29,22 @@ protected
     end
   end
 
+  def find_or_set_locale
+    if (params[:set_locale].present? and ::Refinery::I18n.locales.include?(params[:set_locale].to_sym))
+      ::Refinery::I18n.current_locale = params[:set_locale].to_sym
+      redirect_to url_for({:controller => controller_name, :action => action_name}) and return
+    else
+      I18n.locale = ::Refinery::I18n.current_locale
+    end
+  end
+
   def restrict_plugins
     Refinery::Plugins.set_active( current_user.authorized_plugins ) if current_user.respond_to? :plugins
   end
 
+  #TODO Translate
   def restrict_controller
-    if Refinery::Plugins.active.reject {|plugin|
+    if Refinery::Plugins.active.reject { |plugin|
       params[:controller] !~ Regexp.new(plugin.menu_match) and
       params[:controller] !~ Regexp.new(plugin.menu_match.to_s.gsub('admin\/', 'refinery/'))
     }.empty?
@@ -44,6 +55,7 @@ protected
 
   # Override method from application_controller. Not needed in this controller.
   def find_pages_for_menu; end
+
 
 private
   # This fixes the issue where Internet Explorer browsers are presented with a basic auth dialogue
@@ -72,7 +84,7 @@ private
 
   # Override authorized? so that only users with the Refinery role can admin the website.
   def authorized?
-    logged_in? && refinery_user?
+    refinery_user?
   end
 
 end

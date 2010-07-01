@@ -1,0 +1,83 @@
+nl:
+  activerecord:
+    models:
+      session: session
+    attributes:
+      session:
+        login: gebruikersnaam
+        password: wachtwoord
+        remember_me: Onthoud mijn gegevens
+      user:
+        login: Gebruikersnaam
+        email: E-mail adres
+        password: Wachtwoord
+        password_confirmation: Bevestig wachtwoord
+  plugins:
+    refinery_users:
+      title: Gebruikers
+  admin:
+    users:
+      update:
+        cannot_remove_user_plugin_from_current_user: "U kunt de 'Gebruikers' plugin niet deactiveren voor uw huidige ingelogde account."
+      form:
+        blank_password_keeps_current: Als u dit veld leeg laat, blijft het oude wachtwoord behouden.
+      index:
+        create_new_user: Maak een nieuwe gebruiker
+        no_users_yet:  Er zijn nog geen gebruikers. Klik op "Maak een nieuwe gebruiker" om de eerste toe te voegen.
+      user:
+        confirm_delete_message: "Weet u zeker dat u de gebruiker '{{who}}' wilt verwijderen?"
+        confirm_delete_title: Verwijder deze gebruiker permanent.
+        edit_user: Bewerk deze gebruiker
+        email_user: Email deze gebruiker
+        preview: ({{who}}) is aangemaakt op {{created_at}}
+  sessions:
+    login_successful: Successvol ingelogd.
+    login_failed: Sorry, uw wachtwoord of gebruikersnaam was niet juist.
+    logged_out: U bent uitgelogd.
+    new:
+      login: Gebruikersnaam
+      password: Wachtwoord
+      log_in: Log in
+      or: of
+      cancel: Annuleren
+      remember_me: Onthoud mijn gegevens
+      forgot_password: Ik ben mijn wachtwoord vergeten
+  users:
+    setup_website_name: "Laten we eerst de website een naam geven. <a href='{{link}}'>Klik hier</a> om de naam van de website te bewerken"
+    signup_disabled: Het registreren van gebruikers is uitgeschakeld
+    new:
+      fill_form: Vul het onderstaande formulier in, zodat u kan beginnen.
+      sign_up: Registreer
+    create:
+      welcome: Welkom bij Refinery, {{who}}
+      signup_complete: Registratie compleet!
+  user_mailer:
+    please_activate: A.u.b. uw gebruikersaccount activeren.
+    activated: Uw gebruikersaccount is geactiveerd!
+    activated_email: "{{who}}, uw gebruikersaccount is geactiveerd. U mag nu plugins toevoegen:"
+    account_created: Uw account is aangemaakt.
+    user_name: Gebruiker {{name}}
+    password: Wachtwoord {{password}}
+    visit_url: "Bezoek dit adres om uw gebruikersaacount te activeren:"
+  authlogic:
+    error_messages:
+      login_blank: mag niet leeg zijn
+      login_not_found: is niet geldig
+      login_invalid: moet gebruik alleen letters, cijfers, spaties en .- _ @ gelieve
+      consecutive_failed_logins_limit_exceeded: Opeenvolgende mislukte logins overschreden, account is uitgeschakeld
+      email_invalid: eruit moet zien als een e-mail adres.
+      password_blank: mag niet leeg zijn
+      password_invalid: is niet geldig
+      not_active: Uw account is niet actief
+      not_confirmed: Uw account is niet bevestigd
+      not_approved: Uw account is niet goedgekeurd
+      no_authentication_details: U heeft niet alle details voor authenticatie.
+    models:
+      user_session: UserSession
+    attributes:
+      user_session:
+        login: Gebruikersnaam
+        email: e-mail
+        password: Wachtwoord
+        remember_me: Onthoud mijn gegevens
+        incorrect: "Sorry, uw {{login_field}} of wachtwoord was niet juist."

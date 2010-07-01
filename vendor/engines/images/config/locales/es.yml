@@ -1,0 +1,44 @@
+es:
+  plugins:
+    refinery_images:
+      title: Imágenes
+      
+  no_file_chosen: Debe elegir un fiechero para cargar.
+  file_should_be_smaller_then_50mb: Los ficheros deben tener un tamaño menor que 50Mb
+  admin:
+    images:
+      form:
+        image: Imagen
+        use_current_image: Usar imagen actual
+        or: o
+        replace_image: Reemplazar imagen con esta otra...
+        current_image: Imagen actual
+      index:
+        create_new_image: Crear Imagen nueva
+        no_images_yet: No hay ninguna imagen.<br/>Pulse en "Crear Imagen nueva" para añadir su primera imagen.
+        view:
+          switch_to: Cambiar a vista de {{view_name}}
+          list: lista
+          grid: mosaico
+        search:
+          results_for: Resultados de la búsqueda '''{{query}}'''
+          no_results_found: No se han encontrado resultados
+      grid_view:
+        click_to_view: "Pulse para ver '{{title}}'<br/><em>Abre una nueva ventana</em>"
+        edit: Editar esta imagen
+        confirm_delete:
+          message: "¿Esta seguro de que desea eliminar la imagen ''{{title}}''?" 
+          title: Borrar esta imagen
+      list_view_image:
+        edit_this_image: Editar esta imagen
+        delete:
+          message: "¿Esta seguro de que desea eliminar la imagen ''{{title}}''?" 
+          title: Borrar esta imagen
+      insert:
+        existing_image: Imagen existente
+        new_image: Nueva imagen
+        previous: Previa
+        next: Siguiente
+        submit_insert: Insertar
+        or: o
+        cancel: Cancelar

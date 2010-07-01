@@ -7,7 +7,7 @@ gem 'mysql', :require => 'mysql'
 #gem 'sqlite3-ruby', :require => 'sqlite3'
 
 # Specify your favourite web server (only one).
-gem 'unicorn', :group => :development
+#gem 'unicorn', :group => :development
 #gem 'mongrel', :group => :development
 
 # Deploy with Capistrano
@@ -37,7 +37,7 @@ group :test do
   gem 'rspec-mocks',        RSPEC_VERSION, :require => 'rspec/mocks'
   gem 'rspec-rails',        RSPEC_VERSION
   gem 'factory_girl'
-  gem 'test-unit', '1.2.3'
+  gem 'test-unit', '= 1.2.3'
 
   gem 'cucumber-rails'
   gem 'capybara'

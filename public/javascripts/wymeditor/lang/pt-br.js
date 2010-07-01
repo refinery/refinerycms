@@ -1,6 +1,7 @@
-WYMeditor.STRINGS['pt-br'] = {
+WYMeditor.STRINGS['pt-BR'] = {
+  Bold: 'Negrito',
 	Strong:			 'Resaltar',
-	Emphasis:		 'Enfatizar',
+	Emphasis:		 'Itálico',
 	Superscript:		'Sobre escrito',
 	Subscript:		'Sub escrito ',
 	Ordered_List:	 'Lista ordenada',

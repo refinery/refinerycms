@@ -2,7 +2,7 @@ Feature: Manage Users
   In order to control who can access my website's backend
   As an administrator
   I want to create and manage users
-  
+
   Scenario: When there are no users, you are invited to create a user
     Given I have no users
     When I go to the home page

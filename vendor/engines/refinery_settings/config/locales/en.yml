@@ -1,6 +1,27 @@
 en:
+  activerecord:
+    models:
+      refinery_setting: Refinery setting
+    attributes:
+      refinery_setting:
+        name: Name
+        value: Value
+        restricted: Restricted
   admin:
     refinery_settings:
+      refinery_setting:
+        edit: 'Edit this setting'
+        confirm: 'Are you sure you want to remove this setting forever?'
+        remove: 'Remove this setting forever'
+      index:
+        new: Create new setting
+        empty_set: There are no settings yet.
+        create_first: "Click '{{link}}' to add your first setting."
+      form:
+        restart_may_be_in_order: "<strong>Please note</strong> that you may need to restart the website for this setting to take effect."
+        yes_make_this_setting_restricted: "Yes, make this setting restricted only to superusers."
+        help:
+          restricted: This makes the setting only visible and editable by users who are superusers (like you).
       help:
         activity_show_limit: This limits the number of items that can display in the Dashboard listing.
         analytics_page_code: This code activates Google Analytics tracking within your website. If the setting is left blank or set to UA-xxxxxx-x then this is disabled and no remote calls to Google Analytics are made.
@@ -19,3 +40,6 @@ en:
         use_google_ajax_libraries: If you want to use Google's AJAX CDN then set this to true.
         use_marketable_urls: Changes urls from /pages/about to /about and automatically manages conflicts with other plugins.
         use_resource_caching: Recommended to enable this in production mode as it bundles javascript assets and stylesheet assets into single file packages to reduce the number of web requests on your site and speed it up.
+  plugins:
+    refinery_settings:
+      title: Settings

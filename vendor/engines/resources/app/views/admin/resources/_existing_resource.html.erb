@@ -8,7 +8,7 @@
           <li<%= " class='linked'" if resource_linked %>>
             <%= link_to "#{resource.title} (#{resource.url})",
                         resource.url,
-                        :title => 'Link to this Resource',
+                        :title => t('.link_to_resource'),
                         :rel => resource.title,
                         :class => 'page_link',
                         :id => "resource_#{resource.id}" %>
@@ -22,7 +22,7 @@
              :locals => {
                :f => nil,
                :cancel_url => '',
-               :submit_button_text => 'Insert',
+               :submit_button_text => t('.submit_insert'),
                :hide_cancel => false,
                :hide_delete => true,
                :cancel_title => '',

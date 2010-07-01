@@ -1,0 +1,23 @@
+fr:
+  activerecord:
+    models:
+      refinery_setting: Paramêtre de Refinery
+    attributes:
+      refinery_setting:
+        name: Nom
+        value: Valeur
+  admin:
+    refinery_settings:
+      refinery_setting:
+        edit: 'Modifier ce paramètre'
+        confirm: 'Êtes vous sûr de vouloir supprimer ce paramètre pour toujours?'
+        remove: 'Supprimer ce paramêtre pour toujours'
+      index:
+        new: Créer un nouveau paramêtre
+        empty_set: "Il n'y a pas encore de paramètre."
+        create_first: "Cliquer '{{link}}' pour ajouter votre premier paramêtre."
+      form:
+        restart_may_be_in_order: "<strong>SVP noté</strong> que vous deverez peu-être redémmarer votre site web pour que les paramêtre puisse prendre effet."
+  plugins:
+    refinery_settings:
+      title: Paramètre

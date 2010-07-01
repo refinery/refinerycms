@@ -186,6 +186,7 @@ var wymeditor_boot_options = $.extend({
 
     $('.field.hide-overflow').removeClass('hide-overflow').css('height', 'auto');
   }
+  , lang: (typeof(I18n.locale) != "undefined" ? I18n.locale : 'en')
 }, custom_wymeditor_boot_options);
 
 // custom function added by us to hook into when all wymeditor instances on the page have finally loaded:
@@ -200,5 +201,6 @@ $(function()
     }
     $(this).hide();
   });
+
   wymeditor_inputs.wymeditor(wymeditor_boot_options);
 });

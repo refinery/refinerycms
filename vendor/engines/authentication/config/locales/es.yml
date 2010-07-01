@@ -1,0 +1,79 @@
+es:
+  authlogic:
+    error_messages:
+      login_blank: no puede estar en blanco
+      login_not_found: no es válido
+      login_invalid: debe utilizar sólo letras, números, espacios y .-_@
+      consecutive_failed_logins_limit_exceeded: El número de accesos no autorizados se ha superado, la cuenta ha sido cancelada.
+      email_invalid: no es una dirección de correo electrónico válida.
+      password_blank: no puede estar en blanco
+      password_invalid: no es válido
+      not_active: Su cuenta está desactivada
+      not_confirmed: Su cuenta no está confirmada
+      not_approved: Su cuenta no ha sido aprobada
+      no_authentication_details: Debe introducir sus datos de identificación.
+    models:
+      user_session: Sesión de usuario
+    attributes:
+      user_session:
+        login: login
+        email: email
+        password: contraseña
+        remember_me: Recordarme
+        incorrect: "Lo sentimos, su {{login_field}} o la contraseña son correctos."
+  plugins:
+    refinery_users:
+      title: Usuarios
+  admin:
+    users:
+      update:
+        cannot_remove_user_plugin_from_current_user: "No se puede eliminar el plugin 'Users' desde la cuenta actual"
+      form:
+        login: Nombre de usuario
+        email: Dirección de email
+        password: Contraseña
+        password_confirmation: Confirmar contraseña
+        plugin_access: Plugins habilitados
+        blank_password_keeps_current: Si deja el campo de la contraseña en blanco se mantendrá la contraseña que existiera anteriormente
+      index:
+        create_new_user: Crear usuario nuevo
+        no_users_yet:  No se ha creado ningún usuario todavía. Pulse en "Crear usuario nuevo" para añadir el primer usuario
+      user:
+        confirm_delete_message: "¿Seguro que quiere eliminar el usuario '{{who}}'?"
+        confirm_delete_title: Borrar este usuario permanentemente
+        edit_user: Editar usuario
+        email_user: Enviar email a este usuario
+        preview: ({{who}}) created {{created_at}}
+  sessions:
+    login_successful: Ha iniciado sesión correctamente.
+    login_failed: El password o el nombre de usuario es incorrecto.
+    logged_out: La sesión ha sido cerrada.
+    new:
+      login: Nombre usuario
+      log_in: Iniciar sesión
+      password: Contraseña
+      remember_me: Recordarme
+      cancel_log_in: Cancelar
+      or: o
+      forgot_password: He olvidado mi contraseña
+  users:
+    setup_website_name: "Lo primero es proporcionar un nombre para el sitio web.<br/><a href='{{link}}'>Pulse aquí</a> editar el nombre del sitio web"
+    signup_disabled: El registro de usuario ha sido deshabilitado.
+    new:
+      fill_form: Rellene el siguiente formulario con su información de usuario para comenzar.
+      sign_up: Registrarse
+      login: Nombre de usuario
+      email: Correo electrónico
+      password: Contraseña
+      password_confirmation: Confirmar contraseña
+    create:
+      welcome: Bienvenido a Refinery, {{who}}
+      signup_complete: "¡Registro correcto!"
+  user_mailer:
+    please_activate: Por favor, active la nueva cuenta.
+    activated: "!Su cuenta ha sido activada!"
+    activated_email: "{{who}}, su cuenta ha sido activada. Puede empezar a añadir sus plugins:"
+    account_created: Su cuenta ha sido creada.
+    user_name: Nombre de usuario {{name}}
+    password: Contraseña {{password}}
+    visit_url: "Visite esta dirección para activar su cuenta:"

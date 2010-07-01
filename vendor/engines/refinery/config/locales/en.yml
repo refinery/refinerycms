@@ -1,0 +1,59 @@
+en:
+  welcome:
+    there_are_no_users: "There are no users yet, so we'll set you up first."
+    remember_admin_location: "Remember your Refinery admin area is at:"
+    lets_start: "Alright let's get you setup so you can login..."
+    continue: "Continue..."
+  admin:
+    menu:
+      reorder_menu: Reorder menu
+      reorder_menu_done: "I'm done reordering the menu"
+    log_out: Log out
+    search: Search
+    search_submit: Go
+    search_results_for: "Search results for '{{query}}'"
+    no_results_found: "Sorry, no results found"
+    images:
+      existing_image:
+        submit_insert: Insert
+  refinery:
+    other: "Other {{what}}"
+    reorder: "Reorder {{what}}"
+    reorder_done: "Done Reordering {{what}}"
+    search_no_results: "Sorry, no results found."
+    crudify:
+      created: "{{what}} was successfully created."
+      updated: "{{what}} was successfully updated."
+      destroyed: "{{what}} was successfully destroyed"
+  shared:
+    site_bar:
+      switch_to_your_website: Switch to your website
+      switch_to_your_website_editor: Switch to your website editor
+    admin:
+      message:
+        close: Close
+      continue_editing:
+        save_and_continue_editing: "Save &amp; continue editing"
+      form_actions:
+        or: or
+        save: Save
+        or_cancel: or
+        cancel: Cancel
+        or_continue: or
+        cancel_lose_changes: "Cancelling will lose all changes you've made to this {{object_name}}"
+        delete: Delete
+      image_picker:
+        none_selected: "There is currently no {{what}} selected, please click here to add one."
+        remove_current: "Remove current {{what}}"
+        change: Click here to pick a image
+        image: image
+      resource_picker:
+        none_selected: "There is currently no {{what}} selected, please click here to add one."
+        current: "Current {{what}}"
+        download_current: "Download current {{what}}"
+        opens_in_new_window: Opens in a new window
+        remove_current: "Remove current {{what}}"
+        resource: resource
+    message:
+      close: Close
+      close_this_message: Close this message

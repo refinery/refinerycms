@@ -1,0 +1,53 @@
+fr:
+  plugins:
+    refinery_pages:
+      title: Pages
+  admin:
+    pages:
+      form_advanced_options:
+        title: Titre
+        create_content_section: Créer une section de contenu
+        delete_content_section: Supprimer une section de contenu
+        advanced_options: "les Options avancées"
+        explain_page_different_title: "Si vous voulez utilisé un titre différent de celui qui s'affiche dans le menu et de titre du navigateur, entrez-le ici."
+        redirect_to_first_child: "Cochez cette case si vous souhaitez que le visiteur soit redirigé vers la première sous-page lorce que cette page est sélectionnée."
+        parent_id_title: Origine
+        custom_title: Titre personnalisé
+        title_type: "Type:"
+        title_types:
+          none: Aucun
+          text: Texte
+          image: Image
+        custom_url: URL personnalisée
+        custom_url_explanation: "Entrez une URL, si cette page est un lien vers un site externe ou une ressource existante, par exemple une page de contact. <br/> Note: Cette URL doit pointer vers un emplacement qui existe déjà; une nouvelle page ne sera pas créé."
+        draft: Brouillon
+        show_in_menu_title: Afficher dans le menu
+        show_in_menu_description: Cochez cette case si la page doit apparaître dans le menu du site
+        draft: Brouillon
+        save_as_draft: Enregistrer comme un Brouillon
+        save: Enregistrer
+        cancel: Annuler
+      form_advanced_options_seo:
+        seo: Search Engine Optimization
+        seo_override_title: Titre du navigateur
+        seo_override_title_help: "Si vous voulez remplacer le titre du navigateur par défaut, le faite le ici."
+        meta_keywords_title: Meta keywords
+        meta_description_help: Saisissez les mots clés qui ont relation avec le contenu de cette page. Séparez les mots clés par une virgule.
+        meta_description_title: Meta description
+        meta_description_help: Entrez un deux ou trois phrases concises décrivant ce que cette page contient.
+        js:
+          content_section:
+            create: Créer une section de contenu
+            already_exists: "Une section de contenu avec ce titre existe déjà,  s'il vous plaît choisissez un autre nom"
+            title_empty: "Vous n'avez pas entré de titre pour la section, s'il vous plaît entrer un."
+            confirm_delete: "Cela supprimera la section et tout le contenu qu'elle contient. Êtes vous sûr de vouloir faire ça?"
+      index:
+        create_new_page: Créer une nouvelle page
+        reorder_pages: Réordonner les Pages
+        reorder_pages_done: Réorganisation des 'Pages' terminer
+        sorry_no_results: Désolé! aucun résultat.
+        no_pages_yet: "Il n'y a pas encore pages. Cliquez sur 'Créer une nouvelle page' pour ajouter votre première page."
+  activerecord:
+    attributes:
+      page:
+        skip_to_first_child: "Skip to first child?"

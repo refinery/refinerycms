@@ -8,7 +8,9 @@
       <meta http-equiv='X-UA-Compatible' content='IE-EmulateIE7' />
     <% end %>
     <title>WYMeditor</title>
-    <%= stylesheet_link_tag "wymeditor/skins/refinery/wymiframe", "#{"/theme/stylesheets/" if RefinerySetting[:theme].present?}formatting", "theme", :media => "all" %>
+    <%= stylesheet_link_tag "wymeditor/skins/refinery/wymiframe", :media => "all" %>
+    <%= stylesheet_link_tag "#{"/theme/stylesheets/" if RefinerySetting[:theme].present?}formatting", :media => "all" %>
+    <%= stylesheet_link_tag "theme", :media => "all" %>
   </head>
   <body class="wym_iframe<%= " #{params[:id]}" if params[:id].present? %>">
   </body>

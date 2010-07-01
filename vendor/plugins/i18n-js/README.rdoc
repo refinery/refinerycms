@@ -1,0 +1,249 @@
+= I18n for JavaScript
+
+It's a small library to provide the Rails I18n translations on the Javascript.
+
+This library has been tested on:
+
+* Safari 4 (Mac)
+* Firefox 3.6 (Mac)
+* Opera 10 (Mac)
+* IE6+ (Mac Parallels)
+
+== Usage
+
+=== Setting up
+
+Run <tt>rake i18n:setup</tt> to copy <tt>i18n.js</tt> to your javascript directory and <tt>i18n-js.yml</tt> to your config folder (if not already present). Then you're ready to go!
+
+Every time your application is started, the translations messages defined in your configuration file will be generated.
+
+To speed up the development process, you can automatically export your messages by adding something
+like this to your <tt>ApplicationController</tt>:
+
+	class ApplicationController < ActionController::Base
+	  before_filter :export_i18n_messages
+
+	  private
+	    def export_i18n_messages
+	      SimplesIdeias::I18n.export! if Rails.env.development?
+	    end
+	end
+
+==== Configuration
+
+The first time you will restart your application when using i18n-js, it will create you the default configuration file at <tt>#{Rails.root}/config/i18n-js.yml</tt>
+
+Messages files can also be customized, you can even get more files generated to different folders and with different translations to best suit your needs.
+
+Examples:
+
+  translations:
+  - file: 'public/javascripts/path-to-your-messages-file.js'
+    only: '*.date.formats'
+  - file: 'public/javascripts/path-to-your-second-file.js'
+    only: ['*.activerecord', '*.admin.*.title']
+
+If <tt>only</tt> is omitted all the translations will be saved
+
+To find more examples on how to use the configuration file please refer to the tests.
+
+=== On the Javascript
+
+Set your locale is easy as
+
+  I18n.defaultLocale = "pt-BR";
+  I18n.locale = "pt-BR";
+  I18n.currentLocale();
+  // pt-BR
+
+You can use it to translate your messages:
+
+  I18n.t("some.scoped.translation");
+
+You can also interpolate values:
+
+  I18n.t("hello", {name: "John Doe"});
+
+The sample above will assume that you have the following translations in your
+<tt>config/locales/*.yml</tt>:
+
+  en:
+    hello: "Hello {{name}}!"
+
+You can set default values for missing scopes:
+
+  // simple translation
+  I18n.t("some.missing.scope", {defaultValue: "A default message"});
+
+  // with interpolation
+  I18n.t("noun", {defaultValue: "I'm a {{noun}}", noun: "Mac"});
+
+Pluralization is possible as well:
+
+  I18n.t("inbox.counting", {count: 10}); // You have 10 messages
+
+The sample above expects the following translation:
+
+  en:
+    inbox:
+      counting:
+        one: You have 1 new message
+        other: You have {{count}} new messages
+        zero: You have no messages
+
+<b>NOTE:</b> Rais I18n recognizes the +zero+ option.
+
+If you're using the same scope over and over again, you may use the +scope+ option.
+
+  var options = {scope: "activerecord.attributes.user"};
+
+  I18n.t("name", options);
+  I18n.t("email", options);
+  I18n.t("username", options);
+
+You also provide an array as scope.
+
+  // use the greetings.hello scope
+  I18n.t(["greetings", "hello"]);
+
+==== Number formatting
+
+Similar to Rails helpers, you have localize number and currency formatting.
+
+  I18n.l("currency", 1990.99);
+  // $1,990.99
+
+  I18n.l("number", 1990.99);
+  // 1,990.99
+
+  I18n.l("percentage", 123.45);
+  // 123.450%
+
+To have more control over number formatting, you can use the <tt>I18n.toNumber</tt>, <tt>I18n.toPercentage</tt> and <tt>I18n.toCurrency</tt> functions.
+
+  I18n.toNumber(1000);     // 1,000.000
+  I18n.toCurrency(1000);   // $1,000.00
+  I18n.toPercentage(100);  // 100.000%
+
+The +toNumber+ and +toPercentage+ functions accept the following options:
+
+* +precision+: defaults to 3
+* +separator+: defaults to <tt>.</tt>
+* +delimiter+: defaults to <tt>,</tt>
+
+See some number formatting examples:
+
+  I18n.toNumber(1000, {precision: 0});                   // 1,000
+  I18n.toNumber(1000, {delimiter: ".", separator: ","}); // 1.000,000
+  I18n.toNumber(1000, {delimiter: ".", precision: 0});   // 1.000
+
+The +toCurrency+ function accepts the following options:
+
+* +precision+: sets the level of precision
+* +separator+: sets the separator between the units
+* +delimiter+: sets the thousands delimiter
+* +format+: sets the format of the output string
+* +unit+: sets the denomination of the currency
+
+You can provide only the options you want to override:
+
+  I18n.toCurrency(1000, {precision: 0}); /$1,000/
+
+==== Date formatting
+
+  // accepted formats
+  I18n.l("date.formats.short", "2009-09-18");           // yyyy-mm-dd
+  I18n.l("time.formats.short", "2009-09-18 23:12:43");  // yyyy-mm-dd hh:mm:ss
+  I18n.l("time.formats.short", "2009-11-09T18:10:34");  // JSON format with local Timezone (part of ISO-8601)
+  I18n.l("time.formats.short", "2009-11-09T18:10:34Z"); // JSON format in UTC (part of ISO-8601)
+  I18n.l("date.formats.short", 1251862029000);          // Epoch time
+  I18n.l("date.formats.short", "09/18/2009");           // mm/dd/yyyy
+  I18n.l("date.formats.short", (new Date()));           // Date object
+
+If you prefer, you can use the <tt>I18n.strftime</tt> function to format dates.
+
+  var date = new Date();
+  I18n.strftime(date, "%d/%m/%Y");
+
+The accepted formats are:
+
+  %a  - The abbreviated weekday name (Sun)
+  %A  - The full weekday name (Sunday)
+  %b  - The abbreviated month name (Jan)
+  %B  - The full month name (January)
+  %c  - The preferred local date and time representation
+  %d  - Day of the month (01..31)
+  %-d - Day of the month (1..31)
+  %H  - Hour of the day, 24-hour clock (00..23)
+  %-H - Hour of the day, 24-hour clock (0..23)
+  %I  - Hour of the day, 12-hour clock (01..12)
+  %-I - Hour of the day, 12-hour clock (1..12)
+  %m  - Month of the year (01..12)
+  %-m - Month of the year (1..12)
+  %M  - Minute of the hour (00..59)
+  %-M - Minute of the hour (0..59)
+  %p  - Meridian indicator (AM  or  PM)
+  %S  - Second of the minute (00..60)
+  %-S - Second of the minute (0..60)
+  %w  - Day of the week (Sunday is 0, 0..6)
+  %y  - Year without a century (00..99)
+  %-y - Year without a century (0..99)
+  %Y  - Year with century
+  %z  - Timezone offset (+0545)
+
+Check out <tt>vendor/plugins/i18n-js/test/i18n-test.js</tt> for more examples!
+
+== Using I18nJS with other languages (Python, PHP, ...)
+
+The JavaScript library is language agnostic; so you can use it with PHP, Python, [you favorite language here].
+The only requirement is that you need to set the +translations+ attribute like following:
+
+  I18n.translations = {};
+
+  I18n.translations["en"] = {
+    message: "Some special message for you"
+  }
+
+  I18n.translations["pt"] = {
+    message: "Uma mensagem especial para você"
+  }
+
+== Maintainer
+
+* Nando Vieira - http://simplesideias.com.br
+* Sébastien Grosjean - http://github.com/ZenCocoon
+
+== Contributing
+
+Once you've made your great commits:
+
+1. Fork[http://help.github.com/forking/] I18n-JS
+2. Create a topic branch - <tt>git checkout -b my_branch</tt>
+3. Push to your branch - <tt>git push origin my_branch</tt>
+4. Create an Issue[http://github.com/fnando/i18n-js/issues] with a link to your branch
+5. That's it!
+
+Please respect the indentation rules. And use tabs, not spaces (on the JavaScript).
+
+== License
+
+(The MIT License)
+
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+'Software'), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.

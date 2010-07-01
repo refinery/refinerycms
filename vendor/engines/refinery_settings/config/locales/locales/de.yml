@@ -1,0 +1,23 @@
+de:
+  activerecord:
+    models:
+      refinery_setting: Refinery Einstellungen
+    attributes:
+      refinery_setting:
+        name: Name
+        value: Wert
+  admin:
+    refinery_settings:
+      refinery_setting:
+        edit: 'Diese Einstellung bearbeiten'
+        confirm: 'Sind Sie sicher, dass Sie diese Einstellung für immer löschen möchten?'
+        remove: 'Diese Einstellung für immer löschen'
+      index:
+        new: Neue Einstellung erstellen
+        empty_set: Es gibt noch keine Einstellungen.
+        create_first: "Klicken Sie auf '{{link}}' um Ihre erste Einstellung anzulegen."
+      form:
+        restart_may_be_in_order: "<strong>Bitte beachten Sie</strong>, dass Sie Ihre Website eventuell neu starten müssen, damit die Einstellungen angwendet werden."
+  plugins:
+    refinery_settings:
+      title: Einstellungen

@@ -156,10 +156,14 @@ module Refinery::ApplicationHelper
 
   # Determine whether the supplied page is the currently open page according to Rails.
   def selected_page?(page)
+    # ensure we match the path without the locale.
+    path = request.path
+    path = path.split("/#{I18n.locale}").last if ::Refinery::I18n.enabled?
+
     current_page?(page) or
-      (request.path =~ Regexp.new(page.menu_match) if page.menu_match.present?) or
-      (request.path == page.link_url) or
-      (request.path == page.nested_path)
+      (path =~ Regexp.new(page.menu_match) if page.menu_match.present?) or
+      (path == page.link_url) or
+      (path == page.nested_path)
   end
 
   # Old deprecated function. TODO: Remove
@@ -169,13 +173,13 @@ module Refinery::ApplicationHelper
 
   # Generates the link to determine where the site bar switch button returns to.
   def site_bar_switch_link
-    link_to_if(admin?, "Switch to your website",
+    link_to_if(admin?, t('.switch_to_your_website'),
               (if session.keys.include?(:website_return_to) and session[:website_return_to].present?
                 session[:website_return_to]
                else
                 root_url(:only_path => true)
                end)) do
-      link_to "Switch to your website editor",
+      link_to t('.switch_to_your_website_editor'),
               (if session.keys.include?(:refinery_return_to) and session[:refinery_return_to].present?
                 session[:refinery_return_to]
                elsif defined?(@page) and @page.present? and !@page.home?

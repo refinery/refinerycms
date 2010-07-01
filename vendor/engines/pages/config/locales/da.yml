@@ -1,0 +1,53 @@
+da:
+  plugins:
+    refinery_pages:
+      title: Sider
+  admin:
+    pages:
+      form_advanced_options:
+        title: Titel
+        create_content_section: Tilføj indholdselement
+        delete_content_section: Slet indholdselement
+        advanced_options: Avancerede indstillinger
+        explain_page_different_title: Hvis siden skal have en anden titel end i menuen og browseroverskriften.
+        redirect_to_first_child: "Afkryds hvis besøgende skal videresendes til sidens første underside, når siden vælges."
+        parent_id_title: Overordnet side
+        custom_title: Tilpas titel
+        title_type: "Type:"
+        title_types:
+          none: Ingen
+          text: Tekst
+          image: Billede
+        custom_url: Tilpas URL
+        custom_url_explanation: "Indtast en URL hvis siden linker til et eksternt site eller til en allerede eksisterende resource, fx kontakt siden. <br/>Bemærk: URLen skal pege på en adresse der findes i forvejen. Der bliver ikke oprettet en ny adresse."
+        draft: Kladde
+        show_in_menu_title: Vis i menuen
+        show_in_menu_description: Afkryds hvis siden skal vises i menuen på sitet
+        draft: Kladde
+        save_as_draft: Gem som kladde
+        save: Gem
+        cancel: Annullér
+      form_advanced_options_seo:
+        seo: Søgemaskineoptimering
+        seo_override_title: Browser titel
+        seo_override_title_help: Hvis du vil tilpasse browser titlen.
+        meta_keywords_title: Meta keywords
+        meta_description_help: Indtast 5-10 nøgleord der er relaterede til siden. Adskil nøgleordene med kommaer.
+        meta_description_title: Meta description
+        meta_description_help: Indtast to eller tre sætninger, der beskriver siden.
+        js:
+          content_section:
+            create: Opret indholdselement
+            already_exists: Der findes allerede et indholdselement med samme titel. Vælg venligst en anden titel.
+            title_empty: Indtast venligst en titel for indholdselementet.
+            confirm_delete: Indholdselementet {{section_name}} slettes når siden gemmes, og alt indhold indtastet i elementet vil blive slettet. Er du sikker?
+      index:
+        create_new_page: Tilføj en ny side
+        reorder_pages: Redigér rækkefølgen af siderne
+        reorder_pages_done: Gem rækkefølgen
+        sorry_no_results: Desværre, din søgning gav ingen resultater.
+        no_pages_yet: Der er ingen sider endnu. Klik på "Tilføj en ny side" for at oprette den første."
+  activerecord:
+    attributes:
+      page:
+        skip_to_first_child: "Spring til første underside?"

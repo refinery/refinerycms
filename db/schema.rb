@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100629081543) do
+ActiveRecord::Schema.define(:version => 20100701053151) do
 
   create_table "images", :force => true do |t|
     t.string   "image_mime_type"
@@ -123,22 +123,21 @@ ActiveRecord::Schema.define(:version => 20100629081543) do
 
   create_table "user_plugins", :force => true do |t|
     t.integer "user_id"
-    t.string  "title"
+    t.string  "name"
     t.integer "position"
   end
 
-  add_index "user_plugins", ["title"], :name => "index_user_plugins_on_title"
-  add_index "user_plugins", ["user_id", "title"], :name => "index_unique_user_plugins", :unique => true
+  add_index "user_plugins", ["name"], :name => "index_user_plugins_on_name"
+  add_index "user_plugins", ["user_id", "name"], :name => "index_unique_user_plugins", :unique => true
 
   create_table "users", :force => true do |t|
-    t.string   "login",                                :null => false
-    t.string   "email",                                :null => false
-    t.string   "crypted_password",                     :null => false
-    t.string   "password_salt",                        :null => false
+    t.string   "login",             :null => false
+    t.string   "email",             :null => false
+    t.string   "crypted_password",  :null => false
+    t.string   "password_salt",     :null => false
     t.string   "persistence_token"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "superuser",         :default => false
     t.string   "perishable_token"
   end
 

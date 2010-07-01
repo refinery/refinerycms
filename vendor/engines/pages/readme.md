@@ -98,10 +98,16 @@ Now edit ``public/javascripts/admin.js``. We're going to need to tell WYMeditor 
 
 Currently your ``admin.js`` file will have something like this
 
-    var wymeditorClassesItems = [
-        {name: 'text-align', rules:['left', 'center', 'right', 'justify'], join: '-'}
-     ,  {name: 'image-align', rules:['left', 'right'], join: '-'}
-     ,  {name: 'font-size', rules:['small','normal','large'], join: '-'}
+    var custom_wymeditor_boot_options = {
+
+    };
+
+If we open ``public/javascripts/boot_wym.js`` we can see this inside which is the default:
+
+    , classesItems: [
+      {name: 'text-align', rules:['left', 'center', 'right', 'justify'], join: '-'}
+      , {name: 'image-align', rules:['left', 'right'], join: '-'}
+      , {name: 'font-size', rules:['small', 'normal', 'large'], join: '-'}
     ]
 
 Let's just breakdown a single WYMeditor line and understand it:
@@ -116,12 +122,14 @@ Let's just breakdown a single WYMeditor line and understand it:
 
 So going back to our text highlighting style above, we make the new style show up in the editor by changing our ``admin.js`` file to:
 
-    var wymeditorClassesItems = [
-        {name: 'text-align', rules:['left', 'center', 'right', 'justify'], join: '-'}
-     ,  {name: 'image-align', rules:['left', 'right'], join: '-'}
-     ,  {name: 'font-size', rules:['small','normal','large'], join: '-'}
-     ,  {name: 'text-highlight', rules:['yellow'], join: '-'}
-    ]
+    var custom_wymeditor_boot_options = {
+      classesItems: [
+        {name: 'text-align', rules:['left', 'center', 'right', 'justify'], join: '-'}
+        , {name: 'image-align', rules:['left', 'right'], join: '-'}
+        , {name: 'font-size', rules:['small','normal','large'], join: '-'}
+        , {name: 'text-highlight', rules:['yellow'], join: '-'}
+      ]
+    }
 
 ### Dialogs that show from WYMeditor
 

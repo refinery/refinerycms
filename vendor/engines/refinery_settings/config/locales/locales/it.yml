@@ -1,0 +1,23 @@
+it:
+  activerecord:
+    models:
+      refinery_setting: Refinery regolazione
+    attributes:
+      refinery_setting:
+        name: Nome
+        value: Valore
+  admin:
+    refinery_settings:
+      refinery_setting:
+        edit: 'Modifica questa impostazione'
+        confirm: 'Sei sicuro di voler rimuovere questa impostazione per sempre?'
+        remove: 'Rimuovere questa impostazione per sempre'
+      index:
+        new: Crea nuova impostazione
+        empty_set: Non ci sono ancora le impostazioni.
+        create_first: Fare clic "{{link}}"per aggiungere la vostra impostazione.
+      form:
+        restart_may_be_in_order: "<strong>  Si prega di notare</strong> che potrebbe essere necessario riavviare il sito web per questa impostazione abbia effetto."
+  plugins:
+    refinery_settings:
+      title: Impostazioni

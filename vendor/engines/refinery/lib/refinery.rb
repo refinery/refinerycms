@@ -21,12 +21,30 @@ module Refinery
     def base_cache_key
       @base_cache_key ||= "refinery"
     end
+
+    def version
+      ::Refinery::Version.to_s
+    end
+  end
+
+  class Version
+    MAJOR = 0
+    MINOR = 9
+    TINY = 7
+    BUILD = 'dev'
+
+    STRING = [MAJOR, MINOR, TINY, BUILD].compact.join('.')
+
+    def self.to_s
+      STRING
+    end
   end
 
 end
 
 Refinery::Plugin.register do |plugin|
   plugin.title = "Refinery"
+  plugin.name = "refinery_core"
   plugin.description = "Core refinery plugin"
   plugin.version = 1.0
   plugin.hide_from_menu = true

@@ -1,6 +1,7 @@
 module Admin::DashboardHelper
 
   def activity_message_for(record)
+    #TODO Update translation & translate message properly
     if (activity = Refinery::Plugins.active.find_activity_by_model(record.class)).present? and activity.title.present?
       # work out which action occured
       action = record.updated_at.eql?(record.created_at) ? "created" : "updated"

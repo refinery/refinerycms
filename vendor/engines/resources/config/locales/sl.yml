@@ -1,0 +1,33 @@
+sl:
+  plugins:
+    refinery_resources:
+      title: Datoteke
+  must_choose_file: Izbrati morate datoteko ki jo želite prenesti
+  file_should_be_smaller_than_max_file_size: Velikost datoteke mora biti manjša od {{max_file_size}}
+  admin:
+    resources:
+      form:
+        file_to_upload: Datoteka za prenos
+        download_current: Prenesi tretnutno datoteko
+        or: ali
+        replace: " jo zamenjaj z ..."
+      resource:
+        download: Prenesi datoteko ({{size}})
+        edit: Uredi datoteko
+        delete:
+          message: Ali ste prepričani da želite odstraniti '{{title}}'?
+          title: Odstrani datoteko
+      index:
+        upload_new: Prenesi Novo Datoteko
+        search_results: Iskalni rezultati za '{{results}}'
+        search_no_results: Oprostite! Ni bilo zadetkov.
+        no_files_yet: Trenutno še ni nobene datoteke. Za prenos prve datoteke kliknite "Prenesi Novo Datoteko".
+      insert:
+        existing_file: Obstoječo Datoteko
+        new: Novo Datoteko
+        link_to_resource: 'Vzpostavi povezavo to te Datoteke'
+        previous: Prejšno
+        next: Naslednjo
+        submit_insert: Vstavi
+        or: ali
+        cancel: Prekliči

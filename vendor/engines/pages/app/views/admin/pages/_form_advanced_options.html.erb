@@ -1,12 +1,12 @@
 <div id='more_options_field'>
   <p>
-    <%= link_to "Advanced Options", "#",
+    <%= link_to t('.advanced_options'), "#",
                 :id => 'toggle_advanced_options',
-                :rel => 'Click to access meta tag settings and menu options' %>
+                :title => t('.toggle_advanced_options') %>
   </p>
   <span id='draft_field'>
     <%= f.check_box :draft %>
-    <%= f.label :draft, "Save as Draft", :class => "stripped" %>
+    <%= f.label :draft, t('.save_as_draft'), :class => "stripped" %>
   </span>
 </div>
 <div id='more_options' style="display:none;">
@@ -14,19 +14,19 @@
     <h2>Page Options</h2>
     <div class='field'>
       <span class='label_with_help'>
-        <%= f.label :parent_id, "Parent page" %>
-        <%= refinery_help_tag 'You can put a page under another page by selecting it in the list. If you want this page to be a top-level page, just leave it blank.' %>
+        <%= f.label :parent_id, t('.parent_page') %>
+        <%= refinery_help_tag t('.parent_page_help') %>
       </span>
       <%= f.collection_select :parent_id, @pages_for_parents_list, :id, :indented_title, {:include_blank => true}, :class => 'widest' %>
     </div>
     <div class='field'>
       <span class='label_with_help'>
-        <%= label_tag :custom_title %>
-        <%= refinery_help_tag "If you want the page to have a different title than the one that shows in the menu then select 'Text' and enter it here." %>
+        <%= label_tag :custom_title, t('.custom_title') %>
+        <%= refinery_help_tag t('.custom_title_help') %>
       </span>
       <% %w(none text).each do |type| %>
-        <%= f.radio_button :custom_title_type, "#{type}" %>
-        <%= label_tag "page_custom_title_type_#{type}", "#{type.titleize}", :class => "stripped" %>
+        <%= f.radio_button :custom_title_type, type %>
+        <%= label_tag "page_custom_title_type_#{type}", t(".title_types.#{type.downcase.gsub(" ", "_")}"), :class => "stripped" %>
       <% end %>
       <div id='custom_title_none'></div>
       <div id='custom_title_text' style='display: <%= @page.custom_title_type == 'text' ? 'block' : 'none' %>'>
@@ -35,27 +35,26 @@
     </div>
     <div class='field'>
       <span class='label_with_help'>
-        <%= label_tag :skip_to_first_child?, "Skip top-level page" %>
-        <%= refinery_help_tag 'This option makes this page link to the first page underneath. This can be useful when grouping pages together.' %>
+        <%= f.label :skip_to_first_child?, t('.skip_to_first_child') %>
+        <%= refinery_help_tag t('.skip_to_first_child_help') %>
       </span>
       <%= f.check_box :skip_to_first_child %>
-      <%= f.label :skip_to_first_child, "Redirect visitors to the first sub-level page.", :class => "stripped" %>
+      <%= f.label :skip_to_first_child, t('.skip_to_first_child_label'), :class => "stripped" %>
     </div>
     <div class='field'>
       <span class='label_with_help'>
-        <%= f.label :link_url, "Forward this page to another website or page" %>
-        <%= refinery_help_tag 'If you want this page to go to another website or page when you click this page in the menu, enter a URL. e.g. http://google.com otherwise leave it blank' %>
+        <%= f.label :link_url, t('.link_url') %>
+        <%= refinery_help_tag t('.link_url_help') %>
       </span>
       <%= f.text_field :link_url, :class => 'widest' %>
     </div>
     <div class='field'>
       <span class='label_with_help'>
-        <%= f.label :show_in_menu, "Show in menu", :id => 'page_show_in_menu_heading' %>
-        <%= refinery_help_tag "Uncheck this box if you want to remove a page from your site menu.
-                               This can be handy if you have a page you want to link people to directly but don't want to show the page in the menu" %>
+        <%= f.label :show_in_menu, t('.show_in_menu_title'), :id => 'page_show_in_menu_heading' %>
+        <%= refinery_help_tag t('.show_in_menu_help') %>
       </span>
       <%= f.check_box :show_in_menu %>
-      <%= f.label :show_in_menu, "Display this page in the site menu", :class => "stripped" %>
+      <%= f.label :show_in_menu, t('.show_in_menu_description'), :class => "stripped" %>
     </div>
   </div>
 

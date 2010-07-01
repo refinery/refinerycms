@@ -1,0 +1,20 @@
+en:
+  plugins:
+    refinery_dashboard:
+      title: Dashboard
+  admin:
+    dashboard:
+      index:
+        quick_tasks: Quick tasks
+        add_a_new_page: Add a new page
+        update_a_page: Update a page
+        upload_a_image: Upload a image
+        change_language: Change Language
+        see_home_page: See home page
+      recent_activity:
+        latest_activity: Latest activity
+        see: "See '{{what}}'"
+  updated: updated
+  created: created
+  ago: "{{time}} ago"
+  see: See
