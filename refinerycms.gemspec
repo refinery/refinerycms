@@ -302,6 +302,7 @@ Gem::Specification.new do |s|
     'public/wymeditor/GPL-license.txt',
     'public/wymeditor/MIT-license.txt',
     'public/wymeditor/README',
+    'script/cucumber',
     'script/rails',
     'test/files',
     'test/files/car-wallpapers19.jpg',

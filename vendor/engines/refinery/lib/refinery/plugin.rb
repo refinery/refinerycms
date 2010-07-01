@@ -25,8 +25,7 @@ module Refinery
       Object.const_set(klass_name.to_sym, klass)
     end
 
-    attr_accessor :title, :version, :description, :url, :menu_match, :plugin_activity, :directory, :hide_from_menu, :always_allow_access, :pathname,
-                  :dashboard
+    attr_accessor :title, :version, :description, :url, :menu_match, :plugin_activity, :directory, :hide_from_menu, :always_allow_access, :pathname, :dashboard
 
     def initialize
       # save the pathname to where this plugin is.
@@ -54,16 +53,16 @@ module Refinery
       @dashboard ||= false
     end
 
+    def dashboard?
+      @dashboard ||= false
+    end
+
     def hide_from_menu
       @hide_from_menu
     end
 
     def highlighted?(params)
-      (params[:controller] =~ self.menu_match) or (self.dashboard? and params[:action] == 'error_404')
-    end
-
-    def menu_match
-      @menu_match ||= /admin\/#{self.title.gsub(" ", "_").downcase}$/
+      params[:controller] =~ self.menu_match
     end
 
     def url
