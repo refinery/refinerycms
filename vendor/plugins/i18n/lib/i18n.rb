@@ -25,7 +25,7 @@ class Refinery::I18n
     end
 
     def load_refinery_locales!
-      load_locales Refinery.root.join "vendor", "plugins", "*", "config", "locales", "*.yml"
+      load_locales Refinery.root.join "vendor", "engines", "*", "config", "locales", "*.yml"
     end
 
     def load_app_locales!

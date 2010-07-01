@@ -22,10 +22,6 @@ Refinerycms::Application.configure do
   # In production, Apache or nginx will already do this
   config.serve_static_assets = false
 
-# Set to true in order to use Amazon's Simple Storage Service on your production machine
-# instead of the default file system for resources and images
-# Make sure to your bucket info is correct in amazon_s3.yml
-Refinery.s3_backend = false
   # Enable serving of images, stylesheets, and javascripts from an asset server
   # config.action_controller.asset_host = "http://assets.example.com"
 
@@ -35,3 +31,8 @@ Refinery.s3_backend = false
   # Enable threaded mode
   # config.threadsafe!
 end
+
+# Set to true in order to use Amazon's Simple Storage Service on your production machine
+# instead of the default file system for resources and images
+# Make sure to your bucket info is correct in amazon_s3.yml
+Refinery.s3_backend = false
