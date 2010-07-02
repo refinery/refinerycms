@@ -220,7 +220,7 @@ end
 
 # Login stuff
 Given %r`not logged in$` do
-  s = UserSession.destroy
+  visit logout_path
 end
 
 Given %r`(?:log|am logged) in as "([^\"]+)"$` do |login|

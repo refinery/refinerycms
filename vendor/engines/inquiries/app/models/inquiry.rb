@@ -46,12 +46,12 @@ protected
   # which is based off http://snook.ca/archives/other/effective_blog_comment_spam_blocker
 
   def score_for_body_links
-    link_count = self.message.scan(/http:/).size
+    link_count = self.message.to_s.scan(/http:/).size
     link_count > 2 ? -link_count : 2
   end
 
   def score_for_body_length
-    if self.message.length > 20 and self.message.scan(/http:/).size.zero?
+    if self.message.to_s.length > 20 and self.message.to_s.scan(/http:/).size.zero?
       2
     else
       -1
@@ -87,20 +87,20 @@ protected
     current_score = 0
 
     regex = /http:\/\/\S*(\.html|\.info|\?|&|free)/i
-    current_score =- (1 * message.scan(regex).size)
+    current_score =- (1 * message.to_s.scan(regex).size)
   end
 
   def score_for_suspect_tld
     regex = /http:\/\/\S*\.(de|pl|cn)/i
-    message.scan(regex).size * -1
+    message.to_s.scan(regex).size * -1
   end
 
   def score_for_lame_body_start
-    message.strip =~ /^(interesting|sorry|nice|cool)/i ? -10 : 0
+    message.to_s.strip =~ /^(interesting|sorry|nice|cool)/i ? -10 : 0
   end
 
   def score_for_author_link
-    name.scan(/http:/).size * -2
+    name.to_s.scan(/http:/).size * -2
   end
 
   def score_for_same_body
@@ -111,7 +111,7 @@ protected
     current_score = 0
 
     [name, message, phone, email].each do |field|
-      field.scan(/[bcdfghjklmnpqrstvwxz]{5,}/).each do |run|
+      field.to_s.scan(/[bcdfghjklmnpqrstvwxz]{5,}/).each do |run|
         current_score =- run.size - 4
       end
     end
