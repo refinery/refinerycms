@@ -160,6 +160,7 @@ This will pull in all of the updated files in the project and may result in some
 
 * Collect inquiries from a contact form
 * Manage your inquiries and be notified when new ones come in
+* Checks new inquiries for spam
 
 ### [News](http://github.com/resolve/refinerycms-news)
 
