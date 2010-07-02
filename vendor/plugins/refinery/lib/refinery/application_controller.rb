@@ -45,7 +45,7 @@ class Refinery::ApplicationController < ActionController::Base
   end
 
   def just_installed?
-    !User.exists?
+    Role[:refinery].users.empty?
   end
 
   def local_request?
