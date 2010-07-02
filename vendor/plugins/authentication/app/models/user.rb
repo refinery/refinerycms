@@ -59,7 +59,9 @@ class User < ActiveRecord::Base
   end
 
   def add_role(role_to_add)
-    roles << Role[role_to_add]
+    unless self.has_role?(role = Role[role_to_add])
+      roles << role
+    end
   end
 
   def has_role?(role)
