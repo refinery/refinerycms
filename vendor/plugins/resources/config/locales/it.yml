@@ -1,6 +1,6 @@
 it:
   plugins:
-    refinery_resources:
+    refinery_files:
       title: Risorse
   must_choose_file: Devi scegliere un file da caricare
   file_should_be_smaller_than_max_file_size: I file devono essere inferiori a {{max_file_size}} in termini di dimensioni
@@ -11,6 +11,7 @@ it:
         download_current: Scarica il file corrente
         or: o
         replace: ", sostituirlo con questo..."
+        maximum_file_size: "The maximum file size is {{megabytes}} megabytes."
       resource:
         download: Scarica il file corrente ({{size}})
         edit: Modifica questo file

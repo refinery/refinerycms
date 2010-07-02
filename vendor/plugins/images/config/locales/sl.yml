@@ -13,6 +13,7 @@ sl:
         or: ali
         replace_image: Jo zamenjaj s tole ...
         current_image: Trenutna Slika
+        maximum_image_size: "The maximum image size is {{megabytes}} megabytes."
       index:
         create_new_image: Ustvari Novo Sliko
         no_images_yet: Trenutno še ni nobene slike. Za prenos prve slike kliknite "Ustvari Novo Sliko".
@@ -25,7 +26,7 @@ sl:
       grid_view:
         edit: Uredi sliko
         confirm_delete:
-          message: Ali ste prepričani da želite odstraniti {{title}}? 
+          message: Ali ste prepričani da želite odstraniti {{title}}?
           title: Odstrani sliko
         view_live: Poglej sliko <br/><em>Odpre se v novem oknu</em>
       list_view_image:

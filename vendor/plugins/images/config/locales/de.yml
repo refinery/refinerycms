@@ -13,6 +13,7 @@ de:
         or: oder
         replace_image: Oder durch dieses ersetzen ...
         current_image: Aktuelles Bild
+        maximum_image_size: "Die maximale Bildgröße beträgt {{megabytes}} Megabyte."
       index:
         create_new_image: Neues Bild erstellen
         no_images_yet: Es wurden noch keine Bilder erstellt. Klicken Sie auf "Neues Bild erstellen" um Ihr erstes Bild zu erstellen.

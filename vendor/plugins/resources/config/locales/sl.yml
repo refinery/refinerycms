@@ -1,6 +1,6 @@
 sl:
   plugins:
-    refinery_resources:
+    refinery_files:
       title: Datoteke
   must_choose_file: Izbrati morate datoteko ki jo želite prenesti
   file_should_be_smaller_than_max_file_size: Velikost datoteke mora biti manjša od {{max_file_size}}
@@ -11,6 +11,7 @@ sl:
         download_current: Prenesi tretnutno datoteko
         or: ali
         replace: " jo zamenjaj z ..."
+        maximum_file_size: "The maximum file size is {{megabytes}} megabytes."
       resource:
         download: Prenesi datoteko ({{size}})
         edit: Uredi datoteko
