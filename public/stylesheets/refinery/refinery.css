@@ -635,7 +635,7 @@ label.stripped {
 .record .title span {
   line-height: 30px;
 }
-#records.files .record .title {
+#records.files .record .title, #dialog_main #resource_file_area #pages_list ul li a.page_link {
   display:inline-block;
   padding-left:24px;
   min-height:16px;
@@ -643,25 +643,29 @@ label.stripped {
   background-position:left;
   background-image: url('/images/refinery/icons/folder_page_white.png');
 }
-#records.files .record .title.pdf {
+#dialog_main #resource_file_area #pages_list ul li a.page_link{
+  background-position:5px center;
+  display:block;
+}
+#records.files .record .title.pdf, #dialog_main #resource_file_area #pages_list ul li a.page_link.pdf {
 	background-image: url('/images/refinery/icons/pdf.png');
 }
-#records.files .record .title.jpg, #records.files .record .title.gif, #records.files .record .title.jpeg, #records.files .record .title.png, #records.files .record .title.tiff {
+#records.files .record .title.jpg, #records.files .record .title.gif, #records.files .record .title.jpeg, #records.files .record .title.png, #records.files .record .title.tiff, #dialog_main #resource_file_area #pages_list ul li a.page_link.jpg, #dialog_main #resource_file_area #pages_list ul li a.page_link.jpeg, #dialog_main #resource_file_area #pages_list ul li a.page_link.gif, #dialog_main #resource_file_area #pages_list ul li a.page_link.png, #dialog_main #resource_file_area #pages_list ul li a.page_link.tiff {
 	background-image: url('/images/refinery/icons/img.png');
 }
-#records.files .record .title.doc, #records.files .record .title.pages, #records.files .record .title.docx {
+#records.files .record .title.doc, #records.files .record .title.pages, #records.files .record .title.docx, #dialog_main #resource_file_area #pages_list ul li a.page_link.doc, #dialog_main #resource_file_area #pages_list ul li a.page_link.docx, #dialog_main #resource_file_area #pages_list ul li a.page_link.pages {
 	background-image: url('/images/refinery/icons/doc.png');
 }
-#records.files .record .title.ppt, #records.files .record .title.keynote {
+#records.files .record .title.ppt, #records.files .record .title.keynote, #dialog_main #resource_file_area #pages_list ul li a.page_link.ppt, #dialog_main #resource_file_area #pages_list ul li a.page_link.keynote {
 	background-image: url('/images/refinery/icons/ppt.png');
 }
-#records.files .record .title.xls, #records.files .record .title.numbers {
+#records.files .record .title.xls, #records.files .record .title.numbers, #dialog_main #resource_file_area #pages_list ul li a.page_link.xls, #dialog_main #resource_file_area #pages_list ul li a.page_link.numbers {
 	background-image: url('/images/refinery/icons/xls.png');
 }
-#records.files .record .title.zip, #records.files .record .title.rar {
+#records.files .record .title.zip, #records.files .record .title.rar, #dialog_main #resource_file_area #pages_list ul li a.page_link.zip, #dialog_main #resource_file_area #pages_list ul li a.page_link.rar {
 	background-image: url('/images/refinery/icons/zip.png');
 }
-#records.files .record .title.mp3, #records.files .record .title.wav, #records.files .record .title.aiff, #records.files .record .title.m4a {
+#records.files .record .title.mp3, #records.files .record .title.wav, #records.files .record .title.aiff, #records.files .record .title.m4a, #dialog_main #resource_file_area #pages_list ul li a.page_link.mp3, #dialog_main #resource_file_area #pages_list ul li a.page_link.wav, #dialog_main #resource_file_area #pages_list ul li a.page_link.aiff, #dialog_main #resource_file_area #pages_list ul li a.page_link.m4a {
   background-image: url('/images/refinery/icons/music.png');
 }
 #records .record {
