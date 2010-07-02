@@ -31,7 +31,7 @@ class InquiriesController < ApplicationController
           logger.warn "There was an error delivering an inquiry confirmation:\n#{$!}\n"
         end
       end
-      
+
       redirect_to thank_you_inquiries_url
     else
       render :action => 'new'

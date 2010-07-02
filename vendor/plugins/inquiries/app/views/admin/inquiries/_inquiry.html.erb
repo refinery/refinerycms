@@ -10,7 +10,7 @@
 
     <%= link_to refinery_icon_tag('zoom.png'), admin_inquiry_url(inquiry),
                 :title => t('.read_inquiry') -%>
-                
+
     <% if inquiry.spam? %>
       <%= link_to refinery_icon_tag('email.png'), toggle_spam_admin_inquiry_url(inquiry),
                   :title => t('.mark_as_ham') -%>

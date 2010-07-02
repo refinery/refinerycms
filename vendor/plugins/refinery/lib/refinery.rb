@@ -27,7 +27,7 @@ module Refinery
     MAJOR = 0
     MINOR = 9
     TINY = 7
-    BUILD = 'dev'
+    BUILD = nil
 
     STRING = [MAJOR, MINOR, TINY, BUILD].compact.join('.')
 
