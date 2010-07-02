@@ -2,9 +2,11 @@
 
 - Full backend internationalisation (i18n) support and frontend i18n routing. [Maarten Hoogendoorn and Philip Arndt and many others]
 - Marketable URLs, such as /contact [Joshua Davey and Joe Sak].
-- Switched to bundler and rack. [Philip Arndt]
-- Added :restricted settings. [Steven Heidel]
+- Switched to bundler and rack. [Alex Coles and Philip Arndt]
+- Added options to Refinery Settings :restricted, :scoping, :callback_proc_as_string. [Steven Heidel and Philip Arndt]
 - Added spam filtering to contact form [djones]
+- Full Refinery UI redesign [Resolve Digital]
+- User Role support [Amanda Nicholas and Philip Arndt]
 
 ===0.9.6.34 [09 May 2010]
 
