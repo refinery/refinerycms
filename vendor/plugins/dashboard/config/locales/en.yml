@@ -14,6 +14,8 @@ en:
       recent_activity:
         latest_activity: Latest activity
         see: "See '{{what}}'"
+      recent_inquiries:
+        latest_inquiries: Latest inquiries
   updated: updated
   created: created
   ago: "{{time}} ago"
