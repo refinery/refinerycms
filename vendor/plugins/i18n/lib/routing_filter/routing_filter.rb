@@ -29,7 +29,13 @@ module RoutingFilter
 end
 
 # allows to install a filter to the route set by calling: map.filter 'locale'
-ActionController::Routing::RouteSet::Mapper.class_eval do
+klass = if ActionPack::VERSION::MAJOR >= 3
+  ActionDispatch::Routing::DeprecatedMapper
+else
+  ActionController::Routing::RouteSet::Mapper
+end
+
+klass.class_eval do
   def filter(name, options = {})
     unless Kernel.const_defined?(name.to_s.camelize) or !options.has_key?(:file)
       require options.delete(:file) || File.expand_path("../routing_filter/#{name}", __FILE__)
