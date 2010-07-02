@@ -34,7 +34,7 @@ en:
         view_live: View this page live <br/><em>(opens in a new window)</em>
         edit_this_page: Edit this page
         confirm_delete_page_title: Delete this page
-        confirm_delete_page_message: "Are you sure you want to delete the page '{{title}}'?"
+        confirm_delete_page_message: "Are you sure you want to delete the page '%{title}'?"
         hidden: hidden
         draft: draft
       form_advanced_options:
@@ -82,7 +82,7 @@ en:
             create: Create Content Section
             already_exists: "A content section with that title already exists, please choose another."
             title_empty: "You have not entered a title for the content section, please enter one."
-            confirm_delete: "This will remove the content section {{section_name}} when the page is saved and erase all content that has been entered into it, Are you sure?"
+            confirm_delete: "This will remove the content section %{section_name} when the page is saved and erase all content that has been entered into it, Are you sure?"
       index:
         create_new_page: Create New Page
         reorder_pages: Reorder Pages

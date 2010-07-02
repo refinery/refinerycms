@@ -13,10 +13,10 @@ da:
         see_home_page: Vis forside
       recent_activity:
         latest_activity: Seneste aktiviteter
-        see: Vis '{{what}}'
+        see: Vis '%{what}'
       recent_inquiries:
         latest_inquiries: Latest inquiries
   updated: opdateret
   created: oprettet
-  ago: "{{time}} siden"
+  ago: "%{time} siden"
   see: Vis

@@ -11,17 +11,17 @@ da:
     log_out: Log af
     search: Søg
     search_submit: Søg
-    search_results_for: "Søgeresultat for '{{query}}'"
+    search_results_for: "Søgeresultat for '%{query}'"
     no_results_found: "Desværre, din søgning gav ingen resultater"
   refinery:
-    other: "Anden {{what}}"
-    reorder: "Redigér rækkefølgen af {{what}}"
-    reorder_done: "Gem rækkefølgen af {{what}}"
+    other: "Anden %{what}"
+    reorder: "Redigér rækkefølgen af %{what}"
+    reorder_done: "Gem rækkefølgen af %{what}"
     search_no_results: "Desværre, din søgning gav ingen resultater."
     crudify:
-      created: "{{what}} er oprettet"
-      updated: "{{what}} er opdateret"
-      destroyed: "{{what}} er slettet"
+      created: "%{what} er oprettet"
+      updated: "%{what} er opdateret"
+      destroyed: "%{what} er slettet"
   layouts:
     admin:
       view_public_site: Vis website
@@ -38,18 +38,18 @@ da:
         or_cancel: eller
         cancel: Annullér
         or_continue: eller
-        cancel_lose_changes: "Du mister alle ændringer til denne {{object_name}}"
+        cancel_lose_changes: "Du mister alle ændringer til denne %{object_name}"
       image_picker:
-        none_selected: "Du har ikke valgt et {{what}}. Klik her for at tilføje et."
-        remove_current: "Fjern nuværende {{what}}"
+        none_selected: "Du har ikke valgt et %{what}. Klik her for at tilføje et."
+        remove_current: "Fjern nuværende %{what}"
         change: Klik her for at vælge et billede
         image: billede
       resource_picker:
-        none_selected: "Du har ikke valgt en {{what}}. Klik her for at tilføje en."
-        current: "Nuværende {{what}}"
-        download_current: "Download nuværende {{what}}"
+        none_selected: "Du har ikke valgt en %{what}. Klik her for at tilføje en."
+        current: "Nuværende %{what}"
+        download_current: "Download nuværende %{what}"
         opens_in_new_window: "Åbner i nyt vindue"
-        remove_current: "Fjern nuværende {{what}}"
+        remove_current: "Fjern nuværende %{what}"
         resource: fil
     message:
       close: Luk

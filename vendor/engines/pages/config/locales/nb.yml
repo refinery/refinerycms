@@ -40,7 +40,7 @@ nb:
             create: Opprett innholdsseksjon
             already_exists: En innholdsseksjon med valgt tittel eksisterer allerede, velg en annen tittel.
             title_empty: Du har ikke skrevet inn en tittel for innholdsseksjonen, skriv inn en tittel for å gå videre.
-            confirm_delete: Dette vil slette innholdsseksjonen {{section_name}} når siden blir lagret og slette alt innhold som er skrevet i den, er du sikker på at du vil fortsette?
+            confirm_delete: Dette vil slette innholdsseksjonen %{section_name} når siden blir lagret og slette alt innhold som er skrevet i den, er du sikker på at du vil fortsette?
       index:
         create_new_page: Opprett en ny side
         reorder_pages: Sorter sidenene

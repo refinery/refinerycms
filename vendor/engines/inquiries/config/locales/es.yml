@@ -26,15 +26,15 @@ es:
         move_inquiry_to_closed: Cambiar esta consulta a cerrada
         move_inquiry_to_open: Cambiar esta consulta a abierta
         read_inquiry: Leer esta consulta
-        remove_inquiry: "Estas seguro que quieres borrar esta consulta de '{{name}}'?"
+        remove_inquiry: "Estas seguro que quieres borrar esta consulta de '%{name}'?"
         title: Quitar esta consulta.
       toggle_status:
-        closed: "La consulta '{{inquiry}}' esta cerrada"
-        reopened: "La consulta '{{inquiry}}' esta abierta"
+        closed: "La consulta '%{inquiry}' esta cerrada"
+        reopened: "La consulta '%{inquiry}' esta abierta"
       index:
         update_notified: "Actualizar a quien será notificado"
         edit_confirmation_email: "Editar email de confirmación"
-        search_results_for: Resultados de la busqueda de {{query}}
+        search_results_for: Resultados de la busqueda de %{query}
         no_inquiries: No has recibido ninguna consulta aun.
       show:
         details: Detalles
@@ -48,7 +48,7 @@ es:
         inquiry: Consulta
     inquiry_settings:
       update:
-        updated: "'{{setting}}' fue actualizado exitosamente."
+        updated: "'%{setting}' fue actualizado exitosamente."
       notification_recipients_form:
         inquiry_settings_value_name: Mandar notificaciones a
         explanation: "Cada vez que alguien se comunique con usted en su sitio web, Refinery enviara un correo electrónico respecto a esta nueva consulta."

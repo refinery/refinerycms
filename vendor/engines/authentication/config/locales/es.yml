@@ -20,7 +20,7 @@ es:
         email: email
         password: contraseña
         remember_me: Recordarme
-        incorrect: "Lo sentimos, su {{login_field}} o la contraseña son correctos."
+        incorrect: "Lo sentimos, su %{login_field} o la contraseña son correctos."
   plugins:
     refinery_users:
       title: Usuarios
@@ -39,11 +39,11 @@ es:
         create_new_user: Crear usuario nuevo
         no_users_yet:  No se ha creado ningún usuario todavía. Pulse en "Crear usuario nuevo" para añadir el primer usuario
       user:
-        confirm_delete_message: "¿Seguro que quiere eliminar el usuario '{{who}}'?"
+        confirm_delete_message: "¿Seguro que quiere eliminar el usuario '%{who}'?"
         confirm_delete_title: Borrar este usuario permanentemente
         edit_user: Editar usuario
         email_user: Enviar email a este usuario
-        preview: ({{who}}) created {{created_at}}
+        preview: (%{who}) created %{created_at}
   sessions:
     login_successful: Ha iniciado sesión correctamente.
     login_failed: El password o el nombre de usuario es incorrecto.
@@ -57,7 +57,7 @@ es:
       or: o
       forgot_password: He olvidado mi contraseña
   users:
-    setup_website_name: "Lo primero es proporcionar un nombre para el sitio web.<br/><a href='{{link}}'>Pulse aquí</a> editar el nombre del sitio web"
+    setup_website_name: "Lo primero es proporcionar un nombre para el sitio web.<br/><a href='%{link}'>Pulse aquí</a> editar el nombre del sitio web"
     signup_disabled: El registro de usuario ha sido deshabilitado.
     new:
       fill_form: Rellene el siguiente formulario con su información de usuario para comenzar.
@@ -67,13 +67,13 @@ es:
       password: Contraseña
       password_confirmation: Confirmar contraseña
     create:
-      welcome: Bienvenido a Refinery, {{who}}
+      welcome: Bienvenido a Refinery, %{who}
       signup_complete: "¡Registro correcto!"
   user_mailer:
     please_activate: Por favor, active la nueva cuenta.
     activated: "!Su cuenta ha sido activada!"
-    activated_email: "{{who}}, su cuenta ha sido activada. Puede empezar a añadir sus plugins:"
+    activated_email: "%{who}, su cuenta ha sido activada. Puede empezar a añadir sus plugins:"
     account_created: Su cuenta ha sido creada.
-    user_name: Nombre de usuario {{name}}
-    password: Contraseña {{password}}
+    user_name: Nombre de usuario %{name}
+    password: Contraseña %{password}
     visit_url: "Visite esta dirección para activar su cuenta:"

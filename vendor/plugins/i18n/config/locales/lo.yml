@@ -67,34 +67,34 @@ th:
       half_a_minute: "ครึ่งนาที"
       less_than_x_seconds:
         one:   "น้อยกว่า 1 วินาที"
-        other: "น้อยกว่า {{count}} วินาที"
+        other: "น้อยกว่า %{count} วินาที"
       x_seconds:
         one:   "1 วินาที"
-        other: "{{count}} วินาที"
+        other: "%{count} วินาที"
       less_than_x_minutes:
         one:   "น้อยกว่า 1 นาที"
-        other: "น้อยกว่า {{count}} นาที"
+        other: "น้อยกว่า %{count} นาที"
       x_minutes:
         one:   "1 นาที"
-        other: "{{count}} นาที"
+        other: "%{count} นาที"
       about_x_hours:
         one:   "ประมาณ 1 ชั่วโมง"
-        other: "ประมาณ {{count}} ชั่วโมง"
+        other: "ประมาณ %{count} ชั่วโมง"
       x_days:
         one:   "1 วัน"
-        other: "{{count}} วัน"
+        other: "%{count} วัน"
       about_x_months:
         one:   "ประมาณ 1 เดือน"
-        other: "ประมาณ {{count}} เดือน"
+        other: "ประมาณ %{count} เดือน"
       x_months:
         one:   "1 เดือน"
-        other: "{{count}} เดือน"
+        other: "%{count} เดือน"
       about_x_years:
         one:   "ประมาณ 1 ปี"
-        other: "ประมาณ {{count}} ปี"
+        other: "ประมาณ %{count} ปี"
       over_x_years:
         one:   "มากกว่า 1 ปี"
-        other: "มากกว่า {{count}} ปี"
+        other: "มากกว่า %{count} ปี"
     prompts:
       year:   "ปี"
       month:  "เดือน"
@@ -107,8 +107,8 @@ th:
     errors:
       template:
         header:
-          one:    "ไม่สามารถบันทึก {{model}} ได้เนื่องจากเกิดข้อผิดพลาด"
-          other:  "ไม่สามารถบันทึก {{model}} ได้เนื่องจากเกิด {{count}} ข้อผิดพลาด"
+          one:    "ไม่สามารถบันทึก %{model} ได้เนื่องจากเกิดข้อผิดพลาด"
+          other:  "ไม่สามารถบันทึก %{model} ได้เนื่องจากเกิด %{count} ข้อผิดพลาด"
         # The variable :count is also available
         body: "โปรดตรวจสอบข้อมูลในช่องต่อไปนี้:"
         
@@ -122,19 +122,19 @@ th:
         accepted: "ຕ້ອງຍອມຮັບ"
         empty: "ວ່າງໄວ້ບໍ່ໄດ້"
         blank: "ເປົ່າບໍ່ໄດ້"
-        too_long: "ຍາວໂພດ (ສູງສຸດຄື {{count}} ຕົວອັກສອນ"
-        too_short: "ສັ້ນໂພດ (ຕຳ່ສຸດຄື {{count}} ຕົວອັກສອນ"
-        wrong_length: "ຄວາມຍາວຜິດ (ຄວນຈະເປັນ {{count}} ຕົວອັກສອນ"
+        too_long: "ຍາວໂພດ (ສູງສຸດຄື %{count} ຕົວອັກສອນ"
+        too_short: "ສັ້ນໂພດ (ຕຳ່ສຸດຄື %{count} ຕົວອັກສອນ"
+        wrong_length: "ຄວາມຍາວຜິດ (ຄວນຈະເປັນ %{count} ຕົວອັກສອນ"
         taken: "ຮັບເອົາໄປແລ້ວ"
         not_a_number: "ບໍ່ແມ່ນຕົວເລກ"
-        greater_than: "ຕ້ອງສູງກວ່າ {{count}}"
-        greater_than_or_equal_to: "ຕ້ອງສູງກວ່າ ຫຼື ເທົ່າກັບ {{count}}"
-        equal_to: "ຕ້ອງເທົ່າກັບ {{count}}"
-        less_than: "ຕ້ອງຕຳ່ກວ່າ {{count}}"
-        less_than_or_equal_to: "ຕ້ອງຕຳ່ກວ່າ ຫຼື ເທົ່າກັບ {{count}}"
+        greater_than: "ຕ້ອງສູງກວ່າ %{count}"
+        greater_than_or_equal_to: "ຕ້ອງສູງກວ່າ ຫຼື ເທົ່າກັບ %{count}"
+        equal_to: "ຕ້ອງເທົ່າກັບ %{count}"
+        less_than: "ຕ້ອງຕຳ່ກວ່າ %{count}"
+        less_than_or_equal_to: "ຕ້ອງຕຳ່ກວ່າ ຫຼື ເທົ່າກັບ %{count}"
         odd: "ຕ້ອງເປັນເລກຄີກ"
         even: "ຕ້ອງເປັນເລກຄູ່"
-        record_invalid: "ການຢືນຢັນບໍ່ສຳເລັດ : {{errors}}"
+        record_invalid: "ການຢືນຢັນບໍ່ສຳເລັດ : %{errors}"
         # Append your own errors here or at the model/attributes scope.
 
       # You can define own errors for models or model attributes.
@@ -143,7 +143,7 @@ th:
       # For example,
       #   models:
       #     user:
-      #       blank: "This is a custom blank message for {{model}}: {{attribute}}"
+      #       blank: "This is a custom blank message for %{model}: %{attribute}"
       #       attributes:
       #         login:
       #           blank: "This is a custom blank message for User login"

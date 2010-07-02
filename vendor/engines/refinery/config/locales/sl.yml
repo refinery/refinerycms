@@ -11,20 +11,20 @@ sl:
     log_out: Odjavi se
     search: Išči
     search_submit: Pojdi
-    search_results_for: Iskalni rezultati za {{query}}
+    search_results_for: Iskalni rezultati za %{query}
     no_results_found: "Oprostite, ni bilo zadetkov"
     images:
       existing_image:
         submit_insert: Vstavi
   refinery:
-    other: "Drugo {{what}}"
-    reorder: "Spremeni vrstni red {{what}}"
-    reorder_done: "Končaj s prerazporeditvijo {{what}}"
+    other: "Drugo %{what}"
+    reorder: "Spremeni vrstni red %{what}"
+    reorder_done: "Končaj s prerazporeditvijo %{what}"
     search_no_results: "Oprostite, ni bilo zadetkov"
     crudify:
-      created: "{{what}} je bil uspešno ustvarjen"
-      updated: "{{what}} je bil uspešno ustvarjen"
-      destroyed: "{{what}} je bil uspešno odstranjen"
+      created: "%{what} je bil uspešno ustvarjen"
+      updated: "%{what} je bil uspešno ustvarjen"
+      destroyed: "%{what} je bil uspešno odstranjen"
   shared:
     site_bar:
       switch_to_your_website: "Preklopite na vašo spletno stran"
@@ -40,20 +40,20 @@ sl:
         or_cancel: ali
         cancel: Prekliči
         or_continue: ali
-        cancel_lose_changes: "S preklicem bodo izgubljene vse spremembe, ki ste jih naredili na {{object_name}}."
+        cancel_lose_changes: "S preklicem bodo izgubljene vse spremembe, ki ste jih naredili na %{object_name}."
         delete_title: S tem bo stran odstranjena za vedno
         delete: Izbriši
       image_picker:
-        none_selected: "Trenutno ni izbrana nobena {{what}}, prosimo kliknite tukaj da dodate eno."
-        remove_current: "Odstrani trenutno {{what}}"
+        none_selected: "Trenutno ni izbrana nobena %{what}, prosimo kliknite tukaj da dodate eno."
+        remove_current: "Odstrani trenutno %{what}"
         change: Kliknite tukaj za izbiro slike
         image: slika
       resource_picker:
-        none_selected: "Trenutno ni izbrana nobena {{what}}, prosimo kliknite tukaj da dodate eno."
-        current: "Trenutna {{what}}"
-        download_current: "Prenesi trenutno {{what}}"
+        none_selected: "Trenutno ni izbrana nobena %{what}, prosimo kliknite tukaj da dodate eno."
+        current: "Trenutna %{what}"
+        download_current: "Prenesi trenutno %{what}"
         opens_in_new_window: Odpri v novem oknu
-        remove_current: "Odstrani trnutno {{what}}"
+        remove_current: "Odstrani trnutno %{what}"
         resource: vir
     message:
       close: Zapri

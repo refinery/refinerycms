@@ -25,15 +25,15 @@ nb:
         move_inquiry_to_closed: Flytt forespørselen til lukket
         move_inquiry_to_open: Flytt forespørselen til åpen
         read_inquiry: Les forespørselen
-        remove_inquiry: "Er du sikker på at du ønsker å slette forespørselen fra '{{name}}'?"
+        remove_inquiry: "Er du sikker på at du ønsker å slette forespørselen fra '%{name}'?"
         title: Slett denne forespørselen for alltid.
       toggle_status:
-        closed: "Forespørsel '{{inquiry}}' lukket"
-        reopened: "Forespørsel '{{inquiry}}' er åpnet igjen."
+        closed: "Forespørsel '%{inquiry}' lukket"
+        reopened: "Forespørsel '%{inquiry}' er åpnet igjen."
       index:
         update_notified: Oppdater hvem som blir varslet
         edit_confirmation_email: Rediger bekreftelsesepost
-        search_results_for: Søkeresultat for {{query}}
+        search_results_for: Søkeresultat for %{query}
         no_inquiries: Du har ikke mottatt noen forespørsler enda.
       show:
         details: Detaljer
@@ -47,7 +47,7 @@ nb:
         inquiry: Forespørsel
     inquiry_settings:
       update:
-        updated: "'{{setting}}' er oppdatert."
+        updated: "'%{setting}' er oppdatert."
       notification_recipients_form:
         inquiry_settings_value_name: Send varsler til
         explanation: "Hver gang noen kontakter deg på siden din sender Refinery ut en epost for å varsle om en ny forespørsel."

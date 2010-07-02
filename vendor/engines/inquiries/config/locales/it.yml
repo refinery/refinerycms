@@ -25,11 +25,11 @@ it:
         move_inquiry_to_closed: Spostare questa inchiesta chiusa
         move_inquiry_to_open: Spostare questa indagine per aprire
         read_inquiry: Leggi l'inchiesta
-        remove_inquiry: "Sei sicuro di voler cancellare la richiesta di '{{name}}'?"
+        remove_inquiry: "Sei sicuro di voler cancellare la richiesta di '%{name}'?"
         title: Rimuovere questa indagine per sempre.
       toggle_status:
-        closed: "Inchiesta '{{inquiry}}' è chiuso"
-        reopened: "Inchiesta '{{inquiry}}' si riapre"
+        closed: "Inchiesta '%{inquiry}' è chiuso"
+        reopened: "Inchiesta '%{inquiry}' si riapre"
       index:
         update_notified: Aggiornamento chi viene notificata
         edit_confirmation_email: Modifica email di conferma
@@ -46,7 +46,7 @@ it:
         inquiry: Inchiesta
     inquiry_settings:
       update:
-        updated: "'{{setting}}' stato aggiornato con successo."
+        updated: "'%{setting}' stato aggiornato con successo."
       notification_recipients_form:
         inquiry_settings_value_name: Invia a notifiche
         explanation: "Ogni volta che qualcuno ti contatti sul suo sito web, Refinery invia una mail a dire che c'è una nuova indagine."

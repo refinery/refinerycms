@@ -8,20 +8,20 @@ new Test.Unit.Runner({
 				hello: "Hello World!",
 				greetings: {
 					stranger: "Hello stranger!",
-					name: "Hello {{name}}!"
+					name: "Hello %{name}!"
 				},
 				profile: {
-					details: "{{name}} is {{age}}-years old"
+					details: "%{name} is %{age}-years old"
 				},
 				inbox: {
-					one: "You have {{count}} message",
-					other: "You have {{count}} messages",
+					one: "You have %{count} message",
+					other: "You have %{count} messages",
 					zero: "You have no messages"
 				},
 				unread: {
-					one: "You have 1 new message ({{unread}} unread)",
-					other: "You have {{count}} new messages ({{unread}} unread)",
-					zero: "You have no new messages ({{unread}} unread)"
+					one: "You have 1 new message (%{unread} unread)",
+					other: "You have %{count} new messages (%{unread} unread)",
+					zero: "You have no new messages (%{unread} unread)"
 				},
 				number: null
 			},
@@ -538,7 +538,7 @@ new Test.Unit.Runner({
 
 	// Default value with interpolation
 	testDefaultValueWithInterpolation: function() { with(this) {
-		actual = I18n.translate("alert", {defaultValue: "Attention! {{message}}", message: "You're out of quota!"});
+		actual = I18n.translate("alert", {defaultValue: "Attention! %{message}", message: "You're out of quota!"});
 		assertEqual("Attention! You're out of quota!", actual);
 	}},
 
@@ -552,8 +552,8 @@ new Test.Unit.Runner({
 	testDefaultValueForPluralize: function() { with(this) {
 		options = {defaultValue: {
 			none: "No things here!",
-			one: "There is {{count}} thing here!",
-			other: "There are {{count}} things here!"
+			one: "There is %{count} thing here!",
+			other: "There are %{count} things here!"
 		}};
 
 		assertEqual("No things here!", I18n.pluralize(0, "things", options));
@@ -565,8 +565,8 @@ new Test.Unit.Runner({
 	testDefaultValueForPluralizeShouldNotBeUsedWhenScopeExist: function() { with(this) {
 		options = {defaultValue: {
 			none: "No things here!",
-			one: "There is {{count}} thing here!",
-			other: "There are {{count}} things here!"
+			one: "There is %{count} thing here!",
+			other: "There are %{count} things here!"
 		}};
 
 		assertEqual("You have no messages", I18n.pluralize(0, "inbox", options));

@@ -51,37 +51,37 @@ pt-PT:
       half_a_minute: "meio minuto"
       less_than_x_seconds:
         one: "menos de 1 segundo"
-        other: "menos de {{count}} segundos"
+        other: "menos de %{count} segundos"
       x_seconds:
         one: "1 segundo"
-        other: "{{count}} segundos"
+        other: "%{count} segundos"
       less_than_x_minutes: 
         one: "menos de um minuto"
-        other: "menos de {{count}} minutos"
+        other: "menos de %{count} minutos"
       x_minutes:
         one: "1 minuto"
-        other: "{{count}} minutos"
+        other: "%{count} minutos"
       about_x_hours:
         one: "aproximadamente 1 hora"
-        other: "aproximadamente {{count}} horas"
+        other: "aproximadamente %{count} horas"
       x_days:
         one: "1 dia"
-        other: "{{count}} dias"
+        other: "%{count} dias"
       about_x_months:
         one: "aproximadamente 1 mês"
-        other: "aproximadamente {{count}} meses"
+        other: "aproximadamente %{count} meses"
       x_months:
         one: "1 mês"
-        other: "{{count}} meses"
+        other: "%{count} meses"
       about_x_years:
         one: "aproximadamente 1 ano"
-        other: "aproximadamente {{count}} anos"
+        other: "aproximadamente %{count} anos"
       over_x_years:
         one: "mais de 1 ano"
-        other: "mais de {{count}} anos"
+        other: "mais de %{count} anos"
       almost_x_years:
         one:   "quase 1 ano"
-        other: "quase {{count}} years"
+        other: "quase %{count} years"
     prompts:
       year: "Ano"
       month: "Mês"
@@ -153,8 +153,8 @@ pt-PT:
     errors:
       template:
         header:
-          one:    "Não foi possível guardar {{model}}: 1 erro"
-          other:  "Não foi possível guardar {{model}}: {{count}} erros"
+          one:    "Não foi possível guardar %{model}: 1 erro"
+          other:  "Não foi possível guardar %{model}: %{count} erros"
         # The variable :count is also available
         body: "Por favor, verifique os seguintes campos:"
       # The values :model, :attribute and :value are always available for interpolation
@@ -167,19 +167,19 @@ pt-PT:
         accepted:  "precisa de ser aceite"
         empty: "não pode estar em branco"
         blank: "não pode estar em branco"
-        too_long: "tem demasiados caracteres (máximo: {{count}} caracteres)"
-        too_short: "tem poucos caracteres (mínimo: {{count}} caracteres)"
-        wrong_length: "não é do tamanho correcto (necessita de ter {{count}} caracteres)"
+        too_long: "tem demasiados caracteres (máximo: %{count} caracteres)"
+        too_short: "tem poucos caracteres (mínimo: %{count} caracteres)"
+        wrong_length: "não é do tamanho correcto (necessita de ter %{count} caracteres)"
         taken: "não está disponível"
         not_a_number: "não é um número"
-        greater_than: "tem de ser maior do que {{count}}"
-        greater_than_or_equal_to: "tem de ser maior ou igual a {{count}}"
-        equal_to: "tem de ser igual a {{count}}"
-        less_than: "tem de ser menor do que {{count}}"
-        less_than_or_equal_to: "tem de ser menor ou igual a {{count}}"
+        greater_than: "tem de ser maior do que %{count}"
+        greater_than_or_equal_to: "tem de ser maior ou igual a %{count}"
+        equal_to: "tem de ser igual a %{count}"
+        less_than: "tem de ser menor do que %{count}"
+        less_than_or_equal_to: "tem de ser menor ou igual a %{count}"
         odd: "tem de ser ímpar"
         even: "tem de ser par"
-        record_invalid: "A validação falhou: {{errors}}"
+        record_invalid: "A validação falhou: %{errors}"
         # Append your own errors here or at the model/attributes scope.
 
       # You can define own errors for models or model attributes.
@@ -188,7 +188,7 @@ pt-PT:
       # For example,
       #   models:
       #     user:
-      #       blank: "This is a custom blank message for {{model}}: {{attribute}}"
+      #       blank: "This is a custom blank message for %{model}: %{attribute}"
       #       attributes:
       #         login:
       #           blank: "This is a custom blank message for User login"
@@ -214,7 +214,7 @@ pt-PT:
     errors:
       template:
         header:
-          one:    "Não foi possível guardar {{model}}: 1 erro"
-          other:  "Não foi possível guardar {{model}}: {{count}} erros"
+          one:    "Não foi possível guardar %{model}: 1 erro"
+          other:  "Não foi possível guardar %{model}: %{count} erros"
         # The variable :count is also available
         body: "Por favor, verifique os seguintes campos:"

@@ -11,17 +11,17 @@ it:
     log_out: Log out
     search: Cerca
     search_submit: Andare
-    search_results_for: "Risultati della ricerca per '{{query}}'"
+    search_results_for: "Risultati della ricerca per '%{query}'"
     no_results_found: "Spiacenti, nessun risultato trovato"
   refinery:
-    other: "Altro {{what}}"
-    reorder: "Riordina {{what}}"
-    reorder_done: "Fatto Riordinare {{what}}"
+    other: "Altro %{what}"
+    reorder: "Riordina %{what}"
+    reorder_done: "Fatto Riordinare %{what}"
     search_no_results: "Spiacenti, nessun risultato trovato."
     crudify:
-      created: "{{what}} stato creato con successo"
-      updated: "{{what}} stato creato con successo"
-      destroyed: "{{what}} è stato distrutto con successo"
+      created: "%{what} stato creato con successo"
+      updated: "%{what} stato creato con successo"
+      destroyed: "%{what} è stato distrutto con successo"
   layouts:
     admin:
       view_public_site: Vedi sito pubblico
@@ -38,18 +38,18 @@ it:
         or_cancel: o
         cancel: Annullare
         or_continue: o
-        cancel_lose_changes: "Annullamento perderà tutte le modifiche apportate a questa {{object_name}}"
+        cancel_lose_changes: "Annullamento perderà tutte le modifiche apportate a questa %{object_name}"
       image_picker:
-        none_selected: "Non ci sono attualmente {{what}} selezionato, clicca qui per aggiungerne uno."
-        remove_current: "Togliere corrente {{what}}"
+        none_selected: "Non ci sono attualmente %{what} selezionato, clicca qui per aggiungerne uno."
+        remove_current: "Togliere corrente %{what}"
         change: Clicca qui per scegliere una immagine
         image: immagine
       resource_picker:
-        none_selected: "Non ci sono attualmente {{what}} selezionato, clicca qui per aggiungere una."
-        current: "Corrente {{what}}"
-        download_current: "Scarica il corrente {{what}}"
+        none_selected: "Non ci sono attualmente %{what} selezionato, clicca qui per aggiungere una."
+        current: "Corrente %{what}"
+        download_current: "Scarica il corrente %{what}"
         opens_in_new_window: Apre in una nuova finestra
-        remove_current: "Togliere corrente {{what}}"
+        remove_current: "Togliere corrente %{what}"
         resource: risorsa
     message:
       close: Fine

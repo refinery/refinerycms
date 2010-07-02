@@ -13,10 +13,10 @@ nl:
         see_home_page: Bezoek de homepage
       recent_activity:
         latest_activity: Laatste wijzigingen
-        see: Bezoek de '{{what}}'
+        see: Bezoek de '%{what}'
       recent_inquiries:
         latest_inquiries: Latest inquiries
   updated: bewerkt
   created: aangemaakt
-  ago: "{{time}} geleden"
+  ago: "%{time} geleden"
   see: Zie

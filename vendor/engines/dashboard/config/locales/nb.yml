@@ -13,10 +13,10 @@ nb:
         see_home_page: Se hjemmesiden
       recent_activity:
         latest_activity: Siste aktivitet
-        see: Se '{{what}}'
+        see: Se '%{what}'
       recent_inquiries:
         latest_inquiries: Latest inquiries
   updated: oppdatert
   created: opprettet
-  ago: "{{time}} siden"
+  ago: "%{time} siden"
   see: Se

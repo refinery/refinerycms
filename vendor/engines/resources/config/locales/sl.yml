@@ -3,7 +3,7 @@ sl:
     refinery_files:
       title: Datoteke
   must_choose_file: Izbrati morate datoteko ki jo želite prenesti
-  file_should_be_smaller_than_max_file_size: Velikost datoteke mora biti manjša od {{max_file_size}}
+  file_should_be_smaller_than_max_file_size: Velikost datoteke mora biti manjša od %{max_file_size}
   admin:
     resources:
       form:
@@ -11,16 +11,16 @@ sl:
         download_current: Prenesi tretnutno datoteko
         or: ali
         replace: " jo zamenjaj z ..."
-        maximum_file_size: "The maximum file size is {{megabytes}} megabytes."
+        maximum_file_size: "The maximum file size is %{megabytes} megabytes."
       resource:
-        download: Prenesi datoteko ({{size}})
+        download: Prenesi datoteko (%{size})
         edit: Uredi datoteko
         delete:
-          message: Ali ste prepričani da želite odstraniti '{{title}}'?
+          message: Ali ste prepričani da želite odstraniti '%{title}'?
           title: Odstrani datoteko
       index:
         upload_new: Prenesi Novo Datoteko
-        search_results: Iskalni rezultati za '{{results}}'
+        search_results: Iskalni rezultati za '%{results}'
         search_no_results: Oprostite! Ni bilo zadetkov.
         no_files_yet: Trenutno še ni nobene datoteke. Za prenos prve datoteke kliknite "Prenesi Novo Datoteko".
       insert:

@@ -13,10 +13,10 @@ sl:
         see_home_page: Poglej domačo stran
       recent_activity:
         latest_activity: Zadnje aktivnosti
-        see: Poglej '{{what}}'
+        see: Poglej '%{what}'
       recent_inquiries:
         latest_inquiries: Latest inquiries
   updated: posodobitev
   created: ustvarjena
-  ago: "{{time}} nazaj"
+  ago: "%{time} nazaj"
   see: Poglej

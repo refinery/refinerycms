@@ -3,7 +3,7 @@ fr:
     refinery_images:
       title: Images
   no_file_chosen: Vous devez choisir un image à télécharger
-  file_should_be_smaller_than_max_image_size: Le poid des fichiers doit être plus petit que {{max_image_size}}
+  file_should_be_smaller_than_max_image_size: Le poid des fichiers doit être plus petit que %{max_image_size}
   file_must_be_these_formats: "Votre image doit être un fichier JPG, PNG ou GIF"
   admin:
     images:
@@ -13,26 +13,26 @@ fr:
         or: ou
         replace_image: La replacer par celle-ci...
         current_image: Image actuel
-        maximum_image_size: "The maximum image size is {{megabytes}} megabytes."
+        maximum_image_size: "The maximum image size is %{megabytes} megabytes."
       index:
         create_new_image: Créer un Nouvelle Image
         no_images_yet: Il n'y a pas encore d'image. Cliquer "Créer une Nouvelle Image" pour ajouté votre première image.
         view:
-          switch_to: Changé pour la vue {{view_name}}
+          switch_to: Changé pour la vue %{view_name}
           list: liste
           grid: grille
         search:
-          results_for: "Résultat de recherche pour '{{query}}'"
+          results_for: "Résultat de recherche pour '%{query}'"
       grid_view:
         edit: Modifier cette image
         confirm_delete:
-          message: "Êtes vous sûr de vouloir supprimer '{{title}}'?"
+          message: "Êtes vous sûr de vouloir supprimer '%{title}'?"
           title: Supprimer cette image pour toujours
         view_live: Voir cette image <br/><em>Ouvre dans une nouvelle fenêtre</em>
       list_view_image:
         edit_this_image: Modifier cette image
         delete:
-          message: "Êtes vous sûr de vouloir supprimer '{{title}}'?"
+          message: "Êtes vous sûr de vouloir supprimer '%{title}'?"
           title: Supprimer cette image pour toujours
       insert:
         existing_image: Image Existante

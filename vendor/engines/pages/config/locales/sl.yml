@@ -34,7 +34,7 @@ sl:
         view_live: Poglej si to stran v živo <br/><em>(odpre se v novem oknu)</em>
         edit_this_page: Uredi to stran
         confirm_delete_page_title: Odstrani to stran
-        confirm_delete_page_message: Ali ste prepričani da želite odstraniti stran '{{title}}'?
+        confirm_delete_page_message: Ali ste prepričani da želite odstraniti stran '%{title}'?
         hidden: skrito
         draft: osnutek
       form_advanced_options:
@@ -83,7 +83,7 @@ sl:
             create: Ustvari Vsebinski Sklop
             already_exists: Vsebinski sklop s tem naslovom že obstaja, prosimo izberite drugega.
             title_empty: Za vsebisnki sklop niste vnesli naslova, prosimo vnesite ga.
-            confirm_delete: Vsebinski sklop {{section_name}} bo odstranjen, ko se bo stran shranila in s tem vsa vsebina ki je bila vnešena v ta sklop, Ali ste prepričani?
+            confirm_delete: Vsebinski sklop %{section_name} bo odstranjen, ko se bo stran shranila in s tem vsa vsebina ki je bila vnešena v ta sklop, Ali ste prepričani?
       index:
         create_new_page: Dodaj novo stran
         reorder_pages: Spremeni vrstni red Strani

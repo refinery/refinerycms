@@ -68,7 +68,7 @@ The sample above will assume that you have the following translations in your
 <tt>config/locales/*.yml</tt>:
 
   en:
-    hello: "Hello {{name}}!"
+    hello: "Hello %{name}!"
 
 You can set default values for missing scopes:
 
@@ -76,7 +76,7 @@ You can set default values for missing scopes:
   I18n.t("some.missing.scope", {defaultValue: "A default message"});
 
   // with interpolation
-  I18n.t("noun", {defaultValue: "I'm a {{noun}}", noun: "Mac"});
+  I18n.t("noun", {defaultValue: "I'm a %{noun}", noun: "Mac"});
 
 Pluralization is possible as well:
 
@@ -88,7 +88,7 @@ The sample above expects the following translation:
     inbox:
       counting:
         one: You have 1 new message
-        other: You have {{count}} new messages
+        other: You have %{count} new messages
         zero: You have no messages
 
 <b>NOTE:</b> Rais I18n recognizes the +zero+ option.

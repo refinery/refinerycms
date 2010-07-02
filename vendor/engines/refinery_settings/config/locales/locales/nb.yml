@@ -15,7 +15,7 @@ nb:
       index:
         new: Opprett ny instilling
         empty_set: Det er ingen instillinger enda.
-        create_first: "Trykk {{link}} for å legge til din første instilling."
+        create_first: "Trykk %{link} for å legge til din første instilling."
       form:
         restart_may_be_in_order: "<strong>Ver oppmerksom</strong> på at du må kanskje starte nettsiden din på nytt for at instillingen skal ha effekt."
   plugins:

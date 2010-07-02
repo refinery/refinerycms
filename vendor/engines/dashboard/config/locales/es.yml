@@ -13,10 +13,10 @@ es:
         see_home_page: Ver pagina principal
       recent_activity:
         latest_activity: Ultima actividad
-        see: Vee '{{what}}'
+        see: Vee '%{what}'
       recent_inquiries:
         latest_inquiries: Latest inquiries
   updated: actualizado
   created: creado
-  ago: "hace {{time}}"
+  ago: "hace %{time}"
   see: Ver
