@@ -6,7 +6,7 @@ class Role < ActiveRecord::Base
   validates_uniqueness_of :title
 
   def camelize_title
-    self.title = title.camelize
+    self.title = title.to_s.camelize
   end
 
   def self.[](title)
