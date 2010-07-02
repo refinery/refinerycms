@@ -3,6 +3,11 @@
   <p>
     <strong><%= t('.age') %>:</strong> <%= time_ago_in_words(@inquiry.created_at) %>
   </p>
+  <% if @inquiry.spam? %>
+    <p>
+      <strong><%= t('.spam') %>:</strong> <%= t('.spam_yes') %>
+    </p>
+  <% end %>
   <h2><%= t('.actions') %></h2>
   <ul>
     <li>

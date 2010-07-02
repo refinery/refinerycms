@@ -993,6 +993,15 @@ a img {
 .edit_email_icon {
   background-image: url('/images/refinery/icons/email_edit.png');
 }
+.spam_icon {
+  background-image: url('/images/refinery/icons/bin.png');
+}
+.spam_empty_icon {
+	background-image: url('/images/refinery/icons/bin_closed.png');
+}
+.email_icon {
+  background-image: url('/images/refinery/icons/email.png');
+}
 .back_icon {
   background-image: url('/images/refinery/icons/arrow_left.png');
 }
