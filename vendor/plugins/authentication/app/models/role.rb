@@ -10,7 +10,7 @@ class Role < ActiveRecord::Base
   end
 
   def self.[](title)
-    find_or_create_by_title(title.to_s)
+    title.is_a?(Role) ? title : find_or_create_by_title(title.to_s)
   end
 
 end
