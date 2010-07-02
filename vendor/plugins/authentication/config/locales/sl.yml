@@ -22,8 +22,9 @@ sl:
     login_failed: Oprostite, vaše geslo ali uporabniško ime je bilo napačno.
     logged_out: Uspešno ste se odjavili.
     new:
+      hello_please_sign_in: "Pozdravljeni! Prosimo prijavite se."
       login: Uporabniško ime
-      log_in: Prijavi se
+      sign_in: Prijavi se
       cancel: Prekliči
       password: Geslo
       remember_me: Zapomni se me
@@ -71,8 +72,8 @@ sl:
       user_session: SejaUporabnika
     attributes:
       user_session:
-        login: uporabniško ime
-        email: email
-        password: geslo
+        login: Uporabniško ime
+        email: Email
+        password: Geslo
         remember_me: zapomni se me
         incorrect: "Oprostite, {{login_field}} ali geslo je bilo napačno."
