@@ -7,12 +7,12 @@ class Inquiry < ActiveRecord::Base
   acts_as_indexed :fields => [:name, :email, :message, :phone]
 
   named_scope :newest, :order => 'created_at DESC'
-  
+
   named_scope :ham, lambda {{:conditions => {:spam => false}, :order => 'created_at DESC'}}
   named_scope :spam, lambda {{:conditions => {:spam => true}, :order => 'created_at DESC'}}
-  
+
   before_validation_on_create :calculate_spam_score
-  
+
   cattr_accessor :spam_words
   self.spam_words = %w{
     -online 4u 4-u acne adipex advicer baccarrat blackjack bllogspot booker buy byob carisoprodol
@@ -31,11 +31,11 @@ class Inquiry < ActiveRecord::Base
   def ham?
     not spam?
   end
-  
+
   def ham!
     self.update_attribute(:spam, false)
   end
-  
+
   def spam!
     self.update_attribute(:spam, true)
   end
@@ -49,7 +49,7 @@ protected
     link_count = self.message.scan(/http:/).size
     link_count > 2 ? -link_count : 2
   end
-  
+
   def score_for_body_length
     if self.message.length > 20 and self.message.scan(/http:/).size.zero?
       2
@@ -57,10 +57,10 @@ protected
       -1
     end
   end
-  
+
   def score_for_previous_inquiries
     current_score = 0
-    
+
     Inquiry.find(:all, :conditions => {:email => email}).each do |i|
       if i.spam?
         current_score -= 1
@@ -68,10 +68,10 @@ protected
         current_score += 1
       end
     end
-    
+
     current_score
   end
-  
+
   def score_for_spam_words
     current_score = 0
 
@@ -79,46 +79,46 @@ protected
       regex = /#{word}/i
       current_score -= 1 if message =~ regex || name =~ regex || phone =~ regex
     end
-    
+
     current_score
   end
-  
+
   def score_for_suspect_url
     current_score = 0
 
     regex = /http:\/\/\S*(\.html|\.info|\?|&|free)/i
     current_score =- (1 * message.scan(regex).size)
   end
-  
+
   def score_for_suspect_tld
     regex = /http:\/\/\S*\.(de|pl|cn)/i
     message.scan(regex).size * -1
   end
-  
+
   def score_for_lame_body_start
     message.strip =~ /^(interesting|sorry|nice|cool)/i ? -10 : 0
   end
-  
+
   def score_for_author_link
     name.scan(/http:/).size * -2
   end
-  
+
   def score_for_same_body
     Inquiry.count(:conditions => {:message => message}) * -1
   end
-  
+
   def score_for_consonant_runs
     current_score = 0
-    
+
     [name, message, phone, email].each do |field|
       field.scan(/[bcdfghjklmnpqrstvwxz]{5,}/).each do |run|
         current_score =- run.size - 4
       end
     end
-    
+
     current_score
   end
-  
+
   def calculate_spam_score
     score = 0
     score += score_for_body_links
@@ -131,9 +131,9 @@ protected
     score += score_for_same_body
     score += score_for_consonant_runs
     self.spam = (score < 0)
-    
+
     logger.info("spam score was #{score}")
-    
+
     true
   end
 
