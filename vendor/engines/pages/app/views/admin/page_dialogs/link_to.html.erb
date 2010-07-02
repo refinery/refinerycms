@@ -96,9 +96,9 @@
           <% @resources.each do |resource| -%>
             <% resource_linked = (resource.url == params[:current_link]) unless params[:current_link].blank? %>
             <li<%= " class='linked'" if @resource_linked %>>
-              <%= link_to "#{resource.title}.#{resource.filename.split('.')[1]}", resource.url,
+              <%= link_to "#{resource.title}.#{resource.ext}", resource.url,
                           :title => t('.your_resource.link_to_this_resource'),
-                          :rel => resource.title, :class => "page_link #{resource.filename.split('.')[1]}" %>
+                          :rel => resource.title, :class => "page_link #{resource.ext}" %>
             </li>
           <% end %>
         </ul>
