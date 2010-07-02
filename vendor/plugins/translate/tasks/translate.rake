@@ -145,7 +145,7 @@ namespace :translate do
         end
         if !(translation = translations[from_text]).blank?
           translation.gsub!(/\(\(([a-z_.]+)\)\)/i, '{{\1}}')
-          # Google translate sometimes replaces {{foobar}} with (()) foobar. We skip these
+          # Google translate sometimes replaces %{foobar} with (()) foobar. We skip these
           if translation !~ /\(\(\)\)/
             puts "'#{translation[0, 40]}'"
             I18n.backend.store_translations(ENV['TO'].to_sym, Translate::Keys.to_deep_hash({key => translation}))

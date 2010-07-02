@@ -44,37 +44,37 @@ da:
       half_a_minute: "et halvt minut"
       less_than_x_seconds:
         one:  "mindre end et sekund"
-        other: "mindre end {{count}} sekunder"
+        other: "mindre end %{count} sekunder"
       x_seconds:
         one:  "et sekund"
-        other: "{{count}} sekunder"
+        other: "%{count} sekunder"
       less_than_x_minutes:
         one:  "mindre end et minut"
-        other: "mindre end {{count}} minutter"
+        other: "mindre end %{count} minutter"
       x_minutes:
         one:  "et minut"
-        other: "{{count}} minutter"
+        other: "%{count} minutter"
       about_x_hours:
         one:  "cirka en time"
-        other: "cirka {{count}} timer"
+        other: "cirka %{count} timer"
       x_days:
         one:  "en dag"
-        other: "{{count}} dage"
+        other: "%{count} dage"
       about_x_months:
         one:  "cirka en måned"
-        other: "cirka {{count}} måneder"
+        other: "cirka %{count} måneder"
       x_months:
         one:  "en måned"
-        other: "{{count}} måneder"
+        other: "%{count} måneder"
       about_x_years:
         one:  "cirka et år"
-        other: "cirka {{count}} år"
+        other: "cirka %{count} år"
       over_x_years:
         one:  "mere end et år"
-        other: "mere end {{count}} år"
+        other: "mere end %{count} år"
       almost_x_years:
         one:   "næsten et år"
-        other: "næsten {{count}} years"
+        other: "næsten %{count} years"
     prompts:
       second: "Sekund"
       minute: "Minut"
@@ -138,30 +138,30 @@ da:
         accepted: "skal accepteres"
         empty: "må ikke udelades"
         blank: "skal udfyldes"
-        too_long: "er for lang (maksimum {{count}} tegn)"
-        too_short: "er for kort (minimum {{count}} tegn)"
-        wrong_length: "har forkert længde (skulle være {{count}} tegn)"
+        too_long: "er for lang (maksimum %{count} tegn)"
+        too_short: "er for kort (minimum %{count} tegn)"
+        wrong_length: "har forkert længde (skulle være %{count} tegn)"
         taken: "er allerede brugt"
         not_a_number: "er ikke et tal"
-        greater_than: "skal være større end {{count}}"
-        greater_than_or_equal_to: "skal være større end eller lig med {{count}}"
-        equal_to: "skal være lig med {{count}}"
-        less_than: "skal være mindre end {{count}}"
-        less_than_or_equal_to: "skal være mindre end eller lig med {{count}}"
+        greater_than: "skal være større end %{count}"
+        greater_than_or_equal_to: "skal være større end eller lig med %{count}"
+        equal_to: "skal være lig med %{count}"
+        less_than: "skal være mindre end %{count}"
+        less_than_or_equal_to: "skal være mindre end eller lig med %{count}"
         odd: "skal være ulige"
         even: "skal være lige"
-        record_invalid: "Validering fejlede: {{errors}}"
+        record_invalid: "Validering fejlede: %{errors}"
 
       template:
         header:
-          one:   "En fejl forhindrede {{model}} i at blive gemt"
-          other:  "{{count}} fejl forhindrede denne {{model}} i at blive gemt"
+          one:   "En fejl forhindrede %{model} i at blive gemt"
+          other:  "%{count} fejl forhindrede denne %{model} i at blive gemt"
         body: "Der var problemer med følgende felter:"
 
   activemodel:
     errors:
       template:
         header:
-          one:   "En fejl forhindrede {{model}} i at blive gemt"
-          other:  "{{count}} fejl forhindrede denne {{model}} i at blive gemt"
+          one:   "En fejl forhindrede %{model} i at blive gemt"
+          other:  "%{count} fejl forhindrede denne %{model} i at blive gemt"
         body: "Der var problemer med følgende felter:"

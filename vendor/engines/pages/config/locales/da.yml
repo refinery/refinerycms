@@ -40,7 +40,7 @@ da:
             create: Opret indholdselement
             already_exists: Der findes allerede et indholdselement med samme titel. Vælg venligst en anden titel.
             title_empty: Indtast venligst en titel for indholdselementet.
-            confirm_delete: Indholdselementet {{section_name}} slettes når siden gemmes, og alt indhold indtastet i elementet vil blive slettet. Er du sikker?
+            confirm_delete: Indholdselementet %{section_name} slettes når siden gemmes, og alt indhold indtastet i elementet vil blive slettet. Er du sikker?
       index:
         create_new_page: Tilføj en ny side
         reorder_pages: Redigér rækkefølgen af siderne

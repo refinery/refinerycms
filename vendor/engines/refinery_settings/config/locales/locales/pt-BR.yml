@@ -13,7 +13,7 @@ pt-BR:
       index:
         new: Criar nova configuração
         empty_set: Ainda não há configurações.
-        create_first: "Clique em '{{link}}' para adicionar sua primeira configuração."
+        create_first: "Clique em '%{link}' para adicionar sua primeira configuração."
       refinery_setting:
         edit: 'Editar esta configuração'
         confirm: 'Tem certeza que deseja remover esta configuração para sempre?'

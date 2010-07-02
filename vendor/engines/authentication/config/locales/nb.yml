@@ -9,11 +9,11 @@ nb:
         create_new_user: Opprett En Ny Bruker
         no_users_yet:  Det er ingen brukere enda. Trykk "Opprett En Ny Bruker" for å legge til din første bruker.
       user:
-        confirm_delete_message: "Er du sikker på at du ønsker å slette '{{who}}'?"
+        confirm_delete_message: "Er du sikker på at du ønsker å slette '%{who}'?"
         confirm_delete_title: Fjern denne brukeren for alltid
         edit_user: Rediger denne brukeren
         email_user: Send epost til denne brukeren
-        preview: ({{who}}) opprettet {{created_at}}
+        preview: (%{who}) opprettet %{created_at}
   sessions:
     login_successful: Innlogging vellykket
     login_failed: Beklager, ditt brukernavn eller passord er feil.
@@ -27,21 +27,21 @@ nb:
       or: eller
       forgot_password: Jeg har glømt passordet mitt
   users:
-    setup_website_name: "Først la oss gi siden et navn. <a href='{{link}}'>Gå her</a> for å redigere siden din sitt navn"
+    setup_website_name: "Først la oss gi siden et navn. <a href='%{link}'>Gå her</a> for å redigere siden din sitt navn"
     signup_disabled: Brukerpåmelding er deaktivert
     new:
       fill_form: Fyll ut skjemaet under med detaljene dine så vi kan få deg startet.
       sign_up: Registrer deg
     create:
-      welcome: Velkommen til Refinery, {{who}}
+      welcome: Velkommen til Refinery, %{who}
       signup_complete: Registrering utført!
   user_mailer:
     please_activate: Vennligst aktiver din nye konto
     activated: Din konto er nå aktivert!
-    activated_email: "{{who}}, din konto er aktivert. Du kan nå legge til dine innstikk:"
+    activated_email: "%{who}, din konto er aktivert. Du kan nå legge til dine innstikk:"
     account_created: Din konto er opprettet.
-    user_name: Brukernavn {{name}}
-    password: Passord {{password}}
+    user_name: Brukernavn %{name}
+    password: Passord %{password}
     visit_url: "Gå til denne adressen for å aktivere kontoen din:"
     link_to_reset_your_password: Lenke for å nullstille passordet ditt
   authlogic:
@@ -65,4 +65,4 @@ nb:
         email: epost
         password: passord
         remember_me: husk meg
-        incorrect: "beklager, ditt {{login_field}} eller passord er ikke korrekt."
+        incorrect: "beklager, ditt %{login_field} eller passord er ikke korrekt."

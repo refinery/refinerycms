@@ -56,41 +56,41 @@ el:
       half_a_minute: "μισό λεπτό"
       less_than_x_seconds:
         one:   "λιγότερο απο ένα δευτερόλεπτο"
-        other: "λιγότερο απο {{count}} δευτερόλεπτα"
+        other: "λιγότερο απο %{count} δευτερόλεπτα"
       x_seconds:
         one:   "1 δευτερόλεπτο"
-        other: "{{count}} δευτερόλεπτα"
+        other: "%{count} δευτερόλεπτα"
       less_than_x_minutes:
         one:   "λιγότερο απο ένα λεπτό"
-        other: "λιγότερο απο {{count}} λεπτά"
+        other: "λιγότερο απο %{count} λεπτά"
       x_minutes:
         one:   "ένα λεπτό"
-        other: "{{count}} λεπτά"
+        other: "%{count} λεπτά"
       about_x_hours:
         one:   "1 ώρα περίπου"
-        other: "{{count}} hours περίπου"
+        other: "%{count} hours περίπου"
       x_days:
         one:   "1 μέρα"
-        other: "{{count}} μέρες"
+        other: "%{count} μέρες"
       about_x_months:
         one:   "1 μήνα περίπου"
-        other: "{{count}} μήνες περίπου"
+        other: "%{count} μήνες περίπου"
       x_months:
         one:   "1 μήνα"
-        other: "{{count}} μήνες"
+        other: "%{count} μήνες"
       about_x_years:
         one:   "ένα χρόνο περίπου"
-        other: "{{count}} χρόνια περίπου"
+        other: "%{count} χρόνια περίπου"
       over_x_years:
         one:   "πάνω απο 1 χρόνο"
-        other: "πάνω απο {{count}} χρόνια"
+        other: "πάνω απο %{count} χρόνια"
 
   activerecord:
     errors:
       template:
         header:
-          one:    "1 λάθος παρεμπόδισε αυτό το {{model}} να αποθηκευθεί"
-          other:  "{{count}} λάθη εμπόδισαν αυτό το {{model}} να αποθηκευθεί"
+          one:    "1 λάθος παρεμπόδισε αυτό το %{model} να αποθηκευθεί"
+          other:  "%{count} λάθη εμπόδισαν αυτό το %{model} να αποθηκευθεί"
         # The variable :count is also available
         body: "Υπήρξαν προβλήματα με τα ακόλουθα πεδία :"
 
@@ -107,16 +107,16 @@ el:
         accepted: "πρέπει να είναι αποδεκτό"
         empty: "δεν πρέπει να είναι άδειο"
         blank: "δεν πρέπει να είναι κενό"
-        too_long: "είναι πολύ μεγάλο (το μέγιστο μήκος είναι {{count}} χαρακτήρες)"
-        too_short: "είναι πολύ μικρό (το μικρότερο μήκος είναι {{count}} χαρακτήρες)"
-        wrong_length: "έχει λανθασμένο μήκος (πρέπει να είναι {{count}} χαρακτήρες)"
+        too_long: "είναι πολύ μεγάλο (το μέγιστο μήκος είναι %{count} χαρακτήρες)"
+        too_short: "είναι πολύ μικρό (το μικρότερο μήκος είναι %{count} χαρακτήρες)"
+        wrong_length: "έχει λανθασμένο μήκος (πρέπει να είναι %{count} χαρακτήρες)"
         taken: "το έχουν ήδη χρησιμοποιήσει"
         not_a_number: "δεν είναι ένας αριθμός"
-        greater_than: "πρέπει να είναι μεγαλύτερο απο {{count}}"
-        greater_than_or_equal_to: "πρέπει να είναι μεγαλύτερο ή ίσον με {{count}}"
-        equal_to: "πρέπει να είναι ίσον με  {{count}}"
-        less_than: "πρέπει να είναι λιγότερο απο {{count}}"
-        less_than_or_equal_to: "πρέπει να είναι λιγότερο ή ίσον με {{count}}"
+        greater_than: "πρέπει να είναι μεγαλύτερο απο %{count}"
+        greater_than_or_equal_to: "πρέπει να είναι μεγαλύτερο ή ίσον με %{count}"
+        equal_to: "πρέπει να είναι ίσον με  %{count}"
+        less_than: "πρέπει να είναι λιγότερο απο %{count}"
+        less_than_or_equal_to: "πρέπει να είναι λιγότερο ή ίσον με %{count}"
         odd: "πρέπει να είναι περιττός"
         even: "πρέπει να είναι άρτιος"
         # Append your own errors here or at the model/attributes scope.
@@ -127,7 +127,7 @@ el:
       # For example,
       #   models:
       #     user:
-      #       blank: "This is a custom blank message for {{model}}: {{attribute}}"
+      #       blank: "This is a custom blank message for %{model}: %{attribute}"
       #       attributes:
       #         login:
       #           blank: "This is a custom blank message for User login"

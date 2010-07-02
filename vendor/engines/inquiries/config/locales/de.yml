@@ -25,15 +25,15 @@ de:
         move_inquiry_to_closed: Diese Kontaktanfrage zu geschlossenen Anfragen verschieben
         move_inquiry_to_open: Diese Kontaktanfrage zu offenen Anfragen verschieben
         read_inquiry: Kontaktanfrage lesen
-        remove_inquiry: "Sind Sie sicher, dass Sie die Kontaktanfrage von '{{name}}' wirklich löschen möchten?"
+        remove_inquiry: "Sind Sie sicher, dass Sie die Kontaktanfrage von '%{name}' wirklich löschen möchten?"
         title: Diese Kontaktanfrage für immer löschen.
       toggle_status:
-        closed: "Kontaktanfrage '{{inquiry}}' ist geschlossen"
-        reopened: "Kontaktanfrage '{{inquiry}}' ist neu geöffnet"
+        closed: "Kontaktanfrage '%{inquiry}' ist geschlossen"
+        reopened: "Kontaktanfrage '%{inquiry}' ist neu geöffnet"
       index:
         update_notified: Wer wird benachrichtigt aktualisieren
         edit_confirmation_email: Bestätigungsmail bearbeiten
-        search_results_for: Suchergebnisse für {{query}}
+        search_results_for: Suchergebnisse für %{query}
         open_inquiries: Offene Anfragen
         no_inquiries: "Juhuu! Es gibt keine offenen Kontaktanfragen, da Sie bereits alle Anfragen abgearbeitet haben."
         closed_inquiries: Geschlossene Kontaktanfragen
@@ -50,7 +50,7 @@ de:
         inquiry: Kontaktanfrage
     inquiry_settings:
       update:
-        updated: "'{{setting}}' wurde erfolgreich aktualisiert."
+        updated: "'%{setting}' wurde erfolgreich aktualisiert."
       notification_recipients_form:
         inquiry_settings_value_name: Benachrichtigungen senden an
         explanation: "Jedesmal wenn jemand Sie auf Ihrer Webseite kontaktiert, wird eine E-Mail mit einem Hinweis zur neuen Kontaktanfrage versendet."

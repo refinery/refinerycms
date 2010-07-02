@@ -3,7 +3,7 @@ pt-BR:
     refinery_files:
       title: Recursos
   must_choose_file: Você deve escolher um arquivo para enviar
-  file_should_be_smaller_than_max_file_size: "Arquivos devem ser menores de {{max_file_size}} em tamanho"
+  file_should_be_smaller_than_max_file_size: "Arquivos devem ser menores de %{max_file_size} em tamanho"
   admin:
     resources:
       form:
@@ -11,16 +11,16 @@ pt-BR:
         download_current: Baixar arquivo atual
         or: ou
         replace: ", substituir por este..."
-        maximum_file_size: "The maximum file size is {{megabytes}} megabytes."
+        maximum_file_size: "The maximum file size is %{megabytes} megabytes."
       resource:
-        download: Baixar este arquivo ({{size}})
+        download: Baixar este arquivo (%{size})
         edit: Editar este arquivo
         delete:
-          message: Tem certeza que deseja remover '{{title}}'?
+          message: Tem certeza que deseja remover '%{title}'?
           title: Remover este arquivo para sempre
       index:
         upload_new: Enviar Novo Arquivo
-        search_results: Resultados da busca por '{{results}}'
+        search_results: Resultados da busca por '%{results}'
         search_no_results: Desculpe, nenhum resultado encontrado.
         no_files_yet: Ainda não existem arquivos. Clique em "Enviar Novo Arquivo" para adicionar seu primeiro arquivo.
       insert:

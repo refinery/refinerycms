@@ -41,7 +41,7 @@ nl:
             create: Maak een nieuwe sectie
             already_exists: Er bestaat al een sectie met die naam. Kies a.u.b. een andere naam.
             title_empty: U heeft nog geen naam voor dezee sectie ingevoerd. Kies a.u.b. een naam.
-            confirm_delete: Deze actie zal de complete inhoud van de sectie {{section_name}} geheel verwijderen. Weet u zeker dat u dit wilt?
+            confirm_delete: Deze actie zal de complete inhoud van de sectie %{section_name} geheel verwijderen. Weet u zeker dat u dit wilt?
       index:
         create_new_page: Maak een nieuwe pagina
         reorder_pages: "Wijzig de volgorde van de pagina's"

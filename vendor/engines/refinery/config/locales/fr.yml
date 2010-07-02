@@ -11,17 +11,17 @@ fr:
     log_out: Déconnexion
     search: Rechercher
     search_submit: Envoyer
-    search_results_for: "Résultat de recherche pour '{{query}}'"
+    search_results_for: "Résultat de recherche pour '%{query}'"
     no_results_found: "Désolé, aucun résultat trouvé"
   refinery:
-    other: "Other {{what}}"
-    reorder: "Reordonner {{what}}"
+    other: "Other %{what}"
+    reorder: "Reordonner %{what}"
     reorder_done: "Réorganisation terminé"
     search_no_results: "Désolé, aucun résultat."
     crudify:
-      created: "{{what}} a été créé avec succès"
-      updated: "{{what}}a été mis à jours avec succès"
-      destroyed: "{{what}} été supprimé avec succès"
+      created: "%{what} a été créé avec succès"
+      updated: "%{what}a été mis à jours avec succès"
+      destroyed: "%{what} été supprimé avec succès"
   layouts:
     admin:
       view_public_site: Voir la page public
@@ -38,18 +38,18 @@ fr:
         or_cancel: ou
         cancel: Annuler
         or_continue: ou
-        cancel_lose_changes: "Si vous annuler, vous perderez les changements effectué sur le '{{object_name}}'."
+        cancel_lose_changes: "Si vous annuler, vous perderez les changements effectué sur le '%{object_name}'."
       image_picker:
-        none_selected: "Il n'y a pas de '{{what}}' selectionné, cliquer ici pour en ajouter."
-        remove_current: "Supprimer {{what}}"
+        none_selected: "Il n'y a pas de '%{what}' selectionné, cliquer ici pour en ajouter."
+        remove_current: "Supprimer %{what}"
         change: Cliquer ici pour selectionner une image
         image: image
       resource_picker:
-        none_selected: "Il n'y a pas de {{what}} selectionné, cliquer ici pour en ajouter."
-        current: "Current {{what}}"
-        download_current: "Download current {{what}}"
+        none_selected: "Il n'y a pas de %{what} selectionné, cliquer ici pour en ajouter."
+        current: "Current %{what}"
+        download_current: "Download current %{what}"
         opens_in_new_window: "Ouvrir dans une nouvelle fenêtre"
-        remove_current: "Remove current {{what}}"
+        remove_current: "Remove current %{what}"
         resource: resource
     message:
       close: Fermer

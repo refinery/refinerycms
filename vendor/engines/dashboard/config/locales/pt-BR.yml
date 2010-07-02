@@ -13,10 +13,10 @@ pt-BR:
         change_language: Mudar Língua
       recent_activity:
         latest_activity: Atividade Recente
-        see: Ver '{{what}}'
+        see: Ver '%{what}'
       recent_inquiries:
         latest_inquiries: Latest inquiries
   updated: atualizado
   created: criado
-  ago: "{{time}} atrás"
+  ago: "%{time} atrás"
   see: Ver

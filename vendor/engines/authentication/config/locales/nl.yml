@@ -25,11 +25,11 @@ nl:
         create_new_user: Maak een nieuwe gebruiker
         no_users_yet:  Er zijn nog geen gebruikers. Klik op "Maak een nieuwe gebruiker" om de eerste toe te voegen.
       user:
-        confirm_delete_message: "Weet u zeker dat u de gebruiker '{{who}}' wilt verwijderen?"
+        confirm_delete_message: "Weet u zeker dat u de gebruiker '%{who}' wilt verwijderen?"
         confirm_delete_title: Verwijder deze gebruiker permanent.
         edit_user: Bewerk deze gebruiker
         email_user: Email deze gebruiker
-        preview: ({{who}}) is aangemaakt op {{created_at}}
+        preview: (%{who}) is aangemaakt op %{created_at}
   sessions:
     login_successful: Successvol ingelogd.
     login_failed: Sorry, uw wachtwoord of gebruikersnaam was niet juist.
@@ -43,21 +43,21 @@ nl:
       remember_me: Onthoud mijn gegevens
       forgot_password: Ik ben mijn wachtwoord vergeten
   users:
-    setup_website_name: "Laten we eerst de website een naam geven. <a href='{{link}}'>Klik hier</a> om de naam van de website te bewerken"
+    setup_website_name: "Laten we eerst de website een naam geven. <a href='%{link}'>Klik hier</a> om de naam van de website te bewerken"
     signup_disabled: Het registreren van gebruikers is uitgeschakeld
     new:
       fill_form: Vul het onderstaande formulier in, zodat u kan beginnen.
       sign_up: Registreer
     create:
-      welcome: Welkom bij Refinery, {{who}}
+      welcome: Welkom bij Refinery, %{who}
       signup_complete: Registratie compleet!
   user_mailer:
     please_activate: A.u.b. uw gebruikersaccount activeren.
     activated: Uw gebruikersaccount is geactiveerd!
-    activated_email: "{{who}}, uw gebruikersaccount is geactiveerd. U mag nu plugins toevoegen:"
+    activated_email: "%{who}, uw gebruikersaccount is geactiveerd. U mag nu plugins toevoegen:"
     account_created: Uw account is aangemaakt.
-    user_name: Gebruiker {{name}}
-    password: Wachtwoord {{password}}
+    user_name: Gebruiker %{name}
+    password: Wachtwoord %{password}
     visit_url: "Bezoek dit adres om uw gebruikersaacount te activeren:"
   authlogic:
     error_messages:
@@ -80,4 +80,4 @@ nl:
         email: e-mail
         password: Wachtwoord
         remember_me: Onthoud mijn gegevens
-        incorrect: "Sorry, uw {{login_field}} of wachtwoord was niet juist."
+        incorrect: "Sorry, uw %{login_field} of wachtwoord was niet juist."

@@ -28,14 +28,14 @@ nl:
         move_inquiry_to_open: Verplaats deze vraag naar 'te verwerken'
         read_inquiry: Lees de vraag
         remove_inquiry: Verwijder de vraag permanent
-        remove_inquiry_confirmation: "Weet u zeker dat u de vraag '{{name}}' wilt verwijderen?"
+        remove_inquiry_confirmation: "Weet u zeker dat u de vraag '%{name}' wilt verwijderen?"
       toggle_status:
-        closed: "Vraag '{{inquiry}}' is behandeld"
-        reopened: "Vraag '{{inquiry}}' is heropend"
+        closed: "Vraag '%{inquiry}' is behandeld"
+        reopened: "Vraag '%{inquiry}' is heropend"
       index:
         update_notified: Wijzig wie een notificatie ontvangt
         edit_confirmation_email: Bewerk bevestigings email
-        search_results_for: Zoekresultaten voor {{query}}
+        search_results_for: Zoekresultaten voor %{query}
         open_inquiries: Open vragen
         no_inquiries: "Jeej! Er zijn geen onverwerkte vragen!"
         closed_inquiries: Verwerkte vragen
@@ -51,7 +51,7 @@ nl:
         back_to_all_inquiries: Terug naar alle vragen
     inquiry_settings:
       update:
-        updated: "'{{setting}}' is aangepast."
+        updated: "'%{setting}' is aangepast."
       notification_recipients_form:
         inquiry_settings_value_name: Stuur notificaties naar
         explanation: "Iedere keer wanneer iemand het vraag formulier invult op uw website, stuurt Refinery een email waarin staat dat er een nieuwe vraag ontvangen is."

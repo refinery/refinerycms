@@ -40,7 +40,7 @@ de:
             create: Inhaltsbereich erstellen.
             already_exists: Ein Inhaltsbereich mit diesem Titel existiert bereits. Bitte wählen Sie einen anderen Titel.
             title_empty: Sie haben keinen Titel für den Inhaltsbereich eingegeben. Bitte geben Sie einen Titel ein.
-            confirm_delete: "Der Inhaltsbereich {{section_name}} und alle darin enthaltenen Inhalte werden gelöscht, wenn diese Seite gespeichert wird. Sind Sie sicher?"
+            confirm_delete: "Der Inhaltsbereich %{section_name} und alle darin enthaltenen Inhalte werden gelöscht, wenn diese Seite gespeichert wird. Sind Sie sicher?"
       index:
         create_new_page: Neue Seite erstellen
         reorder_pages: Seiten neu anordnen

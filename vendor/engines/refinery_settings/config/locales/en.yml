@@ -16,7 +16,7 @@ en:
       index:
         new: Create new setting
         empty_set: There are no settings yet.
-        create_first: "Click '{{link}}' to add your first setting."
+        create_first: "Click '%{link}' to add your first setting."
       form:
         restart_may_be_in_order: "<strong>Please note</strong> that you may need to restart the website for this setting to take effect."
         yes_make_this_setting_restricted: "Yes, make this setting restricted only to superusers."

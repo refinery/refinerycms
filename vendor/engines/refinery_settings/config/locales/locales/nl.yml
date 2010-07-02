@@ -38,7 +38,7 @@ nl:
       index:
         new: Maak een nieuwe instelling aan
         empty_set: Er zijn nog geen instellingen aangemaakt
-        create_first: "Klik '{{link}}' om je eerste instelling aan te maken."
+        create_first: "Klik '%{link}' om je eerste instelling aan te maken."
       form:
         restart_may_be_in_order: "<strong>Let op</strong>, na een aanpassing moet wellicht uw webapplicatie herstart worden" 
   plugins:

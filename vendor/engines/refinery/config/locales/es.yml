@@ -11,17 +11,17 @@ es:
     log_out: "Cerrar sesión"
     search: Buscar
     search_submit: Aceptar
-    search_results_for: "Resultados de busqueda de '{{query}}'"
+    search_results_for: "Resultados de busqueda de '%{query}'"
     no_results_found: "Lo sentimos, no se encontraron resultados"
   refinery:
-    other: "Otra {{what}}"
-    reorder: "Re-ordenar {{what}}"
-    reorder_done: "Listo el Re-ordenado {{what}}"
+    other: "Otra %{what}"
+    reorder: "Re-ordenar %{what}"
+    reorder_done: "Listo el Re-ordenado %{what}"
     search_no_results: "Lo sentimos, no se encontraron resultados."
     crudify:
-      created: "{{what}} fue creado exitosamente"
-      updated: "{{what}} fue creado exitosamente"
-      destroyed: "{{what}} fue borrado exitosamente"
+      created: "%{what} fue creado exitosamente"
+      updated: "%{what} fue creado exitosamente"
+      destroyed: "%{what} fue borrado exitosamente"
   layouts:
     admin:
       view_public_site: Ver Sitio Publico
@@ -38,18 +38,18 @@ es:
         or_cancel: o
         cancel: Cancelar
         or_continue: o
-        cancel_lose_changes: "Cancelar perdera todos los cambios que se han hecho en {{object_name}}"
+        cancel_lose_changes: "Cancelar perdera todos los cambios que se han hecho en %{object_name}"
       image_picker:
-        none_selected: "No hay ningun {{what}} seleccionado, por favor dale click para seleccionar alguno."
-        remove_current: "Quitar el {{what}} actual"
+        none_selected: "No hay ningun %{what} seleccionado, por favor dale click para seleccionar alguno."
+        remove_current: "Quitar el %{what} actual"
         change: Dale Click para seleccionar una imagen
         image: imagen
       resource_picker:
-        none_selected: "No hay ningun {{what}} seleccionado, por favor dale click para seleccionar alguno."
-        current: "{{what}} es seleccionado"
-        download_current: "Descargar {{what}} seleccionado"
+        none_selected: "No hay ningun %{what} seleccionado, por favor dale click para seleccionar alguno."
+        current: "%{what} es seleccionado"
+        download_current: "Descargar %{what} seleccionado"
         opens_in_new_window: Abrir en una nueva ventana
-        remove_current: "Quitar el {{what}} seleccionado"
+        remove_current: "Quitar el %{what} seleccionado"
         resource: recurso
     message:
       close: Cerrar

@@ -67,37 +67,37 @@ es:
       half_a_minute: "medio minuto" 
       less_than_x_seconds:
         one:  "menos de 1 segundo" 
-        other: "menos de {{count}} segundos"
+        other: "menos de %{count} segundos"
       x_seconds:
         one:  "1 segundo" 
-        other: "{{count}} segundos" 
+        other: "%{count} segundos" 
       less_than_x_minutes:
         one:  "menos de 1 minuto" 
-        other: "menos de {{count}} minutos" 
+        other: "menos de %{count} minutos" 
       x_minutes:
         one:  "1 minuto" 
-        other: "{{count}} minutos" 
+        other: "%{count} minutos" 
       about_x_hours:
         one:  "alrededor de 1 hora" 
-        other: "alrededor de {{count}} horas" 
+        other: "alrededor de %{count} horas" 
       x_days:
         one:  "1 día" 
-        other: "{{count}} días" 
+        other: "%{count} días" 
       about_x_months:
         one:  "alrededor de 1 mes" 
-        other: "alrededor de {{count}} meses" 
+        other: "alrededor de %{count} meses" 
       x_months:
         one:  "1 mes" 
-        other: "{{count}} meses" 
+        other: "%{count} meses" 
       about_x_years:
         one:  "alrededor de 1 año" 
-        other: "alrededor de {{count}} años" 
+        other: "alrededor de %{count} años" 
       over_x_years:
         one:  "más de 1 año" 
-        other: "más de {{count}} años" 
+        other: "más de %{count} años" 
       almost_x_years:
         one: "casi 1 año"
-        other: "casi {{count}} años"
+        other: "casi %{count} años"
     prompts:
       year:   "Año"
       month:  "Mes"
@@ -110,8 +110,8 @@ es:
     errors:
       template:
         header:
-          one:   "no se pudo guardar este {{model}} porque se encontró 1 error" 
-          other:  "no se pudo guardar este {{model}} porque se encontraron {{count}} errores" 
+          one:   "no se pudo guardar este %{model} porque se encontró 1 error" 
+          other:  "no se pudo guardar este %{model} porque se encontraron %{count} errores" 
         # The variable :count is also available
         body: "Se encontraron problemas con los siguientes campos:" 
 
@@ -125,19 +125,19 @@ es:
         accepted: "debe ser aceptado"
         empty: "no puede estar vacío"
         blank: "no puede estar en blanco"
-        too_long: "es demasiado largo ({{count}} caracteres máximo)"
-        too_short: "es demasiado corto ({{count}} caracteres mínimo)"
-        wrong_length: "no tiene la longitud correcta ({{count}} caracteres exactos)"
+        too_long: "es demasiado largo (%{count} caracteres máximo)"
+        too_short: "es demasiado corto (%{count} caracteres mínimo)"
+        wrong_length: "no tiene la longitud correcta (%{count} caracteres exactos)"
         taken: "ya está en uso"
         not_a_number: "no es un número"
-        greater_than: "debe ser mayor que {{count}}"
-        greater_than_or_equal_to: "debe ser mayor que o igual a {{count}}"
-        equal_to: "debe ser igual a {{count}}"
-        less_than: "debe ser menor que {{count}}"
-        less_than_or_equal_to: "debe ser menor que o igual a {{count}}"
+        greater_than: "debe ser mayor que %{count}"
+        greater_than_or_equal_to: "debe ser mayor que o igual a %{count}"
+        equal_to: "debe ser igual a %{count}"
+        less_than: "debe ser menor que %{count}"
+        less_than_or_equal_to: "debe ser menor que o igual a %{count}"
         odd: "debe ser impar"
         even: "debe ser par"
-        record_invalid: "La validación falló: {{errors}}"
+        record_invalid: "La validación falló: %{errors}"
         # Append your own errors here or at the model/attributes scope.
 
       models:

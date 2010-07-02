@@ -25,15 +25,15 @@ fr:
         move_inquiry_to_closed: Marqué cette requête comme 'fermé'
         move_inquiry_to_open: Marqué cette requête comme 'ouverte'
         read_inquiry: Lire la demande de renseignement
-        remove_inquiry: "Êtes-vous sûr de vouloir supprimer la demande de renseignement de '{{name}}'?"
+        remove_inquiry: "Êtes-vous sûr de vouloir supprimer la demande de renseignement de '%{name}'?"
         title: Supprimer cette demande de renseignement pour toujours.
       toggle_status:
-        closed: "La demande de renseignement '{{inquiry}}' est fermé"
-        reopened: "La demande de renseignement '{{inquiry}}' est rouverte"
+        closed: "La demande de renseignement '%{inquiry}' est fermé"
+        reopened: "La demande de renseignement '%{inquiry}' est rouverte"
       index:
         update_notified: "Mettre à jour qui est notifié"
         edit_confirmation_email: Modifier le couriel de confirmation
-        search_results_for: "Résultat de recherche pour {{query}}"
+        search_results_for: "Résultat de recherche pour %{query}"
         open_inquiries: Demande de renseignement ouverte
         no_inquiries: "Hourra! Il n'y a pas de requête ouvertes, vous les avez toutes faites."
         closed_inquiries: Demande de renseignement fermé
@@ -50,7 +50,7 @@ fr:
         inquiry: Requête
     inquiry_settings:
       update:
-        updated: "'{{setting}}' a été mis à jour."
+        updated: "'%{setting}' a été mis à jour."
       notification_recipients_form:
         inquiry_settings_value_name: Envoyer des notifications à
         explanation: "Chaque fois que quelqu'un vous contact sur votre site, Refinery envoie un couriel pour dire qu'il ya une nouvelle requête."

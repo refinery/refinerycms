@@ -13,10 +13,10 @@ fr:
         see_home_page: Voir la page d'accueil
       recent_activity:
         latest_activity: Activitées récente
-        see: Voir '{{what}}'
+        see: Voir '%{what}'
       recent_inquiries:
         latest_inquiries: Latest inquiries
   updated: a été mis à jour
   created: a été créer
-  ago: "Il y a {{time}}"
+  ago: "Il y a %{time}"
   see: Voir

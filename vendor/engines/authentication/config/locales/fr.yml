@@ -13,11 +13,11 @@ fr:
         create_new_user: Créer un Nouvel Utilisateur
         no_users_yet:  Il n'y a pas encore d'utilisateurs. Cliquez sur "Créer un nouvel utilisateur" pour ajouter votre premier utilisateur.
       user:
-        confirm_delete_message: "Etes-vous sûr de vouloir supprimer '{{who}}'?"
+        confirm_delete_message: "Etes-vous sûr de vouloir supprimer '%{who}'?"
         confirm_delete_title: Supprimer cet utilisateur pour toujours
         edit_user: Modifier cet utilisateur
         email_user: Envoyer un courriel cet utilisateur
-        preview: ({{who}}) créé le {{created_at}}
+        preview: (%{who}) créé le %{created_at}
   sessions:
     login_successful: Connecté avec succès
     login_failed: "Désolé, votre mot de passe ou nom d'utilisateur est incorrect."
@@ -31,28 +31,28 @@ fr:
       or: ou
       forgot_password: "J'ai oublié mon mot de passe"
   users:
-    setup_website_name: "Pour commencer, donnez un nom au site. <a href='{{link}}'>Allez ici</a> pour modifier le nom de votre site."
+    setup_website_name: "Pour commencer, donnez un nom au site. <a href='%{link}'>Allez ici</a> pour modifier le nom de votre site."
     signup_disabled:  "L'inscription d'utilisateur est désactivé"
     new:
       fill_form: Remplissez le formulaire ci-dessous avec vos information afin que nous puissions vous aider à démarrer.
       sign_up: "S'inscrire"
     create:
-      welcome: Bienvenue sur Refinery, {{who}}
+      welcome: Bienvenue sur Refinery, %{who}
       signup_complete: Inscription terminée!
     forgot:
       blank_email: Vous n'êtes enter pas une adresse e-mail.
-      email_not_associated_with_account: "Désolé, mais '{{email}}' n'associé pas à une compte.<br/>Êtes-vous certain que vous avez l'adresse e-mail correct?"
+      email_not_associated_with_account: "Désolé, mais '%{email}' n'associé pas à une compte.<br/>Êtes-vous certain que vous avez l'adresse e-mail correct?"
       email_reset_sent: Un e-mail a été envoyé à vous qui contient une liaison pour réinitialiser votre mot de passe.
     reset:
       code_invalid: "Désolé, mais ce code reset est périmé ou est nul."
-      successful: Le mot de passe étais réinitialisé avec succès pour {{email}}"
+      successful: Le mot de passe étais réinitialisé avec succès pour %{email}"
   user_mailer:
     please_activate: S'il vous plaît activer votre nouveau compte
     activated: Votre compte a été activé!
-    activated_email: "{{who}}, votre compte a été activé. Vous pouvez maintenant commencer à ajouter vos plugins:"
+    activated_email: "%{who}, votre compte a été activé. Vous pouvez maintenant commencer à ajouter vos plugins:"
     account_created: Votre compte a été créé.
-    user_name: "Nom d'utilisateur {{name}}"
-    password: "Mot de passe {{password}}"
+    user_name: "Nom d'utilisateur %{name}"
+    password: "Mot de passe %{password}"
     visit_url: "Visitez cette adresse pour activer votre compte:"
     link_to_reset_your_password: Lien pour réinitialiser votre mot de passe
   authlogic:
@@ -76,4 +76,4 @@ fr:
         email: couriel
         password: mot de passe
         remember_me: Rester connecté
-        incorrect: "Désolé, votre {{login_field}} de passe est incorrect"
+        incorrect: "Désolé, votre %{login_field} de passe est incorrect"
