@@ -1,0 +1,32 @@
+de:
+  plugins:
+    refinery_files:
+      title: Dateien
+  must_choose_file: "Sie müssen eine Datei zum Hochladen auswählen"
+  file_should_be_smaller_than_max_file_size: "Die Dateien sollten kleiner als {{max_file_size}} werden"
+  admin:
+    resources:
+      form:
+        file_to_upload: Datei zum Hochladen
+        download_current: Download der aktuellen Datei
+        or: oder
+        replace: ", ersetzen Sie es mit diesem einen..."
+        maximum_file_size: "Die maximale Dateigröße beträgt {{megabytes}} Megabyte."
+      resource:
+        download: "Diese Datei herunterladen ({{size}})"
+        edit: Bearbeiten Sie diese Datei
+        delete:
+          message: "Sind Sie sicher, die Sie löschen möchten '{{title}}'?"
+          title: Löschen Sie diese Datei immer
+      index:
+        upload_new: Neue Datei Hochladen
+        no_files_yet: Es gibt keine Dateien. Klicken Sie auf "Neue Datei Hochladen" um Ihre erste Datei hinzufügen.
+      insert:
+        existing_file: Bestehende Datei
+        new: Neue Datei
+        link_to_resource: 'Link zu dieser Datei'
+        previous: Zurück
+        next: Nächste
+        submit_insert: Einfügen
+        or: oder
+        cancel: Abbrechen

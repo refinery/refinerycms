@@ -1,8 +1,8 @@
 source :rubygems
 
-# Specify the database driver as appropriate for your application (only one).
+# Specify the database driver as appropriate for your application (only one is necessary).
 gem 'mysql', :require => 'mysql'
-#gem 'sqlite3-ruby', :require => 'sqlite3'
+gem 'sqlite3-ruby', :require => 'sqlite3'
 
 # Specify your favourite web server (only one).
 #gem 'unicorn', :group => :development
