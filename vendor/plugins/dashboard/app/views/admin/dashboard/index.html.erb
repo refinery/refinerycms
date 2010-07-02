@@ -37,7 +37,7 @@
     <% if Refinery::I18n.enabled? %>
       <h2><%= t('.change_language') %></h2>
       <ul>
-        <% Refinery::I18n.locales.each do |locale_key, locale_title| %>
+        <% Refinery::I18n.locales.sort_by{|key, value| value }.each do |locale_key, locale_title| %>
           <li<%= " class='selected'" if locale_key.to_sym == I18n.locale %>>
             <%= link_to locale_title,
                         params.dup.tap { |p| p[:set_locale] = locale_key },  # Use the current params, just change the locale
