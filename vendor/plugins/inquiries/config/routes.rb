@@ -4,7 +4,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :inquiries, :collection => {:thank_you => :get}
 
   map.namespace(:admin, :path_prefix => 'refinery') do |admin|
-    admin.resources :inquiries
+    admin.resources :inquiries, :collection => {:spam => :get}, :member => {:toggle_spam => :get}
     admin.resources :inquiry_settings
   end
 end
