@@ -53,7 +53,7 @@ sl:
         current: "Trenutna {{what}}"
         download_current: "Prenesi trenutno {{what}}"
         opens_in_new_window: Odpri v novem oknu
-        remove_current: "Odstrani trnutno {{what}}"
+        remove_current: "Odstrani trenutno {{what}}"
         resource: vir
     message:
       close: Zapri
