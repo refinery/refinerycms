@@ -14,6 +14,8 @@ sl:
       recent_activity:
         latest_activity: Zadnje aktivnosti
         see: Poglej '{{what}}'
+      recent_inquiries:
+        latest_inquiries: Latest inquiries
   updated: posodobitev
   created: ustvarjena
   ago: "{{time}} nazaj"
