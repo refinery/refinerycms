@@ -39,7 +39,8 @@ class Refinery::I18n
                                                                         :nb => 'Norsk Bokm&aring;l',
                                                                         :sl => 'Slovenian',
                                                                         :es => 'Espa&ntilde;ol',
-                                                                        :it => 'Italiano'},
+                                                                        :it => 'Italiano',
+                                                                        :de => 'Deutsch'},
       {
         :callback_proc_as_string => %q{::Refinery::I18n.setup!}
       })

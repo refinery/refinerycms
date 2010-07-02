@@ -14,6 +14,7 @@ pt-BR:
         or: ou
         replace_image: Substituir por esta...
         current_image: Imagem atual
+        maximum_image_size: "The maximum image size is {{megabytes}} megabytes."
       index:
         no_results_found: Desculpe, nenhum resultado encontrado.
         create_new_image: Criar Nova Imagem

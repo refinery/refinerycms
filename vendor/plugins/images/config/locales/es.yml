@@ -13,6 +13,7 @@ es:
         or: o
         replace_image: Reemplazar imagen con esta otra...
         current_image: Imagen actual
+        maximum_image_size: "The maximum image size is {{megabytes}} megabytes."
       index:
         create_new_image: Crear Imagen nueva
         no_images_yet: No hay ninguna imagen.<br/>Pulse en "Crear Imagen nueva" para añadir su primera imagen.

@@ -11,7 +11,7 @@
   </div>
 
   <div class='field'>
-    <label>The maximum file size is <%= (Resource.attachment_options[:max_size] / 1024 / 1024) %> megabytes.</label>
+    <label><%= t('.maximum_file_size', :megabytes => (Resource.attachment_options[:max_size] / 1024 / 1024)) %></label>
   </div>
 
   <%= render :partial => "/shared/admin/form_actions",
