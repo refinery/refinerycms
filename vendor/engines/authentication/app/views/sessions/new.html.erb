@@ -1,4 +1,4 @@
-<%= form_for(:session, @session, :url => session_path) do |f| -%>
+<%= form_for(@session, :as => :session, :url => session_path) do |f| -%>
   <%= f.error_messages %>
   <div class='field session_username clearfix'>
     <%= f.label Refinery.authentication_login_field %>
