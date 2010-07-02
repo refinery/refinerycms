@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100701053151) do
+ActiveRecord::Schema.define(:version => 20100702022630) do
 
   create_table "images", :force => true do |t|
     t.string   "image_mime_type"
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(:version => 20100701053151) do
     t.boolean  "open",       :default => true
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "spam",       :default => false
   end
 
   create_table "inquiry_settings", :force => true do |t|

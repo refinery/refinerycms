@@ -1,7 +1,7 @@
 it:
   plugins:
     refinery_dashboard:
-      title: Dashboard
+      title: Cruscotto
   admin:
     dashboard:
       index:
@@ -14,6 +14,8 @@ it:
       recent_activity:
         latest_activity: Ultime attivit&agrave;
         see: Vedere '{{what}}'
+      recent_inquiries:
+        latest_inquiries: Latest inquiries
   updated: aggiornato
   created: creato
   ago: "{{time}} fa"

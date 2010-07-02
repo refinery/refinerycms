@@ -8,45 +8,56 @@ class Refinery::I18n
       if defined?(@enabled) && !@enabled.nil?
         @enabled
       else
-        @enabled = RefinerySetting.find_or_set(:refinery_i18n_enabled, false, {
-          :callback_proc_as_string => %q{::Refinery::I18n.setup!}
+        @enabled = RefinerySetting.find_or_set(:i18n_translation_enabled, false, {
+          :callback_proc_as_string => %q{::Refinery::I18n.setup!},
+          :scoping => 'refinery'
         })
       end
     end
 
     def current_locale
       unless enabled?
-        @current_locale = :en
-        RefinerySetting[:refinery_i18n_current_locale] = :en
+        ::Refinery::I18n.current_locale = :en
       else
-        @current_locale ||= RefinerySetting.find_or_set(:refinery_i18n_current_locale, I18n.default_locale)
-
+        @current_locale ||= RefinerySetting.find_or_set(:i18n_translation_current_locale, I18n.default_locale, {
+          :scoping => 'refinery',
+          :callback_proc_as_string => %q{::Refinery::I18n.setup!}
+        })
       end
     end
 
     def current_locale=(locale)
       @current_locale = locale.to_sym
-      RefinerySetting[:refinery_i18n_current_locale] = locale.to_sym
+      RefinerySetting[:i18n_translation_current_locale] = {
+        :value => locale.to_sym,
+        :scoping => 'refinery',
+        :callback_proc_as_string => %q{::Refinery::I18n.setup!}
+      }
       ::I18n.locale = locale.to_sym
     end
 
     def locales
-      @locales ||= RefinerySetting.find_or_set(:refinery_i18n_locales, {:en => 'English',
-                                                                        :fr => 'Fran&ccedil;ais',
-                                                                        :nl => 'Nederlands',
-                                                                        :'pt-BR' => 'Portugu&ecirc;s',
-                                                                        :da => 'Dansk',
-                                                                        :nb => 'Norsk Bokm&aring;l',
-                                                                        :sl => 'Slovenian',
-                                                                        :es => 'Espa&ntilde;ol',
-                                                                        :it => 'Italiano'},
-      {
-        :callback_proc_as_string => %q{::Refinery::I18n.setup!}
-      })
+      @locales ||= RefinerySetting.find_or_set(:i18n_translation_locales, {
+          :en => 'English',
+          :fr => 'Fran&ccedil;ais',
+          :nl => 'Nederlands',
+          :'pt-BR' => 'Portugu&ecirc;s',
+          :da => 'Dansk',
+          :nb => 'Norsk Bokm&aring;l',
+          :sl => 'Slovenian',
+          :es => 'Espa&ntilde;ol',
+          :it => 'Italiano',
+          :de => 'Deutsch'
+        },
+        {
+          :scoping => 'refinery',
+          :callback_proc_as_string => %q{::Refinery::I18n.setup!}
+        }
+      )
     end
 
     def has_locale?(locale)
-      locales.has_key? locale.try(:to_sym)
+      locales.has_key?(locale.try(:to_sym))
     end
 
     def setup!
@@ -82,8 +93,9 @@ class Refinery::I18n
     end
 
     def set_default_locale!
-      I18n.default_locale = @default_locale ||= RefinerySetting.find_or_set(:refinery_i18n_default_locale, :en, {
-        :callback_proc_as_string => %q{::Refinery::I18n.setup!}
+      I18n.default_locale = @default_locale ||= RefinerySetting.find_or_set(:i18n_translation_default_locale, :en, {
+        :callback_proc_as_string => %q{::Refinery::I18n.setup!},
+        :scoping => 'refinery'
       })
     end
 

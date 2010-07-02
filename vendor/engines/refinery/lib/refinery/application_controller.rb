@@ -45,7 +45,7 @@ class Refinery::ApplicationController < ActionController::Base
   end
 
   def just_installed?
-    !User.exists?
+    Role[:refinery].users.empty?
   end
 
   def local_request?
@@ -59,7 +59,7 @@ class Refinery::ApplicationController < ActionController::Base
 protected
 
   def default_url_options(options={})
-    Refinery::I18n.enabled? ?  { :locale => I18n.locale } : {}
+    Refinery::I18n.enabled? ? { :locale => I18n.locale } : {}
   end
 
   # get all the pages to be displayed in the site menu.
@@ -83,12 +83,14 @@ protected
   end
 
   def find_or_set_locale
-    if Refinery::I18n.enabled?
-      if Refinery::I18n.has_locale?(locale = params[:locale].try(:to_sym))
-        I18n.locale = locale
-      elsif Refinery::I18n.current_locale != I18n.default_locale
+    if ::Refinery::I18n.enabled?
+      if ::Refinery::I18n.has_locale?(locale = params[:locale].try(:to_sym))
+        ::I18n.locale = locale
+      elsif locale.present? and ::Refinery::I18n.current_locale != ::I18n.default_locale
         params[:locale] = I18n.locale = I18n.default_locale
-        redirect_to params, :message => "The locale '#{locale.to_s}' is not supported."
+        redirect_to(params, :message => "The locale '#{locale.to_s}' is not supported.") and return
+      else
+        ::I18n.locale = ::Refinery::I18n.current_locale
       end
     end
   end

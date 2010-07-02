@@ -9,7 +9,7 @@ en:
         link_to_this_page: Link to this page
       link_to:
         your_page:
-          tab_name: A page
+          tab_name: Your page
         web_address:
           tab_name: Website
           location: Location
@@ -19,7 +19,7 @@ en:
           step1: Find the page on the web you want to link to.
           step2: "Copy the web address from your browser's address bar and paste it into the box above."
         email_address:
-          tab_name: Email adres
+          tab_name: Email address
           subject_line_optional: Optional subject
           body_optional: Optional body
           not_sure: Not sure what to put in the boxes above?
@@ -27,8 +27,8 @@ en:
           step2: "Use the '<strong>Subject Line</strong>' box above if you want the message to be composed with a <strong>pre-written subject line</strong>."
           step3: "Use the <strong>Email Body</strong> box above if you want the message to be composed with a <strong>pre-written message</strong>."
         your_resource:
-          tab_name: A resource
-          link_to_this_resource: Link to this resource
+          tab_name: Your file
+          link_to_this_resource: Link to this file
     pages:
       page:
         view_live: View this page live <br/><em>(opens in a new window)</em>

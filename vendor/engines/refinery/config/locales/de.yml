@@ -14,52 +14,54 @@ de:
     search_results_for: "Suchergebnisse für '{{query}}'"
     no_results_found: "Entschuldigung, es wurden keine Ergebnisse gefunden"
   refinery:
-    other: "Other {{what}}"
-    reorder: "Reorder {{what}}"
-    reorder_done: "Done Reordering {{what}}"
-    search_no_results: "Sorry, no results found."
+    other: "Weitere {{what}}"
+    reorder: "Umordnen {{what}}"
+    reorder_done: "Geschehen umordnen {{what}}"
+    search_no_results: "Leider gibt es keine Ergebnisse."
     crudify:
-      created: "{{what}} was successfully created."
-      updated: "{{what}} was successfully created."
-      destroyed: "{{what}} was successfully destroyed"
+      created: "{{what}} wurde erfolgreich erstellt."
+      updated: "{{what}} wurde erfolgreich aktualisiert."
+      destroyed: "{{what}} wurde erfolgreich gelöscht."
   layouts:
     admin:
-      view_public_site: View public site
-      welcome_to_refinery: Welcome to Refinery
+      view_public_site: Profil öffentlichen Website
+      welcome_to_refinery: Willkommen bei Refinery
   shared:
     admin:
       message:
-        close: Close
+        close: Schließen
       continue_editing:
-        save_and_continue_editing: "Save &amp; continue editing"
+        save_and_continue_editing: "Speichern &amp; Bearbeitung fortsetzen"
       form_actions:
-        or: or
-        save: Save
-        or_cancel: or
-        cancel: Cancel
-        or_continue: or
-        cancel_lose_changes: "Cancelling will lose all changes you've made to this {{object_name}}"
+        or: oder
+        save: Speichern
+        or_cancel: oder
+        cancel: Abbrechen
+        or_continue: oder
+        cancel_lose_changes: "Abbrechen verlieren alle Änderungen, die Sie auf diese {{object_name}} gemacht haben"
       image_picker:
-        none_selected: "There is currently no {{what}} selected, please click here to add one."
-        remove_current: "Remove current {{what}}"
-        change: Click here to pick a image
-        image: image
+        none_selected: "Es ist derzeit kein {{what}} ausgewählt ist, klicken Sie bitte hier eine Annonce aufgeben"
+        remove_current: "Entfernen aktuel {{what}}"
+        change: "Klicken Sie hier, um ein Bild auszuwählen"
+        image: bild
       resource_picker:
-        none_selected: "There is currently no {{what}} selected, please click here to add one."
-        current: "Current {{what}}"
-        download_current: "Download current {{what}}"
-        opens_in_new_window: Opens in a new window
-        remove_current: "Remove current {{what}}"
-        resource: resource
+        none_selected: "Derzeit gibt es keine {{what}} ausgewählt, klicken Sie bitte hier eine Annonce aufgeben"
+        current: "Aktuelle {{what}}"
+        download_current: "Download der aktuellen {{what}}"
+        opens_in_new_window: Öffnet in einem neuen Browserfenster
+        remove_current: "Entfernen Sie aktuelle {{what}}"
+        resource: Datei
     message:
-      close: Close
+      close: Schließen
+    site_bar:
+      switch_to_your_website: Wechseln Sie zu Ihrer Website
+      switch_to_your_website_editor: Wechseln Sie zu Ihrem Website-Editor
   activerecord:
     models:
-      page: page
-      user: user
-      image: image
-      inquiry: inquiry
-      resource: resource
-      refinery_setting: refinery setting
-      inquiry_setting: inquiry setting
-
+      page: seite
+      user: benutzer
+      image: bild
+      inquiry: anfrage
+      resource: datei
+      refinery_setting: refinery einstellung
+      inquiry_setting: anfrage einstellung
