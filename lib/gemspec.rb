@@ -5,7 +5,7 @@ files = %w( .gitignore .yardopts Gemfile Rakefile changelog.md readme.md license
   files += Dir.glob("#{dir}/**/*")
 end
 
-files.reject!{|f| !File.exist?(f) or f =~ /^(public\/system)|(config\/database.yml$)|(.*\/cache)|(.+\.rbc)/}
+files.reject!{|f| !File.exist?(f) or f =~ /^(public\/system)|(config\/database.yml$)|(.*\/cache)|(.*\.sqlite3?)|(.+\.rbc)/}
 
 gemspec = <<EOF
 Gem::Specification.new do |s|

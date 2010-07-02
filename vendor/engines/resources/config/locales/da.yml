@@ -1,6 +1,6 @@
 da:
   plugins:
-    refinery_resources:
+    refinery_files:
       title: Filer
   must_choose_file: Du skal vælge en fil, der skal uploades
   file_should_be_smaller_than_max_file_size: Filer må højest være på {{max_file_size}}
@@ -11,6 +11,7 @@ da:
         download_current: Download filen
         or: eller
         replace: " erstat den med denne fil..."
+        maximum_file_size: "The maximum file size is {{megabytes}} megabytes."
       resource:
         download: Download fil ({{size}})
         edit: Redigér fil

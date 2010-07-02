@@ -9,9 +9,9 @@ nl:
   image_thumbnails: Afbeelding miniaturen
   image_views: Afbeelding layouts
   preferred_image_view: Standaard afbeelding layout
-  refinery_i18n_enabled: Refinery i18n activeren
-  refinery_i18n_locale: Refinery i18n land
-  refinery_i18n_locales: Refinery i18n landen
+  i18n_translation_enabled: Refinery i18n activeren
+  i18n_translation_locale: Refinery i18n land
+  i18n_translation_locales: Refinery i18n landen
   refinery_menu_cache_action_suffix: Refinery menu cache achtervoegsel
   show_backend_branding: Laat in admin reclame zien
   show_contact_privacy_link: Laat contact privacy link zien

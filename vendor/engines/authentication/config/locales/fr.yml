@@ -1,10 +1,14 @@
 fr:
+  plugins:
+    refinery_users:
+      title: Utilisateurs
   admin:
     users:
       update:
         cannot_remove_user_plugin_from_current_user: "Vous ne pouvez pas supprimer le plugin 'Utilisateurs' avec le compte sur le quel vous êtes actuellement connecté"
       form:
         blank_password_keeps_current: Laissez le mot de passe vide pour conserver le mot de passe actuel
+        enable_all: activer tous
       index:
         create_new_user: Créer un Nouvel Utilisateur
         no_users_yet:  Il n'y a pas encore d'utilisateurs. Cliquez sur "Créer un nouvel utilisateur" pour ajouter votre premier utilisateur.
@@ -35,6 +39,13 @@ fr:
     create:
       welcome: Bienvenue sur Refinery, {{who}}
       signup_complete: Inscription terminée!
+    forgot:
+      blank_email: Vous n'êtes enter pas une adresse e-mail.
+      email_not_associated_with_account: "Désolé, mais '{{email}}' n'associé pas à une compte.<br/>Êtes-vous certain que vous avez l'adresse e-mail correct?"
+      email_reset_sent: Un e-mail a été envoyé à vous qui contient une liaison pour réinitialiser votre mot de passe.
+    reset:
+      code_invalid: "Désolé, mais ce code reset est périmé ou est nul."
+      successful: Le mot de passe étais réinitialisé avec succès pour {{email}}"
   user_mailer:
     please_activate: S'il vous plaît activer votre nouveau compte
     activated: Votre compte a été activé!

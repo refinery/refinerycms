@@ -89,7 +89,7 @@ class RefinerySetting < ActiveRecord::Base
     setting = find_or_initialize_by_name(name.to_s)
 
     # you could also pass in {:value => 'something', :scoping => 'somewhere'}
-    unless value.is_a?(Hash) and value.has_key?(:value) and (value.has_key?(:scoping) or value.has_key?(:callback_proc_as_string))
+    unless value.is_a?(Hash) and value.has_key?(:value)
       setting.value = value
     else
       setting.value = value[:value]

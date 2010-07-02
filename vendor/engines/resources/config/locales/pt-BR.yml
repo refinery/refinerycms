@@ -1,6 +1,6 @@
 pt-BR:
   plugins:
-    refinery_resources:
+    refinery_files:
       title: Recursos
   must_choose_file: Você deve escolher um arquivo para enviar
   file_should_be_smaller_than_max_file_size: "Arquivos devem ser menores de {{max_file_size}} em tamanho"
@@ -11,6 +11,7 @@ pt-BR:
         download_current: Baixar arquivo atual
         or: ou
         replace: ", substituir por este..."
+        maximum_file_size: "The maximum file size is {{megabytes}} megabytes."
       resource:
         download: Baixar este arquivo ({{size}})
         edit: Editar este arquivo

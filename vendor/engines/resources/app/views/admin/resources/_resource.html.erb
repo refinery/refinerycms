@@ -1,6 +1,6 @@
 <li class='clearfix record <%= cycle("on", "on-hover") %>'>
-  <span class='title'>
-    <%=h resource.title %>
+  <span class='title <%= resource.filename.split('.')[1] %>'>
+    <%=h resource.title %>.<%= resource.filename.split('.')[1] %>
     <span class="preview">- <%= number_to_human_size(resource.size) %></span>
   </span>
   <span class='actions'>

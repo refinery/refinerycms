@@ -8,7 +8,14 @@ Rails::Application.routes.draw do
   end
 
   scope(:path => 'refinery', :name_prefix => 'admin', :module => 'admin') do
-    resources :inquiries
+    resources :inquiries do
+      collection do
+        get :spam
+      end
+      member do
+        get :toggle_spam
+      end
+    end
     resources :inquiry_settings
   end
 end

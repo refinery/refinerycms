@@ -11,7 +11,7 @@
   </div>
 
   <div class='field'>
-    <label>The maximum image size is <%= Image::MAX_SIZE_IN_MB %> megabytes.</label>
+    <label><%= t('.maximum_image_size', :megabytes => Image::MAX_SIZE_IN_MB %></label>
   </div>
 
   <%= render :partial => "/shared/admin/form_actions",
