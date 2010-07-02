@@ -58,14 +58,14 @@ class User < ActiveRecord::Base
       self.id != user_to_delete.id
   end
 
-  def add_role(role_to_add)
-    unless self.has_role?(role = Role[role_to_add])
+  def add_role(title)
+    unless self.has_role?(role = Role[title])
       roles << role
     end
   end
 
   def has_role?(role)
-    roles.include?(Role[role])
+    roles.include?(role.is_a?(Role) ? role : Role[role])
   end
 
 end
