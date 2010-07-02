@@ -1,5 +1,5 @@
 module RoutingFilter
-  class Locale < Base
+  class Locale #< Base
 
     def around_recognize(path, env, &block)
       if ::Refinery::I18n.enabled?
