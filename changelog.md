@@ -1,9 +1,10 @@
-===0.9.7 [30 June 2010]
+===0.9.7 [unreleased]
 
 - Full backend internationalisation (i18n) support.
 - Marketable URLs, such as /contact.
 - Switched to bundler and rack. [Philip Arndt]
 - Added :restricted settings. [Steven Heidel]
+- Added spam filtering to contact form [djones]
 
 ===0.9.6.34 [09 May 2010]
 
