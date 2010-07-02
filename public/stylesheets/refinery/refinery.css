@@ -641,30 +641,29 @@ label.stripped {
   min-height:16px;
   background-repeat:no-repeat;
   background-position:left;
+  background-image: url('/images/refinery/icons/folder_page_white.png');
 }
-.record .title.pdf{
-	background-image:url(/images/icons/pdf.png);
+#records.files .record .title.pdf {
+	background-image: url('/images/refinery/icons/pdf.png');
 }
-.record .title.jpg, .record .title.gif, .record .title.jpeg, .record .title.png, .record .title.tiff{
-	background-image:url(/images/icons/img.png);
+#records.files .record .title.jpg, #records.files .record .title.gif, #records.files .record .title.jpeg, #records.files .record .title.png, #records.files .record .title.tiff {
+	background-image: url('/images/refinery/icons/img.png');
 }
-.record .title.doc, .record .title.pages, .record .title.docx{
-	background-image:url(/images/icons/doc.png);
+#records.files .record .title.doc, #records.files .record .title.pages, #records.files .record .title.docx {
+	background-image: url('/images/refinery/icons/doc.png');
 }
-.record .title.ppt, .record .title.keynote{
-	background-image:url(/images/icons/ppt.png);
+#records.files .record .title.ppt, #records.files .record .title.keynote {
+	background-image: url('/images/refinery/icons/ppt.png');
 }
-.record .title.xls, .record .title.numbers{
-	background-image:url(/images/icons/xls.png);
+#records.files .record .title.xls, #records.files .record .title.numbers {
+	background-image: url('/images/refinery/icons/xls.png');
 }
-.record .title.zip, .record .title.rar{
-	background-image:url(/images/icons/zip.png);
+#records.files .record .title.zip, #records.files .record .title.rar {
+	background-image: url('/images/refinery/icons/zip.png');
 }
-
-
-
-
-
+#records.files .record .title.mp3, #records.files .record .title.wav, #records.files .record .title.aiff, #records.files .record .title.m4a {
+  background-image: url('/images/refinery/icons/music.png');
+}
 #records .record {
   position: relative;
 }
