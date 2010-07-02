@@ -22,13 +22,13 @@ class UsersController < ApplicationController
       # protects against session fixation attacks, wreaks havoc with request forgery protection.
       # uncomment at your own risk:
       # reset_session
-      @user = User.create(params[:user])
+      @user = User.new(params[:user])
       @selected_plugin_titles = params[:user][:plugins] || []
-      @user.add_role(:refinery)
 
       @user.save if @user.valid?
 
       if @user.errors.empty?
+        @user.add_role(:refinery)
         @user.plugins = @selected_plugin_titles
         @user.save
         UserSession.create!(@user)
