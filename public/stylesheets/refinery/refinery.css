@@ -635,6 +635,36 @@ label.stripped {
 .record .title span {
   line-height: 30px;
 }
+.record .title{
+  display:inline-block;
+  padding-left:20px;
+  min-height:16px;
+  background-repeat:no-repeat;
+  background-position:left;
+}
+.record .title.pdf{
+	background-image:url(/images/icons/pdf.png);
+}
+.record .title.jpg, .record .title.gif, .record .title.jpeg, .record .title.png, .record .title.tiff{
+	background-image:url(/images/icons/img.png);
+}
+.record .title.doc, .record .title.pages, .record .title.docx{
+	background-image:url(/images/icons/doc.png);
+}
+.record .title.ppt, .record .title.keynote{
+	background-image:url(/images/icons/ppt.png);
+}
+.record .title.xls, .record .title.numbers{
+	background-image:url(/images/icons/xls.png);
+}
+.record .title.zip, .record .title.rar{
+	background-image:url(/images/icons/zip.png);
+}
+
+
+
+
+
 #records .record {
   position: relative;
 }
