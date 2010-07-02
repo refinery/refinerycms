@@ -1,6 +1,6 @@
 def login
   @user ||= Factory(:refinery_user)
-  visit '/refinery'
+  visit admin_root_url
   fill_in("session_login", :with => @user.email)
   fill_in("session_password", :with => @user.password)
   click_button("submit_button")
@@ -14,6 +14,10 @@ end
 Given /^I am a logged in customer$/ do
   @user ||= Factory(:user)
   login
+end
+
+Given /^A Refinery user exists$/ do
+  @refinery_user ||= Factory(:refinery_user)
 end
 
 Given /^I have a user named "(.*)"$/ do |name|
