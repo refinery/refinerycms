@@ -11,7 +11,7 @@ class Inquiry < ActiveRecord::Base
   named_scope :ham, lambda {{:conditions => {:spam => false}, :order => 'created_at DESC'}}
   named_scope :spam, lambda {{:conditions => {:spam => true}, :order => 'created_at DESC'}}
 
-  before_validation_on_create :calculate_spam_score
+  before_validation(:on => :create) { calculate_spam_score }
 
   cattr_accessor :spam_words
   self.spam_words = %w{
