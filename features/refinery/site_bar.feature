@@ -3,6 +3,9 @@ Feature: Site Bar
   I want logged in refinery users to see a site bar 
   And I want logged in customers to not see a site bar
 
+  Background:
+    Given I am not logged in
+
   Scenario: Not logged in
     When I go to the home page
     Then I should not see "Log out"
@@ -13,6 +16,7 @@ Feature: Site Bar
     Then I should see "Log out"
     
   Scenario: Logged in as a customer
-    Given I am a logged in customer
+    Given A Refinery user exists
+    And I am a logged in customer
     When I go to the home page
     Then I should not see "Log out"
