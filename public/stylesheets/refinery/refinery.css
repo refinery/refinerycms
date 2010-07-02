@@ -635,7 +635,7 @@ label.stripped {
 .record .title span {
   line-height: 30px;
 }
-.record .title{
+#records.files .record .title {
   display:inline-block;
   padding-left:20px;
   min-height:16px;
@@ -1154,6 +1154,8 @@ ul#image_grid li {
 #records ul#image_grid li .actions {
   top: auto;
   bottom: 0px;
+}
+#records ul#image_grid li .actions a {
   line-height: 24px;
 }
 ul#image_grid li.row-end {
