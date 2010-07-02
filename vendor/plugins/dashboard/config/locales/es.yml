@@ -1,7 +1,7 @@
 es:
   plugins:
     refinery_dashboard:
-      title: Dashboard
+      title: Salpicadero
   admin:
     dashboard:
       index:
