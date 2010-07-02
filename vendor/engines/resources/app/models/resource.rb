@@ -19,7 +19,7 @@ class Resource < ActiveRecord::Base
   # when listing images out in the admin area, how many images should show per page
   PAGES_PER_ADMIN_INDEX = 20
 
-  delegate :size, :mime_type, :url, :to => :file
+  delegate :ext, :size, :mime_type, :url, :to => :file
 
   # How many images per page should be displayed?
   def self.per_page(dialog = false)
