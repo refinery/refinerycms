@@ -27,6 +27,8 @@ nb:
       view_public_site: Se siden din
       welcome_to_refinery: Velkommen til Refinery
   shared:
+    site_bar:
+      log_out: Log out
     admin:
       message:
         close: Lukk

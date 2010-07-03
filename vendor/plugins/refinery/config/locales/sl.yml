@@ -27,6 +27,7 @@ sl:
       destroyed: "{{what}} je bil uspešno odstranjen"
   shared:
     site_bar:
+      log_out: Odjavite se
       switch_to_your_website: "Preklopite na vašo spletno stran"
       switch_to_your_website_editor: "Preklopite na urejevalnik spletne strani"
     admin:
