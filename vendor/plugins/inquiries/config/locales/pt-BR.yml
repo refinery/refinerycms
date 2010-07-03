@@ -31,9 +31,15 @@ pt-BR:
         read_inquiry: Ler o inquérito
         remove_inquiry: "Tem certeza que deseja remover o inquérito de '{{name}}'?"
         title: Remover este inquérito para sempre.
+        said: disse
+        mark_as_spam: Marcado como spam
+        mark_as_ham: Mover para o inbox
       toggle_status:
         closed: "Inquérito '{{inquiry}}' está fechado"
         reopened: "Inquérito '{{inquiry}}' está reaberto"
+      submenu:
+        update_notified: Atualizar quem recebe a notificação
+        edit_confirmation_email: Editar email de confirmação
       index:
         update_notified: Atualizar quem é notificado
         edit_confirmation_email: Editar email de confirmação
