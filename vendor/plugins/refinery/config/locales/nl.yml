@@ -24,6 +24,7 @@ nl:
       destroyed: "{{what}} is met success verwijderd"
   shared:
     site_bar:
+      log_out: Log out
       switch_to_your_website: Ga naar de website
       switch_to_your_website_editor: Ga terug naar de editor
     admin:

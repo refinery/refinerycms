@@ -27,6 +27,8 @@ de:
       view_public_site: Profil öffentlichen Website
       welcome_to_refinery: Willkommen bei Refinery
   shared:
+    site_bar:
+      log_out: Log out
     admin:
       message:
         close: Schließen
