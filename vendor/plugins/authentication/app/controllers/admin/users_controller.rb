@@ -22,7 +22,7 @@ class Admin::UsersController < Admin::BaseController
 
     if @user.save
       @user.plugins = @selected_plugin_names
-      redirect_to :action => 'index', :notice => t('refinery.crudify.created', :what => @user.login)
+      redirect_to(admin_users_url, :notice => t('refinery.crudify.created', :what => @user.login))
     else
       render :action => 'new'
     end
