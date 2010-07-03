@@ -1,8 +1,8 @@
 Gem::Specification.new do |s|
   s.name              = %q{refinerycms}
-  s.version           = %q{0.9.7}
+  s.version           = %q{0.9.7.1}
   s.description       = %q{A beautiful open source Ruby on Rails content manager for small business. Easy to extend, easy to use, lightweight and all wrapped up in a super slick UI.}
-  s.date              = %q{2010-07-02}
+  s.date              = %q{2010-07-03}
   s.summary           = %q{A beautiful open source Ruby on Rails content manager for small business.}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
@@ -35,7 +35,9 @@ Gem::Specification.new do |s|
     'config/application.rb',
     'config/boot.rb',
     'config/cucumber.yml',
-    'config/database.yml.example',
+    'config/database.yml.mysql',
+    'config/database.yml.postgresql',
+    'config/database.yml.sqlite3',
     'config/environment.rb',
     'config/environments',
     'config/environments/cucumber.rb',
