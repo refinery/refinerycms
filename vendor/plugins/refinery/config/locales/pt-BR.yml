@@ -23,6 +23,8 @@ pt-BR:
       view_public_site: Ver site público
       welcome_to_refinery: Bem-vindo ao Refinery
   shared:
+    site_bar:
+      log_out: Log out
     admin:
       message:
         close: Fechar
