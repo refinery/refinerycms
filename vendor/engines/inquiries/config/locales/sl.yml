@@ -32,9 +32,10 @@ sl:
         closed: "Povpraševanje '%{inquiry}' je zaprto"
         reopened: "Povpraševanje '%{inquiry}' je ponovno odprto"
       index:
+        no_inquiries: Trenutno še ni nobenega povpraševanja.
+      submenu:
         update_notified: Uredi prejemnike obvestila
         edit_confirmation_email: Uredni potrditveni email
-        no_inquiries: Trenutno še ni nobenega povpraševanja.
       show:
         details: Podrobnosti
         click_to_email: Pošlji email sporočilo

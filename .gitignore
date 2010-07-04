@@ -19,7 +19,6 @@ db/*.sqlite3
 public/javascripts/cache
 public/stylesheets/cache
 .yardoc/
-refinerycms.gemspec
 vendor/cache
 *.rbc
 *.swp

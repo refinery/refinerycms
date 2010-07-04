@@ -27,6 +27,7 @@ sl:
       destroyed: "%{what} je bil uspešno odstranjen"
   shared:
     site_bar:
+      log_out: Odjavite se
       switch_to_your_website: "Preklopite na vašo spletno stran"
       switch_to_your_website_editor: "Preklopite na urejevalnik spletne strani"
     admin:
@@ -53,9 +54,8 @@ sl:
         current: "Trenutna %{what}"
         download_current: "Prenesi trenutno %{what}"
         opens_in_new_window: Odpri v novem oknu
-        remove_current: "Odstrani trnutno %{what}"
+        remove_current: "Odstrani trenutno %{what}"
         resource: vir
     message:
       close: Zapri
       close_this_message: Zapri to sporočilo
-      

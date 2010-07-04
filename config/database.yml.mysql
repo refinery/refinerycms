@@ -17,8 +17,8 @@ cucumber: &cucumber
   <<: *test
 
 production: &production
-  database: your_production_database
   adapter: mysql
   host: localhost
+  database: your_production_database
   username: your_production_database_login
   password: your_production_database_password
