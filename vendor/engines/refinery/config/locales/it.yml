@@ -27,6 +27,8 @@ it:
       view_public_site: Vedi sito pubblico
       welcome_to_refinery: Benvenuti a Refinery
   shared:
+    site_bar:
+      log_out: Log out
     admin:
       message:
         close: Fine
