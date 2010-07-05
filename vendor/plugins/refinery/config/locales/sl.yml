@@ -8,11 +8,10 @@ sl:
     menu:
       reorder_menu: Spremeni vrsti red zavihkov
       reorder_menu_done: "Končaj s prerazporeditvijo zavihkov."
-    log_out: Odjavi se
     search: Išči
     search_submit: Pojdi
     search_results_for: Iskalni rezultati za {{query}}
-    no_results_found: "Oprostite, ni bilo zadetkov"
+    search_no_results: Oprostite! Ni bilo zadetkov.
     images:
       existing_image:
         submit_insert: Vstavi
@@ -20,7 +19,6 @@ sl:
     other: "Drugo {{what}}"
     reorder: "Spremeni vrstni red {{what}}"
     reorder_done: "Končaj s prerazporeditvijo {{what}}"
-    search_no_results: "Oprostite, ni bilo zadetkov"
     crudify:
       created: "{{what}} je bil uspešno ustvarjen"
       updated: "{{what}} je bil uspešno ustvarjen"
@@ -59,4 +57,3 @@ sl:
     message:
       close: Zapri
       close_this_message: Zapri to sporočilo
-      

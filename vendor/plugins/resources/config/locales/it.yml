@@ -20,7 +20,6 @@ it:
           title: Rimuovere questo file per sempre
       index:
         upload_new: Upload File Nuovo
-        search_no_results: Nessun risultato per.
         no_files_yet: Non ci sono ancora i file. Fai clic su "Upload New File" per aggiungere il primo file.
       insert:
         existing_file:   File esistente

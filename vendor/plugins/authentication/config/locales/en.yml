@@ -36,6 +36,9 @@ en:
       welcome: Welcome to Refinery, {{who}}
       signup_complete: Signup complete!
     forgot:
+      email_address: Email Address
+      enter_email_address: Please enter the email address for your account.
+      reset_password: Reset password
       blank_email: You did not enter an email address.
       email_not_associated_with_account: "Sorry, '{{email}}' isn't associated with any accounts.<br/>Are you sure you typed the correct email address?"
       email_reset_sent: An email has been sent to you with a link to reset your password.

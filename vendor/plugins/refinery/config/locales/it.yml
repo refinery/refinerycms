@@ -8,16 +8,14 @@ it:
     menu:
       reorder_menu: Riordina menu
       reorder_menu_done: "Ho finito riordino del menu"
-    log_out: Log out
     search: Cerca
     search_submit: Andare
     search_results_for: "Risultati della ricerca per '{{query}}'"
-    no_results_found: "Spiacenti, nessun risultato trovato"
+    search_no_results: "Spiacenti, nessun risultato trovato"
   refinery:
     other: "Altro {{what}}"
     reorder: "Riordina {{what}}"
     reorder_done: "Fatto Riordinare {{what}}"
-    search_no_results: "Spiacenti, nessun risultato trovato."
     crudify:
       created: "{{what}} stato creato con successo"
       updated: "{{what}} stato creato con successo"
@@ -29,6 +27,8 @@ it:
   shared:
     site_bar:
       log_out: Log out
+      switch_to_your_website: Switch to your website
+      switch_to_your_website_editor: Switch to your website editor
     admin:
       message:
         close: Fine
