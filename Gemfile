@@ -24,7 +24,7 @@ gem 'sqlite3-ruby', :require => 'sqlite3' #db_adapter=sqlite3
 gem 'rails',          '3.0.0.beta4'
 gem 'rmagick',        '~> 2.13.1', :require => 'RMagick'
 gem 'rack-cache',     :require => 'rack/cache'
-gem 'dragonfly'
+gem 'dragonfly',                  :git => 'git://github.com/myabc/dragonfly.git',        :branch => '1.9.2-fixes'
 gem 'acts_as_indexed', '= 0.6.2', :git => 'git://github.com/parndt/acts_as_indexed.git', :branch => 'rails3'
 gem 'authlogic',      '~> 2.1.5'
 gem 'friendly_id',    '~> 3.0'
