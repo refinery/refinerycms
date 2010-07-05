@@ -16,9 +16,9 @@ es:
       user_session: Sesión de usuario
     attributes:
       user_session:
-        login: login
-        email: email
-        password: contraseña
+        login: Login
+        email: Email
+        password: Contraseña
         remember_me: Recordarme
         incorrect: "Lo sentimos, su %{login_field} o la contraseña son correctos."
   plugins:
@@ -56,6 +56,8 @@ es:
       cancel_log_in: Cancelar
       or: o
       forgot_password: He olvidado mi contraseña
+      hello_please_sign_in: Hola! Por favor, iniciar sesión
+      sign_in: Iniciar sesión
   users:
     setup_website_name: "Lo primero es proporcionar un nombre para el sitio web.<br/><a href='%{link}'>Pulse aquí</a> editar el nombre del sitio web"
     signup_disabled: El registro de usuario ha sido deshabilitado.

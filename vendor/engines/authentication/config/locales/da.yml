@@ -29,6 +29,8 @@ da:
       remember_me: Husk mig
       or: eller
       forgot_password: Jeg har glemt mit password
+      hello_please_sign_in: Hej! Du skal logge ind
+      sign_in: log ind
   users:
     setup_website_name: "Lad os først give websitet et navn. <a href='%{link}'>Her</a> kan du rette navnet"
     signup_disabled: Brugeroprettelse er deaktiveret

@@ -42,6 +42,8 @@ nl:
       cancel: Annuleren
       remember_me: Onthoud mijn gegevens
       forgot_password: Ik ben mijn wachtwoord vergeten
+      hello_please_sign_in: Hallo! Gelieve in te loggen
+      sign_in: Log in
   users:
     setup_website_name: "Laten we eerst de website een naam geven. <a href='%{link}'>Klik hier</a> om de naam van de website te bewerken"
     signup_disabled: Het registreren van gebruikers is uitgeschakeld
