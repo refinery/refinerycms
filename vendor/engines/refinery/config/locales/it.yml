@@ -10,12 +10,12 @@ it:
       reorder_menu_done: "Ho finito riordino del menu"
     search: Cerca
     search_submit: Andare
-    search_results_for: "Risultati della ricerca per '{{query}}'"
+    search_results_for: "Risultati della ricerca per '%{query}'"
     search_no_results: "Spiacenti, nessun risultato trovato"
   refinery:
-    other: "Altro {{what}}"
-    reorder: "Riordina {{what}}"
-    reorder_done: "Fatto Riordinare {{what}}"
+    other: "Altro %{what}"
+    reorder: "Riordina %{what}"
+    reorder_done: "Fatto Riordinare %{what}"
     crudify:
       created: "%{what} stato creato con successo"
       updated: "%{what} stato creato con successo"

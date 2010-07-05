@@ -10,7 +10,7 @@ fr:
       reorder_menu_done: "J'ai fini de réorganiser le menu"
     search: Rechercher
     search_submit: Envoyer
-    search_results_for: "Résultat de recherche pour '{{query}}'"
+    search_results_for: "Résultat de recherche pour '%{query}'"
     search_no_results: "Désolé, aucun résultat trouvé."
   refinery:
     other: "Other %{what}"

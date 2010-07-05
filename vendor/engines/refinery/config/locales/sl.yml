@@ -10,15 +10,15 @@ sl:
       reorder_menu_done: "Končaj s prerazporeditvijo zavihkov."
     search: Išči
     search_submit: Pojdi
-    search_results_for: Iskalni rezultati za {{query}}
+    search_results_for: Iskalni rezultati za %{query}
     search_no_results: Oprostite! Ni bilo zadetkov.
     images:
       existing_image:
         submit_insert: Vstavi
   refinery:
-    other: "Drugo {{what}}"
-    reorder: "Spremeni vrstni red {{what}}"
-    reorder_done: "Končaj s prerazporeditvijo {{what}}"
+    other: "Drugo %{what}"
+    reorder: "Spremeni vrstni red %{what}"
+    reorder_done: "Končaj s prerazporeditvijo %{what}"
     crudify:
       created: "%{what} je bil uspešno ustvarjen"
       updated: "%{what} je bil uspešno ustvarjen"
