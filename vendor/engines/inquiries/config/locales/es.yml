@@ -34,7 +34,6 @@ es:
       index:
         update_notified: "Actualizar a quien será notificado"
         edit_confirmation_email: "Editar email de confirmación"
-        search_results_for: Resultados de la busqueda de %{query}
         no_inquiries: No has recibido ninguna consulta aun.
       show:
         details: Detalles

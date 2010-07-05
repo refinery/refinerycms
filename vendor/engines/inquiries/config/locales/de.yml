@@ -33,7 +33,6 @@ de:
       index:
         update_notified: Wer wird benachrichtigt aktualisieren
         edit_confirmation_email: Bestätigungsmail bearbeiten
-        search_results_for: Suchergebnisse für %{query}
         open_inquiries: Offene Anfragen
         no_inquiries: "Juhuu! Es gibt keine offenen Kontaktanfragen, da Sie bereits alle Anfragen abgearbeitet haben."
         closed_inquiries: Geschlossene Kontaktanfragen

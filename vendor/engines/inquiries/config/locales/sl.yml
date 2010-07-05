@@ -46,7 +46,6 @@ sl:
         actions: Možnosti
         back_to_all_inquiries: Nazaj na vsa povpraševanja
         inquiry: Povpraševanje
-    search_results_for: Iskalni rezultati za %{query}
     inquiry_settings:
       update:
         updated: "'%{setting}' je bila uspešno posodobljena."
