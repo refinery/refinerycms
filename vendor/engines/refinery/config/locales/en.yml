@@ -10,16 +10,15 @@ en:
       reorder_menu_done: "I'm done reordering the menu"
     search: Search
     search_submit: Go
-    search_results_for: "Search results for '%{query}'"
-    no_results_found: "Sorry, no results found"
+    search_results_for: "Search results for '{{query}}'"
+    search_no_results: "Sorry, no results found"
     images:
       existing_image:
         submit_insert: Insert
   refinery:
-    other: "Other %{what}"
-    reorder: "Reorder %{what}"
-    reorder_done: "Done Reordering %{what}"
-    search_no_results: "Sorry, no results found."
+    other: "Other {{what}}"
+    reorder: "Reorder {{what}}"
+    reorder_done: "Done Reordering {{what}}"
     crudify:
       created: "%{what} was successfully created."
       updated: "%{what} was successfully updated."

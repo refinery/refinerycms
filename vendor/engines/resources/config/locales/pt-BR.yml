@@ -20,8 +20,6 @@ pt-BR:
           title: Remover este arquivo para sempre
       index:
         upload_new: Enviar Novo Arquivo
-        search_results: Resultados da busca por '%{results}'
-        search_no_results: Desculpe, nenhum resultado encontrado.
         no_files_yet: Ainda não existem arquivos. Clique em "Enviar Novo Arquivo" para adicionar seu primeiro arquivo.
       insert:
         existing_file: Arquivo Existente
