@@ -2,9 +2,9 @@ es:
   plugins:
     refinery_images:
       title: Imágenes
-      
   no_file_chosen: Debe elegir un fiechero para cargar.
-  file_should_be_smaller_then_50mb: Los ficheros deben tener un tamaño menor que 50Mb
+  file_should_be_smaller_than_max_image_size: Los ficheros deben ser menores de {{max_image_size}} de tamaño
+  file_must_be_these_formats: Su imagen debe ser un archivo JPG, PNG o GIF
   admin:
     images:
       form:
@@ -25,12 +25,12 @@ es:
         click_to_view: "Pulse para ver '{{title}}'<br/><em>Abre una nueva ventana</em>"
         edit: Editar esta imagen
         confirm_delete:
-          message: "¿Esta seguro de que desea eliminar la imagen ''{{title}}''?" 
+          message: "¿Esta seguro de que desea eliminar la imagen ''{{title}}''?"
           title: Borrar esta imagen
       list_view_image:
         edit_this_image: Editar esta imagen
         delete:
-          message: "¿Esta seguro de que desea eliminar la imagen ''{{title}}''?" 
+          message: "¿Esta seguro de que desea eliminar la imagen ''{{title}}''?"
           title: Borrar esta imagen
       insert:
         existing_image: Imagen existente

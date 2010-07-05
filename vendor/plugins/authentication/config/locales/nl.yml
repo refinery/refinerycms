@@ -51,6 +51,16 @@ nl:
     create:
       welcome: Welkom bij Refinery, {{who}}
       signup_complete: Registratie compleet!
+    forgot:
+      email_address: E-mailadres
+      enter_email_address: Vul het e-mailadres voor uw account.
+      reset_password: Verander wachtwoord
+      blank_email: Je hebt geen e-mail adres.
+      email_not_associated_with_account: "Sorry, '{{email}}' is niet geassocieerd met alle rekeningen. <br/>Weet u zeker dat u typte het juiste e-mailadres?"
+      email_reset_sent: Een e-mail is naar u verzonden met een link om je wachtwoord te resetten.
+    reset:
+      code_invalid: "Het spijt ons, maar dit reset code is verlopen of ongeldig. Als u problemen hebt proberen te kopiëren en plakken van de URL van uw e-mail in uw browser of het herstarten van de reset wachtwoord proces."
+      successful: "Wachtwoord resetten succes voor {{email}}"
   user_mailer:
     please_activate: A.u.b. uw gebruikersaccount activeren.
     activated: Uw gebruikersaccount is geactiveerd!
