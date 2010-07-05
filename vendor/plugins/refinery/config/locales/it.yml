@@ -11,12 +11,11 @@ it:
     search: Cerca
     search_submit: Andare
     search_results_for: "Risultati della ricerca per '{{query}}'"
-    no_results_found: "Spiacenti, nessun risultato trovato"
+    search_no_results: "Spiacenti, nessun risultato trovato"
   refinery:
     other: "Altro {{what}}"
     reorder: "Riordina {{what}}"
     reorder_done: "Fatto Riordinare {{what}}"
-    search_no_results: "Spiacenti, nessun risultato trovato."
     crudify:
       created: "{{what}} stato creato con successo"
       updated: "{{what}} stato creato con successo"

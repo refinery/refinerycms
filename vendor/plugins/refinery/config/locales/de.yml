@@ -11,12 +11,11 @@ de:
     search: Suche
     search_submit: Los
     search_results_for: "Suchergebnisse für '{{query}}'"
-    no_results_found: "Entschuldigung, es wurden keine Ergebnisse gefunden"
+    search_no_results: "Leider gibt es keine Ergebnisse."
   refinery:
     other: "Weitere {{what}}"
     reorder: "Umordnen {{what}}"
     reorder_done: "Geschehen umordnen {{what}}"
-    search_no_results: "Leider gibt es keine Ergebnisse."
     crudify:
       created: "{{what}} wurde erfolgreich erstellt."
       updated: "{{what}} wurde erfolgreich aktualisiert."

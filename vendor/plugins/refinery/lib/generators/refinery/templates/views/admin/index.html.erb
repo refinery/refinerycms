@@ -20,7 +20,7 @@
     <%% if @<%= plural_name %>.any? %>
       <%%= render :partial => "<%= singular_name %>", :collection => @<%= plural_name %> %>
     <%% else %>
-      <p><%%= t('.search_no_results') %></p>
+      <p><%%= t('admin.search_no_results') %></p>
     <%% end %>
   <%% else %>
     <%% if @<%= plural_name %>.any? %>
