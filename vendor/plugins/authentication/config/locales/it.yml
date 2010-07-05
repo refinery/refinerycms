@@ -26,6 +26,8 @@ it:
       remember_me: Ricordati di me
       or: o
       forgot_password: Ho dimenticato la password
+      sign_in: Entra
+      hello_please_sign_in: "Ciao! Accedi per favore."
   users:
     setup_website_name: "Prima di tutto dare al sito un nome. <a href='{{link}}'>Vai qui</a> per modificare il nome del tuo sito web"
     signup_disabled: Iscriviti utente è disattivato
