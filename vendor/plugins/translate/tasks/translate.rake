@@ -70,6 +70,7 @@ namespace :translate do
   task :lost_in_translation_all => :environment do
     ::Refinery::I18n.locales.keys.each do |locale|
       find_missing_translations(locale)
+      puts "--"
     end
   end
 
