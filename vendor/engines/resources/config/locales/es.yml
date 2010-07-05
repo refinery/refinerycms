@@ -20,8 +20,6 @@ es:
           title: Borrar este archivo completamente
       index:
         upload_new: Subir nuevo archivo
-        search_results: Resultados de la busqueda '%{results}'
-        search_no_results: Disculpe no se encontro nada en la busqueda.
         no_files_yet: No hay archivos aun. Click "Subir nuevo archivo" para agregar tu primer archivo.
       insert:
         existing_file: Archivos existentes

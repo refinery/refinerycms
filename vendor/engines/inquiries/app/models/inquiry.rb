@@ -6,10 +6,10 @@ class Inquiry < ActiveRecord::Base
 
   acts_as_indexed :fields => [:name, :email, :message, :phone]
 
-  named_scope :newest, :order => 'created_at DESC'
+  scope :newest, :order => 'created_at DESC'
 
-  named_scope :ham, lambda {{:conditions => {:spam => false}, :order => 'created_at DESC'}}
-  named_scope :spam, lambda {{:conditions => {:spam => true}, :order => 'created_at DESC'}}
+  scope :ham, lambda {{:conditions => {:spam => false}, :order => 'created_at DESC'}}
+  scope :spam, lambda {{:conditions => {:spam => true}, :order => 'created_at DESC'}}
 
   before_validation(:on => :create) { calculate_spam_score }
 
