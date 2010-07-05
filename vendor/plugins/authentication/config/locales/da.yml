@@ -29,6 +29,8 @@ da:
       remember_me: Husk mig
       or: eller
       forgot_password: Jeg har glemt mit password
+      hello_please_sign_in: Hej! Du skal logge ind
+      sign_in: log ind
   users:
     setup_website_name: "Lad os først give websitet et navn. <a href='{{link}}'>Her</a> kan du rette navnet"
     signup_disabled: Brugeroprettelse er deaktiveret
@@ -38,6 +40,16 @@ da:
     create:
       welcome: Velkommen til Refinery, {{who}}
       signup_complete: Du er nu oprettet.
+    forgot:
+      email_address: E-mail-adresse
+      enter_email_address: Indtast venligst den email-adresse til din konto.
+      reset_password: Reset adgangskode
+      blank_email: Du har ikke angivet en e-mail-adresse.
+      email_not_associated_with_account: "Undskyld, '{{email}}' er ikke forbundet med nogen regnskaber. <br/> Er du sikker på du har skrevet den rigtige email-adresse?"
+      email_reset_sent: En e-mail er blevet sendt til dig med et link til nulstille din adgangskode.
+    reset:
+      code_invalid: "Vi beklager, men denne nulstilling kode er udløbet eller ugyldig. Hvis du har spørgsmål kan du prøve at kopiere og indsætte webadressen fra din e-mail til din browser eller genstarte reset password proces."
+      successful: "Adgangskode reset succes for {{email}}"
   user_mailer:
     please_activate: Du skal aktivere din nye brugerkonto
     activated: Din konto er nu aktiveret.
