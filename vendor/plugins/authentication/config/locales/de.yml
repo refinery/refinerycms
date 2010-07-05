@@ -26,6 +26,8 @@ de:
       remember_me: Anmeldung merken
       or: oder
       forgot_password: Ich habe mein Passwort vergessen
+      hello_please_sign_in: Hallo! Bitte melden Sie sich
+      sign_in: Anmelden
   users:
     forgot:
       blank_email: Sie haben nicht eine E-Mail-Adresse.
