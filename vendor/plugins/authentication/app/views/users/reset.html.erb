@@ -1,4 +1,4 @@
-<% content_for :header, "Pick a new password for #{@user.email}" %>
+<% content_for :header, t('.pick_new_password_for', :email => @user.email)"Pick a new password for #{@user.email}" %>
 
 <% form_for :user do |f| -%>
   <%= f.error_messages %>
@@ -17,7 +17,7 @@
              :locals => {
                :f => f,
                :continue_editing => false,
-               :submit_button_text => "Reset password",
+               :submit_button_text => t('.reset_password'),
                :cancel_url => login_url
              } -%>
 <% end -%>

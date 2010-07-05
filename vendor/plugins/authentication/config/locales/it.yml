@@ -35,6 +35,16 @@ it:
     create:
       welcome: Benvenuti a Refinery, {{who}}
       signup_complete: Registrati completo!
+    forgot:
+      email_address: Indirizzo e-mail
+      enter_email_address: Inserisci l'indirizzo di posta elettronica per l'account.
+      reset_password: Reimpostazione della password
+      blank_email: Non hai inserito un indirizzo email.
+      email_not_associated_with_account: "Mi dispiace, '{{email}}' non è associato ad alcun account. <br/>Sei sicuro di avere digitato l'indirizzo email corretto?"
+      email_reset_sent: Una e-mail è stata inviata a voi con un link per reimpostare la password.
+    reset:
+      code_invalid: "Siamo spiacenti, ma questo codice reset è scaduto o non è valido. Se si hanno problemi provare a copiare e incollare l&apos;URL dal vostro e-mail nel vostro browser o riavviando la procedura di reimpostazione password."
+      successful: "Il ripristino della password con successo per {{email}}"
   user_mailer:
     please_activate: Si prega di attivare il nuovo account
     activated: Il tuo account è stato attivato!
