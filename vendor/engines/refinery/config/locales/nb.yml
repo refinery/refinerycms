@@ -8,7 +8,6 @@ nb:
     menu:
       reorder_menu: Sorter meny
       reorder_menu_done: "Jeg er ferdig med å sortere menyen"
-    log_out: Logg ut
     search: Søk
     search_submit: Søk
     search_results_for: "Søkeresultat for '%{query}'"
@@ -28,7 +27,9 @@ nb:
       welcome_to_refinery: Velkommen til Refinery
   shared:
     site_bar:
-      log_out: Log out
+      log_out: Logg ut
+      switch_to_your_website: Switch to your website
+      switch_to_your_website_editor: Switch to your website editor
     admin:
       message:
         close: Lukk

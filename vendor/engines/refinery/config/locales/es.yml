@@ -8,7 +8,6 @@ es:
     menu:
       reorder_menu: Re-ordenar menu
       reorder_menu_done: "He terminado de re ordenar el menu"
-    log_out: "Cerrar sesión"
     search: Buscar
     search_submit: Aceptar
     search_results_for: "Resultados de busqueda de '%{query}'"
@@ -28,7 +27,9 @@ es:
       welcome_to_refinery: Bienvenido a Refinery
   shared:
     site_bar:
-      log_out: Log out
+      log_out: "Cerrar sesión"
+      switch_to_your_website: Switch to your website
+      switch_to_your_website_editor: Switch to your website editor
     admin:
       message:
         close: Cerrar

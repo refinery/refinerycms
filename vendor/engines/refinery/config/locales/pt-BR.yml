@@ -8,7 +8,6 @@ pt-BR:
     menu:
       reorder_menu: Reordenar menu
       reorder_menu_done: "Terminei de reordenar o menu"
-    log_out: Deslogar
     search: Procurar
     search_submit: Ir
     search_results_for: "Resultados da busca por '%{query}'"
@@ -24,7 +23,9 @@ pt-BR:
       welcome_to_refinery: Bem-vindo ao Refinery
   shared:
     site_bar:
-      log_out: Log out
+      log_out: Deslogar
+      switch_to_your_website: Mudar para o seu website
+      switch_to_your_website_editor: Mudar para o editor do seu website
     admin:
       message:
         close: Fechar

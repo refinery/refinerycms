@@ -8,7 +8,6 @@ en:
     menu:
       reorder_menu: Reorder menu
       reorder_menu_done: "I'm done reordering the menu"
-    log_out: Log out
     search: Search
     search_submit: Go
     search_results_for: "Search results for '%{query}'"
