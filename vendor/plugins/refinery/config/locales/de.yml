@@ -8,7 +8,6 @@ de:
     menu:
       reorder_menu: Menü neu anordnen
       reorder_menu_done: "Menü Anordnung speichern"
-    log_out: Logout
     search: Suche
     search_submit: Los
     search_results_for: "Suchergebnisse für '{{query}}'"
@@ -28,7 +27,9 @@ de:
       welcome_to_refinery: Willkommen bei Refinery
   shared:
     site_bar:
-      log_out: Log out
+      log_out: Ausloggen
+      switch_to_your_website: Switch to your website
+      switch_to_your_website_editor: Switch to your website editor
     admin:
       message:
         close: Schließen

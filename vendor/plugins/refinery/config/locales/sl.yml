@@ -8,7 +8,6 @@ sl:
     menu:
       reorder_menu: Spremeni vrsti red zavihkov
       reorder_menu_done: "Končaj s prerazporeditvijo zavihkov."
-    log_out: Odjavi se
     search: Išči
     search_submit: Pojdi
     search_results_for: Iskalni rezultati za {{query}}
@@ -59,4 +58,3 @@ sl:
     message:
       close: Zapri
       close_this_message: Zapri to sporočilo
-      
