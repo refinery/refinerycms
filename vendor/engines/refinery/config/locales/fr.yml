@@ -8,7 +8,6 @@ fr:
     menu:
       reorder_menu: Réorganiser le menu
       reorder_menu_done: "J'ai fini de réorganiser le menu"
-    log_out: Déconnexion
     search: Rechercher
     search_submit: Envoyer
     search_results_for: "Résultat de recherche pour '%{query}'"
@@ -28,7 +27,9 @@ fr:
       welcome_to_refinery: Bienvenue sur Refinery
   shared:
     site_bar:
-      log_out: Log out
+      log_out: Déconnexion
+      switch_to_your_website: Switch to your website
+      switch_to_your_website_editor: Switch to your website editor
     admin:
       message:
         close: Fermer

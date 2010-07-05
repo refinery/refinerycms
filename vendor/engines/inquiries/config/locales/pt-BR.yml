@@ -1,12 +1,12 @@
 pt-BR:
   plugins:
     inquiries:
-      title: Inquéritos
+      title: Contatos
     refinery_inquiries:
-      title: Inquéritos
+      title: Contatos
   activerecord:
     models:
-      inquiry: Inquérito
+      inquiry: Contatos
     attributes:
       inquiry:
         name: Nome
@@ -26,22 +26,28 @@ pt-BR:
   admin:
     inquiries:
       inquiry:
-        move_inquiry_to_closed: Mover este inquérito para fechados
-        move_inquiry_to_open: Mover este inquérito para abertos
-        read_inquiry: Ler o inquérito
-        remove_inquiry: "Tem certeza que deseja remover o inquérito de '%{name}'?"
-        title: Remover este inquérito para sempre.
+        move_inquiry_to_closed: Mover esta mensagem para fechadas
+        move_inquiry_to_open: Mover este mensagem para abertas
+        read_inquiry: Ler a mensagem
+        remove_inquiry: "Tem certeza que deseja remover a mensagem de '%{name}'?"
+        title: Remover esta mensagem para sempre.
+        said: disse
+        mark_as_spam: Marcado como spam
+        mark_as_ham: Mover para o inbox
       toggle_status:
-        closed: "Inquérito '%{inquiry}' está fechado"
-        reopened: "Inquérito '%{inquiry}' está reaberto"
+        closed: "Mensagem '%{inquiry}' está fechado"
+        reopened: "Mensagem '%{inquiry}' está reaberto"
+      submenu:
+        update_notified: Atualizar quem recebe a notificação
+        edit_confirmation_email: Editar email de confirmação
       index:
         update_notified: Atualizar quem é notificado
         edit_confirmation_email: Editar email de confirmação
         search_results_for: Resultados da busca por %{query}
-        open_inquiries: Inquéritos abertos
-        no_inquiries: "Urra! Não exitem inquéritos abertos porque você lidou com todos eles."
-        closed_inquiries: Inquéritos fechados
-        havent_closed_any_inquiries: "Você ainda não fechou nenhum inquérito."
+        open_inquiries: Mensagens abertas
+        no_inquiries: "Urra! Não exitem mensagens abertas porque você lidou com todas elas."
+        closed_inquiries: Mensagens fechadas
+        havent_closed_any_inquiries: "Você ainda não fechou nenhuma mensagem."
       show:
         details: Detalhes
         click_to_email: Clique para enviar email
@@ -50,19 +56,19 @@ pt-BR:
         closed: Fechada
         age: Idade
         actions: Ações
-        back_to_all_inquiries: Voltar para todos os Inquéritos
+        back_to_all_inquiries: Voltar para todos as Mensagens
         inquiry: Inquérito
     inquiry_settings:
       update:
         updated: "'%{setting}' foi atualizada com sucesso."
       notification_recipients_form:
         inquiry_settings_value_name: Enviar notificações para
-        explanation: Toda vez que alguém contatar você no seu website, o Refinery envia um email para confirmar o inquérito com esta pessoa.
+        explanation: Toda vez que alguém contactar você no seu website, o Refinery envia um email para notificar a essa pessoa o recebimento de uma mensagem.
         hint: "Entre um endereço de email acima. Deseja que a notificação vá para mais de uma pessoa? Entre vários endereços de email separados por vírgulas."
         example: "P.e. eu@dominio.com, amigo@msn.com, colegadetrabalho@trabalho.com"
       confirmation_email_form:
         click_to_edit_subject: Clique aqui para editar o assunto
-        explanation: Toda vez que alguém contatar você no seu website, o Refinery envia um email para confirmar o inquérito com esta pessoa.
+        explanation: Toda vez que alguém contatar você no seu website, o Refinery envia um email para confirmar o recebimentoda mensagem para esta pessoa.
         below_edit_email_sent: Abaixo você pode editar o e-mail que é enviado para fora.
         the_customer_making_inquiry: O cliente fazendo o inquérito
         to: Para
