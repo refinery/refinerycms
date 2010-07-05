@@ -33,7 +33,6 @@ fr:
       index:
         update_notified: "Mettre à jour qui est notifié"
         edit_confirmation_email: Modifier le couriel de confirmation
-        search_results_for: "Résultat de recherche pour %{query}"
         open_inquiries: Demande de renseignement ouverte
         no_inquiries: "Hourra! Il n'y a pas de requête ouvertes, vous les avez toutes faites."
         closed_inquiries: Demande de renseignement fermé

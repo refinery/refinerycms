@@ -33,7 +33,6 @@ da:
       index:
         update_notified: Opdatér, hvem der får besked
         edit_confirmation_email: Redigér e-mailbekræftelse
-        search_results_for: Søgeresultat for '%{query}'
         no_inquiries: Du har endnu ikke modtaget nogen henvendelser.
       show:
         details: Detaljer

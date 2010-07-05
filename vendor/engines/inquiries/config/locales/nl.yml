@@ -35,7 +35,6 @@ nl:
       index:
         update_notified: Wijzig wie een notificatie ontvangt
         edit_confirmation_email: Bewerk bevestigings email
-        search_results_for: Zoekresultaten voor %{query}
         open_inquiries: Open vragen
         no_inquiries: "Jeej! Er zijn geen onverwerkte vragen!"
         closed_inquiries: Verwerkte vragen
