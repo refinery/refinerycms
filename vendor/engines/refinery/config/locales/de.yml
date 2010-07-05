@@ -8,16 +8,14 @@ de:
     menu:
       reorder_menu: Menü neu anordnen
       reorder_menu_done: "Menü Anordnung speichern"
-    log_out: Logout
     search: Suche
     search_submit: Los
     search_results_for: "Suchergebnisse für '%{query}'"
-    no_results_found: "Entschuldigung, es wurden keine Ergebnisse gefunden"
+    search_no_results: "Leider gibt es keine Ergebnisse."
   refinery:
     other: "Weitere %{what}"
     reorder: "Umordnen %{what}"
     reorder_done: "Geschehen umordnen %{what}"
-    search_no_results: "Leider gibt es keine Ergebnisse."
     crudify:
       created: "%{what} wurde erfolgreich erstellt."
       updated: "%{what} wurde erfolgreich aktualisiert."
@@ -27,6 +25,10 @@ de:
       view_public_site: Profil öffentlichen Website
       welcome_to_refinery: Willkommen bei Refinery
   shared:
+    site_bar:
+      log_out: Ausloggen
+      switch_to_your_website: Switch to your website
+      switch_to_your_website_editor: Switch to your website editor
     admin:
       message:
         close: Schließen

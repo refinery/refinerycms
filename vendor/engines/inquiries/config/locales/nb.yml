@@ -33,7 +33,6 @@ nb:
       index:
         update_notified: Oppdater hvem som blir varslet
         edit_confirmation_email: Rediger bekreftelsesepost
-        search_results_for: Søkeresultat for %{query}
         no_inquiries: Du har ikke mottatt noen forespørsler enda.
       show:
         details: Detaljer

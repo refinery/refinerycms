@@ -20,8 +20,6 @@ nb:
           title: Fjern denne filen for alltid
       index:
         upload_new: Last Opp Ny Fil
-        search_results: "Søkeresultat for '%{results}'"
-        search_no_results: "Beklager, ingen resultat funnet."
         no_files_yet: Det er ingen filer her enda. Trykk "Last Opp Ny Fil" for å legge til din første fil.
       insert:
         existing_file: Eksisterende Fil

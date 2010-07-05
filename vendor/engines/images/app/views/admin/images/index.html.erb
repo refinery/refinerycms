@@ -21,7 +21,7 @@
     <% if @images.any? %>
       <%= render :partial => "#{current_image_view}_view" %>
     <% else %>
-      <p><%= t('admin.no_results_found') %></p>
+      <p><%= t('admin.search_no_results') %></p>
     <% end %>
   <% else %>
     <% if @images.any? %>

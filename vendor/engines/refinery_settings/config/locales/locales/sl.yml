@@ -18,7 +18,6 @@ sl:
         create_first: "Kliknite '%{link}' da boste dodali vašo prvo nastavitev."
       form:
         restart_may_be_in_order: "<strong>Prosimo upoštevajte</strong> da boste morali včasih ponovno zagnati spletno stran, da bo nastavitev stopila v veljavo."
-    no_results_found: "Oprostite, ni bilo zadetkov"
   plugins:
     refinery_settings:
       title: Nastavitve

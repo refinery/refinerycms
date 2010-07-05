@@ -20,6 +20,14 @@ pt-BR:
         show_in_menu: Mostrar no menu
   admin: 
     pages:
+      page:
+        view_live: Vizualizar essa página agora <br/><em>(irá abrir uma nova janela)</em>
+        edit_this_page: Editar essa página
+        confirm_delete_page_title: Deletar essa página
+        confirm_delete_page_message: "Você tem certeza que quer deletar a página '%{title}'?"
+        hidden: oculta
+        draft: rascunho
+
       form_advanced_options:
         create_content_section: Criar seção de conteúdoCreate content section
         delete_content_section: Remover seção de conteúdo

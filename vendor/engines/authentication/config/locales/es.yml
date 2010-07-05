@@ -16,9 +16,9 @@ es:
       user_session: Sesión de usuario
     attributes:
       user_session:
-        login: login
-        email: email
-        password: contraseña
+        login: Login
+        email: Email
+        password: Contraseña
         remember_me: Recordarme
         incorrect: "Lo sentimos, su %{login_field} o la contraseña son correctos."
   plugins:
@@ -56,6 +56,8 @@ es:
       cancel_log_in: Cancelar
       or: o
       forgot_password: He olvidado mi contraseña
+      hello_please_sign_in: Hola! Por favor, iniciar sesión
+      sign_in: Iniciar sesión
   users:
     setup_website_name: "Lo primero es proporcionar un nombre para el sitio web.<br/><a href='%{link}'>Pulse aquí</a> editar el nombre del sitio web"
     signup_disabled: El registro de usuario ha sido deshabilitado.
@@ -69,6 +71,16 @@ es:
     create:
       welcome: Bienvenido a Refinery, %{who}
       signup_complete: "¡Registro correcto!"
+    forgot:
+      email_address: Correo electrónico
+      enter_email_address: Por favor, introduzca la dirección de correo electrónico para su cuenta.
+      reset_password: Perdí mi contraseña
+      blank_email: Usted no ha ingresado una dirección de correo electrónico.
+      email_not_associated_with_account: "Lo sentimos, '%{email}' no está asociado a ninguna cuenta. <br/>¿Está seguro que escribió la dirección de correo electrónico correcta?"
+      email_reset_sent: Un correo electrónico ha sido enviado con un enlace para restablecer su contraseña.
+    reset:
+      code_invalid: "Lo sentimos, pero el código restablecer vencida o no es válida. Si tiene problemas intente copiar y pegar la dirección de su correo electrónico en el navegador o reiniciando el proceso de restablecimiento de contraseña."
+      successful: "De restablecimiento de contraseña con éxito por %{email}"
   user_mailer:
     please_activate: Por favor, active la nueva cuenta.
     activated: "!Su cuenta ha sido activada!"

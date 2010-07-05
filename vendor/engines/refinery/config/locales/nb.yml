@@ -8,16 +8,14 @@ nb:
     menu:
       reorder_menu: Sorter meny
       reorder_menu_done: "Jeg er ferdig med å sortere menyen"
-    log_out: Logg ut
     search: Søk
     search_submit: Søk
     search_results_for: "Søkeresultat for '%{query}'"
-    no_results_found: "Beklager, ingen resultat funnet."
+    search_no_results: "Beklager, ingen resultat funnet."
   refinery:
     other: "Andre %{what}"
     reorder: "Sorter %{what}"
     reorder_done: "Ferdig å sortere %{what}"
-    search_no_results: "Beklager, ingen resultat funnet."
     crudify:
       created: "%{what} ble opprettet"
       updated: "%{what} er oppdatert"
@@ -27,6 +25,10 @@ nb:
       view_public_site: Se siden din
       welcome_to_refinery: Velkommen til Refinery
   shared:
+    site_bar:
+      log_out: Logg ut
+      switch_to_your_website: Switch to your website
+      switch_to_your_website_editor: Switch to your website editor
     admin:
       message:
         close: Lukk
