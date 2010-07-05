@@ -24,7 +24,7 @@ pt-BR:
         view_live: Vizualizar essa página agora <br/><em>(irá abrir uma nova janela)</em>
         edit_this_page: Editar essa página
         confirm_delete_page_title: Deletar essa página
-        confirm_delete_page_message: "Você tem certeza que quer deletar a página '{{title}}'?"
+        confirm_delete_page_message: "Você tem certeza que quer deletar a página '%{title}'?"
         hidden: oculta
         draft: rascunho
 

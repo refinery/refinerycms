@@ -10,7 +10,7 @@ pt-BR:
       reorder_menu_done: "Terminei de reordenar o menu"
     search: Procurar
     search_submit: Ir
-    search_results_for: "Resultados da busca por '{{query}}'"
+    search_results_for: "Resultados da busca por '%{query}'"
     search_no_results: "Desculpe, nenhum resultado foi encontrado"
   refinery:
     crudify:

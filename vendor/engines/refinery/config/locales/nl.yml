@@ -10,12 +10,12 @@ nl:
       reorder_menu_done: Ik ben klaar met het wijzigen van de volgorde
     search: Zoek naar
     search_submit: Zoek
-    search_results_for: "Zoekresultaten voor '{{query}}'"
+    search_results_for: "Zoekresultaten voor '%{query}'"
     search_no_results: "Excuses, geen resultaten gevonden"
   refinery:
-    other: "Ander {{what}}"
-    reorder: "Wijzig volgorde huidige {{what}}"
-    reorder_done: "Klaar met wijzigen van de volgorde van {{what}}"
+    other: "Ander %{what}"
+    reorder: "Wijzig volgorde huidige %{what}"
+    reorder_done: "Klaar met wijzigen van de volgorde van %{what}"
     crudify:
       created: "%{what} is met success aangemaakt"
       updated: "%{what} is met success aangepast"
