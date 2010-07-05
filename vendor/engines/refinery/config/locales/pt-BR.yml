@@ -13,6 +13,9 @@ pt-BR:
     search_results_for: "Resultados da busca por '%{query}'"
     search_no_results: "Desculpe, nenhum resultado foi encontrado"
   refinery:
+    other: "Outras {{what}}"
+    reorder: "{{what}} Reordenar"
+    reorder_done: "Reordenação {{what}} feito"
     crudify:
       created: "%{what} foi criado com sucesso"
       updated: "%{what} foi atualizado com sucesso"
