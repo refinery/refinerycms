@@ -20,8 +20,6 @@ sl:
           title: Odstrani datoteko
       index:
         upload_new: Prenesi Novo Datoteko
-        search_results: Iskalni rezultati za '%{results}'
-        search_no_results: Oprostite! Ni bilo zadetkov.
         no_files_yet: Trenutno še ni nobene datoteke. Za prenos prve datoteke kliknite "Prenesi Novo Datoteko".
       insert:
         existing_file: Obstoječo Datoteko

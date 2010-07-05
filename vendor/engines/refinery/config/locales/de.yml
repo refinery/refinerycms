@@ -10,13 +10,12 @@ de:
       reorder_menu_done: "Menü Anordnung speichern"
     search: Suche
     search_submit: Los
-    search_results_for: "Suchergebnisse für '%{query}'"
-    no_results_found: "Entschuldigung, es wurden keine Ergebnisse gefunden"
-  refinery:
-    other: "Weitere %{what}"
-    reorder: "Umordnen %{what}"
-    reorder_done: "Geschehen umordnen %{what}"
+    search_results_for: "Suchergebnisse für '{{query}}'"
     search_no_results: "Leider gibt es keine Ergebnisse."
+  refinery:
+    other: "Weitere {{what}}"
+    reorder: "Umordnen {{what}}"
+    reorder_done: "Geschehen umordnen {{what}}"
     crudify:
       created: "%{what} wurde erfolgreich erstellt."
       updated: "%{what} wurde erfolgreich aktualisiert."
