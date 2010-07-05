@@ -11,7 +11,7 @@ pt-BR:
     search: Procurar
     search_submit: Ir
     search_results_for: "Resultados da busca por '{{query}}'"
-    no_results_found: "Desculpe, nenhum resultado foi encontrado"
+    search_no_results: "Desculpe, nenhum resultado foi encontrado"
   refinery:
     crudify:
       created: "{{what}} foi criado com sucesso"

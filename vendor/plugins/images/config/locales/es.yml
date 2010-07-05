@@ -21,9 +21,6 @@ es:
           switch_to: Cambiar a vista de {{view_name}}
           list: lista
           grid: mosaico
-        search:
-          results_for: Resultados de la búsqueda '''{{query}}'''
-          no_results_found: No se han encontrado resultados
       grid_view:
         click_to_view: "Pulse para ver '{{title}}'<br/><em>Abre una nueva ventana</em>"
         edit: Editar esta imagen

@@ -11,7 +11,7 @@ en:
     search: Search
     search_submit: Go
     search_results_for: "Search results for '{{query}}'"
-    no_results_found: "Sorry, no results found"
+    search_no_results: "Sorry, no results found"
     images:
       existing_image:
         submit_insert: Insert
@@ -19,7 +19,6 @@ en:
     other: "Other {{what}}"
     reorder: "Reorder {{what}}"
     reorder_done: "Done Reordering {{what}}"
-    search_no_results: "Sorry, no results found."
     crudify:
       created: "{{what}} was successfully created."
       updated: "{{what}} was successfully updated."

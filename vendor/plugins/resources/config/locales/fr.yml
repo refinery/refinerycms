@@ -20,8 +20,6 @@ fr:
           title: Supprimer ce fichier pour toujours
       index:
         upload_new: Télécharger un Nouveau Fichier
-        search_results: "Résultat de recherche pour '{{results}}'"
-        search_no_results: "Désolé, aucun résultat trouvé."
         no_files_yet: "Il n'y a pas encore de fichier. Cliquer 'Télécharger un Nouveau Fichier' pour ajouté votre premier fichier."
       insert:
         existing_file: Fichier existant

@@ -68,7 +68,7 @@ namespace :translate do
 
   desc "Show I18n keys that are missing in all locale YAML files."
   task :lost_in_translation_all => :environment do
-    I18n.available_locales.each do |locale|
+    ::Refinery::I18n.locales.keys.each do |locale|
       find_missing_translations(locale)
     end
   end
