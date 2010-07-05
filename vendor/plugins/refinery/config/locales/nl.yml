@@ -8,7 +8,6 @@ nl:
     menu:
       reorder_menu: Wijzig menu volgorde
       reorder_menu_done: Ik ben klaar met het wijzigen van de volgorde
-    log_out: Afmelden
     search: Zoek naar
     search_submit: Zoek
     search_results_for: "Zoekresultaten voor '{{query}}'"
@@ -24,7 +23,7 @@ nl:
       destroyed: "{{what}} is met success verwijderd"
   shared:
     site_bar:
-      log_out: Log out
+      log_out: Afmelden
       switch_to_your_website: Ga naar de website
       switch_to_your_website_editor: Ga terug naar de editor
     admin:

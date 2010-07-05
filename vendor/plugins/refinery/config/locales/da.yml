@@ -8,7 +8,6 @@ da:
     menu:
       reorder_menu: Omorganisér menuen
       reorder_menu_done: "Jeg er færdig med omorganiseringen"
-    log_out: Log af
     search: Søg
     search_submit: Søg
     search_results_for: "Søgeresultat for '{{query}}'"
@@ -28,7 +27,9 @@ da:
       welcome_to_refinery: Velkommen til Refinery
   shared:
     site_bar:
-      log_out: Log out
+      log_out: Log af
+      switch_to_your_website: Switch to your website
+      switch_to_your_website_editor: Switch to your website editor
     admin:
       message:
         close: Luk
