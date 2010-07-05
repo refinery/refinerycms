@@ -30,6 +30,8 @@ fr:
       remember_me: Rester connecté
       or: ou
       forgot_password: "J'ai oublié mon mot de passe"
+      hello_please_sign_in: Bonjour! S'il vous plaît signer po
+      sign_in: Identifiez-vous
   users:
     setup_website_name: "Pour commencer, donnez un nom au site. <a href='%{link}'>Allez ici</a> pour modifier le nom de votre site."
     signup_disabled:  "L'inscription d'utilisateur est désactivé"

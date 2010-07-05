@@ -26,6 +26,8 @@ nb:
       remember_me: Husk meg
       or: eller
       forgot_password: Jeg har glømt passordet mitt
+      hello_please_sign_in: Hei! Vennligst logg inn
+      sign_in: Logg på
   users:
     setup_website_name: "Først la oss gi siden et navn. <a href='%{link}'>Gå her</a> for å redigere siden din sitt navn"
     signup_disabled: Brukerpåmelding er deaktivert
