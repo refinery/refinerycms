@@ -21,7 +21,7 @@ gem 'acts_as_indexed', '= 0.6.2', :require => 'acts_as_indexed', :git => 'git://
 gem 'authlogic',       '= 2.1.5', :require => 'authlogic'
 gem 'friendly_id',     '= 3.0.6', :require => 'friendly_id'
 gem 'rails',           '= 2.3.8'
-gem 'rmagick',         '~> 2.13.1'
+gem 'rmagick',         '~> 2.12.2'
 gem 'truncate_html',   '= 0.3.2', :require => 'truncate_html'
 gem 'will_paginate',   '= 2.3.14', :require => 'will_paginate'
 
@@ -42,7 +42,7 @@ end
 
 #===REQUIRED FOR REFINERY GEM INSTALL===
 # Leave the gem below disabled (commented out) if you're not using the gem install method.
-#gem 'refinerycms',    '= 0.9.7.1'
+#gem 'refinerycms',    '= 0.9.7.2'
 #===END OF REFINERY GEM INSTALL REQUIREMENTS===
 
 # Bundle gems for certain environments:

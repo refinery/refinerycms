@@ -31,8 +31,6 @@ it:
         closed: "Inchiesta '{{inquiry}}' è chiuso"
         reopened: "Inchiesta '{{inquiry}}' si riapre"
       index:
-        update_notified: Aggiornamento chi viene notificata
-        edit_confirmation_email: Modifica email di conferma
         no_inquiries: Non hai ancora ricevuto alcuna richiesta in.
       show:
         details: Dettagli
@@ -44,6 +42,9 @@ it:
         actions: Azioni
         back_to_all_inquiries: Torna a tutte le richieste
         inquiry: Inchiesta
+      submenu:
+        update_notified: Aggiornamento chi viene notificata
+        edit_confirmation_email: Modifica email di conferma
     inquiry_settings:
       update:
         updated: "'{{setting}}' stato aggiornato con successo."

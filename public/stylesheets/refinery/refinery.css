@@ -972,7 +972,13 @@ ul#menu.reordering_menu li a {
   line-height: 18px;
   padding: 2px;
   font-size: 16px;
-  width: 200px;
+  width: 180px;
+}
+.pt-BR #search {
+  width: 187px;
+}
+.en #search {
+  width: 210px;
 }
 .search_form {
   position: relative;
@@ -1367,6 +1373,22 @@ input.button.close_dialog:active, a.button.close_dialog:active, #content a.butto
 }
 #upgrade_wrapper li a {
   line-height: 20px;
+}
+
+#actions ul#current_locale {
+  margin-top: 30px;
+}
+#current_locale li a {
+  position: relative;
+}
+#current_locale li a span {
+  position: absolute;
+  right: 9px;
+  border-bottom: 1px dotted #727272;
+}
+
+#other_locales li:first-child {
+  margin-top: 0px;
 }
 
 /* cornering */

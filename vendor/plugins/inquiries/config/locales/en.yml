@@ -5,6 +5,7 @@ en:
   activerecord:
     models:
       inquiry: Inquiry
+      inquiry_setting: Inquiry Setting
     attributes:
       inquiry:
         to: To
