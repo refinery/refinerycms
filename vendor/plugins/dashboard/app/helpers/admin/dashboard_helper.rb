@@ -10,7 +10,7 @@ module Admin::DashboardHelper
       article = t("plugins.#{record.class.name.pluralize.downcase}.article", :default => 'the')
 
       # now create a link to the notification's corresponding record.
-      link_to t(".last_activity_mensage", :what => record.send(activity.title),
+      link_to t(".latest_activity_message", :what => record.send(activity.title),
 
                                   :kind => record.class.human_name,
                                   :action => t("#{action}.with_article \"#{article}\"")).downcase.capitalize,

@@ -15,7 +15,7 @@ en:
       recent_activity:
         latest_activity: Latest activity
         see: "See '{{what}}'"
-        last_activity_mensage: "{{what}} {{kind}} was {{action}}"
+        latest_activity_message: "{{what}} {{kind}} was {{action}}"
       recent_inquiries:
         latest_inquiries: Latest inquiries
   updated:
