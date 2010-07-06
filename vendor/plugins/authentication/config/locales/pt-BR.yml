@@ -8,6 +8,7 @@ pt-BR:
         cannot_remove_user_plugin_from_current_user: "Você não pode remover o plugin 'Usuários' a partir da conta atualmente logada."
       form:
         blank_password_keeps_current: Deixar a senha em branco mantém a senha atual
+        enable_all: 'habilitar todos'
       index:
         create_new_user: Criar Novo Usuário
         no_users_yet: Ainda não existem usuários. Clique em "Criar Novo Usuário" para adicionar seu primeiro usuário.
@@ -69,6 +70,7 @@ pt-BR:
       user:
         password: Senha
         password_confirmation: Confirmação da senha
+        plugin_access: Acesso aos plugins
   authlogic:
     error_messages:
       login_blank: não pode estar em branco

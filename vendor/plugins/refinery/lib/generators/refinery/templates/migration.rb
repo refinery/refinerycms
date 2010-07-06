@@ -23,7 +23,7 @@ class <%= migration_name %> < ActiveRecord::Migration
   end
 
   def self.down
-    UserPlugin.destroy_all({:title => "<%= class_name.pluralize.underscore.titleize %>"})
+    UserPlugin.destroy_all({:name => "<%= class_name.pluralize.underscore.titleize %>"})
 
     Page.find_all_by_link_url("/<%= plural_name %>").each do |page|
       page.link_url, page.menu_match = nil
