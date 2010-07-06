@@ -5,7 +5,7 @@ module RoutingFilter
       if ::Refinery::I18n.enabled?
         locale = nil
         if path =~ %r{^\/#{::Refinery::I18n.locales.keys.join('|')}\/}
-          if path !~ %r{^/(admin|refinery|wymiframe)}
+          if path !~ %r{^/(sessions?|admin|refinery|wymiframe)}
             path.sub! %r(^/(([a-zA-Z\-_])*)(?=/|$)) do
               locale = $1
               ::I18n.locale = locale
