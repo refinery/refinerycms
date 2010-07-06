@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
   <%= render :partial => "/admin/head" %>
-  <body<%= " class='login'" unless logged_in? %><%= " class='splash'" if logged_in? and action_name == "index" %>>
+  <% i18n_class = RefinerySetting.find_by_name('i18n_translation_current_locale').value.to_s %>
+  <body<%= " class='login #{i18n_class}'" unless logged_in? %><%= " class='splash #{i18n_class}'" if logged_in? and action_name == "index" %>>
     <%= render :partial => '/shared/site_bar'  %>
     <div id='tooltip_container'></div>
     <div id='header'>
