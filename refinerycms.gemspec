@@ -1,14 +1,14 @@
 Gem::Specification.new do |s|
   s.name              = %q{refinerycms}
-  s.version           = %q{0.9.7.1}
+  s.version           = %q{0.9.7.2}
   s.description       = %q{A beautiful open source Ruby on Rails content manager for small business. Easy to extend, easy to use, lightweight and all wrapped up in a super slick UI.}
-  s.date              = %q{2010-07-05}
+  s.date              = %q{2010-07-06}
   s.summary           = %q{A beautiful open source Ruby on Rails content manager for small business.}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
   s.authors           = %w(Resolve\ Digital David\ Jones Philip\ Arndt)
   s.require_paths     = %w(lib)
-  s.executables       = %w(refinery refinery-update-core)
+  s.executables       = %w(refinery)
 
   s.files             = [
     '.gitignore',
@@ -29,7 +29,6 @@ Gem::Specification.new do |s|
     'app/helpers',
     'app/helpers/application_helper.rb',
     'bin/refinery',
-    'bin/refinery-update-core',
     'config/acts_as_indexed_config.rb',
     'config/amazon_s3.yml.example',
     'config/application.rb',
@@ -979,11 +978,9 @@ Gem::Specification.new do |s|
     'vendor/plugins/inquiries/app/views/admin/inquiries/spam.html.erb',
     'vendor/plugins/inquiries/app/views/admin/inquiry_settings',
     'vendor/plugins/inquiries/app/views/admin/inquiry_settings/_confirmation_email_form.html.erb',
-    'vendor/plugins/inquiries/app/views/admin/inquiry_settings/_inquiry_setting.html.erb',
     'vendor/plugins/inquiries/app/views/admin/inquiry_settings/_notification_recipients_form.html.erb',
     'vendor/plugins/inquiries/app/views/admin/inquiry_settings/_subject_form.html.erb',
     'vendor/plugins/inquiries/app/views/admin/inquiry_settings/edit.html.erb',
-    'vendor/plugins/inquiries/app/views/admin/inquiry_settings/index.html.erb',
     'vendor/plugins/inquiries/app/views/inquiries',
     'vendor/plugins/inquiries/app/views/inquiries/new.html.erb',
     'vendor/plugins/inquiries/app/views/inquiries/thank_you.html.erb',

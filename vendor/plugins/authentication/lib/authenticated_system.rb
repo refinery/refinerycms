@@ -119,7 +119,7 @@ module AuthenticatedSystem
     end
 
     def refinery_user?
-      logged_in? && current_user.roles.include?(Role.find_or_create_by_title('Refinery'))
+      logged_in? && current_user.has_role?(:refinery)
     end
 
     def self.included(base)
