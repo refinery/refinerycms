@@ -9,7 +9,7 @@ protected
   def redirect_back_to_inquiries?
     redirect_to admin_inquiries_url
   end
-  
+
   def set_url_override?
     @url_override = admin_inquiry_setting_url(@inquiry_setting, :dialog => from_dialog?)
   end
