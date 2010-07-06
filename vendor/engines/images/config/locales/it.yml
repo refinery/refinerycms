@@ -24,7 +24,7 @@ it:
       grid_view:
         edit: Modifica questa immagine
         confirm_delete:
-          message: Sei sicuro di voler eliminare %{title}? 
+          message: Sei sicuro di voler eliminare %{title}?
           title: Rimuovere questa immagine per sempre
         view_live: Visualizza questa immagine <br/><em>Apri in una nuova finestra</em>
       list_view_image:

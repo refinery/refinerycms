@@ -26,13 +26,13 @@ da:
       grid_view:
         edit: Redigér billede
         confirm_delete:
-          message: Er du sikker på du vil slette billedet '%{title}'? 
+          message: Er du sikker på du vil slette billedet '%{title}'?
           title: Slet billede
         view_live: Vis billede<br/><em>(åbner i nyt vindue)</em>
       list_view_image:
         edit_this_image: Redigér billede
         delete:
-          message: Er du sikker på du vil slette billedet '%{title}'? 
+          message: Er du sikker på du vil slette billedet '%{title}'?
           title: Slet billede
       insert:
         existing_image: Eksisterende billede

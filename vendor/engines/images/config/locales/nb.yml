@@ -25,13 +25,13 @@ nb:
       grid_view:
         edit: Rediger dette bildet
         confirm_delete:
-          message: Er du sikker på at du ønsker å slette %{title}? 
+          message: Er du sikker på at du ønsker å slette %{title}?
           title: Fjern dette bildet for alltid
         view_live: Se dette bildet <br/><em>Åpner i et nytt vindu</em>
       list_view_image:
         edit_this_image: Rediger dette bildet
         delete:
-          message: Er du sikker på at du ønsker å slette %{title}? 
+          message: Er du sikker på at du ønsker å slette %{title}?
           title: Fjern dette bildet for alltid
       insert:
         existing_image: Eksisterende Bilde
