@@ -58,6 +58,14 @@ init_interface = function() {
   if (last_item_offset && ((last_item_offset.left + last_item.outerWidth() - $('#menu').offset().left + 5) < $('#page_container').outerWidth())) {
     $("#page_container:not('.login #page_container')").corner('5px tr');
   }
+
+  $('#current_locale li a').click(function(e) {
+    $('#current_locale li a span').each(function(span){
+      $(this).css('display', $(this).css('display') == 'none' ? '' : 'none');
+    });
+    $('#other_locales').animate({opacity: 'toggle', height: 'toggle'}, 250);
+    e.preventDefault();
+  });
 }
 
 init_delete_confirmations = function() {
