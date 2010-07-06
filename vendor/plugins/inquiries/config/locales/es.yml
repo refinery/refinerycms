@@ -32,8 +32,6 @@ es:
         closed: "La consulta '{{inquiry}}' esta cerrada"
         reopened: "La consulta '{{inquiry}}' esta abierta"
       index:
-        update_notified: "Actualizar a quien será notificado"
-        edit_confirmation_email: "Editar email de confirmación"
         search_results_for: Resultados de la busqueda de {{query}}
         no_inquiries: No has recibido ninguna consulta aun.
       show:
@@ -46,6 +44,9 @@ es:
         actions: Acciones
         back_to_all_inquiries: Regresar a todas las consultas
         inquiry: Consulta
+      submenu:
+        update_notified: "Actualizar a quien será notificado"
+        edit_confirmation_email: "Editar email de confirmación"
     inquiry_settings:
       update:
         updated: "'{{setting}}' fue actualizado exitosamente."

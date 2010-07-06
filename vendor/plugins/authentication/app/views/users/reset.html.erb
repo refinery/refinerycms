@@ -1,4 +1,4 @@
-<% content_for :header, t('.pick_new_password_for', :email => @user.email)"Pick a new password for #{@user.email}" %>
+<% content_for :header, t('.pick_new_password_for', :email => @user.email) %>
 
 <% form_for :user do |f| -%>
   <%= f.error_messages %>
