@@ -977,6 +977,9 @@ ul#menu.reordering_menu li a {
 .pt-BR #search {
   width: 187px;
 }
+.en #search {
+  width: 210px;
+}
 .search_form {
   position: relative;
 }
