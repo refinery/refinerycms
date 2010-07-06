@@ -59,13 +59,13 @@ class User < ActiveRecord::Base
   end
 
   def add_role(title)
-    unless self.has_role?(role = Role[title.to_s])
-      self.roles << role
-    end
+    raise ArgumentException, "Role should be the title of the role not a role object." if title.is_a?(Role)
+    self.roles << Role[title] unless self.has_role?(title)
   end
 
-  def has_role?(role)
-    self.roles.include?(role.is_a?(Role) ? role : Role[role.to_s])
+  def has_role?(title)
+    raise ArgumentException, "Role should be the title of the role not a role object." if title.is_a?(Role)
+    (role = Role.find_by_title(title.to_s.camelize)).present? and self.roles.collect{|r| r.id}.include?(role.id)
   end
 
 end
