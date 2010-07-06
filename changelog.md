@@ -1,3 +1,13 @@
+## 0.9.7.2 [06 July 2010]
+
+- Bugfixes with users and roles [Philip Arndt and Amanda Wagener]
+- Fixed the rake translate:lost_in_translation LOCALE=en and rake translate:lost_in_translation_all tasks so that they accurately reflect the missing i18n translation keys. [Philip Arndt]
+- Refactored routing of i18n to allow different default frontend and backend locales. [Philip Arndt]
+- Added better grammar support for some i18n [Halan Pinheiro]
+- Improved output of rake refinery:update task and removed bin/refinery-update-core task. [Steven Heidel]
+- Set config.ru to run in production RAILS_ENV by default [Philip Arndt]
+- [See full list](http://github.com/resolve/refinerycms/compare/0.9.7.1...0.9.7.2)
+
 ## 0.9.7.1 [03 July 2010]
 
 - Bugfixes in the gem installation method process. [Philip Arndt]
@@ -5,6 +15,7 @@
 - Provided example files for sqlite3, mysql and postgresql. [Philip Arndt]
 - Created option for specifying a database adapter (sqlite3, mysql or postgresql) when creating from Gem. [Philip Arndt]
 - Other bugfixes including UI consistency around signup. [Philip Arndt]
+- [See full list](http://github.com/resolve/refinerycms/compare/0.9.7...0.9.7.1)
 
 ## 0.9.7 [02 July 2010]
 
@@ -16,6 +27,8 @@
 - Added spam filtering to contact form. [djones]
 - Full Refinery UI redesign. [Resolve Digital]
 - User Role support. [Amanda Wagener and Philip Arndt]
+- [See full list](http://github.com/resolve/refinerycms/compare/0.9.6.34...0.9.7)
+- [See blog post](http://refinerycms.com/blog/refinery-cms-0-9-7-released)
 
 ## 0.9.6.34 [09 May 2010]
 
