@@ -15,9 +15,13 @@ en:
       recent_activity:
         latest_activity: Latest activity
         see: "See '{{what}}'"
+        last_activity_mensage: "{{what}} {{kind}} was {{action}}"
       recent_inquiries:
         latest_inquiries: Latest inquiries
-  updated: updated
-  created: created
+  updated:
+    'with_article "the"': updated
+  created:
+    'with_article "the"': created
+
   ago: "{{time}} ago"
   see: See
