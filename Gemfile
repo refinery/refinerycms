@@ -22,7 +22,7 @@ gem 'sqlite3-ruby', :require => 'sqlite3' #db_adapter=sqlite3
 #git 'git://github.com/rails/rails.git'
 
 gem 'rails',          '3.0.0.beta4'
-gem 'rmagick',        '~> 2.13.1', :require => 'RMagick'
+gem 'rmagick',        '~> 2.12.2', :require => 'RMagick'
 gem 'rack-cache',     :require => 'rack/cache'
 gem 'dragonfly',                  :git => 'git://github.com/myabc/dragonfly.git',        :branch => '1.9.2-fixes'
 gem 'acts_as_indexed', '= 0.6.2', :git => 'git://github.com/parndt/acts_as_indexed.git', :branch => 'rails3'
@@ -51,7 +51,7 @@ end
 
 #===REQUIRED FOR REFINERY GEM INSTALL===
 # Leave the gem below disabled (commented out) if you're not using the gem install method.
-#gem 'refinerycms',    '= 0.9.7.1'
+#gem 'refinerycms',    '= 0.9.7.2'
 #===END OF REFINERY GEM INSTALL REQUIREMENTS===
 
 # Bundle gems for certain environments:

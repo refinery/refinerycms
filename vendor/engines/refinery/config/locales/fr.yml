@@ -25,10 +25,6 @@ fr:
       view_public_site: Voir la page public
       welcome_to_refinery: Bienvenue sur Refinery
   shared:
-    site_bar:
-      log_out: Déconnexion
-      switch_to_your_website: Switch to your website
-      switch_to_your_website_editor: Switch to your website editor
     admin:
       message:
         close: Fermer
@@ -56,6 +52,7 @@ fr:
     message:
       close: Fermer
     site_bar:
+      log_out: Déconnexion
       switch_to_your_website: Passer à votre site web
       switch_to_your_website_editor: Passer à votre éditeur de site web
   activerecord:

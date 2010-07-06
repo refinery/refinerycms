@@ -41,8 +41,7 @@ pt-BR:
         update_notified: Atualizar quem recebe a notificação
         edit_confirmation_email: Editar email de confirmação
       index:
-        update_notified: Atualizar quem é notificado
-        edit_confirmation_email: Editar email de confirmação
+        search_results_for: Resultados da busca por %{query}
         open_inquiries: Mensagens abertas
         no_inquiries: "Urra! Não exitem mensagens abertas porque você lidou com todas elas."
         closed_inquiries: Mensagens fechadas

@@ -16,7 +16,9 @@ da:
         see: Vis '%{what}'
       recent_inquiries:
         latest_inquiries: Latest inquiries
-  updated: opdateret
-  created: oprettet
+  updated:
+    'with_article "the"':  opdateret
+  created:
+    'with_article "the"':  oprettet
   ago: "%{time} siden"
   see: Vis

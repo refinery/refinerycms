@@ -16,7 +16,9 @@ fr:
         see: Voir '%{what}'
       recent_inquiries:
         latest_inquiries: Latest inquiries
-  updated: a été mis à jour
-  created: a été créer
+  updated:
+    'with_article "the"':  a été mis à jour
+  created:
+    'with_article "the"':  a été créer
   ago: "Il y a %{time}"
   see: Voir
