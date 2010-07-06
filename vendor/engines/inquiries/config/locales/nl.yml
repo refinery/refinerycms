@@ -33,8 +33,7 @@ nl:
         closed: "Vraag '%{inquiry}' is behandeld"
         reopened: "Vraag '%{inquiry}' is heropend"
       index:
-        update_notified: Wijzig wie een notificatie ontvangt
-        edit_confirmation_email: Bewerk bevestigings email
+        search_results_for: Zoekresultaten voor %{query}
         open_inquiries: Open vragen
         no_inquiries: "Jeej! Er zijn geen onverwerkte vragen!"
         closed_inquiries: Verwerkte vragen
@@ -48,6 +47,9 @@ nl:
         age: Leeftijd
         actions: Acties
         back_to_all_inquiries: Terug naar alle vragen
+      submenu:
+        update_notified: Wijzig wie een notificatie ontvangt
+        edit_confirmation_email: Bewerk bevestigings email
     inquiry_settings:
       update:
         updated: "'%{setting}' is aangepast."

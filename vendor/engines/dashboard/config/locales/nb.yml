@@ -16,7 +16,9 @@ nb:
         see: Se '%{what}'
       recent_inquiries:
         latest_inquiries: Latest inquiries
-  updated: oppdatert
-  created: opprettet
+  updated:
+    'with_article "the"':  oppdatert
+  created:
+    'with_article "the"': opprettet
   ago: "%{time} siden"
   see: Se

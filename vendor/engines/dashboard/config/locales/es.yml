@@ -16,7 +16,13 @@ es:
         see: Vee '%{what}'
       recent_inquiries:
         latest_inquiries: Latest inquiries
-  updated: actualizado
-  created: creado
+  updated:
+    'with_article "las"':  actualizadas
+    'with_article "los"':  actualizado
+    'with_article "the"':  actualizado
+  created:
+    'with_article "las"':  creadas
+    'with_article "los"':  creados
+    'with_article "the"':  creado
   ago: "hace %{time}"
   see: Ver

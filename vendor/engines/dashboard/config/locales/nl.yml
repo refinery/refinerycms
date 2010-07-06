@@ -16,7 +16,9 @@ nl:
         see: Bezoek de '%{what}'
       recent_inquiries:
         latest_inquiries: Latest inquiries
-  updated: bewerkt
-  created: aangemaakt
+  updated:
+    'with_article "the"':  bewerkt
+  created:
+    'with_article "the"':  aangemaakt
   ago: "%{time} geleden"
   see: Zie

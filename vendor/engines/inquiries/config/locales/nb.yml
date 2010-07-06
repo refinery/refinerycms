@@ -31,8 +31,6 @@ nb:
         closed: "Forespørsel '%{inquiry}' lukket"
         reopened: "Forespørsel '%{inquiry}' er åpnet igjen."
       index:
-        update_notified: Oppdater hvem som blir varslet
-        edit_confirmation_email: Rediger bekreftelsesepost
         no_inquiries: Du har ikke mottatt noen forespørsler enda.
       show:
         details: Detaljer
@@ -44,6 +42,9 @@ nb:
         actions: Handlinger
         back_to_all_inquiries: Tilbake til alle forespørsler
         inquiry: Forespørsel
+      submenu:
+        update_notified: Oppdater hvem som blir varslet
+        edit_confirmation_email: Rediger bekreftelsesepost
     inquiry_settings:
       update:
         updated: "'%{setting}' er oppdatert."

@@ -31,8 +31,7 @@ de:
         closed: "Kontaktanfrage '%{inquiry}' ist geschlossen"
         reopened: "Kontaktanfrage '%{inquiry}' ist neu geöffnet"
       index:
-        update_notified: Wer wird benachrichtigt aktualisieren
-        edit_confirmation_email: Bestätigungsmail bearbeiten
+        search_results_for: Suchergebnisse für %{query}
         open_inquiries: Offene Anfragen
         no_inquiries: "Juhuu! Es gibt keine offenen Kontaktanfragen, da Sie bereits alle Anfragen abgearbeitet haben."
         closed_inquiries: Geschlossene Kontaktanfragen
@@ -47,6 +46,9 @@ de:
         actions: Aktionen
         back_to_all_inquiries: Zurück zu allen Kontaktanfragen
         inquiry: Kontaktanfrage
+      submenu:
+        update_notified: Wer wird benachrichtigt aktualisieren
+        edit_confirmation_email: Bestätigungsmail bearbeiten
     inquiry_settings:
       update:
         updated: "'%{setting}' wurde erfolgreich aktualisiert."
@@ -67,4 +69,3 @@ de:
         note: "Hinweis: Verwenden Sie den Text %name% um den Namen des Kunden in der E-Mail einzufügen."
       subject_form:
         subject_value_name: Betreff
-

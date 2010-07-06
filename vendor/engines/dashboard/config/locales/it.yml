@@ -16,7 +16,9 @@ it:
         see: Vedere '%{what}'
       recent_inquiries:
         latest_inquiries: Latest inquiries
-  updated: aggiornato
-  created: creato
+  updated:
+    'with_article "the"':  aggiornato
+  created:
+    'with_article "the"':  creato
   ago: "%{time} fa"
   see: Vedere

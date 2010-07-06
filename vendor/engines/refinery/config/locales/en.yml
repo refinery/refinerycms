@@ -41,11 +41,14 @@ en:
         or_continue: or
         cancel_lose_changes: "Cancelling will lose all changes you've made to this %{object_name}"
         delete: Delete
+        previous: Previous
+        next: Next
       image_picker:
         none_selected: "There is currently no %{what} selected, please click here to add one."
         remove_current: "Remove current %{what}"
         change: Click here to pick a image
         image: image
+        show: Show
       resource_picker:
         none_selected: "There is currently no %{what} selected, please click here to add one."
         current: "Current %{what}"

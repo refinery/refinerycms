@@ -16,7 +16,9 @@ sl:
         see: Poglej '%{what}'
       recent_inquiries:
         latest_inquiries: Latest inquiries
-  updated: posodobitev
-  created: ustvarjena
+  updated:
+    'with_article "the"':  posodobitev
+  created:
+    'with_article "the"':  ustvarjena
   ago: "%{time} nazaj"
   see: Poglej
