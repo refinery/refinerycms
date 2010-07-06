@@ -2,8 +2,10 @@ pt-BR:
   plugins:
     pages:
       title: Páginas
+      article: as
     refinery_pages:
       title: Páginas
+      article: as
   activerecord:
     models:
       page: Página
