@@ -24,7 +24,7 @@ class PagesController < ApplicationController
   #
   def show
     @page = if params[:path]
-      Page.find(params[:path].last, :include => [:parts, :slugs])
+      Page.find(params[:path].split('/').last, :include => [:parts, :slugs])
     else
       Page.find(params[:id], :include => [:parts, :slugs])
     end

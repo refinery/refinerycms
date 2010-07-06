@@ -15,3 +15,11 @@ Refinery::Plugin.register do |plugin|
   # this tells refinery where this plugin is located on the filesystem and helps with urls.
   # plugin.directory = directory
 end
+
+Pages.class_eval do
+
+  initializer :add_marketable_routes do |app|
+    app.routes_reloader.paths << File.expand_path('../pages/marketable_routes.rb', __FILE__)
+  end
+
+end
