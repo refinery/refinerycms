@@ -86,15 +86,15 @@ unless (app_path = ARGV.shift).nil? or app_path.length == 0
 
     # read in the Gemfile and write it back out with the refinerycms gem enabled.
     (lines = refinery_root.join('Gemfile').open('r').read.split("\n")).each do |line|
-      line.gsub!("#gem 'refinerycms'", "gem 'refinerycms'")
+      line.gsub!(/\#*\s?gem 'refinerycms'/, "gem 'refinerycms'")
       
       # Ensure that the correct database gem libraries are included for the database adapter
       # that the user has specified in the refinery install command.
       if line =~ /\#db\_adapter\=/
         if line =~ %r{#db_adapter=#{db_adapter}}
-          line.gsub!(/^(\#*\ ?gem)/, 'gem')
+          line.gsub!(/^(\#*\s?gem)/, 'gem')
         else
-          line.gsub!(/^(\ ?gem)/, '#gem')
+          line.gsub!(/^(\s?gem)/, '# gem')
         end
       end
     end
