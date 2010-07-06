@@ -20,7 +20,7 @@ pt-BR:
         meta_description_help: Meta palavras-chave
         meta_description_help: Meta descrição
         show_in_menu: Mostrar no menu
-  admin: 
+  admin:
     pages:
       page:
         view_live: Vizualizar essa página agora <br/><em>(irá abrir uma nova janela)</em>

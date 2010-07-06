@@ -22,7 +22,7 @@ es:
         custom_url_explanation: "Ingresa un URL si la pagina se liga a una pagina externa a este sitio o algun recurso pre-creado ejemplo una pagina de contacto. <br/> Nota: Este URL debe de dirigirse a un lugar existente si no no será creado."
         draft: Borrador
         show_in_menu_title: "Ver en menú"
-        show_in_menu_description: "Marque esta casilla si esta página debe aparecer en el menú del sitio" 
+        show_in_menu_description: "Marque esta casilla si esta página debe aparecer en el menú del sitio"
         draft: Borrador
         save_as_draft: Guardar como Borrador
         save: Guardar
