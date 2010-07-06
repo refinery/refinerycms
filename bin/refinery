@@ -114,11 +114,11 @@ unless (app_path = ARGV.shift).nil? or app_path.length == 0
       puts `#{cmd}`
       
       puts "\n\nSetting up your development database..\n"
-      puts (cmd="rake -f #{File.join(rails_root, 'Rakefile')} db:setup")
+      puts (cmd="rake -f '#{File.join(rails_root, 'Rakefile')}' db:setup")
       puts `#{cmd}`
       
       puts "\n\nUpdating some core refinery files..\n"
-      puts (cmd="rake -f #{File.join(rails_root, 'Rakefile')} refinery:update from_installer=true")
+      puts (cmd="rake -f '#{File.join(rails_root, 'Rakefile')}' refinery:update from_installer=true")
       puts `#{cmd}`
     end
     
