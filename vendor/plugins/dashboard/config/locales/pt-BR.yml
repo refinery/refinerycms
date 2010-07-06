@@ -13,8 +13,8 @@ pt-BR:
         change_language: Mudar Língua
       recent_activity:
         latest_activity: Atividade Recente
-        see: Ver '{{what}}'
-        last_activity_mensage: "{{kind}} {{what}} foi {{action}}"
+        see: "Ver '{{what}}'"
+        latest_activity_message: "{{kind}} {{what}} foi {{action}}"
       recent_inquiries:
         latest_inquiries: Latest inquiries
   updated:
