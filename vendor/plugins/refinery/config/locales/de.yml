@@ -27,8 +27,6 @@ de:
   shared:
     site_bar:
       log_out: Ausloggen
-      switch_to_your_website: Switch to your website
-      switch_to_your_website_editor: Switch to your website editor
     admin:
       message:
         close: Schließen

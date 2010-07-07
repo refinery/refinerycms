@@ -1,3 +1,16 @@
+## 0.9.7.4 [07 July 2010]
+
+- Fixed critical issue in the i18n routing pattern that was matching prefixes like /news/ as a locale incorrectly. [Philip Arndt]
+- [See full list](http://github.com/resolve/refinerycms/compare/0.9.7.3...0.9.7.4)
+
+## 0.9.7.3 [07 July 2010]
+
+- Falls back to default locale when a translation key can not be located in the current locale, only in production mode. [Philip Arndt]
+- Fixed issue creating a Refinery site using bin/refinery where directory paths contained spaces. [Philip Arndt]
+- Fixed issue when using script/generate refinery surrounding the migration incorrectly using the plugin's title. [Philip Arndt]
+- Added verbose=true option when running rake refinery:update that prints out everything it's doing. [Philip Arndt]
+- [See full list](http://github.com/resolve/refinerycms/compare/0.9.7.2...0.9.7.3)
+
 ## 0.9.7.2 [06 July 2010]
 
 - Bugfixes with users and roles [Philip Arndt and Amanda Wagener]

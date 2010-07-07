@@ -1,5 +1,5 @@
 User.find(:all).each do |user|
-  user.plugins.create(:name => "<%= class_name.pluralize.underscore.titleize %>",
+  user.plugins.create(:name => "<%= class_name.pluralize.underscore.downcase %>",
                       :position => (user.plugins.maximum(:position) || -1) +1)
 end
 
