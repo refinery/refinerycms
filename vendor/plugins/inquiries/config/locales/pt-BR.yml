@@ -46,6 +46,8 @@ pt-BR:
         no_inquiries: "Urra! Não exitem mensagens abertas porque você lidou com todas elas."
         closed_inquiries: Mensagens fechadas
         havent_closed_any_inquiries: "Você ainda não fechou nenhuma mensagem."
+      spam:
+        no_spam: Urra! Não existem mensagens de spam.
       show:
         details: Detalhes
         click_to_email: Clique para enviar email
