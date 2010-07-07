@@ -40,7 +40,10 @@ pt-BR:
         or_cancel: ou
         cancel: Cancelar
         or_continue: ou
+        delete: Remover
         cancel_lose_changes: "Cancelar irá fazer com que você perca as alterações que tenha feito a este {{object_name}}"
+        previous: Anterior
+        next: Próximo
       image_picker:
         none_selected: "Atualmente não existe nenhum {{what}} selecionado, por favor clique aqui para adicionar um."
         remove_current: "Remover {{what}} atual"
