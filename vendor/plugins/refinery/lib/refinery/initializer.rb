@@ -12,7 +12,7 @@ module Refinery
 
   class Configuration < Rails::Configuration
     def default_plugin_paths
-      paths = super.push(Refinery.root.join("vendor", "plugins").to_s).uniq
+      super.push(Refinery.root.join("vendor", "plugins").to_s).uniq
     end
   end
 
@@ -21,22 +21,21 @@ module Refinery
       # call Rails' add_plugin_load_paths
       super
 
-      # add plugin lib paths to the $LOAD_PATH so that rake tasks etc. can be run when using a gem for refinery or gems for plugins.
-      search_for = Regexp.new(Refinery.root.join("vendor", "plugins", ".+?", "lib").to_s)
-
       # find all the plugin paths
       paths = plugins.collect{ |plugin| plugin.load_paths }.flatten
 
       # just use lib paths from Refinery engines
-      paths = paths.reject{|path| path.scan(search_for).empty? or path.include?('/rails-') }
-
+      paths = paths.reject{|path| path.scan(/lib$/).empty? or path.include?('/rails-') }
+      
       # reject Refinery lib paths if they're already included in this app.
       paths = paths.reject{ |path| path.include?(Refinery.root.to_s) } unless Refinery.is_a_gem
       paths.uniq!
 
-      ($refinery_gem_plugin_lib_paths = paths).each do |path|
-        $LOAD_PATH.unshift path
-      end
+      # Save the paths to a global variable so that the application can access them too
+      # and unshift them onto the load path.
+      ($refinery_gem_plugin_lib_paths = paths).each { |path| $LOAD_PATH.unshift(path) }
+      
+      # Ensure we haven't caused any duplication
       $LOAD_PATH.uniq!
     end
   end
