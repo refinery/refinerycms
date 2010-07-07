@@ -11,7 +11,7 @@ pt-BR:
         download_current: Baixar arquivo atual
         or: ou
         replace: ", substituir por este..."
-        maximum_file_size: "The maximum file size is {{megabytes}} megabytes."
+        maximum_file_size: "O tamanho máximo permitido é de {{megabytes}} megabytes."
       resource:
         download: Baixar este arquivo ({{size}})
         edit: Editar este arquivo
