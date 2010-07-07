@@ -4,7 +4,7 @@ module RoutingFilter
     def around_recognize(path, env, &block)
       if ::Refinery::I18n.enabled?
         locale = nil
-        if path =~ %r{^\/#{::Refinery::I18n.locales.keys.join('|')}\/}
+        if path =~ %r{^/(#{::Refinery::I18n.locales.keys.join('|')})/}
           if path !~ %r{^/(sessions?|admin|refinery|wymiframe)}
             path.sub! %r(^/(([a-zA-Z\-_])*)(?=/|$)) do
               locale = $1

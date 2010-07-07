@@ -1,3 +1,8 @@
+## 0.9.7.4 [07 July 2010]
+
+- Fixed critical issue in the i18n routing pattern that was matching prefixes like /news/ as a locale incorrectly. [Philip Arndt]
+- [See full list](http://github.com/resolve/refinerycms/compare/0.9.7.3...0.9.7.4)
+
 ## 0.9.7.3 [07 July 2010]
 
 - Falls back to default locale when a translation key can not be located in the current locale, only in production mode. [Philip Arndt]
