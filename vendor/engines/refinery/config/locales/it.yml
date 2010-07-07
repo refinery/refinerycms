@@ -27,8 +27,6 @@ it:
   shared:
     site_bar:
       log_out: Log out
-      switch_to_your_website: Switch to your website
-      switch_to_your_website_editor: Switch to your website editor
     admin:
       message:
         close: Fine
@@ -55,9 +53,6 @@ it:
         resource: risorsa
     message:
       close: Fine
-    site_bar:
-      switch_to_your_website: Switch to your website
-      switch_to_your_website_editor: Switch to your website editor
 
   activerecord:
     models:

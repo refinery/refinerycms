@@ -59,7 +59,7 @@ class Refinery::ApplicationController < ActionController::Base
 protected
 
   def default_url_options(options={})
-    Refinery::I18n.enabled? ? { :locale => I18n.locale } : {}
+    ::Refinery::I18n.enabled? ? { :locale => I18n.locale } : {}
   end
 
   # get all the pages to be displayed in the site menu.
@@ -88,7 +88,7 @@ protected
         ::I18n.locale = locale
       elsif locale.present? and locale != ::Refinery::I18n.default_frontend_locale
         params[:locale] = I18n.locale = ::Refinery::I18n.default_frontend_locale
-        redirect_to(params, :message => "The locale '#{locale.to_s}' is not supported.") and return
+        redirect_to(params, :notice => "The locale '#{locale.to_s}' is not supported.") and return
       else
         ::I18n.locale = ::Refinery::I18n.default_frontend_locale
       end
