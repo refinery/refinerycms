@@ -89,15 +89,6 @@ class Refinery::I18n
       self.load_refinery_locales!
       self.load_app_locales!
       self.set_default_locale!
-
-      # Mislav trick to fallback to default for missing translations
-      ::I18n.exception_handler = lambda do |e, locale, key, options|
-        if ::I18n::MissingTranslationData === e and locale != ::Refinery::I18n.default_locale
-          ::I18n.translate(key, (options || {}).update(:locale => ::Refinery::I18n.default_locale, :raise => true))
-        else
-          raise e
-        end
-      end if Rails.env.production?
     end
 
     def load_base_locales!
@@ -128,5 +119,23 @@ class Refinery::I18n
 end
 
 if RefinerySetting.table_exists?
+  # override translate, but only in production
+  ::I18n.module_eval do
+    class << self
+      alias_method :original_rails_i18n_translate, :translate
+      def translate(key, options = {})
+        begin
+          original_rails_i18n_translate(key, options.merge!({:raise => true}))
+        rescue ::I18n::MissingTranslationData => e
+          if self.config.locale != ::Refinery::I18n.default_locale
+            self.translate(key, options.update(:locale => ::Refinery::I18n.default_locale))
+          else
+            raise e
+          end
+        end
+      end
+    end
+  end if Rails.env.production?
+
   ::Refinery::I18n.setup!
 end
