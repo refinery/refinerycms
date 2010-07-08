@@ -1,14 +1,14 @@
 Gem::Specification.new do |s|
   s.name              = %q{refinerycms}
-  s.version           = %q{0.9.7.4}
+  s.version           = %q{0.9.7.5}
   s.description       = %q{A beautiful open source Ruby on Rails content manager for small business. Easy to extend, easy to use, lightweight and all wrapped up in a super slick UI.}
-  s.date              = %q{2010-07-07}
+  s.date              = %q{2010-07-08}
   s.summary           = %q{A beautiful open source Ruby on Rails content manager for small business.}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
   s.authors           = %w(Resolve\ Digital David\ Jones Philip\ Arndt)
   s.require_paths     = %w(lib)
-  s.executables       = %w(refinery)
+  s.executables       = %w(refinery refinery-upgrade-096-to-097)
 
   s.files             = [
     '.gitignore',
@@ -29,6 +29,7 @@ Gem::Specification.new do |s|
     'app/helpers',
     'app/helpers/application_helper.rb',
     'bin/refinery',
+    'bin/refinery-upgrade-096-to-097',
     'config/acts_as_indexed_config.rb',
     'config/amazon_s3.yml.example',
     'config/application.rb',
