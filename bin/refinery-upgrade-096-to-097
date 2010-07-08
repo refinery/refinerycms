@@ -1,0 +1,91 @@
+#!/usr/bin/env ruby
+require 'pathname'
+require 'fileutils'
+require 'yaml'
+
+refinery_root = (defined?(REFINERY_ROOT) && REFINERY_ROOT.is_a?(Pathname) ? REFINERY_ROOT : Pathname.new(File.expand_path(File.dirname(__FILE__) << "/..")))
+unless (app_path = ARGV.shift).nil? or app_path.length == 0
+  puts "--------Updating--------\n\n"
+  # if "" or "." or "./" is specified then get the current directory otherwise accept the specified app_path.
+  if (app_path.length <= 2 and ((is_current_dir = app_path =~ /(\.(\/)?)/).nil? or is_current_dir < 2))
+    rails_root = Dir.getwd
+  else
+    rails_root = app_path =~ /^\// ? app_path : File.expand_path(File.join(Dir.getwd, app_path.gsub(/^\.\//, '')))
+  end
+  rails_root = Pathname.new(rails_root.to_s)
+  
+  FileUtils::cp refinery_root.join('Gemfile').to_s, rails_root.join('Gemfile').to_s, :verbose => true
+  FileUtils::cp refinery_root.join('config', 'preinitializer.rb').to_s, rails_root.join('config', 'preinitializer.rb').to_s, :verbose => true
+
+  # try to figure out the database adapter..
+  db_adapter = 'sqlite3'
+  if rails_root.join('config', 'database.yml').exist?
+    db_config = YAML::load(rails_root.join('config', 'database.yml').open('r').read)
+    if db_config.keys.include?("development") && db_config["development"].keys.include?("adapter")
+     db_adapter = db_config["development"]["adapter"]
+    end
+  end
+    
+  db_adapter = 'sqlite3' unless %w(sqlite3 mysql postgresql).include?(db_adapter)
+
+  # read in the Gemfile and write it back out with the refinerycms gem enabled.
+  (lines = refinery_root.join('Gemfile').open('r').read.split("\n")).each do |line|
+    line.gsub!(/\#*\s?gem 'refinerycms'/, "gem 'refinerycms'")
+    
+    # Ensure that the correct database gem libraries are included for the database adapter
+    # that the user has specified in the refinery install command.
+    if line =~ /\#db\_adapter\=/
+      if line =~ %r{#db_adapter=#{db_adapter}}
+        line.gsub!(/^(\#*\s?gem)/, 'gem')
+      else
+        line.gsub!(/^(\s?gem)/, '# gem')
+      end
+    end
+  end
+
+  # write the new content into the file.
+  app_gemfile = File.open(File.join(%W(#{rails_root} Gemfile)), "w")
+  app_gemfile.puts(lines.join("\n"))
+  app_gemfile.close
+
+  # backup the config file.
+  app_config_file = 'application.rb'
+  FileUtils.cp rails_root.join('config', app_config_file).cleanpath.to_s, rails_root.join('config', "#{app_config_file.gsub('.rb', '')}.autobackupbyrefineryupgrade.rb").cleanpath.to_s, :verbose => true
+  
+  # copy the new config file.
+  FileUtils.cp refinery_root.join('config', app_config_file).cleanpath.to_s, rails_root.join('config', app_config_file).cleanpath.to_s, :verbose => true
+
+  unless File.exist?(rails_root.join('config', 'settings.rb'))
+    FileUtils.cp refinery_root.join('config', 'settings.rb').cleanpath.to_s, rails_root.join('config', 'settings.rb').cleanpath.to_s, :verbose => true
+  end
+  
+  unless (aai_config_file = rails_root.join('config', 'acts_as_indexed_config.rb')).exist?
+    FileUtils::cp refinery_root.join('config', 'acts_as_indexed_config.rb').to_s, aai_config_file.to_s, :verbose => true
+  end
+  
+  puts "\nCopied files required to support the new RefineryCMS version 0.9.7"
+  puts "I backed up your config/application.rb file to #{rails_root.join('config', "#{app_config_file.gsub('.rb', '')}.autobackupbyrefineryupgrade.rb").cleanpath.to_s}"
+  puts "\nI think your database adapter is #{db_adapter} so that is what will be installed by bundler.\n\n"
+  
+  # automate..
+  Dir.chdir(rails_root) do
+    puts "Installing gem requirements using bundler..\n"
+    puts (cmd="bundle install --without test")
+    puts `#{cmd}`
+    
+    if rails_root.join('config', 'database.yml').exist?
+      puts "\n\nUpdating some core refinery files..\n"
+      puts (cmd="rake -f '#{File.join(rails_root, 'Rakefile')}' refinery:update")
+      puts `#{cmd}`
+    else
+      puts "\nYour config/database.yml file is missing so I can't run a task that is required."
+      puts "Once you have your database file in place or are confident it will work without it please run:"
+      puts "\nrake refinery:update"
+    end
+  end
+  
+  puts "\n--------Update complete--------\n\n"
+
+else
+  puts "\nPlease specify the path for the RefineryCMS application you want to upgrade. i.e. refinery /path/to/project"
+end
