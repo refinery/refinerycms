@@ -96,7 +96,11 @@ unless (app_path = ARGV.shift).nil? or app_path.length == 0
     
     if rails_root.join('config', 'database.yml').exist?
       puts "\n\nUpdating some core refinery files..\n"
-      puts (cmd="rake -f '#{File.join(rails_root, 'Rakefile')}' refinery:update")
+      puts (cmd="rake -f '#{File.join(rails_root, 'Rakefile')}' refinery:update from_installer=true")
+      puts `#{cmd}`
+      
+      puts "\n\nMigrating your database..\n"
+      puts (cmd="rake -f '#{File.join(rails_root, 'Rakefile')}' db:migrate")
       puts `#{cmd}`
     else
       puts "\nYour config/database.yml file is missing so I can't run a task that is required."
