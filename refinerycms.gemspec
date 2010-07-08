@@ -81,6 +81,7 @@ Gem::Specification.new do |s|
     'db/migrate/20100629081543_add_callback_proc_as_string_to_refinery_settings.rb',
     'db/migrate/20100701053151_remove_superuser_from_users.rb',
     'db/migrate/20100702022630_add_spam_to_inquiries.rb',
+    'db/migrate/20100708014636_ensure_user_plugins_use_name_and_not_title.rb',
     'db/schema.rb',
     'db/seeds',
     'db/seeds/inquiry_settings.rb',
