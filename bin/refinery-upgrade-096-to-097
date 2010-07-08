@@ -87,5 +87,5 @@ unless (app_path = ARGV.shift).nil? or app_path.length == 0
   puts "\n--------Update complete--------\n\n"
 
 else
-  puts "\nPlease specify the path for the RefineryCMS application you want to upgrade. i.e. refinery /path/to/project"
+  puts "\nPlease specify the path for the RefineryCMS application you want to upgrade. i.e. refinery-upgrade-096-to-097 /path/to/project"
 end
