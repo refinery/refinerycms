@@ -1,5 +1,5 @@
 --- 
-hash: 8081746f5a90f7625821a402481f98a1c76df675
+hash: 431dccd0fe8155f5ba52e1c7e2899fc00286b807
 sources: 
 - Git: 
     require: json/pure
@@ -7,6 +7,13 @@ sources:
     branch: master
     uri: git://github.com/parndt/json.git
     ref: 34ad345d48764f3acf87a032b3efb4b1908b7213
+- Git: 
+    git: git://github.com/mislav/will_paginate.git
+    branch: rails3
+    name: will_paginate
+    version: 3.0.pre
+    uri: git://github.com/mislav/will_paginate.git
+    ref: 60aa1c7b2ef03ee7c7a5ed657efb479a69f7d128
 - Rubygems: 
     uri: http://gemcutter.org
 specs: 
@@ -77,10 +84,18 @@ specs:
     version: 2.3.8
 - rmagick: 
     version: 2.12.2
+- rspec-core: 
+    version: 2.0.0.beta.16
+- rspec-expectations: 
+    version: 2.0.0.beta.16
+- rspec-mocks: 
+    version: 2.0.0.beta.16
 - rspec: 
-    version: 1.3.0
+    version: 2.0.0.beta.16
+- webrat: 
+    version: 0.7.1
 - rspec-rails: 
-    version: 1.3.2
+    version: 2.0.0.beta.16
 - sqlite3-ruby: 
     version: 1.3.0
 - test-unit: 
@@ -88,7 +103,8 @@ specs:
 - truncate_html: 
     version: 0.3.2
 - will_paginate: 
-    version: 2.3.14
+    version: 3.0.pre
+    source: 1
 dependencies: 
   sqlite3-ruby: 
     version: ">= 0"
@@ -129,11 +145,9 @@ dependencies:
     require: 
     - truncate_html
   will_paginate: 
-    version: = 2.3.14
+    version: = 3.0.pre
     group: 
     - :default
-    require: 
-    - will_paginate
   json_pure: 
     version: ">= 0"
     group: 
@@ -141,11 +155,29 @@ dependencies:
     require: 
     - json/pure
   rspec: 
-    version: ">= 0"
+    version: ~> 2.0.0.beta.15
     group: 
     - :test
+  rspec-core: 
+    version: ~> 2.0.0.beta.15
+    group: 
+    - :test
+    require: 
+    - rspec/core
+  rspec-expectations: 
+    version: ~> 2.0.0.beta.15
+    group: 
+    - :test
+    require: 
+    - rspec/expectations
+  rspec-mocks: 
+    version: ~> 2.0.0.beta.15
+    group: 
+    - :test
+    require: 
+    - rspec/mocks
   rspec-rails: 
-    version: ">= 0"
+    version: ~> 2.0.0.beta.15
     group: 
     - :test
   factory_girl: 
