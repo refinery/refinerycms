@@ -1,5 +1,5 @@
 --- 
-hash: 10e7f75c22c2ce26123da78d3f469746593bc573
+hash: 8081746f5a90f7625821a402481f98a1c76df675
 sources: 
 - Git: 
     require: json/pure
@@ -100,6 +100,8 @@ dependencies:
     version: = 0.6.3
     group: 
     - :default
+    require: 
+    - acts_as_indexed
   authlogic: 
     version: = 2.1.5
     group: 
