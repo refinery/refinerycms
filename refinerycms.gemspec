@@ -1,14 +1,14 @@
 Gem::Specification.new do |s|
   s.name              = %q{refinerycms}
-  s.version           = %q{0.9.7.3}
+  s.version           = %q{0.9.7.5}
   s.description       = %q{A beautiful open source Ruby on Rails content manager for small business. Easy to extend, easy to use, lightweight and all wrapped up in a super slick UI.}
-  s.date              = %q{2010-07-07}
+  s.date              = %q{2010-07-08}
   s.summary           = %q{A beautiful open source Ruby on Rails content manager for small business.}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
   s.authors           = %w(Resolve\ Digital David\ Jones Philip\ Arndt)
   s.require_paths     = %w(lib)
-  s.executables       = %w(refinery)
+  s.executables       = %w(refinery refinery-upgrade-096-to-097)
 
   s.files             = [
     '.gitignore',
@@ -29,6 +29,7 @@ Gem::Specification.new do |s|
     'app/helpers',
     'app/helpers/application_helper.rb',
     'bin/refinery',
+    'bin/refinery-upgrade-096-to-097',
     'config/acts_as_indexed_config.rb',
     'config/amazon_s3.yml.example',
     'config/application.rb',
@@ -89,6 +90,7 @@ Gem::Specification.new do |s|
     'db/migrate/20100629081543_add_callback_proc_as_string_to_refinery_settings.rb',
     'db/migrate/20100701053151_remove_superuser_from_users.rb',
     'db/migrate/20100702022630_add_spam_to_inquiries.rb',
+    'db/migrate/20100708014636_ensure_user_plugins_use_name_and_not_title.rb',
     'db/schema.rb',
     'db/seeds',
     'db/seeds/inquiry_settings.rb',

@@ -1,3 +1,16 @@
+## 0.9.7.5 [08 July 2010]
+
+- Wrote an upgrade task for migrating from 0.9.6.x releases of RefineryCMS. Just run refinery-update-096-to-097 inside your application's directory. [Philip Arndt]
+- Improved code used to include gem rake tasks and script/generate tasks into the Refinery application to fix issue with these tasks not being found [Philip Arndt]
+- Fixed a broken migration that would mean pages were missing upon upgrading [Jesper Hvirring Henriksen]
+- More pt-BR translation keys translated [Kivanio Barbosa]
+- [See full list](http://github.com/resolve/refinerycms/compare/0.9.7.4...0.9.7.5)
+
+## 0.9.7.4 [07 July 2010]
+
+- Fixed critical issue in the i18n routing pattern that was matching prefixes like /news/ as a locale incorrectly. [Philip Arndt]
+- [See full list](http://github.com/resolve/refinerycms/compare/0.9.7.3...0.9.7.4)
+
 ## 0.9.7.3 [07 July 2010]
 
 - Falls back to default locale when a translation key can not be located in the current locale, only in production mode. [Philip Arndt]

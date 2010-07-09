@@ -162,10 +162,6 @@ This will pull in all of the updated files in the project and may result in some
 * Manage your inquiries and be notified when new ones come in
 * Checks new inquiries for spam
 
-### [News](http://github.com/resolve/refinerycms-news)
-
-* Post news about your company and update your visitors
-
 ### [Settings](http://github.com/resolve/refinerycms/blob/master/vendor/plugins/refinery_settings/readme.md)
 
 * Manage the behaviour of Refinery
@@ -200,9 +196,10 @@ If you have installed Refinery using GIT (described above in step 1 of installin
 
     rake test
 
-### What about a portfolio?
+### Popular Plugins
 
-Check out the [portfolio plugin gem](http://github.com/resolve/refinerycms-portfolio)
+* [Portfolio](http://github.com/resolve/refinerycms-portfolio) - manage groups of images like an image gallery.
+* [News](http://github.com/resolve/refinerycms-news) - post and manage news items.
 
 ## License
 
