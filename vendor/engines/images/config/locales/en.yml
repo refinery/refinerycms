@@ -26,7 +26,7 @@ en:
       grid_view:
         edit: Edit this image
         confirm_delete:
-          message: Are you sure you want to delete %{title}?
+          message: Are you sure you want to delete {{title}}?
           title: Remove this image forever
         view_live: View this image <br/><em>Opens in a new window</em>
       list_view_image:
@@ -34,6 +34,8 @@ en:
         delete:
           message: Are you sure you want to delete %{title}?
           title: Delete this image forever
+      existing_image:
+        submit_insert: Insert
       insert:
         existing_image: Existing Image
         new_image: New Image

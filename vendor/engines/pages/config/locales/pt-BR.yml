@@ -21,6 +21,32 @@ pt-BR:
         meta_description_help: Meta descrição
         show_in_menu: Mostrar no menu
   admin:
+    page_dialogs:
+      not_allowed: Você não ter permissão para acessar esta funcionalidade.
+      page_link:
+        link_to_this_page: Redirecionar para esta página
+      link_to:
+        your_page:
+          tab_name: Sua página
+        web_address:
+          tab_name: Website
+          location: Localização
+          new_window: Nova janela
+          new_window_label: Marque essa opção que o link abra uma nova janela no navegador.
+          not_sure: Não sabe ao certo o que colocar na caixa acima?
+          step1: Procure o site na web para onde você quer redirecionar.
+          step2: "Copie o endereço do site da barra de navegação do seu navegador e cole na caixa acima."
+        email_address:
+          tab_name: Endereço de email
+          subject_line_optional: Título opcional
+          body_optional: Corpo opcional
+          not_sure: Não sabe ao certo o que colocar na caixa acima?
+          step1: "Escreva ou copie e cole (ex. do seu catálogo de email) o endereço de email e coloque dentro do '<strong>Email address</strong>' na caixa acima."
+          step2: "Use o '<strong>Subject Line</strong>' na caixa acima se você quer que a mensagem seja composta por <strong>pre-written subject line</strong>."
+          step3: "Use o <strong>Email Body</strong> na caixa acima se você quer que a mensagem seja composta por <strong>pre-written message</strong>."
+        your_resource:
+          tab_name: Seu arquivo
+          link_to_this_resource: Link para este arquivo
     pages:
       page:
         view_live: Vizualizar essa página agora <br/><em>(irá abrir uma nova janela)</em>
@@ -30,6 +56,7 @@ pt-BR:
         hidden: oculta
         draft: rascunho
       form_advanced_options:
+        toggle_advanced_options: Clique aqui para acessar as configurações de meta tag e opções do menu
         create_content_section: Criar seção de conteúdo
         delete_content_section: Remover seção de conteúdo
         advanced_options: Opções Avançadas

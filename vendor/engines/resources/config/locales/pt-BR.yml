@@ -22,11 +22,12 @@ pt-BR:
         upload_new: Enviar Novo Arquivo
         no_files_yet: Ainda não existem arquivos. Clique em "Enviar Novo Arquivo" para adicionar seu primeiro arquivo.
       insert:
-        existing_file: Arquivo Existente
+        existing: Arquivo Existente
         new: Novo Arquivo
-        link_to_resource: 'Link para este Recurso'
         previous: Anterior
         next: Próximo
-        submit_insert: Inserir
         or: ou
         cancel: Cancelar
+      existing_resource:
+        link_to_resource: Link para este Recurso
+        submit_insert: Inserir

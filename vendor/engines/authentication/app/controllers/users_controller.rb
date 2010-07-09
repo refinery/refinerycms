@@ -47,10 +47,9 @@ class UsersController < ApplicationController
         redirect_back_or_default(admin_root_url)
         flash[:message] = "<h2>#{t('users.create.welcome', :who => current_user.login).gsub(/\.$/, '')}.</h2>"
 
-        if Role[:refinery].users.count == 1 or RefinerySetting[:site_name].to_s =~ /^(|Company\ Name)$/
-          flash[:message] << "<p>#{t('users.setup_website_name', :link => edit_admin_refinery_setting_url(RefinerySetting.find_by_name("site_name")))}</p>"
-        else
-          render :action => 'new'
+        site_name_setting = RefinerySetting.find_or_create_by_name('site_name', :value => "Company Name")
+        if site_name_setting.value.to_s =~ /^(|Company\ Name)$/ or Role[:refinery].users.count == 1
+          flash[:message] << "<p>#{t('users.setup_website_name', :link => edit_admin_refinery_setting_url(site_name_setting))}</p>"
         end
       else
         render :action => 'new'
