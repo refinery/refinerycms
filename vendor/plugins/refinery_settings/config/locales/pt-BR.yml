@@ -23,23 +23,23 @@ pt-BR:
         help:
           restricted: Isso faz com que essa opção só seja vista ou editada por super-usuários (como você).
       help:
-        activity_show_limit: This limits the number of items that can display in the Dashboard listing.
-        analytics_page_code: This code activates Google Analytics tracking within your website. If the setting is left blank or set to UA-xxxxxx-x then this is disabled and no remote calls to Google Analytics are made.
-        image_dialogue_sizes: This setting applies to the Insert Image dialogue. You must implement the different thumbnail sizes as well as changing this.
-        image_thumbnails: If you modify this setting you will have to regenerate your images by running rake images:regenerate (or rake images:update if you only added more thumbnails) otherwise the setting will not apply to existing images.
-        menu_hide_children: Hide any subpages from the menu even if they are present.
-        new_page_parts: Enable adding new page parts (content sections) in the page editors.
-        page_title: Very complex options for setting the page title. Here you can set custom CSS class or a different tag or tell it to breadcrumb with pages in its ancestry.
-        page_advanced_options_include_seo: This controls whether the SEO options are displayed in the advanced options for a page.
-        preferred_image_view: This controls which view the images plugin displays existing images in - grid for 'Grid View' and list for 'List View'. There is a button to automate this process on the images plugin itself.
-        refinery_enable_backend_reordering: You can remove the ability to reorder the plugins' display order with this.
-        refinery_menu_cache_action_suffix: This controls the key that is used to cache the site menu. If you are using a theme then it is better to leave this as the default as the theme will handle it.
-        show_contact_privacy_link: You can hide or show the link to the privacy policy page on the contact form by the submit button.
-        site_name: This is the name for your website and will display in the header and in the Refinery backend and in the footer copyright statement for some themes.
-        theme: Enter the name for the theme that you want to be enabled. This will take effect immediately and must correctly identify an existing theme for this to work.
-        use_google_ajax_libraries: If you want to use Google's AJAX CDN then set this to true.
-        use_marketable_urls: Changes urls from /pages/about to /about and automatically manages conflicts with other plugins.
-        use_resource_caching: Recommended to enable this in production mode as it bundles javascript assets and stylesheet assets into single file packages to reduce the number of web requests on your site and speed it up.
+        activity_show_limit: Número de itens mostrados na lista de atividades do Dashboard.
+        analytics_page_code: Habilita o código do Google Analytics em seu website. Se deixar em branco ou digitar UA-xxxxxx-x será considerado desabilitado e a chamada remota para o Google Analytics não será feita.
+        image_dialogue_sizes: Estas configurações se aplicam ao diálogo de Inserção de Imagens. Você deve alterar os tamanhos de thumbnail conforme suas modifcações.
+        image_thumbnails: "Se você modificar estas configurações, terá que gerar novamente as imagens usando o comando rake images:regenerate (ou rake images:update se você somente adicionou novos thumbnails) caso contrário, as modificações não terão efeito sobre imagens existentes."
+        menu_hide_children: Esconde qualquer sub-página do menu mesmo se estiver presente.
+        new_page_parts: Habilita a criação de novos pedaços de página (seção de conteúdo) no editor de páginas.
+        page_title: Opções avançadas de configuração do título da página. Você pode colocar um CSS customizado ou uma tag diferente ou pedir para navegar entre as páginas pais.
+        page_advanced_options_include_seo: Habilita as configurações avançadas de SEO nas opções avançadas da edição de páginas.
+        preferred_image_view: Habilita o tipo de visualição da seção imagens - grid para 'Visualizar em Grid' e list para 'Visualizar em Lista'. Há um botão para automatizar este processo no plugin de imagens.
+        refinery_enable_backend_reordering: Habilita a ordenação do menu administrativo.
+        refinery_menu_cache_action_suffix: Configura o sufixo do nome usado para fazer cache do menu do site. Se você está usando um tema é melhor deixar o nome padrão e deixar o tema gerenciar essa configuração.
+        show_contact_privacy_link: Você pode esconder ou mostrar o link para a política de privacidade no formulário de contato.
+        site_name: "Nome do site, que será mostrado no topo e rodapé do seu website e também na área administrativa."
+        theme: Tema utilizado pelo site. Será trocado o tema imediatamente e deverá ser um tema válido e existente no sitema para que funcione.
+        use_google_ajax_libraries: Se você quer usar as bibliotecas AJAX externas oferecidas pelo Google configure como true.
+        use_marketable_urls: Muda as urls de /pages/about para /about e automaticamente gerencia conflitos com outros plugins.
+        use_resource_caching: "Recomendado habilitar está opção em produção pois os javascript e stylesheet serão colocados em um único arquivo, o que diminui o número de requisições e aumenta a velocidade do site."
   plugins:
     refinery_settings:
       title: Configuração
