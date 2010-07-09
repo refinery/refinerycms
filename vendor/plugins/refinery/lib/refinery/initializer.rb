@@ -26,7 +26,7 @@ module Refinery
 
       # just use lib paths from Refinery engines
       paths = paths.reject{|path| path.scan(/lib$/).empty? or path.include?('/rails-') }
-      
+
       # reject Refinery lib paths if they're already included in this app.
       paths = paths.reject{ |path| path.include?(Refinery.root.to_s) } unless Refinery.is_a_gem
       paths.uniq!
@@ -34,7 +34,7 @@ module Refinery
       # Save the paths to a global variable so that the application can access them too
       # and unshift them onto the load path.
       ($refinery_gem_plugin_lib_paths = paths).each { |path| $LOAD_PATH.unshift(path) }
-      
+
       # Ensure we haven't caused any duplication
       $LOAD_PATH.uniq!
     end
