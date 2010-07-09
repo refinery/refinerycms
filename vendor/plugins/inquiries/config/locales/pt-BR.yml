@@ -35,8 +35,8 @@ pt-BR:
         mark_as_spam: Marcado como spam
         mark_as_ham: Mover para o inbox
       toggle_status:
-        closed: "Mensagem '{{inquiry}}' está fechada"
-        reopened: "Mensagem '{{inquiry}}' está reaberta"
+        closed: "Mensagem '{{inquiry}}' está fechado"
+        reopened: "Mensagem '{{inquiry}}' está reaberto"
       submenu:
         update_notified: Atualizar quem recebe a notificação
         edit_confirmation_email: Editar email de confirmação
@@ -54,12 +54,13 @@ pt-BR:
         status: Estado
         open: Aberta
         closed: Fechada
-        age: Idade
+        age: Quando
         actions: Ações
         back_to_all_inquiries: Voltar para todas as Mensagens
         inquiry: Contato
         spam: Spam
         spam_yes: 'sim'
+        title: Remover esta mensagem para sempre
     inquiry_settings:
       update:
         updated: "'{{setting}}' foi atualizada com sucesso."
@@ -71,7 +72,7 @@ pt-BR:
       confirmation_email_form:
         click_to_edit_subject: Clique aqui para editar o assunto
         explanation: "Toda vez que alguém contatar você no seu website, o Refinery envia um email para confirmar o recebimento da mensagem para esta pessoa."
-        below_edit_email_sent: Abaixo você pode editar o e-mail que é enviado.
+        below_edit_email_sent: Abaixo você pode editar o e-mail que é enviado para fora.
         the_customer_making_inquiry: O cliente fazendo o contato
         to: Para
         from: De
