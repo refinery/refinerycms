@@ -28,15 +28,8 @@ module Refinery
   end
 
   class Version
-    MAJOR = 0
-    MINOR = 9
-    TINY = 7
-    BUILD = 3
-
-    STRING = [MAJOR, MINOR, TINY, BUILD].compact.join('.')
-
     def self.to_s
-      STRING
+      %q{0.9.7.4}
     end
   end
 

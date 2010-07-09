@@ -25,11 +25,10 @@ pt-BR:
       page:
         view_live: Vizualizar essa página agora <br/><em>(irá abrir uma nova janela)</em>
         edit_this_page: Editar essa página
-        confirm_delete_page_title: Deletar essa página
+        confirm_delete_page_title: Remover essa página
         confirm_delete_page_message: "Você tem certeza que quer deletar a página '%{title}'?"
         hidden: oculta
         draft: rascunho
-
       form_advanced_options:
         create_content_section: Criar seção de conteúdo
         delete_content_section: Remover seção de conteúdo
@@ -48,14 +47,26 @@ pt-BR:
         save_as_draft: Salvar como Rascunho
         save: Salvar
         cancel: Cancelar
+        show_in_menu_title: Mostrar no menu
+        show_in_menu_description: Mostra esta página no menu do site
+        show_in_menu_help: "Desmarque está opção caso queira remover a página do menu do site. Pode ser útil caso queira linkar um outra página para esta, mas não quer que esta apareça no menu do site."
+        skip_to_first_child: Pular esta página
+        skip_to_first_child_label: Redieciona os visitante para a primeira página a baixo desta no menu.
+        skip_to_first_child_help: "Está opção faz com que o link desta página aponte para o primeiro link do menu a baixo dessa."
+        link_url: "Redirecionar esta página para outro site ou página"
+        link_url_help: "Se você quer que esta página seja redicionada para outro site ou página quando você clicar nesta página no menu, digite a URL. ex. http://google.com ou deixe em branco."
+        parent_page: Página pai
+        parent_page_help: "Se você quer colocar está página a baixo de outra página no menu, selecione qual página aqui ou deixe em branco caso queria a página na raiz do menu."
+        custom_title: Título opcional
+        custom_title_help: "Se você quer que a página tenha um título diferente do que é mostrado no menu então selecione &apos;Texto&apos; e digite o novo título."
       form_advanced_options_seo:
         seo: Otimização de Motor de Busca
         seo_override_title: Se você quiser sobrescrever o título padrão do navegador, faça isso aqui.
         seo_override_title_help: Se você quiser substituir o título do navegador padrão, fazê-lo aqui.
         meta_keywords_title: Meta palavras-chave
-        meta_description_help: Entre entre 5-10 palavras-chave que se relacionam a esta página. Separe as palavras-chave por vírgula.
+        meta_keywords_help: Digite entre 5-10 palavras-chave que se relacionam a esta página. Separe as palavras-chave por vírgula.
         meta_description_title: Meta descrição
-        meta_description_help: Entre duas ou três sentenças concisas descrevendo sobre o que é essa página.
+        meta_description_help: Digite duas ou três sentenças concisas descrevendo sobre o que é essa página.
         js:
           content_section:
             create: Criar Seção de Conteúdo
