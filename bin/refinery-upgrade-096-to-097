@@ -13,7 +13,7 @@ unless (app_path = ARGV.shift).nil? or app_path.length == 0
     rails_root = app_path =~ /^\// ? app_path : File.expand_path(File.join(Dir.getwd, app_path.gsub(/^\.\//, '')))
   end
   rails_root = Pathname.new(rails_root.to_s)
-  
+
   FileUtils::cp refinery_root.join('Gemfile').to_s, rails_root.join('Gemfile').to_s, :verbose => true
   FileUtils::cp refinery_root.join('config', 'preinitializer.rb').to_s, rails_root.join('config', 'preinitializer.rb').to_s, :verbose => true
 
@@ -25,13 +25,13 @@ unless (app_path = ARGV.shift).nil? or app_path.length == 0
      db_adapter = db_config["development"]["adapter"]
     end
   end
-    
+
   db_adapter = 'sqlite3' unless %w(sqlite3 mysql postgresql).include?(db_adapter)
 
   # read in the Gemfile and write it back out with the refinerycms gem enabled.
   (lines = refinery_root.join('Gemfile').open('r').read.split("\n")).each do |line|
     line.gsub!(/\#*\s?gem 'refinerycms'/, "gem 'refinerycms'")
-    
+
     # Ensure that the correct database gem libraries are included for the database adapter
     # that the user has specified in the refinery install command.
     if line =~ /\#db\_adapter\=/
@@ -51,18 +51,18 @@ unless (app_path = ARGV.shift).nil? or app_path.length == 0
   # backup the config file.
   app_config_file = 'application.rb'
   FileUtils.cp rails_root.join('config', app_config_file).cleanpath.to_s, rails_root.join('config', "#{app_config_file.gsub('.rb', '')}.autobackupbyrefineryupgrade.rb").cleanpath.to_s, :verbose => true
-  
+
   # copy the new config file.
   FileUtils.cp refinery_root.join('config', app_config_file).cleanpath.to_s, rails_root.join('config', app_config_file).cleanpath.to_s, :verbose => true
 
   unless File.exist?(rails_root.join('config', 'settings.rb'))
     FileUtils.cp refinery_root.join('config', 'settings.rb').cleanpath.to_s, rails_root.join('config', 'settings.rb').cleanpath.to_s, :verbose => true
   end
-  
+
   unless (aai_config_file = rails_root.join('config', 'acts_as_indexed_config.rb')).exist?
     FileUtils::cp refinery_root.join('config', 'acts_as_indexed_config.rb').to_s, aai_config_file.to_s, :verbose => true
   end
-  
+
   # update routes files
   puts "\nNow I'm verifying and updating your routing in your files and your plugins...\n"
   Dir[rails_root.join('**', 'config', 'routes.rb')].map{|f| Pathname.new(f)}.each do |routes_file|
@@ -71,11 +71,14 @@ unless (app_path = ARGV.shift).nil? or app_path.length == 0
     original_lines = lines.dup
     open_routes_file.close
     lines.each do |line|
+      if routes_file.to_s == rails_root.join('config', 'routes.rb').to_s
+        line.gsub!("ActionController::Routing::Routes.draw do |map|", "ActionController::Routing::Routes.draw do |map|\n  map.filter(:locale)")
+        line.gsub!("map.connect 'admin/*path', :controller => 'admin/base', :action => 'error_404'",
+                   "map.redirect 'admin/*path', :controller => 'admin/base'")
+        line.gsub!("map.connect '*path', :controller => 'application', :action => 'error_404'",
+                   "map.connect 'refinery/*path', :controller => 'admin/base', :action => 'error_404'\n\n  # Marketable URLs\n  map.connect '*path', :controller => 'pages', :action => 'show'")
+      end
       line.gsub!("map.namespace(:admin) do |admin|", "map.namespace(:admin, :path_prefix => 'refinery') do |admin|")
-      line.gsub!("map.connect 'admin/*path', :controller => 'admin/base', :action => 'error_404'",
-                 "map.redirect 'admin/*path', :controller => 'admin/base'")
-      line.gsub!("map.connect '*path', :controller => 'application', :action => 'error_404'",
-                 "map.connect 'refinery/*path', :controller => 'admin/base', :action => 'error_404'\n\n  # Marketable URLs\n  map.connect '*path', :controller => 'pages', :action => 'show'")
     end
     lines = lines.join("\n").split("\n")
     open_routes_file = routes_file.open("w")
@@ -83,22 +86,22 @@ unless (app_path = ARGV.shift).nil? or app_path.length == 0
     open_routes_file.close
     puts "Made modifications to routes in #{routes_file} please ensure they are still valid." if original_lines != lines
   end
-  
+
   puts "\nCopied files required to support the new RefineryCMS version 0.9.7"
   puts "I backed up your config/application.rb file to #{rails_root.join('config', "#{app_config_file.gsub('.rb', '')}.autobackupbyrefineryupgrade.rb").cleanpath.to_s}"
   puts "\nI think your database adapter is #{db_adapter} so that is what will be installed by bundler.\n\n"
-  
+
   # automate..
   Dir.chdir(rails_root) do
     puts "Installing gem requirements using bundler..\n"
     puts (cmd="bundle install --without test")
     puts `#{cmd}`
-    
+
     if rails_root.join('config', 'database.yml').exist?
       puts "\n\nUpdating some core refinery files..\n"
       puts (cmd="rake -f '#{File.join(rails_root, 'Rakefile')}' refinery:update from_installer=true")
       puts `#{cmd}`
-      
+
       puts "\n\nMigrating your database..\n"
       puts (cmd="rake -f '#{File.join(rails_root, 'Rakefile')}' db:migrate")
       puts `#{cmd}`
@@ -108,7 +111,7 @@ unless (app_path = ARGV.shift).nil? or app_path.length == 0
       puts "\nrake refinery:update"
     end
   end
-  
+
   puts "\n--------Update complete--------\n\n"
 
 else
