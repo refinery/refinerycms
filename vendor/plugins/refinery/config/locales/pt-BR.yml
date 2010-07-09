@@ -49,6 +49,7 @@ pt-BR:
         remove_current: "Remover {{what}} atual"
         change: Clique aqui para selecionar a imagem
         image: imagem
+        show: Mostrar
       resource_picker:
         none_selected: "Atualmente não existe nenhum {{what}} selecionado, por favor clique aqui para adicionar um."
         current: "{{what}} atual"
@@ -58,6 +59,7 @@ pt-BR:
         resource: recurso
     message:
       close: Fechar
+      close_this_message: Fechar esta mensagem
   activerecord:
     models:
       page: página
