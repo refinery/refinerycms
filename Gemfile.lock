@@ -1,5 +1,5 @@
 --- 
-hash: 431dccd0fe8155f5ba52e1c7e2899fc00286b807
+hash: b9c2f16687a62b995f5d0aa274bf03091ed83af6
 sources: 
 - Git: 
     require: json/pure
@@ -14,37 +14,64 @@ sources:
     version: 3.0.pre
     uri: git://github.com/mislav/will_paginate.git
     ref: 60aa1c7b2ef03ee7c7a5ed657efb479a69f7d128
+- Git: 
+    git: git://github.com/myabc/dragonfly.git
+    branch: 1.9.2-fixes
+    uri: git://github.com/myabc/dragonfly.git
+    ref: 5bbb9e7e544d81883049cf48fa668cae38275c11
 - Rubygems: 
     uri: http://gemcutter.org
 specs: 
 - rake: 
     version: 0.8.7
+- abstract: 
+    version: 1.0.0
 - activesupport: 
-    version: 2.3.8
+    version: 3.0.0.beta4
+- builder: 
+    version: 2.1.2
+- i18n: 
+    version: 0.4.1
+- activemodel: 
+    version: 3.0.0.beta4
+- erubis: 
+    version: 2.6.6
 - rack: 
     version: 1.1.0
+- rack-mount: 
+    version: 0.6.6
+- rack-test: 
+    version: 0.5.4
+- tzinfo: 
+    version: 0.3.22
 - actionpack: 
-    version: 2.3.8
+    version: 3.0.0.beta4
+- mime-types: 
+    version: "1.16"
+- polyglot: 
+    version: 0.3.1
+- treetop: 
+    version: 1.4.8
+- mail: 
+    version: 2.2.5
 - actionmailer: 
-    version: 2.3.8
+    version: 3.0.0.beta4
+- arel: 
+    version: 0.4.0
 - activerecord: 
-    version: 2.3.8
+    version: 3.0.0.beta4
 - activeresource: 
-    version: 2.3.8
+    version: 3.0.0.beta4
 - acts_as_indexed: 
     version: 0.6.3
 - authlogic: 
     version: 2.1.5
-- builder: 
-    version: 2.1.2
+- bundler: 
+    version: 0.9.26
 - culerity: 
     version: 0.2.10
-- mime-types: 
-    version: "1.16"
 - nokogiri: 
     version: 1.4.2
-- rack-test: 
-    version: 0.5.4
 - ffi: 
     version: 0.6.3
 - json_pure: 
@@ -70,6 +97,9 @@ specs:
     version: 0.3.2
 - database_cleaner: 
     version: 0.5.2
+- dragonfly: 
+    version: 0.6.2
+    source: 2
 - factory_girl: 
     version: 1.3.1
 - friendly_id: 
@@ -80,8 +110,14 @@ specs:
     version: 2.6.1
 - launchy: 
     version: 0.3.5
+- rack-cache: 
+    version: 0.5.2
+- thor: 
+    version: 0.13.7
+- railties: 
+    version: 3.0.0.beta4
 - rails: 
-    version: 2.3.8
+    version: 3.0.0.beta4
 - rmagick: 
     version: 2.12.2
 - rspec-core: 
@@ -112,30 +148,36 @@ dependencies:
     - :default
     require: 
     - sqlite3
-  acts_as_indexed: 
-    version: = 0.6.3
-    group: 
-    - :default
-    require: 
-    - acts_as_indexed
-  authlogic: 
-    version: = 2.1.5
-    group: 
-    - :default
-    require: 
-    - authlogic
-  friendly_id: 
-    version: = 3.0.6
-    group: 
-    - :default
-    require: 
-    - friendly_id
   rails: 
-    version: = 2.3.8
+    version: = 3.0.0.beta4
     group: 
     - :default
   rmagick: 
     version: ~> 2.12.2
+    group: 
+    - :default
+    require: 
+    - RMagick
+  rack-cache: 
+    version: ">= 0"
+    group: 
+    - :default
+    require: 
+    - rack/cache
+  dragonfly: 
+    version: ">= 0"
+    group: 
+    - :default
+  acts_as_indexed: 
+    version: = 0.6.3
+    group: 
+    - :default
+  authlogic: 
+    version: ~> 2.1.5
+    group: 
+    - :default
+  friendly_id: 
+    version: ~> 3.0
     group: 
     - :default
   truncate_html: 
