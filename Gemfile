@@ -17,7 +17,7 @@ gem 'sqlite3-ruby', :require => 'sqlite3' #db_adapter=sqlite3
 # gem 'aws-s3'
 
 #===REFINERY REQUIRED GEMS===
-gem 'acts_as_indexed', '= 0.6.3'
+gem 'acts_as_indexed', '= 0.6.3', :require => 'acts_as_indexed'
 gem 'authlogic',       '= 2.1.5', :require => 'authlogic'
 gem 'friendly_id',     '= 3.0.6', :require => 'friendly_id'
 gem 'rails',           '= 2.3.8'
