@@ -36,6 +36,8 @@ pt-BR:
         delete:
           message: Você tem certeza que quer remover {{title}}?
           title: Remover esta imagem para sempre
+      existing_image:
+        submit_insert: Inserir
       insert:
         existing_image: Imagem Existente
         new_image: Nova Imagem
