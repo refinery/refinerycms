@@ -30,7 +30,7 @@ pt-BR:
         move_inquiry_to_open: Mover este mensagem para abertas
         read_inquiry: Ler a mensagem
         remove_inquiry: "Tem certeza que deseja remover a mensagem de '{{name}}'?"
-        title: Remover este contato para sempre
+        title: Remover esta mensagem para sempre
         said: disse
         mark_as_spam: Marcado como spam
         mark_as_ham: Mover para o inbox
@@ -54,12 +54,13 @@ pt-BR:
         status: Estado
         open: Aberta
         closed: Fechada
-        age: Idade
+        age: Quando
         actions: Ações
         back_to_all_inquiries: Voltar para todas as Mensagens
         inquiry: Contato
         spam: Spam
         spam_yes: 'sim'
+        title: Remover esta mensagem para sempre
     inquiry_settings:
       update:
         updated: "'{{setting}}' foi atualizada com sucesso."

@@ -38,8 +38,10 @@ pt-BR:
           title: Remover esta imagem para sempre
       existing_image:
         submit_insert: Inserir
+        resize_image: "Redimencionar a imagem? <em>(Recomendado)</em>"
+        size: Tamanho
       insert:
-        existing_image: Imagem Existente
+        existing_image: Do Arquivo
         new_image: Nova Imagem
         previous: Anterior
         next: Próxima

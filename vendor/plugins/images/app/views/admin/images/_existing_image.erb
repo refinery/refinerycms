@@ -13,11 +13,11 @@
   <% unless @app_dialog %>
     <div id='existing_image_size_area' class='clearfix'>
       <input type='hidden' name='selected_image_size' id='selected_image_size' />
-      <h2>Size</h2>
+      <h2><%= t('.size') %></h2>
       <p>
         <label>
           <input type="checkbox" id="wants_to_resize_image" name="wants_to_resize_image" value="1" checked="checked" />
-          Resize the image? <em>(Recommended)</em>
+          <%= t('.resize_image') %>
         </label>
       </p>
       <ul>
