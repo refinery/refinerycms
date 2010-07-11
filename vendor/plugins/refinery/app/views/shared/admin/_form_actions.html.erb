@@ -1,15 +1,16 @@
 <%
-  submit_button_text ||= t('.save')
-  submit_button_id   ||= "submit_button"
+  submit_button_text  ||= t('.save')
+  submit_button_id    ||= "submit_button"
   submit_button_title ||= nil
 
-  cancel_button_text ||= t('.cancel')
-  cancel_title       ||= t('.cancel_lose_changes', :object_name => f.object.class.name.underscore.gsub("_", " "))
-  cancel_button_id   ||= "cancel_button"
-  hide_cancel        ||= from_dialog?
-  cancel_url         ||= (( back = url_for(:back)).include?('javascript') ? send("admin_#{f.object.class.name.pluralize.underscore}_url") : back) unless hide_cancel
+  cancel_button_text  ||= t('.cancel')
+  cancel_title        ||= t('.cancel_lose_changes', :object_name => f.object.class.name.underscore.gsub("_", " "))
+  cancel_button_id    ||= "cancel_button"
+  hide_cancel         ||= from_dialog?
 
-  delete_button_text ||= t('.delete')
+  cancel_url          ||= (((back = url_for(:back)).include?('javascript') or action_name =~ /^(create|update)$/) ? send("admin_#{f.object.class.name.pluralize.underscore}_url") : back) unless hide_cancel
+
+  delete_button_text  ||= t('.delete')
 
   continue_editing = defined?(continue_editing) ? continue_editing : (f.object.present? and !f.object.new_record?)
 
@@ -20,9 +21,9 @@
   end
 
   unless hide_delete
-    delete_title       ||= nil
-    delete_button_id   ||= "delete_button"
-    delete_url         ||= eval("admin_#{f.object.class.name.underscore}_url(#{f.object.id})")
+    delete_title      ||= nil
+    delete_button_id  ||= "delete_button"
+    delete_url        ||= eval("admin_#{f.object.class.name.underscore}_url(#{f.object.id})")
   end
 -%>
 <div class='form-actions<%= ' form-actions-dialog' if from_dialog? %>'>
