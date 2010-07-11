@@ -47,11 +47,11 @@ class UsersController < ApplicationController
         end
 
         redirect_back_or_default(admin_root_url)
-        flash[:message] = "<h2>#{t('users.create.welcome', :who => current_user.login).gsub(/\.$/, '')}.</h2>"
+        flash[:message] = "<h2>#{t('users.create.welcome', :who => current_user.login).gsub(/\.$/, '')}.</h2>".html_safe
 
         site_name_setting = RefinerySetting.find_or_create_by_name('site_name', :value => "Company Name")
         if site_name_setting.value.to_s =~ /^(|Company\ Name)$/ or Role[:refinery].users.count == 1
-          flash[:message] << "<p>#{t('users.setup_website_name', :link => edit_admin_refinery_setting_url(site_name_setting))}</p>"
+          flash[:message] << "<p>#{t('users.setup_website_name', :link => edit_admin_refinery_setting_url(site_name_setting))}</p>".html_safe
         end
       else
         render :action => 'new'
