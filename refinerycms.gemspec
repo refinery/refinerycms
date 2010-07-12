@@ -30,6 +30,7 @@ Gem::Specification.new do |s|
     'app/helpers/application_helper.rb',
     'bin/refinery',
     'bin/refinery-upgrade-096-to-097',
+    'bin/refinerycms',
     'config/acts_as_indexed_config.rb',
     'config/amazon_s3.yml.example',
     'config/application.rb',
