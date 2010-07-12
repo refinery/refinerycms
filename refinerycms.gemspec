@@ -1,14 +1,14 @@
 Gem::Specification.new do |s|
   s.name              = %q{refinerycms}
-  s.version           = %q{0.9.7.5}
+  s.version           = %q{0.9.7.6}
   s.description       = %q{A beautiful open source Ruby on Rails content manager for small business. Easy to extend, easy to use, lightweight and all wrapped up in a super slick UI.}
-  s.date              = %q{2010-07-08}
+  s.date              = %q{2010-07-12}
   s.summary           = %q{A beautiful open source Ruby on Rails content manager for small business.}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
   s.authors           = %w(Resolve\ Digital David\ Jones Philip\ Arndt)
   s.require_paths     = %w(lib)
-  s.executables       = %w(refinery refinery-upgrade-096-to-097)
+  s.executables       = %w(refinery refinery-upgrade-096-to-097 refinerycms)
 
   s.files             = [
     '.gitignore',
@@ -30,6 +30,7 @@ Gem::Specification.new do |s|
     'app/helpers/application_helper.rb',
     'bin/refinery',
     'bin/refinery-upgrade-096-to-097',
+    'bin/refinerycms',
     'config/acts_as_indexed_config.rb',
     'config/amazon_s3.yml.example',
     'config/application.rb',
@@ -775,12 +776,6 @@ Gem::Specification.new do |s|
     'vendor/plugins/authentication/README',
     'vendor/plugins/authentication/readme.md',
     'vendor/plugins/authentication/test',
-    'vendor/plugins/authentication/test/functional',
-    'vendor/plugins/authentication/test/functional/admin',
-    'vendor/plugins/authentication/test/functional/admin/base_controller_test.rb',
-    'vendor/plugins/authentication/test/functional/admin/dashboard_controller_test.rb',
-    'vendor/plugins/authentication/test/functional/admin/pages_controller_test.rb',
-    'vendor/plugins/authentication/test/test_helper.rb',
     'vendor/plugins/authentication/test/unit',
     'vendor/plugins/authentication/test/unit/user_mailer_test.rb',
     'vendor/plugins/dashboard',
