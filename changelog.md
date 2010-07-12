@@ -3,6 +3,7 @@
 - Bugfixes, fixed some failing tests. [Philip Arndt]
 - More pt-BR translation keys translated [Kivanio Barbosa]
 - Locked gems using Gemfile.lock [David Jones]
+- Changed 'refinery' task to 'refinerycms' as that is our gem's name. [Steven Heidel]
 - [See full list](http://github.com/resolve/refinerycms/compare/0.9.7.5...0.9.7.6)
 
 ## 0.9.7.5 [08 July 2010]
