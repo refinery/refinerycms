@@ -1,3 +1,11 @@
+## 0.9.7.6 [unreleased]
+
+- Bugfixes, fixed some failing tests. [Philip Arndt]
+- More pt-BR translation keys translated [Kivanio Barbosa]
+- Locked gems using Gemfile.lock [David Jones]
+- Changed 'refinery' task to 'refinerycms' as that is our gem's name. [Steven Heidel]
+- [See full list](http://github.com/resolve/refinerycms/compare/0.9.7.5...0.9.7.6)
+
 ## 0.9.7.5 [08 July 2010]
 
 - Wrote an upgrade task for migrating from 0.9.6.x releases of RefineryCMS. Just run refinery-update-096-to-097 inside your application's directory. [Philip Arndt]
@@ -45,7 +53,7 @@
 - Switched to bundler and rack. [Alex Coles and Philip Arndt]
 - Added options to Refinery Settings :restricted, :scoping, :callback_proc_as_string. [Steven Heidel and Philip Arndt]
 - Added caching abilities to frontend and to RefinerySetting to drastically speed up the application under certain conditions [Philip Arndt]
-- Added spam filtering to contact form. [djones]
+- Added spam filtering to contact form. [David Jones]
 - Full Refinery UI redesign. [Resolve Digital]
 - User Role support. [Amanda Wagener and Philip Arndt]
 - [See full list](http://github.com/resolve/refinerycms/compare/0.9.6.34...0.9.7)
