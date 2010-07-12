@@ -117,8 +117,8 @@ hr {
   border: 1px solid red !important;
   background-color: #FFECF0 !important;
 }
-.fieldWithErrors iframe {
-  border: 1px solid red !important;
+.fieldWithErrors iframe, .fieldWithErrors .wym_box {
+  border-color: red !important;
 }
 #message, #flash {
   padding: 8px 8px 8px 30px;

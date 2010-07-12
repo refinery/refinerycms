@@ -15,7 +15,7 @@ init_interface = function() {
   $('.button, #editor_switch a').corner('6px');
   $('#editor_switch a').appendTo($('<span></span>').prependTo('#editor_switch').corner('6px'));
   $('#page_container, .wym_box').corner('5px bottom');
-  $('.wym_box').corner('5px tr');
+  $('.wym_box').corner('5px top');
   $('.wym_iframe iframe').corner('2px');
   $('.form-actions:not(".form-actions-dialog")').corner('5px');
   $('#recent_activity li a, #recent_inquiries li a').each(function(i, a) {

@@ -41,11 +41,11 @@ end
 
 #===REQUIRED FOR REFINERY GEM INSTALL===
 # Leave the gem below disabled (commented out) if you're not using the gem install method.
-# gem 'refinerycms',    '= 0.9.7.5'
+# gem 'refinerycms',    '= 0.9.7.6'
 #===END OF REFINERY GEM INSTALL REQUIREMENTS===
 
 # Bundle gems for certain environments:
 
 # Specify your application's gem requirements here. See the examples below:
-# gem "refinerycms-news", "~> 0.9.7.3", :require => "news"
-# gem "refinerycms-portfolio", "~> 0.9.6", :require => "portfolio"
+# gem 'refinerycms-news', '~> 0.9.8', :require => 'news'
+# gem 'refinerycms-portfolio', '~> 0.9.7', :require => 'portfolio'

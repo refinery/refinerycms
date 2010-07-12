@@ -1,14 +1,87 @@
 --- 
-hash: 8081746f5a90f7625821a402481f98a1c76df675
-sources: 
-- Git: 
-    require: json/pure
-    git: git://github.com/parndt/json.git
-    branch: master
-    uri: git://github.com/parndt/json.git
-    ref: 34ad345d48764f3acf87a032b3efb4b1908b7213
-- Rubygems: 
-    uri: http://gemcutter.org
+dependencies: 
+  test-unit: 
+    group: 
+    - :test
+    version: = 1.2.3
+  rails: 
+    group: 
+    - :default
+    version: = 2.3.8
+  sqlite3-ruby: 
+    group: 
+    - :default
+    version: ">= 0"
+    require: 
+    - sqlite3
+  authlogic: 
+    group: 
+    - :default
+    version: = 2.1.5
+    require: 
+    - authlogic
+  rspec: 
+    group: 
+    - :test
+    version: ">= 0"
+  acts_as_indexed: 
+    group: 
+    - :default
+    version: = 0.6.3
+    require: 
+    - acts_as_indexed
+  truncate_html: 
+    group: 
+    - :default
+    version: = 0.3.2
+    require: 
+    - truncate_html
+  rspec-rails: 
+    group: 
+    - :test
+    version: ">= 0"
+  database_cleaner: 
+    group: 
+    - :test
+    version: ">= 0"
+  cucumber-rails: 
+    group: 
+    - :test
+    version: ">= 0"
+  factory_girl: 
+    group: 
+    - :test
+    version: ">= 0"
+  will_paginate: 
+    group: 
+    - :default
+    version: = 2.3.14
+    require: 
+    - will_paginate
+  friendly_id: 
+    group: 
+    - :default
+    version: = 3.0.6
+    require: 
+    - friendly_id
+  rmagick: 
+    group: 
+    - :default
+    version: ~> 2.12.2
+  json_pure: 
+    group: 
+    - :test
+    version: ">= 0"
+    require: 
+    - json/pure
+  launchy: 
+    group: 
+    - :test
+    version: ">= 0"
+  capybara: 
+    group: 
+    - :test
+    version: ">= 0"
 specs: 
 - rake: 
     version: 0.8.7
@@ -82,93 +155,20 @@ specs:
 - rspec-rails: 
     version: 1.3.2
 - sqlite3-ruby: 
-    version: 1.3.0
+    version: 1.3.1
 - test-unit: 
     version: 1.2.3
 - truncate_html: 
     version: 0.3.2
 - will_paginate: 
     version: 2.3.14
-dependencies: 
-  sqlite3-ruby: 
-    version: ">= 0"
-    group: 
-    - :default
-    require: 
-    - sqlite3
-  acts_as_indexed: 
-    version: = 0.6.3
-    group: 
-    - :default
-    require: 
-    - acts_as_indexed
-  authlogic: 
-    version: = 2.1.5
-    group: 
-    - :default
-    require: 
-    - authlogic
-  friendly_id: 
-    version: = 3.0.6
-    group: 
-    - :default
-    require: 
-    - friendly_id
-  rails: 
-    version: = 2.3.8
-    group: 
-    - :default
-  rmagick: 
-    version: ~> 2.12.2
-    group: 
-    - :default
-  truncate_html: 
-    version: = 0.3.2
-    group: 
-    - :default
-    require: 
-    - truncate_html
-  will_paginate: 
-    version: = 2.3.14
-    group: 
-    - :default
-    require: 
-    - will_paginate
-  json_pure: 
-    version: ">= 0"
-    group: 
-    - :test
-    require: 
-    - json/pure
-  rspec: 
-    version: ">= 0"
-    group: 
-    - :test
-  rspec-rails: 
-    version: ">= 0"
-    group: 
-    - :test
-  factory_girl: 
-    version: ">= 0"
-    group: 
-    - :test
-  test-unit: 
-    version: = 1.2.3
-    group: 
-    - :test
-  cucumber-rails: 
-    version: ">= 0"
-    group: 
-    - :test
-  capybara: 
-    version: ">= 0"
-    group: 
-    - :test
-  database_cleaner: 
-    version: ">= 0"
-    group: 
-    - :test
-  launchy: 
-    version: ">= 0"
-    group: 
-    - :test
+hash: f0e84b9713ec7416f7e587d3694ce3fbf0b8f537
+sources: 
+- Git: 
+    uri: git://github.com/parndt/json.git
+    branch: master
+    git: git://github.com/parndt/json.git
+    require: json/pure
+    ref: 34ad345d48764f3acf87a032b3efb4b1908b7213
+- Rubygems: 
+    uri: http://gemcutter.org
