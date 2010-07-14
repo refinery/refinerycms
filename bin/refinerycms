@@ -1,6 +1,13 @@
 #!/usr/bin/env ruby
 require 'pathname'
 require 'fileutils'
+begin
+  require "rubygems"
+  require "bundler"
+rescue LoadError
+  raise "\n\n==ACTION REQUIRED==\nCould not load the bundler gem. Install it with `gem install bundler`.\n\n"
+  exit
+end
 
 refinery_root = (defined?(REFINERY_ROOT) && REFINERY_ROOT.is_a?(Pathname) ? REFINERY_ROOT : Pathname.new(File.expand_path(File.dirname(__FILE__) << "/..")))
 unless (app_path = ARGV.shift).nil? or app_path.length == 0
@@ -10,7 +17,7 @@ unless (app_path = ARGV.shift).nil? or app_path.length == 0
   else
     rails_root = app_path =~ /^\// ? app_path : File.expand_path(File.join(Dir.getwd, app_path.gsub(/^\.\//, '')))
   end
-  
+
   if File.directory?(rails_root)
     if ARGV.include?("--force")
       # remove the contents of the current directory
@@ -43,7 +50,7 @@ unless (app_path = ARGV.shift).nil? or app_path.length == 0
       end
     end
     FileUtils::cp File.join(%W(#{rails_root} config database.yml.#{db_adapter})), File.join(%W(#{rails_root} config database.yml.example))
-    
+
     # add in the config files
     %w(database amazon_s3 rackspace_cloudfiles).each do |config|
       FileUtils::move File.join(%W(#{rails_root} config #{config}.yml.example)), File.join(%W(#{rails_root} config #{config}.yml))
@@ -78,7 +85,7 @@ unless (app_path = ARGV.shift).nil? or app_path.length == 0
       match = line.scan(/(:secret)([^']*)([\'])([^\']*)/).flatten.last
       line.gsub!(match, new_digest) unless match.nil?
     end
-    
+
     # write the new content into the config file.
     app_config = File.open(File.join(%W(#{rails_root} config #{app_config_file})), "w")
     app_config.puts(lines.join("\n"))
@@ -87,7 +94,7 @@ unless (app_path = ARGV.shift).nil? or app_path.length == 0
     # read in the Gemfile and write it back out with the refinerycms gem enabled.
     (lines = refinery_root.join('Gemfile').open('r').read.split("\n")).each do |line|
       line.gsub!(/\#*\s?gem 'refinerycms'/, "gem 'refinerycms'")
-      
+
       # Ensure that the correct database gem libraries are included for the database adapter
       # that the user has specified in the refinery install command.
       if line =~ /\#db\_adapter\=/
@@ -106,22 +113,21 @@ unless (app_path = ARGV.shift).nil? or app_path.length == 0
 
     puts "\n---------"
     puts "Refinery successfully installed in '#{rails_root}'!\n\n"
-    
+
     # automate..
-    Dir.chdir(rails_root) do
-      puts "Installing gem requirements using bundler..\n"
-      puts (cmd="bundle install --without test")
-      puts `#{cmd}`
-      
-      puts "\n\nSetting up your development database..\n"
-      puts (cmd="rake -f '#{File.join(rails_root, 'Rakefile')}' db:setup")
-      puts `#{cmd}`
-      
-      puts "\n\nUpdating some core refinery files..\n"
-      puts (cmd="rake -f '#{File.join(rails_root, 'Rakefile')}' refinery:update from_installer=true")
-      puts `#{cmd}`
-    end
-    
+    puts "Installing gem requirements using bundler..\n"
+    puts "Running: " + (cmd="bundle install --without test")
+    puts `cd '#{rails_root}' && #{cmd}`
+
+    puts "\n\nSetting up your development database..\n"
+    puts "Running: " + (cmd="rake -f '#{File.join(rails_root, 'Rakefile')}' db:setup")
+    puts `cd '#{rails_root}' && #{cmd}`
+
+    puts "\n\nUpdating some core refinery files..\n"
+    puts "Running: " + (cmd="rake -f '#{File.join(rails_root, 'Rakefile')}' refinery:update from_installer=true")
+    puts `cd '#{rails_root}' && #{cmd}`
+    # end automation..
+
     # output helpful messages.
     puts "\n=== ACTION REQUIRED ==="
     puts "Now you can launch your webserver using:"
