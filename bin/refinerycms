@@ -2,10 +2,12 @@
 require 'pathname'
 require 'fileutils'
 begin
-  require "rubygems"
-  require "bundler"
+  require 'rubygems'
+  require 'bundler'
 rescue LoadError
-  raise "\n\n==ACTION REQUIRED==\nCould not load the bundler gem. Install it with `gem install bundler`.\n\n"
+  puts "\n==ACTION REQUIRED=="
+  puts "Could not load the bundler gem. This is a required dependency of Refinery CMS.\n\n"
+  puts "Please install it with `gem install bundler`.\n\n"
   exit
 end
 
