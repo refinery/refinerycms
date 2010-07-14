@@ -4,14 +4,15 @@
 - More pt-BR translation keys translated [Kivanio Barbosa]
 - Locked gems using Gemfile.lock [David Jones]
 - Changed 'refinery' task to 'refinerycms' as that is our gem's name. [Steven Heidel]
+- Fixed bug where settings were still considered restricted if NULL. [Steven Heidel]
 - [See full list](http://github.com/resolve/refinerycms/compare/0.9.7.5...0.9.7.6)
 
 ## 0.9.7.5 [08 July 2010]
 
 - Wrote an upgrade task for migrating from 0.9.6.x releases of RefineryCMS. Just run refinery-update-096-to-097 inside your application's directory. [Philip Arndt]
-- Improved code used to include gem rake tasks and script/generate tasks into the Refinery application to fix issue with these tasks not being found [Philip Arndt]
-- Fixed a broken migration that would mean pages were missing upon upgrading [Jesper Hvirring Henriksen]
-- More pt-BR translation keys translated [Kivanio Barbosa]
+- Improved code used to include gem rake tasks and script/generate tasks into the Refinery application to fix issue with these tasks not being found. [Philip Arndt]
+- Fixed a broken migration that would mean pages were missing upon upgrading. [Jesper Hvirring Henriksen]
+- More pt-BR translation keys translated. [Kivanio Barbosa]
 - [See full list](http://github.com/resolve/refinerycms/compare/0.9.7.4...0.9.7.5)
 
 ## 0.9.7.4 [07 July 2010]
@@ -29,12 +30,12 @@
 
 ## 0.9.7.2 [06 July 2010]
 
-- Bugfixes with users and roles [Philip Arndt and Amanda Wagener]
+- Bugfixes with users and roles. [Philip Arndt and Amanda Wagener]
 - Fixed the rake translate:lost_in_translation LOCALE=en and rake translate:lost_in_translation_all tasks so that they accurately reflect the missing i18n translation keys. [Philip Arndt]
 - Refactored routing of i18n to allow different default frontend and backend locales. [Philip Arndt]
-- Added better grammar support for some i18n [Halan Pinheiro]
+- Added better grammar support for some i18n. [Halan Pinheiro]
 - Improved output of rake refinery:update task and removed bin/refinery-update-core task. [Steven Heidel]
-- Set config.ru to run in production RAILS_ENV by default [Philip Arndt]
+- Set config.ru to run in production RAILS_ENV by default. [Philip Arndt]
 - [See full list](http://github.com/resolve/refinerycms/compare/0.9.7.1...0.9.7.2)
 
 ## 0.9.7.1 [03 July 2010]
@@ -49,10 +50,10 @@
 ## 0.9.7 [02 July 2010]
 
 - Full backend internationalisation (i18n) support and frontend i18n routing. [Maarten Hoogendoorn and Philip Arndt and many others]
-- Marketable URLs, such as /contact [Joshua Davey and Joe Sak].
+- Marketable URLs, such as "/contact". [Joshua Davey and Joe Sak].
 - Switched to bundler and rack. [Alex Coles and Philip Arndt]
 - Added options to Refinery Settings :restricted, :scoping, :callback_proc_as_string. [Steven Heidel and Philip Arndt]
-- Added caching abilities to frontend and to RefinerySetting to drastically speed up the application under certain conditions [Philip Arndt]
+- Added caching abilities to frontend and to RefinerySetting to drastically speed up the application under certain conditions. [Philip Arndt]
 - Added spam filtering to contact form. [David Jones]
 - Full Refinery UI redesign. [Resolve Digital]
 - User Role support. [Amanda Wagener and Philip Arndt]
@@ -337,8 +338,8 @@
 
 ## 0.9.3 [11 October 2009]
 
-- Optimise loading of WYM Editors
-- Supported more plugins' menu matches
+- Optimise loading of WYM Editors.
+- Supported more plugins' menu matches.
 
 ## 0.9.2.2 [08 October 2009]
 
@@ -362,7 +363,7 @@
 
 ## 0.9.1 [04 October 2009]
 
-- Bugfixes
+- Bugfixes.
 - Renamed project from Refinery to refinerycms and released as a gem.
 
 ## 0.9 [29 May 2009]
