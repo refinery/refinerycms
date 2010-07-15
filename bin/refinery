@@ -1,4 +1,4 @@
 #!/usr/bin/env ruby
-# Running 'refinery' is the same as running 'refinerycms' but we want users to change.
-puts "We have renamed the 'refinery' task to 'refinerycms' so please use 'refinerycms' in future."
-puts `ruby #{File.expand_path(File.dirname(__FILE__))}/refinerycms #{ARGV.join(' ')}`
+# Running 'refinery' is the old way of generating an application and we want users to change.
+# We could call it here for them, but it would mean that the entire task ran without printing anything to the user.
+puts "We have renamed the 'refinery' task to 'refinerycms' so please use 'refinerycms' instead."
