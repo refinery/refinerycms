@@ -5,7 +5,6 @@ require 'yaml'
 
 refinery_root = (defined?(REFINERY_ROOT) && REFINERY_ROOT.is_a?(Pathname) ? REFINERY_ROOT : Pathname.new(File.expand_path(File.dirname(__FILE__) << "/..")))
 unless (app_path = ARGV.shift).nil? or app_path.length == 0
-  puts "--------Updating--------\n\n"
   # if "" or "." or "./" is specified then get the current directory otherwise accept the specified app_path.
   if (app_path.length <= 2 and ((is_current_dir = app_path =~ /(\.(\/)?)/).nil? or is_current_dir < 2))
     rails_root = Dir.getwd
@@ -13,6 +12,12 @@ unless (app_path = ARGV.shift).nil? or app_path.length == 0
     rails_root = app_path =~ /^\// ? app_path : File.expand_path(File.join(Dir.getwd, app_path.gsub(/^\.\//, '')))
   end
   rails_root = Pathname.new(rails_root.to_s)
+
+  if rails_root.join('Gemfile').exist?
+    puts "Your application appears to already be running Refinery CMS >= 0.9.7"
+    exit
+  end
+  puts "--------Updating--------\n\n"
 
   FileUtils::cp refinery_root.join('Gemfile').to_s, rails_root.join('Gemfile').to_s, :verbose => true
   FileUtils::cp refinery_root.join('config', 'preinitializer.rb').to_s, rails_root.join('config', 'preinitializer.rb').to_s, :verbose => true
@@ -92,25 +97,24 @@ unless (app_path = ARGV.shift).nil? or app_path.length == 0
   puts "\nI think your database adapter is #{db_adapter} so that is what will be installed by bundler.\n\n"
 
   # automate..
-  Dir.chdir(rails_root) do
-    puts "Installing gem requirements using bundler..\n"
-    puts (cmd="bundle install --without test")
-    puts `#{cmd}`
+  puts "Installing gem requirements using bundler..\n"
+  puts (cmd="bundle install --without test")
+  puts `cd '#{rails_root}' && #{cmd}`
 
-    if rails_root.join('config', 'database.yml').exist?
-      puts "\n\nUpdating some core refinery files..\n"
-      puts (cmd="rake -f '#{File.join(rails_root, 'Rakefile')}' refinery:update from_installer=true")
-      puts `#{cmd}`
+  if rails_root.join('config', 'database.yml').exist?
+    puts "\n\nUpdating some core refinery files..\n"
+    puts (cmd="rake -f '#{File.join(rails_root, 'Rakefile')}' refinery:update from_installer=true")
+    puts `cd '#{rails_root}' && #{cmd}`
 
-      puts "\n\nMigrating your database..\n"
-      puts (cmd="rake -f '#{File.join(rails_root, 'Rakefile')}' db:migrate")
-      puts `#{cmd}`
-    else
-      puts "\nYour config/database.yml file is missing so I can't run a task that is required."
-      puts "Once you have your database file in place or are confident it will work without it please run:"
-      puts "\nrake refinery:update"
-    end
+    puts "\n\nMigrating your database..\n"
+    puts (cmd="rake -f '#{File.join(rails_root, 'Rakefile')}' db:migrate")
+    puts `cd '#{rails_root}' && #{cmd}`
+  else
+    puts "\nYour config/database.yml file is missing so I can't run a task that is required."
+    puts "Once you have your database file in place or are confident it will work without it please run:"
+    puts "\nrake refinery:update"
   end
+  # end automation..
 
   puts "\n--------Update complete--------\n\n"
 
