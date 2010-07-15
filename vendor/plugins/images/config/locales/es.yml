@@ -16,7 +16,7 @@ es:
         maximum_image_size: "The maximum image size is {{megabytes}} megabytes."
       index:
         create_new_image: Crear Imagen nueva
-        no_images_yet: No hay ninguna imagen.<br/>Pulse en "Crear Imagen nueva" para añadir su primera imagen.
+        no_images_yet: No hay ninguna imagen. Pulse en "Crear Imagen nueva" para añadir su primera imagen.
         view:
           switch_to: Cambiar a vista de {{view_name}}
           list: lista

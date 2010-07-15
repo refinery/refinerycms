@@ -862,24 +862,22 @@ body.dialog form {
 .dialog #existing_image_size_area #image_dialog_size_2 a { height: 70px; width: 70px; line-height: 70px; margin-top:-10px}
 .dialog #existing_image_size_area #image_dialog_size_3 a { height: 90px; width: 90px; line-height: 90px; margin-top:-20px}
 
-
-/*
-#dialog_main {
-  position: relative;
-}
-*/
 #existing_image_area_content {
   height: 238px;
 }
 #existing_image_area .pagination {
   background: #FFF;
-  /*bottom: 0px;*/
-  /*right: 0px;*/
   text-align: right;
   float: right;
-  /*position: absolute;*/
   margin: 0px;
   width: 763px;
+}
+#dialog_main .pagination {
+  margin: 0px;
+  position: absolute;
+  bottom: 5px;
+  right: 12px;
+  z-index: 1000;
 }
 #upload_image_area, #upload_resource_area {
   padding: 12px;

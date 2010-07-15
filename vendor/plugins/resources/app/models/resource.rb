@@ -8,9 +8,8 @@ class Resource < ActiveRecord::Base
                  :max_size => MAX_SIZE_IN_MB.megabytes,
                  :path_prefix => (Refinery.s3_backend ? nil : 'public/system/resources')
 
-  # TODO acts_as_indexed for resources?
-  #acts_as_indexed :fields => [:title, :type_of_content],
-  #          :index_file => [RAILS_ROOT,"tmp","index"]
+   # Docs for acts_as_indexed http://github.com/dougal/acts_as_indexed
+   acts_as_indexed :fields => [:filename, :title, :type_of_content]
 
   # we could use validates_as_attachment but it produces 4 odd errors like
   # "size is not in list". So we basically here enforce the same validation
@@ -32,11 +31,8 @@ class Resource < ActiveRecord::Base
     end
   end
 
-  # Docs for acts_as_indexed http://github.com/dougal/acts_as_indexed
-  acts_as_indexed :fields => [:title, :type_of_content]
-
   # when a dialog pops up with images, how many images per page should there be
-  PAGES_PER_DIALOG = 12
+  PAGES_PER_DIALOG = 1
 
   # when listing images out in the admin area, how many images should show per page
   PAGES_PER_ADMIN_INDEX = 20
