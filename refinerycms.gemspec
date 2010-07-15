@@ -2,7 +2,7 @@ Gem::Specification.new do |s|
   s.name              = %q{refinerycms}
   s.version           = %q{0.9.7.6}
   s.description       = %q{A beautiful open source Ruby on Rails content manager for small business. Easy to extend, easy to use, lightweight and all wrapped up in a super slick UI.}
-  s.date              = %q{2010-07-12}
+  s.date              = %q{2010-07-15}
   s.summary           = %q{A beautiful open source Ruby on Rails content manager for small business.}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
@@ -1015,9 +1015,9 @@ Gem::Specification.new do |s|
     'vendor/plugins/pages/app',
     'vendor/plugins/pages/app/controllers',
     'vendor/plugins/pages/app/controllers/admin',
-    'vendor/plugins/pages/app/controllers/admin/page_dialogs_controller.rb',
     'vendor/plugins/pages/app/controllers/admin/page_parts_controller.rb',
     'vendor/plugins/pages/app/controllers/admin/pages_controller.rb',
+    'vendor/plugins/pages/app/controllers/admin/pages_dialogs_controller.rb',
     'vendor/plugins/pages/app/controllers/pages_controller.rb',
     'vendor/plugins/pages/app/helpers',
     'vendor/plugins/pages/app/helpers/pages_helper.rb',
@@ -1028,9 +1028,6 @@ Gem::Specification.new do |s|
     'vendor/plugins/pages/app/presenters/page_presenter.rb',
     'vendor/plugins/pages/app/views',
     'vendor/plugins/pages/app/views/admin',
-    'vendor/plugins/pages/app/views/admin/page_dialogs',
-    'vendor/plugins/pages/app/views/admin/page_dialogs/_page_link.html.erb',
-    'vendor/plugins/pages/app/views/admin/page_dialogs/link_to.html.erb',
     'vendor/plugins/pages/app/views/admin/pages',
     'vendor/plugins/pages/app/views/admin/pages/_form.html.erb',
     'vendor/plugins/pages/app/views/admin/pages/_form_advanced_options.html.erb',
@@ -1043,6 +1040,9 @@ Gem::Specification.new do |s|
     'vendor/plugins/pages/app/views/admin/pages/edit.html.erb',
     'vendor/plugins/pages/app/views/admin/pages/index.html.erb',
     'vendor/plugins/pages/app/views/admin/pages/new.html.erb',
+    'vendor/plugins/pages/app/views/admin/pages_dialogs',
+    'vendor/plugins/pages/app/views/admin/pages_dialogs/_page_link.html.erb',
+    'vendor/plugins/pages/app/views/admin/pages_dialogs/link_to.html.erb',
     'vendor/plugins/pages/app/views/pages',
     'vendor/plugins/pages/app/views/pages/home.html.erb',
     'vendor/plugins/pages/app/views/pages/show.html.erb',
