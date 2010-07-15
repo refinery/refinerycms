@@ -557,7 +557,7 @@ pre {
 }
 .pagination {
   background-color: #C9DAE2;
-  padding: 7px;
+  padding: 5px 5px 4px 5px;
   margin: 10px 0px;
 }
 .pagination .disabled {
@@ -787,17 +787,19 @@ body.dialog form {
   font-weight: bold;
 }
 .dialog #dialog_menu_left {
+  position: fixed;
+  left: 12px;
+  top: 9px;
   width: 130px;
-  float: left;
-  margin-top: 9px;
 }
 .dialog #dialog_main {
   float: left;
+  margin-left: 130px;
   min-height: 405px;
-  width: 756px;
+  width: 696px;
 }
-.wym_dialog_table{
-	height:250px;
+.wym_dialog_table {
+	height: 250px;
 }
 .dialog #existing_image_content {
   position: relative;
@@ -811,7 +813,7 @@ body.dialog form {
 .dialog #existing_image_area_content ul li {
   list-style: none;
   padding: 0px;
-  margin: 0px 6px;
+  margin: 0px 2px 0px 0px;
   float: left;
   height: 114px;
   max-height: 114px;
@@ -827,6 +829,9 @@ body.dialog form {
 }
 .dialog #existing_image_area_content ul li.selected img {
   border: 4px solid #22A7F2;
+}
+.dialog #existing_image_size_area {
+  margin-top: 18px;
 }
 .dialog #existing_image_size_area ul {
   margin: 0px;
@@ -862,19 +867,9 @@ body.dialog form {
 .dialog #existing_image_size_area #image_dialog_size_2 a { height: 70px; width: 70px; line-height: 70px; margin-top:-10px}
 .dialog #existing_image_size_area #image_dialog_size_3 a { height: 90px; width: 90px; line-height: 90px; margin-top:-20px}
 
-#existing_image_area_content {
-  height: 238px;
-}
-#existing_image_area .pagination {
-  background: #FFF;
-  text-align: right;
-  float: right;
-  margin: 0px;
-  width: 763px;
-}
 #dialog_main .pagination {
   margin: 0px;
-  position: absolute;
+  position: fixed;
   bottom: 5px;
   right: 12px;
   z-index: 1000;
@@ -893,7 +888,7 @@ body.dialog form {
   width: 100%;
 }
 #dialog_main #pages_list ul {
-  margin: 12px 24px 24px 12px;
+  margin: 0px 12px 0px 12px;
   padding: 0px;
 }
 #dialog_main #pages_list ul li {
@@ -1107,6 +1102,12 @@ a#toggle_advanced_options:hover {
   margin-top: 10px;
   height: 45px;
 }
+.dialog .dialog_area {
+  margin-bottom: 45px;
+}
+.dialog .dialog_area > div > .field label:first-child, .dialog .dialog_area > div > label:first-child {
+  margin-top: 0px;
+}
 .wym_dialog .form-actions, #content.form-actions.dialog-form-actions, .ui-dialog .form-actions {
   margin-top: 16px;
 }
@@ -1130,7 +1131,7 @@ a#toggle_advanced_options:hover {
   position: relative;
 }
 #dialog_container #content .form-actions, .ui-dialog .form-actions, .dialog_container .form-actions {
-  position: absolute;
+  position: fixed;
   bottom: 0px;
   left: 0px;
   right: 0px;
@@ -1151,14 +1152,14 @@ textarea.wymeditor {
   padding: 12px;
 }
 ul#image_grid {
-  width: 670px;/*580px;*/
+  width: 100%;
   padding: 0px;
   margin: 10px 0px 15px 0px;
 }
 ul#image_grid li {
   position: relative;
   float: left;
-  margin: 0px 12px 12px 0px;
+  margin: 0px 7px 12px 0px;
   padding: 0px;
   width: 124px;
   text-align: center;
@@ -1166,6 +1167,10 @@ ul#image_grid li {
   overflow: hidden;
   max-width: 124px;
   max-height: 165px;
+}
+ul#image_grid li.image_4 {
+  margin-left: 1px;
+  margin-right: 0px;
 }
 #records ul#image_grid li .actions {
   top: auto;
