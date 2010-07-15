@@ -328,7 +328,7 @@ var link_dialog = {
         }
 
         // Add any alternate resource stores that need a absolute URL in the regex below
-        if( resourceUrl.hostname.match(/s3.amazonaws.com/) ) {
+        if(resourceUrl.hostname.match(/s3.amazonaws.com/)) {
           relevant_href = resourceUrl.protocol + '//' + resourceUrl.host + relevant_href;
         }
 
@@ -340,16 +340,9 @@ var link_dialog = {
           });
         }
       }
-
-      if(parent && typeof(parent.tb_remove) == "function"){
-        parent.tb_remove();
-      }
     });
 
-    $('.form-actions-dialog #cancel_button').click(function(e){
-      e.preventDefault();
-      parent.tb_remove();
-    });
+    $('.form-actions-dialog #cancel_button').trigger('click');
   },
 
   init_close: function(){

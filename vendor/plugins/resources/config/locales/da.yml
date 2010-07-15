@@ -16,7 +16,7 @@ da:
         download: Download fil ({{size}})
         edit: Redigér fil
         delete:
-          message: Er du sikker på du vil slette filen '{{title}}'?
+          message: "Er du sikker på du vil slette filen '{{title}}'?"
           title: Slet fil
       index:
         upload_new: Upload en fil
