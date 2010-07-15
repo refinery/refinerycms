@@ -924,7 +924,7 @@ Gem::Specification.new do |s|
     'vendor/plugins/images/app/views',
     'vendor/plugins/images/app/views/admin',
     'vendor/plugins/images/app/views/admin/images',
-    'vendor/plugins/images/app/views/admin/images/_existing_image.erb',
+    'vendor/plugins/images/app/views/admin/images/_existing_image.html.erb',
     'vendor/plugins/images/app/views/admin/images/_form.html.erb',
     'vendor/plugins/images/app/views/admin/images/_grid_view.html.erb',
     'vendor/plugins/images/app/views/admin/images/_list_view.html.erb',
