@@ -8,6 +8,7 @@
 - Ensures that bundler is available before creating an application from a gem. [Philip Arndt]
 - Application generator (from gem) and application upgrade bin task (from 0.9.6) is now Ruby 1.9.2 compatible. [Philip Arndt]
 - bin/refinery-upgrade-from-096-to-097 will no longer allow you to run it if Gemfile is present and thus signifying an upgraded app. [Philip Arndt]
+- Cleaned up syntax, changed CSS involving dialogues [Philip Arndt]
 - [See full list](http://github.com/resolve/refinerycms/compare/0.9.7.5...0.9.7.6)
 
 ## 0.9.7.5 [08 July 2010]
