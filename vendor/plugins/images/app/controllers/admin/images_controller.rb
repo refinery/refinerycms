@@ -83,11 +83,11 @@ protected
   end
 
   def paginate_images(conditions={})
-    @images = Image.paginate   :page => (@paginate_page_number ||= params[:page]),
-                               :conditions => {:parent_id => nil}.merge!(conditions),
-                               :order => 'created_at DESC',
-                               :per_page => Image.per_page(from_dialog?),
-                               :include => :thumbnails
+    @images = Image.paginate :page => (@paginate_page_number ||= params[:page]),
+                             :conditions => {:parent_id => nil}.merge!(conditions),
+                             :order => 'created_at DESC',
+                             :per_page => Image.per_page(from_dialog?, !@app_dialog),
+                             :include => :thumbnails
   end
 
   def restrict_controller
