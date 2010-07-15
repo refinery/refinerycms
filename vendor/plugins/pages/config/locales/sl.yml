@@ -3,7 +3,7 @@ sl:
     refinery_pages:
       title: Strani
   admin:
-    page_dialogs:
+    pages_dialogs:
       not_allowed: Nimate pravic za dostop do te funkcionalnosti.
       page_link:
         link_to_this_page: Naredi povezavo do te strani
