@@ -6,8 +6,7 @@
         <% @resources.each do |resource| -%>
           <% resource_linked = (resource.public_filename == params[:current_link]) if params[:current_link].present? %>
           <li<%= " class='linked'" if resource_linked %>>
-            <%= link_to "#{resource.title} (#{resource.public_filename})",
-                        resource.public_filename,
+            <%= link_to "#{resource.title} (#{resource.public_filename})", resource.public_filename,
                         :title => t('.link_to_resource'),
                         :rel => resource.title,
                         :class => 'page_link',
@@ -21,7 +20,8 @@
   <%= render :partial => "/shared/admin/form_actions",
              :locals => {
                :f => nil,
-               :cancel_url => '',
+               :cancel_text => ,
+               :cancel_url => admin_resources_url,
                :submit_button_text => t('.submit_insert'),
                :hide_cancel => false,
                :hide_delete => true,

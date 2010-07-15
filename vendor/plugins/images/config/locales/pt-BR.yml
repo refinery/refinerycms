@@ -18,7 +18,7 @@ pt-BR:
         maximum_image_size: "O tamanho máximo permitido é de {{megabytes}} megabytes."
       index:
         create_new_image: Criar Nova Imagem
-        no_images_yet: Ainda não existem imagens.<br/> Clique em "Criar Nova Imagem" para adicionar sua primeira imagem.
+        no_images_yet: Ainda não existem imagens. Clique em "Criar Nova Imagem" para adicionar sua primeira imagem.
         view:
           switch_to: Trocar para visão em {{view_name}}
           list: lista

@@ -54,7 +54,6 @@ protected
     Refinery::Plugins.set_active( current_user.authorized_plugins ) if current_user.respond_to? :plugins
   end
 
-  #TODO Translate
   def restrict_controller
     if Refinery::Plugins.active.reject { |plugin|
       params[:controller] !~ Regexp.new(plugin.menu_match) and

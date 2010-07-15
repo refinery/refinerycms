@@ -79,6 +79,10 @@ protected
     @current_link = params[:current_link]
   end
 
+  def restrict_controller
+    super unless action_name == 'insert'
+  end
+
   def paginate_resources(conditions={})
     @resources = Resource.paginate   :page => (@paginate_page_number ||= params[:page]),
                                      :conditions => conditions,
