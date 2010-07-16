@@ -14,13 +14,13 @@ class Admin::RefinerySettingsController < Admin::BaseController
   def find_all_refinery_settings
     @refinery_settings = RefinerySetting.find :all,
                                               :order => "name ASC",
-                                              :conditions => current_user.has_role?(:superuser) ? nil : ["restricted IS NOT ?", true]
+                                              :conditions => current_user.has_role?(:superuser) ? nil : ["restricted <> ?", true]
   end
 
   def paginate_all_refinery_settings
     @refinery_settings = RefinerySetting.paginate :page => params[:page],
                                                   :order => "name ASC",
-                                                  :conditions => current_user.has_role?(:superuser) ? nil : ["restricted IS NOT ?", true]
+                                                  :conditions => current_user.has_role?(:superuser) ? nil : ["restricted <> ?", true]
   end
 
 private

@@ -1,3 +1,9 @@
+## 0.9.7.7 [unreleased]
+
+- Fixed an issue in the plugin generator that saw locales being created with singular_name not the interpreted version. [Philip Arndt](http://github.com/parndt) and [Joe Sak](http://github.com/joemsak)
+- Fixed an issue with non-MySQL databases [Lee Irving](http://github.com/magpieuk)
+- [See full list](http://github.com/refinerycms/compare/0.9.7.6...master)
+
 ## 0.9.7.6 [15 July 2010]
 
 - Bugfixes, fixed some failing tests. [Philip Arndt](http://github.com/parndt)
