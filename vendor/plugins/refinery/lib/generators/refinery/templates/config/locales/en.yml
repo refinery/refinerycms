@@ -7,7 +7,7 @@ en:
         reorder_done: Done Reordering <%= $title_name.pluralize %>
         sorry_no_results: Sorry! There are no results found.
         no_items_yet: There are no <%= plural_name %> yet. Click "Create a new <%= $title_name %>" to add your first <%= $title_name.downcase %>.
-      singular_name:
+      <%= singular_name %>:
         view_live: View this <%= $title_name.downcase %> live <br/><em>(opens in a new window)</em>
         edit: Edit this <%= $title_name.downcase %>
         delete: Remove this <%= $title_name.downcase %> forever
