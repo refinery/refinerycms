@@ -1,5 +1,8 @@
 namespace :refinery do
-
+  
+  desc "Run all refinery tests, including test-unit, rspec, and cucumber"
+  task :test_all => [:test, :spec, :cucumber]
+  
   desc "Override files for use in an application"
   task :override => :environment do
     require 'fileutils'
