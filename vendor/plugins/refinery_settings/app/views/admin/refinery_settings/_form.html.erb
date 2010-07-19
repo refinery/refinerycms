@@ -3,7 +3,7 @@
   <div class='field'>
   <% if action_name =~ /(new)|(create)/ %>
     <%= f.label :name %>
-    <%= f.text_field :name, :class => "larger", :size => from_dialog? ? 50 : 67 %>
+    <%= f.text_field :name, :class => "larger widest" %>
   <% else %>
     <label for='refinery_setting_value'>Name</label>
     <label class='stripped' for='refinery_setting_value'>
