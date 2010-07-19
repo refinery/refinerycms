@@ -41,6 +41,10 @@
                              'refinery/admin',
                              :cache => (js_caching ? "cache/admin" : false) %>
 
-  <%= "<!--[if lt IE 8]>#{stylesheet_link_tag 'refinery/ie'}<![endif]-->".html_safe if request.env['HTTP_USER_AGENT'] =~ /MSIE/ %>
+  <% if request.env['HTTP_USER_AGENT'] =~ /MSIE/ %>
+    <%= "<!--[if lt IE 8]>#{stylesheet_link_tag 'refinery/ie-less-than-8'}<![endif]-->".html_safe  %>
+    <%= "<!--[if IE 8]>#{stylesheet_link_tag 'refinery/ie-less-than-9'}<![endif]-->".html_safe  %>
+  <% end %>
+
   <%= yield :head %>
 </head>
