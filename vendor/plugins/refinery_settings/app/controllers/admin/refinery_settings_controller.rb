@@ -1,6 +1,9 @@
 class Admin::RefinerySettingsController < Admin::BaseController
 
-  crudify :refinery_setting, :title_attribute => :title, :order => "name ASC", :searchable => false
+  crudify :refinery_setting,
+          :title_attribute => :title,
+          :order => "name ASC",
+          :searchable => false
 
   before_filter :sanitise_params, :only => [:create, :update]
   after_filter :fire_setting_callback, :only => [:update]
@@ -12,15 +15,19 @@ class Admin::RefinerySettingsController < Admin::BaseController
   end
 
   def find_all_refinery_settings
-    @refinery_settings = RefinerySetting.find :all,
-                                              :order => "name ASC",
-                                              :conditions => current_user.has_role?(:superuser) ? nil : ["restricted <> ?", true]
+    @refinery_settings = RefinerySetting.find(:all,
+    {
+      :order => "name ASC",
+      :conditions => current_user.has_role?(:superuser) ? nil : ["restricted <> ?", true]
+    })
   end
 
   def paginate_all_refinery_settings
-    @refinery_settings = RefinerySetting.paginate :page => params[:page],
-                                                  :order => "name ASC",
-                                                  :conditions => current_user.has_role?(:superuser) ? nil : ["restricted <> ?", true]
+    @refinery_settings = RefinerySetting.paginate({
+      :page => params[:page],
+      :order => "name ASC",
+      :conditions => current_user.has_role?(:superuser) ? nil : ["restricted <> ?", true]
+    })
   end
 
 private
