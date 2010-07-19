@@ -1131,7 +1131,7 @@ a#toggle_advanced_options:hover {
   position: relative;
 }
 #dialog_container #content .form-actions, .ui-dialog .form-actions, .dialog_container .form-actions {
-  position: fixed;
+  position: absolute;
   bottom: 0px;
   left: 0px;
   right: 0px;
