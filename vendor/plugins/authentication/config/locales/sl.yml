@@ -31,7 +31,7 @@ sl:
       or: ali
       forgot_password: Pozabil sem geslo
   users:
-    setup_website_name: "Najprej morate poimenovati stran. <a href='{{link}}'>Pojdite sem</a> kjer lahko uredite naslov vaše strani."
+    setup_website_name: "Najprej morate poimenovati stran. <a href='{{link}}' name='{{title}}'>Pojdite sem</a> kjer lahko uredite naslov vaše strani."
     signup_disabled: Registracija uporabnikov je onemogočena
     new:
       fill_form: Izpolnite spodnji obrazec z vašimi podatki.

@@ -29,7 +29,7 @@ nb:
       hello_please_sign_in: Hei! Vennligst logg inn
       sign_in: Logg på
   users:
-    setup_website_name: "Først la oss gi siden et navn. <a href='{{link}}'>Gå her</a> for å redigere siden din sitt navn"
+    setup_website_name: "Først la oss gi siden et navn. <a href='{{link}}' name='{{title}}'>Gå her</a> for å redigere siden din sitt navn"
     signup_disabled: Brukerpåmelding er deaktivert
     new:
       fill_form: Fyll ut skjemaet under med detaljene dine så vi kan få deg startet.

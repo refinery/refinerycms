@@ -1,0 +1,26 @@
+/*
+#content .form-actions .form-actions-left a.button {
+  height: 19px;
+  line-height: 19px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+#site_bar #editor_switch a {
+  height: 26px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  line-height: 26px;
+}
+.search_form input.button {
+  padding-left: 8px;
+  padding-right: 8px;
+}
+*/
+body.login .field input.larger, body.login .field input.larger:focus {
+  line-height: 30px;
+}
+/*
+  background-image: none !important;
+  padding: 0px;
+}
+*/

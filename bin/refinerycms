@@ -141,7 +141,7 @@ unless (app_path = ARGV.shift).nil? or app_path.length == 0
     puts "---------\n\n"
   end
 else
-  puts "\nPlease specify the path where you want to install Refinery. i.e. refinery /path/to/project [options]"
+  puts "\nPlease specify the path where you want to install Refinery. i.e. #{__FILE__.split(File::SEPARATOR).last} /path/to/project [options]"
   puts "\n"
   puts "Options:"
   puts "--force             Forces the directory to be overriden if the directory already exists"

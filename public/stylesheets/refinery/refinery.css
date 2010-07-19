@@ -1102,7 +1102,7 @@ a#toggle_advanced_options:hover {
   margin-top: 10px;
   height: 45px;
 }
-.dialog .dialog_area {
+.dialog form {
   margin-bottom: 45px;
 }
 .dialog .dialog_area > div > .field label:first-child, .dialog .dialog_area > div > label:first-child {
