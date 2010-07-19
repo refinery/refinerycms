@@ -24,8 +24,17 @@ module Refinery
   end
 
   class Version
+    class << self
+      attr_reader :major, :minor, :tiny, :build
+    end
+    
+    @major = 0
+    @minor = 9
+    @tiny  = 7
+    @build = 7
+    
     def self.to_s
-      %q{0.9.7.7}
+      [@major, @minor, @tiny, @build].compact.join('.')
     end
   end
 
