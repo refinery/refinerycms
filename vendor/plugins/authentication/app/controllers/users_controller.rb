@@ -62,7 +62,8 @@ class UsersController < ApplicationController
 
   def forgot
     if request.post?
-      if (params[:user].present? and params[:user][:email].present? and user = User.find_by_email(params[:user][:email])).present?
+      if (params[:user].present? and params[:user][:email].present? and 
+          user = User.find_by_email(params[:user][:email])).present?
         user.deliver_password_reset_instructions!(request)
         flash[:notice] = t('users.forgot.email_reset_sent')
         redirect_back_or_default new_session_url
