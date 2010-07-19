@@ -20,12 +20,10 @@
   <%= render :partial => "/shared/admin/form_actions",
              :locals => {
                :f => nil,
-               :cancel_text => ,
                :cancel_url => admin_resources_url,
                :submit_button_text => t('.submit_insert'),
-               :hide_cancel => false,
+               :hide_cancel => true,
                :hide_delete => true,
-               :cancel_title => '',
                :paginate => {
                  :collection => @resources,
                  :url => {:controller => "admin/resources", :action => "insert", :dialog => from_dialog? }
