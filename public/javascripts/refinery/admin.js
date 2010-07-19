@@ -94,15 +94,29 @@ init_flash_messages = function(){
 init_modal_dialogs = function(){
   $('a[href*="dialog=true"]').not('#dialog_container a').each(function(i, anchor)
   {
-    $(anchor).click(function(e){
-      iframe = $("<iframe id='dialog_iframe' src='" + $(this).attr('href') + "&amp;app_dialog=true" + "'></iframe>").corner('8px');
+    $(anchor).data({
+      'dialog-width': parseInt($(anchor.href.match("width=([0-9]*)")).last().get(0), 928)||928
+      , 'dialog-height': parseInt($(anchor.href.match("height=([0-9]*)")).last().get(0), 473)||473
+      , 'dialog-title': ($(anchor).attr('title') || $(anchor).attr('name') || $(anchor).html() || null)
+    }).attr('href', $(anchor).attr('href').replace(/(\&(amp\;)?)?dialog\=true/, '')
+                                          .replace(/(\&(amp\;)?)?width\=\d+/, '')
+                                          .replace(/(\&(amp\;)?)?height\=\d+/, '')
+                                          .replace(/(\?&(amp\;)?)/, '?')
+                                          .replace(/\?$/, ''))
+    .click(function(e){
+      $anchor = $(this);
+      iframe_src = (iframe_src = $anchor.attr('href'))
+                   + (iframe_src.indexOf('?') > -1 ? '&amp;' : '?')
+                   + 'app_dialog=true&amp;dialog=true';
+
+      iframe = $("<iframe id='dialog_iframe' src='" + iframe_src + "'></iframe>").corner('8px');
       iframe.dialog({
-        title: $(anchor).attr('title') || $(anchor).attr('name') || $(anchor).html() || null
+        title: $anchor.data('dialog-title')
         , modal: true
         , resizable: false
         , autoOpen: true
-        , width: (parseInt($(anchor.href.match("width=([0-9]*)")).last().get(0))||928)
-        , height: (parseInt($(anchor.href.match("height=([0-9]*)")).last().get(0))||473)
+        , width: $anchor.data('dialog-width')
+        , height: $anchor.data('dialog-height')
         , open: onOpenDialog
         , close: onCloseDialog
       });
@@ -286,10 +300,10 @@ init_tooltips = function(args){
       })
     });
     if ($(element).attr('tooltip') == null) {
-      $(element).attr({'tooltip': $(element).attr('title'), 'title': ''});
+      $(element).attr('tooltip', $(element).attr('title'));
     }
     // wipe clean the title on any children too.
-    $(element).children('img').attr('title', '');
+    $(element).add($(element).children('img')).attr('title', null);
   });
 }
 

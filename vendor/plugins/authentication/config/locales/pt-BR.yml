@@ -27,7 +27,7 @@ pt-BR:
       sign_in: Entrar
       forgot_password: Esqueci minha senha
   users:
-    setup_website_name: "Primeiro vamos dar um nome ao site. <a href='{{link}}'>Clique aqui</a> para editar o nome do seu site"
+    setup_website_name: "Primeiro vamos dar um nome ao site. <a href='{{link}}' name='{{title}}'>Clique aqui</a> para editar o nome do seu site"
     signup_disabled: Cadastro de usuários está desabilitado
     new:
       fill_form: Preencha o formulário abaixo com seus detalhes pra que você possa começar.

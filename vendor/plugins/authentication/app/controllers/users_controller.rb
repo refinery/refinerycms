@@ -51,7 +51,9 @@ class UsersController < ApplicationController
 
         site_name_setting = RefinerySetting.find_or_create_by_name('site_name', :value => "Company Name")
         if site_name_setting.value.to_s =~ /^(|Company\ Name)$/ or Role[:refinery].users.count == 1
-          flash[:message] << "<p>#{t('users.setup_website_name', :link => edit_admin_refinery_setting_url(site_name_setting))}</p>".html_safe
+          flash[:message] << "<p>#{t('users.setup_website_name',
+                                     :link => edit_admin_refinery_setting_url(site_name_setting, :dialog => true),
+                                     :title => t('admin.refinery_settings.refinery_setting.edit'))}</p>".html_safe
         end
       else
         render :action => 'new'
