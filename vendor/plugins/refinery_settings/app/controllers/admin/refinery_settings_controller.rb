@@ -3,7 +3,8 @@ class Admin::RefinerySettingsController < Admin::BaseController
   crudify :refinery_setting,
           :title_attribute => :title,
           :order => "name ASC",
-          :searchable => false
+          :searchable => false,
+          :redirect_to_url => :redirect_to_where?
 
   before_filter :sanitise_params, :only => [:create, :update]
   after_filter :fire_setting_callback, :only => [:update]
@@ -31,6 +32,10 @@ class Admin::RefinerySettingsController < Admin::BaseController
   end
 
 private
+  def redirect_to_where?
+    (from_dialog? && session[:return_to].present?) ? session[:return_to] : admin_refinery_settings_url
+  end
+
   # this fires before an update or create to remove any attempts to pass sensitive arguments.
   def sanitise_params
     params.delete(:callback_proc_as_string)
