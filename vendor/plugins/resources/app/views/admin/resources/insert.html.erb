@@ -20,7 +20,7 @@
   </div>
 
   <div id='dialog_main'>
-    <% if any_resources or user_can_modify_images %>
+    <% if any_resources or user_can_modify_resources %>
       <%= render :partial => 'existing_resource' if any_resources %>
 
       <% if user_can_modify_resources %>
