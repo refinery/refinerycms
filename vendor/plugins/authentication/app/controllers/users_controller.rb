@@ -62,7 +62,7 @@ class UsersController < ApplicationController
 
   def forgot
     if request.post?
-      if (params[:user].present? and params[:user][:email].present? and 
+      if (params[:user].present? and params[:user][:email].present? and
           user = User.find_by_email(params[:user][:email])).present?
         user.deliver_password_reset_instructions!(request)
         flash[:notice] = t('users.forgot.email_reset_sent')
@@ -72,7 +72,8 @@ class UsersController < ApplicationController
         if (email = params[:user][:email]).blank?
           flash.now[:error] = t('users.forgot.blank_email')
         else
-          flash.now[:error] = t('users.forgot.email_not_associated_with_account', :email => params[:user][:email])
+          flash.now[:error] = t('users.forgot.email_not_associated_with_account',
+                                :email => params[:user][:email])
         end
       end
     end
