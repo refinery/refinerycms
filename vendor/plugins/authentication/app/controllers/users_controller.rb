@@ -18,46 +18,45 @@ class UsersController < ApplicationController
 
   # This method should only be used to create the first Refinery user.
   def create
-    begin
-      # protects against session fixation attacks, wreaks havoc with request forgery protection.
-      # uncomment at your own risk:
-      # reset_session
-      @user = User.new(params[:user])
-      @selected_plugin_titles = params[:user][:plugins] || []
+    # protects against session fixation attacks, wreaks havoc with request forgery protection.
+    # uncomment at your own risk:
+    # reset_session
+    @user = User.new(params[:user])
+    @selected_plugin_titles = params[:user][:plugins] || []
 
-      @user.save if @user.valid?
+    @user.save if @user.valid?
 
-      if @user.errors.empty?
-        @user.add_role(:refinery)
-        @user.plugins = @selected_plugin_titles
-        @user.save
-        UserSession.create!(@user)
-        if Role[:refinery].users.count == 1
-          # this is the superuser if this user is the only user.
-          current_user.add_role(:superuser)
-          current_user.save
+    if @user.errors.empty?
+      @user.add_role(:refinery)
+      @user.plugins = @selected_plugin_titles
+      @user.save
+      UserSession.create!(@user)
+      if Role[:refinery].users.count == 1
+        # this is the superuser if this user is the only user.
+        current_user.add_role(:superuser)
+        current_user.save
 
-          # set this user as the recipient of inquiry notifications
-          if (notification_recipients = InquirySetting.find_or_create_by_name("Notification Recipients")).present?
-            notification_recipients.update_attributes({
-              :value => current_user.email,
-              :destroyable => false
-            })
-          end
+        # set this user as the recipient of inquiry notifications
+        if (notification_recipients = InquirySetting.find_or_create_by_name("Notification Recipients")).present?
+          notification_recipients.update_attributes({
+            :value => current_user.email,
+            :destroyable => false
+          })
         end
-
-        redirect_back_or_default(admin_root_url)
-        flash[:message] = "<h2>#{t('users.create.welcome', :who => current_user.login).gsub(/\.$/, '')}.</h2>".html_safe
-
-        site_name_setting = RefinerySetting.find_or_create_by_name('site_name', :value => "Company Name")
-        if site_name_setting.value.to_s =~ /^(|Company\ Name)$/ or Role[:refinery].users.count == 1
-          flash[:message] << "<p>#{t('users.setup_website_name',
-                                     :link => edit_admin_refinery_setting_url(site_name_setting, :dialog => true),
-                                     :title => t('admin.refinery_settings.refinery_setting.edit'))}</p>".html_safe
-        end
-      else
-        render :action => 'new'
       end
+
+      flash[:message] = "<h2>#{t('users.create.welcome', :who => current_user.login).gsub(/\.$/, '')}.</h2>".html_safe
+
+      site_name_setting = RefinerySetting.find_or_create_by_name('site_name', :value => "Company Name")
+      if site_name_setting.value.to_s =~ /^(|Company\ Name)$/ or Role[:refinery].users.count == 1
+        flash[:message] << "<p>#{t('users.setup_website_name',
+                                   :link => edit_admin_refinery_setting_url(site_name_setting, :dialog => true),
+                                   :title => t('admin.refinery_settings.refinery_setting.edit'))}</p>".html_safe
+      end
+
+      redirect_back_or_default(admin_root_url)
+    else
+      render :action => 'new'
     end
   end
 
