@@ -18,7 +18,7 @@ class Admin::RefinerySettingsController < Admin::BaseController
     @refinery_settings = RefinerySetting.find(:all,
     {
       :order => "name ASC",
-      :conditions => current_user.has_role?(:superuser) ? nil : ["restricted <> ?", true]
+      :conditions => (["restricted <> ?", true] unless current_user.has_role?(:superuser))
     })
   end
 
@@ -26,7 +26,7 @@ class Admin::RefinerySettingsController < Admin::BaseController
     @refinery_settings = RefinerySetting.paginate({
       :page => params[:page],
       :order => "name ASC",
-      :conditions => current_user.has_role?(:superuser) ? nil : ["restricted <> ?", true]
+      :conditions => (["restricted <> ?", true] unless current_user.has_role?(:superuser))
     })
   end
 
