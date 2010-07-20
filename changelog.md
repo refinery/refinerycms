@@ -8,6 +8,7 @@
 - Bugfixes, some IE compatibility. [Philip Arndt](http://github.com/parndt)
 - Fix syntax errors in existing resource dialog. [David Jones](http://github.com/djones)
 - Identified and fixed a positioning bug in dialogues [Joe Sak](http://github.com/joemsak) and [Philip Arndt](http://github.com/parndt)
+- Fixed issue that was causing Refinery to load in rake tasks twice if they lived under ``"#{Rails.root}/vendor/plugins"``. [David Jones](http://github.com/djones) and [Philip Arndt](http://github.com/parndt)
 - [See full list](http://github.com/resolve/refinerycms/compare/0.9.7.6...0.9.7.7)
 
 ## 0.9.7.6 [15 July 2010]
