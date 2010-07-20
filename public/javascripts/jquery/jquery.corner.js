@@ -109,20 +109,10 @@
 
 	$.fn.corner = function(options) {
 		// in 1.3+ we can fix mistakes with the ready state
-		if ((elements = this).length == 0) {
-			if (!$.isReady && this.selector) {
-				var s = this.selector,
-				c = this.context;
-				$(function() {
-					$(s, c).corner(options);
-				});
-			}
-			return this;
-		}
-
+		var elements = this;
 		// help IE *yet again*.
 		if ($.browser.msie && $.browser.version < 9) {
-		  elements = elements.not('.button');
+		  elements = elements.not('input, .button');
 		  /*
 			(inputs = elements.find('input.button')).removeClass('button');
 			elements = elements.not('input');
@@ -133,6 +123,17 @@
 			});
 			elements = elements.add($('span.button-wrapper'));
 			*/
+		}
+
+		if (elements.length == 0) {
+			if (!$.isReady && this.selector) {
+				var s = this.selector,
+				c = this.context;
+				$(function() {
+					$(s, c).corner(options);
+				});
+			}
+			return this;
 		}
 
 		return elements.each(function(index) {
@@ -204,6 +205,7 @@
 
 			if (typeof this.style.zoom != undefined) this.style.zoom = 1;
 			// force 'hasLayout' in IE
+			// TODO: IE is losing its border in some cases though still rounding it, investigate.
 			if (!keep) this.style.border = 'none';
 			strip.style.borderColor = cc || gpc(this.parentNode);
 			var cssHeight = $(this).outerHeight();

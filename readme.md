@@ -49,7 +49,7 @@ Mac OS 10.5 or 10.6 users [this shell install script](http://github.com/maddox/m
 #### Install the Gem
 
     gem install refinerycms
-    refinery path/to/project
+    refinerycms path/to/project
 
 #### Or, clone Refinery's GIT repository
 
@@ -110,7 +110,7 @@ You will be prompted to setup your first user.
 ## Help and Developer Documentation
 
 * [Tutorial Site](http://resolve.github.com/refinerycms)
-* [Google Group Discussion](http://groups.google.com/group/refinery-cms)
+* [Google Group Discussion](http://group.refinerycms.org)
 * [Developer/API documentation](http://api.refinerycms.org)
 * [GitHub repository](http://github.com/resolve/refinerycms)
 * [Developer video - 26 mins](http://refinerycms.com/pages/for-developers)
