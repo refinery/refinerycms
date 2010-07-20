@@ -13,9 +13,10 @@ nl:
         or: of
         replace_image: Vervang de afbeelding door deze
         current_image: Huidige afbeelding
+        maximum_image_size: "The maximum image size is {{megabytes}} megabytes."
       index:
         create_new_image: Upload een nieuwe afbeelding
-        no_images_yet: Er zijn nog geen afbeeldingen! Klik op "Upload een nieuwe afbeelding" om uw eerste afbleelding toe te voegen.
+        no_images_yet: Er zijn nog geen afbeeldingen. Klik op "Upload een nieuwe afbeelding" om uw eerste afbleelding toe te voegen.
         view:
           switch_to: Bekijk de {{view_name}} versie
           list: lijst

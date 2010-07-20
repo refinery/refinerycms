@@ -31,9 +31,7 @@ da:
         closed: "Henvendelsen '{{inquiry}}' er lukket"
         reopened: "Henvendelsen '{{inquiry}}' er genåbnet"
       index:
-        update_notified: Opdatér, hvem der får besked
-        edit_confirmation_email: Redigér e-mailbekræftelse
-        search_results_for: Søgeresultat for '{{query}}'
+        search_results_for: "Søgeresultat for '{{query}}'"
         no_inquiries: Du har endnu ikke modtaget nogen henvendelser.
       show:
         details: Detaljer
@@ -45,6 +43,9 @@ da:
         actions: Handlinger
         back_to_all_inquiries: Tilbage til alle henvendelser
         inquiry: Henvendelse
+      submenu: 
+        update_notified: Opdatér, hvem der får besked
+        edit_confirmation_email: Redigér e-mailbekræftelse
     inquiry_settings:
       update:
         updated: "'{{setting}}' er opdateret."

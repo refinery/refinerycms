@@ -48,16 +48,24 @@ namespace :translate do
       locale_hash = locale_hash.deep_merge(yaml[locale.to_s])
     end
 
-    lookup_pattern = Translate::Keys.new.send(:i18n_lookup_pattern)
-    (Dir.glob(File.join("app", "**","*.{erb,rb,rhtml}")) + Dir.glob(File.join("vendor", "plugins", "**", "*.{erb,rb,rhtml}"))).each do |file_name|
-      next if file_name =~ /translate\/spec/
+    lookup_pattern = /\b(?:I18n\.t|I18n\.translate|t)(?:\s|\():?'([a-z0-9_]*.[a-z0-9_.]+)'\)?/
+    (Dir.glob(File.join("app", "**","*.{erb,rb}")) + Dir.glob(File.join("vendor", "plugins", "**", "app", "**", "*.{erb,rb}"))).each do |file_name|
       File.open(file_name, "r+").each do |line|
         line.scan(lookup_pattern) do |key_string|
-          result << "#{key_string} in \t  #{file_name} \t is not in any #{locale} locale file" unless key_exist?(key_string.first.split("."), locale_hash)
+          # qualify the namespace if beginning with . like t('.log_out')
+          if key_string.first =~ /^\./
+            namespace = file_name.gsub(/vendor\/plugins\/.+?\//, "").gsub(/^app\/(models|views|controllers|helpers)\//, '').split('/')
+            namespace = namespace | [namespace.pop.gsub(/^\_/, '').split('.').first]
+            key_string = ["#{namespace.join('.')}#{key_string.first}"]
+          end
+          
+          unless key_exist?(key_string.first.split("."), locale_hash)
+            result << "#{key_string} in \t  #{file_name} \t is not in any #{locale} locale file"
+          end
         end
-      end
+      end unless file_name =~ /translate\/spec/
     end
-    puts !result.empty? ? result.join("\n") : "No missing translations for locale: #{locale}"
+    puts result.empty? ? "No missing translations for locale: #{locale}" : "#{result.join("\n")}\n\nNumber of missing translations for #{locale}: #{result.length}"
   end
 
   desc "Show I18n keys that are missing in the specified locale YAML file. Defaults to I18n.default_locale, unless LOCALE env is specified"
@@ -68,17 +76,20 @@ namespace :translate do
 
   desc "Show I18n keys that are missing in all locale YAML files."
   task :lost_in_translation_all => :environment do
-    I18n.available_locales.each do |locale|
+    ::Refinery::I18n.locales.keys.each do |locale|
       find_missing_translations(locale)
+      puts "--"
     end
   end
 
-  def key_exist?(key_arr,locale_hash)
+  def key_exist?(key_arr, locale_hash)
     key = key_arr.slice!(0)
     if key
-      key_exist?(key_arr, locale_hash[key]) if (locale_hash && locale_hash.include?(key))
+      key_exist?(key_arr, locale_hash[key]) if locale_hash && locale_hash.include?(key)
     elsif locale_hash
       true
+    else
+      false
     end
   end
 

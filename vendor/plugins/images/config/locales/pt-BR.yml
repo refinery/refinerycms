@@ -6,6 +6,7 @@ pt-BR:
       title: Imagens
   no_file_chosen: Você deve escolher um arquivo para enviar
   file_should_be_smaller_than_max_image_size: Arquivos devem possuir menos de {{max_image_size}} de tamanho
+  file_must_be_these_formats: Sua imagem deve ser uma JPG, PNG ou GIF
   admin:
     images:
       form:
@@ -14,10 +15,10 @@ pt-BR:
         or: ou
         replace_image: Substituir por esta...
         current_image: Imagem atual
+        maximum_image_size: "O tamanho máximo permitido é de {{megabytes}} megabytes."
       index:
-        no_results_found: Desculpe, nenhum resultado encontrado.
         create_new_image: Criar Nova Imagem
-        no_images_yet: Ainda não existem imagens.<br/> Clique em "Criar Nova Imagem" para adicionar sua primeira imagem.
+        no_images_yet: Ainda não existem imagens. Clique em "Criar Nova Imagem" para adicionar sua primeira imagem.
         view:
           switch_to: Trocar para visão em {{view_name}}
           list: lista
@@ -35,8 +36,12 @@ pt-BR:
         delete:
           message: Você tem certeza que quer remover {{title}}?
           title: Remover esta imagem para sempre
+      existing_image:
+        submit_insert: Inserir
+        resize_image: "Redimencionar a imagem? <em>(Recomendado)</em>"
+        size: Tamanho
       insert:
-        existing_image: Imagem Existente
+        existing_image: Do Arquivo
         new_image: Nova Imagem
         previous: Anterior
         next: Próxima

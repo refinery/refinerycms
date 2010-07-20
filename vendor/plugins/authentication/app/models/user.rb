@@ -52,18 +52,20 @@ class User < ActiveRecord::Base
   end
 
   def can_delete?(user_to_delete = self)
-    !user_to_delete.new_record? and 
-      !user_to_delete.has_role?(:superuser) and 
-      Role[:refinery].users.count > 1 and 
+    !user_to_delete.new_record? and
+      !user_to_delete.has_role?(:superuser) and
+      Role[:refinery].users.count > 1 and
       self.id != user_to_delete.id
   end
-  
-  def add_role(role_to_add)
-    roles << Role[role_to_add]
+
+  def add_role(title)
+    raise ArgumentException, "Role should be the title of the role not a role object." if title.is_a?(Role)
+    self.roles << Role[title] unless self.has_role?(title)
   end
-  
-  def has_role?(role)
-    roles.include? Role[role]
+
+  def has_role?(title)
+    raise ArgumentException, "Role should be the title of the role not a role object." if title.is_a?(Role)
+    (role = Role.find_by_title(title.to_s.camelize)).present? and self.roles.collect{|r| r.id}.include?(role.id)
   end
 
 end

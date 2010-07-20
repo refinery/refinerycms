@@ -9,12 +9,22 @@ pt-BR:
         add_a_new_page: Adicionar uma nova página
         update_a_page: Atualizar uma página
         upload_a_image: Enviar uma imagem
+        upload_a_file: Enviar um arquivo
         see_home_page: Ver página inicial
         change_language: Mudar Língua
       recent_activity:
         latest_activity: Atividade Recente
-        see: Ver '{{what}}'
-  updated: atualizado
-  created: criado
+        see: "Ver '{{what}}'"
+        latest_activity_message: "{{kind}} {{what}} foi {{action}}"
+      recent_inquiries:
+        latest_inquiries: Últimas mensagens
+  updated:
+    'with_article "as"': atualizada
+    'with_article "os"': atualizado
+    'with_article "the"': atualizado
+  created:
+    'with_article "as"': criada
+    'with_article "os"': criado
+    'with_article "the"': criado
   ago: "{{time}} atrás"
   see: Ver

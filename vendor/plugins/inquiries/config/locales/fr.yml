@@ -31,8 +31,6 @@ fr:
         closed: "La demande de renseignement '{{inquiry}}' est fermé"
         reopened: "La demande de renseignement '{{inquiry}}' est rouverte"
       index:
-        update_notified: "Mettre à jour qui est notifié"
-        edit_confirmation_email: Modifier le couriel de confirmation
         search_results_for: "Résultat de recherche pour {{query}}"
         open_inquiries: Demande de renseignement ouverte
         no_inquiries: "Hourra! Il n'y a pas de requête ouvertes, vous les avez toutes faites."
@@ -48,6 +46,9 @@ fr:
         actions: Actions
         back_to_all_inquiries: Retourné à la liste de requêtes
         inquiry: Requête
+      submenu:    
+        update_notified: "Mettre à jour qui est notifié"
+        edit_confirmation_email: Modifier le couriel de confirmation
     inquiry_settings:
       update:
         updated: "'{{setting}}' a été mis à jour."

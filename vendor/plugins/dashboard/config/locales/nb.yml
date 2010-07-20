@@ -14,7 +14,11 @@ nb:
       recent_activity:
         latest_activity: Siste aktivitet
         see: Se '{{what}}'
-  updated: oppdatert
-  created: opprettet
+      recent_inquiries:
+        latest_inquiries: Latest inquiries
+  updated:
+    'with_article "the"':  oppdatert
+  created:
+    'with_article "the"': opprettet
   ago: "{{time}} siden"
   see: Se

@@ -26,8 +26,10 @@ nb:
       remember_me: Husk meg
       or: eller
       forgot_password: Jeg har glømt passordet mitt
+      hello_please_sign_in: Hei! Vennligst logg inn
+      sign_in: Logg på
   users:
-    setup_website_name: "Først la oss gi siden et navn. <a href='{{link}}'>Gå her</a> for å redigere siden din sitt navn"
+    setup_website_name: "Først la oss gi siden et navn. <a href='{{link}}' name='{{title}}'>Gå her</a> for å redigere siden din sitt navn"
     signup_disabled: Brukerpåmelding er deaktivert
     new:
       fill_form: Fyll ut skjemaet under med detaljene dine så vi kan få deg startet.
@@ -35,6 +37,16 @@ nb:
     create:
       welcome: Velkommen til Refinery, {{who}}
       signup_complete: Registrering utført!
+    forgot:
+      email_address: E-postadresse
+      enter_email_address: Vennligst skriv inn e-postadressen for kontoen din.
+      reset_password: Tilbakestill passord
+      blank_email: Du har ikke angitt en e-postadresse.
+      email_not_associated_with_account: "Beklager, '{{email}}' er ikke knyttet til noen kontoer. <br/> Er du sikker på at du har skrevet inn riktig e-postadresse?"
+      email_reset_sent: En e-post har blitt sendt til deg med en kobling for å tilbakestille passordet.
+    reset:
+      code_invalid: "Vi beklager, men denne tilbakestille koden er utløpt eller er ugyldig. Hvis du har problemer prøve å kopiere og lime inn URL fra e-posten din i nettleseren, eller starte tilbakestille passordet prosessen."
+      successful: "Passord Vellykket nullstilling for {{email}}"
   user_mailer:
     please_activate: Vennligst aktiver din nye konto
     activated: Din konto er nå aktivert!

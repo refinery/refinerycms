@@ -8,6 +8,7 @@ pt-BR:
         cannot_remove_user_plugin_from_current_user: "Você não pode remover o plugin 'Usuários' a partir da conta atualmente logada."
       form:
         blank_password_keeps_current: Deixar a senha em branco mantém a senha atual
+        enable_all: 'habilitar todos'
       index:
         create_new_user: Criar Novo Usuário
         no_users_yet: Ainda não existem usuários. Clique em "Criar Novo Usuário" para adicionar seu primeiro usuário.
@@ -16,33 +17,45 @@ pt-BR:
         confirm_delete_title: Remover este usuário para sempre
         edit_user: Editar este usuário
         email_user: Enviar e-mail para este usuário
-        preview: ({{who}}) criado em {{created_at}}
+        preview: "({{who}}) criado em {{created_at}}"
   sessions:
     login_successful: Logado com sucesso
-    login_failed: Desculpe, sua senha ou nome de usuário estavam incorretos.
+    login_failed: "Desculpe, sua senha ou nome de usuário estavam incorretos."
     logged_out: Você foi deslogado.
     new:
-      log_in: Entrar
-      cancel: Cancelar
-      or: ou
+      hello_please_sign_in: "Olá! Faça o login"
+      sign_in: Entrar
+      forgot_password: Esqueci minha senha
   users:
-    setup_website_name: "Primeiro vamos dar um nome ao site. <a href='{{link}}'>Clique aqui</a> para editar o nome do seu site"
+    setup_website_name: "Primeiro vamos dar um nome ao site. <a href='{{link}}' name='{{title}}'>Clique aqui</a> para editar o nome do seu site"
     signup_disabled: Cadastro de usuários está desabilitado
     new:
       fill_form: Preencha o formulário abaixo com seus detalhes pra que você possa começar.
       sign_up: Cadastrar
     create:
-      welcome: Bem-vindo ao Refinery, {{who}}
+      welcome: Bem-vindo, {{who}}
       signup_complete: Cadastro completo!
+    forgot:
+      email_address: Endereço de email
+      enter_email_address: "Por favor, preencha o endereço de email da sua conta."
+      reset_password: Esqueci minha senha
+      blank_email: Você não preencheu um endereço de e-mail.
+      email_not_associated_with_account: "Desculpe, '{{email}}' não está associado com alguma conta. <br/>Tem certeza que você digitou o endereço de email correto?"
+      email_reset_sent: Um email foi enviado para você com um link para alterar sua senha.
+    reset:
+      code_invalid: "Lamentamos, mas este código reset expirou ou é inválido. Se você está tendo problemas tente copiar e colar a URL do seu e-mail em seu navegador ou reinicie o processo de mudança de senha."
+      successful: "Senha alterada com sucesso para {{email}}"
+      pick_new_password_for: "Digite uma nova senha para {{email}}"
+      reset_password: Alterar senha
   user_mailer:
-    please_activate: Por favor, ative sua nova conta
+    please_activate: "Por favor, ative sua nova conta"
     activated: Sua conta foi ativada!
     activated_email: "{{who}}, sua conta foi ativada. Agora você pode começar a adicionar seus plugins:"
     account_created: Sua conta foi criada.
     user_name: Nome de usuário {{name}}
     password: Senha {{password}}
     visit_url: "Visite esta url para ativar sua conta:"
-    link_to_reset_your_password: Link para redefinir sua senha
+    link_to_reset_your_password: Link para alterar sua senha
   activerecord:
     errors:
       models:
@@ -53,12 +66,33 @@ pt-BR:
                 email_invalid: deveria se parecer com um endereço de email.
             login:
               error_messages:
-                login_invalid: deveria usar apenas letras, números, espaços e .-_@, por favor.
+                login_invalid: "deveria usar apenas letras, números, espaços e .-_@, por favor."
     models:
       user: Usuário
     attributes:
       user:
         password: Senha
         password_confirmation: Confirmação da senha
-
-
+        plugin_access: Acesso aos plugins
+  authlogic:
+    error_messages:
+      login_blank: não pode estar em branco
+      login_not_found: não é válido
+      login_invalid: "deve usar somente letras, números, espaços e .- _ @ por favor"
+      consecutive_failed_logins_limit_exceeded: "Limite de tentativas de logins falhos excedido, a conta está desabilitada."
+      email_invalid: Deverá ser parecido com um endereço de e-mail
+      password_blank: não pode estar em branco
+      password_invalid: não é válido
+      not_active: Sua conta não está ativa
+      not_confirmed: Sua conta não está confirmada
+      not_approved: Sua conta não está aprovada
+      no_authentication_details: Você não forneceu todos os detalhes para autenticação.
+    models:
+      user_session: Login
+    attributes:
+      user_session:
+        login: Login
+        email: Email
+        password: Senha
+        remember_me: Lembrar de mim
+        incorrect: "Desculpe, seu {{login_field}} ou senha estava errada."

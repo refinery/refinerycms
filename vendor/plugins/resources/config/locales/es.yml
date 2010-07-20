@@ -1,6 +1,6 @@
 es:
   plugins:
-    refinery_resources:
+    refinery_files:
       title: Recursos
   must_choose_file: Debes de selección un archivo a subir
   file_should_be_smaller_than_max_file_size: Los archivos deben de ser menores a {{max_file_size}} en tamaño
@@ -11,6 +11,7 @@ es:
         download_current: Descargar archivo actual
         or: o
         replace: ", remplazarlo con este..."
+        maximum_file_size: "The maximum file size is {{megabytes}} megabytes."
       resource:
         download: Descargar este archivo ({{size}})
         edit: Editar este archivo
@@ -19,8 +20,6 @@ es:
           title: Borrar este archivo completamente
       index:
         upload_new: Subir nuevo archivo
-        search_results: Resultados de la busqueda '{{results}}'
-        search_no_results: Disculpe no se encontro nada en la busqueda.
         no_files_yet: No hay archivos aun. Click "Subir nuevo archivo" para agregar tu primer archivo.
       insert:
         existing_file: Archivos existentes

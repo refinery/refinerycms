@@ -1,29 +1,63 @@
-public/system/*
-public/themes/*
-*.log
+# Rails
+.bundle
+db/*.sqlite3
+log/*.log
 tmp/**/*
-.DS_Store
+
+# Documentation
 doc/api
 doc/app
 doc/*
-config/database.yml
-config/amazon_s3.yml
-config/rackspace_cloudfiles.yml
-nbproject
+.yardoc
+.yardopts
+
+# Public Uploads
+public/system/*
+public/themes/*
+
+# Public Cache
+public/javascripts/cache
+public/stylesheets/cache
+
+# Vendor Cache
+vendor/cache
+
+# Acts as Indexed
 index/**/*
-db/*.sqlite3
+
+# Refinery Specific
 *.tmproj
 *.autobackupbyrefinery.*
 /refinerycms-*.gem
-public/javascripts/cache
-public/stylesheets/cache
-.yardoc/
-refinerycms.gemspec
-vendor/cache
-.bundle
+
+# Mac
+.DS_Store
+
+# NetBeans
+nbproject
+
+# Redcar
+.redcar
+tags
+
+# Rubinius
 *.rbc
+
+# Vim
 *.swp
 *.swo
-*~
-capybara-*html
+
+# RubyMine
 .idea
+
+# Backup
+*~
+
+# Capybara Bug
+capybara-*html
+
+# Development Specific
+# REMOVE IF UPLOADING TO SERVER
+config/database.yml
+config/amazon_s3.yml
+config/rackspace_cloudfiles.yml

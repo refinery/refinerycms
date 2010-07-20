@@ -12,9 +12,9 @@ da:
   page_title: Sidetitel
   pages_advanced_options_include_seo: Vis søgemaskineoptimering under avancerede indstillinger
   preferred_image_view: Standard billedvisning
-  refinery_i18n_enabled: Oversættelser aktiveret
-  refinery_i18n_locale: Aktuelt sprog
-  refinery_i18n_locales: Tilgængelige sprog
+  i18n_translation_enabled: Oversættelser aktiveret
+  i18n_translation_locale: Aktuelt sprog
+  i18n_translation_locales: Tilgængelige sprog
   refinery_menu_cache_action_suffix: Refinery menu cache suffiks
   show_backend_branding: Vis Refinery branding i administrationsinterfacet
   show_contact_privacy_link: Vis link til privatlivspolitik på kontaktformularen

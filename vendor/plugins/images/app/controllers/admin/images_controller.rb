@@ -18,12 +18,7 @@ class Admin::ImagesController < Admin::BaseController
     end
 
     if RefinerySetting.find_or_set(:group_images_by_date_uploaded, true)
-      @grouped_images = []
-      @images.each do |image|
-        key = image.created_at.strftime("%Y-%m-%d")
-        image_group = @grouped_images.collect{|images| images.last if images.first == key }.flatten.compact << image
-        (@grouped_images.delete_if {|i| i.first == key}) << [key, image_group]
-      end
+      @grouped_images = group_by_date(@images)
     end
   end
 
@@ -88,11 +83,15 @@ protected
   end
 
   def paginate_images(conditions={})
-    @images = Image.paginate   :page => (@paginate_page_number ||= params[:page]),
-                               :conditions => {:parent_id => nil}.merge!(conditions),
-                               :order => 'created_at DESC',
-                               :per_page => Image.per_page(from_dialog?),
-                               :include => :thumbnails
+    @images = Image.paginate :page => (@paginate_page_number ||= params[:page]),
+                             :conditions => {:parent_id => nil}.merge!(conditions),
+                             :order => 'created_at DESC',
+                             :per_page => Image.per_page(from_dialog?, !@app_dialog),
+                             :include => :thumbnails
+  end
+
+  def restrict_controller
+    super unless action_name == 'insert'
   end
 
   def store_current_location!

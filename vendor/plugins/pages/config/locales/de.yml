@@ -5,7 +5,7 @@ de:
   admin:
     pages:
       form_advanced_options:
-        title: Title
+        title: Titel
         create_content_section: Inhaltsbereich erstellen
         delete_content_section: Inhaltsbereich löschen
         advanced_options: Erweiterte Optionen
@@ -50,4 +50,4 @@ de:
   activerecord:
     attributes:
       page:
-        skip_to_first_child: "Skip to first child?"
+        skip_to_first_child: "Direkt zum ersten Kindes?"
