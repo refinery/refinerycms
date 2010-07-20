@@ -1,21 +1,26 @@
-## 0.9.7.7 [unreleased]
+## 0.9.7.7 [20 July 2010]
 
 - Fixed an issue in the plugin generator that saw locales being created with singular_name not the interpreted version. [Philip Arndt](http://github.com/parndt) and [Joe Sak](http://github.com/joemsak)
-- Fixed an issue with non-MySQL databases [Lee Irving](http://github.com/magpieuk)
-- Made versioning better [Steven Heidel](http://github.com/stevenheidel)
-- [See full list](http://github.com/resolve/refinerycms/compare/0.9.7.6...master)
+- Fixed an issue with non-MySQL databases. [Lee Irving](http://github.com/magpieuk)
+- Refactored versioning and .gitignore file so that both are easier to follow and use. [Steven Heidel](http://github.com/stevenheidel)
+- Added rake refinery:test_all command to run all tests Refinery has. [Steven Heidel](http://github.com/stevenheidel)
+- Fixed deprecation warnings with translate rake tasks. [Steven Heidel](http://github.com/stevenheidel)
+- Bugfixes, some IE compatibility. [Philip Arndt](http://github.com/parndt)
+- Fix syntax errors in existing resource dialog. [David Jones](http://github.com/djones)
+- Identified and fixed a positioning bug in dialogues [Joe Sak](http://github.com/joemsak) and [Philip Arndt](http://github.com/parndt)
+- [See full list](http://github.com/resolve/refinerycms/compare/0.9.7.6...0.9.7.7)
 
 ## 0.9.7.6 [15 July 2010]
 
 - Bugfixes, fixed some failing tests. [Philip Arndt](http://github.com/parndt)
-- More pt-BR translation keys translated [Kivanio Barbosa](http://github.com/kivanio)
-- Locked gems using Gemfile.lock [David Jones](http://github.com/djones)
+- More pt-BR translation keys translated. [Kivanio Barbosa](http://github.com/kivanio)
+- Locked gems using ``Gemfile.lock``. [David Jones](http://github.com/djones)
 - Changed 'refinery' task to 'refinerycms' as that is our gem's name. [Steven Heidel](http://github.com/stevenheidel)
 - Fixed bug where settings were still considered restricted if NULL. [Steven Heidel](http://github.com/stevenheidel)
 - Ensures that bundler is available before creating an application from a gem. [Philip Arndt](http://github.com/parndt)
-- Application generator (from gem) and application upgrade bin task (from 0.9.6) is now Ruby 1.9.2 compatible. [Philip Arndt](http://github.com/parndt)
+- Application generator (from gem) and application upgrade bin task. (from 0.9.6) is now Ruby 1.9.2 compatible. [Philip Arndt](http://github.com/parndt)
 - bin/refinery-upgrade-from-096-to-097 will no longer allow you to run it if Gemfile is present and thus signifying an upgraded app. [Philip Arndt](http://github.com/parndt)
-- Cleaned up syntax, changed CSS involving dialogues [Philip Arndt](http://github.com/parndt)
+- Cleaned up syntax, changed CSS involving dialogues. [Philip Arndt](http://github.com/parndt)
 - [See full list](http://github.com/resolve/refinerycms/compare/0.9.7.5...0.9.7.6)
 
 ## 0.9.7.5 [08 July 2010]
