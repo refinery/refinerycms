@@ -27,17 +27,18 @@ gem 'will_paginate',   '= 2.3.14', :require => 'will_paginate'
 
 group :test do
   gem 'json_pure', :require => 'json/pure', :git => 'git://github.com/parndt/json.git', :branch => 'master'
-  gem 'rspec'
-  gem 'rspec-rails'
   gem 'factory_girl'
   gem 'test-unit',      '= 1.2.3'
-  gem 'cucumber',       '= 0.8.3'
-  gem 'gherkin',        '= 2.0.2'
-  gem 'cucumber-rails'
   gem 'capybara'
-  gem 'factory_girl'
   gem 'database_cleaner'
+  gem 'cucumber-rails'
+  gem 'cucumber'
+  gem 'rspec'
+  gem 'rspec-rails'
+  gem 'spork' unless RUBY_PLATFORM =~ /mswin|mingw/
   gem 'launchy'
+  gem 'gherkin'
+  gem 'factory_girl'
 end
 #===REFINERY END OF REQUIRED GEMS===
 
