@@ -12,30 +12,34 @@ dependencies:
     group: 
     - :default
     version: = 2.3.8
-  sqlite3-ruby: 
-    group: 
-    - :default
-    version: ">= 0"
-    require: 
-    - sqlite3
   authlogic: 
     group: 
     - :default
     version: = 2.1.5
     require: 
     - authlogic
-  acts_as_indexed: 
+  sqlite3-ruby: 
     group: 
     - :default
-    version: = 0.6.3
+    version: ">= 0"
     require: 
-    - acts_as_indexed
+    - sqlite3
   truncate_html: 
     group: 
     - :default
     version: = 0.3.2
     require: 
     - truncate_html
+  acts_as_indexed: 
+    group: 
+    - :default
+    version: = 0.6.3
+    require: 
+    - acts_as_indexed
+  rspec: 
+    group: 
+    - :test
+    version: ">= 0"
   rspec-rails: 
     group: 
     - :test
@@ -44,26 +48,26 @@ dependencies:
     group: 
     - :test
     version: ">= 0"
-  cucumber-rails: 
-    group: 
-    - :test
-    version: ">= 0"
-  factory_girl: 
-    group: 
-    - :test
-    version: ">= 0"
-  will_paginate: 
-    group: 
-    - :default
-    version: = 2.3.14
-    require: 
-    - will_paginate
   friendly_id: 
     group: 
     - :default
     version: = 3.0.6
     require: 
     - friendly_id
+  will_paginate: 
+    group: 
+    - :default
+    version: = 2.3.14
+    require: 
+    - will_paginate
+  factory_girl: 
+    group: 
+    - :test
+    version: ">= 0"
+  cucumber-rails: 
+    group: 
+    - :test
+    version: ">= 0"
   gherkin: 
     group: 
     - :test
@@ -72,16 +76,16 @@ dependencies:
     group: 
     - :default
     version: ~> 2.12.2
+  cucumber: 
+    group: 
+    - :test
+    version: ">= 0"
   json_pure: 
     group: 
     - :test
     version: ">= 0"
     require: 
     - json/pure
-  cucumber: 
-    group: 
-    - :test
-    version: ">= 0"
   launchy: 
     group: 
     - :test
@@ -174,7 +178,7 @@ specs:
     version: 0.3.2
 - will_paginate: 
     version: 2.3.14
-hash: 7c1600103b4eff8de801a7f04b88b4985784fa53
+hash: c699e69935fd1672a6c75b73bb79ab3a0cd77ec0
 sources: 
 - Git: 
     uri: git://github.com/parndt/json.git
