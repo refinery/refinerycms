@@ -37,7 +37,7 @@ group :test do
   gem 'rspec-rails'
   gem 'spork' unless RUBY_PLATFORM =~ /mswin|mingw/
   gem 'launchy'
-  gem 'gherkin',        '= 2.0.2'
+  gem 'gherkin'
   gem 'factory_girl'
 end
 #===REFINERY END OF REQUIRED GEMS===
