@@ -27,12 +27,12 @@ module Refinery
     class << self
       attr_reader :major, :minor, :tiny, :build
     end
-    
+
     @major = 0
     @minor = 9
     @tiny  = 7
     @build = 7
-    
+
     def self.to_s
       [@major, @minor, @tiny, @build].compact.join('.')
     end
