@@ -30,7 +30,9 @@ group :test do
   gem 'rspec'
   gem 'rspec-rails'
   gem 'factory_girl'
-  gem 'test-unit', '= 1.2.3'
+  gem 'test-unit',      '= 1.2.3'
+  gem 'cucumber',       '= 0.8.3'
+  gem 'gherkin',        '= 2.0.2'
   gem 'cucumber-rails'
   gem 'capybara'
   gem 'factory_girl'
@@ -41,7 +43,7 @@ end
 
 #===REQUIRED FOR REFINERY GEM INSTALL===
 # Leave the gem below disabled (commented out) if you're not using the gem install method.
-# gem 'refinerycms',    '= 0.9.7.6'
+# gem 'refinerycms',    '= 0.9.7.7'
 #===END OF REFINERY GEM INSTALL REQUIREMENTS===
 
 # Bundle gems for certain environments:
