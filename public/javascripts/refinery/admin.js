@@ -10,6 +10,9 @@ $(document).ready(function(){
 });
 
 init_interface = function() {
+  if (parent && parent.document.location.href != document.location.href) {
+    $('body#dialog_container.dialog').addClass('iframed');
+  }
   $('input:submit:not(.button)').addClass('button');
 
   $('.button, #editor_switch a').corner('6px');
