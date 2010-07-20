@@ -3,7 +3,7 @@
 <div>
   <%# TODO translate %>
   <%= link_to "<span id='no_resource_selected' class='nothing_selected' #{"style='display: none;'" if resource.present?}>
-        There is currently no #{description ||= resource} selected, click here to add one.
+        There is currently no #{description ||= 'resource'} selected, click here to add one.
       </span>", insert_admin_resources_url(:dialog => true,
                   :update_resource => 'current_resource',
                   :update_text => 'current_resource_text',
