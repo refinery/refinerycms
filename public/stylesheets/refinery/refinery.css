@@ -1140,6 +1140,9 @@ a#toggle_advanced_options:hover {
   border-bottom: 0px;
   width: auto;
 }
+#dialog_container.dialog.iframed #content .form-actions {
+  position: fixed;
+}
 #existing_image_area {
   padding-top:6px;
 }
