@@ -49,7 +49,7 @@ Mac OS 10.5 or 10.6 users [this shell install script](http://github.com/maddox/m
 #### Install the Gem
 
     gem install refinerycms
-    refinery path/to/project
+    refinerycms path/to/project
 
 #### Or, clone Refinery's GIT repository
 
