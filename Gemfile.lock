@@ -71,7 +71,7 @@ dependencies:
   gherkin: 
     group: 
     - :test
-    version: = 2.0.2
+    version: ">= 0"
   rmagick: 
     group: 
     - :default
@@ -141,11 +141,11 @@ specs:
 - trollop: 
     version: 1.16.2
 - gherkin: 
-    version: 2.0.2
+    version: 2.1.5
 - term-ansicolor: 
     version: 1.0.5
 - cucumber: 
-    version: 0.8.3
+    version: 0.8.5
 - cucumber-rails: 
     version: 0.3.2
 - database_cleaner: 
@@ -178,7 +178,7 @@ specs:
     version: 0.3.2
 - will_paginate: 
     version: 2.3.14
-hash: c699e69935fd1672a6c75b73bb79ab3a0cd77ec0
+hash: e13e5f0bd0d19ed4ef37d5ac10a91d20dae9f0f9
 sources: 
 - Git: 
     uri: git://github.com/parndt/json.git
