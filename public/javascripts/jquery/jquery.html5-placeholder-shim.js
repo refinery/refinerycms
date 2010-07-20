@@ -9,10 +9,11 @@
 				var config = {
 					color: '#888',
 					cls: '',
-					lr_padding:4
+					lr_padding:4,
+					selector: 'input[placeholder], textarea[placeholder]'
 				};
 				$.extend(config,opts);
-				!this.browser_supported() && $('input[placeholder]')._placeholder_shim(config);
+				!this.browser_supported() && $(config.selector)._placeholder_shim(config);
 			}
 	}});
 
@@ -48,8 +49,7 @@
 						textAlign: 'left',
 						color: config.color,
 						cursor: 'text',
-						fontSize: $(this).css('font-size'),
-						lineHeight: $(this).css('height')
+						fontSize: $(this).css('font-size')
 					})
 					.css(calcPositionCss(this))
 					.attr('for', this.id)
@@ -77,5 +77,7 @@
 })(jQuery);
 
 $(document).ready(function() {
-  $.placeholder.shim();
+  if ($.placeholder) {
+    $.placeholder.shim();
+  }
 });

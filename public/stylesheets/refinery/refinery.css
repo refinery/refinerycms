@@ -1131,7 +1131,7 @@ a#toggle_advanced_options:hover {
   position: relative;
 }
 #dialog_container #content .form-actions, .ui-dialog .form-actions, .dialog_container .form-actions {
-  position: fixed;
+  position: absolute;
   bottom: 0px;
   left: 0px;
   right: 0px;
@@ -1139,6 +1139,9 @@ a#toggle_advanced_options:hover {
   border-left: 0px;
   border-bottom: 0px;
   width: auto;
+}
+#dialog_container.dialog.iframed #content .form-actions {
+  position: fixed;
 }
 #existing_image_area {
   padding-top:6px;
