@@ -35,8 +35,8 @@ group :test do
   gem 'cucumber'
   gem 'rspec'
   gem 'rspec-rails'
-  gem 'spork'
-  gem 'launchy' unless RUBY_PLATFORM =~ /mswin|mingw/
+  gem 'spork' unless RUBY_PLATFORM =~ /mswin|mingw/
+  gem 'launchy'
   gem 'gherkin',        '= 2.0.2'
   gem 'factory_girl'
 end
