@@ -1,6 +1,6 @@
 da:
   plugins:
-    refinery_resources:
+    refinery_files:
       title: Filer
   must_choose_file: Du skal vælge en fil, der skal uploades
   file_should_be_smaller_than_max_file_size: Filer må højest være på {{max_file_size}}
@@ -11,16 +11,15 @@ da:
         download_current: Download filen
         or: eller
         replace: " erstat den med denne fil..."
+        maximum_file_size: "The maximum file size is {{megabytes}} megabytes."
       resource:
         download: Download fil ({{size}})
         edit: Redigér fil
         delete:
-          message: Er du sikker på du vil slette filen '{{title}}'?
+          message: "Er du sikker på du vil slette filen '{{title}}'?"
           title: Slet fil
       index:
         upload_new: Upload en fil
-        search_results: Søgeresultat
-        search_no_results: Desværre, din søgning gav ingen resultater.
         no_files_yet: Der er ingen filer endnu. Klik på "Upload fil" for at oprette den første.
       insert:
         existing_file: Eksisterende fil

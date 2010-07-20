@@ -1,7 +1,7 @@
 es:
   plugins:
     refinery_dashboard:
-      title: Dashboard
+      title: Salpicadero
   admin:
     dashboard:
       index:
@@ -14,7 +14,15 @@ es:
       recent_activity:
         latest_activity: Ultima actividad
         see: Vee '{{what}}'
-  updated: actualizado
-  created: creado
+      recent_inquiries:
+        latest_inquiries: Latest inquiries
+  updated:
+    'with_article "las"':  actualizadas
+    'with_article "los"':  actualizado
+    'with_article "the"':  actualizado
+  created:
+    'with_article "las"':  creadas
+    'with_article "los"':  creados
+    'with_article "the"':  creado
   ago: "hace {{time}}"
   see: Ver

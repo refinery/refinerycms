@@ -24,7 +24,10 @@ config.middleware.use "ThemeServer"
     end
 
     # Set up menu caching for this theme or lack thereof
-    RefinerySetting[:refinery_menu_cache_action_suffix] = "#{"#{theme}_" if theme.present?}site_menu" if RefinerySetting.table_exists?
+    if RefinerySetting.table_exists? and
+        RefinerySetting[:refinery_menu_cache_action_suffix] != (suffix = "#{"#{theme}_" if theme.present?}site_menu")
+      RefinerySetting[:refinery_menu_cache_action_suffix] = suffix
+    end
   end
   protected :attach_theme_to_refinery
 

@@ -1488,7 +1488,7 @@ WYMeditor.editor.prototype.format_block = function(selected) {
 
   var container = selected || wym.selected() || $(wym._iframe).contents().find('body').get(0);
   var name = container.tagName.toLowerCase();
-  
+
   //fix forbidden main containers
   if($.inArray(name, ['strong', 'b', 'em', 'i', 'sub', 'sup', 'a']) > -1) {
     name = container.parentNode.tagName.toLowerCase();
@@ -4579,7 +4579,7 @@ WYMeditor.WymClassMozilla.prototype.enableDesignMode = function() {
       try {
         this._doc.designMode = "on";
         this._doc.execCommand("styleWithCSS", '', false);
-      } 
+      }
       catch(e) { }
     }
 };
@@ -4972,7 +4972,7 @@ WYMeditor.WymClassSafari.prototype.keydown = function(e) {
   if(e.ctrlKey){
     //'this' is the doc
     var wym = WYMeditor.INSTANCES[this.title];
-    
+
     if(e.keyCode == 66) {
       //CTRL+b => STRONG
       wym._exec(WYMeditor.BOLD);
@@ -5011,7 +5011,7 @@ WYMeditor.WymClassSafari.prototype.keyup = function(e) {
   if(e.keyCode == 13 && e.shiftKey) {
     wym._exec('InsertLineBreak');
   }
-  else if(($.inArray(e.keyCode, [8, 17, 46, 224]) == -1) && !e.metaKey && !e.ctrlKey) 
+  else if(($.inArray(e.keyCode, [8, 17, 46, 224]) == -1) && !e.metaKey && !e.ctrlKey)
   {
     //NOT BACKSPACE, NOT DELETE, NOT CTRL, NOT COMMAND
     //text nodes replaced by P
@@ -5023,7 +5023,7 @@ WYMeditor.WymClassSafari.prototype.keyup = function(e) {
     if($.inArray(name, ['strong', 'b', 'em', 'i', 'sub', 'sup', 'a', 'span']) > -1) {
       name = container.parentNode.tagName.toLowerCase();
     }
-    
+
     if(name == WYMeditor.BODY || name == WYMeditor.DIV) {
       wym._exec(WYMeditor.FORMAT_BLOCK, WYMeditor.P); //fix #110 for DIV
     }

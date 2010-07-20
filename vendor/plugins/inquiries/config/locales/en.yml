@@ -5,6 +5,7 @@ en:
   activerecord:
     models:
       inquiry: Inquiry
+      inquiry_setting: Inquiry Setting
     attributes:
       inquiry:
         to: To
@@ -28,14 +29,19 @@ en:
         remove_inquiry: "Are you sure you want to delete the inquiry from '{{name}}'?"
         title: Remove this inquiry forever.
         said: said
+        mark_as_spam: Mark as spam
+        mark_as_ham: Move to inbox
       toggle_status:
         closed: "Inquiry '{{inquiry}}' is closed"
         reopened: "Inquiry '{{inquiry}}' is reopened"
-      index:
+      submenu:
         update_notified: Update who gets notified
         edit_confirmation_email: Edit confirmation email
+      index:
         search_results_for: Search results for {{query}}
         no_inquiries: You have not received any inquiries yet.
+      spam:
+        no_spam: Hooray! You don't have any spam.
       show:
         details: Details
         click_to_email: Click to email
@@ -45,7 +51,10 @@ en:
         age: Age
         actions: Actions
         back_to_all_inquiries: Back to all Inquiries
+        spam: Spam
+        spam_yes: 'yes'
         inquiry: Inquiry
+        title: Remove this inquiry forever.
     inquiry_settings:
       update:
         updated: "'{{setting}}' was successfully updated."

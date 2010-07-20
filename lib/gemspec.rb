@@ -1,11 +1,11 @@
 #!/usr/bin/env ruby
 require File.expand_path('../../vendor/plugins/refinery/lib/refinery.rb', __FILE__)
-files = %w( .gitignore .yardopts Gemfile Rakefile changelog.md readme.md license.md todo.md public/.htaccess config.ru )
+files = %w( .gitignore .yardopts Gemfile Rakefile *.md public/.htaccess config.ru ).map { |file| Dir[file] }.flatten
 %w(app bin config db features lib public script test themes vendor).sort.each do |dir|
   files += Dir.glob("#{dir}/**/*")
 end
 
-files.reject!{|f| !File.exist?(f) or f =~ /^(public\/system)|(config\/database.yml$)|(.*\/cache)|(.+\.rbc)/}
+files.reject!{|f| !File.exist?(f) or f =~ /^(public\/system)|(config\/database.yml$)|(.*\/cache)|(db\/.*\.sqlite3?)|(.+\.rbc)/}
 
 gemspec = <<EOF
 Gem::Specification.new do |s|
@@ -18,7 +18,7 @@ Gem::Specification.new do |s|
   s.homepage          = %q{http://refinerycms.com}
   s.authors           = %w(Resolve\\ Digital David\\ Jones Philip\\ Arndt)
   s.require_paths     = %w(lib)
-  s.executables       = %w(refinery refinery-update-core)
+  s.executables       = %w(#{Dir.glob('bin/*').map{|d| d.gsub('bin/','')}.join(' ')})
 
   s.files             = [
     '#{files.join("',\n    '")}'
@@ -29,7 +29,4 @@ Gem::Specification.new do |s|
 end
 EOF
 
-if File.exist?(file = "refinerycms.gemspec")
-  File.delete(file)
-end
-File.open(file, 'w') { |f| f.puts gemspec }
+File.open(File.expand_path("../../refinerycms.gemspec", __FILE__), 'w').puts(gemspec)

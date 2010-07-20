@@ -49,7 +49,7 @@ Mac OS 10.5 or 10.6 users [this shell install script](http://github.com/maddox/m
 #### Install the Gem
 
     gem install refinerycms
-    refinery path/to/project
+    refinerycms path/to/project
 
 #### Or, clone Refinery's GIT repository
 
@@ -110,7 +110,7 @@ You will be prompted to setup your first user.
 ## Help and Developer Documentation
 
 * [Tutorial Site](http://resolve.github.com/refinerycms)
-* [Google Group Discussion](http://groups.google.com/group/refinery-cms)
+* [Google Group Discussion](http://group.refinerycms.org)
 * [Developer/API documentation](http://api.refinerycms.org)
 * [GitHub repository](http://github.com/resolve/refinerycms)
 * [Developer video - 26 mins](http://refinerycms.com/pages/for-developers)
@@ -160,10 +160,7 @@ This will pull in all of the updated files in the project and may result in some
 
 * Collect inquiries from a contact form
 * Manage your inquiries and be notified when new ones come in
-
-### [News](http://github.com/resolve/refinerycms-news)
-
-* Post news about your company and update your visitors
+* Checks new inquiries for spam
 
 ### [Settings](http://github.com/resolve/refinerycms/blob/master/vendor/plugins/refinery_settings/readme.md)
 
@@ -199,9 +196,10 @@ If you have installed Refinery using GIT (described above in step 1 of installin
 
     rake test
 
-### What about a portfolio?
+### Popular Plugins
 
-Check out the [portfolio plugin gem](http://github.com/resolve/refinerycms-portfolio)
+* [Portfolio](http://github.com/resolve/refinerycms-portfolio) - manage groups of images like an image gallery.
+* [News](http://github.com/resolve/refinerycms-news) - post and manage news items.
 
 ## License
 

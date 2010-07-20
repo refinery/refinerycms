@@ -8,16 +8,14 @@ fr:
     menu:
       reorder_menu: Réorganiser le menu
       reorder_menu_done: "J'ai fini de réorganiser le menu"
-    log_out: Déconnexion
     search: Rechercher
     search_submit: Envoyer
     search_results_for: "Résultat de recherche pour '{{query}}'"
-    no_results_found: "Désolé, aucun résultat trouvé"
+    search_no_results: "Désolé, aucun résultat trouvé."
   refinery:
     other: "Other {{what}}"
     reorder: "Reordonner {{what}}"
     reorder_done: "Réorganisation terminé"
-    search_no_results: "Désolé, aucun résultat."
     crudify:
       created: "{{what}} a été créé avec succès"
       updated: "{{what}}a été mis à jours avec succès"
@@ -54,6 +52,7 @@ fr:
     message:
       close: Fermer
     site_bar:
+      log_out: Déconnexion
       switch_to_your_website: Passer à votre site web
       switch_to_your_website_editor: Passer à votre éditeur de site web
   activerecord:

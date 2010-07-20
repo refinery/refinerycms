@@ -13,8 +13,12 @@ class ImageTest < ActiveSupport::TestCase
   end
 
   def test_per_page
-    assert_equal 12, Image.per_page(dialog = true)
-    assert_equal 20, Image.per_page # dialog = false
+    assert_equal 12, Image.per_page(dialog = true, has_size_options = true) # explicit all true
+    assert_equal 18, Image.per_page(dialog = true) # implicit has_size_options = false
+    assert_equal 18, Image.per_page(dialog = true, has_size_options = false) # explicit has_size_options = false
+    assert_equal 20, Image.per_page # implicit dialog = false
+    assert_equal 20, Image.per_page(dialog = false) # explicit dialog = false
+    assert_equal 20, Image.per_page(dialog = false, has_size_options = true) # explicit all = false
   end
 
   def test_attachment_fu_options

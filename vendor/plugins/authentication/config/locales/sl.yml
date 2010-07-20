@@ -22,15 +22,16 @@ sl:
     login_failed: Oprostite, vaše geslo ali uporabniško ime je bilo napačno.
     logged_out: Uspešno ste se odjavili.
     new:
+      hello_please_sign_in: "Pozdravljeni! Prosimo prijavite se."
       login: Uporabniško ime
-      log_in: Prijavi se
+      sign_in: Prijavi se
       cancel: Prekliči
       password: Geslo
       remember_me: Zapomni se me
       or: ali
       forgot_password: Pozabil sem geslo
   users:
-    setup_website_name: "Najprej morate poimenovati stran. <a href='{{link}}'>Pojdite sem</a> kjer lahko uredite naslov vaše strani."
+    setup_website_name: "Najprej morate poimenovati stran. <a href='{{link}}' name='{{title}}'>Pojdite sem</a> kjer lahko uredite naslov vaše strani."
     signup_disabled: Registracija uporabnikov je onemogočena
     new:
       fill_form: Izpolnite spodnji obrazec z vašimi podatki.
@@ -71,8 +72,8 @@ sl:
       user_session: SejaUporabnika
     attributes:
       user_session:
-        login: uporabniško ime
-        email: email
-        password: geslo
+        login: Uporabniško ime
+        email: Email
+        password: Geslo
         remember_me: zapomni se me
         incorrect: "Oprostite, {{login_field}} ali geslo je bilo napačno."

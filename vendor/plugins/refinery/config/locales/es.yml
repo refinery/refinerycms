@@ -8,16 +8,14 @@ es:
     menu:
       reorder_menu: Re-ordenar menu
       reorder_menu_done: "He terminado de re ordenar el menu"
-    log_out: "Cerrar sesión"
     search: Buscar
     search_submit: Aceptar
     search_results_for: "Resultados de busqueda de '{{query}}'"
-    no_results_found: "Lo sentimos, no se encontraron resultados"
+    search_no_results: "Lo sentimos, no se encontraron resultados"
   refinery:
     other: "Otra {{what}}"
     reorder: "Re-ordenar {{what}}"
     reorder_done: "Listo el Re-ordenado {{what}}"
-    search_no_results: "Lo sentimos, no se encontraron resultados."
     crudify:
       created: "{{what}} fue creado exitosamente"
       updated: "{{what}} fue creado exitosamente"
@@ -27,6 +25,8 @@ es:
       view_public_site: Ver Sitio Publico
       welcome_to_refinery: Bienvenido a Refinery
   shared:
+    site_bar:
+      log_out: "Cerrar sesión"
     admin:
       message:
         close: Cerrar

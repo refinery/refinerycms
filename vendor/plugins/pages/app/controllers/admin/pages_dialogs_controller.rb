@@ -1,4 +1,4 @@
-class Admin::PageDialogsController < Admin::DialogsController
+class Admin::PagesDialogsController < Admin::DialogsController
 
   require 'net/http'
 
@@ -10,7 +10,9 @@ class Admin::PageDialogsController < Admin::DialogsController
                              :order => 'position ASC',
                              :per_page => Page.per_page(dialog=true)
 
-    @resources = Resource.paginate :page => params[:resource_page], :order => 'created_at DESC', :per_page => Resource.per_page(dialog=true)
+    @resources = Resource.paginate :page => params[:resource_page],
+                                   :order => 'created_at DESC',
+                                   :per_page => Resource.per_page(dialog=true)
 
     # web address link
     @web_address_text = "http://"
@@ -51,12 +53,12 @@ class Admin::PageDialogsController < Admin::DialogsController
 
       response = http.request request
 
-      render :json => case response
+      render :json => {:result => case response
       when Net::HTTPSuccess, Net::HTTPRedirection
-        {:result => 'success'}
+        'success'
       else
-        {:result => 'failure'}
-      end
+        'failure'
+      end }
     end
 
     rescue

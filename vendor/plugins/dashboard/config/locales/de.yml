@@ -1,7 +1,7 @@
 de:
   plugins:
     refinery_dashboard:
-      title: Dashboard
+      title: Armaturenbrett
   admin:
     dashboard:
       index:
@@ -14,7 +14,11 @@ de:
       recent_activity:
         latest_activity: Letzte Aktivität
         see: "'{{what}}' ansehen"
-  updated: aktualisiert
-  created: erstellt
+      recent_inquiries:
+        latest_inquiries: Latest inquiries
+  updated:
+    'with_article "the"':  aktualisiert
+  created:
+    'with_article "the"':  erstellt
   ago: "vor {{time}}"
   see: Ansehen

@@ -44,12 +44,7 @@ class Admin::ResourcesController < Admin::BaseController
     end
 
     if RefinerySetting.find_or_set(:group_resources_by_date_uploaded, true)
-      @grouped_resources = []
-      @resources.each do |resource|
-        key = resource.created_at.strftime("%Y-%m-%d")
-        resource_group = @grouped_resources.collect{|resources| resources.last if resources.first == key }.flatten.compact << resource
-        (@grouped_resources.delete_if {|i| i.first == key}) << [key, resource_group]
-      end
+      @grouped_resources = group_by_date(@resources)
     end
   end
 
@@ -82,6 +77,10 @@ protected
     @callback = params[:callback]
     @conditions = params[:conditions]
     @current_link = params[:current_link]
+  end
+
+  def restrict_controller
+    super unless action_name == 'insert'
   end
 
   def paginate_resources(conditions={})

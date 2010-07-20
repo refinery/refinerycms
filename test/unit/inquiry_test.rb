@@ -7,7 +7,7 @@ class InquiryTest < ActiveSupport::TestCase
   def setup
     @new_inquiry = Inquiry.new
     @bad_email_inquiry = Inquiry.new(:email => "foo.bar.com", :name => "Dave")
-    @valid_inquiry = Inquiry.new(:email => "foo@bar.com", :name => "Dave")
+    @valid_inquiry = Inquiry.new(:email => "foo@bar.com", :name => "Dave", :message => "msg")
     @full_valid_inquiry = Inquiry.new(:email => "foo@bar.com", :name => "Dave", :phone => "3232332", :message => "message")
   end
 
@@ -18,12 +18,12 @@ class InquiryTest < ActiveSupport::TestCase
     assert_equal I18n.translate("activerecord.errors.messages.invalid"), @new_inquiry.errors.on('email')
 
     assert_nil @new_inquiry.errors.on('phone')
-    assert_nil @new_inquiry.errors.on('message')
+    assert_equal I18n.translate("activerecord.errors.messages.blank"), @new_inquiry.errors.on('message')
 
     assert !@bad_email_inquiry.save
     assert_equal I18n.translate("activerecord.errors.messages.invalid"), @bad_email_inquiry.errors.on('email')
     assert_nil @bad_email_inquiry.errors.on('phone')
-    assert_nil @bad_email_inquiry.errors.on('message')
+    assert_equal I18n.translate("activerecord.errors.messages.blank"), @bad_email_inquiry.errors.on('message')
     assert_nil @bad_email_inquiry.errors.on('name')
 
     assert @valid_inquiry.save

@@ -14,7 +14,11 @@ fr:
       recent_activity:
         latest_activity: Activitées récente
         see: Voir '{{what}}'
-  updated: a été mis à jour
-  created: a été créer
+      recent_inquiries:
+        latest_inquiries: Latest inquiries
+  updated:
+    'with_article "the"':  a été mis à jour
+  created:
+    'with_article "the"':  a été créer
   ago: "Il y a {{time}}"
   see: Voir

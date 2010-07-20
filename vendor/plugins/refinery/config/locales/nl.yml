@@ -8,22 +8,21 @@ nl:
     menu:
       reorder_menu: Wijzig menu volgorde
       reorder_menu_done: Ik ben klaar met het wijzigen van de volgorde
-    log_out: Afmelden
     search: Zoek naar
     search_submit: Zoek
     search_results_for: "Zoekresultaten voor '{{query}}'"
-    no_results_found: "Excuses, geen resultaten gevonden"
+    search_no_results: "Excuses, geen resultaten gevonden"
   refinery:
     other: "Ander {{what}}"
     reorder: "Wijzig volgorde huidige {{what}}"
     reorder_done: "Klaar met wijzigen van de volgorde van {{what}}"
-    search_no_results: "Excuses, geen resultaten gevonden"
     crudify:
       created: "{{what}} is met success aangemaakt"
       updated: "{{what}} is met success aangepast"
       destroyed: "{{what}} is met success verwijderd"
   shared:
     site_bar:
+      log_out: Afmelden
       switch_to_your_website: Ga naar de website
       switch_to_your_website_editor: Ga terug naar de editor
     admin:

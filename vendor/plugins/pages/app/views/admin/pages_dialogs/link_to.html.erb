@@ -27,14 +27,14 @@
           <ul class="link_list">
             <%= render :partial => "page_link", :collection => @pages, :locals => {:child => false} %>
           </ul>
+          <%= will_paginate @pages,
+                            :param_name => :page,
+                            :previous_label => '&laquo;',
+                            :next_label => '&raquo;',
+                            :renderer => Refinery::LinkRenderer,
+                            :id => 'pages_paginate' %>
         </div>
       </div>
-      <%= will_paginate @pages,
-                        :param_name => :page,
-                        :previous_label => '&laquo; Previous',
-                        :next_label => 'Next &raquo;',
-                        :renderer => Refinery::LinkRenderer,
-                        :url => {:paginating => "your_page"} %>
     </div>
     <div id='web_address_area' <%= "style='display: none'" unless @web_address_area_selected %> class='dialog_area'>
       <div id='web_address_content'>
@@ -90,15 +90,16 @@
         </ol>
       </div>
     </div>
-    <div id="resource_file_area" <%= "style='display:none'" unless @resource_area_selected %> class="dialog_area">
+    <div id="resource_file_area"<%= " style='display:none'" unless @resource_area_selected %> class="dialog_area">
       <div id='pages_list'>
         <ul class="link_list">
           <% @resources.each do |resource| -%>
             <% resource_linked = (resource.public_filename == params[:current_link]) unless params[:current_link].blank? %>
             <li<%= " class='linked'" if @resource_linked %>>
-              <%= link_to resource.title, resource.public_filename,
+              <%= link_to "#{resource.title}.#{resource.filename.split('.')[1]}", resource.public_filename,
                           :title => t('.your_resource.link_to_this_resource'),
-                          :rel => resource.title, :class => 'page_link' %>
+                          :rel => resource.title,
+                          :class => "page_link #{resource.filename.split('.')[1]}" %>
             </li>
           <% end %>
         </ul>
@@ -107,7 +108,8 @@
                           :previous_label => '&laquo;',
                           :next_label => '&raquo;',
                           :renderer => Refinery::LinkRenderer,
-                          :url => {:paginating => "resource_file"} %>
+                          :url => {:paginating => "resource_file"},
+                          :id => 'resouces_paginate' %>
       </div>
     </div>
   </div>

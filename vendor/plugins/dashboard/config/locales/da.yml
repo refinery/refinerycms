@@ -14,7 +14,11 @@ da:
       recent_activity:
         latest_activity: Seneste aktiviteter
         see: Vis '{{what}}'
-  updated: opdateret
-  created: oprettet
+      recent_inquiries:
+        latest_inquiries: Latest inquiries
+  updated:
+    'with_article "the"':  opdateret
+  created:
+    'with_article "the"':  oprettet
   ago: "{{time}} siden"
   see: Vis

@@ -1,6 +1,6 @@
 pt-BR:
   plugins:
-    refinery_resources:
+    refinery_files:
       title: Recursos
   must_choose_file: Você deve escolher um arquivo para enviar
   file_should_be_smaller_than_max_file_size: "Arquivos devem ser menores de {{max_file_size}} em tamanho"
@@ -11,6 +11,7 @@ pt-BR:
         download_current: Baixar arquivo atual
         or: ou
         replace: ", substituir por este..."
+        maximum_file_size: "O tamanho máximo permitido é de {{megabytes}} megabytes."
       resource:
         download: Baixar este arquivo ({{size}})
         edit: Editar este arquivo
@@ -19,15 +20,14 @@ pt-BR:
           title: Remover este arquivo para sempre
       index:
         upload_new: Enviar Novo Arquivo
-        search_results: Resultados da busca por '{{results}}'
-        search_no_results: Desculpe, nenhum resultado encontrado.
         no_files_yet: Ainda não existem arquivos. Clique em "Enviar Novo Arquivo" para adicionar seu primeiro arquivo.
       insert:
-        existing_file: Arquivo Existente
+        existing: Arquivo Existente
         new: Novo Arquivo
-        link_to_resource: 'Link para este Recurso'
         previous: Anterior
         next: Próximo
-        submit_insert: Inserir
         or: ou
         cancel: Cancelar
+      existing_resource:
+        link_to_resource: Link para este Recurso
+        submit_insert: Inserir

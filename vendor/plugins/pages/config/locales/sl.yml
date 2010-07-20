@@ -3,7 +3,7 @@ sl:
     refinery_pages:
       title: Strani
   admin:
-    page_dialogs:
+    pages_dialogs:
       not_allowed: Nimate pravic za dostop do te funkcionalnosti.
       page_link:
         link_to_this_page: Naredi povezavo do te strani
@@ -34,7 +34,7 @@ sl:
         view_live: Poglej si to stran v živo <br/><em>(odpre se v novem oknu)</em>
         edit_this_page: Uredi to stran
         confirm_delete_page_title: Odstrani to stran
-        confirm_delete_page_message: Ali ste prepričani da želite odstraniti stran '{{title}}'?
+        confirm_delete_page_message: "Ali ste prepričani da želite odstraniti stran '{{title}}'?"
         hidden: skrito
         draft: osnutek
       form_advanced_options:
