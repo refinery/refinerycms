@@ -11,7 +11,7 @@ def setup_environment
 
   if RUBY_PLATFORM =~ /mswin/
     puts "Win32 users may experience cucumber/formatter/unicode errors.  Requirement ommited, see: /features/support/env.rb to re-add."
- else 
+  else
     require 'cucumber/formatter/unicode' # Remove this line if you don't want Cucumber Unicode support
   end
   require 'cucumber/rails/world'
