@@ -9,7 +9,9 @@ def setup_environment
   ENV["RAILS_ENV"] ||= "cucumber"
   require File.expand_path(File.dirname(__FILE__) + '/../../config/environment')
 
-  unless RUBY_PLATFORM !=~ /mswin|mingw/
+  if RUBY_PLATFORM =~ /mswin/
+    puts "Win32 users may experience cucumber/formatter/unicode errors.  Requirement ommited, see: /features/support/env.rb to re-add."
+ else 
     require 'cucumber/formatter/unicode' # Remove this line if you don't want Cucumber Unicode support
   end
   require 'cucumber/rails/world'
@@ -69,7 +71,7 @@ def each_run
   end
 end
 
-if RUBY_PLATFORM !=~ /mswin|mingw/
+unless RUBY_PLATFORM =~ /mswin|mingw/
   require 'spork'
 
   Spork.prefork do
