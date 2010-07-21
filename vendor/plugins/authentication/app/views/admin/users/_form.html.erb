@@ -10,12 +10,12 @@
   </div>
   <div class='field'>
     <%= f.label :password %>
-    <%= f.password_field :password %>
+    <%= f.password_field :password, :autocomplete => 'off' %>
     <%= "<br /><span class='preview'>#{t('.blank_password_keeps_current')}</span>" unless @user.new_record? %>
   </div>
   <div class='field'>
     <%= f.label :password_confirmation %>
-    <%= f.password_field :password_confirmation %>
+    <%= f.password_field :password_confirmation, :autocomplete => 'off' %>
   </div>
   <div class='field plugin_access'>
     <span class='label_with_help'>
