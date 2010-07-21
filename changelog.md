@@ -1,3 +1,8 @@
+## 0.9.7.8 [UNRELEASED]
+
+- Refactored Amazon S3 and gem installation to make it easier to install on Heroku. [Steven Heidel](http://github.com/stevenheidel)
+- [See full list](http://github.com/resolve/refinerycms/compare/0.9.7.7...0.9.7.8)
+
 ## 0.9.7.7 [20 July 2010]
 
 - Fixed an issue in the plugin generator that saw locales being created with singular_name not the interpreted version. [Philip Arndt](http://github.com/parndt) and [Joe Sak](http://github.com/joemsak)
