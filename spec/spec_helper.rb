@@ -1,4 +1,5 @@
 unless RUBY_PLATFORM =~ /mswin|mingw/
+  require 'rubygems'
   require 'spork'
 
   Spork.prefork do
