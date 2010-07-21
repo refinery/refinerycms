@@ -27,21 +27,24 @@ gem 'will_paginate',   '= 2.3.14', :require => 'will_paginate'
 
 group :test do
   gem 'json_pure', :require => 'json/pure', :git => 'git://github.com/parndt/json.git', :branch => 'master'
+  gem 'factory_girl'
+  gem 'test-unit',      '= 1.2.3'
+  gem 'capybara'
+  gem 'database_cleaner'
+  gem 'cucumber-rails'
+  gem 'cucumber'
   gem 'rspec'
   gem 'rspec-rails'
-  gem 'factory_girl'
-  gem 'test-unit', '= 1.2.3'
-  gem 'cucumber-rails'
-  gem 'capybara'
-  gem 'factory_girl'
-  gem 'database_cleaner'
+  gem 'spork' unless RUBY_PLATFORM =~ /mswin|mingw/
   gem 'launchy'
+  gem 'gherkin'
+  gem 'factory_girl'
 end
 #===REFINERY END OF REQUIRED GEMS===
 
 #===REQUIRED FOR REFINERY GEM INSTALL===
 # Leave the gem below disabled (commented out) if you're not using the gem install method.
-# gem 'refinerycms',    '= 0.9.7.6'
+# gem 'refinerycms',    '= 0.9.7.7'
 #===END OF REFINERY GEM INSTALL REQUIREMENTS===
 
 # Bundle gems for certain environments:
