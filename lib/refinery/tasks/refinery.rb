@@ -10,7 +10,7 @@ if $refinery_gem_plugin_lib_paths.present?
   paths = $refinery_gem_plugin_lib_paths.reject do |path|
     path =~ /^#{Rails.root.join('vendor', 'plugins')}/
   end
-  
+
   extra_rake_tasks << paths.collect {|path| Dir[File.join(%W(#{path} tasks ** *.rake))].sort}
 end
 

@@ -4,38 +4,42 @@ dependencies:
     group: 
     - :test
     version: = 1.2.3
+  spork: 
+    group: 
+    - :test
+    version: ">= 0"
   rails: 
     group: 
     - :default
     version: = 2.3.8
-  sqlite3-ruby: 
-    group: 
-    - :default
-    version: ">= 0"
-    require: 
-    - sqlite3
   authlogic: 
     group: 
     - :default
     version: = 2.1.5
     require: 
     - authlogic
-  rspec: 
-    group: 
-    - :test
-    version: ">= 0"
-  acts_as_indexed: 
+  sqlite3-ruby: 
     group: 
     - :default
-    version: = 0.6.3
+    version: ">= 0"
     require: 
-    - acts_as_indexed
+    - sqlite3
   truncate_html: 
     group: 
     - :default
     version: = 0.3.2
     require: 
     - truncate_html
+  acts_as_indexed: 
+    group: 
+    - :default
+    version: = 0.6.3
+    require: 
+    - acts_as_indexed
+  rspec: 
+    group: 
+    - :test
+    version: ">= 0"
   rspec-rails: 
     group: 
     - :test
@@ -44,30 +48,38 @@ dependencies:
     group: 
     - :test
     version: ">= 0"
-  cucumber-rails: 
-    group: 
-    - :test
-    version: ">= 0"
-  factory_girl: 
-    group: 
-    - :test
-    version: ">= 0"
-  will_paginate: 
-    group: 
-    - :default
-    version: = 2.3.14
-    require: 
-    - will_paginate
   friendly_id: 
     group: 
     - :default
     version: = 3.0.6
     require: 
     - friendly_id
+  will_paginate: 
+    group: 
+    - :default
+    version: = 2.3.14
+    require: 
+    - will_paginate
+  factory_girl: 
+    group: 
+    - :test
+    version: ">= 0"
+  cucumber-rails: 
+    group: 
+    - :test
+    version: ">= 0"
+  gherkin: 
+    group: 
+    - :test
+    version: ">= 0"
   rmagick: 
     group: 
     - :default
     version: ~> 2.12.2
+  cucumber: 
+    group: 
+    - :test
+    version: ">= 0"
   json_pure: 
     group: 
     - :test
@@ -116,8 +128,10 @@ specs:
 - json_pure: 
     version: 1.4.3
     source: 0
+- rubyzip: 
+    version: 0.9.4
 - selenium-webdriver: 
-    version: 0.0.24
+    version: 0.0.26
 - capybara: 
     version: 0.3.9
 - configuration: 
@@ -127,11 +141,11 @@ specs:
 - trollop: 
     version: 1.16.2
 - gherkin: 
-    version: 2.0.2
+    version: 2.1.5
 - term-ansicolor: 
     version: 1.0.5
 - cucumber: 
-    version: 0.8.3
+    version: 0.8.5
 - cucumber-rails: 
     version: 0.3.2
 - database_cleaner: 
@@ -145,7 +159,7 @@ specs:
 - hoe: 
     version: 2.6.1
 - launchy: 
-    version: 0.3.5
+    version: 0.3.7
 - rails: 
     version: 2.3.8
 - rmagick: 
@@ -154,6 +168,8 @@ specs:
     version: 1.3.0
 - rspec-rails: 
     version: 1.3.2
+- spork: 
+    version: 0.8.4
 - sqlite3-ruby: 
     version: 1.3.1
 - test-unit: 
@@ -162,7 +178,7 @@ specs:
     version: 0.3.2
 - will_paginate: 
     version: 2.3.14
-hash: f0e84b9713ec7416f7e587d3694ce3fbf0b8f537
+hash: e13e5f0bd0d19ed4ef37d5ac10a91d20dae9f0f9
 sources: 
 - Git: 
     uri: git://github.com/parndt/json.git
