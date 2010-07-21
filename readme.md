@@ -2,16 +2,16 @@
 
 __An open source Ruby on Rails content management system for small business.__
 
-## Demo Site
-
-* [Front end live demo ](http://demo.refinerycms.com)
-* [Back end live demo ](http://demo.refinerycms.com/admin)
+![Refinery Dashboard](http://refinerycms.com/system/images/0000/0576/dashboard.png)
 
 For more screenshots, example sites & high level information: [http://refinerycms.com](http://refinerycms.com)
 
-![Refinery Dashboard](http://refinerycms.com/system/images/0000/0576/dashboard.png)
+## Give the demo a try
 
-## What it's good at?
+* [Front end](http://demo.refinerycms.com)
+* [Back end](http://demo.refinerycms.com/admin)
+
+## What's it good at?
 
 __Refinery is great for small business sites where the client needs to be able to update their website themselves__ without being bombarded with anything too complicated.
 
@@ -40,7 +40,7 @@ Refinery's gem requirements are:
 ### Other dependencies
 
 * [RMagick](http://github.com/rmagick/rmagick) - [Install docs](http://rmagick.rubyforge.org/install-faq.html) or for
-Mac OS 10.5 or 10.6 users [this shell install script](http://github.com/maddox/magick-installer) will be easier.
+Mac OS 10.5+ users [this shell install script](http://github.com/maddox/magick-installer) will be easier.
 
 ## Installing and Setting Up Refinery
 
@@ -94,6 +94,7 @@ This will pull in all of the updated files in the project and may result in some
 * Easily upload and insert images
 * Upload and link to resources such as PDF documents
 * Uses the popular [attachment_fu](http://github.com/technoweenie/attachment_fu) Rails plugin
+* Supports storage on Amazon S3
 
 ### [Inquiries](http://github.com/resolve/refinerycms/blob/master/vendor/plugins/inquiries/readme.md)
 
@@ -131,7 +132,7 @@ to get help on how to use that. Or read the full documentation on [writing plugi
 
 ### Run the Tests
 
-At your application root you can run:
+At your application root run:
 
     rake refinery:test_all
 
@@ -140,8 +141,8 @@ At your application root you can run:
 * [Portfolio](http://github.com/resolve/refinerycms-portfolio) - manage groups of images like an image gallery.
 * [News](http://github.com/resolve/refinerycms-news) - post and manage news items.
 
+[Full plugin list here](http://wiki.github.com/resolve/refinerycms/plugins)
+
 ## License
 
-Refinery is released under the MIT license and is copyright (c) 2005-2010 [Resolve Digital Ltd.](http://www.resolvedigital.co.nz)
-
-[Read the license](http://github.com/resolve/refinerycms/blob/master/license.md)
+Refinery is released under the [MIT license](http://github.com/resolve/refinerycms/blob/master/license.md) and is copyright (c) 2005-2010 [Resolve Digital Ltd.](http://www.resolvedigital.co.nz)
