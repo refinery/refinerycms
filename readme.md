@@ -131,9 +131,9 @@ to get help on how to use that. Or read the full documentation on [writing plugi
 
 ### Run the Tests
 
-If you have installed Refinery using git (described above in step 1 of installing Refinery) then you'll be able to run the tests. At your Rails root run:
+At your application root you can run:
 
-    rake test
+    rake refinery:test_all
 
 ### Popular Plugins
 
