@@ -75,7 +75,7 @@ dependencies:
   rmagick: 
     group: 
     - :default
-    version: ~> 2.12.2
+    version: ~> 2.12.0
   cucumber: 
     group: 
     - :test
@@ -178,7 +178,7 @@ specs:
     version: 0.3.2
 - will_paginate: 
     version: 2.3.14
-hash: e13e5f0bd0d19ed4ef37d5ac10a91d20dae9f0f9
+hash: ef64a9633e2785c1a9ce006d1984ed83ce2ee927
 sources: 
 - Git: 
     uri: git://github.com/parndt/json.git
