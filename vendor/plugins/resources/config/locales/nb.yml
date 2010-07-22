@@ -21,13 +21,13 @@ nb:
       index:
         upload_new: Last Opp Ny Fil
         no_files_yet: Det er ingen filer her enda. Trykk "Last Opp Ny Fil" for å legge til din første fil.
-        insert:
-          existing: Eksisterende Fil
-          new: Ny Fil
-          previous: Forrige
-          next: Neste
-          or: eller
-          cancel: Avbryt
-        existing_resource:
-          link_to_resource: 'Link til denne Ressursen'
-          submit_insert: Sett inn
+      insert:
+        existing: Eksisterende Fil
+        new: Ny Fil
+        previous: Forrige
+        next: Neste
+        or: eller
+        cancel: Avbryt
+      existing_resource:
+        link_to_resource: 'Link til denne Ressursen'
+        submit_insert: Sett inn
