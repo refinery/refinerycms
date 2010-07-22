@@ -34,7 +34,7 @@ unless (app_path = ARGV.shift).nil? or app_path.length == 0
     FileUtils::makedirs rails_root
 
     # copy in all of the relevant directories and root files.
-    to_copy = %w(app config db lib public themes script *.md Rakefile .gitignore config.ru asdas).map do |dir|
+    to_copy = %w(app config db lib public themes script *.md Rakefile config.ru).map do |dir|
       (new_file_path = refinery_root.join(dir)).exist? ? new_file_path.to_s : nil
     end
     FileUtils::cp_r to_copy.compact, rails_root, :verbose => false
@@ -113,12 +113,20 @@ unless (app_path = ARGV.shift).nil? or app_path.length == 0
     app_gemfile.puts(lines.join("\n"))
     app_gemfile.close
 
+    # Remove development specific stuff from the .gitinore file
+    ignore_content = refinery_root.join('.gitignore').read
+    ignore_content.gsub!(/#===REMOVED DURING REFINERY GEM INSTALL===.*#===END OF REMOVED DURING REFINERY GEM INSTALL===/m, '')
+
+    File.open(File.join(%W(#{rails_root} .gitignore)), "w") do |f|
+      f.puts(ignore_content)
+    end
+
     puts "\n---------"
     puts "Refinery successfully installed in '#{rails_root}'!\n\n"
 
     # automate..
     puts "Installing gem requirements using bundler..\n"
-    puts "Running: " + (cmd="bundle install --without test")
+    puts "Running: " + (cmd="bundle install")
     puts `cd '#{rails_root}' && #{cmd}`
 
     puts "\n\nSetting up your development database..\n"
