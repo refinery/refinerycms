@@ -184,7 +184,7 @@ specs:
     version: 0.3.2
 - will_paginate: 
     version: 2.3.14
-hash: e696c47e99ee503a8e9403b90fcc791bae26c25b
+hash: 5d7e39aef3235da2c7273506ec80b7a0bf55fd8a
 sources: 
 - Git: 
     uri: git://github.com/parndt/json.git
