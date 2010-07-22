@@ -15,7 +15,7 @@ nb:
       recent_activity:
         latest_activity: Siste aktivitet
         see: "Se '{{what}}'"
-        latest_activity_message: "{{what}} {{kind}} var {{action}}"
+        latest_activity_message: "{{what}} {{kind}} ble {{action}}"
       recent_inquiries:
         latest_inquiries: Siste forespørsler
   updated:
