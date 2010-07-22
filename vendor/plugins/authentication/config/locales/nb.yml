@@ -1,80 +1,80 @@
 nb:
+  plugins:
+    refinery_users:
+      title: Brukere
   admin:
     users:
       update:
-        cannot_remove_user_plugin_from_current_user: "Du kan ikke fjerne 'Bruker'-instikket fra kontoen du er logget inn som."
+        cannot_remove_user_plugin_from_current_user: "Du kan ikke fjerne tillegget 'Brukere' når du er logget inn med denne brukeren"
       form:
-        blank_password_keeps_current: Blankt passord beholder ditt nåværende passord.
+        blank_password_keeps_current: La feltet forbli tomt om du ikke ønsker å endre passordet
+        enable_all: merk alle
       index:
-        create_new_user: Opprett En Ny Bruker
-        no_users_yet:  Det er ingen brukere enda. Trykk "Opprett En Ny Bruker" for å legge til din første bruker.
+        create_new_user: Lag ny bruker
+        no_users_yet: Det er ikke opprettet noen brukere enda. Trykk "Opprett ny bruker" for å legge til din første bruker.
       user:
         confirm_delete_message: "Er du sikker på at du ønsker å slette '{{who}}'?"
-        confirm_delete_title: Fjern denne brukeren for alltid
+        confirm_delete_title: Fjern denne brukeren permanent
         edit_user: Rediger denne brukeren
-        email_user: Send epost til denne brukeren
+        email_user: Send en e-post til denne brukeren
         preview: ({{who}}) opprettet {{created_at}}
   sessions:
-    login_successful: Innlogging vellykket
-    login_failed: Beklager, ditt brukernavn eller passord er feil.
-    logged_out: Du er nå logget ut.
+    login_successful: Du er logget inn
+    login_failed: "Beklager, passordet eller brukernavnet ditt er feil."
+    logged_out: Du har blitt logget ut.
     new:
-      login: Innloggingsnavn
-      log_in: Logg inn
-      cancel: Avbryt
-      password: Passord
-      remember_me: Husk meg
-      or: eller
-      forgot_password: Jeg har glømt passordet mitt
-      hello_please_sign_in: Hei! Vennligst logg inn
-      sign_in: Logg på
+      hello_please_sign_in: "Hei! Vennligst logg inn."
+      sign_in: Logg inn
+      forgot_password: Jeg glemte passordet mitt
   users:
-    setup_website_name: "Først la oss gi siden et navn. <a href='{{link}}' name='{{title}}'>Gå her</a> for å redigere siden din sitt navn"
-    signup_disabled: Brukerpåmelding er deaktivert
+    setup_website_name: "Først, la oss gi siden et navn. <a href='{{link}}' name='{{title}}'>Gå hit</a> for å endre navnet på websiden din"
+    signup_disabled: Registrering av nye brukere er deaktivert
     new:
-      fill_form: Fyll ut skjemaet under med detaljene dine så vi kan få deg startet.
+      fill_form: Fyll ut detaljene dine nedenfor slik at vi kan komme i gang.
       sign_up: Registrer deg
     create:
       welcome: Velkommen til Refinery, {{who}}
-      signup_complete: Registrering utført!
+      signup_complete: Registrering komplett!
     forgot:
-      email_address: E-postadresse
-      enter_email_address: Vennligst skriv inn e-postadressen for kontoen din.
+      email_address: E-post Adresse
+      enter_email_address: Vennligst tast inn e-post adressen for din konto.
       reset_password: Tilbakestill passord
-      blank_email: Du har ikke angitt en e-postadresse.
-      email_not_associated_with_account: "Beklager, '{{email}}' er ikke knyttet til noen kontoer. <br/> Er du sikker på at du har skrevet inn riktig e-postadresse?"
-      email_reset_sent: En e-post har blitt sendt til deg med en kobling for å tilbakestille passordet.
+      blank_email: Du har ikke oppgitt noen e-post adresse.
+      email_not_associated_with_account: "Beklager, '{{email}}' er ikke tilknyttet noen konto.<br/>Er du sikker på at du tastet inn riktig e-post adresse?"
+      email_reset_sent: En e-post har blitt sendt til deg med en lenke for å tilbakestille passordet ditt.
     reset:
-      code_invalid: "Vi beklager, men denne tilbakestille koden er utløpt eller er ugyldig. Hvis du har problemer prøve å kopiere og lime inn URL fra e-posten din i nettleseren, eller starte tilbakestille passordet prosessen."
-      successful: "Passord Vellykket nullstilling for {{email}}"
+      code_invalid: "Beklager, men denne koden for å tilbakestille passordet har utløpt eller er ugyldig. Om du opplever problemer så kan du forsøker å kopiere og lime inn lenken fra e-posten du mottok, eller start prosessen med å tilbakestille passordet på nytt."
+      successful: "Passordet for {{email}} er nå tilbakestilt"
+      pick_new_password_for: "Velg et nytt passord for {{email}}"
+      reset_password: Tilbakestill passord
   user_mailer:
-    please_activate: Vennligst aktiver din nye konto
+    please_activate: Vennligst aktivert din nye konto
     activated: Din konto er nå aktivert!
-    activated_email: "{{who}}, din konto er aktivert. Du kan nå legge til dine innstikk:"
-    account_created: Din konto er opprettet.
+    activated_email: "{{who}}, din konto er nå aktivert. Du kan nå begynne å legge til tillegg:"
+    account_created: Din konto er nå opprettet.
     user_name: Brukernavn {{name}}
     password: Passord {{password}}
-    visit_url: "Gå til denne adressen for å aktivere kontoen din:"
-    link_to_reset_your_password: Lenke for å nullstille passordet ditt
+    visit_url: "Beskø denne lenken for å aktivere kontoen din:"
+    link_to_reset_your_password: Lenke for å tilbakestille passordet ditt
   authlogic:
     error_messages:
-      login_blank: kan ikke være blankt
+      login_blank: kan ikke være blank
       login_not_found: er ikke gyldig
-      login_invalid: kan bare innholde bokstaver, nummer, mellomrom og .-_@.
-      consecutive_failed_logins_limit_exceeded: Grensen for antall for misslykkete innloggingsforsøk nådd, kontoen er deaktivert.
-      email_invalid: skal se ut som en epost-adresse.
+      login_invalid: "burde kun inneholde bokstaver, tall, mellomrom og .-_@."
+      consecutive_failed_logins_limit_exceeded: "Du har overskredet det tillatte antall feilede innlogginger, din konto er deaktivert."
+      email_invalid: burde se ut som en e-post adresse.
       password_blank: kan ikke være blank
       password_invalid: er ikke gyldig
       not_active: Din konto er ikke aktivert
       not_confirmed: Din konto er ikke bekreftet
       not_approved: Din konto er ikke godkjent
-      no_authentication_details: Du har ikke skrevet inn noe innloggingsinformasjon
+      no_authentication_details: Du har ikke oppgitt noen innloggingsinformasjon.
     models:
       user_session: UserSession
     attributes:
       user_session:
-        login: brukernavn
-        email: epost
-        password: passord
-        remember_me: husk meg
-        incorrect: "beklager, ditt {{login_field}} eller passord er ikke korrekt."
+        login: Brukernavn
+        email: E-post
+        password: Passord
+        remember_me: Husk meg
+        incorrect: "Beklager, din {{login_field}} eller passord var ikke riktig."
