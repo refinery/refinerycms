@@ -9,6 +9,8 @@ class RefinerySetting < ActiveRecord::Base
   def self.per_page
     12
   end
+  
+  before_save :check_restriction
 
   after_save do |setting|
     if self.column_names.include?('scoping')
@@ -135,6 +137,12 @@ class RefinerySetting < ActiveRecord::Base
 
   def callback_proc
     eval "Proc.new{#{self.callback_proc_as_string} }" if RefinerySetting.column_names.include?('callback_proc_as_string') && self.callback_proc_as_string.present?
+  end
+  
+  private
+  
+  def check_restriction
+    self.restricted = false if restricted.nil?
   end
 
 end
