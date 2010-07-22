@@ -39,6 +39,7 @@ group :test do
   gem 'launchy'
   gem 'gherkin'
   gem 'factory_girl'
+  gem 'ruby-prof'
 end
 #===REFINERY END OF REQUIRED GEMS===
 

@@ -1,9 +1,9 @@
 sqlite:
   :adapter: sqlite
-  :dbfile: attachment_fu_plugin.sqlite.db
+  :database: attachment_fu_plugin.sqlite
 sqlite3:
   :adapter: sqlite3
-  :dbfile: attachment_fu_plugin.sqlite3.db
+  :database: attachment_fu_plugin.sqlite3
 postgresql:
   :adapter: postgresql
   :username: postgres
