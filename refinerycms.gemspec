@@ -1,8 +1,8 @@
 Gem::Specification.new do |s|
   s.name              = %q{refinerycms}
-  s.version           = %q{0.9.7.7}
+  s.version           = %q{0.9.7.8}
   s.description       = %q{A beautiful open source Ruby on Rails content manager for small business. Easy to extend, easy to use, lightweight and all wrapped up in a super slick UI.}
-  s.date              = %q{2010-07-20}
+  s.date              = %q{2010-07-22}
   s.summary           = %q{A beautiful open source Ruby on Rails content manager for small business.}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
@@ -100,6 +100,7 @@ Gem::Specification.new do |s|
     'features/refinery/site_bar.feature',
     'features/step_definitions',
     'features/step_definitions/refinery',
+    'features/step_definitions/refinery/core_steps.rb',
     'features/step_definitions/refinery/page_steps.rb',
     'features/step_definitions/refinery/user_steps.rb',
     'features/step_definitions/web_steps.rb',
@@ -111,7 +112,6 @@ Gem::Specification.new do |s|
     'lib/gemspec.rb',
     'lib/refinery',
     'lib/refinery/tasks',
-    'lib/refinery/tasks/refinery.rake',
     'lib/refinery/tasks/refinery.rb',
     'lib/refinery_initializer.rb',
     'lib/tasks',

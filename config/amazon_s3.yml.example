@@ -1,6 +1,6 @@
 login: &login
-  access_key_id: 
-  secret_access_key: 
+  access_key_id: <%= ENV['S3_KEY'] %>
+  secret_access_key: <%= ENV['S3_SECRET'] %>
 
 development:
   bucket_name: your_local_amazon_s3
