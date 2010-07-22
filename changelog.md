@@ -1,7 +1,10 @@
 ## 0.9.7.8 [UNRELEASED]
 
 - Refactored Amazon S3 and gem installation to make it easier to install on Heroku. [Steven Heidel](http://github.com/stevenheidel)
-- [See full list](http://github.com/resolve/refinerycms/compare/0.9.7.7...0.9.7.8)
+- Made project more testable. Renamed rake refinery:test_all to rake test:refinery [Philip Arndt](http://github.com/parndt)
+- Documentation improved [David Jones](http://github.com/djones), [Philip Arndt](http://github.com/parndt) and [Steven Heidel](http://github.com/stevenheidel)
+- Installed spork for use with systems that support forking for performance improvements. Doesn't run on Windows. [Philip Arndt](http://github.com/parndt) and [James Fiderlick](http://github.com/jamesfid)
+- [See full list](http://github.com/resolve/refinerycms/compare/0.9.7.7...master)
 
 ## 0.9.7.7 [20 July 2010]
 
