@@ -112,11 +112,11 @@ unless (app_path = ARGV.shift).nil? or app_path.length == 0
     app_gemfile = File.open(File.join(%W(#{rails_root} Gemfile)), "w")
     app_gemfile.puts(lines.join("\n"))
     app_gemfile.close
-    
+
     # Remove development specific stuff from the .gitinore file
     ignore_content = refinery_root.join('.gitignore').read
     ignore_content.gsub!(/#===REMOVED DURING REFINERY GEM INSTALL===.*#===END OF REMOVED DURING REFINERY GEM INSTALL===/m, '')
-    
+
     File.open(File.join(%W(#{rails_root} .gitignore)), "w") do |f|
       f.puts(ignore_content)
     end
@@ -126,7 +126,7 @@ unless (app_path = ARGV.shift).nil? or app_path.length == 0
 
     # automate..
     puts "Installing gem requirements using bundler..\n"
-    puts "Running: " + (cmd="bundle install --without test")
+    puts "Running: " + (cmd="bundle install")
     puts `cd '#{rails_root}' && #{cmd}`
 
     puts "\n\nSetting up your development database..\n"
