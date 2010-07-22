@@ -9,7 +9,7 @@ For more screenshots, example sites & high level information: [http://refinerycm
 ## Give the demo a try
 
 * [Front end](http://demo.refinerycms.com)
-* [Back end](http://demo.refinerycms.com/admin)
+* [Back end](http://demo.refinerycms.com/refinery)
 
 ## What's it good at?
 
@@ -48,20 +48,15 @@ Mac OS 10.5+ users [this shell install script](http://github.com/maddox/magick-i
 
 ## Help and Developer Documentation
 
-* [Tutorial Site](http://resolve.github.com/refinerycms)
+* [Tutorial Site](http://tutorials.refinerycms.org)
 * [Google Group Discussion](http://group.refinerycms.org)
 * [Developer/API documentation](http://api.refinerycms.org)
 * [GitHub repository](http://github.com/resolve/refinerycms)
-* [Developer video - 26 mins](http://refinerycms.com/pages/for-developers)
 * [IRC Channel](irc://irc.freenode.net/refinerycms)
 
 ## Setting Up on Heroku or Using S3 for Storage
 
-If you're using [Heroku](http://heroku.com/) you will want to put
-
-    Refinery.s3_backend = true
-
-in your ``config/environments/production.rb`` file to make Refinery store files uploaded on Amazon S3.
+[See the tutorial](http://tutorials.refinerycms.org/tutorials/how-to-install-refinery-on-heroku)
 
 ## Updating to the latest Refinery
 
