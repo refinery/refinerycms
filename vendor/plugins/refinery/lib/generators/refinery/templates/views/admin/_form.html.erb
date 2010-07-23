@@ -23,5 +23,10 @@
 <% end -%>
   </div>
   <% end %>
-  <%%= render :partial => "/shared/admin/form_actions", :locals => {:f => f, :continue_editing => false} %>
+  <%%= render :partial => "/shared/admin/form_actions",
+              :locals => {
+                :f => f,
+                :continue_editing => false,
+                :delete_title => t('admin.<%= plural_name %>.<%= singular_name %>.delete')
+              } %>
 <%% end -%>
