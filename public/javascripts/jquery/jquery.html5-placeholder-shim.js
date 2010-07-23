@@ -36,11 +36,16 @@
 					$ol.css(calcPositionCss($(this)));
 					return true;
 				}
+				
+				var possible_line_height = {};
+				if( $(this).css('height') != 'auto') {
+				  possible_line_height = { lineHeight: $(this).css('height') };
+				}
 
 				var ol = $('<label />')
 					.text($(this).attr('placeholder'))
 					.addClass(config.cls)
-					.css({
+					.css($.extend({
 						position:'absolute',
 						display: 'inline',
 						float:'none',
@@ -50,7 +55,7 @@
 						color: config.color,
 						cursor: 'text',
 						fontSize: $(this).css('font-size')
-					})
+					}, possible_line_height))
 					.css(calcPositionCss(this))
 					.attr('for', this.id)
 					.data('target',$(this))
