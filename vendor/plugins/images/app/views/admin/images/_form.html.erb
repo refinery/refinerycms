@@ -17,7 +17,7 @@
     <label><%= t('.maximum_image_size', :megabytes => (Image.attachment_options[:max_size] / 1024 / 1024)) %></label>
   </div>
 
-  <div<%= " style='margin-top: #{@image.thumbnails.detect{|t| t.thumbnail == 'medium'}.height - 63}px'" if action_name =~ /(edit)|(update)/ and !@app_dialog%>>
+  <div<%= (" style='margin-top: #{@image.thumbnails.detect{|t| t.thumbnail == 'medium'}.height - 63}px'" rescue nil) if action_name =~ /(edit)|(update)/ and !@app_dialog%>>
     <%= render :partial => "/shared/admin/form_actions",
                :locals => {
                  :f => f,
