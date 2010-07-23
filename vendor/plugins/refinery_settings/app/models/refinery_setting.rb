@@ -9,7 +9,7 @@ class RefinerySetting < ActiveRecord::Base
   def self.per_page
     12
   end
-  
+
   before_save :check_restriction
 
   after_save do |setting|
@@ -100,6 +100,7 @@ class RefinerySetting < ActiveRecord::Base
     end
 
     setting.save
+    cache_write(setting.name, setting.scoping, setting.value)
   end
 
   # Below is not very nice, but seems to be required
@@ -138,9 +139,9 @@ class RefinerySetting < ActiveRecord::Base
   def callback_proc
     eval "Proc.new{#{self.callback_proc_as_string} }" if RefinerySetting.column_names.include?('callback_proc_as_string') && self.callback_proc_as_string.present?
   end
-  
+
   private
-  
+
   def check_restriction
     self.restricted = false if restricted.nil?
   end
