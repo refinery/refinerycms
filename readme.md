@@ -102,7 +102,7 @@ to get help on how to use that. Or read the full documentation on [writing plugi
 
 At your application root run:
 
-    rake refinery:test_all
+    rake test:refinery
 
 ### Popular Plugins
 
