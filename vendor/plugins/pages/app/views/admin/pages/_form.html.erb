@@ -6,14 +6,29 @@
     <%= f.text_field :title, :class => "larger widest" %>
   </div>
   <div class='field'>
-    <%= render :partial => "form_page_parts", :locals => {:f => f} %>
+    <%= render :partial => "form_page_parts",
+               :locals => {
+                 :f => f
+               } %>
   </div>
 
-  <%= render :partial => "form_advanced_options", :locals => {:f => f} %>
+  <%= render :partial => "form_advanced_options",
+             :locals => {
+                :f => f
+              } %>
 
-  <%= render :partial => "/shared/admin/form_actions", :locals => {:f => f, :continue_editing => true} %>
+  <%= render :partial => "/shared/admin/form_actions",
+             :locals => {
+               :f => f,
+               :continue_editing => true,
+               :delete_title => t('admin.pages.page.confirm_delete_page_title'),
+               :delete_confirmation => t('admin.pages.page.confirm_delete_page_message', :title => @page.title)
+             } %>
 
-  <%= render :partial => "form_new_page_parts", :locals => {:f => f} if RefinerySetting.find_or_set(:new_page_parts, false) %>
+  <%= render :partial => "form_new_page_parts",
+             :locals => {
+               :f => f
+             } if RefinerySetting.find_or_set(:new_page_parts, false) %>
 <% end %>
 
 <% content_for :head do %>

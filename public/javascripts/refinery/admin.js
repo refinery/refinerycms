@@ -78,7 +78,13 @@ init_interface = function() {
 
 init_delete_confirmations = function() {
   $('a.confirm-delete').click(function(e) {
-    if (confirm("Are you sure you want to " + (t=($(this).attr('title') || $(this).attr('tooltip')))[0].toLowerCase() + t.substring(1) + "?"))
+    if ((confirmation = $(this).attr('data-confirm')) == null || confirmation.length == 0) {
+      if ((title = ($(this).attr('title') || $(this).attr('tooltip'))) == null || title.length == 0) {
+        title = "Remove this forever";
+      }
+      confirmation = "Are you sure you want to " + title[0].toLowerCase() + title.substring(1) + "?";
+    }
+    if (confirm(confirmation))
     {
       $("<form method='POST' action='" + $(this).attr('href') + "'></form>")
         .append("<input type='hidden' name='_method' value='delete' />")
@@ -99,8 +105,7 @@ init_flash_messages = function(){
 }
 
 init_modal_dialogs = function(){
-  $('a[href*="dialog=true"]').not('#dialog_container a').each(function(i, anchor)
-  {
+  $('a[href*="dialog=true"]').not('#dialog_container a').each(function(i, anchor) {
     $(anchor).data({
       'dialog-width': parseInt($(anchor.href.match("width=([0-9]*)")).last().get(0), 928)||928
       , 'dialog-height': parseInt($(anchor.href.match("height=([0-9]*)")).last().get(0), 473)||473

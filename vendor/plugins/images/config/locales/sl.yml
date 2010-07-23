@@ -7,6 +7,10 @@ sl:
   file_must_be_these_formats: Slika mora biti tipa JPG, PNG ali GIF
   admin:
     images:
+      image:
+        delete:
+          message: Ali ste prepričani da želite odstraniti '{{title}}'?
+          title: Odstrani sliko
       form:
         image: Slika
         use_current_image: Uporabi trenutno sliko
@@ -25,15 +29,9 @@ sl:
           results_for: Iskalni rezultati za {{query}}
       grid_view:
         edit: Uredi sliko
-        confirm_delete:
-          message: Ali ste prepričani da želite odstraniti {{title}}?
-          title: Odstrani sliko
         view_live: Poglej sliko <br/><em>Odpre se v novem oknu</em>
       list_view_image:
         edit_this_image: Uredi sliko
-        delete:
-          message: Ali ste prepričani da želite odstraniti {{title}}?
-          title: Odstrani sliko
       insert:
         existing_image: Obstoječa slika
         new_image: Nova Slika

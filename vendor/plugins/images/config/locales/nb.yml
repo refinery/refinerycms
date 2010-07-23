@@ -7,6 +7,10 @@ nb:
   file_must_be_these_formats: "Bildefilen må være enten en JPG, PNG eller GIF"
   admin:
     images:
+      image:
+        delete:
+          message: "Er du sikker på at du ønsker å slette '{{title}}'?"
+          title: Slett dette bildet permanent
       form:
         image: Bilde
         use_current_image: Bruk gjeldende bilde
@@ -25,15 +29,9 @@ nb:
           results_for: "Søkeresultater for {{query}}"
       grid_view:
         edit: Rediger dette bildet
-        confirm_delete:
-          message: "Er du sikker på at du ønsker å slette {{title}}?"
-          title: Slett dette bildet permanent
         view_live: Vis dette bildet <br/><em>Åpner i et nytt vindu</em>
       list_view_image:
         edit_this_image: Rediger dette bildet
-        delete:
-          message: "Er du sikker på at du ønsker å slette {{title}}?"
-          title: Slett dette bildet permanent
       existing_image:
         submit_insert: Sett inn
         resize_image: "Endre størrelsen på bildet? <em>(Anbefales)</em>"
