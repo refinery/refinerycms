@@ -1221,7 +1221,7 @@ ul#plugins li {
   width:auto;
 }
 #new_page_part_dialog .field {
-  padding: 30px 10px;
+  padding: 0px 10px;
 }
 .hide-overflow {
   overflow: hidden;

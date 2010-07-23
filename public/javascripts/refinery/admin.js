@@ -547,7 +547,8 @@ var page_options = {
       modal: true,
       resizable: false,
       autoOpen: false,
-      width: 600
+      width: 600,
+      height: 200
     });
 
     $('#add_page_part').click(function(e){
@@ -591,6 +592,8 @@ var page_options = {
               $('#new_page_part_title').val('');
 
               page_options.tabs.find('> ul li a').corner('top 5px');
+
+              $('#new_page_part_dialog').dialog('close');
             }
           );
         }else{
@@ -599,9 +602,6 @@ var page_options = {
       }else{
         alert("You have not entered a title for the content section, please enter one.");
       }
-
-
-      $('#new_page_part_dialog').dialog('close');
     });
 
     $('#new_page_part_cancel').click(function(e){
