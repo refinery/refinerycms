@@ -41,6 +41,7 @@ Mac OS 10.5+ users [this shell install script](http://github.com/maddox/magick-i
 * __[Install Refinery](http://tutorials.refinerycms.org/tutorials/how-to-install-refinery)__
 * [Update Refinery to the latest version](http://tutorials.refinerycms.org/tutorials/how-to-update-refinery-to-the-latest-version)
 * [Install Refinery on Heroku](http://tutorials.refinerycms.org/tutorials/how-to-install-refinery-on-heroku)
+* [Run the Refinery test suite](http://tutorials.refinerycms.org/tutorials/how-to-test-refinery)
 
 ## Help and Documentation
 
@@ -97,12 +98,6 @@ Extend Refinery easily by running the Refinery generator
     ruby script/generate refinery
 
 to get help on how to use that. Or read the full documentation on [writing plugins for Refinery](http://github.com/resolve/refinerycms/blob/master/vendor/plugins/refinery/plugins.md)
-
-### Run the Tests
-
-At your application root run:
-
-    rake test:refinery
 
 ### Popular Plugins
 
