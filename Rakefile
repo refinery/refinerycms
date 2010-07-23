@@ -15,4 +15,4 @@ require 'rake/testtask'
 require 'rake/rdoctask'
 require 'tasks/rails'
 
-require 'refinery/tasks/refinery'
+require 'tasks/refinery'
