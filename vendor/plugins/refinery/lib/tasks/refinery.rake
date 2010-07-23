@@ -106,10 +106,14 @@ namespace :refinery do
     FileUtils::makedirs dirs.map {|dir| File.join(Rails.root, dir) }
 
     # copy in the new assets.
-    assets = [%w(public stylesheets refinery), %w(public javascripts refinery), %w(public javascripts wymeditor), %w(public images wymeditor skins refinery), %w(public images refinery), %w(public stylesheets wymeditor skins refinery), %w(public javascripts jquery), %w(lib refinery), %w(.gitignore)]
+    assets = [%w(public stylesheets refinery), %w(public javascripts refinery), %w(public javascripts wymeditor), %w(public images wymeditor skins refinery), %w(public images refinery), %w(public stylesheets wymeditor skins refinery), %w(public javascripts jquery), %w(.gitignore)]
     assets.each do |asset|
       FileUtils::rm_rf File.join(Rails.root, asset), :secure => true, :verbose => verbose # ensure the destination is clear.
       FileUtils::cp_r File.join(Refinery.root, asset), File.join(Rails.root, asset), :verbose => verbose # copy the new assets into the project.
+    end
+    
+    if Rails.root.join('lib', 'refinery').directory?
+      FileUtils::rm_rf Rails.root.join('lib', 'refinery').cleanpath.to_s, :secure => true, :verbose => verbose
     end
 
     # copy in any new migrations.
