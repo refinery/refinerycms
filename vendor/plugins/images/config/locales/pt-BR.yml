@@ -9,6 +9,10 @@ pt-BR:
   file_must_be_these_formats: Sua imagem deve ser uma JPG, PNG ou GIF
   admin:
     images:
+      image:
+        delete:
+          message: Você tem certeza que quer remover '{{title}}'?
+          title: Remover esta imagem para sempre
       form:
         image: Imagem
         use_current_image: Usar imagem atual
@@ -28,14 +32,8 @@ pt-BR:
       grid_view:
         edit: Editar esta imagem
         view_live: "Clique para ver a imagem<br/><em>Abre em uma nova janela</em>"
-        confirm_delete:
-          message: Você tem certeza que quer remover {{title}}?
-          title: Remover esta imagem para sempre
       list_view_image:
         edit_this_image: Editar esta imagem
-        delete:
-          message: Você tem certeza que quer remover {{title}}?
-          title: Remover esta imagem para sempre
       existing_image:
         submit_insert: Inserir
         resize_image: "Redimencionar a imagem? <em>(Recomendado)</em>"

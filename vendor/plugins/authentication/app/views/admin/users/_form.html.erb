@@ -42,7 +42,14 @@
       <% end %>
     </ul>
   </div>
-  <%= render :partial => "/shared/admin/form_actions", :locals => {:f => f, :continue_editing => false, :hide_delete => !current_user.can_delete?(@user)} %>
+  <%= render :partial => "/shared/admin/form_actions",
+             :locals => {
+               :f => f,
+               :continue_editing => false,
+               :hide_delete => !current_user.can_delete?(@user),
+               :delete_title => t('admin.users.user.confirm_delete_title'),
+               :delete_confirmation => t('admin.users.user.confirm_delete_message', :who => @user.login)
+             } %>
 <% end %>
 
 <% content_for :head do %>

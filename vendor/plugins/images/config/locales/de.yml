@@ -7,6 +7,10 @@ de:
   file_must_be_these_formats: Ihr Bild muss im Format JPG, PNG oder GIF vorliegen
   admin:
     images:
+      image:
+        delete:
+          message: Sind Sie sicher, dass Sie '{{title}}' löschen möchten?
+          title: Dieses Bild für immer löschen
       form:
         image: Bild
         use_current_image: Aktuelles Bild verwenden
@@ -25,15 +29,9 @@ de:
           results_for: Suchergebnisse für {{query}}
       grid_view:
         edit: Dieses Bild bearbeiten
-        confirm_delete:
-          message: Sind Sie sicher, dass Sie {{title}} löschen möchten?
-          title: Dieses Bild für immer löschen
         view_live: Dieses Bild anzeigen <br/><em>Öffnet ein neues Fenster</em>
       list_view_image:
         edit_this_image: Dieses Bild bearbeiten
-        delete:
-          message: Sind Sie sicher, dass Sie {{title}} löschen möchten?
-          title: Dieses Bild für immer löschen
       insert:
         existing_image: Existierendes Bild
         new_image: Neues Bild
