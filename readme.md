@@ -36,11 +36,11 @@ Other dependencies
 * [RMagick](http://github.com/rmagick/rmagick) - [Install docs](http://rmagick.rubyforge.org/install-faq.html) or for
 Mac OS 10.5+ users [this shell install script](http://github.com/maddox/magick-installer) will be easier.
 
-## How tos
+## How to
 
-* __[How to install Refinery](http://tutorials.refinerycms.org/tutorials/how-to-install-refinery)__
-* [How to update Refinery to the latest version](http://tutorials.refinerycms.org/tutorials/how-to-update-refinery-to-the-latest-version)
-* [How to install Refinery on Heroku](http://tutorials.refinerycms.org/tutorials/how-to-install-refinery-on-heroku)
+* __[Install Refinery](http://tutorials.refinerycms.org/tutorials/how-to-install-refinery)__
+* [Update Refinery to the latest version](http://tutorials.refinerycms.org/tutorials/how-to-update-refinery-to-the-latest-version)
+* [Install Refinery on Heroku](http://tutorials.refinerycms.org/tutorials/how-to-install-refinery-on-heroku)
 
 ## Help and Documentation
 
