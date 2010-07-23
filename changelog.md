@@ -1,10 +1,13 @@
-## 0.9.7.8 [UNRELEASED]
+## 0.9.7.8 [23 July 2010]
 
 - Refactored Amazon S3 and gem installation to make it easier to install on Heroku. [Steven Heidel](http://github.com/stevenheidel)
 - Made project more testable. Renamed rake refinery:test_all to rake test:refinery [Philip Arndt](http://github.com/parndt)
 - Documentation improved [David Jones](http://github.com/djones), [Philip Arndt](http://github.com/parndt) and [Steven Heidel](http://github.com/stevenheidel)
 - Installed spork for use with systems that support forking for performance improvements. Doesn't run on Windows. [Philip Arndt](http://github.com/parndt) and [James Fiderlick](http://github.com/jamesfid)
-- [See full list](http://github.com/resolve/refinerycms/compare/0.9.7.7...master)
+- Improvements and new translations for Norsk Bokmål localisation. [Ken Paulsen](http://github.com/ken-guru)
+- Ensured that RefinerySetting restrictions work properly using a before_save handler. [Joe Sak](http://github.com/joemsak)
+- Updated jquery-html5-placeholder-shim to latest version. [Amanda Wagener](http://github.com/awagener)
+- [See full list](http://github.com/resolve/refinerycms/compare/0.9.7.7...0.9.7.8)
 
 ## 0.9.7.7 [20 July 2010]
 
