@@ -21,7 +21,9 @@
              :locals => {
                :f => f,
                :continue_editing => false,
-               :hide_cancel => (@app_dialog or action_name == "insert" or from_dialog?)
+               :hide_cancel => (@app_dialog or action_name == "insert" or from_dialog?),
+                :delete_title => t('admin.resources.resource.delete.title'),
+                :delete_confirmation => t('admin.resources.resource.delete.message', :title => @resource.filename)
              } %>
 
   <% if @app_dialog -%>

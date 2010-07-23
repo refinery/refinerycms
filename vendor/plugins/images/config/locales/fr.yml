@@ -7,6 +7,10 @@ fr:
   file_must_be_these_formats: "Votre image doit être un fichier JPG, PNG ou GIF"
   admin:
     images:
+      image:
+        delete:
+          message: "Êtes vous sûr de vouloir supprimer '{{title}}'?"
+          title: Supprimer cette image pour toujours
       form:
         image: Image
         use_current_image: Utilisé cet image
@@ -25,15 +29,9 @@ fr:
           results_for: "Résultat de recherche pour '{{query}}'"
       grid_view:
         edit: Modifier cette image
-        confirm_delete:
-          message: "Êtes vous sûr de vouloir supprimer '{{title}}'?"
-          title: Supprimer cette image pour toujours
         view_live: Voir cette image <br/><em>Ouvre dans une nouvelle fenêtre</em>
       list_view_image:
         edit_this_image: Modifier cette image
-        delete:
-          message: "Êtes vous sûr de vouloir supprimer '{{title}}'?"
-          title: Supprimer cette image pour toujours
       insert:
         existing_image: Image Existante
         new_image: Nouvelle Image

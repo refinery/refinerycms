@@ -7,6 +7,10 @@ nl:
   file_must_be_these_formats: Uw afbeelding moet een JPG, PNG of GIF zijn.
   admin:
     images:
+      image:
+        delete:
+          message: Weet u zeker dat u '{{title}}' wilt verwijderen?
+          title: Verwijder deze afbeelding permanent
       form:
         image: Afbeelding
         use_current_image: Gebruik huidige afbeelding
@@ -25,15 +29,9 @@ nl:
           results_for: "Bekijk de zoekresultaten voor: {{query}}"
       grid_view:
         edit: Bewerk deze afbeelding
-        confirm_delete:
-          message: Weet u zeker dat u {{title}} wilt verwijderen?
-          title: Verwijder deze afbeelding permanent
         view_live: Bekijk deze afbeelding <br/><em>(opent een nieuw venster)</em>
       list_view_image:
         edit_this_image: Bewerk deze afbeelding
-        delete:
-          message: Weet u zeker dat u afbeelding {{title}} wilt verwijderen?
-          title: Verwijder de afbeelding permanent
       insert:
         existing_image: Bestaande afbeelding
         new_image: Nieuwe afbeelding
