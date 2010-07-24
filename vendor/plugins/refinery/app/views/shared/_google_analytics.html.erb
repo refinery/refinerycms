@@ -1,5 +1,5 @@
-<% if ((page_code = RefinerySetting[:analytics_page_code].to_s.strip).present? &&
-        page_code != 'UA-xxxxxx-x') -%>
+<% unless refinery_user? or 
+          ((page_code = RefinerySetting[:analytics_page_code].to_s.strip) =~ /^(UA-xxxxxx-x)?$/) -%>
   <script type="text/javascript">
     var _gaq = _gaq || [];
     _gaq.push(['_setAccount', '<%= page_code %>']);
