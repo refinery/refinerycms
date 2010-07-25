@@ -21,6 +21,8 @@ gem 'sqlite3-ruby', :require => 'sqlite3' #db_adapter=sqlite3
 #===REFINERY REQUIRED GEMS===
 #git 'git://github.com/rails/rails.git'
 
+gem 'refinerycms', :path => '.'
+
 gem 'rails',          '3.0.0.beta4'
 gem 'rmagick',        '~> 2.12.0'
 gem 'rack-cache',     :require => 'rack/cache'
