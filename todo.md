@@ -15,12 +15,11 @@ viewing the Rails 3.0 branch.
 
 Work items still to do:
 
-* Routing fixes (high).
 * Rework to exploit Rails 3 initialization hooks correctly (medium).
 * Cucumber tests (medium) to check for regressions.
-* Test that the application works as a gem.
-* Explore making the application into multiple gems, managed by Bundler.
-* Migrate to new generator API  (low)..
+* Explore making the application into multiple gems, managed by Bundler (as a
+  reference, refer to Spree: http://github.com/railsdog/spree)
+* Migrate to new generator API  (low).
 * Migrate to new Mailer API (low).
 * Fix other deprecations (low).
 
