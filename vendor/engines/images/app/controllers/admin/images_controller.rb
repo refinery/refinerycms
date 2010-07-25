@@ -84,8 +84,7 @@ protected
     @images = Image.paginate :page => (@paginate_page_number ||= params[:page]),
                              :conditions => conditions,
                              :order => 'created_at DESC',
-                             :per_page => Image.per_page(from_dialog?, !@app_dialog),
-                             :include => :thumbnails
+                             :per_page => Image.per_page(from_dialog?, !@app_dialog)
   end
 
   def restrict_controller
