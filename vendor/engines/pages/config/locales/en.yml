@@ -3,7 +3,7 @@ en:
     refinery_pages:
       title: Pages
   admin:
-    page_dialogs:
+    pages_dialogs:
       not_allowed: You do not have permission to access this feature.
       page_link:
         link_to_this_page: Link to this page

@@ -1,6 +1,6 @@
 require 'test_helper'
 
-ActiveRecord::Base.establish_connection(:adapter => "sqlite3", :dbfile => ":memory:")
+ActiveRecord::Base.establish_connection(:adapter => "sqlite3", :database => ":memory:")
 
 def setup_db
   ActiveRecord::Schema.define(:version => 1) do

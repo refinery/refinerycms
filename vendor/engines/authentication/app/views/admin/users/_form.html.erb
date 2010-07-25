@@ -10,12 +10,12 @@
   </div>
   <div class='field'>
     <%= f.label :password %>
-    <%= f.password_field :password %>
+    <%= f.password_field :password, :autocomplete => 'off' %>
     <%= "<br /><span class='preview'>#{t('.blank_password_keeps_current')}</span>" unless @user.new_record? %>
   </div>
   <div class='field'>
     <%= f.label :password_confirmation %>
-    <%= f.password_field :password_confirmation %>
+    <%= f.password_field :password_confirmation, :autocomplete => 'off' %>
   </div>
   <div class='field plugin_access'>
     <span class='label_with_help'>
@@ -42,7 +42,14 @@
       <% end %>
     </ul>
   </div>
-  <%= render :partial => "/shared/admin/form_actions", :locals => {:f => f, :continue_editing => false, :hide_delete => !current_user.can_delete?(@user)} %>
+  <%= render :partial => "/shared/admin/form_actions",
+             :locals => {
+               :f => f,
+               :continue_editing => false,
+               :hide_delete => !current_user.can_delete?(@user),
+               :delete_title => t('admin.users.user.confirm_delete_title'),
+               :delete_confirmation => t('admin.users.user.confirm_delete_message', :who => @user.login)
+             } %>
 <% end %>
 
 <% content_for :head do %>

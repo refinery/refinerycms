@@ -27,7 +27,7 @@ en:
       sign_in: Sign in
       forgot_password: I forgot my password
   users:
-    setup_website_name: "First let's give the site a name. <a href='%{link}'>Go here</a> to edit your website's name"
+    setup_website_name: "First let's give the site a name. <a href='%{link}' name='%{title}'>Go here</a> to edit your website's name"
     signup_disabled: User signup is disabled
     new:
       fill_form: Fill out your details below so that we can get you started.

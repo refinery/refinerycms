@@ -6,5 +6,5 @@ require 'rake'
 require 'rake/testtask'
 require 'rake/rdoctask'
 
-require 'refinery/tasks/refinery'
+require 'tasks/refinery'
 Rails::Application.load_tasks

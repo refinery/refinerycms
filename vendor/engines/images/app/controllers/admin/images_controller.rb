@@ -81,10 +81,15 @@ protected
   end
 
   def paginate_images(conditions={})
-    @images = Image.paginate   :page => (@paginate_page_number ||= params[:page]),
-                               :conditions => conditions,
-                               :order => 'created_at DESC',
-                               :per_page => Image.per_page(from_dialog?)
+    @images = Image.paginate :page => (@paginate_page_number ||= params[:page]),
+                             :conditions => conditions,
+                             :order => 'created_at DESC',
+                             :per_page => Image.per_page(from_dialog?, !@app_dialog),
+                             :include => :thumbnails
+  end
+
+  def restrict_controller
+    super unless action_name == 'insert'
   end
 
   def store_current_location!

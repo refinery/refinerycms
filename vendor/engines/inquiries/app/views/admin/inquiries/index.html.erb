@@ -6,7 +6,7 @@
   <% else %>
     <% if @grouped_inquiries.any? -%>
       <% @grouped_inquiries.each do |container| %>
-        <h3><%= (inquiry_group = container.last).first.created_at.strftime("%A, %d %B %Y") %></h3>
+        <h3><%= l((inquiry_group = container.last).first.created_at) %></h3>
         <ul>
           <%= render :partial => 'inquiry', :collection => inquiry_group %>
         </ul>

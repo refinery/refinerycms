@@ -1,5 +1,5 @@
 --- 
-hash: b9c2f16687a62b995f5d0aa274bf03091ed83af6
+hash: 9bb1e951a4b0fd047e17a53dd318dc3dd6dd440d
 sources: 
 - Git: 
     require: json/pure
@@ -39,7 +39,7 @@ specs:
 - rack: 
     version: 1.1.0
 - rack-mount: 
-    version: 0.6.6
+    version: 0.6.9
 - rack-test: 
     version: 0.5.4
 - tzinfo: 
@@ -77,8 +77,10 @@ specs:
 - json_pure: 
     version: 1.4.3
     source: 0
+- rubyzip: 
+    version: 0.9.4
 - selenium-webdriver: 
-    version: 0.0.24
+    version: 0.0.27
 - capybara: 
     version: 0.3.9
 - configuration: 
@@ -88,11 +90,11 @@ specs:
 - trollop: 
     version: 1.16.2
 - gherkin: 
-    version: 2.0.2
+    version: 2.1.5
 - term-ansicolor: 
     version: 1.0.5
 - cucumber: 
-    version: 0.8.3
+    version: 0.8.5
 - cucumber-rails: 
     version: 0.3.2
 - database_cleaner: 
@@ -109,11 +111,11 @@ specs:
 - hoe: 
     version: 2.6.1
 - launchy: 
-    version: 0.3.5
+    version: 0.3.7
 - rack-cache: 
     version: 0.5.2
 - thor: 
-    version: 0.13.7
+    version: 0.13.8
 - railties: 
     version: 3.0.0.beta4
 - rails: 
@@ -121,19 +123,23 @@ specs:
 - rmagick: 
     version: 2.12.2
 - rspec-core: 
-    version: 2.0.0.beta.16
+    version: 2.0.0.beta.18
 - rspec-expectations: 
-    version: 2.0.0.beta.16
+    version: 2.0.0.beta.18
 - rspec-mocks: 
-    version: 2.0.0.beta.16
+    version: 2.0.0.beta.18
 - rspec: 
-    version: 2.0.0.beta.16
+    version: 2.0.0.beta.18
 - webrat: 
     version: 0.7.1
 - rspec-rails: 
-    version: 2.0.0.beta.16
+    version: 2.0.0.beta.18
+- ruby-prof: 
+    version: 0.8.2
+- spork: 
+    version: 0.8.4
 - sqlite3-ruby: 
-    version: 1.3.0
+    version: 1.3.1
 - test-unit: 
     version: 1.2.3
 - truncate_html: 
@@ -153,11 +159,9 @@ dependencies:
     group: 
     - :default
   rmagick: 
-    version: ~> 2.12.2
+    version: ~> 2.12.0
     group: 
     - :default
-    require: 
-    - RMagick
   rack-cache: 
     version: ">= 0"
     group: 
@@ -197,7 +201,7 @@ dependencies:
     require: 
     - json/pure
   rspec: 
-    version: ~> 2.0.0.beta.15
+    version: ">= 0"
     group: 
     - :test
   rspec-core: 
@@ -219,19 +223,11 @@ dependencies:
     require: 
     - rspec/mocks
   rspec-rails: 
-    version: ~> 2.0.0.beta.15
-    group: 
-    - :test
-  factory_girl: 
     version: ">= 0"
     group: 
     - :test
   test-unit: 
     version: = 1.2.3
-    group: 
-    - :test
-  cucumber-rails: 
-    version: ">= 0"
     group: 
     - :test
   capybara: 
@@ -242,7 +238,31 @@ dependencies:
     version: ">= 0"
     group: 
     - :test
+  cucumber-rails: 
+    version: ">= 0"
+    group: 
+    - :test
+  cucumber: 
+    version: ">= 0"
+    group: 
+    - :test
+  spork: 
+    version: ">= 0"
+    group: 
+    - :test
   launchy: 
+    version: ">= 0"
+    group: 
+    - :test
+  gherkin: 
+    version: ">= 0"
+    group: 
+    - :test
+  factory_girl: 
+    version: ">= 0"
+    group: 
+    - :test
+  ruby-prof: 
     version: ">= 0"
     group: 
     - :test

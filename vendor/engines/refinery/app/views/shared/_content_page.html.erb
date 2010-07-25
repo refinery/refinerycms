@@ -14,7 +14,7 @@
     dom_id = (section[:id] ||= section[:yield].to_s)
     section[:html] = (yield(section[:yield]))
 
-    if section[:html].blank? and !show_empty_sections and !remove_automatic_sections
+    if section[:html].blank? and !show_empty_sections and !remove_automatic_sections and section.keys.include?(:fallback)
       section[:html] = section[:fallback].html_safe
     end
 

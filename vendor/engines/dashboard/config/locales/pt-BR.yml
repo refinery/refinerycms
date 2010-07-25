@@ -17,7 +17,7 @@ pt-BR:
         see: "Ver '%{what}'"
         latest_activity_message: "%{kind} %{what} foi %{action}"
       recent_inquiries:
-        latest_inquiries: Latest inquiries
+        latest_inquiries: Últimas mensagens
   updated:
     'with_article "as"': atualizada
     'with_article "os"': atualizado

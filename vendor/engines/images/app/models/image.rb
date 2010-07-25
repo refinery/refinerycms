@@ -17,7 +17,11 @@ class Image < ActiveRecord::Base
   acts_as_indexed :fields => [:title]
 
   # when a dialog pops up with images, how many images per page should there be
-  PAGES_PER_DIALOG = 12
+  PAGES_PER_DIALOG = 18
+
+  # when a dialog pops up with images, but that dialog has image resize options
+  # how many images per page should there be
+  PAGES_PER_DIALOG_THAT_HAS_SIZE_OPTIONS = 12
 
   # when listing images out in the admin area, how many images should show per page
   PAGES_PER_ADMIN_INDEX = 20
@@ -25,8 +29,16 @@ class Image < ActiveRecord::Base
   delegate :size, :mime_type, :url, :width, :height, :to => :image
 
   # How many images per page should be displayed?
-  def self.per_page(dialog = false)
-    dialog ? PAGES_PER_DIALOG : PAGES_PER_ADMIN_INDEX
+  def self.per_page(dialog = false, has_size_options = false)
+    if dialog
+      unless has_size_options
+        PAGES_PER_DIALOG
+      else
+        PAGES_PER_DIALOG_THAT_HAS_SIZE_OPTIONS
+      end
+    else
+      PAGES_PER_ADMIN_INDEX
+    end
   end
 
   # Returns a titleized version of the filename

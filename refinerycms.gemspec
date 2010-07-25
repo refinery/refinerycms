@@ -1,14 +1,14 @@
 Gem::Specification.new do |s|
   s.name              = %q{refinerycms}
-  s.version           = %q{0.9.7.5}
+  s.version           = %q{0.9.7.8}
   s.description       = %q{A beautiful open source Ruby on Rails content manager for small business. Easy to extend, easy to use, lightweight and all wrapped up in a super slick UI.}
-  s.date              = %q{2010-07-08}
+  s.date              = %q{2010-07-23}
   s.summary           = %q{A beautiful open source Ruby on Rails content manager for small business.}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
   s.authors           = %w(Resolve\ Digital David\ Jones Philip\ Arndt)
   s.require_paths     = %w(lib)
-  s.executables       = %w(refinery refinery-upgrade-096-to-097)
+  s.executables       = %w(refinery refinery-upgrade-096-to-097 refinerycms)
 
   s.files             = [
     '.gitignore',
@@ -30,6 +30,7 @@ Gem::Specification.new do |s|
     'app/helpers/application_helper.rb',
     'bin/refinery',
     'bin/refinery-upgrade-096-to-097',
+    'bin/refinerycms',
     'config/acts_as_indexed_config.rb',
     'config/amazon_s3.yml.example',
     'config/application.rb',
@@ -108,6 +109,7 @@ Gem::Specification.new do |s|
     'features/refinery/site_bar.feature',
     'features/step_definitions',
     'features/step_definitions/refinery',
+    'features/step_definitions/refinery/core_steps.rb',
     'features/step_definitions/refinery/page_steps.rb',
     'features/step_definitions/refinery/user_steps.rb',
     'features/step_definitions/web_steps.rb',
@@ -117,10 +119,6 @@ Gem::Specification.new do |s|
     'features/support/negative_expectations_helper.rb',
     'features/support/paths.rb',
     'lib/gemspec.rb',
-    'lib/refinery',
-    'lib/refinery/tasks',
-    'lib/refinery/tasks/refinery.rake',
-    'lib/refinery/tasks/refinery.rb',
     'lib/refinery_initializer.rb',
     'lib/tasks',
     'lib/tasks/cucumber.rake',
@@ -554,7 +552,8 @@ Gem::Specification.new do |s|
     'public/stylesheets/refinery/application.css',
     'public/stylesheets/refinery/formatting.css',
     'public/stylesheets/refinery/home.css',
-    'public/stylesheets/refinery/ie.css',
+    'public/stylesheets/refinery/ie-less-than-8.css',
+    'public/stylesheets/refinery/ie-less-than-9.css',
     'public/stylesheets/refinery/refinery.css',
     'public/stylesheets/refinery/site_bar.css',
     'public/stylesheets/refinery/theme.css',
@@ -1112,7 +1111,7 @@ Gem::Specification.new do |s|
     'vendor/plugins/images/app/views',
     'vendor/plugins/images/app/views/admin',
     'vendor/plugins/images/app/views/admin/images',
-    'vendor/plugins/images/app/views/admin/images/_existing_image.erb',
+    'vendor/plugins/images/app/views/admin/images/_existing_image.html.erb',
     'vendor/plugins/images/app/views/admin/images/_form.html.erb',
     'vendor/plugins/images/app/views/admin/images/_grid_view.html.erb',
     'vendor/plugins/images/app/views/admin/images/_list_view.html.erb',
@@ -1203,9 +1202,9 @@ Gem::Specification.new do |s|
     'vendor/plugins/pages/app',
     'vendor/plugins/pages/app/controllers',
     'vendor/plugins/pages/app/controllers/admin',
-    'vendor/plugins/pages/app/controllers/admin/page_dialogs_controller.rb',
     'vendor/plugins/pages/app/controllers/admin/page_parts_controller.rb',
     'vendor/plugins/pages/app/controllers/admin/pages_controller.rb',
+    'vendor/plugins/pages/app/controllers/admin/pages_dialogs_controller.rb',
     'vendor/plugins/pages/app/controllers/pages_controller.rb',
     'vendor/plugins/pages/app/helpers',
     'vendor/plugins/pages/app/helpers/pages_helper.rb',
@@ -1216,9 +1215,6 @@ Gem::Specification.new do |s|
     'vendor/plugins/pages/app/presenters/page_presenter.rb',
     'vendor/plugins/pages/app/views',
     'vendor/plugins/pages/app/views/admin',
-    'vendor/plugins/pages/app/views/admin/page_dialogs',
-    'vendor/plugins/pages/app/views/admin/page_dialogs/_page_link.html.erb',
-    'vendor/plugins/pages/app/views/admin/page_dialogs/link_to.html.erb',
     'vendor/plugins/pages/app/views/admin/pages',
     'vendor/plugins/pages/app/views/admin/pages/_form.html.erb',
     'vendor/plugins/pages/app/views/admin/pages/_form_advanced_options.html.erb',
@@ -1231,6 +1227,9 @@ Gem::Specification.new do |s|
     'vendor/plugins/pages/app/views/admin/pages/edit.html.erb',
     'vendor/plugins/pages/app/views/admin/pages/index.html.erb',
     'vendor/plugins/pages/app/views/admin/pages/new.html.erb',
+    'vendor/plugins/pages/app/views/admin/pages_dialogs',
+    'vendor/plugins/pages/app/views/admin/pages_dialogs/_page_link.html.erb',
+    'vendor/plugins/pages/app/views/admin/pages_dialogs/link_to.html.erb',
     'vendor/plugins/pages/app/views/pages',
     'vendor/plugins/pages/app/views/pages/home.html.erb',
     'vendor/plugins/pages/app/views/pages/show.html.erb',
@@ -1316,6 +1315,7 @@ Gem::Specification.new do |s|
     'vendor/plugins/refinery/lib/generators/refinery/templates/config',
     'vendor/plugins/refinery/lib/generators/refinery/templates/config/locales',
     'vendor/plugins/refinery/lib/generators/refinery/templates/config/locales/en.yml',
+    'vendor/plugins/refinery/lib/generators/refinery/templates/config/locales/nb.yml',
     'vendor/plugins/refinery/lib/generators/refinery/templates/config/locales/nl.yml',
     'vendor/plugins/refinery/lib/generators/refinery/templates/config/routes.rb',
     'vendor/plugins/refinery/lib/generators/refinery/templates/controller.rb',
@@ -1355,6 +1355,7 @@ Gem::Specification.new do |s|
     'vendor/plugins/refinery/lib/tasks',
     'vendor/plugins/refinery/lib/tasks/doc.rake',
     'vendor/plugins/refinery/lib/tasks/refinery.rake',
+    'vendor/plugins/refinery/lib/tasks/refinery.rb',
     'vendor/plugins/refinery/lib/tasks/yard.rake',
     'vendor/plugins/refinery/plugins.md',
     'vendor/plugins/refinery/rails',
@@ -1451,6 +1452,8 @@ Gem::Specification.new do |s|
     'vendor/plugins/translate',
     'vendor/plugins/translate/init.rb',
     'vendor/plugins/translate/lib',
+    'vendor/plugins/translate/lib/tasks',
+    'vendor/plugins/translate/lib/tasks/translate.rake',
     'vendor/plugins/translate/lib/translate',
     'vendor/plugins/translate/lib/translate/file.rb',
     'vendor/plugins/translate/lib/translate/keys.rb',
@@ -1460,9 +1463,7 @@ Gem::Specification.new do |s|
     'vendor/plugins/translate/MIT-LICENSE',
     'vendor/plugins/translate/Rakefile',
     'vendor/plugins/translate/README',
-    'vendor/plugins/translate/REFINERY_README',
-    'vendor/plugins/translate/tasks',
-    'vendor/plugins/translate/tasks/translate.rake'
+    'vendor/plugins/translate/REFINERY_README'
   ]
   s.test_files        = [
     'test/functional/dashboard_controller_test.rb',

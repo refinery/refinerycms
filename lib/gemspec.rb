@@ -5,7 +5,7 @@ files = %w( .gitignore .yardopts Gemfile Rakefile *.md public/.htaccess config.r
   files += Dir.glob("#{dir}/**/*")
 end
 
-files.reject!{|f| !File.exist?(f) or f =~ /^(public\/system)|(config\/database.yml$)|(.*\/cache)|(db\/.*\.sqlite3?)|(.+\.rbc)/}
+files.reject!{|f| !File.exist?(f) or f =~ /^(public\/system)|(config\/database.yml$)|(.*\/cache)|(db\/.*\.sqlite3?$)|(\.log$)|(\.rbc$)/}
 
 gemspec = <<EOF
 Gem::Specification.new do |s|
@@ -18,7 +18,7 @@ Gem::Specification.new do |s|
   s.homepage          = %q{http://refinerycms.com}
   s.authors           = %w(Resolve\\ Digital David\\ Jones Philip\\ Arndt)
   s.require_paths     = %w(lib)
-  s.executables       = %w(refinery refinery-upgrade-096-to-097)
+  s.executables       = %w(#{Dir.glob('bin/*').map{|d| d.gsub('bin/','')}.join(' ')})
 
   s.files             = [
     '#{files.join("',\n    '")}'

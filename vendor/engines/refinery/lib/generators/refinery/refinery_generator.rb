@@ -57,6 +57,7 @@ class RefineryGenerator < Rails::Generator::NamedBase
       m.template "init.rb", "vendor/plugins/#{plural_name}/init.rb"
 
       m.directory 'db/migrate/'
+      m.directory 'db/seeds/'
       m.template 'seed.rb', "db/seeds/#{plural_name}.rb"
       m.migration_template  'migration.rb', 'db/migrate',
                             :assigns => {:migration_name => "Create#{class_name.pluralize}"},
