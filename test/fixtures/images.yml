@@ -1,4 +1,5 @@
 the_world:
+  image_uid: /test/The%20world!.gif
   image_mime_type: image/gif
   image_name: The%20world!.gif
   image_width: 614
@@ -6,6 +7,7 @@ the_world:
   image_size: 17535
 
 our_car:
+  image_uid: /test/car-wallpapers19.jpg
   image_mime_type: image/jpg
   image_name: car-wallpapers19.jpg
   image_width: 640
