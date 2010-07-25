@@ -138,8 +138,8 @@ var wymeditor_boot_options = $.extend({
 
   , dialogPath: "/refinery/dialogs/"
   , dialogFeatures: {
-      width: 958
-    , height: 500
+      width: 866
+    , height: 455
     , modal: true
     , draggable: true
     , resizable: false
@@ -149,7 +149,7 @@ var wymeditor_boot_options = $.extend({
   }
   , dialogInlineFeatures: {
       width: 600
-    , height: 530
+    , height: 485
     , modal: true
     , draggable: true
     , resizable: false

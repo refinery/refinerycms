@@ -4,7 +4,12 @@ class Refinery::LinkRenderer < WillPaginate::ViewHelpers::LinkRenderer
 
 =begin
 
+  attr_accessor :url
+
   def url_for(page)
+    # extract any url parameter and store it for subsequent requests but delete it
+    # this is so that we don't end up with it being an attribute of the resulting HTML.
+    @url ||= @options.delete(:url) || {}
     page_one = page == 1
     @url_params = {}
     # page links should preserve GET parameters
@@ -19,8 +24,7 @@ class Refinery::LinkRenderer < WillPaginate::ViewHelpers::LinkRenderer
       @url_params[param_name] = page_one ? 1 : 2
     end
 
-    url = @template.url_for(@url_params.merge!(@options[:url]||{}).to_options)
-    #@options.delete(:url) # no, don't! We want it to use the url every time.
+    url = @template.url_for(@url_params.merge!(@url).to_options)
     return url if page_one
 
     if complex

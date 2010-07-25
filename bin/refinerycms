@@ -1,0 +1,158 @@
+#!/usr/bin/env ruby
+require 'pathname'
+require 'fileutils'
+begin
+  require 'rubygems'
+  require 'bundler'
+rescue LoadError
+  puts "\n==ACTION REQUIRED=="
+  puts "Could not load the bundler gem. This is a required dependency of Refinery CMS.\n\n"
+  puts "Please install it with `gem install bundler`.\n\n"
+  exit
+end
+
+refinery_root = (defined?(REFINERY_ROOT) && REFINERY_ROOT.is_a?(Pathname) ? REFINERY_ROOT : Pathname.new(File.expand_path(File.dirname(__FILE__) << "/..")))
+unless (app_path = ARGV.shift).nil? or app_path.length == 0
+  # if "" or "." or "./" is specified then get the current directory otherwise accept the specified app_path.
+  if (app_path.length <= 2 and ((is_current_dir = app_path =~ /(\.(\/)?)/).nil? or is_current_dir < 2))
+    rails_root = Dir.getwd
+  else
+    rails_root = app_path =~ /^\// ? app_path : File.expand_path(File.join(Dir.getwd, app_path.gsub(/^\.\//, '')))
+  end
+
+  if File.directory?(rails_root)
+    if ARGV.include?("--force")
+      # remove the contents of the current directory
+      Dir[File.join(rails_root, "*")].each {|dir| FileUtils::rm_rf(dir, :secure => true) }
+    else
+      puts "The path you specified already exists. If you want to override this directory (i.e. delete all the current contents) run this again with --force"
+    end
+  end
+
+  unless File.directory?(rails_root) and !ARGV.include?("--force")
+    # make the application path directory
+    FileUtils::makedirs rails_root
+
+    # copy in all of the relevant directories and root files.
+    to_copy = %w(app config db lib public themes script *.md Rakefile config.ru).map do |dir|
+      (new_file_path = refinery_root.join(dir)).exist? ? new_file_path.to_s : nil
+    end
+    FileUtils::cp_r to_copy.compact, rails_root, :verbose => false
+
+    # ensure lib/refinery_initializer.rb and lib/gemspec.rb don't make it in.
+    FileUtils::rm File.join(%W(#{rails_root} lib refinery_initializer.rb)) if File.exists?(File.join(%W(#{rails_root} lib refinery_initializer.rb)))
+    FileUtils::rm File.join(%W(#{rails_root} lib gemspec.rb)) if File.exists?(File.join(%W(#{rails_root} lib gemspec.rb)))
+
+    # copy the appropriate database adapter as specified (or not)
+    db_adapter = 'sqlite3'
+    if ARGV.collect{|a| a.split('=').first}.include?('--database')
+      ARGV.each do |arg|
+        arg_parts = arg.split('=')
+        db_adapter = arg_parts.last if arg_parts.first == '--database'
+      end
+    end
+    FileUtils::cp File.join(%W(#{rails_root} config database.yml.#{db_adapter})), File.join(%W(#{rails_root} config database.yml.example))
+
+    # add in the config files
+    %w(database amazon_s3 rackspace_cloudfiles).each do |config|
+      FileUtils::move File.join(%W(#{rails_root} config #{config}.yml.example)), File.join(%W(#{rails_root} config #{config}.yml))
+
+      # figure out the app name from the install path and swap out your_local_xxx with this name.
+      unless rails_root == "/" or RUBY_PLATFORM =~ /mswin/
+        app_name = rails_root.split(File::SEPARATOR).last
+        # read in the file and split up the lines
+        lines = File.open(File.join(%W(#{rails_root} config #{config}.yml)), "r").read.split("\n")
+        lines.each do |line|
+          line.gsub!("your_local_#{config}", "#{app_name}_development")
+          line.gsub!("your_test_#{config}", "#{app_name}_test")
+          line.gsub!("your_cucumber_#{config}", "#{app_name}_cucumber")
+          line.gsub!("your_production_#{config}", "#{app_name}_production")
+        end
+        # write the new content into the file.
+        config_file = File.open(File.join(%W(#{rails_root} config #{config}.yml)), "w")
+        config_file.puts(lines.join("\n"))
+        config_file.close
+      end
+    end
+
+    # update the environment file with a new secret key.
+    require 'digest/sha1'
+    new_digest = ""
+    3.times { new_digest << Digest::SHA1.hexdigest("--refinery--#{Time.now.to_s}--#{rand(10000000)}--") }
+
+    # read in the file and split up the lines
+    app_config_file = File.exist?(File.join(%W(#{rails_root} config application.rb))) ? "application.rb" : "environment.rb"
+    lines = File.open(File.join(%W(#{rails_root} config #{app_config_file})), "r").read.split("\n")
+    lines.each do |line|
+      match = line.scan(/(:secret)([^']*)([\'])([^\']*)/).flatten.last
+      line.gsub!(match, new_digest) unless match.nil?
+    end
+
+    # write the new content into the config file.
+    app_config = File.open(File.join(%W(#{rails_root} config #{app_config_file})), "w")
+    app_config.puts(lines.join("\n"))
+    app_config.close
+
+    # read in the Gemfile and write it back out with the refinerycms gem enabled.
+    (lines = refinery_root.join('Gemfile').open('r').read.split("\n")).each do |line|
+      line.gsub!(/\#*\s?gem 'refinerycms'/, "gem 'refinerycms'")
+
+      # Ensure that the correct database gem libraries are included for the database adapter
+      # that the user has specified in the refinery install command.
+      if line =~ /\#db\_adapter\=/
+        if line =~ %r{#db_adapter=#{db_adapter}}
+          line.gsub!(/^(\#*\s?gem)/, 'gem')
+        else
+          line.gsub!(/^(\s?gem)/, '# gem')
+        end
+      end
+    end
+
+    # write the new content into the file.
+    app_gemfile = File.open(File.join(%W(#{rails_root} Gemfile)), "w")
+    app_gemfile.puts(lines.join("\n"))
+    app_gemfile.close
+
+    # Remove development specific stuff from the .gitinore file
+    ignore_content = refinery_root.join('.gitignore').read
+    ignore_content.gsub!(/#===REMOVED DURING REFINERY GEM INSTALL===.*#===END OF REMOVED DURING REFINERY GEM INSTALL===/m, '')
+
+    File.open(File.join(%W(#{rails_root} .gitignore)), "w") do |f|
+      f.puts(ignore_content)
+    end
+
+    puts "\n---------"
+    puts "Refinery successfully installed in '#{rails_root}'!\n\n"
+
+    # automate..
+    puts "Installing gem requirements using bundler..\n"
+    puts "Running: " + (cmd="bundle install")
+    puts `cd '#{rails_root}' && #{cmd}`
+
+    puts "\n\nSetting up your development database..\n"
+    puts "Running: " + (cmd="rake -f '#{File.join(rails_root, 'Rakefile')}' db:setup")
+    puts `cd '#{rails_root}' && #{cmd}`
+
+    puts "\n\nUpdating some core refinery files..\n"
+    puts "Running: " + (cmd="rake -f '#{File.join(rails_root, 'Rakefile')}' refinery:update from_installer=true")
+    puts `cd '#{rails_root}' && #{cmd}`
+    # end automation..
+
+    # output helpful messages.
+    puts "\n=== ACTION REQUIRED ==="
+    puts "Now you can launch your webserver using:"
+    puts "\ncd #{rails_root}"
+    puts "script/server"
+    puts "\nThis will launch the built-in webserver at port 3000."
+    puts "You can now see your site running in your browser at http://localhost:3000"
+    puts "\nThanks for installing Refinery, enjoy creating your new application!"
+    puts "---------\n\n"
+  end
+else
+  puts "\nPlease specify the path where you want to install Refinery. i.e. #{__FILE__.split(File::SEPARATOR).last} /path/to/project [options]"
+  puts "\n"
+  puts "Options:"
+  puts "--force             Forces the directory to be overriden if the directory already exists"
+  puts "--database=name     Preconfigure for selected database (options: mysql/postgresql/sqlite3 - default: sqlite3)."
+  puts "\n"
+end

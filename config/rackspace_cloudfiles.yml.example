@@ -1,14 +1,15 @@
+login: &login
+  username: <%= ENV['RACKSPACE_USERNAME'] %>
+  api_key: <%= ENV['RACKSPACE_KEY'] %>
+
 development:
-    container_name: your_local_rackspace_cloudfiles
-    username:
-    api_key:
+  container_name: your_local_rackspace_cloudfiles
+  <<: *login 
 
 test:
-    container_name: your_test_rackspace_cloudfiles
-    username:
-    api_key:
+  container_name: your_test_rackspace_cloudfiles
+  <<: *login 
 
 production:
-    container_name: your_production_rackspace_cloudfiles
-    username:
-    api_key:
+  container_name: your_production_rackspace_cloudfiles
+  <<: *login 

@@ -117,8 +117,8 @@ hr {
   border: 1px solid red !important;
   background-color: #FFECF0 !important;
 }
-.fieldWithErrors iframe {
-  border: 1px solid red !important;
+.fieldWithErrors iframe, .fieldWithErrors .wym_box {
+  border-color: red !important;
 }
 #message, #flash {
   padding: 8px 8px 8px 30px;
@@ -557,7 +557,7 @@ pre {
 }
 .pagination {
   background-color: #C9DAE2;
-  padding: 7px;
+  padding: 5px 5px 4px 5px;
   margin: 10px 0px;
 }
 .pagination .disabled {
@@ -787,17 +787,19 @@ body.dialog form {
   font-weight: bold;
 }
 .dialog #dialog_menu_left {
+  position: fixed;
+  left: 12px;
+  top: 9px;
   width: 130px;
-  float: left;
-  margin-top: 9px;
 }
 .dialog #dialog_main {
   float: left;
+  margin-left: 130px;
   min-height: 405px;
-  width: 756px;
+  width: 696px;
 }
-.wym_dialog_table{
-	height:250px;
+.wym_dialog_table {
+	height: 250px;
 }
 .dialog #existing_image_content {
   position: relative;
@@ -811,7 +813,7 @@ body.dialog form {
 .dialog #existing_image_area_content ul li {
   list-style: none;
   padding: 0px;
-  margin: 0px 6px;
+  margin: 0px 2px 0px 0px;
   float: left;
   height: 114px;
   max-height: 114px;
@@ -827,6 +829,9 @@ body.dialog form {
 }
 .dialog #existing_image_area_content ul li.selected img {
   border: 4px solid #22A7F2;
+}
+.dialog #existing_image_size_area {
+  margin-top: 18px;
 }
 .dialog #existing_image_size_area ul {
   margin: 0px;
@@ -862,24 +867,12 @@ body.dialog form {
 .dialog #existing_image_size_area #image_dialog_size_2 a { height: 70px; width: 70px; line-height: 70px; margin-top:-10px}
 .dialog #existing_image_size_area #image_dialog_size_3 a { height: 90px; width: 90px; line-height: 90px; margin-top:-20px}
 
-
-/*
-#dialog_main {
-  position: relative;
-}
-*/
-#existing_image_area_content {
-  height: 238px;
-}
-#existing_image_area .pagination {
-  background: #FFF;
-  /*bottom: 0px;*/
-  /*right: 0px;*/
-  text-align: right;
-  float: right;
-  /*position: absolute;*/
+#dialog_main .pagination {
   margin: 0px;
-  width: 763px;
+  position: fixed;
+  bottom: 5px;
+  right: 12px;
+  z-index: 1000;
 }
 #upload_image_area, #upload_resource_area {
   padding: 12px;
@@ -895,7 +888,7 @@ body.dialog form {
   width: 100%;
 }
 #dialog_main #pages_list ul {
-  margin: 12px 24px 24px 12px;
+  margin: 0px 12px 0px 12px;
   padding: 0px;
 }
 #dialog_main #pages_list ul li {
@@ -1109,6 +1102,12 @@ a#toggle_advanced_options:hover {
   margin-top: 10px;
   height: 45px;
 }
+.dialog form {
+  margin-bottom: 45px;
+}
+.dialog .dialog_area > div > .field label:first-child, .dialog .dialog_area > div > label:first-child {
+  margin-top: 0px;
+}
 .wym_dialog .form-actions, #content.form-actions.dialog-form-actions, .ui-dialog .form-actions {
   margin-top: 16px;
 }
@@ -1141,6 +1140,9 @@ a#toggle_advanced_options:hover {
   border-bottom: 0px;
   width: auto;
 }
+#dialog_container.dialog.iframed #content .form-actions {
+  position: fixed;
+}
 #existing_image_area {
   padding-top:6px;
 }
@@ -1153,14 +1155,14 @@ textarea.wymeditor {
   padding: 12px;
 }
 ul#image_grid {
-  width: 670px;/*580px;*/
+  width: 100%;
   padding: 0px;
   margin: 10px 0px 15px 0px;
 }
 ul#image_grid li {
   position: relative;
   float: left;
-  margin: 0px 12px 12px 0px;
+  margin: 0px 7px 12px 0px;
   padding: 0px;
   width: 124px;
   text-align: center;
@@ -1168,6 +1170,10 @@ ul#image_grid li {
   overflow: hidden;
   max-width: 124px;
   max-height: 165px;
+}
+ul#image_grid li.image_4 {
+  margin-left: 1px;
+  margin-right: 0px;
 }
 #records ul#image_grid li .actions {
   top: auto;
@@ -1215,7 +1221,7 @@ ul#plugins li {
   width:auto;
 }
 #new_page_part_dialog .field {
-  padding: 30px 10px;
+  padding: 0px 10px;
 }
 .hide-overflow {
   overflow: hidden;
@@ -1399,15 +1405,15 @@ input.button.close_dialog:active, a.button.close_dialog:active, #content a.butto
 }
 #page_container, .wym_box {
   border-radius-bottom: 5px;
-  -webkit-border-radius-bottom-left: 5px;
-  -webkit-border-radius-bottom-right: 5px;
+  -moz-border-radius-bottomleft: 5px;
+  -moz-border-radius-bottomright: 5px;
   -webkit-border-bottom-left-radius: 5px;
   -webkit-border-bottom-right-radius: 5px;
 }
 .wym_iframe iframe {
   border-radius-bottom: 2px;
-  -webkit-border-radius-bottom-left: 2px;
-  -webkit-border-radius-bottom-right: 2px;
+  -moz-border-radius-bottomleft: 2px;
+  -moz-border-radius-bottomright: 2px;
   -webkit-border-bottom-left-radius: 2px;
   -webkit-border-bottom-right-radius: 2px;
 }

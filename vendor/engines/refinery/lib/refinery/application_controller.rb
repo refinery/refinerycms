@@ -41,7 +41,7 @@ class Refinery::ApplicationController < ActionController::Base
   end
 
   def home_page?
-    action_name == "home" and controller_name == "pages"
+    root_url(:only_path => true) == request.path
   end
 
   def just_installed?

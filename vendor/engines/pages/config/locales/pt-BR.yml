@@ -21,7 +21,7 @@ pt-BR:
         meta_description_help: Meta descrição
         show_in_menu: Mostrar no menu
   admin:
-    page_dialogs:
+    pages_dialogs:
       not_allowed: Você não ter permissão para acessar esta funcionalidade.
       page_link:
         link_to_this_page: Redirecionar para esta página

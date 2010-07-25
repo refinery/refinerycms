@@ -53,6 +53,7 @@ en:
         spam: Spam
         spam_yes: 'yes'
         inquiry: Inquiry
+        title: Remove this inquiry forever.
     inquiry_settings:
       update:
         updated: "'%{setting}' was successfully updated."

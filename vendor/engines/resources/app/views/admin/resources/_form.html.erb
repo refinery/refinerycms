@@ -3,22 +3,27 @@
   <%= f.error_messages %>
 
   <div class='field'>
-    <% if action_name =~ /(edit)|(update)/ -%>
-      <%= link_to t('.download_current'), @resource.url, {:title => @resource.title} -%>
+    <% if action_name =~ /(edit)|(update)/ %>
+      <%= link_to t('.download_current'), @resource.url,
+                  :title => @resource.title %>
       <em><%= t('.or')%></em><%=t('.replace') %>
-    <% end -%>
-    <%= f.file_field :file -%>
+    <% end %>
+    <%= f.file_field :file %>
   </div>
 
   <div class='field'>
-    <label><%= t('.maximum_file_size', :megabytes => Resource::MAX_SIZE_IN_MB) %></label>
+    <label>
+      <%= t('.maximum_file_size', :megabytes => Resource::MAX_SIZE_IN_MB) %>
+    </label>
   </div>
 
   <%= render :partial => "/shared/admin/form_actions",
              :locals => {
                :f => f,
                :continue_editing => false,
-               :hide_cancel => (@app_dialog or action_name == "insert" or from_dialog?)
+               :hide_cancel => (@app_dialog or action_name == "insert" or from_dialog?),
+                :delete_title => t('admin.resources.resource.delete.title'),
+                :delete_confirmation => t('admin.resources.resource.delete.message', :title => @resource.filename)
              } %>
 
   <% if @app_dialog -%>

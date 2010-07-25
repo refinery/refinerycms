@@ -36,7 +36,7 @@ de:
     reset:
       code_invalid: "Es tut uns leid, aber diese Reset-Code ist abgelaufen oder ungültig. Wenn Sie Probleme versuchen Kopieren und Einfügen der URL aus Ihrem E-Mail in Ihrem Browser oder ein Neustart des Passwort-Reset-Prozess."
       successful: "Passwort zurücksetzen erfolgreich %{email}"
-    setup_website_name: "Lassen Sie uns der Website als Erstes einen Namen geben. <a href='%{link}'>Hier</a> können Sie den Namen Ihrer Website bearbeiten."
+    setup_website_name: "Lassen Sie uns der Website als Erstes einen Namen geben. <a href='%{link}' name='%{title}'>Hier</a> können Sie den Namen Ihrer Website bearbeiten."
     signup_disabled: Benutzerregistrierung ist deaktiviert
     new:
       fill_form: "Füllen Sie das Formular unten mit Ihren Angaben aus, damit wir loslegen können."

@@ -7,6 +7,10 @@ en:
   file_must_be_these_formats: Your image must be either a JPG, PNG or GIF
   admin:
     images:
+      image:
+        delete:
+          message: Are you sure you want to delete '%{title}'?
+          title: Remove this image forever
       form:
         image: Image
         use_current_image: Use current image
@@ -25,17 +29,13 @@ en:
           results_for: Search results for %{query}
       grid_view:
         edit: Edit this image
-        confirm_delete:
-          message: Are you sure you want to delete {{title}}?
-          title: Remove this image forever
         view_live: View this image <br/><em>Opens in a new window</em>
       list_view_image:
         edit_this_image: Edit this image
-        delete:
-          message: Are you sure you want to delete %{title}?
-          title: Delete this image forever
       existing_image:
         submit_insert: Insert
+        resize_image: "Resize the image? <em>(Recommended)</em>"
+        size: Size
       insert:
         existing_image: Existing Image
         new_image: New Image

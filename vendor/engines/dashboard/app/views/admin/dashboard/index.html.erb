@@ -6,31 +6,42 @@
   <div id='actions'>
     <h2><%= t('.quick_tasks').titleize %></h2>
     <ul>
-      <%# I8N: How to translate tab names? %>
       <% if Refinery::Plugins.active.names.include?("refinery_pages") %>
         <li>
-          <%= link_to t('.add_a_new_page'), new_admin_page_url(:only_path => true),
+          <%= link_to t('.add_a_new_page'),
+                      new_admin_page_url(:only_path => true),
                       :class => "add_icon" %>
         </li>
         <li>
-          <%= link_to t('.update_a_page'), admin_pages_url(:only_path => true),
+          <%= link_to t('.update_a_page'),
+                      admin_pages_url(:only_path => true),
                       :class => "edit_icon" %>
         </li>
       <% end %>
       <% if Refinery::Plugins.active.names.include?("refinery_resources") %>
         <li>
-          <%= link_to t('.upload_a_file'), new_admin_resource_url(:dialog => true, :width => 600, :height => 300, :only_path => true),
+          <%= link_to t('.upload_a_file'),
+                      new_admin_resource_url(:dialog => true,
+                                             :width => 600,
+                                             :height => 300,
+                                             :only_path => true),
                       :class => "add_icon" %>
         </li>
       <% end %>
       <% if Refinery::Plugins.active.names.include?("refinery_images") %>
         <li>
-          <%= link_to t('.upload_a_image'), new_admin_image_url(:dialog => true, :width => 600, :height => 300, :only_path => true),
+          <%= link_to t('.upload_a_image'),
+                      new_admin_image_url(:dialog => true,
+                                          :width => 600,
+                                          :height => 300,
+                                          :only_path => true),
                       :class => "add_icon" %>
         </li>
       <% end %>
       <li>
-        <%= link_to t('.see_home_page'), root_url, :class => "go_icon", :target => "_blank" %>
+        <%= link_to t('.see_home_page'), root_url,
+                    :class => "go_icon",
+                    :target => "_blank" %>
       </li>
     </ul>
 
@@ -47,7 +58,7 @@
         <% Refinery::I18n.locales.reject{|key, value| key.to_sym == ::I18n.locale}.sort_by{|key, value| value}.each do |locale_key, locale_title| %>
           <li>
             <%= link_to locale_title,
-                        params.dup.tap { |p| p[:set_locale] = locale_key },  # Use the current params, just change the locale
+                        params.dup.tap { |p| p[:set_locale] = locale_key },
                         :style => "background-image: url('/images/refinery/icons/flags/#{locale_key}.png');" %>
           </li>
         <% end %>
