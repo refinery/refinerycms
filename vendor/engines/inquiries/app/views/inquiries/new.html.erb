@@ -1,6 +1,6 @@
 <% content_for :body_content_left do %>
   <div class='inquiries'>
-    <%= @page[:body] %>
+    <%=raw @page[:body] %>
 
     <%= form_for @inquiry do |f| %>
       <%= f.error_messages :header_message => t('.header_message'), :message => t('.message') %>
