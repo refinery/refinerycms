@@ -17,6 +17,12 @@ module NavigationHelpers
     when /the list of users/
       admin_users_path
 
+    when /the contact page/
+      new_inquiry_path
+      
+    when /the contact thank you page/
+      thank_you_inquiries_path
+
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #
