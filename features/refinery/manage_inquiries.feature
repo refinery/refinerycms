@@ -1,3 +1,4 @@
+@inquiries
 Feature: Manage Inquiries
   In order to see inquiries left for me on my website
   As an Administrator
