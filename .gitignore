@@ -59,6 +59,11 @@ tags
 # Capybara Bug
 capybara-*html
 
+#jamesfid
+Gemfile
+Gemfile.lock
+
+
 #===REMOVED DURING REFINERY GEM INSTALL===
 # Development Specific
 config/database.yml
