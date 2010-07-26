@@ -25,6 +25,9 @@ module NavigationHelpers
       
     when /the contact create page/
       inquiries_path
+      
+    when /the list of inquiries/
+      admin_inquiries_path
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
