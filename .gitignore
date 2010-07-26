@@ -36,6 +36,9 @@ index/**/*
 # NetBeans
 nbproject
 
+# Eclipse
+.project
+
 # Redcar
 .redcar
 tags
