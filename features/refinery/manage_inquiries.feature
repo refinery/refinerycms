@@ -23,7 +23,9 @@ Feature: Manage Inquiries
     
   Scenario: Inquiries Delete
     When I go to the list of inquiries
+    And I follow "Read the inquiry"
+    #And I confirm the following javascript confirmation <-- this needs to happen.
     And I follow "Remove this inquiry forever"
-    Then I should see "David Jones was successfully destroyed."
+    Then I should see "'David Jones' was successfully destroyed."
     And I should have 0 inquiries
     
