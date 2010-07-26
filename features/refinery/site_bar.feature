@@ -4,7 +4,7 @@ Feature: Site Bar
   And I want logged in customers to not see a site bar
 
   Background:
-    Given I have a home page titled "Home"
+    Given I have a page titled "Home" with a custom url "/"
     And I am not logged in
 
   Scenario: Not logged in

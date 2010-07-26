@@ -1,10 +1,8 @@
-Given /^I (only )?have a (home )?page titled (.+)$/ do |only, home, title|
+Given /^I (only )?have a page titled (.+) with a custom url (.+)?$/ do |only, title, link_url|
   Page.delete_all if only
-  unless home
-    Page.create(:title => title)
-  else
-    Page.create(:title => title, :link_url => '/')
-  end
+
+  Page.create(:title => title,
+              :link_url => link_url)
 end
 
 Given /^I (only )?have pages titled (.+)$/ do |only, titles|
