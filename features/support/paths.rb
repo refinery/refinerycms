@@ -16,6 +16,9 @@ module NavigationHelpers
 
     when /the list of users/
       admin_users_path
+      
+    when /the list of files/
+      admin_resources_path
 
     when /the contact page/
       new_inquiry_path
