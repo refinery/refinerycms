@@ -19,13 +19,13 @@ module NavigationHelpers
 
     when /the contact page/
       new_inquiry_path
-      
+
     when /the contact thank you page/
       thank_you_inquiries_path
-      
+
     when /the contact create page/
       inquiries_path
-      
+
     when /the list of inquiries/
       admin_inquiries_path
 
