@@ -1,3 +1,4 @@
+@site_bar
 Feature: Site Bar
   In order to allow administrators to easily switch between editing and viewing their website
   I want logged in refinery users to see a site bar

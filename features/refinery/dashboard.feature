@@ -1,3 +1,4 @@
+@dashboard
 Feature: Dashboard
   In order to see recent changes to my website
   As an administrator
