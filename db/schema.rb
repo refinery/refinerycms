@@ -1,4 +1,4 @@
-# This file is auto-generated from the current state of the database. Instead of editing this file,
+# This file is auto-generated from the current state of the database. Instead of editing this file, 
 # please use the migrations feature of Active Record to incrementally modify your database, and
 # then regenerate this schema definition.
 #
@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100708014636) do
+ActiveRecord::Schema.define(:version => 20100726051507) do
 
   create_table "images", :force => true do |t|
     t.integer  "parent_id"
@@ -25,6 +25,14 @@ ActiveRecord::Schema.define(:version => 20100708014636) do
   end
 
   add_index "images", ["parent_id"], :name => "index_images_on_parent_id"
+
+  create_table "images_portfolio_entries", :id => false, :force => true do |t|
+    t.integer "image_id"
+    t.integer "portfolio_entry_id"
+    t.integer "position"
+  end
+
+  add_index "images_portfolio_entries", ["image_id", "portfolio_entry_id"], :name => "composite_key_index"
 
   create_table "inquiries", :force => true do |t|
     t.string   "name"
@@ -86,6 +94,18 @@ ActiveRecord::Schema.define(:version => 20100708014636) do
 
   add_index "pages", ["id"], :name => "index_pages_on_id"
   add_index "pages", ["parent_id"], :name => "index_pages_on_parent_id"
+
+  create_table "portfolio_entries", :force => true do |t|
+    t.string   "title"
+    t.text     "body"
+    t.integer  "position"
+    t.integer  "parent_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "portfolio_entries", ["id"], :name => "index_portfolio_entries_on_id"
+  add_index "portfolio_entries", ["parent_id"], :name => "index_portfolio_entries_on_parent_id"
 
   create_table "refinery_settings", :force => true do |t|
     t.string   "name"
