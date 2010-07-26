@@ -21,3 +21,9 @@ Feature: Manage Inquiries
     And I should see "Back to all Inquiries"
     And I should see "Remove this inquiry forever"
     
+  Scenario: Inquiries Delete
+    When I go to the list of inquiries
+    And I follow "Remove this inquiry forever"
+    Then I should see "David Jones was successfully destroyed."
+    And I should have 0 inquiries
+    
