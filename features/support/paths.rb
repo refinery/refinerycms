@@ -9,20 +9,20 @@ module NavigationHelpers
     case page_name
 
     when /the home\s?page/
-      root_url
+      root_path
 
     when /the list of pages/
       admin_pages_path
-      
+
     when /the new page form/
       new_admin_page_path
 
     when /the list of users/
       admin_users_path
-      
+
     when /the list of files/
       admin_resources_path
-      
+
     when /the list of images/
       admin_images_path
 
@@ -37,7 +37,7 @@ module NavigationHelpers
 
     when /the list of inquiries/
       admin_inquiries_path
-      
+
     when /the (d|D)ashboard/
       admin_dashboard_index_path
 
