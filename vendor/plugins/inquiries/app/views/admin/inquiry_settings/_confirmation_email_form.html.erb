@@ -9,7 +9,7 @@
   <table id='inquiry'>
     <tr>
       <td>
-        <strong><%= t('.to') %></strong>
+        <label class='stripped'><%= t('.to') %></label>
       </td>
       <td>
         <%= t('.the_customer_making_inquiry') %>
@@ -17,7 +17,7 @@
     </tr>
     <tr>
       <td>
-        <strong><%= t('.from') %></strong>
+        <label class='stripped'><%= t('.from') %></label>
       </td>
       <td>
         <%= "#{RefinerySetting[:site_name]} &lt;no-reply@#{request.domain(RefinerySetting.find_or_set(:tld_length, 1))}&gt;" %>
@@ -25,7 +25,7 @@
     </tr>
     <tr>
       <td>
-        <strong><%= t('.subject') %></strong>
+        <label class='stripped'><%= t('.subject') %></label>
       </td>
       <td>
         <%= link_to InquirySetting.confirmation_subject.value, edit_admin_inquiry_setting_url(InquirySetting.confirmation_subject),
@@ -34,10 +34,14 @@
     </tr>
     <tr>
       <td valign='top'>
-        <strong><%= t('.message') %></strong>
+        <%= f.label :value, t('.message'),
+                    :class => 'stripped' %>
       </td>
       <td>
-        <%= f.text_area :value, :cols => "100", :rows => "5", :class => 'widest' %><br/>
+        <%= f.text_area :value, 
+                        :rows => "5", 
+                        :class => 'widest' %>
+        <br/>
         <em><%= t('.note') %></em>
       </td>
     </tr>
