@@ -12,6 +12,30 @@ Feature: Manage Inquiries
     When I go to the list of inquiries
     Then I should see "David Jones said Hello, I really like your website. Was it hard to build ..."
     And I should have 1 inquiries
+    And I should not see "Create"
+    
+  Scenario: Spam List
+    When I go to the list of inquiries
+    And I follow "Spam"
+    Then I should see "Hooray! You don't have any spam."
+    
+  Scenario: Updating who gets notified
+    When I go to the list of inquiries
+    And I follow "Update who gets notified"
+    And I fill in "Send notifications to" with "phil@refinerycms.com"
+    And I press "Save"
+    Then show me the page
+    #Then I should see "'Notification Recipients' was successfully updated"
+    #And I should be on the list of inquiries
+  
+  Scenario: Updating confirmation email copy
+    When I go to the list of inquiries
+    And I follow "Edit confirmation email"
+    Then show me the page
+    #And I fill in "Message" with "Thanks %name%! We'll never get back to you!"
+    #And I press "Save"
+    #Then I should see "'Confirmation Body' was successfully updated."
+    #And I should be on the list of inquiries
     
   Scenario: Inquiries Show
     When I go to the list of inquiries
