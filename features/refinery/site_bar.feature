@@ -13,7 +13,7 @@ Feature: Site Bar
     Then I should not see "Log out"
 
   Scenario: Logged in as a Refinery user
-    Given I am a logged in user
+    Given I am a logged in refinery user
     When I go to the home page
     Then I should see "Log out"
 

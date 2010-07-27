@@ -6,7 +6,7 @@ def login
   click_button("submit_button")
 end
 
-Given /^I am a logged in user$/ do
+Given /^I am a logged in refinery user$/ do
   @user ||= Factory(:refinery_user)
   login
 end

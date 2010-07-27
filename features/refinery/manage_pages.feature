@@ -1,11 +1,10 @@
-@pages @pages-manage
 Feature: Manage Pages
   In order to control the content on my website
   As an administrator
   I want to create and manage pages
 
   Background:
-    Given I am a logged in user
+    Given I am a logged in refinery user
 
   Scenario: Pages List
     Given I have pages titled Home, About
