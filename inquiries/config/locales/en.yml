@@ -27,7 +27,7 @@ en:
         move_inquiry_to_open: Move this inquiry to open
         read_inquiry: Read the inquiry
         remove_inquiry: "Are you sure you want to delete the inquiry from '%{name}'?"
-        title: Remove this inquiry forever.
+        title: Remove this inquiry forever
         said: said
         mark_as_spam: Mark as spam
         mark_as_ham: Move to inbox

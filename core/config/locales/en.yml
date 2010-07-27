@@ -22,7 +22,7 @@ en:
     crudify:
       created: "%{what} was successfully created."
       updated: "%{what} was successfully updated."
-      destroyed: "%{what} was successfully destroyed"
+      destroyed: "%{what} was successfully destroyed."
   shared:
     site_bar:
       log_out: Log out
