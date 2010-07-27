@@ -24,3 +24,15 @@ Feature: Dashboard
     Then I should be on the dashboard
     And I should see "Switch to your website"
     And I should not see "Spremeni Jezik"
+    
+  Scenario: Upload an Image Button
+    
+  Scenario: Add New Page Button
+    When I go to the dashboard
+    And I follow "Add a new page"
+    Then I should be on the new page form
+    When I fill in "Title" with "Page test from Dashboard"
+    And I press "Save"
+    Then I should be on the dashboard
+    And I should see "'Page test from Dashboard' was successfully created."
+    And I should see "Page test from dashboard page was created"

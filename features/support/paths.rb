@@ -13,6 +13,9 @@ module NavigationHelpers
 
     when /the list of pages/
       admin_pages_path
+      
+    when /the new page form/
+      new_admin_page_path
 
     when /the list of users/
       admin_users_path
