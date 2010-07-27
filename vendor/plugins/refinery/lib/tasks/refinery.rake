@@ -86,12 +86,14 @@ namespace :refinery do
   task :fix_image_paths_in_content => :environment do
     Page.all.each do |p|
       p.parts.each do |pp|
-        pp.update_attribute(:body, pp.body.gsub(/\/images\/system\//, "/system/images/"))
+        pp.update_attribute(:body, 
+                            pp.body.gsub(/\/images\/system\//, "/system/images/"))
       end
     end
 
     NewsItem.all.each do |ni|
-      ni.update_attribute(:body, ni.body.gsub(/\/images\/system\//, "/system/images/"))
+      ni.update_attribute(:body, 
+                          ni.body.gsub(/\/images\/system\//, "/system/images/"))
     end
 
   end
@@ -106,26 +108,53 @@ namespace :refinery do
     FileUtils::makedirs dirs.map {|dir| File.join(Rails.root, dir) }
 
     # copy in the new assets.
-    assets = [%w(public stylesheets refinery), %w(public javascripts refinery), %w(public javascripts wymeditor), %w(public images wymeditor skins refinery), %w(public images refinery), %w(public stylesheets wymeditor skins refinery), %w(public javascripts jquery), %w(.gitignore)]
+    assets = [%w(public stylesheets refinery), 
+              %w(public javascripts refinery), 
+              %w(public javascripts wymeditor), 
+              %w(public images wymeditor skins refinery), 
+              %w(public images refinery), 
+              %w(public stylesheets wymeditor skins refinery), 
+              %w(public javascripts jquery), 
+              %w(.gitignore)]
     assets.each do |asset|
-      FileUtils::rm_rf File.join(Rails.root, asset), :secure => true, :verbose => verbose # ensure the destination is clear.
-      FileUtils::cp_r File.join(Refinery.root, asset), File.join(Rails.root, asset), :verbose => verbose # copy the new assets into the project.
+      # ensure the destination is clear.
+      FileUtils::rm_rf File.join(Rails.root, asset),
+                       :secure => true,
+                       :verbose => verbose
+
+      # copy the new assets into the project.
+      FileUtils::cp_r File.join(Refinery.root, asset),
+                      File.join(Rails.root, asset),
+                      :verbose => verbose
     end
 
     # copy in any new migrations.
-    FileUtils::cp Dir[Refinery.root.join("db", "migrate", "*.rb").cleanpath.to_s], Rails.root.join("db", "migrate").cleanpath.to_s, :verbose => verbose
+    FileUtils::cp Dir[Refinery.root.join("db", "migrate", "*.rb").cleanpath.to_s],
+                  Rails.root.join("db", "migrate").cleanpath.to_s,
+                  :verbose => verbose
 
     # replace rakefile and gemfile.
-    FileUtils::cp Refinery.root.join("Rakefile").cleanpath.to_s, Rails.root.join("Rakefile").cleanpath.to_s, :verbose => verbose
+    FileUtils::cp Refinery.root.join("Rakefile").cleanpath.to_s,
+                  Rails.root.join("Rakefile").cleanpath.to_s,
+                  :verbose => verbose
     unless Rails.root.join("Gemfile").exist?
-      FileUtils::cp Refinery.root.join("Gemfile").cleanpath.to_s, Rails.root.join("Gemfile").cleanpath.to_s, :verbose => verbose
+      FileUtils::cp Refinery.root.join("Gemfile").cleanpath.to_s,
+                    Rails.root.join("Gemfile").cleanpath.to_s,
+                    :verbose => verbose
     else
       # replace refinery's gem requirements in the Gemfile
-      refinery_gem_requirements = Refinery.root.join('Gemfile').read.to_s.scan(/(#===REFINERY REQUIRED GEMS===.+?#===REFINERY END OF REQUIRED GEMS===)/m).first.join('\n')
+      refinery_gem_requirements = Refinery.root.join('Gemfile').read.to_s.scan(
+        /(#===REFINERY REQUIRED GEMS===.+?#===REFINERY END OF REQUIRED GEMS===)/m
+      ).first.join('\n')
 
-      rails_gemfile_contents = Rails.root.join("Gemfile").read.to_s.gsub(/(#===REFINERY REQUIRED GEMS===.+?#===REFINERY END OF REQUIRED GEMS===)/m, refinery_gem_requirements)
+      rails_gemfile_contents = Rails.root.join("Gemfile").read.to_s.gsub(
+        /(#===REFINERY REQUIRED GEMS===.+?#===REFINERY END OF REQUIRED GEMS===)/m,
+        refinery_gem_requirements
+      )
 
-      Rails.root.join("Gemfile").open('w+') {|f| f.write(rails_gemfile_contents) }
+      Rails.root.join("Gemfile").open('w+') {|f|
+        f.write(rails_gemfile_contents)
+      }
     end
 
     # Make cucumber features paths
@@ -134,18 +163,36 @@ namespace :refinery do
     Rails.root.join('features', 'support').mkpath
 
     # copy in cucumber features
-    FileUtils::cp Dir[Refinery.root.join('features', 'refinery', '*.feature').to_s], Rails.root.join('features', 'refinery').to_s, :verbose => verbose
-    FileUtils::cp Dir[Refinery.root.join('features', 'step_definitions', 'refinery', '*.rb').to_s], Rails.root.join('features', 'step_definitions', 'refinery').to_s, :verbose => verbose
-    FileUtils::cp Dir[Refinery.root.join('features', 'step_definitions', 'web_steps.rb').to_s], Rails.root.join('features', 'step_definitions').to_s, :verbose => verbose
-    FileUtils::cp Dir[Refinery.root.join('features', 'support', '*.rb').to_s], Rails.root.join('features', 'support').to_s, :verbose => verbose
+    FileUtils::cp Dir[Refinery.root.join('features', 'refinery', '*.feature').to_s],
+                  Rails.root.join('features', 'refinery').to_s,
+                  :verbose => verbose
+
+    FileUtils::cp Dir[Refinery.root.join('features', 'step_definitions', 'refinery', '*.rb').to_s],
+                  Rails.root.join('features', 'step_definitions', 'refinery').to_s,
+                  :verbose => verbose
+
+    FileUtils::cp Dir[Refinery.root.join('features', 'step_definitions', 'web_steps.rb').to_s],
+                  Rails.root.join('features', 'step_definitions').to_s,
+                  :verbose => verbose
+
+    FileUtils::cp Dir[Refinery.root.join('features', 'support', '*.rb').to_s],
+                  Rails.root.join('features', 'support').to_s,
+                  :verbose => verbose
 
     # update the script directory for any fixes that have happened.
-    FileUtils::cp_r Dir[Refinery.root.join('script', '*').to_s], Rails.root.join('script').to_s, :verbose => verbose
-    FileUtils::chmod_R 0755, Rails.root.join('script').to_s, :verbose => verbose
+    FileUtils::cp_r Dir[Refinery.root.join('script', '*').to_s],
+                    Rails.root.join('script').to_s,
+                    :verbose => verbose
+
+    FileUtils::chmod_R 0755, Rails.root.join('script').to_s,
+                       :verbose => verbose
 
     # add the cucumber environment file if it's not present
     unless (cucumber_environment_file = Rails.root.join('config', 'environments', 'cucumber.rb')).exist?
-      FileUtils::cp Refinery.root.join('config', 'environments', 'cucumber.rb').to_s, cucumber_environment_file.to_s, :verbose => verbose
+      FileUtils::cp Refinery.root.join('config', 'environments', 'cucumber.rb').to_s,
+                    cucumber_environment_file.to_s,
+                    :verbose => verbose
+
       # Add cucumber database adapter (link to test)
       existing_db_config = Rails.root.join('config', 'database.yml').read.to_s
       Rails.root.join('config', 'database.yml').open('w+') do |f|
@@ -154,14 +201,20 @@ namespace :refinery do
     end
 
     # replace the preinitializer.
-    FileUtils::cp Refinery.root.join("config", "preinitializer.rb").cleanpath.to_s, Rails.root.join("config", "preinitializer.rb").cleanpath.to_s, :verbose => verbose
+    FileUtils::cp Refinery.root.join("config", "preinitializer.rb").cleanpath.to_s,
+                  Rails.root.join("config", "preinitializer.rb").cleanpath.to_s,
+                  :verbose => verbose
 
     # replace the config.ru file
-    FileUtils::cp Refinery.root.join('config.ru').cleanpath.to_s, Rails.root.join('config.ru').cleanpath.to_s, :verbose => verbose
+    FileUtils::cp Refinery.root.join('config.ru').cleanpath.to_s,
+                  Rails.root.join('config.ru').cleanpath.to_s,
+                  :verbose => verbose
 
     # destroy any lib/refinery directory that we don't need anymore.
     if Rails.root.join('lib', 'refinery').directory?
-      FileUtils::rm_rf Rails.root.join('lib', 'refinery').cleanpath.to_s, :secure => true, :verbose => verbose
+      FileUtils::rm_rf Rails.root.join('lib', 'refinery').cleanpath.to_s,
+                       :secure => true,
+                       :verbose => verbose
     end
 
     # copy any initializers
@@ -172,7 +225,9 @@ namespace :refinery do
     end
 
     unless (aai_config_file = Rails.root.join('config', 'acts_as_indexed_config.rb')).exist?
-      FileUtils::cp Refinery.root.join('config', 'acts_as_indexed_config.rb').to_s, aai_config_file.to_s, :verbose => verbose
+      FileUtils::cp Refinery.root.join('config', 'acts_as_indexed_config.rb').to_s,
+                    aai_config_file.to_s,
+                    :verbose => verbose
     end
 
     # get current secret key
@@ -192,10 +247,14 @@ namespace :refinery do
 
     # read in the config files
     if Rails.root.join("config", "application.rb").exist?
-      FileUtils::cp Refinery.root.join("config", "environment.rb").cleanpath.to_s, Rails.root.join("config", "environment.rb").cleanpath.to_s, :verbose => verbose
+      FileUtils::cp Refinery.root.join("config", "environment.rb").cleanpath.to_s,
+                    Rails.root.join("config", "environment.rb").cleanpath.to_s,
+                    :verbose => verbose
     else
       # write the new content into the file.
-      FileUtils::cp Refinery.root.join("config", "application.rb").cleanpath.to_s, Rails.root.join("config", "application.rb").cleanpath.to_s, :verbose => verbose
+      FileUtils::cp Refinery.root.join("config", "application.rb").cleanpath.to_s,
+                    Rails.root.join("config", "application.rb").cleanpath.to_s,
+                    :verbose => verbose
 
       (app_rb_lines = Rails.root.join("config", "application.rb").read.split('\n')).each do |line|
         secret_match = line.scan(/(:secret)([^']*)([\'])([^\']*)/).flatten.last
@@ -205,11 +264,15 @@ namespace :refinery do
       # write the new content into the file.
       Rails.root.join("config", "application.rb").open("w").puts(app_rb_lines.join('\n'))
 
-      FileUtils::cp Refinery.root.join('config', 'environment.rb').cleanpath.to_s, Rails.root.join('config', 'environment.rb').cleanpath.to_s, :verbose => verbose
+      FileUtils::cp Refinery.root.join('config', 'environment.rb').cleanpath.to_s,
+                    Rails.root.join('config', 'environment.rb').cleanpath.to_s,
+                    :verbose => verbose
     end
 
     unless Rails.root.join("config", "settings.rb").exist?
-      FileUtils::cp Refinery.root.join('config', 'settings.rb').cleanpath.to_s, Rails.root.join('config', 'settings.rb').cleanpath.to_s, :verbose => verbose
+      FileUtils::cp Refinery.root.join('config', 'settings.rb').cleanpath.to_s,
+                    Rails.root.join('config', 'settings.rb').cleanpath.to_s,
+                    :verbose => verbose
     end
 
     app_config_file = "application.rb"
@@ -217,23 +280,36 @@ namespace :refinery do
     app_config = Rails.root.join("config", app_config_file).read
 
     # copy new jquery javascripts.
-    FileUtils.cp Refinery.root.join('public', 'javascripts', 'jquery.js').cleanpath.to_s, Rails.root.join('public', 'javascripts', 'jquery.js').cleanpath.to_s, :verbose => verbose
-    FileUtils.cp Refinery.root.join('public', 'javascripts', 'jquery-min.js').cleanpath.to_s, Rails.root.join('public', 'javascripts', 'jquery-min.js').cleanpath.to_s, :verbose => verbose
-    FileUtils.cp Refinery.root.join('public', 'javascripts', 'jquery-ui-custom-min.js').cleanpath.to_s, Rails.root.join('public', 'javascripts', 'jquery-ui-custom-min.js').cleanpath.to_s, :verbose => verbose
+    FileUtils.cp Refinery.root.join('public', 'javascripts', 'jquery.js').cleanpath.to_s,
+                 Rails.root.join('public', 'javascripts', 'jquery.js').cleanpath.to_s,
+                 :verbose => verbose
+
+    FileUtils.cp Refinery.root.join('public', 'javascripts', 'jquery-min.js').cleanpath.to_s,
+                 Rails.root.join('public', 'javascripts', 'jquery-min.js').cleanpath.to_s,
+                 :verbose => verbose
+
+    FileUtils.cp Refinery.root.join('public', 'javascripts', 'jquery-ui-custom-min.js').cleanpath.to_s,
+                 Rails.root.join('public', 'javascripts', 'jquery-ui-custom-min.js').cleanpath.to_s,
+                 :verbose => verbose
 
     # Test the admin file to see if it's old
     if ((admin_js_contents = Rails.root.join('public', 'javascripts', 'admin.js').readlines.join('')) == "if (!wymeditorClassesItems) {\n  var wymeditorClassesItems = [];\n}\n\nwymeditorClassesItems = $.extend([\n    {name: 'text-align', rules:['left', 'center', 'right', 'justify'], join: '-'}\n ,  {name: 'image-align', rules:['left', 'right'], join: '-'}\n ,  {name: 'font-size', rules:['small', 'normal', 'large'], join: '-'}\n], wymeditorClassesItems);")
-      FileUtils.cp Refinery.root.join('public', 'javascripts', 'admin.js'), Rails.root.join('public', 'javascripts', 'admin.js')
+      FileUtils.cp Refinery.root.join('public', 'javascripts', 'admin.js'),
+                   Rails.root.join('public', 'javascripts', 'admin.js')
     elsif admin_js_contents !~ Regexp.new("var custom_wymeditor_boot_options \\= \\{")
       Rails.root.join('public', 'javascripts', 'admin.js').open('a') do |f|
         f.write "#{Refinery.root.join('public', 'javascripts', 'admin.js').readlines.join()}\n"
       end
     end
     # backup the config file.
-    FileUtils.cp Rails.root.join('config', app_config_file).cleanpath.to_s, Rails.root.join('config', "#{app_config_file.gsub('.rb', '')}.autobackupbyrefinery.rb").cleanpath.to_s, :verbose => verbose
+    FileUtils.cp Rails.root.join('config', app_config_file).cleanpath.to_s,
+                 Rails.root.join('config', "#{app_config_file.gsub('.rb', '')}.autobackupbyrefinery.rb").cleanpath.to_s,
+                 :verbose => verbose
 
     # copy the new config file.
-    FileUtils.cp Refinery.root.join('config', app_config_file).cleanpath.to_s, Rails.root.join('config', app_config_file).cleanpath.to_s, :verbose => verbose
+    FileUtils.cp Refinery.root.join('config', app_config_file).cleanpath.to_s,
+                 Rails.root.join('config', app_config_file).cleanpath.to_s,
+                 :verbose => verbose
 
     puts "\n" if verbose
 
