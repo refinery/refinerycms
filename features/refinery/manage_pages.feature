@@ -1,3 +1,4 @@
+@pages @pages-manage
 Feature: Manage Pages
   In order to control the content on my website
   As an administrator

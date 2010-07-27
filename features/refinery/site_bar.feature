@@ -1,3 +1,4 @@
+@site_bar
 Feature: Site Bar
   In order to allow administrators to easily switch between editing and viewing their website
   I want logged in refinery users to see a site bar
@@ -20,4 +21,4 @@ Feature: Site Bar
     Given A Refinery user exists
     And I am a logged in customer
     When I go to the home page
-    Then I should not see "Log out"
+    Then I should not see "Switch to your website editor"

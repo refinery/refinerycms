@@ -1,3 +1,4 @@
+@inquiries @inquiries-create
 Feature: Create Inquiries
   In order to contact the website owner
   I want to create an inquiry
