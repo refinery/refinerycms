@@ -765,6 +765,9 @@ label.stripped {
 #inquiry tr:last-child td {
   border-bottom: 0px;
 }
+#inquiry td label.stripped {
+  font-weight: bold;
+}
 body.dialog {
   background: #FFF;
 }
