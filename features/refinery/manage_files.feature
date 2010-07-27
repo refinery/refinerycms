@@ -5,7 +5,7 @@ Feature: Manage Files
   I want to create and manage files
   
   Background:
-    Given I am a logged in user
+    Given I am a logged in refinery user
     
   Scenario: Create Valid File
     Given I have no files
