@@ -21,4 +21,4 @@ Feature: Site Bar
     Given A Refinery user exists
     And I am a logged in customer
     When I go to the home page
-    Then I should not see "Log out"
+    Then I should not see "Switch to your website editor"
