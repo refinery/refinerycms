@@ -26,7 +26,7 @@ Feature: Manage Inquiries
     When I go to the list of inquiries
     And I follow "Read the inquiry"
     And I follow "Remove this inquiry forever"
-    And I click "OK"
+    And I press "OK"
     Then I should see "'David Jones' was successfully destroyed."
     And I should have 0 inquiries
     
