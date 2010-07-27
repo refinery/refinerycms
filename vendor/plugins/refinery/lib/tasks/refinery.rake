@@ -86,13 +86,13 @@ namespace :refinery do
   task :fix_image_paths_in_content => :environment do
     Page.all.each do |p|
       p.parts.each do |pp|
-        pp.update_attribute(:body, 
+        pp.update_attribute(:body,
                             pp.body.gsub(/\/images\/system\//, "/system/images/"))
       end
     end
 
     NewsItem.all.each do |ni|
-      ni.update_attribute(:body, 
+      ni.update_attribute(:body,
                           ni.body.gsub(/\/images\/system\//, "/system/images/"))
     end
 
@@ -108,13 +108,13 @@ namespace :refinery do
     FileUtils::makedirs dirs.map {|dir| File.join(Rails.root, dir) }
 
     # copy in the new assets.
-    assets = [%w(public stylesheets refinery), 
-              %w(public javascripts refinery), 
-              %w(public javascripts wymeditor), 
-              %w(public images wymeditor skins refinery), 
-              %w(public images refinery), 
-              %w(public stylesheets wymeditor skins refinery), 
-              %w(public javascripts jquery), 
+    assets = [%w(public stylesheets refinery),
+              %w(public javascripts refinery),
+              %w(public javascripts wymeditor),
+              %w(public images wymeditor skins refinery),
+              %w(public images refinery),
+              %w(public stylesheets wymeditor skins refinery),
+              %w(public javascripts jquery),
               %w(.gitignore)]
     assets.each do |asset|
       # ensure the destination is clear.
@@ -137,6 +137,7 @@ namespace :refinery do
     FileUtils::cp Refinery.root.join("Rakefile").cleanpath.to_s,
                   Rails.root.join("Rakefile").cleanpath.to_s,
                   :verbose => verbose
+
     unless Rails.root.join("Gemfile").exist?
       FileUtils::cp Refinery.root.join("Gemfile").cleanpath.to_s,
                     Rails.root.join("Gemfile").cleanpath.to_s,
@@ -152,9 +153,9 @@ namespace :refinery do
         refinery_gem_requirements
       )
 
-      Rails.root.join("Gemfile").open('w+') {|f|
+      Rails.root.join("Gemfile").open('w+') do |f|
         f.write(rails_gemfile_contents)
-      }
+      end
     end
 
     # Make cucumber features paths
