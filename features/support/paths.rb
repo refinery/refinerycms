@@ -31,6 +31,9 @@ module NavigationHelpers
 
     when /the list of inquiries/
       admin_inquiries_path
+      
+    when /the (d|D)ashboard/
+      admin_dashboard_index_path
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:

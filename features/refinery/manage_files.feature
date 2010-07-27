@@ -33,7 +33,6 @@ Feature: Manage Files
     And I follow "Download this file"
     Then I should see "http://www.refineryhq.com/"
     
-    
   Scenario: Files Delete
     Given I have no files
     When I upload the file at "features/uploads/refinery_is_awesome.txt"
