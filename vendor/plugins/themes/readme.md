@@ -45,7 +45,8 @@ Let's take the ``mytheme`` example theme shown above. This is how the theme is s
             |    |- index.html.erb
             |- layouts
                  |- application.html.erb
-             
+
+   
 ### Images
 
 Usually this would be just what you have in ``public/images`` except we move that to the theme instead.
@@ -64,7 +65,11 @@ This is exactly the same as how you lay your views out in ``app/views/`` just in
 
 ## How do I make my own Theme?
 
-Create a folder with the name if your theme inside ``/themes`` e.g. ``/themes/mytheme`` and follow the directory structure outlined in 'The structure of a Theme'.
+Simply use the Theme generator to make the basic structure of a new theme.
+
+    ruby script/generate refinery_theme name_of_theme
+
+Don't forgot to "activate" this new theme by setting the theme setting to the name of this new theme.
 
 ## How do I select which Theme Refinery should use?
 
