@@ -22,7 +22,7 @@ Then /^I should have a directory named "([^"]*)"$/ do |name|
   File.exist?(File.join(@tmp_refinery_app_root, '/themes', name)).should be_true
 end
 
-Then /^I should have a stylsheet named "([^"]*)"$/ do |name|
+Then /^I should have a stylesheet named "([^"]*)"$/ do |name|
   File.exist?(File.join(@tmp_refinery_app_root, '/themes', name)).should be_true
 end
 
