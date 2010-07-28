@@ -1,4 +1,7 @@
 nb:
+  plugins:
+    <%= class_name.pluralize.underscore.downcase %>:
+      title: <%= plural_name.titleize %>
   admin:
     <%= plural_name %>:
       index:
