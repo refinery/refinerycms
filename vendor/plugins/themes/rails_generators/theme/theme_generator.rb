@@ -18,6 +18,9 @@ class ThemeGenerator < Rails::Generator::Base
       m.directory "themes/#{theme_name}/views/pages"
       m.file "views/pages/show.html.erb", "themes/#{theme_name}/views/pages/show.html.erb"
       m.file "views/pages/home.html.erb", "themes/#{theme_name}/views/pages/home.html.erb"
+      
+      puts 'NOTE: If you want this new theme to be the current theme used, set the "theme"
+            setting in the Refinery backend to the name of this theme.'
     end
   end
 
