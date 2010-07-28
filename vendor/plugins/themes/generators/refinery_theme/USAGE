@@ -1,2 +1,2 @@
 Usage:
-  ./script/generate refinery_theme modern
+  ruby script/generate refinery_theme modern
