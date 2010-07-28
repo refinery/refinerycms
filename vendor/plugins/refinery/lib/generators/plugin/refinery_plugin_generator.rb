@@ -1,4 +1,4 @@
-class RefineryGenerator < Rails::Generator::NamedBase
+class RefineryPluginGenerator < Rails::Generator::NamedBase
 
   def initialize(*runtime_args)
     super(*runtime_args)
@@ -6,7 +6,7 @@ class RefineryGenerator < Rails::Generator::NamedBase
   end
 
   def banner
-    "Usage: ./script/generate refinery singular_model_name attribute:type [attribute2:type ...]"
+    "Usage: ./script/generate refinery_plugin singular_model_name attribute:type [attribute2:type ...]"
   end
 
   def manifest
