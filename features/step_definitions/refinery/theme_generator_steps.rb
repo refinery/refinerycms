@@ -31,6 +31,6 @@ Then /^I should have a layout named "([^"]*)"$/ do |name|
 end
 
 Then /^I should have a "([^"]*)"$/ do |name|
-  File.exist?(File.join(@tmp_refinery_app_root, '/themes', 'sexy_layout', name)).should be_true
+  File.exist?(File.join(@tmp_refinery_app_root, '/themes', 'modern', name)).should be_true
 end
 

@@ -5,12 +5,12 @@ Feature: Theme generation
 
   Scenario: Generating a theme with a name
     Given I have a refinery application
-    When I generate a theme with the name of "sexy_layout"
-    Then I should have a directory named "sexy_layout"
-    And I should have a stylsheet named "sexy_layout/stylesheets/application.css"
-    And I should have a layout named "sexy_layout/views/layouts/application.html.erb"
-    And I should have a layout named "sexy_layout/views/pages/index.html.erb"
-    And I should have a layout named "sexy_layout/views/pages/show.html.erb"
-    And I should have a directory named "sexy_layout/javascripts"
-    And I should have a "LICENSE"
-    And I should have a "README"
+    When I generate a theme with the name of "modern"
+    Then I should have a directory named "modern"
+    And I should have a stylesheet named "modern/stylesheets/application.css"
+    And I should have a stylesheet named "modern/stylesheets/home.css"
+    And I should have a stylesheet named "modern/stylesheets/formatting.css"
+    And I should have a layout named "modern/views/layouts/application.html.erb"
+    And I should have a layout named "modern/views/pages/home.html.erb"
+    And I should have a layout named "modern/views/pages/show.html.erb"
+    And I should have a directory named "modern/javascripts"
