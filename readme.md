@@ -95,7 +95,7 @@ Mac OS 10.5+ users [this shell install script](http://github.com/maddox/magick-i
 
 Extend Refinery easily by running the Refinery generator
 
-    ruby script/generate refinery
+    ruby script/generate refinery_plugin
 
 to get help on how to use that. Or read the full documentation on [writing plugins for Refinery](http://github.com/resolve/refinerycms/blob/master/vendor/plugins/refinery/plugins.md)
 

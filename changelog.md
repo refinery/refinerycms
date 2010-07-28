@@ -1,3 +1,11 @@
+## 0.9.7.9 [unreleased]
+
+- Added a theme generator to create the basic file structure of a new theme [David Jones](http://github.com/djones) and [Levi Cole](http://github.com/levicole)
+- Renamed ``script/generate refinery`` to ``script/generate refinery_plugin`` [David Jones](http://github.com/djones)
+- Add deprecation notice to ``script/generate refinery`` [David Jones](http://github.com/djones)
+- Updated documentation to reflect new generator changes [David Jones](http://github.com/djones)
+- Added tests for both plugin and theme generators [David Jones](http://github.com/djones) and [Levi Cole](http://github.com/levicole)
+
 ## 0.9.7.8 [23 July 2010]
 
 - Refactored Amazon S3 and gem installation to make it easier to install on Heroku. [Steven Heidel](http://github.com/stevenheidel)

@@ -1,6 +1,5 @@
 # Set up middleware to serve theme files
 config.middleware.use "ThemeServer"
-
 ::Refinery::ApplicationController.module_eval do
 
   # Add or remove theme paths to/from Refinery application
