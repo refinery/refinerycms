@@ -6,10 +6,16 @@ class RefineryPluginGenerator < Rails::Generator::NamedBase
   end
 
   def banner
-    "Usage: ./script/generate refinery_plugin singular_model_name attribute:type [attribute2:type ...]"
+    "Usage: ruby script/generate refinery_plugin singular_model_name attribute:type [attribute2:type ...]"
   end
 
   def manifest
+    if @args[0].nil? and @args[1].nil?
+      puts "You must specify a singular model name and a first attribute"
+      puts banner
+      exit
+    end
+    
     record do |m|
       # Copy controller, model and migration
       directories = ["#{plural_name}", "#{plural_name}/app", "#{plural_name}/app/controllers",
@@ -62,8 +68,8 @@ class RefineryPluginGenerator < Rails::Generator::NamedBase
       m.migration_template  'migration.rb', 'db/migrate',
                             :assigns => {:migration_name => "Create#{class_name.pluralize}"},
                             :migration_file_name => "create_#{singular_name.pluralize}"
-
-      m.readme "MIGRATE"
+                            
+      m.readme "MIGRATE" unless RAILS_ENV == "test"
     end
   end
 
