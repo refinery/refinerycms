@@ -10,18 +10,7 @@ After do
   FileUtils.rm_rf(@tmp_refinery_app_root)
 end
 
-Given /^I have a refinery application$/ do
-  FileUtils.mkdir(File.join(@app_root))
+When /^I generate a plugin with the arguments of "([^"]*)"$/ do |arguments|
+  Rails::Generator::Scripts::Generate.new.run((["refinery_plugin"] | arguments.split(" ")), {:quiet => true, :destination => @app_root})
 end
 
-When /^I generate a plugin with the name of "([^"]*)"$/ do |name|
-  Rails::Generator::Scripts::Generate.new.run([:theme, name], {:destination => @app_root, :quiet => true})
-end
-
-Then /^I should have a directory named "([^"]*)"$/ do |name|
-  File.exist?(File.join(@tmp_refinery_app_root, '/vendor/plugins/products', name)).should be_true
-end
-
-Then /^I should have a file named "([^"]*)"$/ do |name|
-  File.exist?(File.join(@tmp_refinery_app_root, '/vendor/plugins/products', name)).should be_true
-end
