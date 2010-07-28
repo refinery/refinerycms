@@ -15,7 +15,7 @@ module Refinery
         :title => nil,
         :updated_image => "edit.png",
         :url => nil,
-        :url_prefix => ""
+        :url_prefix => "edit"
       }.merge(options).each { |key,value| self.instance_variable_set(:"@#{key}", value) }
     end
 
