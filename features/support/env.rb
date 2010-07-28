@@ -65,6 +65,10 @@ def each_run
     end
   end
 
+  require 'fileutils'
+  require 'rails_generator'
+  require 'rails_generator/scripts/generate'
+
   require 'authlogic/test_case'
   Before do
     activate_authlogic
