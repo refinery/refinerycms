@@ -1,0 +1,36 @@
+== Refinery Plugin Generator
+
+== Description
+
+Generates a custom plugin for Refinery automatically. It works very similar to the Rails scaffold generator.
+
+A generated plugin gives you all the basic files needed to manage the model the plugin will be for.
+
+The first attribute should always be the one which is the title or name of the model.
+
+There must be at least one attribute.
+
+== Supported Field Types
+
+string   - standard input box
+text     - text area with a visual editor
+image    - link to an image picker dialogue
+resource - link to a resource picker dialogue
+
+== Usage
+./script/generate refinery_plugin singular_name attribute:type [attribute2:type ...]
+
+== Example
+./script/generate refinery_plugin product title:string description:text image:image brochure:resource
+
+Results in:
+create  /vendor/plugins/products/app/controllers/admin/products_controller.rb
+create  /vendor/plugins/products/app/models/product.rb
+create  /vendor/plugins/products/app/views/admin/products
+create  /vendor/plugins/products/app/views/admin/products/_form.html.erb
+create  /vendor/plugins/products/app/views/admin/products/_list.html.erb
+create  /vendor/plugins/products/app/views/admin/products/_make_sortable.html.erb
+create  /vendor/plugins/products/app/views/admin/products/edit.html.erb
+create  /vendor/plugins/products/app/views/admin/products/index.html.erb
+create  /vendor/plugins/products/app/views/admin/products/new.html.erb
+create  /vendor/plugins/products/app/views/admin/products/reorder.html.erb
