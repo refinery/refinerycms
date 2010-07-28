@@ -1,0 +1,14 @@
+== Refinery Theme Generator
+
+== Description
+
+Generate a new barebones Refinery theme.
+
+== Usage
+./script/generate refinery_theme theme_name
+
+== Example
+./script/generate refinery_theme modern
+
+Results in:
+create  /themes/modern/...
