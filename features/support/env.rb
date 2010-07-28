@@ -30,7 +30,6 @@ def setup_environment
   Capybara.default_selector = :css
 end
 
-<<<<<<< HEAD
 def each_run
   # If you set this to false, any error raised from within your app will bubble
   # up to your step definition and out to cucumber unless you catch it somewhere
