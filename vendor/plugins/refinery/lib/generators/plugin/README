@@ -1,9 +1,10 @@
 == Refinery Plugin Generator
 
 == Description
-Generates a custom plugin for Refinery automatically. All files will be setup and the basic functionality to edit a model in place. 
 
-You will want to pass in the name of the model this tab is for. Use the singular name.
+Generates a custom plugin for Refinery automatically. It works very similar to the Rails scaffold generator.
+
+A generated plugin gives you all the basic files needed to manage the model the plugin will be for.
 
 The first attribute should always be the one which is the title or name of the model.
 
