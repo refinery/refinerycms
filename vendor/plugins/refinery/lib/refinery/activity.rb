@@ -11,8 +11,8 @@ module Refinery
         :created_image => "add.png",
         :limit => 7,
         :nested_with => [],
-        :order => 'updated_at DESC',
-        :title => nil,
+        :order => "updated_at DESC",
+        :title => "title",
         :updated_image => "edit.png",
         :url => nil,
         :url_prefix => "edit"
