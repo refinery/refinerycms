@@ -24,6 +24,6 @@ Feature: Manage Users
 
   Scenario: User List
     Given I have a user named "resolve"
-    And I am a logged in user
+    And I am a logged in refinery user
     When I go to the list of users
     Then I should see "resolve"

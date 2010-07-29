@@ -110,7 +110,7 @@ module Crud
 
         def destroy
           if @#{singular_name}.destroy
-            flash[:notice] = t('refinery.crudify.destroyed', 
+            flash[:notice] = t('refinery.crudify.destroyed',
                                :what => "'\#{@#{singular_name}.#{options[:title_attribute]}}'")
           end
           redirect_to #{options[:redirect_to_url]}

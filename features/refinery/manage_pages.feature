@@ -4,7 +4,7 @@ Feature: Manage Pages
   I want to create and manage pages
 
   Background:
-    Given I am a logged in user
+    Given I am a logged in refinery user
 
   Scenario: Pages List
     Given I have pages titled Home, About
