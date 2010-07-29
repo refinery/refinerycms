@@ -27,7 +27,7 @@ en:
         move_inquiry_to_open: Move this inquiry to open
         read_inquiry: Read the inquiry
         remove_inquiry: "Are you sure you want to delete the inquiry from '%{name}'?"
-        title: Remove this inquiry forever.
+        title: Remove this inquiry forever
         said: said
         mark_as_spam: Mark as spam
         mark_as_ham: Move to inbox
@@ -38,6 +38,7 @@ en:
         update_notified: Update who gets notified
         edit_confirmation_email: Edit confirmation email
       index:
+        search_results_for: Search results for %{query}
         no_inquiries: You have not received any inquiries yet.
       spam:
         no_spam: Hooray! You don't have any spam.
