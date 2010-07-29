@@ -13,12 +13,12 @@ Feature: Manage Inquiries
     Then I should see "David Jones said Hello, I really like your website. Was it hard to build ..."
     And I should have 1 inquiries
     And I should not see "Create"
-    
+
   Scenario: Spam List
     When I go to the list of inquiries
     And I follow "Spam"
     Then I should see "Hooray! You don't have any spam."
-    
+
   Scenario: Updating who gets notified
     When I go to the list of inquiries
     And I follow "Update who gets notified"
@@ -26,7 +26,7 @@ Feature: Manage Inquiries
     And I press "Save"
     Then I should see "'Notification Recipients' was successfully updated"
     And I should be on the list of inquiries
-  
+
   Scenario: Updating confirmation email copy
     When I go to the list of inquiries
     And I follow "Edit confirmation email"
@@ -34,7 +34,7 @@ Feature: Manage Inquiries
     And I press "Save"
     Then I should see "'Confirmation Body' was successfully updated."
     And I should be on the list of inquiries
-    
+
   Scenario: Inquiries Show
     When I go to the list of inquiries
     And I follow "Read the inquiry"
@@ -43,7 +43,7 @@ Feature: Manage Inquiries
     And I should see "Age"
     And I should see "Back to all Inquiries"
     And I should see "Remove this inquiry forever"
-    
+
   Scenario: Inquiries Delete
     When I go to the list of inquiries
     And I follow "Read the inquiry"
@@ -51,4 +51,3 @@ Feature: Manage Inquiries
     And I press "OK"
     Then I should see "'David Jones' was successfully destroyed."
     And I should have 0 inquiries
-    

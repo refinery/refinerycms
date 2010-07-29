@@ -3,10 +3,10 @@ Feature: Manage Images
   In order to control the content on my website
   As an administrator
   I want to create and manage images
-  
+
   Background:
     Given I am a logged in refinery user
-    
+
   Scenario: Create Valid Image
     Given I have no images
     When I go to the list of images
@@ -21,7 +21,7 @@ Feature: Manage Images
     And the image should have content_type "image/jpeg"
     #This line handles properly if you have any plugins installed.  Ie: Portfolio will generate two additional thumbs.
     And the image should have all default thumbnail generations
-    
+
   Scenario: Create Invalid Image (format)
     Given I have no images
     When I go to the list of images
@@ -30,8 +30,8 @@ Feature: Manage Images
     And I press "Save"
     Then I should see "Your image must be either a JPG, PNG or GIF"
     And I should have 0 images
-    
-    
+
+
   Scenario: Edit Existing Image
     Given I have no images
     When I go to the list of images
@@ -46,7 +46,7 @@ Feature: Manage Images
     #Note: The following line is a workaround for the flash.  It isn't working, so this catches the created image's name='' attribute.
     Then I should see "Id Rather Be Here"
     And I should have the correct default number of images
-    
+
   Scenario: Delete Image
     Given I have no images
     When I go to the list of images
