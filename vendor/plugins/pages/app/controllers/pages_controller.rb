@@ -29,8 +29,8 @@ class PagesController < ApplicationController
       Page.find(params[:id], :include => [:parts, :slugs])
     end
 
-    if @page.try(:live?) or 
-       (refinery_user? and 
+    if @page.try(:live?) or
+       (refinery_user? and
         current_user.authorized_plugins.include?("refinery_pages"))
       # if the admin wants this to be a "placeholder" page which goes to its first child, go to that instead.
       if @page.skip_to_first_child
