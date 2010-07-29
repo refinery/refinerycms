@@ -15,7 +15,7 @@ class RefineryPluginGenerator < Rails::Generator::NamedBase
       puts banner
       exit
     end
-    
+
     record do |m|
       # Copy controller, model and migration
       directories = ["#{plural_name}", "#{plural_name}/app", "#{plural_name}/app/controllers",
@@ -68,7 +68,7 @@ class RefineryPluginGenerator < Rails::Generator::NamedBase
       m.migration_template  'migration.rb', 'db/migrate',
                             :assigns => {:migration_name => "Create#{class_name.pluralize}"},
                             :migration_file_name => "create_#{singular_name.pluralize}"
-                            
+
       m.readme "MIGRATE" unless RAILS_ENV == "test"
     end
   end
