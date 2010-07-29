@@ -45,4 +45,3 @@ Join the IRC channel on freenode.net #refinerycms on August 7th to contribute!
 * WYMEditor and the dialogs are the weakest areas right now.
 
 # Organise a party and media for 1.0 release
-
