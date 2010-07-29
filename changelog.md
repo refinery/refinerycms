@@ -1,10 +1,14 @@
 ## 0.9.7.9 [unreleased]
 
-- Added a theme generator to create the basic file structure of a new theme [David Jones](http://github.com/djones) and [Levi Cole](http://github.com/levicole)
-- Renamed ``script/generate refinery`` to ``script/generate refinery_plugin`` [David Jones](http://github.com/djones)
-- Add deprecation notice to ``script/generate refinery`` [David Jones](http://github.com/djones)
-- Updated documentation to reflect new generator changes [David Jones](http://github.com/djones)
-- Added tests for both plugin and theme generators [David Jones](http://github.com/djones) and [Levi Cole](http://github.com/levicole)
+- Added a theme generator to create the basic file structure of a new theme. [David Jones](http://github.com/djones) and [Levi Cole](http://github.com/levicole)
+- Renamed ``script/generate refinery`` to ``script/generate refinery_plugin``. [David Jones](http://github.com/djones)
+- Add deprecation notice to ``script/generate refinery``. [David Jones](http://github.com/djones)
+- Updated documentation to reflect new generator changes. [David Jones](http://github.com/djones)
+- Added tests for both plugin and theme generators. [David Jones](http://github.com/djones) and [Levi Cole](http://github.com/levicole)
+- Refactored the refinerycms & refinery-upgrade-097-to-097 tasks to make better use of Pathname. [Philip Arndt](http://github.com/parndt)
+- Added more cucumber features and tagged existing ones. [Philip Arndt](http://github.com/parndt), [James Fiderlick](http://github.com/jamesfid) and [Steven Heidel](http://github.com/stevenheidel)
+- Removed mysterious ``page_translations`` table if you had it. [Philip Arndt](http://github.com/parndt)
+- [See full list](http://github.com/resolve/refinerycms/compare/0.9.7.8...master)
 
 ## 0.9.7.8 [23 July 2010]
 
