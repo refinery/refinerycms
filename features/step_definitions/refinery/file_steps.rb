@@ -19,4 +19,3 @@ When /^I upload the file at "([^"]*)"$/ do |file_path|
   attach_file('resource[uploaded_data]', File.join(Rails.root, file_path))
   click_button 'Save'
 end
-
