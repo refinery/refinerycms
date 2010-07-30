@@ -29,8 +29,7 @@
     <%= f.label :value %>
     <%= f.text_area :value, :rows => 5, :class => 'widest' %>
   </div>
-  <input type='hidden' name='modal' value='<%= from_dialog? %>' />
-  <input type='hidden' name='dialog' value='<%= from_dialog? %>' />
+  
   <%= render :partial => "/shared/admin/form_actions",
              :locals => {
                :f => f,

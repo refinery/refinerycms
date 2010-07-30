@@ -64,7 +64,9 @@ class RefinerySetting < ActiveRecord::Base
       # if the database is not up to date yet then it won't know about certain fields.
       setting.scoping = scoping if self.column_names.include?('scoping')
       setting.restricted = restricted if self.column_names.include?('restricted')
-      setting.callback_proc_as_string = callback_proc_as_string if callback_proc_as_string.is_a?(String) && self.column_names.include?('callback_proc_as_string')
+      if callback_proc_as_string.is_a?(String) and self.column_names.include?('callback_proc_as_string')
+        setting.callback_proc_as_string = callback_proc_as_string
+      end
 
       setting.save
 
@@ -90,22 +92,29 @@ class RefinerySetting < ActiveRecord::Base
   def self.[]=(name, value)
     setting = find_or_create_by_name(name.to_s)
 
+    scoping = nil
     # you could also pass in {:value => 'something', :scoping => 'somewhere'}
     unless value.is_a?(Hash) and value.has_key?(:value)
       setting.value = value
     else
       setting.value = value[:value]
-      setting.scoping = value[:scoping] if value.has_key?(:scoping) and setting.class.column_names.include?('scoping')
-      setting.callback_proc_as_string = value[:callback_proc_as_string] if value.has_key?(:callback_proc_as_string) and setting.class.column_names.include?('callback_proc_as_string')
+      if value.has_key?(:scoping) and setting.class.column_names.include?('scoping')
+        scoping, setting.scoping = value[:scoping]
+      end
+      if value.has_key?(:callback_proc_as_string) and
+         setting.class.column_names.include?('callback_proc_as_string')
+        setting.callback_proc_as_string = value[:callback_proc_as_string]
+      end
     end
 
     setting.save
-    cache_write(setting.name, setting.scoping, setting.value)
+    cache_write(setting.name, scoping, setting.value)
   end
 
-  # Below is not very nice, but seems to be required
-  # The problem is when Rails serialises a fields like booleans it doesn't retrieve it back out as a boolean
-  # it just returns a string. This code maps the two boolean values correctly so a boolean is returned
+  # Below is not very nice, but seems to be required. The problem is when Rails
+  # serialises a fields like booleans it doesn't retrieve it back out as a boolean
+  # it just returns a string. This code maps the two boolean values
+  # correctly so that a boolean is returned instead of a string.
   REPLACEMENTS = {"true" => true, "false" => false}
 
   def value
@@ -132,18 +141,25 @@ class RefinerySetting < ActiveRecord::Base
 
   def value=(new_value)
     # must convert to string if true or false supplied otherwise it becomes 0 or 1, unfortunately.
-    new_value = new_value.to_s if ["trueclass","falseclass"].include?(new_value.class.to_s.downcase)
+    if ["trueclass","falseclass"].include?(new_value.class.to_s.downcase)
+      new_value = new_value.to_s
+    end
     self[:value] = new_value
   end
 
   def callback_proc
-    eval "Proc.new{#{self.callback_proc_as_string} }" if RefinerySetting.column_names.include?('callback_proc_as_string') && self.callback_proc_as_string.present?
+    if RefinerySetting.column_names.include?('callback_proc_as_string') and
+       self.callback_proc_as_string.present?
+      eval "Proc.new{#{self.callback_proc_as_string} }"
+    end
   end
 
   private
 
   def check_restriction
-    self.restricted = false if restricted.nil?
+    if self.class.column_names.include?('restricted') and restricted.nil?
+      self.restricted = false
+    end
   end
 
 end
