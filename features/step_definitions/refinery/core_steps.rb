@@ -49,9 +49,3 @@ Then /^"([^\"]*)" can log in$/ do |name|
   And 'I press the login button'
   Then 'I should not see a login form'
 end
-
-# javascript
-When /confirm javascript dialogu?e?s$/ do
-  evaluate_script("window.alert = function(msg) { return true; }")
-  evaluate_script("window.confirm = function(msg) { return true; }")
-end
