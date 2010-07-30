@@ -18,7 +18,6 @@ class Resource < ActiveRecord::Base
   def validate
     if self.filename.nil?
       errors.add_to_base(I18n.translate('must_choose_file'))
-      errors.add_to_base("You must choose a file to upload")
     else
       [:size].each do |attr_name|
         enum = attachment_options[attr_name]

@@ -11,7 +11,12 @@ rescue LoadError
   exit
 end
 
-refinery_root = (defined?(REFINERY_ROOT) && REFINERY_ROOT.is_a?(Pathname) ? REFINERY_ROOT : Pathname.new(File.expand_path(File.dirname(__FILE__) << "/..")))
+refinery_root = if defined?(REFINERY_ROOT) and REFINERY_ROOT.is_a?(Pathname)
+  REFINERY_ROOT
+else
+  Pathname.new(File.expand_path(File.dirname(__FILE__) << "/.."))
+end
+
 unless (app_path = ARGV.shift).nil? or app_path.length == 0
   # if "" or "." or "./" is specified then get the current directory otherwise accept the specified app_path.
   if (app_path.length <= 2 and ((is_current_dir = app_path =~ /(\.(\/)?)/).nil? or is_current_dir < 2))
@@ -19,11 +24,12 @@ unless (app_path = ARGV.shift).nil? or app_path.length == 0
   else
     rails_root = app_path =~ /^\// ? app_path : File.expand_path(File.join(Dir.getwd, app_path.gsub(/^\.\//, '')))
   end
+  rails_root = Pathname.new(rails_root.to_s)
 
-  if File.directory?(rails_root)
+  if rails_root.directory?
     if ARGV.include?("--force")
       # remove the contents of the current directory
-      Dir[File.join(rails_root, "*")].each {|dir| FileUtils::rm_rf(dir, :secure => true) }
+      Dir[rails_root.join('*').to_s].each {|dir| FileUtils::rm_rf(dir, :secure => true) }
     else
       puts "The path you specified already exists. If you want to override this directory (i.e. delete all the current contents) run this again with --force"
     end
@@ -40,8 +46,12 @@ unless (app_path = ARGV.shift).nil? or app_path.length == 0
     FileUtils::cp_r to_copy.compact, rails_root, :verbose => false
 
     # ensure lib/refinery_initializer.rb and lib/gemspec.rb don't make it in.
-    FileUtils::rm File.join(%W(#{rails_root} lib refinery_initializer.rb)) if File.exists?(File.join(%W(#{rails_root} lib refinery_initializer.rb)))
-    FileUtils::rm File.join(%W(#{rails_root} lib gemspec.rb)) if File.exists?(File.join(%W(#{rails_root} lib gemspec.rb)))
+    if (initializer=rails_root.join('lib', 'refinery_initializer.rb')).exist?
+      FileUtils::rm initializer.to_s
+    end
+    if (gemspec = rails_root.join('lib', 'gemspec.rb')).exist?
+      FileUtils::rm gemspec.to_s
+    end
 
     # copy the appropriate database adapter as specified (or not)
     db_adapter = 'sqlite3'
@@ -51,17 +61,19 @@ unless (app_path = ARGV.shift).nil? or app_path.length == 0
         db_adapter = arg_parts.last if arg_parts.first == '--database'
       end
     end
-    FileUtils::cp File.join(%W(#{rails_root} config database.yml.#{db_adapter})), File.join(%W(#{rails_root} config database.yml.example))
+    FileUtils::cp rails_root.join('config', "database.yml.#{db_adapter}").to_s,
+                  rails_root.join('config', 'database.yml.example').to_s
 
     # add in the config files
     %w(database amazon_s3 rackspace_cloudfiles).each do |config|
-      FileUtils::move File.join(%W(#{rails_root} config #{config}.yml.example)), File.join(%W(#{rails_root} config #{config}.yml))
+      FileUtils::move rails_root.join('config', "#{config}.yml.example").to_s,
+                      rails_root.join('config', "#{config}.yml").to_s
 
       # figure out the app name from the install path and swap out your_local_xxx with this name.
-      unless rails_root == "/" or RUBY_PLATFORM =~ /mswin/
-        app_name = rails_root.split(File::SEPARATOR).last
+      unless rails_root.to_s == "/" or RUBY_PLATFORM =~ /mswin/
+        app_name = rails_root.to_s.split(File::SEPARATOR).last
         # read in the file and split up the lines
-        lines = File.open(File.join(%W(#{rails_root} config #{config}.yml)), "r").read.split("\n")
+        lines = rails_root.join('config', "#{config}.yml").open('r').read.split("\n")
         lines.each do |line|
           line.gsub!("your_local_#{config}", "#{app_name}_development")
           line.gsub!("your_test_#{config}", "#{app_name}_test")
@@ -69,7 +81,7 @@ unless (app_path = ARGV.shift).nil? or app_path.length == 0
           line.gsub!("your_production_#{config}", "#{app_name}_production")
         end
         # write the new content into the file.
-        config_file = File.open(File.join(%W(#{rails_root} config #{config}.yml)), "w")
+        config_file = rails_root.join('config', "#{config}.yml").open('w')
         config_file.puts(lines.join("\n"))
         config_file.close
       end
@@ -81,15 +93,15 @@ unless (app_path = ARGV.shift).nil? or app_path.length == 0
     3.times { new_digest << Digest::SHA1.hexdigest("--refinery--#{Time.now.to_s}--#{rand(10000000)}--") }
 
     # read in the file and split up the lines
-    app_config_file = File.exist?(File.join(%W(#{rails_root} config application.rb))) ? "application.rb" : "environment.rb"
-    lines = File.open(File.join(%W(#{rails_root} config #{app_config_file})), "r").read.split("\n")
+    app_config_file = rails_root.join('config', 'application.rb').exist? ? "application.rb" : "environment.rb"
+    lines = rails_root.join('config', app_config_file).open('r').read.split("\n")
     lines.each do |line|
       match = line.scan(/(:secret)([^']*)([\'])([^\']*)/).flatten.last
       line.gsub!(match, new_digest) unless match.nil?
     end
 
     # write the new content into the config file.
-    app_config = File.open(File.join(%W(#{rails_root} config #{app_config_file})), "w")
+    app_config = rails_root.join('config', app_config_file).open('w')
     app_config.puts(lines.join("\n"))
     app_config.close
 
@@ -109,7 +121,7 @@ unless (app_path = ARGV.shift).nil? or app_path.length == 0
     end
 
     # write the new content into the file.
-    app_gemfile = File.open(File.join(%W(#{rails_root} Gemfile)), "w")
+    app_gemfile = rails_root.join('Gemfile').open('w')
     app_gemfile.puts(lines.join("\n"))
     app_gemfile.close
 
@@ -117,9 +129,9 @@ unless (app_path = ARGV.shift).nil? or app_path.length == 0
     ignore_content = refinery_root.join('.gitignore').read
     ignore_content.gsub!(/#===REMOVED DURING REFINERY GEM INSTALL===.*#===END OF REMOVED DURING REFINERY GEM INSTALL===/m, '')
 
-    File.open(File.join(%W(#{rails_root} .gitignore)), "w") do |f|
-      f.puts(ignore_content)
-    end
+    rails_gitignore = rails_root.join('.gitignore').open('w')
+    rails_gitignore.puts(ignore_content)
+    rails_gitignore.close
 
     puts "\n---------"
     puts "Refinery successfully installed in '#{rails_root}'!\n\n"
@@ -130,11 +142,11 @@ unless (app_path = ARGV.shift).nil? or app_path.length == 0
     puts `cd '#{rails_root}' && #{cmd}`
 
     puts "\n\nSetting up your development database..\n"
-    puts "Running: " + (cmd="rake -f '#{File.join(rails_root, 'Rakefile')}' db:setup")
+    puts "Running: " + (cmd="rake -f '#{rails_root.join('Rakefile')}' db:setup")
     puts `cd '#{rails_root}' && #{cmd}`
 
     puts "\n\nUpdating some core refinery files..\n"
-    puts "Running: " + (cmd="rake -f '#{File.join(rails_root, 'Rakefile')}' refinery:update from_installer=true")
+    puts "Running: " + (cmd="rake -f '#{rails_root.join('Rakefile')}' refinery:update from_installer=true")
     puts `cd '#{rails_root}' && #{cmd}`
     # end automation..
 

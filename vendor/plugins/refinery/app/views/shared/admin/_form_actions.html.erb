@@ -33,6 +33,9 @@
     delete_url          ||= eval("admin_#{f.object.class.name.underscore}_url(#{f.object.id})")
   end
 -%>
+<input type='hidden' name='modal' value='<%= from_dialog? %>' />
+<input type='hidden' name='dialog' value='<%= from_dialog? %>' />
+
 <div class='form-actions<%= ' form-actions-dialog' if from_dialog? %>'>
   <div class='form-actions-left'>
     <%= submit_tag submit_button_text,
