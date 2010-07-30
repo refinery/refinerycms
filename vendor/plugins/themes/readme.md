@@ -69,7 +69,7 @@ Simply use the Theme generator to make the basic structure of a new theme.
 
     ruby script/generate refinery_theme name_of_theme
 
-Don't forgot to "activate" this new theme by setting the theme setting to the name of this new theme.
+Don't forget to "activate" this new theme by setting the theme setting to the name of this new theme.
 
 ## How do I select which Theme Refinery should use?
 
