@@ -2,16 +2,24 @@
   <% unless admin? or login? # jquery scripts should already be cached when using the site bar as login has happened. %>
     <%= stylesheet_link_tag('refinery/site_bar') unless exclude_css ||= false %>
     <%= jquery_include_tags(:jquery_ui => false) unless exclude_jquery ||= false %>
-    <%= javascript_include_tag 'jquery/jquery.corner.js' unless exclude_jquery or (exclude_cornering_library ||= false) %>
-    <% unless exclude_jquery or exclude_cornering_library or (exclude_site_bar_javascript ||= false) %>
+    <%= javascript_include_tag 'jquery/jquery.corner.js' unless exclude_cornering_library ||= false %>
+    <% unless exclude_site_bar_javascript ||= false %>
       <script type='text/javascript'>
-        $(document).ready(function() {
-          logo = $('#site_bar_content #site_bar_refinery_cms_logo');
-          $(logo).css('left', ($('#site_bar_content').width() / 2) - ($(logo).width() / 2));
-          $('#editor_switch a').corner('6px').appendTo(
-            $('<span></span>').prependTo('#editor_switch').corner('6px')
-          );
-        });
+        if (typeof($) == 'function') {
+          $(document).ready(function() {
+            logo = $('#site_bar_content #site_bar_refinery_cms_logo');
+            $(logo).css('left', ($('#site_bar_content').width() / 2) - ($(logo).width() / 2));
+
+            if ($.isFunction($('#editor_switch a').corner)) {
+              $('#editor_switch a').corner('6px');
+            }
+
+            $('#editor_switch a').appendTo((span = $('<span></span>').prependTo('#editor_switch')));
+            if ($.isFunction(span.corner)) {
+              span.corner('6px');
+            }
+          });
+        }
       </script>
     <% end %>
   <% end -%>
