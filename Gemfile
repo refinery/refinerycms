@@ -29,7 +29,6 @@ group :test do
   gem 'json_pure', :require => 'json/pure', :git => 'git://github.com/parndt/json.git', :branch => 'master'
   gem 'factory_girl'
   gem 'test-unit',      '= 1.2.3'
-  gem 'capybara-envjs', :require => 'capybara/envjs'
   gem 'capybara'
   gem 'database_cleaner'
   gem 'cucumber-rails'
