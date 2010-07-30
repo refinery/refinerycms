@@ -28,9 +28,6 @@ def setup_environment
   # prefer to use XPath just remove this line and adjust any selectors in your
   # steps to use the XPath syntax.
   Capybara.default_selector = :css
-
-  require 'capybara/envjs'
-  Capybara.javascript_driver = :envjs
 end
 
 def each_run
@@ -60,13 +57,8 @@ def each_run
   Cucumber::Rails::World.use_transactional_fixtures = true
   # How to clean your database when transactions are turned off. See
   # http://github.com/bmabey/database_cleaner for more info.
-  if defined?(ActiveRecord::Base)
-    begin
-      require 'database_cleaner'
-      DatabaseCleaner.strategy = :truncation
-    rescue LoadError => ignore_if_database_cleaner_not_present
-    end
-  end
+  require 'database_cleaner'
+  DatabaseCleaner.strategy = :truncation
 
   require 'fileutils'
   require 'rails_generator'
