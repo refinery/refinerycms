@@ -12,18 +12,18 @@ dependencies:
     group: 
     - :default
     version: = 2.3.8
-  authlogic: 
-    group: 
-    - :default
-    version: = 2.1.5
-    require: 
-    - authlogic
   sqlite3-ruby: 
     group: 
     - :default
     version: ">= 0"
     require: 
     - sqlite3
+  authlogic: 
+    group: 
+    - :default
+    version: = 2.1.5
+    require: 
+    - authlogic
   ruby-prof: 
     group: 
     - :test
@@ -32,18 +32,18 @@ dependencies:
     group: 
     - :test
     version: ">= 0"
-  truncate_html: 
-    group: 
-    - :default
-    version: = 0.3.2
-    require: 
-    - truncate_html
   acts_as_indexed: 
     group: 
     - :default
     version: = 0.6.3
     require: 
     - acts_as_indexed
+  truncate_html: 
+    group: 
+    - :default
+    version: = 0.3.2
+    require: 
+    - truncate_html
   database_cleaner: 
     group: 
     - :test
@@ -60,22 +60,22 @@ dependencies:
     group: 
     - :test
     version: ">= 0"
-  friendly_id: 
+  factory_girl: 
     group: 
-    - :default
-    version: = 3.0.6
-    require: 
-    - friendly_id
+    - :test
+    version: ">= 0"
   will_paginate: 
     group: 
     - :default
     version: = 2.3.14
     require: 
     - will_paginate
-  factory_girl: 
+  friendly_id: 
     group: 
-    - :test
-    version: ">= 0"
+    - :default
+    version: = 3.0.6
+    require: 
+    - friendly_id
   rmagick: 
     group: 
     - :default
@@ -94,12 +94,6 @@ dependencies:
     group: 
     - :test
     version: ">= 0"
-  capybara-envjs: 
-    group: 
-    - :test
-    version: ">= 0"
-    require: 
-    - capybara/envjs
   launchy: 
     group: 
     - :test
@@ -144,14 +138,6 @@ specs:
     version: 0.0.27
 - capybara: 
     version: 0.3.9
-- stackdeck: 
-    version: 0.2.0
-- johnson: 
-    version: 2.0.0.pre3
-- envjs: 
-    version: 0.3.7
-- capybara-envjs: 
-    version: 0.1.6
 - configuration: 
     version: 1.1.0
 - diff-lcs: 
@@ -198,7 +184,7 @@ specs:
     version: 0.3.2
 - will_paginate: 
     version: 2.3.14
-hash: 78ca4102661b9332d3d7881cf0ad154842c74ba9
+hash: 733409b21f46d15693406641ab37edc0b9dcc5e1
 sources: 
 - Git: 
     uri: git://github.com/parndt/json.git
