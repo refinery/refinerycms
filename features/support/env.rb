@@ -71,6 +71,7 @@ def each_run
 
   require 'authlogic/test_case'
   Before do
+    DatabaseCleaner.clean if defined?(ActiveRecord::Base) and defined?(DatabaseCleaner)
     activate_authlogic
   end
 end
