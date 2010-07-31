@@ -38,6 +38,8 @@ pt-BR:
         closed: "Mensagem '{{inquiry}}' está fechado"
         reopened: "Mensagem '{{inquiry}}' está reaberto"
       submenu:
+        inbox: Inbox
+        spam: Spam
         update_notified: Atualizar quem recebe a notificação
         edit_confirmation_email: Editar email de confirmação
       index:
