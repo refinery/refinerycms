@@ -48,6 +48,8 @@ nl:
         actions: Acties
         back_to_all_inquiries: Terug naar alle vragen
       submenu:
+        inbox: Inbox
+        spam: Spam
         update_notified: Wijzig wie een notificatie ontvangt
         edit_confirmation_email: Bewerk bevestigings email
     inquiry_settings:
