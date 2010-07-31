@@ -24,7 +24,7 @@ class Resource < ActiveRecord::Base
 
         unless enum.nil? || enum.include?(send(attr_name))
           errors.add_to_base(I18n.translate('file_should_be_smaller_than_max_file_size',
-                              :max_file_size => ActionController::Base.helpers.number_to_human_size(MAX_SIZE_IN_MB * 1024 * 1024) ))
+                              :max_file_size => ActionController::Base.helpers.number_to_human_size(MAX_SIZE_IN_MB.megabytes) ))
         end
       end
     end
