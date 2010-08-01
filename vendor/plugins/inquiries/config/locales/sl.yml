@@ -34,8 +34,6 @@ sl:
       index:
         no_inquiries: Trenutno še ni nobenega povpraševanja.
       submenu:
-        inbox: Inbox
-        spam: Spam
         update_notified: Uredi prejemnike obvestila
         edit_confirmation_email: Uredni potrditveni email
       show:

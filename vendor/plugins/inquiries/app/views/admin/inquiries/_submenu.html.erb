@@ -1,7 +1,7 @@
 <div id='actions'>
   <ul>
     <li>
-      <%= render :partial => "/shared/admin/search", :locals => {:url => admin_inquiries_url} %>
+      <%= render :partial => "/shared/admin/search", :locals => {:url => request.path} %>
     </li>
     <li <%= "class='selected'" if params[:action] == "index" %>>
       <%= link_to t('.inbox'), admin_inquiries_url, :class => "email_icon" %>

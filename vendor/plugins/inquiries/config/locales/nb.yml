@@ -35,8 +35,6 @@ nb:
         closed: "Forespørselen '{{inquiry}}' er lukket"
         reopened: "Forespørselen '{{inquiry}}' er gjenåpnet"
       submenu:
-        inbox: Inbox
-        spam: Spam
         update_notified: Oppdater hvem som blir informert
         edit_confirmation_email: Rediger bekreftelses e-posten
       index:
