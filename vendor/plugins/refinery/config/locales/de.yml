@@ -39,6 +39,7 @@ de:
         cancel: Abbrechen
         or_continue: oder
         cancel_lose_changes: "Abbrechen verlieren alle Änderungen, die Sie auf diese {{object_name}} gemacht haben"
+        delete: 'Löschen'
       image_picker:
         none_selected: "Es ist derzeit kein {{what}} ausgewählt ist, klicken Sie bitte hier eine Annonce aufgeben"
         remove_current: "Entfernen aktuel {{what}}"
