@@ -46,7 +46,9 @@ de:
         actions: Aktionen
         back_to_all_inquiries: Zurück zu allen Kontaktanfragen
         inquiry: Kontaktanfrage
-      submenu:        
+      submenu:
+        inbox: Inbox
+        spam: Spam
         update_notified: Wer wird benachrichtigt aktualisieren
         edit_confirmation_email: Bestätigungsmail bearbeiten
     inquiry_settings:
