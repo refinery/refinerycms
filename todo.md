@@ -4,8 +4,8 @@
 
 * Add Cucumber for the whole of Refinery. (top priority)
 * Add RSpec for the whole of Refinery, particularly:
-* * User, User plugin and User mailer
-* * Inquiry mailer and Inquiry setting
+  - User, User plugin and User mailer
+  - Inquiry mailer and Inquiry setting
 
 ## Rails 3.0 Support
 
@@ -16,9 +16,8 @@ Join the IRC channel on freenode.net #refinerycms on August 7th to contribute!
 ## I18n support
 
 * Check all the views for missing translations
-* * You can run a rake task with your locale e.g for Slovenian:
-
-    rake translate:lost_in_translation LOCALE=sl
+  - You can run a rake task with your locale e.g for Slovenian:
+  ``rake translate:lost_in_translation LOCALE=sl``
     
 * Translate models and model attributes used in forms (Rails 2.3.8 supports translation form labels!)
 * Javascript messages etc:
