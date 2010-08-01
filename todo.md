@@ -3,10 +3,9 @@
 ## Solid Test Coverage
 
 * Add Cucumber for the whole of Refinery. (top priority)
-* Add unit test coverage for user, user plugin and user mailer
-* Add unit test coverage for inquiry mailer and inquiry setting
-* Add functional tests for the whole of Refinery.
-* Add RSpec for the whole of Refinery.
+* Add RSpec for the whole of Refinery, particularly:
+** User, User plugin and User mailer
+** Inquiry mailer and Inquiry setting
 
 ## Rails 3.0 Support
 
