@@ -43,8 +43,6 @@ it:
         back_to_all_inquiries: Torna a tutte le richieste
         inquiry: Inchiesta
       submenu:
-        inbox: Inbox
-        spam: Spam
         update_notified: Aggiornamento chi viene notificata
         edit_confirmation_email: Modifica email di conferma
     inquiry_settings:

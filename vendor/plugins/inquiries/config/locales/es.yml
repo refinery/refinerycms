@@ -45,8 +45,6 @@ es:
         back_to_all_inquiries: Regresar a todas las consultas
         inquiry: Consulta
       submenu:
-        inbox: Inbox
-        spam: Spam
         update_notified: "Actualizar a quien será notificado"
         edit_confirmation_email: "Editar email de confirmación"
     inquiry_settings:
