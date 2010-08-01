@@ -21,7 +21,7 @@ quentin_pages:
 
 quentin_resources:
   user: quentin
-  name: refinery_resources
+  name: refinery_files
 
 quentin_settings:
   user: quentin
