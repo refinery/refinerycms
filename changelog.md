@@ -1,4 +1,4 @@
-## 0.9.7.10 [unreleased]
+## 0.9.7.10 [02 August 2010]
 - Added options to site_bar partial to allow particular components to be disabled (CSS, JS, jQuery or cornering script) so that they don't interfere with these already being included in the theme. [Philip Arndt](http://github.com/parndt)
 - Fixed the schema file as it was invalid somehow. [Steven Heidel](http://github.com/stevenheidel)
 - Made search more consistent and added it to Spam/Ham. [Uģis Ozols](http://github.com/ugisozols)
