@@ -38,6 +38,9 @@ module NavigationHelpers
     when /the list of inquiries/
       admin_inquiries_path
 
+    when /the list of spam inquiries/
+      spam_admin_inquiries_path
+
     when /the (d|D)ashboard/
       admin_dashboard_index_path
 
