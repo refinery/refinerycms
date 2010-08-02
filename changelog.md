@@ -1,3 +1,10 @@
+## 0.9.7.10 [02 August 2010]
+- Added options to site_bar partial to allow particular components to be disabled (CSS, JS, jQuery or cornering script) so that they don't interfere with these already being included in the theme. [Philip Arndt](http://github.com/parndt)
+- Fixed the schema file as it was invalid somehow. [Steven Heidel](http://github.com/stevenheidel)
+- Made search more consistent and added it to Spam/Ham. [Uģis Ozols](http://github.com/ugisozols)
+- Fixed a bug with adding new resources. [Steven Heidel](http://github.com/stevenheidel)
+- Fixed a range of issues with translation keys and grammar between different languages. [Uģis Ozols](http://github.com/ugisozols)
+
 ## 0.9.7.9 [30 July 2010]
 
 - Added a theme generator to create the basic file structure of a new theme. [David Jones](http://github.com/djones) and [Levi Cole](http://github.com/levicole)

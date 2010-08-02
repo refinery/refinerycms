@@ -24,7 +24,7 @@ class Image < ActiveRecord::Base
 
         unless enum.nil? || enum.include?(send(attr_name))
           errors.add_to_base(I18n.translate('file_should_be_smaller_than_max_image_size',
-                              :max_image_size => ActionController::Base.helpers.number_to_human_size(MAX_SIZE_IN_MB) ))
+                              :max_image_size => ActionController::Base.helpers.number_to_human_size(MAX_SIZE_IN_MB.megabytes) ))
           errors.add_to_base(I18n.translate('file_must_be_these_formats')) if attr_name == :content_type
         end
       end

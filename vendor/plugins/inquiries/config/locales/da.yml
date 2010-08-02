@@ -43,7 +43,7 @@ da:
         actions: Handlinger
         back_to_all_inquiries: Tilbage til alle henvendelser
         inquiry: Henvendelse
-      submenu: 
+      submenu:
         update_notified: Opdatér, hvem der får besked
         edit_confirmation_email: Redigér e-mailbekræftelse
     inquiry_settings:

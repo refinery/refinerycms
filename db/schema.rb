@@ -9,19 +9,22 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100708014636) do
+ActiveRecord::Schema.define(:version => 20100729221735) do
 
   create_table "images", :force => true do |t|
-    t.string   "image_mime_type"
-    t.string   "image_name"
-    t.integer  "image_size"
-    t.integer  "image_width"
-    t.integer  "image_height"
+    t.integer  "parent_id"
+    t.string   "content_type"
+    t.string   "filename"
+    t.string   "thumbnail"
+    t.integer  "size"
+    t.integer  "width"
+    t.integer  "height"
+    t.string   "image_type"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "image_uid",       :null => false
-    t.string   "image_ext"
   end
+
+  add_index "images", ["parent_id"], :name => "index_images_on_parent_id"
 
   create_table "inquiries", :force => true do |t|
     t.string   "name"
@@ -54,12 +57,6 @@ ActiveRecord::Schema.define(:version => 20100708014636) do
 
   add_index "page_parts", ["id"], :name => "index_page_parts_on_id"
   add_index "page_parts", ["page_id"], :name => "index_page_parts_on_page_id"
-
-  create_table "page_translations", :force => true do |t|
-    t.integer "page_id"
-    t.string  "custom_title"
-    t.string  "meta_keywords"
-  end
 
   create_table "pages", :force => true do |t|
     t.string   "title"
@@ -98,13 +95,12 @@ ActiveRecord::Schema.define(:version => 20100708014636) do
   add_index "refinery_settings", ["name"], :name => "index_refinery_settings_on_name"
 
   create_table "resources", :force => true do |t|
-    t.string   "file_mime_type"
-    t.string   "file_name"
-    t.integer  "file_size"
+    t.string   "content_type"
+    t.string   "filename"
+    t.integer  "size"
+    t.integer  "parent_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "file_uid",       :null => false
-    t.string   "file_ext"
   end
 
   create_table "roles", :force => true do |t|
@@ -134,7 +130,7 @@ ActiveRecord::Schema.define(:version => 20100708014636) do
     t.integer "position"
   end
 
-  add_index "user_plugins", ["name"], :name => "index_user_plugins_on_title"
+  add_index "user_plugins", ["name"], :name => "index_user_plugins_on_name"
   add_index "user_plugins", ["user_id", "name"], :name => "index_unique_user_plugins", :unique => true
 
   create_table "users", :force => true do |t|
