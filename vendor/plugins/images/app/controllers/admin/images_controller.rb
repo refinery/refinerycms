@@ -2,19 +2,19 @@ class Admin::ImagesController < Admin::BaseController
 
   include Admin::ImagesHelper
 
-  crudify :image, :order => "created_at DESC", :conditions => "parent_id is NULL", :sortable => false
+  crudify :image,
+          :order => "created_at DESC",
+          :conditions => "parent_id is NULL",
+          :search_conditions => "parent_id IS NULL",
+          :sortable => false
+
   before_filter :change_list_mode_if_specified, :init_dialog
 
   def index
     if searching?
-      @images = Image.paginate_search params[:search],
-                                               :page => params[:page],
-                                               :order => "created_at DESC",
-                                               :conditions => "parent_id IS NULL"
+      search_and_paginate_all_images
     else
-      @images = Image.paginate :page => params[:page],
-                                               :order => "created_at DESC",
-                                               :conditions => "parent_id IS NULL"
+      paginate_all_images
     end
 
     if RefinerySetting.find_or_set(:group_images_by_date_uploaded, true)
