@@ -1,8 +1,12 @@
 <%= render :partial => "submenu" %>
 <div id='records'>
   <% if searching? %>
-    <h2><%= t('admin.search_results_for', :query => params[:search]) %></h2>
-    <%= render :partial => "inquiry", :collection => @inquiries %>
+    <h2><%= t('admin.search_results_for', :query => h(params[:search])) %></h2>
+    <% if @inquiries.any? %>
+      <%= render :partial => "inquiry", :collection => @inquiries %>
+    <% else %>
+      <p><%= t('admin.search_no_results') %></p>
+    <% end %>
   <% else %>
     <% if @grouped_inquiries.any? -%>
       <% @grouped_inquiries.each do |container| %>

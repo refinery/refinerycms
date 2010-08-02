@@ -46,7 +46,7 @@ fr:
         actions: Actions
         back_to_all_inquiries: Retourné à la liste de requêtes
         inquiry: Requête
-      submenu:    
+      submenu:
         update_notified: "Mettre à jour qui est notifié"
         edit_confirmation_email: Modifier le couriel de confirmation
     inquiry_settings:

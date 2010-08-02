@@ -18,7 +18,7 @@
                       :class => "edit_icon" %>
         </li>
       <% end %>
-      <% if Refinery::Plugins.active.names.include?("refinery_resources") %>
+      <% if Refinery::Plugins.active.names.include?("refinery_files") %>
         <li>
           <%= link_to t('.upload_a_file'),
                       new_admin_resource_url(:dialog => true,
