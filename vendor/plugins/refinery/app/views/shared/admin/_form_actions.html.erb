@@ -11,7 +11,10 @@
 
   unless hide_cancel
     cancel_button_text  ||= t('.cancel')
-    cancel_title        ||= t('.cancel_lose_changes', :object_name => f.object.class.name.underscore.gsub("_", " "))
+    unless defined?(cancel_title)
+      cancel_title = t('.cancel_lose_changes',
+                       :object_name => f.object.class.name.underscore.gsub("_", " "))
+    end
     cancel_button_id    ||= "cancel_button"
 
     cancel_url          ||= (((back = url_for(:back)).include?('javascript') or action_name =~ /^(create|update)$/) ? send("admin_#{f.object.class.name.pluralize.underscore}_url") : back)
