@@ -1,11 +1,11 @@
-Given /^I (only )?have a page titled (.+) with a custom url (.+)?$/ do |only, title, link_url|
+Given /^I (only )?have a page titled "([^"]*)" with a custom url "([^"]*)"?$/ do |only, title, link_url|
   Page.delete_all if only
 
   Page.create(:title => title,
               :link_url => link_url)
 end
 
-Given /^I (only )?have pages titled (.+)$/ do |only, titles|
+Given /^I (only )?have pages titled "?([^"]*)"?$/ do |only, titles|
   Page.delete_all if only
   titles.split(', ').each do |title|
     Page.create(:title => title)
