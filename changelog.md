@@ -1,9 +1,17 @@
+## 0.9.7.11 [unreleased]
+- Removed app/controllers/application.rb due to its serious deprecation. Fixed deprecations in how we use acts_as_indexed. [Philip Arndt](http://github.com/parndt)
+- added passing cucumber tests for search (available in 'Images', 'Files',
+'Inquiries' and 'Pages'). [Uģis Ozols](http://github.com/ugisozols)
+- [See full list](http://github.com/resolve/refinerycms/compare/0.9.7.10...master)
+
+
 ## 0.9.7.10 [02 August 2010]
 - Added options to site_bar partial to allow particular components to be disabled (CSS, JS, jQuery or cornering script) so that they don't interfere with these already being included in the theme. [Philip Arndt](http://github.com/parndt)
 - Fixed the schema file as it was invalid somehow. [Steven Heidel](http://github.com/stevenheidel)
 - Made search more consistent and added it to Spam/Ham. [Uģis Ozols](http://github.com/ugisozols)
 - Fixed a bug with adding new resources. [Steven Heidel](http://github.com/stevenheidel)
 - Fixed a range of issues with translation keys and grammar between different languages. [Uģis Ozols](http://github.com/ugisozols)
+- [See full list](http://github.com/resolve/refinerycms/compare/0.9.7.9...0.9.7.10)
 
 ## 0.9.7.9 [30 July 2010]
 
