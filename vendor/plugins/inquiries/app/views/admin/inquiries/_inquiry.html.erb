@@ -7,7 +7,8 @@
     <%= link_to refinery_icon_tag('delete.png'), admin_inquiry_url(inquiry),
                 :class => "cancel confirm-delete",
                 :title => t('.title'),
-                :'data-confirm' => t('.remove_inquiry', :name => inquiry.name) -%>
+                :'data-confirm' => t('.remove_inquiry', :name => inquiry.name),
+                :'data-method' => "delete" -%>
 
     <%= link_to refinery_icon_tag('zoom.png'), admin_inquiry_url(inquiry),
                 :title => t('.read_inquiry') -%>
