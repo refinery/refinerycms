@@ -3,7 +3,7 @@ require 'pathname'
 require 'fileutils'
 require 'yaml'
 
-refinery_root = if defined?(REFINERY_ROOT) and (REFINERY_ROOT.is_a?(Pathname)
+refinery_root = if defined?(REFINERY_ROOT) and REFINERY_ROOT.is_a?(Pathname)
   REFINERY_ROOT
 else
   Pathname.new(File.expand_path(File.dirname(__FILE__) << "/.."))
