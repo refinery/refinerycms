@@ -11,3 +11,15 @@ Given /^I have an inquiry from "([^"]*)" with email "([^\"]*)" and message "([^\
                  :email => email,
                  :message => message)
 end
+
+Given /^I have test inquiry titled "([^"]*)"$/ do |title|
+  Inquiry.create(:name => title,
+                 :email => 'test@cukes.com',
+                 :message => 'cuking ...',
+                 :spam => false)
+
+  Inquiry.create(:name => title,
+                 :email => 'test@cukes.com',
+                 :message => 'cuking ...',
+                 :spam => true)
+end
