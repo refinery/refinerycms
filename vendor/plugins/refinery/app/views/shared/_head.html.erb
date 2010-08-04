@@ -2,7 +2,8 @@
 <head>
   <title><%= browser_title(yield(:title)) %></title>
   <%= render :partial => 'shared/google_analytics' unless local_request? %>
-  <%= "<!--[if lt IE 9]>#{javascript_include_tag('http://html5shiv.googlecode.com/svn/trunk/html5.js')}<![endif]-->".html_safe if request.env['HTTP_USER_AGENT'] =~ /MSIE/ %>
+  <%= # IE only HTML5 enabling script:
+    "<script type='text/javascript'>#{render :partial => '/shared/html5_for_ie.js'}</script>" if request.env['HTTP_USER_AGENT'] =~ /MSIE/ %>
   <%= stylesheet_link_tag "application", "formatting", :theme => theme %>
   <%= stylesheet_link_tag "theme" %>
   <%= stylesheet_link_tag "home", :theme => theme if home_page? %>
