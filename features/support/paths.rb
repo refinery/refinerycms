@@ -23,8 +23,14 @@ module NavigationHelpers
     when /the list of files/
       admin_resources_path
 
+    when /the new file form/
+      new_admin_resource_path
+
     when /the list of images/
       admin_images_path
+
+     when /the new image form/
+      new_admin_image_path
 
     when /the contact page/
       new_inquiry_path
