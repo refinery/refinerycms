@@ -1,8 +1,8 @@
 Gem::Specification.new do |s|
   s.name              = %q{refinerycms}
-  s.version           = %q{0.9.7.10}
+  s.version           = %q{0.9.7.11}
   s.description       = %q{A beautiful open source Ruby on Rails content manager for small business. Easy to extend, easy to use, lightweight and all wrapped up in a super slick UI.}
-  s.date              = %q{2010-08-02}
+  s.date              = %q{2010-08-04}
   s.summary           = %q{A beautiful open source Ruby on Rails content manager for small business.}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
@@ -24,7 +24,6 @@ Gem::Specification.new do |s|
     'app/controllers',
     'app/controllers/admin',
     'app/controllers/admin/base_controller.rb',
-    'app/controllers/application.rb',
     'app/controllers/application_controller.rb',
     'app/helpers',
     'app/helpers/application_helper.rb',
@@ -99,6 +98,7 @@ Gem::Specification.new do |s|
     'features/refinery/manage_refinery_settings.feature',
     'features/refinery/manage_users.feature',
     'features/refinery/plugin_generator.feature',
+    'features/refinery/search.feature',
     'features/refinery/site_bar.feature',
     'features/refinery/theme_generator.feature',
     'features/step_definitions',
@@ -1097,6 +1097,7 @@ Gem::Specification.new do |s|
     'vendor/plugins/refinery/app/views/shared/_google_analytics.html.erb',
     'vendor/plugins/refinery/app/views/shared/_head.html.erb',
     'vendor/plugins/refinery/app/views/shared/_header.html.erb',
+    'vendor/plugins/refinery/app/views/shared/_html5_for_ie.js.erb',
     'vendor/plugins/refinery/app/views/shared/_ie6check.html.erb',
     'vendor/plugins/refinery/app/views/shared/_language_switcher.html.erb',
     'vendor/plugins/refinery/app/views/shared/_menu.html.erb',
