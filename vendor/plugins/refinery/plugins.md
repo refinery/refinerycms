@@ -149,7 +149,7 @@ Here's what the different activity options mean:
     # the name of the class we're watching.
 
     :url_prefix
-    # Just use "_edit" if you're not sure how this works.
+    # Just use "edit_" if you're not sure how this works.
     #
     # When it says "'About' page was updated about 4 hours ago", the page title "About"
     # is linked to that page in a way we specify.  So by setting "_edit" as a :url_prefix what
