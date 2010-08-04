@@ -20,6 +20,7 @@
                   :title => t('.edit_this_page') %>
       <%= link_to refinery_icon_tag('delete.png'), admin_page_url(page),
                   :class => "cancel confirm-delete",
+                  :'data-method' => "delete",
                   :title => t('.confirm_delete_page_title') if page.deletable? %>
     </span>
   </div>

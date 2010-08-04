@@ -826,9 +826,24 @@ var list_reorder = {
       serialized += "&continue_reordering=false";
 
       $.post(list_reorder.update_url, serialized, function(data) {
-        $(list_reorder.sortable_list).html(data);
-
-        list_reorder.restore_controls(e);
+        // handle the case where we get the whole list back including the <ul> or whatever.
+        if (data.match(new RegExp("^"+ $(list_reorder.sortable_list).get(0).tagName.toLowerCase() + "\ id=\"|\'" + list_reorder.sortable_list + "\"|\'>")).length == 1) {
+          // replace reorder authenticity token's value.
+          $('#reorder_authenticity_token').val($($(data.split('reorder_authenticity_token')).last().get(0).split('value=\'')).last().get(0).split('\'')[0]);
+          // replace actual list content.
+          $(list_reorder.sortable_list).html($(data).html());
+        } else {
+          $(list_reorder.sortable_list).html(data);
+        }
+        
+        // if we get passed a script tag, re-enable reordering.
+        matches = data.replace('"', "'")
+                      .match(/<script\ type='text\/javascript'>([^<]*)<\/script>/im);
+        if (matches != null && matches.length > 1) {
+          list_reorder.enable_reordering();
+        } else {
+          list_reorder.restore_controls(e);
+        }
       });
     } else {
       list_reorder.restore_controls(e);

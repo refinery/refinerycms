@@ -31,7 +31,7 @@ module Refinery
     @major = 0
     @minor = 9
     @tiny  = 7
-    @build = 10
+    @build = 11
 
     def self.to_s
       [@major, @minor, @tiny, @build].compact.join('.')
