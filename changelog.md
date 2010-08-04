@@ -1,6 +1,6 @@
 ## 0.9.7.11 [unreleased]
-* Removed app/controllers/application.rb due to its serious deprecation. Fixed deprecations in how we use acts_as_indexed. [Philip Arndt](http://github.com/parndt)
-* Added passing cucumber tests for search for: [Uģis Ozols](http://github.com/ugisozols)
+* Removed ``app/controllers/application.rb`` due to its serious deprecation. Fixed deprecations in how we use acts_as_indexed. [Philip Arndt](http://github.com/parndt)
+* Added passing cucumber features for search for: [Uģis Ozols](http://github.com/ugisozols)
   - Images
   - Files
   - Inquiries
