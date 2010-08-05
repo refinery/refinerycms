@@ -25,9 +25,7 @@
   <%% else %>
     <%% if @<%= plural_name %>.any? %>
       <%%= will_paginate @<%= plural_name %>, :previous_label => '&laquo;', :next_label => '&raquo;' %>
-       <ul id='sortable_list'>
-        <%%= render :partial => "sortable_list" %>
-       </ul>
+      <%%= render :partial => "sortable_list" %>
       <%%= will_paginate @<%= plural_name %>, :previous_label => '&laquo;', :next_label => '&raquo;' %>
     <%% else %>
       <p>

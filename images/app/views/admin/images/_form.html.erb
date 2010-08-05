@@ -8,7 +8,7 @@
   <div class='field'>
     <% if action_name =~ /(edit)|(update)/ %>
       <%= t('.use_current_image') %>
-      <em><%= t('.or') %></em>, <%= t('.replace_image') %>
+      <em><%= t('.or') %></em><%= t('.replace_image') %>
     <% end %>
     <%= f.file_field :image %>
   </div>

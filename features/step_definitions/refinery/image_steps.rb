@@ -2,6 +2,10 @@ Given /^I have no images$/ do
   Image.delete_all
 end
 
+Given /^I have test image titled "([^"]*)"$/ do |file_name|
+  Image.create(:content_type => 'image/jpeg', :filename => file_name, :size => 5000)
+end
+
 When /^I attach the image at "([^"]*)"$/ do |file_path|
   attach_file('image[uploaded_data]', File.join(Rails.root, file_path))
 end

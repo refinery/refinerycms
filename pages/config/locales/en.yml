@@ -37,6 +37,8 @@ en:
         confirm_delete_page_message: "Are you sure you want to delete the page '%{title}'?"
         hidden: hidden
         draft: draft
+      form_new_page_parts:
+        title: Title
       form_advanced_options:
         toggle_advanced_options: Click to access meta tag settings and menu options
         parent_page: Parent page

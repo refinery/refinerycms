@@ -35,12 +35,9 @@ class Admin::ResourcesController < Admin::BaseController
 
   def index
     if searching?
-      @resources = Resource.paginate_search params[:search],
-                                            :page => params[:page],
-                                            :order => "created_at DESC"
+      search_and_paginate_all_resources
     else
-      @resources = Resource.paginate  :page => params[:page],
-                                      :order => "created_at DESC"
+      paginate_all_resources
     end
 
     if RefinerySetting.find_or_set(:group_resources_by_date_uploaded, true)

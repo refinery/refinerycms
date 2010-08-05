@@ -107,8 +107,8 @@ init_flash_messages = function(){
 init_modal_dialogs = function(){
   $('a[href*="dialog=true"]').not('#dialog_container a').each(function(i, anchor) {
     $(anchor).data({
-      'dialog-width': parseInt($(anchor.href.match("width=([0-9]*)")).last().get(0), 928)||928
-      , 'dialog-height': parseInt($(anchor.href.match("height=([0-9]*)")).last().get(0), 473)||473
+      'dialog-width': parseInt($($(anchor).attr('href').match("width=([0-9]*)")).last().get(0))||928
+      , 'dialog-height': parseInt($($(anchor).attr('href').match("height=([0-9]*)")).last().get(0))||473
       , 'dialog-title': ($(anchor).attr('title') || $(anchor).attr('name') || $(anchor).html() || null)
     }).attr('href', $(anchor).attr('href').replace(/(\&(amp\;)?)?dialog\=true/, '')
                                           .replace(/(\&(amp\;)?)?width\=\d+/, '')
@@ -257,8 +257,9 @@ init_tooltips = function(args){
         tooltip.css({
           'opacity': 0
           , 'maxWidth': '300px'
-          , 'left': ((left = $(this).offset().left - (tooltip.outerWidth() / 2) + ($(this).outerWidth() / 2)) >= 0 ? left : 0)
         });
+        required_left_offset = $(this).offset().left - (tooltip.outerWidth() / 2) + ($(this).outerWidth() / 2);
+        tooltip.css('left', (required_left_offset > 0 ? required_left_offset : 0));
 
         var tooltip_offset = tooltip.offset();
         var tooltip_outer_width = tooltip.outerWidth();
@@ -276,7 +277,7 @@ init_tooltips = function(args){
 
         if (tooltip_offset = tooltip.offset()) {
           nib.css({
-            'left': tooltip_offset.left + (tooltip_outer_width / 2) - 5
+            'left': $(this).offset().left + ($(this).outerWidth() / 2) - 5
             , 'top': tooltip_offset.top + tooltip.height()
           });
         }
@@ -310,6 +311,8 @@ init_tooltips = function(args){
       }, 125, 'swing', function(){
         $(this).remove();
       })
+    }).click(function(e) {
+      $(this).stopTime('tooltip');
     });
     if ($(element).attr('tooltip') == null) {
       $(element).attr('tooltip', $(element).attr('title'));
@@ -823,9 +826,24 @@ var list_reorder = {
       serialized += "&continue_reordering=false";
 
       $.post(list_reorder.update_url, serialized, function(data) {
-        $(list_reorder.sortable_list).html(data);
-
-        list_reorder.restore_controls(e);
+        // handle the case where we get the whole list back including the <ul> or whatever.
+        if (data.match(new RegExp("^"+ $(list_reorder.sortable_list).get(0).tagName.toLowerCase() + "\ id=\"|\'" + list_reorder.sortable_list + "\"|\'>")).length == 1) {
+          // replace reorder authenticity token's value.
+          $('#reorder_authenticity_token').val($($(data.split('reorder_authenticity_token')).last().get(0).split('value=\'')).last().get(0).split('\'')[0]);
+          // replace actual list content.
+          $(list_reorder.sortable_list).html($(data).html());
+        } else {
+          $(list_reorder.sortable_list).html(data);
+        }
+        
+        // if we get passed a script tag, re-enable reordering.
+        matches = data.replace('"', "'")
+                      .match(/<script\ type='text\/javascript'>([^<]*)<\/script>/im);
+        if (matches != null && matches.length > 1) {
+          list_reorder.enable_reordering();
+        } else {
+          list_reorder.restore_controls(e);
+        }
       });
     } else {
       list_reorder.restore_controls(e);

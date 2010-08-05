@@ -1,2 +1,0 @@
-Usage:
-  ./script/generate refinery team_member title:string description:text image:image resource:resource

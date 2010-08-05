@@ -37,3 +37,9 @@ Feature: Manage Pages
     And I press "Save"
     Then I should have 3 pages
     And I should have a page at /about--2
+
+  Scenario: Delete Page
+    Given I have test page titled "test"
+    When I go to the list of pages
+    And I follow "Delete this page"
+    Then I should see "'test' was successfully destroyed. "
