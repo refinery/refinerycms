@@ -48,7 +48,7 @@ module NavigationHelpers
       spam_admin_inquiries_path
 
     when /the (d|D)ashboard/
-      admin_dashboard_index_path
+      admin_dashboard_path
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:

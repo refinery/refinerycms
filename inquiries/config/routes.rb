@@ -7,7 +7,7 @@ Rails::Application.routes.draw do
     end
   end
 
-  scope(:path => 'refinery', :name_prefix => 'admin', :module => 'admin') do
+  scope(:path => 'refinery', :as => 'admin', :module => 'admin') do
     resources :inquiries do
       collection do
         get :spam

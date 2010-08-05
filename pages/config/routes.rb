@@ -1,7 +1,7 @@
 Rails::Application.routes.draw do
   resources :pages
 
-  scope(:path => 'refinery', :name_prefix => 'admin', :module => 'admin') do
+  scope(:path => 'refinery', :as => 'admin', :module => 'admin') do
     resources :pages do
       collection do
         post :update_positions

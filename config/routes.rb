@@ -56,7 +56,7 @@ Refinerycms::Application.routes.draw do |map|
 
   root :to => 'pages#home'
 
-  scope(:path => 'refinery', :name_prefix => 'admin', :module => 'admin') do
+  scope(:path => 'refinery', :as => 'admin', :module => 'admin') do
     root :to => 'dashboard#index'
   end
 
