@@ -57,6 +57,10 @@ end
 require_dependency 'refinery/form_helpers'
 require_dependency 'refinery/base_presenter'
 
+RefineryEngine.class_eval do
+  config.autoload_paths += %W( #{config.root}/lib )
+end
+
 [ Refinery.root.join("vendor", "plugins", "*", "app", "presenters").to_s,
   Refinery.root.join("app", "presenters").to_s
 ].uniq.each do |path|

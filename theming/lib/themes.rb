@@ -4,6 +4,8 @@ require 'theme_server'
 module Refinery
   class ThemesEngine < ::Rails::Engine
 
+    config.autoload_paths += %W( #{config.root}/lib )
+
     initializer 'themes.middleware' do |app|
       app.config.middleware.use ThemeServer
     end

@@ -16,6 +16,10 @@ Refinery::Plugin.register do |plugin|
   plugin.url = {:controller => "/admin/users"}
 end
 
+Users.class_eval do
+  config.autoload_paths += %W( #{config.root}/lib )
+end
+
 module ::Refinery
   class << self
     attr_accessor :authentication_login_field
