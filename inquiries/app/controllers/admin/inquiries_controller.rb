@@ -5,10 +5,14 @@ class Admin::InquiriesController < Admin::BaseController
   before_filter :get_spam_count, :only => [:index, :spam]
 
   def index
+    @inquiries = Inquiry.ham.with_query(params[:search]) if searching?
+
     @grouped_inquiries = group_by_date(Inquiry.ham)
   end
 
   def spam
+    @inquiries = Inquiry.spam.with_query(params[:search]) if searching?
+
     @grouped_inquiries = group_by_date(Inquiry.spam)
   end
 

@@ -15,7 +15,9 @@
     </li>
     <li>
       <%= link_to t('.title'), admin_inquiry_url(@inquiry), :class => 'delete_icon no-tooltip confirm-delete',
-                                                                              :title => t('.title') %>
+                                                            :title => t('.title'),
+                                                            :'data-confirm' => t('admin.inquiries.inquiry.remove_inquiry', :name => @inquiry.name),
+                                                            :'data-method' => "delete" %>
     </li>
   </ul>
 </div>

@@ -35,6 +35,8 @@ en:
         closed: "Inquiry '%{inquiry}' is closed"
         reopened: "Inquiry '%{inquiry}' is reopened"
       submenu:
+        inbox: Inbox
+        spam: Spam
         update_notified: Update who gets notified
         edit_confirmation_email: Edit confirmation email
       index:
@@ -54,7 +56,7 @@ en:
         spam: Spam
         spam_yes: 'yes'
         inquiry: Inquiry
-        title: Remove this inquiry forever.
+        title: Remove this inquiry forever
     inquiry_settings:
       update:
         updated: "'%{setting}' was successfully updated."

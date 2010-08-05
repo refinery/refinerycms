@@ -11,7 +11,10 @@
 
   unless hide_cancel
     cancel_button_text  ||= t('.cancel')
-    cancel_title        ||= t('.cancel_lose_changes', :object_name => f.object.class.name.underscore.gsub("_", " "))
+    unless defined?(cancel_title)
+      cancel_title = t('.cancel_lose_changes',
+                       :object_name => f.object.class.name.underscore.gsub("_", " "))
+    end
     cancel_button_id    ||= "cancel_button"
 
     cancel_url          ||= (((back = url_for(:back)).include?('javascript') or action_name =~ /^(create|update)$/) ? send("admin_#{f.object.class.name.pluralize.underscore}_url") : back)
@@ -33,6 +36,9 @@
     delete_url          ||= eval("admin_#{f.object.class.name.underscore}_url(#{f.object.id})")
   end
 -%>
+<input type='hidden' name='modal' value='<%= from_dialog? %>' />
+<input type='hidden' name='dialog' value='<%= from_dialog? %>' />
+
 <div class='form-actions<%= ' form-actions-dialog' if from_dialog? %>'>
   <div class='form-actions-left'>
     <%= submit_tag submit_button_text,

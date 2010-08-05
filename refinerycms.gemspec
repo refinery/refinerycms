@@ -2,9 +2,9 @@ version = '1.0.0'
 
 Gem::Specification.new do |s|
   s.name              = %q{refinerycms}
-  s.version           = %q{0.9.7.8}
+  s.version           = %q{0.9.7.11}
   s.description       = %q{A beautiful open source Ruby on Rails content manager for small business. Easy to extend, easy to use, lightweight and all wrapped up in a super slick UI.}
-  s.date              = %q{2010-07-23}
+  s.date              = %q{2010-08-04}
   s.summary           = %q{A beautiful open source Ruby on Rails content manager for small business.}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
@@ -36,7 +36,6 @@ Gem::Specification.new do |s|
     'app/controllers',
     'app/controllers/admin',
     'app/controllers/admin/base_controller.rb',
-    'app/controllers/application.rb',
     'app/controllers/application_controller.rb',
     'app/helpers',
     'app/helpers/application_helper.rb',
@@ -103,6 +102,7 @@ Gem::Specification.new do |s|
     'db/migrate/20100701053151_remove_superuser_from_users.rb',
     'db/migrate/20100702022630_add_spam_to_inquiries.rb',
     'db/migrate/20100708014636_ensure_user_plugins_use_name_and_not_title.rb',
+    'db/migrate/20100729221735_remove_page_translations_if_present.rb',
     'db/schema.rb',
     'db/seeds',
     'db/seeds/inquiry_settings.rb',
@@ -110,6 +110,7 @@ Gem::Specification.new do |s|
     'db/seeds/refinery_settings.rb',
     'db/seeds.rb',
     'features/refinery',
+    'features/refinery/create_inquiries.feature',
     'features/refinery/dashboard.feature',
     'features/refinery/manage_files.feature',
     'features/refinery/manage_images.feature',
@@ -117,11 +118,20 @@ Gem::Specification.new do |s|
     'features/refinery/manage_pages.feature',
     'features/refinery/manage_refinery_settings.feature',
     'features/refinery/manage_users.feature',
+    'features/refinery/plugin_generator.feature',
+    'features/refinery/search.feature',
     'features/refinery/site_bar.feature',
+    'features/refinery/theme_generator.feature',
     'features/step_definitions',
     'features/step_definitions/refinery',
     'features/step_definitions/refinery/core_steps.rb',
+    'features/step_definitions/refinery/file_steps.rb',
+    'features/step_definitions/refinery/generator_steps.rb',
+    'features/step_definitions/refinery/image_steps.rb',
+    'features/step_definitions/refinery/inquiry_steps.rb',
     'features/step_definitions/refinery/page_steps.rb',
+    'features/step_definitions/refinery/plugin_generator_steps.rb',
+    'features/step_definitions/refinery/theme_generator_steps.rb',
     'features/step_definitions/refinery/user_steps.rb',
     'features/step_definitions/web_steps.rb',
     'features/support',
@@ -129,6 +139,11 @@ Gem::Specification.new do |s|
     'features/support/factories.rb',
     'features/support/negative_expectations_helper.rb',
     'features/support/paths.rb',
+    'features/uploads',
+    'features/uploads/beach.INVALID',
+    'features/uploads/beach.jpeg',
+    'features/uploads/id-rather-be-here.jpg',
+    'features/uploads/refinery_is_awesome.txt',
     'lib/gemspec.rb',
     'lib/refinery_initializer.rb',
     'lib/tasks',

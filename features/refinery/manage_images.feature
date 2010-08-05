@@ -11,7 +11,7 @@ Feature: Manage Images
     Given I have no images
     When I go to the list of images
     And I follow "Create New Image"
-    When I attach the image at "features/uploads/beach.jpeg"
+    And I attach the image at "features/uploads/beach.jpeg"
     And I press "Save"
     Then the image "beach.jpeg" should have uploaded successfully
     And I should have the correct default number of images
@@ -26,36 +26,24 @@ Feature: Manage Images
     Given I have no images
     When I go to the list of images
     And I follow "Create New Image"
-    When I attach the image at "features/uploads/beach.INVALID"
+    And I attach the image at "features/uploads/beach.INVALID"
     And I press "Save"
     Then I should see "Your image must be either a JPG, PNG or GIF"
     And I should have 0 images
 
 
   Scenario: Edit Existing Image
-    Given I have no images
+    Given I have test image titled "beach.jpg"
     When I go to the list of images
-    And I follow "Create New Image"
-    When I attach the image at "features/uploads/beach.jpeg"
-    And I press "Save"
-    Then the image "beach.jpeg" should have uploaded successfully
-    Then I go to the list of images
     And I follow "Edit this image"
     And I attach the image at "features/uploads/id-rather-be-here.jpg"
     And I press "Save"
-    #Note: The following line is a workaround for the flash.  It isn't working, so this catches the created image's name='' attribute.
-    Then I should see "Id Rather Be Here"
+    Then I should see "'Id Rather Be Here' was successfully updated."
     And I should have the correct default number of images
 
   Scenario: Delete Image
-    Given I have no images
+    Given I have test image titled "beach.jpg"
     When I go to the list of images
-    And I follow "Create New Image"
-    When I attach the image at "features/uploads/beach.jpeg"
-    And I press "Save"
-    Then the image "beach.jpeg" should have uploaded successfully
-    Then I go to the list of images
-    #Delete functionality doesn't test properly, yet.
-    #And I follow "Remove this image forever"
-    #And I press "Ok"
-    #Then I should have 0 images
+    And I follow "Remove this image forever"
+    Then I should see "'Beach' was successfully destroyed. "
+    And I should have 0 images

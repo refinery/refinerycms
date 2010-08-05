@@ -1,2 +1,4 @@
-<%= render :partial => "page", :collection => @pages %>
+<ul id='sortable_list'>
+  <%= render :partial => "page", :collection => @pages %>
+</ul>
 <%= render :partial => "/shared/admin/sortable_list", :locals => {:continue_reordering => (defined?(continue_reordering) ? continue_reordering : true)} %>

@@ -49,3 +49,7 @@ Then /^"([^\"]*)" can log in$/ do |name|
   And 'I press the login button'
   Then 'I should not see a login form'
 end
+
+Then /^I should be redirected back to "([^"]*)"$/ do |page_name|
+  visit path_to(page_name)
+end

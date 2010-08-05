@@ -12,7 +12,7 @@ The Refinery generator is a standard Rails generator that functions just like th
 
 To see how to use the generator run
 
-    ruby script/generate refinery
+    ruby script/generate refinery_plugin
 
 Usage instructions should appear.
 
@@ -24,11 +24,11 @@ First decide what fields they need to manage. In our case, the client is going t
 
 So go to the root of your project and run
 
-    ruby script/generate refinery
+    ruby script/generate refinery_plugin
 
 This will output the help on how to use the generator. To generate the new section we want to manage products we run:
 
-    ruby script/generate refinery product title:string description:text facts:text
+    ruby script/generate refinery_plugin product title:string description:text image:image brochure:resource
 
 The generator will output a list of files it generated. You'll notice there is a new plugin that has been added in ``vendor/plugins/products``. This is where both the backend and front end files are held for this new products area.
 
@@ -149,7 +149,7 @@ Here's what the different activity options mean:
     # the name of the class we're watching.
 
     :url_prefix
-    # Just use "_edit" if you're not sure how this works.
+    # Just use "edit_" if you're not sure how this works.
     #
     # When it says "'About' page was updated about 4 hours ago", the page title "About"
     # is linked to that page in a way we specify.  So by setting "_edit" as a :url_prefix what

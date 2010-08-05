@@ -35,7 +35,8 @@ module Crud
       }.merge!(new_options)
 
       module_eval %(
-        before_filter :find_#{singular_name}, :only => [:update, :destroy, :edit, :show]
+        before_filter :find_#{singular_name},
+                      :only => [:update, :destroy, :edit, :show]
 
         def new
           @#{singular_name} = #{class_name}.new
@@ -44,14 +45,18 @@ module Crud
         def create
           # if the position field exists, set this object as last object, given the conditions of this class.
           if #{class_name}.column_names.include?("position")
-            params[:#{singular_name}].merge!({:position => ((#{class_name}.maximum(:position, :conditions => "#{options[:conditions]}")||-1) + 1)})
+            params[:#{singular_name}].merge!({
+              :position => ((#{class_name}.maximum(:position, :conditions => "#{options[:conditions]}")||-1) + 1)
+            })
           end
 
           if (@#{singular_name} = #{class_name}.create(params[:#{singular_name}])).valid?
             unless request.xhr?
-              flash[:notice] = t('refinery.crudify.created', :what => "'\#{@#{singular_name}.#{options[:title_attribute]}}'")
+              flash[:notice] = t('refinery.crudify.created',
+                                 :what => "'\#{@#{singular_name}.#{options[:title_attribute]}}'")
             else
-              flash.now[:notice] = t('refinery.crudify.created', :what => "'\#{@#{singular_name}.#{options[:title_attribute]}}'")
+              flash.now[:notice] = t('refinery.crudify.created',
+                                     :what => "'\#{@#{singular_name}.#{options[:title_attribute]}}'")
             end
             unless from_dialog?
               unless params[:continue_editing] =~ /true|on|1/
@@ -70,7 +75,11 @@ module Crud
             unless request.xhr?
               render :action => 'new'
             else
-              render :partial => "/shared/admin/error_messages_for", :locals => {:symbol => :#{singular_name}, :object => @#{singular_name}}
+              render :partial => "/shared/admin/error_messages_for",
+                     :locals => {
+                       :symbol => :#{singular_name},
+                       :object => @#{singular_name}
+                     }
             end
           end
         end
@@ -82,9 +91,11 @@ module Crud
         def update
           if @#{singular_name}.update_attributes(params[:#{singular_name}])
             unless request.xhr?
-              flash[:notice] = t('refinery.crudify.updated', :what => "'\#{@#{singular_name}.#{options[:title_attribute]}}'")
+              flash[:notice] = t('refinery.crudify.updated',
+                                 :what => "'\#{@#{singular_name}.#{options[:title_attribute]}}'")
             else
-              flash.now[:notice] = t('refinery.crudify.updated', :what => "'\#{@#{singular_name}.#{options[:title_attribute]}}'")
+              flash.now[:notice] = t('refinery.crudify.updated',
+                                     :what => "'\#{@#{singular_name}.#{options[:title_attribute]}}'")
             end
             unless from_dialog?
               unless params[:continue_editing] =~ /true|on|1/
@@ -103,7 +114,11 @@ module Crud
             unless request.xhr?
               render :action => 'edit'
             else
-              render :partial => "/shared/admin/error_messages_for", :locals => {:symbol => :#{singular_name}, :object => @#{singular_name}}
+              render :partial => "/shared/admin/error_messages_for",
+                     :locals => {
+                       :symbol => :#{singular_name},
+                       :object => @#{singular_name}
+                     }
             end
           end
         end
@@ -117,39 +132,51 @@ module Crud
         end
 
         def find_#{singular_name}
-          @#{singular_name} = #{class_name}.find(params[:id], :include => %w(#{options[:include].join(' ')}))
+          @#{singular_name} = #{class_name}.find(params[:id],
+                                                 :include => %w(#{options[:include].join(' ')}))
         end
 
         def find_all_#{plural_name}
-          @#{plural_name} = #{class_name}.find  :all,
-                                                :order => "#{options[:order]}",
-                                                :conditions => "#{options[:conditions]}",
-                                                :include => %w(#{options[:include].join(' ')})
+          @#{plural_name} = #{class_name}.find(
+            :all,
+            :order => "#{options[:order]}",
+            :conditions => "#{options[:conditions]}",
+            :include => %w(#{options[:include].join(' ')})
+          )
         end
 
         def paginate_all_#{plural_name}
-          @#{plural_name} = #{class_name}.paginate :page => params[:page],
-                                                   :order => "#{options[:order]}",
-                                                   :conditions => "#{options[:conditions]}",
-                                                   :include => %w(#{options[:include].join(' ')})
+          @#{plural_name} = #{class_name}.paginate(
+            :page => params[:page],
+            :order => "#{options[:order]}",
+            :conditions => "#{options[:conditions]}",
+            :include => %w(#{options[:include].join(' ')})
+          )
         end
 
         def search_all_#{plural_name}
-          @#{plural_name} = #{class_name}.find_with_index params[:search],
-                                                   :order => "#{options[:order]}",
-                                                   :conditions => "#{options[:search_conditions]}",
-                                                   :include => %w(#{options[:include].join(' ')})
+          @#{plural_name} = #{class_name}.with_query(params[:search]).find(
+            :all,
+            :order => "#{options[:order]}",
+            :conditions => "#{options[:search_conditions]}",
+            :include => %w(#{options[:include].join(' ')})
+          )
         end
 
         def search_and_paginate_all_#{plural_name}
-          @#{plural_name} = #{class_name}.paginate_search params[:search],
-                                                   :page => params[:page],
-                                                   :order => "#{options[:order]}",
-                                                   :conditions => "#{options[:search_conditions]}",
-                                                   :include => %w(#{options[:include].join(' ')})
+          @#{plural_name} = #{class_name}.with_query(params[:search]).paginate(
+            :page => params[:page],
+            :order => "#{options[:order]}",
+            :conditions => "#{options[:search_conditions]}",
+            :include => %w(#{options[:include].join(' ')})
+          )
         end
 
-        protected :find_#{singular_name}, :find_all_#{plural_name}, :paginate_all_#{plural_name}, :search_all_#{plural_name}, :search_and_paginate_all_#{plural_name}
+        protected :find_#{singular_name},
+                  :find_all_#{plural_name},
+                  :paginate_all_#{plural_name},
+                  :search_all_#{plural_name},
+                  :search_and_paginate_all_#{plural_name}
 
       )
 
@@ -211,7 +238,11 @@ module Crud
             end
 
             find_all_#{plural_name}
-            render :partial => 'sortable_list', :layout => false, :locals => {:continue_reordering => params[:continue_reordering]}
+            render :partial => 'sortable_list',
+                   :layout => false,
+                   :locals => {
+                     :continue_reordering => params[:continue_reordering]
+                   }
           end
 
           # takes in a single branch and saves the nodes inside it
@@ -220,7 +251,9 @@ module Crud
               parse_branch(pos, id, id_hash["id"]) unless pos == "id"
             end if id_hash.include?('0')
 
-            #{class_name}.update(id_hash["id"], :parent_id => parent_id, :position => position)
+            #{class_name}.update(id_hash["id"],
+                                 :parent_id => parent_id,
+                                 :position => position)
           end
 
           protected :parse_branch

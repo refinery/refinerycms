@@ -3,7 +3,12 @@ require 'pathname'
 require 'fileutils'
 require 'yaml'
 
-refinery_root = (defined?(REFINERY_ROOT) && REFINERY_ROOT.is_a?(Pathname) ? REFINERY_ROOT : Pathname.new(File.expand_path(File.dirname(__FILE__) << "/..")))
+refinery_root = if defined?(REFINERY_ROOT) and REFINERY_ROOT.is_a?(Pathname)
+  REFINERY_ROOT
+else
+  Pathname.new(File.expand_path(File.dirname(__FILE__) << "/.."))
+end
+
 unless (app_path = ARGV.shift).nil? or app_path.length == 0
   # if "" or "." or "./" is specified then get the current directory otherwise accept the specified app_path.
   if (app_path.length <= 2 and ((is_current_dir = app_path =~ /(\.(\/)?)/).nil? or is_current_dir < 2))
@@ -19,8 +24,12 @@ unless (app_path = ARGV.shift).nil? or app_path.length == 0
   end
   puts "--------Updating--------\n\n"
 
-  FileUtils::cp refinery_root.join('Gemfile').to_s, rails_root.join('Gemfile').to_s, :verbose => true
-  FileUtils::cp refinery_root.join('config', 'preinitializer.rb').to_s, rails_root.join('config', 'preinitializer.rb').to_s, :verbose => true
+  FileUtils::cp refinery_root.join('Gemfile').to_s,
+                rails_root.join('Gemfile').to_s,
+                :verbose => true
+  FileUtils::cp refinery_root.join('config', 'preinitializer.rb').to_s,
+                rails_root.join('config', 'preinitializer.rb').to_s,
+                :verbose => true
 
   # try to figure out the database adapter..
   db_adapter = 'sqlite3'
@@ -49,28 +58,36 @@ unless (app_path = ARGV.shift).nil? or app_path.length == 0
   end
 
   # write the new content into the file.
-  app_gemfile = File.open(File.join(%W(#{rails_root} Gemfile)), "w")
+  app_gemfile = rails_root.join('Gemfile').open('w')
   app_gemfile.puts(lines.join("\n"))
   app_gemfile.close
 
   # backup the config file.
   app_config_file = 'application.rb'
-  FileUtils.cp rails_root.join('config', app_config_file).cleanpath.to_s, rails_root.join('config', "#{app_config_file.gsub('.rb', '')}.autobackupbyrefineryupgrade.rb").cleanpath.to_s, :verbose => true
+  FileUtils.cp rails_root.join('config', app_config_file).cleanpath.to_s,
+               rails_root.join('config', "#{app_config_file.gsub('.rb', '')}.autobackupbyrefineryupgrade.rb").cleanpath.to_s,
+               :verbose => true
 
   # copy the new config file.
-  FileUtils.cp refinery_root.join('config', app_config_file).cleanpath.to_s, rails_root.join('config', app_config_file).cleanpath.to_s, :verbose => true
+  FileUtils.cp refinery_root.join('config', app_config_file).cleanpath.to_s,
+               rails_root.join('config', app_config_file).cleanpath.to_s,
+               :verbose => true
 
-  unless File.exist?(rails_root.join('config', 'settings.rb'))
-    FileUtils.cp refinery_root.join('config', 'settings.rb').cleanpath.to_s, rails_root.join('config', 'settings.rb').cleanpath.to_s, :verbose => true
+  unless (rails_config_settings = rails_root.join('config', 'settings.rb')).exist?
+    FileUtils.cp refinery_root.join('config', 'settings.rb').cleanpath.to_s,
+                 rails_config_settings.to_s,
+                 :verbose => true
   end
 
   unless (aai_config_file = rails_root.join('config', 'acts_as_indexed_config.rb')).exist?
-    FileUtils::cp refinery_root.join('config', 'acts_as_indexed_config.rb').to_s, aai_config_file.to_s, :verbose => true
+    FileUtils::cp refinery_root.join('config', 'acts_as_indexed_config.rb').to_s,
+                  aai_config_file.to_s,
+                  :verbose => true
   end
 
   # update routes files
   puts "\nNow I'm verifying and updating your routing in your files and your plugins...\n"
-  Dir[rails_root.join('**', 'config', 'routes.rb')].map{|f| Pathname.new(f)}.each do |routes_file|
+  Dir[rails_root.join('**', 'config', 'routes.rb').to_s].map{|f| Pathname.new(f)}.each do |routes_file|
     open_routes_file = routes_file.open('r')
     lines = open_routes_file.read.split("\n")
     original_lines = lines.dup
@@ -103,11 +120,11 @@ unless (app_path = ARGV.shift).nil? or app_path.length == 0
 
   if rails_root.join('config', 'database.yml').exist?
     puts "\n\nUpdating some core refinery files..\n"
-    puts (cmd="rake -f '#{File.join(rails_root, 'Rakefile')}' refinery:update from_installer=true")
+    puts (cmd="rake -f '#{rails_root.join('Rakefile')}' refinery:update from_installer=true")
     puts `cd '#{rails_root}' && #{cmd}`
 
     puts "\n\nMigrating your database..\n"
-    puts (cmd="rake -f '#{File.join(rails_root, 'Rakefile')}' db:migrate")
+    puts (cmd="rake -f '#{rails_root.join('Rakefile')}' db:migrate")
     puts `cd '#{rails_root}' && #{cmd}`
   else
     puts "\nYour config/database.yml file is missing so I can't run a task that is required."

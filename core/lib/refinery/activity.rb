@@ -11,11 +11,11 @@ module Refinery
         :created_image => "add.png",
         :limit => 7,
         :nested_with => [],
-        :order => 'updated_at DESC',
-        :title => nil,
+        :order => "updated_at DESC",
+        :title => "title",
         :updated_image => "edit.png",
         :url => nil,
-        :url_prefix => ""
+        :url_prefix => "edit"
       }.merge(options).each { |key,value| self.instance_variable_set(:"@#{key}", value) }
     end
 

@@ -24,8 +24,6 @@ Feature: Create Inquiries
     And I press "Send"
     Then I should be on the contact thank you page
     And I should see "Thank You"
-    And I should see "received your inquiry"
-    And I should see "Return to the home page"
     And I should have 1 inquiries
 
   Scenario: Create an invalid inquiry
