@@ -43,6 +43,11 @@ module Refinery
   end
 end
 
+require 'acts_as_indexed'
+require 'friendly_id'
+require 'truncate_html'
+require 'will_paginate'
+
 Refinery::Plugin.register do |plugin|
   plugin.title = "Refinery"
   plugin.name = "refinery_core"
@@ -54,8 +59,8 @@ Refinery::Plugin.register do |plugin|
   # this tells refinery where this plugin is located on the filesystem and helps with urls.
   # plugin.directory = directory
 end
-require_dependency 'refinery/form_helpers'
-require_dependency 'refinery/base_presenter'
+#require_dependency 'refinery/form_helpers'
+#require_dependency 'refinery/base_presenter'
 
 RefineryEngine.class_eval do
   config.autoload_paths += %W( #{config.root}/lib )

@@ -34,14 +34,32 @@ PATH
       refinerycms-settings (= 1.0.0)
       refinerycms-theming (= 1.0.0)
     refinerycms-authentication (1.0)
+      authlogic (~> 2.1.5)
+      refinerycms-core (= 1.0.0)
     refinerycms-core (1.0)
+      acts_as_indexed (= 0.6.3)
+      friendly_id (~> 3.0)
+      rails (>= 3.0.0.rc)
+      truncate_html (= 0.3.2)
+      will_paginate (>= 3.0.pre2)
     refinerycms-dashboard (1.0)
+      refinerycms-core (= 1.0.0)
     refinerycms-images (1.0)
+      dragonfly
+      rack-cache
+      refinerycms-core (= 1.0.0)
+      rmagick
     refinerycms-inquiries (1.0)
+      refinerycms-core (= 1.0.0)
     refinerycms-pages (1.0)
+      refinerycms-core (= 1.0.0)
     refinerycms-resources (1.0)
+      dragonfly
+      refinerycms-core (= 1.0.0)
     refinerycms-settings (1.0)
+      refinerycms-core (= 1.0.0)
     refinerycms-theming (1.0)
+      refinerycms-core (= 1.0.0)
 
 GEM
   remote: http://rubygems.org/
@@ -183,20 +201,15 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  acts_as_indexed (= 0.6.3)
-  authlogic (~> 2.1.5)
   capybara
   cucumber
   cucumber-rails
   database_cleaner
   dragonfly!
   factory_girl
-  friendly_id (~> 3.0)
   gherkin
   json_pure!
   launchy
-  rack-cache
-  rails (= 3.0.0.rc)
   refinerycms!
   rmagick (~> 2.12.0)
   rspec (~> 2.0.0.beta.19)
@@ -208,5 +221,4 @@ DEPENDENCIES
   spork
   sqlite3-ruby
   test-unit (= 1.2.3)
-  truncate_html (= 0.3.2)
   will_paginate (= 3.0.pre2)!

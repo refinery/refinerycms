@@ -13,4 +13,6 @@ Gem::Specification.new do |s|
 
   s.has_rdoc = true
 
+  s.add_dependency('refinerycms-core',  version)
+  s.add_dependency('authlogic',         '~> 2.1.5')
 end

@@ -1,3 +1,5 @@
+require 'rack/cache'
+
 Refinery::Plugin.register do |plugin|
   plugin.title = "Images"
   plugin.name = "refinery_images"

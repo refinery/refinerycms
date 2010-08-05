@@ -1,3 +1,5 @@
+require 'authlogic'
+
 Refinery::Plugin.register do |plugin|
   plugin.title = "Users"
   plugin.name = "refinery_users"
