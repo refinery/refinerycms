@@ -12,4 +12,9 @@ Gem::Specification.new do |s|
   s.requirements << 'none'
 
   s.has_rdoc = true
+
+  s.add_dependency('refinerycms-core', version)
+  s.add_dependency('rmagick')
+  s.add_dependency('rack-cache')
+  s.add_dependency('dragonfly')
 end

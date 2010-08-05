@@ -12,4 +12,10 @@ Gem::Specification.new do |s|
   s.requirements << 'none'
 
   s.has_rdoc = true
+
+  s.add_dependency('rails',           '>= 3.0.0.rc')
+  s.add_dependency('acts_as_indexed', '= 0.6.3')
+  s.add_dependency('friendly_id',     '~> 3.0')
+  s.add_dependency('truncate_html',   '= 0.3.2')
+  s.add_dependency('will_paginate',   '>= 3.0.pre2')
 end
