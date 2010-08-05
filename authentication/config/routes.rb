@@ -9,7 +9,7 @@ Rails::Application.routes.draw do
     end
   end
 
-  scope(:path => 'refinery', :name_prefix => 'admin', :module => 'admin') do
+  scope(:path => 'refinery', :as => 'admin', :module => 'admin') do
     resources :users do
       collection do
         post :update_positions do
