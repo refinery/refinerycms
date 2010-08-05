@@ -1,4 +1,0 @@
-#!/usr/bin/env ruby
-# Running 'refinery' is the old way of generating an application and we want users to change.
-# We could call it here for them, but it would mean that the entire task ran without printing anything to the user.
-puts "We have renamed the 'refinery' task to 'refinerycms' so please use 'refinerycms' instead."

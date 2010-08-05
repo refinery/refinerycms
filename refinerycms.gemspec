@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.homepage          = %q{http://refinerycms.com}
   s.authors           = %w(Resolve\ Digital David\ Jones Philip\ Arndt)
   s.require_paths     = %w(lib)
-  s.executables       = %w(refinery refinery-upgrade-096-to-097 refinerycms)
+  s.executables       = %w(refinerycms)
 
   s.add_dependency('refinerycms-core',             version)
   s.add_dependency('refinerycms-authentication',   version)
