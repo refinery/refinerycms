@@ -61,8 +61,8 @@ def each_run
   DatabaseCleaner.strategy = :truncation
 
   require 'fileutils'
-  require 'rails_generator'
-  require 'rails_generator/scripts/generate'
+  require 'rails/generators'
+  #require 'rails/generators/scripts/generate'
 
   require 'authlogic/test_case'
   Before do
