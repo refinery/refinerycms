@@ -18,7 +18,7 @@ Feature: Manage Images
     And the image should have size "254718"
     And the image should have width "500"
     And the image should have height "375"
-    And the image should have content_type "image/jpeg"
+    And the image should have mime_type "image/jpeg"
     #This line handles properly if you have any plugins installed.  Ie: Portfolio will generate two additional thumbs.
     And the image should have all default thumbnail generations
 

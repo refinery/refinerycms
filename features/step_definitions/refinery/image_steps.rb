@@ -3,7 +3,7 @@ Given /^I have no images$/ do
 end
 
 Given /^I have test image titled "([^"]*)"$/ do |file_name|
-  Image.create(:content_type => 'image/jpeg', :filename => file_name, :size => 5000)
+  Image.create(:image_mime_type => 'image/jpeg', :image_name => file_name, :image_size => 5000)
 end
 
 When /^I attach the image at "([^"]*)"$/ do |file_path|
@@ -11,7 +11,7 @@ When /^I attach the image at "([^"]*)"$/ do |file_path|
 end
 
 Then /^the image "([^"]*)" should have uploaded successfully$/ do |file_name|
-  Image.find_by_filename(file_name).nil?.should == false
+  Image.find_by_image_name(file_name).nil?.should == false
 end
 
 Then /^I should have the correct default number of images$/ do
@@ -31,8 +31,8 @@ Then /^the image should have height "([^"]*)"$/ do |height|
   Image.first.height.should == height.to_i
 end
 
-Then /^the image should have content_type "([^"]*)"$/ do |content_type|
-  Image.first.content_type.should == content_type.to_s
+Then /^the image should have mime_type "([^"]*)"$/ do |mime_type|
+  Image.first.mime_type.should == mime_type.to_s
 end
 
 Then /^the image should have all default thumbnail generations$/ do
