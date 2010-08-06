@@ -4,7 +4,7 @@ RSPEC_VERSION = '~> 2.0.0.beta.19'
 
 # Specify the database driver as appropriate for your application (only one is necessary).
 # Defaults to sqlite3. Don't remove any of these below in the core or gems won't install.
-gem 'sqlite3-ruby', :require => 'sqlite3' # db_adapter=sqlite3
+gem 'sqlite3-ruby', '~>1.2.5', :require => 'sqlite3' # db_adapter=sqlite3
 # gem 'mysql' # db_adapter=mysql
 # gem 'pg'    # db_adapter=postgresql
 
