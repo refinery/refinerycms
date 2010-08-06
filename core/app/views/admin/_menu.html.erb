@@ -1,0 +1,18 @@
+<nav id="menu">
+  <% Refinery::Plugins.active.in_menu.each do |plugin| -%>
+    <%= link_to plugin.title, plugin.url,
+                :class => (plugin.highlighted?(params) ? "active" : ""),
+                :id => "plugin_#{plugin.name}" %>
+  <% end -%>
+  <% if Refinery::Plugins.active.in_menu.many? and RefinerySetting.find_or_set(:refinery_enable_backend_reordering, true) -%>
+    <%= link_to refinery_icon_tag('arrow_switch.png'), "",
+                :id => "menu_reorder",
+                :title => t('.reorder_menu') %>
+
+    <%= link_to refinery_icon_tag('tick.png'), "",
+                :id => "menu_reorder_done",
+                :title => t('.reorder_menu_done'),
+                :style => "display: none;" %>
+  <% end %>
+</nav>
+<input type='hidden' id='admin_authenticity_token' value='<%= form_authenticity_token %>' />

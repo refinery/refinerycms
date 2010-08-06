@@ -1,0 +1,32 @@
+<%% form_for [:admin, @<%= singular_name %>] do |f| -%>
+  <%%= f.error_messages %>
+  <% attributes.each_with_index do |attribute, index| %>
+  <div class='field'>
+    <%%= f.label :<%= attribute.name %> -%>
+<% if attribute.type.to_s == 'image' -%>
+    <%%= render :partial => "/shared/admin/image_picker", :locals => {
+      :f => f,
+      :field => :<%= "#{attribute.name}_id".gsub("_id_id", "_id") %>,
+      :image => @<%= singular_name %>.<%= attribute.name.gsub("_id", "") %>,
+      :toggle_image_display => false
+    } %>
+<% elsif attribute.type.to_s == 'resource' %>
+    <%%= render :partial => "/shared/admin/resource_picker", :locals => {
+      :f => f,
+      :field => :<%= "#{attribute.name}_id".gsub("_id_id", "_id") %>,
+      :resource => @<%= singular_name %>.<%= attribute.name.gsub("_id", "") %>,
+    } %>
+<% elsif attribute.field_type.to_s == "text_area" -%>
+    <%%= f.text_area :<%= attribute.name %>, :rows => 20, :class => 'wymeditor widest' -%>
+<% else -%>
+    <%%= f.<%= attribute.field_type -%> :<%= attribute.name -%><%= ", :class => 'larger'" if (index == 0 && attribute.field_type == :text_field) -%> -%>
+<% end -%>
+  </div>
+  <% end %>
+  <%%= render :partial => "/shared/admin/form_actions",
+              :locals => {
+                :f => f,
+                :continue_editing => false,
+                :delete_title => t('admin.<%= plural_name %>.<%= singular_name %>.delete')
+              } %>
+<%% end -%>

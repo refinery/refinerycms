@@ -1,0 +1,22 @@
+<div id='actions'>
+  <ul>
+    <li>
+      <%= link_to t('.create_new_user'), new_admin_user_url, :class => "add_icon" %>
+    </li>
+  </ul>
+</div>
+<div id='records'>
+  <% if @users.any? %>
+    <%= will_paginate @users, :previous_label => '&laquo;', :next_label => '&raquo;' %>
+    <ul>
+      <%= render :partial => "user", :collection => @users %>
+    </ul>
+    <%= will_paginate @users, :previous_label => '&laquo;', :next_label => '&raquo;' %>
+  <% else %>
+    <p>
+      <strong>
+        <%= t('.no_users_yet') %>
+      </strong>
+    </p>
+  <% end %>
+</div>

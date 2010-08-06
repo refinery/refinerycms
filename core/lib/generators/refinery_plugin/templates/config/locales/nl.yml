@@ -1,0 +1,19 @@
+nl:
+  plugins:
+    <%= class_name.pluralize.underscore.downcase %>:
+      title: <%= plural_name.titleize %>
+  admin:
+    <%= plural_name %>:
+      index:
+        create_new: Maak een nieuwe <%= $title_name %>
+        reorder: Wijzig de volgorde van de <%= $title_name.pluralize %>
+        reorder_done: Klaar met het wijzingen van de volgorde van de <%= $title_name.pluralize %>
+        sorry_no_results: Helaas! Er zijn geen resultaten gevonden.
+        no_items_yet: Er zijn nog geen <%= $title_name.pluralize %>. Druk op 'Maak een nieuwe <%= $title_name %>' om de eerste aan te maken.
+      <%= singular_name %>:
+        view_live: Bekijk deze <%= $title_name.downcase %> op de website <br/><em>(opent een nieuw venster)</em>
+        edit: Bewerk deze <%= $title_name.downcase %>
+        delete: Verwijder deze <%= $title_name.downcase %> voor eeuwig
+  <%= plural_name %>:
+    show:
+      other: Andere <%= $title_name.pluralize %>

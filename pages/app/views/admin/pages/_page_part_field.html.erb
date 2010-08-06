@@ -1,0 +1,5 @@
+<div class='page_part' id='<%= new_part ? "page_part_new_#{part_index}" : part.to_param %>'>
+  <%= hidden_field_tag "page[parts_attributes][#{part_index}][title]", part.title if new_part %>
+  <%= text_area_tag "page[parts_attributes][#{part_index}][body]", part.body, :rows => 20, :class => 'wymeditor widest' %>
+  <%= hidden_field_tag "page[parts_attributes][#{part_index}][position]", part_index if new_part %>
+</div>

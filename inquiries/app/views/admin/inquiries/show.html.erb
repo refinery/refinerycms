@@ -1,0 +1,74 @@
+<div id='actions'>
+  <h2><%= t('.details')%></h2>
+  <p>
+    <strong><%= t('.age') %>:</strong> <%= time_ago_in_words(@inquiry.created_at) %>
+  </p>
+  <% if @inquiry.spam? %>
+    <p>
+      <strong><%= t('.spam') %>:</strong> <%= t('.spam_yes') %>
+    </p>
+  <% end %>
+  <h2><%= t('.actions') %></h2>
+  <ul>
+    <li>
+      <%= link_to t('.back_to_all_inquiries'), {:action => 'index'}, :class => "back_icon" %>
+    </li>
+    <li>
+      <%= link_to t('.title'), admin_inquiry_url(@inquiry), :class => 'delete_icon no-tooltip confirm-delete',
+                                                            :title => t('.title'),
+                                                            :'data-confirm' => t('admin.inquiries.inquiry.remove_inquiry', :name => @inquiry.name),
+                                                            :'data-method' => "delete" %>
+    </li>
+  </ul>
+</div>
+<div id='records'>
+  <h2><%= t('activerecord.models.inquiry') %></h2>
+  <table id='inquiry'>
+    <%- with_options :scope => 'activerecord.attributes.inquiry' do |o| -%>
+    <tr>
+      <td>
+        <strong><%= o.t(:to) %></strong>
+      </td>
+      <td>
+        <%= RefinerySetting[:site_name] %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <strong><%= o.t(:from)%></strong>
+      </td>
+      <td>
+        <%=h @inquiry.name %> [<%= mail_to @inquiry.email, @inquiry.email, {:title => o.t(:click_to_email)} %>]
+      </td>
+    </tr>
+    <% unless @inquiry.phone.blank? %>
+      <tr>
+        <td>
+          <strong><%= o.t(:phone) %></strong>
+        </td>
+        <td>
+          <%=h @inquiry.phone %>
+        </td>
+      </tr>
+    <% end %>
+    <tr>
+      <td>
+        <strong><%= o.t(:date) %></strong>
+      </td>
+      <td>
+        <%= l(Date.parse(@inquiry.created_at.to_s), :format => :long) %>
+      </td>
+    </tr>
+    <tr>
+      <td valign='top'>
+        <strong><%= o.t(:message) %></strong>
+      </td>
+      <td>
+        <p style='margin-top: 0px'>
+          <%= h(@inquiry.message).gsub("\r\n\r\n", "\r\n").gsub("\r\n", "</p><p>") %>
+        </p>
+      </td>
+    </tr>
+    <% end -%>
+  </table>
+</div>

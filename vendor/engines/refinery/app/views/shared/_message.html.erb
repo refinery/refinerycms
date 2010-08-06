@@ -1,6 +1,0 @@
-<% flash.each do |key, value| %>
-  <div id="flash" class="flash_<%= key %>" style='display: none;' >
-    <%= value %>
-    <%= link_to "Close#{' this message' if key.to_s == 'message'}", "", {:id => "flash_close"} %>
-  </div>
-<% end %>

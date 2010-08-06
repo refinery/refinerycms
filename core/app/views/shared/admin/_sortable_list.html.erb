@@ -1,0 +1,9 @@
+<input type='hidden' id='reorder_authenticity_token' name='reorder_authenticity_token' value='<%= form_authenticity_token %>'/>
+<% if params[(list_id ||= "sortable_list").to_sym].present? and
+      (defined?(continue_reordering) ? continue_reordering == "true" : true) -%>
+  <script type='text/javascript'>
+    $(document).ready(function(){
+      list_reorder.enable_reordering();
+    });
+  </script>
+<% end -%>

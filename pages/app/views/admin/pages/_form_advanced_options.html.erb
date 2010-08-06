@@ -1,0 +1,62 @@
+<div id='more_options_field'>
+  <p>
+    <%= link_to t('.advanced_options'), "#",
+                :id => 'toggle_advanced_options',
+                :title => t('.toggle_advanced_options') %>
+  </p>
+  <span id='draft_field'>
+    <%= f.check_box :draft %>
+    <%= f.label :draft, t('.save_as_draft'), :class => "stripped" %>
+  </span>
+</div>
+<div id='more_options' style="display:none;">
+  <div class="hemisquare">
+    <h2>Page Options</h2>
+    <div class='field'>
+      <span class='label_with_help'>
+        <%= f.label :parent_id, t('.parent_page') %>
+        <%= refinery_help_tag t('.parent_page_help') %>
+      </span>
+      <%= f.collection_select :parent_id, @pages_for_parents_list, :id, :indented_title, {:include_blank => true}, :class => 'widest' %>
+    </div>
+    <div class='field'>
+      <span class='label_with_help'>
+        <%= label_tag :custom_title, t('.custom_title') %>
+        <%= refinery_help_tag t('.custom_title_help') %>
+      </span>
+      <% %w(none text).each do |type| %>
+        <%= f.radio_button :custom_title_type, type %>
+        <%= label_tag "page_custom_title_type_#{type}", t(".title_types.#{type.downcase.gsub(" ", "_")}"), :class => "stripped" %>
+      <% end %>
+      <div id='custom_title_none'></div>
+      <div id='custom_title_text' style='display: <%= @page.custom_title_type == 'text' ? 'block' : 'none' %>'>
+        <%= f.text_field :custom_title, :class => 'widest' %>
+      </div>
+    </div>
+    <div class='field'>
+      <span class='label_with_help'>
+        <%= f.label :skip_to_first_child?, t('.skip_to_first_child') %>
+        <%= refinery_help_tag t('.skip_to_first_child_help') %>
+      </span>
+      <%= f.check_box :skip_to_first_child %>
+      <%= f.label :skip_to_first_child, t('.skip_to_first_child_label'), :class => "stripped" %>
+    </div>
+    <div class='field'>
+      <span class='label_with_help'>
+        <%= f.label :link_url, t('.link_url') %>
+        <%= refinery_help_tag t('.link_url_help') %>
+      </span>
+      <%= f.text_field :link_url, :class => 'widest' %>
+    </div>
+    <div class='field'>
+      <span class='label_with_help'>
+        <%= f.label :show_in_menu, t('.show_in_menu_title'), :id => 'page_show_in_menu_heading' %>
+        <%= refinery_help_tag t('.show_in_menu_help') %>
+      </span>
+      <%= f.check_box :show_in_menu %>
+      <%= f.label :show_in_menu, t('.show_in_menu_description'), :class => "stripped" %>
+    </div>
+  </div>
+
+  <%= render :partial => "form_advanced_options_seo", :locals => {:f => f} if RefinerySetting.find_or_set(:pages_advanced_options_include_seo, true) %>
+</div>

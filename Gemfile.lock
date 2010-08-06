@@ -1,175 +1,224 @@
---- 
-dependencies: 
-  rails: 
-    group: 
-    - :default
-    version: = 3.0.0.beta4
-  authlogic: 
-    group: 
-    - :default
-    version: ~> 2.1.5
-  sqlite3-ruby: 
-    group: 
-    - :default
-    version: ">= 0"
-    require: 
-    - sqlite3
-  mysql: 
-    group: 
-    - :default
-    version: ">= 0"
-    require: 
-    - mysql
-  rack-cache: 
-    group: 
-    - :default
-    version: ">= 0"
-    require: 
-    - rack/cache
-  dragonfly: 
-    group: 
-    - :default
-    version: ">= 0"
-  rspec-rails: 
-    group: 
-    - :test
-    version: ">= 0"
-  database_cleaner: 
-    group: 
-    - :test
-    version: ">= 0"
-  will_paginate: 
-    group: 
-    - :default
-    version: = 3.0.pre
-  friendly_id: 
-    group: 
-    - :default
-    version: ~> 3.0
-  cucumber-rails: 
-    group: 
-    - :test
-    version: ">= 0"
-  rmagick: 
-    group: 
-    - :default
-    version: ~> 2.13.1
-    require: 
-    - RMagick
-  hpricot: 
-    group: 
-    - :default
-    version: ~> 0.8
-  capybara: 
-    group: 
-    - :test
-    version: ">= 0"
-specs: 
-- rake: 
-    version: 0.8.7
-- abstract: 
-    version: 1.0.0
-- activesupport: 
-    version: 3.0.0.beta4
-- builder: 
-    version: 2.1.2
-- i18n: 
-    version: 0.4.1
-- activemodel: 
-    version: 3.0.0.beta4
-- erubis: 
-    version: 2.6.5
-- rack: 
-    version: 1.1.0
-- rack-mount: 
-    version: 0.6.4
-- rack-test: 
-    version: 0.5.4
-- tzinfo: 
-    version: 0.3.22
-- actionpack: 
-    version: 3.0.0.beta4
-- mime-types: 
-    version: "1.16"
-- polyglot: 
-    version: 0.3.1
-- treetop: 
-    version: 1.4.8
-- mail: 
-    version: 2.2.4
-- actionmailer: 
-    version: 3.0.0.beta4
-- arel: 
-    version: 0.4.0
-- activerecord: 
-    version: 3.0.0.beta4
-- activeresource: 
-    version: 3.0.0.beta4
-- authlogic: 
-    version: 2.1.5
-- bundler: 
-    version: 0.9.26
-- culerity: 
-    version: 0.2.10
-- nokogiri: 
-    version: 1.4.2
-- ffi: 
-    version: 0.6.3
-- json_pure: 
-    version: 1.4.3
-- selenium-webdriver: 
-    version: 0.0.24
-- capybara: 
-    version: 0.3.8
-- diff-lcs: 
-    version: 1.1.2
-- trollop: 
-    version: 1.16.2
-- gherkin: 
-    version: 2.0.2
-- term-ansicolor: 
-    version: 1.0.5
-- cucumber: 
-    version: 0.8.3
-- cucumber-rails: 
-    version: 0.3.2
-- database_cleaner: 
-    version: 0.5.2
-- dragonfly: 
-    version: 0.6.1
-- friendly_id: 
-    version: 3.0.6
-- hpricot: 
-    version: 0.8.2
-- mysql: 
-    version: 2.8.1
-- rack-cache: 
-    version: 0.5.2
-- thor: 
-    version: 0.13.6
-- railties: 
-    version: 3.0.0.beta4
-- rails: 
-    version: 3.0.0.beta4
-- rmagick: 
-    version: 2.13.1
-- rspec: 
-    version: 1.3.0
-- rspec-rails: 
-    version: 1.3.2
-- sqlite3-ruby: 
-    version: 1.3.0
-- will_paginate: 
-    version: 3.0.pre
-    source: 0
-hash: c373f9a86aaecf4318fae8d8d029c7c81142d710
-sources: 
-- Git: 
-    name: will_paginate
-    uri: git://github.com/mislav/will_paginate.git
-    branch: rails3
-    version: 3.0.pre
-    git: git://github.com/mislav/will_paginate.git
-    ref: 60aa1c7b2ef03ee7c7a5ed657efb479a69f7d128
-- Rubygems: 
-    uri: http://gemcutter.org
+GIT
+  remote: git://github.com/mislav/will_paginate.git
+  revision: fccbb0b
+  branch: rails3
+  specs:
+    will_paginate (3.0.pre2)
+
+GIT
+  remote: git://github.com/myabc/dragonfly.git
+  revision: 5bbb9e7
+  branch: 1.9.2-fixes
+  specs:
+    dragonfly (0.6.2)
+      rack
+
+GIT
+  remote: git://github.com/parndt/json.git
+  revision: 34ad345
+  branch: master
+  specs:
+    json_pure (1.4.3)
+
+PATH
+  remote: .
+  specs:
+    refinerycms (0.9.7.11)
+      refinerycms-authentication (= 1.0.0)
+      refinerycms-core (= 1.0.0)
+      refinerycms-dashboard (= 1.0.0)
+      refinerycms-images (= 1.0.0)
+      refinerycms-inquiries (= 1.0.0)
+      refinerycms-pages (= 1.0.0)
+      refinerycms-resources (= 1.0.0)
+      refinerycms-settings (= 1.0.0)
+      refinerycms-theming (= 1.0.0)
+    refinerycms-authentication (1.0)
+      authlogic (~> 2.1.5)
+      refinerycms-core (= 1.0.0)
+    refinerycms-core (1.0)
+      acts_as_indexed (= 0.6.3)
+      friendly_id (~> 3.0)
+      rails (>= 3.0.0.rc)
+      truncate_html (= 0.3.2)
+      will_paginate (>= 3.0.pre2)
+    refinerycms-dashboard (1.0)
+      refinerycms-core (= 1.0.0)
+    refinerycms-images (1.0)
+      dragonfly
+      rack-cache
+      refinerycms-core (= 1.0.0)
+      rmagick
+    refinerycms-inquiries (1.0)
+      refinerycms-core (= 1.0.0)
+    refinerycms-pages (1.0)
+      refinerycms-core (= 1.0.0)
+    refinerycms-resources (1.0)
+      dragonfly
+      refinerycms-core (= 1.0.0)
+    refinerycms-settings (1.0)
+      refinerycms-core (= 1.0.0)
+    refinerycms-theming (1.0)
+      refinerycms-core (= 1.0.0)
+
+GEM
+  remote: http://rubygems.org/
+  specs:
+    abstract (1.0.0)
+    actionmailer (3.0.0.rc)
+      actionpack (= 3.0.0.rc)
+      mail (~> 2.2.5)
+    actionpack (3.0.0.rc)
+      activemodel (= 3.0.0.rc)
+      activesupport (= 3.0.0.rc)
+      builder (~> 2.1.2)
+      erubis (~> 2.6.6)
+      i18n (~> 0.4.1)
+      rack (~> 1.2.1)
+      rack-mount (~> 0.6.9)
+      rack-test (~> 0.5.4)
+      tzinfo (~> 0.3.22)
+    activemodel (3.0.0.rc)
+      activesupport (= 3.0.0.rc)
+      builder (~> 2.1.2)
+      i18n (~> 0.4.1)
+    activerecord (3.0.0.rc)
+      activemodel (= 3.0.0.rc)
+      activesupport (= 3.0.0.rc)
+      arel (~> 0.4.0)
+      tzinfo (~> 0.3.22)
+    activeresource (3.0.0.rc)
+      activemodel (= 3.0.0.rc)
+      activesupport (= 3.0.0.rc)
+    activesupport (3.0.0.rc)
+    acts_as_indexed (0.6.3)
+    arel (0.4.0)
+      activesupport (>= 3.0.0.beta)
+    authlogic (2.1.6)
+      activesupport
+    babosa (0.1.0)
+    builder (2.1.2)
+    capybara (0.3.9)
+      culerity (>= 0.2.4)
+      mime-types (>= 1.16)
+      nokogiri (>= 1.3.3)
+      rack (>= 1.0.0)
+      rack-test (>= 0.5.4)
+      selenium-webdriver (>= 0.0.3)
+    configuration (1.1.0)
+    cucumber (0.8.5)
+      builder (~> 2.1.2)
+      diff-lcs (~> 1.1.2)
+      gherkin (~> 2.1.4)
+      json_pure (~> 1.4.3)
+      term-ansicolor (~> 1.0.4)
+    cucumber-rails (0.3.2)
+      cucumber (>= 0.8.0)
+    culerity (0.2.10)
+    database_cleaner (0.5.2)
+    diff-lcs (1.1.2)
+    erubis (2.6.6)
+      abstract (>= 1.0.0)
+    factory_girl (1.3.2)
+    ffi (0.6.3)
+      rake (>= 0.8.7)
+    friendly_id (3.1.1.1)
+      babosa (>= 0.1.0)
+    gherkin (2.1.5)
+      trollop (~> 1.16.2)
+    hoe (2.6.1)
+      rake (>= 0.8.7)
+      rubyforge (>= 2.0.4)
+    i18n (0.4.1)
+    launchy (0.3.7)
+      configuration (>= 0.0.5)
+      rake (>= 0.8.1)
+    mail (2.2.5)
+      activesupport (>= 2.3.6)
+      mime-types
+      treetop (>= 1.4.5)
+    mime-types (1.16)
+    nokogiri (1.4.3.1)
+    polyglot (0.3.1)
+    rack (1.2.1)
+    rack-cache (0.5.2)
+      rack (>= 0.4)
+    rack-mount (0.6.9)
+      rack (>= 1.0.0)
+    rack-test (0.5.4)
+      rack (>= 1.0)
+    rails (3.0.0.rc)
+      actionmailer (= 3.0.0.rc)
+      actionpack (= 3.0.0.rc)
+      activerecord (= 3.0.0.rc)
+      activeresource (= 3.0.0.rc)
+      activesupport (= 3.0.0.rc)
+      bundler (>= 1.0.0.rc.1)
+      railties (= 3.0.0.rc)
+    railties (3.0.0.rc)
+      actionpack (= 3.0.0.rc)
+      activesupport (= 3.0.0.rc)
+      rake (>= 0.8.3)
+      thor (~> 0.14.0)
+    rake (0.8.7)
+    rmagick (2.12.2)
+    rspec (2.0.0.beta.19)
+      rspec-core (= 2.0.0.beta.19)
+      rspec-expectations (= 2.0.0.beta.19)
+      rspec-mocks (= 2.0.0.beta.19)
+    rspec-core (2.0.0.beta.19)
+    rspec-expectations (2.0.0.beta.19)
+      diff-lcs (>= 1.1.2)
+    rspec-mocks (2.0.0.beta.19)
+    rspec-rails (2.0.0.beta.19)
+      rspec (= 2.0.0.beta.19)
+      webrat (>= 0.7.2.beta.1)
+    ruby-prof (0.8.2)
+    rubyforge (2.0.4)
+      json_pure (>= 1.1.7)
+    rubyzip (0.9.4)
+    selenium-webdriver (0.0.27)
+      ffi (>= 0.6.1)
+      json_pure
+      rubyzip
+    spork (0.8.4)
+    sqlite3-ruby (1.3.1)
+    term-ansicolor (1.0.5)
+    test-unit (1.2.3)
+      hoe (>= 1.5.1)
+    thor (0.14.0)
+    treetop (1.4.8)
+      polyglot (>= 0.3.1)
+    trollop (1.16.2)
+    truncate_html (0.3.2)
+    tzinfo (0.3.22)
+    webrat (0.7.2.beta.1)
+      nokogiri (>= 1.2.0)
+      rack (>= 1.0)
+      rack-test (>= 0.5.3)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  capybara
+  cucumber
+  cucumber-rails
+  database_cleaner
+  dragonfly!
+  factory_girl
+  gherkin
+  json_pure!
+  launchy
+  refinerycms!
+  rmagick (~> 2.12.0)
+  rspec (~> 2.0.0.beta.19)
+  rspec-core (~> 2.0.0.beta.19)
+  rspec-expectations (~> 2.0.0.beta.19)
+  rspec-mocks (~> 2.0.0.beta.19)
+  rspec-rails (~> 2.0.0.beta.19)
+  ruby-prof
+  spork
+  sqlite3-ruby
+  test-unit (= 1.2.3)
+  will_paginate (= 3.0.pre2)!

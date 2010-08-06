@@ -1,0 +1,57 @@
+<%= form_for([:admin, @inquiry_setting], :url => (@url_override || @url)) do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= t('.explanation') %>
+  </p>
+  <p>
+    <%= t('.below_edit_email_sent') %>
+  </p>
+  <table id='inquiry'>
+    <tr>
+      <td>
+        <label class='stripped'><%= t('.to') %></label>
+      </td>
+      <td>
+        <%= t('.the_customer_making_inquiry') %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <label class='stripped'><%= t('.from') %></label>
+      </td>
+      <td>
+        <%= "#{RefinerySetting[:site_name]} &lt;no-reply@#{request.domain(RefinerySetting.find_or_set(:tld_length, 1))}&gt;".html_safe %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <label class='stripped'><%= t('.subject') %></label>
+      </td>
+      <td>
+        <%= link_to InquirySetting.confirmation_subject.value, edit_admin_inquiry_setting_url(InquirySetting.confirmation_subject),
+            :title => t('.click_to_edit_subject') %>
+      </td>
+    </tr>
+    <tr>
+      <td valign='top'>
+        <%= f.label :value, t('.message'),
+                    :class => 'stripped' %>
+      </td>
+      <td>
+        <%= f.text_area :value,
+                        :rows => "5",
+                        :class => 'widest' %>
+        <br/>
+        <em><%= t('.note') %></em>
+      </td>
+    </tr>
+  </table>
+
+  <%= render :partial => "/shared/admin/form_actions",
+             :locals => {
+               :f => f,
+               :continue_editing => false,
+               :cancel_url => admin_inquiries_url,
+               :hide_delete => true
+             } %>
+<% end %>

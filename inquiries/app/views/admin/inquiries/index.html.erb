@@ -1,0 +1,24 @@
+<%= render :partial => "submenu" %>
+<div id='records'>
+  <% if searching? %>
+    <h2><%= t('admin.search_results_for', :query => h(params[:search])) %></h2>
+    <% if @inquiries.any? %>
+      <%= render :partial => "inquiry", :collection => @inquiries %>
+    <% else %>
+      <p><%= t('admin.search_no_results') %></p>
+    <% end %>
+  <% else %>
+    <% if @grouped_inquiries.any? -%>
+      <% @grouped_inquiries.each do |container| %>
+        <h3><%= l((inquiry_group = container.last).first.created_at) %></h3>
+        <ul>
+          <%= render :partial => 'inquiry', :collection => inquiry_group %>
+        </ul>
+      <% end %>
+    <% else -%>
+      <p>
+        <strong><%= t('.no_inquiries') %></strong>
+      </p>
+    <% end -%>
+  <% end %>
+</div>

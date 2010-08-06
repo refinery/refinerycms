@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <% if request.env['HTTP_USER_AGENT'] =~ /MSIE/%>
+      <!--[if lt IE 9]>
+        <%= javascript_include_tag('http://html5shiv.googlecode.com/svn/trunk/html5.js') %>
+      <![endif]-->
+      <meta http-equiv='X-UA-Compatible' content='IE-EmulateIE7' />
+    <% end %>
+    <title>WYMeditor</title>
+    <%= stylesheet_link_tag "wymeditor/skins/refinery/wymiframe", :media => "all" %>
+    <%= stylesheet_link_tag "#{"/theme/stylesheets/" if RefinerySetting[:theme].present?}formatting", :media => "all" %>
+    <%= stylesheet_link_tag "theme", :media => "all" %>
+  </head>
+  <body class="wym_iframe<%= " #{params[:id]}" if params[:id].present? %>">
+  </body>
+</html>

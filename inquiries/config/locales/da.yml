@@ -1,0 +1,68 @@
+da:
+  plugins:
+    refinery_inquiries:
+      title: Henvendelser
+  activerecord:
+    models:
+      inquiry: Henvendelse
+    attributes:
+      inquiry:
+        to: Til
+        from: Fra
+        click_to_email: Send en e-mail til adressen
+        phone: Telefon
+        date: Dato
+        message: Besked
+  inquiries:
+    new:
+      header_message: "Der er et mindre problem"
+      message: "Følgende skal rettes:"
+      send: Send besked
+      privacy_policy: "Vi værner om dine personlige oplysninger"
+  admin:
+    inquiries:
+      inquiry:
+        move_inquiry_to_closed: Flyt til lukkede henvendelser
+        move_inquiry_to_open: Flyt til åbne henvendelser
+        read_inquiry: Læs henvendelse
+        remove_inquiry: "Er du sikker på du vil slette denne henvendelse fra '%{name}'?"
+        title: Slet henvendelse.
+      toggle_status:
+        closed: "Henvendelsen '%{inquiry}' er lukket"
+        reopened: "Henvendelsen '%{inquiry}' er genåbnet"
+      index:
+        search_results_for: "Søgeresultat for '%{query}'"
+        no_inquiries: Du har endnu ikke modtaget nogen henvendelser.
+      show:
+        details: Detaljer
+        click_to_email: Send en e-mail til adressen
+        status: Status
+        open: "Åben"
+        closed: Lukket
+        age: Tid siden modtagelse
+        actions: Handlinger
+        back_to_all_inquiries: Tilbage til alle henvendelser
+        inquiry: Henvendelse
+      submenu:
+        update_notified: Opdatér, hvem der får besked
+        edit_confirmation_email: Redigér e-mailbekræftelse
+    inquiry_settings:
+      update:
+        updated: "'%{setting}' er opdateret."
+      notification_recipients_form:
+        inquiry_settings_value_name: Send besked til
+        explanation: "Hver gang kontaktformularen benyttes, sender Refinery en e-mail med besked om, at der er modtaget en ny henvendelse"
+        hint: "Indtast en e-mail-adresse ovenfor. Skal beskeden sendes til mere end en person, så indtast flere adresser adskilt med kommaer."
+        example: "Fx mig@domæne.dk, ven@hotmail.com, kollega@arbejde.dk"
+      confirmation_email_form:
+        to: Til
+        from: Fra
+        subject: Emne
+        click_to_edit_subject: Klik her for at redigere emnet
+        explanation: "Hver gang kontaktformularen benyttes, sender Refinery en e-mail til den person, der udfyldte formularen, for at bekræfte henvendelsen."
+        below_edit_email_sent: Nedenfor kan du redigere e-mailen, der sendes ud.
+        the_customer_making_inquiry: Kunden, der har henvendt sig
+        message: Besked
+        note: "Bemærk: Anbring teksten %name%, der hvor du vil have kundens navn skal være i e-mailen"
+      subject_form:
+        subject_value_name: Emne

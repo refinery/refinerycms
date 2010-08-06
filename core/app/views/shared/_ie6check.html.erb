@@ -1,0 +1,63 @@
+<% if RefinerySetting.find_or_set(:ie6_upgrade_message_enabled, true) -%>
+  <% unless admin? %>
+  <!--[if lte IE 6]>
+    <div id="ie6msg_wrapper">
+      <div id="ie6msg">
+        <h4>Did you know that your browser is out of date?</h4>
+        <div id='ie6message'>
+          <p>
+            To get the best possible experience using our website we recommend that you upgrade your browser to a newer version. The current version is
+            <a class="getie8" href="http://upgradeie.s3.amazonaws.com/eng/index.html">Internet Explorer 8</a>.
+            The upgrade is free. If you're using a PC at work you should contact your IT administrator.
+          </p>
+          <p>
+            If you want to you may also try some other popular and <strong>free</strong> Internet browsers like:<br/>
+            <a class="ie6expl" href="http://www.google.com/chrome" target='_blank'>Google Chrome</a>,
+            <a class="ie6expl" href="http://www.apple.com/safari/download/" target='_blank'>Safari</a>,
+            <a class="ie6expl" href="http://getfirefox.com" target='_blank'>Firefox</a> or
+            <a class="ie6expl" href="http://www.opera.com" target='_blank'>Opera</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  <![endif]-->
+  <% else %>
+    <!--[if lte IE 8]>
+      <div id='upgrade_wrapper'>
+        <h2>Want to have a better experience with Refinery?</h2>
+        <p>
+          To get the best possible experience using Refinery, we recommend that you switch your web browser.
+        </p>
+        <p>
+          There are a number of web browsers available that will give you a better experience and they are all available <strong>free of charge</strong>. Installing a new web browser will not remove Internet Explorer which you will still be able to use when you need to.
+        </p>
+        <p>
+          <ul>
+            <li>
+              <a class="ie6expl" href="http://www.google.com/chrome" target='_blank'>Google Chrome</a>
+            </li>
+            <li>
+              <a class="ie6expl" href="http://www.apple.com/safari/download/" target='_blank'>Apple Safari</a>
+            </li>
+            <li>
+              <a class="ie6expl" href="http://getfirefox.com" target='_blank'>Mozilla Firefox</a>
+            </li>
+            <li>
+              <a class="ie6expl" href="http://www.opera.com" target='_blank'>Opera</a>
+            </li>
+          </ul>
+        </p>
+      </div>
+    <![endif]-->
+    <% content_for :head do %>
+      <script type='text/javascript'>
+        $(document).ready(function() {
+          $('#flash.flash_message:has("#upgrade_wrapper") #flash_close').click(function(e) {
+            e.preventDefault();
+            $.get('<%= admin_disable_upgrade_message_path %>');
+          });
+        });
+      </script>
+    <% end %>
+  <% end %>
+<% end -%>

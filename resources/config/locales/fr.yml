@@ -1,0 +1,32 @@
+fr:
+  plugins:
+    refinery_files:
+      title: Ressources
+  must_choose_file: Vous devez choisir un fichier à télécharger
+  file_should_be_smaller_than_max_file_size: Le poid des fichiers doit être plus petit que %{max_file_size}
+  admin:
+    resources:
+      form:
+        file_to_upload: Fichier à télécharger
+        download_current: Télécharger ce fichier
+        or: ou
+        replace: ",remplacer par celui-ci..."
+        maximum_file_size: "The maximum file size is %{megabytes} megabytes."
+      resource:
+        download: "Télécharger ce fichier (%{size})"
+        edit: Modifier ce fichier
+        delete:
+          message: "Êtes vous sûr de vouloir supprimer le fichier '%{title}'?"
+          title: Supprimer ce fichier pour toujours
+      index:
+        upload_new: Télécharger un Nouveau Fichier
+        no_files_yet: "Il n'y a pas encore de fichier. Cliquer 'Télécharger un Nouveau Fichier' pour ajouté votre premier fichier."
+      insert:
+        existing_file: Fichier existant
+        new: Nouveau fichier
+        link_to_resource: 'Lien vers cette Ressource'
+        previous: Précédant
+        next: Suivant
+        submit_insert: Insérer
+        or: ou
+        cancel: Annuler

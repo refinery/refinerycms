@@ -6,9 +6,7 @@ require 'rails/all'
 # Auto-require default libraries and those for the current Rails environment.
 Bundler.require :default, Rails.env
 
-$LOAD_PATH << File.expand_path('../../vendor/engines/refinery/lib', __FILE__)
-require 'refinery'
-require File.expand_path('../../lib/refinery_initializer', __FILE__)
+require 'refinery/all'
 
 module Refinerycms
   class Application < Rails::Application

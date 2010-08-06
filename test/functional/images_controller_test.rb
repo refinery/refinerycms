@@ -9,6 +9,7 @@ class ImagesControllerTest < ActionController::TestCase
 
   def setup
     @controller = Admin::ImagesController.new
+    users(:quentin).add_role(:refinery)
     login_as(:quentin)
   end
 

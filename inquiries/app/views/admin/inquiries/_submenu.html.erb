@@ -1,0 +1,27 @@
+<div id='actions'>
+  <ul>
+    <li>
+      <%= render :partial => "/shared/admin/search", :locals => {:url => request.path} %>
+    </li>
+    <li <%= "class='selected'" if params[:action] == "index" %>>
+      <%= link_to t('.inbox'), admin_inquiries_url, :class => "email_icon" %>
+    </li>
+    <li <%= "class='selected'" if params[:action] == "spam" %>>
+      <% if @spam_count > 0  %>
+        <%= link_to "#{t('.spam')} (#{@spam_count})", spam_admin_inquiries_url, :class => "spam_icon" %>
+      <% else %>
+        <%= link_to t('.spam'), spam_admin_inquiries_url, :class => "spam_empty_icon" %>
+      <% end %>
+    </li>
+    <li>
+      <%= link_to t('.update_notified'),
+                    edit_admin_inquiry_setting_url(InquirySetting.notification_recipients, :dialog => true, :height => 300),
+                    :class => "user_comment_icon" %>
+    </li>
+    <li>
+      <%= link_to t('.edit_confirmation_email'),
+                  edit_admin_inquiry_setting_url(InquirySetting.confirmation_body, :dialog => true),
+                  :class => "edit_email_icon" %>
+    </li>
+  </ul>
+</div>

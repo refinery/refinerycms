@@ -34,7 +34,7 @@ class ActiveSupport::TestCase
   #
   # Note: You'll currently still have to declare fixtures explicitly in integration tests
   # -- they do not yet inherit this setting
-  self.fixture_path = Refinery.root.join("test", "fixtures").to_s
+  self.fixture_path = Refinery.root.join('test', 'fixtures').to_s
   fixtures :all
 
   # Add more helper methods to be used by all tests here...

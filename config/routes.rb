@@ -1,4 +1,8 @@
 Refinerycms::Application.routes.draw do |map|
+
+  # FIXME for Rails 3 + i18n
+  # map.filter(:locale)
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -52,7 +56,7 @@ Refinerycms::Application.routes.draw do |map|
 
   root :to => 'pages#home'
 
-  scope(:path => 'refinery', :name_prefix => 'admin', :module => 'admin') do
+  scope(:path => 'refinery', :as => 'admin', :module => 'admin') do
     root :to => 'dashboard#index'
   end
 
@@ -67,10 +71,9 @@ Refinerycms::Application.routes.draw do |map|
 
   # Install the default routes as the lowest priority.
 
-  #map.redirect 'admin/*path', :controller => 'admin/base'
-  #map.connect 'refinery/*path', :controller => 'admin/base', :action => 'error_404'
+  match 'admin/*path' => redirect('/refinery/%{path}')
+  # match 'refinery/*path' => 'admin/base#error_404'
 
-  # Marketable URLs
-  # match '*path' => 'pages#show'
+  # Marketable URLs should be appended to routes by the Pages Engine.
 
 end

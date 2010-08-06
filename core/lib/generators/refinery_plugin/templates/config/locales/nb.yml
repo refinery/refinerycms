@@ -1,0 +1,19 @@
+nb:
+  plugins:
+    <%= class_name.pluralize.underscore.downcase %>:
+      title: <%= plural_name.titleize %>
+  admin:
+    <%= plural_name %>:
+      index:
+        create_new: Lag en ny <%= $title_name %>
+        reorder: Endre rekkefølgen på <%= $title_name.pluralize %>
+        reorder_done: Ferdig å endre rekkefølgen <%= $title_name.pluralize %>
+        sorry_no_results: Beklager! Vi fant ikke noen resultater.
+        no_items_yet: Det er ingen <%= $title_name.pluralize %> enda. Klikk på "Lag en ny <%= $title_name %>" for å legge til din første <%= $title_name.downcase %>.
+      <%= singular_name %>:
+        view_live: Vis hvordan denne <%= $title_name.downcase %> ser ut offentlig <br/><em>(åpner i et nytt vindu)</em>
+        edit: Rediger denne <%= $title_name.downcase %>
+        delete: Fjern denne <%= $title_name.downcase %> permanent
+  <%= plural_name %>:
+    show:
+      other: Andre <%= $title_name.pluralize %>

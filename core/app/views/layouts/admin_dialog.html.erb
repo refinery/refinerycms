@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+  <%= render :partial => "/admin/head" %>
+  <body id='dialog_container' class='dialog'>
+    <div id='tooltip_container'></div>
+    <div id="flash_container">
+      <%= render :partial => '/shared/message' %>
+    </div>
+    <div id='content' class='clearfix'>
+      <%= yield %>
+    </div>
+  </body>
+</html>

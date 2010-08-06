@@ -1,0 +1,83 @@
+da:
+  plugins:
+    refinery_users:
+      title: Brugere
+  admin:
+    users:
+      update:
+        cannot_remove_user_plugin_from_current_user: "Du kan ikke deaktivere 'Brugere' for en bruger, der er logget på."
+      form:
+        blank_password_keeps_current: Hvis du ikke indtaster noget, beholdes den nuværende adgangskode
+      index:
+        create_new_user: Opret en ny bruger
+        no_users_yet: Der er ingen brugere endnu. Klik "Opret en ny bruger" for at oprette den første.
+      user:
+        confirm_delete_message: "Er du sikker på du vil slette '%{who}'?"
+        confirm_delete_title: Slet bruger
+        edit_user: Redigér bruger
+        email_user: Send e-mail
+        preview: (%{who}) oprettet %{created_at}
+  sessions:
+    login_successful: Du er logget på
+    login_failed: Beklager, dit brugernavn eller adgangskode er forkert.
+    logged_out: Du er logget af.
+    new:
+      login: Brugernavn
+      log_in: Log på
+      cancel: Annullér
+      password: Adgangskode
+      remember_me: Husk mig
+      or: eller
+      forgot_password: Jeg har glemt mit password
+      hello_please_sign_in: Hej! Du skal logge ind
+      sign_in: log ind
+  users:
+    setup_website_name: "Lad os først give websitet et navn. <a href='%{link}' name='%{title}'>Her</a> kan du rette navnet"
+    signup_disabled: Brugeroprettelse er deaktiveret
+    new:
+      fill_form: Indtast dine oplysninger, så vi kan få dig i gang med Refinery.
+      sign_up: Opret bruger
+    create:
+      welcome: Velkommen til Refinery, %{who}
+      signup_complete: Du er nu oprettet.
+    forgot:
+      email_address: E-mail-adresse
+      enter_email_address: Indtast venligst den email-adresse til din konto.
+      reset_password: Reset adgangskode
+      blank_email: Du har ikke angivet en e-mail-adresse.
+      email_not_associated_with_account: "Undskyld, '%{email}' er ikke forbundet med nogen regnskaber. <br/> Er du sikker på du har skrevet den rigtige email-adresse?"
+      email_reset_sent: En e-mail er blevet sendt til dig med et link til nulstille din adgangskode.
+    reset:
+      code_invalid: "Vi beklager, men denne nulstilling kode er udløbet eller ugyldig. Hvis du har spørgsmål kan du prøve at kopiere og indsætte webadressen fra din e-mail til din browser eller genstarte reset password proces."
+      successful: "Adgangskode reset succes for %{email}"
+  user_mailer:
+    please_activate: Du skal aktivere din nye brugerkonto
+    activated: Din konto er nu aktiveret.
+    activated_email: "%{who}, din konto er nu aktiveret. Du kan nu begynde at tilføje plug-ins:"
+    account_created: Din konto er nu oprettet.
+    user_name: Brugernavn %{name}
+    password: Adgangskode %{password}
+    visit_url: "Du aktiverer din brugerkonto ved at følge dette link:"
+    link_to_reset_your_password: Link til nulstilling af din adgangskode
+  authlogic:
+    error_messages:
+      login_blank: skal udfyldes
+      login_not_found: er ugyldigt
+      login_invalid: må kun indeholde bogstaver, tal, mellemrum og tegnene '.-_@'.
+      consecutive_failed_logins_limit_exceeded: Din konto er nu spærret pga. for mange forgæves forsøg på at logge på.
+      email_invalid: er ikke en gyldig e-mail-adresse.
+      password_blank: skal udfyldes
+      password_invalid: er ikke gyldigt
+      not_active: Din brugerkonto er ikke aktiv
+      not_confirmed: Du skal bekræfte din brugerkonto, før du kan logge på
+      not_approved: Din brugerkonto er ikke godkendt
+      no_authentication_details: Angiv brugernavn og adgangskode
+    models:
+      user_session: UserSession
+    attributes:
+      user_session:
+        login: brugernavn
+        email: e-mail
+        password: adgangskode
+        remember_me: husk mig
+        incorrect: "Beklager, dit %{login_field} eller adgangskode er forkert."

@@ -1,0 +1,66 @@
+fr:
+  plugins:
+    refinery_inquiries:
+      title: Requêtes
+  activerecord:
+    models:
+      inquiry: Demandes de renseignements
+    attributes:
+      inquiry:
+        to: "À"
+        from: "De"
+        click_to_email: Cliquer pour envoyez un couriel à cette adresse
+        phone: Téléphone
+        date: Date
+        message: Message
+  inquiries:
+    new:
+      header_message: "Oops, il y a eu une petit erreur"
+      message: "Le problème suivant doit être corrigé:"
+      send: Envoyez le message
+      privacy_policy: "Nous respectons votre vie privée"
+  admin:
+    inquiries:
+      inquiry:
+        move_inquiry_to_closed: Marqué cette requête comme 'fermé'
+        move_inquiry_to_open: Marqué cette requête comme 'ouverte'
+        read_inquiry: Lire la demande de renseignement
+        remove_inquiry: "Êtes-vous sûr de vouloir supprimer la demande de renseignement de '%{name}'?"
+        title: Supprimer cette demande de renseignement pour toujours.
+      toggle_status:
+        closed: "La demande de renseignement '%{inquiry}' est fermé"
+        reopened: "La demande de renseignement '%{inquiry}' est rouverte"
+      index:
+        search_results_for: "Résultat de recherche pour %{query}"
+        open_inquiries: Demande de renseignement ouverte
+        no_inquiries: "Hourra! Il n'y a pas de requête ouvertes, vous les avez toutes faites."
+        closed_inquiries: Demande de renseignement fermé
+        havent_closed_any_inquiries: "Vous n'avez pas de demande de renseignements fermé pour le moment."
+      show:
+        details: "Détails"
+        click_to_email: Cliquer pour envoyé un couriel
+        status: Statut
+        open: Ouvert
+        closed: Fermé
+        age: Age
+        actions: Actions
+        back_to_all_inquiries: Retourné à la liste de requêtes
+        inquiry: Requête
+      submenu:
+        update_notified: "Mettre à jour qui est notifié"
+        edit_confirmation_email: Modifier le couriel de confirmation
+    inquiry_settings:
+      update:
+        updated: "'%{setting}' a été mis à jour."
+      notification_recipients_form:
+        inquiry_settings_value_name: Envoyer des notifications à
+        explanation: "Chaque fois que quelqu'un vous contact sur votre site, Refinery envoie un couriel pour dire qu'il ya une nouvelle requête."
+        hint: "Entrez une adresse e-mail ci-dessus. Voulez-vous envoyez la notification à plus d'une personne? Entrez plusieurs adresses e-mail séparées par des virgules."
+        example: "Par exemple: me@domain.com, friend@msn.com, workmate@work.com"
+      confirmation_email_form:
+        click_to_edit_subject: Cliquez ici pour modifier le sujet du couriel
+        explanation: "Chaque fois que quelqu'un vous contacts sur votre site, Refinery envoie un couriel à la personne qui l'a fait pour confirmer la requête."
+        below_edit_email_sent: Ci-dessous vous pouvez modifier le message qui est envoyé.
+        the_customer_making_inquiry: Le client qui fait la demande
+      subject_form:
+        subject_value_name: Sujet
