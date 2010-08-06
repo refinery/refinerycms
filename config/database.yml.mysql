@@ -1,0 +1,24 @@
+login: &login
+  adapter: mysql
+  host: localhost
+  username: root
+  password: root
+
+development: &development
+  database: your_local_database
+  <<: *login
+
+test: &test
+  database: your_test_database
+  <<: *login
+
+cucumber: &cucumber
+  database: your_cucumber_database
+  <<: *test
+
+production: &production
+  adapter: mysql
+  host: localhost
+  database: your_production_database
+  username: your_production_database_login
+  password: your_production_database_password

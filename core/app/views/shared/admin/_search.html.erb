@@ -1,0 +1,5 @@
+<form method="GET" action="<%= url %>" class="search_form">
+  <input id="search" name="search" size="22" type="search" value="<%= params[:search] %>" />
+  <input id="dialog" name="dialog" type="hidden" value="<%= from_dialog? %>" />
+  <%= submit_tag t('admin.search'), :name => nil %>
+</form>

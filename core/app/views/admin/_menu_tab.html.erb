@@ -1,0 +1,4 @@
+<li class='tab' id='plugin_<%= menu_tab.name %>' name='plugin[<%= menu_tab.name %>]'>
+  <%= link_to t('plugins.' + menu_tab.name + '.title', :default => menu_tab.title), menu_tab.url,
+              :class => (menu_tab.highlighted?(params) ? "active" : nil) -%>
+</li>

@@ -1,0 +1,74 @@
+<%
+  unless (hide_submit ||= false)
+    submit_button_text  ||= t('.save')
+    submit_button_id    ||= "submit_button"
+    submit_button_title ||= nil
+  end
+
+  unless defined?(hide_cancel).presence
+    hide_cancel = from_dialog?
+  end
+
+  unless hide_cancel
+    cancel_button_text  ||= t('.cancel')
+    unless defined?(cancel_title)
+      cancel_title = t('.cancel_lose_changes',
+                       :object_name => f.object.class.name.underscore.gsub("_", " "))
+    end
+    cancel_button_id    ||= "cancel_button"
+
+    cancel_url          ||= (((back = url_for(:back)).include?('javascript') or action_name =~ /^(create|update)$/) ? send("admin_#{f.object.class.name.pluralize.underscore}_url") : back)
+  end
+
+  continue_editing = defined?(continue_editing) ? continue_editing : (f.object.present? and !f.object.new_record?)
+
+  unless defined?(hide_delete).presence
+    hide_delete = (from_dialog? or
+                   f.object.nil? or f.object.new_record? or
+                   (f.object.respond_to?(:deletable?) && !f.object.deletable?))
+  end
+
+  unless hide_delete
+    delete_button_text  ||= t('.delete')
+    delete_title        ||= nil
+    delete_confirmation ||= nil
+    delete_button_id    ||= "delete_button"
+    delete_url          ||= eval("admin_#{f.object.class.name.underscore}_url(#{f.object.id})")
+  end
+-%>
+<input type='hidden' name='modal' value='<%= from_dialog? %>' />
+<input type='hidden' name='dialog' value='<%= from_dialog? %>' />
+
+<div class='form-actions<%= ' form-actions-dialog' if from_dialog? %>'>
+  <div class='form-actions-left'>
+    <%= submit_tag submit_button_text,
+                   :id => submit_button_id,
+                   :class => "wymupdate button",
+                   :tooltip => submit_button_title unless hide_submit %>
+
+    <%= render :partial => "/shared/admin/continue_editing", :locals => {:f => f} if continue_editing -%>
+    <%= hidden_field_tag :continue_editing, false %>
+
+    <%= link_to(cancel_button_text,
+                cancel_url,
+                :title => cancel_title,
+                :id => cancel_button_id,
+                :class => "close_dialog button") unless hide_cancel %>
+  </div>
+  <div class='form-actions-right'>
+    <%= link_to(delete_button_text,
+                delete_url,
+                :title => delete_title,
+                :id => delete_button_id,
+                :'data-confirm' => delete_confirmation,
+                :class => "button confirm-delete") unless hide_delete %>
+
+    <%= will_paginate paginate[:collection],
+                      :previous_label => paginate[:previous_label] ||= "&laquo; #{t('.previous')}",
+                      :next_label => paginate[:next_label] ||= "#{t('.next')} &raquo;",
+                      :renderer => Refinery::LinkRenderer,
+                      :url => paginate[:url] if ((paginate ||= {}).length > 0 &&
+                                                  paginate.keys.include?(:collection) &&
+                                                  paginate.keys.include?(:url)) %>
+  </div>
+</div>

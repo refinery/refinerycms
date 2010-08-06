@@ -1,0 +1,40 @@
+es:
+  plugins:
+    refinery_images:
+      title: Imágenes
+  no_file_chosen: Debe elegir un fiechero para cargar.
+  file_should_be_smaller_than_max_image_size: Los ficheros deben ser menores de %{max_image_size} de tamaño
+  file_must_be_these_formats: Su imagen debe ser un archivo JPG, PNG o GIF
+  admin:
+    images:
+      image:
+        delete:
+          message: "¿Esta seguro de que desea eliminar la imagen ' '%{title}''?"
+          title: Borrar esta imagen
+      form:
+        image: Imagen
+        use_current_image: Usar imagen actual
+        or: o
+        replace_image: Reemplazar imagen con esta otra...
+        current_image: Imagen actual
+        maximum_image_size: "The maximum image size is %{megabytes} megabytes."
+      index:
+        create_new_image: Crear Imagen nueva
+        no_images_yet: No hay ninguna imagen. Pulse en "Crear Imagen nueva" para añadir su primera imagen.
+        view:
+          switch_to: Cambiar a vista de %{view_name}
+          list: lista
+          grid: mosaico
+      grid_view:
+        click_to_view: "Pulse para ver '%{title}'<br/><em>Abre una nueva ventana</em>"
+        edit: Editar esta imagen
+      list_view_image:
+        edit_this_image: Editar esta imagen
+      insert:
+        existing_image: Imagen existente
+        new_image: Nueva imagen
+        previous: Previa
+        next: Siguiente
+        submit_insert: Insertar
+        or: o
+        cancel: Cancelar

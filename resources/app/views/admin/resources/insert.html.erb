@@ -1,0 +1,54 @@
+<% user_can_modify_resources = Refinery::Plugins.active.names.include?("refinery_files") %>
+<div class='clearfix'>
+  <div id='dialog_menu_left'>
+    <% if (any_resources = @resources.any?) %>
+      <span id='existing_resource_radio' class='radio<%= " selected_radio" if @resource.errors.empty? %>'>
+        <input type='radio' name='resource_type' value='existing_resource' id='resource_type_existing' <%= "checked='true'" if @resource.errors.empty? %> />
+        <label for='resource_type_existing' class='stripped'>
+          <%=t('.existing')%>
+        </label>
+      </span>
+    <% end %>
+    <% if user_can_modify_resources %>
+      <span id='upload_resource_radio' class='radio<%= " selected_radio" if @resource.errors.any? or @resources.empty? %>'>
+        <input type='radio' name='resource_type' value='upload_resource' id='resource_type_upload' <%= "checked='true'" if @resources.empty? or @resource.errors.any? %> />
+        <label for='resource_type_upload' class='stripped'>
+          <%= t('.new') %>
+        </label>
+      </span>
+    <% end %>
+  </div>
+
+  <div id='dialog_main'>
+    <% if any_resources or user_can_modify_resources %>
+      <%= render :partial => 'existing_resource' if any_resources %>
+
+      <% if user_can_modify_resources %>
+        <div id='upload_resource_area' class='dialog_area' <%= "style='display:none;'" if any_resources and @resource.errors.empty? %>>
+          <%= render :partial => "form", :locals => {:insert => true} %>
+        </div>
+      <% end %>
+    <% else %>
+      <% flash.now[:error] = t('admin.resources.index.no_files_yet').split('.').first.html_safe + "." %>
+      <%= render :partial => "/shared/admin/form_actions",
+                 :locals => {
+                   :f => nil,
+                   :cancel_url => '',
+                   :hide_cancel => false,
+                   :hide_delete => true,
+                   :hide_submit => true,
+                   :cancel_button_text => t('shared.admin.message.close'),
+                   :cancel_title => ''
+                 } %>
+    <% end %>
+  </div>
+</div>
+
+<% content_for :head do %>
+  <script type='text/javascript'>
+    $(document).ready(function(){
+      link_dialog.init();
+      resource_picker.init(<%= @callback.present? ? "self.parent.#{@callback}" : "null" %>);
+    });
+  </script>
+<% end %>

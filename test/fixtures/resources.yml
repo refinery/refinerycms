@@ -1,4 +1,5 @@
 pdf_document:
-  content_type: application/pdf
-  filename: teng.pdf
-  size: 52319
+  file_uid: test/teng.pdf
+  file_mime_type: application/pdf
+  file_name: teng.pdf
+  file_size: 52319

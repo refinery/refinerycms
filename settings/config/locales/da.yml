@@ -1,0 +1,49 @@
+da:
+  activity_show_limit: Hvor mange 'Seneste aktiviter' skal vises
+  analytics_page_code: Google Analytics kode
+  default_page_parts: Standard indholdssektioner
+  down_for_maintenance: Siden er nede pga. vedligeholdelse
+  group_images_by_date_uploaded: Vis billeder efter upload-dato
+  group_resources_by_date_uploaded: Vis filer efter upload-dato
+  image_thumbnails: Thumbnail formater
+  image_views: Billedvisninger
+  menu_hide_children: Skjul undermenuer
+  new_page_parts: Tillad oprettelse af nye indholdsektioner på sider
+  page_title: Sidetitel
+  pages_advanced_options_include_seo: Vis søgemaskineoptimering under avancerede indstillinger
+  preferred_image_view: Standard billedvisning
+  i18n_translation_enabled: Oversættelser aktiveret
+  i18n_translation_locale: Aktuelt sprog
+  i18n_translation_locales: Tilgængelige sprog
+  refinery_menu_cache_action_suffix: Refinery menu cache suffiks
+  show_backend_branding: Vis Refinery branding i administrationsinterfacet
+  show_contact_privacy_link: Vis link til privatlivspolitik på kontaktformularen
+  show_firebug_lite: Vis Firebug Lite
+  show_submenu_on_content_pages: Vis undermenuer på sider
+  site_name: Navn på websitet
+  theme: Tema
+  tld_length: Top-level-domain (TLD) længde
+  use_google_ajax_libraries: Benyt Google AJAX biblioteker  
+  use_resource_caching: Brug resource caching
+  activerecord:
+    models:
+      refinery_setting: Refinery parameter
+    attributes:
+      refinery_setting:
+        name: Navn
+        value: Værdi
+  admin:
+    refinery_settings:
+      refinery_setting:
+        edit: 'Redigér parameter'
+        confirm: 'Er du sikker på du vil slette parameteren?'
+        remove: 'Slet parameter'
+      index:
+        new: Opret ny parameter
+        empty_set: Der er ingen parametre endnu.
+        create_first: "Klik '%{link}' for at oprette den første parameter."
+      form:
+        restart_may_be_in_order: "<strong>Bemærk:</strong> Du skal muligvis genstarte websitet for at ændringen træder i kraft."
+  plugins:
+    refinery_settings:
+      title: Indstillinger

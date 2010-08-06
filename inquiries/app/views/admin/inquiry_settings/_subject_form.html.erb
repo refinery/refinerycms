@@ -1,0 +1,9 @@
+<%= error_messages_for :inquiry_setting %>
+<% form_for [:admin, @inquiry_setting] do |f| %>
+  <div class='field'>
+    <%= f.label :value, t('.subject_value_name') %>
+    <%= f.text_field :value, :class => "larger", :style => 'width: 954px' %>
+  </div>
+  <input type='hidden' name='return_to' value='<%= (( back = url_for(:back)).include?('javascript') ? send("admin_#{f.object.class.name.pluralize.underscore}_url") : back) %>'>
+  <%= render :partial => "/shared/admin/form_actions", :locals => {:f => f, :continue_editing => false} %>
+<% end %>

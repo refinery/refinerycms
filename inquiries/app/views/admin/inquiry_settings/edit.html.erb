@@ -1,0 +1,7 @@
+<% if @inquiry_setting.name == "Notification Recipients" %>
+  <%= render :partial => "notification_recipients_form", :locals => {:edit => true} -%>
+<% elsif @inquiry_setting.name =~ /(Notification|Confirmation)\ Subject/ %>
+  <%= render :partial => "subject_form", :locals => {:edit => true} -%>
+<% else %>
+  <%= render :partial => "confirmation_email_form", :locals => {:edit => true} -%>
+<% end %>

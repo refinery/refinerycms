@@ -1,0 +1,71 @@
+de:
+  plugins:
+    refinery_inquiries:
+      title: Kontaktanfragen
+  activerecord:
+    models:
+      inquiry: Kontaktanfrage
+    attributes:
+      inquiry:
+        to: An
+        from: Von
+        click_to_email: E-Mail an diese Adresse schreiben
+        phone: Telefon
+        date: Datum
+        message: Nachricht
+  inquiries:
+    new:
+      header_message: "Es gab ein kleines Problem"
+      message: "Die folgenden Probleme müssen behoben werden:"
+      send: Nachricht senden
+      privacy_policy: "Ihre Privatsphäre ist uns wichtig"
+  admin:
+    inquiries:
+      inquiry:
+        move_inquiry_to_closed: Diese Kontaktanfrage zu geschlossenen Anfragen verschieben
+        move_inquiry_to_open: Diese Kontaktanfrage zu offenen Anfragen verschieben
+        read_inquiry: Kontaktanfrage lesen
+        remove_inquiry: "Sind Sie sicher, dass Sie die Kontaktanfrage von '%{name}' wirklich löschen möchten?"
+        title: Diese Kontaktanfrage für immer löschen.
+      toggle_status:
+        closed: "Kontaktanfrage '%{inquiry}' ist geschlossen"
+        reopened: "Kontaktanfrage '%{inquiry}' ist neu geöffnet"
+      index:
+        search_results_for: Suchergebnisse für %{query}
+        open_inquiries: Offene Anfragen
+        no_inquiries: "Juhuu! Es gibt keine offenen Kontaktanfragen, da Sie bereits alle Anfragen abgearbeitet haben."
+        closed_inquiries: Geschlossene Kontaktanfragen
+        havent_closed_any_inquiries: "Sie haben noch keine Kontaktanfragen geschlossen."
+      show:
+        details: Details
+        click_to_email: E-Mail senden
+        status: Status
+        open: Offen
+        closed: Geschlossen
+        age: Alter
+        actions: Aktionen
+        back_to_all_inquiries: Zurück zu allen Kontaktanfragen
+        inquiry: Kontaktanfrage
+      submenu:
+        update_notified: Wer wird benachrichtigt aktualisieren
+        edit_confirmation_email: Bestätigungsmail bearbeiten
+    inquiry_settings:
+      update:
+        updated: "'%{setting}' wurde erfolgreich aktualisiert."
+      notification_recipients_form:
+        inquiry_settings_value_name: Benachrichtigungen senden an
+        explanation: "Jedesmal wenn jemand Sie auf Ihrer Webseite kontaktiert, wird eine E-Mail mit einem Hinweis zur neuen Kontaktanfrage versendet."
+        hint: "Geben Sie eine E-Mail-Adresse ein. Soll die Benachrichtigung an mehrere Personen versendet werden? Geben Sie mehrere E-Mail-Adresse Komma-Separiert ein."
+        example: "z.B. me@domain.com, friend@msn.com, workmate@work.com"
+      confirmation_email_form:
+        to: An
+        from: Von
+        subject: Betreff
+        click_to_edit_subject: Klicken Sie hier, um den Betreff zu bearbeiten
+        explanation: "Jedesmal wenn jemand Sie auf Ihrer Webseite kontaktiert, wird eine E-mail an die anfragende Person zur Bestätigung der Kontaktanfrage versendet."
+        below_edit_email_sent: Unten können Sie die E-Mail bearbeiten, die versendet wird.
+        the_customer_making_inquiry: Der Kunde, der die Kontaktanfrage gestellt hat.
+        message: Nachricht
+        note: "Hinweis: Verwenden Sie den Text %name% um den Namen des Kunden in der E-Mail einzufügen."
+      subject_form:
+        subject_value_name: Betreff

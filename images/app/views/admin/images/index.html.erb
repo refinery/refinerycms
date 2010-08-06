@@ -1,0 +1,43 @@
+<div id='actions'>
+  <ul>
+    <li>
+      <%= render :partial => "/shared/admin/search",
+                 :locals => {
+                   :url => admin_images_url
+                 } %>
+    </li>
+    <li>
+      <%= link_to t('.create_new_image'), new_admin_image_url(:dialog => true, :width => 600, :height => 300),
+                  :class => "add_icon" %>
+    </li>
+    <% other_image_views.each do |image_view| %>
+      <li>
+        <%= link_to t('.view.switch_to', :view_name => t('.view.' + image_view.to_s)),
+                    admin_images_url(:view => image_view, :page => params[:page]),
+                    :class => "reorder_icon"  %>
+      </li>
+    <% end %>
+  </ul>
+</div>
+<div id='records'>
+  <% if searching? %>
+    <h2><%= t('admin.search_results_for', :query => h(params[:search])) %></h2>
+    <% if @images.any? %>
+      <%= render :partial => "#{current_image_view}_view" %>
+    <% else %>
+      <p><%= t('admin.search_no_results') %></p>
+    <% end %>
+  <% else %>
+    <% if @images.any? %>
+      <%= will_paginate @images, :previous_label => '&laquo;', :next_label => '&raquo;' %>
+      <%= render :partial => "#{current_image_view}_view" %>
+      <%= will_paginate @images, :previous_label => '&laquo;', :next_label => '&raquo;' %>
+    <% else %>
+      <p>
+        <strong>
+          <%= t('.no_images_yet') %>
+        </strong>
+      </p>
+    <% end %>
+  <% end %>
+</div>

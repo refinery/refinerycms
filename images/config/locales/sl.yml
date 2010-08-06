@@ -1,0 +1,42 @@
+sl:
+  plugins:
+    refinery_images:
+      title: Slike
+  no_file_chosen: Izbrati morate datoteko, ki jo želite prenesti
+  file_should_be_smaller_than_max_image_size: Velikost datoteka mora biti manjša od %{max_image_size}
+  file_must_be_these_formats: Slika mora biti tipa JPG, PNG ali GIF
+  admin:
+    images:
+      image:
+        delete:
+          message: Ali ste prepričani da želite odstraniti '%{title}'?
+          title: Odstrani sliko
+      form:
+        image: Slika
+        use_current_image: Uporabi trenutno sliko
+        or: ali
+        replace_image: jo zamenjaj z ...
+        current_image: Trenutna Slika
+        maximum_image_size: "Največja dovoljena velikost slike je lahko %{megabytes} megabajtov."
+      index:
+        create_new_image: Ustvari Novo Sliko
+        no_images_yet: Trenutno še ni nobene slike. Za prenos prve slike kliknite "Ustvari Novo Sliko".
+        view:
+          switch_to: Preklopi pogled v %{view_name}
+          list: seznam
+          grid: mrežo
+        search:
+          results_for: Iskalni rezultati za %{query}
+      grid_view:
+        edit: Uredi sliko
+        view_live: Poglej sliko <br/><em>Odpre se v novem oknu</em>
+      list_view_image:
+        edit_this_image: Uredi sliko
+      insert:
+        existing_image: Obstoječa slika
+        new_image: Nova Slika
+        previous: Prejšna
+        next: Naslednja
+        submit_insert: Vstavi
+        or: ali
+        cancel: Prekliči

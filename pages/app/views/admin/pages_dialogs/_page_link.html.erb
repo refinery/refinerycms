@@ -1,0 +1,5 @@
+<% linked = (url_for(page_link.url) == params[:current_link]) if params[:current_link].present? %>
+<li class='clearfix<%= " child#{child}" if child %><%= " linked" if linked%>' id="<%= dom_id(page_link) -%>">
+  <%= link_to page_link.title_with_meta, page_link.url, :title => t('.link_to_this_page'), :rel => page_link.title, :class => 'page_link' %>
+</li>
+<%= render :partial => 'page_link', :collection => page_link.children, :locals => {:child => child ? (child+1) : 1} if page_link.children.any? %>

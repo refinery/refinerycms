@@ -1,0 +1,59 @@
+sl:
+  welcome:
+    there_are_no_users: "Trenutno še ni nobenega uporabnika, zato vas moramo najprej namestiti."
+    remember_admin_location: "Zapomnite si vaše administracijsko področje v Refinery je:"
+    lets_start: "Vredu najprej vas bomo namestili, da se boste potem lahko prijavili..."
+    continue: "Nadaljuj..."
+  admin:
+    menu:
+      reorder_menu: Spremeni vrsti red zavihkov
+      reorder_menu_done: "Končaj s prerazporeditvijo zavihkov."
+    search: Išči
+    search_submit: Pojdi
+    search_results_for: Iskalni rezultati za %{query}
+    search_no_results: Oprostite! Ni bilo zadetkov.
+    images:
+      existing_image:
+        submit_insert: Vstavi
+  refinery:
+    other: "Drugo %{what}"
+    reorder: "Spremeni vrstni red %{what}"
+    reorder_done: "Končaj s prerazporeditvijo %{what}"
+    crudify:
+      created: "%{what} je bil uspešno ustvarjen"
+      updated: "%{what} je bil uspešno ustvarjen"
+      destroyed: "%{what} je bil uspešno odstranjen"
+  shared:
+    site_bar:
+      log_out: Odjavite se
+      switch_to_your_website: "Preklopite na vašo spletno stran"
+      switch_to_your_website_editor: "Preklopite na urejevalnik spletne strani"
+    admin:
+      message:
+        close: Zapri
+      continue_editing:
+        save_and_continue_editing: "Shrani &amp; nadaljuj z urejanjem"
+      form_actions:
+        or: ali
+        save: Shrani
+        or_cancel: ali
+        cancel: Prekliči
+        or_continue: ali
+        cancel_lose_changes: "S preklicem bodo izgubljene vse spremembe, ki ste jih naredili na %{object_name}."
+        delete_title: S tem bo stran odstranjena za vedno
+        delete: Izbriši
+      image_picker:
+        none_selected: "Trenutno ni izbrana nobena %{what}, prosimo kliknite tukaj da dodate eno."
+        remove_current: "Odstrani trenutno %{what}"
+        change: Kliknite tukaj za izbiro slike
+        image: slika
+      resource_picker:
+        none_selected: "Trenutno ni izbrana nobena %{what}, prosimo kliknite tukaj da dodate eno."
+        current: "Trenutna %{what}"
+        download_current: "Prenesi trenutno %{what}"
+        opens_in_new_window: Odpri v novem oknu
+        remove_current: "Odstrani trenutno %{what}"
+        resource: vir
+    message:
+      close: Zapri
+      close_this_message: Zapri to sporočilo

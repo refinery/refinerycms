@@ -1,15 +1,16 @@
-# This file is auto-generated from the current state of the database. Instead of editing this file,
-# please use the migrations feature of Active Record to incrementally modify your database, and
-# then regenerate this schema definition.
+# This file is auto-generated from the current state of the database. Instead
+# of editing this file, please use the migrations feature of Active Record to
+# incrementally modify your database, and then regenerate this schema definition.
 #
-# Note that this schema.rb definition is the authoritative source for your database schema. If you need
-# to create the application database on another system, you should be using db:schema:load, not running
-# all the migrations from scratch. The latter is a flawed and unsustainable approach (the more migrations
+# Note that this schema.rb definition is the authoritative source for your
+# database schema. If you need to create the application database on another
+# system, you should be using db:schema:load, not running all the migrations
+# from scratch. The latter is a flawed and unsustainable approach (the more migrations
 # you'll amass, the slower it'll run and the greater likelihood for issues).
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100606135207) do
+ActiveRecord::Schema.define(:version => 20100729221735) do
 
   create_table "images", :force => true do |t|
     t.string   "image_mime_type"
@@ -32,6 +33,7 @@ ActiveRecord::Schema.define(:version => 20100606135207) do
     t.boolean  "open",       :default => true
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "spam",       :default => false
   end
 
   create_table "inquiry_settings", :force => true do |t|
@@ -80,9 +82,12 @@ ActiveRecord::Schema.define(:version => 20100606135207) do
   create_table "refinery_settings", :force => true do |t|
     t.string   "name"
     t.text     "value"
-    t.boolean  "destroyable", :default => true
+    t.boolean  "destroyable",             :default => true
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "scoping"
+    t.boolean  "restricted",              :default => false
+    t.string   "callback_proc_as_string"
   end
 
   add_index "refinery_settings", ["name"], :name => "index_refinery_settings_on_name"
@@ -95,6 +100,15 @@ ActiveRecord::Schema.define(:version => 20100606135207) do
     t.datetime "updated_at"
     t.string   "file_uid",       :null => false
     t.string   "file_ext"
+  end
+
+  create_table "roles", :force => true do |t|
+    t.string "title"
+  end
+
+  create_table "roles_users", :id => false, :force => true do |t|
+    t.integer "user_id"
+    t.integer "role_id"
   end
 
   create_table "slugs", :force => true do |t|
@@ -111,22 +125,21 @@ ActiveRecord::Schema.define(:version => 20100606135207) do
 
   create_table "user_plugins", :force => true do |t|
     t.integer "user_id"
-    t.string  "title"
+    t.string  "name"
     t.integer "position"
   end
 
-  add_index "user_plugins", ["title"], :name => "index_user_plugins_on_title"
-  add_index "user_plugins", ["user_id", "title"], :name => "index_unique_user_plugins", :unique => true
+  add_index "user_plugins", ["name"], :name => "index_user_plugins_on_title"
+  add_index "user_plugins", ["user_id", "name"], :name => "index_unique_user_plugins", :unique => true
 
   create_table "users", :force => true do |t|
-    t.string   "login",                                :null => false
-    t.string   "email",                                :null => false
-    t.string   "crypted_password",                     :null => false
-    t.string   "password_salt",                        :null => false
+    t.string   "login",             :null => false
+    t.string   "email",             :null => false
+    t.string   "crypted_password",  :null => false
+    t.string   "password_salt",     :null => false
     t.string   "persistence_token"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "superuser",         :default => false
     t.string   "perishable_token"
   end
 

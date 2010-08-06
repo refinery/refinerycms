@@ -1,0 +1,19 @@
+en:
+  plugins:
+    <%= class_name.pluralize.underscore.downcase %>:
+      title: <%= plural_name.titleize %>
+  admin:
+    <%= plural_name %>:
+      index:
+        create_new: Create a new <%= $title_name %>
+        reorder: Reorder <%= $title_name.pluralize %>
+        reorder_done: Done Reordering <%= $title_name.pluralize %>
+        sorry_no_results: Sorry! There are no results found.
+        no_items_yet: There are no <%= $title_name.pluralize %> yet. Click "Create a new <%= $title_name %>" to add your first <%= $title_name.downcase %>.
+      <%= singular_name %>:
+        view_live: View this <%= $title_name.downcase %> live <br/><em>(opens in a new window)</em>
+        edit: Edit this <%= $title_name.downcase %>
+        delete: Remove this <%= $title_name.downcase %> forever
+  <%= plural_name %>:
+    show:
+      other: Other <%= $title_name.pluralize %>

@@ -1,0 +1,36 @@
+<div id='actions'>
+  <ul>
+    <li>
+      <%= link_to t('.new'), new_admin_refinery_setting_url(:dialog => true, :width => 725, :height => 475), :class => "add_icon" %>
+    </li>
+  </ul>
+</div>
+<div id='records'>
+  <% if @refinery_settings.any? %>
+    <%= will_paginate @refinery_settings, :previous_label => '&laquo;', :next_label => '&raquo;' unless searching? %>
+    <ul>
+      <%= render :partial => 'refinery_setting', :collection => @refinery_settings %>
+    </ul>
+    <%= will_paginate @refinery_settings, :previous_label => '&laquo;', :next_label => '&raquo;' unless searching? %>
+  <% else %>
+    <p>
+      <% if searching? %>
+        <%= t('admin.search_no_results') %>
+      <% else %>
+        <strong>
+          <%= t('.empty_set') %>
+          <%= t('.create_first', :link => t('.new')) %>
+        </strong>
+      <% end %>
+    </p>
+  <% end %>
+</div>
+<% content_for :head do %>
+  <script type='text/javascript'>
+    $(document).ready(function() {
+      $('#records ul li .actions a[href*=edit]').each(function(i, li) {
+        $(li).attr('name', $(li).attr('tooltip'));
+      });
+    });
+  </script>
+<% end %>

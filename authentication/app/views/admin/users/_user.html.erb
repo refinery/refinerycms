@@ -1,0 +1,18 @@
+<li id="sortable_<%= user.id %>" class='clearfix record <%= cycle("on", "on-hover") %>'>
+  <span class='title'>
+    <strong><%= user.login %></strong>
+    <span class="preview">
+      <%= t('.preview', :who => user.email, :created_at => l(user.created_at, :format => :short)) %>
+    </span>
+  </span>
+  <span class='actions'>
+    <%= link_to refinery_icon_tag('delete.png'), admin_user_path(user),
+                :class => "cancel confirm-delete",
+                :title => t('.confirm_delete_title'),
+                :'data-confirm' => t('.confirm_delete_message', :who => user.login) if current_user.can_delete?(user) %>
+    <%= link_to refinery_icon_tag('application_edit.png'), edit_admin_user_path(user),
+                :title => t('.edit_user')%>
+    <%= mail_to user.email, refinery_icon_tag('email_go.png'),
+                :title => t('.email_user') %>
+  </span>
+</li>

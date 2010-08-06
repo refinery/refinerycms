@@ -1,0 +1,46 @@
+nl:
+  site_name: Site naam
+  new_page_parts: Nieuwe pagine blokken
+  activity_show_limit: Laatste wijzigingen tonen limiet
+  analytics_page_code: Google analytics code
+  down_for_maintenance: Niet beschikbaar wegens onderhoud
+  group_images_by_date_uploaded: Groepeer afbeeldingen op upload datum
+  group_resources_by_date_uploaded: Groepeer bestanden op upload datum
+  image_thumbnails: Afbeelding miniaturen
+  image_views: Afbeelding layouts
+  preferred_image_view: Standaard afbeelding layout
+  i18n_translation_enabled: Refinery i18n activeren
+  i18n_translation_locale: Refinery i18n land
+  i18n_translation_locales: Refinery i18n landen
+  refinery_menu_cache_action_suffix: Refinery menu cache achtervoegsel
+  show_backend_branding: Laat in admin reclame zien
+  show_contact_privacy_link: Laat contact privacy link zien
+  show_firebug_lite: Laat firebug lite zien
+  show_submenu_on_content_pages: Laat submenu op pagina's zien
+  theme: Thema
+  tld_length: Tld lengte
+  use_resource_caching: Gebruik cacheing
+  menu_hide_children: Verberg sub menu's
+  page_title: Pagina titel
+  activerecord:
+    models:
+      refinery_setting: Refinery instelling
+    attributes:
+      refinery_setting:
+        name: Naam
+        value: Waarde
+  admin:
+    refinery_settings:
+      refinery_setting:
+        edit: Bewerk deze instelling
+        confirm: 'Weet u zeker dat u deze instelling voorgoed wilt verwijderen?'
+        remove: Verwijder deze instelling voorgoed
+      index:
+        new: Maak een nieuwe instelling aan
+        empty_set: Er zijn nog geen instellingen aangemaakt
+        create_first: "Klik '%{link}' om je eerste instelling aan te maken."
+      form:
+        restart_may_be_in_order: "<strong>Let op</strong>, na een aanpassing moet wellicht uw webapplicatie herstart worden" 
+  plugins:
+    refinery_settings:
+      title: Instellingen

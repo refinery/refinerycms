@@ -1,0 +1,15 @@
+<li class='clearfix record <%= cycle("on", "on-hover") %>'>
+  <span class='title'>
+    <%= t(refinery_setting.name, :default => h(refinery_setting.name.titleize)) %>
+    <span class="preview">- <%=h truncate(refinery_setting.value.to_s, :length => 40) %></span>
+  </span>
+  <span class='actions'>
+    <%= link_to refinery_icon_tag("application_edit.png"),
+                edit_admin_refinery_setting_path(refinery_setting, :dialog => true, :width => 725, :height => 525),
+                :title => t('.edit') %>
+    <%= link_to refinery_icon_tag("delete.png"),
+                admin_refinery_setting_path(refinery_setting),
+                :class => "cancel confirm-delete",
+                :title => t('.remove') if refinery_setting.destroyable %>
+  </span>
+</li>

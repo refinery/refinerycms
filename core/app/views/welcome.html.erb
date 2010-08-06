@@ -1,0 +1,16 @@
+<% content_for :header, t('.there_are_no_users') %>
+<p>
+  <%=t('.remember_admin_location')%>
+</p>
+<p>
+  <strong>http://<%= request.host %>/refinery</strong>
+</p>
+<p>
+  <%= t('.lets_start') %>
+</p>
+
+<div class='form-actions'>
+  <div class='form-actions-left'>
+    <%= button_to t('.continue'), new_user_url %>
+  </div>
+</div>

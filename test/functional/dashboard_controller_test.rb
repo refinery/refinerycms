@@ -9,6 +9,7 @@ class DashboardControllerTest < ActionController::TestCase
 
   def setup
     @controller = Admin::DashboardController.new
+    users(:quentin).add_role(:refinery)
     login_as(:quentin)
   end
 

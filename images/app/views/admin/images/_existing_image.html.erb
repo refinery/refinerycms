@@ -1,0 +1,50 @@
+<div id='existing_image_area' class='dialog_area' <%= "style='display:none;'" if @image.errors.any? %>>
+  <input type='hidden' name='selected_image' id='selected_image' />
+  <div id='existing_image_area_content' class='clearfix'>
+    <ul>
+      <% @images.each do |image| %>
+        <li<%= " class='selected'" if @image_id == image.id %>>
+          <%= image_fu image, :dialog_thumb, {:alt => image.title, :title => image.title, :id => "image_#{image.id}"} -%>
+        </li>
+      <% end -%>
+    </ul>
+  </div>
+  <%= images_paginator @images, from_dialog? %>
+  <% unless @app_dialog %>
+    <div id='existing_image_size_area' class='clearfix'>
+      <input type='hidden' name='selected_image_size' id='selected_image_size' />
+      <h2><%= t('.size') %></h2>
+      <p>
+        <label>
+          <input type="checkbox" id="wants_to_resize_image" name="wants_to_resize_image" value="1" checked="checked" />
+          <%= t('.resize_image') %>
+        </label>
+      </p>
+      <ul>
+        <%
+          thumbnail_sizes = RefinerySetting.find_or_set(:image_thumbnails, {})
+          (sizes = RefinerySetting.find_or_set(:image_dialogue_sizes, [:small, :medium, :large])).each_with_index do |size, index|
+            if thumbnail_sizes.keys.include?(size) and (pixels = thumbnail_sizes[size]).present?
+              pixels.to_s.gsub!(/[<>=]/, '')
+        -%>
+              <li id="image_dialog_size_<%= index %>" class="image_dialog_size <%= 'selected' if size == :medium %>">
+                <%= link_to size.to_s, "##{size}",
+                            :rel => size.to_s,
+                            :title   => "#{size} image (#{pixels} px)",
+                            :tooltip => "#{size} image (#{pixels} px)" %>
+              </li>
+        <%  end
+          end -%>
+      </ul>
+    </div>
+  <% end %>
+  <%= render :partial => "/shared/admin/form_actions",
+             :locals => {
+               :f => nil,
+               :cancel_url => '',
+               :submit_button_text => t('.submit_insert'),
+               :hide_cancel => false,
+               :hide_delete => true,
+               :cancel_title => nil
+             } if @app_dialog or @images.any? %>
+</div>

@@ -1,0 +1,71 @@
+da:
+  welcome:
+    there_are_no_users: "Der er ingen brugere endnu, så vi begynder med at oprette en bruger til dig."
+    remember_admin_location: "Husk, du logger på Refinerys administration her:"
+    lets_start: "Lad os få dig oprettet, så du kan logge på..."
+    continue: "Fortsæt..."
+  admin:
+    menu:
+      reorder_menu: Omorganisér menuen
+      reorder_menu_done: "Jeg er færdig med omorganiseringen"
+    search: Søg
+    search_submit: Søg
+    search_results_for: "Søgeresultat for '%{query}'"
+    search_no_results: "Desværre, din søgning gav ingen resultater"
+  refinery:
+    other: "Anden %{what}"
+    reorder: "Redigér rækkefølgen af %{what}"
+    reorder_done: "Gem rækkefølgen af %{what}"
+    crudify:
+      created: "%{what} er oprettet"
+      updated: "%{what} er opdateret"
+      destroyed: "%{what} er slettet"
+  layouts:
+    admin:
+      view_public_site: Vis website
+      welcome_to_refinery: Velkommen til Refinery
+  shared:
+    site_bar:
+      log_out: Log af
+    admin:
+      message:
+        close: Luk
+      continue_editing:
+        save_and_continue_editing: "Gem og fortsæt med redigering"
+      form_actions:
+        or: eller
+        save: Gem ændringer
+        or_cancel: eller
+        cancel: Annullér
+        or_continue: eller
+        cancel_lose_changes: "Du mister alle ændringer til denne %{object_name}"
+      image_picker:
+        none_selected: "Du har ikke valgt et %{what}. Klik her for at tilføje et."
+        remove_current: "Fjern nuværende %{what}"
+        change: Klik her for at vælge et billede
+        image: billede
+      resource_picker:
+        none_selected: "Du har ikke valgt en %{what}. Klik her for at tilføje en."
+        current: "Nuværende %{what}"
+        download_current: "Download nuværende %{what}"
+        opens_in_new_window: "Åbner i nyt vindue"
+        remove_current: "Fjern nuværende %{what}"
+        resource: fil
+    message:
+      close: Luk
+  activerecord:
+    models:
+      page: side
+      user: bruger
+      image: billede
+      inquiry: henvendelse
+      resource: fil
+      refinery_setting: parameter
+      inquiry_setting: parameter
+    attributes:
+      user:
+        login: Brugernavn
+        email: E-mail
+        password: Adgangskode
+        password_confirmation: Bekræft adgangskode
+        plugin_access: Plug-in adgang

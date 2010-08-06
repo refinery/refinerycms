@@ -1,0 +1,28 @@
+es:
+  plugins:
+    refinery_dashboard:
+      title: Salpicadero
+  admin:
+    dashboard:
+      index:
+        quick_tasks: Tareas comunes
+        add_a_new_page: Agregar nueva pagina
+        update_a_page: Actualizar una pagina
+        upload_a_image: Subir una imagen
+        change_language: Cambiar lenguaje
+        see_home_page: Ver pagina principal
+      recent_activity:
+        latest_activity: Ultima actividad
+        see: Vee '%{what}'
+      recent_inquiries:
+        latest_inquiries: Latest inquiries
+  updated:
+    'with_article "las"':  actualizadas
+    'with_article "los"':  actualizado
+    'with_article "the"':  actualizado
+  created:
+    'with_article "las"':  creadas
+    'with_article "los"':  creados
+    'with_article "the"':  creado
+  ago: "hace %{time}"
+  see: Ver

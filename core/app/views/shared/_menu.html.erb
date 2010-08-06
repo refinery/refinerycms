@@ -1,0 +1,22 @@
+<%
+  dom_id ||= 'menu'
+  css ||= 'menu'
+  cache_key = [Refinery.base_cache_key]
+  cache_key << RefinerySetting.find_or_set(:refinery_menu_cache_action_suffix, "site_menu")
+  cache_key << request.path
+  cache(cache_key.join('_')) do
+    if (collection ||= @menu_pages).any?
+-%>
+      <nav id='<%= dom_id %>' class='<%= %W(#{css} clearfix).join(' ') %>'>
+        <%= render :partial => "/shared/menu_branch",
+                   :collection => collection,
+                   :locals => {
+                     :hide_children => RefinerySetting.find_or_set(:menu_hide_children, false),
+                     :sibling_count => collection.size - 1
+                   }
+        -%>
+      </nav>
+  <%
+    end
+  end
+-%>

@@ -1,0 +1,24 @@
+<li class='clearfix record <%= cycle("on", "on-hover") %>'>
+  <span class='title'>
+    <%= link_to (h(inquiry.name)), admin_inquiry_url(inquiry) %> <%= t('.said') %>
+    <span class="preview"><%= truncate(strip_tags(inquiry.message), :length => 60) -%></span>
+  </span>
+  <span class='actions'>
+    <%= link_to refinery_icon_tag('delete.png'), admin_inquiry_url(inquiry),
+                :class => "cancel confirm-delete",
+                :title => t('.title'),
+                :'data-confirm' => t('.remove_inquiry', :name => inquiry.name),
+                :'data-method' => "delete" -%>
+
+    <%= link_to refinery_icon_tag('zoom.png'), admin_inquiry_url(inquiry),
+                :title => t('.read_inquiry') -%>
+
+    <% if inquiry.spam? %>
+      <%= link_to refinery_icon_tag('email.png'), toggle_spam_admin_inquiry_url(inquiry),
+                  :title => t('.mark_as_ham') -%>
+    <% else %>
+      <%= link_to refinery_icon_tag('bin_closed.png'), toggle_spam_admin_inquiry_url(inquiry),
+                  :title => t('.mark_as_spam') -%>
+    <% end %>
+  </span>
+</li>
