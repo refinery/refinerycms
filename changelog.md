@@ -16,7 +16,7 @@
 * Fix XSS vulnerability on page meta information by escaping the relevant fields properly [David Jones](http://github.com/djones)
 * Ensure that the generator script grabs the first attribute that is a string, not just the first attribute, when choosing the field for Dashboard activity. [Joe Sak](http://github.com/joemsak)
 * Updated ``json-pure`` to ``1.4.5``, now using the actual gem [Philip Arndt](http://github.com/parndt)
-* [See full list](http://github.com/resolve/refinerycms/compare/0.9.7.10...master)
+* [See full list](http://github.com/resolve/refinerycms/compare/0.9.7.10...0.9.7.11)
 
 
 ## 0.9.7.10 [02 August 2010]
