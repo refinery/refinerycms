@@ -73,7 +73,7 @@ Refinery::Application.routes.draw do |map|
 
   match 'admin' => redirect('/refinery')
   match 'admin/*path' => redirect('/refinery/%{path}')
-  match 'refinery/*path' => 'admin/base#error_404'
+  # match 'refinery/*path' => 'admin/base#error_404'
 
   # Marketable URLs should be appended to routes by the Pages Engine.
 
