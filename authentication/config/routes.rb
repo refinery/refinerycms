@@ -1,4 +1,4 @@
-Rails::Application.routes.draw do
+Refinery::Application.routes.draw do
 
   resource :session
   match '/users/reset/:reset_code', :to => 'users#reset', :as => 'reset_users'
