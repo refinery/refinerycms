@@ -60,7 +60,7 @@ You can hide a page from the navigation if you like by unchecking "show in menu"
 
 This allows you to make your page not link to a normal page but make it show something else. This could be a donation link to a completely different site or as Refinery uses it, you might want to link to another plugin.
 
-The "contact us" page for example has a Custom URL of ``/contact``, this is because we want it to load the inquiries form from the inquiries plugin instead and we have this ``map.new_inquiry '/contact', :controller => "inquiries", :action => "new"`` in the routes.
+The "contact us" page for example has a Custom URL of ``/contact``, this is because we want it to load the inquiries form from the inquiries plugin instead and we have this ``match '/contact', :to => 'inquiries#new', :as => 'new_inquiry'`` in the routes.
 
 ### WYMeditor (the visual editor)
 

@@ -55,6 +55,8 @@ pt-BR:
         confirm_delete_page_message: "Você tem certeza que quer deletar a página '%{title}'?"
         hidden: oculta
         draft: rascunho
+      form_new_page_parts:
+        title: Título
       form_advanced_options:
         toggle_advanced_options: Clique aqui para acessar as configurações de meta tag e opções do menu
         create_content_section: Criar seção de conteúdo

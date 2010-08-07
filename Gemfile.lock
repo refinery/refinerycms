@@ -13,13 +13,6 @@ GIT
     dragonfly (0.6.2)
       rack
 
-GIT
-  remote: git://github.com/parndt/json.git
-  revision: 34ad345
-  branch: master
-  specs:
-    json_pure (1.4.3)
-
 PATH
   remote: .
   specs:
@@ -130,6 +123,7 @@ GEM
       rake (>= 0.8.7)
       rubyforge (>= 2.0.4)
     i18n (0.4.1)
+    json_pure (1.4.5)
     launchy (0.3.7)
       configuration (>= 0.0.5)
       rake (>= 0.8.1)
@@ -208,7 +202,7 @@ DEPENDENCIES
   dragonfly!
   factory_girl
   gherkin
-  json_pure!
+  json_pure (= 1.4.5)
   launchy
   refinerycms!
   rmagick (~> 2.12.0)
