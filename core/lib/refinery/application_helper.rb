@@ -88,7 +88,7 @@ module Refinery::ApplicationHelper
       <script type='text/javascript'>
         google.load('jquery', '1.4');
         #{"google.load('jqueryui', '1.8');" if options[:jquery_ui]}
-      </script>"
+      </script>".html_safe
     end
   end
 
