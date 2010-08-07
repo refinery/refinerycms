@@ -1,4 +1,4 @@
-Rails::Application.routes.draw do
+Refinery::Application.routes.draw do
 
   match 'wymiframe/:id', :to => 'refinery/fast#wymiframe', :as => :wymiframe
 

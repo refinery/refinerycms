@@ -1,4 +1,4 @@
-Rails::Application.routes.draw do
+Refinery::Application.routes.draw do
   resources :pages
 
   scope(:path => 'refinery', :as => 'admin', :module => 'admin') do

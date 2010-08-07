@@ -88,7 +88,7 @@ module Refinery::ApplicationHelper
       <script type='text/javascript'>
         google.load('jquery', '1.4');
         #{"google.load('jqueryui', '1.8');" if options[:jquery_ui]}
-      </script>"
+      </script>".html_safe
     end
   end
 
@@ -136,16 +136,16 @@ module Refinery::ApplicationHelper
     end
 
     if title.empty?
-      return final_title
+      return final_title.to_s.html_safe
     else
-      return "<#{options[:ancestors][:tag]} class='#{options[:ancestors][:class]}'>#{title.join options[:ancestors][:separator]}#{options[:ancestors][:separator]}</#{options[:ancestors][:tag]}>#{final_title}"
+      return "<#{options[:ancestors][:tag]} class='#{options[:ancestors][:class]}'>#{title.join options[:ancestors][:separator]}#{options[:ancestors][:separator]}</#{options[:ancestors][:tag]}>#{final_title}".html_safe
     end
   end
 
   # Returns <span class='help' title='Your Input'>(help)</span>
   # Remember to wrap your block with <span class='label_with_help'></span> if you're using a label next to the help tag.
   def refinery_help_tag(title='')
-    "<span class='help' title='#{title}'>(help)</span>"
+    "<span class='help' title='#{title}'>(help)</span>".html_safe
   end
 
   # This is just a quick wrapper to render an image tag that lives inside refinery/icons.
@@ -166,11 +166,6 @@ module Refinery::ApplicationHelper
       (path == page.nested_path)
   end
 
-  # Old deprecated function. TODO: Remove
-  def setup
-    logger.warn("*** Refinery::ApplicationHelper::setup has now been deprecated from the Refinery API. ***")
-  end
-
   # Generates the link to determine where the site bar switch button returns to.
   def site_bar_switch_link
     link_to_if(admin?, t('.switch_to_your_website'),
@@ -185,7 +180,7 @@ module Refinery::ApplicationHelper
                elsif defined?(@page) and @page.present? and !@page.home?
                  edit_admin_page_url(@page, :only_path => true)
                else
-                 (request.request_uri.to_s == '/') ? admin_root_url(:only_path => true) : "/admin#{request.request_uri}/edit"
+                 (request.fullpath.to_s == '/') ? admin_root_url(:only_path => true) : "/admin#{request.request_uri}/edit"
                end rescue admin_root_url(:only_path => true))
     end
   end
