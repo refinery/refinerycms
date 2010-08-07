@@ -15,12 +15,10 @@ class Refinery::AdminBaseController < ApplicationController
     params[:search].present?
   end
 
-protected
-
-  #TODO Add language
   def error_404(exception=nil)
     if (@page = Page.find_by_menu_match("^/404$", :include => [:parts, :slugs])).present?
       params[:action] = 'error_404'
+      #TODO Add language
       @page[:body] = @page[:body].gsub(/href=(\'|\")\/(\'|\")/, "href='/refinery'").gsub("home page", "Dashboard")
       render :template => "/pages/show", :status => 404
     else
@@ -29,6 +27,7 @@ protected
     end
   end
 
+protected
   def find_or_set_locale
     if (params[:set_locale].present? and ::Refinery::I18n.locales.include?(params[:set_locale].to_sym))
       ::Refinery::I18n.current_locale = params[:set_locale].to_sym
@@ -66,7 +65,6 @@ protected
 
   # Override method from application_controller. Not needed in this controller.
   def find_pages_for_menu; end
-
 
 private
   # This fixes the issue where Internet Explorer browsers are presented with a basic auth dialogue

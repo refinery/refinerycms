@@ -171,8 +171,8 @@ class Page < ActiveRecord::Base
   end
 
   # Returns all the top level pages, usually to render the top level navigation.
-  def self.top_level(include_children = false)
-    where(:show_in_menu => true, :draft => false).order('position ASC').includes(:slugs, :children)
+  def self.top_level
+    where(:show_in_menu => true, :draft => false).order('position ASC').includes(:slugs, :children, :parent, :parts)
   end
 
   # Accessor method to get a page part from a page.
