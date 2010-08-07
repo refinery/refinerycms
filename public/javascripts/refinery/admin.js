@@ -158,6 +158,7 @@ init_sortable_menu = function(){
   $menu.sortable({
     axis: 'x',
     cursor: 'crosshair',
+    connectWith: '.nested',
     update: function(){
       var ser   = $menu.sortable('serialize', {key: 'menu[]', expression: /plugin_([\w]*)$/}),
           token = escape($('#admin_authenticity_token').val());
