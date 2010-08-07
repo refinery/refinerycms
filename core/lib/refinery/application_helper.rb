@@ -145,7 +145,7 @@ module Refinery::ApplicationHelper
   # Returns <span class='help' title='Your Input'>(help)</span>
   # Remember to wrap your block with <span class='label_with_help'></span> if you're using a label next to the help tag.
   def refinery_help_tag(title='')
-    "<span class='help' title='#{title}'>(help)</span>"
+    "<span class='help' title='#{title}'>(help)</span>".html_safe
   end
 
   # This is just a quick wrapper to render an image tag that lives inside refinery/icons.
