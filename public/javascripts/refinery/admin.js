@@ -367,8 +367,8 @@ var link_dialog = {
       if((resource_selected = $('#existing_resource_area_content ul li.linked a')).length > 0) {
         resourceUrl = parseURL(resource_selected.attr('href'));
         relevant_href = resourceUrl.pathname;
-        if (resourceUrl.protocol == "" && resourceUrl.hostname == "system") {
-          relevant_href = "/system" + relevant_href;
+        if (resourceUrl.protocol == "" && resourceUrl.hostname == "assets") {
+          relevant_href = "/assets" + relevant_href;
         }
 
         // Add any alternate resource stores that need a absolute URL in the regex below
@@ -702,8 +702,8 @@ var image_dialog = {
       }
       //alert(imageThumbnailSize);
       var relevant_src = imageUrl.pathname.replace('_dialog_thumb', imageThumbnailSize);
-      if (imageUrl.protocol == "" && imageUrl.hostname == "system") {
-        relevant_src = "/system" + relevant_src;
+      if (imageUrl.protocol == "" && imageUrl.hostname == "assets") {
+        relevant_src = "/assets" + relevant_src;
       }
 
       if(imageUrl.hostname.match(/s3.amazonaws.com/)){
