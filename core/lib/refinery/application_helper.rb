@@ -136,7 +136,7 @@ module Refinery::ApplicationHelper
     end
 
     if title.empty?
-      return final_title.html_safe
+      return final_title.to_s.html_safe
     else
       return "<#{options[:ancestors][:tag]} class='#{options[:ancestors][:class]}'>#{title.join options[:ancestors][:separator]}#{options[:ancestors][:separator]}</#{options[:ancestors][:tag]}>#{final_title}".html_safe
     end
