@@ -31,7 +31,7 @@ Refinery::Application.configure do
   # Enable threaded mode
   # config.threadsafe!
 
-  config.active_support.deprecation = :stderr
+  config.active_support.deprecation = :log
 end
 
 # When true will use Amazon's Simple Storage Service on your production machine
