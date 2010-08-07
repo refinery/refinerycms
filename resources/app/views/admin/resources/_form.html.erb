@@ -13,8 +13,7 @@
 
   <div class='field'>
     <label>
-      <%= t('.maximum_file_size',
-            :megabytes => (Resource.attachment_options[:max_size] / 1024 / 1024)) %>
+      <%= t('.maximum_file_size', :megabytes => Resource::MAX_SIZE_IN_MB) %>
     </label>
   </div>
 
