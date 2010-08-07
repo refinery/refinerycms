@@ -156,6 +156,8 @@ GEM
       thor (~> 0.14.0)
     rake (0.8.7)
     rmagick (2.12.2)
+    routing-filter (0.1.6)
+      actionpack
     rspec (2.0.0.beta.19)
       rspec-core (= 2.0.0.beta.19)
       rspec-expectations (= 2.0.0.beta.19)
@@ -206,6 +208,7 @@ DEPENDENCIES
   launchy
   refinerycms!
   rmagick (~> 2.12.0)
+  routing-filter
   rspec (~> 2.0.0.beta.19)
   rspec-core (~> 2.0.0.beta.19)
   rspec-expectations (~> 2.0.0.beta.19)

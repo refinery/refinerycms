@@ -19,6 +19,9 @@ gem 'sqlite3-ruby', :require => 'sqlite3' # db_adapter=sqlite3
 # gem 'aws-s3'
 
 # REFINERY CMS ================================================================
+# Add i18n support
+gem 'routing-filter'
+
 # Use the default Refinery CMS Engines:
 gem 'refinerycms',      :path => '.'
 
