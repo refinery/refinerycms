@@ -67,7 +67,7 @@ class Admin::ImagesController < Admin::BaseController
     else
       if @image.valid?
         @image_id = @image.id
-        @image = nil        
+        @image = nil
       end
       self.insert
     end
