@@ -6,7 +6,6 @@
   <%= link_to menu_branch.title, menu_branch.url %>
 
   <% unless hide_children or
-            menu_branch.parent_id.present? or
             (children = menu_branch.children.reject{|c| !c.in_menu?}).empty? %>
     <nav class='clearfix'>
       <%=

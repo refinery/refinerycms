@@ -7,4 +7,4 @@ require 'rake/testtask'
 require 'rake/rdoctask'
 
 require 'tasks/refinery'
-Rails::Application.load_tasks
+Refinery::Application.load_tasks

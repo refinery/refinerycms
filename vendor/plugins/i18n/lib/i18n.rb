@@ -118,24 +118,4 @@ class Refinery::I18n
   end
 end
 
-if RefinerySetting.table_exists?
-  # override translate, but only in production
-  ::I18n.module_eval do
-    class << self
-      alias_method :original_rails_i18n_translate, :translate
-      def translate(key, options = {})
-        begin
-          original_rails_i18n_translate(key, options.merge!({:raise => true}))
-        rescue ::I18n::MissingTranslationData => e
-          if self.config.locale != ::Refinery::I18n.default_locale
-            self.translate(key, options.update(:locale => ::Refinery::I18n.default_locale))
-          else
-            raise e
-          end
-        end
-      end
-    end
-  end if Rails.env.production?
-
-  ::Refinery::I18n.setup!
-end
+::Refinery::I18n.setup! if RefinerySetting.table_exists?

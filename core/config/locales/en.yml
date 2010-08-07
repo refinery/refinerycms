@@ -32,7 +32,7 @@ en:
       message:
         close: Close
       continue_editing:
-        save_and_continue_editing: "Save &amp; continue editing"
+        save_and_continue_editing: "Save & continue editing"
       form_actions:
         or: or
         save: Save

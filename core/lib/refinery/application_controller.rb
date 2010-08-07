@@ -1,22 +1,35 @@
 class Refinery::ApplicationController < ActionController::Base
 
-  helper_method :home_page?, :local_request?, :just_installed?, :from_dialog?, :admin?, :login?
+  helper_method :home_page?,
+                :local_request?,
+                :just_installed?,
+                :from_dialog?,
+                :admin?,
+                :login?
+
   protect_from_forgery # See ActionController::RequestForgeryProtection
 
   include Crud # basic create, read, update and delete methods
   include AuthenticatedSystem
 
-  before_filter :find_or_set_locale, :find_pages_for_menu, :show_welcome_page?
-  after_filter :store_current_location!, :if => Proc.new {|c| c.send(:refinery_user?) }
+  before_filter :find_or_set_locale,
+                :find_pages_for_menu,
+                :show_welcome_page?
 
-  rescue_from ActiveRecord::RecordNotFound, ActionController::UnknownAction, ActionView::MissingTemplate, :with => :error_404
+  after_filter :store_current_location!,
+               :if => Proc.new {|c| c.send(:refinery_user?) }
+
+  rescue_from ActiveRecord::RecordNotFound,
+              ActionController::UnknownAction,
+              ActionView::MissingTemplate,
+              :with => :error_404
 
   def admin?
     controller_name =~ %r{^admin/}
   end
 
   def error_404(exception=nil)
-    if (@page = Page.find_by_menu_match("^/404$", :include => [:parts, :slugs])).present?
+    if (@page = Page.where(:menu_match => "^/404$").includes(:parts, :slugs)).present?
       if exception.present? and exception.is_a?(ActionView::MissingTemplate) and params[:format] != "html"
         # Attempt to respond to all requests with the default format's 404 page
         # unless a format wasn't specified. This requires finding menu pages and re-attaching any themes
@@ -32,7 +45,9 @@ class Refinery::ApplicationController < ActionController::Base
       render :template => "/pages/show", :status => 404, :format => 'html'
     else
       # fallback to the default 404.html page.
-      render :file => Rails.root.join("public", "404.html").cleanpath.to_s, :layout => false, :status => 404
+      render :file => Rails.root.join("public", "404.html").cleanpath.to_s,
+             :layout => false,
+             :status => 404
     end
   end
 
@@ -64,15 +79,12 @@ protected
 
   # get all the pages to be displayed in the site menu.
   def find_pages_for_menu
-    if (@menu_pages = Rails.cache.read(cache_key = "#{Refinery.base_cache_key}_menu_pages")).nil?
-      @menu_pages = Page.top_level(include_children = true)
-      Rails.cache.write(cache_key, @menu_pages) if @menu_pages.present?
-    end
+    @menu_pages = Page.top_level
   end
 
   # use a different model for the meta information.
   def present(model)
-    presenter = Object.const_get("#{model.class}Presenter") rescue ::Refinery::BasePresenter
+    presenter = (Object.const_get("#{model.class}Presenter") rescue ::Refinery::BasePresenter)
     @meta = presenter.new(model)
   end
 
@@ -97,13 +109,6 @@ protected
 
   def show_welcome_page?
     render :template => "/welcome", :layout => "admin" if just_installed? and controller_name != "users"
-  end
-
-  # todo: make this break in the next major version rather than aliasing.
-  alias_method :show_welcome_page, :show_welcome_page?
-
-  def take_down_for_maintenance?
-    logger.warn("*** Refinery::ApplicationController::take_down_for_maintenance has now been deprecated from the Refinery API. ***")
   end
 
 private

@@ -5,4 +5,4 @@ require ::File.expand_path('../config/environment',  __FILE__)
 # use Rack::ShowExceptions
 # use Rack::Lint
 
-run Refinerycms::Application
+run Refinery::Application
