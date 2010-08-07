@@ -40,7 +40,7 @@ gem 'refinerycms',      :path => '.'
 # gem 'refinerycms-portfolio',  '~> 0.9.7', :require => 'portfolio'
 
 # Specify a version of RMagick that works in your environment:
-gem 'rmagick',          '~> 2.12.0'
+gem 'rmagick',          '~> 2.12.0', :require => false
 
 # FIXME: These requirements are listed here temporarily pending a release
 gem 'dragonfly',        :git => 'git://github.com/myabc/dragonfly.git',
