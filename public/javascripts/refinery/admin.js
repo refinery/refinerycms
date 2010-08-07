@@ -826,8 +826,11 @@ var list_reorder = {
   }
 
   , disable_reordering: function(e) {
+    if($('#reorder_action_done').hasClass('loading')){
+      return false;
+    }
     if(e) { e.preventDefault(); }
-
+    $('#reorder_action_done').addClass('loading');
     if (list_reorder.update_url != null) {
       serialized = "";
       list_reorder.sortable_list.find('> li[id]').each(function(index, li) {
@@ -877,7 +880,7 @@ var list_reorder = {
 
     $('#site_bar, #header > *:not(script)').fadeTo(250, 1);
     $('#actions *:not("#reorder_action_done, #reorder_action")').not($('#reorder_action_done').parents('li, ul')).fadeTo(250, 1, function() {
-      $('#reorder_action_done').hide();
+      $('#reorder_action_done').hide().removeClass('loading');
       $('#reorder_action').show();
     });
   }
