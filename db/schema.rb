@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(:version => 20100729221735) do
     t.integer  "image_height"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "image_uid",       :null => false
+    t.string   "image_uid"
     t.string   "image_ext"
   end
 
@@ -98,7 +98,7 @@ ActiveRecord::Schema.define(:version => 20100729221735) do
     t.integer  "file_size"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "file_uid",       :null => false
+    t.string   "file_uid"
     t.string   "file_ext"
   end
 
