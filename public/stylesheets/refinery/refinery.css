@@ -1045,6 +1045,9 @@ a img {
 .reorder_icon {
    background-image: url('/images/refinery/icons/arrow_switch.png');
 }
+.reorder_icon.loading{
+  background-image:url('/images/refinery/icons/ajax-loader.gif');
+}
 .user_comment_icon {
   background-image: url('/images/refinery/icons/user_comment.png');
 }
