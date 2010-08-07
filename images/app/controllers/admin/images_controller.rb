@@ -45,8 +45,12 @@ class Admin::ImagesController < Admin::BaseController
     render :action => "insert"
   end
 
-  def create
-    @image = Image.create(params[:image])
+  def create    
+    begin    
+      @image = Image.create(params[:image]) 
+    rescue Dragonfly::Delegator::UnableToHandle
+      @image = Image.new      
+    end  
 
     unless params[:insert]
       if @image.valid?
@@ -63,7 +67,7 @@ class Admin::ImagesController < Admin::BaseController
     else
       if @image.valid?
         @image_id = @image.id
-        @image = nil
+        @image = nil        
       end
       self.insert
     end
