@@ -4,7 +4,7 @@ Gem::Specification.new do |s|
   s.name              = %q{refinerycms}
   s.version           = %q{0.9.7.11}
   s.description       = %q{A beautiful open source Ruby on Rails content manager for small business. Easy to extend, easy to use, lightweight and all wrapped up in a super slick UI.}
-  s.date              = %q{2010-08-04}
+  s.date              = %q{2010-08-07}
   s.summary           = %q{A beautiful open source Ruby on Rails content manager for small business.}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
@@ -162,6 +162,8 @@ Gem::Specification.new do |s|
     'public/images/refinery/branch-end.gif',
     'public/images/refinery/branch-start.gif',
     'public/images/refinery/branch.gif',
+    'public/images/refinery/carousel-left.png',
+    'public/images/refinery/carousel-right.png',
     'public/images/refinery/cross.png',
     'public/images/refinery/dialogLoadingAnimation.gif',
     'public/images/refinery/header_background.png',
@@ -528,6 +530,7 @@ Gem::Specification.new do |s|
     'public/javascripts/jquery/GPL-LICENSE.txt',
     'public/javascripts/jquery/jquery.corner.js',
     'public/javascripts/jquery/jquery.html5-placeholder-shim.js',
+    'public/javascripts/jquery/jquery.jcarousel.js',
     'public/javascripts/jquery/jquery.nestedsortables.js',
     'public/javascripts/jquery/jquery.textTruncate.js',
     'public/javascripts/jquery/jquery.timers.js',
@@ -545,6 +548,7 @@ Gem::Specification.new do |s|
     'public/javascripts/wymeditor/lang',
     'public/javascripts/wymeditor/lang/ca.js',
     'public/javascripts/wymeditor/lang/cs.js',
+    'public/javascripts/wymeditor/lang/da.js',
     'public/javascripts/wymeditor/lang/de.js',
     'public/javascripts/wymeditor/lang/en.js',
     'public/javascripts/wymeditor/lang/es.js',

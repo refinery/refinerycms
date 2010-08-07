@@ -295,7 +295,7 @@ body.login #header_content h1 {
   padding-bottom: 0px;
   line-height: 60px;
 }
-#menu {
+#menu, #header_content .jcarousel-container {
   display: block;
   margin: 0px;
   padding: 0px;
@@ -304,6 +304,25 @@ body.login #header_content h1 {
   left: 0px;
   right: 0px;
   background: transparent;
+}
+#header_content .jcarousel-container {
+  position: absolute !important;
+}
+#header_content .jcarousel-container .jcarousel-prev,
+  #header_content .jcarousel-container .jcarousel-next {
+  position: absolute;
+  top: 13px;
+  cursor: pointer;
+}
+#header_content .jcarousel-container .jcarousel-prev {
+  left: -20px;
+}
+#header_content .jcarousel-container .jcarousel-next {
+  right: -20px;
+}
+#header_content .jcarousel-container .jcarousel-prev-disabled,
+  #header_content .jcarousel-container .jcarousel-next-disabled {
+  display: none !important;
 }
 #menu.ui-sortable a {
   cursor: move;
