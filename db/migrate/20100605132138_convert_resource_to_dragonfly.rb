@@ -7,7 +7,7 @@ class ConvertResourceToDragonfly < ActiveRecord::Migration
 
   def self.up
     # Dragonfly required column
-    add_column :resources, :file_uid, :string, :null => false
+    add_column :resources, :file_uid, :string
 
     # Optional Dragonfly columns - persist 'magic' attributes
     add_column :resources, :file_ext, :string
