@@ -545,10 +545,11 @@ pre {
   height: 38px;
 }
 #content .tree .ui-sortable li.placeholder {
-  height: 6px;
+  height: 38px;
   border-width: 2px;
-  position: absolute;
+  position: relative;
   background: #22A7F2 !important;
+  margin:5px 0;
 }
 #content #records .tree .ui-sortable li.helper, #content .tree .ui-sortable li.helper {
   opacity: 0.5 !important;
