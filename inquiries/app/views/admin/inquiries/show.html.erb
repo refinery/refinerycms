@@ -22,12 +22,11 @@
   </ul>
 </div>
 <div id='records'>
-  <h2><%= t('activerecord.models.inquiry') %></h2>
+  <h2><%= t('.inquiry') %></h2>
   <table id='inquiry'>
-    <%- with_options :scope => 'activerecord.attributes.inquiry' do |o| -%>
     <tr>
       <td>
-        <strong><%= o.t(:to) %></strong>
+        <strong><%= t('.to') %></strong>
       </td>
       <td>
         <%= RefinerySetting[:site_name] %>
@@ -35,25 +34,25 @@
     </tr>
     <tr>
       <td>
-        <strong><%= o.t(:from)%></strong>
+        <strong><%= t('.from') %></strong>
       </td>
       <td>
-        <%=h @inquiry.name %> [<%= mail_to @inquiry.email, @inquiry.email, {:title => o.t(:click_to_email)} %>]
+        <%= @inquiry.name %> [<%= mail_to @inquiry.email, @inquiry.email, {:title => t('.click_to_email')} %>]
       </td>
     </tr>
     <% unless @inquiry.phone.blank? %>
       <tr>
         <td>
-          <strong><%= o.t(:phone) %></strong>
+          <strong><%= t('.phone') %></strong>
         </td>
         <td>
-          <%=h @inquiry.phone %>
+          <%= @inquiry.phone %>
         </td>
       </tr>
     <% end %>
     <tr>
       <td>
-        <strong><%= o.t(:date) %></strong>
+        <strong><%= t('.date') %></strong>
       </td>
       <td>
         <%= l(Date.parse(@inquiry.created_at.to_s), :format => :long) %>
@@ -61,14 +60,13 @@
     </tr>
     <tr>
       <td valign='top'>
-        <strong><%= o.t(:message) %></strong>
+        <strong><%= t('.message') %></strong>
       </td>
       <td>
         <p style='margin-top: 0px'>
-          <%= h(@inquiry.message).gsub("\r\n\r\n", "\r\n").gsub("\r\n", "</p><p>") %>
+          <%= @inquiry.message.gsub("\r\n\r\n", "\r\n").gsub("\r\n", "</p><p>") %>
         </p>
       </td>
     </tr>
-    <% end -%>
   </table>
 </div>
