@@ -2,7 +2,7 @@ class Refinery::AdminBaseController < ApplicationController
 
   layout proc { |controller| "admin#{"_dialog" if controller.from_dialog?}" }
 
-  before_filter :redirect_if_old_url, :correct_accept_header, :login_required, :restrict_plugins, :restrict_controller
+  before_filter :correct_accept_header, :login_required, :restrict_plugins, :restrict_controller
   after_filter :store_location?, :except => [:new, :create, :edit, :update, :destroy, :update_positions] # for redirect_back_or_default
 
   helper_method :searching?
@@ -79,11 +79,6 @@ private
         request.cookies[:http_accept] = (request.env["HTTP_ACCEPT"] = (["text/html"] | request.accept.split(', ')).join(', '))
       end
     end
-  end
-
-  # Just a simple redirect for old urls.
-  def redirect_if_old_url
-    redirect_to request.path.gsub('admin', 'refinery') if request.path =~ /^(|\/)admin/
   end
 
   # Check whether it makes sense to return the user to the last page they

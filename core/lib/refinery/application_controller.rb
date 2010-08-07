@@ -6,7 +6,7 @@ class Refinery::ApplicationController < ActionController::Base
   include Crud # basic create, read, update and delete methods
   include AuthenticatedSystem
 
-  before_filter :find_or_set_locale, :find_pages_for_menu, :show_welcome_page?
+  before_filter :find_or_set_locale, :redirect_if_old_url?, :find_pages_for_menu, :show_welcome_page?
   after_filter :store_current_location!, :if => Proc.new {|c| c.send(:refinery_user?) }
 
   rescue_from ActiveRecord::RecordNotFound, ActionController::UnknownAction, ActionView::MissingTemplate, :with => :error_404
@@ -114,6 +114,11 @@ private
     elsif defined?(@page) and @page.present?
       session[:website_return_to] = @page.url
     end
+  end  
+
+  # Just a simple redirect for old urls.
+  def redirect_if_old_url?
+    redirect_to request.path.gsub('admin', 'refinery') if request.path =~ /^(|\/)admin/
   end
 
 end
