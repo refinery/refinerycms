@@ -48,9 +48,7 @@ gem 'will_paginate',    '3.0.pre2',
 # REFINERY CMS ================================================================
 
 group :test do
-  gem 'json_pure',      :require => 'json/pure',
-                        :git => 'git://github.com/parndt/json.git',
-                        :branch => 'master'
+  gem 'json_pure',      '= 1.4.5', :require => 'json/pure'
 
   gem 'rspec',              RSPEC_VERSION
   gem 'rspec-core',         RSPEC_VERSION, :require => 'rspec/core'
@@ -68,4 +66,3 @@ group :test do
   gem 'factory_girl'
   gem 'ruby-prof'
 end
-
