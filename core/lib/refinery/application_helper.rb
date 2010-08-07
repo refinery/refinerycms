@@ -166,11 +166,6 @@ module Refinery::ApplicationHelper
       (path == page.nested_path)
   end
 
-  # Old deprecated function. TODO: Remove
-  def setup
-    logger.warn("*** Refinery::ApplicationHelper::setup has now been deprecated from the Refinery API. ***")
-  end
-
   # Generates the link to determine where the site bar switch button returns to.
   def site_bar_switch_link
     link_to_if(admin?, t('.switch_to_your_website'),
