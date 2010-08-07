@@ -494,6 +494,10 @@ pre {
 #records ul#sortable_list {
   margin-top: 6px;
 }
+.ui-sortable .nested{
+  padding:5px;
+  margin:5px 0;
+}
 #records ul#sortable_list.ui-sortable {
   margin-top: 0px;
 }

@@ -794,7 +794,7 @@ var list_reorder = {
 
     if (list_reorder.tree && !$.browser.msie) {
       $(list_reorder.sortable_list).parent().nestedSortable($.extend(sortable_options, {
-        'maxDepth': 1
+        'maxDepth': 2
         , 'placeholderElement': 'li'
       }));
       $(list_reorder.sortable_list).addClass('ui-sortable');
