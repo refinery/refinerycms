@@ -19,6 +19,9 @@ gem 'sqlite3-ruby', '~>1.2.5', :require => 'sqlite3' # db_adapter=sqlite3
 # gem 'aws-s3'
 
 # REFINERY CMS ================================================================
+# Add i18n support
+gem 'routing-filter'
+
 # Use the default Refinery CMS Engines:
 gem 'refinerycms',      :path => '.'
 
@@ -48,9 +51,7 @@ gem 'will_paginate',    '3.0.pre2',
 # REFINERY CMS ================================================================
 
 group :test do
-  gem 'json_pure',      :require => 'json/pure',
-                        :git => 'git://github.com/parndt/json.git',
-                        :branch => 'master'
+  gem 'json_pure',      '= 1.4.5', :require => 'json/pure'
 
   gem 'rspec',              RSPEC_VERSION
   gem 'rspec-core',         RSPEC_VERSION, :require => 'rspec/core'
@@ -68,4 +69,3 @@ group :test do
   gem 'factory_girl'
   gem 'ruby-prof'
 end
-

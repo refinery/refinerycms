@@ -11,7 +11,7 @@
   <div class='field'>
     <%= f.label :password %>
     <%= f.password_field :password, :autocomplete => 'off' %>
-    <%= "<br /><span class='preview'>#{t('.blank_password_keeps_current')}</span>" unless @user.new_record? %>
+    <%= "<br /><span class='preview'>#{t('.blank_password_keeps_current')}</span>".html_safe unless @user.new_record? %>
   </div>
   <div class='field'>
     <%= f.label :password_confirmation %>

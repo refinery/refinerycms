@@ -13,13 +13,6 @@ GIT
     dragonfly (0.6.2)
       rack
 
-GIT
-  remote: git://github.com/parndt/json.git
-  revision: 34ad345
-  branch: master
-  specs:
-    json_pure (1.4.3)
-
 PATH
   remote: .
   specs:
@@ -130,6 +123,7 @@ GEM
       rake (>= 0.8.7)
       rubyforge (>= 2.0.4)
     i18n (0.4.1)
+    json_pure (1.4.5)
     launchy (0.3.7)
       configuration (>= 0.0.5)
       rake (>= 0.8.1)
@@ -162,6 +156,8 @@ GEM
       thor (~> 0.14.0)
     rake (0.8.7)
     rmagick (2.12.2)
+    routing-filter (0.1.6)
+      actionpack
     rspec (2.0.0.beta.19)
       rspec-core (= 2.0.0.beta.19)
       rspec-expectations (= 2.0.0.beta.19)
@@ -208,10 +204,11 @@ DEPENDENCIES
   dragonfly!
   factory_girl
   gherkin
-  json_pure!
+  json_pure (= 1.4.5)
   launchy
   refinerycms!
   rmagick (~> 2.12.0)
+  routing-filter
   rspec (~> 2.0.0.beta.19)
   rspec-core (~> 2.0.0.beta.19)
   rspec-expectations (~> 2.0.0.beta.19)

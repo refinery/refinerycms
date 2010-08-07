@@ -57,7 +57,7 @@
       <ul id='other_locales' style='display: none'>
         <% Refinery::I18n.locales.reject{|key, value| key.to_sym == ::I18n.locale}.sort_by{|key, value| value}.each do |locale_key, locale_title| %>
           <li>
-            <%= link_to locale_title,
+            <%= link_to locale_title.html_safe,
                         params.dup.tap { |p| p[:set_locale] = locale_key },
                         :style => "background-image: url('/images/refinery/icons/flags/#{locale_key}.png');" %>
           </li>
