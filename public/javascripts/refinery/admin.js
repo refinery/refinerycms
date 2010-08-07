@@ -784,6 +784,7 @@ var list_reorder = {
       , 'cursor': 'drag'
       , 'items': 'li'
       , 'axis': 'y'
+      , 'connectWith' : '.nested'
     };
 
     $(list_reorder.sortable_list).find('li').each(function(index, li) {
