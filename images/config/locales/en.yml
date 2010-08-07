@@ -34,7 +34,7 @@ en:
         edit_this_image: Edit this image
       existing_image:
         submit_insert: Insert
-        resize_image: "Resize the image? <em>(Recommended)</em>"
+        resize_image: "Resize the image?"
         size: Size
       insert:
         existing_image: Existing Image
