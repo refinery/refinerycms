@@ -694,7 +694,7 @@ label.stripped {
 #records .actions {
   position: absolute;
   right: 0px;
-  top: 0px;
+  top: -2px;
   width: 120px;
   text-align: right;
   display: block;
@@ -702,7 +702,6 @@ label.stripped {
 }
 #records.tree .actions {
   line-height: 22px;
-  margin-top: 1px;
 }
 .published {
   width: 25px;
