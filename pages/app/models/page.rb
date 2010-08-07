@@ -1,14 +1,20 @@
 class Page < ActiveRecord::Base
   validates_presence_of :title
 
-  acts_as_tree :order => "position ASC", :include => [:children, :slugs]
+  acts_as_tree :order => "position ASC",
+               :include => [:children, :slugs]
 
   # Docs for friendly_id http://github.com/norman/friendly_id
   has_friendly_id :title, :use_slug => true,
                   :reserved_words => %w(index new session login logout users refinery admin images wymiframe)
 
-  has_many :parts, :class_name => "PagePart", :order => "position ASC", :inverse_of => :page
-  accepts_nested_attributes_for :parts, :allow_destroy => true
+  has_many :parts,
+           :class_name => "PagePart",
+           :order => "position ASC",
+           :inverse_of => :page
+
+  accepts_nested_attributes_for :parts,
+                                :allow_destroy => true
 
   # Docs for acts_as_indexed http://github.com/dougal/acts_as_indexed
   acts_as_indexed :fields => [:title, :meta_keywords, :meta_description, :custom_title, :browser_title, :all_page_part_content]
@@ -166,13 +172,7 @@ class Page < ActiveRecord::Base
 
   # Returns all the top level pages, usually to render the top level navigation.
   def self.top_level(include_children = false)
-    include_associations = [:parts]
-    include_associations.push(:slugs) if self.class.methods.include? "find_one_with_friendly"
-    include_associations.push(:children) if include_children
-    find_all_by_parent_id(nil,
-                          :conditions => {:show_in_menu => true, :draft => false},
-                          :order => "position ASC",
-                          :include => include_associations)
+    where(:show_in_menu => true, :draft => false).order('position ASC').includes(:slugs, :children)
   end
 
   # Accessor method to get a page part from a page.
