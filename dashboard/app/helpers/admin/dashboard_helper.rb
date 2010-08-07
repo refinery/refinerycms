@@ -11,7 +11,7 @@ module Admin::DashboardHelper
       # now create a link to the notification's corresponding record.
       link_to t(".latest_activity_message",
                 :what => record.send(activity.title),
-                :kind => record.class.human,
+                :kind => record.class.name.underscore.humanize,
                 :action => t("#{action}.with_article \"#{article}\"")
                ).downcase.capitalize, eval("#{activity.url}(#{activity.nesting("record")}record)")
     end
