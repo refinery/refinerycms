@@ -4,7 +4,7 @@ RSPEC_VERSION = '~> 2.0.0.beta.19'
 
 # Specify the database driver as appropriate for your application (only one is necessary).
 # Defaults to sqlite3. Don't remove any of these below in the core or gems won't install.
-gem 'sqlite3-ruby', :require => 'sqlite3' # db_adapter=sqlite3
+gem 'sqlite3-ruby', '~>1.2.5', :require => 'sqlite3' # db_adapter=sqlite3
 # gem 'mysql' # db_adapter=mysql
 # gem 'pg'    # db_adapter=postgresql
 
@@ -40,7 +40,7 @@ gem 'refinerycms',      :path => '.'
 # gem 'refinerycms-portfolio',  '~> 0.9.7', :require => 'portfolio'
 
 # Specify a version of RMagick that works in your environment:
-gem 'rmagick',          '~> 2.12.0'
+gem 'rmagick',          '~> 2.12.0', :require => false
 
 # FIXME: These requirements are listed here temporarily pending a release
 gem 'dragonfly',        :git => 'git://github.com/myabc/dragonfly.git',
