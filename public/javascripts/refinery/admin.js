@@ -701,7 +701,7 @@ var image_dialog = {
         imageThumbnailSize = '_' + imageThumbnailSize;
       }
       //alert(imageThumbnailSize);
-      var relevant_src = imageUrl.pathname.replace('_dialog_thumb', imageThumbnailSize);
+      var relevant_src = imageUrl.pathname.replace('_dialog_thumb', imageThumbnailSize) + '?' + imageUrl.options;
       if (imageUrl.protocol == "" && imageUrl.hostname == "assets") {
         relevant_src = "/assets" + relevant_src;
       }
@@ -963,7 +963,7 @@ parseURL = function(url)
 
   //split the URL by single-slashes to get the component parts
   var parts = url.replace('//', '/').split('/');
-
+  
   //store the protocol and host
   loc.protocol = parts[0];
   loc.host = parts[1];
@@ -988,6 +988,9 @@ parseURL = function(url)
   loc.search = loc.pathname.length > 1 ? '?' + loc.pathname[1] : '';
   loc.pathname = loc.pathname[0];
 
+  var options = url.split('?')[1];
+  loc.options = options;
+  
   //return the final object
   return loc;
 }
