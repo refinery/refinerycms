@@ -7,7 +7,7 @@ class ConvertImageToDragonfly < ActiveRecord::Migration
 
   def self.up
     # Dragonfly required column
-    add_column :images, :image_uid, :string, :null => false
+    add_column :images, :image_uid, :string
 
     # Optional Dragonfly columns - persist 'magic' attributes
     add_column :images, :image_ext, :string
