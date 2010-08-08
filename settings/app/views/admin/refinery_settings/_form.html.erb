@@ -27,7 +27,9 @@
   </div>
   <div class='field'>
     <%= f.label :value %>
-    <%= f.text_area :value, :rows => 5, :class => 'widest' %>
+    <%= f.text_area :value, :value => YAML::dump(@refinery_setting[:value]),
+                    :rows => 5,
+                    :class => 'widest' %>
   </div>
 
   <%= render :partial => "/shared/admin/form_actions",
