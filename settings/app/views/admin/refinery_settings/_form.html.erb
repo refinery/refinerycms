@@ -7,9 +7,9 @@
   <% else %>
     <label for='refinery_setting_value'>Name</label>
     <label class='stripped' for='refinery_setting_value'>
-      <%= h(@refinery_setting.name).titleize %>
+      <%= @refinery_setting.name.titleize %>
     </label>
-    <span class="preview">- (<%= h @refinery_setting.name %>)</span>
+    <span class="preview">- (<%= @refinery_setting.name %>)</span>
   <% end %>
   <% unless action_name =~ /(new)|(create)/ or (help = t("admin.refinery_settings.help.#{@refinery_setting.name}", :default => '')).blank?  %>
     <p>
@@ -40,6 +40,7 @@
                :submit_button_title => t('.restart_may_be_in_order'),
                :delete_title => t('admin.refinery_settings.refinery_setting.remove'),
                :delete_confirmation => t('admin.refinery_settings.refinery_setting.confirm',
-                                         :title => h(@refinery_setting.name).titleize)
+                                         :title => (@refinery_setting.name.titleize unless @refinery_setting.new_record?)),
+               :hide_delete => (@refinery_setting.new_record? or !@refinery_setting.destroyable)
               } %>
 <% end -%>
