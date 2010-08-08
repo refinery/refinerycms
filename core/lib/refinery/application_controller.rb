@@ -29,7 +29,7 @@ class Refinery::ApplicationController < ActionController::Base
   end
 
   def error_404(exception=nil)
-    if (@page = Page.where(:menu_match => "^/404$").includes(:parts, :slugs)).present?
+    if (@page = Page.where(:menu_match => "^/404$").includes(:parts, :slugs).first).present?
       if exception.present? and exception.is_a?(ActionView::MissingTemplate) and params[:format] != "html"
         # Attempt to respond to all requests with the default format's 404 page
         # unless a format wasn't specified. This requires finding menu pages and re-attaching any themes

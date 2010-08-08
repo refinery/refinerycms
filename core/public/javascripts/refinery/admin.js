@@ -367,8 +367,8 @@ var link_dialog = {
       if((resource_selected = $('#existing_resource_area_content ul li.linked a')).length > 0) {
         resourceUrl = parseURL(resource_selected.attr('href'));
         relevant_href = resourceUrl.pathname;
-        if (resourceUrl.protocol == "" && resourceUrl.hostname == "system") {
-          relevant_href = "/system" + relevant_href;
+        if (resourceUrl.protocol == "" && resourceUrl.hostname == "assets") {
+          relevant_href = "/assets" + relevant_href;
         }
 
         // Add any alternate resource stores that need a absolute URL in the regex below
@@ -701,9 +701,9 @@ var image_dialog = {
         imageThumbnailSize = '_' + imageThumbnailSize;
       }
       //alert(imageThumbnailSize);
-      var relevant_src = imageUrl.pathname.replace('_dialog_thumb', imageThumbnailSize);
-      if (imageUrl.protocol == "" && imageUrl.hostname == "system") {
-        relevant_src = "/system" + relevant_src;
+      var relevant_src = imageUrl.pathname.replace('_dialog_thumb', imageThumbnailSize) + '?' + imageUrl.options;
+      if (imageUrl.protocol == "" && imageUrl.hostname == "assets") {
+        relevant_src = "/assets" + relevant_src;
       }
 
       if(imageUrl.hostname.match(/s3.amazonaws.com/)){
@@ -963,7 +963,7 @@ parseURL = function(url)
 
   //split the URL by single-slashes to get the component parts
   var parts = url.replace('//', '/').split('/');
-
+  
   //store the protocol and host
   loc.protocol = parts[0];
   loc.host = parts[1];
@@ -988,6 +988,9 @@ parseURL = function(url)
   loc.search = loc.pathname.length > 1 ? '?' + loc.pathname[1] : '';
   loc.pathname = loc.pathname[0];
 
+  var options = url.split('?')[1];
+  loc.options = options;
+  
   //return the final object
   return loc;
 }

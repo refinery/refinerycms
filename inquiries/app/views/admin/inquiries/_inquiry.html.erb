@@ -1,6 +1,6 @@
 <li class='clearfix record <%= cycle("on", "on-hover") %>'>
   <span class='title'>
-    <%= link_to (h(inquiry.name)), admin_inquiry_url(inquiry) %> <%= t('.said') %>
+    <%= link_to inquiry.name, admin_inquiry_url(inquiry) %> <%= t('.said') %>
     <span class="preview"><%= truncate(strip_tags(inquiry.message), :length => 60) -%></span>
   </span>
   <span class='actions'>

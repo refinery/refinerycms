@@ -2,18 +2,6 @@ en:
   plugins:
     refinery_inquiries:
       title: Inquiries
-  activerecord:
-    models:
-      inquiry: Inquiry
-      inquiry_setting: Inquiry Setting
-    attributes:
-      inquiry:
-        to: To
-        from: From
-        click_to_email: Click to email this address
-        phone: Phone
-        date: Date
-        message: Message
   inquiries:
     new:
       header_message: "Whoops there was a small problem"
@@ -57,6 +45,12 @@ en:
         spam_yes: 'yes'
         inquiry: Inquiry
         title: Remove this inquiry forever
+        to: To
+        from: From
+        click_to_email: Click to email this address
+        phone: Phone
+        date: Date
+        message: Message
     inquiry_settings:
       update:
         updated: "'%{setting}' was successfully updated."
