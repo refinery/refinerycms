@@ -3,7 +3,6 @@ module RoutingFilter
 
     def around_recognize(path, env, &block)
       if ::Refinery::I18n.enabled?
-        locale = nil
         if path =~ %r{^/(#{::Refinery::I18n.locales.keys.join('|')})/?}
           path.sub! %r(^/(([a-zA-Z\-_])*)(?=/|$)) do
             ::I18n.locale = $1
@@ -23,6 +22,7 @@ module RoutingFilter
 
     def around_generate(params, &block)
       locale = params.delete(:locale) || ::I18n.locale
+
       yield.tap do |result|
         if ::Refinery::I18n.enabled? and
            locale != ::Refinery::I18n.default_frontend_locale and
