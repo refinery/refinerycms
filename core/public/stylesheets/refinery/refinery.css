@@ -582,6 +582,11 @@ pre {
 .pagination .disabled {
   color: #A8B9C1;
 }
+.pagination em {
+  font-weight: bold;
+  font-style: normal;
+  padding: 0px 6px;
+}
 .pagination a, #content .pagination a, .pagination .current, .disabled  {
   padding: 7px;
   line-height: 20px;
