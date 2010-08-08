@@ -7,7 +7,7 @@ module Refinery
     config.autoload_paths += %W( #{config.root}/lib )
 
     initializer 'themes.middleware' do |app|
-      app.config.middleware.use ThemeServer
+      app.config.middleware.insert_before Rack::Lock, Refinery::ThemeServer
     end
 
     initializer 'themes.configuration' do |app|
@@ -35,7 +35,7 @@ module Refinery
 
           # Set up menu caching for this theme or lack thereof
           if RefinerySetting.table_exists? and
-              RefinerySetting[:refinery_menu_cache_action_suffix] != (suffix = "#{"#{theme}_" if theme.present?}site_menu")
+             RefinerySetting[:refinery_menu_cache_action_suffix] != (suffix = "#{"#{theme}_" if theme.present?}site_menu")
             RefinerySetting[:refinery_menu_cache_action_suffix] = suffix
           end
         end
