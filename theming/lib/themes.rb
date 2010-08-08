@@ -7,7 +7,7 @@ module Refinery
     config.autoload_paths += %W( #{config.root}/lib )
 
     initializer 'themes.middleware' do |app|
-      app.config.middleware.insert_before Rack::Lock, Refinery::ThemeServer
+      app.config.middleware.insert_before ::ActionDispatch::Static, ::Refinery::ThemeServer
     end
 
     initializer 'themes.configuration' do |app|
@@ -17,6 +17,7 @@ module Refinery
         prepend_before_filter :attach_theme_to_refinery
 
         def attach_theme_to_refinery
+          logger.info "Hello"
           # remove any paths relating to any theme.
           view_paths.reject! { |v| v.to_s =~ %r{^themes/} }
 
