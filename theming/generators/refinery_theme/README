@@ -8,10 +8,10 @@ If you want this new theme to be the current theme used, set the "theme"
 setting in the Refinery backend to the name of this theme.
 
 == Usage
-./script/generate refinery_theme theme_name
+rails generate refinery_theme theme_name
 
 == Example
-./script/generate refinery_theme modern
+rails generate refinery_theme modern
 
 Results in:
 create  /themes/modern/...

@@ -18,10 +18,10 @@ image    - link to an image picker dialogue
 resource - link to a resource picker dialogue
 
 == Usage
-./script/generate refinery_plugin singular_name attribute:type [attribute2:type ...]
+rails generate refinery_plugin singular_name attribute:type [attribute2:type ...]
 
 == Example
-./script/generate refinery_plugin product title:string description:text image:image brochure:resource
+rails generate refinery_plugin product title:string description:text image:image brochure:resource
 
 Results in:
 create  /vendor/plugins/products/app/controllers/admin/products_controller.rb
