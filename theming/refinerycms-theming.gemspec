@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   s.summary     = 'Theming functionality for the Refinery CMS project.'
   s.required_ruby_version = '>= 1.8.7'
 
-  s.files        = Dir['changelog.md', 'README', 'MIT-LICENSE', 'lib/**/*']
+  s.files        = Dir['changelog.md', 'README', 'MIT-LICENSE', 'lib/**/*', 'app/**/*']
   s.require_path = 'lib'
   s.requirements << 'none'
 
