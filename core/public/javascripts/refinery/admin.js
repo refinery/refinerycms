@@ -158,6 +158,7 @@ init_sortable_menu = function(){
   $menu.sortable({
     axis: 'x',
     cursor: 'crosshair',
+    connectWith: '.nested',
     update: function(){
       var ser   = $menu.sortable('serialize', {key: 'menu[]', expression: /plugin_([\w]*)$/}),
           token = escape($('#admin_authenticity_token').val());
@@ -783,6 +784,7 @@ var list_reorder = {
       , 'cursor': 'drag'
       , 'items': 'li'
       , 'axis': 'y'
+      , 'connectWith' : '.nested'
     };
 
     $(list_reorder.sortable_list).find('li').each(function(index, li) {
@@ -792,7 +794,7 @@ var list_reorder = {
 
     if (list_reorder.tree && !$.browser.msie) {
       $(list_reorder.sortable_list).parent().nestedSortable($.extend(sortable_options, {
-        'maxDepth': 1
+        'maxDepth': 2
         , 'placeholderElement': 'li'
       }));
       $(list_reorder.sortable_list).addClass('ui-sortable');
@@ -824,8 +826,11 @@ var list_reorder = {
   }
 
   , disable_reordering: function(e) {
+    if($('#reorder_action_done').hasClass('loading')){
+      return false;
+    }
     if(e) { e.preventDefault(); }
-
+    $('#reorder_action_done').addClass('loading');
     if (list_reorder.update_url != null) {
       serialized = "";
       list_reorder.sortable_list.find('> li[id]').each(function(index, li) {
@@ -875,7 +880,7 @@ var list_reorder = {
 
     $('#site_bar, #header > *:not(script)').fadeTo(250, 1);
     $('#actions *:not("#reorder_action_done, #reorder_action")').not($('#reorder_action_done').parents('li, ul')).fadeTo(250, 1, function() {
-      $('#reorder_action_done').hide();
+      $('#reorder_action_done').hide().removeClass('loading');
       $('#reorder_action').show();
     });
   }
