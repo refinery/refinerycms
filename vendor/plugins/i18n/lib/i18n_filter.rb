@@ -24,10 +24,11 @@ module RoutingFilter
     end
 
     def around_generate(params, &block)
+      locale = params.delete(:locale) || ::I18n.locale
       yield.tap do |result|
-        if (::Refinery::I18n.enabled? and (
-           (locale = params.delete(:locale) || ::I18n.locale) != ::Refinery::I18n.default_frontend_locale and
-           result !~ %r{^/(refinery|wymiframe)}))
+        if ::Refinery::I18n.enabled? and
+           locale != ::Refinery::I18n.default_frontend_locale and
+           result !~ %r{^/(refinery|wymiframe)}
           result.sub!(%r(^(http.?://[^/]*)?(.*))){ "#{$1}/#{locale}#{$2}" }
         end
 
