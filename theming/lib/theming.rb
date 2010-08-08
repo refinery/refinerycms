@@ -1,5 +1,4 @@
 # Before the application gets setup this will fail badly if there's no database.
-require File.expand_path('../theme', __FILE__)
 require File.expand_path('../theme_server', __FILE__)
 
 module Refinery
@@ -8,7 +7,7 @@ module Refinery
     initializer 'themes.middleware' do |app|
       app.config.middleware.insert_before ::ActionDispatch::Static, ::Refinery::ThemeServer
     end
-
+=begin
     initializer 'themes.configuration' do |app|
       ::Refinery::ApplicationController.module_eval do
 
@@ -42,13 +41,13 @@ module Refinery
 
       end
     end
-
+=end
     initializer 'themes.helper' do |app|
       # Include theme functions into application helper.
       # ::Refinery::ApplicationHelper.send :include, ThemesHelper
       # FIXME: we have to call include on the application's ApplicationHelper,
       # as our helper methods do not get overriden otherwise.
-      ::ApplicationHelper.send :include, ThemesHelper
+      #::ApplicationHelper.send :include, ThemesHelper
     end
 
   end

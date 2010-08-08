@@ -2,6 +2,7 @@
 module Refinery::ApplicationHelper
 
   include Refinery::HtmlTruncationHelper
+  include Refinery::ThemesHelper
 
   # This is used to display the title of the current object (normally a page) in the browser's titlebar.
   #

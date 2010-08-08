@@ -1,4 +1,4 @@
-module ThemesHelper
+module Refinery::ThemesHelper
   def image_tag(source, options={})
     theme = (options.delete(:theme) == true)
     tag = super
