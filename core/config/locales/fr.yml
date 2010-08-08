@@ -18,7 +18,7 @@ fr:
     reorder_done: "Réorganisation terminé"
     crudify:
       created: "%{what} a été créé avec succès"
-      updated: "%{what}a été mis à jours avec succès"
+      updated: "%{what} a été mis à jours avec succès"
       destroyed: "%{what} été supprimé avec succès"
   layouts:
     admin:
