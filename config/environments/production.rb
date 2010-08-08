@@ -20,8 +20,10 @@ Refinery::Application.configure do
 
   # Disable Rails's static asset server
   # In production, Apache or nginx will already do this
-  config.serve_static_assets = false
-
+  config.serve_static_assets = true
+  # Warning: disabling this will means files in your public directly 
+  # won't override core assets that are served from the plugin public directories.
+  
   # Enable serving of images, stylesheets, and javascripts from an asset server
   # config.action_controller.asset_host = "http://assets.example.com"
 
@@ -32,7 +34,7 @@ Refinery::Application.configure do
   # config.threadsafe!
 
   config.active_support.deprecation = :log
-  
+
   config.after_initialize do
     # override translate, but only in production
     ::I18n.module_eval do

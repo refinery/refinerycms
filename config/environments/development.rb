@@ -19,6 +19,6 @@ Refinery::Application.configure do
   config.action_mailer.raise_delivery_errors = false
 
   config.log_level = :debug
-  
+
   config.active_support.deprecation = :log
 end

@@ -410,6 +410,10 @@ pre {
   vertical-align: top;
   margin-bottom: 2px;
   line-height: 35px;
+  position: relative;
+}
+#records > ul.ui-sortable li {
+  position: static;
 }
 #content #records > ul li .actions a {
   line-height: 29px;
@@ -587,6 +591,11 @@ pre {
 .pagination .disabled {
   color: #A8B9C1;
 }
+.pagination em {
+  font-weight: bold;
+  font-style: normal;
+  padding: 0px 6px;
+}
 .pagination a, #content .pagination a, .pagination .current, .disabled  {
   padding: 7px;
   line-height: 20px;
@@ -698,7 +707,7 @@ label.stripped {
 #records .actions {
   position: absolute;
   right: 0px;
-  top: -2px;
+  top: 0px;
   width: 120px;
   text-align: right;
   display: block;

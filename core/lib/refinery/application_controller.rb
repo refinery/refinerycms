@@ -12,6 +12,10 @@ class Refinery::ApplicationController < ActionController::Base
   include Crud # basic create, read, update and delete methods
   include AuthenticatedSystem
 
+  # Add or remove theme paths to/from Refinery application
+  # until we figure out how to make this reload elsewhere.
+  prepend_before_filter :attach_theme_to_refinery
+
   before_filter :find_or_set_locale,
                 :find_pages_for_menu,
                 :show_welcome_page?
@@ -118,6 +122,30 @@ private
       session[:refinery_return_to] = request.path if request.get? and !request.xhr? and !from_dialog?
     elsif defined?(@page) and @page.present?
       session[:website_return_to] = @page.url
+    end
+  end
+
+  def attach_theme_to_refinery
+    # remove any paths relating to any theme.
+    view_paths.reject! { |v| v.to_s =~ %r{^themes/} }
+
+    # add back theme paths if there is a theme present.
+    if (theme = Theme.current_theme(request.env)).present?
+      # Set up view path again for the current theme.
+      view_paths.unshift Rails.root.join("themes", theme, "views").to_s
+
+      # Ensure that routes within the application are top priority.
+      # Here we grab all the routes that are under the application's view folder
+      # and promote them ahead of any other path.
+      view_paths.select{|p| p.to_s =~ /^app\/views/}.each do |app_path|
+        view_paths.unshift app_path
+      end
+    end
+
+    # Set up menu caching for this theme or lack thereof
+    if RefinerySetting.table_exists? and
+        RefinerySetting[:refinery_menu_cache_action_suffix] != (suffix = "#{"#{theme}_" if theme.present?}site_menu")
+      RefinerySetting[:refinery_menu_cache_action_suffix] = suffix
     end
   end
 
