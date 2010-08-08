@@ -12,6 +12,13 @@ class InquirySetting < ActiveRecord::Base
                             :destroyable => false)
   end
 
+  def self.confirmation_subject=(value)
+    subject = find_or_create_by_name(:name => "Confirmation Subject",
+                                     :destroyable => false,
+                                     :value => value)
+    subject.update_attribute(:value, value)
+  end
+
   def self.notification_recipients
     find_or_create_by_name( :name => "Notification Recipients",
                             :destroyable => false)

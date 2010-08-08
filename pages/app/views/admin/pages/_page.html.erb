@@ -4,7 +4,7 @@
   elsif page === @pages.first
     "branch_start"
   end
-  title = h(page.title)
+  title = page.title
   title << " <em>(#{t('.hidden')})</em>".html_safe unless page.show_in_menu?
   title << " <em>(#{t('.draft')})</em>".html_safe if page.draft?
 -%>
@@ -24,10 +24,10 @@
                   :title => t('.confirm_delete_page_title') if page.deletable? %>
     </span>
   </div>
-  <ul class='nested'>  
+  <ul class='nested'>
     <% if (children = page.children).any? -%>
         <%= render :partial => 'page', :collection => children %>
     <% end -%>
   </ul>
-  
+
 </li>
