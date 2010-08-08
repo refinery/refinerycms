@@ -410,6 +410,10 @@ pre {
   vertical-align: top;
   margin-bottom: 2px;
   line-height: 35px;
+  position: relative;
+}
+#records > ul.ui-sortable li {
+  position: static;
 }
 #content #records > ul li .actions a {
   line-height: 29px;
@@ -695,7 +699,7 @@ label.stripped {
 #records .actions {
   position: absolute;
   right: 0px;
-  top: -2px;
+  top: 0px;
   width: 120px;
   text-align: right;
   display: block;
@@ -703,6 +707,7 @@ label.stripped {
 }
 #records.tree .actions {
   line-height: 22px;
+  top: 1px;
 }
 .published {
   width: 25px;
