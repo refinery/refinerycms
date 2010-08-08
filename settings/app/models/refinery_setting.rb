@@ -37,6 +37,14 @@ class RefinerySetting < ActiveRecord::Base
   def title
     self.name.titleize
   end
+  
+  def form_value
+    unless self[:value].blank? or self[:value].is_a?(String)
+      YAML::dump(self[:value])
+    else
+      self[:value]
+    end
+  end
 
   # Access method that allows dot notation to work.
   # Say you had a setting called "site_name". You could access that by going RefinerySetting[:site_name]
