@@ -39,7 +39,7 @@
                :hide_cancel => from_dialog?,
                :submit_button_title => t('.restart_may_be_in_order'),
                :delete_title => t('admin.refinery_settings.refinery_setting.remove'),
-               :delete_confirmation => t('admin.refinery_settings.refinery_setting.confirm',              
+               :delete_confirmation => t('admin.refinery_settings.refinery_setting.confirm',
                                          :title => @refinery_setting.name.to_s.titleize),
                :hide_delete => (@refinery_setting.new_record? or !@refinery_setting.destroyable)
               } %>
