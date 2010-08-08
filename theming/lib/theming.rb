@@ -4,11 +4,7 @@ require File.expand_path('../theme_server', __FILE__)
 module Refinery
   class ThemingEngine < ::Rails::Engine
 
-    initializer 'themes.middleware' do |app|
-      app.config.middleware.insert_before ::ActionDispatch::Static, ::Refinery::ThemeServer
-    end
-=begin
-    initializer 'themes.configuration' do |app|
+    config.to_prepare do
       ::Refinery::ApplicationController.module_eval do
 
         # Add or remove theme paths to/from Refinery application
@@ -40,14 +36,12 @@ module Refinery
         protected :attach_theme_to_refinery
 
       end
+
+      ::ApplicationHelper.send :include, ::ThemesHelper
     end
-=end
-    initializer 'themes.helper' do |app|
-      # Include theme functions into application helper.
-      # ::Refinery::ApplicationHelper.send :include, ThemesHelper
-      # FIXME: we have to call include on the application's ApplicationHelper,
-      # as our helper methods do not get overriden otherwise.
-      #::ApplicationHelper.send :include, ThemesHelper
+    
+    initializer 'themes.middleware' do |app|      
+      app.config.middleware.insert_before ::ActionDispatch::Static, ::Refinery::ThemeServer
     end
 
   end
