@@ -4,7 +4,7 @@
   elsif page === @pages.first
     "branch_start"
   end
-  title = h(page.title)
+  title = page.title
   title << " <em>(#{t('.hidden')})</em>".html_safe unless page.show_in_menu?
   title << " <em>(#{t('.draft')})</em>".html_safe if page.draft?
 -%>

@@ -10,8 +10,8 @@
   <%= "<!--[if IE 7]>#{stylesheet_link_tag 'ie7'}<![endif]-->" if request.env['HTTP_USER_AGENT'] =~ /MSIE/ -%>
   <link rel="shortcut icon" href="/favicon.ico" />
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <%= "<meta name=\"keywords\" content=\"#{h @meta.meta_keywords}\" />".html_safe if @meta.meta_keywords.present? %>
-  <%= "<meta name=\"description\" content=\"#{h @meta.meta_description}\" />".html_safe if @meta.meta_description.present? -%>
+  <%= "<meta name=\"keywords\" content=\"#{@meta.meta_keywords}\" />".html_safe if @meta.meta_keywords.present? %>
+  <%= "<meta name=\"description\" content=\"#{@meta.meta_description}\" />".html_safe if @meta.meta_description.present? -%>
   <%= yield :head_libraries %>
   <%= yield :head %>
 </head>
