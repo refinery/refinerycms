@@ -701,9 +701,6 @@ label.stripped {
 #records.files .record .title.mp3, #records.files .record .title.wav, #records.files .record .title.aiff, #records.files .record .title.m4a, #dialog_main #resource_file_area #pages_list ul li a.page_link.mp3, #dialog_main #resource_file_area #pages_list ul li a.page_link.wav, #dialog_main #resource_file_area #pages_list ul li a.page_link.aiff, #dialog_main #resource_file_area #pages_list ul li a.page_link.m4a {
   background-image: url('/images/refinery/icons/music.png');
 }
-#records div.clearfix {
-  position:relative;
-}
 #records .actions {
   position: absolute;
   right: 0px;
