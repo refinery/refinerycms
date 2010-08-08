@@ -6,7 +6,7 @@ class RefineryPluginGenerator < Rails::Generator::NamedBase
   end
 
   def banner
-    "Usage: ruby script/generate refinery_plugin singular_model_name attribute:type [attribute2:type ...]"
+    "Usage: rails generate refinery_plugin singular_model_name attribute:type [attribute2:type ...]"
   end
 
   def manifest

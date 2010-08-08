@@ -1,2 +1,2 @@
 Example Usage:
-  ruby script/generate refinery_plugin product title:string description:text image:image brochure:resource
+  rails generate refinery_plugin product title:string description:text image:image brochure:resource
