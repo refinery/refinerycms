@@ -712,6 +712,7 @@ label.stripped {
 }
 #records.tree .actions {
   line-height: 22px;
+  top: 1px;
 }
 .published {
   width: 25px;
