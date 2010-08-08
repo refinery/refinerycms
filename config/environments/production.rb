@@ -32,7 +32,7 @@ Refinery::Application.configure do
   # config.threadsafe!
 
   config.active_support.deprecation = :log
-  
+
   config.after_initialize do
     # override translate, but only in production
     ::I18n.module_eval do
