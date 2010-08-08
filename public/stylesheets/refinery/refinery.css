@@ -494,6 +494,10 @@ pre {
 #records ul#sortable_list {
   margin-top: 6px;
 }
+.ui-sortable .nested{
+  padding:5px;
+  margin:5px 0;
+}
 #records ul#sortable_list.ui-sortable {
   margin-top: 0px;
 }
@@ -545,10 +549,11 @@ pre {
   height: 38px;
 }
 #content .tree .ui-sortable li.placeholder {
-  height: 6px;
+  height: 38px;
   border-width: 2px;
-  position: absolute;
+  position: relative;
   background: #22A7F2 !important;
+  margin:5px 0;
 }
 #content #records .tree .ui-sortable li.helper, #content .tree .ui-sortable li.helper {
   opacity: 0.5 !important;
@@ -687,13 +692,13 @@ label.stripped {
 #records.files .record .title.mp3, #records.files .record .title.wav, #records.files .record .title.aiff, #records.files .record .title.m4a, #dialog_main #resource_file_area #pages_list ul li a.page_link.mp3, #dialog_main #resource_file_area #pages_list ul li a.page_link.wav, #dialog_main #resource_file_area #pages_list ul li a.page_link.aiff, #dialog_main #resource_file_area #pages_list ul li a.page_link.m4a {
   background-image: url('/images/refinery/icons/music.png');
 }
-#records .record {
-  position: relative;
+#records div.clearfix {
+  position:relative;
 }
 #records .actions {
   position: absolute;
   right: 0px;
-  top: 0px;
+  top: -2px;
   width: 120px;
   text-align: right;
   display: block;
@@ -701,7 +706,6 @@ label.stripped {
 }
 #records.tree .actions {
   line-height: 22px;
-  margin-top: 1px;
 }
 .published {
   width: 25px;
@@ -1040,6 +1044,9 @@ a img {
 }
 .reorder_icon {
    background-image: url('/images/refinery/icons/arrow_switch.png');
+}
+.reorder_icon.loading{
+  background-image:url('/images/refinery/icons/ajax-loader.gif');
 }
 .user_comment_icon {
   background-image: url('/images/refinery/icons/user_comment.png');
