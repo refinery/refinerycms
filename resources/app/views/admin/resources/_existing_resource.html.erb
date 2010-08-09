@@ -7,7 +7,7 @@
           <% resource_linked = (resource.url == params[:current_link]) if params[:current_link].present? %>
           <li<%= " class='linked'" if resource_linked %>>
             <%= link_to "#{resource.title} (#{resource.url})", resource.url,
-                        :title => t('.link_to_resource'),
+                        :title => t('.link_to_file'),
                         :rel => resource.title,
                         :class => 'page_link',
                         :id => "resource_#{resource.id}" %>
@@ -21,7 +21,7 @@
              :locals => {
                :f => nil,
                :cancel_url => admin_resources_url,
-               :submit_button_text => t('.submit_insert'),
+               :submit_button_text => t('.button_text'),
                :hide_cancel => true,
                :hide_delete => true,
                :paginate => {
