@@ -25,10 +25,6 @@ en:
       switch_to_your_website: Switch to your website
       switch_to_your_website_editor: Switch to your website editor
     admin:
-      # check_this_!
-      # moved to form_actions as it's used only in forms
-      # message:
-      #   close: Close
       continue_editing:
         save_and_continue_editing: "Save & continue editing"
       form_actions:
