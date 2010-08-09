@@ -10,9 +10,6 @@ en:
   admin:
     resources:
       form:
-        # check_this_!
-        # can't find this in code
-        # file_to_upload: File to upload
         download_current: Download current file
         or: or
         replace: " replace it with this one..."
@@ -27,12 +24,6 @@ en:
         existing: Existing File
         new: New File
         no_files: There are no files.
-        # check_this_!
-        # I don't think these are needed as they are in shared.admin.form_actions...
-        # previous: Previous
-        # next: Next
-        # or: or
-        # cancel: Cancel
       existing_resource:
         link_to_file: Link to this file
         button_text: Insert
