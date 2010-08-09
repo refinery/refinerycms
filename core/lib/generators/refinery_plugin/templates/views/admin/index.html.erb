@@ -1,15 +1,27 @@
 <div id='actions'>
   <ul>
     <li>
-      <%%= render :partial => "/shared/admin/search", :locals => {:url => admin_<%= plural_name %>_url} %>
+      <%%= render :partial => "/shared/admin/search",
+                  :locals => {
+                    :url => admin_<%= plural_name %>_url
+                  } %>
     </li>
     <li>
-      <%%= link_to "Create New <%= $title_name %>", new_admin_<%= singular_name %>_url, :class => "add_icon" %>
+      <%%= link_to t('.create_new'), new_admin_<%= singular_name %>_url,
+                   :class => "add_icon" %>
     </li>
   <%% if !searching? and <%= class_name %>.count > 1 %>
     <li>
-      <%%= link_to t('refinery.reorder', :what => "<%= $title_name.pluralize %>"), admin_<%= plural_name %>_url, :id => "reorder_action", :class => "reorder_icon" %>
-      <%%= link_to t('refinery.reorder_done', :what => "<%= $title_name.pluralize %>"), admin_<%= plural_name %>_url, :id => "reorder_action_done", :style => "display: none;", :class => "reorder_icon" %>
+      <%%= link_to t('refinery.reorder', :what => "<%= $title_name.pluralize %>"),
+                   admin_<%= plural_name %>_url,
+                   :id => "reorder_action",
+                   :class => "reorder_icon" %>
+
+      <%%= link_to t('refinery.reorder_done', :what => "<%= $title_name.pluralize %>"),
+                   admin_<%= plural_name %>_url,
+                   :id => "reorder_action_done",
+                   :style => "display: none;",
+                   :class => "reorder_icon" %>
     </li>
   <%% end %>
   </ul>
@@ -18,15 +30,22 @@
   <%% if searching? %>
     <h2><%%= t('admin.search_results_for', :query => params[:search]) %></h2>
     <%% if @<%= plural_name %>.any? %>
-      <%%= render :partial => "<%= singular_name %>", :collection => @<%= plural_name %> %>
+      <%%= render :partial => "<%= singular_name %>",
+                  :collection => @<%= plural_name %> %>
     <%% else %>
       <p><%%= t('admin.search_no_results') %></p>
     <%% end %>
   <%% else %>
     <%% if @<%= plural_name %>.any? %>
-      <%%= will_paginate @<%= plural_name %>, :previous_label => '&laquo;', :next_label => '&raquo;' %>
+      <%%= will_paginate @<%= plural_name %>,
+                         :previous_label => '&laquo;',
+                         :next_label => '&raquo;' %>
+
       <%%= render :partial => "sortable_list" %>
-      <%%= will_paginate @<%= plural_name %>, :previous_label => '&laquo;', :next_label => '&raquo;' %>
+
+      <%%= will_paginate @<%= plural_name %>,
+                         :previous_label => '&laquo;',
+                         :next_label => '&raquo;' %>
     <%% else %>
       <p>
         <strong>
@@ -36,4 +55,7 @@
     <%% end %>
   <%% end %>
 </div>
-<%%= render :partial => "/shared/admin/make_sortable", :locals => {:tree => false } if !searching? and <%= class_name %>.count > 1 %>
+<%%= render :partial => "/shared/admin/make_sortable",
+            :locals => {
+              :tree => false
+            } if !searching? and <%= class_name %>.count > 1 %>
