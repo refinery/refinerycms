@@ -44,7 +44,6 @@ gem 'rmagick',          '~> 2.12.0', :require => false
 # FIXME: These requirements are listed here temporarily pending a release
 gem 'dragonfly',        :git => 'git://github.com/myabc/dragonfly.git',
                         :branch => '1.9.2-fixes'
-gem 'will_paginate',    '3.0.pre2'
 
 group :test do
   gem 'json_pure',      '= 1.4.5', :require => 'json/pure'
