@@ -33,7 +33,7 @@ pt-BR:
       message:
         close: Fechar
       continue_editing:
-        save_and_continue_editing: "Salvar &amp; continuar editando"
+        save_and_continue_editing: "Salvar & continuar editando"
       form_actions:
         or: ou
         save: Salvar

@@ -29,7 +29,7 @@ fr:
       message:
         close: Fermer
       continue_editing:
-        save_and_continue_editing: "Save &amp; continuer les modification"
+        save_and_continue_editing: "Save & continuer les modification"
       form_actions:
         or: ou
         save: Sauvegarder

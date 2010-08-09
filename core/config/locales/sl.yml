@@ -32,7 +32,7 @@ sl:
       message:
         close: Zapri
       continue_editing:
-        save_and_continue_editing: "Shrani &amp; nadaljuj z urejanjem"
+        save_and_continue_editing: "Shrani & nadaljuj z urejanjem"
       form_actions:
         or: ali
         save: Shrani
