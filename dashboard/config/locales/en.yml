@@ -14,13 +14,10 @@ en:
         see_home_page: See home page
       recent_activity:
         latest_activity: Latest activity
-        see: "See '%{what}'"
-        latest_activity_message: "%{what} %{kind} was %{action}"
+        latest_activity_message: %{what} %{kind} was %{action}
       recent_inquiries:
         latest_inquiries: Latest inquiries
   updated:
     'with_article "the"': updated
   created:
     'with_article "the"': created
-  ago: "%{time} ago"
-  see: See
