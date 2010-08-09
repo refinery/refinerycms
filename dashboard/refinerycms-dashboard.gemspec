@@ -3,7 +3,7 @@
 Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.name        = 'refinerycms-dashboard'
-  s.version     = '1.0'
+  s.version     = '0.9.8'
   s.summary     = 'Dashboard functionality for the Refinery CMS project.'
   s.required_ruby_version = '>= 1.8.7'
 
@@ -13,5 +13,5 @@ Gem::Specification.new do |s|
 
   s.has_rdoc = true
 
-  s.add_dependency('refinerycms-core',  version)
+  s.add_dependency('refinerycms-core', version)
 end

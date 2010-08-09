@@ -1,7 +1,5 @@
 source :rubygems
 
-RSPEC_VERSION = '~> 2.0.0.beta.19'
-
 # Specify the database driver as appropriate for your application (only one is necessary).
 # Defaults to sqlite3. Don't remove any of these below in the core or gems won't install.
 gem 'sqlite3-ruby', '~>1.2.5', :require => 'sqlite3' # db_adapter=sqlite3
@@ -22,8 +20,9 @@ gem 'sqlite3-ruby', '~>1.2.5', :require => 'sqlite3' # db_adapter=sqlite3
 # Add i18n support
 gem 'routing-filter'
 
+version = '0.9.8'
 # Use the default Refinery CMS Engines:
-gem 'refinerycms',      :path => '.'
+gem 'refinerycms', version, :path => '.'
 
 # Alternatively, cherry-pick the Refinery CMS Engines you wish to use:
 # gem 'refinerycms-authentication'
@@ -45,15 +44,12 @@ gem 'rmagick',          '~> 2.12.0', :require => false
 # FIXME: These requirements are listed here temporarily pending a release
 gem 'dragonfly',        :git => 'git://github.com/myabc/dragonfly.git',
                         :branch => '1.9.2-fixes'
-gem 'will_paginate',    '3.0.pre2',
-                        :git => "git://github.com/mislav/will_paginate.git",
-                        :branch => 'rails3'
-# REFINERY CMS ================================================================
+gem 'will_paginate',    '3.0.pre2'
 
 group :test do
   gem 'json_pure',      '= 1.4.5', :require => 'json/pure'
 
-  gem 'rspec',              RSPEC_VERSION
+  gem 'rspec',              (RSPEC_VERSION = '~> 2.0.0.beta.19')
   gem 'rspec-core',         RSPEC_VERSION, :require => 'rspec/core'
   gem 'rspec-expectations', RSPEC_VERSION, :require => 'rspec/expectations'
   gem 'rspec-mocks',        RSPEC_VERSION, :require => 'rspec/mocks'
@@ -69,3 +65,5 @@ group :test do
   gem 'factory_girl'
   gem 'ruby-prof'
 end
+
+# REFINERY CMS ================================================================
