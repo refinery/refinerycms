@@ -1,18 +1,18 @@
-Hi there,
+<%= t('.greeting') %>,
 
-You just received a new inquiry on your website.
+<%= t('.you_recieved_new_inquiry') %>
 
---- inquiry starts ---
+<%= t('.inquiry_starts') %>
 
-From: <%= @inquiry.name %>
-Email: <%= @inquiry.email %>
-Phone: <%= @inquiry.phone %>
-Message:
+<%= t('.from') %>: <%= @inquiry.name %>
+<%= t('.email') %>: <%= @inquiry.email %>
+<%= t('.phone') %>: <%= @inquiry.phone %>
+<%= t('.message') %>:
 <%= @inquiry.message %>
 
---- inquiry ends ---
+<%= t('.inquiry_ends') %>
 
-Kind Regards,
-Your Website.
+<%= t('.closing_line') %>,
+<%= RefinerySetting[:site_name] %>
 
-P.S. All your inquiries are stored in the "Inquiries" section of Refinery should you ever want to view it later there.
+<%= t('.ps') %>
