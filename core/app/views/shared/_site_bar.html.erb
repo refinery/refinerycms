@@ -2,28 +2,9 @@
   <% unless admin? or login? # jquery scripts should already be cached when using the site bar as login has happened. %>
     <%= stylesheet_link_tag('refinery/site_bar') unless exclude_css ||= false %>
     <%= jquery_include_tags(:jquery_ui => false) unless exclude_jquery ||= false %>
-    <%= javascript_include_tag 'jquery/jquery.corner.js' unless exclude_cornering_library ||= false %>
-    <% unless exclude_site_bar_javascript ||= false %>
-      <script type='text/javascript'>
-        if (typeof($) == 'function') {
-          $(document).ready(function() {
-            logo = $('#site_bar_content #site_bar_refinery_cms_logo');
-            $(logo).css('left', ($('#site_bar_content').width() / 2) - ($(logo).width() / 2));
-
-            if ($.isFunction($('#editor_switch a').corner)) {
-              $('#editor_switch a').corner('6px');
-            }
-
-            $('#editor_switch a').appendTo((span = $('<span></span>').prependTo('#editor_switch')));
-            if ($.isFunction(span.corner)) {
-              span.corner('6px');
-            }
-          });
-        }
-      </script>
-    <% end %>
+    <%= javascript_include_tag('jquery/jquery.corner.js') unless exclude_cornering_library ||= false %>
+    <%= javascript_include_tag('refinery/site_bar') unless exclude_site_bar_javascript ||= false %>
   <% end -%>
-
   <div id='site_bar'>
     <div id='site_bar_content' class='clearfix'>
       <% unless login? %>
@@ -32,17 +13,19 @@
         </div>
       <% end %>
       <%= link_to image_tag("#{"http://refinerycms.com/images/" unless local_request?}refinery/logo-site-bar.png",
-                  :alt => "Refinery (tm) Content Manager"), "http://refinerycms.com",
-                  :target => "_blank",
-                  :id => "site_bar_refinery_cms_logo" %>
+                            :alt => "Refinery (tm) Content Manager"),
+                  'http://refinerycms.com',
+                  :target => '_blank',
+                  :id => 'site_bar_refinery_cms_logo' %>
 
       <% unless login? %>
         <div id='site_bar_branding'>
           <span id='site_bar_company_name'>
-            <%= RefinerySetting[:site_name] %>
+            <%= RefinerySetting.find_or_set(:site_name, 'Company Name') %>
           </span>
 
-          <%= link_to t('.log_out'), logout_url(:only_path => true), :id => "logout" %>
+          <%= link_to t('.log_out'), logout_url(:only_path => true),
+                      :id => 'logout' %>
         </div>
       <% end %>
     </div>
