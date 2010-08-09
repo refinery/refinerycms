@@ -10,11 +10,13 @@
 </div>
 <div id='records' class='files'>
   <% if searching? %>
-    <h2><%= t('admin.search_results_for', :query => params[:search]) %></h2>
+    <h2><%= t('shared.admin.search.results_for', :query => params[:search]) %></h2>
     <% if @resources.any? %>
+      <ul>
         <%= render :partial => "resource", :collection => @resources %>
+      </ul>
     <% else %>
-      <p><%= t('admin.search_no_results') %></p>
+      <p><%= t('shared.admin.search.no_results') %></p>
     <% end %>
   <% else %>
     <% if @resources.any? -%>
@@ -36,7 +38,7 @@
       <%= will_paginate @resources, :previous_label => '&laquo;', :next_label => '&raquo;' %>
     <% else -%>
       <p>
-        <strong><%=t('.no_files_yet')%></strong>
+        <strong><%= t('.no_files_yet') %></strong>
       </p>
     <% end -%>
   <% end %>
