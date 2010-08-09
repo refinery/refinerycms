@@ -1,4 +1,7 @@
 en:
+  activerecord:
+    models:
+      image: image
   plugins:
     refinery_images:
       title: Images
@@ -7,40 +10,33 @@ en:
   file_must_be_these_formats: Your image must be either a JPG, PNG or GIF
   admin:
     images:
-      image:
-        delete:
-          message: Are you sure you want to delete '%{title}'?
-          title: Remove this image forever
       form:
         image: Image
         use_current_image: Use current image
         or: or
-        replace_image: Replace it with this one ...
+        replace_image: " replace it with this one..."
         current_image: Current Image
-        maximum_image_size: "The maximum image size is %{megabytes} megabytes."
+        maximum_image_size: The maximum image size is %{megabytes} megabytes.
       index:
         create_new_image: Create New Image
-        no_images_yet: There are no images yet.  Click "Create New Image" to add your first image.
+        no_images_yet: There are no images yet. Click "Create New Image" to add your first image.
         view:
           switch_to: Switch to %{view_name} view
           list: list
           grid: grid
-        search:
-          results_for: Search results for %{query}
       grid_view:
-        edit: Edit this image
         view_live: View this image <br/><em>Opens in a new window</em>
-      list_view_image:
-        edit_this_image: Edit this image
       existing_image:
-        submit_insert: Insert
-        resize_image: "Resize the image?"
+        button_text: Insert
+        resize_image: Resize the image?
         size: Size
       insert:
         existing_image: Existing Image
         new_image: New Image
-        previous: Previous
-        next: Next
-        submit_insert: Insert
-        or: or
-        cancel: Cancel
+        # check_this_!
+        # I don't think these are needed as they are in shared.admin.form_actions ...
+        # previous: Previous
+        # next: Next
+        # submit_insert: Insert
+        # or: or
+        # cancel: Cancel
