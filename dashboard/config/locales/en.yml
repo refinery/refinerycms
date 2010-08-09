@@ -21,7 +21,3 @@ en:
     'with_article "the"': updated
   created:
     'with_article "the"': created
-  # check_this_!
-  # can't find these
-  # ago: "%{time} ago"
-  # see: See
