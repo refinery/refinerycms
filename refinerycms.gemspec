@@ -20,7 +20,6 @@ Gem::Specification.new do |s|
   s.add_dependency('refinerycms-pages',            version)
   s.add_dependency('refinerycms-resources',        version)
   s.add_dependency('refinerycms-settings',         version)
-  s.add_dependency('refinerycms-theming',          version)
 
   s.files             = [
     '.gitignore',

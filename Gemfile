@@ -32,7 +32,6 @@ gem 'refinerycms', version, :path => '.'
 # gem 'refinerycms-pages'
 # gem 'refinerycms-resources'
 # gem 'refinerycms-settings'
-# gem 'refinerycms-theming'
 
 # Specify additional Refinery CMS Engines here:
 # gem 'refinerycms-news',       '~> 0.9.8', :require => 'news'
