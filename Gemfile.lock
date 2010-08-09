@@ -1,11 +1,4 @@
 GIT
-  remote: git://github.com/mislav/will_paginate.git
-  revision: fccbb0b
-  branch: rails3
-  specs:
-    will_paginate (3.0.pre2)
-
-GIT
   remote: git://github.com/myabc/dragonfly.git
   revision: 5bbb9e7
   branch: 1.9.2-fixes
@@ -16,43 +9,43 @@ GIT
 PATH
   remote: .
   specs:
-    refinerycms (0.9.7.11)
-      refinerycms-authentication (= 1.0.0)
-      refinerycms-core (= 1.0.0)
-      refinerycms-dashboard (= 1.0.0)
-      refinerycms-images (= 1.0.0)
-      refinerycms-inquiries (= 1.0.0)
-      refinerycms-pages (= 1.0.0)
-      refinerycms-resources (= 1.0.0)
-      refinerycms-settings (= 1.0.0)
-      refinerycms-theming (= 1.0.0)
-    refinerycms-authentication (1.0)
+    refinerycms (0.9.8)
+      refinerycms-authentication (~> 0.9.8)
+      refinerycms-core (~> 0.9.8)
+      refinerycms-dashboard (~> 0.9.8)
+      refinerycms-images (~> 0.9.8)
+      refinerycms-inquiries (~> 0.9.8)
+      refinerycms-pages (~> 0.9.8)
+      refinerycms-resources (~> 0.9.8)
+      refinerycms-settings (~> 0.9.8)
+      refinerycms-theming (~> 0.9.8)
+    refinerycms-authentication (0.9.8)
       authlogic (~> 2.1.5)
-      refinerycms-core (= 1.0.0)
-    refinerycms-core (1.0)
+      refinerycms-core (~> 0.9.8)
+    refinerycms-core (0.9.8)
       acts_as_indexed (= 0.6.3)
       friendly_id (~> 3.0)
       rails (>= 3.0.0.rc)
       truncate_html (= 0.3.2)
       will_paginate (>= 3.0.pre2)
-    refinerycms-dashboard (1.0)
-      refinerycms-core (= 1.0.0)
-    refinerycms-images (1.0)
+    refinerycms-dashboard (0.9.8)
+      refinerycms-core (~> 0.9.8)
+    refinerycms-images (0.9.8)
       dragonfly
       rack-cache
-      refinerycms-core (= 1.0.0)
+      refinerycms-core (~> 0.9.8)
       rmagick
-    refinerycms-inquiries (1.0)
-      refinerycms-core (= 1.0.0)
-    refinerycms-pages (1.0)
-      refinerycms-core (= 1.0.0)
-    refinerycms-resources (1.0)
+    refinerycms-inquiries (0.9.8)
+      refinerycms-core (~> 0.9.8)
+    refinerycms-pages (0.9.8)
+      refinerycms-core (~> 0.9.8)
+    refinerycms-resources (0.9.8)
       dragonfly
-      refinerycms-core (= 1.0.0)
-    refinerycms-settings (1.0)
-      refinerycms-core (= 1.0.0)
-    refinerycms-theming (1.0)
-      refinerycms-core (= 1.0.0)
+      refinerycms-core (~> 0.9.8)
+    refinerycms-settings (0.9.8)
+      refinerycms-core (~> 0.9.8)
+    refinerycms-theming (0.9.8)
+      refinerycms-core (~> 0.9.8)
 
 GEM
   remote: http://rubygems.org/
@@ -192,6 +185,7 @@ GEM
       nokogiri (>= 1.2.0)
       rack (>= 1.0)
       rack-test (>= 0.5.3)
+    will_paginate (3.0.pre2)
 
 PLATFORMS
   ruby
@@ -206,7 +200,7 @@ DEPENDENCIES
   gherkin
   json_pure (= 1.4.5)
   launchy
-  refinerycms!
+  refinerycms (= 0.9.8)!
   rmagick (~> 2.12.0)
   routing-filter
   rspec (~> 2.0.0.beta.19)
@@ -218,4 +212,3 @@ DEPENDENCIES
   spork
   sqlite3-ruby (~> 1.2.5)
   test-unit (= 1.2.3)
-  will_paginate (= 3.0.pre2)!

@@ -3,7 +3,7 @@
 Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.name        = 'refinerycms-resources'
-  s.version     = '1.0'
+  s.version     = '0.9.8'
   s.summary     = 'File management functionality for the Refinery CMS project.'
   s.required_ruby_version = '>= 1.8.7'
 

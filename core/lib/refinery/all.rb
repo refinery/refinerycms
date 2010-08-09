@@ -1,10 +1,3 @@
-require 'refinery'
-require 'authentication'
-require 'dashboard'
-require 'images'
-require 'inquiries'
-require 'pages'
-require 'refinery_dialogs'
-require 'refinery_settings'
-require 'resources'
-require 'theming'
+%w(refinery authentication dashboard images inquiries pages refinery_dialogs refinery_settings resources theming).each do |r|
+  require r
+end
