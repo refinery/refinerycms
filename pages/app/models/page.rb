@@ -100,8 +100,8 @@ class Page < ActiveRecord::Base
   # to "/contact"
   def url
     if self.link_url.present?
-      if self.link_url =~ /^\// 
-        "#{"/#{::I18n.locale}" if ::Refinery::I18n.enabled?}#{self.link_url}"
+      if self.link_url =~ /^\// and ::Refinery::I18n.enabled?
+        "/#{::I18n.locale}#{self.link_url}"
       else
         self.link_url
       end
