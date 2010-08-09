@@ -26,10 +26,13 @@ en:
       insert:
         existing: Existing File
         new: New File
-        previous: Previous
-        next: Next
-        or: or
-        cancel: Cancel
+        no_files: There are no files.
+        # check_this_!
+        # I don't think these are needed as they are in shared.admin.form_actions...
+        # previous: Previous
+        # next: Next
+        # or: or
+        # cancel: Cancel
       existing_resource:
-        link_to_resource: Link to this Resource
-        submit_insert: Insert
+        link_to_file: Link to this file
+        button_text: Insert
