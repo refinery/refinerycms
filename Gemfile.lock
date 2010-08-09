@@ -212,4 +212,3 @@ DEPENDENCIES
   spork
   sqlite3-ruby (~> 1.2.5)
   test-unit (= 1.2.3)
-  will_paginate (= 3.0.pre2)
