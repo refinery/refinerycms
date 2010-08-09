@@ -21,11 +21,11 @@
 </div>
 <div id='records'>
   <% if searching? %>
-    <h2><%= t('admin.search_results_for', :query => params[:search]) %></h2>
+    <h2><%= t('shared.admin.search.results_for', :query => params[:search]) %></h2>
     <% if @images.any? %>
       <%= render :partial => "#{current_image_view}_view" %>
     <% else %>
-      <p><%= t('admin.search_no_results') %></p>
+      <p><%= t('shared.admin.search.no_results') %></p>
     <% end %>
   <% else %>
     <% if @images.any? %>

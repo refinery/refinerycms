@@ -54,8 +54,8 @@ en:
         resource: resource
       search:
         button_text: Search
-        results_for: "Search results for '%{query}'"
-        no_results: "Sorry, no results found"
+        results_for: Search results for '%{query}'
+        no_results: Sorry, no results found
       delete:
         message: Are you sure you want to delete '%{title}'?
         title: Remove this %{object_name} forever
