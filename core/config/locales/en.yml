@@ -8,10 +8,6 @@ en:
     menu:
       reorder_menu: Reorder menu
       reorder_menu_done: "I'm done reordering the menu"
-    search: Search
-    search_submit: Go
-    search_results_for: "Search results for '%{query}'"
-    search_no_results: "Sorry, no results found"
     images:
       existing_image:
         submit_insert: Insert
@@ -56,6 +52,15 @@ en:
         opens_in_new_window: Opens in a new window
         remove_current: "Remove current %{what}"
         resource: resource
+      search:
+        button_text: Search
+        results_for: "Search results for '%{query}'"
+        no_results: "Sorry, no results found"
+      delete:
+        message: Are you sure you want to delete '%{title}'?
+        title: Remove this %{object_name} forever
+      edit:
+        title: Edit this %{object_name}
     message:
       close: Close
       close_this_message: Close this message
