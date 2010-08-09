@@ -1,8 +1,8 @@
-version = '1.0.0'
+version = '~> 0.9.8'
 
 Gem::Specification.new do |s|
   s.name              = %q{refinerycms}
-  s.version           = %q{0.9.7.11}
+  s.version           = version.split(' ').last
   s.description       = %q{A beautiful open source Ruby on Rails content manager for small business. Easy to extend, easy to use, lightweight and all wrapped up in a super slick UI.}
   s.date              = %q{2010-08-07}
   s.summary           = %q{A beautiful open source Ruby on Rails content manager for small business.}
