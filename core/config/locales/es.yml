@@ -31,7 +31,7 @@ es:
       message:
         close: Cerrar
       continue_editing:
-        save_and_continue_editing: "Guardar &amp; continuar editando"
+        save_and_continue_editing: "Guardar & continuar editando"
       form_actions:
         or: o
         save: Guardar
