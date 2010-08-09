@@ -9,10 +9,16 @@ def setup_environment
   # Uncomment the next line to use webrat's matchers
   #require 'webrat/integrations/rspec-rails'
 
+  
+  
   # Requires supporting files with custom matchers and macros, etc,
   # in ./support/ and its subdirectories.
   Dir[File.expand_path(File.join(File.dirname(__FILE__),'support','**','*.rb'))].each {|f| require f}
 
+  #require plugin factories
+  Dir[File.expand_path(File.join('vendor','plugins','**','spec','factories','*.rb'))].each {|f| require f}
+  
+  
   Spec::Runner.configure do |config|
     # If you're not using ActiveRecord you should remove these
     # lines, delete config/database.yml and disable :active_record
