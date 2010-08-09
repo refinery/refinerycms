@@ -31,7 +31,7 @@ de:
       message:
         close: Schließen
       continue_editing:
-        save_and_continue_editing: "Speichern &amp; Bearbeitung fortsetzen"
+        save_and_continue_editing: "Speichern & Bearbeitung fortsetzen"
       form_actions:
         or: oder
         save: Speichern

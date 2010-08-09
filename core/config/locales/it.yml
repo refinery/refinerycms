@@ -31,7 +31,7 @@ it:
       message:
         close: Fine
       continue_editing:
-        save_and_continue_editing: "Salvare &amp; continuare ad apportare modifiche"
+        save_and_continue_editing: "Salvare & continuare ad apportare modifiche"
       form_actions:
         or: o
         save: Salvare

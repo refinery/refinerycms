@@ -1,5 +1,5 @@
 def setup_environment
-  # This file is copied to ~/spec when you run 'ruby script/generate rspec'
+  # This file is copied to ~/spec when you run 'rails generate rspec'
   # from the project root directory.
   ENV["RAILS_ENV"] ||= 'test'
   require File.expand_path("../../config/environment", __FILE__)

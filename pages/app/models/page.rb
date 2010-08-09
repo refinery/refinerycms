@@ -100,7 +100,11 @@ class Page < ActiveRecord::Base
   # to "/contact"
   def url
     if self.link_url.present?
-      self.link_url
+      if self.link_url =~ /^\// and ::Refinery::I18n.enabled?
+        "/#{::I18n.locale}#{self.link_url}"
+      else
+        self.link_url
+      end
     elsif use_marketable_urls?
       url_marketable
     elsif self.to_param.present?

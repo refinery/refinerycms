@@ -1,7 +1,7 @@
 class RefineryThemeGenerator < Rails::Generator::Base
 
   def banner
-    "Usage: ruby script/generate refinery_theme theme_name"
+    "Usage: rails generate refinery_theme theme_name"
   end
 
   def manifest
