@@ -1,3 +1,4 @@
+@plugin-generator @generator
 Feature: Plugin generation
   In order to create my own plugin
   As a refinery user

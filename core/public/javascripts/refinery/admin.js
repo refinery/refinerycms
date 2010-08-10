@@ -968,7 +968,7 @@ parseURL = function(url)
 
   //split the URL by single-slashes to get the component parts
   var parts = url.replace('//', '/').split('/');
-  
+
   //store the protocol and host
   loc.protocol = parts[0];
   loc.host = parts[1];
@@ -995,7 +995,7 @@ parseURL = function(url)
 
   var options = url.split('?')[1];
   loc.options = options;
-  
+
   //return the final object
   return loc;
 }
