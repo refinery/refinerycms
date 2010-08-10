@@ -2,10 +2,10 @@
   <%= f.error_messages %>
   <div class='field'>
   <% if action_name =~ /(new)|(create)/ %>
-    <%= f.label :name, t('.name') %>
+    <%= f.label :name %>
     <%= f.text_field :name, :class => "larger widest" %>
   <% else %>
-    <label for='refinery_setting_value'><%= t('.name') %></label>
+    <%= f.label :name %>
     <label class='stripped' for='refinery_setting_value'>
       <%= @refinery_setting.name.titleize %>
     </label>
@@ -18,7 +18,7 @@
   <% end %>
   <% if current_user.has_role?(:superuser) %>
     <span class='label_with_help'>
-      <%= f.label :restricted, t('.restricted') %>
+      <%= f.label :restricted %>
       <%= refinery_help_tag t('.help.restricted') %>
     </span>
     <%= f.check_box :restricted %>
@@ -26,7 +26,7 @@
   <% end %>
   </div>
   <div class='field'>
-    <%= f.label :value, t('.value') %>
+    <%= f.label :value %>
     <%= f.text_area :value, :value => @refinery_setting.form_value,
                     :rows => 5,
                     :class => 'widest' %>
