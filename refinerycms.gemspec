@@ -170,6 +170,7 @@ Gem::Specification.new do |s|
     'public/images/refinery/icons',
     'public/images/refinery/icons/accept.png',
     'public/images/refinery/icons/add.png',
+    'public/images/refinery/icons/ajax-loader.gif',
     'public/images/refinery/icons/application_edit.png',
     'public/images/refinery/icons/application_go.png',
     'public/images/refinery/icons/arrow_left.png',
