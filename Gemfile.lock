@@ -113,7 +113,7 @@ GEM
       rake (>= 0.8.7)
       rubyforge (>= 2.0.4)
     i18n (0.4.1)
-    json_pure (1.4.5)
+    json_pure (1.4.6)
     launchy (0.3.7)
       configuration (>= 0.0.5)
       rake (>= 0.8.1)
@@ -195,7 +195,7 @@ DEPENDENCIES
   dragonfly!
   factory_girl
   gherkin
-  json_pure (= 1.4.5)
+  json_pure (= 1.4.6)
   launchy
   refinerycms (= 0.9.8)!
   rmagick (~> 2.12.0)

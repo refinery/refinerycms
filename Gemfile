@@ -45,7 +45,7 @@ gem 'dragonfly',        :git => 'git://github.com/myabc/dragonfly.git',
                         :branch => '1.9.2-fixes'
 
 group :test do
-  gem 'json_pure',      '= 1.4.5', :require => 'json/pure'
+  gem 'json_pure',      '= 1.4.6', :require => 'json/pure'
 
   gem 'rspec',              (RSPEC_VERSION = '~> 2.0.0.beta.19')
   gem 'rspec-core',         RSPEC_VERSION, :require => 'rspec/core'
