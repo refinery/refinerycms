@@ -37,7 +37,7 @@ class RefinerySetting < ActiveRecord::Base
   def title
     self.name.titleize
   end
-  
+
   def form_value
     unless self[:value].blank? or self[:value].is_a?(String)
       YAML::dump(self[:value])
