@@ -1,6 +1,9 @@
 onOpenDialog = function(dialog) {
-  $('.ui-dialog').corner('6px').find('.ui-dialog-titlebar').corner('1px top');
-  $(document.body).addClass('hide-overflow');
+  (dialog = $('.ui-dialog')).corner('6px')
+                            .find('.ui-dialog-titlebar').corner('1px top')
+  if (dialog.height() < $(window).height()) {
+    $(document.body).addClass('hide-overflow');
+  }
 }
 
 onCloseDialog = function(dialog) {
@@ -197,7 +200,8 @@ $(function()
   wymeditor_inputs = $('.wymeditor');
   wymeditor_inputs.each(function(input) {
     if ((containing_field = $(this).parents('.field')).get(0).style.height == '') {
-      containing_field.addClass('hide-overflow').css('height', $(this).outerHeight() - containing_field.offset().top + $(this).offset().top + 45);
+      containing_field.addClass('hide-overflow')
+                      .css('height', $(this).outerHeight() - containing_field.offset().top + $(this).offset().top + 45);
     }
     $(this).hide();
   });
