@@ -6,7 +6,7 @@
   <span class='actions'>
     <%= link_to refinery_icon_tag('delete.png'), admin_inquiry_url(inquiry),
                 :class => "cancel confirm-delete",
-                :title => t('shared.admin.delete.title', :object_name => inquiry.class.human_name),
+                :title => t('shared.admin.delete.title', :object_name => inquiry.class.model_name.human),
                 :'data-confirm' => t('shared.admin.delete.message', :title => inquiry.name),
                 :'data-method' => "delete" -%>
 
