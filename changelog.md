@@ -1,4 +1,4 @@
-## 0.9.7.11 [unreleased]
+## 0.9.7.11 [07 August 2010]
 * Removed ``app/controllers/application.rb`` due to its serious deprecation. Fixed deprecations in how we use acts_as_indexed. [Philip Arndt](http://github.com/parndt)
 * Added passing cucumber features for search for: [Uģis Ozols](http://github.com/ugisozols)
   - Images
@@ -6,12 +6,17 @@
   - Inquiries
   - Pages
 * Moved HTML5 enabling script to a partial so that IE always runs it first. [Philip Arndt](http://github.com/parndt)
-* Fixed some invalid HTML [Bo Frederiksen](http://github.com/bofrede) and [Philip Arndt](http://github.com/parndt)
+* Fixed some invalid HTML. [Bo Frederiksen](http://github.com/bofrede)
+* Added Danish translation for WYMeditor. [Bo Frederiksen](http://github.com/bofrede)
 * Fixes for Tooltips [Philip Arndt](http://github.com/parndt)
   - Tooltips were not showing in dialogues, they now are.
   - Tooltips would not position properly above links, they now do.
   - The Tooltips' nibs (the arrow) would not sit properly centered above the element if the tooltip had to move for the browser window size, they now do.
-* [See full list](http://github.com/resolve/refinerycms/compare/0.9.7.10...master)
+* Lots of fixes for translations. [Uģis Ozols](http://github.com/ugisozols)
+* Fix XSS vulnerability on page meta information by escaping the relevant fields properly [David Jones](http://github.com/djones)
+* Ensure that the generator script grabs the first attribute that is a string, not just the first attribute, when choosing the field for Dashboard activity. [Joe Sak](http://github.com/joemsak)
+* Updated ``json-pure`` to ``1.4.5``, now using the actual gem [Philip Arndt](http://github.com/parndt)
+* [See full list](http://github.com/resolve/refinerycms/compare/0.9.7.10...0.9.7.11)
 
 
 ## 0.9.7.10 [02 August 2010]

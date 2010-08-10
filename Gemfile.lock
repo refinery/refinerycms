@@ -83,7 +83,7 @@ dependencies:
   json_pure: 
     group: 
     - :test
-    version: ">= 0"
+    version: = 1.4.5
     require: 
     - json/pure
   cucumber: 
@@ -130,8 +130,7 @@ specs:
 - ffi: 
     version: 0.6.3
 - json_pure: 
-    version: 1.4.3
-    source: 0
+    version: 1.4.5
 - rubyzip: 
     version: 0.9.4
 - selenium-webdriver: 
@@ -184,13 +183,7 @@ specs:
     version: 0.3.2
 - will_paginate: 
     version: 2.3.14
-hash: 8277cc8372c624b2663991c70e01af17edc50fdc
+hash: 47812c7a7b7d937c13b4593f8e6eb2424f90a6d1
 sources: 
-- Git: 
-    uri: git://github.com/parndt/json.git
-    branch: master
-    git: git://github.com/parndt/json.git
-    require: json/pure
-    ref: 34ad345d48764f3acf87a032b3efb4b1908b7213
 - Rubygems: 
     uri: http://gemcutter.org

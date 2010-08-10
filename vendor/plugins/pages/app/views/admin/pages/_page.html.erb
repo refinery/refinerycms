@@ -24,9 +24,10 @@
                   :title => t('.confirm_delete_page_title') if page.deletable? %>
     </span>
   </div>
-  <% if (children = page.children).any? -%>
-    <ul class='nested'>
-      <%= render :partial => 'page', :collection => children %>
-    </ul>
-  <% end -%>
+  <ul class='nested'>  
+    <% if (children = page.children).any? -%>
+        <%= render :partial => 'page', :collection => children %>
+    <% end -%>
+  </ul>
+  
 </li>

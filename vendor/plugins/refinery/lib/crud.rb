@@ -251,9 +251,7 @@ module Crud
               parse_branch(pos, id, id_hash["id"]) unless pos == "id"
             end if id_hash.include?('0')
 
-            #{class_name}.update(id_hash["id"],
-                                 :parent_id => parent_id,
-                                 :position => position)
+            #{class_name}.update_all(["parent_id = ?, position = ?", parent_id, position], ["id = ?", id_hash["id"]])
           end
 
           protected :parse_branch
