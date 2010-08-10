@@ -1,3 +1,4 @@
+=begin
 # Because we use plugins that are shipped via gems, we lose their rake tasks.
 # So here, we find them (if there are any) and include them into rake.
 extra_rake_tasks = []
@@ -16,3 +17,4 @@ end
 
 # Load in any extra tasks that we've found.
 extra_rake_tasks.flatten.reject{|t| t.nil? or t =~ /rspec/ }.uniq.each {|rake| load rake }
+=end

@@ -19,7 +19,7 @@ PATH
       refinerycms-resources (~> 0.9.8)
       refinerycms-settings (~> 0.9.8)
     refinerycms-authentication (0.9.8)
-      authlogic (~> 2.1.5)
+      authlogic (~> 2.1.6)
       refinerycms-core (~> 0.9.8)
     refinerycms-core (0.9.8)
       acts_as_indexed (= 0.6.3)

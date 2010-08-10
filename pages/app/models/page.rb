@@ -174,9 +174,21 @@ class Page < ActiveRecord::Base
     self.siblings.reject { |sibling| not sibling.in_menu? }
   end
 
-  # Returns all the top level pages, usually to render the top level navigation.
-  def self.top_level
-    where(:show_in_menu => true, :draft => false).order('position ASC').includes(:slugs, :children, :parent, :parts)
+  class << self
+    # Accessor to find out the default page parts created for each new page
+    def default_parts
+      RefinerySetting.find_or_set(:default_page_parts, ["Body", "Side Body"])
+    end
+
+    # Returns how many pages per page should there be when paginating pages
+    def per_page(dialog = false)
+      dialog ? PAGES_PER_DIALOG : PAGES_PER_ADMIN_INDEX
+    end
+
+    # Returns all the top level pages, usually to render the top level navigation.
+    def top_level(include_children = false)
+      where(:show_in_menu => true, :draft => false).order('position ASC').includes(:slugs, :children, :parent, :parts)
+    end
   end
 
   # Accessor method to get a page part from a page.
@@ -210,11 +222,6 @@ class Page < ActiveRecord::Base
   # Used to index all the content on this page so it can be easily searched.
   def all_page_part_content
     self.parts.collect {|p| p.body}.join(" ")
-  end
-
-  # Returns how many pages per page should there be when paginating pages
-  def self.per_page(dialog = false)
-    dialog ? PAGES_PER_DIALOG : PAGES_PER_ADMIN_INDEX
   end
 
   ##
