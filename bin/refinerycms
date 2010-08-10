@@ -17,6 +17,13 @@ else
   Pathname.new(File.expand_path(File.dirname(__FILE__) << "/.."))
 end
 
+require refinery_root.join('vendor', 'plugins', 'refinery', 'lib', 'refinery.rb')
+
+if ARGV.include?("-v") or ARGV.include?("--version")
+  puts Refinery::Version
+  exit
+end
+
 unless (app_path = ARGV.shift).nil? or app_path.length == 0
   # if "" or "." or "./" is specified then get the current directory otherwise accept the specified app_path.
   if (app_path.length <= 2 and ((is_current_dir = app_path =~ /(\.(\/)?)/).nil? or is_current_dir < 2))
