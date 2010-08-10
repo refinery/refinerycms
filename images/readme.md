@@ -36,7 +36,7 @@ This will crop (_that's what the "c" stands for_) the grid thumbnail down to ``1
 
 _Note: you will have to restart your web server after changing this setting for the changes to take effect._
 
-## Using a Thumbnail Size in Your Theme or View
+## Using a Thumbnail Size in Your View
 
 Take the default thumbnails above to use the ``:large`` thumbnail I would collect that image out of the database and apply it like this in my view:
 
