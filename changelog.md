@@ -3,8 +3,8 @@
 * Smoothed the sortable list in the admin UI. [Joe Sak](http://github.com/joemsak)
 * Binding link dialogue URL checker to paste action. [Joe Sak](http://github.com/joemsak)
 * Kill hidden overflow on dialogues for smaller browser windows. [Joe Sak](http://github.com/joemsak) and [Philip Arndt](http://github.com/parndt)
-* Refactored the parse_branch method to speed up reordering on the server. [Joshua Davey](http://github.com/jgdavey)
-* Running refinerycms with -v or --version will now output the version number. [Steven Heidel](http://github.com/stevenheidel)
+* Refactored the ``parse_branch`` method to speed up reordering on the server. [Joshua Davey](http://github.com/jgdavey)
+* Running ``refinerycms`` with ``-v`` or ``--version`` will now output the version number. [Steven Heidel](http://github.com/stevenheidel)
 * Made the core codebase not rely so heavily on ``@page[:body]`` by adding ``Page.default_parts`` and using ``.first`` on that instead. [Philip Arndt](http://github.com/parndt)
 * [See full list](http://github.com/resolve/refinerycms/compare/0.9.7.11...0.9.7.12)
 
