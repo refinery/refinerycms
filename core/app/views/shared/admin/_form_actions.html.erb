@@ -13,7 +13,7 @@
     cancel_button_text  ||= t('.cancel')
     unless defined?(cancel_title)
       cancel_title = t('.cancel_lose_changes',
-                       :object_name => f.object.class.name.underscore.gsub("_", " "))
+                       :object_name => f.object.class.model_name.human)
     end
     cancel_button_id    ||= "cancel_button"
 
