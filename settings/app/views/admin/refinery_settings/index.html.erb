@@ -7,21 +7,17 @@
 </div>
 <div id='records'>
   <% if @refinery_settings.any? %>
-    <%= will_paginate @refinery_settings, :previous_label => '&laquo;', :next_label => '&raquo;' unless searching? %>
+    <%= will_paginate @refinery_settings, :previous_label => '&laquo;', :next_label => '&raquo;' %>
     <ul>
       <%= render :partial => 'refinery_setting', :collection => @refinery_settings %>
     </ul>
-    <%= will_paginate @refinery_settings, :previous_label => '&laquo;', :next_label => '&raquo;' unless searching? %>
+    <%= will_paginate @refinery_settings, :previous_label => '&laquo;', :next_label => '&raquo;' %>
   <% else %>
     <p>
-      <% if searching? %>
-        <%= t('admin.search_no_results') %>
-      <% else %>
-        <strong>
-          <%= t('.empty_set') %>
-          <%= t('.create_first', :link => t('.new')) %>
-        </strong>
-      <% end %>
+      <strong>
+        <%= t('.empty_set') %>
+        <%= t('.create_first', :link => t('.new')) %>
+      </strong>
     </p>
   <% end %>
 </div>
