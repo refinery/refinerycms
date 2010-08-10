@@ -183,7 +183,7 @@ specs:
     version: 0.3.2
 - will_paginate: 
     version: 2.3.14
-hash: 47812c7a7b7d937c13b4593f8e6eb2424f90a6d1
+hash: 8a831dabfc1147454d70581cb62b1000d1c32f23
 sources: 
 - Rubygems: 
     uri: http://gemcutter.org
