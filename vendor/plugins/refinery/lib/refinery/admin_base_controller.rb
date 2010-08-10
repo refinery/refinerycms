@@ -21,7 +21,8 @@ protected
   def error_404(exception=nil)
     if (@page = Page.find_by_menu_match("^/404$", :include => [:parts, :slugs])).present?
       params[:action] = 'error_404'
-      @page[:body] = @page[:body].gsub(/href=(\'|\")\/(\'|\")/, "href='/refinery'").gsub("home page", "Dashboard")
+      part_symbol = RefinerySetting.find_or_set(:default_page_parts, ["Body", "Side Body"]).first.to_sym
+      @page[part_symbol] = @page[part_symbol].gsub(/href=(\'|\")\/(\'|\")/, "href='/refinery'").gsub("home page", "Dashboard")
       render :template => "/pages/show", :status => 404
     else
       # fallback to the default 404.html page.
