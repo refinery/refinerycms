@@ -11,7 +11,7 @@ Feature: Search
     When I go to the list of <location>
     And I fill in "search" with "<title>"
     And I press "Search"
-   Then I should see "<title>"
+    Then I should see "<title>"
 
     Examples:
       |  item  | title  |   location   |
