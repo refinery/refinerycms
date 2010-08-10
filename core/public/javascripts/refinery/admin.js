@@ -144,7 +144,9 @@ init_modal_dialogs = function(){
       if ($.browser.msie) {
         iframe.css({'margin':'-2px 2px 2px -2px'});
       }
-      $(document.body).addClass('hide-overflow');
+      if(parseInt($anchor.data('dialog-height')) < $(window).height()) {
+        $(document.body).addClass('hide-overflow');
+      }
       e.preventDefault();
     });
   });
@@ -428,7 +430,7 @@ var link_dialog = {
   },
 
   web_tab: function(){
-    $('#web_address_text').change(function(){
+    $('#web_address_text').bind('paste change',function(){
       var prefix = '#web_address_',
           icon = '';
 
