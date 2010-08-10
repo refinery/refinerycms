@@ -31,7 +31,7 @@ protected
   def find_or_set_locale
     if (params[:set_locale].present? and ::Refinery::I18n.locales.include?(params[:set_locale].to_sym))
       ::Refinery::I18n.current_locale = params[:set_locale].to_sym
-      redirect_to url_for({:controller => controller_name, :action => action_name}) and return
+      redirect_back_or_default(admin_dashboard_path) and return
     else
       I18n.locale = ::Refinery::I18n.current_locale
     end

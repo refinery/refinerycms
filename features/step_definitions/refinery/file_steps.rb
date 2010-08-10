@@ -2,12 +2,8 @@ Given /^I have no files$/ do
   Resource.delete_all
 end
 
-Given /^I have test file titled "([^"]*)"$/ do |file_name|
-  Resource.create(:file_mime_type => 'application/x-debian-package', :file_name => file_name, :file_size => 5000)
-end
-
 When /^I attach the file at "([^"]*)"$/ do |file_path|
-  attach_file('resource[uploaded_data]', File.join(Rails.root, file_path))
+  attach_file('resource[file]', File.join(Rails.root, file_path))
 end
 
 Then /^the file "([^"]*)" should have uploaded successfully$/ do |file_name|
@@ -20,6 +16,6 @@ end
 
 When /^I upload the file at "([^"]*)"$/ do |file_path|
   visit new_admin_resource_path
-  attach_file('resource[uploaded_data]', File.join(Rails.root, file_path))
+  attach_file('resource[file]', File.join(Rails.root, file_path))
   click_button 'Save'
 end
