@@ -1,4 +1,9 @@
-## 0.9.7.11 [07 August 2010]
+## 0.9.7.12 [10 August 2010] ## ##
+* Smoothed the sortable list in the admin UI. [Joe Sak](http://github.com/joemsak)
+* Binding link dialogue URL checker to paste action. [Joe Sak](http://github.com/joemsak)
+* Kill hidden overflow on dialogues for smaller browser windows. [Joe Sak](http://github.com/joemsak)
+
+## 0.9.7.11 [07 August 2010] ##
 * Removed ``app/controllers/application.rb`` due to its serious deprecation. Fixed deprecations in how we use acts_as_indexed. [Philip Arndt](http://github.com/parndt)
 * Added passing cucumber features for search for: [Uģis Ozols](http://github.com/ugisozols)
   - Images
