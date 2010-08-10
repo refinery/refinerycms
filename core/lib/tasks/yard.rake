@@ -8,19 +8,17 @@ begin
                'app/**/*.rb',
                'db/seeds.rb',
                'config/preinitializer.rb',
-               'vendor/engines/images/**/*.rb',
-               'vendor/engines/authentication/**/*.rb',
-               'vendor/engines/dashboard/**/*.rb',
-               'vendor/engines/inquiries/**/*.rb',
-               'vendor/engines/news/**/*.rb',
-               'vendor/engines/pages/**/*.rb',
-               'vendor/engines/refinery/**/*.rb',
-               'vendor/engines/refinery_dialogs/**/*.rb',
-               'vendor/engines/refinery_settings/**/*.rb',
-               'vendor/engines/resources/**/*.rb',
-               'vendor/engines/themes/**/*.rb',
-               '-', 'License',
-               'vendor/engines/themes/Themes.rdoc']
+               'images/**/*.rb',
+               'authentication/**/*.rb',
+               'dashboard/**/*.rb',
+               'inquiries/**/*.rb',
+               'news/**/*.rb',
+               'pages/**/*.rb',
+               'refinery/**/*.rb',
+               'refinery_dialogs/**/*.rb',
+               'refinery_settings/**/*.rb',
+               'resources/**/*.rb',
+               '-', 'License']
   end
 
 rescue LoadError
