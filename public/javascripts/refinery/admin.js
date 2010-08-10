@@ -144,7 +144,7 @@ init_modal_dialogs = function(){
       if ($.browser.msie) {
         iframe.css({'margin':'-2px 2px 2px -2px'});
       }
-      $(document.body).addClass('hide-overflow');
+     // $(document.body).addClass('hide-overflow');
       e.preventDefault();
     });
   });
@@ -515,7 +515,7 @@ var page_options = {
   init: function(enable_parts, new_part_url, del_part_url){
     // set the page tabs up, but ensure that all tabs are shown so that when wymeditor loads it has a proper height.
     // also disable page overflow so that scrollbars don't appear while the page is loading.
-    $(document.body).addClass('hide-overflow');
+    // $(document.body).addClass('hide-overflow');
     page_options.tabs = $('#page-tabs');
     page_options.tabs.tabs({tabTemplate: '<li><a href="#{href}">#{label}</a></li>'})
     page_options.tabs.find(' > ul li a').corner('top 5px');
