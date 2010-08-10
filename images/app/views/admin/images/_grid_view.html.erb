@@ -7,10 +7,10 @@
                     :target => "_blank",
                     :title => t('.view_live') %>
         <%= link_to refinery_icon_tag('application_edit.png'), edit_admin_image_path(image),
-                    :title => t('shared.admin.edit.title', :object_name => image.class.human_name) %>
+                    :title => t('shared.admin.edit.title', :object_name => image.class.model_name.human) %>
         <%= link_to refinery_icon_tag('delete.png'), admin_image_path(image),
                     :class => "cancel confirm-delete",
-                    :title => t('shared.admin.delete.title', :object_name => image.class.human_name),
+                    :title => t('shared.admin.delete.title', :object_name => image.class.model_name.human),
                     :'data-confirm' => t('shared.admin.delete.message', :title => image.title),
                     :'data-method' => "delete" %>
       </span>
