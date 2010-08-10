@@ -33,10 +33,3 @@ en:
       insert:
         existing_image: Existing Image
         new_image: New Image
-        # check_this_!
-        # I don't think these are needed as they are in shared.admin.form_actions ...
-        # previous: Previous
-        # next: Next
-        # submit_insert: Insert
-        # or: or
-        # cancel: Cancel

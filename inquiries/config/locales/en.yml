@@ -14,21 +14,10 @@ en:
   admin:
     inquiries:
       inquiry:
-        # check_this_!
-        # I can't find these in code
-        # move_inquiry_to_closed: Move this inquiry to closed
-        # move_inquiry_to_open: Move this inquiry to open
         read_inquiry: Read the inquiry
-        # this is not needed as delete message is taken from shared.admin.delete...
-        # remove_inquiry: "Are you sure you want to delete the inquiry from '%{name}'?"
         said: said
         mark_as_spam: Mark as spam
         mark_as_ham: Move to inbox
-      # check_this_!
-      # I can't find these in code
-      # toggle_status:
-      #   closed: "Inquiry '%{inquiry}' is closed"
-      #   reopened: "Inquiry '%{inquiry}' is reopened"
       submenu:
         inbox: Inbox
         spam: Spam
@@ -40,11 +29,6 @@ en:
         no_spam: Hooray! You don't have any spam.
       show:
         details: Details
-        # check_this_!
-        # I don't think these are needed
-        # status: Status
-        # open: Open
-        # closed: Closed
         age: Age
         actions: Actions
         back_to_all_inquiries: Back to all Inquiries
