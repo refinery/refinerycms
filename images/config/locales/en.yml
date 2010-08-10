@@ -1,7 +1,4 @@
 en:
-  activerecord:
-    models:
-      image: image
   plugins:
     refinery_images:
       title: Images
@@ -33,3 +30,6 @@ en:
       insert:
         existing_image: Existing Image
         new_image: New Image
+  activerecord:
+    models:
+      image: image

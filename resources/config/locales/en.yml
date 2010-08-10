@@ -1,7 +1,4 @@
 en:
-  activerecord:
-    models:
-      resource: file
   plugins:
     refinery_files:
       title: Files
@@ -27,3 +24,6 @@ en:
       existing_resource:
         link_to_file: Link to this file
         button_text: Insert
+  activerecord:
+    models:
+      resource: file

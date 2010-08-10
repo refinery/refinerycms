@@ -21,8 +21,8 @@
              :locals => {
                :f => f,
                :continue_editing => true,
-               :delete_title => t('admin.pages.page.confirm_delete_page_title'),
-               :delete_confirmation => t('admin.pages.page.confirm_delete_page_message', :title => @page.title)
+               :delete_title => t('shared.admin.delete.title', :object_name => @page.class.model_name.human),
+               :delete_confirmation => t('shared.admin.delete.message', :title => @page.title)
              } %>
 
   <%= render :partial => "form_new_page_parts",

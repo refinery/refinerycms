@@ -1,7 +1,4 @@
 en:
-  activerecord:
-    models:
-      inquiry: inquiry
   plugins:
     refinery_inquiries:
       title: Inquiries
@@ -71,3 +68,6 @@ en:
       message: Message
       closing_line: Kind Regards
       ps: P.S. All your inquiries are stored in the "Inquiries" section of Refinery should you ever want to view it later there.
+  activerecord:
+    models:
+      inquiry: inquiry
