@@ -428,7 +428,7 @@ var link_dialog = {
   },
 
   web_tab: function(){
-    $('#web_address_text').change(function(){
+    $('#web_address_text').bind('paste change',function(){
       var prefix = '#web_address_',
           icon = '';
 
