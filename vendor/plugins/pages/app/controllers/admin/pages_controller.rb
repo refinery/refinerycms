@@ -13,7 +13,7 @@ class Admin::PagesController < Admin::BaseController
 
   def new
     @page = Page.new
-    RefinerySetting.find_or_set(:default_page_parts, ["Body", "Side Body"]).each_with_index do |page_part, index|
+    Page.default_parts.each_with_index do |page_part, index|
       @page.parts << PagePart.new(:title => page_part, :position => index)
     end
   end
