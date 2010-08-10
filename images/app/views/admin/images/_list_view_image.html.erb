@@ -7,11 +7,11 @@
                 :target => "_blank",
                 :title => "#{image_fu list_view_image, :preview}" %>
     <%= link_to refinery_icon_tag('application_edit.png'), edit_admin_image_path(list_view_image),
-                :title => t('.edit_this_image') %>
+                :title => t('shared.admin.edit.title', :object_name => list_view_image.class.human_name) %>
     <%= link_to refinery_icon_tag('delete.png'), admin_image_path(list_view_image),
                 :class => "cancel confirm-delete",
-                :title => t('admin.images.image.delete.title'),
-                :'data-confirm' => t('admin.images.image.delete.message', :title => list_view_image.image_name),
+                :title => t('shared.admin.delete.title', :object_name => list_view_image.class.human_name),
+                :'data-confirm' => t('shared.admin.delete.message', :title => list_view_image.title),
                 :'data-method' => "delete" %>
   </span>
 </li>
