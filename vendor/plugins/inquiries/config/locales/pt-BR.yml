@@ -40,6 +40,8 @@ pt-BR:
       submenu:
         update_notified: Atualizar quem recebe a notificação
         edit_confirmation_email: Editar email de confirmação
+        inbox: Caixa de Entrada
+        spam: Spam
       index:
         search_results_for: Resultados da busca por {{query}}
         open_inquiries: Mensagens abertas

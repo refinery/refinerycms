@@ -32,9 +32,6 @@ init_interface = function() {
   // make sure that users can tab to wymeditor fields and add an overlay while loading.
   $('textarea.wymeditor').each(function() {
     textarea = $(this);
-    /*overlay = $("<div class='wym_loading_overlay'>&nbsp;</div>")
-              .css({'height': textarea.height(), 'width': textarea.width()});
-    textarea.before(overlay);*/
     if ((instance = WYMeditor.INSTANCES[$((textarea.next('.wym_box').find('iframe').attr('id')||'').split('_')).last().get(0)]) != null) {
       if ((next = textarea.parent().next()) != null && next.length > 0) {
         next.find('input, textarea').keydown($.proxy(function(e) {
@@ -62,9 +59,21 @@ init_interface = function() {
   $('form input[type=text]:first').focus();
 
   // ensure that the menu isn't wider than the page_container or else it looks silly to round that corner.
-  var last_item_offset = (last_item = $('#menu a:visible:last')).offset();
-  if (last_item_offset && ((last_item_offset.left + last_item.outerWidth() - $('#menu').offset().left + 5) < $('#page_container').outerWidth())) {
-    $("#page_container:not('.login #page_container')").corner('5px tr');
+  if (($menu = $('#menu')).length > 0) {
+    $menu.jcarousel({
+      vertical: false
+      , scroll: 1
+      , buttonNextHTML: "<img src='/images/refinery/carousel-right.png' alt='down' height='15' width='10' />"
+      , buttonPrevHTML: "<img src='/images/refinery/carousel-left.png' alt='up' height='15' width='10' />"
+      , listTag: $menu.get(0).tagName.toLowerCase()
+      , itemTag: $menu.children(':first').get(0).tagName.toLowerCase()
+    });
+
+    if ($menu.outerWidth() < $('#page_container').outerWidth()) {
+      $("#page_container:not('.login #page_container')").corner('5px tr');
+    } else {
+      $("#page_container:not('.login #page_container')").uncorner();
+    }
   }
 
   $('#current_locale li a').click(function(e) {
@@ -149,6 +158,7 @@ init_sortable_menu = function(){
   $menu.sortable({
     axis: 'x',
     cursor: 'crosshair',
+    connectWith: '.nested',
     update: function(){
       var ser   = $menu.sortable('serialize', {key: 'menu[]', expression: /plugin_([\w]*)$/}),
           token = escape($('#admin_authenticity_token').val());
@@ -299,18 +309,24 @@ init_tooltips = function(args){
 
     }, function(e) {
       $(this).stopTime('tooltip');
-      (tooltip = $('.tooltip')).css('z-index', '-1').animate({
-        top: tooltip.offset().top - 20
+      if ((tt_offset = (tooltip = $('.tooltip')).css('z-index', '-1').offset()) == null) {
+        tt_offset = {'top':0,'left':0};
+      }
+      tooltip.animate({
+        top: tt_offset.top - 20
         , opacity: 0
       }, 125, 'swing', function(){
         $(this).remove();
       });
-      (nib = $('.tooltip-nib')).animate({
-        top: nib.offset().top - 20
+      if ((nib_offset = (nib = $('.tooltip-nib')).offset()) == null) {
+        nib_offset = {'top':0,'left':0};
+      }
+      nib.animate({
+        top: nib_offset.top - 20
         , opacity: 0
       }, 125, 'swing', function(){
         $(this).remove();
-      })
+      });
     }).click(function(e) {
       $(this).stopTime('tooltip');
     });
@@ -768,6 +784,7 @@ var list_reorder = {
       , 'cursor': 'drag'
       , 'items': 'li'
       , 'axis': 'y'
+      , 'connectWith' : '.nested'
     };
 
     $(list_reorder.sortable_list).find('li').each(function(index, li) {
@@ -777,7 +794,7 @@ var list_reorder = {
 
     if (list_reorder.tree && !$.browser.msie) {
       $(list_reorder.sortable_list).parent().nestedSortable($.extend(sortable_options, {
-        'maxDepth': 1
+        'maxDepth': 2
         , 'placeholderElement': 'li'
       }));
       $(list_reorder.sortable_list).addClass('ui-sortable');
@@ -809,8 +826,11 @@ var list_reorder = {
   }
 
   , disable_reordering: function(e) {
+    if($('#reorder_action_done').hasClass('loading')){
+      return false;
+    }
     if(e) { e.preventDefault(); }
-
+    $('#reorder_action_done').addClass('loading');
     if (list_reorder.update_url != null) {
       serialized = "";
       list_reorder.sortable_list.find('> li[id]').each(function(index, li) {
@@ -835,7 +855,7 @@ var list_reorder = {
         } else {
           $(list_reorder.sortable_list).html(data);
         }
-        
+
         // if we get passed a script tag, re-enable reordering.
         matches = data.replace('"', "'")
                       .match(/<script\ type='text\/javascript'>([^<]*)<\/script>/im);
@@ -860,7 +880,7 @@ var list_reorder = {
 
     $('#site_bar, #header > *:not(script)').fadeTo(250, 1);
     $('#actions *:not("#reorder_action_done, #reorder_action")').not($('#reorder_action_done').parents('li, ul')).fadeTo(250, 1, function() {
-      $('#reorder_action_done').hide();
+      $('#reorder_action_done').hide().removeClass('loading');
       $('#reorder_action').show();
     });
   }
