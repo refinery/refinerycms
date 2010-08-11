@@ -1,76 +1,83 @@
-class RefineryPluginGenerator < Rails::Generator::NamedBase
+require 'rails/generators/migration'
 
-  def initialize(*runtime_args)
-    super(*runtime_args)
-    $title_name = singular_name.gsub("_", " ").gsub(/\b([a-z])/) { $1.capitalize }
-  end
+class RefineryPluginGenerator < Rails::Generators::NamedBase
+  
+  include Rails::Generators::Migration
+  
+  source_root File.expand_path('../templates', __FILE__)
+  argument :attributes, :type => :array, :default => [], :banner => "field:type field:type"
 
-  def banner
-    "Usage: rails generate refinery_plugin singular_model_name attribute:type [attribute2:type ...]"
-  end
-
-  def manifest
-    if @args[0].nil? and @args[1].nil?
-      puts "You must specify a singular model name and a first attribute"
-      puts banner
-      exit
-    end
-
-    record do |m|
-      # Copy controller, model and migration
-      directories = ["#{plural_name}", "#{plural_name}/app", "#{plural_name}/app/controllers",
-        "#{plural_name}/app/controllers/admin", "#{plural_name}/app/models", "#{plural_name}/app/views",
-        "#{plural_name}/app/helpers", "#{plural_name}/app/views", "#{plural_name}/app/views/admin",
-        "#{plural_name}/config", "#{plural_name}/config/locales", "#{plural_name}/rails"].map { |d| "vendor/plugins/#{d}" }
-
-      directories.each do |dir|
-        m.directory dir
+  def generate
+    unless attributes.empty?
+      Dir.glob(File.expand_path('../templates/**/**', __FILE__)).each do |path|
+        if File.directory?(path)
+          unless "vendor/engines/#{plural_name}/db"
+            empty_directory plugin_path_for(path)
+          end
+        elsif path.include?(".migration")
+          template path, plugin_path_for(path)
+        
+          # Once the Rails issue below is fixed this block can be replaced with
+          # migration_template path, plugin_path_for(path)
+        else
+          template path, plugin_path_for(path)
+        end
       end
 
-      m.template "controller.rb", "vendor/plugins/#{plural_name}/app/controllers/admin/#{plural_name}_controller.rb"
-      m.template "model.rb", "vendor/plugins/#{plural_name}/app/models/#{singular_name}.rb"
-      m.template "config/routes.rb", "vendor/plugins/#{plural_name}/config/routes.rb"
-      Dir[File.expand_path(File.dirname(__FILE__) + "/templates/config/locales/*.yml")].each do |yml|
-        yml_filename = yml.split(File::SEPARATOR).last
-        m.template "config/locales/#{yml_filename}", "vendor/plugins/#{plural_name}/config/locales/#{yml_filename}"
-      end
-
-      # Create view directory
-      admin_view_dir = File.join("vendor/plugins/#{plural_name}/app/views/admin", plural_name)
-      m.directory admin_view_dir
-
-      # Copy in all views
-      admin_view_files = ['_form.html.erb', '_sortable_list.html.erb', 'edit.html.erb', 'index.html.erb', 'new.html.erb']
-
-      admin_view_files.each do |view_file|
-        m.template "views/admin/#{view_file}", "#{admin_view_dir}/#{view_file}"
-      end
-
-      m.template "views/admin/_singular_name.html.erb", "#{admin_view_dir}/_#{singular_name}.html.erb"
-
-      # Now for the public views and controller
-      public_dir = File.join("vendor/plugins/#{plural_name}/app/views/", plural_name)
-      m.directory public_dir
-
-      view_files = ['index.html.erb', 'show.html.erb']
-      view_files.each do |view_file|
-        m.template "views/#{view_file}", "#{public_dir}/#{view_file}"
-      end
-
-      m.template "public_controller.rb", "vendor/plugins/#{plural_name}/app/controllers/#{plural_name}_controller.rb"
-
-      # Add in the init file that ties the plugin to the app.
-      m.template "init.rb", "vendor/plugins/#{plural_name}/init.rb"
-
-      m.directory 'db/migrate/'
-      m.directory 'db/seeds/'
-      m.template 'seed.rb', "db/seeds/#{plural_name}.rb"
-      m.migration_template  'migration.rb', 'db/migrate',
-                            :assigns => {:migration_name => "Create#{class_name.pluralize}"},
-                            :migration_file_name => "create_#{singular_name.pluralize}"
-
-      m.readme "MIGRATE" unless RAILS_ENV == "test"
+      puts "------------------------"
+      puts "Now run: rake db:migrate"
+      puts "------------------------"
+    else
+      puts "You must specify at least one field. For help: rails generate refinery_plugin"
     end
   end
 
+protected
+
+  def plugin_path_for(path)
+    path = path.gsub(File.dirname(__FILE__) + "/templates/", "vendor/engines/#{plural_name}/")
+    path = path.gsub("plural_name", plural_name)
+    path = path.gsub("singular_name", singular_name)
+    path = path.gsub(".migration", '')
+
+    # hack can be removed after issue is fixed
+    next_migration_number = ActiveRecord::Generators::Base.next_migration_number(File.dirname(__FILE__))
+    path = path.gsub("migration_number", next_migration_number)
+    
+    # replace our local db path with the app one instead.
+    path = path.gsub("/db/", "/../../../db/")
+  end
+
+end
+
+
+
+
+
+
+# Below is a hack until this issue:
+# https://rails.lighthouseapp.com/projects/8994/tickets/3820-make-railsgeneratorsmigrationnext_migration_number-method-a-class-method-so-it-possible-to-use-it-in-custom-generators
+# is fixed on the Rails project.
+
+require 'rails/generators/named_base'
+require 'rails/generators/migration'
+require 'rails/generators/active_model'
+require 'active_record'
+
+module ActiveRecord
+  module Generators
+    class Base < Rails::Generators::NamedBase #:nodoc:
+      include Rails::Generators::Migration
+
+      # Implement the required interface for Rails::Generators::Migration.
+      def self.next_migration_number(dirname) #:nodoc:
+        next_migration_number = current_migration_number(dirname) + 1
+        if ActiveRecord::Base.timestamped_migrations
+          [Time.now.utc.strftime("%Y%m%d%H%M%S"), "%.14d" % next_migration_number].max
+        else
+          "%.3d" % next_migration_number
+        end
+      end
+    end
+  end
 end

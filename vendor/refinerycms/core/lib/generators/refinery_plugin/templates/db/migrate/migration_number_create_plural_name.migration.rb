@@ -1,4 +1,4 @@
-class <%= migration_name %> < ActiveRecord::Migration
+class Create<%= class_name.pluralize %> < ActiveRecord::Migration
 
   def self.up
     create_table :<%= table_name %> do |t|
