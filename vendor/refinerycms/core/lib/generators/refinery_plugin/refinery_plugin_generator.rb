@@ -17,7 +17,7 @@ class RefineryPluginGenerator < Rails::Generators::NamedBase
       
       # Update the gem file 
       Rails.root.join('Gemfile').open('a') do |f|
-        f.write "\ngem 'refinerycms-#{plural_name}', '1.0', :path => 'vendor/engines', :require => 'refinery'"
+        f.write "\ngem 'refinerycms-#{plural_name}', '1.0', :path => 'vendor/engines', :require => '#{plural_name}'"
       end
 
       puts "------------------------"
