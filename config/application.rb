@@ -5,8 +5,6 @@ require 'rails/all'
 # Auto-require default libraries and those for the current Rails environment.
 Bundler.require :default, Rails.env
 
-require 'refinery/all'
-
 module Refinery
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
@@ -37,14 +35,6 @@ module Refinery
     #   g.template_engine :erb
     #   g.test_framework  :test_unit, :fixture => true
     # end
-
-    config.middleware.insert_after 'Rack::Lock', 'Dragonfly::Middleware', :images
-    config.middleware.insert_after 'Rack::Lock', 'Dragonfly::Middleware', :resources
-    config.middleware.insert_before 'Dragonfly::Middleware', 'Rack::Cache', {
-      :verbose     => true,
-      :metastore   => "file:#{Rails.root}/tmp/dragonfly/cache/meta",
-      :entitystore => "file:#{Rails.root}/tmp/dragonfly/cache/body"
-    }
 
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password, :password_confirmation]
