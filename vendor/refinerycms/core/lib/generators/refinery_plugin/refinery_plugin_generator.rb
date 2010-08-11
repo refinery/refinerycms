@@ -10,17 +10,15 @@ class RefineryPluginGenerator < Rails::Generators::NamedBase
   def generate
     unless attributes.empty?
       Dir.glob(File.expand_path('../templates/**/**', __FILE__)).each do |path|
-        if File.directory?(path)
-          unless "vendor/engines/#{plural_name}/db"
-            empty_directory plugin_path_for(path)
-          end
-        elsif path.include?(".migration")
-          template path, plugin_path_for(path)
+        unless File.directory?(path)
+          if path.include?(".migration")
+            template path, plugin_path_for(path)
         
-          # Once the Rails issue below is fixed this block can be replaced with
-          # migration_template path, plugin_path_for(path)
-        else
-          template path, plugin_path_for(path)
+            # Once the Rails issue below is fixed this block can be replaced with
+            # migration_template path, plugin_path_for(path)
+          else
+            template path, plugin_path_for(path)
+          end
         end
       end
 
