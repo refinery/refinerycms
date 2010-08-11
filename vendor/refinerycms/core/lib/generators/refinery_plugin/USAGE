@@ -10,9 +10,11 @@ Description:
 
     There must be at least one attribute.
 
-Support Field Types
+Additional Supported Field Types 
 
-  string, integer - standard input box
+  All field types that are supported by the Rails Scaffold generator are supported with the addition
+  of these Refinery specific ones:
+
   text            - text area with a visual editor
   image           - link to an image picker dialogue
   resource        - link to a resource picker dialogue
