@@ -7,7 +7,7 @@ GIT
       rack
 
 PATH
-  remote: vendor/engines/refinerycms
+  remote: vendor/refinerycms
   specs:
     refinerycms-authentication (0.9.8)
       authlogic (~> 2.1.6)

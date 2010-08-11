@@ -23,15 +23,14 @@ gem 'routing-filter'
 version = '= 0.9.8'
 
 # Specify the Engines to use:
-engine_path = 'vendor/engines'
-gem 'refinerycms-core', version, :path => "#{engine_path}/refinerycms", :require => 'refinery'
-gem 'refinerycms-authentication', version, :path => "#{engine_path}/refinerycms", :require => 'authentication'
-gem 'refinerycms-dashboard', version, :path => "#{engine_path}/refinerycms", :require => 'dashboard'
-gem 'refinerycms-inquiries', version, :path => "#{engine_path}/refinerycms", :require => 'inquiries'
-gem 'refinerycms-images', version, :path => "#{engine_path}/refinerycms", :require => 'images'
-gem 'refinerycms-pages', version, :path => "#{engine_path}/refinerycms", :require => 'pages'
-gem 'refinerycms-resources', version, :path => "#{engine_path}/refinerycms", :require => 'resources'
-gem 'refinerycms-settings', version, :path => "#{engine_path}/refinerycms", :require => 'settings'
+gem 'refinerycms-core', version, :path => "vendor/refinerycms", :require => 'refinery'
+gem 'refinerycms-authentication', version, :path => "vendor/refinerycms", :require => 'authentication'
+gem 'refinerycms-dashboard', version, :path => "vendor/refinerycms", :require => 'dashboard'
+gem 'refinerycms-inquiries', version, :path => "vendor/refinerycms", :require => 'inquiries'
+gem 'refinerycms-images', version, :path => "vendor/refinerycms", :require => 'images'
+gem 'refinerycms-pages', version, :path => "vendor/refinerycms", :require => 'pages'
+gem 'refinerycms-resources', version, :path => "vendor/refinerycms", :require => 'resources'
+gem 'refinerycms-settings', version, :path => "vendor/refinerycms", :require => 'settings'
 
 # Specify additional Refinery CMS Engines here:
 # gem 'refinerycms-news',       '~> 0.9.8', :require => 'news'
