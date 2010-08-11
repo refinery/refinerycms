@@ -6,6 +6,7 @@ module Refinery
         Refinery::Plugin.register do |plugin|
           plugin.title = "Dashboard"
           plugin.name = "refinery_dashboard"
+          plugin.url = {:controller => '/admin/dashboard', :action => 'index'}
           plugin.menu_match = /(admin|refinery)\/(refinery_)?dashboard$/
           plugin.description = "Gives an overview of activity in Refinery"
           plugin.directory = "dashboard"

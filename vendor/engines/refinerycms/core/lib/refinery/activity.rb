@@ -34,7 +34,8 @@ module Refinery
     end
 
     def class
-      if    @class == Class  then @class
+      if @class.kind_of?(Class)
+        @class
       else
         Object.const_get(@class.to_sym)
       end
