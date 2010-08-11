@@ -15,7 +15,8 @@ module Refinery
           plugin.version = %q{0.9.8}
           plugin.menu_match = /(refinery|admin)\/users$/
           plugin.activity = {
-            :class => 'User'
+            :class => User,
+            :title => 'login'
           }
           plugin.url = {:controller => "/admin/users"}
         end

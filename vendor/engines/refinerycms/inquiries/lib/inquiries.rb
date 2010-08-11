@@ -12,7 +12,8 @@ module Refinery
           plugin.version = %q{0.9.8}
           plugin.menu_match = /(refinery|admin)\/inquir(ies|y_settings)$/
           plugin.activity = {
-            :class => InquirySetting
+            :class => InquirySetting,
+            :title => 'name'
           }
         end
       end
