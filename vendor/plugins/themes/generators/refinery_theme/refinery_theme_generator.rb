@@ -28,7 +28,7 @@ class RefineryThemeGenerator < Rails::Generator::Base
       m.directory "themes/#{theme_name}/views/pages"
       m.file "views/pages/show.html.erb", "themes/#{theme_name}/views/pages/show.html.erb"
       m.file "views/pages/home.html.erb", "themes/#{theme_name}/views/pages/home.html.erb"
-      
+
       m.directory "themes/#{theme_name}/views/shared"
       ["content_page", "footer", "head", "header", "menu", "menu_branch"].each do |partial|
         m.file "../../../../refinery/app/views/shared/_#{partial}.html.erb","themes/#{theme_name}/views/shared/_#{partial}.html.erb"
