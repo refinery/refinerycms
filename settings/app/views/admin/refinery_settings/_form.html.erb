@@ -1,11 +1,10 @@
 <%= form_for [:admin, @refinery_setting] do |f| %>
   <%= f.error_messages %>
   <div class='field'>
-  <% if action_name =~ /(new)|(create)/ %>
     <%= f.label :name %>
+  <% if action_name =~ /(new)|(create)/ %>
     <%= f.text_field :name, :class => "larger widest" %>
   <% else %>
-    <%= f.label :name %>
     <label class='stripped' for='refinery_setting_value'>
       <%= @refinery_setting.name.titleize %>
     </label>
