@@ -20,18 +20,18 @@ gem 'sqlite3-ruby', '~>1.2.5', :require => 'sqlite3' # db_adapter=sqlite3
 # Add i18n support
 gem 'routing-filter'
 
-version = '0.9.8'
-# Use the default Refinery CMS Engines:
-gem 'refinerycms', version, :path => '.'
+version = '= 0.9.8'
 
-# Alternatively, cherry-pick the Refinery CMS Engines you wish to use:
-# gem 'refinerycms-authentication'
-# gem 'refinerycms-dashboard'
-# gem 'refinerycms-inquiries'
-# gem 'refinerycms-images'
-# gem 'refinerycms-pages'
-# gem 'refinerycms-resources'
-# gem 'refinerycms-settings'
+# Specify the Engines to use:
+engine_path = 'vendor/engines'
+gem 'refinerycms-core', version, :path => "#{engine_path}/refinerycms", :require => 'refinery'
+gem 'refinerycms-authentication', version, :path => "#{engine_path}/refinerycms", :require => 'authentication'
+gem 'refinerycms-dashboard', version, :path => "#{engine_path}/refinerycms", :require => 'dashboard'
+gem 'refinerycms-inquiries', version, :path => "#{engine_path}/refinerycms", :require => 'inquiries'
+gem 'refinerycms-images', version, :path => "#{engine_path}/refinerycms", :require => 'images'
+gem 'refinerycms-pages', version, :path => "#{engine_path}/refinerycms", :require => 'pages'
+gem 'refinerycms-resources', version, :path => "#{engine_path}/refinerycms", :require => 'resources'
+gem 'refinerycms-settings', version, :path => "#{engine_path}/refinerycms", :require => 'settings'
 
 # Specify additional Refinery CMS Engines here:
 # gem 'refinerycms-news',       '~> 0.9.8', :require => 'news'
