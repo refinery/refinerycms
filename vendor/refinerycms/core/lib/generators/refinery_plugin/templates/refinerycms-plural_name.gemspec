@@ -3,6 +3,7 @@
 Gem::Specification.new do |s|
   s.platform          = Gem::Platform::RUBY
   s.name              = 'refinerycms-<%= plural_name %>'
+  s.version           = '1.0'
   s.description       = '<%= description %>'
   s.date              = '<%= Time.now.strftime('%Y-%m-%d') %>'
   s.summary           = '<%= description %>'
