@@ -31,20 +31,20 @@ class UsersController < ApplicationController
       UserSession.create!(@user)
       if Role[:refinery].users.count == 1
         # this is the superuser if this user is the only user.
-        current_user.add_role(:superuser)
-        current_user.save
+        @user.add_role(:superuser)
+        @user.save
 
         # set this user as the recipient of inquiry notifications, if we're using that engine.
         if defined?(InquirySetting) and
           (notification_recipients = InquirySetting.find_or_create_by_name("Notification Recipients")).present?
           notification_recipients.update_attributes({
-            :value => current_user.email,
+            :value => @user.email,
             :destroyable => false
           })
         end
       end
 
-      flash[:message] = "<h2>#{t('users.create.welcome', :who => current_user.login).gsub(/\.$/, '')}.</h2>".html_safe
+      flash[:message] = "<h2>#{t('users.create.welcome', :who => @user.login).gsub(/\.$/, '')}.</h2>".html_safe
 
       site_name_setting = RefinerySetting.find_or_create_by_name('site_name', :value => "Company Name")
       if site_name_setting.value.to_s =~ /^(|Company\ Name)$/ or Role[:refinery].users.count == 1
