@@ -1,6 +1,6 @@
 require 'rails/generators/migration'
 
-class RefineryPluginGenerator < Rails::Generators::NamedBase
+class RefineryEngineGenerator < Rails::Generators::NamedBase
   
   include Rails::Generators::Migration
   
@@ -26,7 +26,7 @@ class RefineryPluginGenerator < Rails::Generators::NamedBase
       puts "rake db:migrate"
       puts "------------------------"
     else
-      puts "You must specify at least one field. For help: rails generate refinery_plugin"
+      puts "You must specify at least one field. For help: rails generate refinery_engine"
     end
   end
 

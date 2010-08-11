@@ -93,11 +93,11 @@ Mac OS 10.5+ users [this shell install script](http://github.com/maddox/magick-i
 
 ### ...Want more? [Extend with Plugins](http://github.com/resolve/refinerycms/blob/master/vendor/plugins/refinery/plugins.md)
 
-Extend Refinery easily by running the Refinery generator
+Extend Refinery easily by running the Refinery engine generator
 
-    rails generate refinery_plugin
+    rails generate refinery_engine
 
-to get help on how to use that. Or read the full documentation on [writing plugins for Refinery](http://github.com/resolve/refinerycms/blob/master/vendor/plugins/refinery/plugins.md)
+to get help on how to use that. Or read the full documentation on [writing engines for Refinery](http://github.com/resolve/refinerycms/blob/master/vendor/plugins/refinery/plugins.md)
 
 ### Popular Plugins
 

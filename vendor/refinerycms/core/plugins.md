@@ -12,7 +12,7 @@ The Refinery generator is a standard Rails generator that functions just like th
 
 To see how to use the generator run
 
-    rails generate refinery_plugin
+    rails generate refinery_engine
 
 Usage instructions should appear.
 
@@ -24,11 +24,11 @@ First decide what fields they need to manage. In our case, the client is going t
 
 So go to the root of your project and run
 
-    rails generate refinery_plugin
+    rails generate refinery_engine
 
 This will output the help on how to use the generator. To generate the new section we want to manage products we run:
 
-    rails generate refinery_plugin product title:string description:text image:image brochure:resource
+    rails generate refinery_engine product title:string description:text image:image brochure:resource
 
 The generator will output a list of files it generated. You'll notice there is a new plugin that has been added in ``vendor/plugins/products``. This is where both the backend and front end files are held for this new products area.
 
