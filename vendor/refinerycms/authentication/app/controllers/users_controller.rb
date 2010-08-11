@@ -34,8 +34,9 @@ class UsersController < ApplicationController
         current_user.add_role(:superuser)
         current_user.save
 
-        # set this user as the recipient of inquiry notifications
-        if (notification_recipients = InquirySetting.find_or_create_by_name("Notification Recipients")).present?
+        # set this user as the recipient of inquiry notifications, if we're using that engine.
+        if defined?(InquirySetting) and
+          (notification_recipients = InquirySetting.find_or_create_by_name("Notification Recipients")).present?
           notification_recipients.update_attributes({
             :value => current_user.email,
             :destroyable => false
