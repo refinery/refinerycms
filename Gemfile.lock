@@ -188,14 +188,14 @@ DEPENDENCIES
   gherkin
   json_pure (= 1.4.6)
   launchy
-  refinerycms-authentication (= 0.9.8)!
-  refinerycms-core (= 0.9.8)!
-  refinerycms-dashboard (= 0.9.8)!
-  refinerycms-images (= 0.9.8)!
-  refinerycms-inquiries (= 0.9.8)!
-  refinerycms-pages (= 0.9.8)!
-  refinerycms-resources (= 0.9.8)!
-  refinerycms-settings (= 0.9.8)!
+  refinerycms-authentication!
+  refinerycms-core!
+  refinerycms-dashboard!
+  refinerycms-images!
+  refinerycms-inquiries!
+  refinerycms-pages!
+  refinerycms-resources!
+  refinerycms-settings!
   rmagick (~> 2.12.0)
   routing-filter
   rspec (~> 2.0.0.beta.19)
