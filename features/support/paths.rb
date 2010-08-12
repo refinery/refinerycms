@@ -47,15 +47,18 @@ module NavigationHelpers
     when /the list of spam inquiries/
       spam_admin_inquiries_path
 
-    when /the (d|D)ashboard/
+    when /the admin root/
       admin_root_path
+
+    when /the (d|D)ashboard/
+      admin_dashboard_path
 
     when /the login page/
       new_session_path
 
     when /the forgot password page/
       forgot_users_path
-      
+
     when /the reset password page/
       reset_users_path(:reset_code => @user.perishable_token)
 

@@ -6,9 +6,9 @@ Feature: Manage Files
 
   Background:
     Given I am a logged in refinery user
+    And I have no files
 
   Scenario: Create Valid File
-    Given I have no files
     When I go to the list of files
     And I follow "Upload New File"
     And I attach the file at "features/uploads/refinery_is_awesome.txt"
@@ -26,7 +26,6 @@ Feature: Manage Files
     And I should have 1 file
 
   Scenario: Download Existing File
-    Given I have no files
     When I upload the file at "features/uploads/refinery_is_awesome.txt"
     And I go to the list of files
     And I follow "Download this file"

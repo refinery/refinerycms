@@ -8,7 +8,7 @@ Feature: Search
     Given I am a logged in refinery user
 
   Scenario Outline: Search Existing Item
-    Given I have test <item> titled "<title>"
+    Given I have a <item> titled "<title>"
     When I go to the list of <location>
     And I fill in "search" with "<title>"
     And I press "Search"
