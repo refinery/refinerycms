@@ -14,10 +14,10 @@ Unlike other content managers, Refinery is truly __aimed at the end user__ makin
 
 ### For developers
 
-* Easily customise the look to suit the business
-* __[Extend with custom engines](http://github.com/resolve/refinerycms/blob/rails3/vendor/refinerycms/refinery/plugins.md#readme)__ to do anything Refinery doesn't do out of the box
-* Sticks to __"the Rails way"__ as much as possible. We don't force you to learn new templating languages.
-* Uses [jQuery](http://jquery.com/) for fast and concise JavaScript
+* Easily customise the look to suit the business.
+* __[Extend with custom engines](http://github.com/resolve/refinerycms/blob/rails3/vendor/refinerycms/core/engines.md#readme)__ to do anything Refinery doesn't do out of the box.
+* Sticks to __"the Rails way"__ as much as possible; we don't force you to learn new templating languages.
+* Uses [jQuery](http://jquery.com/) for fast and concise Javascript.
 
 ## Requirements
 
@@ -26,10 +26,11 @@ Refinery's gem requirements are:
 * [acts_as_indexed = 0.6.3](http://github.com/parndt/acts_as_indexed)
 * [authlogic = 2.1.5](http://rubygems.org/gems/authlogic)
 * [friendly_id = 3.0.6](http://rubygems.org/gems/friendly_id)
-* [rails = 2.3.8](http://rubygems.org/gems/rails)
+* [rails = 3.0.0](http://rubygems.org/gems/rails)
 * [rmagick ~> 2.12.0](http://rubygems.org/gems/rmagick)
 * [truncate_html = 0.3.2](http://rubygems.org/gems/truncate_html)
 * [will_paginate = 2.3.14](http://rubygems.org/gems/will_paginate)
+* More to add here for rails3 support.
 
 Other dependencies
 
@@ -86,13 +87,13 @@ Mac OS 10.5+ users [this shell install script](http://github.com/maddox/magick-i
 * Control which plugins each user has access to
 * Uses the popular [authlogic](http://github.com/binarylogic/authlogic) authentication Rails plugin
 
-### ...Want more? [Extend with Engines](http://github.com/resolve/refinerycms/blob/rails3/vendor/refinerycms/refinery/plugins.md#readme)
+### ...Want more? [Extend with Engines](http://github.com/resolve/refinerycms/blob/rails3/vendor/refinerycms/core/engines.md#readme)
 
 Extend Refinery easily by running the Refinery engine generator
 
     rails generate refinery_engine
 
-to get help on how to use that. Or read the full documentation on [writing engines for Refinery](http://github.com/resolve/refinerycms/blob/rails3/vendor/refinerycms/refinery/plugins.md#readme)
+to get help on how to use that. Or read the full documentation on [writing engines for Refinery](http://github.com/resolve/refinerycms/blob/rails3/vendor/refinerycms/core/engines.md#readme)
 
 ### Popular Engines
 
