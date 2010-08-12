@@ -113,7 +113,7 @@
             }
         }
 
-        if (e.nodeName == this.options.listTag.toUpperCase()) {
+        if (e.nodeName.toUpperCase() == this.options.listTag.toUpperCase()) {
             this.list = $(e);
             this.container = this.list.parent();
 
@@ -569,7 +569,9 @@
                 c = e;
                 var d = this.dimension(e);
                 if (d == 0) {
-                    alert('jCarousel: No width/height set for items. This will cause an infinite loop. Aborting...');
+                    if (console && $.isFunction(console.log)) {
+                      console.log('jCarousel: No width/height set for items. This will cause an infinite loop. Aborting...');
+                    }
                     return 0;
                 }
 
@@ -842,9 +844,11 @@
         },
 
         clipping: function() {
+          if (this.clip[0] != null) {
             return !this.options.vertical ?
                 this.clip[0].offsetWidth - $jc.intval(this.clip.css('borderLeftWidth')) - $jc.intval(this.clip.css('borderRightWidth')) :
                 this.clip[0].offsetHeight - $jc.intval(this.clip.css('borderTopWidth')) - $jc.intval(this.clip.css('borderBottomWidth'));
+          }
         },
 
         index: function(i, s) {
