@@ -64,15 +64,14 @@ class UsersController < ApplicationController
       if (params[:user].present? and params[:user][:email].present? and
           user = User.find_by_email(params[:user][:email])).present?
         user.deliver_password_reset_instructions!(request)
-        flash[:notice] = t('users.forgot.email_reset_sent')
-        redirect_back_or_default new_session_url
+        flash.now[:notice] = t('users.forgot.email_reset_sent')
       else
         @user = User.new(params[:user])
         if (email = params[:user][:email]).blank?
           flash.now[:error] = t('users.forgot.blank_email')
         else
           flash.now[:error] = t('users.forgot.email_not_associated_with_account',
-                                :email => params[:user][:email])
+                                :email => email).html_safe
         end
       end
     end
@@ -81,16 +80,22 @@ class UsersController < ApplicationController
   def reset
     if params[:reset_code] and @user = User.find_using_perishable_token(params[:reset_code])
       if request.post?
-        UserSession.create(@user)
-        if @user.update_attributes(:password => params[:user][:password],
-                                   :password_confirmation => params[:user][:password_confirmation])
+        if (params[:user][:password].present? and params[:user][:password_confirmation].present?)
+          if @user.update_attributes(:password => params[:user][:password],
+                                     :password_confirmation => params[:user][:password_confirmation])
 
-          flash[:notice] = t('users.reset.successful', :email => @user.email)
-          redirect_back_or_default admin_root_url
+            UserSession.create(@user)
+
+            redirect_to(admin_root_url, :notice => t('users.reset.successful', :email => @user.email))
+          else
+            render :action => 'reset'
+          end
+        else
+          flash.now[:error] = t('users.reset.password_blank')
         end
       end
     else
-      redirect_to(forgot_users_url, :error => t('users.reset.code_invalid'))
+      redirect_to(forgot_users_url, :flash => {:error => t('users.reset.code_invalid')})
     end
   end
 

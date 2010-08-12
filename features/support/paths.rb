@@ -48,7 +48,16 @@ module NavigationHelpers
       spam_admin_inquiries_path
 
     when /the (d|D)ashboard/
-      admin_dashboard_path
+      admin_root_path
+
+    when /the login page/
+      new_session_path
+
+    when /the forgot password page/
+      forgot_users_path
+      
+    when /the reset password page/
+      reset_users_path(:reset_code => @user.perishable_token)
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
