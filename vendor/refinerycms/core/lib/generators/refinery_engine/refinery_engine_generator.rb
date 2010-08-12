@@ -16,15 +16,17 @@ class RefineryEngineGenerator < Rails::Generators::NamedBase
       end
       
       # Update the gem file 
-      Rails.root.join('Gemfile').open('a') do |f|
-        f.write "\ngem 'refinerycms-#{plural_name}', '1.0', :path => 'vendor/engines', :require => '#{plural_name}'"
-      end
+      unless Rails.env == 'test'
+        Rails.root.join('Gemfile').open('a') do |f|
+          f.write "\ngem 'refinerycms-#{plural_name}', '1.0', :path => 'vendor/engines', :require => '#{plural_name}'"
+        end
 
-      puts "------------------------"
-      puts "Now run:"
-      puts "bundle install"
-      puts "rake db:migrate"
-      puts "------------------------"
+        puts "------------------------"
+        puts "Now run:"
+        puts "bundle install"
+        puts "rake db:migrate"
+        puts "------------------------"
+      end
     else
       puts "You must specify at least one field. For help: rails generate refinery_engine"
     end
