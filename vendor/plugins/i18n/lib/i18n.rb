@@ -64,6 +64,7 @@ class Refinery::I18n
           :sl => 'Slovenian',
           :es => 'Espa&ntilde;ol',
           :it => 'Italiano',
+          :'zh-CN' => 'Simple Chinese',
           :de => 'Deutsch'
         },
         {
