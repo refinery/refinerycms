@@ -16,7 +16,7 @@ Given /^I have no pages$/ do
   Page.delete_all
 end
 
-Given /^I have test page titled "([^"]*)"$/ do |title|
+Given /^I have a page titled "([^"]*)"$/ do |title|
   Page.create(:title => title)
 end
 

@@ -6,6 +6,7 @@ Feature: Manage Inquiries
 
   Background:
     Given I am a logged in refinery user
+    And I have no inquiries
     And I have an inquiry from "David Jones" with email "dave@refinerycms.com" and message "Hello, I really like your website.  Was it hard to build and maintain or could anyone do it?"
 
   Scenario: Inquiries List

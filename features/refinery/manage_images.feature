@@ -6,9 +6,9 @@ Feature: Manage Images
 
   Background:
     Given I am a logged in refinery user
+    And I have no images
 
   Scenario: Create Valid Image
-    Given I have no images
     When I go to the list of images
     And I follow "Create New Image"
     And I attach the image at "features/uploads/beach.jpeg"
@@ -21,7 +21,6 @@ Feature: Manage Images
     And the image should have mime_type "image/jpeg"
 
   Scenario: Create Invalid Image (format)
-    Given I have no images
     When I go to the list of images
     And I follow "Create New Image"
     And I attach the image at "features/uploads/refinery_is_awesome.txt"

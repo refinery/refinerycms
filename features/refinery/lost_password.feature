@@ -36,5 +36,5 @@ Feature: Lost Password
       And I fill in "Password" with "cukes"
       And I fill in "Password confirmation" with "cukes"
       And I press "Reset password"
-      Then I should be on the dashboard
+      Then I should be on the admin root
       And I should see "Password reset successfully for"
