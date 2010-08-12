@@ -1,7 +1,5 @@
 class Admin::DialogsController < Admin::BaseController
 
-  layout 'admin_dialog'
-
   def show
     if (@dialog_type = params[:id].try(:downcase))
       @submit_button_text = "Insert"
