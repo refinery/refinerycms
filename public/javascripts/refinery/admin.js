@@ -63,6 +63,7 @@ init_interface = function() {
     $menu.jcarousel({
       vertical: false
       , scroll: 1
+      , start: 2
       , buttonNextHTML: "<img src='/images/refinery/carousel-right.png' alt='down' height='15' width='10' />"
       , buttonPrevHTML: "<img src='/images/refinery/carousel-left.png' alt='up' height='15' width='10' />"
       , listTag: $menu.get(0).tagName.toLowerCase()
