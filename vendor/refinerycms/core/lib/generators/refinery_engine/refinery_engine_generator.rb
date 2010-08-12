@@ -1,9 +1,9 @@
 require 'rails/generators/migration'
 
 class RefineryEngineGenerator < Rails::Generators::NamedBase
-  
+
   include Rails::Generators::Migration
-  
+
   source_root File.expand_path('../templates', __FILE__)
   argument :attributes, :type => :array, :default => [], :banner => "field:type field:type"
 
@@ -14,7 +14,7 @@ class RefineryEngineGenerator < Rails::Generators::NamedBase
           template path, plugin_path_for(path)
         end
       end
-      
+
       # Update the gem file 
       unless Rails.env == 'test'
         Rails.root.join('Gemfile').open('a') do |f|
@@ -43,7 +43,7 @@ protected
     # hack can be removed after issue is fixed
     next_migration_number = ActiveRecord::Generators::Base.next_migration_number(File.dirname(__FILE__))
     path = path.gsub("migration_number", next_migration_number)
-    
+
     # replace our local db path with the app one instead.
     path = path.gsub("/db/", "/../../../db/")
   end

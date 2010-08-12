@@ -5,8 +5,8 @@ files = %w( .gitignore .yardopts Gemfile Rakefile *.md public/.htaccess config.r
   files += Dir.glob("#{dir}/**/*")
 end
 
-files.reject! do |f| 
-  !File.exist?(f) or 
+files.reject! do |f|
+  !File.exist?(f) or
   f =~ /^(vendor\/engines\/refinerycms)|(public\/system)|(config\/database.yml$)|(.*\/cache)|(db\/.*\.sqlite3?$)|(\.log$)|(\.rbc$)/}
 
 gemspec = <<EOF
