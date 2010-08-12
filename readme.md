@@ -86,11 +86,6 @@ Mac OS 10.5+ users [this shell install script](http://github.com/maddox/magick-i
 * Control which plugins each user has access to
 * Uses the popular [authlogic](http://github.com/binarylogic/authlogic) authentication Rails plugin
 
-### [Themes](http://github.com/resolve/refinerycms/blob/master/vendor/plugins/themes/readme.md)
-
-* Customise Refinery to look exactly how you want
-* The Rails Way: use regular Rails erb views, no templating languages here!
-
 ### ...Want more? [Extend with Plugins](http://github.com/resolve/refinerycms/blob/master/vendor/plugins/refinery/plugins.md)
 
 Extend Refinery easily by running the Refinery engine generator
