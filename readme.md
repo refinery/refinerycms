@@ -86,7 +86,7 @@ Mac OS 10.5+ users [this shell install script](http://github.com/maddox/magick-i
 * Control which plugins each user has access to
 * Uses the popular [authlogic](http://github.com/binarylogic/authlogic) authentication Rails plugin
 
-### ...Want more? [Extend with Plugins](http://github.com/resolve/refinerycms/blob/master/vendor/plugins/refinery/plugins.md)
+### ...Want more? [Extend with Engines](http://github.com/resolve/refinerycms/blob/master/vendor/plugins/refinery/plugins.md)
 
 Extend Refinery easily by running the Refinery engine generator
 
@@ -94,7 +94,7 @@ Extend Refinery easily by running the Refinery engine generator
 
 to get help on how to use that. Or read the full documentation on [writing engines for Refinery](http://github.com/resolve/refinerycms/blob/master/vendor/plugins/refinery/plugins.md)
 
-### Popular Plugins
+### Popular Engines
 
 * [Portfolio](http://github.com/resolve/refinerycms-portfolio) - manage groups of images like an image gallery.
 * [News](http://github.com/resolve/refinerycms-news) - post and manage news items.
