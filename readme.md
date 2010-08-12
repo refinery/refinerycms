@@ -15,7 +15,7 @@ Unlike other content managers, Refinery is truly __aimed at the end user__ makin
 ### For developers
 
 * Easily customise the look to suit the business
-* __[Extend with custom plugins](http://github.com/resolve/refinerycms/blob/master/vendor/plugins/refinery/plugins.md)__ to do anything Refinery doesn't do out of the box
+* __[Extend with custom engines](http://github.com/resolve/refinerycms/blob/rails3/vendor/refinerycms/refinery/plugins.md)__ to do anything Refinery doesn't do out of the box
 * Sticks to __"the Rails way"__ as much as possible. We don't force you to learn new templating languages.
 * Uses [jQuery](http://jquery.com/) for fast and concise JavaScript
 
@@ -53,53 +53,53 @@ Mac OS 10.5+ users [this shell install script](http://github.com/maddox/magick-i
 
 ## Features
 
-### [Pages](http://github.com/resolve/refinerycms/blob/master/vendor/plugins/pages/readme.md)
+### [Pages](http://github.com/resolve/refinerycms/blob/rails3/vendor/refinerycms/pages/readme.md)
 
 * Easily edit and manage pages with a [WYSIWYG visual editor](http://www.wymeditor.org/)
 * Manage you site's structure
 
-### [Images](http://github.com/resolve/refinerycms/blob/master/vendor/plugins/images/readme.md) & [Files](http://github.com/resolve/refinerycms/blob/master/vendor/plugins/resources/readme.md)
+### [Images](http://github.com/resolve/refinerycms/blob/rails3/vendor/refinerycms/images/readme.md) & [Files](http://github.com/resolve/refinerycms/blob/rails3/vendor/refinerycms/resources/readme.md)
 
 * Easily upload and insert images
 * Upload and link to resources such as PDF documents
 * Uses the popular [attachment_fu](http://github.com/technoweenie/attachment_fu) Rails plugin
 * Supports storage on Amazon S3
 
-### [Inquiries](http://github.com/resolve/refinerycms/blob/master/vendor/plugins/inquiries/readme.md)
+### [Inquiries](http://github.com/resolve/refinerycms/blob/rails3/vendor/refinerycms/inquiries/readme.md)
 
 * Collect inquiries from a contact form
 * Manage your inquiries and be notified when new ones come in
 * Checks new inquiries for spam
 
-### [Settings](http://github.com/resolve/refinerycms/blob/master/vendor/plugins/refinery_settings/readme.md)
+### [Settings](http://github.com/resolve/refinerycms/blob/rails3/vendor/refinerycms/refinery_settings/readme.md)
 
 * Manage the behaviour of Refinery
 * Easily integrate with [Google Analytics](https://www.google.com/analytics/)
 
-### [Dashboard](http://github.com/resolve/refinerycms/blob/master/vendor/plugins/dashboard/readme.md)
+### [Dashboard](http://github.com/resolve/refinerycms/blob/rails3/vendor/refinerycms/dashboard/readme.md)
 
 * Get an overview of what has been updated recently and see recent inquiries.
 
-### [Authentication & Users](http://github.com/resolve/refinerycms/blob/master/vendor/plugins/authentication/readme.md)
+### [Authentication & Users](http://github.com/resolve/refinerycms/blob/rails3/vendor/refinerycms/authentication/readme.md)
 
 * Manage who can access Refinery
 * Control which plugins each user has access to
 * Uses the popular [authlogic](http://github.com/binarylogic/authlogic) authentication Rails plugin
 
-### ...Want more? [Extend with Engines](http://github.com/resolve/refinerycms/blob/master/vendor/plugins/refinery/plugins.md)
+### ...Want more? [Extend with Engines](http://github.com/resolve/refinerycms/blob/rails3/vendor/refinerycms/refinery/plugins.md)
 
 Extend Refinery easily by running the Refinery engine generator
 
     rails generate refinery_engine
 
-to get help on how to use that. Or read the full documentation on [writing engines for Refinery](http://github.com/resolve/refinerycms/blob/master/vendor/plugins/refinery/plugins.md)
+to get help on how to use that. Or read the full documentation on [writing engines for Refinery](http://github.com/resolve/refinerycms/blob/rails3/vendor/refinerycms/refinery/plugins.md)
 
 ### Popular Engines
 
 * [Portfolio](http://github.com/resolve/refinerycms-portfolio) - manage groups of images like an image gallery.
 * [News](http://github.com/resolve/refinerycms-news) - post and manage news items.
 
-[Full plugin list here](http://wiki.github.com/resolve/refinerycms/plugins)
+[Full engine list here](http://wiki.github.com/resolve/refinerycms/engines)
 
 ## License
 
