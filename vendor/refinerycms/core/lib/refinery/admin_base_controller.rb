@@ -1,6 +1,6 @@
 class Refinery::AdminBaseController < ApplicationController
 
-  layout proc { |controller| "admin#{"_dialog" if controller.from_dialog?}" }
+  layout :layout?
 
   before_filter :correct_accept_header, :login_required, :restrict_plugins, :restrict_controller
   after_filter :store_location?, :except => [:new, :create, :edit, :update, :destroy, :update_positions] # for redirect_back_or_default
@@ -21,11 +21,11 @@ class Refinery::AdminBaseController < ApplicationController
       # change any links in the copy to the admin_root_url
       # and any references to "home page" to "Dashboard"
       #TODO Add language
-      @page[part_symbol] = @page[Page.default_parts.first.to_sym].gsub(
-                            /href=(\'|\")\/(\'|\")/, "href='#{admin_root_url(:only_path => true)}'"
-                           ).gsub("home page", "Dashboard")
+      @page[Page.default_parts.first.to_sym] = @page[Page.default_parts.first.to_sym].gsub(
+        /href=(\'|\")\/(\'|\")/, "href='#{admin_root_url(:only_path => true)}'"
+       ).gsub("home page", "Dashboard")
 
-      render :template => "/pages/show", :status => 404
+      render :template => "/pages/show", :status => 404, :layout => layout?
     else
       # fallback to the default 404.html page.
       render :file => Rails.root.join("public", "404.html").cleanpath.to_s, :layout => false, :status => 404
@@ -72,6 +72,10 @@ protected
   def find_pages_for_menu; end
 
 private
+  def layout?
+    "admin#{"_dialog" if from_dialog?}"
+  end
+
   # This fixes the issue where Internet Explorer browsers are presented with a basic auth dialogue
   # rather than the xhtml one that they *can* accept but don't think they can.
   def correct_accept_header

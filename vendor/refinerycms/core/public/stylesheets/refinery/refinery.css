@@ -179,7 +179,7 @@ a {
 #content .wym_box a, #content .ui-tabs a {
   border-bottom: 0px none;
 }
-.splash #content {
+.index #content, .splash #content {
   background-color: white;
   background-repeat: repeat-y;
 }

@@ -6,6 +6,7 @@ Feature: Manage Pages
 
   Background:
     Given I am a logged in refinery user
+    And I have no pages
 
   Scenario: Pages List
     Given I have pages titled Home, About
@@ -14,7 +15,6 @@ Feature: Manage Pages
     And I should see "About"
 
   Scenario: Create Valid Page
-    Given I have no pages
     When I go to the list of pages
     And I follow "Create New Page"
     And I fill in "Title" with "Pickles are Cucumbers Soaked in Evil"
@@ -23,7 +23,6 @@ Feature: Manage Pages
     And I should have 1 page
 
   Scenario: Create Invalid Page (without title)
-    Given I have no pages
     When I go to the list of pages
     And I follow "Create New Page"
     And I press "Save"
@@ -40,7 +39,7 @@ Feature: Manage Pages
     And I should have a page at /about--2
 
   Scenario: Delete Page
-    Given I have test page titled "test"
+    Given I have a page titled "test"
     When I go to the list of pages
     And I follow "Remove this page forever"
     Then I should see "'test' was successfully destroyed."
