@@ -13,6 +13,10 @@ en:
     # images:
     #   existing_image:
     #     submit_insert: Insert
+    dialogs:
+      show:
+        save: Save
+        cancel: Cancel
   refinery:
     other: Other %{what}
     reorder: Reorder %{what}
