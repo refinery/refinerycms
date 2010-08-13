@@ -1,0 +1,80 @@
+en:
+  plugins:
+    refinery_users:
+      title: Users
+  admin:
+    users:
+      update:
+        cannot_remove_user_plugin_from_current_user: "You cannot remove the 'Users' plugin from the currently logged in account."
+      form:
+        blank_password_keeps_current: Leaving password blank keeps the current password
+        enable_all: enable all
+      index:
+        create_new_user: Create New User
+        no_users_yet:  There are no users yet. Click "Create New User" to add your first user.
+      user:
+        confirm_delete_message: "Are you sure you want to delete '{{who}}'?"
+        confirm_delete_title: Remove this user forever
+        edit_user: Edit this user
+        email_user: Email this user
+        preview: ({{who}}) created {{created_at}}
+  sessions:
+    login_successful: Logged in successfully
+    login_failed: Sorry, your password or username was incorrect.
+    logged_out: You have been logged out.
+    new:
+      hello_please_sign_in: "Hello! Please sign in."
+      sign_in: Sign in
+      forgot_password: I forgot my password
+  users:
+    setup_website_name: "First let's give the site a name. <a href='{{link}}' name='{{title}}'>Go here</a> to edit your website's name"
+    signup_disabled: User signup is disabled
+    new:
+      fill_form: Fill out your details below so that we can get you started.
+      sign_up: Sign up
+    create:
+      welcome: Welcome to Refinery, {{who}}
+      signup_complete: Signup complete!
+    forgot:
+      email_address: Email Address
+      enter_email_address: Please enter the email address for your account.
+      reset_password: Reset password
+      blank_email: You did not enter an email address.
+      email_not_associated_with_account: "Sorry, '{{email}}' isn't associated with any accounts.<br/>Are you sure you typed the correct email address?"
+      email_reset_sent: An email has been sent to you with a link to reset your password.
+    reset:
+      code_invalid: "We&apos;re sorry, but this reset code has expired or is invalid. If you are having issues try copying and pasting the URL from your email into your browser or restarting the reset password process."
+      successful: "Password reset successfully for {{email}}"
+      pick_new_password_for: "Pick a new password for {{email}}"
+      reset_password: Reset password
+  user_mailer:
+    please_activate: Please activate your new account
+    activated: Your account has been activated!
+    activated_email: "{{who}}, your account has been activated. You may now start adding your plugins:"
+    account_created: Your account has been created.
+    user_name: Username {{name}}
+    password: Password {{password}}
+    visit_url: "Visit this url to activate your account:"
+    link_to_reset_your_password: Link to reset your password
+  authlogic:
+    error_messages:
+      login_blank: can not be blank
+      login_not_found: is not valid
+      login_invalid: should use only letters, numbers, spaces, and .-_@ please.
+      consecutive_failed_logins_limit_exceeded: Consecutive failed logins limit exceeded, account is disabled.
+      email_invalid: should look like an email address.
+      password_blank: can not be blank
+      password_invalid: is not valid
+      not_active: Your account is not active
+      not_confirmed: Your account is not confirmed
+      not_approved: Your account is not approved
+      no_authentication_details: You did not provide any details for authentication.
+    models:
+      user_session: UserSession
+    attributes:
+      user_session:
+        login: Login
+        email: Email
+        password: Password
+        remember_me: Remember me
+        incorrect: "Sorry, your {{login_field}} or password was incorrect."
