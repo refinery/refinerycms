@@ -104,7 +104,7 @@ to get help on how to use that. Or read the full documentation on [writing plugi
 * [Portfolio](http://github.com/resolve/refinerycms-portfolio) - manage groups of images like an image gallery.
 * [News](http://github.com/resolve/refinerycms-news) - post and manage news items.
 
-[Full plugin list here](http://wiki.github.com/resolve/refinerycms/plugins)
+[Full plugin list here](http://github.com/resolve/refinerycms/wiki/engines)
 
 ## License
 
