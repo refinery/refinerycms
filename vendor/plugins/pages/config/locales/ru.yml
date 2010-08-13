@@ -1,0 +1,97 @@
+en:
+  plugins:
+    refinery_pages:
+      title: Pages
+  admin:
+    pages_dialogs:
+      not_allowed: You do not have permission to access this feature.
+      page_link:
+        link_to_this_page: Link to this page
+      link_to:
+        your_page:
+          tab_name: Your page
+        web_address:
+          tab_name: Website
+          location: Location
+          new_window: New window
+          new_window_label: Check this box to have the link open in a new browser window.
+          not_sure: Not sure what to put in the box above?
+          step1: Find the page on the web you want to link to.
+          step2: "Copy the web address from your browser's address bar and paste it into the box above."
+        email_address:
+          tab_name: Email address
+          subject_line_optional: Optional subject
+          body_optional: Optional body
+          not_sure: Not sure what to put in the boxes above?
+          step1: "Write or copy and paste (e.g. from your address book) the email address to link to into the '<strong>Email Address</strong>' box above."
+          step2: "Use the '<strong>Subject Line</strong>' box above if you want the message to be composed with a <strong>pre-written subject line</strong>."
+          step3: "Use the <strong>Email Body</strong> box above if you want the message to be composed with a <strong>pre-written message</strong>."
+        your_resource:
+          tab_name: Your file
+          link_to_this_resource: Link to this file
+    pages:
+      page:
+        view_live: View this page live <br/><em>(opens in a new window)</em>
+        edit_this_page: Edit this page
+        confirm_delete_page_title: Delete this page
+        confirm_delete_page_message: "Are you sure you want to delete the page '{{title}}'?"
+        hidden: hidden
+        draft: draft
+      form_new_page_parts:
+        title: Title
+      form_advanced_options:
+        toggle_advanced_options: Click to access meta tag settings and menu options
+        parent_page: Parent page
+        title: Title
+        create_content_section: Create content section
+        delete_content_section: Delete content section
+        advanced_options: Advanced Options
+        explain_page_different_title: If you want the page to have a different title than the one that shows in the menu and browser title then enter it here.
+        parent_id_title: Parent
+        custom_title: Custom title
+        title_type: "Type:"
+        title_types:
+          none: None
+          text: Text
+          image: Image
+        custom_url: Custom URL
+        custom_url_explanation: "Enter a URL if this page links to an external site or to a pre-existing resource e.g. a contact page. <br/> Note: This URL must point to a location that exists; a new one will not be created."
+        draft: Draft
+        show_in_menu_title: Show in menu
+        show_in_menu_description: Display this page in the site menu
+        show_in_menu_help: "Uncheck this box if you want to remove a page from your site menu. This can be handy if you have a page you want to link people to directly but don&apos;t want to show the page in the menu."
+        draft: Draft
+        save_as_draft: Save as Draft
+        save: Save
+        cancel: Cancel
+        skip_to_first_child: Skip top-level page
+        skip_to_first_child_label: Redirect visitors to the first sub-level page.
+        skip_to_first_child_help: "This option makes this page link to the first page underneath. This can be useful when grouping pages together."
+        link_url: "Forward this page to another website or page"
+        link_url_help: "If you want this page to go to another website or page when you click this page in the menu, enter a URL. e.g. http://google.com otherwise leave it blank"
+        parent_page_help: "You can put a page under another page by selecting it in the list. If you want this page to be a top-level page, just leave it blank."
+        custom_title_help: "If you want the page to have a different title than the one that shows in the menu then select &apos;Text&apos; and enter it here."
+      form_advanced_options_seo:
+        seo: Search Engine Optimization
+        seo_override_title: Browser title
+        seo_override_title_help: "Enter a 5-10 word title that summarizes the contents of this page."
+        meta_keywords_title: Meta keywords
+        meta_keywords_help: Enter 5-10 keywords that relate to this page. Separate keywords by a comma.
+        meta_description_title: Meta description
+        meta_description_help: Enter a concise two or three sentences describing what this page is about.
+        js:
+          content_section:
+            create: Create Content Section
+            already_exists: "A content section with that title already exists, please choose another."
+            title_empty: "You have not entered a title for the content section, please enter one."
+            confirm_delete: "This will remove the content section {{section_name}} when the page is saved and erase all content that has been entered into it, Are you sure?"
+      index:
+        create_new_page: Create New Page
+        reorder_pages: Reorder Pages
+        reorder_pages_done: Done Reordering Pages
+        sorry_no_results: Sorry! There are no results found.
+        no_pages_yet: There are no pages yet.  Click "Create New Page" to add your first page.
+  activerecord:
+    attributes:
+      page:
+        skip_to_first_child: "Skip to first child?"
