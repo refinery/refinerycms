@@ -108,7 +108,7 @@ protected
   end
 
   def show_welcome_page?
-    render :template => "/welcome", :layout => "admin" if just_installed? and controller_name != "users"
+    render :template => "/welcome", :layout => "login" if just_installed? and controller_name != "users"
   end
 
 private
