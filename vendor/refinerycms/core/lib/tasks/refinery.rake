@@ -345,7 +345,7 @@ end
 namespace :test do
   desc "Run the tests that ship with Refinery to ensure any changes you've made haven't caused instability."
   task :refinery do
-    errors = %w(test:refinery:units test:refinery:functionals test:refinery:integration test:refinery:benchmark spec cucumber).collect do |task|
+    errors = %w(spec cucumber).collect do |task|
       begin
         Rake::Task[task].invoke
         nil
@@ -354,46 +354,6 @@ namespace :test do
       end
     end.compact
     abort "Errors running #{errors.to_sentence(:locale => :en)}!" if errors.any?
-  end
-  namespace :refinery do
-    Rake::TestTask.new(:units => 'db:test:prepare') do |t|
-      t.libs << Refinery.root.join('test').to_s
-      t.libs += Dir[Rails.root.join('vendor', 'plugins', '**', 'test').to_s].flatten if Refinery.is_a_gem
-      t.pattern = [Refinery.root.join('test', 'unit', '**', '*_test.rb').to_s]
-      t.pattern << Rails.root.join('vendor', 'plugins', '**', 'test', 'unit', '**', '*_test.rb').to_s if Refinery.is_a_gem
-      t.verbose = true
-      ENV['RAILS_ROOT'] = Rails.root.to_s
-    end
-    Rake::Task['test:refinery:units'].comment = 'Run the unit tests in Refinery.'
-
-    Rake::TestTask.new(:functionals => 'db:test:prepare') do |t|
-      t.libs << Refinery.root.join('test').to_s
-      t.libs += Dir[Rails.root.join('vendor', 'plugins', '**', 'test').to_s].flatten if Refinery.is_a_gem
-      t.pattern = [Refinery.root.join('test', 'functional', '**', '*_test.rb').to_s]
-      t.pattern << Rails.root.join('vendor', 'plugins', '**', 'test', 'functional', '**', '*_test.rb').to_s if Refinery.is_a_gem
-      t.verbose = true
-      ENV['RAILS_ROOT'] = Rails.root.to_s
-    end
-    Rake::Task['test:refinery:functionals'].comment = 'Run the functional tests in Refinery.'
-
-    Rake::TestTask.new(:integration => 'db:test:prepare') do |t|
-      t.libs << Refinery.root.join('test').to_s
-      t.libs += Dir[Rails.root.join('vendor', 'plugins', '**', 'test').to_s]
-      t.pattern = [Refinery.root.join('test', 'integration', '**', '*_test.rb').to_s]
-      t.pattern << Rails.root.join('vendor', 'plugins', '**', 'test', 'integration', '**', '*_test.rb').to_s if Refinery.is_a_gem
-      t.verbose = true
-      ENV['RAILS_ROOT'] = Rails.root.to_s
-    end
-    Rake::Task['test:refinery:integration'].comment = 'Run the integration tests in Refinery.'
-
-    Rake::TestTask.new(:benchmark => 'db:test:prepare') do |t|
-      t.libs << Refinery.root.join('test').to_s
-      t.pattern = Refinery.root.join('test', 'performance', '**', '*_test.rb')
-      t.verbose = true
-      t.options = '-- --benchmark'
-      ENV['RAILS_ROOT'] = Rails.root.to_s
-    end
-    Rake::Task['test:refinery:benchmark'].comment = 'Benchmark the performance tests in Refinery'
   end
 end
 
@@ -404,6 +364,6 @@ task :whitespace do
   elsif RUBY_PLATFORM =~ /darwin/
     sh %{find . -name '*.*rb' -exec sed -i '' 's/\t/  /g' {} \\; -exec sed -i '' 's/ *$//g' {} \\; }
   else
-    puts "This doesn't work on windows. Use a custom whitespace tool for that platform."
+    puts "This doesn't work on systems other than OSX or Linux. Please use a custom whitespace tool for your platform '#{RUBY_PLATFORM}'."
   end
 end
