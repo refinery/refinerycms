@@ -1,0 +1,45 @@
+en:
+  activerecord:
+    models:
+      refinery_setting: Refinery setting
+    attributes:
+      refinery_setting:
+        name: Name
+        value: Value
+        restricted: Restricted
+  admin:
+    refinery_settings:
+      refinery_setting:
+        edit: 'Edit this setting'
+        confirm: 'Are you sure you want to remove this setting forever?'
+        remove: 'Remove this setting forever'
+      index:
+        new: Create new setting
+        empty_set: There are no settings yet.
+        create_first: "Click '{{link}}' to add your first setting."
+      form:
+        restart_may_be_in_order: "<strong>Please note</strong> that you may need to restart the website for this setting to take effect."
+        yes_make_this_setting_restricted: "Yes, make this setting restricted only to superusers."
+        help:
+          restricted: This makes the setting only visible and editable by users who are superusers (like you).
+      help:
+        activity_show_limit: This limits the number of items that can display in the Dashboard listing.
+        analytics_page_code: This code activates Google Analytics tracking within your website. If the setting is left blank or set to UA-xxxxxx-x then this is disabled and no remote calls to Google Analytics are made.
+        image_dialogue_sizes: This setting applies to the Insert Image dialogue. You must implement the different thumbnail sizes as well as changing this.
+        image_thumbnails: If you modify this setting you will have to regenerate your images by running rake images:regenerate (or rake images:update if you only added more thumbnails) otherwise the setting will not apply to existing images.
+        menu_hide_children: Hide any subpages from the menu even if they are present.
+        new_page_parts: Enable adding new page parts (content sections) in the page editors.
+        page_title: Very complex options for setting the page title. Here you can set custom CSS class or a different tag or tell it to breadcrumb with pages in its ancestry.
+        page_advanced_options_include_seo: This controls whether the SEO options are displayed in the advanced options for a page.
+        preferred_image_view: This controls which view the images plugin displays existing images in - grid for 'Grid View' and list for 'List View'. There is a button to automate this process on the images plugin itself.
+        refinery_enable_backend_reordering: You can remove the ability to reorder the plugins' display order with this.
+        refinery_menu_cache_action_suffix: This controls the key that is used to cache the site menu. If you are using a theme then it is better to leave this as the default as the theme will handle it.
+        show_contact_privacy_link: You can hide or show the link to the privacy policy page on the contact form by the submit button.
+        site_name: This is the name for your website and will display in the header and in the Refinery backend and in the footer copyright statement for some themes.
+        theme: Enter the name for the theme that you want to be enabled. This will take effect immediately and must correctly identify an existing theme for this to work.
+        use_google_ajax_libraries: If you want to use Google's AJAX CDN then set this to true.
+        use_marketable_urls: Changes urls from /pages/about to /about and automatically manages conflicts with other plugins.
+        use_resource_caching: Recommended to enable this in production mode as it bundles javascript assets and stylesheet assets into single file packages to reduce the number of web requests on your site and speed it up.
+  plugins:
+    refinery_settings:
+      title: Settings
