@@ -2,9 +2,6 @@ class Admin::DialogsController < Admin::BaseController
 
   def show
     if (@dialog_type = params[:id].try(:downcase))
-      @submit_button_text = "Insert"
-      @cancel_button_text = "Cancel"
-
       url_params = params.reject {|key, value| key =~ /(action)|(controller)/}
 
       @iframe_src = if @dialog_type == 'image'

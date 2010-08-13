@@ -13,7 +13,7 @@
     <input type='hidden' id='wym_target' class='wym_target' value='' />
   <% end %>
 
-    <input id='wym_dialog_submit' class='wym_submit submit_dialog button' type='button' value='<%= @submit_button_text ||= 'Save' %>' />
-    <a id='wym_dialog_cancel' href='' class='wym_cancel close_dialog button'><%= @cancel_button_text ||= 'Cancel' %></a>
+    <input id='wym_dialog_submit' class='wym_submit submit_dialog button' type='button' value='<%= t('.save') %>' />
+    <a id='wym_dialog_cancel' href='' class='wym_cancel close_dialog button'><%= t('.cancel') %></a>
   </div>
 </form>
