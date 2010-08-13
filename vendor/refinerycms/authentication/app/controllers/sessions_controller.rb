@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  layout 'admin'
+  layout 'login'
 
   before_filter :redirect?, :only => [:new, :create]
   before_filter :redirect_to_new, :only => [:index, :show]

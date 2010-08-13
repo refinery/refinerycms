@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   #before_filter :require_no_user, :only => [:new, :create]
   #before_filter :require_user, :only => [:show, :edit, :update]
 
-  layout 'admin'
+  layout 'login'
 
   def new
     @user = User.new
@@ -61,17 +61,17 @@ class UsersController < ApplicationController
 
   def forgot
     if request.post?
-      if (params[:user].present? and params[:user][:email].present? and
-          user = User.find_by_email(params[:user][:email])).present?
+      if params[:user].present? and (email = params[:user][:email]).present? and
+          (user = User.find_by_email(email)).present?
+
         user.deliver_password_reset_instructions!(request)
-        flash.now[:notice] = t('users.forgot.email_reset_sent')
+        redirect_to new_session_url, :notice => t('users.forgot.email_reset_sent')
       else
         @user = User.new(params[:user])
-        if (email = params[:user][:email]).blank?
-          flash.now[:error] = t('users.forgot.blank_email')
+        flash.now[:error] = if (email = params[:user][:email]).blank?
+          t('users.forgot.blank_email')
         else
-          flash.now[:error] = t('users.forgot.email_not_associated_with_account',
-                                :email => email).html_safe
+          t('users.forgot.email_not_associated_with_account', :email => email).html_safe
         end
       end
     end
