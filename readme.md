@@ -100,7 +100,7 @@ to get help on how to use that. Or read the full documentation on [writing engin
 * [Portfolio](http://github.com/resolve/refinerycms-portfolio) - manage groups of images like an image gallery.
 * [News](http://github.com/resolve/refinerycms-news) - post and manage news items.
 
-[Full engine list here](http://wiki.github.com/resolve/refinerycms/engines)
+[Full engine list here](http://github.com/resolve/refinerycms/wiki/engines)
 
 ## License
 
