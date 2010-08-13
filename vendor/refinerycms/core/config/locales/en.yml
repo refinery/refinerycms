@@ -77,3 +77,7 @@ en:
     message:
       close: Close
       close_this_message: Close this message
+    draft_page_message:
+      not_live: This page is NOT live for public viewing.
+    footer:
+      copyright: Copyright &copy;
