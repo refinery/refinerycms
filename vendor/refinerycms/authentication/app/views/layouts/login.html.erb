@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html>
   <%= render :partial => "/admin/head" %>
-  <body class='<%= action_name %>'>
-    <%= render :partial => '/shared/site_bar'  %>
+  <body class='login'>
     <div id='tooltip_container'></div>
     <div id='header'>
       <div id='header_content'>
-        <%= render :partial => "/admin/menu" %>
+        <h1><%= yield :header %></h1>
       </div>
     </div>
     <div id="page_container">

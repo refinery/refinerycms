@@ -47,8 +47,8 @@
                :f => f,
                :continue_editing => false,
                :hide_delete => !current_user.can_delete?(@user),
-               :delete_title => t('admin.users.user.confirm_delete_title'),
-               :delete_confirmation => t('admin.users.user.confirm_delete_message', :who => @user.login)
+               :delete_title => t('shared.admin.delete.title', :object_name => @user.class.model_name.human),
+               :delete_confirmation => t('shared.admin.delete.message', :title => @user.login)
              } %>
 <% end %>
 
