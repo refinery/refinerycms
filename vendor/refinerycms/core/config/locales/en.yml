@@ -8,11 +8,6 @@ en:
     menu:
       reorder_menu: Reorder menu
       reorder_menu_done: I'm done reordering the menu
-    # check_this_!
-    # I can't find this in code
-    # images:
-    #   existing_image:
-    #     submit_insert: Insert
     dialogs:
       show:
         save: Save
@@ -34,37 +29,21 @@ en:
       continue_editing:
         save_and_continue_editing: Save & continue editing
       form_actions:
-        # check_this_!
-        # I can't find these in code
-        # or: or
         save: Save
-        # or_cancel: or
         cancel: Cancel
-        # or_continue: or
         cancel_lose_changes: Cancelling will lose all changes you've made to this %{object_name}
         delete: Delete
         previous: Previous
         next: Next
-        # close: Close
       image_picker:
         none_selected: There is currently no %{what} selected, please click here to add one.
         remove_current: Remove current %{what}
         change: Click here to pick a image
-        # check_this_!
-        # I can't find this in code
-        # image: image
         show: Show
       resource_picker:
-        # check_this_!
-        # I can't find this in code
-        # none_selected: There is currently no %{what} selected, please click here to add one.
-        # current: Current %{what}
         download_current: Download current %{what}
         opens_in_new_window: Opens in a new window
         remove_current: "Remove current %{what}"
-        # check_this_!
-        # I can't find this in code
-        # resource: resource
       search:
         button_text: Search
         results_for: Search results for '%{query}'
