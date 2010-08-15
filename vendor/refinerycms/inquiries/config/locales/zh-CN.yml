@@ -1,0 +1,73 @@
+zh-CN:
+  plugins:
+    refinery_inquiries:
+      title: Inquiries
+  inquiries:
+    new:
+      header_message: Whoops there was a small problem
+      message: "The following problems need to be corrected:"
+      send: Send message
+      privacy_policy: We value your privacy
+  admin:
+    inquiries:
+      inquiry:
+        read_inquiry: Read the inquiry
+        said: said
+        mark_as_spam: Mark as spam
+        mark_as_ham: Move to inbox
+      submenu:
+        inbox: Inbox
+        spam: Spam
+        update_notified: Update who gets notified
+        edit_confirmation_email: Edit confirmation email
+      index:
+        no_inquiries: You have not received any inquiries yet.
+      spam:
+        no_spam: Hooray! You don't have any spam.
+      show:
+        details: Details
+        age: Age
+        actions: Actions
+        back_to_all_inquiries: Back to all Inquiries
+        spam: Spam
+        spam_yes: 'yes'
+        inquiry: Inquiry
+        to: To
+        from: From
+        click_to_email: Click to email this address
+        phone: Phone
+        date: Date
+        message: Message
+    inquiry_settings:
+      update:
+        updated: "'%{setting}' was successfully updated."
+      notification_recipients_form:
+        inquiry_settings_value_name: Send notifications to
+        explanation: Every time someone contacts you on your website, Refinery sends out an email to say there is a new inquiry.
+        hint: When a new inquiry is submitted, Refinery will send an email notification to you.
+        example: "Enter your email address(es) like: jack@work.com, jill@office.com"
+      confirmation_email_form:
+        to: To
+        from: From
+        subject: Subject
+        click_to_edit_subject: Click here to edit the subject
+        explanation: Every time someone contacts you on your website, Refinery sends out an email to confirm the inquiry with the person who made it.
+        below_edit_email_sent: Below you can edit the email that is sent out.
+        the_customer_making_inquiry: The customer making the inquiry
+        message: Message
+        note: "Note: place the text %name% where you'd like the customer's name to appear in the email"
+  inquiry_mailer:
+    notification:
+      greeting: Hi there
+      you_recieved_new_inquiry: You just received a new inquiry on your website.
+      inquiry_starts: --- inquiry starts ---
+      inquiry_ends: --- inquiry ends ---
+      from: From
+      email: Email
+      phone: Phone
+      message: Message
+      closing_line: Kind Regards
+      ps: P.S. All your inquiries are stored in the "Inquiries" section of Refinery should you ever want to view it later there.
+  activerecord:
+    models:
+      inquiry: inquiry
