@@ -66,8 +66,8 @@ class Refinery::I18n
           :it => 'Italiano',
           :'zh-CN' => 'Simple Chinese',
           :de => 'Deutsch',
-          :lv => 'Latvian',
-          :ru => 'Russian'
+          :lv => 'Latviešu',
+          :ru => 'Русский'
         },
         {
           :scoping => 'refinery',
