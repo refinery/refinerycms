@@ -40,32 +40,39 @@ namespace :translate do
     locale_hash = {}
 
     puts "Searching for missing translations for the locale: #{locale}"
-    default_locale_files = Dir.glob(Rails.root.join('vendor', 'plugins', '*', 'config', 'locales', "#{locale}.yml"))
-    default_locale_files += Dir.glob(File.join(Translate.locales_dir, "**","#{locale}.yml"))
+    default_locale_files = Dir.glob(Rails.root.join('vendor', 'plugins', '*', 'config', 'locales', "#{locale}.yml").to_s)
+    default_locale_files += Dir.glob(Refinery.root.join('vendor', 'plugins', '*', 'config', 'locales', "#{locale}.yml").to_s)
+    default_locale_files += Dir.glob(Refinery.root.join('vendor', 'refinerycms', '*', 'config', 'locales', "#{locale}.yml").to_s)
+    default_locale_files += Dir.glob(File.join(Translate.locales_dir, "**","#{locale}.yml").to_s)
 
-    default_locale_files.each do |locale_file_name|
+    default_locale_files.uniq.each do |locale_file_name|
       yaml = YAML::load(File.open(locale_file_name))
       locale_hash = locale_hash.deep_merge(yaml[locale.to_s])
     end
 
     lookup_pattern = /\b(?:I18n\.t|I18n\.translate|t)(?:\s|\():?'([a-z0-9_]*.[a-z0-9_.]+)'\)?/
-    (Dir.glob(File.join("app", "**","*.{erb,rb}")) + Dir.glob(File.join("vendor", "plugins", "**", "app", "**", "*.{erb,rb}"))).each do |file_name|
+    templates = Dir.glob(Rails.root.join('app', '**', '*.{erb,rb}').to_s)
+    templates += Dir.glob(Rails.root.join.join('vendor', 'plugins', '**', 'app', '**', '*.{erb,rb}').to_s)
+    templates += Dir.glob(Refinery.root.join('vendor', 'plugins', '**', 'app', '**', '*.{erb,rb}').to_s)
+    templates += Dir.glob(Refinery.root.join('vendor', 'refinerycms', '**', 'app', '**', '*.{erb,rb}').to_s)
+
+    templates.reject{|t| t =~ /\/lib\/generators\/.+?\/templates\//}.uniq.each do |file_name|
       File.open(file_name, "r+").each do |line|
         line.scan(lookup_pattern) do |key_string|
           # qualify the namespace if beginning with . like t('.log_out')
           if key_string.first =~ /^\./
-            namespace = file_name.gsub(/vendor\/plugins\/.+?\//, "").gsub(/^app\/(models|views|controllers|helpers)\//, '').split('/')
+            namespace = file_name.split("app/").last.split(/^.+?\//).last.split('/')
             namespace = namespace | [namespace.pop.gsub(/^\_/, '').split('.').first]
             key_string = ["#{namespace.join('.')}#{key_string.first}"]
           end
-          
+
           unless key_exist?(key_string.first.split("."), locale_hash)
             result << "#{key_string} in \t  #{file_name} \t is not in any #{locale} locale file"
           end
         end
       end unless file_name =~ /translate\/spec/
     end
-    puts result.empty? ? "No missing translations for locale: #{locale}" : "#{result.join("\n")}\n\nNumber of missing translations for #{locale}: #{result.length}"
+    puts result.empty? ? "No missing translations for locale: #{locale}" : "#{result.join("\n\n")}\n\nNumber of missing translations for #{locale}: #{result.length}"
   end
 
   desc "Show I18n keys that are missing in the specified locale YAML file. Defaults to I18n.default_locale, unless LOCALE env is specified"
