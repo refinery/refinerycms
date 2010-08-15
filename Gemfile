@@ -12,7 +12,7 @@ gem 'sqlite3-ruby', '~>1.2.5', :require => 'sqlite3' # db_adapter=sqlite3
 
 # Deploy with Capistrano
 # gem 'capistrano'
-
+gem 'mysql', '2.8.1'
 # If you are using s3 you probably want this gem:
 # gem 'aws-s3'
 

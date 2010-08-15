@@ -113,6 +113,7 @@ GEM
       mime-types
       treetop (>= 1.4.5)
     mime-types (1.16)
+    mysql (2.8.1)
     nokogiri (1.4.3.1)
     polyglot (0.3.1)
     rack (1.2.1)
@@ -188,6 +189,7 @@ DEPENDENCIES
   gherkin
   json_pure (= 1.4.6)
   launchy
+  mysql (= 2.8.1)
   refinerycms-authentication!
   refinerycms-core!
   refinerycms-dashboard!
