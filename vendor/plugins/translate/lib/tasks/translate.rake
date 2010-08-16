@@ -1,4 +1,5 @@
 require 'yaml'
+require 'httparty'
 
 class Hash
   def deep_merge(other)
