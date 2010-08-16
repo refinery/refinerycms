@@ -53,4 +53,3 @@ end
 # Specify your application's gem requirements here. See the examples below:
 # gem 'refinerycms-news', '~> 0.9.8', :require => 'news'
 # gem 'refinerycms-portfolio', '~> 0.9.7', :require => 'portfolio'
-  gem 'httparty'
