@@ -25,7 +25,6 @@ Feature: Manage Images
     And I follow "Create New Image"
     And I attach the image at "features/uploads/refinery_is_awesome.txt"
     And I press "Save"
-    Then show me the page
     Then I should see "Your image must be either a JPG, PNG or GIF"
     And I should have 0 images
 
