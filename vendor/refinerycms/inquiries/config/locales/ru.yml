@@ -26,21 +26,21 @@ ru:
         move_inquiry_to_closed: "Переместить этот запрос в закрытые"
         move_inquiry_to_open: "Переместить этот запрос в открытые"
         read_inquiry: "Прочитать опрос"
-        remove_inquiry: "Вы уверены, что хотите удалить запрос от '%{name%}'?"
+        remove_inquiry: "Вы уверены, что хотите удалить запрос от '%{name}'?"
         title: "Удалить этот опрос навсегда"
         said: "пишет"
         mark_as_spam: "Пометить как спам"
         mark_as_ham: "Переместить во Входящие"
       toggle_status:
-        closed: "Запрос '%{inquiry%}' закрыт"
-        reopened: "Запрос '%{inquiry%}' открыт заново"
+        closed: "Запрос '%{inquiry}' закрыт"
+        reopened: "Запрос '%{inquiry}' открыт заново"
       submenu:
         inbox: "Входящие"
         spam: "Спам"
         update_notified: "Обновить, кто получает уведомления"
         edit_confirmation_email: "Редактировать письмо-подтверждение"
       index:
-        search_results_for: "Найти результаты для %{query%}"
+        search_results_for: "Найти результаты для %{query}"
         no_inquiries: "Вы еще не получили ни одного запроса."
       spam:
         no_spam: "Ура! Вы не получили спам."
@@ -59,7 +59,7 @@ ru:
         title: "Удалить этот запрос навсегда"
     inquiry_settings:
       update:
-        updated: "'%{setting%}' были успешно обновлены."
+        updated: "'%{setting}' были успешно обновлены."
       notification_recipients_form:
         inquiry_settings_value_name: "Отправить уведомления"
         explanation: "Каждый раз, когда кто-то связывается с вами посредством вашего сайта, Refinery CMS отправляет уведомление на электронную почту."
