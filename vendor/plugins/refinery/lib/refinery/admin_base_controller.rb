@@ -23,7 +23,8 @@ protected
       params[:action] = 'error_404'
       # change any links in the copy to the admin_root_url
       # and any references to "home page" to "Dashboard"
-      @page[part_symbol] = @page[Page.default_parts.first.to_sym].gsub(
+      part_symbol = Page.default_parts.first.to_sym
+      @page[part_symbol] = @page[part_symbol].gsub(
                             /href=(\'|\")\/(\'|\")/, "href='#{admin_root_url(:only_path => true)}'"
                            ).gsub("home page", "Dashboard")
 
