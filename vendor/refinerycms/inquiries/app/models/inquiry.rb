@@ -24,8 +24,12 @@ class Inquiry < ActiveRecord::Base
     tramadol trim-spa ultram valeofglamorganconservatives viagra vioxx xanax zolus
   }
 
-  def self.latest(number = 7)
-    newest.find(:all, :limit => number)
+  def self.latest(number = 7, include_spam = false)
+    unless include_spam
+      ham.find(:all, :limit => number)
+    else
+      newest.find(:all, :limit => number)
+    end
   end
 
   def ham?
