@@ -23,13 +23,13 @@ Unlike other content managers, Refinery is truly __aimed at the end user__ makin
 
 Refinery's gem requirements are:
 
-* [acts_as_indexed = 0.6.3](http://github.com/parndt/acts_as_indexed)
-* [authlogic = 2.1.5](http://rubygems.org/gems/authlogic)
-* [friendly_id = 3.0.6](http://rubygems.org/gems/friendly_id)
+* [acts_as_indexed = 0.6.4](http://github.com/parndt/acts_as_indexed)
+* [authlogic = 2.1.6](http://rubygems.org/gems/authlogic)
+* [friendly_id = 3.1.3](http://rubygems.org/gems/friendly_id)
 * [rails = 3.0.0](http://rubygems.org/gems/rails)
 * [rmagick ~> 2.12.0](http://rubygems.org/gems/rmagick)
-* [truncate_html = 0.3.2](http://rubygems.org/gems/truncate_html)
-* [will_paginate = 2.3.14](http://rubygems.org/gems/will_paginate)
+* [truncate_html = 0.4](http://rubygems.org/gems/truncate_html)
+* [will_paginate = 3.0.pre2](http://rubygems.org/gems/will_paginate)
 * More to add here for rails3 support.
 
 Other dependencies

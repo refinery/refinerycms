@@ -45,14 +45,13 @@ gem 'dragonfly',        :git => 'git://github.com/parndt/dragonfly.git',
                         :require => 'dragonfly'
 
 group :test do
-  gem 'json_pure',      '= 1.4.6', :require => 'json/pure'
+  gem 'json_pure',          '= 1.4.6', :require => 'json/pure'
 
   gem 'rspec',              (RSPEC_VERSION = '~> 2.0.0.beta.19')
   gem 'rspec-core',         RSPEC_VERSION, :require => 'rspec/core'
   gem 'rspec-expectations', RSPEC_VERSION, :require => 'rspec/expectations'
   gem 'rspec-mocks',        RSPEC_VERSION, :require => 'rspec/mocks'
   gem 'rspec-rails',        RSPEC_VERSION
-  gem 'test-unit',      '= 1.2.3'
   gem 'capybara'
   gem 'database_cleaner'
   gem 'cucumber-rails'
