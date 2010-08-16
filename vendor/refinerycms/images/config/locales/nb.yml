@@ -3,8 +3,8 @@ nb:
     refinery_images:
       title: Bilder
   no_file_chosen: Du må velge en fil du ønsker å laste opp
-  file_should_be_smaller_than_max_image_size: "Filer må være mindre enn %{max_image_size}"
-  file_must_be_these_formats: "Bildefilen må være enten en JPG, PNG eller GIF"
+  image_should_be_smaller_than_max_image_size: "Filer må være mindre enn %{max_image_size}"
+  image_must_be_these_formats: "Bildefilen må være enten en JPG, PNG eller GIF"
   admin:
     images:
       image:

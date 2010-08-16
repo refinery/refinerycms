@@ -3,7 +3,7 @@
                                 :multipart => true,
                                 :style => 'float: left; width: 70%'
                               } do |f| %>
-  <%= f.error_messages %>
+  <%= f.error_messages.to_s.gsub(/<li>Image\ ([A-Z])/) {|c| "<li>#{c.last}"} %>
 
   <div class='field'>
     <% if action_name =~ /(edit)|(update)/ %>
