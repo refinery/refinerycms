@@ -56,21 +56,21 @@ Mac OS 10.5+ users [this shell install script](http://github.com/maddox/magick-i
 
 ### [Pages](http://github.com/resolve/refinerycms/blob/rails3/vendor/refinerycms/pages/readme.md#readme)
 
-* Easily edit and manage pages with a [WYSIWYG visual editor](http://www.wymeditor.org/)
-* Manage you site's structure
+* Easily edit and manage pages with a [WYSIWYG visual editor](http://www.wymeditor.org/).
+* Manage you site's structure.
 
 ### [Images](http://github.com/resolve/refinerycms/blob/rails3/vendor/refinerycms/images/readme.md#readme) & [Files](http://github.com/resolve/refinerycms/blob/rails3/vendor/refinerycms/resources/readme.md#readme)
 
-* Easily upload and insert images
-* Upload and link to resources such as PDF documents
-* Uses the popular [attachment_fu](http://github.com/technoweenie/attachment_fu) Rails plugin
-* Supports storage on Amazon S3
+* Easily upload and insert images.
+* Upload and link to resources such as PDF documents.
+* Uses the popular [Dragonfly](http://github.com/markevans/dragonfly).
+* Supports storage on Amazon S3.
 
 ### [Inquiries](http://github.com/resolve/refinerycms/blob/rails3/vendor/refinerycms/inquiries/readme.md#readme)
 
-* Collect inquiries from a contact form
-* Manage your inquiries and be notified when new ones come in
-* Checks new inquiries for spam
+* Collect inquiries from a contact form.
+* Manage your inquiries and be notified when new ones come in.
+* Checks new inquiries for spam.
 
 ### [Settings](http://github.com/resolve/refinerycms/blob/rails3/vendor/refinerycms/refinery_settings/readme.md#readme)
 
@@ -83,9 +83,9 @@ Mac OS 10.5+ users [this shell install script](http://github.com/maddox/magick-i
 
 ### [Authentication & Users](http://github.com/resolve/refinerycms/blob/rails3/vendor/refinerycms/authentication/readme.md#readme)
 
-* Manage who can access Refinery
-* Control which plugins each user has access to
-* Uses the popular [authlogic](http://github.com/binarylogic/authlogic) authentication Rails plugin
+* Manage who can access Refinery.
+* Control which engines each user has access to.
+* Uses the popular [authlogic](http://github.com/binarylogic/authlogic).
 
 ### ...Want more? [Extend with Engines](http://github.com/resolve/refinerycms/blob/rails3/vendor/refinerycms/core/engines.md#readme)
 
