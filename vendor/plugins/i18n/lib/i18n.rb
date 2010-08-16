@@ -1,3 +1,4 @@
+# Encoding: UTF-8 <-- required, please leave this in.
 class Refinery::I18n
   class << self
 
@@ -56,13 +57,13 @@ class Refinery::I18n
     def locales
       @locales ||= RefinerySetting.find_or_set(:i18n_translation_locales, {
           :en => 'English',
-          :fr => 'Fran&ccedil;ais',
+          :fr => 'Français',
           :nl => 'Nederlands',
-          :'pt-BR' => 'Portugu&ecirc;s',
+          :'pt-BR' => 'Português',
           :da => 'Dansk',
-          :nb => 'Norsk Bokm&aring;l',
+          :nb => 'Norsk Bokmål',
           :sl => 'Slovenian',
-          :es => 'Espa&ntilde;ol',
+          :es => 'Español',
           :it => 'Italiano',
           :'zh-CN' => 'Simple Chinese',
           :de => 'Deutsch',

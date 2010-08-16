@@ -3,8 +3,8 @@ it:
     refinery_images:
       title: Immagine
   no_file_chosen: Devi scegliere un file da caricare
-  file_should_be_smaller_than_max_image_size: I file devono essere inferiori a %{max_image_size} nel formato
-  file_must_be_these_formats: L'immagine deve essere un JPG, PNG or GIF
+  image_should_be_smaller_than_max_image_size: I file devono essere inferiori a %{max_image_size} nel formato
+  image_must_be_these_formats: L'immagine deve essere un JPG, PNG or GIF
   admin:
     images:
       image:

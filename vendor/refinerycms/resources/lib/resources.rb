@@ -1,10 +1,23 @@
 require 'rack/cache'
+require 'dragonfly'
 require 'refinery'
 
 module Refinery
   module Resources
     class Engine < Rails::Engine
-      initializer 'files-with-dragonfly' do |app|
+      initializer 'resources-with-dragonfly' do |app|
+        app_resources = Dragonfly::App[:resources]
+        app_resources.configure_with(:rails) do |c|
+          c.register_analyser(Dragonfly::Analysis::FileCommandAnalyser)
+          c.datastore.root_path = "#{::Rails.root}/public/system/resources"
+          c.path_prefix = '/system/resources'
+          c.secret      = 'SweinkelvyonCaccepla'
+          c.protect_from_dos_attacks = false
+        end
+
+        ### Extend active record ###
+        app_resources.define_macro(ActiveRecord::Base, :resource_accessor)
+
         app.config.middleware.insert_after 'Rack::Lock', 'Dragonfly::Middleware', :resources
 
         app.config.middleware.insert_before 'Dragonfly::Middleware', 'Rack::Cache', {

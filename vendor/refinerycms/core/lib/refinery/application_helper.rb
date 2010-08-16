@@ -45,22 +45,22 @@ module Refinery::ApplicationHelper
   # Say for example that we had a @model.image (@model having a belongs_to :image relationship)
   # and we wanted to display the 'preview' thumbnail then we can use image_fu like this:
   # <%= image_fu @model.image, :preview %> or with no thumbnail: <%= image_fu @model.image %>
-  def image_fu(image, thumbnail = nil , options={})
+  def image_fu(image, thumbnail = nil, options={})
     if image.present?
       thumbnail_sizes = RefinerySetting.find_or_set(:image_thumbnails, {})
-      if (size = thumbnail_sizes[thumbnail])
-        image_thumbnail_url = image.url(size)
+      image_thumbnail = if (size = thumbnail_sizes[thumbnail]).present?
+        image.image.thumb(size)
       else
-        # default back to using the image specified as the "thumbnail" if we didn't find one.
-        image_thumbnail_url = image.url
+        image.image
       end
 
       # call rails' image tag function with default alt, width and height options.
       # if any other options were supplied these are merged in and can replace the defaults.
-      image_tag(image_thumbnail_url, {:alt => image.respond_to?(:title) ? image.title : image.image_name,
-                                                  #:width => image_thumbnail.width,
-                                                  #:height => image_thumbnail.height
-                                                 }.merge(options))
+      image_tag(image_thumbnail.url, {
+        :alt => image.respond_to?(:title) ? image.title : image.image_name,
+        :width => image_thumbnail.width,
+        :height => image_thumbnail.height
+      }.merge(options))
     end
   end
 
@@ -70,10 +70,12 @@ module Refinery::ApplicationHelper
   # Use <%= jquery_include_tags %> to include it in your <head> section.
   def jquery_include_tags(options={})
     # Merge in options
-    options = { :caching => RefinerySetting.find_or_set(:use_resource_caching, Rails.root.join('public', 'javascripts', 'cache').writable?),
-                :google => RefinerySetting.find_or_set(:use_google_ajax_libraries, false),
-                :jquery_ui => true
-              }.merge(options)
+    options = {
+      :caching => RefinerySetting.find_or_set(:use_resource_caching,
+                                              Rails.root.join('public', 'javascripts', 'cache').writable?),
+      :google => RefinerySetting.find_or_set(:use_google_ajax_libraries, false),
+      :jquery_ui => true
+    }.merge(options)
 
     # render the tags normally unless
     unless options[:google] and !local_request?
