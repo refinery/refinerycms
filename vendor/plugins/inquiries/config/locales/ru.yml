@@ -1,79 +1,79 @@
-en:
+ru:
   plugins:
     refinery_inquiries:
-      title: Inquiries
+      title: "Запросы"
   activerecord:
     models:
-      inquiry: Inquiry
-      inquiry_setting: Inquiry Setting
+      inquiry: "Запрос"
+      inquiry_setting: "Настройки запроса"
     attributes:
       inquiry:
-        to: To
-        from: From
-        click_to_email: Click to email this address
-        phone: Phone
-        date: Date
-        message: Message
+        to: "Кому"
+        from: "От"
+        click_to_email: "Нажмите, чтобы отправить по этому адресу"
+        phone: "Телефон"
+        date: "Дата"
+        message: "Сообщение"
   inquiries:
     new:
-      header_message: "Whoops there was a small problem"
-      message: "The following problems need to be corrected:"
-      send: Send message
-      privacy_policy: "We value your privacy"
+      header_message: "Упс. Возникла небольшая проблемка."
+      message: "Нужно исправить следующие ошибки:"
+      send: "Отправить сообщение"
+      privacy_policy: "Мы относимся с уважением к вашим личным данным"
   admin:
     inquiries:
       inquiry:
-        move_inquiry_to_closed: Move this inquiry to closed
-        move_inquiry_to_open: Move this inquiry to open
-        read_inquiry: Read the inquiry
-        remove_inquiry: "Are you sure you want to delete the inquiry from '{{name}}'?"
-        title: Remove this inquiry forever
-        said: said
-        mark_as_spam: Mark as spam
-        mark_as_ham: Move to inbox
+        move_inquiry_to_closed: "Переместить этот запрос в закрытые"
+        move_inquiry_to_open: "Переместить этот запрос в открытые"
+        read_inquiry: "Прочитать опрос"
+        remove_inquiry: "Вы уверены, что хотите удалить запрос от '{{name}}'?"
+        title: "Удалить этот опрос навсегда"
+        said: "пишет"
+        mark_as_spam: "Пометить как спам"
+        mark_as_ham: "Переместить во Входящие"
       toggle_status:
-        closed: "Inquiry '{{inquiry}}' is closed"
-        reopened: "Inquiry '{{inquiry}}' is reopened"
+        closed: "Запрос '{{inquiry}}' закрыт"
+        reopened: "Запрос '{{inquiry}}' открыт заново"
       submenu:
-        inbox: Inbox
-        spam: Spam
-        update_notified: Update who gets notified
-        edit_confirmation_email: Edit confirmation email
+        inbox: "Входящие"
+        spam: "Спам"
+        update_notified: "Обновить, кто получает уведомления"
+        edit_confirmation_email: "Редактировать письмо-подтверждение"
       index:
-        search_results_for: Search results for {{query}}
-        no_inquiries: You have not received any inquiries yet.
+        search_results_for: "Найти результаты для {{query}}"
+        no_inquiries: "Вы еще не получили ни одного запроса."
       spam:
-        no_spam: Hooray! You don't have any spam.
+        no_spam: "Ура! Вы не получили спам."
       show:
-        details: Details
-        click_to_email: Click to email
-        status: Status
-        open: Open
-        closed: Closed
-        age: Age
-        actions: Actions
-        back_to_all_inquiries: Back to all Inquiries
-        spam: Spam
-        spam_yes: 'yes'
-        inquiry: Inquiry
-        title: Remove this inquiry forever
+        details: "Подробности"
+        click_to_email: "Нажмите, чтобы отправить"
+        status: "Статус"
+        open: "Открыт"
+        closed: "Закрыт"
+        age: "Срок"
+        actions: "Действия"
+        back_to_all_inquiries: "Назад ко всем запросам"
+        spam: "Спам"
+        spam_yes: 'да'
+        inquiry: "Запрос"
+        title: "Удалить этот запрос навсегда"
     inquiry_settings:
       update:
-        updated: "'{{setting}}' was successfully updated."
+        updated: "'{{setting}}' были успешно обновлены."
       notification_recipients_form:
-        inquiry_settings_value_name: Send notifications to
-        explanation: "Every time someone contacts you on your website, Refinery sends out an email to say there is a new inquiry."
-        hint: "When a new inquiry is submitted, Refinery will send an email notification to you."
-        example: "Enter your email address(es) like: jack@work.com, jill@office.com"
+        inquiry_settings_value_name: "Отправить уведомления"
+        explanation: "Каждый раз, когда кто-то связывается с вами посредством вашего сайта, Refinery CMS отправляет уведомление на электронную почту."
+        hint: "Когда поступит новый запрос, Refinery CMS отправит вам уведомление на электронную почту."
+        example: "Введите ваш адрес (или несколько адресов) электронной почты. Например, anna@mail, ivanov@yandex.ru"
       confirmation_email_form:
-        to: To
-        from: From
-        subject: Subject
-        click_to_edit_subject: Click here to edit the subject
-        explanation: "Every time someone contacts you on your website, Refinery sends out an email to confirm the inquiry with the person who made it."
-        below_edit_email_sent: Below you can edit the email that is sent out.
-        the_customer_making_inquiry: The customer making the inquiry
-        message: Message
-        note: "Note: place the text %name% where you'd like the customer's name to appear in the email"
+        to: "Кому"
+        from: "От"
+        subject: "Тема сообщения"
+        click_to_edit_subject: "Редактировать тему сообщения"
+        explanation: "Каждый раз, когда кто-то связывается с вами посредством вашего сайта, Refinery CMS отправляет письмо, чтобы подтвердить запрос у пользователя, который его отправил."
+        below_edit_email_sent: "Вы не можете редактировать сообщение которое уже отослано"
+        the_customer_making_inquiry: "Пользователь делает запрос"
+        message: "Сообщение"
+        note: "Внимание: укажите текст %name%, если вы хотите, чтобы имя пользователя появилось в письме"
       subject_form:
-        subject_value_name: Subject
+        subject_value_name: "Тема сообщения"
