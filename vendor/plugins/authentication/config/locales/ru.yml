@@ -1,7 +1,7 @@
-en:
+ru:
   plugins:
     refinery_users:
-      title: Users
+      title: "Пользователи"
   admin:
     users:
       update:
