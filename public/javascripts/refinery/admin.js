@@ -63,7 +63,6 @@ init_interface = function() {
     $menu.jcarousel({
       vertical: false
       , scroll: 1
-      , start: 2
       , buttonNextHTML: "<img src='/images/refinery/carousel-right.png' alt='down' height='15' width='10' />"
       , buttonPrevHTML: "<img src='/images/refinery/carousel-left.png' alt='up' height='15' width='10' />"
       , listTag: $menu.get(0).tagName.toLowerCase()
@@ -850,9 +849,13 @@ var list_reorder = {
 
       $.post(list_reorder.update_url, serialized, function(data) {
         // handle the case where we get the whole list back including the <ul> or whatever.
-        if (data.match(new RegExp("^"+ $(list_reorder.sortable_list).get(0).tagName.toLowerCase() + "\ id=\"|\'" + list_reorder.sortable_list + "\"|\'>")).length == 1) {
+        if ((matches = data.match(new RegExp("^<" + list_reorder.sortable_list.get(0).tagName.toLowerCase()
+                                             + "[^>]+" + list_reorder.sortable_list.attr('id') + "[^>]>"))) != null)
+        {
           // replace reorder authenticity token's value.
-          $('#reorder_authenticity_token').val($($(data.split('reorder_authenticity_token')).last().get(0).split('value=\'')).last().get(0).split('\'')[0]);
+          $('#reorder_authenticity_token').val(
+            $($(data.split('reorder_authenticity_token')).last().get(0).split('value=\''))
+              .last().get(0).split('\'')[0]);
           // replace actual list content.
           $(list_reorder.sortable_list).html($(data).html());
         } else {
