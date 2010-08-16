@@ -1,3 +1,7 @@
+Этот форк с русской локализацией refinericms. Сейчас переведен не полностью. Будет дополняться и переводиться в течении времени.
+
+Установка: sudo gem install sunchess-refinerycms --source http://gems.github.com
+
 # Refinery CMS
 
 __An open source Ruby on Rails content management system.__ More information at [http://refinerycms.com](http://refinerycms.com)
