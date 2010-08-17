@@ -8,7 +8,7 @@ class Image < ActiveRecord::Base
   validates_presence_of  :image
   validates_size_of      :image, :maximum => MAX_SIZE_IN_MB.megabytes,
                          :message => I18n.t('image_should_be_smaller_than_max_image_size',
-                                            ActionController::Base.helpers.number_to_human_size(MAX_SIZE_IN_MB.megabytes))
+                                     :max_image_size => ActionController::Base.helpers.number_to_human_size(MAX_SIZE_IN_MB.megabytes))
   validates_mime_type_of :image, :in => %w(image/jpeg image/png image/gif),
                          :message => I18n.t('image_must_be_these_formats')
 
