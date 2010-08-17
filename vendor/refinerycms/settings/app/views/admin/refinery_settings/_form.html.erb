@@ -37,7 +37,7 @@
                :continue_editing => false,
                :hide_cancel => from_dialog?,
                :submit_button_title => t('.restart_may_be_in_order'),
-               :delete_title => t('shared.admin.delete.title', :object_name => @refinery_setting.class.model_name.human),
+               :delete_title => t('admin.refinery_settings.delete'),
                :delete_confirmation => t('shared.admin.delete.message',
                                          :title => @refinery_setting.name.to_s.titleize),
                :hide_delete => (@refinery_setting.new_record? or !@refinery_setting.destroyable)

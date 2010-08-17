@@ -22,7 +22,7 @@
                :f => f,
                :continue_editing => false,
                :hide_cancel => (@app_dialog or action_name == "insert" or from_dialog?),
-               :delete_title => t('shared.admin.delete.title', :object_name => @resource.class.model_name.human),
+               :delete_title => t('admin.resources.delete'),
                :delete_confirmation => (t('shared.admin.delete.message',
                                          :title => @resource.title) unless @resource.new_record?)
              } %>
