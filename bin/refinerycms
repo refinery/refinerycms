@@ -27,9 +27,9 @@ class Refinery::AppGenerator
     }
     
     @optparse = OptionParser.new do |opts|
-      opts.banner = "Usage: refinerycms /path/to/project [options]"
+      opts.banner = "Purpose: Installs Refinery CMS to the specified directory.\nUsage:   #{opts.program_name} /path/to/project [options]"
       opts.separator ""
-      opts.separator "Options:"
+      opts.separator "Specific Options:"
       
       databases = [:mysql, :postgresql, :sqlite3]
       opts.on("-d DATABASE", "--database DATABASE", databases, "Select the database (default sqlite3)", "  #{databases.join('/')}") do |db|
@@ -40,12 +40,15 @@ class Refinery::AppGenerator
         @options[:force] = true
       end
       
-      opts.on("-h", "--help", "Display this screen") do 
+      opts.separator ""
+      opts.separator "Common options:"
+      
+      opts.on_tail("-h", "--help", "Display this screen") do 
         puts opts
         exit
       end
       
-      opts.on("-v", "--version", "Display the version") do
+      opts.on_tail("-v", "--version", "Display the version") do
         puts Refinery.version
         exit
       end           
@@ -53,7 +56,14 @@ class Refinery::AppGenerator
   end
   
   def run!
-    @optparse.parse!(@input)
+    begin
+      @optparse.parse!(@input)
+    rescue OptionParser::ParseError => pe
+      puts pe.message
+      puts @optparse.banner
+      puts @optparse.summarize
+      exit
+    end
   end  
   
 end
