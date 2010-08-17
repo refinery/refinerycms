@@ -1,29 +1,71 @@
 #!/usr/bin/env ruby
 require 'pathname'
 require 'fileutils'
+require 'optparse'
+
+# Load bundler
 begin
   require 'rubygems'
   require 'bundler'
 rescue LoadError
-  puts "\n==ACTION REQUIRED=="
-  puts "Could not load the bundler gem. This is a required dependency of Refinery CMS.\n\n"
+  puts "\n=== ACTION REQUIRED ===\n\n"
+  puts "Could not load the bundler gem. This is a required dependency of Refinery CMS."
   puts "Please install it with `gem install bundler`.\n\n"
   exit
 end
 
-refinery_root = if defined?(REFINERY_ROOT) and REFINERY_ROOT.is_a?(Pathname)
-  REFINERY_ROOT
-else
-  Pathname.new(File.expand_path(File.dirname(__FILE__) << "/.."))
+# Load refinerycms
+require Pathname.new(File.expand_path(File.dirname(__FILE__) << "/..")).join('vendor', 'refinerycms', 'core', 'lib', 'refinery.rb')
+
+class Refinery::AppGenerator
+
+  def initialize(input)
+    @input = input
+    @options = {
+      :force => false,
+      :database => :sqlite3
+    }
+    
+    @optparse = OptionParser.new do |opts|
+      opts.banner = "Usage: refinerycms /path/to/project [options]"
+      opts.separator ""
+      opts.separator "Options:"
+      
+      databases = [:mysql, :postgresql, :sqlite3]
+      opts.on("-d DATABASE", "--database DATABASE", databases, "Select the database (default sqlite3)", "  #{databases.join('/')}") do |db|
+        @options[:database] ||= db
+      end
+      
+      opts.on("-f", "--force", "Force overwriting of directory") do
+        @options[:force] = true
+      end
+      
+      opts.on("-h", "--help", "Display this screen") do 
+        puts opts
+        exit
+      end
+      
+      opts.on("-v", "--version", "Display the version") do
+        puts Refinery.version
+        exit
+      end           
+    end
+  end
+  
+  def run!
+    @optparse.parse!(@input)
+  end  
+  
 end
 
-require refinery_root.join('vendor', 'plugins', 'refinery', 'lib', 'refinery.rb')
+generator = Refinery::AppGenerator.new(ARGV)
+generator.run!
 
-if ARGV.include?("-v") or ARGV.include?("--version")
-  puts Refinery::Version
-  exit
-end
+# Output help text and exit
+#app_path = ARGV.shift
+#puts "rails generate #{File.expand_path(app_path)}"  
 
+=begin
 unless (app_path = ARGV.shift).nil? or app_path.length == 0
   # if "" or "." or "./" is specified then get the current directory otherwise accept the specified app_path.
   if (app_path.length <= 2 and ((is_current_dir = app_path =~ /(\.(\/)?)/).nil? or is_current_dir < 2))
@@ -175,3 +217,4 @@ else
   puts "--database=name     Preconfigure for selected database (options: mysql/postgresql/sqlite3 - default: sqlite3)."
   puts "\n"
 end
+=end
