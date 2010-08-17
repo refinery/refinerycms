@@ -65,3 +65,8 @@ config/database.yml
 config/amazon_s3.yml
 config/rackspace_cloudfiles.yml
 #===END OF REMOVED DURING REFINERY GEM INSTALL===
+
+
+# sass
+.sass-cache
+.sass-cache/*
