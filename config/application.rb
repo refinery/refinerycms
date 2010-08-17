@@ -18,6 +18,11 @@ Refinery::Initializer.run do |config|
     :secret => 'eec8fffc3637c05895f8e6a355179eaad0003ac5617e5368955baf7989e1faca4d8ab37140d690c20b05d5815609b7c680c644277b6a892be316a85c6596d75c'
   }
 
+  config.to_prepare do
+    # Here we set up the default acts_as_indexed configuration.
+    load(Rails.root.join('config', 'acts_as_indexed_config.rb').to_s)
+  end
+
 end
 
 # You can set things in the following file and we'll try hard not to destroy them in updates, promise.
