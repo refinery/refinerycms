@@ -126,23 +126,23 @@ table caption{
 /*-----------------------------------------------------------------------------------------------
   Header
 -----------------------------------------------------------------------------------------------*/
-#header{
+header{
   background:#000;
 }
-#header .inside{
+header .inside{
   padding:3em 0;
 }
 
-#header h2{
+header h2{
   font-size:2.25em;
   margin:0 0.5em 0 0;
   padding:0 0.5em 0.25em 0;
   border-right:1px solid #808080;
   float:left;
 }
-#header h2 a{ text-decoration:none; }
+header h2 a{ text-decoration:none; }
 
-#header p{
+header p{
   padding:1em 0;
   margin:0;
   line-height:1em;
@@ -465,27 +465,27 @@ ul.pages ul li{
   Foooter
 -----------------------------------------------------------------------------------------------*/
 
-#footer{
+footer{
   clear:both;
   color:#939393;
   margin:2em 0 3em 0;
 }
-#footer .inside{
+footer .inside{
   background:url(/theme/images/footer_black.gif) 50% 0 repeat-x;
   padding:1em 0;
 }
-#footer p{
+footer p{
   margin:0;
   font-size:0.95em;
 }
-#footer p.copyright{ float:left; }
-#footer p.attributes{ float:right; }
-#footer p.attributes a{
+footer p.copyright{ float:left; }
+footer p.attributes{ float:right; }
+footer p.attributes a{
   padding:0 0 0 1em;
   text-decoration:none;
   color:#525252;
 }
-#footer p.attributes a:hover{
+footer p.attributes a:hover{
   color:#FFF;
 }
 
