@@ -10,6 +10,7 @@ en:
       privacy_policy: We value your privacy
   admin:
     inquiries:
+      delete: Remove this inquiry forever
       inquiry:
         read_inquiry: Read the inquiry
         said: said
