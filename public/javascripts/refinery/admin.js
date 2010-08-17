@@ -174,7 +174,7 @@ init_sortable_menu = function(){
   $menu.find('#menu_reorder').click(function(e){
     e.preventDefault();
     $('#menu_reorder, #menu_reorder_done').toggle();
-    $('#site_bar, #header >*:not(#header_content, #menu, script), #content').fadeTo(500, 0.65);
+    $('#site_bar, header >*:not(#menu, script), #content').fadeTo(500, 0.65);
     $menu.find('.tab a').click(function(ev){
       ev.preventDefault();
     });
@@ -185,7 +185,7 @@ init_sortable_menu = function(){
   $menu.find('#menu_reorder_done').click(function(e){
     e.preventDefault();
     $('#menu_reorder, #menu_reorder_done').toggle();
-    $('#site_bar, #header >*:not(#header_content, #menu, script), #content').fadeTo(500, 1);
+    $('#site_bar, header >*:not(#menu, script), #content').fadeTo(500, 1);
     $menu.find('.tab a').unbind('click');
 
     $menu.sortable('disable');
@@ -804,7 +804,7 @@ var list_reorder = {
       $(list_reorder.sortable_list).sortable(sortable_options);
     }
 
-    $('#site_bar, #header > *:not(script)').fadeTo(500, 0.3);
+    $('#site_bar, header > *:not(script)').fadeTo(500, 0.3);
     $('#actions *:not("#reorder_action_done, #reorder_action")').not($('#reorder_action_done').parents('li, ul')).fadeTo(500, 0.55);
 
     $('#reorder_action').hide();
@@ -884,7 +884,7 @@ var list_reorder = {
     }
     $(list_reorder.sortable_list).removeClass('reordering, ui-sortable');
 
-    $('#site_bar, #header > *:not(script)').fadeTo(250, 1);
+    $('#site_bar, header > *:not(script)').fadeTo(250, 1);
     $('#actions *:not("#reorder_action_done, #reorder_action")').not($('#reorder_action_done').parents('li, ul')).fadeTo(250, 1, function() {
       $('#reorder_action_done').hide().removeClass('loading');
       $('#reorder_action').show();
