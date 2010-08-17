@@ -27,7 +27,7 @@ class Refinery::AppGenerator
     }
     
     @optparse = OptionParser.new do |opts|
-      opts.banner = "Purpose: Installs Refinery CMS to the specified directory.\nUsage:   #{opts.program_name} /path/to/project [options]"
+      opts.banner = "Purpose: Installs Refinery CMS to the specified directory\nUsage:   #{opts.program_name} /path/to/project [options]"
       opts.separator ""
       opts.separator "Specific Options:"
       
@@ -59,12 +59,29 @@ class Refinery::AppGenerator
     begin
       @optparse.parse!(@input)
     rescue OptionParser::ParseError => pe
-      puts pe.message
-      puts @optparse.banner
-      puts @optparse.summarize
+      puts pe
+      puts "\n"
+      puts @optparse
       exit
     end
-  end  
+    
+    unless @input.size == 1      
+      puts "Please specify a single path to install Refinery CMS"
+      puts "\n"
+      puts @optparse
+      exit
+    end
+    
+    # Generate a Refinery CMS application
+    app_path = Pathname.new(File.expand_path(@input[0]))
+    generate! app_path
+  end
+  
+  protected
+  
+  def generate!
+    # Main stuff goes here
+  end
   
 end
 
