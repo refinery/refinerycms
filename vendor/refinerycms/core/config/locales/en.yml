@@ -31,7 +31,7 @@ en:
       form_actions:
         save: Save
         cancel: Cancel
-        cancel_lose_changes: Cancelling will lose all changes you've made to this %{object_name}
+        cancel_lose_changes: Cancelling will lose all changes you've made here
         delete: Delete
         previous: Previous
         next: Next
@@ -50,9 +50,6 @@ en:
         no_results: Sorry, no results found
       delete:
         message: Are you sure you want to delete '%{title}'?
-        title: Remove this %{object_name} forever
-      edit:
-        title: Edit this %{object_name}
     message:
       close: Close
       close_this_message: Close this message

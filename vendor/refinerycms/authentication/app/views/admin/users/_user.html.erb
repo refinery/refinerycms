@@ -9,10 +9,10 @@
     <%= mail_to user.email, refinery_icon_tag('email_go.png'),
                 :title => t('.email_user') %>
     <%= link_to refinery_icon_tag('application_edit.png'), edit_admin_user_path(user),
-                :title => t('shared.admin.edit.title', :object_name => user.class.model_name.human)%>
+                :title => t('admin.users.edit')%>
     <%= link_to refinery_icon_tag('delete.png'), admin_user_path(user),
                 :class => "cancel confirm-delete",
-                :title => t('shared.admin.delete.title', :object_name => user.class.model_name.human),
+                :title => t('admin.users.delete'),
                 :'data-confirm' => t('shared.admin.delete.message', :title => user.login) if current_user.can_delete?(user) %>
   </span>
 </li>

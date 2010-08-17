@@ -14,10 +14,10 @@
       <%= link_to t('.back_to_all_inquiries'), {:action => 'index'}, :class => "back_icon" %>
     </li>
     <li>
-      <%= link_to t('shared.admin.delete.title', :object_name => @inquiry.class.model_name.human),
+      <%= link_to t('admin.inquiries.delete'),
                   admin_inquiry_url(@inquiry),
                   :class => 'delete_icon no-tooltip confirm-delete',
-                  :title => t('shared.admin.delete.title', :object_name => @inquiry.class.model_name.human),
+                  :title => t('admin.inquiries.delete'),
                   :'data-confirm' => t('shared.admin.delete.message', :title => @inquiry.name),
                   :'data-method' => "delete" %>
     </li>
