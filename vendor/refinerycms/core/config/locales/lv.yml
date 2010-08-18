@@ -29,10 +29,10 @@ lv:
       continue_editing:
         save_and_continue_editing: Save & continue editing
       form_actions:
-        save: Save
-        cancel: Cancel
-        cancel_lose_changes: Cancelling will lose all changes you've made to this %{object_name}
-        delete: Delete
+        save: Saglabāt
+        cancel: Atcelt
+        cancel_lose_changes: Atceļot tiks zaudētas visas tekošās izmaiņas, kas šeit tika veiktas
+        delete: Dzēst
         previous: Previous
         next: Next
       image_picker:
@@ -49,10 +49,12 @@ lv:
         results_for: Search results for '%{query}'
         no_results: Sorry, no results found
       delete:
-        message: Are you sure you want to delete '%{title}'?
+        message: Vai tiešām vēlaties dzēst '%{title}'?
         title: Remove this %{object_name} forever
       edit:
         title: Edit this %{object_name}
+      error_messages:
+        problems_in_following_fields: Problēmas sekojošos ievades laukos
     message:
       close: Close
       close_this_message: Close this message
