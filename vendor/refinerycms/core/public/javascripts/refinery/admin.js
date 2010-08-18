@@ -63,7 +63,6 @@ init_interface = function() {
     $menu.jcarousel({
       vertical: false
       , scroll: 1
-      , start: 2
       , buttonNextHTML: "<img src='/images/refinery/carousel-right.png' alt='down' height='15' width='10' />"
       , buttonPrevHTML: "<img src='/images/refinery/carousel-left.png' alt='up' height='15' width='10' />"
       , listTag: $menu.get(0).tagName.toLowerCase()
@@ -175,7 +174,7 @@ init_sortable_menu = function(){
   $menu.find('#menu_reorder').click(function(e){
     e.preventDefault();
     $('#menu_reorder, #menu_reorder_done').toggle();
-    $('#site_bar, #header >*:not(#header_content, #menu, script), #content').fadeTo(500, 0.65);
+    $('#site_bar, header >*:not(#menu, script), #content').fadeTo(500, 0.65);
     $menu.find('.tab a').click(function(ev){
       ev.preventDefault();
     });
@@ -186,7 +185,7 @@ init_sortable_menu = function(){
   $menu.find('#menu_reorder_done').click(function(e){
     e.preventDefault();
     $('#menu_reorder, #menu_reorder_done').toggle();
-    $('#site_bar, #header >*:not(#header_content, #menu, script), #content').fadeTo(500, 1);
+    $('#site_bar, header >*:not(#menu, script), #content').fadeTo(500, 1);
     $menu.find('.tab a').unbind('click');
 
     $menu.sortable('disable');
@@ -805,7 +804,7 @@ var list_reorder = {
       $(list_reorder.sortable_list).sortable(sortable_options);
     }
 
-    $('#site_bar, #header > *:not(script)').fadeTo(500, 0.3);
+    $('#site_bar, header > *:not(script)').fadeTo(500, 0.3);
     $('#actions *:not("#reorder_action_done, #reorder_action")').not($('#reorder_action_done').parents('li, ul')).fadeTo(500, 0.55);
 
     $('#reorder_action').hide();
@@ -850,9 +849,13 @@ var list_reorder = {
 
       $.post(list_reorder.update_url, serialized, function(data) {
         // handle the case where we get the whole list back including the <ul> or whatever.
-        if (data.match(new RegExp("^"+ $(list_reorder.sortable_list).get(0).tagName.toLowerCase() + "\ id=\"|\'" + list_reorder.sortable_list + "\"|\'>")).length == 1) {
+        if ((matches = data.match(new RegExp("^<" + list_reorder.sortable_list.get(0).tagName.toLowerCase()
+                                             + "[^>]+" + list_reorder.sortable_list.attr('id') + "[^>]>"))) != null)
+        {
           // replace reorder authenticity token's value.
-          $('#reorder_authenticity_token').val($($(data.split('reorder_authenticity_token')).last().get(0).split('value=\'')).last().get(0).split('\'')[0]);
+          $('#reorder_authenticity_token').val(
+            $($(data.split('reorder_authenticity_token')).last().get(0).split('value=\''))
+              .last().get(0).split('\'')[0]);
           // replace actual list content.
           $(list_reorder.sortable_list).html($(data).html());
         } else {
@@ -881,7 +884,7 @@ var list_reorder = {
     }
     $(list_reorder.sortable_list).removeClass('reordering, ui-sortable');
 
-    $('#site_bar, #header > *:not(script)').fadeTo(250, 1);
+    $('#site_bar, header > *:not(script)').fadeTo(250, 1);
     $('#actions *:not("#reorder_action_done, #reorder_action")').not($('#reorder_action_done').parents('li, ul')).fadeTo(250, 1, function() {
       $('#reorder_action_done').hide().removeClass('loading');
       $('#reorder_action').show();
