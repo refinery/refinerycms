@@ -1,5 +1,11 @@
 <%= form_for(@session, :as => :session, :url => session_path) do |f| -%>
-  <%= f.error_messages %>
+
+  <%= render :partial => "/shared/admin/error_messages",
+             :locals => {
+               :object => @session,
+               :include_object_name => true
+             } %>
+
   <div class='field session_username clearfix'>
     <%= f.label Refinery.authentication_login_field %>
     <%= f.text_field Refinery.authentication_login_field, :class => 'larger widest' %>
