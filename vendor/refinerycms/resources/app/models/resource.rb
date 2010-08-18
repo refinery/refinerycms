@@ -5,7 +5,7 @@ class Resource < ActiveRecord::Base
 
   resource_accessor :file
 
-  validates_presence_of :file
+  validates_presence_of :file, :message => I18n.t('file_specify_for_upload')
   validates_size_of     :file, :maximum => MAX_SIZE_IN_MB.megabytes,
                         :message => I18n.t('file_should_be_smaller_than_max_file_size',
                                     :max_file_size => ActionController::Base.helpers.number_to_human_size(MAX_SIZE_IN_MB.megabytes) )
