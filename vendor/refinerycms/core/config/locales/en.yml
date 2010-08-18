@@ -50,6 +50,8 @@ en:
         no_results: Sorry, no results found
       delete:
         message: Are you sure you want to delete '%{title}'?
+      error_messages:
+        problems_in_following_fields: There were problems with the following fields
     message:
       close: Close
       close_this_message: Close this message

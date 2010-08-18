@@ -1,6 +1,11 @@
 <%= form_for [:admin, @resource], :url => @url_override || @url,
                                   :html => {:multipart => true} do |f| -%>
-  <%= f.error_messages %>
+
+  <%= render :partial => "/shared/admin/error_messages",
+             :locals => {
+               :object => @resource,
+               :include_object_name => false
+             } %>
 
   <div class='field'>
     <% if action_name =~ /(edit)|(update)/ %>

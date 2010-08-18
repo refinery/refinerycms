@@ -3,7 +3,12 @@
                                 :multipart => true,
                                 :style => 'float: left; width: 70%'
                               } do |f| %>
-  <%= f.error_messages.to_s.gsub(/<li>Image\ ([A-Z])/) {|c| "<li>#{c.last}"} %>
+
+  <%= render :partial => "/shared/admin/error_messages",
+             :locals => {
+               :object => @image,
+               :include_object_name => false
+             } %>
 
   <div class='field'>
     <% if action_name =~ /(edit)|(update)/ %>

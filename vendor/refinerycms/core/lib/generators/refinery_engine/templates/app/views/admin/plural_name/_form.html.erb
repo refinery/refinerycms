@@ -1,5 +1,8 @@
 <%% form_for [:admin, @<%= singular_name %>] do |f| -%>
-  <%%= f.error_messages %>
+  <%%= render :partial => "/shared/admin/error_messages", :locals => {
+    :object => @<%= singular_name %>,
+    :include_object_name => true
+  } %>
   <% attributes.each_with_index do |attribute, index| %>
   <div class='field'>
     <%%= f.label :<%= attribute.name %> -%>
