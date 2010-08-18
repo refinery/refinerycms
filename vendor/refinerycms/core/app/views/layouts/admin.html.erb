@@ -4,11 +4,9 @@
   <body class='<%= action_name %>'>
     <%= render :partial => '/shared/site_bar'  %>
     <div id='tooltip_container'></div>
-    <div id='header'>
-      <div id='header_content'>
-        <%= render :partial => "/admin/menu" %>
-      </div>
-    </div>
+    <header>
+      <%= render :partial => "/admin/menu" %>
+    </header>
     <div id="page_container">
       <div id="page">
         <div id="content" class="clearfix">
