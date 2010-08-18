@@ -38,7 +38,7 @@ module Refinery
 
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password, :password_confirmation]
-    
+
     # UTF-8 encoding is required for i18n, please leave this unless you have a good reason:
     config.encoding = 'UTF-8'
   end
