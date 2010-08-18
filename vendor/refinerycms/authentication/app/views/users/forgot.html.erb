@@ -1,7 +1,6 @@
 <% content_for :header, t('.enter_email_address') %>
 
 <%= form_for :user do |f| -%>
-  <%= f.error_messages %>
 
   <div class='field'>
     <%= f.text_field :email, :class => "larger widest",

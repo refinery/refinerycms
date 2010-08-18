@@ -1,6 +1,12 @@
 <% content_for :header, t('.fill_form') %>
 <%= form_for :user, :url => users_path do |f| -%>
-  <%= f.error_messages %>
+
+  <%= render :partial => "/shared/admin/error_messages",
+             :locals => {
+               :object => @user,
+               :include_object_name => true
+             } %>
+
   <div class='field'>
     <%= f.label :login %>
     <%= f.text_field :login, :class => 'larger widest' %>

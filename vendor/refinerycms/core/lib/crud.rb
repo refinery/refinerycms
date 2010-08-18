@@ -75,10 +75,10 @@ module Crud
             unless request.xhr?
               render :action => 'new'
             else
-              render :partial => "/shared/admin/error_messages_for",
+              render :partial => "/shared/admin/error_messages",
                      :locals => {
-                       :symbol => :#{singular_name},
-                       :object => @#{singular_name}
+                       :object => @#{singular_name},
+                       :include_object_name => true
                      }
             end
           end
@@ -114,11 +114,11 @@ module Crud
             unless request.xhr?
               render :action => 'edit'
             else
-              render :partial => "/shared/admin/error_messages_for",
+              render :partial => "/shared/admin/error_messages",
                      :locals => {
-                       :symbol => :#{singular_name},
-                       :object => @#{singular_name}
-                     }
+                       :object => @#{singular_name},
+                       :include_object_name => true
+                     }   
             end
           end
         end

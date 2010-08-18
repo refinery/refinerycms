@@ -1,5 +1,11 @@
 <%= form_for [:admin, @refinery_setting] do |f| %>
-  <%= f.error_messages %>
+
+  <%= render :partial => "/shared/admin/error_messages",
+             :locals => {
+               :object => @refinery_setting,
+               :include_object_name => true
+             } %>
+
   <div class='field'>
     <%= f.label :name %>
   <% if action_name =~ /(new)|(create)/ %>
