@@ -169,12 +169,19 @@ hr {
 #flash.flash_message a#flash_close {
   top: 21px;
 }
-header a, #content a {
+#content a {
   border-bottom: 1px dotted #727272;
 }
 a {
   color: #41403C;
   text-decoration: none;
+}
+a:hover {
+  color: #000;
+  border-bottom: 1px solid #727272;
+}
+header a, header a:hover {
+  border-bottom: 0px none;
 }
 #content .wym_box a, #content .ui-tabs a {
   border-bottom: 0px none;
@@ -193,13 +200,6 @@ a {
 .less-important {
   color: #727272;
 }
-header a {
-  border: 0px;
-}
-a:hover {
-  color: #000;
-  border-bottom: 1px solid #727272;
-}
 a#site_bar_refinery_cms_logo {
   left: 448px;
 }
@@ -214,6 +214,9 @@ body.login #page_container {
 }
 body.login header {
   background: #eaeaea;
+}
+header, footer, nav {
+  display: block;
 }
 body.login #site_bar_content a#site_bar_refinery_cms_logo {
   left: 247px;
