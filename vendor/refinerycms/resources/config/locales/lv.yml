@@ -9,7 +9,7 @@ lv:
       delete: Dzēst šo failu
       edit: Labot šo failu
       form:
-        download_current: Lejupielādēt esošo failu
+        download_current: Lejupielādēt pašreizējo failu
         or: vai
         replace: " aizstāt to ar šo..."
         maximum_file_size: Maksimāli pieļaujamais faila izmērs ir %{megabytes} megabaiti.
