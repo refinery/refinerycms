@@ -2,28 +2,29 @@ lv:
   plugins:
     refinery_files:
       title: Faili
-  must_choose_file: You must choose a file to upload
-  file_should_be_smaller_than_max_file_size: Files should be smaller than %{max_file_size} in size
+  file_specify_for_upload: Jānorāda fails pirms augšupielādes
+  file_should_be_smaller_than_max_file_size: Faila izmēram jābūt mazākam par %{max_file_size}
   admin:
     resources:
+      delete: Dzēst šo failu
+      edit: Labot šo failu
       form:
-        download_current: Download current file
-        or: or
-        replace: " replace it with this one..."
-        maximum_file_size: The maximum file size is %{megabytes} megabytes.
+        download_current: Lejupielādēt esošo failu
+        or: vai
+        replace: " aizstāt to ar šo..."
+        maximum_file_size: Maksimāli pieļaujamais faila izmērs ir %{megabytes} megabaiti.
       resource:
-        download: Download this file (%{size})
-        edit: Edit this file
+        download: Lejupielādēt šo failu (%{size})
       index:
-        upload_new: Upload New File
-        no_files_yet: There are no files yet. Click "Upload New Files" to add your first file.
+        upload_new: Augšupielādēt Failu
+        no_files_yet: Vēl nav neviena faila. Spied "Augšupielādēt Failu", lai ielādētu failu.
       insert:
-        existing: Existing File
-        new: New File
-        no_files: There are no files.
+        existing: Esošs Fails
+        new: Jauns Fails
+        no_files: Nav neviena faila.
       existing_resource:
-        link_to_file: Link to this file
-        button_text: Insert
+        link_to_file: Saite uz šo failu
+        button_text: Ievietot
   activerecord:
     models:
       resource: fails
