@@ -4,8 +4,6 @@ en:
       title: Inquiries
   inquiries:
     new:
-      header_message: Whoops there was a small problem
-      message: "The following problems need to be corrected:"
       send: Send message
       privacy_policy: We value your privacy
   admin:
@@ -40,8 +38,6 @@ en:
         date: Date
         message: Message
     inquiry_settings:
-      update:
-        updated: "'%{setting}' was successfully updated."
       notification_recipients_form:
         inquiry_settings_value_name: Send notifications to
         explanation: Every time someone contacts you on your website, Refinery sends out an email to say there is a new inquiry.
@@ -72,3 +68,9 @@ en:
   activerecord:
     models:
       inquiry: inquiry
+    attributes:
+      inquiry:
+        name: Name
+        email: Email
+        phone: Phone
+        message: Message
