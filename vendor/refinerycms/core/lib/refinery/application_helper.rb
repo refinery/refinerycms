@@ -27,7 +27,7 @@ module Refinery::ApplicationHelper
 
   # This was extracted from REFINERY_ROOT/vendor/plugins/refinery/app/views/shared/_menu_branch.html.erb
   # to remove the complexity of that template by reducing logic in the view.
-  def css_for_menu_branch(menu_branch, menu_branch_counter)
+  def css_for_menu_branch(menu_branch, menu_branch_counter, sibling_count = nil)
     css = []
     css << "selected" if selected_page?(menu_branch) or descendant_page_selected?(menu_branch)
     css << "first" if menu_branch_counter == 0

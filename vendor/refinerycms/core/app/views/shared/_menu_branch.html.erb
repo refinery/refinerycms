@@ -1,5 +1,5 @@
 <%
-  css = (css = css_for_menu_branch(menu_branch, menu_branch_counter)).any? ? " class='#{css.join(' ')}'" : nil
+  css = (css = css_for_menu_branch(menu_branch, menu_branch_counter, sibling_count||=nil)).any? ? " class='#{css.join(' ')}'" : nil
   dom_id = (menu_branch.parent_id.nil? and menu_branch.title.present?) ? " id='item_#{menu_branch_counter}'" : nil
 -%>
 <li<%= css -%><%= dom_id -%>>
