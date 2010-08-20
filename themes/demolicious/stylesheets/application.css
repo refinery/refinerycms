@@ -28,7 +28,7 @@ body {
     width: 990px;
     margin: 0px auto;
 }
-header {
+#header {
     background: url('/theme/images/header_background.png') repeat-x;
 }
 header {
@@ -86,7 +86,7 @@ header #menu {
 #menu li:hover ul, #menu div:hover nav {
     left: auto;
 }
-footer {
+#footer {
     margin-top: 120px;
     background: url('/theme/images/footer_background.png') repeat-x;
 }
