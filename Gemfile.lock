@@ -1,10 +1,24 @@
 GIT
+  remote: git://github.com/parndt/acts_as_tree.git
+  revision: cd4d6a6
+  branch: master
+  specs:
+    acts_as_tree (0.9.8)
+
+GIT
   remote: git://github.com/parndt/dragonfly.git
   revision: 1e86f21
   branch: refactor_job
   specs:
     dragonfly (0.6.2)
       rack
+
+GIT
+  remote: git://github.com/resolve/refinerycms-i18n.git
+  revision: 72260b3
+  branch: master
+  specs:
+    refinerycms-i18n (0.9.8)
 
 PATH
   remote: vendor/refinerycms
@@ -115,7 +129,7 @@ GEM
     rack (1.2.1)
     rack-cache (0.5.2)
       rack (>= 0.4)
-    rack-mount (0.6.9)
+    rack-mount (0.6.10)
       rack (>= 1.0.0)
     rack-test (0.5.4)
       rack (>= 1.0)
@@ -161,7 +175,7 @@ GEM
       polyglot (>= 0.3.1)
     trollop (1.16.2)
     truncate_html (0.4.0)
-    tzinfo (0.3.22)
+    tzinfo (0.3.23)
     webrat (0.7.2.beta.1)
       nokogiri (>= 1.2.0)
       rack (>= 1.0)
@@ -172,6 +186,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  acts_as_tree!
   capybara
   cucumber
   cucumber-rails
@@ -184,6 +199,7 @@ DEPENDENCIES
   refinerycms-authentication!
   refinerycms-core!
   refinerycms-dashboard!
+  refinerycms-i18n!
   refinerycms-images!
   refinerycms-inquiries!
   refinerycms-pages!
