@@ -17,12 +17,9 @@ gem 'sqlite3-ruby', '~> 1.3', :require => 'sqlite3' # db_adapter=sqlite3
 # gem 'aws-s3'
 
 # REFINERY CMS ================================================================
-# Add i18n support
-gem 'routing-filter'
-
 # Specify the Engines to use:
 path 'vendor/refinerycms' do
-  gem 'refinerycms-core', :require => 'refinery'
+  gem 'refinerycms-core', :require => 'core'
   gem 'refinerycms-authentication', :require => 'authentication'
   gem 'refinerycms-dashboard', :require => 'dashboard'
   gem 'refinerycms-inquiries', :require => 'inquiries'
@@ -31,6 +28,16 @@ path 'vendor/refinerycms' do
   gem 'refinerycms-resources', :require => 'resources'
   gem 'refinerycms-settings', :require => 'settings'
 end
+
+# Add i18n support
+gem 'refinerycms-i18n', :git => 'git://github.com/resolve/refinerycms-i18n.git',
+                        :branch => 'master',
+                        :require => 'i18n'
+gem 'routing-filter'
+
+# Add acts_as_tree support
+gem 'acts_as_tree', :git => 'git://github.com/parndt/acts_as_tree.git',
+                    :branch => 'master'
 
 # Specify additional Refinery CMS Engines here:
 # gem 'refinerycms-news',       '~> 0.9.8', :require => 'news'
