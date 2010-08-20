@@ -10,6 +10,6 @@ imported_exceptions =  IO.readlines('.gitignore').collect {|line| (line[0] != '#
 imported_exceptions.delete true
 Autotest.add_hook :initialize do |autotest|
   imported_exceptions.each do |exception|
-    autotest.add_exception(exception) unless exception.nil?
+    autotest.add_exception(exception) 
   end
 end
