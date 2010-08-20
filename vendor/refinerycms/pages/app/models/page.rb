@@ -21,7 +21,6 @@ class Page < ActiveRecord::Base
 
   before_destroy :deletable?
   after_save :reposition_parts!
-
   after_save :invalidate_child_cached_url
 
   # when a dialog pops up to link to a page, how many pages per page should there be
@@ -202,7 +201,10 @@ class Page < ActiveRecord::Base
     # the way that we call page parts seems flawed, will probably revert to page.parts[:title] in a future release.
     if (super_value = super).blank?
       # self.parts is already eager loaded so we can now just grab the first element matching the title we specified.
-      part = self.parts.detect {|part| (part.title == part_title.to_s) || (part.title.downcase.gsub(" ", "_") == part_title.to_s.downcase.gsub(" ", "_")) }
+      part = self.parts.detect do |part|
+        part.title == part_title.to_s or
+        part.title.downcase.gsub(" ", "_") == part_title.to_s.downcase.gsub(" ", "_")
+      end
 
       return part.body unless part.nil?
     end
