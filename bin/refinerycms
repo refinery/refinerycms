@@ -82,8 +82,9 @@ module Refinery
         exit
       end
 
-      # Get the full path to the new application
+      # Get the name and path of the new application
       @app_path = Pathname.new(File.expand_path(@input.first))
+      @app_name = @app_path.to_s.split(File::SEPARATOR).last
       
       # Generate a Refinery CMS application
       generate!
@@ -110,14 +111,14 @@ module Refinery
       run_command("bundle install")
 
       puts "\n\nSetting up your development database..\n"
-      run_command "rake -f '#{@app_path.join('Rakefile')}' db:setup"
+      run_command("rake -f '#{@app_path.join('Rakefile')}' db:setup")
       # End automation..
 
       # Output helpful messages.
       puts "\n=== ACTION REQUIRED ==="
       puts "Now you can launch your webserver using:"
       puts "\ncd #{@app_path}"
-      puts "script/server"
+      puts "rails server"
       puts "\nThis will launch the built-in webserver at port 3000."
       puts "You can now see your site running in your browser at http://localhost:3000"
       puts "\nThanks for installing Refinery, enjoy creating your new application!"
@@ -126,77 +127,20 @@ module Refinery
 
     def hack!
       # Overwrite rails defaults with refinery defaults
-      %w(app config db Gemfile config.ru).each do |f|
+      %w(app config db Gemfile config.ru .gitignore).each do |f|
         FileUtils::cp_r Refinery.root.join(f), @app_path, :verbose => false
       end
-      
-      FileUtils::cp Refinery.root.join('config', "database.yml.#{@options[:database]}"),
-                    @app_path.join('config', 'database.yml.example')
 
-      # add in the config files
-      %w(database amazon_s3 rackspace_cloudfiles).each do |config|
-        FileUtils::move @app_path.join('config', "#{config}.yml.example").to_s,
-                        @app_path.join('config', "#{config}.yml").to_s
+      # Read in the Gemfile and write it back out with the refinerycms gem enabled.
+      find_and_replace('Gemfile', /\#*\s?gem 'refinerycms'/, "gem 'refinerycms'")
 
-        # Figure out the app name from the install path and swap out your_local_xxx with this name.
-        unless @app_path.to_s == "/" or RUBY_PLATFORM =~ /mswin/
-          app_name = @app_path.to_s.split(File::SEPARATOR).last
-          # read in the file and split up the lines
-          lines = @app_path.join('config', "#{config}.yml").open('r').read.split("\n")
-          lines.each do |line|
-            line.gsub!("your_local_#{config}", "#{app_name}_development")
-            line.gsub!("your_test_#{config}", "#{app_name}_test")
-            line.gsub!("your_cucumber_#{config}", "#{app_name}_cucumber")
-            line.gsub!("your_production_#{config}", "#{app_name}_production")
-          end
-          # write the new content into the file.
-          config_file = @app_path.join('config', "#{config}.yml").open('w')
-          config_file.puts(lines.join("\n"))
-          config_file.close
-        end
-      end
-
-      # read in the Gemfile and write it back out with the refinerycms gem enabled.
-      (lines = Refinery.root.join('Gemfile').open('r').read.split("\n")).each do |line|
-        line.gsub!(/\#*\s?gem 'refinerycms'/, "gem 'refinerycms'")
-
-        # Ensure that the correct database gem libraries are included for the database adapter
-        # that the user has specified in the refinery install command.
-        if line =~ /\#db\_adapter\=/
-          if line =~ %r{#db_adapter=#{db_adapter}}
-            line.gsub!(/^(\#*\s?gem)/, 'gem')
-          else
-            line.gsub!(/^(\s?gem)/, '# gem')
-          end
-        end
-
-        if line =~ /^path\ \'vendor\/refinerycms\'\ do/
-          line.gsub!('vendor', Pathname.new(File.expand_path(File.dirname(__FILE__) << "/..")).join('vendor').to_s)
-        end
-      end
-
-      # write the new content into the Gemfile.
-      app_gemfile = @app_path.join('Gemfile').open('w')
-      app_gemfile.puts(lines.join("\n"))
-      app_gemfile.close
-
-      # replace app constant in Rakefile, config/initializers/secret_token.rb
+      # Replace app constant in Rakefile, config/initializers/secret_token.rb      
       ["Rakefile", "config/initializers/secret_token.rb"].each do |hackable|
-        (lines = @app_path.join(hackable).open('r').read.split("\n")).each do |line|
-          line.gsub!(@app_path.to_s.split(File::SEPARATOR).last.camelize, "Refinery")
-        end
-        hackable_file = @app_path.join(hackable).open('w')
-        hackable_file.puts(lines.join("\n"))
-        hackable_file.close
+        find_and_replace(hackable, @app_name.camelize, "Refinery")
       end
 
       # Remove development specific stuff from the .gitinore file
-      ignore_content = Refinery.root.join('.gitignore').read
-      ignore_content.gsub!(/#===REMOVED DURING REFINERY GEM INSTALL===.*#===END OF REMOVED DURING REFINERY GEM INSTALL===/m, '')
-
-      rails_gitignore = @app_path.join('.gitignore').open('w')
-      rails_gitignore.puts(ignore_content)
-      rails_gitignore.close
+      find_and_replace('.gitignore', /#===REMOVED DURING REFINERY GEM INSTALL===.*#===END OF REMOVED DURING REFINERY GEM INSTALL===/m, '')
     end
 
     protected
@@ -211,7 +155,11 @@ module Refinery
     end
     
     def find_and_replace(file, find, replace)
-      
+      contents = File.read(@app_path + file)
+      contents.gsub!(find, replace)
+      File.open(@app_path + file, "w") do |f|
+        f.puts contents  
+      end
     end
 
   end
