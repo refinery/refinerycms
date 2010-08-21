@@ -7,7 +7,7 @@ GIT
 
 GIT
   remote: git://github.com/parndt/dragonfly.git
-  revision: 1e86f21
+  revision: d631373
   branch: refactor_job
   specs:
     dragonfly (0.6.2)
