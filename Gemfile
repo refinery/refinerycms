@@ -19,25 +19,25 @@ gem 'sqlite3-ruby', '~> 1.3', :require => 'sqlite3' # db_adapter=sqlite3
 # REFINERY CMS ================================================================
 # Specify the Engines to use:
 path 'vendor/refinerycms' do
-  gem 'refinerycms-core', :require => 'core'
+  gem 'refinerycms-core',           :require => 'core'
   gem 'refinerycms-authentication', :require => 'authentication'
-  gem 'refinerycms-dashboard', :require => 'dashboard'
-  gem 'refinerycms-inquiries', :require => 'inquiries'
-  gem 'refinerycms-images', :require => 'images'
-  gem 'refinerycms-pages', :require => 'pages'
-  gem 'refinerycms-resources', :require => 'resources'
-  gem 'refinerycms-settings', :require => 'settings'
+  gem 'refinerycms-dashboard',      :require => 'dashboard'
+  gem 'refinerycms-inquiries',      :require => 'inquiries'
+  gem 'refinerycms-images',         :require => 'images'
+  gem 'refinerycms-pages',          :require => 'pages'
+  gem 'refinerycms-resources',      :require => 'resources'
+  gem 'refinerycms-settings',       :require => 'settings'
 end
 
 # Add i18n support
 gem 'refinerycms-i18n', :git => 'git://github.com/resolve/refinerycms-i18n.git',
                         :branch => 'master',
-                        :require => 'i18n'
+                        :require => 'refinery/i18n'
 gem 'routing-filter'
 
 # Add acts_as_tree support
-gem 'acts_as_tree', :git => 'git://github.com/parndt/acts_as_tree.git',
-                    :branch => 'master'
+gem 'acts_as_tree',     :git => 'git://github.com/parndt/acts_as_tree.git',
+                        :branch => 'master'
 
 # Specify additional Refinery CMS Engines here:
 # gem 'refinerycms-news',       '~> 0.9.8', :require => 'news'

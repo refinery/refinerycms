@@ -9,7 +9,8 @@
   <%= stylesheet_link_tag "home", :theme => theme if home_page? %>
   <%= "<!--[if IE 7]>#{stylesheet_link_tag 'ie7'}<![endif]-->" if request.env['HTTP_USER_AGENT'] =~ /MSIE/ -%>
   <link rel="shortcut icon" href="/favicon.ico" />
-  <meta charset="utf-8">
+  <meta charset='<%= Refinery::Application.config.encoding %>' />
+  <%= csrf_meta_tag %>
   <%= "<meta name=\"keywords\" content=\"#{@meta.meta_keywords}\" />".html_safe if @meta.meta_keywords.present? %>
   <%= "<meta name=\"description\" content=\"#{@meta.meta_description}\" />".html_safe if @meta.meta_description.present? -%>
   <%= yield :head_libraries %>

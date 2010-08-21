@@ -15,7 +15,7 @@ GIT
 
 GIT
   remote: git://github.com/resolve/refinerycms-i18n.git
-  revision: 72260b3
+  revision: a8560c9
   branch: master
   specs:
     refinerycms-i18n (0.9.8)
@@ -102,7 +102,7 @@ GEM
       term-ansicolor (~> 1.0.4)
     cucumber-rails (0.3.2)
       cucumber (>= 0.8.0)
-    culerity (0.2.10)
+    culerity (0.2.12)
     database_cleaner (0.5.2)
     diff-lcs (1.1.2)
     erubis (2.6.6)
@@ -129,7 +129,7 @@ GEM
     rack (1.2.1)
     rack-cache (0.5.2)
       rack (>= 0.4)
-    rack-mount (0.6.10)
+    rack-mount (0.6.11)
       rack (>= 1.0.0)
     rack-test (0.5.4)
       rack (>= 1.0)

@@ -118,7 +118,7 @@ module Crud
                      :locals => {
                        :object => @#{singular_name},
                        :include_object_name => true
-                     }   
+                     }
             end
           end
         end

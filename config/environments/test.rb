@@ -14,6 +14,9 @@ Refinery::Application.configure do
   config.consider_all_requests_local       = true
   config.action_controller.perform_caching = false
 
+  # Raise exceptions instead of rendering exception templates
+  config.action_dispatch.show_exceptions = false
+
   # Disable request forgery protection in test environment
   config.action_controller.allow_forgery_protection    = false
 
@@ -27,5 +30,6 @@ Refinery::Application.configure do
   # like if you have constraints or database-specific column types
   # config.active_record.schema_format = :sql
 
+  # Print deprecation notices to the stderr <-- :log until authlogic calms down.
   config.active_support.deprecation = :log
 end
