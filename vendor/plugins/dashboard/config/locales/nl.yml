@@ -11,11 +11,13 @@ nl:
         upload_a_image: Upload een afbeelding
         change_language: Verander de taal
         see_home_page: Bezoek de homepage
+        upload_a_file: Upload een bestand
       recent_activity:
         latest_activity: Laatste wijzigingen
-        see: Bezoek de '{{what}}'
+        latest_activity_message: "{{what}} {{kind}} {{action}}"
+        see: "See '{{what}}'"
       recent_inquiries:
-        latest_inquiries: Latest inquiries
+        latest_inquiries: Laatste vragen
   updated:
     'with_article "the"':  bewerkt
   created:
