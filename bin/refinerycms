@@ -14,9 +14,6 @@ rescue LoadError
   exit
 end
 
-# Load rails
-require 'rails'
-
 # Load refinerycms
 require Pathname.new(File.expand_path(File.dirname(__FILE__) << "/..")).join('vendor', 'refinerycms', 'core', 'lib', 'refinery.rb')
 
@@ -152,10 +149,11 @@ module Refinery
 
       # Replace app constant with Refinery
       # TODO: Find a way around this
+      camelized_app_name = @app_name.gsub(/\/(.?)/) { "::#{$1.upcase}" }.gsub(/(?:^|_)(.)/) { $1.upcase }
       %w(Rakefile config.ru config/application.rb config/environment.rb
           config/environments/development.rb config/environments/production.rb config/environments/test.rb
           config/initializers/secret_token.rb config/initializers/session_store.rb).each do |hackable|
-        find_and_replace(hackable, @app_name.camelize, "Refinery")
+        find_and_replace(hackable, camelized_app_name, "Refinery")
       end
 
       # Remove development specific stuff from the .gitinore file
