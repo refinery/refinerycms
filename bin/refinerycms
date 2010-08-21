@@ -14,173 +14,197 @@ rescue LoadError
   exit
 end
 
+# Load rails
+require 'rails'
+
 # Load refinerycms
 require Pathname.new(File.expand_path(File.dirname(__FILE__) << "/..")).join('vendor', 'refinerycms', 'core', 'lib', 'refinery.rb')
 
-class Refinery::AppGenerator
+module Refinery
+  class AppGenerator
 
-  def initialize(input)
-    @input = input
-    @options = {
-      :database => :sqlite3,
-      :force => false
-    }
-    
-    @optparse = OptionParser.new do |opts|
-      opts.banner = "Purpose: Installs Refinery CMS to the specified directory\nUsage:   #{opts.program_name} /path/to/project [options]"
-      
-      opts.separator ""
-      opts.separator "Specific Options:"
-      
-      databases = [:mysql, :postgresql, :sqlite3]
-      opts.on("-d DATABASE", "--database DATABASE", databases, "Select the database (default sqlite3)", "  #{databases.join('/')}") do |db|
-        @options[:database] = db
-      end
-      
-      opts.on("-f", "--force", "Force overwriting of directory") do
-        @options[:force] = true
-      end
-      
-      opts.separator ""
-      opts.separator "Common options:"
-      
-      opts.on_tail("-h", "--help", "Display this screen") do 
-        puts opts
-        exit
-      end
-      
-      opts.on_tail("-v", "--version", "Display the version") do
-        puts Refinery.version
-        exit
-      end           
-    end
-  end
-  
-  def run!
-    begin
-      @optparse.parse!(@input)
-    rescue OptionParser::ParseError => pe
-      puts pe
-      puts "\n"
-      puts @optparse
-      exit
-    end
-    
-    unless @input.size == 1      
-      puts "Please specify a single path to install Refinery CMS"
-      puts "\n"
-      puts @optparse
-      exit
-    end
-    
-    # Generate a Refinery CMS application
-    @app_path = Pathname.new(File.expand_path(@input[0]))
-    generate!
-  end
-  
-  protected
-  
-  def generate!
-    rails_command = "rails new #{@app_path}"
-    rails_command += " --database #{@options[:database]}"
-    rails_command += " --force" if @options[:force]
-    rails_command += " --skip-gemfile --skip-test-unit --skip-prototype"
-    run_command(rails_command, false)
-    
-    # NEEDS REFACTORING BEGIN
-    
-    %w(app config db Gemfile config.ru).each do |f|
-      FileUtils::cp_r Refinery.root.join(f), @app_path, :verbose => false
-    end
-    
-    FileUtils::cp Refinery.root.join('config', "database.yml.#{@options[:database]}"),
-                  @app_path.join('config', 'database.yml.example')
+    def initialize(input)
+      @input = input
+      @options = {
+        :database => :sqlite3,
+        :force => false
+      }
 
-    # add in the config files
-    %w(database amazon_s3 rackspace_cloudfiles).each do |config|
-      FileUtils::move @app_path.join('config', "#{config}.yml.example").to_s,
-                      @app_path.join('config', "#{config}.yml").to_s
+      @optparse = OptionParser.new do |opts|
+        opts.banner = "Purpose: Installs Refinery CMS to the specified directory"
+        opts.banner << "\nUsage:   #{opts.program_name} /path/to/project [options]"
 
-      # figure out the app name from the install path and swap out your_local_xxx with this name.
-      unless @app_path.to_s == "/" or RUBY_PLATFORM =~ /mswin/
-        app_name = @app_path.to_s.split(File::SEPARATOR).last
-        # read in the file and split up the lines
-        lines = @app_path.join('config', "#{config}.yml").open('r').read.split("\n")
-        lines.each do |line|
-          line.gsub!("your_local_#{config}", "#{app_name}_development")
-          line.gsub!("your_test_#{config}", "#{app_name}_test")
-          line.gsub!("your_cucumber_#{config}", "#{app_name}_cucumber")
-          line.gsub!("your_production_#{config}", "#{app_name}_production")
+        opts.separator ""
+        opts.separator "Specific Options:"
+
+        databases = [:mysql, :postgresql, :sqlite3]
+        opts.on("-d DATABASE", "--database DATABASE", databases, "Select the database (default sqlite3)", "  #{databases.join('/')}") do |db|
+          @options[:database] = db
         end
-        # write the new content into the file.
-        config_file = @app_path.join('config', "#{config}.yml").open('w')
-        config_file.puts(lines.join("\n"))
-        config_file.close
-      end
-    end
-      
-    # read in the Gemfile and write it back out with the refinerycms gem enabled.
-    (lines = Refinery.root.join('Gemfile').open('r').read.split("\n")).each do |line|
-      line.gsub!(/\#*\s?gem 'refinerycms'/, "gem 'refinerycms'")
-      
-      # Ensure that the correct database gem libraries are included for the database adapter
-      # that the user has specified in the refinery install command.
-      if line =~ /\#db\_adapter\=/
-        if line =~ %r{#db_adapter=#{db_adapter}}
-          line.gsub!(/^(\#*\s?gem)/, 'gem')
-        else
-          line.gsub!(/^(\s?gem)/, '# gem')
+
+        opts.on("-f", "--force", "Force overwriting of directory") do
+          @options[:force] = true
+        end
+
+        opts.separator ""
+        opts.separator "Common options:"
+
+        opts.on_tail("-h", "--help", "Display this screen") do
+          puts opts
+          exit
+        end
+
+        opts.on_tail("-v", "--version", "Display the version") do
+          puts Refinery.version
+          exit
         end
       end
     end
-    
-    # write the new content into the file.
-    app_gemfile = @app_path.join('Gemfile').open('w')
-    app_gemfile.puts(lines.join("\n"))
-    app_gemfile.close
-    
-    # Remove development specific stuff from the .gitinore file
-    ignore_content = Refinery.root.join('.gitignore').read
-    ignore_content.gsub!(/#===REMOVED DURING REFINERY GEM INSTALL===.*#===END OF REMOVED DURING REFINERY GEM INSTALL===/m, '')
-    
-    rails_gitignore = @app_path.join('.gitignore').open('w')
-    rails_gitignore.puts(ignore_content)
-    rails_gitignore.close
-    
-    # NEEDS REFACTORING END
-    
-    puts "\n---------"
-    puts "Refinery successfully installed in '#{@app_path}'!\n\n"
-    
-    # automate..
-    puts "Installing gem requirements using bundler..\n"
-    run_command("bundle install")
 
-    puts "\n\nSetting up your development database..\n"
-    run_command "rake -f '#{@app_path.join('Rakefile')}' db:setup"
-    # end automation..
+    def run!
+      begin
+        @optparse.parse!(@input)
+      rescue OptionParser::ParseError => pe
+        puts pe
+        puts "\n"
+        puts @optparse
+        exit
+      end
 
-    # output helpful messages.
-    puts "\n=== ACTION REQUIRED ==="
-    puts "Now you can launch your webserver using:"
-    puts "\ncd #{@app_path}"
-    puts "script/server"
-    puts "\nThis will launch the built-in webserver at port 3000."
-    puts "You can now see your site running in your browser at http://localhost:3000"
-    puts "\nThanks for installing Refinery, enjoy creating your new application!"
-    puts "---------\n\n"
+      unless @input.size == 1
+        puts "Please specify a single path to install Refinery CMS"
+        puts "\n"
+        puts @optparse
+        exit
+      end
+
+      # Generate a Refinery CMS application
+      @app_path = Pathname.new(File.expand_path(@input.first))
+      generate!
+    end
+
+    def generate!
+      rails_command = "rails new #{@app_path}"
+      rails_command += " --database #{@options[:database]}"
+      rails_command += " --force" if @options[:force]
+      rails_command += " --skip-gemfile --skip-test-unit --skip-prototype"
+      run_command(rails_command, false)
+
+      hack!
+
+      puts "\n---------"
+      puts "Refinery successfully installed in '#{@app_path}'!\n\n"
+
+      # automate..
+      puts "Installing gem requirements using bundler..\n"
+      run_command("bundle install")
+
+      puts "\n\nSetting up your development database..\n"
+      run_command "rake -f '#{@app_path.join('Rakefile')}' db:setup"
+      # end automation..
+
+      # output helpful messages.
+      puts "\n=== ACTION REQUIRED ==="
+      puts "Now you can launch your webserver using:"
+      puts "\ncd #{@app_path}"
+      puts "script/server"
+      puts "\nThis will launch the built-in webserver at port 3000."
+      puts "You can now see your site running in your browser at http://localhost:3000"
+      puts "\nThanks for installing Refinery, enjoy creating your new application!"
+      puts "---------\n\n"
+
+    end
+
+    protected :generate!
+
+    def hack!
+      %w(app config db Gemfile config.ru).each do |f|
+        FileUtils::cp_r Refinery.root.join(f), @app_path, :verbose => false
+      end
+
+      FileUtils::cp Refinery.root.join('config', "database.yml.#{@options[:database]}"),
+                    @app_path.join('config', 'database.yml.example')
+
+      # add in the config files
+      %w(database amazon_s3 rackspace_cloudfiles).each do |config|
+        FileUtils::move @app_path.join('config', "#{config}.yml.example").to_s,
+                        @app_path.join('config', "#{config}.yml").to_s
+
+        # figure out the app name from the install path and swap out your_local_xxx with this name.
+        unless @app_path.to_s == "/" or RUBY_PLATFORM =~ /mswin/
+          app_name = @app_path.to_s.split(File::SEPARATOR).last
+          # read in the file and split up the lines
+          lines = @app_path.join('config', "#{config}.yml").open('r').read.split("\n")
+          lines.each do |line|
+            line.gsub!("your_local_#{config}", "#{app_name}_development")
+            line.gsub!("your_test_#{config}", "#{app_name}_test")
+            line.gsub!("your_cucumber_#{config}", "#{app_name}_cucumber")
+            line.gsub!("your_production_#{config}", "#{app_name}_production")
+          end
+          # write the new content into the file.
+          config_file = @app_path.join('config', "#{config}.yml").open('w')
+          config_file.puts(lines.join("\n"))
+          config_file.close
+        end
+      end
+
+      # read in the Gemfile and write it back out with the refinerycms gem enabled.
+      (lines = Refinery.root.join('Gemfile').open('r').read.split("\n")).each do |line|
+        line.gsub!(/\#*\s?gem 'refinerycms'/, "gem 'refinerycms'")
+
+        # Ensure that the correct database gem libraries are included for the database adapter
+        # that the user has specified in the refinery install command.
+        if line =~ /\#db\_adapter\=/
+          if line =~ %r{#db_adapter=#{db_adapter}}
+            line.gsub!(/^(\#*\s?gem)/, 'gem')
+          else
+            line.gsub!(/^(\s?gem)/, '# gem')
+          end
+        end
+
+        if line =~ /^path\ \'vendor\/refinerycms\'\ do/
+          line.gsub!('vendor', Pathname.new(File.expand_path(File.dirname(__FILE__) << "/..")).join('vendor').to_s)
+        end
+      end
+
+      # write the new content into the Gemfile.
+      app_gemfile = @app_path.join('Gemfile').open('w')
+      app_gemfile.puts(lines.join("\n"))
+      app_gemfile.close
+
+      # replace app constant in Rakefile, config/initializers/secret_token.rb
+      ["Rakefile", "config/initializers/secret_token.rb"].each do |hackable|
+        (lines = @app_path.join(hackable).open('r').read.split("\n")).each do |line|
+          line.gsub!(@app_path.to_s.split(File::SEPARATOR).last.camelize, "Refinery")
+        end
+        hackable_file = @app_path.join(hackable).open('w')
+        hackable_file.puts(lines.join("\n"))
+        hackable_file.close
+      end
+
+      # Remove development specific stuff from the .gitinore file
+      ignore_content = Refinery.root.join('.gitignore').read
+      ignore_content.gsub!(/#===REMOVED DURING REFINERY GEM INSTALL===.*#===END OF REMOVED DURING REFINERY GEM INSTALL===/m, '')
+
+      rails_gitignore = @app_path.join('.gitignore').open('w')
+      rails_gitignore.puts(ignore_content)
+      rails_gitignore.close
+    end
+
+    protected :hack!
+
+    def run_command(command, cd = true)
+      to_run = (RUBY_PLATFORM =~ /mswin32/ ? "cmd /c " : "")
+      to_run += "cd #{@app_path} && " if cd
+      to_run += command
+
+      puts "Running: " + to_run
+      puts `#{to_run}`
+    end
+
+    protected :run_command
 
   end
-  
-  def run_command(command, cd = true)
-    to_run = (RUBY_PLATFORM =~ /mswin32/ ? "cmd /c " : "")
-    to_run += "cd #{@app_path} && " if cd
-    to_run += command
-    
-    puts "Running: " + to_run
-    puts `#{to_run}`
-  end
-  
 end
 
 generator = Refinery::AppGenerator.new(ARGV)

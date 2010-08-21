@@ -2,7 +2,7 @@
 <html>
   <%= render :partial => "/admin/head" %>
   <body class='<%= action_name %>'>
-    <%= render :partial => '/shared/site_bar'  %>
+    <%= render :partial => '/shared/site_bar' %>
     <div id='tooltip_container'></div>
     <header>
       <%= render :partial => "/admin/menu" %>
@@ -11,6 +11,7 @@
       <div id="page">
         <div id="content" class="clearfix">
           <div id="flash_container">
+            <%= render :partial => '/shared/no_script' %>
             <%= render :partial => "/shared/message" %>
           </div>
           <%= yield %>

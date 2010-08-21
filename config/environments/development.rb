@@ -1,6 +1,5 @@
 Refinery::Application.configure do
   # Settings specified here will take precedence over those in config/environment.rb
-  config.reload_plugins = true
 
   # In the development environment your application's code is reloaded on
   # every request.  This slows down response time but is perfect for development
@@ -18,7 +17,9 @@ Refinery::Application.configure do
   # Don't care if the mailer can't send
   config.action_mailer.raise_delivery_errors = false
 
+  # Set the log level to the most chatty.
   config.log_level = :debug
 
+  # Print deprecation notices to the Rails logger
   config.active_support.deprecation = :log
 end
