@@ -130,7 +130,7 @@ module Refinery
       %w(app db).each do |folder|
         FileUtils::cp_r Refinery.root.join(folder), @app_path, :verbose => false
       end
-      %w(.gitignore config/routes.rb config/initializers/acts_as_indexed_config.rb 
+      %w(.gitignore config/routes.rb config/settings.rb config/initializers/acts_as_indexed_config.rb 
           config/initializers/field_with_error_fix.rb config/initializers/fix_rack.rb).each do |file|
         FileUtils::cp_r Refinery.root.join(file), @app_path.join(file), :verbose => false
       end
