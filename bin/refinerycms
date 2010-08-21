@@ -24,6 +24,7 @@ module Refinery
   class AppGenerator
 
     def initialize(input)
+      # Default options
       @input = input
       @options = {
         :database => :sqlite3,
@@ -37,6 +38,7 @@ module Refinery
         opts.separator ""
         opts.separator "Specific Options:"
 
+        # Rails supports more options, but Refinery is only tested on these three
         databases = [:mysql, :postgresql, :sqlite3]
         opts.on("-d DATABASE", "--database DATABASE", databases, "Select the database (default sqlite3)", "  #{databases.join('/')}") do |db|
           @options[:database] = db
@@ -62,6 +64,7 @@ module Refinery
     end
 
     def run!
+      # Check for valid input
       begin
         @optparse.parse!(@input)
       rescue OptionParser::ParseError => pe
@@ -71,6 +74,7 @@ module Refinery
         exit
       end
 
+      # Ensure only one path is specified
       unless @input.size == 1
         puts "Please specify a single path to install Refinery CMS"
         puts "\n"
@@ -78,32 +82,38 @@ module Refinery
         exit
       end
 
-      # Generate a Refinery CMS application
+      # Get the full path to the new application
       @app_path = Pathname.new(File.expand_path(@input.first))
+      
+      # Generate a Refinery CMS application
       generate!
     end
-
+  
+    private
+    
     def generate!
+      # Generate a rails application
       rails_command = "rails new #{@app_path}"
-      rails_command += " --database #{@options[:database]}"
-      rails_command += " --force" if @options[:force]
-      rails_command += " --skip-gemfile --skip-test-unit --skip-prototype"
+      rails_command << " --database #{@options[:database]}"
+      rails_command << " --force" if @options[:force]
+      rails_command << " --skip-gemfile --skip-test-unit --skip-prototype"
       run_command(rails_command, false)
-
+      
+      # Add in the Refinery specifics to the application
       hack!
 
       puts "\n---------"
       puts "Refinery successfully installed in '#{@app_path}'!\n\n"
 
-      # automate..
+      # Automate..
       puts "Installing gem requirements using bundler..\n"
       run_command("bundle install")
 
       puts "\n\nSetting up your development database..\n"
       run_command "rake -f '#{@app_path.join('Rakefile')}' db:setup"
-      # end automation..
+      # End automation..
 
-      # output helpful messages.
+      # Output helpful messages.
       puts "\n=== ACTION REQUIRED ==="
       puts "Now you can launch your webserver using:"
       puts "\ncd #{@app_path}"
@@ -112,16 +122,14 @@ module Refinery
       puts "You can now see your site running in your browser at http://localhost:3000"
       puts "\nThanks for installing Refinery, enjoy creating your new application!"
       puts "---------\n\n"
-
     end
 
-    protected :generate!
-
     def hack!
+      # Overwrite rails defaults with refinery defaults
       %w(app config db Gemfile config.ru).each do |f|
         FileUtils::cp_r Refinery.root.join(f), @app_path, :verbose => false
       end
-
+      
       FileUtils::cp Refinery.root.join('config', "database.yml.#{@options[:database]}"),
                     @app_path.join('config', 'database.yml.example')
 
@@ -130,7 +138,7 @@ module Refinery
         FileUtils::move @app_path.join('config', "#{config}.yml.example").to_s,
                         @app_path.join('config', "#{config}.yml").to_s
 
-        # figure out the app name from the install path and swap out your_local_xxx with this name.
+        # Figure out the app name from the install path and swap out your_local_xxx with this name.
         unless @app_path.to_s == "/" or RUBY_PLATFORM =~ /mswin/
           app_name = @app_path.to_s.split(File::SEPARATOR).last
           # read in the file and split up the lines
@@ -191,7 +199,7 @@ module Refinery
       rails_gitignore.close
     end
 
-    protected :hack!
+    protected
 
     def run_command(command, cd = true)
       to_run = (RUBY_PLATFORM =~ /mswin32/ ? "cmd /c " : "")
@@ -201,8 +209,10 @@ module Refinery
       puts "Running: " + to_run
       puts `#{to_run}`
     end
-
-    protected :run_command
+    
+    def find_and_replace(file, find, replace)
+      
+    end
 
   end
 end
