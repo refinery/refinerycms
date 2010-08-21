@@ -22,7 +22,7 @@ nl:
         upload_new: Upload een nieuw bestand.
         no_files_yet: Er zijn nog geen bestanden. Klik op "Upload een nieuw bestand" om uw eerste bestand toe te voegen.
       insert:
-        existing_file: Bestaand bestand
+        existing: Bestaand bestand
         new: Nieuw bestand
         link_to_resource: Link naar dit bestand
         previous: Vorige
@@ -30,3 +30,6 @@ nl:
         submit_insert: Voeg in
         or: of
         cancel: Annuleer
+      existing_resource:
+        link_to_resource: 'Link naar dit Bestand'
+        submit_insert: Voeg in

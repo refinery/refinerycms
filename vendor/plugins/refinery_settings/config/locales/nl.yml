@@ -40,7 +40,10 @@ nl:
         empty_set: Er zijn nog geen instellingen aangemaakt
         create_first: "Klik '{{link}}' om je eerste instelling aan te maken."
       form:
-        restart_may_be_in_order: "<strong>Let op</strong>, na een aanpassing moet wellicht uw webapplicatie herstart worden" 
+        restart_may_be_in_order: "<strong>Let op</strong>, na een aanpassing moet wellicht uw webapplicatie herstart worden"
+        yes_make_this_setting_restricted: "Ja, maak deze configuratie alleen toegankelijk voor superusers."
+        help:
+          restricted: Dit maakt deze configuratie alleen zichtbaar en bewerkbaar bij gebruikers die superusers zijn (zoals jij).
   plugins:
     refinery_settings:
       title: Instellingen
