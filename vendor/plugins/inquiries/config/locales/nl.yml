@@ -29,13 +29,17 @@ nl:
         read_inquiry: Lees de vraag
         remove_inquiry: Verwijder de vraag permanent
         remove_inquiry_confirmation: "Weet u zeker dat u de vraag '{{name}}' wilt verwijderen?"
+        title: Verwijder deze vraag
+        said: zei
+        mark_as_spam: Markeer als spam
+        mark_as_ham: Verplaats deze vraag naar 'inbox'
       toggle_status:
         closed: "Vraag '{{inquiry}}' is behandeld"
         reopened: "Vraag '{{inquiry}}' is heropend"
       index:
         search_results_for: Zoekresultaten voor {{query}}
         open_inquiries: Open vragen
-        no_inquiries: "Jeej! Er zijn geen onverwerkte vragen!"
+        no_inquiries: "Er zijn geen onverwerkte vragen."
         closed_inquiries: Verwerkte vragen
         havent_closed_any_inquiries: Je hebt nog geen enkele vraag verwerkt
       show:
@@ -47,9 +51,17 @@ nl:
         age: Leeftijd
         actions: Acties
         back_to_all_inquiries: Terug naar alle vragen
+        spam: Spam
+        spam_yes: 'ja'
+        inquiry: Vraag
+        title: Verwijder deze vraag
       submenu:
+        inbox: Inbox
+        spam: Spam
         update_notified: Wijzig wie een notificatie ontvangt
         edit_confirmation_email: Bewerk bevestigings email
+      spam:
+        no_spam: Er is geen spam.
     inquiry_settings:
       update:
         updated: "'{{setting}}' is aangepast."
