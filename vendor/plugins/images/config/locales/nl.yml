@@ -40,3 +40,7 @@ nl:
         submit_insert: Voeg in
         or: of
         cancel: Annuleer
+      existing_image:
+        submit_insert: Voeg in
+        resize_image: "Afbeelding verkleinen? <em>(Aanbevolen)</em>"
+        size: Grootte
