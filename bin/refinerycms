@@ -106,15 +106,15 @@ module Refinery
       puts "\n---------"
       puts "Refinery successfully installed in '#{@app_path}'!\n\n"
 
-      # Automate..
+      # Automate
       puts "Installing gem requirements using bundler..\n"
       run_command("bundle install")
 
       puts "\n\nSetting up your development database..\n"
       run_command("rake -f '#{@app_path.join('Rakefile')}' db:setup")
-      # End automation..
+      # End automation
 
-      # Output helpful messages.
+      # Output helpful messages
       puts "\n=== ACTION REQUIRED ==="
       puts "Now you can launch your webserver using:"
       puts "\ncd #{@app_path}"
