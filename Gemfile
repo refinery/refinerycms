@@ -1,22 +1,36 @@
-source :rubygems
+source 'http://rubygems.org'
 
-# Specify the database driver as appropriate for your application (only one is necessary).
-# Defaults to sqlite3. Don't remove any of these below in the core or gems won't install.
-gem 'sqlite3-ruby', '~> 1.3', :require => 'sqlite3' # db_adapter=sqlite3
-# gem 'mysql' # db_adapter=mysql
-# gem 'pg'    # db_adapter=postgresql
+gem 'rails', '3.0.0.rc'
 
-# Specify your favourite web server (only one) - not required.
-# gem 'unicorn', :group => :development
-# gem 'mongrel', :group => :development
+# Bundle edge Rails instead:
+# gem 'rails', :git => 'git://github.com/rails/rails.git'
+
+gem 'sqlite3-ruby', :require => 'sqlite3'
+
+# Use unicorn as the web server
+# gem 'unicorn'
 
 # Deploy with Capistrano
 # gem 'capistrano'
 
-# If you are using s3 you probably want this gem:
-# gem 'aws-s3'
+# To use debugger
+# gem 'ruby-debug'
+
+# Bundle the extra gems:
+# gem 'bj'
+# gem 'nokogiri', '1.4.1'
+# gem 'sqlite3-ruby', :require => 'sqlite3'
+# gem 'aws-s3', :require => 'aws/s3'
+
+# Bundle gems for the local environment. Make sure to
+# put test-only gems in this group so their generators
+# and rake tasks are available in development mode:
+# group :development, :test do
+#   gem 'webrat'
+# end
 
 # REFINERY CMS ================================================================
+
 # Specify the Engines to use:
 path 'vendor/refinerycms' do
   gem 'refinerycms-core',           :require => 'core'
@@ -51,6 +65,10 @@ gem 'dragonfly',        :git => 'git://github.com/parndt/dragonfly.git',
                         :branch => 'refactor_job',
                         :require => 'dragonfly'
 
+# END REFINERY CMS ============================================================
+                 
+# REFINERY CMS DEVELOPMENT ====================================================
+
 group :test do
   gem 'json_pure',          '= 1.4.6', :require => 'json/pure'
 
@@ -70,4 +88,4 @@ group :test do
   gem 'ruby-prof'
 end
 
-# REFINERY CMS ================================================================
+# END REFINERY CMS DEVELOPMENT =================================================
