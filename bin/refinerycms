@@ -97,7 +97,7 @@ module Refinery
       rails_command = "rails new #{@app_path}"
       rails_command << " --database #{@options[:database]}"
       rails_command << " --force" if @options[:force]
-      rails_command << " --skip-gemfile --skip-test-unit --skip-prototype"
+      rails_command << " --skip-test-unit --skip-prototype"
       run_command(rails_command, false)
       
       # Add in the Refinery specifics to the application
@@ -127,35 +127,54 @@ module Refinery
 
     def hack!
       # Overwrite rails defaults with refinery defaults
-      %w(app config db Gemfile config.ru .gitignore).each do |f|
-        FileUtils::cp_r Refinery.root.join(f), @app_path, :verbose => false
+      %w(app db).each do |folder|
+        FileUtils::cp_r Refinery.root.join(folder), @app_path, :verbose => false
       end
+      %w(.gitignore config/routes.rb config/initializers/acts_as_indexed_config.rb 
+          config/initializers/field_with_error_fix.rb config/initializers/fix_rack.rb).each do |file|
+        FileUtils::cp_r Refinery.root.join(file), @app_path.join(file), :verbose => false
+      end
+      
+      # Remove public/index.html
+      FileUtils::rm @app_path.join('public', 'index.html')
+      
+      # Add refinery gems to the Gemfile
+      gemfile_contents = File.read(Refinery.root.join('Gemfile'))
+      refinery_gems = gemfile_contents.match(/# REFINERY CMS =+.*# END REFINERY CMS =+/m)[0]
+      File.open(@app_path.join('Gemfile'), "a") do |f|
+        f.write "\n" + refinery_gems
+      end
+      
+      # Hack to make work on development computers
+      # TODO: Change this when gem is released
+      find_and_replace('Gemfile', "path 'vendor/refinerycms' do", 
+                        "path '#{Pathname.new(File.expand_path(File.dirname(__FILE__) << "/..")).join('vendor').to_s}/refinerycms' do")
 
-      # Read in the Gemfile and write it back out with the refinerycms gem enabled.
-      find_and_replace('Gemfile', /\#*\s?gem 'refinerycms'/, "gem 'refinerycms'")
-
-      # Replace app constant in Rakefile, config/initializers/secret_token.rb      
-      ["Rakefile", "config/initializers/secret_token.rb"].each do |hackable|
+      # Replace app constant with Refinery
+      # TODO: Find a way around this
+      %w(Rakefile config.ru config/application.rb config/environment.rb
+          config/environments/development.rb config/environments/production.rb config/environments/test.rb
+          config/initializers/secret_token.rb config/initializers/session_store.rb).each do |hackable|
         find_and_replace(hackable, @app_name.camelize, "Refinery")
       end
 
       # Remove development specific stuff from the .gitinore file
-      find_and_replace('.gitignore', /#===REMOVED DURING REFINERY GEM INSTALL===.*#===END OF REMOVED DURING REFINERY GEM INSTALL===/m, '')
+      find_and_replace('.gitignore', /# REFINERY CMS DEVELOPMENT =+.*# END REFINERY CMS DEVELOPMENT =+/m, '')
     end
 
     protected
 
     def run_command(command, cd = true)
       to_run = (RUBY_PLATFORM =~ /mswin32/ ? "cmd /c " : "")
-      to_run += "cd #{@app_path} && " if cd
-      to_run += command
+      to_run << "cd #{@app_path} && " if cd
+      to_run << command
 
       puts "Running: " + to_run
       puts `#{to_run}`
     end
     
     def find_and_replace(file, find, replace)
-      contents = File.read(@app_path + file)
+      contents = File.read(@app_path.join(file))
       contents.gsub!(find, replace)
       File.open(@app_path + file, "w") do |f|
         f.puts contents  
