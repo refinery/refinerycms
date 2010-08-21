@@ -175,7 +175,7 @@ module Refinery
       # replace app constant in Rakefile, config/initializers/secret_token.rb
       ["Rakefile", "config/initializers/secret_token.rb"].each do |hackable|
         (lines = @app_path.join(hackable).open('r').read.split("\n")).each do |line|
-          line.gsub!(@app_path.to_s.split(File::SEPARATOR).last.titleize, "Refinery")
+          line.gsub!(@app_path.to_s.split(File::SEPARATOR).last.camelize, "Refinery")
         end
         hackable_file = @app_path.join(hackable).open('w')
         hackable_file.puts(lines.join("\n"))
