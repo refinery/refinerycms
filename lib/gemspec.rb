@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-require File.expand_path('../../vendor/plugins/refinery/lib/refinery.rb', __FILE__)
+require File.expand_path('../../vendor/refinerycms/core/lib/refinery.rb', __FILE__)
 files = %w( .gitignore .yardopts Gemfile Rakefile *.md public/.htaccess config.ru ).map { |file| Dir[file] }.flatten
 %w(app bin config db features lib public script test themes vendor).sort.each do |dir|
   files += Dir.glob("#{dir}/**/*")
@@ -7,7 +7,8 @@ end
 
 files.reject! do |f|
   !File.exist?(f) or
-  f =~ /^(vendor\/engines\/refinerycms)|(public\/system)|(config\/database.yml$)|(.*\/cache)|(db\/.*\.sqlite3?$)|(\.log$)|(\.rbc$)/}
+  f =~ /^(public\/system)|(config\/database.yml$)|(.*\/cache)|(db\/.*\.sqlite3?$)|(\.log$)|(\.rbc$)/
+end
 
 gemspec = <<EOF
 Gem::Specification.new do |s|
@@ -22,11 +23,10 @@ Gem::Specification.new do |s|
   s.require_paths     = %w(lib)
   s.executables       = %w(#{Dir.glob('bin/*').map{|d| d.gsub('bin/','')}.join(' ')})
 
+  s.add_dependency    'rails', '3.0.0.rc'
+
   s.files             = [
     '#{files.join("',\n    '")}'
-  ]
-  s.test_files        = [
-    '#{Dir.glob("test/**/*.rb").join("',\n    '")}'
   ]
 end
 EOF

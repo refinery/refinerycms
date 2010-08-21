@@ -11,7 +11,8 @@ if request.env['HTTP_USER_AGENT'] =~ /MSIE/%>
     <%= render :partial => '/shared/html5_for_ie.js' %>
   </script>
 <% end %>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <%= csrf_meta_tag %>
+  <meta charset='<%= Refinery::Application.config.encoding %>' />
   <title><%= RefinerySetting.find_or_set(:site_name, 'Company Name') %> - Refinery</title>
 
   <%= stylesheet_link_tag 'refinery/site_bar',
@@ -24,6 +25,8 @@ if request.env['HTTP_USER_AGENT'] =~ /MSIE/%>
   <%= yield :head_before_javascript_libraries -%>
 
   <%= jquery_include_tags(:caching => js_caching) %>
+
+  <%= javascript_include_tag 'http://github.com/rails/jquery-ujs/raw/master/src/rails.js' %>
 
   <%= javascript_include_tag 'jquery/jquery.corner.js',
                              'jquery/jquery.textTruncate.js',
