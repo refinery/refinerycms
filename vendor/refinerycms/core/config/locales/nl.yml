@@ -8,10 +8,10 @@ nl:
     menu:
       reorder_menu: Wijzig menu volgorde
       reorder_menu_done: Ik ben klaar met het wijzigen van de volgorde
-    search: Zoek naar
-    search_submit: Zoek
-    search_results_for: "Zoekresultaten voor '%{query}'"
-    search_no_results: "Excuses, geen resultaten gevonden"
+    dialogs:
+      show:
+        save: Opslaan
+        cancel: Annuleren
   refinery:
     other: "Ander %{what}"
     reorder: "Wijzig volgorde huidige %{what}"
@@ -26,37 +26,37 @@ nl:
       switch_to_your_website: Ga naar de website
       switch_to_your_website_editor: Ga terug naar de editor
     admin:
-      message:
-        close: sluiten
       continue_editing:
         save_and_continue_editing: Sla op en ga verder met bewerken
       form_actions:
-        or: of
         save: Sla op
-        or_cancel: of
         cancel: Annuleer
-        or_continue: of
-        cancel_lose_changes: "Als u annuleert, zullen alle wijzingen voor '%{object_name}' niet worden opgeslagen!"
+        cancel_lose_changes: "Als u annuleert, zal geen avn de wijzingen worden opgeslagen!"
+        delete: Verwijder
+        previous: Vorige
+        next: Volgende
+        close: Sluiten
       image_picker:
         none_selected: "Er is op dit moment geen %{what} geselecteerd. Klik a.u.b. hier om er een toe te voegen."
         remove_current: "Verwijder de huidige %{what}"
         change: Klik hier om de afbeelding te wijzigen
-        image: afbeelding
+        show: Laat zien
       resource_picker:
-        none_selected: "Er is op dit moment geen %{what} geselecteerd. Klik a.u.b. hier om er een toe te voegen."
-        current: "Huidige %{what}"
         download_current: "Download huidige %{what}"
         opens_in_new_window: Opent in een nieuw venster
         remove_current: "Verwijder huidige %{what}"
-        resource: bestand
-        message:
-          close: sluiten
-  activerecord:
-    models:
-      page: pagina
-      user: gebruiker
-      image: afbeelding
-      inquiry: vraag
-      resource: bestand
-      refinery_setting: instelling
-      inquiry_setting: instelling voor vragen
+      search:
+        button_text: Zoek
+        results_for: "Zoekresultaten voor '%{query}'"
+        no_results: "Excuses, geen resultaten gevonden"
+      delete:
+        message: Weet u zeker dat u '%{title}' wilt verwijderen?
+      error_messages:
+        problems_in_following_fields: Er zijn problemen met de volgende velden
+    message:
+      close: Sluiten
+      close_this_message: Sluit dit bericht
+    draft_page_message:
+      not_live: Deze pagina is NIET beschikbaar voor het publiek
+    footer:
+      copyright: Copyright &copy;
