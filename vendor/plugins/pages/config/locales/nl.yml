@@ -4,8 +4,20 @@ nl:
       title: "Pagina's"
   admin:
     pages:
+      page:
+        confirm_delete_page_title: Verwijder deze pagina
+        confirm_delete_page_message: "Weet je zeker dat je deze pagina wilt verwijderen '{{title}}'?"        
+        view_live: Bekijk deze pagina live <br/><em>(opent in een nieuw venster)</em>
+        edit_this_page: Bewerk deze pagina
+        hidden: verborgen
+        draft: ontwerp
+      form_new_page_parts:
+        title: Titel    
       form_advanced_options:
         title: Titel
+        toggle_advanced_options: Klik om meta tag eigenschappen en menu opties te tonen
+        parent_page: Bovenliggende pagina
+        parent_page_help: "Je kunt een pagina binnen een andere pagina plaatsen door het in de lijst te selecteren. Als je wilt dat dit de pagina geen bovenliggende pagina's heeft, laat dit veld dan leeg."
         create_content_section: Maak een nieuw content sectie aan
         delete_content_section: Verwijder een content sectie
         advanced_options: Uitgebreide opties
@@ -28,11 +40,21 @@ nl:
         save_as_draft: Sla op als concept
         save: Opslaan
         cancel: Annuleren
+        
+        skip_to_first_child: Sla top-level pagina over.
+        skip_to_first_child_label:  Stuur bezoekers door naar de eerste sub-level pagina.
+        skip_to_first_child_help: "Deze optie maakt van deze pagina een link naar de onderliggende pagina. Dit kan handig zijn voor het groeperen van pagina's."
+        link_url: Stuur deze pagina door naar een andere website of pagina.
+        link_url_help: "Als je wilt dat deze pagina doorlinkt naar een andere website of pagina als je er op klikt in de menu, voer dan een URL in. Bijvoorbeeld: http://google.com/"
+        custom_title_help: "Als je wilt dat de pagina een andere titel heeft dan de gene die vertoont wordt in de menu, selecteer dan &apos;Text&apos; en vul het in."
+        show_in_menu_help: "Deselecteer deze optie om de link naar de pagina van de menu te verwijderen. Dit kan handig zijn als je een pagina hebt die mensen niet direct via een link mogen tonen."
+        
       form_advanced_options_seo:
         seo: Zoekmachine optimalisatie
         seo_override_title: Browser titel
         seo_override_title_help: Als u de standaard titel van het browservenster wilt wijzigen, kunt u hier een alternatief invullen.
         meta_keywords_title: Meta zoekwoorden
+        meta_keywords_help: "Voer 5-10 keywords die gerelateerd zijn aan deze pagina. Scheidt deze keywords met comma's."
         meta_description_help: Voeg 5 tot 10 meta zoekwoorden toe. Gebruik een komma om de zoekwoorden te scheiden.
         meta_description_title: Meta omschrijving
         meta_description_help: Voer een compacte (twee a drie zinnen) pagina beschrijving in.
@@ -48,6 +70,34 @@ nl:
         reorder_pages_done: "Klaar met het wijzingen van de volgorde van de pagina's"
         sorry_no_results: Helaas! Er zijn geen resultaten gevonden.
         no_pages_yet: "Er zijn nog geen pagina's. Druk op 'Maak een nieuwe pagina' om de eerste aan te maken."
+    
+    pages_dialogs:
+      not_allowed: Je hebt geen rechten om deze functie te gebruiken.
+      page_link:
+        link_to_this_page: Link naar deze pagina
+      link_to:
+        your_page:
+          tab_name: Jouw pagina
+        web_address:
+          tab_name: Website
+          location: Locatie
+          new_window: Nieuw venster
+          new_window_label: Selecteer deze optie om de link in een nieuw venster te openen.
+          not_sure: Weet je niet zeker wat je in het bovenstaande veld kan invoeren?
+          step1: Zoek de pagina op het internet waar je naartoe wilt linken.
+          step2: "Kopieër het web adres uit het adres balk van je browser en plak het in het bovenstaande veld."
+        email_address:
+          tab_name: Email adres
+          subject_line_optional: Optioneel onderwerp
+          body_optional: Optioneel inhoud
+          not_sure: Niet zeker wat je in de bovenstaande velden moet invullen?
+          step1: "Schrijf of kopieër en plak (bijvoorbeeld uit je adresboek) het email adres in het bovenstaande '<strong>Email Adres</strong>' veld."
+          step2: "Gebruik het bovenstaande '<strong>Optioneel onderwerp</strong>' veld als je het bericht samengesteld wilt hebben met een <strong>voorgeschreven onderwerp regel</strong>."
+          step3: "Gebruik het bovenstaande '<strong>Optioneel inhoud</strong>' veld als je het bericht samengesteld wilt hebben met <strong>voorgeschreven inhoud</strong>."
+        your_resource:
+          tab_name: Jouw bestand
+          link_to_this_resource: Link naar dit bestand
+  
   activerecord:
     attributes:
       page:

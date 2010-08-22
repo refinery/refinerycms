@@ -4969,19 +4969,23 @@ WYMeditor.WymClassSafari.prototype.addCssRule = function(styles, oCss) {
 //keydown handler, mainly used for keyboard shortcuts
 WYMeditor.WymClassSafari.prototype.keydown = function(e) {
 
-  if(e.ctrlKey){
-    //'this' is the doc
-    var wym = WYMeditor.INSTANCES[this.title];
+  //'this' is the doc
+  var wym = WYMeditor.INSTANCES[this.title];
 
-    if(e.keyCode == 66) {
+  if(e.ctrlKey){
+    if(e.keyCode == 66){
       //CTRL+b => STRONG
       wym._exec(WYMeditor.BOLD);
-      return false;
-    } else if(e.keyCode == 73) {
+      e.preventDefault();
+    }
+    if(e.keyCode == 73){
       //CTRL+i => EMPHASIS
       wym._exec(WYMeditor.ITALIC);
-      return false;
+      e.preventDefault();
     }
+  } else if(e.shiftKey && e.keyCode == 13) {
+    wym._exec('InsertLineBreak');
+    e.preventDefault();
   }
 };
 
@@ -5007,10 +5011,6 @@ WYMeditor.WymClassSafari.prototype.keyup = function(e) {
     }
   }
 
-  //fix #112
-  if(e.keyCode == 13 && e.shiftKey) {
-    wym._exec('InsertLineBreak');
-  }
   else if(($.inArray(e.keyCode, [8, 17, 46, 224]) == -1) && !e.metaKey && !e.ctrlKey)
   {
     //NOT BACKSPACE, NOT DELETE, NOT CTRL, NOT COMMAND
