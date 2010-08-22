@@ -21,6 +21,7 @@ Work items still to do:
 * Migrate to new generator API  (low).
 * Migrate to new Mailer API (low).
 * Fix other deprecations (low).
+* Figure out how to setup dragonfly for Heroku (medium).
 
 Join the IRC channel on freenode.net #refinerycms on August 7th to contribute!
 
@@ -39,10 +40,11 @@ Join the IRC channel on freenode.net #refinerycms on August 7th to contribute!
 
 * Install process, update process, copying assets to public
 * All these things should be made standard so that it is easier for plugin authors
+* The refinery_plugin generator should create those files necessary for the plugin to be installed elsewhere
 * Most plugins should be packaged as gems for ease
 * Standardize the naming (refinerycms-[plugin_name]), most do this already but there are a few exceptions
 
-# Internet Explorer 7+ Support
+## Internet Explorer 7+ Support
 
 * WYMEditor and the dialogs are the weakest areas right now.
 

@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name              = %q{refinerycms}
-  s.version           = %q{0.9.8.pre1}
+  s.version           = %q{0.9.8.beta1.pre}
   s.description       = %q{A beautiful open source Ruby on Rails content manager for small business. Easy to extend, easy to use, lightweight and all wrapped up in a super slick UI.}
   s.date              = %q{2010-08-21}
   s.summary           = %q{A beautiful open source Ruby on Rails content manager for small business.}
@@ -14,14 +14,16 @@ Gem::Specification.new do |s|
 
   s.files             = [
     '.gitignore',
-    '.yardopts',
+    #'.yardopts',
     'Gemfile',
+=begin
     'Rakefile',
     'changelog.md',
     'license.md',
     'readme.md',
     'todo.md',
     'config.ru',
+=end
     'app/controllers',
     'app/controllers/admin',
     'app/controllers/admin/base_controller.rb',
@@ -32,7 +34,7 @@ Gem::Specification.new do |s|
     'app/models',
     'app/views',
     'bin/refinerycms',
-    'config/amazon_s3.yml.example',
+=begin    
     'config/application.rb',
     'config/boot.rb',
     'config/cucumber.yml',
@@ -45,16 +47,16 @@ Gem::Specification.new do |s|
     'config/environments/production.rb',
     'config/environments/test.rb',
     'config/i18n-js.yml',
-    'config/initializers',
+=end
+    #'config/initializers',
     'config/initializers/acts_as_indexed_config.rb',
-    'config/initializers/backtrace_silencers.rb',
+    #'config/initializers/backtrace_silencers.rb',
     'config/initializers/field_with_error_fix.rb',
     'config/initializers/fix_rack.rb',
-    'config/initializers/inflections.rb',
-    'config/initializers/mime_types.rb',
-    'config/initializers/secret_token.rb',
-    'config/initializers/session_store.rb',
-    'config/rackspace_cloudfiles.yml.example',
+    #'config/initializers/inflections.rb',
+    #'config/initializers/mime_types.rb',
+    #'config/initializers/secret_token.rb',
+    #'config/initializers/session_store.rb',
     'config/routes.rb',
     'config/settings.rb',
     'db/migrate',
@@ -95,6 +97,7 @@ Gem::Specification.new do |s|
     'db/seeds/pages.rb',
     'db/seeds/refinery_settings.rb',
     'db/seeds.rb',
+=begin
     'features/refinery',
     'features/refinery/create_inquiries.feature',
     'features/refinery/dashboard.feature',
@@ -137,6 +140,7 @@ Gem::Specification.new do |s|
     'script/cucumber',
     'script/rails',
     'vendor/plugins',
+=end
     'vendor/refinerycms',
     'vendor/refinerycms/authentication',
     'vendor/refinerycms/authentication/app',
