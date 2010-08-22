@@ -1,8 +1,4 @@
 #!/usr/bin/env ruby
-require 'pathname'
-require 'fileutils'
-require 'optparse'
-
 # Load bundler
 begin
   require 'rubygems'
@@ -14,6 +10,11 @@ rescue LoadError
   exit
 end
 
+# Load other required libraries
+require 'pathname'
+require 'fileutils'
+require 'optparse'
+
 # Load refinerycms
 require Pathname.new(File.expand_path(File.dirname(__FILE__) << "/..")).join('vendor', 'refinerycms', 'core', 'lib', 'refinery.rb')
 
@@ -24,7 +25,7 @@ module Refinery
       # Default options
       @input = input
       @options = {
-        :database => :sqlite3,
+        :database => 'sqlite3',
         :force => false
       }
 
@@ -38,7 +39,7 @@ module Refinery
         # Rails supports more options, but Refinery is only tested on these three
         databases = [:mysql, :postgresql, :sqlite3]
         opts.on("-d DATABASE", "--database DATABASE", databases, "Select the database (default sqlite3)", "  #{databases.join('/')}") do |db|
-          @options[:database] = db
+          @options[:database] = db.to_s
         end
 
         opts.on("-f", "--force", "Force overwriting of directory") do
@@ -61,6 +62,16 @@ module Refinery
     end
 
     def run!
+      # Grab input and ensure that the path doesn't exist already and other checks.
+      validate!
+
+      # Generate a Refinery CMS application
+      generate!
+    end
+
+    private
+
+    def validate!
       # Check for valid input
       begin
         @optparse.parse!(@input)
@@ -82,21 +93,23 @@ module Refinery
       # Get the name and path of the new application
       @app_path = Pathname.new(File.expand_path(@input.first))
       @app_name = @app_path.to_s.split(File::SEPARATOR).last
-      
-      # Generate a Refinery CMS application
-      generate!
+
+      if @app_path.directory? and @options[:force] == false
+        puts "The directory '#{@app_path}' that you specified already exists."
+        puts "Use --force to overwrite an existing directory."
+        exit
+      end
     end
-  
-    private
-    
+
     def generate!
       # Generate a rails application
       rails_command = "rails new #{@app_path}"
       rails_command << " --database #{@options[:database]}"
       rails_command << " --force" if @options[:force]
       rails_command << " --skip-test-unit --skip-prototype"
-      run_command(rails_command, false)
-      
+      generation_results = run_command(rails_command, {:cd => false, :puts => false})
+      puts generation_results
+
       # Add in the Refinery specifics to the application
       refine!
 
@@ -127,24 +140,24 @@ module Refinery
       %w(app db).each do |folder|
         FileUtils::cp_r Refinery.root.join(folder), @app_path, :verbose => false
       end
-      %w(.gitignore config/routes.rb config/settings.rb config/initializers/acts_as_indexed_config.rb 
+      %w(.gitignore config/routes.rb config/settings.rb config/initializers/acts_as_indexed_config.rb
           config/initializers/field_with_error_fix.rb config/initializers/fix_rack.rb).each do |file|
         FileUtils::cp_r Refinery.root.join(file), @app_path.join(file), :verbose => false
       end
-      
+
       # Remove public/index.html
       FileUtils::rm @app_path.join('public', 'index.html')
-      
+
       # Add refinery gems to the Gemfile
       gemfile_contents = File.read(Refinery.root.join('Gemfile'))
       refinery_gems = gemfile_contents.match(/# REFINERY CMS =+.*# END REFINERY CMS =+/m)[0]
       File.open(@app_path.join('Gemfile'), "a") do |f|
         f.write "\n" + refinery_gems
       end
-      
+
       # Hack to make work on development computers
       # TODO: Change this when/if separate gems are released for each engine
-      find_and_replace('Gemfile', "path 'vendor/refinerycms' do", 
+      find_and_replace('Gemfile', "path 'vendor/refinerycms' do",
                         "path '#{Pathname.new(File.expand_path(File.dirname(__FILE__) << "/..")).join('vendor').to_s}/refinerycms' do")
 
       # Replace app constant with Refinery
@@ -157,27 +170,32 @@ module Refinery
       end
 
       # Remove development specific stuff from the .gitinore file
-      find_and_replace('.gitignore', 
-                       /# REFINERY CMS DEVELOPMENT =+.*# END REFINERY CMS DEVELOPMENT =+/m, 
+      find_and_replace('.gitignore',
+                       /# REFINERY CMS DEVELOPMENT =+.*# END REFINERY CMS DEVELOPMENT =+/m,
                        '')
     end
 
     protected
 
-    def run_command(command, cd = true)
+    def run_command(command, options = {})
+      options = {:cd => true, :puts => true}.merge(options)
       to_run = (RUBY_PLATFORM =~ /mswin32/ ? "cmd /c " : "")
-      to_run << "cd #{@app_path} && " if cd
+      to_run << "cd #{@app_path} && " if options[:cd]
       to_run << command
 
-      puts "Running: " + to_run
-      puts `#{to_run}`
+      if options[:puts]
+        puts "Running: " + to_run
+        puts `#{to_run}`
+      else
+        `#{to_run}`
+      end
     end
-    
+
     def find_and_replace(file, find, replace)
       contents = File.read(@app_path.join(file))
       contents.gsub!(find, replace)
       File.open(@app_path + file, "w") do |f|
-        f.puts contents  
+        f.puts contents
       end
     end
 
