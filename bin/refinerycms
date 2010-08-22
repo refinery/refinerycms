@@ -98,7 +98,7 @@ module Refinery
       run_command(rails_command, false)
       
       # Add in the Refinery specifics to the application
-      hack!
+      refine!
 
       puts "\n---------"
       puts "Refinery successfully installed in '#{@app_path}'!\n\n"
@@ -122,7 +122,7 @@ module Refinery
       puts "---------\n\n"
     end
 
-    def hack!
+    def refine!
       # Overwrite rails defaults with refinery defaults
       %w(app db).each do |folder|
         FileUtils::cp_r Refinery.root.join(folder), @app_path, :verbose => false
@@ -143,7 +143,7 @@ module Refinery
       end
       
       # Hack to make work on development computers
-      # TODO: Change this when gem is released
+      # TODO: Change this when/if separate gems are released for each engine
       find_and_replace('Gemfile', "path 'vendor/refinerycms' do", 
                         "path '#{Pathname.new(File.expand_path(File.dirname(__FILE__) << "/..")).join('vendor').to_s}/refinerycms' do")
 
@@ -157,7 +157,9 @@ module Refinery
       end
 
       # Remove development specific stuff from the .gitinore file
-      find_and_replace('.gitignore', /# REFINERY CMS DEVELOPMENT =+.*# END REFINERY CMS DEVELOPMENT =+/m, '')
+      find_and_replace('.gitignore', 
+                       /# REFINERY CMS DEVELOPMENT =+.*# END REFINERY CMS DEVELOPMENT =+/m, 
+                       '')
     end
 
     protected
