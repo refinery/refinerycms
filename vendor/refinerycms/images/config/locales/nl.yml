@@ -2,15 +2,13 @@ nl:
   plugins:
     refinery_images:
       title: Afbeeldingen
-  no_file_chosen: U moet een afbeelding kiezen om te uploaden.
+  image_specify_for_upload: U moet een afbeelding kiezen om te uploaden.
   image_should_be_smaller_than_max_image_size: Afbeeldingen mogen niet groter dan %{max_image_size} zijn.
   image_must_be_these_formats: Uw afbeelding moet een JPG, PNG of GIF zijn.
   admin:
     images:
-      image:
-        delete:
-          message: Weet u zeker dat u '%{title}' wilt verwijderen?
-          title: Verwijder deze afbeelding permanent
+      delete: Verwijder deze afbeelding permanent
+      edit: Bewerk deze afbeelding
       form:
         image: Afbeelding
         use_current_image: Gebruik huidige afbeelding
@@ -25,18 +23,15 @@ nl:
           switch_to: Bekijk de %{view_name} versie
           list: lijst
           grid: tabel
-        search:
-          results_for: "Bekijk de zoekresultaten voor: %{query}"
       grid_view:
-        edit: Bewerk deze afbeelding
         view_live: Bekijk deze afbeelding <br/><em>(opent een nieuw venster)</em>
-      list_view_image:
-        edit_this_image: Bewerk deze afbeelding
+      existing_image:
+        button_text: Invoegen
+        resize_image: Schaal de afbeelding
+        size: Grootte
       insert:
         existing_image: Bestaande afbeelding
         new_image: Nieuwe afbeelding
-        previous: Vorige
-        next: Volgende
-        submit_insert: Voeg in
-        or: of
-        cancel: Annuleer
+  activerecord:
+    models:
+      image: afbeelding

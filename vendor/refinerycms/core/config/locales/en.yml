@@ -35,6 +35,7 @@ en:
         delete: Delete
         previous: Previous
         next: Next
+        close: Close
       image_picker:
         none_selected: There is currently no %{what} selected, please click here to add one.
         remove_current: Remove current %{what}

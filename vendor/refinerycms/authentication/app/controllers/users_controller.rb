@@ -50,7 +50,7 @@ class UsersController < ApplicationController
       if site_name_setting.value.to_s =~ /^(|Company\ Name)$/ or Role[:refinery].users.count == 1
         flash[:message] << "<p>#{t('users.setup_website_name',
                                    :link => edit_admin_refinery_setting_url(site_name_setting, :dialog => true),
-                                   :title => t('admin.refinery_settings.refinery_setting.edit'))}</p>".html_safe
+                                   :title => t('admin.refinery_settings.edit'))}</p>".html_safe
       end
 
       redirect_back_or_default(admin_root_url)
