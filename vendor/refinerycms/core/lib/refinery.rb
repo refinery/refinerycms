@@ -30,7 +30,7 @@ module Refinery
     @major = 0
     @minor = 9
     @tiny  = 8
-    @build = 'pre1'
+    @build = 'beta1.pre'
 
     def self.to_s
       [@major, @minor, @tiny, @build].compact.join('.')
