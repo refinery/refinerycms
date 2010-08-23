@@ -4,6 +4,8 @@ lv:
       title: Uzstādījumi
   admin:
     refinery_settings:
+      delete: Remove this setting forever
+      edit: Edit this setting
       index:
         new: Create new setting
         empty_set: There are no settings yet.

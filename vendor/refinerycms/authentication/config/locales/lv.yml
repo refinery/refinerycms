@@ -4,6 +4,8 @@ lv:
       title: Lietotāji
   admin:
     users:
+      delete: Remove this user forever
+      edit: Edit this user
       update:
         cannot_remove_user_plugin_from_current_user: You cannot remove the 'Users' plugin from the currently logged in account.
       form:

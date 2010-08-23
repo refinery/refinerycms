@@ -3,9 +3,7 @@ lv:
     images:
       article: s
     refinery_images:
-      # if this is changed to 'Bildes' then admin panel craps out on error
-      # No route matches {:controller=>"admin/bildes"} ...
-      title: Images
+      title: Bildes
   image_specify_for_upload: Jānorāda bilde pirms augšupielādes
   image_should_be_smaller_than_max_image_size: Bildes izmēram jābūt mazākam par %{max_image_size}
   image_must_be_these_formats: "Bilde drīkst būt tikai sekojošos formātos: JPG, PNG vai GIF"
