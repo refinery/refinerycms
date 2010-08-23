@@ -10,6 +10,7 @@ rejection_patterns = [
   "config\/environments",
   "config\/initializers\/(backtrace_silencers|inflections|mime_types|secret_token|session_store).rb$",
   "config\/(cucumber|database|i18n\-js).yml$",
+  "^public\/",
   "lib\/gemspec\.rb",
   "lib\/tasks",
   ".*\/cache",
