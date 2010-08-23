@@ -52,6 +52,7 @@ PATH
 GEM
   remote: http://rubygems.org/
   specs:
+    ZenTest (4.3.3)
     abstract (1.0.0)
     actionmailer (3.0.0.rc)
       actionpack (= 3.0.0.rc)
@@ -84,6 +85,11 @@ GEM
       activesupport (>= 3.0.0.beta)
     authlogic (2.1.6)
       activesupport
+    autotest (4.3.2)
+    autotest-notification (2.3.1)
+      autotest (~> 4.3)
+    autotest-rails (4.1.0)
+      ZenTest
     babosa (0.1.1)
     builder (2.1.2)
     capybara (0.3.9)
@@ -187,6 +193,9 @@ PLATFORMS
 
 DEPENDENCIES
   acts_as_tree!
+  autotest
+  autotest-notification
+  autotest-rails
   capybara
   cucumber
   cucumber-rails
