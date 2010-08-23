@@ -32,7 +32,7 @@ spec_prereq = Rails.root.join('config', 'database.yml').exist? ? "db:test:prepar
 task :noop do
 end
 
-task :default => :spec
+task :default => [:spec, :cucumber]
 task :stats => "spec:statsetup"
 
 desc "Run all specs in spec directory (excluding plugin specs)"
