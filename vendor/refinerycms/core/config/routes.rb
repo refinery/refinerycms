@@ -1,6 +1,6 @@
 Refinery::Application.routes.draw do
 
-  match 'wymiframe/:id', :to => 'refinery/fast#wymiframe', :as => :wymiframe
+  match 'wymiframe(/:id)', :to => 'refinery/fast#wymiframe', :as => :wymiframe
 
   scope(:path => 'refinery', :as => 'admin', :module => 'admin') do
     resources :refinery_core
