@@ -2,7 +2,6 @@ var shiftHeld = false;
 $(document).ready(function(){
   init_interface();
   init_flash_messages();
-  init_delete_confirmations();
   init_sortable_menu();
   init_submit_continue();
   init_modal_dialogs();
@@ -81,25 +80,6 @@ init_interface = function() {
       $(this).css('display', $(this).css('display') == 'none' ? '' : 'none');
     });
     $('#other_locales').animate({opacity: 'toggle', height: 'toggle'}, 250);
-    e.preventDefault();
-  });
-}
-
-init_delete_confirmations = function() {
-  $('a.confirm-delete').click(function(e) {
-    if ((confirmation = $(this).attr('data-confirm')) == null || confirmation.length == 0) {
-      if ((title = ($(this).attr('title') || $(this).attr('tooltip'))) == null || title.length == 0) {
-        title = "Remove this forever";
-      }
-      confirmation = "Are you sure you want to " + title[0].toLowerCase() + title.substring(1) + "?";
-    }
-    if (confirm(confirmation))
-    {
-      $("<form method='POST' action='" + $(this).attr('href') + "'></form>")
-        .append("<input type='hidden' name='_method' value='delete' />")
-        .append("<input type='hidden' name='authenticity_token' value='" + $('#admin_authenticity_token').val() + "'/>")
-        .appendTo('body').submit();
-    }
     e.preventDefault();
   });
 }

@@ -1,5 +1,5 @@
 class Page < ActiveRecord::Base
-  validates_presence_of :title
+  validates :title, :presence => true
 
   acts_as_tree :order => "position ASC",
                :include => [:children, :slugs]
