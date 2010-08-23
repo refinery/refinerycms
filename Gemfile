@@ -43,6 +43,10 @@ path 'vendor/refinerycms' do
   gem 'refinerycms-settings',       :require => 'settings'
 end
 
+# Specify additional Refinery CMS Engines here:
+# gem 'refinerycms-news',       '~> 0.9.8', :require => 'news'
+# gem 'refinerycms-portfolio',  '~> 0.9.7', :require => 'portfolio'
+
 # Add i18n support
 gem 'refinerycms-i18n', :git => 'git://github.com/resolve/refinerycms-i18n.git',
                         :branch => 'master',
@@ -52,10 +56,6 @@ gem 'routing-filter'
 # Add acts_as_tree support
 gem 'acts_as_tree',     :git => 'git://github.com/parndt/acts_as_tree.git',
                         :branch => 'master'
-
-# Specify additional Refinery CMS Engines here:
-# gem 'refinerycms-news',       '~> 0.9.8', :require => 'news'
-# gem 'refinerycms-portfolio',  '~> 0.9.7', :require => 'portfolio'
 
 # Specify a version of RMagick that works in your environment:
 gem 'rmagick',          '~> 2.12.0', :require => false
