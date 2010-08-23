@@ -29,6 +29,7 @@ index/**/*
 *.tmproj
 *.autobackupbyrefinery.*
 /refinerycms-*.gem
+.autotest
 
 # Mac
 .DS_Store
