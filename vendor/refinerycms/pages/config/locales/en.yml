@@ -7,6 +7,7 @@ en:
       page_link:
         link_to_this_page: Link to this page
       link_to:
+        insert: Insert
         your_page:
           tab_name: Your page
         web_address:
@@ -75,3 +76,6 @@ en:
   activerecord:
     models:
       page: page
+    attributes:
+      page:
+        title: Title
