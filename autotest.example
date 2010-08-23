@@ -6,8 +6,7 @@
 # require "autotest/timestamp"
 
 # adds exceptions from .gitignore file, please modify exceptions there!
-imported_exceptions =  IO.readlines('.gitignore').collect {|line| (line[0] != '#' && line != "\n") || line.strip }
-imported_exceptions.delete true
+imported_exceptions =  IO.readlines('.gitignore').inject([]) {|acc, line| acc << line.strip if line.to_s[0] != '#' && line.strip != ''; acc }
 Autotest.add_hook :initialize do |autotest|
   imported_exceptions.each do |exception|
     autotest.add_exception(exception) 

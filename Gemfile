@@ -69,14 +69,15 @@ gem 'dragonfly',        :git => 'git://github.com/parndt/dragonfly.git',
 
 # REFINERY CMS DEVELOPMENT ====================================================
 
-group :test do
+group :test, :development do
   gem 'json_pure',          '= 1.4.6', :require => 'json/pure'
 
   gem 'rspec',              (RSPEC_VERSION = '~> 2.0.0.beta.19')
   gem 'rspec-core',         RSPEC_VERSION, :require => 'rspec/core'
   gem 'rspec-expectations', RSPEC_VERSION, :require => 'rspec/expectations'
   gem 'rspec-mocks',        RSPEC_VERSION, :require => 'rspec/mocks'
-  gem 'rspec-rails',        RSPEC_VERSION
+  #  gem 'rspec-rails',        RSPEC_VERSION
+  gem 'rspec-rails', '>= 2.0.0.beta.19' 
   gem 'capybara'
   gem 'database_cleaner'
   gem 'cucumber-rails'
@@ -89,3 +90,8 @@ group :test do
 end
 
 # END REFINERY CMS DEVELOPMENT =================================================
+
+# Added by vhgiii
+gem 'autotest-rails'
+gem 'autotest'
+
