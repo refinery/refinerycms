@@ -162,36 +162,40 @@ init_sortable_menu = function(){
     cursor: 'crosshair',
     connectWith: '.nested',
     update: function(){
-      var ser   = $menu.sortable('serialize', {key: 'menu[]', expression: /plugin_([\w]*)$/}),
-          token = escape($('#admin_authenticity_token').val());
-
-      $.get('/refinery/update_menu_positions?' + ser, {authenticity_token: token});
+      $.post('/refinery/update_menu_positions', $menu.sortable('serialize', {
+                key: 'menu[]'
+                , expression: /plugin_([\w]*)$/
+              }));
     }
   }).tabs();
   //Initial status disabled
   $menu.sortable('disable');
 
   $menu.find('#menu_reorder').click(function(e){
-    e.preventDefault();
-    $('#menu_reorder, #menu_reorder_done').toggle();
-    $('#site_bar, header >*:not(#menu, script), #content').fadeTo(500, 0.65);
-    $menu.find('.tab a').click(function(ev){
-      ev.preventDefault();
-    });
-
-    $menu.sortable('enable');
+    trigger_reordering(e, true);
   });
 
   $menu.find('#menu_reorder_done').click(function(e){
-    e.preventDefault();
-    $('#menu_reorder, #menu_reorder_done').toggle();
-    $('#site_bar, header >*:not(#menu, script), #content').fadeTo(500, 1);
-    $menu.find('.tab a').unbind('click');
-
-    $menu.sortable('disable');
+    trigger_reordering(e, false);
   });
 
   $menu.find('> a').corner('top 5px');
+}
+
+trigger_reordering = function(e, enable) {
+  e.preventDefault();
+  $('#menu_reorder, #menu_reorder_done').toggle();
+  $('#site_bar, #content').fadeTo(500, enable ? 0.35 : 1);
+
+  if(enable) {
+    $menu.find('.tab a').click(function(ev){
+      ev.preventDefault();
+    });
+  } else {
+    $menu.find('.tab a').unbind('click');
+  }
+
+  $menu.sortable(enable ? 'enable' : 'disable');
 }
 
 init_submit_continue = function(){
