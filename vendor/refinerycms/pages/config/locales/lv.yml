@@ -7,10 +7,11 @@ lv:
   admin:
     pages_dialogs:
       page_link:
-        link_to_this_page: Link to this page
+        link_to_this_page: Iesaitēt šo lapu
       link_to:
+        insert: Ievietot
         your_page:
-          tab_name: Your page
+          tab_name: Jūsu lapa
         web_address:
           tab_name: Website
           location: Location
@@ -20,7 +21,7 @@ lv:
           step1: Find the page on the web you want to link to.
           step2: Copy the web address from your browser's address bar and paste it into the box above.
         email_address:
-          tab_name: Email address
+          tab_name: Epasta adrese
           subject_line_optional: Optional subject
           body_optional: Optional body
           not_sure: Not sure what to put in the boxes above?
@@ -28,32 +29,32 @@ lv:
           step2: Use the '<strong>Subject Line</strong>' box above if you want the message to be composed with a <strong>pre-written subject line</strong>.
           step3: Use the <strong>Email Body</strong> box above if you want the message to be composed with a <strong>pre-written message</strong>.
         your_resource:
-          tab_name: Your file
-          link_to_this_resource: Link to this file
+          tab_name: Jūsu fails
+          link_to_this_resource: Iesaitēt šo failu
     pages:
-      delete: Remove this page forever
-      edit: Edit this page
+      delete: Dzēst šo lapu
+      edit: Labot šo lapu
       page:
-        view_live: View this page live <br/><em>(opens in a new window)</em>
-        hidden: hidden
-        draft: draft
+        view_live: Apskatīt šo lapu <br/><em>(tiks atvērta jaunā logā)</em>
+        hidden: paslēpta
+        draft: melnraksts
       form_new_page_parts:
-        title: Title
+        title: Nosaukums
       form_page_parts:
-        create_content_section: Create content section
-        delete_content_section: Delete content section
+        create_content_section: Izveidot satura sadaļu
+        delete_content_section: Dzēst satura sadaļu
       form_advanced_options:
-        toggle_advanced_options: Click to access meta tag settings and menu options
+        toggle_advanced_options: Spied, lai piekļūtu meta tagiem un izvēlnes opcijām
         parent_page: Parent page
-        advanced_options: Advanced Options
-        custom_title: Custom title
+        advanced_options: Papildu Opcijas
+        custom_title: Cits nosaukums
         title_types:
-          none: None
-          text: Text
-        show_in_menu_title: Show in menu
-        show_in_menu_description: Display this page in the site menu
-        show_in_menu_help: Uncheck this box if you want to remove a page from your site menu. This can be handy if you have a page you want to link people to directly but don&apos;t want to show the page in the menu.
-        save_as_draft: Save as Draft
+          none: Nav
+          text: Teksts
+        show_in_menu_title: Rādīt izvēlnē
+        show_in_menu_description: Rādīt šo lapu saita izvēlne
+        show_in_menu_help: Neatķeksējiet šo logu, ja vēlaties, lai šī lapa nebūtu redzama saita izvēlnē. Šī opcija noder gadījumos, kad vēlaties iesaitēt šo lapu pa tiešo, bet nevēlaties, lai šī lapa parādītos saita izvēlnē.
+        save_as_draft: Saglabāt kā melnrakstu
         skip_to_first_child: Skip top-level page
         skip_to_first_child_label: Redirect visitors to the first sub-level page.
         skip_to_first_child_help: This option makes this page link to the first page underneath. This can be useful when grouping pages together.
@@ -62,7 +63,7 @@ lv:
         parent_page_help: You can put a page under another page by selecting it in the list. If you want this page to be a top-level page, just leave it blank.
         custom_title_help: If you want the page to have a different title than the one that shows in the menu then select &apos;Text&apos; and enter it here.
       form_advanced_options_seo:
-        seo: Search Engine Optimization
+        seo: Optimizēšana Interneta Meklētājiem
         seo_override_title: Browser title
         seo_override_title_help: Enter a 5-10 word title that summarizes the contents of this page.
         meta_keywords_title: Meta keywords
@@ -70,10 +71,13 @@ lv:
         meta_description_title: Meta description
         meta_description_help: Enter a concise two or three sentences describing what this page is about.
       index:
-        create_new_page: Create New Page
-        reorder_pages: Reorder Pages
-        reorder_pages_done: Done Reordering Pages
-        no_pages_yet: There are no pages yet. Click "Create New Page" to add your first page.
+        create_new_page: Izveidot jaunu lapu
+        reorder_pages: Pārkārtot lapas
+        reorder_pages_done: Pabeigt lapu pārkārtošanu
+        no_pages_yet: Vēl nav nevienas lapas. Spied "Izveidot jaunu lapu", lai izveidotu pirmo lapu.
   activerecord:
     models:
       page: lapa
+    attributes:
+      page:
+        title: Nosaukums
