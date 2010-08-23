@@ -2,7 +2,7 @@ class PagePart < ActiveRecord::Base
 
   belongs_to :page
 
-  validates_presence_of :title
+  validates :title, :presence => true
   alias_attribute :content, :body
 
   def to_param

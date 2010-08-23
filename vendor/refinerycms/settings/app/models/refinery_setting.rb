@@ -1,6 +1,6 @@
 class RefinerySetting < ActiveRecord::Base
 
-  validates_presence_of :name
+  validates :name, :presence => true
 
   serialize :value # stores into YAML format
   serialize :callback_proc_as_string
