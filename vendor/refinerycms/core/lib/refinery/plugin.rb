@@ -41,7 +41,7 @@ module Refinery
       @class_name ||= name.camelize
     end
 
-    # Rerturns the internationalized version of the title
+    # Returns the internationalized version of the title
     def title
       ::I18n.translate("plugins.#{name}.title")
     end
@@ -49,6 +49,16 @@ module Refinery
     # Returns the internationalized version of the description
     def description
       ::I18n.translate("plugins.#{name}.description")
+    end
+
+    # Depreciation warning
+    def title= title
+      raise "You cannot use plugin.title anymore. Titles will be internationalized by the I18n api. See http://github.com/resolve/refinerycms/blob/rails3/vendor/refinerycms/core/engines.md section 'The Structure of a Plugin'"
+    end
+
+    # Depreciation warning
+    def description= description
+      raise "You cannot use plugin.description anymore. Titles will be internationalized by the I18n api. See http://github.com/resolve/refinerycms/blob/rails3/vendor/refinerycms/core/engines.md section 'The Structure of a Plugin'"
     end
 
     # Retrieve information about how to access the latest activities of this plugin.
