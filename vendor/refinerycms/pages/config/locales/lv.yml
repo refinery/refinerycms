@@ -13,21 +13,21 @@ lv:
         your_page:
           tab_name: Jūsu lapa
         web_address:
-          tab_name: Website
-          location: Location
-          new_window: New window
-          new_window_label: Check this box to have the link open in a new browser window.
-          not_sure: Not sure what to put in the box above?
-          step1: Find the page on the web you want to link to.
-          step2: Copy the web address from your browser's address bar and paste it into the box above.
+          tab_name: Interneta saits
+          location: Saite
+          new_window: Jauns logs
+          new_window_label: Atķeksējiet šo opciju, lai saite atvērtos jaunā logā.
+          not_sure: Neesat drošs, ko rakstīt augšējā laukā?
+          step1: Atrodiet saiti, kuru vēlaties iesaitēt.
+          step2: Nokopējiet saiti no Jūsu pārlūka adrešu lauka un ievietojiet to augšējā laukā.
         email_address:
           tab_name: Epasta adrese
-          subject_line_optional: Optional subject
-          body_optional: Optional body
-          not_sure: Not sure what to put in the boxes above?
-          step1: Write or copy and paste (e.g. from your address book) the email address to link to into the '<strong>Email Address</strong>' box above.
-          step2: Use the '<strong>Subject Line</strong>' box above if you want the message to be composed with a <strong>pre-written subject line</strong>.
-          step3: Use the <strong>Email Body</strong> box above if you want the message to be composed with a <strong>pre-written message</strong>.
+          subject_line_optional: Tēma (nav obligāti)
+          body_optional: Saturs (nav obligāti)
+          not_sure: Neesat drošs, ko rakstīt augšējos laukos?
+          step1: Ierakstiet vai iekopējiet (piemēram, no adrešu grāmatas) epasta adresi laukā '<strong>Epasta adrese</strong>'.
+          step2: Aizpildiet '<strong>Tēmas</strong>' lauku, ja vēlaties, lai epasts tiktu sastādīts ar norādīto tēmu.
+          step3: Aizplidiet '<strong>Satura</strong>' lauku, ja vēlaties, lai epasts tiktu sastādīts ar norādīto saturu.
         your_resource:
           tab_name: Jūsu fails
           link_to_this_resource: Iesaitēt šo failu
@@ -45,31 +45,33 @@ lv:
         delete_content_section: Dzēst satura sadaļu
       form_advanced_options:
         toggle_advanced_options: Spied, lai piekļūtu meta tagiem un izvēlnes opcijām
+        page_options: Lapas Opcijas
+        # can't think of a proper translation for this ...
         parent_page: Parent page
         advanced_options: Papildu Opcijas
         custom_title: Cits nosaukums
         title_types:
-          none: Nav
+          none: Nav definēts
           text: Teksts
         show_in_menu_title: Rādīt izvēlnē
-        show_in_menu_description: Rādīt šo lapu saita izvēlne
-        show_in_menu_help: Neatķeksējiet šo logu, ja vēlaties, lai šī lapa nebūtu redzama saita izvēlnē. Šī opcija noder gadījumos, kad vēlaties iesaitēt šo lapu pa tiešo, bet nevēlaties, lai šī lapa parādītos saita izvēlnē.
+        show_in_menu_description: Rādīt šo lapu saita izvēlnē
+        show_in_menu_help: Izņemiet ķeksi no šī loga, ja vēlaties, lai šī lapa nebūtu redzama saita izvēlnē. Šī opcija noder gadījumos, kad vēlaties iesaitēt šo lapu, bet nevēlaties, lai šī lapa parādītos saita izvēlnē.
         save_as_draft: Saglabāt kā melnrakstu
-        skip_to_first_child: Skip top-level page
-        skip_to_first_child_label: Redirect visitors to the first sub-level page.
-        skip_to_first_child_help: This option makes this page link to the first page underneath. This can be useful when grouping pages together.
-        link_url: Forward this page to another website or page
-        link_url_help: If you want this page to go to another website or page when you click this page in the menu, enter a URL. e.g. http://google.com otherwise leave it blank
-        parent_page_help: You can put a page under another page by selecting it in the list. If you want this page to be a top-level page, just leave it blank.
-        custom_title_help: If you want the page to have a different title than the one that shows in the menu then select &apos;Text&apos; and enter it here.
+        skip_to_first_child: Izlaist augstākā līmeņa lapu
+        skip_to_first_child_label: Novirzīt apmeklētājus uz pirmo apakš līmeņa lapu.
+        skip_to_first_child_help: Šī opcija liek lapai izveidot saiti uz pirmo apakšlapu. Tas varētu būt noderīgi, grupējot lapas kopā.
+        link_url: Pārsūtīt šo lapu uz citu interneta saiti
+        link_url_help: Ja vēlaties, lai šī lapa novirzītu apmeklētājus uz citu interneta saiti vai jūsu saita lapu, tad ievadiet saiti, piemēram, http://google.lv, pretējā gadījumā atstājot šo lauku tukšu
+        parent_page_help: Jūs varat novietot lapu zem citas lapas, izvēloties to no sarkasta. Ja Jūs velaties, lai šī lapa būtu augšējā līmenī - atstājiet lauku tukšu.
+        custom_title_help: Ja vēlaties, lai lapai būtu cits nosaukums nekā tas ir izvēlnē, tad izvēlieties &apos;Teksts&apos; un ievadiet to izveidotajā laukā.
       form_advanced_options_seo:
         seo: Optimizēšana Interneta Meklētājiem
-        seo_override_title: Browser title
-        seo_override_title_help: Enter a 5-10 word title that summarizes the contents of this page.
-        meta_keywords_title: Meta keywords
-        meta_keywords_help: Enter 5-10 keywords that relate to this page. Separate keywords by a comma.
-        meta_description_title: Meta description
-        meta_description_help: Enter a concise two or three sentences describing what this page is about.
+        seo_override_title: Nosaukums pārlūkā
+        seo_override_title_help: Ievadiet 5-10 nosaukuma vārdus, kuri apkopo šīs lapas saturu.
+        meta_keywords_title: Meta atslēgvārdi
+        meta_keywords_help: Ievadiet 5-10 atslēgvārdus, kuriem ir saistība ar šo lapu. Atslēgvārdus atdaliet ar komatu
+        meta_description_title: Meta apraksts
+        meta_description_help: Īsi, divos vai trijos teikumos, aprakstiet šīs lapas saturu.
       index:
         create_new_page: Izveidot jaunu lapu
         reorder_pages: Pārkārtot lapas
