@@ -55,9 +55,8 @@ module Refinery
 
     config.after_initialize do
       Refinery::Plugin.register do |plugin|
-        plugin.title = "Refinery"
-        plugin.name = "refinery_core"
-        plugin.description = "Core refinery plugin"
+        plugin.name ="refinery_core"
+        plugin.class_name ="RefineryEngine"
         plugin.version = %q{0.9.8}
         plugin.hide_from_menu = true
         plugin.always_allow_access = true
@@ -66,9 +65,7 @@ module Refinery
 
       # Register the dialogs plugin
       Refinery::Plugin.register do |plugin|
-        plugin.title = "Dialogs"
         plugin.name = "refinery_dialogs"
-        plugin.description = "Refinery Dialogs plugin"
         plugin.version = %q{0.9.8}
         plugin.hide_from_menu = true
         plugin.always_allow_access = true

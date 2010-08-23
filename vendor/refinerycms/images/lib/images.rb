@@ -11,6 +11,7 @@ module Refinery
         app_images.configure_with(:rails) do |c|
           c.datastore.root_path = "#{::Rails.root}/public/system/images"
           c.path_prefix = '/system/images'
+          #TODO: Shouldn't this secret be placed somewhere in a initializer, to make sure it scopes to only one project, and not all refinery setups?
           c.secret      = 'bawyuebIkEasjibHavry'
         end
         app_images.configure_with(:rmagick)
@@ -29,10 +30,8 @@ module Refinery
 
       config.after_initialize do
         Refinery::Plugin.register do |plugin|
-          plugin.title = "Images"
           plugin.name = "refinery_images"
           plugin.directory = "images"
-          plugin.description = "Manage images"
           plugin.version = %q{0.9.8}
           plugin.menu_match = /(refinery|admin)\/image(_dialog)?s$/
           plugin.activity = {

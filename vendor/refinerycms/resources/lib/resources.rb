@@ -29,11 +29,9 @@ module Refinery
 
       config.after_initialize do
         Refinery::Plugin.register do |plugin|
-          plugin.title = 'Files'
           plugin.name = "refinery_files"
           plugin.url = {:controller => 'admin/resources', :action => 'index'}
           plugin.menu_match = /(refinery|admin)\/(refinery_)?(files|resources)$/
-          plugin.description = "Upload and link to files"
           plugin.version = %q{0.9.8}
           plugin.activity = {
             :class => Resource
