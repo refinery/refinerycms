@@ -30,17 +30,6 @@ class Refinery::ApplicationController < ActionController::Base
 
   def error_404(exception=nil)
     if (@page = Page.where(:menu_match => "^/404$").includes(:parts, :slugs).first).present?
-      if exception.present? and exception.is_a?(ActionView::MissingTemplate) and params[:format] != "html"
-        # Attempt to respond to all requests with the default format's 404 page
-        # unless a format wasn't specified. This requires finding menu pages and re-attaching any themes
-        # which for some unknown reason don't happen, most likely due to the format being passed in.
-        response.template.template_format = :html
-        response.headers["Content-Type"] = Mime::Type.lookup_by_extension('html').to_s
-        find_pages_for_menu if @menu_pages.nil? or @menu_pages.empty?
-        attach_theme_to_refinery if self.respond_to?(:attach_theme_to_refinery) # may not be using theme support
-        present(@page)
-      end
-
       # render the application's custom 404 page with layout and meta.
       render :template => "/pages/show", :status => 404, :format => 'html'
     else
