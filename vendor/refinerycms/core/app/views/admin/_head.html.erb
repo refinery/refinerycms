@@ -26,7 +26,10 @@ if request.env['HTTP_USER_AGENT'] =~ /MSIE/%>
 
   <%= jquery_include_tags(:caching => js_caching) %>
 
-  <%= javascript_include_tag 'http://github.com/rails/jquery-ujs/raw/master/src/rails.js' %>
+  <% #TODO: Find out why the master branch doesn't work! %>
+  <%#= javascript_include_tag 'http://github.com/rails/jquery-ujs/raw/master/src/rails.js' %>
+  <%= javascript_include_tag 'http://github.com/rails/jquery-ujs/raw/f01a685c8200b76c4cc2c606accb135da5ad5444/src/rails.js' %>
+  
 
   <%= javascript_include_tag 'jquery/jquery.corner.js',
                              'jquery/jquery.textTruncate.js',
