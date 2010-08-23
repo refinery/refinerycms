@@ -1,65 +1,59 @@
 lv:
   welcome:
-    there_are_no_users: There are no users yet, so we'll set you up first.
-    remember_admin_location: "Remember your Refinery admin area is at:"
-    lets_start: Alright let's get you setup so you can login...
-    continue: Continue...
+    there_are_no_users: Vēl nav neviena lietotāja, līdz ar to mēs Jums izveidosim pirmo.
+    remember_admin_location: "Atcerieties, Jūsu Refinery administrācijas panelis atrodas šeit:"
+    lets_start: Tātad turpināsim, lai Jūs varētu pieslēgties...
+    continue: Turpināt...
   admin:
     menu:
-      reorder_menu: Reorder menu
-      reorder_menu_done: I'm done reordering the menu
+      reorder_menu: Pārkārtot izvēlni
+      reorder_menu_done: Esmu beidzis pārkārtot izvēlni
     dialogs:
       show:
-        save: Save
-        cancel: Cancel
+        save: Saglabāt
+        cancel: Atcelt
   refinery:
-    other: Other %{what}
-    reorder: Reorder %{what}
-    reorder_done: Done Reordering %{what}
     crudify:
-      created: %{what} was successfully created.
-      updated: %{what} was successfully updated.
-      destroyed: %{what} was successfully destroyed.
+      created: %{what} tika veiksmīgi izveidots.
+      updated: %{what} tika veiksmīgi atjaunots.
+      destroyed: %{what} tika veiksmīgi izdzēsts.
   shared:
     site_bar:
-      log_out: Log out
-      switch_to_your_website: Switch to your website
-      switch_to_your_website_editor: Switch to your website editor
+      log_out: Iziet
+      switch_to_your_website: Pārslēgties uz Jūsu saitu
+      switch_to_your_website_editor: Pārslēgties uz Jūsu saita administrācijas paneli
     admin:
       continue_editing:
-        save_and_continue_editing: Save & continue editing
+        save_and_continue_editing: Saglabāt un turpināt rediģēt
       form_actions:
         save: Saglabāt
         cancel: Atcelt
         cancel_lose_changes: Atceļot tiks zaudētas visas tekošās izmaiņas, kas šeit tika veiktas
         delete: Dzēst
-        previous: Previous
-        next: Next
+        previous: Iepriekšējā
+        next: Nākamā
         close: Aizvērt
       image_picker:
-        none_selected: There is currently no %{what} selected, please click here to add one.
-        remove_current: Remove current %{what}
-        change: Click here to pick a image
-        show: Show
+        none_selected: Pašlaik nav izvēlēta neviena %{what}. Lūdzu, spied šeit, lai pievienotu.
+        remove_current: Dzēst pašreizējo %{what}
+        change: Spied šeit, lai izvēlētos bildi
+        show: Rādīt
       resource_picker:
-        download_current: Download current %{what}
-        opens_in_new_window: Opens in a new window
-        remove_current: "Remove current %{what}"
+        download_current: Lejuplādēt pašreizējo %{what}
+        opens_in_new_window: Atvērsies jaunā logā
+        remove_current: Dzēst pašreizējo %{what}
       search:
-        button_text: Search
-        results_for: Search results for '%{query}'
-        no_results: Sorry, no results found
+        button_text: Meklēt
+        results_for: Meklēšanas rezultāti pēc '%{query}'
+        no_results: Atvainojiet, nekas netika atrasts
       delete:
         message: Vai tiešām vēlaties dzēst '%{title}'?
-        title: Remove this %{object_name} forever
-      edit:
-        title: Edit this %{object_name}
       error_messages:
         problems_in_following_fields: Problēmas sekojošos ievades laukos
     message:
-      close: Close
-      close_this_message: Close this message
+      close: Aizvērt
+      close_this_message: Aizvērt šo paziņojumu
     draft_page_message:
-      not_live: This page is NOT live for public viewing.
+      not_live: Šī lapa NAV publiskai apskatei.
     footer:
-      copyright: Copyright &copy;
+      copyright: Visas tiesības paturētas &copy;
