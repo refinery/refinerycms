@@ -52,7 +52,7 @@ module Refinery
     end
 
     def self.always_allowed
-      registered.reject { |p| !p.always_allow_access }
+      registered.reject { |p| !p.always_allow_access? }
     end
 
     def self.set_active(names)
