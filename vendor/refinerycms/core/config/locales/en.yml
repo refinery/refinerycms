@@ -13,9 +13,6 @@ en:
         save: Save
         cancel: Cancel
   refinery:
-    other: Other %{what}
-    reorder: Reorder %{what}
-    reorder_done: Done Reordering %{what}
     crudify:
       created: %{what} was successfully created.
       updated: %{what} was successfully updated.
