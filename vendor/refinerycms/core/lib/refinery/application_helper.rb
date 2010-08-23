@@ -71,8 +71,7 @@ module Refinery::ApplicationHelper
   def jquery_include_tags(options={})
     # Merge in options
     options = {
-      :caching => RefinerySetting.find_or_set(:use_resource_caching,
-                                              Rails.root.join('public', 'javascripts', 'cache').writable?),
+      :caching => RefinerySetting.find_or_set(:use_resource_caching, Rails.root.writable?),
       :google => RefinerySetting.find_or_set(:use_google_ajax_libraries, false),
       :jquery_ui => true
     }.merge(options)

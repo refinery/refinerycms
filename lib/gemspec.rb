@@ -1,13 +1,28 @@
 #!/usr/bin/env ruby
 require File.expand_path('../../vendor/refinerycms/core/lib/refinery.rb', __FILE__)
-files = %w( .gitignore .yardopts Gemfile Rakefile *.md public/.htaccess config.ru ).map { |file| Dir[file] }.flatten
+files = %w( .gitignore .yardopts Gemfile ).map { |file| Dir[file] }.flatten
 %w(app bin config db features lib public script test themes vendor).sort.each do |dir|
   files += Dir.glob("#{dir}/**/*")
 end
+rejection_patterns = [
+  "public\/system",
+  "config\/(application|boot|environment).rb$",
+  "config\/environments",
+  "config\/initializers\/(backtrace_silencers|inflections|mime_types|secret_token|session_store).rb$",
+  "config\/(cucumber|database|i18n\-js).yml$",
+  "lib\/gemspec\.rb",
+  "lib\/tasks",
+  ".*\/cache",
+  "db\/.*\.sqlite3?$",
+  "features\/?",
+  "script\/*",
+  "vendor\/plugins\/?$",
+  "\.log$",
+  "\.rbc$"
+]
 
 files.reject! do |f|
-  !File.exist?(f) or
-  f =~ /^(public\/system)|(config\/database.yml$)|(.*\/cache)|(db\/.*\.sqlite3?$)|(\.log$)|(\.rbc$)/
+  !File.exist?(f) or f =~ %r{(#{rejection_patterns.join(')|(')})}
 end
 
 gemspec = <<EOF
@@ -19,11 +34,12 @@ Gem::Specification.new do |s|
   s.summary           = %q{A beautiful open source Ruby on Rails content manager for small business.}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
-  s.authors           = %w(Resolve\\ Digital David\\ Jones Philip\\ Arndt)
+  s.authors           = ['Resolve Digital', 'David Jones', 'Philip Arndt']
   s.require_paths     = %w(lib)
   s.executables       = %w(#{Dir.glob('bin/*').map{|d| d.gsub('bin/','')}.join(' ')})
 
   s.add_dependency    'rails', '3.0.0.rc'
+  s.add_dependency    'childlabor'
 
   s.files             = [
     '#{files.join("',\n    '")}'

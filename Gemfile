@@ -66,7 +66,7 @@ gem 'dragonfly',        :git => 'git://github.com/parndt/dragonfly.git',
                         :require => 'dragonfly'
 
 # END REFINERY CMS ============================================================
-                 
+
 # REFINERY CMS DEVELOPMENT ====================================================
 
 group :test do
