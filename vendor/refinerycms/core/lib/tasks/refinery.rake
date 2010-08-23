@@ -92,62 +92,17 @@ namespace :refinery do
                   Rails.root.join("db", "migrate").cleanpath.to_s,
                   :verbose => verbose
 
-    # replace rakefile and gemfile.
-    FileUtils::cp Refinery.root.join("Rakefile").cleanpath.to_s,
-                  Rails.root.join("Rakefile").cleanpath.to_s,
-                  :verbose => verbose
-
-    unless Rails.root.join("Gemfile").exist?
-      FileUtils::cp Refinery.root.join("Gemfile").cleanpath.to_s,
-                    Rails.root.join("Gemfile").cleanpath.to_s,
-                    :verbose => verbose
-    else
-      # replace refinery's gem requirements in the Gemfile
-      refinery_gem_requirements = Refinery.root.join('Gemfile').read.to_s.scan(
-        /(#===REFINERY REQUIRED GEMS===.+?#===REFINERY END OF REQUIRED GEMS===)/m
-      ).first.join('\n')
-
-      rails_gemfile_contents = Rails.root.join("Gemfile").read.to_s.gsub(
-        /(#===REFINERY REQUIRED GEMS===.+?#===REFINERY END OF REQUIRED GEMS===)/m,
-        refinery_gem_requirements
-      )
-
-      Rails.root.join("Gemfile").open('w+') do |f|
-        f.write(rails_gemfile_contents)
+    Dir[Refinery.root.join('db', 'seeds', '*.rb').cleanpath.to_s].each do |seed|
+      unless (destination = Rails.root.join('db', 'seeds', seed.split(File::SEPARATOR).last).cleanpath).exist?
+        FileUtils::cp seed, destination.to_s, :verbose => verbose
       end
-    end
-
-    # add the cucumber environment file if it's not present
-    unless (cucumber_environment_file = Rails.root.join('config', 'environments', 'cucumber.rb')).exist?
-      FileUtils::cp Refinery.root.join('config', 'environments', 'cucumber.rb').to_s,
-                    cucumber_environment_file.to_s,
-                    :verbose => verbose
-
-      # Add cucumber database adapter (link to test)
-      existing_db_config = Rails.root.join('config', 'database.yml').read.to_s
-      Rails.root.join('config', 'database.yml').open('w+') do |f|
-        f.write "#{existing_db_config.gsub("test:\n", "test: &test\n")}\n\ncucumber:\n  <<: *test"
-      end
-    end
-
-    unless Rails.root.join("config", "settings.rb").exist?
-      FileUtils::cp Refinery.root.join('config', 'settings.rb').cleanpath.to_s,
-                    Rails.root.join('config', 'settings.rb').cleanpath.to_s,
-                    :verbose => verbose
     end
 
     puts "\n" if verbose
 
     unless (ENV["from_installer"] || 'false').to_s == 'true'
-      puts "---------"
-      puts "Copied new Refinery core assets."
-      puts "I've made a backup of your current config/#{app_config_file} file as it has been updated with the latest Refinery requirements."
-      puts "The backup is located at config/#{app_config_file.gsub(".rb", "")}.autobackupbyrefinery.rb incase you need it."
-      puts ""
-      puts "=== ACTION REQUIRED ==="
-      puts "Please run rake db:migrate to ensure your database is at the correct version."
-      puts "Please also run bundle install to ensure you have the currently specified gems."
-      puts ""
+      puts "\n=== ACTION REQUIRED ==="
+      puts "Please run rake db:migrate to ensure your database is at the correct version.\n"
     end
   end
 
@@ -159,21 +114,6 @@ namespace :refinery do
     end
   end
 
-end
-
-namespace :test do
-  desc "Run the tests that ship with Refinery to ensure any changes you've made haven't caused instability."
-  task :refinery do
-    errors = %w(spec cucumber).collect do |task|
-      begin
-        Rake::Task[task].invoke
-        nil
-      rescue => e
-        task
-      end
-    end.compact
-    abort "Errors running #{errors.to_sentence(:locale => :en)}!" if errors.any?
-  end
 end
 
 desc 'Removes trailing whitespace across the entire application.'

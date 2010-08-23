@@ -1,7 +1,7 @@
 Refinery::Application.routes.draw do
 
   # REFINERY CMS ================================================================
-  
+
   filter(:refinery_locales)
 
   root :to => 'pages#home'
