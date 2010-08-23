@@ -15,6 +15,8 @@ require 'pathname'
 require 'fileutils'
 require 'optparse'
 
+require 'child_labor' if RUBY_PLATFORM !~ /mswin3?2?/
+
 # Load refinerycms
 require Pathname.new(File.expand_path(File.dirname(__FILE__) << "/..")).join('vendor', 'refinerycms', 'core', 'lib', 'refinery.rb')
 
@@ -37,9 +39,9 @@ module Refinery
         opts.separator "Specific Options:"
 
         # Rails supports more options, but Refinery is only tested on these three
-        databases = [:mysql, :postgresql, :sqlite3]
+        databases = %w(mysql postgresql sqlite3)
         opts.on("-d DATABASE", "--database DATABASE", databases, "Select the database (default sqlite3)", "  #{databases.join('/')}") do |db|
-          @options[:database] = db.to_s
+          @options[:database] = db
         end
 
         opts.on("-f", "--force", "Force overwriting of directory") do
@@ -67,9 +69,14 @@ module Refinery
 
       # Generate a Refinery CMS application
       generate!
+
+      # Add in the Refinery specifics to the application
+      refine!
+
+      # Output helpful messages to user
+      output!
     end
 
-    private
 
     def validate!
       # Check for valid input
@@ -107,32 +114,7 @@ module Refinery
       rails_command << " --database #{@options[:database]}"
       rails_command << " --force" if @options[:force]
       rails_command << " --skip-test-unit --skip-prototype"
-      generation_results = run_command(rails_command, {:cd => false, :puts => false})
-      puts generation_results
-
-      # Add in the Refinery specifics to the application
-      refine!
-
-      puts "\n---------"
-      puts "Refinery successfully installed in '#{@app_path}'!\n\n"
-
-      # Automate
-      puts "Installing gem requirements using bundler..\n"
-      run_command("bundle install")
-
-      puts "\n\nSetting up your development database..\n"
-      run_command("rake -f '#{@app_path.join('Rakefile')}' db:setup")
-      # End automation
-
-      # Output helpful messages
-      puts "\n=== ACTION REQUIRED ==="
-      puts "Now you can launch your webserver using:"
-      puts "\ncd #{@app_path}"
-      puts "rails server"
-      puts "\nThis will launch the built-in webserver at port 3000."
-      puts "You can now see your site running in your browser at http://localhost:3000"
-      puts "\nThanks for installing Refinery, enjoy creating your new application!"
-      puts "---------\n\n"
+      run_command(rails_command, {:cd => false})
     end
 
     def refine!
@@ -146,7 +128,7 @@ module Refinery
       end
 
       # Remove public/index.html
-      FileUtils::rm @app_path.join('public', 'index.html')
+      FileUtils::rm @app_path.join('public', 'index.html') if @app_path.join('public', 'index.html').exist?
 
       # Add refinery gems to the Gemfile
       gemfile_contents = File.read(Refinery.root.join('Gemfile'))
@@ -175,32 +157,78 @@ module Refinery
                        '')
     end
 
-    protected
+    def output!
+      puts "\n---------"
+      puts "Refinery successfully installed in '#{@app_path}'!\n\n"
+
+      # Automate
+      puts "Installing gem requirements using bundler..\n"
+      run_command("bundle install")
+
+      puts "\n\nSetting up your development database..\n"
+      run_command("rake -f '#{@app_path.join('Rakefile')}' db:setup")
+      # End automation
+
+      # Output helpful messages
+      puts "\n=== ACTION REQUIRED ==="
+      puts "Now you can launch your webserver using:"
+      puts "\ncd #{@app_path}"
+      puts "rails server"
+      puts "\nThis will launch the built-in webserver at port 3000."
+      puts "You can now see your site running in your browser at http://localhost:3000"
+      puts "\nThanks for installing Refinery, enjoy creating your new application!"
+      puts "---------\n\n"
+    end
+
+    private :validate!, :generate!, :refine!, :output!
 
     def run_command(command, options = {})
       options = {:cd => true, :puts => true}.merge(options)
-      to_run = (RUBY_PLATFORM =~ /mswin32/ ? "cmd /c " : "")
+      to_run = ((forkable = RUBY_PLATFORM !~ /mswin3?2?/) ? "" : "cmd /c ")
       to_run << "cd #{@app_path} && " if options[:cd]
       to_run << command
 
-      if options[:puts]
-        puts "Running: " + to_run
-        puts `#{to_run}`
+      if forkable
+        if options[:puts]
+          puts "Running: #{to_run}"
+          ::ChildLabor.subprocess(to_run) do |t|
+            while (line = t.gets)
+              puts line
+            end
+          end
+        else
+          ::ChildLabor.subprocess(to_run)
+        end
       else
-        `#{to_run}`
+        if options[:puts]
+          puts "Running: #{to_run}"
+          IO.popen(to_run) do |t|
+            while (line = t.gets)
+              puts line
+            end
+          end
+        else
+          `#{to_run}`
+        end
       end
     end
 
     def find_and_replace(file, find, replace)
-      contents = File.read(@app_path.join(file))
-      contents.gsub!(find, replace)
-      File.open(@app_path + file, "w") do |f|
+      (contents = @app_path.join(file).read).gsub!(find, replace)
+      (@app_path + file).open("w") do |f|
         f.puts contents
       end
     end
 
+    protected :run_command, :find_and_replace
   end
 end
 
-generator = Refinery::AppGenerator.new(ARGV)
-generator.run!
+unless !defined?(::ChildLabor::Task) or ::ChildLabor::Task.instance_methods.include?(:gets)
+  ::ChildLabor::Task.module_eval do
+    def gets
+      @stdout.gets
+    end
+  end
+end
+Refinery::AppGenerator.new(ARGV).run!
