@@ -129,7 +129,7 @@ GEM
     rack (1.2.1)
     rack-cache (0.5.2)
       rack (>= 0.4)
-    rack-mount (0.6.11)
+    rack-mount (0.6.12)
       rack (>= 1.0.0)
     rack-test (0.5.4)
       rack (>= 1.0)
@@ -196,6 +196,7 @@ DEPENDENCIES
   gherkin
   json_pure (= 1.4.6)
   launchy
+  rails (= 3.0.0.rc)
   refinerycms-authentication!
   refinerycms-core!
   refinerycms-dashboard!
@@ -214,4 +215,4 @@ DEPENDENCIES
   rspec-rails (~> 2.0.0.beta.19)
   ruby-prof
   spork
-  sqlite3-ruby (~> 1.3)
+  sqlite3-ruby
