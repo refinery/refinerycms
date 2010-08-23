@@ -40,3 +40,5 @@ module Refinery
     config.filter_parameters += [:password, :password_confirmation]
   end
 end
+
+require Rails.root.join('config', 'settings.rb') if Rails.root.join('config', 'settings.rb').exist?
