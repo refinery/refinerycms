@@ -1,8 +1,8 @@
 Gem::Specification.new do |s|
   s.name              = %q{refinerycms}
-  s.version           = %q{0.9.7.12}
+  s.version           = %q{0.9.7.13}
   s.description       = %q{A beautiful open source Ruby on Rails content manager for small business. Easy to extend, easy to use, lightweight and all wrapped up in a super slick UI.}
-  s.date              = %q{2010-08-11}
+  s.date              = %q{2010-08-23}
   s.summary           = %q{A beautiful open source Ruby on Rails content manager for small business.}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
@@ -554,7 +554,6 @@ Gem::Specification.new do |s|
     'public/stylesheets/application.css',
     'public/stylesheets/formatting.css',
     'public/stylesheets/home.css',
-    'public/stylesheets/ie6.css',
     'public/stylesheets/ie7.css',
     'public/stylesheets/refinery',
     'public/stylesheets/refinery/application.css',
