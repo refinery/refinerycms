@@ -161,21 +161,6 @@ namespace :refinery do
 
 end
 
-namespace :test do
-  desc "Run the tests that ship with Refinery to ensure any changes you've made haven't caused instability."
-  task :refinery do
-    errors = %w(spec cucumber).collect do |task|
-      begin
-        Rake::Task[task].invoke
-        nil
-      rescue => e
-        task
-      end
-    end.compact
-    abort "Errors running #{errors.to_sentence(:locale => :en)}!" if errors.any?
-  end
-end
-
 desc 'Removes trailing whitespace across the entire application.'
 task :whitespace do
   if RUBY_PLATFORM =~ /linux/
