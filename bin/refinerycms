@@ -128,7 +128,13 @@ module Refinery
       end
 
       # Remove public/index.html
-      FileUtils::rm @app_path.join('public', 'index.html') if @app_path.join('public', 'index.html').exist?
+      if (rails_index_placeholder = @app_path.join('public', 'index.html')).exist?
+        FileUtils::rm rails_index_placeholder.to_s
+      end
+
+      if (app_layout = @app_path.join('app', 'views', 'layouts', 'application.html.erb')).exist?
+        FileUtils::rm app_layout.to_s
+      end
 
       # Add refinery gems to the Gemfile
       gemfile_contents = File.read(Refinery.root.join('Gemfile'))
