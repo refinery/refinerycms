@@ -3,7 +3,7 @@ class Admin::PagesController < Admin::BaseController
   crudify :page,
           :conditions => "parent_id IS NULL",
           :order => "position ASC",
-          :include => [:parts, :slugs, :children],
+          :include => [:parts, :slugs, :children, :parent],
           :paging => false
 
   before_filter :find_pages_for_parents_list, :only => [:new, :create, :edit, :update]

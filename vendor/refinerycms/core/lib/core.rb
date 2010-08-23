@@ -22,6 +22,8 @@ module Refinery
     end
 
     config.to_prepare do
+      Rails.cache.clear
+
       require_dependency 'refinery/form_helpers'
       require_dependency 'refinery/base_presenter'
 
@@ -32,6 +34,21 @@ module Refinery
         Dir[path.to_s].each do |presenters_path|
           $LOAD_PATH << presenters_path
           ::ActiveSupport::Dependencies.load_paths << presenters_path
+        end
+      end
+
+      # Figure out a better way to cache assets.
+      ::ActionView::Helpers::AssetTagHelper.module_eval do
+        def asset_file_path(path)
+          unless File.exist?(return_path = File.join(config.assets_dir, path.split('?').first))
+            ::Refinery::Plugins.registered.collect{|p| p.pathname}.compact.each do |pathname|
+              if File.exist?(plugin_asset_path = File.join(pathname.to_s, 'public', path.split('?').first))
+                return_path = plugin_asset_path.to_s
+              end
+            end
+          end
+
+          return_path
         end
       end
     end
