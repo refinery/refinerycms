@@ -2,6 +2,7 @@ en:
   plugins:
     refinery_users:
       title: Users
+      description: Manage users
   admin:
     users:
       delete: Remove this user forever

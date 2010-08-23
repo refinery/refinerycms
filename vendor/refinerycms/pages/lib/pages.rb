@@ -6,10 +6,8 @@ module Refinery
 
       config.after_initialize do
         Refinery::Plugin.register do |plugin|
-          plugin.title = "Pages"
           plugin.name = "refinery_pages"
           plugin.directory = "pages"
-          plugin.description = "Manage content pages"
           plugin.version = %q{0.9.8}
           plugin.menu_match = /(refinery|admin)\/page(_part)?s(_dialogs)?$/
           plugin.activity = {

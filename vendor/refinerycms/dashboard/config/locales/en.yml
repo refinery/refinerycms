@@ -2,6 +2,7 @@ en:
   plugins:
     refinery_dashboard:
       title: Dashboard
+      description: Gives an overview of activity in Refinery
   admin:
     dashboard:
       index:

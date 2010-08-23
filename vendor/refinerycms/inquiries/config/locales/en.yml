@@ -2,6 +2,7 @@ en:
   plugins:
     refinery_inquiries:
       title: Inquiries
+      description: Provides a contact form and stores inquiries
   inquiries:
     new:
       send: Send message
