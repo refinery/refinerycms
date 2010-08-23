@@ -50,6 +50,7 @@ lv:
         message: Vai tiešām vēlaties dzēst '%{title}'?
       error_messages:
         problems_in_following_fields: Problēmas sekojošos ievades laukos
+      help: palīdzība
     message:
       close: Aizvērt
       close_this_message: Aizvērt šo paziņojumu
