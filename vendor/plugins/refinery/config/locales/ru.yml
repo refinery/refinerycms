@@ -6,8 +6,8 @@ ru:
     continue: "Далее..."
   admin:
     menu:
-      reorder_menu: "Поменять порядок"
-      reorder_menu_done: "Порядок изменен"
+      reorder_menu: "Изменить порядок в меню"
+      reorder_menu_done: "Сохранить такой порядок в меню"
     search: "Поиск"
     search_submit: "Далее"
     search_results_for: "Результаты поиска для '{{query}}'"
