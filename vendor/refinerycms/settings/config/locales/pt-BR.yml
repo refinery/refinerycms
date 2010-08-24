@@ -30,7 +30,7 @@ pt-BR:
         menu_hide_children: Esconde qualquer sub-página do menu mesmo se estiver presente.
         new_page_parts: Habilita a criação de novos pedaços de página (seção de conteúdo) no editor de páginas.
         page_title: Opções avançadas de configuração do título da página. Você pode colocar um CSS customizado ou uma tag diferente ou pedir para navegar entre as páginas pais.
-        page_advanced_options_include_seo: Habilita as configurações avançadas de SEO nas opções avançadas da edição de páginas.
+        pages_advanced_options_include_seo: Habilita as configurações avançadas de SEO nas opções avançadas da edição de páginas.
         preferred_image_view: Habilita o tipo de visualição da seção imagens - grid para 'Visualizar em Grid' e list para 'Visualizar em Lista'. Há um botão para automatizar este processo no plugin de imagens.
         refinery_enable_backend_reordering: Habilita a ordenação do menu administrativo.
         refinery_menu_cache_action_suffix: Configura o sufixo do nome usado para fazer cache do menu do site. Se você está usando um tema é melhor deixar o nome padrão e deixar o tema gerenciar essa configuração.

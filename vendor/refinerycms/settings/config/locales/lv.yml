@@ -4,26 +4,26 @@ lv:
       title: Uzstādījumi
   admin:
     refinery_settings:
-      delete: Remove this setting forever
-      edit: Edit this setting
+      delete: Dzēst šo uzstādījumu
+      edit: Labot šo uzstādījumu
       index:
-        new: Create new setting
-        empty_set: There are no settings yet.
-        create_first: Click '%{link}' to add your first setting.
+        new: Izveidot jaunu uzstādījumu
+        empty_set: Vēl nav neviena uzstādījuma.
+        create_first: Spied uz '%{link}', lai pievienotu pirmo uzstādījumu.
       form:
-        restart_may_be_in_order: <strong>Please note</strong> that you may need to restart the website for this setting to take effect.
-        yes_make_this_setting_restricted: Yes, make this setting restricted only to superusers.
+        restart_may_be_in_order: <strong>Ievērībai</strong> - iespējams būs nepieciešams web servera restarts, lai šis uzstādījums stātos spēkā.
+        yes_make_this_setting_restricted: Jā, padarīt šo uzstādījumu pieejamu tikai superlietotājiem.
         help:
-          restricted: This makes the setting only visible and editable by users who are superusers (like you).
-          activity_show_limit: This limits the number of items that can display in the Dashboard listing.
-          analytics_page_code: This code activates Google Analytics tracking within your website. If the setting is left blank or set to UA-xxxxxx-x then this is disabled and no remote calls to Google Analytics are made.
-          image_dialogue_sizes: This setting applies to the Insert Image dialogue. You must implement the different thumbnail sizes as well as changing this.
-          image_thumbnails: If you modify this setting you will have to regenerate your images by running rake images:regenerate (or rake images:update if you only added more thumbnails) otherwise the setting will not apply to existing images.
-          menu_hide_children: Hide any subpages from the menu even if they are present.
-          new_page_parts: Enable adding new page parts (content sections) in the page editors.
-          page_title: Very complex options for setting the page title. Here you can set custom CSS class or a different tag or tell it to breadcrumb with pages in its ancestry.
-          page_advanced_options_include_seo: This controls whether the SEO options are displayed in the advanced options for a page.
-          preferred_image_view: This controls which view the images plugin displays existing images in - grid for 'Grid View' and list for 'List View'. There is a button to automate this process on the images plugin itself.
+          restricted: Šī opcija padara uzstādījumu redzamu un rediģējamu tikai superlietotājiem (tādi kā Jūs).
+          activity_show_limit: Šī opcija limitē vienību skaitu, kas tiek atspoguļotas vadības panelī.
+          analytics_page_code: Šis kods aktivizē Google Analytics uzskaiti Jūsu lapā. Ja šī uzstādījuma vērtības lauks tiek atstāts tukšs vai tajā tiek ievadīts UA-xxxxxx-x, tas nozīmē, ka šis uzstādījums nav aktīvs un attālināti pieprasījumi uz Google Analytics netiek veikti.
+          image_dialogue_sizes: Šis uzstādījums attiecas uz bildes ievietošanas dialoga logu. Pēc šī uzstādījuma rediģēšanas, lūdzu, pārliecinieties par to, ka sīkattēlu izmēri ir tādi kā norādīti šeit.
+          image_thumbnails: Ja Jūs veicat izmaiņas šajā uzstādījumā, tad ir nepieciešams izveidot bilžu sīkattēlus no jauna. To var izdarīt izmantojot komandu rake images:regenerate (vai arī rake images:update, ja pievienojat tikai jaunus sīkattēlu izmērus), pretējā gadījumā šis uzstādījums neietekmēs esošās bildes.
+          menu_hide_children: Paslēpt visas apakšlapas no izvēlnes, ja tās ir.
+          new_page_parts: Atļaut pievienot jaunas lapas daļas (satura sadaļas) lapu redaktorā.
+          page_title: Kompleksas opcijas lapas nosaukuma uzstādīšanai. Šeit Jūs varat personalizēt CSS klasi, uzstādīt citu birku vai arī sadalīt lapu fragmentos atkarībā no tās izcelsmes.
+          pages_advanced_options_include_seo: Šis uzstādījums nosaka, vai rādīt OIM (Optimizēšana Interneta Meklētājiem) iespējas pie papildus opcijām lapas redaktorā.
+          preferred_image_view: Šis uzstādījums kontrolē, kurš skats tiek izmantots bilžu spraudnī - grid 'Režģa skatam' un list 'Saraksta skatam'. Bilžu spraudnī ir poga, kas automatizē šo procesu.
           refinery_enable_backend_reordering: You can remove the ability to reorder the plugins' display order with this.
           refinery_menu_cache_action_suffix: This controls the key that is used to cache the site menu. If you are using a theme then it is better to leave this as the default as the theme will handle it.
           show_contact_privacy_link: You can hide or show the link to the privacy policy page on the contact form by the submit button.
@@ -37,6 +37,6 @@ lv:
       refinery_setting: uzstādījums
     attributes:
       refinery_setting:
-        name: Name
-        value: Value
-        restricted: Restricted
+        name: Nosaukums
+        value: Vērtība
+        restricted: Ierobežots
