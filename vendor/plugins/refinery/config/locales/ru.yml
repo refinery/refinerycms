@@ -14,7 +14,7 @@ ru:
     search_no_results: "Ничего не найдено"
     images:
       existing_image:
-        submit_insert: "Встатвить"
+        submit_insert: "Вставить"
   refinery:
     other: "Иначе {{what}}"
     reorder: "Поменять порядок {{what}}"
