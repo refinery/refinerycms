@@ -39,7 +39,8 @@ Gem::Specification.new do |s|
   s.require_paths     = %w(lib)
   s.executables       = %w(#{Dir.glob('bin/*').map{|d| d.gsub('bin/','')}.join(' ')})
 
-  s.add_dependency    'rails', '3.0.0.rc'
+  s.add_dependency    'rails',      '~> 3.0.0.rc2'
+  s.add_dependency    'bundler',    '~> 1.0.0'
   s.add_dependency    'childlabor'
 
   s.files             = [
