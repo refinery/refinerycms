@@ -1,8 +1,8 @@
 Gem::Specification.new do |s|
   s.name              = %q{refinerycms}
-  s.version           = %q{0.9.8.0.beta1.pre}
+  s.version           = %q{0.9.8.0.beta2.pre}
   s.description       = %q{A beautiful open source Ruby on Rails content manager for small business. Easy to extend, easy to use, lightweight and all wrapped up in a super slick UI.}
-  s.date              = %q{2010-08-23}
+  s.date              = %q{2010-08-24}
   s.summary           = %q{A beautiful open source Ruby on Rails content manager for small business.}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.executables       = %w(refinerycms)
 
   s.add_dependency    'rails',      '~> 3.0.0.rc2'
-  s.add_dependency    'bundler',    '~> 1.0'
+  s.add_dependency    'bundler',    '~> 1.0.0'
   s.add_dependency    'childlabor'
 
   s.files             = [
@@ -652,7 +652,6 @@ Gem::Specification.new do |s|
     'vendor/refinerycms/core/public/javascripts/jquery-min.js',
     'vendor/refinerycms/core/public/javascripts/jquery-ui-custom-min.js',
     'vendor/refinerycms/core/public/javascripts/jquery.js',
-    'vendor/refinerycms/core/public/javascripts/rails.js',
     'vendor/refinerycms/core/public/javascripts/refinery',
     'vendor/refinerycms/core/public/javascripts/refinery/admin.js',
     'vendor/refinerycms/core/public/javascripts/refinery/boot_wym.js',
