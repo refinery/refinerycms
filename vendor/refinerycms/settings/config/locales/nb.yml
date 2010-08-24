@@ -30,7 +30,7 @@ nb:
         menu_hide_children: "Gjem alle undersider fra menyen (om noen finnes)."
         new_page_parts: "Gjør det mulig å legge til nye sideseksjoner."
         page_title: "Svært avanserte alternativer for å sette tittelen på siden. Her kan du legge inn tilpassede CSS klasser eller en annen tag for å legge til brødsmuler."
-        page_advanced_options_include_seo: "Dette kontrollerer hvor vidt SEO (Søkemotor Optimalisering) vises i den avanserte seksjonen når man redigerer en side."
+        pages_advanced_options_include_seo: "Dette kontrollerer hvor vidt SEO (Søkemotor Optimalisering) vises i den avanserte seksjonen når man redigerer en side."
         preferred_image_view: "Dette kontrollerer hvilken visning bilde-tillegget viser eksisterende bilder i - rute for 'Rutenett', og liste for 'Liste'. Det er en knapp som automatiserer dene prosessen under bilde-tillegget."
         refinery_enable_backend_reordering: "Du kan fjerne muligheten for å endre rekkefølgen tilleggene vises her."
         refinery_menu_cache_action_suffix: "Dette kontrollerer nøkkelen som brukes for å 'cache' siden meny. Dersom du bruker et tema på siden så kan det være bedre å la denne stå på sin standardvedri ettersom temaet vil løse dette."
