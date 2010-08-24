@@ -27,7 +27,7 @@ ru:
     site_bar:
       log_out: Выйти
       switch_to_your_website: Перейти на сайт
-      switch_to_your_website_editor: Прейти в администарторскую
+      switch_to_your_website_editor: Прейти в панель управления
     admin:
       message:
         close: Закрыть
@@ -57,5 +57,5 @@ ru:
         remove_current: "Remove current {{what}}"
         resource: resource
     message:
-      close: Close
-      close_this_message: Close this message
+      close: Закрыть
+      close_this_message: Закрыть это сообщение
