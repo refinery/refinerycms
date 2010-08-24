@@ -6,7 +6,7 @@ ru:
       refinery_setting:
         name: Имя
         value: Значение
-        restricted: Доступ
+        restricted: Ограничение доступа
   admin:
     refinery_settings:
       refinery_setting:
