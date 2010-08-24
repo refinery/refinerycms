@@ -27,7 +27,7 @@ ru:
     site_bar:
       log_out: Выйти
       switch_to_your_website: Перейти на сайт
-      switch_to_your_website_editor: Прейти в панель управления
+      switch_to_your_website_editor: Перейти в панель управления
     admin:
       message:
         close: Закрыть
