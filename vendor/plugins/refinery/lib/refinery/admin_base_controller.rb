@@ -21,7 +21,13 @@ protected
   def error_404(exception=nil)
     if (@page = Page.find_by_menu_match("^/404$", :include => [:parts, :slugs])).present?
       params[:action] = 'error_404'
-      @page[:body] = @page[:body].gsub(/href=(\'|\")\/(\'|\")/, "href='/refinery'").gsub("home page", "Dashboard")
+      # change any links in the copy to the admin_root_url
+      # and any references to "home page" to "Dashboard"
+      part_symbol = Page.default_parts.first.to_sym
+      @page[part_symbol] = @page[part_symbol].gsub(
+                            /href=(\'|\")\/(\'|\")/, "href='#{admin_root_url(:only_path => true)}'"
+                           ).gsub("home page", "Dashboard")
+
       render :template => "/pages/show", :status => 404
     else
       # fallback to the default 404.html page.
@@ -51,7 +57,7 @@ protected
   end
 
   def restrict_plugins
-    Refinery::Plugins.set_active( current_user.authorized_plugins ) if current_user.respond_to? :plugins
+    Refinery::Plugins.set_active(current_user.authorized_plugins) if current_user.respond_to?(:plugins)
   end
 
   def restrict_controller

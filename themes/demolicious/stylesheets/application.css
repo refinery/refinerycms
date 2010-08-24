@@ -24,30 +24,30 @@ body {
     padding: 0px;
     margin: 0px;
 }
-#body, #header_content, #footer_content, #site_bar_content {
+#body, header, footer, #site_bar_content {
     width: 990px;
     margin: 0px auto;
 }
 #header {
     background: url('/theme/images/header_background.png') repeat-x;
 }
-#header_content {
+header {
     position: relative;
     height: 132px;
 }
-#header_content h1, #header_content h1 a {
+header h1, header h1 a {
     color: #feffff;
     font-size: 24px;
     font-weight: normal;
     left: 0px;
     text-decoration: none;
 }
-#header_content h1, #header_content #menu {
+header h1, header #menu {
     position: absolute;
     bottom: 30px;
     margin: 0px;
 }
-#header_content #menu {
+header #menu {
     right: 0px;
     padding: 0px;
 }
@@ -90,7 +90,7 @@ body {
     margin-top: 120px;
     background: url('/theme/images/footer_background.png') repeat-x;
 }
-#footer_content {
+footer {
     height: 103px;
     padding-top: 94px;
     background: url('/images/refinery/logo.png') 0px 80px no-repeat;

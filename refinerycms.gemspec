@@ -1,8 +1,8 @@
 Gem::Specification.new do |s|
   s.name              = %q{refinerycms}
-  s.version           = %q{0.9.7.11}
+  s.version           = %q{0.9.7.13}
   s.description       = %q{A beautiful open source Ruby on Rails content manager for small business. Easy to extend, easy to use, lightweight and all wrapped up in a super slick UI.}
-  s.date              = %q{2010-08-07}
+  s.date              = %q{2010-08-24}
   s.summary           = %q{A beautiful open source Ruby on Rails content manager for small business.}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
@@ -149,6 +149,7 @@ Gem::Specification.new do |s|
     'public/images/refinery/icons',
     'public/images/refinery/icons/accept.png',
     'public/images/refinery/icons/add.png',
+    'public/images/refinery/icons/ajax-loader.gif',
     'public/images/refinery/icons/application_edit.png',
     'public/images/refinery/icons/application_go.png',
     'public/images/refinery/icons/arrow_left.png',
@@ -553,7 +554,6 @@ Gem::Specification.new do |s|
     'public/stylesheets/application.css',
     'public/stylesheets/formatting.css',
     'public/stylesheets/home.css',
-    'public/stylesheets/ie6.css',
     'public/stylesheets/ie7.css',
     'public/stylesheets/refinery',
     'public/stylesheets/refinery/application.css',
@@ -781,6 +781,7 @@ Gem::Specification.new do |s|
     'vendor/plugins/authentication/config/locales/nb.yml',
     'vendor/plugins/authentication/config/locales/nl.yml',
     'vendor/plugins/authentication/config/locales/pt-BR.yml',
+    'vendor/plugins/authentication/config/locales/ru.yml',
     'vendor/plugins/authentication/config/locales/sl.yml',
     'vendor/plugins/authentication/config/routes.rb',
     'vendor/plugins/authentication/lib',
@@ -820,6 +821,7 @@ Gem::Specification.new do |s|
     'vendor/plugins/dashboard/config/locales/nb.yml',
     'vendor/plugins/dashboard/config/locales/nl.yml',
     'vendor/plugins/dashboard/config/locales/pt-BR.yml',
+    'vendor/plugins/dashboard/config/locales/ru.yml',
     'vendor/plugins/dashboard/config/locales/sl.yml',
     'vendor/plugins/dashboard/config/routes.rb',
     'vendor/plugins/dashboard/rails',
@@ -961,6 +963,7 @@ Gem::Specification.new do |s|
     'vendor/plugins/images/config/locales/nb.yml',
     'vendor/plugins/images/config/locales/nl.yml',
     'vendor/plugins/images/config/locales/pt-BR.yml',
+    'vendor/plugins/images/config/locales/ru.yml',
     'vendor/plugins/images/config/locales/sl.yml',
     'vendor/plugins/images/config/routes.rb',
     'vendor/plugins/images/lib',
@@ -1012,6 +1015,7 @@ Gem::Specification.new do |s|
     'vendor/plugins/inquiries/config/locales/nb.yml',
     'vendor/plugins/inquiries/config/locales/nl.yml',
     'vendor/plugins/inquiries/config/locales/pt-BR.yml',
+    'vendor/plugins/inquiries/config/locales/ru.yml',
     'vendor/plugins/inquiries/config/locales/sl.yml',
     'vendor/plugins/inquiries/config/routes.rb',
     'vendor/plugins/inquiries/rails',
@@ -1074,6 +1078,7 @@ Gem::Specification.new do |s|
     'vendor/plugins/pages/config/locales/nb.yml',
     'vendor/plugins/pages/config/locales/nl.yml',
     'vendor/plugins/pages/config/locales/pt-BR.yml',
+    'vendor/plugins/pages/config/locales/ru.yml',
     'vendor/plugins/pages/config/locales/sl.yml',
     'vendor/plugins/pages/config/routes.rb',
     'vendor/plugins/pages/rails',
@@ -1131,6 +1136,7 @@ Gem::Specification.new do |s|
     'vendor/plugins/refinery/config/locales/nb.yml',
     'vendor/plugins/refinery/config/locales/nl.yml',
     'vendor/plugins/refinery/config/locales/pt-BR.yml',
+    'vendor/plugins/refinery/config/locales/ru.yml',
     'vendor/plugins/refinery/config/locales/sl.yml',
     'vendor/plugins/refinery/config/routes.rb',
     'vendor/plugins/refinery/crud.md',
@@ -1234,6 +1240,7 @@ Gem::Specification.new do |s|
     'vendor/plugins/refinery_settings/config/locales/nb.yml',
     'vendor/plugins/refinery_settings/config/locales/nl.yml',
     'vendor/plugins/refinery_settings/config/locales/pt-BR.yml',
+    'vendor/plugins/refinery_settings/config/locales/ru.yml',
     'vendor/plugins/refinery_settings/config/locales/sl.yml',
     'vendor/plugins/refinery_settings/config/routes.rb',
     'vendor/plugins/refinery_settings/rails',
@@ -1267,6 +1274,7 @@ Gem::Specification.new do |s|
     'vendor/plugins/resources/config/locales/nb.yml',
     'vendor/plugins/resources/config/locales/nl.yml',
     'vendor/plugins/resources/config/locales/pt-BR.yml',
+    'vendor/plugins/resources/config/locales/ru.yml',
     'vendor/plugins/resources/config/locales/sl.yml',
     'vendor/plugins/resources/config/routes.rb',
     'vendor/plugins/resources/rails',

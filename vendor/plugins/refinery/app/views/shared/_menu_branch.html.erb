@@ -1,21 +1,23 @@
 <%
-  css = (css = css_for_menu_branch(menu_branch, menu_branch_counter)).any? ? " class='#{css.join(' ')}'" : nil
+  css = (css = css_for_menu_branch(menu_branch, menu_branch_counter, sibling_count||=nil)).any? ? " class='#{css.join(' ')}'" : nil
   dom_id = (menu_branch.parent_id.nil? and menu_branch.title.present?) ? " id='item_#{menu_branch_counter}'" : nil
 -%>
-<div<%= css -%><%= dom_id -%>>
+<li<%= css -%><%= dom_id -%>>
   <%= link_to menu_branch.title, menu_branch.url %>
 
   <% unless hide_children or
             menu_branch.parent_id.present? or
             (children = menu_branch.children.reject{|c| !c.in_menu?}).empty? %>
     <nav class='clearfix'>
-      <%=
-        render :partial => "/shared/menu_branch",
-               :collection => children,
-               :locals => {
-                 :hide_children => hide_children,
-                 :sibling_count => children.size - 1
-               } -%>
+      <ul>
+        <%=
+          render :partial => "/shared/menu_branch",
+                 :collection => children,
+                 :locals => {
+                   :hide_children => hide_children,
+                   :sibling_count => children.size - 1
+                 } -%>
+      </ul>
     </nav>
   <% end %>
-</div>
+</li>

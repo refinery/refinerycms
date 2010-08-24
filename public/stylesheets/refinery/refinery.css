@@ -25,7 +25,7 @@ acronym {
 label[for] {
   cursor: pointer;
 }
-#page_container, #site_bar_content, #header_content {
+#page_container, #site_bar_content, header {
   margin: 0px auto 10px auto;
   text-align: left;
   width: 990px;
@@ -169,12 +169,19 @@ hr {
 #flash.flash_message a#flash_close {
   top: 21px;
 }
-#header a, #content a {
+#content a {
   border-bottom: 1px dotted #727272;
 }
 a {
   color: #41403C;
   text-decoration: none;
+}
+a:hover {
+  color: #000;
+  border-bottom: 1px solid #727272;
+}
+header a, header a:hover {
+  border-bottom: 0px none;
 }
 #content .wym_box a, #content .ui-tabs a {
   border-bottom: 0px none;
@@ -193,27 +200,23 @@ a {
 .less-important {
   color: #727272;
 }
-#header a {
-  border: 0px;
-}
-a:hover {
-  color: #000;
-  border-bottom: 1px solid #727272;
-}
 a#site_bar_refinery_cms_logo {
   left: 448px;
 }
 #content, #page_container {
   background-color: white;
 }
-body.login #page_container, body.login #site_bar_content, body.login #header_content {
+body.login #page_container, body.login #site_bar_content, body.login header {
   width: 590px;
 }
 body.login #page_container {
   width: 560px;
 }
-body.login #header_content {
+body.login header {
   background: #eaeaea;
+}
+header, footer, nav {
+  display: block;
 }
 body.login #site_bar_content a#site_bar_refinery_cms_logo {
   left: 247px;
@@ -281,12 +284,12 @@ body.login .fieldWithErrors input.larger {
   background-position: 0px -82px;
   border: 1px solid red;
 }
-#header_content {
+header {
   height: 60px;
   position: relative;
   margin-bottom: 0px;
 }
-body.login #header_content h1 {
+body.login header h1 {
   color: #41403c;
   vertical-align: middle;
   text-align: center;
@@ -295,7 +298,7 @@ body.login #header_content h1 {
   padding-bottom: 0px;
   line-height: 60px;
 }
-#menu, #header_content .jcarousel-container {
+#menu, header .jcarousel-container {
   display: block;
   margin: 0px;
   padding: 0px;
@@ -305,23 +308,23 @@ body.login #header_content h1 {
   right: 0px;
   background: transparent;
 }
-#header_content .jcarousel-container {
+header .jcarousel-container {
   position: absolute !important;
 }
-#header_content .jcarousel-container .jcarousel-prev,
-  #header_content .jcarousel-container .jcarousel-next {
+header .jcarousel-container .jcarousel-prev,
+  header .jcarousel-container .jcarousel-next {
   position: absolute;
   top: 13px;
   cursor: pointer;
 }
-#header_content .jcarousel-container .jcarousel-prev {
+header .jcarousel-container .jcarousel-prev {
   left: -20px;
 }
-#header_content .jcarousel-container .jcarousel-next {
+header .jcarousel-container .jcarousel-next {
   right: -20px;
 }
-#header_content .jcarousel-container .jcarousel-prev-disabled,
-  #header_content .jcarousel-container .jcarousel-next-disabled {
+header .jcarousel-container .jcarousel-prev-disabled,
+  header .jcarousel-container .jcarousel-next-disabled {
   display: none !important;
 }
 #menu.ui-sortable a {
@@ -350,7 +353,7 @@ body.login #header_content h1 {
   padding: 11px 13px;
   margin-top: 0px;
 }
-#menu a#menu_reorder, #header #menu a#menu_reorder_done {
+#menu a#menu_reorder, header #menu a#menu_reorder_done {
   height: 14px;
   width: 14px;
   margin-top: 11px;
@@ -378,12 +381,12 @@ pre {
 #site_link:hover {
   text-decoration: underline;
 }
-#header #logo {
+header #logo {
   position: absolute;
   right: 20px;
   top: 25px;
 }
-#header h1, #header h1 a {
+header h1, header h1 a {
   color: white;
   font-size: 20px;
   font-weight: normal;
@@ -391,7 +394,7 @@ pre {
   padding-bottom: 4px;
   margin-top: 0;
 }
-#header p {
+header p {
   color: white;
   font-size: 90%;
   padding: 0;

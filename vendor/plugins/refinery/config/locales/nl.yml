@@ -25,6 +25,9 @@ nl:
       log_out: Afmelden
       switch_to_your_website: Ga naar de website
       switch_to_your_website_editor: Ga terug naar de editor
+    message:
+      close: Sluiten
+      close_this_message: Sluit dit bericht
     admin:
       message:
         close: sluiten
@@ -37,11 +40,15 @@ nl:
         cancel: Annuleer
         or_continue: of
         cancel_lose_changes: "Als u annuleert, zullen alle wijzingen voor '{{object_name}}' niet worden opgeslagen!"
+        delete: Verwijder
+        previous: Vorige
+        next: Volgende
       image_picker:
         none_selected: "Er is op dit moment geen {{what}} geselecteerd. Klik a.u.b. hier om er een toe te voegen."
         remove_current: "Verwijder de huidige {{what}}"
         change: Klik hier om de afbeelding te wijzigen
         image: afbeelding
+        show: Toon
       resource_picker:
         none_selected: "Er is op dit moment geen {{what}} geselecteerd. Klik a.u.b. hier om er een toe te voegen."
         current: "Huidige {{what}}"
