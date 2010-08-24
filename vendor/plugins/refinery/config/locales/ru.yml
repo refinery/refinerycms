@@ -6,15 +6,15 @@ ru:
     continue: "Далее..."
   admin:
     menu:
-      reorder_menu: "Изменить порядок в меню"
-      reorder_menu_done: "Сохранить такой порядок в меню"
-    search: "Поиск"
-    search_submit: "Далее"
+      reorder_menu: Изменить порядок в меню
+      reorder_menu_done: Сохранить такой порядок в меню
+    search: Поиск
+    search_submit: Далее
     search_results_for: "Результаты поиска для '{{query}}'"
-    search_no_results: "Ничего не найдено"
+    search_no_results: Ничего не найдено
     images:
       existing_image:
-        submit_insert: "Вставить"
+        submit_insert: Вставить
   refinery:
     other: "Иначе {{what}}"
     reorder: "Поменять порядок {{what}}"
@@ -25,24 +25,24 @@ ru:
       destroyed: "{{what}} уничтожен(а)."
   shared:
     site_bar:
-      log_out: "Выйти"
-      switch_to_your_website: "Перейти на сайт"
-      switch_to_your_website_editor: "Прейти в администарторскую"
+      log_out: Выйти
+      switch_to_your_website: Перейти на сайт
+      switch_to_your_website_editor: Прейти в администарторскую
     admin:
       message:
-        close: "Закрыть"
+        close: Закрыть
       continue_editing:
-        save_and_continue_editing: "Сохранить и продолжить"
+        save_and_continue_editing: Сохранить и продолжить
       form_actions:
-        or: "или"
-        save: "Сохранить"
-        or_cancel: "или"
-        cancel: "Отмена"
-        or_continue: "или"
+        or: или
+        save: Сохранить
+        or_cancel: или
+        cancel: Отмена
+        or_continue: или
         cancel_lose_changes: "Cancelling will lose all changes you've made to this {{object_name}}"
-        delete: "Удалить"
-        previous: "Предпросмотр"
-        next: "Следующее"
+        delete: Удалить
+        previous: Предпросмотр
+        next: Следующее
       image_picker:
         none_selected: "There is currently no {{what}} selected, please click here to add one."
         remove_current: "Remove current {{what}}"
