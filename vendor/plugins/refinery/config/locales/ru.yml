@@ -10,7 +10,7 @@ ru:
       reorder_menu_done: Сохранить такой порядок в меню
     search: Поиск
     search_submit: Далее
-    search_results_for: "Результаты поиска для '{{query}}'"
+    search_results_for: "Результаты поиска для &laquo;{{query}}&raquo;"
     search_no_results: Ничего не найдено
     images:
       existing_image:
