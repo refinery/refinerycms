@@ -1,4 +1,15 @@
+## 0.9.7.12 [11 August 2010]
+
+* Smoothed the sortable list in the admin UI. [Joe Sak](http://github.com/joemsak)
+* Binding link dialogue URL checker to paste action. [Joe Sak](http://github.com/joemsak)
+* Kill hidden overflow on dialogues for smaller browser windows. [Joe Sak](http://github.com/joemsak) and [Philip Arndt](http://github.com/parndt)
+* Refactored the ``parse_branch`` method to speed up reordering on the server. [Joshua Davey](http://github.com/jgdavey)
+* Running ``refinerycms`` with ``-v`` or ``--version`` will now output the version number. [Steven Heidel](http://github.com/stevenheidel)
+* Made the core codebase not rely so heavily on ``@page[:body]`` by adding ``Page.default_parts`` and using ``.first`` on that instead. [Philip Arndt](http://github.com/parndt)
+* [See full list](http://github.com/resolve/refinerycms/compare/0.9.7.11...0.9.7.12)
+
 ## 0.9.7.11 [07 August 2010]
+
 * Removed ``app/controllers/application.rb`` due to its serious deprecation. Fixed deprecations in how we use acts_as_indexed. [Philip Arndt](http://github.com/parndt)
 * Added passing cucumber features for search for: [Uģis Ozols](http://github.com/ugisozols)
   - Images
@@ -20,6 +31,7 @@
 
 
 ## 0.9.7.10 [02 August 2010]
+
 * Added options to site_bar partial to allow particular components to be disabled (CSS, JS, jQuery or cornering script) so that they don't interfere with these already being included in the theme. [Philip Arndt](http://github.com/parndt)
 * Fixed the schema file as it was invalid somehow. [Steven Heidel](http://github.com/stevenheidel)
 * Made search more consistent and added it to Spam/Ham. [Uģis Ozols](http://github.com/ugisozols)

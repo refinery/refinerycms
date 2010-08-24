@@ -15,7 +15,6 @@ class Page < ActiveRecord::Base
 
   before_destroy :deletable?
   after_save :reposition_parts!
-
   after_save :invalidate_child_cached_url
 
   # when a dialog pops up to link to a page, how many pages per page should there be
@@ -164,15 +163,27 @@ class Page < ActiveRecord::Base
     self.siblings.reject { |sibling| not sibling.in_menu? }
   end
 
-  # Returns all the top level pages, usually to render the top level navigation.
-  def self.top_level(include_children = false)
-    include_associations = [:parts]
-    include_associations.push(:slugs) if self.class.methods.include? "find_one_with_friendly"
-    include_associations.push(:children) if include_children
-    find_all_by_parent_id(nil,
-                          :conditions => {:show_in_menu => true, :draft => false},
-                          :order => "position ASC",
-                          :include => include_associations)
+  class << self
+    # Accessor to find out the default page parts created for each new page
+    def default_parts
+      RefinerySetting.find_or_set(:default_page_parts, ["Body", "Side Body"])
+    end
+
+    # Returns how many pages per page should there be when paginating pages
+    def per_page(dialog = false)
+      dialog ? PAGES_PER_DIALOG : PAGES_PER_ADMIN_INDEX
+    end
+
+    # Returns all the top level pages, usually to render the top level navigation.
+    def top_level(include_children = false)
+      include_associations = [:parts]
+      include_associations.push(:slugs) if self.class.methods.include? "find_one_with_friendly"
+      include_associations.push(:children) if include_children
+      find_all_by_parent_id(nil,
+                            :conditions => {:show_in_menu => true, :draft => false},
+                            :order => "position ASC",
+                            :include => include_associations.presence)
+    end
   end
 
   # Accessor method to get a page part from a page.
@@ -186,7 +197,10 @@ class Page < ActiveRecord::Base
     # the way that we call page parts seems flawed, will probably revert to page.parts[:title] in a future release.
     if (super_value = super).blank?
       # self.parts is already eager loaded so we can now just grab the first element matching the title we specified.
-      part = self.parts.detect {|part| (part.title == part_title.to_s) || (part.title.downcase.gsub(" ", "_") == part_title.to_s.downcase.gsub(" ", "_")) }
+      part = self.parts.detect do |part|
+        part.title == part_title.to_s or
+        part.title.downcase.gsub(" ", "_") == part_title.to_s.downcase.gsub(" ", "_")
+      end
 
       return part.body unless part.nil?
     end
@@ -206,11 +220,6 @@ class Page < ActiveRecord::Base
   # Used to index all the content on this page so it can be easily searched.
   def all_page_part_content
     self.parts.collect {|p| p.body}.join(" ")
-  end
-
-  # Returns how many pages per page should there be when paginating pages
-  def self.per_page(dialog = false)
-    dialog ? PAGES_PER_DIALOG : PAGES_PER_ADMIN_INDEX
   end
 
   ##

@@ -21,6 +21,7 @@ nl:
         cannot_remove_user_plugin_from_current_user: "U kunt de 'Gebruikers' plugin niet deactiveren voor uw huidige ingelogde account."
       form:
         blank_password_keeps_current: Als u dit veld leeg laat, blijft het oude wachtwoord behouden.
+        enable_all: Alles aanzetten
       index:
         create_new_user: Maak een nieuwe gebruiker
         no_users_yet:  Er zijn nog geen gebruikers. Klik op "Maak een nieuwe gebruiker" om de eerste toe te voegen.
@@ -63,6 +64,8 @@ nl:
     reset:
       code_invalid: "Het spijt ons, maar dit reset code is verlopen of ongeldig. Als u problemen hebt proberen te kopiëren en plakken van de URL van uw e-mail in uw browser of het herstarten van de reset wachtwoord proces."
       successful: "Wachtwoord resetten succes voor {{email}}"
+      pick_new_password_for: "Kies een nieuw wachtwoord voor {{email}}"
+      reset_password: Reset wachtwoord      
   user_mailer:
     please_activate: A.u.b. uw gebruikersaccount activeren.
     activated: Uw gebruikersaccount is geactiveerd!
@@ -71,6 +74,7 @@ nl:
     user_name: Gebruiker {{name}}
     password: Wachtwoord {{password}}
     visit_url: "Bezoek dit adres om uw gebruikersaacount te activeren:"
+    link_to_reset_your_password: Link om je wachtwoord te resetten.
   authlogic:
     error_messages:
       login_blank: mag niet leeg zijn

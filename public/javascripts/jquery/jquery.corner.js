@@ -219,7 +219,13 @@
 					$(d).addClass('jquery-corner');
 					var ds = d.style;
 
-					bot ? this.appendChild(d) : this.insertBefore(d, this.firstChild);
+					// IE always trips up here and breaks rendering elsewhere, so suppress.
+					try {
+						bot ? this.appendChild(d) : this.insertBefore(d, this.firstChild);
+					}
+					catch(a){
+						// don't really care.
+					}
 
 					if (bot && cssHeight != 'auto') {
 						if ($.css(this, 'position') == 'static')
