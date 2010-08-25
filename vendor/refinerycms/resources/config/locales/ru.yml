@@ -1,0 +1,33 @@
+ru:
+  plugins:
+    refinery_files:
+      title: Файлы
+  must_choose_file: Вы должны выбрать файл для загрузки
+  file_should_be_smaller_than_max_file_size: "Файлы должны быть по размеру меньше чем {{max_file_size}}"
+  admin:
+    resources:
+      form:
+        file_to_upload: Загружаемый файл
+        download_current: Скачать текущий файл
+        or: или
+        replace: ", заменить его на вот этот..."
+        maximum_file_size: "Максимальный размер файла &mdash; {{megabytes}} МБ."
+      resource:
+        download: "Скачать файл ({{size}})"
+        edit: Редактировать файл
+        delete:
+          message: "Вы уверены, что хотите удалить &laquo;{{title}}&raquo;?"
+          title: Удалить этот файл навсегда
+      index:
+        upload_new: Загрузить новый файл
+        no_files_yet: "Здесь пока нет файлов. Нажмите &laquo;Загрузить новые файлы&raquo;, чтобы добавить первый файл."
+      insert:
+        existing: Существующий файл
+        new: Новый файл
+        previous: Предыдущий
+        next: Следующий
+        or: или
+        cancel: Отмена
+      existing_resource:
+        link_to_resource: Поставить ссылку на этот ресурс
+        submit_insert: Вставить

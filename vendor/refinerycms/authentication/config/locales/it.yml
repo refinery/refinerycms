@@ -1,0 +1,80 @@
+it:
+  admin:
+    users:
+      update:
+        cannot_remove_user_plugin_from_current_user: "Non è possibile rimuovere il plugin 'Utenti' dal attualmente connesso in conto."
+      form:
+        blank_password_keeps_current: Lasciando password vuota mantiene la password corrente
+      index:
+        create_new_user: Crea nuovo utente
+        no_users_yet:  Non ci sono ancora gli utenti. Fare clic su "Crea nuovo Utente" per aggiungere il primo utente.
+      user:
+        confirm_delete_message: "Sei sicuro di voler eliminare '%{who}'?"
+        confirm_delete_title: Rimuovi questo utente per sempre
+        edit_user: Modifica questo utente
+        email_user: E-mail a questo utente
+        preview: (%{who}) creato %{created_at}
+  sessions:
+    login_successful: Accesso effettuato con successo
+    login_failed: Spiacente, la tua password o nome utente non era corretto.
+    logged_out: Sei stato disconnesso.
+    new:
+      login: Login nome
+      log_in: Entra
+      cancel: Annullare
+      password: Password
+      remember_me: Ricordati di me
+      or: o
+      forgot_password: Ho dimenticato la password
+      sign_in: Entra
+      hello_please_sign_in: "Ciao! Accedi per favore."
+  users:
+    setup_website_name: "Prima di tutto dare al sito un nome. <a href='%{link}' name='%{title}'>Vai qui</a> per modificare il nome del tuo sito web"
+    signup_disabled: Iscriviti utente è disattivato
+    new:
+      fill_form: Compila il form sottostante con i tuoi dati in modo che possiamo iniziare.
+      sign_up: Iscriviti
+    create:
+      welcome: Benvenuti a Refinery, %{who}
+      signup_complete: Registrati completo!
+    forgot:
+      email_address: Indirizzo e-mail
+      enter_email_address: Inserisci l'indirizzo di posta elettronica per l'account.
+      reset_password: Reimpostazione della password
+      blank_email: Non hai inserito un indirizzo email.
+      email_not_associated_with_account: "Mi dispiace, '%{email}' non è associato ad alcun account. <br/>Sei sicuro di avere digitato l'indirizzo email corretto?"
+      email_reset_sent: Una e-mail è stata inviata a voi con un link per reimpostare la password.
+    reset:
+      code_invalid: "Siamo spiacenti, ma questo codice reset è scaduto o non è valido. Se si hanno problemi provare a copiare e incollare l&apos;URL dal vostro e-mail nel vostro browser o riavviando la procedura di reimpostazione password."
+      successful: "Il ripristino della password con successo per %{email}"
+  user_mailer:
+    please_activate: Si prega di attivare il nuovo account
+    activated: Il tuo account è stato attivato!
+    activated_email: "%{who}, il tuo account è stato attivato. È ora possibile iniziare ad aggiungere i plugin:"
+    account_created: Il tuo account è stato creato.
+    user_name: Nome utente %{name}
+    password: Password %{password}
+    visit_url: "Visita questo url per attivare l'account:"
+    link_to_reset_your_password: Link a reimpostare la password
+  authlogic:
+    error_messages:
+      login_blank: non può essere vuoto
+      login_not_found: non è valido
+      login_invalid: dovrebbero utilizzare solo lettere, numeri, spazi e .-_@ gratzie.
+      consecutive_failed_logins_limit_exceeded: Consecutivi non ha superato il limite di account di accesso, account è disattivato.
+      email_invalid: dovrebbe apparire come un indirizzo email.
+      password_blank: non può essere vuoto
+      password_invalid: non è valido
+      not_active: Il tuo account non è attivo
+      not_confirmed: Il tuo account non è confermata
+      not_approved: Il tuo account non è approvato
+      no_authentication_details: Il tuo account non è approvato.
+    models:
+      user_session: UserSession
+    attributes:
+      user_session:
+        login: accesso
+        email: email
+        password: password
+        remember_me: Ricordati di me
+        incorrect: "Siamo spiacenti, la %{login_field} o la password non è corretto."

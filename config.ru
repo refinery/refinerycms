@@ -1,7 +1,4 @@
-ENV["RAILS_ENV"] ||= "production"
-require File.expand_path("../config/application", __FILE__)
+# This file is used by Rack-based servers to start the application.
 
-use Rails::Rack::LogTailer
-use Rails::Rack::Static
-
-run ActionController::Dispatcher.new
+require ::File.expand_path('../config/environment',  __FILE__)
+run Refinery::Application

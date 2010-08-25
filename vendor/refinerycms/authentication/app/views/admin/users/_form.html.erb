@@ -1,0 +1,70 @@
+<%= form_for [:admin, @user] do |f| %>
+
+  <%= render :partial => "/shared/admin/error_messages",
+             :locals => {
+               :object => @user,
+               :include_object_name => true
+             } %>
+
+  <div class='field'>
+    <%= f.label :login %>
+    <%= f.text_field :login %>
+  </div>
+  <div class='field'>
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+  </div>
+  <div class='field'>
+    <%= f.label :password %>
+    <%= f.password_field :password, :autocomplete => 'off' %>
+    <%= "<br /><span class='preview'>#{t('.blank_password_keeps_current')}</span>".html_safe unless @user.new_record? %>
+  </div>
+  <div class='field'>
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation, :autocomplete => 'off' %>
+  </div>
+  <div class='field plugin_access'>
+    <span class='label_with_help'>
+      <%= f.label :plugin_access, nil, :class => "title_label" %>
+      <%= link_to "(#{t('.enable_all')})", "", :id => "user_plugins_enable_all" %>
+    </span>
+    <ul id='plugins'>
+      <% @available_plugins.each do |plugin| -%>
+        <% if Refinery::Plugins.always_allowed.names.include?(plugin[:name]) or
+              (plugin[:name] == 'refinery_users' and @user.id == current_user.id) %>
+          <%= hidden_field_tag 'user[plugins][]', plugin[:name] %>
+        <% else %>
+          <li>
+            <%= check_box_tag 'user[plugins][]',
+                              plugin[:name],
+                              @selected_plugin_names.include?(plugin[:name]),
+                              :id => "plugins_#{plugin[:name]}" %>
+            <%= f.label 'user[plugins][]',
+                        t("plugins.#{plugin[:name].downcase}.title", :default => plugin[:title]),
+                        :class => "stripped",
+                        :for => "plugins_#{plugin[:name]}" %>
+          </li>
+        <% end %>
+      <% end %>
+    </ul>
+  </div>
+  <%= render :partial => "/shared/admin/form_actions",
+             :locals => {
+               :f => f,
+               :continue_editing => false,
+               :hide_delete => !current_user.can_delete?(@user),
+               :delete_title => t('admin.users.delete'),
+               :delete_confirmation => t('shared.admin.delete.message', :title => @user.login)
+             } %>
+<% end %>
+
+<% content_for :head do %>
+  <script type='text/javascript'>
+    $(document).ready(function() {
+      $('#user_plugins_enable_all').click(function(e, a) {
+        $('div.field.plugin_access ul#plugins li input:checkbox').attr('checked', true);
+        e.preventDefault();
+      });
+    });
+  </script>
+<% end %>

@@ -1,0 +1,66 @@
+fr:
+  welcome:
+    there_are_no_users: "Il n'y a pas encore les utilisateurs, commencont par en créer un premier!"
+    remember_admin_location: "N'oubliez pas que votre zone d'administration de Refinery est à:"
+    lets_start: "Commencont par créer un compte pour que vous puissiez vous connecter..."
+    continue: "Continuer..."
+  admin:
+    menu:
+      reorder_menu: Réorganiser le menu
+      reorder_menu_done: "J'ai fini de réorganiser le menu"
+    search: Rechercher
+    search_submit: Envoyer
+    search_results_for: "Résultat de recherche pour '%{query}'"
+    search_no_results: "Désolé, aucun résultat trouvé."
+  refinery:
+    other: "Other %{what}"
+    reorder: "Reordonner %{what}"
+    reorder_done: "Réorganisation terminé"
+    crudify:
+      created: "%{what} a été créé avec succès"
+      updated: "%{what} a été mis à jours avec succès"
+      destroyed: "%{what} été supprimé avec succès"
+  layouts:
+    admin:
+      view_public_site: Voir la page public
+      welcome_to_refinery: Bienvenue sur Refinery
+  shared:
+    admin:
+      message:
+        close: Fermer
+      continue_editing:
+        save_and_continue_editing: "Save & continuer les modification"
+      form_actions:
+        or: ou
+        save: Sauvegarder
+        or_cancel: ou
+        cancel: Annuler
+        or_continue: ou
+        cancel_lose_changes: "Si vous annuler, vous perderez les changements effectué sur le '%{object_name}'."
+      image_picker:
+        none_selected: "Il n'y a pas de '%{what}' selectionné, cliquer ici pour en ajouter."
+        remove_current: "Supprimer %{what}"
+        change: Cliquer ici pour selectionner une image
+        image: image
+      resource_picker:
+        none_selected: "Il n'y a pas de %{what} selectionné, cliquer ici pour en ajouter."
+        current: "Current %{what}"
+        download_current: "Download current %{what}"
+        opens_in_new_window: "Ouvrir dans une nouvelle fenêtre"
+        remove_current: "Remove current %{what}"
+        resource: resource
+    message:
+      close: Fermer
+    site_bar:
+      log_out: Déconnexion
+      switch_to_your_website: Passer à votre site web
+      switch_to_your_website_editor: Passer à votre éditeur de site web
+  activerecord:
+    models:
+      page: page
+      user: utilisateur
+      image: image
+      inquiry: requête
+      resource: ressource
+      refinery_setting: paramètre Refinery
+      inquiry_setting: paramêtre de demandes de renseigment

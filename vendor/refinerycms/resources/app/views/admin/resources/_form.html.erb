@@ -1,0 +1,52 @@
+<%= form_for [:admin, @resource], :url => @url_override || @url,
+                                  :html => {:multipart => true} do |f| -%>
+
+  <%= render :partial => "/shared/admin/error_messages",
+             :locals => {
+               :object => @resource,
+               :include_object_name => false
+             } %>
+
+  <div class='field'>
+    <% if action_name =~ /(edit)|(update)/ %>
+      <%= link_to t('.download_current'), @resource.url,
+                  :title => @resource.title %>
+      <em><%= t('.or')%></em><%= t('.replace') %>
+    <% end %>
+    <%= f.file_field :file %>
+  </div>
+
+  <div class='field'>
+    <label>
+      <%= t('.maximum_file_size', :megabytes => Resource::MAX_SIZE_IN_MB) %>
+    </label>
+  </div>
+
+  <%= render :partial => "/shared/admin/form_actions",
+             :locals => {
+               :f => f,
+               :continue_editing => false,
+               :hide_cancel => (@app_dialog or action_name == "insert" or from_dialog?),
+               :delete_title => t('admin.resources.delete'),
+               :delete_confirmation => (t('shared.admin.delete.message',
+                                         :title => @resource.title) unless @resource.new_record?)
+             } %>
+
+  <% if @app_dialog -%>
+    <input type='hidden' name='app_dialog' value='<%= @app_dialog %>' />
+    <input type='hidden' name='field' value='<%= @field %>' />
+    <input type='hidden' name='update_resource' value='<%= @update_resource %>' />
+    <input type='hidden' name='update_text' value='<%= @update_text %>' />
+    <input type='hidden' name='thumbnail' value='<%= @thumbnail %>' />
+    <input type='hidden' name='callback' value='<%= @callback %>' />
+    <input type='hidden' name='conditions' value='<%= @conditions %>' />
+    <input type='hidden' name='current_link' value='<%= @current_link %>' />
+  <% end -%>
+<% end -%>
+<% content_for :head do %>
+  <script type='text/javascript'>
+    $(document).ready(function(){
+      link_dialog.init();
+    });
+  </script>
+<% end if from_dialog? %>
