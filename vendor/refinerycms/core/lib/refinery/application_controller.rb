@@ -31,10 +31,14 @@ class Refinery::ApplicationController < ActionController::Base
   def error_404(exception=nil)
     if (@page = Page.where(:menu_match => "^/404$").includes(:parts, :slugs).first).present?
       # render the application's custom 404 page with layout and meta.
-      render :template => "/pages/show", :status => 404, :format => 'html'
+      render :template => "/pages/show",
+             :format => 'html',
+             :status => 404
     else
       # fallback to the default 404.html page.
-      render :file => Rails.root.join("public", "404.html").cleanpath.to_s,
+      file = Rails.root.join('public', '404.html')
+      file = Refinery.root.join('vendor', 'refinerycms', 'core', 'public', '404.html') unless file.exist?
+      render :file => file.cleanpath.to_s,
              :layout => false,
              :status => 404
     end
