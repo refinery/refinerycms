@@ -1,64 +1,60 @@
 es:
   welcome:
-    there_are_no_users: "No hay usuarios registrados, así que debemos de registrar al primero."
-    remember_admin_location: "Recuerda que tu area administrativa de Refinery esta en:"
-    lets_start: "Excelente, ahora vamos a configuraar tu cuenta para poder entrar..."
-    continue: "Contiunar..."
+    there_are_no_users: "No hay usuarios registrados, así que debemos registrar al primero."
+    remember_admin_location: "Recuerda que tu área administrativa de Refinery esta en:"
+    lets_start: "Excelente, ahora vamos a configurar tu cuenta para poder entrar..."
+    continue: "Continuar..."
   admin:
     menu:
-      reorder_menu: Re-ordenar menu
-      reorder_menu_done: "He terminado de re ordenar el menu"
-    search: Buscar
-    search_submit: Aceptar
-    search_results_for: "Resultados de busqueda de '%{query}'"
-    search_no_results: "Lo sentimos, no se encontraron resultados"
+      reorder_menu: Reordenar menú
+      reorder_menu_done: He terminado de reordenar el menú
+    dialogs:
+      show:
+        save: Guardar
+        cancel: Cancelar
   refinery:
-    other: "Otra %{what}"
-    reorder: "Re-ordenar %{what}"
-    reorder_done: "Listo el Re-ordenado %{what}"
     crudify:
-      created: "%{what} fue creado exitosamente"
-      updated: "%{what} fue creado exitosamente"
-      destroyed: "%{what} fue borrado exitosamente"
-  layouts:
-    admin:
-      view_public_site: Ver Sitio Publico
-      welcome_to_refinery: Bienvenido a Refinery
+      created: %{what} fue creado correctamente.
+      updated: %{what} fue actualizado correctamente.
+      destroyed: %{what} fue borrado correctamente.
   shared:
     site_bar:
-      log_out: "Cerrar sesión"
+      log_out: Salir
+      switch_to_your_website: Ver tu web
+      switch_to_your_website_editor: Editar tu web
     admin:
-      message:
-        close: Cerrar
       continue_editing:
-        save_and_continue_editing: "Guardar & continuar editando"
+        save_and_continue_editing: Guardar y seguir editando
       form_actions:
-        or: o
         save: Guardar
-        or_cancel: o
         cancel: Cancelar
-        or_continue: o
-        cancel_lose_changes: "Cancelar perdera todos los cambios que se han hecho en %{object_name}"
+        cancel_lose_changes: Al cancelar se perderán los cambios que has realizado aquí
+        delete: Borrar
+        previous: Anterior
+        next: Siguiente
+        close: Cerrar
       image_picker:
-        none_selected: "No hay ningun %{what} seleccionado, por favor dale click para seleccionar alguno."
-        remove_current: "Quitar el %{what} actual"
-        change: Dale Click para seleccionar una imagen
-        image: imagen
+        none_selected: No hay ninguna %{what} seleccionada, haz click aquí para añadir una.
+        remove_current: Eliminar %{what} actual
+        change: Haz click aquí para escoger una imagen
+        show: Mostrar
       resource_picker:
-        none_selected: "No hay ningun %{what} seleccionado, por favor dale click para seleccionar alguno."
-        current: "%{what} es seleccionado"
-        download_current: "Descargar %{what} seleccionado"
-        opens_in_new_window: Abrir en una nueva ventana
-        remove_current: "Quitar el %{what} seleccionado"
-        resource: recurso
+        download_current: Descargar %{what} actual
+        opens_in_new_window: Abre en una nueva ventana
+        remove_current: "Eliminar %{what} actual"
+      search:
+        button_text: Buscar
+        results_for: Resultados de la búsqueda '%{query}'
+        no_results: Lo siento, no hay resultados
+      delete:
+        message: ¿Seguro que quieres borrar '%{title}'?
+      error_messages:
+        problems_in_following_fields: Hubo problemas con los siguientes campos
+      help: ayuda
     message:
       close: Cerrar
-  activerecord:
-    models:
-      page: pagina
-      user: usuario
-      image: imagen
-      inquiry: pregunta
-      resource: recurso
-      refinery_setting: ajustes refinery
-      inquiry_setting: ajustes pregunta
+      close_this_message: Cerrar este mensaje
+    draft_page_message:
+      not_live: Esta página NO está visible para el público.
+    footer:
+      copyright: Copyright &copy;
