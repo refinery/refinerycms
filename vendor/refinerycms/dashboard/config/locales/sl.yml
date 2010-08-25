@@ -8,7 +8,8 @@ sl:
         quick_tasks: Pogosta opravila
         add_a_new_page: Dodaj novo stran
         update_a_page: Uredi stran
-        upload_a_image: Prenesi sliko
+        upload_a_image: Naloži sliko
+        upload_a_file: Naloži datoteko
         change_language: Spremeni Jezik
         see_home_page: Poglej domačo stran
       recent_activity:
@@ -20,5 +21,3 @@ sl:
     'with_article "the"':  posodobitev
   created:
     'with_article "the"':  ustvarjena
-  ago: "%{time} nazaj"
-  see: Poglej
