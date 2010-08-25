@@ -35,6 +35,7 @@ Gem::Specification.new do |s|
   s.summary           = %q{A beautiful open source Ruby on Rails content manager for small business.}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
+  s.rubyforge_project = %q{refinerycms}
   s.authors           = ['Resolve Digital', 'David Jones', 'Philip Arndt']
   s.require_paths     = %w(vendor/refinerycms)
   s.executables       = %w(refinerycms)
@@ -51,6 +52,11 @@ Gem::Specification.new do |s|
   s.add_dependency    'rmagick'
   s.add_dependency    'rack-cache'
   s.add_dependency    'dragonfly'
+
+  s.files             = [
+    '#{files.join("',\n    '")}'
+  ]
+end
 EOF
 
 File.open(File.expand_path("../../refinerycms.gemspec", __FILE__), 'w').puts(gemspec)
