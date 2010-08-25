@@ -13,7 +13,7 @@ if request.env['HTTP_USER_AGENT'] =~ /MSIE/%>
     <%= render :partial => '/shared/html5_for_ie.js' %>
   </script>
 <% end %>
-  <title><%= RefinerySetting.find_or_set(:site_name, 'Company Name') %> - Refinery</title>
+  <title><%= RefinerySetting.find_or_set(:site_name, 'Company Name') -%> - Refinery</title>
   <%= csrf_meta_tag %>
 
   <%= stylesheet_link_tag 'refinery/site_bar',
@@ -21,13 +21,13 @@ if request.env['HTTP_USER_AGENT'] =~ /MSIE/%>
                           'refinery/ui',
                           'refinery/tooltips',
                           'wymeditor/skins/refinery/skin',
-                          :cache => (css_caching ? "cache/refinery" : false) %>
+                          :cache => (css_caching ? "cache/refinery" : false) -%>
 
   <%= yield :head_before_javascript_libraries -%>
-  <%= javascript_include_tag 'refinery/i18n' %>
+  <%= javascript_include_tag 'refinery/i18n' -%>
   <script type='text/javascript'>I18n.locale = '<%= I18n.locale %>';</script>
 
-  <%= jquery_include_tags(:caching => js_caching) %>
+  <%= jquery_include_tags(:caching => js_caching) -%>
 
   <% #TODO: Find out why the master branch doesn't work! %>
   <%#= javascript_include_tag 'http://github.com/rails/jquery-ujs/raw/master/src/rails.js' %>
@@ -39,20 +39,22 @@ if request.env['HTTP_USER_AGENT'] =~ /MSIE/%>
                              'jquery/jquery.html5-placeholder-shim.js',
                              'jquery/jquery.timers.js',
                              'jquery/jquery.jcarousel.js',
-                             :cache => (js_caching ? "cache/jquery-plugins" : false) unless login? %>
+                             :cache => (js_caching ? "cache/jquery-plugins" : false) unless login? -%>
 
-  <%= yield :head_after_javascript_libraries %>
+  <%= yield :head_after_javascript_libraries -%>
 
   <%= javascript_include_tag 'wymeditor/jquery.refinery.wymeditor.js',
                              'admin',
                              'refinery/boot_wym',
+                             'refinery/core',
                              'refinery/admin',
-                             :cache => (js_caching ? "cache/admin" : false) %>
+                             :cache => (js_caching ? "cache/admin" : false) unless login? -%>
+  <%= javascript_include_tag 'refinery/core' if login? -%>
 
-  <% if request.env['HTTP_USER_AGENT'] =~ /MSIE/ %>
-    <%= "<!--[if lt IE 8]>#{stylesheet_link_tag 'refinery/ie-less-than-8'}<![endif]-->".html_safe  %>
-    <%= "<!--[if IE 8]>#{stylesheet_link_tag 'refinery/ie-less-than-9'}<![endif]-->".html_safe  %>
-  <% end %>
+  <% if request.env['HTTP_USER_AGENT'] =~ /MSIE/ -%>
+    <%= "<!--[if lt IE 8]>#{stylesheet_link_tag 'refinery/ie-less-than-8'}<![endif]-->".html_safe -%>
+    <%= "<!--[if IE 8]>#{stylesheet_link_tag 'refinery/ie-less-than-9'}<![endif]-->".html_safe -%>
+  <% end -%>
 
-  <%= yield :head %>
+  <%= yield :head -%>
 </head>
