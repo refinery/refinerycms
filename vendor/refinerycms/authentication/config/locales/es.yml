@@ -1,91 +1,66 @@
 es:
-  authlogic:
-    error_messages:
-      login_blank: no puede estar en blanco
-      login_not_found: no es válido
-      login_invalid: debe utilizar sólo letras, números, espacios y .-_@
-      consecutive_failed_logins_limit_exceeded: El número de accesos no autorizados se ha superado, la cuenta ha sido cancelada.
-      email_invalid: no es una dirección de correo electrónico válida.
-      password_blank: no puede estar en blanco
-      password_invalid: no es válido
-      not_active: Su cuenta está desactivada
-      not_confirmed: Su cuenta no está confirmada
-      not_approved: Su cuenta no ha sido aprobada
-      no_authentication_details: Debe introducir sus datos de identificación.
-    models:
-      user_session: Sesión de usuario
-    attributes:
-      user_session:
-        login: Login
-        email: Email
-        password: Contraseña
-        remember_me: Recordarme
-        incorrect: "Lo sentimos, su %{login_field} o la contraseña son correctos."
   plugins:
     refinery_users:
       title: Usuarios
   admin:
     users:
+      delete: Borrar a este usuario para siempre
+      edit: Editar este usuario
       update:
-        cannot_remove_user_plugin_from_current_user: "No se puede eliminar el plugin 'Users' desde la cuenta actual"
+        cannot_remove_user_plugin_from_current_user: No puedes eliminar el plugin 'Usuarios' para el usuario actual.
       form:
-        login: Nombre de usuario
-        email: Dirección de email
-        password: Contraseña
-        password_confirmation: Confirmar contraseña
-        plugin_access: Plugins habilitados
-        blank_password_keeps_current: Si deja el campo de la contraseña en blanco se mantendrá la contraseña que existiera anteriormente
+        blank_password_keeps_current: Dejar la contraseña en blanco mantendrá la actual
+        enable_all: permitir todo
       index:
-        create_new_user: Crear usuario nuevo
-        no_users_yet:  No se ha creado ningún usuario todavía. Pulse en "Crear usuario nuevo" para añadir el primer usuario
+        create_new_user: Crear nuevo usuario
+        no_users_yet:  Aún no hay usuarios. Haz click en "Crear nuevo usuario" para crear el primer usuario.
       user:
-        confirm_delete_message: "¿Seguro que quiere eliminar el usuario '%{who}'?"
-        confirm_delete_title: Borrar este usuario permanentemente
-        edit_user: Editar usuario
-        email_user: Enviar email a este usuario
-        preview: (%{who}) created %{created_at}
+        email_user: Enviar un email a este usuario
+        preview: (%{who}) creado %{created_at}
   sessions:
-    login_successful: Ha iniciado sesión correctamente.
-    login_failed: El password o el nombre de usuario es incorrecto.
-    logged_out: La sesión ha sido cerrada.
+    login_successful: Identificado correctamente
+    login_failed: Lo siento, tu nombre o contraseña es incorrecto.
     new:
-      login: Nombre usuario
-      log_in: Iniciar sesión
-      password: Contraseña
-      remember_me: Recordarme
-      cancel_log_in: Cancelar
-      or: o
+      hello_please_sign_in: Hola! Por favor, identifícate.
+      sign_in: Entrar
       forgot_password: He olvidado mi contraseña
-      hello_please_sign_in: Hola! Por favor, iniciar sesión
-      sign_in: Iniciar sesión
   users:
-    setup_website_name: "Lo primero es proporcionar un nombre para el sitio web.<br/><a href='%{link}' name='%{title}'>Pulse aquí</a> editar el nombre del sitio web"
-    signup_disabled: El registro de usuario ha sido deshabilitado.
+    setup_website_name: Para empezar dale un nombre a tu web. Desde <a href='%{link}' name='%{title}'>aquí</a> puedes editar el nombre de tu web
     new:
-      fill_form: Rellene el siguiente formulario con su información de usuario para comenzar.
-      sign_up: Registrarse
-      login: Nombre de usuario
-      email: Correo electrónico
-      password: Contraseña
-      password_confirmation: Confirmar contraseña
+      fill_form: Rellena los detalles siguientes para poder comenzar.
+      sign_up: Registrarme
     create:
       welcome: Bienvenido a Refinery, %{who}
-      signup_complete: "¡Registro correcto!"
     forgot:
-      email_address: Correo electrónico
-      enter_email_address: Por favor, introduzca la dirección de correo electrónico para su cuenta.
-      reset_password: Perdí mi contraseña
-      blank_email: Usted no ha ingresado una dirección de correo electrónico.
-      email_not_associated_with_account: "Lo sentimos, '%{email}' no está asociado a ninguna cuenta. <br/>¿Está seguro que escribió la dirección de correo electrónico correcta?"
-      email_reset_sent: Un correo electrónico ha sido enviado con un enlace para restablecer su contraseña.
+      email_address: Dirección e-mail
+      enter_email_address: Indica el e-mail de tu cuenta.
+      reset_password: Resetear contraseña
+      blank_email: No has indicado un e-mail válido.
+      email_not_associated_with_account: Lo siento, el e-mail '%{email}' no está asociado a ninguna cuenta.<br />¿Seguro que lo has tecleado correctamente?
+      email_reset_sent: Te hemos enviado un e-mail con un enlace para cambiar tu contraseña.
     reset:
-      code_invalid: "Lo sentimos, pero el código restablecer vencida o no es válida. Si tiene problemas intente copiar y pegar la dirección de su correo electrónico en el navegador o reiniciando el proceso de restablecimiento de contraseña."
-      successful: "De restablecimiento de contraseña con éxito por %{email}"
+      code_invalid: Lo sentimos, pero este código para cambiar la contraseña ha expirado o no es válido. Si tienes problemas intenta copiar y pegar la dirección desde el e-mail que te enviamos o comienza de nuevo el proceso para cambiar la contraseña.
+      successful: Contraseña cambiada correctamente para '%{email}'
+      pick_new_password_for: Elige una nueva contraseña para %{email}
+      reset_password: Cambiar contraseña
+      password_blank: Indica la misma contraseña en ambos campos.
   user_mailer:
-    please_activate: Por favor, active la nueva cuenta.
-    activated: "!Su cuenta ha sido activada!"
-    activated_email: "%{who}, su cuenta ha sido activada. Puede empezar a añadir sus plugins:"
-    account_created: Su cuenta ha sido creada.
-    user_name: Nombre de usuario %{name}
-    password: Contraseña %{password}
-    visit_url: "Visite esta dirección para activar su cuenta:"
+    link_to_reset_your_password: Enlace para cambiar tu contraseña
+  authlogic:
+    error_messages:
+      login_blank: no puede dejarse en blanco
+      login_invalid: sólo se permiten letras, números, espacios y los caracteres .-_@
+      email_invalid: no parece un e-mail válido.
+      no_authentication_details: No nos has dado datos para identificarte.
+    models:
+      user_session: UserSession
+    attributes:
+      user_session:
+        login: Usuario
+        email: E-mail
+        password: Contraseña
+        remember_me: Recordarme
+        incorrect: Lo sentimos, tu %{login_field} o contraseña son incorrectos.
+  activerecord:
+    models:
+      user: usuario
