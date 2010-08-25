@@ -1,3 +1,12 @@
+require 'core/lib/core'
+require 'authentication/lib/authentication'
+require 'dashboard/lib/dashboard'
+require 'images/lib/images'
+require 'inquiries/lib/inquiries'
+require 'pages/lib/pages'
+require 'resources/lib/resources'
+require 'settings/lib/settings'
+
 module Refinery
   class << self
     attr_accessor :is_a_gem, :root, :s3_backend, :base_cache_key
@@ -6,7 +15,7 @@ module Refinery
     end
 
     def root
-      @root ||= Pathname.new(File.dirname(__FILE__).split("vendor").first.to_s)
+      @root ||= Pathname.new(File.expand_path(__FILE__))
     end
 
     def s3_backend

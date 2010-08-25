@@ -32,22 +32,14 @@ gem 'sqlite3-ruby', :require => 'sqlite3'
 # REFINERY CMS ================================================================
 
 # Specify the Engines to use:
-path 'vendor/refinerycms' do
-  gem 'refinerycms-core',           :require => 'core'
-  gem 'refinerycms-authentication', :require => 'authentication'
-  gem 'refinerycms-dashboard',      :require => 'dashboard'
-  gem 'refinerycms-inquiries',      :require => 'inquiries'
-  gem 'refinerycms-images',         :require => 'images'
-  gem 'refinerycms-pages',          :require => 'pages'
-  gem 'refinerycms-resources',      :require => 'resources'
-  gem 'refinerycms-settings',       :require => 'settings'
-end
+gem 'refinerycms', :path => '.'
 
 # Specify additional Refinery CMS Engines here:
 # gem 'refinerycms-news',       '~> 0.9.8', :require => 'news'
 # gem 'refinerycms-portfolio',  '~> 0.9.7', :require => 'portfolio'
 
 # Add i18n support
+
 gem 'refinerycms-i18n', :git => 'git://github.com/resolve/refinerycms-i18n.git',
                         :branch => 'master',
                         :require => 'refinery/i18n'
