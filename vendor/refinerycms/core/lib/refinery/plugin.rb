@@ -31,8 +31,8 @@ module Refinery
 
     def initialize
       # save the pathname to where this plugin is.
-      file_path = (self.directory.present? ? self.directory : caller(3).first.split('/rails').first rescue nil)
-      self.pathname = (Pathname.new(file_path.split(File::SEPARATOR)[0..-3].join(File::SEPARATOR)) unless file_path.nil?)
+      depth = RUBY_VERSION == "1.9.2" ? -4 : -3
+      self.pathname = Pathname.new(caller(3).first.split(File::SEPARATOR)[0..depth].join(File::SEPARATOR))
       Refinery::Plugins.registered << self # add me to the collection of registered plugins
     end
 
