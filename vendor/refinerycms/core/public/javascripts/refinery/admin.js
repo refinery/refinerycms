@@ -1,7 +1,6 @@
 var shiftHeld = false;
 $(document).ready(function(){
   init_interface();
-  init_flash_messages();
   init_sortable_menu();
   init_submit_continue();
   init_modal_dialogs();
@@ -82,15 +81,6 @@ init_interface = function() {
     $('#other_locales').animate({opacity: 'toggle', height: 'toggle'}, 250);
     e.preventDefault();
   });
-}
-
-init_flash_messages = function(){
-  $('#flash').fadeIn(550);
-  $('#flash_close').click(function(e) {
-     $('#flash').fadeOut({duration: 330});
-     e.preventDefault();
-  });
-  $('#flash.flash_message').prependTo('#records');
 }
 
 init_modal_dialogs = function(){
