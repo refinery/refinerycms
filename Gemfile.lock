@@ -20,6 +20,13 @@ GIT
   specs:
     refinerycms-i18n (0.9.8)
 
+GIT
+  remote: git://github.com/resolve/refinerycms-inquiries.git
+  revision: f6564a2
+  specs:
+    refinerycms-inquiries (0.9.8)
+      refinerycms-core (~> 0.9.8)
+
 PATH
   remote: .
   specs:
@@ -33,8 +40,13 @@ PATH
       rack-cache
       rails (~> 3.0.0.rc2)
       rmagick
-      truncate_html (= 0.4)
-      will_paginate (>= 3.0.pre2)
+    refinerycms-pages (0.9.8)
+      refinerycms-core (~> 0.9.8)
+    refinerycms-resources (0.9.8)
+      dragonfly
+      refinerycms-core (~> 0.9.8)
+    refinerycms-settings (0.9.8)
+      refinerycms-core (~> 0.9.8)
 
 GEM
   remote: http://rubygems.org/
@@ -196,6 +208,11 @@ DEPENDENCIES
   rails (= 3.0.0.rc2)
   refinerycms!
   refinerycms-i18n!
+  refinerycms-images!
+  refinerycms-inquiries (~> 0.9.8)!
+  refinerycms-pages!
+  refinerycms-resources!
+  refinerycms-settings!
   rmagick (~> 2.12.0)
   routing-filter
   rspec (~> 2.0.0.beta.19)
