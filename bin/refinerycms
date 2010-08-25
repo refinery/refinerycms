@@ -18,7 +18,7 @@ require 'optparse'
 require 'child_labor' if RUBY_PLATFORM !~ /mswin3?2?/
 
 # Load refinerycms
-require Pathname.new(File.expand_path(File.dirname(__FILE__) << "/..")).join('vendor', 'refinerycms', 'refinerycms.rb')
+require Pathname.new(File.expand_path(File.dirname(__FILE__) << "/..")).join('vendor', 'refinerycms', 'refinery.rb')
 
 module Refinery
   class AppGenerator
@@ -110,6 +110,7 @@ module Refinery
 
     def generate!
       # Generate a rails application
+      # TODO: Check output to see whether or not it worked
       rails_command = "rails new #{@app_path}"
       rails_command << " --database #{@options[:database]}"
       rails_command << " --force" if @options[:force]
@@ -127,16 +128,13 @@ module Refinery
         FileUtils::cp_r Refinery.root.join(file), @app_path.join(file), :verbose => false
       end
 
-      # Remove public/index.html
-      if (rails_index_placeholder = @app_path.join('public', 'index.html')).exist?
-        FileUtils::rm rails_index_placeholder.to_s
-      end
-
-      if (app_layout = @app_path.join('app', 'views', 'layouts', 'application.html.erb')).exist?
-        FileUtils::rm app_layout.to_s
+      # Remove default application layout and public/index.html
+      %w(app/views/layouts/application.html.erb public/index.html).each do |remove|
+	      FileUtils::rm @app_path.join(remove) if @app_path.join(remove).exist?
       end
 
       # Add refinery gems to the Gemfile
+      # TODO: Allow adding extra gems in the generator
       gemfile_contents = File.read(Refinery.root.join('Gemfile'))
       refinery_gems = gemfile_contents.match(/# REFINERY CMS =+.*# END REFINERY CMS =+/m)[0]
       File.open(@app_path.join('Gemfile'), "a") do |f|
@@ -158,8 +156,7 @@ module Refinery
 
       # Remove development specific stuff from the .gitinore file
       find_and_replace('.gitignore',
-                       /# REFINERY CMS DEVELOPMENT =+.*# END REFINERY CMS DEVELOPMENT =+/m,
-                       '')
+                       /# REFINERY CMS DEVELOPMENT =+.*# END REFINERY CMS DEVELOPMENT =+/m, '')
     end
 
     def output!
@@ -167,6 +164,7 @@ module Refinery
       puts "Refinery successfully installed in '#{@app_path}'!\n\n"
 
       # Automate
+      # TODO: Check exit codes to see whether or not these worked
       puts "Installing gem requirements using bundler..\n"
       run_command("bundle install")
 
