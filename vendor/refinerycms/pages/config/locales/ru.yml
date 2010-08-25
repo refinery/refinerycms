@@ -1,0 +1,97 @@
+ru:
+  plugins:
+    refinery_pages:
+      title: Страницы
+  admin:
+    pages_dialogs:
+      not_allowed: У вас нет доступа к этой функции
+      page_link:
+        link_to_this_page: Ссылка на эту страницу
+      link_to:
+        your_page:
+          tab_name: Ваша страница
+        web_address:
+          tab_name: Сайт
+          location: Адрес
+          new_window: Новое окно
+          new_window_label: Открывать ссылку в новом окне
+          not_sure: "Не уверены, что ввести в поле выше?"
+          step1: "Найдите страницу, на которую хотите поставить ссылку."
+          step2: "Скопируйте адрес из адресной строки браузера и вставьте его в поле выше"
+        email_address:
+          tab_name: Эл. почта
+          subject_line_optional: Тема (необязательно)
+          body_optional: Сообщение (необязательно)
+          not_sure: "Не уверены, что ввести в поля выше?"
+          step1: "Впишите или скопируйте и вставьте (например, из вашей адресной книги) адрес электронной почты, на который хотите поставить ссылку, в поле <strong>&laquo;Эл. почта&raquo;</strong>"
+          step2: "Используйте поле <strong>&laquo;Тема&raquo;</strong>, если хотите, чтобы в сообщении была автоматически заполнена тема письма"
+          step3: "Используйте поле <strong>&laquo;Сообщение&raquo;</strong>, если хотите, чтобы в сообщении была автоматически заполнено содержание письма"
+        your_resource:
+          tab_name: Ваш файл
+          link_to_this_resource: Ссылка на этот файл
+    pages:
+      page:
+        view_live: Показать эту страницу вживую <br/><em>(откроется в новом окне)</em>
+        edit_this_page: Редактировать эту страницу
+        confirm_delete_page_title: Удалить эту страницу
+        confirm_delete_page_message: "Вы действительно хотите удалить страницу '{{title}}'?"
+        hidden: скрытая
+        draft: черновик
+      form_new_page_parts:
+        title: Заголовок
+      form_advanced_options:
+        toggle_advanced_options: Click to access meta tag settings and menu options
+        parent_page: Родительская страница
+        title: Заголовок
+        create_content_section: Create content section
+        delete_content_section: Delete content section
+        advanced_options: Дополнительная настройка
+        explain_page_different_title: "Если вы хотите, чтобы страница имела заголовок, отличный от того, что в меню или в заголовке браузера, введите его здесь."
+        parent_id_title: Parent
+        custom_title: Другой заголовок на странице
+        title_type: "Тип:"
+        title_types:
+          none: Нет
+          text: Текст
+          image: Изображение
+        custom_url: Custom URL
+        custom_url_explanation: "Enter a URL if this page links to an external site or to a pre-existing resource e.g. a contact page. <br/> Note: This URL must point to a location that exists; a new one will not be created."
+        draft: Черновик
+        show_in_menu_title: Показ в меню
+        show_in_menu_description: Отображать эту страницу в меню сайта
+        show_in_menu_help: "Снимите отметку, если вы хотите убрать страницу из меню вашего сайта."
+        draft: Черновик
+        save_as_draft: Сохранить как черновик
+        save: Сохранить
+        cancel: Отмена
+        skip_to_first_child: Пропуск страницы верхнего уровня
+        skip_to_first_child_label: Перенаправлять посетителей на первую страницу нижнего уровня
+        skip_to_first_child_help: "Эта опция делает страницу связаннной с первой подстраницей. Это может быть полезно при группировке страниц."
+        link_url: Переадресовывать на другой сайт или страницу
+        link_url_help: "Если вы хотите, чтобы при переходе на эту страницу пользователь переадресовывался на другой сайт или страницу, введите адрес, например, http://google.com, иначе оставьте поле пустым"
+        parent_page_help: "Вы можете поместить эту страницу под другую, выбрав ее в списке. Если вы хотите, чтобы эта страница была самого верхнего уровня, оставьте выбранное пустым"
+        custom_title_help: "Если вы хотите, чтобы страница имела заголовок, отличный от того, что в меню или в заголовке браузера, выберите &laquo;Текст&raquo; и введите его здесь."
+      form_advanced_options_seo:
+        seo: Поисковая оптимизация
+        seo_override_title: Заголовок браузера
+        seo_override_title_help: "Введите заголовок из 5&ndash;10 слов, которые описывают текст на этой странице."
+        meta_keywords_title: Ключевые слова
+        meta_keywords_help: "Введите 5&ndash;10 ключевых слов, которые относятся к этой странице, разделяя запятой."
+        meta_description_title: Описание
+        meta_description_help: "Введите два-три коротких предложения, описывающих страницу."
+        js:
+          content_section:
+            create: Create Content Section
+            already_exists: "A content section with that title already exists, please choose another."
+            title_empty: "You have not entered a title for the content section, please enter one."
+            confirm_delete: "This will remove the content section {{section_name}} when the page is saved and erase all content that has been entered into it, Are you sure?"
+      index:
+        create_new_page: Создать новую страницу
+        reorder_pages: Изменить порядок страниц
+        reorder_pages_done: Сохранить такой порядок страниц
+        sorry_no_results: Sorry! There are no results found.
+        no_pages_yet: There are no pages yet.  Click "Create New Page" to add your first page.
+  activerecord:
+    attributes:
+      page:
+        skip_to_first_child: "Skip to first child?"

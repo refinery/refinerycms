@@ -1,0 +1,42 @@
+da:
+  plugins:
+    refinery_images:
+      title: Billeder
+  no_file_chosen: Du skal vælge et billede, der skal uploades
+  image_should_be_smaller_than_max_image_size: Filer må højest være på %{max_image_size}
+  image_must_be_these_formats: Dit billede skal være enten JPG, PNG eller GIF format
+  admin:
+    images:
+      image:
+        delete:
+          message: Er du sikker på du vil slette billedet '%{title}'? 
+          title: Slet billede
+      form:
+        image: Billede
+        use_current_image: Behold nuværende billede
+        or: eller
+        replace_image: " erstat med dette..."
+        current_image: Nuværende billede
+        maximum_image_size: "The maximum image size is %{megabytes} megabytes."
+      index:
+        create_new_image: Upload et billede
+        no_images_yet: Der er ingen billeder endnu. Klik "Upload et billede" for at oprette det første.
+        view:
+          switch_to: Skift til %{view_name}visning
+          list: liste
+          grid: gitter
+        search:
+          results_for: Søgeresultat for '%{query}'
+      grid_view:
+        edit: Redigér billede
+        view_live: Vis billede<br/><em>(åbner i nyt vindue)</em>
+      list_view_image:
+        edit_this_image: Redigér billede
+      insert:
+        existing_image: Eksisterende billede
+        new_image: Nyt billede
+        previous: Forrige
+        next: Næste
+        submit_insert: Indsæt
+        or: eller
+        cancel: Annullér

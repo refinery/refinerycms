@@ -29,6 +29,7 @@ index/**/*
 *.tmproj
 *.autobackupbyrefinery.*
 /refinerycms-*.gem
+.autotest
 
 # Mac
 .DS_Store
@@ -41,7 +42,6 @@ nbproject
 
 # Redcar
 .redcar
-tags
 
 # Rubinius
 *.rbc
@@ -59,9 +59,10 @@ tags
 # Capybara Bug
 capybara-*html
 
-#===REMOVED DURING REFINERY GEM INSTALL===
-# Development Specific
+# REFINERY CMS DEVELOPMENT ====================================================
+
 config/database.yml
 config/amazon_s3.yml
 config/rackspace_cloudfiles.yml
-#===END OF REMOVED DURING REFINERY GEM INSTALL===
+
+# END REFINERY CMS DEVELOPMENT =================================================
