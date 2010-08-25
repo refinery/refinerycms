@@ -1,16 +1,3 @@
-begin
-  require 'core/lib/core'
-  require 'authentication/lib/authentication'
-  require 'dashboard/lib/dashboard'
-  require 'images/lib/images'
-  require 'inquiries/lib/inquiries'
-  require 'pages/lib/pages'
-  require 'resources/lib/resources'
-  require 'settings/lib/settings'
-rescue LoadError
-  #puts "Running outside of rails..."
-end
-
 module Refinery
   class << self
     attr_accessor :is_a_gem, :root, :s3_backend, :base_cache_key
