@@ -120,7 +120,7 @@ hr {
 .fieldWithErrors iframe, .fieldWithErrors .wym_box {
   border-color: red !important;
 }
-#message, #flash {
+#message, .flash {
   padding: 8px 8px 8px 30px;
   margin-bottom: 15px;
   position: relative;
@@ -138,39 +138,39 @@ hr {
   color: #A00027;
   background: 7px 7px no-repeat url('/images/refinery/icons/cancel.png') #FFB1B1;
 }
-#flash.flash_notice #flash_close, #flash.flash_error #flash_close {
+.flash.flash_notice #flash_close, .flash.flash_error #flash_close {
   text-transform: lowercase;
 }
-#flash.flash_message {
+.flash.flash_message {
   background: #E0F5E0;
   padding: 9px;
   position: relative;
   margin-bottom: 32px;
 }
-#flash.flash_message h2 {
+.flash.flash_message h2 {
   margin-top: 12px;
 }
 .flash_message, .flash_message * {
   color: #262719;
   font-size: 14px;
 }
-#flash a, #flash a:hover {
+.flash a, .flash a:hover {
   color: #e20003;
   border-bottom-color: #e20003;
 }
-#flash.flash_error a, #flash.flash_error a:hover {
+.flash.flash_error a, .flash.flash_error a:hover {
   display: none;
 }
-noscript #flash.flash_error a, noscript #flash.flash_error a:hover {
+noscript .flash.flash_error a, noscript .flash.flash_error a:hover {
   display: inline;
   font-weight: bold;
 }
-#flash a#flash_close {
+.flash a#flash_close {
   position: absolute;
   right: 9px;
   top: 7px;
 }
-#flash.flash_message a#flash_close {
+.flash.flash_message a#flash_close {
   top: 21px;
 }
 #content a {
