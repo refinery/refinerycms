@@ -1,27 +1,27 @@
 ru:
   plugins:
     refinery_dashboard:
-      title: Dashboard
+      title: Сводка
   admin:
     dashboard:
       index:
-        quick_tasks: Quick tasks
-        add_a_new_page: Add a new page
-        update_a_page: Update a page
-        upload_a_image: Upload an image
-        upload_a_file: Upload a file
-        change_language: Change Language
-        see_home_page: See home page
+        quick_tasks: Быстрые задачи
+        add_a_new_page: Добавить новую страницу
+        update_a_page: Изменить страницу
+        upload_a_image: Загрузить изображение
+        upload_a_file: Загрузить файл
+        change_language: Сменить язык
+        see_home_page: Просмотреть домашнюю страницу
       recent_activity:
-        latest_activity: Latest activity
-        see: "See '%{what}'"
-        latest_activity_message: "%{what} %{kind} was %{action}"
+        latest_activity: Последние действия
+        see: "См. '{{what}}'"
+        latest_activity_message: "{{what}} {{kind}} {{action}}"
       recent_inquiries:
-        latest_inquiries: Latest inquiries
+        latest_inquiries: Последние запросы
   updated:
-    'with_article "the"': updated
+    'with_article "the"': изменен(а)
   created:
-    'with_article "the"': created
+    'with_article "the"': создан(а)
 
-  ago: "%{time} ago"
-  see: See
+  ago: "{{time}} назад"
+  see: См.
