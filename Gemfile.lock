@@ -22,10 +22,9 @@ GIT
 
 GIT
   remote: git://github.com/resolve/refinerycms-inquiries.git
-  revision: f6564a2
+  revision: 8bebcc0
   specs:
     refinerycms-inquiries (0.9.8)
-      refinerycms-core (~> 0.9.8)
 
 PATH
   remote: .
@@ -40,13 +39,8 @@ PATH
       rack-cache
       rails (~> 3.0.0.rc2)
       rmagick
-    refinerycms-pages (0.9.8)
-      refinerycms-core (~> 0.9.8)
-    refinerycms-resources (0.9.8)
-      dragonfly
-      refinerycms-core (~> 0.9.8)
-    refinerycms-settings (0.9.8)
-      refinerycms-core (~> 0.9.8)
+      truncate_html (= 0.4)
+      will_paginate (>= 3.0.pre2)
 
 GEM
   remote: http://rubygems.org/
@@ -98,7 +92,7 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       selenium-webdriver (>= 0.0.3)
-    childlabor (0.0.2)
+    childlabor (0.0.3)
     configuration (1.1.0)
     cucumber (0.8.5)
       builder (~> 2.1.2)
@@ -156,20 +150,19 @@ GEM
     rmagick (2.12.2)
     routing-filter (0.1.6)
       actionpack
-    rspec (2.0.0.beta.19)
-      rspec-core (= 2.0.0.beta.19)
-      rspec-expectations (= 2.0.0.beta.19)
-      rspec-mocks (= 2.0.0.beta.19)
-    rspec-core (2.0.0.beta.19)
-    rspec-expectations (2.0.0.beta.19)
+    rspec (2.0.0.beta.20)
+      rspec-core (= 2.0.0.beta.20)
+      rspec-expectations (= 2.0.0.beta.20)
+      rspec-mocks (= 2.0.0.beta.20)
+    rspec-core (2.0.0.beta.20)
+    rspec-expectations (2.0.0.beta.20)
       diff-lcs (>= 1.1.2)
-    rspec-mocks (2.0.0.beta.19)
-    rspec-rails (2.0.0.beta.19)
-      rspec (= 2.0.0.beta.19)
-      webrat (>= 0.7.2.beta.1)
+    rspec-mocks (2.0.0.beta.20)
+    rspec-rails (2.0.0.beta.20)
+      rspec (= 2.0.0.beta.20)
     ruby-prof (0.9.1)
     rubyzip (0.9.4)
-    selenium-webdriver (0.0.27)
+    selenium-webdriver (0.0.28)
       ffi (>= 0.6.1)
       json_pure
       rubyzip
@@ -182,10 +175,6 @@ GEM
     trollop (1.16.2)
     truncate_html (0.4.0)
     tzinfo (0.3.23)
-    webrat (0.7.2.beta.1)
-      nokogiri (>= 1.2.0)
-      rack (>= 1.0)
-      rack-test (>= 0.5.3)
     will_paginate (3.0.pre2)
 
 PLATFORMS
@@ -208,18 +197,14 @@ DEPENDENCIES
   rails (= 3.0.0.rc2)
   refinerycms!
   refinerycms-i18n!
-  refinerycms-images!
   refinerycms-inquiries (~> 0.9.8)!
-  refinerycms-pages!
-  refinerycms-resources!
-  refinerycms-settings!
   rmagick (~> 2.12.0)
   routing-filter
-  rspec (~> 2.0.0.beta.19)
-  rspec-core (~> 2.0.0.beta.19)
-  rspec-expectations (~> 2.0.0.beta.19)
-  rspec-mocks (~> 2.0.0.beta.19)
-  rspec-rails (~> 2.0.0.beta.19)
+  rspec (~> 2.0.0.beta.20)
+  rspec-core (~> 2.0.0.beta.20)
+  rspec-expectations (~> 2.0.0.beta.20)
+  rspec-mocks (~> 2.0.0.beta.20)
+  rspec-rails (~> 2.0.0.beta.20)
   ruby-prof
   spork
   sqlite3-ruby

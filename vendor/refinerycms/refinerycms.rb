@@ -1,4 +1,13 @@
+require 'core/lib/core'
+require 'dashboard/lib/dashboard'
+require 'images/lib/images'
+require 'pages/lib/pages'
+require 'resources/lib/resources'
+require 'settings/lib/settings'
+require 'authentication/lib/authentication'
+
 module Refinery
+
   class << self
     attr_accessor :is_a_gem, :root, :s3_backend, :base_cache_key
     def is_a_gem
@@ -23,17 +32,17 @@ module Refinery
   end
 
   class Version
-    class << self
-      attr_reader :major, :minor, :tiny, :build
-    end
-
     @major = 0
     @minor = 9
     @tiny  = 8
     @build = '0.rc1.pre'
 
-    def self.to_s
-      [@major, @minor, @tiny, @build].compact.join('.')
+    class << self
+      attr_reader :major, :minor, :tiny, :build
+
+      def to_s
+        [@major, @minor, @tiny, @build].compact.join('.')
+      end
     end
   end
 end
