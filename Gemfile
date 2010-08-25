@@ -33,17 +33,7 @@ gem 'sqlite3-ruby', :require => 'sqlite3'
 
 # Specify the Engines to use:
 
-#gem 'refinerycms', :path => '.', :require => 'refinery/defaults'
-
-path 'vendor/refinerycms' do
-  gem 'refinerycms-core',           :require => 'core'
-  gem 'refinerycms-authentication', :require => 'authentication'
-  gem 'refinerycms-dashboard',      :require => 'dashboard'
-  gem 'refinerycms-images',         :require => 'images'
-  gem 'refinerycms-pages',          :require => 'pages'
-  gem 'refinerycms-resources',      :require => 'resources'
-  gem 'refinerycms-settings',       :require => 'settings'
-end
+gem 'refinerycms', :path => '.', :require => 'refinerycms'
 
 # Specify additional Refinery CMS Engines here:
 gem 'refinerycms-inquiries',    '~> 0.9.8',
@@ -77,7 +67,7 @@ gem 'dragonfly',        :git => 'git://github.com/parndt/dragonfly.git',
 
 group :test do
   # RSpec
-  gem 'rspec',              (RSPEC_VERSION = '~> 2.0.0.beta.19')
+  gem 'rspec',              (RSPEC_VERSION = '~> 2.0.0.beta.20')
   gem 'rspec-core',         RSPEC_VERSION, :require => 'rspec/core'
   gem 'rspec-expectations', RSPEC_VERSION, :require => 'rspec/expectations'
   gem 'rspec-mocks',        RSPEC_VERSION, :require => 'rspec/mocks'
