@@ -45,21 +45,18 @@ gem 'refinerycms-inquiries',    '~> 0.9.8',
 # Add i18n support
 
 gem 'refinerycms-i18n', :git => 'git://github.com/resolve/refinerycms-i18n.git',
-                        :branch => 'master',
                         :require => 'refinery/i18n'
 gem 'routing-filter'
 
 # Add acts_as_tree support
-gem 'acts_as_tree',     :git => 'git://github.com/parndt/acts_as_tree.git',
-                        :branch => 'master'
+gem 'acts_as_tree',     :git => 'git://github.com/parndt/acts_as_tree.git'
 
 # Specify a version of RMagick that works in your environment:
 gem 'rmagick',          '~> 2.12.0', :require => false
 
 # FIXME: These requirements are listed here temporarily pending a release
 gem 'dragonfly',        :git => 'git://github.com/parndt/dragonfly.git',
-                        :branch => 'refactor_job',
-                        :require => 'dragonfly'
+                        :branch => 'refactor_job'
 
 # END REFINERY CMS ============================================================
 
@@ -81,7 +78,7 @@ group :test do
   gem 'launchy'
   gem 'gherkin'
   # FIXME: JSON constant constants warnings
-  gem 'json_pure',          '= 1.4.6', :require => 'json/pure'
+  gem 'json_pure',          '~> 1.4.6', :require => 'json/pure'
   # Factory Girl
   gem 'factory_girl'
   gem 'ruby-prof'
