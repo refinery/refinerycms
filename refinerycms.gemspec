@@ -10,18 +10,18 @@ Gem::Specification.new do |s|
   s.require_paths     = %w(vendor/refinerycms)
   s.executables       = %w(refinerycms)
 
-  s.add_dependency    'rails',      '~> 3.0.0.rc2'
-  s.add_dependency    'bundler',    '~> 1.0.0'
+  s.add_dependency    'rails',            '~> 3.0.0.rc2'
+  s.add_dependency    'bundler',          '~> 1.0.0'
   s.add_dependency    'childlabor'
 
-  s.add_dependency('acts_as_indexed', '= 0.6.5')
-  s.add_dependency('friendly_id',     '~> 3.1.3')
-  s.add_dependency('truncate_html',   '= 0.4')
-  s.add_dependency('will_paginate',   '>= 3.0.pre2')
-  s.add_dependency('authlogic',         '~> 2.1.6')
-  s.add_dependency('rmagick')
-  s.add_dependency('rack-cache')
-  s.add_dependency('dragonfly')
+  s.add_dependency    'acts_as_indexed',  '= 0.6.5'
+  s.add_dependency    'friendly_id',      '~> 3.1.3'
+  s.add_dependency    'truncate_html',    '= 0.4'
+  s.add_dependency    'will_paginate',    '>= 3.0.pre2'
+  s.add_dependency    'authlogic',        '~> 2.1.6'
+  s.add_dependency    'rmagick'
+  s.add_dependency    'rack-cache'
+  s.add_dependency    'dragonfly'
 
   s.files             = [
     '.gitignore',
