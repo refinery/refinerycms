@@ -37,7 +37,7 @@ Gem::Specification.new do |s|
   s.homepage          = %q{http://refinerycms.com}
   s.rubyforge_project = %q{refinerycms}
   s.authors           = ['Resolve Digital', 'David Jones', 'Philip Arndt']
-  s.require_paths     = %w(vendor/refinerycms)
+  s.require_paths     = %w(lib vendor/refinerycms)
   s.executables       = %w(#{Dir.glob('bin/*').map{|d| d.gsub('bin/','')}.join(' ')})
 
   s.add_dependency    'rails',            '~> 3.0.0.rc2'
