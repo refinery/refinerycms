@@ -4,10 +4,13 @@ sl:
       title: Uporabniki
   admin:
     users:
+      delete: Odstrani uporabnika
+      edit: Uredi uporabnika
       update:
         cannot_remove_user_plugin_from_current_user: "Ne morete odstraniti vstavka 'Uporabniki' iz trenutno prijavljenega računa."
       form:
         blank_password_keeps_current: V kolikor ne boste vnesli gesla bo ostalo obstoječe
+        enable_all: omogoči vse
       index:
         create_new_user: Dodaj Novega Uporabnika
         no_users_yet:  Tretnutno ni nobenega uporabnika. Kliknite "Dodaj Novega Uporabnika" da boste dodali prvega uporabnika.
@@ -40,12 +43,20 @@ sl:
       welcome: Pzdravljeni v Refinery, %{who}
       signup_complete: Registracija je končana!
     forgot:
+      email_address: Email Naslov
+      enter_email_address: Prosimo vnesite email naslov za vaš račun.
+      reset_password: Ponastavi geslo
       blank_email: Niste vnesli email naslova.
       email_not_associated_with_account: "Oprostite, '%{email}' ni povezan z nobenim računom.<br/>Ali ste prepričani, a ste vnesli pravilen naslov?"
       email_reset_sent: Poslali smo vam email sporočilo s povezavo za ponastavitev gesla.
     reset:
+
+    reset:
       code_invalid: "Se opravičujemo, vendar je ponastavitvena koda že potekla ali pa je neveljvna. V kolikor imate težave poizkusite kopirati in prilepiti URL naslov iz email sporočila v vaš brskalnik ali ponovite proces ponastavitve gesla."
       successful: "Ponastavitev gesla za %{email} je bila uspešna."
+      pick_new_password_for: Izberite novo geslo za %{email}
+      reset_password: Ponastavi geslo
+      password_blank: Izpolnite polja z ujemajočim se geslom.
   user_mailer:
     please_activate: Prosimo aktivirajte vaš nov račun
     activated: Vaš račun je bil aktiviran!

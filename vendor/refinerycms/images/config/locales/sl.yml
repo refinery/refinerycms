@@ -2,20 +2,18 @@ sl:
   plugins:
     refinery_images:
       title: Slike
-  no_file_chosen: Izbrati morate datoteko, ki jo želite prenesti
-  image_should_be_smaller_than_max_image_size: Velikost datoteka mora biti manjša od %{max_image_size}
+  image_specify_for_upload: Izbrati morate datoteko, ki jo želite naložiti
+  image_should_be_smaller_than_max_image_size: Velikost slike mora biti manjša od %{max_image_size}
   image_must_be_these_formats: Slika mora biti tipa JPG, PNG ali GIF
   admin:
     images:
-      image:
-        delete:
-          message: Ali ste prepričani da želite odstraniti '%{title}'?
-          title: Odstrani sliko
+      delete: Odstrani sliko
+      edit: Uredi sliko
       form:
         image: Slika
-        use_current_image: Uporabi trenutno sliko
+        use_current_image: Uporabi tretnutno sliko
         or: ali
-        replace_image: jo zamenjaj z ...
+        replace_image: " zamenjaj jo s tole..."
         current_image: Trenutna Slika
         maximum_image_size: "Največja dovoljena velikost slike je lahko %{megabytes} megabajtov."
       index:
@@ -25,18 +23,15 @@ sl:
           switch_to: Preklopi pogled v %{view_name}
           list: seznam
           grid: mrežo
-        search:
-          results_for: Iskalni rezultati za %{query}
       grid_view:
-        edit: Uredi sliko
         view_live: Poglej sliko <br/><em>Odpre se v novem oknu</em>
-      list_view_image:
-        edit_this_image: Uredi sliko
+      existing_image:
+        button_text: Vstavi
+        resize_image: Spremeni velikost slike?
+        size: Velikost
       insert:
-        existing_image: Obstoječa slika
+        existing_image: Obstoječa Slika
         new_image: Nova Slika
-        previous: Prejšna
-        next: Naslednja
-        submit_insert: Vstavi
-        or: ali
-        cancel: Prekliči
+  activerecord:
+    models:
+      image: slika
