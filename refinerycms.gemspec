@@ -13,7 +13,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency    'rails',            '~> 3.0.0.rc2'
   s.add_dependency    'bundler',          '~> 1.0.0'
-  s.add_dependency    'childlabor'
+  s.add_dependency    'childlabor',       '~> 0.0.2'
 
   s.add_dependency    'acts_as_indexed',  '= 0.6.5'
   s.add_dependency    'friendly_id',      '~> 3.1.3'

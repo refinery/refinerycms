@@ -33,7 +33,7 @@ gem 'sqlite3-ruby', :require => 'sqlite3'
 
 # Specify the Engines to use:
 
-gem 'refinerycms', :path => '.', :require => 'refinerycms'
+gem 'refinerycms', :path => '.'
 
 # Specify additional Refinery CMS Engines here:
 gem 'refinerycms-inquiries',    '~> 0.9.8',
