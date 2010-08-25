@@ -1,11 +1,15 @@
-require 'core/lib/core'
-require 'authentication/lib/authentication'
-require 'dashboard/lib/dashboard'
-require 'images/lib/images'
-require 'inquiries/lib/inquiries'
-require 'pages/lib/pages'
-require 'resources/lib/resources'
-require 'settings/lib/settings'
+begin
+  require 'core/lib/core'
+  require 'authentication/lib/authentication'
+  require 'dashboard/lib/dashboard'
+  require 'images/lib/images'
+  require 'inquiries/lib/inquiries'
+  require 'pages/lib/pages'
+  require 'resources/lib/resources'
+  require 'settings/lib/settings'
+rescue LoadError
+  #puts "Running outside of rails..."
+end
 
 module Refinery
   class << self
@@ -15,7 +19,7 @@ module Refinery
     end
 
     def root
-      @root ||= Pathname.new(File.expand_path(__FILE__))
+      @root ||= Pathname.new(File.expand_path(__FILE__).split('vendor').first.to_s)
     end
 
     def s3_backend

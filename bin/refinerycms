@@ -18,7 +18,7 @@ require 'optparse'
 require 'child_labor' if RUBY_PLATFORM !~ /mswin3?2?/
 
 # Load refinerycms
-require Pathname.new(File.expand_path(File.dirname(__FILE__) << "/..")).join('vendor', 'refinerycms', 'core', 'lib', 'refinery.rb')
+require Pathname.new(File.expand_path(File.dirname(__FILE__) << "/..")).join('vendor', 'refinerycms', 'refinerycms.rb')
 
 module Refinery
   class AppGenerator
@@ -143,10 +143,9 @@ module Refinery
         f.write "\n" + refinery_gems
       end
 
-      # Hack to make work on development computers
-      # TODO: Change this when/if separate gems are released for each engine
-      find_and_replace('Gemfile', "path 'vendor/refinerycms' do",
-                        "path '#{Pathname.new(File.expand_path(File.dirname(__FILE__) << "/..")).join('vendor').to_s}/refinerycms' do")
+      # Change from development to production
+      find_and_replace('Gemfile', "gem 'refinerycms', :path => '.'",
+                        "gem 'refinerycms', '~> #{Refinery.version}'")
 
       # Replace app constant with Refinery
       # TODO: Find a way around this
