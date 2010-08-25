@@ -6,7 +6,6 @@ module Refinery
   module Images
     class Engine < Rails::Engine
       initializer 'images-with-dragonfly' do |app|
-        require 'dragonfly'
         app_images = Dragonfly[:images]
         app_images.configure_with(:rails) do |c|
           c.datastore.root_path = "#{::Rails.root}/public/system/images"

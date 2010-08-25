@@ -192,7 +192,7 @@ DEPENDENCIES
   dragonfly!
   factory_girl
   gherkin
-  json_pure (= 1.4.6)
+  json_pure (~> 1.4.6)
   launchy
   rails (= 3.0.0.rc2)
   refinerycms!
