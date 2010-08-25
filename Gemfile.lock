@@ -20,6 +20,13 @@ GIT
   specs:
     refinerycms-i18n (0.9.8)
 
+GIT
+  remote: git://github.com/resolve/refinerycms-inquiries.git
+  revision: f6564a2
+  specs:
+    refinerycms-inquiries (0.9.8)
+      refinerycms-core (~> 0.9.8)
+
 PATH
   remote: vendor/refinerycms
   specs:
@@ -39,8 +46,6 @@ PATH
       rack-cache
       refinerycms-core (~> 0.9.8)
       rmagick
-    refinerycms-inquiries (0.9.8)
-      refinerycms-core (~> 0.9.8)
     refinerycms-pages (0.9.8)
       refinerycms-core (~> 0.9.8)
     refinerycms-resources (0.9.8)
@@ -211,7 +216,7 @@ DEPENDENCIES
   refinerycms-dashboard!
   refinerycms-i18n!
   refinerycms-images!
-  refinerycms-inquiries!
+  refinerycms-inquiries (~> 0.9.8)!
   refinerycms-pages!
   refinerycms-resources!
   refinerycms-settings!

@@ -36,7 +36,6 @@ path 'vendor/refinerycms' do
   gem 'refinerycms-core',           :require => 'core'
   gem 'refinerycms-authentication', :require => 'authentication'
   gem 'refinerycms-dashboard',      :require => 'dashboard'
-  gem 'refinerycms-inquiries',      :require => 'inquiries'
   gem 'refinerycms-images',         :require => 'images'
   gem 'refinerycms-pages',          :require => 'pages'
   gem 'refinerycms-resources',      :require => 'resources'
@@ -44,6 +43,9 @@ path 'vendor/refinerycms' do
 end
 
 # Specify additional Refinery CMS Engines here:
+gem 'refinerycms-inquiries',    '~> 0.9.8',
+                                :git => 'git://github.com/resolve/refinerycms-inquiries.git',
+                                :require => 'inquiries'
 # gem 'refinerycms-news',       '~> 0.9.8', :require => 'news'
 # gem 'refinerycms-portfolio',  '~> 0.9.7', :require => 'portfolio'
 
