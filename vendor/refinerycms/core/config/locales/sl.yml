@@ -8,13 +8,10 @@ sl:
     menu:
       reorder_menu: Spremeni vrsti red zavihkov
       reorder_menu_done: "Končaj s prerazporeditvijo zavihkov."
-    search: Išči
-    search_submit: Pojdi
-    search_results_for: Iskalni rezultati za %{query}
-    search_no_results: Oprostite! Ni bilo zadetkov.
-    images:
-      existing_image:
-        submit_insert: Vstavi
+    dialogs:
+      show:
+        save: Shrani
+        cancel: Prekliči
   refinery:
     other: "Drugo %{what}"
     reorder: "Spremeni vrstni red %{what}"
@@ -34,19 +31,18 @@ sl:
       continue_editing:
         save_and_continue_editing: "Shrani & nadaljuj z urejanjem"
       form_actions:
-        or: ali
         save: Shrani
-        or_cancel: ali
         cancel: Prekliči
-        or_continue: ali
         cancel_lose_changes: "S preklicem bodo izgubljene vse spremembe, ki ste jih naredili na %{object_name}."
-        delete_title: S tem bo stran odstranjena za vedno
         delete: Izbriši
+        previous: Nazaj
+        next: Naprej
+        close: Zapri
       image_picker:
         none_selected: "Trenutno ni izbrana nobena %{what}, prosimo kliknite tukaj da dodate eno."
         remove_current: "Odstrani trenutno %{what}"
         change: Kliknite tukaj za izbiro slike
-        image: slika
+        show: Prikaži
       resource_picker:
         none_selected: "Trenutno ni izbrana nobena %{what}, prosimo kliknite tukaj da dodate eno."
         current: "Trenutna %{what}"
@@ -54,6 +50,19 @@ sl:
         opens_in_new_window: Odpri v novem oknu
         remove_current: "Odstrani trenutno %{what}"
         resource: vir
+      search:
+        button_text: Išči
+        results_for: Iskalni rezultati za '%{query}'
+        no_results: Ni bilo zadetkov
+      delete:
+        message: Ali ste prepričani da želite odstraniti '%{title}'?
+      error_messages:
+        problems_in_following_fields: Prišlo je do težav v naslednjih poljih
+      help: pomoč
     message:
       close: Zapri
       close_this_message: Zapri to sporočilo
+    draft_page_message:
+      not_live: Ta stran še ni javno dostopna.
+    footer:
+      copyright: Vse pravice pridržane &copy;
