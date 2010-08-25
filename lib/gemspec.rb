@@ -55,7 +55,7 @@ Gem::Specification.new do |s|
   s.add_dependency    'dragonfly'
 
   s.files             = [
-    '#{files.join("',\n    '")}'
+    '#{files.sort.join("',\n    '")}'
   ]
 end
 EOF
