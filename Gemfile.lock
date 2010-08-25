@@ -23,7 +23,7 @@ GIT
 PATH
   remote: .
   specs:
-    refinerycms (0.9.8.0.beta2.pre)
+    refinerycms (0.9.8.0.rc1.pre)
       acts_as_indexed (= 0.6.5)
       authlogic (~> 2.1.6)
       bundler (~> 1.0.0)
