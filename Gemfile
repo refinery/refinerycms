@@ -64,7 +64,7 @@ gem 'dragonfly',        :git => 'git://github.com/parndt/dragonfly.git',
 
 group :test do
   # RSpec
-  gem 'rspec',              (RSPEC_VERSION = '~> 2.0.0.beta.20')
+  gem 'rspec',              (RSPEC_VERSION = '~> 2.0.0.beta')
   gem 'rspec-core',         RSPEC_VERSION, :require => 'rspec/core'
   gem 'rspec-expectations', RSPEC_VERSION, :require => 'rspec/expectations'
   gem 'rspec-mocks',        RSPEC_VERSION, :require => 'rspec/mocks'

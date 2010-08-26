@@ -205,11 +205,11 @@ DEPENDENCIES
   refinerycms-inquiries (~> 0.9.8)!
   rmagick (~> 2.12.0)
   routing-filter
-  rspec (~> 2.0.0.beta.20)
-  rspec-core (~> 2.0.0.beta.20)
-  rspec-expectations (~> 2.0.0.beta.20)
-  rspec-mocks (~> 2.0.0.beta.20)
-  rspec-rails (~> 2.0.0.beta.20)
+  rspec (~> 2.0.0.beta)
+  rspec-core (~> 2.0.0.beta)
+  rspec-expectations (~> 2.0.0.beta)
+  rspec-mocks (~> 2.0.0.beta)
+  rspec-rails (~> 2.0.0.beta)
   ruby-prof
   spork
   sqlite3-ruby
