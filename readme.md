@@ -23,7 +23,7 @@ Unlike other content managers, Refinery is truly __aimed at the end user__ makin
 
 ## Requirements
 
-* [Bundler](http://github.com/wycats/bundler)
+* [Bundler](http://github.com/carlhuda/bundler)
 * [RMagick](http://github.com/rmagick/rmagick) - [Install docs](http://rmagick.rubyforge.org/install-faq.html) or for
 Mac OS 10.5+ users [this shell install script](http://github.com/maddox/magick-installer) will be easier.
 
