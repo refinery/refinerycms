@@ -2,7 +2,7 @@
 
 __An open source Ruby on Rails content management system.__
 
-Refinery runs on Rails 3 but also supports Rails 2.X using the [Rails 2.X stable branch](http://github.com/resolve/refinerycms/tree/rails2-stable). More information at [http://refinerycms.com](http://refinerycms.com)
+Refinery runs on Rails 3 but also supports Rails 2.x using the [Rails 2.x stable branch](http://github.com/resolve/refinerycms/tree/rails2-stable). More information at [http://refinerycms.com](http://refinerycms.com)
 
 ![Refinery Dashboard](http://refinerycms.com/system/images/0000/0576/dashboard.png)
 
