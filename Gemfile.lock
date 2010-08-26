@@ -1,4 +1,11 @@
 GIT
+  remote: git://github.com/alan/rack-test.git
+  revision: 167c2b2
+  specs:
+    rack-test (0.5.4)
+      rack (>= 1.0)
+
+GIT
   remote: git://github.com/parndt/acts_as_tree.git
   revision: cd4d6a6
   branch: master
@@ -130,8 +137,6 @@ GEM
       rack (>= 0.4)
     rack-mount (0.6.12)
       rack (>= 1.0.0)
-    rack-test (0.5.4)
-      rack (>= 1.0)
     rails (3.0.0.rc2)
       actionmailer (= 3.0.0.rc2)
       actionpack (= 3.0.0.rc2)
@@ -193,6 +198,7 @@ DEPENDENCIES
   gherkin
   json_pure (~> 1.4.6)
   launchy
+  rack-test!
   rails (= 3.0.0.rc2)
   refinerycms!
   refinerycms-i18n!
