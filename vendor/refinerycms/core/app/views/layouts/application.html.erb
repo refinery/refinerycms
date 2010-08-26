@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
+  <% site_bar = render(:partial => "/shared/site_bar", :locals => {:head => true}) -%>
   <%= render :partial => "/shared/head" %>
   <body>
-    <%= render :partial => "/shared/site_bar" %>
+    <%= site_bar -%>
     <%= render :partial => "/shared/ie6check" if request.env['HTTP_USER_AGENT'] =~ /MSIE/ -%>
     <div id='page_container'>
       <div id='page'>
