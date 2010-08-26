@@ -2,7 +2,7 @@
 
 __An open source Ruby on Rails content management system.__
 
-It runs on Rails 3 by default but also supports Rails 2.X using the [Rails 2.X Stable branch](http://github.com/resolve/refinerycms/tree/rails2-stable). More information at [http://refinerycms.com](http://refinerycms.com)
+Refinery runs on Rails 3 but also supports Rails 2.X using the [Rails 2.X stable branch](http://github.com/resolve/refinerycms/tree/rails2-stable). More information at [http://refinerycms.com](http://refinerycms.com)
 
 ![Refinery Dashboard](http://refinerycms.com/system/images/0000/0576/dashboard.png)
 
@@ -23,9 +23,7 @@ Unlike other content managers, Refinery is truly __aimed at the end user__ makin
 
 ## Requirements
 
-Refinery's gem requirements are:
-
-* [bundler](http://github.com/wycats/bundler)
+* [Bundler](http://github.com/wycats/bundler)
 * [RMagick](http://github.com/rmagick/rmagick) - [Install docs](http://rmagick.rubyforge.org/install-faq.html) or for
 Mac OS 10.5+ users [this shell install script](http://github.com/maddox/magick-installer) will be easier.
 
