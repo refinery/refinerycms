@@ -1,6 +1,8 @@
 # Refinery CMS
 
-__An open source Ruby on Rails content management system.__ More information at [http://refinerycms.com](http://refinerycms.com)
+__An open source Ruby on Rails content management system.__
+
+It runs on Rails 3 by default but also supports Rails 2.X using the [Rails 2.X Stable branch](http://github.com/resolve/refinerycms/tree/rails2-stable). More information at [http://refinerycms.com](http://refinerycms.com)
 
 ![Refinery Dashboard](http://refinerycms.com/system/images/0000/0576/dashboard.png)
 
@@ -15,7 +17,7 @@ Unlike other content managers, Refinery is truly __aimed at the end user__ makin
 ### For developers
 
 * Easily customise the look to suit the business.
-* __[Extend with custom engines](http://github.com/resolve/refinerycms/blob/rails3/vendor/refinerycms/core/engines.md#readme)__ to do anything Refinery doesn't do out of the box.
+* __[Extend with custom engines](http://github.com/resolve/refinerycms/blob/master/vendor/refinerycms/core/engines.md#readme)__ to do anything Refinery doesn't do out of the box.
 * Sticks to __"the Rails way"__ as much as possible; we don't force you to learn new templating languages.
 * Uses [jQuery](http://jquery.com/) for fast and concise Javascript.
 
@@ -23,17 +25,7 @@ Unlike other content managers, Refinery is truly __aimed at the end user__ makin
 
 Refinery's gem requirements are:
 
-* [acts_as_indexed = 0.6.4](http://github.com/parndt/acts_as_indexed)
-* [authlogic = 2.1.6](http://rubygems.org/gems/authlogic)
-* [friendly_id = 3.1.3](http://rubygems.org/gems/friendly_id)
-* [rails = 3.0.0](http://rubygems.org/gems/rails)
-* [rmagick ~> 2.12.0](http://rubygems.org/gems/rmagick)
-* [truncate_html = 0.4](http://rubygems.org/gems/truncate_html)
-* [will_paginate = 3.0.pre2](http://rubygems.org/gems/will_paginate)
-* More to add here for rails3 support.
-
-Other dependencies
-
+* [bundler](http://github.com/wycats/bundler)
 * [RMagick](http://github.com/rmagick/rmagick) - [Install docs](http://rmagick.rubyforge.org/install-faq.html) or for
 Mac OS 10.5+ users [this shell install script](http://github.com/maddox/magick-installer) will be easier.
 
@@ -54,46 +46,46 @@ Mac OS 10.5+ users [this shell install script](http://github.com/maddox/magick-i
 
 ## Features
 
-### [Pages](http://github.com/resolve/refinerycms/blob/rails3/vendor/refinerycms/pages/readme.md#readme)
+### [Pages](http://github.com/resolve/refinerycms/blob/master/vendor/refinerycms/pages/readme.md#readme)
 
 * Easily edit and manage pages with a [WYSIWYG visual editor](http://www.wymeditor.org/).
 * Manage you site's structure.
 
-### [Images](http://github.com/resolve/refinerycms/blob/rails3/vendor/refinerycms/images/readme.md#readme) & [Files](http://github.com/resolve/refinerycms/blob/rails3/vendor/refinerycms/resources/readme.md#readme)
+### [Images](http://github.com/resolve/refinerycms/blob/master/vendor/refinerycms/images/readme.md#readme) & [Files](http://github.com/resolve/refinerycms/blob/master/vendor/refinerycms/resources/readme.md#readme)
 
 * Easily upload and insert images.
 * Upload and link to resources such as PDF documents.
 * Uses the popular [Dragonfly](http://github.com/markevans/dragonfly).
 * Supports storage on Amazon S3.
 
-### [Inquiries](http://github.com/resolve/refinerycms/blob/rails3/vendor/refinerycms/inquiries/readme.md#readme)
+### [Inquiries](http://github.com/resolve/refinerycms/blob/master/vendor/refinerycms/inquiries/readme.md#readme)
 
 * Collect inquiries from a contact form.
 * Manage your inquiries and be notified when new ones come in.
 * Checks new inquiries for spam.
 
-### [Settings](http://github.com/resolve/refinerycms/blob/rails3/vendor/refinerycms/refinery_settings/readme.md#readme)
+### [Settings](http://github.com/resolve/refinerycms/blob/master/vendor/refinerycms/refinery_settings/readme.md#readme)
 
 * Manage the behaviour of Refinery
 * Easily integrate with [Google Analytics](https://www.google.com/analytics/)
 
-### [Dashboard](http://github.com/resolve/refinerycms/blob/rails3/vendor/refinerycms/dashboard/readme.md#readme)
+### [Dashboard](http://github.com/resolve/refinerycms/blob/master/vendor/refinerycms/dashboard/readme.md#readme)
 
 * Get an overview of what has been updated recently and see recent inquiries.
 
-### [Authentication & Users](http://github.com/resolve/refinerycms/blob/rails3/vendor/refinerycms/authentication/readme.md#readme)
+### [Authentication & Users](http://github.com/resolve/refinerycms/blob/master/vendor/refinerycms/authentication/readme.md#readme)
 
 * Manage who can access Refinery.
 * Control which engines each user has access to.
 * Uses the popular [authlogic](http://github.com/binarylogic/authlogic).
 
-### ...Want more? [Extend with Engines](http://github.com/resolve/refinerycms/blob/rails3/vendor/refinerycms/core/engines.md#readme)
+### ...Want more? [Extend with Engines](http://github.com/resolve/refinerycms/blob/master/vendor/refinerycms/core/engines.md#readme)
 
 Extend Refinery easily by running the Refinery engine generator
 
     rails generate refinery_engine
 
-to get help on how to use that. Or read the full documentation on [writing engines for Refinery](http://github.com/resolve/refinerycms/blob/rails3/vendor/refinerycms/core/engines.md#readme)
+to get help on how to use that. Or read the full documentation on [writing engines for Refinery](http://github.com/resolve/refinerycms/blob/master/vendor/refinerycms/core/engines.md#readme)
 
 ### Popular Engines
 
