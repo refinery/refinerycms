@@ -4,7 +4,7 @@ Gem::Specification.new do |s|
   s.name              = %q{refinerycms}
   s.version           = %q{0.9.8.0.beta4.pre}
   s.description       = %q{A beautiful open source Ruby on Rails content manager for small business. Easy to extend, easy to use, lightweight and all wrapped up in a super slick UI.}
-  s.date              = %q{2010-08-26}
+  s.date              = %q{2010-08-27}
   s.summary           = %q{A beautiful open source Ruby on Rails content manager for small business.}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
@@ -81,6 +81,7 @@ Gem::Specification.new do |s|
     'db/migrate/20100702022630_add_spam_to_inquiries.rb',
     'db/migrate/20100708014636_ensure_user_plugins_use_name_and_not_title.rb',
     'db/migrate/20100729221735_remove_page_translations_if_present.rb',
+    'db/migrate/20100826232810_move_inquiry_settings_to_refinery_settings.rb',
     'db/schema.rb',
     'db/seeds',
     'db/seeds.rb',
