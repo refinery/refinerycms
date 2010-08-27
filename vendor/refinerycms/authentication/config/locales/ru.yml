@@ -1,0 +1,80 @@
+ru:
+  plugins:
+    refinery_users:
+      title: "Пользователи"
+  admin:
+    users:
+      update:
+        cannot_remove_user_plugin_from_current_user: "You cannot remove the 'Users' plugin from the currently logged in account."
+      form:
+        blank_password_keeps_current: Оставьте поле пустым, если не хотите изменить пароль
+        enable_all: enable all
+      index:
+        create_new_user: Создать нового пользователя
+        no_users_yet: "Пользователей пока что нет. Нажмите &laquo;Создать нового пользователя&raquo;, чтобы добавить вашего первого пользователя."
+      user:
+        confirm_delete_message: "Вы действительно хотите удалить пользователя &laquo;{{who}}&raquo;?"
+        confirm_delete_title: Удалить этого пользователя навсегда
+        edit_user: Редактировать этого пользователя
+        email_user: Написать эл. письмо этому пользователю
+        preview: ({{who}}) создан {{created_at}}
+  sessions:
+    login_successful: Вход успешно выполнен
+    login_failed: Имя пользователя или пароль неверны.
+    logged_out: Вы вышли.
+    new:
+      hello_please_sign_in: Пожалуйста, войдите.
+      sign_in: Войти
+      forgot_password: Я забыл свой пароль
+  users:
+    setup_website_name: "Для начала, назовите сайт. <a href='{{link}}' name='{{title}}'>Перейдите сюда</a>, чтобы отредактировать название сайта."
+    signup_disabled: Регистрация пользователей отключена
+    new:
+      fill_form: Заполните данные ниже.
+      sign_up: Зарегистрироваться
+    create:
+      welcome: Добро пожаловать в Refinery, {{who}}
+      signup_complete: Регистрация завершена!
+    forgot:
+      email_address: Эл. почта
+      enter_email_address: Пожалуйста, введите адрес электронной почты вашего акаунта.
+      reset_password: Сбросить пароль
+      blank_email: Вы не ввели адрес электронной почты
+      email_not_associated_with_account: "{{email}} не принадлежит ни одному акаунту.<br/>Вы уверены, что ввели правильный адрес электронной почты?"
+      email_reset_sent: Вам выслано электронное письмо с ссылкой для сброса пароля.
+    reset:
+      code_invalid: "Код для сброса пароля истек или неверен. Попробуйте скопировать и вставить адрес из письма в адресную строку браузера или заново начать процесс восстановления."
+      successful: "Пароль успешно изменен для {{email}}"
+      pick_new_password_for: "Введите новый пароль для {{email}}"
+      reset_password: Изменить пароль
+  user_mailer:
+    please_activate: Пожалуйста, активируйте ваш новый акаунт
+    activated: Ваш акаунт активирован!
+    activated_email: "{{who}}, ваш акаунт активирован. Вы можете начать добавлять ваши модули:"
+    account_created: Ваш акаунт создан.
+    user_name: Имя пользователя {{name}}
+    password: Пароль {{password}}
+    visit_url: "Перейдите по этой ссылке, чтобы активировать ваш акаунт:"
+    link_to_reset_your_password: Ссылка для сброса пароля
+  authlogic:
+    error_messages:
+      login_blank: не может быть пустым
+      login_not_found: неверен
+      login_invalid: должен состоять только из латинских букв, цифр, пробелов и символов .-_@
+      consecutive_failed_logins_limit_exceeded: Максимальное количество попыток входа исчерпано, акаунт отключен.
+      email_invalid: должен иметь формать адреса эл. почты
+      password_blank: не может быть пустым
+      password_invalid: неверен
+      not_active: Ваш акаунт не активирован
+      not_confirmed: Ваш акаунт не подтвержден
+      not_approved: Ваш акаунт не разрешен
+      no_authentication_details: You did not provide any details for authentication.
+    models:
+      user_session: UserSession
+    attributes:
+      user_session:
+        login: Имя пользователя
+        email: Эл. почта
+        password: Пароль
+        remember_me: Запомнить меня
+        incorrect: "{{login_field}} или пароль неверны"

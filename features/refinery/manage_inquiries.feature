@@ -6,6 +6,7 @@ Feature: Manage Inquiries
 
   Background:
     Given I am a logged in refinery user
+    And I have no inquiries
     And I have an inquiry from "David Jones" with email "dave@refinerycms.com" and message "Hello, I really like your website.  Was it hard to build and maintain or could anyone do it?"
 
   Scenario: Inquiries List
@@ -19,6 +20,7 @@ Feature: Manage Inquiries
     And I follow "Spam"
     Then I should see "Hooray! You don't have any spam."
 
+  @inquiry-settings
   Scenario: Updating who gets notified
     When I go to the list of inquiries
     And I follow "Update who gets notified"
@@ -28,6 +30,7 @@ Feature: Manage Inquiries
     And I should see "'Notification Recipients' was successfully updated."
     And I should be on the list of inquiries
 
+  @inquiry-settings
   Scenario: Updating confirmation email copy
     When I go to the list of inquiries
     And I follow "Edit confirmation email"

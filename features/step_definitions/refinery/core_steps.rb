@@ -3,6 +3,10 @@ Given %r`not logged in$` do
   visit logout_path
 end
 
+Given /locale is (.+?)$/ do |locale|
+  ::Refinery::I18n.current_locale = locale.to_sym
+end
+
 Given %r`(?:log|am logged) in as "([^\"]+)"$` do |login|
   @my_username = login
   visit login_path

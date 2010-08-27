@@ -1,0 +1,25 @@
+lv:
+  plugins:
+    refinery_dashboard:
+      title: Vadības panelis
+  admin:
+    dashboard:
+      index:
+        quick_tasks: Ātrie uzdevumi
+        add_a_new_page: Pievienot jaunu lapu
+        update_a_page: Atjaunināt lapu
+        upload_a_image: Augšupielādēt bildi
+        upload_a_file: Augšupielādēt failu
+        change_language: Mainīt valodu
+        see_home_page: Skatīt sākuma lapu
+      recent_activity:
+        latest_activity: Jaunākās aktivitātes
+        latest_activity_message: "{{action}} {{what}} {{kind}}"
+      recent_inquiries:
+        latest_inquiries: Jaunākie pieprasījumi
+  updated:
+    'with_article "s"': atjaunota
+    'with_article "the"': atjaunots
+  created:
+    'with_article "s"': izveidota
+    'with_article "the"': izveidots

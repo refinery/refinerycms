@@ -1,0 +1,61 @@
+nb:
+  welcome:
+    there_are_no_users: "Det finnes ingen brukere enda, så la oss sette opp en bruker for deg først."
+    remember_admin_location: "Husk at adressen for å administrere din Refinery er:"
+    lets_start: "Ok, la oss få deg satt opp slik at du kan logge inn..."
+    continue: "Fortsett..."
+  admin:
+    menu:
+      reorder_menu: Endre rekkefølgen på menyen
+      reorder_menu_done: "Jeg er ferdig å endre rekkefølgen på menyen"
+    search: Søk
+    search_submit: Søk
+    search_results_for: "Søkeresultater for '%{query}'"
+    search_no_results: "Beklager, ditt søk returnerte ingen resultater"
+    images:
+      existing_image:
+        submit_insert: Sett Inn
+  refinery:
+    other: "Annen %{what}"
+    reorder: "Endre rekkefølgen for %{what}"
+    reorder_done: "Ferdig å endre rekkefølgen for %{what}"
+    crudify:
+      created: "%{what} ble opprettet."
+      updated: "%{what} ble oppdatert."
+      destroyed: "%{what} ble slettet"
+  shared:
+    site_bar:
+      log_out: Logg ut
+      switch_to_your_website: Bytt til din webside
+      switch_to_your_website_editor: Bytt til redigering av din websied
+    admin:
+      message:
+        close: Lukk
+      continue_editing:
+        save_and_continue_editing: "Lagre og fortsett med redigeringen"
+      form_actions:
+        or: eller
+        save: Lagre
+        or_cancel: eller
+        cancel: Avbryt
+        or_continue: eller
+        cancel_lose_changes: "Om du avbryter så vil alle endringene du har gjort på %{object_name} forsvinne"
+        delete: Slett
+        previous: Forrige
+        next: Neste
+      image_picker:
+        none_selected: "Det er for øyeblikket ikke noen %{what} valgt. Vennligst klikk her for å legge til en."
+        remove_current: "Fjern gjeldende %{what}"
+        change: Kikk her for å velge et bilde
+        image: bilde
+        show: Vis
+      resource_picker:
+        none_selected: "Det er for øyeblikket ikke noen %{what} valgt. Vennligst klikk her for å legge til en."
+        current: "Gjeldende %{what}"
+        download_current: "Last ned gjeldende %{what}"
+        opens_in_new_window: Åpner i et nytt vindu
+        remove_current: "Fjern gjeldende %{what}"
+        resource: ressurs
+    message:
+      close: Lukk
+      close_this_message: Lukk denne meldingen

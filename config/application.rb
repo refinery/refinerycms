@@ -1,35 +1,44 @@
-# Boot Rails
-require File.join(File.dirname(__FILE__), 'boot')
+require File.expand_path('../boot', __FILE__)
 
-# Here we load in Refinery to do the rest of the heavy lifting.
-# Refinery is setup in config/preinitializer.rb
-require Refinery.root.join("lib", "refinery_initializer").cleanpath.to_s
+require 'rails/all'
 
-# Boot with Refinery. Most configuration is handled by Refinery.
-# Anything you specify here that Refinery specified internally will override Refinery.
-Refinery::Initializer.run do |config|
-  # Settings in config/environments/* take precedence over those specified here.
-  # Application configuration should go into files in config/initializers
-  # -- all .rb files in that directory are automatically loaded.
-  # See Rails::Configuration for more options.
+# If you have a Gemfile, require the gems listed there, including any gems
+# you've limited to :test, :development, or :production.
+Bundler.require(:default, Rails.env) if defined?(Bundler)
 
-  config.action_controller.session = {
-    :key    => '_refinery_session',
-    :secret => 'eec8fffc3637c05895f8e6a355179eaad0003ac5617e5368955baf7989e1faca4d8ab37140d690c20b05d5815609b7c680c644277b6a892be316a85c6596d75c'
-  }
+module Refinery
+  class Application < Rails::Application
+    # Settings in config/environments/* take precedence over those specified here.
+    # Application configuration should go into files in config/initializers
+    # -- all .rb files in that directory are automatically loaded.
 
-  config.to_prepare do
-    # Here we set up the default acts_as_indexed configuration.
-    load(Rails.root.join('config', 'acts_as_indexed_config.rb').to_s)
+    # Custom directories with classes and modules you want to be autoloadable.
+    # config.autoload_paths += %W(#{config.root}/extras)
+
+    # Only load the plugins named here, in the order given (default is alphabetical).
+    # :all can be used as a placeholder for all plugins not explicitly named.
+    # config.plugins = [ :exception_notification, :ssl_requirement, :all ]
+
+    # Activate observers that should always be running.
+    # config.active_record.observers = :cacher, :garbage_collector, :forum_observer
+
+    # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
+    # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.
+    # config.time_zone = 'Central Time (US & Canada)'
+
+    # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
+    # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
+    # config.i18n.default_locale = :de
+
+    # JavaScript files you want as :defaults (application.js is always included).
+    config.action_view.javascript_expansions[:defaults] = %w()
+
+    # Configure the default encoding used in templates for Ruby 1.9.
+    config.encoding = "utf-8"
+
+    # Configure sensitive parameters which will be filtered from the log file.
+    config.filter_parameters += [:password, :password_confirmation]
   end
-
 end
 
-# You can set things in the following file and we'll try hard not to destroy them in updates, promise.
-# Note: These are settings that aren't dependent on environment type. For those, use the files in config/environments/
-require Rails.root.join('config', 'settings.rb').to_s
-
-# Bundler has shown a weakness using Rails < 3 so we are going to
-# require these dependencies here until we can find another solution or until we move to
-# Rails 3.0 which should fix the issue (or until Bundler fixes the issue).
-require_dependency 'will_paginate'
+require Rails.root.join('config', 'settings.rb') if Rails.root.join('config', 'settings.rb').exist?

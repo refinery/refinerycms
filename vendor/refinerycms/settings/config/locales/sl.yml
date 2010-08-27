@@ -1,0 +1,24 @@
+sl:
+  activerecord:
+    models:
+      refinery_setting: Refinery nastavitve
+    attributes:
+      refinery_setting:
+        name: Ime
+        value: Vrednost
+  admin:
+    refinery_settings:
+      delete: Odstrani nastavitev
+      edit: Uredi nastavitev
+      index:
+        new: Dodaj novo nastavitev
+        empty_set: Tretnutno ni nobene nastavitve.
+        create_first: "Kliknite '%{link}' da boste dodali vašo prvo nastavitev."
+      form:
+        restart_may_be_in_order: "<strong>Prosimo upoštevajte</strong> da boste morali včasih ponovno zagnati spletno stran, da bo nastavitev stopila v veljavo."
+        yes_make_this_setting_restricted: Da, ta nastavitev naj bo omejena samo na super-uporabnike.
+        help:
+          restricted: To omogoča da nastavitev lahko vidijo in urejajo samo super-uporabniki (kot ste vi).
+  plugins:
+    refinery_settings:
+      title: Nastavitve

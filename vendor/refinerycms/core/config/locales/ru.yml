@@ -1,0 +1,61 @@
+ru:
+  welcome:
+    there_are_no_users: "Ни одного пользователя не создано. Вы будете первым."
+    remember_admin_location: "Запомнить администратора как:" 
+    lets_start: "Ок, давайте введем настройки для входа в систему..."
+    continue: "Далее..."
+  admin:
+    menu:
+      reorder_menu: Изменить порядок в меню
+      reorder_menu_done: Сохранить такой порядок в меню
+    search: Поиск
+    search_submit: Далее
+    search_results_for: "Результаты поиска для &laquo;{{query}}&raquo;"
+    search_no_results: Ничего не найдено
+    images:
+      existing_image:
+        submit_insert: Вставить
+  refinery:
+    other: "Иначе {{what}}"
+    reorder: "Поменять порядок {{what}}"
+    reorder_done: "Закончено {{what}}"
+    crudify:
+      created: "{{what}} создан(а)."
+      updated: "{{what}} отредактирован(а)."
+      destroyed: "{{what}} уничтожен(а)."
+  shared:
+    site_bar:
+      log_out: Выйти
+      switch_to_your_website: Перейти на сайт
+      switch_to_your_website_editor: Перейти в панель управления
+    admin:
+      message:
+        close: Закрыть
+      continue_editing:
+        save_and_continue_editing: Сохранить и продолжить
+      form_actions:
+        or: или
+        save: Сохранить
+        or_cancel: или
+        cancel: Отмена
+        or_continue: или
+        cancel_lose_changes: "Cancelling will lose all changes you've made to this {{object_name}}"
+        delete: Удалить
+        previous: Предыдущее
+        next: Следующее
+      image_picker:
+        none_selected: "There is currently no {{what}} selected, please click here to add one."
+        remove_current: "Remove current {{what}}"
+        change: Click here to pick a image
+        image: image
+        show: Show
+      resource_picker:
+        none_selected: "There is currently no {{what}} selected, please click here to add one."
+        current: "Current {{what}}"
+        download_current: "Download current {{what}}"
+        opens_in_new_window: Opens in a new window
+        remove_current: "Remove current {{what}}"
+        resource: resource
+    message:
+      close: Закрыть
+      close_this_message: Закрыть это сообщение

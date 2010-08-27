@@ -1,0 +1,68 @@
+sl:
+  welcome:
+    there_are_no_users: "Trenutno še ni nobenega uporabnika, zato vas moramo najprej namestiti."
+    remember_admin_location: "Zapomnite si vaše administracijsko področje v Refinery je:"
+    lets_start: "Vredu najprej vas bomo namestili, da se boste potem lahko prijavili..."
+    continue: "Nadaljuj..."
+  admin:
+    menu:
+      reorder_menu: Spremeni vrsti red zavihkov
+      reorder_menu_done: "Končaj s prerazporeditvijo zavihkov."
+    dialogs:
+      show:
+        save: Shrani
+        cancel: Prekliči
+  refinery:
+    other: "Drugo %{what}"
+    reorder: "Spremeni vrstni red %{what}"
+    reorder_done: "Končaj s prerazporeditvijo %{what}"
+    crudify:
+      created: "%{what} je bil uspešno ustvarjen"
+      updated: "%{what} je bil uspešno ustvarjen"
+      destroyed: "%{what} je bil uspešno odstranjen"
+  shared:
+    site_bar:
+      log_out: Odjavite se
+      switch_to_your_website: "Preklopite na vašo spletno stran"
+      switch_to_your_website_editor: "Preklopite na urejevalnik spletne strani"
+    admin:
+      message:
+        close: Zapri
+      continue_editing:
+        save_and_continue_editing: "Shrani & nadaljuj z urejanjem"
+      form_actions:
+        save: Shrani
+        cancel: Prekliči
+        cancel_lose_changes: "S preklicem bodo izgubljene vse spremembe, ki ste jih naredili na %{object_name}."
+        delete: Izbriši
+        previous: Nazaj
+        next: Naprej
+        close: Zapri
+      image_picker:
+        none_selected: "Trenutno ni izbrana nobena %{what}, prosimo kliknite tukaj da dodate eno."
+        remove_current: "Odstrani trenutno %{what}"
+        change: Kliknite tukaj za izbiro slike
+        show: Prikaži
+      resource_picker:
+        none_selected: "Trenutno ni izbrana nobena %{what}, prosimo kliknite tukaj da dodate eno."
+        current: "Trenutna %{what}"
+        download_current: "Prenesi trenutno %{what}"
+        opens_in_new_window: Odpri v novem oknu
+        remove_current: "Odstrani trenutno %{what}"
+        resource: vir
+      search:
+        button_text: Išči
+        results_for: Iskalni rezultati za '%{query}'
+        no_results: Ni bilo zadetkov
+      delete:
+        message: Ali ste prepričani da želite odstraniti '%{title}'?
+      error_messages:
+        problems_in_following_fields: Prišlo je do težav v naslednjih poljih
+      help: pomoč
+    message:
+      close: Zapri
+      close_this_message: Zapri to sporočilo
+    draft_page_message:
+      not_live: Ta stran še ni javno dostopna.
+    footer:
+      copyright: Vse pravice pridržane &copy;

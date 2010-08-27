@@ -1,17 +1,19 @@
+@users @users-manage
 Feature: Manage Users
   In order to control who can access my website's backend
   As an administrator
   I want to create and manage users
 
-  Scenario: When there are no users, you are invited to create a user
+  Background:
     Given I have no users
+
+  Scenario: When there are no users, you are invited to create a user
     When I go to the home page
     Then I should see "There are no users yet, so we'll set you up first."
 
   Scenario: When there are no users, you can create a user
-    Given I have no users
-    And I go to the home page
-    When I press "Continue..."
+    When I go to the home page
+    And I follow "Continue..."
     And I should see "Fill out your details below so that we can get you started."
     And I fill in "Login" with "cucumber"
     And I fill in "Email" with "green@cucumber.com"
