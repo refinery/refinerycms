@@ -9,6 +9,7 @@ gem 'sqlite3-ruby',             :require => 'sqlite3'
 
 # Use unicorn as the web server
 # gem 'unicorn'
+gem 'mongrel'
 
 # Deploy with Capistrano
 # gem 'capistrano'
@@ -50,9 +51,7 @@ gem 'acts_as_tree',             :git => 'git://github.com/parndt/acts_as_tree.gi
 # Specify a version of RMagick that works in your environment:
 gem 'rmagick',                  '~> 2.12.0', :require => false
 
-# FIXME: These requirements are listed here temporarily pending a release
-gem 'dragonfly',                :git => 'git://github.com/parndt/dragonfly.git',
-                                :branch => 'refactor_job'
+gem 'dragonfly'
 
 # END REFINERY CMS ============================================================
 
