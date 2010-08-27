@@ -4,6 +4,9 @@ Refinery::Application.routes.draw do
       collection do
         get :insert
       end
+      member do
+        get :url
+      end
     end
   end
 end
