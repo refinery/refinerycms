@@ -15,6 +15,8 @@ module Refinery
           c.protect_from_dos_attacks = false
         end
 
+        app_resources.configure_with(:heroku, ENV['S3_BUCKET']) if Refinery.s3_backend
+
         ### Extend active record ###
         app_resources.define_macro(ActiveRecord::Base, :resource_accessor)
 
