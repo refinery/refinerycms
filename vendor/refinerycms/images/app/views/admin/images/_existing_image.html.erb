@@ -4,7 +4,7 @@
     <ul>
       <% @images.each do |image| %>
         <li<%= " class='selected'" if @image_id == image.id %>>
-          <%= image_fu image, :dialog_thumb, {:alt => image.title, :title => image.title, :id => "image_#{image.id}"} -%>
+          <%= image_fu image, :dialog_thumb, {:alt => image.title, :title => image.title, :id => "image_#{image.id}", :'data-id' => image.id} -%>
         </li>
       <% end -%>
     </ul>
@@ -29,7 +29,7 @@
         -%>
               <li id="image_dialog_size_<%= index %>" class="image_dialog_size <%= 'selected' if size == :medium %>">
                 <%= link_to size.to_s, "##{size}",
-                            :rel => size.to_s,
+                            :'data-size' => pixels,
                             :title   => "#{size} image (#{pixels} px)",
                             :tooltip => "#{size} image (#{pixels} px)" %>
               </li>
