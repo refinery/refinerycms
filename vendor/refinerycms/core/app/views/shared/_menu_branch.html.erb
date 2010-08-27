@@ -7,16 +7,14 @@
 
   <% unless hide_children or
             (children = menu_branch.children.reject{|c| !c.in_menu?}).empty? %>
-    <nav class='clearfix'>
-      <ul>
-        <%=
-          render :partial => "/shared/menu_branch",
-                 :collection => children,
-                 :locals => {
-                   :hide_children => hide_children,
-                   :sibling_count => children.size - 1
-                 } -%>
-      </ul>
-    </nav>
+    <ul>
+      <%=
+        render :partial => "/shared/menu_branch",
+               :collection => children,
+               :locals => {
+                 :hide_children => hide_children,
+                 :sibling_count => children.size - 1
+               } -%>
+    </ul>
   <% end %>
 </li>
