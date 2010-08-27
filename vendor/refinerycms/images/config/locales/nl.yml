@@ -1,0 +1,37 @@
+nl:
+  plugins:
+    refinery_images:
+      title: Afbeeldingen
+  image_specify_for_upload: U moet een afbeelding kiezen om te uploaden.
+  image_should_be_smaller_than_max_image_size: Afbeeldingen mogen niet groter dan %{max_image_size} zijn.
+  image_must_be_these_formats: Uw afbeelding moet een JPG, PNG of GIF zijn.
+  admin:
+    images:
+      delete: Verwijder deze afbeelding permanent
+      edit: Bewerk deze afbeelding
+      form:
+        image: Afbeelding
+        use_current_image: Gebruik huidige afbeelding
+        or: of
+        replace_image: Vervang de afbeelding door deze
+        current_image: Huidige afbeelding
+        maximum_image_size: "The maximum image size is %{megabytes} megabytes."
+      index:
+        create_new_image: Upload een nieuwe afbeelding
+        no_images_yet: Er zijn nog geen afbeeldingen. Klik op "Upload een nieuwe afbeelding" om uw eerste afbleelding toe te voegen.
+        view:
+          switch_to: Bekijk de %{view_name} versie
+          list: lijst
+          grid: tabel
+      grid_view:
+        view_live: Bekijk deze afbeelding <br/><em>(opent een nieuw venster)</em>
+      existing_image:
+        button_text: Invoegen
+        resize_image: Schaal de afbeelding
+        size: Grootte
+      insert:
+        existing_image: Bestaande afbeelding
+        new_image: Nieuwe afbeelding
+  activerecord:
+    models:
+      image: afbeelding

@@ -1,0 +1,30 @@
+sl:
+  plugins:
+    refinery_files:
+      title: Datoteke
+  file_specify_for_upload: Izbrati morate datoteko za prenos
+  file_should_be_smaller_than_max_file_size: Velikost datoteke mora biti manjša od %{max_file_size}
+  admin:
+    resources:
+      delete: Odstrani datoteko
+      edit: Uredi datoteko
+      form:
+        download_current: Prenesi tretnutno datoteko
+        or: ali
+        replace: " jo zamenjaj s tole..."
+        maximum_file_size: "Največja dovoljena velikost datoteke je %{megabytes} megabajtov."
+      resource:
+        download: Prenesi datoteko (%{size})
+      index:
+        upload_new: Prenesi Novo Datoteko
+        no_files_yet: Trenutno še ni nobene datoteke. Za prenos prve datoteke kliknite "Prenesi Novo Datoteko".
+      insert:
+        existing: Obstoječo Datoteko
+        new: Novo Datoteko
+        no_files: Trenutno še ni datotek.
+      existing_resource:
+        link_to_file: Povezava do te datoteke
+        button_text: Vstavi
+  activerecord:
+    models:
+      resource: datoteka

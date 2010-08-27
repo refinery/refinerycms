@@ -6,7 +6,7 @@
 
 ## This is custom functionality written by Refinery CMS.
 def setup_environment
-  ENV["RAILS_ENV"] ||= "cucumber"
+  ENV["RAILS_ENV"] ||= "test"
   require File.expand_path(File.dirname(__FILE__) + '/../../config/environment')
 
   if RUBY_PLATFORM =~ /mswin/
@@ -61,8 +61,8 @@ def each_run
   DatabaseCleaner.strategy = :truncation
 
   require 'fileutils'
-  require 'rails_generator'
-  require 'rails_generator/scripts/generate'
+  require 'rails/generators'
+  #require 'rails/generators/scripts/generate'
 
   require 'authlogic/test_case'
   Before do

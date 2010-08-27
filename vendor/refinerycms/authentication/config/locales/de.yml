@@ -1,0 +1,77 @@
+de:
+  admin:
+    users:
+      update:
+        cannot_remove_user_plugin_from_current_user: "Sie können das 'Users' Plugin nicht vom Konto des aktuell eingeloggten Benutzers löschen."
+      form:
+        blank_password_keeps_current: "Das aktuelle Passwort wird beibehalten, wenn das Feld leer gelassen wird"
+      index:
+        create_new_user: Neuen Benutzer erstellen
+        no_users_yet:  Es wurden noch keine Benutzer erstellt. Klicken Sie auf "Neuen Benutzer erstellen" um Ihren ersten Benutzer zu erstellen.
+      user:
+        confirm_delete_message: "Sind Sie sicher, dass Sie '%{who}' löschen möchten?"
+        confirm_delete_title: Diesen Benutzer für immer löschen.
+        edit_user: Diesen Benutzer bearbeiten
+        email_user: Diesem Benutzer eine E-Mail schicken
+        preview: "(%{who}) wurde erstellt am %{created_at}"
+  sessions:
+    login_successful: Erfolgreich eingeloggt
+    login_failed: "Entschuldigung, Ihr Benutzername oder Passwort war nicht korrekt."
+    logged_out: Sie wurden ausgeloggt.
+    new:
+      login: Login Name
+      log_in: Login
+      cancel: Abbrechen
+      password: Passwort
+      remember_me: Anmeldung merken
+      or: oder
+      forgot_password: Ich habe mein Passwort vergessen
+      hello_please_sign_in: Hallo! Bitte melden Sie sich
+      sign_in: Anmelden
+  users:
+    forgot:
+      blank_email: Sie haben nicht eine E-Mail-Adresse.
+      email_not_associated_with_account: "Leider, '%{email}' ist nicht im Zusammenhang mit allen anderen Konten. <br/> Sind Sie sicher, die richtige E-Mail-Adresse eingegeben?"
+      email_reset_sent: "Eine E-Mail wurde Ihnen mit einem Link geschickt, um Ihr Passwort zurücksetzen."
+    reset:
+      code_invalid: "Es tut uns leid, aber diese Reset-Code ist abgelaufen oder ungültig. Wenn Sie Probleme versuchen Kopieren und Einfügen der URL aus Ihrem E-Mail in Ihrem Browser oder ein Neustart des Passwort-Reset-Prozess."
+      successful: "Passwort zurücksetzen erfolgreich %{email}"
+    setup_website_name: "Lassen Sie uns der Website als Erstes einen Namen geben. <a href='%{link}' name='%{title}'>Hier</a> können Sie den Namen Ihrer Website bearbeiten."
+    signup_disabled: Benutzerregistrierung ist deaktiviert
+    new:
+      fill_form: "Füllen Sie das Formular unten mit Ihren Angaben aus, damit wir loslegen können."
+      sign_up: Registrieren
+    create:
+      welcome: "Willkommen bei Refinery, %{who}"
+      signup_complete: Registrierung abgeschlossen!
+  user_mailer:
+    please_activate: Bitte aktivieren Sie Ihr neues Benutzerkonto
+    activated: Ihr Benutzerkonto wurde aktiviert!
+    activated_email: "%{who}, Ihr Benutzerkonto wurde aktiviert. Sie können jetzt Ihre Plugins wählen:"
+    account_created: Ihr Benutzerkonto wurde erstellt.
+    user_name: "Benutzername %{name}"
+    password: "Passwort %{password}"
+    visit_url: "Besuchen Sie folgende URL um Ihr Benutzerkonto zu aktivieren:"
+    link_to_reset_your_password: Link um Ihr Passwort zurückzusetzen
+  authlogic:
+    error_messages:
+      login_blank: darf nicht leer sein
+      login_not_found: ist nicht gültig
+      login_invalid: "darf nur Buchstaben, Zahlen, Leerzeichen und .-_@ enthalten."
+      consecutive_failed_logins_limit_exceeded: "Zu viele fehlerhafte Logins, das Benutzerkonto wurde deaktiviert."
+      email_invalid: sollte wie eine E-Mail-Adresse aussehen.
+      password_blank: darf nicht leer sein
+      password_invalid: ist nicht gültig
+      not_active: Ihr Benutzerkonto ist nicht aktiv
+      not_confirmed: Ihr Benutzerkonto ist nicht bestätigt
+      not_approved: Ihr Benutzerkonto ist nicht freigeschaltet
+      no_authentication_details: Sie haben keine Angaben zur Authentifizierung gemacht.
+    models:
+      user_session: UserSession
+    attributes:
+      user_session:
+        login: Login
+        email: E-Mail-Adresse
+        password: Passwort
+        remember_me: Anmeldung merken
+        incorrect: "Entschuldigung, %{login_field} oder Passwort waren nicht korrekt."

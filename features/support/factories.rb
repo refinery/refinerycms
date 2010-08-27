@@ -15,5 +15,3 @@ Factory.define :refinery_user, :parent => :user do |u|
     end
   end
 end
-
-

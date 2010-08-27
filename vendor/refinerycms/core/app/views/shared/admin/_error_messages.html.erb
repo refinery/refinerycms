@@ -1,0 +1,16 @@
+<% if object.errors.any? %>
+<div class="errorExplanation" id="errorExplanation">
+  <p><%= t('.problems_in_following_fields') %>:</p>
+  <ul>
+  <% unless defined?(include_object_name) and include_object_name %>
+    <% object.errors.each_value do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  <% else %>
+    <% object.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  <% end %>
+  </ul>
+</div>
+<% end %>

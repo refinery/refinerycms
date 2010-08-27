@@ -1,0 +1,27 @@
+es:
+  plugins:
+    refinery_dashboard:
+      title: Panel de control
+  admin:
+    dashboard:
+      index:
+        quick_tasks: Tareas comunes
+        add_a_new_page: Añadir nueva página
+        update_a_page: Actualizar una página
+        upload_a_image: Subir una imagen
+        upload_a_file: Subir un archivo
+        change_language: Cambiar el idioma
+        see_home_page: Ver la página principal
+      recent_activity:
+        latest_activity: Última actividad
+        latest_activity_message: %{kind} %{what} ha sido %{action}
+      recent_inquiries:
+        latest_inquiries: Últimas solicitudes
+  updated:
+    'with_article "las"':  actualizadas
+    'with_article "los"':  actualizados
+    'with_article "the"':  actualizado
+  created:
+    'with_article "las"':  creadas
+    'with_article "los"':  creados
+    'with_article "the"':  creado

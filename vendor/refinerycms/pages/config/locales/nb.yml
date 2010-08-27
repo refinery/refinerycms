@@ -1,0 +1,95 @@
+nb:
+  plugins:
+    refinery_pages:
+      title: Sider
+  admin:
+    pages_dialogs:
+      not_allowed: Du har ikke tilgang til denne funksjonaliteten.
+      page_link:
+        link_to_this_page: Link til denne siden
+      link_to:
+        your_page:
+          tab_name: Din side
+        web_address:
+          tab_name: Webside
+          location: Plassing
+          new_window: Nytt vindu
+          new_window_label: Huk av i denne boksen for å åpne lenken i et nytt nettleservindu.
+          not_sure: Usikker på hva du skal fylle inn i boksen over?
+          step1: Finn websiden du ønsker å lenke til.
+          step2: "Kopier adressen fra adressefeltet i nettleseren din, og lim den inn i boksen over."
+        email_address:
+          tab_name: E-post adresse
+          subject_line_optional: Valgfritt emne
+          body_optional: Valgfri melding
+          not_sure: Usikker på hva du skal fylle inn i boksene over?
+          step1: "Skriv eller copier og lim inn (f.eks. fra din adressebok) e-post adressen du ønsker å lenke til i '<strong>E-post Adresse</strong>' boksen over."
+          step2: "Bruk '<strong>Emne</strong>' boksen over om du ønsker at meldingen skal sendes med et <strong>forhåndsskrevet emne</strong>."
+          step3: "Bruk '<strong>Melding</strong>' boksen over om du ønsker at meldingen skal sendes med en <strong>forhåndsskrevet melding</strong>."
+        your_resource:
+          tab_name: Din fil
+          link_to_this_resource: Link til denne filen
+    pages:
+      page:
+        view_live: Se hvordan denne siden ser ut fra utsiden <br/><em>(Åpner i et nytt vindu)</em>
+        edit_this_page: Rediger denne siden
+        confirm_delete_page_title: Slett denne siden
+        confirm_delete_page_message: "Er du sikker på at du ønsker å slette siden '%{title}'?"
+        hidden: gjemt
+        draft: utkast
+      form_advanced_options:
+        toggle_advanced_options: Klikk for å få tilgang til meta tag innstillinger og meny alternativer
+        parent_page: Overliggende side
+        title: Tittel
+        create_content_section: Lag en innholdsseksjon
+        delete_content_section: Slett innholdsseksjon
+        advanced_options: Avanserte Alternativer
+        explain_page_different_title: Legg inn ønsket tittel om du ønsker at siden skal ha en annen tittel enn den som vises i menyen og i nettleseren.
+        parent_id_title: Overliggende side
+        custom_title: Valgfri tittel
+        title_type: "Type:"
+        title_types:
+          none: Ingen
+          text: Tekst
+          image: Bilde
+        custom_url: Valgfri adresse
+        custom_url_explanation: "Legg inn en adresse om denne siden skal linke til en ekstern webside, eller til en allerede eksisterende ressurs f.eks. en kontaktside.<br/>Merk: Denne adressen må peke til en plassering som allerede eksister; en ny plassering vil ikke bli opprettet."
+        draft: Utkast
+        show_in_menu_title: Vis i menyen
+        show_in_menu_description: Vis denne siden i menyen
+        show_in_menu_help: "Fjern haken i denne boksen om du ønsker å fjerne denne siden fra menyen. Dette kan være praktisk dersom du har en siden du ønsker å linke til direkte, men ikke ønsker at den skal være tilgjengelig fra menyen."
+        draft: Utkast
+        save_as_draft: Lagre som Utkast
+        save: Lagre
+        cancel: Avbryt
+        skip_to_first_child: Videresend direkte til første underside
+        skip_to_first_child_label: Videresender besøkende direkte til den første undersiden.
+        skip_to_first_child_help: "Dette alternativet gjør at denne siden går direkte til den første undersiden. Dette kan være praktisk når flere sider grupperes sammen."
+        link_url: "Videresen denne siden til en annen webside eller underside"
+        link_url_help: "Om du ønsker at denne siden skal videresende din besøkende til en annen webside eller underside når de velger siden fra menyen, legg inn en adresse. F.eks. http://google.no. Ellers la feltet stå tomt."
+        parent_page_help: "Du kan plassere en siden under en annen side ved å velge den i listen. Om du ønsker at denne siden skal være en toppnivå siden så lar du bare feltet stå tomt."
+        custom_title_help: "Om du ønsker at siden skal ha en annen tittel enn den som vises i menyen, velg 'Tekst' og skriv inn tittelen her."
+      form_advanced_options_seo:
+        seo: Søkemotor Optimalisering (SEO)
+        seo_override_title: Tittel i nettleser
+        seo_override_title_help: "Skriv inn en tittel på 5-10 som oppsummerer innholdet på denne siden."
+        meta_keywords_title: Meta stikkord
+        meta_keywords_help: "Skriv inn 5-10 stikkord som hører til denne siden. Separer stikkordene med komma."
+        meta_description_title: Meta beskrivelse
+        meta_description_help: "Skriv inn 2-3 setninger som beskriver denne siden."
+        js:
+          content_section:
+            create: Lag Innholdsseksjon
+            already_exists: "En innholdsseksjon med den tittelen eksisterer allerede, vennligst velg en annen tittel."
+            title_empty: "Du har ikke skrevet inn noen tittel for innholdsseksjonen, vennligst skriv inn en."
+            confirm_delete: "Dette vil fjerne innholdsseksjonen %{section_name} når siden lagres, og slette alt innhold som er lagt inn i den. Er du sikker på at du vil dette?"
+      index:
+        create_new_page: Lag Ny Side
+        reorder_pages: Endre Rekkefølgen på Sidene
+        reorder_pages_done: Ferdig å Endre Rekkefølgen
+        sorry_no_results: Beklager! Det søket returnerte ingen resultater.
+        no_pages_yet: "Det er ingen sider enda. Klikk 'Lag Ny Side' for å legge til din første side."
+  activerecord:
+    attributes:
+      page:
+        skip_to_first_child: "Vidersend til første underside?"
