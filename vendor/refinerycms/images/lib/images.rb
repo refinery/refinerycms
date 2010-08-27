@@ -14,6 +14,8 @@ module Refinery
         end
         app_images.configure_with(:rmagick)
 
+        app_images.configure_with(:heroku, ENV['S3_BUCKET']) if Refinery.s3_backend
+
         ### Extend active record ###
         app_images.define_macro(ActiveRecord::Base, :image_accessor)
 
