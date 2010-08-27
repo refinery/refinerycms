@@ -28,7 +28,8 @@ module Refinery
       @input = input
       @options = {
         :database => 'sqlite3',
-        :force => false
+        :force => false,
+        :heroku => false
       }
 
       @optparse = OptionParser.new do |opts|
@@ -46,6 +47,10 @@ module Refinery
 
         opts.on("-f", "--force", "Force overwriting of directory") do
           @options[:force] = true
+        end
+
+        opts.on("-h [APP_NAME]", "--heroku [APP_NAME]", "Set up and deploy to Heroku") do |app_name|
+          @options[:heroku] = app_name || ''
         end
 
         opts.separator ""
@@ -145,6 +150,10 @@ module Refinery
       find_and_replace('Gemfile', "gem 'refinerycms', :path => '.'",
                         "gem 'refinerycms', '~> #{Refinery.version}'")
 
+      # Add in AWS-S3 for Heroku
+      find_and_replace('Gemfile', "# gem 'aws-s3', :require => 'aws/s3'",
+                        "gem 'aws-s3', :require => 'aws/s3'") if @options[:heroku]
+
       # Replace app constant with Refinery
       # TODO: Find a way around this
       camelized_app_name = @app_name.gsub(/\/(.?)/) { "::#{$1.upcase}" }.gsub(/(?:^|_)(.)/) { $1.upcase }
@@ -170,6 +179,24 @@ module Refinery
 
       puts "\n\nSetting up your development database..\n"
       run_command("rake -f '#{@app_path.join('Rakefile')}' db:setup")
+
+      # Deploy to Heroku
+      if @options[:heroku]
+        puts "\n\nInitializing and committing to git..\n"
+        run_command("git init && git add . && git commit -am 'Initial Commit'")
+
+        puts "\n\nCreating Heroku app..\n"
+        run_command("heroku create #{@options[:heroku]}")
+
+        puts "\n\nPushing to Heroku (this takes time, be patient)..\n"
+        run_command("git push heroku master")
+
+        puts "\n\nSetting up the Heroku database..\n"
+        run_command("heroku rake db:setup")
+
+        puts "\n\nRestarting servers...\n"
+        run_command("heroku restart")
+      end
       # End automation
 
       # Output helpful messages
@@ -179,6 +206,12 @@ module Refinery
       puts "rails server"
       puts "\nThis will launch the built-in webserver at port 3000."
       puts "You can now see your site running in your browser at http://localhost:3000"
+
+      if @options[:heroku]
+        puts "\nIf you want files and images to work on heroku, you will need setup S3:"
+        puts "heroku config:add S3_BUCKET=XXXXXXXXX S3_KEY=XXXXXXXXX S3_SECRET=XXXXXXXXXX"
+      end
+
       puts "\nThanks for installing Refinery, enjoy creating your new application!"
       puts "---------\n\n"
     end
