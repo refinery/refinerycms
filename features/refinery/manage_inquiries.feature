@@ -20,6 +20,7 @@ Feature: Manage Inquiries
     And I follow "Spam"
     Then I should see "Hooray! You don't have any spam."
 
+  @inquiry-settings
   Scenario: Updating who gets notified
     When I go to the list of inquiries
     And I follow "Update who gets notified"
@@ -29,6 +30,7 @@ Feature: Manage Inquiries
     And I should see "'Notification Recipients' was successfully updated."
     And I should be on the list of inquiries
 
+  @inquiry-settings
   Scenario: Updating confirmation email copy
     When I go to the list of inquiries
     And I follow "Edit confirmation email"
