@@ -6,21 +6,21 @@ module Refinery
   module Resources
     class Engine < Rails::Engine
       initializer 'resources-with-dragonfly' do |app|
-        app_resources = Dragonfly::App[:resources]
+        app_resources = Dragonfly[:resources]
+        app_resources.configure_with(:rmagick)
         app_resources.configure_with(:rails) do |c|
-          c.register_analyser(Dragonfly::Analysis::FileCommandAnalyser)
           c.datastore.root_path = "#{::Rails.root}/public/system/resources"
-          c.path_prefix = '/system/resources'
-          c.secret      = 'SweinkelvyonCaccepla'
-          c.protect_from_dos_attacks = false
+          c.url_path_prefix = '/system/resources'
+          c.secret      = 'bawyuebIkEasjibHavry' #TODO: This shouldn't be here!
         end
-
         app_resources.configure_with(:heroku, ENV['S3_BUCKET']) if Refinery.s3_backend
 
-        ### Extend active record ###
         app_resources.define_macro(ActiveRecord::Base, :resource_accessor)
+        app_resources.analyser.register(Dragonfly::Analysis::FileCommandAnalyser)
 
-        app.config.middleware.insert_after 'Rack::Lock', 'Dragonfly::Middleware', :resources
+        ### Extend active record ###
+
+        app.config.middleware.insert_after 'Rack::Lock', 'Dragonfly::Middleware', :resources, '/system/resources'
 
         app.config.middleware.insert_before 'Dragonfly::Middleware', 'Rack::Cache', {
           :verbose     => true,

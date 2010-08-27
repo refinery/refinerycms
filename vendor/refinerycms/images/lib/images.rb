@@ -7,19 +7,21 @@ module Refinery
     class Engine < Rails::Engine
       initializer 'images-with-dragonfly' do |app|
         app_images = Dragonfly[:images]
+        app_images.configure_with(:rmagick)
         app_images.configure_with(:rails) do |c|
           c.datastore.root_path = "#{::Rails.root}/public/system/images"
-          c.path_prefix = '/system/images'
-          c.secret      = 'bawyuebIkEasjibHavry'
+          c.url_path_prefix = '/system/images'
+          c.secret      = 'bawyuebIkEasjibHavry' #TODO: This shouldn't be here!
         end
-        app_images.configure_with(:rmagick)
-
         app_images.configure_with(:heroku, ENV['S3_BUCKET']) if Refinery.s3_backend
 
-        ### Extend active record ###
         app_images.define_macro(ActiveRecord::Base, :image_accessor)
+        app_images.analyser.register(Dragonfly::Analysis::RMagickAnalyser)
+        app_images.analyser.register(Dragonfly::Analysis::FileCommandAnalyser)
 
-        app.config.middleware.insert_after 'Rack::Lock', 'Dragonfly::Middleware', :images
+        ### Extend active record ###
+
+        app.config.middleware.insert_after 'Rack::Lock', 'Dragonfly::Middleware', :images, '/system/images'
 
         app.config.middleware.insert_before 'Dragonfly::Middleware', 'Rack::Cache', {
           :verbose     => true,
