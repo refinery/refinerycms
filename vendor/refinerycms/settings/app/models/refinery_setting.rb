@@ -103,11 +103,9 @@ class RefinerySetting < ActiveRecord::Base
         setting.value = value
       else
         setting.value = value[:value]
-        scoping, setting.scoping = value[:scoping] if value.has_key?(:scoping)
-
-        if value.has_key?(:callback_proc_as_string)
-          setting.callback_proc_as_string = value[:callback_proc_as_string]
-        end
+        setting.scoping = value[:scoping] if value.has_key?(:scoping)
+        setting.callback_proc_as_string = value[:callback_proc_as_string] if value.has_key?(:callback_proc_as_string)
+        setting.destroyable = value[:destroyable] if value.has_key?(:destroyable)
       end
 
       setting.save
