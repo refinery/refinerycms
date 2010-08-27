@@ -35,8 +35,8 @@ module Crud
       }.merge!(new_options)
 
       module_eval %(
-        before_filter :find_#{singular_name},
-                      :only => [:update, :destroy, :edit, :show]
+        prepend_before_filter :find_#{singular_name},
+                              :only => [:update, :destroy, :edit, :show]
 
         def new
           @#{singular_name} = #{class_name}.new
@@ -85,7 +85,7 @@ module Crud
         end
 
         def edit
-          @#{singular_name} = #{class_name}.find(params[:id])
+          # object gets found by find_#{singular_name} function
         end
 
         def update
