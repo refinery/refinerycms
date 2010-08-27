@@ -26,6 +26,7 @@ class Admin::ImagesController < Admin::BaseController
     @url_override = admin_images_url(:dialog => from_dialog?)
   end
 
+  # This renders the image insert dialog
   def insert
     self.new if @image.nil?
 
@@ -43,6 +44,21 @@ class Admin::ImagesController < Admin::BaseController
     end
 
     render :action => "insert"
+  end
+
+  #This returns a url. If params[:size] is provided, it will generate a url for this size.
+  def url
+    @image = Image.find params[:id]
+    if params[:size].blank?
+      render :json => { :error => false, :url => @image.url, :width => @image.width, :height => @image.height }
+    else
+      begin
+        width, height = params[:size].split("x")
+        render :json => { :error => false, :url => @image.url(params[:size]), :width => width.to_i, :height => height.to_i }
+      rescue RuntimeError
+        render :json => { :error => true }
+      end
+    end
   end
 
   def create
