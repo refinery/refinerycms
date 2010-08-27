@@ -7,7 +7,7 @@
 
   <% unless hide_children or
             (children = menu_branch.children.reject{|c| !c.in_menu?}).empty? %>
-    <ul>
+    <ul class='clearfix'>
       <%=
         render :partial => "/shared/menu_branch",
                :collection => children,
