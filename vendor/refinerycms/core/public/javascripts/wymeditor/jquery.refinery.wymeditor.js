@@ -1258,8 +1258,8 @@ WYMeditor.editor.prototype.dialog = function( dialogType ) {
 
   if ((parent_node != null) && (parent_node.tagName.toLowerCase() != WYMeditor.A))
   {
-    // wrap the current selection with a funky span (not required for webkit)
-    if (this._selected_image == null && !$.browser.webkit)
+    // wrap the current selection with a funky span.
+    if (this._selected_image == null)
     {
       this.wrap("<span id='replace_me_with_" + this._current_unique_stamp + "'>", "</span>");
     }
@@ -1728,21 +1728,13 @@ WYMeditor.INIT_DIALOG = function(wym, selected, isIframe) {
   $(wym._options.dialogImageSelector).find(wym._options.submitSelector).click(function(e) {
     form = $(this.form);
     if ((url = form.find(wym._options.srcSelector).val()) != null && url.length > 0) {
-      if (!$.browser.msie) {
-        wym._exec(WYMeditor.INSERT_IMAGE, selected);
-      }
+      (image = $('<img />'))
+        .attr(WYMeditor.SRC, url)
+        .attr(WYMeditor.TITLE, form.find(wym._options.titleSelector).val())
+        .attr(WYMeditor.ALT, form.find(wym._options.titleSelector).val())
+        .attr(WYMeditor.REL, form.find(wym._options.sizeSelector).val());
 
-      if((image = $(wym._doc.body).find("img[src*=" + wym._current_unique_stamp + "]")).length == 0) {
-        image = $('<img />');
-      }
-
-      image.attr(WYMeditor.SRC, url)
-           .attr(WYMeditor.TITLE, form.find(wym._options.titleSelector).val())
-           .attr(WYMeditor.ALT, form.find(wym._options.titleSelector).val())
-           .attr(WYMeditor.REL, form.find(wym._options.sizeSelector).val());
-
-       if (!$.browser.webkit && replaceable != null && (this._selected_image == null || (this._selected_image != null && replaceable.parentNode != null)))
-       {
+       if (replaceable != null) {
          replaceable.after(image).remove();
        }
 
