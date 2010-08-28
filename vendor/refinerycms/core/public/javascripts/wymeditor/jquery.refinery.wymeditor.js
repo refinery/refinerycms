@@ -1261,7 +1261,19 @@ WYMeditor.editor.prototype.dialog = function( dialogType ) {
     // wrap the current selection with a funky span.
     if (this._selected_image == null)
     {
-      this.wrap("<span id='replace_me_with_" + this._current_unique_stamp + "'>", "</span>");
+      if ((selected == null || selected.tagName.toLowerCase() == WYMeditor.P) && wym._iframe.contentWindow.getSelection) {
+        // Fixes webkit issue where it would not paste at cursor.
+        selection = wym._iframe.contentWindow.getSelection();
+        selected_html = $(selected).html();
+
+        new_html = selected_html.substring(0, selection.focusOffset)
+                   + "<span id='replace_me_with_" + this._current_unique_stamp + "'></span>"
+                   + selected_html.substring(selection.focusOffset);
+
+        $(selected).html(new_html);
+      } else {
+        this.wrap("<span id='replace_me_with_" + this._current_unique_stamp + "'>", "</span>");
+      }
     }
   }
   else {
@@ -1443,6 +1455,9 @@ WYMeditor.editor.prototype.insert = function(html) {
 };
 
 WYMeditor.editor.prototype.wrap = function(left, right, selection) {
+  left = (typeof(left) != 'undefined' ? left : '');
+  right = (typeof(right) != 'undefined' ? right : '');
+
   // Do we have a selection?
   if (selection == null) { selection = this._iframe.contentWindow.getSelection();}
   if (selection.focusNode != null) {
@@ -4822,7 +4837,8 @@ WYMeditor.WymClassSafari.prototype.paste = function(sData) {
       sTmp = sTmp.replace(rExp, "<br />");
       if (x == 0 && $(container).html().replace(/<br\ ?\/?>/, "").length == 0) {
         $(container).html(sTmp);
-      } else {
+      }
+      else {
         $(container).after("<p>" + sTmp + "</p>");
       }
     }
