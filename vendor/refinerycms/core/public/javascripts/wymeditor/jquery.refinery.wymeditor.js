@@ -1749,7 +1749,7 @@ WYMeditor.INIT_DIALOG = function(wym, selected, isIframe) {
           .attr(WYMeditor.ALT, form.find(wym._options.titleSelector).val())
           .attr(WYMeditor.REL, form.find(wym._options.sizeSelector).val());
 
-        if (!$.browser.webkit && replaceable != null && (this._selected_image == null || (this._selected_image != null && replaceable.parentNode != null)))
+        if (replaceable != null && replaceable.parentNode != null)
         {
           replaceable.after(image).remove();
         }
