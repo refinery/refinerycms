@@ -1,3 +1,5 @@
+require 'action_controller'
+
 class Refinery::ApplicationController < ActionController::Base
 
   helper_method :home_page?,
