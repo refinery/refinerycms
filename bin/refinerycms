@@ -147,8 +147,8 @@ module Refinery
       end
 
       # Change from development to production
-      find_and_replace('Gemfile', "gem 'refinerycms', :path => '.'",
-                        "gem 'refinerycms', '~> #{Refinery.version}'")
+      find_and_replace('Gemfile', "gem 'refinerycms',              :path => '.'",
+                        "gem 'refinerycms',              '~> #{Refinery.version}'")
 
       # Add in AWS-S3 for Heroku
       find_and_replace('Gemfile', "# gem 'aws-s3', :require => 'aws/s3'",

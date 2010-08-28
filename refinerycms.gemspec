@@ -2,9 +2,9 @@
 
 Gem::Specification.new do |s|
   s.name              = %q{refinerycms}
-  s.version           = %q{0.9.8.0.beta4.pre}
+  s.version           = %q{0.9.8.0.beta5.pre}
   s.description       = %q{A beautiful open source Ruby on Rails content manager for small business. Easy to extend, easy to use, lightweight and all wrapped up in a super slick UI.}
-  s.date              = %q{2010-08-27}
+  s.date              = %q{2010-08-28}
   s.summary           = %q{A beautiful open source Ruby on Rails content manager for small business.}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
@@ -42,6 +42,10 @@ Gem::Specification.new do |s|
     'config/database.yml.mysql',
     'config/database.yml.postgresql',
     'config/database.yml.sqlite3',
+    'config/environments',
+    'config/environments/development.rb',
+    'config/environments/production.rb',
+    'config/environments/test.rb',
     'config/initializers',
     'config/initializers/acts_as_indexed_config.rb',
     'config/initializers/field_with_error_fix.rb',

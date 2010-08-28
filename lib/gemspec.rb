@@ -7,7 +7,7 @@ end
 rejection_patterns = [
   "public\/system",
   "^config\/(application|boot|environment).rb$",
-  "^config\/environments",
+  #"^config\/environments",
   "^config\/initializers\/(backtrace_silencers|inflections|mime_types|secret_token|session_store).rb$",
   "^config\/(cucumber|database|i18n\-js).yml$",
   "^public\/",
