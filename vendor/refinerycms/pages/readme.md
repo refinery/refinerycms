@@ -152,5 +152,5 @@ Simply lets you select from an existing image found in the Images tab or upload 
 
 Some pages you have to keep in order for Refinery to stay fully functional:
 
+* Home page - the page that has ``link_url`` to ``root_url`` (normally /)
 * Page not found - the default 404 page
-* Down for maintenance - renders when you're site is being updated.
