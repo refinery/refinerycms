@@ -11,7 +11,7 @@ Refinery's dashboard is a plugin that does two simple things
 
 ## How do I Hook my Custom Plugin into the Recent Activity log?
 
-Read ["Getting your Plugin to Report Activity in the Dashboard"](http://github.com/resolve/refinerycms/blob/master/vendor/plugins/refinery/plugins.md) in the Plugin documentation.
+Read ["Getting your Plugin to Report Activity in the Dashboard"](http://github.com/resolve/refinerycms/blob/rails2-stable/vendor/plugins/refinery/plugins.md) in the Plugin documentation.
 
 ## Related Settings
 
