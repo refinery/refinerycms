@@ -91,9 +91,9 @@ This bit is important. It's where all the controllers are held to manage pages i
 
     end
 
-This single controller allows us to create, read, update and delete pages in the backend. With a little bit of Refinery magic we utilise the [crudify mixin](http://github.com/resolve/refinerycms/blob/master/vendor/plugins/refinery/crud.md) which gives us all of these regular features out of the box.
+This single controller allows us to create, read, update and delete pages in the backend. With a little bit of Refinery magic we utilise the [crudify mixin](http://github.com/resolve/refinerycms/blob/rails2-stable/vendor/plugins/refinery/crud.md) which gives us all of these regular features out of the box.
 
-How crudify works is an entire topic of it's own. Checkout the [crudify documentation](http://github.com/resolve/refinerycms/blob/master/vendor/plugins/refinery/crud.md) to get an insight into how that works.
+How crudify works is an entire topic of it's own. Checkout the [crudify documentation](http://github.com/resolve/refinerycms/blob/rails2-stable/vendor/plugins/refinery/crud.md) to get an insight into how that works.
 
 ### app/views and app/helpers
 
