@@ -2,9 +2,9 @@
 
 Gem::Specification.new do |s|
   s.name              = %q{refinerycms}
-  s.version           = %q{0.9.8.0.rc1.pre}
+  s.version           = %q{0.9.8.0.rc2.pre}
   s.description       = %q{A Ruby on Rails CMS that supports Rails 3. It's easy to extend and sticks to 'the Rails way' where possible.}
-  s.date              = %q{2010-08-30}
+  s.date              = %q{2010-08-31}
   s.summary           = %q{A Ruby on Rails CMS that supports Rails 3}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
@@ -13,17 +13,18 @@ Gem::Specification.new do |s|
   s.require_paths     = %w(lib vendor/refinerycms)
   s.executables       = %w(refinerycms)
 
-  s.add_dependency    'rails',            '~> 3.0.0.rc2'
-  s.add_dependency    'bundler',          '~> 1.0.0'
-  s.add_dependency    'childlabor',       '~> 0.0.2'
+  s.add_dependency    'rails',                '~> 3.0.0'
+  s.add_dependency    'bundler',              '~> 1.0.0'
+  s.add_dependency    'childlabor',           '~> 0.0.2'
 
-  s.add_dependency    'acts_as_indexed',  '= 0.6.5'
-  s.add_dependency    'friendly_id',      '~> 3.1.3'
-  s.add_dependency    'truncate_html',    '= 0.4'
-  s.add_dependency    'will_paginate',    '>= 3.0.pre2'
-  s.add_dependency    'authlogic',        '~> 2.1.6'
-  s.add_dependency    'rack-cache'
-  s.add_dependency    'dragonfly'
+  s.add_dependency    'parndt-acts_as_tree',  '~> 1.2.5'
+  s.add_dependency    'acts_as_indexed',      '~> 0.6.5'
+  s.add_dependency    'friendly_id',          '~> 3.1.3'
+  s.add_dependency    'truncate_html',        '= 0.4'
+  s.add_dependency    'will_paginate',        '~> 3.0.pre'
+  s.add_dependency    'authlogic',            '~> 2.1.6'
+  s.add_dependency    'rack-cache',           '~> 0.5.2'
+  s.add_dependency    'dragonfly',            '~> 0.7.4'
 
   s.files             = [
     '.gitignore',
