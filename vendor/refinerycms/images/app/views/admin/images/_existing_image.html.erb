@@ -4,7 +4,12 @@
     <ul>
       <% @images.each do |image| %>
         <li<%= " class='selected'" if @image_id == image.id %>>
-          <%= image_fu image, :dialog_thumb, {:alt => image.title, :title => image.title, :id => "image_#{image.id}", :'data-id' => image.id} -%>
+          <%= image_fu(image, :dialog_thumb, {
+                         :alt => image.title,
+                         :title => image.title,
+                         :id => "image_#{image.id}",
+                         :'data-id' => image.id
+                       }) -%>
         </li>
       <% end -%>
     </ul>
@@ -13,12 +18,9 @@
   <% unless @app_dialog %>
     <div id='existing_image_size_area' class='clearfix'>
       <input type='hidden' name='selected_image_size' id='selected_image_size' />
-      <h2><%= t('.size') %></h2>
       <p>
-        <label>
-          <input type="checkbox" id="wants_to_resize_image" name="wants_to_resize_image" value="1" checked="checked" />
-          <%= t('.resize_image') %>
-        </label>
+        <input type="checkbox" id="wants_to_resize_image" name="wants_to_resize_image" value="1" checked="checked" />
+        <label for='wants_to_resize_image' class='stripped'><strong><%= t('.resize_image').html_safe %></strong></label>
       </p>
       <ul>
         <%
