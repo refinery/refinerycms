@@ -5,11 +5,12 @@ class Image < ActiveRecord::Base
 
   image_accessor :image
 
-  validates :image, :presence  => { :message => I18n.t('image_specify_for_upload') },
+  validates :image, :presence  => { :message => ::I18n.t('image_specify_for_upload') },
                     :length    => { :maximum => MAX_SIZE_IN_MB.megabytes,
-                                    :message => I18n.t('image_should_be_smaller_than_max_image_size',
+                                    :message => ::I18n.t('image_should_be_smaller_than_max_image_size',
                                                        :max_image_size => MAX_SIZE_IN_MB.megabytes) }
-  validates_property :mime_type, :of => :image, :in => %w(image/jpeg image/png image/gif)
+  validates_property :mime_type, :of => :image, :in => %w(image/jpeg image/png image/gif),
+                     :message => ::I18n.t('image_must_be_these_formats')
 
   # Docs for acts_as_indexed http://github.com/dougal/acts_as_indexed
   acts_as_indexed :fields => [:title]
