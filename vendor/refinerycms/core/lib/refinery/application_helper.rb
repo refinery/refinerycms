@@ -4,7 +4,11 @@ module Refinery
     include Refinery::HtmlTruncationHelper
 
     def t(key, options = {})
-      super.to_s.gsub(/<span[^>]*>/, 'i18n: ').gsub('</span>', '').gsub(', ', '.')
+      if (val = super) =~ /class.+?translation_missing/
+        val = val.to_s.gsub(/<span[^>]*>/, 'i18n: ').gsub('</span>', '').gsub(', ', '.')
+      end
+      
+      val
     end
 
     # This is used to display the title of the current object (normally a page) in the browser's titlebar.
