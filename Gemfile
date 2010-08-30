@@ -42,7 +42,7 @@ gem 'refinerycms-inquiries',    '~> 0.9.8.1', :require => 'inquiries'
 # gem 'refinerycms-portfolio',  '~> 0.9.7', :require => 'portfolio'
 
 # Add i18n support
-gem 'refinerycms-i18n',         '~> 0.9.8', :require => 'refinery/i18n'
+gem 'refinerycms-i18n',         '~> 0.9.8.2', :require => 'refinery/i18n'
 gem 'routing-filter'
 
 # Add acts_as_tree support
