@@ -32,26 +32,20 @@ gem 'sqlite3-ruby',             :require => 'sqlite3'
 
 # REFINERY CMS ================================================================
 
-# Specify the Engines to use:
-
+# Specify the Refinery CMS core:
 gem 'refinerycms',              :path => '.'
 
-# Specify additional Refinery CMS Engines here:
+# Specify additional Refinery CMS Engines here (all optional):
 gem 'refinerycms-inquiries',    '~> 0.9.8.1', :require => 'inquiries'
 # gem 'refinerycms-news',       '~> 0.9.8', :require => 'news'
 # gem 'refinerycms-portfolio',  '~> 0.9.7', :require => 'portfolio'
+# gem 'refinerycms-theming',    '~> 0.9.8', :require => 'theming'
 
-# Add i18n support
-gem 'refinerycms-i18n',         '~> 0.9.8.2', :require => 'refinery/i18n'
-gem 'routing-filter'
-
-# Add acts_as_tree support
-gem 'acts_as_tree',             :git => 'git://github.com/parndt/acts_as_tree.git'
+# Add i18n support (optional, you can remove this if you really want to).
+gem 'refinerycms-i18n',         '~> 0.9.8.3', :require => 'refinery/i18n'
 
 # Specify a version of RMagick that works in your environment:
 gem 'rmagick',                  '~> 2.12.0', :require => false
-
-gem 'dragonfly',                '~> 0.7.4'
 
 # END REFINERY CMS ============================================================
 

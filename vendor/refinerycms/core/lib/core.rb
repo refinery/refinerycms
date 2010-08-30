@@ -1,4 +1,5 @@
 require 'rails/all'
+require 'acts_as_tree'
 require 'acts_as_indexed'
 require 'friendly_id'
 require 'truncate_html'
