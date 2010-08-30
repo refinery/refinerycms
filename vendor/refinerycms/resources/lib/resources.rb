@@ -9,9 +9,10 @@ module Refinery
         app_resources = Dragonfly[:resources]
         app_resources.configure_with(:rmagick)
         app_resources.configure_with(:rails) do |c|
-          c.datastore.root_path = "#{::Rails.root}/public/system/resources"
+          c.datastore.root_path = Rails.root.join('public', 'system', 'resources').to_s
           c.url_path_prefix = '/system/resources'
-          c.secret      = 'bawyuebIkEasjibHavry' #TODO: This shouldn't be here!
+          c.secret = RefinerySetting.find_or_set(:dragonfly_secret,
+                                                 Array.new(24) { rand(256) }.pack('C*').unpack('H*').first)
         end
         app_resources.configure_with(:heroku, ENV['S3_BUCKET']) if Refinery.s3_backend
 
