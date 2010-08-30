@@ -4,7 +4,7 @@ en:
       title: Images
   image_specify_for_upload: You must specify an image for upload
   image_should_be_smaller_than_max_image_size: Image should be smaller than %{max_image_size} in size
-  image_must_be_these_formats: Your image must be either a JPG, PNG or GIF
+  image_must_be_these_formats: 'Your image must be either a JPG, PNG or GIF'
   admin:
     images:
       delete: Remove this image forever
