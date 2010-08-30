@@ -20,6 +20,8 @@ module Refinery
     # replace all system images with a thumbnail version of them (handy for all images inside a page part)
     # for example, <%= content_fu(@page[:body], :preview) %> converts all /system/images to their 'preview' thumbnail
     def content_fu(content, thumbnail)
+      raise NotImplementedError # todo: implement for new syntax.
+      
       content.scan(/\/system\/images([^\"\ ]*)/).flatten.each do |match|
         parts = match.split(".")
         extension = parts.pop
@@ -47,23 +49,34 @@ module Refinery
 
     # image_fu is a helper for inserting an image that has been uploaded into a template.
     # Say for example that we had a @model.image (@model having a belongs_to :image relationship)
-    # and we wanted to display the 'preview' thumbnail then we can use image_fu like this:
-    # <%= image_fu @model.image, :preview %> or with no thumbnail: <%= image_fu @model.image %>
-    def image_fu(image, thumbnail = nil, options={})
+    # and we wanted to display a thumbnail cropped to 200x200 then we can use image_fu like this:
+    # <%= image_fu @model.image, '200x200' %> or with no thumbnail: <%= image_fu @model.image %>
+    def image_fu(image, geometry = nil, options={})
       if image.present?
-        thumbnail_sizes = RefinerySetting.find_or_set(:image_thumbnails, {})
-        image_thumbnail = if (size = thumbnail_sizes[thumbnail]).present?
-          image.image.thumb(size)
+        if geometry.is_a?(Symbol)
+          if (sizes = RefinerySetting.find_or_set(:image_thumbnails, {})) and sizes.keys.include?(geometry)
+            geometry = sizes[geometry].presence
+          end
+        end
+        
+        thumbnail = if geometry.present? && !geometry.is_a?(Symbol)
+          image.image.thumb(geometry)
         else
           image.image
         end
+        
+        thumbnail.instance_eval %{
+          def url(*args)
+            "\#{super}/#{image.image_uid.split('/').pop}"
+          end
+        }
 
         # call rails' image tag function with default alt, width and height options.
         # if any other options were supplied these are merged in and can replace the defaults.
-        image_tag(image_thumbnail.url, {
+        image_tag(thumbnail.url, {
           :alt => image.respond_to?(:title) ? image.title : image.image_name,
-          :width => image_thumbnail.width,
-          :height => image_thumbnail.height
+          :width => thumbnail.width,
+          :height => thumbnail.height
         }.merge(options))
       end
     end
