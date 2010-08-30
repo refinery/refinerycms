@@ -164,7 +164,7 @@ module Refinery
       # ensure we match the path without the locale.
       path = request.path
       if defined?(::Refinery::I18n) and ::Refinery::I18n.enabled?
-        path = path.split("/#{I18n.locale}").last
+        path = path.split("/#{::I18n.locale}").last
       end
 
       current_page?(page) or
