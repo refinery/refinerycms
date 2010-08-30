@@ -821,8 +821,8 @@ body.dialog form {
 }
 .dialog span.radio {
   display: block;
-  line-height: 36px;
-  height: 36px;
+  line-height: 18px;
+  padding: 6px 0px;
 }
 .dialog span.radio * {
   cursor: pointer;
