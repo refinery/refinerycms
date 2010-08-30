@@ -159,7 +159,9 @@ module Refinery::ApplicationHelper
   def selected_page?(page)
     # ensure we match the path without the locale.
     path = request.path
-    path = path.split("/#{I18n.locale}").last if ::Refinery::I18n.enabled?
+    if defined?(::Refinery::I18n) and ::Refinery::I18n.enabled?
+      path = path.split("/#{I18n.locale}").last
+    end
 
     current_page?(page) or
       (path =~ Regexp.new(page.menu_match) if page.menu_match.present?) or

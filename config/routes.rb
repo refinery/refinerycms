@@ -2,7 +2,7 @@ Refinery::Application.routes.draw do
 
   # REFINERY CMS ================================================================
 
-  filter(:refinery_locales)
+  filter(:refinery_locales) if defined?(RoutingFilter::RefineryLocales) # optionally use i18n.
 
   root :to => 'pages#home'
 

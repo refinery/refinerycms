@@ -14,8 +14,7 @@ class Refinery::ApplicationController < ActionController::Base
   include Crud # basic create, read, update and delete methods
   include AuthenticatedSystem
 
-  before_filter :find_or_set_locale,
-                :find_pages_for_menu,
+  before_filter :find_pages_for_menu,
                 :show_welcome_page?
 
   after_filter :store_current_location!,
@@ -68,10 +67,6 @@ class Refinery::ApplicationController < ActionController::Base
 
 protected
 
-  def default_url_options(options={})
-    ::Refinery::I18n.enabled? ? { :locale => I18n.locale } : {}
-  end
-
   # get all the pages to be displayed in the site menu.
   def find_pages_for_menu
     @menu_pages = Page.top_level
@@ -87,19 +82,6 @@ protected
   def render(action = nil, options = {}, &blk)
     present(@page) unless admin? or @meta.present?
     super
-  end
-
-  def find_or_set_locale
-    if ::Refinery::I18n.enabled?
-      if ::Refinery::I18n.has_locale?(locale = params[:locale].try(:to_sym))
-        ::I18n.locale = locale
-      elsif locale.present? and locale != ::Refinery::I18n.default_frontend_locale
-        params[:locale] = I18n.locale = ::Refinery::I18n.default_frontend_locale
-        redirect_to(params, :notice => "The locale '#{locale.to_s}' is not supported.") and return
-      else
-        ::I18n.locale = ::Refinery::I18n.default_frontend_locale
-      end
-    end
   end
 
   def show_welcome_page?
