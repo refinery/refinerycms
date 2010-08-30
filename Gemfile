@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 gem 'bundler',                  '~> 1.0.0'
-gem 'rails',                    '3.0.0.rc2'
+gem 'rails',                    '3.0.0'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -51,7 +51,7 @@ gem 'acts_as_tree',             :git => 'git://github.com/parndt/acts_as_tree.gi
 # Specify a version of RMagick that works in your environment:
 gem 'rmagick',                  '~> 2.12.0', :require => false
 
-gem 'dragonfly'
+gem 'dragonfly',                '~> 0.7.4'
 
 # END REFINERY CMS ============================================================
 
