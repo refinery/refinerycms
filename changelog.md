@@ -1,3 +1,14 @@
+## 0.9.7.13 [23 August 2010]
+
+* Russian language support (RU). [Sun](http://github.com/sunchess)
+* We <3 HTML5 (better supported HTML5 semantics) [Joe Sak](http://github.com/joemsak) and [Philip Arndt](http://github.com/parndt)
+* Fixed issue with Refinery's 404 page. [Philip Arndt](http://github.com/parndt)
+* Fixed recent inquiries display on dashboard when HTML present. [Steven Heidel](http://github.com/stevenheidel)
+* Better dutch (NL) translations. [Michael van Rooijen](http://github.com/meskyanichi)
+* Fixed for IE and added fixes to WYMeditor from the core project. [Philip Arndt](http://github.com/parndt)
+* Added pagination for search results to the plugin generator. [Amanda Wagener](http://github.com/awagener)
+* [See full list](http://github.com/resolve/refinerycms/compare/0.9.7.12...0.9.7.13)
+
 ## 0.9.7.12 [11 August 2010]
 
 * Smoothed the sortable list in the admin UI. [Joe Sak](http://github.com/joemsak)
