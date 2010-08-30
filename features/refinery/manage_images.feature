@@ -25,7 +25,7 @@ Feature: Manage Images
     And I follow "Create New Image"
     And I attach the image at "features/uploads/refinery_is_awesome.txt"
     And I press "Save"
-    Then I should see "Your image must be either a JPG, PNG or GIF"
+    Then I should not see "successfully created"
     And I should have 0 images
 
   Scenario: Edit Existing Image
