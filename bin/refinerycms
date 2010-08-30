@@ -156,7 +156,7 @@ module Refinery
 
       # Replace app constant with Refinery
       # TODO: Find a way around this
-      camelized_app_name = @app_name.gsub(/\/(.?)/) { "::#{$1.upcase}" }.gsub(/(?:^|_)(.)/) { $1.upcase }
+      camelized_app_name = @app_name.gsub(/\W/, '_').squeeze('_').gsub(/\/(.?)/) { "::#{$1.upcase}" }.gsub(/(?:^|_)(.)/) { $1.upcase }
       %w(Rakefile config.ru config/application.rb config/environment.rb
           config/environments/development.rb config/environments/production.rb config/environments/test.rb
           config/initializers/secret_token.rb config/initializers/session_store.rb).each do |hackable|
