@@ -7,7 +7,7 @@ module Refinery
       if (val = super) =~ /class.+?translation_missing/
         val = val.to_s.gsub(/<span[^>]*>/, 'i18n: ').gsub('</span>', '').gsub(', ', '.')
       end
-      
+
       val
     end
 
@@ -25,7 +25,7 @@ module Refinery
     # for example, <%= content_fu(@page[:body], :preview) %> converts all /system/images to their 'preview' thumbnail
     def content_fu(content, thumbnail)
       raise NotImplementedError # todo: implement for new syntax.
-      
+
       content.scan(/\/system\/images([^\"\ ]*)/).flatten.each do |match|
         parts = match.split(".")
         extension = parts.pop
@@ -62,18 +62,12 @@ module Refinery
             geometry = sizes[geometry].presence
           end
         end
-        
+
         thumbnail = if geometry.present? && !geometry.is_a?(Symbol)
           image.image.thumb(geometry)
         else
           image.image
         end
-        
-        thumbnail.instance_eval %{
-          def url(*args)
-            "\#{super}/#{image.image_uid.split('/').pop}"
-          end
-        }
 
         # call rails' image tag function with default alt, width and height options.
         # if any other options were supplied these are merged in and can replace the defaults.
