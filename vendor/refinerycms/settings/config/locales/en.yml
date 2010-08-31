@@ -2,6 +2,7 @@ en:
   plugins:
     refinery_settings:
       title: Settings
+      description: Manage Refinery settings
   admin:
     refinery_settings:
       delete: Remove this setting forever

@@ -45,10 +45,8 @@ module Refinery
 
       config.after_initialize do
         Refinery::Plugin.register do |plugin|
-          plugin.title = "Images"
           plugin.name = "refinery_images"
           plugin.directory = "images"
-          plugin.description = "Manage images"
           plugin.version = %q{0.9.8}
           plugin.menu_match = /(refinery|admin)\/image(_dialog)?s$/
           plugin.activity = {

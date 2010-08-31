@@ -2,6 +2,7 @@ en:
   plugins:
     refinery_pages:
       title: Pages
+      description: Manage content pages
   admin:
     pages_dialogs:
       page_link:
