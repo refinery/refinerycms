@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/alan/rack-test.git
-  revision: 167c2b2
+  revision: 167c2b2ca4c32b1645ec29d9a82d4e022d73bb7a
   specs:
     rack-test (0.5.4)
       rack (>= 1.0)
@@ -52,7 +52,7 @@ GEM
       activemodel (= 3.0.0)
       activesupport (= 3.0.0)
     activesupport (3.0.0)
-    acts_as_indexed (0.6.5)
+    acts_as_indexed (0.6.6)
     arel (1.0.1)
       activesupport (~> 3.0.0)
     authlogic (2.1.6)
@@ -113,7 +113,7 @@ GEM
     rack (1.2.1)
     rack-cache (0.5.2)
       rack (>= 0.4)
-    rack-mount (0.6.12)
+    rack-mount (0.6.13)
       rack (>= 1.0.0)
     rails (3.0.0)
       actionmailer (= 3.0.0)
