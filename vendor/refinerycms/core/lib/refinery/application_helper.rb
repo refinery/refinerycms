@@ -57,21 +57,9 @@ module Refinery
     # <%= image_fu @model.image, '200x200' %> or with no thumbnail: <%= image_fu @model.image %>
     def image_fu(image, geometry = nil, options={})
       if image.present?
-        if geometry.is_a?(Symbol)
-          if (sizes = RefinerySetting.find_or_set(:image_thumbnails, {})) and sizes.keys.include?(geometry)
-            geometry = sizes[geometry].presence
-          end
-        end
-
-        thumbnail = if geometry.present? && !geometry.is_a?(Symbol)
-          image.image.thumb(geometry)
-        else
-          image.image
-        end
-
         # call rails' image tag function with default alt, width and height options.
         # if any other options were supplied these are merged in and can replace the defaults.
-        image_tag(thumbnail.url, {
+        image_tag((thumbnail = image.thumbnail(geometry)).url, {
           :alt => image.respond_to?(:title) ? image.title : image.image_name,
           :width => thumbnail.width,
           :height => thumbnail.height
