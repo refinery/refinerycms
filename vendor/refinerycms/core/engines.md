@@ -107,9 +107,11 @@ Works exactly the same as ``config/routes.rb`` in your app except this routes fi
 
 This file runs when your site is started up. All is does is registers this plugin with Refinery so it knows that it exists, how to handle it in the Refinery admin menu and how to render recent activity on the Dashboard (see "Getting your Plugin to Report Activity in the Dashboard")
 
+NOTE: The latest version of Refinery requires that you only specify a plugin.name. plugin.title &amp; plugin.description will be looked up by the I18n system.
+
+# pages/lib/pages.rb
     Refinery::Plugin.register do |plugin|
-      plugin.title = "Pages"
-      plugin.description = "Manage content pages"
+      plugin.name = "pages"
       plugin.version = 1.0
       plugin.menu_match = /(refinery|admin)\/page(_dialog|part)?s$/
       plugin.activity = {
@@ -121,6 +123,13 @@ This file runs when your site is started up. All is does is registers this plugi
       }
     end
 
+# pages/config/locales/en.yml
+    en:
+      plugins:
+        refinery_pages:
+          title: Pages
+          description: Manage content pages
+
 ## Getting your Plugin to Report Activity in the Dashboard
 
 Recent activity reporting is built right in, so all you need to do is follow the convention below and your plugin will start showing up in the recent activity list of the Dashboard.
@@ -128,8 +137,7 @@ Recent activity reporting is built right in, so all you need to do is follow the
 In our example above we showed the use of ``plugin.activity`` for the pages plugin.
 
     Refinery::Plugin.register do |plugin|
-      plugin.title = "Pages"
-      plugin.description = "Manage content pages"
+      plugin.name = "pages"
       plugin.version = 1.0
       plugin.menu_match = /(refinery|admin)\/page(_dialog|part)?s$/
       plugin.activity = {

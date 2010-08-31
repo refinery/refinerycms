@@ -9,9 +9,7 @@ module Refinery
 
       config.after_initialize do
         Refinery::Plugin.register do |plugin|
-          plugin.title = "Users"
           plugin.name = "refinery_users"
-          plugin.description = "Manage users"
           plugin.version = %q{0.9.8}
           plugin.menu_match = /(refinery|admin)\/users$/
           plugin.activity = {

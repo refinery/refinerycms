@@ -2,6 +2,7 @@ en:
   plugins:
     refinery_files:
       title: Files
+      description: Upload and link to files
   file_specify_for_upload: You must specify file for upload
   file_should_be_smaller_than_max_file_size: File should be smaller than %{max_file_size} in size
   admin:
