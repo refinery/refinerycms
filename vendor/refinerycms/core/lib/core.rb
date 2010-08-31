@@ -1,5 +1,5 @@
 require 'rails/all'
-require 'acts_as_tree'
+require 'awesome_nested_set'
 require 'acts_as_indexed'
 require 'friendly_id'
 require 'truncate_html'
