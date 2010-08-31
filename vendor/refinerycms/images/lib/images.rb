@@ -22,6 +22,16 @@ module Refinery
         app_images.analyser.register(Dragonfly::Analysis::RMagickAnalyser)
         app_images.analyser.register(Dragonfly::Analysis::FileCommandAnalyser)
 
+        app_images.instance_eval %{
+          def url_for(job, *args)
+            image_url = nil
+            if (fetcher = job.steps.detect{|s| s.class.step_name == :fetch}).present?
+              image_url = ['', fetcher.uid.to_s.split('/').last].join('/')
+            end
+            "\#{super}\#{image_url}"
+          end
+        }
+
         ### Extend active record ###
 
         app.config.middleware.insert_after 'Rack::Lock', 'Dragonfly::Middleware', :images, '/system/images'
