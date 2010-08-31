@@ -115,12 +115,12 @@ module Refinery
 
     def generate!
       # Generate a rails application
-      # TODO: Check output to see whether or not it worked
       rails_command = "rails new #{@app_path}"
       rails_command << " --database #{@options[:database]}"
       rails_command << " --force" if @options[:force]
       rails_command << " --skip-test-unit --skip-prototype"
       run_command(rails_command, {:cd => false})
+      abort "Generating Rails application failed. Exiting..." unless $?.success?
     end
 
     def refine!
