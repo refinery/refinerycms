@@ -1,8 +1,9 @@
 class Page < ActiveRecord::Base
   validates :title, :presence => true
 
-  acts_as_tree :order => "position ASC",
-               :include => [:children, :slugs]
+  acts_as_nested_set
+
+  default_scope order("position ASC").includes(:children, :slugs)
 
   # Docs for friendly_id http://github.com/norman/friendly_id
   has_friendly_id :title, :use_slug => true,

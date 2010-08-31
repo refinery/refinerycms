@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/alan/rack-test.git
-  revision: 167c2b2ca4c32b1645ec29d9a82d4e022d73bb7a
+  revision: 167c2b2
   specs:
     rack-test (0.5.4)
       rack (>= 1.0)
@@ -15,7 +15,7 @@ PATH
       childlabor (~> 0.0.2)
       dragonfly (~> 0.7.4)
       friendly_id (~> 3.1.3)
-      parndt-acts_as_tree (~> 1.2.5)
+      moretea-awesome_nested_set (= 1.4.3.1)
       rack-cache (~> 0.5.2)
       rails (~> 3.0.0)
       truncate_html (= 0.4)
@@ -106,8 +106,9 @@ GEM
       mime-types
       treetop (>= 1.4.5)
     mime-types (1.16)
+    moretea-awesome_nested_set (1.4.3.1)
+      activerecord (~> 3.0.0)
     nokogiri (1.4.3.1)
-    parndt-acts_as_tree (1.2.5)
     polyglot (0.3.1)
     rack (1.2.1)
     rack-cache (0.5.2)
