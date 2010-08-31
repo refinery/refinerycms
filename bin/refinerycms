@@ -129,8 +129,8 @@ module Refinery
         FileUtils::cp_r Refinery.root.join(folder), @app_path, :verbose => false
       end
       %w(.gitignore config/routes.rb config/settings.rb config/environments/production.rb config/initializers/acts_as_indexed_config.rb
-          config/initializers/field_with_error_fix.rb config/initializers/fix_rack.rb config/initializers/locale.rb).each do |file|
-        FileUtils::cp_r Refinery.root.join(file), @app_path.join(file), :verbose => false
+          config/initializers/field_with_error_fix.rb config/initializers/fix_rack.rb).each do |file|
+        FileUtils::cp_r Refinery.root.join(file), @app_path.join(file), :verbose => false if Refinery.root.join(file).exist?
       end
 
       # Remove default application layout and public/index.html
