@@ -1,4 +1,4 @@
-# Todos required for 1.0 release
+# Todos required for 0.9.9 release
 
 ## Engine API
 
@@ -25,4 +25,8 @@
   - You can run a rake task with your locale e.g for Slovenian:
   ``rake translate:lost_in_translation LOCALE=sl``
 
-# Organise a party and media for 1.0 release
+# Todos required for 1.0.0 release
+
+* All tests much pass
+* Test and perfect everything.
+* Organise a party and media
