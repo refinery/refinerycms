@@ -2,31 +2,30 @@ de:
   plugins:
     refinery_files:
       title: Dateien
-  must_choose_file: "Sie müssen eine Datei zum Hochladen auswählen"
-  file_should_be_smaller_than_max_file_size: "Die Dateien sollten kleiner als %{max_file_size} werden"
+      description: Dateien hochladen und verlinken
+  file_specify_for_upload: Sie müssen eine Datei zum Hochladen angeben
+  file_should_be_smaller_than_max_file_size: Die Dateien sollten kleiner als %{max_file_size} sein
   admin:
     resources:
+      delete: Diese Datei für immer löschen
+      edit: Diese Datei bearbeiten    
       form:
-        file_to_upload: Datei zum Hochladen
         download_current: Download der aktuellen Datei
         or: oder
-        replace: ", ersetzen Sie es mit diesem einen..."
+        replace: ", mit dieser ersetzen..."
         maximum_file_size: "Die maximale Dateigröße beträgt %{megabytes} Megabyte."
       resource:
-        download: "Diese Datei herunterladen (%{size})"
-        edit: Bearbeiten Sie diese Datei
-        delete:
-          message: "Sind Sie sicher, die Sie löschen möchten '%{title}'?"
-          title: Löschen Sie diese Datei immer
+        download: Diese Datei herunterladen (%{size})
       index:
         upload_new: Neue Datei Hochladen
-        no_files_yet: Es gibt keine Dateien. Klicken Sie auf "Neue Datei Hochladen" um Ihre erste Datei hinzufügen.
+        no_files_yet: Keine Dateien vorhanden. Klicken Sie auf "Neue Datei Hochladen" um Ihre erste Datei hinzuzufügen.
       insert:
-        existing_file: Bestehende Datei
+        existing: Vorhandene Datei
         new: Neue Datei
-        link_to_resource: 'Link zu dieser Datei'
-        previous: Zurück
-        next: Nächste
-        submit_insert: Einfügen
-        or: oder
-        cancel: Abbrechen
+        no_files: Keine Dateien vorhanden.
+      existing_resource:
+        link_to_file: Link zu dieser Datei
+        button_text: Einfügen
+  activerecord:
+    models:
+      resource: Datei
