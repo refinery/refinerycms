@@ -2,17 +2,41 @@
 
 ## Engine API
 
-* Install process, update process
-* All these things should be made standard so that it is easier for engine authors
-* The refinery_engine generator should create those files necessary for the engine to be installed elsewhere
-* Most engines should be packaged as gems for ease
-* Standardize the naming (refinerycms-[engine_name]), most do this already but there are a few exceptions
+Responsible person: djones
+
+rails g refinery_engine does the following things:
+
+- Creates what it does now
+- Creates a gemspec with the gem name of "refinerycms-#{engine_name}"
+- Puts the gem in the Gemfile
+- Copies db files to the vendor/engines/engine_name/db folder ONLY
+- Creates a generator in lib/generators which will install the db to the right place
+- Creates a public, spec, and features empty folders
+- Creates lib/tasks as a template
+- Maybe some sort of README on how to release your gem open source
+
+Then the process will be:
+
+rails g refinery_engine events name:string date:date picture:image # to create a fully releasable engine
+rails g refinerycms_events # to install the plugin into your app
+bundle install
+rake db:migrate
+
+And then when it's released all new refinerycms- gems will have the same install process. Yippee!
 
 ## Internet Explorer 7+ Support
 
+Responsible person: parndt
+
 * WYMEditor and the dialogs are the weakest areas right now.
 
+Responsible person: stevenheidle, djones
+
+* Finding and filing issues found in IE
+
 ## Solid Test Coverage
+
+Responsible person: VGoff
 
 * Add more Cucumber features for the whole of Refinery.
 * Add RSpec for the whole of Refinery, particularly:
