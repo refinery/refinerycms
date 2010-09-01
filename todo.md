@@ -51,6 +51,6 @@ Responsible person: VGoff
 
 # Todos required for 1.0.0 release
 
-* All tests much pass
+* All tests must pass
 * Test and perfect everything.
 * Organise a party and media
