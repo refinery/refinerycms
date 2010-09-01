@@ -15,7 +15,7 @@ require 'pathname'
 require 'fileutils'
 require 'optparse'
 
-require 'child_labor' if RUBY_PLATFORM !~ /mswin3?2?/
+require 'child_labor' unless RUBY_PLATFORM =~ /mswin3?2?|mingw3?2?/
 
 # Load refinerycms
 require Pathname.new(File.expand_path(File.dirname(__FILE__) << "/..")).join('vendor', 'refinerycms', 'refinery.rb')
