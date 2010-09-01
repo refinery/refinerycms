@@ -2,11 +2,11 @@
 
 ## Engine API
 
-* Install process, update process, copying assets to public
-* All these things should be made standard so that it is easier for plugin authors
-* The refinery_engine generator should create those files necessary for the plugin to be installed elsewhere
-* Most plugins should be packaged as gems for ease
-* Standardize the naming (refinerycms-[plugin_name]), most do this already but there are a few exceptions
+* Install process, update process
+* All these things should be made standard so that it is easier for engine authors
+* The refinery_engine generator should create those files necessary for the engine to be installed elsewhere
+* Most engines should be packaged as gems for ease
+* Standardize the naming (refinerycms-[engine_name]), most do this already but there are a few exceptions
 
 ## Internet Explorer 7+ Support
 
