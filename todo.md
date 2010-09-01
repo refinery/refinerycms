@@ -30,7 +30,7 @@ Responsible person: parndt
 
 * WYMEditor and the dialogs are the weakest areas right now.
 
-Responsible person: stevenheidle, djones
+Responsible person: stevenheidel, djones
 
 * Finding and filing issues found in IE
 
