@@ -48,16 +48,16 @@ class Admin::ImagesController < Admin::BaseController
 
   #This returns a url. If params[:size] is provided, it will generate a url for this size.
   def url
-    @image = Image.find params[:id]
-    if params[:size].blank?
-      render :json => { :error => false, :url => @image.url, :width => @image.width, :height => @image.height }
-    else
+    @image = Image.find(params[:id])
+    if params[:size].present?
       begin
-        width, height = params[:size].split("x")
-        render :json => { :error => false, :url => @image.url(params[:size]), :width => width.to_i, :height => height.to_i }
+        thumbnail = @image.thumbnail(params[:size])
+        render :json => { :error => false, :url => thumbnail.url, :width => thumbnail.width, :height => thumbnail.height }
       rescue RuntimeError
         render :json => { :error => true }
       end
+    else
+      render :json => { :error => false, :url => @image.url, :width => @image.width, :height => @image.height }
     end
   end
 

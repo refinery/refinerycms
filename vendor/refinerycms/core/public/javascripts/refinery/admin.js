@@ -674,26 +674,34 @@ var image_dialog = {
       var imageThumbnailSize = $('#existing_image_size_area li.selected a').attr('data-size');
       var resize = $("#wants_to_resize_image").is(':checked');
 
+      var url = '/refinery/images/'+imageId+'/url';
       if (resize) {
-        var url = '/refinery/images/'+imageId+'/url?size='+imageThumbnailSize;
-      } else {
-        var url = '/refinery/images/'+imageId+'/url'
+        url += '?size='+imageThumbnailSize;
       }
 
       var data;
-      $.ajax({ async: false,
-               url: url,
-               success: function (result, status, xhr) {
-                 if (result.error) {
-                   alert("Something went wrong with the image insertion!");
-                 } else {
-                   data = result;
-                 }
-               },
-               error: function(xhr, txt, status) {
-                 alert("Something went wrong with the image insertion!");
-               }
-             });
+      $.ajax({ 
+        async: false,
+        url: url,
+        success: function (result, status, xhr) {
+          if (result.error) {
+            if (console && console.log) {
+               console.log("Something went wrong with the image insertion!");
+               console.log(result);
+             }
+           } else {
+             data = result;
+           }
+         },
+         error: function(xhr, txt, status) {
+           if (console && console.log) {
+             console.log("Something went wrong with the image insertion!");
+             console.log(xhr);
+             console.log(txt);
+             console.log(status);
+           }
+         }
+       });
 
       if (parent) {
         if ((wym_src = parent.document.getElementById('wym_src')) != null) {
