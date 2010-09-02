@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100826232810) do
+ActiveRecord::Schema.define(:version => 20100831122919) do
 
   create_table "images", :force => true do |t|
     t.string   "image_mime_type"
@@ -74,10 +74,16 @@ ActiveRecord::Schema.define(:version => 20100826232810) do
     t.boolean  "draft",               :default => false
     t.string   "browser_title"
     t.boolean  "skip_to_first_child", :default => false
+    t.integer  "lft"
+    t.integer  "rgt"
+    t.integer  "depth"
   end
 
   add_index "pages", ["id"], :name => "index_pages_on_id"
+  add_index "pages", ["lft"], :name => "index_pages_on_lft"
   add_index "pages", ["parent_id"], :name => "index_pages_on_parent_id"
+  add_index "pages", ["rgt"], :name => "index_pages_on_rgt"
+  add_index "pages", ["depth"], :name => "index_pages_on_depth"
 
   create_table "refinery_settings", :force => true do |t|
     t.string   "name"
