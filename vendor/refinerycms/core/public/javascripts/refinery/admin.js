@@ -680,7 +680,7 @@ var image_dialog = {
       }
 
       var data;
-      $.ajax({ 
+      $.ajax({
         async: false,
         url: url,
         success: function (result, status, xhr) {
@@ -714,7 +714,7 @@ var image_dialog = {
           wym_alt.value = $(img).attr('alt');
         }
         if ((wym_size = parent.document.getElementById('wym_size')) != null) {
-          wym_size.value = imageThumbnailSize;
+          wym_size.value = imageThumbnailSize.replace(/[<>=]/g, '');
         }
       }
     }
