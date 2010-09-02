@@ -17,7 +17,8 @@ Gem::Specification.new do |s|
   s.add_dependency    'bundler',              '~> 1.0.0'
   s.add_dependency    'childlabor',           '~> 0.0.2'
 
-  s.add_dependency    'parndt-acts_as_tree',  '~> 1.2.5'
+  s.add_dependency    'moretea-awesome_nested_set', '= 1.4.3.1'
+
   s.add_dependency    'acts_as_indexed',      '~> 0.6.5'
   s.add_dependency    'friendly_id',          '~> 3.1.3'
   s.add_dependency    'truncate_html',        '= 0.4'
@@ -87,6 +88,7 @@ Gem::Specification.new do |s|
     'db/migrate/20100708014636_ensure_user_plugins_use_name_and_not_title.rb',
     'db/migrate/20100729221735_remove_page_translations_if_present.rb',
     'db/migrate/20100826232810_move_inquiry_settings_to_refinery_settings.rb',
+    'db/migrate/20100831122919_move_page_to_nested_set.rb',
     'db/schema.rb',
     'db/seeds',
     'db/seeds.rb',
