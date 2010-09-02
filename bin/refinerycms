@@ -15,7 +15,7 @@ require 'pathname'
 require 'fileutils'
 require 'optparse'
 
-require 'child_labor' if RUBY_PLATFORM !~ /mswin3?2?/
+require 'child_labor' unless RUBY_PLATFORM =~ /mswin3?2?|mingw3?2?/
 
 # Load refinerycms
 require Pathname.new(File.expand_path(File.dirname(__FILE__) << "/..")).join('vendor', 'refinerycms', 'refinery.rb')
@@ -29,7 +29,8 @@ module Refinery
       @options = {
         :database => 'sqlite3',
         :force => false,
-        :heroku => false
+        :heroku => false,
+        :gems => []
       }
 
       @optparse = OptionParser.new do |opts|
@@ -43,6 +44,10 @@ module Refinery
         databases = %w(mysql postgresql sqlite3)
         opts.on("-d DATABASE", "--database DATABASE", databases, "Select the database (default sqlite3)", "  #{databases.join('/')}") do |db|
           @options[:database] = db
+        end
+
+        opts.on("-g", "--gems gem1,gem2,gem3", Array, "Additional gems to install") do |gems|
+          @options[:gems] = gems.reject {|g| g.to_s =~ /^(refinerycms|rmagick)$/}.map {|g| "gem '#{g.to_s}'"}
         end
 
         opts.on("-f", "--force", "Force overwriting of directory") do
@@ -115,12 +120,12 @@ module Refinery
 
     def generate!
       # Generate a rails application
-      # TODO: Check output to see whether or not it worked
       rails_command = "rails new #{@app_path}"
       rails_command << " --database #{@options[:database]}"
       rails_command << " --force" if @options[:force]
       rails_command << " --skip-test-unit --skip-prototype"
       run_command(rails_command, {:cd => false})
+      abort "Generating Rails application failed. Exiting..." unless $?.success?
     end
 
     def refine!
@@ -128,22 +133,21 @@ module Refinery
       %w(app db).each do |folder|
         FileUtils::cp_r Refinery.root.join(folder), @app_path, :verbose => false
       end
-      %w(.gitignore config/routes.rb config/settings.rb config/environments/production.rb config/initializers/acts_as_indexed_config.rb
+      %w(.gitignore readme.md config/routes.rb config/settings.rb config/environments/production.rb config/initializers/acts_as_indexed_config.rb
           config/initializers/field_with_error_fix.rb config/initializers/fix_rack.rb).each do |file|
         FileUtils::cp_r Refinery.root.join(file), @app_path.join(file), :verbose => false if Refinery.root.join(file).exist?
       end
 
-      # Remove default application layout and public/index.html
-      %w(app/views/layouts/application.html.erb public/index.html).each do |remove|
+      # Remove default application layout, README, and public/index.html
+      %w(README app/views/layouts/application.html.erb public/index.html).each do |remove|
 	      FileUtils::rm @app_path.join(remove) if @app_path.join(remove).exist?
       end
 
       # Add refinery gems to the Gemfile
-      # TODO: Allow adding extra gems in the generator
       gemfile_contents = File.read(Refinery.root.join('Gemfile'))
       refinery_gems = gemfile_contents.match(/# REFINERY CMS =+.*# END REFINERY CMS =+/m)[0]
       File.open(@app_path.join('Gemfile'), "a") do |f|
-        f.write "\n" + refinery_gems
+        f.write "\n" + refinery_gems + "\n\n# USER DEFINED\n\n" + @options[:gems].join("\n") + "\n\n# END USER DEFINED"
       end
 
       # Change from development to production

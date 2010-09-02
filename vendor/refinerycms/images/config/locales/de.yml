@@ -2,41 +2,37 @@ de:
   plugins:
     refinery_images:
       title: Bilder
-  no_file_chosen: Sie müssen ein Bild zum Hochladen wählen.
-  image_should_be_smaller_than_max_image_size: Dateien sollten kleiner als %{max_image_size} sein
-  image_must_be_these_formats: Ihr Bild muss im Format JPG, PNG oder GIF vorliegen
+      description: Verwaltet Bilder
+  image_specify_for_upload: Sie müssen ein Bild zum Hochladen angeben
+  image_should_be_smaller_than_max_image_size: Bild sollte kleiner als %{max_image_size} sein
+  image_must_be_these_formats: 'Ihr Bild sollte ein JPG, PNG oder GIF sein'
   admin:
     images:
-      image:
-        delete:
-          message: Sind Sie sicher, dass Sie '%{title}' löschen möchten?
-          title: Dieses Bild für immer löschen
+      delete: Dieses Bild für immer löschen
+      edit: Dieses Bild bearbeiten
       form:
         image: Bild
         use_current_image: Aktuelles Bild verwenden
         or: oder
-        replace_image: Oder durch dieses ersetzen ...
+        replace_image: " mit diesem ersetzen..."
         current_image: Aktuelles Bild
-        maximum_image_size: "Die maximale Bildgröße beträgt %{megabytes} Megabyte."
+        maximum_image_size: Die maximale Größe eines Bildes beträgt %{megabytes} Megabytes.
       index:
-        create_new_image: Neues Bild erstellen
-        no_images_yet: Es wurden noch keine Bilder erstellt. Klicken Sie auf "Neues Bild erstellen" um Ihr erstes Bild zu erstellen.
+        create_new_image: Neues Bild anlegen
+        no_images_yet: Es sind noch keine Bilder vorhanden. Klicken Sie auf "Neues Bild anlegen", um Ihr estes Bild hinzuzufügen.
         view:
-          switch_to: Zur Ansicht "%{view_name}" wechseln
-          list: Liste
+          switch_to: Zur %{view_name}-Ansicht wechseln
+          list: Listen
           grid: Gitter
-        search:
-          results_for: Suchergebnisse für %{query}
       grid_view:
-        edit: Dieses Bild bearbeiten
-        view_live: Dieses Bild anzeigen <br/><em>Öffnet ein neues Fenster</em>
-      list_view_image:
-        edit_this_image: Dieses Bild bearbeiten
+        view_live: Dieses Bild betrachten <br/><em>Öffnet sich in einem neuen Fenster</em>
+      existing_image:
+        button_text: Einfügen
+        resize_image: Bild in der Größe ändern?
+        size: Größe
       insert:
-        existing_image: Existierendes Bild
+        existing_image: Vorhandenes Bild
         new_image: Neues Bild
-        previous: vorheriges
-        next: nächstes
-        submit_insert: Einfügen
-        or: oder
-        cancel: Abbrechen
+  activerecord:
+    models:
+      image: Bild
