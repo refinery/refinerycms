@@ -138,8 +138,8 @@ module Refinery
         FileUtils::cp_r Refinery.root.join(file), @app_path.join(file), :verbose => false if Refinery.root.join(file).exist?
       end
 
-      # Remove default application layout and public/index.html
-      %w(app/views/layouts/application.html.erb public/index.html).each do |remove|
+      # Remove default application layout, README, and public/index.html
+      %w(README app/views/layouts/application.html.erb public/index.html).each do |remove|
 	      FileUtils::rm @app_path.join(remove) if @app_path.join(remove).exist?
       end
 
