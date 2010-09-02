@@ -421,6 +421,9 @@ header p {
   line-height: 35px;
   position: relative;
 }
+#records > #recent_activity > ul li, #records > #recent_inquiries > ul li {
+  max-height: 35px;
+}
 #records > ul.ui-sortable li {
   position: static;
 }
