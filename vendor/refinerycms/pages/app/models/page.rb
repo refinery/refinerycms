@@ -1,8 +1,9 @@
 class Page < ActiveRecord::Base
   validates :title, :presence => true
 
-  acts_as_tree :order => "position ASC",
-               :include => [:children, :slugs]
+  acts_as_nested_set
+
+  default_scope order("position ASC").includes(:children, :slugs, :parent, :parts)
 
   # Docs for friendly_id http://github.com/norman/friendly_id
   has_friendly_id :title, :use_slug => true,
@@ -190,8 +191,8 @@ class Page < ActiveRecord::Base
     end
 
     # Returns all the top level pages, usually to render the top level navigation.
-    def top_level(include_children = false)
-      where(:show_in_menu => true, :draft => false).order('position ASC').includes(:slugs, :children, :parent, :parts)
+    def top_level
+      where(:show_in_menu => true, :draft => false)
     end
   end
 
