@@ -20,7 +20,6 @@ en:
         preview: (%{who}) created %{created_at}
   sessions:
     login_successful: Logged in successfully
-    login_failed: Sorry, your password or username was incorrect.
     new:
       hello_please_sign_in: Hello! Please sign in.
       sign_in: Sign in
@@ -50,6 +49,7 @@ en:
   authlogic:
     error_messages:
       login_blank: can not be blank
+      password_blank: can not be blank
       login_invalid: should use only letters, numbers, spaces, and .-_@ please.
       email_invalid: should look like an email address.
       no_authentication_details: You did not provide any details for authentication.
