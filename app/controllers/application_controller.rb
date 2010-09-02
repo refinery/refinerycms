@@ -3,6 +3,7 @@
 
 # You can extend refinery with your own functions here and they will likely not get overriden in an update.
 
-class ApplicationController < Refinery::ApplicationController
+class ApplicationController < ActionController::Base
+  include Refinery::ApplicationController
 
 end
