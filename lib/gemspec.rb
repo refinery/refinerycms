@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 require File.expand_path('../../vendor/refinerycms/refinery.rb', __FILE__)
-files = %w( .gitignore .yardopts Gemfile ).map { |file| Dir[file] }.flatten
+files = %w( .gitignore .yardopts Gemfile readme.md license.md changelog.md todo.md ).map { |file| Dir[file] }.flatten
 %w(app bin config db features lib public script test themes vendor).sort.each do |dir|
   files += Dir.glob("#{dir}/**/*")
 end
