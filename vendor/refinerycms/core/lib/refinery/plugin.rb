@@ -96,11 +96,11 @@ module Refinery
       return @url if defined?(@url)
 
       if self.controller.present?
-        @url = {:controller => "admin/#{self.controller}"}
+        @url = {:controller => "/admin/#{self.controller}"}
       elsif self.directory.present?
-        @url = {:controller => "admin/#{self.directory.split('/').pop}"}
+        @url = {:controller => "/admin/#{self.directory.split('/').pop}"}
       else
-        @url = {:controller => "admin/#{self.name}"}
+        @url = {:controller => "/admin/#{self.name}"}
       end
     end
 
