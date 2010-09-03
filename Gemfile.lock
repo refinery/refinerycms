@@ -129,7 +129,7 @@ GEM
       rake (>= 0.8.4)
       thor (~> 0.14.0)
     rake (0.8.7)
-    refinerycms-i18n (0.9.8.4)
+    refinerycms-i18n (0.9.8.5)
       refinerycms (~> 0.9.8)
       routing-filter (~> 0.1.6)
     refinerycms-inquiries (0.9.8.4)
@@ -183,7 +183,7 @@ DEPENDENCIES
   rack-test!
   rails (= 3.0.0)
   refinerycms!
-  refinerycms-i18n (~> 0.9.8.4)
+  refinerycms-i18n (~> 0.9.8.5)
   refinerycms-inquiries (~> 0.9.8.4)
   rmagick (~> 2.12.0)
   rspec (~> 2.0.0.beta)
