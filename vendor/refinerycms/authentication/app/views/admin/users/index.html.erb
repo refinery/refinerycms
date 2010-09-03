@@ -6,17 +6,9 @@
   </ul>
 </div>
 <div id='records'>
-  <% if @users.any? %>
-    <%= will_paginate @users, :previous_label => '&laquo;', :next_label => '&raquo;' %>
-    <ul>
-      <%= render :partial => "user", :collection => @users %>
-    </ul>
-    <%= will_paginate @users, :previous_label => '&laquo;', :next_label => '&raquo;' %>
-  <% else %>
-    <p>
-      <strong>
-        <%= t('.no_users_yet') %>
-      </strong>
-    </p>
-  <% end %>
+  <%= will_paginate @users, :previous_label => '&laquo;', :next_label => '&raquo;' %>
+  <ul>
+    <%= render :partial => "user", :collection => @users %>
+  </ul>
+  <%= will_paginate @users, :previous_label => '&laquo;', :next_label => '&raquo;' %>
 </div>

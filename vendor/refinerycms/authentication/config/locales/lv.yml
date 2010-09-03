@@ -13,7 +13,6 @@ lv:
         enable_all: iespējot visu
       index:
         create_new_user: Izveidot Jaunu Lietotāju
-        no_users_yet:  There are no users yet. Click "Create New User" to add your first user.
       user:
         email_user: Sūtīt epastu šim lietotājam
         preview: (%{who}) izveidots %{created_at}

@@ -14,7 +14,6 @@ en:
         enable_all: enable all
       index:
         create_new_user: Create New User
-        no_users_yet:  There are no users yet. Click "Create New User" to add your first user.
       user:
         email_user: Email this user
         preview: (%{who}) created %{created_at}
