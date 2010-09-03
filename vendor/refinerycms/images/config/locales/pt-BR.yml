@@ -1,23 +1,20 @@
 pt-BR:
   plugins:
-    images:
-      title: Imagens
     refinery_images:
       title: Imagens
-  no_file_chosen: Você deve escolher um arquivo para enviar
-  image_should_be_smaller_than_max_image_size: Arquivos devem possuir menos de %{max_image_size} de tamanho
-  image_must_be_these_formats: Sua imagem deve ser uma JPG, PNG ou GIF
+      description: Gerenciar imagens
+  image_specify_for_upload: Você deve escolher uma imagem para enviar
+  image_should_be_smaller_than_max_image_size: "Imagem deve possuir menos de %{max_image_size} de tamanho"
+  image_must_be_these_formats: 'Sua imagem deve ser uma JPG, PNG ou GIF'
   admin:
     images:
-      image:
-        delete:
-          message: Você tem certeza que quer remover '%{title}'?
-          title: Remover esta imagem para sempre
+      delete: Remover esta imagem para sempre
+      edit: Editar esta imagem
       form:
         image: Imagem
         use_current_image: Usar imagem atual
         or: ou
-        replace_image: Substituir por esta...
+        replace_image: " substituir por esta..."
         current_image: Imagem atual
         maximum_image_size: "O tamanho máximo permitido é de %{megabytes} megabytes."
       index:
@@ -27,22 +24,15 @@ pt-BR:
           switch_to: Trocar para visão em %{view_name}
           list: lista
           grid: grade
-        search:
-          results_for: Resultados da busca por %{query}
       grid_view:
-        edit: Editar esta imagem
-        view_live: "Clique para ver a imagem<br/><em>Abre em uma nova janela</em>"
-      list_view_image:
-        edit_this_image: Editar esta imagem
+        view_live: "Ver esta imagem<br/><em>Abre em uma nova janela</em>"
       existing_image:
-        submit_insert: Inserir
-        resize_image: "Redimencionar a imagem? <em>(Recomendado)</em>"
+        button_text: Inserir
+        resize_image: "Redimencionar a imagem?"
         size: Tamanho
       insert:
         existing_image: Do Arquivo
         new_image: Nova Imagem
-        previous: Anterior
-        next: Próxima
-        submit_insert: Inserir
-        or: ou
-        cancel: Cancelar
+  activerecord:
+    models:
+      image: Imagem
