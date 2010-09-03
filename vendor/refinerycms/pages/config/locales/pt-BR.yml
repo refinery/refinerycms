@@ -35,7 +35,7 @@ pt-BR:
       edit: Editar esta página
       page:
         view_live: Vizualizar essa página agora <br/><em>(irá abrir uma nova janela)</em>
-        hidden: esconder
+        hidden: escondida
         draft: Rascunho
       form_new_page_parts:
         title: Título
