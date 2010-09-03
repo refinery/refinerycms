@@ -2,10 +2,10 @@ class MoveInquirySettingsToRefinerySettings < ActiveRecord::Migration
   def self.up
     if defined?(InquirySetting)
       InquirySetting.all.each do |inquiry_setting|
-        RefinerySetting[:"inquiry_#{inquiry_setting.name.downcase.gsub(' ', '_')}"] = {
+        RefinerySetting.set(:"inquiry_#{inquiry_setting.name.downcase.gsub(' ', '_')}", {
           :value => inquiry_setting.value,
           :destroyable => false
-        }
+        })
 
       end
     end

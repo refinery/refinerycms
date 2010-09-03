@@ -14,7 +14,7 @@ module Admin::ImagesHelper
 
   def change_list_mode_if_specified
     if action_name == 'index' and params[:view].present? and image_views.include?(params[:view].to_sym)
-      RefinerySetting[:preferred_image_view] = params[:view]
+      RefinerySetting.set(:preferred_image_view, params[:view])
     end
   end
 
