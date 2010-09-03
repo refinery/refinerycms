@@ -6,6 +6,7 @@
   cache_key << request.path
   cache(cache_key.join('_')) do
     if (collection ||= @menu_pages).any?
+      sibling_count = collection.size - 1
 -%>
       <nav id='<%= dom_id %>' class='<%= %W(#{css} clearfix).join(' ') %>'>
         <ul>
@@ -13,7 +14,7 @@
                      :collection => collection,
                      :locals => {
                        :hide_children => hide_children ||= RefinerySetting.find_or_set(:menu_hide_children, false),
-                       :sibling_count => collection.size - 1
+                       :sibling_count => sibling_count
                      }
           -%>
         </ul>
