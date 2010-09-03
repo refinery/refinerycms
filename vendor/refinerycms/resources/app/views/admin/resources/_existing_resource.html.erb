@@ -26,7 +26,7 @@
                :hide_delete => true,
                :paginate => {
                  :collection => @resources,
-                 :url => {:controller => "admin/resources", :action => "insert", :dialog => from_dialog? }
+                 :url => {:controller => "/admin/resources", :action => "insert", :dialog => from_dialog? }
                }
              } if @app_dialog or @resources.any? %>
 </div>
