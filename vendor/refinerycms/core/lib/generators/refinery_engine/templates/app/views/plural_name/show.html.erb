@@ -13,7 +13,7 @@
 <% elsif attribute.type.to_s == 'resource' -%>
     <%%= link_to <%= "'#{attribute.name}'" %>, @<%= singular_name %>.<%= attribute.name %>.url %>
 <% else -%>
-    <%%= @<%= singular_name %>.<%= attribute.name %> %>
+    <%%=raw @<%= singular_name %>.<%= attribute.name %> %>
 <% end -%>
   </div>
   <% end %>
