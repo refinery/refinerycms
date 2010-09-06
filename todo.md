@@ -2,7 +2,7 @@
 
 ## Engine API
 
-Responsible person: djones
+Responsible person: ``djones``
 
 rails g refinery_engine does the following things:
 
@@ -31,17 +31,17 @@ And then when it's released all new refinerycms- gems will have the same install
 
 ## Internet Explorer 7+ Support
 
-Responsible person: parndt
+Responsible person: ``parndt``
 
 * WYMEditor and the dialogs are the weakest areas right now.
 
-Responsible person: stevenheidel, djones
+Responsible person: ``stevenheidel``, ``djones``
 
 * Finding and filing issues found in IE
 
 ## Solid Test Coverage
 
-Responsible person: VGoff
+Responsible person: ``VGoff``
 
 * Add more Cucumber features for the whole of Refinery.
 * Add RSpec for the whole of Refinery, particularly:
