@@ -17,11 +17,11 @@ rails g refinery_engine does the following things:
 
 Then the process will be:
 
-# to create a fully releasable engine
+### To create a fully releasable engine
 
     rails g refinery_engine events name:string date:date picture:image
 
-# to install the plugin into your app
+### To install the plugin into your app
 
     rails g refinerycms_events
     bundle install
