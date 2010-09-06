@@ -17,10 +17,15 @@ rails g refinery_engine does the following things:
 
 Then the process will be:
 
-rails g refinery_engine events name:string date:date picture:image # to create a fully releasable engine
-rails g refinerycms_events # to install the plugin into your app
-bundle install
-rake db:migrate
+# to create a fully releasable engine
+
+    rails g refinery_engine events name:string date:date picture:image
+
+# to install the plugin into your app
+
+    rails g refinerycms_events
+    bundle install
+    rake db:migrate
 
 And then when it's released all new refinerycms- gems will have the same install process. Yippee!
 
