@@ -344,9 +344,6 @@ var link_dialog = {
       if((resource_selected = $('#existing_resource_area_content ul li.linked a')).length > 0) {
         resourceUrl = parseURL(resource_selected.attr('href'));
         relevant_href = resourceUrl.pathname;
-        if (resourceUrl.protocol == "" && resourceUrl.hostname == "assets") {
-          relevant_href = "/assets" + relevant_href;
-        }
 
         // Add any alternate resource stores that need a absolute URL in the regex below
         if(resourceUrl.hostname.match(/s3.amazonaws.com/)) {
@@ -921,7 +918,28 @@ var image_picker = {
   , changed: function(image) {
     $(this.options.field).val(image.id.replace("image_", ""));
 
-    image.src = image.src.replace('_dialog_thumb', '_' + this.options.thumbnail).replace(/\?\d*/, '');
+    $.ajax({
+      async: false,
+      url: '/refinery/images/'+$(image).attr('data-id')+'/url?size='+this.options.thumbnail,
+      success: function (result, status, xhr) {
+        if (result.error) {
+          if (console && console.log) {
+             console.log("Something went wrong with the image insertion!");
+             console.log(result);
+           }
+         } else {
+           image.src = result.url;
+         }
+       },
+       error: function(xhr, txt, status) {
+         if (console && console.log) {
+           console.log("Something went wrong with the image insertion!");
+           console.log(xhr);
+           console.log(txt);
+           console.log(status);
+         }
+       }
+    });
 
     current_image = $(this.options.image_display);
     current_image.replaceWith($("<img src='"+image.src+"?"+Math.floor(Math.random() * 1000000000)+"' id='"+current_image.attr('id')+"' class='brown_border' />"));
@@ -977,7 +995,9 @@ parseURL = function(url)
 
   //splice and join the remainder to get the pathname
   parts.splice(0, 2);
-  loc.pathname = '/' + parts.join('/');
+  // ensure we don't destroy absolute urls like /system/images/whatever.jpg
+  loc.pathname = (loc.href[0] == '/' ? ("/" + loc.host) : '');
+  loc.pathname += '/' + parts.join('/');
 
   //extract any hash and remove from the pathname
   loc.pathname = loc.pathname.split('#');

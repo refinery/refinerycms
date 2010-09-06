@@ -49,6 +49,10 @@ en:
         download_current: Download current %{what}
         opens_in_new_window: Opens in a new window
         remove_current: "Remove current %{what}"
+        no_resource_selected: There is currently no %{what} selected, click here to add one.
+        name: Add %{what}
+        current: Current %{what}
+        resource: resource
       search:
         button_text: Search
         results_for: Search results for '%{query}'

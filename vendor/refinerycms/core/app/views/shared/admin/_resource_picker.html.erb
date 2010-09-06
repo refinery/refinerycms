@@ -1,31 +1,39 @@
-<%# TODO: Move description ||= "resource" to top of file %>
-<%= f.hidden_field field %>
-<div>
-  <%# TODO translate %>
-  <%= link_to "<span id='no_resource_selected' class='nothing_selected' #{"style='display: none;'" if resource.present?}>
-        There is currently no #{description ||= 'resource'} selected, click here to add one.
-      </span>", insert_admin_resources_url(:dialog => true,
+<%
+  description ||= "resource"
+  insert_text = "<span id='no_resource_selected' class='nothing_selected' #{"style='display: none;'" if resource.present?}>
+                   #{t('.no_resource_selected', :what => t(".#{description}"))}
+                 </span>".html_safe
+  insert_link = insert_admin_resources_url({
+                  :dialog => true,
                   :update_resource => 'current_resource',
                   :update_text => 'current_resource_text',
                   :callback => 'resource_changed',
-                  :field => "#{f.object.class.name.underscore.downcase}_#{field}",
+                  :field => [f.object.class.name.underscore.downcase, field].join('_'),
                   :current_link => "#{resource.url if resource.present?}",
-                  :height => 480),
-                :name => "Add #{(description ||= 'resource').titleize}",
-                :id => "current_resource_link"
+                  :height => 480
+                })
+              %>
+<%= f.hidden_field field %>
+<div>
+  <%= link_to insert_text, insert_link,
+              :name => t('.name', :what => description.titleize),
+              :id => "current_resource_link"
   %>
   <div id='current_resource_container' <%= "style='display:none'" unless resource.present? %>>
-    <span id='current_resource_tag'>Current <%= description ||= "resource" %>:</span>
+    <span id='current_resource_tag'><%= t('.current', :what => t(".#{description}")) %>:</span>
     <span id='current_resource_text'>
-      <%= "#{resource.title} (#{resource.url})" if resource.present? %>
+      <%= "#{resource.title} (#{resource.file_name})" if resource.present? %>
     </span>
     <br/>
-    <%= link_to "#{refinery_icon_tag("page_white_put.png")} #{t('.download_current', :what => t('.' + (description ||= "resource")))} (<em>#{t('.opens_in_new_window')}</em>)", "#{resource.url if resource.present?}",
-            :id => "current_resource",
-            :target => "_blank" %>
+    <%= link_to "#{refinery_icon_tag("page_white_put.png")}
+                 #{t('.download_current', :what => t(".#{description}"))}
+                 (<em>#{t('.opens_in_new_window')}</em>)".html_safe,
+                 "#{resource.url if resource.present?}",
+                 :id => "current_resource",
+                 :target => "_blank" %>
   </div>
   <br/>
-  <%= link_to t('.remove_current', :what => t('.'+ (description ||= "resource"))), "",
+  <%= link_to t('.remove_current', :what => t(".#{description}")), "",
                 :id => "remove_resource",
                 :style => "#{"display:none;" unless resource.present?}" %>
 </div>
