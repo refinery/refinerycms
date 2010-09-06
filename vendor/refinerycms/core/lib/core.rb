@@ -25,7 +25,7 @@ module Refinery
       config.to_prepare do
         Rails.cache.clear
 
-        require_dependency 'refinery/form_helpers'
+        require_dependency 'refinery/helpers/form_helper'
         require_dependency 'refinery/base_presenter'
 
         [
