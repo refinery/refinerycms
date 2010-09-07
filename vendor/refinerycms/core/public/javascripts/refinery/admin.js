@@ -53,9 +53,6 @@ init_interface = function() {
     }
   });
 
-  // focus first field in an admin form.
-  $('form input[type=text]:first').focus();
-
   // ensure that the menu isn't wider than the page_container or else it looks silly to round that corner.
   if (($menu = $('#menu')).length > 0) {
     $menu.jcarousel({

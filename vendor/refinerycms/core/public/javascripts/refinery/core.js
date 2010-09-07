@@ -1,4 +1,7 @@
 $(document).ready(function(){
+  // focus first field in an admin form.
+  $('form input[type=text]:first').focus();
+
   init_flash_messages();
 });
 
