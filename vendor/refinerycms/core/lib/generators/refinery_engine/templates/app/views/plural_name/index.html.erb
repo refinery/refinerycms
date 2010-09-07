@@ -2,7 +2,9 @@
   <ul id="<%= plural_name %>">
     <%% @<%= plural_name %>.each do |<%= singular_name %>| %>
       <li>
-        <%%= link_to <%= singular_name %>.<%= attributes.first.name %>, <%= singular_name %>_url(<%= singular_name %>) %>
+        <%%= link_to <%= singular_name %><% if (title = attributes.detect { |a| a.type.to_s == "string" }).present? %>
+        .<%= title.name %>
+      <% end %>, <%= singular_name %>_url(<%= singular_name %>) %>
       </li>
     <%% end %>
   </ul>

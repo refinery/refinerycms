@@ -2,6 +2,7 @@ pt-BR:
   plugins:
     refinery_dashboard:
       title: Painel
+      description: Mostra um sumário das atividades no sistema
   admin:
     dashboard:
       index:
@@ -10,12 +11,11 @@ pt-BR:
         update_a_page: Atualizar uma página
         upload_a_image: Enviar uma imagem
         upload_a_file: Enviar um arquivo
-        see_home_page: Ver página inicial
         change_language: Mudar Língua
+        see_home_page: Ver página inicial
       recent_activity:
         latest_activity: Atividade Recente
-        see: "Ver '%{what}'"
-        latest_activity_message: "%{kind} %{what} foi %{action}"
+        latest_activity_message: %{what} %{kind} foi %{action}
       recent_inquiries:
         latest_inquiries: Últimas mensagens
   updated:
@@ -26,5 +26,3 @@ pt-BR:
     'with_article "as"': criada
     'with_article "os"': criado
     'with_article "the"': criado
-  ago: "%{time} atrás"
-  see: Ver
