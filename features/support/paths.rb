@@ -1,3 +1,7 @@
+Dir[File.expand_path('../../../vendor/**/features/support/paths.rb', __FILE__)].flatten.each do |paths|
+  require paths
+end
+
 module NavigationHelpers
   # Maps a name to a path. Used by the
   #
@@ -7,15 +11,6 @@ module NavigationHelpers
   #
   def path_to(page_name)
     case page_name
-
-    when /the home\s?page/
-      root_path
-
-    when /the list of pages/
-      admin_pages_path
-
-    when /the new page form/
-      new_admin_page_path
 
     when /the list of users/
       admin_users_path
@@ -69,6 +64,18 @@ module NavigationHelpers
     #     user_profile_path(User.find_by_login($1))
 
     else
+      NavigationHelpers::Refinery.constants.each do |possible_pathable|
+        begin
+          if (mod = "NavigationHelpers::Refinery::#{possible_pathable}".constantize).methods.map(&:to_sym).include?(:path_to)
+            if (possible_return = mod.path_to(page_name)).present?
+              return self.send(possible_return)
+            end
+          end
+        rescue
+          $stdout.puts $!.message
+        end
+      end if defined?(NavigationHelpers::Refinery)
+
       begin
         page_name =~ /the (.*) page/
         path_components = $1.split(/\s+/)
