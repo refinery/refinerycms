@@ -22,23 +22,18 @@ module Refinery
         app.routes_reloader.paths << File.expand_path('../refinery/catch_all_routes.rb', __FILE__)
       end
 
+      initializer 'add presenters' do |app|
+        app.config.load_paths += [
+          Rails.root.join("app", "presenters"),
+          Rails.root.join("vendor", "**", "**", "app", "presenters"),
+          Refinery.root.join("vendor", "refinerycms", "*", "app", "presenters")
+        ].flatten
+      end
+
       config.to_prepare do
         Rails.cache.clear
 
-        require_dependency 'refinery/helpers/form_helper'
-        require_dependency 'refinery/base_presenter'
-
-        [
-          Refinery.root.join("vendor", "plugins", "*", "app", "presenters"),
-          Rails.root.join("app", "presenters")
-        ].each do |path|
-          Dir[path.to_s].each do |presenters_path|
-            $LOAD_PATH << presenters_path
-            ::ActiveSupport::Dependencies.load_paths << presenters_path
-          end
-        end
-
-        # Figure out a better way to cache assets.
+        # TODO: Is there a better way to cache assets in engines?
         ::ActionView::Helpers::AssetTagHelper.module_eval do
           def asset_file_path(path)
             unless File.exist?(return_path = File.join(config.assets_dir, path.split('?').first))
