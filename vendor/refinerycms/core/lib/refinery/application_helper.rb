@@ -3,13 +3,13 @@ Dir[File.expand_path('../helpers/*.rb', __FILE__).to_s].each {|helper| require h
 
 module Refinery
   module ApplicationHelper
-    include Refinery::HtmlTruncationHelper
-    include Refinery::ImageHelper
-    include Refinery::MenuHelper
-    include Refinery::MetaHelper
-    include Refinery::ScriptHelper
-    include Refinery::SiteBarHelper
-    include Refinery::TagHelper
-    include Refinery::TranslationHelper
+    include Refinery::Helpers::HtmlTruncationHelper
+    include Refinery::Helpers::ImageHelper
+    include Refinery::Helpers::MenuHelper
+    include Refinery::Helpers::MetaHelper
+    include Refinery::Helpers::ScriptHelper
+    include Refinery::Helpers::SiteBarHelper
+    include Refinery::Helpers::TagHelper
+    include Refinery::Helpers::TranslationHelper
   end
 end
