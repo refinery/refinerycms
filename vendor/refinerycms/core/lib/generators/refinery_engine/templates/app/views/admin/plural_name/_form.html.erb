@@ -30,6 +30,7 @@
               :locals => {
                 :f => f,
                 :continue_editing => false,
-                :delete_title => t('admin.<%= plural_name %>.<%= singular_name %>.delete')
+                :delete_title => t('admin.<%= plural_name %>.<%= singular_name %>.delete'),
+                :delete_confirmation => t('shared.admin.delete.message'<% if (title = attributes.detect { |a| a.type.to_s == "string" }).present? %>, :title => @<%= singular_name %>.<%= title.name %><% end %>)
               } %>
 <%% end -%>

@@ -4,7 +4,7 @@ Gem::Specification.new do |s|
   s.name              = %q{refinerycms}
   s.version           = %q{0.9.8}
   s.description       = %q{A Ruby on Rails CMS that supports Rails 3. It's easy to extend and sticks to 'the Rails way' where possible.}
-  s.date              = %q{2010-09-02}
+  s.date              = %q{2010-09-06}
   s.summary           = %q{A Ruby on Rails CMS that supports Rails 3}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
@@ -95,6 +95,7 @@ Gem::Specification.new do |s|
     'db/seeds/inquiry_settings.rb',
     'db/seeds/pages.rb',
     'db/seeds/refinery_settings.rb',
+    'db/test.sqlite3-journal',
     'license.md',
     'readme.md',
     'todo.md',
@@ -270,8 +271,16 @@ Gem::Specification.new do |s|
     'vendor/refinerycms/core/lib/refinery/attachment_fu_patch.rb',
     'vendor/refinerycms/core/lib/refinery/base_presenter.rb',
     'vendor/refinerycms/core/lib/refinery/catch_all_routes.rb',
-    'vendor/refinerycms/core/lib/refinery/form_helpers.rb',
-    'vendor/refinerycms/core/lib/refinery/html_truncation_helper.rb',
+    'vendor/refinerycms/core/lib/refinery/helpers',
+    'vendor/refinerycms/core/lib/refinery/helpers/form_helper.rb',
+    'vendor/refinerycms/core/lib/refinery/helpers/html_truncation_helper.rb',
+    'vendor/refinerycms/core/lib/refinery/helpers/image_helper.rb',
+    'vendor/refinerycms/core/lib/refinery/helpers/menu_helper.rb',
+    'vendor/refinerycms/core/lib/refinery/helpers/meta_helper.rb',
+    'vendor/refinerycms/core/lib/refinery/helpers/script_helper.rb',
+    'vendor/refinerycms/core/lib/refinery/helpers/site_bar_helper.rb',
+    'vendor/refinerycms/core/lib/refinery/helpers/tag_helper.rb',
+    'vendor/refinerycms/core/lib/refinery/helpers/translation_helper.rb',
     'vendor/refinerycms/core/lib/refinery/link_renderer.rb',
     'vendor/refinerycms/core/lib/refinery/plugin.rb',
     'vendor/refinerycms/core/lib/refinery/plugins.rb',

@@ -46,9 +46,12 @@ en:
         change: Click here to pick a image
         show: Show
       resource_picker:
-        download_current: Download current %{what}
+        download_current: Download current file
         opens_in_new_window: Opens in a new window
-        remove_current: "Remove current %{what}"
+        remove_current: "Remove current file"
+        no_resource_selected: There is currently no file selected, click here to add one.
+        name: Add File
+        current: Current File
       search:
         button_text: Search
         results_for: Search results for '%{query}'
