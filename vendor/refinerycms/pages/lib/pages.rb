@@ -1,4 +1,5 @@
 require 'refinery'
+require 'awesome_nested_set'
 
 module Refinery
   module Pages
