@@ -1,7 +1,9 @@
 require 'rails/all'
-require 'awesome_nested_set'
+
 require 'acts_as_indexed'
 require 'authlogic'
+require 'awesome_nested_set'
+require 'dragonfly'
 require 'friendly_id'
 require 'truncate_html'
 require 'will_paginate'
