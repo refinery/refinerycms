@@ -46,13 +46,12 @@ en:
         change: Click here to pick a image
         show: Show
       resource_picker:
-        download_current: Download current %{what}
+        download_current: Download current file
         opens_in_new_window: Opens in a new window
-        remove_current: "Remove current %{what}"
-        no_resource_selected: There is currently no %{what} selected, click here to add one.
-        name: Add %{what}
-        current: Current %{what}
-        resource: resource
+        remove_current: "Remove current file"
+        no_resource_selected: There is currently no file selected, click here to add one.
+        name: Add File
+        current: Current Cile
       search:
         button_text: Search
         results_for: Search results for '%{query}'
