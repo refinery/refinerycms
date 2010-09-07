@@ -51,7 +51,7 @@ en:
         remove_current: "Remove current file"
         no_resource_selected: There is currently no file selected, click here to add one.
         name: Add File
-        current: Current Cile
+        current: Current File
       search:
         button_text: Search
         results_for: Search results for '%{query}'
