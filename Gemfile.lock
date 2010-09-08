@@ -130,8 +130,8 @@ GEM
     refinerycms-i18n (0.9.8.5)
       refinerycms (~> 0.9.8)
       routing-filter (~> 0.1.6)
-    refinerycms-inquiries (0.9.8.4)
-      filters_spam (~> 0.1)
+    refinerycms-inquiries (0.9.8.5)
+      filters_spam (~> 0.2)
     rmagick (2.12.2)
     routing-filter (0.1.6)
       actionpack
@@ -182,7 +182,7 @@ DEPENDENCIES
   rails (= 3.0.0)
   refinerycms!
   refinerycms-i18n (~> 0.9.8.5)
-  refinerycms-inquiries (~> 0.9.8.4)
+  refinerycms-inquiries (~> 0.9.8.5)
   rmagick (~> 2.12.0)
   rspec (~> 2.0.0.beta)
   rspec-core (~> 2.0.0.beta)
