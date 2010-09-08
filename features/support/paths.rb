@@ -1,8 +1,36 @@
-Dir[File.expand_path('../../../vendor/**/features/support/paths.rb', __FILE__)].flatten.each do |paths|
+::Refinery::Plugins.registered.collect{|p|
+  p.pathname.join('features', 'support', 'paths.rb')
+}.reject{|p| !p.exist?}.each do |paths|
   require paths
 end
 
 module NavigationHelpers
+  # Loads in path_to functions from the engines that Refinery is using.
+  # They should look like this:
+  # module NavigationHelpers
+  #   module Refinery
+  #     module EngineName
+  #       def path_to(page_name)
+  #         case page_name
+  #         when /regexp/
+  #           some_path
+  #         else
+  #           nil
+  #         end
+  #       end
+  #     end
+  #   end
+  # end
+  NavigationHelpers::Refinery.constants.each do |name|
+    begin
+      if (mod = "NavigationHelpers::Refinery::#{name}".constantize)
+        mod.module_eval %{alias :#{name.downcase}_path_to :path_to}
+        include mod
+      end
+    rescue
+      $stdout.puts $!.message
+    end
+  end if defined?(NavigationHelpers::Refinery)
   # Maps a name to a path. Used by the
   #
   #   When /^I go to (.+)$/ do |page_name|
@@ -12,50 +40,8 @@ module NavigationHelpers
   def path_to(page_name)
     case page_name
 
-    when /the list of users/
-      admin_users_path
-
-    when /the list of files/
-      admin_resources_path
-
-    when /the new file form/
-      new_admin_resource_path
-
-    when /the list of images/
-      admin_images_path
-
-     when /the new image form/
-      new_admin_image_path
-
-    when /the contact page/
-      new_inquiry_path
-
-    when /the contact thank you page/
-      thank_you_inquiries_path
-
-    when /the contact create page/
-      inquiries_path
-
-    when /the list of inquiries/
-      admin_inquiries_path
-
-    when /the list of spam inquiries/
-      spam_admin_inquiries_path
-
     when /the admin root/
       admin_root_path
-
-    when /the (d|D)ashboard/
-      admin_dashboard_path
-
-    when /the login page/
-      new_session_path
-
-    when /the forgot password page/
-      forgot_users_path
-
-    when /the reset password page/
-      reset_users_path(:reset_code => @user.perishable_token)
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
@@ -64,12 +50,26 @@ module NavigationHelpers
     #     user_profile_path(User.find_by_login($1))
 
     else
-      NavigationHelpers::Refinery.constants.each do |possible_pathable|
+      # Loads in path_to functions from the engines that Refinery is using.
+      # They should look like this:
+      # module NavigationHelpers
+      #   module Refinery
+      #     module EngineName
+      #       def path_to(page_name)
+      #         case page_name
+      #         when /regexp/
+      #           some_path
+      #         else
+      #           nil
+      #         end
+      #       end
+      #     end
+      #   end
+      # end
+      NavigationHelpers::Refinery.constants.each do |name|
         begin
-          if (mod = "NavigationHelpers::Refinery::#{possible_pathable}".constantize).methods.map(&:to_sym).include?(:path_to)
-            if (possible_return = mod.path_to(page_name)).present?
-              return self.send(possible_return)
-            end
+          if (path = self.send(:"#{name.downcase}_path_to", page_name)).present?
+            return path
           end
         rescue
           $stdout.puts $!.message

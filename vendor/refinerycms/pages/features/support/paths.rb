@@ -1,14 +1,14 @@
 module NavigationHelpers
   module Refinery
     module Pages
-      def self.path_to(page_name)
+      def path_to(page_name)
         case page_name
         when /the home\s?page/
-          'root_path'
+          root_path
         when /the list of pages/
-          'admin_pages_path'
+          admin_pages_path
         when /the new page form/
-          'new_admin_page_path'
+          new_admin_page_path
         else
           nil
         end
