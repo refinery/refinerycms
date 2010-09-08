@@ -1,3 +1,9 @@
+## 0.9.8 [30 August 2010]
+
+* Rails 3 support.
+* [See full list](http://github.com/resolve/refinerycms/compare/0.9.7.13...0.9.8)
+* [See our blog post](http://refinerycms.com/blog/refinery-cms-supports-rails-3)
+
 ## 0.9.7.13 [23 August 2010]
 
 * Russian language support (RU). [Sun](http://github.com/sunchess)

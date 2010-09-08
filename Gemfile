@@ -36,13 +36,13 @@ gem 'sqlite3-ruby',             :require => 'sqlite3'
 gem 'refinerycms',              :path => '.'
 
 # Specify additional Refinery CMS Engines here (all optional):
-gem 'refinerycms-inquiries',    '~> 0.9.8.4', :require => 'inquiries'
+gem 'refinerycms-inquiries',    '~> 0.9.8.6', :require => 'inquiries'
 # gem 'refinerycms-news',       '~> 0.9.8', :require => 'news'
 # gem 'refinerycms-portfolio',  '~> 0.9.7', :require => 'portfolio'
 # gem 'refinerycms-theming',    '~> 0.9.8', :require => 'theming'
 
 # Add i18n support (optional, you can remove this if you really want to).
-gem 'refinerycms-i18n',         '~> 0.9.8.3', :require => 'refinery/i18n'
+gem 'refinerycms-i18n',         '~> 0.9.8.6', :require => 'refinery/i18n'
 
 # Specify a version of RMagick that works in your environment:
 gem 'rmagick',                  '~> 2.12.0', :require => false

@@ -11,7 +11,7 @@ module AuthenticatedSystem
     end
 
     def current_user
-      @current_user ||= current_user_session && current_user_session.record
+      @current_user ||= (cus = current_user_session) && cus.record
     end
 
     def require_user

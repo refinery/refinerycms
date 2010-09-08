@@ -8,10 +8,11 @@ Feature: Manage Images
     Given I am a logged in refinery user
     And I have no images
 
+  @images-create
   Scenario: Create Valid Image
     When I go to the list of images
     And I follow "Create New Image"
-    And I attach the image at "features/uploads/beach.jpeg"
+    And I attach the image at "beach.jpeg"
     And I press "Save"
     Then the image "beach.jpeg" should have uploaded successfully
     And I should have 1 image
@@ -23,22 +24,24 @@ Feature: Manage Images
   Scenario: Create Invalid Image (format)
     When I go to the list of images
     And I follow "Create New Image"
-    And I attach the image at "features/uploads/refinery_is_awesome.txt"
+    And I attach the image at "refinery_is_awesome.txt"
     And I press "Save"
     Then I should not see "successfully created"
     And I should have 0 images
 
+  @images-edit
   Scenario: Edit Existing Image
-    When I upload the image at "features/uploads/beach.jpeg"
+    When I upload the image at "beach.jpeg"
     And I go to the list of images
     And I follow "Edit this image"
-    And I attach the image at "features/uploads/id-rather-be-here.jpg"
+    And I attach the image at "id-rather-be-here.jpg"
     And I press "Save"
     Then I should see "'Id Rather Be Here' was successfully updated."
     And I should have 1 image
 
+  @images-delete
   Scenario: Delete Image
-    When I upload the image at "features/uploads/beach.jpeg"
+    When I upload the image at "beach.jpeg"
     When I go to the list of images
     And I follow "Remove this image forever"
     Then I should see "'Beach' was successfully destroyed. "

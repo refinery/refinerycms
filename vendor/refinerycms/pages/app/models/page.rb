@@ -3,8 +3,6 @@ class Page < ActiveRecord::Base
 
   acts_as_nested_set
 
-  default_scope order("position ASC").includes(:children, :slugs)
-
   # Docs for friendly_id http://github.com/norman/friendly_id
   has_friendly_id :title, :use_slug => true,
                   :reserved_words => %w(index new session login logout users refinery admin images wymiframe)
@@ -191,8 +189,8 @@ class Page < ActiveRecord::Base
     end
 
     # Returns all the top level pages, usually to render the top level navigation.
-    def top_level(include_children = false)
-      where(:show_in_menu => true, :draft => false).order('position ASC').includes(:slugs, :children, :parent, :parts)
+    def top_level
+      self.roots.where(:show_in_menu => true, :draft => false)
     end
   end
 

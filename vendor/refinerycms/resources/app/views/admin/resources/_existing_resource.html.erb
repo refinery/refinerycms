@@ -6,7 +6,7 @@
         <% @resources.each do |resource| -%>
           <% resource_linked = (resource.url == params[:current_link]) if params[:current_link].present? %>
           <li<%= " class='linked'" if resource_linked %>>
-            <%= link_to "#{resource.title} (#{resource.url})", resource.url,
+            <%= link_to "#{resource.title} (#{resource.file_name})", resource.url,
                         :title => t('.link_to_file'),
                         :rel => resource.title,
                         :class => 'page_link',
@@ -26,7 +26,7 @@
                :hide_delete => true,
                :paginate => {
                  :collection => @resources,
-                 :url => {:controller => "admin/resources", :action => "insert", :dialog => from_dialog? }
+                 :url => {:controller => "/admin/resources", :action => "insert", :dialog => from_dialog? }
                }
              } if @app_dialog or @resources.any? %>
 </div>

@@ -3,7 +3,7 @@
   # Would be great if someone could fix this?
   js_caching = RefinerySetting.find_or_set(:use_resource_caching, Rails.root.writable?)
   css_caching = js_caching && request.env['HTTP_USER_AGENT'] !~ /MSIE/
-
+  login = defined?(login) ? login : login?
 -%>
 <head>
   <meta charset='<%= Refinery::Application.config.encoding %>' />
@@ -35,7 +35,7 @@
                              'jquery/jquery.html5-placeholder-shim.js',
                              'jquery/jquery.timers.js',
                              'jquery/jquery.jcarousel.js',
-                             :cache => (js_caching ? "cache/jquery-plugins" : false) unless login? -%>
+                             :cache => (js_caching ? "cache/jquery-plugins" : false) unless login -%>
 
   <%= yield :head_after_javascript_libraries -%>
 
@@ -44,8 +44,8 @@
                              'refinery/boot_wym',
                              'refinery/core',
                              'refinery/admin',
-                             :cache => (js_caching ? "cache/admin" : false) unless login? -%>
-  <%= javascript_include_tag 'refinery/core' if login? -%>
+                             :cache => (js_caching ? "cache/admin" : false) unless login -%>
+  <%= javascript_include_tag 'refinery/core' if login -%>
 
   <% if request.env['HTTP_USER_AGENT'] =~ /MSIE/ -%>
     <%= "<!--[if lt IE 8]>#{stylesheet_link_tag 'refinery/ie-less-than-8'}<![endif]-->".html_safe -%>
