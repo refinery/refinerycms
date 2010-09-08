@@ -154,9 +154,9 @@ class RefinerySetting < ActiveRecord::Base
     # must convert to string if true or false supplied otherwise it becomes 0 or 1, unfortunately.
     if %w(trueclass falseclass).include?(new_value.class.to_s.downcase)
       new_value = new_value.to_s
-    else
-      super
     end
+    
+    super
   end
 
   def callback_proc
