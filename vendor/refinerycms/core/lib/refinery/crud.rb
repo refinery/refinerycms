@@ -237,6 +237,9 @@ module Refinery
                   parse_branch(position, id_hash, nil)
                 end
               end
+              # to trigger cache expiry if the object is cached.
+              #{class_name}.find(params[:sortable_list].first.value).save
+              #{class_name}.rebuild! if #{class_name}.methods.map(&:to_sym).include?(:'rebuild!')
 
               find_all_#{plural_name}
               render :partial => 'sortable_list',
