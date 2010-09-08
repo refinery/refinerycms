@@ -1,14 +1,15 @@
 <%
-  branch = if (!page.parent_id.nil? and page === page.self_and_siblings.last) or (page != @pages.first and page === @pages.last)
-    "branch_end"
-  elsif page === @pages.first
+  branch = if page.depth.nil? and page.left_sibling.nil? and (righty = page.right_sibling).present?
     "branch_start"
+  elsif page.right_sibling.nil?
+    "branch_end"
   end
+
   title = page.title
   title << " <em>(#{t('.hidden')})</em>" unless page.show_in_menu?
   title << " <em>(#{t('.draft')})</em>" if page.draft?
 -%>
-<li class='clearfix record<%= " #{branch}" %>' id="<%= dom_id(page) -%>">
+<li class='clearfix record<%= " #{branch}" if branch.present? %>' id="<%= dom_id(page) -%>">
   <div class='clearfix'>
     <span class='title'><%= title.html_safe %></span>
 
@@ -21,7 +22,7 @@
       <%= link_to refinery_icon_tag('delete.png'), admin_page_url(page),
                   :class => "cancel confirm-delete",
                   :title => t('admin.pages.delete'),
-                  :'data-confirm' => t('shared.admin.delete.message', :title => page.title.gsub(/<\/?em>/, "")),
+                  :'data-confirm' => t('shared.admin.delete.message', :title => title.gsub(/\ ?<em>.*<\/em>/, "")),
                   :'data-method' => "delete" if page.deletable? %>
     </span>
   </div>

@@ -14,8 +14,7 @@ end
 require 'pathname'
 require 'fileutils'
 require 'optparse'
-
-require 'child_labor' unless RUBY_PLATFORM =~ /mswin3?2?|mingw3?2?/
+require 'rbconfig'
 
 # Load refinerycms
 require Pathname.new(File.expand_path(File.dirname(__FILE__) << "/..")).join('vendor', 'refinerycms', 'refinery.rb')
@@ -120,7 +119,7 @@ module Refinery
 
     def generate!
       # Generate a rails application
-      rails_command = "rails new #{@app_path}"
+      rails_command = "rails new '#{@app_path}'"
       rails_command << " --database #{@options[:database]}"
       rails_command << " --force" if @options[:force]
       rails_command << " --skip-test-unit --skip-prototype"
@@ -133,8 +132,9 @@ module Refinery
       %w(app db).each do |folder|
         FileUtils::cp_r Refinery.root.join(folder), @app_path, :verbose => false
       end
-      %w(.gitignore readme.md config/routes.rb config/settings.rb config/environments/production.rb config/initializers/acts_as_indexed_config.rb
-          config/initializers/field_with_error_fix.rb config/initializers/fix_rack.rb).each do |file|
+      %w(.gitignore readme.md license.md config/routes.rb config/settings.rb config/environments/production.rb
+          config/initializers/acts_as_indexed_config.rb config/initializers/field_with_error_fix.rb
+          config/initializers/fix_rack.rb).each do |file|
         FileUtils::cp_r Refinery.root.join(file), @app_path.join(file), :verbose => false if Refinery.root.join(file).exist?
       end
 
@@ -147,7 +147,7 @@ module Refinery
       gemfile_contents = File.read(Refinery.root.join('Gemfile'))
       refinery_gems = gemfile_contents.match(/# REFINERY CMS =+.*# END REFINERY CMS =+/m)[0]
       File.open(@app_path.join('Gemfile'), "a") do |f|
-        f.write "\n" + refinery_gems + "\n\n# USER DEFINED\n\n" + @options[:gems].join("\n") + "\n\n# END USER DEFINED"
+        f.write "\n" + refinery_gems + "\n\n# USER DEFINED\n" + @options[:gems].join("\n") + "\n# END USER DEFINED"
       end
 
       # Change from development to production
@@ -224,32 +224,21 @@ module Refinery
 
     def run_command(command, options = {})
       options = {:cd => true, :puts => true}.merge(options)
-      to_run = ((forkable = RUBY_PLATFORM !~ /mswin3?2?/) ? "" : "cmd /c ")
-      to_run << "cd #{@app_path} && " if options[:cd]
+      to_run = %w()
+      to_run << "cmd /c" if Config::CONFIG['host_os'] =~ /mswin|mingw/
+      to_run << "cd #{@app_path} &&" if options[:cd]
       to_run << command
+      to_run = to_run.join(' ')
 
-      if forkable
-        if options[:puts]
-          puts "Running: #{to_run}"
-          ::ChildLabor.subprocess(to_run) do |t|
-            while (line = t.gets)
-              puts line
-            end
+      if options[:puts]
+        puts "Running: #{to_run}"
+        IO.popen(to_run) do |t|
+          while (line = t.gets)
+            puts line
           end
-        else
-          ::ChildLabor.subprocess(to_run)
         end
       else
-        if options[:puts]
-          puts "Running: #{to_run}"
-          IO.popen(to_run) do |t|
-            while (line = t.gets)
-              puts line
-            end
-          end
-        else
-          `#{to_run}`
-        end
+        `#{to_run}`
       end
     end
 

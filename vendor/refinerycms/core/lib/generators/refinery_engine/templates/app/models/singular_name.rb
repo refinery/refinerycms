@@ -1,9 +1,10 @@
 class <%= class_name %> < ActiveRecord::Base
 
   acts_as_indexed :fields => [:<%= attributes.collect{ |attribute| attribute.name if attribute.type.to_s =~ /string|text/ }.compact.uniq.join(", :") %>]
-
-  validates_presence_of :<%= attributes.first.name %>
-  validates_uniqueness_of :<%= attributes.first.name %>
+  <% if (title = attributes.detect { |a| a.type.to_s == "string" }).present? %>
+  validates_presence_of :<%= title.name %>
+  validates_uniqueness_of :<%= title.name %>
+  <% end -%>
 
 <% attributes.collect{|a| a if a.type.to_s == 'image'}.compact.uniq.each do |a| -%>
   belongs_to :<%= a.name.gsub("_id", "") %><%= ", :class_name => 'Image'" unless a.name =~ /^image(_id)?$/ %>

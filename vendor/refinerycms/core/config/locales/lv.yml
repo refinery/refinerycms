@@ -39,9 +39,12 @@ lv:
         change: Spied šeit, lai izvēlētos bildi
         show: Rādīt
       resource_picker:
-        download_current: Lejuplādēt pašreizējo %{what}
+        download_current: Lejuplādēt pašreizējo failu
         opens_in_new_window: Atvērsies jaunā logā
-        remove_current: Dzēst pašreizējo %{what}
+        remove_current: Dzēst pašreizējo failu
+        no_resource_selected: Pašlaik nav izvēlēts neviens fails. Spied šeit, lai pievienotu kādu failu.
+        name: Pievienot Failu
+        current: Pašreizējais Fails
       search:
         button_text: Meklēt
         results_for: Meklēšanas rezultāti pēc '%{query}'

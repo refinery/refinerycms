@@ -11,28 +11,28 @@ Feature: Manage Files
   Scenario: Create Valid File
     When I go to the list of files
     And I follow "Upload New File"
-    And I attach the file at "features/uploads/refinery_is_awesome.txt"
+    And I attach the file at "refinery_is_awesome.txt"
     And I press "Save"
     Then the file "refinery_is_awesome.txt" should have uploaded successfully
     And I should have 1 file
 
   Scenario: Edit Existing File
-    When I upload the file at "features/uploads/refinery_is_awesome.txt"
+    When I upload the file at "refinery_is_awesome.txt"
     And I go to the list of files
     And I follow "Edit this file"
-    And I attach the file at "features/uploads/beach.jpeg"
+    And I attach the file at "beach.jpeg"
     And I press "Save"
     Then the file "beach.jpeg" should have uploaded successfully
     And I should have 1 file
 
   Scenario: Download Existing File
-    When I upload the file at "features/uploads/refinery_is_awesome.txt"
+    When I upload the file at "refinery_is_awesome.txt"
     And I go to the list of files
     And I follow "Download this file"
     Then I should see "http://www.refineryhq.com/"
 
   Scenario: Files Delete
-    When I upload the file at "features/uploads/refinery_is_awesome.txt"
+    When I upload the file at "refinery_is_awesome.txt"
     And I go to the list of files
     And I follow "Remove this file forever"
     Then I should see "'Refinery Is Awesome' was successfully destroyed."

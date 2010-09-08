@@ -2,7 +2,7 @@
 
 ## Engine API
 
-Responsible person: djones
+Responsible person: ``djones``
 
 rails g refinery_engine does the following things:
 
@@ -17,26 +17,31 @@ rails g refinery_engine does the following things:
 
 Then the process will be:
 
-rails g refinery_engine events name:string date:date picture:image # to create a fully releasable engine
-rails g refinerycms_events # to install the plugin into your app
-bundle install
-rake db:migrate
+### To create a fully releasable engine
+
+    rails g refinery_engine events name:string date:date picture:image
+
+### To install the plugin into your app
+
+    rails g refinerycms_events
+    bundle install
+    rake db:migrate
 
 And then when it's released all new refinerycms- gems will have the same install process. Yippee!
 
 ## Internet Explorer 7+ Support
 
-Responsible person: parndt
+Responsible person: ``parndt``
 
 * WYMEditor and the dialogs are the weakest areas right now.
 
-Responsible person: stevenheidel, djones
+Responsible person: ``stevenheidel``, ``djones``
 
 * Finding and filing issues found in IE
 
 ## Solid Test Coverage
 
-Responsible person: VGoff
+Responsible person: ``VGoff``
 
 * Add more Cucumber features for the whole of Refinery.
 * Add RSpec for the whole of Refinery, particularly:
