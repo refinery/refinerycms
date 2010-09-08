@@ -21,6 +21,22 @@ module Refinery
         app_resources.define_macro(ActiveRecord::Base, :resource_accessor)
         app_resources.analyser.register(Dragonfly::Analysis::FileCommandAnalyser)
 
+        # This little eval makes it so that dragonfly urls work in traditional
+        # situations where the filename and extension are required, e.g. lightbox.
+        # What this does is takes the url that is about to be produced e.g.
+        # /system/resources/BAhbB1sHOgZmIiMyMDEwLzA5LzAxL1NTQ19DbGllbnRfQ29uZi5qcGdbCDoGcDoKdGh1bWIiDjk0MngzNjAjYw
+        # and adds the filename onto the end (say the file was 'refinery_is_awesome.jpg')
+        # /system/resources/BAhbB1sHOgZmIiMyMDEwLzA5LzAxL1NTQ19DbGllbnRfQ29uZi5qcGdbCDoGcDoKdGh1bWIiDjk0MngzNjAjYw/refinery_is_awesome.jpg
+        app_resources.instance_eval %{
+          def url_for(job, *args)
+            resource_url = nil
+            if (fetcher = job.steps.detect{|s| s.class.step_name == :fetch}).present?
+              resource_url = ['', fetcher.uid.to_s.split('/').last].join('/')
+            end
+            "\#{super}\#{resource_url}"
+          end
+        }
+
         ### Extend active record ###
 
         app.config.middleware.insert_after 'Rack::Lock', 'Dragonfly::Middleware', :resources, '/system/resources'
@@ -35,7 +51,7 @@ module Refinery
       config.after_initialize do
         Refinery::Plugin.register do |plugin|
           plugin.name = "refinery_files"
-          plugin.url = {:controller => 'admin/resources', :action => 'index'}
+          plugin.url = {:controller => '/admin/resources', :action => 'index'}
           plugin.menu_match = /(refinery|admin)\/(refinery_)?(files|resources)$/
           plugin.version = %q{0.9.8}
           plugin.activity = {

@@ -12,9 +12,9 @@ The best part about ``crudify`` is that this gives you a smart default and if th
 
 ## Where is it located?
 
-``vendor/plugins/refinery/lib/crud.rb``
+``vendor/refinerycms/core/lib/refinery/crud.rb``
 
-## How do I use it in my plugins?
+## How do I use it in my engines?
 
 All you need to do is call ``crudify`` in your controller.
 
@@ -27,7 +27,7 @@ If you used the Refinery generator you're plugin will already be using ``crudify
       crudify :news_item, :order => "created_at DESC"
 
     end
-  
+
 ### Complex Example
 
     class NewsItemsController < ApplicationController
@@ -103,13 +103,13 @@ For performance optimisation, sometimes you might want to eager load other relat
 Instead of having to look up each user for each of the ``news_posts`` we iterate over, the ``:include`` option allows you to load the ``news_post`` and user all at the same time which'll allow you to save on expensive database queries.
 
 Here's an example of that.
-  
+
     class NewsItem
-    
+
       belongs_to :user
-  
+
     end
-  
+
     class NewsItemsController < ApplicationController
 
       crudify :news_item, :order => "created_at DESC", :include => [:user]
@@ -139,18 +139,18 @@ Say we have a pages controller that is going to manage pages.
       crudify :page
 
     end
-  
+
 In this controller, automatically I have these methods:
 
     find_page()
     find_all_pages()
-  
+
 So say I wanted to change the way all pages are found, all I do is override the ``find_all_pages`` method.
 
     class PagesController < ApplicationController
 
       crudify :page
-  
+
       def find_all_pages
         @pages = Page.find(...) # apply any logic I want here to get all pages.
       end
@@ -170,7 +170,7 @@ Let's go back to the example above with the pages controller.
       crudify :page
 
     end
-  
+
 Say every time someone deletes a page I want my ``NotificationMailer`` to email me to say someone just deleted a page.
 
 When I look in the ``crud.rb`` file I see that my controller has this added to it
@@ -179,7 +179,7 @@ When I look in the ``crud.rb`` file I see that my controller has this added to i
       flash[:notice] = "'\#{@#{singular_name}.#{options[:title_attribute]}}' was successfully deleted." if @#{singular_name}.destroy
       redirect_to admin_#{plural_name}_url
     end
-  
+
 To override this all I would is create my own delete method that works the same but just with my mailer code on it.
 
     class PagesController < ApplicationController

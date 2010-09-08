@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-  <%= render :partial => "/admin/head" %>
+  <%= render :partial => "/admin/head", :locals => {:login => false} %>
   <body class='<%= action_name %>'>
     <%= render :partial => '/shared/site_bar' %>
     <div id='tooltip_container'></div>
