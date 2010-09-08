@@ -11,7 +11,7 @@ class PageSweeper < ActionController::Caching::Sweeper
 
 protected
   def expire_caching(page)
-    expire_fragment %r{#{RefinerySetting.find_or_set(:refinery_menu_cache_action_suffix, "site_menu")}}
+    expire_fragment %r{.*#{Refinery.base_cache_key}_?#{RefinerySetting.find_or_set(:refinery_menu_cache_action_suffix, "site_menu")}.*}
     expire_fragment %r{.*/pages/.*}
   end
 

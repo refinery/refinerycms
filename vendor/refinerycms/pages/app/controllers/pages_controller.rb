@@ -1,7 +1,7 @@
 class PagesController < ApplicationController
 
   caches_action :home, :show,
-                :cache_path => Proc.new { |c| "#{c.request.host_with_port}/views/pages/#{c.params[:path]}" },
+                :cache_path => Proc.new { |c| "#{Refinery.base_cache_key}/#{c.request.host_with_port}/views/pages/#{c.params[:path]}" },
                 :if => Proc.new { |c|
                   c.send(:logged_in?) == false and
                   (!RefinerySetting.table_exists? ||
