@@ -7,6 +7,7 @@ Feature: Search
   Background:
     Given I am a logged in refinery user
 
+  @search-existing
   Scenario Outline: Search Existing Item
     Given I have a <item> titled "<title>"
     When I go to the list of <location>
@@ -20,20 +21,25 @@ Feature: Search
       |inquiry |testitem|inquiries     |
       |inquiry |testitem|spam inquiries|
 
+  # This will only run when resources engine is installed.
+  @search-file
   Scenario: Search File
-    When I upload the file at "features/uploads/refinery_is_awesome.txt"
+    When I upload the file at "refinery_is_awesome.txt"
     And I go to the list of files
     And I fill in "search" with "Refinery Is Awesome"
     And I press "Search"
     Then I should see "Refinery Is Awesome"
 
+  # This will only run when images engine is installed.
+  @search-image
   Scenario: Search Image
-    When I upload the image at "features/uploads/beach.jpeg"
+    When I upload the image at "beach.jpeg"
     And I go to the list of images
     And I fill in "search" with "Beach"
     And I press "Search"
     Then I should see "Beach"
 
+  @search-nonexisting
   Scenario Outline: Search Nonexisting Item
     Given I have no <item>
     When I go to the list of <location>

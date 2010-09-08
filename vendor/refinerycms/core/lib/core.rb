@@ -1,14 +1,17 @@
 require 'rails/all'
-require 'awesome_nested_set'
+
 require 'acts_as_indexed'
+require 'authlogic'
+require 'awesome_nested_set'
+require 'dragonfly'
 require 'friendly_id'
 require 'truncate_html'
 require 'will_paginate'
 
 module Refinery
-  autoload :Plugin,  'refinery/plugin'
-  autoload :Plugins, 'refinery/plugins'
-  autoload :Activity, 'refinery/activity'
+  autoload :Plugin,  File.expand_path('../refinery/plugin', __FILE__)
+  autoload :Plugins, File.expand_path('../refinery/plugins', __FILE__)
+  autoload :Activity, File.expand_path('../refinery/activity', __FILE__)
 
   module Core
     class Engine < Rails::Engine
@@ -22,23 +25,18 @@ module Refinery
         app.routes_reloader.paths << File.expand_path('../refinery/catch_all_routes.rb', __FILE__)
       end
 
+      initializer 'add presenters' do |app|
+        app.config.load_paths += [
+          Rails.root.join("app", "presenters"),
+          Rails.root.join("vendor", "**", "**", "app", "presenters"),
+          Refinery.root.join("vendor", "refinerycms", "*", "app", "presenters")
+        ].flatten
+      end
+
       config.to_prepare do
         Rails.cache.clear
 
-        require_dependency 'refinery/form_helpers'
-        require_dependency 'refinery/base_presenter'
-
-        [
-          Refinery.root.join("vendor", "plugins", "*", "app", "presenters"),
-          Rails.root.join("app", "presenters")
-        ].each do |path|
-          Dir[path.to_s].each do |presenters_path|
-            $LOAD_PATH << presenters_path
-            ::ActiveSupport::Dependencies.load_paths << presenters_path
-          end
-        end
-
-        # Figure out a better way to cache assets.
+        # TODO: Is there a better way to cache assets in engines?
         ::ActionView::Helpers::AssetTagHelper.module_eval do
           def asset_file_path(path)
             unless File.exist?(return_path = File.join(config.assets_dir, path.split('?').first))

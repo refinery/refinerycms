@@ -16,7 +16,7 @@ class RefineryEngineGenerator < Rails::Generators::NamedBase
       end
 
       # Update the gem file
-      unless Rails.env == 'test'
+      if Rails.env != 'test' and self.behavior != :revoke
         Rails.root.join('Gemfile').open('a') do |f|
           f.write "\ngem 'refinerycms-#{plural_name}', '1.0', :path => 'vendor/engines', :require => '#{plural_name}'"
         end
@@ -26,6 +26,9 @@ class RefineryEngineGenerator < Rails::Generators::NamedBase
         puts "bundle install"
         puts "rake db:migrate"
         puts "------------------------"
+      elsif self.behavior == :revoke
+        lines = Rails.root.join('Gemfile').open('r').read.split("\n")
+        Rails.root.join('Gemfile').open('w').puts(lines.reject {|l| l =~ %r{refinerycms-#{plural_name}}}.join("\n"))
       end
     else
       puts "You must specify at least one field. For help: rails generate refinery_engine"
@@ -41,8 +44,16 @@ protected
     path = path.gsub(".migration", '')
 
     # hack can be removed after issue is fixed
-    next_migration_number = ActiveRecord::Generators::Base.next_migration_number(File.dirname(__FILE__))
-    path = path.gsub("migration_number", next_migration_number)
+    unless self.behavior == :revoke
+     next_migration_number = ActiveRecord::Generators::Base.next_migration_number(File.dirname(__FILE__))
+    else
+      if (migrations = Dir[Rails.root.join('db', 'migrate', "*create_#{plural_name}*.rb").to_s]).any?
+        next_migration_number = migrations.first.split('/').last.split('_').first
+      else
+        next_migration_number = ''
+      end
+    end
+    path = path.gsub("migration_number", next_migration_number.to_s)
 
     # replace our local db path with the app one instead.
     path = path.gsub("/db/", "/../../../db/")

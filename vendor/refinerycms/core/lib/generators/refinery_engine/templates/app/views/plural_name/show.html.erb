@@ -1,5 +1,7 @@
 <%% content_for :body_content_title do %>
-  <%%= @<%= singular_name %>.<%= attributes.first.name %> %>
+  <%%= @<%= singular_name %><% if (title = attributes.detect { |a| a.type.to_s == "string" }).present? %>
+  .<%= title.name %>
+<% end %> %>
 <%% end %>
 
 <%% content_for :body_content_left do %>
@@ -11,7 +13,7 @@
 <% elsif attribute.type.to_s == 'resource' -%>
     <%%= link_to <%= "'#{attribute.name}'" %>, @<%= singular_name %>.<%= attribute.name %>.url %>
 <% else -%>
-    <%%= @<%= singular_name %>.<%= attribute.name %> %>
+    <%%=raw @<%= singular_name %>.<%= attribute.name %> %>
 <% end -%>
   </div>
   <% end %>
@@ -22,7 +24,9 @@
   <ul id="<%= plural_name %>">
     <%% @<%= plural_name %>.each do |<%= singular_name %>| %>
       <li>
-        <%%= link_to <%= singular_name %>.<%= attributes.first.name %>, <%= singular_name %>_url(<%= singular_name %>) %>
+        <%%= link_to <%= singular_name %><% if (title = attributes.detect { |a| a.type.to_s == "string" }).present? %>
+        .<%= title.name %>
+      <% end %>, <%= singular_name %>_url(<%= singular_name %>) %>
       </li>
     <%% end %>
   </ul>
