@@ -16,7 +16,7 @@
     $.fn.serializelist = function(options) {
         // Extend the configuration options with user-provided
         var defaults = {
-			attributes: ['id', 'class'], // which html attributes should be sent?
+			attributes: ['id'], // which html attributes should be sent?
 			allow_nest: true, // allow nested elements to be included
             prepend: 'ul', // which query string param name should be used?
 			att_regex: false, // replacement regex to run on attr values
