@@ -759,7 +759,7 @@ var list_reorder = {
   init: function() {
     $('#reorder_action').click(list_reorder.enable_reordering);
     $('#reorder_action_done').click(list_reorder.disable_reordering);
-    list_reorder.sortable_list.nestedSortable({   
+    list_reorder.sortable_list.nestedSortable({
       disableNesting: 'no-nest',
       forcePlaceholderSize: true,
       handle: 'div',
@@ -773,10 +773,10 @@ var list_reorder = {
       start: function () {
       },
       change: function () {
-        list_reorder.reset_branch_classes(this);  
+        list_reorder.reset_branch_classes(this);
       },
       stop: function () {
-        list_reorder.reset_branch_classes(this);  
+        list_reorder.reset_branch_classes(this);
       }
     });
     list_reorder.reset_branch_classes(list_reorder.sortable_list);
@@ -820,7 +820,6 @@ var list_reorder = {
       var serialized = list_reorder.sortable_list.serializelist();
 
       $.post(list_reorder.update_url, serialized, function(data) {
-        alert("Pages have been reordered.");
         list_reorder.restore_controls(e);
       });
     } else {
