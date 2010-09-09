@@ -145,7 +145,7 @@ module Refinery
         Refinery.root.join('vendor', 'refinerycms', 'core', 'public', 'stylesheets', stylesheet)
       }.each do |stylesheet|
         FileUtils::cp stylesheet.to_s,
-                      @app_path.join('public', 'sylesheets', stylesheet.split.last.to_s).to_s,
+                      @app_path.join('public', 'sylesheets').to_s,
                       :verbose => false if stylesheet.file?
       end
 
