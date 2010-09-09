@@ -229,33 +229,37 @@ module Refinery
 
             # Based upon http://github.com/matenia/jQuery-Awesome-Nested-Set-Drag-and-Drop
             def update_positions
-              newlist = params[:ul]                                     # assign the sorted tree to a variable
-              previous = nil                                            # initialize the previous item
-              newlist.each_with_index do |array, index|                 #loop through each item in the new list (passed via ajax)
-                moved_item_id = array[1][:id].split(/#{singular_name}/) # get the #{singular_name} id of the item being moved
-                @current_#{singular_name} = #{class_name}.find_by_id(moved_item_id)  # find the object that is being moved (in database)
-                unless previous.nil?                                    # if this is the first item being moved, move it to the root.
+              newlist = params[:ul]
+              previous = nil
+              newlist.each_with_index do |array, index|
+                moved_item_id = array[1][:id].split(/#{singular_name}/)
+                @current_#{singular_name} = #{class_name}.find_by_id(moved_item_id)
+                
+                if previous.present?
                   @previous_item = #{class_name}.find_by_id(previous)
                   @current_#{singular_name}.move_to_right_of(@previous_item)
                 else
                    @current_#{singular_name}.move_to_root
                 end
-                unless array[1][:children].blank?          # then, if this item has children we need to loop through them
-                  childstuff(array[1], @current_#{singular_name})  # NOTE: unless there are no children in the array, send it to the recursive children function
+                
+                if array[1][:children].present?
+                  update_child_positions(array[1], @current_#{singular_name})
                 end
-                previous = moved_item_id                   # set previous to the last moved item, for the next round
+                
+                previous = moved_item_id
               end
               #{class_name}.rebuild!
               render :nothing => true
             end
 
-            def childstuff(mynode, #{singular_name})
-              for child in mynode[:children]                    # loop through it's children
-                child_id = child[1][:id].split(/#{singular_name}/)     # get the child id from each child passed into the node (the array)
-                child_#{singular_name} = #{class_name}.find_by_id(child_id)  # find the matching category in the database
-                child_#{singular_name}.move_to_child_of(#{singular_name})       # move the child to the selected category
-                unless child[1][:children].blank?               # loop through the children if any
-                  childstuff(child[1], child_#{singular_name})          # if there are children - run them through the same process
+            def update_child_positions(node, #{singular_name})
+              node[:children].each do |child|
+                child_id = child[1][:id].split(/#{singular_name}/)
+                child_#{singular_name} = #{class_name}.find_by_id(child_id)
+                child_#{singular_name}.move_to_child_of(#{singular_name})
+
+                if child[1][:children].present?
+                  update_child_positions(child[1], child_#{singular_name})
                 end
               end
             end
