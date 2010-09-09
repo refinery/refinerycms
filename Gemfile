@@ -37,7 +37,7 @@ gem 'refinerycms',              :path => '.'
 
 # Specify additional Refinery CMS Engines here (all optional):
 gem 'refinerycms-inquiries',    '~> 0.9.8.6', :require => 'inquiries'
-# gem 'refinerycms-news',       '~> 0.9.9', :require => 'news'
+# gem 'refinerycms-news',       '~> 0.9.9'
 # gem 'refinerycms-portfolio',  '~> 0.9.8', :require => 'portfolio'
 # gem 'refinerycms-theming',    '~> 0.9.8', :require => 'theming'
 
