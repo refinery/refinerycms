@@ -240,9 +240,7 @@ module Refinery
                   #{class_name}.find(i).send(:set_default_left_and_right)
                 end
               else
-                params[:sortable_list].sort_by{|k, v| k.to_i}.each do |position, id_hash|
-                  parse_branch(position, id_hash, nil)
-                end
+                set_root_positions(sortable_tree_from_params(params[:sortable_list]))
               end
 
               find_all_#{plural_name}
@@ -252,6 +250,51 @@ module Refinery
                        :continue_reordering => params[:continue_reordering]
                      }
             end
+
+            def set_root_positions(tree)
+              left_counter = 0
+              tree.each do |root|
+                left_counter = set_positions(root, left_counter)
+              end
+            end
+
+            def set_positions(hash, parent_left = 0, parent_id = nil)
+              left_counter = parent_left + 1;
+              #{class_name.downcase} = hash[:node]
+              #{class_name.downcase}[:lft] = left_counter
+
+              hash[:children].each do |child|
+                left_counter = set_positions(child, left_counter, hash[:node].id)
+              end
+
+              left_counter += 1
+              #{class_name.downcase}[:rgt] = left_counter
+              #{class_name.downcase}.save
+              ##{class_name.downcase}.update_attribute(:parent_id, parent_id)
+
+              return left_counter
+            end
+
+            def sortable_tree_from_params(sortable_list)
+              # Get the list in order
+              sortable_list = sortable_list.map{|k, v| [k.to_i, v]}.sort_by{|k,v| k}.map{|k,v| v}
+
+              # Make something meaningful
+              sortable_list.collect do |item|
+                extract_nodes(item)
+              end.compact#.flatten.compact.reject{|v| v == 0}
+            end
+
+            def extract_nodes(item)
+              if (id = item.collect{|i| i.detect{|j| j != 'id'} if i.first == 'id'}.compact.first).present?
+                children = item.reject{|i| i.first == 'id'}
+                {:node => #{class_name}.find(id), :children => children.collect { |position, child| extract_nodes(child)}}
+              else
+                nil
+              end
+            end
+
+            protected :set_root_positions, :set_positions, :sortable_tree_from_params, :extract_nodes
 
             # takes in a single branch and saves the nodes inside it
             def parse_branch(position, id_hash, parent_id)
