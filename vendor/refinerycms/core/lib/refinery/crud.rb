@@ -231,36 +231,44 @@ module Refinery
             def update_positions
               newlist = params[:ul]
               previous = nil
-              newlist.each_with_index do |array, index|
-                moved_item_id = array[1][:id].split(/#{singular_name}/)
+              # The list doesn't come to us in the correct order. Frustration.
+              index = 0
+              while index < newlist.length do
+                hash = newlist[index.to_s]
+                moved_item_id = hash['id'].split(/#{singular_name}/)
                 @current_#{singular_name} = #{class_name}.find_by_id(moved_item_id)
-                
+
                 if previous.present?
                   @previous_item = #{class_name}.find_by_id(previous)
                   @current_#{singular_name}.move_to_right_of(@previous_item)
                 else
                    @current_#{singular_name}.move_to_root
                 end
-                
-                if array[1][:children].present?
-                  update_child_positions(array[1], @current_#{singular_name})
+
+                if hash['children'].present?
+                  update_child_positions(hash, @current_#{singular_name})
                 end
-                
+
                 previous = moved_item_id
+                index += 1
               end
               #{class_name}.rebuild!
               render :nothing => true
             end
 
             def update_child_positions(node, #{singular_name})
-              node[:children].each do |child|
-                child_id = child[1][:id].split(/#{singular_name}/)
+              child_index = 0
+              while child_index < node['children'].length do
+                child = node['children'][child_index.to_s]
+                child_id = child['id'].split(/#{singular_name}/)
                 child_#{singular_name} = #{class_name}.find_by_id(child_id)
                 child_#{singular_name}.move_to_child_of(#{singular_name})
 
-                if child[1][:children].present?
-                  update_child_positions(child[1], child_#{singular_name})
+                if child['children'].present?
+                  update_child_positions(child, child_#{singular_name})
                 end
+                
+                child_index += 1
               end
             end
 
