@@ -828,7 +828,6 @@ var list_reorder = {
         }
       });
       serialized += "&tree=" + list_reorder.tree;
-      serialized += "&authenticity_token=" + encodeURIComponent($('#reorder_authenticity_token').val());
       serialized += "&continue_reordering=false";
 
       $.post(list_reorder.update_url, serialized, function(data) {
@@ -836,10 +835,6 @@ var list_reorder = {
         if ((matches = data.match(new RegExp("^<" + list_reorder.sortable_list.get(0).tagName.toLowerCase()
                                              + "[^>]+" + list_reorder.sortable_list.attr('id') + "[^>]>"))) != null)
         {
-          // replace reorder authenticity token's value.
-          $('#reorder_authenticity_token').val(
-            $($(data.split('reorder_authenticity_token')).last().get(0).split('value=\''))
-              .last().get(0).split('\'')[0]);
           // replace actual list content.
           $(list_reorder.sortable_list).html($(data).html());
         } else {
