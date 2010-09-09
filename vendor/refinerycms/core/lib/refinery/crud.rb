@@ -270,7 +270,7 @@ module Refinery
               left_counter += 1
               #{class_name.downcase}[:rgt] = left_counter
               #{class_name.downcase}.save
-              ##{class_name.downcase}.update_attribute(:parent_id, parent_id)
+              #{class_name}.update_all(["parent_id = ?", parent_id], ["id = ?", #{class_name.downcase}.id])
 
               return left_counter
             end
