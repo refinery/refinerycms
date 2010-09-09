@@ -227,88 +227,39 @@ module Refinery
               find_all_#{plural_name}
             end
 
+            # Based upon http://github.com/matenia/jQuery-Awesome-Nested-Set-Drag-and-Drop
             def update_positions
-              #{class_name}.update_all({
-                #{class_name}.acts_as_nested_set_options[:left_column] => nil,
-                #{class_name}.acts_as_nested_set_options[:right_column] => nil
-              })
-
-              #{class_name}.update_all(:depth => nil) if #{class_name}.column_names.map(&:to_sym).include?(:depth)
-
-              unless params[:tree] == "true"
-                params[:sortable_list].sort.each_with_index do |i, index|
-                  #{class_name}.find(i).send(:set_default_left_and_right)
+              newlist = params[:ul]                                     # assign the sorted tree to a variable
+              previous = nil                                            # initialize the previous item
+              newlist.each_with_index do |array, index|                 #loop through each item in the new list (passed via ajax)
+                moved_item_id = array[1][:id].split(/#{singular_name}/) # get the #{singular_name} id of the item being moved
+                @current_#{singular_name} = #{class_name}.find_by_id(moved_item_id)  # find the object that is being moved (in database)
+                unless previous.nil?                                    # if this is the first item being moved, move it to the root.
+                  @previous_item = #{class_name}.find_by_id(previous)
+                  @current_#{singular_name}.move_to_right_of(@previous_item)
+                else
+                   @current_#{singular_name}.move_to_root
                 end
-              else
-                set_root_positions(sortable_tree_from_params(params[:sortable_list]))
+                unless array[1][:children].blank?          # then, if this item has children we need to loop through them
+                  childstuff(array[1], @current_#{singular_name})  # NOTE: unless there are no children in the array, send it to the recursive children function
+                end
+                previous = moved_item_id                   # set previous to the last moved item, for the next round
               end
-
-              find_all_#{plural_name}
-              render :partial => 'sortable_list',
-                     :layout => false,
-                     :locals => {
-                       :continue_reordering => params[:continue_reordering]
-                     }
+              #{class_name}.rebuild!
+              render :nothing => true
             end
 
-            def set_root_positions(tree)
-              left_counter = 0
-              tree.each do |root|
-                left_counter = set_positions(root, left_counter)
-              end
-            end
-
-            def set_positions(hash, parent_left = 0, parent_id = nil)
-              left_counter = parent_left + 1;
-              #{class_name.downcase} = hash[:node]
-              #{class_name.downcase}[:lft] = left_counter
-
-              hash[:children].each do |child|
-                left_counter = set_positions(child, left_counter, hash[:node].id)
-              end
-
-              left_counter += 1
-              #{class_name.downcase}[:rgt] = left_counter
-              #{class_name.downcase}.save
-              #{class_name}.update_all(["parent_id = ?", parent_id], ["id = ?", #{class_name.downcase}.id])
-
-              return left_counter
-            end
-
-            def sortable_tree_from_params(sortable_list)
-              # Get the list in order
-              sortable_list = sortable_list.map{|k, v| [k.to_i, v]}.sort_by{|k,v| k}.map{|k,v| v}
-
-              # Make something meaningful
-              sortable_list.collect do |item|
-                extract_nodes(item)
-              end.compact#.flatten.compact.reject{|v| v == 0}
-            end
-
-            def extract_nodes(item)
-              if (id = item.collect{|i| i.detect{|j| j != 'id'} if i.first == 'id'}.compact.first).present?
-                children = item.reject{|i| i.first == 'id'}
-                {:node => #{class_name}.find(id), :children => children.collect { |position, child| extract_nodes(child)}}
-              else
-                nil
+            def childstuff(mynode, #{singular_name})
+              for child in mynode[:children]                    # loop through it's children
+                child_id = child[1][:id].split(/#{singular_name}/)     # get the child id from each child passed into the node (the array)
+                child_#{singular_name} = #{class_name}.find_by_id(child_id)  # find the matching category in the database
+                child_#{singular_name}.move_to_child_of(#{singular_name})       # move the child to the selected category
+                unless child[1][:children].blank?               # loop through the children if any
+                  childstuff(child[1], child_#{singular_name})          # if there are children - run them through the same process
+                end
               end
             end
 
-            protected :set_root_positions, :set_positions, :sortable_tree_from_params, :extract_nodes
-
-            # takes in a single branch and saves the nodes inside it
-            def parse_branch(position, id_hash, parent_id)
-              id_hash.each do |pos, id|
-                parse_branch(pos, id, id_hash["id"]) unless pos == "id"
-              end if id_hash.include?('0')
-
-              node = #{class_name}.find(id_hash["id"])
-              node.parent_id = parent_id
-              node.send(:set_default_left_and_right)
-              node.save
-            end
-
-            protected :parse_branch
           )
         end
 

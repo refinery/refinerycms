@@ -1,4 +1,5 @@
-<% content_for :head_after_javascript_libraries, javascript_include_tag('jquery/jquery.nestedsortables.js') if (tree ||= false) %>
+<% content_for :head_after_javascript_libraries, javascript_include_tag('refinery/nestedsortables.js') if (tree ||= false) %>
+<% content_for :head_after_javascript_libraries, javascript_include_tag('refinery/serializelist.js') %>
 <% content_for :head do %>
   <script type='text/javascript'>
     $(document).ready(function(){
