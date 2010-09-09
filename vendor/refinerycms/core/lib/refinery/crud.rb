@@ -228,12 +228,19 @@ module Refinery
             end
 
             def update_positions
+              #{class_name}.update_all({
+                #{class_name}.acts_as_nested_set_options[:left_column] => nil,
+                #{class_name}.acts_as_nested_set_options[:right_column] => nil
+              })
+
+              #{class_name}.update_all(:depth => nil) if #{class_name}.column_names.map(&:to_sym).include?(:depth)
+
               unless params[:tree] == "true"
-                params[:sortable_list].each_with_index do |i, index|
-                  #{class_name}.find(i).update_attribute(:position, index)
+                params[:sortable_list].sort.each_with_index do |i, index|
+                  #{class_name}.find(i).send(:set_default_left_and_right)
                 end
               else
-                params[:sortable_list].each do |position, id_hash|
+                params[:sortable_list].sort_by{|k, v| k.to_i}.each do |position, id_hash|
                   parse_branch(position, id_hash, nil)
                 end
               end
@@ -252,7 +259,10 @@ module Refinery
                 parse_branch(pos, id, id_hash["id"]) unless pos == "id"
               end if id_hash.include?('0')
 
-              #{class_name}.update_all(["parent_id = ?, position = ?", parent_id, position], ["id = ?", id_hash["id"]])
+              node = #{class_name}.find(id_hash["id"])
+              node.parent_id = parent_id
+              node.send(:set_default_left_and_right)
+              node.save
             end
 
             protected :parse_branch
