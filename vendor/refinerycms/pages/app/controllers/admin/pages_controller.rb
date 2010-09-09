@@ -2,13 +2,13 @@ class Admin::PagesController < Admin::BaseController
 
   crudify :page,
           :conditions => "pages.parent_id IS NULL",
-          :order => "position ASC",
+          :order => "lft ASC",
           :include => [:parts, :slugs, :children, :parent],
           :paging => false
 
-  after_filter :expire_caching, :only => [:create, :update, :destroy, :update_positions]
-
   rescue_from FriendlyId::ReservedError, :with => :show_errors_for_reserved_slug
+
+  cache_sweeper :page_sweeper, :only => [:create, :update, :destroy, :update_positions]
 
   def new
     @page = Page.new
@@ -18,19 +18,6 @@ class Admin::PagesController < Admin::BaseController
   end
 
 protected
-  def expire_caching
-    expire_menu_fragment_caching
-    expire_action_caching
-  end
-
-  def expire_menu_fragment_caching
-    Rails.cache.delete("#{Refinery.base_cache_key}_menu_pages")
-    expire_fragment %r{#{RefinerySetting.find_or_set(:refinery_menu_cache_action_suffix, "site_menu")}}
-  end
-
-  def expire_action_caching
-    expire_fragment %r{.*/pages/.*}
-  end
 
   def show_errors_for_reserved_slug(exception)
     flash[:error] = "Sorry, but that title is a reserved system word."
