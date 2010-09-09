@@ -63,7 +63,7 @@ group :test do
   gem 'database_cleaner'
   gem 'cucumber-rails'
   gem 'cucumber'
-  gem 'spork' unless RUBY_PLATFORM =~ /mswin|mingw/
+  gem 'spork' unless Bundler::WINDOWS
   gem 'launchy'
   gem 'gherkin'
   # TODO: Change back to gem when patch is merged in
