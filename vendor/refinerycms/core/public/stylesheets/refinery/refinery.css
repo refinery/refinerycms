@@ -424,9 +424,11 @@ header p {
 #records > #recent_activity > ul li, #records > #recent_inquiries > ul li {
   max-height: 35px;
 }
+/*
 #records > ul.ui-sortable li {
   position: static;
 }
+*/
 #content #records > ul li .actions a {
   line-height: 29px;
 }
@@ -504,87 +506,19 @@ header p {
 #records.tree ul li > div:hover, .tree ul li > div:hover {
   background-color: #EAEAEA;
 }
+/*
 #records.tree ul.ui-sortable li div:hover, .tree ul.ui-sortable li div:hover {
   background-color: inherit;
 }
+*/
 #records ul#sortable_list {
   margin-top: 6px;
 }
-.ui-sortable .nested{
-  padding:5px;
-  margin:5px 0;
-}
-#records ul#sortable_list.ui-sortable {
-  margin-top: 0px;
-}
-#content .ui-sortable li.hover {
-  height: 300%;
-  display: block;
-}
-#content .ui-sortable {
-  margin: 0;
-  padding: 12px 0px;
-}
-#content #records > .ui-sortable {
-  padding-top: 10px;
-}
-#content #records ul.ui-sortable li ul, #content .ui-sortable li ul {
-  padding: 6px 10px 12px 40px;
-}
-#content #records ul.ui-sortable li, #content ul.ui-sortable li {
-  background-image: none;
-  background-color: #EAEAEA;
+
+#sortable_list.reordering > li {
   cursor: move;
-  border: 1px solid #ccc;
-  margin-bottom: 6px;
-  padding: 3px 0px 0px 3px;
 }
-#content #records ul.ui-sortable li ul li, #content ul.ui-sortable li {
-  background-color: #F2F2F2;
-}
-#content ul.ui-sortable li ul.empty {
-  display: block;
-}
-#content ul.ui-sortable li ul li.empty {
-  border: 0px none;
-}
-#content .ui-sortable .actions {
-  display: none !important;
-}
-#content .ui-sortable ul.spacing li {
-  display: block;
-  border: 0px none;
-}
-#content .ui-sortable ul {
-  min-height: 12px;
-}
-#content .ui-sortable li.placeholder {
-  opacity: 0.7;
-  border-width: 2px;
-  border-style: dashed;
-  height: 38px;
-}
-#content .tree .ui-sortable li.placeholder {
-  height: 38px;
-  border-width: 2px;
-  position: relative;
-  background: #22A7F2 !important;
-  margin:5px 0;
-}
-#content #records .tree .ui-sortable li.helper, #content .tree .ui-sortable li.helper {
-  opacity: 0.5 !important;
-}
-#content .tree .ui-sortable li.below-placeholder {
-}
-#content ul.ui-sortable li.ui-sortable-helper {
-  height: 38px !important;
-}
-#content ul.ui-sortable li.ui-sortable-helper ul {
-  display: none;
-}
-.ui-sortable-helper {
-  opacity: 0.7;
-}
+
 #content h2 {
   font-size: 18px;
   color:#41403c;
@@ -592,6 +526,7 @@ header p {
   margin-top: 10px;
   font-weight: bold;
 }
+
 #records h2, #actions h2 {
   margin-top: 0px;
 }
