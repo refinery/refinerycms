@@ -2,9 +2,9 @@
 
 Gem::Specification.new do |s|
   s.name              = %q{refinerycms}
-  s.version           = %q{0.9.8}
+  s.version           = %q{0.9.8.1}
   s.description       = %q{A Ruby on Rails CMS that supports Rails 3. It's easy to extend and sticks to 'the Rails way' where possible.}
-  s.date              = %q{2010-09-06}
+  s.date              = %q{2010-09-10}
   s.summary           = %q{A Ruby on Rails CMS that supports Rails 3}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
@@ -15,17 +15,16 @@ Gem::Specification.new do |s|
 
   s.add_dependency    'rails',                '~> 3.0.0'
   s.add_dependency    'bundler',              '~> 1.0.0'
-  s.add_dependency    'childlabor',           '~> 0.0.2'
 
   s.add_dependency    'moretea-awesome_nested_set', '= 1.4.3.1'
 
-  s.add_dependency    'acts_as_indexed',      '~> 0.6.5'
-  s.add_dependency    'friendly_id',          '~> 3.1.3'
+  s.add_dependency    'acts_as_indexed',      '~> 0.6.6'
+  s.add_dependency    'friendly_id',          '~> 3.1.6'
   s.add_dependency    'truncate_html',        '= 0.4'
   s.add_dependency    'will_paginate',        '~> 3.0.pre'
   s.add_dependency    'authlogic',            '~> 2.1.6'
   s.add_dependency    'rack-cache',           '~> 0.5.2'
-  s.add_dependency    'dragonfly',            '~> 0.7.4'
+  s.add_dependency    'dragonfly',            '~> 0.7.5'
 
   s.files             = [
     '.gitignore',
@@ -95,7 +94,6 @@ Gem::Specification.new do |s|
     'db/seeds/inquiry_settings.rb',
     'db/seeds/pages.rb',
     'db/seeds/refinery_settings.rb',
-    'db/test.sqlite3-journal',
     'license.md',
     'readme.md',
     'todo.md',
@@ -151,6 +149,15 @@ Gem::Specification.new do |s|
     'vendor/refinerycms/authentication/config/locales/sl.yml',
     'vendor/refinerycms/authentication/config/locales/zh-CN.yml',
     'vendor/refinerycms/authentication/config/routes.rb',
+    'vendor/refinerycms/authentication/features',
+    'vendor/refinerycms/authentication/features/lost_password.feature',
+    'vendor/refinerycms/authentication/features/manage_users.feature',
+    'vendor/refinerycms/authentication/features/step_definitions',
+    'vendor/refinerycms/authentication/features/step_definitions/lost_password.rb',
+    'vendor/refinerycms/authentication/features/step_definitions/user_steps.rb',
+    'vendor/refinerycms/authentication/features/support',
+    'vendor/refinerycms/authentication/features/support/factories.rb',
+    'vendor/refinerycms/authentication/features/support/paths.rb',
     'vendor/refinerycms/authentication/lib',
     'vendor/refinerycms/authentication/lib/authenticated_system.rb',
     'vendor/refinerycms/authentication/lib/authenticated_test_helper.rb',
@@ -222,9 +229,21 @@ Gem::Specification.new do |s|
     'vendor/refinerycms/core/config/routes.rb',
     'vendor/refinerycms/core/crud.md',
     'vendor/refinerycms/core/engines.md',
+    'vendor/refinerycms/core/features',
+    'vendor/refinerycms/core/features/engine_generator.feature',
+    'vendor/refinerycms/core/features/search.feature',
+    'vendor/refinerycms/core/features/site_bar.feature',
+    'vendor/refinerycms/core/features/step_definitions',
+    'vendor/refinerycms/core/features/step_definitions/core_steps.rb',
+    'vendor/refinerycms/core/features/step_definitions/engine_generator_steps.rb',
+    'vendor/refinerycms/core/features/step_definitions/generator_steps.rb',
+    'vendor/refinerycms/core/features/support',
+    'vendor/refinerycms/core/features/support/paths.rb',
+    'vendor/refinerycms/core/features/uploads',
+    'vendor/refinerycms/core/features/uploads/beach.jpeg',
+    'vendor/refinerycms/core/features/uploads/refinery_is_awesome.txt',
     'vendor/refinerycms/core/lib',
     'vendor/refinerycms/core/lib/core.rb',
-    'vendor/refinerycms/core/lib/crud.rb',
     'vendor/refinerycms/core/lib/generators',
     'vendor/refinerycms/core/lib/generators/refinery_engine',
     'vendor/refinerycms/core/lib/generators/refinery_engine/USAGE',
@@ -271,6 +290,7 @@ Gem::Specification.new do |s|
     'vendor/refinerycms/core/lib/refinery/attachment_fu_patch.rb',
     'vendor/refinerycms/core/lib/refinery/base_presenter.rb',
     'vendor/refinerycms/core/lib/refinery/catch_all_routes.rb',
+    'vendor/refinerycms/core/lib/refinery/crud.rb',
     'vendor/refinerycms/core/lib/refinery/helpers',
     'vendor/refinerycms/core/lib/refinery/helpers/form_helper.rb',
     'vendor/refinerycms/core/lib/refinery/helpers/html_truncation_helper.rb',
@@ -676,7 +696,6 @@ Gem::Specification.new do |s|
     'vendor/refinerycms/core/public/javascripts/jquery/jquery.corner.js',
     'vendor/refinerycms/core/public/javascripts/jquery/jquery.html5-placeholder-shim.js',
     'vendor/refinerycms/core/public/javascripts/jquery/jquery.jcarousel.js',
-    'vendor/refinerycms/core/public/javascripts/jquery/jquery.nestedsortables.js',
     'vendor/refinerycms/core/public/javascripts/jquery/jquery.textTruncate.js',
     'vendor/refinerycms/core/public/javascripts/jquery/jquery.timers.js',
     'vendor/refinerycms/core/public/javascripts/refinery',
@@ -684,6 +703,8 @@ Gem::Specification.new do |s|
     'vendor/refinerycms/core/public/javascripts/refinery/boot_wym.js',
     'vendor/refinerycms/core/public/javascripts/refinery/core.js',
     'vendor/refinerycms/core/public/javascripts/refinery/i18n.js',
+    'vendor/refinerycms/core/public/javascripts/refinery/nestedsortables.js',
+    'vendor/refinerycms/core/public/javascripts/refinery/serializelist.js',
     'vendor/refinerycms/core/public/javascripts/refinery/site_bar.js',
     'vendor/refinerycms/core/public/javascripts/wymeditor',
     'vendor/refinerycms/core/public/javascripts/wymeditor/jquery.refinery.wymeditor.js',
@@ -772,6 +793,11 @@ Gem::Specification.new do |s|
     'vendor/refinerycms/dashboard/config/locales/sl.yml',
     'vendor/refinerycms/dashboard/config/locales/zh-CN.yml',
     'vendor/refinerycms/dashboard/config/routes.rb',
+    'vendor/refinerycms/dashboard/features',
+    'vendor/refinerycms/dashboard/features/dashboard.feature',
+    'vendor/refinerycms/dashboard/features/step_definitions',
+    'vendor/refinerycms/dashboard/features/support',
+    'vendor/refinerycms/dashboard/features/support/paths.rb',
     'vendor/refinerycms/dashboard/lib',
     'vendor/refinerycms/dashboard/lib/dashboard.rb',
     'vendor/refinerycms/dashboard/readme.md',
@@ -813,6 +839,16 @@ Gem::Specification.new do |s|
     'vendor/refinerycms/images/config/locales/sl.yml',
     'vendor/refinerycms/images/config/locales/zh-CN.yml',
     'vendor/refinerycms/images/config/routes.rb',
+    'vendor/refinerycms/images/features',
+    'vendor/refinerycms/images/features/manage_images.feature',
+    'vendor/refinerycms/images/features/step_definitions',
+    'vendor/refinerycms/images/features/step_definitions/image_steps.rb',
+    'vendor/refinerycms/images/features/support',
+    'vendor/refinerycms/images/features/support/paths.rb',
+    'vendor/refinerycms/images/features/uploads',
+    'vendor/refinerycms/images/features/uploads/beach.jpeg',
+    'vendor/refinerycms/images/features/uploads/id-rather-be-here.jpg',
+    'vendor/refinerycms/images/features/uploads/refinery_is_awesome.txt',
     'vendor/refinerycms/images/lib',
     'vendor/refinerycms/images/lib/images.rb',
     'vendor/refinerycms/images/lib/tasks',
@@ -833,6 +869,8 @@ Gem::Specification.new do |s|
     'vendor/refinerycms/pages/app/models/page_part.rb',
     'vendor/refinerycms/pages/app/presenters',
     'vendor/refinerycms/pages/app/presenters/page_presenter.rb',
+    'vendor/refinerycms/pages/app/sweepers',
+    'vendor/refinerycms/pages/app/sweepers/page_sweeper.rb',
     'vendor/refinerycms/pages/app/views',
     'vendor/refinerycms/pages/app/views/admin',
     'vendor/refinerycms/pages/app/views/admin/pages',
@@ -869,11 +907,20 @@ Gem::Specification.new do |s|
     'vendor/refinerycms/pages/config/locales/sl.yml',
     'vendor/refinerycms/pages/config/locales/zh-CN.yml',
     'vendor/refinerycms/pages/config/routes.rb',
+    'vendor/refinerycms/pages/features',
+    'vendor/refinerycms/pages/features/manage_pages.feature',
+    'vendor/refinerycms/pages/features/step_definitions',
+    'vendor/refinerycms/pages/features/step_definitions/page_steps.rb',
+    'vendor/refinerycms/pages/features/support',
+    'vendor/refinerycms/pages/features/support/paths.rb',
     'vendor/refinerycms/pages/lib',
     'vendor/refinerycms/pages/lib/pages',
     'vendor/refinerycms/pages/lib/pages.rb',
     'vendor/refinerycms/pages/lib/pages/marketable_routes.rb',
     'vendor/refinerycms/pages/readme.md',
+    'vendor/refinerycms/pages/spec',
+    'vendor/refinerycms/pages/spec/models',
+    'vendor/refinerycms/pages/spec/models/page_spec.rb',
     'vendor/refinerycms/refinery.rb',
     'vendor/refinerycms/refinerycms.rb',
     'vendor/refinerycms/resources',
@@ -909,6 +956,15 @@ Gem::Specification.new do |s|
     'vendor/refinerycms/resources/config/locales/sl.yml',
     'vendor/refinerycms/resources/config/locales/zh-CN.yml',
     'vendor/refinerycms/resources/config/routes.rb',
+    'vendor/refinerycms/resources/features',
+    'vendor/refinerycms/resources/features/manage_files.feature',
+    'vendor/refinerycms/resources/features/step_definitions',
+    'vendor/refinerycms/resources/features/step_definitions/file_steps.rb',
+    'vendor/refinerycms/resources/features/support',
+    'vendor/refinerycms/resources/features/support/paths.rb',
+    'vendor/refinerycms/resources/features/uploads',
+    'vendor/refinerycms/resources/features/uploads/beach.jpeg',
+    'vendor/refinerycms/resources/features/uploads/refinery_is_awesome.txt',
     'vendor/refinerycms/resources/lib',
     'vendor/refinerycms/resources/lib/resources.rb',
     'vendor/refinerycms/resources/readme.md',
@@ -943,6 +999,9 @@ Gem::Specification.new do |s|
     'vendor/refinerycms/settings/config/locales/sl.yml',
     'vendor/refinerycms/settings/config/locales/zh-CN.yml',
     'vendor/refinerycms/settings/config/routes.rb',
+    'vendor/refinerycms/settings/features',
+    'vendor/refinerycms/settings/features/manage_refinery_settings.feature',
+    'vendor/refinerycms/settings/features/step_definitions',
     'vendor/refinerycms/settings/lib',
     'vendor/refinerycms/settings/lib/settings.rb',
     'vendor/refinerycms/settings/readme.md'

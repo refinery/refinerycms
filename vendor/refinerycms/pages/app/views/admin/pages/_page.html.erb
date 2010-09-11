@@ -1,5 +1,5 @@
 <%
-  branch = if page.depth.nil? and page.left_sibling.nil? and (righty = page.right_sibling).present?
+  branch = if page.parent_id.nil? and page.right_sibling.present? and page.left_sibling.nil?
     "branch_start"
   elsif page.right_sibling.nil?
     "branch_end"
