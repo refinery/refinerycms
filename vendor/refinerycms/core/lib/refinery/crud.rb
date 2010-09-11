@@ -227,35 +227,51 @@ module Refinery
               find_all_#{plural_name}
             end
 
+            # Based upon http://github.com/matenia/jQuery-Awesome-Nested-Set-Drag-and-Drop
             def update_positions
-              unless params[:tree] == "true"
-                params[:sortable_list].each_with_index do |i, index|
-                  #{class_name}.find(i).update_attribute(:position, index)
+              newlist = params[:ul]
+              previous = nil
+              # The list doesn't come to us in the correct order. Frustration.
+              index = 0
+              while index < newlist.length do
+                hash = newlist[index.to_s]
+                moved_item_id = hash['id'].split(/#{singular_name}/)
+                @current_#{singular_name} = #{class_name}.find_by_id(moved_item_id)
+
+                if previous.present?
+                  @previous_item = #{class_name}.find_by_id(previous)
+                  @current_#{singular_name}.move_to_right_of(@previous_item)
+                else
+                   @current_#{singular_name}.move_to_root
                 end
-              else
-                params[:sortable_list].each do |position, id_hash|
-                  parse_branch(position, id_hash, nil)
+
+                if hash['children'].present?
+                  update_child_positions(hash, @current_#{singular_name})
                 end
+
+                previous = moved_item_id
+                index += 1
               end
-
-              find_all_#{plural_name}
-              render :partial => 'sortable_list',
-                     :layout => false,
-                     :locals => {
-                       :continue_reordering => params[:continue_reordering]
-                     }
+              #{class_name}.rebuild!
+              render :nothing => true
             end
 
-            # takes in a single branch and saves the nodes inside it
-            def parse_branch(position, id_hash, parent_id)
-              id_hash.each do |pos, id|
-                parse_branch(pos, id, id_hash["id"]) unless pos == "id"
-              end if id_hash.include?('0')
+            def update_child_positions(node, #{singular_name})
+              child_index = 0
+              while child_index < node['children'].length do
+                child = node['children'][child_index.to_s]
+                child_id = child['id'].split(/#{singular_name}/)
+                child_#{singular_name} = #{class_name}.find_by_id(child_id)
+                child_#{singular_name}.move_to_child_of(#{singular_name})
 
-              #{class_name}.update_all(["parent_id = ?, position = ?", parent_id, position], ["id = ?", id_hash["id"]])
+                if child['children'].present?
+                  update_child_positions(child, child_#{singular_name})
+                end
+                
+                child_index += 1
+              end
             end
 
-            protected :parse_branch
           )
         end
 

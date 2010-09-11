@@ -1,14 +1,17 @@
 require 'rails/all'
-require 'awesome_nested_set'
+
 require 'acts_as_indexed'
+require 'authlogic'
+require 'awesome_nested_set'
+require 'dragonfly'
 require 'friendly_id'
 require 'truncate_html'
 require 'will_paginate'
 
 module Refinery
-  autoload :Plugin,  'refinery/plugin'
-  autoload :Plugins, 'refinery/plugins'
-  autoload :Activity, 'refinery/activity'
+  autoload :Plugin,  File.expand_path('../refinery/plugin', __FILE__)
+  autoload :Plugins, File.expand_path('../refinery/plugins', __FILE__)
+  autoload :Activity, File.expand_path('../refinery/activity', __FILE__)
 
   module Core
     class Engine < Rails::Engine

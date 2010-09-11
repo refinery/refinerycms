@@ -1,7 +1,7 @@
-require File.expand_path(File.join(File.dirname(__FILE__), "../../../vendor/refinerycms/core/lib/generators/refinery_engine/refinery_engine_generator"))
+require File.expand_path("../../../lib/generators/refinery_engine/refinery_engine_generator", __FILE__)
 
 Before do
-  @engine_generator_root  = File.join(File.dirname(__FILE__), "/../../")
+  @engine_generator_root  = File.expand_path('../../../', __FILE__)
   @tmp_refinery_app_name  = "tmp_refinery_app"
   @tmp_refinery_app_root  = File.join(@engine_generator_root, @tmp_refinery_app_name)
   @app_root = @tmp_refinery_app_root

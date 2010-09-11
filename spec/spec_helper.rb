@@ -1,3 +1,4 @@
+require 'rbconfig'
 def setup_environment
   # This file is copied to ~/spec when you run 'rails generate rspec'
   # from the project root directory.
@@ -7,7 +8,7 @@ def setup_environment
 
   # Requires supporting files with custom matchers and macros, etc,
   # in ./support/ and its subdirectories.
-  Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each {|f| require f}
+  Dir[File.expand_path('../support/**/*.rb', __FILE__)].each {|f| require f}
 
   RSpec.configure do |config|
     # == Mock Framework
@@ -32,7 +33,7 @@ end
 def each_run
 end
 
-unless RUBY_PLATFORM =~ /mswin|mingw/
+unless RbConfig::CONFIG["host_os"] =~ %r!(msdos|mswin|djgpp|mingw)!
   require 'rubygems'
   require 'spork'
 
