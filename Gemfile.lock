@@ -180,7 +180,7 @@ DEPENDENCIES
   launchy
   mysql (= 2.8.1)
   rack-test!
-  rails (= 3.0.0)
+  rails (~> 3.0.0)
   refinerycms!
   refinerycms-i18n (~> 0.9.8.6)
   refinerycms-inquiries (~> 0.9.8.7)
