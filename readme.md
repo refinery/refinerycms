@@ -56,13 +56,13 @@ Mac OS 10.5+ users [this shell install script](http://github.com/maddox/magick-i
 * Uses the popular [Dragonfly](http://github.com/markevans/dragonfly).
 * Supports storage on Amazon S3.
 
-### [Inquiries](http://github.com/resolve/refinerycms/blob/master/vendor/refinerycms/inquiries/readme.md#readme)
+### [Inquiries](http://github.com/resolve/refinerycms-inquiries/blob/master/readme.md#readme)
 
 * Collect inquiries from a contact form.
 * Manage your inquiries and be notified when new ones come in.
 * Checks new inquiries for spam.
 
-### [Settings](http://github.com/resolve/refinerycms/blob/master/vendor/refinerycms/refinery_settings/readme.md#readme)
+### [Settings](http://github.com/resolve/refinerycms/blob/master/vendor/refinerycms/settings/readme.md#readme)
 
 * Manage the behaviour of Refinery
 * Easily integrate with [Google Analytics](https://www.google.com/analytics/)
