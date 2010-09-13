@@ -41,6 +41,7 @@ Mac OS 10.5+ users [this shell install script](http://github.com/maddox/magick-i
 * [IRC Channel](irc://irc.freenode.net/refinerycms)
 * [GitHub repository](http://github.com/resolve/refinerycms)
 * [Developer/API documentation](http://api.refinerycms.org)
+* Documentation about: [Pages](http://github.com/resolve/refinerycms/blob/master/vendor/refinerycms/pages/readme.md#readme), [Images](http://github.com/resolve/refinerycms/blob/master/vendor/refinerycms/images/readme.md#readme), [Files](http://github.com/resolve/refinerycms/blob/master/vendor/refinerycms/resources/readme.md#readme), [Inquiries](http://github.com/resolve/refinerycms-inquiries/blob/master/readme.md#readme), [Settings](http://github.com/resolve/refinerycms/blob/master/vendor/refinerycms/settings/readme.md#readme), [Dashboard](http://github.com/resolve/refinerycms/blob/master/vendor/refinerycms/dashboard/readme.md#readme), [Authentication & Users](http://github.com/resolve/refinerycms/blob/master/vendor/refinerycms/authentication/readme.md#readme), [Extending with Engines](http://github.com/resolve/refinerycms/blob/master/vendor/refinerycms/core/engines.md#readme).
 
 ## Features
 
@@ -87,10 +88,16 @@ to get help on how to use that. Or read the full documentation on [writing engin
 
 ### Popular Engines
 
+* [Blog](http://github.com/resolve/refinerycms-blog) - A simple blogging engine that supports posts, categories and comments (with moderation support if you choose to enable it)
 * [Portfolio](http://github.com/resolve/refinerycms-portfolio) - manage groups of images like an image gallery.
 * [News](http://github.com/resolve/refinerycms-news) - post and manage news items.
+* [Theming](http://github.com/resolve/refinerycms-theming) - turn your views, stylesheets, javascripts and images into bundled themes that are reusable and interchangeable.
 
 [Full engine list here](http://github.com/resolve/refinerycms/wiki/engines)
+
+### Example Site Showcase
+
+[List here (add your link when you're done)](http://github.com/resolve/refinerycms/wiki/Example-Site-Showcase)
 
 ## License
 
