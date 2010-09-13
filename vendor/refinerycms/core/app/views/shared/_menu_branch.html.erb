@@ -4,12 +4,13 @@
     " class='#{classes.join(' ')}'"
   end
   dom_id = (" id='item_#{menu_branch_counter}'" if menu_branch.parent_id.nil? and menu_branch.title.present?)
+  @menu_pages.reject! { |branch| branch == menu_branch } # Remove page from the array, so that future searching will be faster.
+  children = @menu_pages.select { |p| p.parent_id == menu_branch.id && p.in_menu? }
 -%>
 <li<%= css -%><%= dom_id -%>>
   <%= link_to menu_branch.title, menu_branch.url %>
 
-  <% unless hide_children or
-            (children = menu_branch.children.reject{|c| !c.in_menu?}).empty? %>
+  <% unless hide_children or children.empty? %>
     <ul class='clearfix'>
       <%=
         render :partial => "/shared/menu_branch",
