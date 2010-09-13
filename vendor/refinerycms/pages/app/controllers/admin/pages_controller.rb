@@ -2,7 +2,7 @@ class Admin::PagesController < Admin::BaseController
 
   crudify :page,
           :conditions => "pages.parent_id IS NULL",
-          :order => "position ASC",
+          :order => "lft ASC",
           :include => [:parts, :slugs, :children, :parent],
           :paging => false
 

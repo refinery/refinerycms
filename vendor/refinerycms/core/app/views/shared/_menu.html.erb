@@ -9,7 +9,6 @@
     if (collection ||= @menu_pages).any?
       sibling_count = collection.size - 1
 -%>
-<%= Time.now %>
       <nav id='<%= dom_id %>' class='<%= %W(#{css} clearfix).join(' ') %>'>
         <ul>
           <%= render :partial => "/shared/menu_branch",
