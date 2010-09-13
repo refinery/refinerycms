@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100831122919) do
+ActiveRecord::Schema.define(:version => 20100913234704) do
 
   create_table "images", :force => true do |t|
     t.string   "image_mime_type"
@@ -77,6 +77,7 @@ ActiveRecord::Schema.define(:version => 20100831122919) do
     t.integer  "lft"
     t.integer  "rgt"
     t.integer  "depth"
+    t.string   "cached_slug"
   end
 
   add_index "pages", ["depth"], :name => "index_pages_on_depth"

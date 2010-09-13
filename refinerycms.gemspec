@@ -88,6 +88,7 @@ Gem::Specification.new do |s|
     'db/migrate/20100729221735_remove_page_translations_if_present.rb',
     'db/migrate/20100826232810_move_inquiry_settings_to_refinery_settings.rb',
     'db/migrate/20100831122919_move_page_to_nested_set.rb',
+    'db/migrate/20100913234704_add_cached_slug_to_pages.rb',
     'db/schema.rb',
     'db/seeds',
     'db/seeds.rb',
