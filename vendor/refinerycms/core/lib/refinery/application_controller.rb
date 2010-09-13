@@ -79,7 +79,7 @@ module Refinery::ApplicationController
 
     # get all the pages to be displayed in the site menu.
     def find_pages_for_menu
-      @menu_pages = Page.order('lft ASC')
+      @menu_pages = Page.order('lft ASC').includes(:slugs, :slug, :parts)
     end
 
     # use a different model for the meta information.
