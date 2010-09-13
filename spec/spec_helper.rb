@@ -1,3 +1,4 @@
+require 'rbconfig'
 def setup_environment
   # This file is copied to ~/spec when you run 'rails generate rspec'
   # from the project root directory.
@@ -32,7 +33,7 @@ end
 def each_run
 end
 
-unless RUBY_PLATFORM =~ /mswin|mingw/
+unless RbConfig::CONFIG["host_os"] =~ %r!(msdos|mswin|djgpp|mingw)!
   require 'rubygems'
   require 'spork'
 
