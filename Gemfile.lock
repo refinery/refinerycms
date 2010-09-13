@@ -137,6 +137,9 @@ GEM
     gherkin (2.3.2)
       json (~> 1.4.6)
       term-ansicolor (~> 1.0.5)
+    globalize3 (0.0.10)
+      activemodel (>= 3.0.0)
+      activerecord (>= 3.0.0)
     i18n (0.5.0)
     json (1.4.6)
     launchy (0.3.7)
@@ -222,6 +225,7 @@ DEPENDENCIES
   dragonfly!
   factory_girl
   gherkin
+  globalize3
   json_pure (= 1.4.6a)!
   launchy
   rack-test (~> 0.5.6)
