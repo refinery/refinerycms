@@ -132,10 +132,21 @@ module Refinery
       %w(app db).each do |folder|
         FileUtils::cp_r Refinery.root.join(folder), @app_path, :verbose => false
       end
+
+      # Copy in important files to the Rails app.
       %w(.gitignore readme.md license.md config/routes.rb config/settings.rb config/environments/production.rb
           config/initializers/acts_as_indexed_config.rb config/initializers/field_with_error_fix.rb
           config/initializers/fix_rack.rb).each do |file|
         FileUtils::cp_r Refinery.root.join(file), @app_path.join(file), :verbose => false if Refinery.root.join(file).exist?
+      end
+
+      # Copy stylesheets so they're ready to use.
+      %w(application.css formatting.css home.css).map{|stylesheet|
+        Refinery.root.join('vendor', 'refinerycms', 'core', 'public', 'stylesheets', stylesheet)
+      }.each do |stylesheet|
+        FileUtils::cp stylesheet.to_s,
+                      @app_path.join('public', 'sylesheets').to_s,
+                      :verbose => false if stylesheet.file?
       end
 
       # Remove default application layout, README, and public/index.html

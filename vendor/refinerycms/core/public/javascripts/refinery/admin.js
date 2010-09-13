@@ -759,56 +759,50 @@ var list_reorder = {
   init: function() {
     $('#reorder_action').click(list_reorder.enable_reordering);
     $('#reorder_action_done').click(list_reorder.disable_reordering);
+    list_reorder.sortable_list.nestedSortable({
+      disableNesting: 'no-nest',
+      forcePlaceholderSize: true,
+      handle: 'div',
+      items: 'li',
+      opacity: .6,
+      placeholder: 'placeholder',
+      tabSize: 25,
+      tolerance: 'pointer',
+      toleranceElement: '> div',
+      disabled: true,
+      start: function () {
+      },
+      change: function () {
+        list_reorder.reset_branch_classes(this);
+      },
+      stop: function () {
+        list_reorder.reset_branch_classes(this);
+      }
+    });
+    list_reorder.reset_branch_classes(list_reorder.sortable_list);
   }
 
-  , enable_reordering: function(e) {
+  ,reset_branch_classes: function (ul) {
+    $("li.ui-sortable-helper", this).removeClass("record").removeClass("branch_start").removeClass("branch_end");
+    $("li", ul).removeClass("branch_start").removeClass("branch_end");
+
+    $("> li:first", ul).addClass("branch_start")
+    $("> li:last", ul).addClass("branch_end")
+
+    var nested_ul = $("ul", ul);
+    $("> li:last", nested_ul).addClass("branch_end");
+  }
+
+  ,enable_reordering: function(e) {
     if(e) { e.preventDefault(); }
+    $('#sortable_list').addClass("reordering");
 
-    sortable_options = {
-      'tolerance': 'pointer'
-      , 'placeholder': 'placeholder'
-      , 'cursor': 'drag'
-      , 'items': 'li'
-      , 'axis': 'y'
-      , 'connectWith' : '.nested'
-    };
-
-    $(list_reorder.sortable_list).find('li').each(function(index, li) {
-      if ($('ul', li).length) { return; }
-      $("<ul></ul>").appendTo(li);
-    });
-
-    if (list_reorder.tree && !$.browser.msie) {
-      $(list_reorder.sortable_list).parent().nestedSortable($.extend(sortable_options, {
-        'maxDepth': 2
-        , 'placeholderElement': 'li'
-      }));
-      $(list_reorder.sortable_list).addClass('ui-sortable');
-    } else {
-      $(list_reorder.sortable_list).sortable(sortable_options);
-    }
-
-    $('#site_bar, header > *:not(script)').fadeTo(500, 0.3);
+    $('#sortable_list .actions, #site_bar, header > *:not(script)').fadeTo(500, 0.3);
     $('#actions *:not("#reorder_action_done, #reorder_action")').not($('#reorder_action_done').parents('li, ul')).fadeTo(500, 0.55);
 
+    list_reorder.sortable_list.nestedSortable("enable");
     $('#reorder_action').hide();
     $('#reorder_action_done').show();
-  }
-
-  , parse_branch: function(indexes, li) {
-    branch = "&sortable_list";
-    $.each(indexes, function(i, index) {
-      branch += "[" + index + "]";
-    });
-    branch += "[id]=" + $($(li).attr('id').split('_')).last().get(0);
-
-    // parse any children branches too.
-    $(li).find('> li[id], > ul li[id]').each(function(i, child) {
-      current_indexes = $.merge($.merge([], indexes), [i]);
-      branch += list_reorder.parse_branch(current_indexes, child);
-    });
-
-    return branch;
   }
 
   , disable_reordering: function(e) {
@@ -817,38 +811,16 @@ var list_reorder = {
     }
     if(e) { e.preventDefault(); }
     $('#reorder_action_done').addClass('loading');
+    list_reorder.sortable_list.nestedSortable("disable");
+
+    $('#sortable_list').removeClass("reordering");
+
     if (list_reorder.update_url != null) {
-      serialized = "";
-      list_reorder.sortable_list.find('> li[id]').each(function(index, li) {
-        if (list_reorder.tree) {
-          serialized += list_reorder.parse_branch([index], li);
-        }
-        else {
-          serialized += "&sortable_list[]=" + $($(li).attr('id').split('_')).last().get(0);
-        }
-      });
-      serialized += "&tree=" + list_reorder.tree;
-      serialized += "&continue_reordering=false";
+
+      var serialized = list_reorder.sortable_list.serializelist();
 
       $.post(list_reorder.update_url, serialized, function(data) {
-        // handle the case where we get the whole list back including the <ul> or whatever.
-        if ((matches = data.match(new RegExp("^<" + list_reorder.sortable_list.get(0).tagName.toLowerCase()
-                                             + "[^>]+" + list_reorder.sortable_list.attr('id') + "[^>]>"))) != null)
-        {
-          // replace actual list content.
-          $(list_reorder.sortable_list).html($(data).html());
-        } else {
-          $(list_reorder.sortable_list).html(data);
-        }
-
-        // if we get passed a script tag, re-enable reordering.
-        matches = data.replace('"', "'")
-                      .match(/<script\ type='text\/javascript'>([^<]*)<\/script>/im);
-        if (matches != null && matches.length > 1) {
-          list_reorder.enable_reordering();
-        } else {
-          list_reorder.restore_controls(e);
-        }
+        list_reorder.restore_controls(e);
       });
     } else {
       list_reorder.restore_controls(e);
@@ -863,7 +835,7 @@ var list_reorder = {
     }
     $(list_reorder.sortable_list).removeClass('reordering, ui-sortable');
 
-    $('#site_bar, header > *:not(script)').fadeTo(250, 1);
+    $('#sortable_list .actions, #site_bar, header > *:not(script)').fadeTo(250, 1);
     $('#actions *:not("#reorder_action_done, #reorder_action")').not($('#reorder_action_done').parents('li, ul')).fadeTo(250, 1, function() {
       $('#reorder_action_done').hide().removeClass('loading');
       $('#reorder_action').show();
