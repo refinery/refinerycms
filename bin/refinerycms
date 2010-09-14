@@ -239,7 +239,7 @@ module Refinery
       options = {:cd => true, :puts => true}.merge(options)
       to_run = %w()
       to_run << "cmd /c" if RbConfig::CONFIG["host_os"] =~ %r!(msdos|mswin|djgpp|mingw)!
-      to_run << "cd #{@app_path} &&" if options[:cd]
+      to_run << "cd '#{@app_path}' &&" if options[:cd]
       to_run << command
       to_run = to_run.join(' ')
 
