@@ -80,7 +80,7 @@ So when viewing a list of the images you have you don't want it to show all the 
 
 You do that like this:
 
-    :conditions => "parent_id IS NULL"
+    :conditions => {:parent_id => nil}
 
 ### ``:sortable``
 
