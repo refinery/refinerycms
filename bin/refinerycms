@@ -53,7 +53,7 @@ module Refinery
           @options[:force] = true
         end
 
-        opts.on("-h [APP_NAME]", "--heroku [APP_NAME]", "Set up and deploy to Heroku") do |app_name|
+        opts.on("--heroku [APP_NAME]", "Set up and deploy to Heroku") do |app_name|
           @options[:heroku] = app_name || ''
         end
 
