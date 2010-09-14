@@ -49,6 +49,9 @@ de:
         download_current: Aktuelles %{what} herunterladen
         opens_in_new_window: Öffnet in einem neuen Fenster
         remove_current: "Entferne aktuelles %{what}"
+        no_resource_selected: Es ist momentan keine Datei ausgewählt, klicken Sie hier, um eine hinzuzufügen.
+        name: Datei hinzufügen
+        current: Aktuelle Datei
       search:
         button_text: Suchen
         results_for: Suchergebnisse für '%{query}'
