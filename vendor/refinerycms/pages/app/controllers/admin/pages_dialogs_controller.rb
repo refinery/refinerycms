@@ -6,9 +6,9 @@ class Admin::PagesDialogsController < Admin::DialogsController
 
   def link_to
     @pages = Page.paginate :page => params[:page],
-                             :conditions => 'parent_id is null',
-                             :order => 'position ASC',
-                             :per_page => Page.per_page(dialog=true)
+                           :conditions => {:parent_id => nil},
+                           :order => 'position ASC',
+                           :per_page => Page.per_page(dialog=true)
 
     @resources = Resource.paginate :page => params[:resource_page],
                                    :order => 'created_at DESC',

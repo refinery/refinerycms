@@ -86,7 +86,7 @@ This bit is important. It's where all the controllers are held to manage pages i
 
     class Admin::PagesController < Admin::BaseController
 
-      crudify :page, :conditions => "parent_id IS NULL",
+      crudify :page, :conditions => {:parent_id => nil},
                      :order => "position ASC", :paging => false
 
     end

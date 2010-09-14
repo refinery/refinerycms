@@ -9,12 +9,9 @@ class Admin::ImagesController < Admin::BaseController
   before_filter :change_list_mode_if_specified, :init_dialog
 
   def index
-    if searching?
-      search_and_paginate_all_images
-    else
-      paginate_all_images
-    end
-
+    search_all_images if searching?
+    paginate_all_images
+    
     if RefinerySetting.find_or_set(:group_images_by_date_uploaded, true)
       @grouped_images = group_by_date(@images)
     end
@@ -48,7 +45,7 @@ class Admin::ImagesController < Admin::BaseController
 
   #This returns a url. If params[:size] is provided, it will generate a url for this size.
   def url
-    @image = Image.find(params[:id])
+    find_image
     if params[:size].present?
       begin
         thumbnail = @image.thumbnail(params[:size])
@@ -71,7 +68,7 @@ class Admin::ImagesController < Admin::BaseController
 
     unless params[:insert]
       if @image.valid?
-        flash[:notice] = t('refinery.crudify.created', :what => "'#{@image.title}'")
+        flash.notice = t('refinery.crudify.created', :what => "'#{@image.title}'")
         unless from_dialog?
           redirect_to :action => 'index'
         else
