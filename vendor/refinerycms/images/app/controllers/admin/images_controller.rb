@@ -65,6 +65,7 @@ class Admin::ImagesController < Admin::BaseController
     begin
       @image = Image.create(params[:image])
     rescue Dragonfly::FunctionManager::UnableToHandle
+      logger.warn($!.message)
       @image = Image.new
     end
 
