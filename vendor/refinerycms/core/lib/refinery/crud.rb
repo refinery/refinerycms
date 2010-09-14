@@ -52,13 +52,11 @@ module Refinery
             end
 
             if (@#{singular_name} = #{class_name}.create(params[:#{singular_name}])).valid?
-              unless request.xhr?
-                flash[:notice] = t('refinery.crudify.created',
-                                   :what => "'\#{@#{singular_name}.#{options[:title_attribute]}}'")
-              else
-                flash.now[:notice] = t('refinery.crudify.created',
-                                       :what => "'\#{@#{singular_name}.#{options[:title_attribute]}}'")
-              end
+              (request.xhr? ? flash.now : flash).notice = t(
+                'refinery.crudify.created',
+                :what => "'\#{@#{singular_name}.#{options[:title_attribute]}}'"
+              )
+
               unless from_dialog?
                 unless params[:continue_editing] =~ /true|on|1/
                   redirect_back_or_default(#{options[:redirect_to_url]})
@@ -91,13 +89,11 @@ module Refinery
 
           def update
             if @#{singular_name}.update_attributes(params[:#{singular_name}])
-              unless request.xhr?
-                flash[:notice] = t('refinery.crudify.updated',
-                                   :what => "'\#{@#{singular_name}.#{options[:title_attribute]}}'")
-              else
-                flash.now[:notice] = t('refinery.crudify.updated',
-                                       :what => "'\#{@#{singular_name}.#{options[:title_attribute]}}'")
-              end
+              (request.xhr? ? flash.now : flash).notice = t(
+                'refinery.crudify.updated',
+                :what => "'\#{@#{singular_name}.#{options[:title_attribute]}}'"
+              )
+
               unless from_dialog?
                 unless params[:continue_editing] =~ /true|on|1/
                   redirect_back_or_default(#{options[:redirect_to_url]})
@@ -267,7 +263,7 @@ module Refinery
                 if child['children'].present?
                   update_child_positions(child, child_#{singular_name})
                 end
-                
+
                 child_index += 1
               end
             end

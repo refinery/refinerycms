@@ -155,7 +155,7 @@ class RefinerySetting < ActiveRecord::Base
     if %w(trueclass falseclass).include?(new_value.class.to_s.downcase)
       new_value = new_value.to_s
     end
-    
+
     super
   end
 
