@@ -852,8 +852,6 @@ Gem::Specification.new do |s|
     'vendor/refinerycms/images/features/uploads/refinery_is_awesome.txt',
     'vendor/refinerycms/images/lib',
     'vendor/refinerycms/images/lib/images.rb',
-    'vendor/refinerycms/images/lib/tasks',
-    'vendor/refinerycms/images/lib/tasks/images.rake',
     'vendor/refinerycms/images/readme.md',
     'vendor/refinerycms/pages',
     'vendor/refinerycms/pages/app',
