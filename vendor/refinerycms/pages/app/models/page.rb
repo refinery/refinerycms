@@ -10,7 +10,8 @@ class Page < ActiveRecord::Base
   has_many :parts,
            :class_name => "PagePart",
            :order => "position ASC",
-           :inverse_of => :page
+           :inverse_of => :page,
+           :dependent => :destroy
 
   accepts_nested_attributes_for :parts,
                                 :allow_destroy => true
