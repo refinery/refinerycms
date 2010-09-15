@@ -1266,9 +1266,17 @@ WYMeditor.editor.prototype.dialog = function( dialogType ) {
         selection = wym._iframe.contentWindow.getSelection();
         selected_html = $(selected).html();
 
-        new_html = selected_html.substring(0, selection.focusOffset)
-                   + "<span id='replace_me_with_" + this._current_unique_stamp + "'></span>"
-                   + selected_html.substring(selection.focusOffset);
+        if ((selection.focusOffset - selection.anchorOffset) > 1) {
+          new_html = selected_html.substring(0, selection.anchorOffset)
+                     + "<span id='replace_me_with_" + this._current_unique_stamp + "'>"
+                     + selected_html.substring(selection.anchorOffset, selection.focusOffset)
+                     + "</span>"
+                     + selected_html.substring(selection.focusOffset);
+        } else {
+          new_html = selected_html.substring(0, selection.focusOffset)
+                     + "<span id='replace_me_with_" + this._current_unique_stamp + "'></span>"
+                     + selected_html.substring(selection.focusOffset);
+        }
 
         $(selected).html(new_html);
       } else {
