@@ -11,6 +11,12 @@
     <%= f.label :title %>
     <%= f.text_field :title, :class => "larger widest" %>
   </div>
+
+  <%= render :partial => "form_fields_after_title",
+             :locals => {
+               :f => f
+             } %>
+
   <div class='field'>
     <%= render :partial => "form_page_parts",
                :locals => {
