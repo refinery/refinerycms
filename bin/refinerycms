@@ -119,7 +119,7 @@ module Refinery
 
     def generate!
       # Generate a rails application
-      rails_command = "rails new '#{@app_path}'"
+      rails_command = "rails new \"#{@app_path}\""
       rails_command << " --database #{@options[:database]}"
       rails_command << " --force" if @options[:force]
       rails_command << " --skip-test-unit --skip-prototype"
@@ -195,7 +195,7 @@ module Refinery
       run_command("bundle install")
 
       puts "\n\nSetting up your development database..\n"
-      run_command("rake -f '#{@app_path.join('Rakefile')}' db:setup")
+      run_command("rake -f \"#{@app_path.join('Rakefile')}\" db:setup", {:cd => false})
 
       # Deploy to Heroku
       if @options[:heroku]
@@ -238,9 +238,13 @@ module Refinery
     def run_command(command, options = {})
       options = {:cd => true, :puts => true}.merge(options)
       to_run = %w()
-      to_run << "cmd /c" if RbConfig::CONFIG["host_os"] =~ %r!(msdos|mswin|djgpp|mingw)!
-      to_run << "cd '#{@app_path}' &&" if options[:cd]
+      to_run << "cd \"#{@app_path}\" &&" if options[:cd]
       to_run << command
+
+      if RbConfig::CONFIG["host_os"] =~ %r!(msdos|mswin|djgpp|mingw)!
+        to_run = %w(cmd /c) | to_run.map{|c| c.gsub(/\//m, '\\')}
+      end
+
       to_run = to_run.join(' ')
 
       if options[:puts]
