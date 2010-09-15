@@ -53,7 +53,7 @@ module Refinery
           @options[:force] = true
         end
 
-        opts.on("-h [APP_NAME]", "--heroku [APP_NAME]", "Set up and deploy to Heroku") do |app_name|
+        opts.on("--heroku [APP_NAME]", "Set up and deploy to Heroku") do |app_name|
           @options[:heroku] = app_name || ''
         end
 
@@ -119,7 +119,7 @@ module Refinery
 
     def generate!
       # Generate a rails application
-      rails_command = "rails new '#{@app_path}'"
+      rails_command = "rails new \"#{@app_path}\""
       rails_command << " --database #{@options[:database]}"
       rails_command << " --force" if @options[:force]
       rails_command << " --skip-test-unit --skip-prototype"
@@ -145,7 +145,7 @@ module Refinery
         Refinery.root.join('vendor', 'refinerycms', 'core', 'public', 'stylesheets', stylesheet)
       }.each do |stylesheet|
         FileUtils::cp stylesheet.to_s,
-                      @app_path.join('public', 'sylesheets').to_s,
+                      @app_path.join('public', 'stylesheets').to_s,
                       :verbose => false if stylesheet.file?
       end
 
@@ -172,10 +172,12 @@ module Refinery
       # Replace app constant with Refinery
       # TODO: Find a way around this
       camelized_app_name = @app_name.gsub(/\W/, '_').squeeze('_').gsub(/\/(.?)/) { "::#{$1.upcase}" }.gsub(/(?:^|_)(.)/) { $1.upcase }
+      camelized_app_name << "::Application" # We only want to replace occurances like App::Application.
       %w(Rakefile config.ru config/application.rb config/environment.rb
           config/environments/development.rb config/environments/production.rb config/environments/test.rb
           config/initializers/secret_token.rb config/initializers/session_store.rb).each do |hackable|
-        find_and_replace(hackable, camelized_app_name, "Refinery")
+        find_and_replace(hackable, camelized_app_name, 'Refinery::Application')
+        find_and_replace(hackable, "module #{camelized_app_name.split('::').first}", 'module Refinery')
       end
 
       # Remove development specific stuff from the .gitinore file
@@ -193,7 +195,7 @@ module Refinery
       run_command("bundle install")
 
       puts "\n\nSetting up your development database..\n"
-      run_command("rake -f '#{@app_path.join('Rakefile')}' db:setup")
+      run_command("rake -f \"#{@app_path.join('Rakefile')}\" db:setup", {:cd => false})
 
       # Deploy to Heroku
       if @options[:heroku]
@@ -236,9 +238,13 @@ module Refinery
     def run_command(command, options = {})
       options = {:cd => true, :puts => true}.merge(options)
       to_run = %w()
-      to_run << "cmd /c" if RbConfig::CONFIG["host_os"] =~ %r!(msdos|mswin|djgpp|mingw)!
-      to_run << "cd #{@app_path} &&" if options[:cd]
+      to_run << "cd \"#{@app_path}\" &&" if options[:cd]
       to_run << command
+
+      if RbConfig::CONFIG["host_os"] =~ %r!(msdos|mswin|djgpp|mingw)!
+        to_run = %w(cmd /c) | to_run.map{|c| c.gsub(/\//m, '\\')}
+      end
+
       to_run = to_run.join(' ')
 
       if options[:puts]

@@ -10,13 +10,15 @@ class Page < ActiveRecord::Base
   has_many :parts,
            :class_name => "PagePart",
            :order => "position ASC",
-           :inverse_of => :page
+           :inverse_of => :page,
+           :dependent => :destroy
 
   accepts_nested_attributes_for :parts,
                                 :allow_destroy => true
 
   # Docs for acts_as_indexed http://github.com/dougal/acts_as_indexed
-  acts_as_indexed :fields => [:title, :meta_keywords, :meta_description, :custom_title, :browser_title, :all_page_part_content]
+  acts_as_indexed :fields => [:title, :meta_keywords, :meta_description,
+                              :custom_title, :browser_title, :all_page_part_content]
 
   before_destroy :deletable?
   after_save :reposition_parts!

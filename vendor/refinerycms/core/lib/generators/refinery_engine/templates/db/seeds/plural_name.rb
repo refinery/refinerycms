@@ -7,7 +7,7 @@ page = Page.create(
   :title => "<%= class_name.pluralize.underscore.titleize %>",
   :link_url => "/<%= plural_name %>",
   :deletable => false,
-  :position => ((Page.maximum(:position, :conditions => "parent_id IS NULL") || -1)+1),
+  :position => ((Page.maximum(:position, :conditions => {:parent_id => nil}) || -1)+1),
   :menu_match => "^/<%= plural_name %>(\/|\/.+?|)$"
 )
 RefinerySetting.find_or_set(:default_page_parts, ["Body", "Side Body"]).each do |default_page_part|

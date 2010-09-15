@@ -47,18 +47,16 @@ module Refinery
             # if the position field exists, set this object as last object, given the conditions of this class.
             if #{class_name}.column_names.include?("position")
               params[:#{singular_name}].merge!({
-                :position => ((#{class_name}.maximum(:position, :conditions => "#{options[:conditions]}")||-1) + 1)
+                :position => ((#{class_name}.maximum(:position, :conditions => #{options[:conditions].inspect})||-1) + 1)
               })
             end
 
             if (@#{singular_name} = #{class_name}.create(params[:#{singular_name}])).valid?
-              unless request.xhr?
-                flash[:notice] = t('refinery.crudify.created',
-                                   :what => "'\#{@#{singular_name}.#{options[:title_attribute]}}'")
-              else
-                flash.now[:notice] = t('refinery.crudify.created',
-                                       :what => "'\#{@#{singular_name}.#{options[:title_attribute]}}'")
-              end
+              (request.xhr? ? flash.now : flash).notice = t(
+                'refinery.crudify.created',
+                :what => "'\#{@#{singular_name}.#{options[:title_attribute]}}'"
+              )
+
               unless from_dialog?
                 unless params[:continue_editing] =~ /true|on|1/
                   redirect_back_or_default(#{options[:redirect_to_url]})
@@ -91,13 +89,11 @@ module Refinery
 
           def update
             if @#{singular_name}.update_attributes(params[:#{singular_name}])
-              unless request.xhr?
-                flash[:notice] = t('refinery.crudify.updated',
-                                   :what => "'\#{@#{singular_name}.#{options[:title_attribute]}}'")
-              else
-                flash.now[:notice] = t('refinery.crudify.updated',
-                                       :what => "'\#{@#{singular_name}.#{options[:title_attribute]}}'")
-              end
+              (request.xhr? ? flash.now : flash).notice = t(
+                'refinery.crudify.updated',
+                :what => "'\#{@#{singular_name}.#{options[:title_attribute]}}'"
+              )
+
               unless from_dialog?
                 unless params[:continue_editing] =~ /true|on|1/
                   redirect_back_or_default(#{options[:redirect_to_url]})
@@ -125,80 +121,70 @@ module Refinery
           end
 
           def destroy
+            # object gets found by find_#{singular_name} function
             if @#{singular_name}.destroy
-              flash[:notice] = t('refinery.crudify.destroyed',
-                                 :what => "'\#{@#{singular_name}.#{options[:title_attribute]}}'")
+              flash.notice = t('refinery.crudify.destroyed',
+                               :what => "'\#{@#{singular_name}.#{options[:title_attribute]}}'")
             end
             redirect_to #{options[:redirect_to_url]}
           end
 
+          # Finds one single result based on the id params.
           def find_#{singular_name}
             @#{singular_name} = #{class_name}.find(params[:id],
-                                                   :include => %w(#{options[:include].join(' ')}))
+                                                   :include => #{options[:include].map(&:to_sym).inspect})
           end
 
-          def find_all_#{plural_name}
-            @#{plural_name} = #{class_name}.find(
-              :all,
-              :order => "#{options[:order]}",
-              :conditions => "#{options[:conditions]}",
-              :include => %w(#{options[:include].join(' ')})
-            )
+          # Find the collection of @#{plural_name} based on the conditions specified into crudify
+          # It will be ordered based on the conditions specified into crudify
+          # And eager loading is applied as specified into crudify.
+          def find_all_#{plural_name}(conditions = #{options[:conditions].inspect})
+            @#{plural_name} = #{class_name}.where(conditions).includes(
+                                #{options[:include].map(&:to_sym).inspect}
+                              ).order("#{options[:order]}")
           end
 
+          # Paginate a set of @#{plural_name} that may/may not already exist.
           def paginate_all_#{plural_name}
-            @#{plural_name} = #{class_name}.paginate(
-              :page => params[:page],
-              :order => "#{options[:order]}",
-              :conditions => "#{options[:conditions]}",
-              :include => %w(#{options[:include].join(' ')})
-            )
+            # If we have already found a set then we don't need to again
+            find_all_#{plural_name} if @#{plural_name}.nil?
+
+            @#{plural_name} = @#{plural_name}.paginate(:page => params[:page])
           end
 
+          # Returns a weighted set of results based on the query specified by the user.
           def search_all_#{plural_name}
-            @#{plural_name} = #{class_name}.with_query(params[:search]).find(
-              :all,
-              :order => "#{options[:order]}",
-              :conditions => "#{options[:search_conditions]}",
-              :include => %w(#{options[:include].join(' ')})
-            )
+            # First find normal results.
+            find_all_#{plural_name}(#{options[:search_conditions].inspect})
+
+            # Now get weighted results by running the query against the results already found.
+            @#{plural_name} = @#{plural_name}.with_query(params[:search])
           end
 
-          def search_and_paginate_all_#{plural_name}
-            @#{plural_name} = #{class_name}.with_query(params[:search]).paginate(
-              :page => params[:page],
-              :order => "#{options[:order]}",
-              :conditions => "#{options[:search_conditions]}",
-              :include => %w(#{options[:include].join(' ')})
-            )
-          end
-
+          # Ensure all methods are protected so that they should only be called
+          # from within the current controller.
           protected :find_#{singular_name},
                     :find_all_#{plural_name},
                     :paginate_all_#{plural_name},
-                    :search_all_#{plural_name},
-                    :search_and_paginate_all_#{plural_name}
-
+                    :search_all_#{plural_name}
         )
 
+        # Methods that are only included when this controller is searchable.
         if options[:searchable]
           if options[:paging]
             module_eval %(
               def index
-                if searching?
-                  search_and_paginate_all_#{plural_name}
-                else
-                  paginate_all_#{plural_name}
-                end
+                search_all_#{plural_name} if searching?
+                paginate_all_#{plural_name}
               end
             )
           else
             module_eval %(
               def index
-                if searching?
-                  search_all_#{plural_name}
-                else
+                unless searching?
                   find_all_#{plural_name}
+                else
+                  search_all_#{plural_name}
                 end
               end
             )
@@ -229,11 +215,9 @@ module Refinery
 
             # Based upon http://github.com/matenia/jQuery-Awesome-Nested-Set-Drag-and-Drop
             def update_positions
-              newlist = params[:ul]
               previous = nil
               # The list doesn't come to us in the correct order. Frustration.
-              index = 0
-              while index < newlist.length do
+              while (index ||= 0) < (newlist ||= params[:ul]).length do
                 hash = newlist[index.to_s]
                 moved_item_id = hash['id'].split(/#{singular_name}/)
                 @current_#{singular_name} = #{class_name}.find_by_id(moved_item_id)
@@ -267,7 +251,7 @@ module Refinery
                 if child['children'].present?
                   update_child_positions(child, child_#{singular_name})
                 end
-                
+
                 child_index += 1
               end
             end

@@ -39,7 +39,9 @@ Feature: Manage Pages
     And I should have a page at /about--2
 
   Scenario: Delete Page
-    Given I have a page titled "test"
+    Given I only have a page titled "test"
     When I go to the list of pages
     And I follow "Remove this page forever"
     Then I should see "'test' was successfully destroyed."
+    And I should have 0 pages
+    And I should have 0 page_parts
