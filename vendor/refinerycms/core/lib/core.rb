@@ -26,7 +26,7 @@ module Refinery
       end
 
       initializer 'add presenters' do |app|
-        app.config.load_paths += [
+        app.config.autoload_paths += [
           Rails.root.join("app", "presenters"),
           Rails.root.join("vendor", "**", "**", "app", "presenters"),
           Refinery.root.join("vendor", "refinerycms", "*", "app", "presenters")
