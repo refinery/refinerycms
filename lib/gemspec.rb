@@ -7,14 +7,13 @@ end
 rejection_patterns = [
   "public\/system",
   "^config\/(application|boot|environment).rb$",
-  #"^config\/environments",
   "^config\/initializers\/(backtrace_silencers|inflections|mime_types|secret_token|session_store).rb$",
   "^config\/(cucumber|database|i18n\-js).yml$",
   "^public\/",
   "^lib\/gemspec\.rb",
   "^lib\/tasks",
   ".*\/cache\/",
-  "^db\/.*\.sqlite3?$",
+  "^db\/.*\.sqlite3?(-journal)?$",
   "^features\/?",
   "^script\/*",
   "^vendor\/plugins\/?$",
@@ -39,7 +38,7 @@ Gem::Specification.new do |s|
   s.homepage          = %q{http://refinerycms.com}
   s.rubyforge_project = %q{refinerycms}
   s.authors           = ['Resolve Digital', 'David Jones', 'Philip Arndt']
-  s.require_paths     = %w(lib vendor/refinerycms)
+  s.require_paths     = %w(vendor/refinerycms)
   s.executables       = %w(#{Dir.glob('bin/*').map{|d| d.gsub('bin/','')}.join(' ')})
 
   s.add_dependency    'rails',                '~> 3.0.0'

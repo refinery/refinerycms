@@ -8,7 +8,7 @@ GIT
 PATH
   remote: .
   specs:
-    refinerycms (0.9.8.1)
+    refinerycms (0.9.8.3)
       acts_as_indexed (~> 0.6.6)
       authlogic (~> 2.1.6)
       bundler (~> 1.0.0)
@@ -82,7 +82,7 @@ GEM
     culerity (0.2.12)
     database_cleaner (0.5.2)
     diff-lcs (1.1.2)
-    dragonfly (0.7.5)
+    dragonfly (0.7.6)
       rack
     erubis (2.6.6)
       abstract (>= 1.0.0)
@@ -110,7 +110,7 @@ GEM
     nokogiri (1.4.3.1)
     polyglot (0.3.1)
     rack (1.2.1)
-    rack-cache (0.5.2)
+    rack-cache (0.5.3)
       rack (>= 0.4)
     rack-mount (0.6.13)
       rack (>= 1.0.0)

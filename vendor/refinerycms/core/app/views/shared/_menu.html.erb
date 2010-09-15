@@ -6,13 +6,14 @@
   cache_key << RefinerySetting.find_or_set(:refinery_menu_cache_action_suffix, "site_menu")
   cache_key << request.path
   cache(cache_key.join('_')) do
-    if (collection ||= @menu_pages).any?
-      sibling_count = collection.size - 1
+  roots = @menu_pages.select { |m| m.parent_id == nil } # Select top menu items
+    if roots.any?
+      sibling_count = roots.size - 1
 -%>
       <nav id='<%= dom_id %>' class='<%= %W(#{css} clearfix).join(' ') %>'>
         <ul>
           <%= render :partial => "/shared/menu_branch",
-                     :collection => collection,
+                     :collection => roots,
                      :locals => {
                        :hide_children => hide_children,
                        :sibling_count => sibling_count,
