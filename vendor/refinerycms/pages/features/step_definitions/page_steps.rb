@@ -16,8 +16,11 @@ Given /^I have no pages$/ do
   Page.delete_all
 end
 
-Given /^I have a page titled "([^"]*)"$/ do |title|
-  Page.create(:title => title)
+Given /^I (only )?have a page titled "([^"]*)"$/ do |only, title|
+  Page.delete_all if only
+  page = Page.create(:title => title)
+  page.parts << PagePart.new(:title => 'testing', :position => 0)
+  page
 end
 
 Then /^I should have ([0-9]+) pages?$/ do |count|
@@ -26,4 +29,8 @@ end
 
 Then /^I should have a page at \/(.+)$/ do |url|
   Page.all.count{|page| page.url[:path].to_s.include?(url)}.should == 1
+end
+
+Then /^I should have (\d+) page_parts$/ do |count|
+  PagePart.count.should == count.to_i
 end
