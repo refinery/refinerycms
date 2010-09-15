@@ -44,8 +44,15 @@ gem 'refinerycms-inquiries',    '~> 0.9.8.7'
 # Add i18n support (optional, you can remove this if you really want to).
 gem 'refinerycms-i18n',         '~> 0.9.8.6', :require => 'refinery/i18n'
 
+# Figure out how to get RMagick:
+rmagick_options = {:require => false}
+rmagick_options.update({
+  :git => 'git://github.com/refinerycms/rmagick.git',
+  :branch => 'windows'
+}) if Bundler::WINDOWS
+
 # Specify a version of RMagick that works in your environment:
-gem 'rmagick',                  '~> 2.12.0', :require => false
+gem 'rmagick',                  '~> 2.12.0', rmagick_options
 
 # END REFINERY CMS ============================================================
 
