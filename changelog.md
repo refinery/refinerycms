@@ -35,9 +35,15 @@
 
 ## 0.9.8 [30 August 2010]
 
-* Rails 3 support.
-* [See full list](http://github.com/resolve/refinerycms/compare/0.9.7.13...0.9.8)
+* Rails 3 support!
+  - [Philip Arndt](http://github.com/parndt)
+  - [Alex Coles](http://github.com/myabc)
+  - [Steven Heidel](http://github.com/stevenheidel)
+  - [David Jones](http://github.com/djones)
+  - [Uģis Ozols](http://github.com/ugisozols)
+  - [Maarten Hoogendoorn](http://github.com/moretea)
 * [See our blog post](http://refinerycms.com/blog/refinery-cms-supports-rails-3)
+* [See full list](http://github.com/resolve/refinerycms/compare/0.9.7.13...0.9.8)
 
 ## 0.9.7.13 [23 August 2010]
 
