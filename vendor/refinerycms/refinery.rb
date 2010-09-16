@@ -5,10 +5,7 @@ module Refinery
   WINDOWS = !!(RbConfig::CONFIG["host_os"] =~ %r!(msdos|mswin|djgpp|mingw)!)
   
   class << self
-    attr_accessor :is_a_gem, :root, :s3_backend, :base_cache_key
-    def is_a_gem
-      @is_a_gem ||= false
-    end
+    attr_accessor :root, :s3_backend, :base_cache_key
 
     def root
       @root ||= Pathname.new(File.expand_path(__FILE__).split('vendor').first.to_s)
