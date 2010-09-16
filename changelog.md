@@ -1,3 +1,12 @@
+## 0.9.8.3 [14 September 2010]
+* [See full list](http://github.com/resolve/refinerycms/compare/0.9.8.2...0.9.8.3)
+
+## 0.9.8.2 [13 September 2010]
+* [See full list](http://github.com/resolve/refinerycms/compare/0.9.8.1...0.9.8.2)
+
+## 0.9.8.1 [9 September 2010]
+* [See full list](http://github.com/resolve/refinerycms/compare/0.9.8...0.9.8.1)
+
 ## 0.9.8 [30 August 2010]
 
 * Rails 3 support.
