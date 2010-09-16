@@ -1,3 +1,8 @@
+## 0.9.8.4 [Unreleased]
+* Recursive deletion of page parts. [primerano](http://github.com/primerano)
+* Move around the default pages. [Philip Arndt](http://github.com/parndt)
+* Extraction of windows check to Refinery::WINDOWS. [Steven Heidel](http://github.com/stevenheidel)
+
 ## 0.9.8.3 [14 September 2010]
 * German translation improvements. [Andre Lohan](http://github.com/dc5ala)
 * Fix bug with bin/refinerycms and windows commands. [Philip Arndt](http://github.com/parndt)
