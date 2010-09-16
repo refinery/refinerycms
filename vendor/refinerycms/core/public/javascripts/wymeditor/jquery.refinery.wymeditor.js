@@ -1212,6 +1212,7 @@ WYMeditor.editor.prototype.update = function() {
  * @description Opens a dialog box
  */
 WYMeditor.editor.prototype.dialog = function( dialogType ) {
+  this.update();
   var path = this._wym._options.dialogPath + dialogType;
 
   this._current_unique_stamp = this.uniqueStamp();
