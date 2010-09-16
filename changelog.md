@@ -5,6 +5,19 @@
 * [See full list](http://github.com/resolve/refinerycms/compare/0.9.8.1...0.9.8.2)
 
 ## 0.9.8.1 [9 September 2010]
+* Convert to awesome_nested_set. [Maarten Hoogendoorn](http://github.com/moretea) and [Philip Arndt](http://github.com/parndt)
+* Allow passing -g to the bin task for extra gems. [Tomás Senart](http://github.com/tsenart)
+* Update documentation for engines, not plugins. [David Jones](http://github.com/djones)
+* Several more documentation fixes. [Steven Heidel](http://github.com/stevenheidel)
+* Better use of dragonfly resizing. [Philip Arndt](http://github.com/parndt)
+* Partial Latvian translation. [Uģis Ozols](http://github.com/ugisozols)
+* Review Portugese translation. [Kivanio Barbosa](http://github.com/kivanio)
+* Bugfix with wymeditor in the engine generator. [Karmen Blake]
+* Split application_helper into smaller, more usable files. [Philip Arndt](http://github.com/parndt)
+* Move features and specs to each engine directory. [Philip Arndt](http://github.com/parndt)
+* Bugfixes to ensure that reordering works under awesome_nested_set. [Maarten Hoogendoorn](http://github.com/moretea) and [Philip Arndt](http://github.com/parndt)
+* Update engines to not have a special :require in the Gemfile. [Johan Bruning](http://github.com/GidoGeek)
+* Make cache sweepers work. [Philip Arndt](http://github.com/parndt)
 * [See full list](http://github.com/resolve/refinerycms/compare/0.9.8...0.9.8.1)
 
 ## 0.9.8 [30 August 2010]
