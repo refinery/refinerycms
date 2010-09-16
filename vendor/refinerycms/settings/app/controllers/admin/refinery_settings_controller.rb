@@ -9,6 +9,12 @@ class Admin::RefinerySettingsController < Admin::BaseController
   before_filter :sanitise_params, :only => [:create, :update]
   after_filter :fire_setting_callback, :only => [:update]
 
+  def index
+    search_all_refinery_settings if searching?
+
+    paginate_all_refinery_settings
+  end
+
   def edit
     @refinery_setting = RefinerySetting.find(params[:id])
 
@@ -16,19 +22,30 @@ class Admin::RefinerySettingsController < Admin::BaseController
   end
 
   def find_all_refinery_settings
-    @refinery_settings = RefinerySetting.find(:all,
-    {
-      :order => "name ASC",
-      :conditions => (["restricted <> ?", true] unless current_user.has_role?(:superuser))
-    })
+    @refinery_settings = RefinerySetting.order('name ASC')
+
+    unless current_user.has_role?(:superuser)
+      @refinery_settings = @refinery_settings.where("restricted <> ? ", true)
+    end
+
+    @refinery_settings
+  end
+
+  def search_all_refinery_settings
+    # search for settings that begin with keyword
+    term = "^" + params[:search].to_s.downcase.gsub(' ', '_')
+
+    # First find normal results.
+    find_all_refinery_settings
+
+    # Now get weighted results by running the query against the results already found.
+    @refinery_settings = @refinery_settings.with_query(term)
   end
 
   def paginate_all_refinery_settings
-    @refinery_settings = RefinerySetting.paginate({
-      :page => params[:page],
-      :order => "name ASC",
-      :conditions => (["restricted <> ?", true] unless current_user.has_role?(:superuser))
-    })
+    find_all_refinery_settings if @refinery_settings.nil?
+
+    @refinery_settings = @refinery_settings.paginate(:page => params[:page], :per_page => RefinerySetting.per_page)
   end
 
 private
