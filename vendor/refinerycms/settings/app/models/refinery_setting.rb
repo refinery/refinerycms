@@ -5,6 +5,9 @@ class RefinerySetting < ActiveRecord::Base
   serialize :value # stores into YAML format
   serialize :callback_proc_as_string
 
+  # Docs for acts_as_indexed http://github.com/dougal/acts_as_indexed
+  acts_as_indexed :fields => [:name]
+
   before_save do |setting|
     setting.restricted = false if setting.restricted.nil?
   end
