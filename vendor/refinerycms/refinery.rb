@@ -1,5 +1,9 @@
-module Refinery
+require 'rbconfig'
 
+module Refinery
+  
+  WINDOWS = !!(RbConfig::CONFIG["host_os"] =~ %r!(msdos|mswin|djgpp|mingw)!)
+  
   class << self
     attr_accessor :is_a_gem, :root, :s3_backend, :base_cache_key
     def is_a_gem
