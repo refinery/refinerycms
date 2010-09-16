@@ -2,6 +2,10 @@
 * [See full list](http://github.com/resolve/refinerycms/compare/0.9.8.2...0.9.8.3)
 
 ## 0.9.8.2 [13 September 2010]
+* Update readme.md [David Jones](http://github.com/djones)
+* Speed improvements to menu with nested_set. [Maarten Hoogendoorn](http://github.com/moretea)
+* More speed improvements by optimizing slugs. [Philip Arndt](http://github.com/parndt)
+* Fix -h flag on bin/refinerycms to display the help. [Steven Heidel](http://github.com/stevenheidel)
 * [See full list](http://github.com/resolve/refinerycms/compare/0.9.8.1...0.9.8.2)
 
 ## 0.9.8.1 [9 September 2010]
