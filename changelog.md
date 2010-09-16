@@ -2,6 +2,8 @@
 * Recursive deletion of page parts. [primerano](http://github.com/primerano)
 * Move around the default pages. [Philip Arndt](http://github.com/parndt)
 * Extraction of windows check to Refinery::WINDOWS. [Steven Heidel](http://github.com/stevenheidel)
+* Added search feature to Refinery Settings [Matt McMahand](http://github.com/invalidusrname)
+* [See full list](http://github.com/resolve/refinerycms/compare/0.9.8.3...0.9.8.4)
 
 ## 0.9.8.3 [14 September 2010]
 * German translation improvements. [Andre Lohan](http://github.com/dc5ala)
