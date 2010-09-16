@@ -4,7 +4,7 @@ Gem::Specification.new do |s|
   s.name              = %q{refinerycms}
   s.version           = %q{0.9.8.3}
   s.description       = %q{A Ruby on Rails CMS that supports Rails 3. It's easy to extend and sticks to 'the Rails way' where possible.}
-  s.date              = %q{2010-09-15}
+  s.date              = %q{2010-09-17}
   s.summary           = %q{A Ruby on Rails CMS that supports Rails 3}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
@@ -876,6 +876,7 @@ Gem::Specification.new do |s|
     'vendor/refinerycms/pages/app/views/admin/pages/_form.html.erb',
     'vendor/refinerycms/pages/app/views/admin/pages/_form_advanced_options.html.erb',
     'vendor/refinerycms/pages/app/views/admin/pages/_form_advanced_options_seo.html.erb',
+    'vendor/refinerycms/pages/app/views/admin/pages/_form_fields_after_title.html.erb',
     'vendor/refinerycms/pages/app/views/admin/pages/_form_new_page_parts.html.erb',
     'vendor/refinerycms/pages/app/views/admin/pages/_form_page_parts.html.erb',
     'vendor/refinerycms/pages/app/views/admin/pages/_page.html.erb',
@@ -1001,6 +1002,9 @@ Gem::Specification.new do |s|
     'vendor/refinerycms/settings/features',
     'vendor/refinerycms/settings/features/manage_refinery_settings.feature',
     'vendor/refinerycms/settings/features/step_definitions',
+    'vendor/refinerycms/settings/features/step_definitions/setting_steps.rb',
+    'vendor/refinerycms/settings/features/support',
+    'vendor/refinerycms/settings/features/support/paths.rb',
     'vendor/refinerycms/settings/lib',
     'vendor/refinerycms/settings/lib/settings.rb',
     'vendor/refinerycms/settings/readme.md'
