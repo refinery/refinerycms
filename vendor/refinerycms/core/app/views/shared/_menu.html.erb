@@ -8,7 +8,8 @@
   cache_key << request.path
   cache(cache_key.compact.join('_')) do
     # Select top menu items unless 'roots' is passed in.
-    roots ||= @menu_pages.select { |m| m.parent_id == nil }
+    collection ||= @menu_pages
+    roots ||= collection.select { |m| m.parent_id == nil }
     if roots.any?
       sibling_count = roots.size - 1
 -%>
@@ -19,6 +20,7 @@
                      :locals => {
                        :hide_children => hide_children,
                        :sibling_count => sibling_count,
+                       :collection => collection,
                        :apply_css => true #if you don't care about class='first' class='last' or class='selected' set apply_css to false for speed.
                      }
           -%>
