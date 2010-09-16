@@ -1,3 +1,32 @@
+<div id='records'>
+  <% if searching? %>
+    <h2>
+      <%= t('shared.admin.search.results_for',
+           :query => params[:search]) %>
+    </h2>
+  <% end %>
+  <% if @refinery_settings.any? %>
+    <%= will_paginate @refinery_settings, :previous_label => '&laquo;',
+                                          :next_label => '&raquo;' %>
+    <ul>
+      <%= render :partial => 'refinery_setting',
+                 :collection => @refinery_settings %>
+    </ul>
+    <%= will_paginate @refinery_settings, :previous_label => '&laquo;',
+                                          :next_label => '&raquo;' %>
+  <% else %>
+    <p>
+      <% if searching? %>
+        <%= t('shared.admin.search.no_results') %>
+      <% else %>
+        <strong>
+          <%= t('.empty_set') %>
+          <%= t('.create_first', :link => t('.new')) %>
+        </strong>
+      <% end %>
+    </p>
+  <% end %>
+</div>
 <div id='actions'>
   <ul>
     <li>
@@ -7,25 +36,13 @@
                  } %>
     </li>
     <li>
-      <%= link_to t('.new'), new_admin_refinery_setting_url(:dialog => true, :width => 725, :height => 475), :class => "add_icon" %>
+      <%= link_to t('.new'), new_admin_refinery_setting_url({
+                               :dialog => true,
+                               :width => 725,
+                               :height => 475
+                             }), :class => "add_icon" %>
     </li>
   </ul>
-</div>
-<div id='records'>
-  <% if @refinery_settings.any? %>
-    <%= will_paginate @refinery_settings, :previous_label => '&laquo;', :next_label => '&raquo;' %>
-    <ul>
-      <%= render :partial => 'refinery_setting', :collection => @refinery_settings %>
-    </ul>
-    <%= will_paginate @refinery_settings, :previous_label => '&laquo;', :next_label => '&raquo;' %>
-  <% else %>
-    <p>
-      <strong>
-        <%= t('.empty_set') %>
-        <%= t('.create_first', :link => t('.new')) %>
-      </strong>
-    </p>
-  <% end %>
 </div>
 <% content_for :head do %>
   <script type='text/javascript'>

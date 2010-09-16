@@ -20,6 +20,7 @@ Feature: Search
       |page    |testitem|pages         |
       |inquiry |testitem|inquiries     |
       |inquiry |testitem|spam inquiries|
+      |refinery setting|Test Item|refinery settings|
 
   # This will only run when resources engine is installed.
   @search-file
