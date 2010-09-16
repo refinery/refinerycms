@@ -543,12 +543,12 @@ header p {
   font-style: normal;
   padding: 0px 6px;
 }
-.pagination a, #content .pagination a, .pagination .current, .disabled  {
+.pagination a, #content .pagination a, .pagination .current, .disabled, .pagination em  {
   padding: 7px;
   line-height: 20px;
   border-bottom: 0px none;
 }
-.pagination .current, .pagination a:hover {
+.pagination .current, .pagination a:hover, .pagination em {
   background: #A8B9C1;
 }
 #dialog-form-actions .pagination {
