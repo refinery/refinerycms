@@ -1,4 +1,8 @@
 ## 0.9.8.3 [14 September 2010]
+* German translation improvements. [Andre Lohan](http://github.com/dc5ala)
+* Fix bug with bin/refinerycms and windows commands. [Philip Arndt](http://github.com/parndt)
+* DRY up crudify and also switch to ARel. [Philip Arndt](http://github.com/parndt)
+* Several fixes to make things much easier on windows. [Philip Arndt](http://github.com/parndt)
 * [See full list](http://github.com/resolve/refinerycms/compare/0.9.8.2...0.9.8.3)
 
 ## 0.9.8.2 [13 September 2010]
