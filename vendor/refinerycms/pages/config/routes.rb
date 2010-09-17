@@ -1,5 +1,5 @@
 Refinery::Application.routes.draw do
-  resources :pages
+  get '/pages/:id', :to => 'pages#show', :as => :page
 
   scope(:path => 'refinery', :as => 'admin', :module => 'admin') do
     resources :pages do
@@ -8,17 +8,14 @@ Refinery::Application.routes.draw do
       end
     end
 
-    resources :page_parts
-
-    resource :pages do
-      resources :dialogs, :controller => :pages_dialogs do
-        collection do
-          get :link_to
-          get :test_url
-          get :test_email
-        end
+    resources :pages_dialogs, :only => [] do
+      collection do
+        get :link_to
+        get :test_url
+        get :test_email
       end
     end
 
+    resources :page_parts, :only => [:new, :create, :destroy]
   end
 end
