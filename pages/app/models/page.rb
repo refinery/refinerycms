@@ -1,4 +1,6 @@
 class Page < ActiveRecord::Base
+
+  translates :title, :meta_keywords, :meta_description, :browser_title
   validates :title, :presence => true
 
   acts_as_nested_set
