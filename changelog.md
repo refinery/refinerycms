@@ -32,7 +32,7 @@
 * Better use of dragonfly resizing. [Philip Arndt](http://github.com/parndt)
 * Partial Latvian translation. [Uģis Ozols](http://github.com/ugisozols)
 * Review Portugese translation. [Kivanio Barbosa](http://github.com/kivanio)
-* Bugfix with wymeditor in the engine generator. [Karmen Blake]
+* Bugfix with wymeditor in the engine generator. [Karmen Blake](http://github.com/kblake)
 * Split ``application_helper`` into smaller, more usable files. [Philip Arndt](http://github.com/parndt)
 * Move features and specs to each engine directory. [Philip Arndt](http://github.com/parndt)
 * Bugfixes to ensure that reordering works under ``awesome_nested_set``. [Maarten Hoogendoorn](http://github.com/moretea) and [Philip Arndt](http://github.com/parndt)
