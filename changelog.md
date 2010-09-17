@@ -1,36 +1,41 @@
-## 0.9.8.4 [Unreleased]
+## 0.9.8.4 [17 September 2010]
 * Recursive deletion of page parts. [primerano](http://github.com/primerano)
 * Move around the default pages. [Philip Arndt](http://github.com/parndt)
-* Extraction of windows check to Refinery::WINDOWS. [Steven Heidel](http://github.com/stevenheidel)
-* Added search feature to Refinery Settings [Matt McMahand](http://github.com/invalidusrname)
+* Extraction of windows check to ``Refinery::WINDOWS``. [Steven Heidel](http://github.com/stevenheidel)
+* Updated the changelog for several previous releases. [Steven Heidel](http://github.com/stevenheidel)
+* Made the menu more flexible so that it can be used in many places in your layout without caching over the top of itself. [Philip Arndt](http://github.com/parndt)
+* Added search feature to Refinery Settings. [Matt McMahand](http://github.com/invalidusrname)
+* Ensure that in ``crudify`` that we use ``:per_page`` properly for ``will_paginate``. [Philip Arndt](http://github.com/parndt)
+* Reduce the number of routes that we respond to in the ``pages`` engine as they were unused. [Philip Arndt](http://github.com/parndt)
+* Fixed a case where page links weren't generating properly when inside an engine such as the news engine which made use of ``params[:id]``. Took a lot of perserverance on the part of Hez - thank you very much Hez! [Hez Ronningen](http://github.com/hez) and [Philip Arndt](http://github.com/parndt)
 * [See full list](http://github.com/resolve/refinerycms/compare/0.9.8.3...0.9.8.4)
 
 ## 0.9.8.3 [14 September 2010]
 * German translation improvements. [Andre Lohan](http://github.com/dc5ala)
-* Fix bug with bin/refinerycms and windows commands. [Philip Arndt](http://github.com/parndt)
-* DRY up crudify and also switch to ARel. [Philip Arndt](http://github.com/parndt)
+* Fix bug with ``bin/refinerycms`` and windows commands. [Philip Arndt](http://github.com/parndt)
+* DRY up ``crudify`` and also switch to ARel. [Philip Arndt](http://github.com/parndt)
 * Several fixes to make things much easier on windows. [Philip Arndt](http://github.com/parndt)
 * [See full list](http://github.com/resolve/refinerycms/compare/0.9.8.2...0.9.8.3)
 
 ## 0.9.8.2 [13 September 2010]
-* Update readme.md [David Jones](http://github.com/djones)
+* Update ``readme.md`` [David Jones](http://github.com/djones)
 * Speed improvements to menu with nested_set. [Maarten Hoogendoorn](http://github.com/moretea)
-* More speed improvements by optimizing slugs. [Philip Arndt](http://github.com/parndt)
-* Fix -h flag on bin/refinerycms to display the help. [Steven Heidel](http://github.com/stevenheidel)
+* More speed improvements by optimising slugs. [Philip Arndt](http://github.com/parndt)
+* Fix ``-h`` flag on ``bin/refinerycms`` to display the help. [Steven Heidel](http://github.com/stevenheidel)
 * [See full list](http://github.com/resolve/refinerycms/compare/0.9.8.1...0.9.8.2)
 
 ## 0.9.8.1 [9 September 2010]
-* Convert to awesome_nested_set. [Maarten Hoogendoorn](http://github.com/moretea) and [Philip Arndt](http://github.com/parndt)
-* Allow passing -g to the bin task for extra gems. [Tomás Senart](http://github.com/tsenart)
+* Convert to ``awesome_nested_set``. [Maarten Hoogendoorn](http://github.com/moretea) and [Philip Arndt](http://github.com/parndt)
+* Allow passing ``-g`` to the bin task for extra gems. [Tomás Senart](http://github.com/tsenart)
 * Update documentation for engines, not plugins. [David Jones](http://github.com/djones)
 * Several more documentation fixes. [Steven Heidel](http://github.com/stevenheidel)
 * Better use of dragonfly resizing. [Philip Arndt](http://github.com/parndt)
 * Partial Latvian translation. [Uģis Ozols](http://github.com/ugisozols)
 * Review Portugese translation. [Kivanio Barbosa](http://github.com/kivanio)
 * Bugfix with wymeditor in the engine generator. [Karmen Blake]
-* Split application_helper into smaller, more usable files. [Philip Arndt](http://github.com/parndt)
+* Split ``application_helper`` into smaller, more usable files. [Philip Arndt](http://github.com/parndt)
 * Move features and specs to each engine directory. [Philip Arndt](http://github.com/parndt)
-* Bugfixes to ensure that reordering works under awesome_nested_set. [Maarten Hoogendoorn](http://github.com/moretea) and [Philip Arndt](http://github.com/parndt)
+* Bugfixes to ensure that reordering works under ``awesome_nested_set``. [Maarten Hoogendoorn](http://github.com/moretea) and [Philip Arndt](http://github.com/parndt)
 * Update engines to not have a special :require in the Gemfile. [Johan Bruning](http://github.com/GidoGeek)
 * Make cache sweepers work. [Philip Arndt](http://github.com/parndt)
 * [See full list](http://github.com/resolve/refinerycms/compare/0.9.8...0.9.8.1)
