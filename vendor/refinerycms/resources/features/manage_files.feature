@@ -35,5 +35,5 @@ Feature: Manage Files
     When I upload the file at "refinery_is_awesome.txt"
     And I go to the list of files
     And I follow "Remove this file forever"
-    Then I should see "'Refinery Is Awesome' was successfully destroyed."
+    Then I should see "'Refinery Is Awesome' was successfully removed."
     And I should have 0 files
