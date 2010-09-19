@@ -42,6 +42,6 @@ Feature: Manage Pages
     Given I only have a page titled "test"
     When I go to the list of pages
     And I follow "Remove this page forever"
-    Then I should see "'test' was successfully destroyed."
+    Then I should see "'test' was successfully removed."
     And I should have 0 pages
     And I should have 0 page_parts
