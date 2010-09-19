@@ -1,3 +1,8 @@
+## 0.9.8.5 [unreleased]
+* Fixed an issue with the engine generator that was putting a comma in the wrong place breaking the call to crudify. [Maarten Hoogendoorn](http://github.com/moretea)
+* Made the delete messages consistent. [Uģis Ozols](http://github.com/ugisozols)
+* [See full list](http://github.com/resolve/refinerycms/compare/0.9.8.4...0.9.8.5)
+
 ## 0.9.8.4 [17 September 2010]
 * Recursive deletion of page parts. [primerano](http://github.com/primerano)
 * Move around the default pages. [Philip Arndt](http://github.com/parndt)
