@@ -44,5 +44,5 @@ Feature: Manage Images
     When I upload the image at "beach.jpeg"
     When I go to the list of images
     And I follow "Remove this image forever"
-    Then I should see "'Beach' was successfully destroyed. "
+    Then I should see "'Beach' was successfully removed."
     And I should have 0 images
