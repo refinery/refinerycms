@@ -126,6 +126,7 @@ module Refinery
               flash.notice = t('refinery.crudify.destroyed',
                                :what => "'\#{@#{singular_name}.#{options[:title_attribute]}}'")
             end
+
             redirect_to #{options[:redirect_to_url]}
           end
 
