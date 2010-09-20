@@ -43,7 +43,7 @@ ru:
         toggle_advanced_options: Click to access meta tag settings and menu options
         parent_page: Родительская страница
         title: Заголовок
-        create_content_section: Create content section
+        create_content_section: Add content section
         delete_content_section: Delete content section
         advanced_options: Дополнительная настройка
         explain_page_different_title: "Если вы хотите, чтобы страница имела заголовок, отличный от того, что в меню или в заголовке браузера, введите его здесь."
@@ -55,7 +55,7 @@ ru:
           text: Текст
           image: Изображение
         custom_url: Custom URL
-        custom_url_explanation: "Enter a URL if this page links to an external site or to a pre-existing resource e.g. a contact page. <br/> Note: This URL must point to a location that exists; a new one will not be created."
+        custom_url_explanation: "Enter a URL if this page links to an external site or to a pre-existing resource e.g. a contact page. <br/> Note: This URL must point to a location that exists; a new one will not be added."
         draft: Черновик
         show_in_menu_title: Показ в меню
         show_in_menu_description: Отображать эту страницу в меню сайта
@@ -81,7 +81,7 @@ ru:
         meta_description_help: "Введите два-три коротких предложения, описывающих страницу."
         js:
           content_section:
-            create: Create Content Section
+            create: Add Content Section
             already_exists: "A content section with that title already exists, please choose another."
             title_empty: "You have not entered a title for the content section, please enter one."
             confirm_delete: "This will remove the content section {{section_name}} when the page is saved and erase all content that has been entered into it, Are you sure?"
@@ -90,7 +90,7 @@ ru:
         reorder_pages: Изменить порядок страниц
         reorder_pages_done: Сохранить такой порядок страниц
         sorry_no_results: Sorry! There are no results found.
-        no_pages_yet: There are no pages yet.  Click "Create New Page" to add your first page.
+        no_pages_yet: There are no pages yet.  Click "Add New Page" to add your first page.
   activerecord:
     attributes:
       page:

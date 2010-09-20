@@ -21,7 +21,7 @@ en:
         cancel: Cancel
   refinery:
     crudify:
-      created: %{what} was successfully created.
+      created: %{what} was successfully added.
       updated: %{what} was successfully updated.
       destroyed: %{what} was successfully removed.
   shared:
