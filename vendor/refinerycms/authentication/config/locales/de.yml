@@ -1,0 +1,74 @@
+de:
+  plugins:
+    refinery_users:
+      title: Benutzer
+      description: Verwaltet Benutzer
+  admin:
+    users:
+      delete: Diesen Benutzer für immer löschen
+      edit: Diesen Benutzer bearbeiten
+      update:
+        cannot_remove_user_plugin_from_current_user: Sie können die Erweiterung 'Benutzer' nicht vom aktuellen Konto entfernen.
+      form:
+        blank_password_keeps_current: Wird das Passwort leer gelassen, wird das aktuelle Passwort beibehalten
+        enable_all: Alles aktivieren
+      index:
+        create_new_user: Neuen Benutzer anlegen
+        no_users_yet:  Es sind noch keine Benutzer vorhanden. Klicken Sie auf  "Neuen Benutzer anlegen", um Ihren ersten Benutzer hinzuzufügen.
+      user:
+        email_user: Diesem Benutzer emailen
+        preview: (%{who}) angelegt am %{created_at}
+  sessions:
+    login_successful: Erfolgreich angemeldet
+    login_failed: Tut mir leid, Ihr Passwort oder Benutzername war nicht korrekt.
+    new:
+      hello_please_sign_in: Hallo! Bitte melden Sie sich an.
+      sign_in: Anmelden
+      forgot_password: Ich habe mein Passwort vergessen
+  users:
+    setup_website_name: Als ersten können wir der Seite einen Namen geben. <a href='%{link}' name='%{title}'>Hier klicken</a>, um den Namen der Webseite zu bearbeiten
+    new:
+      fill_form: Füllen Sie die Details unten aus, damit wir anfangen können.
+      sign_up: Anmelden
+    create:
+      welcome: Willkommen bei Refinery, %{who}
+    forgot:
+      email_address: E-Mail-Adresse
+      enter_email_address: Bitte geben Sie die E-Mail-Adresse für Ihre Konto an.
+      reset_password: Passwort zurücksetzen
+      blank_email: Sie haben keine E-Mail-Adresse angegeben.
+      email_not_associated_with_account: Tut mir leid, '%{email}' ist mit keinem Konto verbunden.<br />Sind Sie sicher, dass Sie die richtige E-Mail-Adresse eingegeben haben?
+      email_reset_sent: Es wurde Ihnen eine E-Mail mit einem Link geschickt, durch den Sie ihr Passwort zurücksetzen können.
+    reset:
+      code_invalid: Tut mir leid, aber dieser Zurücksetzungscode ist abgelaufen oder ungültig. Wenn Sie Probleme haben, versuchen Sie den Link aus der E-Mail zu kopieren und in Ihren Browser einzufügen, oder wiederholen Sie den Vorgang mit dem Passwort zurücksetzen.
+      successful: Passwort für '%{email}' erfolgreich zurückgesetzt
+      pick_new_password_for: Wählen Sie ein neues Passwort für %{email}
+      reset_password: Passwort zurücksetzen
+      password_blank: Füllen Sie die Felder mit übereinstimmenden Passwörtern aus.
+  user_mailer:
+    link_to_reset_your_password: Link zum Zurücksetzen Ihres Passworts
+  authlogic:
+    error_messages:
+      login_blank: Kann nicht leer gelassen werden
+      login_invalid: Sollte bitte nur Buchstaben, Zahlen, Leerzeichen und .-_@ enthalten.
+      email_invalid: Sollte nach einer gültigen E-Mail-Adresse aussehen.
+      no_authentication_details: Sie haben keine Details zur Authentifizierung angeben.
+    models:
+      user_session: Benutzersitzung
+    attributes:
+      user_session:
+        login: Login
+        email: E-Mail
+        password: Passwort
+        remember_me: Login merken
+        incorrect: Tut mir leid, Ihr %{login_field} oder Passwort war nicht korrekt.
+  activerecord:
+    attributes:
+      user:
+        login: Login
+        email: E-Mail
+        password: Passwort
+        password_confirmation: Passwort Bestätigung
+        plugin_access: Zugriff auf Erweiterungen
+    models:
+      user: user

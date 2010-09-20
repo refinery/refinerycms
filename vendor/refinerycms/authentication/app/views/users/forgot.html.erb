@@ -1,0 +1,18 @@
+<% content_for :header, t('.enter_email_address') %>
+
+<%= form_for :user do |f| -%>
+
+  <div class='field'>
+    <%= f.text_field :email, :class => "larger widest",
+                     :placeholder => t('.email_address', :default => t('authlogic.attributes.user_session.email')) %>
+  </div>
+
+  <%= render :partial => "/shared/admin/form_actions",
+             :locals => {
+               :f => f,
+               :continue_editing => false,
+               :submit_button_text => t('.reset_password'),
+               :cancel_url => login_url,
+               :cancel_title => nil
+             } -%>
+<% end -%>

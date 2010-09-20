@@ -1,0 +1,8 @@
+<div id='header_content'>
+  <h1><%= link_to RefinerySetting.get(:site_name), root_url(:only_path => true) %></h1>
+  <%= render :partial => "/shared/menu",
+             :locals => {
+               :dom_id => 'menu',
+               :css => 'menu'
+             } -%>
+</div>

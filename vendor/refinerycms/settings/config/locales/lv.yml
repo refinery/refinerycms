@@ -1,0 +1,42 @@
+lv:
+  plugins:
+    refinery_settings:
+      title: Uzstādījumi
+  admin:
+    refinery_settings:
+      delete: Dzēst šo uzstādījumu
+      edit: Labot šo uzstādījumu
+      index:
+        new: Izveidot jaunu uzstādījumu
+        empty_set: Vēl nav neviena uzstādījuma.
+        create_first: Spied uz '%{link}', lai pievienotu pirmo uzstādījumu.
+      form:
+        restart_may_be_in_order: <strong>Ievērībai</strong> - iespējams būs nepieciešams web servera restarts, lai šis uzstādījums stātos spēkā.
+        yes_make_this_setting_restricted: Jā, padarīt šo uzstādījumu pieejamu tikai superlietotājiem.
+        help:
+          restricted: Šī opcija padara uzstādījumu redzamu un rediģējamu tikai superlietotājiem (tādi kā Jūs).
+          activity_show_limit: Šī opcija limitē vienību skaitu, kas tiek atspoguļotas vadības panelī.
+          analytics_page_code: Šis kods aktivizē Google Analytics uzskaiti Jūsu lapā. Ja šī uzstādījuma vērtības lauks tiek atstāts tukšs vai tajā tiek ievadīts UA-xxxxxx-x, tas nozīmē, ka šis uzstādījums nav aktīvs un attālināti pieprasījumi uz Google Analytics netiek veikti.
+          image_dialogue_sizes: Šis uzstādījums attiecas uz bildes ievietošanas dialoga logu. Pēc šī uzstādījuma rediģēšanas, lūdzu, pārliecinieties par to, ka sīkattēlu izmēri ir tādi kā norādīti šeit.
+          image_thumbnails: Ja Jūs veicat izmaiņas šajā uzstādījumā, tad ir nepieciešams izveidot bilžu sīkattēlus no jauna. To var izdarīt izmantojot komandu rake images:regenerate (vai arī rake images:update, ja pievienojat tikai jaunus sīkattēlu izmērus), pretējā gadījumā šis uzstādījums neietekmēs esošās bildes.
+          menu_hide_children: Paslēpt visas apakšlapas no izvēlnes, ja tās ir.
+          new_page_parts: Atļaut pievienot jaunas lapas daļas (satura sadaļas) lapu redaktorā.
+          page_title: Kompleksas opcijas lapas nosaukuma uzstādīšanai. Šeit Jūs varat personalizēt CSS klasi, uzstādīt citu birku vai arī sadalīt lapu fragmentos atkarībā no tās izcelsmes.
+          pages_advanced_options_include_seo: Šis uzstādījums nosaka, vai rādīt OIM (Optimizēšana Interneta Meklētājiem) iespējas pie papildus opcijām lapas redaktorā.
+          preferred_image_view: Šis uzstādījums kontrolē, kurš skats tiek izmantots bilžu spraudnī - grid 'Režģa skatam' un list 'Saraksta skatam'. Bilžu spraudnī ir poga, kas automatizē šo procesu.
+          refinery_enable_backend_reordering: Ar šīs opcijas palīdzību Jūs varat atslēgt spraudņu skata pārkārtošanu.
+          refinery_menu_cache_action_suffix: Šī opcija kontrolē atslēgas nosaukumu, kas tiek izmantota saita izvēlnes kešošanai. Ja izmantojiet tēmu, tad labāk atstājiet šo atslēgu pēc noklusējuma, jo tēma ar to tiks galā.
+          show_contact_privacy_link: Jūs varat noslēpt vai atstāt redzamu privātuma politikas saiti kontaktformas lapā.
+          site_name: Šis ir Jūsu saita nosaukums, kas tiks rādīts galvenē, Refinery administrācijas panelī, kā arī dažās tēmās šis nosaukums tiek rādīts arī kājenē.
+          theme: Ievadiet tēmas nosaukumu, kuru vēlaties izmantot. Lai šis uzstādījums nekavējoties sāktu darboties, pārliecinieties, vai tēma eksistē un tās nosaukums ir norādīts pareizi.
+          use_google_ajax_libraries: Ja vēlaties izmantot Googles AJAX CDN, tad šim parametram nomainiet vērtību uz true.
+          use_marketable_urls: Šī opcija maina saites no /pages/about uz /about un automātiski novērš konfliktus ar citiem spraudņiem.
+          use_resource_caching: Šo opciju ieteicams iespējot produkcijas režīmā, jo tā nodrošina javascript un stylesheet failu apkopošanu vienā failu paketē, tādā veidā samazinot pieprasījumu skaitu uz Jūsu lapu un paātrinot tās darbību.
+  activerecord:
+    models:
+      refinery_setting: uzstādījums
+    attributes:
+      refinery_setting:
+        name: Nosaukums
+        value: Vērtība
+        restricted: Ierobežots

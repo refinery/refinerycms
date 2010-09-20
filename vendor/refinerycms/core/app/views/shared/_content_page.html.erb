@@ -1,0 +1,41 @@
+<%
+  show_empty_sections ||= false
+  remove_automatic_sections ||= false
+  hide_sections ||= []
+
+  sections = [
+    {:yield => :body_content_title, :fallback => page_title, :id => 'body_content_page_title', :title => true},
+    {:yield => :body_content_left, :fallback => (@page.present? ? @page[Page.default_parts.first.to_sym] : nil)},
+    {:yield => :body_content_right, :fallback => (@page.present? ? @page[Page.default_parts.second.to_sym] : nil)}
+  ].reject {|section| hide_sections.include?(section[:yield]) }
+
+  css = []
+  sections.each do |section|
+    dom_id = (section[:id] ||= section[:yield].to_s)
+    section[:html] = (yield(section[:yield]))
+
+    if section[:html].blank? and
+       !show_empty_sections and
+       !remove_automatic_sections and
+       section.keys.include?(:fallback) and
+       section[:fallback].present?
+      section[:html] = section[:fallback].to_s.html_safe
+    end
+
+    unless section[:html].blank?
+      unless section[:title]
+        section[:html] = "<div class='clearfix' id='#{dom_id}'>#{section[:html]}</div>"
+      else
+        section[:html] = "<h1 id='#{dom_id}'>#{section[:html]}</h1>"
+      end
+    else
+      css << "no_#{dom_id}"
+    end
+  end
+-%>
+<div id='body_content' class='clearfix<%= " #{css.join(' ')}" if css.any? %>'>
+  <% sections.each do |s| %>
+    <%= s[:html].to_s.html_safe %>
+  <% end %>
+</div>
+<%= render :partial => '/shared/draft_page_message' unless @page.nil? or @page.live? -%>

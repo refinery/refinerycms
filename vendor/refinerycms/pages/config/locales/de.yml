@@ -1,0 +1,83 @@
+de:
+  plugins:
+    refinery_pages:
+      title: Seiten
+      description: Verwaltet Inhaltsseiten
+  admin:
+    pages_dialogs:
+      page_link:
+        link_to_this_page: Link zu dieser Seite
+      link_to:
+        insert: Einfügen
+        your_page:
+          tab_name: Ihre Seite
+        web_address:
+          tab_name: Webseite
+          location: Zieladresse
+          new_window: Neues Fenster
+          new_window_label: Link in einem neuen Fenster öffnen
+          not_sure: Nicht sicher, was in das Feld oben rein soll?
+          step1: Finden Sie die Seite im Web, die Sie verlinken möchten.
+          step2: Kopieren Sie die Adresse aus der Adressleiste ihres Browsers und fügen Sie diese in das Feld oben ein.
+        email_address:
+          tab_name: E-Mail-Adresse
+          subject_line_optional: Optionaler Betreff
+          body_optional: Optionaler Inhaltstext
+          not_sure: Nicht sicher, was in Felder oben rein soll?
+          step1: Schreiben oder kopieren Sie die E-Mail-Adresse (z.B. aus Ihrem Adressbuch) die verlinkt werden soll in das Feld "E-Mail-Adresse".
+          step2: Verwenden Sie das Feld '<strong>Optionaler Betreff</strong>', wenn der Betreff schon <strong>vorher mit einer Zeile verfasst</strong> werden soll.
+          step3: Verwenden Sie das Feld '<strong>Optionaler Inhaltstext</strong>', wenn die E-Mail bereits <strong>mit einem Text verfasst</strong> werden soll.
+        your_resource:
+          tab_name: Ihre Datei
+          link_to_this_resource: Link zu dieser Datei
+    pages:
+      delete: Diese Seite für immer löschen
+      edit: Diese Seite bearbeiten
+      page:
+        view_live: Diese Seite live betrachten <br/><em>(öffnet sich in einem neuen Fenster)</em>
+        hidden: Versteckt
+        draft: Entwurf
+      form_new_page_parts:
+        title: Titel
+      form_page_parts:
+        create_content_section: Inhaltsabschnitt anlegen
+        delete_content_section: Inhaltsabschnitt löschen
+      form_advanced_options:
+        toggle_advanced_options: Klicken Sie hier, um die erweiterten Optionen anzuzeigen
+        page_options: Seitenoptionen
+        parent_page: Übergeordnete Seite
+        advanced_options: Erweiterte Optionen
+        custom_title: Angepasster Titel
+        title_types:
+          none: Keinen
+          text: Text
+        show_in_menu_title: Im Menü anzeigen
+        show_in_menu_description: Zeigt diese Seite im Seitenmenü an
+        show_in_menu_help: Entfernen Sie diesen Haken, wenn die Seite nicht im Menü erscheinen soll. Dies kann praktisch sein, wenn Sie eine Seite direkt verlinken möchten aber nicht im Menü anzeigen lassen wollen.
+        save_as_draft: Als Entwurf speichern
+        skip_to_first_child: Überspringen der obersten Ebene
+        skip_to_first_child_label: Auf erste untergeordnete Seite weiterleiten
+        skip_to_first_child_help: Diese Option verlinkt die Seite zu der ersten untergeordneten Seite. Dies kann nützlich sein, wenn Seiten gruppiert werden.
+        link_url: Diese Seite auf eine andere Seite weiterleiten
+        link_url_help: Wenn diese Seite zu einer anderen Seite weitergeleitet werden soll, geben Sie hier eine Adresse an, sonst lassen Sie dieses Feld leer.
+        parent_page_help: Sie können eine Seite einer anderen unterordnen, indem Sie diese aus der Liste wählen. Soll die Seite auf die oberste Ebene, lassen Sie dieses Feld leer.
+        custom_title_help: Wenn die Seite einen anderen Titel haben soll als der im Menü angezeigte, wählen Sie "Text" und geben Sie ihn hier ein.
+      form_advanced_options_seo:
+        seo: Suchmaschinenoptimierung
+        seo_override_title: Browsertitel
+        seo_override_title_help: Geben Sie einen 5-10 Wörter langen Titel an, den der Inhalt der Seite beschreibt.
+        meta_keywords_title: Meta-Schlüsselwörter
+        meta_keywords_help: Geben Sie 5-10 Schlüsselwörter für diese Seite an. Trennen Sie Schlüsselwörter mit einem Komma.
+        meta_description_title: Meta-Beschreibung
+        meta_description_help: Beschreiben Sie in knappen zwei oder drei Sätzen, um was es sich bei dieser Seite handelt.
+      index:
+        create_new_page: Neue Seite anlegen
+        reorder_pages: Seiten umsortieren
+        reorder_pages_done: Umsortieren erledigt
+        no_pages_yet: Es sind noch keine Seiten vorhanden. Klicken Sie auf "Neue Seite anlegen", um Ihre erste Seite zu erzeugen.
+  activerecord:
+    models:
+      page: Seite
+    attributes:
+      page:
+        title: Titel

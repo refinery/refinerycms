@@ -1,0 +1,70 @@
+en:
+  plugins:
+    refinery_core:
+      title: Refinery
+      description: Core refinery plugin
+    refinery_dialogs:
+      title: Dialogs
+      description: Refinery dialogs plugin
+  welcome:
+    there_are_no_users: There are no users yet, so we'll set you up first.
+    remember_admin_location: "Remember your Refinery admin area is at:"
+    lets_start: Alright let's get you setup so you can login...
+    continue: Continue...
+  admin:
+    menu:
+      reorder_menu: Reorder menu
+      reorder_menu_done: I'm done reordering the menu
+    dialogs:
+      show:
+        save: Save
+        cancel: Cancel
+  refinery:
+    crudify:
+      created: %{what} was successfully added.
+      updated: %{what} was successfully updated.
+      destroyed: %{what} was successfully removed.
+  shared:
+    site_bar:
+      log_out: Log out
+      switch_to_your_website: Switch to your website
+      switch_to_your_website_editor: Switch to your website editor
+    admin:
+      continue_editing:
+        save_and_continue_editing: Save & continue editing
+      form_actions:
+        save: Save
+        cancel: Cancel
+        cancel_lose_changes: If you cancel you will lose any changes you have made here
+        delete: Remove
+        previous: Previous
+        next: Next
+        close: Close
+      image_picker:
+        none_selected: There is currently no %{what} selected, please click here to add one.
+        remove_current: Remove current %{what}
+        change: Click here to pick a image
+        show: Show
+      resource_picker:
+        download_current: Download current file
+        opens_in_new_window: Opens in a new window
+        remove_current: "Remove current file"
+        no_resource_selected: There is currently no file selected, click here to add one.
+        name: Add File
+        current: Current File
+      search:
+        button_text: Search
+        results_for: Search results for '%{query}'
+        no_results: Sorry, no results found
+      delete:
+        message: Are you sure you want to remove '%{title}'?
+      error_messages:
+        problems_in_following_fields: There were problems with the following fields
+      help: help
+    message:
+      close: Close
+      close_this_message: Close this message
+    draft_page_message:
+      not_live: This page is NOT live for public viewing.
+    footer:
+      copyright: Copyright &copy;

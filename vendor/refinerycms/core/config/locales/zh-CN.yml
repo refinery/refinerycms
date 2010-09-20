@@ -1,0 +1,65 @@
+zh-CN:
+  welcome:
+    there_are_no_users: "There are no users yet, so we'll set you up first."
+    remember_admin_location: "Remember your Refinery admin area is at:"
+    lets_start: "Alright let's get you setup so you can login..."
+    continue: "Continue..."
+  admin:
+    menu:
+      reorder_menu: Reorder menu
+      reorder_menu_done: "I'm done reordering the menu"
+    images:
+      existing_image:
+        submit_insert: Insert
+  refinery:
+    other: "Other %{what}"
+    reorder: "Reorder %{what}"
+    reorder_done: "Done Reordering %{what}"
+    crudify:
+      created: "%{what} was successfully added."
+      updated: "%{what} was successfully updated."
+      destroyed: "%{what} was successfully destroyed."
+  shared:
+    site_bar:
+      log_out: Log out
+      switch_to_your_website: Switch to your website
+      switch_to_your_website_editor: Switch to your website editor
+    admin:
+      continue_editing:
+        save_and_continue_editing: "Save & continue editing"
+      form_actions:
+        or: or
+        save: Save
+        or_cancel: or
+        cancel: Cancel
+        or_continue: or
+        cancel_lose_changes: "Cancelling will lose all changes you've made to this %{object_name}"
+        delete: Delete
+        previous: Previous
+        next: Next
+        close: Close
+      image_picker:
+        none_selected: "There is currently no %{what} selected, please click here to add one."
+        remove_current: "Remove current %{what}"
+        change: Click here to pick a image
+        image: image
+        show: Show
+      resource_picker:
+        none_selected: "There is currently no %{what} selected, please click here to add one."
+        current: "Current %{what}"
+        download_current: "Download current %{what}"
+        opens_in_new_window: Opens in a new window
+        remove_current: "Remove current %{what}"
+        resource: resource
+      search:
+        button_text: Search
+        results_for: Search results for '%{query}'
+        no_results: Sorry, no results found
+      delete:
+        message: Are you sure you want to delete '%{title}'?
+        title: Remove this %{object_name} forever
+      edit:
+        title: Edit this %{object_name}
+    message:
+      close: Close
+      close_this_message: Close this message

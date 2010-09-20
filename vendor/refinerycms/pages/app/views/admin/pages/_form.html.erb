@@ -1,0 +1,56 @@
+<% url_opts = action_name == 'edit' ? {:url => admin_page_path(@page.id)} : {} %>
+<%= form_for [:admin, @page], url_opts do |f| %>
+
+  <%= render :partial => "/shared/admin/error_messages",
+             :locals => {
+               :object => @page,
+               :include_object_name => true
+             } %>
+
+  <div class="field">
+    <%= f.label :title %>
+    <%= f.text_field :title, :class => "larger widest" %>
+  </div>
+
+  <%= render :partial => "form_fields_after_title",
+             :locals => {
+               :f => f
+             } %>
+
+  <div class='field'>
+    <%= render :partial => "form_page_parts",
+               :locals => {
+                 :f => f
+               } %>
+  </div>
+
+  <%= render :partial => "form_advanced_options",
+             :locals => {
+                :f => f
+              } %>
+
+  <%= render :partial => "/shared/admin/form_actions",
+             :locals => {
+               :f => f,
+               :continue_editing => true,
+               :delete_title => t('admin.pages.delete'),
+               :delete_confirmation => t('shared.admin.delete.message', :title => @page.title)
+             } %>
+
+  <%= render :partial => "form_new_page_parts",
+             :locals => {
+               :f => f
+             } if RefinerySetting.find_or_set(:new_page_parts, false) %>
+<% end %>
+
+<% content_for :head do %>
+  <script type='text/javascript'>
+    $(document).ready(function(){
+      page_options.init(
+        <%= RefinerySetting.find_or_set(:new_page_parts, false).to_s %>
+        , "<%= new_admin_page_part_url(:only_path => true) %>"
+        , "<%= admin_page_parts_url(:only_path => true) %>"
+      );
+    });
+  </script>
+<% end %>

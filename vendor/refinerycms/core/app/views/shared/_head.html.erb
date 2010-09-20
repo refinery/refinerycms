@@ -1,0 +1,17 @@
+<% theme ||= false -%>
+<head>
+  <title><%= browser_title(yield(:title)) %></title>
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <meta charset='<%= Refinery::Application.config.encoding %>' />
+  <%= csrf_meta_tag %>
+  <%= render(:partial => '/shared/html5_for_ie.js').html_safe if request.env['HTTP_USER_AGENT'] =~ /MSIE/ %>
+  <%= render :partial => 'shared/google_analytics' unless local_request? %>
+  <%= stylesheet_link_tag "application", "formatting", :theme => theme %>
+  <%= stylesheet_link_tag "theme" %>
+  <%= stylesheet_link_tag "home", :theme => theme if home_page? %>
+  <%= "<!--[if IE 7]>#{stylesheet_link_tag 'ie7'}<![endif]-->".html_safe if request.env['HTTP_USER_AGENT'] =~ /MSIE/ -%>
+  <%= "<meta name=\"keywords\" content=\"#{@meta.meta_keywords}\" />".html_safe if @meta.meta_keywords.present? %>
+  <%= "<meta name=\"description\" content=\"#{@meta.meta_description}\" />".html_safe if @meta.meta_description.present? -%>
+  <%= yield :head_libraries %>
+  <%= yield :head %>
+</head>

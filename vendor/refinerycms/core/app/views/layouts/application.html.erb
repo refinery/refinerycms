@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <% site_bar = render(:partial => "/shared/site_bar", :locals => {:head => true}) -%>
+  <%= render :partial => "/shared/head" %>
+  <body>
+    <%= site_bar -%>
+    <%= render :partial => "/shared/ie6check" if request.env['HTTP_USER_AGENT'] =~ /MSIE/ -%>
+    <div id='page_container'>
+      <div id='page'>
+        <div id='header'>
+          <%= render :partial => "/shared/header" %>
+        </div>
+        <div id='body' class='clearfix'>
+          <%= yield %>
+        </div>
+        <div id='footer'>
+          <%= render :partial => "/shared/footer" %>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

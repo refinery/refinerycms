@@ -5,11 +5,12 @@
 # files.
 
 ## This is custom functionality written by Refinery CMS.
+require 'rbconfig'
 def setup_environment
-  ENV["RAILS_ENV"] ||= "cucumber"
+  ENV["RAILS_ENV"] ||= "test"
   require File.expand_path(File.dirname(__FILE__) + '/../../config/environment')
 
-  if RUBY_PLATFORM =~ /mswin/
+  if RbConfig::CONFIG["host_os"] =~ %r!(msdos|mswin|djgpp|mingw)!
     puts "Win32 users may experience cucumber/formatter/unicode errors.  Requirement ommited, see: /features/support/env.rb to re-add."
   else
     require 'cucumber/formatter/unicode' # Remove this line if you don't want Cucumber Unicode support
@@ -61,8 +62,8 @@ def each_run
   DatabaseCleaner.strategy = :truncation
 
   require 'fileutils'
-  require 'rails_generator'
-  require 'rails_generator/scripts/generate'
+  require 'rails/generators'
+  #require 'rails/generators/scripts/generate'
 
   require 'authlogic/test_case'
   Before do
@@ -70,7 +71,7 @@ def each_run
   end
 end
 
-unless RUBY_PLATFORM =~ /mswin|mingw/
+unless RbConfig::CONFIG["host_os"] =~ %r!(msdos|mswin|djgpp|mingw)!
   require 'spork'
 
   Spork.prefork do

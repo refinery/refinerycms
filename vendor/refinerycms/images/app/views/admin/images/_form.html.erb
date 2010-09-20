@@ -1,0 +1,51 @@
+<%= form_for [:admin, @image], :url => @url_override || @url,
+                              :html => {
+                                :multipart => true,
+                                :style => 'float: left; width: 70%'
+                              } do |f| %>
+
+  <%= render :partial => "/shared/admin/error_messages",
+             :locals => {
+               :object => @image,
+               :include_object_name => false
+             } %>
+
+  <div class='field'>
+    <% if action_name =~ /(edit)|(update)/ %>
+      <%= t('.use_current_image') %>
+      <em><%= t('.or') %></em><%= t('.replace_image') %>
+    <% end %>
+    <%= f.file_field :image %>
+  </div>
+
+  <div class='field'>
+    <label><%= t('.maximum_image_size', :megabytes => Image::MAX_SIZE_IN_MB) %></label>
+  </div>
+
+  <div<%= (" style='margin-top: #{@image.thumbnail(:medium).height - 63}px'" rescue nil) if action_name =~ /(edit)|(update)/ and !@app_dialog%>>
+    <%= render :partial => "/shared/admin/form_actions",
+               :locals => {
+                 :f => f,
+                 :continue_editing => false,
+                 :hide_cancel => (@app_dialog or action_name == "insert" or from_dialog?),
+                 :delete_title => t('admin.images.delete'),
+                 :delete_confirmation => t('shared.admin.delete.message', :title => @image.image_name)
+               } %>
+  </div>
+
+  <% if @app_dialog %>
+    <input type='hidden' name='app_dialog' value='<%= @app_dialog %>' />
+    <input type='hidden' name='field' value='<%= @field %>' />
+    <input type='hidden' name='update_image' value='<%= @update_image %>' />
+    <input type='hidden' name='thumbnail' value='<%= @thumbnail %>' />
+    <input type='hidden' name='callback' value='<%= @callback %>' />
+    <input type='hidden' name='conditions' value='<%= @conditions %>' />
+  <% end %>
+<% end %>
+
+<% if action_name =~ /(edit)|(update)/ %>
+  <div style='float: right; width: 25%;'>
+    <label><%=t('.current_image') %></label>
+    <%= image_fu @image, :medium, { :class => "brown_border" } %>
+  </div>
+<% end %>

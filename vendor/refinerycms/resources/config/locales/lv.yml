@@ -1,0 +1,30 @@
+lv:
+  plugins:
+    refinery_files:
+      title: Faili
+  file_specify_for_upload: Jānorāda fails pirms augšupielādes
+  file_should_be_smaller_than_max_file_size: Faila izmēram jābūt mazākam par %{max_file_size}
+  admin:
+    resources:
+      delete: Dzēst šo failu
+      edit: Labot šo failu
+      form:
+        download_current: Lejupielādēt pašreizējo failu
+        or: vai
+        replace: " aizstāt to ar šo..."
+        maximum_file_size: Maksimāli pieļaujamais faila izmērs ir %{megabytes} megabaiti.
+      resource:
+        download: Lejupielādēt šo failu (%{size})
+      index:
+        upload_new: Augšupielādēt Failu
+        no_files_yet: Vēl nav neviena faila. Spied "Augšupielādēt Failu", lai ielādētu failu.
+      insert:
+        existing: Esošs Fails
+        new: Jauns Fails
+        no_files: Nav neviena faila.
+      existing_resource:
+        link_to_file: Saite uz šo failu
+        button_text: Ievietot
+  activerecord:
+    models:
+      resource: fails

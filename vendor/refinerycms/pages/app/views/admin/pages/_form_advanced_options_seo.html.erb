@@ -1,0 +1,24 @@
+<div class="hemisquare right_side">
+  <h2><%= t('.seo') %></h2>
+  <div class='field'>
+    <span class='label_with_help'>
+     <%= f.label :browser_title, t('.seo_override_title') %>
+     <%= refinery_help_tag t('.seo_override_title_help')%>
+    </span>
+    <%= f.text_field :browser_title, :class => 'widest' %>
+  </div>
+  <div class='field'>
+    <span class='label_with_help'>
+     <%= f.label :meta_keywords, t('.meta_keywords_title') %>
+     <%= refinery_help_tag t('.meta_keywords_help') %>
+    </span>
+    <%= f.text_field :meta_keywords, :class => 'widest' %>
+  </div>
+  <div class='field'>
+    <span class='label_with_help'>
+     <%= f.label :meta_description, t('.meta_description_title') %>
+     <%= refinery_help_tag t('.meta_description_help') %>
+    </span>
+    <%= f.text_area :meta_description, :class => 'widest', :rows => 7 %>
+  </div>
+</div>

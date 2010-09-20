@@ -3,7 +3,7 @@ class RemoveSuperuserFromUsers < ActiveRecord::Migration
     superusers = User.find_all_by_superuser(true)
     superusers.each do |user|
       user.add_role(:superuser)
-      user.save(false)
+      user.save(:validate => false)
     end
 
     remove_column :users, :superuser

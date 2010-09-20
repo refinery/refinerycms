@@ -1,0 +1,70 @@
+de:
+  plugins:
+    refinery_core:
+      title: Refinery
+      description: Core Refinery Erweiterung
+    refinery_dialogs:
+      title: Dialoge
+      description: Refinery Dialog Erweiterung
+  welcome:
+    there_are_no_users: Es sind noch keine Benutzer vorhanden, darum lassen wir uns Ihren zuerst anlegen.
+    remember_admin_location: "Merken Sie sich Ihren Refinery Administrationsbereich:"
+    lets_start: Alles klar, lassen wir uns Ihren Benutzer anlegen, damit Sie sich anmelden können...
+    continue: Weiter...
+  admin:
+    menu:
+      reorder_menu: Menü umsortieren
+      reorder_menu_done: Ich bin mit dem Umsortieren fertig
+    dialogs:
+      show:
+        save: Speichern
+        cancel: Abbrechen
+  refinery:
+    crudify:
+      created: %{what} wurde erfolgreich angelegt.
+      updated: %{what} wurde erfolgreich aktualisiert.
+      destroyed: %{what} wurde erfolgreich gelöscht.
+  shared:
+    site_bar:
+      log_out: Abmelden
+      switch_to_your_website: Zu Ihrer Webseite wechseln
+      switch_to_your_website_editor: Zum Editor Ihrer Webseite wechseln
+    admin:
+      continue_editing:
+        save_and_continue_editing: Speichern & Bearbeiten fortsetzen
+      form_actions:
+        save: Speichern
+        cancel: Abbrechen
+        cancel_lose_changes: Durch Abbrechen gehen all ihre gemachten Änderungen verloren
+        delete: Löschen
+        previous: Vorherige
+        next: Nächste
+        close: Schließen
+      image_picker:
+        none_selected: Es ist momentan kein %{what} ausgewählt, bitte klicken Sie hier, um eins hinzuzufügen.
+        remove_current: Entferne aktuelles %{what}
+        change: Klicken Sie hier, um ein Bild auszuwählen
+        show: anzeigen
+      resource_picker:
+        download_current: Aktuelles %{what} herunterladen
+        opens_in_new_window: Öffnet in einem neuen Fenster
+        remove_current: "Entferne aktuelles %{what}"
+        no_resource_selected: Es ist momentan keine Datei ausgewählt, klicken Sie hier, um eine hinzuzufügen.
+        name: Datei hinzufügen
+        current: Aktuelle Datei
+      search:
+        button_text: Suchen
+        results_for: Suchergebnisse für '%{query}'
+        no_results: Tut mir leid, Suche brachte keine Ergebnisse
+      delete:
+        message: Sind Sie sicher, dass Sie '%{title}' löschen möchten?
+      error_messages:
+        problems_in_following_fields: Es gab Probleme mit den folgenden Feldern
+      help: Hilfe
+    message:
+      close: Schließen
+      close_this_message: Diese Meldung schließen
+    draft_page_message:
+      not_live: Diese Seite ist NICHT öffentlich sichtbar.
+    footer:
+      copyright: Copyright &copy;

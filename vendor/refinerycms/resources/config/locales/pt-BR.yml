@@ -1,0 +1,31 @@
+pt-BR:
+  plugins:
+    refinery_files:
+      title: Arquivos
+      description: Gerenciar arquivos
+  file_specify_for_upload: Você deve escolher um arquivo para enviar
+  file_should_be_smaller_than_max_file_size: "Arquivos devem ser menores que %{max_file_size} em tamanho"
+  admin:
+    resources:
+      delete: Remover este arquivo para sempre
+      edit: Editar este arquivo
+      form:
+        download_current: Baixar arquivo atual
+        or: or
+        replace: " substituir por este..."
+        maximum_file_size: "O tamanho máximo permitido é de %{megabytes} megabytes."
+      resource:
+        download: Baixar este arquivo (%{size})
+      index:
+        upload_new: Enviar Novo Arquivo
+        no_files_yet: Ainda não existem arquivos. Clique em "Enviar Novo Arquivo" para adicionar seu primeiro arquivo.
+      insert:
+        existing: O Arquivo já existe.
+        new: Novo Arquivo
+        no_files: TNão há arquivos.
+      existing_resource:
+        link_to_file: Link para este Arquivo
+        button_text: Inserir
+  activerecord:
+    models:
+      resource: Arquivo
