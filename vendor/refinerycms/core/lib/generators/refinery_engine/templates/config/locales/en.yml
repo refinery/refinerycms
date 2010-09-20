@@ -1,4 +1,8 @@
 en:
+  shared:
+    admin:
+      image_picker:
+        image: image
   plugins:
     <%= class_name.pluralize.underscore.downcase %>:
       title: <%= plural_name.titleize %>
