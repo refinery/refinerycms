@@ -1,0 +1,37 @@
+<% if RefinerySetting.find_or_set(:new_page_parts, false) %>
+  <ul id="page_parts_controls">
+    <li>
+      <%= link_to refinery_icon_tag('add.png'), '#',
+                  :id => 'add_page_part',
+                  :title => t('.create_content_section') %>
+    </li>
+    <li>
+      <%= link_to refinery_icon_tag('delete.png'), '#',
+                  :title => t('.delete_content_section'),
+                  :class => 'delete_page_part',
+                  :name => t('.delete_content_section'),
+                  :id => 'delete_page_part' %>
+    </li>
+  </ul>
+<% end %>
+<div id='page-tabs' class='clearfix ui-tabs ui-widget ui-widget-content ui-corner-all'>
+  <ul id='page_parts'>
+  <% @page.parts.each_with_index do |part, part_index| %>
+    <li class='ui-state-default<%= ' ui-state-active' if part_index == 0 %>'>
+      <%= link_to part.title, "##{@page.new_record? ? "page_part_new_#{part_index}" : part.to_param}" %>
+    </li>
+  <% end %>
+  </ul>
+
+  <div id='page_part_editors'>
+    <% part_index = -1 %>
+    <%= f.fields_for :parts do |p| %>
+      <%= render :partial => 'page_part_field',
+                 :locals => {
+                   :part => p.object,
+                   :part_index => (part_index += 1),
+                   :new_part => @page.new_record?
+                 } -%>
+    <% end %>
+  </div>
+</div>

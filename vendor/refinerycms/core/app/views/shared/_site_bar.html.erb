@@ -1,0 +1,33 @@
+<% if refinery_user? %>
+  <% unless admin? # jquery scripts should already be cached when using the site bar as login has happened. %>
+    <% content_for :site_bar_assets do %>
+      <%= stylesheet_link_tag('refinery/site_bar') unless exclude_css ||= false %>
+      <%= jquery_include_tags(:jquery_ui => false) unless exclude_jquery ||= false %>
+      <%= javascript_include_tag('jquery/jquery.corner.js') unless exclude_cornering_library ||= false %>
+      <%= javascript_include_tag('refinery/site_bar') unless exclude_site_bar_javascript ||= false %>
+    <% end %>
+    <% content_for :head, yield(:site_bar_assets) if (head ||= false) %>
+    <%= yield(:site_bar_assets) unless head %>
+  <% end -%>
+  <div id='site_bar'>
+    <div id='site_bar_content' class='clearfix'>
+      <div id='editor_switch'>
+        <%= site_bar_switch_link -%>
+      </div>
+      <%= link_to image_tag("#{"http://refinerycms.com/images/" unless local_request?}refinery/logo-site-bar.png",
+                            :alt => "Refinery (tm) Content Manager"),
+                  'http://refinerycms.com',
+                  :target => '_blank',
+                  :id => 'site_bar_refinery_cms_logo' %>
+
+      <div id='site_bar_branding'>
+        <span id='site_bar_company_name'>
+          <%= RefinerySetting.find_or_set(:site_name, 'Company Name') %>
+        </span>
+
+        <%= link_to t('.log_out'), logout_url(:only_path => true),
+                    :id => 'logout' %>
+      </div>
+    </div>
+  </div>
+<% end %>

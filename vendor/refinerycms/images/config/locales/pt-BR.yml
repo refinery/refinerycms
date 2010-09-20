@@ -1,0 +1,38 @@
+pt-BR:
+  plugins:
+    refinery_images:
+      title: Imagens
+      description: Gerenciar imagens
+  image_specify_for_upload: Você deve escolher uma imagem para enviar
+  image_should_be_smaller_than_max_image_size: "Imagem deve possuir menos de %{max_image_size} de tamanho"
+  image_must_be_these_formats: 'Sua imagem deve ser uma JPG, PNG ou GIF'
+  admin:
+    images:
+      delete: Remover esta imagem para sempre
+      edit: Editar esta imagem
+      form:
+        image: Imagem
+        use_current_image: Usar imagem atual
+        or: ou
+        replace_image: " substituir por esta..."
+        current_image: Imagem atual
+        maximum_image_size: "O tamanho máximo permitido é de %{megabytes} megabytes."
+      index:
+        create_new_image: Criar Nova Imagem
+        no_images_yet: Ainda não existem imagens. Clique em "Criar Nova Imagem" para adicionar sua primeira imagem.
+        view:
+          switch_to: Trocar para visão em %{view_name}
+          list: lista
+          grid: grade
+      grid_view:
+        view_live: "Ver esta imagem<br/><em>Abre em uma nova janela</em>"
+      existing_image:
+        button_text: Inserir
+        resize_image: "Redimencionar a imagem?"
+        size: Tamanho
+      insert:
+        existing_image: Do Arquivo
+        new_image: Nova Imagem
+  activerecord:
+    models:
+      image: Imagem

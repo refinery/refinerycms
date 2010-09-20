@@ -1,0 +1,56 @@
+<%
+  # Internet Explorer is fine with JS caching, but cache CSS and kaboom.
+  # Would be great if someone could fix this?
+  js_caching = RefinerySetting.find_or_set(:use_resource_caching, Rails.root.writable?)
+  css_caching = js_caching && request.env['HTTP_USER_AGENT'] !~ /MSIE/
+  login = defined?(login) ? login : login?
+-%>
+<head>
+  <meta charset='<%= Refinery::Application.config.encoding %>' />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <title><%= RefinerySetting.find_or_set(:site_name, 'Company Name') -%> - Refinery</title>
+  <%= csrf_meta_tag %>
+  <%= render(:partial => '/shared/html5_for_ie.js').html_safe if request.env['HTTP_USER_AGENT'] =~ /MSIE/ %>
+
+  <%= stylesheet_link_tag 'refinery/site_bar',
+                          'refinery/refinery',
+                          'refinery/ui',
+                          'refinery/tooltips',
+                          'wymeditor/skins/refinery/skin',
+                          :cache => (css_caching ? "cache/refinery" : false) -%>
+
+  <%= yield :head_before_javascript_libraries -%>
+  <%= javascript_include_tag 'refinery/i18n' -%>
+  <script type='text/javascript'>I18n.locale = '<%= I18n.locale %>';</script>
+
+  <%= jquery_include_tags(:caching => js_caching) -%>
+
+  <% #TODO: Find out why the master branch doesn't work! %>
+  <%#= javascript_include_tag 'http://github.com/rails/jquery-ujs/raw/master/src/rails.js' %>
+  <%= javascript_include_tag 'http://github.com/rails/jquery-ujs/raw/f01a685c8200b76c4cc2c606accb135da5ad5444/src/rails.js' %>
+
+
+  <%= javascript_include_tag 'jquery/jquery.corner.js',
+                             'jquery/jquery.textTruncate.js',
+                             'jquery/jquery.html5-placeholder-shim.js',
+                             'jquery/jquery.timers.js',
+                             'jquery/jquery.jcarousel.js',
+                             :cache => (js_caching ? "cache/jquery-plugins" : false) unless login -%>
+
+  <%= yield :head_after_javascript_libraries -%>
+
+  <%= javascript_include_tag 'wymeditor/jquery.refinery.wymeditor.js',
+                             'admin',
+                             'refinery/boot_wym',
+                             'refinery/core',
+                             'refinery/admin',
+                             :cache => (js_caching ? "cache/admin" : false) unless login -%>
+  <%= javascript_include_tag 'refinery/core' if login -%>
+
+  <% if request.env['HTTP_USER_AGENT'] =~ /MSIE/ -%>
+    <%= "<!--[if lt IE 8]>#{stylesheet_link_tag 'refinery/ie-less-than-8'}<![endif]-->".html_safe -%>
+    <%= "<!--[if IE 8]>#{stylesheet_link_tag 'refinery/ie-less-than-9'}<![endif]-->".html_safe -%>
+  <% end -%>
+
+  <%= yield :head -%>
+</head>

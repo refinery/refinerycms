@@ -1,0 +1,35 @@
+<%
+  branch = if page.parent_id.nil? and page.right_sibling.present? and page.left_sibling.nil?
+    "branch_start"
+  elsif page.right_sibling.nil?
+    "branch_end"
+  end
+
+  title = page.title
+  title << " <em>(#{t('.hidden')})</em>" unless page.show_in_menu?
+  title << " <em>(#{t('.draft')})</em>" if page.draft?
+-%>
+<li class='clearfix record<%= " #{branch}" if branch.present? %>' id="<%= dom_id(page) -%>">
+  <div class='clearfix'>
+    <span class='title'><%= title.html_safe %></span>
+
+    <span class='actions'>
+      <%= link_to refinery_icon_tag('application_go.png'), page.url,
+                  :target => "_blank",
+                  :title => t('.view_live') %>
+      <%= link_to refinery_icon_tag('application_edit.png'), edit_admin_page_url(page),
+                  :title => t('admin.pages.edit') %>
+      <%= link_to refinery_icon_tag('delete.png'), admin_page_url(page),
+                  :class => "cancel confirm-delete",
+                  :title => t('admin.pages.delete'),
+                  :'data-confirm' => t('shared.admin.delete.message', :title => title.gsub(/\ ?<em>.*<\/em>/, "")),
+                  :'data-method' => "delete" if page.deletable? %>
+    </span>
+  </div>
+  <ul class='nested'>
+    <% if (children = page.children).any? -%>
+        <%= render :partial => 'page', :collection => children %>
+    <% end -%>
+  </ul>
+
+</li>

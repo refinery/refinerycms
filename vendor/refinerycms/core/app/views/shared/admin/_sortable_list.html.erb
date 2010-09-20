@@ -1,0 +1,8 @@
+<% if params[(list_id ||= "sortable_list").to_sym].present? and
+      (defined?(continue_reordering) ? continue_reordering == "true" : true) -%>
+  <script type='text/javascript'>
+    $(document).ready(function(){
+      list_reorder.enable_reordering();
+    });
+  </script>
+<% end -%>

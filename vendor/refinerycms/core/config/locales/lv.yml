@@ -1,0 +1,63 @@
+lv:
+  welcome:
+    there_are_no_users: Vēl nav neviena lietotāja, līdz ar to mēs Jums palīdzēsim izveidot pirmo.
+    remember_admin_location: "Atcerieties, Jūsu Refinery administrācijas panelis atrodas šeit:"
+    lets_start: Tātad turpināsim, lai Jūs varētu pieslēgties...
+    continue: Turpināt...
+  admin:
+    menu:
+      reorder_menu: Pārkārtot izvēlni
+      reorder_menu_done: Esmu beidzis pārkārtot izvēlni
+    dialogs:
+      show:
+        save: Saglabāt
+        cancel: Atcelt
+  refinery:
+    crudify:
+      created: %{what} tika veiksmīgi izveidots.
+      updated: %{what} tika veiksmīgi atjaunots.
+      destroyed: %{what} tika veiksmīgi izdzēsts.
+  shared:
+    site_bar:
+      log_out: Iziet
+      switch_to_your_website: Pārslēgties uz Jūsu saitu
+      switch_to_your_website_editor: Pārslēgties uz Jūsu saita administrācijas paneli
+    admin:
+      continue_editing:
+        save_and_continue_editing: Saglabāt un turpināt rediģēt
+      form_actions:
+        save: Saglabāt
+        cancel: Atcelt
+        cancel_lose_changes: Atceļot tiks zaudētas visas tekošās izmaiņas, kas šeit tika veiktas
+        delete: Dzēst
+        previous: Iepriekšējā
+        next: Nākamā
+        close: Aizvērt
+      image_picker:
+        none_selected: Pašlaik nav izvēlēta neviena %{what}. Lūdzu, spied šeit, lai pievienotu.
+        remove_current: Dzēst pašreizējo %{what}
+        change: Spied šeit, lai izvēlētos bildi
+        show: Rādīt
+      resource_picker:
+        download_current: Lejuplādēt pašreizējo failu
+        opens_in_new_window: Atvērsies jaunā logā
+        remove_current: Dzēst pašreizējo failu
+        no_resource_selected: Pašlaik nav izvēlēts neviens fails. Spied šeit, lai pievienotu kādu failu.
+        name: Pievienot Failu
+        current: Pašreizējais Fails
+      search:
+        button_text: Meklēt
+        results_for: Meklēšanas rezultāti pēc '%{query}'
+        no_results: Atvainojiet, nekas netika atrasts
+      delete:
+        message: Vai tiešām vēlaties dzēst '%{title}'?
+      error_messages:
+        problems_in_following_fields: Problēmas sekojošos ievades laukos
+      help: palīdzība
+    message:
+      close: Aizvērt
+      close_this_message: Aizvērt šo paziņojumu
+    draft_page_message:
+      not_live: Šī lapa NAV publiskai apskatei.
+    footer:
+      copyright: Visas tiesības paturētas &copy;

@@ -1,0 +1,31 @@
+en:
+  plugins:
+    refinery_files:
+      title: Files
+      description: Upload and link to files
+  file_specify_for_upload: You must specify file for upload
+  file_should_be_smaller_than_max_file_size: File should be smaller than %{max_file_size} in size
+  admin:
+    resources:
+      delete: Remove this file forever
+      edit: Edit this file
+      form:
+        download_current: Download current file
+        or: or
+        replace: " replace it with this one..."
+        maximum_file_size: The maximum file size is %{megabytes} megabytes.
+      resource:
+        download: Download this file (%{size})
+      index:
+        upload_new: Upload New File
+        no_files_yet: There are no files yet. Click "Upload New Files" to add your first file.
+      insert:
+        existing: Existing File
+        new: New File
+        no_files: There are no files.
+      existing_resource:
+        link_to_file: Link to this file
+        button_text: Insert
+  activerecord:
+    models:
+      resource: file

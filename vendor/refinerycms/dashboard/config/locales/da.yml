@@ -1,0 +1,24 @@
+da:
+  plugins:
+    refinery_dashboard:
+      title: Overblik
+  admin:
+    dashboard:
+      index:
+        quick_tasks: Handlinger
+        add_a_new_page: Tilføj en ny side
+        update_a_page: Redigér en side
+        upload_a_image: Upload et billede
+        change_language: Skift sprog
+        see_home_page: Vis forside
+      recent_activity:
+        latest_activity: Seneste aktiviteter
+        see: Vis '%{what}'
+      recent_inquiries:
+        latest_inquiries: Latest inquiries
+  updated:
+    'with_article "the"':  opdateret
+  created:
+    'with_article "the"':  oprettet
+  ago: "%{time} siden"
+  see: Vis

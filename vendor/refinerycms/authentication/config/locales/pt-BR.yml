@@ -1,0 +1,71 @@
+pt-BR:
+  plugins:
+    refinery_users:
+      title: Usuários
+      description: Gerenciar usuários
+  admin:
+    users:
+      delete: Remover este usuário para sempre
+      edit: Editar este usuário
+      update:
+        cannot_remove_user_plugin_from_current_user: "Você não pode remover o plugin 'Usuários' a partir da conta atualmente logada."
+      form:
+        blank_password_keeps_current: Deixar a senha em branco mantém a senha atual
+        enable_all: habilitar todos
+      index:
+        create_new_user: Criar Novo Usuário
+      user:
+        email_user: Enviar e-mail para este usuário
+        preview: "(%{who}) criado em %{created_at}"
+  sessions:
+    login_successful: Logado com sucesso
+    new:
+      hello_please_sign_in: "Olá! Faça o login"
+      sign_in: Entrar
+      forgot_password: Esqueci minha senha
+  users:
+    setup_website_name: "Primeiro vamos dar um nome ao site. <a href='%{link}' name='%{title}'>Clique aqui</a> para editar o nome do seu site."
+    new:
+      fill_form: Preencha o formulário abaixo com seus detalhes pra que você possa começar.
+      sign_up: Cadastrar
+    create:
+      welcome: Bem-vindo, %{who}
+    forgot:
+      email_address: Endereço de email
+      enter_email_address: "Por favor, preencha o endereço de email da sua conta."
+      reset_password: Recuperar senha
+      blank_email: Você não preencheu um endereço de e-mail.
+      email_not_associated_with_account: "Desculpe, '%{email}' não está associado com alguma conta. <br/>Tem certeza que você digitou o endereço de email correto?"
+      email_reset_sent: Um email foi enviado para você com um link para recuperar sua senha.
+    reset:
+      code_invalid: "Lamentamos, mas este código reset expirou ou é inválido. Se você está tendo problemas tente copiar e colar a URL do seu e-mail em seu navegador ou reinicie o processo de mudança de senha."
+      successful: "Senha alterada com sucesso para o e-mail %{email}"
+      pick_new_password_for: "Digite uma nova senha para o e-mail %{email}"
+      reset_password: Recuperar senha
+      password_blank: Preencha com uma nova senha.
+  user_mailer:
+    link_to_reset_your_password: Link para alterar sua senha
+  authlogic:
+    error_messages:
+      login_blank: não pode estar em branco
+      password_blank: não pode estar em branco
+      login_invalid: "deve usar somente letras, números, espaços e .- _ @ por favor"
+      email_invalid: Deverá ser um endereço de e-mail válido.
+      no_authentication_details: Você não forneceu todos os detalhes para autenticação.
+    models:
+      user_session: Login
+    attributes:
+      user_session:
+        login: Login
+        email: Email
+        password: Senha
+        remember_me: Lembrar de mim
+        incorrect: "Desculpe, seu %{login_field} ou senha estava errada."
+  activerecord:
+    models:
+      user: Usuário
+    attributes:
+      user:
+        plugin_access: Acesso
+        password: Senha
+        password_confirmation: Confirmação da senha

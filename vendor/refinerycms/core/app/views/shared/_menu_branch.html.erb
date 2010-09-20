@@ -1,0 +1,26 @@
+<%
+  css = if ((defined?(apply_css) && apply_css) || !defined?(apply_css)) and
+           (classes = css_for_menu_branch(menu_branch, menu_branch_counter, sibling_count||=nil)).any?
+    "class='#{classes.join(' ')}'"
+  end
+  dom_id = ("id='item_#{menu_branch_counter}'" if menu_branch.parent_id.nil? and menu_branch.title.present?)
+
+  hide_children = (defined?(hide_children) && hide_children)
+  children = hide_children ? [] : collection.select { |p| p.parent_id == menu_branch.id && p.in_menu? }
+-%>
+<li<%= ['', css, dom_id].join(' ').gsub(/\ *$/, '') %>>
+  <%= link_to menu_branch.title, menu_branch.url %>
+
+  <% if children.present? %>
+    <ul class='clearfix'>
+      <%=
+        render :partial => "/shared/menu_branch",
+               :collection => children,
+               :locals => {
+                 :hide_children => hide_children,
+                 :collection => collection,
+                 :sibling_count => children.size - 1
+               } -%>
+    </ul>
+  <% end %>
+</li>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <%= render :partial => "/admin/head", :locals => {:login => false} %>
+  <body class='<%= action_name %>'>
+    <%= render :partial => '/shared/site_bar' %>
+    <div id='tooltip_container'></div>
+    <header>
+      <%= render :partial => "/admin/menu" %>
+    </header>
+    <div id="page_container">
+      <div id="page">
+        <div id="content" class="clearfix">
+          <div id="flash_container">
+            <%= render :partial => '/shared/no_script' %>
+            <%= render :partial => "/shared/message" %>
+          </div>
+          <%= yield %>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

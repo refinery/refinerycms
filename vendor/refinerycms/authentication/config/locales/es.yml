@@ -1,0 +1,66 @@
+es:
+  plugins:
+    refinery_users:
+      title: Usuarios
+  admin:
+    users:
+      delete: Borrar a este usuario para siempre
+      edit: Editar este usuario
+      update:
+        cannot_remove_user_plugin_from_current_user: No puedes eliminar el plugin 'Usuarios' para el usuario actual.
+      form:
+        blank_password_keeps_current: Dejar la contraseña en blanco mantendrá la actual
+        enable_all: permitir todo
+      index:
+        create_new_user: Crear nuevo usuario
+        no_users_yet:  Aún no hay usuarios. Haz click en "Crear nuevo usuario" para crear el primer usuario.
+      user:
+        email_user: Enviar un email a este usuario
+        preview: (%{who}) creado %{created_at}
+  sessions:
+    login_successful: Identificado correctamente
+    login_failed: Lo siento, tu nombre o contraseña es incorrecto.
+    new:
+      hello_please_sign_in: Hola! Por favor, identifícate.
+      sign_in: Entrar
+      forgot_password: He olvidado mi contraseña
+  users:
+    setup_website_name: Para empezar dale un nombre a tu web. Desde <a href='%{link}' name='%{title}'>aquí</a> puedes editar el nombre de tu web
+    new:
+      fill_form: Rellena los detalles siguientes para poder comenzar.
+      sign_up: Registrarme
+    create:
+      welcome: Bienvenido a Refinery, %{who}
+    forgot:
+      email_address: Dirección e-mail
+      enter_email_address: Indica el e-mail de tu cuenta.
+      reset_password: Resetear contraseña
+      blank_email: No has indicado un e-mail válido.
+      email_not_associated_with_account: Lo siento, el e-mail '%{email}' no está asociado a ninguna cuenta.<br />¿Seguro que lo has tecleado correctamente?
+      email_reset_sent: Te hemos enviado un e-mail con un enlace para cambiar tu contraseña.
+    reset:
+      code_invalid: Lo sentimos, pero este código para cambiar la contraseña ha expirado o no es válido. Si tienes problemas intenta copiar y pegar la dirección desde el e-mail que te enviamos o comienza de nuevo el proceso para cambiar la contraseña.
+      successful: Contraseña cambiada correctamente para '%{email}'
+      pick_new_password_for: Elige una nueva contraseña para %{email}
+      reset_password: Cambiar contraseña
+      password_blank: Indica la misma contraseña en ambos campos.
+  user_mailer:
+    link_to_reset_your_password: Enlace para cambiar tu contraseña
+  authlogic:
+    error_messages:
+      login_blank: no puede dejarse en blanco
+      login_invalid: sólo se permiten letras, números, espacios y los caracteres .-_@
+      email_invalid: no parece un e-mail válido.
+      no_authentication_details: No nos has dado datos para identificarte.
+    models:
+      user_session: UserSession
+    attributes:
+      user_session:
+        login: Usuario
+        email: E-mail
+        password: Contraseña
+        remember_me: Recordarme
+        incorrect: Lo sentimos, tu %{login_field} o contraseña son incorrectos.
+  activerecord:
+    models:
+      user: usuario

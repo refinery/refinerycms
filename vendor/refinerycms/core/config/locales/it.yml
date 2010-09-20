@@ -1,0 +1,65 @@
+it:
+  welcome:
+    there_are_no_users: "Non ci sono ancora gli utenti, quindi ci si imposta prima."
+    remember_admin_location: "Ricordate tuo amministratore zona raffineria è a:"
+    lets_start: "Alright Let's get si imposta in modo da poter login..."
+    continue: "Proseguire..."
+  admin:
+    menu:
+      reorder_menu: Riordina menu
+      reorder_menu_done: "Ho finito riordino del menu"
+    search: Cerca
+    search_submit: Andare
+    search_results_for: "Risultati della ricerca per '%{query}'"
+    search_no_results: "Spiacenti, nessun risultato trovato"
+  refinery:
+    other: "Altro %{what}"
+    reorder: "Riordina %{what}"
+    reorder_done: "Fatto Riordinare %{what}"
+    crudify:
+      created: "%{what} stato creato con successo"
+      updated: "%{what} stato creato con successo"
+      destroyed: "%{what} è stato distrutto con successo"
+  layouts:
+    admin:
+      view_public_site: Vedi sito pubblico
+      welcome_to_refinery: Benvenuti a Refinery
+  shared:
+    site_bar:
+      log_out: Log out
+    admin:
+      message:
+        close: Fine
+      continue_editing:
+        save_and_continue_editing: "Salvare & continuare ad apportare modifiche"
+      form_actions:
+        or: o
+        save: Salvare
+        or_cancel: o
+        cancel: Annullare
+        or_continue: o
+        cancel_lose_changes: "Annullamento perderà tutte le modifiche apportate a questa %{object_name}"
+      image_picker:
+        none_selected: "Non ci sono attualmente %{what} selezionato, clicca qui per aggiungerne uno."
+        remove_current: "Togliere corrente %{what}"
+        change: Clicca qui per scegliere una immagine
+        image: immagine
+      resource_picker:
+        none_selected: "Non ci sono attualmente %{what} selezionato, clicca qui per aggiungere una."
+        current: "Corrente %{what}"
+        download_current: "Scarica il corrente %{what}"
+        opens_in_new_window: Apre in una nuova finestra
+        remove_current: "Togliere corrente %{what}"
+        resource: risorsa
+    message:
+      close: Fine
+
+  activerecord:
+    models:
+      page: pagina
+      user: utente
+      image: immagine
+      inquiry: inchiesta
+      resource: risorsa
+      refinery_setting: refinery regolazione
+      inquiry_setting: inchiesta regolazione

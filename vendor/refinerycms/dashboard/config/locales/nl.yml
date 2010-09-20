@@ -1,0 +1,23 @@
+nl:
+  plugins:
+    refinery_dashboard:
+      title: Overzicht
+  admin:
+    dashboard:
+      index:
+        quick_tasks: Algemene taken
+        add_a_new_page: Voeg een nieuwe pagina toe
+        update_a_page: Bewerk een pagina
+        upload_a_image: Upload een afbeelding
+        upload_a_file: Upload een bestand
+        change_language: Verander de taal
+        see_home_page: Bezoek de homepage
+      recent_activity:
+        latest_activity: Laatste wijzigingen
+        latest_activity_message: %{what} %{kind} is %{action}
+      recent_inquiries:
+        latest_inquiries: Latest inquiries
+  updated:
+    'with_article "the"':  bewerkt
+  created:
+    'with_article "the"':  aangemaakt

@@ -1,0 +1,81 @@
+fr:
+  plugins:
+    refinery_users:
+      title: Utilisateurs
+  admin:
+    users:
+      update:
+        cannot_remove_user_plugin_from_current_user: "Vous ne pouvez pas supprimer le plugin 'Utilisateurs' avec le compte sur le quel vous êtes actuellement connecté"
+      form:
+        blank_password_keeps_current: Laissez le mot de passe vide pour conserver le mot de passe actuel
+        enable_all: activer tous
+      index:
+        create_new_user: Créer un Nouvel Utilisateur
+        no_users_yet:  Il n'y a pas encore d'utilisateurs. Cliquez sur "Créer un nouvel utilisateur" pour ajouter votre premier utilisateur.
+      user:
+        confirm_delete_message: "Etes-vous sûr de vouloir supprimer '%{who}'?"
+        confirm_delete_title: Supprimer cet utilisateur pour toujours
+        edit_user: Modifier cet utilisateur
+        email_user: Envoyer un courriel cet utilisateur
+        preview: (%{who}) créé le %{created_at}
+  sessions:
+    login_successful: Connecté avec succès
+    login_failed: "Désolé, votre mot de passe ou nom d'utilisateur est incorrect."
+    logged_out: Vous avez été déconnecté.
+    new:
+      login: "Nom d'utilisateur"
+      log_in: Connexion
+      cancel: Annulé
+      password: Mot de passe
+      remember_me: Rester connecté
+      or: ou
+      forgot_password: "J'ai oublié mon mot de passe"
+      hello_please_sign_in: Bonjour! S'il vous plaît signer po
+      sign_in: Identifiez-vous
+  users:
+    setup_website_name: "Pour commencer, donnez un nom au site. <a href='%{link}' name='%{title}'>Allez ici</a> pour modifier le nom de votre site."
+    signup_disabled:  "L'inscription d'utilisateur est désactivé"
+    new:
+      fill_form: Remplissez le formulaire ci-dessous avec vos information afin que nous puissions vous aider à démarrer.
+      sign_up: "S'inscrire"
+    create:
+      welcome: Bienvenue sur Refinery, %{who}
+      signup_complete: Inscription terminée!
+    forgot:
+      blank_email: Vous n'êtes enter pas une adresse e-mail.
+      email_not_associated_with_account: "Désolé, mais '%{email}' n'associé pas à une compte.<br/>Êtes-vous certain que vous avez l'adresse e-mail correct?"
+      email_reset_sent: Un e-mail a été envoyé à vous qui contient une liaison pour réinitialiser votre mot de passe.
+    reset:
+      code_invalid: "Désolé, mais ce code reset est périmé ou est nul."
+      successful: Le mot de passe étais réinitialisé avec succès pour %{email}"
+  user_mailer:
+    please_activate: S'il vous plaît activer votre nouveau compte
+    activated: Votre compte a été activé!
+    activated_email: "%{who}, votre compte a été activé. Vous pouvez maintenant commencer à ajouter vos plugins:"
+    account_created: Votre compte a été créé.
+    user_name: "Nom d'utilisateur %{name}"
+    password: "Mot de passe %{password}"
+    visit_url: "Visitez cette adresse pour activer votre compte:"
+    link_to_reset_your_password: Lien pour réinitialiser votre mot de passe
+  authlogic:
+    error_messages:
+      login_blank: ne peut pas être vide
+      login_not_found: n'est pas valide
+      login_invalid: "devraient utiliser uniquement des lettres, chiffres, espaces et .- _ @."
+      consecutive_failed_logins_limit_exceeded: "La limite de tentative consécutive de connexions échouées à été dépassée, le compte est désactivé."
+      email_invalid: devrait ressembler à une adresse e-mail.
+      password_blank: ne peut pas être vide
+      password_invalid: "n'est pas valide"
+      not_active: "Votre compte n'est pas actif"
+      not_confirmed: Votre compte n'est pas actif confirmé
+      not_approved: Votre compte n'est pas approuvé
+      no_authentication_details: Vous n'avez pas fourni de détails pour l'authentification.
+    models:
+      user_session: UserSession
+    attributes:
+      user_session:
+        login: "Nom d'utilisateur"
+        email: couriel
+        password: mot de passe
+        remember_me: Rester connecté
+        incorrect: "Désolé, votre %{login_field} de passe est incorrect"

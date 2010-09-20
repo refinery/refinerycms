@@ -1,0 +1,38 @@
+de:
+  plugins:
+    refinery_images:
+      title: Bilder
+      description: Verwaltet Bilder
+  image_specify_for_upload: Sie müssen ein Bild zum Hochladen angeben
+  image_should_be_smaller_than_max_image_size: Bild sollte kleiner als %{max_image_size} sein
+  image_must_be_these_formats: 'Ihr Bild sollte ein JPG, PNG oder GIF sein'
+  admin:
+    images:
+      delete: Dieses Bild für immer löschen
+      edit: Dieses Bild bearbeiten
+      form:
+        image: Bild
+        use_current_image: Aktuelles Bild verwenden
+        or: oder
+        replace_image: " mit diesem ersetzen..."
+        current_image: Aktuelles Bild
+        maximum_image_size: Die maximale Größe eines Bildes beträgt %{megabytes} Megabytes.
+      index:
+        create_new_image: Neues Bild anlegen
+        no_images_yet: Es sind noch keine Bilder vorhanden. Klicken Sie auf "Neues Bild anlegen", um Ihr estes Bild hinzuzufügen.
+        view:
+          switch_to: Zur %{view_name}-Ansicht wechseln
+          list: Listen
+          grid: Gitter
+      grid_view:
+        view_live: Dieses Bild betrachten <br/><em>Öffnet sich in einem neuen Fenster</em>
+      existing_image:
+        button_text: Einfügen
+        resize_image: Bild in der Größe ändern?
+        size: Größe
+      insert:
+        existing_image: Vorhandenes Bild
+        new_image: Neues Bild
+  activerecord:
+    models:
+      image: Bild

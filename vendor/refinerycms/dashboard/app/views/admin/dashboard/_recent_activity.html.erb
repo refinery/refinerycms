@@ -1,0 +1,12 @@
+<div id='recent_activity'>
+  <h2><%= t('.latest_activity').titleize %></h2>
+  <ul class='clickable'>
+  <% @recent_activity.each do |change|
+       if (message = (activity_message_for(change) rescue nil)).present? %>
+         <li class='<%= cycle("on", "on-hover", :name => 'recent_activity_cycle') %>'>
+           <%= message.html_safe %>
+         </li>
+    <% end
+    end %>
+  </ul>
+</div>

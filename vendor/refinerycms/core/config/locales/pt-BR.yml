@@ -1,0 +1,67 @@
+pt-BR:
+  plugins:
+    refinery_core:
+      title: Refinery
+      description: Core refinery plugin
+    refinery_dialogs:
+      title: Dialogs
+      description: Refinery dialogs plugin
+  welcome:
+    there_are_no_users: "Ainda não existem usuários, então primeiro vamos te deixar pronto."
+    remember_admin_location: "Lembre-se que sua área de admin fica em:"
+    lets_start: "Beleza, vamos te cadastrar pra que você possa fazer login..."
+    continue: "Continuar..."
+  admin:
+    menu:
+      reorder_menu: Reordenar o menu
+      reorder_menu_done: "Terminei de reordenar o menu"
+    dialogs:
+      show:
+        save: Salvar
+        cancel: Cancelar
+  refinery:
+    crudify:
+      created: "%{what} foi criado com sucesso"
+      updated: "%{what} foi atualizado com sucesso"
+      destroyed: "%{what} foi apagado com sucesso"
+  shared:
+    site_bar:
+      log_out: Sair
+      switch_to_your_website: Mudar para o seu website
+      switch_to_your_website_editor: Mudar para o editor do seu website
+    admin:
+      continue_editing:
+        save_and_continue_editing: Salvar E continuar editando
+      form_actions:
+        save: Salvar
+        cancel: Cancelar
+        cancel_lose_changes: "Cancelar irá fazer com que você perca as alterações que tenha feito aqui."
+        delete: Apagar
+        previous: Anterior
+        next: Próximo
+        close: Fechar
+      image_picker:
+        none_selected: "Atualmente não existe nenhuma %{what} selecionado, por favor clique aqui para adicionar um."
+        remove_current: "Remover %{what} atual"
+        change: Clique aqui para selecionar a imagem
+        show: Mostrar
+      resource_picker:
+        download_current: "Fazer download do %{what} atual"
+        opens_in_new_window: Abre em uma nova janela
+        remove_current: "Remover %{what} atual"
+      search:
+        button_text: Buscar
+        results_for: "Resultados da busca por '%{query}'"
+        no_results: "Desculpe, nenhum resultado foi encontrado."
+      delete:
+        message: Você tem certeza que deseja apagar '%{title}'?
+      error_messages:
+        problems_in_following_fields: Há problemas com os seguintes campos
+      help: ajuda
+    message:
+      close: Fechar
+      close_this_message: Fechar esta mensagem
+    draft_page_message:
+      not_live: Esta página NÃO esta ativa para o público.
+    footer:
+      copyright: Copyright &copy;

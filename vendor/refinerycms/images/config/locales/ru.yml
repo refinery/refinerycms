@@ -1,0 +1,46 @@
+ru:
+  plugins:
+    refinery_images:
+      title: Изображения
+  no_file_chosen: Вы должны выбрать файл для загрузки
+  file_should_be_smaller_than_max_image_size: "Файлы должны быть меньше по размеру, чем {{max_image_size}}"
+  file_must_be_these_formats: "Ваше изображение может быть только в форматах JPG, PNG или GIF"
+  admin:
+    images:
+      image:
+        delete:
+          message: "Вы действительно хотите удалить &laquo;{{title}}&raquo;?"
+          title: Удалить это изображение навсегда
+      form:
+        image: Изображение
+        use_current_image: Использовать текущее изображение
+        or: или
+        replace_image: заменить его этим
+        current_image: Текущее изображение
+        maximum_image_size: "Максимальный размер изображения &mdash; {{megabytes}} МБ."
+      index:
+        create_new_image: Создать новое изображение
+        no_images_yet: "Изображений пока что нет. Нажмите &laquo;Создать новое изображение&raquo;, чтобы добавить ваше первое изображение."
+        view:
+          switch_to: Показать {{view_name}}
+          list: списком
+          grid: сеткой
+        search:
+          results_for: Search results for {{query}}
+      grid_view:
+        edit: Редактировать это изображение
+        view_live: Показать это изображение <br/><em>Откроется в новом окне</em>
+      list_view_image:
+        edit_this_image: Редактировать это изображение
+      existing_image:
+        submit_insert: Вставить
+        resize_image: "Изменить размер изображение? <em>(Рекомендуется.)</em>"
+        size: Размер
+      insert:
+        existing_image: Существующее изображение
+        new_image: Новое изображение
+        previous: Предыдущее
+        next: Следующее
+        submit_insert: Вставить
+        or: или
+        cancel: Отмена
