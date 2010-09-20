@@ -82,6 +82,11 @@ module Refinery
     # into the rails app db directory, ready to migrate.
     class EngineInstaller < Rails::Generators::Base
       include Rails::Generators::Migration
+
+      def self.engine_name(name = nil)
+        @engine_name = name unless name.nil?
+        @engine_name
+      end
       
       # Implement the required interface for Rails::Generators::Migration.
       # taken from http://github.com/rails/rails/blob/master/activerecord/lib/generators/active_record.rb
@@ -96,12 +101,12 @@ module Refinery
       end
       
       def generate
-        Dir.glob(File.expand_path('../../../db/**/**', __FILE__)).each do |path|
+        Dir.glob(File.expand_path(File.join(self.class.source_root, '../db/**/**'))).each do |path|
           unless File.directory?(path)
             if path =~ /.*migrate.*/
-              migration_template path, Rails.root.join("db/migrate/create_<%= plural_name %>")
+              migration_template path, Rails.root.join("db/migrate/create_#{self.class.engine_name}")
             else
-              template path, Rails.root.join("db/seeds/<%= plural_name %>.rb")
+              template path, Rails.root.join("db/seeds/#{self.class.engine_name}.rb")
             end
           end
         end
