@@ -44,7 +44,7 @@ Then %r`not be allowed to log in$` do
 end
 
 Then %r`be redirected to login$` do
-  request.request_uri.should == login_path
+  request.fullpath.should == login_path
 end
 
 Then /^"([^\"]*)" can log in$/ do |name|
