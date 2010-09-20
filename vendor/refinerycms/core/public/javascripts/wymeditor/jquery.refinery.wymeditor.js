@@ -1266,17 +1266,20 @@ WYMeditor.editor.prototype.dialog = function( dialogType ) {
         // Fixes webkit issue where it would not paste at cursor.
         selection = wym._iframe.contentWindow.getSelection();
         selected_html = $(selected).html();
-
-        if ((selection.focusOffset - selection.anchorOffset) > 1) {
-          new_html = selected_html.substring(0, selection.anchorOffset)
+        offset = selected_html.indexOf(selection.textContent);
+        focus = offset + selection.focusOffset;
+        anchor = offset + selection.anchorOffset;
+        if ((focus - anchor) > 1) {
+          new_html = selected_html.substring(0, anchor)
                      + "<span id='replace_me_with_" + this._current_unique_stamp + "'>"
-                     + selected_html.substring(selection.anchorOffset, selection.focusOffset)
+                     + selected_html.substring(anchor, focus)
                      + "</span>"
-                     + selected_html.substring(selection.focusOffset);
+                     + selected_html.substring(focus);
+          console.log(new_html);
         } else {
-          new_html = selected_html.substring(0, selection.focusOffset)
+          new_html = selected_html.substring(0, focus)
                      + "<span id='replace_me_with_" + this._current_unique_stamp + "'></span>"
-                     + selected_html.substring(selection.focusOffset);
+                     + selected_html.substring(focus);
         }
 
         $(selected).html(new_html);
