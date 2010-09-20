@@ -10,8 +10,12 @@ class RefineryEngineGenerator < Rails::Generators::NamedBase
   def generate
     unless attributes.empty?
       Dir.glob(File.expand_path('../templates/**/**', __FILE__)).each do |path|
+        # ignore directories which are created automatically by template()
         unless File.directory?(path)
-          template path, plugin_path_for(path)
+          # ignore migrations which are installed via the rake task 
+          if(path.gsub(File.dirname(__FILE__), "") !~ /^\/templates\/db\/migrate\//)
+            template path, plugin_path_for(path)
+          end
         end
       end
 
@@ -24,6 +28,7 @@ class RefineryEngineGenerator < Rails::Generators::NamedBase
         puts "------------------------"
         puts "Now run:"
         puts "bundle install"
+        puts "rails generate refinerycms_#{plural_name}"
         puts "rake db:migrate"
         puts "------------------------"
       elsif self.behavior == :revoke
@@ -41,22 +46,6 @@ protected
     path = path.gsub(File.dirname(__FILE__) + "/templates/", "vendor/engines/#{plural_name}/")
     path = path.gsub("plural_name", plural_name)
     path = path.gsub("singular_name", singular_name)
-    path = path.gsub(".migration", '')
-
-    # hack can be removed after issue is fixed
-    unless self.behavior == :revoke
-     next_migration_number = ActiveRecord::Generators::Base.next_migration_number(File.dirname(__FILE__))
-    else
-      if (migrations = Dir[Rails.root.join('db', 'migrate', "*create_#{plural_name}*.rb").to_s]).any?
-        next_migration_number = migrations.first.split('/').last.split('_').first
-      else
-        next_migration_number = ''
-      end
-    end
-    path = path.gsub("migration_number", next_migration_number.to_s)
-
-    # replace our local db path with the app one instead.
-    path = path.gsub("/db/", "/../../../db/")
   end
 
 end
