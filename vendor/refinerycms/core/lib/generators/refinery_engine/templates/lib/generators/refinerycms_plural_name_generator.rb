@@ -21,19 +21,12 @@ module Refinery
         Dir.glob(File.expand_path('../../../db/**/**', __FILE__)).each do |path|
           unless File.directory?(path)
             if path =~ /.*migrate.*/
-              migration_template plugin_path_for(path)
+              migration_template path, Rails.root.join("db/migrate/create_<%= plural_name %>")
             else
-              template plugin_path_for(path)
+              template path, Rails.root.join("db/seeds/<%= plural_name %>.rb")
             end
           end
         end
-      end
-
-    protected
-
-      def plugin_path_for(path)
-        puts path
-        path = path.gsub(File.dirname(__FILE__) + "../db", "db")
       end
     end
   end
