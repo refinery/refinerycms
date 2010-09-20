@@ -24,8 +24,11 @@ module Refinery
         if image.present?
           # call rails' image tag function with default alt tag.
           # if any other options were supplied these are merged in and can replace the defaults.
+          # if the geomtry is nil, then we know the image height and width already.
           image_tag(image.thumbnail(geometry).url, {
-            :alt => image.respond_to?(:title) ? image.title : image.image_name
+            :alt => image.respond_to?(:title) ? image.title : image.image_name,
+            :width => (image.image_width if geometry.nil?),
+            :height => (image.image_height if geometry.nil?)
           }.merge(options))
         end
       end
