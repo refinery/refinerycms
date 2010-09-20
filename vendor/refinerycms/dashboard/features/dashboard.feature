@@ -16,7 +16,7 @@ Feature: Dashboard
     When I fill in "Title" with "Page test from Dashboard"
     And I press "Save"
     Then I should be on the Dashboard
-    And I should see "'Page test from Dashboard' was successfully created."
+    And I should see "'Page test from Dashboard' was successfully added."
     And I should have 1 page
 
   Scenario: Update a Page Button

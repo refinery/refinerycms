@@ -8,7 +8,7 @@ en:
       delete: Remove this setting forever
       edit: Edit this setting
       index:
-        new: Create new setting
+        new: Add new setting
         empty_set: There are no settings yet.
         create_first: Click '%{link}' to add your first setting.
       form:
