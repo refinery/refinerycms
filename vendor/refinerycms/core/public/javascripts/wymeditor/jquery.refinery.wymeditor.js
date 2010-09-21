@@ -1262,25 +1262,30 @@ WYMeditor.editor.prototype.dialog = function( dialogType ) {
     // wrap the current selection with a funky span.
     if (this._selected_image == null)
     {
-      if ((selected == null || selected.tagName.toLowerCase() == WYMeditor.P) && wym._iframe.contentWindow.getSelection) {
+      if (selected != null && selected.tagName.toLowerCase() != WYMeditor.A && wym._iframe.contentWindow.getSelection) {
         // Fixes webkit issue where it would not paste at cursor.
         selection = wym._iframe.contentWindow.getSelection();
-        selected_html = $(selected).html();
-        offset = selected_html.indexOf(selection.textContent);
+        selected_html = $(selected).html().replace('&nbsp;', ' ');
+
+        if ((offset = selected_html.indexOf(selection.focusNode.textContent)) == -1) {
+          offset = 0;
+        }
         focus = offset + selection.focusOffset;
         anchor = offset + selection.anchorOffset;
-        if ((focus - anchor) > 1) {
+        length = (focus - anchor);
+
+        if (length > 1) {
           new_html = selected_html.substring(0, anchor)
                      + "<span id='replace_me_with_" + this._current_unique_stamp + "'>"
                      + selected_html.substring(anchor, focus)
                      + "</span>"
                      + selected_html.substring(focus);
-          console.log(new_html);
         } else {
           new_html = selected_html.substring(0, focus)
                      + "<span id='replace_me_with_" + this._current_unique_stamp + "'></span>"
                      + selected_html.substring(focus);
         }
+        new_html = new_html.replace('  ', '&nbsp;');
 
         $(selected).html(new_html);
       } else {
