@@ -1,4 +1,4 @@
-## 0.9.8.5 [unreleased]
+## 0.9.8.5 [21 September 2010](http://github.com/parndt)
 * Fixed an issue with the engine generator that was putting a comma in the wrong place breaking the call to ``crudify``. [Maarten Hoogendoorn](http://github.com/moretea)
 * Made the delete messages consistent. [Uģis Ozols](http://github.com/ugisozols)
 * ``zh-CN`` was overriding en locale in core locale file, fixed. [Philip Arndt](http://github.com/parndt)
