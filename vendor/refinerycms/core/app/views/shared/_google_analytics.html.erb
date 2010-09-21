@@ -1,6 +1,6 @@
 <% unless refinery_user? or
           (page_code = RefinerySetting.get(:analytics_page_code).to_s.strip) =~ /^(UA-xxxxxx-x)?$/ -%>
-  <script type="text/javascript">
+  <script>
     var _gaq = _gaq || [];
     _gaq.push(['_setAccount', '<%= page_code %>']);
     _gaq.push(['_trackPageview']);

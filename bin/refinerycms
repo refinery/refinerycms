@@ -14,7 +14,6 @@ end
 require 'pathname'
 require 'fileutils'
 require 'optparse'
-require 'rbconfig'
 
 # Load refinerycms
 require Pathname.new(File.expand_path(File.dirname(__FILE__) << "/..")).join('vendor', 'refinerycms', 'refinery.rb')
@@ -241,7 +240,7 @@ module Refinery
       to_run << "cd \"#{@app_path}\" &&" if options[:cd]
       to_run << command
 
-      if RbConfig::CONFIG["host_os"] =~ %r!(msdos|mswin|djgpp|mingw)!
+      if Refinery::WINDOWS
         to_run = %w(cmd /c) | to_run.map{|c| c.gsub(/\//m, '\\')}
       end
 

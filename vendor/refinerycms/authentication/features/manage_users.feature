@@ -34,14 +34,14 @@ Feature: Manage Users
     Given I have a user named "resolve"
     And I am a logged in refinery user
     When I go to the list of users
-    And I follow "Create New User"
+    And I follow "Add New User"
     And I fill in "Login" with "cucumber"
     And I fill in "Email" with "green@cucumber.com"
     And I fill in "Password" with "greenandjuicy"
     And I fill in "Password confirmation" with "greenandjuicy"
     And I press "Save"
     Then I should be on the list of users
-    And I should see "cucumber was successfully created."
+    And I should see "cucumber was successfully added."
     And I should see "cucumber (green@cucumber.com)"
 
   Scenario: Edit User

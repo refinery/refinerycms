@@ -10,14 +10,14 @@ zh-CN:
         blank_password_keeps_current: Leaving password blank keeps the current password
         enable_all: enable all
       index:
-        create_new_user: Create New User
-        no_users_yet:  There are no users yet. Click "Create New User" to add your first user.
+        create_new_user: Add New User
+        no_users_yet:  There are no users yet. Click "Add New User" to add your first user.
       user:
         confirm_delete_message: "Are you sure you want to delete '%{who}'?"
         confirm_delete_title: Remove this user forever
         edit_user: Edit this user
         email_user: Email this user
-        preview: (%{who}) created %{created_at}
+        preview: (%{who}) added %{created_at}
   sessions:
     login_successful: Logged in successfully
     login_failed: Sorry, your password or username was incorrect.
@@ -51,7 +51,7 @@ zh-CN:
     please_activate: Please activate your new account
     activated: Your account has been activated!
     activated_email: "%{who}, your account has been activated. You may now start adding your plugins:"
-    account_created: Your account has been created.
+    account_created: Your account has been added.
     user_name: Username %{name}
     password: Password %{password}
     visit_url: "Visit this url to activate your account:"

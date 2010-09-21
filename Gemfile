@@ -36,13 +36,13 @@ gem 'mysql', '2.8.1'
 gem 'refinerycms',              :path => '.'
 
 # Specify additional Refinery CMS Engines here (all optional):
-gem 'refinerycms-inquiries',    '~> 0.9.8.7'
+gem 'refinerycms-inquiries',    '~> 0.9.8.8'
 # gem 'refinerycms-news',       '~> 0.9.9'
 # gem 'refinerycms-portfolio',  '~> 0.9.8'
 # gem 'refinerycms-theming',    '~> 0.9.8'
 
 # Add i18n support (optional, you can remove this if you really want to).
-gem 'refinerycms-i18n',         '~> 0.9.8.6', :require => 'refinery/i18n'
+gem 'refinerycms-i18n',         '~> 0.9.8.7'
 
 # Figure out how to get RMagick:
 rmagick_options = {:require => false}
@@ -85,5 +85,14 @@ group :test do
   gem 'autotest-rails'
   gem 'autotest-notification'
 end
+
+#===REFINERY END OF REQUIRED GEMS===
+
+#===REQUIRED FOR REFINERY GEM INSTALL===
+# Leave the gem below disabled (commented out) if you're not using the gem install method.
+# gem 'refinerycms',    '~> 0.9.7.12'
+#===END OF REFINERY GEM INSTALL REQUIREMENTS===
+
+# Bundle gems for certain environments:
 
 # END REFINERY CMS DEVELOPMENT =================================================

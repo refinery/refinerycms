@@ -22,12 +22,13 @@ module Refinery
       # <%= image_fu @model.image, '200x200' %> or with no thumbnail: <%= image_fu @model.image %>
       def image_fu(image, geometry = nil, options={})
         if image.present?
-          # call rails' image tag function with default alt, width and height options.
+          # call rails' image tag function with default alt tag.
           # if any other options were supplied these are merged in and can replace the defaults.
-          image_tag((thumbnail = image.thumbnail(geometry)).url, {
+          # if the geomtry is nil, then we know the image height and width already.
+          image_tag(image.thumbnail(geometry).url, {
             :alt => image.respond_to?(:title) ? image.title : image.image_name,
-            :width => thumbnail.width,
-            :height => thumbnail.height
+            :width => (image.image_width if geometry.nil?),
+            :height => (image.image_height if geometry.nil?)
           }.merge(options))
         end
       end

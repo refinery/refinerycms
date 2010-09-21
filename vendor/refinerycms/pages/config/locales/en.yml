@@ -40,7 +40,7 @@ en:
       form_new_page_parts:
         title: Title
       form_page_parts:
-        create_content_section: Create content section
+        create_content_section: Add content section
         delete_content_section: Delete content section
       form_advanced_options:
         toggle_advanced_options: Click to access meta tag settings and menu options
@@ -71,10 +71,10 @@ en:
         meta_description_title: Meta description
         meta_description_help: Enter a concise two or three sentences describing what this page is about.
       index:
-        create_new_page: Create New Page
+        create_new_page: Add New Page
         reorder_pages: Reorder Pages
         reorder_pages_done: Done Reordering Pages
-        no_pages_yet: There are no pages yet. Click "Create New Page" to add your first page.
+        no_pages_yet: There are no pages yet. Click "Add New Page" to add your first page.
   activerecord:
     models:
       page: page

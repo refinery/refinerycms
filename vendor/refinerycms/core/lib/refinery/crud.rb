@@ -126,6 +126,7 @@ module Refinery
               flash.notice = t('refinery.crudify.destroyed',
                                :what => "'\#{@#{singular_name}.#{options[:title_attribute]}}'")
             end
+
             redirect_to #{options[:redirect_to_url]}
           end
 
@@ -149,7 +150,14 @@ module Refinery
             # If we have already found a set then we don't need to again
             find_all_#{plural_name} if @#{plural_name}.nil?
 
-            @#{plural_name} = @#{plural_name}.paginate(:page => params[:page])
+            paging_options = {:page => params[:page]}
+
+            # Seems will_paginate doesn't always use the implicit method.
+            if #{class_name}.methods.map(&:to_sym).include?(:per_page)
+              paging_options.update({:per_page => #{class_name}.per_page})
+            end
+
+            @#{plural_name} = @#{plural_name}.paginate(paging_options)
           end
 
           # Returns a weighted set of results based on the query specified by the user.

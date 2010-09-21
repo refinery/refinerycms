@@ -16,7 +16,7 @@ module Refinery
                    elsif defined?(@page) and @page.present? and !@page.home?
                      edit_admin_page_url(@page, :only_path => true)
                    else
-                     (request.fullpath.to_s == '/') ? admin_root_url(:only_path => true) : "/admin#{request.request_uri}/edit"
+                     (request.fullpath.to_s == '/') ? admin_root_url(:only_path => true) : "/admin#{request.fullpath}/edit"
                    end rescue admin_root_url(:only_path => true))
         end
       end

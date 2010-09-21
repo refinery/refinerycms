@@ -71,3 +71,7 @@ config/amazon_s3.yml
 config/rackspace_cloudfiles.yml
 
 # END REFINERY CMS DEVELOPMENT =================================================
+
+# sass
+.sass-cache
+.sass-cache/*

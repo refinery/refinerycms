@@ -3,7 +3,8 @@ class Admin::RefinerySettingsController < Admin::BaseController
   crudify :refinery_setting,
           :title_attribute => :title,
           :order => "name ASC",
-          :searchable => false,
+          :searchable => true,
+          :paging => true,
           :redirect_to_url => :redirect_to_where?
 
   before_filter :sanitise_params, :only => [:create, :update]
@@ -15,20 +16,23 @@ class Admin::RefinerySettingsController < Admin::BaseController
     render :layout => false if request.xhr?
   end
 
+protected
   def find_all_refinery_settings
-    @refinery_settings = RefinerySetting.find(:all,
-    {
-      :order => "name ASC",
-      :conditions => (["restricted <> ?", true] unless current_user.has_role?(:superuser))
-    })
+    @refinery_settings = RefinerySetting.order('name ASC')
+
+    unless current_user.has_role?(:superuser)
+      @refinery_settings = @refinery_settings.where("restricted <> ? ", true)
+    end
+
+    @refinery_settings
   end
 
-  def paginate_all_refinery_settings
-    @refinery_settings = RefinerySetting.paginate({
-      :page => params[:page],
-      :order => "name ASC",
-      :conditions => (["restricted <> ?", true] unless current_user.has_role?(:superuser))
-    })
+  def search_all_refinery_settings
+    # search for settings that begin with keyword
+    term = "^" + params[:search].to_s.downcase.gsub(' ', '_')
+
+    # First find normal results, then weight them with the query.
+     @refinery_settings = find_all_refinery_settings.with_query(term)
   end
 
 private

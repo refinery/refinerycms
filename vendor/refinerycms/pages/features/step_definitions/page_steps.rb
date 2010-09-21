@@ -18,6 +18,7 @@ end
 
 Given /^I (only )?have a page titled "([^"]*)"$/ do |only, title|
   Page.delete_all if only
+  PagePart.delete_all if only
   page = Page.create(:title => title)
   page.parts << PagePart.new(:title => 'testing', :position => 0)
   page

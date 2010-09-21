@@ -24,7 +24,7 @@
 
     unless section[:html].blank?
       unless section[:title]
-        section[:html] = "<div class='clearfix' id='#{dom_id}'>#{section[:html]}</div>"
+        section[:html] = "<section id='#{dom_id}'>#{section[:html]}</section>"
       else
         section[:html] = "<h1 id='#{dom_id}'>#{section[:html]}</h1>"
       end
@@ -33,9 +33,9 @@
     end
   end
 -%>
-<div id='body_content' class='clearfix<%= " #{css.join(' ')}" if css.any? %>'>
+<section id='body_content'<%= " class='#{css.join(' ')}'" if css.any? %>>
   <% sections.each do |s| %>
     <%= s[:html].to_s.html_safe %>
   <% end %>
-</div>
+</section>
 <%= render :partial => '/shared/draft_page_message' unless @page.nil? or @page.live? -%>
