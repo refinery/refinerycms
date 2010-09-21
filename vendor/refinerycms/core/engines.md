@@ -1,10 +1,10 @@
-# Extending Refinery with Plugins
+# Extending Refinery with Engines
 
 ## Introduction
 
 __Refinery is designed to be easily extended so you can quickly customise your Refinery site to manage new areas you want to add to your site. If you see something you want to customise, the chances are you can customise it.__
 
-The main way of extending Refinery is through adding new plugins to your app. By default you can edit pages in Refinery's backend, but how do you add a new section to manage like products?
+The main way of extending Refinery is through adding new engines to your app. By default you can edit pages in Refinery's backend, but how do you add a new section to manage like products?
 
 ## The Refinery Generator
 
@@ -30,10 +30,15 @@ This will output the help on how to use the generator. To generate the new secti
 
     rails generate refinery_engine product title:string description:text image:image brochure:resource
 
-The generator will output a list of files it generated. You'll notice there is a new plugin that has been added in ``vendor/plugins/products``. This is where both the backend and front end files are held for this new products area.
+The generator will output a list of files it generated. You'll notice there is a new engine that has been added in ``vendor/engines/products``. This is where both the backend and front end files are held for this new products area.
 
-A new database migration has been added to add the products table in so run:
+Engines are treated like gems. When you generate a new engine it adds the gem dependency for this engine to the end of your ``Gemfile``. Because your ``Gemfile`` has changed you now need to run:
 
+    bundle install
+    
+When the products engine was generated a products generator was also created. This installs any migrations and seeds into your Rails app. Here's how to finish off the install
+
+    rails generate refinerycms_products
     rake db:migrate
 
 Start up your app by running ``ruby script/server`` go to [http://localhost:3000](http://localhost:3000) and you'll see instantly a new menu item called "products". Click on that and you'll see there are no products yet.
@@ -42,11 +47,11 @@ Now go to the backend of your site by visiting [http://localhost:3000/refinery](
 
 Now you have a fully managed products section in Refinery, nice.
 
-If you want to modify your generated plugin you need to understand the basic structure of how they work.
+If you want to modify your generated engine you need to understand the basic structure of how they work.
 
-## The Structure of a Plugin
+## The Structure of an Engine
 
-Think of a plugin in Refinery as a small Rails app or an "engine". Plugins have a structure that is extremely similar to a Rails app. Here's an example of Refinery's pages plugin (located in Refinery's ``vendor/plugins/pages/`` folder)
+Think of a engine in Refinery as a small Rails app. Engines have a structure that is extremely similar to a Rails app. Here's an example of Refinery's pages engine (located in Refinery's ``vendor/refinerycms/pages/`` folder)
 
     pages
       |- app
@@ -91,23 +96,23 @@ This bit is important. It's where all the controllers are held to manage pages i
 
     end
 
-This single controller allows us to create, read, update and delete pages in the backend. With a little bit of Refinery magic we utilise the [crudify mixin](http://github.com/resolve/refinerycms/blob/master/vendor/plugins/refinery/crud.md) which gives us all of these regular features out of the box.
+This single controller allows us to create, read, update and delete pages in the backend. With a little bit of Refinery magic we utilise the [crudify mixin](http://github.com/resolve/refinerycms/blob/master/vendor/refinerycms/core/crud.md) which gives us all of these regular features out of the box.
 
-How crudify works is an entire topic of it's own. Checkout the [crudify documentation](http://github.com/resolve/refinerycms/blob/master/vendor/plugins/refinery/crud.md) to get an insight into how that works.
+How crudify works is an entire topic of it's own. Checkout the [crudify documentation](http://github.com/resolve/refinerycms/blob/master/vendor/refinerycms/core/crud.md) to get an insight into how that works.
 
 ### app/views and app/helpers
 
-Works exactly the same as ``app/views`` and ``app/helpers`` in a normal Rails app. You just put the views and helpers related to this plugin in here instead of in your actual main app directory.
+Works exactly the same as ``app/views`` and ``app/helpers`` in a normal Rails app. You just put the views and helpers related to this engine in here instead of in your actual main app directory.
 
 ### config/routes.rb
 
-Works exactly the same as ``config/routes.rb`` in your app except this routes file only loads the routes for this plugin.
+Works exactly the same as ``config/routes.rb`` in your app except this routes file only loads the routes for this engine.
 
 ### rails/init.rb
 
-This file runs when your site is started up. All is does is registers this plugin with Refinery so it knows that it exists, how to handle it in the Refinery admin menu and how to render recent activity on the Dashboard (see "Getting your Plugin to Report Activity in the Dashboard")
+This file runs when your site is started up. All is does is registers this engine with Refinery so it knows that it exists, how to handle it in the Refinery admin menu and how to render recent activity on the Dashboard (see "Getting your Engine to Report Activity in the Dashboard")
 
-NOTE: The latest version of Refinery requires that you only specify a plugin.name. plugin.title &amp; plugin.description will be looked up by the I18n system.
+NOTE: The latest version of Refinery requires that you only specify a engine.name. plugin.title &amp; plugin.description will be looked up by the I18n system.
 
 # pages/lib/pages.rb
     Refinery::Plugin.register do |plugin|
@@ -130,11 +135,11 @@ NOTE: The latest version of Refinery requires that you only specify a plugin.nam
           title: Pages
           description: Manage content pages
 
-## Getting your Plugin to Report Activity in the Dashboard
+## Getting your Engine to Report Activity in the Dashboard
 
-Recent activity reporting is built right in, so all you need to do is follow the convention below and your plugin will start showing up in the recent activity list of the Dashboard.
+Recent activity reporting is built right in, so all you need to do is follow the convention below and your engine will start showing up in the recent activity list of the Dashboard.
 
-In our example above we showed the use of ``plugin.activity`` for the pages plugin.
+In our example above we showed the use of ``plugin.activity`` for the pages engine.
 
     Refinery::Plugin.register do |plugin|
       plugin.name = "pages"
