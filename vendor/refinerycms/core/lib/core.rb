@@ -110,6 +110,11 @@ module Refinery
             end
           end
         end
+        
+        puts "------------------------"
+        puts "Now run:"
+        puts "rake db:migrate"
+        puts "------------------------"
       end
     end
   end
