@@ -71,3 +71,7 @@ config/rackspace_cloudfiles.yml
 # sass
 .sass-cache
 .sass-cache/*
+
+
+#rvm
+.rvmrc
