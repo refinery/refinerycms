@@ -4,7 +4,7 @@ Gem::Specification.new do |s|
   s.name              = %q{refinerycms}
   s.version           = %q{0.9.8.4}
   s.description       = %q{A Ruby on Rails CMS that supports Rails 3. It's easy to extend and sticks to 'the Rails way' where possible.}
-  s.date              = %q{2010-09-17}
+  s.date              = %q{2010-09-21}
   s.summary           = %q{A Ruby on Rails CMS that supports Rails 3}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
@@ -277,11 +277,17 @@ Gem::Specification.new do |s|
     'vendor/refinerycms/core/lib/generators/refinery_engine/templates/config/routes.rb',
     'vendor/refinerycms/core/lib/generators/refinery_engine/templates/db',
     'vendor/refinerycms/core/lib/generators/refinery_engine/templates/db/migrate',
-    'vendor/refinerycms/core/lib/generators/refinery_engine/templates/db/migrate/migration_number_create_plural_name.rb',
+    'vendor/refinerycms/core/lib/generators/refinery_engine/templates/db/migrate/create_plural_name.rb',
     'vendor/refinerycms/core/lib/generators/refinery_engine/templates/db/seeds',
     'vendor/refinerycms/core/lib/generators/refinery_engine/templates/db/seeds/plural_name.rb',
     'vendor/refinerycms/core/lib/generators/refinery_engine/templates/lib',
+    'vendor/refinerycms/core/lib/generators/refinery_engine/templates/lib/generators',
+    'vendor/refinerycms/core/lib/generators/refinery_engine/templates/lib/generators/refinerycms_plural_name_generator.rb',
     'vendor/refinerycms/core/lib/generators/refinery_engine/templates/lib/plural_name.rb',
+    'vendor/refinerycms/core/lib/generators/refinery_engine/templates/lib/tasks',
+    'vendor/refinerycms/core/lib/generators/refinery_engine/templates/lib/tasks/plural_name.rake',
+    'vendor/refinerycms/core/lib/generators/refinery_engine/templates/public',
+    'vendor/refinerycms/core/lib/generators/refinery_engine/templates/readme.md',
     'vendor/refinerycms/core/lib/generators/refinery_engine/templates/refinerycms-plural_name.gemspec',
     'vendor/refinerycms/core/lib/refinery',
     'vendor/refinerycms/core/lib/refinery/activity.rb',
