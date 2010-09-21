@@ -4,6 +4,7 @@
 * ``zh-CN`` was overriding en locale in core locale file, fixed. [Philip Arndt](http://github.com/parndt)
 * Changed verbiage from created to added, create to add as it describes it better for things like images. [Philip Arndt](http://github.com/parndt)
 * ``image_fu`` no longer gives you the width and height of the image due to performance problems. [Philip Arndt](http://github.com/parndt) and [David Jones](http://github.com/djones)
+* Implemented a standardised API for the engine generator. The core now includes a standard engine install generator. Engines generate a readme file explaining how to build an engine as a gem. [David Jones](http://github.com/djones)
 * [See full list](http://github.com/resolve/refinerycms/compare/0.9.8.4...0.9.8.5)
 
 ## 0.9.8.4 [17 September 2010]
