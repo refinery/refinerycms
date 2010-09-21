@@ -35,8 +35,12 @@ describe Page do
       reset_page({:menu_match => '^/RSpec is great for testing too.*$'})
       page_cannot_be_destroyed
     end
+    
+    it "will destroy if you really want it to! >:]" do
+      reset_page
+      @page.destroy!
+    end
   end
-  
   
   
 end
