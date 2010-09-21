@@ -9,7 +9,7 @@ class RefineryEngineGenerator < Rails::Generators::NamedBase
 
   def generate
     unless attributes.empty?
-      Dir.glob(File.expand_path('../templates/**/**', __FILE__)).each do |path|
+      Dir.glob(File.expand_path('../templates/**/**', __FILE__), File::FNM_DOTMATCH).each do |path|
         # ignore directories which are created automatically by template()
         unless File.directory?(path)
           template path, plugin_path_for(path)
