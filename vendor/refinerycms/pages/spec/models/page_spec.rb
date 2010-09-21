@@ -19,19 +19,22 @@ describe Page do
     reset_page
   end
   
-  it "cannot delete under certain rules" do
-    #don't allow me to destroy pages that are links
-    reset_page({:link_url => '/plugin-name'})
-    page_cannot_be_destroyed
+  context "a page cannot delete under certain rules" do
+    it "shouldn't allow me to destroy pages that are links" do
+      reset_page({:link_url => '/plugin-name'})
+      page_cannot_be_destroyed
+    end
     
     
-    #often, refinery system pages are not deletable
-    reset_page({:deletable => false})
-    page_cannot_be_destroyed
+    it "cannot be deleted if refinery team deems it so" do
+      reset_page({:deletable => false})
+      page_cannot_be_destroyed
+    end
     
-    #don't delete pages that have menu_match filled out
-    reset_page({:menu_match => '^/RSpec is great for testing too.*$'})
-    page_cannot_be_destroyed
+    it "cannot be destroyed if have menu_match is filled out" do
+      reset_page({:menu_match => '^/RSpec is great for testing too.*$'})
+      page_cannot_be_destroyed
+    end
   end
   
   
