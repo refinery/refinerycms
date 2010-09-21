@@ -118,7 +118,8 @@ class Page < ActiveRecord::Base
   end
 
   def url_marketable
-    {:controller => "/pages", :action => "show", :path => self.nested_url}
+    # :id => nil is important to prevent any other params[:id] from interfering with this route.
+    {:controller => "/pages", :action => "show", :path => self.nested_url, :id => nil}
   end
 
   def url_normal

@@ -10,6 +10,6 @@ page = Page.create(
   :position => ((Page.maximum(:position, :conditions => {:parent_id => nil}) || -1)+1),
   :menu_match => "^/<%= plural_name %>(\/|\/.+?|)$"
 )
-RefinerySetting.find_or_set(:default_page_parts, ["Body", "Side Body"]).each do |default_page_part|
+Page.default_parts.each do |default_page_part|
   page.parts.create(:title => default_page_part, :body => nil)
 end

@@ -1,11 +1,11 @@
 body {
   margin: 0px;
 }
-#page, #site_bar_content {
+#page_container, #site_bar_content, footer, header {
   width: 1000px;
   margin: 0px auto;
 }
-#page {
+#page_container {
   padding: 20px;
 }
 #body_content_left {

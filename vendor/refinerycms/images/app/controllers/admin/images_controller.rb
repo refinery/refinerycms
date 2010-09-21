@@ -11,7 +11,7 @@ class Admin::ImagesController < Admin::BaseController
   def index
     search_all_images if searching?
     paginate_all_images
-    
+
     if RefinerySetting.find_or_set(:group_images_by_date_uploaded, true)
       @grouped_images = group_by_date(@images)
     end

@@ -1,4 +1,4 @@
-en:
+zh-CN:
   welcome:
     there_are_no_users: "There are no users yet, so we'll set you up first."
     remember_admin_location: "Remember your Refinery admin area is at:"
@@ -16,7 +16,7 @@ en:
     reorder: "Reorder %{what}"
     reorder_done: "Done Reordering %{what}"
     crudify:
-      created: "%{what} was successfully created."
+      created: "%{what} was successfully added."
       updated: "%{what} was successfully updated."
       destroyed: "%{what} was successfully destroyed."
   shared:

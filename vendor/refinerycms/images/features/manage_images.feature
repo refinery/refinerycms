@@ -11,7 +11,7 @@ Feature: Manage Images
   @images-create
   Scenario: Create Valid Image
     When I go to the list of images
-    And I follow "Create New Image"
+    And I follow "Add New Image"
     And I attach the image at "beach.jpeg"
     And I press "Save"
     Then the image "beach.jpeg" should have uploaded successfully
@@ -23,10 +23,10 @@ Feature: Manage Images
 
   Scenario: Create Invalid Image (format)
     When I go to the list of images
-    And I follow "Create New Image"
+    And I follow "Add New Image"
     And I attach the image at "refinery_is_awesome.txt"
     And I press "Save"
-    Then I should not see "successfully created"
+    Then I should not see "successfully added"
     And I should have 0 images
 
   @images-edit
@@ -44,5 +44,5 @@ Feature: Manage Images
     When I upload the image at "beach.jpeg"
     When I go to the list of images
     And I follow "Remove this image forever"
-    Then I should see "'Beach' was successfully destroyed. "
+    Then I should see "'Beach' was successfully removed."
     And I should have 0 images
