@@ -3,6 +3,14 @@
   <title><%= browser_title(yield(:title)) %></title>
   <link rel="shortcut icon" href="/favicon.ico" />
   <meta charset='<%= Refinery::Application.config.encoding %>' />
+  <!-- www.phpied.com/conditional-comments-block-downloads/ -->
+  <!--[if IE]><![endif]-->
+  
+  <!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame
+  Remove this if you use the .htaccess -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  
+  
   <%= csrf_meta_tag %>
   <%= render(:partial => '/shared/html5_for_ie.js').html_safe if request.env['HTTP_USER_AGENT'] =~ /MSIE/ %>
   <%= render :partial => 'shared/google_analytics' unless local_request? %>
