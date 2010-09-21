@@ -28,7 +28,7 @@ module Refinery
     @major = 0
     @minor = 9
     @tiny  = 8
-    @build = 4
+    @build = 5
 
     class << self
       attr_reader :major, :minor, :tiny, :build
