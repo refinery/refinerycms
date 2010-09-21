@@ -39,19 +39,19 @@ Clearfix docs
  - Main docs: http://positioniseverything.net/easyclearing.html
  - IE7 change: http://www.456bereastreet.com/archive/200603/new_clearing_method_needed_for_ie7/
 */
-.clearfix:after {
+.clearfix:after, section:after {
   content: ".";
   display: block;
   height: 0;
   clear: both;
   visibility: hidden;
 }
-.clearfix {
+.clearfix, section {
   display: inline-block;
 }
 
 /* Hide from IE Mac \*/
-.clearfix {
+.clearfix, section {
   display:block;
 }
 /* End hide from IE Mac */
