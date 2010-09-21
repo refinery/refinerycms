@@ -9,9 +9,8 @@
   children = hide_children ? [] : collection.select { |p| p.parent_id == menu_branch.id && p.in_menu? }
 -%>
 <li<%= ['', css, dom_id].join(' ').gsub(/\ *$/, '') %>>
-  <%= link_to menu_branch.title, menu_branch.url %>
-
-  <% if children.present? %>
+  <%= link_to menu_branch.title, menu_branch.url -%>
+  <% if children.present? -%>
     <ul class='clearfix'>
       <%=
         render :partial => "/shared/menu_branch",
@@ -22,5 +21,5 @@
                  :sibling_count => children.size - 1
                } -%>
     </ul>
-  <% end %>
+  <% end -%>
 </li>

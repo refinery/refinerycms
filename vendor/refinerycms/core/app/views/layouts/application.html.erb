@@ -2,29 +2,31 @@
 <html>
   <% site_bar = render(:partial => "/shared/site_bar", :locals => {:head => true}) -%>
   <%= render :partial => "/shared/head" %>
+<% if request.env['HTTP_USER_AGENT'] =~ /MSIE/ -%>
   <!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
   <!--[if lt IE 7 ]> <body class="ie6"> <![endif]-->
   <!--[if IE 7 ]>    <body class="ie7"> <![endif]-->
   <!--[if IE 8 ]>    <body class="ie8"> <![endif]-->
   <!--[if IE 9 ]>    <body class="ie9"> <![endif]-->
   <!--[if (gt IE 9)|!(IE)]><!--> <body> <!--<![endif]-->
-    
+<% else -%>
+  <body>
+<% end -%>
     <%= site_bar -%>
     <%= render :partial => "/shared/ie6check" if request.env['HTTP_USER_AGENT'] =~ /MSIE/ -%>
-    <div id="container">
+    <div id="page_container">
       <header id='header'>
-        <%= render :partial => "/shared/header" %>
+        <%= render :partial => "/shared/header" -%>
       </header>
-      <section id='page' class='clearfix'>
+      <section id='page'>
         <%= yield %>
       </section>
       <footer id='footer'>
-        <%= render :partial => "/shared/footer" %>
-      </footer><!-- /#footer -->
-    </div><!-- /#container -->
-    
-    <!-- Grab Google CDN's jQuery. fall back to local if necessary -->
-    <%= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" %>
-    <script>!window.jQuery && document.write('<script src="/javascripts/jquery-min.js"><\/script>')</script>
+        <%= render :partial => "/shared/footer" -%>
+      </footer>
+    </div>
+
+    <%= yield :head_libraries -%>
+    <%= yield :head -%>
   </body>
 </html>
