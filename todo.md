@@ -1,23 +1,24 @@
 # Todos required for 0.9.9 release
 
+## Solid Test Coverage
+
+Responsible person: ``VGoff``, ``hubble``
+
+* Add more Cucumber features for the whole of Refinery.
+* Add RSpec for the whole of Refinery, particularly:
+  - User, User engine and User mailer
+  - Inquiry mailer
+  - Refinery settings
+
 ## Internet Explorer 7+ Support
 
 Responsible person: ``parndt``
 
 * WYMEditor and the dialogs are the weakest areas right now.
 
-Responsible person: ``stevenheidel``, ``djones``
+Responsible person: ``stevenheidel``, ``djones``, ``everyone``
 
 * Finding and filing issues found in IE
-
-## Solid Test Coverage
-
-Responsible person: ``VGoff``
-
-* Add more Cucumber features for the whole of Refinery.
-* Add RSpec for the whole of Refinery, particularly:
-  - User, User plugin and User mailer
-  - Inquiry mailer and Inquiry setting
 
 ## I18n support
 
