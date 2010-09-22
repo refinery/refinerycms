@@ -73,8 +73,7 @@ group :test do
   gem 'spork' unless Bundler::WINDOWS
   gem 'launchy'
   gem 'gherkin'
-  # TODO: Change back to gem when patch is merged in
-  gem 'rack-test',              :git => 'git://github.com/alan/rack-test.git'
+  gem 'rack-test',              '~> 0.5.5'
   # FIXME: JSON constant constants warnings
   gem 'json_pure',              '~> 1.4.6', :require => 'json/pure'
   # Factory Girl
