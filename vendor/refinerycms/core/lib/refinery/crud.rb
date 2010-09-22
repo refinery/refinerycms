@@ -25,7 +25,7 @@ module Refinery
 
         options = {
           :title_attribute => "title",
-          :order => 'position ASC',
+          :order => ('position ASC' if class_name.constantize.column_names.include?('position')),
           :conditions => '',
           :sortable => true,
           :searchable => true,
