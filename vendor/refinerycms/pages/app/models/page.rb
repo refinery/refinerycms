@@ -80,7 +80,7 @@ class Page < ActiveRecord::Base
   def path(options = {:reversed => true})
     if options.is_a?(TrueClass) || options.is_a?(FalseClass)
       reverse = options
-      warn '@page.path does not use a boolean anymore. It\'s an options hash now.'
+      warn '@page.path does not want a boolean anymore. Please use an options hash.'
     else
       reverse = options[:reversed]
     end
