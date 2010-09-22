@@ -80,7 +80,9 @@ class Page < ActiveRecord::Base
   def path(options = {})
     # Handle deprecated boolean
     if %w(trueclass falseclass).include?(options.class.to_s.downcase)
-      warn '@page.path does not want a boolean anymore. Please use an options hash.'
+      warning = "Page::path does not want a boolean (you gave #{options.inspect}) anymore. "
+      warning << "Please change this to {:reversed => #{options.inspect}}. "
+      warn(warning << "\nCalled from #{caller.first.inspect}")
       options = {:reversed => options}
     end
 
