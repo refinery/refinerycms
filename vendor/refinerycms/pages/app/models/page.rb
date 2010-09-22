@@ -77,9 +77,16 @@ class Page < ActiveRecord::Base
 
   # Used for the browser title to get the full path to this page
   # It automatically prints out this page title and all of it's parent page titles joined by a PATH_SEPARATOR
-  def path(reverse = true)
+  def path(options = {:reversed => true})
+    if options.is_a?(TrueClass) || options.is_a?(FalseClass)
+      reverse = options
+      warn '@page.path does not use a boolean anymore. It\'s an options hash now.'
+    else
+      reverse = options[:reversed]
+    end
+    
     unless self.parent.nil?
-      parts = [self.title, self.parent.path(reverse)]
+      parts = [self.title, self.parent.path({:reversed => reverse})]
       parts.reverse! if reverse
       parts.join(PATH_SEPARATOR)
     else
@@ -249,5 +256,12 @@ class Page < ActiveRecord::Base
     children.each do |child|
       Rails.cache.delete(child.url_cache_key)
     end
+  end
+  
+  def warn(msg)
+    warning = ["\n*** DEPRECATION WARNING ***"]
+    warning << "#{msg}"
+    warning << ""
+    $stdout.puts warning.join("\n")
   end
 end
