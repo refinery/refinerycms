@@ -19,8 +19,9 @@ module Refinery
     end
 
     def find_activity_by_model(model)
-      plugin = find_by_model(model)
-      plugin.activity.detect {|activity| activity.class == model} unless plugin.nil?
+      unless (plugin = find_by_model(model)).nil?
+        plugin.activity.detect {|activity| activity.class == model}
+      end
     end
 
     def [](name)
