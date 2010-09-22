@@ -4,20 +4,21 @@
 
 <%% content_for :body_content_left do %>
   <% attributes.each do |attribute| %>
-  <div>
-    <h3><%= attribute.name.titleize %></h3>
-<% if attribute.type.to_s == 'image' -%>
+  <section>
+    <h1><%= attribute.name.titleize %></h1>
+<p><% if attribute.type.to_s == 'image' -%>
     <%%= image_fu @<%= singular_name %>.<%= attribute.name %>, nil %>
 <% elsif attribute.type.to_s == 'resource' -%>
     <%%= link_to <%= "'#{attribute.name}'" %>, @<%= singular_name %>.<%= attribute.name %>.url %>
 <% else -%>
     <%%=raw @<%= singular_name %>.<%= attribute.name %> %>
-<% end -%>
-  </div>
+<% end -%></p>
+  </section>
   <% end %>
 <%% end %>
 
 <%% content_for :body_content_right do %>
+<aside>
   <h2><%%= t('.other') %></h2>
   <ul id="<%= plural_name %>">
     <%% @<%= plural_name %>.each do |<%= singular_name %>| %>
@@ -26,6 +27,7 @@
       </li>
     <%% end %>
   </ul>
+</aside>
 <%% end %>
 
 <%%= render :partial => "/shared/content_page" %>
