@@ -41,7 +41,7 @@ protected
 
   def plugin_path_for(path)
     path = path.gsub(File.dirname(__FILE__) + "/templates/", "vendor/engines/#{plural_name}/")
-  
+
     path = path.gsub("plural_name", plural_name)
     path = path.gsub("singular_name", singular_name)
   end

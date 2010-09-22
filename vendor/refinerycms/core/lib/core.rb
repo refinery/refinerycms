@@ -75,7 +75,7 @@ module Refinery
       end
     end
   end
-  
+
   module Generators
     # The core engine installer streamlines the installation of custom generated
     # engines. It takes the migrations and seeds in your engine and moves them
@@ -87,7 +87,7 @@ module Refinery
         @engine_name = name unless name.nil?
         @engine_name
       end
-      
+
       # Implement the required interface for Rails::Generators::Migration.
       # taken from http://github.com/rails/rails/blob/master/activerecord/lib/generators/active_record.rb
       # can be removed once this issue is fixed:
@@ -99,7 +99,7 @@ module Refinery
           "%.3d" % (current_migration_number(dirname) + 1)
         end
       end
-      
+
       def generate
         Dir.glob(File.expand_path(File.join(self.class.source_root, '../db/**/**'))).each do |path|
           unless File.directory?(path)
@@ -110,7 +110,7 @@ module Refinery
             end
           end
         end
-        
+
         puts "------------------------"
         puts "Now run:"
         puts "rake db:migrate"
