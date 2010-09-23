@@ -16,7 +16,7 @@ en:
         create_new_user: ADD NEW USR
       user:
         email_user: EMAIL DIS USR
-        preview: (%{who}) added %{created_at}
+        preview: (%{who}) ADDD %{created_at}
   sessions:
     login_successful: LOGGD IN SUCCESFULLY
     new:
