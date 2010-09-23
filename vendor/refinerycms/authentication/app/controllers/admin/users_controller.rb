@@ -4,7 +4,7 @@ class Admin::UsersController < Admin::BaseController
 
   # Protect these actions behind an admin login
   before_filter :find_user, :except => [:index, :new, :create]
-  before_filter :load_available_plugins, :only => [:new, :create, :edit, :update]
+  before_filter :load_available_plugins_and_roles, :only => [:new, :create, :edit, :update]
 
   layout 'admin'
 
@@ -32,17 +32,22 @@ class Admin::UsersController < Admin::BaseController
   end
 
   def update
+    @selected_roles_names = params[:user].delete(:roles)
     @selected_plugin_names = params[:user][:plugins]
     # Prevent the current user from locking themselves out of the User manager
-    if current_user.id == @user.id and !params[:user][:plugins].include?("refinery_users")
+    if current_user.id == @user.id and ( !params[:user][:plugins].include?("refinery_users") || !params[:user][:roles].include?("refinery") )
       flash.now[:error] = t('admin.users.update.cannot_remove_user_plugin_from_current_user')
       render :action => "edit"
     else
       @previously_selected_plugin_names = @user.plugins.collect{|p| p.name}
+      @previously_selected_roles = @user.roles
+      @user.roles.clear
+      @selected_roles_names.each { | rn | @user.add_role( rn ) } if @selected_roles_names
       if @user.update_attributes params[:user]
         redirect_to admin_users_url, :notice => t('refinery.crudify.updated', :what => @user.login)
       else
         @user.plugins = @previously_selected_plugin_names
+        @user.roles = @previously_selected_roles
         @user.save
         render :action => 'edit'
       end
@@ -51,8 +56,9 @@ class Admin::UsersController < Admin::BaseController
 
 protected
 
-  def load_available_plugins
+  def load_available_plugins_and_roles
     @available_plugins = ::Refinery::Plugins.registered.in_menu.collect{|a| {:name => a.name, :title => a.title} }.sort_by {|a| a[:title]}
+    @available_roles = Role.find( :all )
   end
 
 end

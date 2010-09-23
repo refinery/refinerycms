@@ -48,6 +48,28 @@
       <% end %>
     </ul>
   </div>
+
+<% if current_user.has_role?(:superuser) then %>
+  <div class='field role_access'>
+    <span class='label_with_help'>
+      <%= f.label :role_access, nil, :class => "title_label" %>
+    </span>
+    <ul id='roles'>
+      <% @available_roles.each do | role |
+        l_case_role = role[:title].downcase -%>
+        <li>
+          <%= check_box_tag 'user[roles][]',
+                            l_case_role,
+                            @user.has_role?(role[:title]),
+                            :id => "role_#{l_case_role}" %>
+          <%= f.label 'user[roles][]', t("roles.#{l_case_role}", :default => role[:title]),
+            :class => 'stripped',
+            :for => "roles_#{l_case_role}" %>
+      <% end %>
+    </ul>
+<% end %>
+  </div>
+
   <%= render :partial => "/shared/admin/form_actions",
              :locals => {
                :f => f,
