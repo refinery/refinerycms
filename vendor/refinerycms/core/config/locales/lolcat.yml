@@ -8,7 +8,7 @@ en:
       description: REFINERY DIALOGS PLUGIN
   welcome:
     there_are_no_users: THAR R NO USERS YET, SO WELL SET U UP FURST.
-    remember_admin_location: "Remember your Refinery admin area is at:"
+    remember_admin_location: "REMEMBR UR REFINERY ADMIN AREA IZ AT:"
     lets_start: ALRIGHT LETS GIT U SETUP SO U CAN LOGIN...
     continue: CONTINUE...
   admin:
