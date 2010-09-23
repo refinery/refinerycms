@@ -101,4 +101,4 @@ to get help on how to use that. Or read the full documentation on [writing engin
 
 ## License
 
-Refinery is released under the [MIT license](http://github.com/resolve/refinerycms/blob/master/license.md#readme) and is copyright (c) 2005-2010 [Resolve Digital Ltd.](http://www.resolvedigital.co.nz)
+Refinery is released under the [MIT license](http://github.com/resolve/refinerycms/blob/master/license.md#readme) and is copyright (c) 2005-2010 [Resolve Digital](http://www.resolvedigital.com)
