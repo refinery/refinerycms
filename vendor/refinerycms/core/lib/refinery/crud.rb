@@ -25,7 +25,7 @@ module Refinery
 
         options = {
           :title_attribute => "title",
-          :order => 'position ASC',
+          :order => ('position ASC' if class_name.constantize.column_names.include?('position')),
           :conditions => '',
           :sortable => true,
           :searchable => true,
@@ -225,32 +225,29 @@ module Refinery
             def update_positions
               previous = nil
               # The list doesn't come to us in the correct order. Frustration.
-              while (index ||= 0) < (newlist ||= params[:ul]).length do
+              0.upto((newlist ||= params[:ul]).length - 1) do |index|
                 hash = newlist[index.to_s]
                 moved_item_id = hash['id'].split(/#{singular_name}/)
-                @current_#{singular_name} = #{class_name}.find_by_id(moved_item_id)
+                if (@current_#{singular_name} = #{class_name}.find_by_id(moved_item_id)).present?
+                  if previous.present?
+                    @current_#{singular_name}.move_to_right_of(#{class_name}.find_by_id(previous))
+                  else
+                    @current_#{singular_name}.move_to_root
+                  end
 
-                if previous.present?
-                  @previous_item = #{class_name}.find_by_id(previous)
-                  @current_#{singular_name}.move_to_right_of(@previous_item)
-                else
-                   @current_#{singular_name}.move_to_root
-                end
-
-                if hash['children'].present?
-                  update_child_positions(hash, @current_#{singular_name})
+                  if hash['children'].present?
+                    update_child_positions(hash, @current_#{singular_name})
+                  end
                 end
 
                 previous = moved_item_id
-                index += 1
               end
               #{class_name}.rebuild!
               render :nothing => true
             end
 
             def update_child_positions(node, #{singular_name})
-              child_index = 0
-              while child_index < node['children'].length do
+              0.upto(node['children'].length - 1) do |child_index|
                 child = node['children'][child_index.to_s]
                 child_id = child['id'].split(/#{singular_name}/)
                 child_#{singular_name} = #{class_name}.find_by_id(child_id)
@@ -259,8 +256,6 @@ module Refinery
                 if child['children'].present?
                   update_child_positions(child, child_#{singular_name})
                 end
-
-                child_index += 1
               end
             end
 

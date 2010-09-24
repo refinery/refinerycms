@@ -75,16 +75,23 @@ class Page < ActiveRecord::Base
     self.destroy
   end
 
-  def indented_title
-    "#{"--" * self.ancestors.size} #{self.title}".chomp
-  end
-
   # Used for the browser title to get the full path to this page
   # It automatically prints out this page title and all of it's parent page titles joined by a PATH_SEPARATOR
-  def path(reverse = true)
+  def path(options = {})
+    # Handle deprecated boolean
+    if %w(trueclass falseclass).include?(options.class.to_s.downcase)
+      warning = "Page::path does not want a boolean (you gave #{options.inspect}) anymore. "
+      warning << "Please change this to {:reversed => #{options.inspect}}. "
+      warn(warning << "\nCalled from #{caller.first.inspect}")
+      options = {:reversed => options}
+    end
+
+    # Override default options with any supplied.
+    options = {:reversed => true}.merge(options)
+
     unless self.parent.nil?
-      parts = [self.title, self.parent.path(reverse)]
-      parts.reverse! if reverse
+      parts = [self.title, self.parent.path(options)]
+      parts.reverse! if options[:reversed]
       parts.join(PATH_SEPARATOR)
     else
       self.title
@@ -253,5 +260,12 @@ class Page < ActiveRecord::Base
     children.each do |child|
       Rails.cache.delete(child.url_cache_key)
     end
+  end
+
+  def warn(msg)
+    warning = ["\n*** DEPRECATION WARNING ***"]
+    warning << "#{msg}"
+    warning << ""
+    $stdout.puts warning.join("\n")
   end
 end

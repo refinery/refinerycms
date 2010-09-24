@@ -28,15 +28,15 @@
       <%= f.label :plugin_access, nil, :class => "title_label" %>
       <%= link_to "(#{t('.enable_all')})", "", :id => "user_plugins_enable_all" %>
     </span>
-    <ul id='plugins'>
+    <ul id='plugins' class='checkboxes'>
       <% @available_plugins.each do |plugin| -%>
         <% if Refinery::Plugins.always_allowed.names.include?(plugin[:name]) or
               (plugin[:name] == 'refinery_users' and @user.id == current_user.id) %>
-          <%= hidden_field_tag 'user[plugins][]', plugin[:name] %>
+          <%= hidden_field_tag 'user[plugins][]', plugin[:name],
+                               :id => "plugins_#{plugin[:name]}" %>
         <% else %>
           <li>
-            <%= check_box_tag 'user[plugins][]',
-                              plugin[:name],
+            <%= check_box_tag 'user[plugins][]', plugin[:name],
                               @selected_plugin_names.include?(plugin[:name]),
                               :id => "plugins_#{plugin[:name]}" %>
             <%= f.label 'user[plugins][]',
@@ -48,6 +48,27 @@
       <% end %>
     </ul>
   </div>
+
+  <% if current_user.has_role?(:superuser) and RefinerySetting.find_or_set(:superuser_can_assign_roles, false) %>
+    <div class='field role_access'>
+      <span class='label_with_help'>
+        <%= f.label :role_access, nil, :class => "title_label" %>
+      </span>
+      <ul id='roles' class='checkboxes'>
+        <% @available_roles.each do |role|
+          downcased_title = (title = role[:title]).downcase -%>
+          <li>
+            <%= check_box_tag 'user[roles][]', downcased_title, @user.has_role?(title),
+                              :id => "roles_#{downcased_title}" %>
+            <%= f.label 'user[roles][]', t("roles.#{downcased_title}", :default => title),
+                        :class => 'stripped',
+                        :for => "roles_#{downcased_title}" %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
   <%= render :partial => "/shared/admin/form_actions",
              :locals => {
                :f => f,

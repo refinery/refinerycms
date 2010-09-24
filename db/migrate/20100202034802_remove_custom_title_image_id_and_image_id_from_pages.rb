@@ -1,7 +1,7 @@
 class RemoveCustomTitleImageIdAndImageIdFromPages < ActiveRecord::Migration
 
   def self.up
-    remove_column :pages, :custom_title_image_id
+    remove_column :pages, :custom_title_image_id if Page.table_exists? and Page.column_names.include?('custom_title_image_id')
     remove_column :pages, :image_id
   end
 

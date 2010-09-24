@@ -73,8 +73,7 @@ group :test do
   gem 'spork' unless Bundler::WINDOWS
   gem 'launchy'
   gem 'gherkin'
-  # TODO: Change back to gem when patch is merged in
-  gem 'rack-test',              :git => 'git://github.com/alan/rack-test.git'
+  gem 'rack-test',              '~> 0.5.5'
   # FIXME: JSON constant constants warnings
   gem 'json_pure',              '~> 1.4.6', :require => 'json/pure'
   # Factory Girl
@@ -87,11 +86,6 @@ group :test do
 end
 
 #===REFINERY END OF REQUIRED GEMS===
-
-#===REQUIRED FOR REFINERY GEM INSTALL===
-# Leave the gem below disabled (commented out) if you're not using the gem install method.
-# gem 'refinerycms',    '~> 0.9.7.12'
-#===END OF REFINERY GEM INSTALL REQUIREMENTS===
 
 # Bundle gems for certain environments:
 
