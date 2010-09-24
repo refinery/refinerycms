@@ -1283,13 +1283,22 @@ WYMeditor.editor.prototype.dialog = function( dialogType ) {
                      + "</span>"
                      + selected_html.substring(end);
         } else {
-          new_html = selected_html.substring(0, start)
+          if (!($.browser.mozilla && $(selection.focusNode).attr('_moz_dirty') !== undefined)) {
+            new_html = selected_html.substring(0, start)
                      + "<span id='replace_me_with_" + this._current_unique_stamp + "'></span>"
                      + selected_html.substring(end);
+          } else {
+            // Mozilla Firefox seems to throw its toys out of the cot if the paragraph is _moz_dirty
+            // and we try to get a selection of the entire text contents of the paragraph.
+            // Firefox has to use this.wrap() for this specific condition.
+            this.wrap("<span id='replace_me_with_" + this._current_unique_stamp + "'>", "</span>");
+          }
         }
-        new_html = new_html.replace('  ', '&nbsp;');
 
-        $(selected).html(new_html);
+        if (typeof(new_html) != 'undefined' && new_html != null) {
+          new_html = new_html.replace('  ', '&nbsp;');
+          $(selected).html(new_html);
+        }
       } else {
         this.wrap("<span id='replace_me_with_" + this._current_unique_stamp + "'>", "</span>");
       }
