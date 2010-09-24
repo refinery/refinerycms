@@ -42,6 +42,9 @@ es:
         download_current: Descargar %{what} actual
         opens_in_new_window: Abre en una nueva ventana
         remove_current: "Eliminar %{what} actual"
+        no_resource_selected: En este momento no existe un carpeta seleccionada, click aqui para agregar una
+        name: Agregar carpeta
+        current: Carpeta actual
       search:
         button_text: Buscar
         results_for: Resultados de la búsqueda '%{query}'
