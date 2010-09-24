@@ -14,7 +14,7 @@ Pages have one key thing about them that is unique - page parts.
 
 ### What are they?
 
-Think of a page part is a single piece of content on your page. At [Resolve Digital](http://www.resolvedigital.co.nz) we often simply use ``body`` and ``side_body``. One is for the main content and one is for the content which goes on a side bit of the page to display other information.
+Think of a page part is a single piece of content on your page. At [Resolve Digital](http://www.resolvedigital.com) we often simply use ``body`` and ``side_body``. One is for the main content and one is for the content which goes on a side bit of the page to display other information.
 
 ### Default Page Parts
 

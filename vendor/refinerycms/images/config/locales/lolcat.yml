@@ -1,0 +1,38 @@
+lolcat:
+  plugins:
+    refinery_images:
+      title: IMAGEZ
+      description: MANAGE IMAGEZ
+  image_specify_for_upload: U MUST SPECIFY AN IMAGE 4 UPLOAD
+  image_should_be_smaller_than_max_image_size: IMAGE SHUD BE SMALLR THAN %{max_image_size} IN SIZE
+  image_must_be_these_formats: UR IMAGE MUST BE EITHR JPG, PNG OR GIF
+  admin:
+    images:
+      delete: REMOOV DIS IMAGE FOREVR
+      edit: EDIT DIS IMAGE
+      form:
+        image: IMAGE
+        use_current_image: USE CURRENT IMAGE
+        or: OR
+        replace_image: " REPLACE IT WIF DIS WAN..."
+        current_image: CURRENT IMAGE
+        maximum_image_size: TEH MAXIMUM IMAGE SIZE IZ %{megabytes} MEGABYTEZ.
+      index:
+        create_new_image: ADD NEW IMAGE
+        no_images_yet: THAR R NO IMAGEZ YET. CLICK "ADD NEW IMAGE" 2 ADD UR FURST IMAGE.
+        view:
+          switch_to: SWITCH 2 %{view_name} VIEW
+          list: LIST
+          grid: GRID
+      grid_view:
+        view_live: VIEW DIS IMAGE <BR/><EM>OPENS IN NEW WINDOW</EM>
+      existing_image:
+        button_text: INSERT
+        resize_image: RESIZE TEH IMAGE?
+        size: SIZE
+      insert:
+        existing_image: EXISTIN IMAGE
+        new_image: NEW IMAGE
+  activerecord:
+    models:
+      image: IMAGE

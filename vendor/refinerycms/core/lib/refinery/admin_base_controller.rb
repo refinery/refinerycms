@@ -47,15 +47,21 @@ protected
   end
 
   def restrict_plugins
-    Refinery::Plugins.set_active(current_user.authorized_plugins) if current_user.respond_to?(:plugins)
+    current_length = (plugins = current_user.authorized_plugins).length
+
+    # Superusers get granted access if they don't already have access.
+    if current_user.has_role?(:superuser)
+      if (plugins = plugins | ::Refinery::Plugins.registered.names).length > current_length
+        current_user.plugins = plugins
+      end
+    end
+
+    Refinery::Plugins.set_active(plugins)
   end
 
   def restrict_controller
-    if Refinery::Plugins.active.reject { |plugin|
-      params[:controller] !~ Regexp.new(plugin.menu_match) and
-      params[:controller] !~ Regexp.new(plugin.menu_match.to_s.gsub('admin\/', 'refinery/'))
-    }.empty?
-      logger.warn "'#{current_user.login}' tried to access '#{params[:controller]}' but was rejected."
+    if Refinery::Plugins.active.reject { |plugin| params[:controller] !~ Regexp.new(plugin.menu_match)}.empty?
+      warn "'#{current_user.login}' tried to access '#{params[:controller]}' but was rejected."
       error_404
     end
   end

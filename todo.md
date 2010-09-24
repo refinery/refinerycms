@@ -12,7 +12,7 @@ Responsible person: ``VGoff``, ``hubble``
 
 ## Internet Explorer 7+ Support
 
-Responsible person: ``parndt``
+Responsible person: ``parndt``, ``anyone willing and able``
 
 * WYMEditor and the dialogs are the weakest areas right now.
 

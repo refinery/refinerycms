@@ -7,6 +7,7 @@ nl:
       page_link:
         link_to_this_page: Link naar deze pagina
       link_to:
+        insert: Invoegen
         your_page:
           tab_name: Jouw pagina
         web_address:
@@ -43,6 +44,7 @@ nl:
       form_advanced_options:
         toggle_advanced_options: Klik om extra opties voor de metadata- en menuopties te bewerken 
         parent_page: Ouder pagina
+        page_options: Pagina opties
         advanced_options: Uitgebreide opties
         custom_title: Aangepaste titel
         title_types:

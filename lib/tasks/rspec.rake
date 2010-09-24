@@ -26,6 +26,15 @@ MSG
   end
 end
 
+# To get specs from all Refinery engines, not just those in Rails.root/spec/
+RSpec::Core::RakeTask.module_eval do
+  def pattern
+    [@pattern] | ::Refinery::Plugins.registered.collect{|p|
+                   p.pathname.join('spec','**', '*_spec.rb').to_s
+                 }
+  end
+end
+
 Rake.application.instance_variable_get('@tasks').delete('default')
 
 spec_prereq = Rails.root.join('config', 'database.yml').exist? ? "db:test:prepare" : :noop
