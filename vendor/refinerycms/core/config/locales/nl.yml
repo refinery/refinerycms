@@ -45,6 +45,9 @@ nl:
         download_current: "Download huidige %{what}"
         opens_in_new_window: Opent in een nieuw venster
         remove_current: "Verwijder huidige %{what}"
+        name: Voeg bestand toe
+        current: Huidig bestand
+        no_resource_selected: Er is momenteel geen bestand geselecteerd, klik hier om er een toe te voegen.
       search:
         button_text: Zoek
         results_for: "Zoekresultaten voor '%{query}'"
