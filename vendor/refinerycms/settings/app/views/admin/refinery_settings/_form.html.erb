@@ -16,10 +16,12 @@
     </label>
     <span class="preview">- (<%= @refinery_setting.name %>)</span>
   <% end %>
-  <div class='field'>
-    <%= f.label :form_value_type %>
-    <%= f.select :form_value_type, RefinerySetting::FORM_VALUE_TYPES -%>
-  </div>
+  <% if current_user.has_role?(:superuser)%>
+    <div class='field'>
+      <%= f.label :form_value_type %>
+      <%= f.select :form_value_type, RefinerySetting::FORM_VALUE_TYPES -%>
+    </div>
+  <% end %>
   <% unless action_name =~ /(new)|(create)/ or (help = t(".help.#{@refinery_setting.name}", :default => '')).blank? or @refinery_setting.form_value_type == 'check_box'  %>
     <p>
       <span><%= help %></span>
