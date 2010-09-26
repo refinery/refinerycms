@@ -43,6 +43,7 @@ label[for] {
 }
 #dialog_container #content .field, .dialog_container .field {
   width: auto;
+  margin:5px 0;
 }
 input.widest, textarea.widest {
   width: 99%;
@@ -231,7 +232,7 @@ body.login #site_bar_content a#site_bar_refinery_cms_logo {
   font-size: 20px;
   line-height:22px
 }
-body.login #page_container div.remember_me label {
+body.login #page_container div.remember_me label, label.inline {
   display: inline;
 }
 body.login #page_container div.actions {
