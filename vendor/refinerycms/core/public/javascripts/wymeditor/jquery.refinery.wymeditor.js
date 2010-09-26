@@ -1276,24 +1276,24 @@ WYMeditor.editor.prototype.dialog = function( dialogType ) {
         end = (focus < anchor) ? anchor : focus;
         length = (end - start);
 
-        if (length > 1) {
-          new_html = selected_html.substring(0, start)
-                     + "<span id='replace_me_with_" + this._current_unique_stamp + "'>"
-                     + selected_html.substring(start, end)
-                     + "</span>"
-                     + selected_html.substring(end);
-        } else {
-          focusNode = selection.focusNode.tagName === undefined ? selection.focusNode.parentNode : selection.focusNode;
-          if (!($.browser.mozilla && $(focusNode).attr('_moz_dirty') !== undefined)) {
+        focusNode = selection.focusNode.tagName === undefined ? selection.focusNode.parentNode : selection.focusNode;
+        if (!($.browser.mozilla && $(focusNode).attr('_moz_dirty') !== undefined)) {
+          if (length > 0) {
+            new_html = selected_html.substring(0, start)
+                       + "<span id='replace_me_with_" + this._current_unique_stamp + "'>"
+                       + selected_html.substring(start, end)
+                       + "</span>"
+                       + selected_html.substring(end);
+          } else {
             new_html = selected_html.substring(0, start)
                      + "<span id='replace_me_with_" + this._current_unique_stamp + "'></span>"
                      + selected_html.substring(end);
-          } else {
-            // Mozilla Firefox seems to throw its toys out of the cot if the paragraph is _moz_dirty
-            // and we try to get a selection of the entire text contents of the paragraph.
-            // Firefox has to use this.wrap() for this specific condition.
-            this.wrap("<span id='replace_me_with_" + this._current_unique_stamp + "'>", "</span>");
           }
+        } else {
+          // Mozilla Firefox seems to throw its toys out of the cot if the paragraph is _moz_dirty
+          // and we try to get a selection of the entire text contents of the paragraph.
+          // Firefox has to use this.wrap() for this specific condition.
+          this.wrap("<span id='replace_me_with_" + this._current_unique_stamp + "'>", "</span>");
         }
 
         if (typeof(new_html) != 'undefined' && new_html != null) {
