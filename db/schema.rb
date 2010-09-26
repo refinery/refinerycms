@@ -10,7 +10,44 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100913234704) do
+ActiveRecord::Schema.define(:version => 20100926142529) do
+
+  create_table "blog_categories", :force => true do |t|
+    t.string   "title"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "blog_categories", ["id"], :name => "index_blog_categories_on_id"
+
+  create_table "blog_categories_blog_posts", :id => false, :force => true do |t|
+    t.integer "blog_category_id"
+    t.integer "blog_post_id"
+  end
+
+  create_table "blog_comments", :force => true do |t|
+    t.integer  "blog_post_id"
+    t.boolean  "spam"
+    t.string   "name"
+    t.string   "email"
+    t.text     "body"
+    t.string   "state"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "blog_comments", ["id"], :name => "index_blog_comments_on_id"
+
+  create_table "blog_posts", :force => true do |t|
+    t.string   "title"
+    t.text     "body"
+    t.boolean  "draft"
+    t.datetime "published_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "blog_posts", ["id"], :name => "index_blog_posts_on_id"
 
   create_table "images", :force => true do |t|
     t.string   "image_mime_type"
@@ -95,6 +132,7 @@ ActiveRecord::Schema.define(:version => 20100913234704) do
     t.string   "scoping"
     t.boolean  "restricted",              :default => false
     t.string   "callback_proc_as_string"
+    t.string   "form_value_type"
   end
 
   add_index "refinery_settings", ["name"], :name => "index_refinery_settings_on_name"

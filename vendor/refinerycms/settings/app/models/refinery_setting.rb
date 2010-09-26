@@ -1,4 +1,10 @@
 class RefinerySetting < ActiveRecord::Base
+  
+  FORM_VALUE_TYPES = [
+    ['Multi-line', 'text_area'],
+    ['Single-line','text_field'],
+    ['Checkbox', 'check_box']
+  ]
 
   validates :name, :presence => true
 
@@ -75,7 +81,7 @@ class RefinerySetting < ActiveRecord::Base
 
     # find_or_set offers a convenient way to
     def find_or_set(name, the_value, options={})
-      options = {:scoping => nil, :restricted => false, :callback_proc_as_string => nil}.merge(options)
+      options = {:scoping => nil, :restricted => false, :callback_proc_as_string => nil, :form_type => 'text_field'}.merge(options)
       # Try to get the value from cache first.
       scoping = options[:scoping]
       restricted = options[:restricted]
@@ -112,6 +118,7 @@ class RefinerySetting < ActiveRecord::Base
         setting.scoping = value[:scoping] if value.has_key?(:scoping)
         setting.callback_proc_as_string = value[:callback_proc_as_string] if value.has_key?(:callback_proc_as_string)
         setting.destroyable = value[:destroyable] if value.has_key?(:destroyable)
+        setting.form_value_type = value[:form_type] || 'text_field'
       end
 
       # Save because we're in a setter method.
