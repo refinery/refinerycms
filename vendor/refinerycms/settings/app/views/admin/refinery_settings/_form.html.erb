@@ -42,7 +42,7 @@
     <% else %>
       <%= f.label :value %>
     <% end -%>
-    <%= f.send(form_value_type, :value, :value => @refinery_setting.form_value, 
+    <%= f.send(form_value_type, :value, :value => @refinery_setting.form_value,
                                 :class => ("widest" if form_value_type == 'text_area'),
                                 :rows => (5 if form_value_type == 'text_area')) %>
     <%= f.label :value, help, :class => 'stripped' if @refinery_setting.form_value_type == 'check_box' %>
