@@ -2,7 +2,6 @@ class RefinerySetting < ActiveRecord::Base
   
   FORM_VALUE_TYPES = [
     ['Multi-line', 'text_area'],
-    ['Single-line','text_field'],
     ['Checkbox', 'check_box']
   ]
 
@@ -81,7 +80,7 @@ class RefinerySetting < ActiveRecord::Base
 
     # find_or_set offers a convenient way to
     def find_or_set(name, the_value, options={})
-      options = {:scoping => nil, :restricted => false, :callback_proc_as_string => nil, :form_type => 'text_field'}.merge(options)
+      options = {:scoping => nil, :restricted => false, :callback_proc_as_string => nil, :form_type => 'text_area'}.merge(options)
       # Try to get the value from cache first.
       scoping = options[:scoping]
       restricted = options[:restricted]
