@@ -1283,7 +1283,8 @@ WYMeditor.editor.prototype.dialog = function( dialogType ) {
                      + "</span>"
                      + selected_html.substring(end);
         } else {
-          if (!($.browser.mozilla && $(selection.focusNode).attr('_moz_dirty') !== undefined)) {
+          focusNode = selection.focusNode.tagName === undefined ? selection.focusNode.parentNode : selection.focusNode;
+          if (!($.browser.mozilla && $(focusNode).attr('_moz_dirty') !== undefined)) {
             new_html = selected_html.substring(0, start)
                      + "<span id='replace_me_with_" + this._current_unique_stamp + "'></span>"
                      + selected_html.substring(end);
