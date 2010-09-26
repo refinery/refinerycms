@@ -4,9 +4,12 @@ describe Page do
 
   def reset_page(options = {})
     @valid_attributes = {
+      :id => 1,
       :title => "RSpec is great for testing too",
       :deletable => true
     }
+
+    @page.destroy! if @page
     @page = Page.create!(@valid_attributes)
     @page.update_attributes(options)
   end
@@ -22,6 +25,10 @@ describe Page do
   def create_page_parts
     @page.parts.create(:title => 'body', :content => "I'm the first page part for this page.")
     @page.parts.create(:title => 'side body', :content => "Closely followed by the second page part.")
+  end
+  
+  def turn_off_marketable_urls
+    RefinerySetting.set(:use_marketable_urls, {:value => false, :scoping => 'pages'})
   end
 
   before(:each) do
@@ -69,6 +76,19 @@ describe Page do
     it ".path() still responds to the deprecated boolean" do
       create_child
       @child.path(false).should == 'The child page - RSpec is great for testing too'
+    end
+    
+    it "should return its url" do
+      @page.link_url = '/contact'
+      @page.url.should == '/contact'
+      
+      reset_page
+      @page.url[:path].should == ["rspec-is-great-for-testing-too"]
+      @page.url[:id].should be_nil
+      
+      turn_off_marketable_urls
+      @page.url[:id].should == "rspec-is-great-for-testing-too"
+      @page.url[:path].should be_nil
     end
   end
 
