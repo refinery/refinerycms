@@ -727,7 +727,7 @@ var image_dialog = {
   , init_actions: function(){
     var _this = this;
     $('#existing_image_area .form-actions-dialog #submit_button').click($.proxy(_this.submit_image_choice, _this));
-    $('.form-actions-dialog #cancel_button').click($.proxy(close_dialog, _this));
+    $('.form-actions-dialog #cancel_button').not('body.wym_iframe_body .form-actions-dialog #cancel_button').click($.proxy(close_dialog, _this));
     $('#existing_image_size_area ul li a').click(function(e) {
       $('#existing_image_size_area ul li').removeClass('selected');
       $(this).parent().addClass('selected');
@@ -922,18 +922,21 @@ var resource_picker = {
 }
 
 close_dialog = function(e) {
-  if (parent
-      && parent.document.location.href != document.location.href
-      && $.isFunction(parent.$))
+  if (parent && parent.document.location.href != document.location.href && $.isFunction(parent.$))
   {
-    $(parent.document.body).removeClass('hide-overflow');
-    parent.$('.ui-dialog').dialog('close').remove();
+    the_body = $(parent.document.body)
+    the_dialog = parent.$('.ui-dialog');
   } else {
-    $(document.body).removeClass('hide-overflow');
-    $('.ui-dialog').dialog('close').remove();
+    the_body = $(document.body).removeClass('hide-overflow');
+    the_dialog = $('.ui-dialog').dialog('close').remove();
   }
+  // if there's a wymeditor involved then let it do its thing without blocking first.
+  if (!($(document.body).hasClass('wym_iframe_body'))) {
+    the_body.removeClass('hide-overflow');
+    the_dialog.dialog('close').remove();
 
-  e.preventDefault();
+    e.preventDefault();
+  }
 }
 
 //parse a URL to form an object of properties

@@ -187,6 +187,8 @@ var wymeditor_boot_options = $.extend({
       WYMeditor.loaded();
     }
 
+    $(wym._iframe).contents().find('body').addClass('wym_iframe_body');
+
     $('.field.hide-overflow').removeClass('hide-overflow').css('height', 'auto');
   }
   , lang: (typeof(I18n.locale) != "undefined" ? I18n.locale : 'en')
