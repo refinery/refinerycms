@@ -27,8 +27,8 @@ module Refinery
   class Version
     @major = 0
     @minor = 9
-    @tiny  = 8
-    @build = 5
+    @tiny  = 9
+    @build = 'pre'
 
     class << self
       attr_reader :major, :minor, :tiny, :build
