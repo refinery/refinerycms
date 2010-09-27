@@ -49,7 +49,7 @@ rmagick_options = {:require => false}
 rmagick_options.update({
   :git => 'git://github.com/refinerycms/rmagick.git',
   :branch => 'windows'
-}) if Bundler::WINDOWS
+}) if defined? Bundler::WINDOWS
 
 # Specify a version of RMagick that works in your environment:
 gem 'rmagick',                  '~> 2.12.0', rmagick_options
@@ -70,7 +70,7 @@ group :test do
   gem 'database_cleaner'
   gem 'cucumber-rails'
   gem 'cucumber'
-  gem 'spork' unless Bundler::WINDOWS
+  gem 'spork' unless defined? Bundler::WINDOWS
   gem 'launchy'
   gem 'gherkin'
   gem 'rack-test',              '~> 0.5.5'
