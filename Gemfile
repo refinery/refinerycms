@@ -78,7 +78,7 @@ group :test do
   gem 'json_pure',              '~> 1.4.6', :require => 'json/pure'
   # Factory Girl
   gem 'factory_girl'
-  gem 'ruby-prof'
+  gem 'ruby-prof'               unless defined?(RUBY_ENGINE) and RUBY_ENGINE == 'rbx'
   # Autotest
   gem 'autotest'
   gem 'autotest-rails'

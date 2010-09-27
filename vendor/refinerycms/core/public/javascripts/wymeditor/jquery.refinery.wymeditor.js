@@ -1272,22 +1272,34 @@ WYMeditor.editor.prototype.dialog = function( dialogType ) {
         }
         focus = offset + selection.focusOffset;
         anchor = offset + selection.anchorOffset;
-        length = (focus - anchor);
+        start = (focus < anchor) ? focus : anchor;
+        end = (focus < anchor) ? anchor : focus;
+        length = (end - start);
 
-        if (length > 1) {
-          new_html = selected_html.substring(0, anchor)
-                     + "<span id='replace_me_with_" + this._current_unique_stamp + "'>"
-                     + selected_html.substring(anchor, focus)
-                     + "</span>"
-                     + selected_html.substring(focus);
-        } else {
-          new_html = selected_html.substring(0, focus)
+        focusNode = selection.focusNode.tagName === undefined ? selection.focusNode.parentNode : selection.focusNode;
+        if (!($.browser.mozilla && $(focusNode).attr('_moz_dirty') !== undefined)) {
+          if (length > 0) {
+            new_html = selected_html.substring(0, start)
+                       + "<span id='replace_me_with_" + this._current_unique_stamp + "'>"
+                       + selected_html.substring(start, end)
+                       + "</span>"
+                       + selected_html.substring(end);
+          } else {
+            new_html = selected_html.substring(0, start)
                      + "<span id='replace_me_with_" + this._current_unique_stamp + "'></span>"
-                     + selected_html.substring(focus);
+                     + selected_html.substring(end);
+          }
+        } else {
+          // Mozilla Firefox seems to throw its toys out of the cot if the paragraph is _moz_dirty
+          // and we try to get a selection of the entire text contents of the paragraph.
+          // Firefox has to use this.wrap() for this specific condition.
+          this.wrap("<span id='replace_me_with_" + this._current_unique_stamp + "'>", "</span>");
         }
-        new_html = new_html.replace('  ', '&nbsp;');
 
-        $(selected).html(new_html);
+        if (typeof(new_html) != 'undefined' && new_html != null) {
+          new_html = new_html.replace('  ', '&nbsp;');
+          $(selected).html(new_html);
+        }
       } else {
         this.wrap("<span id='replace_me_with_" + this._current_unique_stamp + "'>", "</span>");
       }
@@ -1682,7 +1694,7 @@ WYMeditor.INIT_DIALOG = function(wym, selected, isIframe) {
   // focus first textarea or input type text element
   dialog.find('input[type=text], textarea').first().focus();
 
-  dialog.find(".close_dialog").click(function(e){
+  doc.find('body').addClass('wym_iframe_body').find('#cancel_button').add(dialog.find('.close_dialog')).click(function(e){
     wym.close_dialog(e, true);
   });
 
@@ -1819,8 +1831,9 @@ WYMeditor.editor.prototype.close_dialog = function(e, cancelled) {
     if ((span = $(this._doc.body).find('span#replace_me_with_' + this._current_unique_stamp)).length > 0) {
       span.parent().html(span.parent().html().replace(new RegExp(["<span(.+?)", span.attr('id'), "(.+?)<\/span>"].join("")), span.html()));
     }
-    (remove_id = $(this._doc.body).find('#replace_me_with_' + this._current_unique_stamp)).attr('id', (remove_id.attr('_id_before_replaceable') || ""));
-
+    (remove_id = $(this._doc.body).find('#replace_me_with_' + this._current_unique_stamp))
+      .attr('id', (remove_id.attr('_id_before_replaceable') || ""))
+      .replaceWith(remove_id.html());
     if (this._undo_on_cancel == true) {
       this._exec("undo");
     }
