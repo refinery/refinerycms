@@ -13,6 +13,7 @@
     <%= link_to refinery_icon_tag('delete.png'), admin_user_path(user),
                 :class => "cancel confirm-delete",
                 :title => t('admin.users.delete'),
+                :method => :delete,
                 :'data-confirm' => t('shared.admin.delete.message', :title => user.login) if current_user.can_delete?(user) %>
   </span>
 </li>
