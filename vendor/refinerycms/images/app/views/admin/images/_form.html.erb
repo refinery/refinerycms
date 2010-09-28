@@ -22,7 +22,7 @@
     <label><%= t('.maximum_image_size', :megabytes => Image::MAX_SIZE_IN_MB) %></label>
   </div>
 
-  <div<%= (" style='margin-top: #{@image.thumbnail(:medium).height - 63}px'" rescue nil) if action_name =~ /(edit)|(update)/ and !@app_dialog%>>
+  <div<%= (" style='margin-top: #{@image.thumbnail('225x255>').height - 63}px'" rescue nil) if action_name =~ /(edit)|(update)/ and !@app_dialog%>>
     <%= render :partial => "/shared/admin/form_actions",
                :locals => {
                  :f => f,
@@ -46,6 +46,6 @@
 <% if action_name =~ /(edit)|(update)/ %>
   <div style='float: right; width: 25%;'>
     <label><%=t('.current_image') %></label>
-    <%= image_fu @image, :medium, { :class => "brown_border" } %>
+    <%= image_fu @image, '225x255>', { :class => "brown_border" } %>
   </div>
 <% end %>
