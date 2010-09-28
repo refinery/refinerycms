@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    refinerycms (0.9.8.5)
+    refinerycms (0.9.9.pre)
       acts_as_indexed (~> 0.6.6)
       authlogic (~> 2.1.6)
       bundler (~> 1.0.0)
@@ -83,7 +83,7 @@ GEM
     ffi (0.6.3)
       rake (>= 0.8.7)
     filters_spam (0.3)
-    friendly_id (3.1.6)
+    friendly_id (3.1.7)
       babosa (~> 0.2.0)
     gherkin (2.2.3)
       json (~> 1.4.6)
