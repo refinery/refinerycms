@@ -5,7 +5,7 @@ module Refinery
   WINDOWS = !!(RbConfig::CONFIG["host_os"] =~ %r!(msdos|mswin|djgpp|mingw)!)
 
   class << self
-    attr_accessor :root, :s3_backend, :base_cache_key
+    attr_accessor :root, :s3_backend, :base_cache_key, :rescue_not_found
 
     def root
       @root ||= Pathname.new(File.expand_path(__FILE__).split('vendor').first.to_s)
@@ -17,6 +17,10 @@ module Refinery
 
     def base_cache_key
       @base_cache_key ||= "refinery"
+    end
+    
+    def rescue_not_found
+      !!@rescue_not_found
     end
 
     def version
