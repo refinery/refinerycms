@@ -33,3 +33,6 @@ Refinery::Application.configure do
   # Print deprecation notices to the stderr <-- :log until authlogic calms down.
   config.active_support.deprecation = :log
 end
+
+# Don't handle some exceptions with the 404 page.
+Refinery.rescue_not_found = false
