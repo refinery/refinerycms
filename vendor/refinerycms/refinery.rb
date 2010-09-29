@@ -18,7 +18,7 @@ module Refinery
     def base_cache_key
       @base_cache_key ||= "refinery"
     end
-    
+
     def rescue_not_found
       !!@rescue_not_found
     end
