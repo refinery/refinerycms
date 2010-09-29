@@ -2,41 +2,37 @@ fr:
   plugins:
     refinery_images:
       title: Images
-  no_file_chosen: Vous devez choisir un image à télécharger
-  image_should_be_smaller_than_max_image_size: Le poid des fichiers doit être plus petit que %{max_image_size}
-  image_must_be_these_formats: "Votre image doit être un fichier JPG, PNG ou GIF"
+      description: Gestion des images
+  image_specify_for_upload: Vous devez sélectionner une image à télécharger
+  image_should_be_smaller_than_max_image_size: L'image doit être plus petite que %{max_image_size}
+  image_must_be_these_formats: 'Seules les images aux formats JPG, PNG or GIF sont acceptées'
   admin:
     images:
-      image:
-        delete:
-          message: "Êtes vous sûr de vouloir supprimer '%{title}'?"
-          title: Supprimer cette image pour toujours
+      delete: Supprimer définitivement cette image
+      edit: Modifier cette image
       form:
         image: Image
-        use_current_image: Utilisé cet image
+        use_current_image: Utiliser l'image actuelle
         or: ou
-        replace_image: La replacer par celle-ci...
-        current_image: Image actuel
-        maximum_image_size: "The maximum image size is %{megabytes} megabytes."
+        replace_image: " la remplacer par celle-ci..."
+        current_image: Image actuelle
+        maximum_image_size: "La taille de l'image ne doit pas excéder %{megabytes} megaoctets."
       index:
-        create_new_image: Créer un Nouvelle Image
-        no_images_yet: Il n'y a pas encore d'image. Cliquer "Créer une Nouvelle Image" pour ajouté votre première image.
+        create_new_image: Ajouter une image
+        no_images_yet: "Il n'y a pas encore d'image. Cliquer sur 'Ajouter une image' pour en ajouter une."
         view:
-          switch_to: Changé pour la vue %{view_name}
+          switch_to: Afficher sous forme de %{view_name}
           list: liste
           grid: grille
-        search:
-          results_for: "Résultat de recherche pour '%{query}'"
       grid_view:
-        edit: Modifier cette image
-        view_live: Voir cette image <br/><em>Ouvre dans une nouvelle fenêtre</em>
-      list_view_image:
-        edit_this_image: Modifier cette image
+        view_live: "Voir cette image<br/><em>Ouvre une nouvelle fenêtre</em>"
+      existing_image:
+        button_text: Insérer
+        resize_image: Redimensionner l'image ?
+        size: Taille
       insert:
-        existing_image: Image Existante
-        new_image: Nouvelle Image
-        previous: Précédant
-        next: Suivant
-        submit_insert: Insérer
-        or: ou
-        cancel: Annuler
+        existing_image: Image existante
+        new_image: Nouvelle image
+  activerecord:
+    models:
+      image: image
