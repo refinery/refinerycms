@@ -1,7 +1,7 @@
 class Refinery::BasePresenter
 
   DEFAULT_FIELDS = {
-    :title              => Proc.new { |p| p.model.present? ? p.model.class.name.titleize : nil },
+    :title              => Proc.new { |p| (p.model.class.name.titleize if p.model.present?) },
     :path               => Proc.new { |p| p.title },
     :browser_title      => nil,
     :meta_description   => nil,
