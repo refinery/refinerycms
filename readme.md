@@ -33,6 +33,7 @@ Mac OS 10.5+ users [this shell install script](http://github.com/maddox/magick-i
 * [Update Refinery to the latest version](http://tutorials.refinerycms.org/tutorials/how-to-update-refinery-to-the-latest-version)
 * [Install Refinery on Heroku](http://tutorials.refinerycms.org/tutorials/how-to-install-refinery-on-heroku)
 * [Run the Refinery test suite](http://tutorials.refinerycms.org/tutorials/how-to-test-refinery)
+* [Use Themes with Refinery](http://github.com/resolve/refinerycms-theming#readme)
 
 ## Help and Documentation
 

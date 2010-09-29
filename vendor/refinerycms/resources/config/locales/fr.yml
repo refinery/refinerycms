@@ -1,32 +1,31 @@
 fr:
   plugins:
     refinery_files:
-      title: Ressources
-  must_choose_file: Vous devez choisir un fichier à télécharger
-  file_should_be_smaller_than_max_file_size: Le poid des fichiers doit être plus petit que %{max_file_size}
+      title: Fichiers
+      description: Gestion des fichiers
+  file_specify_for_upload: Vous devez spécifier un fichier à télécharger
+  file_should_be_smaller_than_max_file_size: Le poids maximal des fichiers est de %{max_file_size}
   admin:
     resources:
+      delete: Supprimer définitivement ce fichier
+      edit: Modifier ce fichier
       form:
-        file_to_upload: Fichier à télécharger
         download_current: Télécharger ce fichier
         or: ou
-        replace: ",remplacer par celui-ci..."
-        maximum_file_size: "The maximum file size is %{megabytes} megabytes."
+        replace: " le remplacer par celui-ci..."
+        maximum_file_size: "La taille du fichier ne doit pas excéder %{megabytes} megaoctets."
       resource:
-        download: "Télécharger ce fichier (%{size})"
-        edit: Modifier ce fichier
-        delete:
-          message: "Êtes vous sûr de vouloir supprimer le fichier '%{title}'?"
-          title: Supprimer ce fichier pour toujours
+        download: Télécharger ce fichier (%{size})
       index:
-        upload_new: Télécharger un Nouveau Fichier
-        no_files_yet: "Il n'y a pas encore de fichier. Cliquer 'Télécharger un Nouveau Fichier' pour ajouté votre premier fichier."
+        upload_new: Ajouter un nouveau fichier
+        no_files_yet: Il n'y a actuellement aucun fichier. Cliquez sur 'Ajouter un nouveau fichier' afin d'en ajouter un.
       insert:
-        existing_file: Fichier existant
+        existing: Fichier existant
         new: Nouveau fichier
-        link_to_resource: 'Lien vers cette Ressource'
-        previous: Précédant
-        next: Suivant
-        submit_insert: Insérer
-        or: ou
-        cancel: Annuler
+        no_files: Il n'y a aucun fichier.
+      existing_resource:
+        link_to_file: Lien vers ce fichier
+        button_text: Insertion
+  activerecord:
+    models:
+      resource: fichier
