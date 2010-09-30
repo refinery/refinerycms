@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    refinerycms (0.9.8.5)
+    refinerycms (0.9.9.pre)
       acts_as_indexed (~> 0.6.6)
       authlogic (~> 2.1.6)
       bundler (~> 1.0.0)
@@ -83,9 +83,9 @@ GEM
     ffi (0.6.3)
       rake (>= 0.8.7)
     filters_spam (0.3)
-    friendly_id (3.1.6)
+    friendly_id (3.1.7)
       babosa (~> 0.2.0)
-    gherkin (2.2.3)
+    gherkin (2.2.4)
       json (~> 1.4.6)
       term-ansicolor (~> 1.0.5)
       trollop (~> 1.16.2)
@@ -109,7 +109,7 @@ GEM
       rack (>= 0.4)
     rack-mount (0.6.13)
       rack (>= 1.0.0)
-    rack-test (0.5.5)
+    rack-test (0.5.6)
       rack (>= 1.0)
     rails (3.0.0)
       actionmailer (= 3.0.0)
@@ -128,7 +128,7 @@ GEM
     refinerycms-i18n (0.9.8.7)
       refinerycms (>= 0.9.8)
       routing-filter (~> 0.1.6)
-    refinerycms-inquiries (0.9.8.8)
+    refinerycms-inquiries (0.9.8.9)
       filters_spam (~> 0.2)
     rmagick (2.12.2)
     routing-filter (0.1.6)
@@ -178,11 +178,11 @@ DEPENDENCIES
   gherkin
   json_pure (~> 1.4.6)
   launchy
-  rack-test (~> 0.5.5)
+  rack-test (~> 0.5.6)
   rails (= 3.0.0)
   refinerycms!
   refinerycms-i18n (~> 0.9.8.7)
-  refinerycms-inquiries (~> 0.9.8.8)
+  refinerycms-inquiries (~> 0.9.8.9)
   rmagick (~> 2.12.0)
   rspec (~> 2.0.0.beta)
   rspec-core (~> 2.0.0.beta)
