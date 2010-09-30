@@ -1212,6 +1212,7 @@ WYMeditor.editor.prototype.update = function() {
  * @description Opens a dialog box
  */
 WYMeditor.editor.prototype.dialog = function( dialogType ) {
+  this.update();
   var path = this._wym._options.dialogPath + dialogType;
 
   this._current_unique_stamp = this.uniqueStamp();
@@ -1258,10 +1259,50 @@ WYMeditor.editor.prototype.dialog = function( dialogType ) {
 
   if ((parent_node != null) && (parent_node.tagName.toLowerCase() != WYMeditor.A))
   {
-    // wrap the current selection with a funky span (not required for webkit)
-    if (this._selected_image == null && !$.browser.webkit)
+    // wrap the current selection with a funky span.
+    if (this._selected_image == null)
     {
-      this.wrap("<span id='replace_me_with_" + this._current_unique_stamp + "'>", "</span>");
+      if (selected != null && selected.tagName.toLowerCase() != WYMeditor.A && wym._iframe.contentWindow.getSelection) {
+        // Fixes webkit issue where it would not paste at cursor.
+        selection = wym._iframe.contentWindow.getSelection();
+        selected_html = $(selected).html().replace('&nbsp;', ' ');
+
+        if ((offset = selected_html.indexOf(selection.focusNode.textContent)) == -1) {
+          offset = 0;
+        }
+        focus = offset + selection.focusOffset;
+        anchor = offset + selection.anchorOffset;
+        start = (focus < anchor) ? focus : anchor;
+        end = (focus < anchor) ? anchor : focus;
+        length = (end - start);
+
+        focusNode = selection.focusNode.tagName === undefined ? selection.focusNode.parentNode : selection.focusNode;
+        if (!($.browser.mozilla && $(focusNode).attr('_moz_dirty') !== undefined)) {
+          if (length > 0) {
+            new_html = selected_html.substring(0, start)
+                       + "<span id='replace_me_with_" + this._current_unique_stamp + "'>"
+                       + selected_html.substring(start, end)
+                       + "</span>"
+                       + selected_html.substring(end);
+          } else {
+            new_html = selected_html.substring(0, start)
+                     + "<span id='replace_me_with_" + this._current_unique_stamp + "'></span>"
+                     + selected_html.substring(end);
+          }
+        } else {
+          // Mozilla Firefox seems to throw its toys out of the cot if the paragraph is _moz_dirty
+          // and we try to get a selection of the entire text contents of the paragraph.
+          // Firefox has to use this.wrap() for this specific condition.
+          this.wrap("<span id='replace_me_with_" + this._current_unique_stamp + "'>", "</span>");
+        }
+
+        if (typeof(new_html) != 'undefined' && new_html != null) {
+          new_html = new_html.replace('  ', '&nbsp;');
+          $(selected).html(new_html);
+        }
+      } else {
+        this.wrap("<span id='replace_me_with_" + this._current_unique_stamp + "'>", "</span>");
+      }
     }
   }
   else {
@@ -1443,6 +1484,9 @@ WYMeditor.editor.prototype.insert = function(html) {
 };
 
 WYMeditor.editor.prototype.wrap = function(left, right, selection) {
+  left = (typeof(left) != 'undefined' ? left : '');
+  right = (typeof(right) != 'undefined' ? right : '');
+
   // Do we have a selection?
   if (selection == null) { selection = this._iframe.contentWindow.getSelection();}
   if (selection.focusNode != null) {
@@ -1650,7 +1694,7 @@ WYMeditor.INIT_DIALOG = function(wym, selected, isIframe) {
   // focus first textarea or input type text element
   dialog.find('input[type=text], textarea').first().focus();
 
-  dialog.find(".close_dialog").click(function(e){
+  doc.find('body').addClass('wym_iframe_body').find('#cancel_button').add(dialog.find('.close_dialog')).click(function(e){
     wym.close_dialog(e, true);
   });
 
@@ -1728,19 +1772,15 @@ WYMeditor.INIT_DIALOG = function(wym, selected, isIframe) {
   $(wym._options.dialogImageSelector).find(wym._options.submitSelector).click(function(e) {
     form = $(this.form);
     if ((url = form.find(wym._options.srcSelector).val()) != null && url.length > 0) {
-      wym._exec(WYMeditor.INSERT_IMAGE, wym._current_unique_stamp, selected);
+      (image = $('<img />'))
+        .attr(WYMeditor.SRC, url)
+        .attr(WYMeditor.TITLE, form.find(wym._options.titleSelector).val())
+        .attr(WYMeditor.ALT, form.find(wym._options.titleSelector).val())
+        .attr(WYMeditor.REL, form.find(wym._options.sizeSelector).val());
 
-      if((image = $(wym._doc.body).find("img[src*=" + wym._current_unique_stamp + "]")).length > 0) {
-        image.attr(WYMeditor.SRC, url)
-              .attr(WYMeditor.TITLE, form.find(wym._options.titleSelector).val())
-              .attr(WYMeditor.ALT, form.find(wym._options.titleSelector).val())
-              .attr(WYMeditor.REL, form.find(wym._options.sizeSelector).val());
-
-        if (!$.browser.webkit && replaceable != null && (this._selected_image == null || (this._selected_image != null && replaceable.parentNode != null)))
-        {
-          replaceable.after(image).remove();
-        }
-      }
+       if (replaceable != null) {
+         replaceable.after(image).remove();
+       }
 
       // fire a click event on the dialogs close button
       wym.close_dialog(e);
@@ -1791,8 +1831,9 @@ WYMeditor.editor.prototype.close_dialog = function(e, cancelled) {
     if ((span = $(this._doc.body).find('span#replace_me_with_' + this._current_unique_stamp)).length > 0) {
       span.parent().html(span.parent().html().replace(new RegExp(["<span(.+?)", span.attr('id'), "(.+?)<\/span>"].join("")), span.html()));
     }
-    (remove_id = $(this._doc.body).find('#replace_me_with_' + this._current_unique_stamp)).attr('id', (remove_id.attr('_id_before_replaceable') || ""));
-
+    (remove_id = $(this._doc.body).find('#replace_me_with_' + this._current_unique_stamp))
+      .attr('id', (remove_id.attr('_id_before_replaceable') || ""))
+      .replaceWith(remove_id.html());
     if (this._undo_on_cancel == true) {
       this._exec("undo");
     }
@@ -4826,7 +4867,8 @@ WYMeditor.WymClassSafari.prototype.paste = function(sData) {
       sTmp = sTmp.replace(rExp, "<br />");
       if (x == 0 && $(container).html().replace(/<br\ ?\/?>/, "").length == 0) {
         $(container).html(sTmp);
-      } else {
+      }
+      else {
         $(container).after("<p>" + sTmp + "</p>");
       }
     }
