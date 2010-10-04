@@ -1,8 +1,8 @@
 <div id='records' class='tree'>
+  <% if searching? %>
+    <h2><%= t('shared.admin.search.results_for', :query => params[:search]) %></h2>
+  <% end %>
   <% if @pages.any? %>
-    <% if searching? %>
-      <h2><%= t('shared.admin.search.results_for', :query => params[:search]) %></h2>
-    <% end %>
     <%= render :partial => 'sortable_list' %>
   <% else %>
     <p>
