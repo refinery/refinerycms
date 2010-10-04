@@ -20,7 +20,7 @@
     <label><%= t('.maximum_image_size', :megabytes => Image::MAX_SIZE_IN_MB) %></label>
   </div>
 
-  <div <%= (("style='margin-top: #{@image.thumbnail('225x225>').height - 90}px'" rescue nil) unless @image.new_record?) %>>
+  <div<%= ((" style='margin-top: #{@image.thumbnail('225x225>').height - 91}px'" rescue nil) unless @image.new_record?) %>>
     <%= render :partial => "/shared/admin/form_actions",
                :locals => {
                  :f => f,
