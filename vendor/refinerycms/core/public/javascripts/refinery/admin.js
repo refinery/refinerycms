@@ -79,6 +79,9 @@ init_interface = function() {
     e.preventDefault();
   });
   
+  $('#existing_image img').load(function(){
+    $('form.edit_image .form-actions').css('margin-top', ($('#existing_image').height() - $('form.edit_image').height() + 8));
+  });
   $('form.new_image, form.edit_image')
 }
 
