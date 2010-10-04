@@ -1,7 +1,7 @@
 <div class='clearfix'>
   <div id='records' class='clearfix<%= ' one_list' if @recent_activity.empty? or @recent_inquiries.empty? %>'>
-    <%= render :partial => "recent_activity" if @recent_activity.any? %>
-    <%= render :partial => "recent_inquiries" if @recent_inquiries.any? %>
+    <%= render :partial => "recent_activity" if @recent_activity.present? %>
+    <%= render :partial => "recent_inquiries" if @recent_inquiries.present? %>
   </div>
   <div id='actions'>
     <h2><%= t('.quick_tasks').titleize %></h2>
@@ -38,6 +38,7 @@
                       :class => "add_icon" %>
         </li>
       <% end %>
+      <%= render :partial => 'additional_dashboard_menu_items' %>
       <li>
         <%= link_to t('.see_home_page'), root_url,
                     :class => "go_icon",
