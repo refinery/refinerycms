@@ -78,11 +78,16 @@ init_interface = function() {
     $('#other_locales').animate({opacity: 'toggle', height: 'toggle'}, 250);
     e.preventDefault();
   });
-  
+
   $('#existing_image img').load(function(){
-    $('form.edit_image .form-actions').css('margin-top', ($('#existing_image').height() - $('form.edit_image').height() + 8));
+    $('form.edit_image .form-actions').css({
+      'margin-top': ($('#existing_image').height() - $('form.edit_image').height() + 8)
+    });
   });
-  $('form.new_image, form.edit_image')
+
+  $('.form-actions .form-actions-left input:submit#submit_button').click(function(e) {
+    $("<img src='/images/refinery/icons/ajax-loader.gif' width='16' height='16' class='save-loader' />").appendTo($(this).parent());
+  });
 }
 
 init_modal_dialogs = function(){
