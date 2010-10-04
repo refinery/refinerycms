@@ -1178,6 +1178,14 @@ ul#image_grid li p {
 ul#image_grid li span.actions {
   width: 100%;
 }
+#content form.edit_image {
+  width: 70%;
+  float: left;
+}
+#content #existing_image {
+  float: right;
+  width: 25%;
+}
 ul.checkboxes {
   margin: 0px;
   padding: 0px;

@@ -78,6 +78,8 @@ init_interface = function() {
     $('#other_locales').animate({opacity: 'toggle', height: 'toggle'}, 250);
     e.preventDefault();
   });
+  
+  $('form.new_image, form.edit_image')
 }
 
 init_modal_dialogs = function(){
