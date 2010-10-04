@@ -8,10 +8,6 @@ nb:
     menu:
       reorder_menu: Endre rekkefølgen på menyen
       reorder_menu_done: "Jeg er ferdig å endre rekkefølgen på menyen"
-    search: Søk
-    search_submit: Søk
-    search_results_for: "Søkeresultater for '%{query}'"
-    search_no_results: "Beklager, ditt søk returnerte ingen resultater"
     images:
       existing_image:
         submit_insert: Sett Inn
@@ -56,6 +52,10 @@ nb:
         opens_in_new_window: Åpner i et nytt vindu
         remove_current: "Fjern gjeldende %{what}"
         resource: ressurs
+      search:
+        button_text: Søk
+        results_for: "Søkeresultater for '%{query}'"
+        no_results: "Beklager, ditt søk returnerte ingen resultater"
     message:
       close: Lukk
       close_this_message: Lukk denne meldingen
