@@ -786,6 +786,9 @@ body.dialog form {
   height: 300px;
   padding: 12px;
 }
+.dialog #existing_image_area_content {
+  margin-top: 28px;
+}
 .dialog #existing_image_area_content ul {
   margin: 0px;
   padding: 0px;
@@ -1130,6 +1133,11 @@ a#toggle_advanced_options:hover {
 }
 #dialog_container.dialog.iframed #content .form-actions {
   position: fixed;
+}
+body.dialog #content .search_form {
+  float: right;
+  width: auto !important;
+  min-width: 270px;
 }
 #existing_image_area {
   padding-top:6px;
