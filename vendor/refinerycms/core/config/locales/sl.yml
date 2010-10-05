@@ -43,8 +43,9 @@ sl:
         remove_current: "Odstrani trenutno %{what}"
         change: Kliknite tukaj za izbiro slike
         show: Prikaži
-      resource_picker:
-        none_selected: "Trenutno ni izbrana nobena %{what}, prosimo kliknite tukaj da dodate eno."
+      resource_picker:  
+        no_resource_selected: "Trenutno ni izbrana nobena %{what}, prosimo kliknite tukaj da dodate eno."
+        name: Dodaj datoteko
         current: "Trenutna %{what}"
         download_current: "Prenesi trenutno %{what}"
         opens_in_new_window: Odpri v novem oknu

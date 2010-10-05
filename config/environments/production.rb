@@ -25,7 +25,7 @@ Refinery::Application.configure do
   # config.logger = SyslogLogger.new
 
   # Use a different cache store in production
-  config.cache_store = :memory_store
+  # config.cache_store = :memory_store
 
   # Disable Rails's static asset server (Rails default)
   # In production, Apache or nginx will already do this
@@ -55,3 +55,6 @@ end
 # instead of the default file system for resources and images
 # Make sure to your bucket info is correct in amazon_s3.yml
 Refinery.s3_backend = !(ENV['S3_KEY'].nil? || ENV['S3_SECRET'].nil?)
+
+# Handle some exceptions with the 404 page.
+Refinery.rescue_not_found = true

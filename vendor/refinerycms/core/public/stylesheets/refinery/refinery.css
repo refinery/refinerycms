@@ -267,13 +267,13 @@ body.login label, body.login a {
 body.login #flash_container, body.login .errorExplanation {
   margin-bottom: 12px;
 }
-div.field.plugin_access ul#plugins li {
+div.field.checkbox_access ul.checkboxes li {
   margin-top: 3px;
 }
-div.field.plugin_access {
+div.field.checkbox_access {
   margin-top: 20px;
 }
-div.field.plugin_access .label_with_help a {
+div.field.checkbox_access .label_with_help a {
   font-weight: normal;
 }
 /* Works in Firefox, Safari, Chrome, IE8+ */
@@ -1106,6 +1106,11 @@ a#toggle_advanced_options:hover {
 #content .form-actions .form-actions-right, .wym_dialog .form-actions .form-actions-right, .ui-dialog .form-actions .form-actions-right {
   right: 10px;
 }
+#content .form-actions .save-loader {
+  position: absolute;
+  right: -24px;
+  top: 4px;
+}
 .wym_dialog .form-actions, .ui-dialog .form-actions {
   border: 0px none;
   border-top: 1px solid #E8E8E8;
@@ -1178,11 +1183,19 @@ ul#image_grid li p {
 ul#image_grid li span.actions {
   width: 100%;
 }
-ul#plugins {
+#content form.edit_image {
+  width: 70%;
+  float: left;
+}
+#content #existing_image {
+  float: right;
+  width: 25%;
+}
+ul.checkboxes {
   margin: 0px;
   padding: 0px;
 }
-ul#plugins li {
+ul.checkboxes li {
   list-style: none;
 }
 .label_inline_with_link label {
