@@ -1,6 +1,6 @@
 <%
   apply_css = true unless defined?(apply_css)
-  if apply_css and (classes = css_for_menu_branch(menu_branch, menu_branch_counter, sibling_count||=nil)).any?
+  if apply_css and (classes = css_for_menu_branch(menu_branch, menu_branch_counter, sibling_count||=nil, collection)).any?
     css = "class='#{classes.join(' ')}'"
   end
   dom_id = ("id='item_#{menu_branch_counter}'" if menu_branch.parent_id.nil? and menu_branch.title.present?)
