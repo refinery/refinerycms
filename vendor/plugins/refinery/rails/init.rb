@@ -18,6 +18,6 @@ require_dependency 'refinery/base_presenter'
 ].uniq.each do |path|
   Dir[path].each do |presenters_path|
     $LOAD_PATH << presenters_path
-    ::ActiveSupport::Dependencies.load_paths << presenters_path
+    ::ActiveSupport::Dependencies.autoload_paths << presenters_path
   end
 end

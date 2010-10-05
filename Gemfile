@@ -20,7 +20,7 @@ gem 'sqlite3-ruby', :require => 'sqlite3' #db_adapter=sqlite3
 gem 'acts_as_indexed',  '= 0.6.6', :require => 'acts_as_indexed'
 gem 'authlogic',        '= 2.1.6', :require => 'authlogic'
 gem 'friendly_id',      '= 3.1.3', :require => 'friendly_id'
-gem 'rails',            '= 2.3.8'
+gem 'rails',            '= 2.3.9'
 gem 'rmagick',          '~> 2.12.0'
 gem 'truncate_html',    '= 0.3.2', :require => 'truncate_html'
 gem 'will_paginate',    '= 2.3.14', :require => 'will_paginate'
