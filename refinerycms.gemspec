@@ -2,9 +2,9 @@
 
 Gem::Specification.new do |s|
   s.name              = %q{refinerycms}
-  s.version           = %q{0.9.8.5}
+  s.version           = %q{0.9.9.pre}
   s.description       = %q{A Ruby on Rails CMS that supports Rails 3. It's easy to extend and sticks to 'the Rails way' where possible.}
-  s.date              = %q{2010-09-21}
+  s.date              = %q{2010-10-05}
   s.summary           = %q{A Ruby on Rails CMS that supports Rails 3}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
@@ -89,6 +89,7 @@ Gem::Specification.new do |s|
     'db/migrate/20100826232810_move_inquiry_settings_to_refinery_settings.rb',
     'db/migrate/20100831122919_move_page_to_nested_set.rb',
     'db/migrate/20100913234704_add_cached_slug_to_pages.rb',
+    'db/migrate/20100929035252_add_missing_indexes_to_roles_users.rb',
     'db/schema.rb',
     'db/seeds',
     'db/seeds.rb',
@@ -142,6 +143,7 @@ Gem::Specification.new do |s|
     'vendor/refinerycms/authentication/config/locales/es.yml',
     'vendor/refinerycms/authentication/config/locales/fr.yml',
     'vendor/refinerycms/authentication/config/locales/it.yml',
+    'vendor/refinerycms/authentication/config/locales/lolcat.yml',
     'vendor/refinerycms/authentication/config/locales/lv.yml',
     'vendor/refinerycms/authentication/config/locales/nb.yml',
     'vendor/refinerycms/authentication/config/locales/nl.yml',
@@ -220,6 +222,7 @@ Gem::Specification.new do |s|
     'vendor/refinerycms/core/config/locales/es.yml',
     'vendor/refinerycms/core/config/locales/fr.yml',
     'vendor/refinerycms/core/config/locales/it.yml',
+    'vendor/refinerycms/core/config/locales/lolcat.yml',
     'vendor/refinerycms/core/config/locales/lv.yml',
     'vendor/refinerycms/core/config/locales/nb.yml',
     'vendor/refinerycms/core/config/locales/nl.yml',
@@ -272,6 +275,7 @@ Gem::Specification.new do |s|
     'vendor/refinerycms/core/lib/generators/refinery_engine/templates/config',
     'vendor/refinerycms/core/lib/generators/refinery_engine/templates/config/locales',
     'vendor/refinerycms/core/lib/generators/refinery_engine/templates/config/locales/en.yml',
+    'vendor/refinerycms/core/lib/generators/refinery_engine/templates/config/locales/lolcat.yml',
     'vendor/refinerycms/core/lib/generators/refinery_engine/templates/config/locales/nb.yml',
     'vendor/refinerycms/core/lib/generators/refinery_engine/templates/config/locales/nl.yml',
     'vendor/refinerycms/core/lib/generators/refinery_engine/templates/config/routes.rb',
@@ -780,6 +784,7 @@ Gem::Specification.new do |s|
     'vendor/refinerycms/dashboard/app/views',
     'vendor/refinerycms/dashboard/app/views/admin',
     'vendor/refinerycms/dashboard/app/views/admin/dashboard',
+    'vendor/refinerycms/dashboard/app/views/admin/dashboard/_additional_dashboard_menu_items.html.erb',
     'vendor/refinerycms/dashboard/app/views/admin/dashboard/_recent_activity.html.erb',
     'vendor/refinerycms/dashboard/app/views/admin/dashboard/_recent_inquiries.html.erb',
     'vendor/refinerycms/dashboard/app/views/admin/dashboard/index.html.erb',
@@ -792,6 +797,7 @@ Gem::Specification.new do |s|
     'vendor/refinerycms/dashboard/config/locales/es.yml',
     'vendor/refinerycms/dashboard/config/locales/fr.yml',
     'vendor/refinerycms/dashboard/config/locales/it.yml',
+    'vendor/refinerycms/dashboard/config/locales/lolcat.yml',
     'vendor/refinerycms/dashboard/config/locales/lv.yml',
     'vendor/refinerycms/dashboard/config/locales/nb.yml',
     'vendor/refinerycms/dashboard/config/locales/nl.yml',
@@ -838,6 +844,7 @@ Gem::Specification.new do |s|
     'vendor/refinerycms/images/config/locales/es.yml',
     'vendor/refinerycms/images/config/locales/fr.yml',
     'vendor/refinerycms/images/config/locales/it.yml',
+    'vendor/refinerycms/images/config/locales/lolcat.yml',
     'vendor/refinerycms/images/config/locales/lv.yml',
     'vendor/refinerycms/images/config/locales/nb.yml',
     'vendor/refinerycms/images/config/locales/nl.yml',
@@ -905,6 +912,7 @@ Gem::Specification.new do |s|
     'vendor/refinerycms/pages/config/locales/es.yml',
     'vendor/refinerycms/pages/config/locales/fr.yml',
     'vendor/refinerycms/pages/config/locales/it.yml',
+    'vendor/refinerycms/pages/config/locales/lolcat.yml',
     'vendor/refinerycms/pages/config/locales/lv.yml',
     'vendor/refinerycms/pages/config/locales/nb.yml',
     'vendor/refinerycms/pages/config/locales/nl.yml',
@@ -954,6 +962,7 @@ Gem::Specification.new do |s|
     'vendor/refinerycms/resources/config/locales/es.yml',
     'vendor/refinerycms/resources/config/locales/fr.yml',
     'vendor/refinerycms/resources/config/locales/it.yml',
+    'vendor/refinerycms/resources/config/locales/lolcat.yml',
     'vendor/refinerycms/resources/config/locales/lv.yml',
     'vendor/refinerycms/resources/config/locales/nb.yml',
     'vendor/refinerycms/resources/config/locales/nl.yml',
@@ -997,6 +1006,7 @@ Gem::Specification.new do |s|
     'vendor/refinerycms/settings/config/locales/es.yml',
     'vendor/refinerycms/settings/config/locales/fr.yml',
     'vendor/refinerycms/settings/config/locales/it.yml',
+    'vendor/refinerycms/settings/config/locales/lolcat.yml',
     'vendor/refinerycms/settings/config/locales/lv.yml',
     'vendor/refinerycms/settings/config/locales/nb.yml',
     'vendor/refinerycms/settings/config/locales/nl.yml',
@@ -1013,6 +1023,9 @@ Gem::Specification.new do |s|
     'vendor/refinerycms/settings/features/support/paths.rb',
     'vendor/refinerycms/settings/lib',
     'vendor/refinerycms/settings/lib/settings.rb',
-    'vendor/refinerycms/settings/readme.md'
+    'vendor/refinerycms/settings/readme.md',
+    'vendor/refinerycms/settings/spec',
+    'vendor/refinerycms/settings/spec/models',
+    'vendor/refinerycms/settings/spec/models/refinery_setting_spec.rb'
   ]
 end

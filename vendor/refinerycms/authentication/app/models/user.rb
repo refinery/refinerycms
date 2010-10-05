@@ -34,11 +34,11 @@ class User < ActiveRecord::Base
   #-------------------------------------------------------------------------------------------------
 
   has_and_belongs_to_many :roles
-  has_many :plugins, :class_name => "UserPlugin", :order => "position ASC"
+  has_many :plugins, :class_name => "UserPlugin", :order => "position ASC", :dependent => :destroy
   has_friendly_id :login, :use_slug => true
 
   def plugins=(plugin_names)
-    unless self.new_record? # don't add plugins when the user_id is NULL.
+    unless self.new_record? # don't add plugins when the user_id is nil.
       self.plugins.delete_all
 
       plugin_names.each_with_index do |plugin_name, index|

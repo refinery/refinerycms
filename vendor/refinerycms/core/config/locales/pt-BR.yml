@@ -49,6 +49,9 @@ pt-BR:
         download_current: "Fazer download do %{what} atual"
         opens_in_new_window: Abre em uma nova janela
         remove_current: "Remover %{what} atual"
+        no_resource_selected: Atualmente não existe nenhuma arquivo selecionado, por favor clique aqui para adicionar um.
+        name: Anexar arquivo
+        current: Arquivo atual
       search:
         button_text: Buscar
         results_for: "Resultados da busca por '%{query}'"

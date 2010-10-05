@@ -14,13 +14,17 @@
       <% end -%>
     </ul>
   </div>
+
   <%= images_paginator @images, from_dialog? %>
+
   <% unless @app_dialog %>
     <div id='existing_image_size_area' class='clearfix'>
       <input type='hidden' name='selected_image_size' id='selected_image_size' />
       <p>
         <input type="checkbox" id="wants_to_resize_image" name="wants_to_resize_image" value="1" checked="checked" />
-        <label for='wants_to_resize_image' class='stripped'><strong><%= t('.resize_image').html_safe %></strong></label>
+        <label for='wants_to_resize_image' class='stripped' style='font-weight: bold;'>
+          <%= t('.resize_image').html_safe %>
+        </label>
       </p>
       <ul>
         <%
@@ -32,7 +36,7 @@
           ).sort_by{|k,v| v}.each_with_index do |(size, pixels), index|
             safe_pixels = pixels.to_s.gsub(/[<>=]/, '')
         -%>
-            <li id="image_dialog_size_<%= index %>" class="image_dialog_size <%= 'selected' if size.to_s == 'medium' %>">
+            <li id="image_dialog_size_<%= index %>" class="image_dialog_size<%= ' selected' if size.to_s == 'medium' %>">
               <%= link_to size.to_s, "##{size}",
                           :'data-size' => pixels,
                           :title   => "#{size} image (#{safe_pixels})",
@@ -42,6 +46,7 @@
       </ul>
     </div>
   <% end %>
+
   <%= render :partial => "/shared/admin/form_actions",
              :locals => {
                :f => nil,
