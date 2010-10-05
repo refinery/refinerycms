@@ -35,10 +35,12 @@ class Admin::ImagesController < Admin::BaseController
       extra_condition[1] = true if extra_condition[1] == "true"
       extra_condition[1] = false if extra_condition[1] == "false"
       extra_condition[1] = nil if extra_condition[1] == "nil"
-      paginate_images({extra_condition[0].to_sym => extra_condition[1]})
-    else
-      paginate_images
     end
+
+    find_all_images(({extra_condition[0].to_sym => extra_condition[1]} if extra_condition.present?))
+    search_all_images if searching?
+
+    paginate_images
 
     render :action => "insert"
   end
@@ -98,11 +100,9 @@ protected
     @conditions = params[:conditions]
   end
 
-  def paginate_images(conditions={})
-    @images = Image.paginate :page => (@paginate_page_number ||= params[:page]),
-                             :conditions => conditions,
-                             :order => 'created_at DESC',
-                             :per_page => Image.per_page(from_dialog?, !@app_dialog)
+  def paginate_images
+    @images = @images.paginate(:page => (@paginate_page_number ||= params[:page]),
+                               :per_page => Image.per_page(from_dialog?, !@app_dialog))
   end
 
   def restrict_controller
