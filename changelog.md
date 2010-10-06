@@ -1,3 +1,23 @@
+## 0.9.9 [Unreleased]
+
+* Better, more semantic HTML5. [Joe Sak](http://github.com/joemsak)
+* Added ``role`` selection for ``admin/users#edit`` [Hez Ronningen](http://github.com/hez)
+* Fixed WYMeditor bug regarding adding links, helped with persistent testing by [Marko Hriberšek](http://github.com/markoh). [Philip Arndt](http://github.com/parndt)
+* Better ``RSpec`` coverage [Joe Sak](http://github.com/joemsak) and [Philip Arndt](http://github.com/parndt)
+* Superusers now get access to all backend tabs by default. [Philip Arndt](http://github.com/parndt)
+* Introduced LOLcat translation (yes, seriously) as an easter egg. [Steven Heidel](http://github.com/stevenheidel)
+* Fixed several missing translations. [Johan Bruning](http://github.com/GidoGeek)
+* Solved several i18n inconsistencies [Jonas Hartmann](http://github.com/ionas)
+* Made ``UserPlugin`` dependent on ``User`` which solves a data redundancy problem [Maarten Hoogendoorn](http://github.com/moretea)
+* Fixed issue with finding where engines are located on the disk using ``Plugin::pathname`` [Lele](http://github.com/leleintercom)
+* Add ``rescue_not_found`` option to turn on/off 404 rendering. [Ryan Bigg](http://github.com/radar)
+* Full review of the French translations [Jérémie Horhant](http://github.com/Titinux)
+* Now using ``mail()`` to send emails. [J. Edward Dewyea](http://github.com/commuter)
+* Refactored backend HTML & CSS, reduced complexity and added a loading animation when you click Save on forms. [Philip Arndt](http://github.com/parndt)
+* Improved the speed of the menu especially related to scaling through reusing collections rather then revisiting the database. [Amanda Wagener](http://github.com/awagener)
+* Implemented an API for the ``pages`` form's tabs. [David Jones](http://github.com/djones)
+* [See full list](http://github.com/resolve/refinerycms/compare/0.9.8.5...0.9.9)
+
 ## 0.9.8.5 [21 September 2010](http://github.com/parndt)
 * Fixed an issue with the engine generator that was putting a comma in the wrong place breaking the call to ``crudify``. [Maarten Hoogendoorn](http://github.com/moretea)
 * Made the delete messages consistent. [Uģis Ozols](http://github.com/ugisozols)
