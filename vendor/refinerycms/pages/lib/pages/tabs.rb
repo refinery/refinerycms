@@ -8,15 +8,15 @@ module Refinery
     end
 
     class Tab
-      attr_accessor :name, :template
+      attr_accessor :name, :partial
 
       def self.register(&block)
         tab = self.new
 
         yield tab
 
-        raise "A tab MUST have a name!: #{tab.inspect}" if tab.name.nil?
-        raise "A tab MUST have a template!: #{tab.inspect}" if tab.template.nil?
+        raise "A tab MUST have a name!: #{tab.inspect}" if tab.name.blank?
+        raise "A tab MUST have a partial!: #{tab.inspect}" if tab.partial.blank?
       end
 
     protected

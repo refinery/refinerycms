@@ -40,7 +40,7 @@
     <% end %>
     <% Refinery::Pages.tabs.each_with_index do |tab, tab_index| %>
       <div class='page_part' id='<%= "custom_tab_#{tab_index}" %>'>
-        <%= render :template => tab.template %>
+        <%= render :partial => tab.partial, :locals => {:f => f} %>
       </div>
     <% end %>
   </div>
