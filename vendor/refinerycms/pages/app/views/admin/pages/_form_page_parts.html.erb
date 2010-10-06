@@ -22,7 +22,7 @@
       </li>
     <% end %>
     <% Refinery::Pages.tabs.each_with_index do |tab, tab_index| %>
-      <li class='ui-state-default'>
+      <li class='ui-state-default' id="custom_<%= tab.name %>_tab">
         <%= link_to tab.name.titleize, "#custom_tab_#{tab_index}" %>
       </li>
     <% end %>
