@@ -17,7 +17,7 @@ class RefineryEngineGenerator < Rails::Generators::NamedBase
       end
 
       # Update the gem file
-      if Rails.env != 'test' and self.behavior != :revoke
+      if !Rails.env.test? and self.behavior != :revoke
         Rails.root.join('Gemfile').open('a') do |f|
           f.write "\ngem 'refinerycms-#{plural_name}', '1.0', :path => 'vendor/engines', :require => '#{plural_name}'"
         end
