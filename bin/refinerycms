@@ -135,7 +135,7 @@ module Refinery
       # Copy in important files to the Rails app.
       %w(.gitignore readme.md license.md config/routes.rb config/settings.rb config/environments/production.rb
           config/initializers/acts_as_indexed_config.rb config/initializers/field_with_error_fix.rb
-          config/initializers/fix_rack.rb).each do |file|
+          config/initializers/fix_rack.rb config/cucumber.yml).each do |file|
         FileUtils::cp_r Refinery.root.join(file), @app_path.join(file), :verbose => false if Refinery.root.join(file).exist?
       end
 
