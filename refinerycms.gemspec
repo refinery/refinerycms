@@ -926,6 +926,7 @@ Gem::Specification.new do |s|
     'vendor/refinerycms/pages/lib/pages',
     'vendor/refinerycms/pages/lib/pages.rb',
     'vendor/refinerycms/pages/lib/pages/marketable_routes.rb',
+    'vendor/refinerycms/pages/lib/pages/tabs.rb',
     'vendor/refinerycms/pages/readme.md',
     'vendor/refinerycms/pages/spec',
     'vendor/refinerycms/pages/spec/models',
