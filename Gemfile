@@ -36,10 +36,11 @@ gem 'mysql', '2.8.1'
 gem 'refinerycms',              :path => '.'
 
 # Specify additional Refinery CMS Engines here (all optional):
-gem 'refinerycms-inquiries',    '~> 0.9.8.9'
+gem 'refinerycms-inquiries',    '~> 0.9.8.10'
 # gem 'refinerycms-news',       '~> 0.9.9'
 # gem 'refinerycms-portfolio',  '~> 0.9.8'
 # gem 'refinerycms-theming',    '~> 0.9.8.1'
+# gem 'refinerycms-search',     '~> 0.9.8'
 
 # Add i18n support (optional, you can remove this if you really want to).
 gem 'refinerycms-i18n',         '~> 0.9.8.7'
@@ -53,10 +54,6 @@ rmagick_options.update({
 
 # Specify a version of RMagick that works in your environment:
 gem 'rmagick',                  '~> 2.12.0', rmagick_options
-
-# END REFINERY CMS ============================================================
-
-# REFINERY CMS DEVELOPMENT ====================================================
 
 group :test do
   # RSpec
@@ -85,7 +82,9 @@ group :test do
   gem 'autotest-notification'
 end
 
-#===REFINERY END OF REQUIRED GEMS===
+# END REFINERY CMS ============================================================
+
+# REFINERY CMS DEVELOPMENT ====================================================
 
 # Bundle gems for certain environments:
 

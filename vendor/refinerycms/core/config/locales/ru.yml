@@ -8,10 +8,6 @@ ru:
     menu:
       reorder_menu: Изменить порядок в меню
       reorder_menu_done: Сохранить такой порядок в меню
-    search: Поиск
-    search_submit: Далее
-    search_results_for: "Результаты поиска для &laquo;{{query}}&raquo;"
-    search_no_results: Ничего не найдено
     images:
       existing_image:
         submit_insert: Вставить
@@ -55,7 +51,11 @@ ru:
         download_current: "Download current {{what}}"
         opens_in_new_window: Opens in a new window
         remove_current: "Remove current {{what}}"
-        resource: resource
+        resource: resource      
+      search:
+        button_text: Поиск
+        results_for: "Результаты поиска для &laquo;{{query}}&raquo;"
+        no_results: Ничего не найдено
     message:
       close: Закрыть
       close_this_message: Закрыть это сообщение

@@ -1,3 +1,29 @@
+<div id='records'>
+  <%% if searching? %>
+    <h2><%%= t('shared.admin.search.results_for', :query => params[:search]) %></h2>
+  <%% end %>
+  <%% if @<%= plural_name %>.any? %>
+    <%%= will_paginate @<%= plural_name %>,
+                       :previous_label => '&laquo;',
+                       :next_label => '&raquo;' %>
+
+    <%%= render :partial => "sortable_list" %>
+
+    <%%= will_paginate @<%= plural_name %>,
+                       :previous_label => '&laquo;',
+                       :next_label => '&raquo;' %>
+  <%% else %>
+    <p>
+      <%% unless searching? %>
+        <strong>
+          <%%= t('.no_items_yet') %>
+        </strong>
+      <%% else %>
+        <%%= t('shared.admin.search.no_results') %>
+      <%% end %>
+    </p>
+  <%% end %>
+</div>
 <div id='actions'>
   <ul>
     <li>
@@ -25,39 +51,6 @@
     </li>
   <%% end %>
   </ul>
-</div>
-<div id='records'>
-  <%% if searching? %>
-    <h2><%%= t('shared.admin.search.results_for', :query => params[:search]) %></h2>
-    <%% if @<%= plural_name %>.any? %>
-      <%%= will_paginate @<%= plural_name %>, :previous_label => '&laquo;', :next_label => '&raquo;' %>
-      <ul>
-        <%%= render :partial => "<%= singular_name %>",
-                    :collection => @<%= plural_name %> %>
-      </ul>
-      <%%= will_paginate @<%= plural_name %>, :previous_label => '&laquo;', :next_label => '&raquo;' %>
-    <%% else %>
-      <p><%%= t('shared.admin.search.no_results') %></p>
-    <%% end %>
-  <%% else %>
-    <%% if @<%= plural_name %>.any? %>
-      <%%= will_paginate @<%= plural_name %>,
-                         :previous_label => '&laquo;',
-                         :next_label => '&raquo;' %>
-
-      <%%= render :partial => "sortable_list" %>
-
-      <%%= will_paginate @<%= plural_name %>,
-                         :previous_label => '&laquo;',
-                         :next_label => '&raquo;' %>
-    <%% else %>
-      <p>
-        <strong>
-          <%%= t('.no_items_yet') %>
-        </strong>
-      </p>
-    <%% end %>
-  <%% end %>
 </div>
 <%%= render :partial => "/shared/admin/make_sortable",
             :locals => {

@@ -8,10 +8,6 @@ it:
     menu:
       reorder_menu: Riordina menu
       reorder_menu_done: "Ho finito riordino del menu"
-    search: Cerca
-    search_submit: Andare
-    search_results_for: "Risultati della ricerca per '%{query}'"
-    search_no_results: "Spiacenti, nessun risultato trovato"
   refinery:
     other: "Altro %{what}"
     reorder: "Riordina %{what}"
@@ -51,6 +47,10 @@ it:
         opens_in_new_window: Apre in una nuova finestra
         remove_current: "Togliere corrente %{what}"
         resource: risorsa
+      search:
+        button_text: Cerca
+        results_for: "Risultati della ricerca per '%{query}'"
+        no_results: "Spiacenti, nessun risultato trovato"
     message:
       close: Fine
 

@@ -1106,6 +1106,11 @@ a#toggle_advanced_options:hover {
 #content .form-actions .form-actions-right, .wym_dialog .form-actions .form-actions-right, .ui-dialog .form-actions .form-actions-right {
   right: 10px;
 }
+#content .form-actions .save-loader {
+  position: absolute;
+  right: -24px;
+  top: 4px;
+}
 .wym_dialog .form-actions, .ui-dialog .form-actions {
   border: 0px none;
   border-top: 1px solid #E8E8E8;
@@ -1177,6 +1182,14 @@ ul#image_grid li p {
 }
 ul#image_grid li span.actions {
   width: 100%;
+}
+#content form.edit_image {
+  width: 70%;
+  float: left;
+}
+#content #existing_image {
+  float: right;
+  width: 25%;
 }
 ul.checkboxes {
   margin: 0px;
