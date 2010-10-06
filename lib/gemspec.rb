@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 require File.expand_path('../../vendor/refinerycms/refinery.rb', __FILE__)
 files = %w( .gitignore .yardopts Gemfile *.md ).map { |file| Dir[file] }.flatten
-%w(app bin config db features lib public script test themes vendor).sort.each do |dir|
+%w(app bin config db features lib public script spec test themes vendor).sort.each do |dir|
   files += Dir.glob("#{dir}/**/*")
 end
 rejection_patterns = [
@@ -11,7 +11,6 @@ rejection_patterns = [
   "^config\/(database|i18n\-js).yml$",
   "^public\/",
   "^lib\/gemspec\.rb",
-  "^lib\/tasks",
   ".*\/cache\/",
   "^db\/.*\.sqlite3?(-journal)?$",
   "^script\/*",
