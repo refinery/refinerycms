@@ -8,10 +8,6 @@ da:
     menu:
       reorder_menu: Omorganisér menuen
       reorder_menu_done: "Jeg er færdig med omorganiseringen"
-    search: Søg
-    search_submit: Søg
-    search_results_for: "Søgeresultat for '%{query}'"
-    search_no_results: "Desværre, din søgning gav ingen resultater"
   refinery:
     other: "Anden %{what}"
     reorder: "Redigér rækkefølgen af %{what}"
@@ -51,6 +47,10 @@ da:
         opens_in_new_window: "Åbner i nyt vindue"
         remove_current: "Fjern nuværende %{what}"
         resource: fil
+      search:
+        button_text: Søg
+        results_for: "Søgeresultat for '%{query}'"
+        no_results: "Desværre, din søgning gav ingen resultater"
     message:
       close: Luk
   activerecord:
