@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 gem 'bundler',                  '~> 1.0.0'
-gem 'rails',                    '3.0.0'
+gem 'rails',                    '= 3.0.0'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -55,10 +55,6 @@ rmagick_options.update({
 # Specify a version of RMagick that works in your environment:
 gem 'rmagick',                  '~> 2.12.0', rmagick_options
 
-# END REFINERY CMS ============================================================
-
-# REFINERY CMS DEVELOPMENT ====================================================
-
 group :test do
   # RSpec
   gem 'rspec',                  (RSPEC_VERSION = '~> 2.0.0.beta')
@@ -86,7 +82,9 @@ group :test do
   gem 'autotest-notification'
 end
 
-#===REFINERY END OF REQUIRED GEMS===
+# END REFINERY CMS ============================================================
+
+# REFINERY CMS DEVELOPMENT ====================================================
 
 # Bundle gems for certain environments:
 

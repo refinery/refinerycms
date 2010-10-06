@@ -1,4 +1,4 @@
-@images @images-manage
+@refinerycms @images @images-manage
 Feature: Manage Images
   In order to control the content on my website
   As an administrator
