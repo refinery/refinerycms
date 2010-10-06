@@ -28,11 +28,6 @@ module Refinery
             :updated_image => "page_edit.png"
           }
         end
-        
-        Refinery::Pages::Tab.register do |tab|
-          tab.name = "images"
-          tab.template = "/admin/pages/tabs/images"
-        end
       end
 
       initializer 'add marketable routes' do |app|
