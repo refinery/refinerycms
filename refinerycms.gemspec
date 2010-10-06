@@ -4,7 +4,7 @@ Gem::Specification.new do |s|
   s.name              = %q{refinerycms}
   s.version           = %q{0.9.9.pre}
   s.description       = %q{A Ruby on Rails CMS that supports Rails 3. It's easy to extend and sticks to 'the Rails way' where possible.}
-  s.date              = %q{2010-10-05}
+  s.date              = %q{2010-10-06}
   s.summary           = %q{A Ruby on Rails CMS that supports Rails 3}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
@@ -36,9 +36,6 @@ Gem::Specification.new do |s|
     'app/controllers/application_controller.rb',
     'app/helpers',
     'app/helpers/application_helper.rb',
-    'app/mailers',
-    'app/models',
-    'app/views',
     'bin/refinerycms',
     'changelog.md',
     'config/database.yml.mysql',
@@ -290,7 +287,6 @@ Gem::Specification.new do |s|
     'vendor/refinerycms/core/lib/generators/refinery_engine/templates/lib/plural_name.rb',
     'vendor/refinerycms/core/lib/generators/refinery_engine/templates/lib/tasks',
     'vendor/refinerycms/core/lib/generators/refinery_engine/templates/lib/tasks/plural_name.rake',
-    'vendor/refinerycms/core/lib/generators/refinery_engine/templates/public',
     'vendor/refinerycms/core/lib/generators/refinery_engine/templates/readme.md',
     'vendor/refinerycms/core/lib/generators/refinery_engine/templates/refinerycms-plural_name.gemspec',
     'vendor/refinerycms/core/lib/refinery',
@@ -808,7 +804,6 @@ Gem::Specification.new do |s|
     'vendor/refinerycms/dashboard/config/routes.rb',
     'vendor/refinerycms/dashboard/features',
     'vendor/refinerycms/dashboard/features/dashboard.feature',
-    'vendor/refinerycms/dashboard/features/step_definitions',
     'vendor/refinerycms/dashboard/features/support',
     'vendor/refinerycms/dashboard/features/support/paths.rb',
     'vendor/refinerycms/dashboard/lib',

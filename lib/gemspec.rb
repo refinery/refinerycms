@@ -22,7 +22,7 @@ rejection_patterns = [
 ]
 
 files.reject! do |f|
-  !File.exist?(f) or f =~ %r{(#{rejection_patterns.join(')|(')})}
+  !File.exist?(f) or f =~ %r{(#{rejection_patterns.join(')|(')})} or (File.directory?(f) and Dir[File.join(f, "*")].empty?)
 end
 
 gemspec = <<EOF
