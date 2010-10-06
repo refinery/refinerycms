@@ -79,7 +79,7 @@ class Page < ActiveRecord::Base
   # It automatically prints out this page title and all of it's parent page titles joined by a PATH_SEPARATOR
   def path(options = {})
     # Handle deprecated boolean
-    if %w(trueclass falseclass).include?(options.class.to_s.downcase)
+    if [true, false].include?(options)
       warning = "Page::path does not want a boolean (you gave #{options.inspect}) anymore. "
       warning << "Please change this to {:reversed => #{options.inspect}}. "
       warn(warning << "\nCalled from #{caller.first.inspect}")
