@@ -3,12 +3,17 @@ require 'awesome_nested_set'
 
 module Refinery
   module Pages
+
     class Engine < Rails::Engine
 
       # Register cache sweeper, ensuring that we don't overwrite any other observers.
       config.autoload_paths += %W(#{config.root}/app/sweepers)
       (config.active_record.observers ||= []) << :page_sweeper
-
+      
+      config.to_prepare do
+        require File.expand_path('../pages/tabs', __FILE__)
+      end
+      
       config.after_initialize do
         Refinery::Plugin.register do |plugin|
           plugin.name = "refinery_pages"
@@ -22,6 +27,11 @@ module Refinery
             :created_image => "page_add.png",
             :updated_image => "page_edit.png"
           }
+        end
+        
+        Refinery::Pages::Tab.register do |tab|
+          tab.name = "images"
+          tab.template = "/admin/pages/tabs/images"
         end
       end
 
