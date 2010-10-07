@@ -140,8 +140,17 @@ module Refinery
         FileUtils::cp_r Refinery.root.join(file), @app_path.join(file), :verbose => false if Refinery.root.join(file).exist?
       end
 
+      # Copy javascripts so they're ready to use.
+      %w(admin.js).map{|javascript|
+        Refinery.root.join('vendor', 'refinerycms', 'core', 'public', 'javascripts', javascript)
+      }.each do |javascript|
+        FileUtils::cp javascript.to_s,
+                      @app_path.join('public', 'javascripts').to_s,
+                      :verbose => false if javascript.file?
+      end
+
       # Copy stylesheets so they're ready to use.
-      %w(application.css formatting.css home.css).map{|stylesheet|
+      %w(application.css formatting.css home.css theme.css).map{|stylesheet|
         Refinery.root.join('vendor', 'refinerycms', 'core', 'public', 'stylesheets', stylesheet)
       }.each do |stylesheet|
         FileUtils::cp stylesheet.to_s,
