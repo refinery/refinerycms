@@ -4,7 +4,6 @@ db/*.sqlite3
 db/*.sqlite3-journal
 *.log
 tmp/**/*
-.rvmrc
 
 # Documentation
 doc/api
@@ -75,7 +74,6 @@ config/rackspace_cloudfiles.yml
 # sass
 .sass-cache
 .sass-cache/*
-
 
 #rvm
 .rvmrc

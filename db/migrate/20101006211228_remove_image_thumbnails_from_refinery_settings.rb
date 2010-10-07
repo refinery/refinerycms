@@ -4,7 +4,7 @@ class RemoveImageThumbnailsFromRefinerySettings < ActiveRecord::Migration
     user_image_sizes =  RefinerySetting.find_or_set(:user_image_sizes, image_thumbnails || {
       :small => '110x110>',
       :medium => '225x255>',
-      :large => '450x450>'      
+      :large => '450x450>'
     })
     image_thumbnails_settings = RefinerySetting.find_by_name 'image_thumbnails'
     image_thumbnails_settings.destroy if image_thumbnails_settings
