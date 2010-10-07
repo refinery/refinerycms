@@ -4,7 +4,7 @@ Gem::Specification.new do |s|
   s.name              = %q{refinerycms}
   s.version           = %q{0.9.9.pre}
   s.description       = %q{A Ruby on Rails CMS that supports Rails 3. It's easy to extend and sticks to 'the Rails way' where possible.}
-  s.date              = %q{2010-10-06}
+  s.date              = %q{2010-10-07}
   s.summary           = %q{A Ruby on Rails CMS that supports Rails 3}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
@@ -294,6 +294,12 @@ Gem::Specification.new do |s|
     'vendor/refinerycms/core/lib/generators/refinery_engine/templates/db/migrate/create_plural_name.rb',
     'vendor/refinerycms/core/lib/generators/refinery_engine/templates/db/seeds',
     'vendor/refinerycms/core/lib/generators/refinery_engine/templates/db/seeds/plural_name.rb',
+    'vendor/refinerycms/core/lib/generators/refinery_engine/templates/features',
+    'vendor/refinerycms/core/lib/generators/refinery_engine/templates/features/manage_plural_name.feature',
+    'vendor/refinerycms/core/lib/generators/refinery_engine/templates/features/step_definitions',
+    'vendor/refinerycms/core/lib/generators/refinery_engine/templates/features/step_definitions/singular_name_steps.rb',
+    'vendor/refinerycms/core/lib/generators/refinery_engine/templates/features/support',
+    'vendor/refinerycms/core/lib/generators/refinery_engine/templates/features/support/paths.rb',
     'vendor/refinerycms/core/lib/generators/refinery_engine/templates/lib',
     'vendor/refinerycms/core/lib/generators/refinery_engine/templates/lib/generators',
     'vendor/refinerycms/core/lib/generators/refinery_engine/templates/lib/generators/refinerycms_plural_name_generator.rb',
@@ -718,6 +724,7 @@ Gem::Specification.new do |s|
     'vendor/refinerycms/core/public/javascripts/jquery/jquery.jcarousel.js',
     'vendor/refinerycms/core/public/javascripts/jquery/jquery.textTruncate.js',
     'vendor/refinerycms/core/public/javascripts/jquery/jquery.timers.js',
+    'vendor/refinerycms/core/public/javascripts/rails.js',
     'vendor/refinerycms/core/public/javascripts/refinery',
     'vendor/refinerycms/core/public/javascripts/refinery/admin.js',
     'vendor/refinerycms/core/public/javascripts/refinery/boot_wym.js',
