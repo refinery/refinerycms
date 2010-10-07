@@ -23,7 +23,7 @@ class Create<%= class_name.pluralize %> < ActiveRecord::Migration
   end
 
   def self.down
-    UserPlugin.destroy_all({:name => "<%= class_name.pluralize.underscore.titleize %>"})
+    UserPlugin.destroy_all({:name => "<%= class_name.pluralize.underscore.downcase %>"})
 
     Page.delete_all({:link_url => "/<%= plural_name %>"})
 
