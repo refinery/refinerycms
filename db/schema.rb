@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100929035252) do
+ActiveRecord::Schema.define(:version => 20101006211228) do
 
   create_table "images", :force => true do |t|
     t.string   "image_mime_type"
