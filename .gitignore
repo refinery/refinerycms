@@ -4,6 +4,7 @@ db/*.sqlite3
 db/*.sqlite3-journal
 *.log
 tmp/**/*
+.rvmrc
 
 # Documentation
 doc/api
@@ -34,6 +35,9 @@ index/**/*
 
 # Mac
 .DS_Store
+
+# Windows
+Thumbs.db
 
 # NetBeans
 nbproject
