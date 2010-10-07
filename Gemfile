@@ -43,7 +43,7 @@ gem 'refinerycms-inquiries',    '~> 0.9.8.10'
 # gem 'refinerycms-search',     '~> 0.9.8'
 
 # Add i18n support (optional, you can remove this if you really want to).
-gem 'refinerycms-i18n',         '~> 0.9.8.7'
+gem 'refinerycms-i18n',         '~> 0.9.8.8'
 
 # Figure out how to get RMagick:
 rmagick_options = {:require => false}
