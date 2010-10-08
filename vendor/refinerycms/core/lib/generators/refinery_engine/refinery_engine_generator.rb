@@ -24,23 +24,44 @@ class RefineryEngineGenerator < Rails::Generators::NamedBase
       end
 
       if engine.present?
-        # go through all of the temporary yml files and merge them into the current translation files.
-        tmp_yml_directory = nil
-        Dir.glob(File.expand_path('../templates/config/locales/*.yml', __FILE__), File::FNM_DOTMATCH).each do |path|
+        # go through all of the temporary files and merge what we need into the current files.
+        tmp_directories = []
+        Dir.glob(File.expand_path('../templates/{config/locales/*.yml,config/routes.rb,features/support/paths.rb}', __FILE__), File::FNM_DOTMATCH).each do |path|
           # get the path to the current tmp file.
-          path = Rails.root.join(engine_path_for(path, engine))
-          tmp_yml_directory = Pathname.new(path.to_s.split(File::SEPARATOR)[0..-2].join(File::SEPARATOR)) # save for later
+          new_file_path = Rails.root.join(engine_path_for(path, engine))
+          tmp_directories << Pathname.new(new_file_path.to_s.split(File::SEPARATOR)[0..-2].join(File::SEPARATOR)) # save for later
 
           # get the path to the existing file and perform a deep hash merge.
-          current_yml_path = Pathname.new(path.to_s.split(File::SEPARATOR).reject{|f| f == 'tmp'}.join(File::SEPARATOR))
-          yml = YAML::load(path.read).deep_merge(YAML::load(current_yml_path.read))
+          current_path = Pathname.new(new_file_path.to_s.split(File::SEPARATOR).reject{|f| f == 'tmp'}.join(File::SEPARATOR))
+          new_contents = nil
+          if new_file_path.to_s =~ %r{.yml$}
+            # merge translation files together.
+            new_contents = YAML::load(new_file_path.read).deep_merge(YAML::load(current_path.read)).to_yaml
+          elsif new_file_path.to_s =~ %r{/routes.rb$}
+            # append any routes from the new file to the current one.
+            routes_file = [(file_parts = current_path.read.to_s.split("\n")).first]
+            routes_file += file_parts[1..-2]
+            routes_file += new_file_path.read.to_s.split("\n")[1..-2]
+            routes_file << file_parts.last
+            new_contents = routes_file.join("\n")
+          elsif new_file_path.to_s =~ %r{/features/support.*paths.rb$}
+            # ugh, please FIXME -- requires deep and intimate knowledge of the contents.
+            paths_file = (file_parts = current_path.read.to_s.split("\n"))[0..4]
+            paths_file << file_parts[5..-8].join("\n")
 
+            # get the parts of the new file that are relevant
+            new_file_parts = new_file_path.read.split("\n")
+            paths_file << new_file_parts[5..-4].join("\n")
+            paths_file << file_parts[-3..-1]
+
+            # join it all together
+            new_contents = paths_file.join("\n")
+          end
           # write to current file the merged results.
-          current_yml_path.open('w+') { |f| f.puts yml.to_yaml }
+          current_path.open('w+') { |f| f.puts new_contents } unless new_contents.nil?
         end
 
-        # remove the tmp directory unless we don't have one.
-        tmp_yml_directory.rmtree unless tmp_yml_directory.nil?
+        tmp_directories.uniq.each{|d| d.rmtree unless d.nil? or !d.exist?}
       end
 
       # Update the gem file
@@ -53,7 +74,11 @@ class RefineryEngineGenerator < Rails::Generators::NamedBase
           puts "------------------------"
           puts "Now run:"
           puts "bundle install"
-          puts "rails generate refinerycms_#{plural_name}#{" #{engine}" if engine.present?}"
+          unless engine.present?
+            puts "rails generate refinerycms_#{plural_name}"
+          else
+            puts "rails generate refinerycms_#{engine} #{plural_name}"
+          end
           puts "rake db:migrate"
           puts "------------------------"
         end
@@ -81,11 +106,13 @@ protected
       path = if path =~ %r{/locales/.*\.yml$} or path =~ %r{/routes.rb$} or path =~ %r{/features/support/paths.rb$}
         # put new translations into a tmp directory
         path.split(File::SEPARATOR).insert(-2, "tmp").join(File::SEPARATOR)
-      elsif path =~ %r{/readme.md$}
+      elsif path =~ %r{/readme.md$} or path =~ %r{/#{plural_name}.rb$}
         nil
       else
         path
       end
+    elsif engine.present? and path =~ /lib\/#{plural_name}.rb$/
+      path = nil
     end
 
     path
