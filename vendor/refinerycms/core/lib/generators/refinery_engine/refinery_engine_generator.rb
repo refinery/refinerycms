@@ -18,7 +18,9 @@ class RefineryEngineGenerator < Rails::Generators::NamedBase
       Dir.glob(File.expand_path('../templates/**/**', __FILE__), File::FNM_DOTMATCH).reject{|f|
         File.directory?(f)
       }.each do |path|
-        template path, engine_path_for(path, engine)
+        unless (engine_path = engine_path_for(path, engine)).nil?
+          template path, engine_path
+        end
       end
 
       if engine.present?
@@ -73,11 +75,17 @@ protected
     path = path.gsub("plural_name", plural_name)
     path = path.gsub("singular_name", singular_name)
 
-    # detect whether it's a translation and a file for that translation already exists
-    if engine.present? and path =~ %r{/locales/.*\.yml$} and File.exist?(path)
-      # put new translations into a tmp directory
-      # file doesn't conflict or new engine.
-      path = path.split(File::SEPARATOR).insert(-2, "tmp").join(File::SEPARATOR)
+    # Detect whether this is a special file that needs to get merged not overwritten.
+    # This is important only when nesting engines.
+    if engine.present? and File.exist?(path)
+      path = if path =~ %r{/locales/.*\.yml$} or path =~ %r{/routes.rb$} or path =~ %r{/features/support/paths.rb$}
+        # put new translations into a tmp directory
+        path.split(File::SEPARATOR).insert(-2, "tmp").join(File::SEPARATOR)
+      elsif path =~ %r{/readme.md$}
+        nil
+      else
+        path
+      end
     end
 
     path
