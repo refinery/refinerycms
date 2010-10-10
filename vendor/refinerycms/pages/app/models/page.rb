@@ -24,6 +24,9 @@ class Page < ActiveRecord::Base
   after_save :reposition_parts!
   after_save :invalidate_child_cached_url
 
+  scope :live, where(:draft => false)
+  scope :in_menu, where(:show_in_menu => true)
+
   # when a dialog pops up to link to a page, how many pages per page should there be
   PAGES_PER_DIALOG = 14
 

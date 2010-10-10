@@ -84,7 +84,7 @@ module Refinery
 
       # get all the pages to be displayed in the site menu.
       def find_pages_for_menu
-        @menu_pages = Page.where(:show_in_menu => true, :draft => false).order('lft ASC').includes(:parts)
+        @menu_pages = Page.live.in_menu.order('lft ASC').includes(:parts)
       end
 
       # use a different model for the meta information.
