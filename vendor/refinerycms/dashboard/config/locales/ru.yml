@@ -14,8 +14,8 @@ ru:
         see_home_page: Просмотреть домашнюю страницу
       recent_activity:
         latest_activity: Последние действия
-        see: "См. '{{what}}'"
-        latest_activity_message: "{{what}} {{kind}} {{action}}"
+        see: "См. '%{what}'"
+        latest_activity_message: "%{what} %{kind} %{action}"
       recent_inquiries:
         latest_inquiries: Последние запросы
   updated:
@@ -23,5 +23,5 @@ ru:
   created:
     'with_article "the"': создан(а)
 
-  ago: "{{time}} назад"
+  ago: "%{time} назад"
   see: См.
