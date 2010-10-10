@@ -18,6 +18,12 @@ Feature: Visit Pages
     And I should see "About"
     And I should see "Home" within ".selected"
 
+  Scenario: Content Page
+    When I go to the page titled "About"
+    Then I should see "Home"
+    And I should see "About"
+    And I should see "About" within ".selected"
+
   Scenario: Hidden Page
     When I go to the page titled "Hidden"
     Then I should see "Home"
