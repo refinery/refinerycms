@@ -50,7 +50,7 @@ Gem::Specification.new do |s|
   s.add_dependency    'will_paginate',        '~> 3.0.pre'
   s.add_dependency    'authlogic',            '~> 2.1.6'
   s.add_dependency    'rack-cache',           '~> 0.5.2'
-  s.add_dependency    'dragonfly',            '~> 0.7.5'
+  s.add_dependency    'dragonfly',            '~> 0.7.6'
 
   s.files             = [
     '#{files.sort.join("',\n    '")}'

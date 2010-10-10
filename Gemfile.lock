@@ -5,7 +5,7 @@ PATH
       acts_as_indexed (~> 0.6.6)
       authlogic (~> 2.1.6)
       bundler (~> 1.0.0)
-      dragonfly (~> 0.7.5)
+      dragonfly (~> 0.7.6)
       friendly_id (~> 3.1.6)
       moretea-awesome_nested_set (= 1.4.3.1)
       rack-cache (~> 0.5.2)
