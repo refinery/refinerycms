@@ -9,6 +9,7 @@ en:
   admin:
     <%= plural_name %>:
       index:
+        title: <%= plural_name.titleize %>
         create_new: Add New <%= singular_name.titleize %>
         reorder: Reorder <%= singular_name.titleize.pluralize %>
         reorder_done: Done Reordering <%= singular_name.titleize.pluralize %>

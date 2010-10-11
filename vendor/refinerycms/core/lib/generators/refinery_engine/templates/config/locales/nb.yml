@@ -5,6 +5,7 @@ nb:
   admin:
     <%= plural_name %>:
       index:
+        title: <%= plural_name.titleize %>
         create_new: Lag en ny <%= singular_name.titleize %>
         reorder: Endre rekkefølgen på <%= singular_name.titleize.pluralize %>
         reorder_done: Ferdig å endre rekkefølgen <%= singular_name.titleize.pluralize %>

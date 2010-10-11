@@ -5,6 +5,7 @@ nl:
   admin:
     <%= plural_name %>:
       index:
+        title: <%= plural_name.titleize %>
         create_new: Maak een nieuwe <%= singular_name.titleize %>
         reorder: Wijzig de volgorde van de <%= singular_name.titleize.pluralize %>
         reorder_done: Klaar met het wijzingen van de volgorde van de <%= singular_name.titleize.pluralize %>
