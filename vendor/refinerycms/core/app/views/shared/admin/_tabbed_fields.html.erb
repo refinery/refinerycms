@@ -1,0 +1,28 @@
+<div class='field'>
+  <div id='page-tabs' class='clearfix ui-tabs ui-widget ui-widget-content ui-corner-all'>
+    <ul id='page_parts'>
+      <% tabbed_fields.each_with_index do |field, index| %>
+        <li class="ui-state-default <%= 'ui-state-active' if index == 0 %>">
+          <%= link_to "#{field.to_s.humanize}", "\##{field}" %>
+        </li>
+      <% end %>
+    </ul>
+
+    <div id='page_part_editors'>
+      <% tabbed_fields.each do |field| %>
+        <div id="<%= field %>">
+          <%= f.text_area field, :rows => 20, :class => 'wymeditor widest' -%>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<% content_for :head do %>
+  <script type='text/javascript'>
+    $(document).ready(function(){
+      page_options.init(false, '', '');
+    });
+  </script>
+<% end %>
+
