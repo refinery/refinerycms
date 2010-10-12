@@ -322,9 +322,11 @@ init_tooltips = function(args){
 }
 
 var link_tester = {
-  init: function(test_url, test_email) {
-    this.test_url   = test_url
-    this.test_email = test_email
+  initialised: false
+  , init: function(test_url, test_email) {
+    this.test_url    = test_url;
+    this.test_email  = test_email;
+    this.initialised = true;
   },
 
   email: function(value, callback) {
@@ -387,13 +389,15 @@ var link_tester = {
 };
 
 var link_dialog = {
-  init: function(){
+  initialised: false
+  , init: function(){
     this.init_tabs();
     this.init_resources_submit();
     this.init_close();
     this.page_tab();
     this.web_tab();
     this.email_tab();
+    this.initialised = true;
   },
 
   init_tabs: function(){
@@ -536,7 +540,8 @@ var link_dialog = {
 }
 
 var page_options = {
-  init: function(enable_parts, new_part_url, del_part_url){
+  initialised: false
+  , init: function(enable_parts, new_part_url, del_part_url){
     // set the page tabs up, but ensure that all tabs are shown so that when wymeditor loads it has a proper height.
     // also disable page overflow so that scrollbars don't appear while the page is loading.
     $(document.body).addClass('hide-overflow');
@@ -564,6 +569,7 @@ var page_options = {
     if(this.enable_parts){
       this.page_part_dialog();
     }
+    this.initialised = true;
   },
 
   show_options: function(){
@@ -674,13 +680,15 @@ var page_options = {
 }
 
 var image_dialog = {
-  callback: null
+  initialised: false
+  , callback: null
 
   , init: function(callback){
     this.callback = callback;
     this.init_tabs();
     this.init_select();
     this.init_actions();
+    this.initialised = true;
     return this;
   }
 
@@ -810,7 +818,8 @@ var image_dialog = {
 }
 
 var list_reorder = {
-  init: function() {
+  initialised: false
+  , init: function() {
     $('#reorder_action').click(list_reorder.enable_reordering);
     $('#reorder_action_done').click(list_reorder.disable_reordering);
     list_reorder.sortable_list.nestedSortable({
@@ -834,6 +843,7 @@ var list_reorder = {
       }
     });
     list_reorder.reset_branch_classes(list_reorder.sortable_list);
+    this.initialised = true;
   }
 
   ,reset_branch_classes: function (ul) {
@@ -898,7 +908,8 @@ var list_reorder = {
 }
 
 var image_picker = {
-  options: {
+  initialised: false
+  , options: {
     selected: '',
     thumbnail: 'dialog_thumb',
     field: '#image',
@@ -913,6 +924,7 @@ var image_picker = {
     this.options = $.extend(this.options, new_options);
     $(this.options.remove_image_button).click($.proxy(this.remove_image, this));
     $(this.options.image_toggler).click($.proxy(this.toggle_image, this));
+    this.initialised = true;
   }
 
   , remove_image: function(e) {
@@ -968,10 +980,12 @@ var image_picker = {
 }
 
 var resource_picker = {
-  callback: null
+  initialised: false
+  , callback: null
 
   , init: function(callback) {
     this.callback = callback;
+    this.initialised = true;
   }
 }
 
