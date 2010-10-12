@@ -4,7 +4,7 @@ Gem::Specification.new do |s|
   s.name              = %q{refinerycms}
   s.version           = %q{0.9.9.pre}
   s.description       = %q{A Ruby on Rails CMS that supports Rails 3. It's easy to extend and sticks to 'the Rails way' where possible.}
-  s.date              = %q{2010-10-05}
+  s.date              = %q{2010-10-11}
   s.summary           = %q{A Ruby on Rails CMS that supports Rails 3}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
@@ -24,7 +24,7 @@ Gem::Specification.new do |s|
   s.add_dependency    'will_paginate',        '~> 3.0.pre'
   s.add_dependency    'authlogic',            '~> 2.1.6'
   s.add_dependency    'rack-cache',           '~> 0.5.2'
-  s.add_dependency    'dragonfly',            '~> 0.7.5'
+  s.add_dependency    'dragonfly',            '~> 0.7.6'
 
   s.files             = [
     '.gitignore',
@@ -36,11 +36,9 @@ Gem::Specification.new do |s|
     'app/controllers/application_controller.rb',
     'app/helpers',
     'app/helpers/application_helper.rb',
-    'app/mailers',
-    'app/models',
-    'app/views',
     'bin/refinerycms',
     'changelog.md',
+    'config/cucumber.yml',
     'config/database.yml.mysql',
     'config/database.yml.postgresql',
     'config/database.yml.sqlite3',
@@ -90,14 +88,27 @@ Gem::Specification.new do |s|
     'db/migrate/20100831122919_move_page_to_nested_set.rb',
     'db/migrate/20100913234704_add_cached_slug_to_pages.rb',
     'db/migrate/20100929035252_add_missing_indexes_to_roles_users.rb',
+    'db/migrate/20101006211228_remove_image_thumbnails_from_refinery_settings.rb',
     'db/schema.rb',
     'db/seeds',
     'db/seeds.rb',
     'db/seeds/inquiry_settings.rb',
     'db/seeds/pages.rb',
     'db/seeds/refinery_settings.rb',
+    'features/step_definitions',
+    'features/step_definitions/web_steps.rb',
+    'features/support',
+    'features/support/env.rb',
+    'features/support/factories.rb',
+    'features/support/negative_expectations_helper.rb',
+    'features/support/paths.rb',
+    'lib/tasks',
+    'lib/tasks/cucumber.rake',
+    'lib/tasks/rspec.rake',
     'license.md',
     'readme.md',
+    'spec/rcov.opts',
+    'spec/spec_helper.rb',
     'todo.md',
     'vendor/refinerycms',
     'vendor/refinerycms/authentication',
@@ -284,13 +295,18 @@ Gem::Specification.new do |s|
     'vendor/refinerycms/core/lib/generators/refinery_engine/templates/db/migrate/create_plural_name.rb',
     'vendor/refinerycms/core/lib/generators/refinery_engine/templates/db/seeds',
     'vendor/refinerycms/core/lib/generators/refinery_engine/templates/db/seeds/plural_name.rb',
+    'vendor/refinerycms/core/lib/generators/refinery_engine/templates/features',
+    'vendor/refinerycms/core/lib/generators/refinery_engine/templates/features/manage_plural_name.feature',
+    'vendor/refinerycms/core/lib/generators/refinery_engine/templates/features/step_definitions',
+    'vendor/refinerycms/core/lib/generators/refinery_engine/templates/features/step_definitions/singular_name_steps.rb',
+    'vendor/refinerycms/core/lib/generators/refinery_engine/templates/features/support',
+    'vendor/refinerycms/core/lib/generators/refinery_engine/templates/features/support/paths.rb',
     'vendor/refinerycms/core/lib/generators/refinery_engine/templates/lib',
     'vendor/refinerycms/core/lib/generators/refinery_engine/templates/lib/generators',
     'vendor/refinerycms/core/lib/generators/refinery_engine/templates/lib/generators/refinerycms_plural_name_generator.rb',
     'vendor/refinerycms/core/lib/generators/refinery_engine/templates/lib/plural_name.rb',
     'vendor/refinerycms/core/lib/generators/refinery_engine/templates/lib/tasks',
     'vendor/refinerycms/core/lib/generators/refinery_engine/templates/lib/tasks/plural_name.rake',
-    'vendor/refinerycms/core/lib/generators/refinery_engine/templates/public',
     'vendor/refinerycms/core/lib/generators/refinery_engine/templates/readme.md',
     'vendor/refinerycms/core/lib/generators/refinery_engine/templates/refinerycms-plural_name.gemspec',
     'vendor/refinerycms/core/lib/refinery',
@@ -709,6 +725,7 @@ Gem::Specification.new do |s|
     'vendor/refinerycms/core/public/javascripts/jquery/jquery.jcarousel.js',
     'vendor/refinerycms/core/public/javascripts/jquery/jquery.textTruncate.js',
     'vendor/refinerycms/core/public/javascripts/jquery/jquery.timers.js',
+    'vendor/refinerycms/core/public/javascripts/rails.js',
     'vendor/refinerycms/core/public/javascripts/refinery',
     'vendor/refinerycms/core/public/javascripts/refinery/admin.js',
     'vendor/refinerycms/core/public/javascripts/refinery/boot_wym.js',
@@ -808,7 +825,6 @@ Gem::Specification.new do |s|
     'vendor/refinerycms/dashboard/config/routes.rb',
     'vendor/refinerycms/dashboard/features',
     'vendor/refinerycms/dashboard/features/dashboard.feature',
-    'vendor/refinerycms/dashboard/features/step_definitions',
     'vendor/refinerycms/dashboard/features/support',
     'vendor/refinerycms/dashboard/features/support/paths.rb',
     'vendor/refinerycms/dashboard/lib',
@@ -931,6 +947,7 @@ Gem::Specification.new do |s|
     'vendor/refinerycms/pages/lib/pages',
     'vendor/refinerycms/pages/lib/pages.rb',
     'vendor/refinerycms/pages/lib/pages/marketable_routes.rb',
+    'vendor/refinerycms/pages/lib/pages/tabs.rb',
     'vendor/refinerycms/pages/readme.md',
     'vendor/refinerycms/pages/spec',
     'vendor/refinerycms/pages/spec/models',

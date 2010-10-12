@@ -4,8 +4,7 @@
   {:name => "activity_show_limit", :value => 7},
   {:name => "preferred_image_view", :value => :grid},
   {:name => "analytics_page_code", :value => "UA-xxxxxx-x"},
-  # todo: remove these and use dragonfly better instead.
-  {:name => "image_thumbnails", :value => {
+  {:name => "user_image_sizes", :value => {
     :small => '110x110>',
     :medium => '225x255>',
     :large => '450x450>'

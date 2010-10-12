@@ -9,6 +9,7 @@ lolcat:
   admin:
     <%= plural_name %>:
       index:
+        title: <%= plural_name.titleize %>
         create_new: CREATE NEW <%= singular_name.titleize %>
         reorder: REORDR <%= singular_name.titleize.pluralize %>
         reorder_done: DUN REORDERIN <%= singular_name.titleize.pluralize %>

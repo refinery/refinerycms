@@ -1,4 +1,4 @@
-@engine-generator @generator
+@refinerycms @engine-generator @generator
 Feature: Engine generation
   In order to create my own engine
   As a refinery user

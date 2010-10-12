@@ -1,4 +1,4 @@
-@files @files-manage
+@refinerycms @files @files-manage
 Feature: Manage Files
   In order to control the content on my website
   As an administrator
