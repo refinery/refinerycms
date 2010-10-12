@@ -321,10 +321,73 @@ init_tooltips = function(args){
   });
 }
 
+var link_tester = {
+  init: function(test_url, test_email) {
+    this.test_url   = test_url
+    this.test_email = test_email
+  },
+
+  email: function(value, callback) {
+    $.getJSON(link_tester.test_email, {email: value}, function(data){
+      callback(data.result == 'success');
+    });
+  },
+
+  url: function(value, callback) {
+    $.getJSON(link_tester.test_url, {url: value}, function(data){
+      callback(data.result == 'success');
+    });
+  },
+
+  validate_textbox: function(validation_method, textbox_id, callback) {
+    var icon = '';
+    var loader_img  = $("<img id='" + textbox_id.replace('#','') + "_test_loader' src='/images/refinery/ajax-loader.gif' alt='Testing...' style='display: none;'/>");
+    var result_span = $("<span id='" + textbox_id.replace('#','') + "_test_result'></span>");
+
+    loader_img.insertAfter($(textbox_id));
+    result_span.insertAfter(loader_img);
+
+    $(textbox_id).bind('paste keypress',function(){
+      $(textbox_id).stop(true); // Clear the current queue; if we weren't checking yet, cancel it.
+      $(textbox_id + '_test_loader').hide();
+      $(textbox_id + '_test_result').hide();
+      $(textbox_id + '_test_result').removeClass('success_icon').removeClass('failure_icon');
+
+      // Wait one second before checking.
+      $(textbox_id).delay(1000).queue(function () {
+        $(textbox_id + '_test_loader').show();
+        $(textbox_id + '_test_result').hide();
+        $(textbox_id + '_test_result').removeClass('success_icon').removeClass('failure_icon');
+
+        validation_method(this.value, function (success) {
+          if (success) {
+            icon = 'success_icon';
+          }else{
+            icon = 'failure_icon';
+          }
+          $(textbox_id + '_test_result').addClass(icon).show();
+          $(textbox_id + '_test_loader').hide();
+        });
+
+        if (callback) callback($(textbox_id));
+
+        $(this).dequeue();
+      }); // queue
+    }); // bind
+  },
+
+  validate_url_textbox: function(textbox_id, callback) {
+    link_tester.validate_textbox(link_tester.url, textbox_id, callback);
+  },
+
+  validate_email_textbox: function(textbox_id, callback) {
+    link_tester.validate_textbox(link_tester.email, textbox_id, callback);
+  }
+
+};
+
 var link_dialog = {
-  init: function(test_url, test_email){
-    this.test_url = test_url;
-    this.test_email = test_email;
+  init: function(){
     this.init_tabs();
     this.init_resources_submit();
     this.init_close();
@@ -408,35 +471,16 @@ var link_dialog = {
   },
 
   web_tab: function(){
-    $('#web_address_text').bind('paste change',function(){
-      var prefix = '#web_address_',
-          icon = '';
-
-      $(prefix + 'test_loader').show();
-      $(prefix + 'test_result').hide();
-      $(prefix + 'test_result').removeClass('success_icon').removeClass('failure_icon');
-
-      $.getJSON(link_dialog.test_url, {url: this.value}, function(data){
-        if(data.result == 'success'){
-          icon = 'success_icon';
-        }else{
-          icon = 'failure_icon';
-        }
-
-        $(prefix + 'test_result').addClass(icon).show();
-        $(prefix + 'test_loader').hide();
-      });
-
-      link_dialog.update_parent( $(prefix + 'text').val(),
-                                 $(prefix + 'text').val(),
-                                 ($(prefix + 'target_blank').checked ? "_blank" : "")
+    link_tester.validate_url_textbox("#web_address_text",  function() {
+      link_dialog.update_parent( $('#web_address_text').val(),
+                                 $('#web_address_text').val(),
+                                 ($('#web_address_target_blank').checked ? "_blank" : "")
                                );
-    });
+     });
 
     $('#web_address_target_blank').click(function(){
       parent.document.getElementById('wym_target').value = this.checked ? "_blank" : "";
     });
-
   },
 
   email_tab: function() {
@@ -451,13 +495,13 @@ var link_dialog = {
       $('#email_address_test_result').hide();
       $('#email_address_test_result').removeClass('success_icon').removeClass('failure_icon');
 
-      $.getJSON(link_dialog.test_email, {email: mailto}, function(data){
-        if(data.result == 'success'){
+
+      link_tester.email(mailto, function (success) {
+        if (success) {
           icon = 'success_icon';
         }else{
           icon = 'failure_icon';
         }
-
         $('#email_address_test_result').addClass(icon).show();
         $('#email_address_test_loader').hide();
       });

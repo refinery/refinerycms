@@ -47,6 +47,9 @@ class Admin::PagesDialogsController < Admin::DialogsController
   def test_url
     unless params[:url].blank?
       url = URI.parse(params[:url])
+      if url.host.nil? && params[:url].start_with?('/')
+        url.host = URI.parse(request.url).host
+      end
 
       http = Net::HTTP.new(url.host)
       request = Net::HTTP::Get.new(url.path.blank? ? "/" : url.path)
