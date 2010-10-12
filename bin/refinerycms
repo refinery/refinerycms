@@ -128,19 +128,29 @@ module Refinery
 
     def refine!
       # Overwrite rails defaults with refinery defaults
-      %w(app db).each do |folder|
+      %w(app db features spec).each do |folder|
         FileUtils::cp_r Refinery.root.join(folder), @app_path, :verbose => false
       end
 
       # Copy in important files to the Rails app.
-      %w(.gitignore readme.md license.md config/routes.rb config/settings.rb config/environments/production.rb
-          config/initializers/acts_as_indexed_config.rb config/initializers/field_with_error_fix.rb
-          config/initializers/fix_rack.rb).each do |file|
+      %w(.gitignore readme.md license.md config/routes.rb config/settings.rb config/cucumber.yml
+         lib/tasks/cucumber.rake lib/tasks/rspec.rake config/initializers/fix_rack.rb
+         config/environments/development.rb config/environments/test.rb config/environments/production.rb
+         config/initializers/acts_as_indexed_config.rb config/initializers/field_with_error_fix.rb).each do |file|
         FileUtils::cp_r Refinery.root.join(file), @app_path.join(file), :verbose => false if Refinery.root.join(file).exist?
       end
 
+      # Copy javascripts so they're ready to use.
+      %w(admin.js).map{|javascript|
+        Refinery.root.join('vendor', 'refinerycms', 'core', 'public', 'javascripts', javascript)
+      }.each do |javascript|
+        FileUtils::cp javascript.to_s,
+                      @app_path.join('public', 'javascripts').to_s,
+                      :verbose => false if javascript.file?
+      end
+
       # Copy stylesheets so they're ready to use.
-      %w(application.css formatting.css home.css).map{|stylesheet|
+      %w(application.css formatting.css home.css theme.css).map{|stylesheet|
         Refinery.root.join('vendor', 'refinerycms', 'core', 'public', 'stylesheets', stylesheet)
       }.each do |stylesheet|
         FileUtils::cp stylesheet.to_s,

@@ -45,7 +45,7 @@ class Image < ActiveRecord::Base
   # Get a thumbnail job object given a geometry.
   def thumbnail(geometry = nil)
     if geometry.is_a?(Symbol)
-      if (sizes = RefinerySetting.find_or_set(:image_thumbnails, {})) and sizes.keys.include?(geometry)
+      if (sizes = RefinerySetting.find_or_set(:user_image_sizes, {})) and sizes.keys.include?(geometry)
         geometry = sizes[geometry].presence
       end
     end

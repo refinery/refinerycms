@@ -34,7 +34,7 @@ ru:
         view_live: Показать эту страницу вживую <br/><em>(откроется в новом окне)</em>
         edit_this_page: Редактировать эту страницу
         confirm_delete_page_title: Удалить эту страницу
-        confirm_delete_page_message: "Вы действительно хотите удалить страницу '{{title}}'?"
+        confirm_delete_page_message: "Вы действительно хотите удалить страницу '%{title}'?"
         hidden: скрытая
         draft: черновик
       form_new_page_parts:
@@ -84,7 +84,7 @@ ru:
             create: Add Content Section
             already_exists: "A content section with that title already exists, please choose another."
             title_empty: "You have not entered a title for the content section, please enter one."
-            confirm_delete: "This will remove the content section {{section_name}} when the page is saved and erase all content that has been entered into it, Are you sure?"
+            confirm_delete: "This will remove the content section %{section_name} when the page is saved and erase all content that has been entered into it, Are you sure?"
       index:
         create_new_page: Создать новую страницу
         reorder_pages: Изменить порядок страниц

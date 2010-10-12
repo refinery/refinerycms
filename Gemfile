@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 gem 'bundler',                  '~> 1.0.0'
-gem 'rails',                    '3.0.0'
+gem 'rails',                    '= 3.0.0'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -43,7 +43,7 @@ gem 'refinerycms-inquiries',    '~> 0.9.8.10'
 # gem 'refinerycms-search',     '~> 0.9.8'
 
 # Add i18n support (optional, you can remove this if you really want to).
-gem 'refinerycms-i18n',         '~> 0.9.8.7'
+gem 'refinerycms-i18n',         '~> 0.9.8.8'
 
 # Figure out how to get RMagick:
 rmagick_options = {:require => false}
@@ -55,13 +55,9 @@ rmagick_options.update({
 # Specify a version of RMagick that works in your environment:
 gem 'rmagick',                  '~> 2.12.0', rmagick_options
 
-# END REFINERY CMS ============================================================
-
-# REFINERY CMS DEVELOPMENT ====================================================
-
 group :test do
   # RSpec
-  gem 'rspec',                  (RSPEC_VERSION = '~> 2.0.0.beta')
+  gem 'rspec',                  (RSPEC_VERSION = '~> 2.0.0')
   gem 'rspec-core',             RSPEC_VERSION, :require => 'rspec/core'
   gem 'rspec-expectations',     RSPEC_VERSION, :require => 'rspec/expectations'
   gem 'rspec-mocks',            RSPEC_VERSION, :require => 'rspec/mocks'
@@ -86,7 +82,9 @@ group :test do
   gem 'autotest-notification'
 end
 
-#===REFINERY END OF REQUIRED GEMS===
+# END REFINERY CMS ============================================================
+
+# REFINERY CMS DEVELOPMENT ====================================================
 
 # Bundle gems for certain environments:
 

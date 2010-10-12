@@ -14,7 +14,7 @@ lv:
         see_home_page: Skatīt sākuma lapu
       recent_activity:
         latest_activity: Jaunākās aktivitātes
-        latest_activity_message: "{{action}} {{what}} {{kind}}"
+        latest_activity_message: "%{action}} %{what}} %{kind}}"
       recent_inquiries:
         latest_inquiries: Jaunākie pieprasījumi
   updated:

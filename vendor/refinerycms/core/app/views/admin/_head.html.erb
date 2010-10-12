@@ -15,6 +15,7 @@
   <%= stylesheet_link_tag 'refinery/site_bar',
                           'refinery/refinery',
                           'refinery/ui',
+                          'refinery/submenu',
                           'refinery/tooltips',
                           'wymeditor/skins/refinery/skin',
                           :cache => (css_caching ? "cache/refinery" : false) -%>
@@ -23,12 +24,9 @@
   <%= javascript_include_tag 'refinery/i18n' -%>
   <script type='text/javascript'>I18n.locale = '<%= I18n.locale %>';</script>
 
-  <%= jquery_include_tags(:caching => js_caching) -%>
+  <%= jquery_include_tags    :caching => js_caching -%>
 
-  <% #TODO: Find out why the master branch doesn't work! %>
-  <%#= javascript_include_tag 'http://github.com/rails/jquery-ujs/raw/master/src/rails.js' %>
-  <%= javascript_include_tag 'http://github.com/rails/jquery-ujs/raw/f01a685c8200b76c4cc2c606accb135da5ad5444/src/rails.js' %>
-
+  <%= javascript_include_tag 'rails.js' %>
 
   <%= javascript_include_tag 'jquery/jquery.corner.js',
                              'jquery/jquery.textTruncate.js',
@@ -44,6 +42,7 @@
                              'refinery/boot_wym',
                              'refinery/core',
                              'refinery/admin',
+                             'refinery/submenu',
                              :cache => (js_caching ? "cache/admin" : false) unless login -%>
   <%= javascript_include_tag 'refinery/core' if login -%>
 
