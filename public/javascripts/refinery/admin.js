@@ -950,18 +950,21 @@ var resource_picker = {
 }
 
 close_dialog = function(e) {
-  if (parent
-      && parent.document.location.href != document.location.href
-      && $.isFunction(parent.$))
+  if (parent && parent.document.location.href != document.location.href && $.isFunction(parent.$))
   {
-    $(parent.document.body).removeClass('hide-overflow');
-    parent.$('.ui-dialog').dialog('close').remove();
+    the_body = $(parent.document.body)
+    the_dialog = parent.$('.ui-dialog');
   } else {
-    $(document.body).removeClass('hide-overflow');
-    $('.ui-dialog').dialog('close').remove();
+    the_body = $(document.body).removeClass('hide-overflow');
+    the_dialog = $('.ui-dialog').dialog('close').remove();
   }
+  // if there's a wymeditor involved then let it do its thing without blocking first.
+  if (!($(document.body).hasClass('wym_iframe_body'))) {
+    the_body.removeClass('hide-overflow');
+    the_dialog.dialog('close').remove();
 
-  e.preventDefault();
+    e.preventDefault();
+  }
 }
 
 //parse a URL to form an object of properties
