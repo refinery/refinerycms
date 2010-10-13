@@ -40,8 +40,6 @@
       <div id='web_address_content'>
         <label for='web_address_text'><%= t('.web_address.location') %></label>
         <%= text_field :web_address, :text, :value => @web_address_text, :style => "width: 70%" %>
-        <img id='web_address_test_loader' src='/images/refinery/ajax-loader.gif' alt='Testing...' style='display: none;'/>
-        <span id='web_address_test_result'></span>
 
         <label><%=t('.web_address.new_window') %></label>
         <input type='checkbox' name='web_address_target_blank' id='web_address_target_blank' <%= "checked='checked'" if @web_address_target_blank %> />
@@ -127,8 +125,9 @@
 <% content_for :head do %>
 <script type='text/javascript'>
   $(document).ready(function(){
-    link_dialog.init('<%= test_url_admin_pages_dialogs_url %>',
+    link_tester.init('<%= test_url_admin_pages_dialogs_url %>',
                      '<%= test_email_admin_pages_dialogs_url %>');
+    link_dialog.init();
   });
 </script>
 <% end %>

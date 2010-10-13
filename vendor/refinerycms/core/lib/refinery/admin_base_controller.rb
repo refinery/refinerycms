@@ -21,14 +21,18 @@ class Refinery::AdminBaseController < ApplicationController
       # change any links in the copy to the admin_root_url
       # and any references to "home page" to "Dashboard"
       part_symbol = Page.default_parts.first.to_sym
-      @page[part_symbol] = @page[part_symbol].gsub(
+      @page[part_symbol] = @page[part_symbol].to_s.gsub(
                             /href=(\'|\")\/(\'|\")/, "href='#{admin_root_url(:only_path => true)}'"
                            ).gsub("home page", "Dashboard")
 
-      render :template => "/pages/show", :status => 404, :layout => layout?
+      render :template => "/pages/show",
+             :layout => layout?,
+             :status => 404
     else
       # fallback to the default 404.html page.
-      render :file => Rails.root.join("public", "404.html").cleanpath.to_s, :layout => false, :status => 404
+      render :file => Rails.root.join("public", "404.html").cleanpath.to_s,
+             :layout => false,
+             :status => 404
     end
   end
 
