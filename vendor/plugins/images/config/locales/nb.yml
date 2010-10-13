@@ -3,13 +3,13 @@ nb:
     refinery_images:
       title: Bilder
   no_file_chosen: Du må velge en fil du ønsker å laste opp
-  file_should_be_smaller_than_max_image_size: "Filer må være mindre enn {{max_image_size}}"
+  file_should_be_smaller_than_max_image_size: "Filer må være mindre enn %{max_image_size}"
   file_must_be_these_formats: "Bildefilen må være enten en JPG, PNG eller GIF"
   admin:
     images:
       image:
         delete:
-          message: "Er du sikker på at du ønsker å slette '{{title}}'?"
+          message: "Er du sikker på at du ønsker å slette '%{title}'?"
           title: Slett dette bildet permanent
       form:
         image: Bilde
@@ -17,16 +17,16 @@ nb:
         or: eller
         replace_image: Erstatt det med dette ...
         current_image: Gjeldende bilde
-        maximum_image_size: "Den største tillatte størrelsen på et bilde er {{megabytes}} MB."
+        maximum_image_size: "Den største tillatte størrelsen på et bilde er %{megabytes} MB."
       index:
         create_new_image: Lag et nytt bilde
         no_images_yet: Det er ingen bilder her enda. Trykk på "Lag et nytt bilde" for å legge til ditt første bilde.
         view:
-          switch_to: "Endre til {{view_name}} visning"
+          switch_to: "Endre til %{view_name} visning"
           list: liste
           grid: rutenett
         search:
-          results_for: "Søkeresultater for {{query}}"
+          results_for: "Søkeresultater for %{query}"
       grid_view:
         edit: Rediger dette bildet
         view_live: Vis dette bildet <br/><em>Åpner i et nytt vindu</em>

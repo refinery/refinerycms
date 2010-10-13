@@ -40,7 +40,7 @@ es:
             create: "Crear Contenido de la Sección"
             already_exists: "Ya existe una sección del contenido con ese mismo titulo, por favor seleccione otro."
             title_empty: "No has ingresado un titulo para el contenido de esta sección, por favor ingresa uno."
-            confirm_delete: "Esto quitara el contenido de la sección {{section_name}} cuando la pagina sea guardada y borre todo el contenido que ha sido ingresado, ¿Estás seguro?"
+            confirm_delete: "Esto quitara el contenido de la sección %{section_name} cuando la pagina sea guardada y borre todo el contenido que ha sido ingresado, ¿Estás seguro?"
       index:
         create_new_page: Crear nueva pagina
         reorder_pages: Re-ordenar las paginas

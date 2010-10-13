@@ -26,11 +26,11 @@ nl:
         create_new_user: Maak een nieuwe gebruiker
         no_users_yet:  Er zijn nog geen gebruikers. Klik op "Maak een nieuwe gebruiker" om de eerste toe te voegen.
       user:
-        confirm_delete_message: "Weet u zeker dat u de gebruiker '{{who}}' wilt verwijderen?"
+        confirm_delete_message: "Weet u zeker dat u de gebruiker '%{who}' wilt verwijderen?"
         confirm_delete_title: Verwijder deze gebruiker permanent.
         edit_user: Bewerk deze gebruiker
         email_user: Email deze gebruiker
-        preview: ({{who}}) is aangemaakt op {{created_at}}
+        preview: (%{who}) is aangemaakt op %{created_at}
   sessions:
     login_successful: Successvol ingelogd.
     login_failed: Sorry, uw wachtwoord of gebruikersnaam was niet juist.
@@ -46,33 +46,33 @@ nl:
       hello_please_sign_in: Hallo! Gelieve in te loggen
       sign_in: Log in
   users:
-    setup_website_name: "Laten we eerst de website een naam geven. <a href='{{link}}' name='{{title}}'>Klik hier</a> om de naam van de website te bewerken"
+    setup_website_name: "Laten we eerst de website een naam geven. <a href='%{link}' name='%{title}'>Klik hier</a> om de naam van de website te bewerken"
     signup_disabled: Het registreren van gebruikers is uitgeschakeld
     new:
       fill_form: Vul het onderstaande formulier in, zodat u kan beginnen.
       sign_up: Registreer
     create:
-      welcome: Welkom bij Refinery, {{who}}
+      welcome: Welkom bij Refinery, %{who}
       signup_complete: Registratie compleet!
     forgot:
       email_address: E-mailadres
       enter_email_address: Vul het e-mailadres voor uw account.
       reset_password: Verander wachtwoord
       blank_email: Je hebt geen e-mail adres.
-      email_not_associated_with_account: "Sorry, '{{email}}' is niet geassocieerd met alle rekeningen. <br/>Weet u zeker dat u typte het juiste e-mailadres?"
+      email_not_associated_with_account: "Sorry, '%{email}' is niet geassocieerd met alle rekeningen. <br/>Weet u zeker dat u typte het juiste e-mailadres?"
       email_reset_sent: Een e-mail is naar u verzonden met een link om je wachtwoord te resetten.
     reset:
       code_invalid: "Het spijt ons, maar dit reset code is verlopen of ongeldig. Als u problemen hebt proberen te kopiëren en plakken van de URL van uw e-mail in uw browser of het herstarten van de reset wachtwoord proces."
-      successful: "Wachtwoord resetten succes voor {{email}}"
-      pick_new_password_for: "Kies een nieuw wachtwoord voor {{email}}"
+      successful: "Wachtwoord resetten succes voor %{email}"
+      pick_new_password_for: "Kies een nieuw wachtwoord voor %{email}"
       reset_password: Reset wachtwoord      
   user_mailer:
     please_activate: A.u.b. uw gebruikersaccount activeren.
     activated: Uw gebruikersaccount is geactiveerd!
-    activated_email: "{{who}}, uw gebruikersaccount is geactiveerd. U mag nu plugins toevoegen:"
+    activated_email: "%{who}, uw gebruikersaccount is geactiveerd. U mag nu plugins toevoegen:"
     account_created: Uw account is aangemaakt.
-    user_name: Gebruiker {{name}}
-    password: Wachtwoord {{password}}
+    user_name: Gebruiker %{name}
+    password: Wachtwoord %{password}
     visit_url: "Bezoek dit adres om uw gebruikersaacount te activeren:"
     link_to_reset_your_password: Link om je wachtwoord te resetten.
   authlogic:
@@ -96,4 +96,4 @@ nl:
         email: e-mail
         password: Wachtwoord
         remember_me: Onthoud mijn gegevens
-        incorrect: "Sorry, uw {{login_field}} of wachtwoord was niet juist."
+        incorrect: "Sorry, uw %{login_field} of wachtwoord was niet juist."

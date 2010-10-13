@@ -34,7 +34,7 @@ nb:
         view_live: Se hvordan denne siden ser ut fra utsiden <br/><em>(Åpner i et nytt vindu)</em>
         edit_this_page: Rediger denne siden
         confirm_delete_page_title: Slett denne siden
-        confirm_delete_page_message: "Er du sikker på at du ønsker å slette siden '{{title}}'?"
+        confirm_delete_page_message: "Er du sikker på at du ønsker å slette siden '%{title}'?"
         hidden: gjemt
         draft: utkast
       form_advanced_options:
@@ -82,7 +82,7 @@ nb:
             create: Lag Innholdsseksjon
             already_exists: "En innholdsseksjon med den tittelen eksisterer allerede, vennligst velg en annen tittel."
             title_empty: "Du har ikke skrevet inn noen tittel for innholdsseksjonen, vennligst skriv inn en."
-            confirm_delete: "Dette vil fjerne innholdsseksjonen {{section_name}} når siden lagres, og slette alt innhold som er lagt inn i den. Er du sikker på at du vil dette?"
+            confirm_delete: "Dette vil fjerne innholdsseksjonen %{section_name} når siden lagres, og slette alt innhold som er lagt inn i den. Er du sikker på at du vil dette?"
       index:
         create_new_page: Lag Ny Side
         reorder_pages: Endre Rekkefølgen på Sidene

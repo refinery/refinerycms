@@ -14,8 +14,8 @@ nb:
         see_home_page: Se hjemmesiden
       recent_activity:
         latest_activity: Siste aktivitet
-        see: "Se '{{what}}'"
-        latest_activity_message: "{{what}} {{kind}} ble {{action}}"
+        see: "Se '%{what}'"
+        latest_activity_message: "%{what} %{kind} ble %{action}"
       recent_inquiries:
         latest_inquiries: Siste forespørsler
   updated:
@@ -23,5 +23,5 @@ nb:
   created:
     'with_article "the"': opprettet
 
-  ago: "{{time}} siden"
+  ago: "%{time} siden"
   see: Se

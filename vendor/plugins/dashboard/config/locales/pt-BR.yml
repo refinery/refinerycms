@@ -14,8 +14,8 @@ pt-BR:
         change_language: Mudar Língua
       recent_activity:
         latest_activity: Atividade Recente
-        see: "Ver '{{what}}'"
-        latest_activity_message: "{{kind}} {{what}} foi {{action}}"
+        see: "Ver '%{what}'"
+        latest_activity_message: "%{kind} %{what} foi %{action}"
       recent_inquiries:
         latest_inquiries: Últimas mensagens
   updated:
@@ -26,5 +26,5 @@ pt-BR:
     'with_article "as"': criada
     'with_article "os"': criado
     'with_article "the"': criado
-  ago: "{{time}} atrás"
+  ago: "%{time} atrás"
   see: Ver

@@ -40,7 +40,7 @@ it:
             create: Crea sezione dei contenuti
             already_exists: Una sezione di contenuti con quel titolo esiste già, si prega di scegliere un altro.
             title_empty: Non è stato inserito un titolo per la sezione dei contenuti, inserisci uno.
-            confirm_delete: Ciò eliminerà la sezione dei contenuti {{section_name}} quando la pagina viene salvata e cancellare tutti i contenuti che sono stati inseriti in esso, Sei sicuro?
+            confirm_delete: Ciò eliminerà la sezione dei contenuti %{section_name} quando la pagina viene salvata e cancellare tutti i contenuti che sono stati inseriti in esso, Sei sicuro?
       index:
         create_new_page: Creare una nuova pagina
         reorder_pages: Riordinare le pagine
