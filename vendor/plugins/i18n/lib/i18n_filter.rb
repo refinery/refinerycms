@@ -16,13 +16,13 @@ module RoutingFilter
           ::I18n.locale = ::Refinery::I18n.default_frontend_locale
         end
 
-        returning yield do |params|
+        yield.tap do |params|
           unless path =~ %r{^/(admin|refinery|wymiframe)} or ::I18n.locale == ::Refinery::I18n.default_frontend_locale
             params[:locale] = (locale.presence || ::Refinery::I18n.current_frontend_locale)
           end
         end
       else
-        returning yield do |result|
+        yield.tap do |result|
           result
         end
       end
@@ -31,14 +31,14 @@ module RoutingFilter
     def around_generate(*args, &block)
       if ::Refinery::I18n.enabled?
         locale = args.extract_options!.delete(:locale) || ::I18n.locale
-        returning yield do |result|
+        yield.tap do |result|
           if (locale != ::Refinery::I18n.default_frontend_locale and result !~ %r{^/(refinery|wymiframe)})
             result.sub!(%r(^(http.?://[^/]*)?(.*))){ "#{$1}/#{locale}#{$2}" }
           end
           result
         end
       else
-        returning yield do |result|
+        yield.tap do |result|
           result
         end
       end
