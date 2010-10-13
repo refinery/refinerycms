@@ -68,3 +68,6 @@ en:
       not_live: This page is NOT live for public viewing.
     footer:
       copyright: Copyright &copy;
+  time:
+    formats:
+      short: "%A, %d %B %Y"
