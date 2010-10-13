@@ -28,16 +28,16 @@ nl:
         move_inquiry_to_open: Verplaats deze vraag naar 'te verwerken'
         read_inquiry: Lees de vraag
         remove_inquiry: Verwijder de vraag permanent
-        remove_inquiry_confirmation: "Weet u zeker dat u de vraag '{{name}}' wilt verwijderen?"
+        remove_inquiry_confirmation: "Weet u zeker dat u de vraag '%{name}' wilt verwijderen?"
         title: Verwijder deze vraag
         said: zei
         mark_as_spam: Markeer als spam
         mark_as_ham: Verplaats deze vraag naar 'inbox'
       toggle_status:
-        closed: "Vraag '{{inquiry}}' is behandeld"
-        reopened: "Vraag '{{inquiry}}' is heropend"
+        closed: "Vraag '%{inquiry}' is behandeld"
+        reopened: "Vraag '%{inquiry}' is heropend"
       index:
-        search_results_for: Zoekresultaten voor {{query}}
+        search_results_for: Zoekresultaten voor %{query}
         open_inquiries: Open vragen
         no_inquiries: "Er zijn geen onverwerkte vragen."
         closed_inquiries: Verwerkte vragen
@@ -64,7 +64,7 @@ nl:
         no_spam: Er is geen spam.
     inquiry_settings:
       update:
-        updated: "'{{setting}}' is aangepast."
+        updated: "'%{setting}' is aangepast."
       notification_recipients_form:
         inquiry_settings_value_name: Stuur notificaties naar
         explanation: "Iedere keer wanneer iemand het vraag formulier invult op uw website, stuurt Refinery een email waarin staat dat er een nieuwe vraag ontvangen is."

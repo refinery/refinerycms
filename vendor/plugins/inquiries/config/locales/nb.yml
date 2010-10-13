@@ -26,19 +26,19 @@ nb:
         move_inquiry_to_closed: Flytt denne forespørselen til lukket
         move_inquiry_to_open: Flytt denne forespørselen til åpen
         read_inquiry: Les forespørselen
-        remove_inquiry: "Er du sikker på at du ønsker å slette denne forespørselen fra '{{name}}'?"
+        remove_inquiry: "Er du sikker på at du ønsker å slette denne forespørselen fra '%{name}'?"
         title: Fjern denne forespørselen permanent.
         said: sa
         mark_as_spam: Merk som søppel
         mark_as_ham: Flytt til innboksen
       toggle_status:
-        closed: "Forespørselen '{{inquiry}}' er lukket"
-        reopened: "Forespørselen '{{inquiry}}' er gjenåpnet"
+        closed: "Forespørselen '%{inquiry}' er lukket"
+        reopened: "Forespørselen '%{inquiry}' er gjenåpnet"
       submenu:
         update_notified: Oppdater hvem som blir informert
         edit_confirmation_email: Rediger bekreftelses e-posten
       index:
-        search_results_for: Søkeresultater for {{query}}
+        search_results_for: Søkeresultater for %{query}
         no_inquiries: Du har ikke mottatt noen forespørsler enda.
       spam:
         no_spam: Hurra! Du har ikke noen søppelpost.
@@ -57,7 +57,7 @@ nb:
         title: Fjern denne forespørselen permanent
     inquiry_settings:
       update:
-        updated: "'{{setting}}' ble endret."
+        updated: "'%{setting}' ble endret."
       notification_recipients_form:
         inquiry_settings_value_name: Send oppdateringer til
         explanation: "Hver gang noen kontakter deg på websiden din, så vil Refinery sende ut en e-post for å si ifra at det er ny forespørsel."

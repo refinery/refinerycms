@@ -14,13 +14,13 @@ nl:
         upload_a_file: Upload een bestand
       recent_activity:
         latest_activity: Laatste wijzigingen
-        latest_activity_message: "{{what}} {{kind}} {{action}}"
-        see: "See '{{what}}'"
+        latest_activity_message: "%{what} %{kind} %{action}"
+        see: "See '%{what}'"
       recent_inquiries:
         latest_inquiries: Laatste vragen
   updated:
     'with_article "the"':  bewerkt
   created:
     'with_article "the"':  aangemaakt
-  ago: "{{time}} geleden"
+  ago: "%{time} geleden"
   see: Zie

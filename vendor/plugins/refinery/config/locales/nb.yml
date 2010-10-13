@@ -10,19 +10,19 @@ nb:
       reorder_menu_done: "Jeg er ferdig å endre rekkefølgen på menyen"
     search: Søk
     search_submit: Søk
-    search_results_for: "Søkeresultater for '{{query}}'"
+    search_results_for: "Søkeresultater for '%{query}'"
     search_no_results: "Beklager, ditt søk returnerte ingen resultater"
     images:
       existing_image:
         submit_insert: Sett Inn
   refinery:
-    other: "Annen {{what}}"
-    reorder: "Endre rekkefølgen for {{what}}"
-    reorder_done: "Ferdig å endre rekkefølgen for {{what}}"
+    other: "Annen %{what}"
+    reorder: "Endre rekkefølgen for %{what}"
+    reorder_done: "Ferdig å endre rekkefølgen for %{what}"
     crudify:
-      created: "{{what}} ble opprettet."
-      updated: "{{what}} ble oppdatert."
-      destroyed: "{{what}} ble slettet"
+      created: "%{what} ble opprettet."
+      updated: "%{what} ble oppdatert."
+      destroyed: "%{what} ble slettet"
   shared:
     site_bar:
       log_out: Logg ut
@@ -39,22 +39,22 @@ nb:
         or_cancel: eller
         cancel: Avbryt
         or_continue: eller
-        cancel_lose_changes: "Om du avbryter så vil alle endringene du har gjort på {{object_name}} forsvinne"
+        cancel_lose_changes: "Om du avbryter så vil alle endringene du har gjort på %{object_name} forsvinne"
         delete: Slett
         previous: Forrige
         next: Neste
       image_picker:
-        none_selected: "Det er for øyeblikket ikke noen {{what}} valgt. Vennligst klikk her for å legge til en."
-        remove_current: "Fjern gjeldende {{what}}"
+        none_selected: "Det er for øyeblikket ikke noen %{what} valgt. Vennligst klikk her for å legge til en."
+        remove_current: "Fjern gjeldende %{what}"
         change: Kikk her for å velge et bilde
         image: bilde
         show: Vis
       resource_picker:
-        none_selected: "Det er for øyeblikket ikke noen {{what}} valgt. Vennligst klikk her for å legge til en."
-        current: "Gjeldende {{what}}"
-        download_current: "Last ned gjeldende {{what}}"
+        none_selected: "Det er for øyeblikket ikke noen %{what} valgt. Vennligst klikk her for å legge til en."
+        current: "Gjeldende %{what}"
+        download_current: "Last ned gjeldende %{what}"
         opens_in_new_window: Åpner i et nytt vindu
-        remove_current: "Fjern gjeldende {{what}}"
+        remove_current: "Fjern gjeldende %{what}"
         resource: ressurs
     message:
       close: Lukk

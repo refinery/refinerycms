@@ -13,12 +13,12 @@ de:
         see_home_page: Homepage ansehen
       recent_activity:
         latest_activity: Letzte Aktivität
-        see: "'{{what}}' ansehen"
+        see: "'%{what}' ansehen"
       recent_inquiries:
         latest_inquiries: Latest inquiries
   updated:
     'with_article "the"':  aktualisiert
   created:
     'with_article "the"':  erstellt
-  ago: "vor {{time}}"
+  ago: "vor %{time}"
   see: Ansehen

@@ -25,13 +25,13 @@ da:
         move_inquiry_to_closed: Flyt til lukkede henvendelser
         move_inquiry_to_open: Flyt til åbne henvendelser
         read_inquiry: Læs henvendelse
-        remove_inquiry: "Er du sikker på du vil slette denne henvendelse fra '{{name}}'?"
+        remove_inquiry: "Er du sikker på du vil slette denne henvendelse fra '%{name}'?"
         title: Slet henvendelse.
       toggle_status:
-        closed: "Henvendelsen '{{inquiry}}' er lukket"
-        reopened: "Henvendelsen '{{inquiry}}' er genåbnet"
+        closed: "Henvendelsen '%{inquiry}' er lukket"
+        reopened: "Henvendelsen '%{inquiry}' er genåbnet"
       index:
-        search_results_for: "Søgeresultat for '{{query}}'"
+        search_results_for: "Søgeresultat for '%{query}'"
         no_inquiries: Du har endnu ikke modtaget nogen henvendelser.
       show:
         details: Detaljer
@@ -48,7 +48,7 @@ da:
         edit_confirmation_email: Redigér e-mailbekræftelse
     inquiry_settings:
       update:
-        updated: "'{{setting}}' er opdateret."
+        updated: "'%{setting}' er opdateret."
       notification_recipients_form:
         inquiry_settings_value_name: Send besked til
         explanation: "Hver gang kontaktformularen benyttes, sender Refinery en e-mail med besked om, at der er modtaget en ny henvendelse"

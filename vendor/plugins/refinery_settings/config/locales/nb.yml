@@ -16,7 +16,7 @@ nb:
       index:
         new: Opprett en ny innstilling
         empty_set: Det er ingen innstillinger enda.
-        create_first: "Klikk '{{link}}' for å legge til din første innstilling."
+        create_first: "Klikk '%{link}' for å legge til din første innstilling."
       form:
         restart_may_be_in_order: "<strong>Merk</strong> at du kan komme til å trenge å restarte websiden for at denne innstillingen skal tre i kraft."
         yes_make_this_setting_restricted: "Ja, la denne innstillingen kun endres av superbrukere."

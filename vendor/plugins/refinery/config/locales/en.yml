@@ -10,19 +10,19 @@ en:
       reorder_menu_done: "I'm done reordering the menu"
     search: Search
     search_submit: Go
-    search_results_for: "Search results for '{{query}}'"
+    search_results_for: "Search results for '%{query}'"
     search_no_results: "Sorry, no results found"
     images:
       existing_image:
         submit_insert: Insert
   refinery:
-    other: "Other {{what}}"
-    reorder: "Reorder {{what}}"
-    reorder_done: "Done Reordering {{what}}"
+    other: "Other %{what}"
+    reorder: "Reorder %{what}"
+    reorder_done: "Done Reordering %{what}"
     crudify:
-      created: "{{what}} was successfully created."
-      updated: "{{what}} was successfully updated."
-      destroyed: "{{what}} was successfully destroyed."
+      created: "%{what} was successfully created."
+      updated: "%{what} was successfully updated."
+      destroyed: "%{what} was successfully destroyed."
   shared:
     site_bar:
       log_out: Log out
@@ -39,22 +39,22 @@ en:
         or_cancel: or
         cancel: Cancel
         or_continue: or
-        cancel_lose_changes: "Cancelling will lose all changes you've made to this {{object_name}}"
+        cancel_lose_changes: "Cancelling will lose all changes you've made to this %{object_name}"
         delete: Delete
         previous: Previous
         next: Next
       image_picker:
-        none_selected: "There is currently no {{what}} selected, please click here to add one."
-        remove_current: "Remove current {{what}}"
+        none_selected: "There is currently no %{what} selected, please click here to add one."
+        remove_current: "Remove current %{what}"
         change: Click here to pick a image
         image: image
         show: Show
       resource_picker:
-        none_selected: "There is currently no {{what}} selected, please click here to add one."
-        current: "Current {{what}}"
-        download_current: "Download current {{what}}"
+        none_selected: "There is currently no %{what} selected, please click here to add one."
+        current: "Current %{what}"
+        download_current: "Download current %{what}"
         opens_in_new_window: Opens in a new window
-        remove_current: "Remove current {{what}}"
+        remove_current: "Remove current %{what}"
         resource: resource
     message:
       close: Close

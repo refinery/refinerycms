@@ -15,7 +15,7 @@ it:
       index:
         new: Crea nuova impostazione
         empty_set: Non ci sono ancora le impostazioni.
-        create_first: Fare clic "{{link}}"per aggiungere la vostra impostazione.
+        create_first: Fare clic "%{link}"per aggiungere la vostra impostazione.
       form:
         restart_may_be_in_order: "<strong>  Si prega di notare</strong> che potrebbe essere necessario riavviare il sito web per questa impostazione abbia effetto."
   plugins:
