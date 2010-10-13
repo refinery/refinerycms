@@ -1,3 +1,11 @@
+## 0.9.7.15 [14 October 2010]
+* Silenced some deprecation warnings by fixing the deprecations so that Rails 2.3.9 is a better experience. [Philip Arndt](http://github.com/parndt)
+* [See full list](http://github.com/resolve/refinerycms/compare/0.9.7.14...0.9.7.15)
+
+## 0.9.7.14 [11 October 2010]
+* Updated ``WYMeditor`` to fix some issues with inserting images and links. [David Jones](http://github.com/djones)
+* [See full list](http://github.com/resolve/refinerycms/compare/0.9.7.13...0.9.7.14)
+
 ## 0.9.7.13 [23 August 2010]
 
 * Russian language support (RU). [Sun](http://github.com/sunchess)
