@@ -22,7 +22,7 @@ The following would be a sceleton of an empty filter:
           # Alter the path here before it gets recognized. 
           # Make sure to yield (calls the next around filter if present and 
           # eventually `recognize_path` on the routeset):
-          returning yield do |params|
+          yield.tap do |params|
             # You can additionally modify the params here before they get passed
             # to the controller.
           end
@@ -32,7 +32,7 @@ The following would be a sceleton of an empty filter:
           # Alter arguments here before they are passed to `url_for`. 
           # Make sure to yield (calls the next around filter if present and 
           # eventually `url_for` on the controller):
-          returning yield do |result|
+          yield.tap do |result|
             # You can change the generated url_or_path here. Make sure to use
             # one of the "in-place" modifying String methods though (like sub! 
             # and friends).

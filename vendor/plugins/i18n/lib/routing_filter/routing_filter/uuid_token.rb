@@ -47,7 +47,7 @@ module RoutingFilter
 
     def around_recognize(path, env, &block)
       token = extract_token!(path)                              # remove the token from the beginning of the path
-      returning yield do |params|                               # invoke the given block (calls more filters and finally routing)
+      yield.tap do |params|                               # invoke the given block (calls more filters and finally routing)
         params[:uuid_token] = token if token                    # set recognized token to the resulting params hash
       end
     end
@@ -56,7 +56,7 @@ module RoutingFilter
       token = args.extract_options!.delete(:uuid_token)         # extract the passed :token option
       token = AccessToken.current if AccessToken && token.nil?  # default to AccessToken.current when token is nil (could also be false)
 
-      returning yield do |result|
+      yield.tap do |result|
         if token
           url = result.is_a?(Array) ? result.first : result
           prepend_token!(url, token)
