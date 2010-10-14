@@ -23,9 +23,9 @@ sl:
           subject_line_optional: Opcijska zadeva
           body_optional: Opcijsko telo
           not_sure: Niste prepričani kaj vnesti v zgornja okna?
-          step1: "Vnesite ali kopirajte ter prilepite (npr. iz vašega imenika) email naslov, ki ga želite kot '<strong>Email Naslov</strong>' v zgornjem oknu."
-          step2: "Uporabite '<strong>Zadeva</strong>' v zgornjem oknu, če želite nova sporočila s <strong>predhodno nastavljeno zadevo</strong>."
-          step3: "Uporabite <strong>Email Telo</strong> v zgornjem oknu, če želite novo sporočilo s <strong>predhodno nastavljenim sporočilom</strong>."
+          step1_html: "Vnesite ali kopirajte ter prilepite (npr. iz vašega imenika) email naslov, ki ga želite kot '<strong>Email Naslov</strong>' v zgornjem oknu."
+          step2_html: "Uporabite '<strong>Zadeva</strong>' v zgornjem oknu, če želite nova sporočila s <strong>predhodno nastavljeno zadevo</strong>."
+          step3_html: "Uporabite <strong>Email Telo</strong> v zgornjem oknu, če želite novo sporočilo s <strong>predhodno nastavljenim sporočilom</strong>."
         your_resource:
           tab_name: Vir
           link_to_this_resource: Povezava do tega vira
@@ -33,7 +33,7 @@ sl:
       delete: Odstrani stran
       edit: Uredi stran
       page:
-        view_live: Poglej si to stran v živo <br/><em>(odpre se v novem oknu)</em>
+        view_live_html: Poglej si to stran v živo <br/><em>(odpre se v novem oknu)</em>
         hidden: skrito
         draft: osnutek
       form_new_page_parts:

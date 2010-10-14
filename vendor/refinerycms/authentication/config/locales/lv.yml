@@ -23,7 +23,7 @@ lv:
       sign_in: Ienākt
       forgot_password: Aizmirsu paroli
   users:
-    setup_website_name: Pirmkārt šim saitam vajadzētu uzstādīt nosaukumu. <a href='%{link}' name='%{title}'>Spiediet šeit</a>, lai uzstādītu sava saita nosaukumu
+    setup_website_name_html: Pirmkārt šim saitam vajadzētu uzstādīt nosaukumu. <a href='%{link}' name='%{title}'>Spiediet šeit</a>, lai uzstādītu sava saita nosaukumu
     new:
       fill_form: Aizpildiet zemāk redzamos laukus, lai varam sākt.
       sign_up: Izveidot
@@ -34,7 +34,7 @@ lv:
       enter_email_address: Lūdzu, norādiet sava konta epasta adresi.
       reset_password: Atjaunot paroli
       blank_email: Jūs nenorādījāt epasta adresi.
-      email_not_associated_with_account: Atvainojiet, epasts '%{email}' nav piesaistīts nevienam kontam.<br />Vai tiešām norādījāt korektu epastu?
+      email_not_associated_with_account_html: Atvainojiet, epasts '%{email}' nav piesaistīts nevienam kontam.<br />Vai tiešām norādījāt korektu epastu?
       email_reset_sent: Uz Jūsu epastu tika izsūtīta vēstule, kura satur saiti, lai atjaunotu paroli.
     reset:
       code_invalid: Atvainojiet, šim paroles atjaunošanas kodam ir beidzies izmantošanas termiņš vai arī tas nav derīgs. Ja Jums ir radušās problēmas, tad pamēģiniet nokopēt saņemto saiti no epasta un iekopēt to pārluka adrešu laukā vai arī mēģiniet sākt atjuanošanas procesu no sākuma.

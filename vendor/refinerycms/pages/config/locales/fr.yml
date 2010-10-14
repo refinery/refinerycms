@@ -24,9 +24,9 @@ fr:
           subject_line_optional: Sujet optionnel
           body_optional: Corps de texte optionnel
           not_sure: Vous n'êtes pas certain de ce qu'il faut entrer dans les champs ci-dessus ?
-          step1: Ecrivez, ou copiez-collez (par exemple à partir de votre carnet d'adresses) l'adresse e-mail à mettre en lien dans le champ '<strong>Adresse e-mail</strong>'.
-          step2: Utilisez le champ '<strong>Sujet optionnel</strong>' si vous souhaitez que le message possède un <strong>sujet pré-défini</strong>.
-          step3: Utilisez le champ '<strong>Corps de texte optionnel</strong>' si vous souhaitez que le message possède un <strong>texte pré-défini</strong>.
+          step1_html: Ecrivez, ou copiez-collez (par exemple à partir de votre carnet d'adresses) l'adresse e-mail à mettre en lien dans le champ '<strong>Adresse e-mail</strong>'.
+          step2_html: Utilisez le champ '<strong>Sujet optionnel</strong>' si vous souhaitez que le message possède un <strong>sujet pré-défini</strong>.
+          step3_html: Utilisez le champ '<strong>Corps de texte optionnel</strong>' si vous souhaitez que le message possède un <strong>texte pré-défini</strong>.
         your_resource:
           tab_name: Votre fichier
           link_to_this_resource: Lien vers ce fichier
@@ -34,7 +34,7 @@ fr:
       delete: Supprimer définitivement cette page
       edit: Modifier cette page
       page:
-        view_live: Voir cette page<br/><em>(Ouvre une nouvelle fenêtre)</em>
+        view_live_html: Voir cette page<br/><em>(Ouvre une nouvelle fenêtre)</em>
         hidden: caché
         draft: brouillon
       form_new_page_parts:

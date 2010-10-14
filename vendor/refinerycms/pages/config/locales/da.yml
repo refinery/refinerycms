@@ -19,7 +19,7 @@ da:
           text: Tekst
           image: Billede
         custom_url: Tilpas URL
-        custom_url_explanation: "Indtast en URL hvis siden linker til et eksternt site eller til en allerede eksisterende resource, fx kontakt siden. <br/>Bemærk: URLen skal pege på en adresse der findes i forvejen. Der bliver ikke oprettet en ny adresse."
+        custom_url_explanation_html: "Indtast en URL hvis siden linker til et eksternt site eller til en allerede eksisterende resource, fx kontakt siden. <br/>Bemærk: URLen skal pege på en adresse der findes i forvejen. Der bliver ikke oprettet en ny adresse."
         draft: Kladde
         show_in_menu_title: Vis i menuen
         show_in_menu_description: Afkryds hvis siden skal vises i menuen på sitet
