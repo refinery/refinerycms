@@ -19,7 +19,7 @@ it:
           text: Testo
           image: Immagine
         custom_url: URL personalizzato
-        custom_url_explanation: "Inserisci un URL, se questa pagina di link a un sito esterno o ad una risorsa pre-esistenti, ad esempio un contatto pagina. <br/> Nota: Questo URL deve puntare a una posizione che esiste, uno nuovo, non verrà creato."
+        custom_url_explanation_html: "Inserisci un URL, se questa pagina di link a un sito esterno o ad una risorsa pre-esistenti, ad esempio un contatto pagina. <br/> Nota: Questo URL deve puntare a una posizione che esiste, uno nuovo, non verrà creato."
         draft: Bozza
         show_in_menu_title: Mostra nel menu
         show_in_menu_description: Seleziona questa casella se questa pagina dovrebbe apparire nel menu del sito

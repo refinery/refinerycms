@@ -25,7 +25,7 @@ pt-BR:
           list: lista
           grid: grade
       grid_view:
-        view_live: "Ver esta imagem<br/><em>Abre em uma nova janela</em>"
+        view_live_html: "Ver esta imagem<br/><em>Abre em uma nova janela</em>"
       existing_image:
         button_text: Inserir
         resize_image: "Redimencionar a imagem?"

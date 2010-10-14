@@ -12,7 +12,7 @@ fr:
         empty_set: Il n'y a encore aucun paramètre.
         create_first: Cliquer sur '%{link}' afin d'ajouter votre premier paramètre.
       form:
-        restart_may_be_in_order: <strong>Veillez noter</strong> que vous serez peut-être obligé de redémarrer votre site afin que ce paramètre soit pris en compte.
+        restart_may_be_in_order_html: <strong>Veillez noter</strong> que vous serez peut-être obligé de redémarrer votre site afin que ce paramètre soit pris en compte.
         yes_make_this_setting_restricted: Restreindre ce paramètre aux administrateurs uniquement.
         help:
           restricted: Ceci permet de restreindre la consultation et la modification de ce paramètre uniquement aux administrateurs (comme vous actuellement).

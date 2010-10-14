@@ -29,7 +29,7 @@ ru:
           results_for: Search results for %{query}
       grid_view:
         edit: Редактировать это изображение
-        view_live: Показать это изображение <br/><em>Откроется в новом окне</em>
+        view_live_html: Показать это изображение <br/><em>Откроется в новом окне</em>
       list_view_image:
         edit_this_image: Редактировать это изображение
       existing_image:

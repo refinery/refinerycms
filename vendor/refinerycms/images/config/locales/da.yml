@@ -9,7 +9,7 @@ da:
     images:
       image:
         delete:
-          message: Er du sikker på du vil slette billedet '%{title}'? 
+          message: Er du sikker på du vil slette billedet '%{title}'?
           title: Slet billede
       form:
         image: Billede
@@ -29,7 +29,7 @@ da:
           results_for: Søgeresultat for '%{query}'
       grid_view:
         edit: Redigér billede
-        view_live: Vis billede<br/><em>(åbner i nyt vindue)</em>
+        view_live_html: Vis billede<br/><em>(åbner i nyt vindue)</em>
       list_view_image:
         edit_this_image: Redigér billede
       insert:

@@ -23,15 +23,15 @@ ru:
           subject_line_optional: Тема (необязательно)
           body_optional: Сообщение (необязательно)
           not_sure: "Не уверены, что ввести в поля выше?"
-          step1: "Впишите или скопируйте и вставьте (например, из вашей адресной книги) адрес электронной почты, на который хотите поставить ссылку, в поле <strong>&laquo;Эл. почта&raquo;</strong>"
-          step2: "Используйте поле <strong>&laquo;Тема&raquo;</strong>, если хотите, чтобы в сообщении была автоматически заполнена тема письма"
-          step3: "Используйте поле <strong>&laquo;Сообщение&raquo;</strong>, если хотите, чтобы в сообщении была автоматически заполнено содержание письма"
+          step1_html: "Впишите или скопируйте и вставьте (например, из вашей адресной книги) адрес электронной почты, на который хотите поставить ссылку, в поле <strong>&laquo;Эл. почта&raquo;</strong>"
+          step2_html: "Используйте поле <strong>&laquo;Тема&raquo;</strong>, если хотите, чтобы в сообщении была автоматически заполнена тема письма"
+          step3_html: "Используйте поле <strong>&laquo;Сообщение&raquo;</strong>, если хотите, чтобы в сообщении была автоматически заполнено содержание письма"
         your_resource:
           tab_name: Ваш файл
           link_to_this_resource: Ссылка на этот файл
     pages:
       page:
-        view_live: Показать эту страницу вживую <br/><em>(откроется в новом окне)</em>
+        view_live_html: Показать эту страницу вживую <br/><em>(откроется в новом окне)</em>
         edit_this_page: Редактировать эту страницу
         confirm_delete_page_title: Удалить эту страницу
         confirm_delete_page_message: "Вы действительно хотите удалить страницу '%{title}'?"
@@ -55,7 +55,7 @@ ru:
           text: Текст
           image: Изображение
         custom_url: Custom URL
-        custom_url_explanation: "Enter a URL if this page links to an external site or to a pre-existing resource e.g. a contact page. <br/> Note: This URL must point to a location that exists; a new one will not be added."
+        custom_url_explanation_html: "Enter a URL if this page links to an external site or to a pre-existing resource e.g. a contact page. <br/> Note: This URL must point to a location that exists; a new one will not be added."
         draft: Черновик
         show_in_menu_title: Показ в меню
         show_in_menu_description: Отображать эту страницу в меню сайта
