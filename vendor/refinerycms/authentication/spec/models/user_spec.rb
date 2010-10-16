@@ -29,6 +29,24 @@ describe User do
       end
     end
     
+    context "has_role" do
+      it "raises Exception when Role object is passed" do
+        user = Factory(:user)
+        lambda{ user.has_role?(Role.new)}.should raise_exception
+      end
+      
+      it "returns the true if user has Role" do
+        user = Factory(:refinery_user)
+        user.has_role?(:refinery).should be_true
+      end
+      
+      it "returns false if user hasn't the Role" do
+        user = Factory(:refinery_user)
+        user.has_role?(:refinery_fail).should be_false
+      end
+      
+    end
+    
   end
   
   
