@@ -27,7 +27,7 @@ it:
           grid: griglia
       grid_view:
         edit: Modifica questa immagine
-        view_live: Visualizza questa immagine <br/><em>Apri in una nuova finestra</em>
+        view_live_html: Visualizza questa immagine <br/><em>Apri in una nuova finestra</em>
       list_view_image:
         edit_this_image: Modifica questa immagine
       insert:

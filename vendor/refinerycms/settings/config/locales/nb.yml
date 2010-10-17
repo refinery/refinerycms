@@ -18,7 +18,7 @@ nb:
         empty_set: Det er ingen innstillinger enda.
         create_first: "Klikk '%{link}' for å legge til din første innstilling."
       form:
-        restart_may_be_in_order: "<strong>Merk</strong> at du kan komme til å trenge å restarte websiden for at denne innstillingen skal tre i kraft."
+        restart_may_be_in_order_html: "<strong>Merk</strong> at du kan komme til å trenge å restarte websiden for at denne innstillingen skal tre i kraft."
         yes_make_this_setting_restricted: "Ja, la denne innstillingen kun endres av superbrukere."
         help:
           restricted: "Dette gjør det slik at denne innstillingen kun kan sees og endres av brukere som er superbrukere (som deg)."
