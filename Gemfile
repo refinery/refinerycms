@@ -20,7 +20,7 @@ gem 'sqlite3-ruby', :require => 'sqlite3' #db_adapter=sqlite3
 gem 'acts_as_indexed',  '= 0.6.6', :require => 'acts_as_indexed'
 gem 'authlogic',        '= 2.1.6', :require => 'authlogic'
 gem 'friendly_id',      '= 3.1.3', :require => 'friendly_id'
-gem 'rails',            '= 2.3.9'
+gem 'rails',            '= 2.3.10'
 gem 'rmagick',          '~> 2.12.0'
 gem 'truncate_html',    '= 0.3.2', :require => 'truncate_html'
 gem 'will_paginate',    '= 2.3.14', :require => 'will_paginate'
@@ -45,7 +45,7 @@ end
 
 #===REQUIRED FOR REFINERY GEM INSTALL===
 # Leave the gem below disabled (commented out) if you're not using the gem install method.
-# gem 'refinerycms',    '= 0.9.7.15'
+# gem 'refinerycms',    '= 0.9.7.16'
 #===END OF REFINERY GEM INSTALL REQUIREMENTS===
 
 # Bundle gems for certain environments:
