@@ -48,7 +48,7 @@ class UsersController < ApplicationController
 
       site_name_setting = RefinerySetting.find_or_create_by_name('site_name', :value => "Company Name")
       if site_name_setting.value.to_s =~ /^(|Company\ Name)$/ or Role[:refinery].users.count == 1
-        flash[:message] << "<p>#{t('users.setup_website_name',
+        flash[:message] << "<p>#{t('users.setup_website_name_html',
                                    :link => edit_admin_refinery_setting_url(site_name_setting, :dialog => true),
                                    :title => t('admin.refinery_settings.edit'))}</p>".html_safe
       end
@@ -71,7 +71,7 @@ class UsersController < ApplicationController
         flash.now[:error] = if (email = params[:user][:email]).blank?
           t('users.forgot.blank_email')
         else
-          t('users.forgot.email_not_associated_with_account', :email => email).html_safe
+          t('users.forgot.email_not_associated_with_account_html', :email => email).html_safe
         end
       end
     end

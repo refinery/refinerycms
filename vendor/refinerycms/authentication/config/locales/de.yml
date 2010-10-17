@@ -26,7 +26,7 @@ de:
       sign_in: Anmelden
       forgot_password: Ich habe mein Passwort vergessen
   users:
-    setup_website_name: Als ersten können wir der Seite einen Namen geben. <a href='%{link}' name='%{title}'>Hier klicken</a>, um den Namen der Webseite zu bearbeiten
+    setup_website_name_html: Als ersten können wir der Seite einen Namen geben. <a href='%{link}' name='%{title}'>Hier klicken</a>, um den Namen der Webseite zu bearbeiten
     new:
       fill_form: Füllen Sie die Details unten aus, damit wir anfangen können.
       sign_up: Anmelden
@@ -37,7 +37,7 @@ de:
       enter_email_address: Bitte geben Sie die E-Mail-Adresse für Ihre Konto an.
       reset_password: Passwort zurücksetzen
       blank_email: Sie haben keine E-Mail-Adresse angegeben.
-      email_not_associated_with_account: Tut mir leid, '%{email}' ist mit keinem Konto verbunden.<br />Sind Sie sicher, dass Sie die richtige E-Mail-Adresse eingegeben haben?
+      email_not_associated_with_account_html: Tut mir leid, '%{email}' ist mit keinem Konto verbunden.<br />Sind Sie sicher, dass Sie die richtige E-Mail-Adresse eingegeben haben?
       email_reset_sent: Es wurde Ihnen eine E-Mail mit einem Link geschickt, durch den Sie ihr Passwort zurücksetzen können.
     reset:
       code_invalid: Tut mir leid, aber dieser Zurücksetzungscode ist abgelaufen oder ungültig. Wenn Sie Probleme haben, versuchen Sie den Link aus der E-Mail zu kopieren und in Ihren Browser einzufügen, oder wiederholen Sie den Vorgang mit dem Passwort zurücksetzen.

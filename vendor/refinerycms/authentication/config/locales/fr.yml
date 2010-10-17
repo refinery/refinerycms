@@ -24,7 +24,7 @@ fr:
       sign_in: Authentification
       forgot_password: J'ai oublié mon mot de passe
   users:
-    setup_website_name: Donnez, tout d'abord, un nom à votre site. <a href='%{link}' name='%{title}'>Cliquer ici</a> pour changer le nom de votre site.
+    setup_website_name_html: Donnez, tout d'abord, un nom à votre site. <a href='%{link}' name='%{title}'>Cliquer ici</a> pour changer le nom de votre site.
     new:
       fill_form: Remplissez vos coordonnées ci-dessous pour commencer.
       sign_up: Enregistrement
@@ -35,7 +35,7 @@ fr:
       enter_email_address: Veuillez entrer votre adresse e-mail.
       reset_password: Changer le mot de passe
       blank_email: Vous n'avez pas entré d'adresse e-mail.
-      email_not_associated_with_account: Désolé, '%{email}' n'est asssocié à aucun compte.<br />Etes-vous sûr d'avoir correctement entré votre adresse e-mail ?
+      email_not_associated_with_account_html: Désolé, '%{email}' n'est asssocié à aucun compte.<br />Etes-vous sûr d'avoir correctement entré votre adresse e-mail ?
       email_reset_sent: Un e-mail vous a été envoyé. Il contient un lien vous permettant de changer votre mot de passe.
     reset:
       code_invalid: "Nous sommes désolés mais ce code de changement de mot de passe à expiré ou est invalide. Si vous rencontrez des problèmes veuillez essayer de copier/coller l'URL fournie par l'e-mail dans votre navigateur ou de recommencer la précedure de changement de mot de passe."
