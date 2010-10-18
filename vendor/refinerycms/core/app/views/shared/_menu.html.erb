@@ -6,7 +6,7 @@
   cache_key << dom_id
   cache_key << (action_suffix ||= RefinerySetting.find_or_set(:refinery_menu_cache_action_suffix, "site_menu"))
   cache_key << request.path
-  cache(cache_key.compact.join('_')) do
+  cache_if(RefinerySetting.find_or_set(:menu_cache_enabled, true), cache_key.compact.join('_')) do
     # Select top menu items unless 'roots' is supplied.
     collection ||= @menu_pages
     # In order to match items that aren't shown in menu and highlight their associations.
