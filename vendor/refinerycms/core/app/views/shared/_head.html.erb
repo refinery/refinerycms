@@ -3,12 +3,14 @@
   # Would be great if someone could fix this?
   js_caching = RefinerySetting.find_or_set(:use_resource_caching, Rails.root.writable?)
   css_caching = js_caching && request.env['HTTP_USER_AGENT'] !~ /MSIE/ && (theme ||= false).blank?
-  stylesheets = %w(application formatting theme)
-  # you can disable the use of the built-in refinery stylesheets by disabling the setting.
-  stylesheets.map! {|ss| ["refinery/#{ss}", ss] }.flatten! if RefinerySetting.find_or_set(:frontend_refinery_stylesheets_enabled, true)
+  unless defined?(stylesheets)
+    stylesheets = %w(application formatting theme)
+    # you can disable the use of the built-in refinery stylesheets by disabling the setting.
+    stylesheets.map! {|ss| ["refinery/#{ss}", ss] }.flatten! if RefinerySetting.find_or_set(:frontend_refinery_stylesheets_enabled, true)
+  end
   # if theme is set, use themed stylesheet links.
   stylesheets.map! {|ss| ss =~ /^refinery\// ? ss : "/theme/stylesheets/#{ss}" } if !!(theme ||= false)
-%>
+-%>
 <head>
   <title><%= browser_title(yield(:title)) %></title>
   <link rel="shortcut icon" href="/favicon.ico" />
