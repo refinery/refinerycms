@@ -18,7 +18,7 @@
                           'refinery/submenu',
                           'refinery/tooltips',
                           'wymeditor/skins/refinery/skin',
-                          :cache => (css_caching ? "cache/refinery" : false) -%>
+                          :cache => ("cache/refinery" if css_caching) -%>
 
   <%= yield :head_before_javascript_libraries -%>
   <%= javascript_include_tag 'refinery/i18n' -%>
@@ -33,7 +33,7 @@
                              'jquery/jquery.html5-placeholder-shim.js',
                              'jquery/jquery.timers.js',
                              'jquery/jquery.jcarousel.js',
-                             :cache => (js_caching ? "cache/jquery-plugins" : false) unless login -%>
+                             :cache => ("cache/jquery-plugins" if js_caching) unless login -%>
 
   <%= yield :head_after_javascript_libraries -%>
 
@@ -43,7 +43,7 @@
                              'refinery/core',
                              'refinery/admin',
                              'refinery/submenu',
-                             :cache => (js_caching ? "cache/admin" : false) unless login -%>
+                             :cache => ("cache/admin" if js_caching) unless login -%>
   <%= javascript_include_tag 'refinery/core' if login -%>
 
   <% if request.env['HTTP_USER_AGENT'] =~ /MSIE/ -%>
