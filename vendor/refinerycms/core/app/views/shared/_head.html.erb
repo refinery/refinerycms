@@ -4,7 +4,6 @@
   js_caching = RefinerySetting.find_or_set(:use_resource_caching, Rails.root.writable?)
   css_caching = js_caching && request.env['HTTP_USER_AGENT'] !~ /MSIE/ && (theme ||= false).blank?
   stylesheets = %w(application formatting theme)
-  stylesheets << 'home' if home_page?
   # you can disable the use of the built-in refinery stylesheets by disabling the setting.
   stylesheets.map! {|ss| ["refinery/#{ss}", ss] }.flatten! if RefinerySetting.find_or_set(:frontend_refinery_stylesheets_enabled, true)
   # if theme is set, use themed stylesheet links.
@@ -18,6 +17,7 @@
   <%= render(:partial => '/shared/html5_for_ie.js').html_safe if request.env['HTTP_USER_AGENT'] =~ /MSIE/ -%>
   <%= render :partial => 'shared/google_analytics' unless local_request? %>
   <%= stylesheet_link_tag stylesheets, :cache => ("cache/application" if css_caching) %>
+  <%= stylesheet_link_tag "home", :theme => theme if home_page? %>
   <%= "<!--[if IE 7]>#{stylesheet_link_tag 'ie7'}<![endif]-->".html_safe if request.env['HTTP_USER_AGENT'] =~ /MSIE/ -%>
   <%= "<meta name=\"keywords\" content=\"#{@meta.meta_keywords}\" />".html_safe if @meta.meta_keywords.present? -%>
   <%= "<meta name=\"description\" content=\"#{@meta.meta_description}\" />".html_safe if @meta.meta_description.present? -%>
