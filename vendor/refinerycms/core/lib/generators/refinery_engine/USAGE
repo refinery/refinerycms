@@ -10,7 +10,7 @@ Description:
 
     There must be at least one attribute.
 
-Additional Supported Field Types 
+Additional Supported Field Types
 
   All field types that are supported by the Rails Scaffold generator are supported with the addition
   of these Refinery specific ones:
