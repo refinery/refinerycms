@@ -4,7 +4,7 @@ Gem::Specification.new do |s|
   s.name              = %q{refinerycms}
   s.version           = %q{0.9.9.pre}
   s.description       = %q{A Ruby on Rails CMS that supports Rails 3. It's easy to extend and sticks to 'the Rails way' where possible.}
-  s.date              = %q{2010-10-11}
+  s.date              = %q{2010-10-18}
   s.summary           = %q{A Ruby on Rails CMS that supports Rails 3}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
@@ -177,6 +177,9 @@ Gem::Specification.new do |s|
     'vendor/refinerycms/authentication/lib/authenticated_test_helper.rb',
     'vendor/refinerycms/authentication/lib/authentication.rb',
     'vendor/refinerycms/authentication/readme.md',
+    'vendor/refinerycms/authentication/spec',
+    'vendor/refinerycms/authentication/spec/models',
+    'vendor/refinerycms/authentication/spec/models/user_spec.rb',
     'vendor/refinerycms/authentication/test',
     'vendor/refinerycms/authentication/test/unit',
     'vendor/refinerycms/authentication/test/unit/user_mailer_test.rb',
@@ -223,6 +226,7 @@ Gem::Specification.new do |s|
     'vendor/refinerycms/core/app/views/shared/admin/_resource_picker.html.erb',
     'vendor/refinerycms/core/app/views/shared/admin/_search.html.erb',
     'vendor/refinerycms/core/app/views/shared/admin/_sortable_list.html.erb',
+    'vendor/refinerycms/core/app/views/shared/admin/_tabbed_fields.html.erb',
     'vendor/refinerycms/core/app/views/welcome.html.erb',
     'vendor/refinerycms/core/app/views/wymiframe.html.erb',
     'vendor/refinerycms/core/config',
@@ -371,6 +375,7 @@ Gem::Specification.new do |s|
     'vendor/refinerycms/core/public/images/refinery/icons/cross.png',
     'vendor/refinerycms/core/public/images/refinery/icons/delete.png',
     'vendor/refinerycms/core/public/images/refinery/icons/doc.png',
+    'vendor/refinerycms/core/public/images/refinery/icons/down.gif',
     'vendor/refinerycms/core/public/images/refinery/icons/edit.png',
     'vendor/refinerycms/core/public/images/refinery/icons/email.png',
     'vendor/refinerycms/core/public/images/refinery/icons/email_edit.png',
@@ -644,6 +649,7 @@ Gem::Specification.new do |s|
     'vendor/refinerycms/core/public/images/refinery/icons/ppt.png',
     'vendor/refinerycms/core/public/images/refinery/icons/star.png',
     'vendor/refinerycms/core/public/images/refinery/icons/tick.png',
+    'vendor/refinerycms/core/public/images/refinery/icons/up.gif',
     'vendor/refinerycms/core/public/images/refinery/icons/user_add.png',
     'vendor/refinerycms/core/public/images/refinery/icons/user_comment.png',
     'vendor/refinerycms/core/public/images/refinery/icons/user_edit.png',
@@ -734,6 +740,7 @@ Gem::Specification.new do |s|
     'vendor/refinerycms/core/public/javascripts/refinery/nestedsortables.js',
     'vendor/refinerycms/core/public/javascripts/refinery/serializelist.js',
     'vendor/refinerycms/core/public/javascripts/refinery/site_bar.js',
+    'vendor/refinerycms/core/public/javascripts/refinery/submenu.js',
     'vendor/refinerycms/core/public/javascripts/wymeditor',
     'vendor/refinerycms/core/public/javascripts/wymeditor/jquery.refinery.wymeditor.js',
     'vendor/refinerycms/core/public/javascripts/wymeditor/lang',
@@ -777,6 +784,7 @@ Gem::Specification.new do |s|
     'vendor/refinerycms/core/public/stylesheets/refinery/ie-less-than-9.css',
     'vendor/refinerycms/core/public/stylesheets/refinery/refinery.css',
     'vendor/refinerycms/core/public/stylesheets/refinery/site_bar.css',
+    'vendor/refinerycms/core/public/stylesheets/refinery/submenu.css',
     'vendor/refinerycms/core/public/stylesheets/refinery/theme.css',
     'vendor/refinerycms/core/public/stylesheets/refinery/tooltips.css',
     'vendor/refinerycms/core/public/stylesheets/refinery/ui.css',
@@ -943,6 +951,7 @@ Gem::Specification.new do |s|
     'vendor/refinerycms/pages/features/step_definitions/page_steps.rb',
     'vendor/refinerycms/pages/features/support',
     'vendor/refinerycms/pages/features/support/paths.rb',
+    'vendor/refinerycms/pages/features/visit_pages.feature',
     'vendor/refinerycms/pages/lib',
     'vendor/refinerycms/pages/lib/pages',
     'vendor/refinerycms/pages/lib/pages.rb',

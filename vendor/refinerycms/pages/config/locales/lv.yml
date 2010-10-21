@@ -25,9 +25,9 @@ lv:
           subject_line_optional: Tēma (nav obligāti)
           body_optional: Saturs (nav obligāti)
           not_sure: Neesat drošs, ko rakstīt augšējos laukos?
-          step1: Ierakstiet vai iekopējiet (piemēram, no adrešu grāmatas) epasta adresi laukā '<strong>Epasta adrese</strong>'.
-          step2: Aizpildiet '<strong>Tēmas</strong>' lauku, ja vēlaties, lai epasts tiktu sastādīts ar norādīto tēmu.
-          step3: Aizplidiet '<strong>Satura</strong>' lauku, ja vēlaties, lai epasts tiktu sastādīts ar norādīto saturu.
+          step1_html: Ierakstiet vai iekopējiet (piemēram, no adrešu grāmatas) epasta adresi laukā '<strong>Epasta adrese</strong>'.
+          step2_html: Aizpildiet '<strong>Tēmas</strong>' lauku, ja vēlaties, lai epasts tiktu sastādīts ar norādīto tēmu.
+          step3_html: Aizplidiet '<strong>Satura</strong>' lauku, ja vēlaties, lai epasts tiktu sastādīts ar norādīto saturu.
         your_resource:
           tab_name: Jūsu fails
           link_to_this_resource: Iesaitēt šo failu
@@ -35,7 +35,7 @@ lv:
       delete: Dzēst šo lapu
       edit: Labot šo lapu
       page:
-        view_live: Apskatīt šo lapu <br/><em>(tiks atvērta jaunā logā)</em>
+        view_live_html: Apskatīt šo lapu <br/><em>(tiks atvērta jaunā logā)</em>
         hidden: paslēpta
         draft: melnraksts
       form_new_page_parts:

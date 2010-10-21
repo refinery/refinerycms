@@ -27,7 +27,7 @@ nb:
       sign_in: Logg inn
       forgot_password: Jeg glemte passordet mitt
   users:
-    setup_website_name: "Først, la oss gi siden et navn. <a href='%{link}' name='%{title}'>Gå hit</a> for å endre navnet på websiden din"
+    setup_website_name_html: "Først, la oss gi siden et navn. <a href='%{link}' name='%{title}'>Gå hit</a> for å endre navnet på websiden din"
     signup_disabled: Registrering av nye brukere er deaktivert
     new:
       fill_form: Fyll ut detaljene dine nedenfor slik at vi kan komme i gang.
@@ -40,7 +40,7 @@ nb:
       enter_email_address: Vennligst tast inn e-post adressen for din konto.
       reset_password: Tilbakestill passord
       blank_email: Du har ikke oppgitt noen e-post adresse.
-      email_not_associated_with_account: "Beklager, '%{email}' er ikke tilknyttet noen konto.<br/>Er du sikker på at du tastet inn riktig e-post adresse?"
+      email_not_associated_with_account_html: "Beklager, '%{email}' er ikke tilknyttet noen konto.<br/>Er du sikker på at du tastet inn riktig e-post adresse?"
       email_reset_sent: En e-post har blitt sendt til deg med en lenke for å tilbakestille passordet ditt.
     reset:
       code_invalid: "Beklager, men denne koden for å tilbakestille passordet har utløpt eller er ugyldig. Om du opplever problemer så kan du forsøker å kopiere og lime inn lenken fra e-posten du mottok, eller start prosessen med å tilbakestille passordet på nytt."

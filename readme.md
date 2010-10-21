@@ -4,9 +4,18 @@ __An open source Ruby on Rails content management system for Rails 3.__
 
 Refinery also supports Rails 2.x using the [Rails 2.x stable branch](http://github.com/resolve/refinerycms/tree/rails2-stable). More information at [http://refinerycms.com](http://refinerycms.com)
 
-![Refinery Dashboard](http://refinerycms.com/system/images/0000/0576/dashboard.png)
+## Requirements
 
-Wanna see Refinery for yourself? [Try the demo](http://demo.refinerycms.com/refinery)
+* [Bundler](http://github.com/carlhuda/bundler)
+* [RMagick](http://github.com/rmagick/rmagick) - [Install docs](http://rmagick.rubyforge.org/install-faq.html) or for
+Mac OS 10.5+ users [this shell install script](http://github.com/maddox/magick-installer) will be easier.
+
+## How to
+
+* __[Install Refinery](http://tutorials.refinerycms.org/tutorials/how-to-install-refinery)__
+* [Update Refinery to the latest version](http://tutorials.refinerycms.org/tutorials/how-to-update-refinery-to-the-latest-version)
+* [Install Refinery on Heroku](http://tutorials.refinerycms.org/tutorials/how-to-install-refinery-on-heroku)
+* [Run the Refinery test suite](http://tutorials.refinerycms.org/tutorials/how-to-test-refinery)
 
 ## What's it good at?
 
@@ -21,19 +30,9 @@ Unlike other content managers, Refinery is truly __aimed at the end user__ makin
 * Sticks to __"the Rails way"__ as much as possible; we don't force you to learn new templating languages.
 * Uses [jQuery](http://jquery.com/) for fast and concise Javascript.
 
-## Requirements
+![Refinery Dashboard](http://refinerycms.com/system/images/0000/0576/dashboard.png)
 
-* [Bundler](http://github.com/carlhuda/bundler)
-* [RMagick](http://github.com/rmagick/rmagick) - [Install docs](http://rmagick.rubyforge.org/install-faq.html) or for
-Mac OS 10.5+ users [this shell install script](http://github.com/maddox/magick-installer) will be easier.
-
-## How to
-
-* __[Install Refinery](http://tutorials.refinerycms.org/tutorials/how-to-install-refinery)__
-* [Update Refinery to the latest version](http://tutorials.refinerycms.org/tutorials/how-to-update-refinery-to-the-latest-version)
-* [Install Refinery on Heroku](http://tutorials.refinerycms.org/tutorials/how-to-install-refinery-on-heroku)
-* [Run the Refinery test suite](http://tutorials.refinerycms.org/tutorials/how-to-test-refinery)
-* [Use Themes with Refinery](http://github.com/resolve/refinerycms-theming#readme)
+Wanna see Refinery for yourself? [Try the demo](http://demo.refinerycms.com/refinery)
 
 ## Help and Documentation
 
@@ -92,7 +91,6 @@ to get help on how to use that. Or read the full documentation on [writing engin
 * [Blog](http://github.com/resolve/refinerycms-blog) - A simple blogging engine that supports posts, categories and comments (with moderation support if you choose to enable it)
 * [Portfolio](http://github.com/resolve/refinerycms-portfolio) - manage groups of images like an image gallery.
 * [News](http://github.com/resolve/refinerycms-news) - post and manage news items.
-* [Theming](http://github.com/resolve/refinerycms-theming) - turn your views, stylesheets, javascripts and images into bundled themes that are reusable and interchangeable.
 
 [Full engine list here](http://github.com/resolve/refinerycms/wiki/engines)
 

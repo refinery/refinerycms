@@ -2,6 +2,18 @@ module Refinery
   module Helpers
     module MenuHelper
 
+      # Adds conditional caching
+      def cache_if(condition, name = {}, &block)
+        if condition
+          cache(name, &block)
+        else
+          yield
+        end
+
+        # for <%= style helpers vs <% style
+        nil
+      end
+
       # This was extracted from REFINERY_ROOT/vendor/plugins/refinery/app/views/shared/_menu_branch.html.erb
       # to remove the complexity of that template by reducing logic in the view.
       def css_for_menu_branch(menu_branch, menu_branch_counter, sibling_count = nil, collection = [], selected_item = nil)
