@@ -1014,12 +1014,27 @@ close_dialog = function(e) {
     the_dialog = parent.$('.ui-dialog');
   } else {
     the_body = $(document.body).removeClass('hide-overflow');
-    the_dialog = $('.ui-dialog').dialog('close').remove();
+    the_dialog = $('.ui-dialog');
+    try {
+      the_dialog.dialog('close');
+    } catch(e) {
+      if (console && console.log) {
+        console.log(e);
+      }
+    }
+    the_dialog.remove();
   }
   // if there's a wymeditor involved then let it do its thing without blocking first.
   if (!($(document.body).hasClass('wym_iframe_body'))) {
     the_body.removeClass('hide-overflow');
-    the_dialog.dialog('close').remove();
+    try {
+      the_dialog.dialog('close');
+    } catch(e) {
+      if (console && console.log) {
+        console.log(e);
+      }
+    }
+    the_dialog.remove();
 
     e.preventDefault();
   }
