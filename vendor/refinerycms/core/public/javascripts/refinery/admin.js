@@ -822,31 +822,49 @@ var list_reorder = {
   , init: function() {
     $('#reorder_action').click(list_reorder.enable_reordering);
     $('#reorder_action_done').click(list_reorder.disable_reordering);
+    if(list_reorder.tree == false) {
+      list_reorder.sortable_list.find('li').addClass('no-nest');
+    }
     list_reorder.sortable_list.nestedSortable({
       disableNesting: 'no-nest',
       forcePlaceholderSize: true,
-      handle: 'div',
+      handle: list_reorder.tree ? 'div' : null,
       items: 'li',
       opacity: .6,
       placeholder: 'placeholder',
       tabSize: 25,
       tolerance: 'pointer',
-      toleranceElement: '> div',
+      toleranceElement: list_reorder.tree ? '> div' : null,
       disabled: true,
       start: function () {
       },
       change: function () {
-        list_reorder.reset_branch_classes(this);
+        if (list_reorder.tree) {
+          list_reorder.reset_branch_classes(this);
+        }
       },
       stop: function () {
-        list_reorder.reset_branch_classes(this);
+        if (list_reorder.tree) {
+          list_reorder.reset_branch_classes(this);
+        } else {
+          list_reorder.reset_on_off_classes(this);
+        }
       }
     });
-    list_reorder.reset_branch_classes(list_reorder.sortable_list);
+    if (list_reorder.tree) {
+      list_reorder.reset_branch_classes(list_reorder.sortable_list);
+    } else {
+      list_reorder.reset_on_off_classes(list_reorder.sortable_list);
+    }
     this.initialised = true;
   }
+  , reset_on_off_classes: function(ul) {
+    $("> li", ul).each(function(i, li) {
+      $(li).removeClass('on off on-hover').addClass(i % 2 == 0 ? 'on' : 'off');
+    })
+  }
 
-  ,reset_branch_classes: function (ul) {
+  , reset_branch_classes: function (ul) {
     $("li.ui-sortable-helper", this).removeClass("record").removeClass("branch_start").removeClass("branch_end");
     $("li", ul).removeClass("branch_start").removeClass("branch_end");
 
