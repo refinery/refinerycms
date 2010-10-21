@@ -23,9 +23,9 @@ nl:
           subject_line_optional: Optioneel onderwerp
           body_optional: Optionele inhoud
           not_sure: Niet zeker wat je in de veld hierboven moet invullen?
-          step1: Schrijf, of kopieer en plak (bijv. uit je adresboek), het email adres waar je naar wilt linken, en vul het in de '<strong>Email adres</strong>' box hierboven in.
-          step2: Gebruik het '<strong>Onderwerp</strong>' invoerveld hierboven, als je het bericht met een vooraf bepaald onderwerp wilt versturen.
-          step3: Gebruik het '<strong>Email inhoud</strong>' invoervoeld hierboven, als  je het bericht met een vooraf bepaalde inhoud wilt versturen.
+          step1_html: Schrijf, of kopieer en plak (bijv. uit je adresboek), het email adres waar je naar wilt linken, en vul het in de '<strong>Email adres</strong>' box hierboven in.
+          step2_html: Gebruik het '<strong>Onderwerp</strong>' invoerveld hierboven, als je het bericht met een vooraf bepaald onderwerp wilt versturen.
+          step3_html: Gebruik het '<strong>Email inhoud</strong>' invoervoeld hierboven, als  je het bericht met een vooraf bepaalde inhoud wilt versturen.
         your_resource:
           tab_name: Je bestand
           link_to_this_resource: Link naar dit bestand
@@ -33,7 +33,7 @@ nl:
       delete: Verwijder de pagina permanent
       edit: Bewerk deze pagina
       page:
-        view_live: Bekijk deze pagina 'live' <br/><em>(opent in een nieuw venster)</em>
+        view_live_html: Bekijk deze pagina 'live' <br/><em>(opent in een nieuw venster)</em>
         hidden: verborgen
         draft: concept
       form_new_page_parts:
@@ -42,7 +42,7 @@ nl:
         create_content_section: Maak een inhoudsectie
         delete_content_section: Verwijder een inhoudsectie
       form_advanced_options:
-        toggle_advanced_options: Klik om extra opties voor de metadata- en menuopties te bewerken 
+        toggle_advanced_options: Klik om extra opties voor de metadata- en menuopties te bewerken
         parent_page: Ouder pagina
         page_options: Pagina opties
         advanced_options: Uitgebreide opties

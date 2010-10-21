@@ -25,7 +25,7 @@ lolcat:
           list: LIST
           grid: GRID
       grid_view:
-        view_live: VIEW DIS IMAGE <BR/><EM>OPENS IN NEW WINDOW</EM>
+        view_live_html: VIEW DIS IMAGE <BR/><EM>OPENS IN NEW WINDOW</EM>
       existing_image:
         button_text: INSERT
         resize_image: RESIZE TEH IMAGE?
