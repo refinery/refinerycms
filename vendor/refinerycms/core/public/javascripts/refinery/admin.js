@@ -1011,17 +1011,17 @@ close_dialog = function(e) {
   if (parent && parent.document.location.href != document.location.href && $.isFunction(parent.$))
   {
     the_body = $(parent.document.body);
-    the_dialog = parent.$('div.ui-dialog-content').dialog('widget');
+    the_dialog = parent.$('.ui-dialog-content');
   } else {
     the_body = $(document.body).removeClass('hide-overflow');
-    the_dialog = $('div.ui-dialog-content').dialog('widget');
-    the_dialog.dialog('close');
+    the_dialog = $('.ui-dialog-content');
+    the_dialog.filter(':data(dialog)').dialog('close');
     the_dialog.remove();
   }
-  // if there's a wymeditor involved then let it do its thing without blocking first.
+  // if there's a wymeditor involved don't try to close the dialog as wymeditor will.
   if (!($(document.body).hasClass('wym_iframe_body'))) {
     the_body.removeClass('hide-overflow');
-    the_dialog.dialog('close');
+    the_dialog.filter(':data(dialog)').dialog('close');
     the_dialog.remove();
     e.preventDefault();
   }
