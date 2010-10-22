@@ -1010,32 +1010,19 @@ var resource_picker = {
 close_dialog = function(e) {
   if (parent && parent.document.location.href != document.location.href && $.isFunction(parent.$))
   {
-    the_body = $(parent.document.body)
-    the_dialog = parent.$('.ui-dialog');
+    the_body = $(parent.document.body);
+    the_dialog = parent.$('div.ui-dialog-content').dialog('widget');
   } else {
     the_body = $(document.body).removeClass('hide-overflow');
-    the_dialog = $('.ui-dialog');
-    try {
-      the_dialog.dialog('close');
-    } catch(e) {
-      if (console && console.log) {
-        console.log(e);
-      }
-    }
+    the_dialog = $('div.ui-dialog-content').dialog('widget');
+    the_dialog.dialog('close');
     the_dialog.remove();
   }
   // if there's a wymeditor involved then let it do its thing without blocking first.
   if (!($(document.body).hasClass('wym_iframe_body'))) {
     the_body.removeClass('hide-overflow');
-    try {
-      the_dialog.dialog('close');
-    } catch(e) {
-      if (console && console.log) {
-        console.log(e);
-      }
-    }
+    the_dialog.dialog('close');
     the_dialog.remove();
-
     e.preventDefault();
   }
 }
