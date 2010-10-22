@@ -880,7 +880,7 @@ var list_reorder = {
     $('#sortable_list').addClass("reordering");
 
     $('#sortable_list .actions, #site_bar, header > *:not(script)').fadeTo(500, 0.3);
-    $('#actions *:not("#reorder_action_done, #reorder_action")').not($('#reorder_action_done').parents('li, ul')).fadeTo(500, 0.55);
+    $('#actions *:not("#reorder_action_done, #reorder_action")').not($('#reorder_action_done').parents('li, ul, div')).fadeTo(500, 0.55);
 
     list_reorder.sortable_list.nestedSortable("enable");
     $('#reorder_action').hide();
