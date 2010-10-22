@@ -911,14 +911,14 @@ var list_reorder = {
 
   , restore_controls: function(e) {
     if (list_reorder.tree && !$.browser.msie) {
-      list_reorder.sortable_list.add(list_reorder.sortable_list.find('ul, li')).draggable('destroy');
+      list_reorder.sortable_list.add(list_reorder.sortable_list.find('ul, li, div')).draggable({ disabled: true });
     } else {
       $(list_reorder.sortable_list).sortable('destroy');
     }
     $(list_reorder.sortable_list).removeClass('reordering, ui-sortable');
 
     $('#sortable_list .actions, #site_bar, header > *:not(script)').fadeTo(250, 1);
-    $('#actions *:not("#reorder_action_done, #reorder_action")').not($('#reorder_action_done').parents('li, ul')).fadeTo(250, 1, function() {
+    $('#actions *:not("#reorder_action_done, #reorder_action")').not($('#reorder_action_done').parents('li, ul, div')).fadeTo(250, 1, function() {
       $('#reorder_action_done').hide().removeClass('loading');
       $('#reorder_action').show();
     });
