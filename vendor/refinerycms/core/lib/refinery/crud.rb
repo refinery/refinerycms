@@ -230,10 +230,14 @@ module Refinery
                 moved_item_id = hash['id'].split(/#{singular_name}\\_?/)
                 @current_#{singular_name} = #{class_name}.find_by_id(moved_item_id)
 
-                if previous.present?
-                  @current_#{singular_name}.move_to_right_of(#{class_name}.find_by_id(previous))
+                if @current_#{singular_name}.respond_to?(:move_to_root)
+                  if previous.present?
+                    @current_#{singular_name}.move_to_right_of(#{class_name}.find_by_id(previous))
+                  else
+                    @current_#{singular_name}.move_to_root
+                  end
                 else
-                  @current_#{singular_name}.move_to_root
+                  @current_#{singular_name}.update_attribute(:position, index)
                 end
 
                 if hash['children'].present?
@@ -243,7 +247,7 @@ module Refinery
                 previous = moved_item_id
               end
 
-              #{class_name}.rebuild!
+              #{class_name}.rebuild! if #{class_name}.respond_to?(:rebuild!)
               render :nothing => true
             end
 

@@ -54,7 +54,7 @@ ru:
         resource: resource      
       search:
         button_text: Поиск
-        results_for: "Результаты поиска для &laquo;%{query}&raquo;"
+        results_for: "Результаты поиска для «%{query}»"
         no_results: Ничего не найдено
     message:
       close: Закрыть

@@ -2,51 +2,95 @@ it:
   plugins:
     refinery_pages:
       title: Pagine
+      description: Gestione del contenuto delle pagine
   admin:
+    pages_dialogs:
+      page_link:
+        link_to_this_page: Collegamento a questa pagina
+      link_to:
+        insert: Inserire
+        your_page:
+          tab_name: La tua pagina
+        web_address:
+          tab_name: Website
+          location: Località
+          new_window: Nuova finestra
+          new_window_label: Seleziona questa casella per aprire il collegamento in una nuova finestra del browser.
+          not_sure: Non sei sicuro di cosa mettere nella casella precedente?
+          step1: Trova la pagina sul web che desideri collegare.
+          step2: Copiare l'indirzzo web della dalla barra degli indirizzi del browser ed incollarlo nella casella precedente.
+        email_address:
+          tab_name: Indirizzo Email
+          subject_line_optional: Oggetto opzionale
+          body_optional: Corpo opzionale
+          not_sure: Non sei sicuro di cosa mettere nella casella precedente?
+          step1_html: Scrivere o copiare ed incollare (ad esempio dalla tua rubrica) l'indirizzo e-mail da collegare nel casella precedente  '<strong> Indirizzo e-mail </ strong>'.
+          step2_html: Utilizzare la casella '<strong> Linea Oggetto </ strong>' in alto se si desidera che il messaggio sia composto con un <strong>oggetto predefinito </ strong>.
+          step3_html: Utilizzare la casella <strong> Corpo dell'email </ strong> in alto se si desidera che il messaggio sia composto con un <strong>messaggio predefinito </ strong>.
+        your_resource:
+          tab_name: Il tuo file
+          link_to_this_resource: Collegamento a questo file
     pages:
+      delete: Rimuovere questa pagina per sempre
+      edit: Modificare questa pagina
+      page:
+        view_live_html: Visualizza questa pagina dal vivo <br/><em>(apre una nuova finestra del browser)</em>
+        hidden: nascosto
+        draft: bozza
+      form_new_page_parts:
+        title: Titolo
+      form_page_parts:
+        create_content_section: Aggiungi la sezione dei contenuti
+        delete_content_section: Elimina la sezione dei contenuti
       form_advanced_options:
+        toggle_advanced_options: Cliccare per accedere alle impostastioni dei meta tag e del menu.
+        page_options: Opzioni Pagina
+        parent_page: Pagina Superiore
         title: Titolo
         create_content_section: Creare sezione dei contenuti
         delete_content_section: Elimina sezione dei contenuti
         advanced_options: Opzioni avanzate
-        explain_page_different_title: Se si desidera che la pagina di avere un titolo diverso da quello che mostra nel menu e il titolo del browser, quindi immettere qui.
-        redirect_to_first_child: "Seleziona questa casella se vuoi che il visitatore di essere reindirizzati alla pagina di primo figlio di questa pagina, se questa pagina è selezionata."
+        explain_page_different_title: Se si desidera che la pagina abbia un titolo diverso da quello mostrato nel menu e dal titolo del browser, scriverlo qui.
+        redirect_to_first_child: "Seleziona questa casella se vuoi che il visitatore si reindirizzato alla prima pagina figlia di questa pagina, se questa pagina è selezionata."
         parent_id_title: Genitore
         custom_title: Titolo personalizzato
-        title_type: "Genere:"
         title_types:
           none: Nessuno
           text: Testo
           image: Immagine
         custom_url: URL personalizzato
-        custom_url_explanation_html: "Inserisci un URL, se questa pagina di link a un sito esterno o ad una risorsa pre-esistenti, ad esempio un contatto pagina. <br/> Nota: Questo URL deve puntare a una posizione che esiste, uno nuovo, non verrà creato."
-        draft: Bozza
+        custom_url_explanation_html: "Inserisci un URL, se desideri che questa pagina sia collegata ad un sito esterno o ad una risorsa pre-esistente, ad esempio una pagina contatti. <br/> Nota: Questo URL deve puntare ad una posizione che esiste, uno nuovo, non verrà creato."
         show_in_menu_title: Mostra nel menu
-        show_in_menu_description: Seleziona questa casella se questa pagina dovrebbe apparire nel menu del sito
-        draft: Bozza
+        show_in_menu_description: Seleziona questa casella se si desidera che questa pagina appaia nel menu del sito
+        show_in_menu_help: Deselezionare questa casella se si desidera rimuovere una pagina dal menu del sito. Questo può essere utile se si dispone di una pagina a cui ci si può collegare direttamente ma che non si vuole mostrare nel menu.
         save_as_draft: Salva come bozza
-        save: Salva
-        cancel: Annullare
+        skip_to_first_child: Salta pagina di livello superiore
+        skip_to_first_child_label: Reindirizza i visitatori verso la prima pagina di livello inferiore.
+        skip_to_first_child_help: Questa opzione rende questo pagina collegata alla prima pagina sotto. Questo può essere utile quando si raggruppano pagine.
+        link_url: Inoltra questa pagina ad un altro sito o pagina
+        link_url_help: Se si desidera che questa pagina navighi verso un altro sito o pagina quando si fa clic sul suo nome nel menu, immettere un URL. ad esempio http://google.com altrimenti lasciare vuoto
+        parent_page_help: Si può mettere una pagina in un'altra pagina selezionandola dalla lista. Se si desidera che questa pagina sia una pagina di livello superiore, basta lasciarla in bianco.
+        custom_title_help: Se si desidera che la pagina abbia un titolo diverso da quello mostrato nel menu, selezionare 'Testo' e inserirlo qui.
       form_advanced_options_seo:
-        seo: Search Engine Optimization
-        seo_override_title: Browser titolo
-        seo_override_title_help: Se si desidera sovrascrivere il titolo di browser predefinito, farlo qui.
+        seo: Ottimizzazione Motore di Ricerca
+        seo_override_title: Titolo del Browser
+        seo_override_title_help: Se si desidera sovrascrivere il titolo predefinito del browser, farlo qui.
         meta_keywords_title: Meta parole chiave
-        meta_description_help: Inserisci le parole chiave che riguardano 50-10 a questa pagina. parole chiave separate da una virgola.
+        meta_keywords_help: Inserisci 5-10 parole chiave che riguardano questa pagina. Le parole chiave sono separate da una virgola.
         meta_description_title: Meta descrizione
-        meta_description_help: Inserire un conciso due o tre frasi che descrivono ciò che questa pagina è di circa.
+        meta_description_help: Inserire due o tre frasi concise che descrivono questa pagina.
         js:
           content_section:
             create: Crea sezione dei contenuti
-            already_exists: Una sezione di contenuti con quel titolo esiste già, si prega di scegliere un altro.
-            title_empty: Non è stato inserito un titolo per la sezione dei contenuti, inserisci uno.
-            confirm_delete: Ciò eliminerà la sezione dei contenuti %{section_name} quando la pagina viene salvata e cancellare tutti i contenuti che sono stati inseriti in esso, Sei sicuro?
+            already_exists: Una sezione di contenuti con quel titolo già esiste, si prega di scegliere un altro.
+            title_empty: Non è stato inserito un titolo per la sezione dei contenuti, inseriscine uno.
+            confirm_delete: Ciò eliminerà la sezione dei contenuti %{section_name} quando la pagina viene salvata e cancellerà tutti i contenuti che sono stati inseriti in esso, Sei sicuro?
       index:
         create_new_page: Creare una nuova pagina
         reorder_pages: Riordinare le pagine
-        reorder_pages_done: Fatto riordino Paginas
+        reorder_pages_done: Riordino Pagine seguito
         sorry_no_results: Non ci sono risultati.
-        no_pages_yet: Non ci sono ancora pagine. Fare clic su "Crea nuova pagina" per aggiungere la vostra prima pagina.
+        no_pages_yet: Non ci sono ancora pagine. Fare clic su "Crea nuova pagina" per aggiungere la tua prima pagina.
   activerecord:
     attributes:
       page:
