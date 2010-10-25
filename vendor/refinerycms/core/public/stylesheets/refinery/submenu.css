@@ -16,3 +16,7 @@ ul.collapsible_menu li span.arrow {
 ul.collapsible_menu li.closed span.arrow {
   background-image: url('/images/refinery/icons/down.gif');
 }
+ul.collapsible_menu > div {
+  width: 93%;
+  margin: 0px auto;
+}

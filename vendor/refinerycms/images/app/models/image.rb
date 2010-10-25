@@ -1,7 +1,7 @@
 class Image < ActiveRecord::Base
 
   # What is the max image size a user can upload
-  MAX_SIZE_IN_MB = 20
+  MAX_SIZE_IN_MB = 5
 
   image_accessor :image
 

@@ -2,36 +2,39 @@ it:
   plugins:
     refinery_images:
       title: Immagine
-  no_file_chosen: Devi scegliere un file da caricare
-  image_should_be_smaller_than_max_image_size: I file devono essere inferiori a %{max_image_size} nel formato
-  image_must_be_these_formats: L'immagine deve essere un JPG, PNG or GIF
+      description: Gestione immagini
+  image_specify_for_upload: Devi scegliere un file da caricare
+  image_should_be_smaller_than_max_image_size: I file devono essere di dimensioni inferiori a %{max_image_size}
+  image_must_be_these_formats: L'immagine deve essere un JPG, PNG o GIF
   admin:
     images:
-      image:
-        delete:
-          message: Sei sicuro di voler eliminare '%{title}'?
-          title: Eliminare questa immagine per sempre
+      delete: Eliminare questa immagine per sempre
+      edit: Modifica questa immagine
       form:
         image: Immagine
         use_current_image: Usa immagine corrente
         or: o
         replace_image: Sostituirlo con questo ...
         current_image: Immagine corrente
-        maximum_image_size: "The maximum image size is %{megabytes} megabytes."
+        maximum_image_size: "La dimensione massima per l'immagine è %{megabytes} megabytes."
       index:
         create_new_image: Crea nuova immagine
-        no_images_yet: Non ci sono immagini ancora. Fare clic su "Crea nuova immagine" per aggiungere la vostra prima immagine.
+        no_images_yet: Non ci sono ancora immagini. Fare clic su "Crea nuova immagine" per aggiungere la tua prima immagine.
         view:
-          switch_to: Passare a %{view_name} vista
+          switch_to: Passare alla vista %{view_name}
           list: lista
           grid: griglia
       grid_view:
         edit: Modifica questa immagine
         view_live_html: Visualizza questa immagine <br/><em>Apri in una nuova finestra</em>
+      existing_image:
+        button_text: Inserisci
+        resize_image: Ridimensionare l'immagine?
+        size: Dimensioni
       list_view_image:
         edit_this_image: Modifica questa immagine
       insert:
-        existing_image: Esistenti Immagine
+        existing_image: Immagine Esistente
         new_image: Nuova immagine
         previous: Precedente
         next: Prossimo
