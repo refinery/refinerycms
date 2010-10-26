@@ -1,3 +1,4 @@
   <p>
-    <%= t('.copyright').html_safe -%> <%= Time.now.year -%> <%= RefinerySetting.get(:site_name) %>
+    <%= t('.copyright', :year => Time.now.year,
+                        :site_name => RefinerySetting.get(:site_name)) %>
   </p>

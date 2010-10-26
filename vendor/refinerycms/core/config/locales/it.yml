@@ -82,7 +82,7 @@ it:
     draft_page_message:
       not_live: Questa pagina NON è valida per la visione pubblica.
     footer:
-        copyright: Tutti i diritti sono riservati &copy;
+        copyright: Tutti i diritti sono riservati © %{year} %{site_name}
   activerecord:
     models:
       page: pagina
