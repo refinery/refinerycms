@@ -71,7 +71,7 @@ group :test do
   gem 'launchy'
   gem 'gherkin'
   gem 'rack-test',              '~> 0.5.6'
-  # FIXME: JSON constant constants warnings
+  # FIXME: Update json_pure to 1.4.7 when it is released
   gem 'json_pure',              '~> 1.4.6', :require => 'json/pure'
   # Factory Girl
   gem 'factory_girl'
