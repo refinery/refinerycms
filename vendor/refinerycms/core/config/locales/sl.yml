@@ -66,4 +66,4 @@ sl:
     draft_page_message:
       not_live: Ta stran še ni javno dostopna.
     footer:
-      copyright: Vse pravice pridržane &copy;
+      copyright: Vse pravice pridržane © %{year} %{site_name}
