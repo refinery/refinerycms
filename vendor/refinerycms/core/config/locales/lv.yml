@@ -61,3 +61,7 @@ lv:
       not_live: Šī lapa NAV publiskai apskatei.
     footer:
       copyright: Visas tiesības paturētas &copy;
+    no_script:
+      enable_javascript: Lai lapa pilnībā funkcionalētu ir nepieciešams iespējot JavaScript.
+      here_are: Šeit ir
+      instructions_enable_javascript: instrukcija kā iespējot JavaScript jūsu pārlūkprogrammā
