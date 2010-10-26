@@ -68,6 +68,10 @@ en:
       not_live: This page is NOT live for public viewing.
     footer:
       copyright: Copyright &copy;
+    no_script:
+      enable_javascript: For full functionality of this page it is necessary to enable JavaScript.
+      here_are: Here are the
+      instructions_enable_javascript: instructions how to enable JavaScript in your web browser
   time:
     formats:
       short: "%A, %d %B %Y"
