@@ -2,6 +2,7 @@ ru:
   plugins:
     refinery_dashboard:
       title: Сводка
+      description: Обзор последних действий в Refinery
   admin:
     dashboard:
       index:
@@ -14,7 +15,6 @@ ru:
         see_home_page: Просмотреть домашнюю страницу
       recent_activity:
         latest_activity: Последние действия
-        see: "См. '%{what}'"
         latest_activity_message: "%{what} %{kind} %{action}"
       recent_inquiries:
         latest_inquiries: Последние запросы
@@ -23,5 +23,3 @@ ru:
   created:
     'with_article "the"': создан(а)
 
-  ago: "%{time} назад"
-  see: См.
