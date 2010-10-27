@@ -1,9 +1,8 @@
 lv:
   plugins:
-    pages:
-      article: s
     refinery_pages:
       title: Lapas
+      article: s
   admin:
     pages_dialogs:
       page_link:
