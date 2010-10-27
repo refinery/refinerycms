@@ -1,6 +1,7 @@
 onOpenDialog = function(dialog) {
-  (dialog = $('.ui-dialog')).corner('6px')
-                            .find('.ui-dialog-titlebar').corner('1px top')
+  (dialog = $('.ui-dialog'))
+    .corner('6px')
+    .find('.ui-dialog-titlebar').corner('1px top');
   if (dialog.height() < $(window).height()) {
     $(document.body).addClass('hide-overflow');
   }
