@@ -118,11 +118,9 @@ init_modal_dialogs = function(){
         , open: onOpenDialog
         , close: onCloseDialog
       });
+
       if ($.browser.msie) {
         iframe.css({'margin':'-2px 2px 2px -2px'});
-      }
-      if(parseInt($anchor.data('dialog-height')) < $(window).height()) {
-        $(document.body).addClass('hide-overflow');
       }
       e.preventDefault();
     });
