@@ -2,6 +2,7 @@ lv:
   plugins:
     refinery_users:
       title: Lietotāji
+      description: Lietotāju pārvaldīšana
   admin:
     users:
       delete: Dzēst šo lietotāju

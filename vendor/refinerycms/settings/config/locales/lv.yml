@@ -2,6 +2,7 @@ lv:
   plugins:
     refinery_settings:
       title: Uzstādījumi
+      description: Refinery uzstādījumu pārvaldīšana
   admin:
     refinery_settings:
       delete: Dzēst šo uzstādījumu

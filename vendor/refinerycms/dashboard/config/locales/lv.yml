@@ -2,6 +2,7 @@ lv:
   plugins:
     refinery_dashboard:
       title: Vadības panelis
+      description: Aktivitāšu apkopojums iekš Refinery
   admin:
     dashboard:
       index:
