@@ -4,6 +4,7 @@ lv:
       article: s
     refinery_pages:
       title: Lapas
+      description: Lapu satura pārvaldīšana
   admin:
     pages_dialogs:
       page_link:
