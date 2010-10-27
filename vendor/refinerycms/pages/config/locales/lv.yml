@@ -2,6 +2,7 @@ lv:
   plugins:
     refinery_pages:
       title: Lapas
+      description: Lapu satura pārvaldīšana
       article: s
   admin:
     pages_dialogs:
