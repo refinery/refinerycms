@@ -93,7 +93,7 @@
         <ul class="link_list">
           <% @resources.each do |resource| -%>
             <% resource_linked = (resource.url == params[:current_link]) unless params[:current_link].blank? %>
-            <li<%= " class='linked'" if @resource_linked %>>
+            <li<%= " class='linked'" if resource_linked %>>
               <%= link_to "#{resource.title}.#{resource.ext}", resource.url,
                           :title => t('.your_resource.link_to_this_resource'),
                           :rel => resource.title,
