@@ -90,7 +90,7 @@ namespace :refinery do
       plural_name = singular_name.pluralize
 
       crud_lines = Refinery.root.join('vendor', 'refinerycms', 'core', 'lib', 'refinery', 'crud.rb').read
-      if (matches = crud_lines.scan(/(\ +)(def create.+?protected)/m).first).any? and
+      if (matches = crud_lines.scan(/(\ +)(def #{action}.+?protected)/m).first).any? and
          (method_lines = "#{matches.last.split(%r{^#{matches.first}end}).first.strip}\nend".split("\n")).many?
         indent = method_lines.second.index(%r{[^ ]})
         crud_method = method_lines.join("\n").gsub(/^#{" " * indent}/, "  ")
