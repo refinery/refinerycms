@@ -44,13 +44,13 @@ module Refinery
         app_resources.define_macro(ActiveRecord::Base, :resource_accessor)
         app_resources.analyser.register(Dragonfly::Analysis::FileCommandAnalyser)
 
-        # This eval makes it so that dragonfly urls work in traditional
+        # This url_suffix makes it so that dragonfly urls work in traditional
         # situations where the filename and extension are required, e.g. lightbox.
         # What this does is takes the url that is about to be produced e.g.
         # /system/images/BAhbB1sHOgZmIiMyMDEwLzA5LzAxL1NTQ19DbGllbnRfQ29uZi5qcGdbCDoGcDoKdGh1bWIiDjk0MngzNjAjYw
-        # and adds the filename onto the end (say the image was 'refinery_is_awesome.pdf')
+        # and adds the filename onto the end (say the file was 'refinery_is_awesome.pdf')
         # /system/images/BAhbB1sHOgZmIiMyMDEwLzA5LzAxL1NTQ19DbGllbnRfQ29uZi5qcGdbCDoGcDoKdGh1bWIiDjk0MngzNjAjYw/refinery_is_awesome.pdf
-        # from: http://markevans.github.com/dragonfly/file.URLs.html
+        # Officially the way to do it, from: http://markevans.github.com/dragonfly/file.URLs.html
         app_resources.url_suffix = proc{|job|
           "/#{job.uid_basename}#{job.encoded_extname || job.uid_extname}"
         }
