@@ -5,6 +5,10 @@ Given /^I (only )?have a page titled "?([^\"]*)"? with a custom url "?([^\"]*)"?
               :link_url => link_url)
 end
 
+Given /^the page titled "?([^\"]*)"? has a menu match "?([^\"]*)"?$/ do |title, menu_match|
+  Page.find_by_title(title).update_attribute(:menu_match, menu_match)
+end
+
 Given /^I (only )?have pages titled "?([^\"]*)"?$/ do |only, titles|
   Page.delete_all if only
   titles.split(', ').each do |title|
