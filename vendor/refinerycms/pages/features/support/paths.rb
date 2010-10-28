@@ -12,7 +12,7 @@ module NavigationHelpers
         else
           begin
             if page_name =~ /the page titled "?([^\"]*)"?/ and (page = Page.find_by_title($1)).present?
-              return self.url_for(page.url)
+              self.url_for(page.url)
             else
               nil
             end
