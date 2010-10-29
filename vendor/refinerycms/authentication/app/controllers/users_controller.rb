@@ -1,12 +1,7 @@
 class UsersController < ApplicationController
 
   # Protect these actions behind an admin login
-  before_filter :redirect?, :only => [:new, :create, :index]
-  before_filter :find_user, :only => [:suspend, :unsuspend, :destroy, :purge]
-
-  # authlogic default
-  #before_filter :require_no_user, :only => [:new, :create]
-  #before_filter :require_user, :only => [:show, :edit, :update]
+  before_filter :redirect?, :only => [:new, :create]
 
   layout 'login'
 
@@ -105,7 +100,7 @@ protected
     if refinery_user?
       redirect_to admin_users_url
     elsif refinery_users_exist?
-      redirect_to root_url
+      redirect_to login_url
     end
   end
 
