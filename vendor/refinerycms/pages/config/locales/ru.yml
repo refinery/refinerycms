@@ -95,6 +95,3 @@ ru:
   activerecord:
     models:
       page: страница
-    attributes:
-      page:
-        skip_to_first_child: "Skip to first child?"
