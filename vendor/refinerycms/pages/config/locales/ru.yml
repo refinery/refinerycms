@@ -3,6 +3,9 @@ ru:
     refinery_pages:
       title: Страницы
       article: feminine
+  activerecord:
+    models:
+      page: страница
   admin:
     pages_dialogs:
       not_allowed: У вас нет доступа к этой функции
@@ -92,6 +95,3 @@ ru:
         reorder_pages_done: Сохранить такой порядок страниц
         sorry_no_results: Sorry! There are no results found.
         no_pages_yet: There are no pages yet.  Click "Add New Page" to add your first page.
-  activerecord:
-    models:
-      page: страница
