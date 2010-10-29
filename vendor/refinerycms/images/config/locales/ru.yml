@@ -2,6 +2,10 @@ ru:
   plugins:
     refinery_images:
       title: Изображения
+      article: masculine
+  activerecord:
+    models:
+      image: изображение
   no_file_chosen: Вы должны выбрать файл для загрузки
   file_should_be_smaller_than_max_image_size: "Файлы должны быть меньше по размеру, чем %{max_image_size}"
   file_must_be_these_formats: "Ваше изображение может быть только в форматах JPG, PNG или GIF"
