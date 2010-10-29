@@ -67,7 +67,7 @@ ru:
     draft_page_message:
       not_live: This page is NOT live for public viewing.
     footer:
-      copyright: Copyright &copy;
+      copyright: © %{site_name}, %{year}
   time:
     formats:
       short: "%A, %d %B %Y"
