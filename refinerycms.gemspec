@@ -4,7 +4,7 @@ Gem::Specification.new do |s|
   s.name              = %q{refinerycms}
   s.version           = %q{0.9.9.pre}
   s.description       = %q{A Ruby on Rails CMS that supports Rails 3. It's easy to extend and sticks to 'the Rails way' where possible.}
-  s.date              = %q{2010-10-27}
+  s.date              = %q{2010-10-29}
   s.summary           = %q{A Ruby on Rails CMS that supports Rails 3}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
@@ -830,6 +830,7 @@ Gem::Specification.new do |s|
     'vendor/refinerycms/images/features/step_definitions',
     'vendor/refinerycms/images/features/step_definitions/image_steps.rb',
     'vendor/refinerycms/images/features/support',
+    'vendor/refinerycms/images/features/support/factories.rb',
     'vendor/refinerycms/images/features/support/paths.rb',
     'vendor/refinerycms/images/features/uploads',
     'vendor/refinerycms/images/features/uploads/beach.jpeg',
