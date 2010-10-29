@@ -16,8 +16,8 @@
       <%= link_to refinery_icon_tag('delete.png'), admin_page_url(page),
                   :class => "cancel confirm-delete",
                   :title => t('admin.pages.delete'),
-                  :'data-confirm' => t('shared.admin.delete.message', :title => title.gsub(/\ ?<em>.*<\/em>/, "")),
-                  :'data-method' => "delete" if page.deletable? %>
+                  :confirm => t('shared.admin.delete.message', :title => title.gsub(/\ ?<em>.*<\/em>/, "")),
+                  :method => :delete if page.deletable? %>
     </span>
   </div>
   <ul class='nested'>
