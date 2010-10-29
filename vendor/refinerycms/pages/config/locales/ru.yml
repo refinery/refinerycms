@@ -2,6 +2,7 @@ ru:
   plugins:
     refinery_pages:
       title: Страницы
+      article: feminine
   admin:
     pages_dialogs:
       not_allowed: У вас нет доступа к этой функции
@@ -92,6 +93,8 @@ ru:
         sorry_no_results: Sorry! There are no results found.
         no_pages_yet: There are no pages yet.  Click "Add New Page" to add your first page.
   activerecord:
+    models:
+      page: страница
     attributes:
       page:
         skip_to_first_child: "Skip to first child?"
