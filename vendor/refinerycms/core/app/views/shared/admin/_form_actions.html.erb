@@ -59,8 +59,8 @@
                 delete_url,
                 :title => delete_title,
                 :id => delete_button_id,
-                :'data-method' => :delete,
-                :'data-confirm' => delete_confirmation,
+                :method => :delete,
+                :confirm => delete_confirmation,
                 :class => "button confirm-delete") unless hide_delete %>
 
     <%= will_paginate paginate[:collection],

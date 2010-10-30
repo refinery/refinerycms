@@ -11,7 +11,7 @@
     <%= link_to refinery_icon_tag('delete.png'), admin_image_path(list_view_image),
                 :class => "cancel confirm-delete",
                 :title => t('admin.images.delete'),
-                :'data-confirm' => t('shared.admin.delete.message', :title => list_view_image.title),
-                :'data-method' => "delete" %>
+                :confirm => t('shared.admin.delete.message', :title => list_view_image.title),
+                :method => :delete %>
   </span>
 </li>
