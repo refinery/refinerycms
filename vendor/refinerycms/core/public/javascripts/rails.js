@@ -1,6 +1,6 @@
 /*
   Taken from http://github.com/rails/jquery-ujs
-  At version http://github.com/rails/jquery-ujs/blob/abe2f8c2f4fa53391ed954c38a596c2754a78509/src/rails.js
+  At version http://github.com/rails/jquery-ujs/blob/f991faf0074487b43a061168cdbfd102ee0c182c/src/rails.js
   (Because that was the current master version)
 */ 
 
@@ -66,14 +66,28 @@ jQuery(function ($) {
     /**
      *  confirmation handler
      */
-    $('a[data-confirm],input[data-confirm]').live('click', function () {
-        var el = $(this);
-        if (el.triggerAndReturn('confirm')) {
-            if (!confirm(el.attr('data-confirm'))) {
-                return false;
-            }
-        }
-    });
+    var jqueryVersion = $().jquery;
+
+    if ( (jqueryVersion === '1.4') || (jqueryVersion === '1.4.1') || (jqueryVersion === '1.4.2')){
+      $('a[data-confirm],input[data-confirm]').live('click', function () {
+          var el = $(this);
+          if (el.triggerAndReturn('confirm')) {
+              if (!confirm(el.attr('data-confirm'))) {
+                  return false;
+              }
+          }
+      });
+    } else {
+      $('body').delegate('a[data-confirm],input[data-confirm]', 'click', function () {
+          var el = $(this);
+          if (el.triggerAndReturn('confirm')) {
+              if (!confirm(el.attr('data-confirm'))) {
+                  return false;
+              }
+          }
+      });
+    }
+    
 
 
     /**
