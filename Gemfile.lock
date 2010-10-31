@@ -182,7 +182,7 @@ DEPENDENCIES
   autotest
   autotest-notification
   autotest-rails
-  bundler (~> 1.0.0)
+  bundler (~> 1.0.3)
   capybara
   cucumber
   cucumber-rails
