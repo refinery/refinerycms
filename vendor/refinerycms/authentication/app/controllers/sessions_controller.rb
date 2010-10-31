@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
 
   def create
     if (@session = UserSession.create(params[:session])).valid?
-      flash[:notice] = t('sessions.login_successful') if refinery_user?
+      flash.notice = t('sessions.login_successful') if refinery_user?
       redirect_back_or_default(admin_root_url)
     else
       render :action => 'new'

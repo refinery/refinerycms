@@ -176,7 +176,7 @@ Say every time someone deletes a page I want my ``NotificationMailer`` to email 
 When I look in the ``crud.rb`` file I see that my controller has this added to it
 
     def destroy
-      flash[:notice] = "'\#{@#{singular_name}.#{options[:title_attribute]}}' was successfully deleted." if @#{singular_name}.destroy
+      flash.notice = "'\#{@#{singular_name}.#{options[:title_attribute]}}' was successfully deleted." if @#{singular_name}.destroy
       redirect_to admin_#{plural_name}_url
     end
 
@@ -188,7 +188,7 @@ To override this all I would is create my own delete method that works the same 
 
       def destroy
         if @page.destroy
-          flash[:notice] = "'#{@page.title}' was successfully deleted."
+          flash.notice = "'#{@page.title}' was successfully deleted."
           NotificationMailer.deliver_page_deleted(@page) # sends me an email to say a page was deleted
         end
         redirect_to admin_pages_url
