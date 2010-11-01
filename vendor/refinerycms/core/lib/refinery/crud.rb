@@ -15,10 +15,11 @@ module Refinery
       singular_name = model_name.to_s
       class_name = singular_name.camelize
       plural_name = singular_name.pluralize
+      this_class = class_name.constantize
 
       {
         :title_attribute => "title",
-        :order => ('position ASC' if class_name.constantize.column_names.include?('position')),
+        :order => ('position ASC' if this_class.table_exists? and this_class.column_names.include?('position')),
         :conditions => '',
         :sortable => true,
         :searchable => true,

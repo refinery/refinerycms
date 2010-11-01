@@ -37,7 +37,7 @@
                 :style => "#{"display:none;" unless resource.present?}" %>
 </div>
 
-<% content_for :head do %>
+<% content_for :javascripts do %>
   <script type='text/javascript'>
     resource_changed = function(callback_args) {
       $('#remove_resource').show();

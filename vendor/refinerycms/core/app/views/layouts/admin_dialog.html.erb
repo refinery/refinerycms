@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
-  <%= render :partial => "/admin/head", :locals => {:login => false} %>
-  <body id='dialog_container' class='dialog'>
+  <%= render :partial => "/admin/head" %>
+  <body id='dialog_container' class='dialog <%= I18n.locale %>'>
     <div id='tooltip_container'></div>
     <div id="flash_container">
       <%= render :partial => '/shared/message' %>
@@ -10,4 +10,5 @@
       <%= yield %>
     </div>
   </body>
+  <%= render :partial => "/admin/after_body" %>
 </html>
