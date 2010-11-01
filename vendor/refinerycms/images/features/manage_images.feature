@@ -8,7 +8,7 @@ Feature: Manage Images
     Given I am a logged in refinery user
     And I have no images
 
-  @images-create
+  @images-valid @valid
   Scenario: Create Valid Image
     When I go to the list of images
     And I follow "Add New Image"
@@ -21,6 +21,7 @@ Feature: Manage Images
     And the image should have height "375"
     And the image should have mime_type "image/jpeg"
 
+  @images-invalid @invalid
   Scenario: Create Invalid Image (format)
     When I go to the list of images
     And I follow "Add New Image"
@@ -29,7 +30,7 @@ Feature: Manage Images
     Then I should not see "successfully added"
     And I should have 0 images
 
-  @images-edit
+  @images-edit @edit
   Scenario: Edit Existing Image
     When I upload the image at "beach.jpeg"
     And I go to the list of images
@@ -39,7 +40,7 @@ Feature: Manage Images
     Then I should see "'Id Rather Be Here' was successfully updated."
     And I should have 1 image
 
-  @images-delete
+  @images-delete @delete
   Scenario: Delete Image
     When I upload the image at "beach.jpeg"
     When I go to the list of images

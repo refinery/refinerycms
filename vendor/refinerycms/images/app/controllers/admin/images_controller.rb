@@ -59,16 +59,23 @@ class Admin::ImagesController < Admin::BaseController
   end
 
   def create
+    @images = []
     begin
-      @image = Image.create(params[:image])
+      unless params[:image].present? and params[:image][:image].is_a?(Array)
+        @images << (@image = Image.create(params[:image]))
+      else
+        params[:image][:image].each do |image|
+          @images << (@image = Image.create(:image => image))
+        end
+      end
     rescue Dragonfly::FunctionManager::UnableToHandle
       logger.warn($!.message)
       @image = Image.new
     end
 
     unless params[:insert]
-      if @image.valid?
-        flash.notice = t('refinery.crudify.created', :what => "'#{@image.title}'")
+      if @images.all?{|i| i.valid?}
+        flash.notice = t('refinery.crudify.created', :what => "'#{@images.collect{|i| i.title}.join("', '")}'")
         unless from_dialog?
           redirect_to :action => 'index'
         else
@@ -79,8 +86,8 @@ class Admin::ImagesController < Admin::BaseController
         render :action => 'new'
       end
     else
-      if @image.valid?
-        @image_id = @image.id
+      if @images.all?{|i| i.valid?}
+        @image_id = @image.id unless @image.new_record?
         @image = nil
       end
       self.insert
