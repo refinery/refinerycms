@@ -1,4 +1,18 @@
 GIT
+  remote: git://github.com/parndt/capybara.git
+  revision: d6760e4d86271e8a916ca8a8257ae02c4fae7a5e
+  specs:
+    capybara (0.4.0)
+      celerity (>= 0.7.9)
+      culerity (>= 0.2.4)
+      mime-types (>= 1.16)
+      nokogiri (>= 1.3.3)
+      rack (>= 1.0.0)
+      rack-test (>= 0.5.4)
+      selenium-webdriver (>= 0.0.27)
+      xpath (~> 0.1.2)
+
+GIT
   remote: git://github.com/resolve/refinerycms-generators.git
   revision: 74ee89b222359bea83c37d00438e63ec1aa08cce
   specs:
@@ -62,15 +76,6 @@ GEM
       ZenTest
     babosa (0.2.0)
     builder (2.1.2)
-    capybara (0.4.0)
-      celerity (>= 0.7.9)
-      culerity (>= 0.2.4)
-      mime-types (>= 1.16)
-      nokogiri (>= 1.3.3)
-      rack (>= 1.0.0)
-      rack-test (>= 0.5.4)
-      selenium-webdriver (>= 0.0.27)
-      xpath (~> 0.1.2)
     celerity (0.8.2)
     childprocess (0.1.3)
       ffi (~> 0.6.3)
@@ -183,7 +188,7 @@ DEPENDENCIES
   autotest-notification
   autotest-rails
   bundler (~> 1.0.3)
-  capybara
+  capybara!
   cucumber
   cucumber-rails
   database_cleaner

@@ -64,7 +64,7 @@ group :test do
   gem 'rspec-mocks',            RSPEC_VERSION, :require => 'rspec/mocks'
   gem 'rspec-rails',            RSPEC_VERSION
   # Cucumber
-  gem 'capybara'
+  gem 'capybara', :git => 'git://github.com/parndt/capybara.git'
   gem 'database_cleaner'
   gem 'cucumber-rails'
   gem 'cucumber'
