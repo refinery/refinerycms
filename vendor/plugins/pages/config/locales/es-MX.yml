@@ -1,0 +1,98 @@
+es-MX:
+  plugins:
+    refinery_pages:
+      title: Páginas
+  admin:
+    pages_dialogs:
+      not_allowed: Usteded no cuenta con privilegios para esta acción.
+      page_link:
+        link_to_this_page: Vincular a esta página
+      link_to:
+        your_page:
+          tab_name: Su página
+        web_address:
+          tab_name: Sitio web
+          location: Lugar
+          new_window: Nueva ventana
+          new_window_label: Active ésta casilla si desea que el vínculo se abra en una nueva ventana de su navegador.
+          not_sure: ¿No está seguro que poner en el área de arriba?
+          step1: Búsque la página a la que desea crear el vículo.
+          step2: "Copie la dirección web de su navegador en el área de arriba."
+        email_address:
+          tab_name: Correo electrónico
+          subject_line_optional: Motivo - opcional -
+          body_optional: Contenido - opcional -
+          not_sure: ¿No está seguro que poner en el área de arriba?
+          step1: "Write or copy and paste (e.g. from your address book) the email address to link to into the '<strong>Email Address</strong>' box above."
+          step2: "Use the '<strong>Subject Line</strong>' box above if you want the message to be composed with a <strong>pre-written subject line</strong>."
+          step3: "Use the <strong>Email Body</strong> box above if you want the message to be composed with a <strong>pre-written message</strong>."
+        your_resource:
+          tab_name: Your file
+          link_to_this_resource: Link to this file
+    pages:
+      page:
+        view_live: Ver ésta página en línea <br/><em>(se abre una nueva ventana)</em>
+        edit_this_page: Modificar ésta página
+        confirm_delete_page_title: Eliminar ésta página
+        confirm_delete_page_message: "Está seguro que desea eliminar la página '{{title}}'?"
+        hidden: oculta
+        draft: borrador
+      form_advanced_options:
+        title: Título
+        create_content_section: "Crear contenido de la sección"
+        delete_content_section: "Borrar contenido de la sección"
+        advanced_options: Opciones Avanzadas
+        explain_page_different_title: "Si desea que la página tenga un título distinto al que muestra en el menú de título del navegador y ingrese el titulo aquí."
+        redirect_to_first_child: "Marque esta casilla si desea que el visitante sea redirigido de esta página a la primer página del arbol de navegación seleccionada."
+        parent_id_title: Padre
+        custom_title: Título Personalizado
+        show_in_menu_help: "Desmarque si desea eliminar ésta página del menú del sitio. Esto es muy útil si desea que la gente acceda a la página de forma directa, pero no desea mostrarla como una opción en el menú."
+
+        title_type: "Tipo:"
+        parent_page: Página padre
+        parent_page_help: "Usted puede colocar la página como una sub-página de otra, simplemente seleccionando la página padre del listado. Si desea que la página sea una página padre, solo deje la selección en blanco."
+
+        skip_to_first_child: Evitar mostrar la página padre de este nivel.
+        skip_to_first_child_label: Redireccionar visitantes a la primer página de este nivel.
+        skip_to_first_child_help: "This option makes this page link to the first page underneath. This can be useful when grouping pages together."
+
+        link_url: "Reenviar esta página a otra página del sitio o a otro sitio."
+        link_url_help: "Si desea que ésta página se redireccione a otro sitio o página de éste sitio cuando se acceda a ella en el menú, introduzca la URL, ej: http://google.com en caso contrario déjela en blanco."
+        
+        title_types:
+          none: Ninguna
+          text: Texto
+          image: Imágen
+        custom_url: URL Personalizado
+        custom_url_explanation: "Ingresa un URL si la página se liga a una página externa a este sitio o algun recurso pre-creado ejemplo una página de contacto. <br/> Nota: Este URL debe de dirigirse a un lugar existente si no no será creado."
+        draft: Borrador
+        show_in_menu_title: "Ver en menú"
+        show_in_menu_description: "Marque esta casilla si esta página debe aparecer en el menú del sitio" 
+        draft: Borrador
+        save_as_draft: Guardar como Borrador
+        save: Guardar
+        cancel: Cancelar
+      form_advanced_options_seo:
+        seo: "Optimización para Motores de Búsqueda"
+        seo_override_title: Título del Navegador
+        seo_override_title_help: "Si tu quieres cambiar el título del navegador, alzo aquí."
+        meta_keywords_title: Meta palabras
+        meta_description_help: Ingresa 5-10 palabras relacionadas a esta página.  Separadas por comas.
+        meta_description_title: "Meta descripción"
+        meta_description_help: "Ingresa una descripción concisa de 2 a 3 renglones que describan esta página."
+        js:
+          content_section:
+            create: "Crear Contenido de la Sección"
+            already_exists: "Ya existe una sección del contenido con ese mismo titulo, por favor seleccione otro."
+            title_empty: "No has ingresado un titulo para el contenido de esta sección, por favor ingresa uno."
+            confirm_delete: "Esto quitara el contenido de la sección {{section_name}} cuando la página sea guardada y borre todo el contenido que ha sido ingresado, ¿Estás seguro?"
+      index:
+        create_new_page: Crear nueva página
+        reorder_pages: Re-ordenar las páginas
+        reorder_pages_done: Listo el re-ordenado de las páginas
+        sorry_no_results: Disculpe! No hay resultados de la búsqueda.
+        no_pages_yet: No hay ninguna página aun.  Click "Crear nueva Página" para agregar tus primeras páginas.
+  activerecord:
+    attributes:
+      page:
+        skip_to_first_child: "¿Saltar hasta el primero nodo?"

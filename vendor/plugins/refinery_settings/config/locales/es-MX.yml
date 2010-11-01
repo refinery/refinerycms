@@ -1,0 +1,23 @@
+es:
+  activerecord:
+    models:
+      refinery_setting: "Refinery Configuración"
+    attributes:
+      refinery_setting:
+        name: Nombre
+        value: Valor
+  admin:
+    refinery_settings:
+      refinery_setting:
+        edit: 'Editar esta configuración'
+        confirm: '¿Estas seguro que quieres quitar esta configuración para siempre?'
+        remove: 'Quitar esta configuración'
+      index:
+        new: Crear nueva configuración
+        empty_set: No hay ninguna configuración aun.
+        create_first: "Click '{{link}}' para agregar tu primer configuración."
+      form:
+        restart_may_be_in_order: "<strong>Por favor</strong> necesitas re iniciar tu sitio para que estos cambios tengan efecto."
+  plugins:
+    refinery_settings:
+      title: "Configuración"
