@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <%= render :partial => "/admin/head", :locals => {:login => true} %>
-  <body class='login'>
+  <body class='login <%= I18n.locale %>'>
     <div id='tooltip_container'></div>
     <header>
       <h1><%= yield :header %></h1>
@@ -17,4 +17,5 @@
       </div>
     </div>
   </body>
+  <%= render :partial => "/admin/after_body", :locals => {:login => true} %>
 </html>
