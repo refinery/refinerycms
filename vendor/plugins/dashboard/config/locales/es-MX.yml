@@ -1,0 +1,31 @@
+es-MX:
+  plugins:
+    refinery_dashboard:
+      title: Tablero
+  admin:
+    dashboard:
+      index:
+        quick_tasks: Tareas comunes
+        add_a_new_page: Agregar nueva página
+        update_a_page: Actualizar una página
+        upload_a_image: Subir una imágen
+        upload_a_file: Upload a file
+        change_language: Cambiar lenguaje
+        see_home_page: Ver pagina principal
+      recent_activity:
+        latest_activity: Última actividad
+        see: "Vee '{{what}}'"
+        latest_activity_message: "{{what}} {{kind}} fué {{action}}"
+      recent_inquiries:
+        latest_inquiries: Últimas solicitudes
+  updated:
+    'with_article "las"':  actualizadas
+    'with_article "los"':  actualizados
+    'with_article "the"': actualizado
+  created:
+    'with_article "las"':  creadas
+    'with_article "los"':  creados
+    'with_article "the"': creado
+
+  ago: "hace {{time}}"
+  see: Vee
