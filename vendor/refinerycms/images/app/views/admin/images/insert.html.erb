@@ -39,7 +39,7 @@
 </div>
 
 <% content_for :javascripts do %>
-  <script type='text/javascript'>
+  <script>
     $(document).ready(function(){
       image_dialog.init(<%= @callback.present? ? "self.parent.#{@callback}" : "null" %>);
     });

@@ -1,17 +1,8 @@
 <!DOCTYPE html>
-<html>
+<%= render :partial => "/shared/html_tag" %>
   <% site_bar = render(:partial => "/shared/site_bar", :locals => {:head => true}) -%>
   <%= render :partial => "/shared/head" %>
-<% if request.env['HTTP_USER_AGENT'] =~ /MSIE/ -%>
-  <!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
-  <!--[if lt IE 7 ]> <body class="ie6"> <![endif]-->
-  <!--[if IE 7 ]>    <body class="ie7"> <![endif]-->
-  <!--[if IE 8 ]>    <body class="ie8"> <![endif]-->
-  <!--[if IE 9 ]>    <body class="ie9"> <![endif]-->
-  <!--[if (gt IE 9)|!(IE)]><!--> <body> <!--<![endif]-->
-<% else -%>
   <body>
-<% end -%>
     <%= site_bar -%>
     <%= render :partial => "/shared/ie6check" if request.env['HTTP_USER_AGENT'] =~ /MSIE/ -%>
     <div id="page_container">
@@ -25,5 +16,6 @@
         <%= render :partial => "/shared/footer" -%>
       </footer>
     </div>
+    <%= render :partial => "/shared/javascripts" %>
   </body>
 </html>

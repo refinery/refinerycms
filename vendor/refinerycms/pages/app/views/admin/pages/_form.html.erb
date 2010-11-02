@@ -44,7 +44,7 @@
 <% end %>
 
 <% content_for :javascripts do %>
-  <script type='text/javascript'>
+  <script>
     $(document).ready(function(){
       page_options.init(
         <%= RefinerySetting.find_or_set(:new_page_parts, false).to_s %>
