@@ -5,7 +5,7 @@
 -%>
 <li class='clearfix record' id="<%= dom_id(page) -%>">
   <div class='clearfix'>
-    <span class='title'><%= title.html_safe %></span>
+    <span class='title'><%= raw title %></span>
 
     <span class='actions'>
       <%= link_to refinery_icon_tag('application_go.png'), page.url,
@@ -22,7 +22,7 @@
   </div>
   <ul class='nested'>
     <% if (children = page.children).any? -%>
-        <%= render :partial => 'page', :collection => children %>
+      <%= render :partial => 'page', :collection => children %>
     <% end -%>
   </ul>
 </li>

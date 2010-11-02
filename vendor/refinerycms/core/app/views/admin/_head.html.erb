@@ -20,7 +20,6 @@
   <%= yield :meta %>
   <title><%= RefinerySetting.find_or_set(:site_name, 'Company Name') -%> - Refinery</title>
   <%= csrf_meta_tag %>
-  <%= render(:partial => '/shared/html5_for_ie.js').html_safe if request.env['HTTP_USER_AGENT'] =~ /MSIE/ %>
 
   <%= stylesheet_link_tag 'refinery/site_bar',
                           'refinery/refinery',
@@ -31,9 +30,14 @@
                           :cache => ("cache/refinery" if css_caching) -%>
 
   <% if request.env['HTTP_USER_AGENT'] =~ /MSIE/ -%>
-    <%= "<!--[if lt IE 8]>#{stylesheet_link_tag 'refinery/ie-less-than-8'}<![endif]-->".html_safe -%>
-    <%= "<!--[if IE 8]>#{stylesheet_link_tag 'refinery/ie-less-than-9'}<![endif]-->".html_safe -%>
+    <%= raw "<!--[if lt IE 8]>#{stylesheet_link_tag 'refinery/ie-less-than-8'}<![endif]-->" -%>
+    <%= raw "<!--[if IE 8]>#{stylesheet_link_tag 'refinery/ie-less-than-9'}<![endif]-->" -%>
   <% end -%>
 
   <%= yield :stylesheets %>
+
+  <%= javascript_include_tag 'modernizr-min' %>
+
+  <% #TODO: REMOVE yielded_head and deprecation notice at 1.0 %>
+  <%= yielded_head %>
 </head>

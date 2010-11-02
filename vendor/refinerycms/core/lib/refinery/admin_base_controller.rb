@@ -2,7 +2,7 @@ class Refinery::AdminBaseController < ApplicationController
 
   layout :layout?
 
-  before_filter :correct_accept_header, :login_required, :restrict_plugins, :restrict_controller
+  before_filter :login_required, :restrict_plugins, :restrict_controller
   after_filter :store_location?, :except => [:new, :create, :edit, :update, :destroy, :update_positions] # for redirect_back_or_default
 
   helper_method :searching?
@@ -76,18 +76,6 @@ protected
 private
   def layout?
     "admin#{"_dialog" if from_dialog?}"
-  end
-
-  # This fixes the issue where Internet Explorer browsers are presented with a basic auth dialogue
-  # rather than the xhtml one that they *can* accept but don't think they can.
-  def correct_accept_header
-    if request.user_agent =~ /MSIE (6|7|8)/
-      if request.accept == "*/*"
-        request.env["HTTP_ACCEPT"] = request.cookies[:http_accept] ||= "application/xml"
-      else
-        request.cookies[:http_accept] = (request.env["HTTP_ACCEPT"] = (["text/html"] | request.accept.split(', ')).join(', '))
-      end
-    end
   end
 
   # Check whether it makes sense to return the user to the last page they

@@ -77,7 +77,7 @@ module Refinery
                   end
                 end
               else
-                render :text => "<script type='text/javascript'>parent.window.location = '\#{#{options[:redirect_to_url]}}';</script>"
+                render :text => "<script>parent.window.location = '\#{#{options[:redirect_to_url]}}';</script>"
               end
             else
               unless request.xhr?
@@ -114,7 +114,7 @@ module Refinery
                   end
                 end
               else
-                render :text => "<script type='text/javascript'>parent.window.location = '\#{#{options[:redirect_to_url]}}';</script>"
+                render :text => "<script>parent.window.location = '\#{#{options[:redirect_to_url]}}';</script>"
               end
             else
               unless request.xhr?

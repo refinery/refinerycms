@@ -25,7 +25,7 @@ class Admin::ResourcesController < Admin::BaseController
         unless from_dialog?
           redirect_to :action => 'index'
         else
-          render :text => "<script type='text/javascript'>parent.window.location = '#{admin_resources_url}';</script>"
+          render :text => "<script>parent.window.location = '#{admin_resources_url}';</script>"
         end
       else
         self.new # important for dialogs

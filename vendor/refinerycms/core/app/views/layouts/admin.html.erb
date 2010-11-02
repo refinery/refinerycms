@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<%= render :partial => "/shared/html_tag" %>
   <%= render :partial => "/admin/head" %>
   <body class='<%= action_name %> <%= I18n.locale %>'>
     <%= render :partial => '/shared/site_bar' %>
@@ -18,6 +18,6 @@
         </div>
       </div>
     </div>
+    <%= render :partial => "/admin/javascripts" %>
   </body>
-  <%= render :partial => "/admin/after_body" %>
 </html>
