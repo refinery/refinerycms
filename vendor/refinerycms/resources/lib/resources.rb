@@ -5,29 +5,6 @@ require 'refinery'
 module Refinery
   module Resources
     class Engine < Rails::Engine
-      initializer 'fix-tempfile-not-closing-with-dragonfly-resources' do |app|
-        # see http://github.com/markevans/dragonfly/issues#issue/18/comment/415807
-        require 'tempfile'
-        class Tempfile
-
-          def unlink
-            # keep this order for thread safeness
-            begin
-              if File.exist?(@tmpname)
-                closed? or close
-                File.unlink(@tmpname)
-              end
-              @@cleanlist.delete(@tmpname)
-              @data = @tmpname = nil
-              ObjectSpace.undefine_finalizer(self)
-            rescue Errno::EACCES
-              # may not be able to unlink on Windows; just ignore
-            end
-          end
-
-        end
-      end
-
       initializer 'resources-with-dragonfly' do |app|
         app_resources = Dragonfly[:resources]
         app_resources.configure_with(:rmagick)
