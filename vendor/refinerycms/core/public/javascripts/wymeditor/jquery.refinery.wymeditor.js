@@ -1211,7 +1211,10 @@ WYMeditor.editor.prototype.update = function() {
   });
 
   // get rid of id='last_paste' tags that were forgotten about.
-  html = html.replace(/(\ ?id=(\"|\')last\_paste(\"|\'))/igm, '')
+  html = html.replace(/(\ ?id=(\"|\')last\_paste(\"|\'))/igm, '');
+
+  // get rid of any temporary text-only interpolation tags we have inserted for cursor position.
+  html = html.replace(/[%$]+replace_me_with_wym-[^%$]*[%$]+/igm, '');
 
   // apply changes/
   $(this._element).val(html);
@@ -1268,15 +1271,40 @@ WYMeditor.editor.prototype.dialog = function( dialogType ) {
           // Fixes webkit issue where it would not paste at cursor.
           selection = wym._iframe.contentWindow.getSelection();
           if (selection.focusNode.insertData) {
-            // if you highlight backwards, it reverses the order.
-            start = selection.anchorOffset > selection.focusOffset ? selection.focusOffset : selection.anchorOffset;
-            end = selection.anchorOffset > selection.focusOffset ? selection.anchorOffset : selection.focusOffset;
+            // if you highlight backwards, it reverses the order of the anchorNode and focusNode / anchorOffset and focusOffset.
+            // anchorOffset is where you started the selection, focusOffset is where you ended the selection.
+            // So, if you highlight forwards then {anchorOffset}some text{focusOffset}
+            // But, if you highlight backwards then {focusOffset}some text{anchorOffset}
+            if (selection.anchorOffset > selection.focusOffset) {
+              start_node = selection.focusNode;
+              start = selection.focusOffset;
 
-            // because .insertData only inserts text, we have to insert something meaningful in text (no html).
+              end_node = selection.anchorNode;
+              end = selection.anchorOffset;
+            } else {
+              start_node = selection.anchorNode;
+              start = selection.anchorOffset;
+
+              end_node = selection.focusNode;
+              end = selection.focusOffset;
+            }
+
+            // because .insertData only inserts text, we have to insert some 'meaningful' *text* only interpolation tags (no html).
             start_tag = '%%' + wym._current_unique_stamp + '%%';
             end_tag = '$$' + wym._current_unique_stamp + '$$';
-            selection.focusNode.insertData(start, start_tag);
-            selection.focusNode.insertData(end + start_tag.length, end_tag);
+
+            // sometimes we may be crossing multiple "nodes" so a simple test for whether this is the case.
+            // this is important, see this example:
+            // some text <a href='/'>with some link</a> and then more text
+            // {start_node}some text {end_start_node}{anotherNode}<a href='/'>with some link</a>{end_anotherNode}{end_node} and then more text{end_end_node}
+            // the "start_node" is a separate node to the end node and therefore we can't treat them as one long node anymore.
+            if (start_node === end_node) {
+              end = end + start_tag.length;
+            }
+
+            // Insert the 'meaningful' text interpolation tags.
+            start_node.insertData(start, start_tag);
+            end_node.insertData(end, end_tag);
 
             // Now that we can use HTML again, replace the simple text with a span tag.
             $(selected).html($(selected).html().replace(start_tag, "<span id='replace_me_with_" + wym._current_unique_stamp + "'>")
