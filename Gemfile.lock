@@ -69,7 +69,7 @@ GEM
       activesupport (~> 3.0.0)
     authlogic (2.1.6)
       activesupport
-    autotest (4.4.1)
+    autotest (4.4.2)
     autotest-notification (2.3.1)
       autotest (~> 4.3)
     autotest-rails (4.1.0)
