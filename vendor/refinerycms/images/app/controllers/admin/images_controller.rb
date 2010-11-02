@@ -48,7 +48,8 @@ class Admin::ImagesController < Admin::BaseController
     find_image
     if params[:size].present?
       begin
-        thumbnail = @image.thumbnail(params[:size])
+        size = params[:size].gsub('gt', '>').gsub('hash', '#')
+        thumbnail = @image.thumbnail(size)
         render :json => { :error => false, :url => thumbnail.url, :width => thumbnail.width, :height => thumbnail.height }
       rescue RuntimeError
         render :json => { :error => true }
@@ -79,7 +80,7 @@ class Admin::ImagesController < Admin::BaseController
         unless from_dialog?
           redirect_to :action => 'index'
         else
-          render :text => "<script type='text/javascript'>parent.window.location = '#{admin_images_url}';</script>"
+          render :text => "<script>parent.window.location = '#{admin_images_url}';</script>"
         end
       else
         self.new # important for dialogs
