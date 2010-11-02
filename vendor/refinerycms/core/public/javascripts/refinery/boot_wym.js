@@ -3,12 +3,20 @@ onOpenDialog = function(dialog) {
     .corner('6px')
     .find('.ui-dialog-titlebar').corner('1px top');
   if (dialog.height() < $(window).height()) {
-    $(document.body).addClass('hide-overflow');
+    if(iframed()) {
+      $(parent.document.body).addClass('hide-overflow');
+    } else {
+      $(document.body).addClass('hide-overflow');
+    }
   }
 }
 
 onCloseDialog = function(dialog) {
-  $(document.body).removeClass('hide-overflow');
+  if(iframed()) {
+    $(parent.document.body).removeClass('hide-overflow');
+  } else {
+    $(document.body).removeClass('hide-overflow');
+  }
 }
 
 var wymeditor_inputs = [];

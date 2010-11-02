@@ -334,7 +334,7 @@ var link_tester = {
   },
 
   url: function(value, callback) {
-    $.getJSON(link_tester.test_url, {url: value}, function(data){
+    $.getJSON(link_tester.test_url, {'url': value}, function(data){
       callback(data.result == 'success');
     });
   },
@@ -542,7 +542,7 @@ var page_options = {
   , init: function(enable_parts, new_part_url, del_part_url){
     // set the page tabs up, but ensure that all tabs are shown so that when wymeditor loads it has a proper height.
     // also disable page overflow so that scrollbars don't appear while the page is loading.
-    $(document.body).addClass('hide-overflow');
+    $(document.body).not('iframe body').addClass('hide-overflow');
     page_options.tabs = $('#page-tabs');
     page_options.tabs.tabs({tabTemplate: '<li><a href="#{href}">#{label}</a></li>'})
     page_options.tabs.find(' > ul li a').corner('top 5px');
@@ -730,7 +730,7 @@ var image_dialog = {
 
       var url = '/refinery/images/'+imageId+'/url';
       if (resize) {
-        url += '?size='+imageThumbnailSize;
+        url += '?size='+imageThumbnailSize.toString().replace('>', 'gt').replace('#', 'hash');
       }
 
       var data;
@@ -1006,7 +1006,7 @@ var resource_picker = {
 }
 
 close_dialog = function(e) {
-  if (parent && parent.document.location.href != document.location.href && $.isFunction(parent.$))
+  if (iframed())
   {
     the_body = $(parent.document.body);
     the_dialog = parent.$('.ui-dialog-content');
@@ -1016,8 +1016,9 @@ close_dialog = function(e) {
     the_dialog.filter(':data(dialog)').dialog('close');
     the_dialog.remove();
   }
+
   // if there's a wymeditor involved don't try to close the dialog as wymeditor will.
-  if (!($(document.body).hasClass('wym_iframe_body'))) {
+  if (!$(document.body).hasClass('wym_iframe_body')) {
     the_body.removeClass('hide-overflow');
     the_dialog.filter(':data(dialog)').dialog('close');
     the_dialog.remove();
@@ -1067,4 +1068,8 @@ parseURL = function(url)
 
   //return the final object
   return loc;
+}
+
+iframed = function() {
+  return (parent && parent.document.location.href != document.location.href && $.isFunction(parent.$));
 }
