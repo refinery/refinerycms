@@ -5,7 +5,12 @@ gem 'rails',                    '~> 3.0.1'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3-ruby',             :require => 'sqlite3'
+unless (java = RUBY_PLATFORM == 'java')
+  gem 'sqlite3-ruby',             :require => 'sqlite3'
+else
+  gem 'jdbc-sqlite3'
+  gem 'activerecord-jdbcsqlite3-adapter', '>= 0.9.7'
+end
 
 # Use unicorn as the web server
 # gem 'unicorn'
@@ -51,7 +56,7 @@ rmagick_options = {:require => false}
 rmagick_options.update({
   :git => 'git://github.com/refinerycms/rmagick.git',
   :branch => 'windows'
-}) if Bundler::WINDOWS
+}) if Bundler::WINDOWS or java
 
 # Specify a version of RMagick that works in your environment:
 gem 'rmagick',                  '~> 2.12.0', rmagick_options
@@ -76,7 +81,7 @@ group :test do
   gem 'json_pure',              '~> 1.4.6', :require => 'json/pure'
   # Factory Girl
   gem 'factory_girl'
-  gem 'ruby-prof'               unless defined?(RUBY_ENGINE) and RUBY_ENGINE == 'rbx'
+  gem "#{'j' if java}ruby-prof" unless defined?(RUBY_ENGINE) and RUBY_ENGINE == 'rbx'
   # Autotest
   gem 'autotest'
   gem 'autotest-rails'
