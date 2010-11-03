@@ -12,8 +12,11 @@
       <%= link_to t('.download_current'), @resource.url,
                   :title => @resource.title %>
       <em><%= t('.or')%></em><%= t('.replace') %>
+      <%= f.file_field :file %>
+    <% else %>
+      <% # we must only hint at multiple when it's a *new* record otherwise update fails. %>
+      <%= f.file_field :file, :multiple => (true if @resource.new_record?) %>
     <% end %>
-    <%= f.file_field :file %>
   </div>
 
   <div class='field'>
@@ -29,7 +32,7 @@
                :hide_cancel => (@app_dialog or action_name == "insert" or from_dialog?),
                :delete_title => t('admin.resources.delete'),
                :delete_confirmation => (t('shared.admin.delete.message',
-                                         :title => @resource.title) unless @resource.new_record?)
+                                        :title => @resource.title) unless @resource.new_record?)
              } %>
 
   <% if @app_dialog -%>
@@ -43,8 +46,8 @@
     <input type='hidden' name='current_link' value='<%= @current_link %>' />
   <% end -%>
 <% end -%>
-<% content_for :head do %>
-  <script type='text/javascript'>
+<% content_for :javascripts do %>
+  <script>
     $(document).ready(function(){
       link_dialog.init();
     });

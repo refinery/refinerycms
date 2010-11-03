@@ -1197,13 +1197,26 @@ WYMeditor.editor.prototype.status = function(sMessage) {
  * @description Updates the element and textarea values
  */
 WYMeditor.editor.prototype.update = function() {
-
   // the replace function below makes the HTML source code easier to read when end users need to use this view.
-  var html = this.xhtml().replace(/<\/([A-Za-z0-9]*)></g, function(m){return m.split(">").join(">\n")});
-  html = html.replace(/src=\"system\/images/g, 'src="/system/images'); // make system/images calls absolute.
-  html = html.replace(/(\ ?id=(\"|\')replace_me_with_wym-[0-9]*(\"|\'))/g, ''); // get rid of replace_me_with_wym id tags that were forgotten about.
-  html = html.replace(/(\ ?id=(\"|\')last\_paste(\"|\'))/g, '') // get rid of id='last_page' that were forgotten about.
+  var html = this.xhtml().replace(/<\/([A-Za-z0-9]*)></g, function(m){
+    return m.split(">").join(">\n");
+  });
 
+  // ensure system/images calls become /system/images.
+  html = html.replace(/src=\"system\/images/g, 'src="/system/images');
+
+  // get rid of replace_me_with_wym id tags that were forgotten about by replacing them with their content.
+  $(html).find('span[id|=replace_me_with_wym]').each(function(i, span){
+    html = html.replace($(span).wrap('<div />').parent().html(), $(span).html());
+  });
+
+  // get rid of id='last_paste' tags that were forgotten about.
+  html = html.replace(/(\ ?id=(\"|\')last\_paste(\"|\'))/igm, '');
+
+  // get rid of any temporary text-only interpolation tags we have inserted for cursor position.
+  html = html.replace(/[%$]+replace_me_with_wym-[^%$]*[%$]+/igm, '');
+
+  // apply changes/
   $(this._element).val(html);
   $(this._box).find(this._options.htmlValSelector).not('.hasfocus').val(html); //#147
 };
@@ -1212,21 +1225,22 @@ WYMeditor.editor.prototype.update = function() {
  * @description Opens a dialog box
  */
 WYMeditor.editor.prototype.dialog = function( dialogType ) {
-  this.update();
-  var path = this._wym._options.dialogPath + dialogType;
+  var wym = this;
 
-  this._current_unique_stamp = this.uniqueStamp();
+  wym.update();
+  var path = this._wym._options.dialogPath + dialogType + '?wymeditor=true';
+
+  wym._current_unique_stamp = wym.uniqueStamp();
   // change undo or redo on cancel to true to have this happen when a user closes (cancels) a dialogue
-  this._undo_on_cancel = false;
-  this._redo_on_cancel = false;
+  wym._undo_on_cancel = false;
+  wym._redo_on_cancel = false;
 
   var selected = this.selected();
   //set to P if parent = BODY unless it's a table going in there.
   if (dialogType != WYMeditor.DIALOG_TABLE) {
-    this.format_block();
+    wym.format_block();
   }
 
-  var wym = this;
   if (dialogType == WYMeditor.DIALOG_LINK && $.browser.mozilla) {
     selection = wym._iframe.contentWindow.getSelection();
     matches = $($(selected).html().match(new RegExp(selection.anchorNode.textContent + "(.*)" + selection.focusNode.textContent)));
@@ -1245,77 +1259,76 @@ WYMeditor.editor.prototype.dialog = function( dialogType ) {
     }
   }
 
-  // set up handlers.
-  wym = this;
-  ajax_loaded_callback = function(){wym.dialog_ajax_callback(selected)}
+  ajax_loaded_callback = function(){wym.dialog_ajax_callback(selected)};
 
-  var parent_node = null;
-  if (this._selected_image) {
-    parent_node = this._selected_image.parentNode;
-  }
-  else {
-    parent_node = selected;
-  }
+  var parent_node = wym._selected_image ? wym._selected_image.parentNode : selected;
+  if (typeof(parent_node) != 'undefined' && parent_node !== null) {
+    if (parent_node.tagName.toLowerCase() != WYMeditor.A) {
+      // wrap the current selection with a funky span.
+      if (wym._selected_image == null)
+      {
+        if (selected != null && selected.tagName.toLowerCase() != WYMeditor.A && wym._iframe.contentWindow.getSelection) {
+          // Fixes webkit issue where it would not paste at cursor.
+          selection = wym._iframe.contentWindow.getSelection();
+          if (selection.focusNode.insertData) {
+            // if you highlight backwards, it reverses the order of the anchorNode and focusNode / anchorOffset and focusOffset.
+            // anchorOffset is where you started the selection, focusOffset is where you ended the selection.
+            // So, if you highlight forwards then {anchorOffset}some text{focusOffset}
+            // But, if you highlight backwards then {focusOffset}some text{anchorOffset}
+            if (selection.anchorOffset > selection.focusOffset) {
+              start_node = selection.focusNode;
+              start = selection.focusOffset;
 
-  if ((parent_node != null) && (parent_node.tagName.toLowerCase() != WYMeditor.A))
-  {
-    // wrap the current selection with a funky span.
-    if (this._selected_image == null)
-    {
-      if (selected != null && selected.tagName.toLowerCase() != WYMeditor.A && wym._iframe.contentWindow.getSelection) {
-        // Fixes webkit issue where it would not paste at cursor.
-        selection = wym._iframe.contentWindow.getSelection();
-        selected_html = $(selected).html().replace('&nbsp;', ' ');
+              end_node = selection.anchorNode;
+              end = selection.anchorOffset;
+            } else {
+              start_node = selection.anchorNode;
+              start = selection.anchorOffset;
 
-        if ((offset = selected_html.indexOf(selection.focusNode.textContent)) == -1) {
-          offset = 0;
-        }
-        focus = offset + selection.focusOffset;
-        anchor = offset + selection.anchorOffset;
-        start = (focus < anchor) ? focus : anchor;
-        end = (focus < anchor) ? anchor : focus;
-        length = (end - start);
+              end_node = selection.focusNode;
+              end = selection.focusOffset;
+            }
 
-        focusNode = selection.focusNode.tagName === undefined ? selection.focusNode.parentNode : selection.focusNode;
-        if (!($.browser.mozilla && $(focusNode).attr('_moz_dirty') !== undefined)) {
-          if (length > 0) {
-            new_html = selected_html.substring(0, start)
-                       + "<span id='replace_me_with_" + this._current_unique_stamp + "'>"
-                       + selected_html.substring(start, end)
-                       + "</span>"
-                       + selected_html.substring(end);
+            // because .insertData only inserts text, we have to insert some 'meaningful' *text* only interpolation tags (no html).
+            start_tag = '%%' + wym._current_unique_stamp + '%%';
+            end_tag = '$$' + wym._current_unique_stamp + '$$';
+
+            // sometimes we may be crossing multiple "nodes" so a simple test for whether this is the case.
+            // this is important, see this example:
+            // some text <a href='/'>with some link</a> and then more text
+            // {start_node}some text {end_start_node}{anotherNode}<a href='/'>with some link</a>{end_anotherNode}{end_node} and then more text{end_end_node}
+            // the "start_node" is a separate node to the end node and therefore we can't treat them as one long node anymore.
+            if (start_node === end_node) {
+              end = end + start_tag.length;
+            }
+
+            // Insert the 'meaningful' text interpolation tags.
+            start_node.insertData(start, start_tag);
+            end_node.insertData(end, end_tag);
+
+            // Now that we can use HTML again, replace the simple text with a span tag.
+            $(selected).html($(selected).html().replace(start_tag, "<span id='replace_me_with_" + wym._current_unique_stamp + "'>")
+                                               .replace(end_tag, "</span>"));
           } else {
-            new_html = selected_html.substring(0, start)
-                     + "<span id='replace_me_with_" + this._current_unique_stamp + "'></span>"
-                     + selected_html.substring(end);
+            wym.wrap("<span id='replace_me_with_" + this._current_unique_stamp + "'>", "</span>");
           }
         } else {
-          // Mozilla Firefox seems to throw its toys out of the cot if the paragraph is _moz_dirty
-          // and we try to get a selection of the entire text contents of the paragraph.
-          // Firefox has to use this.wrap() for this specific condition.
-          this.wrap("<span id='replace_me_with_" + this._current_unique_stamp + "'>", "</span>");
+          wym.wrap("<span id='replace_me_with_" + this._current_unique_stamp + "'>", "</span>");
         }
-
-        if (typeof(new_html) != 'undefined' && new_html != null) {
-          new_html = new_html.replace('  ', '&nbsp;');
-          $(selected).html(new_html);
-        }
-      } else {
-        this.wrap("<span id='replace_me_with_" + this._current_unique_stamp + "'>", "</span>");
       }
     }
-  }
-  else {
-    if (!this._selected_image) {
-      parent_node._id_before_replaceable = parent_node.id;
-      parent_node.id = 'replace_me_with_' + this._current_unique_stamp;
-    }
+    else {
+      if (!wym._selected_image) {
+        parent_node._id_before_replaceable = parent_node.id;
+        parent_node.id = 'replace_me_with_' + this._current_unique_stamp;
+      }
 
-    if (dialogType != WYMeditor.DIALOG_PASTE && dialogType != WYMeditor.DIALOG_TABLE) {
-      path += path.indexOf("?") == -1 ? "?" : "&";
-      port = (window.location.port.length > 0 ? (":" + window.location.port) : "")
-      path += "current_link=" + parent_node.href.replace(window.location.protocol + "//" + window.location.hostname + port, "");
-      path += "&target_blank=" + (parent_node.target == "_blank" ? "true" : "false");
+      if (dialogType != WYMeditor.DIALOG_PASTE && dialogType != WYMeditor.DIALOG_TABLE) {
+        path += path.indexOf("?") == -1 ? "?" : "&";
+        port = (window.location.port.length > 0 ? (":" + window.location.port) : "")
+        path += "current_link=" + parent_node.href.replace(window.location.protocol + "//" + window.location.hostname + port, "");
+        path += "&target_blank=" + (parent_node.target == "_blank" ? "true" : "false");
+      }
     }
   }
 

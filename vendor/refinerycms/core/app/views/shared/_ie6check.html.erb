@@ -49,8 +49,8 @@
         </p>
       </div>
     <![endif]-->
-    <% content_for :head do %>
-      <script type='text/javascript'>
+    <% content_for :javascripts do %>
+      <script>
         $(document).ready(function() {
           $('#flash.flash_message:has("#upgrade_wrapper") #flash_close').click(function(e) {
             e.preventDefault();

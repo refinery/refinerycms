@@ -1,11 +1,16 @@
 source 'http://rubygems.org'
-gem 'bundler',                  '~> 1.0.0'
+gem 'bundler',                  '~> 1.0.3'
 gem 'rails',                    '~> 3.0.1'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3-ruby',             :require => 'sqlite3'
+unless (java = RUBY_PLATFORM == 'java')
+  gem 'sqlite3-ruby',             :require => 'sqlite3'
+else
+  gem 'jdbc-sqlite3'
+  gem 'activerecord-jdbcsqlite3-adapter', '>= 0.9.7'
+end
 
 # Use unicorn as the web server
 # gem 'unicorn'
@@ -36,10 +41,11 @@ gem 'sqlite3-ruby',             :require => 'sqlite3'
 gem 'refinerycms',              :path => '.'
 
 # Specify additional Refinery CMS Engines here (all optional):
-gem 'refinerycms-inquiries',    '~> 0.9.9.2'
+gem 'refinerycms-inquiries',    '~> 0.9.9.3'
+gem 'refinerycms-generators',   '~> 0.9.9', :git => 'git://github.com/resolve/refinerycms-generators.git'
 # gem 'refinerycms-news',       '~> 0.9.9'
 # gem 'refinerycms-portfolio',  '~> 0.9.8'
-# gem 'refinerycms-theming',    '~> 0.9.8.1'
+# gem 'refinerycms-theming',    '~> 0.9.8.2'
 # gem 'refinerycms-search',     '~> 0.9.8'
 
 # Add i18n support (optional, you can remove this if you really want to).
@@ -50,7 +56,7 @@ rmagick_options = {:require => false}
 rmagick_options.update({
   :git => 'git://github.com/refinerycms/rmagick.git',
   :branch => 'windows'
-}) if Bundler::WINDOWS
+}) if Bundler::WINDOWS or java
 
 # Specify a version of RMagick that works in your environment:
 gem 'rmagick',                  '~> 2.12.0', rmagick_options
@@ -63,7 +69,7 @@ group :test do
   gem 'rspec-mocks',            RSPEC_VERSION, :require => 'rspec/mocks'
   gem 'rspec-rails',            RSPEC_VERSION
   # Cucumber
-  gem 'capybara'
+  gem 'capybara', :git => 'git://github.com/parndt/capybara.git'
   gem 'database_cleaner'
   gem 'cucumber-rails'
   gem 'cucumber'
@@ -71,11 +77,11 @@ group :test do
   gem 'launchy'
   gem 'gherkin'
   gem 'rack-test',              '~> 0.5.6'
-  # FIXME: JSON constant constants warnings
+  # FIXME: Update json_pure to 1.4.7 when it is released
   gem 'json_pure',              '~> 1.4.6', :require => 'json/pure'
   # Factory Girl
   gem 'factory_girl'
-  gem 'ruby-prof'               unless defined?(RUBY_ENGINE) and RUBY_ENGINE == 'rbx'
+  gem "#{'j' if java}ruby-prof" unless defined?(RUBY_ENGINE) and RUBY_ENGINE == 'rbx'
   # Autotest
   gem 'autotest'
   gem 'autotest-rails'

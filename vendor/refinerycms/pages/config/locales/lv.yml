@@ -1,9 +1,9 @@
 lv:
   plugins:
-    pages:
-      article: s
     refinery_pages:
       title: Lapas
+      description: Lapu satura pārvaldīšana
+      article: s
   admin:
     pages_dialogs:
       page_link:
@@ -19,7 +19,7 @@ lv:
           new_window_label: Atķeksējiet šo opciju, lai saite atvērtos jaunā logā.
           not_sure: Neesat drošs, ko rakstīt augšējā laukā?
           step1: Atrodiet saiti, kuru vēlaties iesaitēt.
-          step2: Nokopējiet saiti no Jūsu pārlūka adrešu lauka un ievietojiet to augšējā laukā.
+          step2: Nokopējiet saiti no jūsu pārlūka adrešu lauka un ievietojiet to augšējā laukā.
         email_address:
           tab_name: Epasta adrese
           subject_line_optional: Tēma (nav obligāti)
@@ -62,7 +62,7 @@ lv:
         skip_to_first_child_help: Šī opcija liek lapai izveidot saiti uz pirmo apakšlapu. Tas varētu būt noderīgi, grupējot lapas kopā.
         link_url: Pārsūtīt šo lapu uz citu interneta saiti
         link_url_help: Ja vēlaties, lai šī lapa novirzītu apmeklētājus uz citu interneta saiti vai jūsu saita lapu, tad ievadiet saiti, piemēram, http://google.lv, pretējā gadījumā atstājot šo lauku tukšu
-        parent_page_help: Jūs varat novietot lapu zem citas lapas, izvēloties to no sarkasta. Ja Jūs velaties, lai šī lapa būtu augšējā līmenī - atstājiet lauku tukšu.
+        parent_page_help: Jūs varat novietot lapu zem citas lapas, izvēloties to no sarkasta. Ja jūs velaties, lai šī lapa būtu augšējā līmenī - atstājiet lauku tukšu.
         custom_title_help: Ja vēlaties, lai lapai būtu cits nosaukums nekā tas ir izvēlnē, tad izvēlieties &apos;Teksts&apos; un ievadiet to izveidotajā laukā.
       form_advanced_options_seo:
         seo: Optimizēšana Interneta Meklētājiem

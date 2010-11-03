@@ -2,6 +2,10 @@ ru:
   plugins:
     refinery_files:
       title: Файлы
+      article: masculine
+  activerecord:
+    models:
+      resource: файл
   must_choose_file: Вы должны выбрать файл для загрузки
   file_should_be_smaller_than_max_file_size: "Файлы должны быть по размеру меньше чем %{max_file_size}"
   admin:

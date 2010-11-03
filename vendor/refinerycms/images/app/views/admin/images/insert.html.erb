@@ -38,8 +38,8 @@
   <% end %>
 </div>
 
-<% content_for :head do %>
-  <script type='text/javascript'>
+<% content_for :javascripts do %>
+  <script>
     $(document).ready(function(){
       image_dialog.init(<%= @callback.present? ? "self.parent.#{@callback}" : "null" %>);
     });

@@ -60,7 +60,7 @@ class Image < ActiveRecord::Base
   # Returns a titleized version of the filename
   # my_file.jpg returns My File
   def title
-    CGI::unescape(self.image_name).gsub(/\.\w+$/, '').titleize
+    CGI::unescape(self.image_name.to_s).gsub(/\.\w+$/, '').titleize
   end
 
 end
