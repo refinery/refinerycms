@@ -1,4 +1,11 @@
 ru:
+  plugins:
+    refinery_core:
+      title: Refinery
+      description: Ядро Refinery
+    refinery_dialogs:
+      title: Dialogs
+      description: Refinery dialogs plugin
   welcome:
     there_are_no_users: "Ни одного пользователя не создано. Вы будете первым."
     remember_admin_location: "Запомнить администратора как:" 
@@ -8,13 +15,11 @@ ru:
     menu:
       reorder_menu: Изменить порядок в меню
       reorder_menu_done: Сохранить такой порядок в меню
-    images:
-      existing_image:
-        submit_insert: Вставить
+    dialogs:
+      show:
+        save: Сохранить
+        cancel: Отменить
   refinery:
-    other: "Иначе %{what}"
-    reorder: "Поменять порядок %{what}"
-    reorder_done: "Закончено %{what}"
     crudify:
       created: "%{what} создан(а)."
       updated: "%{what} отредактирован(а)."
@@ -25,37 +30,44 @@ ru:
       switch_to_your_website: Перейти на сайт
       switch_to_your_website_editor: Перейти в панель управления
     admin:
-      message:
-        close: Закрыть
       continue_editing:
         save_and_continue_editing: Сохранить и продолжить
       form_actions:
-        or: или
         save: Сохранить
-        or_cancel: или
         cancel: Отмена
-        or_continue: или
-        cancel_lose_changes: "Cancelling will lose all changes you've made to this %{object_name}"
+        cancel_lose_changes: При отмене все изменения будут потеряны
         delete: Удалить
         previous: Предыдущее
         next: Следующее
+        close: Закрыть
       image_picker:
-        none_selected: "There is currently no %{what} selected, please click here to add one."
-        remove_current: "Remove current %{what}"
+        none_selected: There is currently no %{what} selected, please click here to add one.
+        remove_current: Remove current %{what}
         change: Click here to pick a image
-        image: image
         show: Show
       resource_picker:
-        none_selected: "There is currently no %{what} selected, please click here to add one."
-        current: "Current %{what}"
-        download_current: "Download current %{what}"
+        download_current: Download current file
         opens_in_new_window: Opens in a new window
-        remove_current: "Remove current %{what}"
-        resource: resource      
+        remove_current: "Remove current file"
+        no_resource_selected: There is currently no file selected, click here to add one.
+        name: Add File
+        current: Current File     
       search:
         button_text: Поиск
         results_for: "Результаты поиска для «%{query}»"
         no_results: Ничего не найдено
+      delete:
+        message: Are you sure you want to remove '%{title}'?
+      error_messages:
+        problems_in_following_fields: There were problems with the following fields
+      help: help
     message:
       close: Закрыть
       close_this_message: Закрыть это сообщение
+    draft_page_message:
+      not_live: This page is NOT live for public viewing.
+    footer:
+      copyright: © %{site_name}, %{year}
+  time:
+    formats:
+      short: "%A, %d %B %Y"

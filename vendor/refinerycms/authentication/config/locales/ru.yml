@@ -1,7 +1,11 @@
 ru:
   plugins:
     refinery_users:
-      title: "Пользователи"
+      title: Пользователи
+      article: masculine
+  activerecord:
+    models:
+      user: пользователь
   admin:
     users:
       update:

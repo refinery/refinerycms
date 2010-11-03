@@ -2,7 +2,7 @@ Refinery::Application.routes.draw do
   get '/pages/:id', :to => 'pages#show', :as => :page
 
   scope(:path => 'refinery', :as => 'admin', :module => 'admin') do
-    resources :pages do
+    resources :pages, :except => :show do
       collection do
         post :update_positions
       end

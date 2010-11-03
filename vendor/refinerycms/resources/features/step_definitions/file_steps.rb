@@ -3,7 +3,7 @@ Given /^I have no files$/ do
 end
 
 When /^I attach the file at "([^"]*)"$/ do |file_path|
-  attach_file('resource[file]', File.join(File.expand_path('../../uploads/', __FILE__), file_path))
+  attach_file('resource_file', File.join(File.expand_path('../../uploads/', __FILE__), file_path))
 end
 
 Then /^the file "([^"]*)" should have uploaded successfully$/ do |file_name|
@@ -16,6 +16,6 @@ end
 
 When /^I upload the file at "([^"]*)"$/ do |file_path|
   visit new_admin_resource_path
-  attach_file('resource[file]', File.join(File.expand_path('../../uploads/', __FILE__), file_path))
+  attach_file('resource_file', File.join(File.expand_path('../../uploads/', __FILE__), file_path))
   click_button 'Save'
 end

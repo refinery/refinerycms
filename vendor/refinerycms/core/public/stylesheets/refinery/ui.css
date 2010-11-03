@@ -20,7 +20,7 @@
 }
 
 .ui-dialog {
-  position: relative;
+  position: absolute;
   background-color: #fff;
   color: #000;
   border: 4px solid #22A7F2;

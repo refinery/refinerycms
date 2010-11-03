@@ -3,7 +3,7 @@ Given /^I have no images$/ do
 end
 
 When /^I attach the image at "([^"]*)"$/ do |file_path|
-  attach_file('image[image]', File.join(File.expand_path('../../uploads/', __FILE__), file_path))
+  attach_file('image_image', File.join(File.expand_path('../../uploads/', __FILE__), file_path))
 end
 
 Then /^the image "([^"]*)" should have uploaded successfully$/ do |file_name|
@@ -32,6 +32,6 @@ end
 
 When /^I upload the image at "([^"]*)"$/ do |file_path|
   visit new_admin_image_path
-  attach_file('image[image]', File.join(File.expand_path('../../uploads/', __FILE__), file_path))
+  attach_file('image_image', File.join(File.expand_path('../../uploads/', __FILE__), file_path))
   click_button 'Save'
 end

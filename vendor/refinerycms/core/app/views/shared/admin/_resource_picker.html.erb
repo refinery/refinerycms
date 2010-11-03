@@ -7,7 +7,7 @@
                   :update_resource => 'current_resource',
                   :update_text => 'current_resource_text',
                   :callback => 'resource_changed',
-                  :field => [f.object.class.name.underscore.downcase, field].join('_'),
+                  :field => [f.object_name, field].join('_'),
                   :current_link => "#{resource.url if resource.present?}",
                   :height => 480
                 })
@@ -37,15 +37,15 @@
                 :style => "#{"display:none;" unless resource.present?}" %>
 </div>
 
-<% content_for :head do %>
-  <script type='text/javascript'>
+<% content_for :javascripts do %>
+  <script>
     resource_changed = function(callback_args) {
       $('#remove_resource').show();
       $('#current_resource_container').show();
       $('#no_resource_selected').hide();
       $('iframe#dialog_iframe').dialog("close");
       $('iframe#dialog_iframe').remove().parents(".ui-dialog").remove();
-      $('#<%= f.object.class.name.underscore.downcase %>_<%= field %>').val(callback_args.id);
+      $('#<%= f.object_name %>_<%= field %>').val(callback_args.id);
       $('#current_resource_link').attr('href', $('#current_resource_link').attr('href').replace(/current_link=([^&])*&/, "current_link=" + callback_args.href + "&"));
       $("#current_resource").attr('href', callback_args.href);
       $('#current_resource_text').html(callback_args.html);
@@ -53,7 +53,7 @@
 
     $(document).ready(function(e) {
       $('#remove_resource').click(function(e) {
-        $('#<%= f.object.class.name.underscore.downcase %>_<%= field %>').val("");
+        $('#<%= f.object_name %>_<%= field %>').val("");
         $('#current_resource_container').hide();
         $('#current_resource_text').html('');
         $('#no_resource_selected').show();

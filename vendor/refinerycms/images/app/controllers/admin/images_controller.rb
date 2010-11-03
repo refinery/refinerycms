@@ -48,7 +48,8 @@ class Admin::ImagesController < Admin::BaseController
     find_image
     if params[:size].present?
       begin
-        thumbnail = @image.thumbnail(params[:size])
+        size = params[:size].gsub('gt', '>').gsub('hash', '#')
+        thumbnail = @image.thumbnail(size)
         render :json => { :error => false, :url => thumbnail.url, :width => thumbnail.width, :height => thumbnail.height }
       rescue RuntimeError
         render :json => { :error => true }
@@ -59,28 +60,35 @@ class Admin::ImagesController < Admin::BaseController
   end
 
   def create
+    @images = []
     begin
-      @image = Image.create(params[:image])
+      unless params[:image].present? and params[:image][:image].is_a?(Array)
+        @images << (@image = Image.create(params[:image]))
+      else
+        params[:image][:image].each do |image|
+          @images << (@image = Image.create(:image => image))
+        end
+      end
     rescue Dragonfly::FunctionManager::UnableToHandle
       logger.warn($!.message)
       @image = Image.new
     end
 
     unless params[:insert]
-      if @image.valid?
-        flash.notice = t('refinery.crudify.created', :what => "'#{@image.title}'")
+      if @images.all?{|i| i.valid?}
+        flash.notice = t('refinery.crudify.created', :what => "'#{@images.collect{|i| i.title}.join("', '")}'")
         unless from_dialog?
           redirect_to :action => 'index'
         else
-          render :text => "<script type='text/javascript'>parent.window.location = '#{admin_images_url}';</script>"
+          render :text => "<script>parent.window.location = '#{admin_images_url}';</script>"
         end
       else
         self.new # important for dialogs
         render :action => 'new'
       end
     else
-      if @image.valid?
-        @image_id = @image.id
+      if @images.all?{|i| i.valid?}
+        @image_id = @image.id unless @image.new_record?
         @image = nil
       end
       self.insert

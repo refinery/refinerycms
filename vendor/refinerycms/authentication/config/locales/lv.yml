@@ -2,6 +2,7 @@ lv:
   plugins:
     refinery_users:
       title: Lietotāji
+      description: Lietotāju pārvaldīšana
   admin:
     users:
       delete: Dzēst šo lietotāju
@@ -35,7 +36,7 @@ lv:
       reset_password: Atjaunot paroli
       blank_email: Jūs nenorādījāt epasta adresi.
       email_not_associated_with_account_html: Atvainojiet, epasts '%{email}' nav piesaistīts nevienam kontam.<br />Vai tiešām norādījāt korektu epastu?
-      email_reset_sent: Uz Jūsu epastu tika izsūtīta vēstule, kura satur saiti, lai atjaunotu paroli.
+      email_reset_sent: Uz jūsu epastu tika izsūtīta vēstule, kura satur saiti, lai atjaunotu paroli.
     reset:
       code_invalid: Atvainojiet, šim paroles atjaunošanas kodam ir beidzies izmantošanas termiņš vai arī tas nav derīgs. Ja Jums ir radušās problēmas, tad pamēģiniet nokopēt saņemto saiti no epasta un iekopēt to pārluka adrešu laukā vai arī mēģiniet sākt atjuanošanas procesu no sākuma.
       successful: Paroles atjaunošana noritēja sekmīgi priekš '%{email}'
