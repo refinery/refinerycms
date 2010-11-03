@@ -1205,8 +1205,8 @@ WYMeditor.editor.prototype.update = function() {
   // ensure system/images calls become /system/images.
   html = html.replace(/src=\"system\/images/g, 'src="/system/images');
 
-  // get rid of replace_me_with_wym id tags that were forgotten about by replacing them with their content.
-  $(html).find('span[id|=replace_me_with_wym]').each(function(i, span){
+  // get rid of wym id tags that were forgotten about by replacing them with their content.
+  $(html).find('span[id|=wym]').each(function(i, span){
     html = html.replace($(span).wrap('<div />').parent().html(), $(span).html());
   });
 
@@ -1214,7 +1214,7 @@ WYMeditor.editor.prototype.update = function() {
   html = html.replace(/(\ ?id=(\"|\')last\_paste(\"|\'))/igm, '');
 
   // get rid of any temporary text-only interpolation tags we have inserted for cursor position.
-  html = html.replace(/[%$]+replace_me_with_wym-[^%$]*[%$]+/igm, '');
+  html = html.replace(/[%$]+wym-[^%$]*[%$]+/igm, '');
 
   // apply changes/
   $(this._element).val(html);
@@ -1307,20 +1307,20 @@ WYMeditor.editor.prototype.dialog = function( dialogType ) {
             end_node.insertData(end, end_tag);
 
             // Now that we can use HTML again, replace the simple text with a span tag.
-            $(selected).html($(selected).html().replace(start_tag, "<span id='replace_me_with_" + wym._current_unique_stamp + "'>")
+            $(selected).html($(selected).html().replace(start_tag, "<span id='" + wym._current_unique_stamp + "'>")
                                                .replace(end_tag, "</span>"));
           } else {
-            wym.wrap("<span id='replace_me_with_" + this._current_unique_stamp + "'>", "</span>");
+            wym.wrap("<span id='" + wym._current_unique_stamp + "'>", "</span>");
           }
         } else {
-          wym.wrap("<span id='replace_me_with_" + this._current_unique_stamp + "'>", "</span>");
+          wym.wrap("<span id='" + wym._current_unique_stamp + "'>", "</span>");
         }
       }
     }
     else {
       if (!wym._selected_image) {
         parent_node._id_before_replaceable = parent_node.id;
-        parent_node.id = 'replace_me_with_' + this._current_unique_stamp;
+        parent_node.id = '' + this._current_unique_stamp;
       }
 
       if (dialogType != WYMeditor.DIALOG_PASTE && dialogType != WYMeditor.DIALOG_TABLE) {
@@ -1405,7 +1405,7 @@ WYMeditor.editor.prototype.paste = function(sData) {
   wym.format_block();
 
   var sTmp;
-  replaceable = $(wym._doc.body).find('#replace_me_with_' + wym._current_unique_stamp);
+  replaceable = $(wym._doc.body).find('#' + wym._current_unique_stamp);
 
   // replaceable doesn't actually get replaced here, it's just used as a marker for where the cursor was.
   container = replaceable.get(0) || this.selected();
@@ -1427,11 +1427,11 @@ WYMeditor.editor.prototype.paste = function(sData) {
         // Only if we placed more items after it (aP.length)
         if (aP.length > 1
             && $(container).get(0).tagName.toLowerCase() == "span"
-            && $(container).attr('id') == ('replace_me_with_' + wym._current_unique_stamp)
+            && $(container).attr('id') == ('' + wym._current_unique_stamp)
             && $(container).parent().get(0).tagName.toLowerCase() == "p")
         {
           p = $(container).parent();
-          matches = p.html().match(new RegExp("([\\s\\S]*)\<span id=[\'|\"]replace_me_with_" + wym._current_unique_stamp + "[\'|\"]\>.*\<\/span\>"));
+          matches = p.html().match(new RegExp("([\\s\\S]*)\<span id=[\'|\"]" + wym._current_unique_stamp + "[\'|\"]\>.*\<\/span\>"));
           sTmp = matches[1] + sTmp + $(container).html();
           p.html(sTmp);
           if (insertedContentAfterBreak != null && insertedContentAfterBreak.length > 0) {
@@ -1450,7 +1450,7 @@ WYMeditor.editor.prototype.paste = function(sData) {
         }
       } else {
         if ((aP.length -1) == x) {
-          contentAfterBreak = $(container).parent().html().match(new RegExp("\<span id=[\'|\"]replace_me_with_" + wym._current_unique_stamp + "[\'|\"]\>.*\<\/span\>([\\s\\S]*)"))[1].split('</p>')[0];
+          contentAfterBreak = $(container).parent().html().match(new RegExp("\<span id=[\'|\"]" + wym._current_unique_stamp + "[\'|\"]\>.*\<\/span\>([\\s\\S]*)"))[1].split('</p>')[0];
           sTmp = "<p id='last_paste'>" + sTmp + "</p>";
         } else {
           sTmp = "<p>" + sTmp + "</p>";
@@ -1701,7 +1701,7 @@ WYMeditor.INIT_DIALOG = function(wym, selected, isIframe) {
   if (wym._selected_image) {
     var replaceable = $(wym._selected_image);
   } else {
-    var replaceable = $(wym._doc.body).find('#replace_me_with_' + wym._current_unique_stamp);
+    var replaceable = $(wym._doc.body).find('#' + wym._current_unique_stamp);
   }
 
   // focus first textarea or input type text element
@@ -1841,10 +1841,10 @@ WYMeditor.editor.prototype.close_dialog = function(e, cancelled) {
   if (cancelled)
   {
     // if replaceable exists, replace it with its own html contents.
-    if ((span = $(this._doc.body).find('span#replace_me_with_' + this._current_unique_stamp)).length > 0) {
+    if ((span = $(this._doc.body).find('span#' + this._current_unique_stamp)).length > 0) {
       span.parent().html(span.parent().html().replace(new RegExp(["<span(.+?)", span.attr('id'), "(.+?)<\/span>"].join("")), span.html()));
     }
-    (remove_id = $(this._doc.body).find('#replace_me_with_' + this._current_unique_stamp))
+    (remove_id = $(this._doc.body).find('#' + this._current_unique_stamp))
       .attr('id', (remove_id.attr('_id_before_replaceable') || ""))
       .replaceWith(remove_id.html());
     if (this._undo_on_cancel == true) {
@@ -4861,7 +4861,7 @@ WYMeditor.WymClassSafari.prototype.initIframe = function(iframe) {
 WYMeditor.WymClassSafari.prototype.paste = function(sData) {
 
   (wym = this).format_block();
-  replaceable = $(wym._doc.body).find('#replace_me_with_' + wym._current_unique_stamp);
+  replaceable = $(wym._doc.body).find('#' + wym._current_unique_stamp);
 
   // replaceable doesn't actually get replaced here, it's just used as a marker for where the cursor was.
   var container = replaceable.get(0) || this.selected();
