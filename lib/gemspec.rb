@@ -2,7 +2,7 @@
 require File.expand_path('../../vendor/refinerycms/refinery.rb', __FILE__)
 files = %w( .gitignore .yardopts Gemfile *.md ).map { |file| Dir[file] }.flatten
 %w(app bin config db features lib public script spec test themes vendor).sort.each do |dir|
-  files += Dir.glob("#{dir}/**/*")
+  files << Dir.glob("#{dir}/**/*").to_s
 end
 rejection_patterns = [
   "public\/system",
