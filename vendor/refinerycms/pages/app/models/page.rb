@@ -250,7 +250,7 @@ class Page < ActiveRecord::Base
   def normalize_friendly_id(slug_string)
     sluggified = super
     if use_marketable_urls? && self.class.friendly_id_config.reserved_words.include?(sluggified)
-      sluggified += "-page"
+      sluggified << "-page"
     end
     sluggified
   end
