@@ -725,41 +725,15 @@ var image_dialog = {
 
       $(img).parent().addClass('selected');
       var imageId = $(img).attr('data-id');
-      var imageThumbnailSize = $('#existing_image_size_area li.selected a').attr('data-size');
+      var geometry = $('#existing_image_size_area li.selected a').attr('data-geometry');
+      var size = $('#existing_image_size_area li.selected a').attr('data-size');
       var resize = $("#wants_to_resize_image").is(':checked');
 
-      var url = '/refinery/images/'+imageId+'/url';
-      if (resize) {
-        url += '?size='+imageThumbnailSize.toString().replace('>', 'gt').replace('#', 'hash');
-      }
-
-      var data;
-      $.ajax({
-        async: false,
-        url: url,
-        success: function (result, status, xhr) {
-          if (result.error) {
-            if (console && console.log) {
-               console.log("Something went wrong with the image insertion!");
-               console.log(result);
-             }
-           } else {
-             data = result;
-           }
-         },
-         error: function(xhr, txt, status) {
-           if (console && console.log) {
-             console.log("Something went wrong with the image insertion!");
-             console.log(xhr);
-             console.log(txt);
-             console.log(status);
-           }
-         }
-       });
+      image_url = resize ? $(img).attr('data-' + size) : $(img).attr('data-original');
 
       if (parent) {
         if ((wym_src = parent.document.getElementById('wym_src')) != null) {
-          wym_src.value = data.url
+          wym_src.value = image_url;
         }
         if ((wym_title = parent.document.getElementById('wym_title')) != null) {
           wym_title.value = $(img).attr('title');
@@ -768,7 +742,7 @@ var image_dialog = {
           wym_alt.value = $(img).attr('alt');
         }
         if ((wym_size = parent.document.getElementById('wym_size')) != null) {
-          wym_size.value = imageThumbnailSize.replace(/[<>=]/g, '');
+          wym_size.value = geometry.replace(/[<>=]/g, '');
         }
       }
     }
