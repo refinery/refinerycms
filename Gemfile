@@ -5,11 +5,12 @@ gem 'rails',                    '~> 3.0.1'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-unless (java = RUBY_PLATFORM == 'java')
-  gem 'sqlite3-ruby',             :require => 'sqlite3'
-else
+if (java = RUBY_PLATFORM == 'java')
   gem 'jdbc-sqlite3'
+  gem 'activerecord-jdbc-adapter'
   gem 'activerecord-jdbcsqlite3-adapter', '>= 0.9.7'
+else
+  gem 'sqlite3-ruby', :require => 'sqlite3'
 end
 
 # Use unicorn as the web server
@@ -56,10 +57,14 @@ rmagick_options = {:require => false}
 rmagick_options.update({
   :git => 'git://github.com/refinerycms/rmagick.git',
   :branch => 'windows'
-}) if Bundler::WINDOWS or java
+}) if Bundler::WINDOWS and !java
+
+rmagick_version = java ? '~> 0.3.7' : '~> 2.12.0'
 
 # Specify a version of RMagick that works in your environment:
-gem 'rmagick',                  '~> 2.12.0', rmagick_options
+gem "rmagick#{'4j' if java}", rmagick_version, rmagick_options
+
+gem 'jruby-openssl' if java
 
 group :test do
   # RSpec
@@ -86,6 +91,8 @@ group :test do
   gem 'autotest'
   gem 'autotest-rails'
   gem 'autotest-notification'
+  # FIXME: Replace when new babosa gem is released
+  gem 'babosa', '0.2.0', :git => 'git://github.com/stevenheidel/babosa.git' if java
 end
 
 # END REFINERY CMS ============================================================
