@@ -1,7 +1,10 @@
+<% if !!local_assigns[:always_include_jquery] %>
+    <%= jquery_include_tags(:jquery_ui => false) %>
+<% end %>
 <% if refinery_user? %>
   <% unless admin? # jquery scripts should already be cached when using the site bar as login has happened. %>
     <% content_for :javascript_libraries do %>
-      <%= jquery_include_tags(:jquery_ui => false) unless !!local_assigns[:exclude_jquery] %>
+      <%= jquery_include_tags(:jquery_ui => false) unless !!local_assigns[:exclude_jquery] || !!local_assigns[:always_include_jquery] %>
       <%= javascript_include_tag('jquery/jquery.corner.js') unless !!local_assigns[:exclude_cornering_library] %>
       <%= javascript_include_tag('refinery/site_bar') unless !!local_assigns[:exclude_site_bar_javascript] %>
     <% end %>
