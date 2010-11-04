@@ -6,7 +6,7 @@
       <%= javascript_include_tag('refinery/site_bar') unless !!local_assigns[:exclude_site_bar_javascript] %>
     <% end %>
     <% content_for :stylesheets, stylesheet_link_tag('refinery/site_bar') unless !!local_assigns[:exclude_css] %>
-    <%= yield(:stylesheets) unless head or exclude_css %>
+    <%= yield(:stylesheets) unless local_assigns[:head] or local_assigns[:exclude_css] %>
   <% end -%>
   <div id='site_bar'>
     <div id='site_bar_content' class='clearfix'>
