@@ -18,12 +18,6 @@ GIT
   specs:
     refinerycms-generators (0.9.9)
 
-GIT
-  remote: git://github.com/stevenheidel/babosa.git
-  revision: 1045f89584e72193a7e2193d5bc543a688e9f2ca
-  specs:
-    babosa (0.2.0)
-
 PATH
   remote: .
   specs:
@@ -66,10 +60,6 @@ GEM
       activesupport (= 3.0.1)
       arel (~> 1.0.0)
       tzinfo (~> 0.3.23)
-    activerecord-jdbc-adapter (1.0.2-java)
-    activerecord-jdbcsqlite3-adapter (1.0.2-java)
-      activerecord-jdbc-adapter (= 1.0.2)
-      jdbc-sqlite3 (~> 3.6.0)
     activeresource (3.0.1)
       activemodel (= 3.0.1)
       activesupport (= 3.0.1)
@@ -84,7 +74,7 @@ GEM
       autotest (~> 4.3)
     autotest-rails (4.1.0)
       ZenTest
-    bouncy-castle-java (1.5.0145.2)
+    babosa (0.2.0)
     builder (2.1.2)
     celerity (0.8.2)
     childprocess (0.1.3)
@@ -106,18 +96,20 @@ GEM
     erubis (2.6.6)
       abstract (>= 1.0.0)
     factory_girl (1.3.2)
+    ffi (0.6.3)
+      rake (>= 0.8.7)
     ffi (0.6.3-java)
     filters_spam (0.3)
     friendly_id (3.1.7)
       babosa (~> 0.2.0)
+    gherkin (2.2.9)
+      json (~> 1.4.6)
+      term-ansicolor (~> 1.0.5)
     gherkin (2.2.9-java)
       json (~> 1.4.6)
       term-ansicolor (~> 1.0.5)
     i18n (0.4.2)
-    jdbc-sqlite3 (3.6.14.2.056-java)
-    jruby-openssl (0.7.2)
-      bouncy-castle-java
-    jruby-prof (0.1.0)
+    json (1.4.6)
     json (1.4.6-java)
     json_pure (1.4.6)
     launchy (0.3.7)
@@ -131,6 +123,7 @@ GEM
     mime-types (1.16)
     moretea-awesome_nested_set (1.4.3.1)
       activerecord (~> 3.0.0)
+    nokogiri (1.4.3.1)
     nokogiri (1.4.3.1-java)
       weakling (>= 0.0.3)
     polyglot (0.3.1)
@@ -160,7 +153,7 @@ GEM
       routing-filter (~> 0.1.6)
     refinerycms-inquiries (0.9.9.3)
       filters_spam (~> 0.2)
-    rmagick4j (0.3.7)
+    rmagick (2.12.2)
     routing-filter (0.1.7)
       actionpack
     rspec (2.0.1)
@@ -175,6 +168,7 @@ GEM
       rspec-expectations (~> 2.0.1)
     rspec-rails (2.0.1)
       rspec (~> 2.0.0)
+    ruby-prof (0.9.2)
     rubyzip (0.9.4)
     selenium-webdriver (0.0.29)
       childprocess (>= 0.0.7)
@@ -182,6 +176,7 @@ GEM
       json_pure
       rubyzip
     spork (0.8.4)
+    sqlite3-ruby (1.3.2)
     term-ansicolor (1.0.5)
     thor (0.14.3)
     treetop (1.4.8)
@@ -195,14 +190,12 @@ GEM
 
 PLATFORMS
   java
+  ruby
 
 DEPENDENCIES
-  activerecord-jdbc-adapter
-  activerecord-jdbcsqlite3-adapter (>= 0.9.7)
   autotest
   autotest-notification
   autotest-rails
-  babosa (= 0.2.0)!
   bundler (~> 1.0.3)
   capybara!
   cucumber
@@ -210,9 +203,6 @@ DEPENDENCIES
   database_cleaner
   factory_girl
   gherkin
-  jdbc-sqlite3
-  jruby-openssl
-  jruby-prof
   json_pure (~> 1.4.6)
   launchy
   rack-test (~> 0.5.6)
@@ -221,10 +211,12 @@ DEPENDENCIES
   refinerycms-generators (~> 0.9.9)!
   refinerycms-i18n (~> 0.9.8.8)
   refinerycms-inquiries (~> 0.9.9.3)
-  rmagick4j (~> 0.3.7)
+  rmagick (~> 2.12.0)
   rspec (~> 2.0.0)
   rspec-core (~> 2.0.0)
   rspec-expectations (~> 2.0.0)
   rspec-mocks (~> 2.0.0)
   rspec-rails (~> 2.0.0)
+  ruby-prof
   spork
+  sqlite3-ruby
