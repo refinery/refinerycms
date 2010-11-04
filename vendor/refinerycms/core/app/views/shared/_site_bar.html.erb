@@ -1,6 +1,6 @@
-<% if !!local_assigns[:always_include_jquery] %>
-    <%= jquery_include_tags(:jquery_ui => false) %>
-<% end %>
+<%if !!local_assigns[:always_include_jquery] and !admin?
+    content_for :javascript_libraries, jquery_include_tags(:jquery_ui => !!local_assigns[:always_include_jquery_ui])
+  end-%>
 <% if refinery_user? %>
   <% unless admin? # jquery scripts should already be cached when using the site bar as login has happened. %>
     <% content_for :javascript_libraries do %>
