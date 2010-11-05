@@ -1,5 +1,5 @@
 class RefinerySetting < ActiveRecord::Base
-  
+
   FORM_VALUE_TYPES = [
     ['Multi-line', 'text_area'],
     ['Checkbox', 'check_box']

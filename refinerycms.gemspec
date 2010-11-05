@@ -4,7 +4,7 @@ Gem::Specification.new do |s|
   s.name              = %q{refinerycms}
   s.version           = %q{0.9.9.pre}
   s.description       = %q{A Ruby on Rails CMS that supports Rails 3. It's easy to extend and sticks to 'the Rails way' where possible.}
-  s.date              = %q{2010-11-04}
+  s.date              = %q{2010-11-05}
   s.summary           = %q{A Ruby on Rails CMS that supports Rails 3}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
@@ -87,6 +87,7 @@ Gem::Specification.new do |s|
     'db/migrate/20100826232810_move_inquiry_settings_to_refinery_settings.rb',
     'db/migrate/20100831122919_move_page_to_nested_set.rb',
     'db/migrate/20100913234704_add_cached_slug_to_pages.rb',
+    'db/migrate/20100926142529_add_value_type_to_refinery_settings.rb',
     'db/migrate/20100929035252_add_missing_indexes_to_roles_users.rb',
     'db/migrate/20101006211228_remove_image_thumbnails_from_refinery_settings.rb',
     'db/schema.rb',
@@ -967,6 +968,8 @@ Gem::Specification.new do |s|
     'vendor/refinerycms/settings/app/controllers',
     'vendor/refinerycms/settings/app/controllers/admin',
     'vendor/refinerycms/settings/app/controllers/admin/refinery_settings_controller.rb',
+    'vendor/refinerycms/settings/app/helpers',
+    'vendor/refinerycms/settings/app/helpers/refinery_settings_helper.rb',
     'vendor/refinerycms/settings/app/models',
     'vendor/refinerycms/settings/app/models/refinery_setting.rb',
     'vendor/refinerycms/settings/app/views',

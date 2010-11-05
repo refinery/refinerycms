@@ -21,7 +21,7 @@ module RefinerySettingsHelper
                   :class => 'widest', :rows => 5
     end
   end
-  
+
   def refinery_setting_value(setting)
     if setting.form_value_type == 'check_box'
       (setting.value =~ /1|on|enabled|true/).to_s
