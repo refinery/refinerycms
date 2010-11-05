@@ -35,6 +35,9 @@ index/**/*
 # Mac
 .DS_Store
 
+# Windows
+Thumbs.db
+
 # NetBeans
 nbproject
 
@@ -71,7 +74,6 @@ config/rackspace_cloudfiles.yml
 # sass
 .sass-cache
 .sass-cache/*
-
 
 #rvm
 .rvmrc

@@ -1,0 +1,10 @@
+<%= yield :before_javascript_libraries -%>
+<%= yield :javascript_libraries %>
+<%= yield :after_javascript_libraries %>
+<% if request.env['HTTP_USER_AGENT'] =~ /MSIE/ %>
+  <!--[if lt IE 7 ]>
+    <%= javascript_include_tag 'dd_belatedpng' %>
+    <script> DD_belatedPNG.fix('img, .png_bg'); //fix any <img> or .png_bg background-images </script>
+  <![endif]-->
+<% end %>
+<%= yield :javascripts -%>

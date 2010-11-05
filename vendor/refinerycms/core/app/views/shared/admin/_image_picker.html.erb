@@ -34,8 +34,8 @@
 <%#
   We're so un-object-oriented here. We need to rewrite the jQuery admin.js file to use OO.
 %>
-<% content_for :head do -%>
-  <script type='text/javascript'>
+<% content_for :javascripts do -%>
+  <script>
     var image_picker_<%= randomiser %>_options = {
       thumbnail: '<%= thumbnail.html_safe %>'
       , image_toggler: '<%= toggle_image_display ? "#current_image_toggler_#{randomiser}" : "null" %>'

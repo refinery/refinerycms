@@ -23,15 +23,15 @@ nb:
           subject_line_optional: Valgfritt emne
           body_optional: Valgfri melding
           not_sure: Usikker på hva du skal fylle inn i boksene over?
-          step1: "Skriv eller copier og lim inn (f.eks. fra din adressebok) e-post adressen du ønsker å lenke til i '<strong>E-post Adresse</strong>' boksen over."
-          step2: "Bruk '<strong>Emne</strong>' boksen over om du ønsker at meldingen skal sendes med et <strong>forhåndsskrevet emne</strong>."
-          step3: "Bruk '<strong>Melding</strong>' boksen over om du ønsker at meldingen skal sendes med en <strong>forhåndsskrevet melding</strong>."
+          step1_html: "Skriv eller copier og lim inn (f.eks. fra din adressebok) e-post adressen du ønsker å lenke til i '<strong>E-post Adresse</strong>' boksen over."
+          step2_html: "Bruk '<strong>Emne</strong>' boksen over om du ønsker at meldingen skal sendes med et <strong>forhåndsskrevet emne</strong>."
+          step3_html: "Bruk '<strong>Melding</strong>' boksen over om du ønsker at meldingen skal sendes med en <strong>forhåndsskrevet melding</strong>."
         your_resource:
           tab_name: Din fil
           link_to_this_resource: Link til denne filen
     pages:
       page:
-        view_live: Se hvordan denne siden ser ut fra utsiden <br/><em>(Åpner i et nytt vindu)</em>
+        view_live_html: Se hvordan denne siden ser ut fra utsiden <br/><em>(Åpner i et nytt vindu)</em>
         edit_this_page: Rediger denne siden
         confirm_delete_page_title: Slett denne siden
         confirm_delete_page_message: "Er du sikker på at du ønsker å slette siden '%{title}'?"
@@ -53,7 +53,7 @@ nb:
           text: Tekst
           image: Bilde
         custom_url: Valgfri adresse
-        custom_url_explanation: "Legg inn en adresse om denne siden skal linke til en ekstern webside, eller til en allerede eksisterende ressurs f.eks. en kontaktside.<br/>Merk: Denne adressen må peke til en plassering som allerede eksister; en ny plassering vil ikke bli opprettet."
+        custom_url_explanation_html: "Legg inn en adresse om denne siden skal linke til en ekstern webside, eller til en allerede eksisterende ressurs f.eks. en kontaktside.<br/>Merk: Denne adressen må peke til en plassering som allerede eksister; en ny plassering vil ikke bli opprettet."
         draft: Utkast
         show_in_menu_title: Vis i menyen
         show_in_menu_description: Vis denne siden i menyen

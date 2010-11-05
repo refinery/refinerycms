@@ -34,7 +34,7 @@ sl:
       or: ali
       forgot_password: Pozabil sem geslo
   users:
-    setup_website_name: "Najprej morate poimenovati stran. <a href='%{link}' name='%{title}'>Pojdite sem</a> kjer lahko uredite naslov vaše strani."
+    setup_website_name_html: "Najprej morate poimenovati stran. <a href='%{link}' name='%{title}'>Pojdite sem</a> kjer lahko uredite naslov vaše strani."
     signup_disabled: Registracija uporabnikov je onemogočena
     new:
       fill_form: Izpolnite spodnji obrazec z vašimi podatki.
@@ -47,7 +47,7 @@ sl:
       enter_email_address: Prosimo vnesite email naslov za vaš račun.
       reset_password: Ponastavi geslo
       blank_email: Niste vnesli email naslova.
-      email_not_associated_with_account: "Oprostite, '%{email}' ni povezan z nobenim računom.<br/>Ali ste prepričani, a ste vnesli pravilen naslov?"
+      email_not_associated_with_account_html: "Oprostite, '%{email}' ni povezan z nobenim računom.<br/>Ali ste prepričani, a ste vnesli pravilen naslov?"
       email_reset_sent: Poslali smo vam email sporočilo s povezavo za ponastavitev gesla.
     reset:
 

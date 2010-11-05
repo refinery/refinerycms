@@ -13,7 +13,7 @@ module Refinery
         Page.friendly_id_config.reserved_words << reserved_word
       end
 
-      raise "A plugin MUST have a name!: #{plugin.inspect}" if plugin.name.nil?
+      raise "A plugin MUST have a name!: #{plugin.inspect}" if plugin.name.blank?
 
       # Set the root as Rails::Engine.called_from will always be
       #                 vendor/engines/refinery/lib/refinery

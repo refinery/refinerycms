@@ -43,8 +43,8 @@
              } if RefinerySetting.find_or_set(:new_page_parts, false) %>
 <% end %>
 
-<% content_for :head do %>
-  <script type='text/javascript'>
+<% content_for :javascripts do %>
+  <script>
     $(document).ready(function(){
       page_options.init(
         <%= RefinerySetting.find_or_set(:new_page_parts, false).to_s %>

@@ -43,8 +43,8 @@
     </li>
   </ul>
 </div>
-<% content_for :head do %>
-  <script type='text/javascript'>
+<% content_for :javascripts do %>
+  <script>
     $(document).ready(function() {
       $('#records ul li .actions a[href*=edit]').each(function(i, li) {
         $(li).attr('name', $(li).attr('tooltip'));

@@ -1,17 +1,26 @@
-<div id='existing_image_area' class='dialog_area'<%= " style='display:none;'" if @image.errors.any? %>>
-  <%= render :partial => '/shared/admin/search',
-             :locals => {:url => insert_admin_images_url(params.dup)} %>
+<% user_image_sizes = RefinerySetting.find_or_set(:user_image_sizes, {
+           :small => '110x110>',
+           :medium => '225x255>',
+           :large => '450x450>'
+         }).sort_by{|k,v| v} %>
+<div id='existing_image_area' class='dialog_area' <%= "style='display:none;'" if @image.errors.any? %>>
   <input type='hidden' name='selected_image' id='selected_image' />
   <div id='existing_image_area_content' class='clearfix'>
     <ul>
-      <% @images.each do |image| %>
+<%
+      @images.each do |image|
+        thumbnail_urls={:"data-original" => image.url}
+        user_image_sizes.each do |size, pixels|
+          thumbnail_urls[:"data-#{size.to_s.parameterize}"] = image.thumbnail(pixels).url
+        end
+-%>
         <li<%= " class='selected'" if @image_id == image.id %>>
           <%= image_fu(image, '106x106#c', {
                          :alt => image.title,
                          :title => image.title,
                          :id => "image_#{image.id}",
                          :'data-id' => image.id
-                       }) -%>
+                       }.merge(thumbnail_urls)) -%>
         </li>
       <% end -%>
     </ul>
@@ -25,22 +34,20 @@
       <p>
         <input type="checkbox" id="wants_to_resize_image" name="wants_to_resize_image" value="1" checked="checked" />
         <label for='wants_to_resize_image' class='stripped' style='font-weight: bold;'>
-          <%= t('.resize_image').html_safe %>
+          <%= t('.resize_image') %>
         </label>
       </p>
       <ul>
         <%
-          (sizes = RefinerySetting.find_or_set(:user_image_sizes, {
-                     :small => '110x110>',
-                     :medium => '225x255>',
-                     :large => '450x450>'
-                   })
-          ).sort_by{|k,v| v}.each_with_index do |(size, pixels), index|
+          user_image_sizes.each_with_index do |(size, pixels), index|
             safe_pixels = pixels.to_s.gsub(/[<>=]/, '')
+            # (parndt): ' selected' if size.to_s == 'medium' is not very generic, but I
+            # can't think of a decent way of making it so for even sets (e.g. 2,4,6,8,etc image sizes).
         -%>
             <li id="image_dialog_size_<%= index %>" class="image_dialog_size<%= ' selected' if size.to_s == 'medium' %>">
               <%= link_to size.to_s, "##{size}",
-                          :'data-size' => pixels,
+                          :'data-geometry' => pixels,
+                          :'data-size' => size.to_s.parameterize,
                           :title   => "#{size} image (#{safe_pixels})",
                           :tooltip => "#{size} image (#{safe_pixels})" %>
             </li>
