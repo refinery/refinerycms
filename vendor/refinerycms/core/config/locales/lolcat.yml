@@ -67,4 +67,4 @@ lolcat:
     draft_page_message:
       not_live: DIS PAEG IZ NOT LIV 4 PUBLIC VIEWIN.
     footer:
-      copyright: COPYRIGHT ©
+      copyright: COPYRIGHT © %{year} %{site_name}

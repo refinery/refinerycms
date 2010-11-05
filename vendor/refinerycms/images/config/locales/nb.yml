@@ -29,7 +29,7 @@ nb:
           results_for: "Søkeresultater for %{query}"
       grid_view:
         edit: Rediger dette bildet
-        view_live: Vis dette bildet <br/><em>Åpner i et nytt vindu</em>
+        view_live_html: Vis dette bildet <br/><em>Åpner i et nytt vindu</em>
       list_view_image:
         edit_this_image: Rediger dette bildet
       existing_image:

@@ -67,4 +67,4 @@ fr:
     draft_page_message:
       not_live: Cette page n'est pas visible par le public.
     footer:
-      copyright: Copyright &copy;
+      copyright: Copyright © %{year} %{site_name}

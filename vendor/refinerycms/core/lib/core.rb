@@ -104,9 +104,9 @@ module Refinery
         Dir.glob(File.expand_path(File.join(self.class.source_root, '../db/**/**'))).each do |path|
           unless File.directory?(path)
             if path =~ /.*migrate.*/
-              migration_template path, Rails.root.join("db/migrate/create_#{self.class.engine_name}")
+              migration_template path, Rails.root.join("db/migrate/#{path.split(File::SEPARATOR).last.split('.rb').first}")
             else
-              template path, Rails.root.join("db/seeds/#{self.class.engine_name}.rb")
+              template path, Rails.root.join("db/seeds/#{path.split(File::SEPARATOR).last}")
             end
           end
         end

@@ -2,8 +2,12 @@ ru:
   plugins:
     refinery_files:
       title: Файлы
+      article: masculine
+  activerecord:
+    models:
+      resource: файл
   must_choose_file: Вы должны выбрать файл для загрузки
-  file_should_be_smaller_than_max_file_size: "Файлы должны быть по размеру меньше чем {{max_file_size}}"
+  file_should_be_smaller_than_max_file_size: "Файлы должны быть по размеру меньше чем %{max_file_size}"
   admin:
     resources:
       form:
@@ -11,16 +15,16 @@ ru:
         download_current: Скачать текущий файл
         or: или
         replace: ", заменить его на вот этот..."
-        maximum_file_size: "Максимальный размер файла &mdash; {{megabytes}} МБ."
+        maximum_file_size: "Максимальный размер файла — %{megabytes} МБ."
       resource:
-        download: "Скачать файл ({{size}})"
+        download: "Скачать файл (%{size})"
         edit: Редактировать файл
         delete:
-          message: "Вы уверены, что хотите удалить &laquo;{{title}}&raquo;?"
+          message: "Вы уверены, что хотите удалить «%{title}»?"
           title: Удалить этот файл навсегда
       index:
         upload_new: Загрузить новый файл
-        no_files_yet: "Здесь пока нет файлов. Нажмите &laquo;Загрузить новые файлы&raquo;, чтобы добавить первый файл."
+        no_files_yet: "Здесь пока нет файлов. Нажмите «Загрузить новые файлы», чтобы добавить первый файл."
       insert:
         existing: Существующий файл
         new: Новый файл

@@ -60,4 +60,4 @@ es:
     draft_page_message:
       not_live: Esta página NO está visible para el público.
     footer:
-      copyright: Copyright &copy;
+      copyright: Copyright © %{year} %{site_name}

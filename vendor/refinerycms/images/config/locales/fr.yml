@@ -25,7 +25,7 @@ fr:
           list: liste
           grid: grille
       grid_view:
-        view_live: "Voir cette image<br/><em>Ouvre une nouvelle fenêtre</em>"
+        view_live_html: "Voir cette image<br/><em>Ouvre une nouvelle fenêtre</em>"
       existing_image:
         button_text: Insérer
         resize_image: Redimensionner l'image ?

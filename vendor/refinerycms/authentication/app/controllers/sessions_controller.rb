@@ -2,7 +2,6 @@ class SessionsController < ApplicationController
   layout 'login'
 
   before_filter :redirect?, :only => [:new, :create]
-  before_filter :redirect_to_new, :only => [:index, :show]
 
   def new
     @session = UserSession.new
@@ -10,7 +9,7 @@ class SessionsController < ApplicationController
 
   def create
     if (@session = UserSession.create(params[:session])).valid?
-      flash[:notice] = t('sessions.login_successful') if refinery_user?
+      flash.notice = t('sessions.login_successful') if refinery_user?
       redirect_back_or_default(admin_root_url)
     else
       render :action => 'new'
@@ -31,10 +30,6 @@ protected
     elsif logged_in?
       redirect_to root_url
     end
-  end
-
-  def redirect_to_new
-    redirect_to :action => "new"
   end
 
 end

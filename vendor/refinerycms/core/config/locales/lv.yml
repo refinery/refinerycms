@@ -1,8 +1,15 @@
 lv:
+  plugins:
+    refinery_core:
+      title: Refinery
+      description: Refinery kodola spraudnis
+    refinery_dialogs:
+      title: Dialogi
+      description: Refinery dialogu spraudnis
   welcome:
     there_are_no_users: Vēl nav neviena lietotāja, līdz ar to mēs Jums palīdzēsim izveidot pirmo.
-    remember_admin_location: "Atcerieties, Jūsu Refinery administrācijas panelis atrodas šeit:"
-    lets_start: Tātad turpināsim, lai Jūs varētu pieslēgties...
+    remember_admin_location: "Atcerieties, jūsu Refinery administrācijas panelis atrodas šeit:"
+    lets_start: Tātad turpināsim, lai jūs varētu pieslēgties...
     continue: Turpināt...
   admin:
     menu:
@@ -20,8 +27,8 @@ lv:
   shared:
     site_bar:
       log_out: Iziet
-      switch_to_your_website: Pārslēgties uz Jūsu saitu
-      switch_to_your_website_editor: Pārslēgties uz Jūsu saita administrācijas paneli
+      switch_to_your_website: Pārslēgties uz jūsu saitu
+      switch_to_your_website_editor: Pārslēgties uz jūsu saita administrācijas paneli
     admin:
       continue_editing:
         save_and_continue_editing: Saglabāt un turpināt rediģēt
@@ -60,4 +67,8 @@ lv:
     draft_page_message:
       not_live: Šī lapa NAV publiskai apskatei.
     footer:
-      copyright: Visas tiesības paturētas &copy;
+      copyright: Visas tiesības paturētas © %{year} %{site_name}
+    no_script:
+      enable_javascript: Lai lapa pilnībā funkcionalētu ir nepieciešams iespējot JavaScript.
+      here_are: Šeit ir
+      instructions_enable_javascript: instrukcija kā iespējot JavaScript jūsu pārlūkprogrammā

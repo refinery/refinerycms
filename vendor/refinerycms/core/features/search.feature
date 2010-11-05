@@ -1,4 +1,4 @@
-@search
+@refinerycms @search
 Feature: Search
   In order find content more quickly
   As an administrator
