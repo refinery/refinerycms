@@ -25,7 +25,8 @@
       <div id='your_page_content' class='clearfix'>
         <div id='pages_list'>
           <ul class="link_list">
-            <%= render :partial => "page_link", :collection => @pages, :locals => {:child => false} %>
+            <%= render :partial => "page_link", :collection => @pages,
+                       :locals => {:child => 0} %>
           </ul>
           <%= will_paginate @pages,
                             :param_name => :page,
@@ -40,8 +41,6 @@
       <div id='web_address_content'>
         <label for='web_address_text'><%= t('.web_address.location') %></label>
         <%= text_field :web_address, :text, :value => @web_address_text, :style => "width: 70%" %>
-        <img id='web_address_test_loader' src='/images/refinery/ajax-loader.gif' alt='Testing...' style='display: none;'/>
-        <span id='web_address_test_result'></span>
 
         <label><%=t('.web_address.new_window') %></label>
         <input type='checkbox' name='web_address_target_blank' id='web_address_target_blank' <%= "checked='checked'" if @web_address_target_blank %> />
@@ -79,13 +78,13 @@
         </p>
         <ol style='margin-top: 3px'>
           <li>
-            <%= t('.email_address.step1').html_safe %>
+            <%= t('.email_address.step1_html') %>
           </li>
           <li>
-            <%= t('.email_address.step2').html_safe %>
+            <%= t('.email_address.step2_html') %>
           </li>
           <li>
-            <%= t('.email_address.step3').html_safe %>
+            <%= t('.email_address.step3_html') %>
           </li>
         </ol>
       </div>
@@ -95,7 +94,7 @@
         <ul class="link_list">
           <% @resources.each do |resource| -%>
             <% resource_linked = (resource.url == params[:current_link]) unless params[:current_link].blank? %>
-            <li<%= " class='linked'" if @resource_linked %>>
+            <li<%= " class='linked'" if resource_linked %>>
               <%= link_to "#{resource.title}.#{resource.ext}", resource.url,
                           :title => t('.your_resource.link_to_this_resource'),
                           :rel => resource.title,
@@ -124,11 +123,16 @@
              } %>
 </div>
 
-<% content_for :head do %>
-<script type='text/javascript'>
-  $(document).ready(function(){
-    link_dialog.init('<%= test_url_admin_pages_dialogs_url %>',
-                     '<%= test_email_admin_pages_dialogs_url %>');
-  });
-</script>
+<% content_for :javascripts do %>
+  <script>
+    $(document).ready(function(){
+      link_tester.init('<%= test_url_admin_pages_dialogs_url %>',
+                       '<%= test_email_admin_pages_dialogs_url %>');
+      link_dialog.init();
+
+      $('.link_list a').click(function(e){
+        e.preventDefault();
+      });
+    });
+  </script>
 <% end %>

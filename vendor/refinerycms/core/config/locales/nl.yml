@@ -62,4 +62,4 @@ nl:
     draft_page_message:
       not_live: Deze pagina is NIET beschikbaar voor het publiek
     footer:
-      copyright: Copyright &copy;
+      copyright: Copyright © %{year} %{site_name}

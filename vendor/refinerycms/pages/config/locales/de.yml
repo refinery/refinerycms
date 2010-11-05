@@ -24,9 +24,9 @@ de:
           subject_line_optional: Optionaler Betreff
           body_optional: Optionaler Inhaltstext
           not_sure: Nicht sicher, was in Felder oben rein soll?
-          step1: Schreiben oder kopieren Sie die E-Mail-Adresse (z.B. aus Ihrem Adressbuch), die verlinkt werden soll, in das obrige Feld <strong>E-Mail-Adresse</strong>.
-          step2: Verwenden Sie das Feld '<strong>Optionaler Betreff</strong>', wenn der Betreff schon <strong>vorher mit einer Zeile verfasst</strong> werden soll.
-          step3: Verwenden Sie das Feld '<strong>Optionaler Inhaltstext</strong>', wenn die E-Mail bereits <strong>mit einem Text verfasst</strong> werden soll.
+          step1_html: Schreiben oder kopieren Sie die E-Mail-Adresse (z.B. aus Ihrem Adressbuch), die verlinkt werden soll, in das obrige Feld <strong>E-Mail-Adresse</strong>.
+          step2_html: Verwenden Sie das Feld '<strong>Optionaler Betreff</strong>', wenn der Betreff schon <strong>vorher mit einer Zeile verfasst</strong> werden soll.
+          step3_html: Verwenden Sie das Feld '<strong>Optionaler Inhaltstext</strong>', wenn die E-Mail bereits <strong>mit einem Text verfasst</strong> werden soll.
         your_resource:
           tab_name: Ihre Datei
           link_to_this_resource: Link zu dieser Datei
@@ -34,7 +34,7 @@ de:
       delete: Diese Seite dauerhaft entfernen
       edit: Diese Seite bearbeiten
       page:
-        view_live: Diese Seite live betrachten <br/><em>(öffnet sich in einem neuen Fenster)</em>
+        view_live_html: Diese Seite live betrachten <br/><em>(öffnet sich in einem neuen Fenster)</em>
         hidden: Versteckt
         draft: Entwurf
       form_new_page_parts:

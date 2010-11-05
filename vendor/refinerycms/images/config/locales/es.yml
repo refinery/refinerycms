@@ -24,7 +24,7 @@ es:
           list: lista
           grid: cuadrícula
       grid_view:
-        view_live: Ver imagen <br/><em>Abre en ventana nueva</em>
+        view_live_html: Ver imagen <br/><em>Abre en ventana nueva</em>
       existing_image:
         button_text: Insertar
         resize_image: ¿Redimensionar la imagen?

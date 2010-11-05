@@ -1,12 +1,7 @@
 class UsersController < ApplicationController
 
   # Protect these actions behind an admin login
-  before_filter :redirect?, :only => [:new, :create, :index]
-  before_filter :find_user, :only => [:suspend, :unsuspend, :destroy, :purge]
-
-  # authlogic default
-  #before_filter :require_no_user, :only => [:new, :create]
-  #before_filter :require_user, :only => [:show, :edit, :update]
+  before_filter :redirect?, :only => [:new, :create]
 
   layout 'login'
 
@@ -48,7 +43,7 @@ class UsersController < ApplicationController
 
       site_name_setting = RefinerySetting.find_or_create_by_name('site_name', :value => "Company Name")
       if site_name_setting.value.to_s =~ /^(|Company\ Name)$/ or Role[:refinery].users.count == 1
-        flash[:message] << "<p>#{t('users.setup_website_name',
+        flash[:message] << "<p>#{t('users.setup_website_name_html',
                                    :link => edit_admin_refinery_setting_url(site_name_setting, :dialog => true),
                                    :title => t('admin.refinery_settings.edit'))}</p>".html_safe
       end
@@ -71,7 +66,7 @@ class UsersController < ApplicationController
         flash.now[:error] = if (email = params[:user][:email]).blank?
           t('users.forgot.blank_email')
         else
-          t('users.forgot.email_not_associated_with_account', :email => email).html_safe
+          t('users.forgot.email_not_associated_with_account_html', :email => email).html_safe
         end
       end
     end
@@ -105,7 +100,7 @@ protected
     if refinery_user?
       redirect_to admin_users_url
     elsif refinery_users_exist?
-      redirect_to root_url
+      redirect_to login_url
     end
   end
 

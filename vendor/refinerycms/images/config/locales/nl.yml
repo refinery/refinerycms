@@ -24,7 +24,7 @@ nl:
           list: lijst
           grid: tabel
       grid_view:
-        view_live: Bekijk deze afbeelding <br/><em>(opent een nieuw venster)</em>
+        view_live_html: Bekijk deze afbeelding <br/><em>(opent een nieuw venster)</em>
       existing_image:
         button_text: Invoegen
         resize_image: Schaal de afbeelding

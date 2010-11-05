@@ -22,4 +22,10 @@ Refinery::Application.configure do
 
   # Print deprecation notices to the Rails logger
   config.active_support.deprecation = :log
+
+  # Only use best-standards-support built into browsers
+  config.action_dispatch.best_standards_support = :builtin
 end
+
+# Don't handle some exceptions with the 404 page.
+Refinery.rescue_not_found = false

@@ -22,15 +22,15 @@ zh-CN:
           subject_line_optional: Optional subject
           body_optional: Optional body
           not_sure: Not sure what to put in the boxes above?
-          step1: Write or copy and paste (e.g. from your address book) the email address to link to into the '<strong>Email Address</strong>' box above.
-          step2: Use the '<strong>Subject Line</strong>' box above if you want the message to be composed with a <strong>pre-written subject line</strong>.
-          step3: Use the <strong>Email Body</strong> box above if you want the message to be composed with a <strong>pre-written message</strong>.
+          step1_html: Write or copy and paste (e.g. from your address book) the email address to link to into the '<strong>Email Address</strong>' box above.
+          step2_html: Use the '<strong>Subject Line</strong>' box above if you want the message to be composed with a <strong>pre-written subject line</strong>.
+          step3_html: Use the <strong>Email Body</strong> box above if you want the message to be composed with a <strong>pre-written message</strong>.
         your_resource:
           tab_name: Your file
           link_to_this_resource: Link to this file
     pages:
       page:
-        view_live: View this page live <br/><em>(opens in a new window)</em>
+        view_live_html: View this page live <br/><em>(opens in a new window)</em>
         hidden: hidden
         draft: draft
       form_new_page_parts:
@@ -66,7 +66,7 @@ zh-CN:
         meta_description_title: Meta description
         meta_description_help: Enter a concise two or three sentences describing what this page is about.
       index:
-        create_new_page: ´´½¨ÐÂÒ³Ãæ
+        create_new_page: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò³ï¿½ï¿½
         reorder_pages: Reorder Pages
         reorder_pages_done: Done Reordering Pages
         no_pages_yet: There are no pages yet. Click "Add New Page" to add your first page.

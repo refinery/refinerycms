@@ -7,5 +7,5 @@ describe RefinerySetting do
     @actual = RefinerySetting.find_or_set(:creating_from_scratch, 'I am a setting that should be found', :scoping => 'pages')
     assert_equal @expected, @actual
   end
-  
+
 end

@@ -1,0 +1,22 @@
+ul.collapsible_menu li {
+  position: relative;
+}
+ul.collapsible_menu li span.arrow {
+  background-repeat: no-repeat;
+  position: absolute;
+  right: 10px;
+  top: 13px;
+  width: 11px;
+  height: 7px;
+  cursor: pointer;
+}
+ul.collapsible_menu li span.arrow {
+  background-image: url('/images/refinery/icons/up.gif');
+}
+ul.collapsible_menu li.closed span.arrow {
+  background-image: url('/images/refinery/icons/down.gif');
+}
+ul.collapsible_menu > div {
+  width: 93%;
+  margin: 0px auto;
+}

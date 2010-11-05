@@ -34,7 +34,7 @@ class Resource < ActiveRecord::Base
   # Returns a titleized version of the filename
   # my_file.pdf returns My File
   def title
-    CGI::unescape(self.file_name).gsub(/\.\w+$/, '').titleize
+    CGI::unescape(self.file_name.to_s).gsub(/\.\w+$/, '').titleize
   end
 
 end

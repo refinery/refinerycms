@@ -5,17 +5,19 @@ it:
   admin:
     dashboard:
       index:
-        quick_tasks: Attivit&agrave; comuni
+        quick_tasks: Attività comuni
         add_a_new_page: Aggiungere una nuova pagina
         update_a_page: Aggiornamento di una pagina
         upload_a_image: Carica un immagine
+        upload_a_file: Carica un file
         change_language: Cambia lingua
         see_home_page: Vedi pagina iniziale
       recent_activity:
-        latest_activity: Ultime attivit&agrave;
+        latest_activity: Ultime attività
+        latest_activity_message: %{what} %{kind} è stato %{action}
         see: Vedere '%{what}'
       recent_inquiries:
-        latest_inquiries: Latest inquiries
+        latest_inquiries: Ultimi messaggi
   updated:
     'with_article "the"':  aggiornato
   created:

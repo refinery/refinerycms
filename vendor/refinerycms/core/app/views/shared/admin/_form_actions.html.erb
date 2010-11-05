@@ -16,7 +16,7 @@
     end
     cancel_button_id    ||= "cancel_button"
 
-    cancel_url          ||= (((back = url_for(:back)).include?('javascript') or action_name =~ /^(create|update)$/) ? send("admin_#{f.object.class.name.pluralize.underscore}_url") : back)
+    cancel_url          ||= (((back = url_for(:back)).include?('javascript') or action_name =~ /^(create|update)$/) ? send("admin_#{f.object_name.to_s.pluralize}_url") : back)
   end
 
   continue_editing = defined?(continue_editing) ? continue_editing : (f.object.present? and !f.object.new_record?)
@@ -32,7 +32,7 @@
     delete_title        ||= nil
     delete_confirmation ||= nil
     delete_button_id    ||= "delete_button"
-    delete_url          ||= eval("admin_#{f.object.class.name.underscore}_url(#{f.object.id})")
+    delete_url          ||= eval("admin_#{f.object_name}_url(#{f.object.id})")
   end
 -%>
 <input type='hidden' name='modal' value='<%= from_dialog? %>' />
@@ -59,8 +59,8 @@
                 delete_url,
                 :title => delete_title,
                 :id => delete_button_id,
-                :'data-method' => :delete,
-                :'data-confirm' => delete_confirmation,
+                :method => :delete,
+                :confirm => delete_confirmation,
                 :class => "button confirm-delete") unless hide_delete %>
 
     <%= will_paginate paginate[:collection],
