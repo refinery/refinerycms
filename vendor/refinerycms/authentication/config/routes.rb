@@ -1,6 +1,6 @@
 Refinery::Application.routes.draw do
 
-  resource :session
+  resource :session, :only => [:new, :create, :destroy]
   match '/users/reset/:reset_code', :to => 'users#reset', :as => 'reset_users'
   resources :users, :only => [:new, :create] do
     collection do
@@ -10,15 +10,7 @@ Refinery::Application.routes.draw do
   end
 
   scope(:path => 'refinery', :as => 'admin', :module => 'admin') do
-    resources :users do
-      collection do
-        post :update_positions do
-          collection do
-            get :update_positions
-          end
-        end
-      end
-    end
+    resources :users, :except => :show
   end
 
   match '/login',  :to => 'sessions#new',     :as => 'login'

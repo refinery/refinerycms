@@ -1,3 +1,4 @@
+@refinerycms @users @users-password
 Feature: Lost Password
     In order to restore my password
     As a lost soul

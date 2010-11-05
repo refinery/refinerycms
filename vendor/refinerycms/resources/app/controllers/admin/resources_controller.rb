@@ -10,23 +10,30 @@ class Admin::ResourcesController < Admin::BaseController
   end
 
   def create
-    @resource = Resource.create(params[:resource])
+    @resources = []
+    unless params[:resource].present? and params[:resource][:file].is_a?(Array)
+      @resources << (@resource = Resource.create(params[:resource]))
+    else
+      params[:resource][:file].each do |resource|
+        @resources << (@resource = Resource.create(:file => resource))
+      end
+    end
 
     unless params[:insert]
-      if @resource.valid?
-        flash[:notice] = t('refinery.crudify.created', :what => "'#{@resource.title}'")
+      if @resources.all?{|r| r.valid?}
+        flash.notice = t('refinery.crudify.created', :what => "'#{@resources.collect{|r| r.title}.join("', '")}'")
         unless from_dialog?
           redirect_to :action => 'index'
         else
-          render :text => "<script type='text/javascript'>parent.window.location = '#{admin_resources_url}';</script>"
+          render :text => "<script>parent.window.location = '#{admin_resources_url}';</script>"
         end
       else
         self.new # important for dialogs
         render :action => 'new'
       end
     else
-      if @resource.valid?
-        @resource_id = @resource.id
+      if @resources.all?{|r| r.valid?}
+        @resource_id = @resource.id unless @resource.new_record?
         @resource = nil
       end
       self.insert

@@ -11,7 +11,7 @@
                 admin_refinery_setting_path(refinery_setting),
                 :class => "cancel confirm-delete",
                 :title => t('admin.refinery_settings.delete'),
-                :'data-confirm' => t('shared.admin.delete.message', :title => refinery_setting.title),
-                :'data-method' => "delete" if refinery_setting.destroyable %>
+                :confirm => t('shared.admin.delete.message', :title => refinery_setting.title),
+                :method => :delete if refinery_setting.destroyable %>
   </span>
 </li>

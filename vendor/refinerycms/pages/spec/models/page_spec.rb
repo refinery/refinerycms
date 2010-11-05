@@ -26,10 +26,11 @@ describe Page do
     @page.parts.create(:title => 'body', :content => "I'm the first page part for this page.")
     @page.parts.create(:title => 'side body', :content => "Closely followed by the second page part.")
   end
-  
+
   def turn_off_marketable_urls
     RefinerySetting.set(:use_marketable_urls, {:value => false, :scoping => 'pages'})
   end
+
 
   before(:each) do
     reset_page
@@ -75,17 +76,23 @@ describe Page do
 
     it ".path() still responds to the deprecated boolean" do
       create_child
-      @child.path(false).should == 'The child page - RSpec is great for testing too'
+      capture_stdout { @child.path(false).should == 'The child page - RSpec is great for testing too' }
     end
-    
+
+    it "prints a logger warning when the deprecated boolean is used for path()" do
+      create_child
+      log_messages = capture_stdout { @child.path(false) }
+      log_messages.should_not be_empty
+    end
+
     it "should return its url" do
       @page.link_url = '/contact'
       @page.url.should == '/contact'
-      
+
       reset_page
       @page.url[:path].should == ["rspec-is-great-for-testing-too"]
       @page.url[:id].should be_nil
-      
+
       turn_off_marketable_urls
       @page.url[:id].should == "rspec-is-great-for-testing-too"
       @page.url[:path].should be_nil

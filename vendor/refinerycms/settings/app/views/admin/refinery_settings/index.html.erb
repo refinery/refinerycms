@@ -1,8 +1,7 @@
 <div id='records'>
   <% if searching? %>
     <h2>
-      <%= t('shared.admin.search.results_for',
-           :query => params[:search]) %>
+      <%= t('shared.admin.search.results_for', :query => params[:search]) %>
     </h2>
   <% end %>
   <% if @refinery_settings.any? %>
@@ -44,12 +43,12 @@
     </li>
   </ul>
 </div>
-<% content_for :head do %>
-  <script type='text/javascript'>
+<% content_for :javascripts do %>
+  <script>
     $(document).ready(function() {
       $('#records ul li .actions a[href*=edit]').each(function(i, li) {
         $(li).attr('name', $(li).attr('tooltip'));
       });
     });
   </script>
-<% end %>
+<% end -%>

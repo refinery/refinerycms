@@ -79,8 +79,8 @@
              } %>
 <% end %>
 
-<% content_for :head do %>
-  <script type='text/javascript'>
+<% content_for :javascripts do %>
+  <script>
     $(document).ready(function() {
       $('#user_plugins_enable_all').click(function(e, a) {
         $('div.field.plugin_access ul#plugins li input:checkbox').attr('checked', true);

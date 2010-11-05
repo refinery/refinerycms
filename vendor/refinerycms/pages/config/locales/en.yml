@@ -24,9 +24,9 @@ en:
           subject_line_optional: Optional subject
           body_optional: Optional body
           not_sure: Not sure what to put in the boxes above?
-          step1: Write or copy and paste (e.g. from your address book) the email address to link to into the '<strong>Email Address</strong>' box above.
-          step2: Use the '<strong>Subject Line</strong>' box above if you want the message to be composed with a <strong>pre-written subject line</strong>.
-          step3: Use the <strong>Email Body</strong> box above if you want the message to be composed with a <strong>pre-written message</strong>.
+          step1_html: Write or copy and paste (e.g. from your address book) the email address to link to into the '<strong>Email Address</strong>' box above.
+          step2_html: Use the '<strong>Subject Line</strong>' box above if you want the message to be composed with a <strong>pre-written subject line</strong>.
+          step3_html: Use the <strong>Email Body</strong> box above if you want the message to be composed with a <strong>pre-written message</strong>.
         your_resource:
           tab_name: Your file
           link_to_this_resource: Link to this file
@@ -34,7 +34,7 @@ en:
       delete: Remove this page forever
       edit: Edit this page
       page:
-        view_live: View this page live <br/><em>(opens in a new window)</em>
+        view_live_html: View this page live <br/><em>(opens in a new window)</em>
         hidden: hidden
         draft: draft
       form_new_page_parts:

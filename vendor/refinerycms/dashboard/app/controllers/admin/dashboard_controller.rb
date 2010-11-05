@@ -6,7 +6,7 @@ class Admin::DashboardController < Admin::BaseController
     Refinery::Plugins.active.each do |plugin|
       begin
         plugin.activity.each do |activity|
-          @recent_activity += activity.class.find(:all,
+          @recent_activity << activity.class.find(:all,
             :conditions => activity.conditions,
             :order => activity.order,
             :limit => activity.limit
@@ -19,7 +19,7 @@ class Admin::DashboardController < Admin::BaseController
       end
     end
 
-    @recent_activity = @recent_activity.compact.sort { |x,y|
+    @recent_activity = @recent_activity.flatten.compact.sort { |x,y|
       y.updated_at <=> x.updated_at
     }.first(activity_show_limit=RefinerySetting.find_or_set(:activity_show_limit, 7))
 

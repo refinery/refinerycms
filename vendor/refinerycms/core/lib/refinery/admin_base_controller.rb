@@ -2,7 +2,7 @@ class Refinery::AdminBaseController < ApplicationController
 
   layout :layout?
 
-  before_filter :correct_accept_header, :login_required, :restrict_plugins, :restrict_controller
+  before_filter :login_required, :restrict_plugins, :restrict_controller
   after_filter :store_location?, :except => [:new, :create, :edit, :update, :destroy, :update_positions] # for redirect_back_or_default
 
   helper_method :searching?
@@ -21,14 +21,18 @@ class Refinery::AdminBaseController < ApplicationController
       # change any links in the copy to the admin_root_url
       # and any references to "home page" to "Dashboard"
       part_symbol = Page.default_parts.first.to_sym
-      @page[part_symbol] = @page[part_symbol].gsub(
+      @page[part_symbol] = @page[part_symbol].to_s.gsub(
                             /href=(\'|\")\/(\'|\")/, "href='#{admin_root_url(:only_path => true)}'"
                            ).gsub("home page", "Dashboard")
 
-      render :template => "/pages/show", :status => 404, :layout => layout?
+      render :template => "/pages/show",
+             :layout => layout?,
+             :status => 404
     else
       # fallback to the default 404.html page.
-      render :file => Rails.root.join("public", "404.html").cleanpath.to_s, :layout => false, :status => 404
+      render :file => Rails.root.join("public", "404.html").cleanpath.to_s,
+             :layout => false,
+             :status => 404
     end
   end
 
@@ -72,18 +76,6 @@ protected
 private
   def layout?
     "admin#{"_dialog" if from_dialog?}"
-  end
-
-  # This fixes the issue where Internet Explorer browsers are presented with a basic auth dialogue
-  # rather than the xhtml one that they *can* accept but don't think they can.
-  def correct_accept_header
-    if request.user_agent =~ /MSIE (6|7|8)/
-      if request.accept == "*/*"
-        request.env["HTTP_ACCEPT"] = request.cookies[:http_accept] ||= "application/xml"
-      else
-        request.cookies[:http_accept] = (request.env["HTTP_ACCEPT"] = (["text/html"] | request.accept.split(', ')).join(', '))
-      end
-    end
   end
 
   # Check whether it makes sense to return the user to the last page they

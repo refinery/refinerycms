@@ -11,6 +11,25 @@
 module Refinery
   module Crud
 
+    def self.default_options(model_name)
+      singular_name = model_name.to_s
+      class_name = singular_name.camelize
+      plural_name = singular_name.pluralize
+      this_class = class_name.constantize
+
+      {
+        :title_attribute => "title",
+        :order => ('position ASC' if this_class.table_exists? and this_class.column_names.include?('position')),
+        :conditions => '',
+        :sortable => true,
+        :searchable => true,
+        :include => [],
+        :paging => true,
+        :search_conditions => '',
+        :redirect_to_url => "admin_#{plural_name}_url"
+      }
+    end
+
     def self.append_features(base)
       super
       base.extend(ClassMethods)
@@ -18,22 +37,12 @@ module Refinery
 
     module ClassMethods
 
-      def crudify(model_name, new_options = {})
+      def crudify(model_name, options = {})
+        options = ::Refinery::Crud.default_options(model_name).merge(options)
+
         singular_name = model_name.to_s
         class_name = singular_name.camelize
         plural_name = singular_name.pluralize
-
-        options = {
-          :title_attribute => "title",
-          :order => ('position ASC' if class_name.constantize.column_names.include?('position')),
-          :conditions => '',
-          :sortable => true,
-          :searchable => true,
-          :include => [],
-          :paging => true,
-          :search_conditions => '',
-          :redirect_to_url => "admin_#{plural_name}_url"
-        }.merge!(new_options)
 
         module_eval %(
           prepend_before_filter :find_#{singular_name},
@@ -68,7 +77,7 @@ module Refinery
                   end
                 end
               else
-                render :text => "<script type='text/javascript'>parent.window.location = '\#{#{options[:redirect_to_url]}}';</script>"
+                render :text => "<script>parent.window.location = '\#{#{options[:redirect_to_url]}}';</script>"
               end
             else
               unless request.xhr?
@@ -105,7 +114,7 @@ module Refinery
                   end
                 end
               else
-                render :text => "<script type='text/javascript'>parent.window.location = '\#{#{options[:redirect_to_url]}}';</script>"
+                render :text => "<script>parent.window.location = '\#{#{options[:redirect_to_url]}}';</script>"
               end
             else
               unless request.xhr?
@@ -230,10 +239,14 @@ module Refinery
                 moved_item_id = hash['id'].split(/#{singular_name}\\_?/)
                 @current_#{singular_name} = #{class_name}.find_by_id(moved_item_id)
 
-                if previous.present?
-                  @current_#{singular_name}.move_to_right_of(#{class_name}.find_by_id(previous))
+                if @current_#{singular_name}.respond_to?(:move_to_root)
+                  if previous.present?
+                    @current_#{singular_name}.move_to_right_of(#{class_name}.find_by_id(previous))
+                  else
+                    @current_#{singular_name}.move_to_root
+                  end
                 else
-                  @current_#{singular_name}.move_to_root
+                  @current_#{singular_name}.update_attribute(:position, index)
                 end
 
                 if hash['children'].present?
@@ -243,7 +256,7 @@ module Refinery
                 previous = moved_item_id
               end
 
-              #{class_name}.rebuild!
+              #{class_name}.rebuild! if #{class_name}.respond_to?(:rebuild!)
               render :nothing => true
             end
 

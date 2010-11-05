@@ -35,10 +35,12 @@ class Admin::ImagesController < Admin::BaseController
       extra_condition[1] = true if extra_condition[1] == "true"
       extra_condition[1] = false if extra_condition[1] == "false"
       extra_condition[1] = nil if extra_condition[1] == "nil"
-      paginate_images({extra_condition[0].to_sym => extra_condition[1]})
-    else
-      paginate_images
     end
+
+    find_all_images(({extra_condition[0].to_sym => extra_condition[1]} if extra_condition.present?))
+    search_all_images if searching?
+
+    paginate_images
 
     render :action => "insert"
   end
@@ -48,7 +50,8 @@ class Admin::ImagesController < Admin::BaseController
     find_image
     if params[:size].present?
       begin
-        thumbnail = @image.thumbnail(params[:size])
+        size = params[:size].gsub('gt', '>').gsub('hash', '#')
+        thumbnail = @image.thumbnail(size)
         render :json => { :error => false, :url => thumbnail.url, :width => thumbnail.width, :height => thumbnail.height }
       rescue RuntimeError
         render :json => { :error => true }
@@ -59,28 +62,35 @@ class Admin::ImagesController < Admin::BaseController
   end
 
   def create
+    @images = []
     begin
-      @image = Image.create(params[:image])
+      unless params[:image].present? and params[:image][:image].is_a?(Array)
+        @images << (@image = Image.create(params[:image]))
+      else
+        params[:image][:image].each do |image|
+          @images << (@image = Image.create(:image => image))
+        end
+      end
     rescue Dragonfly::FunctionManager::UnableToHandle
       logger.warn($!.message)
       @image = Image.new
     end
 
     unless params[:insert]
-      if @image.valid?
-        flash.notice = t('refinery.crudify.created', :what => "'#{@image.title}'")
+      if @images.all?{|i| i.valid?}
+        flash.notice = t('refinery.crudify.created', :what => "'#{@images.collect{|i| i.title}.join("', '")}'")
         unless from_dialog?
           redirect_to :action => 'index'
         else
-          render :text => "<script type='text/javascript'>parent.window.location = '#{admin_images_url}';</script>"
+          render :text => "<script>parent.window.location = '#{admin_images_url}';</script>"
         end
       else
         self.new # important for dialogs
         render :action => 'new'
       end
     else
-      if @image.valid?
-        @image_id = @image.id
+      if @images.all?{|i| i.valid?}
+        @image_id = @image.id unless @image.new_record?
         @image = nil
       end
       self.insert
@@ -98,11 +108,9 @@ protected
     @conditions = params[:conditions]
   end
 
-  def paginate_images(conditions={})
-    @images = Image.paginate :page => (@paginate_page_number ||= params[:page]),
-                             :conditions => conditions,
-                             :order => 'created_at DESC',
-                             :per_page => Image.per_page(from_dialog?, !@app_dialog)
+  def paginate_images
+    @images = @images.paginate(:page => (@paginate_page_number ||= params[:page]),
+                               :per_page => Image.per_page(from_dialog?, !@app_dialog))
   end
 
   def restrict_controller

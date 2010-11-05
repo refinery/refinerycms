@@ -106,7 +106,7 @@ class RefinerySetting < ActiveRecord::Base
     alias :[] :get
 
     def set(name, value)
-      scoping = (value.is_a?(Hash) and value.has_key?(:scoping)) ? value[:scoping] : nil
+      scoping = (value[:scoping] if value.is_a?(Hash) and value.has_key?(:scoping))
       setting = find_or_initialize_by_name_and_scoping(:name => name.to_s, :scoping => scoping)
 
       # you could also pass in {:value => 'something', :scoping => 'somewhere'}
@@ -161,7 +161,7 @@ class RefinerySetting < ActiveRecord::Base
 
   def value=(new_value)
     # must convert to string if true or false supplied otherwise it becomes 0 or 1, unfortunately.
-    if %w(trueclass falseclass).include?(new_value.class.to_s.downcase)
+    if [true, false].include?(new_value)
       new_value = new_value.to_s
     end
 
