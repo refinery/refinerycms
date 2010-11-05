@@ -1137,7 +1137,8 @@ a#toggle_advanced_options:hover {
 body.dialog #content .search_form {
   float: right;
   width: auto !important;
-  min-width: 270px;
+  min-width: 300px;
+  margin-bottom: 0px;
 }
 #existing_image_area {
   padding-top:6px;
