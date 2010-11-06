@@ -15,7 +15,8 @@ module RefinerySettingsHelper
     case form_value_type
     when 'check_box'
       raw "#{f.check_box :value, :value => @refinery_setting.form_value}
-           #{f.label :value, help.presence || t('.enabled'), :class => 'stripped'}"
+           #{f.label :value, help.presence || t('admin.refinery_settings.form.enabled'), 
+                     :class => 'stripped'}"
     else
       f.text_area :value, :value => @refinery_setting.form_value,
                   :class => 'widest', :rows => 5
