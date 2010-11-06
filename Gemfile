@@ -5,6 +5,8 @@ gem 'rails',                    '~> 3.0.1'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
+java = nil unless java.present?
+
 if (java = RUBY_PLATFORM == 'java')
   gem 'jdbc-sqlite3'
   gem 'activerecord-jdbc-adapter'
