@@ -164,6 +164,7 @@ module Refinery
       end
 
       # Add refinery gems to the Gemfile
+      puts Refinery.root
       gemfile_contents = File.read(Refinery.root.join('Gemfile'))
       refinery_gems = gemfile_contents.match(/# REFINERY CMS =+.*# END REFINERY CMS =+/m)[0]
       File.open(@app_path.join('Gemfile'), "a") do |f|
