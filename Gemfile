@@ -38,7 +38,7 @@ end
 
 # REFINERY CMS ================================================================
 
-java = nil unless defined? java
+java = (RUBY_PLATFORM == 'java')
 
 # Specify the Refinery CMS core:
 gem 'refinerycms',              :path => '.'
