@@ -7,8 +7,8 @@
     </span>
   <% end %>
   <% if user_can_modify_images %>
-    <span id="upload_image_radio" class="radio<%= " selected_radio" unless no_errors or !any_images %>">
-      <input type='radio' name='image_type' value='upload_image' id='image_type_upload'<%= " checked='true'" if !any_images or !no_errors and !searching? %> />
+    <span id="upload_image_radio" class="radio<%= " selected_radio" if !no_errors and !any_images %>">
+      <input type='radio' name='image_type' value='upload_image' id='image_type_upload'<%= " checked='true'" if (!any_images or !no_errors) and !searching? %> />
       <label for='image_type_upload' class='stripped'><%= t('.new_image') %></label>
     </span>
   <% end %>
@@ -19,7 +19,7 @@
     <%= render :partial => "existing_image" if any_images or searching? %>
 
     <% if user_can_modify_images %>
-      <div id='upload_image_area' class='dialog_area'<%= " style='display:none;'" if any_images and no_errors or searching? %>>
+      <div id='upload_image_area' class='dialog_area'<%= " style='display:none;'" if any_images and (no_errors or searching?) %>>
         <%= render :partial => "form", :locals => {:insert => true} %>
       </div>
     <% end %>
