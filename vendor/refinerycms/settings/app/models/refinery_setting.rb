@@ -117,7 +117,7 @@ class RefinerySetting < ActiveRecord::Base
         setting.scoping = value[:scoping] if value.has_key?(:scoping)
         setting.callback_proc_as_string = value[:callback_proc_as_string] if value.has_key?(:callback_proc_as_string)
         setting.destroyable = value[:destroyable] if value.has_key?(:destroyable)
-        setting.form_value_type = value[:form_type] || 'text_field'
+        setting.form_value_type = value[:form_type] || 'text_field' if setting.respond_to?(:form_value_type)
       end
 
       # Save because we're in a setter method.
