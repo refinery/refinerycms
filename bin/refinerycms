@@ -164,11 +164,10 @@ module Refinery
       end
 
       # Add refinery gems to the Gemfile
-      puts Refinery.root
-      gemfile_contents = File.read(Refinery.root.join('Gemfile'))
+      gemfile_contents = Refinery.root.join('Gemfile').read
       refinery_gems = gemfile_contents.match(/# REFINERY CMS =+.*# END REFINERY CMS =+/m)[0]
-      File.open(@app_path.join('Gemfile'), "a") do |f|
-        f.write "\n" + refinery_gems + "\n\n# USER DEFINED\n" + @options[:gems].join("\n") + "\n# END USER DEFINED"
+      @app_path.join('Gemfile').open('a') do |f|
+        f.write "\n#{refinery_gems}\n\n# USER DEFINED\n#{@options[:gems].join("\n")}\n# END USER DEFINED"
       end
 
       # Change from development to production
