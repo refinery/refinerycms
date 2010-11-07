@@ -1,41 +1,63 @@
 <%
-  show_empty_sections ||= false
-  remove_automatic_sections ||= false
-  hide_sections ||= []
-
-  sections = [
-    {:yield => :body_content_title, :fallback => page_title, :id => 'body_content_page_title', :title => true},
-    {:yield => :body_content_left, :fallback => (@page[Page.default_parts.first.to_sym] if @page.present?)},
-    {:yield => :body_content_right, :fallback => (@page[Page.default_parts.second.to_sym] if @page.present? and Page.default_parts.many?)}
-  ].reject {|section| hide_sections.include?(section[:yield]) }
-
+  # provide a default array for collecting CSS for sections
   css = []
+  
+  # if 'sections' is passed in as a local_assigns, all of this is ignored.
+  if local_assigns[:sections].blank?
+    # always have a title
+    sections = [{:yield => :body_content_title, :fallback => page_title, :title => true}]
+  
+    # append sections from this page.
+    @page.parts.inject(sections) do |s, part| 
+      # we have some default yields, body_content_left and body_content_right
+      # these map to 'body' and 'side_body' fields in default Refinery.
+      section = {:fallback => part.body}
+      section[:yield] = case (title_symbol = part.title.to_s.gsub(/\ /, '').underscore.to_sym)
+        when :body then :body_content_left
+        when :side_body then :body_content_right
+        else title_symbol
+        end
+      
+      # add section to the list unless we were specifically requested not to.
+      # otherwise, add css saying it's been removed.
+      unless (local_assigns[:hide_sections]||=[]).include?(section[:yield])
+        s << section
+      else
+        css << "no_#{section[:yield]}"
+      end
+    end unless @page.nil? or @page.parts.blank?
+    
+    # Ensure that even without @page.parts we still have body_content_left and body_content_right
+    all_yields = sections.collect{|s| s[:yield]}
+    sections << {:yield => :body_content_left} unless all_yields.include?(:body_content_left)
+    sections << {:yield => :body_content_right} unless all_yields.include?(:body_content_right)
+  end
+  
+  # you can add more sections to the list using something like this:
+  # sections |= [{:yield => :something_else, :fallback => another_method, :id => 'something'}]
+    
   sections.each do |section|
-    dom_id = (section[:id] ||= section[:yield].to_s)
-    section[:html] = (yield(section[:yield]))
+    section[:html] = yield(section[:yield]) if section[:yield].present?
 
-    if section[:html].blank? and
-       !show_empty_sections and
-       !remove_automatic_sections and
-       section.keys.include?(:fallback) and
+    if section[:html].blank? and !local_assigns[:show_empty_sections] and
+       !local_assigns[:remove_automatic_sections] and section.keys.include?(:fallback) and
        section[:fallback].present?
-      section[:html] = section[:fallback].to_s.html_safe
+      section[:html] = raw(section[:fallback])
     end
 
-    unless section[:html].blank?
-      unless section[:title]
-        section[:html] = "<section id='#{dom_id}'>#{section[:html]}</section>"
-      else
+    dom_id = section[:id] || section[:yield]
+    if section[:html].present?
+      if section[:title]
         section[:html] = "<h1 id='#{dom_id}'>#{section[:html]}</h1>"
+      else  
+        section[:html] = "<section id='#{dom_id}'>#{section[:html]}</section>"
       end
     else
       css << "no_#{dom_id}"
     end
   end
 -%>
-<section id='body_content'<%= " class='#{css.join(' ')}'" if css.any? %>>
-  <% sections.each do |s| %>
-    <%= s[:html].to_s.html_safe %>
-  <% end %>
+<section id='body_content'<%= " class='#{css.join(' ')}'" if css.present? %>>
+  <%= raw sections.map{|section| section[:html]}.join("\n") -%>
 </section>
 <%= render :partial => '/shared/draft_page_message' unless @page.nil? or @page.live? -%>
