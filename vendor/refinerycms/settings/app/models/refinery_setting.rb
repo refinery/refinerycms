@@ -75,19 +75,19 @@ class RefinerySetting < ActiveRecord::Base
     end
 
     def cache_key
-      "#{Refinery.base_cache_key}_refinery_settings_cache"
+      [Refinery.base_cache_key, 'refinery_settings_cache'].join('_')
     end
 
     # find_or_set offers a convenient way to
     def find_or_set(name, the_value, options={})
-      options = {:scoping => nil, :restricted => false, :callback_proc_as_string => nil, :form_type => 'text_area'}.merge(options)
-      # Try to get the value from cache first.
-      scoping = options[:scoping]
-      restricted = options[:restricted]
-      callback_proc_as_string = options[:callback_proc_as_string]
+      # Merge default options with supplied options.
+      options = {
+        :scoping => nil, :restricted => false, 
+        :callback_proc_as_string => nil, :form_type => 'text_area'
+      }.merge(options)
 
       # try to find the setting first
-      value = cache_read(name, scoping)
+      value = get(name, :scoping => options[:scoping])
 
       # if the setting's value is nil, store a new one using the existing functionality.
       value = set(name, options.merge({:value => the_value})) if value.nil?
@@ -99,8 +99,9 @@ class RefinerySetting < ActiveRecord::Base
     alias :get_or_set :find_or_set
 
     # Retrieve the current value for the setting whose name is supplied.
-    def get(name)
-      cache_read(name)
+    def get(name, options = {})
+      options = {:scoping => nil}.update(options)
+      cache_read(name, options[:scoping])
     end
 
     alias :[] :get
