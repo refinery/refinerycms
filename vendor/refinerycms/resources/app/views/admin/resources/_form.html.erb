@@ -15,7 +15,7 @@
       <%= f.file_field :file %>
     <% else %>
       <% # we must only hint at multiple when it's a *new* record otherwise update fails. %>
-      <%= f.file_field :file, :multiple => (true if @resource.new_record?) %>
+      <%= f.file_field :file, :multiple => (true unless @resource.persisted?) %>
     <% end %>
   </div>
 
@@ -32,7 +32,7 @@
                :hide_cancel => (@app_dialog or action_name == "insert" or from_dialog?),
                :delete_title => t('admin.resources.delete'),
                :delete_confirmation => (t('shared.admin.delete.message',
-                                        :title => @resource.title) unless @resource.new_record?)
+                                        :title => @resource.title) if @resource.persisted?)
              } %>
 
   <% if @app_dialog -%>

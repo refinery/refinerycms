@@ -33,7 +33,7 @@ class Admin::ResourcesController < Admin::BaseController
       end
     else
       if @resources.all?{|r| r.valid?}
-        @resource_id = @resource.id unless @resource.new_record?
+        @resource_id = @resource.id if @resource.persisted?
         @resource = nil
       end
       self.insert

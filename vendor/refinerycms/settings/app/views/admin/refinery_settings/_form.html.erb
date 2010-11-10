@@ -16,7 +16,7 @@
     </label>
     <span class="preview">- (<%= @refinery_setting.name %>)</span>
   <% end %>
-  <% if current_user.has_role?(:superuser) and @refinery_setting.new_record? %>
+  <% if current_user.has_role?(:superuser) and !@refinery_setting.persisted? %>
     <div class='field'>
       <%= f.label :form_value_type %>
       <%= f.select :form_value_type, RefinerySetting::FORM_VALUE_TYPES -%>
@@ -50,7 +50,7 @@
                :delete_title => t('admin.refinery_settings.delete'),
                :delete_confirmation => t('shared.admin.delete.message',
                                          :title => @refinery_setting.name.to_s.titleize),
-               :hide_delete => (@refinery_setting.new_record? or !@refinery_setting.destroyable or from_dialog?)
+               :hide_delete => (!@refinery_setting.persisted? or !@refinery_setting.destroyable or from_dialog?)
               } %>
 <% end -%>
 <% content_for :javascripts do %>

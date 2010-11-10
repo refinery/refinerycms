@@ -90,7 +90,7 @@ class Admin::ImagesController < Admin::BaseController
       end
     else
       if @images.all?{|i| i.valid?}
-        @image_id = @image.id unless @image.new_record?
+        @image_id = @image.id if @image.persisted?
         @image = nil
       end
       self.insert
