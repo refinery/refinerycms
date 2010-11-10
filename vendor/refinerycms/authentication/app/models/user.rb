@@ -38,7 +38,7 @@ class User < ActiveRecord::Base
   has_friendly_id :login, :use_slug => true
 
   def plugins=(plugin_names)
-    unless self.new_record? # don't add plugins when the user_id is nil.
+    if self.persisted? # don't add plugins when the user_id is nil.
       self.plugins.delete_all
 
       plugin_names.each_with_index do |plugin_name, index|
@@ -52,7 +52,7 @@ class User < ActiveRecord::Base
   end
 
   def can_delete?(user_to_delete = self)
-    !user_to_delete.new_record? and
+    user_to_delete.persisted? and
       !user_to_delete.has_role?(:superuser) and
       Role[:refinery].users.count > 1 and
       self.id != user_to_delete.id

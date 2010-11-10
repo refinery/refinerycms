@@ -19,11 +19,11 @@
     cancel_url          ||= (((back = url_for(:back)).include?('javascript') or action_name =~ /^(create|update)$/) ? send("admin_#{f.object_name.to_s.pluralize}_url") : back)
   end
 
-  continue_editing = defined?(continue_editing) ? continue_editing : (f.object.present? and !f.object.new_record?)
+  continue_editing = defined?(continue_editing) ? continue_editing : (f.object.present? and f.object.persisted?)
 
   unless defined?(hide_delete).presence
     hide_delete = (from_dialog? or
-                   f.object.nil? or f.object.new_record? or
+                   f.object.nil? or (f.object.respond_to?(:persisted) ? !f.object.persisted? : f.object.new_record?) or
                    (f.object.respond_to?(:deletable?) && !f.object.deletable?))
   end
 

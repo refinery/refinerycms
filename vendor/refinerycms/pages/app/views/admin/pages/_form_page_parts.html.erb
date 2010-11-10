@@ -18,7 +18,7 @@
   <ul id='page_parts'>
     <% @page.parts.each_with_index do |part, part_index| %>
       <li class='ui-state-default<%= ' ui-state-active' if part_index == 0 %>'>
-        <%= link_to part.title, "##{@page.new_record? ? "page_part_new_#{part_index}" : part.to_param}" %>
+        <%= link_to part.title, "##{@page.persisted? ? part.to_param : "page_part_new_#{part_index}"}" %>
       </li>
     <% end %>
     <% Refinery::Pages.tabs.each_with_index do |tab, tab_index| %>
@@ -35,7 +35,7 @@
                  :locals => {
                    :part => p.object,
                    :part_index => (part_index += 1),
-                   :new_part => @page.new_record?
+                   :new_part => !@page.persisted?
                  } -%>
     <% end %>
     <% Refinery::Pages.tabs.each_with_index do |tab, tab_index| %>
