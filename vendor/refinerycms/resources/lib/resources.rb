@@ -7,7 +7,6 @@ module Refinery
     class Engine < Rails::Engine
       initializer 'resources-with-dragonfly' do |app|
         app_resources = Dragonfly[:resources]
-        app_resources.configure_with(:rmagick)
         app_resources.configure_with(:rails) do |c|
           c.datastore.root_path = Rails.root.join('public', 'system', 'resources').to_s
           c.url_path_prefix = '/system/resources'
