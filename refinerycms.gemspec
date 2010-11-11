@@ -4,7 +4,7 @@ Gem::Specification.new do |s|
   s.name              = %q{refinerycms}
   s.version           = %q{0.9.9.pre}
   s.description       = %q{A Ruby on Rails CMS that supports Rails 3. It's easy to extend and sticks to 'the Rails way' where possible.}
-  s.date              = %q{2010-11-05}
+  s.date              = %q{2010-11-12}
   s.summary           = %q{A Ruby on Rails CMS that supports Rails 3}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
@@ -844,6 +844,11 @@ Gem::Specification.new do |s|
     'vendor/refinerycms/images/lib',
     'vendor/refinerycms/images/lib/images.rb',
     'vendor/refinerycms/images/readme.md',
+    'vendor/refinerycms/images/spec',
+    'vendor/refinerycms/images/spec/models',
+    'vendor/refinerycms/images/spec/models/image_spec.rb',
+    'vendor/refinerycms/images/spec/uploads',
+    'vendor/refinerycms/images/spec/uploads/beach.jpeg',
     'vendor/refinerycms/pages',
     'vendor/refinerycms/pages/app',
     'vendor/refinerycms/pages/app/controllers',
@@ -963,6 +968,11 @@ Gem::Specification.new do |s|
     'vendor/refinerycms/resources/lib',
     'vendor/refinerycms/resources/lib/resources.rb',
     'vendor/refinerycms/resources/readme.md',
+    'vendor/refinerycms/resources/spec',
+    'vendor/refinerycms/resources/spec/models',
+    'vendor/refinerycms/resources/spec/models/resource_spec.rb',
+    'vendor/refinerycms/resources/spec/uploads',
+    'vendor/refinerycms/resources/spec/uploads/refinery_is_awesome.txt',
     'vendor/refinerycms/settings',
     'vendor/refinerycms/settings/app',
     'vendor/refinerycms/settings/app/controllers',
