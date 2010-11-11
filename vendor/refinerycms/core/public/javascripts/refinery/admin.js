@@ -901,7 +901,7 @@ var image_picker = {
   initialised: false
   , options: {
     selected: '',
-    thumbnail: 'dialog_thumb',
+    thumbnail: 'medium',
     field: '#image',
     image_display: '#current_picked_image',
     no_image_message: '#no_picked_image_selected',
@@ -938,29 +938,9 @@ var image_picker = {
   , changed: function(image) {
     $(this.options.field).val(image.id.replace("image_", ""));
 
-    $.ajax({
-      async: false,
-      url: '/refinery/images/'+$(image).attr('data-id')+'/url?size='+this.options.thumbnail,
-      success: function (result, status, xhr) {
-        if (result.error) {
-          if (console && console.log) {
-             console.log("Something went wrong with the image insertion!");
-             console.log(result);
-           }
-         } else {
-           image.src = result.url;
-         }
-       },
-       error: function(xhr, txt, status) {
-         if (console && console.log) {
-           console.log("Something went wrong with the image insertion!");
-           console.log(xhr);
-           console.log(txt);
-           console.log(status);
-         }
-       }
-    });
-
+    var size = this.options.thumbnail || 'original';
+    console.log(size);
+    image.src = $(image).attr('data-' + size);
     current_image = $(this.options.image_display);
     current_image.replaceWith($("<img src='"+image.src+"?"+Math.floor(Math.random() * 1000000000)+"' id='"+current_image.attr('id')+"' class='brown_border' />"));
 
