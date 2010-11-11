@@ -22,7 +22,7 @@ GIT
 
 GIT
   remote: git://github.com/resolve/refinerycms-generators.git
-  revision: 4673b32d37d287d996719e20844813fc5077b15c
+  revision: 0d667131f0891cf83cde5b5c6f748e3f7eb867ae
   specs:
     refinerycms-generators (0.9.9)
 
@@ -175,8 +175,8 @@ GEM
       rspec (~> 2.0.0)
     ruby-prof (0.9.2)
     rubyzip (0.9.4)
-    selenium-webdriver (0.0.29)
-      childprocess (>= 0.0.7)
+    selenium-webdriver (0.1.0)
+      childprocess (= 0.1.4)
       ffi (~> 0.6.3)
       json_pure
       rubyzip
