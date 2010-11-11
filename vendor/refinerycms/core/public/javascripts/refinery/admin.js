@@ -107,7 +107,8 @@ init_modal_dialogs = function(){
                    + (iframe_src.indexOf('?') > -1 ? '&amp;' : '?')
                    + 'app_dialog=true&amp;dialog=true';
 
-      iframe = $("<iframe id='dialog_iframe' src='" + iframe_src + "'></iframe>").corner('8px');
+      iframe = $("<iframe id='dialog_iframe' src='" + iframe_src + "' frameborder='0' marginheight='0' marginwidth='0' border='0'></iframe>");
+      if(!$.browser.msie) { iframe.corner('8px'); }
       iframe.dialog({
         title: $anchor.data('dialog-title')
         , modal: true
@@ -119,9 +120,6 @@ init_modal_dialogs = function(){
         , close: onCloseDialog
       });
 
-      if ($.browser.msie) {
-        iframe.css({'margin':'-2px 2px 2px -2px'});
-      }
       e.preventDefault();
     });
   });
@@ -240,8 +238,11 @@ init_tooltips = function(args){
     $(element).hover(function(e) {
       $(this).oneTime(350, 'tooltip', $.proxy(function() {
         $('.tooltip').remove();
-        tooltip = $("<div class='tooltip'><div><span></span></div></div>").corner('6px').appendTo('#tooltip_container');
-        tooltip.find("span").html($(this).attr('tooltip')).corner('6px');
+        tooltip = $("<div class='tooltip'><div><span></span></div></div>").appendTo('#tooltip_container');
+        tooltip.find("span").html($(this).attr('tooltip'));
+        if(!$.browser.msie) {
+          tooltip.corner('6px').find('span').corner('6px');
+        }
 
         nib = $("<img src='/images/refinery/tooltip-nib.png' class='tooltip-nib'/>").appendTo('#tooltip_container');
 

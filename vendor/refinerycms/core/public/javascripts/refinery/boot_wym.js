@@ -1,7 +1,6 @@
 onOpenDialog = function(dialog) {
-  (dialog = $('.ui-dialog'))
-    .corner('6px')
-    .find('.ui-dialog-titlebar').corner('1px top');
+  (dialog = $('.ui-dialog')).find('.ui-dialog-titlebar').corner('1px top');
+  if(!$.browser.msie){dialog.corner('6px')}
   if (dialog.height() < $(window).height()) {
     if(iframed()) {
       $(parent.document.body).addClass('hide-overflow');
@@ -109,7 +108,8 @@ var wymeditor_boot_options = $.extend({
 
   , iframeHtml:
     "<div class='wym_iframe wym_section'>"
-     + "<iframe id='WYMeditor_" + WYMeditor.INDEX + "' src='" + WYMeditor.IFRAME_BASE_PATH + "wymiframe' frameborder='0'"
+     + "<iframe id='WYMeditor_" + WYMeditor.INDEX + "' src='" + WYMeditor.IFRAME_BASE_PATH + "wymiframe'"
+     + " frameborder='0' marginheight='0' marginwidth='0' border='0'"
      + " onload='this.contentWindow.parent.WYMeditor.INSTANCES[" + WYMeditor.INDEX + "].initIframe(this);'></iframe>"
     +"</div>"
 
