@@ -82,8 +82,8 @@ class RefinerySetting < ActiveRecord::Base
     def find_or_set(name, the_value, options={})
       # Merge default options with supplied options.
       options = {
-        :scoping => nil, :restricted => false, 
-        :callback_proc_as_string => nil, :form_type => 'text_area'
+        :scoping => nil, :restricted => false,
+        :callback_proc_as_string => nil, :form_value_type => 'text_area'
       }.merge(options)
 
       # try to find the setting first
@@ -114,11 +114,12 @@ class RefinerySetting < ActiveRecord::Base
       unless value.is_a?(Hash) and value.has_key?(:value)
         setting.value = value
       else
-        setting.value = value[:value]
+        # set the value last, so that the other attributes can transform it if required.
+        setting.form_value_type = value[:form_value_type] || 'text_area' if setting.respond_to?(:form_value_type)
         setting.scoping = value[:scoping] if value.has_key?(:scoping)
         setting.callback_proc_as_string = value[:callback_proc_as_string] if value.has_key?(:callback_proc_as_string)
         setting.destroyable = value[:destroyable] if value.has_key?(:destroyable)
-        setting.form_value_type = value[:form_type] || 'text_field' if setting.respond_to?(:form_value_type)
+        setting.value = value[:value]
       end
 
       # Save because we're in a setter method.
@@ -161,6 +162,11 @@ class RefinerySetting < ActiveRecord::Base
   end
 
   def value=(new_value)
+    # must convert "1" to true and "0" to false when supplied using 'check_box', unfortunately.
+    if ["1", "0"].include?(new_value) and self.form_value_type == 'check_box'
+      new_value = new_value == "1" ? true : false
+    end
+
     # must convert to string if true or false supplied otherwise it becomes 0 or 1, unfortunately.
     if [true, false].include?(new_value)
       new_value = new_value.to_s

@@ -19,13 +19,13 @@ describe Resource do
   before(:each) do
     reset_resource
   end
-  
+
   context "with valid attributes" do
     it "should create successfully" do
       @resource.errors.empty?
     end
   end
-  
+
   context "resource url" do
     it "should respond to .url" do
       @resource.respond_to?(:url).should == true
@@ -34,7 +34,7 @@ describe Resource do
     it "should not support thumbnailing like images do" do
       @resource.respond_to?(:thumbnail).should == false
     end
-    
+
     it "should contain its filename at the end" do
       @resource.url.should =~ %r{#{@resource.file_uid.split('/').last}$}
     end
