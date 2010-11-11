@@ -49,11 +49,4 @@ describe User do
 
   end
 
-
-  context "Authlogic config" do
-    it "does something" do
-      pending
-    end
-  end
-
 end
