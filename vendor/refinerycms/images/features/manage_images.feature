@@ -21,6 +21,8 @@ Feature: Manage Images
     And the image should have height "375"
     And the image should have mime_type "image/jpeg"
 
+  # This will output some warnings from ImageMagick
+  # TODO: See if we can capture those warnings and not display them?
   @images-invalid @invalid
   Scenario: Create Invalid Image (format)
     When I go to the list of images
