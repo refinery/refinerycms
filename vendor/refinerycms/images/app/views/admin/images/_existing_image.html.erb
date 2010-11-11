@@ -12,7 +12,10 @@
     <ul>
 <%
       @images.each do |image|
-        thumbnail_urls={:"data-original" => image.url}
+        thumbnail_urls = {
+          :"data-original" => image.url,
+          :"data-grid" => image.thumbnail('135x135#c').url
+        }
         user_image_sizes.each do |size, pixels|
           thumbnail_urls[:"data-#{size.to_s.parameterize}"] = image.thumbnail(pixels).url
         end
