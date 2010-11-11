@@ -7,7 +7,7 @@ module Refinery
     class Engine < Rails::Engine
       initializer 'images-with-dragonfly' do |app|
         app_images = Dragonfly[:images]
-        app_images.configure_with(:rmagick)
+        app_images.configure_with(:imagemagick)
         app_images.configure_with(:rails) do |c|
           c.datastore.root_path = Rails.root.join('public', 'system', 'images').to_s
           c.url_path_prefix = '/system/images'
@@ -19,7 +19,7 @@ module Refinery
         app_images.configure_with(:heroku, ENV['S3_BUCKET']) if Refinery.s3_backend
 
         app_images.define_macro(ActiveRecord::Base, :image_accessor)
-        app_images.analyser.register(Dragonfly::Analysis::RMagickAnalyser)
+        app_images.analyser.register(Dragonfly::Analysis::ImageMagickAnalyser)
         app_images.analyser.register(Dragonfly::Analysis::FileCommandAnalyser)
 
         # This url_suffix makes it so that dragonfly urls work in traditional

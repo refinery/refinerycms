@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/parndt/capybara.git
-  revision: d6760e4d86271e8a916ca8a8257ae02c4fae7a5e
+  revision: 4cfe882c982682e71c13c877e7f14fd862a9e565
   specs:
     capybara (0.4.0)
       celerity (>= 0.7.9)
@@ -11,6 +11,14 @@ GIT
       rack-test (>= 0.5.4)
       selenium-webdriver (>= 0.0.27)
       xpath (~> 0.1.2)
+
+GIT
+  remote: git://github.com/refinerycms/dragonfly.git
+  revision: df9c6eb46ba19cda21952d23abf85fce62e1152f
+  branch: imagemagick
+  specs:
+    dragonfly (0.7.7)
+      rack
 
 GIT
   remote: git://github.com/resolve/refinerycms-generators.git
@@ -91,8 +99,6 @@ GEM
     culerity (0.2.12)
     database_cleaner (0.6.0)
     diff-lcs (1.1.2)
-    dragonfly (0.7.7)
-      rack
     erubis (2.6.6)
       abstract (>= 1.0.0)
     factory_girl (1.3.2)
@@ -153,7 +159,6 @@ GEM
       routing-filter (~> 0.1.6)
     refinerycms-inquiries (0.9.9.3)
       filters_spam (~> 0.2)
-    rmagick (2.12.2)
     routing-filter (0.1.7)
       actionpack
     rspec (2.0.1)
@@ -201,6 +206,7 @@ DEPENDENCIES
   cucumber
   cucumber-rails
   database_cleaner
+  dragonfly!
   factory_girl
   gherkin
   json_pure (~> 1.4.6)
@@ -211,7 +217,6 @@ DEPENDENCIES
   refinerycms-generators (~> 0.9.9)!
   refinerycms-i18n (~> 0.9.8.8)
   refinerycms-inquiries (~> 0.9.9.3)
-  rmagick (~> 2.12.0)
   rspec (~> 2.0.0)
   rspec-core (~> 2.0.0)
   rspec-expectations (~> 2.0.0)

@@ -54,19 +54,10 @@ gem 'refinerycms-generators',   '~> 0.9.9', :git => 'git://github.com/resolve/re
 # Add i18n support (optional, you can remove this if you really want to).
 gem 'refinerycms-i18n',         '~> 0.9.8.8'
 
-# Figure out how to get RMagick:
-rmagick_options = {:require => false}
-rmagick_options.update({
-  :git => 'git://github.com/refinerycms/rmagick.git',
-  :branch => 'windows'
-}) if Bundler::WINDOWS and !java
-
-rmagick_version = java ? '~> 0.3.7' : '~> 2.12.0'
-
-# Specify a version of RMagick that works in your environment:
-gem "rmagick#{'4j' if java}", rmagick_version, rmagick_options
-
 gem 'jruby-openssl' if java
+
+# override dragonfly because this version doesn't require RMagick
+gem 'dragonfly', :git => 'git://github.com/refinerycms/dragonfly.git', :branch => 'imagemagick'
 
 group :test do
   # RSpec
