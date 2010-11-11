@@ -45,22 +45,6 @@ class Admin::ImagesController < Admin::BaseController
     render :action => "insert"
   end
 
-  #This returns a url. If params[:size] is provided, it will generate a url for this size.
-  def url
-    find_image
-    if params[:size].present?
-      begin
-        size = params[:size].gsub('gt', '>').gsub('hash', '#')
-        thumbnail = @image.thumbnail(size)
-        render :json => { :error => false, :url => thumbnail.url, :width => thumbnail.width, :height => thumbnail.height }
-      rescue RuntimeError
-        render :json => { :error => true }
-      end
-    else
-      render :json => { :error => false, :url => @image.url, :width => @image.width, :height => @image.height }
-    end
-  end
-
   def create
     @images = []
     begin
