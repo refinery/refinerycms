@@ -840,8 +840,8 @@ var list_reorder = {
     $("li.ui-sortable-helper", this).removeClass("record").removeClass("branch_start").removeClass("branch_end");
     $("li", ul).removeClass("branch_start").removeClass("branch_end");
 
-    $("> li:first", ul).addClass("branch_start")
-    $("> li:last", ul).addClass("branch_end")
+    $("> li:first", ul).addClass("branch_start");
+    $("> li:last", ul).addClass("branch_end");
 
     var nested_ul = $("ul", ul);
     $("> li:last", nested_ul).addClass("branch_end");
