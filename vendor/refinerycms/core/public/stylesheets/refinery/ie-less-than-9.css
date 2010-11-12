@@ -1,6 +1,0 @@
-body.login .field input.larger, body.login .field input.larger:focus {
-  line-height: 30px;
-}
-.pagination a, #content .pagination a, .pagination .current, .disabled, .pagination em {
-  padding-bottom: 6px;
-}
