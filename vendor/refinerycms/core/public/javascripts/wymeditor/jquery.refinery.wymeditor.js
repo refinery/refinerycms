@@ -1788,7 +1788,13 @@ WYMeditor.INIT_DIALOG = function(wym, selected, isIframe) {
         .attr(WYMeditor.SRC, url)
         .attr(WYMeditor.TITLE, form.find(wym._options.titleSelector).val())
         .attr(WYMeditor.ALT, form.find(wym._options.titleSelector).val())
-        .attr(WYMeditor.REL, form.find(wym._options.sizeSelector).val());
+        .attr(WYMeditor.REL, form.find(wym._options.sizeSelector).val())
+        .load(function(e){
+          $(this).attr({
+            'width': $(this).width()
+            , 'height': $(this).height()
+          });
+        });
 
        if (replaceable != null) {
          replaceable.after(image).remove();
