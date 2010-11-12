@@ -30,8 +30,8 @@ init_interface = function() {
   // make sure that users can tab to wymeditor fields and add an overlay while loading.
   $('textarea.wymeditor').each(function() {
     textarea = $(this);
-    if ((instance = WYMeditor.INSTANCES[$((textarea.next('.wym_box').find('iframe').attr('id')||'').split('_')).last().get(0)]) != null) {
-      if ((next = textarea.parent().next()) != null && next.length > 0) {
+    if ((instance = WYMeditor.INSTANCES[$((textarea.next('.wym_box').find('iframe').attr('id')||'').split('_')).last().get(0)]) !== null) {
+      if ((next = textarea.parent().next()) !== null && next.length > 0) {
         next.find('input, textarea').keydown($.proxy(function(e) {
           shiftHeld = e.shiftKey;
           if (shiftHeld && e.keyCode == $.ui.keyCode.TAB) {
@@ -42,7 +42,7 @@ init_interface = function() {
           shiftHeld = false;
         });
       }
-      if ((prev = textarea.parent().prev()) != null && prev.length > 0) {
+      if ((prev = textarea.parent().prev()) !== null && prev.length > 0) {
         prev.find('input, textarea').keydown($.proxy(function(e) {
           if (e.keyCode == $.ui.keyCode.TAB) {
             this._iframe.contentWindow.focus();
@@ -88,13 +88,13 @@ init_interface = function() {
   $('.form-actions .form-actions-left input:submit#submit_button').click(function(e) {
     $("<img src='/images/refinery/icons/ajax-loader.gif' width='16' height='16' class='save-loader' />").appendTo($(this).parent());
   });
-}
+};
 
 init_modal_dialogs = function(){
   $('a[href*="dialog=true"]').not('#dialog_container a').each(function(i, anchor) {
     $(anchor).data({
-      'dialog-width': parseInt($($(anchor).attr('href').match("width=([0-9]*)")).last().get(0))||928
-      , 'dialog-height': parseInt($($(anchor).attr('href').match("height=([0-9]*)")).last().get(0))||473
+      'dialog-width': parseInt($($(anchor).attr('href').match("width=([0-9]*)")).last().get(0), 10)||928
+      , 'dialog-height': parseInt($($(anchor).attr('href').match("height=([0-9]*)")).last().get(0), 10)||473
       , 'dialog-title': ($(anchor).attr('title') || $(anchor).attr('name') || $(anchor).html() || null)
     }).attr('href', $(anchor).attr('href').replace(/(\&(amp\;)?)?dialog\=true/, '')
                                           .replace(/(\&(amp\;)?)?width\=\d+/, '')
@@ -123,12 +123,12 @@ init_modal_dialogs = function(){
       e.preventDefault();
     });
   });
-}
+};
 
 init_sortable_menu = function(){
   var $menu = $('#menu');
 
-  if($menu.length == 0){return}
+  if($menu.length === 0){return;}
 
   $menu.sortable({
     axis: 'x',
@@ -153,7 +153,7 @@ init_sortable_menu = function(){
   });
 
   $menu.find('> a').corner('top 5px');
-}
+};
 
 trigger_reordering = function(e, enable) {
   e.preventDefault();
@@ -169,7 +169,7 @@ trigger_reordering = function(e, enable) {
   }
 
   $menu.sortable(enable ? 'enable' : 'disable');
-}
+};
 
 init_submit_continue = function(){
   $('#submit_continue_button').click(submit_and_continue);
@@ -187,7 +187,7 @@ init_submit_continue = function(){
       }
     });
   }
-}
+};
 
 submit_and_continue = function(e, redirect_to) {
   // ensure wymeditors are up to date.
@@ -199,7 +199,7 @@ submit_and_continue = function(e, redirect_to) {
   }
 
   $('#continue_editing').val(true);
-  $('#flash').fadeOut(250)
+  $('#flash').fadeOut(250);
 
   $('.fieldWithErrors').removeClass('fieldWithErrors').addClass('field');
   $('#flash_container .errorExplanation').remove();
@@ -212,7 +212,7 @@ submit_and_continue = function(e, redirect_to) {
 
       $('.errorExplanation').not($('#flash_container .errorExplanation')).remove();
 
-      if ((error_fields = $('#fieldsWithErrors').val()) != null) {
+      if ((error_fields = $('#fieldsWithErrors').val()) !== null) {
         $.each(error_fields.split(','), function() {
           $("#" + this).wrap("<div class='fieldWithErrors' />");
         });
@@ -229,10 +229,10 @@ submit_and_continue = function(e, redirect_to) {
   });
 
   e.preventDefault();
-}
+};
 
 init_tooltips = function(args){
-  $($(args != null ? args : 'a[title], span[title], #image_grid img[title], *[tooltip]')).not('.no-tooltip').each(function(index, element)
+  $($(args !== null ? args : 'a[title], span[title], #image_grid img[title], *[tooltip]')).not('.no-tooltip').each(function(index, element)
   {
     // create tooltip on hover and destroy it on hoveroff.
     $(element).hover(function(e) {
@@ -262,7 +262,7 @@ init_tooltips = function(args){
 
         tooltip.css({
           'top': $(this).offset().top - tooltip.outerHeight() - 2
-        })
+        });
 
         nib.css({
           'opacity': 0
@@ -292,7 +292,7 @@ init_tooltips = function(args){
 
     }, function(e) {
       $(this).stopTime('tooltip');
-      if ((tt_offset = (tooltip = $('.tooltip')).css('z-index', '-1').offset()) == null) {
+      if ((tt_offset = (tooltip = $('.tooltip')).css('z-index', '-1').offset()) === null) {
         tt_offset = {'top':0,'left':0};
       }
       tooltip.animate({
@@ -301,7 +301,7 @@ init_tooltips = function(args){
       }, 125, 'swing', function(){
         $(this).remove();
       });
-      if ((nib_offset = (nib = $('.tooltip-nib')).offset()) == null) {
+      if ((nib_offset = (nib = $('.tooltip-nib')).offset()) === null) {
         nib_offset = {'top':0,'left':0};
       }
       nib.animate({
@@ -313,7 +313,7 @@ init_tooltips = function(args){
     }).click(function(e) {
       $(this).stopTime('tooltip');
     });
-    if ($(element).attr('tooltip') == null) {
+    if ($(element).attr('tooltip') === null) {
       $(element).attr('tooltip', $(element).attr('title'));
     }
     // wipe clean the title on any children too.
@@ -321,7 +321,7 @@ init_tooltips = function(args){
     // if we're unlucky and in Internet Explorer then we have to say goodbye to 'alt', too.
     if ($.browser.msie){$elements.removeAttr('alt');}
   });
-}
+};
 
 var link_tester = {
   initialised: false
@@ -373,7 +373,7 @@ var link_tester = {
           $(textbox_id + '_test_loader').hide();
         });
 
-        if (callback) callback($(textbox_id));
+        if (callback) { callback($(textbox_id)); }
 
         $(this).dequeue();
       }); // queue
@@ -444,7 +444,7 @@ var link_dialog = {
 
     if (parent
         && parent.document.location.href != document.location.href
-        && parent.document.getElementById('wym_dialog_submit') != null) {
+        && parent.document.getElementById('wym_dialog_submit') !== null) {
       $('#dialog_container .form-actions input#submit_button').click(function(e) {
         e.preventDefault();
         $(parent.document.getElementById('wym_dialog_submit')).click();
@@ -527,19 +527,19 @@ var link_dialog = {
   },
 
   update_parent: function(url, title, target) {
-    if (parent != null) {
-      if ((wym_href = parent.document.getElementById('wym_href')) != null) {
+    if (parent !== null) {
+      if ((wym_href = parent.document.getElementById('wym_href')) !== null) {
         wym_href.value = url;
       }
-      if ((wym_title = parent.document.getElementById('wym_title')) != null) {
+      if ((wym_title = parent.document.getElementById('wym_title')) !== null) {
         wym_title.value = title;
       }
-      if ((wym_target = parent.document.getElementById('wym_target')) != null) {
+      if ((wym_target = parent.document.getElementById('wym_target')) !== null) {
         wym_target.value = target || "";
       }
     }
   }
-}
+};
 
 var page_options = {
   initialised: false
@@ -548,7 +548,7 @@ var page_options = {
     // also disable page overflow so that scrollbars don't appear while the page is loading.
     $(document.body).not('iframe body').addClass('hide-overflow');
     page_options.tabs = $('#page-tabs');
-    page_options.tabs.tabs({tabTemplate: '<li><a href="#{href}">#{label}</a></li>'})
+    page_options.tabs.tabs({tabTemplate: '<li><a href="#{href}">#{label}</a></li>'});
     page_options.tabs.find(' > ul li a').corner('top 5px');
 
     part_shown = $('#page-tabs .page_part.field').not('.ui-tabs-hide');
@@ -566,7 +566,7 @@ var page_options = {
       $(document.body).removeClass('hide-overflow');
       $('#page-tabs .page_part.field').not(part_shown).addClass('ui-tabs-hide');
       $('#page-tabs > ul li a').corner('top 5px');
-    }
+    };
 
     if(this.enable_parts){
       this.page_part_dialog();
@@ -615,7 +615,7 @@ var page_options = {
       if(part_title.length > 0){
         var tab_title = part_title.toLowerCase().replace(" ", "_");
 
-        if ($('#part_' + tab_title).size() == 0) {
+        if ($('#part_' + tab_title).size() === 0) {
           $.get(page_options.new_part_url,
             {
               title: part_title
@@ -636,10 +636,10 @@ var page_options = {
               WYMeditor.loaded = function() {
                 page_options.tabs.tabs('select', $('#new_page_part_index').val());
                 WYMeditor.loaded = function(){}; // kill it again.
-              }
+              };
 
               // Wipe the title and increment the index counter by one.
-              $('#new_page_part_index').val(parseInt($('#new_page_part_index').val()) + 1);
+              $('#new_page_part_index').val(parseInt($('#new_page_part_index').val(), 10) + 1);
               $('#new_page_part_title').val('');
 
               page_options.tabs.find('> ul li a').corner('top 5px');
@@ -679,7 +679,7 @@ var page_options = {
 
   }
 
-}
+};
 
 var image_dialog = {
   initialised: false
@@ -736,16 +736,16 @@ var image_dialog = {
       image_url = resize ? $(img).attr('data-' + size) : $(img).attr('data-original');
 
       if (parent) {
-        if ((wym_src = parent.document.getElementById('wym_src')) != null) {
+        if ((wym_src = parent.document.getElementById('wym_src')) !== null) {
           wym_src.value = image_url;
         }
-        if ((wym_title = parent.document.getElementById('wym_title')) != null) {
+        if ((wym_title = parent.document.getElementById('wym_title')) !== null) {
           wym_title.value = $(img).attr('title');
         }
-        if ((wym_alt = parent.document.getElementById('wym_alt')) != null) {
+        if ((wym_alt = parent.document.getElementById('wym_alt')) !== null) {
           wym_alt.value = $(img).attr('alt');
         }
-        if ((wym_size = parent.document.getElementById('wym_size')) != null
+        if ((wym_size = parent.document.getElementById('wym_size')) !== null
             && typeof(geometry) != 'undefined') {
           wym_size.value = geometry.replace(/[<>=]/g, '');
         }
@@ -784,7 +784,7 @@ var image_dialog = {
     });
 
     if (parent && parent.document.location.href != document.location.href
-        && parent.document.getElementById('wym_dialog_submit') != null) {
+        && parent.document.getElementById('wym_dialog_submit') !== null) {
       $('#existing_image_area .form-actions input#submit_button').click($.proxy(function(e) {
         e.preventDefault();
         $(this.document.getElementById('wym_dialog_submit')).click();
@@ -792,14 +792,14 @@ var image_dialog = {
       $('#existing_image_area .form-actions a.close_dialog').click(close_dialog);
     }
   }
-}
+};
 
 var list_reorder = {
   initialised: false
   , init: function() {
     $('#reorder_action').click(list_reorder.enable_reordering);
     $('#reorder_action_done').click(list_reorder.disable_reordering);
-    if(list_reorder.tree == false) {
+    if(list_reorder.tree === false) {
       list_reorder.sortable_list.find('li').addClass('no-nest');
     }
     list_reorder.sortable_list.nestedSortable({
@@ -837,8 +837,8 @@ var list_reorder = {
   }
   , reset_on_off_classes: function(ul) {
     $("> li", ul).each(function(i, li) {
-      $(li).removeClass('on off on-hover').addClass(i % 2 == 0 ? 'on' : 'off');
-    })
+      $(li).removeClass('on off on-hover').addClass(i % 2 === 0 ? 'on' : 'off');
+    });
   }
 
   , reset_branch_classes: function (ul) {
@@ -874,7 +874,7 @@ var list_reorder = {
 
     $('#sortable_list').removeClass("reordering");
 
-    if (list_reorder.update_url != null) {
+    if (list_reorder.update_url !== null) {
 
       var serialized = list_reorder.sortable_list.serializelist();
 
@@ -900,7 +900,7 @@ var list_reorder = {
       $('#reorder_action').show();
     });
   }
-}
+};
 
 var image_picker = {
   initialised: false
@@ -952,7 +952,7 @@ var image_picker = {
     $(this.options.remove_image_button).show();
     $(this.options.no_image_message).hide();
   }
-}
+};
 
 var resource_picker = {
   initialised: false
@@ -962,7 +962,7 @@ var resource_picker = {
     this.callback = callback;
     this.initialised = true;
   }
-}
+};
 
 close_dialog = function(e) {
   if (iframed())
@@ -983,7 +983,7 @@ close_dialog = function(e) {
     the_dialog.remove();
     e.preventDefault();
   }
-}
+};
 
 //parse a URL to form an object of properties
 parseURL = function(url)
@@ -1027,8 +1027,8 @@ parseURL = function(url)
 
   //return the final object
   return loc;
-}
+};
 
 iframed = function() {
   return (parent && parent.document.location.href != document.location.href && $.isFunction(parent.$));
-}
+};
