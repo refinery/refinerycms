@@ -79,3 +79,8 @@ a#site_bar_refinery_cms_logo:hover img {
   -moz-border-radius: 6px;
   -webkit-border-radius: 6px;
 }
+
+.ie7 #site_bar #editor_switch a {
+  height: 26px;
+  line-height: 26px;
+}
