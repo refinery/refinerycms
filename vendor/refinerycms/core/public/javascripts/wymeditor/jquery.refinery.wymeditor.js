@@ -268,7 +268,7 @@ $.extend(WYMeditor, {
         this._html = $(elem).val();
 
         //store the HTML option, if any
-        if(this._options.html) this._html = this._options.html;
+        if(this._options.html) { this._html = this._options.html; }
 
         //get or compute the base path (where the main JS file is located)
         this._options.basePath = this._options.basePath || this.computeBasePath();
@@ -839,9 +839,9 @@ WYMeditor.editor.prototype.bindEvents = function() {
     var sName = $(this).attr(WYMeditor.NAME);
     var oClass = WYMeditor.Helper.findByName(aClasses, sName);
     var replacers = $([]);
-    if (oClass == null) {
+    if (oClass === null) {
       $.each(aClasses, function(index, classRule){
-        if (oClass == null && classRule.rules && classRule.rules.length > 0){
+        if (oClass === null && classRule.rules && classRule.rules.length > 0){
           if ((indexOf = $.inArray(sName.replace(classRule.name + (classRule.join || ""), ""), classRule.rules)) > -1) {
             $.each(classRule.rules, function(i, rule) {
               if (i != indexOf) {
@@ -878,7 +878,7 @@ WYMeditor.editor.prototype.bindEvents = function() {
 };
 
 WYMeditor.editor.prototype.ready = function() {
-  return(this._doc != null);
+  return(this._doc !== null);
 };
 
 
@@ -1027,7 +1027,7 @@ WYMeditor.editor.prototype.container = function(sType) {
 
           var blockquote = this.findUp(this.container(), WYMeditor.BLOCKQUOTE);
 
-          if(blockquote == null) {
+          if(blockquote === null) {
 
             newNode = this._doc.createElement(sType);
             container.parentNode.insertBefore(newNode,container);
@@ -1067,7 +1067,7 @@ WYMeditor.editor.prototype.container = function(sType) {
 WYMeditor.editor.prototype.toggleClass = function(sClass, jqexpr) {
 
   var container = $((this._selected_image ? this._selected_image : this.selected(true)));
-  if (jqexpr != null) { container = $(container.parentsOrSelf(jqexpr)); }
+  if (jqexpr !== null) { container = $(container.parentsOrSelf(jqexpr)); }
   container.toggleClass(sClass);
   if(!container.attr(WYMeditor.CLASS)) container.removeAttr(this._class);
 
@@ -1079,7 +1079,7 @@ WYMeditor.editor.prototype.toggleClass = function(sClass, jqexpr) {
 WYMeditor.editor.prototype.removeClass = function(sClass, jqexpr) {
 
   var container = $((this._selected_image ? this._selected_image : $(this.selected(true))));
-  if (jqexpr != null) { container = $(container.parentsOrSelf(jqexpr)); }
+  if (jqexpr !== null) { container = $(container.parentsOrSelf(jqexpr)); }
   container.removeClass(sClass);
 
   if(!container.attr(WYMeditor.CLASS)) container.removeAttr(this._class);
@@ -1249,9 +1249,9 @@ WYMeditor.editor.prototype.dialog = function( dialogType ) {
   if (dialogType == WYMeditor.DIALOG_LINK && $.browser.mozilla) {
     selection = wym._iframe.contentWindow.getSelection();
     matches = $($(selected).html().match(new RegExp(selection.anchorNode.textContent + "(.*)" + selection.focusNode.textContent)));
-    if (matches != null && matches.length > 0 && (possible_anchor_tag = matches.last()).length > 0)
+    if (matches !== null && matches.length > 0 && (possible_anchor_tag = matches.last()).length > 0)
     {
-      if (((href_matches = possible_anchor_tag.get(0).match(/href="([^"]*)"/)) != null) && (href = $(href_matches).last().get(0)) != null)
+      if (((href_matches = possible_anchor_tag.get(0).match(/href="([^"]*)"/)) !== null) && (href = $(href_matches).last().get(0)) !== null)
       {
         $(wym._doc).find('a').each(function(index, possible_match)
         {
@@ -1270,9 +1270,9 @@ WYMeditor.editor.prototype.dialog = function( dialogType ) {
   if (typeof(parent_node) != 'undefined' && parent_node !== null) {
     if (parent_node.tagName.toLowerCase() != WYMeditor.A) {
       // wrap the current selection with a funky span.
-      if (wym._selected_image == null)
+      if (wym._selected_image === null)
       {
-        if (selected != null && selected.tagName.toLowerCase() != WYMeditor.A && wym._iframe.contentWindow.getSelection) {
+        if (selected !== null && selected.tagName.toLowerCase() != WYMeditor.A && wym._iframe.contentWindow.getSelection) {
           // Fixes webkit issue where it would not paste at cursor.
           selection = wym._iframe.contentWindow.getSelection();
           if (selection.focusNode.insertData) {
@@ -1439,10 +1439,10 @@ WYMeditor.editor.prototype.paste = function(sData) {
           matches = p.html().match(new RegExp("([\\s\\S]*)\<span id=[\'|\"]" + wym._current_unique_stamp + "[\'|\"]\>.*\<\/span\>"));
           sTmp = matches[1] + sTmp + $(container).html();
           p.html(sTmp);
-          if (insertedContentAfterBreak != null && insertedContentAfterBreak.length > 0) {
+          if (insertedContentAfterBreak !== null && insertedContentAfterBreak.length > 0) {
             p.after(insertedContentAfterBreak);
           }
-          if (contentAfterBreak != null && contentAfterBreak.length > 0) {
+          if (contentAfterBreak !== null && contentAfterBreak.length > 0) {
             if ((last_paste = p.parent().find('p#last_paste')).length == 1) {
               last_paste.attr('id', null).html(last_paste.html() + contentAfterBreak);
             } else {
@@ -1481,7 +1481,7 @@ WYMeditor.editor.prototype.paste = function(sData) {
     }
   }
 
-  if (replaceable.get(0) != null) {
+  if (replaceable.get(0) !== null) {
     // set the id of the container back.
     if (replaceable.get(0).tagName.toLowerCase() == 'span') {
       replaceable.replaceWith(replaceable.html());
@@ -1492,7 +1492,7 @@ WYMeditor.editor.prototype.paste = function(sData) {
 
 WYMeditor.editor.prototype.insert = function(html) {
   // Do we have a selection?
-  if (this._iframe.contentWindow.getSelection().focusNode != null) {
+  if (this._iframe.contentWindow.getSelection().focusNode !== null) {
     // Overwrite selection with provided html
     this._exec(WYMeditor.INSERT_HTML, html);
   } else {
@@ -1506,8 +1506,8 @@ WYMeditor.editor.prototype.wrap = function(left, right, selection) {
   right = (typeof(right) != 'undefined' ? right : '');
 
   // Do we have a selection?
-  if (selection == null) { selection = this._iframe.contentWindow.getSelection();}
-  if (selection.focusNode != null) {
+  if (selection === null) { selection = this._iframe.contentWindow.getSelection();}
+  if (selection.focusNode !== null) {
     // Wrap selection with provided html
     this._exec( WYMeditor.INSERT_HTML, left + selection.toString() + right);
   }
@@ -1515,8 +1515,8 @@ WYMeditor.editor.prototype.wrap = function(left, right, selection) {
 
 WYMeditor.editor.prototype.unwrap = function(selection) {
   // Do we have a selection?
-  if (selection == null) { selection = this._iframe.contentWindow.getSelection();}
-  if (selection.focusNode != null) {
+  if (selection === null) { selection = this._iframe.contentWindow.getSelection();}
+  if (selection.focusNode !== null) {
     // Unwrap selection
     this._exec( WYMeditor.INSERT_HTML, selection.toString() );
   }
@@ -1565,7 +1565,7 @@ WYMeditor.editor.prototype.format_block = function(selected) {
 /********** CONFIGURATION **********/
 
 WYMeditor.editor.prototype.computeBasePath = function() {
-  if ((script_path = this.computeWymPath()) != null) {
+  if ((script_path = this.computeWymPath()) !== null) {
     if ((src_parts = script_path.split('/')).length > 1) { src_parts.pop(); }
     return src_parts.join('/') + "/";
   }
@@ -1724,9 +1724,9 @@ WYMeditor.INIT_DIALOG = function(wym, selected, isIframe) {
   {
     if ((sUrl = $(wym._options.hrefSelector).val()).length > 0)
     {
-      if (replaceable.get(0) != null) {
+      if (replaceable.get(0) !== null) {
         var link = $('<a></a>').attr({href:sUrl, title: $(wym._options.titleSelector).val()})
-        if ((target = $(wym._options.targetSelector).val()) != null && target.length > 0) {
+        if ((target = $(wym._options.targetSelector).val()) !== null && target.length > 0) {
           link.attr('target', target);
         }
 
@@ -1743,7 +1743,7 @@ WYMeditor.INIT_DIALOG = function(wym, selected, isIframe) {
         }
         else
         {
-          if ((parent = replaceable.parent().get(0)) != null && parent.tagName.toUpperCase() == "A") {
+          if ((parent = replaceable.parent().get(0)) !== null && parent.tagName.toUpperCase() == "A") {
             $(parent).attr({href: link.attr('href'), title: $(wym._options.titleSelector).val(), target: target});
           }
           else {
@@ -1788,7 +1788,7 @@ WYMeditor.INIT_DIALOG = function(wym, selected, isIframe) {
 
   $(wym._options.dialogImageSelector).find(wym._options.submitSelector).click(function(e) {
     form = $(this.form);
-    if ((url = form.find(wym._options.srcSelector).val()) != null && url.length > 0) {
+    if ((url = form.find(wym._options.srcSelector).val()) !== null && url.length > 0) {
       (image = $('<img />'))
         .attr(WYMeditor.SRC, url)
         .attr(WYMeditor.TITLE, form.find(wym._options.titleSelector).val())
@@ -1801,7 +1801,7 @@ WYMeditor.INIT_DIALOG = function(wym, selected, isIframe) {
           });
         });
 
-       if (replaceable != null) {
+       if (replaceable !== null) {
          replaceable.after(image).remove();
        }
 
@@ -2873,7 +2873,7 @@ WYMeditor.ParallelRegex.prototype.match = function(subject)
 */
 WYMeditor.ParallelRegex.prototype._getCompoundedRegex = function()
 {
-  if (this._regex == null) {
+  if (this._regex === null) {
     for (var i = 0, count = this._patterns.length; i < count; i++) {
       this._patterns[i] = '(' + this._untokenizeRegex(this._tokenizeRegex(this._patterns[i]).replace(/([\/\(\)])/g,'\\$1')) + ')';
     }
@@ -4177,7 +4177,7 @@ WYMeditor.Helper = {
 };
 
 function titleize(words) {
-  if (words == null) return words;
+  if (words === null) return words;
   parts = [];
   $.each(words.replace(/\./, '').replace(/[-_]/, ' ').split(' '), function(index, part){
     parts.push(part.substring(0,1).toUpperCase() + part.substring(1));
@@ -4566,7 +4566,7 @@ WYMeditor.WymClassMozilla.prototype._exec = function(cmd,param) {
  */
 WYMeditor.WymClassMozilla.prototype.selected = function(upgrade_text_nodes) {
 
-  if (upgrade_text_nodes == null || upgrade_text_nodes.toString() != "true") { upgrade_text_nodes = false; }
+  if (upgrade_text_nodes === null || upgrade_text_nodes.toString() != "true") { upgrade_text_nodes = false; }
   var sel = this._iframe.contentWindow.getSelection();
   var node = sel.focusNode;
   if(node) {
@@ -4574,7 +4574,7 @@ WYMeditor.WymClassMozilla.prototype.selected = function(upgrade_text_nodes) {
         if (upgrade_text_nodes && sel.toString().length > 0) {
           actual_node = null;
           parent_node = sel.focusNode.parentNode;
-          if (parent_node != null) {
+          if (parent_node !== null) {
             for (i=0;i<parent_node.childNodes.length;i++){
               child_node = parent_node.childNodes[i];
               if (child_node.nodeName != "#text" && child_node.innerHTML == sel.toString()){
@@ -4583,7 +4583,7 @@ WYMeditor.WymClassMozilla.prototype.selected = function(upgrade_text_nodes) {
             }
           }
 
-          if (actual_node == null) {
+          if (actual_node === null) {
             return this.switchTo(sel, 'span');
           } else {
             return actual_node;
@@ -4637,7 +4637,7 @@ WYMeditor.WymClassMozilla.prototype.keydown = function(e) {
 WYMeditor.WymClassMozilla.prototype.keyup = function(e) {
 
   //'this' is the doc
-  if ((wym = WYMeditor.INSTANCES[this.title]) != null)
+  if ((wym = WYMeditor.INSTANCES[this.title]) !== null)
   {
     wym._selected_image = null;
     $(wym._iframe).contents().find('.selected_by_wym').removeClass('selected_by_wym');
@@ -4932,7 +4932,7 @@ WYMeditor.WymClassSafari.prototype.paste = function(sData) {
     }
   }
 
-  if (replaceable.get(0) != null) {
+  if (replaceable.get(0) !== null) {
     // set the id of the container back.
     replaceable.get(0).id = replaceable.get(0)._id_before_replaceable;
   }
@@ -4994,7 +4994,7 @@ WYMeditor.WymClassSafari.prototype._exec = function(cmd,param) {
  */
 WYMeditor.WymClassSafari.prototype.selected = function(upgrade_text_nodes) {
 
-  if (upgrade_text_nodes == null || upgrade_text_nodes.toString() != "true") { upgrade_text_nodes = false; }
+  if (upgrade_text_nodes === null || upgrade_text_nodes.toString() != "true") { upgrade_text_nodes = false; }
   var sel = this._iframe.contentWindow.getSelection();
   var node = sel.focusNode;
   if(node) {
@@ -5002,7 +5002,7 @@ WYMeditor.WymClassSafari.prototype.selected = function(upgrade_text_nodes) {
         if (upgrade_text_nodes && sel.toString().length > 0) {
           actual_node = null;
           parent_node = sel.focusNode.parentNode;
-          if (parent_node != null) {
+          if (parent_node !== null) {
             for (i=0;i<parent_node.childNodes.length;i++){
               child_node = parent_node.childNodes[i];
               if (child_node.textContent == sel.toString()){
@@ -5011,7 +5011,7 @@ WYMeditor.WymClassSafari.prototype.selected = function(upgrade_text_nodes) {
             }
           }
 
-          if (actual_node == null) {
+          if (actual_node === null) {
             this._selected_item = this.switchTo(sel, 'span');
             return this._selected_item;
           } else {
@@ -5022,9 +5022,9 @@ WYMeditor.WymClassSafari.prototype.selected = function(upgrade_text_nodes) {
           return node.parentNode;
         }
       }
-      else return(node);
+      else { return(node); }
   }
-  else return(null);
+  else { return(null); }
 };
 
 /* @name toggleClass
@@ -5040,7 +5040,7 @@ WYMeditor.WymClassSafari.prototype.toggleClass = function(sClass, jqexpr) {
     container = $(this.selected(true) || this._selected_item);
   }
 
-  if (jqexpr != null) { container = $(container.parentsOrSelf(jqexpr)); }
+  if (jqexpr !== null) { container = $(container.parentsOrSelf(jqexpr)); }
   container.toggleClass(sClass);
   if(!container.attr(WYMeditor.CLASS)) container.removeAttr(this._class);
 
