@@ -1207,7 +1207,12 @@ WYMeditor.editor.prototype.update = function() {
 
   // get rid of wym id tags that were forgotten about by replacing them with their content.
   $(html).find('span[id|=wym]').each(function(i, span){
-    html = html.replace($(span).wrap('<div />').parent().html(), $(span).html());
+    html_to_replace = $(span).wrap('<div />').parent().html();
+    if($.browser.msie) {
+      // converts <SPAN id=wym-1231231>foo</SPAN> to <SPAN id="wym-1231231">foo</SPAN> (note the quotes)
+      html_to_replace = new RegExp(html_to_replace.replace(/(\ [^\=]+\=)([^\ >]+)/, '$1"$2"'), "ig");
+    }
+    html = html.replace(html_to_replace, $(span).html());
   });
 
   // get rid of id='last_paste' tags that were forgotten about.
