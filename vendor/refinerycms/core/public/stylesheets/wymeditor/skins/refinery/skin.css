@@ -40,6 +40,7 @@
  * html .wym_skin_refinery .wym_area_main      { height: 1%;}
  * html .wym_skin_refinery .wym_area_top       { height: 1%;}
  *+html .wym_skin_refinery .wym_area_top       { height: 1%;}
+ .ie6 .wym_skin_refinery .wym_area_top, .ie7 .wym_skin_refinery .wym_area_top, .ie8 .wym_skin_refinery .wym_area_top { padding-bottom: 5px;}
 
 /*SECTIONS SYSTEM*/
 
