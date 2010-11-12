@@ -244,7 +244,8 @@ init_tooltips = function(args){
           tooltip.corner('6px').find('span').corner('6px');
         }
 
-        nib = $("<img src='/images/refinery/tooltip-nib.png' class='tooltip-nib'/>").appendTo('#tooltip_container');
+        tooltip_nib_image = $.browser.msie ? 'tooltip-nib.gif' : 'tooltip-nib.png';
+        nib = $("<img src='/images/refinery/"+tooltip_nib_image+"' class='tooltip-nib'/>").appendTo('#tooltip_container');
 
         tooltip.css({
           'opacity': 0
@@ -316,7 +317,9 @@ init_tooltips = function(args){
       $(element).attr('tooltip', $(element).attr('title'));
     }
     // wipe clean the title on any children too.
-    $(element).add($(element).children('img')).removeAttr('title');
+    $elements = $(element).add($(element).children('img')).removeAttr('title');
+    // if we're unlucky and in Internet Explorer then we have to say goodbye to 'alt', too.
+    if ($.browser.msie){$elements.removeAttr('alt');}
   });
 }
 
