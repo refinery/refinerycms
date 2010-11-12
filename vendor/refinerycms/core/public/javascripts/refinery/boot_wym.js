@@ -1,6 +1,8 @@
 onOpenDialog = function(dialog) {
   (dialog = $('.ui-dialog')).find('.ui-dialog-titlebar').corner('1px top');
-  if(!$.browser.msie){dialog.corner('6px')}
+  if(!$.browser.msie){
+    dialog.corner('6px');
+  }
   if (dialog.height() < $(window).height()) {
     if(iframed()) {
       $(parent.document.body).addClass('hide-overflow');
@@ -199,6 +201,15 @@ var wymeditor_boot_options = $.extend({
     $(wym._iframe).contents().find('body').addClass('wym_iframe_body');
 
     $('.field.hide-overflow').removeClass('hide-overflow').css('height', 'auto');
+  }
+  , postInitDialog: function(wym) {
+    if($.browser.msie) {
+      ($the_ui_dialog = $('.ui-dialog')).css('height', 
+        $the_ui_dialog.find('iframe').height() 
+        + $the_ui_dialog.find('iframe').contents().find('.form-actions').height() 
+        - 12
+      );
+    }
   }
   , lang: (typeof(I18n.locale) != "undefined" ? I18n.locale : 'en')
 }, custom_wymeditor_boot_options);
