@@ -4403,7 +4403,8 @@ WYMeditor.WymClassExplorer.prototype.keyup = function(e) {
 };
 
 WYMeditor.WymClassExplorer.prototype.setFocusToNode = function(node, toStart) {
-  var range = this._doc.selection.createRange();
+  (wym = this)._iframe.contentWindow.focus();
+  var range = wym._doc.selection.createRange();
   toStart = toStart ? true : false;
 
   range.moveToElementText(node);
