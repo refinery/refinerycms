@@ -664,7 +664,7 @@ var page_options = {
     $('#delete_page_part').click(function(e){
       e.preventDefault();
 
-      if(confirm("This will remove the content section '" + $('#page_parts .ui-tabs-selected a').html() + "' immediately even if you don't save this page, are you sure?")) {
+      if(confirm("This will remove the content section '" + $('#page_parts .ui-tabs-selected a').text() + "' immediately even if you don't save this page, are you sure?")) {
         var tabId = page_options.tabs.tabs('option', 'selected');
         $.ajax({
           url: page_options.del_part_url + '/' + $('#page_parts_attributes_' + tabId + '_id').val(),
