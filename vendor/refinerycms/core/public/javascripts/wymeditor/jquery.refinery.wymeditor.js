@@ -1542,7 +1542,6 @@ WYMeditor.editor.prototype.format_block = function(selected) {
 
   //'this' should be the wymeditor instance.
   var wym = this;
-
   var container = selected || wym.selected() || $(wym._iframe).contents().find('body').get(0);
   var name = container.tagName.toLowerCase();
 
@@ -4204,6 +4203,25 @@ WYMeditor.WymClassExplorer = function(wym) {
 
 };
 
+WYMeditor.WymClassExplorer.prototype.format_block = function(selected) {
+
+  //'this' should be the wymeditor instance.
+  var wym = this;
+  var container = selected || wym.selected() || $(wym._iframe).contents().find('body').get(0);
+  var name = container.tagName.toLowerCase();
+
+  //fix forbidden main containers
+  if($.inArray(name, ['strong', 'b', 'em', 'i', 'sub', 'sup', 'a']) > -1) {
+    name = container.parentNode.tagName.toLowerCase();
+  }
+
+  if(name == WYMeditor.BODY) {
+    wym._selected_image = null;
+    $(wym._iframe).contents().find('.selected_by_wym').removeClass('selected_by_wym');
+    wym._exec(WYMeditor.FORMAT_BLOCK, "<" + WYMeditor.P + ">");
+  }
+};
+
 WYMeditor.WymClassExplorer.prototype.initIframe = function(iframe) {
 
     //This function is executed twice, though it is called once!
@@ -4366,9 +4384,11 @@ WYMeditor.WymClassExplorer.prototype.unwrap = function() {
 };
 
 //keyup handler
-WYMeditor.WymClassExplorer.prototype.keyup = function() {
-  this._selected_image = null;
-  $(this._iframe).contents().find('.selected_by_wym').removeClass('selected_by_wym');
+WYMeditor.WymClassExplorer.prototype.keyup = function(e) {
+
+  (wym = this)._selected_image = null;
+  $(wym._iframe).contents().find('.selected_by_wym').removeClass('selected_by_wym');
+  wym.format_block();
 };
 
 WYMeditor.WymClassExplorer.prototype.setFocusToNode = function(node, toStart) {
