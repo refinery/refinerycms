@@ -1,11 +1,11 @@
 $(document).ready(function(){
   $('nav#actions.multilist > ul:not(.search_list) li a[href$=' + window.location.pathname + ']').not('.not_a_link a').parent().addClass('selected');
-  if($('nav#actions.multilist > ul:not(.search_list) li.selected').length == 0) {
+  if($('nav#actions.multilist > ul:not(.search_list) li.selected').length === 0) {
     $('nav#actions.multilist > ul:not(.search_list) li a:nth(1)').parent().addClass('selected');
   }
 
   $('nav#actions.multilist > ul:not(.search_list) li > a').not('.not_a_link a').each(function(i,a){
-    if ($(this).data('dialog-title') == null) {
+    if ($(this).data('dialog-title') === null) {
       $(this).bind('click', function(){
         $(this).css('background-image', "url('/images/refinery/icons/ajax-loader.gif') !important");
       });
@@ -15,9 +15,9 @@ $(document).ready(function(){
   $('ul.collapsible_menu').each(function(i, ul) {
     (first_li = $(this).children('li:first')).after(div=$("<div></div>"));
 
-    $("<span class='arrow'>&nbsp;</span>").appendTo(first_li)
+    $("<span class='arrow'>&nbsp;</span>").appendTo(first_li);
 
-    if (($(this).children('li.selected')).length == 0) {
+    if (($(this).children('li.selected')).length === 0) {
       div.hide();
       first_li.addClass("closed");
     }
