@@ -38,7 +38,7 @@ if(!WYMeditor) { var WYMeditor = {}; }
     for (var i = 0; i < names.length; ++i)
       WYMeditor.console[names[i]] = function() {};
 
-  } else WYMeditor.console = window.console;
+  } else { WYMeditor.console = window.console; }
 })();
 $.extend(WYMeditor, {
 
@@ -674,7 +674,7 @@ WYMeditor.editor.prototype.init = function() {
 
   if(WymClass) {
 
-      if($.isFunction(this._options.preInit)) this._options.preInit(this);
+      if($.isFunction(this._options.preInit)) { this._options.preInit(this); }
 
       var SaxListener = new WYMeditor.XhtmlSaxListener();
       $.extend(SaxListener, WymClass);
@@ -729,7 +729,7 @@ WYMeditor.editor.prototype.init = function() {
 
       for(var i = 0; i < aTools.length; i++) {
         var oTool = aTools[i];
-        if(oTool.name && oTool.title)
+        if(oTool.name && oTool.title) {
           var sTool = this._options.toolsItemHtml;
           var sTool = h.replaceAll(sTool, WYMeditor.TOOL_NAME, oTool.name);
           sTool = h.replaceAll(sTool, WYMeditor.TOOL_TITLE, this._options.stringDelimiterLeft
@@ -737,6 +737,7 @@ WYMeditor.editor.prototype.init = function() {
             + this._options.stringDelimiterRight);
           sTool = h.replaceAll(sTool, WYMeditor.TOOL_CLASS, oTool.css);
           sTools += sTool;
+        }
       }
 
       boxHtml = h.replaceAll(boxHtml, WYMeditor.TOOLS_ITEMS, sTools);
@@ -780,7 +781,7 @@ WYMeditor.editor.prototype.init = function() {
 
       for(var i = 0; i < aContainers.length; i++) {
         var oContainer = aContainers[i];
-        if(oContainer.name && oContainer.title)
+        if(oContainer.name && oContainer.title) {
           var sContainer = this._options.containersItemHtml;
           sContainer = h.replaceAll(sContainer, WYMeditor.CONTAINER_NAME, oContainer.name);
           sContainer = h.replaceAll(sContainer, WYMeditor.CONTAINER_TITLE,
@@ -789,6 +790,7 @@ WYMeditor.editor.prototype.init = function() {
             + this._options.stringDelimiterRight);
           sContainer = h.replaceAll(sContainer, WYMeditor.CONTAINER_CLASS, oContainer.css);
           sContainers += sContainer;
+        }
       }
 
       boxHtml = h.replaceAll(boxHtml, WYMeditor.CONTAINERS_ITEMS, sContainers);
@@ -896,8 +898,11 @@ WYMeditor.editor.prototype.box = function() {
  */
 WYMeditor.editor.prototype.html = function(html) {
 
-  if(typeof html === 'string') $(this._doc.body).html(html);
-  else return($(this._doc.body).html());
+  if(typeof html === 'string') {
+    $(this._doc.body).html(html);
+  } else {
+    return($(this._doc.body).html());
+  }
 };
 
 /* @name intercept_paste
@@ -910,7 +915,7 @@ WYMeditor.editor.prototype.intercept_paste = function(e) {
   if (e) {
     e.preventDefault();
   }
-}
+};
 
 /* @name xhtml
  * @description Cleans up the HTML
@@ -1004,7 +1009,7 @@ WYMeditor.editor.prototype.container = function(sType) {
       }
 
       //if it exists, switch
-      if(container!=null) {
+      if(container!==null) {
 
         sType = (container.tagName.toLowerCase() == WYMeditor.TD)? WYMeditor.TH: WYMeditor.TD;
         this.switchTo(container,sType);
@@ -1040,12 +1045,12 @@ WYMeditor.editor.prototype.container = function(sType) {
             var lgt = nodes.length;
             var firstNode = null;
 
-            if(lgt > 0) firstNode = nodes.item(0);
+            if(lgt > 0) { firstNode = nodes.item(0); }
             for(var x=0; x<lgt; x++) {
               blockquote.parentNode.insertBefore(nodes.item(0),blockquote);
             }
             blockquote.parentNode.removeChild(blockquote);
-            if(firstNode) this.setFocusToNode(firstNode);
+            if(firstNode) { this.setFocusToNode(firstNode); }
           }
         }
 
@@ -1058,7 +1063,7 @@ WYMeditor.editor.prototype.container = function(sType) {
       }
     }
   }
-  else return(this.selected());
+  else { return(this.selected()); }
 };
 
 /* @name toggleClass
@@ -4331,7 +4336,7 @@ WYMeditor.WymClassExplorer.prototype._exec = function(cmd,param) {
 WYMeditor.WymClassExplorer.prototype.selected = function() {
 
     var caretPos = this._iframe.contentWindow.document.caretPos;
-        if(caretPos!=null) {
+        if(caretPos!==null) {
             if(caretPos.parentElement!=undefined)
               return(caretPos.parentElement());
         }
