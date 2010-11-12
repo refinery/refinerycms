@@ -13,13 +13,13 @@ init_interface = function() {
   }
   $('input:submit:not(.button)').addClass('button');
 
-  $('.button, #editor_switch a').corner('6px');
-  $('#editor_switch a').appendTo($('<span></span>').prependTo('#editor_switch').corner('6px'));
-  $('#page_container, .wym_box').corner('5px bottom');
-  $('.wym_box').corner('5px tr');
-  $('.field > .wym_box').corner('5px tl');
-  $('.wym_iframe iframe').corner('2px');
-  $('.form-actions:not(".form-actions-dialog")').corner('5px');
+  if (!$.browser.msie) {
+    $('#page_container, .wym_box').corner('5px bottom');
+    $('.wym_box').corner('5px tr');
+    $('.field > .wym_box').corner('5px tl');
+    $('.wym_iframe iframe').corner('2px');
+    $('.form-actions:not(".form-actions-dialog")').corner('5px');
+  }
   $('#recent_activity li a, #recent_inquiries li a').each(function(i, a) {
     $(this).textTruncate({
       width: $(this).width()
