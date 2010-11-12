@@ -745,7 +745,8 @@ var image_dialog = {
         if ((wym_alt = parent.document.getElementById('wym_alt')) != null) {
           wym_alt.value = $(img).attr('alt');
         }
-        if ((wym_size = parent.document.getElementById('wym_size')) != null) {
+        if ((wym_size = parent.document.getElementById('wym_size')) != null
+            && typeof(geometry) != 'undefined') {
           wym_size.value = geometry.replace(/[<>=]/g, '');
         }
       }
