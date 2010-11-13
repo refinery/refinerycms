@@ -5,7 +5,7 @@ $(document).ready(function(){
   }
 
   $('nav#actions.multilist > ul:not(.search_list) li > a').not('.not_a_link a').each(function(i,a){
-    if ($(this).data('dialog-title') === null) {
+    if ($(this).data('dialog-title') == null) {
       $(this).bind('click', function(){
         $(this).css('background-image', "url('/images/refinery/icons/ajax-loader.gif') !important");
       });
