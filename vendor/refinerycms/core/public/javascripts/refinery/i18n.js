@@ -35,7 +35,7 @@ I18n.lookup = function(scope, options) {
 		}
 	}
 
-	if (!messages && options.defaultValue !== null && options.defaultValue !== undefined) {
+	if (!messages && options.defaultValue != null && options.defaultValue != undefined) {
 		messages = options.defaultValue;
 	}
 
@@ -61,7 +61,7 @@ I18n.prepareOptions = function() {
 		}
 
 		for (var key in opts) {
-			if (options[key] === undefined || options[key] === null) {
+			if (options[key] == undefined || options[key] == null) {
 				options[key] = opts[key];
 			}
 		}
@@ -87,7 +87,7 @@ I18n.interpolate = function(message, options) {
 
 		value = options[name];
 
-		if (options[name] === null || options[name] === undefined) {
+		if (options[name] == null || options[name] == undefined) {
 			value = "[missing " + placeholder + " value]";
 		}
 
@@ -141,7 +141,7 @@ I18n.parseDate = function(d) {
 	if (matches = d.toString().match(/(\d{4})-(\d{2})-(\d{2})(?:[ |T](\d{2}):(\d{2}):(\d{2}))?(Z)?/)) {
 		// date/time strings: yyyy-mm-dd hh:mm:ss or yyyy-mm-dd or yyyy-mm-ddThh:mm:ssZ
 		for (var i = 1; i <= 6; i++) {
-			matches[i] = matches[i] === undefined? 0 : parseInt(matches[i], 10);
+			matches[i] = matches[i] == undefined? 0 : parseInt(matches[i], 10);
 		}
 
 		// month starts on 0
