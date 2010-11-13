@@ -30,8 +30,8 @@ init_interface = function() {
   // make sure that users can tab to wymeditor fields and add an overlay while loading.
   $('textarea.wymeditor').each(function() {
     textarea = $(this);
-    if ((instance = WYMeditor.INSTANCES[$((textarea.next('.wym_box').find('iframe').attr('id')||'').split('_')).last().get(0)]) !== null) {
-      if ((next = textarea.parent().next()) !== null && next.length > 0) {
+    if ((instance = WYMeditor.INSTANCES[$((textarea.next('.wym_box').find('iframe').attr('id')||'').split('_')).last().get(0)]) != null) {
+      if ((next = textarea.parent().next()) != null && next.length > 0) {
         next.find('input, textarea').keydown($.proxy(function(e) {
           shiftHeld = e.shiftKey;
           if (shiftHeld && e.keyCode == $.ui.keyCode.TAB) {
@@ -42,7 +42,7 @@ init_interface = function() {
           shiftHeld = false;
         });
       }
-      if ((prev = textarea.parent().prev()) !== null && prev.length > 0) {
+      if ((prev = textarea.parent().prev()) != null && prev.length > 0) {
         prev.find('input, textarea').keydown($.proxy(function(e) {
           if (e.keyCode == $.ui.keyCode.TAB) {
             this._iframe.contentWindow.focus();
@@ -212,7 +212,7 @@ submit_and_continue = function(e, redirect_to) {
 
       $('.errorExplanation').not($('#flash_container .errorExplanation')).remove();
 
-      if ((error_fields = $('#fieldsWithErrors').val()) !== null) {
+      if ((error_fields = $('#fieldsWithErrors').val()) != null) {
         $.each(error_fields.split(','), function() {
           $("#" + this).wrap("<div class='fieldWithErrors' />");
         });
@@ -232,7 +232,7 @@ submit_and_continue = function(e, redirect_to) {
 };
 
 init_tooltips = function(args){
-  $($(args !== null ? args : 'a[title], span[title], #image_grid img[title], *[tooltip]')).not('.no-tooltip').each(function(index, element)
+  $($(args != null ? args : 'a[title], span[title], #image_grid img[title], *[tooltip]')).not('.no-tooltip').each(function(index, element)
   {
     // create tooltip on hover and destroy it on hoveroff.
     $(element).hover(function(e) {
@@ -292,7 +292,7 @@ init_tooltips = function(args){
 
     }, function(e) {
       $(this).stopTime('tooltip');
-      if ((tt_offset = (tooltip = $('.tooltip')).css('z-index', '-1').offset()) === null) {
+      if ((tt_offset = (tooltip = $('.tooltip')).css('z-index', '-1').offset()) == null) {
         tt_offset = {'top':0,'left':0};
       }
       tooltip.animate({
@@ -301,7 +301,7 @@ init_tooltips = function(args){
       }, 125, 'swing', function(){
         $(this).remove();
       });
-      if ((nib_offset = (nib = $('.tooltip-nib')).offset()) === null) {
+      if ((nib_offset = (nib = $('.tooltip-nib')).offset()) == null) {
         nib_offset = {'top':0,'left':0};
       }
       nib.animate({
@@ -313,7 +313,7 @@ init_tooltips = function(args){
     }).click(function(e) {
       $(this).stopTime('tooltip');
     });
-    if ($(element).attr('tooltip') === null) {
+    if ($(element).attr('tooltip') == null) {
       $(element).attr('tooltip', $(element).attr('title'));
     }
     // wipe clean the title on any children too.
@@ -444,7 +444,7 @@ var link_dialog = {
 
     if (parent
         && parent.document.location.href != document.location.href
-        && parent.document.getElementById('wym_dialog_submit') !== null) {
+        && parent.document.getElementById('wym_dialog_submit') != null) {
       $('#dialog_container .form-actions input#submit_button').click(function(e) {
         e.preventDefault();
         $(parent.document.getElementById('wym_dialog_submit')).click();
@@ -527,14 +527,14 @@ var link_dialog = {
   },
 
   update_parent: function(url, title, target) {
-    if (parent !== null) {
-      if ((wym_href = parent.document.getElementById('wym_href')) !== null) {
+    if (parent != null) {
+      if ((wym_href = parent.document.getElementById('wym_href')) != null) {
         wym_href.value = url;
       }
-      if ((wym_title = parent.document.getElementById('wym_title')) !== null) {
+      if ((wym_title = parent.document.getElementById('wym_title')) != null) {
         wym_title.value = title;
       }
-      if ((wym_target = parent.document.getElementById('wym_target')) !== null) {
+      if ((wym_target = parent.document.getElementById('wym_target')) != null) {
         wym_target.value = target || "";
       }
     }
@@ -736,16 +736,16 @@ var image_dialog = {
       image_url = resize ? $(img).attr('data-' + size) : $(img).attr('data-original');
 
       if (parent) {
-        if ((wym_src = parent.document.getElementById('wym_src')) !== null) {
+        if ((wym_src = parent.document.getElementById('wym_src')) != null) {
           wym_src.value = image_url;
         }
-        if ((wym_title = parent.document.getElementById('wym_title')) !== null) {
+        if ((wym_title = parent.document.getElementById('wym_title')) != null) {
           wym_title.value = $(img).attr('title');
         }
-        if ((wym_alt = parent.document.getElementById('wym_alt')) !== null) {
+        if ((wym_alt = parent.document.getElementById('wym_alt')) != null) {
           wym_alt.value = $(img).attr('alt');
         }
-        if ((wym_size = parent.document.getElementById('wym_size')) !== null
+        if ((wym_size = parent.document.getElementById('wym_size')) != null
             && typeof(geometry) != 'undefined') {
           wym_size.value = geometry.replace(/[<>=]/g, '');
         }
@@ -784,7 +784,7 @@ var image_dialog = {
     });
 
     if (parent && parent.document.location.href != document.location.href
-        && parent.document.getElementById('wym_dialog_submit') !== null) {
+        && parent.document.getElementById('wym_dialog_submit') != null) {
       $('#existing_image_area .form-actions input#submit_button').click($.proxy(function(e) {
         e.preventDefault();
         $(this.document.getElementById('wym_dialog_submit')).click();
@@ -874,7 +874,7 @@ var list_reorder = {
 
     $('#sortable_list').removeClass("reordering");
 
-    if (list_reorder.update_url !== null) {
+    if (list_reorder.update_url != null) {
 
       var serialized = list_reorder.sortable_list.serializelist();
 
