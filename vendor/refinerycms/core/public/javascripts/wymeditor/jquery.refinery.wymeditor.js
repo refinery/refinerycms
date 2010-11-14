@@ -1206,7 +1206,7 @@ WYMeditor.editor.prototype.update = function() {
   html = html.replace(/src=\"system\/images/g, 'src="/system/images');
 
   // get rid of wym id tags that were forgotten about by replacing them with their content.
-  $(html).find('span[id|=wym]').each(function(i, span){
+  $(html).find('span[id|=wym], span[id=undefined]').each(function(i, span){
     html_to_replace = $(span).wrap('<div />').parent().html();
     if($.browser.msie) {
       // converts <SPAN id=wym-1231231>foo</SPAN> to <SPAN id="wym-1231231">foo</SPAN> (note the quotes)
