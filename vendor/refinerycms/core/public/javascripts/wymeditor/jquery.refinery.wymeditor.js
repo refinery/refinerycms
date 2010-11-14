@@ -1740,11 +1740,9 @@ WYMeditor.INIT_DIALOG = function(wym, selected, isIframe) {
         {
           // ensure some attributes are copied across to the new link.
           link.attr({'style': replaceable.attr('style'), 'class': replaceable.attr('class')});
-          replaceable.after(link);
-          link.html(replaceable.html());
 
-          // now we can get rid of the replaceable element.
-          replaceable.remove();
+          link.html(replaceable.html());
+          replaceable.replaceWith($('<div/>').append(link).html());
         }
         else
         {
