@@ -14,7 +14,7 @@ GIT
 
 GIT
   remote: git://github.com/refinerycms/dragonfly.git
-  revision: df9c6eb46ba19cda21952d23abf85fce62e1152f
+  revision: 3678ed5e3c1367410603f79314f7506e194c8edf
   branch: imagemagick
   specs:
     dragonfly (0.7.7)
@@ -22,7 +22,7 @@ GIT
 
 GIT
   remote: git://github.com/resolve/refinerycms-generators.git
-  revision: 0d667131f0891cf83cde5b5c6f748e3f7eb867ae
+  revision: 72f361872bc51afa2ec84a77ff48a1af32cb6b51
   specs:
     refinerycms-generators (0.9.9)
 
@@ -84,7 +84,7 @@ GEM
       ZenTest
     babosa (0.2.0)
     builder (2.1.2)
-    celerity (0.8.2)
+    celerity (0.8.4)
     childprocess (0.1.4)
       ffi (~> 0.6.3)
     configuration (1.1.0)
