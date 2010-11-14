@@ -1219,7 +1219,7 @@ WYMeditor.editor.prototype.update = function() {
   // get rid of wym id tags that were forgotten about by replacing them with their content.
   $(html).find(bad_spans='span[id|=wym], span[id=undefined]').add($(html).filter(bad_spans)).each(function(i, span) {
     html_to_replace_with = wym.parser.parse($(span).html());
-    console.log(html_to_replace = wym.parser.parse($(span).wrap('<div />').parent().html()));
+    html_to_replace = wym.parser.parse($(span).wrap('<div />').parent().html());
     if($.browser.msie) {
       // converts <SPAN id=wym-1231231>foo</SPAN> to <SPAN id="wym-1231231">foo</SPAN> (note the quotes)
       html_to_replace = new RegExp(html_to_replace.replace(/(\ [^\=]+\=)([^\ >]+)/, '$1"$2"'), "ig");
