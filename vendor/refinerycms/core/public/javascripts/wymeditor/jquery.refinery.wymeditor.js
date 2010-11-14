@@ -851,7 +851,7 @@ WYMeditor.editor.prototype.bindEvents = function() {
               }
             });
 
-            oClass = {expr: (classRule.rules[indexOf].expr || null)}
+            oClass = {expr: (classRule.rules[indexOf].expr || null)};
           }
         }
       });
@@ -1074,7 +1074,7 @@ WYMeditor.editor.prototype.toggleClass = function(sClass, jqexpr) {
   var container = $((this._selected_image ? this._selected_image : this.selected(true)));
   if (jqexpr != null) { container = $(container.parentsOrSelf(jqexpr)); }
   container.toggleClass(sClass);
-  if(!container.attr(WYMeditor.CLASS)) container.removeAttr(this._class);
+  if(!container.attr(WYMeditor.CLASS)) { container.removeAttr(this._class); }
 
 };
 
@@ -1087,9 +1087,9 @@ WYMeditor.editor.prototype.removeClass = function(sClass, jqexpr) {
   if (jqexpr != null) { container = $(container.parentsOrSelf(jqexpr)); }
   container.removeClass(sClass);
 
-  if(!container.attr(WYMeditor.CLASS)) container.removeAttr(this._class);
+  if(!container.attr(WYMeditor.CLASS)) { container.removeAttr(this._class); }
 
-}
+};
 
 /* @name findUp
  * @description Returns the first parent or self container, based on its type
@@ -1128,10 +1128,14 @@ WYMeditor.editor.prototype.findUp = function(node, filter) {
         }
       }
 
-      if(tagname != WYMeditor.BODY) return(node);
-      else return(null);
-
-  } else return(null);
+      if(tagname != WYMeditor.BODY) {
+        return(node);
+      } else {
+        return(null);
+      }
+  } else {
+    return(null);
+  }
 };
 
 /* @name switchTo
@@ -1180,7 +1184,7 @@ WYMeditor.editor.prototype.replaceStrings = function(sVal) {
   //replace all the strings in sVal and return it
   $.each(WYMeditor.STRINGS[wym._options.lang], function(key, value) {
     sVal = WYMeditor.Helper.replaceAll(sVal, wym.encloseString(key), value);
-  })
+  });
 
   return(sVal);
 };
@@ -1264,12 +1268,12 @@ WYMeditor.editor.prototype.dialog = function( dialogType ) {
           {
             selected = possible_match;
           }
-        })
+        });
       }
     }
   }
 
-  ajax_loaded_callback = function(){wym.dialog_ajax_callback(selected)};
+  ajax_loaded_callback = function(){wym.dialog_ajax_callback(selected);};
 
   var parent_node = wym._selected_image ? wym._selected_image.parentNode : selected;
   if (typeof(parent_node) != 'undefined' && parent_node !== null) {
@@ -1335,7 +1339,7 @@ WYMeditor.editor.prototype.dialog = function( dialogType ) {
 
       if (dialogType != WYMeditor.DIALOG_PASTE && dialogType != WYMeditor.DIALOG_TABLE) {
         path += path.indexOf("?") == -1 ? "?" : "&";
-        port = (window.location.port.length > 0 ? (":" + window.location.port) : "")
+        port = (window.location.port.length > 0 ? (":" + window.location.port) : "");
         path += "current_link=" + parent_node.href.replace(window.location.protocol + "//" + window.location.hostname + port, "");
         path += "&target_blank=" + (parent_node.target == "_blank" ? "true" : "false");
       }
