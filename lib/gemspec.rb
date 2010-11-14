@@ -40,7 +40,7 @@ Gem::Specification.new do |s|
   s.executables       = %w(#{Dir.glob('bin/*').map{|d| d.gsub('bin/','')}.join(' ')})
 
   s.add_dependency    'rails',                '~> 3.0.1'
-  s.add_dependency    'bundler',              '~> 1.0.3'
+  s.add_dependency    'bundler',              '~> 1.0.5'
 
   s.add_dependency    'moretea-awesome_nested_set', '= 1.4.3.1'
 
