@@ -72,8 +72,8 @@ sv:
         meta_description_help: Fyll i konkret vad sidan handlar om. Använd en, två eller tre meningar.
       index:
         create_new_page: Lägg till ny sida
-        reorder_pages: Ändra ordning på sidor.
-        reorder_pages_done: Klar med ändring av ordning på sidor.
+        reorder_pages: Ändra ordning på sidor
+        reorder_pages_done: Spara ny ordning på sidor
         no_pages_yet: Det finns inga sidor ännu. Klicka på "Lägg till ny sida" för att skapa din första sida.
   activerecord:
     models:
