@@ -1206,8 +1206,10 @@ WYMeditor.editor.prototype.status = function(sMessage) {
  * @description Updates the element and textarea values
  */
 WYMeditor.editor.prototype.update = function() {
+  var wym = this;
+
   // the replace function below makes the HTML source code easier to read when end users need to use this view.
-  var html = this.xhtml().replace(/<\/([A-Za-z0-9]*)></g, function(m){
+  var html = wym.xhtml().replace(/<\/([A-Za-z0-9]*)></g, function(m){
     return m.split(">").join(">\n");
   });
 
@@ -1215,13 +1217,14 @@ WYMeditor.editor.prototype.update = function() {
   html = html.replace(/src=\"system\/images/g, 'src="/system/images');
 
   // get rid of wym id tags that were forgotten about by replacing them with their content.
-  $(html).find('span[id|=wym], span[id=undefined]').each(function(i, span){
-    html_to_replace = $(span).wrap('<div />').parent().html();
+  $(html).find(bad_spans='span[id|=wym], span[id=undefined]').add($(html).filter(bad_spans)).each(function(i, span) {
+    html_to_replace_with = wym.parser.parse($(span).html());
+    console.log(html_to_replace = wym.parser.parse($(span).wrap('<div />').parent().html()));
     if($.browser.msie) {
       // converts <SPAN id=wym-1231231>foo</SPAN> to <SPAN id="wym-1231231">foo</SPAN> (note the quotes)
       html_to_replace = new RegExp(html_to_replace.replace(/(\ [^\=]+\=)([^\ >]+)/, '$1"$2"'), "ig");
     }
-    html = html.replace(html_to_replace, $(span).html());
+    html = html.replace(html_to_replace, html_to_replace_with);
   });
 
   // get rid of id='last_paste' tags that were forgotten about.
@@ -1231,8 +1234,8 @@ WYMeditor.editor.prototype.update = function() {
   html = html.replace(/[%$]+wym-[^%$]*[%$]+/igm, '');
 
   // apply changes/
-  $(this._element).val(html);
-  $(this._box).find(this._options.htmlValSelector).not('.hasfocus').val(html); //#147
+  $(wym._element).val(html);
+  $(wym._box).find(wym._options.htmlValSelector).not('.hasfocus').val(html); //#147
 };
 
 /* @name dialog
@@ -5107,15 +5110,15 @@ WYMeditor.WymClassSafari.prototype.keyup = function(e) {
     //text nodes replaced by P
 
     container = wym.selected();
-    var name = container.tagName.toLowerCase();
+    if (container && (name = container.tagName.toLowerCase())) {
+      //fix forbidden main containers
+      if($.inArray(name, ['strong', 'b', 'em', 'i', 'sub', 'sup', 'a', 'span']) > -1) {
+        name = container.parentNode.tagName.toLowerCase();
+      }
 
-    //fix forbidden main containers
-    if($.inArray(name, ['strong', 'b', 'em', 'i', 'sub', 'sup', 'a', 'span']) > -1) {
-      name = container.parentNode.tagName.toLowerCase();
-    }
-
-    if(name == WYMeditor.BODY || name == WYMeditor.DIV) {
-      wym._exec(WYMeditor.FORMAT_BLOCK, WYMeditor.P); //fix #110 for DIV
+      if(name == WYMeditor.BODY || name == WYMeditor.DIV) {
+        wym._exec(WYMeditor.FORMAT_BLOCK, WYMeditor.P); //fix #110 for DIV
+      }
     }
   }
 };
