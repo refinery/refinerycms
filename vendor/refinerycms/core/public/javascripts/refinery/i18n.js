@@ -205,7 +205,7 @@ I18n.strftime = function(date, format) {
 
 	if (hour12 > 12) {
 		hour12 = hour12 - 12;
-	};
+	}
 
 	var padding = function(n) {
 		var s = "0" + n.toString();
@@ -308,10 +308,10 @@ I18n.pluralize = function(count, scope, options) {
 			message = translation["zero"] || translation["none"] || translation["other"] || this.missingTranslation(scope, "zero");
 			break;
 		case 1:
-			message = translation["one"] || this.missingTranslation(scope, "one");;
+			message = translation["one"] || this.missingTranslation(scope, "one");
 			break;
 		default:
-			message = translation["other"] || this.missingTranslation(scope, "other");;
+			message = translation["other"] || this.missingTranslation(scope, "other");
 	}
 
 	return this.interpolate(message, options);
