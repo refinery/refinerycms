@@ -4896,54 +4896,6 @@ WYMeditor.WymClassSafari.prototype.initIframe = function(iframe) {
     this.listen();
 };
 
-WYMeditor.WymClassSafari.prototype.paste = function(sData) {
-
-  (wym = this).format_block();
-  replaceable = $(wym._doc.body).find('#' + wym._current_unique_stamp);
-
-  // replaceable doesn't actually get replaced here, it's just used as a marker for where the cursor was.
-  var container = replaceable.get(0) || this.selected();
-
-  //split the data, using double newlines as the separator
-  var aP = sData.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")
-            .split(wym._newLine + wym._newLine);
-  var rExp = new RegExp(wym._newLine, "g");
-
-  //add a P for each item
-  var sTmp;
-  if(container && container.tagName.toLowerCase() != WYMeditor.BODY) {
-    for(x = aP.length - 1; x >= 0; x--) {
-      sTmp = aP[x];
-      //simple newlines are replaced by a break
-      sTmp = sTmp.replace(rExp, "<br />");
-      if (x == 0 && $(container).html().replace(/<br\ ?\/?>/, "").length == 0) {
-        $(container).html(sTmp);
-      }
-      else {
-        $(container).after("<p>" + sTmp + "</p>");
-      }
-    }
-  }
-
-  else {
-    for(x = 0; x < aP.length; x++) {
-      sTmp = aP[x];
-      //simple newlines are replaced by a break
-      sTmp = sTmp.replace(rExp, "<br />");
-      if (x == 0 && $(container).html().replace(/<br\ ?\/?>/, "").length == 0) {
-        $(container).html(sTmp);
-      } else {
-        $(wym._doc.body).append("<p>" + sTmp + "</p>");
-      }
-    }
-  }
-
-  if (replaceable.get(0) != null) {
-    // set the id of the container back.
-    replaceable.get(0).id = replaceable.get(0)._id_before_replaceable;
-  }
-};
-
 WYMeditor.WymClassSafari.prototype._exec = function(cmd,param) {
 
     if(!this.selected()) return(false);
