@@ -1350,7 +1350,7 @@ WYMeditor.editor.prototype.dialog = function( dialogType ) {
   dialog_title = wym.replaceStrings(wym.encloseString( dialogType ));
   dialog_container = $("<div id='" + wym._options.dialogId + "' class='editor_dialog'></div>");
   switch(dialogType) {
-    case WYMeditor.DIALOG_TABLE: {
+    case WYMeditor.DIALOG_TABLE:
       // create and open dialog
       dialog_container.html(wym.replaceStrings(wym._options.dialogTableHtml))
                       .dialog($.extend(wym._options.dialogInlineFeatures, {
@@ -1359,8 +1359,7 @@ WYMeditor.editor.prototype.dialog = function( dialogType ) {
 
       ajax_loaded_callback();
       break;
-    }
-    case WYMeditor.DIALOG_PASTE: {
+    case WYMeditor.DIALOG_PASTE:
       dialog_container.html(wym.replaceStrings(wym._options.dialogPasteHtml))
                       .dialog($.extend(wym._options.dialogInlineFeatures, {
                                         title: dialog_title
@@ -1368,15 +1367,12 @@ WYMeditor.editor.prototype.dialog = function( dialogType ) {
 
       ajax_loaded_callback();
       break;
-    }
     default:
-    {
       $("<img id='dialog_loading' src='/images/refinery/dialogLoadingAnimation.gif' width='208' height='13' />").appendTo(dialog_container);
       dialog_container.dialog($.extend(wym._options.dialogFeatures, {
         title: dialog_title
       })).load(path, ajax_loaded_callback);
       break;
-    }
   }
 
 };
@@ -1540,14 +1536,14 @@ WYMeditor.editor.prototype.setFocusToNode = function(node, toStart) {
   selection.addRange(range);
   selection.collapse(node, toStart);
   this._iframe.contentWindow.focus();
-}
+};
 
 WYMeditor.editor.prototype.addCssRules = function(doc, aCss) {
   var styles = doc.styleSheets[0];
   if(styles) {
     for(var i = 0; i < aCss.length; i++) {
       var oCss = aCss[i];
-      if(oCss.name && oCss.css) this.addCssRule(styles, oCss);
+      if(oCss.name && oCss.css) { this.addCssRule(styles, oCss); }
     }
   }
 };
@@ -1642,8 +1638,8 @@ WYMeditor.editor.prototype.mousedown = function(e) {
   var wym = WYMeditor.INSTANCES[this.ownerDocument.title];
   wym._selected_image = (e.target.tagName.toLowerCase() == WYMeditor.IMG) ? e.target : null;
   $(wym._iframe).contents().find('.selected_by_wym').removeClass('selected_by_wym');
-  if (!$.browser.mozilla) $(wym._selected_image).addClass('selected_by_wym');
-  if (!$.browser.webkit) e.stopPropagation();
+  if (!$.browser.mozilla) { $(wym._selected_image).addClass('selected_by_wym'); }
+  if (!$.browser.webkit) { e.stopPropagation(); }
 };
 
 /********** SKINS **********/
@@ -1885,7 +1881,7 @@ WYMeditor.editor.prototype.close_dialog = function(e, cancelled) {
   if (e) {
     e.preventDefault();
   }
-}
+};
 
 /********** XHTML LEXER/PARSER **********/
 
