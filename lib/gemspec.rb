@@ -51,6 +51,7 @@ Gem::Specification.new do |s|
   s.add_dependency    'authlogic',            '~> 2.1.6'
   s.add_dependency    'rack-cache',           '~> 0.5.2'
   s.add_dependency    'dragonfly',            '~> 0.7.7'
+  s.add_dependency    'rdoc',                 '>= 2.5.11' # helps fix ubuntu
 
   s.files             = [
     '#{files.sort.join("',\n    '")}'

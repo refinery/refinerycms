@@ -4,7 +4,7 @@ Gem::Specification.new do |s|
   s.name              = %q{refinerycms}
   s.version           = %q{0.9.9.pre}
   s.description       = %q{A Ruby on Rails CMS that supports Rails 3. It's easy to extend and sticks to 'the Rails way' where possible.}
-  s.date              = %q{2010-11-12}
+  s.date              = %q{2010-11-15}
   s.summary           = %q{A Ruby on Rails CMS that supports Rails 3}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
@@ -25,6 +25,7 @@ Gem::Specification.new do |s|
   s.add_dependency    'authlogic',            '~> 2.1.6'
   s.add_dependency    'rack-cache',           '~> 0.5.2'
   s.add_dependency    'dragonfly',            '~> 0.7.7'
+  s.add_dependency    'rdoc',                 '>= 2.5.11' # helps fix ubuntu
 
   s.files             = [
     '.gitignore',
@@ -162,6 +163,7 @@ Gem::Specification.new do |s|
     'vendor/refinerycms/authentication/config/locales/pt-BR.yml',
     'vendor/refinerycms/authentication/config/locales/ru.yml',
     'vendor/refinerycms/authentication/config/locales/sl.yml',
+    'vendor/refinerycms/authentication/config/locales/sv.yml',
     'vendor/refinerycms/authentication/config/locales/zh-CN.yml',
     'vendor/refinerycms/authentication/config/routes.rb',
     'vendor/refinerycms/authentication/features',
@@ -247,6 +249,7 @@ Gem::Specification.new do |s|
     'vendor/refinerycms/core/config/locales/pt-BR.yml',
     'vendor/refinerycms/core/config/locales/ru.yml',
     'vendor/refinerycms/core/config/locales/sl.yml',
+    'vendor/refinerycms/core/config/locales/sv.yml',
     'vendor/refinerycms/core/config/locales/zh-CN.yml',
     'vendor/refinerycms/core/config/routes.rb',
     'vendor/refinerycms/core/crud.md',
@@ -779,6 +782,7 @@ Gem::Specification.new do |s|
     'vendor/refinerycms/dashboard/config/locales/pt-BR.yml',
     'vendor/refinerycms/dashboard/config/locales/ru.yml',
     'vendor/refinerycms/dashboard/config/locales/sl.yml',
+    'vendor/refinerycms/dashboard/config/locales/sv.yml',
     'vendor/refinerycms/dashboard/config/locales/zh-CN.yml',
     'vendor/refinerycms/dashboard/config/routes.rb',
     'vendor/refinerycms/dashboard/features',
@@ -825,6 +829,7 @@ Gem::Specification.new do |s|
     'vendor/refinerycms/images/config/locales/pt-BR.yml',
     'vendor/refinerycms/images/config/locales/ru.yml',
     'vendor/refinerycms/images/config/locales/sl.yml',
+    'vendor/refinerycms/images/config/locales/sv.yml',
     'vendor/refinerycms/images/config/locales/zh-CN.yml',
     'vendor/refinerycms/images/config/routes.rb',
     'vendor/refinerycms/images/features',
@@ -899,6 +904,7 @@ Gem::Specification.new do |s|
     'vendor/refinerycms/pages/config/locales/pt-BR.yml',
     'vendor/refinerycms/pages/config/locales/ru.yml',
     'vendor/refinerycms/pages/config/locales/sl.yml',
+    'vendor/refinerycms/pages/config/locales/sv.yml',
     'vendor/refinerycms/pages/config/locales/zh-CN.yml',
     'vendor/refinerycms/pages/config/routes.rb',
     'vendor/refinerycms/pages/features',
@@ -951,6 +957,7 @@ Gem::Specification.new do |s|
     'vendor/refinerycms/resources/config/locales/pt-BR.yml',
     'vendor/refinerycms/resources/config/locales/ru.yml',
     'vendor/refinerycms/resources/config/locales/sl.yml',
+    'vendor/refinerycms/resources/config/locales/sv.yml',
     'vendor/refinerycms/resources/config/locales/zh-CN.yml',
     'vendor/refinerycms/resources/config/routes.rb',
     'vendor/refinerycms/resources/features',
@@ -1002,6 +1009,7 @@ Gem::Specification.new do |s|
     'vendor/refinerycms/settings/config/locales/pt-BR.yml',
     'vendor/refinerycms/settings/config/locales/ru.yml',
     'vendor/refinerycms/settings/config/locales/sl.yml',
+    'vendor/refinerycms/settings/config/locales/sv.yml',
     'vendor/refinerycms/settings/config/locales/zh-CN.yml',
     'vendor/refinerycms/settings/config/routes.rb',
     'vendor/refinerycms/settings/features',
