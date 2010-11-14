@@ -52,7 +52,7 @@ gem 'refinerycms-generators',   '~> 0.9.9', :git => 'git://github.com/resolve/re
 # gem 'refinerycms-search',     '~> 0.9.8'
 
 # Add i18n support (optional, you can remove this if you really want to).
-gem 'refinerycms-i18n',         '~> 0.9.8.8'
+gem 'refinerycms-i18n',         '~> 0.9.8.10'
 
 gem 'jruby-openssl' if java
 
