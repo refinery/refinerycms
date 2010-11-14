@@ -12,4 +12,4 @@ init_flash_messages = function(){
      e.preventDefault();
   });
   $('#flash.flash_message').prependTo('#records');
-}
+};
