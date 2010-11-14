@@ -1,0 +1,66 @@
+sv:
+  plugins:
+    refinery_users:
+      title: Användare
+      description: Hantera användare
+  admin:
+    users:
+      delete: Ta bort den här användaren för alltid
+      edit: Redigera den här användaren
+      update:
+        cannot_remove_user_plugin_from_current_user: Du kan inte ta bort insticksprogrammet 'Användare' från det konto som är inloggat.
+      form:
+        blank_password_keeps_current: Lämna blankt för att behålla nuvarande lösenord
+        enable_all: markera alla
+      index:
+        create_new_user: Lägg till ny användare
+      user:
+        email_user: Skicka e-post till denna användare
+        preview: (%{who}) la till %{created_at}
+  sessions:
+    login_successful: Inloggning lyckades
+    new:
+      hello_please_sign_in: Hej! Vänligen logga in.
+      sign_in: Logga in
+      forgot_password: Jag har glömt mitt lösenord
+  users:
+    setup_website_name_html: Låt oss först ge webbplatsen ett namn. <a href='%{link}' name='%{title}'>Klicka här</a> för att redigera din webbplats namn.
+    new:
+      fill_form: Fyll i detaljerna nedan så vi kan sätta igång.
+      sign_up: Registrera
+    create:
+      welcome: Välkommen till Refinery, %{who}
+    forgot:
+      email_address: E-postadress
+      enter_email_address: Var god fyll i e-postadress för ditt konto.
+      reset_password: Återställ lösenord
+      blank_email: Du fyllde inte i någon e-postadress.
+      email_not_associated_with_account_html: Tyvärr, '%{email}' finns inte med i systemet.<br />Är du säker på att du fyllde i rätt e-postadress?
+      email_reset_sent: Ett e-post har skickats till dig med instruktioner om hur du återställer ditt lösenord.
+    reset:
+      code_invalid: Tyvärr, men din återställningskod har är ogiltlig eller har utgått. Om du har problem, pröva att kopiera den URL som du mottagit på din e-post, klistra sedan in i webbläsaren. Eller så börjar du om från början.
+      successful: Återställde lösenordet för '%{email}'
+      pick_new_password_for: Välj ett nytt lösenord för %{email}
+      reset_password: Återställ lösenord
+      password_blank: Fyll i ditt nya lösenord två gånger.
+  user_mailer:
+    link_to_reset_your_password: Länk för att återställa ditt lösenord.
+  authlogic:
+    error_messages:
+      login_blank: kan inte lämnas tom
+      password_blank: kan inte lämnas tom
+      login_invalid: får endast innehålla bokstäver, nummer, mellanslag och .-_@, tack.
+      email_invalid: måste vara en giltlig e-postadress.
+      no_authentication_details: Du angav inte några uppgifter för autentisering.
+    models:
+      user_session: AnvändarSession
+    attributes:
+      user_session:
+        login: Inloggningsnamn
+        email: E-postadress
+        password: Lösenord
+        remember_me: Kom ihåg mig
+        incorrect: Tyvärr, ditt %{login_field} eller lösenord var felaktigt.
+  activerecord:
+    models:
+      user: användare
