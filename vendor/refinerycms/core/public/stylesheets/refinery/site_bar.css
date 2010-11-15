@@ -38,6 +38,7 @@
   border-bottom: 1px solid white;
 }
 #site_bar_content {
+	height:47px;
   position: relative;
 }
 a#site_bar_refinery_cms_logo {
