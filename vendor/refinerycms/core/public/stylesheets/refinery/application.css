@@ -38,7 +38,7 @@ body {
 .menu li.last {
   margin-right: 0px;
 }
-.menu li.selected a {
+.menu li.selected > a {
   font-weight: bold;
 }
 .inquiries form input {

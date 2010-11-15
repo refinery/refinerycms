@@ -8,6 +8,7 @@ Feature: Visit Pages
     Given A Refinery user exists
     And I have a page titled "Home" with a custom url "/"
     And I have a page titled "About"
+    And I have a page titled "ä ö ü spéciål chåråctÉrs"
     And I have a page titled "Hidden"
     And the page titled "Hidden" is a child of Home
     And the page titled "Hidden" is not shown in the menu
@@ -22,10 +23,25 @@ Feature: Visit Pages
     When I go to the page titled "About"
     Then I should see "Home"
     And I should see "About"
-    And I should see "About" within ".selected"
+    And I should see "About" within ".selected > a"
+
+  Scenario: Special Characters Title
+    When I go to the page titled "ä ö ü spéciål chåråctÉrs"
+    Then I should see "Home"
+    And I should see "About"
+    And I should see "ä ö ü spéciål chåråctÉrs"
+    And I should see "ä ö ü spéciål chåråctÉrs" within ".selected > a"
+
+  Scenario: Special Characters Title as submenu page
+    Given the page titled "ä ö ü spéciål chåråctÉrs" is a child of About
+    When I go to the page titled "ä ö ü spéciål chåråctÉrs"
+    Then I should see "Home"
+    And I should see "About"
+    And I should see "ä ö ü spéciål chåråctÉrs"
+    And I should see "ä ö ü spéciål chåråctÉrs" within ".selected * > .selected a"
 
   Scenario: Hidden Page
     When I go to the page titled "Hidden"
     Then I should see "Home"
     And I should see "About"
-    And I should see "Home" within ".selected"
+    And I should see "Home" within ".selected > a"
