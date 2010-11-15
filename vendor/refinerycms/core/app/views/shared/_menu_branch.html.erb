@@ -1,6 +1,5 @@
 <%
-  apply_css = true unless defined?(apply_css)
-  if apply_css and (classes = css_for_menu_branch(menu_branch, menu_branch_counter, sibling_count||=nil, collection, selected_item ||= nil)).any?
+  if !!local_assigns[:apply_css] and (classes = css_for_menu_branch(menu_branch, menu_branch_counter, sibling_count||=nil, collection, selected_item ||= nil)).any?
     css = "class='#{classes.join(' ')}'"
   end
   dom_id = ("id='item_#{menu_branch_counter}'" if menu_branch.parent_id.nil? and menu_branch.title.present?)
@@ -16,6 +15,7 @@
         render :partial => "/shared/menu_branch",
                :collection => children,
                :locals => {
+                 :apply_css => local_assigns[:apply_css],
                  :hide_children => hide_children,
                  :collection => collection,
                  :selected_item => selected_item,
