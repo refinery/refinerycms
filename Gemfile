@@ -60,7 +60,7 @@ gem 'dragonfly',                :git => 'git://github.com/refinerycms/dragonfly.
 
 group :test do
   # RSpec
-  gem 'rspec',                  (RSPEC_VERSION = '~> 2.0.0')
+  gem 'rspec',                  (RSPEC_VERSION = '~> 2.0')
   gem 'rspec-core',             RSPEC_VERSION, :require => 'rspec/core'
   gem 'rspec-expectations',     RSPEC_VERSION, :require => 'rspec/expectations'
   gem 'rspec-mocks',            RSPEC_VERSION, :require => 'rspec/mocks'
