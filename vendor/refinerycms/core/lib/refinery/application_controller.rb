@@ -4,10 +4,10 @@ module Refinery
   module ApplicationController
 
     def self.included(controller)
-      unless controller.class.instance_methods.map(&:to_sym).include?(:crudify)
-        controller.send :include, ::Refinery::ApplicationController::InstanceMethods
-        controller.send :include, ::Refinery::ApplicationController::ClassMethods
-      end
+      #unless controller.class.instance_methods.map(&:to_sym).include?(:crudify)
+      controller.send :include, ::Refinery::ApplicationController::InstanceMethods
+      controller.send :include, ::Refinery::ApplicationController::ClassMethods
+      #end
     end
 
     module ClassMethods
