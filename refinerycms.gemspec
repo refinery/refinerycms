@@ -4,7 +4,7 @@ Gem::Specification.new do |s|
   s.name              = %q{refinerycms}
   s.version           = %q{0.9.9.pre}
   s.description       = %q{A Ruby on Rails CMS that supports Rails 3. It's easy to extend and sticks to 'the Rails way' where possible.}
-  s.date              = %q{2010-11-16}
+  s.date              = %q{2010-11-17}
   s.summary           = %q{A Ruby on Rails CMS that supports Rails 3}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
@@ -13,7 +13,7 @@ Gem::Specification.new do |s|
   s.require_paths     = %w(vendor/refinerycms)
   s.executables       = %w(refinerycms)
 
-  s.add_dependency    'rails',                '~> 3.0.2'
+  s.add_dependency    'rails',                '~> 3.0.3'
   s.add_dependency    'bundler',              '~> 1.0.5'
 
   s.add_dependency    'moretea-awesome_nested_set', '= 1.4.3.1'
@@ -111,7 +111,6 @@ Gem::Specification.new do |s|
     'readme.md',
     'spec/rcov.opts',
     'spec/spec_helper.rb',
-    'todo.md',
     'vendor/refinerycms',
     'vendor/refinerycms/authentication',
     'vendor/refinerycms/authentication/app',
