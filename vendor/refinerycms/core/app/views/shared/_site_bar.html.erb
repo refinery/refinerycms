@@ -1,13 +1,5 @@
-<%if !!local_assigns[:always_include_jquery] and !admin?
-    content_for :javascript_libraries, jquery_include_tags(:jquery_ui => !!local_assigns[:always_include_jquery_ui])
-  end-%>
 <% if refinery_user? %>
   <% unless admin? # all required JS included by backend. %>
-    <% content_for :javascript_libraries do %>
-      <%= jquery_include_tags(:jquery_ui => false) unless !!local_assigns[:exclude_jquery] || !!local_assigns[:always_include_jquery] %>
-      <%= javascript_include_tag('jquery/jquery.corner.js') unless !!local_assigns[:exclude_cornering_library] %>
-      <%= javascript_include_tag('refinery/site_bar') unless !!local_assigns[:exclude_site_bar_javascript] %>
-    <% end %>
     <% content_for :stylesheets, stylesheet_link_tag('refinery/site_bar') unless !!local_assigns[:exclude_css] %>
     <%= yield(:stylesheets) unless local_assigns[:head] or local_assigns[:exclude_css] %>
   <% end -%>
