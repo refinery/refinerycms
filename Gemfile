@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 gem 'bundler',                  '~> 1.0.5'
-gem 'rails',                    '~> 3.0.1'
+gem 'rails',                    '~> 3.0.2'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -42,7 +42,7 @@ java = (RUBY_PLATFORM == 'java')
 gem 'refinerycms',              :path => '.'
 
 # Specify additional Refinery CMS Engines here (all optional):
-gem 'refinerycms-inquiries',    '~> 0.9.9.3'
+gem 'refinerycms-inquiries',    '~> 0.9.9.4'
 gem 'refinerycms-generators',   '~> 0.9.9', :git => 'git://github.com/resolve/refinerycms-generators.git'
 # gem 'refinerycms-news',       '~> 0.9.9.6'
 # gem 'refinerycms-portfolio',  '~> 0.9.8'
@@ -60,11 +60,7 @@ gem 'dragonfly',                :git => 'git://github.com/refinerycms/dragonfly.
 
 group :test do
   # RSpec
-  gem 'rspec',                  (RSPEC_VERSION = '~> 2.0')
-  gem 'rspec-core',             RSPEC_VERSION, :require => 'rspec/core'
-  gem 'rspec-expectations',     RSPEC_VERSION, :require => 'rspec/expectations'
-  gem 'rspec-mocks',            RSPEC_VERSION, :require => 'rspec/mocks'
-  gem 'rspec-rails',            RSPEC_VERSION
+  gem 'rspec-rails',            '~> 2.1'
   # Cucumber
   gem 'capybara',               :git => 'git://github.com/parndt/capybara.git'
   gem 'database_cleaner'
