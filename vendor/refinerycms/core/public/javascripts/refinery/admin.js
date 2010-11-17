@@ -944,7 +944,6 @@ var image_picker = {
     $(this.options.field).val(image.id.replace("image_", ""));
 
     var size = this.options.thumbnail || 'original';
-    console.log(size);
     image.src = $(image).attr('data-' + size);
     current_image = $(this.options.image_display);
     current_image.replaceWith($("<img src='"+image.src+"?"+Math.floor(Math.random() * 1000000000)+"' id='"+current_image.attr('id')+"' class='brown_border' />"));
