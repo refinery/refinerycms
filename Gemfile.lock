@@ -22,7 +22,7 @@ GIT
 
 GIT
   remote: git://github.com/resolve/refinerycms-generators.git
-  revision: 72f361872bc51afa2ec84a77ff48a1af32cb6b51
+  revision: 6970944aded7dd91206c1ba4d75d38ca77935a42
   specs:
     refinerycms-generators (0.9.9)
 
@@ -74,10 +74,10 @@ GEM
       activesupport (= 3.0.3)
     activesupport (3.0.3)
     acts_as_indexed (0.6.6)
-    arel (2.0.3)
+    arel (2.0.4)
     authlogic (2.1.6)
       activesupport
-    autotest (4.4.3)
+    autotest (4.4.4)
     autotest-notification (2.3.1)
       autotest (~> 4.3)
     autotest-rails (4.1.0)
@@ -116,15 +116,15 @@ GEM
     launchy (0.3.7)
       configuration (>= 0.0.5)
       rake (>= 0.8.1)
-    mail (2.2.9.1)
+    mail (2.2.10)
       activesupport (>= 2.3.6)
-      i18n (>= 0.4.1)
+      i18n (~> 0.4.1)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.16)
     moretea-awesome_nested_set (1.4.3.1)
       activerecord (~> 3.0.0)
-    nokogiri (1.4.3.1)
+    nokogiri (1.4.4)
     polyglot (0.3.1)
     rack (1.2.1)
     rack-cache (0.5.3)
@@ -211,3 +211,6 @@ DEPENDENCIES
   ruby-prof
   spork
   sqlite3-ruby
+
+METADATA
+  version: 1.0.6
