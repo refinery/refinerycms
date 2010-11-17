@@ -208,7 +208,7 @@ submit_and_continue = function(e, redirect_to) {
     if (($flash_container = $('#flash_container')).length > 0) {
       $flash_container.html(data);
 
-      $('#flash').css('width', 'auto').fadeIn(550);
+      $('#flash').css({'width': 'auto', 'visibility': null}).fadeIn(550);
 
       $('.errorExplanation').not($('#flash_container .errorExplanation')).remove();
 
