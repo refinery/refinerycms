@@ -41,7 +41,10 @@ module Refinery
 
     # Specify a cache store to use
     config.cache_store = :memory_store
+
+    # load in any settings that the developer wants after the initialization.
+    config.after_initialize do
+      require Rails.root.join('config', 'settings.rb')
+    end if Rails.root.join('config', 'settings.rb').exist?
   end
 end
-
-require Rails.root.join('config', 'settings.rb') if Rails.root.join('config', 'settings.rb').exist?
