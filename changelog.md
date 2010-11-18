@@ -26,6 +26,7 @@
 * Added multiple file upload for images and resources using HTML5. [Philip Arndt](http://github.com/parndt)
 * Deprecated ``content_for :head`` in favour of ``content_for :meta``, ``content_for :stylesheets`` and ``content_for :javascripts``. [Philip Arndt](http://github.com/parndt)
 * Improved client-side responsiveness of backend and frontend. [Philip Arndt](http://github.com/parndt)
+* No more RMagick dependency [Philip Arndt](http://github.com/parndt)
 * [See full list](http://github.com/resolve/refinerycms/compare/0.9.8.5...0.9.9)
 
 ## 0.9.8.5 [21 September 2010](http://github.com/parndt)
