@@ -1,8 +1,3 @@
-<% user_image_sizes = RefinerySetting.find_or_set(:user_image_sizes, {
-           :small => '110x110>',
-           :medium => '225x255>',
-           :large => '450x450>'
-         }).sort_by{|k,v| v} %>
 <div id='existing_image_area' class='dialog_area' <%= "style='display:none;'" if @image.errors.any? %>>
   <%= render :partial => '/shared/admin/search',
              :locals => {:url => insert_admin_images_url(params.dup.delete(:image))} %>
@@ -16,7 +11,7 @@
           :"data-original" => image.url,
           :"data-grid" => image.thumbnail('135x135#c').url
         }
-        user_image_sizes.each do |size, pixels|
+        ::Image.user_image_sizes.sort_by{|key,geometry| geometry}.each do |size, pixels|
           thumbnail_urls[:"data-#{size.to_s.parameterize}"] = image.thumbnail(pixels).url
         end
 -%>
@@ -48,7 +43,7 @@
       </p>
       <ul>
         <%
-          user_image_sizes.each_with_index do |(size, pixels), index|
+          ::Image.user_image_sizes.each_with_index do |(size, pixels), index|
             safe_pixels = pixels.to_s.gsub(/[<>=]/, '')
             # (parndt): ' selected' if size.to_s == 'medium' is not very generic, but I
             # can't think of a decent way of making it so for even sets (e.g. 2,4,6,8,etc image sizes).
