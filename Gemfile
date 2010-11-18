@@ -45,7 +45,7 @@ gem 'refinerycms',              :path => '.'
 gem 'refinerycms-inquiries',    '~> 0.9.9.4'
 gem 'refinerycms-generators',   '~> 0.9.9', :git => 'git://github.com/resolve/refinerycms-generators.git'
 # gem 'refinerycms-news',       '~> 0.9.9.6'
-# gem 'refinerycms-portfolio',  '~> 0.9.8'
+# gem 'refinerycms-portfolio',  '~> 0.9.9'
 # gem 'refinerycms-theming',    '~> 0.9.8.2'
 # gem 'refinerycms-search',     '~> 0.9.8'
 
