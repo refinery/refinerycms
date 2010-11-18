@@ -14,7 +14,7 @@ GIT
 
 GIT
   remote: git://github.com/refinerycms/dragonfly.git
-  revision: aaa7a945718cf91acb3bb5d2b7f8ea4dbc4241db
+  revision: e5b5f7f99477c3c76006670e37dc3f073aec42e5
   branch: imagemagick
   specs:
     dragonfly (0.7.7)
