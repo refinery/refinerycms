@@ -40,14 +40,20 @@ class Image < ActiveRecord::Base
         PAGES_PER_ADMIN_INDEX
       end
     end
+
+    def user_image_sizes
+      RefinerySetting.find_or_set(:user_image_sizes, {
+        :small => '110x110>',
+        :medium => '225x255>',
+        :large => '450x450>'
+      })
+    end
   end
 
   # Get a thumbnail job object given a geometry.
   def thumbnail(geometry = nil)
-    if geometry.is_a?(Symbol)
-      if (sizes = RefinerySetting.find_or_set(:user_image_sizes, {})) and sizes.keys.include?(geometry)
-        geometry = sizes[geometry].presence
-      end
+    if geometry.is_a?(Symbol) and self.class.user_image_sizes.keys.include?(geometry)
+      geometry = sizes[geometry].presence
     end
 
     if geometry.present? && !geometry.is_a?(Symbol)
