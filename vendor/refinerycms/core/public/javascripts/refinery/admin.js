@@ -905,51 +905,66 @@ var list_reorder = {
 var image_picker = {
   initialised: false
   , options: {
-    selected: '',
-    thumbnail: 'medium',
-    field: '#image',
-    image_display: '#current_picked_image',
-    no_image_message: '#no_picked_image_selected',
-    image_container: '#current_image_container',
-    remove_image_button: '#remove_picked_image',
-    image_toggler: null
+    selected: ''
+    , thumbnail: 'medium'
+    , field: '#image'
+    , image_display: '.current_picked_image'
+    , no_image_message: '.no_picked_image_selected'
+    , image_container: '.current_image_container'
+    , remove_image_button: '.remove_picked_image'
+    , picker_container: '.image_picker_container'
+    , image_link: '.current_image_link'
+    , image_toggler: null
   }
 
   , init: function(new_options){
     this.options = $.extend(this.options, new_options);
-    $(this.options.remove_image_button).click($.proxy(this.remove_image, this));
-    $(this.options.image_toggler).click($.proxy(this.toggle_image, this));
+    $(this.options.picker_container).find(this.options.remove_image_button)
+      .click($.proxy(this.remove_image, {container: this.options.picker_container, picker: this}));
+    $(this.options.picker_container).find(this.options.image_toggler)
+      .click($.proxy(this.toggle_image, {container: this.options.picker_container, picker: this}));
+
     this.initialised = true;
+
+    return this;
   }
 
   , remove_image: function(e) {
     e.preventDefault();
-    $(this.options.image_display).removeClass('brown_border')
-                              .attr({'src': '', 'width': '', 'height': ''})
-                              .css({'width': 'auto', 'height': 'auto'})
-                              .hide();
-    $(this.options.field).val('');
-    $(this.options.no_image_message).show();
-    $(this.options.remove_image_button).hide();
+
+    $(this.container).find(this.picker.options.image_display)
+      .removeClass('brown_border')
+      .attr({'src': '', 'width': '', 'height': ''})
+      .css({'width': 'auto', 'height': 'auto'})
+      .hide();
+    $(this.container).find(this.picker.options.field).val('');
+    $(this.container).find(this.picker.options.no_image_message).show();
+    $(this.container).find(this.picker.options.remove_image_button).hide();
     $(this).hide();
   }
 
   , toggle_image: function(e) {
-    $(this.options.image_toggler).html(($(this.options.image_toggler).html() == 'Show' ? 'Hide' : 'Show'));
-    $(this.options.image_container).toggle();
+    $(this.container).find(this.options.image_toggler).html(
+      ($(this.container).find(options.image_toggler).html() == 'Show' ? 'Hide' : 'Show')
+    );
+    $(this.container).find(this.options.image_container).toggle();
     e.preventDefault();
   }
 
-  , changed: function(image) {
-    $(this.options.field).val(image.id.replace("image_", ""));
+  , changed: function(e) {
+    $(this.container).find(this.picker.options.field).val(
+      this.image.id.replace("image_", "")
+    );
 
-    var size = this.options.thumbnail || 'original';
-    image.src = $(image).attr('data-' + size);
-    current_image = $(this.options.image_display);
-    current_image.replaceWith($("<img src='"+image.src+"?"+Math.floor(Math.random() * 1000000000)+"' id='"+current_image.attr('id')+"' class='brown_border' />"));
+    var size = this.picker.options.thumbnail || 'original';
+    this.image.src = $(this.image).attr('data-' + size);
+    current_image = $(this.container).find(this.picker.options.image_display);
+    current_image.replaceWith(
+      $("<img src='"+this.image.src+"?"+Math.floor(Math.random() * 100000)+"' id='"+current_image.attr('id')+"' class='"+this.picker.options.image_display.replace(/^./, '')+" brown_border' />")
+    );
 
-    $(this.options.remove_image_button).show();
-    $(this.options.no_image_message).hide();
+    $(this.container).find(this.picker.options.remove_image_button).show();
+    $(this.container).find(this.picker.options.no_image_message).hide();
   }
 };
 
