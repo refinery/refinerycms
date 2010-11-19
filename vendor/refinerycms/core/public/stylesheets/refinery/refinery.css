@@ -489,6 +489,9 @@ header p {
   padding: 4px 0 0 40px;
   background: url('/images/refinery/branch.gif') no-repeat 15px 0px;
 }
+#records.tree li.record ul {
+  margin-left: 0;
+}
 #records.tree .on-hover, #pagination ul.tree a:hover, #pagination .tree .on {
   background: url('/images/refinery/branch.gif') no-repeat 15px 0px;
 }
