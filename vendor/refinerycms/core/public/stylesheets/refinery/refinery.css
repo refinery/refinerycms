@@ -1224,7 +1224,7 @@ ul.checkboxes li {
 .label_inline_with_link a img {
   vertical-align: middle;
 }
-#remove_picked_image {
+.remove_picked_image {
   margin-top:8px;
   display:inline-block;
   width:auto;
@@ -1404,6 +1404,12 @@ input.button.close_dialog:active, a.button.close_dialog:active, #content a.butto
 
 #other_locales li:first-child {
   margin-top: 0px;
+}  
+
+/* dubiously in here */
+.current_image_link {
+  display: inline-block;
+  width: auto;
 }
 
 /* cornering */
