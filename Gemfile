@@ -56,7 +56,7 @@ gem 'jruby-openssl' if java
 
 # override dragonfly because this version doesn't require RMagick
 gem 'dragonfly',                :git => 'git://github.com/refinerycms/dragonfly.git',
-                                :branch => 'imagemagick'
+                                :branch => 'master'
 
 group :test do
   # RSpec
