@@ -168,17 +168,21 @@ module Refinery
 	      FileUtils::rm @app_path.join(remove) if @app_path.join(remove).exist?
       end
 
-      # Add refinery gems to the Gemfile
-      gemfile_contents = Refinery.root.join('Gemfile').read
-      refinery_gems = gemfile_contents.match(/# REFINERY CMS =+.*# END REFINERY CMS =+/m)[0]
-      @app_path.join('Gemfile').open('a') do |f|
-        f.write "\n#{refinery_gems}\n\n# USER DEFINED\n#{@options[:gems].join("\n")}\n# END USER DEFINED"
+      # When using --update which skips the Gemfile a few things need to be handled manually:
+      if @options[:update]
+        find_and_replace('Gemfile', "gem 'rails',.*", "gem 'rails',              '~> #{Rails.version}'")
+      else
+        # Add refinery gems to the Gemfile
+        gemfile_contents = Refinery.root.join('Gemfile').read
+        refinery_gems = gemfile_contents.match(/# REFINERY CMS =+.*# END REFINERY CMS =+/m).first
+        @app_path.join('Gemfile').open('a') do |f|
+          f.write "\n#{refinery_gems}\n\n# USER DEFINED\n#{@options[:gems].join("\n")}\n# END USER DEFINED"
+        end
       end
 
       # Specify the correct version of the Refinery CMS gem (may be git source).
       src = Refinery.version !~ /\.pre$/ ? "'~> #{Refinery.version}'" : ":git => 'git://github.com/resolve/refinerycms.git'"
-      find_and_replace('Gemfile', "gem 'refinerycms',              :path => '.'",
-                        "gem 'refinerycms',              #{src}")
+      find_and_replace('Gemfile', "gem 'refinerycms',.*", "gem 'refinerycms',              #{src}")
 
       # Add in AWS-S3 for Heroku
       find_and_replace('Gemfile', "# gem 'aws-s3', :require => 'aws/s3'",
