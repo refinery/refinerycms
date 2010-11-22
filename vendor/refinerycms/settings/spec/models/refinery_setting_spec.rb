@@ -59,6 +59,22 @@ describe RefinerySetting do
       @get = RefinerySetting.get(:creating_from_scratch, :scoping => 'rspec_testing')
       @get.should == 'some value'
     end
+
+    it "should also work with setting scoping using string and getting via symbol" do
+      @set = RefinerySetting.set(:creating_from_scratch, {:value => "some value", :scoping => 'rspec_testing'})
+      @set.should == 'some value'
+
+      @get = RefinerySetting.get(:creating_from_scratch, :scoping => :rspec_testing)
+      @get.should == 'some value'
+    end
+
+    it "should also work with setting scoping using symbol and getting via string" do
+      @set = RefinerySetting.set(:creating_from_scratch, {:value => "some value", :scoping => :rspec_testing})
+      @set.should == 'some value'
+
+      @get = RefinerySetting.get(:creating_from_scratch, :scoping => 'rspec_testing')
+      @get.should == 'some value'
+    end
   end
 
   context "find_or_set" do
