@@ -170,9 +170,10 @@ module Refinery
         f.write "\n#{refinery_gems}\n\n# USER DEFINED\n#{@options[:gems].join("\n")}\n# END USER DEFINED"
       end
 
-      # Change from development to production
+      # Specify the correct version of the Refinery CMS gem (may be git source).
+      src = Refinery.version !~ /\.pre$/ ? "'~> #{Refinery.version}'" : ":git => 'git://github.com/resolve/refinerycms.git'"
       find_and_replace('Gemfile', "gem 'refinerycms',              :path => '.'",
-                        "gem 'refinerycms',              '~> #{Refinery.version}'")
+                        "gem 'refinerycms',              #{src}")
 
       # Add in AWS-S3 for Heroku
       find_and_replace('Gemfile', "# gem 'aws-s3', :require => 'aws/s3'",
