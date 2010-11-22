@@ -268,6 +268,7 @@ Gem::Specification.new do |s|
     'vendor/refinerycms/core/lib/refinery',
     'vendor/refinerycms/core/lib/refinery/activity.rb',
     'vendor/refinerycms/core/lib/refinery/admin_base_controller.rb',
+    'vendor/refinerycms/core/lib/refinery/application.rb',
     'vendor/refinerycms/core/lib/refinery/application_controller.rb',
     'vendor/refinerycms/core/lib/refinery/application_helper.rb',
     'vendor/refinerycms/core/lib/refinery/base_presenter.rb',

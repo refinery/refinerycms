@@ -1,4 +1,4 @@
-Refinery::Application.routes.draw do
+::Refinery::Application.routes.draw do
 
   resource :session, :only => [:new, :create, :destroy]
   match '/users/reset/:reset_code', :to => 'users#reset', :as => 'reset_users'

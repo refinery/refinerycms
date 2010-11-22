@@ -11,6 +11,8 @@ require 'rails/generators'
 require 'rails/generators/migration'
 
 module Refinery
+
+  autoload :Application, File.expand_path('../refinery/application', __FILE__)
   autoload :Plugin,  File.expand_path('../refinery/plugin', __FILE__)
   autoload :Plugins, File.expand_path('../refinery/plugins', __FILE__)
   autoload :Activity, File.expand_path('../refinery/activity', __FILE__)

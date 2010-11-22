@@ -1,4 +1,4 @@
-Refinery::Application.routes.draw do
+::Refinery::Application.routes.draw do
   get '/pages/:id', :to => 'pages#show', :as => :page
 
   scope(:path => 'refinery', :as => 'admin', :module => 'admin') do

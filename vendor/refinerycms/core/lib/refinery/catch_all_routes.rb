@@ -1,4 +1,4 @@
-Refinery::Application.routes.draw do
+::Refinery::Application.routes.draw do
   match '/admin(/*path)', :to => redirect {|params, request|
     request.flash[:message] = "<p>
       The URL '/<strong>admin</strong>#{"/#{params[:path]}" unless params[:path].blank?}' will be removed in Refinery CMS version 1.0
