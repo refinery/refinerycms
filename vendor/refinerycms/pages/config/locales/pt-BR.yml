@@ -2,6 +2,7 @@ pt-BR:
   plugins:
     refinery_pages:
       title: Páginas
+      article: a
       description: Gerenciar páginas
   admin:
     pages_dialogs:
