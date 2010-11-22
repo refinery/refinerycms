@@ -231,8 +231,8 @@ class Page < ActiveRecord::Base
   # In the admin area we use a slightly different title to inform the which pages are draft or hidden pages
   def title_with_meta
     title = self.title
-    title << " <em>(hidden)</em>" unless self.show_in_menu?
-    title << " <em>(draft)</em>" if self.draft?
+    title << " <em>(#{::I18n.t('admin.pages.page.hidden')})</em>" unless self.show_in_menu?
+    title << " <em>(#{::I18n.t('admin.pages.page.draft')})</em>" if self.draft?
 
     title.strip
   end
