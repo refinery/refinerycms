@@ -56,6 +56,10 @@ module Refinery
           @options[:heroku] = app_name || ''
         end
 
+        opts.on("--update", "--update", "Migrate the database instead of rebuilding it") do
+           @options[:update] = true
+        end
+
         opts.separator ""
         opts.separator "Common options:"
 
@@ -122,6 +126,7 @@ module Refinery
       rails_command << " --database #{@options[:database]}"
       rails_command << " --force" if @options[:force]
       rails_command << " --skip-test-unit --skip-prototype"
+      rails_command << " --skip-gemfile" if @options[:update]
       run_command(rails_command, {:cd => false})
       abort "Generating Rails application failed. Exiting..." unless $?.success?
     end
@@ -163,16 +168,21 @@ module Refinery
 	      FileUtils::rm @app_path.join(remove) if @app_path.join(remove).exist?
       end
 
-      # Add refinery gems to the Gemfile
-      gemfile_contents = Refinery.root.join('Gemfile').read
-      refinery_gems = gemfile_contents.match(/# REFINERY CMS =+.*# END REFINERY CMS =+/m)[0]
-      @app_path.join('Gemfile').open('a') do |f|
-        f.write "\n#{refinery_gems}\n\n# USER DEFINED\n#{@options[:gems].join("\n")}\n# END USER DEFINED"
+      # When using --update which skips the Gemfile a few things need to be handled manually:
+      if @options[:update]
+        find_and_replace('Gemfile', "gem 'rails',.*", "gem 'rails',              '~> #{Rails.version}'")
+      else
+        # Add refinery gems to the Gemfile
+        gemfile_contents = Refinery.root.join('Gemfile').read
+        refinery_gems = gemfile_contents.match(/# REFINERY CMS =+.*# END REFINERY CMS =+/m).first
+        @app_path.join('Gemfile').open('a') do |f|
+          f.write "\n#{refinery_gems}\n\n# USER DEFINED\n#{@options[:gems].join("\n")}\n# END USER DEFINED"
+        end
       end
 
-      # Change from development to production
-      find_and_replace('Gemfile', "gem 'refinerycms',              :path => '.'",
-                        "gem 'refinerycms',              '~> #{Refinery.version}'")
+      # Specify the correct version of the Refinery CMS gem (may be git source).
+      src = Refinery.version !~ /\.pre$/ ? "'~> #{Refinery.version}'" : ":git => 'git://github.com/resolve/refinerycms.git'"
+      find_and_replace('Gemfile', "gem 'refinerycms',.*", "gem 'refinerycms',              #{src}")
 
       # Add in AWS-S3 for Heroku
       find_and_replace('Gemfile', "# gem 'aws-s3', :require => 'aws/s3'",
@@ -203,8 +213,13 @@ module Refinery
       puts "Installing gem requirements using bundler..\n"
       run_command("bundle install")
 
-      puts "\n\nSetting up your development database..\n"
-      run_command("rake -f \"#{@app_path.join('Rakefile')}\" db:setup", {:cd => false})
+      unless @options[:update]
+        puts "\n\nSetting up your development database..\n"
+        run_command("rake -f \"#{@app_path.join('Rakefile')}\" db:setup", {:cd => false})
+      else
+        puts "\n\nMigrating your development database..\n"
+        run_command("rake -f \"#{@app_path.join('Rakefile')}\" db:migrate", {:cd => false})
+      end
 
       # Deploy to Heroku
       if @options[:heroku]
