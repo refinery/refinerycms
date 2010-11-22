@@ -1,11 +1,6 @@
-<%
-  title = page.title
-  title << " <em>(#{t('.hidden')})</em>" unless page.show_in_menu?
-  title << " <em>(#{t('.draft')})</em>" if page.draft?
--%>
 <li class='clearfix record' id="<%= dom_id(page) -%>">
   <div class='clearfix'>
-    <span class='title'><%= raw title %></span>
+    <span class='title'><%= page.title_with_meta.html_safe %></span>
 
     <span class='actions'>
       <%= link_to refinery_icon_tag('application_go.png'), page.url,
@@ -16,7 +11,7 @@
       <%= link_to refinery_icon_tag('delete.png'), admin_page_url(page),
                   :class => "cancel confirm-delete",
                   :title => t('admin.pages.delete'),
-                  :confirm => t('shared.admin.delete.message', :title => title.gsub(/\ ?<em>.*<\/em>/, "")),
+                  :confirm => t('shared.admin.delete.message', :title => page.title_with_meta.gsub(/\ ?<em>.*<\/em>/, "")),
                   :method => :delete if page.deletable? %>
     </span>
   </div>
