@@ -68,6 +68,12 @@
   left: -10000px;
   top: -10000px;
 }
+.ie7 .ui-tabs-hide {
+  display: none !important !important;
+  height: auto !important !important;
+  width: auto !important !important;
+  position: static;
+}
 /** Makes sure your embed does not have leftover height when hidden **/
 .ui-tabs-hide object,
 .ui-tabs-hide embed {
