@@ -40,6 +40,7 @@ class RefinerySetting < ActiveRecord::Base
       result = ensure_cache_exists!
 
       if name.present?
+        scoping = scoping.to_s if scoping.is_a?(Symbol)
         result = result.detect do |rs|
           rs[:name] == name.to_s.downcase.to_sym and rs[:scoping] == scoping
         end
