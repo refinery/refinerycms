@@ -7,8 +7,7 @@ Refinery also supports Rails 2.x using the [Rails 2.x stable branch](http://gith
 ## Requirements
 
 * [Bundler](http://github.com/carlhuda/bundler)
-* [RMagick](http://github.com/rmagick/rmagick) - [Install docs](http://rmagick.rubyforge.org/install-faq.html) or for
-Mac OS 10.5+ users [this shell install script](http://github.com/maddox/magick-installer) will be easier.
+* [ImageMagick](http://www.imagemagick.org/script/install-source.php)
 
 ## How to
 
@@ -42,6 +41,7 @@ Wanna see Refinery for yourself? [Try the demo](http://demo.refinerycms.com/refi
 * [IRC Channel](irc://irc.freenode.net/refinerycms)
 * [GitHub repository](http://github.com/resolve/refinerycms)
 * [Developer/API documentation](http://api.refinerycms.org)
+* [Twitter Account](http://twitter.com/refinerycms)
 * Documentation about: [Pages](http://github.com/resolve/refinerycms/blob/master/vendor/refinerycms/pages/readme.md#readme), [Images](http://github.com/resolve/refinerycms/blob/master/vendor/refinerycms/images/readme.md#readme), [Files](http://github.com/resolve/refinerycms/blob/master/vendor/refinerycms/resources/readme.md#readme), [Inquiries](http://github.com/resolve/refinerycms-inquiries/blob/master/readme.md#readme), [Settings](http://github.com/resolve/refinerycms/blob/master/vendor/refinerycms/settings/readme.md#readme), [Dashboard](http://github.com/resolve/refinerycms/blob/master/vendor/refinerycms/dashboard/readme.md#readme), [Authentication & Users](http://github.com/resolve/refinerycms/blob/master/vendor/refinerycms/authentication/readme.md#readme), [Extending with Engines](http://github.com/resolve/refinerycms/blob/master/vendor/refinerycms/core/engines.md#readme).
 
 ## Features
