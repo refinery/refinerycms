@@ -56,6 +56,10 @@ module Refinery
           @options[:heroku] = app_name || ''
         end
 
+        opts.on("--update", "--update", "Migrate the database instead of rebuilding it") do
+           @options[:update] = true
+        end
+
         opts.separator ""
         opts.separator "Common options:"
 
@@ -204,8 +208,13 @@ module Refinery
       puts "Installing gem requirements using bundler..\n"
       run_command("bundle install")
 
-      puts "\n\nSetting up your development database..\n"
-      run_command("rake -f \"#{@app_path.join('Rakefile')}\" db:setup", {:cd => false})
+      unless @options[:update]
+        puts "\n\nSetting up your development database..\n"
+        run_command("rake -f \"#{@app_path.join('Rakefile')}\" db:setup", {:cd => false})
+      else
+        puts "\n\nMigrating your development database..\n"
+        run_command("rake -f \"#{@app_path.join('Rakefile')}\" db:migrate", {:cd => false})
+      end
 
       # Deploy to Heroku
       if @options[:heroku]
