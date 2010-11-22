@@ -126,6 +126,7 @@ module Refinery
       rails_command << " --database #{@options[:database]}"
       rails_command << " --force" if @options[:force]
       rails_command << " --skip-test-unit --skip-prototype"
+      rails_command << " --skip-gemfile" if @options[:update]
       run_command(rails_command, {:cd => false})
       abort "Generating Rails application failed. Exiting..." unless $?.success?
     end
