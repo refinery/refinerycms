@@ -170,7 +170,7 @@ module Refinery
 
       # When using --update which skips the Gemfile a few things need to be handled manually:
       if @options[:update]
-        find_and_replace('Gemfile', "gem 'rails',.*", "gem 'rails',              '~> #{Rails.version}'")
+        find_and_replace('Gemfile', "gem 'rails',.*", "gem 'rails',              '~> #{::Rails.version}'")
       else
         # Add refinery gems to the Gemfile
         gemfile_contents = Refinery.root.join('Gemfile').read
