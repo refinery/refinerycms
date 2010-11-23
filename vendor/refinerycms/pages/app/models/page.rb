@@ -218,6 +218,7 @@ class Page < ActiveRecord::Base
     if (super_value = super).blank?
       # self.parts is already eager loaded so we can now just grab the first element matching the title we specified.
       part = self.parts.detect do |part|
+        part.title and #protecting against the problem that occurs when have nil title 
         part.title == part_title.to_s or
         part.title.downcase.gsub(" ", "_") == part_title.to_s.downcase.gsub(" ", "_")
       end
