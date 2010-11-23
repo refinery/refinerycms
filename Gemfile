@@ -20,6 +20,8 @@ end
 
 # To use debugger
 # gem 'ruby-debug'
+# or in 1.9.x:
+# gem 'ruby-debug19'
 
 # For Heroku/s3:
 # gem 'aws-s3', :require => 'aws/s3'

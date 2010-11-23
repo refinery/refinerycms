@@ -37,8 +37,20 @@ module Refinery
         ].flatten
       end
 
+      # Attach ourselves to the Rails application.
+      config.before_initialize do
+        ::Rails::Application.subclasses.each do |subclass|
+          begin
+            subclass.send :include, ::Refinery::Application
+          rescue
+            $stdout.puts "Refinery CMS couldn't attach to #{subclass.name}."
+            $stdout.puts "Error was: #{$!.message}"
+          end
+        end
+      end
+
       config.to_prepare do
-        Rails.cache.clear
+        ::Rails.cache.clear
 
         # TODO: Is there a better way to cache assets in engines?
         ::ActionView::Helpers::AssetTagHelper.module_eval do

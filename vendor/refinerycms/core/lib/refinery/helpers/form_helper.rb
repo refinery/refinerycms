@@ -1,3 +1,6 @@
+require 'action_view'
+require 'action_view/helpers'
+
 ActionView::Helpers::FormHelper.module_eval do
 
   def required_label(object_name, method, text = nil, options = {})

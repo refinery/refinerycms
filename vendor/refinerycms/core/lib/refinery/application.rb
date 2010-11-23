@@ -1,3 +1,8 @@
+# require application helper so that we can include our helpers into it.
+if defined?(Rails) and !Rails.root.nil? and (app_helper = Rails.root.join('app', 'helpers', 'application_helper.rb')).file?
+  require app_helper.to_s
+end
+
 module Refinery
   module Application
     def self.included(base)
@@ -23,21 +28,19 @@ module Refinery
       # Specify a cache store to use
       base.config.cache_store = :memory_store
 
-      # Extend the application controller
+      # Extend the application controller and helper
       base.config.to_prepare do
-        ::ApplicationController.instance_eval do
-          include ::Refinery::ApplicationController
-        end if defined?(::ApplicationController)
-
-        ::ApplicationHelper.instance_eval do
-          include ::Refinery::ApplicationHelper
-        end if defined?(::ApplicationHelper)
+        ::ApplicationController.send :include, ::Refinery::ApplicationController
+        ::ApplicationController.send :helper, :application
+        ::ApplicationHelper.send :include, ::Refinery::ApplicationHelper
       end
 
       # load in any settings that the developer wants after the initialization.
       base.config.after_initialize do
-        require Rails.root.join('config', 'settings.rb')
-      end if Rails.root.join('config', 'settings.rb').exist?
+        if (settings = Rails.root.join('config', 'settings.rb')).exist?
+          require settings.to_s
+        end
+      end
     end
   end
 end
