@@ -14,10 +14,10 @@ GIT
 
 GIT
   remote: git://github.com/refinerycms/dragonfly.git
-  revision: 5e60312df9d3d1e18cdff3a7397da1395539522a
+  revision: 9edda253b663dbdc72af2121e22179efdb594da9
   branch: master
   specs:
-    dragonfly (0.8.0)
+    dragonfly (0.8.1)
       rack
 
 GIT
@@ -33,7 +33,7 @@ PATH
       acts_as_indexed (~> 0.6.6)
       authlogic (~> 2.1.6)
       bundler (~> 1.0.5)
-      dragonfly (~> 0.8)
+      dragonfly (~> 0.8.1)
       friendly_id (~> 3.1.6)
       moretea-awesome_nested_set (= 1.4.3.1)
       rack-cache (~> 0.5.2)
@@ -105,7 +105,7 @@ GEM
     ffi (0.6.3)
       rake (>= 0.8.7)
     filters_spam (0.3)
-    friendly_id (3.1.7)
+    friendly_id (3.1.8)
       babosa (~> 0.2.0)
     gherkin (2.2.9)
       json (~> 1.4.6)
