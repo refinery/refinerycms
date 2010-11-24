@@ -211,3 +211,6 @@ DEPENDENCIES
   ruby-prof
   spork
   sqlite3-ruby
+
+METADATA
+  version: 1.0.6
