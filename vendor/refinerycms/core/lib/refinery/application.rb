@@ -30,14 +30,14 @@ module Refinery
 
       # Include the refinery controllers and helpers dynamically
       base.config.to_prepare do
+        ::ApplicationHelper.send :include, ::Refinery::ApplicationHelper
+
         [::ApplicationController, ::Admin::BaseController].each do |c|
           c.send :include, ::Refinery::ApplicationController
           c.send :helper, :application
         end
 
         ::Admin::BaseController.send :include, ::Refinery::AdminBaseController
-
-        ::ApplicationHelper.send :include, ::Refinery::ApplicationHelper
       end
 
       # load in any settings that the developer wants after the initialization.
