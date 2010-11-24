@@ -36,8 +36,6 @@ Feature: Lost Password
       When I go to the reset password page
       And I fill in "Password" with "cukes"
       And I fill in "Password confirmation" with "cukes"
-      Then show me the page
       And I press "Reset password"
-      Then show me the page
       Then I should be on the admin root
       And I should see "Password reset successfully for"
