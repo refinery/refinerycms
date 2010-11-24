@@ -33,6 +33,8 @@
   <%= yield :stylesheets %>
   <%= render :partial => 'shared/google_analytics' unless local_request? %>
 
+<%= render :partial => '/shared/google_analytics' unless local_request? %>
+
   <%= javascript_include_tag 'modernizr-min' %>
 
   <% #TODO: REMOVE yielded_head and yielded_head_libraries and deprecation notice 0.9.9 <=> 1.0 %>
