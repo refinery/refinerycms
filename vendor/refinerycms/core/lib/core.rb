@@ -18,7 +18,22 @@ module Refinery
   autoload :Activity, File.expand_path('../refinery/activity', __FILE__)
 
   module Core
+    class << self
+      def attach_to_application!
+        ::Rails::Application.subclasses.each do |subclass|
+          begin
+            subclass.send :include, ::Refinery::Application
+          rescue
+            $stdout.puts "Refinery CMS couldn't attach to #{subclass.name}."
+            $stdout.puts "Error was: #{$!.message}"
+            $stdout.puts $!.backtrace
+          end
+        end
+      end
+    end
+
     class Engine < Rails::Engine
+
       initializer "static assets" do |app|
         app.middleware.insert_after ::ActionDispatch::Static, ::ActionDispatch::Static, "#{root}/public"
       end
@@ -39,14 +54,7 @@ module Refinery
 
       # Attach ourselves to the Rails application.
       config.before_initialize do
-        ::Rails::Application.subclasses.each do |subclass|
-          begin
-            subclass.send :include, ::Refinery::Application
-          rescue
-            $stdout.puts "Refinery CMS couldn't attach to #{subclass.name}."
-            $stdout.puts "Error was: #{$!.message}"
-          end
-        end
+        ::Refinery::Core.attach_to_application!
       end
 
       config.to_prepare do
@@ -72,7 +80,7 @@ module Refinery
         Refinery::Plugin.register do |plugin|
           plugin.name ="refinery_core"
           plugin.class_name ="RefineryEngine"
-          plugin.version = %q{0.9.8}
+          plugin.version = Refinery.version.to_s
           plugin.hide_from_menu = true
           plugin.always_allow_access = true
           plugin.menu_match = /(refinery|admin)\/(refinery_core|base)$/
@@ -81,7 +89,7 @@ module Refinery
         # Register the dialogs plugin
         Refinery::Plugin.register do |plugin|
           plugin.name = "refinery_dialogs"
-          plugin.version = %q{0.9.8}
+          plugin.version = Refinery.version.to_s
           plugin.hide_from_menu = true
           plugin.always_allow_access = true
           plugin.menu_match = /(refinery|admin)\/(refinery_)?dialogs/

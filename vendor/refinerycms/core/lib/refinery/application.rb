@@ -28,10 +28,15 @@ module Refinery
       # Specify a cache store to use
       base.config.cache_store = :memory_store
 
-      # Extend the application controller and helper
+      # Include the refinery controllers and helpers dynamically
       base.config.to_prepare do
-        ::ApplicationController.send :include, ::Refinery::ApplicationController
-        ::ApplicationController.send :helper, :application
+        [::ApplicationController, ::Admin::BaseController].each do |c|
+          c.send :include, ::Refinery::ApplicationController
+          c.send :helper, :application
+        end
+
+        ::Admin::BaseController.send :include, ::Refinery::AdminBaseController
+
         ::ApplicationHelper.send :include, ::Refinery::ApplicationHelper
       end
 
