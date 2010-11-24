@@ -8,16 +8,16 @@ module Refinery
                   (if session.keys.include?(:website_return_to) and session[:website_return_to].present?
                     session[:website_return_to]
                    else
-                    root_url(:only_path => true)
+                    root_path
                    end)) do
           link_to t('.switch_to_your_website_editor'),
                   (if session.keys.include?(:refinery_return_to) and session[:refinery_return_to].present?
                     session[:refinery_return_to]
                    elsif defined?(@page) and @page.present? and !@page.home?
-                     edit_admin_page_url(@page, :only_path => true)
+                     edit_admin_page_path(@page)
                    else
-                     (request.fullpath.to_s == '/') ? admin_root_url(:only_path => true) : "/refinery#{request.fullpath}/edit"
-                   end rescue admin_root_url(:only_path => true))
+                     (request.fullpath.to_s == '/') ? admin_root_path : "/refinery#{request.fullpath}/edit"
+                   end rescue admin_root_path)
         end
       end
 
