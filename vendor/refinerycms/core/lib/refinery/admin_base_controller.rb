@@ -22,7 +22,7 @@ class Refinery::AdminBaseController < ApplicationController
       # and any references to "home page" to "Dashboard"
       part_symbol = Page.default_parts.first.to_sym
       @page[part_symbol] = @page[part_symbol].to_s.gsub(
-                            /href=(\'|\")\/(\'|\")/, "href='#{admin_root_url(:only_path => true)}'"
+                            /href=(\'|\")\/(\'|\")/, "href='#{admin_root_path}'"
                            ).gsub("home page", "Dashboard")
 
       render :template => "/pages/show",

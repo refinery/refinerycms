@@ -9,32 +9,30 @@
       <% if Refinery::Plugins.active.names.include?("refinery_pages") %>
         <li>
           <%= link_to t('.add_a_new_page'),
-                      new_admin_page_url(:only_path => true),
+                      new_admin_page_path,
                       :class => "add_icon" %>
         </li>
         <li>
           <%= link_to t('.update_a_page'),
-                      admin_pages_url(:only_path => true),
+                      admin_pages_path,
                       :class => "edit_icon" %>
         </li>
       <% end %>
       <% if Refinery::Plugins.active.names.include?("refinery_files") %>
         <li>
           <%= link_to t('.upload_a_file'),
-                      new_admin_resource_url(:dialog => true,
+                      new_admin_resource_path(:dialog => true,
                                              :width => 600,
-                                             :height => 300,
-                                             :only_path => true),
+                                             :height => 300),
                       :class => "add_icon" %>
         </li>
       <% end %>
       <% if Refinery::Plugins.active.names.include?("refinery_images") %>
         <li>
           <%= link_to t('.upload_a_image'),
-                      new_admin_image_url(:dialog => true,
+                      new_admin_image_path(:dialog => true,
                                           :width => 600,
-                                          :height => 300,
-                                          :only_path => true),
+                                          :height => 300),
                       :class => "add_icon" %>
         </li>
       <% end %>
