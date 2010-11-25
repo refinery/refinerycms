@@ -1,4 +1,11 @@
 GIT
+  remote: git://github.com/flori/json.git
+  revision: 2c0f8d2c9b15a33b8d10ffcb1959aef54d320b57
+  ref: 2c0f8d
+  specs:
+    json_pure (1.4.6a)
+
+GIT
   remote: git://github.com/parndt/capybara.git
   revision: 4cfe882c982682e71c13c877e7f14fd862a9e565
   specs:
@@ -112,7 +119,6 @@ GEM
       term-ansicolor (~> 1.0.5)
     i18n (0.4.2)
     json (1.4.6)
-    json_pure (1.4.6)
     launchy (0.3.7)
       configuration (>= 0.0.5)
       rake (>= 0.8.1)
@@ -199,7 +205,7 @@ DEPENDENCIES
   dragonfly!
   factory_girl
   gherkin
-  json_pure (~> 1.4.6)
+  json_pure (= 1.4.6a)!
   launchy
   rack-test (~> 0.5.6)
   rails (~> 3.0.3)
