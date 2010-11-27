@@ -1,0 +1,38 @@
+lt:
+  plugins:
+    refinery_images:
+      title: Paveikslėliai
+      description: Valdyti paveikslėlius
+  image_specify_for_upload: Turite nurodyti paveikslėlį įkėlimui
+  image_should_be_smaller_than_max_image_size: "Paveikslėlio dydis turėtų būti mažesnis, nei %{max_image_size}"
+  image_must_be_these_formats: 'Paveikslėlis turi būti JPG, PNG arba GIF formatu'
+  admin:
+    images:
+      delete: Pašalinti paveikslėlį visam laikui
+      edit: Redaguoti paveikslėlį
+      form:
+        image: Paveikslėlis
+        use_current_image: Naudoti pasirinktą paveikslėlį
+        or: arba
+        replace_image: " pakeisti jį šiuo..."
+        current_image: Pasirinktas paveikslėlis
+        maximum_image_size: Maksimalus paveikslėlio dydis yra %{megabytes} megabaitų.
+      index:
+        create_new_image: Pridėti naują paveikslėlį
+        no_images_yet: Dar nėra paveikslėlių. Paspauskite "Pridėti naują paveikslėlį" norėdami sukurti jūsų pirmą paveikslėlį.
+        view:
+          switch_to: Persijungti į %{view_name} vaizdą
+          list: sąrašo
+          grid: tinklelio
+      grid_view:
+        view_live_html: Peržiūrėti paveikslėlį <br/><em>Atsirado naujame lange</em>
+      existing_image:
+        button_text: Pridėti
+        resize_image: Keisti paveikslėlio išmatavimus?
+        size: Dydis
+      insert:
+        existing_image: Egzistuojantis paveikslėlis
+        new_image: Naujas paveikslėlis
+  activerecord:
+    models:
+      image: paveikslėlis
