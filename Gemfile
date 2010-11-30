@@ -63,7 +63,7 @@ group :test do
   gem 'gherkin'
   gem 'rack-test',              '~> 0.5.6'
   # FIXME: Update json_pure to 1.4.7 when it is released
-  gem 'json_pure',              '~> 1.4.6', :require => 'json/pure'
+  gem 'json_pure', "1.4.6a", :git => "git://github.com/flori/json.git", :ref => "2c0f8d"
   # Factory Girl
   gem 'factory_girl'
   gem "#{'j' if java}ruby-prof" unless defined?(RUBY_ENGINE) and RUBY_ENGINE == 'rbx'

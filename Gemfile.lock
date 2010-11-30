@@ -1,4 +1,11 @@
 GIT
+  remote: git://github.com/flori/json.git
+  revision: 2c0f8d2c9b15a33b8d10ffcb1959aef54d320b57
+  ref: 2c0f8d
+  specs:
+    json_pure (1.4.6a)
+
+GIT
   remote: git://github.com/parndt/capybara.git
   revision: 4cfe882c982682e71c13c877e7f14fd862a9e565
   specs:
@@ -14,10 +21,10 @@ GIT
 
 GIT
   remote: git://github.com/refinerycms/dragonfly.git
-  revision: 5e60312df9d3d1e18cdff3a7397da1395539522a
+  revision: 9edda253b663dbdc72af2121e22179efdb594da9
   branch: master
   specs:
-    dragonfly (0.8.0)
+    dragonfly (0.8.1)
       rack
 
 GIT
@@ -41,7 +48,7 @@ PATH
       acts_as_indexed (~> 0.6.6)
       authlogic (~> 2.1.6)
       bundler (~> 1.0.5)
-      dragonfly (~> 0.8)
+      dragonfly (~> 0.8.1)
       friendly_id (~> 3.1.6)
       moretea-awesome_nested_set (= 1.4.3.1)
       rack-cache (~> 0.5.2)
@@ -113,14 +120,13 @@ GEM
     ffi (0.6.3)
       rake (>= 0.8.7)
     filters_spam (0.3)
-    friendly_id (3.1.7)
+    friendly_id (3.1.8)
       babosa (~> 0.2.0)
     gherkin (2.2.9)
       json (~> 1.4.6)
       term-ansicolor (~> 1.0.5)
     i18n (0.4.2)
     json (1.4.6)
-    json_pure (1.4.6)
     launchy (0.3.7)
       configuration (>= 0.0.5)
       rake (>= 0.8.1)
@@ -204,7 +210,7 @@ DEPENDENCIES
   dragonfly!
   factory_girl
   gherkin
-  json_pure (~> 1.4.6)
+  json_pure (= 1.4.6a)!
   launchy
   rack-test (~> 0.5.6)
   rails (~> 3.0.3)

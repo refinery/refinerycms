@@ -64,7 +64,7 @@ module Refinery
       end
 
       def home_page?
-        root_url(:only_path => true) == request.path
+        root_path == request.path
       end
 
       def just_installed?

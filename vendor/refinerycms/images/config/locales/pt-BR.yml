@@ -2,6 +2,7 @@ pt-BR:
   plugins:
     refinery_images:
       title: Imagens
+      article: a
       description: Gerenciar imagens
   image_specify_for_upload: Você deve escolher uma imagem para enviar
   image_should_be_smaller_than_max_image_size: "Imagem deve possuir menos de %{max_image_size} de tamanho"

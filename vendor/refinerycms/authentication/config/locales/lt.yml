@@ -1,0 +1,66 @@
+lt:
+  plugins:
+    refinery_users:
+      title: Vartotojai
+      description: Valdyti vartotojus
+  admin:
+    users:
+      delete: Pašalinti vartotoją visam laikui
+      edit: Redaguoti vartotoją
+      update:
+        cannot_remove_user_plugin_from_current_user: Jūs negalite pašalinti 'Vartotojų' įskiepio iš šiuo metu naudojamos paskyros.
+      form:
+        blank_password_keeps_current: "Jei paliksite slaptažodžio laukelį tuščią, jis išliks nepakites"
+        enable_all: aktyvuoti visus
+      index:
+        create_new_user: Pridėti naują vartotoją
+      user:
+        email_user: Siųsti el. laišką vartotojui
+        preview: (%{who}) sukurtas %{created_at}
+  sessions:
+    login_successful: Sėkmingai prisijungėte
+    new:
+      hello_please_sign_in: Sveiki! Prašome prisijungti.
+      sign_in: Prisijungti
+      forgot_password: Aš pamiršau slaptažodį
+  users:
+    setup_website_name_html: Pirmiausiai nurodykime svetainės pavadinimą. <a href='%{link}' name='%{title}'>Eikite čia</a> norėdami pakeisti svetainės pavadinimą
+    new:
+      fill_form: Įveskite savo informaciją, kad galėtume pradėti.
+      sign_up: Registruotis
+    create:
+      welcome: Sveiki prisijungę prie Refinery, %{who}
+    forgot:
+      email_address: El. pašto adresas
+      enter_email_address: Prašome nurodyti el. pašto adresą savo paskyrai.
+      reset_password: Slaptažodžio keitimas
+      blank_email: Jūs neįvedėte slaptažodžio
+      email_not_associated_with_account_html: Atsiprašome, '%{email}' nėra susietas su jokia paskyra.<br />Ar tikrai nurodėte teisingą el. pašto adresą?
+      email_reset_sent: El. laiškas buvo nusiųstas jums su nuoroda kur galite pakeisti slaptažodį.
+    reset:
+      code_invalid: Atsiprašome, bet šio kodo galiojimo laikas baigėsi arba jis neteisingas. Jeigu susiduriate su nesklandumais, pabandykite nukopijuoti ir įterpti adresą iš laiško į naršyklę arba iš naujo pradėti slaptažodžio keitimo procedūrą.
+      successful: "'%{email}' slaptažodis sėkmingai atnaujintas"
+      pick_new_password_for: Nurodykite naują %{email} slaptažodį
+      reset_password:  Pakeisti slaptažodį
+      password_blank: Užpildykite laukus sutampančiais slaptažodžiais.
+  user_mailer:
+    link_to_reset_your_password: Nuoroda slaptažodžio keitimui
+  authlogic:
+    error_messages:
+      login_blank: negali būti tuščias
+      password_blank: negali būti tuščias
+      login_invalid: "prašome naudoti tik raides, skaičius, tarpus ir .-_@"
+      email_invalid: turėtų būti teisingas el. pašto adresas.
+      no_authentication_details: Jūs nenurodėte jokių prisijungimo duomenų.
+    models:
+      user_session: Vartotojo Sesija
+    attributes:
+      user_session:
+        login: Prisijungti
+        email: El. paštas
+        password: Slaptažodis
+        remember_me: Prisiminti mane
+        incorrect: Atsiprašome jūsų %{login_field} arba slaptažodis buvo neteisingas.
+  activerecord:
+    models:
+      user: vartotojas

@@ -218,6 +218,7 @@ class Page < ActiveRecord::Base
     if (super_value = super).blank?
       # self.parts is already eager loaded so we can now just grab the first element matching the title we specified.
       part = self.parts.detect do |part|
+        part.title.present? and #protecting against the problem that occurs when have nil title
         part.title == part_title.to_s or
         part.title.downcase.gsub(" ", "_") == part_title.to_s.downcase.gsub(" ", "_")
       end
@@ -231,8 +232,8 @@ class Page < ActiveRecord::Base
   # In the admin area we use a slightly different title to inform the which pages are draft or hidden pages
   def title_with_meta
     title = self.title
-    title << " <em>(hidden)</em>" unless self.show_in_menu?
-    title << " <em>(draft)</em>" if self.draft?
+    title << " <em>(#{::I18n.t('admin.pages.page.hidden')})</em>" unless self.show_in_menu?
+    title << " <em>(#{::I18n.t('admin.pages.page.draft')})</em>" if self.draft?
 
     title.strip
   end
