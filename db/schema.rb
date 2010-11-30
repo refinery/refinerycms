@@ -24,26 +24,6 @@ ActiveRecord::Schema.define(:version => 20101006211228) do
     t.string   "image_ext"
   end
 
-  create_table "inquiries", :force => true do |t|
-    t.string   "name"
-    t.string   "email"
-    t.string   "phone"
-    t.text     "message"
-    t.integer  "position"
-    t.boolean  "open",       :default => true
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.boolean  "spam",       :default => false
-  end
-
-  create_table "inquiry_settings", :force => true do |t|
-    t.string   "name"
-    t.text     "value"
-    t.boolean  "destroyable"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "page_parts", :force => true do |t|
     t.integer  "page_id"
     t.string   "title"
