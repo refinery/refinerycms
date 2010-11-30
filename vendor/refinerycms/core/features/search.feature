@@ -18,8 +18,6 @@ Feature: Search
     Examples:
       |  item  | title  |   location   |
       |page    |testitem|pages         |
-      |inquiry |testitem|inquiries     |
-      |inquiry |testitem|spam inquiries|
       |setting |testitem|settings      |
 
   # This will only run when resources engine is installed.
@@ -53,7 +51,5 @@ Feature: Search
       |pages    |pages         |
       |images   |images        |
       |files    |files         |
-      |inquiries|inquiries     |
-      |inquiries|spam inquiries|
       |settings |settings      |
 
