@@ -23,21 +23,17 @@ module Refinery
         # can be removed once this issue is fixed:
         # # https://rails.lighthouseapp.com/projects/8994/tickets/3820-make-railsgeneratorsmigrationnext_migration_number-method-a-class-method-so-it-possible-to-use-it-in-custom-generators
         def next_migration_number(dirname)
-          if ActiveRecord::Base.timestamped_migrations
-            Time.now.utc.strftime("%Y%m%d%H%M%S")
-          else
-            "%.3d" % (current_migration_number(dirname) + 1)
-          end
+          ::ActiveRecord::Generators::Base.next_migration_number(dirname)
         end
       end
 
       def generate
-        Pathname.glob(self.class.source_root.join('db', '**', '*.rb')) do |path|
-          case path.to_s
-          when %r{.*/migrate/[^\d].*}
-            migration_template path.to_s, Rails.root.join("db/migrate/#{path.split.last.to_s.split('.rb').first}")
+        Dir.glob(self.class.source_root.join('db', '**', '*.rb')) do |path|
+          case path
+          when %r{.*/migrate/.*}
+            migration_template path, Rails.root.join('db', 'migrate', path.split('/migrate/').last.split(/^\d*_/).last)
           when %r{.*/seeds.*}
-            template path.to_s, Rails.root.join(path.to_s.split('/db/').first, 'db', path.to_s.split('/db/').last)
+            template path, Rails.root.join("db/seeds#{path.split('/seeds').last}")
           end
         end
 
