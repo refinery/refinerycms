@@ -3,6 +3,7 @@ pl:
     refinery_users:
       title: Użytkownicy
       description: Zarządzaj użytkownikami
+      article: masculine
   admin:
     users:
       delete: Usuń tego użytkownika na zawsze
