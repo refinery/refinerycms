@@ -1,4 +1,4 @@
-@dashboard
+@refinerycms @dashboard
 Feature: Dashboard
   In order to see recent changes to my website
   As an administrator
@@ -35,10 +35,12 @@ Feature: Dashboard
     When I follow "See home page"
     Then I should be on the home page
 
+  @i18n
   Scenario: Translation options available
     When I go to the Dashboard
     Then I should see "English Change Language"
 
+  @i18n
   Scenario: Change Language to Slovenian and back to English
     When I go to the dashboard
     And I follow "English Change Language"

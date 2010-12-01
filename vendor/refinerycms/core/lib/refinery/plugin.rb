@@ -13,7 +13,7 @@ module Refinery
         Page.friendly_id_config.reserved_words << reserved_word
       end
 
-      raise "A plugin MUST have a name!: #{plugin.inspect}" if plugin.name.nil?
+      raise "A plugin MUST have a name!: #{plugin.inspect}" if plugin.name.blank?
 
       # Set the root as Rails::Engine.called_from will always be
       #                 vendor/engines/refinery/lib/refinery
@@ -104,17 +104,17 @@ module Refinery
       end
     end
 
+  # Make this protected, so that only Plugin.register can use it.
   protected
 
     def add_activity(options)
       (self.plugin_activity ||= []) << Activity::new(options)
     end
 
-    # Make this protected, so that only Plugin.register can use it.
     def initialize
-      # save the pathname to where this plugin is.
-      depth = RUBY_VERSION == "1.9.2" ? -4 : -3
-      self.pathname = Pathname.new(caller(3).first.split(File::SEPARATOR)[0..depth].join(File::SEPARATOR))
+      # save the pathname to where this plugin is using its lib directory which is standard now.
+      depth = RUBY_VERSION >= "1.9.2" ? 4 : 3
+      self.pathname = Pathname.new(caller(depth).first.match("(.*)#{File::SEPARATOR}lib")[1])
       Refinery::Plugins.registered << self # add me to the collection of registered plugins
     end
 

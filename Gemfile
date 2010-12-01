@@ -1,11 +1,15 @@
 source 'http://rubygems.org'
 gem 'bundler',                  '~> 1.0.0'
-gem 'rails',                    '3.0.0'
+gem 'rails',                    '~> 3.0.3'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3-ruby',             :require => 'sqlite3'
+if (java = RUBY_PLATFORM == 'java')
+  gem 'activerecord-jdbcsqlite3-adapter', '>= 1.0.2', :platform => :jruby
+else
+  gem 'sqlite3-ruby', :require => 'sqlite3'
+end
 
 # Use unicorn as the web server
 # gem 'unicorn'
@@ -32,27 +36,19 @@ gem 'sqlite3-ruby',             :require => 'sqlite3'
 
 # REFINERY CMS ================================================================
 
+java = (RUBY_PLATFORM == 'java')
+
 # Specify the Refinery CMS core:
 gem 'refinerycms',              :path => '.'
 
 # Specify additional Refinery CMS Engines here (all optional):
-gem 'refinerycms-inquiries',    '~> 0.9.8.8'
+gem 'refinerycms-inquiries',    '~> 0.9'
 # gem 'refinerycms-news',       '~> 0.9.9'
 # gem 'refinerycms-portfolio',  '~> 0.9.8'
 # gem 'refinerycms-theming',    '~> 0.9.8'
 
 # Add i18n support (optional, you can remove this if you really want to).
-gem 'refinerycms-i18n',         '~> 0.9.8.7'
-
-# Figure out how to get RMagick:
-rmagick_options = {:require => false}
-rmagick_options.update({
-  :git => 'git://github.com/refinerycms/rmagick.git',
-  :branch => 'windows'
-}) if Bundler::WINDOWS
-
-# Specify a version of RMagick that works in your environment:
-gem 'rmagick',                  '~> 2.12.0', rmagick_options
+gem 'refinerycms-i18n',         '~> 0.9'
 
 # END REFINERY CMS ============================================================
 
@@ -60,11 +56,7 @@ gem 'rmagick',                  '~> 2.12.0', rmagick_options
 
 group :test do
   # RSpec
-  gem 'rspec',                  (RSPEC_VERSION = '~> 2.0.0.beta')
-  gem 'rspec-core',             RSPEC_VERSION, :require => 'rspec/core'
-  gem 'rspec-expectations',     RSPEC_VERSION, :require => 'rspec/expectations'
-  gem 'rspec-mocks',            RSPEC_VERSION, :require => 'rspec/mocks'
-  gem 'rspec-rails',            RSPEC_VERSION
+  gem 'rspec-rails',                  (RSPEC_VERSION = '~> 2')
   # Cucumber
   gem 'capybara'
   gem 'database_cleaner'
@@ -74,16 +66,18 @@ group :test do
   gem 'launchy'
   gem 'gherkin'
   # TODO: Change back to gem when patch is merged in
-  gem 'rack-test',              :git => 'git://github.com/alan/rack-test.git'
+  gem 'rack-test',              '~> 0.5.6'
   # FIXME: JSON constant constants warnings
   gem 'json_pure',              '~> 1.4.6', :require => 'json/pure'
   # Factory Girl
   gem 'factory_girl'
-  gem 'ruby-prof'
+  gem "#{'j' if java}ruby-prof" unless defined?(RUBY_ENGINE) and RUBY_ENGINE == 'rbx'
   # Autotest
   gem 'autotest'
   gem 'autotest-rails'
   gem 'autotest-notification'
+  # FIXME: Replace when new babosa gem is released
+  gem 'babosa', '0.2.0',        :git => 'git://github.com/stevenheidel/babosa.git' if java
 end
 
 # END REFINERY CMS DEVELOPMENT =================================================

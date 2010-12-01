@@ -1,5 +1,10 @@
 class RefinerySetting < ActiveRecord::Base
 
+  FORM_VALUE_TYPES = [
+    ['Multi-line', 'text_area'],
+    ['Checkbox', 'check_box']
+  ]
+
   validates :name, :presence => true
 
   serialize :value # stores into YAML format
@@ -35,6 +40,7 @@ class RefinerySetting < ActiveRecord::Base
       result = ensure_cache_exists!
 
       if name.present?
+        scoping = scoping.to_s if scoping.is_a?(Symbol)
         result = result.detect do |rs|
           rs[:name] == name.to_s.downcase.to_sym and rs[:scoping] == scoping
         end
@@ -70,19 +76,19 @@ class RefinerySetting < ActiveRecord::Base
     end
 
     def cache_key
-      "#{Refinery.base_cache_key}_refinery_settings_cache"
+      [Refinery.base_cache_key, 'refinery_settings_cache'].join('_')
     end
 
     # find_or_set offers a convenient way to
     def find_or_set(name, the_value, options={})
-      options = {:scoping => nil, :restricted => false, :callback_proc_as_string => nil}.merge(options)
-      # Try to get the value from cache first.
-      scoping = options[:scoping]
-      restricted = options[:restricted]
-      callback_proc_as_string = options[:callback_proc_as_string]
+      # Merge default options with supplied options.
+      options = {
+        :scoping => nil, :restricted => false,
+        :callback_proc_as_string => nil, :form_value_type => 'text_area'
+      }.merge(options)
 
       # try to find the setting first
-      value = cache_read(name, scoping)
+      value = get(name, :scoping => options[:scoping])
 
       # if the setting's value is nil, store a new one using the existing functionality.
       value = set(name, options.merge({:value => the_value})) if value.nil?
@@ -94,24 +100,27 @@ class RefinerySetting < ActiveRecord::Base
     alias :get_or_set :find_or_set
 
     # Retrieve the current value for the setting whose name is supplied.
-    def get(name)
-      cache_read(name)
+    def get(name, options = {})
+      options = {:scoping => nil}.update(options)
+      cache_read(name, options[:scoping])
     end
 
     alias :[] :get
 
     def set(name, value)
-      scoping = (value.is_a?(Hash) and value.has_key?(:scoping)) ? value[:scoping] : nil
+      scoping = (value[:scoping] if value.is_a?(Hash) and value.has_key?(:scoping))
       setting = find_or_initialize_by_name_and_scoping(:name => name.to_s, :scoping => scoping)
 
       # you could also pass in {:value => 'something', :scoping => 'somewhere'}
       unless value.is_a?(Hash) and value.has_key?(:value)
         setting.value = value
       else
-        setting.value = value[:value]
+        # set the value last, so that the other attributes can transform it if required.
+        setting.form_value_type = value[:form_value_type] || 'text_area' if setting.respond_to?(:form_value_type)
         setting.scoping = value[:scoping] if value.has_key?(:scoping)
         setting.callback_proc_as_string = value[:callback_proc_as_string] if value.has_key?(:callback_proc_as_string)
         setting.destroyable = value[:destroyable] if value.has_key?(:destroyable)
+        setting.value = value[:value]
       end
 
       # Save because we're in a setter method.
@@ -154,8 +163,13 @@ class RefinerySetting < ActiveRecord::Base
   end
 
   def value=(new_value)
+    # must convert "1" to true and "0" to false when supplied using 'check_box', unfortunately.
+    if ["1", "0"].include?(new_value) and self.form_value_type == 'check_box'
+      new_value = new_value == "1" ? true : false
+    end
+
     # must convert to string if true or false supplied otherwise it becomes 0 or 1, unfortunately.
-    if %w(trueclass falseclass).include?(new_value.class.to_s.downcase)
+    if [true, false].include?(new_value)
       new_value = new_value.to_s
     end
 

@@ -41,7 +41,7 @@ Gem::Specification.new do |s|
   s.require_paths     = %w(vendor/refinerycms)
   s.executables       = %w(#{Dir.glob('bin/*').map{|d| d.gsub('bin/','')}.join(' ')})
 
-  s.add_dependency    'rails',                '~> 3.0.0'
+  s.add_dependency    'rails',                '~> 3.0.3'
   s.add_dependency    'bundler',              '~> 1.0.0'
 
   s.add_dependency    'moretea-awesome_nested_set', '= 1.4.3.1'
@@ -52,7 +52,8 @@ Gem::Specification.new do |s|
   s.add_dependency    'will_paginate',        '~> 3.0.pre'
   s.add_dependency    'authlogic',            '~> 2.1.6'
   s.add_dependency    'rack-cache',           '~> 0.5.2'
-  s.add_dependency    'dragonfly',            '~> 0.7.5'
+  s.add_dependency    'dragonfly',            '~> 0.8.1'
+  s.add_dependency    'rdoc',                 '>= 2.5.11' # helps fix ubuntu
 
   s.files             = [
     '#{files.sort.join("',\n    '")}'
