@@ -1,0 +1,66 @@
+pl:
+  plugins:
+    refinery_users:
+      title: Użytkownicy
+      description: Zarządzaj użytkownikami
+  admin:
+    users:
+      delete: Usuń tego użytkownika na zawsze
+      edit: Edttuj tego użytkownika
+      update:
+        cannot_remove_user_plugin_from_current_user: Z obecnie zalogowanego konta nie można usunąć pluginu 'Użytkownicy'.
+      form:
+        blank_password_keeps_current: Pozostawienie pola hasło pustym pozostawi hasło nie zmienionym
+        enable_all: aktywuj wszystkich
+      index:
+        create_new_user: Dodaj nowego użytkownika
+      user:
+        email_user: Wyślij e-mail do tego użytkownika
+        preview: (%{who}) dodany %{created_at}
+  sessions:
+    login_successful: Logowanie poprawne
+    new:
+      hello_please_sign_in: Hej! Proszę zaloguj się.
+      sign_in: Zaloguj się
+      forgot_password: Zapomniane hasło
+  users:
+    setup_website_name_html: Na początek, nazwijmy tę stronę. <a href='%{link}' name='%{title}'>Wejdź tutaj</a> aby je zmienić.
+    new:
+      fill_form: Uzupełnij dane poniżej aby zacząć używać tej strony.
+      sign_up: Zarejestruj się
+    create:
+      welcome: Witaj w Refinery, %{who}
+    forgot:
+      email_address: Adres e-mail
+      enter_email_address: Proszę podaj adres e-mail dla Twojego konta.
+      reset_password: Reset hasła
+      blank_email: Nie podano żadnego adresu e-mail.
+      email_not_associated_with_account_html: Przepraszamy, '%{email}' nie jest adresem żadnego z zarejestrowanych użytkownikiem. <br />Czy to na pewno prawidłowy adres?
+      email_reset_sent: Został wysłany e-mail z linkiem umożliwiającym reset hasła.
+    reset:
+      code_invalid: Niestety, ten kod resetu hasła wygasł lub jest niepoprawny. Jeżeli masz problemy z resetem hasła, skopiuj i wklej link z e-mail do przeglądarki  lub ponownie rozpocznij proces resetu hasła.
+      successful: Hasło zresetowane dla  '%{email}'
+      pick_new_password_for: Wybierz nowe hasło dla  %{email}
+      reset_password: Reset hasła
+      password_blank: Wypełnij pola poniżej identycznymi hasłami.
+  user_mailer:
+    link_to_reset_your_password: Link do resetu hasła
+  authlogic:
+    error_messages:
+      login_blank: nie może być puste
+      password_blank: nie może być puste
+      login_invalid: należy stosować wyłącznie liter, cyfr, spacji oraz .-_@.
+      email_invalid: powinno wyglądać jak adres e-mail.
+      no_authentication_details: Nie zostały podane żadne detale dla autentykacji.
+    models:
+      user_session: UserSession
+    attributes:
+      user_session:
+        login: Login
+        email: E-mail
+        password: Hasło
+        remember_me: Zapamiętaj mnie
+        incorrect: Niestety, Twój %{login_field} lub hasło były niepoprawne.
+  activerecord:
+    models:
+      user: użytkownik
