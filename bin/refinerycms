@@ -291,12 +291,3 @@ module Refinery
     protected :run_command, :find_and_replace
   end
 end
-
-unless !defined?(::ChildLabor::Task) or ::ChildLabor::Task.instance_methods.include?(:gets)
-  ::ChildLabor::Task.module_eval do
-    def gets
-      @stdout.gets
-    end
-  end
-end
-Refinery::AppGenerator.new(ARGV).run!
