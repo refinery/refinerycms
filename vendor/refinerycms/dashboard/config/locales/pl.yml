@@ -16,10 +16,14 @@ pl:
       recent_activity:
         empty: Nie było ostatnio żadnej aktywności.
         latest_activity: Najnowsza aktywność
-        latest_activity_message: %{kind} %{what} zostało %{action}
+        latest_activity_message: %{kind} %{what} %{action}
       recent_inquiries:
         latest_inquiries: Najnowsze zapytania
-  updated:
-    'with_article "the"': uaktualnione
+  updated: 
+    'with_article "masculine"': został uaktualniony
+    'with_article "feminine"': została uaktualniona
+    'with_article "neutral"': zostało uaktualnione
   created:
-    'with_article "the"': dodane
+    'with_article "masculine"': został dodany
+    'with_article "feminine"': została dodana
+    'with_article "neutral"': zostało dodane
