@@ -1,0 +1,32 @@
+pl:
+  plugins:
+    refinery_files:
+      title: Pliki
+      description: Wgrywaj i linkuj do plików
+      article: masculine
+  file_specify_for_upload: Musisz określić plik do wgrania
+  file_should_be_smaller_than_max_file_size: Plik powinien być mniejszy niż %{max_file_size}
+  admin:
+    resources:
+      delete: Na zawsze usuń ten plik
+      edit: Zmień ten plik
+      form:
+        download_current: Pobierz obecny plik
+        or: or
+        replace: " zastąp go tym..."
+        maximum_file_size: Maksymalny rozmiaj plik to %{megabytes} megabajtów.
+      resource:
+        download: Pobierz ten plik (%{size})
+      index:
+        upload_new: Wgraj nowe pliki
+        no_files_yet: Nie ma jeszcze żadnych plików. Kliknij "Wgraj nowe pliki" aby dodać pierwszy.
+      insert:
+        existing: Istniejący plik
+        new: Nowy plik
+        no_files: Nie ma żadnych plików
+      existing_resource:
+        link_to_file: Linkuj do tego pliku
+        button_text: Wstaw
+  activerecord:
+    models:
+      resource: plik

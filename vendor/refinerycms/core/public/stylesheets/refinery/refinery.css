@@ -873,6 +873,7 @@ body.dialog form {
 }
 #dialog_main #pages_list {
   width: 100%;
+  padding-bottom: 40px;
 }
 #dialog_main #pages_list ul {
   margin: 0px 12px 0px 12px;
