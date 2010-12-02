@@ -76,6 +76,9 @@ init_interface = function() {
       $(this).css('display', $(this).css('display') == 'none' ? '' : 'none');
     });
     $('#other_locales').animate({opacity: 'toggle', height: 'toggle'}, 250);
+    $('html,body').animate({
+      scrollTop: $('#other_locales').parent().offset().top
+    }, 250);
     e.preventDefault();
   });
 
