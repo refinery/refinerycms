@@ -107,10 +107,10 @@ init_modal_dialogs = function(){
     .click(function(e){
       $anchor = $(this);
       iframe_src = (iframe_src = $anchor.attr('href'))
-                   + (iframe_src.indexOf('?') > -1 ? '&amp;' : '?')
-                   + 'app_dialog=true&amp;dialog=true';
+                   + (iframe_src.indexOf('?') > -1 ? '&' : '?')
+                   + 'app_dialog=true&dialog=true';
 
-      iframe = $("<iframe id='dialog_iframe' src='" + iframe_src + "' frameborder='0' marginheight='0' marginwidth='0' border='0'></iframe>");
+      iframe = $("<iframe id='dialog_iframe' frameborder='0' marginheight='0' marginwidth='0' border='0'></iframe>");
       if(!$.browser.msie) { iframe.corner('8px'); }
       iframe.dialog({
         title: $anchor.data('dialog-title')
@@ -123,6 +123,7 @@ init_modal_dialogs = function(){
         , close: onCloseDialog
       });
 
+      iframe.attr('src', iframe_src);
       e.preventDefault();
     });
   });
