@@ -17,7 +17,7 @@ PATH
 GEM
   remote: http://rubygems.org/
   specs:
-    ZenTest (4.4.0)
+    ZenTest (4.4.1)
     abstract (1.0.0)
     actionmailer (3.0.3)
       actionpack (= 3.0.3)
@@ -49,7 +49,8 @@ GEM
     arel (2.0.6)
     authlogic (2.1.6)
       activesupport
-    autotest (4.4.5)
+    autotest (4.4.6)
+      ZenTest (>= 4.4.1)
     autotest-notification (2.3.1)
       autotest (~> 4.3)
     autotest-rails (4.1.0)
@@ -131,10 +132,10 @@ GEM
       thor (~> 0.14.4)
     rake (0.8.7)
     rdoc (2.5.11)
-    refinerycms-i18n (0.9.8.11)
+    refinerycms-i18n (0.9.8.12)
       refinerycms (>= 0.9.8)
       routing-filter (~> 0.1.6)
-    refinerycms-inquiries (0.9.9.6)
+    refinerycms-inquiries (0.9.9.7)
       filters_spam (~> 0.2)
     routing-filter (0.1.7)
       actionpack
