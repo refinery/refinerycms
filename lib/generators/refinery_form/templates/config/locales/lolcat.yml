@@ -1,0 +1,77 @@
+lolcat:
+  plugins:
+    <%= class_name.pluralize.underscore.downcase %>:
+      title: <%= plural_name.titleize %>
+      description: PROVIDEZ CONTACT FORM AN STOREZ INQUIRIEZ
+  <%= plural_name %>:
+    new:
+      send: SEND MESAGE
+      privacy_policy: WE VALUE UR PRIVACY
+  admin:
+    <%= plural_name %>:
+      delete: REMOOV DIS INQUIRY FOREVR
+      <%= singular_name %>:
+        read_<%= singular_name %>: READ TEH INQUIRY
+        said: SED
+        mark_as_spam: MARK AS SPAM
+        mark_as_ham: MOOV 2 INBOX
+      submenu:
+        inbox: INBOX
+        spam: SPAM
+        update_notified: UPDATE HOO GETS NOTIFID
+        edit_confirmation_email: EDIT CONFIRMASHUN EMAIL
+      index:
+        no_<%= plural_name %>: U HAS NOT RECEIVD ANY INQUIRIEZ YET.
+      spam:
+        no_spam: HOORAH! U DOAN HAS ANY SPAM.
+      show:
+        details: DETAILS
+        age: AGE
+        actions: ACSHUNS
+        back_to_all_<%= plural_name %>: BAK 2 ALL INQUIRIEZ
+        spam: SPAM
+        spam_yes: YEZ
+        <%= singular_name %>: <%= class_name.underscore.titleize %>
+        to: 2
+        from: FRUM
+        click_to_email: CLICK 2 EMAIL DIS ADDRES
+        phone: FONE
+        date: DATE
+        message: MESAGE
+    <%= singular_name %>_settings:
+      notification_recipients_form:
+        <%= singular_name %>_settings_value_name: SEND NOTIFICASHUNS 2
+        explanation: EVRY TIEM SOMEONE CONTACTS U ON UR WEBSIET, REFINERY SENDZ OUT AN EMAIL 2 SAY THAR IZ NEW INQUIRY.
+        hint: WHEN NEW INQUIRY IZ SUBMITTD, REFINERY WILL SEND AN EMAIL NOTIFICASHUN 2 U.
+        example: "ENTR UR EMAIL ADDRES(EZ) LIEK: JACK@WERK.COM, JILL@OFFICE.COM"
+      confirmation_email_form:
+        to: 2
+        from: FRUM
+        subject: SUBJECT
+        click_to_edit_subject: CLICK HER 2 EDIT TEH SUBJECT
+        explanation: EVRY TIEM SOMEONE CONTACTS U ON UR WEBSIET, REFINERY SENDZ OUT AN EMAIL 2 CONFIRM TEH INQUIRY WIF TEH PERSON HOO MADE IT.
+        below_edit_email_sent: BELOW U CAN EDIT TEH EMAIL DAT IZ SENT OUT.
+        the_customer_making_<%= singular_name %>: TEH CUSTOMR MAKIN TEH INQUIRY
+        message: MESAGE
+        note: "Note: PLACE TEH TEXT %NAYM% WER UD LIEK TEH CUSTOMERS NAYM 2 APPEAR IN DA EMAIL"
+  <%= singular_name %>_mailer:
+    notification:
+      greeting: OH HAI THAR
+      you_recieved_new_<%= singular_name %>: U JUS RECEIVD NEW INQUIRY ON UR WEBSIET.
+      <%= singular_name %>_starts: --- INQUIRY STARTS ---
+      <%= singular_name %>_ends: --- INQUIRY ENDZ ---
+      from: FRUM
+      email: EMAIL
+      phone: FONE
+      message: MESAGE
+      closing_line: KIND REGARDZ
+      ps_html: P.S. ALL UR INQUIRIEZ R STORD IN DA "INQUIRIEZ" SECSHUN OV REFINERY SHUD U EVR WANTS 2 VIEW IT LATR THAR.
+  activerecord:
+    models:
+      <%= singular_name %>: <%= class_name.underscore.titleize %>
+    attributes:
+      <%= singular_name %>:
+        name: NAYM
+        email: EMAIL
+        phone: FONE
+        message: MESAGE

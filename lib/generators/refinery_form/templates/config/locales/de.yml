@@ -1,0 +1,77 @@
+de:
+  plugins:
+    <%= class_name.pluralize.underscore.downcase %>:
+      title: <%= plural_name.titleize %>
+      description: Stellt ein Kontaktformular zur Verfügung und speichert Kontaktanfragen
+  <%= plural_name %>:
+    new:
+      send: Nachricht senden
+      privacy_policy: Ihre Privatsphäre ist uns wichtig
+  admin:
+    <%= plural_name %>:
+      delete: Diese Kontaktanfrage für immer löschen
+      <%= singular_name %>:
+        read_<%= singular_name %>: Kontaktanfrage lesen
+        said: schrieb
+        mark_as_spam: Als Spam markieren
+        mark_as_ham: In den Posteingang verschieben
+      submenu:
+        inbox: Posteingang
+        spam: Spam
+        update_notified: Wer wird benachrichtigt aktualisieren
+        edit_confirmation_email: Bestätigungs-E-Mail bearbeiten
+      index:
+        no_<%= plural_name %>: Sie haben noch keine Kontaktanfragen erhalten.
+      spam:
+        no_spam: Juhu! Sie haben keinen Spam.
+      show:
+        details: Details
+        age: Alter
+        actions: Aktionen
+        back_to_all_<%= plural_name %>: Zurück zu allen Kontaktanfragen
+        spam: Spam
+        spam_yes: 'ja'
+        <%= singular_name %>: <%= class_name.underscore.titleize %>
+        to: An
+        from: Von
+        click_to_email: Klicken, um eine E-Mail an diese Adresse zu schicken
+        phone: Telefon
+        date: Datum
+        message: Nachricht
+    <%= singular_name %>_settings:
+      notification_recipients_form:
+        <%= singular_name %>_settings_value_name: Schicke Benachrichtigungen an
+        explanation: Jedesmal wenn jemand Sie auf Ihrer Webseite kontaktiert, wird eine E-Mail mit einem Hinweis zu einer neuen Kontaktanfrage versendet.
+        hint: Wenn eine neue Kontaktanfrage gestellt wurde, wird Refinery Ihnen eine E-Mail mit einem Hinweis schicken.
+        example: "Geben Sie Ihre E-Mail-Adresse(n) an, z. B.: jack@work.com, jill@office.com"
+      confirmation_email_form:
+        to: An
+        from: Von
+        subject: Betreff
+        click_to_edit_subject: Klicken Sie hier, um den Betreff zu bearbeiten
+        explanation: Jedesmal wenn jemand Sie auf Ihrer Webseite kontaktiert, wird eine E-Mail an die anfragende Person zur Bestätigung der Kontaktanfrage versendet.
+        below_edit_email_sent: Unten können Sie die E-Mail bearbeiten, die versendet wird.
+        the_customer_making_<%= singular_name %>: Der Kunde, der die Kontaktanfrage gestellt hat
+        message: Nachricht
+        note: "Hinweis: Um den Namen des Kunden in der E-Mail einzufügen, verwenden Sie den Platzhalter %name%"
+  <%= singular_name %>_mailer:
+    notification:
+      greeting: Hallo
+      you_recieved_new_<%= singular_name %>: Sie haben eine neue Kontaktanfrage über Ihre Webseite erhalten.
+      <%= singular_name %>_starts: --- Anfang der Kontaktanfrage ---
+      <%= singular_name %>_ends: --- Ende der Kontaktanfrage ---
+      from: Von
+      email: E-Mail
+      phone: Telefon
+      message: Nachricht
+      closing_line: Mit freundlichen Grüßen
+      ps_html: P.S. All Ihre Kontaktanfragen werden im Bereich "Kontaktanfragen" von Refinery gespeichert, sollten Sie diese zu einem späteren Zeitpunkt wieder ansehen wollen.
+  activerecord:
+    models:
+      <%= singular_name %>: <%= class_name.underscore.titleize %>
+    attributes:
+      <%= singular_name %>:
+        name: Name
+        email: E-Mail
+        phone: Telefon
+        message: Nachricht

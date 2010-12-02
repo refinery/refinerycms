@@ -1,0 +1,57 @@
+<%%= form_for([:admin, @refinery_setting], :url => (@url_override || @url)) do |f| %>
+
+  <p>
+    <%%= t('.explanation') %>
+  </p>
+  <p>
+    <%%= t('.below_edit_email_sent') %>
+  </p>
+  <table id='<%= singular_name %>'>
+    <tr>
+      <td>
+        <label class='stripped'><%%= t('.to') %></label>
+      </td>
+      <td>
+        <%%= t('.the_customer_making_<%= singular_name %>') %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <label class='stripped'><%%= t('.from') %></label>
+      </td>
+      <td>
+        <%%= "#{RefinerySetting[:site_name]} &lt;no-reply@#{request.domain(RefinerySetting.find_or_set(:tld_length, 1))}&gt;".html_safe %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <label class='stripped'><%%= t('.subject') %></label>
+      </td>
+      <td>
+        <%%= text_field_tag 'subject', <%= class_name %>Setting.confirmation_subject,
+                           :class => 'widest' %>
+      </td>
+    </tr>
+    <tr>
+      <td valign='top'>
+        <%%= f.label :value, t('.message'),
+                    :class => 'stripped' %>
+      </td>
+      <td>
+        <%%= f.text_area :value,
+                        :rows => "5",
+                        :class => 'widest' %>
+        <br/>
+        <em><%%= t('.note') %></em>
+      </td>
+    </tr>
+  </table>
+
+  <%%= render :partial => "/shared/admin/form_actions",
+             :locals => {
+               :f => f,
+               :continue_editing => false,
+               :cancel_url => admin_<%= plural_name %>_url,
+               :hide_delete => true
+             } %>
+<%% end %>
