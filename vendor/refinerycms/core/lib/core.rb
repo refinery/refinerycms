@@ -54,7 +54,7 @@ module Refinery
       end
 
       # Attach ourselves to the Rails application.
-      config.before_initialize do
+      config.before_configuration do
         ::Refinery::Core.attach_to_application!
       end
 
