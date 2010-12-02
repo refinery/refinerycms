@@ -1,16 +1,18 @@
 <div id='actions'>
   <ul>
-    <li>
-      <%%= render :partial => "/shared/admin/search",
-                  :locals => {
-                    :url => admin_<%= plural_name %>_url
-                  } %>
-    </li>
+    <%% if Admin::<%= class_name.pluralize %>Controller.searchable? %>
+      <li>
+        <%%= render :partial => "/shared/admin/search",
+                    :locals => {
+                      :url => admin_<%= plural_name %>_url
+                    } %>
+      </li>
+    <%% end %>
     <li>
       <%%= link_to t('.create_new'), new_admin_<%= singular_name %>_url,
                    :class => "add_icon" %>
     </li>
-  <%% if !searching? and <%= class_name %>.count > 1 %>
+  <%% if !searching? and <%= class_name %>.count > 1 and Admin::<%= class_name.pluralize %>Controller.sortable? %>
     <li>
       <%%= link_to t('refinery.reorder', :what => "<%= singular_name.titleize.pluralize %>"),
                    admin_<%= plural_name %>_url,
