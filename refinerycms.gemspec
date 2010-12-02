@@ -62,7 +62,6 @@ Gem::Specification.new do |s|
     'db/schema.rb',
     'db/seeds',
     'db/seeds.rb',
-    'db/seeds/inquiry_settings.rb',
     'db/seeds/pages.rb',
     'db/seeds/refinery_settings.rb',
     'license.md',
