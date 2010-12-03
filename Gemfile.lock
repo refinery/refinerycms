@@ -29,7 +29,7 @@ GIT
 
 GIT
   remote: git://github.com/resolve/refinerycms-generators.git
-  revision: 6970944aded7dd91206c1ba4d75d38ca77935a42
+  revision: 7a01b5db9035a0b47c0072da98b63b4668adf890
   specs:
     refinerycms-generators (0.9.9)
 

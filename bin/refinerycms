@@ -213,10 +213,12 @@ module Refinery
 
       unless @options[:update]
         puts "\n\nSetting up your development database..\n"
-        run_command("rake -f \"#{@app_path.join('Rakefile')}\" db:setup", {:cd => false})
+        %w(db:drop db:create db:migrate db:seed).each do |db|
+          run_command("rake -f \"#{@app_path.join('Rakefile')}\" #{db}")
+        end
       else
         puts "\n\nMigrating your development database..\n"
-        run_command("rake -f \"#{@app_path.join('Rakefile')}\" db:migrate", {:cd => false})
+        run_command("rake -f \"#{@app_path.join('Rakefile')}\" db:migrate")
       end
 
       # Deploy to Heroku
