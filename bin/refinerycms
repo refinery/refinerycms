@@ -195,9 +195,9 @@ module Refinery
       run_command("bundle install")
 
       puts "\n\nSetting up your development database..\n"
-      run_command("rake -f \"#{@app_path.join('Rakefile')}\" db:create", {:cd => false})
-      run_command("rake -f \"#{@app_path.join('Rakefile')}\" db:migrate", {:cd => false})
-      run_command("rake -f \"#{@app_path.join('Rakefile')}\" db:seed", {:cd => false})
+      %w(db:drop db:create db:migrate db:seed).each do |db|
+        run_command("rake -f \"#{@app_path.join('Rakefile')}\" #{db}")
+      end
 
       # Deploy to Heroku
       if @options[:heroku]
