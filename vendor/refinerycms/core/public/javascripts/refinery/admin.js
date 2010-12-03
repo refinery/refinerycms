@@ -756,38 +756,58 @@ var image_dialog = {
 }
 
 var list_reorder = {
-  init: function() {
+  initialised: false
+  , init: function() {
     $('#reorder_action').click(list_reorder.enable_reordering);
     $('#reorder_action_done').click(list_reorder.disable_reordering);
+    if(list_reorder.tree === false) {
+      list_reorder.sortable_list.find('li').addClass('no-nest');
+    }
     list_reorder.sortable_list.nestedSortable({
       disableNesting: 'no-nest',
       forcePlaceholderSize: true,
-      handle: 'div',
+      handle: list_reorder.tree ? 'div' : null,
       items: 'li',
       opacity: .6,
       placeholder: 'placeholder',
       tabSize: 25,
       tolerance: 'pointer',
-      toleranceElement: '> div',
+      toleranceElement: list_reorder.tree ? '> div' : null,
       disabled: true,
       start: function () {
       },
       change: function () {
-        list_reorder.reset_branch_classes(this);
+        if (list_reorder.tree) {
+          list_reorder.reset_branch_classes(this);
+        }
       },
       stop: function () {
-        list_reorder.reset_branch_classes(this);
+        if (list_reorder.tree) {
+          list_reorder.reset_branch_classes(this);
+        } else {
+          list_reorder.reset_on_off_classes(this);
+        }
       }
     });
-    list_reorder.reset_branch_classes(list_reorder.sortable_list);
+    if (list_reorder.tree) {
+      list_reorder.reset_branch_classes(list_reorder.sortable_list);
+    } else {
+      list_reorder.reset_on_off_classes(list_reorder.sortable_list);
+    }
+    this.initialised = true;
+  }
+  , reset_on_off_classes: function(ul) {
+    $("> li", ul).each(function(i, li) {
+      $(li).removeClass('on off on-hover').addClass(i % 2 === 0 ? 'on' : 'off');
+    });
   }
 
-  ,reset_branch_classes: function (ul) {
+  , reset_branch_classes: function (ul) {
     $("li.ui-sortable-helper", this).removeClass("record").removeClass("branch_start").removeClass("branch_end");
     $("li", ul).removeClass("branch_start").removeClass("branch_end");
 
-    $("> li:first", ul).addClass("branch_start")
-    $("> li:last", ul).addClass("branch_end")
+    $("> li:first", ul).addClass("branch_start");
+    $("> li:last", ul).addClass("branch_end");
 
     var nested_ul = $("ul", ul);
     $("> li:last", nested_ul).addClass("branch_end");
@@ -798,7 +818,7 @@ var list_reorder = {
     $('#sortable_list').addClass("reordering");
 
     $('#sortable_list .actions, #site_bar, header > *:not(script)').fadeTo(500, 0.3);
-    $('#actions *:not("#reorder_action_done, #reorder_action")').not($('#reorder_action_done').parents('li, ul')).fadeTo(500, 0.55);
+    $('#actions *:not("#reorder_action_done, #reorder_action")').not($('#reorder_action_done').parents('li, ul, div')).fadeTo(500, 0.55);
 
     list_reorder.sortable_list.nestedSortable("enable");
     $('#reorder_action').hide();
@@ -829,19 +849,19 @@ var list_reorder = {
 
   , restore_controls: function(e) {
     if (list_reorder.tree && !$.browser.msie) {
-      list_reorder.sortable_list.add(list_reorder.sortable_list.find('ul, li')).draggable('destroy');
+      list_reorder.sortable_list.add(list_reorder.sortable_list.find('ul, li, div')).draggable({ disabled: true });
     } else {
       $(list_reorder.sortable_list).sortable('destroy');
     }
     $(list_reorder.sortable_list).removeClass('reordering, ui-sortable');
 
     $('#sortable_list .actions, #site_bar, header > *:not(script)').fadeTo(250, 1);
-    $('#actions *:not("#reorder_action_done, #reorder_action")').not($('#reorder_action_done').parents('li, ul')).fadeTo(250, 1, function() {
+    $('#actions *:not("#reorder_action_done, #reorder_action")').not($('#reorder_action_done').parents('li, ul, div')).fadeTo(250, 1, function() {
       $('#reorder_action_done').hide().removeClass('loading');
       $('#reorder_action').show();
     });
   }
-}
+};
 
 var image_picker = {
   options: {
