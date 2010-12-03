@@ -17,7 +17,7 @@ body {
   font-size: 10px;
   font-family: Verdana;
   line-height: 1.5em;
-  background: black url('/images/refinery/page_bg.png') repeat;
+  background: #303030 url('/images/refinery/page_bg.png') repeat;
 }
 acronym {
   cursor: help;
@@ -43,6 +43,7 @@ label[for] {
 }
 #dialog_container #content .field, .dialog_container .field {
   width: auto;
+  margin:5px 0;
 }
 input.widest, textarea.widest {
   width: 99%;
@@ -231,7 +232,7 @@ body.login #site_bar_content a#site_bar_refinery_cms_logo {
   font-size: 20px;
   line-height:22px
 }
-body.login #page_container div.remember_me label {
+body.login #page_container div.remember_me label, label.inline {
   display: inline;
 }
 body.login #page_container div.actions {
@@ -267,13 +268,13 @@ body.login label, body.login a {
 body.login #flash_container, body.login .errorExplanation {
   margin-bottom: 12px;
 }
-div.field.plugin_access ul#plugins li {
+div.field.checkbox_access ul.checkboxes li {
   margin-top: 3px;
 }
-div.field.plugin_access {
+div.field.checkbox_access {
   margin-top: 20px;
 }
-div.field.plugin_access .label_with_help a {
+div.field.checkbox_access .label_with_help a {
   font-weight: normal;
 }
 /* Works in Firefox, Safari, Chrome, IE8+ */
@@ -487,6 +488,9 @@ header p {
   margin: 0px;
   padding: 4px 0 0 40px;
   background: url('/images/refinery/branch.gif') no-repeat 15px 0px;
+}
+#records.tree li.record ul {
+  margin-left: 0;
 }
 #records.tree .on-hover, #pagination ul.tree a:hover, #pagination .tree .on {
   background: url('/images/refinery/branch.gif') no-repeat 15px 0px;
@@ -731,18 +735,18 @@ label.stripped {
 .brown_border {
   border: 1px solid #99998B;
 }
-#inquiry {
+#inquiry, .inquiry {
   border-collapse: collapse;
   width: 100%;
 }
-#inquiry td {
+#inquiry td, .inquiry td {
   border-bottom: 1px solid #CCCCCC;
   padding: 7px;
 }
-#inquiry tr:last-child td {
+#inquiry tr:last-child td, .inquiry tr:last-child td {
   border-bottom: 0px;
 }
-#inquiry td label.stripped {
+#inquiry td label.stripped, .inquiry td label.stripped {
   font-weight: bold;
 }
 body.dialog {
@@ -785,6 +789,9 @@ body.dialog form {
   position: relative;
   height: 300px;
   padding: 12px;
+}
+.dialog #existing_image_area_content {
+  margin-top: 28px;
 }
 .dialog #existing_image_area_content ul {
   margin: 0px;
@@ -866,6 +873,7 @@ body.dialog form {
 }
 #dialog_main #pages_list {
   width: 100%;
+  padding-bottom: 40px;
 }
 #dialog_main #pages_list ul {
   margin: 0px 12px 0px 12px;
@@ -1106,6 +1114,11 @@ a#toggle_advanced_options:hover {
 #content .form-actions .form-actions-right, .wym_dialog .form-actions .form-actions-right, .ui-dialog .form-actions .form-actions-right {
   right: 10px;
 }
+#content .form-actions .save-loader {
+  position: absolute;
+  right: -24px;
+  top: 4px;
+}
 .wym_dialog .form-actions, .ui-dialog .form-actions {
   border: 0px none;
   border-top: 1px solid #E8E8E8;
@@ -1125,6 +1138,12 @@ a#toggle_advanced_options:hover {
 }
 #dialog_container.dialog.iframed #content .form-actions {
   position: fixed;
+}
+body.dialog #content .search_form {
+  float: right;
+  width: auto !important;
+  min-width: 300px;
+  margin-bottom: 0px;
 }
 #existing_image_area {
   padding-top:6px;
@@ -1178,11 +1197,19 @@ ul#image_grid li p {
 ul#image_grid li span.actions {
   width: 100%;
 }
-ul#plugins {
+#content form.edit_image {
+  width: 70%;
+  float: left;
+}
+#content #existing_image {
+  float: right;
+  width: 25%;
+}
+ul.checkboxes {
   margin: 0px;
   padding: 0px;
 }
-ul#plugins li {
+ul.checkboxes li {
   list-style: none;
 }
 .label_inline_with_link label {
@@ -1198,7 +1225,7 @@ ul#plugins li {
 .label_inline_with_link a img {
   vertical-align: middle;
 }
-#remove_picked_image {
+.remove_picked_image {
   margin-top:8px;
   display:inline-block;
   width:auto;
@@ -1378,6 +1405,12 @@ input.button.close_dialog:active, a.button.close_dialog:active, #content a.butto
 
 #other_locales li:first-child {
   margin-top: 0px;
+}  
+
+/* dubiously in here */
+.current_image_link {
+  display: inline-block;
+  width: auto;
 }
 
 /* cornering */
@@ -1429,4 +1462,39 @@ input.button.close_dialog:active, a.button.close_dialog:active, #content a.butto
   border-radius: 6px;
   -moz-border-radius: 6px;
   -webkit-border-radius: 6px;
+}
+
+/* Internet Explorer to follow: */
+/* IE 7 */
+.ie7 #content .form-actions .form-actions-left a.button {
+  height: 19px;
+  line-height: 19px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+.ie7 .search_form input.button {
+  padding-left: 8px;
+  padding-right: 8px;
+}
+.ie7 body.login .field input.larger, .ie7 body.login .field input.larger:focus {
+  background-image: none !important;
+  padding: 0px;
+  line-height: 30px;
+}
+.ie7 .pagination a, .ie7 #content .pagination a, .ie7 .pagination .current, .ie7 .disabled, .ie7 .pagination em {
+  padding-bottom: 6px;
+}
+.ie7 .pt-BR #search {
+  width: 177px;
+}
+.ie7 .en #search {
+  width: 200px;
+}
+
+/* IE 8 */
+.ie8 body.login .field input.larger, .ie8 body.login .field input.larger:focus {
+  line-height: 30px;
+}
+.ie8 .pagination a, .ie8 #content .pagination a, .ie8 .pagination .current, .ie8 .disabled, .ie8 .pagination em {
+  padding-bottom: 6px;
 }
