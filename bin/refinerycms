@@ -194,6 +194,7 @@ module Refinery
       run_command("bundle install")
 
       puts "\n\nSetting up your development database..\n"
+      run_command("rake -f \"#{@app_path.join('Rakefile')}\" db:create", {:cd => false})
       run_command("rake -f \"#{@app_path.join('Rakefile')}\" db:migrate", {:cd => false})
       run_command("rake -f \"#{@app_path.join('Rakefile')}\" db:seed", {:cd => false})
 
