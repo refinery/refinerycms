@@ -27,7 +27,17 @@
 * Deprecated ``content_for :head`` in favour of ``content_for :meta``, ``content_for :stylesheets`` and ``content_for :javascripts``. [Philip Arndt](http://github.com/parndt)
 * Improved client-side responsiveness of backend and frontend. [Philip Arndt](http://github.com/parndt)
 * No more RMagick dependency [Philip Arndt](http://github.com/parndt)
-* [See full list](http://github.com/resolve/refinerycms/compare/0.9.8.5...0.9.9)
+* [See full list](http://github.com/resolve/refinerycms/compare/0.9.8.6...0.9.9)
+
+## 0.9.8.6 [3 December 2010]
+* Backported lots of functionality from 0.9.9 and later like:
+* Fixed reordering for trees and non-trees [Philip Arndt](https://github.com/parndt)
+* Better ``RSpec`` coverage [Joe Sak](https://github.com/joemsak) and [Philip Arndt](https://github.com/parndt) and [Uģis Ozols](https://github.com/ugisozols) and [PeRo ICT Solutions](https://github.com/pero-ict)
+* Fixed issue with finding where engines are located on the disk using ``Plugin::pathname``. [Lele](https://github.com/leleintercom)
+* Improved the speed of the menu especially related to scaling through reusing collections rather then revisiting the database. [Amanda Wagener](https://github.com/awagener)
+* No more RMagick dependency [Philip Arndt](https://github.com/parndt)
+* Added helper methods to expose some of the options in crud. [David Jones](https://github.com/djones)
+* [See full list](https://github.com/resolve/refinerycms/compare/0.9.8.5...0.9.8.6)
 
 ## 0.9.8.5 [21 September 2010](http://github.com/parndt)
 * Fixed an issue with the engine generator that was putting a comma in the wrong place breaking the call to ``crudify``. [Maarten Hoogendoorn](http://github.com/moretea)
