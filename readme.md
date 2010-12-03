@@ -35,8 +35,7 @@ Wanna see Refinery for yourself? [Try the demo](http://demo.refinerycms.com/refi
 
 ## Help and Documentation
 
-* [An Overview of Refinery – a Rails CMS (Rails Magazine)](http://railsmagazine.com/issues/7) - Highly recommended for new comers
-* [Tutorial Site](http://tutorials.refinerycms.org)
+* [Getting Started](http://refinerycms.com/guides/getting-started-with-refinery)
 * [Google Group Discussion](http://group.refinerycms.org)
 * [IRC Channel](irc://irc.freenode.net/refinerycms)
 * [GitHub repository](http://github.com/resolve/refinerycms)

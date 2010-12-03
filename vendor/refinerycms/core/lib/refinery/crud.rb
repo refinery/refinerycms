@@ -275,12 +275,12 @@ module Refinery
 
           )
         end
-        
+
         module_eval %(
           def self.sortable?
             #{options[:sortable].to_s}
           end
-          
+
           def self.searchable?
             #{options[:searchable].to_s}
           end
