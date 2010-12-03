@@ -272,3 +272,5 @@ module Refinery
     protected :run_command, :find_and_replace
   end
 end
+
+Refinery::AppGenerator.new(ARGV).run!
