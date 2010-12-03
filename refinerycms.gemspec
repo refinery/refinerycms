@@ -679,6 +679,7 @@ Gem::Specification.new do |s|
     'vendor/refinerycms/core/public/javascripts/jquery/jquery.jcarousel.js',
     'vendor/refinerycms/core/public/javascripts/jquery/jquery.textTruncate.js',
     'vendor/refinerycms/core/public/javascripts/jquery/jquery.timers.js',
+    'vendor/refinerycms/core/public/javascripts/rails.js',
     'vendor/refinerycms/core/public/javascripts/refinery',
     'vendor/refinerycms/core/public/javascripts/refinery/admin.js',
     'vendor/refinerycms/core/public/javascripts/refinery/boot_wym.js',
