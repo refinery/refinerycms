@@ -11,7 +11,7 @@ Refinery also supports Rails 2.x using the [Rails 2.x stable branch](http://gith
 
 ## How to
 
-* __[Install Refinery](http://refinerycms.com/guides/how-to-install-refinery)__
+* __[Install Refinery](http://refinerycms.com/download)__
 * [Update Refinery to the latest version](http://refinerycms.com/guides/how-to-update-refinery-to-the-latest-version)
 * [Install Refinery on Heroku](http://refinerycms.com/guides/how-to-install-refinery-on-heroku)
 * [Run the Refinery test suite](http://refinerycms.com/guides/how-to-test-refinery)
