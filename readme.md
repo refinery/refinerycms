@@ -6,15 +6,15 @@ Refinery also supports Rails 2.x using the [Rails 2.x stable branch](http://gith
 
 ## Requirements
 
-* [Bundler](http://github.com/carlhuda/bundler)
+* [Bundler](http://gembundler.com)
 * [ImageMagick](http://www.imagemagick.org/script/install-source.php)
 
 ## How to
 
-* __[Install Refinery](http://tutorials.refinerycms.org/tutorials/how-to-install-refinery)__
-* [Update Refinery to the latest version](http://tutorials.refinerycms.org/tutorials/how-to-update-refinery-to-the-latest-version)
-* [Install Refinery on Heroku](http://tutorials.refinerycms.org/tutorials/how-to-install-refinery-on-heroku)
-* [Run the Refinery test suite](http://tutorials.refinerycms.org/tutorials/how-to-test-refinery)
+* __[Install Refinery](http://refinerycms.com/guides/how-to-install-refinery)__
+* [Update Refinery to the latest version](http://refinerycms.com/guides/how-to-update-refinery-to-the-latest-version)
+* [Install Refinery on Heroku](http://refinerycms.com/guides/how-to-install-refinery-on-heroku)
+* [Run the Refinery test suite](http://refinerycms.com/guides/how-to-test-refinery)
 
 ## What's it good at?
 
