@@ -36,6 +36,7 @@ Wanna see Refinery for yourself? [Try the demo](http://demo.refinerycms.com/refi
 ## Help and Documentation
 
 * [Getting Started](http://refinerycms.com/guides/getting-started-with-refinery)
+* [Guides](http://refinerycms.com/guides)
 * [Google Group Discussion](http://group.refinerycms.org)
 * [IRC Channel](irc://irc.freenode.net/refinerycms)
 * [GitHub repository](http://github.com/resolve/refinerycms)
