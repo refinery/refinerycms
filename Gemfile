@@ -34,14 +34,16 @@ java = (RUBY_PLATFORM == 'java')
 gem 'refinerycms',              :path => '.'
 
 # Specify additional Refinery CMS Engines here (all optional):
-gem 'refinerycms-generators',  '~> 0.9.9', :git => 'git://github.com/resolve/refinerycms-generators.git'
-# gem 'refinerycms-inquiries',  '~> 0.9.9.6'
-# gem 'refinerycms-news',       '~> 0.9.9.6'
-# gem 'refinerycms-portfolio',  '~> 0.9.9'
-# gem 'refinerycms-theming',    '~> 0.9.8.2'
-# gem 'refinerycms-search',     '~> 0.9.8'
+gem 'refinerycms-inquiries',    '~> 0.9.9.5'
+gem 'refinerycms-generators',   '~> 0.9.9', :git => 'git://github.com/resolve/refinerycms-generators.git'
+# gem 'refinerycms-news',         '~> 0.9.9.6'
+# gem 'refinerycms-portfolio',    '~> 0.9.9'
+# gem 'refinerycms-theming',      '~> 0.9.8.2'
+# gem 'refinerycms-search',       '~> 0.9.8'
+# gem 'refinerycms-blog',         '~> 1.1'
 
 # Add i18n support (optional, you can remove this if you really want to).
+gem 'routing-filter',           :git => 'git://github.com/refinerycms/routing-filter.git'
 gem 'refinerycms-i18n',         :git => 'git://github.com/resolve/refinerycms-i18n.git'
 
 gem 'jruby-openssl' if java

@@ -28,6 +28,13 @@ GIT
       rack
 
 GIT
+  remote: git://github.com/refinerycms/routing-filter.git
+  revision: 94a072118410475b0e872b050dc731ef136f1180
+  specs:
+    routing-filter (0.2.0)
+      actionpack
+
+GIT
   remote: git://github.com/resolve/refinerycms-generators.git
   revision: 7a01b5db9035a0b47c0072da98b63b4668adf890
   specs:
@@ -35,11 +42,11 @@ GIT
 
 GIT
   remote: git://github.com/resolve/refinerycms-i18n.git
-  revision: 45442ab2f4f60a9599650a3b02a18c86fd1f79e8
+  revision: 2c5d8fc1b716be9257ffd18327aa8f4faa329b21
   specs:
-    refinerycms-i18n (0.9.8.11)
+    refinerycms-i18n (0.9.8.12)
       refinerycms (>= 0.9.8)
-      routing-filter (~> 0.1.6)
+      routing-filter (~> 0.1)
 
 PATH
   remote: .
@@ -130,9 +137,9 @@ GEM
     launchy (0.3.7)
       configuration (>= 0.0.5)
       rake (>= 0.8.1)
-    mail (2.2.11)
+    mail (2.2.12)
       activesupport (>= 2.3.6)
-      i18n (~> 0.5.0)
+      i18n (>= 0.4.0)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.16)
@@ -162,8 +169,8 @@ GEM
       thor (~> 0.14.4)
     rake (0.8.7)
     rdoc (2.5.11)
-    routing-filter (0.1.7)
-      actionpack
+    refinerycms-inquiries (0.9.9.7)
+      filters_spam (~> 0.2)
     rspec (2.2.0)
       rspec-core (~> 2.2)
       rspec-expectations (~> 2.2)
@@ -218,7 +225,9 @@ DEPENDENCIES
   refinerycms!
   refinerycms-generators (~> 0.9.9)!
   refinerycms-i18n!
-  rspec-rails (~> 2)
+  refinerycms-inquiries (~> 0.9.9.5)
+  routing-filter!
+  rspec-rails (~> 2.1)
   ruby-prof
   spork
   sqlite3-ruby

@@ -6,15 +6,15 @@ Refinery also supports Rails 2.x using the [Rails 2.x stable branch](http://gith
 
 ## Requirements
 
-* [Bundler](http://github.com/carlhuda/bundler)
+* [Bundler](http://gembundler.com)
 * [ImageMagick](http://www.imagemagick.org/script/install-source.php)
 
 ## How to
 
-* __[Install Refinery](http://tutorials.refinerycms.org/tutorials/how-to-install-refinery)__
-* [Update Refinery to the latest version](http://tutorials.refinerycms.org/tutorials/how-to-update-refinery-to-the-latest-version)
-* [Install Refinery on Heroku](http://tutorials.refinerycms.org/tutorials/how-to-install-refinery-on-heroku)
-* [Run the Refinery test suite](http://tutorials.refinerycms.org/tutorials/how-to-test-refinery)
+* __[Install Refinery](http://refinerycms.com/download)__
+* [Update Refinery to the latest version](http://refinerycms.com/guides/how-to-update-refinery-to-the-latest-version)
+* [Install Refinery on Heroku](http://refinerycms.com/guides/how-to-install-refinery-on-heroku)
+* [Run the Refinery test suite](http://refinerycms.com/guides/how-to-test-refinery)
 
 ## What's it good at?
 
@@ -35,8 +35,7 @@ Wanna see Refinery for yourself? [Try the demo](http://demo.refinerycms.com/refi
 
 ## Help and Documentation
 
-* [An Overview of Refinery – a Rails CMS (Rails Magazine)](http://railsmagazine.com/issues/7) - Highly recommended for new comers
-* [Tutorial Site](http://tutorials.refinerycms.org)
+* [Getting Started](http://refinerycms.com/guides/getting-started-with-refinery)
 * [Google Group Discussion](http://group.refinerycms.org)
 * [IRC Channel](irc://irc.freenode.net/refinerycms)
 * [GitHub repository](http://github.com/resolve/refinerycms)
