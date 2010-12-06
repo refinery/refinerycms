@@ -14,6 +14,7 @@ fr:
         change_language: Changer la langue
         see_home_page: Aller à la page d'accueil
       recent_activity:
+        empty: Il n'y a pas eu d'activité récemment
         latest_activity: Derniers changements
         latest_activity_message: "%{kind} '%{what}' a été %{action}"
       recent_inquiries:
