@@ -87,6 +87,11 @@ namespace :refinery do
     verbose = ENV["verbose"] || false
     require 'fileutils'
 
+    # Clean up mistakes
+    if (bad_migration = Rails.root.join('db', 'migrate', '20100913234704_add_cached_slug_to_pages.rb')).file?
+      FileUtils::rm bad_migration
+    end
+
     # copy in any new migrations.
     FileUtils::cp Dir[Refinery.root.join("db", "migrate", "*.rb").cleanpath.to_s],
                   Rails.root.join("db", "migrate").cleanpath.to_s,
