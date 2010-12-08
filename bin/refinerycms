@@ -82,8 +82,11 @@ module Refinery
       # Generate a Refinery CMS application
       generate!
 
-      # Add in the Refinery specifics to the application
-      refine!
+      # Bundle the application which activates Refinery CMS
+      bundle!
+
+      # Run the newly activated Refinery CMS generator unless we're updating.
+      run_command('rails generate refinerycms', {:cd => true}) unless @options[:update]
 
       # Output helpful messages to user
       output!
@@ -131,78 +134,26 @@ module Refinery
       abort "Generating Rails application failed. Exiting..." unless $?.success?
     end
 
-    def refine!
-      # Overwrite rails defaults with refinery defaults
-      %w(app db features spec).each do |folder|
-        FileUtils::cp_r Refinery.root.join(folder), @app_path, :verbose => false
-      end
-
-      # Copy in important files to the Rails app.
-      %w(.gitignore .rspec readme.md license.md config/routes.rb config/settings.rb config/cucumber.yml
-         lib/tasks/cucumber.rake lib/tasks/rspec.rake config/initializers/fix_rack.rb
-         config/environments/development.rb config/environments/test.rb config/environments/production.rb
-         config/initializers/acts_as_indexed_config.rb config/initializers/field_with_error_fix.rb).each do |file|
-        FileUtils::cp_r Refinery.root.join(file), @app_path.join(file), :verbose => false if Refinery.root.join(file).exist?
-      end
-
-      # Copy javascripts so they're ready to use.
-      %w(admin.js).map{|javascript|
-        Refinery.root.join('vendor', 'refinerycms', 'core', 'public', 'javascripts', javascript)
-      }.each do |javascript|
-        FileUtils::cp javascript.to_s,
-                      @app_path.join('public', 'javascripts').to_s,
-                      :verbose => false if javascript.file?
-      end
-
-      # Copy stylesheets so they're ready to use.
-      %w(application.css formatting.css home.css theme.css).map{|stylesheet|
-        Refinery.root.join('vendor', 'refinerycms', 'core', 'public', 'stylesheets', stylesheet)
-      }.each do |stylesheet|
-        FileUtils::cp stylesheet.to_s,
-                      @app_path.join('public', 'stylesheets').to_s,
-                      :verbose => false if stylesheet.file?
-      end
-
-      # Remove default application layout, README, and public/index.html
-      %w(README app/views/layouts/application.html.erb public/index.html).each do |remove|
-	      FileUtils::rm @app_path.join(remove) if @app_path.join(remove).exist?
-      end
-
+    def bundle!
       # When using --update which skips the Gemfile a few things need to be handled manually:
       unless @options[:update]
         # Add refinery gems to the Gemfile
         gemfile_contents = Refinery.root.join('Gemfile').read
         refinery_gems = gemfile_contents.match(/# REFINERY CMS =+.*# END REFINERY CMS =+/m)[0]
         @app_path.join('Gemfile').open('a') do |f|
-          f.write "\n#{refinery_gems}\n\n# USER DEFINED\n#{@options[:gems].join("\n")}\n# END USER DEFINED"
+          f.write "\n#{refinery_gems}\n"
+          f.write "\n# USER DEFINED\n#{@options[:gems].join("\n")}\n# END USER DEFINED" if @options[:gems].any?
         end
       end
 
       # Specify the correct version of the Refinery CMS gem (may be git source).
-      src = Refinery.version !~ /\.pre$/ ? "'~> #{Refinery.version}'" : ":git => 'git://github.com/resolve/refinerycms.git'"
+      src = Refinery.version !~ /\.pre$/ ? "'~> #{Refinery.version}'" : ":path => '/code/Refinery'"#":git => 'git://github.com/resolve/refinerycms.git'"
       find_and_replace('Gemfile', %r{gem 'refinerycms',.*}, "gem 'refinerycms',              #{src}")
 
       # Add in AWS-S3 for Heroku
       find_and_replace('Gemfile', "# gem 'aws-s3', :require => 'aws/s3'",
                         "gem 'aws-s3', :require => 'aws/s3'") if @options[:heroku]
 
-      # Replace app constant with Refinery
-      # TODO: Find a way around this
-      camelized_app_name = @app_name.gsub(/\W/, '_').squeeze('_').gsub(/\/(.?)/) { "::#{$1.upcase}" }.gsub(/(?:^|_)(.)/) { $1.upcase }
-      camelized_app_name << "::Application" # We only want to replace occurances like App::Application.
-      %w(Rakefile config.ru config/application.rb config/environment.rb
-          config/environments/development.rb config/environments/production.rb config/environments/test.rb
-          config/initializers/secret_token.rb config/initializers/session_store.rb).each do |hackable|
-        find_and_replace(hackable, camelized_app_name, 'Refinery::Application')
-        find_and_replace(hackable, "module #{camelized_app_name.split('::').first}", 'module Refinery')
-      end
-
-      # Remove development specific stuff from the .gitinore file
-      find_and_replace('.gitignore',
-                       /# REFINERY CMS DEVELOPMENT =+.*# END REFINERY CMS DEVELOPMENT =+/m, '')
-    end
-
-    def output!
       puts "\n---------"
       puts "Refinery successfully installed in '#{@app_path}'!\n\n"
 
@@ -210,7 +161,9 @@ module Refinery
       # TODO: Check exit codes to see whether or not these worked
       puts "Installing gem requirements using bundler..\n"
       run_command("bundle install")
+    end
 
+    def output!
       unless @options[:update]
         puts "\n\nSetting up your development database..\n"
         %w(db:drop db:create db:migrate db:seed).each do |db|
@@ -257,7 +210,7 @@ module Refinery
       puts "---------\n\n"
     end
 
-    private :validate!, :generate!, :refine!, :output!
+    private :validate!, :generate!, :bundle!, :output!
 
     def run_command(command, options = {})
       options = {:cd => true, :puts => true}.merge(options)
