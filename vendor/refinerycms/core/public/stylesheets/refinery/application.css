@@ -21,10 +21,6 @@ body {
   padding-left: 0px;
   padding-right: 0px;
 }
-.inquiries form label {
-  width: 150px;
-  float: left;
-}
 .menu ul {
   margin: 0px;
   padding: 0px;
@@ -40,6 +36,10 @@ body {
 }
 .menu li.selected > a {
   font-weight: bold;
+}
+.inquiries form label {
+  width: 150px;
+  float: left;
 }
 .inquiries form input {
   width: 200px;
