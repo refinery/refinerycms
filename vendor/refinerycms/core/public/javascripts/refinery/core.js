@@ -6,11 +6,12 @@ $(document).ready(function(){
 });
 
 init_flash_messages = function(){
-  $('#flash').css({'opacity': '0'}).animate({
-    'opacity': '1'
-  }, 550)
+  $('#flash').css({
+    'opacity': 0
+    , 'visibility':'visible'
+  }).animate({'opacity': '1'}, 550);
   $('#flash_close').click(function(e) {
-     $('#flash').fadeOut({duration: 330});
+     $('#flash').animate({'opacity': 0, 'visibility': 'toggle'}, 330);
      e.preventDefault();
   });
   $('#flash.flash_message').prependTo('#records');
