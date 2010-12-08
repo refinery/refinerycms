@@ -63,17 +63,18 @@ nbproject
 # Capybara Bug
 capybara-*html
 
-# REFINERY CMS DEVELOPMENT ====================================================
-
-config/database.yml
-config/amazon_s3.yml
-config/rackspace_cloudfiles.yml
-
-# END REFINERY CMS DEVELOPMENT =================================================
-
 # sass
 .sass-cache
 .sass-cache/*
 
 #rvm
 .rvmrc
+
+# REFINERY CMS DEVELOPMENT ====================================================
+# Always keep this section at the bottom.
+
+config/database.yml
+config/amazon_s3.yml
+config/rackspace_cloudfiles.yml
+
+# END REFINERY CMS DEVELOPMENT =================================================
