@@ -1,0 +1,41 @@
+<% content_for :header, t('.fill_form') %>
+<%= form_for :user, :url => user_registration_path do |f| -%>
+
+  <%= render :partial => "/shared/admin/error_messages",
+             :locals => {
+               :object => @user,
+               :include_object_name => true
+             } %>
+
+  <div class='field'>
+    <%= f.label :login %>
+    <%= f.text_field :login, :class => 'larger widest' %>
+  </div>
+  <div class='field'>
+    <%= f.label :email %>
+    <%= f.text_field :email, :class => 'larger widest' %>
+  </div>
+  <div class='field'>
+    <%= f.label :password %>
+    <%= f.password_field :password, :class => 'larger widest' %>
+  </div>
+  <div class='field'>
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation, :class => 'larger widest' %>
+  </div>
+
+  <% if just_installed? %>
+    <% Refinery::Plugins.registered.in_menu.names.sort.each do |plugin| -%>
+      <%= hidden_field_tag 'user[plugins][]', plugin, :id => "plugins_#{plugin.downcase.gsub(" ", "_")}" %>
+    <% end -%>
+  <% end -%>
+
+  <%= render :partial => "/shared/admin/form_actions",
+             :locals => {
+               :f => f,
+               :submit_continue => false,
+               :submit_button_text => t('.sign_up'),
+               :hide_delete => true,
+               :hide_cancel => true
+             }%>
+<% end -%>

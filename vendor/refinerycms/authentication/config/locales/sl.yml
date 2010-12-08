@@ -1,4 +1,8 @@
 sl:
+  devise:
+    sessions:
+      new:
+        sign_in: Prijavi se
   plugins:
     refinery_users:
       title: Uporabniki

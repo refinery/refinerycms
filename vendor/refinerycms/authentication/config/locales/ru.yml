@@ -1,4 +1,8 @@
 ru:
+  devise:
+    sessions:
+      new:
+        sign_in: Войти
   plugins:
     refinery_users:
       title: Пользователи

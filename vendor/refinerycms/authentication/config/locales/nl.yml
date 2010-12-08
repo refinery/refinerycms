@@ -1,4 +1,8 @@
 nl:
+  devise:
+    sessions:
+      new:
+        sign_in: Log in
   plugins:
     refinery_users:
       title: Gebruikers

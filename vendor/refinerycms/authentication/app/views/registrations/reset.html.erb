@@ -1,0 +1,29 @@
+<% content_for :header, t('.pick_new_password_for', :email => @user.email) %>
+
+<%= form_for :user do |f| -%>
+
+  <%= render :partial => "/shared/admin/error_messages",
+             :locals => {
+               :object => @user,
+               :include_object_name => true
+             } %>
+
+  <div class='field'>
+    <%= f.label :password %>
+    <%= f.password_field :password, :class => 'larger widest' %>
+  </div>
+
+  <div class='field'>
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation, :class => 'larger widest' %>
+  </div>
+
+  <%= render :partial => "/shared/admin/form_actions",
+             :locals => {
+               :f => f,
+               :continue_editing => false,
+               :submit_button_text => t('.reset_password'),
+               :cancel_url => login_url,
+               :cancel_title => nil
+             } -%>
+<% end -%>

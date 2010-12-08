@@ -1,4 +1,8 @@
 it:
+  devise:
+    sessions:
+      new:
+        sign_in: Entra
   plugins:
     refinery_users:
       title: Utenti

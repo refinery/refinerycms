@@ -18,7 +18,7 @@
           <%= RefinerySetting.find_or_set(:site_name, 'Company Name') %>
         </span>
 
-        <%= link_to t('.log_out'), logout_path,
+        <%= link_to t('.log_out'), destroy_user_session_path,
                     :id => 'logout' %>
       </div>
     </div>

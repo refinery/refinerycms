@@ -1,4 +1,8 @@
 lt:
+  devise:
+    sessions:
+      new:
+        sign_in: Prisijungti
   plugins:
     refinery_users:
       title: Vartotojai

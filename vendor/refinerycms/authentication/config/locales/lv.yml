@@ -1,4 +1,8 @@
 lv:
+  devise:
+    sessions:
+      new:
+        sign_in: Ienākt
   plugins:
     refinery_users:
       title: Lietotāji

@@ -2,7 +2,7 @@ class Refinery::AdminBaseController < ApplicationController
 
   layout :layout?
 
-  before_filter :login_required, :restrict_plugins, :restrict_controller
+  before_filter :authenticate_user!, :restrict_plugins, :restrict_controller
   after_filter :store_location?, :except => [:new, :create, :edit, :update, :destroy, :update_positions] # for redirect_back_or_default
 
   helper_method :searching?

@@ -1,14 +1,7 @@
-<%= form_for(@session, :as => :session, :url => session_path) do |f| -%>
-
-  <%= render :partial => "/shared/admin/error_messages",
-             :locals => {
-               :object => @session,
-               :include_object_name => true
-             } %>
-
+<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
   <div class='field session_username clearfix'>
-    <%= f.label Refinery.authentication_login_field %>
-    <%= f.text_field Refinery.authentication_login_field, :class => 'larger widest' %>
+    <%= f.label :email %>
+    <%= f.text_field :email, :class => 'larger widest' %>
   </div>
   <div class='field session_password clearfix'>
     <%= f.label :password %>
@@ -20,7 +13,7 @@
       <%= f.label :remember_me %>
     </div>
     <div class='field forgot_password'>
-      <%= link_to t('.forgot_password'), forgot_users_url %>
+      <%= link_to "Forgot your password?", new_password_path(resource_name) %>
     </div>
   </div>
   <%= render :partial => "/shared/admin/form_actions",
