@@ -5,38 +5,33 @@ $(document).ready(function(){
   init_submit_continue();
   init_modal_dialogs();
   init_tooltips();
-    init_refinery_settings_ajaxy_pagination();
-  });
+  init_refinery_settings_ajaxy_pagination();
+});
 
-  init_refinery_settings_ajaxy_pagination = function(){
-    if($('#refinery_settings_list').length > 0){
-      var settings_pages = $('#refinery_settings_list .pagination a');
-      settings_pages.live('click',function() {
-        history.pushState({ path: this.path }, '', this.href)
-        $.get(this.href, function(data) {
-          $('#refinery_settings_list').slideTo(data)      
-        })
-        return false  
-      });
+$(window).bind('popstate', function() {
+  $.get(location.href, function(data) {
+    $('#refinery_settings_list').slideTo(data)      
+  })
+});
 
-      $(window).bind('popstate', function() {
-        $('#refinery_settings_list').slideTo(location.pathname)
-      });
-    }
+$.fn.slideTo = function(response) {
+  $(this).html(response);
+  $('#frame').addClass('frame_center'); 
+  init_modal_dialogs();
+}
 
-    $.fn.slideTo = function(d) {
-      if(d == location.pathname){
-        $.get(d, function(data) {
-          $(this).html(data);             
-        })
-      } else {
-        $(this).html(d);
-      }
-      $('#frame').addClass('frame_center'); 
-      init_modal_dialogs();
-    }
+init_refinery_settings_ajaxy_pagination = function(){
+  if($('#refinery_settings_list').length > 0){
+    var settings_pages = $('#refinery_settings_list .pagination a');
+    settings_pages.live('click',function() {
+      history.pushState({ path: this.path }, '', this.href)
+      $.get(this.href, function(data) {
+        $('#refinery_settings_list').slideTo(data)      
+      })
+      return false  
+    });
   }
-
+}
 
 init_interface = function() {
   if (parent && parent.document.location.href != document.location.href) {
