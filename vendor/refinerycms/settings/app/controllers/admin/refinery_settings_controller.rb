@@ -1,5 +1,7 @@
 class Admin::RefinerySettingsController < Admin::BaseController
 
+  helper :refinery_settings
+
   crudify :refinery_setting,
           :title_attribute => :title,
           :order => "name ASC",
