@@ -35,11 +35,11 @@ module Refinery
 
     class Engine < Rails::Engine
 
+      config.autoload_paths += %W( #{config.root}/lib )
+
       initializer "static assets" do |app|
         app.middleware.insert_after ::ActionDispatch::Static, ::ActionDispatch::Static, "#{root}/public"
       end
-
-      config.autoload_paths += %W( #{config.root}/lib )
 
       initializer 'add catch all routes' do |app|
         app.routes_reloader.paths << File.expand_path('../refinery/catch_all_routes.rb', __FILE__)
@@ -53,6 +53,30 @@ module Refinery
         ].flatten
       end
 
+      initializer "configure acts_as_indexed" do |app|
+        ActsAsIndexed.configure do |config|
+          config.index_file = Rails.root.join('tmp', 'index')
+          config.index_file_depth = 3
+          config.min_word_size = 3
+        end
+      end
+
+      initializer "fix rack <= 1.2.1" do |app|
+        ::Rack::Utils.module_eval do
+          def escape(s)
+            regexp = case
+              when RUBY_VERSION >= "1.9" && s.encoding === Encoding.find('UTF-8')
+                /([^ a-zA-Z0-9_.-]+)/u
+              else
+                /([^ a-zA-Z0-9_.-]+)/n
+              end
+            s.to_s.gsub(regexp) {
+              '%'+$1.unpack('H2'*bytesize($1)).join('%').upcase
+            }.tr(' ', '+')
+          end
+        end if ::Rack.version <= "1.2.1"
+      end
+
       # Attach ourselves to the Rails application.
       config.before_configuration do
         ::Refinery::Core.attach_to_application!
@@ -60,6 +84,11 @@ module Refinery
 
       config.to_prepare do
         ::Rails.cache.clear
+
+        # This wraps errors in span not div
+        ActionView::Base.field_error_proc = Proc.new do |html_tag, instance|
+          "<span class=\"fieldWithErrors\">#{html_tag}</span>".html_safe
+        end
 
         # TODO: Is there a better way to cache assets in engines?
         ::ActionView::Helpers::AssetTagHelper.module_eval do

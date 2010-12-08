@@ -4,7 +4,7 @@ Gem::Specification.new do |s|
   s.name              = %q{refinerycms}
   s.version           = %q{0.9.9.pre}
   s.description       = %q{A Ruby on Rails CMS that supports Rails 3. It's easy to extend and sticks to 'the Rails way' where possible.}
-  s.date              = %q{2010-12-06}
+  s.date              = %q{2010-12-08}
   s.summary           = %q{A Ruby on Rails CMS that supports Rails 3}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
@@ -48,10 +48,6 @@ Gem::Specification.new do |s|
     'config/environments/development.rb',
     'config/environments/production.rb',
     'config/environments/test.rb',
-    'config/initializers',
-    'config/initializers/acts_as_indexed_config.rb',
-    'config/initializers/field_with_error_fix.rb',
-    'config/initializers/fix_rack.rb',
     'config/routes.rb',
     'config/settings.rb',
     'db/migrate',

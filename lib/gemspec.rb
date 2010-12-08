@@ -7,7 +7,7 @@ end
 rejection_patterns = [
   "public\/system",
   "^config\/(application|boot|environment).rb$",
-  "^config\/initializers\/(backtrace_silencers|inflections|mime_types|secret_token|session_store).rb$",
+  "^config\/initializers(\/.*\.rb)?$",
   "^config\/(database|i18n\-js).yml$",
   "^public\/",
   "^lib\/gemspec\.rb",
