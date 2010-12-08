@@ -16,6 +16,12 @@ Refinery also supports Rails 2.x using the [Rails 2.x stable branch](http://gith
 * [Install Refinery on Heroku](http://refinerycms.com/guides/how-to-install-refinery-on-heroku)
 * [Run the Refinery test suite](http://refinerycms.com/guides/how-to-test-refinery)
 
+## Getting Started
+
+If you're new to Refinery, start with this guide:
+
+* __[Getting started with Refinery](http://refinerycms.com/guides/getting-started-with-refinery)__
+
 ## What's it good at?
 
 __Refinery is great for sites where the client needs to be able to update their website themselves__ without being bombarded with anything too complicated.
@@ -36,6 +42,7 @@ Wanna see Refinery for yourself? [Try the demo](http://demo.refinerycms.com/refi
 ## Help and Documentation
 
 * [Getting Started](http://refinerycms.com/guides/getting-started-with-refinery)
+* [Guides](http://refinerycms.com/guides)
 * [Google Group Discussion](http://group.refinerycms.org)
 * [IRC Channel](irc://irc.freenode.net/refinerycms)
 * [GitHub repository](http://github.com/resolve/refinerycms)

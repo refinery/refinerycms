@@ -773,6 +773,10 @@ WYMeditor.editor.prototype.init = function() {
         }
       }
 
+      boxHtml = h.replaceAll(boxHtml, ">"+WYMeditor.APPLY_CLASS+"<", 
+        ">" + this._options.stringDelimiterLeft
+        + WYMeditor.APPLY_CLASS
+        + this._options.stringDelimiterRight + "<");
       boxHtml = h.replaceAll(boxHtml, WYMeditor.CLASSES_ITEMS, sClasses);
 
       //construct containers list
@@ -795,7 +799,7 @@ WYMeditor.editor.prototype.init = function() {
 
       boxHtml = h.replaceAll(boxHtml, WYMeditor.CONTAINERS_ITEMS, sContainers);
 
-      //l10n
+      //l18n
       boxHtml = this.replaceStrings(boxHtml);
 
       //load html in wymbox
