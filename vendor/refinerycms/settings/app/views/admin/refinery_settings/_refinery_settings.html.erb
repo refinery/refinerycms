@@ -1,0 +1,6 @@
+<%= will_paginate @refinery_settings, :previous_label => '&laquo;',
+                                      :next_label => '&raquo;' %>
+<ul id="frame">
+  <%= render :partial => 'refinery_setting',
+             :collection => @refinery_settings %>
+</ul>

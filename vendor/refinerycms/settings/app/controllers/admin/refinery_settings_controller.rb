@@ -11,6 +11,13 @@ class Admin::RefinerySettingsController < Admin::BaseController
 
   before_filter :sanitise_params, :only => [:create, :update]
   after_filter :fire_setting_callback, :only => [:update]
+  
+  def index
+    @refinery_settings = RefinerySetting.paginate({:page => params[:page], :per_page => RefinerySetting.per_page})
+    if request.xhr?
+      render :partial => 'refinery_settings'
+    end
+  end
 
   def new
     if current_user.has_role?(:superuser) and params[:form_value_type].present?

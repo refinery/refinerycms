@@ -5,14 +5,9 @@
     </h2>
   <% end %>
   <% if @refinery_settings.any? %>
-    <%= will_paginate @refinery_settings, :previous_label => '&laquo;',
-                                          :next_label => '&raquo;' %>
-    <ul>
-      <%= render :partial => 'refinery_setting',
-                 :collection => @refinery_settings %>
-    </ul>
-    <%= will_paginate @refinery_settings, :previous_label => '&laquo;',
-                                          :next_label => '&raquo;' %>
+    <div id="refinery_settings_list">
+      <%= render 'refinery_settings' %>
+    </div>
   <% else %>
     <p>
       <% if searching? %>
