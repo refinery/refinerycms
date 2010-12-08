@@ -5,46 +5,56 @@ end
 
 module Refinery
   module Application
-    def self.included(base)
-      self.instance_eval %(
-        def self.method_missing(method_sym, *arguments, &block)
-          #{base}.send(method_sym)
+    class << self
+      def included(base)
+        self.instance_eval %(
+          def self.method_missing(method_sym, *arguments, &block)
+            #{base}.send(method_sym)
+          end
+        )
+
+        # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
+        base.config.i18n.load_path += Dir[Refinery.root.join('vendor', 'refinerycms', '*/config/locales/*.{rb,yml}').to_s]
+        # config.i18n.default_locale = :de
+
+        # JavaScript files you want as :defaults (application.js is always included).
+        base.config.action_view.javascript_expansions[:defaults] = %w()
+
+        # Configure the default encoding used in templates for Ruby 1.9.
+        base.config.encoding = "utf-8"
+
+        # Configure sensitive parameters which will be filtered from the log file.
+        base.config.filter_parameters += [:password, :password_confirmation]
+
+        # Specify a cache store to use
+        base.config.cache_store = :memory_store
+
+        # Include the refinery controllers and helpers dynamically
+        base.config.to_prepare do
+          ::ApplicationHelper.send :include, ::Refinery::ApplicationHelper
+
+          [::ApplicationController, ::Admin::BaseController].each do |c|
+            c.send :include, ::Refinery::ApplicationController
+            c.send :helper, :application
+          end
+
+          ::Admin::BaseController.send :include, ::Refinery::AdminBaseController
         end
-      )
 
-      # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
-      base.config.i18n.load_path += Dir[Refinery.root.join('vendor', 'refinerycms', '*/config/locales/*.{rb,yml}').to_s]
-      # config.i18n.default_locale = :de
-
-      # JavaScript files you want as :defaults (application.js is always included).
-      base.config.action_view.javascript_expansions[:defaults] = %w()
-
-      # Configure the default encoding used in templates for Ruby 1.9.
-      base.config.encoding = "utf-8"
-
-      # Configure sensitive parameters which will be filtered from the log file.
-      base.config.filter_parameters += [:password, :password_confirmation]
-
-      # Specify a cache store to use
-      base.config.cache_store = :memory_store
-
-      # Include the refinery controllers and helpers dynamically
-      base.config.to_prepare do
-        ::ApplicationHelper.send :include, ::Refinery::ApplicationHelper
-
-        [::ApplicationController, ::Admin::BaseController].each do |c|
-          c.send :include, ::Refinery::ApplicationController
-          c.send :helper, :application
+        # load in any settings that the developer wants after the initialization.
+        base.config.after_initialize do
+          if (settings = Rails.root.join('config', 'settings.rb')).exist?
+            require settings.to_s
+          end
         end
-
-        ::Admin::BaseController.send :include, ::Refinery::AdminBaseController
       end
 
-      # load in any settings that the developer wants after the initialization.
-      base.config.after_initialize do
-        if (settings = Rails.root.join('config', 'settings.rb')).exist?
-          require settings.to_s
-        end
+      def load_tasks
+        Dir[Refinery.root.join("lib/tasks/*.rake").to_s].each do |task|
+          load task.to_s
+        end unless Refinery.root == Rails.root
+
+        super
       end
     end
   end
