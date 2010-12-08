@@ -10,10 +10,10 @@ WYMeditor.STRINGS['en'] = {
   Outdent:          'Outdent',
   Undo:             'Undo',
   Redo:             'Redo',
-  Link:             'Add a Link',
+  Link:             'Add Link',
   Unlink:           'Remove Link',
-  Image:            'Insert an Image',
-  Table:            'Insert a Table',
+  Image:            'Add Image',
+  Table:            'Add Table',
   HTML:             'HTML',
   Paragraph:        'Paragraph',
   Heading_1:        'Heading 1',
@@ -43,5 +43,5 @@ WYMeditor.STRINGS['en'] = {
   Classes:          'Classes',
   Status:           'Status',
   Source_Code:      'Source code',
-  Css_Class:        'Apply CSS Class'
+  Apply_Style:      'Style'
 };

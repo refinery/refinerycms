@@ -54,8 +54,8 @@ var wymeditor_boot_options = $.extend({
   , toolsItems: [
     {'name': 'Bold', 'title': 'Bold', 'css': 'wym_tools_strong'}
     ,{'name': 'Italic', 'title': 'Emphasis', 'css': 'wym_tools_emphasis'}
-    ,{'name': 'InsertOrderedList', 'title': 'Ordered_List', 'css': 'wym_tools_ordered_list'}
     ,{'name': 'InsertUnorderedList', 'title': 'Unordered_List', 'css': 'wym_tools_unordered_list'}
+    ,{'name': 'InsertOrderedList', 'title': 'Ordered_List', 'css': 'wym_tools_ordered_list'}
     /*,{'name': 'Indent', 'title': 'Indent', 'css': 'wym_tools_indent'}
     ,{'name': 'Outdent', 'title': 'Outdent', 'css': 'wym_tools_outdent'}
     ,{'name': 'Undo', 'title': 'Undo', 'css': 'wym_tools_undo'}
@@ -72,13 +72,15 @@ var wymeditor_boot_options = $.extend({
 
   ,toolsItemHtml:
     "<li class='" + WYMeditor.TOOL_CLASS + "'>"
-      + "<a href='#' name='" + WYMeditor.TOOL_NAME + "' title='" + WYMeditor.TOOL_TITLE + "'>"
+      + "<a href='#' name='" + WYMeditor.TOOL_NAME + "' title='" + WYMeditor.TOOL_TITLE + "' class='no-tooltip'>"
         + WYMeditor.TOOL_TITLE
       + "</a>"
     + "</li>"
 
   , classesHtml: "<li class='wym_tools_class'>"
-                 + "<a href='#' name='" + WYMeditor.APPLY_CLASS + "' title='"+ titleize(WYMeditor.APPLY_CLASS) +"'></a>"
+                 + "<a href='#' name='" + WYMeditor.APPLY_CLASS + "' title='"+ WYMeditor.APPLY_CLASS +"' class='no-tooltip'>"
+                   + WYMeditor.APPLY_CLASS
+                 + "</a>"
                  + "<ul class='wym_classes wym_classes_hidden'>" + WYMeditor.CLASSES_ITEMS + "</ul>"
                 + "</li>"
 
@@ -92,7 +94,7 @@ var wymeditor_boot_options = $.extend({
 
   , containersItemHtml:
       "<li class='" + WYMeditor.CONTAINER_CLASS + "'>"
-        + "<a href='#' name='" + WYMeditor.CONTAINER_NAME + "' title='" + WYMeditor.CONTAINER_TITLE + "'></a>"
+        + "<a href='#' name='" + WYMeditor.CONTAINER_NAME + "' title='" + WYMeditor.CONTAINER_TITLE + "' class='no-tooltip'></a>"
       + "</li>"
 
   , boxHtml:
@@ -204,9 +206,9 @@ var wymeditor_boot_options = $.extend({
   }
   , postInitDialog: function(wym) {
     if($.browser.msie) {
-      ($the_ui_dialog = $('.ui-dialog')).css('height', 
-        $the_ui_dialog.find('iframe').height() 
-        + $the_ui_dialog.find('iframe').contents().find('.form-actions').height() 
+      ($the_ui_dialog = $('.ui-dialog')).css('height',
+        $the_ui_dialog.find('iframe').height()
+        + $the_ui_dialog.find('iframe').contents().find('.form-actions').height()
         - 12
       );
     }
