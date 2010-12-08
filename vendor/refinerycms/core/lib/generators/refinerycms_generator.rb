@@ -51,8 +51,14 @@ class RefinerycmsGenerator < ::Refinery::Generators::EngineInstaller
     %w(development test production).map{|e| "config/environments/#{e}.rb"}.each do |env|
       contents = Rails.root.join(env).read
       contents.gsub! %r{#.*config.serve_static_assets}, 'config.serve_static_assets'
-      contents.gsub! "serve_static_assets = false", "serve_static_assets = true"
-      Rails.root.join(env).open("w")
+      contents.gsub! "serve_static_assets = false", "serve_static_assets = true # Refinery CMS requires this to be true"
+      contents << "\n\nRefinery.rescue_not_found = #{env.split('/').last.split('.rb').first == 'production'}"
+      Rails.root.join(env).open("w").puts(contents)
+    end
+
+    # Ensure that our tasks can be run from the client application
+    unless (rakefile = Rails.root.join("Rakefile")).read.include?('Refinery::Application.load_tasks')
+      rakefile.open("a+").puts('Refinery::Application.load_tasks')
     end
 
     # Ensure .gitignore exists and append our stuff to it.
