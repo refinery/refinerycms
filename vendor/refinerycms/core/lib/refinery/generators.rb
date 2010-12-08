@@ -28,7 +28,7 @@ module Refinery
       end
 
       def generate
-        Dir.glob(self.class.source_root.join('db', '**', '*.rb')) do |path|
+        Dir.glob(self.class.source_root.join('db', '**', '*.rb')).sort.each do |path|
           case path
           when %r{.*/migrate/.*}
             migration_template path, Rails.root.join('db', 'migrate', path.split('/migrate/').last.split(/^\d*_/).last)
