@@ -6,7 +6,9 @@ $(document).ready(function(){
 });
 
 init_flash_messages = function(){
-  $('#flash').hide().css('visibility', '').fadeIn(550);
+  $('#flash').css({'opacity': '0'}).animate({
+    'opacity': '1'
+  }, 550)
   $('#flash_close').click(function(e) {
      $('#flash').fadeOut({duration: 330});
      e.preventDefault();
