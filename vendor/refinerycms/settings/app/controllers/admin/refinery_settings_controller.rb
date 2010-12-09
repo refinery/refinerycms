@@ -15,7 +15,8 @@ class Admin::RefinerySettingsController < Admin::BaseController
   def index
     @refinery_settings = RefinerySetting.paginate({:page => params[:page], :per_page => RefinerySetting.per_page})
     if request.xhr?
-      render :partial => 'refinery_settings'
+      css_class = params[:css_class].present? ? params[:css_class] : nil
+      render :partial => 'refinery_settings', :locals => { :css_class => css_class }
     end
   end
 
