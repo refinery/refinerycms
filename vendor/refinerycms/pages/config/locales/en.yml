@@ -71,10 +71,10 @@ en:
         meta_description_title: Meta description
         meta_description_help: Enter a concise two or three sentences describing what this page is about.
       index:
-        create_new_page: Add New Page
-        reorder_pages: Reorder Pages
-        reorder_pages_done: Done Reordering Pages
-        no_pages_yet: There are no pages yet. Click "Add New Page" to add your first page.
+        create_new_page: Add new page
+        reorder_pages: Reorder pages
+        reorder_pages_done: Done reordering pages
+        no_pages_yet: There are no pages yet. Click "Add new page" to add your first page.
   activerecord:
     models:
       page: page

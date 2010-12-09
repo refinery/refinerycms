@@ -13,7 +13,7 @@ lv:
         blank_password_keeps_current: Atstājot paroles lauku tukšu, tiks paturēta pašreizējā parole
         enable_all: iespējot visu
       index:
-        create_new_user: Izveidot Jaunu Lietotāju
+        create_new_user: Izveidot jaunu lietotāju
       user:
         email_user: Sūtīt epastu šim lietotājam
         preview: (%{who}) izveidots %{created_at}

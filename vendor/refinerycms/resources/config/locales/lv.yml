@@ -17,8 +17,8 @@ lv:
       resource:
         download: Lejupielādēt šo failu (%{size})
       index:
-        upload_new: Augšupielādēt Failu
-        no_files_yet: Vēl nav neviena faila. Spied "Augšupielādēt Failu", lai ielādētu failu.
+        upload_new: Augšupielādēt failu
+        no_files_yet: Vēl nav neviena faila. Spied "Augšupielādēt failu", lai ielādētu failu.
       insert:
         existing: Esošs Fails
         new: Jauns Fails
