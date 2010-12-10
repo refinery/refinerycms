@@ -35,8 +35,6 @@ zh-CN:
         or_continue: or
         cancel_lose_changes: "Cancelling will lose all changes you've made to this %{object_name}"
         delete: Delete
-        previous: Previous
-        next: Next
         close: Close
       image_picker:
         none_selected: "There is currently no %{what} selected, please click here to add one."

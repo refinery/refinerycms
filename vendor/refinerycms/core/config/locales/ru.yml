@@ -37,8 +37,6 @@ ru:
         cancel: Отмена
         cancel_lose_changes: При отмене все изменения будут потеряны
         delete: Удалить
-        previous: Предыдущее
-        next: Следующее
         close: Закрыть
       image_picker:
         none_selected: There is currently no %{what} selected, please click here to add one.

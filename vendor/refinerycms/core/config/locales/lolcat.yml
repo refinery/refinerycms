@@ -37,8 +37,6 @@ lolcat:
         cancel: CANCEL
         cancel_lose_changes: IF U CANCEL U WILL LOSE ANY CHANGEZ U HAS MADE HER
         delete: REMOOV
-        previous: PREVIOUS
-        next: NEXT
         close: CLOSE
       image_picker:
         none_selected: THAR IZ CURRENTLY NO %{what} SELECTD, PLZ CLICK HER 2 ADD WAN.

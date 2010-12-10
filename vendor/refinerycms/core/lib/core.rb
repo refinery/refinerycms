@@ -35,6 +35,11 @@ module Refinery
         ].flatten
       end
 
+      initializer 'set will_paginate link labels' do |app|
+        WillPaginate::ViewHelpers.pagination_options[:previous_label] = "&laquo;".html_safe
+        WillPaginate::ViewHelpers.pagination_options[:next_label] = "&raquo;".html_safe
+      end
+
       config.to_prepare do
         Rails.cache.clear
 
