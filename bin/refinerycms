@@ -166,9 +166,7 @@ module Refinery
     def output!
       unless @options[:update]
         puts "\n\nSetting up your development database..\n"
-        %w(db:drop db:create db:migrate db:seed).each do |db|
-          run_command("rake -f \"#{@app_path.join('Rakefile')}\" #{db}")
-        end
+        run_command("rake -f \"#{@app_path.join('Rakefile')}\" db:setup")
       else
         puts "\n\nMigrating your development database..\n"
         run_command("rake -f \"#{@app_path.join('Rakefile')}\" db:migrate")
