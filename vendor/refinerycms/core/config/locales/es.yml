@@ -30,8 +30,6 @@ es:
         cancel: Cancelar
         cancel_lose_changes: Al cancelar se perderán los cambios que has realizado aquí
         delete: Borrar
-        previous: Anterior
-        next: Siguiente
         close: Cerrar
       image_picker:
         none_selected: No hay ninguna %{what} seleccionada, haz click aquí para añadir una.

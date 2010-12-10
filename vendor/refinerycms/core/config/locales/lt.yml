@@ -37,8 +37,6 @@ lt:
         cancel: Atšaukti
         cancel_lose_changes: "Jeigu atšauksite, tai prarasite visus padarytus pakeitimus"
         delete: Pašalinti
-        previous: Ankstesnis
-        next: Kitas
         close: Uždaryti
       image_picker:
         none_selected: Nėra pasirinktas %{what}, prašome spausti čia, kad pasirinkti.

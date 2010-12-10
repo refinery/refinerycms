@@ -30,8 +30,6 @@
           </ul>
           <%= will_paginate @pages,
                             :param_name => :page,
-                            :previous_label => '&laquo;',
-                            :next_label => '&raquo;',
                             :renderer => Refinery::LinkRenderer,
                             :id => 'pages_paginate' %>
         </div>
