@@ -113,7 +113,7 @@ module Refinery
           plugin.version = Refinery.version.to_s
           plugin.hide_from_menu = true
           plugin.always_allow_access = true
-          plugin.menu_match = /(refinery|admin)\/(refinery_core|base)$/
+          plugin.menu_match = /(refinery|admin)\/(refinery_core)$/
         end
 
         # Register the dialogs plugin

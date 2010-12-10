@@ -4,7 +4,7 @@ Gem::Specification.new do |s|
   s.name              = %q{refinerycms}
   s.version           = %q{0.9.9.pre}
   s.description       = %q{A Ruby on Rails CMS that supports Rails 3. It's easy to extend and sticks to 'the Rails way' where possible.}
-  s.date              = %q{2010-12-10}
+  s.date              = %q{2010-12-11}
   s.summary           = %q{A Ruby on Rails CMS that supports Rails 3}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
@@ -60,13 +60,7 @@ Gem::Specification.new do |s|
     'db/seeds.rb',
     'db/seeds/pages.rb',
     'db/seeds/refinery_settings.rb',
-    'features/step_definitions',
-    'features/step_definitions/web_steps.rb',
-    'features/support',
-    'features/support/env.rb',
-    'features/support/factories.rb',
-    'features/support/negative_expectations_helper.rb',
-    'features/support/paths.rb',
+    'lib/tasks',
     'license.md',
     'readme.md',
     'spec/rcov.opts',
@@ -149,6 +143,17 @@ Gem::Specification.new do |s|
     'vendor/refinerycms/authentication/test/unit',
     'vendor/refinerycms/authentication/test/unit/user_mailer_test.rb',
     'vendor/refinerycms/authentication/test/unit/user_test.rb',
+    'vendor/refinerycms/base',
+    'vendor/refinerycms/base/features',
+    'vendor/refinerycms/base/features/step_definitions',
+    'vendor/refinerycms/base/features/step_definitions/web_steps.rb',
+    'vendor/refinerycms/base/features/support',
+    'vendor/refinerycms/base/features/support/env.rb',
+    'vendor/refinerycms/base/features/support/factories.rb',
+    'vendor/refinerycms/base/features/support/negative_expectations_helper.rb',
+    'vendor/refinerycms/base/features/support/paths.rb',
+    'vendor/refinerycms/base/lib',
+    'vendor/refinerycms/base/lib/base.rb',
     'vendor/refinerycms/core',
     'vendor/refinerycms/core/app',
     'vendor/refinerycms/core/app/controllers',
