@@ -48,9 +48,11 @@ gem 'refinerycms-i18n',         :git => 'git://github.com/resolve/refinerycms-i1
 
 gem 'jruby-openssl' if java
 
-# override dragonfly because this version doesn't require RMagick
+# override dragonfly because this version is quieter
 gem 'dragonfly',                :git => 'git://github.com/refinerycms/dragonfly.git',
                                 :branch => 'master'
+
+gem 'authlogic',                :git => 'git://github.com/parndt/authlogic.git'
 
 group :test do
   # RSpec

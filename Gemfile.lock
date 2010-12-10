@@ -6,6 +6,13 @@ GIT
     json_pure (1.4.6a)
 
 GIT
+  remote: git://github.com/parndt/authlogic.git
+  revision: 66ed79515919fe13016911b10ebe734cf8718dc7
+  specs:
+    authlogic (2.1.6)
+      activesupport
+
+GIT
   remote: git://github.com/parndt/capybara.git
   revision: 4cfe882c982682e71c13c877e7f14fd862a9e565
   specs:
@@ -97,8 +104,6 @@ GEM
     activesupport (3.0.3)
     acts_as_indexed (0.6.6)
     arel (2.0.6)
-    authlogic (2.1.6)
-      activesupport
     autotest (4.4.6)
       ZenTest (>= 4.4.1)
     autotest-notification (2.3.1)
@@ -205,6 +210,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  authlogic!
   autotest
   autotest-notification
   autotest-rails
