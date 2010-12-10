@@ -5,4 +5,3 @@ require File.expand_path('../config/application', __FILE__)
 require 'rake'
 
 RefineryApp::Application.load_tasks
-Refinery::Application.load_tasks
