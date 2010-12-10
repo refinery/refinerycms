@@ -4,7 +4,7 @@ Gem::Specification.new do |s|
   s.name              = %q{refinerycms}
   s.version           = %q{0.9.9.pre}
   s.description       = %q{A Ruby on Rails CMS that supports Rails 3. It's easy to extend and sticks to 'the Rails way' where possible.}
-  s.date              = %q{2010-12-08}
+  s.date              = %q{2010-12-10}
   s.summary           = %q{A Ruby on Rails CMS that supports Rails 3}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
@@ -67,9 +67,6 @@ Gem::Specification.new do |s|
     'features/support/factories.rb',
     'features/support/negative_expectations_helper.rb',
     'features/support/paths.rb',
-    'lib/tasks',
-    'lib/tasks/cucumber.rake',
-    'lib/tasks/rspec.rake',
     'license.md',
     'readme.md',
     'spec/rcov.opts',
@@ -262,8 +259,10 @@ Gem::Specification.new do |s|
     'vendor/refinerycms/core/lib/refinery/plugin.rb',
     'vendor/refinerycms/core/lib/refinery/plugins.rb',
     'vendor/refinerycms/core/lib/tasks',
+    'vendor/refinerycms/core/lib/tasks/cucumber.rake',
     'vendor/refinerycms/core/lib/tasks/doc.rake',
     'vendor/refinerycms/core/lib/tasks/refinery.rake',
+    'vendor/refinerycms/core/lib/tasks/rspec.rake',
     'vendor/refinerycms/core/lib/tasks/yard.rake',
     'vendor/refinerycms/core/public',
     'vendor/refinerycms/core/public/404.html',
