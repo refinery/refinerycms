@@ -5,11 +5,13 @@ gem 'rails',                    '~> 3.0.3'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-if (java = RUBY_PLATFORM == 'java')
-  gem 'activerecord-jdbcsqlite3-adapter', '>= 1.0.2', :platform => :jruby
-else
-  gem 'sqlite3-ruby', :require => 'sqlite3'
-end
+java = RUBY_PLATFORM == 'java'
+
+#if java
+#  gem 'activerecord-jdbcsqlite3-adapter', '>= 1.0.2', :platform => :jruby
+#else
+#  gem 'sqlite3-ruby', :require => 'sqlite3'
+#end
 
 # Use unicorn as the web server
 # gem 'unicorn'
