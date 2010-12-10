@@ -16,7 +16,7 @@ Feature: Manage Pages
 
   Scenario: Create Valid Page
     When I go to the list of pages
-    And I follow "Add New Page"
+    And I follow "Add new page"
     And I fill in "Title" with "Pickles are Cucumbers Soaked in Evil"
     And I press "Save"
     Then I should see "'Pickles are Cucumbers Soaked in Evil' was successfully added."
@@ -24,7 +24,7 @@ Feature: Manage Pages
 
   Scenario: Create Invalid Page (without title)
     When I go to the list of pages
-    And I follow "Add New Page"
+    And I follow "Add new page"
     And I press "Save"
     Then I should see "Title can't be blank"
     And I should have 0 pages
@@ -32,7 +32,7 @@ Feature: Manage Pages
   Scenario: Create Duplicate Page
     Given I only have pages titled Home, About
     When I go to the list of pages
-    And I follow "Add New Page"
+    And I follow "Add new page"
     And I fill in "Title" with "About"
     And I press "Save"
     Then I should have 3 pages

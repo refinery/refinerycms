@@ -11,7 +11,7 @@ Feature: Manage Files
   @files-valid @valid
   Scenario: Create Valid File
     When I go to the list of files
-    And I follow "Upload New File"
+    And I follow "Upload new file"
     And I attach the file at "refinery_is_awesome.txt"
     And I press "Save"
     Then the file "refinery_is_awesome.txt" should have uploaded successfully

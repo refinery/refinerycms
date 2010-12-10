@@ -11,7 +11,7 @@ Feature: Manage Images
   @images-valid @valid
   Scenario: Create Valid Image
     When I go to the list of images
-    And I follow "Add New Image"
+    And I follow "Add new image"
     And I attach the image at "beach.jpeg"
     And I press "Save"
     Then the image "beach.jpeg" should have uploaded successfully
@@ -26,7 +26,7 @@ Feature: Manage Images
   @images-invalid @invalid
   Scenario: Create Invalid Image (format)
     When I go to the list of images
-    And I follow "Add New Image"
+    And I follow "Add new image"
     And I attach the image at "refinery_is_awesome.txt"
     And I press "Save"
     Then I should not see "successfully added"

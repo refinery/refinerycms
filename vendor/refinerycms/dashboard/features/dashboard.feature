@@ -38,12 +38,12 @@ Feature: Dashboard
   @i18n
   Scenario: Translation options available
     When I go to the Dashboard
-    Then I should see "English Change Language"
+    Then I should see "English Change language"
 
   @i18n
   Scenario: Change Language to Slovenian and back to English
     When I go to the dashboard
-    And I follow "English Change Language"
+    And I follow "English Change language"
     And I follow "Slovenian"
     Then I should be on the Dashboard
     And I should see "Slovenian Spremeni Jezik"

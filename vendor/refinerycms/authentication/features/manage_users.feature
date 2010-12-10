@@ -34,7 +34,7 @@ Feature: Manage Users
     Given I have a user named "resolve"
     And I am a logged in refinery user
     When I go to the list of users
-    And I follow "Add New User"
+    And I follow "Add new user"
     And I fill in "Login" with "cucumber"
     And I fill in "Email" with "green@cucumber.com"
     And I fill in "Password" with "greenandjuicy"
