@@ -48,13 +48,6 @@ module Refinery
           end
         end
       end
-
-      def load_tasks
-        # Bring in our tasks to the main app.
-        Dir[Refinery.root.join('vendor', 'refinerycms', 'core', 'lib', 'tasks', '*.rake').to_s].each do |task|
-          load task.to_s
-        end unless Refinery.root == Rails.root
-      end
     end
   end
 end
