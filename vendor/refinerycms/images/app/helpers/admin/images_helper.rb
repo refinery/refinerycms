@@ -20,9 +20,7 @@ module Admin
     end
 
     def images_paginator(collection, dialog = false)
-      will_paginate collection, :previous_label => '&laquo; Previous',
-                                :next_label => 'Next &raquo;',
-                                :renderer => Refinery::LinkRenderer
+      will_paginate collection, :renderer => Refinery::LinkRenderer
     end
 
   end

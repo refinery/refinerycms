@@ -37,8 +37,6 @@ nb:
         or_continue: eller
         cancel_lose_changes: "Om du avbryter så vil alle endringene du har gjort på %{object_name} forsvinne"
         delete: Slett
-        previous: Forrige
-        next: Neste
       image_picker:
         none_selected: "Det er for øyeblikket ikke noen %{what} valgt. Vennligst klikk her for å legge til en."
         remove_current: "Fjern gjeldende %{what}"

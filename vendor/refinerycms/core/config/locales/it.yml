@@ -49,8 +49,6 @@ it:
         or_continue: o
         cancel_lose_changes: "L'annullamento perderà tutte le modifiche apportate a questa %{object_name}"
         delete: Rimuovere
-        previous: Precedente
-        next: Successivo
         close: Chiudere
       image_picker:
         none_selected: "Non ci sono attualmente %{what} selezionate, clicca qui per aggiungerne uno."

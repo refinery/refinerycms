@@ -36,6 +36,7 @@ Gem::Specification.new do |s|
   s.homepage          = %q{http://refinerycms.com}
   s.rubyforge_project = %q{refinerycms}
   s.authors           = ['Resolve Digital', 'David Jones', 'Philip Arndt']
+  s.license           = %q{MIT}
   s.require_paths     = %w(vendor/refinerycms)
   s.executables       = %w(#{Dir.glob('bin/*').map{|d| d.gsub('bin/','')}.join(' ')})
 

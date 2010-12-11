@@ -3,7 +3,7 @@
     <h2><%= t('shared.admin.search.results_for', :query => params[:search]) %></h2>
   <% end %>
   <% if @resources.any? %>
-    <%= will_paginate @resources, :previous_label => '&laquo;', :next_label => '&raquo;' %>
+    <%= will_paginate @resources %>
     <% unless searching? or !RefinerySetting.find_or_set(:group_resources_by_date_uploaded, true)
         @grouped_resources.each do |container|
           date = Date.parse((resource_group = container.last).first.created_at.to_s)
@@ -18,7 +18,7 @@
         <%= render :partial => "resource", :collection => @resources %>
       </ul>
     <% end %>
-    <%= will_paginate @resources, :previous_label => '&laquo;', :next_label => '&raquo;' %>
+    <%= will_paginate @resources %>
   <% else %>
     <p>
       <% unless searching? %>

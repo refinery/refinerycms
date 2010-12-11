@@ -10,6 +10,7 @@ Gem::Specification.new do |s|
   s.homepage          = %q{http://refinerycms.com}
   s.rubyforge_project = %q{refinerycms}
   s.authors           = ['Resolve Digital', 'David Jones', 'Philip Arndt']
+  s.license           = %q{MIT}
   s.require_paths     = %w(vendor/refinerycms)
   s.executables       = %w(refinerycms)
 
@@ -113,6 +114,7 @@ Gem::Specification.new do |s|
     'vendor/refinerycms/authentication/app/views/users/reset.html.erb',
     'vendor/refinerycms/authentication/config',
     'vendor/refinerycms/authentication/config/locales',
+    'vendor/refinerycms/authentication/config/locales/cs.yml',
     'vendor/refinerycms/authentication/config/locales/da.yml',
     'vendor/refinerycms/authentication/config/locales/de.yml',
     'vendor/refinerycms/authentication/config/locales/en.yml',
@@ -203,6 +205,7 @@ Gem::Specification.new do |s|
     'vendor/refinerycms/core/app/views/wymiframe.html.erb',
     'vendor/refinerycms/core/config',
     'vendor/refinerycms/core/config/locales',
+    'vendor/refinerycms/core/config/locales/cs.yml',
     'vendor/refinerycms/core/config/locales/da.yml',
     'vendor/refinerycms/core/config/locales/de.yml',
     'vendor/refinerycms/core/config/locales/en.yml',
@@ -362,7 +365,6 @@ Gem::Specification.new do |s|
     'vendor/refinerycms/core/public/images/refinery/icons/flags/cv.png',
     'vendor/refinerycms/core/public/images/refinery/icons/flags/cx.png',
     'vendor/refinerycms/core/public/images/refinery/icons/flags/cy.png',
-    'vendor/refinerycms/core/public/images/refinery/icons/flags/cz.png',
     'vendor/refinerycms/core/public/images/refinery/icons/flags/da.png',
     'vendor/refinerycms/core/public/images/refinery/icons/flags/de.png',
     'vendor/refinerycms/core/public/images/refinery/icons/flags/dj.png',
@@ -742,6 +744,7 @@ Gem::Specification.new do |s|
     'vendor/refinerycms/dashboard/app/views/admin/dashboard/index.rss.builder',
     'vendor/refinerycms/dashboard/config',
     'vendor/refinerycms/dashboard/config/locales',
+    'vendor/refinerycms/dashboard/config/locales/cs.yml',
     'vendor/refinerycms/dashboard/config/locales/da.yml',
     'vendor/refinerycms/dashboard/config/locales/de.yml',
     'vendor/refinerycms/dashboard/config/locales/en.yml',
@@ -791,6 +794,7 @@ Gem::Specification.new do |s|
     'vendor/refinerycms/images/app/views/admin/images/new.html.erb',
     'vendor/refinerycms/images/config',
     'vendor/refinerycms/images/config/locales',
+    'vendor/refinerycms/images/config/locales/cs.yml',
     'vendor/refinerycms/images/config/locales/da.yml',
     'vendor/refinerycms/images/config/locales/de.yml',
     'vendor/refinerycms/images/config/locales/en.yml',
@@ -868,6 +872,7 @@ Gem::Specification.new do |s|
     'vendor/refinerycms/pages/app/views/pages/show.html.erb',
     'vendor/refinerycms/pages/config',
     'vendor/refinerycms/pages/config/locales',
+    'vendor/refinerycms/pages/config/locales/cs.yml',
     'vendor/refinerycms/pages/config/locales/da.yml',
     'vendor/refinerycms/pages/config/locales/de.yml',
     'vendor/refinerycms/pages/config/locales/en.yml',
@@ -923,6 +928,7 @@ Gem::Specification.new do |s|
     'vendor/refinerycms/resources/app/views/admin/resources/new.html.erb',
     'vendor/refinerycms/resources/config',
     'vendor/refinerycms/resources/config/locales',
+    'vendor/refinerycms/resources/config/locales/cs.yml',
     'vendor/refinerycms/resources/config/locales/da.yml',
     'vendor/refinerycms/resources/config/locales/de.yml',
     'vendor/refinerycms/resources/config/locales/en.yml',
@@ -977,6 +983,7 @@ Gem::Specification.new do |s|
     'vendor/refinerycms/settings/app/views/admin/refinery_settings/new.html.erb',
     'vendor/refinerycms/settings/config',
     'vendor/refinerycms/settings/config/locales',
+    'vendor/refinerycms/settings/config/locales/cs.yml',
     'vendor/refinerycms/settings/config/locales/da.yml',
     'vendor/refinerycms/settings/config/locales/de.yml',
     'vendor/refinerycms/settings/config/locales/en.yml',

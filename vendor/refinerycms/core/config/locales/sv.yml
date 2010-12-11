@@ -37,8 +37,6 @@ sv:
         cancel: Avbryt
         cancel_lose_changes: Om du avbryter förlorar du de ändringar du har gjort.
         delete: Ta bort
-        previous: Föregående
-        next: Nästa
         close: Stäng
       image_picker:
         none_selected: Det finns just nu ingen %{what} vald, klicka här för att lägga till en.
