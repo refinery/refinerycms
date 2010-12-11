@@ -1,0 +1,66 @@
+cs:
+  plugins:
+    refinery_users:
+      title: Uživatelé
+      description: Spravovat uživatele
+  admin:
+    users:
+      delete: Smazat tohoto uživatele
+      edit: Editovat tohoto uživatele
+      update:
+        cannot_remove_user_plugin_from_current_user: Nemůžete odstranit 'Users' plugin z aktuálně přihlášeného konta.
+      form:
+        blank_password_keeps_current: Pokud necháte toto pole prázné bude zachováno stávající heslo
+        enable_all: povolot vše
+      index:
+        create_new_user: Přidat nového uživatele
+      user:
+        email_user: Poslat uživateli email
+        preview: (%{who}) přidán %{created_at}
+  sessions:
+    login_successful: Úspěšně přihlášen/a
+    new:
+      hello_please_sign_in: Prosím přihlašte se
+      sign_in: Přihlášení
+      forgot_password: Zapomenuté heslo
+  users:
+    setup_website_name_html: Dejte vašemu webu jméno. <a href='%{link}' name='%{title}'>Zde</a> můžete jméno editovat
+    new:
+      fill_form: Vyplňte údaje níže a můžeme začít.
+      sign_up: Registrace
+    create:
+      welcome: Vítejte %{who}
+    forgot:
+      email_address: Emailová adresa
+      enter_email_address: Prosím zadejte emailovou adresu.
+      reset_password: Resetovat heslo
+      blank_email: Musíte zadat emailovou adresu.
+      email_not_associated_with_account_html:  Email '%{email}' není asociován z žádným uživatelským kontem.<br />Jste si jisti, že jste použili správnou adresu?
+      email_reset_sent: Byl vám odeslán email s odkazem na resetování hesla.
+    reset:
+      code_invalid: Omlouváme se, ale kód pro resetování hesla je buď chybný nebo expirovaný. Zkuste zkopírovat adresu pro resetování hesle z emailu který jste obdržel/a, nebo si nechejte email zaslat znovu.
+      successful: Heslo bylo úspěšně resetováno pro '%{email}'
+      pick_new_password_for: Zadejte nové heslo pro %{email}
+      reset_password: Reset hesla
+      password_blank: Vyplňte pole odpovídajícími hesly.
+  user_mailer:
+    link_to_reset_your_password: Odkaz pro reset hesla
+  authlogic:
+    error_messages:
+      login_blank: musí být zadáno
+      password_blank: musí být zadáno
+      login_invalid: jsou povoleny pouze písmena, číslice, mezery a znaky '.-_@'.
+      email_invalid: není platnou emailovou adresou.
+      no_authentication_details: Neposkytl/a jste žádné detaily pro autentifikaci.
+    models:
+      user_session: UserSession
+    attributes:
+      user_session:
+        login: Přihlásit
+        email: Email
+        password: Heslo
+        remember_me: Zapamatovat heslo
+        incorrect: Omlouváme se, ale váš %{login_field} nebo heslo je neplatné.
+  activerecord:
+    models:
+      user: uživatel
