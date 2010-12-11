@@ -77,6 +77,11 @@ module Refinery
         end if ::Rack.version <= "1.2.1"
       end
 
+      initializer 'set will_paginate link labels' do |app|
+        WillPaginate::ViewHelpers.pagination_options[:previous_label] = "&laquo;".html_safe
+        WillPaginate::ViewHelpers.pagination_options[:next_label] = "&raquo;".html_safe
+      end
+
       # Attach ourselves to the Rails application.
       config.before_configuration do
         ::Refinery::Core.attach_to_application!
