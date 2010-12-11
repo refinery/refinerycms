@@ -33,8 +33,6 @@ nl:
         cancel: Annuleer
         cancel_lose_changes: "Als u annuleert, zal geen avn de wijzingen worden opgeslagen!"
         delete: Verwijder
-        previous: Vorige
-        next: Volgende
         close: Sluiten
       image_picker:
         none_selected: "Er is op dit moment geen %{what} geselecteerd. Klik a.u.b. hier om er een toe te voegen."

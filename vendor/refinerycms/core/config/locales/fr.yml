@@ -37,8 +37,6 @@ fr:
         cancel: Annuler
         cancel_lose_changes: Si vous annulez, tout les changements non sauvegardés seront perdus
         delete: Supprimer
-        previous: Précédent
-        next: Suivant
         close: Fermer
       image_picker:
         none_selected: Il n'y a actuellement aucun %{what} sélectionné, veuillez cliquer ici pour en ajouter un.

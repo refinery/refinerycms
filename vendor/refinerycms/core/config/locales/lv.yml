@@ -37,8 +37,6 @@ lv:
         cancel: Atcelt
         cancel_lose_changes: Atceļot tiks zaudētas visas tekošās izmaiņas, kas šeit tika veiktas
         delete: Dzēst
-        previous: Iepriekšējā
-        next: Nākamā
         close: Aizvērt
       image_picker:
         none_selected: Pašlaik nav izvēlēta neviena %{what}. Lūdzu, spied šeit, lai pievienotu.

@@ -37,8 +37,6 @@ pl:
         cancel: Zrezygnuj
         cancel_lose_changes: Jeżeli zrezygnujesz, stracisz wszelkie dokonane tu zmiany
         delete: Usuń
-        previous: Poprzedni
-        next: Następny
         close: Zamknij
       image_picker:
         none_selected: Nie ma zaznaczonych %{what}, kliknij tutaj aby jakieś dodać.

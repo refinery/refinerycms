@@ -37,8 +37,6 @@ de:
         cancel: Abbrechen
         cancel_lose_changes: Durch Abbrechen gehen all ihre gemachten Änderungen verloren
         delete: Löschen
-        previous: Vorherige
-        next: Nächste
         close: Schließen
       image_picker:
         none_selected: Es ist momentan kein %{what} ausgewählt, bitte klicken Sie hier, um eins hinzuzufügen.

@@ -1,9 +1,9 @@
 <div id='records'>
-  <%= will_paginate @users, :previous_label => '&laquo;', :next_label => '&raquo;' %>
+  <%= will_paginate @users %>
   <ul>
     <%= render :partial => "user", :collection => @users %>
   </ul>
-  <%= will_paginate @users, :previous_label => '&laquo;', :next_label => '&raquo;' %>
+  <%= will_paginate @users %>
 </div>
 <div id='actions'>
   <ul>
