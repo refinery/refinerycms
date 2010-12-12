@@ -16,11 +16,11 @@ class RefinerycmsGenerator < ::Refinery::Generators::EngineInstaller
     end
 
     # Overwrite rails defaults with refinery defaults
-    %w(features spec).each do |folder|
+    %w(spec).each do |folder|
       FileUtils::cp_r Refinery.root.join(folder), Rails.root, :verbose => true
     end
 
-    # Copy in important files to the Rails app.
+    # Copy in 'important' files to the Rails app.
     %w(.rspec config/cucumber.yml).each do |file|
       # Backup their version if it exists
       if Rails.root.join(file).file? and !(backup = Rails.root.join(file)).file?
