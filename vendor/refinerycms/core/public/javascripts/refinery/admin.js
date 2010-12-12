@@ -620,13 +620,15 @@ var page_options = {
 }
 
 var image_dialog = {
-  callback: null
+  initialised: false
+  , callback: null
 
   , init: function(callback){
     this.callback = callback;
     this.init_tabs();
     this.init_select();
     this.init_actions();
+    this.initialised = true;
     return this;
   }
 
@@ -665,41 +667,15 @@ var image_dialog = {
 
       $(img).parent().addClass('selected');
       var imageId = $(img).attr('data-id');
-      var imageThumbnailSize = $('#existing_image_size_area li.selected a').attr('data-size');
+      var geometry = $('#existing_image_size_area li.selected a').attr('data-geometry');
+      var size = $('#existing_image_size_area li.selected a').attr('data-size');
       var resize = $("#wants_to_resize_image").is(':checked');
 
-      var url = '/refinery/images/'+imageId+'/url';
-      if (resize) {
-        url += '?size='+imageThumbnailSize;
-      }
-
-      var data;
-      $.ajax({
-        async: false,
-        url: url,
-        success: function (result, status, xhr) {
-          if (result.error) {
-            if (console && console.log) {
-               console.log("Something went wrong with the image insertion!");
-               console.log(result);
-             }
-           } else {
-             data = result;
-           }
-         },
-         error: function(xhr, txt, status) {
-           if (console && console.log) {
-             console.log("Something went wrong with the image insertion!");
-             console.log(xhr);
-             console.log(txt);
-             console.log(status);
-           }
-         }
-       });
+      image_url = resize ? $(img).attr('data-' + size) : $(img).attr('data-original');
 
       if (parent) {
         if ((wym_src = parent.document.getElementById('wym_src')) != null) {
-          wym_src.value = data.url
+          wym_src.value = image_url;
         }
         if ((wym_title = parent.document.getElementById('wym_title')) != null) {
           wym_title.value = $(img).attr('title');
@@ -707,8 +683,9 @@ var image_dialog = {
         if ((wym_alt = parent.document.getElementById('wym_alt')) != null) {
           wym_alt.value = $(img).attr('alt');
         }
-        if ((wym_size = parent.document.getElementById('wym_size')) != null) {
-          wym_size.value = imageThumbnailSize.replace(/[<>=]/g, '');
+        if ((wym_size = parent.document.getElementById('wym_size')) != null
+            && typeof(geometry) != 'undefined') {
+          wym_size.value = geometry.replace(/[<>=]/g, '');
         }
       }
     }
@@ -727,7 +704,7 @@ var image_dialog = {
   , init_actions: function(){
     var _this = this;
     $('#existing_image_area .form-actions-dialog #submit_button').click($.proxy(_this.submit_image_choice, _this));
-    $('.form-actions-dialog #cancel_button').click($.proxy(close_dialog, _this));
+    $('.form-actions-dialog #cancel_button').not('body.wym_iframe_body .form-actions-dialog #cancel_button').click($.proxy(close_dialog, _this));
     $('#existing_image_size_area ul li a').click(function(e) {
       $('#existing_image_size_area ul li').removeClass('selected');
       $(this).parent().addClass('selected');
@@ -753,7 +730,7 @@ var image_dialog = {
       $('#existing_image_area .form-actions a.close_dialog').click(close_dialog);
     }
   }
-}
+};
 
 var list_reorder = {
   initialised: false

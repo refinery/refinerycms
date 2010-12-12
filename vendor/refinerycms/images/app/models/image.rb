@@ -1,7 +1,7 @@
 class Image < ActiveRecord::Base
 
   # What is the max image size a user can upload
-  MAX_SIZE_IN_MB = 20
+  MAX_SIZE_IN_MB = 5
 
   image_accessor :image
 
@@ -40,14 +40,20 @@ class Image < ActiveRecord::Base
         PAGES_PER_ADMIN_INDEX
       end
     end
+
+    def user_image_sizes
+      RefinerySetting.find_or_set(:user_image_sizes, {
+        :small => '110x110>',
+        :medium => '225x255>',
+        :large => '450x450>'
+      })
+    end
   end
 
   # Get a thumbnail job object given a geometry.
   def thumbnail(geometry = nil)
-    if geometry.is_a?(Symbol)
-      if (sizes = RefinerySetting.find_or_set(:image_thumbnails, {})) and sizes.keys.include?(geometry)
-        geometry = sizes[geometry].presence
-      end
+    if geometry.is_a?(Symbol) and self.class.user_image_sizes.keys.include?(geometry)
+      geometry = self.class.user_image_sizes[geometry].presence
     end
 
     if geometry.present? && !geometry.is_a?(Symbol)
@@ -60,7 +66,7 @@ class Image < ActiveRecord::Base
   # Returns a titleized version of the filename
   # my_file.jpg returns My File
   def title
-    CGI::unescape(self.image_name).gsub(/\.\w+$/, '').titleize
+    CGI::unescape(self.image_name.to_s).gsub(/\.\w+$/, '').titleize
   end
 
 end
