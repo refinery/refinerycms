@@ -4,7 +4,7 @@ Gem::Specification.new do |s|
   s.name              = %q{refinerycms}
   s.version           = %q{0.9.9.pre}
   s.description       = %q{A Ruby on Rails CMS that supports Rails 3. It's easy to extend and sticks to 'the Rails way' where possible.}
-  s.date              = %q{2010-12-11}
+  s.date              = %q{2010-12-12}
   s.summary           = %q{A Ruby on Rails CMS that supports Rails 3}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
@@ -170,7 +170,6 @@ Gem::Specification.new do |s|
     'vendor/refinerycms/authentication/config/locales/ru.yml',
     'vendor/refinerycms/authentication/config/locales/sl.yml',
     'vendor/refinerycms/authentication/config/locales/sv.yml',
-    'vendor/refinerycms/authentication/config/locales/zh-CN.yml',
     'vendor/refinerycms/authentication/config/routes.rb',
     'vendor/refinerycms/authentication/features',
     'vendor/refinerycms/authentication/features/lost_password.feature',
@@ -260,7 +259,6 @@ Gem::Specification.new do |s|
     'vendor/refinerycms/core/config/locales/ru.yml',
     'vendor/refinerycms/core/config/locales/sl.yml',
     'vendor/refinerycms/core/config/locales/sv.yml',
-    'vendor/refinerycms/core/config/locales/zh-CN.yml',
     'vendor/refinerycms/core/config/routes.rb',
     'vendor/refinerycms/core/crud.md',
     'vendor/refinerycms/core/engines.md',
@@ -845,7 +843,6 @@ Gem::Specification.new do |s|
     'vendor/refinerycms/images/config/locales/ru.yml',
     'vendor/refinerycms/images/config/locales/sl.yml',
     'vendor/refinerycms/images/config/locales/sv.yml',
-    'vendor/refinerycms/images/config/locales/zh-CN.yml',
     'vendor/refinerycms/images/config/routes.rb',
     'vendor/refinerycms/images/features',
     'vendor/refinerycms/images/features/manage_images.feature',
@@ -979,7 +976,6 @@ Gem::Specification.new do |s|
     'vendor/refinerycms/resources/config/locales/ru.yml',
     'vendor/refinerycms/resources/config/locales/sl.yml',
     'vendor/refinerycms/resources/config/locales/sv.yml',
-    'vendor/refinerycms/resources/config/locales/zh-CN.yml',
     'vendor/refinerycms/resources/config/routes.rb',
     'vendor/refinerycms/resources/features',
     'vendor/refinerycms/resources/features/manage_files.feature',
