@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-require File.expand_path('../../vendor/refinerycms/refinery.rb', __FILE__)
+require File.expand_path('../../lib/refinery.rb', __FILE__)
 files = %w( .gitignore .yardopts Gemfile *.md ).map { |file| Dir[file] }.flatten
 %w(app bin config db features lib public script spec test themes vendor).sort.each do |dir|
   files += Dir.glob("#{dir}/**/*")
@@ -37,7 +37,7 @@ Gem::Specification.new do |s|
   s.rubyforge_project = %q{refinerycms}
   s.authors           = ['Resolve Digital', 'David Jones', 'Philip Arndt']
   s.license           = %q{MIT}
-  s.require_paths     = %w(vendor/refinerycms)
+  s.require_paths     = %w()
   s.executables       = %w(#{Dir.glob('bin/*').map{|d| d.gsub('bin/','')}.join(' ')})
 
   s.add_dependency    'rails',                '~> 3.0.3'
