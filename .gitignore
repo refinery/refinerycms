@@ -69,6 +69,7 @@ capybara-*html
 
 #rvm
 .rvmrc
+.rvmrc.*
 
 # REFINERY CMS DEVELOPMENT ====================================================
 # Always keep this section at the bottom.
