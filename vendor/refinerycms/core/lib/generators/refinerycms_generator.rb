@@ -9,7 +9,7 @@ class RefinerycmsGenerator < ::Refinery::Generators::EngineInstaller
     # First, effectively move / rename files that get in the way of Refinery CMS
     %w(public/index.html app/views/layouts/application.html.erb config/cucumber.yml).each do |roadblock|
       if (roadblock = Rails.root.join(roadblock)).file?
-        append_file "your_#{roadblock.split.last}", :verbose => true do roadblock.read end
+        create_file "your_#{roadblock.split.last}", :verbose => true do roadblock.read end
         remove_file roadblock, :verbose => true
       end
     end

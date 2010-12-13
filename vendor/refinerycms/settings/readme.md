@@ -36,7 +36,7 @@ Settings can be really useful, especially when you have custom display logic or 
 
 To best explain how settings work let's use an example.  Say you have a client who has a display in a local trade show every year and 2 months before the trade show they want to display a little banner in the header of all pages.
 
-But once the trade show is finsihed, the client needs to be able to hide it again until next year. This is what my ``application.html.erb`` file might look like:
+But once the trade show is finished, the client needs to be able to hide it again until next year. This is what my ``application.html.erb`` file might look like:
 
     ...
     <div id='header'>

@@ -245,4 +245,6 @@ module Refinery
   end
 end
 
-Refinery::AppGenerator.new(ARGV).run!
+if __FILE == $0
+  Refinery::AppGenerator.new(ARGV).run!
+end

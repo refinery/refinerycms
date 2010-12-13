@@ -119,10 +119,12 @@ namespace :refinery do
     require 'fileutils'
 
     # copy in any new migrations.
+    FileUtils.mkdir_p(Rails.root.join("db", "migrate")) unless Rails.root.join("db", "migrate").exist?
     FileUtils::cp Dir[Refinery.root.join("db", "migrate", "*.rb").cleanpath.to_s],
                   Rails.root.join("db", "migrate").cleanpath.to_s,
                   :verbose => verbose
 
+    FileUtils.mkdir_p(Rails.root.join("db", "seeds")) unless Rails.root.join("db", "seeds").exist?
     Dir[Refinery.root.join('db', 'seeds', '*.rb').cleanpath.to_s].each do |seed|
       unless (destination = Rails.root.join('db', 'seeds', seed.split(File::SEPARATOR).last).cleanpath).exist?
         FileUtils::cp seed, destination.to_s, :verbose => verbose
