@@ -42,4 +42,3 @@ describe Resource do
 
 
 end
-

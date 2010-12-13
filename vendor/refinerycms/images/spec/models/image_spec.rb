@@ -47,4 +47,3 @@ describe Image do
 
 
 end
-
