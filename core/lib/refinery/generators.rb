@@ -32,8 +32,8 @@ module Refinery
           case path
           when %r{.*/migrate/.*}
             migration_template path, Rails.root.join('db', 'migrate', path.split('/migrate/').last.split(/^\d*_/).last)
-          when %r{.*/seeds.*}
-            template path, Rails.root.join("db/seeds#{path.split('/seeds').last}")
+          when %r{.*/seeds/.*}
+            template path, Rails.root.join('db', 'seeds', path.split('/seeds/').last)
           end
         end
 
