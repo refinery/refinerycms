@@ -28,6 +28,7 @@ module Refinery
         :database => 'sqlite3',
         :force => false,
         :heroku => false,
+        :update => false,
         :gems => []
       }
 
@@ -147,7 +148,7 @@ module Refinery
       end
 
       # Specify the correct version of the Refinery CMS gem (may be git source).
-      src = Refinery.version !~ /\.pre$/ ? "'~> #{Refinery.version}'" : ":git => 'git://github.com/resolve/refinerycms.git'"
+      src = Refinery.version !~ /\.pre$/ ? "'~> #{Refinery.version}'" : ":git => 'git://github.com/resolve/refinerycms.git', :branch => 'restructure'"
       find_and_replace('Gemfile', %r{gem 'refinerycms',.*}, "gem 'refinerycms',              #{src}")
 
       # Add in AWS-S3 for Heroku
@@ -165,8 +166,12 @@ module Refinery
 
     def output!
       unless @options[:update]
+        # sqlite3 requires we use 'db:migrate' etc instead of 'db:setup'
         puts "\n\nSetting up your development database..\n"
-        run_command("rake -f \"#{@app_path.join('Rakefile')}\" db:setup")
+        tasks = @options[:database] == 'sqlite3' ? %w(db:migrate db:seed) : %w(db:setup)
+        tasks.each do |task|
+          run_command("rake -f \"#{@app_path.join('Rakefile')}\" #{task}")
+        end
       else
         puts "\n\nMigrating your development database..\n"
         run_command("rake -f \"#{@app_path.join('Rakefile')}\" db:migrate")
