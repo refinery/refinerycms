@@ -1,0 +1,8 @@
+<% if (locales ||= ::Refinery::I18n.frontend_locales).present? and locales.many? %>
+  <ul id='page_locale_picker'>
+    <% locales.each do |locale| %>
+      <%= link_to refinery_icon_tag "flags/#{locale}.png",
+                  :size => '16x11' %>
+    <% end %>
+  </ul>
+<% end %>
