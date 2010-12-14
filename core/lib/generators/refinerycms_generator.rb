@@ -1,5 +1,3 @@
-require 'fileutils'
-
 class RefinerycmsGenerator < ::Refinery::Generators::EngineInstaller
 
   engine_name :refinerycms
@@ -16,17 +14,27 @@ class RefinerycmsGenerator < ::Refinery::Generators::EngineInstaller
 
     # Append seeds.
     append_file 'db/seeds.rb', :verbose => true do
-      RefinerycmsGenerator.source_root.join('db', 'seeds.rb').read
+      self.class.source_root.join('db', 'seeds.rb').read
     end
 
     # Overwrite rails defaults with refinery defaults
-    Dir[RefinerycmsGenerator.source_root.join('spec', '*.*').to_s].each do |file|
+    Dir[self.class.source_root.join('spec', '*.*').to_s].each do |file|
       copy_file file, :verbose => true
     end
 
     # Copy in 'important' files to the Rails app.
-    %w(.rspec config/cucumber.yml).map{|f| RefinerycmsGenerator.source_root.join(f)}.reject{|f| !f.exist?}.each do |file|
-      copy_file file, :verbose => true
+    %w(.rspec config/cucumber.yml).each do |file|
+      copy_file self.class.source_root.join(file), file,
+                :verbose => true
+    end
+
+    # Only pretend to do the next actions if this is Refinery to stay DRY
+    old_pretend = self.options[:pretend]
+    if Rails.root == Refinery.root
+      say_status :'-- pretending to make changes --', nil, :yellow
+      new_options = self.options.dup
+      new_options[:pretend] = true
+      self.options = new_options
     end
 
     # Copy asset files (JS, CSS) so they're ready to use.
@@ -41,20 +49,28 @@ class RefinerycmsGenerator < ::Refinery::Generators::EngineInstaller
               Rails.root.join('public', 'javascripts', 'admin.js'),
               :verbose => true
 
-
     # Ensure the config.serve_static_assets setting is present and enabled
     %w(development test production).map{|e| "config/environments/#{e}.rb"}.each do |env|
-      contents = Rails.root.join(env).read
-      contents.gsub! %r{#.*config.serve_static_assets}, 'config.serve_static_assets'
-      contents.gsub! "serve_static_assets = false", "serve_static_assets = true # Refinery CMS requires this to be true"
+      gsub_file env, %r{#.*config.serve_static_assets}, 'config.serve_static_assets'
 
-      Rails.root.join(env).open('w') { |file| file.puts(contents) }
+      gsub_file env, "serve_static_assets = false", "serve_static_assets = true # Refinery CMS requires this to be true"
 
       append_file env, "Refinery.rescue_not_found = #{env.split('/').last.split('.rb').first == 'production'}"
     end
 
-    # Ensure .gitignore exists and append our stuff to it.
-    append_file ".gitignore", RefinerycmsGenerator.source_root.join('.gitignore').read.split('# REFINERY CMS DEVELOPMENT').first
+    # Stop pretending
+    if Rails.root == Refinery.root
+      say_status :'-- finished pretending --', nil, :yellow
+      new_options = self.options.dup
+      new_options[:pretend] = old_pretend
+      self.options = new_options
+    end
+
+    # Ensure .gitignore exists and append our rules to it.
+    create_file ".gitignore" unless Rails.root.join('.gitignore').file?
+    our_ignore_rules = self.class.source_root.join('.gitignore').read
+    our_ignore_rules = our_ignore_rules.split('# REFINERY CMS DEVELOPMENT').first if Rails.root != Refinery.root
+    append_file ".gitignore", our_ignore_rules
 
     super
   end
