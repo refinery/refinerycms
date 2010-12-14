@@ -4,7 +4,7 @@ Gem::Specification.new do |s|
   s.name              = %q{refinerycms}
   s.version           = %q{0.9.9.pre}
   s.description       = %q{A Ruby on Rails CMS that supports Rails 3. It's easy to extend and sticks to 'the Rails way' where possible.}
-  s.date              = %q{2010-12-13}
+  s.date              = %q{2010-12-14}
   s.summary           = %q{A Ruby on Rails CMS that supports Rails 3}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
@@ -31,11 +31,29 @@ Gem::Specification.new do |s|
   s.files             = [
     '.gitignore',
     '.yardopts',
+    'Gemfile',
     'bin/refinerycms',
     'changelog.md',
+    'config/cucumber.yml',
+    'config/environments',
+    'config/environments/development.rb',
+    'config/environments/production.rb',
+    'config/environments/test.rb',
+    'db/migrate',
+    'db/migrate/20100913234704_create_refinery_schema.rb',
+    'db/migrate/20100926142529_add_value_type_to_refinery_settings.rb',
+    'db/migrate/20100929035252_add_missing_indexes_to_roles_users.rb',
+    'db/migrate/20101006211228_remove_image_thumbnails_from_refinery_settings.rb',
+    'db/schema.rb',
+    'db/seeds',
+    'db/seeds.rb',
+    'db/seeds/pages.rb',
+    'db/seeds/refinery_settings.rb',
     'lib/refinery.rb',
     'lib/refinerycms.rb',
     'license.md',
-    'readme.md'
+    'readme.md',
+    'spec/rcov.opts',
+    'spec/spec_helper.rb'
   ]
 end
