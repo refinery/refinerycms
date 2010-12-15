@@ -9,6 +9,7 @@ Feature: Dashboard
     And my locale is en
     When I go to the Dashboard
 
+  @dashboard-add
   Scenario: Add New Page Button
     Given I have no pages
     When I follow "Add a new page"
@@ -19,18 +20,22 @@ Feature: Dashboard
     And I should see "'Page test from Dashboard' was successfully added."
     And I should have 1 page
 
+  @dashboard-edit
   Scenario: Update a Page Button
     When I follow "Update a page"
     Then I should be on the list of pages
 
-    Scenario: Upload a File Button
+  @dashboard-edit
+  Scenario: Upload a File Button
     When I follow "Upload a file"
     Then I should be on the new file form
 
+  @dashboard-edit
   Scenario: Upload an Image Button
     When I follow "Upload an image"
     Then I should be on the new image form
 
+  @dashboard-show
   Scenario: See Home Page Button
     When I follow "See home page"
     Then I should be on the home page
