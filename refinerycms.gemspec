@@ -54,11 +54,6 @@ Gem::Specification.new do |s|
     'license.md',
     'readme.md',
     'spec/rcov.opts',
-    'spec/spec_helper.rb',
-    'vendor/refinerycms',
-    'vendor/refinerycms/settings',
-    'vendor/refinerycms/settings/app',
-    'vendor/refinerycms/settings/app/views',
-    'vendor/refinerycms/settings/app/views/admin'
+    'spec/spec_helper.rb'
   ]
 end
