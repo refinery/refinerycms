@@ -212,7 +212,7 @@ a#site_bar_refinery_cms_logo {
   background-color: white;
 }
 body.login #site_bar_content, body.login header {
-  width: 500px;
+  width: 650px;
 }
 body.login #page_container {
   width: 620px;
@@ -1503,7 +1503,7 @@ input.button.close_dialog:active, a.button.close_dialog:active, #content a.butto
 .refinery_settings_list{
   position: relative;
   overflow: hidden;
-  min-height: 650px;
+  min-height: 500px;
 }
 
 #frame{
