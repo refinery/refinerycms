@@ -1,8 +1,9 @@
 <% if (locales ||= ::Refinery::I18n.frontend_locales).present? and locales.many? %>
-  <ul id='page_locale_picker'>
+  <ul id='page_locale_picker' class='clearfix'>
     <% locales.each do |locale| %>
-      <%= link_to refinery_icon_tag "flags/#{locale}.png",
-                  :size => '16x11' %>
+      <li<%= " class='selected'" if locale == local_assigns[:current_locale] %>>
+        <%= link_to refinery_icon_tag "flags/#{locale}.png", :size => '48x33' %>
+      </li>
     <% end %>
   </ul>
 <% end %>

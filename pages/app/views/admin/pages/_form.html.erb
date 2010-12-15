@@ -7,7 +7,10 @@
                :include_object_name => true
              } %>
 
-  <%= render :partial => "locale_picker" %>
+  <%= render :partial => "locale_picker",
+             :locals => {
+               :current_locale => params[:locale] || ::Refinery::I18n.default_frontend_locale
+             } %>
 
   <div class="field">
     <%= f.label :title %>

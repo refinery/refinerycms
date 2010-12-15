@@ -1408,6 +1408,67 @@ input.button.close_dialog:active, a.button.close_dialog:active, #content a.butto
   margin-top: 0px;
 }
 
+/* Locale picker */
+#page_locale_picker {
+  margin: 0px;
+  padding: 0px;
+}
+#page_locale_picker li {
+  float: left;
+  padding: 0px;
+  margin: 0px 12px 0px 0px;
+  list-style: none;  
+}
+#page_locale_picker a {
+  border-bottom: 0px none;
+}
+#page_locale_picker a img {
+  border-width: 6px;
+  border-style: solid;
+  border-color: transparent;
+  display: block;
+}
+#page_locale_picker li.selected a img {
+  border-color: #22A7F2;
+}
+
+/* AJAX pagination */
+.pagination_container {
+  position: relative;
+  overflow: hidden;
+  min-height: 500px;
+}
+
+#frame {
+  padding: 0;
+  width: 100%;
+  height: auto;
+  position: absolute;
+  top: 28px;
+  right: auto;
+ 	-moz-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+	-webkit-transition: all 0.3s ease-in-out;
+	transition: all 0.3s ease-in-out;
+}
+#frame.frame_left {
+  left: -1000px;
+}
+#frame.frame_right {
+  left: 1000px;
+  -moz-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+	-webkit-transition: all 0.3s ease-in-out;
+	transition: all 0.3s ease-in-out;
+}
+#frame.frame_center {
+  left: 0;
+}
+#frame li {
+  position: relative;
+  padding-left: 5px;
+}
+
 /* dubiously in here */
 .current_image_link {
   display: inline-block;
@@ -1498,40 +1559,4 @@ input.button.close_dialog:active, a.button.close_dialog:active, #content a.butto
 }
 .ie8 .pagination a, .ie8 #content .pagination a, .ie8 .pagination .current, .ie8 .disabled, .ie8 .pagination em {
   padding-bottom: 6px;
-}
-
-.pagination_container {
-  position: relative;
-  overflow: hidden;
-  min-height: 500px;
-}
-
-#frame {
-  padding: 0;
-  width: 100%;
-  height: auto;
-  position: absolute;
-  top: 28px;
-  right: auto;
- 	-moz-transition: all 0.3s ease-in-out;
-	-o-transition: all 0.3s ease-in-out;
-	-webkit-transition: all 0.3s ease-in-out;
-	transition: all 0.3s ease-in-out;
-}
-#frame.frame_left {
-  left: -1000px;
-}
-#frame.frame_right {
-  left: 1000px;
-  -moz-transition: all 0.3s ease-in-out;
-	-o-transition: all 0.3s ease-in-out;
-	-webkit-transition: all 0.3s ease-in-out;
-	transition: all 0.3s ease-in-out;
-}
-#frame.frame_center {
-  left: 0;
-}
-#frame li {
-  position: relative;
-  padding-left: 5px;
 }
