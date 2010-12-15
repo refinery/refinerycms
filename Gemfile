@@ -56,7 +56,7 @@ gem 'authlogic',                :git => 'git://github.com/parndt/authlogic.git'
 
 group :test do
   # RSpec
-  gem 'rspec-rails',            '~> 2.1'
+  gem 'rspec-rails',            '~> 2.3'
   # Cucumber
   gem 'capybara',               :git => 'git://github.com/parndt/capybara.git'
   gem 'database_cleaner'
