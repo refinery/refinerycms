@@ -7,9 +7,11 @@
                :include_object_name => true
              } %>
 
+  <%= f.hidden_field :locale %>
+
   <%= render :partial => "locale_picker",
              :locals => {
-               :current_locale => params[:locale] || ::Refinery::I18n.default_frontend_locale
+               :current_locale => @page.locale
              } %>
 
   <div class="field">

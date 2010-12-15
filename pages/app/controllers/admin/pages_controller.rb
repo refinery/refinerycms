@@ -3,7 +3,7 @@ class Admin::PagesController < Admin::BaseController
   crudify :page,
           :conditions => {:parent_id => nil},
           :order => "lft ASC",
-          :include => [:parts, :slugs, :children, :parent],
+          :include => [:parts, :slugs, :children, :parent, :translations],
           :paging => false
 
   rescue_from FriendlyId::ReservedError, :with => :show_errors_for_reserved_slug
@@ -18,6 +18,11 @@ class Admin::PagesController < Admin::BaseController
   end
 
 protected
+
+  def find_page
+    @page = Page.find(params[:id], :include => [:parts, :slugs, :children, :parent, :translations])
+    @page.locale = Thread.current[:globalize_locale] = (params[:page_locale] || ::Refinery::I18n.default_frontend_locale)
+  end
 
   def show_errors_for_reserved_slug(exception)
     flash[:error] = "Sorry, but that title is a reserved system word."

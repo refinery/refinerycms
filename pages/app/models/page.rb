@@ -1,6 +1,7 @@
 class Page < ActiveRecord::Base
 
   translates :title, :meta_keywords, :meta_description, :browser_title
+  attr_accessor :locale # to hold temporarily
   validates :title, :presence => true
 
   acts_as_nested_set
@@ -16,8 +17,7 @@ class Page < ActiveRecord::Base
            :inverse_of => :page,
            :dependent => :destroy
 
-  accepts_nested_attributes_for :parts,
-                                :allow_destroy => true
+  accepts_nested_attributes_for :parts, :allow_destroy => true
 
   # Docs for acts_as_indexed http://github.com/dougal/acts_as_indexed
   acts_as_indexed :fields => [:title, :meta_keywords, :meta_description,
@@ -234,7 +234,7 @@ class Page < ActiveRecord::Base
 
   # In the admin area we use a slightly different title to inform the which pages are draft or hidden pages
   def title_with_meta
-    title = self.title
+    title = self.title.to_s
     title << " <em>(#{::I18n.t('admin.pages.page.hidden')})</em>" unless self.show_in_menu?
     title << " <em>(#{::I18n.t('admin.pages.page.draft')})</em>" if self.draft?
 
