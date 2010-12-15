@@ -14,7 +14,7 @@ if(typeof(window.onpopstate) == "object"){
     // this fires on initial page load too which we don't need.
     if(!initialLoad) {
       $.get(location.href, function(data) {
-        $('.refinery_settings_list').slideTo(data);
+        $('.pagination_container').slideTo(data);
       });
     }
     initialLoad = false;
@@ -28,14 +28,14 @@ $.fn.slideTo = function(response) {
 }
 
 init_refinery_settings_ajaxy_pagination = function(){
-  if(typeof(window.history.pushState) == 'function' && $('.refinery_settings_list').length > 0){
-    var settings_pages = $('.refinery_settings_list .pagination a');
+  if(typeof(window.history.pushState) == 'function' && $('.pagination_container').length > 0){
+    var settings_pages = $('.pagination_container .pagination a');
     settings_pages.live('click',function(e) {
       this.href = (this.href.replace(/(\&(amp\;)?)?from_page\=\d+/, '')
                    + '&from_page=' + $(this).parent().find('em').text()).replace('?&', '?');
       history.pushState({ path: this.path }, '', this.href);
       $.get(this.href, function(data) {
-        $('.refinery_settings_list').slideTo(data);
+        $('.pagination_container').slideTo(data);
       })
       return false;
     });

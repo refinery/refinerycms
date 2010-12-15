@@ -13,7 +13,7 @@ class Admin::RefinerySettingsController < Admin::BaseController
   after_filter :fire_setting_callback, :only => [:update]
 
   def index
-    @refinery_settings = RefinerySetting.paginate({
+    @refinery_settings = RefinerySetting.order('name asc').paginate({
       :page => params[:page],
       :per_page => RefinerySetting.per_page
     })
