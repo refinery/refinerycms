@@ -52,7 +52,7 @@ gem 'dragonfly',                :git => 'git://github.com/refinerycms/dragonfly.
 
 group :test do
   # RSpec
-  gem 'rspec-rails',            '~> 2.1'
+  gem 'rspec-rails',            '~> 2.3'
   # Cucumber
   gem 'capybara',               :git => 'git://github.com/parndt/capybara.git'
   gem 'database_cleaner'
