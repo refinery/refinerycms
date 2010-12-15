@@ -30,7 +30,8 @@
 * [See full list](https://github.com/resolve/refinerycms/compare/0.9.8.8...0.9.9)
 
 ## 0.9.8.8 [16 December 2010]
-* Prevented RefinerySetting from accessing its database table before it is created. [Philip Arndt](http://github.com/parndt)
+* Prevented RefinerySetting from accessing its database table before it is created. [Philip Arndt](https://github.com/parndt)
+* Added more options to ``bin/refinerycms`` like ability to specify database username and password. [Philip Arndt](https://github.com/parndt)
 * [See full list](https://github.com/resolve/refinerycms/compare/0.9.8.7...0.9.8.8)
 
 ## 0.9.8.7 [15 December 2010]
