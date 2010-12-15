@@ -16,7 +16,7 @@ require 'fileutils'
 require 'optparse'
 
 # Load refinerycms
-require Pathname.new(File.expand_path(File.dirname(__FILE__) << "/..")).join('refinery.rb')
+require Pathname.new(File.expand_path(File.dirname(__FILE__) << "/..")).join('lib', 'refinery')
 
 module Refinery
   class AppGenerator

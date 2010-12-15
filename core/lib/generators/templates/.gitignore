@@ -78,5 +78,6 @@ config/database.yml
 config/amazon_s3.yml
 config/rackspace_cloudfiles.yml
 your_*.*
+db/schema.rb
 
 # END REFINERY CMS DEVELOPMENT =================================================
