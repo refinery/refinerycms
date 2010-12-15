@@ -1,0 +1,15 @@
+<%
+ENV["RAILS_ENV"] ||= "test"
+require ::File.expand_path('../config/environment',  __FILE__)
+rerun = File.file?('rerun.txt') ? IO.read('rerun.txt') : ""
+rerun_opts = rerun.to_s.strip.empty? ? "--format #{ENV['CUCUMBER_FORMAT'] || 'progress'} features" : "--format #{ENV['CUCUMBER_FORMAT'] || 'pretty'} #{rerun}"
+std_opts = "--format #{ENV['CUCUMBER_FORMAT'] || 'progress'} --strict --tags ~@wip "
+features_globs = []
+(::Refinery::Plugins.registered.pathnames << Rails.root).map{|p| p.join('features')}.reject{|d| !d.directory?}.each do |features|
+  features_globs << Dir[features.to_s].flatten.join(' ')
+end
+std_opts << features_globs.join(' ')
+%>
+default: <%= std_opts %>
+wip: --tags @wip:3 --wip features
+rerun: <%= rerun_opts %> --format rerun --out rerun.txt --strict --tags ~@wip
