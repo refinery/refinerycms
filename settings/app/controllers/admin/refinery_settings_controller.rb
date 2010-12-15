@@ -19,7 +19,7 @@ class Admin::RefinerySettingsController < Admin::BaseController
     })
 
     render :partial => 'refinery_settings', :locals => {
-      :css_class => (params[:css_class] if params[:css_class].present?)
+      :css_class => "frame_#{params[:from_page].to_s > params[:page].to_s ? 'left' : 'right'}"
     } if request.xhr?
   end
 
