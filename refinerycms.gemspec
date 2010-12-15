@@ -44,7 +44,6 @@ Gem::Specification.new do |s|
     'db/migrate/20100926142529_add_value_type_to_refinery_settings.rb',
     'db/migrate/20100929035252_add_missing_indexes_to_roles_users.rb',
     'db/migrate/20101006211228_remove_image_thumbnails_from_refinery_settings.rb',
-    'db/schema.rb',
     'db/seeds',
     'db/seeds.rb',
     'db/seeds/pages.rb',
