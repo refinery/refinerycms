@@ -43,7 +43,7 @@ GIT
 
 GIT
   remote: git://github.com/resolve/refinerycms-generators.git
-  revision: ebc3f44464a93fe1d32c62c8f9ae2b059781b6e6
+  revision: 0257bd9626850e523233cdab38937d9b0f9689ba
   specs:
     refinerycms-generators (0.9.9)
 
@@ -234,7 +234,7 @@ DEPENDENCIES
   refinerycms-generators (~> 0.9.9)!
   refinerycms-i18n!
   routing-filter!
-  rspec-rails (~> 2.1)
+  rspec-rails (~> 2.3)
   ruby-prof
   spork
   sqlite3-ruby
