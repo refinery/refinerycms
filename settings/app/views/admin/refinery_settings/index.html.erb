@@ -1,16 +1,11 @@
-<div id='records'>
+<div id='records' class='refinery_settings_list'>
   <% if searching? %>
     <h2>
       <%= t('shared.admin.search.results_for', :query => params[:search]) %>
     </h2>
   <% end %>
   <% if @refinery_settings.any? %>
-    <%= will_paginate @refinery_settings %>
-    <ul>
-      <%= render :partial => 'refinery_setting',
-                 :collection => @refinery_settings %>
-    </ul>
-    <%= will_paginate @refinery_settings %>
+    <%= render :partial => 'refinery_settings' %>
   <% else %>
     <p>
       <% if searching? %>
