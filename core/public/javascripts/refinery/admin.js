@@ -1,4 +1,5 @@
 var shiftHeld = false;
+var initialLoad = true;
 $(document).ready(function(){
   init_interface();
   init_sortable_menu();
@@ -9,10 +10,14 @@ $(document).ready(function(){
 });
 
 if(typeof(window.onpopstate) == "object"){
-  $(window).bind('popstate', function() {
-    $.get(location.href, function(data) {
-      $('.refinery_settings_list').slideTo(data);
-    })
+  $(window).bind('popstate', function(e) {
+    // this fires on initial page load too which we don't need.
+    if(!initialLoad) {
+      $.get(location.href, function(data) {
+        $('.refinery_settings_list').slideTo(data);
+      });
+    }
+    initialLoad = false;
   });
 }
 
@@ -25,22 +30,14 @@ $.fn.slideTo = function(response) {
 init_refinery_settings_ajaxy_pagination = function(){
   if(typeof(window.history.pushState) == 'function' && $('.refinery_settings_list').length > 0){
     var settings_pages = $('.refinery_settings_list .pagination a');
-    settings_pages.live('click',function() {
-      var url = this.href;
-      if($(this).hasClass('previous_page')){
-        url += '&css_class=frame_left';
-      } else if($(this).hasClass('next_page')) {
-        url += '&css_class=frame_right';
-      } else if(parseInt(url.split('page=')[1]) < parseInt(location.href.split('page=')[1])){
-        url += '&css_class=frame_left';
-      } else {
-        url += '&css_class=frame_right';
-      }
-      history.pushState({ path: this.path }, '', this.href)
-      $.get(url, function(data) {
-        $('.refinery_settings_list').slideTo(data)
+    settings_pages.live('click',function(e) {
+      this.href = (this.href.replace(/(\&(amp\;)?)?from_page\=\d+/, '')
+                   + '&from_page=' + $(this).parent().find('em').text()).replace('?&', '?');
+      history.pushState({ path: this.path }, '', this.href);
+      $.get(this.href, function(data) {
+        $('.refinery_settings_list').slideTo(data);
       })
-      return false
+      return false;
     });
   }
 }
