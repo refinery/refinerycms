@@ -1,3 +1,7 @@
+## 0.9.8.8 [16 December 2010]
+* Prevented RefinerySetting from accessing its database table before it is created. [Philip Arndt](http://github.com/parndt)
+* [See full list](https://github.com/resolve/refinerycms/compare/0.9.8.7...0.9.8.8)
+
 ## 0.9.8.7 [15 December 2010]
 * Fixed a problem with migration number clashes. [Philip Arndt](https://github.com/parndt)
 * Fixed problems with ``db:migrate`` for a new app on Postgres. [Jacob Buys](https://github.com/wjbuys)
