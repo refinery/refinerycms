@@ -9,16 +9,16 @@ $(document).ready(function(){
 });
 
 if(typeof(window.onpopstate) == "object"){
-	$(window).bind('popstate', function() {
-	  $.get(location.href, function(data) {
-	    $('.refinery_settings_list').slideTo(data)      
-	  })
-	});
+  $(window).bind('popstate', function() {
+    $.get(location.href, function(data) {
+      $('.refinery_settings_list').slideTo(data);
+    })
+  });
 }
 
 $.fn.slideTo = function(response) {
   $(this).html(response);
-  $('#frame').removeClass('frame_right').addClass('frame_center'); 
+  $('#frame').removeClass('frame_right').addClass('frame_center');
   init_modal_dialogs();
 }
 
@@ -38,9 +38,9 @@ init_refinery_settings_ajaxy_pagination = function(){
       }
       history.pushState({ path: this.path }, '', this.href)
       $.get(url, function(data) {
-        $('.refinery_settings_list').slideTo(data)      
+        $('.refinery_settings_list').slideTo(data)
       })
-      return false  
+      return false
     });
   }
 }

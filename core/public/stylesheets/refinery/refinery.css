@@ -1500,36 +1500,38 @@ input.button.close_dialog:active, a.button.close_dialog:active, #content a.butto
   padding-bottom: 6px;
 }
 
-.refinery_settings_list{
+.refinery_settings_list {
   position: relative;
   overflow: hidden;
   min-height: 500px;
 }
 
-#frame{
-  padding:0;
-  width:100%;
-  height:auto;
-  position:absolute;
-  top:28px;
-  left:-1000px;
-  right:auto;
+#frame {
+  padding: 0;
+  width: 100%;
+  height: auto;
+  position: absolute;
+  top: 28px;
+  right: auto;
  	-moz-transition: all 0.3s ease-in-out;
 	-o-transition: all 0.3s ease-in-out;
 	-webkit-transition: all 0.3s ease-in-out;
 	transition: all 0.3s ease-in-out;
 }
-#frame.frame_right{
-  left:1000px;
+#frame.frame_left {
+  left: -1000px;
+}
+#frame.frame_right {
+  left: 1000px;
   -moz-transition: all 0.3s ease-in-out;
 	-o-transition: all 0.3s ease-in-out;
 	-webkit-transition: all 0.3s ease-in-out;
 	transition: all 0.3s ease-in-out;
 }
-#frame.frame_center{
-  left:0;
+#frame.frame_center {
+  left: 0;
 }
-#frame li{
-  position:relative;
-  padding-left:5px;
+#frame li {
+  position: relative;
+  padding-left: 5px;
 }
