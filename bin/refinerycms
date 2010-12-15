@@ -25,7 +25,11 @@ module Refinery
       # Default options
       @input = input
       @options = {
-        :database => 'sqlite3',
+        :database => {
+          :adapter => 'sqlite3',
+          :username => 'root',
+          :password => ''
+        },
         :force => false,
         :heroku => false,
         :update => false,
@@ -42,7 +46,15 @@ module Refinery
         # Rails supports more options, but Refinery is only tested on these three
         databases = %w(mysql postgresql sqlite3)
         opts.on("-d DATABASE", "--database DATABASE", databases, "Select the database (default sqlite3)", "  #{databases.join('/')}") do |db|
-          @options[:database] = db
+          @options[:database][:adapter] = db
+        end
+
+        opts.on("-u USERNAME", '--database-username USERNAME', String, "Set the database username", '  (default root)') do |username|
+          @options[:database][:username] = username
+        end
+
+        opts.on("-p PASSWORD", '--database-password PASSWORD', String, "Set the database password", "  (default '')") do |password|
+          @options[:database][:password] = password
         end
 
         opts.on("-g", "--gems gem1,gem2,gem3", Array, "Additional gems to install") do |gems|
@@ -127,7 +139,7 @@ module Refinery
     def generate!
       # Generate a rails application
       rails_command = "rails new \"#{@app_path}\""
-      rails_command << " --database #{@options[:database]}"
+      rails_command << " --database #{@options[:database][:adapter]}"
       rails_command << " --force" if @options[:force]
       rails_command << " --skip-test-unit --skip-prototype"
       rails_command << " --skip-gemfile" if @options[:update]
@@ -146,6 +158,10 @@ module Refinery
           f.write "\n# USER DEFINED\n#{@options[:gems].join("\n")}\n# END USER DEFINED" if @options[:gems].any?
         end
       end
+
+      # Override database username and password
+      find_and_replace('config/database.yml', %r{username:.*}, "username: #{@options[:database][:username]}")
+      find_and_replace('config/database.yml', %r{password:.*}, "password: #{@options[:database][:password]}")
 
       # Specify the correct version of the Refinery CMS gem (may be git source).
       #src = Refinery.version !~ /\.pre$/ ? "'~> #{Refinery.version}'" : ":git => 'git://github.com/resolve/refinerycms.git', :branch => 'by_inclusion'"
@@ -170,7 +186,7 @@ module Refinery
       unless @options[:update]
         # sqlite3 requires we use 'db:migrate' etc instead of 'db:setup'
         puts "\n\nSetting up your development database..\n"
-        tasks = @options[:database] == 'sqlite3' ? %w(db:migrate db:seed) : %w(db:setup)
+        tasks = @options[:database][:adapter] == 'sqlite3' ? %w(db:migrate db:seed) : %w(db:setup)
         tasks.each do |task|
           run_command("rake -f \"#{@app_path.join('Rakefile')}\" #{task}")
         end
