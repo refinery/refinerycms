@@ -6,9 +6,16 @@ module Refinery
     # engines. It takes the migrations and seeds in your engine and moves them
     # into the rails app db directory, ready to migrate.
     class EngineInstaller < Rails::Generators::Base
+
       include Rails::Generators::Migration
 
+      attr_accessor :silence_puts
+      def silence_puts
+        !!@silence_puts
+      end
+
       class << self
+
         def engine_name(name = nil)
           @engine_name = name.to_s unless name.nil?
           @engine_name
@@ -37,10 +44,12 @@ module Refinery
           end
         end
 
-        puts "------------------------"
-        puts "Now run:"
-        puts "rake db:migrate"
-        puts "------------------------"
+        unless self.silence_puts
+          puts "------------------------"
+          puts "Now run:"
+          puts "rake db:migrate"
+          puts "------------------------"
+        end
       end
     end
   end
