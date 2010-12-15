@@ -56,7 +56,7 @@ gem 'refinerycms-i18n',         '~> 0.9'
 
 group :test do
   # RSpec
-  gem 'rspec-rails',                  (RSPEC_VERSION = '~> 2.2')
+  gem 'rspec-rails',                  '~> 2.3'
   # Cucumber
   gem 'capybara'
   gem 'database_cleaner'

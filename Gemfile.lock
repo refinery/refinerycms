@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    refinerycms (0.9.8.6)
+    refinerycms (0.9.8.8)
       acts_as_indexed (~> 0.6.6)
       authlogic (~> 2.1.6)
       bundler (~> 1.0.0)
@@ -139,19 +139,19 @@ GEM
       filters_spam (~> 0.2)
     routing-filter (0.1.7)
       actionpack
-    rspec (2.2.0)
-      rspec-core (~> 2.2)
-      rspec-expectations (~> 2.2)
-      rspec-mocks (~> 2.2)
-    rspec-core (2.2.1)
-    rspec-expectations (2.2.0)
+    rspec (2.3.0)
+      rspec-core (~> 2.3.0)
+      rspec-expectations (~> 2.3.0)
+      rspec-mocks (~> 2.3.0)
+    rspec-core (2.3.0)
+    rspec-expectations (2.3.0)
       diff-lcs (~> 1.1.2)
-    rspec-mocks (2.2.0)
-    rspec-rails (2.2.1)
+    rspec-mocks (2.3.0)
+    rspec-rails (2.3.0)
       actionpack (~> 3.0)
       activesupport (~> 3.0)
       railties (~> 3.0)
-      rspec (~> 2.2.0)
+      rspec (~> 2.3.0)
     ruby-prof (0.9.2)
     rubyzip (0.9.4)
     selenium-webdriver (0.1.1)
@@ -192,7 +192,7 @@ DEPENDENCIES
   refinerycms!
   refinerycms-i18n (~> 0.9)
   refinerycms-inquiries (~> 0.9)
-  rspec-rails (~> 2.2)
+  rspec-rails (~> 2.3)
   ruby-prof
   spork
   sqlite3-ruby
