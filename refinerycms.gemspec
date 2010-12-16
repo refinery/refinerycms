@@ -4,7 +4,7 @@ Gem::Specification.new do |s|
   s.name              = %q{refinerycms}
   s.version           = %q{0.9.9}
   s.description       = %q{A Ruby on Rails CMS that supports Rails 3. It's easy to extend and sticks to 'the Rails way' where possible.}
-  s.date              = %q{2010-12-16}
+  s.date              = %q{2010-12-17}
   s.summary           = %q{A Ruby on Rails CMS that supports Rails 3}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
@@ -20,7 +20,7 @@ Gem::Specification.new do |s|
   s.add_dependency    'moretea-awesome_nested_set', '= 1.4.3.1'
 
   s.add_dependency    'acts_as_indexed',      '~> 0.6.6'
-  s.add_dependency    'friendly_id',          '~> 3.1.6'
+  s.add_dependency    'friendly_id',          '~> 3.1.8'
   s.add_dependency    'truncate_html',        '= 0.4'
   s.add_dependency    'will_paginate',        '~> 3.0.pre'
   s.add_dependency    'authlogic',            '~> 2.1.6'
