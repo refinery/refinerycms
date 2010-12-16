@@ -56,7 +56,7 @@ PATH
       authlogic (~> 2.1.6)
       bundler (~> 1.0.5)
       dragonfly (~> 0.8.1)
-      friendly_id (~> 3.1.6)
+      friendly_id (~> 3.1.8)
       moretea-awesome_nested_set (= 1.4.3.1)
       rack-cache (~> 0.5.2)
       rails (~> 3.0.3)
