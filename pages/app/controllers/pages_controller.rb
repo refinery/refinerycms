@@ -2,7 +2,7 @@ class PagesController < ApplicationController
 
   # This action is usually accessed with the root route of "/"
   def home
-    error_404 unless (@page = Page.find_by_link_url("/")).present?
+    error_404 unless (@page = Page.find_by_link_url('/')).present?
   end
 
   # This action can be accessed normally, or as nested pages.
@@ -21,9 +21,8 @@ class PagesController < ApplicationController
 
     if @page.try(:live?) or (refinery_user? and current_user.authorized_plugins.include?("refinery_pages"))
       # if the admin wants this to be a "placeholder" page which goes to its first child, go to that instead.
-      if @page.skip_to_first_child
-        first_live_child = @page.children.order('lft ASC').where(:draft=>false).first
-        redirect_to first_live_child.url if first_live_child.present?
+      if @page.skip_to_first_child and (first_live_child = @page.children.order('lft ASC').where(:draft=>false).first).present?
+        redirect_to first_live_child.url
       end
     else
       error_404

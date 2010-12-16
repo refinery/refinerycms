@@ -122,7 +122,7 @@ class Page < ActiveRecord::Base
   end
 
   def link_url_localised?
-    if self.link_url =~ /^\// and defined?(::Refinery::I18n) and ::Refinery::I18n.enabled? and
+    if self.link_url =~ %r{^/} and defined?(::Refinery::I18n) and ::Refinery::I18n.enabled? and
        ::I18n.locale != ::Refinery::I18n.default_frontend_locale
       "/#{::I18n.locale}#{self.link_url}"
     else
@@ -150,7 +150,7 @@ class Page < ActiveRecord::Base
   end
 
   def uncached_nested_url
-    self.parent ? [parent.nested_url, self.to_param].flatten : [self.to_param]
+    [self.parent.try(:nested_url), self.to_param].compact.flatten
   end
 
   # Returns the string version of nested_url, i.e., the path that should be generated
