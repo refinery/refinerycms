@@ -6,6 +6,8 @@ class Admin::PagesController < Admin::BaseController
           :include => [:parts, :slugs, :children, :parent, :translations],
           :paging => false
 
+  before_filter :globalize
+
   rescue_from FriendlyId::ReservedError, :with => :show_errors_for_reserved_slug
 
   cache_sweeper :page_sweeper, :only => [:create, :update, :destroy, :update_positions]
@@ -19,9 +21,8 @@ class Admin::PagesController < Admin::BaseController
 
 protected
 
-  def find_page
-    @page = Page.find(params[:id], :include => [:parts, :slugs, :children, :parent, :translations])
-    @page.locale = Thread.current[:globalize_locale] = (params[:page_locale] || ::Refinery::I18n.default_frontend_locale)
+  def globalize
+    Thread.current[:globalize_locale] = (params[:page_locale] || ::Refinery::I18n.default_frontend_locale)
   end
 
   def show_errors_for_reserved_slug(exception)
