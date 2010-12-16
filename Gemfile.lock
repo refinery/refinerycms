@@ -43,7 +43,7 @@ GIT
 
 GIT
   remote: git://github.com/resolve/refinerycms-generators.git
-  revision: 0257bd9626850e523233cdab38937d9b0f9689ba
+  revision: 7b93d6921080ba9dd05be5d3826760fed2cafc24
   specs:
     refinerycms-generators (0.9.9)
 
@@ -63,7 +63,7 @@ PATH
       authlogic (~> 2.1.6)
       bundler (~> 1.0.5)
       dragonfly (~> 0.8.1)
-      friendly_id (~> 3.1.6)
+      friendly_id (~> 3.1.8)
       moretea-awesome_nested_set (= 1.4.3.1)
       rack-cache (~> 0.5.2)
       rails (~> 3.0.3)
@@ -112,7 +112,7 @@ GEM
       ZenTest
     babosa (0.2.0)
     builder (2.1.2)
-    celerity (0.8.5)
+    celerity (0.8.6)
     childprocess (0.1.4)
       ffi (~> 0.6.3)
     configuration (1.2.0)
