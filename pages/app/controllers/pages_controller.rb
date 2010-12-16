@@ -1,13 +1,6 @@
 class PagesController < ApplicationController
 
-  caches_action :home, :show,
-                :cache_path => Proc.new { |c| "#{Refinery.base_cache_key}/#{c.request.host_with_port}/views/pages/#{c.params[:path]}" },
-                :if => Proc.new { |c|
-                  c.send(:logged_in?) == false and
-                  (!RefinerySetting.table_exists? ||
-                    RefinerySetting.find_or_set(:page_caching_enabled, true, :scoping => 'pages'))
-                }
-
+  # This action is usually accessed with the root route of "/"
   def home
     error_404 unless (@page = Page.find_by_link_url("/")).present?
   end
