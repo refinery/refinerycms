@@ -71,7 +71,7 @@ namespace :refinery do
       else
         puts "Couldn't match any model files in any engines like #{model}"
       end
-    elsif (javascripts = ENV["javascripts"]).present?
+    elsif (javascripts = ENV["javascript"]).present?
       pattern = "#{javascripts.split("/").join(File::SEPARATOR)}*.js"
       looking_for = Refinery::Plugins.registered.pathnames.map{|p| p.join("public", "javascripts", pattern).to_s}
 
@@ -87,12 +87,12 @@ namespace :refinery do
           FileUtils.mkdir_p(destination_dir)
           FileUtils.cp match, (destination = File.join(destination_dir, file))
 
-          puts "Copied model file to #{destination.gsub("#{Rails.root.to_s}#{File::SEPARATOR}", '')}"
+          puts "Copied javascript file to #{destination.gsub("#{Rails.root.to_s}#{File::SEPARATOR}", '')}"
         end
       else
         puts "Couldn't match any javascript files in any engines like #{javascript}"
-      end   
-    elsif (stylesheets = ENV["stylesheets"]).present?
+      end
+    elsif (stylesheets = ENV["stylesheet"]).present?
       pattern = "#{stylesheets.split("/").join(File::SEPARATOR)}*.css"
       looking_for = Refinery::Plugins.registered.pathnames.map{|p| p.join("public", "stylesheets", pattern).to_s}
 
@@ -108,16 +108,16 @@ namespace :refinery do
           FileUtils.mkdir_p(destination_dir)
           FileUtils.cp match, (destination = File.join(destination_dir, file))
 
-          puts "Copied model file to #{destination.gsub("#{Rails.root.to_s}#{File::SEPARATOR}", '')}"
+          puts "Copied stylesheet file to #{destination.gsub("#{Rails.root.to_s}#{File::SEPARATOR}", '')}"
         end
       else
         puts "Couldn't match any stylesheet files in any engines like #{stylesheets}"
-      end         
+      end
     else
       puts "You didn't specify anything to override. Here's some examples:"
       puts "rake refinery:override view=pages/home"
-      puts "rake refinery:override javascripts=jquery.js"      
-      puts "rake refinery:override stylesheets=refinery/site_bar.css"            
+      puts "rake refinery:override javascript=jquery"
+      puts "rake refinery:override stylesheet=refinery/site_bar"
       puts "rake refinery:override controller=pages"
       puts "rake refinery:override model=page"
       puts "rake refinery:override view=pages/home theme=demolicious"
