@@ -71,9 +71,53 @@ namespace :refinery do
       else
         puts "Couldn't match any model files in any engines like #{model}"
       end
+    elsif (javascripts = ENV["javascripts"]).present?
+      pattern = "#{javascripts.split("/").join(File::SEPARATOR)}*.js"
+      looking_for = Refinery::Plugins.registered.pathnames.map{|p| p.join("public", "javascripts", pattern).to_s}
+
+      # copy in the matches
+      matches = looking_for.collect{|d| Dir[d]}.flatten.compact.uniq
+      if matches.any?
+        matches.each do |match|
+          dir = match.split("/public/javascripts/").last.split('/')
+          file = dir.pop # get rid of the file.
+          dir = dir.join(File::SEPARATOR) # join directory back together
+
+          destination_dir = Rails.root.join("public", "javascripts", dir)
+          FileUtils.mkdir_p(destination_dir)
+          FileUtils.cp match, (destination = File.join(destination_dir, file))
+
+          puts "Copied model file to #{destination.gsub("#{Rails.root.to_s}#{File::SEPARATOR}", '')}"
+        end
+      else
+        puts "Couldn't match any javascript files in any engines like #{javascript}"
+      end   
+    elsif (stylesheets = ENV["stylesheets"]).present?
+      pattern = "#{stylesheets.split("/").join(File::SEPARATOR)}*.css"
+      looking_for = Refinery::Plugins.registered.pathnames.map{|p| p.join("public", "stylesheets", pattern).to_s}
+
+      # copy in the matches
+      matches = looking_for.collect{|d| Dir[d]}.flatten.compact.uniq
+      if matches.any?
+        matches.each do |match|
+          dir = match.split("/public/stylesheets/").last.split('/')
+          file = dir.pop # get rid of the file.
+          dir = dir.join(File::SEPARATOR) # join directory back together
+
+          destination_dir = Rails.root.join("public", "stylesheets", dir)
+          FileUtils.mkdir_p(destination_dir)
+          FileUtils.cp match, (destination = File.join(destination_dir, file))
+
+          puts "Copied model file to #{destination.gsub("#{Rails.root.to_s}#{File::SEPARATOR}", '')}"
+        end
+      else
+        puts "Couldn't match any stylesheet files in any engines like #{stylesheets}"
+      end         
     else
       puts "You didn't specify anything to override. Here's some examples:"
       puts "rake refinery:override view=pages/home"
+      puts "rake refinery:override javascripts=jquery.js"      
+      puts "rake refinery:override stylesheets=refinery/site_bar.css"            
       puts "rake refinery:override controller=pages"
       puts "rake refinery:override model=page"
       puts "rake refinery:override view=pages/home theme=demolicious"
@@ -82,41 +126,15 @@ namespace :refinery do
     end
   end
 
-  desc "Un-crudify a method on a controller that uses crudify"
-  task :uncrudify => :environment do
-    if (model_name = ENV["model"]).present? and (action = ENV["action"]).present?
-      singular_name = model_name.to_s
-      class_name = singular_name.camelize
-      plural_name = singular_name.pluralize
-
-      crud_lines = Refinery.root.join('vendor', 'refinerycms', 'core', 'lib', 'refinery', 'crud.rb').read
-      if (matches = crud_lines.scan(/(\ +)(def #{action}.+?protected)/m).first).present? and
-         (method_lines = "#{matches.last.split(%r{^#{matches.first}end}).first.strip}\nend".split("\n")).many?
-        indent = method_lines.second.index(%r{[^ ]})
-        crud_method = method_lines.join("\n").gsub(/^#{" " * indent}/, "  ")
-
-        default_crud_options = ::Refinery::Crud.default_options(model_name)
-        crud_method.gsub!('#{options[:redirect_to_url]}', default_crud_options[:redirect_to_url])
-        crud_method.gsub!('#{options[:conditions].inspect}', default_crud_options[:conditions].inspect)
-        crud_method.gsub!('#{options[:title_attribute]}', default_crud_options[:title_attribute])
-        crud_method.gsub!('#{singular_name}', singular_name)
-        crud_method.gsub!('#{class_name}', class_name)
-        crud_method.gsub!('#{plural_name}', plural_name)
-        crud_method.gsub!('\\#{', '#{')
-
-        puts crud_method
-      end
-    else
-      puts "You didn't specify anything to uncrudify. Here's some examples:"
-      puts "rake refinery:uncrudify model=page action=create"
-      puts "rake refinery:uncrudify model=product action=new"
-    end
-  end
-
   desc "Update the core files with the gem"
   task :update => :environment do
     verbose = ENV["verbose"] || false
     require 'fileutils'
+
+    # Clean up mistakes
+    if (bad_migration = Rails.root.join('db', 'migrate', '20100913234704_add_cached_slug_to_pages.rb')).file?
+      FileUtils::rm bad_migration
+    end
 
     # copy in any new migrations.
     FileUtils::cp Dir[Refinery.root.join("db", "migrate", "*.rb").cleanpath.to_s],
