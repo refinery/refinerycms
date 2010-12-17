@@ -11,6 +11,14 @@ class Admin::RefinerySettingsController < Admin::BaseController
 
   before_filter :sanitise_params, :only => [:create, :update]
   after_filter :fire_setting_callback, :only => [:update]
+  
+  def index
+    @refinery_settings = RefinerySetting.paginate({:page => params[:page], :per_page => RefinerySetting.per_page})
+    if request.xhr?
+      css_class = params[:css_class].present? ? params[:css_class] : nil
+      render :partial => 'refinery_settings', :locals => { :css_class => css_class }
+    end
+  end
 
   def index
     @refinery_settings = RefinerySetting.order('name asc').paginate({
