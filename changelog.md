@@ -27,6 +27,7 @@
 * Deprecated ``content_for :head`` in favour of ``content_for :meta``, ``content_for :stylesheets`` and ``content_for :javascripts``. [Philip Arndt](https://github.com/parndt)
 * Improved client-side responsiveness of backend and frontend. [Philip Arndt](https://github.com/parndt)
 * No more RMagick dependency [Philip Arndt](https://github.com/parndt)
+* Added ``rake refinery:override stylesheet=somefile`` and ``rake refinery:override javascript=somefile`` commands to override stylesheets and javascripts. [Oliver Ponder](https://github.com/oponder)
 * [See full list](https://github.com/resolve/refinerycms/compare/0.9.8.8...0.9.9)
 
 ## 0.9.8.8 [16 December 2010]
