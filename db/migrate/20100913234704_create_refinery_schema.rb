@@ -96,7 +96,7 @@ class CreateRefinerySchema < ActiveRecord::Migration
       t.datetime "created_at"
     end
 
-    add_index ::Slug.table_name, ["name", "sluggable_type", "scope", "sequence"], :name => "index_#{::Slug.table_name}_on_name_and_sluggable_type_and_scope_and_sequence", :unique => true
+    add_index ::Slug.table_name, ["name", "sluggable_type", "scope", "sequence"], :name => "index_#{::Slug.table_name}_on_name_sluggable_type_scope_sequence", :unique => true
     add_index ::Slug.table_name, ["sluggable_id"], :name => "index_#{::Slug.table_name}_on_sluggable_id"
 
     create_table ::UserPlugin.table_name, :force => true do |t|
