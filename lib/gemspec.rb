@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-require File.expand_path('../../vendor/refinerycms/refinery.rb', __FILE__)
+require File.expand_path('../../lib/refinery.rb', __FILE__)
 files = %w( .gitignore .yardopts Gemfile *.md ).map { |file| Dir[file] }.flatten
 %w(app bin config db features lib public script spec test themes vendor).sort.each do |dir|
   files += Dir.glob("#{dir}/**/*")
@@ -7,12 +7,12 @@ end
 rejection_patterns = [
   "public\/system",
   "^config\/(application|boot|environment).rb$",
-  "^config\/initializers\/(backtrace_silencers|inflections|mime_types|secret_token|session_store).rb$",
+  "^config\/initializers(\/.*\.rb)?$",
   "^config\/(database|i18n\-js).yml$",
   "^public\/",
   "^lib\/gemspec\.rb",
   ".*\/cache\/",
-  "^db\/.*\.sqlite3?(-journal)?$",
+  "^db\/(schema.rb|.*\.sqlite3?(-journal)?)$",
   "^script\/*",
   "^vendor\/plugins\/?$",
   "\.log$",
@@ -36,7 +36,8 @@ Gem::Specification.new do |s|
   s.homepage          = %q{http://refinerycms.com}
   s.rubyforge_project = %q{refinerycms}
   s.authors           = ['Resolve Digital', 'David Jones', 'Philip Arndt']
-  s.require_paths     = %w(vendor/refinerycms)
+  s.license           = %q{MIT}
+  s.require_paths     = %w(lib)
   s.executables       = %w(#{Dir.glob('bin/*').map{|d| d.gsub('bin/','')}.join(' ')})
 
   s.add_dependency    'rails',                '~> 3.0.3'
@@ -45,7 +46,7 @@ Gem::Specification.new do |s|
   s.add_dependency    'moretea-awesome_nested_set', '= 1.4.3.1'
 
   s.add_dependency    'acts_as_indexed',      '~> 0.6.6'
-  s.add_dependency    'friendly_id',          '~> 3.1.6'
+  s.add_dependency    'friendly_id',          '~> 3.1.8'
   s.add_dependency    'truncate_html',        '= 0.4'
   s.add_dependency    'will_paginate',        '~> 3.0.pre'
   s.add_dependency    'authlogic',            '~> 2.1.6'

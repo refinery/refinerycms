@@ -1,0 +1,44 @@
+<div id='records' class='files'>
+  <% if searching? %>
+    <h2><%= t('shared.admin.search.results_for', :query => params[:search]) %></h2>
+  <% end %>
+  <% if @resources.any? %>
+    <%= will_paginate @resources %>
+    <% unless searching? or !RefinerySetting.find_or_set(:group_resources_by_date_uploaded, true)
+        @grouped_resources.each do |container|
+          date = Date.parse((resource_group = container.last).first.created_at.to_s)
+        %>
+          <h3><%= l(date, :format => :long ) %></h3>
+          <ul>
+            <%= render :partial => "resource", :collection => resource_group %>
+          </ul>
+        <% end %>
+    <% else %>
+      <ul>
+        <%= render :partial => "resource", :collection => @resources %>
+      </ul>
+    <% end %>
+    <%= will_paginate @resources %>
+  <% else %>
+    <p>
+      <% unless searching? %>
+        <strong><%= t('.no_files_yet') %></strong>
+      <% else %>
+        <%= t('shared.admin.search.no_results') %>
+      <% end %>
+    </p>
+  <% end %>
+</div>
+<div id='actions'>
+  <ul>
+    <li>
+      <%= render :partial => "/shared/admin/search", :locals => {:url => admin_resources_url} %>
+    </li>
+    <li>
+      <%= link_to t('.upload_new'), new_admin_resource_url(:dialog => true,
+                                                           :width => 600,
+                                                           :height => 300),
+                  :class => "add_icon" %>
+    </li>
+  </ul>
+</div>

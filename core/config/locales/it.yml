@@ -1,0 +1,92 @@
+it:
+  plugins:
+    refinery_core:
+      title: Refinery
+      description: Core refinery plugin
+    refinery_dialogs:
+      title: Dialogs
+      description: Refinery dialogs plugin
+  welcome:
+    there_are_no_users: "Non ci sono ancora utenti registrati, impostarne prima uno."
+    remember_admin_location: "Ricordati che la tua area di amministrazione di Refinery è:"
+    lets_start: "Va bene! Impostiamo un utente in modo da poter accedere..."
+    continue: "Proseguire..."
+  admin:
+    menu:
+      reorder_menu: Riordina menu
+      reorder_menu_done: "Ho finito il riordino del menu"
+    dialogs:
+      show:
+        save: Salva
+        cancel: Cancella
+  refinery:
+    other: "Altro %{what}"
+    reorder: "Riordina %{what}"
+    reorder_done: "Fatto Riordinare %{what}"
+    crudify:
+      created: "%{what} creato con successo"
+      updated: "%{what} creato con successo"
+      destroyed: "%{what} rimosso con successo"
+  layouts:
+    admin:
+      view_public_site: Vedi il sito pubblico
+      welcome_to_refinery: Benvenuti su Refinery
+  shared:
+    site_bar:
+      log_out: Esci
+      switch_to_your_website: Passa al tuo sito web
+      switch_to_your_website_editor: Passa all'editor del tuo sito web
+    admin:
+      message:
+        close: Fine
+      continue_editing:
+        save_and_continue_editing: "Salvare e continuare ad apportare modifiche"
+      form_actions:
+        or: o
+        save: Salvare
+        or_cancel: o
+        cancel: Annullare
+        or_continue: o
+        cancel_lose_changes: "L'annullamento perderà tutte le modifiche apportate a questa %{object_name}"
+        delete: Rimuovere
+        close: Chiudere
+      image_picker:
+        none_selected: "Non ci sono attualmente %{what} selezionate, clicca qui per aggiungerne uno."
+        remove_current: "Rimuovere %{what} corrente"
+        change: Clicca qui per scegliere una immagine
+        image: immagine
+        show: Visualizza
+      resource_picker:
+        none_selected: "Non ci sono attualmente %{what} selezionate, clicca qui per aggiungere una."
+        current: "%{what} Corrente"
+        download_current: "Scarica il %{what} corrente"
+        opens_in_new_window: Apre una nuova finestra
+        remove_current: "Rimuovere %{what} corrente"
+        resource: risorsa
+        no_resource_selected: "Non ci sono attualmente %{what} selezionate, clicca qui per aggiungere una."
+        name: Aggiungi File
+      search:
+        button_text: Cerca
+        results_for: "Risultati della ricerca per '%{query}'"
+        no_results: "Spiacenti, nessun risultato trovato"
+      delete:
+        message: Sei sicuro di voler rimuovere '%{title}'?
+      error_messages:
+        problems_in_following_fields: Ci sono stati problemi con i seguenti campi
+      help: aiuto
+    message:
+      close: Fine
+      close_this_message: Chiudere questo messaggio
+    draft_page_message:
+      not_live: Questa pagina NON è valida per la visione pubblica.
+    footer:
+        copyright: Tutti i diritti sono riservati © %{year} %{site_name}
+  activerecord:
+    models:
+      page: pagina
+      user: utente
+      image: immagine
+      inquiry: inchiesta
+      resource: risorsa
+      refinery_setting: impostazione refinery
+      inquiry_setting: impostazione domanda

@@ -1,0 +1,75 @@
+pl:
+  plugins:
+    refinery_core:
+      title: Refinery
+      description: Podstawa Refinery
+    refinery_dialogs:
+      title: Okienka dialogowe
+      description: Refinery dialogs plugin
+  welcome:
+    there_are_no_users: Nie ma jeszcze żadnych użytkowników, więc na początek pomożemy Ci się przygotować.
+    remember_admin_location: "Pamiętaj, strefa administracyjna Refinery ma następujący adres: "
+    lets_start: OK, przygotujmy Cię tak, żeby można było Cię zalogować...
+    continue: Kontynuuj...
+  admin:
+    menu:
+      reorder_menu: Zmień kolejność menu
+      reorder_menu_done: Zmiana kolejności zakończona
+    dialogs:
+      show:
+        save: Zapisz
+        cancel: Zrezygnuj
+  refinery:
+    crudify:
+      created: Skutecznie dodano %{what}.
+      updated: Skutecznie uaktualniono %{what}.
+      destroyed: Skutecznie usunięto %{what}.
+  shared:
+    site_bar:
+      log_out: Wyloguj
+      switch_to_your_website: Przełącz na Twoją stronę
+      switch_to_your_website_editor: Przełącz na edytor strony
+    admin:
+      continue_editing:
+        save_and_continue_editing: Zapisz i kontynuuj edycję
+      form_actions:
+        save: Zapisz
+        cancel: Zrezygnuj
+        cancel_lose_changes: Jeżeli zrezygnujesz, stracisz wszelkie dokonane tu zmiany
+        delete: Usuń
+        close: Zamknij
+      image_picker:
+        none_selected: Nie ma zaznaczonych %{what}, kliknij tutaj aby jakieś dodać.
+        remove_current: Usuń obecny  %{what}
+        change: Kliknij tutaj aby wybrać obrazek
+        show: Pokaż
+      resource_picker:
+        download_current: Pobierz obecny plik
+        opens_in_new_window: Otwarcie w nowym okni
+        remove_current: "Usuń obecny plik"
+        no_resource_selected: W tej chwili żaden plik nie jest wybrany, kliknij tutaj aby jakiś dodać.
+        name: Dodaj plik
+        current: Obecny plik
+      search:
+        button_text: Szukaj
+        results_for: Wyniki wyszukiwania dla '%{query}'
+        no_results: Niestety nic nie odnaleziono
+      delete:
+        message: Czy na pewno chcesz usunąć '%{title}'?
+      error_messages:
+        problems_in_following_fields: W następujących polach wystąpiły problemy
+      help: pomoc
+    message:
+      close: Zamknij
+      close_this_message: Zamknij tę wiadomość
+    draft_page_message:
+      not_live: Ta strona NIE jest dostępna w widoku publicznym.
+    footer:
+      copyright: Copyright © %{year} %{site_name}
+    no_script:
+      enable_javascript: Dla osiągnięcia pełnej funkcjonalności tej strony niezbędne jest uruchomienie JavaScript.
+      here_are: Tutaj są
+      instructions_enable_javascript: instruckja uruchomienia JavaScript w Twojej przeglądarce
+  time:
+    formats:
+      short: "%A, %d %B %Y"

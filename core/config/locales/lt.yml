@@ -1,0 +1,75 @@
+lt:
+  plugins:
+    refinery_core:
+      title: Refinery
+      description: Refinery šerdies įskiepiai
+    refinery_dialogs:
+      title: Dialogai
+      description: Refinery dialogų įskiepis
+  welcome:
+    there_are_no_users: "Dar nėra vartotojų, tai jums sukursime pirmąjį."
+    remember_admin_location: "Prisiminkite, kad jūsų Refinery administravimas yra adresu:"
+    lets_start: "Taigi sukurkime jums vartotoją, kad galėtumėte prisijungti..."
+    continue: Tęsti...
+  admin:
+    menu:
+      reorder_menu: Keisti meniu pozicijas
+      reorder_menu_done: Baigiau keisti meniu pozicijas
+    dialogs:
+      show:
+        save: Išsaugoti
+        cancel: Atšaukti
+  refinery:
+    crudify:
+      created: %{what} buvo sėkmingai pridėtas.
+      updated: %{what} buvo sėkmingai atnaujintas.
+      destroyed: %{what} buvo sėkmingai pašalintas.
+  shared:
+    site_bar:
+      log_out: Atsijungti
+      switch_to_your_website: Pereiti į jūsų svetainę
+      switch_to_your_website_editor: Pereiti į svetainės redaktorių
+    admin:
+      continue_editing:
+        save_and_continue_editing: Išsaugoti ir tęsti redagavimą
+      form_actions:
+        save: Išsaugoti
+        cancel: Atšaukti
+        cancel_lose_changes: "Jeigu atšauksite, tai prarasite visus padarytus pakeitimus"
+        delete: Pašalinti
+        close: Uždaryti
+      image_picker:
+        none_selected: Nėra pasirinktas %{what}, prašome spausti čia, kad pasirinkti.
+        remove_current: Pašalinti dabartinį %{what}
+        change: Spauskite čia, kad išsirinkti paveikslėlį
+        show: Rodyti
+      resource_picker:
+        download_current: Parsisiųsti pasirinktą failą
+        opens_in_new_window: Atsidarys naujame lange
+        remove_current: "Pašalinti pasirinktą failą"
+        no_resource_selected: "Nepasirinktas joks failas, spauskite čia norėdami pridėti failą."
+        name: Pridėti failą
+        current: Pasirinktas failas
+      search:
+        button_text: Ieškoti
+        results_for: Paieškos rezultatai užklausai '%{query}'
+        no_results: Atsiprašome ieškoma frazė nerastas
+      delete:
+        message: Tikrai norite pašalinti '%{title}'?
+      error_messages:
+        problems_in_following_fields: Su šiais laukais iškilo problemų
+      help: pagalba
+    message:
+      close: Uždaryti
+      close_this_message: Uždaryti šią žinutę
+    draft_page_message:
+      not_live: Šis puslapis NĖRA prieinamas viešai peržiūrai.
+    footer:
+      copyright: Teisės saugomos © %{year} %{site_name}
+    no_script:
+      enable_javascript: Pilnam puslapio funkcionalumui reikia įjungti Javascript palaikymą.
+      here_are: Čia yra
+      instructions_enable_javascript: instrukcijos kaip įjungti Javascript palaikymą jūsų naršyklėje
+  time:
+    formats:
+      short: "%A, %d %B %Y"

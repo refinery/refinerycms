@@ -27,7 +27,21 @@
 * Deprecated ``content_for :head`` in favour of ``content_for :meta``, ``content_for :stylesheets`` and ``content_for :javascripts``. [Philip Arndt](https://github.com/parndt)
 * Improved client-side responsiveness of backend and frontend. [Philip Arndt](https://github.com/parndt)
 * No more RMagick dependency [Philip Arndt](https://github.com/parndt)
-* [See full list](https://github.com/resolve/refinerycms/compare/0.9.8.6...0.9.9)
+* Added ``rake refinery:override stylesheet=somefile`` and ``rake refinery:override javascript=somefile`` commands to override stylesheets and javascripts. [Oliver Ponder](https://github.com/oponder)
+* [See full list](https://github.com/resolve/refinerycms/compare/0.9.8.8...0.9.9)
+
+## 0.9.8.8 [16 December 2010]
+* Prevented RefinerySetting from accessing its database table before it is created. [Philip Arndt](https://github.com/parndt)
+* Added more options to ``bin/refinerycms`` like ability to specify database username and password. [Philip Arndt](https://github.com/parndt)
+* [See full list](https://github.com/resolve/refinerycms/compare/0.9.8.7...0.9.8.8)
+
+## 0.9.8.7 [15 December 2010]
+* Fixed a problem with migration number clashes. [Philip Arndt](https://github.com/parndt)
+* Fixed problems with ``db:migrate`` for a new app on Postgres. [Jacob Buys](https://github.com/wjbuys)
+* Back-ported the changes made to the images dialogue which speed it up significantly. [Philip Arndt](https://github.com/parndt)
+* Sort file names in the ``refinery_engine`` generator so attribute types don't get changed before ``_form.html.erb`` generation. [Phil Spitler](https://github.com/philspitler)
+* Added ``approximate_ascii`` setting, defaulted to true, for pages so that characters won't appear strangely in the address bar of some web browsers. [Uģis Ozols](https://github.com/ugisozols)
+* [See full list](https://github.com/resolve/refinerycms/compare/0.9.8.6...0.9.8.7)
 
 ## 0.9.8.6 [3 December 2010]
 * Backported lots of functionality from 0.9.9 and later like:

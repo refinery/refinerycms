@@ -20,6 +20,8 @@ end
 
 # To use debugger
 # gem 'ruby-debug'
+# or in 1.9.x:
+# gem 'ruby-debug19'
 
 # For Heroku/s3:
 # gem 'aws-s3', :require => 'aws/s3'
@@ -32,11 +34,11 @@ java = (RUBY_PLATFORM == 'java')
 gem 'refinerycms',              :path => '.'
 
 # Specify additional Refinery CMS Engines here (all optional):
-gem 'refinerycms-inquiries',    '~> 0.9.9.5'
+# gem 'refinerycms-inquiries',    '~> 0.9.9.5'
 gem 'refinerycms-generators',   '~> 0.9.9', :git => 'git://github.com/resolve/refinerycms-generators.git'
 # gem 'refinerycms-news',         '~> 0.9.9.6'
 # gem 'refinerycms-portfolio',    '~> 0.9.9'
-# gem 'refinerycms-theming',      '~> 0.9.8.2'
+# gem 'refinerycms-theming',      '~> 0.9.9'
 # gem 'refinerycms-search',       '~> 0.9.8'
 # gem 'refinerycms-blog',         '~> 1.1'
 
@@ -46,7 +48,7 @@ gem 'refinerycms-i18n',         :git => 'git://github.com/resolve/refinerycms-i1
 
 gem 'jruby-openssl' if java
 
-# override dragonfly because this version doesn't require RMagick
+# override dragonfly because this version is quieter
 gem 'dragonfly',                :git => 'git://github.com/refinerycms/dragonfly.git',
                                 :branch => 'master'
 
@@ -54,7 +56,7 @@ gem 'devise'
 
 group :test do
   # RSpec
-  gem 'rspec-rails',            '~> 2.1'
+  gem 'rspec-rails',            '~> 2.3'
   # Cucumber
   gem 'capybara',               :git => 'git://github.com/parndt/capybara.git'
   gem 'database_cleaner'

@@ -1,0 +1,5 @@
+zh-CN:
+  admin:
+    refinery_settings:
+      index:
+        new: 创建新配置

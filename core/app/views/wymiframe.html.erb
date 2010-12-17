@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>WYMeditor</title>
+    <meta charset='<%= ::Refinery::Application.config.encoding %>' />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <%= stylesheet_link_tag "wymeditor/skins/refinery/wymiframe", :media => "all" %>
+    <%= stylesheet_link_tag "refinery/formatting", :media => "all" if RefinerySetting.find_or_set(:frontend_refinery_stylesheets_enabled, true) %>
+    <%= stylesheet_link_tag "formatting", :theme => RefinerySetting.get(:theme).present?, :media => "all" %>
+    <%= stylesheet_link_tag "refinery/theme" if RefinerySetting.find_or_set(:frontend_refinery_stylesheets_enabled, true) %>
+    <%= stylesheet_link_tag "theme", :media => "all" %>
+    <%= javascript_include_tag 'modernizr-min' %>
+  </head>
+  <body class="wym_iframe<%= " #{params[:id]}" if params[:id].present? %>">
+  </body>
+</html>

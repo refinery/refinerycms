@@ -1,0 +1,77 @@
+cs:
+  plugins:
+    refinery_core:
+      title: Refinery
+      description: Core refinery plugin
+    refinery_dialogs:
+      title: Dialogs
+      description: Refinery dialogs plugin
+  welcome:
+    there_are_no_users: There are no users yet, so we'll set you up first.
+    remember_admin_location: "Remember your Refinery admin area is at:"
+    lets_start: Alright let's get you setup so you can login...
+    continue: Continue...
+  admin:
+    menu:
+      reorder_menu: Přeuspořádat menu
+      reorder_menu_done: Uložit toto pořadí
+    dialogs:
+      show:
+        save: Uložit
+        cancel: Storno
+  refinery:
+    crudify:
+      created: %{what} byl úspěšně vytvořen.
+      updated: %{what} byl úspěšně aktualizován.
+      destroyed: %{what} byl úspěšně smazán.
+  shared:
+    site_bar:
+      log_out: Odhlásit
+      switch_to_your_website: Přepnout na web
+      switch_to_your_website_editor: Přepnout do editoru
+    admin:
+      continue_editing:
+        save_and_continue_editing: Uložit a pokračovat v editaci
+      form_actions:
+        save: Uložit
+        cancel: Storno
+        cancel_lose_changes: Pokud akci stornujete všechny provedené změny budou ztraceny
+        delete: Smazat
+        previous: Předchozí
+        next: Další
+        close: Zavřít
+      image_picker:
+        none_selected: Zatím není vybrán žádný %{what}, klikněte zde pro přidání.
+        remove_current: Zmazat vybraný %{what}
+        change: Klikněte zde pro vybrání obrázku
+        show: Zobrazit
+      resource_picker:
+        download_current: Stáhnout vybraný soubor
+        opens_in_new_window: Otevřít v novém okně
+        remove_current: "Smazat vybrané"
+        no_resource_selected: Zatím není žádný soubor vybraný, klikněte zde pro přidání.
+        name: Přidat soubor
+        current: Vybraný soubor
+      search:
+        button_text: Hledat
+        results_for: Výsledky hledání pro '%{query}'
+        no_results: Žádné záznamy nenalezeny
+      delete:
+        message: Opravdu chcete smazat '%{title}'?
+      error_messages:
+        problems_in_following_fields: Vyskytl se problém s těmito údaji
+      help: nápověda
+    message:
+      close: Zavřít
+      close_this_message: Zavřít zprávu
+    draft_page_message:
+      not_live: Tato stránka není viditelná pro běžné návštěvníky webu.
+    footer:
+      copyright: Copyright © %{year} %{site_name}
+    no_script:
+      enable_javascript: Pro plnou funkčnost tohoto webu je nutno povolit JavaScript.
+      here_are: Tady jsou
+      instructions_enable_javascript: instrukce jak povolit JavaScript ve vašem prohlížeči
+  time:
+    formats:
+      short: "%A, %d %B %Y"
