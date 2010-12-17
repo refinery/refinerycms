@@ -108,7 +108,7 @@ class RefinerySetting < ActiveRecord::Base
     alias :[] :get
 
     def set(name, value)
-      return value unless self.table_exists?
+      return (value.is_a?(Hash) ? value[:value] : value) unless self.table_exists?
 
       scoping = (value[:scoping] if value.is_a?(Hash) and value.has_key?(:scoping))
       setting = find_or_initialize_by_name_and_scoping(:name => name.to_s, :scoping => scoping)
