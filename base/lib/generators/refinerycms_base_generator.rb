@@ -1,8 +1,8 @@
 require 'refinery/generators'
 
-class RefinerycmsResources < Generators::EngineInstaller
+class RefinerycmsBase < Generators::EngineInstaller
 
   source_root File.expand_path('../../../', __FILE__)
-  engine_name "resources"
+  engine_name "base"
 
 end

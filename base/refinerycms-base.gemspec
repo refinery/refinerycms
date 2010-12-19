@@ -1,9 +1,10 @@
 require File.expand_path(File.join(*%w[.. .. lib refinery.rb]), __FILE__)
+version = Refinery.version
 
 Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.name        = 'refinerycms-base'
-  s.version     = Refinery.version
+  s.version     = version
   s.summary     = 'Base engine for Refinery CMS'
   s.description = 'Ruby on Rails Base engine for Refinery CMS'
   s.required_ruby_version = '>= 1.8.7'
