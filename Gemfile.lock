@@ -27,6 +27,14 @@ GIT
       xpath (~> 0.1.2)
 
 GIT
+  remote: git://github.com/parndt/friendly_id
+  revision: efbff767c367ad6971b7082cb5077aa1d2d24f6a
+  branch: globalize3
+  specs:
+    friendly_id (3.1.8)
+      babosa (~> 0.2.0)
+
+GIT
   remote: git://github.com/refinerycms/dragonfly.git
   revision: 9edda253b663dbdc72af2121e22179efdb594da9
   branch: master
@@ -43,7 +51,7 @@ GIT
 
 GIT
   remote: git://github.com/resolve/refinerycms-generators.git
-  revision: 7b93d6921080ba9dd05be5d3826760fed2cafc24
+  revision: a371beb0d667acef943672b1b9fae88149d2c74b
   specs:
     refinerycms-generators (0.9.9)
 
@@ -132,8 +140,6 @@ GEM
     factory_girl (1.3.2)
     ffi (0.6.3)
       rake (>= 0.8.7)
-    friendly_id (3.1.8)
-      babosa (~> 0.2.0)
     gherkin (2.3.2)
       json (~> 1.4.6)
       term-ansicolor (~> 1.0.5)
@@ -224,6 +230,7 @@ DEPENDENCIES
   database_cleaner
   dragonfly!
   factory_girl
+  friendly_id!
   gherkin
   globalize3
   json_pure (= 1.4.6a)!

@@ -2,7 +2,8 @@
   <div class='clearfix'>
     <span class='title'>
       <%= page.title_with_meta.html_safe %>
-      <% if (locales = page.translations.collect{|t| t.locale}).present? %>
+      <% if ::Refinery::I18n.frontend_locales.many? and
+            (locales = page.translations.collect{|t| t.locale}).present? %>
         <span class='preview'>
           <% locales.each do |locale| %>
             <%= refinery_icon_tag "flags/#{locale}.png", :size => '16x11' %>

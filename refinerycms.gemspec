@@ -4,7 +4,7 @@ Gem::Specification.new do |s|
   s.name              = %q{refinerycms}
   s.version           = %q{0.9.9}
   s.description       = %q{A Ruby on Rails CMS that supports Rails 3. It's easy to extend and sticks to 'the Rails way' where possible.}
-  s.date              = %q{2010-12-17}
+  s.date              = %q{2010-12-20}
   s.summary           = %q{A Ruby on Rails CMS that supports Rails 3}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
@@ -45,6 +45,8 @@ Gem::Specification.new do |s|
     'db/migrate/20100929035252_add_missing_indexes_to_roles_users.rb',
     'db/migrate/20101006211228_remove_image_thumbnails_from_refinery_settings.rb',
     'db/migrate/20101214040815_translate_page_plugin.rb',
+    'db/migrate/20101216194133_remove_cached_slug_from_pages.rb',
+    'db/migrate/20101217113424_add_locale_to_slugs.rb',
     'db/seeds',
     'db/seeds.rb',
     'db/seeds/pages.rb',

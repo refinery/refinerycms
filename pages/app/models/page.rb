@@ -7,7 +7,7 @@ class Page < ActiveRecord::Base
   acts_as_nested_set
 
   # Docs for friendly_id http://github.com/norman/friendly_id
-  has_friendly_id :title, :use_slug => true,
+  has_friendly_id :title, :use_slug => true, :default_locale => ::Refinery::I18n.default_frontend_locale,
                   :reserved_words => %w(index new session login logout users refinery admin images wymiframe),
                   :approximate_ascii => RefinerySetting.find_or_set(:approximate_ascii, false, :scoping => "pages")
 

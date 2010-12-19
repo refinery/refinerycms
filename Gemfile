@@ -1,4 +1,7 @@
 source 'http://rubygems.org'
+
+gem 'friendly_id',              :git => 'git://github.com/parndt/friendly_id', :branch => 'globalize3'
+
 gem 'bundler',                  '~> 1.0.5'
 gem 'rails',                    '~> 3.0.3'
 
