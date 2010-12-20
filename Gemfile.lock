@@ -28,7 +28,7 @@ GIT
 
 GIT
   remote: git://github.com/parndt/friendly_id
-  revision: efbff767c367ad6971b7082cb5077aa1d2d24f6a
+  revision: 9798feb14a752eb29ff8876ce98086b5047af9c3
   branch: globalize3
   specs:
     friendly_id (3.1.8)
