@@ -5,6 +5,8 @@ class PagePart < ActiveRecord::Base
   validates :title, :presence => true
   alias_attribute :content, :body
 
+  translates :body
+
   def to_param
     "page_part_#{self.title.downcase.gsub(/\W/, '_')}"
   end

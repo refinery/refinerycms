@@ -1,10 +1,13 @@
 class Page < ActiveRecord::Base
+
+  translates :title, :meta_keywords, :meta_description, :browser_title
+  attr_accessor :locale # to hold temporarily
   validates :title, :presence => true
 
   acts_as_nested_set
 
   # Docs for friendly_id http://github.com/norman/friendly_id
-  has_friendly_id :title, :use_slug => true,
+  has_friendly_id :title, :use_slug => true, :default_locale => ::Refinery::I18n.default_frontend_locale,
                   :reserved_words => %w(index new session login logout users refinery admin images wymiframe),
                   :approximate_ascii => RefinerySetting.find_or_set(:approximate_ascii, false, :scoping => "pages")
 
@@ -14,8 +17,7 @@ class Page < ActiveRecord::Base
            :inverse_of => :page,
            :dependent => :destroy
 
-  accepts_nested_attributes_for :parts,
-                                :allow_destroy => true
+  accepts_nested_attributes_for :parts, :allow_destroy => true
 
   # Docs for acts_as_indexed http://github.com/dougal/acts_as_indexed
   acts_as_indexed :fields => [:title, :meta_keywords, :meta_description,
@@ -120,7 +122,7 @@ class Page < ActiveRecord::Base
   end
 
   def link_url_localised?
-    if self.link_url =~ /^\// and defined?(::Refinery::I18n) and ::Refinery::I18n.enabled? and
+    if self.link_url =~ %r{^/} and defined?(::Refinery::I18n) and ::Refinery::I18n.enabled? and
        ::I18n.locale != ::Refinery::I18n.default_frontend_locale
       "/#{::I18n.locale}#{self.link_url}"
     else
@@ -148,7 +150,7 @@ class Page < ActiveRecord::Base
   end
 
   def uncached_nested_url
-    self.parent ? [parent.nested_url, self.to_param].flatten : [self.to_param]
+    [self.parent.try(:nested_url), self.to_param].compact.flatten
   end
 
   # Returns the string version of nested_url, i.e., the path that should be generated
@@ -232,7 +234,7 @@ class Page < ActiveRecord::Base
 
   # In the admin area we use a slightly different title to inform the which pages are draft or hidden pages
   def title_with_meta
-    title = self.title
+    title = self.title.to_s
     title << " <em>(#{::I18n.t('admin.pages.page.hidden')})</em>" unless self.show_in_menu?
     title << " <em>(#{::I18n.t('admin.pages.page.draft')})</em>" if self.draft?
 

@@ -13,10 +13,8 @@ module Refinery
           link_to t('.switch_to_your_website_editor'),
                   (if session.keys.include?(:refinery_return_to) and session[:refinery_return_to].present?
                     session[:refinery_return_to]
-                   elsif defined?(@page) and @page.present? and !@page.home?
-                     edit_admin_page_path(@page)
                    else
-                     (request.fullpath.to_s == '/') ? admin_root_path : "/refinery#{request.fullpath}/edit"
+                    admin_root_path
                    end rescue admin_root_path)
         end
       end

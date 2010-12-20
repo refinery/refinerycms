@@ -1,4 +1,7 @@
 source 'http://rubygems.org'
+
+gem 'friendly_id',              :git => 'git://github.com/parndt/friendly_id', :branch => 'globalize3'
+
 gem 'bundler',                  '~> 1.0.5'
 gem 'rails',                    '~> 3.0.3'
 
@@ -45,6 +48,7 @@ gem 'refinerycms-generators',   '~> 0.9.9', :git => 'git://github.com/resolve/re
 # Add i18n support (optional, you can remove this if you really want to).
 gem 'routing-filter',           :git => 'git://github.com/refinerycms/routing-filter.git'
 gem 'refinerycms-i18n',         :git => 'git://github.com/resolve/refinerycms-i18n.git'
+gem 'globalize3'
 
 gem 'jruby-openssl' if java
 

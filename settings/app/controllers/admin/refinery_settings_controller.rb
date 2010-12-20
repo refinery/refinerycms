@@ -11,7 +11,7 @@ class Admin::RefinerySettingsController < Admin::BaseController
 
   before_filter :sanitise_params, :only => [:create, :update]
   after_filter :fire_setting_callback, :only => [:update]
-  
+
   def index
     @refinery_settings = RefinerySetting.paginate({:page => params[:page], :per_page => RefinerySetting.per_page})
     if request.xhr?

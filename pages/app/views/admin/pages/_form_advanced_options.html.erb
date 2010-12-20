@@ -6,7 +6,7 @@
   </p>
   <span id='draft_field'>
     <%= f.check_box :draft %>
-    <%= f.label :draft, t('.save_as_draft'), 
+    <%= f.label :draft, t('.save_as_draft'),
                 :class => "stripped" %>
   </span>
 </div>
@@ -18,7 +18,7 @@
         <%= f.label :parent_id, t('.parent_page') %>
         <%= refinery_help_tag t('.parent_page_help') %>
       </span>
-      <%= f.select :parent_id, nested_set_options(Page, @page) {|i| "#{'-' * i.level} #{i.title}" }, 
+      <%= f.select :parent_id, nested_set_options(Page, @page) {|i| "#{'-' * i.level} #{i.title}" },
                    :include_blank => true %>
     </div>
     <div class='field'>
@@ -28,7 +28,7 @@
       </span>
       <% %w(none text).each do |type| %>
         <%= f.radio_button :custom_title_type, type %>
-        <%= label_tag "page_custom_title_type_#{type}", t(".title_types.#{type.downcase.gsub(" ", "_")}"), 
+        <%= label_tag "page_custom_title_type_#{type}", t(".title_types.#{type.downcase.gsub(" ", "_")}"),
                       :class => "stripped" %>
       <% end %>
       <div id='custom_title_none'></div>
@@ -42,7 +42,7 @@
         <%= refinery_help_tag t('.skip_to_first_child_help') %>
       </span>
       <%= f.check_box :skip_to_first_child %>
-      <%= f.label :skip_to_first_child, t('.skip_to_first_child_label'), 
+      <%= f.label :skip_to_first_child, t('.skip_to_first_child_label'),
                   :class => "stripped" %>
     </div>
     <div class='field'>
@@ -64,16 +64,16 @@
     </div>
     <div class='field'>
       <span class='label_with_help'>
-        <%= f.label :show_in_menu, t('.show_in_menu_title'), 
+        <%= f.label :show_in_menu, t('.show_in_menu_title'),
                     :id => 'page_show_in_menu_heading' %>
         <%= refinery_help_tag t('.show_in_menu_help') %>
       </span>
       <%= f.check_box :show_in_menu %>
-      <%= f.label :show_in_menu, t('.show_in_menu_description'), 
+      <%= f.label :show_in_menu, t('.show_in_menu_description'),
                   :class => "stripped" %>
     </div>
   </div>
 
-  <%= render :partial => "form_advanced_options_seo", 
+  <%= render :partial => "form_advanced_options_seo",
              :locals => {:f => f} %>
 </div>
