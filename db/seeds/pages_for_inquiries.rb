@@ -1,4 +1,4 @@
-page_position = (Page.maximum(:position, :conditions => {:parent_id => nil}) || -1) + 1
+page_position = (Page.maximum(:position, :conditions => {:parent_id => nil}) || -1)
 
 contact_us_page = Page.create(:title => "Contact",
             :link_url => "/contact",
