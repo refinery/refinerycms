@@ -1,7 +1,5 @@
 source 'http://rubygems.org'
 
-gem 'friendly_id',              :git => 'git://github.com/parndt/friendly_id', :branch => 'globalize3'
-
 gem 'bundler',                  '~> 1.0.5'
 gem 'rails',                    '~> 3.0.3'
 
@@ -35,6 +33,8 @@ java = (RUBY_PLATFORM == 'java')
 
 # Specify the Refinery CMS core:
 gem 'refinerycms',              :path => '.'
+
+gem 'friendly_id',              :git => 'git://github.com/parndt/friendly_id', :branch => 'globalize3'
 
 # Specify additional Refinery CMS Engines here (all optional):
 # gem 'refinerycms-inquiries',    '~> 0.9.9.5'
