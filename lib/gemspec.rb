@@ -54,6 +54,15 @@ Gem::Specification.new do |s|
   s.add_dependency    'dragonfly',            '~> 0.8.1'
   s.add_dependency    'rdoc',                 '>= 2.5.11' # helps fix ubuntu
 
+  #s.add_dependency('refinerycms-authentication', #{Refinery.version})
+  #s.add_dependency('refinerycms-base', #{Refinery.version})
+  #s.add_dependency('refinerycms-core', #{Refinery.version})
+  #s.add_dependency('refinerycms-dashboard', #{Refinery.version})
+  #s.add_dependency('refinerycms-images', #{Refinery.version})
+  #s.add_dependency('refinerycms-pages', #{Refinery.version})
+  #s.add_dependency('refinerycms-resources', #{Refinery.version})
+  #s.add_dependency('refinerycms-settings', #{Refinery.version})
+
   s.files             = [
     '#{files.sort.join("',\n    '")}'
   ]

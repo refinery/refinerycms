@@ -1,4 +1,6 @@
-class RefinerycmsGenerator < ::Refinery::Generators::EngineInstaller
+require 'refinery/generators'
+
+class RefinerycmsGenerator < Generators::EngineInstaller
 
   engine_name :refinerycms
   source_root Refinery.root.join(*%w[core lib generators templates])
