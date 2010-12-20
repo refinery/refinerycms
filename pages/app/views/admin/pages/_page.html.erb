@@ -1,0 +1,33 @@
+<li class='clearfix record' id="<%= dom_id(page) -%>">
+  <div class='clearfix'>
+    <span class='title'>
+      <%= page.title_with_meta.html_safe %>
+      <% if ::Refinery::I18n.frontend_locales.many? and
+            (locales = page.translations.collect{|t| t.locale}).present? %>
+        <span class='preview'>
+          <% locales.each do |locale| %>
+            <%= refinery_icon_tag "flags/#{locale}.png", :size => '16x11' %>
+          <% end %>
+        </span>
+      <% end %>
+    </span>
+
+    <span class='actions'>
+      <%= link_to refinery_icon_tag('application_go.png'), page.url,
+                  :target => "_blank",
+                  :title => t('.view_live_html') %>
+      <%= link_to refinery_icon_tag('application_edit.png'), edit_admin_page_url(page),
+                  :title => t('admin.pages.edit') %>
+      <%= link_to refinery_icon_tag('delete.png'), admin_page_url(page),
+                  :class => "cancel confirm-delete",
+                  :title => t('admin.pages.delete'),
+                  :confirm => t('shared.admin.delete.message', :title => page.title_with_meta.gsub(/\ ?<em>.*<\/em>/, "")),
+                  :method => :delete if page.deletable? %>
+    </span>
+  </div>
+  <ul class='nested'>
+    <% if (children = page.children).any? -%>
+      <%= render :partial => 'page', :collection => children %>
+    <% end -%>
+  </ul>
+</li>

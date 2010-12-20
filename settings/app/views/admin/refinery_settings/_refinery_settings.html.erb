@@ -1,0 +1,5 @@
+<%= will_paginate @refinery_settings %>
+<ul id="frame" class="<%= css_class ||= nil %>">
+  <%= render :partial => 'refinery_setting',
+             :collection => @refinery_settings %>
+</ul>
