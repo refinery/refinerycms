@@ -28,6 +28,15 @@ Gem::Specification.new do |s|
   s.add_dependency    'dragonfly',            '~> 0.8.1'
   s.add_dependency    'rdoc',                 '>= 2.5.11' # helps fix ubuntu
 
+  #s.add_dependency('refinerycms-authentication', 0.9.9)
+  #s.add_dependency('refinerycms-base', 0.9.9)
+  #s.add_dependency('refinerycms-core', 0.9.9)
+  #s.add_dependency('refinerycms-dashboard', 0.9.9)
+  #s.add_dependency('refinerycms-images', 0.9.9)
+  #s.add_dependency('refinerycms-pages', 0.9.9)
+  #s.add_dependency('refinerycms-resources', 0.9.9)
+  #s.add_dependency('refinerycms-settings', 0.9.9)
+
   s.files             = [
     '.gitignore',
     '.yardopts',
@@ -40,7 +49,12 @@ Gem::Specification.new do |s|
     'config/environments/production.rb',
     'config/environments/test.rb',
     'db/migrate',
-    'db/migrate/20100913234704_create_refinery_schema.rb',
+    'db/migrate/20100913234705_create_refinerycms_authentication_schema.rb',
+    'db/migrate/20100913234706_create_refinerycms_core_schema.rb',
+    'db/migrate/20100913234707_create_refinerycms_images_schema.rb',
+    'db/migrate/20100913234708_create_refinerycms_pages_schema.rb',
+    'db/migrate/20100913234709_create_refinerycms_resources_schema.rb',
+    'db/migrate/20100913234710_create_refinerycms_settings_schema.rb',
     'db/migrate/20100926142529_add_value_type_to_refinery_settings.rb',
     'db/migrate/20100929035252_add_missing_indexes_to_roles_users.rb',
     'db/migrate/20101006211228_remove_image_thumbnails_from_refinery_settings.rb',
