@@ -1,3 +1,8 @@
+## 0.9.8.9 [21 December 2010]
+* Fixed error in the inquiries engine seeds. [Philip Arndt](https://github.com/parndt)
+* Separate each error message into its own ``<li>``. [Uģis Ozols](https://github.com/ugisozols)
+* [See full list](https://github.com/resolve/refinerycms/compare/0.9.8.8...0.9.8.9)
+
 ## 0.9.8.8 [16 December 2010]
 * Prevented RefinerySetting from accessing its database table before it is created. [Philip Arndt](https://github.com/parndt)
 * Added more options to ``bin/refinerycms`` like ability to specify database username and password. [Philip Arndt](https://github.com/parndt)
