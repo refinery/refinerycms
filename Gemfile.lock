@@ -43,13 +43,13 @@ GIT
 
 GIT
   remote: git://github.com/resolve/refinerycms-generators.git
-  revision: 7b93d6921080ba9dd05be5d3826760fed2cafc24
+  revision: a371beb0d667acef943672b1b9fae88149d2c74b
   specs:
     refinerycms-generators (0.9.9)
 
 GIT
   remote: git://github.com/resolve/refinerycms-i18n.git
-  revision: 3b9a9ce3a3135cafee83e38da89987b4cd628cc7
+  revision: 1b9be8f2925bbd3d9f1ee9bf2ae6b8f5beaa4ff9
   specs:
     refinerycms-i18n (0.9.8.12)
       refinerycms (>= 0.9.8)
@@ -124,7 +124,7 @@ GEM
       term-ansicolor (~> 1.0.5)
     cucumber-rails (0.3.2)
       cucumber (>= 0.8.0)
-    culerity (0.2.12)
+    culerity (0.2.13)
     database_cleaner (0.6.0)
     diff-lcs (1.1.2)
     erubis (2.6.6)
@@ -178,11 +178,11 @@ GEM
       rspec-core (~> 2.3.0)
       rspec-expectations (~> 2.3.0)
       rspec-mocks (~> 2.3.0)
-    rspec-core (2.3.0)
+    rspec-core (2.3.1)
     rspec-expectations (2.3.0)
       diff-lcs (~> 1.1.2)
     rspec-mocks (2.3.0)
-    rspec-rails (2.3.0)
+    rspec-rails (2.3.1)
       actionpack (~> 3.0)
       activesupport (~> 3.0)
       railties (~> 3.0)
