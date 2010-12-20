@@ -57,7 +57,7 @@ GIT
 
 GIT
   remote: git://github.com/resolve/refinerycms-i18n.git
-  revision: 375f0b2090e1a1fdf32050fa7f5211accf02f46f
+  revision: 9291626998da4c20703fd1fffcd2ea6e47f8cbfc
   specs:
     refinerycms-i18n (0.9.8.12)
       refinerycms (>= 0.9.8)
