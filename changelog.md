@@ -1,6 +1,8 @@
 ## 0.9.8.9 [21 December 2010]
 * Fixed error in the inquiries engine seeds. [Philip Arndt](https://github.com/parndt)
 * Separate each error message into its own ``<li>``. [Uģis Ozols](https://github.com/ugisozols)
+* Add ``rescue_not_found`` option to turn on/off 404 rendering. [Ryan Bigg](https://github.com/radar)
+* Add ``:from`` key to ``UserMailer`` for password reset. [Earle Clubb](https://github.com/eclubb)
 * [See full list](https://github.com/resolve/refinerycms/compare/0.9.8.8...0.9.8.9)
 
 ## 0.9.8.8 [16 December 2010]
