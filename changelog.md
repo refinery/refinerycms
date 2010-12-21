@@ -28,14 +28,24 @@
 * Improved client-side responsiveness of backend and frontend. [Philip Arndt](https://github.com/parndt)
 * No more RMagick dependency [Philip Arndt](https://github.com/parndt)
 * Added ``rake refinery:override stylesheet=somefile`` and ``rake refinery:override javascript=somefile`` commands to override stylesheets and javascripts. [Oliver Ponder](https://github.com/oponder)
-* [See full list](https://github.com/resolve/refinerycms/compare/0.9.8.8...0.9.9)
+* [See full list](https://github.com/resolve/refinerycms/compare/0.9.8.9...0.9.9)
+
+## 0.9.8.9 [21 December 2010]
+
+* Fixed error in the inquiries engine seeds. [Philip Arndt](https://github.com/parndt)
+* Separate each error message into its own ``<li>``. [Uģis Ozols](https://github.com/ugisozols)
+* Add ``rescue_not_found`` option to turn on/off 404 rendering. [Ryan Bigg](https://github.com/radar)
+* Add ``:from`` key to ``UserMailer`` for password reset. [Earle Clubb](https://github.com/eclubb)
+* [See full list](https://github.com/resolve/refinerycms/compare/0.9.8.8...0.9.8.9)
 
 ## 0.9.8.8 [16 December 2010]
+
 * Prevented RefinerySetting from accessing its database table before it is created. [Philip Arndt](https://github.com/parndt)
 * Added more options to ``bin/refinerycms`` like ability to specify database username and password. [Philip Arndt](https://github.com/parndt)
 * [See full list](https://github.com/resolve/refinerycms/compare/0.9.8.7...0.9.8.8)
 
 ## 0.9.8.7 [15 December 2010]
+
 * Fixed a problem with migration number clashes. [Philip Arndt](https://github.com/parndt)
 * Fixed problems with ``db:migrate`` for a new app on Postgres. [Jacob Buys](https://github.com/wjbuys)
 * Back-ported the changes made to the images dialogue which speed it up significantly. [Philip Arndt](https://github.com/parndt)
@@ -44,6 +54,7 @@
 * [See full list](https://github.com/resolve/refinerycms/compare/0.9.8.6...0.9.8.7)
 
 ## 0.9.8.6 [3 December 2010]
+
 * Backported lots of functionality from 0.9.9 and later like:
 * Fixed reordering for trees and non-trees [Philip Arndt](https://github.com/parndt)
 * Better ``RSpec`` coverage [Joe Sak](https://github.com/joemsak) and [Philip Arndt](https://github.com/parndt) and [Uģis Ozols](https://github.com/ugisozols) and [PeRo ICT Solutions](https://github.com/pero-ict)
@@ -54,6 +65,7 @@
 * [See full list](https://github.com/resolve/refinerycms/compare/0.9.8.5...0.9.8.6)
 
 ## 0.9.8.5 [21 September 2010](https://github.com/parndt)
+
 * Fixed an issue with the engine generator that was putting a comma in the wrong place breaking the call to ``crudify``. [Maarten Hoogendoorn](https://github.com/moretea)
 * Made the delete messages consistent. [Uģis Ozols](https://github.com/ugisozols)
 * ``zh-CN`` was overriding en locale in core locale file, fixed. [Philip Arndt](https://github.com/parndt)
@@ -63,6 +75,7 @@
 * [See full list](https://github.com/resolve/refinerycms/compare/0.9.8.4...0.9.8.5)
 
 ## 0.9.8.4 [17 September 2010]
+
 * Recursive deletion of page parts. [primerano](https://github.com/primerano)
 * Move around the default pages. [Philip Arndt](https://github.com/parndt)
 * Extraction of windows check to ``Refinery::WINDOWS``. [Steven Heidel](https://github.com/stevenheidel)
