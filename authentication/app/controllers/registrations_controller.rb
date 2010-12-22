@@ -35,7 +35,7 @@ class RegistrationsController < Devise::RegistrationsController
         end
       end
 
-      flash[:message] = "<h2>#{t('users.create.welcome', :who => @user.login).gsub(/\.$/, '')}.</h2>".html_safe
+      flash[:message] = "<h2>#{t('users.create.welcome', :who => @user.username).gsub(/\.$/, '')}.</h2>".html_safe
 
       site_name_setting = RefinerySetting.find_or_create_by_name('site_name', :value => "Company Name")
       if site_name_setting.value.to_s =~ /^(|Company\ Name)$/ or Role[:refinery].users.count == 1
@@ -56,7 +56,7 @@ protected
     if refinery_user?
       redirect_to admin_users_url
     elsif refinery_users_exist?
-      redirect_to new_user_session_url
+      redirect_to new_user_session_path
     end
   end
 

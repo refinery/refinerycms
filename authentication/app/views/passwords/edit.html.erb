@@ -1,6 +1,8 @@
-<% content_for :header, t('.pick_new_password_for', :email => @user.email) %>
+<% content_for :header, t('pick_new_password_for', :email => 'Refinery', :scope => 'users.reset') %>
 
-<%= form_for :user do |f| -%>
+<%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put }) do |f| %>
+  <%= devise_error_messages! %>
+  <%= f.hidden_field :reset_password_token %>
 
   <%= render :partial => "/shared/admin/error_messages",
              :locals => {
@@ -22,8 +24,8 @@
              :locals => {
                :f => f,
                :continue_editing => false,
-               :submit_button_text => t('.reset_password'),
-               :cancel_url => login_url,
+               :submit_button_text => t('reset_password', :scope => 'users.reset'),
+               :cancel_url => new_user_session_path,
                :cancel_title => nil
              } -%>
 <% end -%>

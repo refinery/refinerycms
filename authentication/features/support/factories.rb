@@ -1,7 +1,7 @@
 require 'factory_girl'
 
 Factory.define :user do |u|
-  u.sequence(:login) { |n| "person#{n}" }
+  u.sequence(:username) { |n| "person#{n}" }
   u.sequence(:email) { |n| "person#{n}@cucumber.com" }
   u.password  "greenandjuicy"
   u.password_confirmation "greenandjuicy"

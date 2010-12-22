@@ -1,6 +1,6 @@
 class Admin::UsersController < Admin::BaseController
 
-  crudify :user, :order => 'login', :title_attribute => 'login'
+  crudify :user, :order => 'username ASC', :title_attribute => 'username'
 
   before_filter :load_available_plugins_and_roles, :only => [:new, :create, :edit, :update]
 
@@ -26,7 +26,7 @@ class Admin::UsersController < Admin::BaseController
         @user.roles = @selected_role_names.collect{|r| Role[r.downcase.to_sym]}
       end
 
-      redirect_to(admin_users_url, :notice => t('refinery.crudify.created', :what => @user.login))
+      redirect_to(admin_users_url, :notice => t('refinery.crudify.created', :what => @user.username))
     else
       render :action => 'new'
     end
@@ -56,7 +56,7 @@ class Admin::UsersController < Admin::BaseController
       @user.roles = @selected_role_names.collect{|r| Role[r.downcase.to_sym]}
 
       if @user.update_attributes(params[:user])
-        redirect_to admin_users_url, :notice => t('refinery.crudify.updated', :what => @user.login)
+        redirect_to admin_users_url, :notice => t('refinery.crudify.updated', :what => @user.username)
       else
         @user.plugins = @previously_selected_plugin_names
         @user.roles = @previously_selected_roles.collect{|r| Role[r.downcase.to_sym]}

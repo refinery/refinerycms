@@ -13,7 +13,7 @@ module Refinery
       def self.included(c)
         c.layout :layout?
 
-        c.before_filter :login_required, :restrict_plugins, :restrict_controller
+        c.before_filter :authenticate_user!, :restrict_plugins, :restrict_controller
         c.after_filter :store_location?, :except => [:new, :create, :edit, :update, :destroy, :update_positions] # for redirect_back_or_default
 
         c.helper_method :searching?
@@ -79,7 +79,7 @@ module Refinery
 
       def restrict_controller
         if Refinery::Plugins.active.reject { |plugin| params[:controller] !~ Regexp.new(plugin.menu_match)}.empty?
-          warn "'#{current_user.login}' tried to access '#{params[:controller]}' but was rejected."
+          warn "'#{current_user.username}' tried to access '#{params[:controller]}' but was rejected."
           error_404
         end
       end

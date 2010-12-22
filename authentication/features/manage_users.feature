@@ -15,7 +15,7 @@ Feature: Manage Users
     When I go to the home page
     And I follow "Continue..."
     And I should see "Fill out your details below so that we can get you started."
-    And I fill in "Login" with "cucumber"
+    And I fill in "Username" with "cucumber"
     And I fill in "Email" with "green@cucumber.com"
     And I fill in "Password" with "greenandjuicy"
     And I fill in "Password confirmation" with "greenandjuicy"
@@ -35,7 +35,7 @@ Feature: Manage Users
     And I am a logged in refinery user
     When I go to the list of users
     And I follow "Add new user"
-    And I fill in "Login" with "cucumber"
+    And I fill in "Username" with "cucumber"
     And I fill in "Email" with "green@cucumber.com"
     And I fill in "Password" with "greenandjuicy"
     And I fill in "Password confirmation" with "greenandjuicy"
@@ -49,7 +49,7 @@ Feature: Manage Users
     And I am a logged in refinery user
     When I go to the list of users
     And I follow "Edit this user"
-    And I fill in "Login" with "cucumber"
+    And I fill in "Username" with "cucumber"
     And I fill in "Email" with "green@cucumber.com"
     And I press "Save"
     Then I should be on the list of users

@@ -4,8 +4,11 @@ Feature: Lost Password
     As a lost soul
     I want to reset my password
 
+    Background:
+      Given A Refinery user exists
+
     Scenario: Forgot Password page (no email entered)
-      Given I am on the forgot password page
+      And I am on the forgot password page
       When I press "Reset password"
       Then I should see "You did not enter an email address."
 
@@ -34,6 +37,7 @@ Feature: Lost Password
     Scenario: Reset password page (valid reset_code)
       Given I am requesting password reset
       When I go to the reset password page
+      Then show me the page
       And I fill in "Password" with "cukes"
       And I fill in "Password confirmation" with "cukes"
       And I press "Reset password"

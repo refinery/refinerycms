@@ -3,14 +3,22 @@ require 'digest/sha1'
 class User < ActiveRecord::Base
   has_and_belongs_to_many :roles
   has_many :plugins, :class_name => "UserPlugin", :order => "position ASC", :dependent => :destroy
-  has_friendly_id :login, :use_slug => true
-  
+  has_friendly_id :username, :use_slug => true
+
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable, :lockable and :timeoutable
-  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
+  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable,
+         :authentication_keys => [ :username ]
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :login, :plugins
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :username, :plugins
+
+  # Find user by email or username.
+  # https://github.com/plataformatec/devise/wiki/How-To:-Allow-users-to-sign_in-using-their-username-or-email-address
+  def self.find_for_database_authentication(conditions)
+    value = conditions[authentication_keys.first]
+    where(["username = :value OR email = :value", { :value => value }]).first
+  end
 
   def plugins=(plugin_names)
     if self.persisted? # don't add plugins when the user_id is nil.

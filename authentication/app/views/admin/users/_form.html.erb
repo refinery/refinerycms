@@ -7,8 +7,8 @@
              } %>
 
   <div class='field'>
-    <%= f.label :login %>
-    <%= f.text_field :login %>
+    <%= f.label :username %>
+    <%= f.text_field :username %>
   </div>
   <div class='field'>
     <%= f.label :email %>
@@ -75,7 +75,7 @@
                :continue_editing => false,
                :hide_delete => !current_user.can_delete?(@user),
                :delete_title => t('admin.users.delete'),
-               :delete_confirmation => t('shared.admin.delete.message', :title => @user.login)
+               :delete_confirmation => t('shared.admin.delete.message', :title => @user.username)
              } %>
 <% end %>
 

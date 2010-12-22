@@ -134,12 +134,12 @@ hr {
 .flash_notice, .flash_notice * {
   color: #00A017;
 }
-.flash_error {
+.flash_error, .flash_alert {
   border: 1px solid #A00027;
   color: #A00027;
   background: 7px 7px no-repeat url('/images/refinery/icons/cancel.png') #FFB1B1;
 }
-.flash.flash_notice #flash_close, .flash.flash_error #flash_close {
+.flash.flash_notice #flash_close, .flash.flash_error #flash_close, .flash.flash_alert #flash_close {
   text-transform: lowercase;
 }
 .flash.flash_message {
@@ -159,10 +159,12 @@ hr {
   color: #e20003;
   border-bottom-color: #e20003;
 }
-.flash.flash_error a, .flash.flash_error a:hover {
+.flash.flash_error a, .flash.flash_error a:hover,
+.flash.flash_alert a, .flash.flash_alert a:hover {
   display: none;
 }
-noscript .flash.flash_error a, noscript .flash.flash_error a:hover {
+noscript .flash.flash_error a, noscript .flash.flash_error a:hover,
+noscript .flash.flash_alert a, noscript .flash.flash_alert a:hover {
   display: inline;
   font-weight: bold;
 }
@@ -1417,7 +1419,7 @@ input.button.close_dialog:active, a.button.close_dialog:active, #content a.butto
   float: left;
   padding: 0px;
   margin: 0px 12px 0px 0px;
-  list-style: none;  
+  list-style: none;
 }
 #switch_locale_picker a {
   border-bottom: 0px none;

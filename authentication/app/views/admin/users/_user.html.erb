@@ -1,6 +1,6 @@
 <li id="sortable_<%= user.id %>" class='clearfix record <%= cycle("on", "on-hover") %>'>
   <span class='title'>
-    <strong><%= user.login %></strong>
+    <strong><%= user.username %></strong>
     <span class="preview">
       <%= t('.preview', :who => user.email, :created_at => l(user.created_at, :format => :short)) %>
     </span>
@@ -14,6 +14,6 @@
                 :class => "cancel confirm-delete",
                 :title => t('admin.users.delete'),
                 :method => :delete,
-                :confirm => t('shared.admin.delete.message', :title => user.login) if current_user.can_delete?(user) %>
+                :confirm => t('shared.admin.delete.message', :title => user.username) if current_user.can_delete?(user) %>
   </span>
 </li>

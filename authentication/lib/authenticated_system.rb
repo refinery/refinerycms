@@ -14,6 +14,10 @@ module AuthenticatedSystem
       session[:return_to] = nil
     end
 
+    #def current_user
+      #current_user
+    #end
+
     def refinery_user?
       user_signed_in? && current_user.has_role?(:refinery)
     end
