@@ -2,7 +2,7 @@ ru:
   plugins:
     refinery_images:
       title: Изображения
-      article: masculine
+      article: neuter
   activerecord:
     models:
       image: изображение
