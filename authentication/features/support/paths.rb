@@ -14,7 +14,7 @@ module NavigationHelpers
           new_user_password_path
 
         when /the reset password page/
-          edit_user_password_path(:reset_code => @user.perishable_token)
+          edit_user_password_path(:reset_password_token => @user.reset_password_token)
         else
           nil
         end
