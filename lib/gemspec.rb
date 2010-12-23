@@ -50,18 +50,19 @@ Gem::Specification.new do |s|
   s.add_dependency    'truncate_html',        '= 0.4'
   s.add_dependency    'will_paginate',        '~> 3.0.pre'
   s.add_dependency    'devise',               '~> 1.1.5'
+  s.add_dependency    'globalize3',           '~> 0.0'
   s.add_dependency    'rack-cache',           '~> 0.5.2'
   s.add_dependency    'dragonfly',            '~> 0.8.1'
   s.add_dependency    'rdoc',                 '>= 2.5.11' # helps fix ubuntu
 
-  #s.add_dependency('refinerycms-authentication', #{Refinery.version})
-  #s.add_dependency('refinerycms-base', #{Refinery.version})
-  #s.add_dependency('refinerycms-core', #{Refinery.version})
-  #s.add_dependency('refinerycms-dashboard', #{Refinery.version})
-  #s.add_dependency('refinerycms-images', #{Refinery.version})
-  #s.add_dependency('refinerycms-pages', #{Refinery.version})
-  #s.add_dependency('refinerycms-resources', #{Refinery.version})
-  #s.add_dependency('refinerycms-settings', #{Refinery.version})
+  #s.add_dependency('refinerycms-authentication', '~> #{Refinery.version}')
+  #s.add_dependency('refinerycms-base', '~> #{Refinery.version}')
+  #s.add_dependency('refinerycms-core', '~> #{Refinery.version}')
+  #s.add_dependency('refinerycms-dashboard', '~> #{Refinery.version}')
+  #s.add_dependency('refinerycms-images', '~> #{Refinery.version}')
+  #s.add_dependency('refinerycms-pages', '~> #{Refinery.version}')
+  #s.add_dependency('refinerycms-resources', '~> #{Refinery.version}')
+  #s.add_dependency('refinerycms-settings', '~> #{Refinery.version}')
 
   s.files             = [
     '#{files.sort.join("',\n    '")}'

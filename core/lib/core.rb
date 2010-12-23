@@ -81,6 +81,12 @@ module Refinery
         WillPaginate::ViewHelpers.pagination_options[:next_label] = "&raquo;".html_safe
       end
 
+      initializer 'ensure devise' do |app|
+        unless Rails.root.join('config', 'initializers', 'devise.rb').file?
+          load Refinery.root.join(*%w(core lib generators templates config initializers devise.rb))
+        end
+      end
+
       # Attach ourselves to the Rails application.
       config.before_configuration do
         ::Refinery::Core.attach_to_application!

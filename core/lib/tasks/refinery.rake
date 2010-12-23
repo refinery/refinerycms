@@ -136,9 +136,9 @@ namespace :refinery do
       FileUtils::rm bad_migration
     end
 
-    # copy in any new migrations.
+    # copy in any new migrations, except for ones that create schemas (this is an update!)
     Rails.root.join("db", "migrate").mkpath
-    FileUtils::cp Dir[Refinery.root.join("db", "migrate", "*.rb").cleanpath.to_s],
+    FileUtils::cp Dir[Refinery.root.join("db", "migrate", "*.rb").cleanpath.to_s].reject{|m| m =~ /create_refinerycms_.+?_schema/},
                   Rails.root.join("db", "migrate").cleanpath.to_s,
                   :verbose => verbose
 

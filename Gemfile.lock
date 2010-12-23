@@ -65,6 +65,7 @@ PATH
       devise (~> 1.1.5)
       dragonfly (~> 0.8.1)
       friendly_id (~> 3.1.8)
+      globalize3 (~> 0.0)
       moretea-awesome_nested_set (= 1.4.3.1)
       rack-cache (~> 0.5.2)
       rails (~> 3.0.3)
@@ -230,7 +231,6 @@ DEPENDENCIES
   factory_girl
   friendly_id!
   gherkin
-  globalize3
   json_pure (= 1.4.6a)!
   launchy
   rack-test (~> 0.5.6)

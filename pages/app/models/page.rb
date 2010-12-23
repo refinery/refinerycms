@@ -1,6 +1,6 @@
 class Page < ActiveRecord::Base
 
-  translates :title, :meta_keywords, :meta_description, :browser_title
+  translates :title, :meta_keywords, :meta_description, :browser_title if self.respond_to?(:translates)
   attr_accessor :locale # to hold temporarily
   validates :title, :presence => true
 

@@ -24,18 +24,19 @@ Gem::Specification.new do |s|
   s.add_dependency    'truncate_html',        '= 0.4'
   s.add_dependency    'will_paginate',        '~> 3.0.pre'
   s.add_dependency    'devise',               '~> 1.1.5'
+  s.add_dependency    'globalize3',           '~> 0.0'
   s.add_dependency    'rack-cache',           '~> 0.5.2'
   s.add_dependency    'dragonfly',            '~> 0.8.1'
   s.add_dependency    'rdoc',                 '>= 2.5.11' # helps fix ubuntu
 
-  #s.add_dependency('refinerycms-authentication', 0.9.9)
-  #s.add_dependency('refinerycms-base', 0.9.9)
-  #s.add_dependency('refinerycms-core', 0.9.9)
-  #s.add_dependency('refinerycms-dashboard', 0.9.9)
-  #s.add_dependency('refinerycms-images', 0.9.9)
-  #s.add_dependency('refinerycms-pages', 0.9.9)
-  #s.add_dependency('refinerycms-resources', 0.9.9)
-  #s.add_dependency('refinerycms-settings', 0.9.9)
+  #s.add_dependency('refinerycms-authentication', '~> 0.9.9')
+  #s.add_dependency('refinerycms-base', '~> 0.9.9')
+  #s.add_dependency('refinerycms-core', '~> 0.9.9')
+  #s.add_dependency('refinerycms-dashboard', '~> 0.9.9')
+  #s.add_dependency('refinerycms-images', '~> 0.9.9')
+  #s.add_dependency('refinerycms-pages', '~> 0.9.9')
+  #s.add_dependency('refinerycms-resources', '~> 0.9.9')
+  #s.add_dependency('refinerycms-settings', '~> 0.9.9')
 
   s.files             = [
     '.gitignore',
