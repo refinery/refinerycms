@@ -26,7 +26,7 @@ class User < ActiveRecord::Base
 
   def plugins=(plugin_names)
     if self.persisted? # don't add plugins when the user_id is nil.
-      self.plugins.delete_all
+      UserPlugin.delete_all(:user_id => self.id)
 
       plugin_names.each_with_index do |plugin_name, index|
         self.plugins.create(:name => plugin_name, :position => index) if plugin_name.is_a?(String)

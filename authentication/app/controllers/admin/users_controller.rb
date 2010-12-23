@@ -54,12 +54,16 @@ class Admin::UsersController < Admin::BaseController
       @previously_selected_plugin_names = @user.plugins.collect{|p| p.name}
       @previously_selected_roles = @user.roles
       @user.roles = @selected_role_names.collect{|r| Role[r.downcase.to_sym]}
+      if params[:user][:password].blank? and params[:user][:password_confirmation].blank?
+        params[:user].delete(:password)
+        params[:user].delete(:password_confirmation)
+      end
 
       if @user.update_attributes(params[:user])
         redirect_to admin_users_url, :notice => t('refinery.crudify.updated', :what => @user.username)
       else
         @user.plugins = @previously_selected_plugin_names
-        @user.roles = @previously_selected_roles.collect{|r| Role[r.downcase.to_sym]}
+        @user.roles = @previously_selected_roles
         @user.save
         render :action => 'edit'
       end

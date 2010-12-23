@@ -4,7 +4,9 @@ class PasswordsController < Devise::PasswordsController
   # Rather than overriding devise, it seems better to just apply the notice here.
   after_filter :give_notice, :only => [:update]
   def give_notice
-    flash[:notice] = t('users.reset.successful', :email => @user.email) unless %w(notice error alert).include?(flash.keys.map(&:to_s))
+    unless %w(notice error alert).include?(flash.keys.map(&:to_s)) or @user.errors.any?
+      flash[:notice] = t('users.reset.successful', :email => @user.email)
+    end
   end
   protected :give_notice
 
@@ -13,7 +15,9 @@ class PasswordsController < Devise::PasswordsController
     if params[:reset_password_token] and (@user = User.find_by_reset_password_token(params[:reset_password_token])).present?
       render_with_scope :edit
     else
-      redirect_to(new_user_password_url, :flash => {:error => t('users.reset.code_invalid')})
+      redirect_to(new_user_password_url, :flash => ({
+        :error => t('code_invalid', :scope => 'users.reset')
+      }))
     end
   end
 
@@ -25,15 +29,15 @@ class PasswordsController < Devise::PasswordsController
       # Call devise reset function.
       user.send(:generate_reset_password_token!)
       UserMailer.reset_notification(user, request).deliver
-      redirect_to new_user_session_path, :notice => t('users.forgot.email_reset_sent') and return
+      redirect_to new_user_session_path, :notice => t('email_reset_sent', :scope => 'users.forgot') and return
     else
       @user = User.new(params[:user])
       flash.now[:error] = if (email = params[:user][:email]).blank?
-        t('users.forgot.blank_email')
+        t('blank_email', :scope => 'users.forgot')
       else
-        t('users.forgot.email_not_associated_with_account_html', :email => email).html_safe
+        t('email_not_associated_with_account_html', :email => email, :scope => 'users.forgot').html_safe
       end
-      render :action => 'edit'
+      render_with_scope :new
     end
   end
 end
