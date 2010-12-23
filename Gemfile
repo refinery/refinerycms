@@ -56,8 +56,6 @@ gem 'jruby-openssl' if java
 gem 'dragonfly',                :git => 'git://github.com/refinerycms/dragonfly.git',
                                 :branch => 'master'
 
-gem 'devise'
-
 group :test do
   # RSpec
   gem 'rspec-rails',            '~> 2.3'

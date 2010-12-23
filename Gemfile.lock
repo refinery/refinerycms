@@ -226,7 +226,6 @@ DEPENDENCIES
   cucumber
   cucumber-rails
   database_cleaner
-  devise
   dragonfly!
   factory_girl
   friendly_id!

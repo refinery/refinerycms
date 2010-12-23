@@ -37,7 +37,6 @@ Feature: Lost Password
     Scenario: Reset password page (valid reset_code)
       Given I am requesting password reset
       When I go to the reset password page
-      Then show me the page
       And I fill in "Password" with "cukes"
       And I fill in "Password confirmation" with "cukes"
       And I press "Reset password"
