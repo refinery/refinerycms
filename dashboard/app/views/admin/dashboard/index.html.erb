@@ -50,9 +50,11 @@
       <% current_locale_title = locales.delete(current_locale) %>
       <ul id='current_locale'>
         <li>
-          <%= link_to "#{current_locale_title.respond_to?(:force_encoding) ? current_locale_title.force_encoding('utf-8') : current_locale_title} <span>#{t('.change_language')}</span><span style='display:none;'>#{t('shared.admin.form_actions.cancel')}</span>".html_safe,
-                      "#",
-                      :style => "background-image: url('/images/refinery/icons/flags/#{current_locale}.png');" %>
+          <%= link_to "#", :style => "background-image: url('/images/refinery/icons/flags/#{current_locale}.png');" do %>
+            <%= current_locale_title.respond_to?(:force_encoding) ? current_locale_title.force_encoding('utf-8') : current_locale_title %>
+            <span><%= t('.change_language') %></span>
+            <span style='display:none;'><%= t('shared.admin.form_actions.cancel') %></span>
+          <% end %>
         </li>
       </ul>
       <ul id='other_locales' style='display: none'>
