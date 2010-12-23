@@ -116,13 +116,13 @@ namespace :refinery do
     else
       puts "You didn't specify anything to override. Here's some examples:"
       puts "rake refinery:override view=pages/home"
+      puts "rake refinery:override view=pages/home theme=demolicious"
+      puts "rake refinery:override view=**/*menu"
+      puts "rake refinery:override view=shared/_menu_branch"
       puts "rake refinery:override javascript=jquery"
       puts "rake refinery:override stylesheet=refinery/site_bar"
       puts "rake refinery:override controller=pages"
       puts "rake refinery:override model=page"
-      puts "rake refinery:override view=pages/home theme=demolicious"
-      puts "rake refinery:override **/*menu"
-      puts "rake refinery:override view=shared/_menu_branch"
     end
   end
 
