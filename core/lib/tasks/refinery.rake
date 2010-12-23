@@ -122,7 +122,7 @@ namespace :refinery do
       puts "rake refinery:override model=page"
       puts "rake refinery:override view=pages/home theme=demolicious"
       puts "rake refinery:override **/*menu"
-      puts "rake refinery:override shared/_menu_branch"
+      puts "rake refinery:override view=shared/_menu_branch"
     end
   end
 
