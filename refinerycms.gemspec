@@ -4,7 +4,7 @@ Gem::Specification.new do |s|
   s.name              = %q{refinerycms}
   s.version           = %q{0.9.9}
   s.description       = %q{A Ruby on Rails CMS that supports Rails 3. It's easy to extend and sticks to 'the Rails way' where possible.}
-  s.date              = %q{2010-12-22}
+  s.date              = %q{2010-12-23}
   s.summary           = %q{A Ruby on Rails CMS that supports Rails 3}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
@@ -48,8 +48,6 @@ Gem::Specification.new do |s|
     'config/environments/development.rb',
     'config/environments/production.rb',
     'config/environments/test.rb',
-    'config/locales',
-    'config/locales/devise.en.yml',
     'db/migrate',
     'db/migrate/20100913234705_create_refinerycms_authentication_schema.rb',
     'db/migrate/20100913234706_create_refinerycms_core_schema.rb',
