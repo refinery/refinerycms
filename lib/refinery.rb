@@ -2,7 +2,7 @@ require 'rbconfig'
 
 module Refinery
 
-  WINDOWS = !!(RbConfig::CONFIG["host_os"] =~ %r!(msdos|mswin|djgpp|mingw)!)
+  WINDOWS = !!(RbConfig::CONFIG["host_os"] =~ %r!(msdos|mswin|djgpp|mingw)!) unless defined? WINDOWS
 
   class << self
     attr_accessor :root, :s3_backend, :base_cache_key, :rescue_not_found
