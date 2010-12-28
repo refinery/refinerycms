@@ -141,7 +141,7 @@ namespace :refinery do
 
     # copy in any new migrations.
     Rails.root.join("db", "migrate").mkpath
-    FileUtils::cp Dir[Refinery.root.join("db", "migrate", "*.rb").cleanpath.to_s],
+    FileUtils::cp Dir[Refinery.root.join("db", "migrate", "*.rb").cleanpath.to_s].reject{|m| m =~ %r{\d+_create_refinerycms_.+?_schema\.rb}},
                   Rails.root.join("db", "migrate").cleanpath.to_s,
                   :verbose => verbose
 

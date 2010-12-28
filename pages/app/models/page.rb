@@ -1,3 +1,5 @@
+require 'globalize3'
+
 class Page < ActiveRecord::Base
 
   translates :title, :meta_keywords, :meta_description, :browser_title

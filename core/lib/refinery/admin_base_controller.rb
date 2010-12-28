@@ -16,7 +16,7 @@ module Refinery
         c.before_filter :login_required, :restrict_plugins, :restrict_controller
         c.after_filter :store_location?, :except => [:new, :create, :edit, :update, :destroy, :update_positions] # for redirect_back_or_default
 
-        c.helper_method :searching?
+        c.helper_method :searching?, :group_by_date
       end
     end
 

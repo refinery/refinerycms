@@ -43,10 +43,6 @@ class Admin::ResourcesController < Admin::BaseController
   def index
     search_all_resources if searching?
     paginate_all_resources
-
-    if RefinerySetting.find_or_set(:group_resources_by_date_uploaded, true)
-      @grouped_resources = group_by_date(@resources)
-    end
   end
 
   def insert
