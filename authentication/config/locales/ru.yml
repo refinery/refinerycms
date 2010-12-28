@@ -6,8 +6,14 @@ ru:
   activerecord:
     models:
       user: пользователь
+    attributes:
+      user:
+        password: Пароль
+        password_confirmation: Подтверждение пароля
   admin:
     users:
+      delete: Удалить этого пользователя навсегда
+      edit: Редактировать этого пользователя
       update:
         cannot_remove_user_plugin_from_current_user: "You cannot remove the 'Users' plugin from the currently logged in account."
       form:
@@ -15,30 +21,22 @@ ru:
         enable_all: enable all
       index:
         create_new_user: Создать нового пользователя
-        no_users_yet: "Пользователей пока что нет. Нажмите «Создать нового пользователя», чтобы добавить вашего первого пользователя."
       user:
-        confirm_delete_message: "Вы действительно хотите удалить пользователя «%{who}»?"
-        confirm_delete_title: Удалить этого пользователя навсегда
-        edit_user: Редактировать этого пользователя
         email_user: Написать эл. письмо этому пользователю
         preview: (%{who}) создан %{created_at}
   sessions:
     login_successful: Вход успешно выполнен
-    login_failed: Имя пользователя или пароль неверны.
-    logged_out: Вы вышли.
     new:
       hello_please_sign_in: Пожалуйста, войдите.
       sign_in: Войти
       forgot_password: Я забыл свой пароль
   users:
     setup_website_name_html: "Для начала, назовите сайт. <a href='%{link}' name='%{title}'>Перейдите сюда</a>, чтобы отредактировать название сайта."
-    signup_disabled: Регистрация пользователей отключена
     new:
       fill_form: Заполните данные ниже.
       sign_up: Зарегистрироваться
     create:
       welcome: Добро пожаловать в Refinery, %{who}
-      signup_complete: Регистрация завершена!
     forgot:
       email_address: Эл. почта
       enter_email_address: Пожалуйста, введите адрес электронной почты вашего акаунта.
@@ -51,6 +49,7 @@ ru:
       successful: "Пароль успешно изменен для %{email}"
       pick_new_password_for: "Введите новый пароль для %{email}"
       reset_password: Изменить пароль
+      password_blank: Введите пароль два раза
   user_mailer:
     please_activate: Пожалуйста, активируйте ваш новый акаунт
     activated: Ваш акаунт активирован!
