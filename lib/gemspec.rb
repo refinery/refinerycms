@@ -71,14 +71,14 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'autotest-rails'
   s.add_development_dependency 'autotest-notification'
 
-  #s.add_dependency('refinerycms-authentication', #{Refinery.version})
-  #s.add_dependency('refinerycms-base',           #{Refinery.version})
-  #s.add_dependency('refinerycms-core',           #{Refinery.version})
-  #s.add_dependency('refinerycms-dashboard',      #{Refinery.version})
-  #s.add_dependency('refinerycms-images',         #{Refinery.version})
-  #s.add_dependency('refinerycms-pages',          #{Refinery.version})
-  #s.add_dependency('refinerycms-resources',      #{Refinery.version})
-  #s.add_dependency('refinerycms-settings',       #{Refinery.version})
+  #s.add_dependency('refinerycms-authentication', '#{Refinery.version}')
+  #s.add_dependency('refinerycms-base',           '#{Refinery.version}')
+  #s.add_dependency('refinerycms-core',           '#{Refinery.version}')
+  #s.add_dependency('refinerycms-dashboard',      '#{Refinery.version}')
+  #s.add_dependency('refinerycms-images',         '#{Refinery.version}')
+  #s.add_dependency('refinerycms-pages',          '#{Refinery.version}')
+  #s.add_dependency('refinerycms-resources',      '#{Refinery.version}')
+  #s.add_dependency('refinerycms-settings',       '#{Refinery.version}')
 
   s.files             = [
     '#{files.sort.join("',\n    '")}'
