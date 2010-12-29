@@ -35,6 +35,14 @@ GIT
       babosa (~> 0.2.0)
 
 GIT
+  remote: git://github.com/refinerycms/globalize3.git
+  revision: c1be8b19374bef10210ab3d3b48b579e61d89f86
+  specs:
+    globalize3 (0.0.10)
+      activemodel (>= 3.0.0)
+      activerecord (>= 3.0.0)
+
+GIT
   remote: git://github.com/refinerycms/routing-filter.git
   revision: 94a072118410475b0e872b050dc731ef136f1180
   specs:
@@ -137,9 +145,6 @@ GEM
       rake (>= 0.8.7)
     gherkin (2.3.3)
       json (~> 1.4.6)
-    globalize3 (0.0.10)
-      activemodel (>= 3.0.0)
-      activerecord (>= 3.0.0)
     i18n (0.5.0)
     json (1.4.6)
     launchy (0.3.7)
@@ -223,6 +228,7 @@ DEPENDENCIES
   factory_girl
   friendly_id!
   gherkin
+  globalize3!
   json_pure (= 1.4.6a)!
   launchy
   rack-test (~> 0.5.6)
