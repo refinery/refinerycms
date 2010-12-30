@@ -4,7 +4,7 @@ Gem::Specification.new do |s|
   s.name              = %q{refinerycms}
   s.version           = %q{0.9.9}
   s.description       = %q{A Ruby on Rails CMS that supports Rails 3. It's easy to extend and sticks to 'the Rails way' where possible.}
-  s.date              = %q{2010-12-30}
+  s.date              = %q{2010-12-31}
   s.summary           = %q{A Ruby on Rails CMS that supports Rails 3}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
@@ -65,24 +65,6 @@ Gem::Specification.new do |s|
     'config/environments/development.rb',
     'config/environments/production.rb',
     'config/environments/test.rb',
-    'db/migrate',
-    'db/migrate/20100913234705_create_refinerycms_authentication_schema.rb',
-    'db/migrate/20100913234706_create_refinerycms_core_schema.rb',
-    'db/migrate/20100913234707_create_refinerycms_images_schema.rb',
-    'db/migrate/20100913234708_create_refinerycms_pages_schema.rb',
-    'db/migrate/20100913234709_create_refinerycms_resources_schema.rb',
-    'db/migrate/20100913234710_create_refinerycms_settings_schema.rb',
-    'db/migrate/20100926142529_add_value_type_to_refinery_settings.rb',
-    'db/migrate/20100929035252_add_missing_indexes_to_roles_users.rb',
-    'db/migrate/20101006211228_remove_image_thumbnails_from_refinery_settings.rb',
-    'db/migrate/20101206013505_change_to_devise_users_table.rb',
-    'db/migrate/20101216194133_remove_cached_slug_from_pages.rb',
-    'db/migrate/20101217113424_add_locale_to_slugs.rb',
-    'db/migrate/20101217113425_translate_page_plugin.rb',
-    'db/seeds',
-    'db/seeds.rb',
-    'db/seeds/pages.rb',
-    'db/seeds/refinery_settings.rb',
     'lib/refinery.rb',
     'lib/refinerycms.rb',
     'license.md',
