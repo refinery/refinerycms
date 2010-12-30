@@ -12,7 +12,7 @@ rejection_patterns = [
   "^public\/",
   "^lib\/gemspec\.rb",
   ".*\/cache\/",
-  "^db\/(schema.rb|.*\.sqlite3?(-journal)?)$",
+  "^db\/(schema|seeds|.*\.sqlite3?(-journal)?|migrate)(\/?.*\.rb)?$",
   "^script\/*",
   "^vendor\/plugins\/?$",
   "\.log$",
