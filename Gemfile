@@ -1,8 +1,5 @@
 source 'http://rubygems.org'
 
-gem 'bundler',                  '~> 1.0.5'
-gem 'rails',                    '~> 3.0.3'
-
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
@@ -35,10 +32,11 @@ java = (RUBY_PLATFORM == 'java')
 gem 'refinerycms',              :path => '.'
 
 gem 'friendly_id',              :git => 'git://github.com/parndt/friendly_id', :branch => 'globalize3'
+gem 'globalize3',               :git => 'git://github.com/refinerycms/globalize3.git'
 
 # Specify additional Refinery CMS Engines here (all optional):
-# gem 'refinerycms-inquiries',    '~> 0.9.9.5'
 gem 'refinerycms-generators',   '~> 0.9.9', :git => 'git://github.com/resolve/refinerycms-generators.git'
+# gem 'refinerycms-inquiries',    '~> 0.9.9.9'
 # gem 'refinerycms-news',         '~> 0.9.9.6'
 # gem 'refinerycms-portfolio',    '~> 0.9.9'
 # gem 'refinerycms-theming',      '~> 0.9.9'
@@ -51,9 +49,7 @@ gem 'refinerycms-i18n',         :git => 'git://github.com/resolve/refinerycms-i1
 
 gem 'jruby-openssl' if java
 
-# override dragonfly because this version is quieter
-gem 'dragonfly',                :git => 'git://github.com/refinerycms/dragonfly.git',
-                                :branch => 'master'
+gem 'authlogic',                :git => 'git://github.com/parndt/authlogic.git'
 
 group :test do
   # RSpec
@@ -62,10 +58,9 @@ group :test do
   gem 'capybara',               :git => 'git://github.com/parndt/capybara.git'
   gem 'database_cleaner'
   gem 'cucumber-rails'
-  gem 'cucumber'
-  gem 'spork' unless Bundler::WINDOWS
   gem 'launchy'
   gem 'gherkin'
+  gem 'spork' unless Bundler::WINDOWS
   gem 'rack-test',              '~> 0.5.6'
   # FIXME: Update json_pure to 1.4.7 when it is released
   gem 'json_pure', "1.4.6a", :git => "git://github.com/flori/json.git", :ref => "2c0f8d"
