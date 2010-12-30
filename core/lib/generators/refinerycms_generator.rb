@@ -40,9 +40,9 @@ class RefinerycmsGenerator < ::Refinery::Generators::EngineInstaller
 
     # Ensure the config.serve_static_assets setting is present and enabled
     %w(development test production).map{|e| "config/environments/#{e}.rb"}.each do |env|
-      gsub_file env, %r{#.*config.serve_static_assets}, 'config.serve_static_assets'
+      gsub_file env, %r{#.*config.serve_static_assets}, 'config.serve_static_assets', :verbose => false
 
-      gsub_file env, "serve_static_assets = false", "serve_static_assets = true # Refinery CMS requires this to be true"
+      gsub_file env, "serve_static_assets = false", "serve_static_assets = true # Refinery CMS requires this to be true", :verbose => false
 
       append_file env, "Refinery.rescue_not_found = #{env.split('/').last.split('.rb').first == 'production'}"
     end
@@ -80,14 +80,7 @@ class RefinerycmsGenerator < ::Refinery::Generators::EngineInstaller
     end
     self.class.source_root existing_source_root
 
-    # When we're inside Refinery we don't need the migrations.
-    unless Rails.root == Refinery.root
-      # Change the source_root for database templates
-      self.class.source_root Refinery.root
-
-      # Call the engine generator.
-      super
-    end
+    super
   end
 
 end
