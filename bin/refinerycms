@@ -184,9 +184,10 @@ module Refinery
 
     def output!
       unless @options[:update]
-        # sqlite3 requires we use 'db:migrate' etc instead of 'db:setup'
+        # sqlite3 does not require 'db:create'
         puts "\n\nSetting up your development database..\n"
-        tasks = @options[:database][:adapter] == 'sqlite3' ? %w(db:migrate db:seed) : %w(db:setup)
+        tasks = %w(db:migrate db:seed)
+        tasks.unshift('db:create') unless @options[:database][:adapter] == 'sqlite3'
         tasks.each do |task|
           run_command("rake -f \"#{@app_path.join('Rakefile')}\" #{task}")
         end
