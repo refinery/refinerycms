@@ -29,7 +29,7 @@ GIT
 
 GIT
   remote: git://github.com/refinerycms/globalize3.git
-  revision: c1be8b19374bef10210ab3d3b48b579e61d89f86
+  revision: c2837785a93c0478704a7d7626fca960a1db5146
   specs:
     globalize3 (0.0.10)
       activemodel (>= 3.0.0)
@@ -44,7 +44,7 @@ GIT
 
 GIT
   remote: git://github.com/resolve/refinerycms-generators.git
-  revision: 0112f261a938017faa28389de4ac7341a9b0d745
+  revision: 5863cd94ec37fc97bd36dbf2f9f5330c61f8e3fe
   specs:
     refinerycms-generators (0.9.9)
 
@@ -62,7 +62,7 @@ PATH
     refinerycms (0.9.9)
       acts_as_indexed (~> 0.6.6)
       bundler (~> 1.0.5)
-      devise (~> 1.1.5)
+      devise (~> 1.1)
       dragonfly (~> 0.8.1)
       friendly_id (~> 3.1.8)
       globalize3
@@ -178,7 +178,7 @@ GEM
       rake (>= 0.8.7)
       thor (~> 0.14.4)
     rake (0.8.7)
-    rdoc (3.0.1)
+    rdoc (3.2)
     rspec (2.3.0)
       rspec-core (~> 2.3.0)
       rspec-expectations (~> 2.3.0)

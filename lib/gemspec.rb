@@ -41,8 +41,8 @@ Gem::Specification.new do |s|
   s.executables       = %w(#{Dir.glob('bin/*').map{|d| d.gsub('bin/','')}.join(' ')})
 
   s.add_dependency    'acts_as_indexed',             '~> 0.6.6'
-  s.add_dependency    'authlogic',                   '~> 2.1.6'
   s.add_dependency    'bundler',                     '~> 1.0.5'
+  s.add_dependency    'devise',                      '~> 1.1'
   s.add_dependency    'dragonfly',                   '~> 0.8.1'
   s.add_dependency    'friendly_id',                 '~> 3.1.8'
   s.add_dependency    'globalize3'
