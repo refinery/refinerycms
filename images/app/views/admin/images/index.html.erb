@@ -3,9 +3,9 @@
     <h2><%= t('shared.admin.search.results_for', :query => params[:search]) %></h2>
   <% end %>
   <% if @images.any? %>
-    <%= will_paginate @images %>
-    <%= render :partial => "#{current_image_view}_view" %>
-    <%= will_paginate @images %>
+    <div class='pagination_container'>
+      <%= render :partial => 'images' %>
+    </div>
   <% else %>
     <p>
       <% unless searching? %>
