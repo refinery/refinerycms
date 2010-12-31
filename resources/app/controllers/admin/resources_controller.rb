@@ -43,6 +43,8 @@ class Admin::ResourcesController < Admin::BaseController
   def index
     search_all_resources if searching?
     paginate_all_resources
+
+    render :partial => 'resources' if request.xhr?
   end
 
   def insert

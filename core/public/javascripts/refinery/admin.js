@@ -24,8 +24,9 @@ if(typeof(window.onpopstate) == "object"){
 $.fn.slideTo = function(response) {
   $(this).html(response);
   $(this).applyMinimumHeightFromChildren();
-  $('.pagination_frame').removeClass('frame_right').addClass('frame_center');
+  $(this).find('.pagination_frame').removeClass('frame_right').addClass('frame_center');
   init_modal_dialogs();
+  return $(this);
 }
 
 $.fn.applyMinimumHeightFromChildren = function() {
@@ -37,6 +38,7 @@ $.fn.applyMinimumHeightFromChildren = function() {
     });
   });
   $(this).css('min-height', child_heights);
+  return $(this);
 }
 
 init_ajaxy_pagination = function(){
