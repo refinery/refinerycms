@@ -16,10 +16,8 @@ if(typeof(window.onpopstate) == "object"){
       $.get(location.href, function(data) {
         $('.pagination_container').slideTo(data);
       });
-    } else {
-      $('.pagination_container').applyMinimumHeightFromChildren();
-      initialLoad = false;
     }
+    initialLoad = false;
   });
 }
 
@@ -54,6 +52,7 @@ init_ajaxy_pagination = function(){
       e.preventDefault();
     });
   }
+  $('.pagination_container').applyMinimumHeightFromChildren();
 }
 
 init_interface = function() {
