@@ -48,11 +48,13 @@ In this example you see one "public" controller ``app/controllers/pages_controll
 
 This bit is important. It's where all the controllers are held to manage pages in the Refinery back end in this example. You can ignore the ``pages_dialogs_controller.rb`` and ``page_parts_controller.rb`` for now and let's just focus on the ``admin/pages_controller.rb`` file. Here's what that looks like inside at a basic level:
 
-    class Admin::PagesController < Admin::BaseController
+    module Admin
+      class PagesController < Admin::BaseController
 
-      crudify :page, :conditions => {:parent_id => nil},
-                     :order => "position ASC", :paging => false
+        crudify :page, :conditions => {:parent_id => nil},
+                       :order => "position ASC", :paging => false
 
+      end
     end
 
 This single controller allows us to create, read, update and delete pages in the backend. With a little bit of Refinery magic we utilise the [crudify mixin](http://github.com/resolve/refinerycms/blob/master/core/crud.md) which gives us all of these regular features out of the box.
