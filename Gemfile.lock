@@ -36,7 +36,7 @@ GIT
 
 GIT
   remote: git://github.com/refinerycms/globalize3.git
-  revision: c1be8b19374bef10210ab3d3b48b579e61d89f86
+  revision: c2837785a93c0478704a7d7626fca960a1db5146
   specs:
     globalize3 (0.0.10)
       activemodel (>= 3.0.0)
@@ -51,7 +51,7 @@ GIT
 
 GIT
   remote: git://github.com/resolve/refinerycms-generators.git
-  revision: 0112f261a938017faa28389de4ac7341a9b0d745
+  revision: c0f197e6668ac10de9c1148c1db0e0ed45e13ae7
   specs:
     refinerycms-generators (0.9.9)
 
