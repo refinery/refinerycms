@@ -1,9 +1,7 @@
 <div id='records'>
-  <%= will_paginate @users %>
-  <ul>
-    <%= render :partial => "user", :collection => @users %>
-  </ul>
-  <%= will_paginate @users %>
+  <div class='pagination_container'>
+    <%= render :partial => 'users' %>
+  </div>
 </div>
 <div id='actions'>
   <ul>

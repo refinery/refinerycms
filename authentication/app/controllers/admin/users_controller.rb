@@ -6,6 +6,13 @@ class Admin::UsersController < Admin::BaseController
 
   layout 'admin'
 
+  def index
+    search_all_users if searching?
+    paginate_all_users
+
+    render :partial => 'users' if request.xhr?
+  end
+
   def new
     @user = User.new
     @selected_plugin_names = []
