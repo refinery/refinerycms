@@ -19,9 +19,7 @@ module Admin
         :per_page => RefinerySetting.per_page
       })
 
-      render :partial => 'refinery_settings', :locals => {
-        :css_class => "frame_#{params[:from_page].to_s > params[:page].to_s ? 'left' : 'right'}"
-      } if request.xhr?
+      render :partial => 'refinery_settings' if request.xhr?
     end
 
     def new

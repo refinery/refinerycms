@@ -12,6 +12,8 @@ module Admin
     def index
       search_all_images if searching?
       paginate_all_images
+
+      render :partial => 'images' if request.xhr?
     end
 
     def new
