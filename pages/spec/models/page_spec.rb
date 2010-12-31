@@ -10,8 +10,7 @@ describe Page do
     }
 
     @page.destroy! if @page
-    @page = Page.create!(@valid_attributes)
-    @page.update_attributes(options)
+    @page = Page.create!(@valid_attributes.update(options))
   end
 
   def page_cannot_be_destroyed
@@ -60,6 +59,7 @@ describe Page do
   end
 
   context "page urls" do
+
     it "should return a full path" do
       @page.path.should == 'RSpec is great for testing too'
     end
@@ -88,14 +88,17 @@ describe Page do
     it "should return its url" do
       @page.link_url = '/contact'
       @page.url.should == '/contact'
+    end
 
-      reset_page
-      @page.url[:path].should == ["rspec-is-great-for-testing-too"]
+    it "should return its path with marketable urls" do
       @page.url[:id].should be_nil
+      @page.url[:path].should == ["rspec-is-great-for-testing-too"]
+    end
 
+    it "should not have a path without marketable urls" do
       turn_off_marketable_urls
-      @page.url[:id].should == "rspec-is-great-for-testing-too"
       @page.url[:path].should be_nil
+      @page.url[:id].should == "rspec-is-great-for-testing-too"
     end
   end
 
@@ -148,6 +151,5 @@ describe Page do
       @page.live?.should == true
     end
   end
-
 
 end

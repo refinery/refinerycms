@@ -28,7 +28,7 @@ GIT
 
 GIT
   remote: git://github.com/parndt/friendly_id
-  revision: a0ce59bc100d2c71f1db0683a63007f6d130c795
+  revision: 25fc52ae9e88efeb60f0737c0736b75cc2c96a53
   branch: globalize3
   specs:
     friendly_id (3.1.8)
@@ -181,7 +181,7 @@ GEM
       rake (>= 0.8.7)
       thor (~> 0.14.4)
     rake (0.8.7)
-    rdoc (3.0.1)
+    rdoc (3.2)
     rspec (2.3.0)
       rspec-core (~> 2.3.0)
       rspec-expectations (~> 2.3.0)
