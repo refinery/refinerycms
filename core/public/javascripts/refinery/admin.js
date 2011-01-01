@@ -55,6 +55,9 @@ init_ajaxy_pagination = function(){
     });
   }
   $('.pagination_container').applyMinimumHeightFromChildren();
+  if ($('.pagination_container').find('.pagination').length == 0) {
+    $('.pagination_frame').css('top', '0px');
+  }
 }
 
 init_interface = function() {
