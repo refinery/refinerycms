@@ -30,7 +30,15 @@ class Page < ActiveRecord::Base
   after_save :invalidate_child_cached_url
 
   scope :live, where(:draft => false)
-  scope :in_menu, where(:show_in_menu => true)
+
+  # Rejects any page that has not been translated to the current locale.
+  scope :in_menu, lambda {
+    pages = Arel::Table.new(Page.table_name)
+    translations = Arel::Table.new(Page.translations_table_name)
+    includes(:translations).where(
+      translations[:locale].eq(Globalize.locale), :show_in_menu => true
+    ).group(pages[:id]).having(translations[:id].count)
+  }
 
   # when a dialog pops up to link to a page, how many pages per page should there be
   PAGES_PER_DIALOG = 14
@@ -207,6 +215,7 @@ class Page < ActiveRecord::Base
 
     # Returns all the top level pages, usually to render the top level navigation.
     def top_level
+      warn("Please use .live.in_menu instead of .top_level")
       roots.where(:show_in_menu => true, :draft => false)
     end
   end
