@@ -45,13 +45,13 @@ class Page < ActiveRecord::Base
   # If a link_url is set we don't want to break the link so we don't allow them to delete
   # If deletable is set to false then we don't allow this page to be deleted. These are often Refinery system pages
   def deletable?
-    self.deletable && self.link_url.blank? and self.menu_match.blank?
+    deletable && link_url.blank? and menu_match.blank?
   end
 
   # Repositions the child page_parts that belong to this page.
   # This ensures that they are in the correct 0,1,2,3,4... etc order.
   def reposition_parts!
-    self.parts.each_with_index do |part, index|
+    parts.each_with_index do |part, index|
       part.update_attribute(:position, index)
     end
   end
@@ -59,15 +59,15 @@ class Page < ActiveRecord::Base
   # Before destroying a page we check to see if it's a deletable page or not
   # Refinery system pages are not deletable.
   def destroy
-    if self.deletable?
+    if deletable?
       super
     else
       unless Rails.env.test?
         # give useful feedback when trying to delete from console
         puts "This page is not deletable. Please use .destroy! if you really want it deleted "
-        puts "unset .link_url," if self.link_url.present?
-        puts "unset .menu_match," if self.menu_match.present?
-        puts "set .deletable to true" unless self.deletable
+        puts "unset .link_url," if link_url.present?
+        puts "unset .menu_match," if menu_match.present?
+        puts "set .deletable to true" unless deletable
       end
 
       return false
@@ -80,7 +80,7 @@ class Page < ActiveRecord::Base
     self.link_url = nil
     self.deletable = true
 
-    self.destroy
+    destroy
   end
 
   # Used for the browser title to get the full path to this page
@@ -97,12 +97,12 @@ class Page < ActiveRecord::Base
     # Override default options with any supplied.
     options = {:reversed => true}.merge(options)
 
-    unless self.parent.nil?
-      parts = [self.title, self.parent.path(options)]
+    unless parent.nil?
+      parts = [title, parent.path(options)]
       parts.reverse! if options[:reversed]
       parts.join(PATH_SEPARATOR)
     else
-      self.title
+      title
     end
   end
 
@@ -114,31 +114,31 @@ class Page < ActiveRecord::Base
   # I want it to show the Inquiries form so I can collect inquiries. So I would set the "link_url"
   # to "/contact"
   def url
-    if self.link_url.present?
+    if link_url.present?
       link_url_localised?
     elsif use_marketable_urls?
       url_marketable
-    elsif self.to_param.present?
+    elsif to_param.present?
       url_normal
     end
   end
 
   def link_url_localised?
-    if self.link_url =~ %r{^/} and defined?(::Refinery::I18n) and ::Refinery::I18n.enabled? and
+    if link_url =~ %r{^/} and defined?(::Refinery::I18n) and ::Refinery::I18n.enabled? and
        ::I18n.locale != ::Refinery::I18n.default_frontend_locale
-      "/#{::I18n.locale}#{self.link_url}"
+      "/#{::I18n.locale}#{link_url}"
     else
-      self.link_url
+      link_url
     end
   end
 
   def url_marketable
     # :id => nil is important to prevent any other params[:id] from interfering with this route.
-    {:controller => "/pages", :action => "show", :path => self.nested_url, :id => nil}
+    {:controller => "/pages", :action => "show", :path => nested_url, :id => nil}
   end
 
   def url_normal
-    {:controller => "/pages", :action => "show", :id => self.to_param}
+    {:controller => "/pages", :action => "show", :id => to_param}
   end
 
   # Returns an array with all ancestors to_param, allow with its own
@@ -152,7 +152,7 @@ class Page < ActiveRecord::Base
   end
 
   def uncached_nested_url
-    [self.parent.try(:nested_url), self.to_param].compact.flatten
+    [parent.try(:nested_url), to_param].compact.flatten
   end
 
   # Returns the string version of nested_url, i.e., the path that should be generated
@@ -175,23 +175,23 @@ class Page < ActiveRecord::Base
 
   # Returns true if this page is "published"
   def live?
-    not self.draft?
+    not draft?
   end
 
   # Return true if this page can be shown in the navigation.
   # If it's a draft or is set to not show in the menu it will return false.
   def in_menu?
-    self.live? && self.show_in_menu?
+    live? && show_in_menu?
   end
 
   # Returns true if this page is the home page or links to it.
   def home?
-    self.link_url == "/"
+    link_url == "/"
   end
 
   # Returns all visible sibling pages that can be rendered for the menu
   def shown_siblings
-    self.siblings.reject { |sibling| not sibling.in_menu? }
+    siblings.reject { |sibling| not sibling.in_menu? }
   end
 
   class << self
@@ -207,7 +207,7 @@ class Page < ActiveRecord::Base
 
     # Returns all the top level pages, usually to render the top level navigation.
     def top_level
-      self.roots.where(:show_in_menu => true, :draft => false)
+      roots.where(:show_in_menu => true, :draft => false)
     end
   end
 
@@ -237,15 +237,15 @@ class Page < ActiveRecord::Base
   # In the admin area we use a slightly different title to inform the which pages are draft or hidden pages
   def title_with_meta
     title = self.title.to_s
-    title << " <em>(#{::I18n.t('admin.pages.page.hidden')})</em>" unless self.show_in_menu?
-    title << " <em>(#{::I18n.t('admin.pages.page.draft')})</em>" if self.draft?
+    title << " <em>(#{::I18n.t('admin.pages.page.hidden')})</em>" unless show_in_menu?
+    title << " <em>(#{::I18n.t('admin.pages.page.draft')})</em>" if draft?
 
     title.strip
   end
 
   # Used to index all the content on this page so it can be easily searched.
   def all_page_part_content
-    self.parts.collect {|p| p.body}.join(" ")
+    parts.collect {|p| p.body}.join(" ")
   end
 
   ##

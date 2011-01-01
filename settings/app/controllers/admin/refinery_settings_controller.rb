@@ -6,18 +6,14 @@ module Admin
     crudify :refinery_setting,
             :title_attribute => :title,
             :order => "name ASC",
-            :searchable => true,
-            :paging => true,
             :redirect_to_url => :redirect_to_where?
 
     before_filter :sanitise_params, :only => [:create, :update]
     after_filter :fire_setting_callback, :only => [:update]
 
     def index
-      @refinery_settings = RefinerySetting.order('name asc').paginate({
-        :page => params[:page],
-        :per_page => RefinerySetting.per_page
-      })
+      search_all_refinery_settings if searching?
+      paginate_all_refinery_settings
 
       render :partial => 'refinery_settings' if request.xhr?
     end

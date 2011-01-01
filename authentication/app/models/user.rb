@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
     # This currently only affects which field is displayed in the login form. As long as we have
     # find_by_login_method :find_by_login_or_email, they can still actually use either one.
     c.login_field = defined?(Refinery.authentication_login_field) ? Refinery.authentication_login_field : "login"
-  end if self.table_exists?
+  end if table_exists?
 
   # Allow users to log in with either their username *or* email, even though we only ask for one of those.
   def self.find_by_login_or_email(login_or_email)
@@ -38,34 +38,34 @@ class User < ActiveRecord::Base
   has_friendly_id :login, :use_slug => true
 
   def plugins=(plugin_names)
-    if self.persisted? # don't add plugins when the user_id is nil.
-      self.plugins.delete_all
+    if persisted? # don't add plugins when the user_id is nil.
+      plugins.delete_all
 
       plugin_names.each_with_index do |plugin_name, index|
-        self.plugins.create(:name => plugin_name, :position => index) if plugin_name.is_a?(String)
+        plugins.create(:name => plugin_name, :position => index) if plugin_name.is_a?(String)
       end
     end
   end
 
   def authorized_plugins
-    self.plugins.collect { |p| p.name } | Refinery::Plugins.always_allowed.names
+    plugins.collect { |p| p.name } | Refinery::Plugins.always_allowed.names
   end
 
   def can_delete?(user_to_delete = self)
     user_to_delete.persisted? and
       !user_to_delete.has_role?(:superuser) and
       Role[:refinery].users.count > 1 and
-      self.id != user_to_delete.id
+      id != user_to_delete.id
   end
 
   def add_role(title)
     raise ArgumentException, "Role should be the title of the role not a role object." if title.is_a?(Role)
-    self.roles << Role[title] unless self.has_role?(title)
+    roles << Role[title] unless has_role?(title)
   end
 
   def has_role?(title)
     raise ArgumentException, "Role should be the title of the role not a role object." if title.is_a?(Role)
-    (role = Role.find_by_title(title.to_s.camelize)).present? and self.roles.collect{|r| r.id}.include?(role.id)
+    (role = Role.find_by_title(title.to_s.camelize)).present? and roles.collect{|r| r.id}.include?(role.id)
   end
 
 end
