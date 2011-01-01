@@ -1,8 +1,8 @@
 class PagesController < ApplicationController
 
-  # This action is usually accessed with the root route of "/"
+  # This action is usually accessed with the root path, normally '/'
   def home
-    error_404 unless (@page = Page.find_by_link_url('/')).present?
+    error_404 unless (@page = Page.where(:link_url => '/').first).present?
   end
 
   # This action can be accessed normally, or as nested pages.
