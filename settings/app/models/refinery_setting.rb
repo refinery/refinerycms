@@ -28,7 +28,7 @@ class RefinerySetting < ActiveRecord::Base
     end
 
     def ensure_cache_exists!
-      if (result = Rails.cache.read(self.cache_key)).nil?
+      if (result = Rails.cache.read(cache_key)).nil?
         result = rewrite_cache
       end
 
@@ -63,13 +63,13 @@ class RefinerySetting < ActiveRecord::Base
 
     def rewrite_cache
       # delete cache
-      Rails.cache.delete(self.cache_key)
+      Rails.cache.delete(cache_key)
 
       # generate new cache
-      result = (self.to_cache(self.all) if self.table_exists?)
+      result = (to_cache(all) if table_exists?)
 
       # write cache
-      Rails.cache.write(self.cache_key, result)
+      Rails.cache.write(cache_key, result)
 
       # return cache, or lack thereof.
       result ||= []
@@ -108,7 +108,7 @@ class RefinerySetting < ActiveRecord::Base
     alias :[] :get
 
     def set(name, value)
-      return (value.is_a?(Hash) ? value[:value] : value) unless self.table_exists?
+      return (value.is_a?(Hash) ? value[:value] : value) unless table_exists?
 
       scoping = (value[:scoping] if value.is_a?(Hash) and value.has_key?(:scoping))
       setting = find_or_initialize_by_name_and_scoping(:name => name.to_s, :scoping => scoping)
@@ -148,7 +148,7 @@ class RefinerySetting < ActiveRecord::Base
   # prettier version of the name.
   # site_name becomes Site Name
   def title
-    self.name.titleize
+    name.titleize
   end
 
   # form_value is so that on the web interface we can display a sane value.
@@ -166,7 +166,7 @@ class RefinerySetting < ActiveRecord::Base
 
   def value=(new_value)
     # must convert "1" to true and "0" to false when supplied using 'check_box', unfortunately.
-    if ["1", "0"].include?(new_value) and self.form_value_type == 'check_box'
+    if ["1", "0"].include?(new_value) and form_value_type == 'check_box'
       new_value = new_value == "1" ? true : false
     end
 
@@ -179,7 +179,7 @@ class RefinerySetting < ActiveRecord::Base
   end
 
   def callback_proc
-    eval("Proc.new{#{self.callback_proc_as_string} }") if self.callback_proc_as_string.present?
+    eval("Proc.new{#{callback_proc_as_string} }") if callback_proc_as_string.present?
   end
 
 private

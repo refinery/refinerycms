@@ -28,13 +28,13 @@ class Resource < ActiveRecord::Base
 
   # used for searching
   def type_of_content
-    self.mime_type.split("/").join(" ")
+    mime_type.split("/").join(" ")
   end
 
   # Returns a titleized version of the filename
   # my_file.pdf returns My File
   def title
-    CGI::unescape(self.file_name.to_s).gsub(/\.\w+$/, '').titleize
+    CGI::unescape(file_name.to_s).gsub(/\.\w+$/, '').titleize
   end
 
 end
