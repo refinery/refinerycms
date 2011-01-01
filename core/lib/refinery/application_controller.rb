@@ -83,9 +83,7 @@ module Refinery
 
       # get all the pages to be displayed in the site menu.
       def find_pages_for_menu
-        @menu_pages = Page.live.in_menu.order('lft ASC').reject{|p|
-          p.translations.find_all_by_locale(::I18n.locale).blank?
-        }
+        @menu_pages = Page.live.in_menu.order('lft ASC')
       end
 
       # use a different model for the meta information.
