@@ -37,7 +37,7 @@ class Page < ActiveRecord::Base
     translations = Arel::Table.new(Page.translations_table_name)
     includes(:translations).where(
       translations[:locale].eq(Globalize.locale), :show_in_menu => true
-    ).group(pages[:id]).having(translations[:id].count)
+    ).group(pages[:id]).having("#{translations[:id].count.to_sql} > 0")
   }
 
   # when a dialog pops up to link to a page, how many pages per page should there be
