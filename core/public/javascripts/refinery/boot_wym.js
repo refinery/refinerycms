@@ -112,9 +112,9 @@ var wymeditor_boot_options = $.extend({
 
   , iframeHtml:
     "<div class='wym_iframe wym_section'>"
-     + "<iframe id='WYMeditor_" + WYMeditor.INDEX + "' src='" + WYMeditor.IFRAME_BASE_PATH + "wymiframe'"
+     + "<iframe id='WYMeditor_" + WYMeditor.INDEX + "' "
      + " frameborder='0' marginheight='0' marginwidth='0' border='0'"
-     + " onload='this.contentWindow.parent.WYMeditor.INSTANCES[" + WYMeditor.INDEX + "].initIframe(this);'></iframe>"
+     + " onload='this.contentWindow.parent.WYMeditor.INSTANCES[" + WYMeditor.INDEX + "].loadIframe(this);'></iframe>"
     +"</div>"
 
   , dialogImageHtml: ""
@@ -218,6 +218,36 @@ var wymeditor_boot_options = $.extend({
 
 // custom function added by us to hook into when all wymeditor instances on the page have finally loaded:
 WYMeditor.loaded = function(){};
+
+WYMeditor.editor.prototype.loadIframe = function(iframe) {
+  var wym = this;
+
+  var doc = (iframe.document || iframe.contentDocument || iframe.contentWindow.document);
+  doc.open('text/html', 'replace');
+  html = "<!DOCTYPE html>\
+  <html>\
+    <head>\
+      <title>WYMeditor</title>\
+      <meta charset='" + $('meta[charset]').attr('charset') + "' />\
+      <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1' />\
+    </head>\
+    <body class='wym_iframe'>\
+    </body>\
+  </html>";
+  doc.write(html);
+  doc.close();
+
+  if ((id_of_editor = wym._element.parent().attr('id')) != null) {
+    $(doc.body).addClass(id_of_editor);
+  }
+
+  $.each(["wymeditor/skins/refinery/wymiframe", "formatting", "theme"], function(i, href) {
+    $("<link href='/stylesheets/" + href + ".css' media='all' rel='stylesheet' />").appendTo(doc.head);
+  });
+  $("<script src='/javascripts/modernizr-min.js'></script>").appendTo(doc.head);
+
+  wym.initIframe(iframe);
+};
 
 $(function()
 {
