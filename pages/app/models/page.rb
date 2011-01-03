@@ -35,12 +35,18 @@ class Page < ActiveRecord::Base
   scope :in_menu, lambda {
     pages = Arel::Table.new(Page.table_name)
     translations = Arel::Table.new(Page.translations_table_name)
-    # specify columns for GROUP BY (necessary for PostgreSQL and other stricter databases)
-    column_names = Page.column_names.map { |col| "#{Page.table_name}.#{col}" }
-    column_names.unshift "#{Page.table_name}.id" # make sure ID is first
+    page_parts = Arel::Table.new(PagePart.table_name)
+    slugs = Arel::Table.new(Slug.table_name)
+
+    # Specify columns for GROUP BY (Postgres requires that all selected fields be listed in GROUP BY)
+    group_columns = [ pages[:id] ] # make sure page ID is first
+    [pages, translations, page_parts, slugs].each do |table|
+      group_columns += table.columns.map { |col| "\"#{table.name}\".\"#{col.name}\"" }
+    end
+
     includes(:translations).where(
       translations[:locale].eq(Globalize.locale), :show_in_menu => true
-    ).group(column_names).having("#{translations[:id].count.to_sql} > 0")
+    ).group(group_columns).having("#{translations[:id].count.to_sql} > 0")
   }
 
   # when a dialog pops up to link to a page, how many pages per page should there be
