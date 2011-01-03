@@ -3,8 +3,6 @@ da:
     refinery_images:
       title: Billeder
   no_file_chosen: Du skal vælge et billede, der skal uploades
-  image_should_be_smaller_than_max_image_size: Filer må højest være på %{max_image_size}
-  image_must_be_these_formats: Dit billede skal være enten JPG, PNG eller GIF format
   admin:
     images:
       image:
@@ -40,3 +38,9 @@ da:
         submit_insert: Indsæt
         or: eller
         cancel: Annullér
+  activerecord:
+    errors:
+      models:
+        image:
+          too_long: Filer må højest være på %{count}
+          incorrect_format: Dit billede skal være enten JPG, PNG eller GIF format

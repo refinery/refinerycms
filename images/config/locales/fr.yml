@@ -3,9 +3,6 @@ fr:
     refinery_images:
       title: Images
       description: Gestion des images
-  image_specify_for_upload: Vous devez sélectionner une image à télécharger
-  image_should_be_smaller_than_max_image_size: L'image doit être plus petite que %{max_image_size}
-  image_must_be_these_formats: 'Seules les images aux formats JPG, PNG or GIF sont acceptées'
   admin:
     images:
       delete: Supprimer définitivement cette image
@@ -36,3 +33,9 @@ fr:
   activerecord:
     models:
       image: image
+    errors:
+      models:
+        image:
+          blank: Vous devez sélectionner une image à télécharger
+          too_long: L'image doit être plus petite que %{count}
+          incorrect_format: 'Seules les images aux formats JPG, PNG or GIF sont acceptées'

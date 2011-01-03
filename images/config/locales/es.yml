@@ -2,9 +2,6 @@ es:
   plugins:
     refinery_images:
       title: Imágenes
-  image_specify_for_upload: Debes indicar qué imagen quieres subir
-  image_should_be_smaller_than_max_image_size: La imagen debe pesar menos de %{max_image_size}
-  image_must_be_these_formats: Tu imagen debe ser un archivo JPG, PNG o GIF
   admin:
     images:
       delete: Borrar esta imagen para siempre
@@ -35,3 +32,9 @@ es:
   activerecord:
     models:
       image: imagen
+    errors:
+      models:
+        image:
+          blank: Debes indicar qué imagen quieres subir
+          too_long: La imagen debe pesar menos de %{count}
+          incorrect_format: Tu imagen debe ser un archivo JPG, PNG o GIF

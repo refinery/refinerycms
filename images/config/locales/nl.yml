@@ -2,9 +2,6 @@ nl:
   plugins:
     refinery_images:
       title: Afbeeldingen
-  image_specify_for_upload: U moet een afbeelding kiezen om te uploaden.
-  image_should_be_smaller_than_max_image_size: Afbeeldingen mogen niet groter dan %{max_image_size} zijn.
-  image_must_be_these_formats: Uw afbeelding moet een JPG, PNG of GIF zijn.
   admin:
     images:
       delete: Verwijder deze afbeelding permanent
@@ -35,3 +32,9 @@ nl:
   activerecord:
     models:
       image: afbeelding
+    errors:
+      models:
+        image:
+          blank: U moet een afbeelding kiezen om te uploaden.
+          too_long: Afbeeldingen mogen niet groter dan %{count} zijn.
+          incorrect_format: Uw afbeelding moet een JPG, PNG of GIF zijn.

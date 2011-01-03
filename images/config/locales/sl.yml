@@ -2,9 +2,6 @@ sl:
   plugins:
     refinery_images:
       title: Slike
-  image_specify_for_upload: Izbrati morate datoteko, ki jo želite naložiti
-  image_should_be_smaller_than_max_image_size: Velikost slike mora biti manjša od %{max_image_size}
-  image_must_be_these_formats: Slika mora biti tipa JPG, PNG ali GIF
   admin:
     images:
       delete: Odstrani sliko
@@ -35,3 +32,9 @@ sl:
   activerecord:
     models:
       image: slika
+    errors:
+      models:
+        image:
+          blank: Izbrati morate datoteko, ki jo želite naložiti
+          too_long: Velikost slike mora biti manjša od %{count}
+          incorrect_format: Slika mora biti tipa JPG, PNG ali GIF
