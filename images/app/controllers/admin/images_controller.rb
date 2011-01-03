@@ -61,7 +61,7 @@ module Admin
 
       unless params[:insert]
         if @images.all?{|i| i.valid?}
-          flash.notice = t('refinery.crudify.created', :what => "'#{@images.collect{|i| i.title}.join("', '")}'")
+          flash.notice = t('created', :scope => 'refinery.crudify', :what => "'#{@images.collect{|i| i.title}.join("', '")}'")
           unless from_dialog?
             redirect_to :action => 'index'
           else

@@ -3,7 +3,7 @@
   <% if (any_images = @images.any?) or searching? %>
     <span id="existing_image_radio" class="radio<%= " selected_radio" if (no_errors = @image.errors.empty?) %>">
       <input type='radio' name='image_type' value='existing_image' id='image_type_existing'<%= " checked='true'" if no_errors or searching? %> />
-      <label for='image_type_existing' class='stripped'><%=t('.existing_image')%></label>
+      <label for='image_type_existing' class='stripped'><%= t('.existing_image') %></label>
     </span>
   <% end %>
   <% if user_can_modify_images %>
@@ -24,7 +24,7 @@
       </div>
     <% end %>
   <% else %>
-    <% flash.now[:error] = t('admin.images.index.no_images_yet').split('.').first.html_safe + "." %>
+    <% flash.now[:error] = t('no_images_yet', :scope => 'admin.images.index').split('.').first.html_safe + "." %>
     <%= render :partial => "/shared/admin/form_actions",
                :locals => {
                  :f => nil,
@@ -32,7 +32,7 @@
                  :hide_cancel => false,
                  :hide_delete => true,
                  :hide_submit => true,
-                 :cancel_button_text => t('shared.admin.form_actions.close'),
+                 :cancel_button_text => t('close', :scope => 'shared.admin.form_actions'),
                  :cancel_title => nil
                } %>
   <% end %>
