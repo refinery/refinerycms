@@ -3,8 +3,6 @@ en:
     refinery_files:
       title: Files
       description: Upload and link to files
-  file_specify_for_upload: You must specify file for upload
-  file_should_be_smaller_than_max_file_size: File should be smaller than %{max_file_size} in size
   admin:
     resources:
       delete: Remove this file forever
@@ -29,3 +27,8 @@ en:
   activerecord:
     models:
       resource: file
+    errors:
+      models:
+        resource:
+          blank: You must specify file for upload
+          too_long: File should be smaller than %{count} in size

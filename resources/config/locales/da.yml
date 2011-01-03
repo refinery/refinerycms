@@ -2,8 +2,6 @@ da:
   plugins:
     refinery_files:
       title: Filer
-  must_choose_file: Du skal vælge en fil, der skal uploades
-  file_should_be_smaller_than_max_file_size: Filer må højest være på %{max_file_size}
   admin:
     resources:
       form:
@@ -30,3 +28,9 @@ da:
         submit_insert: Indsæt
         or: eller
         cancel: Annullér
+  activerecord:
+    errors:
+      models:
+        resource:
+          blank: Du skal vælge en fil, der skal uploades
+          too_long: Filer må højest være på %{count}

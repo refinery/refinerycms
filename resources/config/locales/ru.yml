@@ -3,8 +3,6 @@ ru:
     refinery_files:
       title: Файлы
       article: masculine
-  file_specify_for_upload: Вы должны выбрать файл для загрузки
-  file_should_be_smaller_than_max_file_size: "Файлы должны быть по размеру меньше чем %{max_file_size}"
   admin:
     resources:
       delete: Удалить этот файл навсегда
@@ -29,3 +27,8 @@ ru:
   activerecord:
     models:
       resource: файл
+    errors:
+      models:
+        resource:
+          blank: Вы должны выбрать файл для загрузки
+          too_long: "Файлы должны быть по размеру меньше чем %{count}"

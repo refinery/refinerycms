@@ -3,8 +3,6 @@ lv:
     refinery_files:
       title: Faili
       description: Failu augšupielāde un sasaiste
-  file_specify_for_upload: Jānorāda fails pirms augšupielādes
-  file_should_be_smaller_than_max_file_size: Faila izmēram jābūt mazākam par %{max_file_size}
   admin:
     resources:
       delete: Dzēst šo failu
@@ -29,3 +27,8 @@ lv:
   activerecord:
     models:
       resource: fails
+    errors:
+      models:
+        resource:
+          blank: Jānorāda fails pirms augšupielādes
+          too_long: Faila izmēram jābūt mazākam par %{count}
