@@ -3,9 +3,6 @@ de:
     refinery_images:
       title: Bilder
       description: Verwaltet Bilder
-  image_specify_for_upload: Sie müssen ein Bild zum Hochladen angeben
-  image_should_be_smaller_than_max_image_size: Bild sollte kleiner als %{max_image_size} sein
-  image_must_be_these_formats: 'Ihr Bild sollte ein JPG, PNG oder GIF sein'
   admin:
     images:
       delete: Dieses Bild für immer löschen
@@ -36,3 +33,9 @@ de:
   activerecord:
     models:
       image: Bild
+    errors:
+      models:
+        image:
+          blank: Sie müssen ein Bild zum Hochladen angeben
+          too_long: Bild sollte kleiner als %{count} sein
+          incorrect_format: 'Ihr Bild sollte ein JPG, PNG oder GIF sein'

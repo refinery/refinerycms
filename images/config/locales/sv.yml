@@ -3,9 +3,6 @@ sv:
     refinery_images:
       title: Bilder
       description: Hantera bilder
-  image_specify_for_upload: Du måste ange en bild att ladda upp
-  image_should_be_smaller_than_max_image_size: Bilden ska vara mindre än %{max_image_size} stor
-  image_must_be_these_formats: 'Din bild måste vara antingen JPG, PNG eller GIF'
   admin:
     images:
       delete: Ta bort den här bilden för alltid
@@ -36,3 +33,9 @@ sv:
   activerecord:
     models:
       image: bild
+    errors:
+      models:
+        image:
+          blank: Du måste ange en bild att ladda upp
+          too_long: Bilden ska vara mindre än %{count} stor
+          incorrect_format: 'Din bild måste vara antingen JPG, PNG eller GIF'

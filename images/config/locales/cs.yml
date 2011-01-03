@@ -3,9 +3,6 @@ cs:
     refinery_images:
       title: Obrázky
       description: Spravovat obrázky
-  image_specify_for_upload: Musíte zadat obrázek který chcete nahrát
-  image_should_be_smaller_than_max_image_size: Maximální velikost obrázku je %{max_image_size}
-  image_must_be_these_formats: 'Obrázek musí být ve formátu JPG, PNG nebo GIF'
   admin:
     images:
       delete: Smazat tento obrázek
@@ -36,3 +33,9 @@ cs:
   activerecord:
     models:
       image: obrázek
+    errors:
+      models:
+        image:
+          blank: Musíte zadat obrázek který chcete nahrát
+          too_long: Maximální velikost obrázku je %{count}
+          incorrect_format: 'Obrázek musí být ve formátu JPG, PNG nebo GIF'

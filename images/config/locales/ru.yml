@@ -6,9 +6,12 @@ ru:
   activerecord:
     models:
       image: изображение
-  image_specify_for_upload: Вы должны выбрать файл для загрузки
-  image_should_be_smaller_than_max_image_size: "Файлы должны быть меньше по размеру, чем %{max_image_size}"
-  image_must_be_these_formats: "Ваше изображение может быть только в форматах JPG, PNG или GIF"
+    errors:
+      models:
+        image:
+          blank: Вы должны выбрать файл для загрузки
+          too_long: "Файлы должны быть меньше по размеру, чем %{count}"
+          incorrect_format: "Ваше изображение может быть только в форматах JPG, PNG или GIF"
   admin:
     images:
       delete: Удалить это изображение навсегда

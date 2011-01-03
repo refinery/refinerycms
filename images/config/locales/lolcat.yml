@@ -3,9 +3,6 @@ lolcat:
     refinery_images:
       title: IMAGEZ
       description: MANAGE IMAGEZ
-  image_specify_for_upload: U MUST SPECIFY AN IMAGE 4 UPLOAD
-  image_should_be_smaller_than_max_image_size: IMAGE SHUD BE SMALLR THAN %{max_image_size} IN SIZE
-  image_must_be_these_formats: UR IMAGE MUST BE EITHR JPG, PNG OR GIF
   admin:
     images:
       delete: REMOOV DIS IMAGE FOREVR
@@ -36,3 +33,9 @@ lolcat:
   activerecord:
     models:
       image: IMAGE
+    errors:
+      models:
+        image:
+          blank: U MUST SPECIFY AN IMAGE 4 UPLOAD
+          too_long: IMAGE SHUD BE SMALLR THAN %{count} IN SIZE
+          incorrect_format: UR IMAGE MUST BE EITHR JPG, PNG OR GIF

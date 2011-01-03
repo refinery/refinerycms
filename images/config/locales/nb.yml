@@ -2,9 +2,6 @@ nb:
   plugins:
     refinery_images:
       title: Bilder
-  no_file_chosen: Du må velge en fil du ønsker å laste opp
-  image_should_be_smaller_than_max_image_size: "Filer må være mindre enn %{max_image_size}"
-  image_must_be_these_formats: "Bildefilen må være enten en JPG, PNG eller GIF"
   admin:
     images:
       image:
@@ -44,3 +41,10 @@ nb:
         submit_insert: Sett inn
         or: eller
         cancel: Avbryt
+  activerecord:
+    errors:
+      models:
+        image:
+          blank: Du må velge en fil du ønsker å laste opp
+          too_long: "Filer må være mindre enn %{count}"
+          incorrect_format: "Bildefilen må være enten en JPG, PNG eller GIF"
