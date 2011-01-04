@@ -3,8 +3,6 @@ sv:
     refinery_files:
       title: Filer
       description: Ladda upp och länka till filer
-  file_specify_for_upload: Du måste ange en fil att ladda upp
-  file_should_be_smaller_than_max_file_size: Filen måste vara mindre än %{max_file_size} stor
   admin:
     resources:
       delete: Ta bort den här filen för alltid
@@ -29,3 +27,8 @@ sv:
   activerecord:
     models:
       resource: fil
+    errors:
+      models:
+        resource:
+          blank: Du måste ange en fil att ladda upp
+          too_long: Filen måste vara mindre än %{count} stor

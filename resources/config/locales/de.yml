@@ -3,8 +3,6 @@ de:
     refinery_files:
       title: Dateien
       description: Dateien hochladen und verlinken
-  file_specify_for_upload: Sie müssen eine Datei zum Hochladen angeben
-  file_should_be_smaller_than_max_file_size: Die Dateien sollten kleiner als %{max_file_size} sein
   admin:
     resources:
       delete: Diese Datei für immer löschen
@@ -29,3 +27,8 @@ de:
   activerecord:
     models:
       resource: Datei
+    errors:
+      models:
+        resource:
+          blank: Sie müssen eine Datei zum Hochladen angeben
+          too_long: Die Dateien sollten kleiner als %{count} sein

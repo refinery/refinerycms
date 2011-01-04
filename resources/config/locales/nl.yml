@@ -2,8 +2,6 @@ nl:
   plugins:
     refinery_files:
       title: Bestanden
-  file_specify_for_upload: U moet een bestand kiezen dat u wilt uploaden.
-  file_should_be_smaller_than_max_file_size: Bestanden mogen niet groter dan %{max_file_size} zijn.
   admin:
     resources:
       delete: Verwijder dit bestand voorgoed
@@ -28,3 +26,8 @@ nl:
   activerecord:
     models:
       resource: bestand
+    errors:
+      models:
+        resource:
+          blank: U moet een bestand kiezen dat u wilt uploaden.
+          too_long: Bestanden mogen niet groter dan %{count} zijn.

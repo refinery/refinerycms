@@ -3,8 +3,6 @@ cs:
     refinery_files:
       title: Soubory
       description: Správa souborů
-  file_specify_for_upload: Musíte vybrat soubor pro nahrání
-  file_should_be_smaller_than_max_file_size: Maximální velikost souboru je %{max_file_size}
   admin:
     resources:
       delete: Smazat tento soubor
@@ -29,3 +27,8 @@ cs:
   activerecord:
     models:
       resource: soubor
+    errors:
+      models:
+        resource:
+          blank: Musíte vybrat soubor pro nahrání
+          too_long: Maximální velikost souboru je %{count}

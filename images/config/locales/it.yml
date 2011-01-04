@@ -3,9 +3,6 @@ it:
     refinery_images:
       title: Immagine
       description: Gestione immagini
-  image_specify_for_upload: Devi scegliere un file da caricare
-  image_should_be_smaller_than_max_image_size: I file devono essere di dimensioni inferiori a %{max_image_size}
-  image_must_be_these_formats: L'immagine deve essere un JPG, PNG o GIF
   admin:
     images:
       delete: Eliminare questa immagine per sempre
@@ -41,3 +38,10 @@ it:
         submit_insert: Inserire
         or: o
         cancel: Annullare
+  activerecord:
+    errors:
+      models:
+        image:
+          blank: Devi scegliere un file da caricare
+          too_long: I file devono essere di dimensioni inferiori a %{count}
+          incorrect_format: L'immagine deve essere un JPG, PNG o GIF

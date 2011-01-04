@@ -4,9 +4,6 @@ pl:
       title: Obrazy
       description: Zarządzaj obrazami
       article: masculine
-  image_specify_for_upload: Musisz określić obraz do wgrania
-  image_should_be_smaller_than_max_image_size: Obraz powinien być mniejszy niż %{max_image_size}
-  image_must_be_these_formats: 'Obraz musi być plikiem typu JPG, PNG lub GIF'
   admin:
     images:
       delete: Na zawsze usuń ten obraz
@@ -37,3 +34,9 @@ pl:
   activerecord:
     models:
       image: obraz
+    errors:
+      models:
+        image:
+          blank: Musisz określić obraz do wgrania
+          too_long: Obraz powinien być mniejszy niż %{count}
+          incorrect_format: 'Obraz musi być plikiem typu JPG, PNG lub GIF'

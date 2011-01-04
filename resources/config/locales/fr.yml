@@ -3,8 +3,6 @@ fr:
     refinery_files:
       title: Fichiers
       description: Gestion des fichiers
-  file_specify_for_upload: Vous devez spécifier un fichier à télécharger
-  file_should_be_smaller_than_max_file_size: Le poids maximal des fichiers est de %{max_file_size}
   admin:
     resources:
       delete: Supprimer définitivement ce fichier
@@ -29,3 +27,8 @@ fr:
   activerecord:
     models:
       resource: fichier
+    errors:
+      models:
+        resource:
+          blank: Vous devez spécifier un fichier à télécharger
+          too_long: Le poids maximal des fichiers est de %{count}

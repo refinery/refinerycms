@@ -2,8 +2,6 @@ sl:
   plugins:
     refinery_files:
       title: Datoteke
-  file_specify_for_upload: Izbrati morate datoteko za prenos
-  file_should_be_smaller_than_max_file_size: Velikost datoteke mora biti manjša od %{max_file_size}
   admin:
     resources:
       delete: Odstrani datoteko
@@ -28,3 +26,8 @@ sl:
   activerecord:
     models:
       resource: datoteka
+    errors:
+      models:
+        resource:
+          blank: Izbrati morate datoteko za prenos
+          too_long: Velikost datoteke mora biti manjša od %{count}
