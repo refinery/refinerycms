@@ -3,8 +3,6 @@ lolcat:
     refinery_files:
       title: FILEZ
       description: UPLOAD AN LINK 2 FILEZ
-  file_specify_for_upload: U MUST SPECIFY FILE 4 UPLOAD
-  file_should_be_smaller_than_max_file_size: FILE SHUD BE SMALLR THAN %{max_file_size} IN SIZE
   admin:
     resources:
       delete: REMOOV DIS FILE FOREVR
@@ -29,3 +27,8 @@ lolcat:
   activerecord:
     models:
       resource: FILE
+    errors:
+      models:
+        resource:
+          blank: U MUST SPECIFY FILE 4 UPLOAD
+          too_long: FILE SHUD BE SMALLR THAN %{count} IN SIZE

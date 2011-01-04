@@ -4,8 +4,6 @@ pl:
       title: Pliki
       description: Wgrywaj i linkuj do plików
       article: masculine
-  file_specify_for_upload: Musisz określić plik do wgrania
-  file_should_be_smaller_than_max_file_size: Plik powinien być mniejszy niż %{max_file_size}
   admin:
     resources:
       delete: Na zawsze usuń ten plik
@@ -30,3 +28,8 @@ pl:
   activerecord:
     models:
       resource: plik
+    errors:
+      models:
+        resource:
+          blank: Musisz określić plik do wgrania
+          too_long: Plik powinien być mniejszy niż %{count}

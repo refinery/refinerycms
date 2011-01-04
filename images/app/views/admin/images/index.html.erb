@@ -1,6 +1,6 @@
 <div id='records'>
   <% if searching? %>
-    <h2><%= t('shared.admin.search.results_for', :query => params[:search]) %></h2>
+    <h2><%= t('results_for', :scope => 'shared.admin.search', :query => params[:search]) %></h2>
   <% end %>
   <% if @images.any? %>
     <div class='pagination_container'>
@@ -13,7 +13,7 @@
           <%= t('.no_images_yet') %>
         </strong>
       <% else %>
-        <%= t('shared.admin.search.no_results') %>
+        <%= t('no_results', :scope => 'shared.admin.search') %>
       <% end %>
     </p>
   <% end %>
@@ -29,7 +29,7 @@
     </li>
     <% other_image_views.each do |image_view| %>
       <li>
-        <%= link_to t('.view.switch_to', :view_name => t(".view.#{image_view}")),
+        <%= link_to t('switch_to', :scope => 'admin.images.index.view', :view_name => t("#{image_view}", :scope => 'admin.images.index.view')),
                     admin_images_url(:view => image_view, :page => params[:page]),
                     :class => "reorder_icon"  %>
       </li>

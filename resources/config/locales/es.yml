@@ -2,8 +2,6 @@ es:
   plugins:
     refinery_files:
       title: Archivos
-  file_specify_for_upload: Selecciona qué archivo quieres subir
-  file_should_be_smaller_than_max_file_size: El archivo debe pesar menos de %{max_file_size}
   admin:
     resources:
       delete: Borrar este archivo para siempre
@@ -28,3 +26,8 @@ es:
   activerecord:
     models:
       resource: archivo
+    errors:
+      models:
+        resource:
+          blank: Selecciona qué archivo quieres subir
+          too_long: El archivo debe pesar menos de %{count}

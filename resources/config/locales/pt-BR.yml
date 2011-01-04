@@ -3,8 +3,6 @@ pt-BR:
     refinery_files:
       title: Arquivos
       description: Gerenciar arquivos
-  file_specify_for_upload: Você deve escolher um arquivo para enviar
-  file_should_be_smaller_than_max_file_size: "Arquivos devem ser menores que %{max_file_size} em tamanho"
   admin:
     resources:
       delete: Remover este arquivo para sempre
@@ -29,3 +27,8 @@ pt-BR:
   activerecord:
     models:
       resource: Arquivo
+    errors:
+      models:
+        resource:
+          blank: Você deve escolher um arquivo para enviar
+          too_long: "Arquivos devem ser menores que %{count} em tamanho"

@@ -3,8 +3,6 @@ lt:
     refinery_files:
       title: Failai
       description: Įkelti ir sukurti nuorodą į failus
-  file_specify_for_upload: Nurodykite failą įkėlimui
-  file_should_be_smaller_than_max_file_size: Failas turėtų būti mažesnio dydžio nei %{max_file_size}
   admin:
     resources:
       delete: Pašalinti failą visam laikui
@@ -29,3 +27,8 @@ lt:
   activerecord:
     models:
       resource: failas
+    errors:
+      models:
+        resource:
+          blank: Nurodykite failą įkėlimui
+          too_long: Failas turėtų būti mažesnio dydžio nei %{count}

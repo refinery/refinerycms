@@ -2,8 +2,6 @@ it:
   plugins:
     refinery_files:
       title: Risorse
-  file_specify_for_upload: Devi scegliere un file da caricare
-  file_should_be_smaller_than_max_file_size: I file devono avere dimensioni a %{max_file_size}
   admin:
     resources:
       delete: Rimuovere per sempre questo file
@@ -37,3 +35,9 @@ it:
       existing_resource:
         link_to_file: Collegamento a questo file
         button_text: Inserisci
+  activerecord:
+    errors:
+      models:
+        resource:
+          blank: Devi scegliere un file da caricare
+          too_long: I file devono avere dimensioni a %{count}
