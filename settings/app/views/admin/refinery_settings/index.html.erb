@@ -1,7 +1,7 @@
 <div id='records'>
   <% if searching? %>
     <h2>
-      <%= t('shared.admin.search.results_for', :query => params[:search]) %>
+      <%= t('results_for', :scope => 'shared.admin.search', :query => params[:search]) %>
     </h2>
   <% end %>
   <% if @refinery_settings.any? %>
@@ -11,7 +11,7 @@
   <% else %>
     <p>
       <% if searching? %>
-        <%= t('shared.admin.search.no_results') %>
+        <%= t('no_results', :scope => 'shared.admin.search') %>
       <% else %>
         <strong>
           <%= t('.empty_set') %>
