@@ -105,8 +105,6 @@
           </ul>
           <%= will_paginate @resources,
                             :param_name => :resource_page,
-                            :previous_label => '&laquo;',
-                            :next_label => '&raquo;',
                             :renderer => Refinery::LinkRenderer,
                             :url => {:paginating => "resource_file"},
                             :id => 'resouces_paginate' %>
