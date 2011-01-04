@@ -21,7 +21,7 @@ class Admin::ResourcesController < Admin::BaseController
 
     unless params[:insert]
       if @resources.all?{|r| r.valid?}
-        flash.notice = t('refinery.crudify.created', :what => "'#{@resources.collect{|r| r.title}.join("', '")}'")
+        flash.notice = t('created', :scope => 'refinery.crudify', :what => "'#{@resources.collect{|r| r.title}.join("', '")}'")
         unless from_dialog?
           redirect_to :action => 'index'
         else
