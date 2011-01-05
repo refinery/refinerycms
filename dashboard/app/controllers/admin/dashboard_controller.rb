@@ -6,11 +6,10 @@ class Admin::DashboardController < Admin::BaseController
     Refinery::Plugins.active.each do |plugin|
       begin
         plugin.activity.each do |activity|
-          @recent_activity << activity.class.find(:all,
-            :conditions => activity.conditions,
-            :order => activity.order,
-            :limit => activity.limit
-          )
+          @recent_activity << activity.class.where(activity.conditions).
+                                             order(activity.order).
+                                             limit(activity.limit).
+                                             all
         end
       rescue
         logger.warn "#{$!.class.name} raised while getting recent activity for dashboard."
@@ -27,11 +26,10 @@ class Admin::DashboardController < Admin::BaseController
   end
 
   def disable_upgrade_message
-    RefinerySetting.find(:first, :conditions => {
+    RefinerySetting.update_all({ :value => false }, {
         :name => 'show_internet_explorer_upgrade_message',
         :scoping => 'refinery'
-      }
-    ).update_attribute(:value, false)
+    })
     render :nothing => true
   end
 

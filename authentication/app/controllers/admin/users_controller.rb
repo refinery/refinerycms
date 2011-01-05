@@ -80,7 +80,7 @@ protected
       {:name => a.name, :title => a.title}
     }.sort_by {|a| a[:title]}
 
-    @available_roles = Role.find(:all)
+    @available_roles = Role.all
   end
 
 end
