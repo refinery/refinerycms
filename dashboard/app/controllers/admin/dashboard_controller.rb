@@ -27,11 +27,10 @@ class Admin::DashboardController < Admin::BaseController
   end
 
   def disable_upgrade_message
-    RefinerySetting.find(:first, :conditions => {
+    RefinerySetting.where({
         :name => 'show_internet_explorer_upgrade_message',
         :scoping => 'refinery'
-      }
-    ).update_attribute(:value, false)
+    }).first.update_attribute(:value, false)
     render :nothing => true
   end
 
