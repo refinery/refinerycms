@@ -1,6 +1,6 @@
 <div id='records' class='tree'>
   <% if searching? %>
-    <h2><%= t('shared.admin.search.results_for', :query => params[:search]) %></h2>
+    <h2><%= t('results_for', :scope => 'shared.admin.search', :query => params[:search]) %></h2>
   <% end %>
   <% if @pages.any? %>
     <%= render :partial => 'sortable_list' %>
@@ -9,7 +9,7 @@
       <% unless searching? %>
         <strong><%=t('.no_pages_yet')%></strong>
       <% else %>
-        <%= t('shared.admin.search.no_results') %>
+        <%= t('no_results', :scope => 'shared.admin.search') %>
       <% end %>
     </p>
   <% end %>

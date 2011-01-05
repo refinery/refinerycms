@@ -1,48 +1,57 @@
-class Admin::UsersController < Admin::BaseController
+module Admin
+  class UsersController < Admin::BaseController
 
   crudify :user, :order => 'username ASC', :title_attribute => 'username'
 
-  before_filter :load_available_plugins_and_roles, :only => [:new, :create, :edit, :update]
+    before_filter :load_available_plugins_and_roles, :only => [:new, :create, :edit, :update]
 
-  layout 'admin'
+    layout 'admin'
 
-  def index
-    search_all_users if searching?
-    paginate_all_users
+    def index
+      search_all_users if searching?
+      paginate_all_users
 
-    render :partial => 'users' if request.xhr?
-  end
+      render :partial => 'users' if request.xhr?
+    end
 
-  def new
-    @user = User.new
-    @selected_plugin_names = []
-  end
+    def new
+      @user = User.new
+      @selected_plugin_names = []
+    end
 
-  def create
-    @user = User.new(params[:user])
-    @selected_plugin_names = params[:user][:plugins] || []
-    @selected_role_names = params[:user][:roles] || []
+    def create
+      @user = User.new(params[:user])
+      @selected_plugin_names = params[:user][:plugins] || []
+      @selected_role_names = params[:user][:roles] || []
 
-    if @user.save
-      @user.plugins = @selected_plugin_names
-      # if the user is a superuser and can assign roles according to this site's
-      # settings then the roles are set with the POST data.
-      unless current_user.has_role?(:superuser) and RefinerySetting.find_or_set(:superuser_can_assign_roles, false)
-        @user.add_role(:refinery)
+      if @user.save
+        @user.plugins = @selected_plugin_names
+        # if the user is a superuser and can assign roles according to this site's
+        # settings then the roles are set with the POST data.
+        unless current_user.has_role?(:superuser) and RefinerySetting.find_or_set(:superuser_can_assign_roles, false)
+          @user.add_role(:refinery)
+        else
+          @user.roles = @selected_role_names.collect{|r| Role[r.downcase.to_sym]}
+        end
+
+        redirect_to(admin_users_url, :notice => t('refinery.crudify.created', :what => @user.login))
       else
-        @user.roles = @selected_role_names.collect{|r| Role[r.downcase.to_sym]}
+        render :action => 'new'
       end
+    end
 
       redirect_to(admin_users_url, :notice => t('refinery.crudify.created', :what => @user.username))
     else
       render :action => 'new'
     end
-  end
 
-  def edit
-    @user = User.find params[:id]
-    @selected_plugin_names = @user.plugins.collect{|p| p.name}
-  end
+    def update
+      # Store what the user selected.
+      @selected_role_names = params[:user].delete(:roles) || []
+      unless current_user.has_role?(:superuser) and RefinerySetting.find_or_set(:superuser_can_assign_roles, false)
+        @selected_role_names = @user.roles.collect{|r| r.title}
+      end
+      @selected_plugin_names = params[:user][:plugins]
 
   def update
     # Store what the user selected.
@@ -75,16 +84,16 @@ class Admin::UsersController < Admin::BaseController
         render :action => 'edit'
       end
     end
+
+  protected
+
+    def load_available_plugins_and_roles
+      @available_plugins = ::Refinery::Plugins.registered.in_menu.collect{|a|
+        {:name => a.name, :title => a.title}
+      }.sort_by {|a| a[:title]}
+
+      @available_roles = Role.all
+    end
+
   end
-
-protected
-
-  def load_available_plugins_and_roles
-    @available_plugins = ::Refinery::Plugins.registered.in_menu.collect{|a|
-      {:name => a.name, :title => a.title}
-    }.sort_by {|a| a[:title]}
-
-    @available_roles = Role.find(:all)
-  end
-
 end
