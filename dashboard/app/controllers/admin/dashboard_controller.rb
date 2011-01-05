@@ -6,11 +6,10 @@ class Admin::DashboardController < Admin::BaseController
     Refinery::Plugins.active.each do |plugin|
       begin
         plugin.activity.each do |activity|
-          @recent_activity << activity.class.find(:all,
-            :conditions => activity.conditions,
-            :order => activity.order,
-            :limit => activity.limit
-          )
+          @recent_activity << activity.class.where(activity.conditions).
+                                             order(activity.order).
+                                             limit(activity.limit).
+                                             all
         end
       rescue
         logger.warn "#{$!.class.name} raised while getting recent activity for dashboard."
