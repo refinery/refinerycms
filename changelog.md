@@ -36,6 +36,7 @@
 * Applied HTML5 history pagination to all core engines. [Philip Arndt](https://github.com/parndt)
 * Converted translate calls to use ``:scope``. [Uģis Ozols](https://github.com/ugisozols)
 * Fixed issues where errors would only show up in English for some models and updated Russian translations. [Semyon Perepelitsa](https://github.com/semaperepelitsa)
+* Converted to devise for authentication, requiring password resets. [Philip Arndt](https://github.com/parndt) and [Uģis Ozols](https://github.com/ugisozols)
 * [See full list](https://github.com/resolve/refinerycms/compare/0.9.8.9...0.9.9)
 
 ## 0.9.8.9 [21 December 2010]
