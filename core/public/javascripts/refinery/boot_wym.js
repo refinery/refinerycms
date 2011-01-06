@@ -249,8 +249,7 @@ WYMeditor.editor.prototype.loadIframe = function(iframe) {
   wym.initIframe(iframe);
 };
 
-$(function()
-{
+WYMeditor.init = function() {
   wymeditor_inputs = $('.wymeditor');
   wymeditor_inputs.each(function(input) {
     if ((containing_field = $(this).parents('.field')).get(0).style.height === '') {
@@ -261,4 +260,8 @@ $(function()
   });
 
   wymeditor_inputs.wymeditor(wymeditor_boot_options);
+};
+
+$(function(){
+  WYMeditor.init();
 });
