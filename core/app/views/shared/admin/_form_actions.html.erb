@@ -35,18 +35,21 @@
     delete_url          ||= eval("admin_#{f.object_name}_url(#{f.object.id})")
   end
 -%>
-<input type='hidden' name='modal' value='<%= from_dialog? %>' />
-<input type='hidden' name='dialog' value='<%= from_dialog? %>' />
+<% if from_dialog? %>
+<input type='hidden' name='modal' value='true' />
+<input type='hidden' name='dialog' value='true' />
+<% end %>
 
 <div class='form-actions<%= ' form-actions-dialog' if from_dialog? %>'>
   <div class='form-actions-left'>
     <%= submit_tag submit_button_text,
                    :id => submit_button_id,
+                   :name => nil,
                    :class => "wymupdate button",
                    :tooltip => submit_button_title unless hide_submit %>
 
     <%= render :partial => "/shared/admin/continue_editing", :locals => {:f => f} if continue_editing -%>
-    <%= hidden_field_tag :continue_editing, false %>
+    <%= hidden_field_tag :continue_editing, false if continue_editing %>
 
     <%= link_to(cancel_button_text,
                 cancel_url,

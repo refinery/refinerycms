@@ -28,7 +28,7 @@
       </span>
       <% %w(none text).each do |type| %>
         <%= f.radio_button :custom_title_type, type %>
-        <%= label_tag "page_custom_title_type_#{type}", t(".title_types.#{type.downcase.gsub(" ", "_")}"),
+        <%= label_tag "page_custom_title_type_#{type}", t(type.downcase.gsub(" ", "_"), :scope => 'admin.pages.form_advanced_options.title_types'),
                       :class => "stripped" %>
       <% end %>
       <div id='custom_title_none'></div>

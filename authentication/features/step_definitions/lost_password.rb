@@ -4,5 +4,5 @@ end
 
 Given /^I am (not )?requesting password reset$/ do |action|
   @user = Factory(:refinery_user, :updated_at => 11.minutes.ago)
-  @user.reset_perishable_token! if action.nil?
+  @user.send(:generate_reset_password_token!) if action.nil?
 end

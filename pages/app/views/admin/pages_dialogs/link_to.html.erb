@@ -6,17 +6,17 @@
     </span>
     <span id='web_address_radio' class='radio<%= " selected_radio" if @web_address_area_selected %>'>
       <input type='radio' name='link_to' value='web_address' id='link_to_web_address' <%= "checked='true'" if @web_address_area_selected %> />
-      <label for='link_to_web_address' class='stripped'><%= t('.web_address.tab_name') %></label>
+      <label for='link_to_web_address' class='stripped'><%= t('tab_name', :scope => 'admin.pages_dialogs.link_to.web_address') %></label>
     </span>
 
     <span id='email_address_radio' class='radio<%= " selected_radio" if @email_address_area_selected %>'>
       <input type='radio' name='link_to' value='email_address' id='link_to_email_address' <%= "checked='true'" if @email_address_area_selected %> />
-      <label for='link_to_email_address' class='stripped'><%= t('.email_address.tab_name') %></label>
+      <label for='link_to_email_address' class='stripped'><%= t('tab_name', :scope => 'admin.pages_dialogs.link_to.email_address') %></label>
     </span>
     <% if ::Refinery::Plugins.registered.names.include?("refinery_files") %>
       <span id="resource_file_radio" class="radio<%= " selected_radio" if @resource_area_selected %>">
         <input type="radio" name="link_to" value="resource_file" id="link_to_resource_file" <%= "checked='true'" if @resource_area_selected %> />
-        <label for="link_to_resource_file" class="stripped"><%= t('.your_resource.tab_name') %></label>
+        <label for="link_to_resource_file" class="stripped"><%= t('tab_name', :scope => 'admin.pages_dialogs.link_to.your_resource') %></label>
       </span>
     <% end %>
   </div>
@@ -39,52 +39,52 @@
     </div>
     <div id='web_address_area' <%= "style='display: none'" unless @web_address_area_selected %> class='dialog_area'>
       <div id='web_address_content'>
-        <label for='web_address_text'><%= t('.web_address.location') %></label>
+        <label for='web_address_text'><%= t('location', :scope => 'admin.pages_dialogs.link_to.web_address') %></label>
         <%= text_field :web_address, :text, :value => @web_address_text, :style => "width: 70%" %>
 
-        <label><%=t('.web_address.new_window') %></label>
+        <label><%= t('new_window', :scope => 'admin.pages_dialogs.link_to.web_address') %></label>
         <input type='checkbox' name='web_address_target_blank' id='web_address_target_blank' <%= "checked='checked'" if @web_address_target_blank %> />
-        <label for='web_address_target_blank' class='stripped'><%=t('.web_address.new_window_label') %></label>
+        <label for='web_address_target_blank' class='stripped'><%= t('new_window_label', :scope => 'admin.pages_dialogs.link_to.web_address') %></label>
         <p>
-          <strong><%=t('.web_address.not_sure')%></strong>
+          <strong><%= t('not_sure', :scope => 'admin.pages_dialogs.link_to.web_address') %></strong>
         </p>
         <ol>
-          <li><%=t('.web_address.step1')%></li>
-          <li><%=t('.web_address.step2')%></li>
+          <li><%= t('step1', :scope => 'admin.pages_dialogs.link_to.web_address') %></li>
+          <li><%= t('step2', :scope => 'admin.pages_dialogs.link_to.web_address') %></li>
         </ol>
       </div>
     </div>
     <div id='email_address_area' <%= "style='display: none'" unless @email_address_area_selected %> class='dialog_area'>
       <div id='email_address_content'>
         <div class='field'>
-          <label for='email_address_text'><%=t('.email_address.tab_name')%></label>
-          <%= text_field :email_address, :text, :value => @email_address_text, :style => "width: 70%"%>
+          <label for='email_address_text'><%= t('tab_name', :scope => 'admin.pages_dialogs.link_to.email_address') %></label>
+          <%= text_field :email_address, :text, :value => @email_address_text, :style => "width: 70%" %>
           <img id='email_address_test_loader' src='/images/refinery/ajax-loader.gif' alt='Testing...' style='display: none;'/>
           <span id='email_address_test_result'></span>
         </div>
 
         <div class='field'>
-          <label for='email_default_subject_text'><%=t('.email_address.subject_line_optional')%></label>
+          <label for='email_default_subject_text'><%= t('subject_line_optional', :scope => 'admin.pages_dialogs.link_to.email_address') %></label>
           <%= text_field :email_default_subject, :text, :value => @email_default_subject_text, :style => "width: 70%" %>
         </div>
 
         <div class='field'>
-          <label for='email_default_body_text'><%=t('.email_address.body_optional')%></label>
+          <label for='email_default_body_text'><%= t('body_optional', :scope => 'admin.pages_dialogs.link_to.email_address') %></label>
           <%= text_area :email_default_body, :text, :value => @email_default_body_text, :style => "width: 70%", :rows => '' %>
         </div>
 
         <p>
-          <strong><%=t('.email_address.not_sure')%></strong>
+          <strong><%= t('not_sure', :scope => 'admin.pages_dialogs.link_to.email_address') %></strong>
         </p>
         <ol style='margin-top: 3px'>
           <li>
-            <%= t('.email_address.step1_html') %>
+            <%= t('step1_html', :scope => 'admin.pages_dialogs.link_to.email_address') %>
           </li>
           <li>
-            <%= t('.email_address.step2_html') %>
+            <%= t('step2_html', :scope => 'admin.pages_dialogs.link_to.email_address') %>
           </li>
           <li>
-            <%= t('.email_address.step3_html') %>
+            <%= t('step3_html', :scope => 'admin.pages_dialogs.link_to.email_address') %>
           </li>
         </ol>
       </div>
@@ -97,7 +97,7 @@
               <% resource_linked = (resource.url == params[:current_link]) unless params[:current_link].blank? %>
               <li<%= " class='linked'" if resource_linked %>>
                 <%= link_to "#{resource.title}.#{resource.ext}", resource.url,
-                            :title => t('.your_resource.link_to_this_resource'),
+                            :title => t('link_to_this_resource', :scope => 'admin.pages_dialogs.link_to.your_resource'),
                             :rel => resource.title,
                             :class => "page_link #{resource.ext}" %>
               </li>
@@ -105,8 +105,6 @@
           </ul>
           <%= will_paginate @resources,
                             :param_name => :resource_page,
-                            :previous_label => '&laquo;',
-                            :next_label => '&raquo;',
                             :renderer => Refinery::LinkRenderer,
                             :url => {:paginating => "resource_file"},
                             :id => 'resouces_paginate' %>

@@ -2,7 +2,7 @@ require 'globalize3'
 
 class Page < ActiveRecord::Base
 
-  translates :title, :meta_keywords, :meta_description, :browser_title
+  translates :title, :meta_keywords, :meta_description, :browser_title if self.respond_to?(:translates)
   attr_accessor :locale # to hold temporarily
   validates :title, :presence => true
 
@@ -247,8 +247,8 @@ class Page < ActiveRecord::Base
   # In the admin area we use a slightly different title to inform the which pages are draft or hidden pages
   def title_with_meta
     title = self.title.to_s
-    title << " <em>(#{::I18n.t('admin.pages.page.hidden')})</em>" unless show_in_menu?
-    title << " <em>(#{::I18n.t('admin.pages.page.draft')})</em>" if draft?
+    title << " <em>(#{::I18n.t('hidden', :scope => 'admin.pages.page')})</em>" unless show_in_menu?
+    title << " <em>(#{::I18n.t('draft', :scope => 'admin.pages.page')})</em>" if draft?
 
     title.strip
   end

@@ -1,4 +1,8 @@
 da:
+  devise:
+    sessions:
+      new:
+        sign_in: Log ind
   plugins:
     refinery_users:
       title: Brugere

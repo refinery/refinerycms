@@ -1,7 +1,7 @@
 def login
-  visit new_session_url
-  fill_in("session_login", :with => @user.email)
-  fill_in("session_password", :with => @user.password)
+  visit new_user_session_path
+  fill_in("user_login", :with => @user.email)
+  fill_in("user_password", :with => 'greenandjuicy')
   click_button("submit_button")
 end
 
@@ -20,7 +20,11 @@ Given /^A Refinery user exists$/ do
 end
 
 Given /^I have a user named "(.*)"$/ do |name|
-  Factory(:user, :login => name)
+  Factory(:user, :username => name)
+end
+
+Given /^I have a R|refinery user named "(.*)"$/ do |name|
+  Factory(:refinery_user, :username => name)
 end
 
 Given /^I have no users$/ do

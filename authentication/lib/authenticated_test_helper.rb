@@ -5,6 +5,6 @@ module AuthenticatedTestHelper
   end
 
   def authorize_as(user)
-    @request.env["HTTP_AUTHORIZATION"] = (ActionController::HttpAuthentication::Basic.encode_credentials(users(user).login, 'test') if user)
+    @request.env["HTTP_AUTHORIZATION"] = (ActionController::HttpAuthentication::Basic.encode_credentials(users(user).username, 'test') if user)
   end
 end

@@ -18,4 +18,5 @@ Gem::Specification.new do |s|
 
   s.add_dependency('refinerycms-base', version)
   s.add_dependency('refinerycms-core', version)
+  s.add_dependency('globalize3', '~> 0.0')
 end

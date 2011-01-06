@@ -8,13 +8,13 @@ module NavigationHelpers
           admin_users_path
 
         when /the login page/
-          new_session_path
+          new_user_session_path
 
         when /the forgot password page/
-          forgot_users_path
+          new_user_password_path
 
         when /the reset password page/
-          reset_users_path(:reset_code => @user.perishable_token)
+          edit_user_password_path(:reset_password_token => @user.reset_password_token)
         else
           nil
         end

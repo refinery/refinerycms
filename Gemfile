@@ -49,11 +49,9 @@ gem 'refinerycms-i18n',         :git => 'git://github.com/resolve/refinerycms-i1
 
 gem 'jruby-openssl' if java
 
-gem 'authlogic',                :git => 'git://github.com/parndt/authlogic.git'
-
-group :test do
+group :development, :test do
   # RSpec
-  gem 'rspec-rails',            '~> 2.3'
+  gem 'rspec-rails',            '= 2.3'
   # Cucumber
   gem 'capybara',               :git => 'git://github.com/parndt/capybara.git'
   gem 'database_cleaner'

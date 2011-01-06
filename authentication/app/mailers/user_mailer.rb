@@ -2,8 +2,8 @@ class UserMailer < ActionMailer::Base
 
   def reset_notification(user, request)
     @user = user
-    @url = reset_users_url(:host => request.host_with_port,
-                           :reset_code => user.perishable_token)
+    @url = edit_user_password_url(:host => request.host_with_port,
+                                  :reset_password_token => @user.reset_password_token)
 
     domain = request.domain(RefinerySetting.find_or_set(:tld_length, 1))
 

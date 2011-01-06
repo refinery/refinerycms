@@ -1,9 +1,9 @@
 require 'rails/all'
 
 require 'acts_as_indexed'
-require 'authlogic'
 require 'awesome_nested_set'
 require 'dragonfly'
+require 'devise'
 require 'friendly_id'
 require 'truncate_html'
 require 'will_paginate'
@@ -79,6 +79,12 @@ module Refinery
       initializer 'set will_paginate link labels' do |app|
         WillPaginate::ViewHelpers.pagination_options[:previous_label] = "&laquo;".html_safe
         WillPaginate::ViewHelpers.pagination_options[:next_label] = "&raquo;".html_safe
+      end
+
+      initializer 'ensure devise' do |app|
+        unless Rails.root.join('config', 'initializers', 'devise.rb').file?
+          load Refinery.root.join(*%w(core lib generators templates config initializers devise.rb))
+        end
       end
 
       # Attach ourselves to the Rails application.

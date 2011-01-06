@@ -1,4 +1,8 @@
 de:
+  devise:
+    sessions:
+      new:
+        sign_in: Anmelden
   plugins:
     refinery_users:
       title: Benutzer

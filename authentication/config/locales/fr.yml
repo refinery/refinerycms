@@ -1,4 +1,8 @@
 fr:
+  devise:
+    sessions:
+      new:
+        sign_in: Authentification
   plugins:
     refinery_users:
       title: Utilisateurs

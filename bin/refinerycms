@@ -98,8 +98,13 @@ module Refinery
       # Bundle the application which activates Refinery CMS
       bundle!
 
-      # Run the newly activated Refinery CMS generator unless we're updating.
-      run_command('rails generate refinerycms', {:cd => true}) unless @options[:update]
+      unless @options[:update]
+        # Ensure the database exists so that queries like .table_exists? don't fail, unless we're updating.
+        run_command("rake -f \"#{@app_path.join('Rakefile')}\" db:create")
+
+        # Run the newly activated Refinery CMS generator unless we're updating.
+        run_command('rails generate refinerycms', {:cd => true})
+      end
 
       # Output helpful messages to user
       output!
@@ -166,7 +171,7 @@ module Refinery
       # Specify the correct version of the Refinery CMS gem (may be git source).
       #src = Refinery.version !~ /\.pre$/ ? "'~> #{Refinery.version}'" : ":git => 'git://github.com/resolve/refinerycms.git'
       # TODO: Fix this upon release.
-      src = ":git => 'git://github.com/resolve/refinerycms.git'"
+      src = ":git => 'git://github.com/resolve/refinerycms.git', :branch => 'master'"
       find_and_replace('Gemfile', %r{gem 'refinerycms',.*}, "gem 'refinerycms',              #{src}")
 
       # Add in AWS-S3 for Heroku
@@ -184,10 +189,8 @@ module Refinery
 
     def output!
       unless @options[:update]
-        # sqlite3 requires we use 'db:migrate' etc instead of 'db:setup'
         puts "\n\nSetting up your development database..\n"
-        tasks = @options[:database][:adapter] == 'sqlite3' ? %w(db:migrate db:seed) : %w(db:setup)
-        tasks.each do |task|
+        %w(db:migrate db:seed).each do |task|
           run_command("rake -f \"#{@app_path.join('Rakefile')}\" #{task}")
         end
       else

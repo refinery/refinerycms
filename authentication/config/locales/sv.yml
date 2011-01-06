@@ -1,4 +1,8 @@
 sv:
+  devise:
+    sessions:
+      new:
+        sign_in: Logga in
   plugins:
     refinery_users:
       title: Användare

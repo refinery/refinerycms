@@ -128,7 +128,7 @@ namespace :refinery do
       end
     end
   end
-  
+
   desc "Un-crudify a method on a controller that uses crudify"
   task :uncrudify => :environment do
     if (model_name = ENV["model"]).present? and (action = ENV["action"]).present?
@@ -170,7 +170,18 @@ namespace :refinery do
       FileUtils::rm bad_migration
     end
 
-    # copy in any new migrations.
+    unless (devise_config = Rails.root.join('config', 'initializers', 'devise.rb')).file?
+      FileUtils::cp Refinery.root.join(*%w(core lib generators templates config initializers devise.rb)),
+                    devise_config,
+                    :verbose => verbose
+    end
+
+    (contents = Rails.root.join('Gemfile').read).gsub!("group :test do", "group :development, :test do")
+    Rails.root.join('Gemfile').open("w") do |f|
+      f.puts contents
+    end
+
+    # copy in any new migrations, except for ones that create schemas (this is an update!)
     Rails.root.join("db", "migrate").mkpath
     FileUtils::cp Dir[Refinery.root.join("db", "migrate", "*.rb").cleanpath.to_s].reject{|m| m =~ %r{\d+_create_refinerycms_.+?_schema\.rb}},
                   Rails.root.join("db", "migrate").cleanpath.to_s,

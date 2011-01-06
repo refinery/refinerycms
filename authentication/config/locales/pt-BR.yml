@@ -1,4 +1,8 @@
 pt-BR:
+  devise:
+    sessions:
+      new:
+        sign_in: Entrar
   plugins:
     refinery_users:
       title: Usuários

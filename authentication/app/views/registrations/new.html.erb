@@ -1,5 +1,5 @@
-<% content_for :header, t('.fill_form') %>
-<%= form_for :user, :url => users_path do |f| -%>
+<% content_for :header, t('fill_form', :scope => 'users.new') %>
+<%= form_for :user, :url => user_registration_path do |f| -%>
 
   <%= render :partial => "/shared/admin/error_messages",
              :locals => {
@@ -8,8 +8,8 @@
              } %>
 
   <div class='field'>
-    <%= f.label :login %>
-    <%= f.text_field :login, :class => 'larger widest' %>
+    <%= f.label :username %>
+    <%= f.text_field :username, :class => 'larger widest' %>
   </div>
   <div class='field'>
     <%= f.label :email %>
@@ -34,7 +34,7 @@
              :locals => {
                :f => f,
                :submit_continue => false,
-               :submit_button_text => t('.sign_up'),
+               :submit_button_text => t('sign_up', :scope => 'users.new'),
                :hide_delete => true,
                :hide_cancel => true
              }%>

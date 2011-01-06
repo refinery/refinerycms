@@ -1,6 +1,6 @@
 # Login stuff
 Given %r`not logged in$` do
-  visit logout_path
+  visit destroy_user_session_path
 end
 
 Given /locale is (.+?)$/ do |locale|
@@ -11,7 +11,7 @@ end
 
 Given %r`(?:log|am logged) in as "([^\"]+)"$` do |login|
   @my_username = login
-  visit login_path
+  visit refinery_login_path
   And %Q`enter the username "#{login}"`
   And %Q`enter the password "#{login}-123"`
   And "press the login button"
@@ -44,12 +44,12 @@ Then %r`not be allowed to log in$` do
 end
 
 Then %r`be redirected to login$` do
-  request.fullpath.should == login_path
+  request.fullpath.should == refinery_login_path
 end
 
 Then /^"([^\"]*)" can log in$/ do |name|
   user = User.find_by_login!(name)
-  visit login_path
+  visit refinery_login_path
   When %Q`I enter the username "#{name}"`
   And %Q`I enter the password "#{name}-123"`
   And 'I press the login button'

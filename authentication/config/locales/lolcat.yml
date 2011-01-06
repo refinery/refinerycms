@@ -1,4 +1,8 @@
 lolcat:
+  devise:
+    sessions:
+      new:
+        sign_in: SIGN IN
   plugins:
     refinery_users:
       title: USERS
