@@ -9,8 +9,6 @@ module Admin
 
     rescue_from FriendlyId::ReservedError, :with => :show_errors_for_reserved_slug
 
-    cache_sweeper :page_sweeper, :only => [:create, :update, :destroy, :update_positions]
-
     def new
       @page = Page.new
       Page.default_parts.each_with_index do |page_part, index|
