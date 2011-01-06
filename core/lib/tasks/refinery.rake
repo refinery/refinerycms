@@ -128,7 +128,7 @@ namespace :refinery do
       end
     end
   end
-  
+
   desc "Un-crudify a method on a controller that uses crudify"
   task :uncrudify => :environment do
     if (model_name = ENV["model"]).present? and (action = ENV["action"]).present?
@@ -174,6 +174,11 @@ namespace :refinery do
       FileUtils::cp Refinery.root.join(*%w(core lib generators templates config initializers devise.rb)),
                     devise_config,
                     :verbose => verbose
+    end
+
+    (contents = Rails.root.join('Gemfile').read).gsub!("group :test do", "group :development, :test do")
+    Rails.root.join('Gemfile').open("w") do |f|
+      f.puts contents
     end
 
     # copy in any new migrations, except for ones that create schemas (this is an update!)
