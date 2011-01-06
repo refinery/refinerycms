@@ -10,10 +10,8 @@ module Refinery
         app_resources.configure_with(:rails) do |c|
           c.datastore.root_path = Rails.root.join('public', 'system', 'resources').to_s
           c.url_path_prefix = '/system/resources'
-          if RefinerySetting.table_exists?
-            c.secret = RefinerySetting.find_or_set(:dragonfly_secret,
-                                                   Array.new(24) { rand(256) }.pack('C*').unpack('H*').first)
-          end
+          c.secret = RefinerySetting.find_or_set(:dragonfly_secret,
+                                                 Array.new(24) { rand(256) }.pack('C*').unpack('H*').first)
         end
         app_resources.configure_with(:heroku, ENV['S3_BUCKET']) if Refinery.s3_backend
 
@@ -47,7 +45,7 @@ module Refinery
           plugin.name = "refinery_files"
           plugin.url = {:controller => '/admin/resources', :action => 'index'}
           plugin.menu_match = /(refinery|admin)\/(refinery_)?(files|resources)$/
-          plugin.version = %q{0.9.8}
+          plugin.version = %q{0.9.9}
           plugin.activity = {
             :class => Resource
           }

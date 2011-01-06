@@ -147,7 +147,7 @@ GEM
     launchy (0.3.7)
       configuration (>= 0.0.5)
       rake (>= 0.8.1)
-    mail (2.2.13)
+    mail (2.2.14)
       activesupport (>= 2.3.6)
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
@@ -178,7 +178,7 @@ GEM
       rake (>= 0.8.7)
       thor (~> 0.14.4)
     rake (0.8.7)
-    rdoc (3.2)
+    rdoc (3.3)
     rspec (2.3.0)
       rspec-core (~> 2.3.0)
       rspec-expectations (~> 2.3.0)
@@ -187,7 +187,7 @@ GEM
     rspec-expectations (2.3.0)
       diff-lcs (~> 1.1.2)
     rspec-mocks (2.3.0)
-    rspec-rails (2.3.1)
+    rspec-rails (2.3.0)
       actionpack (~> 3.0)
       activesupport (~> 3.0)
       railties (~> 3.0)
@@ -234,7 +234,7 @@ DEPENDENCIES
   refinerycms-generators (~> 0.9.9)!
   refinerycms-i18n!
   routing-filter!
-  rspec-rails (~> 2.3)
+  rspec-rails (= 2.3)
   ruby-prof
   spork
   sqlite3-ruby
