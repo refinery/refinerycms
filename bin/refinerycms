@@ -98,8 +98,13 @@ module Refinery
       # Bundle the application which activates Refinery CMS
       bundle!
 
-      # Run the newly activated Refinery CMS generator unless we're updating.
-      run_command('rails generate refinerycms', {:cd => true}) unless @options[:update]
+      unless @options[:update]
+        # Ensure the database exists so that queries like .table_exists? don't fail, unless we're updating.
+        run_command("rake -f \"#{@app_path.join('Rakefile')}\" db:create")
+
+        # Run the newly activated Refinery CMS generator unless we're updating.
+        run_command('rails generate refinerycms', {:cd => true})
+      end
 
       # Output helpful messages to user
       output!
@@ -184,11 +189,8 @@ module Refinery
 
     def output!
       unless @options[:update]
-        # sqlite3 does not require 'db:create'
         puts "\n\nSetting up your development database..\n"
-        tasks = %w(db:migrate db:seed)
-        tasks.unshift('db:create') unless @options[:database][:adapter] == 'sqlite3'
-        tasks.each do |task|
+        %w(db:migrate db:seed).each do |task|
           run_command("rake -f \"#{@app_path.join('Rakefile')}\" #{task}")
         end
       else
