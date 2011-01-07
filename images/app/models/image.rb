@@ -55,7 +55,7 @@ class Image < ActiveRecord::Base
     if geometry.is_a?(Symbol) and self.class.user_image_sizes.keys.include?(geometry)
       geometry = self.class.user_image_sizes[geometry]
     end
-    
+
     if geometry.present? && !geometry.is_a?(Symbol)
       image.thumb(geometry)
     else
