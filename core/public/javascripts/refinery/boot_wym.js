@@ -249,9 +249,18 @@ WYMeditor.editor.prototype.loadIframe = function(iframe) {
   wym.initIframe(iframe);
 };
 
-$(function()
-{
+WYMeditor.init = function() {
   wymeditor_inputs = $('.wymeditor');
+  wymeditor_inputs = wymeditor_inputs.filter(function(index) {
+    for (i=0; i < WYMeditor.INSTANCES.length; i++) {
+      if (WYMeditor.INSTANCES[i]._element.attr('id') == $(this).attr('id')) {
+        return false;
+      }
+    }
+
+    return true;
+  });
+
   wymeditor_inputs.each(function(input) {
     if ((containing_field = $(this).parents('.field')).get(0).style.height === '') {
       containing_field.addClass('hide-overflow')
@@ -261,4 +270,8 @@ $(function()
   });
 
   wymeditor_inputs.wymeditor(wymeditor_boot_options);
+};
+
+$(function(){
+  WYMeditor.init();
 });

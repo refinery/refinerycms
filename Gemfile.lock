@@ -1,12 +1,12 @@
 GIT
-  remote: git://github.com/flori/json.git
+  remote: git://github.com/flori/json
   revision: 2c0f8d2c9b15a33b8d10ffcb1959aef54d320b57
   ref: 2c0f8d
   specs:
     json_pure (1.4.6a)
 
 GIT
-  remote: git://github.com/parndt/capybara.git
+  remote: git://github.com/parndt/capybara
   revision: 4cfe882c982682e71c13c877e7f14fd862a9e565
   specs:
     capybara (0.4.0)
@@ -28,7 +28,7 @@ GIT
       babosa (~> 0.2.0)
 
 GIT
-  remote: git://github.com/refinerycms/globalize3.git
+  remote: git://github.com/refinerycms/globalize3
   revision: c2837785a93c0478704a7d7626fca960a1db5146
   specs:
     globalize3 (0.0.10)
@@ -36,20 +36,20 @@ GIT
       activerecord (>= 3.0.0)
 
 GIT
-  remote: git://github.com/refinerycms/routing-filter.git
+  remote: git://github.com/refinerycms/routing-filter
   revision: 94a072118410475b0e872b050dc731ef136f1180
   specs:
     routing-filter (0.2.0)
       actionpack
 
 GIT
-  remote: git://github.com/resolve/refinerycms-generators.git
+  remote: git://github.com/resolve/refinerycms-generators
   revision: c0f197e6668ac10de9c1148c1db0e0ed45e13ae7
   specs:
     refinerycms-generators (0.9.9)
 
 GIT
-  remote: git://github.com/resolve/refinerycms-i18n.git
+  remote: git://github.com/resolve/refinerycms-i18n
   revision: 9291626998da4c20703fd1fffcd2ea6e47f8cbfc
   specs:
     refinerycms-i18n (0.9.8.12)
@@ -127,7 +127,7 @@ GEM
       term-ansicolor (~> 1.0.5)
     cucumber-rails (0.3.2)
       cucumber (>= 0.8.0)
-    culerity (0.2.13)
+    culerity (0.2.14)
     database_cleaner (0.6.0)
     devise (1.1.5)
       bcrypt-ruby (~> 2.1.2)
