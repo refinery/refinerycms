@@ -42,6 +42,11 @@ describe Image do
     it "should have different urls for each geometry string" do
       @image.thumbnail('200x200').url.should_not == @image.thumbnail('200x201').url
     end
+    
+    it "should use right geometry when given a thumbnail name" do
+      name, geometry = Image.user_image_sizes.first
+      @image.thumbnail(name).url.should == @image.thumbnail(geometry).url
+    end
 
   end
 

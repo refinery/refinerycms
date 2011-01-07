@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 class Image < ActiveRecord::Base
 
   # What is the max image size a user can upload
@@ -51,9 +53,9 @@ class Image < ActiveRecord::Base
   # Get a thumbnail job object given a geometry.
   def thumbnail(geometry = nil)
     if geometry.is_a?(Symbol) and self.class.user_image_sizes.keys.include?(geometry)
-      geometry = sizes[geometry].presence
+      geometry = self.class.user_image_sizes[geometry]
     end
-
+    
     if geometry.present? && !geometry.is_a?(Symbol)
       image.thumb(geometry)
     else
