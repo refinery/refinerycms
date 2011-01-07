@@ -45,7 +45,7 @@ describe Image do
     
     it "should use right geometry when given a thumbnail name" do
       name, geometry = Image.user_image_sizes.first
-      @image.thumbnail(name.to_sym).url.should == @image.thumbnail(geometry).url
+      @image.thumbnail(name).url.should == @image.thumbnail(geometry).url
     end
 
   end
