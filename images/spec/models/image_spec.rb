@@ -32,7 +32,7 @@ describe Image do
     end
 
     it "should contain its filename at the end" do
-      @image.thumbnail(nil).url.should =~ %r{#{@image.image_uid.split('/').last}$}
+      @image.thumbnail(nil).url.split('/').last.should == @image.image_name
     end
 
     it "should be different when supplying geometry" do
@@ -49,6 +49,5 @@ describe Image do
     end
 
   end
-
 
 end

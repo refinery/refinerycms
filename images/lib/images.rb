@@ -28,7 +28,7 @@ module Refinery
         # /system/images/BAhbB1sHOgZmIiMyMDEwLzA5LzAxL1NTQ19DbGllbnRfQ29uZi5qcGdbCDoGcDoKdGh1bWIiDjk0MngzNjAjYw/refinery_is_awesome.jpg
         # Officially the way to do it, from: http://markevans.github.com/dragonfly/file.URLs.html
         app_images.url_suffix = proc{|job|
-          "/#{job.uid_basename}#{job.encoded_extname || job.uid_extname}"
+          "/#{job.name}"
         }
 
         ### Extend active record ###
