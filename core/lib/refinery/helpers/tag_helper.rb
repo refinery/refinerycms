@@ -7,7 +7,7 @@ module Refinery
       def refinery_help_tag(title='')
         title = h(title) unless title.html_safe?
 
-        "<span class=\"help\" title=\"#{title}\">(#{t('shared.admin.help')})</span>".html_safe
+        "<span class=\"help\" title=\"#{title}\">(#{t('help', :scope => 'shared.admin')})</span>".html_safe
       end
 
       # This is just a quick wrapper to render an image tag that lives inside refinery/icons.

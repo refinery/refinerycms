@@ -133,7 +133,7 @@ module Refinery
             # object gets found by find_#{singular_name} function
             title = @#{singular_name}.#{options[:title_attribute]}
             if @#{singular_name}.destroy
-              flash.notice = t('refinery.crudify.destroyed', :what => "'\#{title}'")
+              flash.notice = t('destroyed', :scope => 'refinery.crudify', :what => "'\#{title}'")
             end
 
             redirect_to #{options[:redirect_to_url]}

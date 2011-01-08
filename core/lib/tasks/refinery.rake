@@ -171,6 +171,7 @@ namespace :refinery do
     end
 
     unless (devise_config = Rails.root.join('config', 'initializers', 'devise.rb')).file?
+      devise_config.parent.mkpath
       FileUtils::cp Refinery.root.join(*%w(core lib generators templates config initializers devise.rb)),
                     devise_config,
                     :verbose => verbose
