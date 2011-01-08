@@ -36,9 +36,9 @@ describe Resource do
     end
 
     it "should contain its filename at the end" do
-      @resource.url.should =~ %r{#{@resource.file_uid.split('/').last}$}
+      @resource.url.split('/').last.should == @resource.file_name
     end
+    
   end
-
 
 end
