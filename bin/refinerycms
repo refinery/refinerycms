@@ -197,6 +197,7 @@ module Refinery
       refinery_user_defined_gems = gemfile_contents.match(/# USER DEFINED(.*)# END USER DEFINED/m)
       refinery_user_defined_gems = refinery_user_defined_gems[1] unless refinery_user_defined_gems.nil?
       app_gemfile = @app_path.join('Gemfile')
+      FileUtils::cp app_gemfile, "#{app_gemfile}.backup"
       unless @options[:update]
         app_gemfile.open('a') do |f|
           f.write "\n#{refinery_gems}\n"
