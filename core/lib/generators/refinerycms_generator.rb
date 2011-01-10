@@ -52,7 +52,7 @@ class RefinerycmsGenerator < ::Refinery::Generators::EngineInstaller
 
       gsub_file env, "serve_static_assets = false", "serve_static_assets = true # Refinery CMS requires this to be true", :verbose => false
 
-      unless env.read =~ %{Refinery.rescue_not_found}
+      unless Rails.root.join(env).read =~ %{Refinery.rescue_not_found}
         append_file env, "Refinery.rescue_not_found = #{env.split('/').last.split('.rb').first == 'production'}"
       end
     end
