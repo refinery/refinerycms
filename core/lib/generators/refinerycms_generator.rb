@@ -26,7 +26,7 @@ class RefinerycmsGenerator < ::Refinery::Generators::EngineInstaller
     roadblocks << 'app/views/layouts/application.html.erb' unless self.options[:update]
     roadblocks.each do |roadblock|
       if (roadblock_path = Rails.root.join(roadblock)).file?
-        create_file "#{roadblock.split('.').first.split('/')[0..-2].join('/')}your_#{roadblock_path.split.last}",
+        create_file "#{roadblock.split('.').first.split('/')[0..-2].join('/')}/your_#{roadblock_path.split.last}",
                     :verbose => true do roadblock_path.read end
         remove_file roadblock_path, :verbose => true
       end
