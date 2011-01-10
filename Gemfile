@@ -34,21 +34,6 @@ gem 'refinerycms',              :path => '.'
 gem 'friendly_id',              :git => 'git://github.com/parndt/friendly_id', :branch => 'globalize3'
 gem 'globalize3',               :git => 'git://github.com/refinerycms/globalize3'
 
-# Specify additional Refinery CMS Engines here (all optional):
-gem 'refinerycms-generators',   '~> 0.9.9', :git => 'git://github.com/resolve/refinerycms-generators'
-# gem 'refinerycms-inquiries',    '~> 0.9.9.9'
-# gem 'refinerycms-news',         '~> 1.0'
-# gem 'refinerycms-portfolio',    '~> 0.9.9'
-# gem 'refinerycms-theming',      '~> 0.9.9'
-# gem 'refinerycms-search',       '~> 0.9.8'
-# gem 'refinerycms-blog',         '~> 1.1'
-
-# Add i18n support (optional, you can remove this if you really want to).
-gem 'routing-filter',           :git => 'git://github.com/refinerycms/routing-filter'
-gem 'refinerycms-i18n',         :git => 'git://github.com/resolve/refinerycms-i18n'
-
-gem 'jruby-openssl' if java
-
 group :development, :test do
   # RSpec
   gem 'rspec-rails',            '= 2.3'
@@ -78,3 +63,22 @@ end
 # REFINERY CMS DEVELOPMENT ====================================================
 
 # END REFINERY CMS DEVELOPMENT =================================================
+
+# USER DEFINED
+
+# Specify additional Refinery CMS Engines here (all optional):
+gem 'refinerycms-generators',   '~> 0.9.9', :git => 'git://github.com/resolve/refinerycms-generators'
+# gem 'refinerycms-inquiries',    '~> 0.9.9.9'
+# gem 'refinerycms-news',         '~> 1.0'
+# gem 'refinerycms-portfolio',    '~> 0.9.9'
+# gem 'refinerycms-theming',      '~> 0.9.9'
+# gem 'refinerycms-search',       '~> 0.9.8'
+# gem 'refinerycms-blog',         '~> 1.1'
+
+# Add i18n support (optional, you can remove this if you really want to).
+gem 'routing-filter',           :git => 'git://github.com/refinerycms/routing-filter'
+gem 'refinerycms-i18n',         :git => 'git://github.com/resolve/refinerycms-i18n'
+
+gem 'jruby-openssl' if java
+
+# END USER DEFINED
