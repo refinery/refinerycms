@@ -105,6 +105,11 @@ to get help on how to use that. Or read the full documentation on [writing engin
 
 [List here (add your link when you're done)](http://github.com/resolve/refinerycms/wiki/Example-Site-Showcase)
 
+## Contributing
+
+* [How to Contribute to Refinery](http://refinerycms.com/guides/how-to-contribute-to-refinery)
+* [Donations](http://pledgie.com/campaigns/8431)
+
 ## License
 
 Refinery is released under the [MIT license](http://github.com/resolve/refinerycms/blob/master/license.md#readme) and is copyright (c) 2005-2010 [Resolve Digital](http://www.resolvedigital.com)
