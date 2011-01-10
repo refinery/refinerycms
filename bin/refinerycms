@@ -18,6 +18,17 @@ require 'optparse'
 # Load refinerycms
 require Pathname.new(File.expand_path(File.dirname(__FILE__) << "/..")).join('lib', 'refinery')
 
+class String
+  def blank?
+    self.nil? or self.length == 0
+  end
+end
+class NilClass
+  def blank?
+    true
+  end
+end
+
 module Refinery
   class AppGenerator
 
@@ -30,6 +41,7 @@ module Refinery
           :username => 'root',
           :password => ''
         },
+        :from_version => '0.9.8',
         :force => false,
         :heroku => false,
         :update => false,
@@ -65,6 +77,10 @@ module Refinery
           @options[:force] = true
         end
 
+        opts.on("--from-version VERSION", String, "Set the version that we are updating from, incase there are special files that need to change", "  (default '0.9.8')") do |version|
+          @options[:from_version] = version
+        end
+
         opts.on("--heroku [APP_NAME]", "Set up and deploy to Heroku") do |app_name|
           @options[:heroku] = app_name || ''
         end
@@ -92,24 +108,32 @@ module Refinery
       # Grab input and ensure that the path doesn't exist already and other checks.
       validate!
 
-      # Generate a Refinery CMS application
-      generate!
-
-      # Bundle the application which activates Refinery CMS
-      bundle!
-
       unless @options[:update]
-        # Ensure the database exists so that queries like .table_exists? don't fail, unless we're updating.
-        run_command("rake -f \"#{@app_path.join('Rakefile')}\" db:create")
+        # Generate a Refinery CMS application
+        generate!
 
-        # Run the newly activated Refinery CMS generator unless we're updating.
-        run_command('rails generate refinerycms', {:cd => true})
+        # Bundle the application which activates Refinery CMS
+        bundle!
+
+        # Ensure the database exists so that queries like .table_exists? don't fail.
+        run_command("rake -f \"#{@app_path.join('Rakefile')}\" db:create")
+      else
+        # Update the current application.
+        update!
+
+        # Bundle the application which activates Refinery CMS
+        bundle!
       end
+
+      # Run the newly activated Refinery CMS generator.
+      run_command("rails generate refinerycms#{' --update' if @options[:update]}", {:cd => true})
+
+      # Run the update task if we're updating
+      run_command("rake refinery:update", {:cd => true}) if @options[:update]
 
       # Output helpful messages to user
       output!
     end
-
 
     def validate!
       # Check for valid input
@@ -134,44 +158,105 @@ module Refinery
       @app_path = Pathname.new(File.expand_path(@input.first))
       @app_name = @app_path.to_s.split(File::SEPARATOR).last
 
-      if @app_path.directory? and @options[:force] == false
+      if @app_path.directory? and @options[:force] == false and @options[:update] == false
         puts "The directory '#{@app_path}' that you specified already exists."
         puts "Use --force to overwrite an existing directory."
+        puts "Use --update to replace any Refinery CMS files in an existing installation."
         exit
       end
     end
 
-    def generate!
-      # Generate a rails application
+    def update!
       rails_command = "rails new \"#{@app_path}\""
+      rails_command << (@options[:from_version] !~ %r{^0.9.8} ? ' --skip' : ' --force')
       rails_command << " --database #{@options[:database][:adapter]}"
-      rails_command << " --force" if @options[:force]
-      rails_command << " --skip-test-unit --skip-prototype"
-      rails_command << " --skip-gemfile" if @options[:update]
+      skips = %w(active-record gemfile git javascript prototype test-unit)
+      skips.each do |skip|
+        rails_command << " --skip-#{skip}"
+      end
+
+      generate!(rails_command)
+    end
+
+    def generate!(rails_command = nil)
+      if rails_command.blank?
+        # Generate a rails application
+        rails_command = "rails new \"#{@app_path}\""
+        rails_command << " --database #{@options[:database][:adapter]}"
+        rails_command << " --force" if @options[:force]
+        rails_command << " --skip-test-unit --skip-prototype"
+      end
       run_command(rails_command, {:cd => false})
       abort "Generating Rails application failed. Exiting..." unless $?.success?
     end
 
     def bundle!
-      # When using --update which skips the Gemfile a few things need to be handled manually:
+      # Add refinery gems to the Gemfile
+      gemfile_contents = Refinery.root.join('Gemfile').read
+      refinery_gems = gemfile_contents.match(/# REFINERY CMS =+.*# END REFINERY CMS =+/m)[0]
+      refinery_user_defined_gems = gemfile_contents.match(/# USER DEFINED(.*)# END USER DEFINED/m)
+      refinery_user_defined_gems = refinery_user_defined_gems[1] unless refinery_user_defined_gems.nil?
+      app_gemfile = @app_path.join('Gemfile')
       unless @options[:update]
-        # Add refinery gems to the Gemfile
-        gemfile_contents = Refinery.root.join('Gemfile').read
-        refinery_gems = gemfile_contents.match(/# REFINERY CMS =+.*# END REFINERY CMS =+/m)[0]
-        @app_path.join('Gemfile').open('a') do |f|
+        app_gemfile.open('a') do |f|
           f.write "\n#{refinery_gems}\n"
+          @options[:gems] = ([refinery_user_defined_gems] | [@options[:gems]]).flatten.compact
+
           f.write "\n# USER DEFINED\n#{@options[:gems].join("\n")}\n# END USER DEFINED" if @options[:gems].any?
         end
+      else
+        # Now find all user defined gems before we go changing anything.
+        user_defined_gems = app_gemfile.read.match(/# USER DEFINED(.*)# END USER DEFINED/m)
+        user_defined_gems = user_defined_gems[1].strip unless user_defined_gems.nil?
+
+        # If the user is updating to this version from a version that defined user defined gems
+        # in the "# REFINERY CMS " section then we need to salvage them.
+        incorrectly_core_gems = app_gemfile.read.match(/# REFINERY CMS =+.*(# Specify additional Refinery.*)# END REFINERY CMS =+/m)
+        incorrectly_core_gems = incorrectly_core_gems[1].strip unless incorrectly_core_gems.nil?
+        unless incorrectly_core_gems.blank?
+          # wipe the gems from the gemfile in their current position
+          # they will be reintroduced in the next step.
+          find_and_replace(app_gemfile, incorrectly_core_gems, '')
+        end
+
+        # If the user hasn't defined any gems then use the refinery ones.
+        refinery_user_defined_gems = user_defined_gems.strip.blank? ? [refinery_user_defined_gems] : []
+        refinery_user_defined_gems |= [user_defined_gems, incorrectly_core_gems].reject{|g| g.strip.blank?}.compact.flatten
+
+        # Unless all sets of gems are blank we want to overwrite the section.
+        unless refinery_user_defined_gems.length == 0
+          # Manage double ups so that earlier rules are kept (can't use uniq because it strips blank lines)
+          # sorted by order of precedence (so we have to reverse the array)
+          refinery_user_defined_gems = refinery_user_defined_gems.join('').split("\n").reverse
+          refinery_user_defined_gems.reject! do |g|
+            # Ignoring blank lines because we want to keep them,
+            g != '' && (
+              (refinery_user_defined_gems.count{|line| line == g} > 1) || # Delete where there's another line like this.
+              (g =~ %r{^(# +)?( +)?gem} && (refinery_user_defined_gems.count{|line| line.split(',').first == g.split(',').first} > 1))
+            )
+          end
+
+          # Use any gems specified, too, ensuring we restore the sort order of refinery_user_defined_gems.
+          @options[:gems] = refinery_user_defined_gems.reverse + @options[:gems]
+          find_and_replace(app_gemfile,
+                           /# USER DEFINED.*# END USER DEFINED/m,
+                           "# USER DEFINED#{@options[:gems].join("\n")}\n\n# END USER DEFINED")
+        end
+
+        # replace existing core dependencies with the current set of dependencies.
+        find_and_replace(app_gemfile, /# REFINERY CMS =+.*# END REFINERY CMS =+/m, refinery_gems)
       end
 
       # Override database username and password
-      find_and_replace('config/database.yml', %r{username:.*}, "username: #{@options[:database][:username]}")
-      find_and_replace('config/database.yml', %r{password:.*}, "password: #{@options[:database][:password]}")
+      unless @options[:update]
+        find_and_replace('config/database.yml', %r{username:.*}, "username: #{@options[:database][:username]}")
+        find_and_replace('config/database.yml', %r{password:.*}, "password: #{@options[:database][:password]}")
+      end
 
       # Specify the correct version of the Refinery CMS gem (may be git source).
-      #src = Refinery.version !~ /\.pre$/ ? "'~> #{Refinery.version}'" : ":git => 'git://github.com/resolve/refinerycms.git'
+      #src = Refinery.version !~ /\.pre$/ ? "'~> #{Refinery.version}'" : ":git => 'git://github.com/resolve/refinerycms'
       # TODO: Fix this upon release.
-      src = ":git => 'git://github.com/resolve/refinerycms.git', :branch => 'master'"
+      src = ":git => 'git://github.com/resolve/refinerycms', :branch => 'master'"
       find_and_replace('Gemfile', %r{gem 'refinerycms',.*}, "gem 'refinerycms',              #{src}")
 
       # Add in AWS-S3 for Heroku
