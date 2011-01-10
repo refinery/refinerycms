@@ -220,8 +220,8 @@ module Refinery
         end
 
         # If the user hasn't defined any gems then use the refinery ones.
-        refinery_user_defined_gems = user_defined_gems.strip.blank? ? [refinery_user_defined_gems] : []
-        refinery_user_defined_gems |= [user_defined_gems, incorrectly_core_gems].reject{|g| g.strip.blank?}.compact.flatten
+        refinery_user_defined_gems = user_defined_gems.to_s.strip.blank? ? [refinery_user_defined_gems] : []
+        refinery_user_defined_gems |= [user_defined_gems, incorrectly_core_gems].reject{|g| g.to_s.strip.blank?}.compact.flatten
 
         # Unless all sets of gems are blank we want to overwrite the section.
         unless refinery_user_defined_gems.length == 0
