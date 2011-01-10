@@ -207,12 +207,18 @@ module Refinery
       else
         # Now find all user defined gems before we go changing anything.
         user_defined_gems = app_gemfile.read.match(/# USER DEFINED(.*)# END USER DEFINED/m)
-        user_defined_gems = user_defined_gems[1].strip unless user_defined_gems.nil?
+        user_defined_gems = user_defined_gems[1].to_s.strip unless user_defined_gems.nil?
 
         # If the user is updating to this version from a version that defined user defined gems
         # in the "# REFINERY CMS " section then we need to salvage them.
         incorrectly_core_gems = app_gemfile.read.match(/# REFINERY CMS =+.*(# Specify additional Refinery.*)# END REFINERY CMS =+/m)
-        incorrectly_core_gems = incorrectly_core_gems[1].strip unless incorrectly_core_gems.nil?
+        unless incorrectly_core_gems.nil?
+          incorrectly_core_gems = incorrectly_core_gems[1].to_s.strip
+          # stop before any new groups appear.
+          incorrectly_core_gems_take_two = incorrectly_core_gems.match(/(# Specify additional Refinery.*)group ?:?/m)
+          incorrectly_core_gems = incorrectly_core_gems_take_two[1].to_s.strip unless incorrectly_core_gems_take_two.nil?
+        end
+
         unless incorrectly_core_gems.blank?
           # wipe the gems from the gemfile in their current position
           # they will be reintroduced in the next step.
