@@ -5,6 +5,9 @@ class RefinerycmsGenerator < ::Refinery::Generators::EngineInstaller
   engine_name :refinerycms
   source_root Refinery.root.join(*%w[core lib generators templates])
 
+  class_option :update, :type => :boolean, :aliases => nil, :group => :runtime,
+                        :desc => "Update an existing Refinery CMS based application"
+
   def generate
     # Ensure the generator doesn't output anything using 'puts'
     self.silence_puts = true
@@ -24,7 +27,7 @@ class RefinerycmsGenerator < ::Refinery::Generators::EngineInstaller
         create_file "your_#{roadblock.split.last}", :verbose => true do roadblock.read end
         remove_file roadblock, :verbose => true
       end
-    end
+    end unless self.options[:update]
 
     # Copy asset files (JS, CSS) so they're ready to use.
     %w(application.css formatting.css home.css theme.css).map{ |ss|
@@ -33,10 +36,10 @@ class RefinerycmsGenerator < ::Refinery::Generators::EngineInstaller
       copy_file stylesheet,
                 Rails.root.join('public', 'stylesheets', stylesheet.split.last),
                 :verbose => true
-    end
+    end unless self.options[:update]
     copy_file Refinery.root.join('core', 'public', 'javascripts', 'admin.js'),
               Rails.root.join('public', 'javascripts', 'admin.js'),
-              :verbose => true
+              :verbose => true unless self.options[:update]
 
     # Ensure the config.serve_static_assets setting is present and enabled
     %w(development test production).map{|e| "config/environments/#{e}.rb"}.each do |env|
@@ -60,6 +63,12 @@ class RefinerycmsGenerator < ::Refinery::Generators::EngineInstaller
     our_ignore_rules = self.class.source_root.join('.gitignore').read
     our_ignore_rules = our_ignore_rules.split('# REFINERY CMS DEVELOPMENT').first if Rails.root != Refinery.root
     append_file ".gitignore", our_ignore_rules
+
+    # If the admin/base_controller.rb file exists, ensure it does not do the old inheritance
+    if (admin_base = Rails.root.join('app', 'controllers', 'admin', 'base_controller.rb')).file?
+      gsub_file admin_base, "< Refinery::AdminBaseController", "< ActionController::Base",
+                :verbose => @options[:update]
+    end
 
     # Overwrite rails defaults with refinery defaults and other 'important files'
     ['spec/*.*', '.rspec', 'config/cucumber.yml'].map{|f| Dir[self.class.source_root.join(f)]}.flatten.each do |file|
