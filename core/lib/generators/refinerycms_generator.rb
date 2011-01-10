@@ -22,24 +22,29 @@ class RefinerycmsGenerator < ::Refinery::Generators::EngineInstaller
     end
 
     # First, effectively move / rename files that get in the way of Refinery CMS
-    %w(public/index.html app/views/layouts/application.html.erb config/cucumber.yml).each do |roadblock|
-      if (roadblock = Rails.root.join(roadblock)).file?
-        create_file "your_#{roadblock.split.last}", :verbose => true do roadblock.read end
-        remove_file roadblock, :verbose => true
+    roadblocks = %w(public/index.html config/cucumber.yml)
+    roadblocks << 'app/views/layouts/application.html.erb' unless self.options[:update]
+    roadblocks.each do |roadblock|
+      if (roadblock_path = Rails.root.join(roadblock)).file?
+        create_file "#{roadblock.split('.').first.split('/')[0..-2]}your_#{roadblock.split.last}",
+                    :verbose => true do roadblock_path.read end
+        remove_file roadblock_path, :verbose => true
       end
-    end unless self.options[:update]
+    end
 
-    # Copy asset files (JS, CSS) so they're ready to use.
-    %w(application.css formatting.css home.css theme.css).map{ |ss|
-      Refinery.root.join('core', 'public', 'stylesheets', ss)
-    }.reject{|ss| !ss.file?}.each do |stylesheet|
-      copy_file stylesheet,
-                Rails.root.join('public', 'stylesheets', stylesheet.split.last),
+    unless self.options[:update]
+      # Copy asset files (JS, CSS) so they're ready to use.
+      %w(application.css formatting.css home.css theme.css).map{ |ss|
+        Refinery.root.join('core', 'public', 'stylesheets', ss)
+      }.reject{|ss| !ss.file?}.each do |stylesheet|
+        copy_file stylesheet,
+                  Rails.root.join('public', 'stylesheets', stylesheet.split.last),
+                  :verbose => true
+      end
+      copy_file Refinery.root.join('core', 'public', 'javascripts', 'admin.js'),
+                Rails.root.join('public', 'javascripts', 'admin.js'),
                 :verbose => true
-    end unless self.options[:update]
-    copy_file Refinery.root.join('core', 'public', 'javascripts', 'admin.js'),
-              Rails.root.join('public', 'javascripts', 'admin.js'),
-              :verbose => true unless self.options[:update]
+    end
 
     # Ensure the config.serve_static_assets setting is present and enabled
     %w(development test production).map{|e| "config/environments/#{e}.rb"}.each do |env|
@@ -47,7 +52,9 @@ class RefinerycmsGenerator < ::Refinery::Generators::EngineInstaller
 
       gsub_file env, "serve_static_assets = false", "serve_static_assets = true # Refinery CMS requires this to be true", :verbose => false
 
-      append_file env, "Refinery.rescue_not_found = #{env.split('/').last.split('.rb').first == 'production'}"
+      unless env.read =~ %{Refinery.rescue_not_found}
+        append_file env, "Refinery.rescue_not_found = #{env.split('/').last.split('.rb').first == 'production'}"
+      end
     end
 
     # Stop pretending
@@ -66,8 +73,13 @@ class RefinerycmsGenerator < ::Refinery::Generators::EngineInstaller
 
     # If the admin/base_controller.rb file exists, ensure it does not do the old inheritance
     if (admin_base = Rails.root.join('app', 'controllers', 'admin', 'base_controller.rb')).file?
+      gsub_file admin_base,
+                "# You can extend refinery backend with your own functions here and they will likely not get overriden in an update.",
+                "",
+                :verbose => self.options[:update]
+
       gsub_file admin_base, "< Refinery::AdminBaseController", "< ActionController::Base",
-                :verbose => @options[:update]
+                :verbose => self.options[:update]
     end
 
     # Overwrite rails defaults with refinery defaults and other 'important files'
@@ -81,15 +93,17 @@ class RefinerycmsGenerator < ::Refinery::Generators::EngineInstaller
       self.class.source_root.join('db', 'seeds.rb').read
     end
 
-    existing_source_root = self.class.source_root
     # Seeds and migrations now need to be copied from their various engines.
-    ::Refinery::Plugins.registered.pathnames.reject{|p| !p.join('db').directory?}.each do |pathname|
-      self.class.source_root pathname
+    unless self.options[:update]
+      existing_source_root = self.class.source_root
+      ::Refinery::Plugins.registered.pathnames.reject{|p| !p.join('db').directory?}.each do |pathname|
+        self.class.source_root pathname
+        super
+      end
+      self.class.source_root existing_source_root
+
       super
     end
-    self.class.source_root existing_source_root
-
-    super
   end
 
 end
