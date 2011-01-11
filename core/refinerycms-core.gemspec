@@ -17,5 +17,4 @@ Gem::Specification.new do |s|
   s.require_path = 'lib'
 
   s.add_dependency('refinerycms-base', version)
-  s.add_dependency('refinerycms-settings', version)
 end
