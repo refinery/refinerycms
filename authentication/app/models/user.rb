@@ -15,6 +15,8 @@ class User < ActiveRecord::Base
   attr_accessor :login
   attr_accessible :email, :password, :password_confirmation, :remember_me, :username, :plugins, :login
 
+  validates :username, :presence => true, :uniqueness => true
+
   class << self
     # Find user by email or username.
     # https://github.com/plataformatec/devise/wiki/How-To:-Allow-users-to-sign_in-using-their-username-or-email-address
