@@ -28,14 +28,6 @@ GIT
       babosa (~> 0.2.0)
 
 GIT
-  remote: git://github.com/refinerycms/globalize3
-  revision: c2837785a93c0478704a7d7626fca960a1db5146
-  specs:
-    globalize3 (0.0.10)
-      activemodel (>= 3.0.0)
-      activerecord (>= 3.0.0)
-
-GIT
   remote: git://github.com/refinerycms/routing-filter
   revision: 94a072118410475b0e872b050dc731ef136f1180
   specs:
@@ -55,6 +47,14 @@ GIT
     refinerycms-i18n (0.9.8.12)
       refinerycms (>= 0.9.8)
       routing-filter (~> 0.1)
+
+GIT
+  remote: git://github.com/svenfuchs/globalize3
+  revision: c4cc164a698a0e9d469fe2a2b7838a442440d618
+  specs:
+    globalize3 (0.0.11)
+      activemodel (>= 3.0.0)
+      activerecord (>= 3.0.0)
 
 PATH
   remote: .
@@ -133,7 +133,7 @@ GEM
       bcrypt-ruby (~> 2.1.2)
       warden (~> 1.0.2)
     diff-lcs (1.1.2)
-    dragonfly (0.8.1)
+    dragonfly (0.8.2)
       rack
     erubis (2.6.6)
       abstract (>= 1.0.0)
