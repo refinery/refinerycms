@@ -1,4 +1,4 @@
-<% content_for :header, t('pick_new_password_for', :email => 'Refinery', :scope => 'users.reset') %>
+<% content_for :header, t('pick_new_password_for', :scope => 'users.reset', :email => @user.email) %>
 
 <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put }) do |f| %>
   <%= f.hidden_field :reset_password_token %>
