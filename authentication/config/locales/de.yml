@@ -1,8 +1,4 @@
 de:
-  devise:
-    sessions:
-      new:
-        sign_in: Anmelden
   plugins:
     refinery_users:
       title: Benutzer
@@ -15,6 +11,7 @@ de:
         cannot_remove_user_plugin_from_current_user: Sie können die Erweiterung 'Benutzer' nicht vom aktuellen Konto entfernen.
       form:
         blank_password_keeps_current: Wird das Passwort leer gelassen, wird das aktuelle Passwort beibehalten
+        plugin_access: Zugriff auf Erweiterungen
         enable_all: Alles aktivieren
       index:
         create_new_user: Neuen Benutzer anlegen
@@ -23,8 +20,6 @@ de:
         email_user: Diesem Benutzer emailen
         preview: (%{who}) angelegt am %{created_at}
   sessions:
-    login_successful: Erfolgreich angemeldet
-    login_failed: Tut mir leid, Ihr Passwort oder Benutzername war nicht korrekt.
     new:
       hello_please_sign_in: Hallo! Bitte melden Sie sich an.
       sign_in: Anmelden
@@ -50,29 +45,15 @@ de:
       reset_password: Passwort zurücksetzen
       password_blank: Füllen Sie die Felder mit übereinstimmenden Passwörtern aus.
   user_mailer:
-    link_to_reset_your_password: Link zum Zurücksetzen Ihres Passworts
-  authlogic:
-    error_messages:
-      login_blank: Kann nicht leer gelassen werden
-      login_invalid: Sollte bitte nur Buchstaben, Zahlen, Leerzeichen und .-_@ enthalten.
-      email_invalid: Sollte nach einer gültigen E-Mail-Adresse aussehen.
-      no_authentication_details: Sie haben keine Details zur Authentifizierung angeben.
-    models:
-      user_session: Benutzersitzung
-    attributes:
-      user_session:
-        login: Login
-        email: E-Mail
-        password: Passwort
-        remember_me: Login merken
-        incorrect: Tut mir leid, Ihr %{login_field} oder Passwort war nicht korrekt.
+    reset_notification:
+      subject: Link zum Zurücksetzen Ihres Passworts
   activerecord:
+    models:
+      user: user
     attributes:
       user:
         login: Login
         email: E-Mail
         password: Passwort
         password_confirmation: Passwort Bestätigung
-        plugin_access: Zugriff auf Erweiterungen
-    models:
-      user: user
+        remember_me: Login merken

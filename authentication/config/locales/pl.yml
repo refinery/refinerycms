@@ -1,8 +1,4 @@
 pl:
-  devise:
-    sessions:
-      new:
-        sign_in: Zaloguj się
   plugins:
     refinery_users:
       title: Użytkownicy
@@ -23,7 +19,6 @@ pl:
         email_user: Wyślij e-mail do tego użytkownika
         preview: (%{who}) dodany %{created_at}
   sessions:
-    login_successful: Logowanie poprawne
     new:
       hello_please_sign_in: Hej! Proszę zaloguj się.
       sign_in: Zaloguj się
@@ -49,23 +44,14 @@ pl:
       reset_password: Reset hasła
       password_blank: Wypełnij pola poniżej identycznymi hasłami.
   user_mailer:
-    link_to_reset_your_password: Link do resetu hasła
-  authlogic:
-    error_messages:
-      login_blank: nie może być puste
-      password_blank: nie może być puste
-      login_invalid: należy stosować wyłącznie liter, cyfr, spacji oraz .-_@.
-      email_invalid: powinno wyglądać jak adres e-mail.
-      no_authentication_details: Nie zostały podane żadne detale dla autentykacji.
+    reset_notification:
+      subject: Link do resetu hasła
+  activerecord:
     models:
-      user_session: UserSession
+      user: użytkownik
     attributes:
-      user_session:
+      user:
         login: Login
         email: E-mail
         password: Hasło
         remember_me: Zapamiętaj mnie
-        incorrect: Niestety, Twój %{login_field} lub hasło były niepoprawne.
-  activerecord:
-    models:
-      user: użytkownik

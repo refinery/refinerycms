@@ -1,8 +1,4 @@
 nl:
-  devise:
-    sessions:
-      new:
-        sign_in: Log in
   plugins:
     refinery_users:
       title: Gebruikers
@@ -22,8 +18,6 @@ nl:
         email_user: Email deze gebruiker
         preview: (%{who}) is aangemaakt op %{created_at}
   sessions:
-    login_successful: Successvol ingelogd.
-    login_failed: Sorry, uw wachtwoord of gebruikersnaam was niet juist.
     new:
       hello_please_sign_in: Hallo! Log in om verder te kunnen.
       sign_in: Log in
@@ -49,22 +43,14 @@ nl:
       reset_password: Reset het wachtwoord
       password_blank: Vul de bevestiging in met hetzelfde wachtwoord
   user_mailer:
-    link_to_reset_your_password: Link om uw wachtwoord te resetten
-  authlogic:
-    error_messages:
-      login_blank: mag niet leeg zijn
-      login_invalid: moet gebruik alleen letters, cijfers, spaties en .- _ @ gelieve
-      email_invalid: eruit moet zien als een e-mail adres.
-      no_authentication_details: U heeft niet alle details voor authenticatie.
+    reset_notification:
+      subject: Link om uw wachtwoord te resetten
+  activerecord:
     models:
-      user_session: UserSession
+      user: gebruiker
     attributes:
-      user_session:
+      user:
         login: Gebruikersnaam
         email: e-mail
         password: Wachtwoord
         remember_me: Onthoud mijn gegevens
-        incorrect: "Sorry, uw %{login_field} of wachtwoord was niet juist."
-  activerecord:
-    models:
-      user: gebruiker

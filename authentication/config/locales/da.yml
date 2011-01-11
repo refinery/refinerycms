@@ -1,8 +1,4 @@
 da:
-  devise:
-    sessions:
-      new:
-        sign_in: Log ind
   plugins:
     refinery_users:
       title: Brugere
@@ -22,16 +18,7 @@ da:
         email_user: Send e-mail
         preview: (%{who}) oprettet %{created_at}
   sessions:
-    login_successful: Du er logget på
-    login_failed: Beklager, dit brugernavn eller adgangskode er forkert.
-    logged_out: Du er logget af.
     new:
-      login: Brugernavn
-      log_in: Log på
-      cancel: Annullér
-      password: Adgangskode
-      remember_me: Husk mig
-      or: eller
       forgot_password: Jeg har glemt mit password
       hello_please_sign_in: Hej! Du skal logge ind
       sign_in: log ind
@@ -55,33 +42,12 @@ da:
       code_invalid: "Vi beklager, men denne nulstilling kode er udløbet eller ugyldig. Hvis du har spørgsmål kan du prøve at kopiere og indsætte webadressen fra din e-mail til din browser eller genstarte reset password proces."
       successful: "Adgangskode reset succes for %{email}"
   user_mailer:
-    please_activate: Du skal aktivere din nye brugerkonto
-    activated: Din konto er nu aktiveret.
-    activated_email: "%{who}, din konto er nu aktiveret. Du kan nu begynde at tilføje plug-ins:"
-    account_created: Din konto er nu oprettet.
-    user_name: Brugernavn %{name}
-    password: Adgangskode %{password}
-    visit_url: "Du aktiverer din brugerkonto ved at følge dette link:"
-    link_to_reset_your_password: Link til nulstilling af din adgangskode
-  authlogic:
-    error_messages:
-      login_blank: skal udfyldes
-      login_not_found: er ugyldigt
-      login_invalid: må kun indeholde bogstaver, tal, mellemrum og tegnene '.-_@'.
-      consecutive_failed_logins_limit_exceeded: Din konto er nu spærret pga. for mange forgæves forsøg på at logge på.
-      email_invalid: er ikke en gyldig e-mail-adresse.
-      password_blank: skal udfyldes
-      password_invalid: er ikke gyldigt
-      not_active: Din brugerkonto er ikke aktiv
-      not_confirmed: Du skal bekræfte din brugerkonto, før du kan logge på
-      not_approved: Din brugerkonto er ikke godkendt
-      no_authentication_details: Angiv brugernavn og adgangskode
-    models:
-      user_session: UserSession
+    reset_notification:
+      subject: Link til nulstilling af din adgangskode
+  activerecord:
     attributes:
-      user_session:
+      user:
         login: brugernavn
         email: e-mail
         password: adgangskode
         remember_me: husk mig
-        incorrect: "Beklager, dit %{login_field} eller adgangskode er forkert."

@@ -1,19 +1,8 @@
 ru:
-  devise:
-    sessions:
-      new:
-        sign_in: Войти
   plugins:
     refinery_users:
       title: Пользователи
       article: masculine
-  activerecord:
-    models:
-      user: пользователь
-    attributes:
-      user:
-        password: Пароль
-        password_confirmation: Подтверждение пароля
   admin:
     users:
       delete: Удалить этого пользователя навсегда
@@ -29,7 +18,6 @@ ru:
         email_user: Написать эл. письмо этому пользователю
         preview: (%{who}) создан %{created_at}
   sessions:
-    login_successful: Вход успешно выполнен
     new:
       hello_please_sign_in: Пожалуйста, войдите.
       sign_in: Войти
@@ -64,25 +52,19 @@ ru:
     password: Пароль %{password}
     visit_url: "Перейдите по этой ссылке, чтобы активировать ваш акаунт:"
     link_to_reset_your_password: Ссылка для сброса пароля
-  authlogic:
-    error_messages:
-      login_blank: не может быть пустым
-      login_not_found: неверен
-      login_invalid: должен состоять только из латинских букв, цифр, пробелов и символов .-_@
-      consecutive_failed_logins_limit_exceeded: Максимальное количество попыток входа исчерпано, акаунт отключен.
-      email_invalid: должен иметь формать адреса эл. почты
-      password_blank: не может быть пустым
-      password_invalid: неверен
-      not_active: Ваш акаунт не активирован
-      not_confirmed: Ваш акаунт не подтвержден
-      not_approved: Ваш акаунт не разрешен
-      no_authentication_details: You did not provide any details for authentication.
+  devise:
+    failure:
+      unauthenticated: 'Вы должны войти.'
+      invalid: 'Имя пользователя или пароль неверны.'
+    sessions:
+      signed_in: 'Вы вошли.'
+  activerecord:
     models:
-      user_session: UserSession
+      user: пользователь
     attributes:
-      user_session:
+      user:
         login: Имя пользователя
         email: Эл. почта
         password: Пароль
+        password_confirmation: Подтверждение пароля
         remember_me: Запомнить меня
-        incorrect: "%{login_field} или пароль неверны"

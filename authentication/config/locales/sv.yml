@@ -1,8 +1,4 @@
 sv:
-  devise:
-    sessions:
-      new:
-        sign_in: Logga in
   plugins:
     refinery_users:
       title: Användare
@@ -22,7 +18,6 @@ sv:
         email_user: Skicka e-post till denna användare
         preview: (%{who}) la till %{created_at}
   sessions:
-    login_successful: Inloggning lyckades
     new:
       hello_please_sign_in: Hej! Vänligen logga in.
       sign_in: Logga in
@@ -48,23 +43,14 @@ sv:
       reset_password: Återställ lösenord
       password_blank: Fyll i ditt nya lösenord två gånger.
   user_mailer:
-    link_to_reset_your_password: Länk för att återställa ditt lösenord.
-  authlogic:
-    error_messages:
-      login_blank: kan inte lämnas tom
-      password_blank: kan inte lämnas tom
-      login_invalid: får endast innehålla bokstäver, nummer, mellanslag och .-_@, tack.
-      email_invalid: måste vara en giltlig e-postadress.
-      no_authentication_details: Du angav inte några uppgifter för autentisering.
+    reset_notification:
+      subject: Länk för att återställa ditt lösenord.
+  activerecord:
     models:
-      user_session: AnvändarSession
+      user: användare
     attributes:
-      user_session:
+      user:
         login: Inloggningsnamn
         email: E-postadress
         password: Lösenord
         remember_me: Kom ihåg mig
-        incorrect: Tyvärr, ditt %{login_field} eller lösenord var felaktigt.
-  activerecord:
-    models:
-      user: användare

@@ -4,7 +4,7 @@
 
   <div class='field'>
     <%= f.text_field :email, :class => "larger widest",
-                     :placeholder => t('.email_address', :default => t('authlogic.attributes.user_session.email'), :scope => 'users.forgot') %>
+                     :placeholder => t('email_address', :scope => 'users.forgot') %>
   </div>
 
   <%= render :partial => "/shared/admin/form_actions",

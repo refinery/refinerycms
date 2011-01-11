@@ -1,8 +1,4 @@
 nb:
-  devise:
-    sessions:
-      new:
-        sign_in: Logg inn
   plugins:
     refinery_users:
       title: Brukere
@@ -23,9 +19,6 @@ nb:
         email_user: Send en e-post til denne brukeren
         preview: (%{who}) opprettet %{created_at}
   sessions:
-    login_successful: Du er logget inn
-    login_failed: "Beklager, passordet eller brukernavnet ditt er feil."
-    logged_out: Du har blitt logget ut.
     new:
       hello_please_sign_in: "Hei! Vennligst logg inn."
       sign_in: Logg inn
@@ -52,33 +45,12 @@ nb:
       pick_new_password_for: "Velg et nytt passord for %{email}"
       reset_password: Tilbakestill passord
   user_mailer:
-    please_activate: Vennligst aktivert din nye konto
-    activated: Din konto er nå aktivert!
-    activated_email: "%{who}, din konto er nå aktivert. Du kan nå begynne å legge til tillegg:"
-    account_created: Din konto er nå opprettet.
-    user_name: Brukernavn %{name}
-    password: Passord %{password}
-    visit_url: "Beskø denne lenken for å aktivere kontoen din:"
-    link_to_reset_your_password: Lenke for å tilbakestille passordet ditt
-  authlogic:
-    error_messages:
-      login_blank: kan ikke være blank
-      login_not_found: er ikke gyldig
-      login_invalid: "burde kun inneholde bokstaver, tall, mellomrom og .-_@."
-      consecutive_failed_logins_limit_exceeded: "Du har overskredet det tillatte antall feilede innlogginger, din konto er deaktivert."
-      email_invalid: burde se ut som en e-post adresse.
-      password_blank: kan ikke være blank
-      password_invalid: er ikke gyldig
-      not_active: Din konto er ikke aktivert
-      not_confirmed: Din konto er ikke bekreftet
-      not_approved: Din konto er ikke godkjent
-      no_authentication_details: Du har ikke oppgitt noen innloggingsinformasjon.
-    models:
-      user_session: UserSession
+    reset_notification:
+      subject: Lenke for å tilbakestille passordet ditt
+  activerecord:
     attributes:
-      user_session:
+      user:
         login: Brukernavn
         email: E-post
         password: Passord
         remember_me: Husk meg
-        incorrect: "Beklager, din %{login_field} eller passord var ikke riktig."
