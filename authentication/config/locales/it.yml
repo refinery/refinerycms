@@ -14,11 +14,7 @@ it:
         enable_all: abilita tutto
       index:
         create_new_user: Crea nuovo utente
-        no_users_yet:  Non ci sono ancora gli utenti. Fare clic su 'Crea nuovo Utente' per aggiungere il primo utente.
       user:
-        confirm_delete_message: Sei sicuro di voler eliminare '%{who}'?
-        confirm_delete_title: Rimuovi questo utente per sempre
-        edit_user: Modifica questo utente
         email_user: E-mail a questo utente
         preview: (%{who}) creato il %{created_at}
   sessions:
@@ -28,13 +24,11 @@ it:
       hello_please_sign_in: Ciao! Accedi per favore.
   users:
     setup_website_name_html: Prima di tutto dare al sito un nome. <a href='%{link}' name='%{title}'>Vai qui</a> per modificare il nome del tuo sito web
-    signup_disabled: La registrazione di nuovi utenti è disattivata
     new:
       fill_form: Compila il form sottostante con i tuoi dati in modo che possiamo iniziare.
       sign_up: Iscriviti
     create:
       welcome: Benvenuti in Refinery, %{who}
-      signup_complete: Registrazione completa!
     forgot:
       email_address: Indirizzo e-mail
       enter_email_address: Inserisci l'indirizzo di posta elettronica per l&apos;account.
@@ -47,7 +41,6 @@ it:
       successful: Il ripristino della password è avvenuto con successo per %{email}
       pick_new_password_for: Scegli una nuova password per %{email}
       reset_password: Reimposta la password
-      password_blank: Compilare i campi con la stessa password.
   user_mailer:
     reset_notification:
       subject: Link per reimpostare la password

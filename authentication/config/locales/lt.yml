@@ -41,7 +41,6 @@ lt:
       successful: "'%{email}' slaptažodis sėkmingai atnaujintas"
       pick_new_password_for: Nurodykite naują %{email} slaptažodį
       reset_password:  Pakeisti slaptažodį
-      password_blank: Užpildykite laukus sutampančiais slaptažodžiais.
   user_mailer:
     reset_notification:
       subject: Nuoroda slaptažodžio keitimui

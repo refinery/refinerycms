@@ -42,16 +42,9 @@ ru:
       successful: "Пароль успешно изменен для %{email}"
       pick_new_password_for: "Введите новый пароль для %{email}"
       reset_password: Изменить пароль
-      password_blank: Введите пароль два раза
   user_mailer:
-    please_activate: Пожалуйста, активируйте ваш новый акаунт
-    activated: Ваш акаунт активирован!
-    activated_email: "%{who}, ваш акаунт активирован. Вы можете начать добавлять ваши модули:"
-    account_created: Ваш акаунт создан.
-    user_name: Имя пользователя %{name}
-    password: Пароль %{password}
-    visit_url: "Перейдите по этой ссылке, чтобы активировать ваш акаунт:"
-    link_to_reset_your_password: Ссылка для сброса пароля
+    reset_notification:
+      subject: Ссылка для сброса пароля
   devise:
     failure:
       unauthenticated: 'Вы должны войти.'

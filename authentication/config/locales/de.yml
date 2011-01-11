@@ -15,7 +15,6 @@ de:
         enable_all: Alles aktivieren
       index:
         create_new_user: Neuen Benutzer anlegen
-        no_users_yet:  Es sind noch keine Benutzer vorhanden. Klicken Sie auf  "Neuen Benutzer anlegen", um Ihren ersten Benutzer hinzuzufügen.
       user:
         email_user: Diesem Benutzer emailen
         preview: (%{who}) angelegt am %{created_at}
@@ -43,7 +42,6 @@ de:
       successful: Passwort für '%{email}' erfolgreich zurückgesetzt
       pick_new_password_for: Wählen Sie ein neues Passwort für %{email}
       reset_password: Passwort zurücksetzen
-      password_blank: Füllen Sie die Felder mit übereinstimmenden Passwörtern aus.
   user_mailer:
     reset_notification:
       subject: Link zum Zurücksetzen Ihres Passworts

@@ -41,7 +41,6 @@ fr:
       successful: Le mot de passe pour '%{email}' a bien été changé.
       pick_new_password_for: Choisissez un nouveau mot de passe pour %{email}
       reset_password: Changer le mot de passe
-      password_blank: Remplissez les champs avec les mots de passe correspondants.
   user_mailer:
     reset_notification:
       subject: Lien pour changer votre mot de passe

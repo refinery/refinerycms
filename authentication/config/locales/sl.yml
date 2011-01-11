@@ -13,11 +13,7 @@ sl:
         enable_all: omogoči vse
       index:
         create_new_user: Dodaj Novega Uporabnika
-        no_users_yet:  Tretnutno ni nobenega uporabnika. Kliknite "Dodaj Novega Uporabnika" da boste dodali prvega uporabnika.
       user:
-        confirm_delete_message: "Ali ste prepričani da želite odstraniti uporabnika '%{who}'?"
-        confirm_delete_title: Odstrani uporabnika
-        edit_user: Uredi uporabnika
         email_user: Pošlji email spročilo uporabniku
         preview: (%{who}) je bil ustvarjen %{created_at}
   sessions:
@@ -27,13 +23,11 @@ sl:
       forgot_password: Pozabil sem geslo
   users:
     setup_website_name_html: "Najprej morate poimenovati stran. <a href='%{link}' name='%{title}'>Pojdite sem</a> kjer lahko uredite naslov vaše strani."
-    signup_disabled: Registracija uporabnikov je onemogočena
     new:
       fill_form: Izpolnite spodnji obrazec z vašimi podatki.
       sign_up: Registriraj se
     create:
       welcome: Pzdravljeni v Refinery, %{who}
-      signup_complete: Registracija je končana!
     forgot:
       email_address: Email Naslov
       enter_email_address: Prosimo vnesite email naslov za vaš račun.
@@ -46,7 +40,6 @@ sl:
       successful: "Ponastavitev gesla za %{email} je bila uspešna."
       pick_new_password_for: Izberite novo geslo za %{email}
       reset_password: Ponastavi geslo
-      password_blank: Izpolnite polja z ujemajočim se geslom.
   user_mailer:
     reset_notification:
       subject: Povezava za ponastavitev vašega gesla

@@ -41,7 +41,6 @@ lolcat:
       successful: PASWORD RESET SUCCESFULLY 4 %{email}
       pick_new_password_for: PICK NEW PASWORD 4 %{email}
       reset_password: RESET PASWORD
-      password_blank: FILL OUT FIELDZ WIF MATCHIN PASWORDZ.
   user_mailer:
     reset_notification:
       subject: LINK 2 RESET UR PASWORD

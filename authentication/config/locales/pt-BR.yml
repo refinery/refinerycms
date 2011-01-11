@@ -42,7 +42,6 @@ pt-BR:
       successful: "Senha alterada com sucesso para o e-mail %{email}"
       pick_new_password_for: "Digite uma nova senha para o e-mail %{email}"
       reset_password: Recuperar senha
-      password_blank: Preencha com uma nova senha.
   user_mailer:
     reset_notification:
       subject: Link para alterar sua senha

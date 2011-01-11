@@ -13,7 +13,6 @@ es:
         enable_all: permitir todo
       index:
         create_new_user: Crear nuevo usuario
-        no_users_yet:  Aún no hay usuarios. Haz click en "Crear nuevo usuario" para crear el primer usuario.
       user:
         email_user: Enviar un email a este usuario
         preview: (%{who}) creado %{created_at}
@@ -41,7 +40,6 @@ es:
       successful: Contraseña cambiada correctamente para '%{email}'
       pick_new_password_for: Elige una nueva contraseña para %{email}
       reset_password: Cambiar contraseña
-      password_blank: Indica la misma contraseña en ambos campos.
   user_mailer:
     reset_notification:
       subject: Enlace para cambiar tu contraseña

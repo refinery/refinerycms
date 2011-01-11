@@ -42,7 +42,6 @@ pl:
       successful: Hasło zresetowane dla  '%{email}'
       pick_new_password_for: Wybierz nowe hasło dla  %{email}
       reset_password: Reset hasła
-      password_blank: Wypełnij pola poniżej identycznymi hasłami.
   user_mailer:
     reset_notification:
       subject: Link do resetu hasła

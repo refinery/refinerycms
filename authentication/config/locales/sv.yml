@@ -41,7 +41,6 @@ sv:
       successful: Återställde lösenordet för '%{email}'
       pick_new_password_for: Välj ett nytt lösenord för %{email}
       reset_password: Återställ lösenord
-      password_blank: Fyll i ditt nya lösenord två gånger.
   user_mailer:
     reset_notification:
       subject: Länk för att återställa ditt lösenord.

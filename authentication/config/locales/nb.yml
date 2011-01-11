@@ -4,6 +4,8 @@ nb:
       title: Brukere
   admin:
     users:
+      delete: Fjern denne brukeren permanent
+      edit: Rediger denne brukeren
       update:
         cannot_remove_user_plugin_from_current_user: "Du kan ikke fjerne tillegget 'Brukere' når du er logget inn med denne brukeren"
       form:
@@ -11,11 +13,7 @@ nb:
         enable_all: merk alle
       index:
         create_new_user: Lag ny bruker
-        no_users_yet: Det er ikke opprettet noen brukere enda. Trykk "Opprett ny bruker" for å legge til din første bruker.
       user:
-        confirm_delete_message: "Er du sikker på at du ønsker å slette '%{who}'?"
-        confirm_delete_title: Fjern denne brukeren permanent
-        edit_user: Rediger denne brukeren
         email_user: Send en e-post til denne brukeren
         preview: (%{who}) opprettet %{created_at}
   sessions:
@@ -25,13 +23,11 @@ nb:
       forgot_password: Jeg glemte passordet mitt
   users:
     setup_website_name_html: "Først, la oss gi siden et navn. <a href='%{link}' name='%{title}'>Gå hit</a> for å endre navnet på websiden din"
-    signup_disabled: Registrering av nye brukere er deaktivert
     new:
       fill_form: Fyll ut detaljene dine nedenfor slik at vi kan komme i gang.
       sign_up: Registrer deg
     create:
       welcome: Velkommen til Refinery, %{who}
-      signup_complete: Registrering komplett!
     forgot:
       email_address: E-post Adresse
       enter_email_address: Vennligst tast inn e-post adressen for din konto.

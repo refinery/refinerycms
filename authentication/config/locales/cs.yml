@@ -41,7 +41,6 @@ cs:
       successful: Heslo bylo úspěšně resetováno pro '%{email}'
       pick_new_password_for: Zadejte nové heslo pro %{email}
       reset_password: Reset hesla
-      password_blank: Vyplňte pole odpovídajícími hesly.
   user_mailer:
     reset_notification:
       subject: Odkaz pro reset hesla

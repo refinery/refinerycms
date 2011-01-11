@@ -13,7 +13,6 @@ nl:
         enable_all: Maak alle beschikbaar
       index:
         create_new_user: Maak een nieuwe gebruiker
-        no_users_yet:  Er zijn nog geen gebruikers. Klik op "Maak een nieuwe gebruiker" om de eerste toe te voegen.
       user:
         email_user: Email deze gebruiker
         preview: (%{who}) is aangemaakt op %{created_at}
@@ -41,7 +40,6 @@ nl:
       successful: "Wachtwoord resetten succes voor %{email}"
       pick_new_password_for: Kiees een nieuw wachtwoord voor %{email}
       reset_password: Reset het wachtwoord
-      password_blank: Vul de bevestiging in met hetzelfde wachtwoord
   user_mailer:
     reset_notification:
       subject: Link om uw wachtwoord te resetten
