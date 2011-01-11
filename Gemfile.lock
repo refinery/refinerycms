@@ -63,7 +63,7 @@ PATH
       acts_as_indexed (~> 0.6.6)
       bundler (~> 1.0.5)
       devise (~> 1.1)
-      dragonfly (~> 0.8.1)
+      dragonfly (~> 0.8.2)
       friendly_id (~> 3.1.8)
       globalize3
       moretea-awesome_nested_set (= 1.4.3.1)
