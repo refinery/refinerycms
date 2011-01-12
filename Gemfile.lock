@@ -28,14 +28,6 @@ GIT
       babosa (~> 0.2.0)
 
 GIT
-  remote: git://github.com/refinerycms/globalize3
-  revision: c2837785a93c0478704a7d7626fca960a1db5146
-  specs:
-    globalize3 (0.0.10)
-      activemodel (>= 3.0.0)
-      activerecord (>= 3.0.0)
-
-GIT
   remote: git://github.com/refinerycms/routing-filter
   revision: 94a072118410475b0e872b050dc731ef136f1180
   specs:
@@ -63,9 +55,9 @@ PATH
       acts_as_indexed (~> 0.6.6)
       bundler (~> 1.0.5)
       devise (~> 1.1)
-      dragonfly (~> 0.8.1)
+      dragonfly (~> 0.8.2)
       friendly_id (~> 3.1.8)
-      globalize3
+      globalize3 (>= 0.1.0.beta)
       moretea-awesome_nested_set (= 1.4.3.1)
       rack-cache (~> 0.5.2)
       rails (~> 3.0.3)
@@ -133,7 +125,7 @@ GEM
       bcrypt-ruby (~> 2.1.2)
       warden (~> 1.0.2)
     diff-lcs (1.1.2)
-    dragonfly (0.8.1)
+    dragonfly (0.8.2)
       rack
     erubis (2.6.6)
       abstract (>= 1.0.0)
@@ -142,6 +134,9 @@ GEM
       rake (>= 0.8.7)
     gherkin (2.3.3)
       json (~> 1.4.6)
+    globalize3 (0.1.0.beta)
+      activemodel (>= 3.0.0)
+      activerecord (>= 3.0.0)
     i18n (0.5.0)
     json (1.4.6)
     launchy (0.3.7)
@@ -226,7 +221,6 @@ DEPENDENCIES
   factory_girl
   friendly_id!
   gherkin
-  globalize3!
   json_pure (= 1.4.6a)!
   launchy
   rack-test (~> 0.5.6)

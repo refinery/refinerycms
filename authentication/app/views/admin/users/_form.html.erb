@@ -25,7 +25,7 @@
   </div>
   <div class='field plugin_access'>
     <span class='label_with_help'>
-      <%= f.label :plugin_access, nil, :class => "title_label" %>
+      <%= f.label :plugin_access, t('.plugin_access'), :class => "title_label" %>
       <%= link_to "(#{t('.enable_all')})", "", :id => "user_plugins_enable_all" %>
     </span>
     <ul id='plugins' class='checkboxes'>
@@ -52,7 +52,7 @@
   <% if current_user.has_role?(:superuser) and RefinerySetting.find_or_set(:superuser_can_assign_roles, false) %>
     <div class='field role_access'>
       <span class='label_with_help'>
-        <%= f.label :role_access, nil, :class => "title_label" %>
+        <%= f.label :role_access, t('.role_access'), :class => "title_label" %>
       </span>
       <ul id='roles' class='checkboxes'>
         <% @available_roles.each do |role|

@@ -1,5 +1,3 @@
-require 'digest/sha1'
-
 class User < ActiveRecord::Base
   has_and_belongs_to_many :roles
   has_many :plugins, :class_name => "UserPlugin", :order => "position ASC", :dependent => :destroy
@@ -14,6 +12,8 @@ class User < ActiveRecord::Base
   # This is in addition to a real persisted field like 'username'
   attr_accessor :login
   attr_accessible :email, :password, :password_confirmation, :remember_me, :username, :plugins, :login
+
+  validates :username, :presence => true, :uniqueness => true
 
   class << self
     # Find user by email or username.

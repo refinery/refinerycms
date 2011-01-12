@@ -1,8 +1,4 @@
 lolcat:
-  devise:
-    sessions:
-      new:
-        sign_in: SIGN IN
   plugins:
     refinery_users:
       title: USERS
@@ -22,7 +18,6 @@ lolcat:
         email_user: EMAIL DIS USR
         preview: (%{who}) ADDD %{created_at}
   sessions:
-    login_successful: LOGGD IN SUCCESFULLY
     new:
       hello_please_sign_in: Y HALO THAR! PLZ SIGN IN.
       sign_in: SIGN IN
@@ -46,25 +41,15 @@ lolcat:
       successful: PASWORD RESET SUCCESFULLY 4 %{email}
       pick_new_password_for: PICK NEW PASWORD 4 %{email}
       reset_password: RESET PASWORD
-      password_blank: FILL OUT FIELDZ WIF MATCHIN PASWORDZ.
   user_mailer:
-    link_to_reset_your_password: LINK 2 RESET UR PASWORD
-  authlogic:
-    error_messages:
-      login_blank: CAN NOT BE BLANK
-      password_blank: CAN NOT BE BLANK
-      login_invalid: SHUD USE ONLY LETTERS, NUMBERS, SPACEZ, AN .-_@ PLZ.
-      email_invalid: SHUD LOOK LIEK AN EMAIL ADDRES.
-      no_authentication_details: U DID NOT PROVIDE ANY DETAILS 4 AUTHENTICASHUN.
+    reset_notification:
+      subject: LINK 2 RESET UR PASWORD
+  activerecord:
     models:
-      user_session: USERSESHUN
+      user: USR
     attributes:
-      user_session:
+      user:
         login: LOGIN
         email: EMAIL
         password: PASWORD
         remember_me: REMEMBR ME
-        incorrect: SRY, UR %{login_field} OR PASWORD WUZ INCORRECT.
-  activerecord:
-    models:
-      user: USR

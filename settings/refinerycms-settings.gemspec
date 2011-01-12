@@ -16,6 +16,5 @@ Gem::Specification.new do |s|
   s.files       = Dir['license.md', 'readme.md', 'lib/**/*', 'config/**/*', 'app/**/*']
   s.require_path = 'lib'
 
-  s.add_dependency('refinerycms-base', version)
   s.add_dependency('refinerycms-core', version)
 end

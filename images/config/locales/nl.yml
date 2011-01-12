@@ -27,8 +27,8 @@ nl:
         resize_image: Schaal de afbeelding
         size: Grootte
       insert:
-        existing_image: Bestaande afbeelding
-        new_image: Nieuwe afbeelding
+        existing_image: Bibliotheek
+        new_image: Uploaden
   activerecord:
     models:
       image: afbeelding

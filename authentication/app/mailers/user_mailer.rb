@@ -8,7 +8,7 @@ class UserMailer < ActionMailer::Base
     domain = request.domain(RefinerySetting.find_or_set(:tld_length, 1))
 
     mail(:to => user.email,
-         :subject => I18n.translate('user_mailer.link_to_reset_your_password'),
+         :subject => t('subject', :scope => 'user_mailer.reset_notification'),
          :from => "\"#{RefinerySetting[:site_name]}\" <no-reply@#{domain}>")
   end
 
