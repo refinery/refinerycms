@@ -2,7 +2,7 @@
   <div class='clearfix'>
     <span class='title'>
       <%= page.title_with_meta.html_safe %>
-      <% if ::Refinery::I18n.frontend_locales.many? and
+      <% if defined?(::Refinery::I18n) and ::Refinery::I18n.frontend_locales.many? and
             (locales = page.translations.collect{|t| t.locale}).present? %>
         <span class='preview'>
           <% locales.each do |locale| %>

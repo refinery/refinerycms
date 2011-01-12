@@ -29,9 +29,9 @@ GIT
 
 GIT
   remote: git://github.com/refinerycms/routing-filter
-  revision: 94a072118410475b0e872b050dc731ef136f1180
+  revision: e967b4b3952e613156f41cf28fa2d72bc7377823
   specs:
-    routing-filter (0.2.0)
+    routing-filter (0.2.2)
       actionpack
 
 GIT
@@ -39,14 +39,6 @@ GIT
   revision: c0f197e6668ac10de9c1148c1db0e0ed45e13ae7
   specs:
     refinerycms-generators (0.9.9)
-
-GIT
-  remote: git://github.com/resolve/refinerycms-i18n
-  revision: 9291626998da4c20703fd1fffcd2ea6e47f8cbfc
-  specs:
-    refinerycms-i18n (0.9.8.12)
-      refinerycms (>= 0.9.8)
-      routing-filter (~> 0.1)
 
 PATH
   remote: .
@@ -174,6 +166,9 @@ GEM
       thor (~> 0.14.4)
     rake (0.8.7)
     rdoc (3.4)
+    refinerycms-i18n (0.9.9)
+      refinerycms (>= 0.9.8)
+      routing-filter (~> 0.1)
     rspec (2.3.0)
       rspec-core (~> 2.3.0)
       rspec-expectations (~> 2.3.0)
@@ -226,7 +221,7 @@ DEPENDENCIES
   rack-test (~> 0.5.6)
   refinerycms!
   refinerycms-generators (~> 0.9.9)!
-  refinerycms-i18n!
+  refinerycms-i18n (~> 0.9.9)
   routing-filter!
   rspec-rails (= 2.3)
   ruby-prof
