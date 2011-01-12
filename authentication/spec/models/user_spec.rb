@@ -71,4 +71,46 @@ describe User do
     end
   end
 
+  describe ".find_for_database_authentication" do
+    it "finds user either by username or email" do
+      user = Factory(:user)
+      User.find_for_database_authentication(:login => user.username).should == user
+      User.find_for_database_authentication(:login => user.email).should == user
+    end
+  end
+
+  describe "#can_delete?" do
+    before(:each) do
+      @user = Factory(:refinery_user)
+      @user_not_persisted = Factory.build(:refinery_user)
+      @super_user = Factory(:refinery_user)
+      @super_user.add_role(:superuser)
+    end
+
+    context "won't allow to delete" do
+      it "not persisted user record" do
+        @user.can_delete?(@user_not_persisted).should be_false
+      end
+
+      it "user with superuser role" do
+        @user.can_delete?(@super_user).should be_false
+      end
+
+      it "if user count with refinery role <= 1" do
+        Role[:refinery].users.delete(@user)
+        @super_user.can_delete?(@user).should be_false
+      end
+
+      it "user himself" do
+        @user.can_delete?(@user).should be_false
+      end
+    end
+
+    context "allow to delete" do
+      it "if all conditions return true" do
+        @super_user.can_delete?(@user).should be_true
+      end
+    end
+  end
+
 end
