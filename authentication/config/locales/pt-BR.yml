@@ -1,8 +1,4 @@
 pt-BR:
-  devise:
-    sessions:
-      new:
-        sign_in: Entrar
   plugins:
     refinery_users:
       title: Usuários
@@ -15,6 +11,7 @@ pt-BR:
         cannot_remove_user_plugin_from_current_user: "Você não pode remover o plugin 'Usuários' a partir da conta atualmente logada."
       form:
         blank_password_keeps_current: Deixar a senha em branco mantém a senha atual
+        plugin_access: Acesso
         enable_all: habilitar todos
       index:
         create_new_user: Criar Novo Usuário
@@ -22,7 +19,6 @@ pt-BR:
         email_user: Enviar e-mail para este usuário
         preview: "(%{who}) criado em %{created_at}"
   sessions:
-    login_successful: Logado com sucesso
     new:
       hello_please_sign_in: "Olá! Faça o login"
       sign_in: Entrar
@@ -46,30 +42,16 @@ pt-BR:
       successful: "Senha alterada com sucesso para o e-mail %{email}"
       pick_new_password_for: "Digite uma nova senha para o e-mail %{email}"
       reset_password: Recuperar senha
-      password_blank: Preencha com uma nova senha.
   user_mailer:
-    link_to_reset_your_password: Link para alterar sua senha
-  authlogic:
-    error_messages:
-      login_blank: não pode estar em branco
-      password_blank: não pode estar em branco
-      login_invalid: "deve usar somente letras, números, espaços e .- _ @ por favor"
-      email_invalid: Deverá ser um endereço de e-mail válido.
-      no_authentication_details: Você não forneceu todos os detalhes para autenticação.
-    models:
-      user_session: Login
-    attributes:
-      user_session:
-        login: Login
-        email: Email
-        password: Senha
-        remember_me: Lembrar de mim
-        incorrect: "Desculpe, seu %{login_field} ou senha estava errada."
+    reset_notification:
+      subject: Link para alterar sua senha
   activerecord:
     models:
       user: Usuário
     attributes:
       user:
-        plugin_access: Acesso
+        login: Login
+        email: Email
         password: Senha
         password_confirmation: Confirmação da senha
+        remember_me: Lembrar de mim

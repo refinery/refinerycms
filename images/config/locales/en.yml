@@ -28,8 +28,8 @@ en:
         resize_image: Resize the image?
         size: Size
       insert:
-        existing_image: Existing Image
-        new_image: New Image
+        existing_image: Library
+        new_image: Upload
   activerecord:
     models:
       image: image

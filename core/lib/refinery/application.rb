@@ -38,7 +38,7 @@ module Refinery
             c.send :helper, :application
           end
 
-          ::Admin::BaseController.send :include, ::Refinery::AdminBaseController
+          ::Admin::BaseController.send :include, ::Refinery::Admin::BaseController
         end
 
         # load in any settings that the developer wants after the initialization.

@@ -49,4 +49,26 @@ describe User do
 
   end
 
+  context "validations" do
+    # email and password validations are done by including devises validatable
+    # module so those validations are not tested here
+    before(:each) do
+      @attr = {
+        :username => "RefineryCMS",
+        :email => "refinery@cms.com",
+        :password => "123456",
+        :password_confirmation => "123456"
+      }
+    end
+
+    it "requires username" do
+      User.new(@attr.merge(:username => "")).should_not be_valid
+    end
+
+    it "rejects duplicate usernames" do
+      User.create!(@attr)
+      User.new(@attr.merge(:email => "another@email.com")).should_not be_valid
+    end
+  end
+
 end

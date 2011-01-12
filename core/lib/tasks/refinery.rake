@@ -5,7 +5,7 @@ namespace :refinery do
     require 'fileutils'
 
     if (view = ENV["view"]).present?
-      pattern = "#{view.split("/").join(File::SEPARATOR)}*.(erb|builder)"
+      pattern = "#{view.split("/").join(File::SEPARATOR)}*.{erb,builder}"
       looking_for = Refinery::Plugins.registered.pathnames.map{|p| p.join("app", "views", pattern).to_s}
 
       # copy in the matches

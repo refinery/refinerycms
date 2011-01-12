@@ -1,8 +1,4 @@
 lt:
-  devise:
-    sessions:
-      new:
-        sign_in: Prisijungti
   plugins:
     refinery_users:
       title: Vartotojai
@@ -22,7 +18,6 @@ lt:
         email_user: Siųsti el. laišką vartotojui
         preview: (%{who}) sukurtas %{created_at}
   sessions:
-    login_successful: Sėkmingai prisijungėte
     new:
       hello_please_sign_in: Sveiki! Prašome prisijungti.
       sign_in: Prisijungti
@@ -46,25 +41,15 @@ lt:
       successful: "'%{email}' slaptažodis sėkmingai atnaujintas"
       pick_new_password_for: Nurodykite naują %{email} slaptažodį
       reset_password:  Pakeisti slaptažodį
-      password_blank: Užpildykite laukus sutampančiais slaptažodžiais.
   user_mailer:
-    link_to_reset_your_password: Nuoroda slaptažodžio keitimui
-  authlogic:
-    error_messages:
-      login_blank: negali būti tuščias
-      password_blank: negali būti tuščias
-      login_invalid: "prašome naudoti tik raides, skaičius, tarpus ir .-_@"
-      email_invalid: turėtų būti teisingas el. pašto adresas.
-      no_authentication_details: Jūs nenurodėte jokių prisijungimo duomenų.
+    reset_notification:
+      subject: Nuoroda slaptažodžio keitimui
+  activerecord:
     models:
-      user_session: Vartotojo Sesija
+      user: vartotojas
     attributes:
-      user_session:
+      user:
         login: Prisijungti
         email: El. paštas
         password: Slaptažodis
         remember_me: Prisiminti mane
-        incorrect: Atsiprašome jūsų %{login_field} arba slaptažodis buvo neteisingas.
-  activerecord:
-    models:
-      user: vartotojas

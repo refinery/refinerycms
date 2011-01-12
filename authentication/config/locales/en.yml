@@ -1,8 +1,4 @@
 en:
-  devise:
-    sessions:
-      new:
-        sign_in: Sign in
   plugins:
     refinery_users:
       title: Users
@@ -15,6 +11,8 @@ en:
         cannot_remove_user_plugin_from_current_user: You cannot remove the 'Users' plugin from the currently logged in account.
       form:
         blank_password_keeps_current: Leaving password blank keeps the current password
+        plugin_access: Plugin access
+        role_access: Role access
         enable_all: enable all
       index:
         create_new_user: Add new user
@@ -22,7 +20,6 @@ en:
         email_user: Email this user
         preview: (%{who}) added %{created_at}
   sessions:
-    login_successful: Logged in successfully
     new:
       hello_please_sign_in: Hello! Please sign in.
       sign_in: Sign in
@@ -47,25 +44,26 @@ en:
       successful: Password reset successfully for '%{email}'
       pick_new_password_for: Pick a new password for %{email}
       reset_password: Reset password
-      password_blank: Fill out fields with matching passwords.
   user_mailer:
-    link_to_reset_your_password: Link to reset your password
-  authlogic:
-    error_messages:
-      login_blank: can not be blank
-      password_blank: can not be blank
-      login_invalid: should use only letters, numbers, spaces, and .-_@ please.
-      email_invalid: should look like an email address.
-      no_authentication_details: You did not provide any details for authentication.
-    models:
-      user_session: UserSession
-    attributes:
-      user_session:
-        login: Login
-        email: Email
-        password: Password
-        remember_me: Remember me
-        incorrect: Sorry, your %{login_field} or password was incorrect.
+    reset_notification:
+      subject: Link to reset your password
+      reset_request_recieved_for: Request to reset password received for %{username}
+      visit_this_url: Visit this url to choose a new password
+      remain_same_if_no_action: Your password will remain the same if no action is taken
+  devise:
+    failure:
+      unauthenticated: You need to sign in before continuing.
+      invalid: Sorry, your login or password was incorrect.
+    sessions:
+      signed_in: Signed in successfully.
   activerecord:
     models:
       user: user
+    attributes:
+      user:
+        login: Login
+        username: Username
+        password: Password
+        password_confirmation: Password confirmation
+        email: Email
+        remember_me: Remember me
