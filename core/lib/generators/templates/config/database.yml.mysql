@@ -12,10 +12,6 @@ test: &test
   database: your_test_database
   <<: *login
 
-cucumber: &cucumber
-  database: your_cucumber_database
-  <<: *test
-
 production: &production
   adapter: mysql
   host: localhost
