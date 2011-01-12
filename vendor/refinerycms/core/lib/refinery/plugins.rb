@@ -56,9 +56,8 @@ module Refinery
     end
 
     def self.set_active(names)
-      active.clear
       names.each do |name|
-        active << registered[name] if registered[name]
+        active << registered[name] if registered[name] && !active[name]
       end
     end
 
