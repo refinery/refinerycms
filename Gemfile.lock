@@ -48,14 +48,6 @@ GIT
       refinerycms (>= 0.9.8)
       routing-filter (~> 0.1)
 
-GIT
-  remote: git://github.com/svenfuchs/globalize3
-  revision: c4cc164a698a0e9d469fe2a2b7838a442440d618
-  specs:
-    globalize3 (0.0.11)
-      activemodel (>= 3.0.0)
-      activerecord (>= 3.0.0)
-
 PATH
   remote: .
   specs:
@@ -65,7 +57,7 @@ PATH
       devise (~> 1.1)
       dragonfly (~> 0.8.2)
       friendly_id (~> 3.1.8)
-      globalize3
+      globalize3 (>= 0.1.0.beta)
       moretea-awesome_nested_set (= 1.4.3.1)
       rack-cache (~> 0.5.2)
       rails (~> 3.0.3)
@@ -142,6 +134,9 @@ GEM
       rake (>= 0.8.7)
     gherkin (2.3.3)
       json (~> 1.4.6)
+    globalize3 (0.1.0.beta)
+      activemodel (>= 3.0.0)
+      activerecord (>= 3.0.0)
     i18n (0.5.0)
     json (1.4.6)
     launchy (0.3.7)
@@ -226,7 +221,6 @@ DEPENDENCIES
   factory_girl
   friendly_id!
   gherkin
-  globalize3!
   json_pure (= 1.4.6a)!
   launchy
   rack-test (~> 0.5.6)
