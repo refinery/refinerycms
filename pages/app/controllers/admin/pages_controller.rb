@@ -23,7 +23,7 @@ module Admin
     end
 
     def show_errors_for_reserved_slug(exception)
-      flash[:error] = "Sorry, but that title is a reserved system word."
+      flash[:error] = t('reserved_system_word', :scope => 'admin.pages')
       if params[:action] == 'update'
         find_page
         render :edit
