@@ -44,9 +44,13 @@ describe User do
         user = Factory(:refinery_user)
         user.has_role?(:refinery_fail).should be_false
       end
-
     end
 
+    describe "role association" do
+      it "have a roles attribute" do
+        Factory(:user).should respond_to(:roles)
+      end
+    end
   end
 
   context "validations" do
@@ -113,4 +117,45 @@ describe User do
     end
   end
 
+  describe "#plugins=" do
+    it "assigns plugins to user" do
+      user = Factory(:user)
+      plugin_list = ["refinery_one", "refinery_two", "refinery_three"]
+      user.plugins = plugin_list
+      user.plugins.collect { |p| p.name }.should == plugin_list
+    end
+  end
+
+  describe "#authorized_plugins" do
+    it "returns array of user and always allowd plugins" do
+      user = Factory(:user)
+      ["refinery_one", "refinery_two", "refinery_three"].each_with_index do |name, index|
+        user.plugins.create!(:name => name, :position => index)
+      end
+      user.authorized_plugins.should == user.plugins.collect { |p| p.name } | Refinery::Plugins.always_allowed.names
+    end
+  end
+
+  describe "plugins association" do
+    before(:each) do
+      @user = Factory(:user)
+      @plugin_list = ["refinery_one", "refinery_two", "refinery_three"]
+      @user.plugins = @plugin_list
+    end
+
+    it "have a plugins attribute" do
+      @user.should respond_to(:plugins)
+    end
+
+    it "returns plugins in ASC order" do
+      @user.plugins[0].name.should == @plugin_list[0]
+      @user.plugins[1].name.should == @plugin_list[1]
+      @user.plugins[2].name.should == @plugin_list[2]
+    end
+
+    it "deletes associated plugins" do
+      @user.destroy
+      UserPlugin.find_by_user_id(@user.id).should be_nil
+    end
+  end
 end
