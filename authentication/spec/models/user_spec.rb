@@ -3,8 +3,6 @@ require 'spec_helper'
 Dir[File.expand_path('../../../features/support/factories.rb', __FILE__)].each {|f| require f}
 
 describe User do
-  include AuthenticatedTestHelper
-
   context "Roles" do
     context "add_role" do
       it "raises Exception when Role object is passed" do
