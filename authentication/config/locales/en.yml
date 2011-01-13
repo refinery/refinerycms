@@ -56,6 +56,9 @@ en:
       invalid: Sorry, your login or password was incorrect.
     sessions:
       signed_in: Signed in successfully.
+  roles:
+    superuser: Superuser
+    refinery: Refinery
   activerecord:
     models:
       user: user
