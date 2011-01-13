@@ -37,7 +37,7 @@ group :development, :test do
   # RSpec
   gem 'rspec-rails',            '= 2.3'
   # Cucumber
-  gem 'capybara',               :git => 'git://github.com/parndt/capybara'
+  gem 'capybara',               '>= 0.4.1.rc'
   gem 'database_cleaner'
   gem 'cucumber-rails'
   gem 'launchy'
