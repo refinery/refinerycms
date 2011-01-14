@@ -55,7 +55,7 @@ Gem::Specification.new do |s|
 
   s.add_development_dependency 'rspec-rails',        '~> 2.3'
   # Cucumber
-  s.add_development_dependency 'capybara'
+  s.add_development_dependency 'capybara',           '>= 0.4.1.rc'
   s.add_development_dependency 'database_cleaner'
   s.add_development_dependency 'cucumber-rails'
   s.add_development_dependency 'cucumber'

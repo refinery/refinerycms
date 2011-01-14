@@ -56,6 +56,9 @@ lv:
       invalid: Atvainojiet, nepareizs lietotāja vārds/epasts vai parole.
     sessions:
       signed_in: Autentifikācija noritēja veiksmīgi.
+  roles:
+    superuser: Superlietotājs
+    refinery: Refinery
   activerecord:
     models:
       user: lietotājs
