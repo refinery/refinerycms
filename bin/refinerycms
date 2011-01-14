@@ -247,7 +247,7 @@ module Refinery
           @options[:gems] = refinery_user_defined_gems.reverse + @options[:gems]
           find_and_replace(app_gemfile,
                            /# USER DEFINED.*# END USER DEFINED/m,
-                           "# USER DEFINED#{@options[:gems].join("\n")}\n\n# END USER DEFINED")
+                           "# USER DEFINED\n#{@options[:gems].join("\n")}\n\n# END USER DEFINED")
         end
 
         # replace existing core dependencies with the current set of dependencies.
