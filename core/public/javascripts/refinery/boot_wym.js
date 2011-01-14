@@ -20,6 +20,7 @@ onCloseDialog = function(dialog) {
   }
 };
 
+WYMeditor.onload_functions = [];
 var wymeditor_inputs = [];
 var wymeditors_loaded = 0;
 // supply custom_wymeditor_boot_options if you want to override anything here.
@@ -197,7 +198,12 @@ var wymeditor_boot_options = $.extend({
     // fire loaded if all editors loaded
     if(WYMeditor.INSTANCES.length == wymeditors_loaded){
       $('.wym_loading_overlay').remove();
-      WYMeditor.loaded();
+
+      // load any functions that have been registered to happen onload.
+      // these will have to be registered BEFORE postInit is fired (which is fairly quickly).
+      for(i=0; i < WYMeditor.onload_functions.length; i++) {
+        WYMeditor.onload_functions[i]();
+      }
     }
 
     $(wym._iframe).contents().find('body').addClass('wym_iframe_body');
@@ -215,9 +221,6 @@ var wymeditor_boot_options = $.extend({
   }
   , lang: (typeof(I18n.locale) != "undefined" ? I18n.locale : 'en')
 }, custom_wymeditor_boot_options);
-
-// custom function added by us to hook into when all wymeditor instances on the page have finally loaded:
-WYMeditor.loaded = function(){};
 
 WYMeditor.editor.prototype.loadIframe = function(iframe) {
   var wym = this;
