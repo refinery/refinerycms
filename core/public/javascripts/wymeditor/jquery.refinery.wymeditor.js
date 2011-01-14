@@ -1808,6 +1808,10 @@ WYMeditor.INIT_DIALOG = function(wym, selected, isIframe) {
           });
         });
 
+       // ensure we know where to put the image.
+       if (replaceable == null) {
+         replaceable = $(wym._doc.body).find("#" + wym._current_unique_stamp);
+       }
        if (replaceable != null) {
          replaceable.after(image).remove();
        }
