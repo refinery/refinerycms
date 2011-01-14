@@ -25,6 +25,8 @@
     <label><%= t('.maximum_image_size', :megabytes => Image::MAX_SIZE_IN_MB) %></label>
   </div>
 
+  <input type='hidden' name='wymeditor' value='<%= params[:wymeditor] %>'>
+
   <%= render :partial => "/shared/admin/form_actions",
              :locals => {
                :f => f,

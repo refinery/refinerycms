@@ -497,7 +497,7 @@ var link_dialog = {
   },
 
   init_close: function(){
-    $('.form-actions-dialog #cancel_button').click(close_dialog);
+    $('.form-actions-dialog #cancel_button').not('.wym_iframe_body .form-actions-dialog #cancel_button').click(close_dialog);
 
     if (parent
         && parent.document.location.href != document.location.href
@@ -817,8 +817,16 @@ var image_dialog = {
 
   , init_actions: function(){
     var _this = this;
-    $('#existing_image_area .form-actions-dialog #submit_button').click($.proxy(_this.submit_image_choice, _this));
-    $('.form-actions-dialog #cancel_button').not('body.wym_iframe_body .form-actions-dialog #cancel_button').click($.proxy(close_dialog, _this));
+    // get submit buttons not inside a wymeditor iframe
+    $('#existing_image_area .form-actions-dialog #submit_button')
+      .not('.wym_iframe_body #existing_image_area .form-actions-dialog #submit_button')
+      .click($.proxy(_this.submit_image_choice, _this));
+
+    // get cancel buttons not inside a wymeditor iframe
+    $('.form-actions-dialog #cancel_button')
+      .not('.wym_iframe_body .form-actions-dialog #cancel_button')
+      .click($.proxy(close_dialog, _this));
+
     $('#existing_image_size_area ul li a').click(function(e) {
       $('#existing_image_size_area ul li').removeClass('selected');
       $(this).parent().addClass('selected');
@@ -826,6 +834,7 @@ var image_dialog = {
       image_dialog.set_image($('#existing_image_area_content ul li.selected img'));
       e.preventDefault();
     });
+
     $('#existing_image_size_area #wants_to_resize_image').change(function(){
       if($(this).is(":checked")) {
         $('#existing_image_size_area ul li:first a').click();
@@ -835,14 +844,12 @@ var image_dialog = {
       }
     });
 
-    if (parent && parent.document.location.href != document.location.href
-        && parent.document.getElementById('wym_dialog_submit') != null) {
-      $('#existing_image_area .form-actions input#submit_button').click($.proxy(function(e) {
-        e.preventDefault();
-        $(this.document.getElementById('wym_dialog_submit')).click();
-      }, parent));
-      $('#existing_image_area .form-actions a.close_dialog').click(close_dialog);
-    }
+    image_area = $('#existing_image_area').not('#wym_iframe_body #existing_image_area');
+    image_area.find('.form-actions input#submit_button').click($.proxy(function(e) {
+      e.preventDefault();
+      $(this.document.getElementById('wym_dialog_submit')).click();
+    }, parent));
+    image_area.find('.form-actions a.close_dialog').click(close_dialog);
   }
 };
 

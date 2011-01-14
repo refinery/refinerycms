@@ -1824,6 +1824,7 @@ WYMeditor.INIT_DIALOG = function(wym, selected, isIframe) {
       // tell the user.
       alert("Please select an image to insert.");
     }
+    e.preventDefault();
   });
 
   $(wym._options.dialogTableSelector).find(wym._options.submitSelector).click(function(e) {
