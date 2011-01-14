@@ -1795,7 +1795,6 @@ WYMeditor.INIT_DIALOG = function(wym, selected, isIframe) {
 
   $(wym._options.dialogImageSelector).find(wym._options.submitSelector).click(function(e) {
     form = $(this.form);
-    console.log(form);
     if ((url = form.find(wym._options.srcSelector).val()) != null && url.length > 0) {
       (image = $('<img />'))
         .attr(WYMeditor.SRC, url)
