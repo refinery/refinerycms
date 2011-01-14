@@ -38,7 +38,22 @@ describe Resource do
     it "should contain its filename at the end" do
       @resource.url.split('/').last.should == @resource.file_name
     end
+  end
 
+  describe ".create_resources" do
+    let(:file) { File.new(File.expand_path('../../uploads/refinery_is_awesome.txt', __FILE__)) }
+
+    context "when only one resource uploaded" do
+      it "returns an array containing one resource" do
+        Resource.create_resources(:file => file).should have(1).item
+      end
+    end
+
+    context "when many resources uploaded at once" do
+      it "returns an array containing all those resources" do
+        Resource.create_resources(:file => [file, file, file]).should have(3).items
+      end
+    end
   end
 
 end

@@ -11,14 +11,7 @@ module Admin
     end
 
     def create
-      @resources = []
-      unless params[:resource].present? and params[:resource][:file].is_a?(Array)
-        @resources << (@resource = Resource.create(params[:resource]))
-      else
-        params[:resource][:file].each do |resource|
-          @resources << (@resource = Resource.create(:file => resource))
-        end
-      end
+      @resources = Resource.create_resources(params[:resource])
 
       unless params[:insert]
         if @resources.all?{|r| r.valid?}
@@ -33,11 +26,11 @@ module Admin
           render :action => 'new'
         end
       else
-        if @resources.all?{|r| r.valid?}
-          @resource_id = @resource.id if @resource.persisted?
-          @resource = nil
+        @resources.each do |resource|
+          @resource_id = resource.id if resource.persisted?
         end
-        self.insert
+
+        insert
       end
     end
 
