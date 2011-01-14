@@ -45,7 +45,7 @@ group :development, :test do
   gem 'spork' unless Bundler::WINDOWS
   gem 'rack-test',              '~> 0.5.6'
   # FIXME: Update json_pure to 1.4.7 when it is released
-  gem 'json_pure', "1.4.6a", :git => "git://github.com/flori/json", :ref => "2c0f8d"
+  gem 'json_pure', "1.4.6a", :git => "git://github.com/flori/json", :ref => "0b15820e245f4048d1bcd29cd60693e4e211ab43"
   # Factory Girl
   gem 'factory_girl'
   gem "#{'j' if java}ruby-prof" unless defined?(RUBY_ENGINE) and RUBY_ENGINE == 'rbx'

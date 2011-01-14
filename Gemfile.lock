@@ -1,7 +1,7 @@
 GIT
   remote: git://github.com/flori/json
-  revision: 2c0f8d2c9b15a33b8d10ffcb1959aef54d320b57
-  ref: 2c0f8d
+  revision: 0b15820e245f4048d1bcd29cd60693e4e211ab43
+  ref: 0b15820e245f4048d1bcd29cd60693e4e211ab43
   specs:
     json_pure (1.4.6a)
 
