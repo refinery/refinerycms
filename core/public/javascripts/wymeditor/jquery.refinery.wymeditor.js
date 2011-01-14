@@ -770,7 +770,7 @@ WYMeditor.editor.prototype.init = function() {
         }
       }
 
-      boxHtml = h.replaceAll(boxHtml, ">"+WYMeditor.APPLY_CLASS+"<", 
+      boxHtml = h.replaceAll(boxHtml, ">"+WYMeditor.APPLY_CLASS+"<",
         ">" + this._options.stringDelimiterLeft
         + WYMeditor.APPLY_CLASS
         + this._options.stringDelimiterRight + "<");
@@ -1795,6 +1795,7 @@ WYMeditor.INIT_DIALOG = function(wym, selected, isIframe) {
 
   $(wym._options.dialogImageSelector).find(wym._options.submitSelector).click(function(e) {
     form = $(this.form);
+    console.log(form);
     if ((url = form.find(wym._options.srcSelector).val()) != null && url.length > 0) {
       (image = $('<img />'))
         .attr(WYMeditor.SRC, url)
@@ -1814,6 +1815,11 @@ WYMeditor.INIT_DIALOG = function(wym, selected, isIframe) {
 
       // fire a click event on the dialogs close button
       wym.close_dialog(e);
+    } else {
+      // remove any save loader animations.
+      $('iframe').contents().find('.save-loader').remove();
+      // tell the user.
+      alert("Please select an image to insert.");
     }
   });
 
