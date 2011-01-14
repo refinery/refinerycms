@@ -9,7 +9,7 @@ class Image < ActiveRecord::Base
 
   validates :image, :presence  => {},
                     :length    => { :maximum => MAX_SIZE_IN_MB.megabytes }
-  validates_property :mime_type, :of => :image, :in => %w(image/jpeg image/png image/gif),
+  validates_property :mime_type, :of => :image, :in => %w(image/jpeg image/png image/gif image/tiff),
                      :message => :incorrect_format
 
   # Docs for acts_as_indexed http://github.com/dougal/acts_as_indexed
