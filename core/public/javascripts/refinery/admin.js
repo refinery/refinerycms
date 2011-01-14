@@ -602,8 +602,6 @@ var page_options = {
   initialised: false
   , init: function(enable_parts, new_part_url, del_part_url){
     // set the page tabs up, but ensure that all tabs are shown so that when wymeditor loads it has a proper height.
-    // also disable page overflow so that scrollbars don't appear while the page is loading.
-    $(document.body).not('iframe body').addClass('hide-overflow');
     page_options.tabs = $('#page-tabs');
     page_options.tabs.tabs({tabTemplate: '<li><a href="#{href}">#{label}</a></li>'});
     page_options.tabs.find(' > ul li a').corner('top 5px');
@@ -617,13 +615,11 @@ var page_options = {
     this.show_options();
     this.title_type();
 
-    // Hook into the loaded function. This will be called when WYMeditor has done its thing.
-    WYMeditor.loaded = function(){
-      // hide the tabs that are supposed to be hidden and re-enable overflow.
-      $(document.body).removeClass('hide-overflow');
-      $('#page-tabs .page_part.field').not(part_shown).addClass('ui-tabs-hide');
+    $(document).ready($.proxy(function(){
+      // hide the tabs that are supposed to be hidden.
+      $('#page-tabs .page_part.field').not(this).addClass('ui-tabs-hide');
       $('#page-tabs > ul li a').corner('top 5px');
-    };
+    }, part_shown));
 
     if(this.enable_parts){
       this.page_part_dialog();
@@ -690,10 +686,9 @@ var page_options = {
               $('#page_parts_attributes_' + $('#new_page_part_index').val() + "_body").wymeditor(wymeditor_boot_options);
 
               // hook into wymedtior to instruct it to select this new tab again once it has loaded.
-              WYMeditor.loaded = function() {
+              WYMeditor.onload_functions.push(function() {
                 page_options.tabs.tabs('select', $('#new_page_part_index').val());
-                WYMeditor.loaded = function(){}; // kill it again.
-              };
+              });
 
               // Wipe the title and increment the index counter by one.
               $('#new_page_part_index').val(parseInt($('#new_page_part_index').val(), 10) + 1);

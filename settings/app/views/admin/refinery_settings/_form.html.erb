@@ -56,7 +56,6 @@
 <% content_for :javascripts do %>
   <script>
     $('#refinery_setting_form_value_type').change(function(e) {
-      console.log(location_url = window.location.href.replace(/([\?|\&])form_value_type\=[^\&]*\&?/, ''));
       window.location = location_url + ((location_url.indexOf("?") > -1 ? "&" : "?") + "form_value_type=" + $(this).val());
     });
   </script>
