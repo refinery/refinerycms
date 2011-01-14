@@ -17,6 +17,7 @@ module Refinery
 
         app_resources.define_macro(ActiveRecord::Base, :resource_accessor)
         app_resources.analyser.register(Dragonfly::Analysis::FileCommandAnalyser)
+        app_resources.content_disposition = :attachment   
 
         # This url_suffix makes it so that dragonfly urls work in traditional
         # situations where the filename and extension are required, e.g. lightbox.
