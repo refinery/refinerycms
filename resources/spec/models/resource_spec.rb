@@ -54,6 +54,12 @@ describe Resource do
         Resource.create_resources(:file => [file, file, file]).should have(3).items
       end
     end
+
+    specify "each returned array item should be an instance of resource" do
+      Resource.create_resources(:file => [file, file, file]).each do |resource|
+        resource.should be_an_instance_of(Resource)
+      end
+    end
   end
 
 end

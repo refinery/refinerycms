@@ -40,10 +40,10 @@ class Resource < ActiveRecord::Base
       resources = []
       
       unless params.present? and params[:file].is_a?(Array)
-        resources << (resource = Resource.create(params))
+        resources << create(params)
       else
         params[:file].each do |resource|
-          resources << (resource = Resource.create(:file => resource))
+          resources << create(:file => resource)
         end
       end
       
