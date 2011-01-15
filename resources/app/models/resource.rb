@@ -11,10 +11,10 @@ class Resource < ActiveRecord::Base
    # Docs for acts_as_indexed http://github.com/dougal/acts_as_indexed
    acts_as_indexed :fields => [:file_name, :title, :type_of_content]
 
-  # when a dialog pops up with images, how many images per page should there be
+  # when a dialog pops up with resources, how many resources per page should there be
   PAGES_PER_DIALOG = 12
 
-  # when listing images out in the admin area, how many images should show per page
+  # when listing resources out in the admin area, how many resources should show per page
   PAGES_PER_ADMIN_INDEX = 20
 
   delegate :ext, :size, :mime_type, :url, :to => :file
@@ -31,7 +31,7 @@ class Resource < ActiveRecord::Base
   end
 
   class << self
-    # How many images per page should be displayed?
+    # How many resources per page should be displayed?
     def per_page(dialog = false)
       dialog ? PAGES_PER_DIALOG : PAGES_PER_ADMIN_INDEX
     end
