@@ -276,6 +276,10 @@ module Refinery
       # Automate
       # TODO: Check exit codes to see whether or not these worked
       puts "Installing gem requirements using bundler..\n"
+      # Ensure RefineryCMS is up to date if we're updating
+      run_command("bundle update refinerycms") if @options[:update]
+
+      # Install!
       run_command("bundle install")
     end
 
