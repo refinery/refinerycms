@@ -164,6 +164,15 @@ module Refinery
         puts "Use --update to replace any Refinery CMS files in an existing installation."
         exit
       end
+      if @options[:update] == true && @options[:force] == false && @app_path.join('.git').directory?
+        # run_command('git diff --exit-code  2>&1')
+        `git diff --exit-code  2>&1`
+        if $? != 0
+          puts "You have uncommitted changes or untracked files. Please remove or commit them, or:"
+          puts "Use --force to have Refinery proceed anyway. Untracked files will be removed, and uncommitted changes may be lost."
+          exit
+        end
+      end
     end
 
     def update!
