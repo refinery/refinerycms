@@ -175,7 +175,11 @@ module Refinery
         rails_command << " --skip-#{skip}"
       end
 
+      # Generate a new rails application in this directory
       generate!(rails_command)
+
+      # Clean the directory of all new files from rails that we don't want
+      run_command('git clean -f -d') if @app_path.join('.git').directory?
     end
 
     def generate!(rails_command = nil)
@@ -276,11 +280,9 @@ module Refinery
       # Automate
       # TODO: Check exit codes to see whether or not these worked
       puts "Installing gem requirements using bundler..\n"
+
       # Ensure RefineryCMS is up to date if we're updating
-      if @options[:update]
-        run_command("bundle update refinerycms")
-        run_command("bundle update refinerycms-generators")
-      end
+      run_command("bundle update refinerycms refinerycms-generators") if @options[:update]
 
       # Install!
       run_command("bundle install")
