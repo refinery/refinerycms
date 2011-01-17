@@ -302,15 +302,8 @@ module Refinery
     end
 
     def output!
-      unless @options[:update]
-        puts "\n\nSetting up your development database..\n"
-        %w(db:migrate db:seed).each do |task|
-          run_command("rake -f \"#{@app_path.join('Rakefile')}\" #{task}")
-        end
-      else
-        puts "\n\nMigrating your development database..\n"
-        run_command("rake -f \"#{@app_path.join('Rakefile')}\" db:migrate")
-      end
+      puts "\n\n#{@options[:update] ? "Migrating" : "Setting up"} your development database..\n"
+      run_command("rake -f \"#{@app_path.join('Rakefile')}\" db:migrate")
 
       # Deploy to Heroku
       if @options[:heroku]
