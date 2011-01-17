@@ -170,8 +170,9 @@ module Refinery
         exit
       elsif @app_path.join('.git').directory? && @options[:update] == true
         if run_command('git diff --exit-code  2>&1', :puts => false) != 0 && @options[:confirm] == false
-          puts "You have uncommitted changes or untracked files. Please remove or commit them, or:"
-          puts "Use --force to have Refinery proceed anyway. Untracked files will be removed, and uncommitted changes may be lost."
+          puts "\nYou have uncommitted changes or untracked files. Please remove or commit them, or:"
+          puts "Use --confirm to have Refinery proceed anyway. "
+          puts "Untracked files will be removed, and uncommitted changes may be lost.\n\n"
           exit
         end
       end
