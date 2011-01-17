@@ -44,6 +44,7 @@ module Refinery
         :from_version => '0.9.8',
         :force => false,
         :heroku => false,
+        :duostack => false,
         :update => false,
         :confirm => false,
         :gems => []
@@ -84,6 +85,10 @@ module Refinery
 
         opts.on("--heroku [APP_NAME]", "Set up and deploy to Heroku") do |app_name|
           @options[:heroku] = app_name || ''
+        end
+
+        opts.on("--duostack [APP_NAME]", "Set up and deploy to Duostack") do |app_name|
+          @options[:duostack] = app_name || ''
         end
 
         opts.on("--update", "--update", "Migrate the database instead of rebuilding it") do
@@ -306,21 +311,26 @@ module Refinery
       run_command("rake -f \"#{@app_path.join('Rakefile')}\" db:migrate")
 
       # Deploy to Heroku
-      if @options[:heroku]
+      hosting = nil
+      hosting = "Heroku" if @options[:heroku]
+      hosting = "Duostack" if @options[:duostack]
+      unless hosting.nil?
         puts "\n\nInitializing and committing to git..\n"
         run_command("git init && git add . && git commit -am 'Initial Commit'")
 
-        puts "\n\nCreating Heroku app..\n"
-        run_command("heroku create #{@options[:heroku]}")
+        puts "\n\nCreating #{hosting} app..\n"
+        run_command("#{hosting.downcase} create #{@options[:heroku] || @options[:duostack]}")
 
-        puts "\n\nPushing to Heroku (this takes time, be patient)..\n"
-        run_command("git push heroku master")
+        puts "\n\nPushing to #{hosting} (this takes time, be patient)..\n"
+        run_command("git push #{hosting.downcase} master")
 
-        puts "\n\nSetting up the Heroku database..\n"
-        run_command("heroku rake db:setup")
+        puts "\n\nSetting up the #{hosting} database..\n"
+        run_command("#{hosting.downcase} rake db:setup")
 
-        puts "\n\nRestarting servers...\n"
-        run_command("heroku restart")
+        if @options[:heroku]
+          puts "\n\nRestarting servers...\n"
+          run_command("#{hosting.downcase} restart")
+        end
       end
       # End automation
 
