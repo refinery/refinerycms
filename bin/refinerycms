@@ -89,7 +89,7 @@ module Refinery
         opts.on("--update", "--update", "Migrate the database instead of rebuilding it") do
            @options[:update] = true
         end
-        
+
         opts.on("-c", "--confirm", "Confirm any prompts that require input") do
           @options[:confirm] = true
         end
@@ -168,8 +168,8 @@ module Refinery
         puts "Use --force to overwrite an existing directory."
         puts "Use --update to replace any Refinery CMS files in an existing installation."
         exit
-      elsif @options[:update] == true && @options[:confirm] == false && @app_path.join('.git').directory?
-        if run_command('git diff --exit-code  2>&1', :puts => false) != 0
+      elsif @app_path.join('.git').directory? && @options[:update] == true
+        if run_command('git diff --exit-code  2>&1', :puts => false) != 0 && @options[:confirm] == false
           puts "You have uncommitted changes or untracked files. Please remove or commit them, or:"
           puts "Use --force to have Refinery proceed anyway. Untracked files will be removed, and uncommitted changes may be lost."
           exit
