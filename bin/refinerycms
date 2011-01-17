@@ -169,7 +169,7 @@ module Refinery
         puts "Use --update to replace any Refinery CMS files in an existing installation."
         exit
       elsif @app_path.join('.git').directory? && @options[:update] == true
-        if run_command('git diff --exit-code  2>&1', :puts => false) != 0 && @options[:confirm] == false
+        if run_command('git diff --exit-code  2>&1', :puts => false) && $? != 0 && @options[:confirm] == false
           puts "\nYou have uncommitted changes or untracked files. Please remove or commit them, or:"
           puts "Use --confirm to have Refinery proceed anyway. "
           puts "Untracked files will be removed, and uncommitted changes may be lost.\n\n"
@@ -371,9 +371,6 @@ module Refinery
       else
         `#{to_run}`
       end
-
-      # Return the exit status of the last command run.
-      return $?
     end
 
     def find_and_replace(file, find, replace)
