@@ -89,7 +89,7 @@ module Refinery
         opts.on("--update", "--update", "Migrate the database instead of rebuilding it") do
            @options[:update] = true
         end
-        
+
         opts.on("-c", "--confirm", "Confirm any prompts that require input") do
           @options[:confirm] = true
         end
@@ -170,7 +170,7 @@ module Refinery
         exit
       elsif @app_path.join('.git').directory? && @options[:update] && !@options[:confirm]
         git_status = run_command('git status --porcelain', :puts => false)
-        if git_status.strip.size > 0
+        if git_status.to_s.strip.length > 0
           puts "\nYou have uncommitted changes or untracked files. Please remove or commit them, or:"
           puts "Use --confirm to have Refinery proceed anyway. "
           puts "Untracked files will be removed, and uncommitted changes may be lost.\n\n"
@@ -361,7 +361,7 @@ module Refinery
       end
 
       to_run = to_run.join(' ')
-      
+
       output = []
       if options[:puts]
         puts "Running: #{to_run}"
@@ -374,7 +374,7 @@ module Refinery
       else
         output << `#{to_run}`
       end
-      
+
       output.join("\n")
     end
 
