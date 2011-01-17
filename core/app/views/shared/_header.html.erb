@@ -1,5 +1,5 @@
 <h1 id='logo'>
-  <%= link_to RefinerySetting.get(:site_name), root_path %>
+  <%= link_to RefinerySetting.find_or_set(:site_name, "Company Name"), root_path %>
 </h1>
 <%= render :partial => "/shared/menu",
            :locals => {
