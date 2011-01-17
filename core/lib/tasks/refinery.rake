@@ -183,9 +183,14 @@ namespace :refinery do
     end
 
     # copy in any new migrations, except for ones that create schemas (this is an update!)
+    # or ones that exist already.
     Rails.root.join("db", "migrate").mkpath
-    FileUtils::cp Dir[Refinery.root.join("db", "migrate", "*.rb").cleanpath.to_s].reject{|m| m =~ %r{\d+_create_refinerycms_.+?_schema\.rb}},
-                  Rails.root.join("db", "migrate").cleanpath.to_s,
+    migrations = Pathname.glob(Refinery.root.join("db", "migrate", "*.rb")).reject{|m|
+      m.to_s =~ %r{\d+_create_refinerycms_.+?_schema\.rb} or
+      Dir[Rails.root.join('db', 'migrate', "*#{m.split.last.to_s.split(/\d+_/).last}")].any?
+    }
+    FileUtils::cp migrations,
+                  Rails.root.join('db', 'migrate').cleanpath.to_s,
                   :verbose => verbose
 
     Rails.root.join("db", "seeds").mkpath
