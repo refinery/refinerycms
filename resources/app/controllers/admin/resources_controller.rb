@@ -13,7 +13,7 @@ module Admin
     def create
       @resources = Resource.create_resources(params[:resource])
       @resource = @resources.detect { |r| !r.valid? }
-      
+
       unless params[:insert]
         if @resources.all?(&:valid?)
           flash.notice = t('created', :scope => 'refinery.crudify', :what => "'#{@resources.collect{|r| r.title}.join("', '")}'")
@@ -26,7 +26,7 @@ module Admin
           self.new # important for dialogs
           render :action => 'new'
         end
-      else      
+      else
         if @resources.all?(&:valid?)
           @resource_id = @resources.detect(&:persisted?).id
           @resource = nil
