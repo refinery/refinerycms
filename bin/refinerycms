@@ -368,6 +368,9 @@ module Refinery
       else
         `#{to_run}`
       end
+
+      # Return the exit status of the last command run.
+      return $?
     end
 
     def find_and_replace(file, find, replace)
