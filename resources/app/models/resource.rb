@@ -38,7 +38,7 @@ class Resource < ActiveRecord::Base
 
     def create_resources(params)
       resources = []
-      
+
       unless params.present? and params[:file].is_a?(Array)
         resources << create(params)
       else
@@ -46,7 +46,7 @@ class Resource < ActiveRecord::Base
           resources << create(:file => resource)
         end
       end
-      
+
       resources
     end
   end
