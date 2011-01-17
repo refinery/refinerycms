@@ -45,6 +45,7 @@ module Refinery
         :force => false,
         :heroku => false,
         :update => false,
+        :confirm => false,
         :gems => []
       }
 
@@ -90,7 +91,7 @@ module Refinery
         end
         
         opts.on("-c", "--confirm", "Confirm any prompts that require input") do
-          @options[:confirm] = false
+          @options[:confirm] = true
         end
 
         opts.separator ""
