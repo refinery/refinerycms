@@ -168,8 +168,9 @@ module Refinery
         puts "Use --force to overwrite an existing directory."
         puts "Use --update to replace any Refinery CMS files in an existing installation."
         exit
-      elsif @app_path.join('.git').directory? && @options[:update] == true
-        if run_command('git diff --exit-code  2>&1', :puts => false) && $? != 0 && @options[:confirm] == false
+      elsif @app_path.join('.git').directory? && @options[:update] && !@options[:confirm]
+        git_status = run_command('git status --porcelain', :puts => false)
+        if git_status.to_s.strip.length > 0
           puts "\nYou have uncommitted changes or untracked files. Please remove or commit them, or:"
           puts "Use --confirm to have Refinery proceed anyway. "
           puts "Untracked files will be removed, and uncommitted changes may be lost.\n\n"
@@ -361,16 +362,20 @@ module Refinery
 
       to_run = to_run.join(' ')
 
+      output = []
       if options[:puts]
         puts "Running: #{to_run}"
         IO.popen(to_run) do |t|
           while (line = t.gets)
+            output << line
             puts line
           end
         end
       else
-        `#{to_run}`
+        output << `#{to_run}`
       end
+
+      output.join("\n")
     end
 
     def find_and_replace(file, find, replace)
