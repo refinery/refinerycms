@@ -9,12 +9,12 @@ class SessionsController < Devise::SessionsController
     flash[:error] = t('.password_encryption', :scope => 'users.forgot')
     redirect_to new_user_password_path
   end
-  
+
 protected
   # We don't like this alert.
   def clear_unauthenticated_flash
     if flash.keys.include?(:alert) and flash.values.any?{|v|
-      v ==  t('unauthenticated', :scope => 'devise.failure')
+      ['unauthenticated', t('unauthenticated', :scope => 'devise.failure')].include?(v)
     }
       flash.delete(:alert)
     end
