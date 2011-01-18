@@ -6,7 +6,7 @@ source 'http://rubygems.org'
 if (java = RUBY_PLATFORM == 'java')
   gem 'activerecord-jdbcsqlite3-adapter', '>= 1.0.2', :platform => :jruby
 else
-  gem 'sqlite3-ruby', :require => 'sqlite3'
+  gem 'sqlite3'
 end
 
 # Use unicorn as the web server
