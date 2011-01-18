@@ -11,6 +11,8 @@ sl:
       form:
         blank_password_keeps_current: V kolikor ne boste vnesli gesla bo ostalo obstoječe
         enable_all: omogoči vse
+        plugin_access: Dostop do vtičnikov
+        role_access: Dostop do vlog
       index:
         create_new_user: Dodaj Novega Uporabnika
       user:
@@ -35,6 +37,7 @@ sl:
       blank_email: Niste vnesli email naslova.
       email_not_associated_with_account_html: "Oprostite, '%{email}' ni povezan z nobenim računom.<br/>Ali ste prepričani, a ste vnesli pravilen naslov?"
       email_reset_sent: Poslali smo vam email sporočilo s povezavo za ponastavitev gesla.
+      password_encryption: Morate ponastaviti geslo, ker je prišlo do sprememb v metodah šifriranja gesla, ki jih uporablja Refinery tako, da so gesla shranjenja še z močnejšo enkripcijo kot prej.
     reset:
       code_invalid: "Se opravičujemo, vendar je ponastavitvena koda že potekla ali pa je neveljvna. V kolikor imate težave poizkusite kopirati in prilepiti URL naslov iz email sporočila v vaš brskalnik ali ponovite proces ponastavitve gesla."
       successful: "Ponastavitev gesla za %{email} je bila uspešna."
@@ -43,6 +46,12 @@ sl:
   user_mailer:
     reset_notification:
       subject: Povezava za ponastavitev vašega gesla
+      reset_request_recieved_for: Zahteva za ponastavitev gesla za %{username}
+      visit_this_url: Za izbiro novega gesla obiščite to povezavo
+      remain_same_if_no_action: V kolikor ne boste izvedli nobene akcije bo vaše ostalo nespremenjeno
+  devise:
+    failure:
+      unauthenticated: Za nadaljevanje se morate prijaviti.
   activerecord:
     attributes:
       user:
