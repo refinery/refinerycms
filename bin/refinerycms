@@ -289,7 +289,7 @@ module Refinery
         find_and_replace('config/database.yml', %r{password:.*}, "password: #{@options[:database][:password]}")
         
         # Override mysql gem
-        find_and_replace('Gemfile', "mysql", "mysql2") if @options[:database][:adapter] == "mysql"
+        # find_and_replace('Gemfile', "mysql", "mysql2") if @options[:database][:adapter] == "mysql"
       end
 
       # Specify the correct version of the Refinery CMS gem (may be git source).
