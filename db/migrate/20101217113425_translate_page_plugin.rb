@@ -18,6 +18,8 @@ class TranslatePagePlugin < ActiveRecord::Migration
     if (seed_file = Rails.root.join('db', 'seeds', 'pages.rb')).file?
       load seed_file.to_s unless Page.where(:link_url => '/').any?
     end
+
+    Slug.update_all(:locale => ::I18n.locale)
   end
 
   def self.down
