@@ -2,6 +2,7 @@ nl:
   plugins:
     refinery_dashboard:
       title: Overzicht
+      description: Gives an overview of activity in Refinery
   admin:
     dashboard:
       index:
@@ -13,6 +14,7 @@ nl:
         change_language: Verander de taal
         see_home_page: Bezoek de homepage
       recent_activity:
+        empty: Er hebben zich recentelijk geen activiteiten voorgedaan.
         latest_activity: Laatste wijzigingen
         latest_activity_message: %{what} %{kind} is %{action}
       recent_inquiries:

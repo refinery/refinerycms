@@ -2,6 +2,7 @@ nl:
   plugins:
     refinery_users:
       title: Gebruikers
+      describe: Beheer gebruikers
   admin:
     users:
       delete: Verwijder deze gebruiker voorgoed
@@ -10,7 +11,9 @@ nl:
         cannot_remove_user_plugin_from_current_user: "U kunt de 'Gebruikers' plugin niet deactiveren voor uw huidige ingelogde account."
       form:
         blank_password_keeps_current: Als u dit veld leeg laat, blijft het oude wachtwoord behouden.
-        enable_all: Maak alle beschikbaar
+        plugin_access: Toegang tot een plugin
+        role_access: Rol toegang
+        enable_all: maak alles beschikbaar
       index:
         create_new_user: Maak een nieuwe gebruiker
       user:
@@ -35,6 +38,7 @@ nl:
       blank_email: Je hebt geen e-mail adres.
       email_not_associated_with_account_html: "Sorry, '%{email}' is niet geassocieerd met alle rekeningen. <br/>Weet u zeker dat u typte het juiste e-mailadres?"
       email_reset_sent: Een e-mail is naar u verzonden met een link om je wachtwoord te resetten.
+      password_encryption: Je moet je wachtwoord resetten, omdat er wijzigingen zijn gemaakt in de cryptografische methoden waarop wachtwoorden worden opgeslagen, zodat ze nog veilger bewaard worden.
     reset:
       code_invalid: "Het spijt ons, maar dit reset code is verlopen of ongeldig. Als u problemen hebt proberen te kopiëren en plakken van de URL van uw e-mail in uw browser of het herstarten van de reset wachtwoord proces."
       successful: "Wachtwoord resetten succes voor %{email}"
@@ -43,6 +47,18 @@ nl:
   user_mailer:
     reset_notification:
       subject: Link om uw wachtwoord te resetten
+      reset_request_recieved_for: Aanvraag om het wachtwoord te resetten ontvangen voor %{username}
+      visit_this_url: Bezoek dit adres om een nieuw wachtwoord in te stellen
+      remain_same_if_no_action: Je wachtwoord blijft hetzelfde, als je niet op dit bericht reageert
+  devise:
+    failure:
+      unauthenticated: Je moet inloggen om verder te kunnen
+      invalid: Sorry, je wachtwoord, of gebruikersnaam is onjuist.
+    sessions:
+      signed_in: Je bent ingelogd.
+  roles:
+    superuser: Beheerder
+    refinery: Refinery gebruiker
   activerecord:
     models:
       user: gebruiker
