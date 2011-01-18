@@ -6,6 +6,17 @@ end
 module Refinery
   module Application
     class << self
+      def refine!
+        ::ApplicationHelper.send :include, ::Refinery::ApplicationHelper
+
+        [::ApplicationController, ::Admin::BaseController].each do |c|
+          c.send :include, ::Refinery::ApplicationController
+          c.send :helper, :application
+        end
+
+        ::Admin::BaseController.send :include, ::Refinery::Admin::BaseController
+      end
+
       def included(base)
         self.instance_eval %(
           def self.method_missing(method_sym, *arguments, &block)
@@ -30,15 +41,14 @@ module Refinery
         base.config.cache_store = :memory_store
 
         # Include the refinery controllers and helpers dynamically
+        base.config.before_initialize do
+          ::Refinery::Application.refine!
+        end
+
+        # This may seem like duplication but we need to do this in both steps
+        # For development mode and for production mode.
         base.config.to_prepare do
-          ::ApplicationHelper.send :include, ::Refinery::ApplicationHelper
-
-          [::ApplicationController, ::Admin::BaseController].each do |c|
-            c.send :include, ::Refinery::ApplicationController
-            c.send :helper, :application
-          end
-
-          ::Admin::BaseController.send :include, ::Refinery::Admin::BaseController
+          ::Refinery::Application.refine!
         end
 
         # load in any settings that the developer wants after the initialization.

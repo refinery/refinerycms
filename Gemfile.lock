@@ -7,11 +7,11 @@ GIT
 
 GIT
   remote: git://github.com/parndt/friendly_id
-  revision: 25fc52ae9e88efeb60f0737c0736b75cc2c96a53
+  revision: 26f1716f0a3ae1ad2b217bc4a0801bb1fbfa215f
   branch: globalize3
   specs:
-    friendly_id (3.1.8)
-      babosa (~> 0.2.0)
+    friendly_id (3.2.0.rc1)
+      babosa (~> 0.2.1)
 
 GIT
   remote: git://github.com/refinerycms/routing-filter
@@ -34,7 +34,7 @@ PATH
       bundler (~> 1.0.5)
       devise (~> 1.1)
       dragonfly (~> 0.8.2)
-      friendly_id (~> 3.1.8)
+      friendly_id (~> 3.2.0)
       globalize3 (>= 0.1.0.beta)
       moretea-awesome_nested_set (= 1.4.3.1)
       rack-cache (~> 0.5.2)
