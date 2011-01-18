@@ -359,6 +359,9 @@ background-image: url('/images/wymeditor/skins/refinery/text_paragraph.png');
 .wym_skin_refinery li.wym_tools_class a {
 background-image: url('/images/wymeditor/skins/refinery/style.png');
 }
+.wym_skin_refinery li.wym_containers_blockquote a {
+background-image: url('/images/wymeditor/skins/refinery/text_blockquote.png');
+}
 
 
 /*DECORATION*/
