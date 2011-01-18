@@ -12,6 +12,7 @@ de:
       form:
         blank_password_keeps_current: Wird das Passwort leer gelassen, wird das aktuelle Passwort beibehalten
         plugin_access: Zugriff auf Erweiterungen
+        role_access: Zugriff auf Funktionen
         enable_all: Alles aktivieren
       index:
         create_new_user: Neuen Benutzer anlegen
@@ -37,21 +38,35 @@ de:
       blank_email: Sie haben keine E-Mail-Adresse angegeben.
       email_not_associated_with_account_html: Tut mir leid, '%{email}' ist mit keinem Konto verbunden.<br />Sind Sie sicher, dass Sie die richtige E-Mail-Adresse eingegeben haben?
       email_reset_sent: Es wurde Ihnen eine E-Mail mit einem Link geschickt, durch den Sie ihr Passwort zurücksetzen können.
+      password_encryption: Sie müssen ihr Passwort zurücksetzen, da es Änderungen in der Art der Passwortverschlüsselung gab, die Refinery nutzt, so dass Passwörter sogar noch stärker verschlüsselt werden als vorher.
     reset:
-      code_invalid: Tut mir leid, aber dieser Zurücksetzungscode ist abgelaufen oder ungültig. Wenn Sie Probleme haben, versuchen Sie den Link aus der E-Mail zu kopieren und in Ihren Browser einzufügen, oder wiederholen Sie den Vorgang mit dem Passwort zurücksetzen.
+      code_invalid: Tut mir leid, aber dieser Zurücksetzungscode ist abgelaufen oder ungültig. Wenn Sie Probleme haben, versuchen Sie, den Link aus der E-Mail zu kopieren und in Ihren Browser einzufügen, oder wiederholen Sie den Vorgang mit dem Passwort zurücksetzen.
       successful: Passwort für '%{email}' erfolgreich zurückgesetzt
       pick_new_password_for: Wählen Sie ein neues Passwort für %{email}
       reset_password: Passwort zurücksetzen
   user_mailer:
     reset_notification:
       subject: Link zum Zurücksetzen Ihres Passworts
+      reset_request_recieved_for: Anfrage zum Zurücksetzen des Passworts für %{username} erhalten
+      visit_this_url: Besuchen Sie diese URL, um ein neues Passwort zu wählen
+      remain_same_if_no_action: Das Passwort bleibt das gleiche, wenn nichts unternommen wird
+  devise:
+    failure:
+      unauthenticated: Sie müssen sich anmelden, um fortzufahren.
+      invalid: Tut mir leid, Ihr Login oder Passwort war nicht korrekt.
+    sessions:
+      signed_in: Erfolgreich angemeldet.
+  roles:
+    superuser: Superuser
+    refinery: Refinery
   activerecord:
     models:
-      user: user
+      user: Benutzer
     attributes:
       user:
         login: Login
-        email: E-Mail
+        username: Benutzername
         password: Passwort
         password_confirmation: Passwort Bestätigung
+        email: E-Mail
         remember_me: Login merken
