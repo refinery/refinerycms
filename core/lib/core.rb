@@ -35,12 +35,13 @@ module Refinery
     class Engine < Rails::Engine
 
       config.autoload_paths += %W( #{config.root}/lib )
-      
+
       # Attach ourselves to the Rails application.
       config.before_configuration do
         ::Refinery::Core.attach_to_application!
       end
 
+      # Wrap errors in spans and cache vendored assets.
       config.to_prepare do
         # This wraps errors in span not div
         ActionView::Base.field_error_proc = Proc.new do |html_tag, instance|
@@ -63,6 +64,7 @@ module Refinery
         end
       end
 
+      # Register the plugin
       config.after_initialize do
         Refinery::Plugin.register do |plugin|
           plugin.name ="refinery_core"
@@ -83,7 +85,8 @@ module Refinery
         end
       end
 
-      initializer "static assets" do |app|
+      # Run other initializer code that used to be in config/initializers/
+      initializer "serve static assets" do |app|
         app.middleware.insert_after ::ActionDispatch::Static, ::ActionDispatch::Static, "#{root}/public"
       end
 
@@ -128,7 +131,7 @@ module Refinery
         WillPaginate::ViewHelpers.pagination_options[:next_label] = "&raquo;".html_safe
       end
 
-      initializer 'ensure devise' do |app|
+      initializer 'ensure devise is initialised' do |app|
         unless Rails.root.join('config', 'initializers', 'devise.rb').file?
           load Refinery.root.join(*%w(core lib generators templates config initializers devise.rb))
         end
