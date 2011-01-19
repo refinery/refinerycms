@@ -13,6 +13,6 @@ Gem::Specification.new do |s|
   s.homepage    = %q{http://refinerycms.com}
   s.authors     = ['Resolve Digital', 'David Jones', 'Philip Arndt']
 
-  s.files       = Dir['license.md', 'lib/**/*']
+  s.files       = Dir['**/*'] - Dir['*.gemspec']
   s.require_path = 'lib'
 end
