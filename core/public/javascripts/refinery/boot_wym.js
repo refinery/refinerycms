@@ -265,7 +265,7 @@ WYMeditor.init = function() {
   });
 
   wymeditor_inputs.each(function(input) {
-    if ((containing_field = $(this).parents('.field')).get(0).style.height === '') {
+    if ((containing_field = $(this).parents('.field')).length > 0 && containing_field.get(0).style.height === '') {
       containing_field.addClass('hide-overflow')
                       .css('height', $(this).outerHeight() - containing_field.offset().top + $(this).offset().top + 45);
     }
