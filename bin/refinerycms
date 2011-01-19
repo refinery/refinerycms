@@ -279,17 +279,11 @@ module Refinery
         find_and_replace(app_gemfile, /# REFINERY CMS =+.*# END REFINERY CMS =+/m, refinery_gems)
       end
 
-      # Override database
+      # Override database username and password
       unless @options[:update]
-        # Override config/database.yml
-        #FileUtils::cp @app_path.join("config", "database.yml.#{@options[:database][:adapter]}"), @app_path.join("config", "database.yml")
-        
         # Override username and password
         find_and_replace('config/database.yml', %r{username:.*}, "username: #{@options[:database][:username]}")
         find_and_replace('config/database.yml', %r{password:.*}, "password: #{@options[:database][:password]}")
-        
-        # Override mysql gem
-        # find_and_replace('Gemfile', "mysql", "mysql2") if @options[:database][:adapter] == "mysql"
       end
 
       # Specify the correct version of the Refinery CMS gem (may be git source).
