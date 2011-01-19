@@ -3,7 +3,7 @@ require 'refinery/generators'
 class RefinerycmsGenerator < ::Refinery::Generators::EngineInstaller
 
   engine_name :refinerycms
-  source_root Refinery.root.join(*%w[core lib generators templates])
+  source_root Pathname.new(File.expand_path('../templates', __FILE__))
 
   class_option :update, :type => :boolean, :aliases => nil, :group => :runtime,
                         :desc => "Update an existing Refinery CMS based application"
@@ -80,11 +80,6 @@ class RefinerycmsGenerator < ::Refinery::Generators::EngineInstaller
                 :verbose => self.options[:update]
     end
 
-    # Overwrite rails defaults with refinery defaults and other 'important files'
-    ['spec/*.*', '.rspec', 'config/cucumber.yml'].map{|f| Dir[self.class.source_root.join(f)]}.flatten.each do |file|
-      copy_file file, file.sub(%r{#{self.class.source_root}/?}, ''),
-                :verbose => true
-    end
 
     # Append seeds.
     append_file 'db/seeds.rb', :verbose => true do
@@ -93,14 +88,22 @@ class RefinerycmsGenerator < ::Refinery::Generators::EngineInstaller
 
     # Seeds and migrations now need to be copied from their various engines.
     unless self.options[:update]
+=begin
       existing_source_root = self.class.source_root
       ::Refinery::Plugins.registered.pathnames.reject{|p| !p.join('db').directory?}.each do |pathname|
         self.class.source_root pathname
         super
       end
       self.class.source_root existing_source_root
-
+=end
       super
+
+      # The engine installer only installs database templates.
+      Pathname.glob(self.class.source_root.join('**', '*')).reject{|f|
+        f.directory? or f.to_s =~ /\/db\//
+      }.sort.each do |path|
+        copy_file path, path.to_s.gsub(self.class.source_root.to_s, Rails.root.to_s)
+      end
     end
   end
 

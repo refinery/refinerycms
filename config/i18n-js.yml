@@ -1,0 +1,6 @@
+# Find more details about this configuration file at http://github.com/fnando/i18n-js
+i18n_dir: "public/javascripts"
+translations:
+  javascript:
+    file: "public/javascripts/i18n-messages.js"
+    only: "*.js.*"

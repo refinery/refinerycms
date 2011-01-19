@@ -2,6 +2,7 @@ nl:
   plugins:
     refinery_pages:
       title: "Pagina's"
+      description: Beheer de inhoud van de pagina's
   admin:
     pages_dialogs:
       page_link:
@@ -32,6 +33,7 @@ nl:
     pages:
       delete: Verwijder de pagina permanent
       edit: Bewerk deze pagina
+      reserved_system_word: Sorry, maar de ingevoerde titel is een gereserveerd voor het systeem.
       page:
         view_live_html: Bekijk deze pagina 'live' <br/><em>(opent in een nieuw venster)</em>
         hidden: verborgen

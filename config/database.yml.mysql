@@ -2,7 +2,7 @@ login: &login
   adapter: mysql
   host: localhost
   username: root
-  password: root
+  password:
 
 development: &development
   database: your_local_database
@@ -11,10 +11,6 @@ development: &development
 test: &test
   database: your_test_database
   <<: *login
-
-cucumber: &cucumber
-  database: your_cucumber_database
-  <<: *test
 
 production: &production
   adapter: mysql
