@@ -807,6 +807,9 @@ WYMeditor.editor.prototype.init = function() {
 
       //enable the skin
       this.loadSkin();
+
+      // store which WYMeditor instance the element owns on the element.
+      $(this._element).data('wymeditor', this);
     }
 };
 
