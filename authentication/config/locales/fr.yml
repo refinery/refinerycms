@@ -68,5 +68,5 @@ fr:
         username: Nom d'utilisateur
         email: E-mail
         password: Mot de passe
-        #password_confirmation: Password confirmation
+        password_confirmation: Confirmer mot de passe
         remember_me: Se souvenir de moi
