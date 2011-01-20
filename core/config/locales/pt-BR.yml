@@ -66,3 +66,7 @@ pt-BR:
       not_live: Esta página NÃO esta ativa para o público.
     footer:
       copyright: Copyright © %{year} %{site_name}
+    no_script:
+      enable_javascript: Para ter todas as funcionalidades dessa página é necessário ter JavaScript habilitado.
+      here_are: Aqui estão as
+      instructions_enable_javascript: instruções para habilitar JavaScript no seu navegador.

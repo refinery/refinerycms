@@ -1,0 +1,34 @@
+el:
+  plugins:
+    refinery_files:
+      title: Αρχεία
+      description: Ανεβάστε και συνδέστε αρχεία
+  admin:
+    resources:
+      delete: Διαγραφή αρχείου
+      edit: Επεξεργασία αρχείου
+      form:
+        download_current: Μεταφόρτωση τρέχοντος αρχείου
+        or: ή
+        replace: " αντικατάσταση με νέο..."
+        maximum_file_size: Το μέγιστο μέγεθος του αρχείου είναι %{megabytes} megabytes.
+      resource:
+        download: Μεταφόρτωση αυτού του αρχείου (%{size})
+      index:
+        upload_new: Ανέβασμα νέου αρχείου
+        no_files_yet: Δεν υπαχουν αρχεία. Κάντε κλικ στο "Ανέβασμα αρχείου" για να προσθέσετε το πρώτο σας αρχείο.
+      insert:
+        existing: Υπάρχον αρχείο
+        new: Νέο αρχείο
+        no_files: Δεν υπάρχουν αρχεία.
+      existing_resource:
+        link_to_file: Σύνδεσμος σε αυτό το αρχείο
+        button_text: Εισαγωγή
+  activerecord:
+    models:
+      resource: αρχείο
+    errors:
+      models:
+        resource:
+          blank: Πρέπει να διαλέξετε αρχείο για ανέβασμα
+          too_long: Το αρχείο πρέπει να είναι μικρότερο από %{count} σε μέγεθος

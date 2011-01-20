@@ -1,0 +1,75 @@
+el:
+  plugins:
+    refinery_core:
+      title: Refinery
+      description: Core refinery plugin
+    refinery_dialogs:
+      title: Διάλογοι
+      description: Refinery dialogs plugin
+  welcome:
+    there_are_no_users: Δεν υπάρχουν χρήστες προς το παρόν, οπότε θα φτιάξουμε έναν για εσένα.
+    remember_admin_location: "Θυμήσου ότι η διεύθυνση διαχείρισης του Refinery είναι:"
+    lets_start: Τέλεια, ας φτιάξουμε ένα λογαριασμό για να συνδεθείς...
+    continue: Συνέχεια...
+  admin:
+    menu:
+      reorder_menu: Αναδιάταξη μενού
+      reorder_menu_done: Μόλις αναδιάταξα το μενού
+    dialogs:
+      show:
+        save: Αποθήκευση
+        cancel: Ακύρωση
+  refinery:
+    crudify:
+      created: %{what} προστέθηκε επιτυχώς.
+      updated: %{what} επεξεργάστηκε επιτυχώς.
+      destroyed: %{what} αφαιρέθηκε επιτυχώς.
+  shared:
+    site_bar:
+      log_out: Αποσύνδεση
+      switch_to_your_website: Δες τον ιστότοπο
+      switch_to_your_website_editor: Δες τη διαχείριση
+    admin:
+      continue_editing:
+        save_and_continue_editing: Αποθήκευση και συνέχισε
+      form_actions:
+        save: Αποθήκευση
+        cancel: Ακύρωση
+        cancel_lose_changes: Αν ακυρώσετε θα χάσετε ότι αλλαγές έγιναν
+        delete: Αφαίρεση
+        close: Κλείσιμο
+      image_picker:
+        none_selected: Προς το παρόν δεν υπάρχει %{what} επιλεγμένο, κάντε click εδώ για προσθέσετε ένα.
+        remove_current: Αφαίρεση τρέχοντος %{what}
+        change: Κάντε κλικ εδώ για να προσθέσετε εικόνα
+        show: Προβολή
+      resource_picker:
+        download_current: Μεταμόρωση τρέχοντος αρχείου
+        opens_in_new_window: ΄Άνοιγμα σε νέο παράθυρο
+        remove_current: Διαγραφή τρέχοντος αρχείου
+        no_resource_selected: Δεν έχετε επιλέξει αρχείο, κάντε click εδώ για προσθέσετε ένα.
+        name: Προσθήκη Αρχείου
+        current: Επιλεγμένο Αρχείο
+      search:
+        button_text: Αναζήτηση
+        results_for: Αποτελέσματα αναζήτησης για '%{query}'
+        no_results: Συγγνώμη, δεν υπάρχουν αποτελέσματα
+      delete:
+        message: Είστε σίγουρος ότι θέλετε να διαγράψετε το '%{title}';
+      error_messages:
+        problems_in_following_fields: Υπήρξαν προβλήματα με τα ακόλουθα πεδία
+      help: βοήθεια
+    message:
+      close: Κλείσιμο
+      close_this_message: Κλείστε το μήνυμα
+    draft_page_message:
+      not_live: Αυτή η σελίδα δεν είναι διαθέσιμη για δημόσια προβολή.
+    footer:
+      copyright: Copyright © %{year} %{site_name}
+    no_script:
+      enable_javascript: Για καλύτερα αποτελέσματα παρακαλώ ενεργοποιήστε την JavaScript.
+      here_are: Εδώ είναι οι
+      instructions_enable_javascript: οδηγίες για να ενεργοποιήσετε την JavaScript στον browser σας
+  time:
+    formats:
+      short: "%A, %d %B %Y"
