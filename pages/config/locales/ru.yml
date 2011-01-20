@@ -11,6 +11,9 @@ ru:
       page:
         title: Заголовок
   admin:
+    dashboard:
+      recent_activity:
+        empty: Пустой
     pages_dialogs:
       page_link:
         link_to_this_page: Ссылка на эту страницу
@@ -82,3 +85,24 @@ ru:
         reorder_pages: Изменить порядок страниц
         reorder_pages_done: Сохранить такой порядок страниц
         no_pages_yet: Страниц ещё нет.
+      reserved_system_word: Защищены системой слова
+    refinery_settings:
+      form:
+        enabled: Включено
+    users:
+      form:
+        plugin_access: Плагин доступа
+        role_access: Роль доступа
+  user_mailer:
+    reset_notification:
+      reset_request_recieved_for: Запрос включать повторно получен для
+      visit_this_url: Посетите этот URL
+      remain_same_if_no_action: Остаются неизменными если никаких действий
+  shared:
+    no_script:
+      enable_javascript: Включите JavaScript
+      here_are: Вот
+      instructions_enable_javascript: Чтобы включить JavaScript
+
+
+
