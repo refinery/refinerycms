@@ -65,7 +65,7 @@ fr:
     attributes:
       user:
         login: Nom d'utilisateur
-        #username: Username
+        username: Nom d'utilisateur
         email: E-mail
         password: Mot de passe
         #password_confirmation: Password confirmation
