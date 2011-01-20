@@ -1,0 +1,42 @@
+sr:
+  plugins:
+    refinery_images:
+      title: Slike
+      description: Menjaj slike
+  admin:
+    images:
+      delete: Ukloni ovu sliku zauvek
+      edit: Izmeni sliku
+      form:
+        image: Slika
+        use_current_image: Koristi trenutnu sliku
+        or: ili
+        replace_image: " zameni sa ovom..."
+        current_image: Trenutna slika
+        maximum_image_size: Maksimalna veličina slike je %{megabytes} megabajta.
+      index:
+        create_new_image: Dodaj novu sliku
+        no_images_yet: Ne postoje slike. Klikni "Dodaj novu sliku" da dodaš.
+        view:
+          switch_to: Prebaci na %{view_name}
+          list: lista
+          grid: mrežni prikaz
+      grid_view:
+        view_live_html: Pogledaj ovu sliku <br/><em>Otvara se u novom prozoru</em>
+      existing_image:
+        button_text: Unesi
+        resize_image: Promeni veličinu slike?
+        size: Veličina
+      insert:
+        existing_image: Trenutne slike
+        new_image: Upload
+  activerecord:
+    models:
+      image: slika
+    errors:
+      models:
+        image:
+          blank: Moraš izabrati sliku za upload
+          too_long: Slika bi trebalo da bude manja od %{count}
+          incorrect_format: 'Slika mora biti u JPG, PNG ili GIF formatu'
+
