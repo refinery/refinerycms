@@ -12,6 +12,7 @@ pt-BR:
       form:
         blank_password_keeps_current: Deixar a senha em branco mantém a senha atual
         plugin_access: Acesso
+        role_access: Nível de Permissão
         enable_all: habilitar todos
       index:
         create_new_user: Criar Novo Usuário
@@ -37,6 +38,7 @@ pt-BR:
       blank_email: Você não preencheu um endereço de e-mail.
       email_not_associated_with_account_html: "Desculpe, '%{email}' não está associado com alguma conta. <br/>Tem certeza que você digitou o endereço de email correto?"
       email_reset_sent: Um email foi enviado para você com um link para recuperar sua senha.
+      password_encryption: Você precisa redefinir sua senha pois existem mudanças nos métodos de criptografia usados pelo Refinery, as senhas são armazenadas com uma encriptação maior do que anteriormente.
     reset:
       code_invalid: "Lamentamos, mas este código reset expirou ou é inválido. Se você está tendo problemas tente copiar e colar a URL do seu e-mail em seu navegador ou reinicie o processo de mudança de senha."
       successful: "Senha alterada com sucesso para o e-mail %{email}"
@@ -45,6 +47,15 @@ pt-BR:
   user_mailer:
     reset_notification:
       subject: Link para alterar sua senha
+      reset_request_recieved_for: Solicitação para alterar a senha foi recebida por %{username}
+      visit_this_url: Visite esse endereço para escolher uma nova senha
+      remain_same_if_no_action: Sua senha irá continuar a mesma caso não prossiga
+  devise:
+    failure:
+      unauthenticated: Para continuar, faça login.
+      invalid: Email ou senha inválidos.
+    sessions:
+      signed_in: Fez login com sucesso.
   activerecord:
     models:
       user: Usuário
