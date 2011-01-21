@@ -66,17 +66,64 @@ module Refinery
         end
 
         def restrict_plugins
-          current_length = (plugins = current_user.authorized_plugins).length
-
-          # Superusers get granted access if they don't already have access.
-          if current_user.has_role?(:superuser)
-            if (plugins = plugins | ::Refinery::Plugins.registered.names).length > current_length
-              current_user.plugins = plugins
-            end
+          if current_user.has_role?(:seller) && (
+            (controller_name == 'dashboard' && action_name == 'index') ||
+            (controller_name == 'sellers' && action_name == 'index')
+          )
+            redirect_to admin_ads_url
+            return
           end
 
-          Refinery::Plugins.set_active(plugins)
+          default_plugins = if current_user.has_role?(:adminuser)
+            %w[
+              refinery_dashboard
+              refinery_inquiries
+              categories
+              sellers
+              ads
+              payments
+            ]
+
+          elsif current_user.has_role?(:superuser)
+            %w[ 
+              refinery_dashboard
+              refinery_pages
+              refinery_files
+              refinery_images
+              refinery_settings
+              refinery_users
+            ]
+
+          elsif current_user.has_role?(:seller)
+            %w[
+              seller_profile
+              ads
+              payments
+            ]
+          end
+
+          if default_plugins.present? && default_plugins.to_set != current_user.plugins.map(&:name).to_set
+            current_user.plugins = default_plugins
+          end
+
+          Refinery::Plugins.set_active(default_plugins | Refinery::Plugins.always_allowed.names)
+
+          Rails.logger.info "\n--------------------------\n"
+          Rails.logger.info default_plugins.inspect    
         end
+
+        # def restrict_plugins
+        #   current_length = (plugins = current_user.authorized_plugins).length
+        # 
+        #   # Superusers get granted access if they don't already have access.
+        #   if current_user.has_role?(:superuser)
+        #     if (plugins = plugins | ::Refinery::Plugins.registered.names).length > current_length
+        #       current_user.plugins = plugins
+        #     end
+        #   end
+        # 
+        #   Refinery::Plugins.set_active(plugins)
+        # end
 
         def restrict_controller
           if Refinery::Plugins.active.reject { |plugin| params[:controller] !~ Regexp.new(plugin.menu_match)}.empty?
