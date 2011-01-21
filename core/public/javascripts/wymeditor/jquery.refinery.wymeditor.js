@@ -1479,7 +1479,10 @@ WYMeditor.editor.prototype.paste = function(sData) {
         }
       } else {
         if ((aP.length -1) == x) {
-          contentAfterBreak = $(container).parent().html().match(new RegExp("\<span id=[\'|\"]" + wym._current_unique_stamp + "[\'|\"]\>.*\<\/span\>([\\s\\S]*)"))[1].split('</p>')[0];
+          var rgx = $(container).parent().html().match(new RegExp("\<span id=[\'|\"]" + wym._current_unique_stamp + "[\'|\"]\>.*\<\/span\>([\\s\\S]*)"));
+          if(rgx && rgx[1]){
+            contentAfterBreak = rgx[1].split('</p>')[0];
+          }
           sTmp = "<p id='last_paste'>" + sTmp + "</p>";
         } else {
           sTmp = "<p>" + sTmp + "</p>";
