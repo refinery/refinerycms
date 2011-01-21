@@ -43,7 +43,7 @@ module Refinery
 
     class << self
       def active
-        @active_plugins = self.new
+        @active_plugins ||= self.new
       end
 
       def always_allowed
@@ -55,6 +55,7 @@ module Refinery
       end
 
       def set_active(names)
+        @active_plugins = self.new
         names.each do |name|
           active << registered[name] if registered[name] && !active[name]
         end
