@@ -28,7 +28,8 @@ module Refinery
         # /system/images/BAhbB1sHOgZmIiMyMDEwLzA5LzAxL1NTQ19DbGllbnRfQ29uZi5qcGdbCDoGcDoKdGh1bWIiDjk0MngzNjAjYw/refinery_is_awesome.jpg
         # Officially the way to do it, from: http://markevans.github.com/dragonfly/file.URLs.html
         app_images.url_suffix = proc{|job|
-          "/#{job.app.datastore.retrieve(job.uid).last[:name]}"
+          object_file_name = job.uid_basename.gsub(%r{^(\d{4}|\d{2})[_/]\d{2}[_/]\d{2}[_/]\d{2,3}[_/](\d{2}/\d{2}/\d{3}/)?}, '')
+          "/#{object_file_name}#{job.encoded_extname || job.uid_extname}"
         }
 
         ### Extend active record ###

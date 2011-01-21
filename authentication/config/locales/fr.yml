@@ -11,6 +11,8 @@ fr:
         cannot_remove_user_plugin_from_current_user: Vous ne pouvez pas supprimer l'accès au plugin de gestion des utilisateurs pour l'utilisateur sur lequel vous êtes actuellement authentifié.
       form:
         blank_password_keeps_current: Laisser le mot de passe vide permet de conserver le mot de passe actuel
+        #plugin_access: Plugin access
+        #role_access: Role access
         enable_all: tout activer
       index:
         create_new_user: Créer un nouvel utilisateur
@@ -36,6 +38,7 @@ fr:
       blank_email: Vous n'avez pas entré d'adresse e-mail.
       email_not_associated_with_account_html: Désolé, '%{email}' n'est asssocié à aucun compte.<br />Etes-vous sûr d'avoir correctement entré votre adresse e-mail ?
       email_reset_sent: Un e-mail vous a été envoyé. Il contient un lien vous permettant de changer votre mot de passe.
+      #password_encryption: You need to reset your password because there were changes in the password encryption methods that Refinery uses so that passwords are stored with even stronger encryption than before.
     reset:
       code_invalid: "Nous sommes désolés mais ce code de changement de mot de passe à expiré ou est invalide. Si vous rencontrez des problèmes veuillez essayer de copier/coller l'URL fournie par l'e-mail dans votre navigateur ou de recommencer la précedure de changement de mot de passe."
       successful: Le mot de passe pour '%{email}' a bien été changé.
@@ -44,12 +47,26 @@ fr:
   user_mailer:
     reset_notification:
       subject: Lien pour changer votre mot de passe
+      #reset_request_recieved_for: Request to reset password received for %{username}
+      #visit_this_url: Visit this url to choose a new password
+      #remain_same_if_no_action: Your password will remain the same if no action is taken
+  devise:
+    failure:
+      unauthenticated: Vous devez vous connecter ou vous inscrire pour continuer.
+      invalid: Courriel ou mot de passe incorrect.
+    sessions:
+      signed_in: Réussite de la connexion.
+  roles:
+    superuser: Superuser
+    refinery: Refinery
   activerecord:
     models:
       user: utilisateur
     attributes:
       user:
         login: Nom d'utilisateur
+        username: Nom d'utilisateur
         email: E-mail
         password: Mot de passe
+        password_confirmation: Confirmer mot de passe
         remember_me: Se souvenir de moi

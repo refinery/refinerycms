@@ -79,5 +79,5 @@ gem 'routing-filter',           :git => 'git://github.com/refinerycms/routing-fi
 gem 'refinerycms-i18n',         '~> 0.9'
 
 gem 'jruby-openssl' if java
-gem 'ya2yaml'
 # END USER DEFINED
+
