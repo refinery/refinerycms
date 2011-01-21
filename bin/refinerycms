@@ -87,8 +87,8 @@ module Refinery
           @options[:heroku] = app_name || ''
         end
 
-        opts.on("--duostack [APP_NAME]", "Set up and deploy to Duostack") do |app_name|
-          @options[:duostack] = app_name || ''
+        opts.on("--duostack APP_NAME", String, "Set up and deploy to Duostack") do |app_name|
+          @options[:duostack] = app_name
         end
 
         opts.on("--update", "--update", "Migrate the database instead of rebuilding it") do
