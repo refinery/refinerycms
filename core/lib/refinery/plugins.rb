@@ -43,7 +43,7 @@ module Refinery
 
     class << self
       def active
-        @active_plugins ||= self.new
+        @active_plugins = self.new
       end
 
       def always_allowed
