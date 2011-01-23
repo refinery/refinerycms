@@ -11,6 +11,8 @@ sv:
         cannot_remove_user_plugin_from_current_user: Du kan inte ta bort insticksprogrammet 'Användare' från det konto som är inloggat.
       form:
         blank_password_keeps_current: Lämna blankt för att behålla nuvarande lösenord
+        plugin_access: Åtkomst för plugin
+        role_access: Åtkomst för roller
         enable_all: markera alla
       index:
         create_new_user: Lägg till ny användare
@@ -36,6 +38,7 @@ sv:
       blank_email: Du fyllde inte i någon e-postadress.
       email_not_associated_with_account_html: Tyvärr, '%{email}' finns inte med i systemet.<br />Är du säker på att du fyllde i rätt e-postadress?
       email_reset_sent: Ett e-post har skickats till dig med instruktioner om hur du återställer ditt lösenord.
+      password_encryption: Du måste sätt ett nytt lösenord på grund av att krypteringmetoden som Refinery använder sig av har bytts ut så att lösenorden sparas med starkare kryptering än tidigare.    
     reset:
       code_invalid: Tyvärr, men din återställningskod har är ogiltlig eller har utgått. Om du har problem, pröva att kopiera den URL som du mottagit på din e-post, klistra sedan in i webbläsaren. Eller så börjar du om från början.
       successful: Återställde lösenordet för '%{email}'
@@ -44,6 +47,12 @@ sv:
   user_mailer:
     reset_notification:
       subject: Länk för att återställa ditt lösenord.
+      reset_request_received_for: "Önskan om att återställa lösenordet för %{username}"
+      visit_this_url: Använd den här länken för att välja ett nytt lösenord
+      remain_same_if_no_action: Ditt lösenord kommer att vara det samma som tidigare om du inte gör något
+  devise:
+    failure:
+      unauthenticated: Du måste logga in innan du kan fortsätta.
   activerecord:
     models:
       user: användare
