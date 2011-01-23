@@ -48,7 +48,7 @@ fr:
     reset_notification:
       subject: Lien pour changer votre mot de passe
       #reset_request_recieved_for: Request to reset password received for %{username}
-      #visit_this_url: Visit this url to choose a new password
+      #visit_this_url: Visit this URL to choose a new password
       #remain_same_if_no_action: Your password will remain the same if no action is taken
   devise:
     failure:
