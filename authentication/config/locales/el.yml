@@ -47,7 +47,7 @@ el:
   user_mailer:
     reset_notification:
       subject: Σύνδεσμος για την αλλαγή του κωδικού σας
-      reset_request_recieved_for: Αίτημα αλλαγής κωδικού από %{username}
+      reset_request_received_for: Αίτημα αλλαγής κωδικού από %{username}
       visit_this_url: Επισκεφθείτε αυτόν τον σύνδεσμο για να αλλάξετε κωδικό.
       remain_same_if_no_action: Ο κωδικός σας θα παραμείνει ο ίδιος αν δεν προβείται σε κάποια ενέργεια.
   devise:

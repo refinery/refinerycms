@@ -12,6 +12,7 @@ it:
         empty_set: Nessuma impostazione ancra presente.
         create_first: Cliccare '%{link}' per aggiungere la tua prima impostazione.
       form:
+        enabled: Sì, abilitare questa impostazione
         restart_may_be_in_order_html: <strong>Si prega di notare</strong> che potrebbe essere necessario riavviare il sito web affinché questa impostazione abbia effetto.
         yes_make_this_setting_restricted: Si, rendi questa impostazione accessibile solo al superutente.
         help:

@@ -47,7 +47,7 @@ de:
   user_mailer:
     reset_notification:
       subject: Link zum Zurücksetzen Ihres Passworts
-      reset_request_recieved_for: Anfrage zum Zurücksetzen des Passworts für %{username} erhalten
+      reset_request_received_for: Anfrage zum Zurücksetzen des Passworts für %{username} erhalten
       visit_this_url: Besuchen Sie diese URL, um ein neues Passwort zu wählen
       remain_same_if_no_action: Das Passwort bleibt das gleiche, wenn nichts unternommen wird
   devise:
