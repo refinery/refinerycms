@@ -8,10 +8,10 @@ ru:
       delete: Удалить этого пользователя навсегда
       edit: Редактировать этого пользователя
       update:
-        #cannot_remove_user_plugin_from_current_user: "You cannot remove the 'Users' plugin from the currently logged in account."
+        cannot_remove_user_plugin_from_current_user: "Нельзя отключить модуль «Пользователи» у самого себя."
       form:
         blank_password_keeps_current: Оставьте поле пустым, если не хотите изменить пароль
-        enable_all: enable all
+        enable_all: включить все
       index:
         create_new_user: Создать нового пользователя
       user:
@@ -89,7 +89,8 @@ ru:
       user: пользователь
     attributes:
       user:
-        login: Имя пользователя
+        login: Имя или почта пользователя
+        username: Имя пользователя
         email: Эл. почта
         password: Пароль
         password_confirmation: Подтверждение пароля
