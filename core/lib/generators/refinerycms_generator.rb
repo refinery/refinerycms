@@ -89,7 +89,7 @@ class RefinerycmsGenerator < ::Refinery::Generators::EngineInstaller
     # Seeds and migrations now need to be copied from their various engines.
     unless self.options[:update]
       existing_source_root = self.class.source_root
-      ::Refinery::Plugins.registered.pathnames.reject{|p| !p.join('db').directory?}.each do |pathname|
+      ::Refinery::Plugins.registered.pathnames.reject{|p| !p.join('db').directory?}.sort.each do |pathname|
         self.class.source_root pathname
         super
       end
