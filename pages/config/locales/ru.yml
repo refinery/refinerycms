@@ -91,7 +91,7 @@ ru:
         enabled: Включено
     users:
       form:
-        plugin_access: Плагин доступа
+        plugin_access: Доступ к модулю
         role_access: Роль доступа
   user_mailer:
     reset_notification:
