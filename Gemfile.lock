@@ -1,11 +1,4 @@
 GIT
-  remote: git://github.com/flori/json
-  revision: 0b15820e245f4048d1bcd29cd60693e4e211ab43
-  ref: 0b15820e245f4048d1bcd29cd60693e4e211ab43
-  specs:
-    json_pure (1.4.6a)
-
-GIT
   remote: git://github.com/parndt/friendly_id
   revision: 26f1716f0a3ae1ad2b217bc4a0801bb1fbfa215f
   branch: globalize3
@@ -85,7 +78,7 @@ GEM
     babosa (0.2.1)
     bcrypt-ruby (2.1.4)
     builder (2.1.2)
-    capybara (0.4.1.rc)
+    capybara (0.4.1.1)
       celerity (>= 0.7.9)
       culerity (>= 0.2.4)
       mime-types (>= 1.16)
@@ -93,7 +86,7 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       selenium-webdriver (>= 0.0.27)
-      xpath (~> 0.1.2)
+      xpath (~> 0.1.3)
     celerity (0.8.7)
     childprocess (0.1.6)
       ffi (~> 0.6.3)
@@ -106,7 +99,7 @@ GEM
       term-ansicolor (~> 1.0.5)
     cucumber-rails (0.3.2)
       cucumber (>= 0.8.0)
-    culerity (0.2.14)
+    culerity (0.2.15)
     database_cleaner (0.6.0)
     devise (1.1.5)
       bcrypt-ruby (~> 2.1.2)
@@ -126,6 +119,7 @@ GEM
       activerecord (>= 3.0.0)
     i18n (0.5.0)
     json (1.4.6)
+    json_pure (1.5.0)
     launchy (0.3.7)
       configuration (>= 0.0.5)
       rake (>= 0.8.1)
@@ -205,13 +199,13 @@ DEPENDENCIES
   autotest
   autotest-notification
   autotest-rails
-  capybara (>= 0.4.1.rc)
+  capybara
   cucumber-rails
   database_cleaner
   factory_girl
   friendly_id!
   gherkin
-  json_pure (= 1.4.6a)!
+  json_pure
   launchy
   rack-test (~> 0.5.6)
   refinerycms!
