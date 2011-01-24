@@ -61,7 +61,7 @@ da:
     refinery: Refinery
   activerecord:
     models:
-      user: user
+      user: bruger
     attributes:
       user:
         login: Log ind
