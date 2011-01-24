@@ -10,8 +10,8 @@ es:
         cannot_remove_user_plugin_from_current_user: No puedes eliminar el plugin 'Usuarios' para el usuario actual.
       form:
         blank_password_keeps_current: Dejar la contraseña en blanco mantendrá la actual
-        #plugin_access: Plugin access
-        #role_access: Role access
+        plugin_access: Gestionar plugins
+        role_access: Gestionar roles
         enable_all: permitir todo
       index:
         create_new_user: Crear nuevo usuario
@@ -37,7 +37,7 @@ es:
       blank_email: No has indicado un e-mail válido.
       email_not_associated_with_account_html: "Lo siento, el e-mail '%{email}' no está asociado a ninguna cuenta.<br />¿Seguro que lo has tecleado correctamente?"
       email_reset_sent: Te hemos enviado un e-mail con un enlace para cambiar tu contraseña.
-      #password_encryption: You need to reset your password because there were changes in the password encryption methods that Refinery uses so that passwords are stored with even stronger encryption than before.
+      password_encryption: Necesitas restablecer tu contraseña debido a que hubo cambios en los métodos de encriptación de contraseñas que Refinery usa, ya que ahora las contraseñas son almacenadas con una encriptación más fuerte que antes.
     reset:
       code_invalid: "Lo sentimos, pero este código para cambiar la contraseña ha expirado o no es válido. Si tienes problemas intenta copiar y pegar la dirección desde el e-mail que te enviamos o comienza de nuevo el proceso para cambiar la contraseña."
       successful: "Contraseña cambiada correctamente para '%{email}'"
@@ -46,9 +46,9 @@ es:
   user_mailer:
     reset_notification:
       subject: Enlace para cambiar tu contraseña
-      #reset_request_received_for: Request to reset password received for %{username}
-      #visit_this_url: Visit this URL to choose a new password
-      #remain_same_if_no_action: Your password will remain the same if no action is taken
+      reset_request_received_for: Petición de restablecimiento de contraseña recibido por %{username}
+      visit_this_url: Ve a esta URL para establecer una contraseña nueva
+      remain_same_if_no_action: contraseña será la misma si no realizas esta acción
   activerecord:
     models:
       user: usuario
