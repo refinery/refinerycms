@@ -44,5 +44,5 @@ WYMeditor.STRINGS['da'] = {
   Status:           'Status',
   Source_Code:      'Kilde kode',
   Css_Class:        'Tilføj CSS klasse',
-  Apply_Style:      'Formattér'
+  Apply_Style:      'Formatér'
 };
