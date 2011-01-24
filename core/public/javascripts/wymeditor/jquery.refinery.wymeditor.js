@@ -1237,6 +1237,9 @@ WYMeditor.editor.prototype.update = function() {
   // get rid of any temporary text-only interpolation tags we have inserted for cursor position.
   html = html.replace(/[%$]+wym-[^%$]*[%$]+/igm, '');
 
+  // get rid of <br /> tag that appears when empty.
+  html = html.replace(/^<br\ ?\/?>$/, '')
+
   // apply changes/
   $(wym._element).val(html);
   $(wym._box).find(wym._options.htmlValSelector).not('.hasfocus').val(html); //#147
