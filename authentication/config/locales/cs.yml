@@ -11,7 +11,8 @@ cs:
         cannot_remove_user_plugin_from_current_user: Nemůžete odstranit 'Users' plugin z aktuálně přihlášeného konta.
       form:
         blank_password_keeps_current: Pokud necháte toto pole prázné bude zachováno stávající heslo
-        enable_all: povolot vše
+        plugin_access: Přístup k pluginům
+        enable_all: povolit vše
       index:
         create_new_user: Přidat nového uživatele
       user:
@@ -51,5 +52,7 @@ cs:
       user:
         login: Přihlásit
         email: Email
+        username: Uživatelské jméno
         password: Heslo
+        password_confirmation: Potvrdit heslo
         remember_me: Zapamatovat heslo
