@@ -52,12 +52,12 @@ da:
       remain_same_if_no_action: Foretager du dig ikke yderligere, så ændres din adgangskode ikke
   devise:
     failure:
-      unauthenticated: You need to sign in before continuing.
-      invalid: "Sorry, your login or password was incorrect."
+      unauthenticated: Du skal logge ind for at kunne fortsætte.
+      invalid: "Email eller kodeord er ikke gyldig."
     sessions:
-      signed_in: Signed in successfully.
+      signed_in: Du er nu logget ind.
   roles:
-    superuser: Superuser
+    superuser: Administrator
     refinery: Refinery
   activerecord:
     models:
