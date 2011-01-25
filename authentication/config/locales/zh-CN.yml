@@ -47,7 +47,7 @@ zh-CN:
   user_mailer:
     reset_notification:
       subject: 重设您的密码的链接
-      reset_request_recieved_for: 请求重设 %{username} 的密码
+      reset_request_received_for: 请求重设 %{username} 的密码
       visit_this_url: 到这个网址来设定新的密码
       remain_same_if_no_action: 如果您不做任何动作, 您的密码将会维持不变
   devise:
