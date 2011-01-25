@@ -11,39 +11,45 @@ it:
         cannot_remove_user_plugin_from_current_user: Non è possibile rimuovere il plugin 'Utenti' dall'account attualmente connesso.
       form:
         blank_password_keeps_current: Lasciando la password vuota si mantiene quella corrente
+        plugin_access: Plugin di accesso
+        role_access: Ruolo di accesso
         enable_all: abilita tutto
       index:
         create_new_user: Crea nuovo utente
       user:
         email_user: E-mail a questo utente
-        preview: (%{who}) creato il %{created_at}
+        preview: "(%{who}) creato il %{created_at}"
   sessions:
     new:
       forgot_password: Ho dimenticato la password
       sign_in: Entra
       hello_please_sign_in: Ciao! Accedi per favore.
   users:
-    setup_website_name_html: Prima di tutto dare al sito un nome. <a href='%{link}' name='%{title}'>Vai qui</a> per modificare il nome del tuo sito web
+    setup_website_name_html: "Prima di tutto dare al sito un nome. <a href='%{link}' name='%{title}'>Vai qui</a> per modificare il nome del tuo sito web"
     new:
       fill_form: Compila il form sottostante con i tuoi dati in modo che possiamo iniziare.
       sign_up: Iscriviti
     create:
-      welcome: Benvenuti in Refinery, %{who}
+      welcome: "Benvenuti in Refinery, %{who}"
     forgot:
       email_address: Indirizzo e-mail
-      enter_email_address: Inserisci l'indirizzo di posta elettronica per l&apos;account.
+      enter_email_address: "Inserisci l'indirizzo di posta elettronica per l&apos;account."
       reset_password: Reimpostazione della password
       blank_email: Non hai inserito un indirizzo email.
-      email_not_associated_with_account_html: Mi dispiace, '%{email}' non è associato ad alcun account. <br/>Sei sicuro di aver digitato l'indirizzo email corretto?
+      email_not_associated_with_account_html: "Mi dispiace, '%{email}' non è associato ad alcun account. <br/>Sei sicuro di aver digitato l'indirizzo email corretto?"
       email_reset_sent: Ti è stata inviata una e-mail con il link per reimpostare la password.
+      #password_encryption: You need to reset your password because there were changes in the password encryption methods that Refinery uses so that passwords are stored with even stronger encryption than before.
     reset:
-      code_invalid: Siamo spiacenti, ma questo codice reset è scaduto o non è valido. Se si hanno problemi provare a copiare e incollare l'URL dalla vostra e-mail al vostro browser o riavviare la procedura di reimpostazione password.
+      code_invalid: "Siamo spiacenti, ma questo codice reset è scaduto o non è valido. Se si hanno problemi provare a copiare e incollare l'URL dalla vostra e-mail al vostro browser o riavviare la procedura di reimpostazione password."
       successful: Il ripristino della password è avvenuto con successo per %{email}
-      pick_new_password_for: Scegli una nuova password per %{email}
+      pick_new_password_for: "Scegli una nuova password per %{email}"
       reset_password: Reimposta la password
   user_mailer:
     reset_notification:
       subject: Link per reimpostare la password
+      #reset_request_received_for: Request to reset password received for %{username}
+      #visit_this_url: Visit this URL to choose a new password
+      #remain_same_if_no_action: Your password will remain the same if no action is taken
   activerecord:
     attributes:
       user:
