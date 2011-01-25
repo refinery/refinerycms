@@ -1,17 +1,10 @@
 GIT
   remote: git://github.com/parndt/friendly_id
-  revision: 26f1716f0a3ae1ad2b217bc4a0801bb1fbfa215f
+  revision: 15c49419de22fb78eb9f439ea448a80285c76a50
   branch: globalize3
   specs:
-    friendly_id (3.2.0.rc1)
+    friendly_id (3.2.0)
       babosa (~> 0.2.1)
-
-GIT
-  remote: git://github.com/refinerycms/routing-filter
-  revision: e967b4b3952e613156f41cf28fa2d72bc7377823
-  specs:
-    routing-filter (0.2.2)
-      actionpack
 
 GIT
   remote: git://github.com/resolve/refinerycms-generators
@@ -155,9 +148,11 @@ GEM
       thor (~> 0.14.4)
     rake (0.8.7)
     rdoc (3.4)
-    refinerycms-i18n (0.9.9.5)
+    refinerycms-i18n (0.9.9.6)
       refinerycms (>= 0.9.8)
       routing-filter (~> 0.1)
+    routing-filter (0.2.2)
+      actionpack
     rspec (2.3.0)
       rspec-core (~> 2.3.0)
       rspec-expectations (~> 2.3.0)
@@ -211,7 +206,6 @@ DEPENDENCIES
   refinerycms!
   refinerycms-generators (~> 0.9.9)!
   refinerycms-i18n (~> 0.9)
-  routing-filter!
   rspec-rails (= 2.3)
   ruby-prof
   spork
