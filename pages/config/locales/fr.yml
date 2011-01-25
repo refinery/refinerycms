@@ -18,13 +18,13 @@ fr:
           new_window_label: Cocher cette case si vous souhaitez que la destination du lien s'ouvre dans une nouvelle fenêtre.
           not_sure: Vous n'êtes pas certain de ce qu'il faut entrer dans le champ ci-dessus ?
           step1: Trouvez sur le net la page vers laquelle vous voulez créer un lien.
-          step2: Copiez l'adresse de cette page dans la barre d'adresse de votre navigateur, et collez-la dans ce champ.
+          step2: "Copiez l'adresse de cette page dans la barre d'adresse de votre navigateur, et collez-la dans ce champ."
         email_address:
           tab_name: Adresse e-mail
           subject_line_optional: Sujet optionnel
           body_optional: Corps de texte optionnel
           not_sure: Vous n'êtes pas certain de ce qu'il faut entrer dans les champs ci-dessus ?
-          step1_html: Ecrivez, ou copiez-collez (par exemple à partir de votre carnet d'adresses) l'adresse e-mail à mettre en lien dans le champ '<strong>Adresse e-mail</strong>'.
+          step1_html: "Ecrivez, ou copiez-collez (par exemple à partir de votre carnet d'adresses) l'adresse e-mail à mettre en lien dans le champ '<strong>Adresse e-mail</strong>'."
           step2_html: Utilisez le champ '<strong>Sujet optionnel</strong>' si vous souhaitez que le message possède un <strong>sujet pré-défini</strong>.
           step3_html: Utilisez le champ '<strong>Corps de texte optionnel</strong>' si vous souhaitez que le message possède un <strong>texte pré-défini</strong>.
         your_resource:
@@ -33,6 +33,7 @@ fr:
     pages:
       delete: Supprimer définitivement cette page
       edit: Modifier cette page
+      reserved_system_word: "Désolé, mais ce titre est un mot réservé du système"
       page:
         view_live_html: Voir cette page<br/><em>(Ouvre une nouvelle fenêtre)</em>
         hidden: caché
@@ -59,9 +60,9 @@ fr:
         skip_to_first_child_label: Rediriger les visiteurs vers la première page fille.
         skip_to_first_child_help: Cette option assure que cette page est liée à la première page sous-jacente. Cela peut être utile losque l'on groupe des pages.
         link_url: Cette page redirige le visiteur vers un autre site ou une autre page
-        link_url_help: Si vous souhaitez que cette page mène à un autre site internet ou à une autre page lorsque l'on clique dessus dans le menu, entrez une URL '(par exemple http://google.com)'. Sinon laissez ce champ vide.
-        parent_page_help: Vous pouvez placer une page sous une autre page en la sélectionnant dans la liste. Si vous voulez que cette page soit une page parente, laissez ce champ vide.
-        custom_title_help: Si vous voulez que la page ait un titre différent de celui qui apparaît dans le menu, sélectionnez &apos;Text&apos; et entrez-le ici.
+        link_url_help: "Si vous souhaitez que cette page mène à un autre site internet ou à une autre page lorsque l'on clique dessus dans le menu, entrez une URL '(par exemple http://google.com)'. Sinon laissez ce champ vide."
+        parent_page_help: "Vous pouvez placer une page sous une autre page en la sélectionnant dans la liste. Si vous voulez que cette page soit une page parente, laissez ce champ vide."
+        custom_title_help: "Si vous voulez que la page ait un titre différent de celui qui apparaît dans le menu, sélectionnez &apos;Text&apos; et entrez-le ici."
       form_advanced_options_seo:
         seo: Optimisations pour les moteurs de recherche (SEO)
         seo_override_title: Titre du navigateur
@@ -74,7 +75,7 @@ fr:
         create_new_page: Créer une nouvelle page
         reorder_pages: Réordonner les pages
         reorder_pages_done: Fin de réordonnancement des pages
-        no_pages_yet: Il n'y a actuellement aucune page. Cliquer sur 'Créer une nouvelle page' pour en ajouter une.
+        no_pages_yet: "Il n'y a actuellement aucune page. Cliquer sur 'Créer une nouvelle page' pour en ajouter une."
   activerecord:
     models:
       page: page

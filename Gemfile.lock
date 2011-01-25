@@ -151,7 +151,7 @@ GEM
     refinerycms-i18n (0.9.9.6)
       refinerycms (>= 0.9.8)
       routing-filter (~> 0.1)
-    routing-filter (0.2.2)
+    routing-filter (0.2.3)
       actionpack
     rspec (2.3.0)
       rspec-core (~> 2.3.0)
