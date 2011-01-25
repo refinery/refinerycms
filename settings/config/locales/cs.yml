@@ -26,7 +26,7 @@ cs:
           new_page_parts: Povolit přidávání nových částí stránek (obsahové sekce) v editorech.
           page_title: Velmi komplexní volba pro nastavení titulky stránky. Můžete nastavit vlastní CSS třídu, jiný tag nebo ho poslat do drobečkového menu se stránkami se stejným předkem.
           pages_advanced_options_include_seo: Tato volba nastavuje, zda je zobrazeno SEO nastavení v rozšířeném nastavení stránky.
-          preferred_image_view: This controls which view the images plugin displays existing images in - grid for 'Grid View' and list for 'List View'. There is a button to automate this process on the images plugin itself.
+          preferred_image_view: Nastavuje preferovaný pohled na existující obrázky. Zvolte grid pro zobrazení mřížky nebo list pro zobrazení seznamu. Nastavení se dá přepínat tlačítkem i v samotném pohledu.
           refinery_enable_backend_reordering: Můžete odebrat možnost řadit záložky v administraci.
           refinery_menu_cache_action_suffix: Nastavuje klíč, který je používán k ukládání menu do mezipaměti. Pokud používáte nějáký vzhled je lepší nechat toto nastavení v původním stavu a vzhled se o toto nastavení postará. 
           show_contact_privacy_link: Můžete zobrazit či srýt odkaz na stránku 'zásady ochrany osobních údajů' u kontaktnícho formuláře vedle tlačítka 'Odeslat'.
