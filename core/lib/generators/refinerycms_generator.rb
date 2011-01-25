@@ -87,22 +87,20 @@ class RefinerycmsGenerator < ::Refinery::Generators::EngineInstaller
     end
 
     # Seeds and migrations now need to be copied from their various engines.
-    unless self.options[:update]
-      existing_source_root = self.class.source_root
-      ::Refinery::Plugins.registered.pathnames.reject{|p| !p.join('db').directory?}.sort.each do |pathname|
-        self.class.source_root pathname
-        super
-      end
-      self.class.source_root existing_source_root
-
+    existing_source_root = self.class.source_root
+    ::Refinery::Plugins.registered.pathnames.reject{|p| !p.join('db').directory?}.sort.each do |pathname|
+      self.class.source_root pathname
       super
+    end
+    self.class.source_root existing_source_root
 
-      # The engine installer only installs database templates.
-      Pathname.glob(self.class.source_root.join('**', '*')).reject{|f|
-        f.directory? or f.to_s =~ /\/db\//
-      }.sort.each do |path|
-        copy_file path, path.to_s.gsub(self.class.source_root.to_s, Rails.root.to_s)
-      end
+    super
+
+    # The engine installer only installs database templates.
+    Pathname.glob(self.class.source_root.join('**', '*')).reject{|f|
+      f.directory? or f.to_s =~ /\/db\//
+    }.sort.each do |path|
+      copy_file path, path.to_s.gsub(self.class.source_root.to_s, Rails.root.to_s)
     end
   end
 

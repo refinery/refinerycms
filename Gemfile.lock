@@ -15,7 +15,7 @@ GIT
 
 GIT
   remote: git://github.com/resolve/refinerycms-generators
-  revision: ec29a1ab3e2df3de60cb4a3f4e1df82aa6b172bb
+  revision: 9fea559c5734727cc25475cf2c402f59d3ea882d
   specs:
     refinerycms-generators (0.9.9)
 
@@ -75,7 +75,7 @@ GEM
       autotest (~> 4.3)
     autotest-rails (4.1.0)
       ZenTest
-    babosa (0.2.1)
+    babosa (0.2.2)
     bcrypt-ruby (2.1.4)
     builder (2.1.2)
     capybara (0.4.1.1)
