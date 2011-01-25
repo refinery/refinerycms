@@ -1,0 +1,34 @@
+zh-CN:
+  plugins:
+    refinery_files:
+      title: 文件
+      description: 上传与链接文件
+  admin:
+    resources:
+      delete: 永远地移除这个文件
+      edit: 编辑文件
+      form:
+        download_current: 下载目前文件
+        or: 或
+        replace: " 用这个来取代..."
+        maximum_file_size: 文件大小限制为 %{megabytes} MB.
+      resource:
+        download: 下载这个文件 (%{size})
+      index:
+        upload_new: 上传新文件
+        no_files_yet: 目前没有任何的文件. 点选 "上传新文件" 来加入您的第一个文件.
+      insert:
+        existing: 已存在的文件
+        new: 新文件
+        no_files: 目前没有文件.
+      existing_resource:
+        link_to_file: 此文件链接
+        button_text: 插入
+  activerecord:
+    models:
+      resource: 文件
+    errors:
+      models:
+        resource:
+          blank: 您必须选取文件来上传
+          too_long: 文件必须要小于 %{count} 这个大小
