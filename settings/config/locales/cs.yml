@@ -17,29 +17,29 @@ cs:
         yes_make_this_setting_restricted: "Ano, umožnit změnu této volby jenom administrátorům."
         help:
           restricted: Volba bude viditelná a editovatelné pouze pro adminstrátory (jako jste vy).
-          activity_show_limit: This limits the number of items that can display in the Dashboard listing.
-          analytics_page_code: This code activates Google Analytics tracking within your website. If the setting is left blank or set to UA-xxxxxx-x then this is disabled and no remote calls to Google Analytics are made.
-          frontend_refinery_stylesheets_enabled: "By default, Refinery includes stylesheets for the frontend which provide default CSS without getting in the way of your own stylesheets, enabled or disabled by this setting."
-          image_dialogue_sizes: This setting applies to the Insert Image dialogue. You must implement the different thumbnail sizes as well as changing this.
-          image_thumbnails: If you modify this setting you will have to regenerate your images by running rake images:regenerate (or rake images:update if you only added more thumbnails) otherwise the setting will not apply to existing images.
-          menu_hide_children: Hide any subpages from the menu even if they are present.
-          new_page_parts: Enable adding new page parts (content sections) in the page editors.
-          page_title: Very complex options for setting the page title. Here you can set custom CSS class or a different tag or tell it to breadcrumb with pages in its ancestry.
-          pages_advanced_options_include_seo: This controls whether the SEO options are displayed in the advanced options for a page.
-          preferred_image_view: This controls which view the images plugin displays existing images in - grid for 'Grid View' and list for 'List View'. There is a button to automate this process on the images plugin itself.
-          refinery_enable_backend_reordering: You can remove the ability to reorder the plugins' display order with this.
-          refinery_menu_cache_action_suffix: This controls the key that is used to cache the site menu. If you are using a theme then it is better to leave this as the default as the theme will handle it.
-          show_contact_privacy_link: You can hide or show the link to the privacy policy page on the contact form by the submit button.
-          site_name: This is the name for your website and will display in the header and in the Refinery backend and in the footer copyright statement for some themes.
-          theme: Enter the name for the theme that you want to be enabled. This will take effect immediately and must correctly identify an existing theme for this to work.
-          use_google_ajax_libraries: If you want to use Google's AJAX CDN then set this to true.
-          use_marketable_urls: Change urls from /pages/about to /about and automatically manage conflicts with other plugins.
-          use_resource_caching: Recommended to enable this in production mode as it bundles javascript assets and stylesheet assets into single file packages to reduce the number of web requests on your site and speed it up.
+          activity_show_limit: Omezuje počet akcí viditelných na nástěnce.
+          analytics_page_code: Tento kód aktivuje sledování webu pomocí Googla Analytics. Pokud je ponechán prázdný nebo ve tvaru UA-xxxxxx-x je sledování vypnuto a žádné informace se do Google Analytics neposílají.
+          frontend_refinery_stylesheets_enabled: "Ve výchozím stavu, Refinery používá na stránkách (Frontend) své základní kaskádové styly. Tímto nastavením můžete tomuto chování zabránit."          
+          image_dialogue_sizes: Toto nastavení se používá v dialogu vkládání obrázku. Musíte implementovat rozdílné velikosti náhledů, pokud toto nastavení změníte.
+          image_thumbnails: Pokud změnite toto nastavení, budete muset také přegenerovat obrázky příkazem rake images:regenerate (nebo rake images:update pokud jste pouze přidáváte náhledy) jinak se vaše změny neprojeví na stávájících obrázcích.
+          menu_hide_children: Skrýt podstránky z menu i když jsou dostupné.
+          new_page_parts: Povolit přidávání nových částí stránek (obsahové sekce) v editorech.
+          page_title: Velmi komplexní volba pro nastavení titulky stránky. Můžete nastavit vlastní CSS třídu, jiný tag nebo ho poslat do drobečkového menu se stránkami se stejným předkem.
+          pages_advanced_options_include_seo: Tato volba nastavuje, zda je zobrazeno SEO nastavení v rozšířeném nastavení stránky.
+          preferred_image_view: Nastavuje preferovaný pohled na existující obrázky. Zvolte grid pro zobrazení mřížky nebo list pro zobrazení seznamu. Nastavení se dá přepínat tlačítkem i v samotném pohledu.
+          refinery_enable_backend_reordering: Můžete odebrat možnost řadit záložky v administraci.
+          refinery_menu_cache_action_suffix: Nastavuje klíč, který je používán k ukládání menu do mezipaměti. Pokud používáte nějáký vzhled je lepší nechat toto nastavení v původním stavu a vzhled se o toto nastavení postará. 
+          show_contact_privacy_link: Můžete zobrazit či srýt odkaz na stránku 'zásady ochrany osobních údajů' u kontaktnícho formuláře vedle tlačítka 'Odeslat'.
+          site_name: Název vašeho webu, který se zobrazuje v hlavičce stránky, v adminstraci a někdy (podle vzhledu) se používá i v patičce.
+          theme: Zadejte název zhledu který má být aktivní. Efekt je okamžitý a musí být nastaveno platné jméno vzhledu!
+          use_google_ajax_libraries: Chcete používat Google AJAX CDN ?
+          use_marketable_urls: Změní adresy URL z /pages/about na /about a automaticky opraví konflikty s ostaními pluginy.
+          use_resource_caching: Doporučujeme zapnout toto nastavení v produkčním módu, protože rapidně urychlí načítání stránek. Komprimuje JavaSript a kaskádové styly do jednotlivých souborů, což vám ušetří požadavky na server.
   activerecord:
     models:
-      refinery_setting: setting
+      refinery_setting: nastavení
     attributes:
       refinery_setting:
-        name: Name
-        value: Value
-        restricted: Restricted
+        name: Jméno
+        value: Hodnota
+        restricted: Omezení

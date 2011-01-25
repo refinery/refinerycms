@@ -2,36 +2,33 @@ nb:
   plugins:
     refinery_files:
       title: Filer
+      description: Last opp og link til filer
   admin:
     resources:
+      delete: Fjern denne filen permanent
+      edit: Rediger denne filen
       form:
-        file_to_upload: Fil å laste opp
         download_current: Last ned gjeldende fil
-        or: or
-        replace: ", erstatt den med denne..."
-        maximum_file_size: "The maximum file size is %{megabytes} megabytes."
-      resource:
-        download: "Last ned denne filen (%{size})"
-        edit: Rediger denne filen
-        delete:
-          message: "Er du sikker på at du ønsker å slette '%{title}'?"
-          title: Fjern denne filen permanent
-      index:
-        upload_new: Last Opp Ny Fil
-        no_files_yet: Det er ingen filer her enda. Trykk "Last Opp Ny Fil" for å legge til din første fil.
-      insert:
-        existing: Eksisterende Fil
-        new: Ny Fil
-        previous: Forrige
-        next: Neste
         or: eller
-        cancel: Avbryt
+        replace: " erstatt den med denne..."
+        maximum_file_size: Største tillatte filstørrelse er %{megabytes} MB.
+      resource:
+        download: Last ned denne filen (%{size})
+      index:
+        upload_new: Last opp en ny fil
+        no_files_yet: Det er ingen filer her enda. Klikk på "Last opp en ny fil" for å legge til din første fil.
+      insert:
+        existing: Eksisterende fil
+        new: Ny fil
+        no_files: Det er ingen filer.
       existing_resource:
-        link_to_resource: 'Link til denne Ressursen'
-        submit_insert: Sett inn
+        link_to_file: Link til denne filen
+        button_text: Legg inn
   activerecord:
+    models:
+      resource: fil
     errors:
       models:
         resource:
-          blank: Du må velge en fil å laste opp
-          too_long: "Filene må være mindre enn %{count}"
+          blank: Du må angi en fil som skal lastes opp
+          too_long: Filstørrelsen må være mindre enn %{count}
