@@ -1,5 +1,25 @@
 zh-CN:
+  plugins:
+    refinery_dashboard:
+      title: 控制面板
+      description: 提供 Refinery 上的活动总览
   admin:
     dashboard:
       index:
-        add_a_new_page: 增加新页
+        quick_tasks: 快速启动
+        add_a_new_page: 新增页面
+        update_a_page: 更新页面
+        upload_a_image: 上传图片
+        upload_a_file: 上传文件
+        change_language: 改变语言
+        see_home_page: 浏览首页
+      recent_activity:
+        empty: 最近没有发生任何活动.
+        latest_activity: 最新活动
+        latest_activity_message: %{what} %{kind} 被%{action}
+      recent_inquiries:
+        latest_inquiries: 最新查询
+  updated:
+    'with_article "the"': 更新
+  created:
+    'with_article "the"': 新增
