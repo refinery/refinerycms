@@ -3,7 +3,7 @@ source 'http://rubygems.org'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails'
 
-if (java = RUBY_PLATFORM == 'java')
+if RUBY_PLATFORM == 'java'
   gem 'activerecord-jdbcsqlite3-adapter', '>= 1.0.2', :platform => :jruby
 else
   gem 'sqlite3'
@@ -26,8 +26,6 @@ end
 
 # REFINERY CMS ================================================================
 
-java = (RUBY_PLATFORM == 'java')
-
 # Specify the Refinery CMS core:
 gem 'refinerycms',              :path => '.'
 
@@ -45,7 +43,7 @@ group :development, :test do
   gem 'json_pure'
   # Factory Girl
   gem 'factory_girl'
-  gem "#{'j' if java}ruby-prof" unless defined?(RUBY_ENGINE) and RUBY_ENGINE == 'rbx'
+  gem "#{'j' if RUBY_PLATFORM == 'java'}ruby-prof" unless defined?(RUBY_ENGINE) and RUBY_ENGINE == 'rbx'
   # Autotest
   gem 'autotest'
   gem 'autotest-rails'
@@ -72,6 +70,4 @@ gem 'refinerycms-generators',   '~> 0.9.9', :git => 'git://github.com/resolve/re
 # Add i18n support (optional, you can remove this if you really want to).
 gem 'refinerycms-i18n',         '~> 0.9'
 
-gem 'jruby-openssl' if java
 # END USER DEFINED
-

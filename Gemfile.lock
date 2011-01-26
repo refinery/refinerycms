@@ -1,8 +1,9 @@
 GIT
   remote: git://github.com/resolve/refinerycms-generators
-  revision: 9fea559c5734727cc25475cf2c402f59d3ea882d
+  revision: b5c4c95e89ef7601fe41504cedebac41f4cc2b13
   specs:
     refinerycms-generators (0.9.9)
+      refinerycms (>= 0.9.9)
 
 PATH
   remote: .
@@ -62,6 +63,7 @@ GEM
       ZenTest
     babosa (0.2.2)
     bcrypt-ruby (2.1.4)
+    bcrypt-ruby (2.1.4-java)
     builder (2.1.2)
     capybara (0.4.1.1)
       celerity (>= 0.7.9)
@@ -97,16 +99,20 @@ GEM
     factory_girl (1.3.3)
     ffi (0.6.3)
       rake (>= 0.8.7)
+    ffi (0.6.3-java)
     friendly_id_globalize3 (3.2.0)
       babosa (~> 0.2.1)
     gherkin (2.3.3)
+      json (~> 1.4.6)
+    gherkin (2.3.3-java)
       json (~> 1.4.6)
     globalize3 (0.1.0.beta)
       activemodel (>= 3.0.0)
       activerecord (>= 3.0.0)
     i18n (0.5.0)
     json (1.4.6)
-    json_pure (1.5.0)
+    json (1.4.6-java)
+    json_pure (1.5.1)
     launchy (0.3.7)
       configuration (>= 0.0.5)
       rake (>= 0.8.1)
@@ -119,6 +125,8 @@ GEM
     moretea-awesome_nested_set (1.4.3.1)
       activerecord (~> 3.0.0)
     nokogiri (1.4.4)
+    nokogiri (1.4.4-java)
+      weakling (>= 0.0.3)
     polyglot (0.3.1)
     rack (1.2.1)
     rack-cache (0.5.3)
@@ -177,11 +185,13 @@ GEM
     tzinfo (0.3.24)
     warden (1.0.3)
       rack (>= 1.0.0)
+    weakling (0.0.4-java)
     will_paginate (3.0.pre2)
     xpath (0.1.3)
       nokogiri (~> 1.3)
 
 PLATFORMS
+  java
   ruby
 
 DEPENDENCIES
