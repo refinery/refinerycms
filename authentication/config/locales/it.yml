@@ -11,39 +11,45 @@ it:
         cannot_remove_user_plugin_from_current_user: Non è possibile rimuovere il plugin 'Utenti' dall'account attualmente connesso.
       form:
         blank_password_keeps_current: Lasciando la password vuota si mantiene quella corrente
+        plugin_access: Plugin di accesso
+        role_access: Ruolo di accesso
         enable_all: abilita tutto
       index:
         create_new_user: Crea nuovo utente
       user:
         email_user: E-mail a questo utente
-        preview: (%{who}) creato il %{created_at}
+        preview: "(%{who}) creato il %{created_at}"
   sessions:
     new:
       forgot_password: Ho dimenticato la password
       sign_in: Entra
       hello_please_sign_in: Ciao! Accedi per favore.
   users:
-    setup_website_name_html: Prima di tutto dare al sito un nome. <a href='%{link}' name='%{title}'>Vai qui</a> per modificare il nome del tuo sito web
+    setup_website_name_html: "Prima di tutto dare al sito un nome. <a href='%{link}' name='%{title}'>Vai qui</a> per modificare il nome del tuo sito web"
     new:
       fill_form: Compila il form sottostante con i tuoi dati in modo che possiamo iniziare.
       sign_up: Iscriviti
     create:
-      welcome: Benvenuti in Refinery, %{who}
+      welcome: "Benvenuti in Refinery, %{who}"
     forgot:
       email_address: Indirizzo e-mail
-      enter_email_address: Inserisci l'indirizzo di posta elettronica per l&apos;account.
+      enter_email_address: "Inserisci l'indirizzo di posta elettronica per l&apos;account."
       reset_password: Reimpostazione della password
       blank_email: Non hai inserito un indirizzo email.
-      email_not_associated_with_account_html: Mi dispiace, '%{email}' non è associato ad alcun account. <br/>Sei sicuro di aver digitato l'indirizzo email corretto?
+      email_not_associated_with_account_html: "Mi dispiace, '%{email}' non è associato ad alcun account. <br/>Sei sicuro di aver digitato l'indirizzo email corretto?"
       email_reset_sent: Ti è stata inviata una e-mail con il link per reimpostare la password.
+      password_encryption: "È necessario reimpostare la password, perché ci sono stati cambiamenti nei metodi di crittografia della password che utilizza Raffineria modo che le password vengono memorizzate anche con la crittografia forte di prima."
     reset:
-      code_invalid: Siamo spiacenti, ma questo codice reset è scaduto o non è valido. Se si hanno problemi provare a copiare e incollare l'URL dalla vostra e-mail al vostro browser o riavviare la procedura di reimpostazione password.
-      successful: Il ripristino della password è avvenuto con successo per %{email}
-      pick_new_password_for: Scegli una nuova password per %{email}
+      code_invalid: "Siamo spiacenti, ma questo codice reset è scaduto o non è valido. Se si hanno problemi provare a copiare e incollare l'URL dalla vostra e-mail al vostro browser o riavviare la procedura di reimpostazione password."
+      successful: "Il ripristino della password è avvenuto con successo per %{email}"
+      pick_new_password_for: "Scegli una nuova password per %{email}"
       reset_password: Reimposta la password
   user_mailer:
     reset_notification:
       subject: Link per reimpostare la password
+      reset_request_received_for: "Richiesta di reimpostazione password ricevuti per %{username}"
+      visit_this_url: Visita questo URL per scegliere una nuova password
+      remain_same_if_no_action: "La password rimarrà lo stesso, se non si interviene"
   activerecord:
     attributes:
       user:
@@ -51,3 +57,41 @@ it:
         email: email
         password: password
         remember_me: Ricordati di me
+  errors:
+    messages:
+      not_found: "non trovato"
+      already_confirmed: "è stato già confermato"
+      not_locked: "non era bloccato"
+
+  devise:
+    failure:
+      unauthenticated: "Devi accedere o registrarti per continuare."
+      unconfirmed: "Devi confermare il tuo account per continuare."
+      locked: "Il tuo account è bloccato."
+      invalid: "Indirizzo email o password non validi."
+      invalid_token: "Codice di autenticazione non valido."
+      timeout: "Sessione scaduta, accedere nuovamente per continuare."
+      inactive: "Il tuo account non è stato ancora attivato."
+    sessions:
+      signed_in: "Accesso effettuato con successo."
+      signed_out: "Sei uscito correttamente."
+    passwords:
+      send_instructions: "Riceverai un messaggio email con le istruzioni per reimpostare la tua password entro qualche minuto."
+      updated: "La tua password è stata cambiata. Ora sei collegato."
+    confirmations:
+      send_instructions: "Riceverai un messaggio email con le istruzioni per confermare il tuo account entro qualche minuto."
+      confirmed: "Il tuo account è stato correttamente confermato. Ora sei collegato."
+    registrations:
+      signed_up: "Iscrizione correttamente eseguita. Se abilitata, una conferma è stata inviata al tuo indirizzo email."
+      updated: "Il tuo account è stato aggiornato."
+      destroyed: "Arrivederci! L'account è stato cancellato. Speriamo di rivederci presto."
+    unlocks:
+      send_instructions: "Riceverai un messaggio email con le istruzioni per sbloccare il tuo account entro qualche minuto."
+      unlocked: "Il tuo account è stato correttamente sbloccato. Ora sei collegato."
+    mailer:
+      confirmation_instructions:
+        subject: "Istruzioni per la conferma"
+      reset_password_instructions:
+        subject: "Istruzioni per reimpostare la password"
+      unlock_instructions:
+        subject: "Istruzioni per sbloccare l'account"

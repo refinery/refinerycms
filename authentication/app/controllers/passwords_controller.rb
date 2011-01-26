@@ -5,7 +5,7 @@ class PasswordsController < Devise::PasswordsController
   after_filter :give_notice, :only => [:update]
   def give_notice
     unless %w(notice error alert).include?(flash.keys.map(&:to_s)) or @user.errors.any?
-      flash[:notice] = t('users.reset.successful', :email => @user.email)
+      flash[:notice] = t('successful', :scope => 'users.reset', :email => @user.email)
     end
   end
   protected :give_notice

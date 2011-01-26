@@ -6,7 +6,6 @@ Feature: Dashboard
 
   Background:
     Given I am a logged in refinery user
-    And my locale is en
     When I go to the Dashboard
 
   @dashboard-add
@@ -39,23 +38,3 @@ Feature: Dashboard
   Scenario: See Home Page Button
     When I follow "See home page"
     Then I should be on the home page
-
-  @i18n
-  Scenario: Translation options available
-    When I go to the Dashboard
-    Then I should see "English Change language"
-
-  @i18n
-  Scenario: Change Language to Slovenian and back to English
-    When I go to the dashboard
-    And I follow "English Change language"
-    And I follow "Slovenian"
-    Then I should be on the Dashboard
-    And I should see "Slovenian Spremeni Jezik"
-    And I should not see "Switch to your website"
-    # Back to English
-    When I follow "Slovenian Spremeni Jezik"
-    And I follow "English"
-    Then I should be on the Dashboard
-    And I should see "Switch to your website"
-    And I should not see "Spremeni Jezik"

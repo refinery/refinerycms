@@ -44,7 +44,9 @@ module Refinery
         :from_version => '0.9.8',
         :force => false,
         :heroku => false,
+        :duostack => false,
         :update => false,
+        :confirm => false,
         :gems => []
       }
 
@@ -85,8 +87,16 @@ module Refinery
           @options[:heroku] = app_name || ''
         end
 
+        opts.on("--duostack APP_NAME", String, "Set up and deploy to Duostack") do |app_name|
+          @options[:duostack] = app_name
+        end
+
         opts.on("--update", "--update", "Migrate the database instead of rebuilding it") do
            @options[:update] = true
+        end
+
+        opts.on("-c", "--confirm", "Confirm any prompts that require input") do
+          @options[:confirm] = true
         end
 
         opts.separator ""
@@ -163,6 +173,14 @@ module Refinery
         puts "Use --force to overwrite an existing directory."
         puts "Use --update to replace any Refinery CMS files in an existing installation."
         exit
+      elsif @app_path.join('.git').directory? && @options[:update] && !@options[:confirm]
+        git_status = run_command('git status --porcelain', :puts => false)
+        if git_status.to_s.strip.length > 0
+          puts "\nYou have uncommitted changes or untracked files. Please remove or commit them, or:"
+          puts "Use --confirm to have Refinery proceed anyway. "
+          puts "Untracked files will be removed, and uncommitted changes may be lost.\n\n"
+          exit
+        end
       end
     end
 
@@ -175,7 +193,11 @@ module Refinery
         rails_command << " --skip-#{skip}"
       end
 
+      # Generate a new rails application in this directory
       generate!(rails_command)
+
+      # Clean the directory of all new files from rails that we don't want
+      run_command('git clean -f -d') if @app_path.join('.git').directory?
     end
 
     def generate!(rails_command = nil)
@@ -245,9 +267,12 @@ module Refinery
 
           # Use any gems specified, too, ensuring we restore the sort order of refinery_user_defined_gems.
           @options[:gems] = refinery_user_defined_gems.reverse + @options[:gems]
-          find_and_replace(app_gemfile,
-                           /# USER DEFINED.*# END USER DEFINED/m,
-                           "# USER DEFINED#{@options[:gems].join("\n")}\n\n# END USER DEFINED")
+          gems_to_insert = "# USER DEFINED\n#{@options[:gems].join("\n")}\n\n# END USER DEFINED"
+          unless user_defined_gems.nil?
+            find_and_replace(app_gemfile, /# USER DEFINED.*# END USER DEFINED/m, gems_to_insert)
+          else
+            app_gemfile.open('a') {|f| f.write "\n\n#{gems_to_insert}" }
+          end
         end
 
         # replace existing core dependencies with the current set of dependencies.
@@ -256,6 +281,7 @@ module Refinery
 
       # Override database username and password
       unless @options[:update]
+        # Override username and password
         find_and_replace('config/database.yml', %r{username:.*}, "username: #{@options[:database][:username]}")
         find_and_replace('config/database.yml', %r{password:.*}, "password: #{@options[:database][:password]}")
       end
@@ -276,36 +302,39 @@ module Refinery
       # Automate
       # TODO: Check exit codes to see whether or not these worked
       puts "Installing gem requirements using bundler..\n"
+
+      # Ensure RefineryCMS is up to date if we're updating
+      run_command("bundle update refinerycms refinerycms-generators") if @options[:update]
+
+      # Install!
       run_command("bundle install")
     end
 
     def output!
-      unless @options[:update]
-        puts "\n\nSetting up your development database..\n"
-        %w(db:migrate db:seed).each do |task|
-          run_command("rake -f \"#{@app_path.join('Rakefile')}\" #{task}")
-        end
-      else
-        puts "\n\nMigrating your development database..\n"
-        run_command("rake -f \"#{@app_path.join('Rakefile')}\" db:migrate")
-      end
+      puts "\n\n#{@options[:update] ? "Migrating" : "Setting up"} your development database..\n"
+      run_command("rake -f \"#{@app_path.join('Rakefile')}\" db:migrate")
 
       # Deploy to Heroku
-      if @options[:heroku]
+      hosting = nil
+      hosting = "Heroku" if @options[:heroku]
+      hosting = "Duostack" if @options[:duostack]
+      unless hosting.nil?
         puts "\n\nInitializing and committing to git..\n"
         run_command("git init && git add . && git commit -am 'Initial Commit'")
 
-        puts "\n\nCreating Heroku app..\n"
-        run_command("heroku create #{@options[:heroku]}")
+        puts "\n\nCreating #{hosting} app..\n"
+        run_command("#{hosting.downcase} create #{@options[:heroku] || @options[:duostack]}")
 
-        puts "\n\nPushing to Heroku (this takes time, be patient)..\n"
-        run_command("git push heroku master")
+        puts "\n\nPushing to #{hosting} (this takes time, be patient)..\n"
+        run_command("git push #{hosting.downcase} master")
 
-        puts "\n\nSetting up the Heroku database..\n"
-        run_command("heroku rake db:setup")
+        puts "\n\nSetting up the #{hosting} database..\n"
+        run_command("#{hosting.downcase} rake db:setup")
 
-        puts "\n\nRestarting servers...\n"
-        run_command("heroku restart")
+        if @options[:heroku]
+          puts "\n\nRestarting servers...\n"
+          run_command("#{hosting.downcase} restart")
+        end
       end
       # End automation
 
@@ -340,16 +369,20 @@ module Refinery
 
       to_run = to_run.join(' ')
 
+      output = []
       if options[:puts]
         puts "Running: #{to_run}"
         IO.popen(to_run) do |t|
           while (line = t.gets)
+            output << line
             puts line
           end
         end
       else
-        `#{to_run}`
+        output << `#{to_run}`
       end
+
+      output.join("\n")
     end
 
     def find_and_replace(file, find, replace)

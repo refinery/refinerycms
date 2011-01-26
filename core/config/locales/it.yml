@@ -70,7 +70,7 @@ it:
         results_for: "Risultati della ricerca per '%{query}'"
         no_results: "Spiacenti, nessun risultato trovato"
       delete:
-        message: Sei sicuro di voler rimuovere '%{title}'?
+        message: "Sei sicuro di voler rimuovere '%{title}'?"
       error_messages:
         problems_in_following_fields: Ci sono stati problemi con i seguenti campi
       help: aiuto
@@ -80,7 +80,11 @@ it:
     draft_page_message:
       not_live: Questa pagina NON è valida per la visione pubblica.
     footer:
-        copyright: Tutti i diritti sono riservati © %{year} %{site_name}
+      copyright: "Tutti i diritti sono riservati © %{year} %{site_name}"
+    no_script:
+      enable_javascript: Per la piena funzionalità di questa pagina è necessario abilitare JavaScript.
+      here_are: Qui ci sono le
+      instructions_enable_javascript: istruzioni su come attivare JavaScript nel tuo browser web
   activerecord:
     models:
       page: pagina

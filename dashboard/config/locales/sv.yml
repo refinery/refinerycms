@@ -14,6 +14,7 @@ sv:
         change_language: Välj språk
         see_home_page: Se första sidan
       recent_activity:
+        empty: Det har inte varit någon aktivitet på senare tid.
         latest_activity: Senaste aktivitet
         latest_activity_message: %{what} %{kind} var %{action}
       recent_inquiries:

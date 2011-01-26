@@ -13,6 +13,7 @@ it:
         change_language: Cambia lingua
         see_home_page: Vedi pagina iniziale
       recent_activity:
+        empty: non c'è stata nessuna attivitá recente
         latest_activity: Ultime attività
         latest_activity_message: %{what} %{kind} è stato %{action}
         see: Vedere '%{what}'

@@ -44,7 +44,7 @@ Gem::Specification.new do |s|
   s.add_dependency    'bundler',                     '~> 1.0.5'
   s.add_dependency    'devise',                      '~> 1.1'
   s.add_dependency    'dragonfly',                   '~> 0.8.2'
-  s.add_dependency    'friendly_id',                 '~> 3.1.8'
+  s.add_dependency    'friendly_id_globalize3',      '~> 3.2.0'
   s.add_dependency    'globalize3',                  '>= 0.1.0.beta'
   s.add_dependency    'moretea-awesome_nested_set',  '= 1.4.3.1'
   s.add_dependency    'rack-cache',                  '~> 0.5.2'
@@ -55,7 +55,7 @@ Gem::Specification.new do |s|
 
   s.add_development_dependency 'rspec-rails',        '~> 2.3'
   # Cucumber
-  s.add_development_dependency 'capybara'
+  s.add_development_dependency 'capybara',           '>= 0.4.1.rc'
   s.add_development_dependency 'database_cleaner'
   s.add_development_dependency 'cucumber-rails'
   s.add_development_dependency 'cucumber'

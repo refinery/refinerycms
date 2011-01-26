@@ -6,7 +6,7 @@ module Admin
     end
 
     def current_image_view
-      RefinerySetting.find_or_set(:preferred_image_view, :list)
+      RefinerySetting.find_or_set(:preferred_image_view, :grid)
     end
 
     def other_image_views

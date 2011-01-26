@@ -47,7 +47,7 @@ lv:
   user_mailer:
     reset_notification:
       subject: Saite, lai atjaunotu paroli
-      reset_request_recieved_for: Paroles nomaiņas pieprasījums priekš %{username}
+      reset_request_received_for: Paroles nomaiņas pieprasījums priekš %{username}
       visit_this_url: Apmeklējiet šo adresi, lai izveidotu jaunu paroli
       remain_same_if_no_action: Esošā parole netiks mainīta, ja neveiksiet turpmākās darbības
   devise:
@@ -56,6 +56,9 @@ lv:
       invalid: Atvainojiet, nepareizs lietotāja vārds/epasts vai parole.
     sessions:
       signed_in: Autentifikācija noritēja veiksmīgi.
+  roles:
+    superuser: Superlietotājs
+    refinery: Refinery
   activerecord:
     models:
       user: lietotājs

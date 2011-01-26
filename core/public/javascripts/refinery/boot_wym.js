@@ -20,6 +20,7 @@ onCloseDialog = function(dialog) {
   }
 };
 
+WYMeditor.onload_functions = [];
 var wymeditor_inputs = [];
 var wymeditors_loaded = 0;
 // supply custom_wymeditor_boot_options if you want to override anything here.
@@ -112,7 +113,7 @@ var wymeditor_boot_options = $.extend({
 
   , iframeHtml:
     "<div class='wym_iframe wym_section'>"
-     + "<iframe id='WYMeditor_" + WYMeditor.INDEX + "' "
+     + "<iframe id='WYMeditor_" + WYMeditor.INDEX + "'" + ($.browser.msie ? " src='" + WYMeditor.IFRAME_BASE_PATH + "wymiframe'" : "")
      + " frameborder='0' marginheight='0' marginwidth='0' border='0'"
      + " onload='this.contentWindow.parent.WYMeditor.INSTANCES[" + WYMeditor.INDEX + "].loadIframe(this);'></iframe>"
     +"</div>"
@@ -197,7 +198,12 @@ var wymeditor_boot_options = $.extend({
     // fire loaded if all editors loaded
     if(WYMeditor.INSTANCES.length == wymeditors_loaded){
       $('.wym_loading_overlay').remove();
-      WYMeditor.loaded();
+
+      // load any functions that have been registered to happen onload.
+      // these will have to be registered BEFORE postInit is fired (which is fairly quickly).
+      for(i=0; i < WYMeditor.onload_functions.length; i++) {
+        WYMeditor.onload_functions[i]();
+      }
     }
 
     $(wym._iframe).contents().find('body').addClass('wym_iframe_body');
@@ -216,35 +222,37 @@ var wymeditor_boot_options = $.extend({
   , lang: (typeof(I18n.locale) != "undefined" ? I18n.locale : 'en')
 }, custom_wymeditor_boot_options);
 
-// custom function added by us to hook into when all wymeditor instances on the page have finally loaded:
-WYMeditor.loaded = function(){};
-
 WYMeditor.editor.prototype.loadIframe = function(iframe) {
   var wym = this;
 
-  var doc = (iframe.document || iframe.contentDocument || iframe.contentWindow.document);
-  doc.open('text/html', 'replace');
-  html = "<!DOCTYPE html>\
-  <html>\
-    <head>\
-      <title>WYMeditor</title>\
-      <meta charset='" + $('meta[charset]').attr('charset') + "' />\
-      <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1' />\
-    </head>\
-    <body class='wym_iframe'>\
-    </body>\
-  </html>";
-  doc.write(html);
-  doc.close();
+  // Internet explorer doesn't like this (which versions??)
+  var doc = (iframe.contentDocument || iframe.contentWindow);
+  if(doc.document) {
+    doc = doc.document;
+  }
+  if (!$.browser.msie) {
+    doc.open('text/html', 'replace');
+    html = "<!DOCTYPE html>\
+    <html>\
+      <head>\
+        <title>WYMeditor</title>\
+        <meta charset='" + $('meta[charset]').attr('charset') + "' />\
+        <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1' />\
+      </head>\
+      <body class='wym_iframe'>\
+      </body>\
+    </html>";
+    doc.write(html);
+    doc.close();
 
+    $.each(["wymeditor/skins/refinery/wymiframe", "formatting", "theme"], function(i, href) {
+      $("<link href='/stylesheets/" + href + ".css' media='all' rel='stylesheet' />").appendTo(doc.head);
+    });
+    $("<script src='/javascripts/modernizr-min.js'></script>").appendTo(doc.head);
+  }
   if ((id_of_editor = wym._element.parent().attr('id')) != null) {
     $(doc.body).addClass(id_of_editor);
   }
-
-  $.each(["wymeditor/skins/refinery/wymiframe", "formatting", "theme"], function(i, href) {
-    $("<link href='/stylesheets/" + href + ".css' media='all' rel='stylesheet' />").appendTo(doc.head);
-  });
-  $("<script src='/javascripts/modernizr-min.js'></script>").appendTo(doc.head);
 
   wym.initIframe(iframe);
 };
@@ -262,7 +270,7 @@ WYMeditor.init = function() {
   });
 
   wymeditor_inputs.each(function(input) {
-    if ((containing_field = $(this).parents('.field')).get(0).style.height === '') {
+    if ((containing_field = $(this).parents('.field')).length > 0 && containing_field.get(0).style.height === '') {
       containing_field.addClass('hide-overflow')
                       .css('height', $(this).outerHeight() - containing_field.offset().top + $(this).offset().top + 45);
     }

@@ -1,5 +1,5 @@
 <% unless refinery_user? or
-          (page_code = RefinerySetting.get(:analytics_page_code).to_s.strip) =~ /^(UA-xxxxxx-x)?$/ -%>
+  (page_code = RefinerySetting.find_or_set(:analytics_page_code, 'UA-xxxxxx-x').to_s.strip) =~ /^(UA-xxxxxx-x)?$/ -%>
 <!-- asynchronous google analytics: mathiasbynens.be/notes/async-analytics-snippet -->
 <script>var _gaq=[['_setAccount','<%= page_code %>'],['_trackPageview']];(function(d,t){
 var g=d.createElement(t),s=d.getElementsByTagName(t)[0];

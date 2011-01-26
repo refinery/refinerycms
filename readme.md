@@ -110,3 +110,7 @@ to get help on how to use that. Or read the full documentation on [writing engin
 ## License
 
 Refinery is released under the [MIT license](http://github.com/resolve/refinerycms/blob/master/license.md#readme) and is copyright (c) 2005-2010 [Resolve Digital](http://www.resolvedigital.com)
+
+### Credits
+
+Many of the icons used in Refinery CMS are from the wonderful [Silk library by Mark James](http://www.famfamfam.com/lab/icons/silk/).

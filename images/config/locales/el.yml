@@ -1,0 +1,41 @@
+el:
+  plugins:
+    refinery_images:
+      title: Εικόνες
+      description: Διαχείριση Εικόνων
+  admin:
+    images:
+      delete: Διαγραφή εικόνας
+      edit: Επεξεργασία εικόνας
+      form:
+        image: Εικόνα
+        use_current_image: Χρήση τρέχουσας εικόνας
+        or: or
+        replace_image: " αλλαγή με αυτήν..."
+        current_image: Τρέχουσα εικόνα
+        maximum_image_size: Το μέγιστο μέγεθος εικόνας είναι %{megabytes} megabytes.
+      index:
+        create_new_image: Προσθήκη νέας εικόνας
+        no_images_yet: Δεν υπάρχουν εικόνες. Κάντε κλικ στο "Προσθήκη εικόνας" για να προσθέτε την πρώτη εικόνα.
+        view:
+          switch_to: Αλλαγή σε %{view_name} view
+          list: λίστα
+          grid: πλέγμα
+      grid_view:
+        view_live_html: Δείτε την εικόνα <br/><em>Ανοίγει σε νέο παράθυρο</em>
+      existing_image:
+        button_text: Εισαγωγή
+        resize_image: Αλλαγή μεγέθους;
+        size: Μέγεθος
+      insert:
+        existing_image: Βιβλιοθήκη
+        new_image: Ανέβασμα
+  activerecord:
+    models:
+      image: εικόνα
+    errors:
+      models:
+        image:
+          blank: Πρέπει να επιλέξετε εικόνα για ανέβασμα
+          too_long: Η εικόνα πρέπει να είναι μικρότερη από %{count} σε μέγεθος
+          incorrect_format: 'Η εικόνα σας πρέπει να είναι JPG, PNG ή GIF'

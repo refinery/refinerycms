@@ -1,53 +1,3 @@
-GIT
-  remote: git://github.com/flori/json
-  revision: 2c0f8d2c9b15a33b8d10ffcb1959aef54d320b57
-  ref: 2c0f8d
-  specs:
-    json_pure (1.4.6a)
-
-GIT
-  remote: git://github.com/parndt/capybara
-  revision: 4cfe882c982682e71c13c877e7f14fd862a9e565
-  specs:
-    capybara (0.4.0)
-      celerity (>= 0.7.9)
-      culerity (>= 0.2.4)
-      mime-types (>= 1.16)
-      nokogiri (>= 1.3.3)
-      rack (>= 1.0.0)
-      rack-test (>= 0.5.4)
-      selenium-webdriver (>= 0.0.27)
-      xpath (~> 0.1.2)
-
-GIT
-  remote: git://github.com/parndt/friendly_id
-  revision: 25fc52ae9e88efeb60f0737c0736b75cc2c96a53
-  branch: globalize3
-  specs:
-    friendly_id (3.1.8)
-      babosa (~> 0.2.0)
-
-GIT
-  remote: git://github.com/refinerycms/routing-filter
-  revision: 94a072118410475b0e872b050dc731ef136f1180
-  specs:
-    routing-filter (0.2.0)
-      actionpack
-
-GIT
-  remote: git://github.com/resolve/refinerycms-generators
-  revision: c0f197e6668ac10de9c1148c1db0e0ed45e13ae7
-  specs:
-    refinerycms-generators (0.9.9)
-
-GIT
-  remote: git://github.com/resolve/refinerycms-i18n
-  revision: 9291626998da4c20703fd1fffcd2ea6e47f8cbfc
-  specs:
-    refinerycms-i18n (0.9.8.12)
-      refinerycms (>= 0.9.8)
-      routing-filter (~> 0.1)
-
 PATH
   remote: .
   specs:
@@ -56,7 +6,7 @@ PATH
       bundler (~> 1.0.5)
       devise (~> 1.1)
       dragonfly (~> 0.8.2)
-      friendly_id (~> 3.1.8)
+      friendly_id_globalize3 (~> 3.2.0)
       globalize3 (>= 0.1.0.beta)
       moretea-awesome_nested_set (= 1.4.3.1)
       rack-cache (~> 0.5.2)
@@ -97,17 +47,26 @@ GEM
       activesupport (= 3.0.3)
     activesupport (3.0.3)
     acts_as_indexed (0.6.6)
-    arel (2.0.6)
+    arel (2.0.7)
     autotest (4.4.6)
       ZenTest (>= 4.4.1)
     autotest-notification (2.3.1)
       autotest (~> 4.3)
     autotest-rails (4.1.0)
       ZenTest
-    babosa (0.2.0)
+    babosa (0.2.2)
     bcrypt-ruby (2.1.4)
     builder (2.1.2)
-    celerity (0.8.6)
+    capybara (0.4.1.1)
+      celerity (>= 0.7.9)
+      culerity (>= 0.2.4)
+      mime-types (>= 1.16)
+      nokogiri (>= 1.3.3)
+      rack (>= 1.0.0)
+      rack-test (>= 0.5.4)
+      selenium-webdriver (>= 0.0.27)
+      xpath (~> 0.1.3)
+    celerity (0.8.7)
     childprocess (0.1.6)
       ffi (~> 0.6.3)
     configuration (1.2.0)
@@ -119,7 +78,7 @@ GEM
       term-ansicolor (~> 1.0.5)
     cucumber-rails (0.3.2)
       cucumber (>= 0.8.0)
-    culerity (0.2.14)
+    culerity (0.2.15)
     database_cleaner (0.6.0)
     devise (1.1.5)
       bcrypt-ruby (~> 2.1.2)
@@ -129,9 +88,11 @@ GEM
       rack
     erubis (2.6.6)
       abstract (>= 1.0.0)
-    factory_girl (1.3.2)
+    factory_girl (1.3.3)
     ffi (0.6.3)
       rake (>= 0.8.7)
+    friendly_id_globalize3 (3.2.0)
+      babosa (~> 0.2.1)
     gherkin (2.3.3)
       json (~> 1.4.6)
     globalize3 (0.1.0.beta)
@@ -139,6 +100,7 @@ GEM
       activerecord (>= 3.0.0)
     i18n (0.5.0)
     json (1.4.6)
+    json_pure (1.5.1)
     launchy (0.3.7)
       configuration (>= 0.0.5)
       rake (>= 0.8.1)
@@ -174,6 +136,13 @@ GEM
       thor (~> 0.14.4)
     rake (0.8.7)
     rdoc (3.4)
+    refinerycms-generators (0.9.9)
+      refinerycms (>= 0.9.9)
+    refinerycms-i18n (0.9.9.6)
+      refinerycms (>= 0.9.8)
+      routing-filter (~> 0.1)
+    routing-filter (0.2.3)
+      actionpack
     rspec (2.3.0)
       rspec-core (~> 2.3.0)
       rspec-expectations (~> 2.3.0)
@@ -195,17 +164,17 @@ GEM
       json_pure
       rubyzip
     spork (0.8.4)
-    sqlite3-ruby (1.3.2)
+    sqlite3 (1.3.3)
     term-ansicolor (1.0.5)
     thor (0.14.6)
     treetop (1.4.9)
       polyglot (>= 0.3.1)
     truncate_html (0.4.0)
-    tzinfo (0.3.23)
+    tzinfo (0.3.24)
     warden (1.0.3)
       rack (>= 1.0.0)
     will_paginate (3.0.pre2)
-    xpath (0.1.2)
+    xpath (0.1.3)
       nokogiri (~> 1.3)
 
 PLATFORMS
@@ -215,20 +184,18 @@ DEPENDENCIES
   autotest
   autotest-notification
   autotest-rails
-  capybara!
+  capybara
   cucumber-rails
   database_cleaner
   factory_girl
-  friendly_id!
   gherkin
-  json_pure (= 1.4.6a)!
+  json_pure
   launchy
   rack-test (~> 0.5.6)
   refinerycms!
-  refinerycms-generators (~> 0.9.9)!
-  refinerycms-i18n!
-  routing-filter!
+  refinerycms-generators (~> 0.9)
+  refinerycms-i18n (~> 0.9)
   rspec-rails (= 2.3)
   ruby-prof
   spork
-  sqlite3-ruby
+  sqlite3

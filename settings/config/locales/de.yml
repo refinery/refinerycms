@@ -12,12 +12,14 @@ de:
         empty_set: Es gibt noch keine Einstellungen.
         create_first: Klicken Sie auf '%{link}', um Ihre erste Einstellung anzulegen.
       form:
+        enabled: "Ja, die Einstellung aktivieren."
         restart_may_be_in_order_html: "<strong>Bitte beachten Sie</strong>, dass Sie Ihre Website eventuell neu starten müssen, damit die Einstellungen angewendet werden."
         yes_make_this_setting_restricted: Ja, diese Einstellung auf Administratoren einschränken.
         help:
           restricted: Macht diese Einstellung nur für Administratoren sichtbar und veränderbar.
           activity_show_limit: Dies schränkt die Anzahl der Einträge im Amaturenbrett ein.
           analytics_page_code: Dieser Code aktiviert Google Analytics innerhalb Ihrer Webseite. Wenn diese Einstellung leer gelassen wird oder auf UA-xxxxxx-x gesetzt wird, ist diese Funktion deaktiviert und es werden keine Verbindungsaufrufe zu Google Analytics gemacht.
+          frontend_refinery_stylesheets_enabled: "Standardmäßig enthält Refinery Stylesheets für das Frontend, welche standard CSS bereitstellen und durch diese Einstellung ein- oder ausgeschaltet werden, ohne dabei Ihren eigenen Stylesheets in die Quere zu kommen."
           image_dialogue_sizes: Diese Einstellung wirkt sich auf den "Bild einfügen" Dialog aus. Sie müssen für die verschiedenen Miniaturansichten sorgen, sowie diesen Wert hier ändern.
           image_thumbnails: Wenn Sie diese Einstellung verändern, müssen Sie Ihre Bilder neu erzeugen lassen, indem Sie "rake images:regenerate" (oder "rake images:update" wenn Sie nur neue Miniaturansichten hinzugefügt haben), sonst wird diese Einstellung nicht für bereits vorhandene Bilder angewendet.
           menu_hide_children: Versteckt alle Unterseiten auf dem Menü, auch wenn diese vorhanden sind.
@@ -33,6 +35,7 @@ de:
           use_google_ajax_libraries: Wenn Sie Googles AJAX CDN verwenden wollen, setzen diesen Wert auf "true".
           use_marketable_urls: Ändert Urls von /pages/about auf /about und behebt automatisch Konflikte mit anderen Erweiterungen.
           use_resource_caching: Es wird empfohlen, dies in der Produktionsumgebung zu verwenden, da es Javascript- und Stylesheet Dateien zusammenfasst, um die Anzahl an Web-Anfragen zu verringern und die Geschwindigkeit zu erhöhen.
+          approximate_ascii: Setzen Sie dies auf wahr, wenn Sie lateinische Zeichen mit Akzenten oder anderen diakritischen Zeichen in Seitentiteln verwenden. Es wird Zeichen wie ā, č, ž in a, c, z konvertieren und dadurch werden diese in der Adresszeile mancher Browser nicht seltsam angezeigt.
   activerecord:
     models:
       refinery_setting: Einstellungen

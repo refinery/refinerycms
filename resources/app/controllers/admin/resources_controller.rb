@@ -11,17 +11,11 @@ module Admin
     end
 
     def create
-      @resources = []
-      unless params[:resource].present? and params[:resource][:file].is_a?(Array)
-        @resources << (@resource = Resource.create(params[:resource]))
-      else
-        params[:resource][:file].each do |resource|
-          @resources << (@resource = Resource.create(:file => resource))
-        end
-      end
+      @resources = Resource.create_resources(params[:resource])
+      @resource = @resources.detect { |r| !r.valid? }
 
       unless params[:insert]
-        if @resources.all?{|r| r.valid?}
+        if @resources.all?(&:valid?)
           flash.notice = t('created', :scope => 'refinery.crudify', :what => "'#{@resources.collect{|r| r.title}.join("', '")}'")
           unless from_dialog?
             redirect_to :action => 'index'
@@ -33,11 +27,12 @@ module Admin
           render :action => 'new'
         end
       else
-        if @resources.all?{|r| r.valid?}
-          @resource_id = @resource.id if @resource.persisted?
+        if @resources.all?(&:valid?)
+          @resource_id = @resources.detect(&:persisted?).id
           @resource = nil
         end
-        self.insert
+
+        insert
       end
     end
 

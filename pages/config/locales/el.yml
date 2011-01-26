@@ -1,0 +1,84 @@
+el:
+  plugins:
+    refinery_pages:
+      title: Σελίδες
+      description: Διαχείριση στατικών σελιδών
+  admin:
+    pages_dialogs:
+      page_link:
+        link_to_this_page: Σύνδεσμος στη σελίδα
+      link_to:
+        insert: Εισαγωγή
+        your_page:
+          tab_name: Η σελίδα σας
+        web_address:
+          tab_name: Ιστοσελίδα
+          location: Τοποθεσία
+          new_window: Νέο παράθυρο
+          new_window_label: Κάντε κλικ εδώ για να ανοίγει ο σύνδεσμος σε νέο παράθυρο.
+          not_sure: Δεν είστε σίγουροι τι να γράψετε;
+          step1: Βρείτε τη σελίδα στον Ιστό που θέλετε να βάλετε σύνδεσμο.
+          step2: Αντιγράψτε τη διεύθυνση από το φυλλομετρητή σας και αντιγράψτε τη στο πιο πάνω πεδίο.
+        email_address:
+          tab_name: Διεύθυνση Email
+          subject_line_optional: Προαιρετικό θέμα
+          body_optional: Προαιρετικό σώμα
+          not_sure: Δεν είστε σίγουροι τι να γράψετε;
+          step1_html: Write or copy and paste (e.g. from your address book) the email address to link to into the '<strong>Email Address</strong>' box above.
+          step2_html: Use the '<strong>Subject Line</strong>' box above if you want the message to be composed with a <strong>pre-written subject line</strong>.
+          step3_html: Use the <strong>Email Body</strong> box above if you want the message to be composed with a <strong>pre-written message</strong>.
+        your_resource:
+          tab_name: Το αρχείο σας
+          link_to_this_resource: Σύνδεσμος σε αυτό το αρχείο
+    pages:
+      delete: Διαγραφή σελίδας
+      edit: Επεξεργασία σελίδας
+      reserved_system_word: Συγγνώμη, αλλά αυτός ο τίτλος δεν είναι διαθέσιμος.
+      page:
+        view_live_html: Δείτε αυτή τη σελίδα live <br/><em>(ανοίγει σε νέο παράθυρο)</em>
+        hidden: κρυφό
+        draft: πρόχειρο
+      form_new_page_parts:
+        title: Τίτλος
+      form_page_parts:
+        create_content_section: Προσθήκη περιοχής περιεχομένου
+        delete_content_section: Διαγραφή περιοχής περιεχομένου
+      form_advanced_options:
+        toggle_advanced_options: Access meta tag settings and menu options
+        page_options: Επιλογές Σελίδας
+        parent_page: Ανήκει
+        advanced_options: Προχωρημένες Επιλογές
+        custom_title: Προσαρμοσμένος τίτλος
+        title_types:
+          none: Κανένα
+          text: Κείμενο
+        show_in_menu_title: Εμφάνιση στο μενού
+        show_in_menu_description: Να εμφανίζεται αυτή η σελίδα στο μενού
+        show_in_menu_help: Uncheck this box if you want to remove a page from your site menu. This can be handy if you have a page you want to link people to directly but don&apos;t want to show the page in the menu.
+        save_as_draft: Αποθήκευση ως πρόχειρο
+        skip_to_first_child: Skip top-level page
+        skip_to_first_child_label: Redirect visitors to the first sub-level page.
+        skip_to_first_child_help: This option makes this page link to the first page underneath. This can be useful when grouping pages together.
+        link_url: Forward this page to another website or page
+        link_url_help: If you want this page to go to another website or page when you click this page in the menu, enter a URL. e.g. http://google.com otherwise leave it blank
+        parent_page_help: You can put a page under another page by selecting it in the list. If you want this page to be a top-level page, just leave it blank.
+        custom_title_help: If you want the page to have a different title than the one that shows in the menu then select &apos;Text&apos; and enter it here.
+      form_advanced_options_seo:
+        seo: Search Engine Optimization
+        seo_override_title: Browser title
+        seo_override_title_help: Enter a 5-10 word title that summarizes the contents of this page.
+        meta_keywords_title: Meta keywords
+        meta_keywords_help: Enter 5-10 keywords that relate to this page. Separate keywords by a comma.
+        meta_description_title: Meta description
+        meta_description_help: Enter a concise two or three sentences describing what this page is about.
+      index:
+        create_new_page: Προσθήκη νέας σελίδας
+        reorder_pages: Αναδιάταξη σελιδών
+        reorder_pages_done: Έγινε αναδιάταξη σελιδών
+        no_pages_yet: There are no pages yet. Click "Add new page" to add your first page.
+  activerecord:
+    models:
+      page: σελίδα
+    attributes:
+      page:
+        title: τίτλος

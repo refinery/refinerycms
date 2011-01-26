@@ -8,10 +8,10 @@ ru:
       delete: Удалить этого пользователя навсегда
       edit: Редактировать этого пользователя
       update:
-        cannot_remove_user_plugin_from_current_user: "You cannot remove the 'Users' plugin from the currently logged in account."
+        cannot_remove_user_plugin_from_current_user: "Нельзя отключить модуль «Пользователи» у самого себя."
       form:
         blank_password_keeps_current: Оставьте поле пустым, если не хотите изменить пароль
-        enable_all: enable all
+        enable_all: включить все
       index:
         create_new_user: Создать нового пользователя
       user:
@@ -45,10 +45,43 @@ ru:
   user_mailer:
     reset_notification:
       subject: Ссылка для сброса пароля
+  errors:
+      messages:
+        not_found: "не найдена"
+        already_confirmed: "уже подтверждена"
+        not_locked: "не заблокирована"
   devise:
     failure:
-      unauthenticated: 'Вы должны войти.'
-      invalid: 'Имя пользователя или пароль неверны.'
+      unauthenticated: "Вам необходимо войти в систему или зарегистрироваться."
+      unconfirmed: "Вы должны подтвердить вашу учётную запись."
+      locked: "Ваша учётная запись заблокирована."
+      invalid: "Неверный адрес e-mail или пароль."
+      invalid_token: "Неверный ключ аутентификации."
+      timeout: "Ваш сеанс закончился. Пожалуйста, войдите в систему снова."
+      inactive: "Ваша учётная запись ещё не активирована."
+    sessions:
+      signed_in: "Вход в систему выполнен."
+      signed_out: "Выход из системы выполнен."
+    passwords:
+      send_instructions: "В течение нескольких минут вы получите e-mail с инструкциями по восстановлению вашего пароля."
+      updated: "Ваш пароль изменён. Теперь вы вошли в систему."
+    confirmations:
+      send_instructions: "В течение нескольких минут вы получите e-mail с инструкциями по подтверждению вашей учётной записи."
+      confirmed: "Ваша учётная запись подтверждена. Теперь вы вошли в систему."
+    registrations:
+      signed_up: "Добро пожаловать! Вы успешно зарегистрировались. В течение нескольких минут вы получите e-mail с инструкциями по подтверждению вашей учётной записи."
+      updated: "Ваша учётная запись изменена."
+      destroyed: "До свидания! Ваша учётная запись удалена. Надеемся снова увидеть вас."
+    unlocks:
+      send_instructions: "В течение нескольких минут вы получите письмо с инструкциями по разблокировке вашей учётной записи."
+      unlocked: "Ваша учётная запись разблокирована. Теперь вы вошли в систему."
+    mailer:
+      confirmation_instructions:
+        subject: "Инструкции по подтверждению учётной записи"
+      reset_password_instructions:
+        subject: "Инструкции по восстановлению пароля"
+      unlock_instructions:
+        subject: "Инструкции по разблокировке учётной записи"
     sessions:
       signed_in: 'Вы вошли.'
   activerecord:
@@ -56,7 +89,8 @@ ru:
       user: пользователь
     attributes:
       user:
-        login: Имя пользователя
+        login: Имя или почта пользователя
+        username: Имя пользователя
         email: Эл. почта
         password: Пароль
         password_confirmation: Подтверждение пароля

@@ -3,8 +3,6 @@ require 'spec_helper'
 Dir[File.expand_path('../../../features/support/factories.rb', __FILE__)].each {|f| require f}
 
 describe User do
-  include AuthenticatedTestHelper
-
   context "Roles" do
     context "add_role" do
       it "raises Exception when Role object is passed" do
@@ -44,9 +42,13 @@ describe User do
         user = Factory(:refinery_user)
         user.has_role?(:refinery_fail).should be_false
       end
-
     end
 
+    describe "role association" do
+      it "have a roles attribute" do
+        Factory(:user).should respond_to(:roles)
+      end
+    end
   end
 
   context "validations" do
@@ -71,4 +73,87 @@ describe User do
     end
   end
 
+  describe ".find_for_database_authentication" do
+    it "finds user either by username or email" do
+      user = Factory(:user)
+      User.find_for_database_authentication(:login => user.username).should == user
+      User.find_for_database_authentication(:login => user.email).should == user
+    end
+  end
+
+  describe "#can_delete?" do
+    before(:each) do
+      @user = Factory(:refinery_user)
+      @user_not_persisted = Factory.build(:refinery_user)
+      @super_user = Factory(:refinery_user)
+      @super_user.add_role(:superuser)
+    end
+
+    context "won't allow to delete" do
+      it "not persisted user record" do
+        @user.can_delete?(@user_not_persisted).should be_false
+      end
+
+      it "user with superuser role" do
+        @user.can_delete?(@super_user).should be_false
+      end
+
+      it "if user count with refinery role <= 1" do
+        Role[:refinery].users.delete(@user)
+        @super_user.can_delete?(@user).should be_false
+      end
+
+      it "user himself" do
+        @user.can_delete?(@user).should be_false
+      end
+    end
+
+    context "allow to delete" do
+      it "if all conditions return true" do
+        @super_user.can_delete?(@user).should be_true
+      end
+    end
+  end
+
+  describe "#plugins=" do
+    it "assigns plugins to user" do
+      user = Factory(:user)
+      plugin_list = ["refinery_one", "refinery_two", "refinery_three"]
+      user.plugins = plugin_list
+      user.plugins.collect { |p| p.name }.should == plugin_list
+    end
+  end
+
+  describe "#authorized_plugins" do
+    it "returns array of user and always allowd plugins" do
+      user = Factory(:user)
+      ["refinery_one", "refinery_two", "refinery_three"].each_with_index do |name, index|
+        user.plugins.create!(:name => name, :position => index)
+      end
+      user.authorized_plugins.should == user.plugins.collect { |p| p.name } | Refinery::Plugins.always_allowed.names
+    end
+  end
+
+  describe "plugins association" do
+    before(:each) do
+      @user = Factory(:user)
+      @plugin_list = ["refinery_one", "refinery_two", "refinery_three"]
+      @user.plugins = @plugin_list
+    end
+
+    it "have a plugins attribute" do
+      @user.should respond_to(:plugins)
+    end
+
+    it "returns plugins in ASC order" do
+      @user.plugins[0].name.should == @plugin_list[0]
+      @user.plugins[1].name.should == @plugin_list[1]
+      @user.plugins[2].name.should == @plugin_list[2]
+    end
+
+    it "deletes associated plugins" do
+      @user.destroy
+      UserPlugin.find_by_user_id(@user.id).should be_nil
+    end
+  end
 end

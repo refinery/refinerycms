@@ -770,7 +770,7 @@ WYMeditor.editor.prototype.init = function() {
         }
       }
 
-      boxHtml = h.replaceAll(boxHtml, ">"+WYMeditor.APPLY_CLASS+"<", 
+      boxHtml = h.replaceAll(boxHtml, ">"+WYMeditor.APPLY_CLASS+"<",
         ">" + this._options.stringDelimiterLeft
         + WYMeditor.APPLY_CLASS
         + this._options.stringDelimiterRight + "<");
@@ -807,6 +807,9 @@ WYMeditor.editor.prototype.init = function() {
 
       //enable the skin
       this.loadSkin();
+
+      // store which WYMeditor instance the element owns on the element.
+      $(this._element).data('wymeditor', this);
     }
 };
 
@@ -1233,6 +1236,9 @@ WYMeditor.editor.prototype.update = function() {
 
   // get rid of any temporary text-only interpolation tags we have inserted for cursor position.
   html = html.replace(/[%$]+wym-[^%$]*[%$]+/igm, '');
+
+  // get rid of <br /> tag that appears when empty.
+  html = html.replace(/^<br\ ?\/?>$/, '')
 
   // apply changes/
   $(wym._element).val(html);
@@ -1808,13 +1814,23 @@ WYMeditor.INIT_DIALOG = function(wym, selected, isIframe) {
           });
         });
 
+       // ensure we know where to put the image.
+       if (replaceable == null) {
+         replaceable = $(wym._doc.body).find("#" + wym._current_unique_stamp);
+       }
        if (replaceable != null) {
          replaceable.after(image).remove();
        }
 
       // fire a click event on the dialogs close button
       wym.close_dialog(e);
+    } else {
+      // remove any save loader animations.
+      $('iframe').contents().find('.save-loader').remove();
+      // tell the user.
+      alert("Please select an image to insert.");
     }
+    e.preventDefault();
   });
 
   $(wym._options.dialogTableSelector).find(wym._options.submitSelector).click(function(e) {

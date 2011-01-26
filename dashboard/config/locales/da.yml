@@ -2,6 +2,7 @@ da:
   plugins:
     refinery_dashboard:
       title: Overblik
+      description: Giver et overblik over aktiviteterne i Refinery
   admin:
     dashboard:
       index:
@@ -9,16 +10,16 @@ da:
         add_a_new_page: Tilføj en ny side
         update_a_page: Redigér en side
         upload_a_image: Upload et billede
+        upload_a_file: Upload en fil
         change_language: Skift sprog
         see_home_page: Vis forside
       recent_activity:
+        empty: Der her ingen aktititeter været for nylig.
         latest_activity: Seneste aktiviteter
-        see: Vis '%{what}'
+        latest_activity_message: %{what} %{kind} blev %{action}
       recent_inquiries:
-        latest_inquiries: Latest inquiries
+        latest_inquiries: Seneste henvendelser
   updated:
     'with_article "the"':  opdateret
   created:
     'with_article "the"':  oprettet
-  ago: "%{time} siden"
-  see: Vis

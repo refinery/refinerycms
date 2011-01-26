@@ -1,4 +1,11 @@
 nl:
+  plugins:
+    refinery_core:
+      title: Refinery
+      description: Kern plugin van refinery
+    refinery_dialogs:
+      title: Dialogen 
+      description: Refinery dialogen plugin
   welcome:
     there_are_no_users: "Er zijn nog geen gebruikers, dus zullen we er nu eerst een voor je maken"
     remember_admin_location: "Onthoud dat u het beheerders gedeelte hieronder vindt:"
@@ -13,9 +20,6 @@ nl:
         save: Opslaan
         cancel: Annuleren
   refinery:
-    other: "Ander %{what}"
-    reorder: "Wijzig volgorde huidige %{what}"
-    reorder_done: "Klaar met wijzigen van de volgorde van %{what}"
     crudify:
       created: "%{what} is met success aangemaakt"
       updated: "%{what} is met success aangepast"
@@ -54,6 +58,7 @@ nl:
         message: Weet u zeker dat u '%{title}' wilt verwijderen?
       error_messages:
         problems_in_following_fields: Er zijn problemen met de volgende velden
+      help: help
     message:
       close: Sluiten
       close_this_message: Sluit dit bericht
@@ -61,3 +66,10 @@ nl:
       not_live: Deze pagina is NIET beschikbaar voor het publiek
     footer:
       copyright: Copyright © %{year} %{site_name}
+    no_script:
+      enable_javascript: Om alle functies van deze pagina te gebruiken, is het noodzakelijk om JavaScript in te schakelen.
+      here_are: Hier zijn de
+      instructions_enable_javascript: instructies m.b.t. het inschakelen van JavaScript in de browser.
+  time:
+    formats:
+      short: "%A, %d %B %Y"

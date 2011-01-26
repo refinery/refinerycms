@@ -13,6 +13,7 @@ sl:
         change_language: Spremeni Jezik
         see_home_page: Poglej domačo stran
       recent_activity:
+        empty: V zadnjem času ni bilo nobene aktivnosti.
         latest_activity: Zadnje aktivnosti
         see: Poglej '%{what}'
       recent_inquiries:

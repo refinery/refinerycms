@@ -36,7 +36,57 @@ module Refinery
 
       config.autoload_paths += %W( #{config.root}/lib )
 
-      initializer "static assets" do |app|
+      # Attach ourselves to the Rails application.
+      config.before_configuration do
+        ::Refinery::Core.attach_to_application!
+      end
+
+      # Wrap errors in spans and cache vendored assets.
+      config.to_prepare do
+        # This wraps errors in span not div
+        ActionView::Base.field_error_proc = Proc.new do |html_tag, instance|
+          "<span class=\"fieldWithErrors\">#{html_tag}</span>".html_safe
+        end
+
+        # TODO: Is there a better way to cache assets in engines?
+        ::ActionView::Helpers::AssetTagHelper.module_eval do
+          def asset_file_path(path)
+            unless File.exist?(return_path = File.join(config.assets_dir, path.split('?').first))
+              ::Refinery::Plugins.registered.collect{|p| p.pathname}.compact.each do |pathname|
+                if File.exist?(plugin_asset_path = File.join(pathname.to_s, 'public', path.split('?').first))
+                  return_path = plugin_asset_path.to_s
+                end
+              end
+            end
+
+            return_path
+          end
+        end
+      end
+
+      # Register the plugin
+      config.after_initialize do
+        Refinery::Plugin.register do |plugin|
+          plugin.name ="refinery_core"
+          plugin.class_name ="RefineryEngine"
+          plugin.version = Refinery.version.to_s
+          plugin.hide_from_menu = true
+          plugin.always_allow_access = true
+          plugin.menu_match = /(refinery|admin)\/(refinery_core)$/
+        end
+
+        # Register the dialogs plugin
+        Refinery::Plugin.register do |plugin|
+          plugin.name = "refinery_dialogs"
+          plugin.version = Refinery.version.to_s
+          plugin.hide_from_menu = true
+          plugin.always_allow_access = true
+          plugin.menu_match = /(refinery|admin)\/(refinery_)?dialogs/
+        end
+      end
+
+      # Run other initializer code that used to be in config/initializers/
+      initializer "serve static assets" do |app|
         app.middleware.insert_after ::ActionDispatch::Static, ::ActionDispatch::Static, "#{root}/public"
       end
 
@@ -81,60 +131,12 @@ module Refinery
         WillPaginate::ViewHelpers.pagination_options[:next_label] = "&raquo;".html_safe
       end
 
-      initializer 'ensure devise' do |app|
+      initializer 'ensure devise is initialised' do |app|
         unless Rails.root.join('config', 'initializers', 'devise.rb').file?
           load Refinery.root.join(*%w(core lib generators templates config initializers devise.rb))
         end
       end
 
-      # Attach ourselves to the Rails application.
-      config.before_configuration do
-        ::Refinery::Core.attach_to_application!
-      end
-
-      config.to_prepare do
-        ::Rails.cache.clear
-
-        # This wraps errors in span not div
-        ActionView::Base.field_error_proc = Proc.new do |html_tag, instance|
-          "<span class=\"fieldWithErrors\">#{html_tag}</span>".html_safe
-        end
-
-        # TODO: Is there a better way to cache assets in engines?
-        ::ActionView::Helpers::AssetTagHelper.module_eval do
-          def asset_file_path(path)
-            unless File.exist?(return_path = File.join(config.assets_dir, path.split('?').first))
-              ::Refinery::Plugins.registered.collect{|p| p.pathname}.compact.each do |pathname|
-                if File.exist?(plugin_asset_path = File.join(pathname.to_s, 'public', path.split('?').first))
-                  return_path = plugin_asset_path.to_s
-                end
-              end
-            end
-
-            return_path
-          end
-        end
-      end
-
-      config.after_initialize do
-        Refinery::Plugin.register do |plugin|
-          plugin.name ="refinery_core"
-          plugin.class_name ="RefineryEngine"
-          plugin.version = Refinery.version.to_s
-          plugin.hide_from_menu = true
-          plugin.always_allow_access = true
-          plugin.menu_match = /(refinery|admin)\/(refinery_core)$/
-        end
-
-        # Register the dialogs plugin
-        Refinery::Plugin.register do |plugin|
-          plugin.name = "refinery_dialogs"
-          plugin.version = Refinery.version.to_s
-          plugin.hide_from_menu = true
-          plugin.always_allow_access = true
-          plugin.menu_match = /(refinery|admin)\/(refinery_)?dialogs/
-        end
-      end
     end
   end
 

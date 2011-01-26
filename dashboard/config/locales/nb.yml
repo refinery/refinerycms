@@ -2,6 +2,7 @@ nb:
   plugins:
     refinery_dashboard:
       title: Skrivebord
+      description: Gir en oversikt over den siste aktiviteten i Refinery
   admin:
     dashboard:
       index:
@@ -13,8 +14,8 @@ nb:
         change_language: Endre språk
         see_home_page: Se hjemmesiden
       recent_activity:
+        empty: Det har ikke vært noen aktivitet her i det siste.
         latest_activity: Siste aktivitet
-        see: "Se '%{what}'"
         latest_activity_message: "%{what} %{kind} ble %{action}"
       recent_inquiries:
         latest_inquiries: Siste forespørsler
@@ -22,6 +23,3 @@ nb:
     'with_article "the"': oppdatert
   created:
     'with_article "the"': opprettet
-
-  ago: "%{time} siden"
-  see: Se

@@ -1,5 +1,6 @@
 WYMeditor.STRINGS['nb'] = {
 	Strong:			 'Fet',
+  Bold:             'Fet',
 	Emphasis:		 'Uthevet',
 	Superscript:		'Opphøyet',
 	Subscript:		'Nedsenket',
@@ -31,6 +32,7 @@ WYMeditor.STRINGS['nb'] = {
 	Summary:			'Sammendrag',
 	Number_Of_Rows:	 'Antall rader',
 	Number_Of_Cols:	 'Antall kolonner',
+  Insert:           'Sett inn',
 	Submit:			 'Ok',
 	Cancel:			 'Avbryt',
 	Choose:			 'Velg',
@@ -40,6 +42,7 @@ WYMeditor.STRINGS['nb'] = {
 	Containers:		 'Formatering',
 	Classes:			'Klasser',
 	Status:			 'Status',
-	Source_Code:		'Kildekode'
+	Source_Code:		'Kildekode',
+  Apply_Style:      'Bruk stil'
 };
 
