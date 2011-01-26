@@ -287,9 +287,7 @@ module Refinery
       end
 
       # Specify the correct version of the Refinery CMS gem (may be git source).
-      #src = Refinery.version !~ /\.pre$/ ? "'~> #{Refinery.version}'" : ":git => 'git://github.com/resolve/refinerycms'
-      # TODO: Fix this upon release.
-      src = ":git => 'git://github.com/resolve/refinerycms', :branch => 'master'"
+      src = Refinery.version !~ /\.pre$/ ? "'= #{Refinery.version}'" : ":git => 'git://github.com/resolve/refinerycms'"
       find_and_replace('Gemfile', %r{gem 'refinerycms',.*}, "gem 'refinerycms',              #{src}")
 
       # Add in AWS-S3 for Heroku
