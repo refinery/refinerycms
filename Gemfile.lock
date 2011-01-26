@@ -12,7 +12,7 @@ PATH
       rack-cache (~> 0.5.2)
       rails (~> 3.0.3)
       rdoc (>= 2.5.11)
-      truncate_html (= 0.4)
+      truncate_html (~> 0.4)
       will_paginate (~> 3.0.pre)
 
 GEM
@@ -138,9 +138,9 @@ GEM
     rdoc (3.4)
     refinerycms-generators (0.9.9)
       refinerycms (>= 0.9.9)
-    refinerycms-i18n (0.9.9.6)
+    refinerycms-i18n (0.9.9.7)
       refinerycms (>= 0.9.8)
-      routing-filter (~> 0.1)
+      routing-filter (>= 0.2.3)
     routing-filter (0.2.3)
       actionpack
     rspec (2.3.0)
