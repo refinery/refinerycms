@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 require File.expand_path('../../lib/refinery.rb', __FILE__)
-files = %w( .gitignore .yardopts Gemfile *.md **/**/* ).map { |file| Dir.glob(file) }.flatten.sort
+files = %w( Gemfile *.md **/**/{*,.rspec,.gitignore,.yardopts} ).map { |file| Dir.glob(file) }.flatten.sort
 rejection_patterns = [
   "^public/system",
   "^config/(application|boot|environment).rb$",
@@ -60,8 +60,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'launchy'
   s.add_development_dependency 'gherkin'
   s.add_development_dependency 'rack-test',          '~> 0.5.6'
-  # FIXME: Update json_pure to 1.4.7 when it is released
-  s.add_development_dependency 'json_pure',          '~> 1.4.6'
+  s.add_development_dependency 'json_pure'
   # Factory Girl
   s.add_development_dependency 'factory_girl'
   # Autotest
