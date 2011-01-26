@@ -38,18 +38,18 @@ it:
       blank_email: Non hai inserito un indirizzo email.
       email_not_associated_with_account_html: "Mi dispiace, '%{email}' non è associato ad alcun account. <br/>Sei sicuro di aver digitato l'indirizzo email corretto?"
       email_reset_sent: Ti è stata inviata una e-mail con il link per reimpostare la password.
-      #password_encryption: You need to reset your password because there were changes in the password encryption methods that Refinery uses so that passwords are stored with even stronger encryption than before.
+      password_encryption: "È necessario reimpostare la password, perché ci sono stati cambiamenti nei metodi di crittografia della password che utilizza Raffineria modo che le password vengono memorizzate anche con la crittografia forte di prima."
     reset:
       code_invalid: "Siamo spiacenti, ma questo codice reset è scaduto o non è valido. Se si hanno problemi provare a copiare e incollare l'URL dalla vostra e-mail al vostro browser o riavviare la procedura di reimpostazione password."
-      successful: Il ripristino della password è avvenuto con successo per %{email}
+      successful: "Il ripristino della password è avvenuto con successo per %{email}"
       pick_new_password_for: "Scegli una nuova password per %{email}"
       reset_password: Reimposta la password
   user_mailer:
     reset_notification:
       subject: Link per reimpostare la password
-      #reset_request_received_for: Request to reset password received for %{username}
-      #visit_this_url: Visit this URL to choose a new password
-      #remain_same_if_no_action: Your password will remain the same if no action is taken
+      reset_request_received_for: "Richiesta di reimpostazione password ricevuti per %{username}"
+      visit_this_url: Visita questo URL per scegliere una nuova password
+      remain_same_if_no_action: "La password rimarrà lo stesso, se non si interviene"
   activerecord:
     attributes:
       user:

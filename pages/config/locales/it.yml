@@ -33,6 +33,7 @@ it:
     pages:
       delete: Rimuovere questa pagina per sempre
       edit: Modificare questa pagina
+      reserved_system_word: "Ci dispiace, ma quel titolo è una parola di sistema riservato."
       page:
         view_live_html: Visualizza questa pagina dal vivo <br/><em>(apre una nuova finestra del browser)</em>
         hidden: nascosto
