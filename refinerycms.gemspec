@@ -36,8 +36,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'launchy'
   s.add_development_dependency 'gherkin'
   s.add_development_dependency 'rack-test',          '~> 0.5.6'
-  # FIXME: Update json_pure to 1.4.7 when it is released
-  s.add_development_dependency 'json_pure',          '~> 1.4.6'
+  s.add_development_dependency 'json_pure'
   # Factory Girl
   s.add_development_dependency 'factory_girl'
   # Autotest
@@ -56,6 +55,7 @@ Gem::Specification.new do |s|
 
   s.files             = [
     '.gitignore',
+    '.rspec',
     '.yardopts',
     'Gemfile',
     'Gemfile',
@@ -288,6 +288,8 @@ Gem::Specification.new do |s|
     'core/lib/generators',
     'core/lib/generators/refinerycms_generator.rb',
     'core/lib/generators/templates',
+    'core/lib/generators/templates/.gitignore',
+    'core/lib/generators/templates/.rspec',
     'core/lib/generators/templates/app',
     'core/lib/generators/templates/app/views',
     'core/lib/generators/templates/app/views/sitemap',

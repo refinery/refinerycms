@@ -37,6 +37,10 @@
 * Converted translate calls to use ``:scope``. [Uģis Ozols](https://github.com/ugisozols)
 * Fixed issues where errors would only show up in English for some models and updated Russian translations. [Semyon Perepelitsa](https://github.com/semaperepelitsa)
 * Converted to devise for authentication, requiring password resets. [Philip Arndt](https://github.com/parndt) and [Uģis Ozols](https://github.com/ugisozols)
+* Sped up WYMeditor load times. [Philip Arndt](https://github.com/parndt)
+* Fixed several issues for Internet Explorer. [Pepí Šimánek](https://github.com/simi)
+* Added installation option for [Duostack](http://duostack.com) hosting service. [Philip Arndt](https://github.com/parndt) and [David E. Chen](https://github.com/dchen)
+
 * [See full list](https://github.com/resolve/refinerycms/compare/0.9.8.9...0.9.9)
 
 ## 0.9.8.9 [21 December 2010]
