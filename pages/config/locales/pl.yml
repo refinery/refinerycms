@@ -34,7 +34,7 @@ pl:
     pages:
       delete: Na zawsze usuń tę stronę
       edit: Zmień tę stronę
-      #reserved_system_word: "Sorry, but that title is a reserved system word."
+      reserved_system_word: "Przepraszamy, ale tytuł zawiera zabronione wyrazy."
       page:
         view_live_html: Obejrzyj tę stronę na żywo <br/><em>(zostanie otwarta w nowym oknie)</em>
         hidden: ukryta
