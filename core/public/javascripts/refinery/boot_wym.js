@@ -113,7 +113,7 @@ var wymeditor_boot_options = $.extend({
 
   , iframeHtml:
     "<div class='wym_iframe wym_section'>"
-     + "<iframe id='WYMeditor_" + WYMeditor.INDEX + "' "
+     + "<iframe id='WYMeditor_" + WYMeditor.INDEX + "'" + ($.browser.msie ? " src='" + WYMeditor.IFRAME_BASE_PATH + "wymiframe'" : "")
      + " frameborder='0' marginheight='0' marginwidth='0' border='0'"
      + " onload='this.contentWindow.parent.WYMeditor.INSTANCES[" + WYMeditor.INDEX + "].loadIframe(this);'></iframe>"
     +"</div>"
@@ -225,31 +225,34 @@ var wymeditor_boot_options = $.extend({
 WYMeditor.editor.prototype.loadIframe = function(iframe) {
   var wym = this;
 
+  // Internet explorer doesn't like this (which versions??)
   var doc = (iframe.contentDocument || iframe.contentWindow);
-  if(doc.document) doc = doc.document;
-  
-  doc.open('text/html', 'replace');
-  html = "<!DOCTYPE html>\
-  <html>\
-    <head>\
-      <title>WYMeditor</title>\
-      <meta charset='" + $('meta[charset]').attr('charset') + "' />\
-      <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1' />\
-    </head>\
-    <body class='wym_iframe'>\
-    </body>\
-  </html>";
-  doc.write(html);
-  doc.close();
+  if(doc.document) {
+    doc = doc.document;
+  }
+  if (!$.browser.msie) {
+    doc.open('text/html', 'replace');
+    html = "<!DOCTYPE html>\
+    <html>\
+      <head>\
+        <title>WYMeditor</title>\
+        <meta charset='" + $('meta[charset]').attr('charset') + "' />\
+        <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1' />\
+      </head>\
+      <body class='wym_iframe'>\
+      </body>\
+    </html>";
+    doc.write(html);
+    doc.close();
 
+    $.each(["wymeditor/skins/refinery/wymiframe", "formatting", "theme"], function(i, href) {
+      $("<link href='/stylesheets/" + href + ".css' media='all' rel='stylesheet' />").appendTo(doc.head);
+    });
+    $("<script src='/javascripts/modernizr-min.js'></script>").appendTo(doc.head);
+  }
   if ((id_of_editor = wym._element.parent().attr('id')) != null) {
     $(doc.body).addClass(id_of_editor);
   }
-
-  $.each(["wymeditor/skins/refinery/wymiframe", "formatting", "theme"], function(i, href) {
-    $("<link href='/stylesheets/" + href + ".css' media='all' rel='stylesheet' />").appendTo(doc.head);
-  });
-  $("<script src='/javascripts/modernizr-min.js'></script>").appendTo(doc.head);
 
   wym.initIframe(iframe);
 };
