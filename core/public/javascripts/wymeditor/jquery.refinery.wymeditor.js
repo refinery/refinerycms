@@ -839,7 +839,7 @@ WYMeditor.editor.prototype.bindEvents = function() {
     .blur(function() { $(this).toggleClass('hasfocus'); });
 
   //handle click event on classes buttons
-  $(this._box).find(this._options.classSelector).click(function() {
+  $(this._box).find(this._options.classSelector).bind('click', function() {
 
     var aClasses = eval(wym._options.classesItems);
     var sName = $(this).attr(WYMeditor.NAME);
@@ -970,8 +970,7 @@ WYMeditor.editor.prototype.exec = function(cmd) {
 
     case WYMeditor.APPLY_CLASS:
       wym = this;
-      $(wym._box).find(this._options.classUnhiddenSelector).toggleClass(this._options.classHiddenSelector.substring(1)); // substring(1) to remove the . at the start
-      $(wym._box).find("a[name=" + WYMeditor.APPLY_CLASS +"]").toggleClass('selected').parent().toggleClass('activated');
+      wym.toggleClassSelector();
       // determine whether any classes are already selected and add the enabled class to them.
       $(wym._box).find(this._options.classUnhiddenSelector).find("a[name]").each(function(index, rule){
         if ($(wym.selected()).hasClass($(rule).attr('name'))) {
@@ -1081,6 +1080,16 @@ WYMeditor.editor.prototype.toggleClass = function(sClass, jqexpr) {
   if(!container.attr(WYMeditor.CLASS)) { container.removeAttr(this._class); }
 
 };
+
+WYMeditor.editor.prototype.toggleClassSelector = function() {
+  // substring(1) to remove the . at the start
+  var wym = this;
+  $(wym._box).find(wym._options.classUnhiddenSelector)
+             .toggleClass(wym._options.classHiddenSelector.substring(1));
+
+  $(wym._box).find("a[name=" + WYMeditor.APPLY_CLASS +"]")
+             .toggleClass('selected').parent().toggleClass('activated');
+}
 
 /* @name removeClass
  * @description Removes class on selected element, or one of its parents
@@ -1640,12 +1649,15 @@ WYMeditor.editor.prototype.listen = function() {
   }
 
   // ensure links can't be navigated to.
-  $(this._doc).find('a[href]').click(function(e){e.preventDefault();});
+  $(this._doc).find('a[href]').click(function(e){
+    e.preventDefault();
+  });
 };
 
 WYMeditor.editor.prototype.mousedown = function(e) {
 
   var wym = WYMeditor.INSTANCES[this.ownerDocument.title];
+
   wym._selected_image = (e.target.tagName.toLowerCase() == WYMeditor.IMG) ? e.target : null;
   $(wym._iframe).contents().find('.selected_by_wym').removeClass('selected_by_wym');
   if (!$.browser.mozilla) { $(wym._selected_image).addClass('selected_by_wym'); }

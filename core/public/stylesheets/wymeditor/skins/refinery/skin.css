@@ -471,11 +471,9 @@ a.wym_wymeditor_link {
   display: block;
   position: absolute;
   left: 0px;
-  top: 29px;
+  top: 23px;
+  padding-top: 6px !important;
   width: 200px;
-  border-color: gray;
-  border-style: solid;
-  border-width: 0px 1px 1px 1px !important;
 }
 .wym_classes_hidden {
   display: none;
