@@ -82,9 +82,9 @@ it:
     footer:
       copyright: "Tutti i diritti sono riservati © %{year} %{site_name}"
     no_script:
-      #enable_javascript: For full functionality of this page it is necessary to enable JavaScript.
-      #here_are: Here are the
-      #instructions_enable_javascript: instructions for how to enable JavaScript in your web browser
+      enable_javascript: Per la piena funzionalità di questa pagina è necessario abilitare JavaScript.
+      here_are: Qui ci sono le
+      instructions_enable_javascript: istruzioni su come attivare JavaScript nel tuo browser web
   activerecord:
     models:
       page: pagina

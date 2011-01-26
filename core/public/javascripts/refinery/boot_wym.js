@@ -225,7 +225,9 @@ var wymeditor_boot_options = $.extend({
 WYMeditor.editor.prototype.loadIframe = function(iframe) {
   var wym = this;
 
-  var doc = (iframe.document || iframe.contentDocument || iframe.contentWindow.document);
+  var doc = (iframe.contentDocument || iframe.contentWindow);
+  if(doc.document) doc = doc.document;
+  
   doc.open('text/html', 'replace');
   html = "<!DOCTYPE html>\
   <html>\
