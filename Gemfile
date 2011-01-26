@@ -52,8 +52,6 @@ group :development, :test do
   gem 'autotest'
   gem 'autotest-rails'
   gem 'autotest-notification'
-  # FIXME: Replace when new babosa gem is released
-  gem 'babosa', '0.2.0',        :git => 'git://github.com/stevenheidel/babosa' if java
 end
 
 # END REFINERY CMS ============================================================
