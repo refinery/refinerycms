@@ -1,12 +1,4 @@
 GIT
-  remote: git://github.com/parndt/friendly_id
-  revision: 15c49419de22fb78eb9f439ea448a80285c76a50
-  branch: globalize3
-  specs:
-    friendly_id (3.2.0)
-      babosa (~> 0.2.1)
-
-GIT
   remote: git://github.com/resolve/refinerycms-generators
   revision: 9fea559c5734727cc25475cf2c402f59d3ea882d
   specs:
@@ -20,7 +12,7 @@ PATH
       bundler (~> 1.0.5)
       devise (~> 1.1)
       dragonfly (~> 0.8.2)
-      friendly_id (~> 3.2.0)
+      friendly_id_globalize3 (~> 3.2.0)
       globalize3 (>= 0.1.0.beta)
       moretea-awesome_nested_set (= 1.4.3.1)
       rack-cache (~> 0.5.2)
@@ -105,6 +97,8 @@ GEM
     factory_girl (1.3.3)
     ffi (0.6.3)
       rake (>= 0.8.7)
+    friendly_id_globalize3 (3.2.0)
+      babosa (~> 0.2.1)
     gherkin (2.3.3)
       json (~> 1.4.6)
     globalize3 (0.1.0.beta)
@@ -198,7 +192,6 @@ DEPENDENCIES
   cucumber-rails
   database_cleaner
   factory_girl
-  friendly_id!
   gherkin
   json_pure
   launchy
