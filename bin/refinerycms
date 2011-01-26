@@ -396,6 +396,4 @@ module Refinery
   end
 end
 
-if __FILE__ == $0
-  Refinery::AppGenerator.new(ARGV).run!
-end
+Refinery::AppGenerator.new(ARGV).run! if $0 =~ %r{refinerycms$}
