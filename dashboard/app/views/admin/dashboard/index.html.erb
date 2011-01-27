@@ -37,11 +37,6 @@
         </li>
       <% end %>
       <%= render :partial => 'additional_dashboard_menu_items' %>
-      <li>
-        <%= link_to t('.see_home_page'), root_url,
-                    :class => "go_icon",
-                    :target => "_blank" %>
-      </li>
     </ul>
 
     <% if defined?(::Refinery::I18n) and ::Refinery::I18n.enabled? %>
