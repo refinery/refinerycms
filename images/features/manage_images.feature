@@ -27,7 +27,7 @@ Feature: Manage Images
   Scenario: Create Invalid Image (format)
     When I go to the list of images
     And I follow "Add new image"
-    And I attach the image at "refinery_is_awesome.txt"
+    And I upload the image at "refinery_is_awesome.txt"
     And I press "Save"
     Then I should not see "successfully added"
     And I should have 0 images
