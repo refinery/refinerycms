@@ -686,7 +686,6 @@ Gem::Specification.new do |s|
     'lib/refinerycms.rb',
     'license.md',
     'license.md',
-    'log',
     'pages',
     'pages/app',
     'pages/app/controllers',

@@ -11,7 +11,7 @@ rejection_patterns = [
   "^db\/(schema|seeds|.*\.sqlite3?(-journal)?|migrate)(\/?.*\.rb)?$",
   "^script\/*",
   "^vendor\/plugins\/?$",
-  "\.log$",
+  "(^log|\.log)$",
   "\.rbc$",
   "^tmp(|/.+?)$",
   ".gem$"
