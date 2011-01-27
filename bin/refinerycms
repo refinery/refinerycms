@@ -153,7 +153,7 @@ module Refinery
         puts pe
         puts "\n"
         puts @optparse
-        exit
+        exit(false)
       end
 
       # Ensure only one path is specified
@@ -161,30 +161,40 @@ module Refinery
         puts "Please specify a single path to install Refinery CMS"
         puts "\n"
         puts @optparse
-        exit
+        exit(false)
       end
 
       # Get the name and path of the new application
       @app_path = Pathname.new(File.expand_path(@input.first))
       @app_name = @app_path.to_s.split(File::SEPARATOR).last
 
-      if @app_path.directory? and @options[:force] == false and @options[:update] == false
-        puts "The directory '#{@app_path}' that you specified already exists."
+      # Get the refinery path based on this file
+      @refinery_path = Pathname.new(File.expand_path('../../', __FILE__))
+
+      if @app_path == @refinery_path
+        puts "\nPlease generate your new project from outside the Refinery directory and any Rails directory."
+        puts "\n"
+        exit(false)
+      elsif %w(refinery test).include?(@input.first)
+        puts "\nYou can't use '#{@input.first}' as a name for your project, this is a reserved word that will cause conflicts."
+        puts "Please choose another name for your new project."
+        puts "\n"
+        exit(false)
+      elsif @app_path.directory? and @options[:force] == false and @options[:update] == false
+        puts "\nThe directory '#{@app_path}' that you specified already exists."
         puts "Use --force to overwrite an existing directory."
         puts "Use --update to replace any Refinery CMS files in an existing installation."
-        exit
+        puts "\n"
+        exit(false)
       elsif @app_path.join('.git').directory? && @options[:update] && !@options[:confirm]
         git_status = run_command('git status --porcelain', :puts => false)
         if git_status.to_s.strip.length > 0
           puts "\nYou have uncommitted changes or untracked files. Please remove or commit them, or:"
           puts "Use --confirm to have Refinery proceed anyway. "
-          puts "Untracked files will be removed, and uncommitted changes may be lost.\n\n"
-          exit
+          puts "Untracked files will be removed, and uncommitted changes may be lost."
+          puts "\n"
+          exit(false)
         end
-      elsif ["refinery"].index(@input.first)
-        puts "\nYou can't use '#{@input.first}' as a name for your project, this will create a name conflict with Refinery classes."
-        puts "\nPlease choose another name for your Refinery project."
-        exit
       end
     end
 
@@ -212,8 +222,12 @@ module Refinery
         rails_command << " --force" if @options[:force]
         rails_command << " --skip-test-unit --skip-prototype"
       end
-      run_command(rails_command, {:cd => false})
-      abort "Generating Rails application failed. Exiting..." unless $?.success?
+      rails_output = run_command(rails_command, {:cd => false})
+      # Detect non-success or a blank rails output or starting with "Can't initialize" or "Error"
+      if !$?.success? or rails_output =~ /^($|Can't\ initialize|Error)/
+        puts "Generating Rails application failed. Exiting..."
+        exit(false)
+      end
     end
 
     def bundle!
