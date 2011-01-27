@@ -5,15 +5,18 @@ module Refinery
       # replace all system images with a thumbnail version of them (handy for all images inside a page part)
       # for example, <%= content_fu(@page[:body], '96x96#c') %> converts all /system/images to a 96x96 cropped thumbnail
       def content_fu(content, thumbnail)
-        raise NotImplementedError # todo: implement for new syntax.
+        content.gsub(%r{<img.+?src=['"](/system/images/.+?)/.+?/>}) do |image_match|
+           begin
+             uid = Dragonfly::Job.from_path(
+                      "#{image_match.match(%r{(/system/images/.+?)/})[1]}", Dragonfly[:images]
+                   ).uid
 
-        content.scan(/\/system\/images([^\"\ ]*)/).flatten.each do |match|
-          parts = match.split(".")
-          extension = parts.pop
-          content.gsub!(match, "#{parts.join(".")}_#{thumbnail}.#{extension}")
-        end unless content.blank?
-
-        return content
+             image_fu Image.where(:image_uid => uid).first, thumbnail
+           rescue
+             # FAIL, don't care why but return what we found initially.
+             image_match
+           end
+         end
       end
 
       # image_fu is a helper for inserting an image that has been uploaded into a template.
