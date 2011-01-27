@@ -28,10 +28,18 @@ module Refinery
           # call rails' image tag function with default alt tag.
           # if any other options were supplied these are merged in and can replace the defaults.
           # if the geomtry is nil, then we know the image height and width already.
+          # detect nil geometry or cropping presence which is where we can guess the dimensions
+          unless geometry.nil? or !(split_geometry = geometry.to_s.split('#')).many? or !(split_geometry = split_geometry.first.split('x')).many?
+            image_width, image_height = split_geometry.first.split('x')
+          else
+            image_with = nil
+            image_height = nil
+          end
+
           image_tag(image.thumbnail(geometry).url, {
             :alt => image.respond_to?(:title) ? image.title : image.image_name,
-            :width => (image.image_width if geometry.nil?),
-            :height => (image.image_height if geometry.nil?)
+            :width => image_width,
+            :height => image_height
           }.merge(options))
         end
       end
