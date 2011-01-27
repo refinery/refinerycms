@@ -181,6 +181,10 @@ module Refinery
           puts "Untracked files will be removed, and uncommitted changes may be lost.\n\n"
           exit
         end
+      elsif ["refinery"].index(@input.first)
+        puts "\nYou can't use '#{@input.first}' as a name for your project, this will create a name conflict with Refinery classes."
+        puts "\nPlease choose another name for your Refinery project."
+        exit
       end
     end
 
