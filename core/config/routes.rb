@@ -5,9 +5,7 @@
 
   match 'wymiframe(/:id)', :to => 'refinery/fast#wymiframe', :as => :wymiframe
 
-  # TODO: is this needed or it can be removed?
   scope(:path => 'refinery', :as => 'admin', :module => 'admin') do
-    resources :refinery_core
     root :to => 'dashboard#index'
     resources :dialogs, :only => :show
   end

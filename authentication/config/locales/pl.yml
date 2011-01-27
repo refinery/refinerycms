@@ -39,7 +39,7 @@ pl:
       blank_email: Nie podano żadnego adresu e-mail.
       email_not_associated_with_account_html: "Przepraszamy, '%{email}' nie jest adresem żadnego z zarejestrowanych użytkownikiem. <br />Czy to na pewno prawidłowy adres?"
       email_reset_sent: Został wysłany e-mail z linkiem umożliwiającym reset hasła.
-      #password_encryption: You need to reset your password because there were changes in the password encryption methods that Refinery uses so that passwords are stored with even stronger encryption than before.
+      password_encryption: Musisz zmienić swoje hasło ponieważ wprowadziliśmy zmiany w używanej w Rafinery metodzie szyfrowania. Teraz hasła są jeszcze lepiej chronione.
     reset:
       code_invalid: "Niestety, ten kod resetu hasła wygasł lub jest niepoprawny. Jeżeli masz problemy z resetem hasła, skopiuj i wklej link z e-mail do przeglądarki  lub ponownie rozpocznij proces resetu hasła."
       successful: "Hasło zresetowane dla '%{email}'"
@@ -48,9 +48,9 @@ pl:
   user_mailer:
     reset_notification:
       subject: Link do resetu hasła
-      #reset_request_received_for: Request to reset password received for %{username}
-      #visit_this_url: Visit this URL to choose a new password
-      #remain_same_if_no_action: Your password will remain the same if no action is taken
+      reset_request_received_for: Prośba o zmianę hasła dla %{username}
+      visit_this_url: Odwiedź stronę aby ustawić nowe hasło
+      remain_same_if_no_action: Twoje hasło nie zostanie zmienione jeśli nie odwiedzisz strony
   activerecord:
     models:
       user: użytkownik

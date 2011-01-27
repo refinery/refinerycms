@@ -5,15 +5,18 @@ module Refinery
       # replace all system images with a thumbnail version of them (handy for all images inside a page part)
       # for example, <%= content_fu(@page[:body], '96x96#c') %> converts all /system/images to a 96x96 cropped thumbnail
       def content_fu(content, thumbnail)
-        raise NotImplementedError # todo: implement for new syntax.
+        content.gsub(%r{<img.+?src=['"](/system/images/.+?)/.+?/>}) do |image_match|
+           begin
+             uid = Dragonfly::Job.from_path(
+                      "#{image_match.match(%r{(/system/images/.+?)/})[1]}", Dragonfly[:images]
+                   ).uid
 
-        content.scan(/\/system\/images([^\"\ ]*)/).flatten.each do |match|
-          parts = match.split(".")
-          extension = parts.pop
-          content.gsub!(match, "#{parts.join(".")}_#{thumbnail}.#{extension}")
-        end unless content.blank?
-
-        return content
+             image_fu Image.where(:image_uid => uid).first, thumbnail
+           rescue
+             # FAIL, don't care why but return what we found initially.
+             image_match
+           end
+         end
       end
 
       # image_fu is a helper for inserting an image that has been uploaded into a template.
@@ -25,10 +28,18 @@ module Refinery
           # call rails' image tag function with default alt tag.
           # if any other options were supplied these are merged in and can replace the defaults.
           # if the geomtry is nil, then we know the image height and width already.
+          # detect nil geometry or cropping presence which is where we can guess the dimensions
+          unless geometry.nil? or !(split_geometry = geometry.to_s.split('#')).many? or !(split_geometry = split_geometry.first.split('x')).many?
+            image_width, image_height = split_geometry.first.split('x')
+          else
+            image_with = nil
+            image_height = nil
+          end
+
           image_tag(image.thumbnail(geometry).url, {
             :alt => image.respond_to?(:title) ? image.title : image.image_name,
-            :width => (image.image_width if geometry.nil?),
-            :height => (image.image_height if geometry.nil?)
+            :width => image_width,
+            :height => image_height
           }.merge(options))
         end
       end

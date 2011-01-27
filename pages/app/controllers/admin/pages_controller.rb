@@ -19,7 +19,7 @@ module Admin
   protected
 
     def globalize!
-      Thread.current[:globalize_locale] = (params[:switch_locale] || (@page.present? && @page.slug.locale) || ::Refinery::I18n.default_frontend_locale)
+      Thread.current[:globalize_locale] = (params[:switch_locale] || (@page.present? && @page.slug.present? && @page.slug.locale) || ::Refinery::I18n.default_frontend_locale)
     end
 
     def show_errors_for_reserved_slug(exception)

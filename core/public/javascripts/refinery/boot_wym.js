@@ -245,7 +245,7 @@ WYMeditor.editor.prototype.loadIframe = function(iframe) {
     doc.write(html);
     doc.close();
 
-    $.each(["wymeditor/skins/refinery/wymiframe", "formatting", "theme"], function(i, href) {
+    $.each(["wymeditor/skins/refinery/wymiframe", "formatting", "refinery/theme", "theme"], function(i, href) {
       $("<link href='/stylesheets/" + href + ".css' media='all' rel='stylesheet' />").appendTo(doc.head);
     });
     $("<script src='/javascripts/modernizr-min.js'></script>").appendTo(doc.head);

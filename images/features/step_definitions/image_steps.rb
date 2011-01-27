@@ -31,7 +31,10 @@ Then /^I should have ([0-9]+) images?$/ do |number|
 end
 
 When /^I upload the image at "([^\"]*)"$/ do |file_path|
+  original_stderr = $stderr.dup
+  $stderr.reopen(Tempfile.new('stderr'))
   visit new_admin_image_path
   attach_file('image_image', File.join(File.expand_path('../../uploads/', __FILE__), file_path))
   click_button 'Save'
+  $stderr.reopen(original_stderr)
 end
