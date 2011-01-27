@@ -1,4 +1,4 @@
-## 0.9.9 [Unreleased]
+## 0.9.9 [27 January 2011]
 
 * Better, more semantic HTML5. [Joe Sak](https://github.com/joemsak)
 * Added ``role`` selection for ``admin/users#edit``. [Hez Ronningen](https://github.com/hez)
