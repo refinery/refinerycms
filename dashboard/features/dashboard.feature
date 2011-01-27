@@ -33,8 +33,3 @@ Feature: Dashboard
   Scenario: Upload an Image Button
     When I follow "Upload an image"
     Then I should be on the new image form
-
-  @dashboard-show
-  Scenario: See Home Page Button
-    When I follow "See home page"
-    Then I should be on the home page
