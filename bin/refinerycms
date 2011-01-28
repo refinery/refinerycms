@@ -224,7 +224,7 @@ module Refinery
       end
       rails_output = run_command(rails_command, {:cd => false})
       # Detect non-success or a blank rails output or starting with "Can't initialize" or "Error"
-      if !$?.success? or rails_output =~ /^($|Can't\ initialize|Error)/
+      if !$?.success? or rails_output.blank? or rails_output =~ /^(Can't\ initialize|Error)/
         puts "Generating Rails application failed. Exiting..."
         exit(false)
       end
