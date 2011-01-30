@@ -1,0 +1,34 @@
+en:
+  plugins:
+    refinery_files:
+      title: Dosyalar
+      description: Yükle ve dosyaya link ver
+  admin:
+    resources:
+      delete: Dosyayý tamamen kaldýr
+      edit: Dosyayý düzenle
+      form:
+        download_current: Mevcut dosyayý indir
+        or: ya da
+        replace: " bununla deðiþtir..."
+        maximum_file_size: Maksimum dosya boyutu: %{megabytes} MB.
+      resource:
+        download: Bu dosyayý indir (%{size})
+      index:
+        upload_new: Yeni dosya yükle
+        no_files_yet: Henðz bir dosya yok. "Yeni dosya yükle"ye týklayrak ilk dosyanýzý ekleyin.
+      insert:
+        existing: Varolan Dosya
+        new: Yeni Dosya
+        no_files: Dosya yok.
+      existing_resource:
+        link_to_file: Bu dosyaya link ver
+        button_text: Ekle
+  activerecord:
+    models:
+      resource: dosya
+    errors:
+      models:
+        resource:
+          blank: Yüklemek için bir dosya seçmelisiniz
+          too_long: Dosyanýzýn boyutu en fazla %{count} olabilir

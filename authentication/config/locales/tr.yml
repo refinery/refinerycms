@@ -1,0 +1,72 @@
+﻿en:
+  plugins:
+    refinery_users:
+      title: Kullanıcı
+      description: Kullanıcıları düzenle
+  admin:
+    users:
+      delete: Kullanıcıyı tamamen kaldır
+      edit: Kullanıcıyı düzenle
+      update:
+        cannot_remove_user_plugin_from_current_user: 'Users' eklentisini şu an giriş yaptığınız kullanıcı hesabı ile kaldıramazsınız.
+      form:
+        blank_password_keeps_current: Şifreyi boş bırakırsanız, şu anki şifrenizde değişiklik yapılmaz
+        plugin_access: Eklenti erişimi
+        role_access: Rol erişimi
+        enable_all: tümüne izin ver
+      index:
+        create_new_user: Yeni Kullanıcı ekle
+      user:
+        email_user: Bu kullanıcıya mail at
+        preview: (%{who}) (eklendi: %{created_at})
+  sessions:
+    new:
+      hello_please_sign_in: Merhaba! Lütfen giriş yapın.
+      sign_in: Giriş
+      forgot_password: Şifremi unuttum
+  users:
+    setup_website_name_html: Önce sitemize bir isim verelim. <a href='%{link}' name='%{title}'>Buraya tıklayarak</a> to sitenizin adını düzenleyebilirsiniz
+    new:
+      fill_form: Başlamak için lütfen aşağıya bilgilerinizi girin.
+      sign_up: Kayıt ol
+    create:
+      welcome: Refinery'ye hoş geldin, %{who}
+    forgot:
+      email_address: Email Adresi
+      enter_email_address: Lütfen hesabınıza ait email adresini girin.
+      reset_password: Şifreyi sıfırla
+      blank_email: Herhangi bir email adres girmediniz.
+      email_not_associated_with_account_html: "Üzgünüz, '%{email}' adresini kullanan bir hesap bulunamadı.<br />Doğru email adresini girdiğinizden emin misiniz?"
+      email_reset_sent: Size şirenizi sıfırlyacak bir link bulunan bir email gönderildi.
+      password_encryption: Şifrenizi sıfırlamalısınız, çünkü Refinery şifreleri kaydettiği yöntemi daha güvenli olacak bir şekilde değiştirdi.
+    reset:
+      code_invalid: "Üzgünüz, ama bu sıfırlama kodunun süresi doldu ve ya kod geçersiz. Eğer problem yaşıyorsanız, sıfırlama linkini copyalayıp adres çubuğuna yapıştırmayı deneyin ya da şifre sıfırlama işlemini sıfırdan başlayın."
+      successful: "'%{email}' için şifre sıfırlama başarılı"
+      pick_new_password_for: "%{email} için yeni bir şifre seçin"
+      reset_password: Şifreyi sıfırla
+  user_mailer:
+    reset_notification:
+      subject: Şifrenizi sıfırlamak için link
+      reset_request_received_for: "%{username} için şifre sıfırlama isteği alındı"
+      visit_this_url: Yeni şifrenizi belirlemek için bu adresi ziyaret edin
+      remain_same_if_no_action: Eğer hiçbir şey yapmazsanız, şifreniz aynı kalacak
+  devise:
+    failure:
+      unauthenticated: İlerlemeden önce giriş yapmalısınız.
+      invalid: "Üzgünüz, ama kullanıcı adı veya şifreniz yanlış."
+    sessions:
+      signed_in: Başarıyla giriş yapıldı.
+  roles:
+    superuser: Üst kullanıcı
+    refinery: Refinery
+  activerecord:
+    models:
+      user: kullanıcı
+    attributes:
+      user:
+        login: Giriş
+        username: Kullanıcı Adı
+        password: Şifre
+        password_confirmation: Şifre doğrulama
+        email: Email
+        remember_me: Beni hatırla

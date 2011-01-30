@@ -1,0 +1,82 @@
+en:
+  plugins:
+    refinery_core:
+      title: Refinery
+      description: Refinery Core eklentisi
+    refinery_dialogs:
+      title: Diyaloglar
+      description: Refinery diyaloglar eklentisi
+  welcome:
+    there_are_no_users: Henüz bir kullanıcı olmadığı için ilk kullanıcıyı eklemede size yardım edeceğiz.
+    remember_admin_location: "Refinery yönetici kısmının şurada olduğunu unutmayın:"
+    lets_start: Kuruluma başlayalımki, giriş yapabilesiniz...
+    continue: Devam et...
+  admin:
+    menu:
+      reorder_menu: Menüyü tekrar düzenle
+      reorder_menu_done: Menüyü düzenlemeyi bitirdim
+    dialogs:
+      show:
+        save: Kaydet
+        cancel: İptal
+  refinery:
+    crudify:
+      created: %{what} başarıyla eklendi.
+      updated: %{what} başarıyla güncelleştirildi.
+      destroyed: %{what} başarıyla kaldırıldı.
+  shared:
+    site_bar:
+      log_out: Çıkış
+      switch_to_your_website: Sitenize geçiş yapın
+      switch_to_your_website_editor: Site düzenleyicinize geçiş yapın
+    admin:
+      continue_editing:
+        save_and_continue_editing: Kaydet & düzenlemeye devam et
+      form_actions:
+        save: Kaydet
+        cancel: İptal
+        cancel_lose_changes: İptal ederseniz, şu ana kadar yaptığınız tüm değişiklikleri kaybedeceksiniz
+        delete: Kaldır
+        close: Kapat
+      image_picker:
+        none_selected: Şu an hiçbir seçili %{what} yok, eklemek için buraya tıklayın.
+        remove_current: Şu anki %{what}'i kaldır
+        change: Resim seçmek için buraya tıklayın
+        show: Göster
+      resource_picker:
+        download_current: Mevcut dosyayı indirin
+        opens_in_new_window: Yeni bir pencerede açar
+        remove_current: "Mevcut dosyayı kaldır"
+        no_resource_selected: Şu an seçili bir dosya yok, eklemek için buraya tıklayın.
+        name: Dosya ekle
+        current: Mevcut Dosya
+      search:
+        button_text: Ara
+        results_for: '%{query}' için arama sonuçları
+        no_results: Maalesef hiçbir sonuç bulunamadı
+      delete:
+        message: ('%{title}') Bunu kaldırmak istediğinizden emin misiniz?
+      error_messages:
+        problems_in_following_fields: Aşağıdaki alanlarla ilgili sorunlar var
+      help: Yardım
+    message:
+      close: Kapat
+      close_this_message: Bu mesajı kapat
+    draft_page_message:
+      not_live: Bu sayfa kullanıcılara açık değil.
+    footer:
+      copyright: Copyright © %{year} %{site_name}
+    no_script:
+      enable_javascript: Bu sayfanın düzgün çalışması için JavaScript'i aktifleştirin.
+      here_are: Burada
+      instructions_enable_javascript: JavaScript'i internet tarayıcınızda nasıl aktifleştireceğinizle ilgili talimatlar
+  time:
+    formats:
+      default: "%a %d.%b.%y %H:%M"
+      numeric: "%d.%b.%y %H:%M"
+      short: "%e %B, %H:%M"
+      long: "%e %B %Y, %A, %H:%M"
+      time: "%H:%M"
+
+    am: "öğleden önce"
+    pm: "öğleden sonra"

@@ -1,0 +1,46 @@
+en:
+  plugins:
+    refinery_settings:
+      title: Ayarlar
+      description: Refinery ayarlarını düzenleyin
+  admin:
+    refinery_settings:
+      delete: Ayarı tamamen kaldır
+      edit: Ayarı düzenle
+      index:
+        new: Yeni ayar ekle
+        empty_set: Henüz bir ayar yok.
+        create_first: "'%{link}'e tıklayarak ilk ayarınızı ekleyin."
+      form:
+        enabled: "Evet, bu ayarı aktifleştir."
+        restart_may_be_in_order_html: Ayarların aktif olması için siteyi tekrar başlatmanız gerekebileceğini <strong>lütfen dikkate alın</strong>.
+        yes_make_this_setting_restricted: "Evet, bu ayarı sadece üst kullanıcılara özel yapın."
+        help:
+          restricted: Bu, ayarı sadece (sizin gibi) üst kullanıcılara görünür yapar.
+          activity_show_limit: Bu kontrol panelinde görülebilecek ayarların sayısını limitler.
+          analytics_page_code: Bu kod "Google Analitik"i aktifleştirir. Boş bırakılırsa, hiç bir işlem yapılmaz.
+          frontend_refinery_stylesheets_enabled: "Varsayılan olarak, Refinery kendi CSS dosyalarınızın yoluna çıkmayan önyüz CSS'leri içerir. Bunu bu ayarla aktifleştirebilir ya da kapatabilirsiniz."
+          image_dialogue_sizes: Bu ayar "Resim ekle" diyaloğu için. Bu değiştirmekle birlikte, farklı thumbnail boyutlarıda eklemelisiniz.
+          image_thumbnails: Bu ayarı değiştirirseniz, resimlerinizi yeniden oluşturmak için "rake images:regenerate"i (ya da rake images:update --eğer sadece yeni thumbnail boyutları eklediyseniz) çalıştırın. Aksi halde bu ayar varolan resimlere etki etmeyecek.
+          menu_hide_children: Bütün altsayfaları menüden gizle --varolsalar bile.
+          new_page_parts: Sayfa editörlerinde yeni sayfa parçaları (içerik bölümleri) eklemeyi aktifleştir.
+          page_title: Sayfa başlığını kurmak için kompleks ayarlar. <em>Here you can set custom CSS class or a different tag or tell it to breadcrumb with pages in its ancestry</em>.
+          pages_advanced_options_include_seo: Bu SEO seçimlerinin "Gelişmiş Ayarlar"da görünüp görünmeyeceğini kontrol eder.
+          preferred_image_view: <em>This controls which view the images plugin displays existing images in - grid for 'Grid View' and list for 'List View'. There is a button to automate this process on the images plugin itself.</em>
+          refinery_enable_backend_reordering: Bununla eklenti sıralarının yeniden düzenlenmesini kapatabilirsiniz.
+          refinery_menu_cache_action_suffix: <em>This controls the key that is used to cache the site menu. If you are using a theme then it is better to leave this as the default as the theme will handle it.</em>
+          show_contact_privacy_link: "Privacy Policy" linkinin İletişim sayfasında görünüp görünmeyeceğini buradan ayarlayabilirsiniz.
+          site_name: Bu birçok yerde kullanılacak sitenizin adı. (Sayfa başlığı, copyright kısmı, kontrol paneli gibi...)
+          theme: Aktifleştirmek istediğiniz temanın adını girin. Bu hemen aktifleşecek. Varolan bir tema yazmazsanız aktifleşmeyecek.
+          use_google_ajax_libraries: Eğer Google'ın AJAX CDN'sini kullanmak isterseniz bunu "true" yapın.
+          use_marketable_urls: /pages/about gibi adresleri /about 'e çevirin ve diğer eklentilerle oluşan çakışmaları düzenleyin.
+          use_resource_caching: <em>Recommended to enable this in production mode as it bundles javascript assets and stylesheet assets into single file packages to reduce the number of web requests on your site and speed it up.</em>
+          approximate_ascii: <em>Set this to true if you use Latin characters with accents and other diacritics in page titles. It'll convert characters like ā, č, ž into a, c, z and this way those characters won't appear strangely in the address bar of some web browsers.</em>
+  activerecord:
+    models:
+      refinery_setting: ayar
+    attributes:
+      refinery_setting:
+        name: Ad
+        value: Değer
+        restricted: Sınırlı

@@ -1,0 +1,84 @@
+en:
+  plugins:
+    refinery_pages:
+      title: Sayfalar
+      description: Ýçerik sayfalarýný yönetin
+  admin:
+    pages_dialogs:
+      page_link:
+        link_to_this_page: Bu sayfaya link ver
+      link_to:
+        insert: Ekle
+        your_page:
+          tab_name: Sayfanýz
+        web_address:
+          tab_name: Website
+          location: Yer
+          new_window: Yeni pencere
+          new_window_label: Linkin yeni bir pencerede açýlmasýný istiyorsanýz bu kutuya týklayýn.
+          not_sure: Kutuya ne koyacaðnýzdan emin deðil misiniz?
+          step1: Link vermek istediðiniz sayfayý internette bulun.
+          step2: Adresini kopyalayýn ve buraya yapýþtýrýn.
+        email_address:
+          tab_name: Email adresi
+          subject_line_optional: Ýsteðe baðlý konu
+          body_optional: Ýsteðe baðlý body
+          not_sure: Kutulara ne koyacaðnýzdan emin deðil misiniz?
+          step1_html: Link vermek istediðiniz email adresini yukarýdaki '<strong>Email Adresi</strong>' kutusuna yazýn yada yapýþtýrýn.
+          step2_html: '<strong>Konu satýrý</strong>' kutusuna istediðiniz email konusunu yazýn --eðer mesajýn <strong>hazýr bir konu satýrý</strong> ile hazýrlanmasýný istiyorsanýz.
+          step3_html: '<strong>Mesaj</strong>' kutusuna istediðiniz mesajý yazýn --eðer emailin <strong>hazýr bir mesaj</strong> ile hazýrlanmasýný istiyorsanýz.
+        your_resource:
+          tab_name: Dosyanýz
+          link_to_this_resource: Dosyaya link ver
+    pages:
+      delete: Sayfayý tamamen kaldýr
+      edit: Sayfayý düzenle
+      reserved_system_word: "Üzgünüz, ama bu baþlýk kullanýlan bir sistem kelimesi"
+      page:
+        view_live_html: Bu sayfayý canlý görüntüleyin <br/><em>yeni bir pencere açar<em>
+        hidden: gizli
+        draft: taslak
+      form_new_page_parts:
+        title: Baþlýk
+      form_page_parts:
+        create_content_section: Ýçerik bölümü ekleyin
+        delete_content_section: Ýçerik bölümünü silin
+      form_advanced_options:
+        toggle_advanced_options: Meta tag ve menü seçeneklerine eriþin
+        page_options: Sayfa seçenekleri
+        parent_page: Üst sayfa
+        advanced_options: Geliþmiþ Seçenekler
+        custom_title: Özel Baþlýk
+        title_types:
+          none: Hiçbir þey
+          text: Metin
+        show_in_menu_title: Menüde göster
+        show_in_menu_description: Bu sayfayý site menüsünde göster
+        show_in_menu_help: Site menüsünden bir sayfayý kaldýrmak istiyorsanýz, bu kutunun iþaretini kaldýrýn. Bu eðer bir sayfaya direk link vermek istiyor ama menüde görünmesini istemiyorsanýz yardýmcý olabilir.
+        save_as_draft: Taslak olarak kaydet
+        skip_to_first_child: Üst-seviye sayfayý geç
+        skip_to_first_child_label: Ziyeratçileri ilk alt-seviye sayfaya yönlendir
+        skip_to_first_child_help: Bu seçenek bu sayfanýn altýndaki ilk sayfaya yönlendirilmesini saðlar. Bu sayfalarý gruplandýrýrken yardýmcý olabilir.
+        link_url: Bu sayfayý baþka bir sayfa ve ya siteye yönlendir
+        link_url_help: Eðer bu sayfanýn menüde týklandýðýnda baþka bir sayfaya yada siteye gitmesini istiyorsanýz bir URL girin. Örneðin; http://google.com aksi takdirde boþ býrakýn.
+        parent_page_help: Bir sayfayý baþka bir sayfanýn altýna bu listeden seçerek koyabilirsiniz. Bu sayfanýn üst seviyede olmasýný istiyorsanýz, boþ býrakýn.
+        custom_title_help: Eðer sayfanýn yukarýda görülenden farklý bir baþlýðý olmasýný istiyorsanýz &apos;Metin&apos;i seçin ve buraya girin.
+      form_advanced_options_seo:
+        seo: Arama Motoru Optimizasyonu
+        seo_override_title: Tarayýcý baþlýðý
+        seo_override_title_help: Sayfanýn içeriðini özetleyen, 5-10 kelimelik bir baþlýk girin.
+        meta_keywords_title: Meta anahtar kelimeleri
+        meta_keywords_help: Sayfayla ilgili 5-10 anahtar kelime girin. Anahtar kelimeleri virgülle ayýrýn.
+        meta_description_title: Meta açýklamasý
+        meta_description_help: Bu sayfanýn ne ile ilgili olduðunu özetleyen net ve öz 2-3 cümle yazýn.
+      index:
+        create_new_page: Yeni sayfa ekle
+        reorder_pages: Sayfa sýralarýný yeniden düzenle
+        reorder_pages_done: Düzenlemeyi bitir
+        no_pages_yet: Henüz hiçbir sayfa yok. "Yeni sayfa ekle" ile ilk sayfanýzý ekleyin.
+  activerecord:
+    models:
+      page: sayfa
+    attributes:
+      page:
+        title: Baþlýk

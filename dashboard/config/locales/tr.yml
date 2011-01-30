@@ -1,0 +1,25 @@
+en:
+  plugins:
+    refinery_dashboard:
+      title: Kontrol Paneli
+      description: Refinery'deki olaylarýný özetini verir
+  admin:
+    dashboard:
+      index:
+        quick_tasks: Kýsayollar
+        add_a_new_page: Yeni sayfa ekle
+        update_a_page: Sayfa güncelle
+        upload_a_image: Resim yükle
+        upload_a_file: Dosya yükle
+        change_language: Dili deðiþtir
+        see_home_page: Anasayfaya bak
+      recent_activity:
+        empty: Son zamanlarda herhangi bir faaliyet olmadý.
+        latest_activity: Son faaliyetler
+        latest_activity_message: %{what} (%{kind}) %{action}
+      recent_inquiries:
+        latest_inquiries: Son mesajlar
+  updated:
+    'with_article "the"': güncellendi
+  created:
+    'with_article "the"': eklendi

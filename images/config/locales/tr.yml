@@ -1,0 +1,41 @@
+en:
+  plugins:
+    refinery_images:
+      title: Resimleri
+      description: Resimleri yönet
+  admin:
+    images:
+      delete: Resmi tamamen kaldýr
+      edit: Resmi düzenle
+      form:
+        image: Resim
+        use_current_image: Mevcut resmi kullan
+        or: ya da
+        replace_image: " bununla deðiþtir..."
+        current_image: Mevcut Resim
+        maximum_image_size: Maksimum resim boyutu: %{megabytes} MB.
+      index:
+        create_new_image: Yeni resim ekle
+        no_images_yet: Henüz bir resim yok. "Yeni resim ekle"ye týklayarak ilk resminizi ekleyin.
+        view:
+          switch_to: %{view_name} görünüþüne deðiþtir
+          list: Liste
+          grid: Grid
+      grid_view:
+        view_live_html: Resme bak <br/><em>Yeni pencerede açar</em>
+      existing_image:
+        button_text: Ekle
+        resize_image: Yeniden boutlandýr?
+        size: Boyut
+      insert:
+        existing_image: Kütüphane
+        new_image: Yükle
+  activerecord:
+    models:
+      image: resim
+    errors:
+      models:
+        image:
+          blank: Yüklemek için bir resim seçmelisiniz
+          too_long: Resmin boyutu en fazla %{count} olabilir
+          incorrect_format: 'Resim JPG, PNG yada GIF olmalý'
