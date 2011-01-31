@@ -78,7 +78,7 @@ nb:
         no_pages_yet: Det er ingen sider her enda. Klikk på "Legg til ny side" for å legge til din første side.
   activerecord:
     models:
-      page: site
+      page: side
     attributes:
       page:
         title: Tittel
