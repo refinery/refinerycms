@@ -39,7 +39,7 @@
   if (paginate ||= {}).length > 0 && paginate.keys.include?(:collection)
     paginate_collection = paginate.delete(:collection)
   end
-  paginate.delete(:url)
+  paginate.delete(:url) # We used to have a LinkRenderer that did this
 -%>
 <% if from_dialog? %>
 <input type='hidden' name='modal' value='true' />
@@ -57,15 +57,13 @@
     <%= render :partial => "/shared/admin/continue_editing", :locals => {:f => f} if continue_editing -%>
     <%= hidden_field_tag :continue_editing, false if continue_editing %>
 
-    <%= link_to(cancel_button_text,
-                cancel_url,
+    <%= link_to(cancel_button_text, cancel_url,
                 :title => cancel_title,
                 :id => cancel_button_id,
                 :class => "close_dialog button") unless hide_cancel %>
   </div>
   <div class='form-actions-right'>
-    <%= link_to(delete_button_text,
-                delete_url,
+    <%= link_to(delete_button_text, delete_url,
                 :title => delete_title,
                 :id => delete_button_id,
                 :method => :delete,
