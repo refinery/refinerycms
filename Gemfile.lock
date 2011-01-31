@@ -135,7 +135,7 @@ GEM
       rake (>= 0.8.7)
       thor (~> 0.14.4)
     rake (0.8.7)
-    rdoc (3.4)
+    rdoc (3.5.1)
     refinerycms-generators (0.9.9)
       refinerycms (>= 0.9.9)
     refinerycms-i18n (0.9.9.7)
