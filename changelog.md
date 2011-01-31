@@ -3,6 +3,7 @@
 * Added `:per_page` option to `crudify` for overriding the number of items to display per page with will_paginate. [Josef Šimánek](https://github.com/simi)
 * Deprecated `rake refinery:update` in favour of rails `generate refinerycms --update`. [Philip Arndt](https://github.com/parndt)
 * Added `--skip-db` option to `bin/refinerycms` installer which doesn't automate any database creation/migration and skips the `rails generate refinerycms` generator. [Philip Arndt](https:/github.com/parndt)
+* Exchanged (help) links for the information.png 'refinery icon'. This will happen automatically if you used `refinery_help_tag`. [Philip Arndt](https://github.com/parndt)
 * [See full list](https://github.com/resolve/refinerycms/compare/0.9.9.6...0.9.9.7)
 
 ## 0.9.9.6 [7 March 2011]
