@@ -9,10 +9,10 @@ sv:
         quick_tasks: Genvägar
         add_a_new_page: Lägg till en ny sida
         update_a_page: Redigera en sida
-        upload_a_image: Ladda up en bild
+        upload_a_image: Ladda upp en bild
         upload_a_file: Ladda upp en fil
         change_language: Välj språk
-        see_home_page: Se första sidan
+        see_home_page: Se förstasidan
       recent_activity:
         empty: Det har inte varit någon aktivitet på senare tid.
         latest_activity: Senaste aktivitet
