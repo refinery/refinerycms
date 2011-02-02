@@ -1276,7 +1276,7 @@ WYMeditor.editor.prototype.dialog = function( dialogType ) {
 
   if (dialogType == WYMeditor.DIALOG_LINK && $.browser.mozilla) {
     selection = wym._iframe.contentWindow.getSelection();
-    matches = $($(selected).html().match(new RegExp(selection.anchorNode.textContent + "(.*)" + selection.focusNode.textContent)));
+    matches = $($(selected).html().match(new RegExp(RegExp.escape(selection.anchorNode.textContent) + "(.*)" + RegExp.escape(selection.focusNode.textContent))));
     if (matches != null && matches.length > 0 && (possible_anchor_tag = matches.last()).length > 0)
     {
       if (((href_matches = possible_anchor_tag.get(0).match(/href="([^"]*)"/)) != null) && (href = $(href_matches).last().get(0)) != null)
@@ -5139,4 +5139,9 @@ WYMeditor.WymClassSafari.prototype.getTagForStyle = function(style) {
   if(/sub/.test(style)) return 'sub';
   if(/super/.test(style)) return 'sup';
   return false;
+};
+
+// from http://simonwillison.net/2006/Jan/20/escape/#p-6
+RegExp.escape = function(text) {
+  return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
 };
