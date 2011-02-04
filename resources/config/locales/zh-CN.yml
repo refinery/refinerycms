@@ -30,5 +30,5 @@ zh-CN:
     errors:
       models:
         resource:
-          blank: 你必须选择一个文件来上传
+          blank: 您必须选择一个文件来上传
           too_long: 文件应该小于 %{count} 大小

@@ -51,13 +51,13 @@ zh-CN:
         name: 添加文件
         current: 当前文件
       search:
-        button_text: 查询
-        results_for: 查询 '%{query}' 的结果
+        button_text: 搜索
+        results_for: 搜索 '%{query}' 的结果
         no_results: 对不起, 没有找到结果
       delete:
         message: 您确认要删除 '%{title}'?
       error_messages:
-        problems_in_following_fields: 一下字段存在问题
+        problems_in_following_fields: 以下字段存在问题
       help: 帮助
     message:
       close: 关闭

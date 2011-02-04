@@ -24,11 +24,11 @@ zh-CN:
           subject_line_optional: 可选的主题
           body_optional: 可选的内容
           not_sure: 不确定放什么东西到上面那些方框?
-          step1_html: 输入或复制然后粘贴 (例如从你的通讯录) email 地址用来连接到上面方框的 '<strong>邮件地址</strong>'.
-          step2_html: 如果你想使用 <strong>预写的标题列</strong> 来编辑信息, 请使用上面的 '<strong>标题列</strong>' 方框.
-          step3_html: 如果你想使用 <strong>预写的信息</strong> 来编辑信息, 请使用上面的 <strong>Email 内容</strong> 方框.
+          step1_html: 输入或复制然后粘贴 (例如从您的通讯录) email 地址用来连接到上面方框的 '<strong>邮件地址</strong>'.
+          step2_html: 如果您想使用 <strong>预写的标题列</strong> 来编辑信息, 请使用上面的 '<strong>标题列</strong>' 方框.
+          step3_html: 如果您想使用 <strong>预写的信息</strong> 来编辑信息, 请使用上面的 <strong>Email 内容</strong> 方框.
         your_resource:
-          tab_name: 你的文件
+          tab_name: 您的文件
           link_to_this_resource: 连接到此文件
     pages:
       delete: 永久删除此页面
@@ -54,7 +54,7 @@ zh-CN:
           text: 文字
         show_in_menu_title: 在菜单中显示
         show_in_menu_description: 在网站菜单中显示这个页面
-        show_in_menu_help: 如果你想在网站菜单中去除一个页面, 不勾选这个选项. 如果你想有个可以直接访问的页面但又不想显示在菜单里, 这个很方便的选项.
+        show_in_menu_help: 如果您想在网站菜单中去除一个页面, 不勾选这个选项. 如果您想有个可以直接访问的页面但又不想显示在菜单里, 这个很方便的选项.
         save_as_draft: 另存为草稿
         skip_to_first_child: 跳过第一层页面
         skip_to_first_child_label: 重定向浏览者到第一个子层页.
