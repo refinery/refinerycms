@@ -970,7 +970,6 @@ WYMeditor.editor.prototype.exec = function(cmd) {
 
     case WYMeditor.APPLY_CLASS:
       wym = this;
-      wym.toggleClassSelector();
       // determine whether any classes are already selected and add the enabled class to them.
       $(wym._box).find(this._options.classUnhiddenSelector).find("a[name]").each(function(index, rule){
         if ($(wym.selected()).hasClass($(rule).attr('name'))) {
@@ -1084,11 +1083,21 @@ WYMeditor.editor.prototype.toggleClass = function(sClass, jqexpr) {
 WYMeditor.editor.prototype.toggleClassSelector = function() {
   // substring(1) to remove the . at the start
   var wym = this;
-  $(wym._box).find(wym._options.classUnhiddenSelector)
-             .toggleClass(wym._options.classHiddenSelector.substring(1));
+  var disabled = $(wym._box).find(wym._options.classUnhiddenSelector)
+                            .hasClass(wym._options.classHiddenSelector.substring(1));
+  if (disabled) {
+    $(wym._box).find(wym._options.classUnhiddenSelector)
+               .removeClass(wym._options.classHiddenSelector.substring(1));
 
-  $(wym._box).find("a[name=" + WYMeditor.APPLY_CLASS +"]")
-             .toggleClass('selected').parent().toggleClass('activated');
+    $(wym._box).find("a[name=" + WYMeditor.APPLY_CLASS +"]")
+               .addClass('selected').parent().addClass('activated');
+  } else {
+    $(wym._box).find(wym._options.classUnhiddenSelector)
+               .addClass(wym._options.classHiddenSelector.substring(1));
+
+    $(wym._box).find("a[name=" + WYMeditor.APPLY_CLASS +"]")
+               .removeClass('selected').parent().removeClass('activated');
+  }
 }
 
 /* @name removeClass
