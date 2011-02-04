@@ -60,7 +60,7 @@ zh-CN:
         problems_in_following_fields: 一下字段存在问题
       help: 帮助
     message:
-      close: Close
+      close: 关闭
       close_this_message: 关闭这条信息
     draft_page_message:
       not_live: 这个页面不能够被公开访问.
