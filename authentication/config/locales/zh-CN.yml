@@ -18,7 +18,7 @@ zh-CN:
         create_new_user: 添加新用户
       user:
         email_user: 发邮件到此用户
-        preview: (%{who}) 添加了 %{created_at}
+        preview: (%{who}) 添加于 %{created_at}
   sessions:
     new:
       hello_please_sign_in: 您好! 请登录.
