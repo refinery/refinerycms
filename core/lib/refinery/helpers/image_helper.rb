@@ -30,7 +30,7 @@ module Refinery
           # if the geomtry is nil, then we know the image height and width already.
           # detect nil geometry or cropping presence which is where we can guess the dimensions
           unless geometry.nil? or !(split_geometry = geometry.to_s.split('#')).many? or !(split_geometry = split_geometry.first.split('x')).many?
-            image_width, image_height = split_geometry.first.split('x')
+            image_width, image_height = split_geometry
           else
             image_with = nil
             image_height = nil
