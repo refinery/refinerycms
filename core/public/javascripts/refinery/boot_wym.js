@@ -245,10 +245,11 @@ WYMeditor.editor.prototype.loadIframe = function(iframe) {
     doc.write(html);
     doc.close();
 
+    var doc_head = doc.head || $(doc).find('head').get(0);
     $.each(["wymeditor/skins/refinery/wymiframe", "formatting", "refinery/theme", "theme"], function(i, href) {
-      $("<link href='/stylesheets/" + href + ".css' media='all' rel='stylesheet' />").appendTo(doc.head);
+      $("<link href='/stylesheets/" + href + ".css' media='all' rel='stylesheet' />").appendTo(doc_head);
     });
-    $("<script src='/javascripts/modernizr-min.js'></script>").appendTo(doc.head);
+    $("<script src='/javascripts/modernizr-min.js'></script>").appendTo(doc_head);
   }
   if ((id_of_editor = wym._element.parent().attr('id')) != null) {
     $(doc.body).addClass(id_of_editor);
