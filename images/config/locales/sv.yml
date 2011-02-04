@@ -15,8 +15,8 @@ sv:
         current_image: Denna bild
         maximum_image_size: Maximal filstorlek för bilden är %{megabytes} megabytes.
       index:
-        create_new_image: Lägg till ny bild
-        no_images_yet: Det finns inga bilder än. Klicka på Lägg till bild för att ladda upp en bild.
+        create_new_image: Ladda upp en bild
+        no_images_yet: Det finns inga bilder än. Klicka på "Ladda upp en bild" för att ladda upp en bild.
         view:
           switch_to: Byt till %{view_name} vyn
           list: lista
