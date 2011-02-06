@@ -180,12 +180,35 @@ module Refinery
         puts "Please choose another name for your new project."
         puts "\n"
         exit(1)
-      elsif @app_path.directory? and @options[:force] == false and @options[:update] == false
+      elsif @app_path.directory? && !@options[:force] && !@options[:update]
         puts "\nThe directory '#{@app_path}' that you specified already exists."
         puts "Use --force to overwrite an existing directory."
         puts "Use --update to replace any Refinery CMS files in an existing installation."
         puts "\n"
         exit(1)
+      elsif @options[:heroku]
+        if @options[:heroku].to_s.include?('_') or @options[:heroku].to_s.length > 30
+          message = ["\nThe application name '#{@options[:heroku]}' that you specified is invalid for Heroku."]
+          suggested_name = @options[:heroku].to_s
+          if suggested_name.include?('_')
+            message << "This is because it contains underscores which Heroku does not allow."
+            suggested_name.gsub!(/_/, '-')
+          end
+          if suggested_name.length > 30
+            message << "This is#{" also" unless suggested_name.nil?} because it is longer than 30 characters."
+            suggested_name = suggested_name[0..29]
+          end
+
+          if @options[:force] or @options[:confirm]
+            @options[:heroku] = suggested_name
+          else
+            message << "Please choose another name like '#{suggested_name}'"
+            message << "Or use --confirm to automatically use '#{suggested_name}'"
+            message << "\n"
+            puts message.join("\n")
+            exit(1)
+          end
+        end
       elsif @app_path.join('.git').directory? && @options[:update] && !@options[:confirm]
         git_status = run_command('git status --porcelain', :puts => false)
         if git_status.to_s.strip.length > 0
