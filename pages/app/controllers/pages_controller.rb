@@ -16,8 +16,7 @@ class PagesController < ApplicationController
   #   GET /about/mission
   #
   def show
-    # Find the page by the newer 'path' or fallback to the page's id if no path.
-    @page = Page.find(params[:path] ? params[:path].to_s.split('/').last : params[:id])
+    @page = Page.find(params[:path].to_s.split('/').last)
 
     if @page.try(:live?) or (refinery_user? and current_user.authorized_plugins.include?("refinery_pages"))
       # if the admin wants this to be a "placeholder" page which goes to its first child, go to that instead.
