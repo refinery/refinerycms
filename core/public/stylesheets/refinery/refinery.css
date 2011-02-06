@@ -1478,6 +1478,9 @@ input.button.close_dialog:active, a.button.close_dialog:active, #content a.butto
   position: relative;
   padding-left: 5px;
 }
+a.information:hover {
+  background: #22a7f2;
+}
 
 /* dubiously in here */
 .current_image_link {
