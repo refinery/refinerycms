@@ -50,6 +50,7 @@ Gem::Specification.new do |s|
   s.add_dependency    'rdoc',                        '>= 2.5.11' # helps fix ubuntu
   s.add_dependency    'truncate_html',               '~> 0.5'
   s.add_dependency    'will_paginate',               '~> 3.0.pre'
+  s.add_dependency    'refinerycms-generators',      '~> 0.9'
 
   s.add_development_dependency 'rspec-rails',        '~> 2.3'
   # Cucumber
