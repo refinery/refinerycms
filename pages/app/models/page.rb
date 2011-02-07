@@ -148,7 +148,8 @@ class Page < ActiveRecord::Base
   end
 
   def url_normal
-    {:controller => "/pages", :action => "show", :id => to_param}
+    # :id => nil is important to prevent any other params[:id] from interfering with this route.
+    {:controller => "/pages", :action => "show", :path => to_param, :id => nil}
   end
 
   # Returns an array with all ancestors to_param, allow with its own
