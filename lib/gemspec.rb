@@ -52,7 +52,7 @@ Gem::Specification.new do |s|
   s.add_dependency    'will_paginate',               '~> 3.0.pre'
   s.add_dependency    'refinerycms-generators',      '~> 0.9.9.3'
 
-  s.add_development_dependency 'rspec-rails',        '~> 2.3'
+  s.add_development_dependency 'rspec-rails',        '~> 2.5'
   # Cucumber
   s.add_development_dependency 'capybara',           '>= 0.4.1.1'
   s.add_development_dependency 'database_cleaner'
