@@ -184,7 +184,8 @@ DEPENDENCIES
   autotest
   autotest-notification
   autotest-rails
-  capybara
+  capybara (>= 0.4.1.1)
+  cucumber
   cucumber-rails
   database_cleaner
   factory_girl
@@ -194,7 +195,7 @@ DEPENDENCIES
   rack-test (~> 0.5.6)
   refinerycms!
   refinerycms-i18n (~> 0.9)
-  rspec-rails (= 2.3)
+  rspec-rails (~> 2.3)
   ruby-prof
   spork
   sqlite3
