@@ -10,7 +10,7 @@ class Page < ActiveRecord::Base
 
   # Docs for friendly_id http://github.com/norman/friendly_id
   has_friendly_id :title, :use_slug => true,
-                  :default_locale => (defined?(::Refinery::I18n.default_frontend_locale) ? ::Refinery::I18n.default_frontend_locale : :en),
+                  :default_locale => (::Refinery::I18n.default_frontend_locale rescue :en),
                   :reserved_words => %w(index new session login logout users refinery admin images wymiframe),
                   :approximate_ascii => RefinerySetting.find_or_set(:approximate_ascii, false, :scoping => "pages")
 
@@ -118,7 +118,7 @@ class Page < ActiveRecord::Base
   def url
     if link_url.present?
       link_url_localised?
-    elsif use_marketable_urls?
+    elsif self.class.use_marketable_urls?
       url_marketable
     elsif to_param.present?
       url_normal
@@ -160,7 +160,11 @@ class Page < ActiveRecord::Base
   # Returns the string version of nested_url, i.e., the path that should be generated
   # by the router
   def nested_path
-    @nested_path ||= ['', nested_url].join('/')
+    Rails.cache.fetch(path_cache_key) { ['', nested_url].join('/') }
+  end
+
+  def path_cache_key
+    [cache_key, 'nested_path'].join('#')
   end
 
   def url_cache_key
@@ -169,10 +173,6 @@ class Page < ActiveRecord::Base
 
   def cache_key
     [Refinery.base_cache_key, super].join('/')
-  end
-
-  def use_marketable_urls?
-    RefinerySetting.find_or_set(:use_marketable_urls, true, :scoping => 'pages')
   end
 
   # Returns true if this page is "published"
@@ -205,6 +205,10 @@ class Page < ActiveRecord::Base
     # Returns how many pages per page should there be when paginating pages
     def per_page(dialog = false)
       dialog ? PAGES_PER_DIALOG : PAGES_PER_ADMIN_INDEX
+    end
+
+    def use_marketable_urls?
+      RefinerySetting.find_or_set(:use_marketable_urls, true, :scoping => 'pages')
     end
   end
 
@@ -252,7 +256,7 @@ class Page < ActiveRecord::Base
   # Returns the sluggified string
   def normalize_friendly_id(slug_string)
     sluggified = super
-    if use_marketable_urls? && self.class.friendly_id_config.reserved_words.include?(sluggified)
+    if self.class.use_marketable_urls? && self.class.friendly_id_config.reserved_words.include?(sluggified)
       sluggified << "-page"
     end
     sluggified
@@ -261,9 +265,10 @@ class Page < ActiveRecord::Base
   private
 
   def invalidate_child_cached_url
-    return true unless use_marketable_urls?
+    return true unless self.class.use_marketable_urls?
     children.each do |child|
       Rails.cache.delete(child.url_cache_key)
+      Rails.cache.delete(child.path_cache_key)
     end
   end
 end
