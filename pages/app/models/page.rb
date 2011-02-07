@@ -96,14 +96,6 @@ class Page < ActiveRecord::Base
   # Used for the browser title to get the full path to this page
   # It automatically prints out this page title and all of it's parent page titles joined by a PATH_SEPARATOR
   def path(options = {})
-    # Handle deprecated boolean
-    if [true, false].include?(options)
-      warning = "Page::path does not want a boolean (you gave #{options.inspect}) anymore. "
-      warning << "Please change this to {:reversed => #{options.inspect}}. "
-      warn(warning << "\nCalled from #{caller.first.inspect}")
-      options = {:reversed => options}
-    end
-
     # Override default options with any supplied.
     options = {:reversed => true}.merge(options)
 
@@ -144,12 +136,11 @@ class Page < ActiveRecord::Base
 
   def url_marketable
     # :id => nil is important to prevent any other params[:id] from interfering with this route.
-    {:controller => "/pages", :action => "show", :path => nested_url, :id => nil}
+    {:controller => '/pages', :action => 'show', :path => nested_url, :id => nil}
   end
 
   def url_normal
-    # :id => nil is important to prevent any other params[:id] from interfering with this route.
-    {:controller => "/pages", :action => "show", :path => to_param, :id => nil}
+    {:controller => '/pages', :action => 'show', :path => nil, :id => to_param}
   end
 
   # Returns an array with all ancestors to_param, allow with its own
@@ -169,15 +160,15 @@ class Page < ActiveRecord::Base
   # Returns the string version of nested_url, i.e., the path that should be generated
   # by the router
   def nested_path
-    @nested_path ||= "/#{nested_url.join('/')}"
+    @nested_path ||= ['', nested_url].join('/')
   end
 
   def url_cache_key
-    "#{cache_key}#nested_url"
+    [cache_key, 'nested_url'].join('#')
   end
 
   def cache_key
-    "#{Refinery.base_cache_key}/#{super}"
+    [Refinery.base_cache_key, super].join('/')
   end
 
   def use_marketable_urls?
@@ -215,12 +206,6 @@ class Page < ActiveRecord::Base
     def per_page(dialog = false)
       dialog ? PAGES_PER_DIALOG : PAGES_PER_ADMIN_INDEX
     end
-
-    # Returns all the top level pages, usually to render the top level navigation.
-    def top_level
-      warn("Please use .live.in_menu instead of .top_level")
-      roots.where(:show_in_menu => true, :draft => false)
-    end
   end
 
   # Accessor method to get a page part from a page.
@@ -248,11 +233,11 @@ class Page < ActiveRecord::Base
 
   # In the admin area we use a slightly different title to inform the which pages are draft or hidden pages
   def title_with_meta
-    title = self.title.to_s
-    title << " <em>(#{::I18n.t('hidden', :scope => 'admin.pages.page')})</em>" unless show_in_menu?
-    title << " <em>(#{::I18n.t('draft', :scope => 'admin.pages.page')})</em>" if draft?
+    title = [self.title.to_s]
+    title << "<em>(#{::I18n.t('hidden', :scope => 'admin.pages.page')})</em>" unless show_in_menu?
+    title << "<em>(#{::I18n.t('draft', :scope => 'admin.pages.page')})</em>" if draft?
 
-    title.strip
+    title.join(' ')
   end
 
   # Used to index all the content on this page so it can be easily searched.
@@ -280,12 +265,5 @@ class Page < ActiveRecord::Base
     children.each do |child|
       Rails.cache.delete(child.url_cache_key)
     end
-  end
-
-  def warn(msg)
-    warning = ["\n*** DEPRECATION WARNING ***"]
-    warning << "#{msg}"
-    warning << ""
-    $stdout.puts warning.join("\n")
   end
 end
