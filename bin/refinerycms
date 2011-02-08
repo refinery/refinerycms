@@ -136,10 +136,13 @@ module Refinery
       end
 
       # Run the newly activated Refinery CMS generator.
-      run_command("rails generate refinerycms#{' --update' if @options[:update]}", {:cd => true})
+      run_command("rails generate refinerycms#{' --update' if @options[:update]}", {
+        :cd => true,
+        :fail => "Could not run the refinerycms generator successfully."
+      })
 
       # Run the update task if we're updating
-      run_command("rake refinery:update", {:cd => true}) if @options[:update]
+      run_command("rake refinery:update", {:cd => true, :fail => "refinery:update rake task failed."}) if @options[:update]
 
       # Output helpful messages to user
       output!
@@ -343,18 +346,10 @@ module Refinery
       puts "Installing gem requirements using bundler..\n"
 
       # Ensure RefineryCMS is up to date if we're updating
-      run_command("bundle update refinerycms refinerycms-generators") if @options[:update]
+      run_command("bundle update refinerycms refinerycms-generators", {:fail => "Unable to update core gems"}) if @options[:update]
 
       # Install!
-      run_command("bundle install")
-      if !$?.success?
-        puts "Unable to install necessary gems!"
-        unless @options[:update]
-          puts "Removing #{@app_path}!"
-          FileUtils.rm_rf @app_path
-        end
-        exit 1
-      end
+      run_command("bundle install", {:fail => "Unable to install necessary gems"})
     end
 
     def output!
@@ -405,7 +400,7 @@ module Refinery
     private :validate!, :generate!, :bundle!, :output!
 
     def run_command(command, options = {})
-      options = {:cd => true, :puts => true}.merge(options)
+      options = {:cd => true, :puts => true, :fail => nil}.merge(options)
       to_run = %w()
       to_run << "cd \"#{@app_path}\" &&" if options[:cd]
       to_run << command
@@ -429,7 +424,14 @@ module Refinery
         output << `#{to_run}`
       end
 
-      output.join("\n")
+      if $?.success? or options[:fail].nil?
+        output.join("\n")
+      else
+        puts "\nFailed to generate application."
+        puts "Message: #{options[:fail]}" unless options[:fail].nil?
+        puts "Exiting...\n\n"
+        exit(1)
+      end
     end
 
     def find_and_replace(file, find, replace)
