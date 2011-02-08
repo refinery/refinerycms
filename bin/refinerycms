@@ -347,6 +347,12 @@ module Refinery
 
       # Install!
       run_command("bundle install")
+      if $? != 0
+        puts "Unable to install necessary gems!"
+        puts "Removing #{@app_path}!"
+        FileUtils.rm_rf @app_path
+        exit 1
+      end
     end
 
     def output!
