@@ -14,7 +14,8 @@ rejection_patterns = [
   "(^log|\.log)$",
   "\.rbc$",
   "^tmp(|/.+?)$",
-  ".gem$"
+  ".gem$",
+  "^doc($|\/)"
 ]
 
 files.reject! do |f|
