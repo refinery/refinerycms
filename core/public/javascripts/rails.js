@@ -1,6 +1,6 @@
 /*
-  Taken from http://github.com/parndt/jquery-ujs
-  At version http://github.com/parndt/jquery-ujs/blob/15ad6d2c5680f23879faf260ac6bd7e210cd4fed/src/rails.js
+  Taken from http://github.com/rails/jquery-ujs
+  At version http://github.com/rails/jquery-ujs/blob/443de05134eebb27f5e18b43cb3ca0088b3a86b3/src/rails.js
   (Because that was the current master version)
 */
 
@@ -12,15 +12,31 @@
  */
 
 (function($) {
+	// Make sure that every Ajax request sends the CSRF token
+	function CSRFProtection(fn) {
+		var token = $('meta[name="csrf-token"]').attr('content');
+		if (token) fn(function(xhr) { xhr.setRequestHeader('X-CSRF-Token', token) });
+	}
+	if ($().jquery == '1.5') { // gruesome hack
+		var factory = $.ajaxSettings.xhr;
+		$.ajaxSettings.xhr = function() {
+			var xhr = factory();
+			CSRFProtection(function(setHeader) {
+				var open = xhr.open;
+				xhr.open = function() { open.apply(this, arguments); setHeader(this) };
+			});
+			return xhr;
+		};
+	}
+	else $(document).ajaxSend(function(e, xhr) {
+		CSRFProtection(function(setHeader) { setHeader(xhr) });
+	});
+
 	// Triggers an event on an element and returns the event result
 	function fire(obj, name, data) {
 		var event = new $.Event(name);
 		obj.trigger(event, data);
 		return event.result !== false;
-	}
-
-	function appendCsrfToken(xhr){
-	  xhr.setRequestHeader('X-CSRF-Token', $('meta[name=csrf-token]').attr('content'));
 	}
 
 	// Submits "remote" forms and links with ajax
@@ -51,7 +67,6 @@
 				if (settings.dataType === undefined) {
 					xhr.setRequestHeader('accept', '*/*;q=0.5, ' + settings.accepts.script);
 				}
-				appendCsrfToken(xhr);
 				return fire(element, 'ajax:beforeSend', [xhr, settings]);
 			},
 			success: function(data, status, xhr) {
@@ -156,11 +171,4 @@
 	$('form').live('ajax:complete.rails', function(event) {
 		if (this == event.target) enableFormElements($(this));
 	});
-
-	$.ajaxSetup({
-	  beforeSend: function(xhr){
-      appendCsrfToken(xhr);
-    }
-  });
 })( jQuery );
-
