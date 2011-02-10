@@ -1,10 +1,17 @@
-require 'refinery'
+require 'devise'
+require 'refinerycms-core'
 
 module Refinery
   module Authentication
 
     class Engine < Rails::Engine
       config.autoload_paths += %W( #{config.root}/lib )
+
+      config.to_prepare do
+        [::ApplicationController, ::Admin::BaseController].class_eval do |c|
+          c.send :include, AuthenticatedSystem if defined?(c)
+        end
+      end
 
       config.after_initialize do
         Refinery::Plugin.register do |plugin|

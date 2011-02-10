@@ -1,4 +1,4 @@
-require 'refinery'
+require 'refinerycms-core'
 require 'awesome_nested_set'
 require 'globalize3'
 

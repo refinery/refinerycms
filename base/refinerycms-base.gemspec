@@ -1,5 +1,4 @@
-require File.expand_path(File.join(*%w[.. .. lib refinery.rb]), __FILE__)
-version = Refinery.version
+version = '0.9.9'
 
 Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY

@@ -1,6 +1,8 @@
 # require application helper so that we can include our helpers into it.
-if defined?(Rails) and !Rails.root.nil? and (app_helper = Rails.root.join('app', 'helpers', 'application_helper.rb')).file?
-  require app_helper.to_s
+if defined?(Rails) and !Rails.root.nil?
+  if (app_helper = Rails.root.join('app', 'helpers', 'application_helper.rb')).file?
+    require app_helper.to_s
+  end
 end
 
 module Refinery
@@ -9,10 +11,12 @@ module Refinery
       def refine!
         ::ApplicationHelper.send :include, ::Refinery::ApplicationHelper
 
+        $stdout.puts "app inject"
         [::ApplicationController, ::Admin::BaseController].each do |c|
           c.send :include, ::Refinery::ApplicationController
           c.send :helper, :application
         end
+        $stdout.puts "after app inject"
 
         ::Admin::BaseController.send :include, ::Refinery::Admin::BaseController
       end

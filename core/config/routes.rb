@@ -14,10 +14,6 @@
 
   match '/sitemap.xml' => 'sitemap#index', :defaults => { :format => 'xml' }
 
-  # bug fix for the invalid resource path on nginx
-  match '/system/images/*dragonfly', :to => Dragonfly[:images]
-  match '/system/resources/*dragonfly', :to => Dragonfly[:resources]
-
   # Marketable URLs should be appended to routes by the Pages Engine.
   # Catch all routes should be appended to routes by the Core Engine.
 end
