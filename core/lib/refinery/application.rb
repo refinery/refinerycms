@@ -1,10 +1,3 @@
-# require application helper so that we can include our helpers into it.
-if defined?(Rails) and !Rails.root.nil?
-  if (app_helper = Rails.root.join('app', 'helpers', 'application_helper.rb')).file?
-    require app_helper.to_s
-  end
-end
-
 module Refinery
   module Application
     class << self
@@ -41,12 +34,6 @@ module Refinery
         base.config.cache_store = :memory_store
 
         # Include the refinery controllers and helpers dynamically
-        base.config.before_initialize do
-          ::Refinery::Application.refine!
-        end
-
-        # This may seem like duplication but we need to do this in both steps
-        # For development mode and for production mode.
         base.config.to_prepare do
           ::Refinery::Application.refine!
         end
