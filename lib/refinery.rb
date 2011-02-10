@@ -1,4 +1,4 @@
-$stdout.puts "before lib"
+time = Time.now
 require 'refinerycms-base'
 require 'refinerycms-core'
 
@@ -8,4 +8,4 @@ require 'refinerycms-images'
 require 'refinerycms-resources'
 require 'refinerycms-pages'
 require 'refinerycms-dashboard'
-$stdout.puts "after lib"
+$stdout.puts "It took #{Time.now - time} to load all required engines."

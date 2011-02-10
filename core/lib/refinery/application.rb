@@ -4,12 +4,10 @@ module Refinery
       def refine!
         ::ApplicationHelper.send :include, ::Refinery::ApplicationHelper
 
-        $stdout.puts "app inject"
         [::ApplicationController, ::Admin::BaseController].each do |c|
           c.send :include, ::Refinery::ApplicationController
           c.send :helper, :application
         end
-        $stdout.puts "after app inject"
 
         ::Admin::BaseController.send :include, ::Refinery::Admin::BaseController
       end
