@@ -1,6 +1,6 @@
 /*
   Taken from http://github.com/parndt/jquery-ujs
-  At version http://github.com/parndt/jquery-ujs/blob/8211a11e5f3644248f3136608d4c0a50a9335337/src/rails.js
+  At version http://github.com/parndt/jquery-ujs/blob/15ad6d2c5680f23879faf260ac6bd7e210cd4fed/src/rails.js
   (Because that was the current master version)
 */
 
@@ -17,6 +17,10 @@
 		var event = new $.Event(name);
 		obj.trigger(event, data);
 		return event.result !== false;
+	}
+
+	function appendCsrfToken(xhr){
+	  xhr.setRequestHeader('X-CSRF-Token', $('meta[name=csrf-token]').attr('content'));
 	}
 
 	// Submits "remote" forms and links with ajax
@@ -47,6 +51,7 @@
 				if (settings.dataType === undefined) {
 					xhr.setRequestHeader('accept', '*/*;q=0.5, ' + settings.accepts.script);
 				}
+				appendCsrfToken(xhr);
 				return fire(element, 'ajax:beforeSend', [xhr, settings]);
 			},
 			success: function(data, status, xhr) {
@@ -152,16 +157,10 @@
 		if (this == event.target) enableFormElements($(this));
 	});
 
-	if ($().jquery >= '1.5') {
-		$.ajaxSetup({
-			headers: {
-				"X-CSRF-Token": $("meta[name='csrf-token']").attr('content')
-			}
-		});
-	} else {
-		$(document).ajaxSend(function(e, xhr, options) {
-			var token = $("meta[name='csrf-token']").attr("content");
-			xhr.setRequestHeader("X-CSRF-Token", token);
-		});
-	}
+	$.ajaxSetup({
+	  beforeSend: function(xhr){
+      appendCsrfToken(xhr);
+    }
+  });
 })( jQuery );
+
