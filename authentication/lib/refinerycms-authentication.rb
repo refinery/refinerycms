@@ -1,17 +1,18 @@
 require 'devise'
 require 'refinerycms-core'
+# Attach authenticated system methods to the ::Refinery::ApplicationController
+require File.expand_path('../authenticated_system', __FILE__)
+[::Refinery::ApplicationController, ::Refinery::ApplicationHelper].each do |c| 
+  c.class_eval {
+    include AuthenticatedSystem
+  }
+end
 
 module Refinery
   module Authentication
 
     class Engine < Rails::Engine
       config.autoload_paths += %W( #{config.root}/lib )
-
-      config.to_prepare do
-        [::ApplicationController, ::Admin::BaseController].class_eval do |c|
-          c.send :include, AuthenticatedSystem if defined?(c)
-        end
-      end
 
       config.after_initialize do
         Refinery::Plugin.register do |plugin|
