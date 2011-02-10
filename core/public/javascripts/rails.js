@@ -1,6 +1,6 @@
 /*
-  Taken from http://github.com/rails/jquery-ujs
-  At version http://github.com/rails/jquery-ujs/blob/8b8375bbcd1695ba8297e398a68dd743cdcdaea9/src/rails.js
+  Taken from http://github.com/parndt/jquery-ujs
+  At version http://github.com/parndt/jquery-ujs/blob/8211a11e5f3644248f3136608d4c0a50a9335337/src/rails.js
   (Because that was the current master version)
 */
 
@@ -152,9 +152,16 @@
 		if (this == event.target) enableFormElements($(this));
 	});
 
-	$.ajaxSetup({
-	  headers: {
-	    "X-CSRF-Token": $("meta[name='csrf-token']").attr('content')
-	  }
-	});
+	if ($().jquery >= '1.5') {
+		$.ajaxSetup({
+			headers: {
+				"X-CSRF-Token": $("meta[name='csrf-token']").attr('content')
+			}
+		});
+	} else {
+		$(document).ajaxSend(function(e, xhr, options) {
+			var token = $("meta[name='csrf-token']").attr("content");
+			xhr.setRequestHeader("X-CSRF-Token", token);
+		});
+	}
 })( jQuery );
