@@ -8,4 +8,4 @@ require 'refinerycms-images'
 require 'refinerycms-resources'
 require 'refinerycms-pages'
 require 'refinerycms-dashboard'
-$stdout.puts "It took #{Time.now - time} to load all required engines."
+$stdout.puts "It took #{Time.now - time} seconds to load all required engines."
