@@ -1,6 +1,6 @@
 /*
   Taken from http://github.com/rails/jquery-ujs
-  At version http://github.com/rails/jquery-ujs/blob/443de05134eebb27f5e18b43cb3ca0088b3a86b3/src/rails.js
+  At version http://github.com/rails/jquery-ujs/blob/900d714300b284d7480e1e3f09fbecf8f0e23b27/src/rails.js
   (Because that was the current master version)
 */
 
@@ -152,7 +152,8 @@
 			handleRemote(form);
 			return false;
 		} else {
-			disableFormElements(form);
+			// slight timeout so that the submit button gets properly serialized
+			setTimeout(function(){ disableFormElements(form) }, 13);
 		}
 	});
 
