@@ -2,9 +2,9 @@
 
 Gem::Specification.new do |s|
   s.name              = %q{refinerycms}
-  s.version           = %q{0.9.9}
+  s.version           = %q{0.9.9.1}
   s.description       = %q{A Ruby on Rails CMS that supports Rails 3. It's easy to extend and sticks to 'the Rails way' where possible.}
-  s.date              = %q{2011-02-09}
+  s.date              = %q{2011-02-11}
   s.summary           = %q{A Ruby on Rails CMS that supports Rails 3}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
@@ -45,14 +45,14 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'autotest-rails'
   s.add_development_dependency 'autotest-notification'
 
-  #s.add_dependency('refinerycms-authentication', '0.9.9')
-  #s.add_dependency('refinerycms-base',           '0.9.9')
-  #s.add_dependency('refinerycms-core',           '0.9.9')
-  #s.add_dependency('refinerycms-dashboard',      '0.9.9')
-  #s.add_dependency('refinerycms-images',         '0.9.9')
-  #s.add_dependency('refinerycms-pages',          '0.9.9')
-  #s.add_dependency('refinerycms-resources',      '0.9.9')
-  #s.add_dependency('refinerycms-settings',       '0.9.9')
+  #s.add_dependency('refinerycms-authentication', '0.9.9.1')
+  #s.add_dependency('refinerycms-base',           '0.9.9.1')
+  #s.add_dependency('refinerycms-core',           '0.9.9.1')
+  #s.add_dependency('refinerycms-dashboard',      '0.9.9.1')
+  #s.add_dependency('refinerycms-images',         '0.9.9.1')
+  #s.add_dependency('refinerycms-pages',          '0.9.9.1')
+  #s.add_dependency('refinerycms-resources',      '0.9.9.1')
+  #s.add_dependency('refinerycms-settings',       '0.9.9.1')
 
   s.files             = [
     '.gitignore',
