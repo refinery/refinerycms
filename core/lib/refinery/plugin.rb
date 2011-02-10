@@ -8,11 +8,6 @@ module Refinery
 
       yield plugin
 
-      if defined?(Page) && (reserved_word = plugin.controller.nil? ? plugin.name : plugin.controller)
-        # Prevent page slugs from being this plugin's controller name
-        Page.friendly_id_config.reserved_words << reserved_word
-      end
-
       raise "A plugin MUST have a name!: #{plugin.inspect}" if plugin.name.blank?
 
       # Set the root as Rails::Engine.called_from will always be
@@ -43,22 +38,12 @@ module Refinery
 
     # Returns the internationalized version of the title
     def title
-      ::I18n.translate("plugins.#{name}.title")
+      ::I18n.translate(['plugins', name, 'title'].join('.'))
     end
 
     # Returns the internationalized version of the description
     def description
-      ::I18n.translate("plugins.#{name}.description")
-    end
-
-    # Depreciation warning
-    def title=(title)
-      warn('title', caller)
-    end
-
-    # Depreciation warning
-    def description=(description)
-      warn('description', caller)
+      ::I18n.translate(['plugins', name, 'description'].join('.'))
     end
 
     # Retrieve information about how to access the latest activities of this plugin.
@@ -116,19 +101,6 @@ module Refinery
       depth = RUBY_VERSION >= "1.9.2" ? 4 : 3
       self.pathname = Pathname.new(caller(depth).first.match("(.*)#{File::SEPARATOR}lib")[1])
       Refinery::Plugins.registered << self # add me to the collection of registered plugins
-    end
-
-  private
-    def warn(what, caller)
-      warning = ["\n*** DEPRECATION WARNING ***"]
-      warning << "You cannot use plugin.#{what} anymore."
-      warning << "#{what.pluralize.titleize} will be internationalized by the I18n api."
-      warning << ""
-      warning << "See http://github.com/resolve/refinerycms/blob/master/core/engines.md#readme"
-      warning << "Section: 'The Structure of a Plugin'"
-      warning << ""
-      warning << "Called from: #{caller.first.inspect}\n\n"
-      $stdout.puts warning.join("\n")
     end
   end
 end

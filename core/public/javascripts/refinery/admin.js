@@ -646,7 +646,7 @@ var page_options = {
   },
 
   title_type: function(){
-    $("input[name=page\[custom_title_type\]]").change(function(){
+    $('input#page_custom_title').parents('.field').find('input:radio').change(function(){
       $('#custom_title_text, #custom_title_image').hide();
       $('#custom_title_' + this.value).show();
     });

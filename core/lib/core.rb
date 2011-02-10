@@ -9,6 +9,7 @@ require 'truncate_html'
 require 'will_paginate'
 require 'rails/generators'
 require 'rails/generators/migration'
+require 'refinerycms-generators'
 
 module Refinery
 

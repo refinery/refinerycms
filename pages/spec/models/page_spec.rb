@@ -74,17 +74,6 @@ describe Page do
       @child.path({:reversed => false}).should == 'The child page - RSpec is great for testing too'
     end
 
-    it ".path() still responds to the deprecated boolean" do
-      create_child
-      capture_stdout { @child.path(false).should == 'The child page - RSpec is great for testing too' }
-    end
-
-    it "prints a logger warning when the deprecated boolean is used for path()" do
-      create_child
-      log_messages = capture_stdout { @child.path(false) }
-      log_messages.should_not be_empty
-    end
-
     it "should return its url" do
       @page.link_url = '/contact'
       @page.url.should == '/contact'

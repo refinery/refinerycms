@@ -1,10 +1,4 @@
 --title "Refinery CMS"
-app/**/*.rb
-config/*.rb
-config/initializers/*.rb
-config.ru
-db/seeds.rb
-db/seeds/*.rb
 Gemfile
 lib/**/*
 Rakefile
@@ -13,7 +7,6 @@ core/**/*.rb
 dashboard/**/*.rb
 images/**/*.rb
 pages/**/*.rb
-*.rb
 resources/**/*.rb
 settings/**/*.rb
 -

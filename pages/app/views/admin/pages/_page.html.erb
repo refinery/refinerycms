@@ -6,7 +6,9 @@
             (locales = page.translations.collect{|t| t.locale}).present? %>
         <span class='preview'>
           <% locales.each do |locale| %>
-            <%= refinery_icon_tag "flags/#{locale}.png", :size => '16x11' %>
+            <%= link_to refinery_icon_tag("flags/#{locale}.png", :size => '16x11'),
+                        edit_admin_page_url(page, :switch_locale => locale),
+                        :class => 'locale' %>
           <% end %>
         </span>
       <% end %>

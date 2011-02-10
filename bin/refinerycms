@@ -7,7 +7,7 @@ rescue LoadError
   puts "\n=== ACTION REQUIRED ===\n\n"
   puts "Could not load the bundler gem. This is a required dependency of Refinery CMS."
   puts "Please install it with `gem install bundler`.\n\n"
-  exit
+  exit(1)
 end
 
 # Load other required libraries
@@ -136,10 +136,13 @@ module Refinery
       end
 
       # Run the newly activated Refinery CMS generator.
-      run_command("rails generate refinerycms#{' --update' if @options[:update]}", {:cd => true})
+      run_command("rails generate refinerycms#{' --update' if @options[:update]}", {
+        :cd => true,
+        :fail => "Could not run the refinerycms generator successfully."
+      })
 
       # Run the update task if we're updating
-      run_command("rake refinery:update", {:cd => true}) if @options[:update]
+      run_command("rake refinery:update", {:cd => true, :fail => "refinery:update rake task failed."}) if @options[:update]
 
       # Output helpful messages to user
       output!
@@ -153,7 +156,7 @@ module Refinery
         puts pe
         puts "\n"
         puts @optparse
-        exit(false)
+        exit(1)
       end
 
       # Ensure only one path is specified
@@ -161,7 +164,7 @@ module Refinery
         puts "Please specify a single path to install Refinery CMS"
         puts "\n"
         puts @optparse
-        exit(false)
+        exit(1)
       end
 
       # Get the name and path of the new application
@@ -174,18 +177,41 @@ module Refinery
       if @app_path == @refinery_path
         puts "\nPlease generate your new project from outside the Refinery directory and any Rails directory."
         puts "\n"
-        exit(false)
+        exit(1)
       elsif %w(refinery test).include?(@input.first)
         puts "\nYou can't use '#{@input.first}' as a name for your project, this is a reserved word that will cause conflicts."
         puts "Please choose another name for your new project."
         puts "\n"
-        exit(false)
-      elsif @app_path.directory? and @options[:force] == false and @options[:update] == false
+        exit(1)
+      elsif @app_path.directory? && !@options[:force] && !@options[:update]
         puts "\nThe directory '#{@app_path}' that you specified already exists."
         puts "Use --force to overwrite an existing directory."
         puts "Use --update to replace any Refinery CMS files in an existing installation."
         puts "\n"
-        exit(false)
+        exit(1)
+      elsif @options[:heroku]
+        if @options[:heroku].to_s.include?('_') or @options[:heroku].to_s.length > 30
+          message = ["\nThe application name '#{@options[:heroku]}' that you specified is invalid for Heroku."]
+          suggested_name = @options[:heroku].to_s
+          if suggested_name.include?('_')
+            message << "This is because it contains underscores which Heroku does not allow."
+            suggested_name.gsub!(/_/, '-')
+          end
+          if suggested_name.length > 30
+            message << "This is#{" also" unless suggested_name.nil?} because it is longer than 30 characters."
+            suggested_name = suggested_name[0..29]
+          end
+
+          if @options[:force] or @options[:confirm]
+            @options[:heroku] = suggested_name
+          else
+            message << "Please choose another name like '#{suggested_name}'"
+            message << "Or use --confirm to automatically use '#{suggested_name}'"
+            message << "\n"
+            puts message.join("\n")
+            exit(1)
+          end
+        end
       elsif @app_path.join('.git').directory? && @options[:update] && !@options[:confirm]
         git_status = run_command('git status --porcelain', :puts => false)
         if git_status.to_s.strip.length > 0
@@ -193,7 +219,7 @@ module Refinery
           puts "Use --confirm to have Refinery proceed anyway. "
           puts "Untracked files will be removed, and uncommitted changes may be lost."
           puts "\n"
-          exit(false)
+          exit(1)
         end
       end
     end
@@ -226,7 +252,7 @@ module Refinery
       # Detect non-success or a blank rails output or starting with "Can't initialize" or "Error"
       if !$?.success? or rails_output.blank? or rails_output =~ /^(Can't\ initialize|Error)/
         puts "Generating Rails application failed. Exiting..."
-        exit(false)
+        exit(1)
       end
     end
 
@@ -326,10 +352,10 @@ module Refinery
       puts "Installing gem requirements using bundler..\n"
 
       # Ensure RefineryCMS is up to date if we're updating
-      run_command("bundle update refinerycms refinerycms-generators") if @options[:update]
+      run_command("bundle update refinerycms refinerycms-generators", {:fail => "Unable to update core gems"}) if @options[:update]
 
       # Install!
-      run_command("bundle install")
+      run_command("bundle install", {:fail => "Unable to install necessary gems"})
     end
 
     def output!
@@ -380,7 +406,7 @@ module Refinery
     private :validate!, :generate!, :bundle!, :output!
 
     def run_command(command, options = {})
-      options = {:cd => true, :puts => true}.merge(options)
+      options = {:cd => true, :puts => true, :fail => nil}.merge(options)
       to_run = %w()
       to_run << "cd \"#{@app_path}\" &&" if options[:cd]
       to_run << command
@@ -404,7 +430,14 @@ module Refinery
         output << `#{to_run}`
       end
 
-      output.join("\n")
+      if $?.success? or options[:fail].nil?
+        output.join("\n")
+      else
+        puts "\nFailed to generate application."
+        puts "Message: #{options[:fail]}" unless options[:fail].nil?
+        puts "Exiting...\n\n"
+        exit(1)
+      end
     end
 
     def find_and_replace(file, find, replace)

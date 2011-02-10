@@ -4,72 +4,72 @@ zh-CN:
       title: Refinery
       description: 核心 refinery 插件
     refinery_dialogs:
-      title: 对话方框
-      description: Refinery 对话方框插件
+      title: 对话框
+      description: Refinery 对话框插件
   welcome:
-    there_are_no_users: 目前没有任何的使用者, 我们会先替您进行设定.
-    remember_admin_location: "记住您的 Refinery 管理者页面在:"
-    lets_start: 好了, 让我们协助您设定, 然后您就能登入了...
+    there_are_no_users: 现在还没有用户, 因此我们先来设置一个.
+    remember_admin_location: "记住你的 Refinery 后台管理页面在:"
+    lets_start: 好了, 让我们协助您设置, 然后您就能够登录了...
     continue: 继续...
   admin:
     menu:
-      reorder_menu: 重新编排选单
-      reorder_menu_done: 我已经完成了选单的编排
+      reorder_menu: 重新编排菜单
+      reorder_menu_done: 我排好了
     dialogs:
       show:
-        save: 储存
+        save: 保存
         cancel: 取消
   refinery:
     crudify:
-      created: %{what} 成功地加入.
-      updated: %{what} 成功地更新.
-      destroyed: %{what} 成功地移除.
+      created: %{what} 添加成功.
+      updated: %{what} 编辑成功.
+      destroyed: %{what} 删除成功.
   shared:
     site_bar:
-      log_out: 登出
-      switch_to_your_website: 切换到您的网站
-      switch_to_your_website_editor: 切换到您的网站编辑器
+      log_out: 注销
+      switch_to_your_website: 切换到你的网站
+      switch_to_your_website_editor: 切换到管理后台
     admin:
       continue_editing:
-        save_and_continue_editing: 储存然后继续编辑
+        save_and_continue_editing: 保存并且继续编辑
       form_actions:
-        save: 储存
+        save: 保存
         cancel: 取消
-        cancel_lose_changes: 如果您选择取消, 您将会遗失先前的所有设定
-        delete: 移除
+        cancel_lose_changes: 如果取消你将会丢失你这里所做的修改
+        delete: 删除
         close: 关闭
       image_picker:
-        none_selected: 目前没有任何 %{what} 被选择, 请点选这里来新增.
-        remove_current: 移除目前的 %{what}
-        change: 点选这里来选择一张图片
-        show: 展示
+        none_selected: 当前没有图片 %{what} 被选中, 请点这里去选取一个.
+        remove_current: 删除当前 %{what}
+        change: 点这里去选取一个图片
+        show: 显示
       resource_picker:
-        download_current: 下载目前文件
-        opens_in_new_window: 在新的视窗开启
-        remove_current: "移除目前文件"
-        no_resource_selected: 目前没有任何文件被选取, 点选这里来新增.
-        name: 新增文件
-        current: 目前文件
+        download_current: 下载当前文件
+        opens_in_new_window: 在新窗口打开
+        remove_current: "删除当前文件"
+        no_resource_selected: 当前没有文件 %{what} 被选中, 请点这里去选取一个.
+        name: 添加文件
+        current: 当前文件
       search:
-        button_text: 搜寻
-        results_for: 搜寻 '%{query}' 的结果
-        no_results: 抱歉, 没有任何搜寻结果
+        button_text: 搜索
+        results_for: 搜索 '%{query}' 的结果
+        no_results: 对不起, 没有找到结果
       delete:
-        message: 确定要移除 '%{title}' 吗?
+        message: 您确认要删除 '%{title}'?
       error_messages:
-        problems_in_following_fields: 以下几个字段出现问题
-      help: 求助
+        problems_in_following_fields: 以下字段存在问题
+      help: 帮助
     message:
       close: 关闭
-      close_this_message: 关闭这个讯息
+      close_this_message: 关闭这条信息
     draft_page_message:
-      not_live: 这个页面目前没有开放公开浏览.
+      not_live: 这个页面不能够被公开访问.
     footer:
-      copyright: Copyright © %{year} %{site_name}
+      copyright: 版权所有 © %{year} %{site_name}
     no_script:
-      enable_javascript: 您必须要启动支援 JavaScript 才能够看到这个页面提供的所有功能.
+      enable_javascript: 这个页面需要打开Javascript以执行所有功能.
       here_are: 这里是
-      instructions_enable_javascript: 如果让您的浏览器启动支援 JavaScript 的说明
+      instructions_enable_javascript: 打开Javascript的指引
   time:
     formats:
       short: "%A, %d %B %Y"

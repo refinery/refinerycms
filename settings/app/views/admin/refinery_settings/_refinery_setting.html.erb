@@ -17,7 +17,7 @@
     <% unless (help = t(refinery_setting.name, :scope => 'admin.refinery_settings.form.help', :default => '')).blank? %>
       <%= link_to refinery_icon_tag('information.png'), '#',
                   :tooltip => help,
-                  :class => 'suppress' %>
+                  :class => 'information suppress' %>
     <% end %>
   </span>
 </li>

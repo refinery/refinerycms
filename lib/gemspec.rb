@@ -14,7 +14,8 @@ rejection_patterns = [
   "(^log|\.log)$",
   "\.rbc$",
   "^tmp(|/.+?)$",
-  ".gem$"
+  ".gem$",
+  "^doc($|\/)"
 ]
 
 files.reject! do |f|
@@ -50,10 +51,11 @@ Gem::Specification.new do |s|
   s.add_dependency    'rdoc',                        '>= 2.5.11' # helps fix ubuntu
   s.add_dependency    'truncate_html',               '~> 0.5'
   s.add_dependency    'will_paginate',               '~> 3.0.pre'
+  s.add_dependency    'refinerycms-generators',      '~> 0.9.9.3'
 
-  s.add_development_dependency 'rspec-rails',        '~> 2.3'
+  s.add_development_dependency 'rspec-rails',        '~> 2.5'
   # Cucumber
-  s.add_development_dependency 'capybara',           '>= 0.4.1.rc'
+  s.add_development_dependency 'capybara',           '>= 0.4.1.1'
   s.add_development_dependency 'database_cleaner'
   s.add_development_dependency 'cucumber-rails'
   s.add_development_dependency 'cucumber'
