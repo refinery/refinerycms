@@ -1,15 +1,7 @@
-GIT
-  remote: git://github.com/resolve/refinerycms-i18n
-  revision: 9a53740560649d2b5308980ee72e759b8238bc25
-  branch: gemify
-  specs:
-    refinerycms-i18n (0.9.9.8)
-      routing-filter (>= 0.2.3)
-
 PATH
   remote: .
   specs:
-    refinerycms (0.9.9)
+    refinerycms (0.9.9.1)
       bundler (~> 1.0.5)
       refinerycms-authentication (~> 0.9.9)
       refinerycms-base (~> 0.9.9)
@@ -92,7 +84,7 @@ GEM
     babosa (0.2.2)
     bcrypt-ruby (2.1.4)
     builder (2.1.2)
-    capybara (0.4.1.1)
+    capybara (0.4.1.2)
       celerity (>= 0.7.9)
       culerity (>= 0.2.4)
       mime-types (>= 1.16)
@@ -172,6 +164,9 @@ GEM
     rake (0.8.7)
     rdoc (3.5.3)
     refinerycms-generators (0.9.9.3)
+    refinerycms-i18n (0.9.9.9)
+      refinerycms (>= 0.9.8)
+      routing-filter (>= 0.2.3)
     routing-filter (0.2.3)
       actionpack
     rspec (2.5.0)
@@ -225,7 +220,7 @@ DEPENDENCIES
   launchy
   rack-test (~> 0.5.6)
   refinerycms!
-  refinerycms-i18n (~> 0.9)!
+  refinerycms-i18n (~> 0.9.9.9)
   rspec-rails (~> 2.5)
   ruby-prof
   spork
