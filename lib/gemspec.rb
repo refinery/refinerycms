@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-require File.expand_path('../../lib/refinery.rb', __FILE__)
+require File.expand_path('../../base/lib/refinery.rb', __FILE__)
 files = %w( Gemfile *.md **/**/{*,.rspec,.gitignore,.yardopts} ).map { |file| Dir.glob(file) }.flatten.sort
 rejection_patterns = [
   "^public/system",

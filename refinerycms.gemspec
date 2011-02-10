@@ -2,9 +2,9 @@
 
 Gem::Specification.new do |s|
   s.name              = %q{refinerycms}
-  s.version           = %q{0.9.9}
+  s.version           = %q{0.9.9.1}
   s.description       = %q{A Ruby on Rails CMS that supports Rails 3. It's easy to extend and sticks to 'the Rails way' where possible.}
-  s.date              = %q{2011-02-10}
+  s.date              = %q{2011-02-11}
   s.summary           = %q{A Ruby on Rails CMS that supports Rails 3}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
@@ -667,7 +667,7 @@ Gem::Specification.new do |s|
     'images/lib',
     'images/lib/generators',
     'images/lib/generators/refinerycms_images_generator.rb',
-    'images/lib/images.rb',
+    'images/lib/refinerycms-images.rb',
     'images/license.md',
     'images/readme.md',
     'images/refinerycms-images.gemspec',
@@ -769,6 +769,7 @@ Gem::Specification.new do |s|
     'pages/spec',
     'pages/spec/models',
     'pages/spec/models/page_spec.rb',
+    'public',
     'readme.md',
     'readme.md',
     'refinerycms.gemspec',
