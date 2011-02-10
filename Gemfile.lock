@@ -1,3 +1,11 @@
+GIT
+  remote: git://github.com/resolve/refinerycms-i18n
+  revision: 9a53740560649d2b5308980ee72e759b8238bc25
+  branch: gemify
+  specs:
+    refinerycms-i18n (0.9.9.8)
+      routing-filter (>= 0.2.3)
+
 PATH
   remote: .
   specs:
@@ -41,12 +49,6 @@ PATH
       refinerycms-core (~> 0.9.9)
     refinerycms-settings (0.9.9)
       refinerycms-base (~> 0.9.9)
-
-PATH
-  remote: /code/refinerycms-i18n
-  specs:
-    refinerycms-i18n (0.9.9.8)
-      routing-filter (>= 0.2.3)
 
 GEM
   remote: http://rubygems.org/
