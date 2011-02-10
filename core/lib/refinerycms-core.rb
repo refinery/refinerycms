@@ -14,6 +14,8 @@ module Refinery
 
   autoload :Activity, File.expand_path('../refinery/activity', __FILE__)
   autoload :Application, File.expand_path('../refinery/application', __FILE__)
+  autoload :ApplicationController, File.expand_path('../refinery/application_controller', __FILE__)
+  autoload :ApplicationHelper, File.expand_path('../refinery/application_helper', __FILE__)
   autoload :Plugin,  File.expand_path('../refinery/plugin', __FILE__)
   autoload :Plugins, File.expand_path('../refinery/plugins', __FILE__)
 
