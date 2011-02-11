@@ -1,9 +1,9 @@
-version = '0.9.9'
+require File.expand_path('../../base/lib/refinery', __FILE__)
 
 Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.name        = 'refinerycms-core'
-  s.version     = version
+  s.version     = ::Refinery::Version.to_s
   s.summary     = 'Core engine for Refinery CMS'
   s.description = 'Ruby on Rails Core engine for Refinery CMS'
   s.required_ruby_version = '>= 1.8.7'
@@ -24,5 +24,5 @@ Gem::Specification.new do |s|
   s.add_dependency 'rdoc',                     '>= 2.5.11' # helps fix ubuntu
   s.add_dependency 'truncate_html',            '~> 0.5'
   s.add_dependency 'will_paginate',            '~> 3.0.pre'
-  s.add_dependency 'refinerycms-settings',     "~> #{version}"
+  s.add_dependency 'refinerycms-settings',     "~> #{::Refinery::Version}"
 end
