@@ -1,4 +1,4 @@
-class SessionsController < Devise::SessionsController
+class SessionsController < ::Devise::SessionsController
   layout 'login'
 
   before_filter :clear_unauthenticated_flash, :only => [:new]
