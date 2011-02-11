@@ -1,12 +1,8 @@
-require 'rails/all'
-
 require 'acts_as_indexed'
 require 'awesome_nested_set'
 require 'friendly_id'
 require 'truncate_html'
 require 'will_paginate'
-require 'rails/generators'
-require 'rails/generators/migration'
 require 'refinerycms-generators'
 require 'refinerycms-settings'
 
