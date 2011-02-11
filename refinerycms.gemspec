@@ -450,6 +450,7 @@ Gem::Specification.new do |s|
     'core/public/images/wymeditor/skins/refinery/text_align_justify.png',
     'core/public/images/wymeditor/skins/refinery/text_align_left.png',
     'core/public/images/wymeditor/skins/refinery/text_align_right.png',
+    'core/public/images/wymeditor/skins/refinery/text_blockquote.png',
     'core/public/images/wymeditor/skins/refinery/text_bold.png',
     'core/public/images/wymeditor/skins/refinery/text_heading_1.png',
     'core/public/images/wymeditor/skins/refinery/text_heading_2.png',
