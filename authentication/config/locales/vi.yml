@@ -49,7 +49,8 @@ vi:
       subject: Đường dẫn để khởi tạo lại mật khẩu
       reset_request_received_for: "Yêu cầu khởii tạo lại mật khẩu cho %{username}"
       visit_this_url: Mở URL này để chọn mật khẩu mới
-      remain_same_if_no_action: Mật khẩu của bạn sẽ không đổi nếu không thực tiện thao tác nào devise:
+      remain_same_if_no_action: Mật khẩu của bạn sẽ không đổi nếu không thực tiện thao tác nào 
+  devise:
     failure:
       unauthenticated: Bạn cần đăng nhập trước khi tiếp tục.
       invalid: "Xin lỗi, mật khẩu của bạn không đúng."
