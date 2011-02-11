@@ -2,6 +2,7 @@
 require File.expand_path('../../base/lib/refinery.rb', __FILE__)
 files = %w( Gemfile *.md **/**/{*,.rspec,.gitignore,.yardopts} ).map { |file| Dir.glob(file) }.flatten.sort
 rejection_patterns = [
+  "^(authentication|base|core|dashboard|images|pages|resources|settings)",
   "^public/system",
   "^config/(application|boot|environment).rb$",
   "^config/initializers(\/.*\.rb)?$",
