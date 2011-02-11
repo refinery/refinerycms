@@ -55,13 +55,13 @@ describe Resource do
   describe ".per_page" do
     context "dialog is true" do
       it "returns resource count specified by PAGES_PER_DIALOG constant" do
-        Page.per_page(true).should == Page::PAGES_PER_DIALOG
+        Resource.per_page(true).should == Resource::PAGES_PER_DIALOG
       end
     end
 
     context "dialog is false" do
       it "returns resource count specified by PAGES_PER_ADMIN_INDEX constant" do
-        Page.per_page.should == Page::PAGES_PER_ADMIN_INDEX
+        Resource.per_page.should == Resource::PAGES_PER_ADMIN_INDEX
       end
     end
   end

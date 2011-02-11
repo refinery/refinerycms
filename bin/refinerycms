@@ -72,7 +72,7 @@ module Refinery
         end
 
         opts.on("-g", "--gems gem1,gem2,gem3", Array, "Additional gems to install") do |gems|
-          @options[:gems] = gems.reject {|g| g.to_s =~ /^(refinerycms|rmagick)$/}.map {|g| "gem '#{g.to_s}'"}
+          @options[:gems] = gems.reject {|g| g.to_s =~ /^(refinerycms)$/}.map {|g| "gem '#{g.to_s}'"}
         end
 
         opts.on("-f", "--force", "Force overwriting of directory") do

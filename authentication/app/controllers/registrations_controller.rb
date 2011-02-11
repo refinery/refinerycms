@@ -1,4 +1,4 @@
-class RegistrationsController < Devise::RegistrationsController
+class RegistrationsController < ::Devise::RegistrationsController
 
   # Protect these actions behind an admin login
   before_filter :redirect?, :only => [:new, :create]

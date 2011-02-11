@@ -1,4 +1,5 @@
-Refinery::Application.routes.draw do
+::Refinery::Application.routes.draw do
+
   match '/system/images/*dragonfly', :to => Dragonfly[:images]
 
   scope(:path => 'refinery', :as => 'admin', :module => 'admin') do

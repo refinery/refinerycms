@@ -14,45 +14,39 @@ Gem::Specification.new do |s|
   s.require_paths     = %w(lib)
   s.executables       = %w(refinerycms)
 
-  s.add_dependency    'acts_as_indexed',             '~> 0.6.6'
-  s.add_dependency    'bundler',                     '~> 1.0.5'
-  s.add_dependency    'devise',                      '~> 1.1'
-  s.add_dependency    'dragonfly',                   '~> 0.8.2'
-  s.add_dependency    'friendly_id_globalize3',      '~> 3.2.0'
-  s.add_dependency    'globalize3',                  '>= 0.1.0.beta'
-  s.add_dependency    'moretea-awesome_nested_set',  '= 1.4.3.1'
-  s.add_dependency    'rack-cache',                  '~> 0.5.2'
-  s.add_dependency    'rails',                       '~> 3.0.3'
-  s.add_dependency    'rdoc',                        '>= 2.5.11' # helps fix ubuntu
-  s.add_dependency    'truncate_html',               '~> 0.5'
-  s.add_dependency    'will_paginate',               '~> 3.0.pre'
-  s.add_dependency    'refinerycms-generators',      '~> 0.9.9.3'
+  # Bundler
+  s.add_dependency    'bundler',                    '~> 1.0.5'
 
-  s.add_development_dependency 'rspec-rails',        '~> 2.5'
+  # Refinery CMS
+  s.add_dependency    'refinerycms-generators',     '~> 0.9.9.3'
+  s.add_dependency    'refinerycms-authentication', '~> 0.9.9'
+  s.add_dependency    'refinerycms-base',           '~> 0.9.9'
+  s.add_dependency    'refinerycms-core',           '~> 0.9.9'
+  s.add_dependency    'refinerycms-dashboard',      '~> 0.9.9'
+  s.add_dependency    'refinerycms-images',         '~> 0.9.9'
+  s.add_dependency    'refinerycms-pages',          '~> 0.9.9'
+  s.add_dependency    'refinerycms-resources',      '~> 0.9.9'
+  s.add_dependency    'refinerycms-settings',       '~> 0.9.9'
+
+  s.add_development_dependency 'rspec-rails',       '~> 2.5'
+
   # Cucumber
-  s.add_development_dependency 'capybara',           '>= 0.4.1.1'
+  s.add_development_dependency 'capybara',          '>= 0.4.1.1'
   s.add_development_dependency 'database_cleaner'
   s.add_development_dependency 'cucumber-rails'
   s.add_development_dependency 'cucumber'
   s.add_development_dependency 'launchy'
   s.add_development_dependency 'gherkin'
-  s.add_development_dependency 'rack-test',          '~> 0.5.6'
+  s.add_development_dependency 'rack-test',         '~> 0.5.6'
   s.add_development_dependency 'json_pure'
+
   # Factory Girl
   s.add_development_dependency 'factory_girl'
+
   # Autotest
   s.add_development_dependency 'autotest'
   s.add_development_dependency 'autotest-rails'
   s.add_development_dependency 'autotest-notification'
-
-  #s.add_dependency('refinerycms-authentication', '0.9.9.1')
-  #s.add_dependency('refinerycms-base',           '0.9.9.1')
-  #s.add_dependency('refinerycms-core',           '0.9.9.1')
-  #s.add_dependency('refinerycms-dashboard',      '0.9.9.1')
-  #s.add_dependency('refinerycms-images',         '0.9.9.1')
-  #s.add_dependency('refinerycms-pages',          '0.9.9.1')
-  #s.add_dependency('refinerycms-resources',      '0.9.9.1')
-  #s.add_dependency('refinerycms-settings',       '0.9.9.1')
 
   s.files             = [
     '.gitignore',
@@ -126,6 +120,7 @@ Gem::Specification.new do |s|
     'authentication/config/locales/ru.yml',
     'authentication/config/locales/sl.yml',
     'authentication/config/locales/sv.yml',
+    'authentication/config/locales/vi.yml',
     'authentication/config/locales/zh-CN.yml',
     'authentication/config/locales/zh-TW.yml',
     'authentication/config/routes.rb',
@@ -146,9 +141,9 @@ Gem::Specification.new do |s|
     'authentication/features/support/paths.rb',
     'authentication/lib',
     'authentication/lib/authenticated_system.rb',
-    'authentication/lib/authentication.rb',
     'authentication/lib/generators',
     'authentication/lib/generators/refinerycms_authentication_generator.rb',
+    'authentication/lib/refinerycms-authentication.rb',
     'authentication/license.md',
     'authentication/readme.md',
     'authentication/refinerycms-authentication.gemspec',
@@ -172,12 +167,12 @@ Gem::Specification.new do |s|
     'base/features/support/negative_expectations_helper.rb',
     'base/features/support/paths.rb',
     'base/lib',
-    'base/lib/base.rb',
     'base/lib/generators',
     'base/lib/generators/refinerycms_base_generator.rb',
     'base/lib/refinery',
     'base/lib/refinery.rb',
     'base/lib/refinery/version.rb',
+    'base/lib/refinerycms-base.rb',
     'base/license.md',
     'base/refinerycms-base.gemspec',
     'bin',
@@ -267,6 +262,7 @@ Gem::Specification.new do |s|
     'core/config/locales/ru.yml',
     'core/config/locales/sl.yml',
     'core/config/locales/sv.yml',
+    'core/config/locales/vi.yml',
     'core/config/locales/zh-CN.yml',
     'core/config/locales/zh-TW.yml',
     'core/config/routes.rb',
@@ -285,7 +281,6 @@ Gem::Specification.new do |s|
     'core/features/uploads/beach.jpeg',
     'core/features/uploads/refinery_is_awesome.txt',
     'core/lib',
-    'core/lib/core.rb',
     'core/lib/generators',
     'core/lib/generators/refinerycms_generator.rb',
     'core/lib/generators/templates',
@@ -338,6 +333,7 @@ Gem::Specification.new do |s|
     'core/lib/refinery/link_renderer.rb',
     'core/lib/refinery/plugin.rb',
     'core/lib/refinery/plugins.rb',
+    'core/lib/refinerycms-core.rb',
     'core/lib/tasks',
     'core/lib/tasks/cucumber.rake',
     'core/lib/tasks/doc.rake',
@@ -525,6 +521,7 @@ Gem::Specification.new do |s|
     'core/public/javascripts/wymeditor/lang/sl.js',
     'core/public/javascripts/wymeditor/lang/sv.js',
     'core/public/javascripts/wymeditor/lang/tr.js',
+    'core/public/javascripts/wymeditor/lang/vi.js',
     'core/public/javascripts/wymeditor/lang/zh_cn.js',
     'core/public/javascripts/wymeditor/skins',
     'core/public/javascripts/wymeditor/skins/refinery',
@@ -596,6 +593,7 @@ Gem::Specification.new do |s|
     'dashboard/config/locales/ru.yml',
     'dashboard/config/locales/sl.yml',
     'dashboard/config/locales/sv.yml',
+    'dashboard/config/locales/vi.yml',
     'dashboard/config/locales/zh-CN.yml',
     'dashboard/config/locales/zh-TW.yml',
     'dashboard/config/routes.rb',
@@ -604,7 +602,7 @@ Gem::Specification.new do |s|
     'dashboard/features/support',
     'dashboard/features/support/paths.rb',
     'dashboard/lib',
-    'dashboard/lib/dashboard.rb',
+    'dashboard/lib/refinerycms-dashboard.rb',
     'dashboard/license.md',
     'dashboard/readme.md',
     'dashboard/refinerycms-dashboard.gemspec',
@@ -653,6 +651,7 @@ Gem::Specification.new do |s|
     'images/config/locales/ru.yml',
     'images/config/locales/sl.yml',
     'images/config/locales/sv.yml',
+    'images/config/locales/vi.yml',
     'images/config/locales/zh-CN.yml',
     'images/config/locales/zh-TW.yml',
     'images/config/routes.rb',
@@ -673,7 +672,7 @@ Gem::Specification.new do |s|
     'images/lib',
     'images/lib/generators',
     'images/lib/generators/refinerycms_images_generator.rb',
-    'images/lib/images.rb',
+    'images/lib/refinerycms-images.rb',
     'images/license.md',
     'images/readme.md',
     'images/refinerycms-images.gemspec',
@@ -745,6 +744,7 @@ Gem::Specification.new do |s|
     'pages/config/locales/ru.yml',
     'pages/config/locales/sl.yml',
     'pages/config/locales/sv.yml',
+    'pages/config/locales/vi.yml',
     'pages/config/locales/zh-CN.yml',
     'pages/config/locales/zh-TW.yml',
     'pages/config/routes.rb',
@@ -766,9 +766,9 @@ Gem::Specification.new do |s|
     'pages/lib/generators',
     'pages/lib/generators/refinerycms_pages_generator.rb',
     'pages/lib/pages',
-    'pages/lib/pages.rb',
     'pages/lib/pages/marketable_routes.rb',
     'pages/lib/pages/tabs.rb',
+    'pages/lib/refinerycms-pages.rb',
     'pages/license.md',
     'pages/readme.md',
     'pages/refinerycms-pages.gemspec',
@@ -818,6 +818,7 @@ Gem::Specification.new do |s|
     'resources/config/locales/ru.yml',
     'resources/config/locales/sl.yml',
     'resources/config/locales/sv.yml',
+    'resources/config/locales/vi.yml',
     'resources/config/locales/zh-CN.yml',
     'resources/config/locales/zh-TW.yml',
     'resources/config/routes.rb',
@@ -836,7 +837,7 @@ Gem::Specification.new do |s|
     'resources/lib',
     'resources/lib/generators',
     'resources/lib/generators/refinerycms_resources_generator.rb',
-    'resources/lib/resources.rb',
+    'resources/lib/refinerycms-resources.rb',
     'resources/license.md',
     'resources/readme.md',
     'resources/refinerycms-resources.gemspec',
@@ -884,6 +885,7 @@ Gem::Specification.new do |s|
     'settings/config/locales/ru.yml',
     'settings/config/locales/sl.yml',
     'settings/config/locales/sv.yml',
+    'settings/config/locales/vi.yml',
     'settings/config/locales/zh-CN.yml',
     'settings/config/locales/zh-TW.yml',
     'settings/config/routes.rb',
@@ -900,7 +902,7 @@ Gem::Specification.new do |s|
     'settings/lib',
     'settings/lib/generators',
     'settings/lib/generators/refinerycms_settings_generator.rb',
-    'settings/lib/settings.rb',
+    'settings/lib/refinerycms-settings.rb',
     'settings/license.md',
     'settings/readme.md',
     'settings/refinerycms-settings.gemspec',

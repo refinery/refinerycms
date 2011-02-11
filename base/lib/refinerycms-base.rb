@@ -1,4 +1,4 @@
-require 'refinery'
+require File.expand_path('../refinery', __FILE__)
 
 module Refinery
 

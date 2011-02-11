@@ -1,5 +1,10 @@
 require 'action_controller'
-require 'application_helper'
+# require application helper so that we can include our helpers into it.
+if defined?(Rails) and !Rails.root.nil?
+  if (app_helper = Rails.root.join('app', 'helpers', 'application_helper.rb')).file?
+    require app_helper.to_s
+  end
+end
 
 module Refinery
   module ApplicationController
@@ -21,7 +26,6 @@ module Refinery
         c.protect_from_forgery # See ActionController::RequestForgeryProtection
 
         c.send :include, Crud # basic create, read, update and delete methods
-        c.send :include, AuthenticatedSystem
 
         c.send :before_filter, :find_pages_for_menu,
                                :show_welcome_page?
