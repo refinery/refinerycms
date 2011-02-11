@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |s|
   s.name              = %q{refinerycms}
-  s.version           = %q{0.9.9.1}
+  s.version           = %q{0.9.9}
   s.description       = %q{A Ruby on Rails CMS that supports Rails 3. It's easy to extend and sticks to 'the Rails way' where possible.}
   s.date              = %q{2011-02-11}
   s.summary           = %q{A Ruby on Rails CMS that supports Rails 3}
@@ -126,6 +126,7 @@ Gem::Specification.new do |s|
     'authentication/config/locales/ru.yml',
     'authentication/config/locales/sl.yml',
     'authentication/config/locales/sv.yml',
+    'authentication/config/locales/vi.yml',
     'authentication/config/locales/zh-CN.yml',
     'authentication/config/locales/zh-TW.yml',
     'authentication/config/routes.rb',
@@ -267,6 +268,7 @@ Gem::Specification.new do |s|
     'core/config/locales/ru.yml',
     'core/config/locales/sl.yml',
     'core/config/locales/sv.yml',
+    'core/config/locales/vi.yml',
     'core/config/locales/zh-CN.yml',
     'core/config/locales/zh-TW.yml',
     'core/config/routes.rb',
@@ -525,6 +527,7 @@ Gem::Specification.new do |s|
     'core/public/javascripts/wymeditor/lang/sl.js',
     'core/public/javascripts/wymeditor/lang/sv.js',
     'core/public/javascripts/wymeditor/lang/tr.js',
+    'core/public/javascripts/wymeditor/lang/vi.js',
     'core/public/javascripts/wymeditor/lang/zh_cn.js',
     'core/public/javascripts/wymeditor/skins',
     'core/public/javascripts/wymeditor/skins/refinery',
@@ -596,6 +599,7 @@ Gem::Specification.new do |s|
     'dashboard/config/locales/ru.yml',
     'dashboard/config/locales/sl.yml',
     'dashboard/config/locales/sv.yml',
+    'dashboard/config/locales/vi.yml',
     'dashboard/config/locales/zh-CN.yml',
     'dashboard/config/locales/zh-TW.yml',
     'dashboard/config/routes.rb',
@@ -653,6 +657,7 @@ Gem::Specification.new do |s|
     'images/config/locales/ru.yml',
     'images/config/locales/sl.yml',
     'images/config/locales/sv.yml',
+    'images/config/locales/vi.yml',
     'images/config/locales/zh-CN.yml',
     'images/config/locales/zh-TW.yml',
     'images/config/routes.rb',
@@ -745,6 +750,7 @@ Gem::Specification.new do |s|
     'pages/config/locales/ru.yml',
     'pages/config/locales/sl.yml',
     'pages/config/locales/sv.yml',
+    'pages/config/locales/vi.yml',
     'pages/config/locales/zh-CN.yml',
     'pages/config/locales/zh-TW.yml',
     'pages/config/routes.rb',
@@ -818,6 +824,7 @@ Gem::Specification.new do |s|
     'resources/config/locales/ru.yml',
     'resources/config/locales/sl.yml',
     'resources/config/locales/sv.yml',
+    'resources/config/locales/vi.yml',
     'resources/config/locales/zh-CN.yml',
     'resources/config/locales/zh-TW.yml',
     'resources/config/routes.rb',
@@ -884,6 +891,7 @@ Gem::Specification.new do |s|
     'settings/config/locales/ru.yml',
     'settings/config/locales/sl.yml',
     'settings/config/locales/sv.yml',
+    'settings/config/locales/vi.yml',
     'settings/config/locales/zh-CN.yml',
     'settings/config/locales/zh-TW.yml',
     'settings/config/routes.rb',
