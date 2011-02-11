@@ -2,7 +2,7 @@ require 'devise'
 require 'refinerycms-core'
 # Attach authenticated system methods to the ::Refinery::ApplicationController
 require File.expand_path('../authenticated_system', __FILE__)
-[::Refinery::ApplicationController, ::Refinery::ApplicationHelper].each do |c| 
+[::Refinery::ApplicationController, ::Refinery::ApplicationHelper].each do |c|
   c.class_eval {
     include AuthenticatedSystem
   }

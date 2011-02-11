@@ -220,7 +220,15 @@ DEPENDENCIES
   launchy
   rack-test (~> 0.5.6)
   refinerycms!
+  refinerycms-authentication (~> 0.9.9)
+  refinerycms-base (~> 0.9.9)
+  refinerycms-core (~> 0.9.9)
+  refinerycms-dashboard (~> 0.9.9)
   refinerycms-i18n (~> 0.9.9.9)
+  refinerycms-images (~> 0.9.9)
+  refinerycms-pages (~> 0.9.9)
+  refinerycms-resources (~> 0.9.9)
+  refinerycms-settings (~> 0.9.9)
   rspec-rails (~> 2.5)
   ruby-prof
   spork

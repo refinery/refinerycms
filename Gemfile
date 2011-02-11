@@ -28,6 +28,11 @@ end
 
 # REFINERY CMS ================================================================
 
+# gemspec doesn't seem to source these correctly under 'rake cucumber'
+%w(authentication base core dashboard images pages resources settings).each do |engine|
+  gem "refinerycms-#{engine}", '~> 0.9.9'
+end
+
 group :development, :test do
   gem 'spork' unless Bundler::WINDOWS
   gem "#{'j' if RUBY_PLATFORM == 'java'}ruby-prof" unless defined?(RUBY_ENGINE) and RUBY_ENGINE == 'rbx'
