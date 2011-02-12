@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
+require 'pathname'
 require File.expand_path('../../base/lib/refinery.rb', __FILE__)
-files = %w( Gemfile *.md **/**/{*,.rspec,.gitignore,.yardopts} ).map { |file| Dir.glob(file) }.flatten.sort
+files = %w( Gemfile *.md **/**/{*,.rspec,.gitignore,.yardopts} ).map { |file| Pathname.glob(file) }.flatten
 rejection_patterns = [
   "^(authentication|base|core|dashboard|images|pages|resources|settings)",
   "^public/system",
@@ -9,7 +10,7 @@ rejection_patterns = [
   "^config/(database|i18n\-js).yml$",
   "^lib\/gemspec\.rb",
   ".*\/cache\/",
-  "^db\/(schema|seeds|.*\.sqlite3?(-journal)?|migrate)(\/?.*\.rb)?$",
+  "^db(\/)?",
   "^script\/*",
   "^vendor\/plugins\/?$",
   "(^log|\.log)$",
@@ -20,7 +21,7 @@ rejection_patterns = [
 ]
 
 files.reject! do |f|
-  !File.exist?(f) or f =~ %r{(#{rejection_patterns.join(')|(')})} or (File.directory?(f) and Dir[File.join(f, "*")].empty?)
+  !f.exist? or (f.directory? and f.children.empty?) or f.to_s =~ %r{(#{rejection_patterns.join(')|(')})}
 end
 
 gemspec = <<EOF
@@ -28,7 +29,7 @@ gemspec = <<EOF
 
 Gem::Specification.new do |s|
   s.name              = %q{refinerycms}
-  s.version           = %q{#{Refinery.version}}
+  s.version           = %q{#{::Refinery.version}}
   s.description       = %q{A Ruby on Rails CMS that supports Rails 3. It's easy to extend and sticks to 'the Rails way' where possible.}
   s.date              = %q{#{Time.now.strftime('%Y-%m-%d')}}
   s.summary           = %q{A Ruby on Rails CMS that supports Rails 3}
@@ -38,21 +39,21 @@ Gem::Specification.new do |s|
   s.authors           = ['Resolve Digital', 'David Jones', 'Philip Arndt']
   s.license           = %q{MIT}
   s.require_paths     = %w(lib)
-  s.executables       = %w(#{Dir.glob('bin/*').map{|d| d.gsub('bin/','')}.join(' ')})
+  s.executables       = %w(#{Dir['bin/*'].join(' ').gsub('bin/', '')})
 
   # Bundler
   s.add_dependency    'bundler',                    '~> 1.0.5'
 
   # Refinery CMS
   s.add_dependency    'refinerycms-generators',     '~> 0.9.9.3'
-  s.add_dependency    'refinerycms-authentication', '~> 0.9.9'
-  s.add_dependency    'refinerycms-base',           '~> 0.9.9'
-  s.add_dependency    'refinerycms-core',           '~> 0.9.9'
-  s.add_dependency    'refinerycms-dashboard',      '~> 0.9.9'
-  s.add_dependency    'refinerycms-images',         '~> 0.9.9'
-  s.add_dependency    'refinerycms-pages',          '~> 0.9.9'
-  s.add_dependency    'refinerycms-resources',      '~> 0.9.9'
-  s.add_dependency    'refinerycms-settings',       '~> 0.9.9'
+  s.add_dependency    'refinerycms-authentication', "~> #{::Refinery::Version}"
+  s.add_dependency    'refinerycms-base',           "~> #{::Refinery::Version}"
+  s.add_dependency    'refinerycms-core',           "~> #{::Refinery::Version}"
+  s.add_dependency    'refinerycms-dashboard',      "~> #{::Refinery::Version}"
+  s.add_dependency    'refinerycms-images',         "~> #{::Refinery::Version}"
+  s.add_dependency    'refinerycms-pages',          "~> #{::Refinery::Version}"
+  s.add_dependency    'refinerycms-resources',      "~> #{::Refinery::Version}"
+  s.add_dependency    'refinerycms-settings',       "~> #{::Refinery::Version}"
 
   s.add_development_dependency 'rspec-rails',       '~> 2.5'
 

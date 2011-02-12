@@ -4,7 +4,7 @@ Gem::Specification.new do |s|
   s.name              = %q{refinerycms}
   s.version           = %q{0.9.9.1}
   s.description       = %q{A Ruby on Rails CMS that supports Rails 3. It's easy to extend and sticks to 'the Rails way' where possible.}
-  s.date              = %q{2011-02-12}
+  s.date              = %q{2011-02-13}
   s.summary           = %q{A Ruby on Rails CMS that supports Rails 3}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
@@ -19,14 +19,14 @@ Gem::Specification.new do |s|
 
   # Refinery CMS
   s.add_dependency    'refinerycms-generators',     '~> 0.9.9.3'
-  s.add_dependency    'refinerycms-authentication', '~> 0.9.9'
-  s.add_dependency    'refinerycms-base',           '~> 0.9.9'
-  s.add_dependency    'refinerycms-core',           '~> 0.9.9'
-  s.add_dependency    'refinerycms-dashboard',      '~> 0.9.9'
-  s.add_dependency    'refinerycms-images',         '~> 0.9.9'
-  s.add_dependency    'refinerycms-pages',          '~> 0.9.9'
-  s.add_dependency    'refinerycms-resources',      '~> 0.9.9'
-  s.add_dependency    'refinerycms-settings',       '~> 0.9.9'
+  s.add_dependency    'refinerycms-authentication', "~> 0.9.9.1"
+  s.add_dependency    'refinerycms-base',           "~> 0.9.9.1"
+  s.add_dependency    'refinerycms-core',           "~> 0.9.9.1"
+  s.add_dependency    'refinerycms-dashboard',      "~> 0.9.9.1"
+  s.add_dependency    'refinerycms-images',         "~> 0.9.9.1"
+  s.add_dependency    'refinerycms-pages',          "~> 0.9.9.1"
+  s.add_dependency    'refinerycms-resources',      "~> 0.9.9.1"
+  s.add_dependency    'refinerycms-settings',       "~> 0.9.9.1"
 
   s.add_development_dependency 'rspec-rails',       '~> 2.5'
 
@@ -68,7 +68,6 @@ Gem::Specification.new do |s|
     'changelog.md',
     'changelog.md',
     'config',
-    'config.ru',
     'config/cucumber.yml',
     'config/database.yml.mysql',
     'config/database.yml.postgresql',
@@ -78,7 +77,7 @@ Gem::Specification.new do |s|
     'config/environments/production.rb',
     'config/environments/test.rb',
     'config/settings.rb',
-    'db',
+    'config.ru',
     'lib',
     'lib/refinery.rb',
     'lib/refinerycms.rb',
