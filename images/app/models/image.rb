@@ -15,6 +15,8 @@ class Image < ActiveRecord::Base
   # Docs for acts_as_indexed http://github.com/dougal/acts_as_indexed
   acts_as_indexed :fields => [:title]
 
+  before_save :default_values
+
   # when a dialog pops up with images, how many images per page should there be
   PAGES_PER_DIALOG = 18
 
@@ -63,10 +65,12 @@ class Image < ActiveRecord::Base
     end
   end
 
-  # Returns a titleized version of the filename
-  # my_file.jpg returns My File
-  def title
-    CGI::unescape(image_name.to_s).gsub(/\.\w+$/, '').titleize
+  def default_values
+    # Returns a titleized version of the filename
+    # my_file.jpg returns My File
+    if self.title.blank? || self.image_name_changed?
+      self.title = CGI::unescape(image_name.to_s).gsub(/\.\w+$/, '').titleize
+    end
   end
 
 end

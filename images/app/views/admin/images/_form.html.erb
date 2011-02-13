@@ -6,8 +6,16 @@
                :include_object_name => false
              } %>
 
-  <div class='field'>
-    <% if action_name =~ /(edit)|(update)/ %>
+  <% if action_name =~ /(edit)|(update)/ %>
+    <div class='field'>
+      <%= f.label :title %>
+      <%= f.text_field :title %>
+    </div>
+    <div class='field'>
+      <%= f.label :description %>
+      <%= f.text_area :description, :rows => 3 %>
+    </div>
+    <div class='field'>
       <p>
         <%= t('.use_current_image') %>
         <em><%= t('.or') %></em><%= t('.replace_image') %>
@@ -15,11 +23,13 @@
       <p>
         <%= f.file_field :image %>
       </p>
-    <% else %>
+    </div>
+  <% else %>
+    <div class='field'>
       <% # we must only hint at multiple when it's a new record otherwise update fails. %>
       <%= f.file_field :image, :multiple => true %>
-    <% end %>
-  </div>
+    </div>
+  <% end %>
 
   <div class='field'>
     <label><%= t('.maximum_image_size', :megabytes => Image::MAX_SIZE_IN_MB) %></label>
