@@ -5,6 +5,8 @@ require 'truncate_html'
 require 'will_paginate'
 require 'refinerycms-generators'
 require 'refinerycms-settings'
+require 'rails/generators'
+require 'rails/generators/migration'
 
 module Refinery
 
