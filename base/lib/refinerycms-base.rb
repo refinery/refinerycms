@@ -1,20 +1,22 @@
-require File.expand_path('../refinery', __FILE__)
+unless defined? ::Rails
+  require 'rails'
+  require 'action_controller/railtie'
+end
+require File.expand_path('../base/refinery', __FILE__)
 
 module Refinery
 
   module Base
     class << self
+      attr_accessor :root
+      def root
+        @root ||= Pathname.new(File.expand_path('../../', __FILE__))
+      end
     end
 
-    class Engine < Rails::Engine
+    class Engine < ::Rails::Engine
 
       config.autoload_paths += %W( #{config.root}/lib )
-
-      config.before_configuration do
-      end
-
-      config.to_prepare do
-      end
 
       config.after_initialize do
         ::Refinery::Plugin.register do |plugin|
@@ -26,7 +28,9 @@ module Refinery
           plugin.menu_match = /(refinery|admin)\/(refinery_base)$/
         end
       end
-    end
+    end # if defined?(::Rails::Engine)
   end
 
 end
+
+::Refinery.engines << "base"

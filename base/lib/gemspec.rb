@@ -1,5 +1,5 @@
 require 'pathname'
-require File.expand_path('../refinery', __FILE__)
+require File.expand_path('../base/refinery', __FILE__)
 gempath = Pathname.new(File.expand_path('../../', __FILE__))
 
 gemspec = <<EOF
@@ -20,7 +20,9 @@ Gem::Specification.new do |s|
   s.executables       = %w(#{Pathname.glob(gempath.join('bin/*')).map{|d| d.relative_path_from(gempath)}.sort.join(" ")})
 
   s.files             = [
-    '#{Pathname.glob(gempath.join('**/*')).map{|d| d.relative_path_from(gempath)}.reject{|p| p.to_s =~ /.gem$/}.sort.join("',\n    '")}'
+    '#{%w( **/{*,.rspec,.gitignore,.yardopts} ).map { |file| Pathname.glob(gempath.join(file)) }.flatten.reject{|f|
+      !f.exist? or f.to_s =~ /\.gem$/ or (f.directory? and f.children.empty?)
+    }.map{|d| d.relative_path_from(gempath)}.uniq.sort.join("',\n    '")}'
   ]
 end
 EOF

@@ -11,11 +11,11 @@ end
 module Refinery
   module Authentication
 
-    class Engine < Rails::Engine
+    class Engine < ::Rails::Engine
       config.autoload_paths += %W( #{config.root}/lib )
 
       config.after_initialize do
-        Refinery::Plugin.register do |plugin|
+        ::Refinery::Plugin.register do |plugin|
           plugin.name = "refinery_users"
           plugin.version = %q{0.9.9}
           plugin.menu_match = /(refinery|admin)\/users$/
@@ -25,6 +25,13 @@ module Refinery
           }
           plugin.url = {:controller => "/admin/users"}
         end
+      end
+    end # if defined?(::Rails::Engine)
+
+    class << self
+      attr_accessor :root
+      def root
+        @root ||= Pathname.new(File.expand_path('../../', __FILE__))
       end
     end
   end
@@ -36,3 +43,5 @@ module Refinery
     end
   end
 end
+
+::Refinery.engines << 'authentication'

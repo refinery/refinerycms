@@ -5,7 +5,7 @@ Gem::Specification.new do |s|
   s.version           = %q{0.9.9.1}
   s.summary           = %q{Core engine for Refinery CMS}
   s.description       = %q{The core of Refinery CMS. This handles the common functionality and is required by most engines}
-  s.date              = %q{2011-02-13}
+  s.date              = %q{2011-02-14}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
   s.rubyforge_project = %q{refinerycms}
@@ -16,6 +16,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'refinerycms-base',            '~> 0.9.9.1'
   s.add_dependency 'refinerycms-settings',        '~> 0.9.9.1'
+  s.add_dependency 'refinerycms-generators',      '~> 0.9.9.3'
   s.add_dependency 'acts_as_indexed',             '~> 0.7'
   s.add_dependency 'friendly_id_globalize3',      '~> 3.2.0'
   s.add_dependency 'globalize3',                  '>= 0.1.0.beta'
@@ -120,6 +121,8 @@ Gem::Specification.new do |s|
     'lib/generators',
     'lib/generators/refinerycms_generator.rb',
     'lib/generators/templates',
+    'lib/generators/templates/.gitignore',
+    'lib/generators/templates/.rspec',
     'lib/generators/templates/app',
     'lib/generators/templates/app/views',
     'lib/generators/templates/app/views/sitemap',

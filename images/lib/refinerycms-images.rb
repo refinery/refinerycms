@@ -4,7 +4,15 @@ require 'refinerycms-core'
 
 module Refinery
   module Images
-    class Engine < Rails::Engine
+
+    class << self
+      attr_accessor :root
+      def root
+        @root ||= Pathname.new(File.expand_path('../../', __FILE__))
+      end
+    end
+
+    class Engine < ::Rails::Engine
       initializer 'images-with-dragonfly' do |app|
         app_images = Dragonfly[:images]
         app_images.configure_with(:imagemagick)
@@ -44,7 +52,7 @@ module Refinery
       end
 
       config.after_initialize do
-        Refinery::Plugin.register do |plugin|
+        ::Refinery::Plugin.register do |plugin|
           plugin.name = "refinery_images"
           plugin.directory = "images"
           plugin.version = %q{0.9.9}
@@ -54,6 +62,8 @@ module Refinery
           }
         end
       end
-    end
+    end # if defined?(::Rails::Engine)
   end
 end
+
+::Refinery.engines << 'dashboard'

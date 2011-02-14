@@ -30,9 +30,14 @@ module Refinery
           end
         end
       end
+
+      attr_accessor :root
+      def root
+        @root ||= Pathname.new(File.expand_path('../../', __FILE__))
+      end
     end
 
-    class Engine < Rails::Engine
+    class Engine < ::Rails::Engine
 
       config.autoload_paths += %W( #{config.root}/lib )
 
@@ -66,7 +71,7 @@ module Refinery
 
       # Register the plugin
       config.after_initialize do
-        Refinery::Plugin.register do |plugin|
+        ::Refinery::Plugin.register do |plugin|
           plugin.name ="refinery_core"
           plugin.class_name ="RefineryEngine"
           plugin.version = Refinery.version.to_s
@@ -76,7 +81,7 @@ module Refinery
         end
 
         # Register the dialogs plugin
-        Refinery::Plugin.register do |plugin|
+        ::Refinery::Plugin.register do |plugin|
           plugin.name = "refinery_dialogs"
           plugin.version = Refinery.version.to_s
           plugin.hide_from_menu = true
@@ -98,7 +103,7 @@ module Refinery
         app.config.autoload_paths += [
           Rails.root.join("app", "presenters"),
           Rails.root.join("vendor", "**", "**", "app", "presenters"),
-          Refinery.root.join("**", "app", "presenters")
+          Refinery.roots.map{|r| r.join("**", "app", "presenters")} 
         ].flatten
       end
 
@@ -133,11 +138,13 @@ module Refinery
 
       initializer 'ensure devise is initialised' do |app|
         unless Rails.root.join('config', 'initializers', 'devise.rb').file?
-          load Refinery.root.join(*%w(core lib generators templates config initializers devise.rb))
+          load Refinery.roots('core').join(*%w(lib generators templates config initializers devise.rb))
         end
       end
 
-    end
+    end # if defined?(::Rails::Engine)
   end
 
 end
+
+::Refinery.engines << 'core'

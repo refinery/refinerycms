@@ -10,24 +10,15 @@ rescue LoadError
   exit(1)
 end
 
+# Load refinerycms
+
+require Pathname.new(File.expand_path(File.dirname(__FILE__) << "/..")).join('lib', 'refinery')
+
 # Load other required libraries
 require 'pathname'
 require 'fileutils'
 require 'optparse'
-
-# Load refinerycms
-require Pathname.new(File.expand_path(File.dirname(__FILE__) << "/..")).join('lib', 'refinery')
-
-class String
-  def blank?
-    self.nil? or self.length == 0
-  end
-end
-class NilClass
-  def blank?
-    true
-  end
-end
+require 'active_support'
 
 module Refinery
   class AppGenerator

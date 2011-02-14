@@ -5,7 +5,7 @@ Gem::Specification.new do |s|
   s.version           = %q{0.9.9.1}
   s.summary           = %q{Base engine for Refinery CMS}
   s.description       = %q{The basic base for Refinery CMS Refinery CMS}
-  s.date              = %q{2011-02-13}
+  s.date              = %q{2011-02-14}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
   s.rubyforge_project = %q{refinerycms}
@@ -28,12 +28,13 @@ Gem::Specification.new do |s|
     'features/support/negative_expectations_helper.rb',
     'features/support/paths.rb',
     'lib',
+    'lib/base',
+    'lib/base/refinery.rb',
     'lib/gemspec.rb',
     'lib/generators',
     'lib/generators/refinerycms_base_generator.rb',
     'lib/refinery',
     'lib/refinery/version.rb',
-    'lib/refinery.rb',
     'lib/refinerycms-base.rb',
     'license.md',
     'refinerycms-base.gemspec'

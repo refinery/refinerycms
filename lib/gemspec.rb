@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 require 'pathname'
 gempath = Pathname.new(File.expand_path('../../', __FILE__))
-require gempath.join('base', 'lib', 'refinery')
+require gempath.join('base', 'lib', 'base', 'refinery')
 
 files = %w( Gemfile *.md **/**/{*,.rspec,.gitignore,.yardopts} ).map { |file| Pathname.glob(file) }.flatten
 rejection_patterns = [
@@ -47,7 +47,6 @@ Gem::Specification.new do |s|
   s.add_dependency    'bundler',                    '~> 1.0.5'
 
   # Refinery CMS
-  s.add_dependency    'refinerycms-generators',     '~> 0.9.9.3'
   s.add_dependency    'refinerycms-authentication', "~> #{::Refinery::Version}"
   s.add_dependency    'refinerycms-base',           "~> #{::Refinery::Version}"
   s.add_dependency    'refinerycms-core',           "~> #{::Refinery::Version}"
