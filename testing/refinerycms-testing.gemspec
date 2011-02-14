@@ -37,6 +37,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'autotest-notification'
 
   s.files             = [
+    '.rspec',
     'config',
     'config/cucumber.yml',
     'features',

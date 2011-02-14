@@ -122,7 +122,6 @@ Gem::Specification.new do |s|
     'lib/generators/refinerycms_generator.rb',
     'lib/generators/templates',
     'lib/generators/templates/.gitignore',
-    'lib/generators/templates/.rspec',
     'lib/generators/templates/app',
     'lib/generators/templates/app/views',
     'lib/generators/templates/app/views/sitemap',

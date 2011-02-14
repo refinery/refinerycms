@@ -4,14 +4,14 @@ require 'refinerycms-core'
 
 module Refinery
   module Resources
-  
+
     class << self
       attr_accessor :root
       def root
         @root ||= Pathname.new(File.expand_path('../../', __FILE__))
       end
     end
-    
+
     class Engine < ::Rails::Engine
       initializer 'resources-with-dragonfly' do |app|
         app_resources = Dragonfly[:resources]
