@@ -3,7 +3,6 @@ require 'rbconfig'
 module Refinery
 
   WINDOWS = !!(RbConfig::CONFIG['host_os'] =~ %r!(msdos|mswin|djgpp|mingw)!) unless defined? WINDOWS
-  JRUBY = (RUBY_PLATFORM == 'java') unless defined? JRUBY
 
   autoload :Version, File.expand_path('../../refinery/version', __FILE__)
 

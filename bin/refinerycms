@@ -246,7 +246,7 @@ module Refinery
       if !$?.success? or rails_output.blank? or rails_output =~ /^(Can't\ initialize|Error)/
         puts "Generating Rails application failed. Exiting..."
         exit(1)
-      elsif Refinery::JRUBY
+      elsif defined? JRUBY_VERSION
         find_and_replace(@app_path.join('Gemfile'), /['|"]sqlite3['|"]/, "'activerecord-jdbcsqlite3-adapter'")
       end
     end

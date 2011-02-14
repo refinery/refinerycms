@@ -31,7 +31,7 @@ end
 # gem 'refinerycms', '~> 0.9.9.1'
 
 group :development, :test do
-  gem 'refinerycms-testing', '~> 0.9.9.1'
+  gem 'refinerycms-testing',    '~> 0.9.9.1'
 end
 
 # END REFINERY CMS ============================================================
