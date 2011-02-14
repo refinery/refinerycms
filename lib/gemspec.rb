@@ -5,7 +5,7 @@ require gempath.join('base', 'lib', 'base', 'refinery')
 
 files = %w( Gemfile *.md **/**/{*,.rspec,.gitignore,.yardopts} ).map { |file| Pathname.glob(file) }.flatten
 rejection_patterns = [
-  "^(authentication|base|core|dashboard|images|pages|resources|settings)",
+  "^(authentication|base|core|dashboard|images|pages|resources|settings|testing)",
   "^public/system",
   "^config/(application|boot|environment).rb$",
   "^config/initializers(\/.*\.rb)?$",
@@ -47,34 +47,14 @@ Gem::Specification.new do |s|
   s.add_dependency    'bundler',                    '~> 1.0.5'
 
   # Refinery CMS
-  s.add_dependency    'refinerycms-authentication', "~> #{::Refinery::Version}"
-  s.add_dependency    'refinerycms-base',           "~> #{::Refinery::Version}"
-  s.add_dependency    'refinerycms-core',           "~> #{::Refinery::Version}"
-  s.add_dependency    'refinerycms-dashboard',      "~> #{::Refinery::Version}"
-  s.add_dependency    'refinerycms-images',         "~> #{::Refinery::Version}"
-  s.add_dependency    'refinerycms-pages',          "~> #{::Refinery::Version}"
-  s.add_dependency    'refinerycms-resources',      "~> #{::Refinery::Version}"
-  s.add_dependency    'refinerycms-settings',       "~> #{::Refinery::Version}"
-
-  s.add_development_dependency 'rspec-rails',       '~> 2.5'
-
-  # Cucumber
-  s.add_development_dependency 'capybara',          '>= 0.4.1.1'
-  s.add_development_dependency 'database_cleaner'
-  s.add_development_dependency 'cucumber-rails'
-  s.add_development_dependency 'cucumber'
-  s.add_development_dependency 'launchy'
-  s.add_development_dependency 'gherkin'
-  s.add_development_dependency 'rack-test',         '~> 0.5.6'
-  s.add_development_dependency 'json_pure'
-
-  # Factory Girl
-  s.add_development_dependency 'factory_girl'
-
-  # Autotest
-  s.add_development_dependency 'autotest'
-  s.add_development_dependency 'autotest-rails'
-  s.add_development_dependency 'autotest-notification'
+  s.add_dependency    'refinerycms-authentication', '~> #{::Refinery::Version}'
+  s.add_dependency    'refinerycms-base',           '~> #{::Refinery::Version}'
+  s.add_dependency    'refinerycms-core',           '~> #{::Refinery::Version}'
+  s.add_dependency    'refinerycms-dashboard',      '~> #{::Refinery::Version}'
+  s.add_dependency    'refinerycms-images',         '~> #{::Refinery::Version}'
+  s.add_dependency    'refinerycms-pages',          '~> #{::Refinery::Version}'
+  s.add_dependency    'refinerycms-resources',      '~> #{::Refinery::Version}'
+  s.add_dependency    'refinerycms-settings',       '~> #{::Refinery::Version}'
 
   s.files             = [
     '#{files.sort.join("',\n    '")}'

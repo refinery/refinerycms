@@ -1,3 +1,5 @@
+require 'refinerycms-base'
+
 module Refinery
   module Settings
 

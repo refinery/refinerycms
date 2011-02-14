@@ -22,7 +22,7 @@ module Refinery
         ::Refinery::Plugin.register do |plugin|
           plugin.name = "refinerycms_base"
           plugin.class_name ="RefineryBaseEngine"
-          plugin.version = Refinery.version.to_s
+          plugin.version = ::Refinery.version
           plugin.hide_from_menu = true
           plugin.always_allow_access = true
           plugin.menu_match = /(refinery|admin)\/(refinery_base)$/

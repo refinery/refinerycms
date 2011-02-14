@@ -14,7 +14,7 @@ Gem::Specification.new do |s|
   s.require_paths     = %w(lib)
   s.executables       = %w()
 
-  s.add_dependency 'refinerycms-core', "~> 0.9.9.1"
+  s.add_dependency 'refinerycms-core', '~> 0.9.9.1'
   s.add_dependency 'devise',           '~> 1.1'
 
   s.files             = [

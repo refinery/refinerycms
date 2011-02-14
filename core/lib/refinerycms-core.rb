@@ -3,6 +3,7 @@ require 'awesome_nested_set'
 require 'friendly_id'
 require 'truncate_html'
 require 'will_paginate'
+require 'refinerycms-base'
 require 'refinerycms-generators'
 require 'refinerycms-settings'
 require 'rails/generators'
@@ -74,7 +75,7 @@ module Refinery
         ::Refinery::Plugin.register do |plugin|
           plugin.name ="refinery_core"
           plugin.class_name ="RefineryEngine"
-          plugin.version = Refinery.version.to_s
+          plugin.version = ::Refinery.version
           plugin.hide_from_menu = true
           plugin.always_allow_access = true
           plugin.menu_match = /(refinery|admin)\/(refinery_core)$/
@@ -83,7 +84,7 @@ module Refinery
         # Register the dialogs plugin
         ::Refinery::Plugin.register do |plugin|
           plugin.name = "refinery_dialogs"
-          plugin.version = Refinery.version.to_s
+          plugin.version = ::Refinery.version
           plugin.hide_from_menu = true
           plugin.always_allow_access = true
           plugin.menu_match = /(refinery|admin)\/(refinery_)?dialogs/
@@ -103,7 +104,7 @@ module Refinery
         app.config.autoload_paths += [
           Rails.root.join("app", "presenters"),
           Rails.root.join("vendor", "**", "**", "app", "presenters"),
-          Refinery.roots.map{|r| r.join("**", "app", "presenters")} 
+          Refinery.roots.map{|r| r.join("**", "app", "presenters")}
         ].flatten
       end
 

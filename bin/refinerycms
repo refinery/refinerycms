@@ -253,6 +253,7 @@ module Refinery
       # Add refinery gems to the Gemfile
       gemfile_contents = Refinery.root.join('Gemfile').read
       refinery_gems = gemfile_contents.match(/# REFINERY CMS =+.*# END REFINERY CMS =+/m)[0]
+      refinery_gems.gsub!("# gem 'refinerycms'", "gem 'refinerycms'")
       refinery_user_defined_gems = gemfile_contents.match(/# USER DEFINED(.*)# END USER DEFINED/m)
       refinery_user_defined_gems = refinery_user_defined_gems[1] unless refinery_user_defined_gems.nil?
       app_gemfile = @app_path.join('Gemfile')

@@ -18,34 +18,14 @@ Gem::Specification.new do |s|
   s.add_dependency    'bundler',                    '~> 1.0.5'
 
   # Refinery CMS
-  s.add_dependency    'refinerycms-authentication', "~> 0.9.9.1"
-  s.add_dependency    'refinerycms-base',           "~> 0.9.9.1"
-  s.add_dependency    'refinerycms-core',           "~> 0.9.9.1"
-  s.add_dependency    'refinerycms-dashboard',      "~> 0.9.9.1"
-  s.add_dependency    'refinerycms-images',         "~> 0.9.9.1"
-  s.add_dependency    'refinerycms-pages',          "~> 0.9.9.1"
-  s.add_dependency    'refinerycms-resources',      "~> 0.9.9.1"
-  s.add_dependency    'refinerycms-settings',       "~> 0.9.9.1"
-
-  s.add_development_dependency 'rspec-rails',       '~> 2.5'
-
-  # Cucumber
-  s.add_development_dependency 'capybara',          '>= 0.4.1.1'
-  s.add_development_dependency 'database_cleaner'
-  s.add_development_dependency 'cucumber-rails'
-  s.add_development_dependency 'cucumber'
-  s.add_development_dependency 'launchy'
-  s.add_development_dependency 'gherkin'
-  s.add_development_dependency 'rack-test',         '~> 0.5.6'
-  s.add_development_dependency 'json_pure'
-
-  # Factory Girl
-  s.add_development_dependency 'factory_girl'
-
-  # Autotest
-  s.add_development_dependency 'autotest'
-  s.add_development_dependency 'autotest-rails'
-  s.add_development_dependency 'autotest-notification'
+  s.add_dependency    'refinerycms-authentication', '~> 0.9.9.1'
+  s.add_dependency    'refinerycms-base',           '~> 0.9.9.1'
+  s.add_dependency    'refinerycms-core',           '~> 0.9.9.1'
+  s.add_dependency    'refinerycms-dashboard',      '~> 0.9.9.1'
+  s.add_dependency    'refinerycms-images',         '~> 0.9.9.1'
+  s.add_dependency    'refinerycms-pages',          '~> 0.9.9.1'
+  s.add_dependency    'refinerycms-resources',      '~> 0.9.9.1'
+  s.add_dependency    'refinerycms-settings',       '~> 0.9.9.1'
 
   s.files             = [
     '.gitignore',
