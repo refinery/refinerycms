@@ -19,7 +19,7 @@ module Refinery
           plugin.menu_match = /(refinery|admin)\/(refinery_)?settings$/
         end
       end
-    end # if defined?(::Rails::Engine)
+    end
   end
 end
 

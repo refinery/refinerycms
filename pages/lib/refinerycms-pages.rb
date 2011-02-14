@@ -38,7 +38,7 @@ module Refinery
         app.routes_reloader.paths << File.expand_path('../pages/marketable_routes.rb', __FILE__)
       end
 
-    end # if defined?(::Rails::Engine)
+    end
   end
 end
 

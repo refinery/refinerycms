@@ -11,7 +11,7 @@ end
 module Refinery
   module Authentication
 
-    class Engine < ::Rails::Engine
+    class Engine < ::Rails::EngiFne
       config.autoload_paths += %W( #{config.root}/lib )
 
       config.after_initialize do
@@ -26,7 +26,7 @@ module Refinery
           plugin.url = {:controller => "/admin/users"}
         end
       end
-    end # if defined?(::Rails::Engine)
+    end
 
     class << self
       attr_accessor :root

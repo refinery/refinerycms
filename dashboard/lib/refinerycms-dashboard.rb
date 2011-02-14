@@ -6,7 +6,7 @@ module Refinery
         @root ||= Pathname.new(File.expand_path('../../', __FILE__))
       end
     end
-
+    
     class Engine < ::Rails::Engine
 
       config.after_initialize do
@@ -21,7 +21,7 @@ module Refinery
         end
       end
 
-    end # if defined?(::Rails::Engine)
+    end
   end
 end
 

@@ -143,7 +143,7 @@ module Refinery
         end
       end
 
-    end # if defined?(::Rails::Engine)
+    end
   end
 
 end
