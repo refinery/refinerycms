@@ -11,7 +11,7 @@ end
 module Refinery
   module Authentication
 
-    class Engine < ::Rails::EngiFne
+    class Engine < ::Rails::Engine
       config.autoload_paths += %W( #{config.root}/lib )
 
       config.after_initialize do
