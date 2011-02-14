@@ -216,20 +216,8 @@ module Refinery
     end
 
     def update!
-      rails_command = "rails new \"#{@app_path}\" --skip"
-      rails_command << " --database #{@options[:database][:adapter]}"
-      skips = %w(active-record gemfile git javascript prototype test-unit)
-      skips.each do |skip|
-        rails_command << " --skip-#{skip}"
-      end
-      
-      rails_command << " -m http://jruby.org" if defined? JRUBY_VERSION
-
-      # Generate a new rails application in this directory
-      generate!(rails_command)
-
-      # Clean the directory of all new files from rails that we don't want
-      run_command('git clean -f -d') if @app_path.join('.git').directory?
+      # Handle acts_as_indexed changes.
+      FileUtils::rm_r @app_path.join('tmp', 'index') if @app_path.join('tmp', 'index').directory?
     end
 
     def generate!(rails_command = nil)
