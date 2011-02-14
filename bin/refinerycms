@@ -222,6 +222,8 @@ module Refinery
       skips.each do |skip|
         rails_command << " --skip-#{skip}"
       end
+      
+      rails_command << " -m http://jruby.org" if defined? JRUBY_VERSION
 
       # Generate a new rails application in this directory
       generate!(rails_command)
@@ -237,6 +239,7 @@ module Refinery
         rails_command << " --database #{@options[:database][:adapter]}"
         rails_command << " --force" if @options[:force]
         rails_command << " --skip-test-unit --skip-prototype"
+        rails_command << " -m http://jruby.org" if defined? JRUBY_VERSION
       end
       rails_output = run_command(rails_command, {:cd => false})
       # Detect non-success or a blank rails output or starting with "Can't initialize" or "Error"
@@ -344,10 +347,12 @@ module Refinery
     private :validate!, :generate!, :bundle!, :output!
 
     def run_command(command, options = {})
+      require 'rbconfig'
+      exe = File.join(RbConfig::CONFIG['bindir'], RbConfig::CONFIG['RUBY_INSTALL_NAME'])
       options = {:cd => true, :puts => true, :fail => nil}.merge(options)
       to_run = %w()
       to_run << "cd \"#{@app_path}\" &&" if options[:cd]
-      to_run << command
+      to_run << "#{exe} -S " << command
 
       if Refinery::WINDOWS
         to_run = %w(cmd /c) | to_run.map{|c| c.gsub(/\//m, '\\')}
