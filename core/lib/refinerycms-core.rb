@@ -3,6 +3,16 @@ require 'awesome_nested_set'
 require 'friendly_id'
 require 'truncate_html'
 require 'will_paginate'
+
+module Refinery
+  autoload :Activity, File.expand_path('../refinery/activity', __FILE__)
+  autoload :Application, File.expand_path('../refinery/application', __FILE__)
+  autoload :ApplicationController, File.expand_path('../refinery/application_controller', __FILE__)
+  autoload :ApplicationHelper, File.expand_path('../refinery/application_helper', __FILE__)
+  autoload :Plugin,  File.expand_path('../refinery/plugin', __FILE__)
+  autoload :Plugins, File.expand_path('../refinery/plugins', __FILE__)
+end
+
 require 'refinerycms-base'
 require 'refinerycms-generators'
 require 'refinerycms-settings'
@@ -10,13 +20,6 @@ require 'rails/generators'
 require 'rails/generators/migration'
 
 module Refinery
-
-  autoload :Activity, File.expand_path('../refinery/activity', __FILE__)
-  autoload :Application, File.expand_path('../refinery/application', __FILE__)
-  autoload :ApplicationController, File.expand_path('../refinery/application_controller', __FILE__)
-  autoload :ApplicationHelper, File.expand_path('../refinery/application_helper', __FILE__)
-  autoload :Plugin,  File.expand_path('../refinery/plugin', __FILE__)
-  autoload :Plugins, File.expand_path('../refinery/plugins', __FILE__)
 
   module Core
     class << self
