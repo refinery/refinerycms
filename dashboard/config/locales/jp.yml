@@ -1,0 +1,25 @@
+jp:
+  plugins:
+    refinery_dashboard:
+      title: ダッシュボード
+      description: Gives an overview of activity in Refinery
+  admin:
+    dashboard:
+      index:
+        quick_tasks: クイックタスク
+        add_a_new_page: ページの新規追加
+        update_a_page: ページの更新
+        upload_a_image: 画像をアップロード
+        upload_a_file: ファイルをアップロード
+        change_language: 言語の選択
+        see_home_page: ホームページを見る
+      recent_activity:
+        empty: There has not been any activity recently.
+        latest_activity: 最近の活動記録
+        latest_activity_message: %{what} %{kind} was %{action}
+      recent_inquiries:
+        latest_inquiries: Latest inquiries
+  updated:
+    'with_article "the"': updated
+  created:
+    'with_article "the"': added
