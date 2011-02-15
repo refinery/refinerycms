@@ -63,7 +63,7 @@ module Refinery
         end
 
         opts.on("-g", "--gems gem1,gem2,gem3", Array, "Additional gems to install") do |gems|
-          @options[:gems] = gems.reject {|g| g.to_s =~ /^(refinerycms)$/}.map {|g| "gem '#{g.to_s}'"}
+          @options[:gems] = gems.reject {|g| g.to_s =~ /^refinerycms/}.map {|g| "gem '#{g.to_s}'"}
         end
 
         opts.on("-f", "--force", "Force overwriting of directory") do
@@ -257,14 +257,19 @@ module Refinery
 
     def bundle!
       # Insert the current REFINERY CMS section (you shouldn't put anything in here).
-      refinery_gems = Refinery.root.join('Gemfile').read.match(/# REFINERY CMS =+.*# END REFINERY CMS =+/m)[0]
+      refinery_gemfile_contents = Refinery.root.join('Gemfile').read
+      refinery_gems = refinery_gemfile_contents.match(/# REFINERY CMS =+.*# END REFINERY CMS =+/m)[0]
       refinery_gems.gsub!("# gem 'refinerycms'", "gem 'refinerycms'") # Enable refinerycms
       refinery_gems.gsub!("gem 'refinerycms-testing'", "# gem 'refinerycms-testing'") # Disable testing
       unless @options[:update]
         app_gemfile = @app_path.join('Gemfile')
         FileUtils::cp app_gemfile, "#{app_gemfile}.backup"
+        refinery_user_defined_gems = refinery_gemfile_contents.match(/# USER DEFINED(.*)# END USER DEFINED/m)
+        refinery_user_defined_gems = refinery_user_defined_gems[1] unless refinery_user_defined_gems.nil?
         app_gemfile.open('a') do |f|
           f.write "\n#{refinery_gems}\n"
+          @options[:gems] = ([refinery_user_defined_gems] | [@options[:gems]]).flatten.compact
+
           f.write "\n# USER DEFINED\n#{@options[:gems].join("\n")}\n# END USER DEFINED" if @options[:gems].any?
         end
       else
@@ -341,6 +346,7 @@ module Refinery
       puts "\nbundle install"
       puts "rails generate refinerycms_testing"
       puts "\nIf it prompts you about whether you want to overwrite any files that conflict, choose yes."
+      puts "\nNow, to run the specs and features you can just type 'rake'."
       puts "--- End upgrade note ---\n"
 
       puts "\nThanks for installing Refinery, enjoy creating your new application!"
