@@ -63,7 +63,7 @@ module Refinery
         end
 
         opts.on("-g", "--gems gem1,gem2,gem3", Array, "Additional gems to install") do |gems|
-          @options[:gems] = gems.reject {|g| g.to_s =~ /^(refinerycms)$/}.map {|g| "gem '#{g.to_s}'"}
+          @options[:gems] = gems.reject {|g| g.to_s =~ /^refinerycms/}.map {|g| "gem '#{g.to_s}'"}
         end
 
         opts.on("-f", "--force", "Force overwriting of directory") do
@@ -213,6 +213,15 @@ module Refinery
           exit(1)
         end
       end
+
+      if @options[:update]
+        puts "Please ensure you have a backup of your project and its database."
+        puts "Type 'yes' to continue (anything other than 'yes' will cancel)"
+        unless $stdin.gets.strip == 'yes'
+          puts "Cancelling..."
+          exit
+        end
+      end
     end
 
     def update!
@@ -236,34 +245,37 @@ module Refinery
         exit(1)
       elsif defined? JRUBY_VERSION
         find_and_replace(@app_path.join('Gemfile'), /['|"]sqlite3['|"]/, "'activerecord-jdbcsqlite3-adapter'")
+
+        # Override username and password
+        find_and_replace('config/database.yml', %r{username:.*}, "username: #{@options[:database][:username]}")
+        find_and_replace('config/database.yml', %r{password:.*}, "password: #{@options[:database][:password]}")
+
+        puts "\n---------"
+        puts "Refinery successfully installed in '#{@app_path}'!\n\n"
       end
     end
 
     def bundle!
-      # Add refinery gems to the Gemfile
-      gemfile_contents = Refinery.root.join('Gemfile').read
-      refinery_gems = gemfile_contents.match(/# REFINERY CMS =+.*# END REFINERY CMS =+/m)[0]
+      # Insert the current REFINERY CMS section (you shouldn't put anything in here).
+      refinery_gemfile_contents = Refinery.root.join('Gemfile').read
+      refinery_gems = refinery_gemfile_contents.match(/# REFINERY CMS =+.*# END REFINERY CMS =+/m)[0]
       refinery_gems.gsub!("# gem 'refinerycms'", "gem 'refinerycms'") # Enable refinerycms
       refinery_gems.gsub!("gem 'refinerycms-testing'", "# gem 'refinerycms-testing'") # Disable testing
-      refinery_user_defined_gems = gemfile_contents.match(/# USER DEFINED(.*)# END USER DEFINED/m)
-      refinery_user_defined_gems = refinery_user_defined_gems[1] unless refinery_user_defined_gems.nil?
-      app_gemfile = @app_path.join('Gemfile')
-      FileUtils::cp app_gemfile, "#{app_gemfile}.backup"
       unless @options[:update]
+        app_gemfile = @app_path.join('Gemfile')
+        FileUtils::cp app_gemfile, "#{app_gemfile}.backup"
+        refinery_user_defined_gems = refinery_gemfile_contents.match(/# USER DEFINED(.*)# END USER DEFINED/m)
+        refinery_user_defined_gems = refinery_user_defined_gems[1] unless refinery_user_defined_gems.nil?
         app_gemfile.open('a') do |f|
           f.write "\n#{refinery_gems}\n"
           @options[:gems] = ([refinery_user_defined_gems] | [@options[:gems]]).flatten.compact
 
           f.write "\n# USER DEFINED\n#{@options[:gems].join("\n")}\n# END USER DEFINED" if @options[:gems].any?
         end
+      else
+        find_and_replace(@app_path.join('Gemfile'), /# REFINERY CMS =+.*# END REFINERY CMS =+/m, refinery_gems)
       end
 
-      # Override database username and password
-      unless @options[:update]
-        # Override username and password
-        find_and_replace('config/database.yml', %r{username:.*}, "username: #{@options[:database][:username]}")
-        find_and_replace('config/database.yml', %r{password:.*}, "password: #{@options[:database][:password]}")
-      end
 
       # Specify the correct version of the Refinery CMS gem (may be git source).
       src = Refinery.version !~ /\.pre$/ ? "'= #{Refinery.version}'" : ":git => 'git://github.com/resolve/refinerycms'"
@@ -273,15 +285,14 @@ module Refinery
       find_and_replace('Gemfile', "# gem 'aws-s3', :require => 'aws/s3'",
                         "gem 'aws-s3', :require => 'aws/s3'") if @options[:heroku]
 
-      puts "\n---------"
-      puts "Refinery successfully installed in '#{@app_path}'!\n\n"
-
       # Automate
       # TODO: Check exit codes to see whether or not these worked
       puts "Installing gem requirements using bundler..\n"
 
       # Ensure RefineryCMS is up to date if we're updating
-      run_command("bundle update refinerycms refinerycms-generators", {:fail => "Unable to update core gems"}) if @options[:update]
+      if @options[:update]
+        run_command("bundle update refinerycms refinerycms-generators", {:fail => "Unable to update core gems"})
+      end
 
       # Install!
       run_command("bundle install", {:fail => "Unable to install necessary gems"})
@@ -327,6 +338,16 @@ module Refinery
         puts "\nIf you want files and images to work on heroku, you will need setup S3:"
         puts "heroku config:add S3_BUCKET=XXXXXXXXX S3_KEY=XXXXXXXXX S3_SECRET=XXXXXXXXXX"
       end
+
+      puts "\n--- Refinery CMS 0.9.9.1 note ---"
+      puts "New 'core' engine called 'refinerycms-testing' which handles RSpec and Cucumber support."
+      puts "You will see this disabled in your Gemfile in the '# REFINERY CMS' section."
+      puts "To enable it, uncomment the gem line in your Gemfile and run:"
+      puts "\nbundle install"
+      puts "rails generate refinerycms_testing"
+      puts "\nIf it prompts you about whether you want to overwrite any files that conflict, choose yes."
+      puts "\nNow, to run the specs and features you can just type 'rake'."
+      puts "--- End upgrade note ---\n"
 
       puts "\nThanks for installing Refinery, enjoy creating your new application!"
       puts "---------\n\n"

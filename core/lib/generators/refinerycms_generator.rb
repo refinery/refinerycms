@@ -86,6 +86,9 @@ class RefinerycmsGenerator < ::Refinery::Generators::EngineInstaller
       self.class.source_root.join('db', 'seeds.rb').read
     end
 
+    force_options = self.options.dup
+    force_options[:force] = self.options[:force] || self.options[:update]
+    self.options = force_options
     # Seeds and migrations now need to be copied from their various engines.
     existing_source_root = self.class.source_root
     ::Refinery::Plugins.registered.pathnames.reject{|p| !p.join('db').directory?}.sort.each do |pathname|
