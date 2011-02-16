@@ -1,21 +1,27 @@
-require 'rails/all'
-
 require 'acts_as_indexed'
 require 'awesome_nested_set'
-require 'dragonfly'
-require 'devise'
 require 'friendly_id'
 require 'truncate_html'
 require 'will_paginate'
+
+module Refinery
+  autoload :Activity, File.expand_path('../refinery/activity', __FILE__)
+  autoload :Application, File.expand_path('../refinery/application', __FILE__)
+  autoload :ApplicationController, File.expand_path('../refinery/application_controller', __FILE__)
+  autoload :ApplicationHelper, File.expand_path('../refinery/application_helper', __FILE__)
+  autoload :Plugin,  File.expand_path('../refinery/plugin', __FILE__)
+  autoload :Plugins, File.expand_path('../refinery/plugins', __FILE__)
+end
+
+# These have to be specified after the autoload to correct load issues on some systems.
+# As per commit 12af0e3e83a147a87c97bf7b29f343254c5fcb3c
+require 'refinerycms-base'
+require 'refinerycms-generators'
+require 'refinerycms-settings'
 require 'rails/generators'
 require 'rails/generators/migration'
 
 module Refinery
-
-  autoload :Activity, File.expand_path('../refinery/activity', __FILE__)
-  autoload :Application, File.expand_path('../refinery/application', __FILE__)
-  autoload :Plugin,  File.expand_path('../refinery/plugin', __FILE__)
-  autoload :Plugins, File.expand_path('../refinery/plugins', __FILE__)
 
   module Core
     class << self
@@ -30,9 +36,14 @@ module Refinery
           end
         end
       end
+
+      attr_accessor :root
+      def root
+        @root ||= Pathname.new(File.expand_path('../../', __FILE__))
+      end
     end
 
-    class Engine < Rails::Engine
+    class Engine < ::Rails::Engine
 
       config.autoload_paths += %W( #{config.root}/lib )
 
@@ -66,19 +77,19 @@ module Refinery
 
       # Register the plugin
       config.after_initialize do
-        Refinery::Plugin.register do |plugin|
+        ::Refinery::Plugin.register do |plugin|
           plugin.name ="refinery_core"
           plugin.class_name ="RefineryEngine"
-          plugin.version = Refinery.version.to_s
+          plugin.version = ::Refinery.version
           plugin.hide_from_menu = true
           plugin.always_allow_access = true
           plugin.menu_match = /(refinery|admin)\/(refinery_core)$/
         end
 
         # Register the dialogs plugin
-        Refinery::Plugin.register do |plugin|
+        ::Refinery::Plugin.register do |plugin|
           plugin.name = "refinery_dialogs"
-          plugin.version = Refinery.version.to_s
+          plugin.version = ::Refinery.version
           plugin.hide_from_menu = true
           plugin.always_allow_access = true
           plugin.menu_match = /(refinery|admin)\/(refinery_)?dialogs/
@@ -98,7 +109,7 @@ module Refinery
         app.config.autoload_paths += [
           Rails.root.join("app", "presenters"),
           Rails.root.join("vendor", "**", "**", "app", "presenters"),
-          Refinery.root.join("**", "app", "presenters")
+          Refinery.roots.map{|r| r.join("**", "app", "presenters")}
         ].flatten
       end
 
@@ -133,7 +144,7 @@ module Refinery
 
       initializer 'ensure devise is initialised' do |app|
         unless Rails.root.join('config', 'initializers', 'devise.rb').file?
-          load Refinery.root.join(*%w(core lib generators templates config initializers devise.rb))
+          load Refinery.roots('core').join(*%w(lib generators templates config initializers devise.rb))
         end
       end
 
@@ -141,3 +152,5 @@ module Refinery
   end
 
 end
+
+::Refinery.engines << 'core'

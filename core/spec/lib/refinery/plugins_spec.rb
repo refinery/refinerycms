@@ -2,16 +2,16 @@ require 'spec_helper'
 
 module Refinery
   module MyPlugin
-    class Engine < Rails::Engine
-      Refinery::Plugin.register do |plugin|
+    class Engine < ::Rails::Engine
+      ::Refinery::Plugin.register do |plugin|
         plugin.name = "my_plugin"
       end
     end
   end
 
   module MyOtherPlugin
-    class Engine < Rails::Engine
-      Refinery::Plugin.register do |plugin|
+    class Engine < ::Rails::Engine
+      ::Refinery::Plugin.register do |plugin|
         plugin.name = "my_other_plugin"
       end
     end

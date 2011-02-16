@@ -76,7 +76,7 @@ This file runs when your site is started up. All is does is registers this engin
 NOTE: The latest version of Refinery requires that you only specify a engine.name. plugin.title &amp; plugin.description will be looked up by the I18n system.
 
 # pages/lib/pages.rb
-    Refinery::Plugin.register do |plugin|
+    ::Refinery::Plugin.register do |plugin|
       plugin.name = "pages"
       plugin.version = 1.0
       plugin.menu_match = /(refinery|admin)\/page(_dialog|part)?s$/
@@ -102,7 +102,7 @@ Recent activity reporting is built right in, so all you need to do is follow the
 
 In our example above we showed the use of ``plugin.activity`` for the pages engine.
 
-    Refinery::Plugin.register do |plugin|
+    ::Refinery::Plugin.register do |plugin|
       plugin.name = "pages"
       plugin.version = 1.0
       plugin.menu_match = /(refinery|admin)\/page(_dialog|part)?s$/

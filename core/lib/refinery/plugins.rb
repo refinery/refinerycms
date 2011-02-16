@@ -34,7 +34,7 @@ module Refinery
     end
 
     def pathnames
-      self.collect { |p| p.pathname }.compact
+      self.collect { |p| p.pathname }.compact.uniq
     end
 
     def titles

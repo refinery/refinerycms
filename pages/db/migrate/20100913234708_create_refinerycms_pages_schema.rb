@@ -33,7 +33,6 @@ class CreateRefinerycmsPagesSchema < ActiveRecord::Migration
       t.integer  "lft"
       t.integer  "rgt"
       t.integer  "depth"
-      t.string   "cached_slug"
     end
 
     add_index ::Page.table_name, ["depth"], :name => "index_#{::Page.table_name}_on_depth"

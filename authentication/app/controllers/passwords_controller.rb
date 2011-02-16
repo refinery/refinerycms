@@ -1,4 +1,4 @@
-class PasswordsController < Devise::PasswordsController
+class PasswordsController < ::Devise::PasswordsController
   layout 'login'
 
   # Rather than overriding devise, it seems better to just apply the notice here.

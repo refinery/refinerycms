@@ -1,10 +1,18 @@
 require 'rack/cache'
 require 'dragonfly'
-require 'refinery'
+require 'refinerycms-core'
 
 module Refinery
   module Resources
-    class Engine < Rails::Engine
+
+    class << self
+      attr_accessor :root
+      def root
+        @root ||= Pathname.new(File.expand_path('../../', __FILE__))
+      end
+    end
+
+    class Engine < ::Rails::Engine
       initializer 'resources-with-dragonfly' do |app|
         app_resources = Dragonfly[:resources]
         app_resources.configure_with(:rails) do |c|
@@ -43,7 +51,7 @@ module Refinery
       end
 
       config.after_initialize do
-        Refinery::Plugin.register do |plugin|
+        ::Refinery::Plugin.register do |plugin|
           plugin.name = "refinery_files"
           plugin.url = {:controller => '/admin/resources', :action => 'index'}
           plugin.menu_match = /(refinery|admin)\/(refinery_)?(files|resources)$/
@@ -56,3 +64,5 @@ module Refinery
     end
   end
 end
+
+::Refinery.engines << 'resources'

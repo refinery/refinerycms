@@ -7,27 +7,18 @@ rescue LoadError
   puts "\n=== ACTION REQUIRED ===\n\n"
   puts "Could not load the bundler gem. This is a required dependency of Refinery CMS."
   puts "Please install it with `gem install bundler`.\n\n"
-  exit
+  exit(1)
 end
+
+# Load refinerycms
+
+require Pathname.new(File.expand_path(File.dirname(__FILE__) << "/..")).join('lib', 'refinery')
 
 # Load other required libraries
 require 'pathname'
 require 'fileutils'
 require 'optparse'
-
-# Load refinerycms
-require Pathname.new(File.expand_path(File.dirname(__FILE__) << "/..")).join('lib', 'refinery')
-
-class String
-  def blank?
-    self.nil? or self.length == 0
-  end
-end
-class NilClass
-  def blank?
-    true
-  end
-end
+require 'active_support'
 
 module Refinery
   class AppGenerator
@@ -72,7 +63,7 @@ module Refinery
         end
 
         opts.on("-g", "--gems gem1,gem2,gem3", Array, "Additional gems to install") do |gems|
-          @options[:gems] = gems.reject {|g| g.to_s =~ /^(refinerycms|rmagick)$/}.map {|g| "gem '#{g.to_s}'"}
+          @options[:gems] = gems.reject {|g| g.to_s =~ /^refinerycms/}.map {|g| "gem '#{g.to_s}'"}
         end
 
         opts.on("-f", "--force", "Force overwriting of directory") do
@@ -136,10 +127,13 @@ module Refinery
       end
 
       # Run the newly activated Refinery CMS generator.
-      run_command("rails generate refinerycms#{' --update' if @options[:update]}", {:cd => true})
+      run_command("rails generate refinerycms#{' --update' if @options[:update]}", {
+        :cd => true,
+        :fail => "Could not run the refinerycms generator successfully."
+      })
 
       # Run the update task if we're updating
-      run_command("rake refinery:update", {:cd => true}) if @options[:update]
+      run_command("rake refinery:update", {:cd => true, :fail => "refinery:update rake task failed."}) if @options[:update]
 
       # Output helpful messages to user
       output!
@@ -153,7 +147,7 @@ module Refinery
         puts pe
         puts "\n"
         puts @optparse
-        exit(false)
+        exit(1)
       end
 
       # Ensure only one path is specified
@@ -161,7 +155,7 @@ module Refinery
         puts "Please specify a single path to install Refinery CMS"
         puts "\n"
         puts @optparse
-        exit(false)
+        exit(1)
       end
 
       # Get the name and path of the new application
@@ -174,18 +168,41 @@ module Refinery
       if @app_path == @refinery_path
         puts "\nPlease generate your new project from outside the Refinery directory and any Rails directory."
         puts "\n"
-        exit(false)
-      elsif %w(refinery test).include?(@input.first)
+        exit(1)
+      elsif %w(refinery test testing).include?(@input.first)
         puts "\nYou can't use '#{@input.first}' as a name for your project, this is a reserved word that will cause conflicts."
         puts "Please choose another name for your new project."
         puts "\n"
-        exit(false)
-      elsif @app_path.directory? and @options[:force] == false and @options[:update] == false
+        exit(1)
+      elsif @app_path.directory? && !@options[:force] && !@options[:update]
         puts "\nThe directory '#{@app_path}' that you specified already exists."
         puts "Use --force to overwrite an existing directory."
         puts "Use --update to replace any Refinery CMS files in an existing installation."
         puts "\n"
-        exit(false)
+        exit(1)
+      elsif @options[:heroku]
+        if @options[:heroku].to_s.include?('_') or @options[:heroku].to_s.length > 30
+          message = ["\nThe application name '#{@options[:heroku]}' that you specified is invalid for Heroku."]
+          suggested_name = @options[:heroku].to_s
+          if suggested_name.include?('_')
+            message << "This is because it contains underscores which Heroku does not allow."
+            suggested_name.gsub!(/_/, '-')
+          end
+          if suggested_name.length > 30
+            message << "This is#{" also" unless suggested_name.nil?} because it is longer than 30 characters."
+            suggested_name = suggested_name[0..29]
+          end
+
+          if @options[:force] or @options[:confirm]
+            @options[:heroku] = suggested_name
+          else
+            message << "Please choose another name like '#{suggested_name}'"
+            message << "Or use --confirm to automatically use '#{suggested_name}'"
+            message << "\n"
+            puts message.join("\n")
+            exit(1)
+          end
+        end
       elsif @app_path.join('.git').directory? && @options[:update] && !@options[:confirm]
         git_status = run_command('git status --porcelain', :puts => false)
         if git_status.to_s.strip.length > 0
@@ -193,25 +210,23 @@ module Refinery
           puts "Use --confirm to have Refinery proceed anyway. "
           puts "Untracked files will be removed, and uncommitted changes may be lost."
           puts "\n"
-          exit(false)
+          exit(1)
+        end
+      end
+
+      if @options[:update]
+        puts "Please ensure you have a backup of your project and its database."
+        puts "Type 'yes' to continue (anything other than 'yes' will cancel)"
+        unless $stdin.gets.strip == 'yes'
+          puts "Cancelling..."
+          exit
         end
       end
     end
 
     def update!
-      rails_command = "rails new \"#{@app_path}\""
-      rails_command << (@options[:from_version] !~ %r{^0.9.8} ? ' --skip' : ' --force')
-      rails_command << " --database #{@options[:database][:adapter]}"
-      skips = %w(active-record gemfile git javascript prototype test-unit)
-      skips.each do |skip|
-        rails_command << " --skip-#{skip}"
-      end
-
-      # Generate a new rails application in this directory
-      generate!(rails_command)
-
-      # Clean the directory of all new files from rails that we don't want
-      run_command('git clean -f -d') if @app_path.join('.git').directory?
+      # Handle acts_as_indexed changes.
+      FileUtils::rm_r @app_path.join('tmp', 'index') if @app_path.join('tmp', 'index').directory?
     end
 
     def generate!(rails_command = nil)
@@ -221,24 +236,36 @@ module Refinery
         rails_command << " --database #{@options[:database][:adapter]}"
         rails_command << " --force" if @options[:force]
         rails_command << " --skip-test-unit --skip-prototype"
+        rails_command << " -m http://jruby.org" if defined? JRUBY_VERSION
       end
       rails_output = run_command(rails_command, {:cd => false})
       # Detect non-success or a blank rails output or starting with "Can't initialize" or "Error"
       if !$?.success? or rails_output.blank? or rails_output =~ /^(Can't\ initialize|Error)/
         puts "Generating Rails application failed. Exiting..."
-        exit(false)
+        exit(1)
+      elsif defined? JRUBY_VERSION
+        find_and_replace(@app_path.join('Gemfile'), /['|"]sqlite3['|"]/, "'activerecord-jdbcsqlite3-adapter'")
+
+        # Override username and password
+        find_and_replace('config/database.yml', %r{username:.*}, "username: #{@options[:database][:username]}")
+        find_and_replace('config/database.yml', %r{password:.*}, "password: #{@options[:database][:password]}")
+
+        puts "\n---------"
+        puts "Refinery successfully installed in '#{@app_path}'!\n\n"
       end
     end
 
     def bundle!
-      # Add refinery gems to the Gemfile
-      gemfile_contents = Refinery.root.join('Gemfile').read
-      refinery_gems = gemfile_contents.match(/# REFINERY CMS =+.*# END REFINERY CMS =+/m)[0]
-      refinery_user_defined_gems = gemfile_contents.match(/# USER DEFINED(.*)# END USER DEFINED/m)
-      refinery_user_defined_gems = refinery_user_defined_gems[1] unless refinery_user_defined_gems.nil?
-      app_gemfile = @app_path.join('Gemfile')
-      FileUtils::cp app_gemfile, "#{app_gemfile}.backup"
+      # Insert the current REFINERY CMS section (you shouldn't put anything in here).
+      refinery_gemfile_contents = Refinery.root.join('Gemfile').read
+      refinery_gems = refinery_gemfile_contents.match(/# REFINERY CMS =+.*# END REFINERY CMS =+/m)[0]
+      refinery_gems.gsub!("# gem 'refinerycms'", "gem 'refinerycms'") # Enable refinerycms
+      refinery_gems.gsub!("gem 'refinerycms-testing'", "# gem 'refinerycms-testing'") # Disable testing
       unless @options[:update]
+        app_gemfile = @app_path.join('Gemfile')
+        FileUtils::cp app_gemfile, "#{app_gemfile}.backup"
+        refinery_user_defined_gems = refinery_gemfile_contents.match(/# USER DEFINED(.*)# END USER DEFINED/m)
+        refinery_user_defined_gems = refinery_user_defined_gems[1] unless refinery_user_defined_gems.nil?
         app_gemfile.open('a') do |f|
           f.write "\n#{refinery_gems}\n"
           @options[:gems] = ([refinery_user_defined_gems] | [@options[:gems]]).flatten.compact
@@ -246,63 +273,9 @@ module Refinery
           f.write "\n# USER DEFINED\n#{@options[:gems].join("\n")}\n# END USER DEFINED" if @options[:gems].any?
         end
       else
-        # Now find all user defined gems before we go changing anything.
-        user_defined_gems = app_gemfile.read.match(/# USER DEFINED(.*)# END USER DEFINED/m)
-        user_defined_gems = user_defined_gems[1].to_s.strip unless user_defined_gems.nil?
-
-        # If the user is updating to this version from a version that defined user defined gems
-        # in the "# REFINERY CMS " section then we need to salvage them.
-        incorrectly_core_gems = app_gemfile.read.match(/# REFINERY CMS =+.*(# Specify additional Refinery.*)# END REFINERY CMS =+/m)
-        unless incorrectly_core_gems.nil?
-          incorrectly_core_gems = incorrectly_core_gems[1].to_s.strip
-          # stop before any new groups appear.
-          incorrectly_core_gems_take_two = incorrectly_core_gems.match(/(# Specify additional Refinery.*)group ?:?/m)
-          incorrectly_core_gems = incorrectly_core_gems_take_two[1].to_s.strip unless incorrectly_core_gems_take_two.nil?
-        end
-
-        unless incorrectly_core_gems.blank?
-          # wipe the gems from the gemfile in their current position
-          # they will be reintroduced in the next step.
-          find_and_replace(app_gemfile, incorrectly_core_gems, '')
-        end
-
-        # If the user hasn't defined any gems then use the refinery ones.
-        refinery_user_defined_gems = user_defined_gems.to_s.strip.blank? ? [refinery_user_defined_gems] : []
-        refinery_user_defined_gems |= [user_defined_gems, incorrectly_core_gems].reject{|g| g.to_s.strip.blank?}.compact.flatten
-
-        # Unless all sets of gems are blank we want to overwrite the section.
-        unless refinery_user_defined_gems.length == 0
-          # Manage double ups so that earlier rules are kept (can't use uniq because it strips blank lines)
-          # sorted by order of precedence (so we have to reverse the array)
-          refinery_user_defined_gems = refinery_user_defined_gems.join('').split("\n").reverse
-          refinery_user_defined_gems.reject! do |g|
-            # Ignoring blank lines because we want to keep them,
-            g != '' && (
-              (refinery_user_defined_gems.count{|line| line == g} > 1) || # Delete where there's another line like this.
-              (g =~ %r{^(# +)?( +)?gem} && (refinery_user_defined_gems.count{|line| line.split(',').first == g.split(',').first} > 1))
-            )
-          end
-
-          # Use any gems specified, too, ensuring we restore the sort order of refinery_user_defined_gems.
-          @options[:gems] = refinery_user_defined_gems.reverse + @options[:gems]
-          gems_to_insert = "# USER DEFINED\n#{@options[:gems].join("\n")}\n\n# END USER DEFINED"
-          unless user_defined_gems.nil?
-            find_and_replace(app_gemfile, /# USER DEFINED.*# END USER DEFINED/m, gems_to_insert)
-          else
-            app_gemfile.open('a') {|f| f.write "\n\n#{gems_to_insert}" }
-          end
-        end
-
-        # replace existing core dependencies with the current set of dependencies.
-        find_and_replace(app_gemfile, /# REFINERY CMS =+.*# END REFINERY CMS =+/m, refinery_gems)
+        find_and_replace(@app_path.join('Gemfile'), /# REFINERY CMS =+.*# END REFINERY CMS =+/m, refinery_gems)
       end
 
-      # Override database username and password
-      unless @options[:update]
-        # Override username and password
-        find_and_replace('config/database.yml', %r{username:.*}, "username: #{@options[:database][:username]}")
-        find_and_replace('config/database.yml', %r{password:.*}, "password: #{@options[:database][:password]}")
-      end
 
       # Specify the correct version of the Refinery CMS gem (may be git source).
       src = Refinery.version !~ /\.pre$/ ? "'= #{Refinery.version}'" : ":git => 'git://github.com/resolve/refinerycms'"
@@ -312,18 +285,17 @@ module Refinery
       find_and_replace('Gemfile', "# gem 'aws-s3', :require => 'aws/s3'",
                         "gem 'aws-s3', :require => 'aws/s3'") if @options[:heroku]
 
-      puts "\n---------"
-      puts "Refinery successfully installed in '#{@app_path}'!\n\n"
-
       # Automate
       # TODO: Check exit codes to see whether or not these worked
       puts "Installing gem requirements using bundler..\n"
 
       # Ensure RefineryCMS is up to date if we're updating
-      run_command("bundle update refinerycms refinerycms-generators") if @options[:update]
+      if @options[:update]
+        run_command("bundle update refinerycms refinerycms-generators", {:fail => "Unable to update core gems"})
+      end
 
       # Install!
-      run_command("bundle install")
+      run_command("bundle install", {:fail => "Unable to install necessary gems"})
     end
 
     def output!
@@ -367,6 +339,16 @@ module Refinery
         puts "heroku config:add S3_BUCKET=XXXXXXXXX S3_KEY=XXXXXXXXX S3_SECRET=XXXXXXXXXX"
       end
 
+      puts "\n--- Refinery CMS 0.9.9.1 note ---"
+      puts "New 'core' engine called 'refinerycms-testing' which handles RSpec and Cucumber support."
+      puts "You will see this disabled in your Gemfile in the '# REFINERY CMS' section."
+      puts "To enable it, uncomment the gem line in your Gemfile and run:"
+      puts "\nbundle install"
+      puts "rails generate refinerycms_testing"
+      puts "\nIf it prompts you about whether you want to overwrite any files that conflict, choose yes."
+      puts "\nNow, to run the specs and features you can just type 'rake'."
+      puts "--- End upgrade note ---\n"
+
       puts "\nThanks for installing Refinery, enjoy creating your new application!"
       puts "---------\n\n"
     end
@@ -374,10 +356,12 @@ module Refinery
     private :validate!, :generate!, :bundle!, :output!
 
     def run_command(command, options = {})
-      options = {:cd => true, :puts => true}.merge(options)
+      require 'rbconfig'
+      exe = File.join(RbConfig::CONFIG['bindir'], RbConfig::CONFIG['RUBY_INSTALL_NAME'])
+      options = {:cd => true, :puts => true, :fail => nil}.merge(options)
       to_run = %w()
       to_run << "cd \"#{@app_path}\" &&" if options[:cd]
-      to_run << command
+      to_run << "#{exe} -S " << command
 
       if Refinery::WINDOWS
         to_run = %w(cmd /c) | to_run.map{|c| c.gsub(/\//m, '\\')}
@@ -398,7 +382,14 @@ module Refinery
         output << `#{to_run}`
       end
 
-      output.join("\n")
+      if $?.success? or options[:fail].nil?
+        output.join("\n")
+      else
+        puts "\nFailed to generate application."
+        puts "Message: #{options[:fail]}" unless options[:fail].nil?
+        puts "Exiting...\n\n"
+        exit(1)
+      end
     end
 
     def find_and_replace(file, find, replace)

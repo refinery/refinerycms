@@ -43,5 +43,5 @@ WYMeditor.STRINGS['lv'] = {
   Classes:          'Klases',
   Status:           'Statuss',
   Source_Code:      'Pirmkods',
-  Css_Class:        'Apply CSS Class'
+  Apply_Style:      'Stils'
 };

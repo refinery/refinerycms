@@ -15,7 +15,7 @@ module Refinery
       singular_name = model_name.to_s
       class_name = singular_name.camelize
       plural_name = singular_name.pluralize
-      this_class = class_name.constantize
+      this_class = class_name.constantize.base_class
 
       {
         :title_attribute => "title",

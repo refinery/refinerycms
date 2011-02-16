@@ -1,7 +1,7 @@
 de:
   plugins:
     refinery_dashboard:
-      title: Armaturenbrett
+      title: Übersicht
       description: Gibt eine Übersicht über Aktivitäten in Refinery
   admin:
     dashboard:
