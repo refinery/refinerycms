@@ -1,4 +1,15 @@
-## 0.9.9 [Unreleased]
+## 0.9.9.1 [15 February 2011]
+
+* Fixed Firefox issue with WYMeditor. [Amanda Wagener](https:/github.com/awagener)
+* Gracefully exit ``bin/refinerycms`` on error. [Alexandre Girard](https://github.com/alx) and [Brian Stevens](https://github.com/bdstevens) and [Philip Arndt](https://github.com/parndt)
+* Added basic single table inheritance support to crudify. [Ken Nordquist](https://github.com/kenphused)
+* Removed most of the 0.9.8.9 specific ``--update`` logic in ``bin/refinerycms``. [Philip Arndt](https://github.com/parndt)
+* Added ``refinerycms-testing`` engine which reduces the main Gemfile complexity. [Philip Arndt](https://github.com/parndt)
+* Split the project into 10 separately released gems that include their own dependencies. [Philip Arndt](https://github.com/parndt)
+* New Vietnamese translation files added. [Alex Nguyen](https://github.com/tiendung) and Stefan N and Mario Nguyen
+* Improved JRuby support as well as the way that commands run in any ruby implementation. [Hiro Asari](https://github.com/BanzaiMan)
+
+## 0.9.9 [27 January 2011]
 
 * Better, more semantic HTML5. [Joe Sak](https://github.com/joemsak)
 * Added ``role`` selection for ``admin/users#edit``. [Hez Ronningen](https://github.com/hez)
@@ -37,6 +48,10 @@
 * Converted translate calls to use ``:scope``. [Uģis Ozols](https://github.com/ugisozols)
 * Fixed issues where errors would only show up in English for some models and updated Russian translations. [Semyon Perepelitsa](https://github.com/semaperepelitsa)
 * Converted to devise for authentication, requiring password resets. [Philip Arndt](https://github.com/parndt) and [Uģis Ozols](https://github.com/ugisozols)
+* Sped up WYMeditor load times. [Philip Arndt](https://github.com/parndt)
+* Fixed several issues for Internet Explorer. [Josef Šimánek](https://github.com/simi)
+* Added installation option for [Duostack](http://duostack.com) hosting service. [Philip Arndt](https://github.com/parndt) and [David E. Chen](https://github.com/dchen)
+
 * [See full list](https://github.com/resolve/refinerycms/compare/0.9.8.9...0.9.9)
 
 ## 0.9.8.9 [21 December 2010]

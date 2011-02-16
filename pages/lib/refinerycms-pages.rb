@@ -1,18 +1,25 @@
-require 'refinery'
+require 'refinerycms-core'
 require 'awesome_nested_set'
 require 'globalize3'
 
 module Refinery
   module Pages
 
-    class Engine < Rails::Engine
+    class << self
+      attr_accessor :root
+      def root
+        @root ||= Pathname.new(File.expand_path('../../', __FILE__))
+      end
+    end
+
+    class Engine < ::Rails::Engine
 
       config.to_prepare do
         require File.expand_path('../pages/tabs', __FILE__)
       end
 
       config.after_initialize do
-        Refinery::Plugin.register do |plugin|
+        ::Refinery::Plugin.register do |plugin|
           plugin.name = "refinery_pages"
           plugin.directory = "pages"
           plugin.version = %q{0.9.9}
@@ -34,3 +41,5 @@ module Refinery
     end
   end
 end
+
+::Refinery.engines << 'pages'

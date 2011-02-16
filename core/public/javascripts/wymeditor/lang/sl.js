@@ -31,7 +31,7 @@ WYMeditor.STRINGS['sl'] = {
   Caption:          'Napis',
   Summary:          'Povzetek',
   Number_Of_Rows:   'Število vrstic',
-  Number_Of_Cols:   'Število kolon',
+  Number_Of_Cols:   'Število stolpcev',
   Insert:           'Vstavi',
   Submit:           'Predloži',
   Cancel:           'Prekliči',
@@ -43,5 +43,5 @@ WYMeditor.STRINGS['sl'] = {
   Classes:          'Razredi',
   Status:           'Status',
   Source_Code:      'Izvorna koda',
-  Css_Class:        'Uporabi CSS Razred'
+  Apply_Style:      'Uporabi slog'
 };

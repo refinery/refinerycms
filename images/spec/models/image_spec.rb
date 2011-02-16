@@ -79,8 +79,8 @@ describe Image do
   end
 
   describe ".user_image_sizes" do
-    it "sets and returns a hash consisiting of 3 image sizes" do
-      Image.user_image_sizes.keys.should == [:small, :medium, :large]
+    it "sets and returns a hash consisting of the keys contained in the RefinerySetting" do
+      Image.user_image_sizes.should == RefinerySetting.get(:user_image_sizes)
     end
   end
 

@@ -1,10 +1,18 @@
 require 'rack/cache'
 require 'dragonfly'
-require 'refinery'
+require 'refinerycms-core'
 
 module Refinery
   module Resources
-    class Engine < Rails::Engine
+
+    class << self
+      attr_accessor :root
+      def root
+        @root ||= Pathname.new(File.expand_path('../../', __FILE__))
+      end
+    end
+
+    class Engine < ::Rails::Engine
       initializer 'resources-with-dragonfly' do |app|
         app_resources = Dragonfly[:resources]
         app_resources.configure_with(:rails) do |c|
@@ -17,6 +25,7 @@ module Refinery
 
         app_resources.define_macro(ActiveRecord::Base, :resource_accessor)
         app_resources.analyser.register(Dragonfly::Analysis::FileCommandAnalyser)
+        app_resources.content_disposition = :attachment
 
         # This url_suffix makes it so that dragonfly urls work in traditional
         # situations where the filename and extension are required, e.g. lightbox.
@@ -42,7 +51,7 @@ module Refinery
       end
 
       config.after_initialize do
-        Refinery::Plugin.register do |plugin|
+        ::Refinery::Plugin.register do |plugin|
           plugin.name = "refinery_files"
           plugin.url = {:controller => '/admin/resources', :action => 'index'}
           plugin.menu_match = /(refinery|admin)\/(refinery_)?(files|resources)$/
@@ -55,3 +64,5 @@ module Refinery
     end
   end
 end
+
+::Refinery.engines << 'resources'

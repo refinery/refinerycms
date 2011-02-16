@@ -1,6 +1,7 @@
 WYMeditor.STRINGS['it'] = {
 	Strong:			 'Grassetto',
-	Emphasis:		 'Corsetto',
+	Bold:       'Audace',
+  Emphasis:		 'Corsetto',
 	Superscript:		'Apice',
 	Subscript:		'Pedice',
 	Ordered_List:	 'Lista Ordinata',
@@ -31,7 +32,8 @@ WYMeditor.STRINGS['it'] = {
 	Summary:			'Summary',
 	Number_Of_Rows:	 'Numero di Righe',
 	Number_Of_Cols:	 'Numero di Colonne',
-	Submit:			 'Invia',
+	Insert:          'Inserire',
+  Submit:			 'Invia',
 	Cancel:			 'Cancella',
 	Choose:			 'Scegli',
 	Preview:			'Anteprima',
@@ -40,6 +42,7 @@ WYMeditor.STRINGS['it'] = {
 	Containers:		 'Contenitori',
 	Classes:			'Classi',
 	Status:			 'Stato',
-	Source_Code:		'Codice Sorgente'
+	Source_Code:		'Codice Sorgente',
+  Apply_Style:    'Stile'
 };
 

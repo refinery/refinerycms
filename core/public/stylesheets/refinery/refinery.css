@@ -1439,6 +1439,10 @@ input.button.close_dialog:active, a.button.close_dialog:active, #content a.butto
   border-color: #22A7F2;
 }
 
+#content #records .title .preview a.locale {
+  border-bottom: 0px none;
+}
+
 /* AJAX pagination */
 .pagination_container {
   position: relative;
@@ -1477,6 +1481,9 @@ input.button.close_dialog:active, a.button.close_dialog:active, #content a.butto
 .pagination_frame li {
   position: relative;
   padding-left: 5px;
+}
+a.information:hover {
+  background: #22a7f2;
 }
 
 /* dubiously in here */

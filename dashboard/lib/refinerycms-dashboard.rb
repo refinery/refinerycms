@@ -1,9 +1,16 @@
 module Refinery
   module Dashboard
-    class Engine < Rails::Engine
+    class << self
+      attr_accessor :root
+      def root
+        @root ||= Pathname.new(File.expand_path('../../', __FILE__))
+      end
+    end
+
+    class Engine < ::Rails::Engine
 
       config.after_initialize do
-        Refinery::Plugin.register do |plugin|
+        ::Refinery::Plugin.register do |plugin|
           plugin.name = "refinery_dashboard"
           plugin.url = {:controller => '/admin/dashboard', :action => 'index'}
           plugin.menu_match = /(admin|refinery)\/(refinery_)?dashboard$/
@@ -17,3 +24,5 @@ module Refinery
     end
   end
 end
+
+::Refinery.engines << 'dashboard'

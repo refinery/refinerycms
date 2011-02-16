@@ -1,4 +1,4 @@
-require_dependency 'truncate_html'
+require 'truncate_html'
 
 module Refinery
   module Helpers

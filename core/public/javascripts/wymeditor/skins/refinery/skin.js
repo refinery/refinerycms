@@ -25,6 +25,14 @@ WYMeditor.SKINS['refinery'] = {
 		},function(){
 			$(this).removeClass('hover');
 		});
+		
+    // show or hide CSS class options on hover
+    $(wym._box).find('.wym_tools_class')
+               .hover($.proxy(function(){
+                 this.toggleClassSelector();
+               }, wym), $.proxy(function(){
+                 this.toggleClassSelector();
+               }, wym));
 
     // adjust sizing
     $(wym._box).css('width', $(wym._element).width() - 2)

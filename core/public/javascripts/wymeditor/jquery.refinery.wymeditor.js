@@ -839,7 +839,7 @@ WYMeditor.editor.prototype.bindEvents = function() {
     .blur(function() { $(this).toggleClass('hasfocus'); });
 
   //handle click event on classes buttons
-  $(this._box).find(this._options.classSelector).click(function() {
+  $(this._box).find(this._options.classSelector).bind('click', function() {
 
     var aClasses = eval(wym._options.classesItems);
     var sName = $(this).attr(WYMeditor.NAME);
@@ -970,8 +970,6 @@ WYMeditor.editor.prototype.exec = function(cmd) {
 
     case WYMeditor.APPLY_CLASS:
       wym = this;
-      $(wym._box).find(this._options.classUnhiddenSelector).toggleClass(this._options.classHiddenSelector.substring(1)); // substring(1) to remove the . at the start
-      $(wym._box).find("a[name=" + WYMeditor.APPLY_CLASS +"]").toggleClass('selected').parent().toggleClass('activated');
       // determine whether any classes are already selected and add the enabled class to them.
       $(wym._box).find(this._options.classUnhiddenSelector).find("a[name]").each(function(index, rule){
         if ($(wym.selected()).hasClass($(rule).attr('name'))) {
@@ -1081,6 +1079,26 @@ WYMeditor.editor.prototype.toggleClass = function(sClass, jqexpr) {
   if(!container.attr(WYMeditor.CLASS)) { container.removeAttr(this._class); }
 
 };
+
+WYMeditor.editor.prototype.toggleClassSelector = function() {
+  // substring(1) to remove the . at the start
+  var wym = this;
+  var disabled = $(wym._box).find(wym._options.classUnhiddenSelector)
+                            .hasClass(wym._options.classHiddenSelector.substring(1));
+  if (disabled) {
+    $(wym._box).find(wym._options.classUnhiddenSelector)
+               .removeClass(wym._options.classHiddenSelector.substring(1));
+
+    $(wym._box).find("a[name=" + WYMeditor.APPLY_CLASS +"]")
+               .addClass('selected').parent().addClass('activated');
+  } else {
+    $(wym._box).find(wym._options.classUnhiddenSelector)
+               .addClass(wym._options.classHiddenSelector.substring(1));
+
+    $(wym._box).find("a[name=" + WYMeditor.APPLY_CLASS +"]")
+               .removeClass('selected').parent().removeClass('activated');
+  }
+}
 
 /* @name removeClass
  * @description Removes class on selected element, or one of its parents
@@ -1267,7 +1285,7 @@ WYMeditor.editor.prototype.dialog = function( dialogType ) {
 
   if (dialogType == WYMeditor.DIALOG_LINK && $.browser.mozilla) {
     selection = wym._iframe.contentWindow.getSelection();
-    matches = $($(selected).html().match(new RegExp(selection.anchorNode.textContent + "(.*)" + selection.focusNode.textContent)));
+    matches = $($(selected).html().match(new RegExp(RegExp.escape(selection.anchorNode.textContent) + "(.*)" + RegExp.escape(selection.focusNode.textContent))));
     if (matches != null && matches.length > 0 && (possible_anchor_tag = matches.last()).length > 0)
     {
       if (((href_matches = possible_anchor_tag.get(0).match(/href="([^"]*)"/)) != null) && (href = $(href_matches).last().get(0)) != null)
@@ -1470,7 +1488,10 @@ WYMeditor.editor.prototype.paste = function(sData) {
         }
       } else {
         if ((aP.length -1) == x) {
-          contentAfterBreak = $(container).parent().html().match(new RegExp("\<span id=[\'|\"]" + wym._current_unique_stamp + "[\'|\"]\>.*\<\/span\>([\\s\\S]*)"))[1].split('</p>')[0];
+          var rgx = $(container).parent().html().match(new RegExp("\<span id=[\'|\"]" + wym._current_unique_stamp + "[\'|\"]\>.*\<\/span\>([\\s\\S]*)"));
+          if(rgx && rgx[1]){
+            contentAfterBreak = rgx[1].split('</p>')[0];
+          }
           sTmp = "<p id='last_paste'>" + sTmp + "</p>";
         } else {
           sTmp = "<p>" + sTmp + "</p>";
@@ -1640,12 +1661,15 @@ WYMeditor.editor.prototype.listen = function() {
   }
 
   // ensure links can't be navigated to.
-  $(this._doc).find('a[href]').click(function(e){e.preventDefault();});
+  $(this._doc).find('a[href]').click(function(e){
+    e.preventDefault();
+  });
 };
 
 WYMeditor.editor.prototype.mousedown = function(e) {
 
   var wym = WYMeditor.INSTANCES[this.ownerDocument.title];
+
   wym._selected_image = (e.target.tagName.toLowerCase() == WYMeditor.IMG) ? e.target : null;
   $(wym._iframe).contents().find('.selected_by_wym').removeClass('selected_by_wym');
   if (!$.browser.mozilla) { $(wym._selected_image).addClass('selected_by_wym'); }
@@ -1802,7 +1826,7 @@ WYMeditor.INIT_DIALOG = function(wym, selected, isIframe) {
   $(wym._options.dialogImageSelector).find(wym._options.submitSelector).click(function(e) {
     form = $(this.form);
     if ((url = form.find(wym._options.srcSelector).val()) != null && url.length > 0) {
-      (image = $('<img />'))
+      (image = $(wym._doc.createElement("IMG")))
         .attr(WYMeditor.SRC, url)
         .attr(WYMeditor.TITLE, form.find(wym._options.titleSelector).val())
         .attr(WYMeditor.ALT, form.find(wym._options.titleSelector).val())
@@ -5124,4 +5148,9 @@ WYMeditor.WymClassSafari.prototype.getTagForStyle = function(style) {
   if(/sub/.test(style)) return 'sub';
   if(/super/.test(style)) return 'sup';
   return false;
+};
+
+// from http://simonwillison.net/2006/Jan/20/escape/#p-6
+RegExp.escape = function(text) {
+  return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
 };

@@ -1,0 +1,75 @@
+vi:
+  plugins:
+    refinery_core:
+      title: Refinery
+      description: Core refinery plugin
+    refinery_dialogs:
+      title: Dialogs
+      description: Refinery dialogs plugin
+  welcome:
+    there_are_no_users: Hiện không có user nào, chúng tôi sẽ tiến hành chi đặt cho bạn trước.
+    remember_admin_location: "Hãy nhớ rằng trang quản trị Refinery được đặt tại:"
+    lets_start: Bây giờ hãy cùng thiết lập cấu hình để bạn có thể đăng nhập hệ thống…
+    continue: Tiếp tục...
+  admin:
+    menu:
+      reorder_menu: Sắp xếp lại menu
+      reorder_menu_done: Đã hoàn thành việc sắp xếp lại menu
+    dialogs:
+      show:
+        save: Lưu
+        cancel: Bỏ qua
+  refinery:
+    crudify:
+      created: %{what} vừa được thêm vào.
+      updated: %{what} vừa được cập nhật.
+      destroyed: %{what} vừa được xóa bỏ.
+  shared:
+    site_bar:
+      log_out: Đăng xuất
+      switch_to_your_website: Chuyển đến website của bạn
+      switch_to_your_website_editor: Chuyển đến website nhập liệu của bạn
+    admin:
+      continue_editing:
+        save_and_continue_editing: Lưu & tiếp tục soạn thảo
+      form_actions:
+        save: Lưu trữ
+        cancel: Bỏ qua
+        cancel_lose_changes: Nếu bỏ qua, bạn sẽ mất tất cả những thông tin mà bạn vừa soạn thảo.
+        delete: Xóa bỏ
+        close: Đóng
+      image_picker:
+        none_selected: Hiện chưa có %{what} nào được chọn, hãy nhấn vào đây để thêm mới.
+        remove_current: Xóa bỏ %{what} hiện tại
+        change: Nhấn vão đây để chọn một hình ảnh
+        show: Hiển thị
+      resource_picker:
+        download_current: Tải file hiện tại về máy
+        opens_in_new_window: Mở với cửa sổ mới
+        remove_current: "Xóa bỏ file hiện tại"
+        no_resource_selected: Hiện chưa có file nào được chọn, nhãy nhấn vào đây để thêm mới.
+        name: Thêm file
+        current: File hiện tại
+      search:
+        button_text: Tìm kiếm
+        results_for: Các kết quả tìm kiếm với truy vấn '%{query}'
+        no_results: Rất tiếc, không có kết quả nào được tìm thấy
+      delete:
+        message: Bạn có thực sự chắc chắn khi xóa bỏ '%{title}' không?
+      error_messages:
+        problems_in_following_fields: Có lỗi xảy ra với những trường sau
+      help: giúp đỡ
+    message:
+      close: Đóng
+      close_this_message: Đóng thông báo này
+    draft_page_message:
+      not_live: Trang nay KHÔNG tồn tại đối với chế độ xem public.
+    footer:
+      copyright: Copyright © %{year} %{site_name}
+    no_script:
+      enable_javascript: Để website có thể hoạt động với đầy đủ các tính năng, bạn cần phải cho phép JavaScript hoạt động.
+      here_are: Đây là
+      instructions_enable_javascript: các chỉ dẫn cách kích hoạt cho Javascript hoạt động.
+  time:
+    formats:
+      short: "%A, %d %B %Y"

@@ -33,13 +33,13 @@ class RefinerycmsGenerator < ::Refinery::Generators::EngineInstaller
     unless self.options[:update]
       # Copy asset files (JS, CSS) so they're ready to use.
       %w(application.css formatting.css home.css theme.css).map{ |ss|
-        Refinery.root.join('core', 'public', 'stylesheets', ss)
+        Refinery.roots('core').join('public', 'stylesheets', ss)
       }.reject{|ss| !ss.file?}.each do |stylesheet|
         copy_file stylesheet,
                   Rails.root.join('public', 'stylesheets', stylesheet.split.last),
                   :verbose => true
       end
-      copy_file Refinery.root.join('core', 'public', 'javascripts', 'admin.js'),
+      copy_file Refinery.roots('core').join('public', 'javascripts', 'admin.js'),
                 Rails.root.join('public', 'javascripts', 'admin.js'),
                 :verbose => true
     end
@@ -86,6 +86,9 @@ class RefinerycmsGenerator < ::Refinery::Generators::EngineInstaller
       self.class.source_root.join('db', 'seeds.rb').read
     end
 
+    force_options = self.options.dup
+    force_options[:force] = self.options[:force] || self.options[:update]
+    self.options = force_options
     # Seeds and migrations now need to be copied from their various engines.
     existing_source_root = self.class.source_root
     ::Refinery::Plugins.registered.pathnames.reject{|p| !p.join('db').directory?}.sort.each do |pathname|

@@ -28,7 +28,7 @@ nb:
     site_bar:
       log_out: Logg ut
       switch_to_your_website: Bytt til din webside
-      switch_to_your_website_editor: Bytt til redigering av din websied
+      switch_to_your_website_editor: Bytt til redigering av din webside
     admin:
       continue_editing:
         save_and_continue_editing: "Lagre og fortsett med redigeringen"
