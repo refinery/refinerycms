@@ -56,7 +56,7 @@ module Refinery
         else
           # fallback to the default 404.html page.
           file = Rails.root.join('public', '404.html')
-          file = Refinery.root.join('core', 'public', '404.html') unless file.exist?
+          file = Refinery.roots('core').join('public', '404.html') unless file.exist?
           render :file => file.cleanpath.to_s,
                  :layout => false,
                  :status => 404

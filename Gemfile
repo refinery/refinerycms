@@ -27,10 +27,12 @@ end
 # gem 'aws-s3', :require => 'aws/s3'
 
 # REFINERY CMS ================================================================
+# Anything you put in here will be overridden when the app gets updated.
+
+# gem 'refinerycms', '~> 0.9.9.1'
 
 group :development, :test do
-  gem 'spork' unless Bundler::WINDOWS
-  gem "#{'j' if RUBY_PLATFORM == 'java'}ruby-prof" unless defined?(RUBY_ENGINE) and RUBY_ENGINE == 'rbx'
+  gem 'refinerycms-testing',    '~> 0.9.9.1'
 end
 
 # END REFINERY CMS ============================================================

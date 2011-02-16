@@ -136,7 +136,7 @@ namespace :refinery do
       class_name = singular_name.camelize
       plural_name = singular_name.pluralize
 
-      crud_lines = Refinery.root.join('core', 'lib', 'refinery', 'crud.rb').read
+      crud_lines = Refinery.roots('core').join('lib', 'refinery', 'crud.rb').read
       if (matches = crud_lines.scan(/(\ +)(def #{action}.+?protected)/m).first).present? and
          (method_lines = "#{matches.last.split(%r{^#{matches.first}end}).first.strip}\nend".split("\n")).many?
         indent = method_lines.second.index(%r{[^ ]})
@@ -172,7 +172,7 @@ namespace :refinery do
 
     unless (devise_config = Rails.root.join('config', 'initializers', 'devise.rb')).file?
       devise_config.parent.mkpath
-      FileUtils::cp Refinery.root.join(*%w(core lib generators templates config initializers devise.rb)),
+      FileUtils::cp Refinery.roots('core').join(*%w(lib generators templates config initializers devise.rb)),
                     devise_config,
                     :verbose => verbose
     end
@@ -185,7 +185,7 @@ namespace :refinery do
     # copy in any new migrations, except for ones that create schemas (this is an update!)
     # or ones that exist already.
     Rails.root.join("db", "migrate").mkpath
-    migrations = Pathname.glob(Refinery.root.join("db", "migrate", "*.rb")).reject{|m|
+    migrations = Pathname.glob(Refinery.roots.map{|r| r.join("db", "migrate", "*.rb")}).reject{|m|
       m.to_s =~ %r{\d+_create_refinerycms_.+?_schema\.rb} or
       Dir[Rails.root.join('db', 'migrate', "*#{m.split.last.to_s.split(/\d+_/).last}")].any?
     }
@@ -194,8 +194,8 @@ namespace :refinery do
                   :verbose => verbose
 
     Rails.root.join("db", "seeds").mkpath
-    Dir[Refinery.root.join('db', 'seeds', '*.rb').cleanpath.to_s].each do |seed|
-      unless (destination = Rails.root.join('db', 'seeds', seed.split(File::SEPARATOR).last).cleanpath).exist?
+    Pathname.glob(Refinery.roots.map{|r| r.join('db', 'seeds', '*.rb')}).each do |seed|
+      unless (destination = Rails.root.join('db', 'seeds', seed.split.last)).exist?
         FileUtils::cp seed, destination.to_s, :verbose => verbose
       end
     end

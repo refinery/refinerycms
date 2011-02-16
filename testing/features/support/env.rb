@@ -67,9 +67,9 @@ def each_run
   #require 'rails/generators/scripts/generate'
 end
 
-unless RbConfig::CONFIG["host_os"] =~ %r!(msdos|mswin|djgpp|mingw)!
-  require 'spork'
-
+require 'rubygems'
+# If spork is available in the Gemfile it'll be used but we don't force it.
+unless RbConfig::CONFIG["host_os"] =~ %r!(msdos|mswin|djgpp|mingw)! or (begin; require 'spork'; rescue LoadError; nil end).nil?
   Spork.prefork do
     setup_environment
   end
