@@ -1,0 +1,20 @@
+h2. Writing a guide for this website
+
+This guide covers writing your own guide. After reading it, you should be able to:
+
+* Create and format a guide.
+* Submit it for approval and inclusion on this website.
+
+endprologue.
+
+h3. Create and format the guide
+
+The best way for you to learn how to create a guide is to look at how a guide is structured. We are currently using the docrails project and as such all of the guides are written in textile.  Later we may move to a git backed solution so that you can contribute that way but for now we are entering the guides manually.
+
+A good example of how a guide can be structured is the 'Getting Started With Refinery' guide which we have made available in "gist format here.":https://gist.github.com/raw/815791/getting_started_with_refinery.textile
+
+You should be able to match the sections of the raw textile guide with the "live guide":/guides/getting-started-with-refinery to see how each aspect works.
+
+h3. Submitting the guide
+
+Now that you have a guide in textile format, please "let us know":/contact that you have done this so that we can put it live on the website. Make sure you provide us with a link to your gist so that we have the content in a safe way as copy pasting from email is often unreliable.  We will let you know when we put it live and/or if we have encountered any issues with it.
