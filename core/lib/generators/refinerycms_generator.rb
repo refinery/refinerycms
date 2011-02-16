@@ -36,7 +36,7 @@ class RefinerycmsGenerator < ::Refinery::Generators::EngineInstaller
         Refinery.roots('core').join('public', 'stylesheets', ss)
       }.reject{|ss| !ss.file?}.each do |stylesheet|
         copy_file stylesheet,
-                  Rails.root.join('public', 'stylesheets', stylesheet.split.last),
+                  Rails.root.join('public', 'stylesheets', stylesheet.basename),
                   :verbose => true
       end
       copy_file Refinery.roots('core').join('public', 'javascripts', 'admin.js'),
@@ -91,7 +91,7 @@ class RefinerycmsGenerator < ::Refinery::Generators::EngineInstaller
     self.options = force_options
     # Seeds and migrations now need to be copied from their various engines.
     existing_source_root = self.class.source_root
-    ::Refinery::Plugins.registered.pathnames.reject{|p| !p.join('db').directory?}.sort.each do |pathname|
+    ::Refinery::Plugins.registered.pathnames.reject{|p| !p.join('db').directory?}.each do |pathname|
       self.class.source_root pathname
       super
     end
