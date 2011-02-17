@@ -1,4 +1,3 @@
-require 'rack/cache'
 require 'dragonfly'
 require 'refinerycms-core'
 

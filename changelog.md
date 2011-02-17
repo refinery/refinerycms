@@ -1,3 +1,7 @@
+## 0.9.9.3 [17 February 2011]
+
+* Fixed faulty require statement that tried to load rack/cache before dragonfly. [Philip Arndt](https://github.com/parndt)
+
 ## 0.9.9.2 [17 February 2011]
 
 * Removed ``activesupport`` requirement from ``bin/refinerycms``. [Philip Arndt](https://github.com/parndt)

@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |s|
   s.name              = %q{refinerycms}
-  s.version           = %q{0.9.9.2}
+  s.version           = %q{0.9.9.3}
   s.description       = %q{A Ruby on Rails CMS that supports Rails 3. It's easy to extend and sticks to 'the Rails way' where possible.}
   s.date              = %q{2011-02-17}
   s.summary           = %q{A Ruby on Rails CMS that supports Rails 3}
@@ -18,14 +18,14 @@ Gem::Specification.new do |s|
   s.add_dependency    'bundler',                    '~> 1.0.10'
 
   # Refinery CMS
-  s.add_dependency    'refinerycms-authentication', '~> 0.9.9.2'
-  s.add_dependency    'refinerycms-base',           '~> 0.9.9.2'
-  s.add_dependency    'refinerycms-core',           '~> 0.9.9.2'
-  s.add_dependency    'refinerycms-dashboard',      '~> 0.9.9.2'
-  s.add_dependency    'refinerycms-images',         '~> 0.9.9.2'
-  s.add_dependency    'refinerycms-pages',          '~> 0.9.9.2'
-  s.add_dependency    'refinerycms-resources',      '~> 0.9.9.2'
-  s.add_dependency    'refinerycms-settings',       '~> 0.9.9.2'
+  s.add_dependency    'refinerycms-authentication', '~> 0.9.9.3'
+  s.add_dependency    'refinerycms-base',           '~> 0.9.9.3'
+  s.add_dependency    'refinerycms-core',           '~> 0.9.9.3'
+  s.add_dependency    'refinerycms-dashboard',      '~> 0.9.9.3'
+  s.add_dependency    'refinerycms-images',         '~> 0.9.9.3'
+  s.add_dependency    'refinerycms-pages',          '~> 0.9.9.3'
+  s.add_dependency    'refinerycms-resources',      '~> 0.9.9.3'
+  s.add_dependency    'refinerycms-settings',       '~> 0.9.9.3'
 
   s.files             = [
     '.gitignore',
@@ -57,26 +57,11 @@ Gem::Specification.new do |s|
     'config/environments/test.rb',
     'config/settings.rb',
     'config.ru',
-    'index',
-    'index/development',
-    'index/development/Page',
-    'index/development/Page/102_111_117',
-    'index/development/Page/104_111_109',
-    'index/development/Page/110_111_116',
-    'index/development/Page/112_111_108',
-    'index/development/Page/112_114_105',
-    'index/development/Page/112_97_103',
-    'index/development/Page/116_104_97',
-    'index/development/Page/121_111_117',
-    'index/development/Page/97_98_111',
-    'index/development/Page/99_111_110',
-    'index/development/Page/size',
     'lib',
     'lib/refinery.rb',
     'lib/refinerycms.rb',
     'license.md',
     'license.md',
-    'public',
     'readme.md',
     'readme.md',
     'refinerycms.gemspec',
