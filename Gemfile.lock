@@ -178,7 +178,7 @@ GEM
       thor (~> 0.14.4)
     rake (0.8.7)
     rdoc (3.5.3)
-    refinerycms-generators (0.9.9.3)
+    refinerycms-generators (0.9.9.4)
     refinerycms-i18n (0.9.9.9)
       refinerycms (>= 0.9.8)
       routing-filter (>= 0.2.3)
