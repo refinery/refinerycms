@@ -2,7 +2,7 @@ jp:
   plugins:
     refinery_dashboard:
       title: ダッシュボード
-      description: Gives an overview of activity in Refinery
+      description: Refineryでの活動の記録を俯瞰します。
   admin:
     dashboard:
       index:
@@ -14,12 +14,12 @@ jp:
         change_language: 言語の選択
         see_home_page: ホームページを見る
       recent_activity:
-        empty: There has not been any activity recently.
+        empty: 最近の更新はありません。
         latest_activity: 最近の活動記録
-        latest_activity_message: %{what} %{kind} was %{action}
+        latest_activity_message: %{what} %{kind}が%{action}
       recent_inquiries:
-        latest_inquiries: Latest inquiries
+        latest_inquiries: 最近の質問
   updated:
-    'with_article "the"': updated
+    'with_article "the"': 更新されました。
   created:
-    'with_article "the"': added
+    'with_article "the"': 追加されました。

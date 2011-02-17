@@ -1,34 +1,34 @@
 jp:
   plugins:
     refinery_files:
-      title: Files
-      description: Upload and link to files
+      title: ファイル
+      description: ファイルのアップロードと管理
   admin:
     resources:
-      delete: Remove this file forever
-      edit: Edit this file
+      delete: ファイルを削除
+      edit: ファイルを変更
       form:
-        download_current: Download current file
-        or: or
-        replace: " replace it with this one..."
-        maximum_file_size: The maximum file size is %{megabytes} megabytes.
+        download_current: ファイルをダウンロード
+        or: または
+        replace: "このファイルと差し替える"
+        maximum_file_size: ファイルは最大で%{megabytes}MBまでです。
       resource:
-        download: Download this file (%{size})
+        download: ファイルをダウンロードする(%{size})
       index:
-        upload_new: Upload new file
-        no_files_yet: There are no files yet. Click "Upload new file" to add your first file.
+        upload_new: ファイルをアップロードする
+        no_files_yet: まだファイルはありません。「ファイルをアップロードする」をクリックして下さい。
       insert:
-        existing: Existing File
-        new: New File
-        no_files: There are no files.
+        existing: 既存のファイル
+        new: 新規のファイル
+        no_files: ファイルはありません。
       existing_resource:
-        link_to_file: Link to this file
-        button_text: Insert
+        link_to_file: このファイルにリンクする
+        button_text: 挿入
   activerecord:
     models:
-      resource: file
+      resource: ファイル
     errors:
       models:
         resource:
-          blank: You must specify file for upload
-          too_long: File should be smaller than %{count} in size
+          blank: アップロードするファイルを指定して下さい。
+          too_long: ファイルは最大で%{count}までです。
