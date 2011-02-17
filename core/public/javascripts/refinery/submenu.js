@@ -1,5 +1,5 @@
 $(document).ready(function(){
-  $('nav#actions.multilist > ul:not(.search_list) li a[href$=' + window.location.pathname + ']').not('.not_a_link a').parent().addClass('selected');
+  $('nav#actions.multilist > ul:not(.search_list) li a[href$="' + window.location.pathname + '"]').not('.not_a_link a').parent().addClass('selected');
   if($('nav#actions.multilist > ul:not(.search_list) li.selected').length === 0) {
     $('nav#actions.multilist > ul:not(.search_list) li a:nth(1)').parent().addClass('selected');
   }
