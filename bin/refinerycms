@@ -18,7 +18,6 @@ require Pathname.new(File.expand_path(File.dirname(__FILE__) << "/..")).join('li
 require 'pathname'
 require 'fileutils'
 require 'optparse'
-require 'active_support'
 
 module Refinery
   class AppGenerator
@@ -230,7 +229,7 @@ module Refinery
     end
 
     def generate!(rails_command = nil)
-      if rails_command.blank?
+      if rails_command.to_s.length == 0
         # Generate a rails application
         rails_command = "rails new \"#{@app_path}\""
         rails_command << " --database #{@options[:database][:adapter]}"
@@ -240,7 +239,7 @@ module Refinery
       end
       rails_output = run_command(rails_command, {:cd => false})
       # Detect non-success or a blank rails output or starting with "Can't initialize" or "Error"
-      if !$?.success? or rails_output.blank? or rails_output =~ /^(Can't\ initialize|Error)/
+      if !$?.success? or rails_output.to_s.length == 0 or rails_output =~ /^(Can't\ initialize|Error)/
         puts "Generating Rails application failed. Exiting..."
         exit(1)
       elsif defined? JRUBY_VERSION
