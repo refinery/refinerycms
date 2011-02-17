@@ -17,7 +17,7 @@ Rails.root.join('public/stylesheets')
 In your +config/application.rb+ or +config/environment.rb+ add this line:
 
 <ruby>
-Sass::Plugin.add_template_location( 
+Sass::Plugin.add_template_location(
   Rails.root.join('public/stylesheets/sass').to_s,
   Rails.root.join('public/stylesheets').to_s
 )
