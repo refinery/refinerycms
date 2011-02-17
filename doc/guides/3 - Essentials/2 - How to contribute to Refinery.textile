@@ -10,9 +10,9 @@ endprologue.
 
 h3. Contributing documentation or guides
 
-We don't currently have a system which allows you to commit in guides or documentation. However we'd love it if you have a how-to guide on adding or setting up a feature on Refinery.
+We'd love it if you have a how-to guide on adding or setting up a feature on Refinery.
 
-Currently the best way to do this is to create a "gist on GitHub":https://gist.github.com/ and then "contact us":/contact with a link to your gist.
+Read the "Writing a guide for this website":/guides/writing-a-guide-for-this-website guide for more information.
 
 h3. Contributing bug fixes or new features
 
