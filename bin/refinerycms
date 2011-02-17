@@ -347,16 +347,6 @@ module Refinery
         puts "heroku config:add S3_BUCKET=XXXXXXXXX S3_KEY=XXXXXXXXX S3_SECRET=XXXXXXXXXX"
       end
 
-      puts "\n--- Refinery CMS 0.9.9.1 note ---"
-      puts "New 'core' engine called 'refinerycms-testing' which handles RSpec and Cucumber support."
-      puts "You will see this disabled in your Gemfile in the '# REFINERY CMS' section."
-      puts "To enable it, uncomment the gem line in your Gemfile and run:"
-      puts "\nbundle install"
-      puts "rails generate refinerycms_testing"
-      puts "\nIf it prompts you about whether you want to overwrite any files that conflict, choose yes."
-      puts "\nNow, to run the specs and features you can just type 'rake'."
-      puts "--- End upgrade note ---\n"
-
       puts "\nThanks for installing Refinery, enjoy creating your new application!"
       puts "---------\n\n"
     end
