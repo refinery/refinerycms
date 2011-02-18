@@ -10,7 +10,7 @@ jp:
       index:
         new: 設定の新規追加
         empty_set: 設定はありません。
-        create_first: "'%{link}'をクリックして環境設定を始めて下さい。"
+        create_first: "「%{link}」をクリックして環境設定を始めて下さい。"
       form:
         enabled: "確認"
         restart_may_be_in_order_html: <strong>注意</strong> この設定を有効にするにはサイトを再スタートさせる必要がある場合があります。
@@ -19,10 +19,10 @@ jp:
           restricted: 管理人のみが変更出来るようにします。
           activity_show_limit: ダッシュボードで表示されるアイテムの数を制限します。
           analytics_page_code: Google Analyticsを有効にします。空白か、「UA-xxxxxx-x」という形の場合には無効で、Google Analyticsへの呼び出しは為されません。
-          frontend_refinery_stylesheets_enabled: "By default, Refinery includes stylesheets for the frontend which provide default CSS without getting in the way of your own stylesheets, enabled or disabled by this setting."
-          image_dialogue_sizes: This setting applies to the Insert Image dialogue. You must implement the different thumbnail sizes as well as changing this.
-          image_thumbnails: If you modify this setting you will have to regenerate your images by running rake images:regenerate (or rake images:update if you only added more thumbnails) otherwise the setting will not apply to existing images.
-          menu_hide_children: Hide any subpages from the menu even if they are present.
+          frontend_refinery_stylesheets_enabled: "Refineryには、カスタマイズされたスタイルシートの邪魔にならないようなスタイルシートが標準で配布されています。このスタイルシートを有効にしたり、無効にしたりします。"
+          image_dialogue_sizes: 「画像を挿入する」時に使われるダイアログに影響を及ぼす設定です。様々なサイズのサムネイルと併せて使用して下さい。
+          image_thumbnails: この設定を変更した際には、rake images:regenerate (サムネイルを追加した場合にはrake images:update)を走らせて画像を再び生成して下さい。 再生成されなければ、既存の映像についてのみこの設定は有効です。
+          menu_hide_children: 傘下のページを、存在するか否かに関わらず隠します。
           new_page_parts: Enable adding new page parts (content sections) in the page editors.
           page_title: Very complex options for setting the page title. Here you can set custom CSS class or a different tag or tell it to breadcrumb with pages in its ancestry.
           pages_advanced_options_include_seo: This controls whether the SEO options are displayed in the advanced options for a page.

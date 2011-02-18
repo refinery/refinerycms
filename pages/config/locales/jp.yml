@@ -1,26 +1,24 @@
 jp:
   plugins:
     refinery_pages:
-      title: Pages
-      description: Manage content pages
+      title: ページ
+      description: ページの管理
   admin:
     pages_dialogs:
       page_link:
         link_to_this_page: Link to this page
       link_to:
-        insert: Insert
+        insert: 挿入
         your_page:
           tab_name: Your page
         web_address:
-          tab_name: Website
-          location: Location
-          new_window: New window
-          new_window_label: Check this box to have the link open in a new browser window.
-          not_sure: Not sure what to put in the box above?
+          tab_name: サイト
+          location: 場所
+          new_window: 新規ウィンドウ
           step1: Find the page on the web you want to link to.
           step2: Copy the web address from your browser's address bar and paste it into the box above.
         email_address:
-          tab_name: Email address
+          tab_name: メールアドレス
           subject_line_optional: Optional subject
           body_optional: Optional body
           not_sure: Not sure what to put in the boxes above?
@@ -31,18 +29,18 @@ jp:
           tab_name: Your file
           link_to_this_resource: Link to this file
     pages:
-      delete: Remove this page forever
-      edit: Edit this page
-      reserved_system_word: "Sorry, but that title is a reserved system word."
+      delete: ページを削除
+      edit: ページを編集
+      reserved_system_word: "このタイトルはシステム用ですので使用出来ません。"
       page:
         view_live_html: View this page live <br/><em>(opens in a new window)</em>
         hidden: hidden
-        draft: draft
+        draft: 準備稿
       form_new_page_parts:
-        title: Title
+        title: タイトル
       form_page_parts:
-        create_content_section: Add content section
-        delete_content_section: Delete content section
+        create_content_section: コンテンツを追加
+        delete_content_section: コンテンツを削除
       form_advanced_options:
         toggle_advanced_options: Access meta tag settings and menu options
         page_options: Page Options
@@ -72,10 +70,10 @@ jp:
         meta_description_title: Meta description
         meta_description_help: Enter a concise two or three sentences describing what this page is about.
       index:
-        create_new_page: Add new page
-        reorder_pages: Reorder pages
-        reorder_pages_done: Done reordering pages
-        no_pages_yet: There are no pages yet. Click "Add new page" to add your first page.
+        create_new_page: 新規ページを追加
+        reorder_pages: ページを並べ替える
+        reorder_pages_done: 並べ替えを終了する
+        no_pages_yet: まだページはありません。"新規ページを追加"をクリックして下さい。
   activerecord:
     models:
       page: page

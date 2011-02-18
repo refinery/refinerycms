@@ -68,7 +68,7 @@ jp:
       copyright: Copyright © %{year} %{site_name}
     no_script:
       enable_javascript: このページを快適にお使いになるにはJavaScriptを有効にする必要があります。
-      here_are: Here are the
+      here_are: 
       instructions_enable_javascript: instructions for how to enable JavaScript in your web browser
   time:
     formats:

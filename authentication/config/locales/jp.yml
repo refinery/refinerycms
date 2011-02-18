@@ -36,12 +36,12 @@ jp:
       enter_email_address: メールアドレスを記入して下さい。
       reset_password: パスワードのリセット
       blank_email: メールアドレス欄が空欄です
-      email_not_associated_with_account_html: "'%{email}'は記録に無いアドレスです。<br />今一度確認して下さい。"
+      email_not_associated_with_account_html: "「%{email}」は記録に無いアドレスです。<br />今一度確認して下さい。"
       email_reset_sent: パスワードをリセットする為のリンクをメールで送信しました。
       password_encryption: パスワードの暗号が強化されましたので、パスワードをリセットする必要があります。
     reset:
-      code_invalid: "リセットようのコードは失効したか、無効です。メールに書かれているリンクをコピーするか、パスワードのリセット手続きを初めからやり直して下さい。"
-      successful: "'%{email}'のパスワードは正しくリセットされました。"
+      code_invalid: "リセット用のコードは失効したか、無効です。メールに書かれているリンクをコピーするか、パスワードのリセット手続きを初めからやり直して下さい。"
+      successful: "「%{email}」のパスワードは正しくリセットされました。"
       pick_new_password_for: "%{email}の新しいパスワードを入れて下さい。"
       reset_password: パスワードをリセット
   user_mailer:
@@ -57,7 +57,7 @@ jp:
     sessions:
       signed_in: サインインしました。
   roles:
-    superuser: Superuser
+    superuser: 管理人
     refinery: Refinery
   activerecord:
     models:
