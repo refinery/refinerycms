@@ -28,13 +28,13 @@
                  #{t('.download_current')}
                  (<em>#{t('.opens_in_new_window')}</em>)".html_safe,
                  "#{resource.url if resource.present?}",
-                 :id => "current_resource",
+                 :id => "current_resource_#{field}",
                  :target => "_blank" %>
   </div>
   <br/>
   <%= link_to t('.remove_current'), "",
-    :id => "remove_resource_#{field}",
-                :style => "#{"display:none;" unless resource.present?}" %>
+              :id => "remove_resource_#{field}",
+              :style => "#{"display:none;" unless resource.present?}" %>
 </div>
 
 <% content_for :javascripts do %>
@@ -47,7 +47,7 @@
       $('iframe#dialog_iframe').remove().parents(".ui-dialog").remove();
       $('#<%= f.object_name %>_<%= field %>').val(callback_args.id);
       $('#current_resource_link_<%= field %>').attr('href', $('#current_resource_link_<%= field %>').attr('href').replace(/current_link=([^&])*&/, "current_link=" + callback_args.href + "&"));
-      $("#current_resource").attr('href', callback_args.href);
+      $("#current_resource_<%= field %>").attr('href', callback_args.href);
       $('#current_resource_text_<%= field %>').html(callback_args.html);
     }
 
