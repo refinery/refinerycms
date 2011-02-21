@@ -40,7 +40,7 @@ $(document).ready(function(){
 
   $('.success_icon, .failure_icon').bind('click', function(e) {
     $.get($(this).attr('href'), $.proxy(function(data){
-      $(this).css('background-image', null)
+      $(this).css('background-image', '')
              .removeClass('failure_icon').removeClass('success_icon')
              .addClass(data.enabled ? 'success_icon' : 'failure_icon');
     }, $(this)));
