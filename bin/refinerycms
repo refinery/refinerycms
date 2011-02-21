@@ -210,7 +210,7 @@ module Refinery
           end
         end
       elsif @app_path.join('.git').directory? && @options[:update] && !@options[:confirm]
-        git_status = run_command('git status --porcelain', :puts => false)
+        git_status = run_command('git status --porcelain', {:puts => false, :ruby => false})
         if git_status.to_s.strip.length > 0
           puts "\nYou have uncommitted changes or untracked files. Please remove or commit them, or:"
           puts "Use --confirm to have Refinery proceed anyway. "
@@ -316,13 +316,13 @@ module Refinery
       hosting = "Duostack" if @options[:duostack]
       unless hosting.nil?
         puts "\n\nInitializing and committing to git..\n"
-        run_command("git init && git add . && git commit -am 'Initial Commit'")
+        run_command("git init && git add . && git commit -am 'Initial Commit'", :ruby => false)
 
         puts "\n\nCreating #{hosting} app..\n"
         run_command("#{hosting.downcase} create #{@options[:heroku] || @options[:duostack]}")
 
         puts "\n\nPushing to #{hosting} (this takes time, be patient)..\n"
-        run_command("git push #{hosting.downcase} master")
+        run_command("git push #{hosting.downcase} master", :ruby => false)
 
         puts "\n\nSetting up the #{hosting} database..\n"
         run_command("#{hosting.downcase} rake db:setup")
@@ -355,11 +355,18 @@ module Refinery
 
     def run_command(command, options = {})
       require 'rbconfig'
-      exe = File.join(RbConfig::CONFIG['bindir'], RbConfig::CONFIG['RUBY_INSTALL_NAME'])
-      options = {:cd => true, :puts => true, :fail => nil}.merge(options)
+      options = {:cd => true, :puts => true, :fail => nil, :ruby => true}.merge(options)
       to_run = %w()
       to_run << "cd \"#{@app_path}\" &&" if options[:cd]
-      to_run << "#{exe} -S " << command
+
+      # Sometimes we want to exclude the ruby runtime executable from the front
+      # e.g. when shelling to git
+      if options[:ruby]
+        exe = File.join(RbConfig::CONFIG['bindir'], RbConfig::CONFIG['RUBY_INSTALL_NAME'])
+        to_run << "#{exe} -S "
+      end
+
+      to_run << command
 
       if Refinery::WINDOWS
         to_run = %w(cmd /c) | to_run.map{|c| c.gsub(/\//m, '\\')}
