@@ -30,15 +30,15 @@ module Refinery
     end
 
     def names
-      self.collect { |p| p.name }
+      self.map(&:name)
     end
 
     def pathnames
-      self.collect { |p| p.pathname }.compact.uniq
+      self.map(&:pathname).compact.uniq
     end
 
     def titles
-      self.collect { |p| p.title }
+      self.map(&:title)
     end
 
     class << self

@@ -2,15 +2,21 @@
 
 ## Introduction
 
-__Refinery is designed to be easily extended so you can quickly customise your Refinery site to manage new areas you want to add to your site. If you see something you want to customise, the chances are you can customise it.__
+__Refinery is designed to be easily extended so you can quickly customise your
+Refinery site to manage new areas you want to add to your site.
+If you see something you want to customise, the chances are you can customise it.__
 
-The main way of extending Refinery is through adding new engines to your app. By default you can edit pages in Refinery's backend, but how do you add a new section to manage like products?
+The main way of extending Refinery is through adding new engines to your app.
+By default you can edit pages in Refinery's backend, but how do you add a new
+section to manage like products?
 
 See: [The Refinery Engine Generator](http://github.com/resolve/refinerycms-generators/blob/master/readme.md#readme)
 
 ## The Structure of an Engine
 
-Think of a engine in Refinery as a small Rails app. Engines have a structure that is extremely similar to a Rails app. Here's an example of Refinery's pages engine (located in Refinery's ``pages/`` folder)
+Think of a engine in Refinery as a small Rails app. Engines have a structure that
+is extremely similar to a Rails app. Here's an example of Refinery's pages engine
+(located in Refinery's ``pages/`` folder)
 
     pages
       |- app
@@ -42,11 +48,15 @@ Think of a engine in Refinery as a small Rails app. Engines have a structure tha
 
 ### app/controllers
 
-In this example you see one "public" controller ``app/controllers/pages_controller`` that is responsible for managing the front end when I view a page.
+In this example you see one "public" controller ``app/controllers/pages_controller``
+that is responsible for managing the front end when I view a page.
 
 ### app/controllers/admin
 
-This bit is important. It's where all the controllers are held to manage pages in the Refinery back end in this example. You can ignore the ``pages_dialogs_controller.rb`` and ``page_parts_controller.rb`` for now and let's just focus on the ``admin/pages_controller.rb`` file. Here's what that looks like inside at a basic level:
+This bit is important. It's where all the controllers are held to manage pages
+in the Refinery back end in this example. You can ignore the ``pages_dialogs_controller.rb``
+and ``page_parts_controller.rb`` for now and let's just focus on the ``admin/pages_controller.rb``
+file. Here's what that looks like inside at a basic level:
 
     module Admin
       class PagesController < Admin::BaseController
@@ -57,25 +67,33 @@ This bit is important. It's where all the controllers are held to manage pages i
       end
     end
 
-This single controller allows us to create, read, update and delete pages in the backend. With a little bit of Refinery magic we utilise the [crudify mixin](http://github.com/resolve/refinerycms/blob/master/core/crud.md) which gives us all of these regular features out of the box.
+This single controller allows us to create, read, update and delete pages in the backend.
+With a little bit of Refinery magic we utilise the [crudify mixin](http://github.com/resolve/refinerycms/blob/master/core/crud.md)
+which gives us all of these regular features out of the box.
 
-How crudify works is an entire topic of it's own. Checkout the [crudify documentation](http://github.com/resolve/refinerycms/blob/master/core/crud.md) to get an insight into how that works.
+How crudify works is an entire topic of it's own.
+Check out the [crudify documentation](http://github.com/resolve/refinerycms/blob/master/core/crud.md)
+to get an insight into how that works.
 
 ### app/views and app/helpers
 
-Works exactly the same as ``app/views`` and ``app/helpers`` in a normal Rails app. You just put the views and helpers related to this engine in here instead of in your actual main app directory.
+Works exactly the same as ``app/views`` and ``app/helpers`` in a normal Rails app.
+You just put the views and helpers related to this engine in here instead of in your
+actual main app directory.
 
 ### config/routes.rb
 
-Works exactly the same as ``config/routes.rb`` in your app except this routes file only loads the routes for this engine.
+Works exactly the same as ``config/routes.rb`` in your app except this routes file
+only loads the routes for this engine.
 
-### rails/init.rb
+### engine/lib/refinerycms-engine_name.rb
 
-This file runs when your site is started up. All is does is registers this engine with Refinery so it knows that it exists, how to handle it in the Refinery admin menu and how to render recent activity on the Dashboard (see "Getting your Engine to Report Activity in the Dashboard")
+This file runs when your site is started up. All is does is registers this engine
+with Refinery so it knows that it exists, how to handle it in the Refinery admin
+menu and how to render recent activity on the Dashboard (see "Getting your Engine
+to Report Activity in the Dashboard")
 
-NOTE: The latest version of Refinery requires that you only specify a engine.name. plugin.title &amp; plugin.description will be looked up by the I18n system.
-
-# pages/lib/pages.rb
+# engine/lib/pages.rb
     ::Refinery::Plugin.register do |plugin|
       plugin.name = "pages"
       plugin.version = 1.0
@@ -89,7 +107,7 @@ NOTE: The latest version of Refinery requires that you only specify a engine.nam
       }
     end
 
-# pages/config/locales/en.yml
+# engine/config/locales/en.yml
     en:
       plugins:
         refinery_pages:
@@ -98,7 +116,9 @@ NOTE: The latest version of Refinery requires that you only specify a engine.nam
 
 ## Getting your Engine to Report Activity in the Dashboard
 
-Recent activity reporting is built right in, so all you need to do is follow the convention below and your engine will start showing up in the recent activity list of the Dashboard.
+Recent activity reporting is built right in, so all you need to do is follow the
+convention below and your engine will start showing up in the recent activity
+list of the Dashboard.
 
 In our example above we showed the use of ``plugin.activity`` for the pages engine.
 
@@ -143,15 +163,23 @@ Here's what the different activity options mean:
 
 ## Search Engine Optimisation: Improving the default URLs
 
-In our example above we extended Refinery to manage a products area. The problem is when I look at a product on the front end I get a URL like [http://localhost:3000/products/1](http://localhost:3000/products/1) but I would really like it to be something like [http://localhost:3000/products/my-product](http://localhost:3000/products/my-product)
+In our example above we extended Refinery to manage a products area. The problem
+is when I look at a product on the front end I get a URL like
+[http://localhost:3000/products/1](http://localhost:3000/products/1) but I would
+really like it to be something like [http://localhost:3000/products/my-product](http://localhost:3000/products/my-product)
 
-To achieve this all you need to do is open up the product model (found in ``/vendor/plugins/products/app/models/product.rb``) and add the following line inside your class:
+To achieve this all you need to do is open up the product model
+(found in ``/vendor/plugins/products/app/models/product.rb``) and add the following
+line inside your class:
 
     has_friendly_id :title, :use_slug => true
 
 Note you want to change ``:title`` to the field which you want to show up in the URL.
 
-This will work just fine for new products added from this point, but you'll want to migrate any existing products you have to use this new URL format. All you have to do is save each product you have in the database to make it create a nice URL for you.
+This will work just fine for new products added from this point, but you'll want
+to migrate any existing products you have to use this new URL format.
+All you have to do is save each product you have in the database to make it create
+a nice URL for you.
 
     ruby script/console
     >> Product.all.each {|p| p.save };nil
@@ -162,13 +190,17 @@ Now all the products in your database will have nice URLs.
 
 Refinery uses a standards compliant visual editor called [WYMeditor](http://www.wymeditor.org/)
 
-_Note: When using the Refinery generator, if you apply a field type of "text" to any of your fields, they automatically load as a WYMEditor._
+_Note: When using the Refinery generator, if you apply a field type of "text" to
+any of your fields, they automatically load as a WYMEditor._
 
-The WYSIWYG editor can only be applied to a ``textarea``. All you need to do is add a class of "wymeditor widest" to a ``textarea`` in your form and a WYSIWYG WYMEditor will load right in place.
+The WYSIWYG editor can only be applied to a ``textarea``. All you need to do is
+add a class of "wymeditor widest" to a ``textarea`` in your form and a WYSIWYG
+editor will load right in place.
 
 ### Example
 
-Again going back to our product plugin example if you had this in your ``vendor/plugins/products/app/views/admin/products/_form.html.erb`` file:
+Again going back to our product plugin example if you had this in your
+``vendor/plugins/products/app/views/admin/products/_form.html.erb`` file:
 
     <%= f.text_area :description %>
 

@@ -18,7 +18,6 @@ require Pathname.new(File.expand_path(File.dirname(__FILE__) << "/..")).join('li
 require 'pathname'
 require 'fileutils'
 require 'optparse'
-require 'active_support'
 
 module Refinery
   class AppGenerator
@@ -117,7 +116,14 @@ module Refinery
         bundle!
 
         # Ensure the database exists so that queries like .table_exists? don't fail.
-        run_command("rake -f \"#{@app_path.join('Rakefile')}\" db:create")
+        puts "\nCreating a new database.."
+        # Warn about incorrect username or password.
+        unless @options[:database][:adapter] == 'sqlite3'
+          note = "NOTE: if your database username is not '#{@options[:database][:username]}'"
+          note << " or your password is not '#{@options[:database][:password]}' then the installer will stop working here.\n\n"
+          puts note
+        end
+        run_command("rake -f \"#{@app_path.join('Rakefile')}\" db:create", {:fail => "Unable to create the application's database"})
       else
         # Update the current application.
         update!
@@ -204,7 +210,7 @@ module Refinery
           end
         end
       elsif @app_path.join('.git').directory? && @options[:update] && !@options[:confirm]
-        git_status = run_command('git status --porcelain', :puts => false)
+        git_status = run_command('git status --porcelain', {:puts => false, :ruby => false})
         if git_status.to_s.strip.length > 0
           puts "\nYou have uncommitted changes or untracked files. Please remove or commit them, or:"
           puts "Use --confirm to have Refinery proceed anyway. "
@@ -230,7 +236,7 @@ module Refinery
     end
 
     def generate!(rails_command = nil)
-      if rails_command.blank?
+      if rails_command.to_s.length == 0
         # Generate a rails application
         rails_command = "rails new \"#{@app_path}\""
         rails_command << " --database #{@options[:database][:adapter]}"
@@ -240,11 +246,13 @@ module Refinery
       end
       rails_output = run_command(rails_command, {:cd => false})
       # Detect non-success or a blank rails output or starting with "Can't initialize" or "Error"
-      if !$?.success? or rails_output.blank? or rails_output =~ /^(Can't\ initialize|Error)/
+      if !$?.success? or rails_output.to_s.length == 0 or rails_output =~ /^(Can't\ initialize|Error)/
         puts "Generating Rails application failed. Exiting..."
         exit(1)
-      elsif defined? JRUBY_VERSION
-        find_and_replace(@app_path.join('Gemfile'), /['|"]sqlite3['|"]/, "'activerecord-jdbcsqlite3-adapter'")
+      else
+        if defined? JRUBY_VERSION
+          find_and_replace(@app_path.join('Gemfile'), /['|"]sqlite3['|"]/, "'activerecord-jdbcsqlite3-adapter'")
+        end
 
         # Override username and password
         find_and_replace('config/database.yml', %r{username:.*}, "username: #{@options[:database][:username]}")
@@ -308,13 +316,13 @@ module Refinery
       hosting = "Duostack" if @options[:duostack]
       unless hosting.nil?
         puts "\n\nInitializing and committing to git..\n"
-        run_command("git init && git add . && git commit -am 'Initial Commit'")
+        run_command("git init && git add . && git commit -am 'Initial Commit'", :ruby => false)
 
         puts "\n\nCreating #{hosting} app..\n"
         run_command("#{hosting.downcase} create #{@options[:heroku] || @options[:duostack]}")
 
         puts "\n\nPushing to #{hosting} (this takes time, be patient)..\n"
-        run_command("git push #{hosting.downcase} master")
+        run_command("git push #{hosting.downcase} master", :ruby => false)
 
         puts "\n\nSetting up the #{hosting} database..\n"
         run_command("#{hosting.downcase} rake db:setup")
@@ -339,16 +347,6 @@ module Refinery
         puts "heroku config:add S3_BUCKET=XXXXXXXXX S3_KEY=XXXXXXXXX S3_SECRET=XXXXXXXXXX"
       end
 
-      puts "\n--- Refinery CMS 0.9.9.1 note ---"
-      puts "New 'core' engine called 'refinerycms-testing' which handles RSpec and Cucumber support."
-      puts "You will see this disabled in your Gemfile in the '# REFINERY CMS' section."
-      puts "To enable it, uncomment the gem line in your Gemfile and run:"
-      puts "\nbundle install"
-      puts "rails generate refinerycms_testing"
-      puts "\nIf it prompts you about whether you want to overwrite any files that conflict, choose yes."
-      puts "\nNow, to run the specs and features you can just type 'rake'."
-      puts "--- End upgrade note ---\n"
-
       puts "\nThanks for installing Refinery, enjoy creating your new application!"
       puts "---------\n\n"
     end
@@ -357,11 +355,18 @@ module Refinery
 
     def run_command(command, options = {})
       require 'rbconfig'
-      exe = File.join(RbConfig::CONFIG['bindir'], RbConfig::CONFIG['RUBY_INSTALL_NAME'])
-      options = {:cd => true, :puts => true, :fail => nil}.merge(options)
+      options = {:cd => true, :puts => true, :fail => nil, :ruby => true}.merge(options)
       to_run = %w()
       to_run << "cd \"#{@app_path}\" &&" if options[:cd]
-      to_run << "#{exe} -S " << command
+
+      # Sometimes we want to exclude the ruby runtime executable from the front
+      # e.g. when shelling to git
+      if options[:ruby]
+        exe = File.join(RbConfig::CONFIG['bindir'], RbConfig::CONFIG['RUBY_INSTALL_NAME'])
+        to_run << "#{exe} -S "
+      end
+
+      to_run << command
 
       if Refinery::WINDOWS
         to_run = %w(cmd /c) | to_run.map{|c| c.gsub(/\//m, '\\')}

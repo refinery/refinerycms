@@ -1,12 +1,12 @@
 <%
-  insert_text = "<span id='no_resource_selected' class='nothing_selected' #{"style='display: none;'" if resource.present?}>
+  insert_text = "<span id='no_resource_selected_#{field}' class='nothing_selected' #{"style='display: none;'" if resource.present?}>
                    #{t('.no_resource_selected')}
                  </span>".html_safe
   insert_link = insert_admin_resources_url({
                   :dialog => true,
-                  :update_resource => 'current_resource',
-                  :update_text => 'current_resource_text',
-                  :callback => 'resource_changed',
+                  :update_resource => "current_resource_#{field}",
+                  :update_text => "current_resource_text_#{field}",
+                  :callback => "resource_changed_#{field}",
                   :field => [f.object_name, field].join('_'),
                   :current_link => "#{resource.url if resource.present?}",
                   :height => 480
@@ -16,11 +16,11 @@
 <div>
   <%= link_to insert_text, insert_link,
               :name => t('.name'),
-              :id => "current_resource_link"
+              :id => "current_resource_link_#{field}"
   %>
-  <div id='current_resource_container' <%= "style='display:none'" unless resource.present? %>>
+  <div id='current_resource_container_<%= field %>' <%= "style='display:none'" unless resource.present? %>>
     <span id='current_resource_tag'><%= t('.current') %>:</span>
-    <span id='current_resource_text'>
+    <span id='current_resource_text_<%= field %>'>
       <%= "#{resource.title} (#{resource.file_name})" if resource.present? %>
     </span>
     <br/>
@@ -28,39 +28,40 @@
                  #{t('.download_current')}
                  (<em>#{t('.opens_in_new_window')}</em>)".html_safe,
                  "#{resource.url if resource.present?}",
-                 :id => "current_resource",
+                 :id => "current_resource_#{field}",
                  :target => "_blank" %>
   </div>
   <br/>
   <%= link_to t('.remove_current'), "",
-                :id => "remove_resource",
-                :style => "#{"display:none;" unless resource.present?}" %>
+              :id => "remove_resource_#{field}",
+              :style => "#{"display:none;" unless resource.present?}" %>
 </div>
 
 <% content_for :javascripts do %>
   <script>
-    resource_changed = function(callback_args) {
-      $('#remove_resource').show();
-      $('#current_resource_container').show();
-      $('#no_resource_selected').hide();
+    resource_changed_<%= field %> = function(callback_args) {
+      $('#remove_resource_<%= field %>').show();
+      $('#current_resource_container_<%= field %>').show();
+      $('#no_resource_selected_<%= field %>').hide();
       $('iframe#dialog_iframe').dialog("close");
       $('iframe#dialog_iframe').remove().parents(".ui-dialog").remove();
       $('#<%= f.object_name %>_<%= field %>').val(callback_args.id);
-      $('#current_resource_link').attr('href', $('#current_resource_link').attr('href').replace(/current_link=([^&])*&/, "current_link=" + callback_args.href + "&"));
-      $("#current_resource").attr('href', callback_args.href);
-      $('#current_resource_text').html(callback_args.html);
+      $('#current_resource_link_<%= field %>').attr('href', $('#current_resource_link_<%= field %>').attr('href').replace(/current_link=([^&])*&/, "current_link=" + callback_args.href + "&"));
+      $("#current_resource_<%= field %>").attr('href', callback_args.href);
+      $('#current_resource_text_<%= field %>').html(callback_args.html);
     }
 
     $(document).ready(function(e) {
-      $('#remove_resource').click(function(e) {
+      $('#remove_resource_<%= field %>').click(function(e) {
         $('#<%= f.object_name %>_<%= field %>').val("");
-        $('#current_resource_container').hide();
-        $('#current_resource_text').html('');
-        $('#no_resource_selected').show();
-        $('#current_resource_link').attr('href', $('#current_resource_link').attr('href').replace(/current_link=([^&])*&/, "current_link=&"));
+        $('#current_resource_container_<%= field %>').hide();
+        $('#current_resource_text_<%= field %>').html('');
+        $('#no_resource_selected_<%= field %>').show();
+        $('#current_resource_link_<%= field %>').attr('href', $('#current_resource_link_<%= field %>').attr('href').replace(/current_link=([^&])*&/, "current_link=&"));
         $(this).hide();
         e.preventDefault();
       });
     });
   </script>
 <% end %>
+

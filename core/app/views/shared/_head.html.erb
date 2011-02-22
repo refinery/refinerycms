@@ -8,7 +8,7 @@
     logger.warn "This change is necessary so that we can deliver a performant experience for the user."
     logger.warn "Called from: #{caller.detect{|c| c =~ %r{#{Rails.root.to_s}}}.inspect.to_s.split(':in').first}\n\n"
   end
-  if (yielded_head_libraries = yield(:head)).present?
+  if (yielded_head_libraries = yield(:head_libraries)).present?
     logger.warn "\n-- DEPRECATION WARNING --"
     logger.warn "The use of 'content_for :head_libraries' is DEPRECATED for the frontend layouts."
     logger.warn "Please use content_for :before_javascript_libraries or content_for :after_javascript_libraries instead."

@@ -1,3 +1,16 @@
+## 0.9.9.3 [17 February 2011]
+
+* Fixed faulty require statement that tried to load rack/cache before dragonfly. [Philip Arndt](https://github.com/parndt)
+
+## 0.9.9.2 [17 February 2011]
+
+* Removed ``activesupport`` requirement from ``bin/refinerycms``. [Philip Arndt](https://github.com/parndt)
+* Fixed an issue in some browsers with a particular jQuery selector. [Philip Arndt](https://github.com/parndt)
+* Modified some existing migrations to behave better when creating new applications. [Philip Arndt](https://github.com/parndt)
+* Fixed ``-u`` and ``-p`` support for ``bin/refinerycms``. [Philip Arndt](https://github.com/parndt)
+
+* [See full list](https://github.com/resolve/refinerycms/compare/0.9.9.1...0.9.9.2)
+
 ## 0.9.9.1 [15 February 2011]
 
 * Fixed Firefox issue with WYMeditor. [Amanda Wagener](https:/github.com/awagener)
@@ -8,6 +21,8 @@
 * Split the project into 10 separately released gems that include their own dependencies. [Philip Arndt](https://github.com/parndt)
 * New Vietnamese translation files added. [Alex Nguyen](https://github.com/tiendung) and Stefan N and Mario Nguyen
 * Improved JRuby support as well as the way that commands run in any ruby implementation. [Hiro Asari](https://github.com/BanzaiMan)
+
+* [See full list](https://github.com/resolve/refinerycms/compare/0.9.9...0.9.9.1)
 
 ## 0.9.9 [27 January 2011]
 
