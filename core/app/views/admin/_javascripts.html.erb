@@ -19,9 +19,9 @@
 
 <%= yield :after_javascript_libraries -%>
 
-<%= javascript_include_tag 'wymeditor/jquery.refinery.wymeditor.js',
-                           'admin',
-                           'refinery/boot_wym',
+<%= javascript_include_tag 'wymeditor/jquery.refinery.wymeditor.js', 'admin' %>
+<%= yield :customize_wym -%>
+<%= javascript_include_tag 'refinery/boot_wym',
                            'refinery/core',
                            'refinery/site_bar',
                            'refinery/admin',
