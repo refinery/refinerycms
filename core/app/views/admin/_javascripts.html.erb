@@ -17,10 +17,9 @@
                            'jquery/jquery.jcarousel.js',
                            :cache => ("cache/jquery-plugins" if js_caching) unless login -%>
 
-<%= yield :after_javascript_libraries -%>
-
 <%= javascript_include_tag 'wymeditor/jquery.refinery.wymeditor.js', 'admin' %>
-<%= yield :customize_wym -%>
+
+<%= yield :after_javascript_libraries -%>
 <%= javascript_include_tag 'refinery/boot_wym',
                            'refinery/core',
                            'refinery/site_bar',
