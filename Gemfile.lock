@@ -88,7 +88,7 @@ GEM
       activemodel (= 3.0.4)
       activesupport (= 3.0.4)
     activesupport (3.0.4)
-    acts_as_indexed (0.7.0)
+    acts_as_indexed (0.7.1)
     arel (2.0.8)
     autotest (4.4.6)
       ZenTest (>= 4.4.1)
