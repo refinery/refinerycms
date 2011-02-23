@@ -21,9 +21,9 @@ el:
         cancel: Ακύρωση
   refinery:
     crudify:
-      created: %{what} προστέθηκε επιτυχώς.
-      updated: %{what} επεξεργάστηκε επιτυχώς.
-      destroyed: %{what} αφαιρέθηκε επιτυχώς.
+      created: '%{what} προστέθηκε επιτυχώς.'
+      updated: '%{what} επεξεργάστηκε επιτυχώς.'
+      destroyed: '%{what} αφαιρέθηκε επιτυχώς.'
   shared:
     site_bar:
       log_out: Αποσύνδεση

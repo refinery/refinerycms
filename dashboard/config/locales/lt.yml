@@ -16,7 +16,7 @@ lt:
       recent_activity:
         empty: Paskutiniu metu niekas neįvyko.
         latest_activity: Naujausi įvykiai
-        latest_activity_message: %{what} %{kind} buvo %{action}
+        latest_activity_message: '%{what} %{kind} buvo %{action}'
       recent_inquiries:
         latest_inquiries: Naujausios užklausos
   updated:

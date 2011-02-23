@@ -16,7 +16,7 @@ el:
       recent_activity:
         empty: Δεν υπάρχει πρόσφατη δραστηριότητα.
         latest_activity: Τελευταίες δραστηριότητες
-        latest_activity_message: %{what} %{kind} ήταν %{action}
+        latest_activity_message: '%{what} %{kind} ήταν %{action}'
       recent_inquiries:
         latest_inquiries: Τελευταία μηνύματα
   updated:

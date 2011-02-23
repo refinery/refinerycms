@@ -14,9 +14,9 @@ es:
         cancel: Cancelar
   refinery:
     crudify:
-      created: %{what} fue creado correctamente.
-      updated: %{what} fue actualizado correctamente.
-      destroyed: %{what} fue borrado correctamente.
+      created: '%{what} fue creado correctamente.'
+      updated: '%{what} fue actualizado correctamente.'
+      destroyed: '%{what} fue borrado correctamente.'
   shared:
     site_bar:
       log_out: Salir

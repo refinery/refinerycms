@@ -21,9 +21,9 @@ lv:
         cancel: Atcelt
   refinery:
     crudify:
-      created: %{what} tika veiksmīgi izveidots.
-      updated: %{what} tika veiksmīgi atjaunots.
-      destroyed: %{what} tika veiksmīgi izdzēsts.
+      created: '%{what} tika veiksmīgi izveidots.'
+      updated: '%{what} tika veiksmīgi atjaunots.'
+      destroyed: '%{what} tika veiksmīgi izdzēsts.'
   shared:
     site_bar:
       log_out: Iziet

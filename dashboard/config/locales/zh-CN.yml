@@ -16,7 +16,7 @@ zh-CN:
       recent_activity:
         empty: 近期没有任何活动.
         latest_activity: 近期活动
-        latest_activity_message: %{action}了 %{kind} %{what}
+        latest_activity_message: '%{action}了 %{kind} %{what}'
       recent_inquiries:
         latest_inquiries: 近期的来询
   updated:

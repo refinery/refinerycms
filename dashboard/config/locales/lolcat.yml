@@ -15,7 +15,7 @@ lolcat:
         see_home_page: C HOME PAEG
       recent_activity:
         latest_activity: LATEST ACTIVITY
-        latest_activity_message: %{what} %{kind} WUZ %{action}
+        latest_activity_message: '%{what} %{kind} WUZ %{action}'
       recent_inquiries:
         latest_inquiries: LATEST INQUIRIEZ
   updated:

@@ -21,9 +21,9 @@ sv:
         cancel: Avbryt
   refinery:
     crudify:
-      created: %{what} lades till.
-      updated: %{what} uppdaterades.
-      destroyed: %{what} togs bort.
+      created: '%{what} lades till.'
+      updated: '%{what} uppdaterades.'
+      destroyed: '%{what} togs bort.'
   shared:
     site_bar:
       log_out: Logga ut

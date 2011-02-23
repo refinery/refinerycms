@@ -16,7 +16,7 @@ en:
       recent_activity:
         empty: There has not been any activity recently.
         latest_activity: Latest activity
-        latest_activity_message: %{what} %{kind} was %{action}
+        latest_activity_message: '%{what} %{kind} was %{action}'
       recent_inquiries:
         latest_inquiries: Latest inquiries
   updated:

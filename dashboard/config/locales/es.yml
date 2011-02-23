@@ -15,7 +15,7 @@ es:
       recent_activity:
         empty: No hay actividad reciente.
         latest_activity: Última actividad
-        latest_activity_message: %{kind} %{what} ha sido %{action}
+        latest_activity_message: '%{kind} %{what} ha sido %{action}'
       recent_inquiries:
         latest_inquiries: Últimas solicitudes
   updated:
