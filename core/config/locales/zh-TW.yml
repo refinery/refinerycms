@@ -21,9 +21,9 @@ zh-TW:
         cancel: 取消
   refinery:
     crudify:
-      created: %{what} 成功地加入.
-      updated: %{what} 成功地更新.
-      destroyed: %{what} 成功地移除.
+      created: '%{what} 成功地加入.'
+      updated: '%{what} 成功地更新.'
+      destroyed: '%{what} 成功地移除.'
   shared:
     site_bar:
       log_out: 登出

@@ -21,9 +21,9 @@ da:
         cancel: Annullér
   refinery:
     crudify:
-      created: %{what} er oprettet.
-      updated: %{what} er opdateret.
-      destroyed: %{what} er slettet.
+      created: '%{what} er oprettet.'
+      updated: '%{what} er opdateret.'
+      destroyed: '%{what} er slettet.'
   shared:
     site_bar:
       log_out: Log af

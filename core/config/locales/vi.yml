@@ -21,9 +21,9 @@ vi:
         cancel: Bỏ qua
   refinery:
     crudify:
-      created: %{what} vừa được thêm vào.
-      updated: %{what} vừa được cập nhật.
-      destroyed: %{what} vừa được xóa bỏ.
+      created: '%{what} vừa được thêm vào.'
+      updated: '%{what} vừa được cập nhật.'
+      destroyed: '%{what} vừa được xóa bỏ.'
   shared:
     site_bar:
       log_out: Đăng xuất

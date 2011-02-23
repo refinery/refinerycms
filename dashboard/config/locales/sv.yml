@@ -16,7 +16,7 @@ sv:
       recent_activity:
         empty: Det har inte varit någon aktivitet på senare tid.
         latest_activity: Senaste aktivitet
-        latest_activity_message: %{what} %{kind} var %{action}
+        latest_activity_message: '%{what} %{kind} var %{action}'
       recent_inquiries:
         latest_inquiries: Senaste utredningarna
   updated:

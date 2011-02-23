@@ -16,7 +16,7 @@ zh-TW:
       recent_activity:
         empty: 最近沒有發生任何活動.
         latest_activity: 最新活動
-        latest_activity_message: %{what} %{kind} 被%{action}
+        latest_activity_message: '%{what} %{kind} 被%{action}'
       recent_inquiries:
         latest_inquiries: 最新查詢
   updated:

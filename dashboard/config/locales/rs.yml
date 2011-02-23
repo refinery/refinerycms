@@ -16,7 +16,7 @@ rs:
       recent_activity:
         empty: Nije bilo aktivnosti u skorije vreme.
         latest_activity: Poslednja aktivnost
-        latest_activity_message: %{what} %{kind} je %{action}
+        latest_activity_message: '%{what} %{kind} je %{action}'
       recent_inquiries:
         latest_inquiries: Poslednja pitanja
   updated:

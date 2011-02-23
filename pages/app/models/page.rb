@@ -172,7 +172,12 @@ class Page < ActiveRecord::Base
   end
 
   def cache_key
-    [Refinery.base_cache_key, super].join('/')
+    if defined?(::Refinery::I18n) and ::Refinery::I18n.enabled?
+      [Refinery.base_cache_key, ::I18n.locale ,super].join('/')
+    else
+      [Refinery.base_cache_key, super].join('/')
+    end
+      
   end
 
   # Returns true if this page is "published"

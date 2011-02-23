@@ -21,9 +21,9 @@ cs:
         cancel: Storno
   refinery:
     crudify:
-      created: %{what} byl úspěšně vytvořen.
-      updated: %{what} byl úspěšně aktualizován.
-      destroyed: %{what} byl úspěšně smazán.
+      created: '%{what} byl úspěšně vytvořen.'
+      updated: '%{what} byl úspěšně aktualizován.'
+      destroyed: '%{what} byl úspěšně smazán.'
   shared:
     site_bar:
       log_out: Odhlásit

@@ -187,7 +187,7 @@ namespace :refinery do
     Rails.root.join("db", "migrate").mkpath
     migrations = Pathname.glob(Refinery.roots.map{|r| r.join("db", "migrate", "*.rb")}).reject{|m|
       m.to_s =~ %r{\d+_create_refinerycms_.+?_schema\.rb} or
-      Dir[Rails.root.join('db', 'migrate', "*#{m.split.last.to_s.split(/\d+_/).last}")].any?
+      Dir[Rails.root.join('db', 'migrate', "*#{m.basename.to_s.split(/\d+_/).last}")].any?
     }
     FileUtils::cp migrations,
                   Rails.root.join('db', 'migrate').cleanpath.to_s,
@@ -195,7 +195,7 @@ namespace :refinery do
 
     Rails.root.join("db", "seeds").mkpath
     Pathname.glob(Refinery.roots.map{|r| r.join('db', 'seeds', '*.rb')}).each do |seed|
-      unless (destination = Rails.root.join('db', 'seeds', seed.split.last)).exist?
+      unless (destination = Rails.root.join('db', 'seeds', seed.basename)).exist?
         FileUtils::cp seed, destination.to_s, :verbose => verbose
       end
     end

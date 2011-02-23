@@ -1,5 +1,5 @@
-require 'rack/cache'
 require 'dragonfly'
+require 'rack/cache'
 require 'refinerycms-core'
 
 module Refinery

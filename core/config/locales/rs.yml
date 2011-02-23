@@ -21,9 +21,9 @@ rs:
         cancel: Poništi
   refinery:
     crudify:
-      created: %{what} je uspešno dodat(a).
-      updated: %{what} je uspešno izmenjen(a).
-      destroyed: %{what} je uspešno uklonjen(a).
+      created: '%{what} je uspešno dodat(a).'
+      updated: '%{what} je uspešno izmenjen(a).'
+      destroyed: '%{what} je uspešno uklonjen(a).'
   shared:
     site_bar:
       log_out: Log out

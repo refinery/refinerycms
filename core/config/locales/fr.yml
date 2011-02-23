@@ -21,9 +21,9 @@ fr:
         cancel: Annuler
   refinery:
     crudify:
-      created: %{what} a été correctement créé.
-      updated: %{what} a été correctement mis à jour.
-      destroyed: %{what} a été correctement supprimé.
+      created: '%{what} a été correctement créé.'
+      updated: '%{what} a été correctement mis à jour.'
+      destroyed: '%{what} a été correctement supprimé.'
   shared:
     site_bar:
       log_out: Me déconnecter

@@ -8,7 +8,6 @@ tmp/**/*
 # Documentation
 doc/api
 doc/app
-doc/*
 .yardoc
 .yardopts
 

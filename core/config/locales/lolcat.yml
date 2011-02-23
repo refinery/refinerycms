@@ -21,9 +21,9 @@ lolcat:
         cancel: CANCEL
   refinery:
     crudify:
-      created: %{what} WUZ SUCCESFULLY ADDD.
-      updated: %{what} WUZ SUCCESFULLY UPDATD.
-      destroyed: %{what} WUZ SUCCESFULLY REMOVD.
+      created: '%{what} WUZ SUCCESFULLY ADDD.'
+      updated: '%{what} WUZ SUCCESFULLY UPDATD.'
+      destroyed: '%{what} WUZ SUCCESFULLY REMOVD.'
   shared:
     site_bar:
       log_out: LOG OUT

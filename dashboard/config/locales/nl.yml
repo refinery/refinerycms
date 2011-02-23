@@ -16,7 +16,7 @@ nl:
       recent_activity:
         empty: Er hebben zich recentelijk geen activiteiten voorgedaan.
         latest_activity: Laatste wijzigingen
-        latest_activity_message: %{what} %{kind} is %{action}
+        latest_activity_message: '%{what} %{kind} is %{action}'
       recent_inquiries:
         latest_inquiries: Latest inquiries
   updated:

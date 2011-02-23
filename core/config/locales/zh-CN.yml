@@ -21,9 +21,9 @@ zh-CN:
         cancel: 取消
   refinery:
     crudify:
-      created: %{what} 添加成功.
-      updated: %{what} 编辑成功.
-      destroyed: %{what} 删除成功.
+      created: '%{what} 添加成功.'
+      updated: '%{what} 编辑成功.'
+      destroyed: '%{what} 删除成功.'
   shared:
     site_bar:
       log_out: 注销

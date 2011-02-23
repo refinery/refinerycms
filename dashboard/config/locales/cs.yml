@@ -16,7 +16,7 @@ cs:
       recent_activity:
         empty: V poslední době nebyla provedena žádná akce.
         latest_activity: Nejnovější akce
-        latest_activity_message: %{what} %{kind} byla %{action}
+        latest_activity_message: '%{what} %{kind} byla %{action}'
       recent_inquiries:
         latest_inquiries: Nejnovější dotazy z webu
   updated:

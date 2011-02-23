@@ -16,7 +16,7 @@ vi:
       recent_activity:
         empty: Không có hoạt động gì gần đây.
         latest_activity: Các hoạt động mới nhất
-        latest_activity_message: %{what} %{kind} là %{action}
+        latest_activity_message: '%{what} %{kind} là %{action}'
       recent_inquiries:
         latest_inquiries: Các truy vấn mới nhất
   updated:

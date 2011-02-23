@@ -10,7 +10,7 @@ class CreateRefinerycmsCoreSchema < ActiveRecord::Migration
         t.datetime "created_at"
       end
 
-      add_index ::Slug.table_name, ["name", "sluggable_type", "scope", "sequence"], :name => "index_#{::Slug.table_name}_on_name_sluggable_type_scope_and_sequence", :unique => true
+      add_index ::Slug.table_name, ["name", "sluggable_type", "scope", "sequence"], :name => "index_#{::Slug.table_name}_on_n_s_s_and_s", :unique => true
       add_index ::Slug.table_name, ["sluggable_id"], :name => "index_#{::Slug.table_name}_on_sluggable_id"
     end
   end

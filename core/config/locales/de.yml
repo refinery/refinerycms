@@ -21,9 +21,9 @@ de:
         cancel: Abbrechen
   refinery:
     crudify:
-      created: %{what} wurde erfolgreich angelegt.
-      updated: %{what} wurde erfolgreich aktualisiert.
-      destroyed: %{what} wurde erfolgreich gelöscht.
+      created: '%{what} wurde erfolgreich angelegt.'
+      updated: '%{what} wurde erfolgreich aktualisiert.'
+      destroyed: '%{what} wurde erfolgreich gelöscht.'
   shared:
     site_bar:
       log_out: Abmelden

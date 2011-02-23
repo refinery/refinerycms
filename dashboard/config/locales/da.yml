@@ -16,7 +16,7 @@ da:
       recent_activity:
         empty: Der her ingen aktititeter været for nylig.
         latest_activity: Seneste aktiviteter
-        latest_activity_message: %{what} %{kind} blev %{action}
+        latest_activity_message: '%{what} %{kind} blev %{action}'
       recent_inquiries:
         latest_inquiries: Seneste henvendelser
   updated:
