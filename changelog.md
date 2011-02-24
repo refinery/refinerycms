@@ -5,6 +5,7 @@
 * Solved YAML parsing issues introduced by change to Psych. [Aaron Patterson](https://github.com/tenderlove) and [Uģis Ozols](https://github.com/ugisozols)
 * Updated page to use a localized cache key if frontend translations are enabled. [Bryan Mahoney](https://github.com/DynamoMTL)
 * Upgraded modernizr to version 1.7. [Jon Roberts](https://github.com/emptyflask)
+* Fixed an issue with the 'add page parts' functionality inserting new parts in the wrong place. [Philip Arndt](https://github.com/parndt)
 * [See full list](https://github.com/resolve/refinerycms/compare/0.9.9.3...0.9.9.4)
 
 ## 0.9.9.3 [17 February 2011]
