@@ -2,10 +2,10 @@
 
 Gem::Specification.new do |s|
   s.name              = %q{refinerycms-settings}
-  s.version           = %q{0.9.9.3}
+  s.version           = %q{0.9.9.4}
   s.summary           = %q{Settings engine for Refinery CMS}
   s.description       = %q{The default settings engine that is required by Refinery CMS core. Adds programmer creatable, user editable settings for each engine.}
-  s.date              = %q{2011-02-17}
+  s.date              = %q{2011-02-24}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
   s.rubyforge_project = %q{refinerycms}
@@ -73,12 +73,11 @@ Gem::Specification.new do |s|
     'lib/generators/refinerycms_settings_generator.rb',
     'lib/refinerycms-settings.rb',
     'license.md',
-    'readme.md',
     'refinerycms-settings.gemspec',
     'spec',
     'spec/models',
     'spec/models/refinery_setting_spec.rb'
   ]
 
-  s.add_dependency 'refinerycms-base', '~> 0.9.9.3'
+  s.add_dependency 'refinerycms-base', '~> 0.9.9.4'
 end
