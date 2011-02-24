@@ -676,26 +676,25 @@ var page_options = {
         var tab_title = part_title.toLowerCase().replace(" ", "_");
 
         if ($('#part_' + tab_title).size() === 0) {
-          $.get(page_options.new_part_url,
-            {
+          $.get(page_options.new_part_url, {
               title: part_title
               , part_index: $('#new_page_part_index').val()
               , body: ''
-            }
-            , function(data, status){
+            }, function(data, status){
               $('#submit_continue_button').remove();
               // Add a new tab for the new content section.
               $(data).appendTo('#page_part_editors');
               page_options.tabs.tabs('add', '#page_part_new_' + $('#new_page_part_index').val(), part_title);
               page_options.tabs.tabs('select', $('#new_page_part_index').val());
 
-              // turn the new textarea into a wymeditor.
-              $('#page_parts_attributes_' + $('#new_page_part_index').val() + "_body").wymeditor(wymeditor_boot_options);
-
               // hook into wymedtior to instruct it to select this new tab again once it has loaded.
               WYMeditor.onload_functions.push(function() {
+                $('#page_part_new_' + $('#new_page_part_index').val()).appendTo('#page_part_editors');
                 page_options.tabs.tabs('select', $('#new_page_part_index').val());
               });
+
+              // turn the new textarea into a wymeditor.
+              WYMeditor.init();
 
               // Wipe the title and increment the index counter by one.
               $('#new_page_part_index').val(parseInt($('#new_page_part_index').val(), 10) + 1);
@@ -704,6 +703,7 @@ var page_options = {
               page_options.tabs.find('> ul li a').corner('top 5px');
 
               $('#new_page_part_dialog').dialog('close');
+              $('#new_page_part_dialog').remove();
             }
           );
         }else{
