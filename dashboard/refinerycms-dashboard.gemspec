@@ -2,10 +2,10 @@
 
 Gem::Specification.new do |s|
   s.name              = %q{refinerycms-dashboard}
-  s.version           = %q{0.9.9.3}
+  s.version           = %q{0.9.9.4}
   s.summary           = %q{Dashboard engine for Refinery CMS}
   s.description       = %q{The dashboard is usually the first engine the user sees in the backend of Refinery CMS. It displays useful information and contains links to common functionality.}
-  s.date              = %q{2011-02-17}
+  s.date              = %q{2011-02-24}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
   s.rubyforge_project = %q{refinerycms}
@@ -64,9 +64,8 @@ Gem::Specification.new do |s|
     'lib/gemspec.rb',
     'lib/refinerycms-dashboard.rb',
     'license.md',
-    'readme.md',
     'refinerycms-dashboard.gemspec'
   ]
 
-  s.add_dependency 'refinerycms-core', '~> 0.9.9.3'
+  s.add_dependency 'refinerycms-core', '~> 0.9.9.4'
 end
