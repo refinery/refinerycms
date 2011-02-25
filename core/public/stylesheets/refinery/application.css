@@ -7,14 +7,18 @@ body {
 }
 #body_content_left {
   float: left;
-  width: 590px;
-  padding-right: 10px;
+  width: 600px;
 }
 #body_content_right {
   float: right;
-  padding-left: 10px;
-  width: 390px;
+  width: 400px;
 }
+#body_content_left .inner {
+  padding-right: 10px;
+}     
+#body_content_right .inner {
+  padding-left: 10px;
+}     
 #body_content.no_body_content_left #body_content_right,
   #body_content.no_body_content_right #body_content_left {
   width: 100%;
