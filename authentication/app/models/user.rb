@@ -54,7 +54,7 @@ class User < ActiveRecord::Base
 
   def has_role?(title)
     raise ArgumentException, "Role should be the title of the role not a role object." if title.is_a?(Role)
-    (role = Role.find_by_title(title.to_s.camelize)).present? and roles.collect{|r| r.id}.include?(role.id)
+    roles.any?{|r| r.title == title.to_s.camelize}
   end
 
 end
