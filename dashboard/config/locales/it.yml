@@ -1,26 +1,26 @@
 it:
   plugins:
     refinery_dashboard:
-      title: Cruscotto
+      title: Scheda principale
   admin:
     dashboard:
       index:
-        quick_tasks: Attività comuni
-        add_a_new_page: Aggiungere una nuova pagina
-        update_a_page: Aggiornamento di una pagina
-        upload_a_image: Carica un immagine
+        quick_tasks: Accesso rapido
+        add_a_new_page: Crea una nuova pagina
+        update_a_page: Modifica una pagina
+        upload_a_image: "Carica un'immagine"
         upload_a_file: Carica un file
         change_language: Cambia lingua
-        see_home_page: Vedi pagina iniziale
+        see_home_page: Visualizza la pagina iniziale
       recent_activity:
-        empty: non c'è stata nessuna attivitá recente
-        latest_activity: Ultime attività
+        empty: non sono state registrate attività recenti
+        latest_activity: Attività recenti
         latest_activity_message: '%{what} %{kind} è stato %{action}'
         see: Vedere '%{what}'
       recent_inquiries:
         latest_inquiries: Ultimi messaggi
   updated:
-    'with_article "the"':  aggiornato
+    'with_article "the"':  modificato
   created:
     'with_article "the"':  creato
   ago: "%{time} fa"

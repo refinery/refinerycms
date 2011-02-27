@@ -1,32 +1,32 @@
 it:
   plugins:
     refinery_images:
-      title: Immagine
+      title: Immagini
       description: Gestione immagini
   admin:
     images:
-      delete: Eliminare questa immagine per sempre
-      edit: Modifica questa immagine
+      delete: "Elimina l'immagine corrente"
+      edit: "Modifica l'immagine corrente"
       form:
         image: Immagine
-        use_current_image: Usa immagine corrente
+        use_current_image: "Usa l'immagine corrente"
         or: o
-        replace_image: Sostituirlo con questo ...
+        replace_image: Sostituirla con questa...
         current_image: Immagine corrente
         maximum_image_size: "La dimensione massima per l'immagine è %{megabytes} megabytes."
       index:
-        create_new_image: Crea nuova immagine
-        no_images_yet: Non ci sono ancora immagini. Fare clic su "Crea nuova immagine" per aggiungere la tua prima immagine.
+        create_new_image: Carica una nuova immagine
+        no_images_yet: "Nessuna immagine presente. Fare clic su \"Carica una nuova immagine\" per aggiungere un'immagine."
         view:
-          switch_to: Passare alla vista %{view_name}
-          list: lista
-          grid: griglia
+          switch_to: Passa alla modalità di visualizzazione "%{view_name}"
+          list: Lista
+          grid: Griglia
       grid_view:
         edit: Modifica questa immagine
         view_live_html: Visualizza questa immagine <br/><em>Apri in una nuova finestra</em>
       existing_image:
         button_text: Inserisci
-        resize_image: Ridimensionare l'immagine?
+        resize_image: "Ridimensionare l'immagine?"
         size: Dimensioni
       list_view_image:
         edit_this_image: Modifica questa immagine
@@ -34,7 +34,7 @@ it:
         existing_image: Immagine Esistente
         new_image: Nuova immagine
         previous: Precedente
-        next: Prossimo
+        next: Successivo
         submit_insert: Inserire
         or: o
         cancel: Annullare
@@ -42,6 +42,6 @@ it:
     errors:
       models:
         image:
-          blank: Devi scegliere un file da caricare
+          blank: "Devi selezionare un'immagine da caricare"
           too_long: I file devono essere di dimensioni inferiori a %{count}
-          incorrect_format: L'immagine deve essere un JPG, PNG o GIF
+          incorrect_format: "L'immagine deve essere in formato JPEG, PNG o GIF"
