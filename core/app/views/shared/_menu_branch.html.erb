@@ -5,7 +5,7 @@
   dom_id = ("id='item_#{menu_branch_counter}'" if menu_branch.parent_id.nil? and menu_branch.title.present?)
 
   hide_children = (defined?(hide_children) && hide_children)
-  children = hide_children ? [] : collection.select { |p| p.parent_id == menu_branch.id && p.in_menu? }
+  children = (hide_children || !menu_branch.has_descendants?) ? [] : collection.select { |p| p.parent_id == menu_branch.id }
 -%>
 <li<%= ['', css, dom_id].compact.join(' ').gsub(/\ *$/, '') %>>
   <%= link_to menu_branch.title, menu_branch.url -%>

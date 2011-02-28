@@ -1,3 +1,9 @@
+## 0.9.9.5 [Not Released]
+
+* Added ``<div class='inner'>`` to `_content_page` for better control over CSS for each section. Please see [086abfcae2c83330346e28d1e40004cff8a27720](https://github.com/resolve/refinerycms/commit/086abfcae2c83330346e28d1e40004cff8a27720) for what changed if this affects you. [Stefan Mielke](https://github.com/caplod)
+* Menu performance improvements. [David Reese](https://github.com/whatcould)
+* [See full list](https://github.com/resolve/refinerycms/compare/0.9.9.4...0.9.9.5)
+
 ## 0.9.9.4 [24 February 2011]
 
 * Added ``doc/guides`` for textile based guides that power http://refinerycms.com/guides. [Steven Heidel](https://github.com/stevenheidel) and [Philip Arndt](https://github.com/parndt)
