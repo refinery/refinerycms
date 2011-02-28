@@ -225,7 +225,7 @@ class Page < ActiveRecord::Base
   # Will return the body page part of the first page.
   def [](part_title)
     # Allow for calling attributes with [] shorthand (eg page[:parent_id])
-    return super if self.attributes.has_key?(part_title)
+    return super if self.attributes.has_key?(part_title.to_s)
 
     # the way that we call page parts seems flawed, will probably revert to page.parts[:title] in a future release.
     # self.parts is already eager loaded so we can now just grab the first element matching the title we specified.
