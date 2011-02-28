@@ -224,20 +224,18 @@ class Page < ActiveRecord::Base
   #
   # Will return the body page part of the first page.
   def [](part_title)
-    # don't want to override a super method when trying to call a page part.
-    # the way that we call page parts seems flawed, will probably revert to page.parts[:title] in a future release.
-    if (super_value = super).blank?
-      # self.parts is already eager loaded so we can now just grab the first element matching the title we specified.
-      part = self.parts.detect do |part|
-        part.title.present? and #protecting against the problem that occurs when have nil title
-        part.title == part_title.to_s or
-        part.title.downcase.gsub(" ", "_") == part_title.to_s.downcase.gsub(" ", "_")
-      end
+    # Allow for calling attributes with [] shorthand (eg page[:parent_id])
+    return super if self.attributes.has_key?(part_title.to_s)
 
-      return part.body unless part.nil?
+    # the way that we call page parts seems flawed, will probably revert to page.parts[:title] in a future release.
+    # self.parts is already eager loaded so we can now just grab the first element matching the title we specified.
+    part = self.parts.detect do |part|
+      part.title.present? and #protecting against the problem that occurs when have nil title
+      part.title == part_title.to_s or
+      part.title.downcase.gsub(" ", "_") == part_title.to_s.downcase.gsub(" ", "_")
     end
 
-    super_value
+    part.try(:body)
   end
 
   # In the admin area we use a slightly different title to inform the which pages are draft or hidden pages

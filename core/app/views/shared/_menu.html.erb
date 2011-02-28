@@ -3,7 +3,7 @@
   css ||= 'menu'
   hide_children = RefinerySetting.find_or_set(:menu_hide_children, false) unless defined?(hide_children)
   # Select top menu items unless 'roots' is supplied.
-  collection ||= @menu_pages.includes(:parts, :slugs)
+  collection ||= @menu_pages.includes(:slugs)
   if (roots ||= collection.select{|p| p.parent_id.nil?}).present?
     # In order to match items that aren't shown in menu and highlight their associations.
     # This can be supplied if the logic different in your case.
