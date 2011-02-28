@@ -50,7 +50,7 @@
       if section[:title]
         section[:html] = "<h1 id='#{dom_id}'>#{section[:html]}</h1>"
       else
-        section[:html] = "<section id='#{dom_id}'>#{section[:html]}</section>"
+        section[:html] = "<section id='#{dom_id}'><div class='inner'>#{section[:html]}</div></section>"
       end
     else
       css << "no_#{dom_id}"
