@@ -177,7 +177,7 @@ class Page < ActiveRecord::Base
     else
       [Refinery.base_cache_key, super].join('/')
     end
-      
+
   end
 
   # Returns true if this page is "published"
