@@ -35,7 +35,7 @@ end
 
 require 'rubygems'
 # If spork is available in the Gemfile it'll be used but we don't force it.
-unless RbConfig::CONFIG["host_os"] =~ %r!(msdos|mswin|djgpp|mingw)! or (begin; require 'spork'; rescue LoadError; nil end).nil?
+unless (begin; require 'spork'; rescue LoadError; nil end).nil?
   require 'spork'
 
   Spork.prefork do
