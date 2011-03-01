@@ -30,7 +30,7 @@ refinerycms myapp --heroku
 </shell>
 
 
-NOTE: Heroku replies on "Git":http://git-scm.com/download being installed on your system. Please check or install it beforehand.
+NOTE: Heroku realize on "Git":http://git-scm.com/download being installed on your system. Please check or install it beforehand.
 
 Watch the output for these lines
 
