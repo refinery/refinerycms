@@ -84,10 +84,22 @@ describe Page do
       @page.url[:path].should == ["rspec-is-great-for-testing-too"]
     end
 
+    it "should return its path underneath its parent with marketable urls" do
+      create_child
+      @child.url[:id].should be_nil
+      @child.url[:path].should == [@page.url[:path].first, 'the-child-page']
+    end
+
     it "should not have a path without marketable urls" do
       turn_off_marketable_urls
       @page.url[:path].should be_nil
       @page.url[:id].should == "rspec-is-great-for-testing-too"
+    end
+
+    it "should not mention its parent without marketable urls" do
+      create_child
+      @child.url[:id].should == 'the-child-page'
+      @child.url[:path].should be_nil
     end
   end
 
