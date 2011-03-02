@@ -41,6 +41,7 @@ WYMeditor.STRINGS['cs'] = {
 	Classes:			'Třídy',
 	Status:			 'Stav',
 	Source_Code:		'Zdrojový kód',
-	Apply_Style: 'Styl'
+	Apply_Style: 'Styl',
+	Insert: 'Vložit'
 };
 
