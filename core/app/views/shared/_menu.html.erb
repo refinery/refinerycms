@@ -1,7 +1,7 @@
 <%
   dom_id ||= 'menu'
   css ||= 'menu'
-  hide_children = RefinerySetting.find_or_set(:menu_hide_children, false) unless defined?(hide_children)
+  hide_children = RefinerySetting.find_or_set(:menu_hide_children, false) if hide_children.nil?
   # Select top menu items unless 'roots' is supplied.
   collection ||= @menu_pages.includes(:slugs)
   if (roots ||= collection.select{|p| p.parent_id.nil?}).present?
