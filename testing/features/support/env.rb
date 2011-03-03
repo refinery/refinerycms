@@ -9,7 +9,7 @@ require 'refinerycms-base'
 def setup_environment
   ENV["RAILS_ENV"] ||= "test"
 
-  if RbConfig::CONFIG["host_os"] =~ %r!(msdos|mswin|djgpp|mingw)!
+  if Refinery::WINDOWS
     puts "Win32 users may experience cucumber/formatter/unicode errors.  Requirement ommited, see: /features/support/env.rb to re-add."
   else
     require 'cucumber/formatter/unicode' # Remove this line if you don't want Cucumber Unicode support
@@ -69,7 +69,7 @@ end
 
 require 'rubygems'
 # If spork is available in the Gemfile it'll be used but we don't force it.
-unless RbConfig::CONFIG["host_os"] =~ %r!(msdos|mswin|djgpp|mingw)! or (begin; require 'spork'; rescue LoadError; nil end).nil?
+unless (begin; require 'spork'; rescue LoadError; nil end).nil?
   Spork.prefork do
     setup_environment
   end
