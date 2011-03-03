@@ -3,14 +3,18 @@ require 'spec_helper'
 describe Page do
 
   def reset_page(options = {})
-    @valid_attributes = {
+    if @page
+      @page.destroy!
+      @page.children.each(&:destroy!)
+      @page = nil
+      @child = nil
+    end
+
+    @page = Page.create!({
       :id => 1,
       :title => "RSpec is great for testing too",
       :deletable => true
-    }
-
-    @page.destroy! if @page
-    @page = Page.create!(@valid_attributes.update(options))
+    }.update(options))
   end
 
   def page_cannot_be_destroyed
@@ -160,19 +164,18 @@ describe Page do
   end
 
   context "should add url suffix" do
-    it "when title is set to a reserved word" do
+    before(:each) do
       turn_on_marketable_urls
-      reserved_word = Page.friendly_id_config.reserved_words.first
-      reset_page(:title => reserved_word)
-      @page.url[:path].should == ["#{reserved_word}-page"]
+      @reserved_word = Page.friendly_id_config.reserved_words.last
+      reset_page(:title => @reserved_word)
+    end
+
+    it "when title is set to a reserved word" do
+      @page.url[:path].should == ["#{@reserved_word}-page"]
     end
 
     it "when parent page title is set to a reserved word" do
-      turn_on_marketable_urls
-      reserved_word = Page.friendly_id_config.reserved_words.first
-      reset_page(:title => reserved_word)
-      create_child
-      @child.url[:path].should == ["#{reserved_word}-page", 'the-child-page']
+      create_child.url[:path].should == ["#{@reserved_word}-page", 'the-child-page']
     end
   end
 
