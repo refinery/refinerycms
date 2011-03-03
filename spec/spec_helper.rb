@@ -36,7 +36,7 @@ end
 require 'rubygems'
 # If spork is available in the Gemfile it'll be used but we don't force it.
 unless (begin; require 'spork'; rescue LoadError; nil end).nil?
-  
+
   Spork.prefork do
     # Loading more in this block will cause your tests to run faster. However,
     # if you change any configuration or code from libraries loaded here, you'll

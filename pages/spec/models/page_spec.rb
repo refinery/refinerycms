@@ -30,6 +30,9 @@ describe Page do
     RefinerySetting.set(:use_marketable_urls, {:value => false, :scoping => 'pages'})
   end
 
+  def turn_on_marketable_urls
+    RefinerySetting.set(:use_marketable_urls, {:value => true, :scoping => 'pages'})
+  end
 
   before(:each) do
     reset_page
@@ -94,12 +97,15 @@ describe Page do
       turn_off_marketable_urls
       @page.url[:path].should be_nil
       @page.url[:id].should == "rspec-is-great-for-testing-too"
+      turn_on_marketable_urls
     end
 
     it "should not mention its parent without marketable urls" do
+      turn_off_marketable_urls
       create_child
       @child.url[:id].should == 'the-child-page'
       @child.url[:path].should be_nil
+      turn_on_marketable_urls
     end
   end
 
@@ -150,6 +156,23 @@ describe Page do
 
       @page.draft = false
       @page.live?.should == true
+    end
+  end
+
+  context "should add url suffix" do
+    it "when title is set to a reserved word" do
+      turn_on_marketable_urls
+      reserved_word = Page.friendly_id_config.reserved_words.first
+      reset_page(:title => reserved_word)
+      @page.url[:path].should == ["#{reserved_word}-page"]
+    end
+
+    it "when parent page title is set to a reserved word" do
+      turn_on_marketable_urls
+      reserved_word = Page.friendly_id_config.reserved_words.first
+      reset_page(:title => reserved_word)
+      create_child
+      @child.url[:path].should == ["#{reserved_word}-page", 'the-child-page']
     end
   end
 
