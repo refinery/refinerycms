@@ -2,6 +2,7 @@ es:
   plugins:
     refinery_dashboard:
       title: Panel de control
+      description: Da una visión de la actividad en Refinery
   admin:
     dashboard:
       index:
@@ -19,10 +20,10 @@ es:
       recent_inquiries:
         latest_inquiries: Últimas solicitudes
   updated:
-    'with_article "las"':  actualizadas
-    'with_article "los"':  actualizados
+    'with_article "femenino"':  actualizada
+    'with_article "masculino"':  actualizado
     'with_article "the"':  actualizado
   created:
-    'with_article "las"':  creadas
-    'with_article "los"':  creados
+    'with_article "femenino"':  creada
+    'with_article "masculino"':  creado
     'with_article "the"':  creado

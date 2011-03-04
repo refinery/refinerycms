@@ -2,6 +2,7 @@ es:
   plugins:
     refinery_users:
       title: Usuarios
+      description: Gestionar usuarios
   admin:
     users:
       delete: Borrar a este usuario para siempre
@@ -48,15 +49,20 @@ es:
       subject: Enlace para cambiar tu contraseña
       reset_request_received_for: Petición de restablecimiento de contraseña recibido por %{username}
       visit_this_url: Ve a esta URL para establecer una contraseña nueva
-      remain_same_if_no_action: contraseña será la misma si no realizas esta acción
+      remain_same_if_no_action: la contraseña será la misma si no realizas esta acción
+  roles:
+    superuser: Superusuario
+    refinery: Refinery
   activerecord:
     models:
       user: usuario
     attributes:
       user:
         login: Usuario
+        username: Usuario
         email: E-mail
         password: Contraseña
+        password_confirmation: Confirmar contraseña
         remember_me: Recordarme
   errors:
       messages:
