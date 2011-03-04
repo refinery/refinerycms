@@ -312,7 +312,7 @@ body.login header h1 {
   margin: 0px;
   padding: 0px;
   position: absolute;
-  bottom: 0px;
+  bottom: -1px;
   left: 0px;
   right: 0px;
   background: transparent;
