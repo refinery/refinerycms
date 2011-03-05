@@ -23,11 +23,15 @@ h4. Add Refinery CMS as a dependency in your Gemfile
 
 Open up your Gemfile and add the latest version:
 
-<shell>
+<ruby>
   gem 'refinerycms', '= 0.9.9.4'
-</shell>
+</ruby>
 
-Now, run 'bundle install'
+Now, to install the gem run:
+
+<shell>
+  bundle install
+</shell>
 
 h4. Generate support files and migrations
 
