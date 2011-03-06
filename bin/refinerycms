@@ -10,8 +10,10 @@ rescue LoadError
   exit(1)
 end
 
-# Load refinerycms
+# Let the application have a constant it can detect installation with.
+REFINERYCMS_INSTALLER = true
 
+# Load refinerycms
 require Pathname.new(File.expand_path(File.dirname(__FILE__) << "/..")).join('lib', 'refinery')
 
 # Load other required libraries
@@ -29,7 +31,7 @@ module Refinery
         :database => {
           :adapter => 'sqlite3',
           :username => 'root',
-          :password => ''
+          :password => nil
         },
         :from_version => '0.9.8',
         :force => false,
@@ -125,10 +127,12 @@ module Refinery
       # Warn about incorrect username or password.
       unless @options[:database][:adapter] == 'sqlite3'
         note = "NOTE: if your database username is not '#{@options[:database][:username]}'"
-        note << " or your password is not '#{@options[:database][:password]}' then the installer will stop working here.\n\n"
+        note << " or your password is not '#{@options[:database][:password]}' then the installer will stall here.\n\n"
         puts note
       end
-      run_command("rake -f \"#{@app_path.join('Rakefile')}\" db:create", {:fail => "Unable to create the application's database"})
+      run_command("rake -f \"#{@app_path.join('Rakefile')}\" db:create", {
+        :fail => "Unable to create the application's database"
+      })
 
       # Run the newly activated Refinery CMS generator.
       run_command("rails generate refinerycms", {

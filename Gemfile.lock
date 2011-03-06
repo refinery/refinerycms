@@ -222,5 +222,5 @@ PLATFORMS
 DEPENDENCIES
   refinerycms!
   refinerycms-i18n (~> 0.9.9.9)
-  refinerycms-testing (~> 0.9.9.1)
+  refinerycms-testing (~> 0.9.9.4)
   sqlite3

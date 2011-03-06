@@ -1,3 +1,3 @@
-%w(base core settings authentication dashboard images pages resources).each do |engine|
-  require "refinerycms-#{engine}"
-end
+require 'refinerycms-base'
+
+require File.expand_path('../refinerycms/all', __FILE__) unless defined?(REFINERYCMS_INSTALLER)
