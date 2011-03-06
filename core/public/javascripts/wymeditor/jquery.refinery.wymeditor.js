@@ -4300,6 +4300,9 @@ WYMeditor.WymClassExplorer.prototype.initIframe = function(iframe) {
     //set the text direction
     $('html', this._doc).attr('dir', this._options.direction);
 
+    // Add class to say this is Internet Explorer
+    $('html', this._doc).addClass('ie');
+
     //init html value
     $(this._doc.body).html(this._wym._html);
 
