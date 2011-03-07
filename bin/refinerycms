@@ -30,10 +30,10 @@ module Refinery
       @options = {
         :database => {
           :adapter => 'sqlite3',
+          :ident => false,
           :username => 'root',
           :password => nil
         },
-        :from_version => '0.9.8',
         :force => false,
         :heroku => false,
         :duostack => false,
@@ -65,6 +65,10 @@ module Refinery
           @options[:database][:adapter] = db
         end
 
+        opts.on("--ident", "Use ident database authentication (for mysql or postgresql)") do
+          @options[:database][:ident] = true
+        end
+
         opts.on("-u USERNAME", '--database-username USERNAME', String, "Set the database username", '  (default root)') do |username|
           @options[:database][:username] = username
         end
@@ -79,10 +83,6 @@ module Refinery
 
         opts.on("-f", "--force", "Force overwriting of directory") do
           @options[:force] = true
-        end
-
-        opts.on("--from-version VERSION", String, "Set the version that we are updating from, incase there are special files that need to change", "  (default '0.9.8')") do |version|
-          @options[:from_version] = version
         end
 
         opts.on("--heroku [APP_NAME]", "Set up and deploy to Heroku") do |app_name|
@@ -126,8 +126,12 @@ module Refinery
       puts "\nCreating a new database.."
       # Warn about incorrect username or password.
       unless @options[:database][:adapter] == 'sqlite3'
-        note = "NOTE: if your database username is not '#{@options[:database][:username]}'"
-        note << " or your password is not '#{@options[:database][:password]}' then the installer will stall here.\n\n"
+        if @options[:database][:ident]
+          note = "NOTE: If ident authentication fails then the installer will stall or fail here.\n\n"
+        else
+          note = "NOTE: if your database username is not '#{@options[:database][:username]}'"
+          note << " or your password is not '#{@options[:database][:password]}' then the installer will stall here.\n\n"
+        end
         puts note
       end
       run_command("rake -f \"#{@app_path.join('Rakefile')}\" db:create", {
@@ -230,8 +234,13 @@ module Refinery
         end
 
         # Override username and password
-        find_and_replace('config/database.yml', %r{username:.*}, "username: #{@options[:database][:username]}")
-        find_and_replace('config/database.yml', %r{password:.*}, "password: #{@options[:database][:password]}")
+        if @options[:database][:ident]
+          find_and_replace('config/database.yml', %r{username:}, '#username:')
+          find_and_replace('config/database.yml', %r{password:}, '#password:')
+        else
+          find_and_replace('config/database.yml', %r{username:.*}, "username: #{@options[:database][:username]}")
+          find_and_replace('config/database.yml', %r{password:.*}, "password: #{@options[:database][:password]}")
+        end
 
         puts "\n---------"
         puts "Refinery successfully installed in '#{@app_path}'!\n\n"
