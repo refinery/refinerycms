@@ -4,7 +4,7 @@ Gem::Specification.new do |s|
   s.name              = %q{refinerycms}
   s.version           = %q{0.9.9.4}
   s.description       = %q{A Ruby on Rails CMS that supports Rails 3. It's easy to extend and sticks to 'the Rails way' where possible.}
-  s.date              = %q{2011-03-07}
+  s.date              = %q{2011-03-08}
   s.summary           = %q{A Ruby on Rails CMS that supports Rails 3}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
@@ -64,6 +64,7 @@ Gem::Specification.new do |s|
     'lib/refinerycms.rb',
     'license.md',
     'license.md',
+    'public',
     'readme.md',
     'readme.md',
     'refinerycms.gemspec',
