@@ -839,7 +839,7 @@ WYMeditor.editor.prototype.bindEvents = function() {
     .blur(function() { $(this).toggleClass('hasfocus'); });
 
   //handle click event on classes buttons
-  $(this._box).find(this._options.classSelector).bind('click', function() {
+  $(this._box).find(this._options.classSelector).bind('click', function(e) {
 
     var aClasses = eval(wym._options.classesItems);
     var sName = $(this).attr(WYMeditor.NAME);
@@ -874,7 +874,7 @@ WYMeditor.editor.prototype.bindEvents = function() {
     wym.exec(WYMeditor.APPLY_CLASS);
 
     wym._iframe.contentWindow.focus(); //See #154
-    return(false);
+    e.preventDefault();
   });
 
   //handle event on update element
@@ -1098,6 +1098,8 @@ WYMeditor.editor.prototype.toggleClassSelector = function() {
     $(wym._box).find("a[name=" + WYMeditor.APPLY_CLASS +"]")
                .removeClass('selected').parent().removeClass('activated');
   }
+
+  wym.exec(WYMeditor.APPLY_CLASS);
 }
 
 /* @name removeClass
