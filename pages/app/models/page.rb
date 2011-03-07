@@ -2,7 +2,7 @@ require 'globalize3'
 
 class Page < ActiveRecord::Base
 
-  translates :title, :meta_keywords, :meta_description, :browser_title if self.respond_to?(:translates)
+  translates :title, :meta_keywords, :meta_description, :browser_title, :custom_title if self.respond_to?(:translates)
   attr_accessor :locale # to hold temporarily
   validates :title, :presence => true
 
