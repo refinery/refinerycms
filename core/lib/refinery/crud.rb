@@ -161,11 +161,14 @@ module Refinery
 
             paging_options = {:page => params[:page]}
 
+            # Use per_page from crudify options.
+            if #{options[:per_page]}
+              paging_options.update({:per_page => #{options[:per_page].inspect}})
             # Seems will_paginate doesn't always use the implicit method.
-            if #{class_name}.methods.map(&:to_sym).include?(:per_page)
+            elsif #{class_name}.methods.map(&:to_sym).include?(:per_page)
               paging_options.update({:per_page => #{class_name}.per_page})
             end
-
+            
             @#{plural_name} = @#{plural_name}.paginate(paging_options)
           end
 
