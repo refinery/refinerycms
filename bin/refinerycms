@@ -28,17 +28,18 @@ module Refinery
       # Default options
       @input = input
       @options = {
+        :confirm => false,
         :database => {
           :adapter => 'sqlite3',
           :ident => false,
+          :password => nil,
           :username => 'root',
-          :password => nil
+          :skip => false
         },
-        :force => false,
-        :heroku => false,
         :duostack => false,
-        :confirm => false,
-        :gems => []
+        :force => false,
+        :gems => [],
+        :heroku => false
       }
 
       @optparse = OptionParser.new do |opts|
@@ -75,6 +76,10 @@ module Refinery
 
         opts.on("-p PASSWORD", '--database-password PASSWORD', String, "Set the database password", "  (default '')") do |password|
           @options[:database][:password] = password
+        end
+
+        opts.on('--skip-db', "Skip any database creation or migration tasks") do
+          @options[:database][:skip] = true
         end
 
         opts.on("-g", "--gems gem1,gem2,gem3", Array, "Additional gems to install") do |gems|
@@ -122,27 +127,29 @@ module Refinery
       # Bundle the application which activates Refinery CMS
       bundle!
 
-      # Ensure the database exists so that queries like .table_exists? don't fail.
-      puts "\nCreating a new database.."
-      # Warn about incorrect username or password.
-      unless @options[:database][:adapter] == 'sqlite3'
-        if @options[:database][:ident]
-          note = "NOTE: If ident authentication fails then the installer will stall or fail here.\n\n"
-        else
-          note = "NOTE: if your database username is not '#{@options[:database][:username]}'"
-          note << " or your password is not '#{@options[:database][:password]}' then the installer will stall here.\n\n"
+      unless @options[:database][:skip]
+        # Ensure the database exists so that queries like .table_exists? don't fail.
+        puts "\nCreating a new database.."
+        # Warn about incorrect username or password.
+        unless @options[:database][:adapter] == 'sqlite3'
+          if @options[:database][:ident]
+            note = "NOTE: If ident authentication fails then the installer will stall or fail here.\n\n"
+          else
+            note = "NOTE: if your database username is not '#{@options[:database][:username]}'"
+            note << " or your password is not '#{@options[:database][:password]}' then the installer will stall here.\n\n"
+          end
+          puts note
         end
-        puts note
-      end
-      run_command("rake -f \"#{@app_path.join('Rakefile')}\" db:create", {
-        :fail => "Unable to create the application's database"
-      })
+        run_command("rake -f \"#{@app_path.join('Rakefile')}\" db:create", {
+          :fail => "Unable to create the application's database"
+        })
 
-      # Run the newly activated Refinery CMS generator.
-      run_command("rails generate refinerycms", {
-        :cd => true,
-        :fail => "Could not run the refinerycms generator successfully."
-      })
+        # Run the newly activated Refinery CMS generator.
+        run_command("rails generate refinerycms", {
+          :cd => true,
+          :fail => "Could not run the refinerycms generator successfully."
+        })
+      end
 
       # Output helpful messages to user
       output!
@@ -283,8 +290,10 @@ module Refinery
     end
 
     def output!
-      puts "\n\nSetting up your development database..\n"
-      run_command("rake -f \"#{@app_path.join('Rakefile')}\" db:migrate")
+      unless @options[:database][:skip]
+        puts "\n\nSetting up your development database..\n"
+        run_command("rake -f \"#{@app_path.join('Rakefile')}\" db:migrate")
+      end
 
       # Deploy to Heroku
       hosting = nil
@@ -310,21 +319,33 @@ module Refinery
       end
       # End automation
 
-      # Output helpful messages
-      puts "\n=== ACTION REQUIRED ==="
-      puts "Now you can launch your webserver using:"
-      puts "\ncd #{@app_path}"
-      puts "rails server"
-      puts "\nThis will launch the built-in webserver at port 3000."
-      puts "You can now see your site running in your browser at http://localhost:3000"
+      # Construct helpful output messages
+      note = ["\n=== ACTION REQUIRED ==="]
+      if @options[:database][:skip]
+        note << "Because you elected to skip database creation and migration in the installer"
+        note << "you will need to run the following tasks manually to maintain correct operation:"
+        note << "\ncd #{@app_path}"
+        note << "rake db:create"
+        note << "rails generate refinerycms"
+        note << "rake db:migrate"
+        note << "\n---------\n"
+      end
+      note << "Now you can launch your webserver using:"
+      note << "\ncd #{@app_path}"
+      note << "rails server"
+      note << "\nThis will launch the built-in webserver at port 3000."
+      note << "You can now see your site running in your browser at http://localhost:3000"
 
       if @options[:heroku]
-        puts "\nIf you want files and images to work on heroku, you will need setup S3:"
-        puts "heroku config:add S3_BUCKET=XXXXXXXXX S3_KEY=XXXXXXXXX S3_SECRET=XXXXXXXXXX"
+        note << "\nIf you want files and images to work on heroku, you will need setup S3:"
+        note << "heroku config:add S3_BUCKET=XXXXXXXXX S3_KEY=XXXXXXXXX S3_SECRET=XXXXXXXXXX"
       end
 
-      puts "\nThanks for installing Refinery, enjoy creating your new application!"
-      puts "---------\n\n"
+      note << "\nThanks for installing Refinery, enjoy creating your new application!"
+      note << "---------\n\n"
+
+      # finally, output.
+      puts note.join("\n")
     end
 
     private :validate!, :generate!, :bundle!, :output!
