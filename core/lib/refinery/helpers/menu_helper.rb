@@ -51,12 +51,15 @@ module Refinery
       # Determine whether the supplied page is the currently open page according to Refinery.
       # Also checks whether Rails thinks it is selected after that using current_page?
       def selected_page?(page)
-        # ensure we match the path without the locale.
         path = request.path
-        if defined?(::Refinery::I18n) and ::Refinery::I18n.enabled?
-          path = path.split("/#{::I18n.locale}").last
+
+        # Ensure we match the path without the locale, if present.
+        if defined?(::Refinery::I18n) and ::Refinery::I18n.enabled? and path =~ %r{^/#{::I18n.locale}}
+          path = path.split(%r{^/#{::I18n.locale}}).last
+          path = "/" if path.blank?
         end
 
+        # Match path based on cascading rules.
         (path =~ Regexp.new(page.menu_match) if page.menu_match.present?) or
           (path == page.link_url) or
           (path == page.nested_path) or
