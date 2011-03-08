@@ -1,4 +1,4 @@
-## 0.9.9.5 [Not Released]
+## 0.9.9.5 [7 March 2011]
 
 * Added `<div class='inner'>` to `_content_page` for better control over CSS for each section. Please see [086abfcae2c83330346e28d1e40004cff8a27720](https://github.com/resolve/refinerycms/commit/086abfcae2c83330346e28d1e40004cff8a27720) for what changed if this affects you. [Stefan Mielke](https://github.com/caplod)
 * Menu performance improvements. [David Reese](https://github.com/whatcould)
