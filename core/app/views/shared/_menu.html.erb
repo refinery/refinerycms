@@ -6,7 +6,7 @@
   collection ||= @menu_pages.includes(:slugs)
   if (roots ||= collection.select{|p| p.parent_id.nil?}).present?
     # In order to match items that aren't shown in menu and highlight their associations.
-    # This can be supplied if the logic different in your case.
+    # This can be supplied if the logic is different in your case.
     unless defined?(selected_item)
       selected_item = collection.detect{|page| selected_page?(page)}
       selected_item = @page if selected_item.nil?
