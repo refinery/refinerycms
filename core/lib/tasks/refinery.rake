@@ -162,50 +162,10 @@ namespace :refinery do
 
   desc "Update the core files with the gem"
   task :update => :environment do
-    verbose = ENV["verbose"] || false
-    require 'fileutils'
-
-    # Clean up mistakes
-    if (bad_migration = Rails.root.join('db', 'migrate', '20100913234704_add_cached_slug_to_pages.rb')).file?
-      FileUtils::rm bad_migration
-    end
-
-    unless (devise_config = Rails.root.join('config', 'initializers', 'devise.rb')).file?
-      devise_config.parent.mkpath
-      FileUtils::cp Refinery.roots('core').join(*%w(lib generators templates config initializers devise.rb)),
-                    devise_config,
-                    :verbose => verbose
-    end
-
-    (contents = Rails.root.join('Gemfile').read).gsub!("group :test do", "group :development, :test do")
-    Rails.root.join('Gemfile').open("w") do |f|
-      f.puts contents
-    end
-
-    # copy in any new migrations, except for ones that create schemas (this is an update!)
-    # or ones that exist already.
-    Rails.root.join("db", "migrate").mkpath
-    migrations = Pathname.glob(Refinery.roots.map{|r| r.join("db", "migrate", "*.rb")}).reject{|m|
-      m.to_s =~ %r{\d+_create_refinerycms_.+?_schema\.rb} or
-      Dir[Rails.root.join('db', 'migrate', "*#{m.basename.to_s.split(/\d+_/).last}")].any?
-    }
-    FileUtils::cp migrations,
-                  Rails.root.join('db', 'migrate').cleanpath.to_s,
-                  :verbose => verbose
-
-    Rails.root.join("db", "seeds").mkpath
-    Pathname.glob(Refinery.roots.map{|r| r.join('db', 'seeds', '*.rb')}).each do |seed|
-      unless (destination = Rails.root.join('db', 'seeds', seed.basename)).exist?
-        FileUtils::cp seed, destination.to_s, :verbose => verbose
-      end
-    end
-
-    puts "\n" if verbose
-
-    unless (ENV["from_installer"] || 'false').to_s == 'true'
-      puts "\n=== ACTION REQUIRED ==="
-      puts "Please run rake db:migrate to ensure your database is at the correct version.\n"
-    end
+    puts "\nThe rake refinery:update task is DEPRECATED."
+    puts "Please use the generator instead:"
+    puts "rails generate refinerycms --update"
+    puts "\n"
   end
 
   namespace :cache do
