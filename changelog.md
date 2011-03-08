@@ -1,13 +1,15 @@
 ## 0.9.9.5 [Not Released]
 
-* Added ``<div class='inner'>`` to `_content_page` for better control over CSS for each section. Please see [086abfcae2c83330346e28d1e40004cff8a27720](https://github.com/resolve/refinerycms/commit/086abfcae2c83330346e28d1e40004cff8a27720) for what changed if this affects you. [Stefan Mielke](https://github.com/caplod)
+* Added `<div class='inner'>` to `_content_page` for better control over CSS for each section. Please see [086abfcae2c83330346e28d1e40004cff8a27720](https://github.com/resolve/refinerycms/commit/086abfcae2c83330346e28d1e40004cff8a27720) for what changed if this affects you. [Stefan Mielke](https://github.com/caplod)
 * Menu performance improvements. [David Reese](https://github.com/whatcould)
-* Removed ``--update`` from ``bin/refinerycms`` because it's no longer relevant. [Philip Arndt](https://github.com/parndt)
+* Removed `--update` from `bin/refinerycms` because it's no longer relevant. [Philip Arndt](https://github.com/parndt)
+* Changed the default `cache_store` to `:file_store` for better thread safety with passenger. [Philip Arndt](https://github.com/parndt)
+* WYMeditor Internet Explorer improvements. [Philip Arndt](https://github.com/parndt)
 * [See full list](https://github.com/resolve/refinerycms/compare/0.9.9.4...0.9.9.5)
 
 ## 0.9.9.4 [24 February 2011]
 
-* Added ``doc/guides`` for textile based guides that power http://refinerycms.com/guides. [Steven Heidel](https://github.com/stevenheidel) and [Philip Arndt](https://github.com/parndt)
+* Added `doc/guides` for textile based guides that power [the guides at refinerycms.com/guides](http://refinerycms.com/guides). [Steven Heidel](https://github.com/stevenheidel) and [Philip Arndt](https://github.com/parndt)
 * Allowed multiple resource pickers on one form. [Phil Spitler](https://github.com/philspitler)
 * Solved YAML parsing issues introduced by change to Psych. [Aaron Patterson](https://github.com/tenderlove) and [Uģis Ozols](https://github.com/ugisozols)
 * Updated page to use a localized cache key if frontend translations are enabled. [Bryan Mahoney](https://github.com/DynamoMTL)
@@ -22,19 +24,19 @@
 
 ## 0.9.9.2 [17 February 2011]
 
-* Removed ``activesupport`` requirement from ``bin/refinerycms``. [Philip Arndt](https://github.com/parndt)
+* Removed `activesupport` requirement from `bin/refinerycms`. [Philip Arndt](https://github.com/parndt)
 * Fixed an issue in some browsers with a particular jQuery selector. [Philip Arndt](https://github.com/parndt)
 * Modified some existing migrations to behave better when creating new applications. [Philip Arndt](https://github.com/parndt)
-* Fixed ``-u`` and ``-p`` support for ``bin/refinerycms``. [Philip Arndt](https://github.com/parndt)
+* Fixed `-u` and `-p` support for `bin/refinerycms`. [Philip Arndt](https://github.com/parndt)
 * [See full list](https://github.com/resolve/refinerycms/compare/0.9.9.1...0.9.9.2)
 
 ## 0.9.9.1 [15 February 2011]
 
 * Fixed Firefox issue with WYMeditor. [Amanda Wagener](https:/github.com/awagener)
-* Gracefully exit ``bin/refinerycms`` on error. [Alexandre Girard](https://github.com/alx) and [Brian Stevens](https://github.com/bdstevens) and [Philip Arndt](https://github.com/parndt)
+* Gracefully exit `bin/refinerycms` on error. [Alexandre Girard](https://github.com/alx) and [Brian Stevens](https://github.com/bdstevens) and [Philip Arndt](https://github.com/parndt)
 * Added basic single table inheritance support to crudify. [Ken Nordquist](https://github.com/kenphused)
-* Removed most of the 0.9.8.9 specific ``--update`` logic in ``bin/refinerycms``. [Philip Arndt](https://github.com/parndt)
-* Added ``refinerycms-testing`` engine which reduces the main Gemfile complexity. [Philip Arndt](https://github.com/parndt)
+* Removed most of the 0.9.8.9 specific `--update` logic in `bin/refinerycms`. [Philip Arndt](https://github.com/parndt)
+* Added `refinerycms-testing` engine which reduces the main Gemfile complexity. [Philip Arndt](https://github.com/parndt)
 * Split the project into 10 separately released gems that include their own dependencies. [Philip Arndt](https://github.com/parndt)
 * New Vietnamese translation files added. [Alex Nguyen](https://github.com/tiendung) and Stefan N and Mario Nguyen
 * Improved JRuby support as well as the way that commands run in any ruby implementation. [Hiro Asari](https://github.com/BanzaiMan)
@@ -43,40 +45,40 @@
 ## 0.9.9 [27 January 2011]
 
 * Better, more semantic HTML5. [Joe Sak](https://github.com/joemsak)
-* Added ``role`` selection for ``admin/users#edit``. [Hez Ronningen](https://github.com/hez)
+* Added `role` selection for `admin/users#edit`. [Hez Ronningen](https://github.com/hez)
 * Fixed WYMeditor bug regarding adding links, helped with persistent testing by [Marko Hriberšek](https://github.com/markoh). [Philip Arndt](https://github.com/parndt)
-* Better ``RSpec`` coverage [Joe Sak](https://github.com/joemsak) and [Philip Arndt](https://github.com/parndt) and [Uģis Ozols](https://github.com/ugisozols) and [PeRo ICT Solutions](https://github.com/pero-ict)
+* Better `RSpec` coverage [Joe Sak](https://github.com/joemsak) and [Philip Arndt](https://github.com/parndt) and [Uģis Ozols](https://github.com/ugisozols) and [PeRo ICT Solutions](https://github.com/pero-ict)
 * Superusers now get access to all backend tabs by default. [Philip Arndt](https://github.com/parndt)
 * Introduced LOLcat translation (yes, seriously) as an easter egg. [Steven Heidel](https://github.com/stevenheidel)
 * Fixed several missing translations. [Johan Bruning](https://github.com/GidoGeek)
 * Solved several i18n inconsistencies. [Jonas Hartmann](https://github.com/ionas)
-* Made ``UserPlugin`` dependent on ``User`` which solves a data redundancy proble.m [Maarten Hoogendoorn](https://github.com/moretea)
-* Fixed issue with finding where engines are located on the disk using ``Plugin::pathname``. [Lele](https://github.com/leleintercom)
-* Add ``rescue_not_found`` option to turn on/off 404 rendering. [Ryan Bigg](https://github.com/radar)
+* Made `UserPlugin` dependent on `User` which solves a data redundancy proble.m [Maarten Hoogendoorn](https://github.com/moretea)
+* Fixed issue with finding where engines are located on the disk using `Plugin::pathname`. [Lele](https://github.com/leleintercom)
+* Add `rescue_not_found` option to turn on/off 404 rendering. [Ryan Bigg](https://github.com/radar)
 * Full review of the French translations. [Jérémie Horhant](https://github.com/Titinux)
-* Now using ``mail()`` to send emails. [J. Edward Dewyea](https://github.com/commuter)
+* Now using `mail()` to send emails. [J. Edward Dewyea](https://github.com/commuter)
 * Refactored backend HTML & CSS, reduced complexity and added a loading animation when you click Save on forms. [Philip Arndt](https://github.com/parndt)
 * Improved the speed of the menu especially related to scaling through reusing collections rather then revisiting the database. [Amanda Wagener](https://github.com/awagener)
-* Implemented an API for the ``pages`` form's tabs. [David Jones](https://github.com/djones)
-* Use the rails naming convention for translations that contain html markup. Escaping translations not marked as ``html_safe`` in the ``refinery_help_tag`` helper. [Jérémie Horhant](https://github.com/Titinux)
+* Implemented an API for the `pages` form's tabs. [David Jones](https://github.com/djones)
+* Use the rails naming convention for translations that contain html markup. Escaping translations not marked as `html_safe` in the `refinery_help_tag` helper. [Jérémie Horhant](https://github.com/Titinux)
 * Full review of the Italian translations. [Mirco Veltri](https://github.com/indaco)
-* Deprecated ``/admin`` in favour of ``/refinery`` and put in a message to display to the user when they use it. [Philip Arndt](https://github.com/parndt)
+* Deprecated `/admin` in favour of `/refinery` and put in a message to display to the user when they use it. [Philip Arndt](https://github.com/parndt)
 * Full review of the Russian translations as well as work with articles / genders in grammar. [Semyon Perepelitsa](https://github.com/semaperepelitsa)
 * Full review of routes and the Latvian translations. [Uģis Ozols](https://github.com/ugisozols)
-* Implemented better support for ``rails.js``, using standard ``:method`` and ``:confirm`` ``link_to`` options. [Semyon Perepelitsa](https://github.com/semaperepelitsa)
+* Implemented better support for `rails.js`, using standard `:method` and `:confirm` `link_to` options. [Semyon Perepelitsa](https://github.com/semaperepelitsa)
 * Locked jQuery to 1.4.2 and jQuery UI to 1.8.5, fixed errors with dialogues and tested. [Philip Arndt](https://github.com/parndt) and [Phillip Miller](https://github.com/philmill) and [Sam Beam](https://github.com/sbeam)
 * Added multiple file upload for images and resources using HTML5. [Philip Arndt](https://github.com/parndt)
-* Deprecated ``content_for :head`` in favour of ``content_for :meta``, ``content_for :stylesheets`` and ``content_for :javascripts``. [Philip Arndt](https://github.com/parndt)
+* Deprecated `content_for :head` in favour of `content_for :meta`, `content_for :stylesheets` and `content_for :javascripts`. [Philip Arndt](https://github.com/parndt)
 * Improved client-side responsiveness of backend and frontend. [Philip Arndt](https://github.com/parndt)
 * No more RMagick dependency [Philip Arndt](https://github.com/parndt)
-* Added ``rake refinery:override stylesheet=somefile`` and ``rake refinery:override javascript=somefile`` commands to override stylesheets and javascripts. [Oliver Ponder](https://github.com/oponder)
-* Restructed the project to remove ``vendor/refinerycms`` and put all engines in the application root. [Kamil K. Lemański](https://github.com/kml)
+* Added `rake refinery:override stylesheet=somefile` and `rake refinery:override javascript=somefile` commands to override stylesheets and javascripts. [Oliver Ponder](https://github.com/oponder)
+* Restructed the project to remove `vendor/refinerycms` and put all engines in the application root. [Kamil K. Lemański](https://github.com/kml)
 * Force no resource caching on non-writable file systems (like Heroku). [Philip Arndt](https://github.com/parndt)
-* Refinery can now attach itself to a Rails application simply by including the refinerycms gem in the ``Gemfile``. [Philip Arndt](https://github.com/parndt)
-* Added core support for ``globalize3`` so that pages can be translated into multiple languages. [Philip Arndt](https://github.com/parndt) and [Maarten Hoogendoorn](https://github.com/moretea)
-* Refactored ``group_by_date`` into a helper method which is called in the view layer and not in the controller because it is entirely presentation. [Philip Arndt](https://github.com/parndt)
+* Refinery can now attach itself to a Rails application simply by including the refinerycms gem in the `Gemfile`. [Philip Arndt](https://github.com/parndt)
+* Added core support for `globalize3` so that pages can be translated into multiple languages. [Philip Arndt](https://github.com/parndt) and [Maarten Hoogendoorn](https://github.com/moretea)
+* Refactored `group_by_date` into a helper method which is called in the view layer and not in the controller because it is entirely presentation. [Philip Arndt](https://github.com/parndt)
 * Applied HTML5 history pagination to all core engines. [Philip Arndt](https://github.com/parndt)
-* Converted translate calls to use ``:scope``. [Uģis Ozols](https://github.com/ugisozols)
+* Converted translate calls to use `:scope`. [Uģis Ozols](https://github.com/ugisozols)
 * Fixed issues where errors would only show up in English for some models and updated Russian translations. [Semyon Perepelitsa](https://github.com/semaperepelitsa)
 * Converted to devise for authentication, requiring password resets. [Philip Arndt](https://github.com/parndt) and [Uģis Ozols](https://github.com/ugisozols)
 * Sped up WYMeditor load times. [Philip Arndt](https://github.com/parndt)
@@ -87,32 +89,32 @@
 ## 0.9.8.9 [21 December 2010]
 
 * Fixed error in the inquiries engine seeds. [Philip Arndt](https://github.com/parndt)
-* Separate each error message into its own ``<li>``. [Uģis Ozols](https://github.com/ugisozols)
-* Add ``rescue_not_found`` option to turn on/off 404 rendering. [Ryan Bigg](https://github.com/radar)
-* Add ``:from`` key to ``UserMailer`` for password reset. [Earle Clubb](https://github.com/eclubb)
+* Separate each error message into its own `<li>`. [Uģis Ozols](https://github.com/ugisozols)
+* Add `rescue_not_found` option to turn on/off 404 rendering. [Ryan Bigg](https://github.com/radar)
+* Add `:from` key to `UserMailer` for password reset. [Earle Clubb](https://github.com/eclubb)
 * [See full list](https://github.com/resolve/refinerycms/compare/0.9.8.8...0.9.8.9)
 
 ## 0.9.8.8 [16 December 2010]
 
 * Prevented RefinerySetting from accessing its database table before it is created. [Philip Arndt](https://github.com/parndt)
-* Added more options to ``bin/refinerycms`` like ability to specify database username and password. [Philip Arndt](https://github.com/parndt)
+* Added more options to `bin/refinerycms` like ability to specify database username and password. [Philip Arndt](https://github.com/parndt)
 * [See full list](https://github.com/resolve/refinerycms/compare/0.9.8.7...0.9.8.8)
 
 ## 0.9.8.7 [15 December 2010]
 
 * Fixed a problem with migration number clashes. [Philip Arndt](https://github.com/parndt)
-* Fixed problems with ``db:migrate`` for a new app on Postgres. [Jacob Buys](https://github.com/wjbuys)
+* Fixed problems with `db:migrate` for a new app on Postgres. [Jacob Buys](https://github.com/wjbuys)
 * Back-ported the changes made to the images dialogue which speed it up significantly. [Philip Arndt](https://github.com/parndt)
-* Sort file names in the ``refinery_engine`` generator so attribute types don't get changed before ``_form.html.erb`` generation. [Phil Spitler](https://github.com/philspitler)
-* Added ``approximate_ascii`` setting, defaulted to true, for pages so that characters won't appear strangely in the address bar of some web browsers. [Uģis Ozols](https://github.com/ugisozols)
+* Sort file names in the `refinery_engine` generator so attribute types don't get changed before `_form.html.erb` generation. [Phil Spitler](https://github.com/philspitler)
+* Added `approximate_ascii` setting, defaulted to true, for pages so that characters won't appear strangely in the address bar of some web browsers. [Uģis Ozols](https://github.com/ugisozols)
 * [See full list](https://github.com/resolve/refinerycms/compare/0.9.8.6...0.9.8.7)
 
 ## 0.9.8.6 [3 December 2010]
 
 * Backported lots of functionality from 0.9.9 and later like:
 * Fixed reordering for trees and non-trees [Philip Arndt](https://github.com/parndt)
-* Better ``RSpec`` coverage [Joe Sak](https://github.com/joemsak) and [Philip Arndt](https://github.com/parndt) and [Uģis Ozols](https://github.com/ugisozols) and [PeRo ICT Solutions](https://github.com/pero-ict)
-* Fixed issue with finding where engines are located on the disk using ``Plugin::pathname``. [Lele](https://github.com/leleintercom)
+* Better `RSpec` coverage [Joe Sak](https://github.com/joemsak) and [Philip Arndt](https://github.com/parndt) and [Uģis Ozols](https://github.com/ugisozols) and [PeRo ICT Solutions](https://github.com/pero-ict)
+* Fixed issue with finding where engines are located on the disk using `Plugin::pathname`. [Lele](https://github.com/leleintercom)
 * Improved the speed of the menu especially related to scaling through reusing collections rather then revisiting the database. [Amanda Wagener](https://github.com/awagener)
 * No more RMagick dependency [Philip Arndt](https://github.com/parndt)
 * Added helper methods to expose some of the options in crud. [David Jones](https://github.com/djones)
@@ -120,11 +122,11 @@
 
 ## 0.9.8.5 [21 September 2010](https://github.com/parndt)
 
-* Fixed an issue with the engine generator that was putting a comma in the wrong place breaking the call to ``crudify``. [Maarten Hoogendoorn](https://github.com/moretea)
+* Fixed an issue with the engine generator that was putting a comma in the wrong place breaking the call to `crudify`. [Maarten Hoogendoorn](https://github.com/moretea)
 * Made the delete messages consistent. [Uģis Ozols](https://github.com/ugisozols)
-* ``zh-CN`` was overriding en locale in core locale file, fixed. [Philip Arndt](https://github.com/parndt)
+* `zh-CN` was overriding en locale in core locale file, fixed. [Philip Arndt](https://github.com/parndt)
 * Changed verbiage from created to added, create to add as it describes it better for things like images. [Philip Arndt](https://github.com/parndt)
-* ``image_fu`` no longer gives you the width and height of the image due to performance problems. [Philip Arndt](https://github.com/parndt) and [David Jones](https://github.com/djones)
+* `image_fu` no longer gives you the width and height of the image due to performance problems. [Philip Arndt](https://github.com/parndt) and [David Jones](https://github.com/djones)
 * Implemented a standardised API for the engine generator. The core now includes a standard engine install generator. Engines generate a readme file explaining how to build an engine as a gem. [David Jones](https://github.com/djones)
 * [See full list](https://github.com/resolve/refinerycms/compare/0.9.8.4...0.9.8.5)
 
@@ -132,41 +134,41 @@
 
 * Recursive deletion of page parts. [primerano](https://github.com/primerano)
 * Move around the default pages. [Philip Arndt](https://github.com/parndt)
-* Extraction of windows check to ``Refinery::WINDOWS``. [Steven Heidel](https://github.com/stevenheidel)
+* Extraction of windows check to `Refinery::WINDOWS`. [Steven Heidel](https://github.com/stevenheidel)
 * Updated the changelog for several previous releases. [Steven Heidel](https://github.com/stevenheidel)
 * Made the menu more flexible so that it can be used in many places in your layout without caching over the top of itself. [Philip Arndt](https://github.com/parndt)
 * Added search feature to Refinery Settings. [Matt McMahand](https://github.com/invalidusrname)
-* Ensure that in ``crudify`` that we use ``:per_page`` properly for ``will_paginate``. [Philip Arndt](https://github.com/parndt)
-* Reduce the number of routes that we respond to in the ``pages`` engine as they were unused. [Philip Arndt](https://github.com/parndt)
-* Fixed a case where page links weren't generating properly when inside an engine such as the news engine which made use of ``params[:id]``. Took a lot of perserverance on the part of Hez - thank you very much Hez! [Hez Ronningen](https://github.com/hez) and [Philip Arndt](https://github.com/parndt)
+* Ensure that in `crudify` that we use `:per_page` properly for `will_paginate`. [Philip Arndt](https://github.com/parndt)
+* Reduce the number of routes that we respond to in the `pages` engine as they were unused. [Philip Arndt](https://github.com/parndt)
+* Fixed a case where page links weren't generating properly when inside an engine such as the news engine which made use of `params[:id]`. Took a lot of perserverance on the part of Hez - thank you very much Hez! [Hez Ronningen](https://github.com/hez) and [Philip Arndt](https://github.com/parndt)
 * [See full list](https://github.com/resolve/refinerycms/compare/0.9.8.3...0.9.8.4)
 
 ## 0.9.8.3 [14 September 2010]
 * German translation improvements. [Andre Lohan](https://github.com/dc5ala)
-* Fix bug with ``bin/refinerycms`` and windows commands. [Philip Arndt](https://github.com/parndt)
-* DRY up ``crudify`` and also switch to ARel. [Philip Arndt](https://github.com/parndt)
+* Fix bug with `bin/refinerycms` and windows commands. [Philip Arndt](https://github.com/parndt)
+* DRY up `crudify` and also switch to ARel. [Philip Arndt](https://github.com/parndt)
 * Several fixes to make things much easier on windows. [Philip Arndt](https://github.com/parndt)
 * [See full list](https://github.com/resolve/refinerycms/compare/0.9.8.2...0.9.8.3)
 
 ## 0.9.8.2 [13 September 2010]
-* Update ``readme.md`` [David Jones](https://github.com/djones)
+* Update `readme.md` [David Jones](https://github.com/djones)
 * Speed improvements to menu with nested_set. [Maarten Hoogendoorn](https://github.com/moretea)
 * More speed improvements by optimising slugs. [Philip Arndt](https://github.com/parndt)
-* Fix ``-h`` flag on ``bin/refinerycms`` to display the help. [Steven Heidel](https://github.com/stevenheidel)
+* Fix `-h` flag on `bin/refinerycms` to display the help. [Steven Heidel](https://github.com/stevenheidel)
 * [See full list](https://github.com/resolve/refinerycms/compare/0.9.8.1...0.9.8.2)
 
 ## 0.9.8.1 [9 September 2010]
-* Convert to ``awesome_nested_set``. [Maarten Hoogendoorn](https://github.com/moretea) and [Philip Arndt](https://github.com/parndt)
-* Allow passing ``-g`` to the bin task for extra gems. [Tomás Senart](https://github.com/tsenart)
+* Convert to `awesome_nested_set`. [Maarten Hoogendoorn](https://github.com/moretea) and [Philip Arndt](https://github.com/parndt)
+* Allow passing `-g` to the bin task for extra gems. [Tomás Senart](https://github.com/tsenart)
 * Update documentation for engines, not plugins. [David Jones](https://github.com/djones)
 * Several more documentation fixes. [Steven Heidel](https://github.com/stevenheidel)
 * Better use of dragonfly resizing. [Philip Arndt](https://github.com/parndt)
 * Partial Latvian translation. [Uģis Ozols](https://github.com/ugisozols)
 * Review Portugese translation. [Kivanio Barbosa](https://github.com/kivanio)
 * Bugfix with wymeditor in the engine generator. [Karmen Blake](https://github.com/kblake)
-* Split ``application_helper`` into smaller, more usable files. [Philip Arndt](https://github.com/parndt)
+* Split `application_helper` into smaller, more usable files. [Philip Arndt](https://github.com/parndt)
 * Move features and specs to each engine directory. [Philip Arndt](https://github.com/parndt)
-* Bugfixes to ensure that reordering works under ``awesome_nested_set``. [Maarten Hoogendoorn](https://github.com/moretea) and [Philip Arndt](https://github.com/parndt)
+* Bugfixes to ensure that reordering works under `awesome_nested_set`. [Maarten Hoogendoorn](https://github.com/moretea) and [Philip Arndt](https://github.com/parndt)
 * Update engines to not have a special :require in the Gemfile. [Johan Bruning](https://github.com/GidoGeek)
 * Make cache sweepers work. [Philip Arndt](https://github.com/parndt)
 * [See full list](https://github.com/resolve/refinerycms/compare/0.9.8...0.9.8.1)
@@ -199,14 +201,14 @@
 * Smoothed the sortable list in the admin UI. [Joe Sak](https://github.com/joemsak)
 * Binding link dialogue URL checker to paste action. [Joe Sak](https://github.com/joemsak)
 * Kill hidden overflow on dialogues for smaller browser windows. [Joe Sak](https://github.com/joemsak) and [Philip Arndt](https://github.com/parndt)
-* Refactored the ``parse_branch`` method to speed up reordering on the server. [Joshua Davey](https://github.com/jgdavey)
-* Running ``refinerycms`` with ``-v`` or ``--version`` will now output the version number. [Steven Heidel](https://github.com/stevenheidel)
-* Made the core codebase not rely so heavily on ``@page[:body]`` by adding ``Page.default_parts`` and using ``.first`` on that instead. [Philip Arndt](https://github.com/parndt)
+* Refactored the `parse_branch` method to speed up reordering on the server. [Joshua Davey](https://github.com/jgdavey)
+* Running `refinerycms` with `-v` or `--version` will now output the version number. [Steven Heidel](https://github.com/stevenheidel)
+* Made the core codebase not rely so heavily on `@page[:body]` by adding `Page.default_parts` and using `.first` on that instead. [Philip Arndt](https://github.com/parndt)
 * [See full list](https://github.com/resolve/refinerycms/compare/0.9.7.11...0.9.7.12)
 
 ## 0.9.7.11 [07 August 2010]
 
-* Removed ``app/controllers/application.rb`` due to its serious deprecation. Fixed deprecations in how we use acts_as_indexed. [Philip Arndt](https://github.com/parndt)
+* Removed `app/controllers/application.rb` due to its serious deprecation. Fixed deprecations in how we use acts_as_indexed. [Philip Arndt](https://github.com/parndt)
 * Added passing cucumber features for search for: [Uģis Ozols](https://github.com/ugisozols)
   - Images
   - Files
@@ -222,7 +224,7 @@
 * Lots of fixes for translations. [Uģis Ozols](https://github.com/ugisozols)
 * Fix XSS vulnerability on page meta information by escaping the relevant fields properly [David Jones](https://github.com/djones)
 * Ensure that the generator script grabs the first attribute that is a string, not just the first attribute, when choosing the field for Dashboard activity. [Joe Sak](https://github.com/joemsak)
-* Updated ``json-pure`` to ``1.4.5``, now using the actual gem [Philip Arndt](https://github.com/parndt)
+* Updated `json-pure` to `1.4.5`, now using the actual gem [Philip Arndt](https://github.com/parndt)
 * [See full list](https://github.com/resolve/refinerycms/compare/0.9.7.10...0.9.7.11)
 
 
@@ -238,13 +240,13 @@
 ## 0.9.7.9 [30 July 2010]
 
 * Added a theme generator to create the basic file structure of a new theme. [David Jones](https://github.com/djones) and [Levi Cole](https://github.com/levicole)
-* Renamed ``script/generate refinery`` to ``script/generate refinery_plugin``. [David Jones](https://github.com/djones)
-* Add deprecation notice to ``script/generate refinery``. [David Jones](https://github.com/djones)
+* Renamed `script/generate refinery` to `script/generate refinery_plugin`. [David Jones](https://github.com/djones)
+* Add deprecation notice to `script/generate refinery`. [David Jones](https://github.com/djones)
 * Updated documentation to reflect new generator changes. [David Jones](https://github.com/djones)
 * Added tests for both plugin and theme generators. [David Jones](https://github.com/djones) and [Levi Cole](https://github.com/levicole)
-* Refactored the ``refinerycms`` & ``refinery-upgrade-097-to-097`` tasks to make better use of Pathname. [Philip Arndt](https://github.com/parndt)
+* Refactored the `refinerycms` & `refinery-upgrade-097-to-097` tasks to make better use of Pathname. [Philip Arndt](https://github.com/parndt)
 * Added more cucumber features and tagged existing ones. [Philip Arndt](https://github.com/parndt), [James Fiderlick](https://github.com/jamesfid) and [Steven Heidel](https://github.com/stevenheidel)
-* Removed mysterious ``page_translations`` table if you had it. [Philip Arndt](https://github.com/parndt)
+* Removed mysterious `page_translations` table if you had it. [Philip Arndt](https://github.com/parndt)
 * Added workaround for tests that involve dialogues. [Uģis Ozols](https://github.com/ugisozols)
 * Added as default the ability for forms to know whether they are inside a modal / dialog. [Philip Arndt](https://github.com/parndt)
 * [See full list](https://github.com/resolve/refinerycms/compare/0.9.7.8...0.9.7.9)
@@ -270,14 +272,14 @@
 * Bugfixes, some IE compatibility. [Philip Arndt](https://github.com/parndt)
 * Fix syntax errors in existing resource dialog. [David Jones](https://github.com/djones)
 * Identified and fixed a positioning bug in dialogues [Joe Sak](https://github.com/joemsak) and [Philip Arndt](https://github.com/parndt)
-* Fixed issue that was causing Refinery to load in rake tasks twice if they lived under ``"#{Rails.root}/vendor/plugins"``. [David Jones](https://github.com/djones) and [Philip Arndt](https://github.com/parndt)
+* Fixed issue that was causing Refinery to load in rake tasks twice if they lived under `"#{Rails.root}/vendor/plugins"`. [David Jones](https://github.com/djones) and [Philip Arndt](https://github.com/parndt)
 * [See full list](https://github.com/resolve/refinerycms/compare/0.9.7.6...0.9.7.7)
 
 ## 0.9.7.6 [15 July 2010]
 
 * Bugfixes, fixed some failing tests. [Philip Arndt](https://github.com/parndt)
 * More pt-BR translation keys translated. [Kivanio Barbosa](https://github.com/kivanio)
-* Locked gems using ``Gemfile.lock``. [David Jones](https://github.com/djones)
+* Locked gems using `Gemfile.lock`. [David Jones](https://github.com/djones)
 * Changed 'refinery' task to 'refinerycms' as that is our gem's name. [Steven Heidel](https://github.com/stevenheidel)
 * Fixed bug where settings were still considered restricted if NULL. [Steven Heidel](https://github.com/stevenheidel)
 * Ensures that bundler is available before creating an application from a gem. [Philip Arndt](https://github.com/parndt)
