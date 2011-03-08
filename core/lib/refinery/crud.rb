@@ -168,7 +168,7 @@ module Refinery
             elsif #{class_name}.methods.map(&:to_sym).include?(:per_page)
               paging_options.update({:per_page => #{class_name}.per_page})
             end
-            
+
             @#{plural_name} = @#{plural_name}.paginate(paging_options)
           end
 

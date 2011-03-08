@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    refinerycms (0.9.9.5)
+    refinerycms (0.9.9.6)
       bundler (~> 1.0.10)
       refinerycms-authentication (~> 0.9.9.5)
       refinerycms-base (~> 0.9.9.5)
@@ -14,7 +14,7 @@ PATH
     refinerycms-authentication (0.9.9.5)
       devise (~> 1.1)
       refinerycms-core (~> 0.9.9.5)
-    refinerycms-base (0.9.9.5)
+    refinerycms-base (0.9.9.6)
     refinerycms-core (0.9.9.5)
       acts_as_indexed (~> 0.7)
       friendly_id_globalize3 (~> 3.2.1)
