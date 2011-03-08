@@ -14,7 +14,7 @@ end
 REFINERYCMS_INSTALLER = true
 
 # Load refinerycms
-require Pathname.new(File.expand_path(File.dirname(__FILE__) << "/..")).join('lib', 'refinery')
+require File.expand_path(File.dirname(__FILE__) << "/../lib/refinery")
 
 # Load other required libraries
 require 'pathname'
