@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |s|
   s.name              = %q{refinerycms-resources}
-  s.version           = %q{0.9.9.4}
+  s.version           = %q{0.9.9.5}
   s.summary           = %q{Resources engine for Refinery CMS}
   s.description       = %q{Handles all file upload and processing functionality in Refinery CMS.}
   s.date              = %q{2011-03-08}
@@ -84,7 +84,7 @@ Gem::Specification.new do |s|
     'spec/uploads/refinery_is_awesome.txt'
   ]
 
-  s.add_dependency 'refinerycms-core', '~> 0.9.9.4'
+  s.add_dependency 'refinerycms-core', '~> 0.9.9.5'
   s.add_dependency 'dragonfly',        '~> 0.8.2'
   s.add_dependency 'rack-cache',       '>= 0.5.3'
 end
