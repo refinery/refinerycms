@@ -51,7 +51,7 @@
 
 /* Gecko min height fix */
   p       { min-height: 1em; } /*min-height is needed under Firefox, because empty parargraphs */
-  *+html p    { min-height: auto; } /* but we have to remove it under IE7 because it triggers the 'haslayout' mode */
+  html.ie p    { min-height: auto; } /* but we have to remove it under IE7 because it triggers the 'haslayout' mode */
   td      { height: 1.6em; }
 
 /* labels */

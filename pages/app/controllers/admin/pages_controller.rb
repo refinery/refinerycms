@@ -19,7 +19,12 @@ module Admin
   protected
 
     def globalize!
-      Thread.current[:globalize_locale] = (params[:switch_locale] || (@page.present? && @page.slug.present? && @page.slug.locale) || ::Refinery::I18n.default_frontend_locale)
+      super
+
+      # Check whether we need to override e.g. on the pages form.
+      unless params[:switch_locale] or @page.try(:slug).nil? or !@page.persisted?
+        Thread.current[:globalize_locale] = @page.slug.locale
+      end
     end
 
     def show_errors_for_reserved_slug(exception)

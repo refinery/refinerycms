@@ -28,7 +28,7 @@ h3. People
 * David Jones (dgjones) - Resolve Digital
 * Steven Heidel (stevenheidel)
 * Maarten Hoogendoorn (moretea)
-* Alex Coles (myabc)
+* Joe Sak (hubble)
 
 h3. Other places
 

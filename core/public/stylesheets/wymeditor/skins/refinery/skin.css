@@ -311,7 +311,8 @@ background-image: url('/images/wymeditor/skins/refinery/eye.png');
 */
 /* make tools and containers play nicely next to eachother */
 
-.wym_skin_refinery .wym_tools, .wym_skin_refinery .wym_containers {
+.wym_skin_refinery .wym_tools, .wym_skin_refinery .wym_containers,
+.wym_skin_refinery .wym_classes_container {
   float: left;
   margin: 0px 0px 5px 0px;
 }

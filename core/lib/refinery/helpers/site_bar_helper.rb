@@ -8,7 +8,7 @@ module Refinery
                   (if session.keys.include?(:website_return_to) and session[:website_return_to].present?
                     session[:website_return_to]
                    else
-                    root_path
+                    root_path(:locale => (::Refinery::I18n.default_frontend_locale if defined?(::Refinery::I18n) && ::Refinery::I18n.enabled?))
                    end)) do
           link_to t('.switch_to_your_website_editor'),
                   (if session.keys.include?(:refinery_return_to) and session[:refinery_return_to].present?

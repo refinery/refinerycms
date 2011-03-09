@@ -44,7 +44,7 @@ Gem::Specification.new do |s|
   s.executables       = %w(#{Dir['bin/*'].join(' ').gsub('bin/', '')})
 
   # Bundler
-  s.add_dependency    'bundler',                    '~> 1.0.10'
+  s.add_dependency    'bundler',                    '~> 1.0'
 
   # Refinery CMS
   s.add_dependency    'refinerycms-authentication', '~> #{::Refinery::Version}'

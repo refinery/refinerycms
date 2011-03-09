@@ -28,7 +28,7 @@ class RefinerySetting < ActiveRecord::Base
     end
 
     def ensure_cache_exists!
-      if (result = Rails.cache.read(cache_key)).nil?
+      if (result = Rails.cache.read(cache_key, :multithread => true)).nil?
         result = rewrite_cache
       end
 
@@ -63,13 +63,13 @@ class RefinerySetting < ActiveRecord::Base
 
     def rewrite_cache
       # delete cache
-      Rails.cache.delete(cache_key)
+      Rails.cache.delete(cache_key, :multithread => true)
 
       # generate new cache
       result = (to_cache(all) if (table_exists? rescue false))
 
       # write cache
-      Rails.cache.write(cache_key, result)
+      Rails.cache.write(cache_key, result, :multithread => true)
 
       # return cache, or lack thereof.
       result ||= []

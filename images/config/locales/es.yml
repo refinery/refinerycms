@@ -2,6 +2,8 @@ es:
   plugins:
     refinery_images:
       title: Imágenes
+      description: Gestionar imágenes
+      article: femenino
   admin:
     images:
       delete: Borrar esta imagen para siempre

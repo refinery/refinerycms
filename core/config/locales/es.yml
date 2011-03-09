@@ -37,12 +37,12 @@ es:
         change: Haz click aquí para escoger una imagen
         show: Mostrar
       resource_picker:
-        download_current: Descargar %{what} actual
+        download_current: Descargar archivo actual
         opens_in_new_window: Abre en una nueva ventana
-        remove_current: "Eliminar %{what} actual"
-        no_resource_selected: En este momento no existe un carpeta seleccionada, click aqui para agregar una
-        name: Agregar carpeta
-        current: Carpeta actual
+        remove_current: "Eliminar archivo actual"
+        no_resource_selected: No hay ningún archivo seleccionado, click aqui para agregar uno.
+        name: Agregar archivo
+        current: Archivo actual
       search:
         button_text: Buscar
         results_for: Resultados de la búsqueda '%{query}'

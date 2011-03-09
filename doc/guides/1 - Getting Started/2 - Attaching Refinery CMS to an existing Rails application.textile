@@ -1,0 +1,57 @@
+h2. Attaching Refinery CMS to an existing Rails application
+
+This guide covers integration with Refinery CMS. After reading it, you should be familiar with:
+
+* Attaching Refinery CMS to an existing Rails application
+
+endprologue.
+
+WARNING. This guide is based on Refinery CMS 0.9.9.4. Some of the code shown here will not work in earlier versions of Refinery.
+
+h3. Guide Assumptions
+
+This guide is designed for those who want to attach Refinery CMS to an existing Rails application.
+
+Refinery is a Ruby on Rails web application. If you have no prior experience with Rails, you will find a very steep learning curve diving straight into Refinery.  There are some good free resources on the Internet for learning Rails, including:
+
+* "Getting Started with Rails":http://guides.rubyonrails.org/getting_started.html
+* "Rails for Zombies":http://railsforzombies.org/labs
+
+h3. Steps to add Refinery CMS to your application
+
+h4. Add Refinery CMS as a dependency in your Gemfile
+
+Open up your Gemfile and add the latest version:
+
+<ruby>
+  gem 'refinerycms', '= 0.9.9.4'
+</ruby>
+
+Now, to install the gem run:
+
+<shell>
+  bundle install
+</shell>
+
+h4. Generate support files and migrations
+
+Now you can simply run the RefineryCMS generator:
+
+<shell>
+  rails generate refinerycms
+</shell>
+
+h4. Migrate your database
+
+After the previous step you should have a number of new migrations in your db/migrate directory.
+To use these just run:
+
+<shell>
+  rake db:migrate
+</shell>
+
+After this, you should be all set.
+
+h3. Getting Help
+
+As this is a relatively new process, if you need help with any of these steps we would love to "hear about it":/guides/how-to-get-help-with-refinery.

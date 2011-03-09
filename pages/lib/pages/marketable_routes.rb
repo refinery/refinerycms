@@ -6,5 +6,5 @@ end
 if Page.use_marketable_urls?
   Page.friendly_id_config.reserved_words |= ::Refinery::Application.routes.named_routes.map { |name, route|
     route.path.gsub(/^\//, '').to_s.split('(').first.split(':').first.to_s.split('/')
-  }.flatten.uniq
+  }.flatten.reject{|w| w =~ /\_/}.uniq
 end

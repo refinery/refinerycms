@@ -18,15 +18,17 @@ module Refinery
       this_class = class_name.constantize.base_class
 
       {
-        :title_attribute => "title",
-        :order => ('position ASC' if this_class.table_exists? and this_class.column_names.include?('position')),
         :conditions => '',
-        :sortable => true,
-        :searchable => true,
         :include => [],
+        :order => ('position ASC' if this_class.table_exists? and this_class.column_names.include?('position')),
         :paging => true,
+        :per_page => false,
+        :redirect_to_url => "admin_#{plural_name}_url",
+        :searchable => true,
         :search_conditions => '',
-        :redirect_to_url => "admin_#{plural_name}_url"
+        :sortable => true,
+        :title_attribute => "title",
+        :xhr_paging => false
       }
     end
 
@@ -161,8 +163,11 @@ module Refinery
 
             paging_options = {:page => params[:page]}
 
+            # Use per_page from crudify options.
+            if #{options[:per_page].present?.inspect}
+              paging_options.update({:per_page => #{options[:per_page].inspect}})
             # Seems will_paginate doesn't always use the implicit method.
-            if #{class_name}.methods.map(&:to_sym).include?(:per_page)
+            elsif #{class_name}.methods.map(&:to_sym).include?(:per_page)
               paging_options.update({:per_page => #{class_name}.per_page})
             end
 
@@ -193,6 +198,8 @@ module Refinery
               def index
                 search_all_#{plural_name} if searching?
                 paginate_all_#{plural_name}
+
+                render :partial => '#{plural_name}' if #{options[:xhr_paging].inspect} && request.xhr?
               end
             )
           else
@@ -212,6 +219,8 @@ module Refinery
             module_eval %(
               def index
                 paginate_all_#{plural_name}
+
+                render :partial => '#{plural_name}' if #{options[:xhr_paging].inspect} && request.xhr?
               end
             )
           else

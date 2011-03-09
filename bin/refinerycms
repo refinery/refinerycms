@@ -10,9 +10,11 @@ rescue LoadError
   exit(1)
 end
 
-# Load refinerycms
+# Let the application have a constant it can detect installation with.
+REFINERYCMS_INSTALLER = true
 
-require Pathname.new(File.expand_path(File.dirname(__FILE__) << "/..")).join('lib', 'refinery')
+# Load refinerycms
+require File.expand_path(File.dirname(__FILE__) << "/../lib/refinery")
 
 # Load other required libraries
 require 'pathname'
@@ -26,18 +28,18 @@ module Refinery
       # Default options
       @input = input
       @options = {
+        :confirm => false,
         :database => {
           :adapter => 'sqlite3',
+          :ident => false,
+          :password => nil,
           :username => 'root',
-          :password => ''
+          :skip => false
         },
-        :from_version => '0.9.8',
-        :force => false,
-        :heroku => false,
         :duostack => false,
-        :update => false,
-        :confirm => false,
-        :gems => []
+        :force => false,
+        :gems => [],
+        :heroku => false
       }
 
       @optparse = OptionParser.new do |opts|
@@ -47,10 +49,25 @@ module Refinery
         opts.separator ""
         opts.separator "Specific Options:"
 
+        # Bail out if --update is specified.
+        opts.on('--update') do |update|
+          puts "\nYou specified --update which is a command that has been removed."
+          puts "To update your application:"
+          puts "- Change the version of the 'refinerycms' gem in your Gemfile."
+          puts "- Run bundle install"
+          puts "- Run rails generate refinerycms --update"
+          puts "\n"
+          exit(1)
+        end
+
         # Rails supports more options, but Refinery is only tested on these three
         databases = %w(mysql postgresql sqlite3)
         opts.on("-d DATABASE", "--database DATABASE", databases, "Select the database (default sqlite3)", "  #{databases.join('/')}") do |db|
           @options[:database][:adapter] = db
+        end
+
+        opts.on("--ident", "Use ident database authentication (for mysql or postgresql)") do
+          @options[:database][:ident] = true
         end
 
         opts.on("-u USERNAME", '--database-username USERNAME', String, "Set the database username", '  (default root)') do |username|
@@ -61,6 +78,10 @@ module Refinery
           @options[:database][:password] = password
         end
 
+        opts.on('--skip-db', "Skip any database creation or migration tasks") do
+          @options[:database][:skip] = true
+        end
+
         opts.on("-g", "--gems gem1,gem2,gem3", Array, "Additional gems to install") do |gems|
           @options[:gems] = gems.reject {|g| g.to_s =~ /^refinerycms/}.map {|g| "gem '#{g.to_s}'"}
         end
@@ -69,20 +90,12 @@ module Refinery
           @options[:force] = true
         end
 
-        opts.on("--from-version VERSION", String, "Set the version that we are updating from, incase there are special files that need to change", "  (default '0.9.8')") do |version|
-          @options[:from_version] = version
-        end
-
         opts.on("--heroku [APP_NAME]", "Set up and deploy to Heroku") do |app_name|
           @options[:heroku] = app_name || ''
         end
 
         opts.on("--duostack APP_NAME", String, "Set up and deploy to Duostack") do |app_name|
           @options[:duostack] = app_name
-        end
-
-        opts.on("--update", "--update", "Migrate the database instead of rebuilding it") do
-           @options[:update] = true
         end
 
         opts.on("-c", "--confirm", "Confirm any prompts that require input") do
@@ -108,38 +121,35 @@ module Refinery
       # Grab input and ensure that the path doesn't exist already and other checks.
       validate!
 
-      unless @options[:update]
-        # Generate a Refinery CMS application
-        generate!
+      # Generate a Refinery CMS application
+      generate!
 
-        # Bundle the application which activates Refinery CMS
-        bundle!
+      # Bundle the application which activates Refinery CMS
+      bundle!
 
+      unless @options[:database][:skip]
         # Ensure the database exists so that queries like .table_exists? don't fail.
         puts "\nCreating a new database.."
         # Warn about incorrect username or password.
         unless @options[:database][:adapter] == 'sqlite3'
-          note = "NOTE: if your database username is not '#{@options[:database][:username]}'"
-          note << " or your password is not '#{@options[:database][:password]}' then the installer will stop working here.\n\n"
+          if @options[:database][:ident]
+            note = "NOTE: If ident authentication fails then the installer will stall or fail here.\n\n"
+          else
+            note = "NOTE: if your database username is not '#{@options[:database][:username]}'"
+            note << " or your password is not '#{@options[:database][:password]}' then the installer will stall here.\n\n"
+          end
           puts note
         end
-        run_command("rake -f \"#{@app_path.join('Rakefile')}\" db:create", {:fail => "Unable to create the application's database"})
-      else
-        # Update the current application.
-        update!
+        run_command("rake -f \"#{@app_path.join('Rakefile')}\" db:create", {
+          :fail => "Unable to create the application's database"
+        })
 
-        # Bundle the application which activates Refinery CMS
-        bundle!
+        # Run the newly activated Refinery CMS generator.
+        run_command("rails generate refinerycms", {
+          :cd => true,
+          :fail => "Could not run the refinerycms generator successfully."
+        })
       end
-
-      # Run the newly activated Refinery CMS generator.
-      run_command("rails generate refinerycms#{' --update' if @options[:update]}", {
-        :cd => true,
-        :fail => "Could not run the refinerycms generator successfully."
-      })
-
-      # Run the update task if we're updating
-      run_command("rake refinery:update", {:cd => true, :fail => "refinery:update rake task failed."}) if @options[:update]
 
       # Output helpful messages to user
       output!
@@ -180,10 +190,9 @@ module Refinery
         puts "Please choose another name for your new project."
         puts "\n"
         exit(1)
-      elsif @app_path.directory? && !@options[:force] && !@options[:update]
+      elsif @app_path.directory? && !@options[:force]
         puts "\nThe directory '#{@app_path}' that you specified already exists."
         puts "Use --force to overwrite an existing directory."
-        puts "Use --update to replace any Refinery CMS files in an existing installation."
         puts "\n"
         exit(1)
       elsif @options[:heroku]
@@ -209,30 +218,7 @@ module Refinery
             exit(1)
           end
         end
-      elsif @app_path.join('.git').directory? && @options[:update] && !@options[:confirm]
-        git_status = run_command('git status --porcelain', {:puts => false, :ruby => false})
-        if git_status.to_s.strip.length > 0
-          puts "\nYou have uncommitted changes or untracked files. Please remove or commit them, or:"
-          puts "Use --confirm to have Refinery proceed anyway. "
-          puts "Untracked files will be removed, and uncommitted changes may be lost."
-          puts "\n"
-          exit(1)
-        end
       end
-
-      if @options[:update]
-        puts "Please ensure you have a backup of your project and its database."
-        puts "Type 'yes' to continue (anything other than 'yes' will cancel)"
-        unless $stdin.gets.strip == 'yes'
-          puts "Cancelling..."
-          exit
-        end
-      end
-    end
-
-    def update!
-      # Handle acts_as_indexed changes.
-      FileUtils::rm_r @app_path.join('tmp', 'index') if @app_path.join('tmp', 'index').directory?
     end
 
     def generate!(rails_command = nil)
@@ -255,8 +241,13 @@ module Refinery
         end
 
         # Override username and password
-        find_and_replace('config/database.yml', %r{username:.*}, "username: #{@options[:database][:username]}")
-        find_and_replace('config/database.yml', %r{password:.*}, "password: #{@options[:database][:password]}")
+        if @options[:database][:ident]
+          find_and_replace('config/database.yml', %r{username:}, '#username:')
+          find_and_replace('config/database.yml', %r{password:}, '#password:')
+        else
+          find_and_replace('config/database.yml', %r{username:.*}, "username: #{@options[:database][:username]}")
+          find_and_replace('config/database.yml', %r{password:.*}, "password: #{@options[:database][:password]}")
+        end
 
         puts "\n---------"
         puts "Refinery successfully installed in '#{@app_path}'!\n\n"
@@ -269,19 +260,16 @@ module Refinery
       refinery_gems = refinery_gemfile_contents.match(/# REFINERY CMS =+.*# END REFINERY CMS =+/m)[0]
       refinery_gems.gsub!("# gem 'refinerycms'", "gem 'refinerycms'") # Enable refinerycms
       refinery_gems.gsub!("gem 'refinerycms-testing'", "# gem 'refinerycms-testing'") # Disable testing
-      unless @options[:update]
-        app_gemfile = @app_path.join('Gemfile')
-        FileUtils::cp app_gemfile, "#{app_gemfile}.backup"
-        refinery_user_defined_gems = refinery_gemfile_contents.match(/# USER DEFINED(.*)# END USER DEFINED/m)
-        refinery_user_defined_gems = refinery_user_defined_gems[1] unless refinery_user_defined_gems.nil?
-        app_gemfile.open('a') do |f|
-          f.write "\n#{refinery_gems}\n"
-          @options[:gems] = ([refinery_user_defined_gems] | [@options[:gems]]).flatten.compact
 
-          f.write "\n# USER DEFINED\n#{@options[:gems].join("\n")}\n# END USER DEFINED" if @options[:gems].any?
-        end
-      else
-        find_and_replace(@app_path.join('Gemfile'), /# REFINERY CMS =+.*# END REFINERY CMS =+/m, refinery_gems)
+      app_gemfile = @app_path.join('Gemfile')
+      FileUtils::cp app_gemfile, "#{app_gemfile}.backup"
+      refinery_user_defined_gems = refinery_gemfile_contents.match(/# USER DEFINED(.*)# END USER DEFINED/m)
+      refinery_user_defined_gems = refinery_user_defined_gems[1] unless refinery_user_defined_gems.nil?
+      app_gemfile.open('a') do |f|
+        f.write "\n#{refinery_gems}\n"
+        @options[:gems] = ([refinery_user_defined_gems] | [@options[:gems]]).flatten.compact
+
+        f.write "\n# USER DEFINED\n#{@options[:gems].join("\n")}\n# END USER DEFINED" if @options[:gems].any?
       end
       
 
@@ -297,18 +285,15 @@ module Refinery
       # TODO: Check exit codes to see whether or not these worked
       puts "Installing gem requirements using bundler..\n"
 
-      # Ensure RefineryCMS is up to date if we're updating
-      if @options[:update]
-        run_command("bundle update refinerycms refinerycms-generators", {:fail => "Unable to update core gems"})
-      end
-
       # Install!
       run_command("bundle install", {:fail => "Unable to install necessary gems"})
     end
 
     def output!
-      puts "\n\n#{@options[:update] ? "Migrating" : "Setting up"} your development database..\n"
-      run_command("rake -f \"#{@app_path.join('Rakefile')}\" db:migrate")
+      unless @options[:database][:skip]
+        puts "\n\nSetting up your development database..\n"
+        run_command("rake -f \"#{@app_path.join('Rakefile')}\" db:migrate")
+      end
 
       # Deploy to Heroku
       hosting = nil
@@ -334,21 +319,33 @@ module Refinery
       end
       # End automation
 
-      # Output helpful messages
-      puts "\n=== ACTION REQUIRED ==="
-      puts "Now you can launch your webserver using:"
-      puts "\ncd #{@app_path}"
-      puts "rails server"
-      puts "\nThis will launch the built-in webserver at port 3000."
-      puts "You can now see your site running in your browser at http://localhost:3000"
+      # Construct helpful output messages
+      note = ["\n=== ACTION REQUIRED ==="]
+      if @options[:database][:skip]
+        note << "Because you elected to skip database creation and migration in the installer"
+        note << "you will need to run the following tasks manually to maintain correct operation:"
+        note << "\ncd #{@app_path}"
+        note << "rake db:create"
+        note << "rails generate refinerycms"
+        note << "rake db:migrate"
+        note << "\n---------\n"
+      end
+      note << "Now you can launch your webserver using:"
+      note << "\ncd #{@app_path}"
+      note << "rails server"
+      note << "\nThis will launch the built-in webserver at port 3000."
+      note << "You can now see your site running in your browser at http://localhost:3000"
 
       if @options[:heroku]
-        puts "\nIf you want files and images to work on heroku, you will need setup S3:"
-        puts "heroku config:add S3_BUCKET=XXXXXXXXX S3_KEY=XXXXXXXXX S3_SECRET=XXXXXXXXXX"
+        note << "\nIf you want files and images to work on heroku, you will need setup S3:"
+        note << "heroku config:add S3_BUCKET=XXXXXXXXX S3_KEY=XXXXXXXXX S3_SECRET=XXXXXXXXXX"
       end
 
-      puts "\nThanks for installing Refinery, enjoy creating your new application!"
-      puts "---------\n\n"
+      note << "\nThanks for installing Refinery, enjoy creating your new application!"
+      note << "---------\n\n"
+
+      # finally, output.
+      puts note.join("\n")
     end
 
     private :validate!, :generate!, :bundle!, :output!

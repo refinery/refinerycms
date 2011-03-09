@@ -2,7 +2,7 @@ require 'globalize3'
 
 class Page < ActiveRecord::Base
 
-  translates :title, :meta_keywords, :meta_description, :browser_title if self.respond_to?(:translates)
+  translates :title, :meta_keywords, :meta_description, :browser_title, :custom_title if self.respond_to?(:translates)
   attr_accessor :locale # to hold temporarily
   validates :title, :presence => true
 
@@ -258,6 +258,7 @@ class Page < ActiveRecord::Base
   #
   # Returns the sluggified string
   def normalize_friendly_id(slug_string)
+    slug_string.gsub!('_', '-')
     sluggified = super
     if self.class.use_marketable_urls? && self.class.friendly_id_config.reserved_words.include?(sluggified)
       sluggified << "-page"

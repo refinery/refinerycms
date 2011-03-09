@@ -6,17 +6,11 @@ module Admin
     crudify :refinery_setting,
             :title_attribute => :title,
             :order => "name ASC",
-            :redirect_to_url => :redirect_to_where?
+            :redirect_to_url => :redirect_to_where?,
+            :xhr_paging => true
 
     before_filter :sanitise_params, :only => [:create, :update]
     after_filter :fire_setting_callback, :only => [:update]
-
-    def index
-      search_all_refinery_settings if searching?
-      paginate_all_refinery_settings
-
-      render :partial => 'refinery_settings' if request.xhr?
-    end
 
     def new
       if current_user.has_role?(:superuser) and params[:form_value_type].present?
