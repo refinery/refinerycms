@@ -27,7 +27,8 @@ module Refinery
         :searchable => true,
         :search_conditions => '',
         :sortable => true,
-        :title_attribute => "title"
+        :title_attribute => "title",
+        :xhr_paging => false
       }
     end
 
@@ -197,6 +198,8 @@ module Refinery
               def index
                 search_all_#{plural_name} if searching?
                 paginate_all_#{plural_name}
+
+                render :partial => '#{plural_name}' if #{options[:xhr_paging].inspect} && request.xhr?
               end
             )
           else
@@ -216,6 +219,8 @@ module Refinery
             module_eval %(
               def index
                 paginate_all_#{plural_name}
+
+                render :partial => '#{plural_name}' if #{options[:xhr_paging].inspect} && request.xhr?
               end
             )
           else

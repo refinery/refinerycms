@@ -1,7 +1,10 @@
 module Admin
   class ResourcesController < Admin::BaseController
 
-    crudify :resource, :order => "updated_at DESC"
+    crudify :resource,
+            :order => "updated_at DESC",
+            :xhr_paging => true
+
     before_filter :init_dialog
 
     def new
@@ -34,13 +37,6 @@ module Admin
 
         insert
       end
-    end
-
-    def index
-      search_all_resources if searching?
-      paginate_all_resources
-
-      render :partial => 'resources' if request.xhr?
     end
 
     def insert

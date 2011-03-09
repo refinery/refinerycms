@@ -134,6 +134,29 @@ Default value is ``true``
 The ``:paging`` option tells ``crudify`` you don't just want one big long list
 but rather to break it out into pages and support paging methods uses [will_paginate](http://wiki.github.com/mislav/will_paginate/).
 
+### ``:xhr_paging``
+
+Default value is ``false``
+
+The ``:xhr_paging`` option tells ``crudify`` you want to use more advanced paging.
+This works using the HTML5 History API to swap out only the content that is being
+paged rather than the entire webpage.  To support this option you will need a partial
+named after the plural name for example with ``news_items``:
+
+    class NewsItemsController < ApplicationController
+
+      crudify :news_item, :paging => true, :xhr_paging => true
+
+    end
+
+This requires a partial called "news_items" in the appropriate directory which contains:
+
+    <%= will_paginate @news_items %>
+    <ul class="<%= ['pagination_frame', pagination_css_class].compact.join(' ') %>">
+      <%= render :partial => 'news_item',
+                 :collection => @news_items %>
+    </ul>
+
 ### ``:search_conditions``
 
 Default value is ``nil``

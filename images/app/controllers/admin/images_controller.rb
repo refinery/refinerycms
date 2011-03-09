@@ -5,16 +5,10 @@ module Admin
 
     crudify :image,
             :order => "created_at DESC",
-            :sortable => false
+            :sortable => false,
+            :xhr_paging => true
 
     before_filter :change_list_mode_if_specified, :init_dialog
-
-    def index
-      search_all_images if searching?
-      paginate_all_images
-
-      render :partial => 'images' if request.xhr?
-    end
 
     def new
       @image = Image.new if @image.nil?
