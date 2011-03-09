@@ -72,10 +72,11 @@ pl:
         meta_keywords_help: Wpisz 5-10 słów kluczowych związanych z zawartością tej strony. Rozdziel słowa kluczowe przecinkiem.
         meta_description_title: Opis meta
         meta_description_help: Podaj dwu-trzyzdaniowy opis tego, o czym jest ta strona.
-      index:
+      actions:
         create_new_page: Dodaj nową stronę
         reorder_pages: Zmień kolejność stron
         reorder_pages_done: Zakończono zmianę kolejności stron
+      records:
         no_pages_yet: Nie ma jeszcze żadnej strony. Kliknij "Dodaj nową stronę" aby stworzyć pierwszą.
   activerecord:
     models:

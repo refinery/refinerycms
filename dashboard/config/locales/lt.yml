@@ -7,6 +7,7 @@ lt:
     dashboard:
       index:
         quick_tasks: Greiti veiksmai
+      actions:
         add_a_new_page: Pridėti naują puslapį
         update_a_page: Atnaujinti puslapį
         upload_a_image: Įkelti paveikslėlį

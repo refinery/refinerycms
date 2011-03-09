@@ -71,10 +71,11 @@ cs:
         meta_keywords_help: Vložte 5-10 klíčových slov oddělených čárkou, které se vztahují k obsahu stránky.
         meta_description_title: Popisek
         meta_description_help: Vložte 2-3 krátké věty shrnující obsah stránky.
-      index:
+      actions:
         create_new_page: Přidat novou stránku
         reorder_pages: Přeuspořádat stránky
         reorder_pages_done: Uložit uspořádání
+      records:
         no_pages_yet: Zatím nebyly vytvořeny žádné stránky.
   activerecord:
     models:

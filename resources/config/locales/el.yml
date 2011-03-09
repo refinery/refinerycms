@@ -14,8 +14,9 @@ el:
         maximum_file_size: Το μέγιστο μέγεθος του αρχείου είναι %{megabytes} megabytes.
       resource:
         download: Μεταφόρτωση αυτού του αρχείου (%{size})
-      index:
+      actions:
         upload_new: Ανέβασμα νέου αρχείου
+      records:
         no_files_yet: Δεν υπαχουν αρχεία. Κάντε κλικ στο "Ανέβασμα αρχείου" για να προσθέσετε το πρώτο σας αρχείο.
       insert:
         existing: Υπάρχον αρχείο

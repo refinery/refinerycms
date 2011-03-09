@@ -7,8 +7,9 @@ zh-CN:
     refinery_settings:
       delete: 永久删除此设置
       edit: 编辑此设置
-      index:
+      actions:
         new: 添加新设置
+      records:
         empty_set: 这里还没有任何设置.
         create_first: "点击 '%{link}' 去添加您的第一个设置."
       form:

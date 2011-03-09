@@ -14,9 +14,11 @@ zh-CN:
         replace_image: " 使用这个去覆盖..."
         current_image: 当前图片
         maximum_image_size: 最大的图片大小为 %{megabytes} MB.
-      index:
+      actions:
         create_new_image: 添加新图片
+      records:
         no_images_yet: 这里还没有图片. 点击 "添加新图片" 去添加您的第一张图片.
+      index:
         view:
           switch_to: 切换到 %{view_name} 视图
           list: 列表

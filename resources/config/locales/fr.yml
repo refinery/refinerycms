@@ -14,8 +14,9 @@ fr:
         maximum_file_size: "La taille du fichier ne doit pas excéder %{megabytes} megaoctets."
       resource:
         download: Télécharger ce fichier (%{size})
-      index:
+      actions:
         upload_new: Ajouter un nouveau fichier
+      records:
         no_files_yet: Il n'y a actuellement aucun fichier. Cliquez sur 'Ajouter un nouveau fichier' afin d'en ajouter un.
       insert:
         existing: Fichier existant

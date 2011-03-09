@@ -14,7 +14,7 @@ fr:
         plugin_access: Plugin d'accès
         role_access: Rôle d'accès
         enable_all: tout activer
-      index:
+      actions:
         create_new_user: Créer un nouvel utilisateur
       user:
         email_user: Envoyer un e-mail à cet utilisateur

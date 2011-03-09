@@ -18,8 +18,9 @@ it:
         delete:
           message: Sei sicuro di voler eliminare '%{title}'?
           title: Elimina il file corrente
-      index:
+      actions:
         upload_new: Carica un nuovo file
+      records:
         no_files_yet: Nessun file presente. Fai clic su "Carica un nuovo file" per aggiungere un file.
       insert:
         existing: File esistente

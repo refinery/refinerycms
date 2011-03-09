@@ -7,6 +7,7 @@ zh-TW:
     dashboard:
       index:
         quick_tasks: 快速啟動
+      actions:
         add_a_new_page: 新增頁面
         update_a_page: 更新頁面
         upload_a_image: 上傳圖片

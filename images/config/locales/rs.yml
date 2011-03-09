@@ -14,9 +14,11 @@ rs:
         replace_image: " zameni sa ovom..."
         current_image: Trenutna slika
         maximum_image_size: Maksimalna veličina slike je %{megabytes} megabajta.
-      index:
+      actions:
         create_new_image: Dodaj novu sliku
+      records:
         no_images_yet: Ne postoje slike. Klikni "Dodaj novu sliku" da dodaš.
+      index:
         view:
           switch_to: Prebaci na %{view_name}
           list: listu

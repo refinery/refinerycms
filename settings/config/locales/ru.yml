@@ -7,8 +7,9 @@ ru:
     refinery_settings:
       delete: Удалить этот параметр навсегда
       edit: Редактировать параметр
-      index:
+      actions:
         new: Создать новый параметр
+      records:
         empty_set: Параметров пока что нет.
         create_first: "Нажмите «%{link}», чтобы добавить первый параметр."
       form:

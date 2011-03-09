@@ -71,10 +71,11 @@ zh-TW:
         meta_keywords_help: 輸入 5 到 10 個跟這個頁面有關的關鍵字. 用逗號分開每個關鍵字.
         meta_description_title: Meta 說明
         meta_description_help: 簡潔地輸入兩三句話來介紹這個頁面.
-      index:
+      actions:
         create_new_page: 新增頁面
         reorder_pages: 重新編排頁面順序
         reorder_pages_done: 完成頁面順序編排
+      records:
         no_pages_yet: 目前沒有任何頁面. 點選 "新增頁面" 來加入您的第一個頁面.
   activerecord:
     models:

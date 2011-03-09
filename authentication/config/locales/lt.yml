@@ -12,34 +12,34 @@ lt:
       form:
         blank_password_keeps_current: "Jei paliksite slaptažodžio laukelį tuščią, jis išliks nepakites"
         enable_all: aktyvuoti visus
-      index:
+      actions:
         create_new_user: Pridėti naują vartotoją
       user:
         email_user: Siųsti el. laišką vartotojui
-        preview: (%{who}) sukurtas %{created_at}
+        preview: '(%{who}) sukurtas %{created_at}'
   sessions:
     new:
       hello_please_sign_in: Sveiki! Prašome prisijungti.
       sign_in: Prisijungti
       forgot_password: Aš pamiršau slaptažodį
   users:
-    setup_website_name_html: Pirmiausiai nurodykime svetainės pavadinimą. <a href='%{link}' name='%{title}'>Eikite čia</a> norėdami pakeisti svetainės pavadinimą
+    setup_website_name_html: "Pirmiausiai nurodykime svetainės pavadinimą. <a href='%{link}' name='%{title}'>Eikite čia</a> norėdami pakeisti svetainės pavadinimą"
     new:
-      fill_form: Įveskite savo informaciją, kad galėtume pradėti.
+      fill_form: 'Įveskite savo informaciją, kad galėtume pradėti.'
       sign_up: Registruotis
     create:
-      welcome: Sveiki prisijungę prie Refinery, %{who}
+      welcome: 'Sveiki prisijungę prie Refinery, %{who}'
     forgot:
       email_address: El. pašto adresas
       enter_email_address: Prašome nurodyti el. pašto adresą savo paskyrai.
       reset_password: Slaptažodžio keitimas
       blank_email: Jūs neįvedėte slaptažodžio
-      email_not_associated_with_account_html: Atsiprašome, '%{email}' nėra susietas su jokia paskyra.<br />Ar tikrai nurodėte teisingą el. pašto adresą?
+      email_not_associated_with_account_html: "Atsiprašome, '%{email}' nėra susietas su jokia paskyra.<br />Ar tikrai nurodėte teisingą el. pašto adresą?"
       email_reset_sent: El. laiškas buvo nusiųstas jums su nuoroda kur galite pakeisti slaptažodį.
     reset:
-      code_invalid: Atsiprašome, bet šio kodo galiojimo laikas baigėsi arba jis neteisingas. Jeigu susiduriate su nesklandumais, pabandykite nukopijuoti ir įterpti adresą iš laiško į naršyklę arba iš naujo pradėti slaptažodžio keitimo procedūrą.
+      code_invalid: 'Atsiprašome, bet šio kodo galiojimo laikas baigėsi arba jis neteisingas. Jeigu susiduriate su nesklandumais, pabandykite nukopijuoti ir įterpti adresą iš laiško į naršyklę arba iš naujo pradėti slaptažodžio keitimo procedūrą.'
       successful: "'%{email}' slaptažodis sėkmingai atnaujintas"
-      pick_new_password_for: Nurodykite naują %{email} slaptažodį
+      pick_new_password_for: 'Nurodykite naują %{email} slaptažodį'
       reset_password:  Pakeisti slaptažodį
   user_mailer:
     reset_notification:

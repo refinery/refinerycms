@@ -71,10 +71,11 @@ rs:
         meta_keywords_help: Unesi 5 do 10 reči, odvojene zarezom, koje ukazuju na sadržaj ove strane.
         meta_description_title: Opis
         meta_description_help: Unesi opis sadržaja ove strane u dve do tri rečenice.
-      index:
+      actions:
         create_new_page: Dodaj novu stranu
         reorder_pages: Promeni redosled strana
         reorder_pages_done: Završi sa promenom
+      records:
         no_pages_yet: Ne postoji nijedna strana. Klinki na "Dodaj novu stranu" da dodaš prvu stranu.
   activerecord:
     models:

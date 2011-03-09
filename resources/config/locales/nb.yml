@@ -14,8 +14,9 @@ nb:
         maximum_file_size: Største tillatte filstørrelse er %{megabytes} MB.
       resource:
         download: Last ned denne filen (%{size})
-      index:
+      actions:
         upload_new: Last opp en ny fil
+      records:
         no_files_yet: Det er ingen filer her enda. Klikk på "Last opp en ny fil" for å legge til din første fil.
       insert:
         existing: Eksisterende fil

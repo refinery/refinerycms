@@ -71,10 +71,11 @@ de:
         meta_keywords_help: Geben Sie 5-10 Schlüsselwörter für diese Seite an. Trennen Sie Schlüsselwörter mit einem Komma.
         meta_description_title: Meta-Beschreibung
         meta_description_help: Beschreiben Sie in knappen zwei oder drei Sätzen, um was es sich bei dieser Seite handelt.
-      index:
+      actions:
         create_new_page: Neue Seite anlegen
         reorder_pages: Seiten umsortieren
         reorder_pages_done: Umsortieren erledigt
+      records:
         no_pages_yet: Es sind noch keine Seiten vorhanden. Klicken Sie auf "Neue Seite anlegen", um Ihre erste Seite zu erstellen.
   activerecord:
     models:

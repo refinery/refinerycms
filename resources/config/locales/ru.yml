@@ -14,8 +14,9 @@ ru:
         maximum_file_size: "Максимальный размер файла — %{megabytes} МБ."
       resource:
         download: "Скачать файл (%{size})"
-      index:
+      actions:
         upload_new: Загрузить новый файл
+      records:
         no_files_yet: "Здесь пока нет файлов. Нажмите «Загрузить новые файлы», чтобы добавить первый файл."
       insert:
         existing: Существующий файл

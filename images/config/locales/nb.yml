@@ -14,9 +14,11 @@ nb:
         replace_image: Erstatt det med dette ...
         current_image: Gjeldende bilde
         maximum_image_size: "Den største tillatte størrelsen på et bilde er %{megabytes} MB."
-      index:
+      actions:
         create_new_image: Lag et nytt bilde
+      records:
         no_images_yet: Det er ingen bilder her enda. Trykk på "Lag et nytt bilde" for å legge til ditt første bilde.
+      index:
         view:
           switch_to: "Endre til %{view_name} visning"
           list: liste

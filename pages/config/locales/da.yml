@@ -71,10 +71,11 @@ da:
         meta_keywords_help: Indtast 5-10 nøgleord der er relaterede til siden. Adskil nøgleordene med kommaer.
         meta_description_title: Meta description
         meta_description_help: Indtast to eller tre sætninger, der beskriver siden.
-      index:
+      actions:
         create_new_page: Tilføj en ny side
         reorder_pages: Redigér rækkefølgen af siderne
         reorder_pages_done: Gem rækkefølgen
+      records:
         no_pages_yet: Der er ingen sider endnu. Klik på "Tilføj en ny side" for at oprette den første."
   activerecord:
     models:

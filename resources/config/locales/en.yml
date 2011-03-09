@@ -14,8 +14,9 @@ en:
         maximum_file_size: The maximum file size is %{megabytes} megabytes.
       resource:
         download: Download this file (%{size})
-      index:
+      actions:
         upload_new: Upload new file
+      records:
         no_files_yet: There are no files yet. Click "Upload new file" to add your first file.
       insert:
         existing: Existing File

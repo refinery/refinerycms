@@ -71,10 +71,11 @@ nl:
         meta_keywords_help: Voeg 5 tot 10 meta zoekwoorden toe. Gebruik een komma om de zoekwoorden te scheiden.
         meta_description_title: Meta omschrijving
         meta_description_help: Voer een compacte (twee a drie zinnen) pagina beschrijving in.
-      index:
+      actions:
         create_new_page: Maak een nieuwe pagina
         reorder_pages: "Wijzig de volgorde van de pagina's"
         reorder_pages_done: "Klaar met het wijzingen van de volgorde van de pagina's"
+      records:
         no_pages_yet: "Er zijn nog geen pagina's. Druk op 'Maak een nieuwe pagina' om de eerste aan te maken."
   activerecord:
     models:

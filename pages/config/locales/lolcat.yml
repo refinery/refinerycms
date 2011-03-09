@@ -70,10 +70,11 @@ lolcat:
         meta_keywords_help: ENTR 5-10 KEYWORDZ DAT RELATE 2 DIS PAEG. SEPARATE KEYWORDZ BY COMMA.
         meta_description_title: META DESCRIPSHUN
         meta_description_help: ENTR CONCIZE 2 OR 3 SENTENCEZ DESCRIBIN WUT DIS PAEG IZ BOUT.
-      index:
+      actions:
         create_new_page: ADD NEW PAEG
         reorder_pages: REORDR PAGEZ
         reorder_pages_done: DUN REORDERIN PAGEZ
+      records:
         no_pages_yet: THAR R NO PAGEZ YET. CLICK "ADD NEW PAEG" 2 ADD UR FURST PAEG.
   activerecord:
     models:

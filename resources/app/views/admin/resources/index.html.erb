@@ -1,31 +1,6 @@
 <div id='records' class='files'>
-  <% if searching? %>
-    <h2><%= t('results_for', :scope => 'shared.admin.search', :query => params[:search]) %></h2>
-  <% end %>
-  <% if @resources.any? %>
-    <div class='pagination_container'>
-      <%= render :partial => 'resources' %>
-    </div>
-  <% else %>
-    <p>
-      <% unless searching? %>
-        <strong><%= t('.no_files_yet') %></strong>
-      <% else %>
-        <%= t('no_results', :scope => 'shared.admin.search') %>
-      <% end %>
-    </p>
-  <% end %>
+  <%= render :partial => 'records' %>
 </div>
 <div id='actions'>
-  <ul>
-    <li>
-      <%= render :partial => "/shared/admin/search", :locals => {:url => admin_resources_url} %>
-    </li>
-    <li>
-      <%= link_to t('.upload_new'), new_admin_resource_url(:dialog => true,
-                                                           :width => 600,
-                                                           :height => 300),
-                  :class => "add_icon" %>
-    </li>
-  </ul>
+  <%= render :partial => 'actions' %>
 </div>

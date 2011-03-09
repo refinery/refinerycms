@@ -14,14 +14,14 @@ es:
         plugin_access: Gestionar plugins
         role_access: Gestionar roles
         enable_all: permitir todo
-      index:
+      actions:
         create_new_user: Crear nuevo usuario
       user:
         email_user: Enviar un email a este usuario
-        preview: (%{who}) creado %{created_at}
+        preview: '(%{who}) creado %{created_at}'
   sessions:
     new:
-      hello_please_sign_in: Hola! Por favor, identifícate.
+      hello_please_sign_in: 'Hola! Por favor, identifícate.'
       sign_in: Entrar
       forgot_password: He olvidado mi contraseña
   users:
@@ -30,7 +30,7 @@ es:
       fill_form: Rellena los detalles siguientes para poder comenzar.
       sign_up: Registrarme
     create:
-      welcome: Bienvenido a Refinery, %{who}
+      welcome: 'Bienvenido a Refinery, %{who}'
     forgot:
       email_address: Dirección e-mail
       enter_email_address: Indica el e-mail de tu cuenta.

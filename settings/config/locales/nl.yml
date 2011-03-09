@@ -7,8 +7,9 @@ nl:
     refinery_settings:
       delete: Verwijder deze instelling voorgoed
       edit: Bewerk deze instelling
-      index:
+      actions:
         new: Maak een nieuwe instelling aan
+      records:
         empty_set: Er zijn nog geen instellingen aangemaakt
         create_first: "Klik '%{link}' om je eerste instelling aan te maken."
       form:

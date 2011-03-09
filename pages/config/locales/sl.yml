@@ -70,10 +70,11 @@ sl:
         meta_keywords_help: Vnesite 5-10 ključnih besed, ki se navezujejo na to spletno stran. Ključne besede ločite z vejicami.
         meta_description_title: Meta opis
         meta_description_help: V dveh do treh stavkih jedernato opišite kaj ta stran predstavlja.
-      index:
+      actions:
         create_new_page: Dodaj novo stran
         reorder_pages: Spremeni vrstni red Strani
         reorder_pages_done: Končaj s prerazporeditvijo Strani
+      records:
         no_pages_yet: Trenutno še ni nobene strani. Za dodajanje prve strani kliknite "Dodaj novo stran".
   activerecord:
     models:

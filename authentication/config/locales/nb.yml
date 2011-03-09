@@ -14,11 +14,11 @@ nb:
         plugin_access: Tilgang til komponenter
         role_access: Rolletilgang
         enable_all: merk alle
-      index:
+      actions:
         create_new_user: Lag ny bruker
       user:
         email_user: Send en e-post til denne brukeren
-        preview: (%{who}) opprettet %{created_at}
+        preview: '(%{who}) opprettet %{created_at}'
   sessions:
     new:
       hello_please_sign_in: "Hei! Vennligst logg inn."
@@ -30,7 +30,7 @@ nb:
       fill_form: Fyll ut detaljene dine nedenfor slik at vi kan komme i gang.
       sign_up: Registrer deg
     create:
-      welcome: Velkommen til Refinery, %{who}
+      welcome: 'Velkommen til Refinery, %{who}'
     forgot:
       email_address: E-post Adresse
       enter_email_address: Vennligst tast inn e-post adressen for din konto.

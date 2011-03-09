@@ -14,9 +14,11 @@ it:
         replace_image: Sostituirla con questa...
         current_image: Immagine corrente
         maximum_image_size: "La dimensione massima per l'immagine è %{megabytes} megabytes."
-      index:
+      actions:
         create_new_image: Carica una nuova immagine
+      records:
         no_images_yet: "Nessuna immagine presente. Fare clic su \"Carica una nuova immagine\" per aggiungere un'immagine."
+      index:
         view:
           switch_to: Passa alla modalità di visualizzazione "%{view_name}"
           list: Lista

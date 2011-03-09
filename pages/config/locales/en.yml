@@ -71,10 +71,11 @@ en:
         meta_keywords_help: Enter 5-10 keywords that relate to this page. Separate keywords by a comma.
         meta_description_title: Meta description
         meta_description_help: Enter a concise two or three sentences describing what this page is about.
-      index:
+      actions:
         create_new_page: Add new page
         reorder_pages: Reorder pages
         reorder_pages_done: Done reordering pages
+      records:
         no_pages_yet: There are no pages yet. Click "Add new page" to add your first page.
   activerecord:
     models:

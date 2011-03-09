@@ -14,7 +14,7 @@ it:
         plugin_access: "Abilitare l'accesso alle sezioni"
         role_access: Ruoli autorizzati
         enable_all: seleziona tutto
-      index:
+      actions:
         create_new_user: Crea un nuovo utente
       user:
         email_user: E-mail a questo utente

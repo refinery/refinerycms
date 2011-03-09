@@ -71,10 +71,11 @@ nb:
         meta_keywords_help: Skriv inn 5-10 stikkord som relaterer til denne siden. Separer stikkordene med komma.
         meta_description_title: Meta beskrivelse
         meta_description_help: Skriv en kort beskrivelse på to eller tre setninger som forteller hva denne siden inneholder.
-      index:
+      actions:
         create_new_page: Legg til ny side
         reorder_pages: Endre rekkefølgen
         reorder_pages_done: Ferdig med endring av rekkefølgen
+      records:
         no_pages_yet: Det er ingen sider her enda. Klikk på "Legg til ny side" for å legge til din første side.
   activerecord:
     models:

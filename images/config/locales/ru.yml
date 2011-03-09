@@ -23,9 +23,11 @@ ru:
         replace_image: " заменить его этим"
         current_image: Текущее изображение
         maximum_image_size: "Максимальный размер изображения — %{megabytes} МБ."
-      index:
+      actions:
         create_new_image: Создать новое изображение
+      records:
         no_images_yet: "Изображений пока что нет. Нажмите «Создать новое изображение», чтобы добавить ваше первое изображение."
+      index:
         view:
           switch_to: Показать %{view_name}
           list: списком

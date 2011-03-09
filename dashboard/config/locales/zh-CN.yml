@@ -7,6 +7,7 @@ zh-CN:
     dashboard:
       index:
         quick_tasks: 快速任务
+      actions:
         add_a_new_page: 添加页面
         update_a_page: 更新页面
         upload_a_image: 上传图片

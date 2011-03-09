@@ -7,8 +7,9 @@ vi:
     refinery_settings:
       delete: Xóa thiết lập này vĩnh viễn
       edit: Chỉnh sửa thiết lập này
-      index:
+      actions:
         new: Thêm thiết lập mới
+      records:
         empty_set: Chưa có thiết lập nào cả.
         create_first: "Bấm vào đây '%{link}' để thêm thiết lập đầu tiên của bạn."
       form:

@@ -14,8 +14,9 @@ sk:
         maximum_file_size: Maximálna veľkosť súboru je %{megabytes} MB.
       resource:
         download: Stiahnuť súbor (%{size})
-      index:
+      actions:
         upload_new: Nahrať nový súbor
+      records:
         no_files_yet: Zatiaľ neboli nahraté žiadne súbory.
       insert:
         existing: Existujúci súbor

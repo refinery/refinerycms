@@ -14,9 +14,11 @@ lv:
         replace_image: " aizstāt to ar šo..."
         current_image: Pašreizējā Bilde
         maximum_image_size: Maksimāli pieļaujamais bildes izmērs ir %{megabytes} megabaiti.
-      index:
+      actions:
         create_new_image: Augšupielādēt bildi
+      records:
         no_images_yet: Vēl nav nevienas bildes. Spied "Augšupielādēt bildi", lai ielādētu bildi.
+      index:
         view:
           switch_to: Pārslēgt uz %{view_name} skatu
           list: saraksta

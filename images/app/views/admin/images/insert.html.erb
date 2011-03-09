@@ -24,7 +24,7 @@
       </div>
     <% end %>
   <% else %>
-    <% flash.now[:error] = t('no_images_yet', :scope => 'admin.images.index').split('.').first.html_safe + "." %>
+    <% flash.now[:error] = t('no_images_yet', :scope => 'admin.images.records').split('.').first.html_safe + "." %>
     <%= render :partial => "/shared/admin/form_actions",
                :locals => {
                  :f => nil,

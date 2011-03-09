@@ -14,8 +14,9 @@ lv:
         maximum_file_size: Maksimāli pieļaujamais faila izmērs ir %{megabytes} megabaiti.
       resource:
         download: Lejupielādēt šo failu (%{size})
-      index:
+      actions:
         upload_new: Augšupielādēt failu
+      records:
         no_files_yet: Vēl nav neviena faila. Spied "Augšupielādēt failu", lai ielādētu failu.
       insert:
         existing: Esošs Fails

@@ -15,7 +15,7 @@ pl:
         plugin_access: Plugin dostępu
         role_access: Rola dostępu
         enable_all: aktywuj wszystkich
-      index:
+      actions:
         create_new_user: Dodaj nowego użytkownika
       user:
         email_user: Wyślij e-mail do tego użytkownika
@@ -48,7 +48,7 @@ pl:
   user_mailer:
     reset_notification:
       subject: Link do resetu hasła
-      reset_request_received_for: Prośba o zmianę hasła dla %{username}
+      reset_request_received_for: 'Prośba o zmianę hasła dla %{username}'
       visit_this_url: Odwiedź stronę aby ustawić nowe hasło
       remain_same_if_no_action: Twoje hasło nie zostanie zmienione jeśli nie odwiedzisz strony
   activerecord:

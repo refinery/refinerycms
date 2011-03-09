@@ -13,8 +13,9 @@ nl:
         maximum_file_size: "The maximum file size is %{megabytes} megabytes."
       resource:
         download: Download dit bestand (%{size})
-      index:
+      actions:
         upload_new: Upload een nieuw bestand.
+      records:
         no_files_yet: Er zijn nog geen bestanden. Klik op "Upload een nieuw bestand" om uw eerste bestand toe te voegen.
       insert:
         existing: Bestaand bestand

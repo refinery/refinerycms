@@ -14,9 +14,11 @@ fr:
         replace_image: " la remplacer par celle-ci..."
         current_image: Image actuelle
         maximum_image_size: "La taille de l'image ne doit pas excéder %{megabytes} megaoctets."
-      index:
+      actions:
         create_new_image: Ajouter une image
+      records:
         no_images_yet: "Il n'y a pas encore d'image. Cliquer sur 'Ajouter une image' pour en ajouter une."
+      index:
         view:
           switch_to: Afficher sous forme de %{view_name}
           list: liste

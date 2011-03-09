@@ -14,8 +14,9 @@ zh-TW:
         maximum_file_size: 檔案大小限制為 %{megabytes} MB.
       resource:
         download: 下載這個檔案 (%{size})
-      index:
+      actions:
         upload_new: 上傳新檔案
+      records:
         no_files_yet: 目前沒有任何的檔案. 點選 "上傳新檔案" 來加入您的第一個檔案.
       insert:
         existing: 已存在的檔案

@@ -71,10 +71,11 @@ sk:
         meta_keywords_help: Vložte 5-10 kľúčových slov oddelených čiarkou, ktoré sa vzťahujú k obsahu stránky.
         meta_description_title: Popis (Meta description)
         meta_description_help: Vložte 2-3 krátke vety sumarizujúce obsah stránky.
-      index:
+      actions:
         create_new_page: Pridať novú stránku
         reorder_pages: Zmeniť usporiadanie stránok
         reorder_pages_done: Uložiť usporiadanie
+      records:
         no_pages_yet: Zatiaľ neboli vytvorené žiadne stránky. Kliknite na "Pridať novú stránku" pre pridanie prvej.
   activerecord:
     models:

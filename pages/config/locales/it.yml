@@ -86,11 +86,12 @@ it:
             already_exists: Una sezione di contenuti con quel titolo e già esistente, si prega di modificarlo.
             title_empty: Non è stato inserito un titolo per la sezione dei contenuti, inseriscine uno.
             confirm_delete: Ciò eliminerà la sezione dei contenuti %{section_name} e cancellerà tutti i contenuti che sono stati inseriti al suo interno. Sei sicuro?
-      index:
+      actions:
         create_new_page: Crea una nuova pagina
         reorder_pages: Riordina le pagine
         reorder_pages_done: Riordino Pagine terminato
         sorry_no_results: La ricerca non ha prodotto risultati.
+      records:
         no_pages_yet: Non è stata ancora creata nessuna pagina. Clicca su "Crea nuova pagina" per aggiungere la tua prima pagina.
   activerecord:
     attributes:

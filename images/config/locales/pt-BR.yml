@@ -15,9 +15,11 @@ pt-BR:
         replace_image: " substituir por esta..."
         current_image: Imagem atual
         maximum_image_size: "O tamanho máximo permitido é de %{megabytes} megabytes."
-      index:
+      actions:
         create_new_image: Criar Nova Imagem
+      records:
         no_images_yet: Ainda não existem imagens. Clique em "Criar Nova Imagem" para adicionar sua primeira imagem.
+      index:
         view:
           switch_to: Trocar para visão em %{view_name}
           list: lista

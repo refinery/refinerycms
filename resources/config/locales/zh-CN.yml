@@ -14,8 +14,9 @@ zh-CN:
         maximum_file_size: 最大的文件大小是 %{megabytes} MB.
       resource:
         download: 下载此文件 (%{size})
-      index:
+      actions:
         upload_new: 上传新文件
+      records:
         no_files_yet: 这里还没有文件. 点击 "上传新文件" 去添加您第一个文件.
       insert:
         existing: 已存在的文件

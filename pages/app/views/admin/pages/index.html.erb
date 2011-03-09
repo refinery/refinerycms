@@ -1,40 +1,8 @@
-<div id='records' class='tree'>
-  <% if searching? %>
-    <h2><%= t('results_for', :scope => 'shared.admin.search', :query => params[:search]) %></h2>
-  <% end %>
-  <% if @pages.any? %>
-    <%= render :partial => 'sortable_list' %>
-  <% else %>
-    <p>
-      <% unless searching? %>
-        <strong><%=t('.no_pages_yet')%></strong>
-      <% else %>
-        <%= t('no_results', :scope => 'shared.admin.search') %>
-      <% end %>
-    </p>
-  <% end %>
-</div>
-<div id='actions'>
-  <ul>
-    <li>
-      <%= render :partial => "/shared/admin/search", :locals => {:url => admin_pages_url} %>
-    </li>
-    <li>
-      <%= link_to t('.create_new_page'), new_admin_page_url, :class => "add_icon" %>
-    </li>
-  <% if @pages.many? and !searching? %>
-    <li>
-      <%= link_to t('.reorder_pages'), admin_pages_url,
-                  :id => "reorder_action",
-                  :class => "reorder_icon" %>
-
-      <%= link_to t('.reorder_pages_done'), admin_pages_url,
-                  :id => "reorder_action_done",
-                  :style => "display: none;",
-                  :class => "reorder_icon" %>
-    </li>
-  <% end %>
-  </ul>
-</div>
+<section id='records' class='tree'>
+  <%= render :partial => 'records' %>
+</section>
+<section id='actions'>
+  <%= render :partial => 'actions' %>
+</section>
 <%= render :partial => "/shared/admin/make_sortable",
            :locals => {:tree => true} if @pages.many? -%>

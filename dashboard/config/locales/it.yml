@@ -6,6 +6,7 @@ it:
     dashboard:
       index:
         quick_tasks: Accesso rapido
+      actions:
         add_a_new_page: Crea una nuova pagina
         update_a_page: Modifica una pagina
         upload_a_image: "Carica un'immagine"

@@ -15,9 +15,11 @@ es:
         replace_image: " reemplazarla con esta otra..."
         current_image: Imagen actual
         maximum_image_size: El peso máximo para una imagen son  %{megabytes} megabytes.
-      index:
+      actions:
         create_new_image: Crear nueva imagen
+      records:
         no_images_yet: Aún no hay imágenes. Haz click en "Crear nueva imagen" para añadir la primera.
+      index:
         view:
           switch_to: Cambiar a vista %{view_name}
           list: lista

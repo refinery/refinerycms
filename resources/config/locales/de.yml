@@ -14,8 +14,9 @@ de:
         maximum_file_size: "Die maximale Dateigröße beträgt %{megabytes} Megabyte."
       resource:
         download: Diese Datei herunterladen (%{size})
-      index:
+      actions:
         upload_new: Neue Datei Hochladen
+      records:
         no_files_yet: Keine Dateien vorhanden. Klicken Sie auf "Neue Datei Hochladen" um Ihre erste Datei hinzuzufügen.
       insert:
         existing: Vorhandene Datei

@@ -14,8 +14,9 @@ sv:
         maximum_file_size: Maximal storlek är %{megabytes} megabytes.
       resource:
         download: Ladda ner den här filen (%{size})
-      index:
+      actions:
         upload_new: Ladda upp en fil
+      records:
         no_files_yet: Det finns inga filer ännu. Klicka på "Ladda upp en fil" för att ladda upp din första fil.
       insert:
         existing: Redan existerande fil

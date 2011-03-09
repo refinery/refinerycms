@@ -1,0 +1,20 @@
+<ul>
+  <li>
+    <%= render :partial => "/shared/admin/search", :locals => {:url => admin_pages_url} %>
+  </li>
+  <li>
+    <%= link_to t('.create_new_page'), new_admin_page_url, :class => "add_icon" %>
+  </li>
+<% if @pages.many? and !searching? %>
+  <li>
+    <%= link_to t('.reorder_pages'), admin_pages_url,
+                :id => "reorder_action",
+                :class => "reorder_icon" %>
+
+    <%= link_to t('.reorder_pages_done'), admin_pages_url,
+                :id => "reorder_action_done",
+                :style => "display: none;",
+                :class => "reorder_icon" %>
+  </li>
+<% end %>
+</ul>

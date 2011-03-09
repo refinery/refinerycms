@@ -7,8 +7,9 @@ lv:
     refinery_settings:
       delete: Dzēst šo uzstādījumu
       edit: Labot šo uzstādījumu
-      index:
+      actions:
         new: Izveidot jaunu uzstādījumu
+      records:
         empty_set: Vēl nav neviena uzstādījuma.
         create_first: Spied uz '%{link}', lai pievienotu pirmo uzstādījumu.
       form:

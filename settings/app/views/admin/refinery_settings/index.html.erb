@@ -1,42 +1,8 @@
 <div id='records'>
-  <% if searching? %>
-    <h2>
-      <%= t('results_for', :scope => 'shared.admin.search', :query => params[:search]) %>
-    </h2>
-  <% end %>
-  <% if @refinery_settings.any? %>
-    <div class='pagination_container'>
-      <%= render :partial => 'refinery_settings' %>
-    </div>
-  <% else %>
-    <p>
-      <% if searching? %>
-        <%= t('no_results', :scope => 'shared.admin.search') %>
-      <% else %>
-        <strong>
-          <%= t('.empty_set') %>
-          <%= t('.create_first', :link => t('.new')) %>
-        </strong>
-      <% end %>
-    </p>
-  <% end %>
+  <%= render :partial => 'records' %>
 </div>
 <div id='actions'>
-  <ul>
-    <li>
-      <%= render :partial => "/shared/admin/search",
-                 :locals => {
-                   :url => admin_refinery_settings_url
-                 } %>
-    </li>
-    <li>
-      <%= link_to t('.new'), new_admin_refinery_setting_url({
-                               :dialog => true,
-                               :width => 725,
-                               :height => 475
-                             }), :class => "add_icon" %>
-    </li>
-  </ul>
+  <%= render :partial => 'actions' %>
 </div>
 <% content_for :javascripts do %>
   <script>

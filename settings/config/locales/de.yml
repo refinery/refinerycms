@@ -7,8 +7,9 @@ de:
     refinery_settings:
       delete: Diese Einstellung für immer löschen
       edit: Diese Einstellung bearbeiten
-      index:
+      actions:
         new: Neue Einstellung erstellen
+      records:
         empty_set: Es gibt noch keine Einstellungen.
         create_first: Klicken Sie auf '%{link}', um Ihre erste Einstellung anzulegen.
       form:

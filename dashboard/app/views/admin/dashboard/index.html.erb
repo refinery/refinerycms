@@ -1,68 +1,11 @@
 <div class='clearfix'>
-  <div id='records' class='clearfix<%= ' one_list' if @recent_activity.empty? or @recent_inquiries.empty? %>'>
-    <%= render :partial => "recent_activity" if @recent_activity.present? %>
-    <%= render :partial => "recent_inquiries" if @recent_inquiries.present? %>
-  </div>
-  <div id='actions'>
+  <section id='records' class='clearfix<%= ' one_list' if @recent_activity.empty? or @recent_inquiries.empty? %>'>
+    <%= render :partial => 'records' %>
+  </section>
+  <aside id='actions'>
     <h2><%= t('.quick_tasks').titleize %></h2>
-    <ul>
-      <% if Refinery::Plugins.active.names.include?("refinery_pages") %>
-        <li>
-          <%= link_to t('.add_a_new_page'),
-                      new_admin_page_path,
-                      :class => "add_icon" %>
-        </li>
-        <li>
-          <%= link_to t('.update_a_page'),
-                      admin_pages_path,
-                      :class => "edit_icon" %>
-        </li>
-      <% end %>
-      <% if Refinery::Plugins.active.names.include?("refinery_files") %>
-        <li>
-          <%= link_to t('.upload_a_file'),
-                      new_admin_resource_path(:dialog => true,
-                                             :width => 600,
-                                             :height => 300),
-                      :class => "add_icon" %>
-        </li>
-      <% end %>
-      <% if Refinery::Plugins.active.names.include?("refinery_images") %>
-        <li>
-          <%= link_to t('.upload_a_image'),
-                      new_admin_image_path(:dialog => true,
-                                          :width => 600,
-                                          :height => 300),
-                      :class => "add_icon" %>
-        </li>
-      <% end %>
-      <%= render :partial => 'additional_dashboard_menu_items' %>
-    </ul>
-
-    <% if defined?(::Refinery::I18n) and ::Refinery::I18n.enabled? %>
-      <% locales = ::Refinery::I18n.locales.clone %>
-      <% current_locale = ::I18n.locale %>
-      <% current_locale_title = locales.delete(current_locale) %>
-      <ul id='current_locale'>
-        <li>
-          <%= link_to "#", :style => "background-image: url('/images/refinery/icons/flags/#{current_locale}.png');" do %>
-            <%= current_locale_title.respond_to?(:force_encoding) ? current_locale_title.force_encoding('utf-8') : current_locale_title %>
-            <span><%= t('.change_language') %></span>
-            <span style='display:none;'><%= t('cancel', :scope => 'shared.admin.form_actions') %></span>
-          <% end %>
-        </li>
-      </ul>
-      <ul id='other_locales' style='display: none'>
-        <% locales.sort_by{|key, value| value}.each do |locale, locale_title| %>
-          <li>
-            <%= link_to locale_title.respond_to?(:force_encoding) ? locale_title.force_encoding('utf-8') : locale_title,
-                        params.dup.tap { |p| p[:set_locale] = locale },
-                        :style => "background-image: url('/images/refinery/icons/flags/#{locale}.png');" %>
-          </li>
-        <% end %>
-      </ul>
-    <% end %>
-  </div>
+    <%= render :partial => 'actions' %>
+  </aside>
 </div>
 <% if request.env["HTTP_USER_AGENT"] =~ /MSIE/ and
         RefinerySetting.find_or_set(:show_internet_explorer_upgrade_message, true, :scoping => 'refinery') %>

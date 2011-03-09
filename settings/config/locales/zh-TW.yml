@@ -7,8 +7,9 @@ zh-TW:
     refinery_settings:
       delete: 永遠地移除這項設定值
       edit: 編輯這項設定值
-      index:
+      actions:
         new: 增加新設定值
+      records:
         empty_set: 目前沒有任何設定值.
         create_first: "請按這兒 '%{link}' 加入您的第一個設定值."
       form:

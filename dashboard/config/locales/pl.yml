@@ -7,6 +7,7 @@ pl:
     dashboard:
       index:
         quick_tasks: Szybkie zadania
+      actions:
         add_a_new_page: Dodaj nową stronę
         update_a_page: Aktualizuj stronę
         upload_a_image: Wgraj obrazek

@@ -72,10 +72,11 @@ lt:
         meta_keywords_help: "Įveskite 5-10 raktinių žodžių, kurie susiję su šiuo puslapiu. Atskirkite raktinius žodžius kableliais."
         meta_description_title: Meta aprašymas
         meta_description_help: Įveskite rišlius du ar tris sakinius nusakančius apie ką šis puslapis.
-      index:
+      actions:
         create_new_page: Pridėti naują puslapį
         reorder_pages: Keisti puslapių tvarką
         reorder_pages_done: Baigti keisti puslapių tvarką
+      records:
         no_pages_yet: Dar nėra puslapių. Paspauskite "Pridėti naują puslapį" norėdami sukurti pirmą puslapį.
   activerecord:
     models:

@@ -1,12 +1,6 @@
-<div id='records'>
-  <div class='pagination_container'>
-    <%= render :partial => 'users' %>
-  </div>
-</div>
-<div id='actions'>
-  <ul>
-    <li>
-      <%= link_to t('.create_new_user'), new_admin_user_url, :class => "add_icon" %>
-    </li>
-  </ul>
-</div>
+<section id='records'>
+  <%= render :partial => 'records' %>
+</section>
+<aside id='actions'>
+  <%= render :partial => 'actions' %>
+</aside>
