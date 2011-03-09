@@ -19,8 +19,8 @@ module Refinery
 
       {
         :conditions => '',
-        :order => ('position ASC' if this_class.table_exists? and this_class.column_names.include?('position')),
         :include => [],
+        :order => ('position ASC' if this_class.table_exists? and this_class.column_names.include?('position')),
         :paging => true,
         :per_page => false,
         :redirect_to_url => "admin_#{plural_name}_url",
