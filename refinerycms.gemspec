@@ -15,7 +15,7 @@ Gem::Specification.new do |s|
   s.executables       = %w(refinerycms)
 
   # Bundler
-  s.add_dependency    'bundler',                    '~> 1.0.10'
+  s.add_dependency    'bundler',                    '~> 1.0'
 
   # Refinery CMS
   s.add_dependency    'refinerycms-authentication', '~> 0.9.9.5'
