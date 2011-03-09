@@ -18,16 +18,16 @@ module Refinery
       this_class = class_name.constantize.base_class
 
       {
-        :title_attribute => "title",
-        :order => ('position ASC' if this_class.table_exists? and this_class.column_names.include?('position')),
         :conditions => '',
-        :sortable => true,
-        :searchable => true,
+        :order => ('position ASC' if this_class.table_exists? and this_class.column_names.include?('position')),
         :include => [],
         :paging => true,
-        :search_conditions => '',
+        :per_page => false,
         :redirect_to_url => "admin_#{plural_name}_url",
-        :per_page => false
+        :searchable => true,
+        :search_conditions => '',
+        :sortable => true,
+        :title_attribute => "title"
       }
     end
 
