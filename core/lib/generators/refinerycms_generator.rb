@@ -21,16 +21,16 @@ class RefinerycmsGenerator < ::Refinery::Generators::EngineInstaller
       self.options = new_options
     end
 
-    # First, effectively move / rename files that get in the way of Refinery CMS
-    %w(public/index.html config/cucumber.yml app/views/layouts/application.html.erb public/javascripts/rails.js).each do |roadblock|
-      if (roadblock_path = Rails.root.join(roadblock)).file?
-        create_file "#{roadblock}.backup",
-                    :verbose => true do roadblock_path.read end
-        remove_file roadblock_path, :verbose => true
-      end
-    end
-
     unless self.options[:update]
+      # First, effectively move / rename files that get in the way of Refinery CMS
+      %w(public/index.html app/views/layouts/application.html.erb public/javascripts/rails.js).each do |roadblock|
+        if (roadblock_path = Rails.root.join(roadblock)).file?
+          create_file "#{roadblock}.backup",
+                      :verbose => true do roadblock_path.read end
+          remove_file roadblock_path, :verbose => true
+        end
+      end
+
       # Copy asset files (JS, CSS) so they're ready to use.
       %w(application.css formatting.css home.css theme.css).map{ |ss|
         Refinery.roots('core').join('public', 'stylesheets', ss)
