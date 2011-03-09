@@ -13,11 +13,28 @@ if(typeof(window.onpopstate) == "object"){
   $(window).bind('popstate', function(e) {
     // this fires on initial page load too which we don't need.
     if(!initialLoad) {
-      $.get(location.href, function(data) {
-        $('.pagination_container').slideTo(data);
-      });
+      $(document).paginateTo((location.pathname + location.href.split(location.pathname)[1]));
     }
     initialLoad = false;
+  });
+}
+
+$.fn.paginateTo = function(stateUrl) {
+  // Grab the url, ensuring not to cache.
+  $.ajax({
+    url: stateUrl,
+    cache: false,
+    success: function(data) {
+      $('.pagination_container').slideTo(data);
+
+      // remove caching _ argument.
+      $('.pagination_container .pagination a').each(function(i, a){
+        $(this).attr('href', $(this).attr('href').replace(/\?\_\=[^&]+&/, '?'));
+      })
+    },
+    failure: function(data) {
+      window.location = popstate_location;
+    }
   });
 }
 
@@ -46,12 +63,17 @@ init_ajaxy_pagination = function(){
   if(typeof(window.history.pushState) == 'function' && $('.pagination_container').length > 0){
     var pagination_pages = $('.pagination_container .pagination a');
     pagination_pages.live('click',function(e) {
-      this.href = (this.href.replace(/(\&(amp\;)?)?from_page\=\d+/, '')
-                   + '&from_page=' + $(this).parent().find('em').text()).replace('?&', '?');
-      history.pushState({ path: this.path }, '', this.href);
-      $.get(this.href, function(data) {
-        $('.pagination_container').slideTo(data)
-      })
+      navigate_to = this.href.replace(/(\&(amp\;)?)?from_page\=\d+/, '');
+      navigate_to += '&from_page=' + $(this).parent().find('em').text();
+      navigate_to = navigate_to.replace('?&', '?');
+
+      var current_state_location = (location.pathname + location.href.split(location.pathname)[1]);
+      window.history.pushState({
+        path: current_state_location
+      }, '', navigate_to);
+
+      $(document).paginateTo(navigate_to);
+
       e.preventDefault();
     });
   }
