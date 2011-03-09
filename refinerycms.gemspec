@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |s|
   s.name              = %q{refinerycms}
-  s.version           = %q{0.9.9.7}
+  s.version           = %q{0.9.9.8}
   s.description       = %q{A Ruby on Rails CMS that supports Rails 3. It's easy to extend and sticks to 'the Rails way' where possible.}
   s.date              = %q{2011-03-10}
   s.summary           = %q{A Ruby on Rails CMS that supports Rails 3}
@@ -18,14 +18,14 @@ Gem::Specification.new do |s|
   s.add_dependency    'bundler',                    '~> 1.0'
 
   # Refinery CMS
-  s.add_dependency    'refinerycms-authentication', '~> 0.9.9.7'
-  s.add_dependency    'refinerycms-base',           '~> 0.9.9.7'
-  s.add_dependency    'refinerycms-core',           '~> 0.9.9.7'
-  s.add_dependency    'refinerycms-dashboard',      '~> 0.9.9.7'
-  s.add_dependency    'refinerycms-images',         '~> 0.9.9.7'
-  s.add_dependency    'refinerycms-pages',          '~> 0.9.9.7'
-  s.add_dependency    'refinerycms-resources',      '~> 0.9.9.7'
-  s.add_dependency    'refinerycms-settings',       '~> 0.9.9.7'
+  s.add_dependency    'refinerycms-authentication', '~> 0.9.9.8'
+  s.add_dependency    'refinerycms-base',           '~> 0.9.9.8'
+  s.add_dependency    'refinerycms-core',           '~> 0.9.9.8'
+  s.add_dependency    'refinerycms-dashboard',      '~> 0.9.9.8'
+  s.add_dependency    'refinerycms-images',         '~> 0.9.9.8'
+  s.add_dependency    'refinerycms-pages',          '~> 0.9.9.8'
+  s.add_dependency    'refinerycms-resources',      '~> 0.9.9.8'
+  s.add_dependency    'refinerycms-settings',       '~> 0.9.9.8'
 
   s.files             = [
     '.gitignore',
@@ -64,6 +64,7 @@ Gem::Specification.new do |s|
     'lib/refinerycms.rb',
     'license.md',
     'license.md',
+    'public',
     'readme.md',
     'readme.md',
     'refinerycms.gemspec',

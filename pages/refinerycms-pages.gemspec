@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |s|
   s.name              = %q{refinerycms-pages}
-  s.version           = %q{0.9.9.7}
+  s.version           = %q{0.9.9.8}
   s.summary           = %q{Pages engine for Refinery CMS}
   s.description       = %q{The default content engine of Refinery CMS. This engine handles the administration and display of user-editable pages.}
   s.date              = %q{2011-03-10}
@@ -32,6 +32,7 @@ Gem::Specification.new do |s|
     'app/views',
     'app/views/admin',
     'app/views/admin/pages',
+    'app/views/admin/pages/_actions.html.erb',
     'app/views/admin/pages/_form.html.erb',
     'app/views/admin/pages/_form_advanced_options.html.erb',
     'app/views/admin/pages/_form_advanced_options_seo.html.erb',
@@ -41,6 +42,7 @@ Gem::Specification.new do |s|
     'app/views/admin/pages/_locale_picker.html.erb',
     'app/views/admin/pages/_page.html.erb',
     'app/views/admin/pages/_page_part_field.html.erb',
+    'app/views/admin/pages/_records.html.erb',
     'app/views/admin/pages/_sortable_list.html.erb',
     'app/views/admin/pages/edit.html.erb',
     'app/views/admin/pages/index.html.erb',
@@ -107,5 +109,5 @@ Gem::Specification.new do |s|
     'spec/models/page_spec.rb'
   ]
 
-  s.add_dependency 'refinerycms-core', '~> 0.9.9.7'
+  s.add_dependency 'refinerycms-core', '~> 0.9.9.8'
 end
