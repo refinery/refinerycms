@@ -2,7 +2,7 @@ PATH
   remote: .
   specs:
     refinerycms (0.9.9.6)
-      bundler (~> 1.0.10)
+      bundler (~> 1.0)
       refinerycms-authentication (~> 0.9.9.5)
       refinerycms-base (~> 0.9.9.5)
       refinerycms-core (~> 0.9.9.5)

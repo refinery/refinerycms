@@ -26,7 +26,8 @@ module Refinery
         :include => [],
         :paging => true,
         :search_conditions => '',
-        :redirect_to_url => "admin_#{plural_name}_url"
+        :redirect_to_url => "admin_#{plural_name}_url",
+        :per_page => false
       }
     end
 
@@ -162,7 +163,7 @@ module Refinery
             paging_options = {:page => params[:page]}
 
             # Use per_page from crudify options.
-            if #{options[:per_page]}
+            if #{options[:per_page].present?.inspect}
               paging_options.update({:per_page => #{options[:per_page].inspect}})
             # Seems will_paginate doesn't always use the implicit method.
             elsif #{class_name}.methods.map(&:to_sym).include?(:per_page)
