@@ -47,7 +47,7 @@ zh-CN:
   user_mailer:
     reset_notification:
       subject: 密码重置的连接
-      reset_request_received_for: "Request to reset password received for %{username}"
+      reset_request_received_for: "请求收%{username}到重置密码"
       visit_this_url: 浏览此URL去选择一个新密码
       remain_same_if_no_action: '如果你不进行操作, 你的密码将维持不变'
   devise:
