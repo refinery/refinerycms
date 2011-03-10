@@ -32,7 +32,7 @@ end
 # gem 'refinerycms', '~> 0.9.9.5'
 
 group :development, :test do
-  gem 'refinerycms-testing',    '~> 0.9.9.5'
+  gem 'refinerycms-testing',    '~> 0.9.9.8'
 end
 
 # END REFINERY CMS ============================================================
@@ -54,4 +54,5 @@ end
 
 # Add i18n support (optional, you can remove this if you really want to).
 gem 'refinerycms-i18n',         '~> 0.9.9.12'
+
 # END USER DEFINED
