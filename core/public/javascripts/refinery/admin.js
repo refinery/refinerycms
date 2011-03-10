@@ -143,7 +143,7 @@ init_interface = function() {
   });
 
   $('.form-actions .form-actions-left input:submit#submit_button').click(function(e) {
-    $("<img src='/images/refinery/icons/ajax-loader.gif' width='16' height='16' class='save-loader' />").appendTo($(this).parent());
+    $("<img src='/images/refinery/ajax-loader.gif' width='16' height='16' class='save-loader' />").appendTo($(this).parent());
   });
 
   $('a.suppress').live('click', function(e){

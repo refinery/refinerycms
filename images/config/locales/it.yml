@@ -13,7 +13,7 @@ it:
         or: o
         replace_image: Sostituirla con questa...
         current_image: Immagine corrente
-        maximum_image_size: "La dimensione massima per l'immagine è %{megabytes} megabytes."
+        maximum_image_size: "La dimensione massima per l'immagine è di %{megabytes} megabytes."
       index:
         create_new_image: Carica una nuova immagine
         no_images_yet: "Nessuna immagine presente. Fare clic su \"Carica una nuova immagine\" per aggiungere un'immagine."
@@ -43,5 +43,5 @@ it:
       models:
         image:
           blank: "Devi selezionare un'immagine da caricare"
-          too_long: I file devono essere di dimensioni inferiori a %{count}
+          too_long: I files devono essere di dimensioni inferiori a %{count}
           incorrect_format: "L'immagine deve essere in formato JPEG, PNG o GIF"
