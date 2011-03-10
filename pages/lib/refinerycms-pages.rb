@@ -14,6 +14,10 @@ module Refinery
 
     class Engine < ::Rails::Engine
 
+      initializer "serve static assets" do |app|
+        app.middleware.insert_after ::ActionDispatch::Static, ::ActionDispatch::Static, "#{root}/public"
+      end
+
       config.to_prepare do
         require File.expand_path('../pages/tabs', __FILE__)
       end

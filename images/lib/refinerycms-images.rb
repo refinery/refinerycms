@@ -13,6 +13,11 @@ module Refinery
     end
 
     class Engine < ::Rails::Engine
+
+      initializer "serve static assets" do |app|
+        app.middleware.insert_after ::ActionDispatch::Static, ::ActionDispatch::Static, "#{root}/public"
+      end
+
       initializer 'images-with-dragonfly' do |app|
         app_images = Dragonfly[:images]
         app_images.configure_with(:imagemagick)
