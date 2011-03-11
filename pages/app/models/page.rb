@@ -126,6 +126,8 @@ class Page < ActiveRecord::Base
   end
 
   def link_url_localised?
+    return link_url unless defined?(::Refinery::I18n)
+
     current_url = link_url
 
     if current_url =~ %r{^/} && ::Refinery::I18n.current_frontend_locale != ::Refinery::I18n.default_frontend_locale
