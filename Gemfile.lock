@@ -179,8 +179,8 @@ GEM
     rake (0.8.7)
     rdoc (3.5.3)
     refinerycms-generators (1.0.0)
-    refinerycms-i18n (0.9.9.12)
-      refinerycms (>= 0.9.8)
+    refinerycms-i18n (0.9.9.13)
+      refinerycms-core (>= 0.9.9.8)
       routing-filter (>= 0.2.3)
     routing-filter (0.2.3)
       actionpack
@@ -221,6 +221,6 @@ PLATFORMS
 
 DEPENDENCIES
   refinerycms!
-  refinerycms-i18n (~> 0.9.9.12)
+  refinerycms-i18n (~> 0.9.9.13)
   refinerycms-testing (~> 0.9.9.8)
   sqlite3

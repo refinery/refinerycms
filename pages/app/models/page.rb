@@ -119,28 +119,36 @@ class Page < ActiveRecord::Base
     if link_url.present?
       link_url_localised?
     elsif self.class.use_marketable_urls?
-      url_marketable
+      with_locale_param url_marketable
     elsif to_param.present?
-      url_normal
+      with_locale_param url_normal
     end
   end
 
   def link_url_localised?
-    if link_url =~ %r{^/} and defined?(::Refinery::I18n) and ::Refinery::I18n.enabled? and
-       ::I18n.locale != ::Refinery::I18n.default_frontend_locale
-      "/#{::I18n.locale}#{link_url}"
-    else
-      link_url
+    current_url = link_url
+
+    if current_url =~ %r{^/} && ::Refinery::I18n.current_frontend_locale != ::Refinery::I18n.default_frontend_locale
+      current_url = "/#{::Refinery::I18n.current_frontend_locale}#{current_url}"
     end
+
+    current_url
   end
 
   def url_marketable
     # :id => nil is important to prevent any other params[:id] from interfering with this route.
-    {:controller => '/pages', :action => 'show', :path => nested_url, :id => nil}
+    url_normal.merge(:path => nested_url, :id => nil)
   end
 
   def url_normal
     {:controller => '/pages', :action => 'show', :path => nil, :id => to_param}
+  end
+
+  def with_locale_param(url_hash)
+    if self.class.different_frontend_locale?
+      url_hash.update(:locale => ::Refinery::I18n.current_frontend_locale)
+    end
+    url_hash
   end
 
   # Returns an array with all ancestors to_param, allow with its own
@@ -172,12 +180,7 @@ class Page < ActiveRecord::Base
   end
 
   def cache_key
-    if defined?(::Refinery::I18n) and ::Refinery::I18n.enabled?
-      [Refinery.base_cache_key, ::I18n.locale ,super].join('/')
-    else
-      [Refinery.base_cache_key, super].join('/')
-    end
-
+    [Refinery.base_cache_key, ::I18n.locale, super].compact.join('/')
   end
 
   # Returns true if this page is "published"
@@ -191,6 +194,10 @@ class Page < ActiveRecord::Base
     live? && show_in_menu?
   end
 
+  def not_in_menu?
+    not in_menu?
+  end
+
   # Returns true if this page is the home page or links to it.
   def home?
     link_url == "/"
@@ -198,13 +205,22 @@ class Page < ActiveRecord::Base
 
   # Returns all visible sibling pages that can be rendered for the menu
   def shown_siblings
-    siblings.reject { |sibling| not sibling.in_menu? }
+    siblings.reject(&:not_in_menu?)
   end
 
   class << self
     # Accessor to find out the default page parts created for each new page
     def default_parts
       RefinerySetting.find_or_set(:default_page_parts, ["Body", "Side Body"])
+    end
+
+    # Wraps up all the checks that we need to do to figure out whether
+    # the current frontend locale is different to the current one set by ::I18n.locale.
+    # This terminates in a false if i18n engine is not defined or enabled.
+    def different_frontend_locale?
+      defined?(::Refinery::I18n) &&
+        ::Refinery::I18n.enabled? &&
+        ::Refinery::I18n.current_frontend_locale != ::I18n.locale
     end
 
     # Returns how many pages per page should there be when paginating pages
@@ -270,6 +286,7 @@ class Page < ActiveRecord::Base
 
   def invalidate_child_cached_url
     return true unless self.class.use_marketable_urls?
+
     children.each do |child|
       Rails.cache.delete(child.url_cache_key)
       Rails.cache.delete(child.path_cache_key)
