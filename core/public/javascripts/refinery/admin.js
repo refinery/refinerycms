@@ -437,14 +437,14 @@ var link_tester = {
     loader_img.insertAfter($(textbox_id));
     result_span.insertAfter(loader_img);
 
-    $(textbox_id).bind('paste keypress',function(){
+    $(textbox_id).bind('paste blur',function(){
       $(textbox_id).stop(true); // Clear the current queue; if we weren't checking yet, cancel it.
       $(textbox_id + '_test_loader').hide();
       $(textbox_id + '_test_result').hide();
       $(textbox_id + '_test_result').removeClass('success_icon').removeClass('failure_icon');
 
-      // Wait one second before checking.
-      $(textbox_id).delay(1000).queue(function () {
+      // Wait 300ms before checking.
+      $(textbox_id).delay(300).queue(function () {
         $(textbox_id + '_test_loader').show();
         $(textbox_id + '_test_result').hide();
         $(textbox_id + '_test_result').removeClass('success_icon').removeClass('failure_icon');
