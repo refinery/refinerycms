@@ -1,3 +1,10 @@
+## 0.9.9.8 [11 March 2011]
+
+* Fixed several user interface bugs reported by Patrick Morrow. [Philip Arndt](https://github.com/parndt)
+* Looser dependency on `moretea-awesome_nested_set` (now `~> 1.4`). [Philip Arndt](https://github.com/parndt)
+* Corrected `ajax-loader.gif` path. [Maurizio](https://github.com/ProGNOMmers)
+* [See full list](https://github.com/resolve/refinerycms/compare/0.9.9.7...0.9.9.8)
+
 ## 0.9.9.7 [10 March 2011]
 
 * Added `:per_page` option to `crudify` for overriding the number of items to display per page with will_paginate. [Josef Šimánek](https://github.com/simi)
