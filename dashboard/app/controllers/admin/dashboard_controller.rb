@@ -27,9 +27,9 @@ module Admin
     end
 
     def disable_upgrade_message
-      RefinerySetting.update_all({ :value => false }, {
-          :name => 'show_internet_explorer_upgrade_message',
-          :scoping => 'refinery'
+      RefinerySetting.set(:show_internet_explorer_upgrade_message, {
+        :value => false,
+        :scoping => 'refinery'
       })
       render :nothing => true
     end

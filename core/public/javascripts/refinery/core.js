@@ -11,8 +11,15 @@ init_flash_messages = function(){
     , 'visibility':'visible'
   }).animate({'opacity': '1'}, 550);
   $('#flash_close').click(function(e) {
-     $('#flash').animate({'opacity': 0, 'visibility': 'toggle'}, 330);
-     e.preventDefault();
+    try {
+      $('#flash').animate({
+         'opacity': 0,
+         'visibility': 'hidden'
+      }, 330);
+    } catch(ex) {
+      $('#flash').hide();
+    }
+    e.preventDefault();
   });
   $('#flash.flash_message').prependTo('#records');
 };
