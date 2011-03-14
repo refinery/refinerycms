@@ -37,9 +37,9 @@ class Page < ActiveRecord::Base
   # This works using a query against the translated content first and then
   # using all of the page_ids we further filter against this model's table.
   scope :in_menu, lambda {
-    includes(:translations).where(Page.arel_table[:id].in(
-      Page::Translation.where(:locale => Globalize.locale).map(&:page_id)
-    )).where(:show_in_menu => true)
+    where(:show_in_menu => true).includes(:translations).where(
+      :id => Page::Translation.where(:locale => Globalize.locale).map(&:page_id)
+    )
   }
 
   # when a dialog pops up to link to a page, how many pages per page should there be
