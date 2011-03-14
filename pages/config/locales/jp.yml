@@ -6,7 +6,7 @@ jp:
   admin:
     pages_dialogs:
       page_link:
-        link_to_this_page: Link to this page
+        link_to_this_page: このページへのリンク
       link_to:
         insert: 挿入
         your_page:
@@ -15,25 +15,25 @@ jp:
           tab_name: サイト
           location: 場所
           new_window: 新規ウィンドウ
-          step1: Find the page on the web you want to link to.
-          step2: Copy the web address from your browser's address bar and paste it into the box above.
+          step1: リンクするページを探す
+          step2: ブラウザのアドレスバーに表示されているアドレスをコピーして上欄にペーストする
         email_address:
           tab_name: メールアドレス
-          subject_line_optional: Optional subject
-          body_optional: Optional body
-          not_sure: Not sure what to put in the boxes above?
-          step1_html: Write or copy and paste (e.g. from your address book) the email address to link to into the '<strong>Email Address</strong>' box above.
-          step2_html: Use the '<strong>Subject Line</strong>' box above if you want the message to be composed with a <strong>pre-written subject line</strong>.
-          step3_html: Use the <strong>Email Body</strong> box above if you want the message to be composed with a <strong>pre-written message</strong>.
+          subject_line_optional: 件名（無くても可）
+          body_optional: 本文（無くても可）
+          not_sure: 何を記入すべきか解りませんか？
+          step1_html: メールアドレスを上の'<strong>メールアドレス</strong>'欄に直接書き込むかアドレス帳などからコピーしたものをペーストする
+          step2_html: <strong>予め決められた件名</strong>を使ってメールを作成するには上の'<strong>件名</strong>'欄を使います
+          step3_html: <strong>予め決められた本文</strong>を使ってメールを作成するには上の'<strong>本文</strong>'欄を使います
         your_resource:
-          tab_name: Your file
-          link_to_this_resource: Link to this file
+          tab_name: ファイル
+          link_to_this_resource: このファイルへのリンク
     pages:
       delete: ページを削除
       edit: ページを編集
       reserved_system_word: "このタイトルはシステム用ですので使用出来ません。"
       page:
-        view_live_html: View this page live <br/><em>(opens in a new window)</em>
+        view_live_html: このページを表示する<br/><em>（新しいウィンドウが開きます）</em>
         hidden: hidden
         draft: 準備稿
       form_new_page_parts:
@@ -42,33 +42,33 @@ jp:
         create_content_section: コンテンツを追加
         delete_content_section: コンテンツを削除
       form_advanced_options:
-        toggle_advanced_options: Access meta tag settings and menu options
-        page_options: Page Options
-        parent_page: Parent page
-        advanced_options: Advanced Options
-        custom_title: Custom title
+        toggle_advanced_options: メタタグの設定とメニューオプションの設定
+        page_options: ページの設定
+        parent_page: 親ページ
+        advanced_options: その他の設定
+        custom_title: カスタマイズしたタイトル
         title_types:
-          none: None
-          text: Text
-        show_in_menu_title: Show in menu
-        show_in_menu_description: Display this page in the site menu
-        show_in_menu_help: Uncheck this box if you want to remove a page from your site menu. This can be handy if you have a page you want to link people to directly but don&apos;t want to show the page in the menu.
-        save_as_draft: Save as Draft
-        skip_to_first_child: Skip top-level page
-        skip_to_first_child_label: Redirect visitors to the first sub-level page.
-        skip_to_first_child_help: This option makes this page link to the first page underneath. This can be useful when grouping pages together.
-        link_url: Forward this page to another website or page
-        link_url_help: If you want this page to go to another website or page when you click this page in the menu, enter a URL. e.g. http://google.com otherwise leave it blank
-        parent_page_help: You can put a page under another page by selecting it in the list. If you want this page to be a top-level page, just leave it blank.
-        custom_title_help: If you want the page to have a different title than the one that shows in the menu then select &apos;Text&apos; and enter it here.
+          none: 無し
+          text: テキスト
+        show_in_menu_title: メニューで表示する
+        show_in_menu_description: このページをサイトメニューで表示する
+        show_in_menu_help: サイトメニューからこのページを削除する時はこのチェックボックスのチェックを外して下さい。ユーザに直接アクセスしてもらいたいページで、サイトメニューには表示したくないページがある場合などに便利です。
+        save_as_draft: 準備稿として保存する
+        skip_to_first_child: トップレベルのページを飛ばす
+        skip_to_first_child_label: この直ぐ下の階層のページにユーザを飛ばす
+        skip_to_first_child_help: このオプションを使うと、リンクは直ぐ下の階層のページのうちの先頭のものにリンクします。幾つかのページを一まとめにする場合などに便利です。
+        link_url: 他のウェブサイトやページに転送する
+        link_url_help: メニューでこのページへのリンクをクリックした時、他のウェブサイトやページに転送するようにするにはURL（例 http://google.com）を書き入れます。そうでない場合は空欄のままにします。
+        parent_page_help: リストから選んで、ページを他のページの下に置く事が出来ます。空にするとこのページは一番上の階層のページとして扱われます。
+        custom_title_help: このページにメニューに表示されているもの以外のタイトルを付けたい時にはここに書いて下さい。
       form_advanced_options_seo:
-        seo: Search Engine Optimization
-        seo_override_title: Browser title
-        seo_override_title_help: Enter a 5-10 word title that summarizes the contents of this page.
-        meta_keywords_title: Meta keywords
-        meta_keywords_help: Enter 5-10 keywords that relate to this page. Separate keywords by a comma.
-        meta_description_title: Meta description
-        meta_description_help: Enter a concise two or three sentences describing what this page is about.
+        seo: 検索エンジン最適化
+        seo_override_title: ブラウザのタイトル
+        seo_override_title_help: このページの内容を要約する短いタイトルを入れて下さい。
+        meta_keywords_title: メタキーワード
+        meta_keywords_help: このページに関係のあるキーワードを5つから10個ほど入れて下さい。区切りの記号はコンマです。
+        meta_description_title: メタの説明
+        meta_description_help: このページの内容を説明する簡潔な文章を二三入れて下さい。
       index:
         create_new_page: 新規ページを追加
         reorder_pages: ページを並べ替える
@@ -76,7 +76,7 @@ jp:
         no_pages_yet: まだページはありません。"新規ページを追加"をクリックして下さい。
   activerecord:
     models:
-      page: page
+      page: ページ
     attributes:
       page:
-        title: Title
+        title: タイトル

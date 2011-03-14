@@ -61,11 +61,11 @@ jp:
     refinery: Refinery
   activerecord:
     models:
-      user: user
+      user: ユーザ
     attributes:
       user:
-        login: Login
-        username: Username
+        login: ログイン
+        username: アカウント名
         password: パスワード
         password_confirmation: パスワードの確認
         email: メールアドレス

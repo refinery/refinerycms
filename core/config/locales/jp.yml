@@ -2,15 +2,15 @@ jp:
   plugins:
     refinery_core:
       title: Refinery
-      description: Core refinery plugin
+      description: Refineryのコアプラグイン
     refinery_dialogs:
       title: ダイアログ
-      description: Refinery dialogs plugin
+      description: Refineryのダイアログプラグイン
   welcome:
-    there_are_no_users: There are no users yet, so we'll set you up first.
-    remember_admin_location: "Remember your Refinery admin area is at:"
-    lets_start: Alright let's get you setup so you can login...
-    continue: Continue...
+    there_are_no_users: あなたを最初のユーザとして登録します。
+    remember_admin_location: "Refineryの管理画面は"
+    lets_start: それでは始めましょう。
+    continue: 続く…
   admin:
     menu:
       reorder_menu: メニューを並べ替える
@@ -39,7 +39,7 @@ jp:
         delete: 削除
         close: 閉じる
       image_picker:
-        none_selected: There is currently no %{what} selected, please click here to add one.
+        none_selected: %{what}は選択されていません。ここをクリックして追加して下さい。
         remove_current: 選択されている%{what}を削除
         change: クリックして画像を選択
         show: 表示
@@ -57,7 +57,7 @@ jp:
       delete:
         message: 「%{title}」を消します。宜しいですか。
       error_messages:
-        problems_in_following_fields: There were problems with the following fields
+        problems_in_following_fields: 以下のフィールドに問題がありました。
       help: ヘルプ
     message:
       close: 閉じる
@@ -65,11 +65,11 @@ jp:
     draft_page_message:
       not_live: このページはまだ公開されていません。
     footer:
-      copyright: Copyright © %{year} %{site_name}
+      copyright: 著作権© %{year} %{site_name}
     no_script:
       enable_javascript: このページを快適にお使いになるにはJavaScriptを有効にする必要があります。
       here_are: 
-      instructions_enable_javascript: instructions for how to enable JavaScript in your web browser
+      instructions_enable_javascript: お使いのブラウザでJavaScriptを有効にする方法はこちら
   time:
     formats:
       short: "%A, %d %B %Y"
