@@ -32,14 +32,14 @@ class Page < ActiveRecord::Base
 
   scope :live, where(:draft => false)
 
-  # shows all pages with :show_in_menu set to true, but it also
+  # Shows all pages with :show_in_menu set to true, but it also
   # rejects any page that has not been translated to the current locale.
+  # This works using a query against the translated content first and then
+  # using all of the page_ids we further filter against this model's table.
   scope :in_menu, lambda {
-    pages = Arel::Table.new(Page.table_name)
-    translations = Arel::Table.new(Page.translations_table_name)
-
-    includes(:translations).where(:show_in_menu => true).where(
-      translations[:locale].eq(Globalize.locale)).where(pages[:id].eq(translations[:page_id]))
+    includes(:translations).where(Page.arel_table[:id].in(
+      Page::Translation.where(:locale => Globalize.locale).map(&:page_id)
+    )).where(:show_in_menu => true)
   }
 
   # when a dialog pops up to link to a page, how many pages per page should there be

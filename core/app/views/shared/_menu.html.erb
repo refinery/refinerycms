@@ -11,7 +11,6 @@
       selected_item = collection.detect{|page| selected_page?(page)}
       selected_item = @page if selected_item.nil?
     end
-    sibling_count = roots.length - 1
 -%>
     <nav id='<%= dom_id %>' class='<%= %W(#{css} clearfix).join(' ') %>'>
       <ul>
@@ -19,7 +18,7 @@
                    :collection => roots,
                    :locals => {
                      :hide_children => hide_children,
-                     :sibling_count => sibling_count,
+                     :sibling_count => (roots.length - 1),
                      :collection => collection,
                      :selected_item => selected_item,
                      :apply_css => true #if you don't care about class='first' class='last' or class='selected' set apply_css to false for speed.
