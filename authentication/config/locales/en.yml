@@ -14,23 +14,23 @@ en:
         plugin_access: Plugin access
         role_access: Role access
         enable_all: enable all
-      index:
+      actions:
         create_new_user: Add new user
       user:
         email_user: Email this user
-        preview: (%{who}) added %{created_at}
+        preview: '(%{who}) added %{created_at}'
   sessions:
     new:
       hello_please_sign_in: Hello! Please sign in.
       sign_in: Sign in
       forgot_password: I forgot my password
   users:
-    setup_website_name_html: First let's give the site a name. <a href='%{link}' name='%{title}'>Go here</a> to edit your website's name
+    setup_website_name_html: "First let's give the site a name. <a href='%{link}' name='%{title}'>Go here</a> to edit your website's name"
     new:
       fill_form: Fill out your details below so that we can get you started.
       sign_up: Sign up
     create:
-      welcome: Welcome to Refinery, %{who}
+      welcome: 'Welcome to Refinery, %{who}'
     forgot:
       email_address: Email Address
       enter_email_address: Please enter the email address for your account.

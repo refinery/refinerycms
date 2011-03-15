@@ -13,8 +13,9 @@ sl:
         maximum_file_size: "Največja dovoljena velikost datoteke je %{megabytes} megabajtov."
       resource:
         download: Prenesi datoteko (%{size})
-      index:
+      actions:
         upload_new: Prenesi Novo Datoteko
+      records:
         no_files_yet: Trenutno še ni nobene datoteke. Za prenos prve datoteke kliknite "Prenesi Novo Datoteko".
       insert:
         existing: Obstoječo Datoteko

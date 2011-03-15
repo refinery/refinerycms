@@ -16,6 +16,10 @@ module Refinery
 
     class Engine < ::Rails::Engine
 
+      initializer "serve static assets" do |app|
+        app.middleware.insert_after ::ActionDispatch::Static, ::ActionDispatch::Static, "#{root}/public"
+      end
+
       config.autoload_paths += %W( #{config.root}/lib )
 
       config.after_initialize do

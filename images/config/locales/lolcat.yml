@@ -14,9 +14,11 @@ lolcat:
         replace_image: " REPLACE IT WIF DIS WAN..."
         current_image: CURRENT IMAGE
         maximum_image_size: TEH MAXIMUM IMAGE SIZE IZ %{megabytes} MEGABYTEZ.
-      index:
+      actions:
         create_new_image: ADD NEW IMAGE
+      records:
         no_images_yet: THAR R NO IMAGEZ YET. CLICK "ADD NEW IMAGE" 2 ADD UR FURST IMAGE.
+      index:
         view:
           switch_to: SWITCH 2 %{view_name} VIEW
           list: LIST

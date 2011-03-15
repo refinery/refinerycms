@@ -7,6 +7,7 @@ rs:
     dashboard:
       index:
         quick_tasks: Brzi zadaci
+      actions:
         add_a_new_page: Dodaj novu stranu
         update_a_page: Izmeni stranu
         upload_a_image: Upload-uj sliku

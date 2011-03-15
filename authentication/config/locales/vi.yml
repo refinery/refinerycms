@@ -14,23 +14,23 @@ vi:
         plugin_access: Truy cập plugin
         role_access: Truy cập phân quyền
         enable_all: kích hoạt tất cả
-      index:
+      actions:
         create_new_user: Thêm người dùng mới
       user:
         email_user: Gửi thư điện tử tới người dùng này
-        preview: (%{who}) được thêm tại %{created_at}
+        preview: '(%{who}) được thêm tại %{created_at}'
   sessions:
     new:
       hello_please_sign_in: Xin vui lòng đăng nhập.
       sign_in: Đăng nhập
       forgot_password: Quên mật khẩu
   users:
-    setup_website_name_html: Xin vui lòng đặt tên cho trang web. <a href='%{link}' name='%{title}'>Nhấn vào đây</a> để chỉnh sửa tên trang web cuả bạn.
+    setup_website_name_html: "Xin vui lòng đặt tên cho trang web. <a href='%{link}' name='%{title}'>Nhấn vào đây</a> để chỉnh sửa tên trang web cuả bạn."
     new:
       fill_form: Điền thông tin chi tiết cuả bạn để có thể bắt đầu.
       sign_up: Đăng ký
     create:
-      welcome: Chào mừng tới hệ quản trị nội dung, %{who}
+      welcome: 'Chào mừng tới hệ quản trị nội dung, %{who}'
     forgot:
       email_address: Địa chỉ thư điện tử
       enter_email_address: Xin vui lòng nhận địa chỉ thư điện tử cho tài khoản cuả bạn.

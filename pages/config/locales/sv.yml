@@ -71,10 +71,11 @@ sv:
         meta_keywords_help: Fyll i 5 till 10 nyckelord som relaterar till den här sidan. Separera dina nyckelord med komma-tecken.
         meta_description_title: Meta beskrivning
         meta_description_help: Fyll i konkret vad sidan handlar om. Använd en, två eller tre meningar.
-      index:
+      actions:
         create_new_page: Lägg till en ny sida
         reorder_pages: Ändra ordning på sidor
         reorder_pages_done: Spara ny ordning på sidor
+      records:
         no_pages_yet: Det finns inga sidor ännu. Klicka på "Lägg till en ny sida" för att skapa din första sida.
   activerecord:
     models:

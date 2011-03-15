@@ -14,9 +14,11 @@ da:
         replace_image: " erstat med dette..."
         current_image: Nuværende billede
         maximum_image_size: Billedet må maksimalt fylde %{megabytes} megabytes.
-      index:
+      actions:
         create_new_image: Tilføj et nyt billede
+      records:
         no_images_yet: Der er ingen billeder endnu. Klik "Tilføj et nyt billede" for at oprette det første.
+      index:
         view:
           switch_to: Skift til %{view_name}visning
           list: liste

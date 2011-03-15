@@ -7,8 +7,9 @@ lolcat:
     refinery_settings:
       delete: REMOOV DIS SETTIN FOREVR
       edit: EDIT DIS SETTIN
-      index:
+      actions:
         new: ADD NEW SETTIN
+      records:
         empty_set: THAR R NO SETTINGS YET.
         create_first: CLICK %{link} 2 ADD UR FURST SETTIN.
       form:

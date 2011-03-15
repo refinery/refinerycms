@@ -14,9 +14,11 @@ el:
         replace_image: " αλλαγή με αυτήν..."
         current_image: Τρέχουσα εικόνα
         maximum_image_size: Το μέγιστο μέγεθος εικόνας είναι %{megabytes} megabytes.
-      index:
+      actions:
         create_new_image: Προσθήκη νέας εικόνας
+      records:
         no_images_yet: Δεν υπάρχουν εικόνες. Κάντε κλικ στο "Προσθήκη εικόνας" για να προσθέτε την πρώτη εικόνα.
+      index:
         view:
           switch_to: Αλλαγή σε %{view_name} view
           list: λίστα

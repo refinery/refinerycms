@@ -14,8 +14,9 @@ cs:
         maximum_file_size: Maximální velikost souboru je %{megabytes} MB.
       resource:
         download: Stáhnout soubor (%{size})
-      index:
+      actions:
         upload_new: Nahrát nový soubor
+      records:
         no_files_yet: Zatím nebyly nahrány žádné soubory.
       insert:
         existing: Existující soubor

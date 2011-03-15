@@ -7,8 +7,9 @@ it:
     refinery_settings:
       delete: Elimina questa impostazione
       edit: Modifica questa impostazione
-      index:
+      actions:
         new: Aggiungi una nuova impostazione
+      records:
         empty_set: Nessuna impostazione ancora presente.
         create_first: Clicca '%{link}' per aggiungere la tua prima impostazione.
       form:

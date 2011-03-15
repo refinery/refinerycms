@@ -7,8 +7,9 @@ lt:
     refinery_settings:
       delete: Visiškai pašalinti šį nustatymą
       edit: Redaguoti šį nustatymą
-      index:
+      actions:
         new: Pridėti naują nustatymą
+      records:
         empty_set: Kol kas nėra nustatymų.
         create_first: "Paspauskite '%{link}' norėdami pridėti pirmąjį nustatymą."
       form:

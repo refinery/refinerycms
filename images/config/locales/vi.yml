@@ -14,9 +14,11 @@ vi:
         replace_image: " thay bằng ảnh khác..."
         current_image: Ảnh hiện tại
         maximum_image_size: Dung lượng ảnh tối đa là %{megabytes} megabytes.
-      index:
+      actions:
         create_new_image: Tạo ảnh mới
+      records:
         no_images_yet: Hiện chưa có ảnh nào. Ấn vào "Tạo ảnh mới" để tạo ảnh.
+      index:
         view:
           switch_to: Đổi sang kiểu xem %{view_name}
           list: danh sách

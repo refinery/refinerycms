@@ -7,6 +7,7 @@ sv:
     dashboard:
       index:
         quick_tasks: Genvägar
+      actions:
         add_a_new_page: Lägg till en ny sida
         update_a_page: Redigera en sida
         upload_a_image: Ladda upp en bild

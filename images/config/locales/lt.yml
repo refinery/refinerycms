@@ -14,9 +14,11 @@ lt:
         replace_image: " pakeisti jį šiuo..."
         current_image: Pasirinktas paveikslėlis
         maximum_image_size: Maksimalus paveikslėlio dydis yra %{megabytes} megabaitų.
-      index:
+      actions:
         create_new_image: Pridėti naują paveikslėlį
+      records:
         no_images_yet: Dar nėra paveikslėlių. Paspauskite "Pridėti naują paveikslėlį" norėdami sukurti jūsų pirmą paveikslėlį.
+      index:
         view:
           switch_to: Persijungti į %{view_name} vaizdą
           list: sąrašo

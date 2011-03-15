@@ -14,9 +14,11 @@ en:
         replace_image: " replace it with this one..."
         current_image: Current Image
         maximum_image_size: The maximum image size is %{megabytes} megabytes.
-      index:
+      actions:
         create_new_image: Add new image
+      records:
         no_images_yet: There are no images yet. Click "Add new image" to add your first image.
+      index:
         view:
           switch_to: Switch to %{view_name} view
           list: list

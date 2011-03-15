@@ -7,6 +7,7 @@ lolcat:
     dashboard:
       index:
         quick_tasks: QUICK TASKZ
+      actions:
         add_a_new_page: ADD NEW PAEG
         update_a_page: UPDATE PAEG
         upload_a_image: UPLOAD AN IMAGE

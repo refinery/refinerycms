@@ -31,7 +31,7 @@ module Refinery
         base.config.filter_parameters += [:password, :password_confirmation]
 
         # Specify a cache store to use
-        base.config.cache_store = :file_store, File.join(Dir.tmpdir, base.name.to_s.gsub(':', File::SEPARATOR))
+        base.config.cache_store = :file_store, File.join(Dir.tmpdir, base.name.to_s.gsub(':', '-'))
 
         # Include the refinery controllers and helpers dynamically
         base.config.to_prepare do

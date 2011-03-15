@@ -73,10 +73,11 @@ lv:
         meta_keywords_help: Ievadiet 5-10 atslēgvārdus, kuriem ir saistība ar šo lapu. Atslēgvārdus atdaliet ar komatu
         meta_description_title: Meta apraksts
         meta_description_help: Īsi, divos vai trijos teikumos, aprakstiet šīs lapas saturu.
-      index:
+      actions:
         create_new_page: Izveidot jaunu lapu
         reorder_pages: Pārkārtot lapas
         reorder_pages_done: Pabeigt lapu pārkārtošanu
+      records:
         no_pages_yet: Vēl nav nevienas lapas. Spied "Izveidot jaunu lapu", lai izveidotu pirmo lapu.
   activerecord:
     models:

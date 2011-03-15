@@ -7,6 +7,7 @@ sl:
     dashboard:
       index:
         quick_tasks: Pogosta opravila
+      actions:
         add_a_new_page: Dodaj novo stran
         update_a_page: Uredi stran
         upload_a_image: Naloži sliko

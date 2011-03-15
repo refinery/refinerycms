@@ -7,8 +7,9 @@ fr:
     refinery_settings:
       delete: Supprimer définitivement ce paramètre
       edit: Modifier ce paramètre
-      index:
+      actions:
         new: Créer un nouveau paramètre
+      records:
         empty_set: Il n'y a encore aucun paramètre.
         create_first: Cliquer sur '%{link}' afin d'ajouter votre premier paramètre.
       form:

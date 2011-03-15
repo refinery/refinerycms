@@ -1,9 +1,27 @@
-## 0.9.9.7 [Unreleased]
+## 0.9.9.9 [15 March 2011]
+
+* Added Japanese translation. [Hiro Asari](https://github.com/BanzaiMan)
+* Improved menu rendering performance. [Philip Arndt](https://github.com/parndt)
+* Added caching to site menu and pages backend (DISABLED by default). [Philip Arndt](https://github.com/parndt)
+* Added `Page#by_title` to filter pages results by title using `Page::Translation`. [Philip Arndt](https://github.com/parndt)
+* Added migration to remove already translated fields from the pages table. [Philip Arndt](https://github.com/parndt)
+* [See full list](https://github.com/resolve/refinerycms/compare/0.9.9.8...0.9.9.9)
+
+## 0.9.9.8 [11 March 2011]
+
+* Fixed several user interface bugs reported by Patrick Morrow. [Philip Arndt](https://github.com/parndt)
+* Looser dependency on `moretea-awesome_nested_set` (now `~> 1.4`). [Philip Arndt](https://github.com/parndt)
+* Corrected `ajax-loader.gif` path. [Maurizio](https://github.com/ProGNOMmers)
+* [See full list](https://github.com/resolve/refinerycms/compare/0.9.9.7...0.9.9.8)
+
+## 0.9.9.7 [10 March 2011]
 
 * Added `:per_page` option to `crudify` for overriding the number of items to display per page with will_paginate. [Josef Šimánek](https://github.com/simi)
 * Deprecated `rake refinery:update` in favour of rails `generate refinerycms --update`. [Philip Arndt](https://github.com/parndt)
 * Added `--skip-db` option to `bin/refinerycms` installer which doesn't automate any database creation/migration and skips the `rails generate refinerycms` generator. [Philip Arndt](https:/github.com/parndt)
 * Exchanged (help) links for the information.png 'refinery icon'. This will happen automatically if you used `refinery_help_tag`. [Philip Arndt](https://github.com/parndt)
+* Added xhr_paging as an option in crudify which handles the server-side usage of the HTML5 History API. [Philip Arndt](https://github.com/parndt)
+* Looser Bundler dependency (now `~> 1.0`). [Terence Lee](https://github.com/hone)
 * [See full list](https://github.com/resolve/refinerycms/compare/0.9.9.6...0.9.9.7)
 
 ## 0.9.9.6 [7 March 2011]

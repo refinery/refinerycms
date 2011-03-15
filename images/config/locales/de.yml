@@ -14,9 +14,11 @@ de:
         replace_image: " mit diesem ersetzen..."
         current_image: Aktuelles Bild
         maximum_image_size: Die maximale Größe eines Bildes beträgt %{megabytes} Megabytes.
-      index:
+      actions:
         create_new_image: Neues Bild anlegen
+      records:
         no_images_yet: Es sind noch keine Bilder vorhanden. Klicken Sie auf "Neues Bild anlegen", um Ihr estes Bild hinzuzufügen.
+      index:
         view:
           switch_to: Zur %{view_name}-Ansicht wechseln
           list: Listen

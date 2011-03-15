@@ -2,10 +2,10 @@
 
 Gem::Specification.new do |s|
   s.name              = %q{refinerycms-images}
-  s.version           = %q{0.9.9.5}
+  s.version           = %q{0.9.9.9}
   s.summary           = %q{Images engine for Refinery CMS}
   s.description       = %q{Handles all image upload and processing functionality in Refinery CMS.}
-  s.date              = %q{2011-03-08}
+  s.date              = %q{2011-03-15}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
   s.rubyforge_project = %q{refinerycms}
@@ -27,12 +27,14 @@ Gem::Specification.new do |s|
     'app/views',
     'app/views/admin',
     'app/views/admin/images',
+    'app/views/admin/images/_actions.html.erb',
     'app/views/admin/images/_existing_image.html.erb',
     'app/views/admin/images/_form.html.erb',
     'app/views/admin/images/_grid_view.html.erb',
     'app/views/admin/images/_images.html.erb',
     'app/views/admin/images/_list_view.html.erb',
     'app/views/admin/images/_list_view_image.html.erb',
+    'app/views/admin/images/_records.html.erb',
     'app/views/admin/images/edit.html.erb',
     'app/views/admin/images/index.html.erb',
     'app/views/admin/images/insert.html.erb',
@@ -47,6 +49,7 @@ Gem::Specification.new do |s|
     'config/locales/es.yml',
     'config/locales/fr.yml',
     'config/locales/it.yml',
+    'config/locales/jp.yml',
     'config/locales/lolcat.yml',
     'config/locales/lt.yml',
     'config/locales/lv.yml',
@@ -91,7 +94,7 @@ Gem::Specification.new do |s|
     'spec/uploads/beach.jpeg'
   ]
 
-  s.add_dependency 'refinerycms-core', '~> 0.9.9.5'
+  s.add_dependency 'refinerycms-core', '~> 0.9.9.9'
   s.add_dependency 'dragonfly',        '~> 0.8.2'
   s.add_dependency 'rack-cache',       '>= 0.5.3'
 end

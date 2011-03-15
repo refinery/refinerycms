@@ -14,9 +14,11 @@ cs:
         replace_image: " nahradit jej tímto..."
         current_image: Vybraný obrázek
         maximum_image_size: Maximální velikost obrázku je %{megabytes} MB.
-      index:
+      actions:
         create_new_image: Přidat nový obrázek
+      records:
         no_images_yet: Zatím nebyl nahraný žádný obrázek.
+      index:
         view:
           switch_to: "Přepnout pohled na: %{view_name}"
           list: seznam

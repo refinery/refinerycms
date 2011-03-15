@@ -7,8 +7,9 @@ cs:
     refinery_settings:
       delete: Smazat tuto volbu
       edit: Upravit tuto volbu
-      index:
+      actions:
         new: Přidat novou volbu
+      records:
         empty_set: Zatím zde nejsou žádné nastavení.
         create_first: "Klikněte '%{link}' pro přidání první volby."
       form:

@@ -14,8 +14,9 @@ da:
         maximum_file_size: Filen må maksimalt fylde %{megabytes} megabytes.
       resource:
         download: Download fil (%{size})
-      index:
+      actions:
         upload_new: Tilføj en ny fil
+      records:
         no_files_yet: Der er ingen filer endnu. Klik på "Tilføj en ny fil" for at oprette den første.
       insert:
         existing: Eksisterende fil

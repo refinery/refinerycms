@@ -7,8 +7,9 @@ nb:
     refinery_settings:
       delete: Fjern denne innstillingen permanent
       edit: Rediger denne innstillingen
-      index:
+      actions:
         new: Opprett en ny innstilling
+      records:
         empty_set: Det er ingen innstillinger enda.
         create_first: "Klikk '%{link}' for å legge til din første innstilling."
       form:

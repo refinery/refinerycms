@@ -7,6 +7,7 @@ en:
     dashboard:
       index:
         quick_tasks: Quick tasks
+      actions:
         add_a_new_page: Add a new page
         update_a_page: Update a page
         upload_a_image: Upload an image

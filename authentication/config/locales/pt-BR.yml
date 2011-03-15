@@ -14,7 +14,7 @@ pt-BR:
         plugin_access: Acesso
         role_access: Nível de Permissão
         enable_all: habilitar todos
-      index:
+      actions:
         create_new_user: Criar Novo Usuário
       user:
         email_user: Enviar e-mail para este usuário
@@ -30,7 +30,7 @@ pt-BR:
       fill_form: Preencha o formulário abaixo com seus detalhes pra que você possa começar.
       sign_up: Cadastrar
     create:
-      welcome: Bem-vindo, %{who}
+      welcome: 'Bem-vindo, %{who}'
     forgot:
       email_address: Endereço de email
       enter_email_address: "Por favor, preencha o endereço de email da sua conta."
@@ -47,12 +47,12 @@ pt-BR:
   user_mailer:
     reset_notification:
       subject: Link para alterar sua senha
-      reset_request_received_for: Solicitação para alterar a senha foi recebida por %{username}
+      reset_request_received_for: 'Solicitação para alterar a senha foi recebida por %{username}'
       visit_this_url: Visite esse endereço para escolher uma nova senha
       remain_same_if_no_action: Sua senha irá continuar a mesma caso não prossiga
   devise:
     failure:
-      unauthenticated: Para continuar, faça login.
+      unauthenticated: 'Para continuar, faça login.'
       invalid: Email ou senha inválidos.
     sessions:
       signed_in: Fez login com sucesso.

@@ -14,8 +14,9 @@ pt-BR:
         maximum_file_size: "O tamanho máximo permitido é de %{megabytes} megabytes."
       resource:
         download: Baixar este arquivo (%{size})
-      index:
+      actions:
         upload_new: Enviar Novo Arquivo
+      records:
         no_files_yet: Ainda não existem arquivos. Clique em "Enviar Novo Arquivo" para adicionar seu primeiro arquivo.
       insert:
         existing: O Arquivo já existe.

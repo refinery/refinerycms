@@ -2,10 +2,10 @@
 
 Gem::Specification.new do |s|
   s.name              = %q{refinerycms-settings}
-  s.version           = %q{0.9.9.5}
+  s.version           = %q{0.9.9.9}
   s.summary           = %q{Settings engine for Refinery CMS}
   s.description       = %q{The default settings engine that is required by Refinery CMS core. Adds programmer creatable, user editable settings for each engine.}
-  s.date              = %q{2011-03-08}
+  s.date              = %q{2011-03-15}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
   s.rubyforge_project = %q{refinerycms}
@@ -26,7 +26,9 @@ Gem::Specification.new do |s|
     'app/views',
     'app/views/admin',
     'app/views/admin/refinery_settings',
+    'app/views/admin/refinery_settings/_actions.html.erb',
     'app/views/admin/refinery_settings/_form.html.erb',
+    'app/views/admin/refinery_settings/_records.html.erb',
     'app/views/admin/refinery_settings/_refinery_setting.html.erb',
     'app/views/admin/refinery_settings/_refinery_settings.html.erb',
     'app/views/admin/refinery_settings/edit.html.erb',
@@ -42,6 +44,7 @@ Gem::Specification.new do |s|
     'config/locales/es.yml',
     'config/locales/fr.yml',
     'config/locales/it.yml',
+    'config/locales/jp.yml',
     'config/locales/lolcat.yml',
     'config/locales/lt.yml',
     'config/locales/lv.yml',
@@ -80,5 +83,5 @@ Gem::Specification.new do |s|
     'spec/models/refinery_setting_spec.rb'
   ]
 
-  s.add_dependency 'refinerycms-base', '~> 0.9.9.5'
+  s.add_dependency 'refinerycms-base', '~> 0.9.9.9'
 end

@@ -8,8 +8,9 @@ pl:
     refinery_settings:
       delete: Na zawsze usuń to ustawienie
       edit: Zmień to ustawienie
-      index:
+      actions:
         new: Dodaj nowe ustawienie
+      records:
         empty_set: Nie ma jeszcze żadnych ustawień.
         create_first: "Kliknij '%{link}' aby dodać pierwsze ustawienie."
       form:

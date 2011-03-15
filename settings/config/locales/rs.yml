@@ -7,8 +7,9 @@ rs:
     refinery_settings:
       delete: Ukloni ovo podešavanje zauvek
       edit: Izmeni ovo podešavanje
-      index:
+      actions:
         new: Dodaj novo podešavanje
+      records:
         empty_set: Ne postoji ni jedno podešavanje
         create_first: "Klikni '%{link}' da dodaš podešavanja."
       form:

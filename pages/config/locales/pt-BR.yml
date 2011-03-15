@@ -72,10 +72,11 @@ pt-BR:
         meta_keywords_help: Digite de 5 a 10 palavras-chave presentes nesta página. Separe elas com vírgula.
         meta_description_title: Meta descrição
         meta_description_help: Digite duas ou três sentenças concisas descrevendo sobre o que é essa página.
-      index:
+      actions:
         create_new_page: Criar uma nova página
         reorder_pages: Reordenar as Páginas
         reorder_pages_done: Terminei de reordenar as Páginas
+      records:
         no_pages_yet: Ainda não existem páginas. Clique em "Criar Nova Página" para adicionar sua primeira página.
   activerecord:
     models:

@@ -14,9 +14,11 @@ sk:
         replace_image: " nahradiť ho týmto..."
         current_image: Vybraný obrázok
         maximum_image_size: Maximálna veľkosť obrázku je %{megabytes}MB.
-      index:
+      actions:
         create_new_image: Pridať nový obrázok
+      records:
         no_images_yet: Zatiaľ nebol nahraný žiadny obrázok. Klikni na "Pridať nový obrázok" pre pridanie.
+      index:
         view:
           switch_to: Prepnúť pohľad na %{view_name}
           list: zoznam

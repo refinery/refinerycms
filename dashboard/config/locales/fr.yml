@@ -7,6 +7,7 @@ fr:
     dashboard:
       index:
         quick_tasks: Tâches courantes
+      actions:
         add_a_new_page: Ajouter une page
         update_a_page: Mettre à jour une page
         upload_a_image: Ajouter une image

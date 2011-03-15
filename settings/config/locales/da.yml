@@ -7,8 +7,9 @@ da:
     refinery_settings:
       delete: Slet indstilling
       edit: Redigér indstilling
-      index:
+      actions:
         new: Tilføj en ny indstilling
+      records:
         empty_set: Der er ingen indstillinger endnu.
         create_first: "Klik '%{link}' for at oprette den første indstilling."
       form:

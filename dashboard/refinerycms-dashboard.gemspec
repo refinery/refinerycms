@@ -2,10 +2,10 @@
 
 Gem::Specification.new do |s|
   s.name              = %q{refinerycms-dashboard}
-  s.version           = %q{0.9.9.5}
+  s.version           = %q{0.9.9.9}
   s.summary           = %q{Dashboard engine for Refinery CMS}
   s.description       = %q{The dashboard is usually the first engine the user sees in the backend of Refinery CMS. It displays useful information and contains links to common functionality.}
-  s.date              = %q{2011-03-08}
+  s.date              = %q{2011-03-15}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
   s.rubyforge_project = %q{refinerycms}
@@ -25,9 +25,11 @@ Gem::Specification.new do |s|
     'app/views',
     'app/views/admin',
     'app/views/admin/dashboard',
+    'app/views/admin/dashboard/_actions.html.erb',
     'app/views/admin/dashboard/_additional_dashboard_menu_items.html.erb',
     'app/views/admin/dashboard/_recent_activity.html.erb',
     'app/views/admin/dashboard/_recent_inquiries.html.erb',
+    'app/views/admin/dashboard/_records.html.erb',
     'app/views/admin/dashboard/index.html.erb',
     'app/views/admin/dashboard/index.rss.builder',
     'config',
@@ -40,6 +42,7 @@ Gem::Specification.new do |s|
     'config/locales/es.yml',
     'config/locales/fr.yml',
     'config/locales/it.yml',
+    'config/locales/jp.yml',
     'config/locales/lolcat.yml',
     'config/locales/lt.yml',
     'config/locales/lv.yml',
@@ -68,5 +71,5 @@ Gem::Specification.new do |s|
     'refinerycms-dashboard.gemspec'
   ]
 
-  s.add_dependency 'refinerycms-core', '~> 0.9.9.5'
+  s.add_dependency 'refinerycms-core', '~> 0.9.9.9'
 end

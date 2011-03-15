@@ -7,8 +7,9 @@ pt-BR:
     refinery_settings:
       delete: 'Remover esta configuração para sempre'
       edit: 'Editar esta configuração'
-      index:
+      actions:
         new: Criar nova configuração
+      records:
         empty_set: Ainda não há configurações.
         create_first: "Clique em '%{link}' para adicionar sua primeira configuração."
       form:

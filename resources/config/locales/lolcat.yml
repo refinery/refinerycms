@@ -14,8 +14,9 @@ lolcat:
         maximum_file_size: TEH MAXIMUM FILE SIZE IZ %{megabytes} MEGABYTEZ.
       resource:
         download: DOWNLOAD DIS FILE (%{size})
-      index:
+      actions:
         upload_new: UPLOAD NEW FILE
+      records:
         no_files_yet: THAR R NO FILEZ YET. CLICK "UPLOAD NEW FILEZ" 2 ADD UR FURST FILE.
       insert:
         existing: EXISTIN FILE

@@ -11,7 +11,7 @@ module NavigationHelpers
           new_admin_page_path
         else
           begin
-            if page_name =~ /the page titled "?([^\"]*)"?/ and (page = Page.where(:title => $1).first).present?
+            if page_name =~ /the page titled "?([^\"]*)"?/ and (page = Page.by_title($1).first).present?
               self.url_for(page.url)
             else
               nil

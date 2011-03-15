@@ -7,8 +7,9 @@ sv:
     refinery_settings:
       delete: Ta bort den här inställningen för alltid
       edit: Redigera den här inställningen
-      index:
+      actions:
         new: Lägg till ny inställning
+      records:
         empty_set: Det finns inga inställningar ännu.
         create_first: "Klicka '%{link}' för att lägga till din första inställning."
       form:

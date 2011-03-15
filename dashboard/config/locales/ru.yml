@@ -7,6 +7,7 @@ ru:
     dashboard:
       index:
         quick_tasks: Быстрые задачи
+      actions:
         add_a_new_page: Добавить новую страницу
         update_a_page: Изменить страницу
         upload_a_image: Загрузить изображение

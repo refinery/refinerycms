@@ -10,8 +10,9 @@ sl:
     refinery_settings:
       delete: Odstrani nastavitev
       edit: Uredi nastavitev
-      index:
+      actions:
         new: Dodaj novo nastavitev
+      records:
         empty_set: Tretnutno ni nobene nastavitve.
         create_first: "Kliknite '%{link}' da boste dodali vašo prvo nastavitev."
       form:

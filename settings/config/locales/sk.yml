@@ -7,8 +7,9 @@ sk:
     refinery_settings:
       delete: Zmazať voľbu
       edit: Upraviť voľbu
-      index:
+      actions:
         new: Pridať novú voľbu
+      records:
         empty_set: Zatiaľ tu nie sú žiadne nastavenia.
         create_first: "Kliknite '%{link}' pre pridanie prvej voľby."
       form:

@@ -80,10 +80,11 @@ ru:
         meta_keywords_help: "Введите 5&ndash;10 ключевых слов, которые относятся к этой странице, разделяя запятой."
         meta_description_title: Описание
         meta_description_help: "Введите два-три коротких предложения, описывающих страницу."
-      index:
+      actions:
         create_new_page: Создать новую страницу
         reorder_pages: Изменить порядок страниц
         reorder_pages_done: Сохранить такой порядок страниц
+      records:
         no_pages_yet: Страниц ещё нет.
       reserved_system_word: Защищены системой слова
     refinery_settings:

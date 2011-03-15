@@ -15,8 +15,9 @@ pl:
         maximum_file_size: Maksymalny rozmiaj plik to %{megabytes} megabajtów.
       resource:
         download: Pobierz ten plik (%{size})
-      index:
+      actions:
         upload_new: Wgraj nowe pliki
+      records:
         no_files_yet: Nie ma jeszcze żadnych plików. Kliknij "Wgraj nowe pliki" aby dodać pierwszy.
       insert:
         existing: Istniejący plik

@@ -15,8 +15,9 @@ es:
         maximum_file_size: El peso máximo para el archivo es de %{megabytes} megabytes.
       resource:
         download: Descargar este archivo (%{size})
-      index:
+      actions:
         upload_new: Subir nuevo archivo
+      records:
         no_files_yet: Aún no hay archivos. Pulsa "Subir nuevo archivo" para añadir tu primer archivo.
       insert:
         existing: Archivo existente

@@ -2,12 +2,14 @@ module Admin
   class PagesController < Admin::BaseController
 
     crudify :page,
-            :conditions => {:parent_id => nil},
+            :conditions => nil,
             :order => "lft ASC",
-            :include => [:parts, :slugs, :children, :parent, :translations],
+            :include => [:slugs, :translations],
             :paging => false
 
     rescue_from FriendlyId::ReservedError, :with => :show_errors_for_reserved_slug
+
+    after_filter lambda{::Page.expire_page_caching}, :only => [:update_positions]
 
     def new
       @page = Page.new

@@ -6,6 +6,7 @@ it:
     dashboard:
       index:
         quick_tasks: Accesso rapido
+      actions:
         add_a_new_page: Crea una nuova pagina
         update_a_page: Modifica una pagina
         upload_a_image: "Carica un'immagine"
@@ -15,13 +16,13 @@ it:
       recent_activity:
         empty: non sono state registrate attività recenti
         latest_activity: Attività recenti
-        latest_activity_message: '%{what} %{kind} è stato %{action}'
+        latest_activity_message: "Una risorsa '%{what} %{kind}' è stata %{action}"
         see: Vedere '%{what}'
       recent_inquiries:
         latest_inquiries: Ultimi messaggi
   updated:
-    'with_article "the"':  modificato
+    'with_article "the"':  modificata
   created:
-    'with_article "the"':  creato
+    'with_article "the"':  creata
   ago: "%{time} fa"
   see: Vedere

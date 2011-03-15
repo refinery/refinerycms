@@ -7,6 +7,7 @@ nb:
     dashboard:
       index:
         quick_tasks: Vanlige oppgaver
+      actions:
         add_a_new_page: Legg til en ny side
         update_a_page: Oppdater en side
         upload_a_image: Last opp et bilde

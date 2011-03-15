@@ -8,8 +8,9 @@ es:
     refinery_settings:
       delete: Eliminar esta opción para siempre
       edit: Editar esta opción
-      index:
+      actions:
         new: Crear nueva opción
+      records:
         empty_set: Aún no hay opciones
         create_first: "Haz click en '%{link}' para añadir tu primera opción."
       form:

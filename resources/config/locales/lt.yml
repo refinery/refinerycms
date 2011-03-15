@@ -14,8 +14,9 @@ lt:
         maximum_file_size: Maksimalus failo dydis yra %{megabytes} megabaitų.
       resource:
         download: Parsisiųsti failą (%{size})
-      index:
+      actions:
         upload_new: Įkelti naują failą
+      records:
         no_files_yet: Dar nėra failų. Paspauskite "Įkelti naują failą" norėdami pridėti pirmąjį failą.
       insert:
         existing: Egzistuojantis failas

@@ -7,8 +7,9 @@ el:
     refinery_settings:
       delete: Διαγραφή ρυθμίσης
       edit: Επεξεργασία ρύθμισης
-      index:
+      actions:
         new: Προσθήκη ρύθμισης
+      records:
         empty_set: Δεν υπάρχουν ρυθμίσεις.
         create_first: "Κάντε κλίκ εδώ '%{link}' για να προσθέσετε την πρώτη σας ρύθμιση."
       form:

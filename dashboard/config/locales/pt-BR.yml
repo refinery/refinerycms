@@ -7,6 +7,7 @@ pt-BR:
     dashboard:
       index:
         quick_tasks: Tarefas comuns
+      actions:
         add_a_new_page: Adicionar uma nova página
         update_a_page: Atualizar uma página
         upload_a_image: Enviar uma imagem

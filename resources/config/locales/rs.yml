@@ -14,8 +14,9 @@ rs:
         maximum_file_size: Maksimalna veličina fajla je %{megabytes} megabajta.
       resource:
         download: Download-uj fajl (%{size})
-      index:
+      actions:
         upload_new: Upload-uj novi fajl
+      records:
         no_files_yet: Ne postoje fajlovi. Klikni "Upload-uj novi fajl" da dodaš.
       insert:
         existing: Postojeći fajl
