@@ -28,7 +28,7 @@ Now install the new gems using bundler ('bundle install' is outdated):
 $ bundle update
 </shell>
 
-Use the built in rake task to update your Refinery installation:
+Use the rails generator to update your Refinery installation:
 
 <shell>
 $ rails generate refinerycms --update
