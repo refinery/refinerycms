@@ -5,6 +5,7 @@
 * Added caching to site menu and pages backend (DISABLED by default). [Philip Arndt](https://github.com/parndt)
 * Added `Page#by_title` to filter pages results by title using `Page::Translation`. [Philip Arndt](https://github.com/parndt)
 * Added migration to remove already translated fields from the pages table. [Philip Arndt](https://github.com/parndt)
+* [See full list](https://github.com/resolve/refinerycms/compare/0.9.9.8...0.9.9.9)
 
 ## 0.9.9.8 [11 March 2011]
 
