@@ -5,7 +5,7 @@
   # Select top menu items unless 'roots' is supplied.
   collection ||= @menu_pages.includes(:slugs)
   caching = ((defined?(cache_menu) && cache_menu) || RefinerySetting.find_or_set(:cache_menu, false)) && File.writable?(Rails.cache.cache_path)
-  cache_if(caching, [Refinery.base_cache_key, "pages_menus", dom_id, Globalize.locale, request.path].join('_')) do
+  cache_if(caching && !logged_in?, [Refinery.base_cache_key, "pages_menus", dom_id, Globalize.locale, request.path].join('_')) do
     if (roots ||= collection.select{|p| p.parent_id.nil?}).present?
       # In order to match items that aren't shown in menu and highlight their associations.
       # This can be supplied if the logic is different in your case.
