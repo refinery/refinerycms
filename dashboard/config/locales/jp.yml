@@ -16,7 +16,7 @@ jp:
       recent_activity:
         empty: 最近の更新はありません。
         latest_activity: 最近の活動記録
-        latest_activity_message: %{what} %{kind}が%{action}
+        latest_activity_message: '%{what} %{kind}が%{action}'
       recent_inquiries:
         latest_inquiries: 最近の質問
   updated:
