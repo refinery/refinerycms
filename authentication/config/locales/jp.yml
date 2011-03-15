@@ -14,23 +14,23 @@ jp:
         plugin_access: プラグインアクセス
         role_access: ロールアクセス
         enable_all: 全てを有効にする
-      index:
+      actions:
         create_new_user: ユーザの新規作成
       user:
         email_user: このユーザにメールを送信
-        preview: (%{who}) により %{created_at} に作成されました。
+        preview: '(%{who}) により %{created_at} に作成されました。'
   sessions:
     new:
       hello_please_sign_in: サインインして下さい
       sign_in: サインイン
       forgot_password: パスワードを無くしました
   users:
-    setup_website_name_html: サイトに名前を付けます。<a href='%{link}' name='%{title}'>ここ</a>をクリックして下さい。
+    setup_website_name_html: "サイトに名前を付けます。<a href='%{link}' name='%{title}'>ここ</a>をクリックして下さい。"
     new:
       fill_form: 記入して下さい。
       sign_up: サインアップ
     create:
-      welcome: %{who}さん、Refineryへようこそ。
+      welcome: '%{who}さん、Refineryへようこそ。'
     forgot:
       email_address: メールアドレス
       enter_email_address: メールアドレスを記入して下さい。

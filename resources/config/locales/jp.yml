@@ -11,11 +11,12 @@ jp:
         download_current: ファイルをダウンロード
         or: または
         replace: "このファイルと差し替える"
-        maximum_file_size: ファイルは最大で%{megabytes}MBまでです。
+        maximum_file_size: "ファイルは最大で%{megabytes}MBまでです。"
       resource:
-        download: ファイルをダウンロードする(%{size})
-      index:
+        download: "ファイルをダウンロードする(%{size})"
+      actions:
         upload_new: ファイルをアップロードする
+      records:
         no_files_yet: まだファイルはありません。「ファイルをアップロードする」をクリックして下さい。
       insert:
         existing: 既存のファイル
@@ -31,4 +32,4 @@ jp:
       models:
         resource:
           blank: アップロードするファイルを指定して下さい。
-          too_long: ファイルは最大で%{count}までです。
+          too_long: "ファイルは最大で%{count}までです。"

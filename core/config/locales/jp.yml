@@ -21,9 +21,9 @@ jp:
         cancel: キャンセル
   refinery:
     crudify:
-      created: %{what} を追加しました。
-      updated: %{what}を更新しました。
-      destroyed: %{what} を削除しました。
+      created: '%{what} を追加しました。'
+      updated: '%{what}を更新しました。'
+      destroyed: '%{what} を削除しました。'
   shared:
     site_bar:
       log_out: ログアウト
@@ -39,8 +39,8 @@ jp:
         delete: 削除
         close: 閉じる
       image_picker:
-        none_selected: %{what}は選択されていません。ここをクリックして追加して下さい。
-        remove_current: 選択されている%{what}を削除
+        none_selected: '%{what}は選択されていません。ここをクリックして追加して下さい。'
+        remove_current: '選択されている%{what}を削除'
         change: クリックして画像を選択
         show: 表示
       resource_picker:
@@ -52,10 +52,10 @@ jp:
         current: 選択されているファイル
       search:
         button_text: 検索
-        results_for: 「%{query}」の検索結果
+        results_for: '「%{query}」の検索結果'
         no_results: 見つかりませんでした。
       delete:
-        message: 「%{title}」を消します。宜しいですか。
+        message: '「%{title}」を消します。宜しいですか。'
       error_messages:
         problems_in_following_fields: 以下のフィールドに問題がありました。
       help: ヘルプ
@@ -65,10 +65,10 @@ jp:
     draft_page_message:
       not_live: このページはまだ公開されていません。
     footer:
-      copyright: 著作権© %{year} %{site_name}
+      copyright: '著作権© %{year} %{site_name}'
     no_script:
       enable_javascript: このページを快適にお使いになるにはJavaScriptを有効にする必要があります。
-      here_are: 
+      here_are:
       instructions_enable_javascript: お使いのブラウザでJavaScriptを有効にする方法はこちら
   time:
     formats:

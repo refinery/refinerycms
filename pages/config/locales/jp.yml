@@ -22,9 +22,9 @@ jp:
           subject_line_optional: 件名（無くても可）
           body_optional: 本文（無くても可）
           not_sure: 何を記入すべきか解りませんか？
-          step1_html: メールアドレスを上の'<strong>メールアドレス</strong>'欄に直接書き込むかアドレス帳などからコピーしたものをペーストする
-          step2_html: <strong>予め決められた件名</strong>を使ってメールを作成するには上の'<strong>件名</strong>'欄を使います
-          step3_html: <strong>予め決められた本文</strong>を使ってメールを作成するには上の'<strong>本文</strong>'欄を使います
+          step1_html: "メールアドレスを上の'<strong>メールアドレス</strong>'欄に直接書き込むかアドレス帳などからコピーしたものをペーストする"
+          step2_html: "<strong>予め決められた件名</strong>を使ってメールを作成するには上の'<strong>件名</strong>'欄を使います"
+          step3_html: "<strong>予め決められた本文</strong>を使ってメールを作成するには上の'<strong>本文</strong>'欄を使います"
         your_resource:
           tab_name: ファイル
           link_to_this_resource: このファイルへのリンク
@@ -33,7 +33,7 @@ jp:
       edit: ページを編集
       reserved_system_word: "このタイトルはシステム用ですので使用出来ません。"
       page:
-        view_live_html: このページを表示する<br/><em>（新しいウィンドウが開きます）</em>
+        view_live_html: "このページを表示する<br/><em>（新しいウィンドウが開きます）</em>"
         hidden: hidden
         draft: 準備稿
       form_new_page_parts:
@@ -69,10 +69,11 @@ jp:
         meta_keywords_help: このページに関係のあるキーワードを5つから10個ほど入れて下さい。区切りの記号はコンマです。
         meta_description_title: メタの説明
         meta_description_help: このページの内容を説明する簡潔な文章を二三入れて下さい。
-      index:
+      actions:
         create_new_page: 新規ページを追加
         reorder_pages: ページを並べ替える
         reorder_pages_done: 並べ替えを終了する
+      records:
         no_pages_yet: まだページはありません。"新規ページを追加"をクリックして下さい。
   activerecord:
     models:

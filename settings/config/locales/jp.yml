@@ -7,13 +7,14 @@ jp:
     refinery_settings:
       delete: この設定を削除する
       edit: 設定を変更
-      index:
+      actions:
         new: 設定の新規追加
+      records:
         empty_set: 設定はありません。
         create_first: "「%{link}」をクリックして環境設定を始めて下さい。"
       form:
         enabled: "確認"
-        restart_may_be_in_order_html: <strong>注意</strong> この設定を有効にするにはサイトを再スタートさせる必要がある場合があります。
+        restart_may_be_in_order_html: "<strong>注意</strong> この設定を有効にするにはサイトを再スタートさせる必要がある場合があります。"
         yes_make_this_setting_restricted: "管理人のみ閲覧可能にする。"
         help:
           restricted: 管理人のみが変更出来るようにします。
@@ -35,7 +36,7 @@ jp:
           use_google_ajax_libraries: GoogleのAJAX CDNを使用される場合はこれを有効にして下さい。
           use_marketable_urls: URLを/pages/aboutから/aboutに変更して、他のプラグインのと名前の衝突を自動的に管理します。
           use_resource_caching: プロダクションモードではこれを有効にする事を推奨します。JavaScriptやスタイルシート等のリソースをまとめて転送する事でサーバへのアクセスの回数を減らします。
-          approximate_ascii: ラテン文字にアクセント記号を付けたものをページのタイトルに使用する際にはこれを有効にして下さい。ā, č, žをa, c, zへと変換します。
+          approximate_ascii: 'ラテン文字にアクセント記号を付けたものをページのタイトルに使用する際にはこれを有効にして下さい。ā, č, žをa, c, zへと変換します。'
   activerecord:
     models:
       refinery_setting: 設定
