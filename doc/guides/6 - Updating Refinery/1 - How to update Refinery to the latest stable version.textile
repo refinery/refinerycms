@@ -19,19 +19,19 @@ Take a look at "http://rubygems.org/gems/refinerycms":http://rubygems.org/gems/r
 Edit your +Gemfile+ to reference the latest version of Refinery.
 
 <ruby>
-gem 'refinerycms', '= 0.9.8.9'
+gem 'refinerycms', '= 0.9.9.8'
 </ruby>
 
-Now install the new gems using bundler:
+Now install the new gems using bundler ('bundle install' is outdated):
 
 <shell>
-$ bundle install
+$ bundle update
 </shell>
 
 Use the built in rake task to update your Refinery installation:
 
 <shell>
-$ rake refinery:update
+$ rails generate refinerycms --update
 </shell>
 
 Database migrations and new gem dependencies may have been added, so finish your Refinery update with:
