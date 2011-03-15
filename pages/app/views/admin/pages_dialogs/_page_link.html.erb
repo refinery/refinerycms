@@ -10,4 +10,4 @@
            :locals => {
              :child => (child ||= 0) + 1,
              :link_to_arguments => link_args
-           } if page_link.children.any? -%>
+           } if page_link.has_descendants? -%>
