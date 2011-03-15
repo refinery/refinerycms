@@ -31,6 +31,9 @@ class Page < ActiveRecord::Base
   after_destroy :expire_page_caching
 
   scope :live, where(:draft => false)
+  scope :by_title, lambda {|t|
+    where(:id => Page::Translation.where(:locale => Globalize.locale, :title => t).map(&:page_id))
+  }
 
   # Shows all pages with :show_in_menu set to true, but it also
   # rejects any page that has not been translated to the current locale.
