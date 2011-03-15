@@ -1,3 +1,11 @@
+## 0.9.9.9 [15 March 2011]
+
+* Added Japanese translation. [Hiro Asari](https://github.com/BanzaiMan)
+* Improved menu rendering performance. [Philip Arndt](https://github.com/parndt)
+* Added caching to site menu and pages backend (DISABLED by default). [Philip Arndt](https://github.com/parndt)
+* Added `Page#by_title` to filter pages results by title using `Page::Translation`. [Philip Arndt](https://github.com/parndt)
+* Added migration to remove already translated fields from the pages table. [Philip Arndt](https://github.com/parndt)
+
 ## 0.9.9.8 [11 March 2011]
 
 * Fixed several user interface bugs reported by Patrick Morrow. [Philip Arndt](https://github.com/parndt)
