@@ -29,10 +29,10 @@ end
 # REFINERY CMS ================================================================
 # Anything you put in here will be overridden when the app gets updated.
 
-# gem 'refinerycms', '~> 0.9.9.8'
+# gem 'refinerycms', '~> 0.9.9.9'
 
 group :development, :test do
-  gem 'refinerycms-testing',    '~> 0.9.9.8'
+  gem 'refinerycms-testing',    '~> 0.9.9.9'
 end
 
 # END REFINERY CMS ============================================================
@@ -53,6 +53,6 @@ end
 # gem 'refinerycms-page-images',  '~> 1.0'
 
 # Add i18n support (optional, you can remove this if you really want to).
-gem 'refinerycms-i18n',         '~> 0.9.9.13'
+gem 'refinerycms-i18n',         '~> 0.9.9.14'
 
 # END USER DEFINED

@@ -2,10 +2,10 @@
 
 Gem::Specification.new do |s|
   s.name              = %q{refinerycms-resources}
-  s.version           = %q{0.9.9.8}
+  s.version           = %q{0.9.9.9}
   s.summary           = %q{Resources engine for Refinery CMS}
   s.description       = %q{Handles all file upload and processing functionality in Refinery CMS.}
-  s.date              = %q{2011-03-11}
+  s.date              = %q{2011-03-15}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
   s.rubyforge_project = %q{refinerycms}
@@ -87,7 +87,7 @@ Gem::Specification.new do |s|
     'spec/uploads/refinery_is_awesome.txt'
   ]
 
-  s.add_dependency 'refinerycms-core', '~> 0.9.9.8'
+  s.add_dependency 'refinerycms-core', '~> 0.9.9.9'
   s.add_dependency 'dragonfly',        '~> 0.8.2'
   s.add_dependency 'rack-cache',       '>= 0.5.3'
 end
