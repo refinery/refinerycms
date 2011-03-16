@@ -18,7 +18,7 @@
           <%= RefinerySetting.find_or_set(:site_name, 'Company Name') %>
         </span>
 
-        <%= link_to t('.log_out', :locale => (defined?(::Refinery::I18n) ? ::Refinery::I18n.current_locale : :en)),
+        <%= link_to t('.log_out', site_bar_translate_locale_args),
                     destroy_user_session_path, :id => 'logout' %>
       </div>
     </div>
