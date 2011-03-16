@@ -10,6 +10,8 @@ class RefinerycmsTesting < ::Refinery::Generators::EngineInstaller
     copy_file 'spec/spec_helper.rb', Rails.root.join('spec', 'spec_helper.rb')
     copy_file 'spec/rcov.opts', Rails.root.join('spec', 'rcov.opts')
     copy_file '.rspec', Rails.root.join('.rspec')
+    copy_file 'lib/generators/templates/features/support/paths.rb',
+              Rails.root.join('features', 'support', 'paths.rb')
   end
 
 end
