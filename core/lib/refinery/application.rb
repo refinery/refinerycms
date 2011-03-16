@@ -3,7 +3,7 @@ require 'tmpdir'
 module Refinery
   module Application
     class << self
-      def refine!
+      def refinery!
         ::ApplicationHelper.send :include, ::Refinery::ApplicationHelper
 
         [::ApplicationController, ::Admin::BaseController].each do |c|
@@ -35,7 +35,7 @@ module Refinery
 
         # Include the refinery controllers and helpers dynamically
         base.config.to_prepare do
-          ::Refinery::Application.refine!
+          ::Refinery::Application.refinery!
         end
       end
     end
