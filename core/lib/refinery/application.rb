@@ -37,13 +37,6 @@ module Refinery
         base.config.to_prepare do
           ::Refinery::Application.refine!
         end
-
-        # load in any settings that the developer wants after the initialization.
-        base.config.after_initialize do
-          if (settings = Rails.root.join('config', 'settings.rb')).exist?
-            require settings.to_s
-          end
-        end
       end
     end
   end
