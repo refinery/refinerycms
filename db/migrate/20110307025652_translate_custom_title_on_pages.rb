@@ -9,16 +9,9 @@ class TranslateCustomTitleOnPages < ActiveRecord::Migration
       end
 
     end
-
-    if ::Page.column_names.map(&:to_sym).include?(:custom_title)
-      remove_column ::Page.table_name, :custom_title
-    end
   end
 
   def self.down
-    # Restore
-    add_column ::Page.table_name, :custom_title, :string
-
     # Re-save custom_title
     ::Page.all.each do |page|
       ::Page.update_all({

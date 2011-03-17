@@ -34,7 +34,7 @@ jp:
       reserved_system_word: "このタイトルはシステム用ですので使用出来ません。"
       page:
         view_live_html: "このページを表示する<br/><em>（新しいウィンドウが開きます）</em>"
-        hidden: 隠す
+        hidden: 非表示
         draft: 準備稿
       form_new_page_parts:
         title: タイトル

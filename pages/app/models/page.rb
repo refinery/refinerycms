@@ -40,7 +40,7 @@ class Page < ActiveRecord::Base
   # This works using a query against the translated content first and then
   # using all of the page_ids we further filter against this model's table.
   scope :in_menu, lambda {
-    where(:show_in_menu => true).joins(:translations).includes(:translations).where(
+    where(:show_in_menu => true).includes(:translations).where(
       :id => Page::Translation.where(:locale => Globalize.locale).map(&:page_id)
     )
   }
