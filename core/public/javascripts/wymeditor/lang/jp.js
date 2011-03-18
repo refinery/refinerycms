@@ -1,7 +1,7 @@
 WYMeditor.STRINGS['jp'] = {
   Strong:           '強調',
   Bold:             '太字',
-  Emphasis:         'やや強調',
+  Emphasis:         '斜体字',
   Superscript:      '上つき',
   Subscript:        '下つき',
   Ordered_List:     '番号つきリスト',
