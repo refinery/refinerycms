@@ -74,11 +74,11 @@ Before you can start building this site, you need to make sure that you have Ref
 
 h4. Installing Refinery
 
-The easiest way to install Refinery is to take advantage of RubyGems. This guide is specific to version 0.9.8.9 so we'll install that version.
+The easiest way to install Refinery is to take advantage of RubyGems.
 
 <shell>
 Usually run this as the root user:
-# gem install refinerycms --version 0.9.8.9
+# gem install refinerycms
 </shell>
 
 TIP. If you're working on Windows, you should be aware that the vast majority of Refinery development is done in Unix environments. If at all possible, we suggest that you develop on a Linux based operating system.
