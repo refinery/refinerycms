@@ -2,7 +2,7 @@ class CreateRefinerycmsCoreSchema < ActiveRecord::Migration
   def self.up
     unless ::Slug.table_exists?
       create_table ::Slug.table_name, :force => true do |t|
-        t.string   "name"
+        t.string   "name", :limit => 100
         t.integer  "sluggable_id"
         t.integer  "sequence",                     :default => 1, :null => false
         t.string   "sluggable_type", :limit => 40
