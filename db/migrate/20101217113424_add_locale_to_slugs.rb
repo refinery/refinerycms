@@ -1,6 +1,6 @@
 class AddLocaleToSlugs < ActiveRecord::Migration
   def self.up
-    add_column :slugs, :locale, :string, :limit => 2
+    add_column :slugs, :locale, :string, :limit => 5
 
     add_index :slugs, :locale
   end
