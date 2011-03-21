@@ -39,6 +39,8 @@ module Refinery
                                ActionView::MissingTemplate,
                                :with => :error_404
         end
+
+        c.send :alias_method_chain, :render, :presenters
       end
     end
 
@@ -96,10 +98,9 @@ module Refinery
         @meta = presenter.new(model)
       end
 
-      # this hooks into the Rails render method.
-      def render(action = nil, options = {}, &blk)
+      def render_with_presenters(*args)
         present(@page) unless admin? or @meta.present?
-        super
+        render_without_presenters(*args)
       end
 
       def show_welcome_page?
