@@ -57,9 +57,13 @@ module Refinery
         end
 
         if title.empty?
-          return final_title.to_s.html_safe
+          final_title.to_s.html_safe
         else
-          return "<#{options[:ancestors][:tag]} class='#{options[:ancestors][:class]}'>#{title.join options[:ancestors][:separator]}#{options[:ancestors][:separator]}</#{options[:ancestors][:tag]}>#{final_title}".html_safe
+          tag = "<#{options[:ancestors][:tag]} class='#{options[:ancestors][:class]}'>"
+          tag << title.join(options[:ancestors][:separator])
+          tag << options[:ancestors][:separator]
+          tag << "</#{options[:ancestors][:tag]}>#{final_title}"
+          tag.html_safe
         end
       end
 
