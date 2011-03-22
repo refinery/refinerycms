@@ -60,7 +60,13 @@ module Refinery
         end
 
         # TODO: Is there a better way to cache assets in engines?
-        ::ActionView::Helpers::AssetTagHelper.module_eval do
+        # Also handles a change in Rails 3.1 with AssetIncludeTag being invented.
+        tag_helper_class = if defined?(::ActionView::Helpers::AssetTagHelper::AssetIncludeTag)
+          ::ActionView::Helpers::AssetTagHelper::AssetIncludeTag
+        else
+          ::ActionView::Helpers::AssetTagHelper
+        end
+        tag_helper_class.module_eval do
           def asset_file_path(path)
             unless File.exist?(return_path = File.join(config.assets_dir, path.split('?').first))
               ::Refinery::Plugins.registered.collect{|p| p.pathname}.compact.each do |pathname|
