@@ -24,4 +24,8 @@ class Refinery::BasePresenter
     end
   end
 
+  def respond_to?(method)
+    super || @model.respond_to?(method) || DEFAULT_FIELDS.has_key?(method)
+  end
+
 end
