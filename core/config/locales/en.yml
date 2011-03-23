@@ -1,4 +1,7 @@
 en:
+  js:
+    admin:
+      confirm_changes: Any changes you've made will be lost. Are you sure you want to continue without saving?
   plugins:
     refinery_core:
       title: Refinery
