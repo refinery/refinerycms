@@ -67,6 +67,18 @@ module Refinery
           ::ActionView::Helpers::AssetTagHelper
         end
         tag_helper_class.module_eval do
+          def asset_file_path(path)
+            unless (return_path = Pathname.new(File.join(path.split('?').first))).exist?
+              this_asset_filename = path.split('?').first.to_s.gsub(/^\//, '')
+              ::Refinery::Plugins.registered.pathnames.each do |pathname|
+                if (pathname_asset_path = pathname.join('public', this_asset_filename)).exist?
+                  return_path = pathname_asset_path
+                end
+              end
+            end
+            return_path.to_s
+          end
+=begin
           def asset_file_path_with_refinery(path)
             unless (return_path = Pathname.new(asset_file_path_without_refinery(path))).exist?
               this_asset_filename = path.split('?').first.to_s.gsub(/^\//, '')
@@ -81,6 +93,7 @@ module Refinery
           end
 
           alias_method_chain :asset_file_path, :refinery
+=end
         end
       end
 
