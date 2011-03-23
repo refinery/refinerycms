@@ -8,15 +8,18 @@ Feature: Site Bar
     Given I have a page titled "Home" with a custom url "/"
     And I am not logged in
 
+  @site_bar_frontend
   Scenario: Not logged in
     When I go to the home page
     Then I should not see "Log out"
 
+  @site_bar_backend
   Scenario: Logged in as a Refinery user
     Given I am a logged in refinery user
     When I go to the home page
     Then I should see "Log out"
 
+  @site_bar_backend
   Scenario: Logged in as a customer
     Given A Refinery user exists
     And I am a logged in customer
