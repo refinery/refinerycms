@@ -751,8 +751,8 @@ WYMeditor.editor.prototype.init = function() {
             var wym = this;
             $.each(oClass.rules, function(index, rule) {
               sClass = wym._options.classesItemHtml;
-              sClass = h.replaceAll(sClass, WYMeditor.CLASS_NAME, oClass.name + (oClass.join || "") + rule);
-              sClass = h.replaceAll(sClass, WYMeditor.CLASS_TITLE, rule.title || titleize(rule));
+              sClass = h.replaceAll(sClass, WYMeditor.CLASS_NAME, oClass.name + (oClass.join || "") + (rule.name || rule));
+              sClass = h.replaceAll(sClass, WYMeditor.CLASS_TITLE, rule.title || titleize(rule.name || rule));
               sRules += sClass;
             });
 
