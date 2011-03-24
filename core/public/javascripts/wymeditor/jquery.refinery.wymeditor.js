@@ -848,15 +848,17 @@ WYMeditor.editor.prototype.bindEvents = function() {
     if (oClass == null) {
       $.each(aClasses, function(index, classRule){
         if (oClass == null && classRule.rules && classRule.rules.length > 0){
-          if ((indexOf = $.inArray(sName.replace(classRule.name + (classRule.join || ""), ""), classRule.rules)) > -1) {
-            $.each(classRule.rules, function(i, rule) {
-              if (i != indexOf) {
-                replacers.push(classRule.name + (classRule.join || "") + rule);
-              }
-            });
+          var ruleName = sName.replace(classRule.name + (classRule.join || ""), "");
+          var indexOf = null;
+          $.each(classRule.rules, function(i, rule) {
+            if (ruleName == (rule.name || rule)) {
+              indexOf = i;
+            } else {
+              replacers.push(classRule.name + (classRule.join || "") + (rule.name || rule));
+            }
+          });
 
-            oClass = {expr: (classRule.rules[indexOf].expr || null)};
-          }
+          if (indexOf != null) oClass = {expr: (classRule.rules[indexOf].expr || null)};
         }
       });
     }
