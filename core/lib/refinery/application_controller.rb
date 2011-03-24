@@ -97,7 +97,9 @@ module Refinery
       end
 
       def show_welcome_page?
-        render :template => "/welcome", :layout => "login" if just_installed? and %w(registrations).exclude?(controller_name)
+        if just_installed? and %w(registrations).exclude?(controller_name)
+          render :template => "/welcome", :layout => "login"
+        end
       end
 
     private
