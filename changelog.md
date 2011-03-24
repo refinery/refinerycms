@@ -1,7 +1,7 @@
 ## 0.9.9.11 [unreleased]
 
 * Translated WYMeditor texts to Japanese. [Hiro Asari](https://github.com/BanzaiMan)
-* Supporting `cucumer-rails 0.4.0`. [Philip Arndt](https://github.com/parndt)
+* Supporting `cucumber-rails 0.4.0`. [Philip Arndt](https://github.com/parndt)
 * Added an option to link in the `page_title` enabling easier breadcrumbs. [Sergio Cambra](https://github.com/scambra)
 * Fixed support for `asset_file_path` in upcoming Rails 3.1. [Philip Arndt](https://github.com/parndt)
 * Updated copyright notice to include the current year. [David Jones](https://github.com/djones)
