@@ -2,10 +2,10 @@
 
 Gem::Specification.new do |s|
   s.name              = %q{refinerycms-core}
-  s.version           = %q{0.9.9.10}
+  s.version           = %q{0.9.9.11}
   s.summary           = %q{Core engine for Refinery CMS}
   s.description       = %q{The core of Refinery CMS. This handles the common functionality and is required by most engines}
-  s.date              = %q{2011-03-17}
+  s.date              = %q{2011-03-23}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
   s.rubyforge_project = %q{refinerycms}
@@ -14,8 +14,8 @@ Gem::Specification.new do |s|
   s.require_paths     = %w(lib)
   s.executables       = %w()
 
-  s.add_dependency 'refinerycms-base',            '~> 0.9.9.10'
-  s.add_dependency 'refinerycms-settings',        '~> 0.9.9.10'
+  s.add_dependency 'refinerycms-base',            '~> 0.9.9.11'
+  s.add_dependency 'refinerycms-settings',        '~> 0.9.9.11'
   s.add_dependency 'refinerycms-generators',      '~> 1.0'
   s.add_dependency 'acts_as_indexed',             '~> 0.7'
   s.add_dependency 'friendly_id_globalize3',      '~> 3.2.1'
@@ -339,6 +339,7 @@ Gem::Specification.new do |s|
     'public/javascripts/wymeditor/lang/he.js',
     'public/javascripts/wymeditor/lang/hu.js',
     'public/javascripts/wymeditor/lang/it.js',
+    'public/javascripts/wymeditor/lang/jp.js',
     'public/javascripts/wymeditor/lang/lv.js',
     'public/javascripts/wymeditor/lang/nb.js',
     'public/javascripts/wymeditor/lang/nl.js',

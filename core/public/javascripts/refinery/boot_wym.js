@@ -41,9 +41,9 @@ var wymeditor_boot_options = $.extend({
   , langPath: "/javascripts/wymeditor/lang/"
   , iframeBasePath: '/'
   , classesItems: [
-    {name: 'text-align', rules:['left', 'center', 'right', 'justify'], join: '-'}
-    , {name: 'image-align', rules:['left', 'right'], join: '-'}
-    , {name: 'font-size', rules:['small', 'normal', 'large'], join: '-'}
+    {name: 'text-align', rules:[{name: 'left', title: '{Left}'}, {name: 'center', title: '{Center}'}, {name: 'right', title: '{Right}'}, {name: 'justify', title: '{Justify}'}], join: '-', title: '{Text_Align}'}
+    , {name: 'image-align', rules:[{name: 'left', title: '{Left}'}, {name: 'right', title: '{Right}'}], join: '-', title: '{Image_Align}'}
+    , {name: 'font-size', rules:[{name: 'small', title: '{Small}'}, {name: 'normal', title: '{Normal}'}, {name: 'large', title: '{Large}'}], join: '-', title: '{Font_Size}'}
   ]
 
   , containersItems: [

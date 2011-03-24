@@ -35,8 +35,8 @@ module Refinery
         objects = (options[:chain_page_title] and object.respond_to?(:ancestors)) ? [object.ancestors, object] : [object]
 
         objects.flatten.compact.each do |obj|
-          if obj.respond_to?(:custom_title_type)
-            title << case obj.custom_title_type
+          obj_title = if obj.respond_to?(:custom_title_type)
+            case obj.custom_title_type
               when "text"
                 obj.custom_title
               when "image"
@@ -45,8 +45,9 @@ module Refinery
                 obj.title
               end
           else
-            title << obj.title
+            obj.title
           end
+          title << link_to_if(options[:link], obj_title, obj.url)
         end
 
         final_title = title.pop
@@ -56,9 +57,13 @@ module Refinery
         end
 
         if title.empty?
-          return final_title.to_s.html_safe
+          final_title.to_s.html_safe
         else
-          return "<#{options[:ancestors][:tag]} class='#{options[:ancestors][:class]}'>#{title.join options[:ancestors][:separator]}#{options[:ancestors][:separator]}</#{options[:ancestors][:tag]}>#{final_title}".html_safe
+          tag = "<#{options[:ancestors][:tag]} class='#{options[:ancestors][:class]}'>"
+          tag << title.join(options[:ancestors][:separator])
+          tag << options[:ancestors][:separator]
+          tag << "</#{options[:ancestors][:tag]}>#{final_title}"
+          tag.html_safe
         end
       end
 

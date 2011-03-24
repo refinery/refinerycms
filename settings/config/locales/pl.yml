@@ -44,4 +44,4 @@ pl:
       refinery_setting:
         name: Nazwa
         value: Wartość
-        restricted: Zatrzeżone
+        restricted: Zastrzeżone

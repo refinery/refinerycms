@@ -5,6 +5,7 @@
 <%= yield :before_javascript_libraries -%>
 <%= javascript_include_tag 'refinery/i18n' -%>
 <script>I18n.locale = '<%= I18n.locale %>';</script>
+<%= javascript_include_tag 'translations' if Rails.root.join('public', 'javascripts', 'translations.js').exist? -%>
 
 <%= jquery_include_tags    :caching => js_caching -%>
 

@@ -26,7 +26,7 @@ Gem::Specification.new do |s|
   # Cucumber
   s.add_dependency 'capybara',          '>= 0.4.1.1'
   s.add_dependency 'database_cleaner'
-  s.add_dependency 'cucumber-rails'
+  s.add_dependency 'cucumber-rails',    '>= 0.4'
   s.add_dependency 'cucumber'
   s.add_dependency 'launchy'
   s.add_dependency 'gherkin'

@@ -1,4 +1,4 @@
-@refinerycms @users @users-manage
+@refinerycms @authentication @users @users-manage
 Feature: Manage Users
   In order to control who can access my website's backend
   As an administrator

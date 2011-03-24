@@ -43,5 +43,15 @@ WYMeditor.STRINGS['en'] = {
   Classes:          'Classes',
   Status:           'Status',
   Source_Code:      'Source code',
+  Text_Align:       'Text Align',
+  Image_Align:      'Image Align',
+  Font_Size:        'Font Size',
+  Left:             'Left',
+  Right:            'Right',
+  Center:           'Center',
+  Justify:          'Justify',
+  Small:            'Small',
+  Normal:           'Normal',
+  Large:            'Large',
   Apply_Style:      'Style'
 };
