@@ -23,6 +23,25 @@ module Refinery
       end
 
       config.after_initialize do
+        ::ApplicationController.module_eval do
+
+          def error_404(exception=nil)
+            if (@page = Page.where(:menu_match => "^/404$").includes(:parts, :slugs).first).present?
+              # render the application's custom 404 page with layout and meta.
+              render :template => "/pages/show",
+                     :format => 'html',
+                     :status => 404
+            else
+              super
+            end
+          end
+
+          def find_pages_for_menu
+            @menu_pages = Page.in_menu.live.order('lft ASC').includes(:slugs)
+          end
+
+        end
+
         ::Refinery::Plugin.register do |plugin|
           plugin.name = "refinery_pages"
           plugin.directory = "pages"

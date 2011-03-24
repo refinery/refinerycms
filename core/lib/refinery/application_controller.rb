@@ -50,19 +50,12 @@ module Refinery
       end
 
       def error_404(exception=nil)
-        if (@page = Page.where(:menu_match => "^/404$").includes(:parts, :slugs).first).present?
-          # render the application's custom 404 page with layout and meta.
-          render :template => "/pages/show",
-                 :format => 'html',
-                 :status => 404
-        else
-          # fallback to the default 404.html page.
-          file = Rails.root.join('public', '404.html')
-          file = Refinery.roots('core').join('public', '404.html') unless file.exist?
-          render :file => file.cleanpath.to_s,
-                 :layout => false,
-                 :status => 404
-        end
+        # fallback to the default 404.html page.
+        file = Rails.root.join('public', '404.html')
+        file = Refinery.roots('core').join('public', '404.html') unless file.exist?
+        render :file => file.cleanpath.to_s,
+               :layout => false,
+               :status => 404
       end
 
       def from_dialog?
@@ -89,7 +82,7 @@ module Refinery
 
       # get all the pages to be displayed in the site menu.
       def find_pages_for_menu
-        @menu_pages = Page.in_menu.live.order('lft ASC')
+        raise NotImplementedError, "Please implement protected method find_pages_for_menu"
       end
 
       # use a different model for the meta information.
