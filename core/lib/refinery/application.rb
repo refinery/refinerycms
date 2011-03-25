@@ -2,7 +2,9 @@ require 'tmpdir'
 
 module Refinery
   module Application
+
     class << self
+
       def refinery!
         ::ApplicationHelper.send :include, ::Refinery::ApplicationHelper
 
@@ -12,6 +14,10 @@ module Refinery
         end
 
         ::Admin::BaseController.send :include, ::Refinery::Admin::BaseController
+
+        ::Refinery.config.on_attach_procs.each do |proc|
+          proc.call if proc.respond_to?(:call)
+        end
       end
 
       def included(base)

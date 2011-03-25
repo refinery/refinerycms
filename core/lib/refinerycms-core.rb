@@ -9,6 +9,8 @@ module Refinery
   autoload :Application, File.expand_path('../refinery/application', __FILE__)
   autoload :ApplicationController, File.expand_path('../refinery/application_controller', __FILE__)
   autoload :ApplicationHelper, File.expand_path('../refinery/application_helper', __FILE__)
+  autoload :Configuration, File.expand_path('../refinery/configuration', __FILE__)
+  autoload :Engine, File.expand_path('../refinery/engine', __FILE__)
   autoload :Plugin,  File.expand_path('../refinery/plugin', __FILE__)
   autoload :Plugins, File.expand_path('../refinery/plugins', __FILE__)
 end
@@ -22,6 +24,12 @@ require 'rails/generators'
 require 'rails/generators/migration'
 
 module Refinery
+
+  class << self
+    def config
+      @@config ||= ::Refinery::Configuration.new
+    end
+  end
 
   module Core
     class << self
@@ -41,6 +49,10 @@ module Refinery
       def root
         @root ||= Pathname.new(File.expand_path('../../', __FILE__))
       end
+    end
+
+    ::Rails::Engine.module_eval do
+      include ::Refinery::Engine
     end
 
     class Engine < ::Rails::Engine
@@ -78,22 +90,6 @@ module Refinery
             end
             return_path.to_s
           end
-=begin
-          def asset_file_path_with_refinery(path)
-            unless (return_path = Pathname.new(asset_file_path_without_refinery(path))).exist?
-              this_asset_filename = path.split('?').first.to_s.gsub(/^\//, '')
-              ::Refinery::Plugins.registered.pathnames.each do |pathname|
-                if (pathname_asset_path = pathname.join('public', this_asset_filename)).exist?
-                  return_path = pathname_asset_path
-                end
-              end
-            end
-
-            return_path.to_s
-          end
-
-          alias_method_chain :asset_file_path, :refinery
-=end
         end
       end
 

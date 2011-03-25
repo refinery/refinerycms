@@ -5,6 +5,8 @@ require 'globalize3'
 module Refinery
   module Pages
 
+    autoload :InstanceMethods, File.expand_path('../refinery/pages/instance_methods', __FILE__)
+
     class << self
       attr_accessor :root
       def root
@@ -13,7 +15,6 @@ module Refinery
     end
 
     class Engine < ::Rails::Engine
-
       initializer "serve static assets" do |app|
         app.middleware.insert_after ::ActionDispatch::Static, ::ActionDispatch::Static, "#{root}/public"
       end
@@ -22,26 +23,11 @@ module Refinery
         require File.expand_path('../pages/tabs', __FILE__)
       end
 
+      refinery.on_attach do
+        ::ApplicationController.send :include, ::Refinery::Pages::InstanceMethods
+      end
+
       config.after_initialize do
-        ::ApplicationController.module_eval do
-
-          def error_404(exception=nil)
-            if (@page = Page.where(:menu_match => "^/404$").includes(:parts, :slugs).first).present?
-              # render the application's custom 404 page with layout and meta.
-              render :template => "/pages/show",
-                     :format => 'html',
-                     :status => 404
-            else
-              super
-            end
-          end
-
-          def find_pages_for_menu
-            @menu_pages = Page.in_menu.live.order('lft ASC').includes(:slugs)
-          end
-
-        end
-
         ::Refinery::Plugin.register do |plugin|
           plugin.name = "refinery_pages"
           plugin.directory = "pages"
