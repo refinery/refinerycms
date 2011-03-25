@@ -5,6 +5,9 @@
 * Added an option to link in the `page_title` enabling easier breadcrumbs. [Sergio Cambra](https://github.com/scambra)
 * Fixed support for `asset_file_path` in upcoming Rails 3.1. [Philip Arndt](https://github.com/parndt)
 * Updated copyright notice to include the current year. [David Jones](https://github.com/djones)
+* Fixed site bar switch link. [Philip Arndt](https://github.com/parndt)
+* Added support for translating Javascript strings. [Philip Arndt](https://github.com/parndt)
+* Added `refinery.on_attach` for running extra functionality just after Refinery attaches to Rails. Functions similarly to `config.to_prepare`. [Philip Arndt](https://github.com/parndt)
 * [See full list](https://github.com/resolve/refinerycms/compare/0.9.9.10...0.9.9.11)
 
 ## 0.9.9.10 [17 March 2011]
