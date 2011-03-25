@@ -15,7 +15,9 @@ init_flash_messages = function(){
       $('#flash').animate({
          'opacity': 0,
          'visibility': 'hidden'
-      }, 330);
+      }, 330, function() {
+        $('#flash').hide();
+      });
     } catch(ex) {
       $('#flash').hide();
     }
