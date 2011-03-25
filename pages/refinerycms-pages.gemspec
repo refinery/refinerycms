@@ -5,7 +5,7 @@ Gem::Specification.new do |s|
   s.version           = %q{0.9.9.11}
   s.summary           = %q{Pages engine for Refinery CMS}
   s.description       = %q{The default content engine of Refinery CMS. This engine handles the administration and display of user-editable pages.}
-  s.date              = %q{2011-03-23}
+  s.date              = %q{2011-03-25}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
   s.rubyforge_project = %q{refinerycms}
@@ -103,6 +103,9 @@ Gem::Specification.new do |s|
     'lib/pages',
     'lib/pages/marketable_routes.rb',
     'lib/pages/tabs.rb',
+    'lib/refinery',
+    'lib/refinery/pages',
+    'lib/refinery/pages/instance_methods.rb',
     'lib/refinerycms-pages.rb',
     'license.md',
     'refinerycms-pages.gemspec',
