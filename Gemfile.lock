@@ -12,7 +12,7 @@ PATH
       refinerycms-resources (~> 0.9.9.11)
       refinerycms-settings (~> 0.9.9.11)
     refinerycms-authentication (0.9.9.11)
-      devise (~> 1.2)
+      devise (~> 1.2.0)
       refinerycms-core (~> 0.9.9.11)
     refinerycms-base (0.9.9.11)
     refinerycms-core (0.9.9.11)
