@@ -5,7 +5,7 @@ Gem::Specification.new do |s|
   s.version           = %q{0.9.9.11}
   s.summary           = %q{Authentication engine for Refinery CMS}
   s.description       = %q{The default authentication engine for Refinery CMS}
-  s.date              = %q{2011-03-25}
+  s.date              = %q{2011-03-26}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
   s.rubyforge_project = %q{refinerycms}
@@ -15,7 +15,7 @@ Gem::Specification.new do |s|
   s.executables       = %w()
 
   s.add_dependency 'refinerycms-core', '~> 0.9.9.11'
-  s.add_dependency 'devise',           '~> 1.1'
+  s.add_dependency 'devise',           '~> 1.2'
 
   s.files             = [
     'app',
@@ -91,6 +91,7 @@ Gem::Specification.new do |s|
     'db/migrate/20100929035252_add_missing_indexes_to_roles_users.rb',
     'db/migrate/20101206013505_change_to_devise_users_table.rb',
     'db/migrate/20110106184757_add_remember_created_at_to_users.rb',
+    'db/migrate/20110325213325_remove_password_salt_from_users.rb',
     'features',
     'features/lost_password.feature',
     'features/manage_users.feature',
