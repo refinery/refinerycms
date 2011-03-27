@@ -1,4 +1,11 @@
+## 0.9.9.13 [28 March 2011]
+
+* Forcing password reset when migrating from older versions of Devise (sigh). [Philip Arndt](https://github.com/parndt)
+* Updated to `refinerycms-i18n 0.9.9.16` - please run `rails generate refinerycms_i18n`. [Philip Arndt](https://github.com/parndt)
+* [See full list](https://github.com/resolve/refinerycms/compare/0.9.9.12...0.9.9.13)
+
 ## 0.9.9.12 [27 March 2011]
+
 * Removed `password_salt` field from users table and comment out `config.encryptor` in `config/initializers/devise.rb` to handle update to devise 1.2.0. [Uģis Ozols](https://github.com/ugisozols)
 * [See full list](https://github.com/resolve/refinerycms/compare/0.9.9.11...0.9.9.12)
 
