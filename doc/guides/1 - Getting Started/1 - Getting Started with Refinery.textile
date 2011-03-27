@@ -56,7 +56,7 @@ h4. Core engines
 
 The engines Refinery comes with are:
 
-* *Authentication* - managers users and sessions within Refinery.
+* *Authentication* - manages users and sessions within Refinery.
 * *Core* - contains default layouts, views, javascripts and CSS. This engine also has an engine API for extending Refinery and everything Refinery needs to hook into Rails.
 * *Dashboard* - shows you what's recently been updated.
 * *Images* - handles image upload, insertion and processing images using "Dragonfly":https://github.com/markevans/dragonfly.
