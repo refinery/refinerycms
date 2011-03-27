@@ -163,7 +163,7 @@ GEM
     rack (1.2.2)
     rack-cache (1.0)
       rack (>= 0.4)
-    rack-mount (0.6.13)
+    rack-mount (0.6.14)
       rack (>= 1.0.0)
     rack-test (0.5.7)
       rack (>= 1.0)
@@ -183,8 +183,8 @@ GEM
     rake (0.8.7)
     rdoc (3.5.3)
     refinerycms-generators (1.0.1)
-    refinerycms-i18n (0.9.9.15)
-      refinerycms-core (>= 0.9.9.10)
+    refinerycms-i18n (0.9.9.16)
+      refinerycms-core (>= 0.9.9.12)
       routing-filter (>= 0.2.3)
     routing-filter (0.2.3)
       actionpack
@@ -225,6 +225,6 @@ PLATFORMS
 
 DEPENDENCIES
   refinerycms!
-  refinerycms-i18n (~> 0.9.9.15)
-  refinerycms-testing (~> 0.9.9.10)
+  refinerycms-i18n (~> 0.9.9.16)
+  refinerycms-testing (~> 0.9.9.12)
   sqlite3
