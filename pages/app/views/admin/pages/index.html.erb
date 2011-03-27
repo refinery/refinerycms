@@ -1,6 +1,6 @@
 <section id='records' class='tree'>
   <% caching = RefinerySetting.find_or_set(:cache_pages_backend, false) && File.writable?(Rails.cache.cache_path) %>
-  <% cache_if(caching && !logged_in?, [Refinery.base_cache_key, "pages_backend", Globalize.locale].join('_')) do %>
+  <% cache_if(caching && !user_signed_in?, [Refinery.base_cache_key, "pages_backend", Globalize.locale].join('_')) do %>
     <%= render :partial => 'records' %>
   <% end %>
 </section>
