@@ -211,7 +211,11 @@ $.extend(WYMeditor, {
     BLOCKS : new Array("address", "blockquote", "div", "dl",
      "fieldset", "form", "h1", "h2", "h3", "h4", "h5", "h6", "hr",
      "noscript", "ol", "p", "pre", "table", "ul", "dd", "dt",
-     "li", "tbody", "td", "tfoot", "th", "thead", "tr"),
+     "li", "tbody", "td", "tfoot", "th", "thead", "tr", "meter",
+     "section", "article", "aside", "details", "header", "footer",
+     "nav", "dialog", "figure", "figcaption", "address", "hgroup",
+     "mark", "time", "canvas", "audio", "video", "source", "output",
+     "progress", "ruby", "rt", "rp", "summary", "command"),
 
     KEY : {
       BACKSPACE: 8,
@@ -2449,7 +2453,7 @@ WYMeditor.XhtmlValidator = {
         "readonly":/^(readonly)$/,
         "size":/^(\d)+$/,
         "3":"src",
-        "type":/^(button|checkbox|file|hidden|image|password|radio|reset|submit|text)$/,
+        "type":/^(button|checkbox|file|hidden|image|password|radio|reset|submit|text|tel|search|url|email|datetime|date|month|week|time|datetime-local|number|range|color)$/,
         "4":"value"
       },
       "inside":"form"
@@ -3786,10 +3790,15 @@ WYMeditor.XhtmlSaxListener = function()
     "object", "ol", "optgroup", "option", "p", "pre", "q",
     "samp", "script", "select", "small", "span", "strong", "style",
     "sub", "sup", "table", "tbody", "td", "textarea", "tfoot", "th",
-    "thead", "title", "tr", "tt", "ul", "var", "extends"];
+    "thead", "title", "tr", "tt", "ul", "var", "extends", "meter",
+    "section", "article", "aside", "details", "header", "footer",
+    "nav", "dialog", "figure", "figcaption", "address", "hgroup",
+    "mark", "time", "canvas", "audio", "video", "source", "output",
+    "progress", "ruby", "rt", "rp", "wbr", "summary", "command"];
 
 
-    this.inline_tags = ["br", "embed", "hr", "img", "input", "param"];
+    // Defines self-closing tags.
+    this.inline_tags = ["br", "embed", "hr", "img", "input", "param", "source"];
 
     return this;
 };
