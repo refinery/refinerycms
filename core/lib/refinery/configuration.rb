@@ -1,12 +1,20 @@
 module Refinery
   class Configuration
 
-    def on_attach_procs
-      @@on_attach_procs ||= []
+    def after_inclusion_procs
+      @@after_inclusion_procs ||= []
     end
 
-    def on_attach(&blk)
-      on_attach_procs << blk if blk
+    def after_inclusion(&blk)
+      after_inclusion_procs << blk if blk
+    end
+
+    def before_inclusion_procs
+      @@before_inclusion_procs ||= []
+    end
+
+    def before_inclusion(&blk)
+      before_inclusion_procs << blk if blk
     end
 
   end

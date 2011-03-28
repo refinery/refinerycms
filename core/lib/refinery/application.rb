@@ -6,6 +6,10 @@ module Refinery
     class << self
 
       def refinery!
+        ::Refinery.config.before_inclusion_procs.each do |proc|
+          proc.call if proc.respond_to?(:call)
+        end
+
         ::ApplicationHelper.send :include, ::Refinery::ApplicationHelper
 
         [::ApplicationController, ::Admin::BaseController].each do |c|
@@ -15,7 +19,7 @@ module Refinery
 
         ::Admin::BaseController.send :include, ::Refinery::Admin::BaseController
 
-        ::Refinery.config.on_attach_procs.each do |proc|
+        ::Refinery.config.after_inclusion_procs.each do |proc|
           proc.call if proc.respond_to?(:call)
         end
       end

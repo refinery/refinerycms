@@ -1,3 +1,8 @@
+## 0.9.9.14 [unreleased]
+
+* Added `refinery.before_inclusion` for running extra functionality just before Refinery attaches to Rails. [Philip Arndt](https://github.com/parndt)
+* Renamed `refinery.after_inclusion` to `refinery.after_inclusion` to match `refinery.before_inclusion`. [Philip Arndt](https://github.com/parndt)
+
 ## 0.9.9.13 [28 March 2011]
 
 * Forcing password reset when migrating from older versions of Devise (sigh). [Philip Arndt](https://github.com/parndt)

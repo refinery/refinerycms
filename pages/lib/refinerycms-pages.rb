@@ -23,7 +23,7 @@ module Refinery
         require File.expand_path('../pages/tabs', __FILE__)
       end
 
-      refinery.on_attach do
+      refinery.after_inclusion do
         ::ApplicationController.send :include, ::Refinery::Pages::InstanceMethods
       end
 
