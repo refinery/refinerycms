@@ -3,6 +3,28 @@ require 'globalize3'
 class Page < ActiveRecord::Base
 
   translates :title, :meta_keywords, :meta_description, :browser_title, :custom_title if self.respond_to?(:translates)
+
+  # Set up support for meta tags through translations.
+  if defined?(::Page::Translation) && Page::Translation.table_exists?
+    def translation
+      if @translation.nil? or @translation.try(:locale) != Globalize.locale
+        @translation = translations.with_locale(Globalize.locale).first
+        @translation ||= translations.build(:locale => Globalize.locale)
+      end
+
+      @translation
+    end
+
+    # Instruct the Translation model to have meta tags.
+    ::Page::Translation.module_eval do
+      is_seo_meta
+    end
+
+    # Delegate all SeoMeta attributes to the active translation.
+    delegate *(::SeoMeta.attributes.keys.map{|a| [a, :"#{a}="]}.flatten), :to => :translation
+    after_save proc {|m| m.translation.save}
+  end
+
   attr_accessor :locale # to hold temporarily
   validates :title, :presence => true
 

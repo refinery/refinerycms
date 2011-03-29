@@ -56,5 +56,4 @@ end
 
 # Add i18n support (optional, you can remove this if you really want to).
 gem 'refinerycms-i18n',         '~> 0.9.9.16'
-
 # END USER DEFINED
