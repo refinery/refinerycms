@@ -1,0 +1,1 @@
+Labels are made using the [Visitor font](http://www.dafont.com/visitor.font), 9.5px, no anti-aliasing.
