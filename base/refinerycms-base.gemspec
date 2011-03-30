@@ -4,7 +4,7 @@ Gem::Specification.new do |s|
   s.name              = %q{refinerycms-base}
   s.version           = %q{0.9.9.14}
   s.summary           = %q{Base engine for Refinery CMS}
-  s.description       = %q{This provides a base for Refinery CMS which handles things like setings on the Refinery namespace.}
+  s.description       = %q{This provides a base for Refinery CMS which handles things like settings on the Refinery namespace.}
   s.date              = %q{2011-03-31}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
