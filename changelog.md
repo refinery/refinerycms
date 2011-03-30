@@ -2,6 +2,8 @@
 
 * Added `refinery.before_inclusion` for running extra functionality just before Refinery attaches to Rails. [Philip Arndt](https://github.com/parndt)
 * Renamed `refinery.after_inclusion` to `refinery.after_inclusion` to match `refinery.before_inclusion`. [Philip Arndt](https://github.com/parndt)
+* Moved meta tag responsibility to `seo_meta` library. [Philip Arndt](https://github.com/parndt)
+* [See full list](https://github.com/resolve/refinerycms/compare/0.9.9.13...0.9.9.14)
 
 ## 0.9.9.13 [28 March 2011]
 
