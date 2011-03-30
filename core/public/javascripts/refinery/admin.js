@@ -1132,5 +1132,5 @@ parseURL = function(url)
 };
 
 iframed = function() {
-  return (parent && parent.document.location.href != document.location.href && $.isFunction(parent.$));
+  return (parent && parent.document && parent.document.location.href != document.location.href && $.isFunction(parent.$));
 };
