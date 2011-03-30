@@ -21,7 +21,9 @@ class Page < ActiveRecord::Base
     end
 
     # Delegate all SeoMeta attributes to the active translation.
-    delegate *(::SeoMeta.attributes.keys.map{|a| [a, :"#{a}="]}.flatten), :to => :translation
+    fields = ::SeoMeta.attributes.keys.map{|a| [a, :"#{a}="]}.flatten
+    fields << {:to => :translation}
+    delegate *fields
     after_save proc {|m| m.translation.save}
   end
 
