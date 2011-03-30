@@ -8,7 +8,7 @@ This guide covers getting up and running with Refinery CMS. After reading it, yo
 
 endprologue.
 
-WARNING. This guide is based on Refinery CMS 0.9.9.4. Some of the code shown here will not work in earlier versions of Refinery.
+WARNING. This guide is based on Refinery CMS 0.9.9.13 so some of the code shown here may not work in earlier versions of Refinery.
 
 h3. Guide Assumptions
 
@@ -77,7 +77,6 @@ h4. Installing Refinery
 The easiest way to install Refinery is to take advantage of RubyGems.
 
 <shell>
-Usually run this as the root user:
 # gem install refinerycms
 </shell>
 
@@ -415,9 +414,9 @@ Finally edit +vendor/engines/events/app/controllers/events_controller.rb+ and re
 
 <ruby>
 class EventsController < ApplicationController
-  
+
   # code
-  
+
 protected
 
   def find_all_events
