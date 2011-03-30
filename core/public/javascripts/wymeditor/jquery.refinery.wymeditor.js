@@ -3794,11 +3794,11 @@ WYMeditor.XhtmlSaxListener = function()
     "section", "article", "aside", "details", "header", "footer",
     "nav", "dialog", "figure", "figcaption", "address", "hgroup",
     "mark", "time", "canvas", "audio", "video", "source", "output",
-    "progress", "ruby", "rt", "rp", "wbr", "summary", "command"];
+    "progress", "ruby", "rt", "rp", "summary", "command"];
 
 
     // Defines self-closing tags.
-    this.inline_tags = ["br", "embed", "hr", "img", "input", "param", "source"];
+    this.inline_tags = ["br", "embed", "hr", "img", "input", "param", "source", "wbr"];
 
     return this;
 };
