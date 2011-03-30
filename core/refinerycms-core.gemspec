@@ -2,10 +2,10 @@
 
 Gem::Specification.new do |s|
   s.name              = %q{refinerycms-core}
-  s.version           = %q{0.9.9.13}
+  s.version           = %q{0.9.9.14}
   s.summary           = %q{Core engine for Refinery CMS}
   s.description       = %q{The core of Refinery CMS. This handles the common functionality and is required by most engines}
-  s.date              = %q{2011-03-28}
+  s.date              = %q{2011-03-31}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
   s.rubyforge_project = %q{refinerycms}
@@ -14,8 +14,8 @@ Gem::Specification.new do |s|
   s.require_paths     = %w(lib)
   s.executables       = %w()
 
-  s.add_dependency 'refinerycms-base',            '~> 0.9.9.13'
-  s.add_dependency 'refinerycms-settings',        '~> 0.9.9.13'
+  s.add_dependency 'refinerycms-base',            '~> 0.9.9.14'
+  s.add_dependency 'refinerycms-settings',        '~> 0.9.9.14'
   s.add_dependency 'refinerycms-generators',      '~> 1.0'
   s.add_dependency 'acts_as_indexed',             '~> 0.7'
   s.add_dependency 'friendly_id_globalize3',      '~> 3.2.1'
@@ -259,6 +259,36 @@ Gem::Specification.new do |s|
     'public/images/wymeditor/skins/refinery/arrow_redo.png',
     'public/images/wymeditor/skins/refinery/arrow_undo.png',
     'public/images/wymeditor/skins/refinery/eye.png',
+    'public/images/wymeditor/skins/refinery/html5',
+    'public/images/wymeditor/skins/refinery/html5/article.png',
+    'public/images/wymeditor/skins/refinery/html5/aside.png',
+    'public/images/wymeditor/skins/refinery/html5/blockquote.png',
+    'public/images/wymeditor/skins/refinery/html5/command.png',
+    'public/images/wymeditor/skins/refinery/html5/details.png',
+    'public/images/wymeditor/skins/refinery/html5/figcaption.png',
+    'public/images/wymeditor/skins/refinery/html5/figure.png',
+    'public/images/wymeditor/skins/refinery/html5/footer.png',
+    'public/images/wymeditor/skins/refinery/html5/h1.png',
+    'public/images/wymeditor/skins/refinery/html5/h2.png',
+    'public/images/wymeditor/skins/refinery/html5/h3.png',
+    'public/images/wymeditor/skins/refinery/html5/h4.png',
+    'public/images/wymeditor/skins/refinery/html5/h5.png',
+    'public/images/wymeditor/skins/refinery/html5/h6.png',
+    'public/images/wymeditor/skins/refinery/html5/header.png',
+    'public/images/wymeditor/skins/refinery/html5/hgroup.png',
+    'public/images/wymeditor/skins/refinery/html5/mark.png',
+    'public/images/wymeditor/skins/refinery/html5/meter.png',
+    'public/images/wymeditor/skins/refinery/html5/nav.png',
+    'public/images/wymeditor/skins/refinery/html5/p.png',
+    'public/images/wymeditor/skins/refinery/html5/pre.png',
+    'public/images/wymeditor/skins/refinery/html5/progress.png',
+    'public/images/wymeditor/skins/refinery/html5/readme.md',
+    'public/images/wymeditor/skins/refinery/html5/rp.png',
+    'public/images/wymeditor/skins/refinery/html5/rt.png',
+    'public/images/wymeditor/skins/refinery/html5/ruby.png',
+    'public/images/wymeditor/skins/refinery/html5/section.png',
+    'public/images/wymeditor/skins/refinery/html5/summary.png',
+    'public/images/wymeditor/skins/refinery/html5/time.png',
     'public/images/wymeditor/skins/refinery/iframe',
     'public/images/wymeditor/skins/refinery/iframe/lbl-blockquote.png',
     'public/images/wymeditor/skins/refinery/iframe/lbl-h1.png',

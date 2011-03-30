@@ -2,10 +2,10 @@
 
 Gem::Specification.new do |s|
   s.name              = %q{refinerycms-pages}
-  s.version           = %q{0.9.9.13}
+  s.version           = %q{0.9.9.14}
   s.summary           = %q{Pages engine for Refinery CMS}
   s.description       = %q{The default content engine of Refinery CMS. This engine handles the administration and display of user-editable pages.}
-  s.date              = %q{2011-03-30}
+  s.date              = %q{2011-03-31}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
   s.rubyforge_project = %q{refinerycms}
@@ -115,6 +115,6 @@ Gem::Specification.new do |s|
     'spec/models/page_spec.rb'
   ]
 
-  s.add_dependency 'refinerycms-core', '~> 0.9.9.13'
-  s.add_dependency 'seo_meta',         '~> 1.0.0'
+  s.add_dependency 'refinerycms-core', '~> 0.9.9.14'
+  s.add_dependency 'seo_meta',         '~> 1.0.2'
 end
