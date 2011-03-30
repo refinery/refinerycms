@@ -224,16 +224,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bundler (~> 1.0)
   refinerycms!
-  refinerycms-authentication (~> 0.9.9.13)
-  refinerycms-base (~> 0.9.9.13)
-  refinerycms-core (~> 0.9.9.13)
-  refinerycms-dashboard (~> 0.9.9.13)
   refinerycms-i18n (~> 0.9.9.16)
-  refinerycms-images (~> 0.9.9.13)
-  refinerycms-pages (~> 0.9.9.13)
-  refinerycms-resources (~> 0.9.9.13)
-  refinerycms-settings (~> 0.9.9.13)
   refinerycms-testing (~> 0.9.9.13)
   sqlite3
