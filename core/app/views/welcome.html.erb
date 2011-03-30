@@ -3,7 +3,7 @@
   <%=t('.remember_admin_location')%>
 </p>
 <p>
-  <strong>http://<%= request.host %>/refinery</strong>
+  <strong>http://<%= request.host %><%= ":#{request.port unless request.port == 80}"%>/refinery</strong>
 </p>
 <p>
   <%= t('.lets_start') %>
