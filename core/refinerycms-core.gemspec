@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |s|
   s.name              = %q{refinerycms-core}
-  s.version           = %q{0.9.9.14}
+  s.version           = %q{0.9.9.15}
   s.summary           = %q{Core engine for Refinery CMS}
   s.description       = %q{The core of Refinery CMS. This handles the common functionality and is required by most engines}
   s.date              = %q{2011-03-31}
