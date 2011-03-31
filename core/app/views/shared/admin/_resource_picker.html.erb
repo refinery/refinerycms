@@ -7,7 +7,7 @@
                   :update_resource => "current_resource_#{field}",
                   :update_text => "current_resource_text_#{field}",
                   :callback => "resource_changed_#{field}",
-                  :field => [f.object_name, field].join('_'),
+                  :field => [f.object_name.gsub(/\]\[|[^-a-zA-Z0-9:.]/, "_").sub(/_$/, ""), field].join('_'),
                   :current_link => "#{resource.url if resource.present?}",
                   :height => 480
                 })
