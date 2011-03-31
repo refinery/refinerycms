@@ -80,7 +80,7 @@ module Refinery
         end
         tag_helper_class.module_eval do
           def asset_file_path(path)
-            unless (return_path = Pathname.new(File.join(path.split('?').first))).exist?
+            unless (return_path = Pathname.new(File.join(config.assets_dir, path.split('?').first))).exist?
               this_asset_filename = path.split('?').first.to_s.gsub(/^\//, '')
               ::Refinery::Plugins.registered.pathnames.each do |pathname|
                 if (pathname_asset_path = pathname.join('public', this_asset_filename)).exist?
