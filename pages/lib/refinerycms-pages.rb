@@ -7,6 +7,9 @@ module Refinery
   module Pages
 
     autoload :InstanceMethods, File.expand_path('../refinery/pages/instance_methods', __FILE__)
+    module Admin
+      autoload :InstanceMethods, File.expand_path('../refinery/pages/admin/instance_methods', __FILE__)
+    end
 
     class << self
       attr_accessor :root
@@ -26,6 +29,7 @@ module Refinery
 
       refinery.after_inclusion do
         ::ApplicationController.send :include, ::Refinery::Pages::InstanceMethods
+        ::Admin::BaseController.send :include, ::Refinery::Pages::Admin::InstanceMethods
       end
 
       config.after_initialize do
