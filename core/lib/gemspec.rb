@@ -19,8 +19,8 @@ Gem::Specification.new do |s|
   s.require_paths     = %w(lib)
   s.executables       = %w(#{Pathname.glob(gempath.join('bin/*')).map{|d| d.relative_path_from(gempath)}.sort.join(" ")})
 
-  s.add_dependency 'refinerycms-base',            '~> #{::Refinery::Version}'
-  s.add_dependency 'refinerycms-settings',        '~> #{::Refinery::Version}'
+  s.add_dependency 'refinerycms-base',            '= #{::Refinery::Version}'
+  s.add_dependency 'refinerycms-settings',        '= #{::Refinery::Version}'
   s.add_dependency 'refinerycms-generators',      '~> 1.0'
   s.add_dependency 'acts_as_indexed',             '~> 0.7'
   s.add_dependency 'friendly_id_globalize3',      '~> 3.2.1'

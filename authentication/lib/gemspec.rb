@@ -19,7 +19,7 @@ Gem::Specification.new do |s|
   s.require_paths     = %w(lib)
   s.executables       = %w(#{Pathname.glob(gempath.join('bin/*')).map{|d| d.relative_path_from(gempath)}.sort.join(" ")})
 
-  s.add_dependency 'refinerycms-core', '~> #{::Refinery::Version}'
+  s.add_dependency 'refinerycms-core', '= #{::Refinery::Version}'
   s.add_dependency 'devise',           '~> 1.2.0'
 
   s.files             = [

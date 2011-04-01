@@ -1,3 +1,9 @@
+## 0.9.9.15 [1 April 2011]
+
+* Fixed asset caching of files in `public/stylesheets/`. [Sergio Cambra](https://github.com/scambra)
+* All dependencies now have an absolute version dependency (e.g. '= 0.9.9.15' rather than '~> 0.9.9.15') to prevent Refinery auto-updating. [Philip Arndt](https://github.com/parndt)
+* [See full list](https://github.com/resolve/refinerycms/compare/0.9.9.14...0.9.9.15)
+
 ## 0.9.9.14 [31 March 2011]
 
 * Added `refinery.before_inclusion` for running extra functionality just before Refinery attaches to Rails. [Philip Arndt](https://github.com/parndt)
