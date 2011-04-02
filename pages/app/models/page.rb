@@ -262,8 +262,10 @@ class Page < ActiveRecord::Base
     end
 
     def expire_page_caching
-      if File.writable?(Rails.cache.cache_path)
-        Pathname.glob(File.join(Rails.cache.cache_path, '**', '*pages*')).each(&:delete)
+      begin
+        Rails.cache.delete_matched(/.*pages.*/)
+      rescue NotImplementedError
+        # TODO Inform user that cache backing store can't help us here ...
       end
     end
   end
