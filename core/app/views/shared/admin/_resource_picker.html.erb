@@ -7,7 +7,7 @@
                   :update_resource => "current_resource_#{field}",
                   :update_text => "current_resource_text_#{field}",
                   :callback => "resource_changed_#{field}",
-                  :field => [f.object_name, field].join('_'),
+                  :field => [f.object_name.gsub(/\]\[|[^-a-zA-Z0-9:.]/, "_").sub(/_$/, ""), field].join('_'),
                   :current_link => "#{resource.url if resource.present?}",
                   :height => 480
                 })
@@ -45,7 +45,7 @@
       $('#no_resource_selected_<%= field %>').hide();
       $('iframe#dialog_iframe').dialog("close");
       $('iframe#dialog_iframe').remove().parents(".ui-dialog").remove();
-      $('#<%= f.object_name %>_<%= field %>').val(callback_args.id);
+      $('#<%= f.object_name.gsub(/\]\[|[^-a-zA-Z0-9:.]/, "_").sub(/_$/, "") %>_<%= field %>').val(callback_args.id);
       $('#current_resource_link_<%= field %>').attr('href', $('#current_resource_link_<%= field %>').attr('href').replace(/current_link=([^&])*&/, "current_link=" + callback_args.href + "&"));
       $("#current_resource_<%= field %>").attr('href', callback_args.href);
       $('#current_resource_text_<%= field %>').html(callback_args.html);
