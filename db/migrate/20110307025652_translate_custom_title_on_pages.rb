@@ -25,6 +25,8 @@ class TranslateCustomTitleOnPages < ActiveRecord::Migration
 
     remove_column ::Page::Translation.table_name, :custom_title
 
+    ::Page.translated_attribute_names.delete(:custom_title)
+
     ::Page::Translation.reset_column_information
   end
 end

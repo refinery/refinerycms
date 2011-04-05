@@ -10,8 +10,6 @@ class AddLocaleToSlugs < ActiveRecord::Migration
   def self.down
     remove_column :slugs, :locale
 
-    remove_index :slugs, :locale
-
     ::Slug.reset_column_information
   end
 end
