@@ -28,7 +28,12 @@ module Admin
 
         # Check whether we need to override e.g. on the pages form.
         unless params[:switch_locale] or @page.nil? or @page.slugs.where(:locale => Refinery::I18n.current_locale).nil? or !@page.persisted?
-          Thread.current[:globalize_locale] = @page.slug.locale
+          if @page.slug.nil? and @page.slugs.length > 0
+            @page.slug = @page.slugs[0]
+          end
+          if @page.slug
+            Thread.current[:globalize_locale] = @page.slug.locale
+          end
         end
       else
         Thread.current[:globalize_locale] = nil

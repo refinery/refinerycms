@@ -5,11 +5,11 @@ class Page < ActiveRecord::Base
   translates :title, :meta_keywords, :meta_description, :browser_title, :custom_title if self.respond_to?(:translates)
 
   # Set up support for meta tags through translations.
-  if defined?(::Page::Translation) && Page::Translation.table_exists?
+  if defined?(::Page::Translation) && ::Page::Translation.table_exists?
     def translation
-      if @translation.nil? or @translation.try(:locale) != Globalize.locale
-        @translation = translations.with_locale(Globalize.locale).first
-        @translation ||= translations.build(:locale => Globalize.locale)
+      if @translation.nil? or @translation.try(:locale) != ::Globalize.locale
+        @translation = translations.with_locale(::Globalize.locale).first
+        @translation ||= translations.build(:locale => ::Globalize.locale)
       end
 
       @translation
@@ -293,7 +293,12 @@ class Page < ActiveRecord::Base
 
   # In the admin area we use a slightly different title to inform the which pages are draft or hidden pages
   def title_with_meta
-    title = [self.title.to_s]
+    if self.title.nil?
+      title = [::Page::Translation.where(:page_id => self.id).first.title.to_s]
+    else
+      title = [self.title.to_s]
+    end
+
     title << "<em>(#{::I18n.t('hidden', :scope => 'admin.pages.page')})</em>" unless show_in_menu?
     title << "<em>(#{::I18n.t('draft', :scope => 'admin.pages.page')})</em>" if draft?
 
