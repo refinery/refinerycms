@@ -7,5 +7,7 @@ class AddRememberCreatedAtToUsers < ActiveRecord::Migration
 
   def self.down
     remove_column :users, :remember_created_at
+
+    ::User.reset_column_information
   end
 end

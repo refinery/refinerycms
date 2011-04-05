@@ -7,5 +7,7 @@ class AddValueTypeToRefinerySettings < ActiveRecord::Migration
 
   def self.down
     remove_column ::RefinerySetting.table_name, :form_value_type
+
+    ::RefinerySetting.reset_column_information
   end
 end

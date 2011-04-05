@@ -10,7 +10,7 @@ class TranslateCustomTitleOnPages < ActiveRecord::Migration
 
     end
 
-    ::Page.reset_column_information
+    ::Page::Translation.reset_column_information
   end
 
   def self.down
@@ -24,5 +24,7 @@ class TranslateCustomTitleOnPages < ActiveRecord::Migration
     end
 
     remove_column ::Page::Translation.table_name, :custom_title
+
+    ::Page::Translation.reset_column_information
   end
 end
