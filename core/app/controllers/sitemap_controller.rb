@@ -6,7 +6,11 @@ class SitemapController < ::Refinery::FastController
 
     respond_to do |format|
       format.xml do
-        @pages = Page.live.includes(:parts)
+        @locales = if defined?(::Refinery::I18n) && ::Refinery::I18n.enabled?
+                     ::Refinery::I18n.frontend_locales
+                   else
+                     [::I18n.locale]
+                   end
       end
     end
   end
