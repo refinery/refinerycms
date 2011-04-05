@@ -5,6 +5,8 @@ class RemovePasswordSaltFromUsers < ActiveRecord::Migration
     User.all.each do |u|
       u.update_attribute(:encrypted_password, u.encrypted_password[29..-1])
     end
+
+    ::User.reset_column_information
   end
 
   def self.down

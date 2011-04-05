@@ -3,6 +3,8 @@ class RemoveTranslatedFieldsFromPages < ActiveRecord::Migration
     ::Page.translated_attribute_names.map(&:to_sym).each do |column_name|
       remove_column ::Page.table_name, column_name if ::Page.column_names.map(&:to_sym).include?(column_name)
     end
+
+    ::Page.reset_column_information
   end
 
   def self.down

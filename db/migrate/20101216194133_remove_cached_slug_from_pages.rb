@@ -3,6 +3,8 @@ class RemoveCachedSlugFromPages < ActiveRecord::Migration
     if ::Page.column_names.map(&:to_s).include?('cached_slug')
       remove_column ::Page.table_name, :cached_slug
     end
+
+    ::Page.reset_column_information
   end
 
   def self.down

@@ -9,6 +9,8 @@ class TranslateCustomTitleOnPages < ActiveRecord::Migration
       end
 
     end
+
+    ::Page.reset_column_information
   end
 
   def self.down
