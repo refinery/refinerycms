@@ -119,7 +119,7 @@ GEM
       gherkin (>= 2.3.5)
       json (>= 1.4.6)
       term-ansicolor (>= 1.0.5)
-    cucumber-rails (0.4.0)
+    cucumber-rails (0.4.1)
       cucumber (>= 0.10.1)
       nokogiri (>= 1.4.4)
       rack-test (>= 0.5.7)

@@ -3,6 +3,7 @@
 * Improved resource picker. [Will Marshall](https://github.com/willrjmarshall)
 * Improved robustness of `Page#expire_page_caching` for both `ActiveSupport::Cache::FileStore` and `ActiveSupport::Cache::MemoryStore`. [Jeff Hall](https://github.com/zenchicken)
 * Optimised index sizes on MySQL. [Ruslan Doroshenko](https://github.com/rdoroshenko)
+* Changed default cache store to `:memory_store`. [Philip Arndt](https://github.com/parndt)
 * `rake db:migrate` and `rake db:rollback` now works consistently when migrations from other engines are in the mix. [Vaughn Draughon](https://github.com/rocksolidwebdesign)
 
 * [See full list](https://github.com/resolve/refinerycms/compare/0.9.9.15...0.9.9.16)
