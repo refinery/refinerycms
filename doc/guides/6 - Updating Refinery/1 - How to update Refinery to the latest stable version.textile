@@ -6,7 +6,7 @@ Refinery constantly changes as we add new features and fix bugs. This guide will
 
 endprologue.
 
-WARNING. Check out this post "http://www.refinerycms.com/blog/whats-new-in-refinery-cms-099":http://www.refinerycms.com/blog/whats-new-in-refinery-cms-099 to see how to upgrade to 0.9.9.
+WARNING. Check out this post "http://www.refinerycms.com/blog/whats-new-in-refinery-cms-099":http://www.refinerycms.com/blog/whats-new-in-refinery-cms-099 to see how to upgrade to 0.9.9 from 0.9.8.9. You can't update from 0.9.8.9 to anything later than 0.9.9 without going to 0.9.9 first.
 
 h3. Introduction
 
@@ -19,7 +19,7 @@ Take a look at "http://rubygems.org/gems/refinerycms":http://rubygems.org/gems/r
 Edit your +Gemfile+ to reference the latest version of Refinery.
 
 <ruby>
-gem 'refinerycms', '= 0.9.9.10'
+gem 'refinerycms', '= 0.9.9.15'
 </ruby>
 
 Now install the new gems using bundler ('bundle install' is outdated):
