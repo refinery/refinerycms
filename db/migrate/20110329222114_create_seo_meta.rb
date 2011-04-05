@@ -66,6 +66,16 @@ class CreateSeoMeta < ActiveRecord::Migration
       )
     end
 
+    ::SeoMeta.attributes.keys.each do |k|
+      ::Page::Translation.module_eval %{
+        def #{k}
+        end
+
+        def #{k}=(*args)
+        end
+      }
+    end
+
     drop_table :seo_meta
   end
 
