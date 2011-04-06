@@ -20,6 +20,11 @@ describe Resource do
     reset_resource
   end
 
+  # clean up after ourselves.
+  after(:each) do
+    Resource.destroy_all
+  end
+
   context "with valid attributes" do
     it "should create successfully" do
       @resource.errors.empty?
