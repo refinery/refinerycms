@@ -2,10 +2,10 @@
 
 Gem::Specification.new do |s|
   s.name              = %q{refinerycms-authentication}
-  s.version           = %q{0.9.9.15}
+  s.version           = %q{0.9.9.16}
   s.summary           = %q{Authentication engine for Refinery CMS}
   s.description       = %q{The default authentication engine for Refinery CMS}
-  s.date              = %q{2011-04-01}
+  s.date              = %q{2011-04-07}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
   s.rubyforge_project = %q{refinerycms}
@@ -14,7 +14,7 @@ Gem::Specification.new do |s|
   s.require_paths     = %w(lib)
   s.executables       = %w()
 
-  s.add_dependency 'refinerycms-core', '= 0.9.9.15'
+  s.add_dependency 'refinerycms-core', '= 0.9.9.16'
   s.add_dependency 'devise',           '~> 1.2.0'
 
   s.files             = [
