@@ -26,7 +26,7 @@ module Refinery
     private
       def store_current_location!
         unless admin?
-          session[:website_return_to] = @page.url if @page.try(:present?)
+          session[:website_return_to] = url_for(@page.url) if @page.try(:present?)
         else
           super
         end
