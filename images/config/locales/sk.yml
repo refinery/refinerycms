@@ -29,6 +29,8 @@ sk:
         button_text: Vložiť
         resize_image: Upraviť veľkosť?
         size: Veľkosť
+      form_url:
+        button_text: Vložiť
       insert:
         existing_image: Knižnica
         new_image: Nový obrázok

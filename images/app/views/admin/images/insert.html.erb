@@ -12,6 +12,10 @@
       <label for='image_type_upload' class='stripped'><%= t('.new_image') %></label>
     </span>
   <% end %>
+    <span id="url_image_radio" class="radio<%= " selected_radio" if !no_errors and !any_images %>">
+      <input type='radio' name='image_type' value='url_image' id='image_type_url'<%= " checked='true'" if (!any_images or !no_errors) and !searching? %> />
+      <label for='image_type_url' class='stripped'><%= 'External' %></label>
+    </span>
 </div>
 
 <div id='dialog_main'>
@@ -36,12 +40,15 @@
                  :cancel_title => nil
                } %>
   <% end %>
+	<div id='url_image_area' class="dialog_area" style="display:none;" >
+	 <%= render :partial => "form_url", :locals => {:insert => true} %>
+	</div>
 </div>
 
 <% content_for :javascripts do %>
   <script>
     $(document).ready(function(){
-      image_dialog.init(<%= @callback.present? ? "self.parent.#{@callback}" : "null" %>);
+		new image_dialog(<%= @callback.present? ? "self.parent.#{@callback}" : "null" %>);
     });
   </script>
 <% end %>

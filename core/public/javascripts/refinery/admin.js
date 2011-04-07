@@ -762,126 +762,6 @@ var page_options = {
 
 };
 
-var image_dialog = {
-  initialised: false
-  , callback: null
-
-  , init: function(callback){
-    this.callback = callback;
-    this.init_tabs();
-    this.init_select();
-    this.init_actions();
-    this.initialised = true;
-    return this;
-  }
-
-  , init_tabs: function(){
-    var radios = $('#dialog_menu_left input:radio');
-    var selected = radios.parent().filter(".selected_radio").find('input:radio').first() || radios.first();
-
-    radios.click(function(){
-      link_dialog.switch_area($(this));
-    });
-
-    selected.attr('checked', 'true');
-    link_dialog.switch_area(selected);
-  }
-
-  , switch_area: function(radio){
-    $('#dialog_menu_left .selected_radio').removeClass('selected_radio');
-    $(radio).parent().addClass('selected_radio');
-    $('#dialog_main .dialog_area').hide();
-    $('#' + radio.value + '_area').show();
-  }
-
-  , init_select: function(){
-    $('#existing_image_area_content ul li img').click(function(){
-        image_dialog.set_image(this);
-    });
-    //Select any currently selected, just uploaded...
-    if ((selected_img = $('#existing_image_area_content ul li.selected img')).length > 0) {
-      image_dialog.set_image(selected_img.first());
-    }
-  }
-
-  , set_image: function(img){
-    if ($(img).length > 0) {
-      $('#existing_image_area_content ul li.selected').removeClass('selected');
-
-      $(img).parent().addClass('selected');
-      var imageId = $(img).attr('data-id');
-      var geometry = $('#existing_image_size_area li.selected a').attr('data-geometry');
-      var size = $('#existing_image_size_area li.selected a').attr('data-size');
-      var resize = $("#wants_to_resize_image").is(':checked');
-
-      image_url = resize ? $(img).attr('data-' + size) : $(img).attr('data-original');
-
-      if (parent) {
-        if ((wym_src = parent.document.getElementById('wym_src')) != null) {
-          wym_src.value = image_url;
-        }
-        if ((wym_title = parent.document.getElementById('wym_title')) != null) {
-          wym_title.value = $(img).attr('title');
-        }
-        if ((wym_alt = parent.document.getElementById('wym_alt')) != null) {
-          wym_alt.value = $(img).attr('alt');
-        }
-        if ((wym_size = parent.document.getElementById('wym_size')) != null
-            && typeof(geometry) != 'undefined') {
-          wym_size.value = geometry.replace(/[<>=]/g, '');
-        }
-      }
-    }
-  }
-
-  , submit_image_choice: function(e) {
-    e.preventDefault();
-    if((img_selected = $('#existing_image_area_content ul li.selected img').get(0)) && $.isFunction(this.callback))
-    {
-      this.callback(img_selected);
-    }
-
-    close_dialog(e);
-  }
-
-  , init_actions: function(){
-    var _this = this;
-    // get submit buttons not inside a wymeditor iframe
-    $('#existing_image_area .form-actions-dialog #submit_button')
-      .not('.wym_iframe_body #existing_image_area .form-actions-dialog #submit_button')
-      .click($.proxy(_this.submit_image_choice, _this));
-
-    // get cancel buttons not inside a wymeditor iframe
-    $('.form-actions-dialog #cancel_button')
-      .not('.wym_iframe_body .form-actions-dialog #cancel_button')
-      .click($.proxy(close_dialog, _this));
-
-    $('#existing_image_size_area ul li a').click(function(e) {
-      $('#existing_image_size_area ul li').removeClass('selected');
-      $(this).parent().addClass('selected');
-      $('#existing_image_size_area #wants_to_resize_image').attr('checked', 'checked');
-      image_dialog.set_image($('#existing_image_area_content ul li.selected img'));
-      e.preventDefault();
-    });
-
-    $('#existing_image_size_area #wants_to_resize_image').change(function(){
-      if($(this).is(":checked")) {
-        $('#existing_image_size_area ul li:first a').click();
-      } else {
-        $('#existing_image_size_area ul li').removeClass('selected');
-        image_dialog.set_image($('#existing_image_area_content ul li.selected img'));
-      }
-    });
-
-    image_area = $('#existing_image_area').not('#wym_iframe_body #existing_image_area');
-    image_area.find('.form-actions input#submit_button').click($.proxy(function(e) {
-      e.preventDefault();
-      $(this.document.getElementById('wym_dialog_submit')).click();
-    }, parent));
-    image_area.find('.form-actions a.close_dialog').click(close_dialog);
-  }
-};
-
 var list_reorder = {
   initialised: false
   , init: function() {
@@ -1134,3 +1014,189 @@ parseURL = function(url)
 iframed = function() {
   return (parent && parent.document && parent.document.location.href != document.location.href && $.isFunction(parent.$));
 };
+
+
+// simpe extend object
+// thnx to Martin Cohen http://coh.io/
+function objExtends( Child, Parent ) {
+	function Q() {};
+	Q.prototype = Parent.prototype;
+	Child.prototype = new Q;
+	Child.prototype.constructor = Child;
+}
+
+/**
+ * default editor class with processing tabs
+ */
+function editor_dialog () {
+	return this.init();
+}
+
+editor_dialog.prototype = {
+	initialised: false,
+
+// @todo
+//	close_dialog: function() {},
+	
+	init_tabs: function(){
+		var _this = this;
+		var radios = $('#dialog_menu_left input:radio');
+		var selected = radios.parent().filter('.selected_radio').find('input:radio').first() || radios.first();
+
+		radios.click(function(){
+			_this.switch_area($(this));
+		});
+
+		selected.attr('checked', 'true');
+		_this.switch_area(selected);
+	},
+
+	switch_area: function(area){
+		$('#dialog_menu_left .selected_radio').removeClass('selected_radio');
+		$(area).parent().addClass('selected_radio');
+		$('#dialog_main .dialog_area').hide();
+		$('#' + $(area).val() + '_area').show();
+	},
+
+	init: function(callback){
+		this.init_tabs();
+		this.initialised = true;
+	}
+}
+
+image_dialog = function(callback) {
+	this.callback = callback;
+	this.init_select();
+	this.init_actions();
+	this.init();
+}
+
+objExtends(image_dialog, editor_dialog);
+
+image_dialog.prototype.callback = null;
+
+image_dialog.prototype.init_select = function(){
+	var _this = this;
+
+	$('#existing_image_area_content li img').click(function(){
+		_this.set_image(this);
+	});
+	//Select any currently selected, just uploaded...
+	if ((selected_img = $('#existing_image_area_content .selected img')).length > 0) {
+		_this.set_image(selected_img.first());
+	}
+}
+
+image_dialog.prototype.init_actions = function (){
+	var _this = this;
+
+	// get submit buttons not inside a wymeditor iframe
+	$('#existing_image_area .form-actions-dialog #submit_button')
+	.not('.wym_iframe_body #existing_image_area .form-actions-dialog #submit_button')
+	.click($.proxy(_this.submit_image_choice, _this));
+
+	// get cancel buttons not inside a wymeditor iframe
+	$('.form-actions-dialog .close_dialog')
+	.not('.wym_iframe_body .form-actions-dialog .close_dialog')
+	.click($.proxy(close_dialog, _this));
+
+	$('#existing_image_size_area ul li a').click(function(e) {
+		$('#existing_image_size_area ul li').removeClass('selected');
+		$(this).parent().addClass('selected');
+		$('#existing_image_size_area #wants_to_resize_image').attr('checked', 'checked');
+		_this.set_image($('#existing_image_area_content ul li.selected img'));
+		e.preventDefault();
+	});
+
+	$('#existing_image_size_area #wants_to_resize_image').change(function(){
+		if($(this).is(":checked")) {
+			$('#existing_image_size_area ul li:first a').click();
+		} else {
+			$('#existing_image_size_area ul li').removeClass('selected');
+			_this.set_image($('#existing_image_area_content ul li.selected img'));
+		}
+	});
+
+	var image_area = $('#existing_image_area').not('#wym_iframe_body #existing_image_area');
+	image_area.find('.form-actions input#submit_button').click($.proxy(function(e) {
+		e.preventDefault();
+		$(this.document.getElementById('wym_dialog_submit')).click();
+	}, parent));
+
+	$('#dialog_main').find('.form-actions .close_dialog').click(close_dialog);
+
+	// @todo refactor (rewrite in a separatemethod)
+	$('#image_url_submit_button').click(function (e) {
+		e.preventDefault();
+
+		var image_url = $('#image-url').val();
+		var image_alt = $('#image-url-alt').val();
+
+		// @todo process user errors
+		if (image_url.length > 0 && _this.is_url(image_url)) {
+			if (parent) {
+				if ((wym_src = parent.document.getElementById('wym_src')) != null) {
+					wym_src.value = image_url;
+				}
+
+				if (image_alt.length > 0) {
+					if ((wym_alt = parent.document.getElementById('wym_alt')) != null) {
+						wym_alt.value = image_alt;
+					}
+					if ((wym_title = parent.document.getElementById('wym_title')) != null) {
+						wym_title.value = image_alt;
+					}
+				}
+
+				$(parent.document.getElementById('wym_dialog_submit')).click();
+			}
+		} 
+	});
+}
+
+image_dialog.prototype.submit_image_choice = function(e) {
+	e.preventDefault();
+	if((img_selected = $('#existing_image_area_content ul li.selected img').get(0)) && $.isFunction(this.callback))
+	{
+		this.callback(img_selected);
+	}
+
+	close_dialog(e);
+}
+
+image_dialog.prototype.set_image = function(img){
+	var _this = this;
+
+	if ($(img).length > 0) {
+		$('#existing_image_area_content ul li.selected').removeClass('selected');
+
+		$(img).parent().addClass('selected');
+		var imageId = $(img).attr('data-id');
+		var geometry = $('#existing_image_size_area li.selected a').attr('data-geometry');
+		var size = $('#existing_image_size_area li.selected a').attr('data-size');
+		var resize = $("#wants_to_resize_image").is(':checked');
+
+		image_url = resize ? $(img).attr('data-' + size) : $(img).attr('data-original');
+
+		if (parent) {
+			if ((wym_src = parent.document.getElementById('wym_src')) != null) {
+				wym_src.value = image_url;
+			}
+			if ((wym_title = parent.document.getElementById('wym_title')) != null) {
+				wym_title.value = $(img).attr('title');
+			}
+			if ((wym_alt = parent.document.getElementById('wym_alt')) != null) {
+				wym_alt.value = $(img).attr('alt');
+			}
+			if ((wym_size = parent.document.getElementById('wym_size')) != null
+				&& typeof(geometry) != 'undefined') {
+				wym_size.value = geometry.replace(/[<>=]/g, '');
+			}
+		}
+	}
+}
+
+image_dialog.prototype.is_url = function (str) {
+	var regexp = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
+	return regexp.test(str);
+}

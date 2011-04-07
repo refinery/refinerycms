@@ -1,0 +1,19 @@
+<div class="field" style="padding: 4px 12px;">
+  <label for="image-url">Url:</label>
+  <input type="text" class="text url" id="image-url" name="image_url" style="width: 25em;" /><br />
+  <label for="image-url-alt">Alt:</label>
+  <input type="text" class="text" id="image-url-alt" name="image_url_alt" style="width: 25em;" />
+</div>
+
+<%= render :partial => "/shared/admin/form_actions",
+		 :locals => {
+		   :f => nil,
+		   :cancel_url => '',
+		   #:submit_button_text => 'Insert',
+		   :submit_button_text => t('.button_text'),
+		   :hide_submit => false,
+		   :hide_cancel => false,
+		   :hide_delete => true,
+		   :cancel_title => nil,
+		   :form_prefix => 'image_url_'
+		 } %>

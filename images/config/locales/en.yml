@@ -29,6 +29,8 @@ en:
         button_text: Insert
         resize_image: Resize the image?
         size: Size
+      form_url:
+        button_text: Insert
       insert:
         existing_image: Library
         new_image: Upload

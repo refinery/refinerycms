@@ -1,7 +1,12 @@
 <%
+
+  unless defined?(form_prefix)
+    form_prefix = ''
+  end  
+  
   unless (hide_submit ||= false)
     submit_button_text  ||= t('.save')
-    submit_button_id    ||= "submit_button"
+    submit_button_id    ||= form_prefix + "submit_button"
     submit_button_title ||= nil
   end
 

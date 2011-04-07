@@ -29,6 +29,8 @@ cs:
         button_text: Vložit
         resize_image: Změnít velikost?
         size: Velikost
+      form_url:
+        button_text: Vložit
       insert:
         existing_image: Existující obrázek
         new_image: Nový obrázek
