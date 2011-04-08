@@ -42,7 +42,8 @@ class Page < ActiveRecord::Base
            :class_name => "PagePart",
            :order => "position ASC",
            :inverse_of => :page,
-           :dependent => :destroy
+           :dependent => :destroy,
+           :include => :translations
 
   accepts_nested_attributes_for :parts, :allow_destroy => true
 
