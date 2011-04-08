@@ -83,3 +83,4 @@ your_*.*
 db/schema.rb
 
 # END REFINERY CMS DEVELOPMENT =================================================
+vendor/ruby
