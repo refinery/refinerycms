@@ -57,7 +57,7 @@ class Page < ActiveRecord::Base
 
   scope :live, where(:draft => false)
   scope :by_title, lambda {|t|
-    where(:id => Page::Translation.where(:locale => Globalize.locale, :title => t).map(&:page_id))
+    where(:id => Page::Translation.where(:locale => Globalize.locale, :title => t).select('page_id AS id'))
   }
 
   # Shows all pages with :show_in_menu set to true, but it also
@@ -66,7 +66,7 @@ class Page < ActiveRecord::Base
   # using all of the page_ids we further filter against this model's table.
   scope :in_menu, lambda {
     where(:show_in_menu => true).includes(:translations).where(
-      :id => Page::Translation.where(:locale => Globalize.locale).map(&:page_id)
+      :id => Page::Translation.where(:locale => Globalize.locale).select('page_id AS id')
     )
   }
 
