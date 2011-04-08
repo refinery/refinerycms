@@ -27,16 +27,18 @@ module Refinery
         if image.present?
           # call rails' image tag function with default alt tag.
           # if any other options were supplied these are merged in and can replace the defaults.
-          # if the geomtry is nil, then we know the image height and width already.
+          # if the geometry is nil, then we know the image height and width already.
           # detect nil geometry or cropping presence which is where we can guess the dimensions
+          # in other case get them from generated thumbnail
+          thumb = geometry.nil? ? image : image.thumbnail(geometry)
           unless geometry.nil? or !(split_geometry = geometry.to_s.split('#')).many? or !(split_geometry = split_geometry.first.split('x')).many?
             image_width, image_height = split_geometry
           else
-            image_with = nil
-            image_height = nil
+            image_with = thumb.width
+            image_height = thumb.height
           end
 
-          image_tag(image.thumbnail(geometry).url, {
+          image_tag(thumb.url, {
             :alt => image.respond_to?(:title) ? image.title : image.image_name,
             :width => image_width,
             :height => image_height
