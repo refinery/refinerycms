@@ -33,10 +33,11 @@
                          :link_to_arguments => {}
                        } %>
           </ul>
-          <%= will_paginate @pages,
-                            :param_name => :page,
-                            :renderer => Refinery::LinkRenderer,
-                            :id => 'pages_paginate' %>
+          <%= paginate @pages#,
+                            #:param_name => :page,
+                            #:renderer => Refinery::LinkRenderer,
+                            #:id => 'pages_paginate'
+          %>
         </div>
       </div>
     </div>
