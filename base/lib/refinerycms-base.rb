@@ -38,3 +38,27 @@ module Refinery
 end
 
 ::Refinery.engines << "base"
+
+# So that we can "use" the Fiber class' basic functionality.
+unless defined?(::Fiber)
+  class Fiber
+
+    def initialize(&block)
+      super
+      @block = block
+      self
+    end
+
+    def self.yield(*args)
+      if args.first.respond_to?(:call)
+        args.first.call
+      else
+        args.first
+      end
+    end
+
+    def resume
+      self.class.yield(@block)
+    end
+  end
+end
