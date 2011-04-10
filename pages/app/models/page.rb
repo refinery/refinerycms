@@ -53,19 +53,25 @@ class Page < ActiveRecord::Base
   after_save :reposition_parts!, :invalidate_child_cached_url, :expire_page_caching
   after_destroy :expire_page_caching
 
-  scope :live, where(:draft => false)
-  scope :by_title, lambda {|t|
-    where(:id => Page::Translation.where(:locale => Globalize.locale, :title => t).select('page_id AS id'))
+  # Wrap up the logic of finding the pages based on the translations table.
+  scope :with_globalize, lambda {|t|
+    if defined?(::Page::Translation)
+      t = {:locale => Globalize.locale}.merge(t || {})
+      where(:id => ::Page::Translation.where(t).select('page_id AS id'))
+    else
+      where(t)
+    end
   }
+
+  scope :live, where(:draft => false)
+  scope :by_title, lambda {|t| with_globalize(:title => t)}
 
   # Shows all pages with :show_in_menu set to true, but it also
   # rejects any page that has not been translated to the current locale.
   # This works using a query against the translated content first and then
   # using all of the page_ids we further filter against this model's table.
   scope :in_menu, lambda {
-    where(:show_in_menu => true).includes(:translations).where(
-      :id => Page::Translation.where(:locale => Globalize.locale).select('page_id AS id')
-    )
+    where(:show_in_menu => true).with_globalize({})
   }
 
   # when a dialog pops up to link to a page, how many pages per page should there be
@@ -292,10 +298,10 @@ class Page < ActiveRecord::Base
 
   # In the admin area we use a slightly different title to inform the which pages are draft or hidden pages
   def title_with_meta
-    if self.title.nil?
-      title = [::Page::Translation.where(:page_id => self.id).first.title.to_s]
+    title = if self.title.nil?
+      [::Page::Translation.where(:page_id => self.id, :locale => Globalize.locale).first.title.to_s]
     else
-      title = [self.title.to_s]
+      [self.title.to_s]
     end
 
     title << "<em>(#{::I18n.t('hidden', :scope => 'admin.pages.page')})</em>" unless show_in_menu?
