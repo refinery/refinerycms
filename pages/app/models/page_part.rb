@@ -13,7 +13,7 @@ class PagePart < ActiveRecord::Base
   end
 
   before_save :normalise_text_fields
-  if defined?(::PagePart::Translation) && ::PagePart::Translation.table_exists?
+  if defined?(::PagePart::Translation)
     ::PagePart::Translation.module_eval do
       attr_accessible :locale
     end
