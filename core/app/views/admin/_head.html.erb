@@ -1,19 +1,19 @@
 <%
   if (yielded_head = yield(:head)).present?
-    logger.warn "\n-- DEPRECATION WARNING --"
-    logger.warn "The use of 'content_for :head' is DEPRECATED for the admin layouts."
-    logger.warn "For stylesheets, use content_for :stylesheets"
-    logger.warn "For javascripts, use content_for :javascripts"
-    logger.warn "For meta tags, use content_for :meta"
-    logger.warn "This change is necessary so that we can deliver a performant experience for the user."
-    logger.warn "Called from: #{caller.detect{|c| c =~ %r{#{Rails.root.to_s}}}.inspect.to_s.split(':in').first}\n\n"
+    warn "\n-- DEPRECATION WARNING --"
+    warn "The use of 'content_for :head' is DEPRECATED for the admin layouts."
+    warn "For stylesheets, use content_for :stylesheets"
+    warn "For javascripts, use content_for :javascripts"
+    warn "For meta tags, use content_for :meta"
+    warn "This change is necessary so that we can deliver a performant experience for the user."
+    warn "Called from: #{caller.detect{|c| c =~ %r{#{Rails.root.to_s}}}.inspect.to_s.split(':in').first}\n\n"
   end
   if (yielded_head_libraries = yield(:head)).present?
-    logger.warn "\n-- DEPRECATION WARNING --"
-    logger.warn "The use of 'content_for :head_libraries' is DEPRECATED for the admin layouts."
-    logger.warn "Please use content_for :before_javascript_libraries or content_for :after_javascript_libraries instead."
-    logger.warn "This change is necessary so that we can deliver a performant experience for the user."
-    logger.warn "Called from: #{caller.detect{|c| c =~ %r{#{Rails.root.to_s}}}.inspect.to_s.split(':in').first}\n\n"
+    warn "\n-- DEPRECATION WARNING --"
+    warn "The use of 'content_for :head_libraries' is DEPRECATED for the admin layouts."
+    warn "Please use content_for :before_javascript_libraries or content_for :after_javascript_libraries instead."
+    warn "This change is necessary so that we can deliver a performant experience for the user."
+    warn "Called from: #{caller.detect{|c| c =~ %r{#{Rails.root.to_s}}}.inspect.to_s.split(':in').first}\n\n"
   end
 -%>
 <head>

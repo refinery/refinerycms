@@ -9,7 +9,6 @@ class Page < ActiveRecord::Base
                   :parts_attributes, :browser_title, :meta_description,
                   :custom_title_type, :parent_id
 
-
   # Set up support for meta tags through translations.
   if defined?(::Page::Translation)
     attr_accessible :title
@@ -27,10 +26,8 @@ class Page < ActiveRecord::Base
         @translation
       end
 
-      # Instruct the Translation model to have meta tags.
-      ::Page::Translation.module_eval do
-        is_seo_meta
-      end
+    # Instruct the Translation model to have meta tags.
+    ::Page::Translation.send :is_seo_meta
 
       # Delegate all SeoMeta attributes to the active translation.
       fields = ::SeoMeta.attributes.keys.map{|a| [a, :"#{a}="]}.flatten
@@ -55,7 +52,8 @@ class Page < ActiveRecord::Base
            :class_name => "PagePart",
            :order => "position ASC",
            :inverse_of => :page,
-           :dependent => :destroy
+           :dependent => :destroy,
+           :include => :translations
 
   accepts_nested_attributes_for :parts, :allow_destroy => true
 
@@ -67,19 +65,25 @@ class Page < ActiveRecord::Base
   after_save :reposition_parts!, :invalidate_child_cached_url, :expire_page_caching
   after_destroy :expire_page_caching
 
-  scope :live, where(:draft => false)
-  scope :by_title, lambda {|t|
-    where(:id => Page::Translation.where(:locale => Globalize.locale, :title => t).map(&:page_id))
+  # Wrap up the logic of finding the pages based on the translations table.
+  scope :with_globalize, lambda {|t|
+    if defined?(::Page::Translation)
+      t = {:locale => Globalize.locale}.merge(t || {})
+      where(:id => ::Page::Translation.where(t).select('page_id AS id'))
+    else
+      where(t)
+    end
   }
+
+  scope :live, where(:draft => false)
+  scope :by_title, lambda {|t| with_globalize(:title => t)}
 
   # Shows all pages with :show_in_menu set to true, but it also
   # rejects any page that has not been translated to the current locale.
   # This works using a query against the translated content first and then
   # using all of the page_ids we further filter against this model's table.
   scope :in_menu, lambda {
-    where(:show_in_menu => true).includes(:translations).where(
-      :id => Page::Translation.where(:locale => Globalize.locale).map(&:page_id)
-    )
+    where(:show_in_menu => true).with_globalize({})
   }
 
   # when a dialog pops up to link to a page, how many pages per page should there be
@@ -306,10 +310,10 @@ class Page < ActiveRecord::Base
 
   # In the admin area we use a slightly different title to inform the which pages are draft or hidden pages
   def title_with_meta
-    if self.title.nil?
-      title = [::Page::Translation.where(:page_id => self.id).first.title.to_s]
+    title = if self.title.nil?
+      [::Page::Translation.where(:page_id => self.id, :locale => Globalize.locale).first.title.to_s]
     else
-      title = [self.title.to_s]
+      [self.title.to_s]
     end
 
     title << "<em>(#{::I18n.t('hidden', :scope => 'admin.pages.page')})</em>" unless show_in_menu?

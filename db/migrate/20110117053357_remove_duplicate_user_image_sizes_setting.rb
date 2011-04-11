@@ -10,6 +10,9 @@ class RemoveDuplicateUserImageSizesSetting < ActiveRecord::Migration
       else
         settings.detect { |setting| setting[:destroyable] == true }.destroy
       end
+      say "Removed duplicate user image sizes settings"
+    else
+      say "Nothing done, no duplicate settings found"
     end
   end
 
