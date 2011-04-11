@@ -1,6 +1,7 @@
 class PagePart < ActiveRecord::Base
 
-  attr_accessible :title, :content, :position, :body
+  attr_accessible :title, :content, :position, :body, :created_at,
+                  :updated_at, :page_id
   belongs_to :page
 
   validates :title, :presence => true

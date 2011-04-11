@@ -4,17 +4,19 @@ class Page < ActiveRecord::Base
 
   translates :title, :meta_keywords, :meta_description, :browser_title, :custom_title if self.respond_to?(:translates)
 
-  attr_accessible :id, :deletable, :link_url, :menu_match,
+  attr_accessible :id, :deletable, :link_url, :menu_match, :meta_keywords,
                   :skip_to_first_child, :position, :show_in_menu, :draft,
                   :parts_attributes, :browser_title, :meta_description,
-                  :custom_title_type, :parent_id
+                  :custom_title_type, :parent_id, :custom_title,
+                  :created_at, :updated_at, :page_id
 
   # Set up support for meta tags through translations.
   if defined?(::Page::Translation)
     attr_accessible :title
     # set allowed attributes for mass assignment
     ::Page::Translation.module_eval do
-      attr_accessible :browser_title, :meta_description, :meta_keywords, :locale
+      attr_accessible :browser_title, :meta_description, :meta_keywords,
+                      :locale
     end
     if ::Page::Translation.table_exists?
       def translation
