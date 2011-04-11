@@ -4,6 +4,11 @@ class Page < ActiveRecord::Base
 
   translates :title, :meta_keywords, :meta_description, :browser_title, :custom_title if self.respond_to?(:translates)
 
+  attr_accessible :id, :title, :deletable, :link_url, :menu_match,
+                  :skip_to_first_child, :position, :show_in_menu, :draft,
+                  :parts_attributes, :browser_title, :meta_description,
+                  :meta_keywords, :custom_title_type, :parent_id, :custom_title
+
   # Set up support for meta tags through translations.
   if defined?(::Page::Translation) && ::Page::Translation.table_exists?
     def translation
@@ -18,6 +23,7 @@ class Page < ActiveRecord::Base
     # Instruct the Translation model to have meta tags.
     ::Page::Translation.module_eval do
       is_seo_meta
+      attr_accessible :browser_title, :meta_description, :meta_keywords, :locale
     end
 
     # Delegate all SeoMeta attributes to the active translation.

@@ -1,5 +1,6 @@
 class Resource < ActiveRecord::Base
 
+  attr_accessible :id, :file
   # What is the max resource size a user can upload
   MAX_SIZE_IN_MB = 50
 
