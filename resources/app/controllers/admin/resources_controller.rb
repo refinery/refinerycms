@@ -75,10 +75,10 @@ module Admin
     end
 
     def paginate_resources(conditions={})
-      @resources = Resource.paginate   :page => (@paginate_page_number ||= params[:page]),
-                                       :conditions => conditions,
-                                       :order => 'created_at DESC',
-                                       :per_page => Resource.per_page(from_dialog?)
+      @resources = Resource.page(@paginate_page_number ||= params[:page]).
+                            where(conditions).
+                            order('created_at DESC').
+                            per(Resource.per_page(from_dialog?))
     end
 
   end

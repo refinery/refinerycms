@@ -3,20 +3,16 @@ require 'net/http'
 module Admin
   class PagesDialogsController < Admin::DialogsController
 
-    crudify :page
-
     def link_to
-      # @pages = Page.paginate :page => params[:page],
-      #                        :conditions => {:parent_id => nil},
-      #                        :order => 'position ASC',
-      #                        :per_page => Page.per_page(dialog=true)
-      @pages = Page.page(params[:page]).per(Page.per_page(dialog=true)).order('position')
+      @pages = Page.page(params[:page]).
+                    where(:parent_id => nil).
+                    order('position').
+                    per(Page.per_page(true))
 
       if ::Refinery::Plugins.registered.names.include?('refinery_files')
-        # @resources = Resource.paginate :page => params[:resource_page],
-        #                                :order => 'created_at DESC',
-        #                                :per_page => Resource.per_page(dialog=true)
-        @resources = Resource.page(params[:resource_page]).order('created_at DESC').per(Resource.per_page(dialog=true))
+          @resources = Resource.page(params[:resource_page]).
+                              order('created_at DESC').
+                              per(Resource.per_page(true))
 
         # resource link
         if params[:current_link].present?

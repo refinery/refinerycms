@@ -33,10 +33,7 @@
                          :link_to_arguments => {}
                        } %>
           </ul>
-          <%= paginate @pages#,
-                            #:param_name => :page,
-                            #:renderer => Refinery::LinkRenderer,
-                            #:id => 'pages_paginate'
+          <%= paginate @pages, :id => 'pages_paginate'
           %>
         </div>
       </div>
@@ -107,11 +104,10 @@
               </li>
             <% end %>
           </ul>
-          <%= will_paginate @resources,
-                            :param_name => :resource_page,
-                            :renderer => Refinery::LinkRenderer,
-                            :params => {:paginating => "resource_file"},
-                            :id => 'resouces_paginate' %>
+          <%= paginate @resources,
+                       :param_name => :resource_page,
+                       :params => {:paginating => "resource_file"},
+                       :id => 'resouces_paginate' %>
         </div>
       </div>
     <% end %>
