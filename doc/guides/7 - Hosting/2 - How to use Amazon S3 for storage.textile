@@ -20,6 +20,26 @@ Refinery will use S3 for storage if it finds the +S3_KEY+, +S3_SECRET+, and +S3_
 
 There are a number of ways to set these with your credentials, including unix variables or settings them manually through Ruby using ENV.
 
+h4. Unix variables
+
+pre. $ export S3_KEY='fill_in_your_key_here'
+$ export S3_SECRET='fill_in_your_secret_key_here'
+$ export S3_BUCKET='fill_in_your_bucket_name_here'
+$ ...
+
+On the last line, fill in your preferred way of starting your Rails server.
+
+h4. Using Ruby ENV
+
+You can put the environment keys literally in any of the Rails config files like +config/environment.rb+ or
++config/environments/production.rb+:
+
+<ruby>
+ENV['S3_KEY']='fill_in_your_key_here'
+ENV['S3_SECRET']='fill_in_your_secret_key_here'
+ENV['S3_BUCKET']='fill_in_your_bucket_name_here'
+</ruby>
+
 h3. Turn off S3
 
 There are some cases where you have these three variables set but do not want to use S3. You can always manually set S3 to either false or true in any environment. For example, forcing S3 to always be off in development is as simple as adding the following line to the _end_ of +config/environments/development.rb+:
