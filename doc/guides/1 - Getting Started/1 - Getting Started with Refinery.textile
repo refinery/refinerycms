@@ -58,11 +58,11 @@ The engines Refinery comes with are:
 
 * *"Authentication":https://github.com/resolve/refinerycms/blob/master/doc/authentication.md* - manages users and sessions within Refinery.
 * *Core* - contains default layouts, views, javascripts and CSS. This engine also has an engine API for extending Refinery and everything Refinery needs to hook into Rails.
-* *Dashboard* - shows you what's recently been updated.
-* *Images* - handles image upload, insertion and processing images using "Dragonfly":https://github.com/markevans/dragonfly.
-* *Pages* - allows you to manage pages including the structure of your site displayed in the front end.
-* *Resources* - handles file upload and storage.
-* *Settings* - manages various settings you can configure in Refinery.
+* *"Dashboard":https://github.com/resolve/refinerycms/blob/master/doc/dashboard.md* - shows you what's recently been updated.
+* *"Images":https://github.com/resolve/refinerycms/blob/master/doc/images.md* - handles image upload, insertion and processing images using "Dragonfly":https://github.com/markevans/dragonfly.
+* *"Pages":https://github.com/resolve/refinerycms/blob/master/doc/pages.md* - allows you to manage pages including the structure of your site displayed in the front end.
+* *"Resources":https://github.com/resolve/refinerycms/blob/master/doc/resources.md* - handles file upload and storage.
+* *"Settings":https://github.com/resolve/refinerycms/blob/master/doc/settings.md* - manages various settings you can configure in Refinery.
 
 h3. Creating a new Refinery project
 
@@ -316,7 +316,7 @@ Rick is going to want to enter the following information about each event:
 * A photo
 * A little blurb about the event.
 
-Run this command to generate the events engine for Rick:
+Run this command to generate the events engine for Rick[1]:
 
 <shell>
 $ rails generate refinery_engine event title:string date:datetime photo:image blurb:text
@@ -397,7 +397,7 @@ class Admin::EventsController < Admin::BaseController
 end
 </ruby>
 
-Most of the time crudify's defaults are bang on, but if you need to, you can easily customise how it works.
+Most of the time crudify's defaults are bang on, but if you need to, you can easily customise how it works[2].
 
 But default +crudify+ assumes your records will be sortable. But events are not manually sortable, it makes more sense to order them by their event date. Update the contents of the file to this:
 
@@ -438,3 +438,6 @@ h3. What's Next?
 Now that you've made your first Refinery application with a custom events engine, you should feel free to update it and experiment on your own. But you don't have to do everything without help.
 
 If you need assistance getting up and running with Refinery follow the "How to get help with Refinery Guide":/guides/how-to-get-help-with-refinery and for professional support & consulting contact "Resolve Digital":http://resolvedigital.com/ (the creators of Refinery).
+
+fn1. If you want to know more about the Engine's file structure, check out the "separate documentation on Engines":https://github.com/resolve/refinerycms/blob/master/doc/engines.md.
+fn2. There's a "separate doc on configuring and overriding Crudify":https://github.com/resolve/refinerycms/blob/master/doc/crud.md.
