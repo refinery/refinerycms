@@ -1,10 +1,10 @@
 /* Tooltips CSS definitions */  
 .tooltip {
-  position: absolute!important;
+  position: absolute !important;
   overflow:hidden;
   font-size: 13px;
   font-family: inherit;
-  z-index: 10000!important;
+  z-index: 10000 !important;
   text-align: center;
 }
 .tooltip .xtop, .tooltip .xbottom { display: block; background: transparent; font-size: 1px; }
@@ -19,7 +19,7 @@
 .tooltip .xboxcontent {
   margin: 0;
   color: #000;
-  word-wrap:break-word;
+  word-wrap: break-word;
   border-width: 4px 4px;
   border-style: solid;
   border-color: #606060;
