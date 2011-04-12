@@ -439,6 +439,6 @@ Now that you've made your first Refinery application with a custom events engine
 
 If you need assistance getting up and running with Refinery follow the "How to get help with Refinery Guide":/guides/how-to-get-help-with-refinery and for professional support & consulting contact "Resolve Digital":http://resolvedigital.com/ (the creators of Refinery).
 
-p(#fn1). If you want to know more about the Engine's file structure, check out the "separate documentation on Engines":https://github.com/resolve/refinerycms/blob/master/doc/engines.md.
+fn1. If you want to know more about the Engine's file structure, check out the "separate documentation on Engines":https://github.com/resolve/refinerycms/blob/master/doc/engines.md.
 
-p(#fn2). There's a "separate doc on configuring and overriding Crudify":https://github.com/resolve/refinerycms/blob/master/doc/crud.md.
+fn2. There's a "separate doc on configuring and overriding Crudify":https://github.com/resolve/refinerycms/blob/master/doc/crud.md.
