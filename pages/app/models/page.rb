@@ -48,7 +48,8 @@ class Page < ActiveRecord::Base
   has_friendly_id :title, :use_slug => true,
                   :default_locale => (::Refinery::I18n.default_frontend_locale rescue :en),
                   :reserved_words => %w(index new session login logout users refinery admin images wymiframe),
-                  :approximate_ascii => RefinerySetting.find_or_set(:approximate_ascii, false, :scoping => "pages")
+                  :approximate_ascii => RefinerySetting.find_or_set(:approximate_ascii, false, :scoping => "pages"),
+                  :strip_non_ascii => RefinerySetting.find_or_set(:strip_non_ascii, false, :scoping => "pages")
 
   has_many :parts,
            :class_name => "PagePart",
