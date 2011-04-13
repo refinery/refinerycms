@@ -1,5 +1,7 @@
 class PagePart < ActiveRecord::Base
 
+  attr_accessible :title, :content, :position, :body, :created_at,
+                  :updated_at, :page_id
   belongs_to :page
 
   validates :title, :presence => true
@@ -12,7 +14,11 @@ class PagePart < ActiveRecord::Base
   end
 
   before_save :normalise_text_fields
-
+  if defined?(::PagePart::Translation)
+    ::PagePart::Translation.module_eval do
+      attr_accessible :locale
+    end
+  end
 protected
   def normalise_text_fields
     unless body.blank? or body =~ /^\</

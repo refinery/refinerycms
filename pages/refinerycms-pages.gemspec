@@ -118,5 +118,5 @@ Gem::Specification.new do |s|
   ]
 
   s.add_dependency 'refinerycms-core', '= 0.9.9.17'
-  s.add_dependency 'seo_meta',         '~> 1.0.3'
+  s.add_dependency 'seo_meta',         '~> 1.0.4'
 end
