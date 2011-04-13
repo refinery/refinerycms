@@ -13,6 +13,10 @@ class RefinerySetting < ActiveRecord::Base
   # Docs for acts_as_indexed http://github.com/dougal/acts_as_indexed
   acts_as_indexed :fields => [:name]
 
+  attr_accessible :name, :value, :destroyable,
+                  :scoping, :restricted, :callback_proc_as_string,
+                  :form_value_type
+
   before_save do |setting|
     setting.restricted = false if setting.restricted.nil?
   end

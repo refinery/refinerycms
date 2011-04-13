@@ -42,7 +42,7 @@ PATH
       refinerycms-core (= 0.9.9.17)
     refinerycms-pages (0.9.9.17)
       refinerycms-core (= 0.9.9.17)
-      seo_meta (~> 1.0.3)
+      seo_meta (~> 1.0.4)
     refinerycms-resources (0.9.9.17)
       dragonfly (~> 0.8.2)
       rack-cache (>= 0.5.3)
