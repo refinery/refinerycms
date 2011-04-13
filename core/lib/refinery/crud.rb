@@ -42,8 +42,8 @@ module Refinery
       def crudify(model_name, options = {})
         options = ::Refinery::Crud.default_options(model_name).merge(options)
 
-        singular_name = model_name.to_s
-        class_name = singular_name.camelize
+        class_name = model_name.to_s.camelize
+        singular_name = class_name.demodulize.underscore
         plural_name = singular_name.pluralize
 
         module_eval %(
