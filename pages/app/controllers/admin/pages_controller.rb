@@ -27,16 +27,15 @@ module Admin
         super
 
         # Check whether we need to override e.g. on the pages form.
-        unless params[:switch_locale] or @page.nil? or @page.slugs.where(:locale => Refinery::I18n.current_locale).nil? or !@page.persisted?
-          if @page.slug.nil? and @page.slugs.length > 0
-            @page.slug = @page.slugs[0]
-          end
-          if @page.slug
-            Thread.current[:globalize_locale] = @page.slug.locale
-          end
+        unless params[:switch_locale] || @page.nil? || @page.new_record? || @page.slugs.where({
+          :locale => Refinery::I18n.current_locale}
+        ).nil?
+          @page.slug = @page.slugs.first if @page.slug.nil? && @page.slugs.any?
+          Thread.current[:globalize_locale] = @page.slug.locale if @page.slug
         end
       else
-        Thread.current[:globalize_locale] = nil
+        # Always display the tree of pages from the default frontend locale.
+        Thread.current[:globalize_locale] = params[:switch_locale].try(:to_sym) || ::Refinery::I18n.default_frontend_locale
       end
     end
 

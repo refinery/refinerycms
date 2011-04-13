@@ -313,7 +313,7 @@ class Page < ActiveRecord::Base
   # In the admin area we use a slightly different title to inform the which pages are draft or hidden pages
   def title_with_meta
     title = if self.title.nil?
-      [::Page::Translation.where(:page_id => self.id, :locale => Globalize.locale).first.title.to_s]
+      [::Page::Translation.where(:page_id => self.id, :locale => Globalize.locale).first.try(:title).to_s]
     else
       [self.title.to_s]
     end
