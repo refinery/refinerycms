@@ -132,8 +132,8 @@ namespace :refinery do
   desc "Un-crudify a method on a controller that uses crudify"
   task :uncrudify => :environment do
     if (model_name = ENV["model"]).present? and (action = ENV["action"]).present?
-      singular_name = model_name.to_s
-      class_name = singular_name.camelize
+      class_name = model_name.to_s.camelize
+      singular_name = class_name.demodulize.underscore
       plural_name = singular_name.pluralize
 
       crud_lines = Refinery.roots('core').join('lib', 'refinery', 'crud.rb').read
