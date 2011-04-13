@@ -3,8 +3,6 @@ require 'net/http'
 module Admin
   class PagesDialogsController < Admin::DialogsController
 
-    crudify :page
-
     def link_to
       @pages = Page.paginate :page => params[:page],
                              :conditions => {:parent_id => nil},
