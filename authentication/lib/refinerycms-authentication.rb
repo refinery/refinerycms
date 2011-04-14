@@ -22,7 +22,7 @@ module Refinery
       config.after_initialize do
         ::Refinery::Plugin.register do |plugin|
           plugin.name = "refinery_users"
-          plugin.version = %q{0.9.9.13}
+          plugin.version = %q{0.9.9.17}
           plugin.menu_match = /(refinery|admin)\/users$/
           plugin.activity = {
             :class => User,

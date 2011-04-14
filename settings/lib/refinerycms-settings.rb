@@ -20,7 +20,7 @@ module Refinery
         ::Refinery::Plugin.register do |plugin|
           plugin.name = "refinery_settings"
           plugin.url = {:controller => "/admin/refinery_settings"}
-          plugin.version = %q{0.9.9.13}
+          plugin.version = %q{0.9.9.17}
           plugin.menu_match = /(refinery|admin)\/(refinery_)?settings$/
         end
       end
