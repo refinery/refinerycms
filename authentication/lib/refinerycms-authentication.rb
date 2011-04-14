@@ -4,7 +4,7 @@ require 'refinerycms-core'
 require File.expand_path('../authenticated_system', __FILE__)
 [::Refinery::ApplicationController, ::Refinery::ApplicationHelper].each do |c|
   c.class_eval {
-    include AuthenticatedSystem
+    include ::Refinery::AuthenticatedSystem
   }
 end
 

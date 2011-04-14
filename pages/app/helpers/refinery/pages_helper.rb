@@ -1,0 +1,2 @@
+module ::Refinery::PagesHelper
+end

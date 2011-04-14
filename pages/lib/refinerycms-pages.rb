@@ -28,8 +28,8 @@ module Refinery
       end
 
       refinery.after_inclusion do
-        ::ApplicationController.send :include, ::Refinery::Pages::InstanceMethods
-        ::Admin::BaseController.send :include, ::Refinery::Pages::Admin::InstanceMethods
+        ::Refinery::ApplicationController.send :include, ::Refinery::Pages::InstanceMethods
+        ::Refinery::Admin::BaseController.send :include, ::Refinery::Pages::Admin::InstanceMethods
       end
 
       config.after_initialize do

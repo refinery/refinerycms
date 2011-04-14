@@ -1,4 +1,4 @@
-module AuthenticatedSystem
+module Refinery::AuthenticatedSystem
   protected
     # Store the URI of the current request in the session.
     #

@@ -10,12 +10,12 @@ module Refinery
 
         ::ApplicationHelper.send :include, ::Refinery::ApplicationHelper
 
-        [::ApplicationController, ::Admin::BaseController].each do |c|
+        [::ApplicationController, Refinery::Admin::BaseController].each do |c|
           c.send :include, ::Refinery::ApplicationController
           c.send :helper, :application
         end
 
-        ::Admin::BaseController.send :include, ::Refinery::Admin::BaseController
+        ::Refinery::Admin::BaseController.send :include, ::Refinery::Admin::BaseControllerMethods
 
         ::Refinery.config.after_inclusion_procs.each do |proc|
           proc.call if proc.respond_to?(:call)

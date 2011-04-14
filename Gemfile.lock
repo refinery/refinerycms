@@ -162,7 +162,7 @@ GEM
     orm_adapter (0.0.4)
     polyglot (0.3.1)
     rack (1.2.2)
-    rack-cache (1.0)
+    rack-cache (1.0.1)
       rack (>= 0.4)
     rack-mount (0.6.14)
       rack (>= 1.0.0)
@@ -184,11 +184,6 @@ GEM
     rake (0.8.7)
     rdoc (3.5.3)
     refinerycms-generators (1.0.1)
-    refinerycms-i18n (1.0.0)
-      refinerycms-core (>= 0.9.9.12)
-      routing-filter (>= 0.2.3)
-    routing-filter (0.2.3)
-      actionpack
     rspec (2.5.0)
       rspec-core (~> 2.5.0)
       rspec-expectations (~> 2.5.0)
@@ -227,7 +222,15 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bundler (~> 1.0)
   refinerycms!
-  refinerycms-i18n (~> 1.0.0)
+  refinerycms-authentication (= 0.9.9.17)
+  refinerycms-base (= 0.9.9.17)
+  refinerycms-core (= 0.9.9.17)
+  refinerycms-dashboard (= 0.9.9.17)
+  refinerycms-images (= 0.9.9.17)
+  refinerycms-pages (= 0.9.9.17)
+  refinerycms-resources (= 0.9.9.17)
+  refinerycms-settings (= 0.9.9.17)
   refinerycms-testing (~> 0.9.9.17)
   sqlite3
