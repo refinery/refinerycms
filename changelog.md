@@ -1,3 +1,12 @@
+## 0.9.9.17 [15 April 2011]
+
+* Mass assignment protection implemented. [Andreas König](https://github.com/koa)
+* Removed deprecated code to prepare for `1.0.0`. [Uģis Ozols](https://github.com/ugisozols)
+* Added `Strip Non Ascii` preference to `has_friendly_id`. [Marc Argent](https://github.com/lurcio)
+* Bumped Rails dependency to `~> 3.0.7.rc1`. [Philip Arndt](https://github.com/parndt)
+* Better support for models in modules for uncrudify. [Josef Šimánek](https://github.com/simi)
+* [See full list](https://github.com/resolve/refinerycms/compare/0.9.9.16...0.9.9.17)
+
 ## 0.9.9.16 [7 April 2011]
 
 * Improved resource picker. [Will Marshall](https://github.com/willrjmarshall)
