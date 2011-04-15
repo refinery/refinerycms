@@ -2,11 +2,16 @@
 # Simply override any methods in your action controller you want to be customised
 # Don't forget to add:
 #   resources :plural_model_name_here
+# or for scoped:
+#   scope(:as => 'module_module', :module => 'module_name') do
+#      resources :plural_model_name_here
+#    end
 # to your routes.rb file.
 # Full documentation about CRUD and resources go here:
-# -> http://caboo.se/doc/classes/ActionController/Resources.html#M003716
+# -> http://api.rubyonrails.org/classes/ActionDispatch/Routing/Mapper/Resources.html#method-i-resources
 # Example (add to your controller):
-# crudify :foo, {:title_attribute => 'name'}
+# crudify :foo, {:title_attribute => 'name'} for CRUD on Foo model
+# crudify 'foo/bar', :{title_attribute => 'name'} for CRUD on Foo::Bar model
 
 module Refinery
   module Crud
