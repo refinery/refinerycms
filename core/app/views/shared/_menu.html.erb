@@ -15,9 +15,11 @@
   -%>
       <nav id='<%= dom_id %>' class='<%= css %>'>
         <ul>
+          <% roots.each_with_index do |menu_branch, index| %>
           <%= render :partial => '/shared/menu_branch',
-                     :collection => roots,
                      :locals => {
+                       :menu_branch => menu_branch,
+                       :menu_branch_counter => index,
                        :hide_children => hide_children,
                        :sibling_count => (roots.length - 1),
                        :collection => collection,
@@ -25,6 +27,7 @@
                        :apply_css => true #if you don't care about class='first' class='last' or class='selected' set apply_css to false for speed.
                      }
           -%>
+          <% end %>
         </ul>
       </nav>
   <% end -%>
