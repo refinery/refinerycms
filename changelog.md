@@ -1,3 +1,12 @@
+## 0.9.9.18 [16 April 2011]
+
+* Fixed a backward incompatibility. [Josef Šimánek](https://github.com/simi)
+* Reduced calls to `SHOW TABLES` by updating `friendly_id_globalize3`. [Philip Arndt](https://github.com/parndt)
+* Switched `/shared/_menu.html.erb` and `/shared/_menu_branch.html.erb` away from `render :partial` with `:collection`, speeding up menu 12~15%. [Philip Arndt](https://github.com/parndt)
+* Fixed Refinery.root, Fixed generator templates, Added refinerycms-i18n generator to refinerycms generator if i18n is included. [Mark Haylock](https://github.com/mhaylock)
+* Bumped Rails dependency to `~> 3.0.7.rc2`. [Philip Arndt](https://github.com/parndt)
+* [See full list](https://github.com/resolve/refinerycms/compare/0.9.9.17...0.9.9.18)
+
 ## 0.9.9.17 [15 April 2011]
 
 * Mass assignment protection implemented. [Andreas König](https://github.com/koa)

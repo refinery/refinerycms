@@ -49,7 +49,7 @@ module Refinery
 
       def crudify(model_name, options = {})
         options = ::Refinery::Crud.default_options(model_name).merge(options)
-        class_name = options[:class_name] 
+        class_name = options[:class_name]
         singular_name = options[:singular_name]
         plural_name = options[:plural_name]
 
