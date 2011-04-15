@@ -1071,7 +1071,7 @@ ul#page_parts_controls img {
 }
 #page_part_editors {
   clear:left;
-  min-height: 446px;
+/*  min-height: 446px;*/
 }
 a#toggle_advanced_options {
 	background: url('/images/refinery/icons/page_white_gear.png') no-repeat 0px 3px;
