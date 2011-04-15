@@ -1339,6 +1339,29 @@ WYMeditor.editor.prototype.dialog = function( dialogType ) {
               end = selection.focusOffset;
             }
 
+            // for https://github.com/resolve/refinerycms/issues/581
+            if (typeof (start_node.insertData) === 'undefined') {
+                var j = start_node.childNodes.length - 1,
+                    tmp_start_node = start_node;
+
+                // @todo what then if function insertData is not found?
+                while (typeof(end_node.insertData) !== 'function' || !j) {
+                    start_node = tmp_start_node.childNodes[j--];
+                }
+
+                start = 0;
+            }
+
+            if (typeof (end_node.insertData) === 'undefined') {
+                var i = end_node.childNodes.length - 1,
+                    tmp_end_node = end_node;
+                while (typeof(end_node.insertData) !== 'function' || !i) {
+                    end_node = tmp_end_node.childNodes[i--];
+                }
+
+                end = end_node.length;
+            }
+
             // because .insertData only inserts text, we have to insert some 'meaningful' *text* only interpolation tags (no html).
             start_tag = '%%' + wym._current_unique_stamp + '%%';
             end_tag = '$$' + wym._current_unique_stamp + '$$';

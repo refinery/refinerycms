@@ -725,7 +725,6 @@ var page_options = {
               page_options.tabs.find('> ul li a').corner('top 5px');
 
               $('#new_page_part_dialog').dialog('close');
-              $('#new_page_part_dialog').remove();
             }
           );
         }else{

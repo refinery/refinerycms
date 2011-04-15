@@ -36,7 +36,7 @@ module Refinery
         ::Refinery::Plugin.register do |plugin|
           plugin.name = "refinery_pages"
           plugin.directory = "pages"
-          plugin.version = %q{0.9.9.13}
+          plugin.version = %q{0.9.9.17}
           plugin.menu_match = /(refinery|admin)\/page(_part)?s(_dialogs)?$/
           plugin.activity = {
             :class => Page,

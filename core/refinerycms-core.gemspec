@@ -5,7 +5,7 @@ Gem::Specification.new do |s|
   s.version           = %q{0.9.9.17}
   s.summary           = %q{Core engine for Refinery CMS}
   s.description       = %q{The core of Refinery CMS. This handles the common functionality and is required by most engines}
-  s.date              = %q{2011-04-11}
+  s.date              = %q{2011-04-15}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
   s.rubyforge_project = %q{refinerycms}
@@ -21,7 +21,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'friendly_id_globalize3',      '~> 3.2.1'
   s.add_dependency 'globalize3',                  '>= 0.1.0.beta'
   s.add_dependency 'moretea-awesome_nested_set',  '~> 1.4'
-  s.add_dependency 'rails',                       '~> 3.0.6'
+  s.add_dependency 'rails',                       '~> 3.0.7.rc1'
   s.add_dependency 'rdoc',                        '>= 2.5.11' # helps fix ubuntu
   s.add_dependency 'truncate_html',               '~> 0.5'
   s.add_dependency 'kaminari',                    '~> 0.10'

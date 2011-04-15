@@ -19,7 +19,7 @@ describe Image do
   before(:each) do
     reset_image
   end
-  
+
   # clean up after ourselves.
   after(:each) do
     Image.destroy_all

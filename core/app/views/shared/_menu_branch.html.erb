@@ -13,16 +13,19 @@
   <%= link_to menu_branch.title, menu_branch.url -%>
   <% if children.present? -%>
     <ul class='clearfix'>
-      <%=
-        render :partial => '/shared/menu_branch',
-               :collection => children,
-               :locals => {
-                 :apply_css => local_assigns[:apply_css],
-                 :hide_children => !!hide_children,
-                 :collection => collection,
-                 :selected_item => selected_item,
-                 :sibling_count => children.size - 1
-               } -%>
+      <% children.each_with_index do |child, index| %>
+        <%=
+          render :partial => '/shared/menu_branch',
+                 :locals => {
+                   :menu_branch => child,
+                   :menu_branch_counter => index,
+                   :apply_css => local_assigns[:apply_css],
+                   :hide_children => !!hide_children,
+                   :collection => collection,
+                   :selected_item => selected_item,
+                   :sibling_count => children.size - 1
+                 } -%>
+      <% end %>
     </ul>
   <% end -%>
 </li>

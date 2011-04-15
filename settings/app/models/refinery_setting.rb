@@ -135,18 +135,6 @@ class RefinerySetting < ActiveRecord::Base
       # Return the value
       setting.value
     end
-
-    # DEPRECATED for removal at >= 0.9.9
-    def []=(name, value)
-      warning = ["\n*** DEPRECATION WARNING ***"]
-      warning << "You should not use this anymore: RefinerySetting[#{name.inspect}] = #{value.inspect}."
-      warning << "\nInstead, you should use RefinerySetting.set(#{name.inspect}, #{value.inspect})"
-      warning << ""
-      warning << "Called from: #{caller.first.inspect}\n\n"
-      $stdout.puts warning.join("\n")
-
-      set(name, value)
-    end
   end
 
   # prettier version of the name.

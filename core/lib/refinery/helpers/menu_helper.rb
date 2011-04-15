@@ -17,12 +17,14 @@ module Refinery
       # This was extracted from app/views/shared/_menu_branch.html.erb
       # to remove the complexity of that template by reducing logic in the view.
       def css_for_menu_branch(menu_branch, menu_branch_counter, sibling_count = nil, collection = [], selected_item = nil, warning = true)
+        # DEPRECATION. Remove at version 1.1
         if warning
           warn "\n-- DEPRECATION WARNING --"
           warn "The use of 'css_for_menu_branch' is deprecated."
           warn "Please use menu_branch_css(local_assigns) instead."
           warn "Called from: #{caller.detect{|c| c =~ %r{#{Rails.root.to_s}}}.inspect.to_s.split(':in').first}\n\n"
         end
+
         css = []
         css << "selected" if selected_page_or_descendant_page_selected?(menu_branch, collection, selected_item)
         css << "first" if menu_branch_counter == 0

@@ -26,7 +26,7 @@ Gem::Specification.new do |s|
   ]
 
   s.add_dependency 'refinerycms-core', '= #{::Refinery::Version}'
-  s.add_dependency 'seo_meta',         '~> 1.0.3'
+  s.add_dependency 'seo_meta',         '~> 1.0.4'
 end
 EOF
 
