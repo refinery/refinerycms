@@ -1,7 +1,7 @@
 module ::Refinery::Admin
-  class ResourcesController < ::Refinery::Admin::BaseController
+  class ResourcesController < BaseController
 
-    crudify :resource,
+    crudify :'refinery/resource',
             :order => "updated_at DESC",
             :xhr_paging => true
 

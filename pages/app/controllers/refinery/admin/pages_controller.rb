@@ -1,7 +1,7 @@
-module ::Refinery::Admin
-  class PagesController < ::Refinery::Admin::BaseController
+module ::Refinery
+  class Admin::PagesController < Admin::BaseController
 
-    crudify :page,
+    crudify :'refinery/page',
             :conditions => nil,
             :order => "lft ASC",
             :include => [:slugs, :translations],

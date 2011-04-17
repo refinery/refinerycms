@@ -1,4 +1,4 @@
-class ::Refinery::PagesController < ::Refinery::ApplicationController
+class ::Refinery::PagesController < ApplicationController
 
   # This action is usually accessed with the root path, normally '/'
   def home

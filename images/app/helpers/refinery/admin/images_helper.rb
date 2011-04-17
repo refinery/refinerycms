@@ -1,4 +1,4 @@
-module Admin
+module Refinery::Admin
   module ImagesHelper
 
     def image_views

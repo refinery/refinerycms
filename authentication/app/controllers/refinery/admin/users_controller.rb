@@ -1,7 +1,7 @@
 module Refinery::Admin
   class UsersController < Refinery::Admin::BaseController
 
-    crudify :user,
+    crudify 'refinery/user',
             :order => 'username ASC',
             :title_attribute => 'username',
             :xhr_paging => true

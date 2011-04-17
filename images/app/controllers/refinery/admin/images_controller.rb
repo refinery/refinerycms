@@ -1,9 +1,7 @@
-module Admin
-  class ImagesController < Admin::BaseController
+module ::Refinery
+  class Admin::ImagesController < Admin::BaseController
 
-    include Admin::ImagesHelper
-
-    crudify :image,
+    crudify :'refinery/image',
             :order => "created_at DESC",
             :sortable => false,
             :xhr_paging => true

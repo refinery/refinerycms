@@ -1,5 +1,5 @@
 module ::Refinery::Admin
-  class DashboardController < Admin::BaseController
+  class DashboardController < BaseController
 
     def index
       @recent_activity = []

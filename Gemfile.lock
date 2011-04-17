@@ -1,4 +1,11 @@
 PATH
+  remote: ../refinerycms-i18n
+  specs:
+    refinerycms-i18n (1.0.1)
+      refinerycms-core (>= 0.9.9.12)
+      routing-filter (>= 0.2.3)
+
+PATH
   remote: .
   specs:
     refinerycms (0.9.9.17)
@@ -184,6 +191,8 @@ GEM
     rake (0.8.7)
     rdoc (3.5.3)
     refinerycms-generators (1.0.1)
+    routing-filter (0.2.3)
+      actionpack
     rspec (2.5.0)
       rspec-core (~> 2.5.0)
       rspec-expectations (~> 2.5.0)
@@ -228,6 +237,7 @@ DEPENDENCIES
   refinerycms-base (= 0.9.9.17)
   refinerycms-core (= 0.9.9.17)
   refinerycms-dashboard (= 0.9.9.17)
+  refinerycms-i18n!
   refinerycms-images (= 0.9.9.17)
   refinerycms-pages (= 0.9.9.17)
   refinerycms-resources (= 0.9.9.17)

@@ -1,9 +1,9 @@
 module ::Refinery::Admin
-  class RefinerySettingsController < Admin::BaseController
+  class RefinerySettingsController < BaseController
 
-    helper :refinery_settings
+    helper "refinery/admin/refinery_settings"
 
-    crudify :refinery_setting,
+    crudify :'refinery/refinery_setting',
             :title_attribute => :title,
             :order => "name ASC",
             :redirect_to_url => :redirect_to_where?,

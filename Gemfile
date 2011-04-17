@@ -55,5 +55,5 @@ end
 # gem 'refinerycms-page-images',  '~> 1.0'
 
 # Add i18n support (optional, you can remove this if you really want to).
-#gem 'refinerycms-i18n',         :path => 
+gem 'refinerycms-i18n',         :path => "../refinerycms-i18n" 
 # END USER DEFINED

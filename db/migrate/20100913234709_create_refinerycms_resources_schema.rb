@@ -1,6 +1,6 @@
 class CreateRefinerycmsResourcesSchema < ActiveRecord::Migration
   def self.up
-    create_table ::Resource.table_name, :force => true do |t|
+    create_table ::Refinery::Resource.table_name, :force => true do |t|
       t.string   "file_mime_type"
       t.string   "file_name"
       t.integer  "file_size"
@@ -8,7 +8,7 @@ class CreateRefinerycmsResourcesSchema < ActiveRecord::Migration
       t.datetime "updated_at"
       t.string   "file_uid"
       t.string   "file_ext"
-    end unless ::Resource.table_exists?
+    end unless ::Refinery::Resource.table_exists?
   end
 
   def self.down

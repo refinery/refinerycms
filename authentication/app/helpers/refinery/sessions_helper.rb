@@ -1,2 +1,2 @@
-module SessionsHelper
+module Refinery::SessionsHelper
 end

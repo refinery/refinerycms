@@ -39,7 +39,7 @@ module Refinery
           plugin.version = %q{0.9.9.17}
           plugin.menu_match = /(refinery|admin)\/page(_part)?s(_dialogs)?$/
           plugin.activity = {
-            :class => Page,
+            :class => Refinery::Page,
             :url_prefix => "edit",
             :title => "title",
             :created_image => "page_add.png",
