@@ -1,5 +1,5 @@
-module Refinery::Admin
-  class UsersController < Refinery::Admin::BaseController
+module Refinery
+  class Admin::UsersController < Refinery::Admin::BaseController
 
     crudify 'refinery/user',
             :order => 'username ASC',

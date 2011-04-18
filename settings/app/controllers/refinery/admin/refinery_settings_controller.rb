@@ -1,5 +1,5 @@
-module ::Refinery::Admin
-  class RefinerySettingsController < BaseController
+module ::Refinery
+  class Admin::RefinerySettingsController < Admin::BaseController
 
     helper "refinery/admin/refinery_settings"
 
