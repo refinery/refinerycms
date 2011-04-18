@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <%= render :partial => "/shared/html_tag" %>
   <% content_for :meta, "<meta refinerycms='#{Refinery.version}' />".html_safe %>
-  <%= render :partial => "/admin/head" %>
+  <%= render :partial => "refinery/admin/head" %>
   <body class='<%= action_name %> <%= I18n.locale %>'>
     <%= render :partial => '/shared/site_bar' %>
     <div id='tooltip_container'></div>
     <header>
-      <%= render :partial => "/admin/menu" %>
+      <%= render :partial => "refinery/admin/menu" %>
     </header>
     <div id="page_container">
       <div id="page">
@@ -19,6 +19,6 @@
         </div>
       </div>
     </div>
-    <%= render :partial => "/admin/javascripts" %>
+    <%= render :partial => "refinery/admin/javascripts" %>
   </body>
 </html>

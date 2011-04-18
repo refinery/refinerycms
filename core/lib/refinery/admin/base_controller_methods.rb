@@ -65,10 +65,10 @@ module Refinery
         end
 
         def restrict_controller
-          if Refinery::Plugins.active.reject { |plugin| params[:controller] !~ Regexp.new(plugin.menu_match)}.empty?
-            warn "'#{current_user.username}' tried to access '#{params[:controller]}' but was rejected."
-            error_404
-          end
+          # if Refinery::Plugins.active.reject { |plugin| params[:controller] !~ Regexp.new(plugin.menu_match)}.empty?
+          #   warn "'#{current_user.username}' tried to access '#{params[:controller]}' but was rejected."
+          #   error_404
+          # end
         end
 
         # Override method from application_controller. Not needed in this controller.

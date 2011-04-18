@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <%= render :partial => "/shared/html_tag" %>
-  <%= render :partial => "/admin/head", :locals => {:login => true} %>
+  <%= render :partial => "refinery/admin/head", :locals => {:login => true} %>
   <body class='login <%= I18n.locale %>'>
     <div id='tooltip_container'></div>
     <header>
@@ -16,6 +16,6 @@
         </div>
       </div>
     </div>
-    <%= render :partial => "/admin/javascripts", :locals => {:login => true} %>
+    <%= render :partial => "refinery/admin/javascripts", :locals => {:login => true} %>
   </body>
 </html>
