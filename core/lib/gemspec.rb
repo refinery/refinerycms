@@ -28,7 +28,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'moretea-awesome_nested_set',  '~> 1.4'
   s.add_dependency 'rails',                       '~> 3.0.7.rc2'
   s.add_dependency 'truncate_html',               '~> 0.5'
-  s.add_dependency 'kaminari',                    '~> 0.10'
+  s.add_dependency 'kaminari',                    '~> 0.11'
 
   s.files             = [
     '#{%w( **/{*,.rspec,.gitignore,.yardopts} ).map { |file| Pathname.glob(gempath.join(file)) }.flatten.reject{|f|

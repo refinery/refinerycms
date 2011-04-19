@@ -57,4 +57,3 @@ end
 # Add i18n support (optional, you can remove this if you really want to).
 gem 'refinerycms-i18n',         '~> 1.0.0'
 # END USER DEFINED
-gem 'kaminari', '~> 0.10', :git => 'git://github.com/ugisozols/kaminari.git'

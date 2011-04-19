@@ -23,7 +23,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'moretea-awesome_nested_set',  '~> 1.4'
   s.add_dependency 'rails',                       '~> 3.0.7.rc2'
   s.add_dependency 'truncate_html',               '~> 0.5'
-  s.add_dependency 'kaminari',                    '~> 0.10'
+  s.add_dependency 'kaminari',                    '~> 0.11'
 
   s.files             = [
     'app',
@@ -46,7 +46,9 @@ Gem::Specification.new do |s|
     'app/views/admin/dialogs',
     'app/views/admin/dialogs/show.html.erb',
     'app/views/kaminari',
+    'app/views/kaminari/_next_link.html.erb',
     'app/views/kaminari/_next_span.html.erb',
+    'app/views/kaminari/_prev_link.html.erb',
     'app/views/kaminari/_prev_span.html.erb',
     'app/views/layouts',
     'app/views/layouts/admin.html.erb',
@@ -164,7 +166,6 @@ Gem::Specification.new do |s|
     'lib/refinery/helpers/site_bar_helper.rb',
     'lib/refinery/helpers/tag_helper.rb',
     'lib/refinery/helpers/translation_helper.rb',
-    'lib/refinery/link_renderer.rb',
     'lib/refinery/plugin.rb',
     'lib/refinery/plugins.rb',
     'lib/refinerycms-core.rb',

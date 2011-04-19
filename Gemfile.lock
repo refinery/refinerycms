@@ -1,10 +1,3 @@
-GIT
-  remote: git://github.com/ugisozols/kaminari.git
-  revision: 6d8a7edff0c08eec9b218861cf15334b3d83faea
-  specs:
-    kaminari (0.10.4)
-      rails (>= 3.0.0)
-
 PATH
   remote: .
   specs:
@@ -26,7 +19,7 @@ PATH
       acts_as_indexed (~> 0.7)
       friendly_id_globalize3 (~> 3.2.1)
       globalize3 (>= 0.1.0.beta)
-      kaminari (~> 0.10)
+      kaminari (~> 0.11)
       moretea-awesome_nested_set (~> 1.4)
       rails (~> 3.0.7.rc2)
       refinerycms-base (= 0.9.9.18)
@@ -153,6 +146,8 @@ GEM
     i18n (0.5.0)
     json (1.5.1)
     json_pure (1.5.1)
+    kaminari (0.11.0)
+      kaminari
     launchy (0.4.0)
       configuration (>= 0.0.5)
       rake (>= 0.8.1)
@@ -231,7 +226,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  kaminari (~> 0.10)!
   refinerycms!
   refinerycms-i18n (~> 1.0.0)
   refinerycms-testing (~> 0.9.9.18)
