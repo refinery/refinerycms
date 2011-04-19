@@ -33,9 +33,11 @@ module Admin
         if @resources.all?(&:valid?)
           @resource_id = @resources.detect(&:persisted?).id
           @resource = nil
-        end
 
-        insert
+          redirect_to :action => 'insert', :modal => from_dialog?, :wymeditor => from_dialog?, :dialog => from_dialog?
+        else
+          self.insert
+        end
       end
     end
 

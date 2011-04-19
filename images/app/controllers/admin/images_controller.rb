@@ -66,11 +66,16 @@ module Admin
           render :action => 'new'
         end
       else
+        # if all uploaded images are ok redirect page back to dialog, else show current page with error
         if @images.all?{|i| i.valid?}
           @image_id = @image.id if @image.persisted?
           @image = nil
+
+          # please please please
+          redirect_to :action => 'insert', :modal => from_dialog?, :wymeditor => from_dialog?, :dialog => from_dialog?
+        else
+          self.insert
         end
-        self.insert
       end
     end
 
