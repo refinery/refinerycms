@@ -2,7 +2,22 @@ require 'globalize3'
 
 class Page < ActiveRecord::Base
 
-  translates :title, :meta_keywords, :meta_description, :browser_title, :custom_title if self.respond_to?(:translates)
+  if self.respond_to?(:translates)
+    translates :title, :custom_title, :meta_keywords, :meta_description, :browser_title, :include => :seo_meta
+
+    # Set up support for meta tags through translations.
+    if defined?(::Page::Translation)
+      attr_accessible :title
+      # set allowed attributes for mass assignment
+      ::Page::Translation.send :attr_accessible, :browser_title, :meta_description,
+                                                 :meta_keywords, :locale
+
+      if ::Page::Translation.table_exists?
+        # Instruct the Translation model to have meta tags.
+        ::Page::Translation.send :is_seo_meta
+      end
+    end
+  end
 
   attr_accessible :id, :deletable, :link_url, :menu_match, :meta_keywords,
                   :skip_to_first_child, :position, :show_in_menu, :draft,
@@ -10,39 +25,10 @@ class Page < ActiveRecord::Base
                   :custom_title_type, :parent_id, :custom_title,
                   :created_at, :updated_at, :page_id
 
-  # Set up support for meta tags through translations.
-  if defined?(::Page::Translation)
-    attr_accessible :title
-    # set allowed attributes for mass assignment
-    ::Page::Translation.module_eval do
-      attr_accessible :browser_title, :meta_description, :meta_keywords,
-                      :locale
-    end
-    if ::Page::Translation.table_exists?
-      def translation
-        if @translation.nil? or @translation.try(:locale) != ::Globalize.locale
-          @translation = translations.with_locale(::Globalize.locale).first
-          @translation ||= translations.build(:locale => ::Globalize.locale)
-        end
-
-        @translation
-      end
-
-    # Instruct the Translation model to have meta tags.
-    ::Page::Translation.send :is_seo_meta
-
-      # Delegate all SeoMeta attributes to the active translation.
-      fields = ::SeoMeta.attributes.keys.map{|a| [a, :"#{a}="]}.flatten
-      fields << {:to => :translation}
-      delegate *fields
-      after_save proc {|m| m.translation.save}
-    end
-  end
-
   attr_accessor :locale # to hold temporarily
   validates :title, :presence => true
 
-  acts_as_nested_set
+  acts_as_nested_set :dependent => :destroy # rather than :delete_all
 
   # Docs for friendly_id http://github.com/norman/friendly_id
   has_friendly_id :title, :use_slug => true,
@@ -56,7 +42,7 @@ class Page < ActiveRecord::Base
            :order => "position ASC",
            :inverse_of => :page,
            :dependent => :destroy,
-           :include => :translations
+           :include => ((:translations) if defined?(::PagePart::Translation))
 
   accepts_nested_attributes_for :parts, :allow_destroy => true
 
@@ -69,12 +55,11 @@ class Page < ActiveRecord::Base
   after_destroy :expire_page_caching
 
   # Wrap up the logic of finding the pages based on the translations table.
-  scope :with_globalize, lambda {|t|
+  scope :with_globalize, lambda {|conditions|
     if defined?(::Page::Translation)
-      t = {:locale => Globalize.locale}.merge(t || {})
-      where(:id => ::Page::Translation.where(t).select('page_id AS id'))
+      where(conditions).includes(:translations)
     else
-      where(t)
+      where(conditions)
     end
   }
 

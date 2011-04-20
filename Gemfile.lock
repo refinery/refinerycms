@@ -13,6 +13,7 @@ PATH
       refinerycms-settings (= 0.9.9.18)
     refinerycms-authentication (0.9.9.18)
       devise (~> 1.2.0)
+      friendly_id_globalize3 (~> 3.2.1)
       refinerycms-core (= 0.9.9.18)
     refinerycms-base (0.9.9.18)
     refinerycms-core (0.9.9.18)
@@ -33,6 +34,9 @@ PATH
       rack-cache (>= 0.5.3)
       refinerycms-core (= 0.9.9.18)
     refinerycms-pages (0.9.9.18)
+      friendly_id_globalize3 (~> 3.2.1)
+      globalize3 (>= 0.1.0.beta)
+      moretea-awesome_nested_set (~> 1.4)
       refinerycms-core (= 0.9.9.18)
       seo_meta (~> 1.0.4)
     refinerycms-resources (0.9.9.18)
@@ -56,6 +60,13 @@ PATH
       rack-test (~> 0.5.6)
       refinerycms-core (= 0.9.9.18)
       rspec-rails (~> 2.5)
+
+PATH
+  remote: /code/globalize3
+  specs:
+    globalize3 (0.1.0.beta)
+      activemodel (>= 3.0.0)
+      activerecord (>= 3.0.0)
 
 GEM
   remote: http://rubygems.org/
@@ -140,9 +151,6 @@ GEM
       babosa (~> 0.3.0)
     gherkin (2.3.5)
       json (>= 1.4.6)
-    globalize3 (0.1.0.beta)
-      activemodel (>= 3.0.0)
-      activerecord (>= 3.0.0)
     i18n (0.5.0)
     json (1.5.1)
     json_pure (1.5.1)
@@ -157,6 +165,7 @@ GEM
     mime-types (1.16)
     moretea-awesome_nested_set (1.4.3.1)
       activerecord (~> 3.0.0)
+    mysql2 (0.2.7)
     nokogiri (1.4.4)
     orm_adapter (0.0.4)
     polyglot (0.3.1)
@@ -225,6 +234,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  globalize3!
+  mysql2
   refinerycms!
   refinerycms-i18n (~> 1.0.0)
   refinerycms-testing (~> 0.9.9.18)

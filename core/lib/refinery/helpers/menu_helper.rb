@@ -36,9 +36,8 @@ module Refinery
       # This maps to the older css_for_menu_branch method.
       def menu_branch_css(local_assigns)
         options = {:collection => []}.merge(local_assigns)
-        if options.keys.exclude?(:sibling_count) || options[:sibling_count].nil?
-          options.update(:sibling_count => options[:menu_branch].shown_siblings.size)
-        end
+        options.update(:sibling_count => options[:menu_branch].shown_siblings.size) unless options[:sibling_count]
+
         css_for_menu_branch(options[:menu_branch],
                             options[:menu_branch_counter],
                             options[:sibling_count],
@@ -51,24 +50,23 @@ module Refinery
       # Just calls selected_page? for each descendant of the supplied page.
       # if you pass a collection it won't check its own descendants but use the collection supplied.
       def descendant_page_selected?(page, collection = [], selected_item = nil)
-        return false unless page.has_descendants? or (selected_item && !selected_item.in_menu?)
+        return false unless page.has_descendants? && selected_item.try(:in_menu?)
 
-        descendants = if collection.present? and (!selected_item or (selected_item && selected_item.in_menu?))
+        descendants = if collection.present?
           collection.select{ |item| item.parent_id == page.id }
         else
           page.descendants
         end
 
-        descendants.any? do |descendant|
+        descendants.any? { |descendant|
           selected_item ? selected_item == descendant : selected_page?(descendant)
-        end
+        }
       end
 
       def selected_page_or_descendant_page_selected?(page, collection = [], selected_item = nil)
-        selected = false
-        selected = selected_item ? selected_item === page : selected_page?(page)
-        selected = descendant_page_selected?(page, collection, selected_item) unless selected
-        selected
+        return true if selected_item === page || selected_page?(page)
+        return true if descendant_page_selected?(page, collection, selected_item)
+        false
       end
 
       # Determine whether the supplied page is the currently open page according to Refinery.
