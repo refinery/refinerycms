@@ -22,6 +22,7 @@ Gem::Specification.new do |s|
     'app/controllers/admin/pages_controller.rb',
     'app/controllers/admin/pages_dialogs_controller.rb',
     'app/controllers/pages_controller.rb',
+    'app/controllers/page_sweeper.rb',
     'app/helpers',
     'app/helpers/pages_helper.rb',
     'app/models',
