@@ -4,10 +4,7 @@
   end
   dom_id = "id='item_#{menu_branch_counter}'"
 
-  children = []
-  if !hide_children && menu_branch.has_descendants?
-    children = collection.select{|p| p.parent_id == menu_branch.id}
-  end
+  children = menu_branch.children unless hide_children
 -%>
 <li<%= ['', css, dom_id].compact.join(' ').gsub(/\ *$/, '') %>>
   <%= link_to menu_branch.title, menu_branch.url -%>
@@ -20,7 +17,6 @@
                  :apply_css => local_assigns[:apply_css],
                  :hide_children => !!hide_children,
                  :collection => collection,
-                 :selected_item => selected_item,
                  :sibling_count => children.size - 1
                } -%>
     </ul>

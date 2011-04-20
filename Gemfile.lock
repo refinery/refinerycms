@@ -61,13 +61,6 @@ PATH
       refinerycms-core (= 0.9.9.18)
       rspec-rails (~> 2.5)
 
-PATH
-  remote: /code/globalize3
-  specs:
-    globalize3 (0.1.0.beta)
-      activemodel (>= 3.0.0)
-      activerecord (>= 3.0.0)
-
 GEM
   remote: http://rubygems.org/
   specs:
@@ -151,6 +144,9 @@ GEM
       babosa (~> 0.3.0)
     gherkin (2.3.5)
       json (>= 1.4.6)
+    globalize3 (0.1.0.beta)
+      activemodel (>= 3.0.0)
+      activerecord (>= 3.0.0)
     i18n (0.5.0)
     json (1.5.1)
     json_pure (1.5.1)
@@ -234,7 +230,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  globalize3!
   mysql2
   refinerycms!
   refinerycms-i18n (~> 1.0.0)

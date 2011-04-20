@@ -29,7 +29,7 @@
   </div>
   <ul class='nested'>
     <%= render :partial => 'page',
-               :collection => collection.select{|p| p.parent_id == page.id},
+               :collection => page.children,
                :locals => {
                  :collection => collection
                } if page.has_descendants? %>

@@ -20,7 +20,7 @@ module Refinery
         # DEPRECATION. Remove at version 1.1
         if warning
           warn "\n-- DEPRECATION WARNING --"
-          warn "The use of 'css_for_menu_branch' is deprecated."
+          warn "The use of 'css_for_menu_branch' is deprecated and will be removed at version 1.1."
           warn "Please use menu_branch_css(local_assigns) instead."
           warn "Called from: #{caller.detect{|c| c =~ %r{#{Rails.root.to_s}}}.inspect.to_s.split(':in').first}\n\n"
         end
@@ -42,7 +42,7 @@ module Refinery
                             options[:menu_branch_counter],
                             options[:sibling_count],
                             options[:collection],
-                            options[:selected_item],
+                            options[:selected_item], # TODO: DEPRECATED, remove at 1.1
                             false)
       end
 
@@ -50,6 +50,12 @@ module Refinery
       # Just calls selected_page? for each descendant of the supplied page.
       # if you pass a collection it won't check its own descendants but use the collection supplied.
       def descendant_page_selected?(page, collection = [], selected_item = nil)
+        if selected_item
+          warn "\n-- DEPRECATION WARNING --"
+          warn "The use of 'selected_item' is deprecated and will be removed at version 1.1."
+          warn "Called from: #{caller.detect{|c| c =~ %r{#{Rails.root.to_s}}}.inspect.to_s.split(':in').first}\n\n"
+        end
+
         return false unless page.has_descendants? && selected_item.try(:in_menu?)
 
         descendants = if collection.present?
@@ -59,7 +65,7 @@ module Refinery
         end
 
         descendants.any? { |descendant|
-          selected_item ? selected_item == descendant : selected_page?(descendant)
+          !selected_item ? selected_page?(descendant) : selected_item == descendant
         }
       end
 
