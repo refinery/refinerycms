@@ -57,7 +57,8 @@ class Page < ActiveRecord::Base
   # Wrap up the logic of finding the pages based on the translations table.
   scope :with_globalize, lambda {|conditions|
     if defined?(::Page::Translation)
-      where(conditions).includes(:translations)
+      conditions = {:locale => Globalize.locale}.merge(conditions || {})
+      where(:id => ::Page::Translation.where(conditions).select('page_id AS id')).includes(:translations)
     else
       where(conditions)
     end
