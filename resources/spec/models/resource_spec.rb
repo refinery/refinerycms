@@ -2,58 +2,40 @@ require 'spec_helper'
 
 describe Resource do
 
-  def reset_resource(options = {})
-    @valid_attributes = {
-      :id => 1,
-      :file => File.new(File.expand_path('../../uploads/refinery_is_awesome.txt', __FILE__))
-    }.merge(options)
-
-    @resource.destroy if @resource
-    @resource = Resource.create!(@valid_attributes)
-  end
-
-  def resource_can_be_destroyed
-    @resource.destroy.should == true
-  end
-
-  before(:each) do
-    reset_resource
-  end
-
-  # clean up after ourselves.
-  after(:each) do
-    Resource.destroy_all
+  let(:resource) do
+    Resource.create!(:id => 1,
+                     :file => File.new(File.expand_path('../../uploads/refinery_is_awesome.txt', __FILE__)))
   end
 
   context "with valid attributes" do
     it "should create successfully" do
-      @resource.errors.empty?
+      resource.errors.should be_empty
     end
   end
 
   context "resource url" do
     it "should respond to .url" do
-      @resource.respond_to?(:url).should == true
+      resource.should respond_to(:url)
     end
 
     it "should not support thumbnailing like images do" do
-      @resource.respond_to?(:thumbnail).should == false
+      resource.should_not respond_to(:thumbnail)
     end
 
     it "should contain its filename at the end" do
-      @resource.url.split('/').last.should == @resource.file_name
+      resource.url.split('/').last.should == resource.file_name
     end
   end
 
   describe "#type_of_content" do
     it "returns formated mime type" do
-      @resource.type_of_content.should == "text plain"
+      resource.type_of_content.should == "text plain"
     end
   end
 
   describe "#title" do
     it "returns a titleized version of the filename" do
-      @resource.title.should == "Refinery Is Awesome"
+      resource.title.should == "Refinery Is Awesome"
     end
   end
 
@@ -87,8 +69,8 @@ describe Resource do
     end
 
     specify "each returned array item should be an instance of resource" do
-      Resource.create_resources(:file => [file, file, file]).each do |resource|
-        resource.should be_an_instance_of(Resource)
+      Resource.create_resources(:file => [file, file, file]).each do |r|
+        r.should be_an_instance_of(Resource)
       end
     end
   end
