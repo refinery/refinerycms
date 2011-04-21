@@ -4,7 +4,7 @@
   end
   dom_id = "id='item_#{menu_branch_counter}'"
 
-  children = menu_branch.children unless hide_children
+  children = menu_branch.children.live.in_menu unless hide_children
 -%>
 <li<%= ['', css, dom_id].compact.join(' ').gsub(/\ *$/, '') %>>
   <%= link_to menu_branch.title, menu_branch.url -%>
