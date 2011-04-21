@@ -17,6 +17,10 @@ class Page < ActiveRecord::Base
         ::Page::Translation.send :is_seo_meta
       end
     end
+
+    before_create :ensure_locale, :if => proc { |c|
+      defined?(::Refinery::I18n) && ::Refinery::I18n.enabled?
+    }
   end
 
   attr_accessible :id, :deletable, :link_url, :menu_match, :meta_keywords,
@@ -338,6 +342,12 @@ private
     children.each do |child|
       Rails.cache.delete(child.url_cache_key)
       Rails.cache.delete(child.path_cache_key)
+    end
+  end
+
+  def ensure_locale
+    unless self.translations.present?
+      self.translations.build :locale => ::Refinery::I18n.default_frontend_locale
     end
   end
 
