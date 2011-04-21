@@ -1,3 +1,10 @@
+## 0.9.9.19 [22 April 2011]
+
+* Removed `rdoc` dependency. [Philip Arndt](https://github.com/parndt)
+* Migrate to stable Rails 3.0.7. [Josef Šimánek](https://github.com/simi)
+* Use `let()` in rspec specs. [Uģis Ozols](https://github.com/ugisozols)
+* [See full list](https://github.com/resolve/refinerycms/compare/0.9.9.18...0.9.9.19)
+
 ## 0.9.9.18 [16 April 2011]
 
 * Fixed a backward incompatibility. [Josef Šimánek](https://github.com/simi)
