@@ -27,6 +27,28 @@ module Refinery
       end
     end
 
+    describe "#title" do
+      it "returns plugin title defined by I18n" do
+        ::I18n.load_path += Dir[File.dirname(__FILE__) + "/../../locales/*.yml"]
+        plugin.title.should == "RefineryCMS RSpec"
+      end
+    end
+
+    describe "#description" do
+      it "returns plugin description defined by I18n" do
+        ::I18n.load_path += Dir[File.dirname(__FILE__) + "/../../locales/*.yml"]
+        plugin.description.should == "RSpec tests for plugin.rb"
+      end
+    end
+
+    describe "#activity" do
+
+    end
+
+    describe "#activity=" do
+
+    end
+
     describe "#always_allow_access?" do
       it "returns false if @always_allow_access is not set or its set to false" do
         plugin.always_allow_access?.should be_false
@@ -63,6 +85,45 @@ module Refinery
       it "returns true if dashboard? is true and params[:action] == error_404" do
         plugin.stub(:dashboard?).and_return(true)
         plugin.highlighted?({:action => "error_404"}).should be
+      end
+    end
+
+    describe "#url" do
+      before do
+        plugin.stub(:url) do |arg|
+          if arg == :controller
+            {:controller => "/admin/testb"}
+          elsif arg == :directory
+            {:controller => "/admin/testc"}
+          else
+            {:controller => "/admin/refinery_rspec"}
+          end
+        end
+      end
+
+      context "when @url is already defined" do
+        it "returns hash" do
+          plugin.stub(:url).and_return({:controller => "/admin/testa"})
+          plugin.url.should == {:controller => "/admin/testa"}
+        end
+      end
+
+      context "when controller is present" do
+        it "returns hash based on it" do
+          plugin.url(:controller).should == {:controller => "/admin/testb"}
+        end
+      end
+
+      context "when directory is present" do
+        it "returns hash based on it" do
+          plugin.url(:directory).should == {:controller => "/admin/testc"}
+        end
+      end
+
+      context "when controller and directory not present" do
+        it "returns hash based on plugins name" do
+          plugin.url.should == {:controller => "/admin/refinery_rspec"}
+        end
       end
     end
 
