@@ -101,17 +101,13 @@ module Refinery
     end
 
     describe "#url" do
-      before do
-        plugin.stub(:url) do |arg|
-          if arg == :controller
-            {:controller => "/admin/testb"}
-          elsif arg == :directory
-            {:controller => "/admin/testc"}
-          else
-            {:controller => "/admin/refinery_rspec"}
-          end
+      class Plugin
+        def reset_url!
+          @url = nil
         end
       end
+
+      before(:each) { plugin.reset_url! }
 
       context "when @url is already defined" do
         it "returns hash" do
@@ -122,13 +118,16 @@ module Refinery
 
       context "when controller is present" do
         it "returns hash based on it" do
-          plugin.url(:controller).should == {:controller => "/admin/testb"}
+          plugin.stub(:controller).and_return("testb")
+          plugin.url.should == {:controller => "/admin/testb"}
         end
       end
 
       context "when directory is present" do
+
         it "returns hash based on it" do
-          plugin.url(:directory).should == {:controller => "/admin/testc"}
+          plugin.stub(:directory).and_return("first/second/testc")
+          plugin.url.should == {:controller => "/admin/testc"}
         end
       end
 
