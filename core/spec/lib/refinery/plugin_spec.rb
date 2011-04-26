@@ -12,8 +12,18 @@ end
 
 module Refinery
   describe Plugin do
-    
+
     let(:plugin) { Refinery::Plugins.registered.detect { |plugin| plugin.name == "refinery_rspec" } }
+
+    def setup_i18n
+      ::I18n.backend = ::I18n::Backend::Simple.new
+      ::I18n.backend.store_translations :en, :plugins => {
+        :refinery_rspec => {
+          :title => "RefineryCMS RSpec",
+          :description => "RSpec tests for plugin.rb"
+        }
+      }
+    end    
 
     describe ".register" do
       it "must have a name" do
@@ -28,15 +38,17 @@ module Refinery
     end
 
     describe "#title" do
+      before { setup_i18n }
+
       it "returns plugin title defined by I18n" do
-        ::I18n.load_path += Dir[File.dirname(__FILE__) + "/../../locales/*.yml"]
         plugin.title.should == "RefineryCMS RSpec"
       end
     end
 
     describe "#description" do
+      before { setup_i18n }
+
       it "returns plugin description defined by I18n" do
-        ::I18n.load_path += Dir[File.dirname(__FILE__) + "/../../locales/*.yml"]
         plugin.description.should == "RSpec tests for plugin.rb"
       end
     end

@@ -1,5 +1,0 @@
-en:
-  plugins:
-    refinery_rspec:
-      title: "RefineryCMS RSpec"
-      description: "RSpec tests for plugin.rb"
