@@ -157,6 +157,7 @@ GEM
     mime-types (1.16)
     moretea-awesome_nested_set (1.4.3.1)
       activerecord (~> 3.0.0)
+    mysql2 (0.2.7)
     nokogiri (1.4.4)
     orm_adapter (0.0.4)
     polyglot (0.3.1)
@@ -225,6 +226,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  mysql2
   refinerycms!
   refinerycms-i18n (~> 1.0.0)
   refinerycms-testing (~> 0.9.9.18)
