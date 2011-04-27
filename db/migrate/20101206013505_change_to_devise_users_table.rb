@@ -10,6 +10,8 @@ class ChangeToDeviseUsersTable < ActiveRecord::Migration
 
     rename_column ::User.table_name, :crypted_password, :encrypted_password
     rename_column ::User.table_name, :login, :username
+
+    ::User.reset_column_information
   end
 
   def self.down
@@ -23,5 +25,7 @@ class ChangeToDeviseUsersTable < ActiveRecord::Migration
 
     rename_column ::User.table_name, :encrypted_password, :crypted_password
     rename_column ::User.table_name, :username, :login
+
+    ::User.reset_column_information
   end
 end

@@ -3,7 +3,7 @@
   <%=t('.remember_admin_location')%>
 </p>
 <p>
-  <strong>http://<%= request.host %>/refinery</strong>
+  <strong><%= [request.protocol, request.host_with_port, '/refinery'].join %></strong>
 </p>
 <p>
   <%= t('.lets_start') %>

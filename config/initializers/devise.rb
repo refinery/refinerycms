@@ -2,7 +2,7 @@ require 'devise'
 
 # Use this hook to configure devise mailer, warden hooks and so forth. The first
 # four configuration values can also be set straight in your models.
-Devise.setup do |config|
+::Devise.setup do |config|
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in DeviseMailer.
   config.mailer_sender = "please-change-me@config-initializers-devise.com"
@@ -45,10 +45,10 @@ Devise.setup do |config|
   # from others authentication tools as :clearance_sha1, :authlogic_sha512 (then
   # you should set stretches above to 20 for default behavior) and :restful_authentication_sha1
   # (then you should set stretches to 10, and copy REST_AUTH_SITE_KEY to pepper)
-  config.encryptor = :bcrypt
+  # config.encryptor = :bcrypt
 
   # Setup a pepper to generate the encrypted password.
-  config.pepper = "2e20a8abdd34d729ba6d05f679e513cfea9fbb1e83c81f84b29e9e4fdbd4ee59b56a32200064082a15a72b05a4d4a6a2c3784a09c0554b3a47a67cc8333ccbc7"
+  # config.pepper = "2e20a8abdd34d729ba6d05f679e513cfea9fbb1e83c81f84b29e9e4fdbd4ee59b56a32200064082a15a72b05a4d4a6a2c3784a09c0554b3a47a67cc8333ccbc7"
 
   # ==> Configuration for :confirmable
   # The time you want to give your user to confirm his account. During this time

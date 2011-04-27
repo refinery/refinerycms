@@ -22,7 +22,7 @@
 /* basic */
   body  { background: #fff;}
 
-/* make HTML blocs visible */
+/* make HTML blocks visible */
   p,
   h1,
   h2,
@@ -34,7 +34,26 @@
   ol,
   table,
   blockquote,
-  pre       { background: transparent no-repeat 2px 2px;
+  pre,
+  article,
+  aside,
+  command,
+  details,
+  summary,
+  figure,
+  figcaption,
+  footer,
+  header,
+  hgroup,
+  mark,
+  meter,
+  nav,
+  progress,
+  ruby,
+  rt,
+  rp,
+  section,
+  time { background: transparent no-repeat 2px 2px;
           padding:8px 5px 5px;
           margin:6px 0px;
           border: 1px dotted #cccccc;
@@ -55,15 +74,34 @@
   td      { height: 1.6em; }
 
 /* labels */
-  p     { background-image: url('/images/wymeditor/skins/refinery/iframe/lbl-p.png'); }
-  h1    { background-image: url('/images/wymeditor/skins/refinery/iframe/lbl-h1.png'); }
-  h2    { background-image: url('/images/wymeditor/skins/refinery/iframe/lbl-h2.png'); }
-  h3    { background-image: url('/images/wymeditor/skins/refinery/iframe/lbl-h3.png'); }
-  h4    { background-image: url('/images/wymeditor/skins/refinery/iframe/lbl-h4.png'); }
-  h5    { background-image: url('/images/wymeditor/skins/refinery/iframe/lbl-h5.png'); }
-  h6    { background-image: url('/images/wymeditor/skins/refinery/iframe/lbl-h6.png'); }
-  blockquote{ background-image: url('/images/wymeditor/skins/refinery/iframe/lbl-blockquote.png'); }
-  pre     { background-image: url('/images/wymeditor/skins/refinery/iframe/lbl-pre.png'); }
+  p           { background-image: url('/images/wymeditor/skins/refinery/html5/p.png'); }
+  h1          { background-image: url('/images/wymeditor/skins/refinery/html5/h1.png'); }
+  h2          { background-image: url('/images/wymeditor/skins/refinery/html5/h2.png'); }
+  h3          { background-image: url('/images/wymeditor/skins/refinery/html5/h3.png'); }
+  h4          { background-image: url('/images/wymeditor/skins/refinery/html5/h4.png'); }
+  h5          { background-image: url('/images/wymeditor/skins/refinery/html5/h5.png'); }
+  h6          { background-image: url('/images/wymeditor/skins/refinery/html5/h6.png'); }
+  blockquote  { background-image: url('/images/wymeditor/skins/refinery/html5/blockquote.png'); }
+  pre         { background-image: url('/images/wymeditor/skins/refinery/html5/pre.png'); }
+  meter       { background-image: url('/images/wymeditor/skins/refinery/html5/meter.png'); }
+  nav         { background-image: url('/images/wymeditor/skins/refinery/html5/nav.png'); }
+  ruby        { background-image: url('/images/wymeditor/skins/refinery/html5/ruby.png'); }
+  rt          { background-image: url('/images/wymeditor/skins/refinery/html5/rt.png'); }
+  rp          { background-image: url('/images/wymeditor/skins/refinery/html5/rp.png'); }
+  article     { background-image: url('/images/wymeditor/skins/refinery/html5/article.png'); }
+  aside       { background-image: url('/images/wymeditor/skins/refinery/html5/aside.png'); }
+  command     { background-image: url('/images/wymeditor/skins/refinery/html5/command.png'); }
+  details     { background-image: url('/images/wymeditor/skins/refinery/html5/details.png'); }  
+  summary     { background-image: url('/images/wymeditor/skins/refinery/html5/summary.png'); }
+  figure      { background-image: url('/images/wymeditor/skins/refinery/html5/figure.png'); }
+  figcaption  { background-image: url('/images/wymeditor/skins/refinery/html5/figcaption.png'); }
+  footer      { background-image: url('/images/wymeditor/skins/refinery/html5/footer.png'); }
+  header      { background-image: url('/images/wymeditor/skins/refinery/html5/header.png'); }
+  hgroup      { background-image: url('/images/wymeditor/skins/refinery/html5/hgroup.png'); }
+  mark        { background-image: url('/images/wymeditor/skins/refinery/html5/mark.png'); }
+  progress    { background-image: url('/images/wymeditor/skins/refinery/html5/progress.png'); }
+  section     { background-image: url('/images/wymeditor/skins/refinery/html5/section.png'); }
+  time        { background-image: url('/images/wymeditor/skins/refinery/html5/time.png'); }
 
 /* specific HTML elements */
 	caption	 { text-align: left; }
@@ -93,4 +131,26 @@
 
   img.selected_by_wym {
     border: 1px dashed #22a7f2;
+  }
+  
+  article,
+  aside,
+  command,
+  details,
+  summary,
+  figure,
+  figcaption,
+  footer,
+  header,
+  hgroup,
+  mark,
+  meter,
+  nav,
+  progress,
+  ruby,
+  rt,
+  rp,
+  section,
+  time {
+    display: block;
   }

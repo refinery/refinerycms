@@ -1,21 +1,3 @@
-<%
-  if (yielded_head = yield(:head)).present?
-    logger.warn "\n-- DEPRECATION WARNING --"
-    logger.warn "The use of 'content_for :head' is DEPRECATED for the admin layouts."
-    logger.warn "For stylesheets, use content_for :stylesheets"
-    logger.warn "For javascripts, use content_for :javascripts"
-    logger.warn "For meta tags, use content_for :meta"
-    logger.warn "This change is necessary so that we can deliver a performant experience for the user."
-    logger.warn "Called from: #{caller.detect{|c| c =~ %r{#{Rails.root.to_s}}}.inspect.to_s.split(':in').first}\n\n"
-  end
-  if (yielded_head_libraries = yield(:head)).present?
-    logger.warn "\n-- DEPRECATION WARNING --"
-    logger.warn "The use of 'content_for :head_libraries' is DEPRECATED for the admin layouts."
-    logger.warn "Please use content_for :before_javascript_libraries or content_for :after_javascript_libraries instead."
-    logger.warn "This change is necessary so that we can deliver a performant experience for the user."
-    logger.warn "Called from: #{caller.detect{|c| c =~ %r{#{Rails.root.to_s}}}.inspect.to_s.split(':in').first}\n\n"
-  end
--%>
 <head>
   <meta charset='<%= ::Refinery::Application.config.encoding %>' />
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -36,8 +18,4 @@
   <%= yield :stylesheets %>
 
   <%= javascript_include_tag 'modernizr-min' %>
-
-  <% #TODO: REMOVE yielded_head and yielded_head_libraries and deprecation notice 0.9.9 <=> 1.0 %>
-  <%= yielded_head_libraries %>
-  <%= yielded_head %>
 </head>

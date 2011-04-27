@@ -3,12 +3,12 @@
 db/*.sqlite3
 db/*.sqlite3-journal
 *.log
+tmp
 tmp/**/*
 
 # Documentation
 doc/api
 doc/app
-doc/*
 .yardoc
 .yardopts
 
@@ -29,7 +29,7 @@ index/**/*
 # Refinery Specific
 *.tmproj
 *.autobackupbyrefinery.*
-/refinerycms-*.gem
+refinerycms-*.gem
 .autotest
 
 # Mac
@@ -56,6 +56,9 @@ nbproject
 
 # RubyMine
 .idea
+
+# E-texteditor
+.eprj
 
 # Backup
 *~

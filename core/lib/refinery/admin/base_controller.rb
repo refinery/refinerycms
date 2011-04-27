@@ -31,24 +31,10 @@ module Refinery
         end
 
         def error_404(exception=nil)
-          if (@page = Page.find_by_menu_match("^/404$", :include => [:parts, :slugs])).present?
-            params[:action] = 'error_404'
-            # change any links in the copy to the admin_root_path
-            # and any references to "home page" to "Dashboard"
-            part_symbol = Page.default_parts.first.to_sym
-            @page[part_symbol] = @page[part_symbol].to_s.gsub(
-                                   /href=(\'|\")\/(\'|\")/, "href='#{admin_root_path}'"
-                                 ).gsub("home page", "Dashboard")
-
-            render :template => "/pages/show",
-                   :layout => layout?,
-                   :status => 404
-          else
-            # fallback to the default 404.html page.
-            render :file => Rails.root.join("public", "404.html").cleanpath.to_s,
-                   :layout => false,
-                   :status => 404
-          end
+          # fallback to the default 404.html page.
+          render :file => Rails.root.join("public", "404.html").cleanpath.to_s,
+                 :layout => false,
+                 :status => 404
         end
 
       protected

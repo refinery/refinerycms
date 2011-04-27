@@ -1,10 +1,73 @@
-## 0.9.9.11 [unreleased]
+## 0.9.9.19 [22 April 2011]
+
+* Removed `rdoc` dependency. [Philip Arndt](https://github.com/parndt)
+* Migrate to stable Rails 3.0.7. [Josef Šimánek](https://github.com/simi)
+* Use `let()` in rspec specs. [Uģis Ozols](https://github.com/ugisozols)
+* [See full list](https://github.com/resolve/refinerycms/compare/0.9.9.18...0.9.9.19)
+
+## 0.9.9.18 [16 April 2011]
+
+* Fixed a backward incompatibility. [Josef Šimánek](https://github.com/simi)
+* Reduced calls to `SHOW TABLES` by updating `friendly_id_globalize3`. [Philip Arndt](https://github.com/parndt)
+* Switched `/shared/_menu.html.erb` and `/shared/_menu_branch.html.erb` away from `render :partial` with `:collection`, speeding up menu 12~15%. [Philip Arndt](https://github.com/parndt)
+* Fixed Refinery.root, Fixed generator templates, Added refinerycms-i18n generator to refinerycms generator if i18n is included. [Mark Haylock](https://github.com/mhaylock)
+* Bumped Rails dependency to `~> 3.0.7.rc2`. [Philip Arndt](https://github.com/parndt)
+* [See full list](https://github.com/resolve/refinerycms/compare/0.9.9.17...0.9.9.18)
+
+## 0.9.9.17 [15 April 2011]
+
+* Mass assignment protection implemented. [Andreas König](https://github.com/koa)
+* Removed deprecated code to prepare for `1.0.0`. [Uģis Ozols](https://github.com/ugisozols)
+* Added `Strip Non Ascii` preference to `has_friendly_id`. [Marc Argent](https://github.com/lurcio)
+* Bumped Rails dependency to `~> 3.0.7.rc1`. [Philip Arndt](https://github.com/parndt)
+* Better support for models in modules for uncrudify. [Josef Šimánek](https://github.com/simi)
+* [See full list](https://github.com/resolve/refinerycms/compare/0.9.9.16...0.9.9.17)
+
+## 0.9.9.16 [7 April 2011]
+
+* Improved resource picker. [Will Marshall](https://github.com/willrjmarshall)
+* Improved robustness of `Page#expire_page_caching` for both `ActiveSupport::Cache::FileStore` and `ActiveSupport::Cache::MemoryStore`. [Jeff Hall](https://github.com/zenchicken)
+* Optimised index sizes on MySQL. [Ruslan Doroshenko](https://github.com/rdoroshenko)
+* Changed default cache store to `:memory_store`. [Philip Arndt](https://github.com/parndt)
+* `rake db:migrate` and `rake db:rollback` now works consistently when migrations from other engines are in the mix. [Vaughn Draughon](https://github.com/rocksolidwebdesign)
+* Re-enable cache when logged in, this avoids slowdown of site when admin logged in. [Mark Haylock](https://github.com/mhaylock)
+* [See full list](https://github.com/resolve/refinerycms/compare/0.9.9.15...0.9.9.16)
+
+## 0.9.9.15 [1 April 2011]
+
+* Fixed asset caching of files in `public/stylesheets/`. [Sergio Cambra](https://github.com/scambra)
+* All dependencies now have an absolute version dependency (e.g. '= 0.9.9.15' rather than '~> 0.9.9.15') to prevent Refinery auto-updating. [Philip Arndt](https://github.com/parndt)
+* [See full list](https://github.com/resolve/refinerycms/compare/0.9.9.14...0.9.9.15)
+
+## 0.9.9.14 [31 March 2011]
+
+* Added `refinery.before_inclusion` for running extra functionality just before Refinery attaches to Rails. [Philip Arndt](https://github.com/parndt)
+* Renamed `refinery.after_inclusion` to `refinery.after_inclusion` to match `refinery.before_inclusion`. [Philip Arndt](https://github.com/parndt)
+* Moved meta tag responsibility to `seo_meta` library. [Philip Arndt](https://github.com/parndt)
+* Added HTML5 tag support to WYMeditor. [Philip Arndt](https://github.com/parndt) and [Nick Hammond](https://github.com/nickhammond)
+* [See full list](https://github.com/resolve/refinerycms/compare/0.9.9.13...0.9.9.14)
+
+## 0.9.9.13 [28 March 2011]
+
+* Forcing password reset when migrating from older versions of Devise (sigh). [Philip Arndt](https://github.com/parndt)
+* Updated to `refinerycms-i18n 0.9.9.16` - please run `rails generate refinerycms_i18n`. [Philip Arndt](https://github.com/parndt)
+* [See full list](https://github.com/resolve/refinerycms/compare/0.9.9.12...0.9.9.13)
+
+## 0.9.9.12 [27 March 2011]
+
+* Removed `password_salt` field from users table and comment out `config.encryptor` in `config/initializers/devise.rb` to handle update to devise 1.2.0. [Uģis Ozols](https://github.com/ugisozols)
+* [See full list](https://github.com/resolve/refinerycms/compare/0.9.9.11...0.9.9.12)
+
+## 0.9.9.11 [24 March 2011]
 
 * Translated WYMeditor texts to Japanese. [Hiro Asari](https://github.com/BanzaiMan)
 * Supporting `cucumber-rails 0.4.0`. [Philip Arndt](https://github.com/parndt)
 * Added an option to link in the `page_title` enabling easier breadcrumbs. [Sergio Cambra](https://github.com/scambra)
 * Fixed support for `asset_file_path` in upcoming Rails 3.1. [Philip Arndt](https://github.com/parndt)
 * Updated copyright notice to include the current year. [David Jones](https://github.com/djones)
+* Fixed site bar switch link. [Philip Arndt](https://github.com/parndt)
+* Added support for translating Javascript strings. [Philip Arndt](https://github.com/parndt)
+* Added `refinery.on_attach` for running extra functionality just after Refinery attaches to Rails. Functions similarly to `config.to_prepare`. [Philip Arndt](https://github.com/parndt)
 * [See full list](https://github.com/resolve/refinerycms/compare/0.9.9.10...0.9.9.11)
 
 ## 0.9.9.10 [17 March 2011]

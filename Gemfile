@@ -11,6 +11,8 @@ else
   gem 'sqlite3'
 end
 
+gem 'mysql2'
+
 # Use unicorn as the web server
 # gem 'unicorn'
 # gem 'mongrel'
@@ -29,10 +31,12 @@ end
 # REFINERY CMS ================================================================
 # Anything you put in here will be overridden when the app gets updated.
 
-# gem 'refinerycms', '~> 0.9.9.10'
+# gem 'refinerycms', '~> 0.9.9.18'
 
 group :development, :test do
-  gem 'refinerycms-testing',    '~> 0.9.9.10'
+  # To use refinerycms-testing, uncomment it (if it's commented out) and run 'bundle install'
+  # Then, run 'rails generate refinerycms_testing' which will copy its support files.
+  gem 'refinerycms-testing',    '~> 0.9.9.18'
 end
 
 # END REFINERY CMS ============================================================
@@ -53,6 +57,5 @@ end
 # gem 'refinerycms-page-images',  '~> 1.0'
 
 # Add i18n support (optional, you can remove this if you really want to).
-gem 'refinerycms-i18n',         '~> 0.9.9.15'
-
+gem 'refinerycms-i18n',         '~> 1.0.0'
 # END USER DEFINED

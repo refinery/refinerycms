@@ -221,16 +221,16 @@ module Refinery
       end
     end
 
-    def generate!(rails_command = nil)
-      if rails_command.to_s.length == 0
-        # Generate a rails application
-        rails_command = "rails new \"#{@app_path}\""
-        rails_command << " --database #{@options[:database][:adapter]}"
-        rails_command << " --force" if @options[:force]
-        rails_command << " --skip-test-unit --skip-prototype"
-        rails_command << " -m http://jruby.org" if defined? JRUBY_VERSION
-      end
+    def generate!
+      # Generate a rails application
+      rails_command = "rails new \"#{@app_path}\""
+      rails_command << " --database #{@options[:database][:adapter]}"
+      rails_command << " --force" if @options[:force]
+      rails_command << " --skip-test-unit --skip-prototype"
+      rails_command << " -m http://jruby.org" if defined? JRUBY_VERSION
+
       rails_output = run_command(rails_command, {:cd => false})
+
       # Detect non-success or a blank rails output or starting with "Can't initialize" or "Error"
       if !$?.success? or rails_output.to_s.length == 0 or rails_output =~ /^(Can't\ initialize|Error)/
         puts "Generating Rails application failed. Exiting..."
@@ -262,7 +262,6 @@ module Refinery
       refinery_gems.gsub!("gem 'refinerycms-testing'", "# gem 'refinerycms-testing'") # Disable testing
 
       app_gemfile = @app_path.join('Gemfile')
-      FileUtils::cp app_gemfile, "#{app_gemfile}.backup"
       refinery_user_defined_gems = refinery_gemfile_contents.match(/# USER DEFINED(.*)# END USER DEFINED/m)
       refinery_user_defined_gems = refinery_user_defined_gems[1] unless refinery_user_defined_gems.nil?
       app_gemfile.open('a') do |f|

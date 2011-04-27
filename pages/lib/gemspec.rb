@@ -25,7 +25,8 @@ Gem::Specification.new do |s|
     }.map{|d| d.relative_path_from(gempath)}.uniq.sort.join("',\n    '")}'
   ]
 
-  s.add_dependency 'refinerycms-core', '~> #{::Refinery::Version}'
+  s.add_dependency 'refinerycms-core', '= #{::Refinery::Version}'
+  s.add_dependency 'seo_meta',         '~> 1.0.4'
 end
 EOF
 

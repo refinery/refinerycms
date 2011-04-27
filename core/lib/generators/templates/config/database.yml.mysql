@@ -1,5 +1,5 @@
 login: &login
-  adapter: mysql
+  adapter: mysql2
   host: localhost
   username: root
   password:
@@ -13,7 +13,7 @@ test: &test
   <<: *login
 
 production: &production
-  adapter: mysql
+  adapter: mysql2
   host: localhost
   database: your_production_database
   username: your_production_database_login

@@ -1,5 +1,5 @@
 Given /^I have no files$/ do
-  Resource.delete_all
+  Resource.destroy_all
 end
 
 When /^I attach the file at "([^\"]*)"$/ do |file_path|

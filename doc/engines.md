@@ -68,11 +68,11 @@ file. Here's what that looks like inside at a basic level:
     end
 
 This single controller allows us to create, read, update and delete pages in the backend.
-With a little bit of Refinery magic we utilise the [crudify mixin](http://github.com/resolve/refinerycms/blob/master/core/crud.md)
+With a little bit of Refinery magic we utilise the [crudify mixin](https://github.com/resolve/refinerycms/blob/master/doc/crud.md)
 which gives us all of these regular features out of the box.
 
 How crudify works is an entire topic of it's own.
-Check out the [crudify documentation](http://github.com/resolve/refinerycms/blob/master/core/crud.md)
+Check out the [crudify documentation](https://github.com/resolve/refinerycms/blob/master/doc/crud.md)
 to get an insight into how that works.
 
 ### app/views and app/helpers

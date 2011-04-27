@@ -39,8 +39,6 @@ module Refinery
                                ActionView::MissingTemplate,
                                :with => :error_404
         end
-
-        c.send :alias_method_chain, :render, :presenters
       end
     end
 
@@ -91,11 +89,6 @@ module Refinery
         @meta = presenter.new(model)
       end
 
-      def render_with_presenters(*args)
-        present(@page) unless admin? or @meta.present?
-        render_without_presenters(*args)
-      end
-
       def show_welcome_page?
         if just_installed? and %w(registrations).exclude?(controller_name)
           render :template => "/welcome", :layout => "login"
@@ -104,11 +97,9 @@ module Refinery
 
     private
       def store_current_location!
-        if admin?
+        if admin? and request.get? and !request.xhr? and !from_dialog?
           # ensure that we don't redirect to AJAX or POST/PUT/DELETE urls
-          session[:refinery_return_to] = request.path if request.get? and !request.xhr? and !from_dialog?
-        elsif defined?(@page) and @page.present?
-          session[:website_return_to] = @page.url
+          session[:refinery_return_to] = request.path
         end
       end
     end

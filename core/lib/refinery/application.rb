@@ -1,9 +1,13 @@
-require 'tmpdir'
-
 module Refinery
   module Application
+
     class << self
+
       def refinery!
+        ::Refinery.config.before_inclusion_procs.each do |proc|
+          proc.call if proc.respond_to?(:call)
+        end
+
         ::ApplicationHelper.send :include, ::Refinery::ApplicationHelper
 
         [::ApplicationController, ::Admin::BaseController].each do |c|
@@ -12,6 +16,10 @@ module Refinery
         end
 
         ::Admin::BaseController.send :include, ::Refinery::Admin::BaseController
+
+        ::Refinery.config.after_inclusion_procs.each do |proc|
+          proc.call if proc.respond_to?(:call)
+        end
       end
 
       def included(base)
@@ -31,7 +39,7 @@ module Refinery
         base.config.filter_parameters += [:password, :password_confirmation]
 
         # Specify a cache store to use
-        base.config.cache_store = :file_store, File.join(Dir.tmpdir, base.name.to_s.gsub(':', '-'))
+        base.config.cache_store = :memory_store
 
         # Include the refinery controllers and helpers dynamically
         base.config.to_prepare do

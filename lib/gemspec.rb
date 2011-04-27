@@ -7,6 +7,7 @@ files = %w( Gemfile *.md **/**/{*,.rspec,.gitignore,.yardopts} ).map { |file| Pa
 rejection_patterns = [
   "^(authentication|base|core|dashboard|images|pages|resources|settings|testing)",
   "^public/system",
+  "^public/javascripts/cache",
   "^config/(application|boot|environment).rb$",
   "^config/initializers(\/.*\.rb)?$",
   "^config/(database|i18n\-js).yml$",
@@ -47,14 +48,14 @@ Gem::Specification.new do |s|
   s.add_dependency    'bundler',                    '~> 1.0'
 
   # Refinery CMS
-  s.add_dependency    'refinerycms-authentication', '~> #{::Refinery::Version}'
-  s.add_dependency    'refinerycms-base',           '~> #{::Refinery::Version}'
-  s.add_dependency    'refinerycms-core',           '~> #{::Refinery::Version}'
-  s.add_dependency    'refinerycms-dashboard',      '~> #{::Refinery::Version}'
-  s.add_dependency    'refinerycms-images',         '~> #{::Refinery::Version}'
-  s.add_dependency    'refinerycms-pages',          '~> #{::Refinery::Version}'
-  s.add_dependency    'refinerycms-resources',      '~> #{::Refinery::Version}'
-  s.add_dependency    'refinerycms-settings',       '~> #{::Refinery::Version}'
+  s.add_dependency    'refinerycms-authentication', '= #{::Refinery::Version}'
+  s.add_dependency    'refinerycms-base',           '= #{::Refinery::Version}'
+  s.add_dependency    'refinerycms-core',           '= #{::Refinery::Version}'
+  s.add_dependency    'refinerycms-dashboard',      '= #{::Refinery::Version}'
+  s.add_dependency    'refinerycms-images',         '= #{::Refinery::Version}'
+  s.add_dependency    'refinerycms-pages',          '= #{::Refinery::Version}'
+  s.add_dependency    'refinerycms-resources',      '= #{::Refinery::Version}'
+  s.add_dependency    'refinerycms-settings',       '= #{::Refinery::Version}'
 
   s.files             = [
     '#{files.sort.join("',\n    '")}'

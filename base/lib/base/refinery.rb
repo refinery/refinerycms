@@ -27,7 +27,7 @@ module Refinery
 
     def roots(engine_name = nil)
       if engine_name.nil?
-        @roots ||= self.engines.map {|engine| "Refinery::#{engine.camelize}".constantize.root }
+        @roots ||= self.engines.map {|engine| "Refinery::#{engine.camelize}".constantize.root }.uniq
       else
         unless (engine_name = self.engines.detect{|engine| engine.to_s == engine_name.to_s}).nil?
           "Refinery::#{engine_name.camelize}".constantize.root

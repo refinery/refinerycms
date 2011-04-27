@@ -2,20 +2,25 @@
 # Simply override any methods in your action controller you want to be customised
 # Don't forget to add:
 #   resources :plural_model_name_here
+# or for scoped:
+#   scope(:as => 'module_module', :module => 'module_name') do
+#      resources :plural_model_name_here
+#    end
 # to your routes.rb file.
 # Full documentation about CRUD and resources go here:
-# -> http://caboo.se/doc/classes/ActionController/Resources.html#M003716
+# -> http://api.rubyonrails.org/classes/ActionDispatch/Routing/Mapper/Resources.html#method-i-resources
 # Example (add to your controller):
-# crudify :foo, {:title_attribute => 'name'}
+# crudify :foo, {:title_attribute => 'name'} for CRUD on Foo model
+# crudify 'foo/bar', :{title_attribute => 'name'} for CRUD on Foo::Bar model
 
 module Refinery
   module Crud
 
     def self.default_options(model_name)
-      singular_name = model_name.to_s
-      class_name = singular_name.camelize
-      plural_name = singular_name.pluralize
+      class_name = model_name.to_s.include?("/") ? "::#{model_name.to_s.camelize}" : model_name.to_s.camelize
       this_class = class_name.constantize.base_class
+      singular_name = model_name.to_s.underscore.gsub("/","_")
+      plural_name = singular_name.pluralize
 
       {
         :conditions => '',
@@ -23,12 +28,15 @@ module Refinery
         :order => ('position ASC' if this_class.table_exists? and this_class.column_names.include?('position')),
         :paging => true,
         :per_page => false,
-        :redirect_to_url => "admin_#{plural_name}_url",
+        :redirect_to_url => "admin_#{model_name.to_s.gsub('/', '_').pluralize}_url",
         :searchable => true,
         :search_conditions => '',
         :sortable => true,
         :title_attribute => "title",
-        :xhr_paging => false
+        :xhr_paging => false,
+        :class_name => class_name,
+        :singular_name => singular_name,
+        :plural_name => plural_name
       }
     end
 
@@ -41,10 +49,9 @@ module Refinery
 
       def crudify(model_name, options = {})
         options = ::Refinery::Crud.default_options(model_name).merge(options)
-
-        singular_name = model_name.to_s
-        class_name = singular_name.camelize
-        plural_name = singular_name.pluralize
+        class_name = options[:class_name]
+        singular_name = options[:singular_name]
+        plural_name = options[:plural_name]
 
         module_eval %(
           prepend_before_filter :find_#{singular_name},

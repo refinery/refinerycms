@@ -1,5 +1,5 @@
 Given /^I have no images$/ do
-  Image.delete_all
+  Image.destroy_all
 end
 
 When /^I attach the image at "([^\"]*)"$/ do |file_path|

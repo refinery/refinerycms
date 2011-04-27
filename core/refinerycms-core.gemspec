@@ -2,10 +2,10 @@
 
 Gem::Specification.new do |s|
   s.name              = %q{refinerycms-core}
-  s.version           = %q{0.9.9.11}
+  s.version           = %q{0.9.9.19}
   s.summary           = %q{Core engine for Refinery CMS}
   s.description       = %q{The core of Refinery CMS. This handles the common functionality and is required by most engines}
-  s.date              = %q{2011-03-23}
+  s.date              = %q{2011-04-22}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
   s.rubyforge_project = %q{refinerycms}
@@ -14,15 +14,14 @@ Gem::Specification.new do |s|
   s.require_paths     = %w(lib)
   s.executables       = %w()
 
-  s.add_dependency 'refinerycms-base',            '~> 0.9.9.11'
-  s.add_dependency 'refinerycms-settings',        '~> 0.9.9.11'
+  s.add_dependency 'refinerycms-base',            '= 0.9.9.19'
+  s.add_dependency 'refinerycms-settings',        '= 0.9.9.19'
   s.add_dependency 'refinerycms-generators',      '~> 1.0'
   s.add_dependency 'acts_as_indexed',             '~> 0.7'
   s.add_dependency 'friendly_id_globalize3',      '~> 3.2.1'
   s.add_dependency 'globalize3',                  '>= 0.1.0.beta'
   s.add_dependency 'moretea-awesome_nested_set',  '~> 1.4'
-  s.add_dependency 'rails',                       '~> 3.0.5'
-  s.add_dependency 'rdoc',                        '>= 2.5.11' # helps fix ubuntu
+  s.add_dependency 'rails',                       '~> 3.0.7'
   s.add_dependency 'truncate_html',               '~> 0.5'
   s.add_dependency 'will_paginate',               '~> 3.0.pre'
 
@@ -133,7 +132,6 @@ Gem::Specification.new do |s|
     'lib/generators/templates/config/database.yml.mysql',
     'lib/generators/templates/config/database.yml.postgresql',
     'lib/generators/templates/config/database.yml.sqlite3',
-    'lib/generators/templates/config/i18n-js.yml',
     'lib/generators/templates/config/initializers',
     'lib/generators/templates/config/initializers/devise.rb',
     'lib/generators/templates/db',
@@ -148,7 +146,9 @@ Gem::Specification.new do |s|
     'lib/refinery/application_helper.rb',
     'lib/refinery/base_presenter.rb',
     'lib/refinery/catch_all_routes.rb',
+    'lib/refinery/configuration.rb',
     'lib/refinery/crud.rb',
+    'lib/refinery/engine.rb',
     'lib/refinery/helpers',
     'lib/refinery/helpers/form_helper.rb',
     'lib/refinery/helpers/head_helper.rb',
@@ -258,6 +258,36 @@ Gem::Specification.new do |s|
     'public/images/wymeditor/skins/refinery/arrow_redo.png',
     'public/images/wymeditor/skins/refinery/arrow_undo.png',
     'public/images/wymeditor/skins/refinery/eye.png',
+    'public/images/wymeditor/skins/refinery/html5',
+    'public/images/wymeditor/skins/refinery/html5/article.png',
+    'public/images/wymeditor/skins/refinery/html5/aside.png',
+    'public/images/wymeditor/skins/refinery/html5/blockquote.png',
+    'public/images/wymeditor/skins/refinery/html5/command.png',
+    'public/images/wymeditor/skins/refinery/html5/details.png',
+    'public/images/wymeditor/skins/refinery/html5/figcaption.png',
+    'public/images/wymeditor/skins/refinery/html5/figure.png',
+    'public/images/wymeditor/skins/refinery/html5/footer.png',
+    'public/images/wymeditor/skins/refinery/html5/h1.png',
+    'public/images/wymeditor/skins/refinery/html5/h2.png',
+    'public/images/wymeditor/skins/refinery/html5/h3.png',
+    'public/images/wymeditor/skins/refinery/html5/h4.png',
+    'public/images/wymeditor/skins/refinery/html5/h5.png',
+    'public/images/wymeditor/skins/refinery/html5/h6.png',
+    'public/images/wymeditor/skins/refinery/html5/header.png',
+    'public/images/wymeditor/skins/refinery/html5/hgroup.png',
+    'public/images/wymeditor/skins/refinery/html5/mark.png',
+    'public/images/wymeditor/skins/refinery/html5/meter.png',
+    'public/images/wymeditor/skins/refinery/html5/nav.png',
+    'public/images/wymeditor/skins/refinery/html5/p.png',
+    'public/images/wymeditor/skins/refinery/html5/pre.png',
+    'public/images/wymeditor/skins/refinery/html5/progress.png',
+    'public/images/wymeditor/skins/refinery/html5/readme.md',
+    'public/images/wymeditor/skins/refinery/html5/rp.png',
+    'public/images/wymeditor/skins/refinery/html5/rt.png',
+    'public/images/wymeditor/skins/refinery/html5/ruby.png',
+    'public/images/wymeditor/skins/refinery/html5/section.png',
+    'public/images/wymeditor/skins/refinery/html5/summary.png',
+    'public/images/wymeditor/skins/refinery/html5/time.png',
     'public/images/wymeditor/skins/refinery/iframe',
     'public/images/wymeditor/skins/refinery/iframe/lbl-blockquote.png',
     'public/images/wymeditor/skins/refinery/iframe/lbl-h1.png',
