@@ -82,6 +82,7 @@ class RefinerycmsGenerator < ::Refinery::Generators::EngineInstaller
 
 
     # Append seeds.
+    create_file "db/seeds.rb" unless Rails.root.join('db', 'seeds.rb').file?
     append_file 'db/seeds.rb', :verbose => true do
       self.class.source_root.join('db', 'seeds.rb').read
     end
