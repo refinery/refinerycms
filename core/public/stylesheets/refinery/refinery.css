@@ -213,7 +213,7 @@ a#site_bar_refinery_cms_logo {
 #content, #page_container {
   background-color: white;
 }
-body.login #site_bar_content, body.login header {
+body.login #site_bar_content {
   width: 650px;
 }
 body.login #page_container {
@@ -221,6 +221,9 @@ body.login #page_container {
 }
 body.login header {
   background: #eaeaea;
+  width: 620px;
+  padding: 0px 15px 1em;
+  height: auto;
 }
 header, footer, nav {
   display: block;
@@ -305,7 +308,6 @@ body.login header h1 {
   padding-bottom: 0px;
   line-height: 30px;
   padding-top: 15px;
-  min-height: 60px;
 }
 #menu, header .jcarousel-container {
   display: block;

@@ -149,5 +149,5 @@ describe User do
       UserPlugin.find_by_user_id(user.id).should be_nil
     end
   end
-  
+
 end

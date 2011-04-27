@@ -26,7 +26,7 @@ module Refinery
           plugin.menu_match = /(refinery|admin)\/users$/
           plugin.activity = {
             :class => User,
-            :title => 'login'
+            :title => 'username'
           }
           plugin.url = {:controller => "/admin/users"}
         end
