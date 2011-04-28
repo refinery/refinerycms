@@ -13,8 +13,20 @@ class Page < ActiveRecord::Base
                                                  :meta_keywords, :locale
 
       if ::Page::Translation.table_exists?
+        def translation
+          if @translation.nil? or @translation.try(:locale) != ::Globalize.locale
+            @translation = translations.with_locale(::Globalize.locale).first
+            @translation ||= translations.build(:locale => ::Globalize.locale)
+          end
+
+          @translation
+        end
+
         # Instruct the Translation model to have meta tags.
         ::Page::Translation.send :is_seo_meta
+
+        delegate *(::SeoMeta.attributes.keys.map{|a| [a, :"#{a}="]}.flatten), :to => :translation
+        after_save proc {|m| m.translation.save}
       end
     end
 

@@ -33,8 +33,11 @@ PATH
       rack-cache (>= 0.5.3)
       refinerycms-core (= 0.9.9.19)
     refinerycms-pages (0.9.9.19)
+      friendly_id_globalize3 (~> 3.2.1)
+      globalize3 (>= 0.1.0.beta)
+      moretea-awesome_nested_set (~> 1.4)
       refinerycms-core (= 0.9.9.19)
-      seo_meta (~> 1.0.4)
+      seo_meta (~> 1.0.5)
     refinerycms-resources (0.9.9.19)
       dragonfly (~> 0.8.4)
       rack-cache (>= 0.5.3)
@@ -207,7 +210,7 @@ GEM
       ffi (>= 1.0.7)
       json_pure
       rubyzip
-    seo_meta (1.0.4)
+    seo_meta (1.0.5)
       refinerycms-generators (~> 1.0.1)
     sqlite3 (1.3.3)
     term-ansicolor (1.0.5)
