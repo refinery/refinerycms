@@ -59,3 +59,30 @@ Feature: Manage Users
     Then I should be on the list of users
     And I should see "cucumber was successfully updated."
     And I should see "cucumber (green@cucumber.com)"
+
+  @users-dashboard @add
+  Scenario: Add User
+    Given I have a user named "steven"
+    And I am a logged in refinery user
+    When I go to the list of users
+    And I follow "Add new user"
+    And I fill in "Username" with "marian"
+    And I fill in "Email" with "green@cucumber.com"
+    And I fill in "Password" with "greenandjuicy"
+    And I fill in "Password confirmation" with "greenandjuicy"
+    And I press "Save"
+    Then I should be on the list of users
+    When I go to the Dashboard
+    Then I should see "Marian user was added"
+
+  @users-dashboard @edit
+  Scenario: Edit User
+    Given I have a user named "steven"
+    And I am a logged in refinery user
+    When I go to the list of users
+    And I follow "Edit this user"
+    And I fill in "Username" with "marian"
+    And I press "Save"
+    Then I should be on the list of users
+    When I go to the Dashboard
+    Then I should see "Marian user was updated"

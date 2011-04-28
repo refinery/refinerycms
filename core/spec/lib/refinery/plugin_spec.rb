@@ -12,8 +12,18 @@ end
 
 module Refinery
   describe Plugin do
-    
+
     let(:plugin) { Refinery::Plugins.registered.detect { |plugin| plugin.name == "refinery_rspec" } }
+
+    def setup_i18n
+      ::I18n.backend = ::I18n::Backend::Simple.new
+      ::I18n.backend.store_translations :en, :plugins => {
+        :refinery_rspec => {
+          :title => "RefineryCMS RSpec",
+          :description => "RSpec tests for plugin.rb"
+        }
+      }
+    end    
 
     describe ".register" do
       it "must have a name" do
@@ -25,6 +35,30 @@ module Refinery
       it "returns class name" do
         plugin.class_name.should == "RefineryRspec"
       end
+    end
+
+    describe "#title" do
+      before { setup_i18n }
+
+      it "returns plugin title defined by I18n" do
+        plugin.title.should == "RefineryCMS RSpec"
+      end
+    end
+
+    describe "#description" do
+      before { setup_i18n }
+
+      it "returns plugin description defined by I18n" do
+        plugin.description.should == "RSpec tests for plugin.rb"
+      end
+    end
+
+    describe "#activity" do
+
+    end
+
+    describe "#activity=" do
+
     end
 
     describe "#always_allow_access?" do
@@ -63,6 +97,44 @@ module Refinery
       it "returns true if dashboard? is true and params[:action] == error_404" do
         plugin.stub(:dashboard?).and_return(true)
         plugin.highlighted?({:action => "error_404"}).should be
+      end
+    end
+
+    describe "#url" do
+      class Plugin
+        def reset_url!
+          @url = nil
+        end
+      end
+
+      before(:each) { plugin.reset_url! }
+
+      context "when @url is already defined" do
+        it "returns hash" do
+          plugin.stub(:url).and_return({:controller => "/admin/testa"})
+          plugin.url.should == {:controller => "/admin/testa"}
+        end
+      end
+
+      context "when controller is present" do
+        it "returns hash based on it" do
+          plugin.stub(:controller).and_return("testb")
+          plugin.url.should == {:controller => "/admin/testb"}
+        end
+      end
+
+      context "when directory is present" do
+
+        it "returns hash based on it" do
+          plugin.stub(:directory).and_return("first/second/testc")
+          plugin.url.should == {:controller => "/admin/testc"}
+        end
+      end
+
+      context "when controller and directory not present" do
+        it "returns hash based on plugins name" do
+          plugin.url.should == {:controller => "/admin/refinery_rspec"}
+        end
       end
     end
 

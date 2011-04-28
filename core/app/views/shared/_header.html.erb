@@ -1,15 +1,7 @@
 <h1 id='logo'>
   <%= link_to RefinerySetting.find_or_set(:site_name, "Company Name"), root_path %>
 </h1>
-<%=
-  ::Fiber.new {
-    ::Fiber.yield(
-      render(:partial => "/shared/menu", :locals => {
-               :dom_id => 'menu',
-               :css => 'menu',
-               :roots => @menu_pages.where(:parent_id => nil),
-               :collection => @menu_pages.where(@menu_pages.arel_table[:parent_id].not_eq(nil)),
-               :selected_item => (@page if defined?(::Page))
-             })
-    )
-  }.resume %>
+<%= render(:partial => "/shared/menu", :locals => {
+             :dom_id => 'menu',
+             :css => 'menu'
+           }) %>

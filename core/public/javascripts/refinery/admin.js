@@ -569,7 +569,7 @@ var link_dialog = {
                                  ($('#web_address_target_blank').get(0).checked ? "_blank" : "")
                                );
     });
-   
+
     $('#web_address_target_blank').click(function(){
       parent.document.getElementById('wym_target').value = this.checked ? "_blank" : "";
     });

@@ -51,7 +51,7 @@ describe Page do
 
   context "page urls" do
 
-    it "should return a full path" do
+    it "return a full path" do
       page.path.should == 'RSpec is great for testing too'
     end
 
@@ -63,29 +63,29 @@ describe Page do
       child.path({:reversed => false}).should == 'The child page - RSpec is great for testing too'
     end
 
-    it "should return its url" do
+    it "returns its url" do
       page.link_url = '/contact'
       page.url.should == '/contact'
     end
 
-    it "should return its path with marketable urls" do
+    it "returns its path with marketable urls" do
       page.url[:id].should be_nil
       page.url[:path].should == ["rspec-is-great-for-testing-too"]
     end
 
-    it "should return its path underneath its parent with marketable urls" do
+    it "returns its path underneath its parent with marketable urls" do
       child.url[:id].should be_nil
       child.url[:path].should == [page.url[:path].first, 'the-child-page']
     end
 
-    it "should not have a path without marketable urls" do
+    it "no path parameter without marketable urls" do
       turn_off_marketable_urls
       page.url[:path].should be_nil
       page.url[:id].should == "rspec-is-great-for-testing-too"
       turn_on_marketable_urls
     end
 
-    it "should not mention its parent without marketable urls" do
+    it "doesn't mention its parent without marketable urls" do
       turn_off_marketable_urls
       child.url[:id].should == 'the-child-page'
       child.url[:path].should be_nil
@@ -94,12 +94,12 @@ describe Page do
   end
 
   context "home page" do
-    it "should respond as the home page" do
+    it "responds as the home page" do
       page.link_url = '/'
       page.home?.should == true
     end
 
-    it "should not respond as the home page" do
+    it "responds as a normal page when not set to home page" do
       page.home?.should == false
     end
   end
@@ -107,16 +107,16 @@ describe Page do
   context "content sections (page parts)" do
     before { create_page_parts }
 
-    it "should return the content when using []" do
+    it "return the content when using []" do
       page[:body].should == "<p>I'm the first page part for this page.</p>"
       page["BoDY"].should == "<p>I'm the first page part for this page.</p>"
     end
 
-    it "should return all page part content" do
+    it "return all page part content" do
       page.all_page_part_content.should == "<p>I'm the first page part for this page.</p> <p>Closely followed by the second page part.</p>"
     end
 
-    it "should reposition correctly" do
+    it "reposition correctly" do
       page.parts.first.position = 6
       page.parts.last.position = 4
 
@@ -131,12 +131,12 @@ describe Page do
   end
 
   context "draft pages" do
-    it "should not be a live page when set to draft" do
+    it "not live when set to draft" do
       page.draft = true
       page.live?.should_not be
     end
 
-    it "should be a live page when not set to draft" do
+    it "live when not set to draft" do
       page.draft = false
       page.live?.should be
     end
@@ -161,6 +161,66 @@ describe Page do
       child = page_with_reserved_title.children.create(:title => 'The child page')
       child.url[:path].should == ["#{reserved_word}-page", 'the-child-page']
     end
+  end
+
+  context "meta data" do
+    context "responds to" do
+      it "meta_keywords" do
+        page.respond_to?(:meta_keywords)
+      end
+
+      it "meta_description" do
+        page.respond_to?(:meta_description)
+      end
+
+      it "browser_title" do
+        page.respond_to?(:browser_title)
+      end
+    end
+
+    context "allows us to assign to" do
+      it "meta_keywords" do
+        page.meta_keywords = 'Some, great, keywords'
+        page.meta_keywords.should == 'Some, great, keywords'
+      end
+
+      it "meta_description" do
+        page.meta_description = 'This is my description of the page for search results.'
+        page.meta_description.should == 'This is my description of the page for search results.'
+      end
+
+      it "browser_title" do
+        page.browser_title = 'An awesome browser title for SEO'
+        page.browser_title.should == 'An awesome browser title for SEO'
+      end
+    end
+
+    context "allows us to update" do
+      it "meta_keywords" do
+        page.meta_keywords = 'Some, great, keywords'
+        page.save
+
+        page.reload
+        page.meta_keywords.should == 'Some, great, keywords'
+      end
+
+      it "meta_description" do
+        page.meta_description = 'This is my description of the page for search results.'
+        page.save
+
+        page.reload
+        page.meta_description.should == 'This is my description of the page for search results.'
+      end
+
+      it "browser_title" do
+        page.browser_title = 'An awesome browser title for SEO'
+        page.save
+
+        page.reload
+        page.browser_title.should == 'An awesome browser title for SEO'
+      end
+    end
+
   end
 
 end
