@@ -32,13 +32,15 @@ module Refinery
         ::Refinery::Admin::BaseController.send :include, ::Refinery::Pages::Admin::InstanceMethods
       end
 
-      config.after_initialize do
+      initializer "init plugin", :after => :set_routes_reloader do |app|
         ::Refinery::Plugin.register do |plugin|
           plugin.name = "refinery_pages"
           plugin.directory = "pages"
           plugin.version = %q{0.9.9.17}
           plugin.menu_match = /(refinery|admin)\/page(_part)?s(_dialogs)?$/
+          plugin.url = app.routes.url_helpers.admin_pages_path
           plugin.activity = {
+          	
             :class => Refinery::Page,
             :url_prefix => "edit",
             :title => "title",

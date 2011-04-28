@@ -2,7 +2,7 @@ source 'http://rubygems.org'
 
 gemspec
 
-gem "ruby-debug"
+gem "ruby-debug19"
 gem 'rails'
 gem "rack"#, :git => "git://github.com/rack/rack.git"
 gem "arel"#, :git => "https://github.com/rails/arel.git"

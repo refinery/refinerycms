@@ -18,12 +18,12 @@ module Refinery
         app.middleware.insert_after ::ActionDispatch::Static, ::ActionDispatch::Static, "#{root}/public"
       end
 
-      initializer 'resources-with-dragonfly' do |app|
+      initializer 'resources-with-dragonfly', :after => "active_record.set_configs" do |app|
         app_resources = Dragonfly[:resources]
         app_resources.configure_with(:rails) do |c|
           c.datastore.root_path = Rails.root.join('public', 'system', 'resources').to_s
           c.url_path_prefix = '/system/resources'
-          c.secret = RefinerySetting.find_or_set(:dragonfly_secret,
+          c.secret = ::Refinery::RefinerySetting.find_or_set(:dragonfly_secret,
                                                  Array.new(24) { rand(256) }.pack('C*').unpack('H*').first)
         end
         app_resources.configure_with(:heroku, ENV['S3_BUCKET']) if Refinery.s3_backend
@@ -55,10 +55,10 @@ module Refinery
         }
       end
 
-      config.after_initialize do
+      initializer "init plugin", :after => :set_routes_reloader do |app|
         ::Refinery::Plugin.register do |plugin|
           plugin.name = "refinery_files"
-          plugin.url = {:controller => '/admin/resources', :action => 'index'}
+          plugin.url = app.routes.url_helpers.admin_resources_path
           plugin.menu_match = /(refinery|admin)\/(refinery_)?(files|resources)$/
           plugin.version = %q{0.9.9.17}
           plugin.activity = {

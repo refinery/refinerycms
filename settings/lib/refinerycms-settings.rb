@@ -16,10 +16,10 @@ module Refinery
         app.middleware.insert_after ::ActionDispatch::Static, ::ActionDispatch::Static, "#{root}/public"
       end
 
-      config.after_initialize do
+      initializer "init plugin", :after => :set_routes_reloader do |app|
         ::Refinery::Plugin.register do |plugin|
           plugin.name = "refinery_settings"
-          plugin.url = Rails.application.routes.url_helpers.admin_refinery_settings_path
+          plugin.url = app.routes.url_helpers.admin_refinery_settings_path
           plugin.version = %q{0.9.9.17}
           plugin.menu_match = /(refinery|admin)\/(refinery_)?settings$/
         end

@@ -19,7 +19,7 @@ module Refinery
 
       config.autoload_paths += %W( #{config.root}/lib )
 
-      config.after_initialize do
+      initializer "init plugin", :after => :set_routes_reloader do |app|
         ::Refinery::Plugin.register do |plugin|
           plugin.name = "refinery_users"
           plugin.version = %q{0.9.9.17}
@@ -28,7 +28,7 @@ module Refinery
             :class => User,
             :title => 'login'
           }
-          plugin.url = {:controller => "/admin/users"}
+          plugin.url = app.routes.url_helpers.admin_users_path
         end
       end
     end

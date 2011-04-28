@@ -6,31 +6,6 @@ GIT
       activerecord (>= 3.0.0)
 
 PATH
-  remote: ../refinerycms-i18n
-  specs:
-    refinerycms-i18n (1.0.1)
-      routing-filter (>= 0.2.3)
-
-PATH
-  remote: ./testing
-  specs:
-    refinerycms-testing (0.9.9.17)
-      autotest
-      autotest-notification
-      autotest-rails
-      capybara (>= 0.4.1.1)
-      cucumber
-      cucumber-rails (>= 0.4)
-      database_cleaner
-      factory_girl
-      gherkin
-      json_pure
-      launchy
-      rack-test (~> 0.5.6)
-      refinerycms-core (= 0.9.9.17)
-      rspec-rails (~> 2.5)
-
-PATH
   remote: .
   specs:
     refinerycms (0.9.9.17)
@@ -69,6 +44,31 @@ PATH
     refinerycms-settings (0.9.9.17)
       refinerycms-base (= 0.9.9.17)
 
+PATH
+  remote: ../refinerycms-i18n
+  specs:
+    refinerycms-i18n (1.0.1)
+      routing-filter (>= 0.2.3)
+
+PATH
+  remote: ./testing
+  specs:
+    refinerycms-testing (0.9.9.17)
+      autotest
+      autotest-notification
+      autotest-rails
+      capybara (>= 0.4.1.1)
+      cucumber
+      cucumber-rails (>= 0.4)
+      database_cleaner
+      factory_girl
+      gherkin
+      json_pure
+      launchy
+      rack-test (~> 0.5.6)
+      refinerycms-core (= 0.9.9.17)
+      rspec-rails (~> 2.5)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -101,6 +101,7 @@ GEM
       activesupport (= 3.0.6)
     activesupport (3.0.6)
     acts_as_indexed (0.7.2)
+    archive-tar-minitar (0.5.2)
     arel (2.0.9)
     autotest (4.4.6)
       ZenTest (>= 4.4.1)
@@ -162,7 +163,8 @@ GEM
     launchy (0.4.0)
       configuration (>= 0.0.5)
       rake (>= 0.8.1)
-    linecache (0.43)
+    linecache19 (0.5.12)
+      ruby_core_source (>= 0.1.4)
     mail (2.2.16)
       activesupport (>= 2.3.6)
       i18n (>= 0.4.0)
@@ -210,11 +212,16 @@ GEM
       activesupport (~> 3.0)
       railties (~> 3.0)
       rspec (~> 2.5.0)
-    ruby-debug (0.10.4)
-      columnize (>= 0.1)
-      ruby-debug-base (~> 0.10.4.0)
-    ruby-debug-base (0.10.4)
-      linecache (>= 0.3)
+    ruby-debug-base19 (0.11.25)
+      columnize (>= 0.3.1)
+      linecache19 (>= 0.5.11)
+      ruby_core_source (>= 0.1.4)
+    ruby-debug19 (0.11.6)
+      columnize (>= 0.3.1)
+      linecache19 (>= 0.5.11)
+      ruby-debug-base19 (>= 0.11.19)
+    ruby_core_source (0.1.5)
+      archive-tar-minitar (>= 0.5.2)
     rubyzip (0.9.4)
     selenium-webdriver (0.1.4)
       childprocess (>= 0.1.7)
@@ -241,21 +248,12 @@ PLATFORMS
 
 DEPENDENCIES
   arel
-  bundler (~> 1.0)
   friendly_id_globalize3
   moretea-awesome_nested_set!
   rack
   rails
   refinerycms!
-  refinerycms-authentication (= 0.9.9.17)
-  refinerycms-base (= 0.9.9.17)
-  refinerycms-core (= 0.9.9.17)
-  refinerycms-dashboard (= 0.9.9.17)
   refinerycms-i18n!
-  refinerycms-images (= 0.9.9.17)
-  refinerycms-pages (= 0.9.9.17)
-  refinerycms-resources (= 0.9.9.17)
-  refinerycms-settings (= 0.9.9.17)
   refinerycms-testing!
-  ruby-debug
+  ruby-debug19
   sqlite3
