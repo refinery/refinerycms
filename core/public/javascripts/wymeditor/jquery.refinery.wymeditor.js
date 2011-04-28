@@ -2760,12 +2760,37 @@ WYMeditor.XhtmlValidator = {
     },
     "38":"tt",
     "39":"ul",
-    "40":"var"
+    "40":"var",
+    "41":"section",
+    "42":"article",
+    "43":"aside",
+    "44":"details",
+    "45":"header",
+    "46":"footer",
+    "47":"nav",
+    "48":"dialog",
+    "49":"figure",
+    "50":"figcaption",
+    "51":"address",
+    "52":"hgroup",
+    "53":"mark",
+    "54":"time",
+    "55":"canvas",
+    "56":"audio",
+    "57":"video",
+    "58":"source",
+    "59":"output",
+    "60":"progress",
+    "61":"ruby",
+    "62":"rt",
+    "63":"rp",
+    "64":"summary",
+    "65":"command"
   },
 
-  // Temporary skiped attributes
-  skiped_attributes : [],
-  skiped_attribute_values : [],
+  // Temporary skipped attributes
+  skipped_attributes : [],
+  skipped_attribute_values : [],
 
   getValidTagAttributes: function(tag, attributes)
   {
@@ -2774,7 +2799,7 @@ WYMeditor.XhtmlValidator = {
     for(var attribute in attributes) {
       var value = attributes[attribute];
       var h = WYMeditor.Helper;
-      if(!h.contains(this.skiped_attributes, attribute) && !h.contains(this.skiped_attribute_values, value)){
+      if(!h.contains(this.skipped_attributes, attribute) && !h.contains(this.skipped_attribute_values, value)){
         if (typeof value != 'function' && h.contains(possible_attributes, attribute)) {
           if (this.doesAttributeNeedsValidation(tag, attribute)) {
             if(this.validateAttribute(tag, attribute, value)){
@@ -3956,16 +3981,16 @@ WYMeditor.XhtmlSaxListener.prototype.closeUnopenedTag = function(tag)
 WYMeditor.XhtmlSaxListener.prototype.avoidStylingTagsAndAttributes = function()
 {
   this.avoided_tags = ['div','span'];
-  this.validator.skiped_attributes = ['style'];
-  this.validator.skiped_attribute_values = ['MsoNormal','main1']; // MS Word attributes for class
+  this.validator.skipped_attributes = ['style'];
+  this.validator.skipped_attribute_values = ['MsoNormal','main1']; // MS Word attributes for class
   this._avoiding_tags_implicitly = true;
 };
 
 WYMeditor.XhtmlSaxListener.prototype.allowStylingTagsAndAttributes = function()
 {
   this.avoided_tags = [];
-  this.validator.skiped_attributes = [];
-  this.validator.skiped_attribute_values = [];
+  this.validator.skipped_attributes = [];
+  this.validator.skipped_attribute_values = [];
   this._avoiding_tags_implicitly = false;
 };
 
