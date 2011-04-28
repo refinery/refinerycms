@@ -28,8 +28,8 @@ class Page < ActiveRecord::Base
         @translation
       end
 
-    # Instruct the Translation model to have meta tags.
-    ::Page::Translation.send :is_seo_meta
+      # Instruct the Translation model to have meta tags.
+      ::Page::Translation.send :is_seo_meta
 
       # Delegate all SeoMeta attributes to the active translation.
       fields = ::SeoMeta.attributes.keys.map{|a| [a, :"#{a}="]}.flatten
