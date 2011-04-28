@@ -3,7 +3,7 @@
     <span class='title'>
       <%= page.title_with_meta.html_safe %>
       <% if defined?(::Refinery::I18n) and ::Refinery::I18n.frontend_locales.many? and
-            (locales = page.translations.collect{|t| t.locale}).present? %>
+            (locales = page.translations.map(&:locale)).present? %>
         <span class='preview'>
           <% locales.each do |locale| %>
             <%= link_to refinery_icon_tag("flags/#{locale}.png", :size => '16x11'),
@@ -29,7 +29,7 @@
   </div>
   <ul class='nested'>
     <%= render :partial => 'page',
-               :collection => collection.select{|p| p.parent_id == page.id},
+               :collection => page.children,
                :locals => {
                  :collection => collection
                } if page.has_descendants? %>

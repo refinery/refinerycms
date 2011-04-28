@@ -1,6 +1,7 @@
 require 'refinerycms-core'
 require 'awesome_nested_set'
 require 'globalize3'
+require 'friendly_id'
 require 'seo_meta'
 
 module Refinery

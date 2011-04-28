@@ -25,3 +25,5 @@ init_flash_messages = function(){
   });
   $('#flash.flash_message').prependTo('#records');
 };
+
+

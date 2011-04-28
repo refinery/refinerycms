@@ -5,7 +5,7 @@ module Admin
     crudify :page,
             :conditions => nil,
             :order => "lft ASC",
-            :include => [:slugs, :translations],
+            :include => [:slugs, :translations, :children],
             :paging => false
 
     rescue_from FriendlyId::ReservedError, :with => :show_errors_for_reserved_slug
