@@ -226,7 +226,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  mysql2
+  mysql2 (~> 0.2.7)
   refinerycms!
   refinerycms-i18n (~> 1.0.0)
   refinerycms-testing (~> 0.9.9.19)
