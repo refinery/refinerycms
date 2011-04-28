@@ -25,7 +25,10 @@ class Page < ActiveRecord::Base
         # Instruct the Translation model to have meta tags.
         ::Page::Translation.send :is_seo_meta
 
-        delegate *(::SeoMeta.attributes.keys.map{|a| [a, :"#{a}="]}.flatten), :to => :translation
+        fields = ::SeoMeta.attributes.keys.reject{|f|
+          self.column_names.map(&:to_sym).include?(f)
+        }.map{|a| [a, :"#{a}="]}.flatten
+        delegate *(fields << {:to => :translation})
         after_save proc {|m| m.translation.save}
       end
     end
