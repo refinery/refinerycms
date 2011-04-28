@@ -56,21 +56,16 @@ module Refinery
           warn "Called from: #{caller.detect{|c| c =~ %r{#{Rails.root.to_s}}}.inspect.to_s.split(':in').first}\n\n"
         end
 
-        return false unless page.has_descendants? && selected_item.try(:in_menu?)
+        return false unless page.has_descendants?
+        return false unless selected_item.nil? or !selected_item.in_menu?
 
-        descendants = if collection.present?
-          collection.select{ |item| item.parent_id == page.id }
-        else
-          page.descendants
-        end
-
-        descendants.any? { |descendant|
+        page.descendants.any? { |descendant|
           !selected_item ? selected_page?(descendant) : selected_item == descendant
         }
       end
 
       def selected_page_or_descendant_page_selected?(page, collection = [], selected_item = nil)
-        return true if selected_item === page || selected_page?(page)
+        return true if selected_page?(page) || selected_item === page
         return true if descendant_page_selected?(page, collection, selected_item)
         false
       end
@@ -78,7 +73,7 @@ module Refinery
       # Determine whether the supplied page is the currently open page according to Refinery.
       # Also checks whether Rails thinks it is selected after that using current_page?
       def selected_page?(page)
-        path = request.path
+        path = request.path.to_s.force_encoding('utf-8')
 
         # Ensure we match the path without the locale, if present.
         if defined?(::Refinery::I18n) and ::Refinery::I18n.enabled? and path =~ %r{^/#{::I18n.locale}}
@@ -88,8 +83,9 @@ module Refinery
 
         # Match path based on cascading rules.
         (path =~ Regexp.new(page.menu_match) if page.menu_match.present?) or
-          (path == page.link_url) or
-          (path == page.nested_path) or
+          path == page.link_url or
+          path == page.nested_path or
+          URI.decode(path) == page.nested_path or
           current_page?(page)
       end
 
