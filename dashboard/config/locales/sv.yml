@@ -1,7 +1,7 @@
 sv:
   plugins:
     refinery_dashboard:
-      title: Dashboard
+      title: Instrumentbräda
       description: Ger en översikt över aktivitet i Refinery
   admin:
     dashboard:
