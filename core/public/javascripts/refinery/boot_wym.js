@@ -50,6 +50,10 @@ var wymeditor_boot_options = $.extend({
     {'name': 'h1', 'title':'Heading_1', 'css':'wym_containers_h1'}
     , {'name': 'h2', 'title':'Heading_2', 'css':'wym_containers_h2'}
     , {'name': 'h3', 'title':'Heading_3', 'css':'wym_containers_h3'}
+    , {'name': 'h4', 'title':'Heading_4', 'css':'wym_containers_h4'}
+    , {'name': 'h5', 'title':'Heading_5', 'css':'wym_containers_h5'}
+    , {'name': 'h6', 'title':'Heading_6', 'css':'wym_containers_h6'}
+		, {'name': 'blockquote', 'title': 'Blockquote', 'css': 'wym_containers_blockquote'}
     , {'name': 'p', 'title':'Paragraph', 'css':'wym_containers_p'}
   ]
   , toolsItems: [

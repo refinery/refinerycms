@@ -270,7 +270,7 @@ module Refinery
 
         f.write "\n# USER DEFINED\n#{@options[:gems].join("\n")}\n# END USER DEFINED" if @options[:gems].any?
       end
-
+      
 
       # Specify the correct version of the Refinery CMS gem (may be git source).
       src = Refinery.version !~ /\.pre$/ ? "'= #{Refinery.version}'" : ":git => 'git://github.com/resolve/refinerycms'"
