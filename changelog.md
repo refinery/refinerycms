@@ -1,3 +1,8 @@
+## 0.9.9.21 [30 April 2011]
+
+* Fixed issue with MySQL2 gem complaining about us being on Rails 3 by specifying `'~> 0.2.7'` in the Gemfile of a generated application. [Philip Arndt](https://github.com/parndt)
+* [See full list](https://github.com/resolve/refinerycms/compare/0.9.9.20...0.9.9.21)
+
 ## 0.9.9.20 [28 April 2011]
 
 * Improved performance of the menu rendering. [Philip Arndt](https://github.com/parndt)
