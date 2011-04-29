@@ -23,7 +23,7 @@ module Refinery
           :description => "RSpec tests for plugin.rb"
         }
       }
-    end    
+    end
 
     describe ".register" do
       it "must have a name" do
