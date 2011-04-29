@@ -2164,7 +2164,9 @@ WYMeditor.XhtmlValidator = {
       "style",
       "title",
       "accesskey",
-      "tabindex"
+      "tabindex",
+      "data",
+      "^data-.*"
       ]
     },
     "language":
@@ -2796,17 +2798,32 @@ WYMeditor.XhtmlValidator = {
   {
     var valid_attributes = {};
     var possible_attributes = this.getPossibleTagAttributes(tag);
+    var regexp_attributes = [];
+    $.each((possible_attributes || []), function(i, val) {
+      if (val.indexOf("*") > -1) {
+        regexp_attributes.push(new RegExp(val));
+      }
+    });
+    var h = WYMeditor.Helper;
     for(var attribute in attributes) {
       var value = attributes[attribute];
-      var h = WYMeditor.Helper;
       if(!h.contains(this.skipped_attributes, attribute) && !h.contains(this.skipped_attribute_values, value)){
-        if (typeof value != 'function' && h.contains(possible_attributes, attribute)) {
-          if (this.doesAttributeNeedsValidation(tag, attribute)) {
-            if(this.validateAttribute(tag, attribute, value)){
+        if (typeof value != 'function') {
+          if (h.contains(possible_attributes, attribute)) {
+            if (this.doesAttributeNeedsValidation(tag, attribute)) {
+              if(this.validateAttribute(tag, attribute, value)){
+                valid_attributes[attribute] = value;
+              }
+            }else{
               valid_attributes[attribute] = value;
             }
-          }else{
-            valid_attributes[attribute] = value;
+          }
+          else {
+            $.each(regexp_attributes, function(i, val) {
+              if (attribute.match(val)) {
+                valid_attributes[attribute] = value;
+              }
+            });
           }
         }
       }
