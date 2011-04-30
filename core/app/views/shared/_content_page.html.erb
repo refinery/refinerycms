@@ -48,9 +48,9 @@
     dom_id = section[:id] || section[:yield]
     if section[:html].present?
       if section[:title]
-        section[:html] = "<h1 id='#{dom_id}'>#{section[:html]}</h1>"
+        section[:html] = "<h1 id='#{dom_id}'>#{section[:html]}</h1>".html_safe
       else
-        section[:html] = "<section id='#{dom_id}'><div class='inner'>#{section[:html]}</div></section>"
+        section[:html] = "<section id='#{dom_id}'><div class='inner'>#{section[:html]}</div></section>".html_safe
       end
     else
       css << "no_#{dom_id}"
