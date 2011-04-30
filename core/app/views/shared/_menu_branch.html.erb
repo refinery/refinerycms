@@ -1,12 +1,12 @@
 <%
   if !!local_assigns[:apply_css] and (classes = menu_branch_css(local_assigns)).any?
-    css = "class='#{classes.join(' ')}'"
+    css = "class='#{classes.join(' ')}'".html_safe
   end
-  dom_id = "id='item_#{menu_branch_counter}'"
+  dom_id = "id='item_#{menu_branch_counter}'".html_safe
 
   children = menu_branch.children.live.in_menu unless hide_children
 -%>
-<li<%= ['', css, dom_id].compact.join(' ').gsub(/\ *$/, '') %>>
+<li<%= ['', css, dom_id].compact.join(' ').gsub(/\ *$/, '').html_safe %>>
   <%= link_to menu_branch.title, menu_branch.url -%>
   <% if children.present? -%>
     <ul class='clearfix'>
