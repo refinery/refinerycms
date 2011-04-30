@@ -367,12 +367,13 @@ module Refinery
       # e.g. when shelling to git
       if options[:ruby]
         exe = File.join(RbConfig::CONFIG['bindir'], RbConfig::CONFIG['RUBY_INSTALL_NAME'])
-        to_run << "#{exe} -S "
+        to_run << "\"#{exe}\" -S "
       end
 
       to_run << command
 
       if Refinery::WINDOWS
+        to_run = ['"'] + to_run + ['"']
         to_run = %w(cmd /c) | to_run.map{|c| c.gsub(/\//m, '\\')}
       end
 
