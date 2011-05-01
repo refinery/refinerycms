@@ -1,5 +1,6 @@
-module ::Refinery::Admin
-  class ResourcesController < BaseController
+module ::Refinery
+  class Admin::ResourcesController < Admin::BaseController
+    layout "refinery/admin"
 
     crudify :'refinery/resource',
             :order => "updated_at DESC",

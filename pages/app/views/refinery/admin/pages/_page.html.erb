@@ -15,6 +15,7 @@
     </span>
 
     <span class='actions'>
+      <% Rails.logger.info page.url %>
       <%= link_to refinery_icon_tag('application_go.png'), page.url,
                   :target => "_blank",
                   :title => t('.view_live_html') %>

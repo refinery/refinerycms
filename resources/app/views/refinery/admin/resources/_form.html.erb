@@ -1,5 +1,6 @@
 <%= form_for [:admin, @resource], :url => @url_override || @url,
-                                  :html => {:multipart => true} do |f| -%>
+                                  :html => {:multipart => true},
+                                  :as => "resource" do |f| -%>
 
   <%= render :partial => "/shared/admin/error_messages",
              :locals => {
@@ -21,7 +22,7 @@
 
   <div class='field'>
     <label>
-      <%= t('.maximum_file_size', :megabytes => Resource::MAX_SIZE_IN_MB) %>
+      <%= t('.maximum_file_size', :megabytes => ::Refinery::Resource::MAX_SIZE_IN_MB) %>
     </label>
   </div>
 

@@ -1,6 +1,5 @@
-module Refinery
-	Application.routes.draw do
-  	match '*path' => 'pages#show'
+	::Refinery::Application.routes.draw do
+  	match '*path' => 'refinery/pages#show'
 	end
 
 	# Add any parts of routes as reserved words.
@@ -9,4 +8,3 @@ module Refinery
 	#     route.path.gsub(/^\//, '').to_s.split('(').first.to_s.split(':').first.to_s.split('/')
 	#   }.flatten.reject{|w| w =~ /\_/}.uniq
 	# end
-end

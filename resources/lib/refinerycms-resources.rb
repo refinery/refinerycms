@@ -18,7 +18,7 @@ module Refinery
         app.middleware.insert_after ::ActionDispatch::Static, ::ActionDispatch::Static, "#{root}/public"
       end
 
-      initializer 'resources-with-dragonfly', :after => "active_record.set_configs" do |app|
+      initializer 'resources-with-dragonfly', :before => "init plugin" do |app|
         app_resources = Dragonfly[:resources]
         app_resources.configure_with(:rails) do |c|
           c.datastore.root_path = Rails.root.join('public', 'system', 'resources').to_s
@@ -62,7 +62,7 @@ module Refinery
           plugin.menu_match = /(refinery|admin)\/(refinery_)?(files|resources)$/
           plugin.version = %q{0.9.9.17}
           plugin.activity = {
-            :class => Resource
+            :class => ::Refinery::Resource
           }
         end
       end

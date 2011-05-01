@@ -1,5 +1,6 @@
 module ::Refinery
   class Admin::RefinerySettingsController < Admin::BaseController
+    layout "refinery/admin"
 
     helper "refinery/admin/refinery_settings"
 

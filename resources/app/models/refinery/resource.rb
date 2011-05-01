@@ -1,5 +1,3 @@
-require 'dragonfly/rails/images'
-
 module ::Refinery
 	class Resource < ActiveRecord::Base
 	
@@ -7,7 +5,7 @@ module ::Refinery
 	  # What is the max resource size a user can upload
 	  MAX_SIZE_IN_MB = 50
 	
-	  image_accessor :file
+	  resource_accessor :file
 	
 	  validates :file, :presence => {},
 	                   :length   => { :maximum => MAX_SIZE_IN_MB.megabytes }
