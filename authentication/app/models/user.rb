@@ -22,7 +22,7 @@ class User < ActiveRecord::Base
     def authentication_keys
       [:login]
     end
-    
+
     # Find user by email or username.
     # https://github.com/plataformatec/devise/wiki/How-To:-Allow-users-to-sign_in-using-their-username-or-email-address
     def find_for_database_authentication(conditions)
