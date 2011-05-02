@@ -14,7 +14,7 @@ module Refinery
 
     class Engine < ::Rails::Engine
 
-      initializer "serve static assets" do |app|
+      initializer 'serve static assets' do |app|
         app.middleware.insert_after ::ActionDispatch::Static, ::ActionDispatch::Static, "#{root}/public"
       end
 
@@ -22,14 +22,14 @@ module Refinery
 
       config.after_initialize do
         ::Refinery::Plugin.register do |plugin|
-          plugin.name = "refinery_users"
-          plugin.version = %q{0.9.9.17}
+          plugin.name = 'refinery_users'
+          plugin.version = %q{0.9.9.21}
           plugin.menu_match = /(refinery|admin)\/users$/
           plugin.activity = {
             :class => User,
             :title => 'username'
           }
-          plugin.url = {:controller => "/admin/users"}
+          plugin.url = {:controller => '/admin/users'}
         end
       end
     end

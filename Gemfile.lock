@@ -219,7 +219,7 @@ GEM
     treetop (1.4.9)
       polyglot (>= 0.3.1)
     truncate_html (0.5.1)
-    tzinfo (0.3.26)
+    tzinfo (0.3.27)
     warden (1.0.3)
       rack (>= 1.0.0)
     will_paginate (3.0.pre2)
