@@ -3,9 +3,9 @@
   # Add Devise necessary routes.
   # For Devise routes, see: https://github.com/plataformatec/devise
   #namespace :refinery do
-    devise_for :users, :path => :registrations, :controllers => {
+    devise_for :users, :controllers => {
       :sessions => 'sessions',
-      :registrations => 'registrations',
+      :registrations => 'users',
       :passwords => 'passwords'
     }, :path_names => {
       :sign_out => 'logout',

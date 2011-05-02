@@ -6,7 +6,11 @@ module Refinery
     end
 
     def after_inclusion(&blk)
-      after_inclusion_procs << blk if blk
+      if blk && blk.respond_to?(:call)
+        after_inclusion_procs << blk
+      else
+        raise 'Anything added to be called before_inclusion must be callable.'
+      end
     end
 
     def before_inclusion_procs
@@ -14,7 +18,11 @@ module Refinery
     end
 
     def before_inclusion(&blk)
-      before_inclusion_procs << blk if blk
+      if blk && blk.respond_to?(:call)
+        before_inclusion_procs << blk
+      else
+        raise 'Anything added to be called before_inclusion must be callable.'
+      end
     end
 
   end
