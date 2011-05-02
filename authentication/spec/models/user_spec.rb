@@ -10,18 +10,18 @@ describe User do
   context "Roles" do
     context "add_role" do
       it "raises Exception when Role object is passed" do
-        lambda{ user.add_role(Role.new)}.should raise_exception
+        proc {user.add_role(Role.new)}.should raise_exception
       end
 
       it "adds a Role to the User when role not yet assigned to User" do
-        lambda {
+        proc {
           user.add_role(:new_role)
         }.should change(user.roles, :count).by(1)
         user.roles.collect(&:title).should include("NewRole")
       end
 
       it "does not add a Role to the User when this Role is already assigned to User" do
-        lambda {
+        proc {
           refinery_user.add_role(:refinery)
         }.should_not change(refinery_user.roles, :count).by(1)
         refinery_user.roles.collect(&:title).should include("Refinery")
@@ -30,7 +30,7 @@ describe User do
 
     context "has_role" do
       it "raises Exception when Role object is passed" do
-        lambda{ user.has_role?(Role.new)}.should raise_exception
+        proc{ user.has_role?(Role.new)}.should raise_exception
       end
 
       it "returns the true if user has Role" do
@@ -60,7 +60,6 @@ describe User do
         :password_confirmation => "123456"
       }
     end
-
 
     it "requires username" do
       User.new(attr.merge(:username => "")).should_not be_valid
