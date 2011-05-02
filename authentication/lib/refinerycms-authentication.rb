@@ -1,13 +1,6 @@
 require 'devise'
 require 'refinerycms-core'
 require 'friendly_id'
-# Attach authenticated system methods to the ::Refinery::ApplicationController
-require File.expand_path('../authenticated_system', __FILE__)
-[::Refinery::ApplicationController, ::Refinery::ApplicationHelper].each do |c|
-  c.class_eval {
-    include AuthenticatedSystem
-  }
-end
 
 module Refinery
   module Authentication
@@ -30,6 +23,13 @@ module Refinery
             :title => 'username'
           }
           plugin.url = {:controller => '/admin/users'}
+        end
+      end
+
+      refinery.before_inclusion do
+        [::Refinery::ApplicationController, ::Refinery::ApplicationHelper].each do |c|
+          c.send :require, File.expand_path('../authenticated_system', __FILE__)
+          c.send :include, AuthenticatedSystem
         end
       end
     end
