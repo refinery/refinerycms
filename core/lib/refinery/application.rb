@@ -4,9 +4,7 @@ module Refinery
     class << self
 
       def refinery!
-        ::Refinery.config.before_inclusion_procs.each do |proc|
-          proc.call if proc.respond_to?(:call)
-        end
+        ::Refinery.config.before_inclusion_procs.each(&:call)
 
         ::ApplicationHelper.send :include, ::Refinery::ApplicationHelper
 
@@ -17,9 +15,7 @@ module Refinery
 
         ::Admin::BaseController.send :include, ::Refinery::Admin::BaseController
 
-        ::Refinery.config.after_inclusion_procs.each do |proc|
-          proc.call if proc.respond_to?(:call)
-        end
+        ::Refinery.config.after_inclusion_procs.each(&:call)
       end
 
       def included(base)
@@ -33,7 +29,7 @@ module Refinery
         base.config.action_view.javascript_expansions[:defaults] = %w()
 
         # Configure the default encoding used in templates for Ruby 1.9.
-        base.config.encoding = "utf-8"
+        base.config.encoding = 'utf-8'
 
         # Configure sensitive parameters which will be filtered from the log file.
         base.config.filter_parameters += [:password, :password_confirmation]
