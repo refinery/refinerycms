@@ -1,6 +1,6 @@
 <%
   dom_id ||= 'menu'
-  caching = (cache_menu ||= RefinerySetting.find_or_set(:cache_menu, false))
+  caching = (cache_menu ||= ::Refinery::RefinerySetting.find_or_set(:cache_menu, false))
   cache_key = [Refinery.base_cache_key, 'pages_menus', dom_id, Globalize.locale, cache_path ||= request.path].join('_')
   cache_if(caching, cache_key) do
     # Select top menu items unless 'roots' is supplied.
@@ -11,7 +11,7 @@
       unless defined?(selected_item)
         selected_item = @page || collection.detect{|page| selected_page?(page)}
       end
-      hide_children = RefinerySetting.find_or_set(:menu_hide_children, false) if hide_children.nil?
+      hide_children = ::Refinery::RefinerySetting.find_or_set(:menu_hide_children, false) if hide_children.nil?
   -%>
       <nav id='<%= dom_id %>' class='<%= css %>'>
         <ul>

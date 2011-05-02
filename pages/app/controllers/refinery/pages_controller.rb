@@ -1,5 +1,7 @@
 module ::Refinery
   class PagesController < ::ApplicationController
+    include Pages::InstanceMethods
+    layout "refinery/application"
   
     # This action is usually accessed with the root path, normally '/'
     def home

@@ -1,6 +1,7 @@
 module Refinery
-  class Admin::UsersController < Refinery::Admin::BaseController
-
+  class Admin::UsersController < Admin::BaseController
+    layout "refinery/admin"
+    
     crudify 'refinery/user',
             :order => 'username ASC',
             :title_attribute => 'username',

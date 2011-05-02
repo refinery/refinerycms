@@ -15,8 +15,6 @@
       cancel_title = t('.cancel_lose_changes')
     end
     cancel_button_id    ||= "cancel_button"
-    Rails.logger.info "sss"
-    Rails.logger.info f
     cancel_url          ||= (((back = url_for(:back)).include?('javascript') or action_name =~ /^(create|update)$/) ? send("admin_#{f.object_name.to_s.pluralize}_url") : back)
   end
 

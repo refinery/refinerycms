@@ -14,8 +14,12 @@ module Refinery
     def self.default_options(model_name)
       singular_name = model_name.to_s
       class_name = singular_name.camelize
-      plural_name = singular_name.pluralize
+      plural_name = singular_name.camelize.demodulize.pluralize.downcase
       this_class = class_name.constantize.base_class
+      puts this_class
+      puts plural_name
+      puts class_name
+      puts singular_name
 
       {
         :conditions => '',

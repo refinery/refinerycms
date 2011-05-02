@@ -6,8 +6,8 @@
 	  match 'wymiframe(/:id)', :to => 'refinery/fast#wymiframe', :as => :wymiframe
 	
 	  scope(:path => 'refinery', :as => 'admin', :module => Refinery::Admin) do
-	    # root :to => 'dashboard#index'
 	    resources :dialogs, :only => :show
+	    root :to => 'dashboard#index'
 	  end
 	
 	  match '/refinery/update_menu_positions', :to => 'admin/refinery_core#update_plugin_positions'

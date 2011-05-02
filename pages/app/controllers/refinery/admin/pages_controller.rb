@@ -2,11 +2,12 @@ module ::Refinery
   class Admin::PagesController < Admin::BaseController
     layout "refinery/admin"
 		
-    crudify :'refinery/page',
+    crudify "refinery/page",
             :conditions => nil,
             :order => "lft ASC",
             :include => [:slugs, :translations],
-            :paging => false
+            :paging => false,
+            :redirect_to_url => :admin_pages_url
 
     rescue_from FriendlyId::ReservedError, :with => :show_errors_for_reserved_slug
 

@@ -1,29 +1,36 @@
 en:
-  plugins:
-    refinery_users:
-      title: Users
-      description: Manage users
-  admin:
-    users:
-      delete: Remove this user forever
-      edit: Edit this user
-      update:
-        cannot_remove_user_plugin_from_current_user: You cannot remove the 'Users' plugin from the currently logged in account.
-      form:
-        blank_password_keeps_current: Leaving password blank keeps the current password
-        plugin_access: Plugin access
-        role_access: Role access
-        enable_all: enable all
-      actions:
-        create_new_user: Add new user
-      user:
-        email_user: Email this user
-        preview: '(%{who}) added %{created_at}'
-  sessions:
-    new:
-      hello_please_sign_in: Hello! Please sign in.
-      sign_in: Sign in
-      forgot_password: I forgot my password
+  refinery:
+    plugins:
+      refinery_users:
+        title: Users
+        description: Manage users
+    admin:
+      users:
+        delete: Remove this user forever
+        edit: Edit this user
+        update:
+          cannot_remove_user_plugin_from_current_user: You cannot remove the 'Users' plugin from the currently logged in account.
+        form:
+          blank_password_keeps_current: Leaving password blank keeps the current password
+          plugin_access: Plugin access
+          role_access: Role access
+          enable_all: enable all
+        actions:
+          create_new_user: Add new user
+        user:
+          email_user: Email this user
+          preview: '(%{who}) added %{created_at}'
+    sessions:
+      new:
+        hello_please_sign_in: Hello! Please sign in.
+        sign_in: Sign in
+        forgot_password: I forgot my password
+    user_mailer:
+      reset_notification:
+        subject: Link to reset your password
+        reset_request_received_for: "Request to reset password received for %{username}"
+        visit_this_url: Visit this URL to choose a new password
+        remain_same_if_no_action: Your password will remain the same if no action is taken
   users:
     setup_website_name_html: "First let's give the site a name. <a href='%{link}' name='%{title}'>Go here</a> to edit your website's name"
     new:
@@ -44,12 +51,6 @@ en:
       successful: "Password reset successfully for '%{email}'"
       pick_new_password_for: "Pick a new password for %{email}"
       reset_password: Reset password
-  user_mailer:
-    reset_notification:
-      subject: Link to reset your password
-      reset_request_received_for: "Request to reset password received for %{username}"
-      visit_this_url: Visit this URL to choose a new password
-      remain_same_if_no_action: Your password will remain the same if no action is taken
   devise:
     failure:
       unauthenticated: You need to sign in before continuing.
