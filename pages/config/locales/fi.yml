@@ -79,7 +79,7 @@ fi:
         no_pages_yet: Sivuja ei ole vielä. Paina "Lisää uusi sivu-" painiketta lisätäksesi ensimmäisen sivun.
   activerecord:
     models:
-      page: page
+      page: sivu
     attributes:
       page:
         title: Otsikko

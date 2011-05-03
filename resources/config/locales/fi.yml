@@ -27,7 +27,7 @@ fi:
         button_text: Lisää
   activerecord:
     models:
-      resource: file
+      resource: tiedosto
     errors:
       models:
         resource:

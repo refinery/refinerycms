@@ -61,7 +61,7 @@ fi:
     refinery: Refinery
   activerecord:
     models:
-      user: user
+      user: käyttäjä
     attributes:
       user:
         login: Kirjautuminen
