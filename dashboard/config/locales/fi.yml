@@ -17,10 +17,10 @@ fi:
       recent_activity:
         empty: Tapahtumia ei ole ollut viimeaikoina.
         latest_activity: Uusimmat tapahtumat
-        latest_activity_message: '%{kind} %{what} %{action}'
+        latest_activity_message: '%{kind} "%{what}" %{action}'
       recent_inquiries:
         latest_inquiries: Uusimmat kyselyt
   updated:
-    'with_article "the"': updated
+    'with_article "the"': päivitetty
   created:
-    'with_article "the"': added
+    'with_article "the"': lisätty
