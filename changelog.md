@@ -1,6 +1,9 @@
-## 0.9.9.21 [30 April 2011]
+## 0.9.9.21 [03 May 2011]
 
 * Fixed issue with MySQL2 gem complaining about us being on Rails 3 by specifying `'~> 0.2.7'` in the Gemfile of a generated application. [Philip Arndt](https://github.com/parndt)
+* `/registrations` is now `/users`. [Philip Arndt](https://github.com/parndt)
+* Added Finnish translation. [https://github.com/veeti](Veeti Paananen)
+* Allowed `data` and `data-` attributes in WYMeditor tags using HTML view. [Philip Arndt](https://github.com/parndt)
 * [See full list](https://github.com/resolve/refinerycms/compare/0.9.9.20...0.9.9.21)
 
 ## 0.9.9.20 [28 April 2011]
