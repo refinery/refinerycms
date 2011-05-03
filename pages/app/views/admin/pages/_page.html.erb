@@ -5,7 +5,7 @@
       <% if defined?(::Refinery::I18n) and ::Refinery::I18n.frontend_locales.many? and
             (locales = page.translations.map(&:locale)).present? %>
         <span class='preview'>
-          <% locales.each do |locale| %>
+          <% ([page.translation.try(:locale)] | locales).each do |locale| %>
             <%= link_to refinery_icon_tag("flags/#{locale}.png", :size => '16x11'),
                         edit_admin_page_url(page, :switch_locale => locale),
                         :class => 'locale' %>
