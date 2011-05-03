@@ -16,8 +16,8 @@ fi:
     continue: Jatka...
   admin:
     menu:
-      reorder_menu: Uudelleenjärjestä valikko
-      reorder_menu_done: Olen valmis
+      reorder_menu: Muuta valikon järjestystä
+      reorder_menu_done: Tallenna
     dialogs:
       show:
         save: Tallenna

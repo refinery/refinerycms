@@ -73,13 +73,13 @@ fi:
         meta_description_help: Kirjoita ytimekäs kahden tai kolmen lauseen kuvaus tästä sivusta.
       actions:
         create_new_page: Lisää uusi sivu
-        reorder_pages: Uudelleenjärjestele sivuja
-        reorder_pages_done: Valmis
+        reorder_pages: Muuta sivujen järjestystä
+        reorder_pages_done: Tallenna
       records:
         no_pages_yet: Sivuja ei ole vielä. Paina "Lisää uusi sivu-" painiketta lisätäksesi ensimmäisen sivun.
   activerecord:
     models:
-      page: page
+      page: sivu
     attributes:
       page:
         title: Otsikko

@@ -34,13 +34,13 @@ fi:
     forgot:
       email_address: Sähköpostiosoite
       enter_email_address: Kirjoita tunnuksesi sähköpostiosoite.
-      reset_password: Nollaa salasanasi
+      reset_password: Nollaa salasana
       blank_email: Et kirjoittanut sähköpostiosoitetta.
       email_not_associated_with_account_html: "Valitettavasti osoitetta '%{email}' ei löydy tietokannasta.<br />Oletko varma, että kirjoitit oikean osoitteen?"
-      email_reset_sent: "Sinulle on lähetetty sähköposti, joka sisältää linkin salasanan vaihtoon"
-      password_encryption: "Sinun täytyy vaihtaa salasanasi, koska Refineryn käyttämää salausmenetelmää on muokattu turvallisuussyistä."
+      email_reset_sent: "Sinulle on lähetetty sähköposti, jonka kautta voit vaihtaa salasanan."
+      password_encryption: "Sinun täytyy vaihtaa salasanasi, koska Refineryn käyttämää salausmenetelmää on vaihdettu turvallisuussyistä."
     reset:
-      code_invalid: "Olemme pahoillamme, mutta tämä vaihtokoodi on joko vanhentunut tai viallinen. Yritä kopioida ja liittää osoite sähköpostistasi selaimeen, tai käynnistää salasanan vaihto uudelleen."
+      code_invalid: "Olemme pahoillamme, mutta tämä vaihtokoodi on joko vanhentunut, tai se on viallinen. Yritä kopioida ja liittää osoite sähköpostistasi selaimeen, tai käynnistää salasanan vaihto uudelleen."
       successful: "Salasana nollattu onnistuneesti osoitteelle '%{email}'"
       pick_new_password_for: "Kirjoita uusi salasana osoitteelle %{email}"
       reset_password: Nollaa salasana
@@ -53,7 +53,7 @@ fi:
   devise:
     failure:
       unauthenticated: Sinun täytyy kirjautua sisään.
-      invalid: "Valitettavasti käyttäjätunnuksesi tai salasanasi oli väärin."
+      invalid: "Käyttäjää ei löytynyt, tai salasana oli väärä."
     sessions:
       signed_in: Kirjautuminen onnistui.
   roles:
@@ -61,12 +61,12 @@ fi:
     refinery: Refinery
   activerecord:
     models:
-      user: user
+      user: käyttäjä
     attributes:
       user:
-        login: Kirjautuminen
+        login: Käyttäjätunnus
         username: Käyttäjätunnus
         password: Salasana
         password_confirmation: Salasana (uudelleen)
         email: Sähköpostiosoite
-        remember_me: Muista minut
+        remember_me: Muista kirjautumiseni tällä tietokoneella
