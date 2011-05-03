@@ -1,0 +1,78 @@
+fi:
+  js:
+    admin:
+      confirm_changes: "Kaikki muutoksesi menetetään. Oletko varma, että haluat jatkaa tallentamatta?"
+  plugins:
+    refinery_core:
+      title: Refinery
+      description: Refineryn keskuspalikka
+    refinery_dialogs:
+      title: Dialogit
+      description: Refineryn dialogipalikka
+  welcome:
+    there_are_no_users: "Käyttäjiä ei vielä ole, joten asennetaan sinut ensin."
+    remember_admin_location: "Muista, että Refineryn ylläpito on seuraavassa osoitteessa:"
+    lets_start: "Tehdään sinulle käyttäjä, että voit kirjautua..."
+    continue: Jatka...
+  admin:
+    menu:
+      reorder_menu: Uudelleenjärjestä valikko
+      reorder_menu_done: Olen valmis
+    dialogs:
+      show:
+        save: Tallenna
+        cancel: Peru
+  refinery:
+    crudify:
+      created: '%{what} lisättiin onnistuneesti.'
+      updated: '%{what} päivitettiin onnistuneesti.'
+      destroyed: '%{what} poistettiin onnistuneesti.'
+  shared:
+    site_bar:
+      log_out: Kirjaudu ulos
+      switch_to_your_website: Siirry nettisivustollesi
+      switch_to_your_website_editor: Siirry sivueditoriin
+    admin:
+      continue_editing:
+        save_and_continue_editing: 'Tallenna & jatka muokkausta'
+      form_actions:
+        save: Tallenna
+        cancel: Peru
+        cancel_lose_changes: "Jos perut, menetät kaikki tekemäsi muutokset"
+        delete: Poista
+        close: Sulje
+      image_picker:
+        none_selected: '%{what}a ei ole valittu, klikkaa tästä valitaksesi yhden.'
+        remove_current: 'Poista nykyinen %{what}'
+        change: Klikkaa tästä valitaksesi kuvan
+        show: Näytä
+      resource_picker:
+        download_current: Lataa nykyinen tiedosto
+        opens_in_new_window: Aukeaa uudessa ikkunassa
+        remove_current: Poista nykyinen tiedosto
+        no_resource_selected: 'Tiedostoa ei ole valittu, klikkaa tästä lisätäksesi tiedoston.'
+        name: Lisää tiedosto
+        current: Nykyinen tiedosto
+      search:
+        button_text: Etsi
+        results_for: "Hakutulokset haulle '%{query}'"
+        no_results: 'Valitettavasti mitään ei löytynyt'
+      delete:
+        message: "Oletko varma, että haluat poistaa sivun '%{title}'?"
+      error_messages:
+        problems_in_following_fields: Seuraavissa kentissä oli virheitä
+      help: apua
+    message:
+      close: Sulje
+      close_this_message: Sulje tämä viesti
+    draft_page_message:
+      not_live: Tämä sivu EI ole julkisena
+    footer:
+      copyright: "Copyright © %{year} %{site_name}"
+    no_script:
+      enable_javascript: Sivuston täydelliseen toimimiseen vaaditaan JavaScript- tuen päälle pistäminen
+      here_are: Täällä on
+      instructions_enable_javascript: ohjeet JavaScriptin päälle pistämiseen selaimessasi
+  time:
+    formats:
+      short: "%A, %d %B %Y"
