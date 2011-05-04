@@ -16,10 +16,10 @@ cs:
         see_home_page: Zobrazit titulní stránku
       recent_activity:
         empty: V poslední době nebyla provedena žádná akce.
-        latest_activity: Nejnovější akce
+        latest_activity: Nejnovější Akce
         latest_activity_message: '%{what} %{kind} byla %{action}'
       recent_inquiries:
-        latest_inquiries: Nejnovější dotazy z webu
+        latest_inquiries: Nejnovější Dotazy Z Webu
   updated:
     'with_article "the"': upraven
   created:

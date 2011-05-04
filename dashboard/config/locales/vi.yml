@@ -19,7 +19,7 @@ vi:
         latest_activity: Các hoạt động mới nhất
         latest_activity_message: '%{what} %{kind} là %{action}'
       recent_inquiries:
-        latest_inquiries: Các truy vấn mới nhất
+        latest_inquiries: Các Truy Vấn Mới Nhất
   updated:
     'with_article "the"': đã được cập nhật
   created:

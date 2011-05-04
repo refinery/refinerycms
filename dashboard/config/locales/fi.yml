@@ -19,7 +19,7 @@ fi:
         latest_activity: Uusimmat tapahtumat
         latest_activity_message: '%{kind} "%{what}" %{action}'
       recent_inquiries:
-        latest_inquiries: Uusimmat kyselyt
+        latest_inquiries: Uusimmat Kyselyt
   updated:
     'with_article "the"': päivitetty
   created:

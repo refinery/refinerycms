@@ -19,7 +19,7 @@ lt:
         latest_activity: Naujausi įvykiai
         latest_activity_message: '%{what} %{kind} buvo %{action}'
       recent_inquiries:
-        latest_inquiries: Naujausios užklausos
+        latest_inquiries: Naujausios Užklausos
   updated:
     'with_article "the"': atnaujintas
   created:

@@ -19,7 +19,7 @@ en:
         latest_activity: Latest Activity
         latest_activity_message: '%{what} %{kind} was %{action}'
       recent_inquiries:
-        latest_inquiries: Latest inquiries
+        latest_inquiries: Latest Inquiries
   updated:
     'with_article "the"': updated
   created:
