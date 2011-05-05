@@ -13,7 +13,7 @@ module Refinery
 
     class Engine < ::Rails::Engine
 
-      initializer "serve static assets" do |app|
+      initializer 'serve static assets' do |app|
         app.middleware.insert_after ::ActionDispatch::Static, ::ActionDispatch::Static, "#{root}/public"
       end
 
@@ -36,7 +36,7 @@ module Refinery
 
       config.after_initialize do
         ::Refinery::Plugin.register do |plugin|
-          plugin.name = "refinerycms_testing_plugin"
+          plugin.name = 'refinerycms_testing_plugin'
           plugin.version = ::Refinery.version
           plugin.hide_from_menu = true
         end

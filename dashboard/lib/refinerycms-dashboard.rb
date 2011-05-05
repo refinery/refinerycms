@@ -9,17 +9,17 @@ module Refinery
 
     class Engine < ::Rails::Engine
 
-      initializer "serve static assets" do |app|
+      initializer 'serve static assets' do |app|
         app.middleware.insert_after ::ActionDispatch::Static, ::ActionDispatch::Static, "#{root}/public"
       end
 
       config.after_initialize do
         ::Refinery::Plugin.register do |plugin|
-          plugin.name = "refinery_dashboard"
+          plugin.name = 'refinery_dashboard'
           plugin.url = {:controller => '/admin/dashboard', :action => 'index'}
           plugin.menu_match = /(admin|refinery)\/(refinery_)?dashboard$/
-          plugin.directory = "dashboard"
-          plugin.version = %q{0.9.9.17}
+          plugin.directory = 'dashboard'
+          plugin.version = %q{0.9.9.21}
           plugin.always_allow_access = true
           plugin.dashboard = true
         end

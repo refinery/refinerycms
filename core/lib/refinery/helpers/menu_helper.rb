@@ -87,6 +87,7 @@ module Refinery
           path == page.link_url or
           path == page.nested_path or
           URI.decode(path) == page.nested_path or
+          path == "/#{page.id}" or
           current_page?(page)
       end
 

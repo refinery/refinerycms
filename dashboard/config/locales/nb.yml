@@ -16,10 +16,10 @@ nb:
         see_home_page: Se hjemmesiden
       recent_activity:
         empty: Det har ikke vært noen aktivitet her i det siste.
-        latest_activity: Siste aktivitet
+        latest_activity: Siste Aktivitet
         latest_activity_message: "%{what} %{kind} ble %{action}"
       recent_inquiries:
-        latest_inquiries: Siste forespørsler
+        latest_inquiries: Siste Forespørsler
   updated:
     'with_article "the"': oppdatert
   created:

@@ -19,7 +19,7 @@ pt-BR:
         latest_activity: Atividades Recentes
         latest_activity_message: '%{kind} %{what} foi %{action}'
       recent_inquiries:
-        latest_inquiries: Últimas mensagens
+        latest_inquiries: Últimas Mensagens
   updated:
     'with_article "a"': atualizada
     'with_article "o"': atualizado

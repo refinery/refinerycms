@@ -14,7 +14,7 @@ module Refinery
 
     class Engine < ::Rails::Engine
 
-      initializer "serve static assets" do |app|
+      initializer 'serve static assets' do |app|
         app.middleware.insert_after ::ActionDispatch::Static, ::ActionDispatch::Static, "#{root}/public"
       end
 
@@ -57,10 +57,10 @@ module Refinery
 
       config.after_initialize do
         ::Refinery::Plugin.register do |plugin|
-          plugin.name = "refinery_files"
+          plugin.name = 'refinery_files'
           plugin.url = {:controller => '/admin/resources', :action => 'index'}
           plugin.menu_match = /(refinery|admin)\/(refinery_)?(files|resources)$/
-          plugin.version = %q{0.9.9.17}
+          plugin.version = %q{0.9.9.21}
           plugin.activity = {
             :class => Resource
           }

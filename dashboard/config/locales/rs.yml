@@ -16,10 +16,10 @@ rs:
         see_home_page: Otvori home stranu
       recent_activity:
         empty: Nije bilo aktivnosti u skorije vreme.
-        latest_activity: Poslednja aktivnost
+        latest_activity: Poslednja Aktivnost
         latest_activity_message: '%{what} %{kind} je %{action}'
       recent_inquiries:
-        latest_inquiries: Poslednja pitanja
+        latest_inquiries: Poslednja Pitanja
   updated:
     'with_article "the"': izmenjen(a)
   created:

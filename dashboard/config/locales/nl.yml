@@ -16,10 +16,10 @@ nl:
         see_home_page: Bezoek de homepage
       recent_activity:
         empty: Er hebben zich recentelijk geen activiteiten voorgedaan.
-        latest_activity: Laatste wijzigingen
+        latest_activity: Laatste Wijzigingen
         latest_activity_message: '%{what} %{kind} is %{action}'
       recent_inquiries:
-        latest_inquiries: Latest inquiries
+        latest_inquiries: Latest Inquiries
   updated:
     'with_article "the"':  bewerkt
   created:

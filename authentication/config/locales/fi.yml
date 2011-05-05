@@ -1,0 +1,72 @@
+fi:
+  plugins:
+    refinery_users:
+      title: Käyttäjät
+      description: Hallitse käyttäjiä
+  admin:
+    users:
+      delete: Poista tämä käyttäjä ikuisesti
+      edit: Muokkaa tätä käyttäjää
+      update:
+        cannot_remove_user_plugin_from_current_user: "Et voi poistaa 'Käyttäjät-' palikkaa tunnukselta, jolla olet kirjautunut sisään."
+      form:
+        blank_password_keeps_current: "Jätä tyhjäksi, jos et halua vaihtaa salasanaa"
+        plugin_access: Palikkaluvat
+        role_access: Rooliluvat
+        enable_all: "salli kaikki"
+      actions:
+        create_new_user: Lisää uusi käyttäjä
+      user:
+        email_user: Lähetä sähköpostia tälle käyttäjälle
+        preview: '(%{who}) lisätty %{created_at}'
+  sessions:
+    new:
+      hello_please_sign_in: "Hei! Ole hyvä, ja kirjaudu."
+      sign_in: Kirjaudu
+      forgot_password: Unohdin salasanani
+  users:
+    setup_website_name_html: "Annetaan nettisivustolle ensimmäiseksi nimi. <a href='%{link}' name='%{title}'>Mene tänne</a> muokataksesi nettisivusi nimeä"
+    new:
+      fill_form: "Täytä alhaalla olevat tiedot, että voimme aloittaa."
+      sign_up: Rekisteröidy
+    create:
+      welcome: 'Tervetuloa Refineryyn, %{who}'
+    forgot:
+      email_address: Sähköpostiosoite
+      enter_email_address: Kirjoita tunnuksesi sähköpostiosoite.
+      reset_password: Nollaa salasana
+      blank_email: Et kirjoittanut sähköpostiosoitetta.
+      email_not_associated_with_account_html: "Valitettavasti osoitetta '%{email}' ei löydy tietokannasta.<br />Oletko varma, että kirjoitit oikean osoitteen?"
+      email_reset_sent: "Sinulle on lähetetty sähköposti, jonka kautta voit vaihtaa salasanan."
+      password_encryption: "Sinun täytyy vaihtaa salasanasi, koska Refineryn käyttämää salausmenetelmää on vaihdettu turvallisuussyistä."
+    reset:
+      code_invalid: "Olemme pahoillamme, mutta tämä vaihtokoodi on joko vanhentunut, tai se on viallinen. Yritä kopioida ja liittää osoite sähköpostistasi selaimeen, tai käynnistää salasanan vaihto uudelleen."
+      successful: "Salasana nollattu onnistuneesti osoitteelle '%{email}'"
+      pick_new_password_for: "Kirjoita uusi salasana osoitteelle %{email}"
+      reset_password: Nollaa salasana
+  user_mailer:
+    reset_notification:
+      subject: Linkki salasanan nollaukseen
+      reset_request_received_for: "Pyyntö nollata käyttäjän %{username} salasana"
+      visit_this_url: Käy tässä osoitteessa valitaksesi uuden salasanan
+      remain_same_if_no_action: "Jos et tee mitään, salasanaasi ei vaihdeta"
+  devise:
+    failure:
+      unauthenticated: Sinun täytyy kirjautua sisään.
+      invalid: "Käyttäjää ei löytynyt, tai salasana oli väärä."
+    sessions:
+      signed_in: Kirjautuminen onnistui.
+  roles:
+    superuser: Superuser
+    refinery: Refinery
+  activerecord:
+    models:
+      user: käyttäjä
+    attributes:
+      user:
+        login: Käyttäjätunnus
+        username: Käyttäjätunnus
+        password: Salasana
+        password_confirmation: Salasana (uudelleen)
+        email: Sähköpostiosoite
+        remember_me: Muista kirjautumiseni tällä tietokoneella
