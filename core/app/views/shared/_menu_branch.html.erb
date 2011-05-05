@@ -4,7 +4,7 @@
   end
   dom_id = "id='item_#{menu_branch_counter}'".html_safe
 
-  children = menu_branch.children.live.in_menu unless hide_children
+  children = menu_branch.children.live.in_menu unless hide_children or menu_branch.rgt == menu_branch.lft + 1
 -%>
 <li<%= ['', css, dom_id].compact.join(' ').gsub(/\ *$/, '').html_safe %>>
   <%= link_to menu_branch.title, menu_branch.url -%>
@@ -14,9 +14,7 @@
                  :collection => children,
                  :locals => {
                    :apply_css => local_assigns[:apply_css],
-                   :hide_children => !!hide_children,
-                   :collection => collection,
-                   :sibling_count => children.length - 1
+                   :hide_children => !!hide_children
                  } -%>
     </ul>
   <% end -%>

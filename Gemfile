@@ -58,4 +58,5 @@ end
 
 # Add i18n support (optional, you can remove this if you really want to).
 gem 'refinerycms-i18n',         '~> 1.0.0'
+gem 'awesome_nested_set', :git => 'git://github.com/collectiveidea/awesome_nested_set.git'
 # END USER DEFINED

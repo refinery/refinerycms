@@ -1,3 +1,10 @@
+GIT
+  remote: git://github.com/collectiveidea/awesome_nested_set.git
+  revision: 976dd56c97a4f54e2e547d372737502af6080ceb
+  specs:
+    awesome_nested_set (1.4.4)
+      activerecord (>= 1.1)
+
 PATH
   remote: .
   specs:
@@ -18,9 +25,9 @@ PATH
     refinerycms-base (0.9.9.21)
     refinerycms-core (0.9.9.21)
       acts_as_indexed (~> 0.7)
+      awesome_nested_set (>= 1.4)
       friendly_id_globalize3 (~> 3.2.1)
       globalize3 (>= 0.1.0.beta)
-      moretea-awesome_nested_set (~> 1.4)
       rails (~> 3.0.7)
       refinerycms-base (= 0.9.9.21)
       refinerycms-generators (~> 1.0)
@@ -34,9 +41,9 @@ PATH
       rack-cache (>= 0.5.3)
       refinerycms-core (= 0.9.9.21)
     refinerycms-pages (0.9.9.21)
+      awesome_nested_set (>= 1.4)
       friendly_id_globalize3 (~> 3.2.1)
       globalize3 (>= 0.1.0.beta)
-      moretea-awesome_nested_set (~> 1.4)
       refinerycms-core (= 0.9.9.21)
       seo_meta (~> 1.0.5)
     refinerycms-resources (0.9.9.21)
@@ -159,8 +166,6 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.16)
-    moretea-awesome_nested_set (1.4.3.1)
-      activerecord (~> 3.0.0)
     mysql2 (0.2.7)
     nokogiri (1.4.4)
     orm_adapter (0.0.4)
@@ -230,6 +235,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  awesome_nested_set!
   mysql2 (~> 0.2.7)
   refinerycms!
   refinerycms-i18n (~> 1.0.0)

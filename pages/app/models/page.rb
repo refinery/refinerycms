@@ -77,22 +77,20 @@ class Page < ActiveRecord::Base
   scope :with_globalize, lambda {|conditions|
     if defined?(::Page::Translation)
       conditions = {:locale => Globalize.locale}.merge(conditions || {})
-      where(:id => ::Page::Translation.where(conditions).select('page_id AS id')).includes(:translations)
+      where(:id => ::Page::Translation.where(conditions).select('page_id AS id'))
     else
       where(conditions)
     end
   }
 
   scope :live, where(:draft => false)
-  scope :by_title, lambda {|t| with_globalize(:title => t)}
+  scope :by_title, proc {|t| with_globalize(:title => t)}
 
   # Shows all pages with :show_in_menu set to true, but it also
   # rejects any page that has not been translated to the current locale.
   # This works using a query against the translated content first and then
   # using all of the page_ids we further filter against this model's table.
-  scope :in_menu, lambda {
-    where(:show_in_menu => true).with_globalize({})
-  }
+  scope :in_menu, where(:show_in_menu => true).with_globalize({})
 
   # when a dialog pops up to link to a page, how many pages per page should there be
   PAGES_PER_DIALOG = 14
