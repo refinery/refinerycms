@@ -319,8 +319,8 @@ module ::Refinery
 	      [self.title.to_s]
 	    end
 	
-	    title << "<em>(#{::I18n.t('hidden', :scope => 'admin.pages.page')})</em>" unless show_in_menu?
-	    title << "<em>(#{::I18n.t('draft', :scope => 'admin.pages.page')})</em>" if draft?
+	    title << "<em>(#{::I18n.t('hidden', :scope => 'refinery.admin.pages.page')})</em>" unless show_in_menu?
+	    title << "<em>(#{::I18n.t('draft', :scope => 'refinery.admin.pages.page')})</em>" if draft?
 	
 	    title.join(' ')
 	  end

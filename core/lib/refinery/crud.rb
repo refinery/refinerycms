@@ -16,10 +16,6 @@ module Refinery
       class_name = singular_name.camelize
       plural_name = singular_name.camelize.demodulize.pluralize.downcase
       this_class = class_name.constantize.base_class
-      puts this_class
-      puts plural_name
-      puts class_name
-      puts singular_name
 
       {
         :conditions => '',

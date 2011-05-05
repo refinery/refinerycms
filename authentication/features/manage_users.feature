@@ -38,6 +38,7 @@ Feature: Manage Users
     And I am a logged in refinery user
     When I go to the list of users
     And I follow "Add new user"
+    
     And I fill in "Username" with "cucumber"
     And I fill in "Email" with "green@cucumber.com"
     And I fill in "Password" with "greenandjuicy"
@@ -55,6 +56,7 @@ Feature: Manage Users
     And I follow "Edit this user"
     And I fill in "Username" with "cucumber"
     And I fill in "Email" with "green@cucumber.com"
+    Then show me the page
     And I press "Save"
     Then I should be on the list of users
     And I should see "cucumber was successfully updated."

@@ -36,13 +36,13 @@ module ::Refinery
           end
         end
   
-        flash[:message] = "<h2>#{t('welcome', :scope => 'users.create', :who => @user.username).gsub(/\.$/, '')}.</h2>".html_safe
+        flash[:message] = "<h2>#{t('welcome', :scope => 'refinery.users.create', :who => @user.username).gsub(/\.$/, '')}.</h2>".html_safe
   
         site_name_setting = RefinerySetting.find_or_create_by_name('site_name', :value => "Company Name")
         if site_name_setting.value.to_s =~ /^(|Company\ Name)$/ or Role[:refinery].users.count == 1
-          flash[:message] << "<p>#{t('setup_website_name_html', :scope => 'users',
+          flash[:message] << "<p>#{t('setup_website_name_html', :scope => 'refinery.users',
                                      :link => edit_admin_refinery_setting_url(site_name_setting, :dialog => true),
-                                     :title => t('edit', :scope => 'admin.refinery_settings'))}</p>".html_safe
+                                     :title => t('edit', :scope => 'refinery.admin.refinery_settings'))}</p>".html_safe
         end
         sign_in(@user)
         redirect_back_or_default(admin_root_url)

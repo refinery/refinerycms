@@ -50,7 +50,7 @@ module Refinery
 
       # Prevent the current user from locking themselves out of the User manager
       if current_user.id == @user.id and (params[:user][:plugins].exclude?("refinery_users") || @selected_role_names.map(&:downcase).exclude?("refinery"))
-        flash.now[:error] = t('cannot_remove_user_plugin_from_current_user', :scope => 'admin.users.update')
+        flash.now[:error] = t('cannot_remove_user_plugin_from_current_user', :scope => 'refinery.admin.users.update')
         render :action => "edit"
       else
         # Store the current plugins and roles for this user.

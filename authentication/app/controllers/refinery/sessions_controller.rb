@@ -6,7 +6,7 @@ class Refinery::SessionsController < ::Devise::SessionsController
   def create
     super
   rescue ::BCrypt::Errors::InvalidSalt, ::BCrypt::Errors::InvalidHash
-    flash[:error] = t('password_encryption', :scope => 'users.forgot')
+    flash[:error] = t('password_encryption', :scope => 'refinery.users.forgot')
     redirect_to new_user_password_path
   end
 

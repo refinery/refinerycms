@@ -12,7 +12,7 @@
                 :title => t('edit', :scope => 'refinery.admin.users')%>
     <%= link_to refinery_icon_tag('delete.png'), admin_user_path(user),
                 :class => "cancel confirm-delete",
-                :title => t('delete', :scope => 'admin.users'),
+                :title => t('delete', :scope => 'refinery.admin.users'),
                 :method => :delete,
                 :confirm => t('message', :scope => 'shared.admin.delete', :title => user.username) if current_user.can_delete?(user) %>
   </span>

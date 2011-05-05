@@ -42,7 +42,7 @@ module ::Refinery
     end
 
     def show_errors_for_reserved_slug(exception)
-      flash[:error] = t('reserved_system_word', :scope => 'admin.pages')
+      flash[:error] = t('reserved_system_word', :scope => 'refinery.admin.pages')
       if action_name == 'update'
         find_page
         render :edit

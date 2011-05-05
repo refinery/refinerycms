@@ -1,9 +1,9 @@
 en:
-  plugins:
-    refinery_images:
-      title: Images
-      description: Manage images
   refinery:
+    plugins:
+      refinery_images:
+        title: Images
+        description: Manage images
     admin:
       images:
         delete: Remove this image forever

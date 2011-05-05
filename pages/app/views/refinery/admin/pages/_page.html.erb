@@ -20,10 +20,10 @@
                   :target => "_blank",
                   :title => t('.view_live_html') %>
       <%= link_to refinery_icon_tag('application_edit.png'), edit_admin_page_url(page),
-                  :title => t('edit', :scope => 'admin.pages') %>
+                  :title => t('edit', :scope => 'refinery.admin.pages') %>
       <%= link_to refinery_icon_tag('delete.png'), admin_page_url(page),
                   :class => "cancel confirm-delete",
-                  :title => t('delete', :scope => 'admin.pages'),
+                  :title => t('delete', :scope => 'refinery.admin.pages'),
                   :confirm => t('message', :scope => 'shared.admin.delete', :title => page.title_with_meta.gsub(/\ ?<em>.*<\/em>/, "")),
                   :method => :delete if page.deletable? %>
     </span>

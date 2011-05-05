@@ -8,7 +8,7 @@
   </li>
   <% other_image_views.each do |image_view| %>
     <li>
-      <%= link_to t('switch_to', :scope => 'admin.images.index.view', :view_name => t("#{image_view}", :scope => 'admin.images.index.view')),
+      <%= link_to t('switch_to', :scope => 'refinery.admin.images.index.view', :view_name => t("#{image_view}", :scope => 'refinery.admin.images.index.view')),
                   admin_images_url(:view => image_view, :page => params[:page]),
                   :class => "reorder_icon"  %>
     </li>
