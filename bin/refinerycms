@@ -317,7 +317,7 @@ module Refinery
         run_command("git push #{hosting.downcase} master", :ruby => false)
 
         puts "\n\nSetting up the #{hosting} database..\n"
-        run_command("#{hosting.downcase} rake db:setup")
+        run_command("#{hosting.downcase} rake db:migrate")
 
         if @options[:heroku]
           puts "\n\nRestarting servers...\n"
