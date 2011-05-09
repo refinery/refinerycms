@@ -374,7 +374,7 @@ module Refinery
 
       if Refinery::WINDOWS
         to_run = ['"'] + to_run + ['"']
-        to_run = %w(cmd /c) | to_run.map{|c| c.gsub(/\//m, '\\')}
+        to_run = %w(cmd /c) + to_run.map{|c| c.gsub(/\//m, '\\')}
       end
 
       to_run = to_run.join(' ')
