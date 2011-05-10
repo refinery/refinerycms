@@ -288,7 +288,7 @@ class Page < ActiveRecord::Base
       begin
         Rails.cache.delete_matched(/.*pages.*/)
       rescue NotImplementedError
-        Rails.cache.clear 
+        Rails.cache.clear
         warn "**** [REFINERY] The cache store you are using is not compatible with Rails.cache#delete_matched - clearing entire cache instead ***"
       end
     end

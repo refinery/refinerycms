@@ -52,6 +52,31 @@ To use these just run:
 
 After this, you should be all set.
 
+h3. Gotchas
+
+h4. Check your app for namespace collisions
+
+Refinery isn't entirely namespaced or decoupled from the application it becomes a part of, and this can cause problems in integrating with an existing app.
+The following notes may help.
+
+Modules and classes in the host application which have previously caused problems include Admin, Image and Page, though this is not an exhaustive list.
+While some of these collisions are not visible in the schema (e.g. an Admin class colliding with an Admin module) you may find tables and models which refinery and your app have in common.
+Having discovered this you may want to refactor your app to use different class and table names, or you may wish to remove the functionality and instead use that provided by Refinery.
+For example an admin model could probably be replaced with refinery's own admin authentication system.
+
+h4. ApplicationController
+
+Refinery hooks in to ApplicationController, adding before-filters and the like.
+This means any of your controllers inheriting from it will also be modified.
+This can have unexpected consequences, such as breaking your entire controller test-suite due to not having completed the initial Refinery user creation in the spec setup.
+One approach is to bootstrap the setup before executing your specs, or stubbing.
+Another is to create a replacement ApplicationController, different from the one Refinery will modify, and base your application on this instead.
+
+h4. Devise
+
+While Refinery's use of Devise should not effect your own, since you can declare scopes, you may find issues are caused by
+Devise using your ApplicationController, which as previously mentioned is modified by Refinery.
+
 h3. Getting Help
 
 As this is a relatively new process, if you need help with any of these steps we would love to "hear about it":/guides/how-to-get-help-with-refinery.

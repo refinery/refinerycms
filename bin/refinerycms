@@ -317,7 +317,7 @@ module Refinery
         run_command("git push #{hosting.downcase} master", :ruby => false)
 
         puts "\n\nSetting up the #{hosting} database..\n"
-        run_command("#{hosting.downcase} rake db:setup")
+        run_command("#{hosting.downcase} rake db:migrate")
 
         if @options[:heroku]
           puts "\n\nRestarting servers...\n"
@@ -374,7 +374,7 @@ module Refinery
 
       if Refinery::WINDOWS
         to_run = ['"'] + to_run + ['"']
-        to_run = %w(cmd /c) | to_run.map{|c| c.gsub(/\//m, '\\')}
+        to_run = %w(cmd /c) + to_run.map{|c| c.gsub(/\//m, '\\')}
       end
 
       to_run = to_run.join(' ')
