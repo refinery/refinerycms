@@ -45,3 +45,4 @@ Feature: Manage Pages
     Then I should see "'test' was successfully removed."
     And I should have 0 pages
     And I should have 0 page_parts
+
