@@ -32,7 +32,7 @@ module Refinery
           unless geometry.nil? or !(split_geometry = geometry.to_s.split('#')).many? or !(split_geometry = split_geometry.first.split('x')).many?
             image_width, image_height = split_geometry
           else
-            image_with = nil
+            image_width = nil
             image_height = nil
           end
 
