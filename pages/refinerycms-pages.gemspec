@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |s|
   s.name              = %q{refinerycms-pages}
-  s.version           = %q{0.9.9.21}
+  s.version           = %q{1.1.0.pre}
   s.summary           = %q{Pages engine for Refinery CMS}
   s.description       = %q{The default content engine of Refinery CMS. This engine handles the administration and display of user-editable pages.}
   s.date              = %q{2011-05-11}
@@ -119,7 +119,7 @@ Gem::Specification.new do |s|
     'spec/models/page_spec.rb'
   ]
 
-  s.add_dependency 'refinerycms-core',            '= 0.9.9.21'
+  s.add_dependency 'refinerycms-core',            '= 1.1.0.pre'
   s.add_dependency 'friendly_id_globalize3',      '~> 3.2.1'
   s.add_dependency 'globalize3',                  '>= 0.1.0.beta'
   s.add_dependency 'awesome_nested_set',          '~> 2.0'
