@@ -1,10 +1,3 @@
-GIT
-  remote: git://github.com/collectiveidea/awesome_nested_set.git
-  revision: 976dd56c97a4f54e2e547d372737502af6080ceb
-  specs:
-    awesome_nested_set (1.4.4)
-      activerecord (>= 1.1)
-
 PATH
   remote: .
   specs:
@@ -25,7 +18,7 @@ PATH
     refinerycms-base (0.9.9.21)
     refinerycms-core (0.9.9.21)
       acts_as_indexed (~> 0.7)
-      awesome_nested_set (>= 1.4)
+      awesome_nested_set (~> 2.0)
       friendly_id_globalize3 (~> 3.2.1)
       globalize3 (>= 0.1.0.beta)
       rails (~> 3.0.7)
@@ -41,7 +34,7 @@ PATH
       rack-cache (>= 0.5.3)
       refinerycms-core (= 0.9.9.21)
     refinerycms-pages (0.9.9.21)
-      awesome_nested_set (>= 1.4)
+      awesome_nested_set (~> 2.0)
       friendly_id_globalize3 (~> 3.2.1)
       globalize3 (>= 0.1.0.beta)
       refinerycms-core (= 0.9.9.21)
@@ -107,7 +100,9 @@ GEM
       autotest (~> 4.3)
     autotest-rails (4.1.0)
       ZenTest
-    babosa (0.3.3)
+    awesome_nested_set (2.0.0)
+      activerecord (>= 3.0.0)
+    babosa (0.3.4)
     bcrypt-ruby (2.1.4)
     builder (2.1.2)
     capybara (0.4.1.2)
@@ -168,7 +163,7 @@ GEM
     mime-types (1.16)
     mysql2 (0.2.7)
     nokogiri (1.4.4)
-    orm_adapter (0.0.4)
+    orm_adapter (0.0.5)
     polyglot (0.3.1)
     rack (1.2.2)
     rack-cache (1.0.1)
@@ -235,7 +230,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  awesome_nested_set!
   mysql2 (~> 0.2.7)
   refinerycms!
   refinerycms-i18n (~> 1.0.0)
