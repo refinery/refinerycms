@@ -284,9 +284,8 @@ module Refinery
       src = Refinery.version !~ /\.pre$/ ? "'= #{Refinery.version}'" : ":git => 'git://github.com/resolve/refinerycms'"
       find_and_replace('Gemfile', %r{gem 'refinerycms',.*}, "gem 'refinerycms',              #{src}")
 
-      # Add in AWS-S3 for Heroku
-      find_and_replace('Gemfile', "# gem 'aws-s3', :require => 'aws/s3'",
-                        "gem 'aws-s3', :require => 'aws/s3'") if @options[:heroku]
+      # Add in fog gem for Heroku
+      find_and_replace('Gemfile', "# gem 'fog'", "gem 'fog'") if @options[:heroku]
 
       # Automate
       # TODO: Check exit codes to see whether or not these worked
@@ -345,7 +344,7 @@ module Refinery
 
       if @options[:heroku]
         note << "\nIf you want files and images to work on heroku, you will need setup S3:"
-        note << "heroku config:add S3_BUCKET=XXXXXXXXX S3_KEY=XXXXXXXXX S3_SECRET=XXXXXXXXXX"
+        note << "heroku config:add S3_BUCKET=XXXXXXXXX S3_KEY=XXXXXXXXX S3_SECRET=XXXXXXXXXX S3_REGION=XXXXXXXXXX"
       end
 
       note << "\nThanks for installing Refinery, enjoy creating your new application!"
