@@ -19,9 +19,5 @@ module Admin
       end
     end
 
-    def images_paginator(collection, dialog = false)
-      will_paginate collection, :renderer => Refinery::LinkRenderer
-    end
-
   end
 end

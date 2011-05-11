@@ -40,6 +40,8 @@ Gem::Specification.new do |s|
     '.rspec',
     'config',
     'config/cucumber.yml',
+    'config/initializers',
+    'config/initializers/accessible_attributes.rb',
     'features',
     'features/step_definitions',
     'features/step_definitions/web_steps.rb',

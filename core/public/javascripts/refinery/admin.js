@@ -64,8 +64,8 @@ init_ajaxy_pagination = function(){
     var pagination_pages = $('.pagination_container .pagination a');
     pagination_pages.live('click',function(e) {
       navigate_to = this.href.replace(/(\&(amp\;)?)?from_page\=\d+/, '');
-      navigate_to += '&from_page=' + $(this).parent().find('em').text();
-      navigate_to = navigate_to.replace('?&', '?');
+      navigate_to += '&from_page=' + $('.page.current').text();
+      navigate_to = navigate_to.replace('?&', '?').replace(/\s+/, '');
 
       var current_state_location = (location.pathname + location.href.split(location.pathname)[1]);
       window.history.pushState({

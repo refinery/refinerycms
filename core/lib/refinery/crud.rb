@@ -168,17 +168,13 @@ module Refinery
             # If we have already found a set then we don't need to again
             find_all_#{plural_name} if @#{plural_name}.nil?
 
-            paging_options = {:page => params[:page]}
-
-            # Use per_page from crudify options.
-            if #{options[:per_page].present?.inspect}
-              paging_options.update({:per_page => #{options[:per_page].inspect}})
-            # Seems will_paginate doesn't always use the implicit method.
+            per_page = if #{options[:per_page].present?.inspect}
+              #{options[:per_page].inspect}
             elsif #{class_name}.methods.map(&:to_sym).include?(:per_page)
-              paging_options.update({:per_page => #{class_name}.per_page})
+              #{class_name}.per_page
             end
 
-            @#{plural_name} = @#{plural_name}.paginate(paging_options)
+            @#{plural_name} = @#{plural_name}.page(params[:page]).per(per_page)
           end
 
           # Returns a weighted set of results based on the query specified by the user.

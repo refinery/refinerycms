@@ -73,3 +73,6 @@ da:
   time:
     formats:
       short: "%A, %e. %B %Y"
+  pagination:
+    next: "&raquo;"
+    previous: "&laquo;"
