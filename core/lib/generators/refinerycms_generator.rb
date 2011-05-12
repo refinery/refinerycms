@@ -82,6 +82,7 @@ class ::Refinery::RefinerycmsGenerator < ::Refinery::Generators::EngineInstaller
 
 
     # Append seeds.
+    create_file "db/seeds.rb" unless Rails.root.join('db', 'seeds.rb').file?
     append_file 'db/seeds.rb', :verbose => true do
       self.class.source_root.join('db', 'seeds.rb').read
     end
@@ -104,6 +105,12 @@ class ::Refinery::RefinerycmsGenerator < ::Refinery::Generators::EngineInstaller
       f.directory? or f.to_s =~ /\/db\//
     }.sort.each do |path|
       copy_file path, path.to_s.gsub(self.class.source_root.to_s, Rails.root.to_s)
+    end
+
+    # Ensure i18n exists and is up to date.
+    if defined?(::Refinery::I18n)
+      require 'generators/refinerycms_i18n_generator'
+      ::RefinerycmsI18n.new.generate
     end
   end
 

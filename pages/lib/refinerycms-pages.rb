@@ -1,6 +1,7 @@
 require 'refinerycms-core'
 require 'awesome_nested_set'
 require 'globalize3'
+require 'friendly_id'
 require 'seo_meta'
 
 module Refinery
@@ -19,7 +20,7 @@ module Refinery
     end
 
     class Engine < ::Rails::Engine
-      initializer "serve static assets" do |app|
+      initializer 'serve static assets' do |app|
         app.middleware.insert_after ::ActionDispatch::Static, ::ActionDispatch::Static, "#{root}/public"
       end
 
@@ -34,13 +35,12 @@ module Refinery
 
       initializer "init plugin", :after => :set_routes_reloader do |app|
         ::Refinery::Plugin.register do |plugin|
-          plugin.name = "refinery_pages"
-          plugin.directory = "pages"
-          plugin.version = %q{0.9.9.17}
+          plugin.name = 'refinery_pages'
+          plugin.directory = 'pages'
+          plugin.version = %q{0.9.9.21}
           plugin.menu_match = /(refinery|admin)\/page(_part)?s(_dialogs)?$/
           plugin.url = app.routes.url_helpers.admin_pages_path
           plugin.activity = {
-          	
             :class => Refinery::Page,
             :url_prefix => "edit",
             :title => "title",

@@ -16,3 +16,11 @@ Factory.define :refinery_user, :parent => :user do |u|
     end
   end
 end
+
+Factory.define :refinery_translator, :parent => :user do |u|
+  u.roles { [ Role[:refinery], Role[:translator] ] }
+
+  u.after_create do |user|
+    user.plugins.create(:name => 'refinery_pages', :position => 0)
+  end
+end

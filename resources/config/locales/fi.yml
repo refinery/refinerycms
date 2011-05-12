@@ -1,0 +1,35 @@
+fi:
+  plugins:
+    refinery_files:
+      title: Tiedostot
+      description: Lisää tiedostoja
+  admin:
+    resources:
+      delete: Poista tämä tiedosto ikuisesti
+      edit: Muokkaa tätä tiedostoa
+      form:
+        download_current: Lataa nykyinen tiedosto
+        or: tai
+        replace: " vaihda se tähän tiedostoon..."
+        maximum_file_size: Suurin mahdollinen tiedostokoko on %{megabytes} megatavua.
+      resource:
+        download: Lataa tämä tiedosto (%{size})
+      actions:
+        upload_new: Lisää uusi tiedosto
+      records:
+        no_files_yet: Tiedostoja ei ole vielä lisätty. Paina "Lisää uusi tiedosto-" painiketta lisätäksesi ensimmäisen tiedoston.
+      insert:
+        existing: Olemassaoleva tiedosto
+        new: Uusi tiedosto
+        no_files: Tiedostoja ei ole.
+      existing_resource:
+        link_to_file: Linkki tähän tiedostoon
+        button_text: Lisää
+  activerecord:
+    models:
+      resource: tiedosto
+    errors:
+      models:
+        resource:
+          blank: Sinun pitää lähettää tiedosto
+          too_long: Tiedoston tulee olla pienempi kuin %{count} kooltaan

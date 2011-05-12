@@ -2,10 +2,10 @@
 
 Gem::Specification.new do |s|
   s.name              = %q{refinerycms-core}
-  s.version           = %q{0.9.9.17}
+  s.version           = %q{0.9.9.21}
   s.summary           = %q{Core engine for Refinery CMS}
   s.description       = %q{The core of Refinery CMS. This handles the common functionality and is required by most engines}
-  s.date              = %q{2011-04-11}
+  s.date              = %q{2011-05-03}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
   s.rubyforge_project = %q{refinerycms}
@@ -14,14 +14,14 @@ Gem::Specification.new do |s|
   s.require_paths     = %w(lib)
   s.executables       = %w()
 
-#  s.add_dependency 'refinerycms-base',            '= 0.9.9.17'
-#  s.add_dependency 'refinerycms-settings',        '= 0.9.9.17'
-#  s.add_dependency 'refinerycms-generators',      '~> 1.0'
+  s.add_dependency 'refinerycms-base',            '= 0.9.9.21'
+  s.add_dependency 'refinerycms-settings',        '= 0.9.9.21'
+  s.add_dependency 'refinerycms-generators',      '~> 1.0'
   s.add_dependency 'acts_as_indexed',             '~> 0.7'
-#  s.add_dependency 'friendly_id_globalize3',      '~> 3.2.1'
+  s.add_dependency 'friendly_id_globalize3',      '~> 3.2.1'
   s.add_dependency 'globalize3',                  '>= 0.1.0.beta'
-#  s.add_dependency 'moretea-awesome_nested_set',  '~> 1.4'
-  s.add_dependency 'rdoc',                        '>= 2.5.11' # helps fix ubuntu
+  s.add_dependency 'moretea-awesome_nested_set',  '~> 1.4'
+  s.add_dependency 'rails',                       '~> 3.0.7'
   s.add_dependency 'truncate_html',               '~> 0.5'
   s.add_dependency 'will_paginate',               '~> 3.0.pre'
 
@@ -84,6 +84,7 @@ Gem::Specification.new do |s|
     'config/locales/el.yml',
     'config/locales/en.yml',
     'config/locales/es.yml',
+    'config/locales/fi.yml',
     'config/locales/fr.yml',
     'config/locales/it.yml',
     'config/locales/jp.yml',
@@ -365,6 +366,7 @@ Gem::Specification.new do |s|
     'public/javascripts/wymeditor/lang/en.js',
     'public/javascripts/wymeditor/lang/es.js',
     'public/javascripts/wymeditor/lang/fa.js',
+    'public/javascripts/wymeditor/lang/fi.js',
     'public/javascripts/wymeditor/lang/fr.js',
     'public/javascripts/wymeditor/lang/he.js',
     'public/javascripts/wymeditor/lang/hu.js',
@@ -379,6 +381,7 @@ Gem::Specification.new do |s|
     'public/javascripts/wymeditor/lang/pt.js',
     'public/javascripts/wymeditor/lang/rs.js',
     'public/javascripts/wymeditor/lang/ru.js',
+    'public/javascripts/wymeditor/lang/sk.js',
     'public/javascripts/wymeditor/lang/sl.js',
     'public/javascripts/wymeditor/lang/sv.js',
     'public/javascripts/wymeditor/lang/tr.js',
@@ -416,6 +419,7 @@ Gem::Specification.new do |s|
     'spec',
     'spec/lib',
     'spec/lib/refinery',
+    'spec/lib/refinery/plugin_spec.rb',
     'spec/lib/refinery/plugins_spec.rb'
   ]
 end

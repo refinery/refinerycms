@@ -25,7 +25,7 @@ module Refinery
         else
           "#{javascript_include_tag("http://www.google.com/jsapi").gsub(".js", "")}
           <script>
-            google.load('jquery', '1.5.0');
+            google.load('jquery', '1.5.2');
             #{"google.load('jqueryui', '1.8.9');" if options[:jquery_ui]}
           </script>".html_safe
         end

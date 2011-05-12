@@ -2,10 +2,10 @@
 
 Gem::Specification.new do |s|
   s.name              = %q{refinerycms-authentication}
-  s.version           = %q{0.9.9.17}
+  s.version           = %q{0.9.9.21}
   s.summary           = %q{Authentication engine for Refinery CMS}
   s.description       = %q{The default authentication engine for Refinery CMS}
-  s.date              = %q{2011-04-11}
+  s.date              = %q{2011-05-03}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
   s.rubyforge_project = %q{refinerycms}
@@ -14,8 +14,9 @@ Gem::Specification.new do |s|
   s.require_paths     = %w(lib)
   s.executables       = %w()
 
-  s.add_dependency 'refinerycms-core', '= 0.9.9.17'
-  s.add_dependency 'devise',           '~> 1.2.0'
+  s.add_dependency 'refinerycms-core',            '= 0.9.9.21'
+  s.add_dependency 'devise',                      '~> 1.3.0'
+  s.add_dependency 'friendly_id_globalize3',      '~> 3.2.1'
 
   s.files             = [
     'app',
@@ -23,8 +24,8 @@ Gem::Specification.new do |s|
     'app/controllers/admin',
     'app/controllers/admin/users_controller.rb',
     'app/controllers/passwords_controller.rb',
-    'app/controllers/registrations_controller.rb',
     'app/controllers/sessions_controller.rb',
+    'app/controllers/users_controller.rb',
     'app/helpers',
     'app/helpers/sessions_helper.rb',
     'app/helpers/users_helper.rb',
@@ -51,13 +52,13 @@ Gem::Specification.new do |s|
     'app/views/passwords',
     'app/views/passwords/edit.html.erb',
     'app/views/passwords/new.html.erb',
-    'app/views/registrations',
-    'app/views/registrations/new.html.erb',
     'app/views/sessions',
     'app/views/sessions/new.html.erb',
     'app/views/user_mailer',
     'app/views/user_mailer/reset_notification.html.erb',
     'app/views/user_mailer/reset_notification.text.plain.erb',
+    'app/views/users',
+    'app/views/users/new.html.erb',
     'config',
     'config/locales',
     'config/locales/cs.yml',
@@ -66,6 +67,7 @@ Gem::Specification.new do |s|
     'config/locales/el.yml',
     'config/locales/en.yml',
     'config/locales/es.yml',
+    'config/locales/fi.yml',
     'config/locales/fr.yml',
     'config/locales/it.yml',
     'config/locales/jp.yml',

@@ -47,7 +47,13 @@ module Refinery
           else
             obj.title
           end
-          title << link_to_if(options[:link], obj_title, obj.url)
+
+          # Only link when the object responds to a url method.
+          if options[:link] && obj.respond_to?(:url)
+            title << link_to(obj_title, obj.url)
+          else
+            title << obj_title
+          end
         end
 
         final_title = title.pop

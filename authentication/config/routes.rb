@@ -2,12 +2,11 @@
 
   # Add Devise necessary routes.
   # For Devise routes, see: https://github.com/plataformatec/devise
-  #namespace :refinery do
   scope(:module => Refinery) do
-    devise_for :users, :path => :registrations, :class_name => "Refinery::User", :module => Refinery, :controllers => {
+    devise_for :users, :controllers => {
       :sessions => 'refinery/sessions',
-      :registrations => 'refinery/registrations',
-      :passwords => 'refinery/passwords'
+      :registrations => 'refinery/users',
+      :passwords => 'reginery/passwords'
     }, :path_names => {
       :sign_out => 'logout',
       :sign_in => 'login',

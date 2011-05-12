@@ -15,11 +15,11 @@ it:
         see_home_page: Visualizza la pagina iniziale
       recent_activity:
         empty: non sono state registrate attività recenti
-        latest_activity: Attività recenti
+        latest_activity: Attività Recenti
         latest_activity_message: "Una risorsa '%{what} %{kind}' è stata %{action}"
         see: Vedere '%{what}'
       recent_inquiries:
-        latest_inquiries: Ultimi messaggi
+        latest_inquiries: Ultimi Messaggi
   updated:
     'with_article "the"':  modificata
   created:

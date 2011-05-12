@@ -1,6 +1,4 @@
 require 'acts_as_indexed'
-require 'awesome_nested_set'
-require 'friendly_id'
 require 'truncate_html'
 require 'will_paginate'
 
@@ -96,8 +94,8 @@ module Refinery
       # Register the plugin
       config.after_initialize do
         ::Refinery::Plugin.register do |plugin|
-          plugin.name ="refinery_core"
-          plugin.class_name ="RefineryEngine"
+          plugin.name = 'refinery_core'
+          plugin.class_name = 'RefineryEngine'
           plugin.version = ::Refinery.version
           plugin.hide_from_menu = true
           plugin.always_allow_access = true
@@ -106,7 +104,7 @@ module Refinery
 
         # Register the dialogs plugin
         ::Refinery::Plugin.register do |plugin|
-          plugin.name = "refinery_dialogs"
+          plugin.name = 'refinery_dialogs'
           plugin.version = ::Refinery.version
           plugin.hide_from_menu = true
           plugin.always_allow_access = true
@@ -115,7 +113,7 @@ module Refinery
       end
 
       # Run other initializer code that used to be in config/initializers/
-      initializer "serve static assets" do |app|
+      initializer 'serve static assets' do |app|
         app.middleware.insert_after ::ActionDispatch::Static, ::ActionDispatch::Static, "#{root}/public"
       end
 
@@ -125,13 +123,13 @@ module Refinery
 
       initializer 'add presenters' do |app|
         app.config.autoload_paths += [
-          Rails.root.join("app", "presenters"),
-          Rails.root.join("vendor", "**", "**", "app", "presenters"),
-          Refinery.roots.map{|r| r.join("**", "app", "presenters")}
+          Rails.root.join('app', 'presenters'),
+          Rails.root.join('vendor', '**', '**', 'app', 'presenters'),
+          Refinery.roots.map{|r| r.join('**', 'app', 'presenters')}
         ].flatten
       end
 
-      initializer "configure acts_as_indexed" do |app|
+      initializer 'configure acts_as_indexed' do |app|
         ActsAsIndexed.configure do |config|
           config.index_file = Rails.root.join('tmp', 'index')
           config.index_file_depth = 3
@@ -139,11 +137,11 @@ module Refinery
         end
       end
 
-      initializer "fix rack <= 1.2.1" do |app|
+      initializer 'fix rack <= 1.2.1' do |app|
         ::Rack::Utils.module_eval do
           def escape(s)
             regexp = case
-              when RUBY_VERSION >= "1.9" && s.encoding === Encoding.find('UTF-8')
+              when RUBY_VERSION >= '1.9' && s.encoding === Encoding.find('UTF-8')
                 /([^ a-zA-Z0-9_.-]+)/u
               else
                 /([^ a-zA-Z0-9_.-]+)/n
@@ -152,7 +150,7 @@ module Refinery
               '%'+$1.unpack('H2'*bytesize($1)).join('%').upcase
             }.tr(' ', '+')
           end
-        end if ::Rack.version <= "1.2.1"
+        end if ::Rack.version <= '1.2.1'
       end
 
       initializer 'set will_paginate link labels' do |app|

@@ -44,9 +44,9 @@ de:
         change: Klicken Sie hier, um ein Bild auszuwählen
         show: anzeigen
       resource_picker:
-        download_current: Aktuelles %{what} herunterladen
+        download_current: Datei herunterladen
         opens_in_new_window: Öffnet in einem neuen Fenster
-        remove_current: "Entferne aktuelles %{what}"
+        remove_current: "Entferne Datei"
         no_resource_selected: Es ist momentan keine Datei ausgewählt, klicken Sie hier, um eine hinzuzufügen.
         name: Datei hinzufügen
         current: Aktuelle Datei

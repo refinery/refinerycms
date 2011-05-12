@@ -16,10 +16,10 @@ lv:
         see_home_page: Skatīt sākuma lapu
       recent_activity:
         empty: Nav bijusi neviena aktivitāte.
-        latest_activity: Jaunākās aktivitātes
+        latest_activity: Jaunākās Aktivitātes
         latest_activity_message: "%{action} %{what} %{kind}"
       recent_inquiries:
-        latest_inquiries: Jaunākie pieprasījumi
+        latest_inquiries: Jaunākie Pieprasījumi
   updated:
     'with_article "s"': atjaunota
     'with_article "the"': atjaunots

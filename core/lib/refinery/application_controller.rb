@@ -57,7 +57,7 @@ module Refinery
       end
 
       def from_dialog?
-        params[:dialog] == "true" or params[:modal] == "true"
+        params[:dialog] == 'true' or params[:modal] == 'true'
       end
 
       def home_page?
@@ -81,8 +81,7 @@ module Refinery
       # get all the pages to be displayed in the site menu.
       def find_pages_for_menu
       	return nil
-      	debugger
-        raise NotImplementedError, "Please implement protected method find_pages_for_menu"
+        raise NotImplementedError, 'Please implement protected method find_pages_for_menu'
       end
 
       # use a different model for the meta information.
@@ -92,8 +91,8 @@ module Refinery
       end
 
       def show_welcome_page?
-        if just_installed? and %w(registrations).exclude?(controller_name)
-          render :template => "refinery/welcome", :layout => "login"
+        if just_installed? and controller_name != 'users'
+          render :template => 'refinery/welcome', :layout => 'login'
         end
       end
 

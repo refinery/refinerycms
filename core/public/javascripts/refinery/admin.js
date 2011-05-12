@@ -566,9 +566,9 @@ var link_dialog = {
     link_tester.validate_url_textbox("#web_address_text",  function() {
       link_dialog.update_parent( $('#web_address_text').val(),
                                  $('#web_address_text').val(),
-                                 ($('#web_address_target_blank').checked ? "_blank" : "")
+                                 ($('#web_address_target_blank').get(0).checked ? "_blank" : "")
                                );
-     });
+    });
 
     $('#web_address_target_blank').click(function(){
       parent.document.getElementById('wym_target').value = this.checked ? "_blank" : "";
@@ -725,7 +725,6 @@ var page_options = {
               page_options.tabs.find('> ul li a').corner('top 5px');
 
               $('#new_page_part_dialog').dialog('close');
-              $('#new_page_part_dialog').remove();
             }
           );
         }else{

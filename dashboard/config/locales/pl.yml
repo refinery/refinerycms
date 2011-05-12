@@ -16,10 +16,10 @@ pl:
         see_home_page: Zobacz stronę główną
       recent_activity:
         empty: Nie było ostatnio żadnej aktywności.
-        latest_activity: Najnowsza aktywność
+        latest_activity: Najnowsza Aktywność
         latest_activity_message: '%{kind} %{what} %{action}'
       recent_inquiries:
-        latest_inquiries: Najnowsze zapytania
+        latest_inquiries: Najnowsze Zapytania
   updated: 
     'with_article "masculine"': został uaktualniony
     'with_article "feminine"': została uaktualniona

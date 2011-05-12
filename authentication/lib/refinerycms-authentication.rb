@@ -1,19 +1,13 @@
 require 'devise'
 require 'refinerycms-core'
-# Attach authenticated system methods to the ::Refinery::ApplicationController
-require File.expand_path('../authenticated_system', __FILE__)
-[::Refinery::ApplicationController, ::Refinery::ApplicationHelper].each do |c|
-  c.class_eval {
-    include ::Refinery::AuthenticatedSystem
-  }
-end
+require 'friendly_id'
 
 module Refinery
   module Authentication
 
     class Engine < ::Rails::Engine
 
-      initializer "serve static assets" do |app|
+      initializer 'serve static assets' do |app|
         app.middleware.insert_after ::ActionDispatch::Static, ::ActionDispatch::Static, "#{root}/public"
       end
 
@@ -21,14 +15,21 @@ module Refinery
 
       initializer "init plugin", :after => :set_routes_reloader do |app|
         ::Refinery::Plugin.register do |plugin|
-          plugin.name = "refinery_users"
-          plugin.version = %q{0.9.9.17}
+          plugin.name = 'refinery_users'
+          plugin.version = %q{0.9.9.21}
           plugin.menu_match = /(refinery|admin)\/users$/
           plugin.activity = {
             :class => User,
-            :title => 'login'
+            :title => 'username'
           }
           plugin.url = app.routes.url_helpers.admin_users_path
+        end
+      end
+
+      refinery.before_inclusion do
+        [::Refinery::ApplicationController, ::Refinery::ApplicationHelper].each do |c|
+          c.send :require, File.expand_path('../authenticated_system', __FILE__)
+          c.send :include, ::Refinery::AuthenticatedSystem
         end
       end
     end

@@ -16,10 +16,10 @@ sk:
         see_home_page: Zobraziť titulnú stránku
       recent_activity:
         empty: V poslednej dobe nebola vykonaná žiadna akcia.
-        latest_activity: Najnovšie akcie
+        latest_activity: Najnovšie Akcie
         latest_activity_message: '%{what} %{kind} bol/a %{action}'
       recent_inquiries:
-        latest_inquiries: Najnovšie otázky z webu
+        latest_inquiries: Najnovšie Otázky Z Webu
   updated:
     'with_article "the"': upravený/á
   created:

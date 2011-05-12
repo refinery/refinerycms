@@ -16,10 +16,10 @@ sv:
         see_home_page: Se förstasidan
       recent_activity:
         empty: Det har inte varit någon aktivitet på senare tid.
-        latest_activity: Senaste aktivitet
+        latest_activity: Senaste Aktivitet
         latest_activity_message: '%{what} %{kind} var %{action}'
       recent_inquiries:
-        latest_inquiries: Senaste utredningarna
+        latest_inquiries: Senaste Utredningarna
   updated:
     'with_article "the"': uppdaterades
   created:

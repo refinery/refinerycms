@@ -264,6 +264,14 @@ module Refinery
       app_gemfile = @app_path.join('Gemfile')
       refinery_user_defined_gems = refinery_gemfile_contents.match(/# USER DEFINED(.*)# END USER DEFINED/m)
       refinery_user_defined_gems = refinery_user_defined_gems[1] unless refinery_user_defined_gems.nil?
+
+      if @options[:database][:adapter] == 'mysql'
+        app_gemfile_contents = app_gemfile.read
+        app_gemfile.open('w') do |f|
+          f.write app_gemfile_contents.gsub "gem 'mysql2'", "gem 'mysql2', '~> 0.2.7'"
+        end
+      end
+
       app_gemfile.open('a') do |f|
         f.write "\n#{refinery_gems}\n"
         @options[:gems] = ([refinery_user_defined_gems] | [@options[:gems]]).flatten.compact
@@ -276,9 +284,8 @@ module Refinery
       src = Refinery.version !~ /\.pre$/ ? "'= #{Refinery.version}'" : ":git => 'git://github.com/resolve/refinerycms'"
       find_and_replace('Gemfile', %r{gem 'refinerycms',.*}, "gem 'refinerycms',              #{src}")
 
-      # Add in AWS-S3 for Heroku
-      find_and_replace('Gemfile', "# gem 'aws-s3', :require => 'aws/s3'",
-                        "gem 'aws-s3', :require => 'aws/s3'") if @options[:heroku]
+      # Add in fog gem for Heroku
+      find_and_replace('Gemfile', "# gem 'fog'", "gem 'fog'") if @options[:heroku]
 
       # Automate
       # TODO: Check exit codes to see whether or not these worked
@@ -309,7 +316,7 @@ module Refinery
         run_command("git push #{hosting.downcase} master", :ruby => false)
 
         puts "\n\nSetting up the #{hosting} database..\n"
-        run_command("#{hosting.downcase} rake db:setup")
+        run_command("#{hosting.downcase} rake db:migrate")
 
         if @options[:heroku]
           puts "\n\nRestarting servers...\n"
@@ -337,7 +344,7 @@ module Refinery
 
       if @options[:heroku]
         note << "\nIf you want files and images to work on heroku, you will need setup S3:"
-        note << "heroku config:add S3_BUCKET=XXXXXXXXX S3_KEY=XXXXXXXXX S3_SECRET=XXXXXXXXXX"
+        note << "heroku config:add S3_BUCKET=XXXXXXXXX S3_KEY=XXXXXXXXX S3_SECRET=XXXXXXXXXX S3_REGION=XXXXXXXXXX"
       end
 
       note << "\nThanks for installing Refinery, enjoy creating your new application!"
@@ -359,13 +366,14 @@ module Refinery
       # e.g. when shelling to git
       if options[:ruby]
         exe = File.join(RbConfig::CONFIG['bindir'], RbConfig::CONFIG['RUBY_INSTALL_NAME'])
-        to_run << "#{exe} -S "
+        to_run << "\"#{exe}\" -S "
       end
 
       to_run << command
 
       if Refinery::WINDOWS
-        to_run = %w(cmd /c) | to_run.map{|c| c.gsub(/\//m, '\\')}
+        to_run = ['"'] + to_run + ['"']
+        to_run = %w(cmd /c) + to_run.map{|c| c.gsub(/\//m, '\\')}
       end
 
       to_run = to_run.join(' ')

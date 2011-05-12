@@ -1,3 +1,5 @@
+require 'devise'
+
 # Use this hook to configure devise mailer, warden hooks and so forth. The first
 # four configuration values can also be set straight in your models.
 ::Devise.setup do |config|
@@ -20,7 +22,7 @@
   # authenticating an user, both parameters are required. Remember that those
   # parameters are used only when authenticating and not when retrieving from
   # session. If you need permissions, you should implement that in a before filter.
-  config.authentication_keys = [ :login ] # Required to login using username or email
+  # config.authentication_keys = [ :email ]
 
   # Tell if authentication through request.params is enabled. True by default.
   # config.params_authenticatable = true

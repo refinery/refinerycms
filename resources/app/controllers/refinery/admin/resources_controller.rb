@@ -34,16 +34,18 @@ module ::Refinery
         if @resources.all?(&:valid?)
           @resource_id = @resources.detect(&:persisted?).id
           @resource = nil
-        end
 
-        insert
+          redirect_to request.query_parameters.merge(:action => 'insert')
+        else
+          self.insert
+        end
       end
     end
 
     def insert
       self.new if @resource.nil?
 
-      @url_override = admin_resources_url(:dialog => from_dialog?, :insert => true)
+      @url_override = admin_resources_url(request.query_parameters.merge(:insert => true))
 
       if params[:conditions].present?
         extra_condition = params[:conditions].split(',')
@@ -76,10 +78,10 @@ module ::Refinery
     end
 
     def paginate_resources(conditions={})
-      @resources = Resource.paginate   :page => (@paginate_page_number ||= params[:page]),
-                                       :conditions => conditions,
-                                       :order => 'created_at DESC',
-                                       :per_page => Resource.per_page(from_dialog?)
+      @resources = Resource.paginate :page => (@paginate_page_number ||= params[:page]),
+                                     :conditions => conditions,
+                                     :order => 'created_at DESC',
+                                     :per_page => Resource.per_page(from_dialog?)
     end
 
   end

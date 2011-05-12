@@ -1,3 +1,44 @@
+## 0.9.9.21 [03 May 2011]
+
+* Fixed issue with MySQL2 gem complaining about us being on Rails 3 by specifying `'~> 0.2.7'` in the Gemfile of a generated application. [Philip Arndt](https://github.com/parndt)
+* `/registrations` is now `/users`. [Philip Arndt](https://github.com/parndt)
+* Added Finnish translation. [https://github.com/veeti](Veeti Paananen)
+* Allowed `data` and `data-` attributes in WYMeditor tags using HTML view. [Philip Arndt](https://github.com/parndt)
+* [See full list](https://github.com/resolve/refinerycms/compare/0.9.9.20...0.9.9.21)
+
+## 0.9.9.20 [28 April 2011]
+
+* Improved performance of the menu rendering. [Philip Arndt](https://github.com/parndt)
+* Fixed UI to allow for how different languages display on the login screen. [Marian André](https://github.com/bitflut)
+* Vastly improved specs & spec coverage. [Uģis Ozols](https://github.com/ugisozols)
+* Upgraded to `jQuery 1.5.2` and `Dragonfly 0.8.4`. [Philip Arndt](https://github.com/parndt)
+* [See full list](https://github.com/resolve/refinerycms/compare/0.9.9.19...0.9.9.20)
+
+## 0.9.9.19 [22 April 2011]
+
+* Removed `rdoc` dependency. [Philip Arndt](https://github.com/parndt)
+* Migrate to stable Rails 3.0.7. [Josef Šimánek](https://github.com/simi)
+* Use `let()` in rspec specs. [Uģis Ozols](https://github.com/ugisozols)
+* [See full list](https://github.com/resolve/refinerycms/compare/0.9.9.18...0.9.9.19)
+
+## 0.9.9.18 [16 April 2011]
+
+* Fixed a backward incompatibility. [Josef Šimánek](https://github.com/simi)
+* Reduced calls to `SHOW TABLES` by updating `friendly_id_globalize3`. [Philip Arndt](https://github.com/parndt)
+* Switched `/shared/_menu.html.erb` and `/shared/_menu_branch.html.erb` away from `render :partial` with `:collection`, speeding up menu 12~15%. [Philip Arndt](https://github.com/parndt)
+* Fixed Refinery.root, Fixed generator templates, Added refinerycms-i18n generator to refinerycms generator if i18n is included. [Mark Haylock](https://github.com/mhaylock)
+* Bumped Rails dependency to `~> 3.0.7.rc2`. [Philip Arndt](https://github.com/parndt)
+* [See full list](https://github.com/resolve/refinerycms/compare/0.9.9.17...0.9.9.18)
+
+## 0.9.9.17 [15 April 2011]
+
+* Mass assignment protection implemented. [Andreas König](https://github.com/koa)
+* Removed deprecated code to prepare for `1.0.0`. [Uģis Ozols](https://github.com/ugisozols)
+* Added `Strip Non Ascii` preference to `has_friendly_id`. [Marc Argent](https://github.com/lurcio)
+* Bumped Rails dependency to `~> 3.0.7.rc1`. [Philip Arndt](https://github.com/parndt)
+* Better support for models in modules for uncrudify. [Josef Šimánek](https://github.com/simi)
+* [See full list](https://github.com/resolve/refinerycms/compare/0.9.9.16...0.9.9.17)
+
 ## 0.9.9.16 [7 April 2011]
 
 * Improved resource picker. [Will Marshall](https://github.com/willrjmarshall)

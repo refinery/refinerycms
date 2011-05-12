@@ -18,6 +18,8 @@ else
   gem 'sqlite3'
 end
 
+gem 'mysql2', '~> 0.2.7'
+
 # Use unicorn as the web server
 # gem 'unicorn'
 # gem 'mongrel'
@@ -31,18 +33,17 @@ end
 # gem 'ruby-debug19'
 
 # For Heroku/s3:
-# gem 'aws-s3', :require => 'aws/s3'
+# gem 'fog'
 
 # REFINERY CMS ================================================================
 # Anything you put in here will be overridden when the app gets updated.
 
-# gem 'refinerycms', '~> 0.9.9.17'
+# gem 'refinerycms', '~> 0.9.9.21'
 
 group :development, :test do
   # To use refinerycms-testing, uncomment it (if it's commented out) and run 'bundle install'
   # Then, run 'rails generate refinerycms_testing' which will copy its support files.
-  #gem 'refinerycms-core', :path => "./core"
-  gem 'refinerycms-testing', :path => "./testing"
+  gem 'refinerycms-testing',    '~> 0.9.9.21'
 end
 
 # END REFINERY CMS ============================================================
@@ -54,7 +55,7 @@ end
 # USER DEFINED
 
 # Specify additional Refinery CMS Engines here (all optional):
-# gem 'refinerycms-inquiries',    '~> 0.9'
+# gem 'refinerycms-inquiries',    '~> 1.0'
 # gem 'refinerycms-news',         '~> 1.0'
 # gem 'refinerycms-portfolio',    '~> 0.9.9'
 # gem 'refinerycms-theming',      '~> 1.0'

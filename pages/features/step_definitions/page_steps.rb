@@ -50,3 +50,7 @@ end
 Then /^I should have (\d+) page_parts$/ do |count|
   ::Refinery::PagePart.count.should == count.to_i
 end
+
+Given /^I have frontend locales "?([^\"]*)"?/ do |locales|
+  RefinerySetting.set(:i18n_translation_frontend_locales, {:value => locales.split(', '), :scoping => 'refinery'})
+end
