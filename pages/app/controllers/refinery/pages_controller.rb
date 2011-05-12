@@ -1,5 +1,5 @@
 module Refinery
-  class PagesController < ::ApplicationController
+  class PagesController < ApplicationController
   
     # This action is usually accessed with the root path, normally '/'
     def home
@@ -21,7 +21,7 @@ module Refinery
   
       if @page.try(:live?) || (refinery_user? && current_user.authorized_plugins.include?("refinery_pages"))
         # if the admin wants this to be a "placeholder" page which goes to its first child, go to that instead.
-        if @page.skip_to_first_child && (first_live_child = @page.children.order('lft ASC').live.first).present?
+        if @page.skip_to_first_child# && (first_live_child = @page.children.order('lft ASC').live.first).present?
           redirect_to first_live_child.url
         elsif @page.link_url.present?
           redirect_to @page.link_url and return
@@ -30,6 +30,5 @@ module Refinery
         error_404
       end
     end
-  
   end
 end
