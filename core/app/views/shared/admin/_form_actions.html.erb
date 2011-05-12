@@ -32,7 +32,7 @@
     delete_title        ||= nil
     delete_confirmation ||= nil
     delete_button_id    ||= "delete_button"
-    delete_url          ||= eval("admin_#{f.object_name}_url(#{f.object.id})")
+    delete_url          ||= eval("admin_#{f.object_name}_path(#{f.object.id})")
   end
 
   paginate_collection = nil

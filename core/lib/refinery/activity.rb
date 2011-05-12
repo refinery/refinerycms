@@ -30,7 +30,7 @@ module Refinery
     end
 
     def url
-      "#{self.url_prefix}#{@url ||= "admin_#{self.class.name.underscore.downcase}_url"}"
+      "#{self.url_prefix}#{@url ||= "admin_#{self.class.name.underscore.downcase}_path"}"
     end
 
     def class

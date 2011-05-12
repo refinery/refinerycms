@@ -3,13 +3,13 @@
     <%= render :partial => "/shared/admin/search", :locals => {:url => admin_images_url} %>
   </li>
   <li>
-    <%= link_to t('.create_new_image'), new_admin_image_url(:dialog => true, :width => 600, :height => 300),
+    <%= link_to t('.create_new_image'), new_admin_image_path(:dialog => true, :width => 600, :height => 300),
                 :class => "add_icon" %>
   </li>
   <% other_image_views.each do |image_view| %>
     <li>
       <%= link_to t('switch_to', :scope => 'admin.images.index.view', :view_name => t("#{image_view}", :scope => 'admin.images.index.view')),
-                  admin_images_url(:view => image_view, :page => params[:page]),
+                  admin_images_path(:view => image_view, :page => params[:page]),
                   :class => "reorder_icon"  %>
     </li>
   <% end %>
