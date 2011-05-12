@@ -3,7 +3,7 @@
   # Add Devise necessary routes.
   # For Devise routes, see: https://github.com/plataformatec/devise
   scope(:module => Refinery) do
-    devise_for :users, :controllers => {
+    devise_for :users, :class_name => "Refinery::User", :module => Refinery, :controllers => {
       :sessions => 'refinery/sessions',
       :registrations => 'refinery/users',
       :passwords => 'reginery/passwords'

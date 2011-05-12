@@ -5,7 +5,7 @@ module ::Refinery
     crudify "refinery/page",
             :conditions => nil,
             :order => "lft ASC",
-            :redirect_to_url => :admin_pages_url
+            :redirect_to_url => :admin_pages_url,
             :include => [:slugs, :translations, :children],
             :paging => false
 
