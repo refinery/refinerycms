@@ -13,14 +13,14 @@ module Admin
     def new
       @image = Image.new if @image.nil?
 
-      @url_override = admin_images_url(:dialog => from_dialog?)
+      @url_override = admin_images_path(:dialog => from_dialog?)
     end
 
     # This renders the image insert dialog
     def insert
       self.new if @image.nil?
 
-      @url_override = admin_images_url(request.query_parameters.merge(:insert => true))
+      @url_override = admin_images_path(request.query_parameters.merge(:insert => true))
 
       if params[:conditions].present?
         extra_condition = params[:conditions].split(',')

@@ -3,14 +3,14 @@ xml.rss :version => "2.0", "xmlns:atom" => "http://www.w3.org/2005/Atom" do
   xml.channel do
     # Required to pass W3C validation.
     xml.atom :link, nil, {
-      :href => admin_dashboard_index_url(:format => 'rss'),
+      :href => admin_dashboard_index_path(:format => 'rss'),
       :rel => 'self', :type => 'application/rss+xml'
     }
 
     # Feed basics.
     xml.title             "Refinery Updates"
     xml.description       "See the recent activity on your Refinery site."
-    xml.link              admin_dashboard_index_url(:format => 'rss')
+    xml.link              admin_dashboard_index_path(:format => 'rss')
 
     # Recent activity.
     @recent_activity.each do |change|

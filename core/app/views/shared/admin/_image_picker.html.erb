@@ -3,7 +3,7 @@
   thumbnail ||= 'medium'
   toggle_image_display ||= false
   randomiser = rand(Time.now.yesterday.to_i * Time.now.to_i)
-  current_image_link_href = insert_admin_images_url(:dialog => true, :callback => "image_picker_#{randomiser}_changed",
+  current_image_link_href = insert_admin_images_path(:dialog => true, :callback => "image_picker_#{randomiser}_changed",
                                                     :width => 866, :height => 510)
   current_image_title = t('.change', :what =>  description.titleize)
 -%>
