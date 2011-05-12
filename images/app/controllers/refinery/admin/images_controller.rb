@@ -97,8 +97,8 @@ module ::Refinery
     end
 
     def paginate_images
-      @images = @images.paginate(:page => (@paginate_page_number ||= params[:page]),
-                                 :per_page => Image.per_page(from_dialog?, !@app_dialog))
+      @images = @images.page(@paginate_page_number ||= params[:page])
+                       .per(Image.per_page(from_dialog?, !@app_dialog))
     end
 
     def restrict_controller

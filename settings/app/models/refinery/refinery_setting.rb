@@ -26,7 +26,7 @@ class ::Refinery::RefinerySetting < ActiveRecord::Base
   end
 
   class << self
-    # Number of settings to show per page when using will_paginate
+    # Number of settings to show per page when using kaminari
     def per_page
       12
     end

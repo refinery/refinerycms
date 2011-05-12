@@ -2,10 +2,10 @@
 
 Gem::Specification.new do |s|
   s.name              = %q{refinerycms-testing}
-  s.version           = %q{0.9.9.21}
+  s.version           = %q{1.1.0.pre}
   s.summary           = %q{Testing plugin for Refinery CMS}
   s.description       = %q{This plugin adds the ability to run cucumber and rspec against the RefineryCMS gem while inside a RefineryCMS project}
-  s.date              = %q{2011-05-03}
+  s.date              = %q{2011-05-11}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
   s.rubyforge_project = %q{refinerycms}
@@ -14,9 +14,9 @@ Gem::Specification.new do |s|
   s.require_paths     = %w(lib)
   s.executables       = %w()
 
-  s.add_dependency 'refinerycms-core', '= 0.9.9.21'
+  s.add_dependency 'refinerycms-core', '= 1.1.0.pre'
   # RSpec
-  s.add_dependency 'rspec-rails',       '~> 2.5'
+  s.add_dependency 'rspec-rails',       '>= 2.6.0.rc'
 
   # Cucumber
   s.add_dependency 'capybara',          '>= 0.4.1.1'
@@ -25,7 +25,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'cucumber'
   s.add_dependency 'launchy'
   s.add_dependency 'gherkin'
-  s.add_dependency 'rack-test',         '~> 0.5.6'
+  s.add_dependency 'rack-test',         '>= 0.5.6'
   s.add_dependency 'json_pure'
 
   # Factory Girl
@@ -40,6 +40,8 @@ Gem::Specification.new do |s|
     '.rspec',
     'config',
     'config/cucumber.yml',
+    'config/initializers',
+    'config/initializers/accessible_attributes.rb',
     'features',
     'features/step_definitions',
     'features/step_definitions/web_steps.rb',

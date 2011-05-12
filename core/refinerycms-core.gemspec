@@ -2,10 +2,10 @@
 
 Gem::Specification.new do |s|
   s.name              = %q{refinerycms-core}
-  s.version           = %q{0.9.9.21}
+  s.version           = %q{1.1.0.pre}
   s.summary           = %q{Core engine for Refinery CMS}
   s.description       = %q{The core of Refinery CMS. This handles the common functionality and is required by most engines}
-  s.date              = %q{2011-05-05}
+  s.date              = %q{2011-05-11}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
   s.rubyforge_project = %q{refinerycms}
@@ -14,16 +14,16 @@ Gem::Specification.new do |s|
   s.require_paths     = %w(lib)
   s.executables       = %w()
 
-  s.add_dependency 'refinerycms-base',            '= 0.9.9.21'
-  s.add_dependency 'refinerycms-settings',        '= 0.9.9.21'
+  s.add_dependency 'refinerycms-base',            '= 1.1.0.pre'
+  s.add_dependency 'refinerycms-settings',        '= 1.1.0.pre'
   s.add_dependency 'refinerycms-generators',      '~> 1.0'
   s.add_dependency 'acts_as_indexed',             '~> 0.7'
   s.add_dependency 'friendly_id_globalize3',      '~> 3.2.1'
   s.add_dependency 'globalize3',                  '>= 0.1.0.beta'
   s.add_dependency 'awesome_nested_set',          '~> 2.0'
-  s.add_dependency 'rails',                       '~> 3.0.7'
+  s.add_dependency 'rails',                       '>= 3.1.0.beta'
   s.add_dependency 'truncate_html',               '~> 0.5'
-  s.add_dependency 'will_paginate',               '~> 3.0.pre'
+  s.add_dependency 'kaminari',                    '~> 0.12'
 
   s.files             = [
     'app',
@@ -45,6 +45,10 @@ Gem::Specification.new do |s|
     'app/views/admin/_menu.html.erb',
     'app/views/admin/dialogs',
     'app/views/admin/dialogs/show.html.erb',
+    'app/views/kaminari',
+    'app/views/kaminari/_next_page.html.erb',
+    'app/views/kaminari/_paginator.html.erb',
+    'app/views/kaminari/_prev_page.html.erb',
     'app/views/layouts',
     'app/views/layouts/admin.html.erb',
     'app/views/layouts/admin_dialog.html.erb',
@@ -162,7 +166,6 @@ Gem::Specification.new do |s|
     'lib/refinery/helpers/site_bar_helper.rb',
     'lib/refinery/helpers/tag_helper.rb',
     'lib/refinery/helpers/translation_helper.rb',
-    'lib/refinery/link_renderer.rb',
     'lib/refinery/plugin.rb',
     'lib/refinery/plugins.rb',
     'lib/refinerycms-core.rb',
