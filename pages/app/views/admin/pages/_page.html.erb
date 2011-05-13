@@ -7,7 +7,7 @@
         <span class='preview'>
           <% ([page.translation.try(:locale)] | locales).each do |locale| %>
             <%= link_to refinery_icon_tag("flags/#{locale}.png", :size => '16x11'),
-                        edit_admin_page_url(page, :switch_locale => locale),
+                        edit_admin_page_path(page, :switch_locale => locale),
                         :class => 'locale' %>
           <% end %>
         </span>
@@ -18,9 +18,9 @@
       <%= link_to refinery_icon_tag('application_go.png'), page.url,
                   :target => "_blank",
                   :title => t('.view_live_html') %>
-      <%= link_to refinery_icon_tag('application_edit.png'), edit_admin_page_url(page),
+      <%= link_to refinery_icon_tag('application_edit.png'), edit_admin_page_path(page),
                   :title => t('edit', :scope => 'admin.pages') %>
-      <%= link_to refinery_icon_tag('delete.png'), admin_page_url(page),
+      <%= link_to refinery_icon_tag('delete.png'), admin_page_path(page),
                   :class => "cancel confirm-delete",
                   :title => t('delete', :scope => 'admin.pages'),
                   :confirm => t('message', :scope => 'shared.admin.delete', :title => page.title_with_meta.gsub(/\ ?<em>.*<\/em>/, "")),

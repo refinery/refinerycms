@@ -89,6 +89,6 @@ Gem::Specification.new do |s|
   ]
 
   s.add_dependency 'refinerycms-core', '= 0.9.9.21'
-  s.add_dependency 'dragonfly',        '~> 0.8.4'
+  s.add_dependency 'dragonfly',        '~> 0.9.0'
   s.add_dependency 'rack-cache',       '>= 0.5.3'
 end
