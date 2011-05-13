@@ -35,11 +35,11 @@ class PagesController < ApplicationController
     logger.debug("Use Per Page Templates #{use_multi_layout}")
 
     render_options = {}
-    if use_multi_layout and not @page.layout.nil?
+    if use_multi_layout == 1 and not @page.layout.nil?
       render_options[:layout] = @page.layout.template_name
     end
 
-    if use_page_templates and not @page.view_template.nil?
+    if use_page_templates == 1 and not @page.view_template.nil?
       render_options[:action] = @page.view_template
     end
 

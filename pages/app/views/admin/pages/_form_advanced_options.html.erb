@@ -22,6 +22,7 @@
                    :include_blank => true %>
     </div>
     <% use_multi_layout   = RefinerySetting.where(:name => "Multi Layout").first.value %>
+    <% if use_multi_layout == 1 %>
     <div class='field'>
       <span class='label_with_help'>
         <%= label_tag :layout_id, t('.layout_template') %>
@@ -29,7 +30,9 @@
       </span>
       <%= f.select(:layout_id, [['','']]+Layout.all.map { |i| [i.title, i.id] }) %>
     </div>
+    <% end %>
     <% use_page_templates = RefinerySetting.where(:name => "Per Page Templates").first.value %>
+    <% if use_page_templates == 1 %>
     <div class='field'>
       <span class='label_with_help'>
         <%= label_tag :view_template, t('.view_template') %>
@@ -37,6 +40,7 @@
       </span>
       <%= f.text_field(:view_template) %>
     </div>
+    <% end %>
     <div class='field'>
       <span class='label_with_help'>
         <%= label_tag :custom_title, t('.custom_title') %>

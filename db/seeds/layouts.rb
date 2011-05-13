@@ -14,5 +14,5 @@ Layout.create(
   :title => 'Three Column',
   :template_name => '3column'
 )
-RefinerySetting.create(:name => "Multi Layout", :value => 1, :destroyable => false)
-RefinerySetting.create(:name => "Per Page Templates", :value => 1, :destroyable => false)
+RefinerySetting.create(:name => "Multi Layout", :value => 0, :destroyable => false)
+RefinerySetting.create(:name => "Per Page Templates", :value => 0, :destroyable => false)
