@@ -26,6 +26,7 @@ Gem::Specification.new do |s|
   s.add_dependency    'refinerycms-pages',          '= 0.9.9.21'
   s.add_dependency    'refinerycms-resources',      '= 0.9.9.21'
   s.add_dependency    'refinerycms-settings',       '= 0.9.9.21'
+  s.add_dependency    'refinerycms-layouts'
 
   s.files             = [
     '.gitignore',
