@@ -26,7 +26,6 @@ Gem::Specification.new do |s|
   ]
 
   s.add_dependency 'refinerycms-core',            '= #{::Refinery::Version}'
-  s.add_dependency 'globalize3',                  '>= 0.1.0.beta'
 end
 EOF
 

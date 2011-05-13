@@ -21,12 +21,21 @@
       <%= f.select :parent_id, nested_set_options(Page, @page) {|i| "#{'-' * i.level} #{i.title}" },
                    :include_blank => true %>
     </div>
+    <% use_multi_layout   = RefinerySetting.where(:name => "Multi Layout").first.value %>
     <div class='field'>
       <span class='label_with_help'>
-        <%= label_tag :layout_template, t('.layout_template') %>
+        <%= label_tag :layout_id, t('.layout_template') %>
         <%= refinery_help_tag t('.layout_template_help') %>
       </span>
-      <%= f.text_field :layout_template %>
+      <%= f.select(:layout_id, [['','']]+Layout.all.map { |i| [i.title, i.id] }) %>
+    </div>
+    <% use_page_templates = RefinerySetting.where(:name => "Per Page Templates").first.value %>
+    <div class='field'>
+      <span class='label_with_help'>
+        <%= label_tag :view_template, t('.view_template') %>
+        <%= refinery_help_tag t('.view_template_help') %>
+      </span>
+      <%= f.text_field(:view_template) %>
     </div>
     <div class='field'>
       <span class='label_with_help'>

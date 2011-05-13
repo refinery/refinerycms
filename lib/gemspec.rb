@@ -5,7 +5,7 @@ require gempath.join('base', 'lib', 'base', 'refinery')
 
 files = %w( Gemfile *.md **/**/{*,.rspec,.gitignore,.yardopts} ).map { |file| Pathname.glob(file) }.flatten
 rejection_patterns = [
-  "^(authentication|base|core|dashboard|images|pages|resources|settings|testing)",
+  "^(authentication|base|core|dashboard|images|pages|layouts|resources|settings|testing)",
   "^public/system",
   "^public/.*/cache",
   "^config/(application|boot|environment).rb$",
@@ -56,6 +56,7 @@ Gem::Specification.new do |s|
   s.add_dependency    'refinerycms-pages',          '= #{::Refinery::Version}'
   s.add_dependency    'refinerycms-resources',      '= #{::Refinery::Version}'
   s.add_dependency    'refinerycms-settings',       '= #{::Refinery::Version}'
+  s.add_dependency    'refinerycms-layouts',        '= #{::Refinery::Version}'
 
   s.files             = [
     '#{files.sort.join("',\n    '")}'

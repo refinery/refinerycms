@@ -4,7 +4,7 @@ Gem::Specification.new do |s|
   s.name              = %q{refinerycms}
   s.version           = %q{0.9.9.21}
   s.description       = %q{A Ruby on Rails CMS that supports Rails 3. It's easy to extend and sticks to 'the Rails way' where possible.}
-  s.date              = %q{2011-05-03}
+  s.date              = %q{2011-05-13}
   s.summary           = %q{A Ruby on Rails CMS that supports Rails 3}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
@@ -26,7 +26,7 @@ Gem::Specification.new do |s|
   s.add_dependency    'refinerycms-pages',          '= 0.9.9.21'
   s.add_dependency    'refinerycms-resources',      '= 0.9.9.21'
   s.add_dependency    'refinerycms-settings',       '= 0.9.9.21'
-  s.add_dependency    'refinerycms-layouts'
+  s.add_dependency    'refinerycms-layouts',        '= 0.9.9.21'
 
   s.files             = [
     '.gitignore',
@@ -75,6 +75,7 @@ Gem::Specification.new do |s|
     'refinerycms.gemspec',
     'spec',
     'spec/rcov.opts',
-    'spec/spec_helper.rb'
+    'spec/spec_helper.rb',
+    'vendor'
   ]
 end

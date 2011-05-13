@@ -1,17 +1,18 @@
-User.all.each do |user|
-  if user.plugins.where(:name => 'layouts').blank?
-    user.plugins.create(:name => 'layouts',
-                        :position => (user.plugins.maximum(:position) || -1) +1)
-  end
-end
-
-page = Page.create(
-  :title => 'Layouts',
-  :link_url => '/layouts',
-  :deletable => false,
-  :position => ((Page.maximum(:position, :conditions => {:parent_id => nil}) || -1)+1),
-  :menu_match => '^/layouts(\/|\/.+?|)$'
+Layout.create(
+  :title => 'One Column',
+  :template_name => '1column'
 )
-Page.default_parts.each do |default_page_part|
-  page.parts.create(:title => default_page_part, :body => nil)
-end
+Layout.create(
+  :title => 'Two Column with Left Sidebar',
+  :template_name => '2column_left'
+)
+Layout.create(
+  :title => 'Two Column with Right Sidebar',
+  :template_name => '2column_right'
+)
+Layout.create(
+  :title => 'Three Column',
+  :template_name => '3column'
+)
+RefinerySetting.create(:name => "Multi Layout", :value => 1, :destroyable => false)
+RefinerySetting.create(:name => "Per Page Templates", :value => 1, :destroyable => false)

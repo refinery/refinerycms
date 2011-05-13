@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
   s.rubyforge_project = %q{refinerycms}
-  s.authors           = ['Vaughn Draughon', 'Philip Arndt']
+  s.authors           = ['Vaughn Draughon']
   s.license           = %q{MIT}
   s.require_paths     = %w(lib)
   s.executables       = %w()
@@ -19,7 +19,6 @@ Gem::Specification.new do |s|
     'app/controllers',
     'app/controllers/admin',
     'app/controllers/admin/layouts_controller.rb',
-    'app/controllers/layouts_controller.rb',
     'app/models',
     'app/models/layout.rb',
     'app/views',
@@ -35,8 +34,12 @@ Gem::Specification.new do |s|
     'app/views/admin/layouts/index.html.erb',
     'app/views/admin/layouts/new.html.erb',
     'app/views/layouts',
-    'app/views/layouts/index.html.erb',
-    'app/views/layouts/show.html.erb',
+    'app/views/layouts/1column.html.erb',
+    'app/views/layouts/2column_left.html.erb',
+    'app/views/layouts/2column_right.html.erb',
+    'app/views/layouts/3column.html.erb',
+    'app/views/pages',
+    'app/views/pages/custom.html.erb',
     'config',
     'config/locales',
     'config/locales/en.yml',
@@ -46,9 +49,11 @@ Gem::Specification.new do |s|
     'config/routes.rb',
     'db',
     'db/migrate',
-    'db/migrate/create_layouts.rb',
+    'db/migrate/1_create_layouts.rb',
+    'db/migrate/2_create_page_templates.rb',
     'db/seeds',
     'db/seeds/layouts.rb',
+    'db/seeds/page_templates.rb',
     'features',
     'features/manage_layouts.feature',
     'features/step_definitions',
@@ -70,5 +75,4 @@ Gem::Specification.new do |s|
   ]
 
   s.add_dependency 'refinerycms-core',            '= 0.9.9.21'
-  s.add_dependency 'globalize3',                  '>= 0.1.0.beta'
 end

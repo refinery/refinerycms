@@ -7,12 +7,10 @@
     <%= render :partial => "/shared/ie6check" if request.env['HTTP_USER_AGENT'] =~ /MSIE/ -%>
     <div id="page_container">
       <header>
-        <div>
-          THIS IS A CUSTOM PAGE!
-        </div>
         <%= render :partial => "/shared/header" -%>
       </header>
       <section id='page'>
+        <h1>Two Column Left</h1>
         <%= yield %>
       </section>
       <footer>

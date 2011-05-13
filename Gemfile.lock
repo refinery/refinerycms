@@ -8,7 +8,7 @@ PATH
       refinerycms-core (= 0.9.9.21)
       refinerycms-dashboard (= 0.9.9.21)
       refinerycms-images (= 0.9.9.21)
-      refinerycms-layouts
+      refinerycms-layouts (= 0.9.9.21)
       refinerycms-pages (= 0.9.9.21)
       refinerycms-resources (= 0.9.9.21)
       refinerycms-settings (= 0.9.9.21)
@@ -35,7 +35,6 @@ PATH
       rack-cache (>= 0.5.3)
       refinerycms-core (= 0.9.9.21)
     refinerycms-layouts (0.9.9.21)
-      globalize3 (>= 0.1.0.beta)
       refinerycms-core (= 0.9.9.21)
     refinerycms-pages (0.9.9.21)
       friendly_id_globalize3 (~> 3.2.1)
