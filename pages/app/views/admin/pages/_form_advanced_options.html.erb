@@ -23,6 +23,13 @@
     </div>
     <div class='field'>
       <span class='label_with_help'>
+        <%= label_tag :layout_template, t('.layout_template') %>
+        <%= refinery_help_tag t('.layout_template_help') %>
+      </span>
+      <%= f.text_field :layout_template %>
+    </div>
+    <div class='field'>
+      <span class='label_with_help'>
         <%= label_tag :custom_title, t('.custom_title') %>
         <%= refinery_help_tag t('.custom_title_help') %>
       </span>
