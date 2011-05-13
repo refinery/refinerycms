@@ -29,8 +29,8 @@ class PagesController < ApplicationController
       error_404
     end
 
-    if not @page.layout_template.nil?
-      render :layout => "#{@page.layout_template}"
+    if not @page.layout.nil?
+      render :layout => "#{@page.layout.template_name}"
     end
   end
 

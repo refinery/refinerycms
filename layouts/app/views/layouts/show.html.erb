@@ -1,0 +1,27 @@
+<% content_for :body_content_title do %>
+  <%= @layout.template_name %>
+<% end %>
+
+<% content_for :body_content_left do %>
+  <section>
+    <h1>Template Name</h1>
+    <p>
+      <%=raw @layout.template_name %>
+    </p>
+  </section>
+<% end %>
+
+<% content_for :body_content_right do %>
+  <aside>
+    <h2><%= t('.other') %></h2>
+    <ul id="layouts">
+      <% @layouts.each do |layout| %>
+        <li>
+          <%= link_to layout.template_name, layout_url(layout) %>
+        </li>
+      <% end %>
+    </ul>
+  </aside>
+<% end %>
+
+<%= render :partial => "/shared/content_page" %>

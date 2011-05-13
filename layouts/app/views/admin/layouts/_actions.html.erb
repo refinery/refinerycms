@@ -1,0 +1,28 @@
+<ul>
+  <% if Admin::LayoutsController.searchable? %>
+    <li>
+      <%= render :partial => "/shared/admin/search",
+                  :locals => {
+                    :url => admin_layouts_url
+                  } %>
+    </li>
+  <% end %>
+  <li>
+    <%= link_to t('.create_new'), new_admin_layout_url,
+                 :class => "add_icon" %>
+  </li>
+<% if !searching? and Admin::LayoutsController.sortable? and Layout.count > 1 %>
+  <li>
+    <%= link_to t('.reorder', :what => "Layouts"),
+                 admin_layouts_url,
+                 :id => "reorder_action",
+                 :class => "reorder_icon" %>
+
+    <%= link_to t('.reorder_done', :what => "Layouts"),
+                 admin_layouts_url,
+                 :id => "reorder_action_done",
+                 :style => "display: none;",
+                 :class => "reorder_icon" %>
+  </li>
+<% end %>
+</ul>

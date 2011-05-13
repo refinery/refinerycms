@@ -56,6 +56,8 @@ class Page < ActiveRecord::Base
                   :approximate_ascii => RefinerySetting.find_or_set(:approximate_ascii, false, :scoping => "pages"),
                   :strip_non_ascii => RefinerySetting.find_or_set(:strip_non_ascii, false, :scoping => "pages")
 
+  has_one  :layout
+
   has_many :parts,
            :class_name => "PagePart",
            :order => "position ASC",

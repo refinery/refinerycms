@@ -1,0 +1,25 @@
+lolcat:
+  shared:
+    admin:
+      image_picker:
+        image: IMAGE
+  plugins:
+    layouts:
+      title: Layouts
+  admin:
+    layouts:
+      actions:
+        create_new: CREATE NEW Layout
+        reorder: REORDR Layouts
+        reorder_done: DUN REORDERIN Layouts
+      records:
+        title: Layouts
+        sorry_no_results: SRY! THAR R NO RESULTS FINDZ.
+        no_items_yet: THAR R NO Layouts YET. CLICK "CREATE NEW Layout" 2 ADD UR FURST layout.
+      layout:
+        view_live_html: VIEW DIS layout LIV <BR/><EM>(OPENS IN NEW WINDOW)</EM>
+        edit: EDIT DIS layout
+        delete: REMOOV DIS layout FOREVR
+  layouts:
+    show:
+      other: OTHR Layouts

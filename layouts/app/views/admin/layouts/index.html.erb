@@ -1,0 +1,10 @@
+<section id='records'>
+  <%= render :partial => 'records' %>
+</section>
+<aside id='actions'>
+  <%= render :partial => 'actions' %>
+</aside>
+<%= render :partial => '/shared/admin/make_sortable',
+            :locals => {
+              :tree => false
+            } if !searching? and Admin::LayoutsController.sortable? and Layout.count > 1 %>
