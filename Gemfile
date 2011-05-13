@@ -7,7 +7,6 @@ gem "rack"#, :git => "git://github.com/rack/rack.git"
 gem "arel"#, :git => "https://github.com/rails/arel.git"
 gem 'friendly_id_globalize3'#, :path => "../tmp/friendly_id"
 # gem 'will_paginate', :path => "../will_paginate"
-gem 'moretea-awesome_nested_set', :git => "git@github.com:wakeless/awesome_nested_set.git"
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails'
 
