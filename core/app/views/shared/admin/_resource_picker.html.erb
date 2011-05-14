@@ -2,7 +2,7 @@
   insert_text = "<span id='no_resource_selected_#{field}' class='nothing_selected' #{"style='display: none;'" if resource.present?}>
                    #{t('.no_resource_selected')}
                  </span>".html_safe
-  insert_link = insert_admin_resources_url({
+  insert_link = insert_admin_resources_path({
                   :dialog => true,
                   :update_resource => "current_resource_#{field}",
                   :update_text => "current_resource_text_#{field}",
@@ -18,18 +18,16 @@
               :name => t('.name'),
               :id => "current_resource_link_#{field}"
   %>
-  <div id='current_resource_container_<%= field %>' <%= "style='display:none'" unless resource.present? %>>
-    <span id='current_resource_tag'><%= t('.current') %>:</span>
-    <span id='current_resource_text_<%= field %>'>
-      <%= "#{resource.title} (#{resource.file_name})" if resource.present? %>
-    </span>
-    <br/>
-    <%= link_to "#{refinery_icon_tag("page_white_put.png")}
-                 #{t('.download_current')}
-                 (<em>#{t('.opens_in_new_window')}</em>)".html_safe,
-                 "#{resource.url if resource.present?}",
-                 :id => "current_resource_#{field}",
-                 :target => "_blank" %>
+  <div id='current_resource_container_<%= field %>' style='margin-top: 10px<%= ";display: none" unless resource.present? %>'>
+    <%= link_to "#{refinery_icon_tag('page_white_put.png')} ".html_safe +
+                content_tag(
+                  :span,
+                  "#{resource.title} (#{resource.file_name})",
+                  :id => "current_resource_text_#{field}"
+                ),
+                resource.url,
+                :id => "current_resource_#{field}",
+                :target => "_blank" if resource.present? %>
   </div>
   <br/>
   <%= link_to t('.remove_current'), "",

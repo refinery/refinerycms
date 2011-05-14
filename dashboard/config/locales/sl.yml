@@ -16,10 +16,10 @@ sl:
         see_home_page: Poglej domačo stran
       recent_activity:
         empty: V zadnjem času ni bilo nobene aktivnosti.
-        latest_activity: Zadnje aktivnosti
+        latest_activity: Zadnje Aktivnosti
         latest_activity_message: '%{what} %{kind} je bila %{action}'
       recent_inquiries:
-        latest_inquiries: Latest inquiries
+        latest_inquiries: Latest Inquiries
   updated:
     'with_article "the"':  posodobitev
   created:

@@ -1,5 +1,5 @@
 <div id='recent_activity'>
-  <h2><%= t('.latest_activity').titleize %></h2>
+  <h2><%= t('.latest_activity') %></h2>
   <% if (activity = @recent_activity.collect{|a| activity_message_for(a) rescue ''}.reject(&:blank?)).present? %>
     <ul class='clickable'>
     <% activity.each do |message| %>

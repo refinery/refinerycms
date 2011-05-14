@@ -16,10 +16,10 @@ fr:
         see_home_page: Aller à la page d'accueil
       recent_activity:
         empty: Il n'y a pas eu d'activité récemment
-        latest_activity: Derniers changements
+        latest_activity: Derniers Changements
         latest_activity_message: "%{kind} '%{what}' a été %{action}"
       recent_inquiries:
-        latest_inquiries: Dernières requêtes
+        latest_inquiries: Dernières Requêtes
   updated:
     'with_article "the"': mis(e) à jour
   created:

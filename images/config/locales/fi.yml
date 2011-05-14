@@ -1,0 +1,43 @@
+fi:
+  plugins:
+    refinery_images:
+      title: Kuvat
+      description: Hallitse kuvia
+  admin:
+    images:
+      delete: Poista tämä kuva ikuisesti
+      edit: Muokkaa tätä kuvaa
+      form:
+        image: Kuva
+        use_current_image: Käytä nykyistä kuvaa
+        or: tai
+        replace_image: " korvaa se tällä..."
+        current_image: Nykyinen kuva
+        maximum_image_size: Kuvan suurin mahdollinen koko on %{megabytes} megatavua.
+      actions:
+        create_new_image: Lisää uusi kuva
+      records:
+        no_images_yet: Kuvia ei ole vielä lisätty. Paina "Lisää uusi kuva-" nappia lisätäksesi ensimmäisen kuvan.
+      index:
+        view:
+          switch_to: "%{view_name}näkymä"
+          list: Lista
+          grid: Ruudukko
+      grid_view:
+        view_live_html: Katsele tätä kuvaa <br/><em>Avautuu uudessa ikkunassa</em>
+      existing_image:
+        button_text: Lisää
+        resize_image: Suurenna tai pienennä kuvaa?
+        size: Koko
+      insert:
+        existing_image: Kirjasto
+        new_image: Lisää
+  activerecord:
+    models:
+      image: kuva
+    errors:
+      models:
+        image:
+          blank: Sinun pitää lähettää kuva
+          too_long: Kuvan tulee olla pienempi kuin %{count} kooltaan
+          incorrect_format: 'Kuvan pitää olla joko JPG, PNG tai GIF- muodossa'

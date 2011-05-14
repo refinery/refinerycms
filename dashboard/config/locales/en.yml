@@ -6,7 +6,7 @@ en:
   admin:
     dashboard:
       index:
-        quick_tasks: Quick tasks
+        quick_tasks: Quick Tasks
       actions:
         add_a_new_page: Add a new page
         update_a_page: Update a page
@@ -16,10 +16,10 @@ en:
         see_home_page: See home page
       recent_activity:
         empty: There has not been any activity recently.
-        latest_activity: Latest activity
+        latest_activity: Latest Activity
         latest_activity_message: '%{what} %{kind} was %{action}'
       recent_inquiries:
-        latest_inquiries: Latest inquiries
+        latest_inquiries: Latest Inquiries
   updated:
     'with_article "the"': updated
   created:

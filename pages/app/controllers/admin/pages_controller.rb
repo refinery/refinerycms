@@ -4,12 +4,16 @@ module Admin
     crudify :page,
             :conditions => nil,
             :order => "lft ASC",
-            :include => [:slugs, :translations],
+            :include => [:slugs, :translations, :children],
             :paging => false
 
     rescue_from FriendlyId::ReservedError, :with => :show_errors_for_reserved_slug
 
     after_filter lambda{::Page.expire_page_caching}, :only => [:update_positions]
+
+    before_filter :restrict_access, :only => [:create, :update, :update_positions, :destroy], :if => proc {|c|
+      defined?(::Refinery::I18n) && ::Refinery::I18n.enabled?
+    }
 
     def new
       @page = Page.new
@@ -28,8 +32,8 @@ module Admin
 
         # Check whether we need to override e.g. on the pages form.
         unless params[:switch_locale] || @page.nil? || @page.new_record? || @page.slugs.where({
-          :locale => Refinery::I18n.current_locale}
-        ).nil?
+          :locale => Refinery::I18n.current_locale
+        }).nil?
           @page.slug = @page.slugs.first if @page.slug.nil? && @page.slugs.any?
           Thread.current[:globalize_locale] = @page.slug.locale if @page.slug
         end
@@ -48,6 +52,16 @@ module Admin
         @page = Page.new(params[:page])
         render :new
       end
+    end
+
+    def restrict_access
+      if current_user.has_role?(:translator) && !current_user.has_role?(:superuser) &&
+           (params[:switch_locale].blank? || params[:switch_locale] == ::Refinery::I18n.default_frontend_locale.to_s)
+        flash[:error] = t('translator_access', :scope => 'admin.pages')
+        redirect_to :action => 'index' and return
+      end
+
+      return true
     end
 
   end

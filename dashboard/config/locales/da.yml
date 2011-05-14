@@ -16,10 +16,10 @@ da:
         see_home_page: Vis forside
       recent_activity:
         empty: Der her ingen aktititeter været for nylig.
-        latest_activity: Seneste aktiviteter
+        latest_activity: Seneste Aktiviteter
         latest_activity_message: '%{what} %{kind} blev %{action}'
       recent_inquiries:
-        latest_inquiries: Seneste henvendelser
+        latest_inquiries: Seneste Henvendelser
   updated:
     'with_article "the"':  opdateret
   created:

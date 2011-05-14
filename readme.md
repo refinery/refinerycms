@@ -46,7 +46,7 @@ Wanna see Refinery for yourself? [Try the demo](http://demo.refinerycms.com/refi
 * [Getting Started](http://refinerycms.com/guides/getting-started-with-refinery)
 * [Guides](http://refinerycms.com/guides)
 * [Google Group Discussion](http://group.refinerycms.org)
-* [IRC Channel](irc://irc.freenode.net/refinerycms)
+* [IRC Channel](http://refinerycms.com/guides/how-to-get-help-with-refinery#irc-channel)
 * [GitHub repository](http://github.com/resolve/refinerycms)
 * [Developer/API documentation](http://api.refinerycms.org)
 * [Twitter Account](http://twitter.com/refinerycms)
@@ -85,7 +85,7 @@ Wanna see Refinery for yourself? [Try the demo](http://demo.refinerycms.com/refi
 
 * Manage who can access Refinery.
 * Control which engines each user has access to.
-* Uses the popular [authlogic](http://github.com/binarylogic/authlogic).
+* Uses the popular [devise](http://github.com/plataformatec/devise).
 
 ### ...Want more? [Extend with Engines](http://github.com/resolve/refinerycms/blob/master/doc/engines.md#readme)
 

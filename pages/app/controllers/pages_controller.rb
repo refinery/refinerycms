@@ -20,7 +20,7 @@ class PagesController < ApplicationController
 
     if @page.try(:live?) || (refinery_user? && current_user.authorized_plugins.include?("refinery_pages"))
       # if the admin wants this to be a "placeholder" page which goes to its first child, go to that instead.
-      if @page.skip_to_first_child && (first_live_child = @page.children.order('lft ASC').where(:draft=>false).first).present?
+      if @page.skip_to_first_child && (first_live_child = @page.children.order('lft ASC').live.first).present?
         redirect_to first_live_child.url
       elsif @page.link_url.present?
         redirect_to @page.link_url and return

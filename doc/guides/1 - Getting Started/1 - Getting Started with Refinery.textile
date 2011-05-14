@@ -421,7 +421,7 @@ protected
 
   def find_all_events
     # Order by event date
-    @events = Event.find(:all, :order => "date DESC")
+    @events = Event.order("date DESC")
   end
 
   # code

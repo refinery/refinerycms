@@ -1,31 +1,23 @@
 <%
   if !!local_assigns[:apply_css] and (classes = menu_branch_css(local_assigns)).any?
-    css = "class='#{classes.join(' ')}'"
+    css = "class='#{classes.join(' ')}'".html_safe
   end
-  dom_id = "id='item_#{menu_branch_counter}'"
+  dom_id = "id='item_#{menu_branch_counter}'".html_safe if menu_branch.parent_id.nil?
 
-  children = []
-  if !hide_children && menu_branch.has_descendants?
-    children = collection.where(:parent_id => menu_branch.id)
-  end
+  children = menu_branch.children.live.in_menu unless hide_children
 -%>
-<li<%= ['', css, dom_id].compact.join(' ').gsub(/\ *$/, '') %>>
+<li<%= ['', css, dom_id].compact.join(' ').gsub(/\ *$/, '').html_safe %>>
   <%= link_to menu_branch.title, menu_branch.url -%>
   <% if children.present? -%>
     <ul class='clearfix'>
-      <% children.each_with_index do |child, index| %>
-        <%=
-          render :partial => '/shared/menu_branch',
+      <%= render :partial => '/shared/menu_branch',
+                 :collection => children,
                  :locals => {
-                   :menu_branch => child,
-                   :menu_branch_counter => index,
                    :apply_css => local_assigns[:apply_css],
                    :hide_children => !!hide_children,
                    :collection => collection,
-                   :selected_item => selected_item,
-                   :sibling_count => children.size - 1
+                   :sibling_count => children.length - 1
                  } -%>
-      <% end %>
     </ul>
   <% end -%>
 </li>

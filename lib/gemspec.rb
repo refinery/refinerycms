@@ -7,7 +7,7 @@ files = %w( Gemfile *.md **/**/{*,.rspec,.gitignore,.yardopts} ).map { |file| Pa
 rejection_patterns = [
   "^(authentication|base|core|dashboard|images|pages|resources|settings|testing)",
   "^public/system",
-  "^public/javascripts/cache",
+  "^public/.*/cache",
   "^config/(application|boot|environment).rb$",
   "^config/initializers(\/.*\.rb)?$",
   "^config/(database|i18n\-js).yml$",

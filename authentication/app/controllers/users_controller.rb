@@ -1,4 +1,4 @@
-class RegistrationsController < ::Devise::RegistrationsController
+class UsersController < ::Devise::RegistrationsController
 
   # Protect these actions behind an admin login
   before_filter :redirect?, :only => [:new, :create]
@@ -40,7 +40,7 @@ class RegistrationsController < ::Devise::RegistrationsController
       site_name_setting = RefinerySetting.find_or_create_by_name('site_name', :value => "Company Name")
       if site_name_setting.value.to_s =~ /^(|Company\ Name)$/ or Role[:refinery].users.count == 1
         flash[:message] << "<p>#{t('setup_website_name_html', :scope => 'users',
-                                   :link => edit_admin_refinery_setting_url(site_name_setting, :dialog => true),
+                                   :link => edit_admin_refinery_setting_path(site_name_setting, :dialog => true),
                                    :title => t('edit', :scope => 'admin.refinery_settings'))}</p>".html_safe
       end
       sign_in(@user)
