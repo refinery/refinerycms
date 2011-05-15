@@ -1,0 +1,18 @@
+<% if searching? %>
+  <h2><%= t('results_for', :scope => 'shared.admin.search', :query => params[:search]) %></h2>
+<% end %>
+<% if @layouts.any? %>
+  <div class='pagination_container'>
+    <%= render :partial => 'layouts' %>
+  </div>
+<% else %>
+  <p>
+    <% unless searching? %>
+      <strong>
+        <%= t('.no_items_yet') %>
+      </strong>
+    <% else %>
+      <%= t('no_results', :scope => 'shared.admin.search') %>
+    <% end %>
+  </p>
+<% end %>

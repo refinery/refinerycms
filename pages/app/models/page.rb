@@ -42,7 +42,7 @@ class Page < ActiveRecord::Base
                   :skip_to_first_child, :position, :show_in_menu, :draft,
                   :parts_attributes, :browser_title, :meta_description,
                   :custom_title_type, :parent_id, :custom_title,
-                  :created_at, :updated_at, :page_id
+                  :created_at, :updated_at, :page_id, :layout_id, :view_template
 
   attr_accessor :locale # to hold temporarily
   validates :title, :presence => true
@@ -55,6 +55,8 @@ class Page < ActiveRecord::Base
                   :reserved_words => %w(index new session login logout users refinery admin images wymiframe),
                   :approximate_ascii => RefinerySetting.find_or_set(:approximate_ascii, false, :scoping => "pages"),
                   :strip_non_ascii => RefinerySetting.find_or_set(:strip_non_ascii, false, :scoping => "pages")
+
+  belongs_to :layout
 
   has_many :parts,
            :class_name => "PagePart",

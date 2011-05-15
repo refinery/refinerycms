@@ -1,0 +1,25 @@
+en:
+  shared:
+    admin:
+      image_picker:
+        image: image
+  plugins:
+    layouts:
+      title: Layouts
+  admin:
+    layouts:
+      actions:
+        create_new: Add New Layout
+        reorder: Reorder Layouts
+        reorder_done: Done Reordering Layouts
+      records:
+        title: Layouts
+        sorry_no_results: Sorry! There are no results found.
+        no_items_yet: There are no Layouts yet. Click "Add New Layout" to add your first layout.
+      layout:
+        view_live_html: View this layout live <br/><em>(opens in a new window)</em>
+        edit: Edit this layout
+        delete: Remove this layout forever
+  layouts:
+    show:
+      other: Other Layouts

@@ -1,0 +1,21 @@
+nb:
+  plugins:
+    layouts:
+      title: Layouts
+  admin:
+    layouts:
+      actions:
+        create_new: Lag en ny Layout
+        reorder: Endre rekkefølgen på Layouts
+        reorder_done: Ferdig å endre rekkefølgen Layouts
+      records:
+        title: Layouts
+        sorry_no_results: Beklager! Vi fant ikke noen resultater.
+        no_items_yet: Det er ingen Layouts enda. Klikk på "Lag en ny Layout" for å legge til din første layout.
+      layout:
+        view_live_html: Vis hvordan denne layout ser ut offentlig <br/><em>(åpner i et nytt vindu)</em>
+        edit: Rediger denne layout
+        delete: Fjern denne layout permanent
+  layouts:
+    show:
+      other: Andre Layouts

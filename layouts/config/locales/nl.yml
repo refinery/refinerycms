@@ -1,0 +1,21 @@
+nl:
+  plugins:
+    layouts:
+      title: Layouts
+  admin:
+    layouts:
+      actions:
+        create_new: Maak een nieuwe Layout
+        reorder: Wijzig de volgorde van de Layouts
+        reorder_done: Klaar met het wijzingen van de volgorde van de Layouts
+      records:
+        title: Layouts
+        sorry_no_results: Helaas! Er zijn geen resultaten gevonden.
+        no_items_yet: Er zijn nog geen Layouts. Druk op 'Maak een nieuwe Layout' om de eerste aan te maken.
+      layout:
+        view_live_html: Bekijk deze layout op de website <br/><em>(opent een nieuw venster)</em>
+        edit: Bewerk deze layout
+        delete: Verwijder deze layout voor eeuwig
+  layouts:
+    show:
+      other: Andere Layouts

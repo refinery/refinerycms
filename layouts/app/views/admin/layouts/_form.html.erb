@@ -1,0 +1,24 @@
+<%= form_for [:admin, @layout] do |f| -%>
+  <%= render :partial => "/shared/admin/error_messages", :locals => {
+          :object => @layout,
+          :include_object_name => true
+        } %>
+  
+  <div class='field'>
+    <%= f.label :title -%>
+    <%= f.text_field :title, :class => 'larger widest' -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :template_name -%>
+    <%= f.text_field :template_name, :class => 'larger widest' -%>
+  </div>
+  
+  <%= render :partial => "/shared/admin/form_actions",
+              :locals => {
+                :f => f,
+                :continue_editing => false,
+                :delete_title => t('delete', :scope => 'admin.layouts.layout'),
+                :delete_confirmation => t('message', :scope => 'shared.admin.delete', :title => @layout.template_name)
+              } %>
+<% end -%>
