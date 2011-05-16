@@ -8,12 +8,12 @@ module Refinery
 
         ::ApplicationHelper.send :include, ::Refinery::ApplicationHelper
 
-        [::ApplicationController, Refinery::Admin::BaseController].each do |c|
+        [::ApplicationController, ::Admin::BaseController].each do |c|
           c.send :include, ::Refinery::ApplicationController
           c.send :helper, :application
         end
 
-        ::Refinery::Admin::BaseController.send :include, ::Refinery::Admin::BaseControllerMethods
+        ::Admin::BaseController.send :include, ::Refinery::Admin::BaseController
 
         ::Refinery.config.after_inclusion_procs.each(&:call)
       end

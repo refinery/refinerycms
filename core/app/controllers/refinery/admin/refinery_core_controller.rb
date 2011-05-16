@@ -1,5 +1,5 @@
 module ::Refinery::Admin
-  class RefineryCoreController < ::Refinery::Admin::BaseController
+  class RefineryCoreController < ::Admin::BaseController
     def update_plugin_positions
       params[:menu].each_with_index do |plugin_name, index|
         if (plugin = current_user.plugins.find_by_name(plugin_name))

@@ -1,5 +1,5 @@
 module ::Refinery::Admin
-  class DialogsController < ::Refinery::Admin::BaseController
+  class DialogsController < ::Admin::BaseController
 
     def show
       if (@dialog_type = params[:id].try(:downcase))

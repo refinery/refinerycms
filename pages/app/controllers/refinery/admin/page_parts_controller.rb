@@ -1,5 +1,5 @@
 module ::Refinery::Admin
-  class PagePartsController < ::Refinery::Admin::BaseController
+  class PagePartsController < ::Admin::BaseController
 
     def new
       render :partial => "/admin/pages/page_part_field", :locals => {

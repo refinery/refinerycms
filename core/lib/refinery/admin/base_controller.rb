@@ -3,7 +3,7 @@ require 'application_helper'
 
 module Refinery
   module Admin
-    module BaseControllerMethods
+    module BaseController
 
       def self.included(controller)
         controller.send :include, ::Refinery::Admin::BaseController::InstanceMethods

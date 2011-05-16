@@ -5,7 +5,7 @@ Gem::Specification.new do |s|
   s.version           = %q{1.1.0.pre}
   s.summary           = %q{Testing plugin for Refinery CMS}
   s.description       = %q{This plugin adds the ability to run cucumber and rspec against the RefineryCMS gem while inside a RefineryCMS project}
-  s.date              = %q{2011-05-11}
+  s.date              = %q{2011-05-16}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
   s.rubyforge_project = %q{refinerycms}
@@ -40,8 +40,6 @@ Gem::Specification.new do |s|
     '.rspec',
     'config',
     'config/cucumber.yml',
-    'config/initializers',
-    'config/initializers/accessible_attributes.rb',
     'features',
     'features/step_definitions',
     'features/step_definitions/web_steps.rb',
