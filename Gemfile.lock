@@ -167,7 +167,7 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.16)
     multi_json (1.0.1)
-    mysql2 (0.2.7)
+    mysql2 (0.3.2)
     nokogiri (1.4.4)
     orm_adapter (0.0.5)
     polyglot (0.3.1)
@@ -245,7 +245,7 @@ PLATFORMS
 DEPENDENCIES
   arel
   friendly_id_globalize3
-  mysql2 (~> 0.2.7)
+  mysql2
   rack
   rails
   refinerycms!
