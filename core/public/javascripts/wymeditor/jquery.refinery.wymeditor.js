@@ -3759,7 +3759,8 @@ WYMeditor.XhtmlSaxListener = function()
   this._open_tags = {};
   this.validator = WYMeditor.XhtmlValidator;
   this._tag_stack = [];
-  this.avoided_tags = [];
+
+  this.avoided_tags = ['area'];
 
   this.entities = {
     '&nbsp;':'&#160;','&iexcl;':'&#161;','&cent;':'&#162;',
@@ -3977,7 +3978,9 @@ WYMeditor.XhtmlSaxListener.prototype.inlineTag = function(tag, attributes)
 
 WYMeditor.XhtmlSaxListener.prototype.openUnknownTag = function(tag, attributes)
 {
-  //this.output += this.helper.tag(tag, attributes, true);
+  if(tag === 'area') {
+    this.output += this.helper.tag(tag, attributes, true);
+  }
 };
 
 WYMeditor.XhtmlSaxListener.prototype.closeBlockTag = function(tag)
