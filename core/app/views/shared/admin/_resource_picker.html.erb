@@ -1,4 +1,5 @@
 <%
+  conditions ||= nil
   insert_text = "<span id='no_resource_selected_#{field}' class='nothing_selected' #{"style='display: none;'" if resource.present?}>
                    #{t('.no_resource_selected')}
                  </span>".html_safe
@@ -9,7 +10,8 @@
                   :callback => "resource_changed_#{field}",
                   :field => [f.object_name.gsub(/\]\[|[^-a-zA-Z0-9:.]/, "_").sub(/_$/, ""), field].join('_'),
                   :current_link => "#{resource.url if resource.present?}",
-                  :height => 480
+                  :height => 480,
+                  :conditions => conditions
                 })
               %>
 <%= f.hidden_field field %>
