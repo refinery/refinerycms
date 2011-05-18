@@ -140,8 +140,8 @@ class RefinerySetting < ActiveRecord::Base
   # prettier version of the name.
   # site_name becomes Site Name
   def title
-    result = name.is_a?(String) ? name.titleize : ''
-    result += ' (' + scoping.to_s.titleize + ')' if scoping.is_a?(String)
+    result = name.to_s.titleize
+    result += ' (' + scoping.titleize + ')' if scoping.is_a?(String)
     result
   end
 
