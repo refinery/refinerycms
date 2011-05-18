@@ -47,6 +47,7 @@ class Page < ActiveRecord::Base
   attr_accessor :locale # to hold temporarily
   validates :title, :presence => true
 
+  # Docs for acts_as_nested_set https://github.com/collectiveidea/awesome_nested_set
   acts_as_nested_set :dependent => :destroy # rather than :delete_all
 
   # Docs for friendly_id http://github.com/norman/friendly_id
