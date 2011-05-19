@@ -8,7 +8,7 @@ endprologue.
 
 h3. Overriding your first view
 
-If you want to override one of the views Refinery comes built with (_for example, to add a phone number to the footer_), you'll need to override the view Refinery is providing. Refinery will then use your local version, rather than it's original copy.
+If you want to override one of the views Refinery comes built with (_for example, to add a phone number to the footer_), you'll need to override the view Refinery is providing. Refinery will then use your local version, rather than its original copy.
 
 It's easy to get a copy of this file to modify locally. For example, for the footer, just run in the terminal:
 

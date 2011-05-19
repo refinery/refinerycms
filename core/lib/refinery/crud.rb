@@ -253,11 +253,11 @@ module Refinery
               0.upto((newlist ||= params[:ul]).length - 1) do |index|
                 hash = newlist[index.to_s]
                 moved_item_id = hash['id'].split(/#{singular_name}\\_?/)
-                @current_#{singular_name} = #{class_name}.find_by_id(moved_item_id)
+                @current_#{singular_name} = #{class_name}.where(:id => moved_item_id).first
 
                 if @current_#{singular_name}.respond_to?(:move_to_root)
                   if previous.present?
-                    @current_#{singular_name}.move_to_right_of(#{class_name}.find_by_id(previous))
+                    @current_#{singular_name}.move_to_right_of(#{class_name}.where(:id => previous).first)
                   else
                     @current_#{singular_name}.move_to_root
                   end
@@ -280,7 +280,7 @@ module Refinery
               0.upto(node['children'].length - 1) do |child_index|
                 child = node['children'][child_index.to_s]
                 child_id = child['id'].split(/#{singular_name}\_?/)
-                child_#{singular_name} = #{class_name}.find_by_id(child_id)
+                child_#{singular_name} = #{class_name}.where(:id => child_id).first
                 child_#{singular_name}.move_to_child_of(#{singular_name})
 
                 if child['children'].present?

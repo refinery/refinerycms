@@ -12,7 +12,7 @@ class PasswordsController < ::Devise::PasswordsController
 
   # GET /registrations/password/edit?reset_password_token=abcdef
   def edit
-    if params[:reset_password_token] and (@user = User.find_by_reset_password_token(params[:reset_password_token])).present?
+    if params[:reset_password_token] and (@user = User.where(:reset_password_token => params[:reset_password_token]).first).present?
       render_with_scope :edit
     else
       redirect_to(new_user_password_url, :flash => ({
@@ -24,7 +24,7 @@ class PasswordsController < ::Devise::PasswordsController
   # POST /registrations/password
   def create
     if params[:user].present? and (email = params[:user][:email]).present? and
-       (user = User.find_by_email(email)).present?
+       (user = User.where(:email => email).first).present?
 
       # Call devise reset function.
       user.send(:generate_reset_password_token!)
