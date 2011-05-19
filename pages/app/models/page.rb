@@ -72,15 +72,17 @@ class Page < ActiveRecord::Base
   before_destroy :deletable?
   after_save :reposition_parts!, :invalidate_child_cached_url, :expire_page_caching
   after_destroy :expire_page_caching
-  
+
   # Wrap up the logic of finding the pages based on the translations table.
   if defined?(::Page::Translation)
-    scope :with_globalize, lambda {|conditions|
-      conditions = {:locale => Globalize.locale}.merge(conditions || {})
-      where(["id IN (?)", ::Page::Translation.where(conditions).select('page_id AS id')])
-    }
+    def self.with_globalize(conditions = {})
+      conditions = {:locale => Globalize.locale}.merge(conditions)
+      where(:id => ::Page::Translation.where(conditions).select('page_id AS id'))
+    end
   else
-    scope :with_globalize, lambda {|conditions| where(conditions || {})}
+    def self.with_globalize(conditions = {})
+      where(conditions)
+    end
   end
 
   scope :live, where(:draft => false)
@@ -90,7 +92,7 @@ class Page < ActiveRecord::Base
   # rejects any page that has not been translated to the current locale.
   # This works using a query against the translated content first and then
   # using all of the page_ids we further filter against this model's table.
-  scope :in_menu, where(:show_in_menu => true).with_globalize({})
+  scope :in_menu, proc { where(:show_in_menu => true).with_globalize }
 
   # when a dialog pops up to link to a page, how many pages per page should there be
   PAGES_PER_DIALOG = 14

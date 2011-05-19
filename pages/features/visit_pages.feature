@@ -27,7 +27,6 @@ Feature: Visit Pages
 
   Scenario: Special Characters Title
     When I go to the page titled "ä ö ü spéciål chåråctÉrs"
-    Then show me the page
     Then I should see "Home"
     And I should see "About"
     And I should see "ä ö ü spéciål chåråctÉrs"
