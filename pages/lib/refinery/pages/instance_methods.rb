@@ -15,7 +15,7 @@ module Refinery
 
     protected
       def find_pages_for_menu
-        @menu_pages = ::Page.roots.live.in_menu.order('lft ASC').includes(:children, :slugs)
+        @menu_pages = ::Page.roots.live.in_menu.order('lft ASC').includes(:children)
       end
 
       def render(*args)

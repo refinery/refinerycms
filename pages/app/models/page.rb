@@ -72,16 +72,16 @@ class Page < ActiveRecord::Base
   before_destroy :deletable?
   after_save :reposition_parts!, :invalidate_child_cached_url, :expire_page_caching
   after_destroy :expire_page_caching
-
+  
   # Wrap up the logic of finding the pages based on the translations table.
-  scope :with_globalize, lambda {|conditions|
-    if defined?(::Page::Translation)
+  if defined?(::Page::Translation)
+    scope :with_globalize, lambda {|conditions|
       conditions = {:locale => Globalize.locale}.merge(conditions || {})
-      where(:id => ::Page::Translation.where(conditions).select('page_id AS id'))
-    else
-      where(conditions)
-    end
-  }
+      where(["id IN (?)", ::Page::Translation.where(conditions).select('page_id AS id')])
+    }
+  else
+    scope :with_globalize, lambda {|conditions| where(conditions || {})}
+  end
 
   scope :live, where(:draft => false)
   scope :by_title, proc {|t| with_globalize(:title => t)}
