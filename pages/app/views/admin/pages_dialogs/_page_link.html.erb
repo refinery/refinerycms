@@ -6,8 +6,9 @@
               :rel => page_link.title,
               :class => 'page_link' }.merge(link_args) %>
 </li>
-<%= render :partial => 'page_link', :collection => page_link.children,
+<%= render :partial => 'page_link',
+           :collection => page_link.children,
            :locals => {
              :child => (child ||= 0) + 1,
              :link_to_arguments => link_args
-           } if page_link.has_descendants? -%>
+           } -%>

@@ -16,7 +16,7 @@ module Refinery
 
       # This was extracted from app/views/shared/_menu_branch.html.erb
       # to remove the complexity of that template by reducing logic in the view.
-      def css_for_menu_branch(menu_branch, menu_branch_counter, sibling_count = nil, collection = [], selected_item = nil, warning = true)
+      def css_for_menu_branch(menu_branch, menu_branch_counter, sibling_count = nil, collection = nil, selected_item = nil, warning = true)
         # DEPRECATION. Remove at version 1.1
         if warning
           warn "\n-- DEPRECATION WARNING --"
@@ -25,17 +25,29 @@ module Refinery
           warn "Called from: #{caller.detect{|c| c =~ %r{#{Rails.root.to_s}}}.inspect.to_s.split(':in').first}\n\n"
         end
 
+        if collection
+          warn "\n-- DEPRECATION WARNING --"
+          warn "The use of 'collection' is deprecated and will be removed at version 1.1."
+          warn "Called from: #{caller.detect{|c| c =~ %r{#{Rails.root.to_s}}}.inspect.to_s.split(':in').first}\n\n"
+        end
+
+        if selected_item
+          warn "\n-- DEPRECATION WARNING --"
+          warn "The use of 'selected_item' is deprecated and will be removed at version 1.1."
+          warn "Called from: #{caller.detect{|c| c =~ %r{#{Rails.root.to_s}}}.inspect.to_s.split(':in').first}\n\n"
+        end
+
         css = []
         css << "selected" if selected_page_or_descendant_page_selected?(menu_branch, collection, selected_item)
         css << "first" if menu_branch_counter == 0
-        css << "last" if menu_branch_counter == sibling_count
+        css << "last" if (sibling_count ? (menu_branch_counter == sibling_count - 1) : (menu_branch.rgt == menu_branch.parent.rgt - 1))
         css
       end
 
       # New method which accepts the local_assigns hash.
       # This maps to the older css_for_menu_branch method.
       def menu_branch_css(local_assigns)
-        options = {:collection => []}.merge(local_assigns)
+        options = local_assigns.dup
         options.update(:sibling_count => options[:menu_branch].shown_siblings.size) unless options[:sibling_count]
 
         css_for_menu_branch(options[:menu_branch],
@@ -49,14 +61,8 @@ module Refinery
       # Determines whether any page underneath the supplied page is the current page according to rails.
       # Just calls selected_page? for each descendant of the supplied page.
       # if you pass a collection it won't check its own descendants but use the collection supplied.
-      def descendant_page_selected?(page, collection = [], selected_item = nil)
-        if selected_item
-          warn "\n-- DEPRECATION WARNING --"
-          warn "The use of 'selected_item' is deprecated and will be removed at version 1.1."
-          warn "Called from: #{caller.detect{|c| c =~ %r{#{Rails.root.to_s}}}.inspect.to_s.split(':in').first}\n\n"
-        end
-
-        return false unless page.has_descendants?
+      def descendant_page_selected?(page, collection = nil, selected_item = nil)
+        return false if page.rgt == page.lft + 1
         return false unless selected_item.nil? or !selected_item.in_menu?
 
         page.descendants.any? { |descendant|
@@ -64,7 +70,7 @@ module Refinery
         }
       end
 
-      def selected_page_or_descendant_page_selected?(page, collection = [], selected_item = nil)
+      def selected_page_or_descendant_page_selected?(page, collection = nil, selected_item = nil)
         return true if selected_page?(page) || selected_item === page
         return true if descendant_page_selected?(page, collection, selected_item)
         false
