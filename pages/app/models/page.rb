@@ -77,11 +77,11 @@ class Page < ActiveRecord::Base
   if defined?(::Page::Translation)
     def self.with_globalize(conditions = {})
       conditions = {:locale => Globalize.locale}.merge(conditions)
-      where(:id => ::Page::Translation.where(conditions).select('page_id AS id'))
+      where(:id => ::Page::Translation.where(conditions).select('page_id AS id')).includes(:children, :slugs)
     end
   else
     def self.with_globalize(conditions = {})
-      where(conditions)
+      where(conditions).includes(:children, :slugs)
     end
   end
 
