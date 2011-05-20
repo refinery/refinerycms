@@ -64,14 +64,6 @@ es:
         link_url_help: "Si quieres que esta página envíe a otra web o página entonces pulsa esta página en el menú y introduce una URL (por ej: http://google.com). En caso contrario déjalo en blanco."
         parent_page_help: Puedes incluir una página dentro de otra seleccionándola en la lista. Si quieres que sea una página de primer nivel, déjalo en blanco.
         custom_title_help: Si quieres que la página tenga un título diferente al que aparece en el menú selecciona &apos;Texto&apos; y teclea el título que prefieres.
-      form_advanced_options_seo:
-        seo: Optimización para motores de búsqueda (SEO)
-        seo_override_title: Título del navegador
-        seo_override_title_help: Introduce un título de 5-10 palabras que resuma los contenidos de la página.
-        meta_keywords_title: Palabras clave (meta keyboards)
-        meta_keywords_help: Introduce 5-10 palabras clave relacionadas con esta página, separadas por comas.
-        meta_description_title: Meta-descripción
-        meta_description_help: Describe en dos o tres frases de qué tema trata esta página.
       actions:
         create_new_page: Crear nueva página
         reorder_pages: Reordenar páginas

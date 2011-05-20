@@ -62,14 +62,6 @@ sl:
         link_url_help: "Če želite da stran kaže na drugo spletno stran ali stran, ko boste kliknili na njo v meniju, vnesite URL naslov npr. http://google.com v nasprotnem primeru pustite prazno."
         parent_page_help: "Stran lahko postavite pod neko drugo, tako da jo izberite iz seznama. Če želite da je ta stran na najvišjem nivoju, pustite prazno."
         custom_title_help: "Če želite da ima stran drugačen naslov od tistega, ki se prikaže v meniju potem izberite &apos;Tekst&apos; in ga vnesite tukaj."
-      form_advanced_options_seo:
-        seo: Optimitizacija za spletne iskalnike
-        seo_override_title: Naslov brskalnika
-        seo_override_title_help: "Če želite povoziti privzeti naslov brskalnika, ga spremenite tukaj."
-        meta_keywords_title: Meta ključne besede
-        meta_keywords_help: Vnesite 5-10 ključnih besed, ki se navezujejo na to spletno stran. Ključne besede ločite z vejicami.
-        meta_description_title: Meta opis
-        meta_description_help: V dveh do treh stavkih jedernato opišite kaj ta stran predstavlja.
       actions:
         create_new_page: Dodaj novo stran
         reorder_pages: Spremeni vrstni red Strani

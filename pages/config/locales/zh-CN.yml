@@ -63,14 +63,6 @@ zh-CN:
         link_url_help: 如果您想要在菜单中点这个页面就跳到其他网站或是页面的话, 在这里输入网址, 例如 http://google.com, 不然就留空
         parent_page_help: 您可以在列表中让一个页面依附在另一个页面之下. 如果您想要让这个页面为第一层页面, 就不要填写.
         custom_title_help: 如果您想要此页面在菜单里有个不一样的名称, 请选择 &apos;文字&apos; , 然后在这里输入.
-      form_advanced_options_seo:
-        seo: 搜索引擎优化
-        seo_override_title: 浏览标题
-        seo_override_title_help: 输入 5 到 10 个字的标题去概括这个页面的内容.
-        meta_keywords_title: Meta 关键字
-        meta_keywords_help: 输入 5 到 10 个与这个页面有关的关键字. 用逗号分开每个关键字.
-        meta_description_title: Meta 说明
-        meta_description_help: 简洁地输入两三句话来介绍这个页面.
       actions:
         create_new_page: 添加新页面
         reorder_pages: 重新编排页面顺序

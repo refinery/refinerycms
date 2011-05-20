@@ -63,14 +63,6 @@ vi:
         link_url_help: Nếu bạn muốn khi ấn vào trang này trên menu, người dùng sẽ được đưa tới một trang kháchay website khác, bạn hãy nhập vào một địa chỉ (ví dụ http://google.com), nếu không để trống ô này.
         parent_page_help: Bạn có thể đặt trang này ở dưới (làm con) một trang khác bằng cách chọn trang cha từ danh sách dưới đây. Hãy để trống nếu bạn muốn trang này là trang ở lớp ngoài cùng.
         custom_title_help: Nếu bạn muốn trang này có một tiêu đề khác tiêu đề hiện trong menu, hãy chọn &apos;Chữ&apos; và nhập vào đây.
-      form_advanced_options_seo:
-        seo: Tối ưu hóa công cụ tìm kiếm
-        seo_override_title: Tiêu đề trình duyệt
-        seo_override_title_help: Nhập 5-10 từ tóm tắt nội dung trang này.
-        meta_keywords_title: Meta keywords
-        meta_keywords_help: Nhập 5-10 từ khóa liên quan tới trang này, phân cách bằng dấu phẩy.
-        meta_description_title: Meta description
-        meta_description_help: Nhập vào 2-3 câu thật súc tích mô tả trang này nói về gì.
       actions:
         create_new_page: Tạo trang mới
         reorder_pages: Sắp xếp lại các trang

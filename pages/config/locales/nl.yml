@@ -63,14 +63,6 @@ nl:
         link_url_help: Als je wilt dat deze pagina naar een andere website, of pagina verwijst, wanneer je deze pagina in het menu selecteerd, vul dan een adres in. Laat het leeg om de pagina zelf te laten zien.
         parent_page_help: Je kunt een pagina onder een andere pagina hangen, door de "ouder" pagina te selecteren in deze lijst. Als het een "top level" pagina moet worden, kunt u de lege optie selecteren.
         custom_title_help: If you want the page to have a different title than the one that shows in the menu then select &apos;Text&apos; and enter it here.
-      form_advanced_options_seo:
-        seo: Zoekmachine optimalisatie
-        seo_override_title: Browser titel
-        seo_override_title_help: Als u de standaard titel van het browservenster wilt wijzigen, kunt u hier een alternatief invullen.
-        meta_keywords_title: Meta zoekwoorden
-        meta_keywords_help: Voeg 5 tot 10 meta zoekwoorden toe. Gebruik een komma om de zoekwoorden te scheiden.
-        meta_description_title: Meta omschrijving
-        meta_description_help: Voer een compacte (twee a drie zinnen) pagina beschrijving in.
       actions:
         create_new_page: Maak een nieuwe pagina
         reorder_pages: "Wijzig de volgorde van de pagina's"
