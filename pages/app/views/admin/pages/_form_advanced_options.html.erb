@@ -73,7 +73,7 @@
                   :class => "stripped" %>
     </div>
   </div>
-  <div class="hemisquare right_side">
-    <%= render :partial => '/seo_meta/form', :locals => { :form => f } %>
-  </div>
+
+  <%= render :partial => "form_advanced_options_seo",
+             :locals => {:f => f} %>
 </div>
