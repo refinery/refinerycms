@@ -140,7 +140,9 @@ class RefinerySetting < ActiveRecord::Base
   # prettier version of the name.
   # site_name becomes Site Name
   def title
-    name.titleize
+    result = name.to_s.titleize
+    result += ' (' + scoping.titleize + ')' if scoping.is_a?(String)
+    result
   end
 
   # form_value is so that on the web interface we can display a sane value.

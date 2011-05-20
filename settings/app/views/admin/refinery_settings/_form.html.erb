@@ -12,7 +12,7 @@
     <%= f.text_field :name, :class => "larger widest" %>
   <% else %>
     <label class='stripped' for='refinery_setting_value'>
-      <%= @refinery_setting.name.titleize %>
+      <%= @refinery_setting.title %>
     </label>
     <span class="preview">- (<%= @refinery_setting.name %>)</span>
   <% end %>
@@ -49,7 +49,7 @@
                :submit_button_title => t('.restart_may_be_in_order_html'),
                :delete_title => t('delete', :scope => 'admin.refinery_settings'),
                :delete_confirmation => t('message', :scope => 'shared.admin.delete',
-                                         :title => @refinery_setting.name.to_s.titleize),
+                                         :title => @refinery_setting.title),
                :hide_delete => (!@refinery_setting.persisted? or !@refinery_setting.destroyable or from_dialog?)
               } %>
 <% end -%>
