@@ -58,7 +58,7 @@ fi:
         results_for: "Hakutulokset haulle '%{query}'"
         no_results: 'Valitettavasti mitään ei löytynyt'
       delete:
-        message: "Oletko varma, että haluat poistaa sivun '%{title}'?"
+        message: "Oletko varma, että haluat poistaa sisältöesineen '%{title}'?"
       error_messages:
         problems_in_following_fields: Seuraavissa kentissä oli virheitä
       help: apua
