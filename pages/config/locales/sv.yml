@@ -63,14 +63,6 @@ sv:
         link_url_help: Om du vill att den här sidan vidarebefodrar till en annan sida när du väljer den i menyn, fyll i en URL. Tex. http://www.google.com/. Annars lämna tom.
         parent_page_help: Du kan låta sidor bli undersidor till varandra. Om du vill att den här sidan ska vara en toppnivåsida, lämna tom.
         custom_title_help: Om du vill att sidan har en annan huvudrubrik än den som visas i menyn, välj Text, och fyll i här.
-      form_advanced_options_seo:
-        seo: Optimering för sökmotorer
-        seo_override_title: Titel i webbläsaren
-        seo_override_title_help: Fyll i en titel med 5 till 10 ord som summerar innehållet på den här sidan.
-        meta_keywords_title: Meta nyckelord
-        meta_keywords_help: Fyll i 5 till 10 nyckelord som relaterar till den här sidan. Separera dina nyckelord med komma-tecken.
-        meta_description_title: Meta beskrivning
-        meta_description_help: Fyll i konkret vad sidan handlar om. Använd en, två eller tre meningar.
       actions:
         create_new_page: Lägg till en ny sida
         reorder_pages: Ändra ordning på sidor

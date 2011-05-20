@@ -63,14 +63,6 @@ zh-TW:
         link_url_help: 如果您想要在選單中點選這個頁面就跳到另外一個網站或是頁面的話, 在這裡輸入網址, 例如 http://google.com, 不然就空白不填
         parent_page_help: 您可以在列表中讓一個頁面依附在另一個頁面之下. 如果您想要讓這個頁面是第一層的頁面, 就不要填這個欄位.
         custom_title_help: 如果您想要這個頁面有個跟選單中不同的名稱, 請選擇 &apos;文字&apos; , 然後在這裡輸入.
-      form_advanced_options_seo:
-        seo: 搜索引擎最佳化
-        seo_override_title: 瀏覽器標題
-        seo_override_title_help: 輸入 5 到 10 個字來總結這個頁面的內容.
-        meta_keywords_title: Meta 關鍵字
-        meta_keywords_help: 輸入 5 到 10 個跟這個頁面有關的關鍵字. 用逗號分開每個關鍵字.
-        meta_description_title: Meta 說明
-        meta_description_help: 簡潔地輸入兩三句話來介紹這個頁面.
       actions:
         create_new_page: 新增頁面
         reorder_pages: 重新編排頁面順序

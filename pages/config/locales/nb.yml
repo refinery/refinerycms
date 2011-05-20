@@ -63,14 +63,6 @@ nb:
         link_url_help: "Dersom du ønsker å bli sendt til en annen side eller en ekstern webside når du trykker på den i menyen, legg inn en adresse her. F.eks. http://google.com . La ellers feltet stå tomt."
         parent_page_help: Du kan plassere en side under en annen side ved å velge den fra listen. Om du ønsker at siden skal være en toppnivå side så lar du dette valget stå blankt.
         custom_title_help: "Dersom du ønsker at siden skal ha en annen tittel enn den som vises i menyen så kan du velge &apos;Tekst&apos; og skrive inn tittelen her."
-      form_advanced_options_seo:
-        seo: Søkemotoroptimalisering (SEO)
-        seo_override_title: Nettleser tittel
-        seo_override_title_help: Skriv inn en tittel på 5-10 ord som oppsummerer innholdet på siden.
-        meta_keywords_title: Meta stikkord
-        meta_keywords_help: Skriv inn 5-10 stikkord som relaterer til denne siden. Separer stikkordene med komma.
-        meta_description_title: Meta beskrivelse
-        meta_description_help: Skriv en kort beskrivelse på to eller tre setninger som forteller hva denne siden inneholder.
       actions:
         create_new_page: Legg til ny side
         reorder_pages: Endre rekkefølgen

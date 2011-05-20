@@ -64,14 +64,6 @@ lt:
         link_url_help: "Jei norite, kad šis puslapis vestų į kitą svetainę ar puslapį, kai jį paspaudžiate meniu, tai įveskite adresą pvz. http://google.com arba palikite tuščią"
         parent_page_help: "Galite sukurti puslapį, po kitu puslapių, tai pasirinkite jį sąraše. Jei norite, kad šis puslapis taptų aukščiausio lygio puslapiu, tiesiog palikite tuščią."
         custom_title_help: "Jei norite, kad puslapio antraštė būtų kitokia, nei naudojama meniu, tai pasirinkite &apos;Tekstas&apos; ir įveskite antraštę."
-      form_advanced_options_seo:
-        seo: Paieškos variklių optimizacija
-        seo_override_title: Naršyklės antraštė
-        seo_override_title_help: "Įveskite 5-10 žodžių santrauką, kuri nusako šio puslapio turinį."
-        meta_keywords_title: Meta raktažodžiai
-        meta_keywords_help: "Įveskite 5-10 raktinių žodžių, kurie susiję su šiuo puslapiu. Atskirkite raktinius žodžius kableliais."
-        meta_description_title: Meta aprašymas
-        meta_description_help: Įveskite rišlius du ar tris sakinius nusakančius apie ką šis puslapis.
       actions:
         create_new_page: Pridėti naują puslapį
         reorder_pages: Keisti puslapių tvarką

@@ -63,14 +63,6 @@ sk:
         link_url_help: Ak chcete, aby po kliknutí na odkaz na tútu stránku bol návštevník presmerovaný na iný web, vložte adresu (napr. http://google.com), inak ponechajte prázdne.
         parent_page_help: Môžete umiestniť túto stránku v hierarchii pod inú stránku. Ak nevyberiete nič, bude táto stránka umiestnená na prvej úrovni.
         custom_title_help: Ak chcete aby stránka mala iný titulok než ten ktorý sa zobrazuje v menu vyberte &apos;Text&apos; a vložte ho tu.
-      form_advanced_options_seo:
-        seo: Optimalizácia pre vyhľadávanie
-        seo_override_title: Titulok prehliadača
-        seo_override_title_help: Vložte titulok dĺžky 5-10 slov, ktorý vystihuje obsah stránky.
-        meta_keywords_title: Kľúčové slová (Meta keywords)
-        meta_keywords_help: Vložte 5-10 kľúčových slov oddelených čiarkou, ktoré sa vzťahujú k obsahu stránky.
-        meta_description_title: Popis (Meta description)
-        meta_description_help: Vložte 2-3 krátke vety sumarizujúce obsah stránky.
       actions:
         create_new_page: Pridať novú stránku
         reorder_pages: Zmeniť usporiadanie stránok

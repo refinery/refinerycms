@@ -21,7 +21,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'refinerycms-core', '= #{::Refinery::Version}'
   # RSpec
-  s.add_dependency 'rspec-rails',       '~> 2.5'
+  s.add_dependency 'rspec-rails',       '~> 2.6'
 
   # Cucumber
   s.add_dependency 'capybara',          '>= 0.4.1.1'
