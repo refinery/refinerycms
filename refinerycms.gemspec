@@ -2,9 +2,9 @@
 
 Gem::Specification.new do |s|
   s.name              = %q{refinerycms}
-  s.version           = %q{0.9.9.21}
+  s.version           = %q{1.0.0.pre}
   s.description       = %q{A Ruby on Rails CMS that supports Rails 3. It's easy to extend and sticks to 'the Rails way' where possible.}
-  s.date              = %q{2011-05-20}
+  s.date              = %q{2011-05-21}
   s.summary           = %q{A Ruby on Rails CMS that supports Rails 3}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
@@ -18,14 +18,14 @@ Gem::Specification.new do |s|
   s.add_dependency    'bundler',                    '~> 1.0'
 
   # Refinery CMS
-  s.add_dependency    'refinerycms-authentication', '= 0.9.9.21'
-  s.add_dependency    'refinerycms-base',           '= 0.9.9.21'
-  s.add_dependency    'refinerycms-core',           '= 0.9.9.21'
-  s.add_dependency    'refinerycms-dashboard',      '= 0.9.9.21'
-  s.add_dependency    'refinerycms-images',         '= 0.9.9.21'
-  s.add_dependency    'refinerycms-pages',          '= 0.9.9.21'
-  s.add_dependency    'refinerycms-resources',      '= 0.9.9.21'
-  s.add_dependency    'refinerycms-settings',       '= 0.9.9.21'
+  s.add_dependency    'refinerycms-authentication', '= 1.0.0.pre'
+  s.add_dependency    'refinerycms-base',           '= 1.0.0.pre'
+  s.add_dependency    'refinerycms-core',           '= 1.0.0.pre'
+  s.add_dependency    'refinerycms-dashboard',      '= 1.0.0.pre'
+  s.add_dependency    'refinerycms-images',         '= 1.0.0.pre'
+  s.add_dependency    'refinerycms-pages',          '= 1.0.0.pre'
+  s.add_dependency    'refinerycms-resources',      '= 1.0.0.pre'
+  s.add_dependency    'refinerycms-settings',       '= 1.0.0.pre'
 
   s.files             = [
     '.gitignore',
@@ -59,6 +59,12 @@ Gem::Specification.new do |s|
     'features',
     'features/support',
     'features/support/paths.rb',
+    'index',
+    'index/test',
+    'index/test/Refinery::RefinerySetting',
+    'index/test/Refinery::RefinerySetting/100_114_97.ind',
+    'index/test/Refinery::RefinerySetting/size',
+    'index/test/Refinery::RefinerySetting/version',
     'lib',
     'lib/refinery.rb',
     'lib/refinerycms',
