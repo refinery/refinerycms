@@ -12,6 +12,7 @@ rejection_patterns = [
   "^config/initializers(\/.*\.rb)?$",
   "^config/(database|i18n\-js).yml$",
   "^lib\/gemspec\.rb",
+  "^index\/*",
   ".*\/cache\/",
   "^db(\/)?",
   "^script\/*",
