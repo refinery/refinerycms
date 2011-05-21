@@ -21,7 +21,15 @@
       <%= f.select :parent_id, nested_set_options(Page, @page) {|i| "#{'-' * i.level} #{i.title}" },
                    :include_blank => true %>
     </div>
-    <% use_multi_layout   = RefinerySetting.where(:name => "Multi Layout").first.value %>
+    <%
+      use_multi_layout   = RefinerySetting.where(:name => "Multi Layout").first.value
+      existing_layouts   = [Rails.root, Refinery::Plugins.registered.pathnames].flatten.uniq.map{|p| p.join('app', 'views', 'layouts', '*html*')}.map(&:to_s).map{ |p| Dir[p] }.select {|p| p.count > 0}.flatten.map{|f| File.basename(f)}#.map {|p| p.sub!('.html.erb','') }
+      existing_templates = [Rails.root, Refinery::Plugins.registered.pathnames].flatten.uniq.map{|p| p.join('app', 'views', 'pages', '*html*')}.map(&:to_s).map{ |p| Dir[p] }.select {|p| p.count > 0}.flatten.map{|f| File.basename(f)} #.map {|p| p.sub!('.html.erb','') }
+    %>
+    <div class="field">
+      layouts: |<%= existing_layouts.join(',') %>|
+      templates: |<%= existing_templates.join(',') %>|
+    </div>
     <% if use_multi_layout == 1 %>
     <div class='field'>
       <span class='label_with_help'>

@@ -10,10 +10,6 @@ module Refinery
       config.after_initialize do
         Refinery::Plugin.register do |plugin|
           plugin.name = "layouts"
-          plugin.activity = {
-            :class => Layout,
-            :title => 'template_name'
-          }
         end
       end
     end

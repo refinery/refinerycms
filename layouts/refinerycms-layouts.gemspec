@@ -5,7 +5,7 @@ Gem::Specification.new do |s|
   s.version           = %q{0.9.9.21}
   s.summary           = %q{Per entity layouts for refinerycms}
   s.description       = %q{This module lets you select the layout template to use for a given page instead of being tied to the application.html.erb layout.}
-  s.date              = %q{2011-05-13}
+  s.date              = %q{2011-05-21}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
   s.rubyforge_project = %q{refinerycms}
@@ -15,31 +15,6 @@ Gem::Specification.new do |s|
   s.executables       = %w()
 
   s.files             = [
-    'app',
-    'app/controllers',
-    'app/controllers/admin',
-    'app/controllers/admin/layouts_controller.rb',
-    'app/models',
-    'app/models/layout.rb',
-    'app/views',
-    'app/views/admin',
-    'app/views/admin/layouts',
-    'app/views/admin/layouts/_actions.html.erb',
-    'app/views/admin/layouts/_form.html.erb',
-    'app/views/admin/layouts/_layout.html.erb',
-    'app/views/admin/layouts/_layouts.html.erb',
-    'app/views/admin/layouts/_records.html.erb',
-    'app/views/admin/layouts/_sortable_list.html.erb',
-    'app/views/admin/layouts/edit.html.erb',
-    'app/views/admin/layouts/index.html.erb',
-    'app/views/admin/layouts/new.html.erb',
-    'app/views/layouts',
-    'app/views/layouts/1column.html.erb',
-    'app/views/layouts/2column_left.html.erb',
-    'app/views/layouts/2column_right.html.erb',
-    'app/views/layouts/3column.html.erb',
-    'app/views/pages',
-    'app/views/pages/custom.html.erb',
     'config',
     'config/locales',
     'config/locales/en.yml',
@@ -53,13 +28,6 @@ Gem::Specification.new do |s|
     'db/migrate/2_create_page_templates.rb',
     'db/seeds',
     'db/seeds/layouts.rb',
-    'db/seeds/page_templates.rb',
-    'features',
-    'features/manage_layouts.feature',
-    'features/step_definitions',
-    'features/step_definitions/layout_steps.rb',
-    'features/support',
-    'features/support/paths.rb',
     'lib',
     'lib/gemspec.rb',
     'lib/generators',
@@ -70,8 +38,7 @@ Gem::Specification.new do |s|
     'readme.md',
     'refinerycms-layouts.gemspec',
     'spec',
-    'spec/models',
-    'spec/models/layout_spec.rb'
+    'spec/layouts_spec.rb'
   ]
 
   s.add_dependency 'refinerycms-core',            '= 0.9.9.21'
