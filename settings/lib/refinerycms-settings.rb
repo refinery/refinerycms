@@ -11,6 +11,7 @@ module Refinery
     end
 
     class Engine < ::Rails::Engine
+      isolate_namespace ::Refinery::Settings
 
       initializer 'serve static assets' do |app|
         app.middleware.insert_after ::ActionDispatch::Static, ::ActionDispatch::Static, "#{root}/public"

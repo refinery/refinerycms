@@ -58,6 +58,7 @@ module Refinery
     end
 
     class Engine < ::Rails::Engine
+      isolate_namespace ::Refinery::Core
 
       config.autoload_paths += %W( #{config.root}/lib )
 

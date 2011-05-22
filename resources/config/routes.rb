@@ -2,7 +2,7 @@
 
   match '/system/resources/*dragonfly', :to => Dragonfly[:resources]
 
-  scope(:path => 'refinery', :as => 'admin', :module => Refinery::Admin) do
+  scope(:path => 'refinery', :as => 'refinery_admin', :module => 'refinery/admin') do
     resources :resources, :except => :show do
       collection do
         get :insert
