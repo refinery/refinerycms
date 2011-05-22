@@ -1,3 +1,4 @@
+=begin
 module Refinery
 page_position = -1
   debugger
@@ -43,3 +44,4 @@ page_position = -1
                 :position => 1
               })
 end
+=end

@@ -199,11 +199,6 @@ GEM
       thor (~> 0.14.6)
     rake (0.9.0)
     refinerycms-generators (1.0.1)
-    refinerycms-i18n (1.0.0)
-      refinerycms-core (>= 0.9.9.12)
-      routing-filter (>= 0.2.3)
-    routing-filter (0.2.3)
-      actionpack
     rspec (2.6.0)
       rspec-core (~> 2.6.0)
       rspec-expectations (~> 2.6.0)
@@ -267,7 +262,6 @@ DEPENDENCIES
   rack
   rails
   refinerycms!
-  refinerycms-i18n (~> 1.0.0)
   refinerycms-testing (~> 1.1.0.pre)
   ruby-debug
   ruby-debug19
