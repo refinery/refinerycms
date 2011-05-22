@@ -19,7 +19,7 @@ class TranslatePagePlugin < ActiveRecord::Migration
       })
     end
 
-		puts "seeds pages"
+    puts "seeds pages"
     if (seed_file = Rails.root.join('db', 'seeds', 'pages.rb')).file?
       load seed_file.to_s unless ::Refinery::Page.where(:link_url => '/').any?
     end

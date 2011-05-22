@@ -1,6 +1,6 @@
 module Refinery
   class UsersController < ::Devise::RegistrationsController
-  
+
     # Protect these actions behind an admin login
     before_filter :redirect?, :only => [:new, :create]
 
@@ -64,6 +64,6 @@ module Refinery
     def refinery_users_exist?
       Role[:refinery].users.any?
     end
-  
+
   end
 end

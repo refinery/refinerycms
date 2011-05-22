@@ -1,7 +1,7 @@
 module ::Refinery
   class Admin::PagesController < Admin::BaseController
     layout "refinery/admin"
-		
+
     crudify "refinery/page",
             :conditions => nil,
             :order => "lft ASC",

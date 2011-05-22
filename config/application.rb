@@ -8,7 +8,7 @@ Bundler.require(:default, Rails.env) if defined?(Bundler)
 
 module ::Refinery::RefineryApp
   class Application < Rails::Application
-  	Rails.backtrace_cleaner.remove_silencers!
+    Rails.backtrace_cleaner.remove_silencers!
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
