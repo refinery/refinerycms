@@ -61,7 +61,7 @@ module Refinery
             end
           end
 
-          Refinery::Plugins.set_active(plugins)
+          ::Refinery::Plugins.set_active(plugins)
         end
 
         def restrict_controller

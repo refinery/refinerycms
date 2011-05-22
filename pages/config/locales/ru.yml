@@ -79,7 +79,7 @@ ru:
       records:
         no_pages_yet: Страниц ещё нет.
       reserved_system_word: Защищены системой слова
-    refinery_settings:
+    settings:
       form:
         enabled: Включено
     users:

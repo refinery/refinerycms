@@ -1,5 +1,5 @@
 module Refinery
-  class RefinerySetting < ActiveRecord::Base
+  class Setting < ActiveRecord::Base
 
     FORM_VALUE_TYPES = [
       ['Multi-line', 'text_area'],
@@ -81,7 +81,7 @@ module Refinery
       end
 
       def cache_key
-        [Refinery.base_cache_key, 'refinery_settings_cache'].join('_')
+        [Refinery.base_cache_key, 'settings_cache'].join('_')
       end
 
       # find_or_set offers a convenient way to

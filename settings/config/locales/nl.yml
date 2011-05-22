@@ -1,10 +1,10 @@
 nl:
   plugins:
-    refinery_settings:
+    settings:
       title: Instellingen
       description: Wijzig de instellingen van Refinery
   admin:
-    refinery_settings:
+    settings:
       delete: Verwijder deze instelling voorgoed
       edit: Bewerk deze instelling
       actions:
@@ -39,9 +39,9 @@ nl:
           approximate_ascii: Zet dit aan, als je Latijnse karakters gebruikt met accenten en dergelijke in de pagina titels. Het converteert karakters zoals ā, č, ž naar a, c, z zodat ze er niet raar uitzien in de adresbalk van browsers.
   activerecord:
     models:
-      refinery_setting: installing
+      setting: installing
     attributes:
-      refinery_setting:
+      setting:
         name: Naam
         value: Waarde
         restricted: Beveligd

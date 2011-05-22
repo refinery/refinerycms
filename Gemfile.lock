@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/resolve/refinerycms-i18n
-  revision: 4d5e3c2ccec29885c127b0a762ff09c8417cae00
+  revision: b58e013eea2dc13c8a01bdef0e37fa232ca2edbb
   branch: rails-3-1
   specs:
     refinerycms-i18n (1.1.0)
@@ -246,7 +246,7 @@ GEM
       rubyzip
     seo_meta (1.1.1)
       refinerycms-generators (~> 1.0.1)
-    sprockets (2.0.0.beta.5)
+    sprockets (2.0.0.beta.6)
       hike (~> 1.0)
       rack (~> 1.0)
       tilt (~> 1.0)

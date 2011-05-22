@@ -1,10 +1,10 @@
 sk:
   plugins:
-    refinery_settings:
+    settings:
       title: Nastavenia
       description: Správa nastavení
   admin:
-    refinery_settings:
+    settings:
       delete: Zmazať voľbu
       edit: Upraviť voľbu
       actions:
@@ -39,9 +39,9 @@ sk:
           approximate_ascii: Nastavte na hodnotu true, ak používaťe latinské znaky s akcentmi a diakritikou v názvoch stránok. Pokúsi sa previesť znaky, ako je ā, č, ž na a, c, z, a tak sa tieto znaky nezobrazia podivne v adresnom riadku niektorých webových prehliadačov.
   activerecord:
     models:
-      refinery_setting: nastavenie
+      setting: nastavenie
     attributes:
-      refinery_setting:
+      setting:
         name: Meno
         value: Hodnota
         restricted: Obmedzenia

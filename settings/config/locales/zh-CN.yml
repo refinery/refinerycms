@@ -1,10 +1,10 @@
 zh-CN:
   plugins:
-    refinery_settings:
+    settings:
       title: 设置
       description: Refinery 设置管理
   admin:
-    refinery_settings:
+    settings:
       delete: 永久删除此设置
       edit: 编辑此设置
       actions:
@@ -39,9 +39,9 @@ zh-CN:
           approximate_ascii: 如果您使用带有口音或是变音符号的拉丁字母请设定为 true. 它会将像是 ā, č, ž 的字母转为 a, c, z , 在某些网页浏览器中, 这些字母就不会奇怪地出现在网址列上.
   activerecord:
     models:
-      refinery_setting: 设置
+      setting: 设置
     attributes:
-      refinery_setting:
+      setting:
         name: 名称
         value: 设置值
         restricted: 限制

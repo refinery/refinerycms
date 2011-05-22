@@ -1,10 +1,10 @@
 nb:
   plugins:
-    refinery_settings:
+    settings:
       title: Innstillinger
       description: Styr Refinery sine innstillinger
   admin:
-    refinery_settings:
+    settings:
       delete: Fjern denne innstillingen permanent
       edit: Rediger denne innstillingen
       actions:
@@ -39,9 +39,9 @@ nb:
           approximate_ascii: Sett denne verdien til true dersom du benytter Latinske bokstavar med aksenter eller andre varianter i sidetitler. Jeg vil da konvertere bokstaver som ā, č, ž til a, c, z. På denne måten vil ikke disse bokstavene oppføre seg merkelig i noen nettlesere.
   activerecord:
     models:
-      refinery_setting: innstilling
+      setting: innstilling
     attributes:
-      refinery_setting:
+      setting:
         name: Navn
         value: Verdi
         restricted: Begrenset

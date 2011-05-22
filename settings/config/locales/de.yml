@@ -1,10 +1,10 @@
 de:
   plugins:
-    refinery_settings:
+    settings:
       title: Einstellungen
       description: Refinery-Einstellungen verwalten
   admin:
-    refinery_settings:
+    settings:
       delete: Diese Einstellung für immer löschen
       edit: Diese Einstellung bearbeiten
       actions:
@@ -39,9 +39,9 @@ de:
           approximate_ascii: Setzen Sie dies auf wahr, wenn Sie lateinische Zeichen mit Akzenten oder anderen diakritischen Zeichen in Seitentiteln verwenden. Es wird Zeichen wie ā, č, ž in a, c, z konvertieren und dadurch werden diese in der Adresszeile mancher Browser nicht seltsam angezeigt.
   activerecord:
     models:
-      refinery_setting: Einstellungen
+      setting: Einstellungen
     attributes:
-      refinery_setting:
+      setting:
         name: Name
         value: Wert
         restricted: Eingeschränkt

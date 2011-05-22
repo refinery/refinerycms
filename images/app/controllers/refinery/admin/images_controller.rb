@@ -92,7 +92,7 @@ module ::Refinery
 
       def change_list_mode_if_specified
         if action_name == 'index' and params[:view].present? and image_views.include?(params[:view].to_sym)
-          ::Refinery::RefinerySetting.set(:preferred_image_view, params[:view])
+          ::Refinery::Setting.set(:preferred_image_view, params[:view])
         end
       end
 

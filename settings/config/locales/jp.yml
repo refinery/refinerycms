@@ -1,10 +1,10 @@
 jp:
   plugins:
-    refinery_settings:
+    settings:
       title: 環境設定
       description: Refinery環境設定
   admin:
-    refinery_settings:
+    settings:
       delete: この設定を削除する
       edit: 設定を変更
       actions:
@@ -39,9 +39,9 @@ jp:
           approximate_ascii: 'ラテン文字にアクセント記号を付けたものをページのタイトルに使用する際にはこれを有効にして下さい。ā, č, žをa, c, zへと変換します。'
   activerecord:
     models:
-      refinery_setting: 設定
+      setting: 設定
     attributes:
-      refinery_setting:
+      setting:
         name: 名前
         value: 値
         restricted: 制限あり

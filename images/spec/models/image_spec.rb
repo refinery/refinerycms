@@ -65,8 +65,8 @@ module Refinery
     end
 
     describe ".user_image_sizes" do
-      it "sets and returns a hash consisting of the keys contained in the ::Refinery::RefinerySetting" do
-        Refinery::Image.user_image_sizes.should == ::Refinery::RefinerySetting.get(:user_image_sizes)
+      it "sets and returns a hash consisting of the keys contained in the ::Refinery::Setting" do
+        Refinery::Image.user_image_sizes.should == ::Refinery::Setting.get(:user_image_sizes)
       end
     end
 

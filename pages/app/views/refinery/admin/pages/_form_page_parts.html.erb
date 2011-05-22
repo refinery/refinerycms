@@ -1,4 +1,4 @@
-<% if ::Refinery::RefinerySetting.find_or_set(:new_page_parts, false) %>
+<% if ::Refinery::Setting.find_or_set(:new_page_parts, false) %>
   <ul id="page_parts_controls">
     <li>
       <%= link_to refinery_icon_tag('add.png'), '#',

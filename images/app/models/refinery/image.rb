@@ -47,7 +47,7 @@ module Refinery
       end
 
       def user_image_sizes
-        ::Refinery::RefinerySetting.find_or_set(:user_image_sizes, {
+        ::Refinery::Setting.find_or_set(:user_image_sizes, {
           :small => '110x110>',
           :medium => '225x255>',
           :large => '450x450>'

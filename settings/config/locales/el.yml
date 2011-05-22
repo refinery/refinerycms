@@ -1,10 +1,10 @@
 el:
   plugins:
-    refinery_settings:
+    settings:
       title: Settings
       description: Διαχείριση ρυθμίσεων του Refinery 
   admin:
-    refinery_settings:
+    settings:
       delete: Διαγραφή ρυθμίσης
       edit: Επεξεργασία ρύθμισης
       actions:
@@ -39,9 +39,9 @@ el:
           approximate_ascii: Set this to true if you use Latin characters with accents and other diacritics in page titles. It'll convert characters like ā, č, ž into a, c, z and this way those characters won't appear strangely in the address bar of some web browsers.
   activerecord:
     models:
-      refinery_setting: ρύθμιση
+      setting: ρύθμιση
     attributes:
-      refinery_setting:
+      setting:
         name: Όνονα
         value: Τιμή
         restricted: Περιορισμένο

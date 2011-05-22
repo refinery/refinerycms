@@ -1,11 +1,11 @@
 es:
   plugins:
-    refinery_settings:
+    settings:
       title: Configuración
       description: Gestionar opciones de Refinery
       article: femenino
   admin:
-    refinery_settings:
+    settings:
       delete: Eliminar esta opción para siempre
       edit: Editar esta opción
       actions:
@@ -40,9 +40,9 @@ es:
           approximate_ascii: Ponlo a true si usas caracteres latinos con tildes y otros signos diacríticos en los títulos de página. Convertirá caracteres como ā, č, ž en a, c, z y así estos caracteres no aparecerán como símbolos extraños en la barra de direcciones de algunos navegadores.
   activerecord:
     models:
-      refinery_setting: opción
+      setting: opción
     attributes:
-      refinery_setting:
+      setting:
         name: Nombre
         value: Valor
         restricted: Restringido

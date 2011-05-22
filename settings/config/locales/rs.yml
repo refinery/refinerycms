@@ -1,10 +1,10 @@
 rs:
   plugins:
-    refinery_settings:
+    settings:
       title: Podešavanja
       description: Menjaj Refinery podešavanja
   admin:
-    refinery_settings:
+    settings:
       delete: Ukloni ovo podešavanje zauvek
       edit: Izmeni ovo podešavanje
       actions:
@@ -39,9 +39,9 @@ rs:
           approximate_ascii: Podesi ovo na true ako koristiš Latin karaktere u naslovu. Konvertovaće karaktere kao što su ā, č, ž u a, c, z i na ovaj način će se ova slova ispravno prikazivati u  URL adresama.
   activerecord:
     models:
-      refinery_setting: podešavanje
+      setting: podešavanje
     attributes:
-      refinery_setting:
+      setting:
         name: Naziv
         value: Vrednost
         restricted: Ograničeno

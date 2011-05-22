@@ -52,5 +52,5 @@ Then /^I should have (\d+) page_parts$/ do |count|
 end
 
 Given /^I have frontend locales "?([^\"]*)"?/ do |locales|
-  ::Refinery::RefinerySetting.set(:i18n_translation_frontend_locales, {:value => locales.split(', '), :scoping => 'refinery'})
+  ::Refinery::Setting.set(:i18n_translation_frontend_locales, {:value => locales.split(', '), :scoping => 'refinery'})
 end

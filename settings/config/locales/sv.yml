@@ -1,10 +1,10 @@
 sv:
   plugins:
-    refinery_settings:
+    settings:
       title: Inställningar
       description: Hantera inställningar i Refinery
   admin:
-    refinery_settings:
+    settings:
       delete: Ta bort den här inställningen för alltid
       edit: Redigera den här inställningen
       actions:
@@ -38,9 +38,9 @@ sv:
           use_resource_caching: Rekomenderat att aktivera den här inställningen i produktionsläget då den buffrar javascript, stilmallar m.m. till ett enskilt paket att skicka vilket minimerar antalet kopplingar till din webbplats och snabbar upp laddningstiden.
   activerecord:
     models:
-      refinery_setting: inställning
+      setting: inställning
     attributes:
-      refinery_setting:
+      setting:
         name: Namn
         value: Värde
         restricted: Begränsad

@@ -1,10 +1,10 @@
 da:
   plugins:
-    refinery_settings:
+    settings:
       title: Indstillinger
       description: Vedligehold Refinery indstillinger
   admin:
-    refinery_settings:
+    settings:
       delete: Slet indstilling
       edit: Redigér indstilling
       actions:
@@ -39,9 +39,9 @@ da:
           approximate_ascii: Sæt til 'true', hvis du vil konvertere karakterer som ā, č og ž til a, c og z i side-URLer.
   activerecord:
     models:
-      refinery_setting: indstilling
+      setting: indstilling
     attributes:
-      refinery_setting:
+      setting:
         name: Navn
         value: Værdi
         restricted: Begrænset adgang

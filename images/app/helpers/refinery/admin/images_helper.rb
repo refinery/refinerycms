@@ -3,11 +3,11 @@ module Refinery
     module ImagesHelper
 
       def image_views
-        ::Refinery::RefinerySetting.find_or_set(:image_views, [:grid, :list])
+        ::Refinery::Setting.find_or_set(:image_views, [:grid, :list])
       end
 
       def current_image_view
-        ::Refinery::RefinerySetting.find_or_set(:preferred_image_view, :grid)
+        ::Refinery::Setting.find_or_set(:preferred_image_view, :grid)
       end
 
       def other_image_views
@@ -20,7 +20,7 @@ module Refinery
 
       def change_list_mode_if_specified
         if action_name == 'index' and params[:view].present? and image_views.include?(params[:view].to_sym)
-          ::Refinery::RefinerySetting.set(:preferred_image_view, params[:view])
+          ::Refinery::Setting.set(:preferred_image_view, params[:view])
         end
       end
 

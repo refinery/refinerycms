@@ -1,10 +1,10 @@
 fr:
   plugins:
-    refinery_settings:
+    settings:
       title: Paramètres
       description: Gestion des paramètres de Refinery
   admin:
-    refinery_settings:
+    settings:
       delete: Supprimer définitivement ce paramètre
       edit: Modifier ce paramètre
       actions:
@@ -37,9 +37,9 @@ fr:
           use_resource_caching: Il est recommandé de cocher cette option en production. Cela permet de regrouper les fichiers javascripts et CSS dans deux fichiers uniques afin d'augmenter la vitesse de service des pages et diminuer la charge sur le serveur.
   activerecord:
     models:
-      refinery_setting: paramètre
+      setting: paramètre
     attributes:
-      refinery_setting:
+      setting:
         name: Nom
         value: Valeur
         restricted: Restriction

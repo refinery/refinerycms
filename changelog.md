@@ -3,6 +3,7 @@
 * Finally removed `Page#[]` in favour of `Page#content_for` so instead of `@page[:body]` it's `@page.content_for(:body)`. [Philip Arndt](https://github.com/parndt)
 * Migrated to [Kaminari](https://github.com/amatsuda/kaminari) for pagination. [Uģis Ozols](https://github.com/ugisozols)
 * Moved everything under Refinery namespace. [wakeless](https://github.com/wakeless)
+* Renamed `RefinerySetting` to `Refinery::Setting`. [Philip Arndt](https://github.com/parndt)
 
 ## 0.9.9.22 [22 May 2011]
 

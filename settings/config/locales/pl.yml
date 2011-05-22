@@ -1,11 +1,11 @@
 pl:
   plugins:
-    refinery_settings:
+    settings:
       title: Ustawienia
       description: Zarządzaj ustawieniami Refinery
       article: neutral
   admin:
-    refinery_settings:
+    settings:
       delete: Na zawsze usuń to ustawienie
       edit: Zmień to ustawienie
       actions:
@@ -39,9 +39,9 @@ pl:
           use_resource_caching: Zaleca się uaktywnienie tego ustawienia w produkcji, ponieważ powoduje zebranie zasobów CSS i Javascript w pojedyncze pliki, zmniejszając ilość zapytań HTTP i szybkość działania strony.
   activerecord:
     models:
-      refinery_setting: ustawienie
+      setting: ustawienie
     attributes:
-      refinery_setting:
+      setting:
         name: Nazwa
         value: Wartość
         restricted: Zastrzeżone

@@ -1,13 +1,13 @@
 sl:
   activerecord:
     models:
-      refinery_setting: Refinery nastavitve
+      setting: Refinery nastavitve
     attributes:
-      refinery_setting:
+      setting:
         name: Ime
         value: Vrednost
   admin:
-    refinery_settings:
+    settings:
       delete: Odstrani nastavitev
       edit: Uredi nastavitev
       actions:
@@ -22,5 +22,5 @@ sl:
         help:
           restricted: To omogoča da nastavitev lahko vidijo in urejajo samo super-uporabniki (kot ste vi).
   plugins:
-    refinery_settings:
+    settings:
       title: Nastavitve

@@ -3,9 +3,9 @@
     <%= t('results_for', :scope => 'shared.admin.search', :query => params[:search]) %>
   </h2>
 <% end %>
-<% if @refinery_settings.any? %>
+<% if @settings.any? %>
   <div class='pagination_container'>
-    <%= render :partial => 'refinery_settings' %>
+    <%= render :partial => 'settings' %>
   </div>
 <% else %>
   <p>
@@ -14,7 +14,7 @@
     <% else %>
       <strong>
         <%= t('.empty_set') %>
-        <%= t('.create_first', :link => t('new', :scope => 'refinery.admin.refinery_settings.actions')) %>
+        <%= t('.create_first', :link => t('new', :scope => 'refinery.admin.settings.actions')) %>
       </strong>
     <% end %>
   </p>
