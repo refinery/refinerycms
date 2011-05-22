@@ -1,6 +1,6 @@
 module ::Refinery
   module Admin
-    class ::Refinery::RefinerySettingsController < ::Admin::BaseController
+    class RefinerySettingsController < ::Admin::BaseController
 
       helper "refinery/admin/refinery_settings"
 
