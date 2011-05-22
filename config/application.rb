@@ -6,7 +6,7 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(:default, Rails.env) if defined?(Bundler)
 
-module ::Refinery::RefineryApp
+module RefineryApp
   class Application < Rails::Application
     Rails.backtrace_cleaner.remove_silencers!
     # Settings in config/environments/* take precedence over those specified here.
