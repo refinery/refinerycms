@@ -1,3 +1,5 @@
+require 'rdoc/task'
+
 namespace :doc do
 
   task :app => [:refinery]
