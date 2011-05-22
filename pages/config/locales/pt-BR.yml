@@ -64,14 +64,6 @@ pt-BR:
         link_url_help: "Se você quer que esta página seja redicionada para outro site ou página quando você clicar nesta página no menu, digite a URL. ex. http://google.com ou deixe em branco."
         parent_page_help: "Se você quer colocar está página a baixo de outra página no menu, selecione qual página aqui ou deixe em branco caso queria a página na raiz do menu."
         custom_title_help: "Se você quer que a página tenha um título diferente do que é mostrado no menu então selecione &apos;Texto&apos; e digite o novo título."
-      form_advanced_options_seo:
-        seo: Otimização de Motor de Busca
-        seo_override_title: Título para a busca
-        seo_override_title_help: Digite de 5 a 10 palvras pequenas que resumem o conteúdo desta página.
-        meta_keywords_title: Palavras-chave
-        meta_keywords_help: Digite de 5 a 10 palavras-chave presentes nesta página. Separe elas com vírgula.
-        meta_description_title: Meta descrição
-        meta_description_help: Digite duas ou três sentenças concisas descrevendo sobre o que é essa página.
       actions:
         create_new_page: Criar uma nova página
         reorder_pages: Reordenar as Páginas

@@ -8,10 +8,10 @@
     # cache the pages first
     if caching
       collection = Rails.cache.fetch(cache_key) { (collection ||= @menu_pages).to_a }
-      roots = Rails.cache.fetch([cache_key, "roots"].join("_")) { roots = collection.select{|c| c.parent_id.nil?} } unless roots
+      roots = local_assigns[:roots] || Rails.cache.fetch([cache_key, "roots"].join("_")) { roots = collection.select{|c| c.parent_id.nil?} } unless roots
     else
       collection ||= @menu_pages
-      roots = collection.select{|c| c.parent_id.nil?} unless roots
+      roots = local_assigns[:roots] || collection.select{|c| c.parent_id.nil?}
     end
 
     # Select top menu items unless 'roots' is supplied.

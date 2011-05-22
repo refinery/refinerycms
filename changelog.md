@@ -1,8 +1,19 @@
+## 0.9.9.22 [22 May 2011]
+
+* Fixed issue introduced with `rake 0.9.0`. [Philip Arndt](https://github.com/parndt)
+* Improved menu performance again including update to `awesome_nested_set 2.0`. [Philip Arndt](https://github.com/parndt) and [Mark Haylock](https://github.com/mhaylock)
+* Supporting the new Google Analytics 'site speed' feature. [David Jones](https://github.com/djones)
+* Implemented `:translator` role which allows a particular user access only to translate pages. [Philip Arndt](https://github.com/parndt)
+* Added support for `Dragonfly 0.9.0` which uses the 'fog' gem. [Jesper Hvirring Henriksen](https://github.com/hvirring)
+* Updated all `refinery/admin.js` functions to make use of 'initialised'. [Mark Haylock](https://github.com/mhaylock)
+* Using SEO form from `seo_meta` inside pages' advanced options rather than having it duplicated in the RefineryCMS codebase too. [Uģis Ozols](https://github.com/ugisozols)
+* [See full list](https://github.com/resolve/refinerycms/compare/0.9.9.21...0.9.9.22)
+
 ## 0.9.9.21 [03 May 2011]
 
 * Fixed issue with MySQL2 gem complaining about us being on Rails 3 by specifying `'~> 0.2.7'` in the Gemfile of a generated application. [Philip Arndt](https://github.com/parndt)
 * `/registrations` is now `/users`. [Philip Arndt](https://github.com/parndt)
-* Added Finnish translation. [https://github.com/veeti](Veeti Paananen)
+* Added Finnish translation. [Veeti Paananen](https://github.com/veeti)
 * Allowed `data` and `data-` attributes in WYMeditor tags using HTML view. [Philip Arndt](https://github.com/parndt)
 * [See full list](https://github.com/resolve/refinerycms/compare/0.9.9.20...0.9.9.21)
 

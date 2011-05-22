@@ -63,14 +63,6 @@ el:
         link_url_help: If you want this page to go to another website or page when you click this page in the menu, enter a URL. e.g. http://google.com otherwise leave it blank
         parent_page_help: You can put a page under another page by selecting it in the list. If you want this page to be a top-level page, just leave it blank.
         custom_title_help: If you want the page to have a different title than the one that shows in the menu then select &apos;Text&apos; and enter it here.
-      form_advanced_options_seo:
-        seo: Search Engine Optimization
-        seo_override_title: Browser title
-        seo_override_title_help: Enter a 5-10 word title that summarizes the contents of this page.
-        meta_keywords_title: Meta keywords
-        meta_keywords_help: Enter 5-10 keywords that relate to this page. Separate keywords by a comma.
-        meta_description_title: Meta description
-        meta_description_help: Enter a concise two or three sentences describing what this page is about.
       actions:
         create_new_page: Προσθήκη νέας σελίδας
         reorder_pages: Αναδιάταξη σελιδών

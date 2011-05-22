@@ -62,14 +62,6 @@ lolcat:
         link_url_help: If you want this page to go to another website or page when you click this page in the menu, enter a URL. e.g. http://GOOGLE.COM OTHERWIZE LEEF IT BLANK
         parent_page_help: U CAN PUT PAEG UNDR ANOTHR PAEG BY SELECTIN IT IN DA LIST. IF U WANTS DIS PAEG 2 BE TOP-LEVEL PAEG, JUS LEEF IT BLANK.
         custom_title_help: IF U WANTS TEH PAEG 2 HAS DIFFERENT TITLE THAN TEH WAN DAT SHOWS IN DA MENU DEN SELECT &APOS;TEXT&APOS; AN ENTR IT HER.
-      form_advanced_options_seo:
-        seo: SEARCH ENGINE OPTIMIZASHUN
-        seo_override_title: BROWSR TITLE
-        seo_override_title_help: ENTR 5-10 WERD TITLE DAT SUMMARIZEZ TEH CONTENTS OV DIS PAEG.
-        meta_keywords_title: META KEYWORDZ
-        meta_keywords_help: ENTR 5-10 KEYWORDZ DAT RELATE 2 DIS PAEG. SEPARATE KEYWORDZ BY COMMA.
-        meta_description_title: META DESCRIPSHUN
-        meta_description_help: ENTR CONCIZE 2 OR 3 SENTENCEZ DESCRIBIN WUT DIS PAEG IZ BOUT.
       actions:
         create_new_page: ADD NEW PAEG
         reorder_pages: REORDR PAGEZ

@@ -61,14 +61,6 @@ jp:
         link_url_help: メニューでこのページへのリンクをクリックした時、他のウェブサイトやページに転送するようにするにはURL（例 http://google.com）を書き入れます。そうでない場合は空欄のままにします。
         parent_page_help: リストから選んで、ページを他のページの下に置く事が出来ます。空にするとこのページは一番上の階層のページとして扱われます。
         custom_title_help: このページにメニューに表示されているもの以外のタイトルを付けたい時にはここに書いて下さい。
-      form_advanced_options_seo:
-        seo: 検索エンジン最適化
-        seo_override_title: ブラウザのタイトル
-        seo_override_title_help: このページの内容を要約する短いタイトルを入れて下さい。
-        meta_keywords_title: メタキーワード
-        meta_keywords_help: このページに関係のあるキーワードを5つから10個ほど入れて下さい。区切りの記号はコンマです。
-        meta_description_title: メタの説明
-        meta_description_help: このページの内容を説明する簡潔な文章を二三入れて下さい。
       actions:
         create_new_page: 新規ページを追加
         reorder_pages: ページを並べ替える

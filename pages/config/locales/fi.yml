@@ -63,20 +63,13 @@ fi:
         link_url_help: "Jos haluat tämän sivun uudelleenohjaavan käyttäjän toiselle nettisivustolle tai sivulle, kirjoita URL (esim. http://google.com) tai jätä muuten tyhjäksi"
         parent_page_help: "Voit asettaa sivun toisen sivun alisivuksi valitsemalla yläsivun valikosta. Jos haluat tämän sivun olevan pääsivu, jätä sivu valitsematta."
         custom_title_help: "Jos haluat sivun näyttävän eri otsikon valikossa, valitse 'Teksti' ja kirjoita se tähän."
-      form_advanced_options_seo:
-        seo: Hakukoneoptimointi
-        seo_override_title: Otsikko
-        seo_override_title_help: Kirjoita 5-10 sanan otsikko joka tiivistää tämän sivun sisällön.
-        meta_keywords_title: Avainsanat
-        meta_keywords_help: "Kirjoita 5-10 avainsanaa, jotka littyvät tähän sivuun. Erottele ne pilkulla."
-        meta_description_title: Kuvaus
-        meta_description_help: Kirjoita ytimekäs kahden tai kolmen lauseen kuvaus tästä sivusta.
       actions:
         create_new_page: Lisää uusi sivu
         reorder_pages: Muuta sivujen järjestystä
         reorder_pages_done: Tallenna
       records:
         no_pages_yet: Sivuja ei ole vielä. Paina "Lisää uusi sivu-" painiketta lisätäksesi ensimmäisen sivun.
+      translator_access: Sinulla ei ole lupaa muokata sivuja tällä kielellä.
   activerecord:
     models:
       page: sivu

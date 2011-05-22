@@ -65,14 +65,6 @@ lv:
         link_url_help: Ja vēlaties, lai šī lapa novirzītu apmeklētājus uz citu interneta saiti vai jūsu saita lapu, tad ievadiet saiti, piemēram, http://google.lv, pretējā gadījumā atstājot šo lauku tukšu
         parent_page_help: Jūs varat novietot lapu zem citas lapas, izvēloties to no sarkasta. Ja jūs velaties, lai šī lapa būtu augšējā līmenī - atstājiet lauku tukšu.
         custom_title_help: Ja vēlaties, lai lapai būtu cits nosaukums nekā tas ir izvēlnē, tad izvēlieties &apos;Teksts&apos; un ievadiet to izveidotajā laukā.
-      form_advanced_options_seo:
-        seo: Optimizēšana Interneta Meklētājiem
-        seo_override_title: Nosaukums pārlūkā
-        seo_override_title_help: Ievadiet 5-10 nosaukuma vārdus, kuri apkopo šīs lapas saturu.
-        meta_keywords_title: Meta atslēgvārdi
-        meta_keywords_help: Ievadiet 5-10 atslēgvārdus, kuriem ir saistība ar šo lapu. Atslēgvārdus atdaliet ar komatu
-        meta_description_title: Meta apraksts
-        meta_description_help: Īsi, divos vai trijos teikumos, aprakstiet šīs lapas saturu.
       actions:
         create_new_page: Izveidot jaunu lapu
         reorder_pages: Pārkārtot lapas

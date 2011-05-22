@@ -7,7 +7,7 @@
         <span class='preview'>
           <% ([page.translation.try(:locale)] | locales).each do |locale| %>
             <%= link_to refinery_icon_tag("flags/#{locale}.png", :size => '16x11'),
-                        edit_admin_page_url(page, :switch_locale => locale),
+                        edit_admin_page_path(page, :switch_locale => locale),
                         :class => 'locale' %>
           <% end %>
         </span>

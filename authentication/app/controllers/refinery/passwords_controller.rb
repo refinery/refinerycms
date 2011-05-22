@@ -1,7 +1,7 @@
 module ::Refinery
   class PasswordsController < ::Devise::PasswordsController
     layout 'login'
-  
+
     # Rather than overriding devise, it seems better to just apply the notice here.
     after_filter :give_notice, :only => [:update]
     def give_notice
@@ -10,10 +10,10 @@ module ::Refinery
       end
     end
     protected :give_notice
-  
+
     # GET /registrations/password/edit?reset_password_token=abcdef
     def edit
-      if params[:reset_password_token] and (@user = User.find_by_reset_password_token(params[:reset_password_token])).present?
+      if params[:reset_password_token] and (@user = User.where(:reset_password_token => params[:reset_password_token]).first).present?
         render_with_scope :edit
       else
         redirect_to(new_user_password_url, :flash => ({
@@ -21,12 +21,12 @@ module ::Refinery
         }))
       end
     end
-  
+
     # POST /registrations/password
     def create
       if params[:user].present? and (email = params[:user][:email]).present? and
-         (user = User.find_by_email(email)).present?
-  
+         (user = User.where(:email => email).first).present?
+
         # Call devise reset function.
         user.send(:generate_reset_password_token!)
         UserMailer.reset_notification(user, request).deliver

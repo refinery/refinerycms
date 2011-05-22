@@ -3,7 +3,7 @@
     <%= render :partial => "/shared/admin/search", :locals => {:url => admin_images_url} %>
   </li>
   <li>
-    <%= link_to t('.create_new_image'), new_admin_image_url(:dialog => true, :width => 600, :height => 300),
+    <%= link_to t('.create_new_image'), new_admin_image_path(:dialog => true, :width => 600, :height => 300),
                 :class => "add_icon" %>
   </li>
   <% other_image_views.each do |image_view| %>

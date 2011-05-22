@@ -32,7 +32,7 @@ module Refinery
           c.secret = ::Refinery::RefinerySetting.find_or_set(:dragonfly_secret,
                                                  Array.new(24) { rand(256) }.pack('C*').unpack('H*').first)
         end
-        
+
         if Refinery.s3_backend
           app_resources.configure_with(:heroku, ENV['S3_BUCKET'])
           # Dragonfly doesn't set the S3 region, so we have to do this manually
