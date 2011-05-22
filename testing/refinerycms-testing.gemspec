@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |s|
   s.name              = %q{refinerycms-testing}
-  s.version           = %q{1.0.0.pre}
+  s.version           = %q{1.0.0}
   s.summary           = %q{Testing plugin for Refinery CMS}
   s.description       = %q{This plugin adds the ability to run cucumber and rspec against the RefineryCMS gem while inside a RefineryCMS project}
   s.date              = %q{2011-05-22}
@@ -14,7 +14,7 @@ Gem::Specification.new do |s|
   s.require_paths     = %w(lib)
   s.executables       = %w()
 
-  s.add_dependency 'refinerycms-core', '= 1.0.0.pre'
+  s.add_dependency 'refinerycms-core', '~> 1.0.0'
   # RSpec
   s.add_dependency 'rspec-rails',       '~> 2.6'
 
