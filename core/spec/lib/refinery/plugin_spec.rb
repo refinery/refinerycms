@@ -18,10 +18,12 @@ module Refinery
 
     def setup_i18n
       ::I18n.backend = ::I18n::Backend::Simple.new
-      ::I18n.backend.store_translations :en, :plugins => {
-        :refinery_rspec => {
-          :title => 'RefineryCMS RSpec',
-          :description => 'RSpec tests for plugin.rb'
+      ::I18n.backend.store_translations :en, :refinery => {
+        :plugins => {
+          :refinery_rspec => {
+            :title => 'RefineryCMS RSpec',
+            :description => 'RSpec tests for plugin.rb'
+          }
         }
       }
     end

@@ -12,7 +12,7 @@ module ::Refinery
       before_filter :change_list_mode_if_specified, :init_dialog
 
       def new
-        @image = Image.new if @image.nil?
+        @image = Refinery::Image.new if @image.nil?
 
         @url_override = refinery_admin_images_path(:dialog => from_dialog?)
       end
@@ -43,15 +43,15 @@ module ::Refinery
         @images = []
         begin
           unless params[:image].present? and params[:image][:image].is_a?(Array)
-            @images << (@image = Image.create(params[:image]))
+            @images << (@image = Refinery::Image.create(params[:image]))
           else
             params[:image][:image].each do |image|
-              @images << (@image = Image.create(:image => image))
+              @images << (@image = Refinery::Image.create(:image => image))
             end
           end
         rescue Dragonfly::FunctionManager::UnableToHandle
           logger.warn($!.message)
-          @image = Image.new
+          @image = Refinery::Image.new
         end
 
         unless params[:insert]
@@ -92,7 +92,7 @@ module ::Refinery
 
       def change_list_mode_if_specified
         if action_name == 'index' and params[:view].present? and image_views.include?(params[:view].to_sym)
-          RefinerySetting.set(:preferred_image_view, params[:view])
+          ::Refinery::RefinerySetting.set(:preferred_image_view, params[:view])
         end
       end
 

@@ -1,4 +1,6 @@
 # encoding: utf-8
+require 'refinery/images/dragonfly'
+Refinery::Images::Dragonfly.setup!
 
 module Refinery
   class Image < ActiveRecord::Base
@@ -45,7 +47,7 @@ module Refinery
       end
 
       def user_image_sizes
-        RefinerySetting.find_or_set(:user_image_sizes, {
+        ::Refinery::RefinerySetting.find_or_set(:user_image_sizes, {
           :small => '110x110>',
           :medium => '225x255>',
           :large => '450x450>'

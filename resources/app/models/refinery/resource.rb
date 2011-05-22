@@ -1,3 +1,6 @@
+require 'refinery/resources/dragonfly'
+::Refinery::Resources::Dragonfly.setup!
+
 module ::Refinery
   class Resource < ActiveRecord::Base
 
