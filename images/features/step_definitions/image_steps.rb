@@ -33,7 +33,7 @@ end
 When /^I upload the image at "([^\"]*)"$/ do |file_path|
   original_stderr = $stderr.dup
   $stderr.reopen(Tempfile.new('stderr'))
-  visit new_admin_image_path
+  visit new_refinery_admin_image_path
   attach_file('image_image', File.join(File.expand_path('../../uploads/', __FILE__), file_path))
   click_button 'Save'
   $stderr.reopen(original_stderr)

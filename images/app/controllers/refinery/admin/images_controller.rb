@@ -1,7 +1,6 @@
 module ::Refinery
   module Admin
     class ImagesController < ::Admin::BaseController
-      layout "refinery/admin"
 
       helper_method :change_list_mode_if_specified
 
@@ -15,14 +14,14 @@ module ::Refinery
       def new
         @image = Image.new if @image.nil?
 
-        @url_override = admin_images_path(:dialog => from_dialog?)
+        @url_override = refinery_admin_images_path(:dialog => from_dialog?)
       end
 
       # This renders the image insert dialog
       def insert
         self.new if @image.nil?
 
-        @url_override = admin_images_path(request.query_parameters.merge(:insert => true))
+        @url_override = refinery_admin_images_path(request.query_parameters.merge(:insert => true))
 
         if params[:conditions].present?
           extra_condition = params[:conditions].split(',')
@@ -61,7 +60,7 @@ module ::Refinery
             unless from_dialog?
               redirect_to :action => 'index'
             else
-              render :text => "<script>parent.window.location = '#{admin_images_url}';</script>"
+              render :text => "<script>parent.window.location = '#{refinery_admin_images_path}';</script>"
             end
           else
             self.new # important for dialogs

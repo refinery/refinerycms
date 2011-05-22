@@ -41,11 +41,11 @@ module Refinery
         site_name_setting = RefinerySetting.find_or_create_by_name('site_name', :value => "Company Name")
         if site_name_setting.value.to_s =~ /^(|Company\ Name)$/ or Role[:refinery].users.count == 1
           flash[:message] << "<p>#{t('setup_website_name_html', :scope => 'refinery.users',
-                                     :link => edit_admin_refinery_setting_path(site_name_setting, :dialog => true),
+                                     :link => edit_refinery_admin_refinery_setting_path(site_name_setting, :dialog => true),
                                      :title => t('edit', :scope => 'admin.refinery_settings'))}</p>".html_safe
         end
         sign_in(@user)
-        redirect_back_or_default(admin_root_url)
+        redirect_back_or_default(refinery_admin_root_path)
       else
         render :action => 'new'
       end
@@ -55,7 +55,7 @@ module Refinery
 
     def redirect?
       if refinery_user?
-        redirect_to admin_users_url
+        redirect_to refinery_admin_users_path
       elsif refinery_users_exist?
         redirect_to new_user_session_path
       end

@@ -15,7 +15,7 @@ And /^I should have ([0-9]+) files?$/ do |number|
 end
 
 When /^I upload the file at "([^\"]*)"$/ do |file_path|
-  visit new_admin_resource_path
+  visit new_refinery_admin_resource_path
   attach_file('resource_file', File.join(File.expand_path('../../uploads/', __FILE__), file_path))
   click_button 'Save'
 end

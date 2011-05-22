@@ -5,7 +5,7 @@ module NavigationHelpers
         case page_name
 
         when /the list of users/
-          admin_users_path
+          refinery_admin_users_path
 
         when /the login page/
           new_user_session_path

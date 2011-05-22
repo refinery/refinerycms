@@ -14,8 +14,8 @@ module Refinery
                   (if session.keys.map(&:to_sym).include?(:refinery_return_to) and session[:refinery_return_to].present?
                     session[:refinery_return_to]
                    else
-                    admin_root_path
-                   end rescue admin_root_path)
+                    refinery_admin_root_path
+                   end rescue refinery_admin_root_path)
         end
       end
 

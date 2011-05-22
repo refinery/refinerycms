@@ -1,4 +1,4 @@
-<%= form_for [:admin, @user], {:url => @user.new_record? ? admin_users_path : admin_user_path(@user), :as => :user} do |f| %>
+<%= form_for [:admin, @user], {:url => @user.new_record? ? refinery_admin_users_path : refinery_admin_user_path(@user), :as => :user} do |f| %>
 
   <%= render :partial => "/shared/admin/error_messages",
              :locals => {

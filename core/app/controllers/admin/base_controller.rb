@@ -2,7 +2,6 @@
 # Likewise, all the methods added will be available for all controllers in the refinery backend.
 module Admin
   class BaseController < ::ActionController::Base
-    layout "refinery/admin"
 
   end
 end

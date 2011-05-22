@@ -1,12 +1,10 @@
 module ::Refinery
   module Admin
     class RefinerySettingsController < ::Admin::BaseController
-      layout "refinery/admin"
 
       helper "refinery/admin/refinery_settings"
 
       crudify :'refinery/refinery_setting',
-              :title_attribute => :title,
               :order => "name ASC",
               :redirect_to_url => :redirect_to_where?,
               :xhr_paging => true
@@ -49,7 +47,7 @@ module ::Refinery
 
     private
       def redirect_to_where?
-        (from_dialog? && session[:return_to].present?) ? session[:return_to] : admin_refinery_settings_url
+        (from_dialog? && session[:return_to].present?) ? session[:return_to] : refinery_admin_refinery_settings_path
       end
 
       # this fires before an update or create to remove any attempts to pass sensitive arguments.

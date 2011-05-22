@@ -23,7 +23,7 @@ module Refinery
             :class => User,
             :title => 'username'
           }
-          plugin.url = app.routes.url_helpers.admin_users_path
+          plugin.url = app.routes.url_helpers.refinery_admin_users_path
         end
       end
 

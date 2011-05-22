@@ -1,9 +1,8 @@
 module Refinery
   module Admin
     class UsersController < ::Admin::BaseController
-      layout "refinery/admin"
 
-      crudify 'refinery/user',
+      crudify :'refinery/user',
               :order => 'username ASC',
               :title_attribute => 'username',
               :xhr_paging => true
@@ -30,7 +29,7 @@ module Refinery
             @user.roles = @selected_role_names.collect{|r| Role[r.downcase.to_sym]}
           end
 
-          redirect_to(admin_users_url, :notice => t('created', :what => @user.username, :scope => 'refinery.crudify'))
+          redirect_to(refinery_admin_users_path, :notice => t('created', :what => @user.username, :scope => 'refinery.crudify'))
         else
           render :action => 'new'
         end
@@ -64,7 +63,7 @@ module Refinery
           end
 
           if @user.update_attributes(params[:user])
-            redirect_to admin_users_url, :notice => t('updated', :what => @user.username, :scope => 'refinery.crudify')
+            redirect_to refinery_admin_users_path, :notice => t('updated', :what => @user.username, :scope => 'refinery.crudify')
           else
             @user.plugins = @previously_selected_plugin_names
             @user.roles = @previously_selected_roles

@@ -1,9 +1,9 @@
 <ul>
   <li>
-    <%= render :partial => "/shared/admin/search", :locals => {:url => admin_resources_url} %>
+    <%= render :partial => "/shared/admin/search", :locals => {:url => refinery_admin_resources_path} %>
   </li>
   <li>
-    <%= link_to t('.upload_new'), new_admin_resource_url(:dialog => true,
+    <%= link_to t('.upload_new'), new_refinery_admin_resource_path(:dialog => true,
                                                          :width => 600,
                                                          :height => 300),
                 :class => "add_icon" %>

@@ -1,12 +1,11 @@
 module ::Refinery
   module Admin
     class PagesController < ::Admin::BaseController
-      layout "refinery/admin"
 
-      crudify "refinery/page",
+      crudify :'refinery/page',
               :conditions => nil,
               :order => "lft ASC",
-              :redirect_to_url => :admin_pages_url,
+              :redirect_to_url => :refinery_admin_pages_path,
               :include => [:slugs, :translations, :children],
               :paging => false
 

@@ -76,11 +76,11 @@ module Refinery
 
       private
         def layout?
-          "admin#{"_dialog" if from_dialog?}"
+          "refinery/admin#{"_dialog" if from_dialog?}"
         end
 
         # Check whether it makes sense to return the user to the last page they
-        # were at instead of the default e.g. admin_pages_url
+        # were at instead of the default e.g. refinery_admin_pages_path
         # right now we just want to snap back to index actions and definitely not to dialogues.
         def store_location?
           store_location unless action_name !~ /index/ or request.xhr? or from_dialog?

@@ -4,7 +4,7 @@ module NavigationHelpers
       def path_to(page_name)
       case page_name
         when /the (d|D)ashboard/
-          admin_dashboard_path
+          refinery_admin_dashboard_path
         else
           nil
         end
