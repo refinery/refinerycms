@@ -31,12 +31,12 @@ gem 'mysql2', '~> 0.2.7'
 # REFINERY CMS ================================================================
 # Anything you put in here will be overridden when the app gets updated.
 
-# gem 'refinerycms', '~> 0.9.9.22'
+# gem 'refinerycms', '~> 1.0.0.pre'
 
 group :development, :test do
   # To use refinerycms-testing, uncomment it (if it's commented out) and run 'bundle install'
   # Then, run 'rails generate refinerycms_testing' which will copy its support files.
-  gem 'refinerycms-testing',    '~> 0.9.9.22'
+  gem 'refinerycms-testing',    '~> 1.0.0.pre'
 end
 
 # END REFINERY CMS ============================================================
