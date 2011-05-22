@@ -45,3 +45,10 @@ Feature: Visit Pages
     Then I should see "Home"
     And I should see "About"
     And I should see "Home" within ".selected > a"
+
+  Scenario: Skip to first child
+    Given I have a page titled "Child Page"
+    And the page titled "Child Page" is a child of About
+    And the page titled "About" is set to skip to first child
+    When I go to the page titled "About"
+    Then I should see "Child Page" within ".selected * > .selected a"
