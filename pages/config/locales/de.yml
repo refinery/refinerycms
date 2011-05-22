@@ -63,14 +63,6 @@ de:
         link_url_help: Wenn diese Seite zu einer anderen Seite weitergeleitet werden soll, geben Sie hier eine Adresse an, sonst lassen Sie dieses Feld leer.
         parent_page_help: Sie können eine Seite einer anderen unterordnen, indem Sie diese aus der Liste wählen. Soll die Seite auf die oberste Ebene, lassen Sie dieses Feld leer.
         custom_title_help: Wenn die Seite einen anderen Titel haben soll, als der im Menü angezeigte, so wählen Sie 'Text' und geben Sie ihn hier ein.
-      form_advanced_options_seo:
-        seo: Suchmaschinenoptimierung
-        seo_override_title: Browsertitel
-        seo_override_title_help: Geben Sie einen 5-10 Wörter langen Titel an, den der Inhalt der Seite beschreibt.
-        meta_keywords_title: Meta-Schlüsselwörter
-        meta_keywords_help: Geben Sie 5-10 Schlüsselwörter für diese Seite an. Trennen Sie Schlüsselwörter mit einem Komma.
-        meta_description_title: Meta-Beschreibung
-        meta_description_help: Beschreiben Sie in knappen zwei oder drei Sätzen, um was es sich bei dieser Seite handelt.
       actions:
         create_new_page: Neue Seite anlegen
         reorder_pages: Seiten umsortieren
