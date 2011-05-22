@@ -3,7 +3,7 @@ module Refinery
     module ImageHelper
 
       # replace all system images with a thumbnail version of them (handy for all images inside a page part)
-      # for example, <%= content_fu(@page[:body], '96x96#c') %> converts all /system/images to a 96x96 cropped thumbnail
+      # for example, <%= content_fu(@page.content_for(:body), '96x96#c') %> converts all /system/images to a 96x96 cropped thumbnail
       def content_fu(content, thumbnail)
         content.gsub(%r{<img.+?src=['"](/system/images/.+?)/.+?/>}) do |image_match|
            begin

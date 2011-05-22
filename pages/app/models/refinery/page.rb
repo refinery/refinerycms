@@ -7,13 +7,12 @@ module Refinery
       translates :title, :custom_title, :meta_keywords, :meta_description, :browser_title, :include => :seo_meta
 
       # Set up support for meta tags through translations.
-      if defined?(::Page::Translation)
+      if self.respond_to?(:translation_class)
         attr_accessible :title
         # set allowed attributes for mass assignment
-        ::Page::Translation.send :attr_accessible, :browser_title, :meta_description,
-                                                   :meta_keywords, :locale
+        self.translation_class.send :attr_accessible, :browser_title, :meta_description, :meta_keywords, :locale
 
-        if ::Page::Translation.table_exists?
+        if self.translation_class.table_exists?
           def translation
             if @translation.nil? or @translation.try(:locale) != ::Globalize.locale
               @translation = translations.with_locale(::Globalize.locale).first
@@ -23,14 +22,25 @@ module Refinery
             @translation
           end
 
-          # Instruct the Translation model to have meta tags.
-          ::Page::Translation.send :is_seo_meta
+          # Instruct the translation_class model to have meta tags.
+          self.translation_class.send :is_seo_meta
 
           fields = ::SeoMeta.attributes.keys.reject{|f|
             self.column_names.map(&:to_sym).include?(f)
           }.map{|a| [a, :"#{a}="]}.flatten
           delegate *(fields << {:to => :translation})
           after_save proc {|m| m.translation.save}
+        end
+
+        # Wrap up the logic of finding the pages based on the translations table.
+        def self.with_globalize(conditions = {})
+          conditions = {:locale => Globalize.locale}.merge(conditions)
+          where(:id => translation_class.where(conditions).select('page_id AS id')).includes(:children, :slugs)
+        end
+      else
+        # No translations, just default to normal behaviour.
+        def self.with_globalize(conditions = {})
+          where(conditions).includes(:children, :slugs)
         end
       end
 
@@ -59,11 +69,11 @@ module Refinery
                     :strip_non_ascii => RefinerySetting.find_or_set(:strip_non_ascii, false, :scoping => "pages")
 
     has_many :parts,
-             :class_name => "PagePart",
+             :class_name => "::Refinery::PagePart",
              :order => "position ASC",
              :inverse_of => :page,
              :dependent => :destroy,
-             :include => ((:translations) if defined?(::PagePart::Translation))
+             :include => ((:translations) if ::Refinery::PagePart.respond_to?(:translation_class))
 
     accepts_nested_attributes_for :parts, :allow_destroy => true
 
@@ -74,18 +84,6 @@ module Refinery
     before_destroy :deletable?
     after_save :reposition_parts!, :invalidate_child_cached_url, :expire_page_caching
     after_destroy :expire_page_caching
-
-    # Wrap up the logic of finding the pages based on the translations table.
-    if defined?(::Page::Translation)
-      def self.with_globalize(conditions = {})
-        conditions = {:locale => Globalize.locale}.merge(conditions)
-        where(:id => ::Page::Translation.where(conditions).select('page_id AS id')).includes(:children, :slugs)
-      end
-    else
-      def self.with_globalize(conditions = {})
-        where(conditions).includes(:children, :slugs)
-      end
-    end
 
     scope :live, where(:draft => false)
     scope :by_title, proc {|t| with_globalize(:title => t)}
@@ -197,7 +195,7 @@ module Refinery
     end
 
     def url_normal
-      {:controller => '/pages', :action => 'show', :path => nil, :id => to_param}
+      {:controller => '/refinery/pages', :action => 'show', :path => nil, :id => to_param}
     end
 
     def with_locale_param(url_hash)
@@ -301,13 +299,10 @@ module Refinery
     # Accessor method to get a page part from a page.
     # Example:
     #
-    #    Page.first[:body]
+    #    Page.first.content_for(:body)
     #
     # Will return the body page part of the first page.
-    def [](part_title)
-      # Allow for calling attributes with [] shorthand (eg page[:parent_id])
-      return super if self.attributes.has_key?(part_title.to_s)
-
+    def content_for(part_title)
       # the way that we call page parts seems flawed, will probably revert to page.parts[:title] in a future release.
       # self.parts is already eager loaded so we can now just grab the first element matching the title we specified.
       part = self.parts.detect do |part|
@@ -322,13 +317,13 @@ module Refinery
     # In the admin area we use a slightly different title to inform the which pages are draft or hidden pages
     def title_with_meta
       title = if self.title.nil?
-        [::Page::Translation.where(:page_id => self.id, :locale => Globalize.locale).first.try(:title).to_s]
+        [self.class.with_globalize(:page_id => self.id).first.try(:title).to_s]
       else
         [self.title.to_s]
       end
 
-      title << "<em>(#{::I18n.t('hidden', :scope => 'admin.pages.page')})</em>" unless show_in_menu?
-      title << "<em>(#{::I18n.t('draft', :scope => 'admin.pages.page')})</em>" if draft?
+      title << "<em>(#{::I18n.t('hidden', :scope => 'refinery.admin.pages.page')})</em>" unless show_in_menu?
+      title << "<em>(#{::I18n.t('draft', :scope => 'refinery.admin.pages.page')})</em>" if draft?
 
       title.join(' ')
     end
