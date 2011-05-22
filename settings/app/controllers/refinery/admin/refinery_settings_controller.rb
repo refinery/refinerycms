@@ -13,11 +13,8 @@ module ::Refinery
       after_filter :fire_setting_callback, :only => [:update]
 
       def new
-        if current_user.has_role?(:superuser) and params[:form_value_type].present?
-          @refinery_setting = ::Refinery::RefinerySetting.new(:form_value_type => params[:form_value_type])
-        else
-          @refinery_setting = ::Refinery::RefinerySetting.new(:form_value_type => 'text_area')
-        end
+        form_value_type = ((current_user.has_role?(:superuser) && params[:form_value_type]) || 'text_area')
+        @refinery_setting = ::Refinery::RefinerySetting.new(:form_value_type => form_value_type)
       end
 
       def edit
