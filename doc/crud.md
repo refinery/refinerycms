@@ -218,7 +218,7 @@ When I look in the ``crud.rb`` file I see that my controller has this added to i
 
     def destroy
       flash.notice = "'\#{@#{singular_name}.#{options[:title_attribute]}}' was successfully deleted." if @#{singular_name}.destroy
-      redirect_to admin_#{plural_name}_url
+      redirect_to refinery_admin_#{plural_name}_path
     end
 
 To override this all I would is create my own delete method that works the same
@@ -234,7 +234,7 @@ but just with my mailer code on it.
           NotificationMailer.deliver_page_deleted(@page) # sends me an email to
           say a page was deleted
         end
-        redirect_to admin_pages_url
+        redirect_to refinery_admin_pages_path
       end
 
     end

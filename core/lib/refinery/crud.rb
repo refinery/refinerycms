@@ -10,19 +10,18 @@
 # Full documentation about CRUD and resources go here:
 # -> http://api.rubyonrails.org/classes/ActionDispatch/Routing/Mapper/Resources.html#method-i-resources
 # Example (add to your controller):
-# crudify :foo, {:title_attribute => 'name'} for CRUD on Foo model
-# crudify 'foo/bar', :{title_attribute => 'name'} for CRUD on Foo::Bar model
+# crudify :foo, :title_attribute => 'name' for CRUD on Foo model
+# crudify :'foo/bar', :title_attribute => 'name' for CRUD on Foo::Bar model
+# Note: @singular_name will result in @foo for :foo and @bar for :'foo/bar'
 
 module Refinery
   module Crud
 
     def self.default_options(model_name)
-      singular_name = model_name.to_s
-      class_name = model_name.to_s.include?("/") ? "::#{model_name.to_s.camelize}" : model_name.to_s.camelize
-      plural_name = singular_name.camelize.demodulize.pluralize.downcase
+      singular_name = model_name.to_s.split('/').last
+      class_name = "::#{model_name.to_s.camelize.gsub('/', '::')}".gsub('::::', '::')
+      plural_name = singular_name.to_s.gsub('/', '_').pluralize
       this_class = class_name.constantize.base_class
-      singular_name = model_name.to_s.underscore.gsub("/","_")
-      plural_name = singular_name.pluralize
 
       {
         :conditions => '',
@@ -30,7 +29,7 @@ module Refinery
         :order => ('position ASC' if this_class.table_exists? and this_class.column_names.include?('position')),
         :paging => true,
         :per_page => false,
-        :redirect_to_url => "admin_#{model_name.to_s.gsub('/', '_').pluralize}_url",
+        :redirect_to_url => "refinery_admin_#{model_name.to_s.gsub('/', '_').pluralize}_path",
         :searchable => true,
         :search_conditions => '',
         :sortable => true,
