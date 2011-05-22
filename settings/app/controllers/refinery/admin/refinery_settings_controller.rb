@@ -1,6 +1,6 @@
 module ::Refinery
   module Admin
-    class RefinerySettingsController < ::Admin::BaseController
+    class ::Refinery::RefinerySettingsController < ::Admin::BaseController
 
       helper "refinery/admin/refinery_settings"
 
@@ -14,21 +14,21 @@ module ::Refinery
 
       def new
         if current_user.has_role?(:superuser) and params[:form_value_type].present?
-          @refinery_setting = RefinerySetting.new(:form_value_type => params[:form_value_type])
+          @refinery_setting = ::Refinery::RefinerySetting.new(:form_value_type => params[:form_value_type])
         else
-          @refinery_setting = RefinerySetting.new(:form_value_type => 'text_area')
+          @refinery_setting = ::Refinery::RefinerySetting.new(:form_value_type => 'text_area')
         end
       end
 
       def edit
-        @refinery_setting = RefinerySetting.find(params[:id])
+        @refinery_setting = ::Refinery::RefinerySetting.find(params[:id])
 
         render :layout => false if request.xhr?
       end
 
     protected
       def find_all_refinery_settings
-        @refinery_settings = RefinerySetting.order('name ASC')
+        @refinery_settings = ::Refinery::RefinerySetting.order('name ASC')
 
         unless current_user.has_role?(:superuser)
           @refinery_settings = @refinery_settings.where("restricted <> ? ", true)

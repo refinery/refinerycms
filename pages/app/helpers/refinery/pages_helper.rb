@@ -1,2 +1,4 @@
-module ::Refinery::PagesHelper
+module ::Refinery
+  module PagesHelper
+  end
 end

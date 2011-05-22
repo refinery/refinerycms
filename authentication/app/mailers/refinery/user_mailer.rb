@@ -6,11 +6,11 @@ module ::Refinery
       @url = edit_user_password_url(:host => request.host_with_port,
                                     :reset_password_token => @user.reset_password_token)
 
-      domain = request.domain(RefinerySetting.find_or_set(:tld_length, 1))
+      domain = request.domain(::Refinery::RefinerySetting.find_or_set(:tld_length, 1))
 
       mail(:to => user.email,
            :subject => t('subject', :scope => 'user_mailer.reset_notification'),
-           :from => "\"#{RefinerySetting[:site_name]}\" <no-reply@#{domain}>")
+           :from => "\"#{::Refinery::RefinerySetting[:site_name]}\" <no-reply@#{domain}>")
     end
 
   protected

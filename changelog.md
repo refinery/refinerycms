@@ -241,7 +241,7 @@
 
 ## 0.9.8.8 [16 December 2010]
 
-* Prevented RefinerySetting from accessing its database table before it is created. [Philip Arndt](https://github.com/parndt)
+* Prevented ::Refinery::RefinerySetting from accessing its database table before it is created. [Philip Arndt](https://github.com/parndt)
 * Added more options to `bin/refinerycms` like ability to specify database username and password. [Philip Arndt](https://github.com/parndt)
 * [See full list](https://github.com/resolve/refinerycms/compare/0.9.8.7...0.9.8.8)
 
@@ -403,7 +403,7 @@
 * Documentation improved [David Jones](https://github.com/djones), [Philip Arndt](https://github.com/parndt) and [Steven Heidel](https://github.com/stevenheidel)
 * Installed spork for use with systems that support forking for performance improvements. Doesn't run on Windows. [Philip Arndt](https://github.com/parndt) and [James Fiderlick](https://github.com/jamesfid)
 * Improvements and new translations for Norsk Bokmål localisation. [Ken Paulsen](https://github.com/ken-guru)
-* Ensured that RefinerySetting restrictions work properly using a before_save handler. [Joe Sak](https://github.com/joemsak)
+* Ensured that ::Refinery::RefinerySetting restrictions work properly using a before_save handler. [Joe Sak](https://github.com/joemsak)
 * Updated jquery-html5-placeholder-shim to latest version. [Amanda Wagener](https://github.com/awagener)
 * [See full list](https://github.com/resolve/refinerycms/compare/0.9.7.7...0.9.7.8)
 
@@ -479,7 +479,7 @@
 * Marketable URLs, such as "/contact". [Joshua Davey](https://github.com/jgdavey) and [Joe Sak](https://github.com/joemsak).
 * Switched to bundler and rack. [Alex Coles](https://github.com/myabc) and [Philip Arndt](https://github.com/parndt)
 * Added options to Refinery Settings :restricted, :scoping, :callback_proc_as_string. [Steven Heidel](https://github.com/stevenheidel) and [Philip Arndt](https://github.com/parndt)
-* Added caching abilities to frontend and to RefinerySetting to drastically speed up the application under certain conditions. [Philip Arndt](https://github.com/parndt)
+* Added caching abilities to frontend and to ::Refinery::RefinerySetting to drastically speed up the application under certain conditions. [Philip Arndt](https://github.com/parndt)
 * Added spam filtering to contact form. [David Jones](https://github.com/djones)
 * Full Refinery UI redesign. [Resolve Digital](https://github.com/resolve)
 * User Role support. [Amanda Wagener](https://github.com/awagener) and [Philip Arndt](https://github.com/parndt)

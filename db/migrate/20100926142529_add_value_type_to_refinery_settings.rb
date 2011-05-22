@@ -1,4 +1,4 @@
-class AddValueTypeToRefinerySettings < ActiveRecord::Migration
+class AddValueTypeTo::Refinery::RefinerySettings < ActiveRecord::Migration
   def self.up
     add_column ::Refinery::RefinerySetting.table_name, :form_value_type, :string
 

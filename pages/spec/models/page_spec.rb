@@ -16,11 +16,11 @@ module Refinery
     end
 
     def turn_off_marketable_urls
-      RefinerySetting.set(:use_marketable_urls, {:value => false, :scoping => 'pages'})
+      ::Refinery::RefinerySetting.set(:use_marketable_urls, {:value => false, :scoping => 'pages'})
     end
 
     def turn_on_marketable_urls
-      RefinerySetting.set(:use_marketable_urls, {:value => true, :scoping => 'pages'})
+      ::Refinery::RefinerySetting.set(:use_marketable_urls, {:value => true, :scoping => 'pages'})
     end
 
     def create_page_parts

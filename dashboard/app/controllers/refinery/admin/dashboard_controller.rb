@@ -22,13 +22,13 @@ module ::Refinery
 
         @recent_activity = @recent_activity.flatten.compact.sort { |x,y|
           y.updated_at <=> x.updated_at
-        }.first(activity_show_limit=RefinerySetting.find_or_set(:activity_show_limit, 7))
+        }.first(activity_show_limit=::Refinery::RefinerySetting.find_or_set(:activity_show_limit, 7))
 
         @recent_inquiries = defined?(Inquiry) ? Inquiry.latest(activity_show_limit) : []
       end
 
       def disable_upgrade_message
-        RefinerySetting.set(:show_internet_explorer_upgrade_message, {
+        ::Refinery::RefinerySetting.set(:show_internet_explorer_upgrade_message, {
           :value => false,
           :scoping => 'refinery'
         })
