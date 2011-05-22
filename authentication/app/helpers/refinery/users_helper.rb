@@ -1,2 +1,4 @@
-module Refinery::UsersHelper
+module Refinery
+  module UsersHelper
+  end
 end

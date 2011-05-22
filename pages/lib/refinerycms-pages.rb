@@ -39,7 +39,7 @@ module Refinery
           plugin.directory = 'pages'
           plugin.version = %q{0.9.9.21}
           plugin.menu_match = /(refinery|admin)\/page(_part)?s(_dialogs)?$/
-          plugin.url = app.routes.url_helpers.admin_pages_path
+          # plugin.url = app.routes.url_helpers.admin_pages_path
           plugin.activity = {
             :class => Refinery::Page,
             :url_prefix => "edit",

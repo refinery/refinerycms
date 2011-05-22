@@ -1,5 +1,5 @@
-module Refinery::AuthenticatedSystem
-  protected
+module Refinery
+  module AuthenticatedSystem
     # Store the URI of the current request in the session.
     #
     # We can return to this location by calling #redirect_back_or_default.
@@ -22,8 +22,10 @@ module Refinery::AuthenticatedSystem
       user_signed_in? && current_user.has_role?(:refinery)
     end
 
+    protected :store_location, :redirect_back_or_default, :refinery_user?
+
     def self.included(base)
       base.send :helper_method, :current_user, :current_user_session, :user_signed_in?, :refinery_user? if base.respond_to? :helper_method
     end
-
+  end
 end

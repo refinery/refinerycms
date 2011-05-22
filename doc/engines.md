@@ -59,7 +59,7 @@ and ``page_parts_controller.rb`` for now and let's just focus on the ``admin/pag
 file. Here's what that looks like inside at a basic level:
 
     module Admin
-      class PagesController < Admin::BaseController
+      class PagesController < ::Admin::BaseController
 
         crudify :page, :conditions => {:parent_id => nil},
                        :order => "position ASC", :paging => false

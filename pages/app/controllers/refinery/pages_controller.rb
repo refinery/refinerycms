@@ -1,5 +1,5 @@
 module Refinery
-  class PagesController < ApplicationController
+  class PagesController < ::ApplicationController
 
     # This action is usually accessed with the root path, normally '/'
     def home

@@ -66,7 +66,7 @@ module Refinery
           plugin.activity = {
             :class => Image
           }
-          plugin.url = app.routes.url_helpers.admin_images_path
+          # plugin.url = app.routes.url_helpers.admin_images_path
         end
       end
     end
