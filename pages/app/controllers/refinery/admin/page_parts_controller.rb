@@ -2,7 +2,7 @@ module ::Refinery::Admin
   class PagePartsController < ::Admin::BaseController
 
     def new
-      render :partial => "/admin/pages/page_part_field", :locals => {
+      render :partial => "/refinery/admin/pages/page_part_field", :locals => {
         :part => PagePart.new(:title => params[:title], :body => params[:body]),
         :new_part => true,
         :part_index => params[:part_index]

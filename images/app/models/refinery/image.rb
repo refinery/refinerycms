@@ -1,6 +1,5 @@
 # encoding: utf-8
 
-require 'dragonfly/rails/images'
 module Refinery
   class Image < ActiveRecord::Base
 
