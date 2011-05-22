@@ -262,7 +262,7 @@ DEPENDENCIES
   rack
   rails
   refinerycms!
-  refinerycms-testing (~> 1.1.0.pre)
+  refinerycms-testing (~> 1.1.0)
   ruby-debug
   ruby-debug19
   sqlite3
