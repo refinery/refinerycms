@@ -34,6 +34,10 @@ module Refinery
       def attach_to_application!
         ::Rails::Application.subclasses.each do |subclass|
           begin
+            # Fix Rake 0.9.0 issue
+            subclass.send :include, ::Rake::DSL if defined?(::Rake::DSL)
+
+            # Include our logic inside your logic
             subclass.send :include, ::Refinery::Application
           rescue
             $stdout.puts "Refinery CMS couldn't attach to #{subclass.name}."
