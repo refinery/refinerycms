@@ -29,7 +29,7 @@ module Refinery
         :order => ('position ASC' if this_class.table_exists? and this_class.column_names.include?('position')),
         :paging => true,
         :per_page => false,
-        :redirect_to_url => "refinery_admin_#{model_name.to_s.gsub('/', '_').pluralize}_path",
+        :redirect_to_url => "refinery_admin_#{plural_name}_path",
         :searchable => true,
         :search_conditions => '',
         :sortable => true,
