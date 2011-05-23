@@ -2,6 +2,15 @@ require 'globalize3'
 
 class Page < ActiveRecord::Base
 
+  # when a dialog pops up to link to a page, how many pages per page should there be
+  PAGES_PER_DIALOG = 14
+
+  # when listing pages out in the admin area, how many pages should show per page
+  PAGES_PER_ADMIN_INDEX = 20
+
+  # when collecting the pages path how is each of the pages seperated?
+  PATH_SEPARATOR = " - "
+
   if self.respond_to?(:translates)
     translates :title, :custom_title, :meta_keywords, :meta_description, :browser_title, :include => :seo_meta
 
@@ -55,7 +64,8 @@ class Page < ActiveRecord::Base
                   :default_locale => (::Refinery::I18n.default_frontend_locale rescue :en),
                   :reserved_words => %w(index new session login logout users refinery admin images wymiframe),
                   :approximate_ascii => RefinerySetting.find_or_set(:approximate_ascii, false, :scoping => "pages"),
-                  :strip_non_ascii => RefinerySetting.find_or_set(:strip_non_ascii, false, :scoping => "pages")
+                  :strip_non_ascii => RefinerySetting.find_or_set(:strip_non_ascii, false, :scoping => "pages"),
+                  :cache_column => "to_param_cache"
 
   has_many :parts,
            :class_name => "PagePart",
@@ -78,11 +88,12 @@ class Page < ActiveRecord::Base
   if defined?(::Page::Translation)
     def self.with_globalize(conditions = {})
       conditions = {:locale => Globalize.locale}.merge(conditions)
-      where(:id => ::Page::Translation.where(conditions).select('page_id AS id')).includes(:children, :slugs)
+      conditions["#{self.translation_class.table_name}.locale"] = conditions.delete(:locale)
+      joins(:translations).where(conditions).group(self.arel_table[:id])
     end
   else
     def self.with_globalize(conditions = {})
-      where(conditions).includes(:children, :slugs)
+      where(conditions)
     end
   end
 
@@ -94,15 +105,6 @@ class Page < ActiveRecord::Base
   # This works using a query against the translated content first and then
   # using all of the page_ids we further filter against this model's table.
   scope :in_menu, proc { where(:show_in_menu => true).with_globalize }
-
-  # when a dialog pops up to link to a page, how many pages per page should there be
-  PAGES_PER_DIALOG = 14
-
-  # when listing pages out in the admin area, how many pages should show per page
-  PAGES_PER_ADMIN_INDEX = 20
-
-  # when collecting the pages path how is each of the pages seperated?
-  PATH_SEPARATOR = " - "
 
   # Am I allowed to delete this page?
   # If a link_url is set we don't want to break the link so we don't allow them to delete
@@ -152,7 +154,7 @@ class Page < ActiveRecord::Base
     # Override default options with any supplied.
     options = {:reversed => true}.merge(options)
 
-    unless parent.nil?
+    unless parent_id.nil?
       parts = [title, parent.path(options)]
       parts.reverse! if options[:reversed]
       parts.join(PATH_SEPARATOR)
@@ -217,7 +219,7 @@ class Page < ActiveRecord::Base
   end
 
   def uncached_nested_url
-    [parent.try(:nested_url), to_param].compact.flatten
+    [(parent.nested_url unless parent_id.nil?), to_param].compact.flatten
   end
 
   # Returns the string version of nested_url, i.e., the path that should be generated
@@ -235,7 +237,7 @@ class Page < ActiveRecord::Base
   end
 
   def cache_key
-    [Refinery.base_cache_key, ::I18n.locale, super].compact.join('/')
+    [Refinery.base_cache_key, ::I18n.locale, to_param].compact.join('/')
   end
 
   # Returns true if this page is "published"
@@ -255,12 +257,23 @@ class Page < ActiveRecord::Base
 
   # Returns true if this page is the home page or links to it.
   def home?
-    link_url == "/"
+    link_url == '/'
   end
 
   # Returns all visible sibling pages that can be rendered for the menu
   def shown_siblings
     siblings.reject(&:not_in_menu?)
+  end
+
+  def to_refinery_menu_item
+    {
+      :title => self.page_title,
+      :parent_id => self.parent_id,
+      :lft => self.lft,
+      :rgt => self.rgt,
+      :url => self.url,
+      :menu_match => self.menu_match
+    }
   end
 
   class << self
@@ -303,12 +316,7 @@ class Page < ActiveRecord::Base
   #    Page.first[:body]
   #
   # Will return the body page part of the first page.
-  def [](part_title)
-    # Allow for calling attributes with [] shorthand (eg page[:parent_id])
-    return super if self.attributes.has_key?(part_title.to_s)
-
-    # the way that we call page parts seems flawed, will probably revert to page.parts[:title] in a future release.
-    # self.parts is already eager loaded so we can now just grab the first element matching the title we specified.
+  def content_for(part_title)
     part = self.parts.detect do |part|
       part.title.present? and #protecting against the problem that occurs when have nil title
       part.title == part_title.to_s or
@@ -316,6 +324,18 @@ class Page < ActiveRecord::Base
     end
 
     part.try(:body)
+  end
+
+  def [](part_title)
+    # Allow for calling attributes with [] shorthand (eg page[:parent_id])
+    return super if self.respond_to?(part_title.to_s.to_sym) or self.attributes.has_key?(part_title.to_s)
+
+    warn "\n-- DEPRECATION WARNING --"
+    warn "The use of 'page[#{part_title.inspect}]' is deprecated and will be removed at version 1.1."
+    warn "Please use content_for(#{part_title.inspect}) instead."
+    warn "Called from: #{caller.detect{|c| c =~ %r{#{Rails.root.to_s}}}.inspect.to_s.split(':in').first}\n\n"
+
+    content_for(part_title)
   end
 
   # In the admin area we use a slightly different title to inform the which pages are draft or hidden pages

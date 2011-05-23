@@ -15,7 +15,20 @@ module Refinery
 
     protected
       def find_pages_for_menu
-        @menu_pages = ::Page.roots.live.in_menu.order('lft ASC').includes(:children)
+        pages = ::Page.roots.live.in_menu
+        %w(id parent_id lft rgt link_url menu_match).each do |column|
+          pages = pages.select(::Page.arel_table[column.to_sym])
+        end
+
+        if ::Page.respond_to?(:translation_class)
+          pages = pages.joins(:translations).select("`#{::Page.translation_class.table_name}`.`title` as page_title")
+        else
+          pages = pages.select("title as page_title")
+        end
+
+        pages = pages.joins(:slug).select("`#{Slug.table_name}`.`name` AS to_param_cache")
+
+        @menu_pages = ::Refinery::Menu.new(pages.map(&:to_refinery_menu_item))
       end
 
       def render(*args)
