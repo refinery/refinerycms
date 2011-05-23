@@ -48,7 +48,7 @@ module Refinery
       # This maps to the older css_for_menu_branch method.
       def menu_branch_css(local_assigns)
         options = local_assigns.dup
-        options.update(:sibling_count => options[:menu_branch].shown_siblings.size) unless options[:sibling_count]
+        options.update(:sibling_count => options[:menu_branch].siblings.length) unless options[:sibling_count]
 
         css_for_menu_branch(options[:menu_branch],
                             options[:menu_branch_counter],
@@ -90,9 +90,8 @@ module Refinery
 
         # Match path based on cascading rules.
         (path =~ Regexp.new(page.menu_match) if page.menu_match.present?) or
-          path == page.link_url or
-          path == page.nested_path or
-          URI.decode(path) == page.nested_path or
+          (page.url.is_a?(String) && (path == page.url or URI.decode(path) == page.url)) or
+          (page.url.respond_to?(:keys) && path == ['', page.url[:path]].compact.flatten.join('/')) or
           path == "/#{page.id}" or
           current_page?(page)
       end

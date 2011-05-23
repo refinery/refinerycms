@@ -64,8 +64,7 @@ class Page < ActiveRecord::Base
                   :default_locale => (::Refinery::I18n.default_frontend_locale rescue :en),
                   :reserved_words => %w(index new session login logout users refinery admin images wymiframe),
                   :approximate_ascii => RefinerySetting.find_or_set(:approximate_ascii, false, :scoping => "pages"),
-                  :strip_non_ascii => RefinerySetting.find_or_set(:strip_non_ascii, false, :scoping => "pages"),
-                  :cache_column => "to_param_cache"
+                  :strip_non_ascii => RefinerySetting.find_or_set(:strip_non_ascii, false, :scoping => "pages")
 
   has_many :parts,
            :class_name => "PagePart",
@@ -267,12 +266,14 @@ class Page < ActiveRecord::Base
 
   def to_refinery_menu_item
     {
-      :title => self.page_title,
-      :parent_id => self.parent_id,
+      :id => self.id,
       :lft => self.lft,
+      :menu_match => self.menu_match,
+      :parent_id => self.parent_id,
       :rgt => self.rgt,
-      :url => self.url,
-      :menu_match => self.menu_match
+      :title => self.page_title || self.title,
+      :type => self.class.name,
+      :url => self.url
     }
   end
 

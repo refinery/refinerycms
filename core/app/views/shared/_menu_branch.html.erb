@@ -4,7 +4,7 @@
   end
   dom_id = "id='item_#{menu_branch_counter}'".html_safe if menu_branch.parent_id.nil?
 
-  children = menu_branch.children.live.in_menu unless hide_children or menu_branch.rgt == menu_branch.lft + 1
+  children = menu_branch.children unless hide_children or menu_branch.rgt == menu_branch.lft + 1
 -%>
 <li<%= ['', css, dom_id].compact.join(' ').gsub(/\ *$/, '').html_safe %>>
   <%= link_to menu_branch.title, menu_branch.url -%>

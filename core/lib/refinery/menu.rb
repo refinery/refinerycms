@@ -3,7 +3,9 @@ module Refinery
 
     def initialize(objects)
       objects.each do |item|
-        self.items << MenuItem.new(item)
+        menu_item = MenuItem.new(item)
+        menu_item.menu_instance = self
+        self.items << menu_item
       end
     end
 
@@ -11,6 +13,10 @@ module Refinery
 
     def items
       @items ||= []
+    end
+
+    def roots
+      items.select {|item| item.parent_id.nil?}
     end
 
     def to_s
@@ -22,11 +28,11 @@ module Refinery
 
       rendering
     end
-    
+
     def inspect
-      self.items.map{|i| [i.class.to_s, i.inspect].join(":")}
+      self.items.map(&:inspect)
     end
-    
-    delegate :length, :first, :last, :[], :[]=, :to => :items
+
+    delegate *(Array.instance_methods - Object.instance_methods), :to => :items
   end
 end
