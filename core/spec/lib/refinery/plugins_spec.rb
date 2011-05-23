@@ -3,7 +3,7 @@ require 'spec_helper'
 module Refinery
   module MyPlugin
     class Engine < ::Rails::Engine
-      isolate_namespace ::Refinery::MyPlugin
+      isolate_namespace ::Refinery
       ::Refinery::Plugin.register do |plugin|
         plugin.name = "my_plugin"
       end
@@ -12,7 +12,7 @@ module Refinery
 
   module MyOtherPlugin
     class Engine < ::Rails::Engine
-      isolate_namespace ::Refinery::MyOtherPlugin
+      isolate_namespace ::Refinery
       ::Refinery::Plugin.register do |plugin|
         plugin.name = "my_other_plugin"
       end

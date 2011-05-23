@@ -15,7 +15,7 @@ module Refinery
     autoload :Dragonfly, File.expand_path('../refinery/resources/dragonfly', __FILE__)
 
     class Engine < ::Rails::Engine
-      isolate_namespace ::Refinery::Resources
+      isolate_namespace ::Refinery
 
       initializer 'serve static assets' do |app|
         app.middleware.insert_after ::ActionDispatch::Static, ::ActionDispatch::Static, "#{root}/public"

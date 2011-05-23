@@ -3,7 +3,7 @@ require 'spec_helper'
 module Refinery
   module RefineryRspec
     class Engine < ::Rails::Engine
-      isolate_namespace ::Refinery::RefineryRspec
+      isolate_namespace ::Refinery
       ::Refinery::Plugin.register do |plugin|
         plugin.name = 'refinery_rspec'
       end

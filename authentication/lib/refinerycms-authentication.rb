@@ -6,7 +6,7 @@ module Refinery
   module Authentication
 
     class Engine < ::Rails::Engine
-      isolate_namespace ::Refinery::Authentication
+      isolate_namespace ::Refinery
 
       initializer 'serve static assets' do |app|
         app.middleware.insert_after ::ActionDispatch::Static, ::ActionDispatch::Static, "#{root}/public"
