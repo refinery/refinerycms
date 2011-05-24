@@ -31,7 +31,7 @@ module Refinery
         css = []
         css << "selected" if selected_page_or_descendant_page_selected?(item, collection, selected_item)
         css << "first" if counter == 0
-        css << "last" if counter == sibling_count || (item.rgt == item.parent.rgt - 1)
+        css << "last" if counter == (sibling_count ||= (item.shown_siblings.length - 1))
         css
       end
 
