@@ -48,9 +48,8 @@
   <ul id='other_locales' style='display: none'>
     <% locales.sort_by{|key, value| value}.each do |locale, locale_title| %>
       <li>
-        <%# TODO: fix for rails 3.1 %>
-        <%#= link_to locale_title.respond_to?(:force_encoding) ? locale_title.force_encoding('utf-8') : locale_title,
-                    params.dup.tap { |p| p[:set_locale] = locale },
+        <%= link_to locale_title.respond_to?(:force_encoding) ? locale_title.force_encoding('utf-8') : locale_title,
+                    main_app.refinery_admin_dashboard_path(:set_locale => locale),
                     :style => "background-image: url('/images/refinery/icons/flags/#{locale}.png');" %>
       </li>
     <% end %>
