@@ -1,12 +1,8 @@
 <%
-  dom_id ||= 'menu'
-
   # Collect the root items.
   # Refinery::Menu is smart enough to remember all of the items in the original collection.
-  roots = local_assigns[:roots] || (collection ||= @menu_pages).roots
-
-  # Select top menu items unless 'roots' is supplied.
-  if roots.present?
+  if (roots = local_assigns[:roots] || (collection ||= @menu_pages).roots).present?
+    dom_id ||= 'menu'
     css = [(css || 'menu'), 'clearfix'].flatten.join(' ')
     hide_children = RefinerySetting.find_or_set(:menu_hide_children, false) if hide_children.nil?
 -%>
