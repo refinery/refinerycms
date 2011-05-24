@@ -331,10 +331,12 @@ class Page < ActiveRecord::Base
     # Allow for calling attributes with [] shorthand (eg page[:parent_id])
     return super if self.respond_to?(part_title.to_s.to_sym) or self.attributes.has_key?(part_title.to_s)
 
-    warn "\n-- DEPRECATION WARNING --"
-    warn "The use of 'page[#{part_title.inspect}]' is deprecated and will be removed at version 1.1."
-    warn "Please use content_for(#{part_title.inspect}) instead."
-    warn "Called from: #{caller.detect{|c| c =~ %r{#{Rails.root.to_s}}}.inspect.to_s.split(':in').first}\n\n"
+    Refinery.deprecate({
+      :what => "page[#{part_title.inspect}]",
+      :when => '1.1',
+      :replacement => "content_for(#{part_title.inspect})",
+      :caller => caller
+    })
 
     content_for(part_title)
   end

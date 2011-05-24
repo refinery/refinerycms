@@ -47,17 +47,19 @@ module Refinery
 
     # Ensure that things still work from how the menu partials worked before.
     def live
-      warn "\n-- DEPRECATION WARNING --"
-      warn "The use of 'live' on a ::Refinery::Menu object is deprecated and will be removed at version 1.1 with no replacement."
-      warn "Called from: #{caller.detect{|c| c =~ %r{#{Rails.root.to_s}}}.inspect.to_s.split(':in').first}\n"
+      Refinery.deprecate({
+        :what => "'live' on a ::Refinery::Menu instance",
+        :when => '1.1 with no replacement'
+      })
 
       self
     end
 
     def in_menu
-      warn "\n-- DEPRECATION WARNING --"
-      warn "The use of 'in_menu' on a ::Refinery::Menu object is deprecated and will be removed at version 1.1 with no replacement."
-      warn "Called from: #{caller.detect{|c| c =~ %r{#{Rails.root.to_s}}}.inspect.to_s.split(':in').first}\n"
+      Refinery.deprecate({
+        :what => "'in_menu' on a ::Refinery::Menu instance",
+        :when => '1.1 with no replacement'
+      })
 
       self
     end

@@ -16,31 +16,28 @@ module Refinery
 
       # This was extracted from app/views/shared/_menu_branch.html.erb
       # to remove the complexity of that template by reducing logic in the view.
-      def css_for_menu_branch(menu_branch, menu_branch_counter, sibling_count = nil, collection = nil, selected_item = nil, warning = true)
-        # DEPRECATION. Remove at version 1.1
-        if warning
-          warn "\n-- DEPRECATION WARNING --"
-          warn "The use of 'css_for_menu_branch' is deprecated and will be removed at version 1.1."
-          warn "Please use menu_branch_css(local_assigns) instead."
-          warn "Called from: #{caller.detect{|c| c =~ %r{#{Rails.root.to_s}}}.inspect.to_s.split(':in').first}\n\n"
-        end
+      def css_for_menu_branch(item, counter, sibling_count = nil, collection = nil, selected_item = nil, warning = true)
 
-        if collection
-          warn "\n-- DEPRECATION WARNING --"
-          warn "The use of 'collection' is deprecated and will be removed at version 1.1."
-          warn "Called from: #{caller.detect{|c| c =~ %r{#{Rails.root.to_s}}}.inspect.to_s.split(':in').first}\n\n"
-        end
+        Refinery.deprecate({
+          :what => 'css_for_menu_branch',
+          :when => '1.1',
+          :replacement => 'menu_branch_css(local_assigns)',
+          :caller => caller
+        }) if warning
 
-        if selected_item
-          warn "\n-- DEPRECATION WARNING --"
-          warn "The use of 'selected_item' is deprecated and will be removed at version 1.1."
-          warn "Called from: #{caller.detect{|c| c =~ %r{#{Rails.root.to_s}}}.inspect.to_s.split(':in').first}\n\n"
-        end
+        Refinery.deprecate(:what => 'collection', :when => '1.1', :caller => caller) if collection
+        Refinery.deprecate(:what => 'selected_item', :when => '1.1', :caller => caller) if selected_item
 
         css = []
-        css << "selected" if selected_page_or_descendant_page_selected?(menu_branch, collection, selected_item)
-        css << "first" if menu_branch_counter == 0
-        css << "last" if (sibling_count ? (menu_branch_counter == sibling_count - 1) : (menu_branch.rgt == menu_branch.parent.rgt - 1))
+        css << "selected" if selected_page_or_descendant_page_selected?(item, collection, selected_item)
+        css << "first" if counter == 0
+        if (sibling_count ? (counter == sibling_count) : (item.rgt == item.parent.rgt - 1))
+          $stdout.puts "sibling_count: #{sibling_count}"
+          $stdout.puts "counter: #{counter}"
+          $stdout.puts "item: #{item.inspect}"
+          $stdout.puts "parent: #{item.parent.inspect}"
+          css << "last"
+        end
         css
       end
 
