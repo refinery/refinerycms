@@ -66,6 +66,14 @@ class Page < ActiveRecord::Base
                   :approximate_ascii => RefinerySetting.find_or_set(:approximate_ascii, false, :scoping => "pages"),
                   :strip_non_ascii => RefinerySetting.find_or_set(:strip_non_ascii, false, :scoping => "pages")
 
+  def to_param_cache
+    slug.try(:name)
+  end
+
+  def to_param
+    to_param_cache || super
+  end
+
   has_many :parts,
            :class_name => "PagePart",
            :order => "position ASC",
@@ -129,19 +137,17 @@ class Page < ActiveRecord::Base
   # Before destroying a page we check to see if it's a deletable page or not
   # Refinery system pages are not deletable.
   def destroy
-    if deletable?
-      super
-    else
-      unless Rails.env.test?
-        # give useful feedback when trying to delete from console
-        puts "This page is not deletable. Please use .destroy! if you really want it deleted "
-        puts "unset .link_url," if link_url.present?
-        puts "unset .menu_match," if menu_match.present?
-        puts "set .deletable to true" unless deletable
-      end
+    return super if deletable?
 
-      return false
+    unless Rails.env.test?
+      # give useful feedback when trying to delete from console
+      puts "This page is not deletable. Please use .destroy! if you really want it deleted "
+      puts "unset .link_url," if link_url.present?
+      puts "unset .menu_match," if menu_match.present?
+      puts "set .deletable to true" unless deletable
     end
+
+    return false
   end
 
   # If you want to destroy a page that is set to be not deletable this is the way to do it.
@@ -224,7 +230,7 @@ class Page < ActiveRecord::Base
   end
 
   def uncached_nested_url
-    [(parent.nested_url unless parent_id.nil?), to_param].compact.flatten
+    [parent.try(:nested_url), to_param].compact.flatten
   end
 
   # Returns the string version of nested_url, i.e., the path that should be generated
@@ -272,14 +278,14 @@ class Page < ActiveRecord::Base
 
   def to_refinery_menu_item
     {
-      :id => self.id,
-      :lft => self.lft,
-      :menu_match => self.menu_match,
-      :parent_id => self.parent_id,
-      :rgt => self.rgt,
-      :title => self.page_title || self.title,
+      :id => id,
+      :lft => lft,
+      :menu_match => menu_match,
+      :parent_id => parent_id,
+      :rgt => rgt,
+      :title => (page_title if respond_to?(:page_title)) || title,
       :type => self.class.name,
-      :url => self.url
+      :url => url
     }
   end
 

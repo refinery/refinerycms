@@ -16,7 +16,8 @@ module Refinery
     protected
       def find_pages_for_menu
         # First, apply a filter to determine which pages to show.
-        pages = ::Page.live.in_menu
+        # We need to join to the page's slug to avoid multiple queries.
+        pages = ::Page.live.in_menu.includes(:slug)
 
         # Now we only want to select particular columns to avoid any further queries.
         # Title is retrieved in the next block below so it's not here.
@@ -31,21 +32,8 @@ module Refinery
           pages = pages.select("title as page_title")
         end
 
-        # Cache the slug's name for the menu url.
-        pages = pages.joins(:slug).select("`#{Slug.table_name}`.`name` AS to_param_cache")
-
-        # Set the slug to use to_param_cache
-        current_cache_column = ::Page.friendly_id_config.cache_column
-        ::Page.friendly_id_config.cache_column = 'to_param_cache'
-
-        # Compile the menu.
-        @menu_pages = ::Refinery::Menu.new(pages.map(&:to_refinery_menu_item))
-
-        # Now we can set it back
-        ::Page.friendly_id_config.cache_column = current_cache_column
-
-        # Return @menu_pages.
-        @menu_pages
+        # Compile the menu
+        @menu_pages = ::Refinery::Menu.new(pages)
       end
 
       def render(*args)
