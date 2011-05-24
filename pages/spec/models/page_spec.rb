@@ -108,8 +108,13 @@ describe Page do
     before { create_page_parts }
 
     it "return the content when using []" do
-      page[:body].should == "<p>I'm the first page part for this page.</p>"
-      page["BoDY"].should == "<p>I'm the first page part for this page.</p>"
+      capture_stdout { page[:body].should == "<p>I'm the first page part for this page.</p>" }
+      capture_stdout { page["BoDY"].should == "<p>I'm the first page part for this page.</p>" }
+    end
+
+    it "return the content when using content_for" do
+      page.content_for(:body).should == "<p>I'm the first page part for this page.</p>"
+      page.content_for("BoDY").should == "<p>I'm the first page part for this page.</p>"
     end
 
     it "return all page part content" do

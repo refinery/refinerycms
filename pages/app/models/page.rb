@@ -314,7 +314,7 @@ class Page < ActiveRecord::Base
   # Accessor method to get a page part from a page.
   # Example:
   #
-  #    Page.first[:body]
+  #    Page.first.content_for(:body)
   #
   # Will return the body page part of the first page.
   def content_for(part_title)
