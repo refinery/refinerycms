@@ -1,39 +1,49 @@
 module Refinery
+
+  # Create a little something to store the instances of the menu.
+  class << self
+    attr_accessor :menus
+    def menus
+      @@menus ||= HashWithIndifferentAccess.new
+    end
+  end
+
   class Menu
 
-    def initialize(objects)
+    def initialize(objects = nil)
       objects.each do |item|
-        menu_item = MenuItem.new(item)
-        menu_item.menu_instance = self
-        self.items << menu_item
-      end
+        item = item.to_refinery_menu_item if item.respond_to?(:to_refinery_menu_item)
+        items << MenuItem.new(item.merge(:menu_id => id))
+      end if objects
+
+      ::Refinery.menus[self.id] = self
     end
 
-    attr_accessor :items
+    attr_accessor :items, :id
+
+    def id
+      require 'securerandom' unless defined?(::SecureRandom)
+      @id ||= ::SecureRandom.hex(8)
+    end
 
     def items
       @items ||= []
     end
 
     def roots
-      items.select {|item| item.parent_id.nil?}
+      @roots ||= items.select {|item| item.parent_id.nil?}
     end
 
     def to_s
-      rendering = ""
-
-      self.items.each do |item|
-        rendering << item.title
-      end
-
-      rendering
+      items.map(&:title).join(' ')
     end
 
     def inspect
-      self.items.map(&:inspect)
+      items.map(&:inspect)
     end
 
-    delegate *(Array.instance_methods - Object.instance_methods), :to => :items
+    # The delegation is specified so crazily so that it works on 1.8.x and 1.9.x
+    delegate *((Array.instance_methods - Object.instance_methods) << {:to => :items})
 
     # Ensure that things still work from how the menu partials worked before.
     def live
