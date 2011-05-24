@@ -15,19 +15,17 @@ module Refinery
 
     def children
       @children ||= if has_children?
-        menu.class.new(menu.select{|item| item.type == type && item.parent_id == id})
+        menu.select{|item| item.type == type && item.parent_id == id}
       else
-        menu.class.new
+        []
       end
     end
 
     def descendants
       @descendants ||= if has_descendants?
-        menu.class.new(menu.select{|item|
-          item.type == type && item.lft > lft && item.rgt < rgt
-        })
+        menu.select{|item| item.type == type && item.lft > lft && item.rgt < rgt}
       else
-        menu.class.new
+        []
       end
     end
 
@@ -60,7 +58,7 @@ module Refinery
     end
 
     def siblings
-      @siblings ||= menu.class.new((has_parent? ? children : menu.roots) - [self])
+      @siblings ||= ((has_parent? ? children : menu.roots) - [self])
     end
     alias_method :shown_siblings, :siblings
 
