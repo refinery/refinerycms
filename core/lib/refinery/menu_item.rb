@@ -26,21 +26,21 @@ module Refinery
     end
 
     def children
-      @children ||= menu_instance.select{|item|
+      @children ||= menu_instance.class.new(menu_instance.select{|item|
         item.type == self.type && item.parent_id == self.id
-      }
+      })
     end
 
     def descendants
-      @descendants ||= menu_instance.select{|item|
+      @descendants ||= menu_instance.class.new(menu_instance.select{|item|
         item.type == self.type && item.lft > self.lft && item.rgt < self.rgt
-      }
+      })
     end
 
     def has_descendants?
-      @has_descendants ||= menu_instance.any?{|item|
+      @has_descendants ||= menu_instance.class.new(menu_instance.any?{|item|
         item.type == self.type && item.lft > self.lft && item.rgt < self.rgt
-      }
+      })
     end
 
     def parent
@@ -50,7 +50,7 @@ module Refinery
     end
 
     def siblings
-      @siblings ||= (parent.nil? ? menu_instance.roots : children) - [self]
+      @siblings ||= menu_instance.class.new((parent.nil? ? menu_instance.roots : children) - [self])
     end
     alias_method :shown_siblings, :siblings
 
