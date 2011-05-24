@@ -155,6 +155,9 @@ describe Page do
         :deletable => true
       })
     end
+    let(:child_with_reserved_title_parent) do
+      page_with_reserved_title.children.create(:title => 'reserved title child page')
+    end
 
     before { turn_on_marketable_urls }
 
@@ -163,8 +166,7 @@ describe Page do
     end
 
     it "when parent page title is set to a reserved word" do
-      child = page_with_reserved_title.children.create(:title => 'The child page')
-      child.url[:path].should == ["#{reserved_word}-page", 'the-child-page']
+      child_with_reserved_title_parent.url[:path].should == ["#{reserved_word}-page", 'reserved-title-child-page']
     end
   end
 
