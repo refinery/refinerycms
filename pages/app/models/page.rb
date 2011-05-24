@@ -86,13 +86,15 @@ class Page < ActiveRecord::Base
   # Wrap up the logic of finding the pages based on the translations table.
   if defined?(::Page::Translation)
     def self.with_globalize(conditions = {})
+      conditions = {:locale => Globalize.locale}.merge(conditions)
       globalized_conditions = {}
-      (conditions = {:locale => Globalize.locale}.merge(conditions)).each do |key, value|
-        if translated_attribute_names.map(&:to_s).include?(key.to_s)
+      conditions.keys.each do |key|
+        if (translated_attribute_names.map(&:to_s) | %w(locale)).include?(key.to_s)
           globalized_conditions["#{self.translation_class.table_name}.#{key}"] = conditions.delete(key)
         end
       end
-      joins(:translations).where(globalized_conditions.merge(conditions)).group(self.arel_table[:id])
+      # A join implies readonly which we don't really want.
+      joins(:translations).where(globalized_conditions).where(conditions).group(self.arel_table[:id]).readonly(false)
     end
   else
     def self.with_globalize(conditions = {})
