@@ -41,6 +41,9 @@ Gem::Specification.new do |s|
   s.add_dependency 'autotest-rails'
   s.add_dependency 'autotest-notification'
 
+  # RCov
+  s.add_dependency 'rcov'
+
   s.files             = [
     '#{%w( **/{*,.rspec,.gitignore,.yardopts} ).map { |file| Pathname.glob(gempath.join(file)) }.flatten.reject{|f|
       !f.exist? or f.to_s =~ /\.gem$/ or (f.directory? and f.children.empty?)
