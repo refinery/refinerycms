@@ -214,6 +214,14 @@ Then /^(?:|I )should have the following query string:$/ do |expected_pairs|
   end
 end
 
+Then /the page should have the css "(.*)"$/ do |expected_css|
+  page.should have_css(expected_css)
+end
+
 Then /^show me the page$/ do
   save_and_open_page
+end
+
+Then /^output the page$/ do
+  puts page.body
 end
