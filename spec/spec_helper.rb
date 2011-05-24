@@ -64,13 +64,14 @@ else
   each_run
 end
 
-def capture_stdout(&block)
-  original_stdout = $stdout
-  $stdout = fake = StringIO.new
+def capture_stdout(stdin_str = '')
   begin
+    require 'stringio'
+    $o_stdin, $o_stdout, $o_stderr = $stdin, $stdout, $stderr
+    $stdin, $stdout, $stderr = StringIO.new(stdin_str), StringIO.new, StringIO.new
     yield
+    {:stdout => $stdout.string, :stderr => $stderr.string}
   ensure
-    $stdout = original_stdout
+    $stdin, $stdout, $stderr = $o_stdin, $o_stdout, $o_stderr
   end
- fake.string
 end

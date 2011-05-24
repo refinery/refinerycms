@@ -107,9 +107,9 @@ describe Page do
   context "content sections (page parts)" do
     before { create_page_parts }
 
-    it "return the content when using []" do
-      capture_stdout { page[:body].should == "<p>I'm the first page part for this page.</p>" }
-      capture_stdout { page["BoDY"].should == "<p>I'm the first page part for this page.</p>" }
+    it "return the content when using [] and moan about it" do
+      capture_stdout { page[:body].should == "<p>I'm the first page part for this page.</p>" }[:stderr].should =~ /DEPRECATION\ WARNING/
+      capture_stdout { page["BoDY"].should == "<p>I'm the first page part for this page.</p>" }[:stderr].should =~ /DEPRECATION\ WARNING/
     end
 
     it "return the content when using content_for" do
