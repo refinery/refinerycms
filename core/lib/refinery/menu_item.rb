@@ -37,6 +37,10 @@ module Refinery
     # really, they're the same.
     alias_method :has_descendants?, :has_children?
 
+    def has_parent?
+      !parent_id.nil?
+    end
+
     def inspect
       hash = {}
 
@@ -52,11 +56,11 @@ module Refinery
     end
 
     def parent
-      @parent ||= (menu.detect{|item| item.type == type && item.id == parent_id} if parent_id)
+      @parent ||= (menu.detect{|item| item.type == type && item.id == parent_id} if has_parent?)
     end
 
     def siblings
-      @siblings ||= menu.class.new((parent.nil? ? menu.roots : children) - [self])
+      @siblings ||= menu.class.new((has_parent? ? children : menu.roots) - [self])
     end
     alias_method :shown_siblings, :siblings
 
