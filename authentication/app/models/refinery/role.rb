@@ -1,7 +1,8 @@
 module Refinery
   class Role < ActiveRecord::Base
 
-    has_and_belongs_to_many :users, :class_name => '::Refinery::User'
+    # TODO: This works around a bug in rails habtm with namespaces.
+    has_and_belongs_to_many :users, :join_table => ::Refinery::RolesUsers.table_name
 
     before_validation :camelize_title
     validates :title, :uniqueness => true
