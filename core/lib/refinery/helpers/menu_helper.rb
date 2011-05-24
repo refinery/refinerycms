@@ -39,7 +39,7 @@ module Refinery
       # This maps to the older css_for_menu_branch method.
       def menu_branch_css(local_assigns)
         options = local_assigns.dup
-        options.update(:sibling_count => options[:menu_branch].siblings.length) unless options[:sibling_count]
+        options.update(:sibling_count => options[:menu_branch].shown_siblings.length) unless options[:sibling_count]
 
         css_for_menu_branch(options[:menu_branch],
                             options[:menu_branch_counter],
