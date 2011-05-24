@@ -13,6 +13,15 @@ module Refinery
       }
     end
 
+    def ancestors
+      return @ancestors if @ancestors
+      @ancestors = []
+      p = self
+      @ancestors << p until(p = p.parent).nil?
+
+      @ancestors
+    end
+
     def children
       @children ||= if has_children?
         menu.select{|item| item.type == type && item.parent_id == id}
