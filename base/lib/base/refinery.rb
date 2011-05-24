@@ -18,12 +18,12 @@ module Refinery
       warning = "\n-- DEPRECATION WARNING --"
       warning << "\nThe use of '#{options[:what]}' is deprecated"
       warning << " and will be removed at version #{options[:when]}." if options[:when]
-      warning << "Please use #{options[:replacement]} instead." if options[:replacement]
+      warning << "\nPlease use #{options[:replacement]} instead." if options[:replacement]
 
       # See if we can trace where this happened
       if options[:caller]
         whos_calling = options[:caller].detect{|c| c =~ %r{#{Rails.root.to_s}}}.inspect.to_s.split(':in').first
-        warning << "Called from: #{whos_calling}\n\n"
+        warning << "\nCalled from: #{whos_calling}\n"
       end
 
       # Give stern talking to.
