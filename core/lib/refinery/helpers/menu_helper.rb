@@ -31,13 +31,7 @@ module Refinery
         css = []
         css << "selected" if selected_page_or_descendant_page_selected?(item, collection, selected_item)
         css << "first" if counter == 0
-        if (sibling_count ? (counter == sibling_count) : (item.rgt == item.parent.rgt - 1))
-          $stdout.puts "sibling_count: #{sibling_count}"
-          $stdout.puts "counter: #{counter}"
-          $stdout.puts "item: #{item.inspect}"
-          $stdout.puts "parent: #{item.parent.inspect}"
-          css << "last"
-        end
+        css << "last" if (sibling_count ? (counter == sibling_count) : (item.rgt == item.parent.rgt - 1))
         css
       end
 
