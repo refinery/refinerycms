@@ -12,7 +12,7 @@ module ::Refinery
       def new
         @resource = Resource.new if @resource.nil?
 
-        @url_override = refinery_admin_resources_path(:dialog => from_dialog?)
+        @url_override = main_app.refinery_admin_resources_path(:dialog => from_dialog?)
       end
 
       def create
@@ -25,7 +25,7 @@ module ::Refinery
             unless from_dialog?
               redirect_to :action => 'index'
             else
-              render :text => "<script>parent.window.location = '#{refinery_admin_resources_path}';</script>"
+              render :text => "<script>parent.window.location = '#{main_app.refinery_admin_resources_path}';</script>"
             end
           else
             self.new # important for dialogs
@@ -46,7 +46,7 @@ module ::Refinery
       def insert
         self.new if @resource.nil?
 
-        @url_override = refinery_admin_resources_path(request.query_parameters.merge(:insert => true))
+        @url_override = main_app.refinery_admin_resources_path(request.query_parameters.merge(:insert => true))
 
         if params[:conditions].present?
           extra_condition = params[:conditions].split(',')

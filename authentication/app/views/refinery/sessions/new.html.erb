@@ -1,6 +1,6 @@
 <% content_for :header, t('.hello_please_sign_in') %>
 
-<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+<%= form_for(resource, :as => resource_name, :url => main_app.session_path(resource_name)) do |f| %>
   <div class='field session_username clearfix'>
     <%= f.label :login %>
     <%= f.text_field :login, :class => 'larger widest' %>
@@ -17,7 +17,7 @@
       </div>
     <% end %>
     <div class='field forgot_password'>
-      <%= link_to t('.forgot_password'), new_password_path(resource_name) %>
+      <%= link_to t('.forgot_password'), main_app.new_password_path(resource_name) %>
     </div>
   </div>
   <%= render :partial => "/shared/admin/form_actions",

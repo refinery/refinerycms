@@ -1,4 +1,4 @@
-<%= form_for [:admin, @resource], :url => @url_override || @resource.new_record? ? refinery_admin_resources_path : refinery_admin_resource_path(@resource),
+<%= form_for [:admin, @resource], :url => @url_override || @resource.new_record? ? main_app.refinery_admin_resources_path : main_app.refinery_admin_resource_path(@resource),
                                   :html => {:multipart => true},
                                   :as => "resource" do |f| -%>
 

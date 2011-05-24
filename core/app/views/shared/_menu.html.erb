@@ -11,7 +11,8 @@
       roots = local_assigns[:roots] || Rails.cache.fetch([cache_key, "roots"].join("_")) { roots = collection.select{|c| c.parent_id.nil?} } unless roots
     else
       collection ||= @menu_pages
-      roots = local_assigns[:roots] || collection.select{|c| c.parent_id.nil?}
+      # TODO: fix for rails 3.1
+      # roots = local_assigns[:roots] || collection.select{|c| c.parent_id.nil?}
     end
 
     # Select top menu items unless 'roots' is supplied.

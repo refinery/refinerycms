@@ -54,8 +54,8 @@
       <% content_for :javascripts do %>
       <script>
         $(document).ready(function(){
-          link_tester.init('<%= test_url_refinery_admin_pages_dialogs_path %>',
-                           '<%= test_email_refinery_admin_pages_dialogs_path %>');
+          link_tester.init('<%= main_app.test_url_refinery_admin_pages_dialogs_path %>',
+                           '<%= main_app.test_email_refinery_admin_pages_dialogs_path %>');
 
           link_tester.validate_url_textbox("#page_link_url")
         });

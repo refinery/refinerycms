@@ -1,4 +1,4 @@
-<%= form_for [:admin, @setting], :url => refinery_admin_settings_path do |f| %>
+<%= form_for [:admin, @setting], :url => main_app.refinery_admin_settings_path do |f| %>
 
   <%= render :partial => "/shared/admin/error_messages",
              :locals => {

@@ -22,7 +22,7 @@
   <%= render :partial => "/shared/admin/form_actions",
              :locals => {
                :f => nil,
-               :cancel_url => refinery_admin_resources_path,
+               :cancel_url => main_app.refinery_admin_resources_path,
                :submit_button_text => t('.button_text'),
                :hide_cancel => true,
                :hide_delete => true

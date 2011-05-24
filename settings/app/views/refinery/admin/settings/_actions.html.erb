@@ -2,11 +2,11 @@
   <li>
     <%= render :partial => "/shared/admin/search",
                :locals => {
-                 :url => refinery_admin_settings_path
+                 :url => main_app.refinery_admin_settings_path
                } %>
   </li>
   <li>
-    <%= link_to t('.new'), new_refinery_admin_setting_path({
+    <%= link_to t('.new'), main_app.new_refinery_admin_setting_path({
                              :dialog => true,
                              :width => 725,
                              :height => 565
