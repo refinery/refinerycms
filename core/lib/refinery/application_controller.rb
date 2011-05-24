@@ -80,7 +80,6 @@ module Refinery
 
       # get all the pages to be displayed in the site menu.
       def find_pages_for_menu
-        return nil
         raise NotImplementedError, 'Please implement protected method find_pages_for_menu'
       end
 
