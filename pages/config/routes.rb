@@ -1,5 +1,7 @@
 ::Refinery::Application.routes.draw do
-  get '/pages/:id', :to => 'pages#show', :as => :refinery_page
+  scope(:path => 'refinery', :as => 'refinery', :module => 'refinery') do
+    get '/pages/:id', :to => 'pages#show', :as => :page
+  end
 
   scope(:path => 'refinery', :as => 'refinery_admin', :module => 'refinery/admin') do
     resources :pages, :except => :show do
