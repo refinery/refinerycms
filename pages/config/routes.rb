@@ -1,6 +1,6 @@
 ::Refinery::Application.routes.draw do
-  scope(:path => 'refinery', :as => 'refinery', :module => 'refinery') do
-    get '/pages/:id', :to => 'pages#show', :as => :page
+  scope(:as => 'refinery_page', :module => 'refinery') do
+    get '/pages/:id', :to => 'pages#show'
   end
 
   scope(:path => 'refinery', :as => 'refinery_admin', :module => 'refinery/admin') do
