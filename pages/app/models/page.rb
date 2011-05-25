@@ -43,7 +43,7 @@ class Page < ActiveRecord::Base
     end
 
     before_create :ensure_locale, :if => proc { |c|
-      defined?(::Refinery::I18n) && ::Refinery::I18n.enabled?
+      ::Refinery.i18n_enabled?
     }
   end
 
@@ -192,7 +192,7 @@ class Page < ActiveRecord::Base
   end
 
   def link_url_localised?
-    return link_url unless defined?(::Refinery::I18n)
+    return link_url unless ::Refinery.i18n_enabled?
 
     current_url = link_url
 
@@ -299,9 +299,7 @@ class Page < ActiveRecord::Base
     # the current frontend locale is different to the current one set by ::I18n.locale.
     # This terminates in a false if i18n engine is not defined or enabled.
     def different_frontend_locale?
-      defined?(::Refinery::I18n) &&
-        ::Refinery::I18n.enabled? &&
-        ::Refinery::I18n.current_frontend_locale != ::I18n.locale
+      ::Refinery.i18n_enabled? && ::Refinery::I18n.current_frontend_locale != ::I18n.locale
     end
 
     # Returns how many pages per page should there be when paginating pages

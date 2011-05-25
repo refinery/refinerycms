@@ -34,6 +34,10 @@ module Refinery
       @engines ||= []
     end
 
+    def i18n_enabled?
+      defined?(::Refinery::I18n) && ::Refinery::I18n.enabled?
+    end
+
     def rescue_not_found
       !!@rescue_not_found
     end

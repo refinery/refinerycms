@@ -12,7 +12,7 @@ module Admin
     after_filter lambda{::Page.expire_page_caching}, :only => [:update_positions]
 
     before_filter :restrict_access, :only => [:create, :update, :update_positions, :destroy], :if => proc {|c|
-      defined?(::Refinery::I18n) && ::Refinery::I18n.enabled?
+      ::Refinery.i18n_enabled?
     }
 
     def new
