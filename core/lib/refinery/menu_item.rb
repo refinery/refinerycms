@@ -1,7 +1,7 @@
 module Refinery
   class MenuItem < HashWithIndifferentAccess
 
-    (ATTRIBUTES = [:id, :title, :parent_id, :lft, :rgt, :url, :menu_id, :menu_match, :type]).each do |attribute|
+    (ATTRIBUTES = [:id, :title, :parent_id, :lft, :rgt, :depth, :url, :menu_id, :menu_match, :type]).each do |attribute|
       class_eval %{
         def #{attribute}
           @#{attribute} ||= self[:#{attribute}]

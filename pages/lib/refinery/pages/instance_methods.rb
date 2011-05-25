@@ -21,7 +21,7 @@ module Refinery
 
         # Now we only want to select particular columns to avoid any further queries.
         # Title is retrieved in the next block below so it's not here.
-        %w(id parent_id lft rgt link_url menu_match).each do |column|
+        %w(id depth parent_id lft rgt link_url menu_match).each do |column|
           pages = pages.select(::Page.arel_table[column.to_sym])
         end
 
