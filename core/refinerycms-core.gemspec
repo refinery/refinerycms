@@ -5,7 +5,7 @@ Gem::Specification.new do |s|
   s.version           = %q{1.0.0}
   s.summary           = %q{Core engine for Refinery CMS}
   s.description       = %q{The core of Refinery CMS. This handles the common functionality and is required by most engines}
-  s.date              = %q{2011-05-22}
+  s.date              = %q{2011-05-25}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
   s.rubyforge_project = %q{refinerycms}
@@ -14,8 +14,8 @@ Gem::Specification.new do |s|
   s.require_paths     = %w(lib)
   s.executables       = %w()
 
-  s.add_dependency 'refinerycms-base',            '~> 1.0.0'
-  s.add_dependency 'refinerycms-settings',        '~> 1.0.0'
+  s.add_dependency 'refinerycms-base',            '= 1.0.0'
+  s.add_dependency 'refinerycms-settings',        '= 1.0.0'
   s.add_dependency 'refinerycms-generators',      '~> 1.0'
   s.add_dependency 'acts_as_indexed',             '~> 0.7'
   s.add_dependency 'friendly_id_globalize3',      '~> 3.2.1'
@@ -107,6 +107,7 @@ Gem::Specification.new do |s|
     'doc',
     'doc/included-jquery-ui-packages.jpg',
     'features',
+    'features/dialogs.feature',
     'features/search.feature',
     'features/site_bar.feature',
     'features/step_definitions',
@@ -163,6 +164,8 @@ Gem::Specification.new do |s|
     'lib/refinery/helpers/tag_helper.rb',
     'lib/refinery/helpers/translation_helper.rb',
     'lib/refinery/link_renderer.rb',
+    'lib/refinery/menu.rb',
+    'lib/refinery/menu_item.rb',
     'lib/refinery/plugin.rb',
     'lib/refinery/plugins.rb',
     'lib/refinerycms-core.rb',

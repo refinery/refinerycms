@@ -49,14 +49,14 @@ Gem::Specification.new do |s|
   s.add_dependency    'bundler',                    '~> 1.0'
 
   # Refinery CMS
-  s.add_dependency    'refinerycms-authentication', '~> #{::Refinery::Version}'
-  s.add_dependency    'refinerycms-base',           '~> #{::Refinery::Version}'
-  s.add_dependency    'refinerycms-core',           '~> #{::Refinery::Version}'
-  s.add_dependency    'refinerycms-dashboard',      '~> #{::Refinery::Version}'
-  s.add_dependency    'refinerycms-images',         '~> #{::Refinery::Version}'
-  s.add_dependency    'refinerycms-pages',          '~> #{::Refinery::Version}'
-  s.add_dependency    'refinerycms-resources',      '~> #{::Refinery::Version}'
-  s.add_dependency    'refinerycms-settings',       '~> #{::Refinery::Version}'
+  s.add_dependency    'refinerycms-authentication', '= #{::Refinery::Version}'
+  s.add_dependency    'refinerycms-base',           '= #{::Refinery::Version}'
+  s.add_dependency    'refinerycms-core',           '= #{::Refinery::Version}'
+  s.add_dependency    'refinerycms-dashboard',      '= #{::Refinery::Version}'
+  s.add_dependency    'refinerycms-images',         '= #{::Refinery::Version}'
+  s.add_dependency    'refinerycms-pages',          '= #{::Refinery::Version}'
+  s.add_dependency    'refinerycms-resources',      '= #{::Refinery::Version}'
+  s.add_dependency    'refinerycms-settings',       '= #{::Refinery::Version}'
 
   s.files             = [
     '#{files.sort.join("',\n    '")}'
