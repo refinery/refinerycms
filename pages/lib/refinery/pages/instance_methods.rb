@@ -17,7 +17,7 @@ module Refinery
       def find_pages_for_menu
         # First, apply a filter to determine which pages to show.
         # We need to join to the page's slug to avoid multiple queries.
-        pages = ::Page.live.in_menu.includes(:slug)
+        pages = ::Page.live.in_menu.includes(:slug).order('lft ASC')
 
         # Now we only want to select particular columns to avoid any further queries.
         # Title is retrieved in the next block below so it's not here.
