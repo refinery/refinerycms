@@ -6,7 +6,7 @@
     devise_for :users, :class_name => "Refinery::User", :module => 'refinery', :controllers => {
       :sessions => 'refinery/sessions',
       :registrations => 'refinery/users',
-      :passwords => 'reginery/passwords'
+      :passwords => 'refinery/passwords'
     }, :path_names => {
       :sign_out => 'logout',
       :sign_in => 'login',
