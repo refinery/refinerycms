@@ -28,6 +28,9 @@ gem 'mysql2', '~> 0.2.7'
 # For Heroku/s3:
 # gem 'fog'
 
+# Use Fog to play nice with cloud services (recommended for Heroku/s3)
+# gem 'fog'
+
 # REFINERY CMS ================================================================
 # Anything you put in here will be overridden when the app gets updated.
 
