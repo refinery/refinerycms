@@ -5,7 +5,7 @@
 
     match 'wymiframe(/:id)', :to => 'refinery/fast#wymiframe', :as => :wymiframe
 
-    scope(:path => 'refinery', :as => 'refinery_admin', :module => 'refinery/admin') do
+    scope(:path => 'refinery', :as => 'refinery_admin', :module => 'admin') do
       resources :dialogs, :only => :show
       root :to => 'dashboard#index'
     end
