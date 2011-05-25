@@ -3,9 +3,9 @@ module Refinery
     module InstanceMethods
 
       def error_404(exception=nil)
-        if (@page = ::Page.where(:menu_match => "^/404$").includes(:parts, :slugs).first).present?
+        if (@page = ::Page.where(:menu_match => '^/404$').includes(:parts, :slugs).first).present?
           # render the application's custom 404 page with layout and meta.
-          render :template => "/pages/show",
+          render :template => '/pages/show',
                  :format => 'html',
                  :status => 404
         else
@@ -27,9 +27,9 @@ module Refinery
 
         # If we have translations then we get the title from that table.
         if ::Page.respond_to?(:translation_class)
-          pages = pages.joins(:translations).select("`#{::Page.translation_class.table_name}`.`title` as page_title")
+          pages = pages.joins(:translations).select("#{::Page.translation_class.table_name}.title as page_title")
         else
-          pages = pages.select("title as page_title")
+          pages = pages.select('title as page_title')
         end
 
         # Compile the menu
