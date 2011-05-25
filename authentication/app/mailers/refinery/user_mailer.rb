@@ -3,7 +3,7 @@ module ::Refinery
 
     def reset_notification(user, request)
       @user = user
-      @url = edit_user_password_url(:host => request.host_with_port,
+      @url = main_app.edit_user_password_url(:host => request.host_with_port,
                                     :reset_password_token => @user.reset_password_token)
 
       domain = request.domain(::Refinery::Setting.find_or_set(:tld_length, 1))
