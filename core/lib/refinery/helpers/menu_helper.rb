@@ -80,8 +80,7 @@ module Refinery
         end
 
         # First try to match against a "menu match" value, if available.
-        match = (path =~ Regexp.new(page.menu_match) if page.respond_to?(:menu_match) && page.menu_match.present?)
-        return match if match
+        return true if page.try(:menu_match).present? && path =~ Regexp.new(page.menu_match)
 
         # Find the first url that is a string.
         url = [page.url]
