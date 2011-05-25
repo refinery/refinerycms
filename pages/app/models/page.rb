@@ -88,7 +88,7 @@ class Page < ActiveRecord::Base
                               :custom_title, :browser_title, :all_page_part_content]
 
   before_destroy :deletable?
-  after_save :reposition_parts!, :invalidate_child_cached_url, :expire_page_caching
+  after_save :reposition_parts!, :invalidate_cached_urls, :expire_page_caching
   after_destroy :expire_page_caching
 
   # Wrap up the logic of finding the pages based on the translations table.
@@ -388,7 +388,7 @@ class Page < ActiveRecord::Base
 
 private
 
-  def invalidate_child_cached_url
+  def invalidate_cached_urls
     return true unless self.class.use_marketable_urls?
 
     children.each do |child|
@@ -396,6 +396,7 @@ private
       Rails.cache.delete(child.path_cache_key)
     end
   end
+  alias_method :invalidate_child_cached_url, :invalidate_cached_urls
 
   def ensure_locale
     unless self.translations.present?

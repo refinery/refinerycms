@@ -79,12 +79,18 @@ module Refinery
           path = "/" if path.blank?
         end
 
-        # Match path based on cascading rules.
-        (path =~ Regexp.new(page.menu_match) if page.menu_match.present?) or
-          (page.url.is_a?(String) && (path == page.url or URI.decode(path) == page.url)) or
-          (page.url.respond_to?(:keys) && path == ['', page.url[:path]].compact.flatten.join('/')) or
-          path == "/#{page.id}" or
-          current_page?(page)
+        # First try to match against a "menu match" value, if available.
+        match = (path =~ Regexp.new(page.menu_match) if page.respond_to?(:menu_match) && page.menu_match.present?)
+        return match if match
+
+        # Find the first url that is a string.
+        url = [page.url]
+        url << ['', page.url[:path]].compact.flatten.join('/') if page.url.respond_to?(:keys)
+        url = url.detect{|u| u.is_a?(String)}
+
+        # Now use all possible vectors to try to find a valid match,
+        # finally passing to rails' "current_page?" method.
+        [path, URI.decode(path)].include?(url) || path == "/#{page.id}" || current_page?(page)
       end
 
     end
