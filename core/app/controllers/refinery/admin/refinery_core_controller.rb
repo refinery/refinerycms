@@ -1,5 +1,5 @@
 module ::Refinery
-  module ::Admin
+  module Admin
     class RefineryCoreController < ::Admin::BaseController
       def update_plugin_positions
         params[:menu].each_with_index do |plugin_name, index|
