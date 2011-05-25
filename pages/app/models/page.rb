@@ -66,14 +66,6 @@ class Page < ActiveRecord::Base
                   :approximate_ascii => RefinerySetting.find_or_set(:approximate_ascii, false, :scoping => "pages"),
                   :strip_non_ascii => RefinerySetting.find_or_set(:strip_non_ascii, false, :scoping => "pages")
 
-  def to_param_cache
-    slug.try(:name)
-  end
-
-  def to_param
-    to_param_cache || super
-  end
-
   has_many :parts,
            :class_name => "PagePart",
            :order => "position ASC",
@@ -389,9 +381,9 @@ private
   def invalidate_cached_urls
     return true unless self.class.use_marketable_urls?
 
-    children.each do |child|
-      Rails.cache.delete(child.url_cache_key)
-      Rails.cache.delete(child.path_cache_key)
+    [self, children].flatten.each do |page|
+      Rails.cache.delete(page.url_cache_key)
+      Rails.cache.delete(page.path_cache_key)
     end
   end
   alias_method :invalidate_child_cached_url, :invalidate_cached_urls
