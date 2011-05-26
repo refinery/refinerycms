@@ -14,6 +14,14 @@ module Refinery
       session[:return_to] = nil
     end
 
+    # This just defines the devise method for after sign in to support
+    # engine namespace isolation...
+    def after_sign_in_path_for(resource_or_scope)
+      scope = Devise::Mapping.find_scope!(resource_or_scope)
+      home_path = "#{scope}_root_path"
+      respond_to?(home_path, true) ? main_app.send(home_path) : main_app.root_path
+    end
+
     #def current_user
       #current_user
     #end
