@@ -94,7 +94,7 @@ class Page < ActiveRecord::Base
         end
       end
       # A join implies readonly which we don't really want.
-      joins(:translations).where(globalized_conditions).where(conditions).group(self.arel_table[:id]).readonly(false)
+      joins(:translations).where(globalized_conditions).where(conditions).readonly(false)
     end
   else
     def self.with_globalize(conditions = {})
