@@ -1,6 +1,5 @@
 module Refinery
 page_position = -1
-  debugger
   home_page = Page.create!({:title => "Home",
               :deletable => false,
               :link_url => "/",

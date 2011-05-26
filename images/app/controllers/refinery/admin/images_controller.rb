@@ -58,7 +58,7 @@ module ::Refinery
           if @images.all?{|i| i.valid?}
             flash.notice = t('created', :scope => 'refinery.crudify', :what => "'#{@images.collect{|i| i.title}.join("', '")}'")
             unless from_dialog?
-              redirect_to :action => 'index'
+              redirect_to main_app.url_for(:action => 'index')
             else
               render :text => "<script>parent.window.location = '#{main_app.refinery_admin_images_path}';</script>"
             end

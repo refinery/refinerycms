@@ -3,7 +3,7 @@ module Refinery
     module InstanceMethods
 
       def error_404(exception=nil)
-        if (@page = ::Page.where(:menu_match => "^/404$").includes(:parts, :slugs).first).present?
+        if (@page = ::Refinery::Page.where(:menu_match => "^/404$").includes(:parts, :slugs).first).present?
           # render the application's custom 404 page with layout and meta.
           render :template => "/pages/show",
                  :format => 'html',
@@ -15,7 +15,7 @@ module Refinery
 
     protected
       def find_pages_for_menu
-        @menu_pages = ::Page.roots.live.in_menu.order('lft ASC').includes(:children)
+        @menu_pages = ::Refinery::Page.roots.live.in_menu.order('lft ASC').includes(:children)
       end
 
       def render(*args)
