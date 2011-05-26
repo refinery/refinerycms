@@ -23,7 +23,7 @@ module ::Refinery
           if @resources.all?(&:valid?)
             flash.notice = t('created', :scope => 'refinery.crudify', :what => "'#{@resources.collect{|r| r.title}.join("', '")}'")
             unless from_dialog?
-              redirect_to :action => 'index'
+              redirect_to main_app.url_for(:action => 'index')
             else
               render :text => "<script>parent.window.location = '#{main_app.refinery_admin_resources_path}';</script>"
             end

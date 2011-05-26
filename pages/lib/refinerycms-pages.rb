@@ -31,8 +31,8 @@ module Refinery
       end
 
       refinery.after_inclusion do
-        ::Refinery::ApplicationController.send :include, ::Refinery::Pages::InstanceMethods
-        ::Refinery::Admin::BaseController.send :include, ::Refinery::Pages::Admin::InstanceMethods
+        ::ApplicationController.send :include, ::Refinery::Pages::InstanceMethods
+        ::Admin::BaseController.send :include, ::Refinery::Pages::Admin::InstanceMethods
       end
 
       initializer "init plugin", :after => :set_routes_reloader do |app|
