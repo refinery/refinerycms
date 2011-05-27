@@ -1,4 +1,4 @@
-## 1.0.0 [Unreleased]
+## 1.0.0 [28 May 2011]
 
 * New `::Refinery::Menu` API implemented which speeds up menu generation by many times. [Philip Arndt](https://github.com/parndt)
 * Removed caching from menu because it's so much faster now. Probably in future it will be added to `::Refinery::Menu` itself in a transparent manner. [Philip Arndt](https://github.com/parndt)

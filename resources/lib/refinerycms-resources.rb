@@ -61,7 +61,7 @@ module Refinery
           plugin.name = 'refinery_files'
           plugin.url = {:controller => '/admin/resources', :action => 'index'}
           plugin.menu_match = /(refinery|admin)\/(refinery_)?(files|resources)$/
-          plugin.version = %q{0.9.9.21}
+          plugin.version = %q{1.0.0}
           plugin.activity = {
             :class => Resource
           }

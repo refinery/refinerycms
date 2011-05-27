@@ -19,7 +19,7 @@ module Refinery
           plugin.url = {:controller => '/admin/dashboard', :action => 'index'}
           plugin.menu_match = /(admin|refinery)\/(refinery_)?dashboard$/
           plugin.directory = 'dashboard'
-          plugin.version = %q{0.9.9.21}
+          plugin.version = %q{1.0.0}
           plugin.always_allow_access = true
           plugin.dashboard = true
         end

@@ -19,7 +19,7 @@ Take a look at "http://rubygems.org/gems/refinerycms":http://rubygems.org/gems/r
 Edit your +Gemfile+ to reference the latest version of Refinery (a later version than the one shown "may exist":https://rubygems.org/gems/refinerycms/versions).
 
 <ruby>
-gem 'refinerycms', '= 0.9.9.22'
+gem 'refinerycms', '= 1.0.0'
 </ruby>
 
 Now install the new gems using bundler ('bundle install' is outdated):

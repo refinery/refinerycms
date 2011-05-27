@@ -6,7 +6,7 @@ h2. How to Install Refinery on Duostack
 
 endprologue.
 
-WARNING. This guide is based on Refinery 0.9.9. The automated Duostack installation shown here will not work in earlier versions of Refinery.
+WARNING. This guide is based on Refinery CMS 1.0.0. The automated Duostack installation shown here will not work in earlier versions of Refinery.
 
 h3. Starting Out
 
