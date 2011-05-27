@@ -1,4 +1,7 @@
 require 'rbconfig'
+require 'factory_girl'
+require File.dirname(__FILE__) + '/../testing/spec/support/controller_macros.rb'
+
 def setup_environment
   # This file is copied to ~/spec when you run 'rails generate rspec'
   # from the project root directory.
@@ -29,6 +32,7 @@ def setup_environment
     config.use_instantiated_fixtures  = false
 
     config.include Devise::TestHelpers, :type => :controller
+    config.extend ControllerMacros, :type => :controller
 
     Factory.definition_file_paths = [File.join(Rails.root, 'testing', 'spec', 'factories')]
     Factory.find_definitions
