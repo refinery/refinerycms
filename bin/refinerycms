@@ -268,7 +268,7 @@ module Refinery
       if @options[:database][:adapter] == 'mysql'
         app_gemfile_contents = app_gemfile.read
         app_gemfile.open('w') do |f|
-          f.write app_gemfile_contents.gsub "gem 'mysql2'", "gem 'mysql2', '~> 0.2.7'"
+          f.write app_gemfile_contents.gsub %r{gem 'mysql2'.*}, "gem 'mysql2', '~> 0.2.7'"
         end
       end
 
