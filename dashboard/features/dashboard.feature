@@ -8,7 +8,7 @@ Feature: Dashboard
     Given I am a logged in refinery user
     When I go to the Dashboard
 
-  @dashboard-add
+  @dashboard-add @wip
   Scenario: Add New Page Button
     Given I have no pages
     When I follow "Add a new page"
