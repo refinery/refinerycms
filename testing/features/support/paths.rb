@@ -1,5 +1,5 @@
-::Refinery::Plugins.registered.map{|p|
-  p.pathname.join('features', 'support', 'paths.rb')
+([Rails.root] | ::Refinery::Plugins.registered.pathnames).map{|path|
+  path.join('features', 'support', 'paths.rb')
 }.reject{|p| !p.exist?}.each do |paths|
   require paths
 end
@@ -21,6 +21,7 @@ module NavigationHelpers
   #     end
   #   end
   # end
+
   NavigationHelpers::Refinery.constants.each do |name|
     begin
       if (mod = "NavigationHelpers::Refinery::#{name}".constantize)
