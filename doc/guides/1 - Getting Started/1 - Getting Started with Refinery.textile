@@ -8,7 +8,7 @@ This guide covers getting up and running with Refinery CMS. After reading it, yo
 
 endprologue.
 
-WARNING. This guide is based on Refinery CMS 0.9.9.16 so some of the code shown here may not work in earlier versions of Refinery.
+WARNING. This guide is based on Refinery CMS 0.9.9.22 so some of the code shown here may not work in earlier versions of Refinery.
 
 h3. Guide Assumptions
 
@@ -33,7 +33,7 @@ rvm use --create ruby-1.9.2@refinery
 Refinery is a Ruby on Rails web application. If you have no prior experience with Rails, you will find a very steep learning curve diving straight into Refinery.  There are some good free resources on the Internet for learning Rails, including:
 
 * "Getting Started with Rails":http://guides.rubyonrails.org/getting_started.html
-* "Rails for Zombies":http://railsforzombies.org/labs
+* "Rails for Zombies":http://railsforzombies.org
 
 h3. What is Refinery CMS?
 

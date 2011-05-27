@@ -4,9 +4,7 @@ Given %r`not logged in$` do
 end
 
 Given /locale is (.+?)$/ do |locale|
-  if defined?(::Refinery::I18n)
-    ::Refinery::I18n.current_locale = locale.to_sym
-  end
+  ::Refinery::I18n.current_locale = locale.to_sym if ::Refinery.i18n_enabled?
 end
 
 Given %r`(?:log|am logged) in as "([^\"]+)"$` do |login|

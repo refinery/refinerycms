@@ -6,7 +6,7 @@ This guide covers integration with Refinery CMS. After reading it, you should be
 
 endprologue.
 
-WARNING. This guide is based on Refinery CMS 0.9.9.16. Some of the code shown here will not work in earlier versions of Refinery.
+WARNING. This guide is based on Refinery CMS 0.9.9.22. Some of the code shown here will not work in earlier versions of Refinery.
 
 h3. Guide Assumptions
 
@@ -24,7 +24,7 @@ h4. Add Refinery CMS as a dependency in your Gemfile
 Open up your Gemfile and add the latest version (a later version than the one shown "may exist":https://rubygems.org/gems/refinerycms/versions):
 
 <ruby>
-  gem 'refinerycms', '= 0.9.9.16'
+  gem 'refinerycms', '= 0.9.9.22'
 </ruby>
 
 Now, to install the gem run:

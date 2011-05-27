@@ -9,6 +9,8 @@ module Refinery
   autoload :ApplicationHelper, File.expand_path('../refinery/application_helper', __FILE__)
   autoload :Configuration, File.expand_path('../refinery/configuration', __FILE__)
   autoload :Engine, File.expand_path('../refinery/engine', __FILE__)
+  autoload :Menu, File.expand_path('../refinery/menu', __FILE__)
+  autoload :MenuItem, File.expand_path('../refinery/menu_item', __FILE__)
   autoload :Plugin,  File.expand_path('../refinery/plugin', __FILE__)
   autoload :Plugins, File.expand_path('../refinery/plugins', __FILE__)
 end

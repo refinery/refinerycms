@@ -1,35 +1,19 @@
 <%
-  dom_id ||= 'menu'
-  caching = (cache_menu ||= ::Refinery::Setting.find_or_set(:cache_menu, false))
-  cache_key = [Refinery.base_cache_key, 'pages_menus', dom_id, Globalize.locale].join('_')
-
-  # cache the generation of the menu based on the pages.
-  cache_if(caching, ([cache_key, cache_path ||= request.path].join('_'))) do
-    # cache the pages first
-    if caching
-      collection = Rails.cache.fetch(cache_key) { (collection ||= @menu_pages).to_a }
-      roots = local_assigns[:roots] || Rails.cache.fetch([cache_key, "roots"].join("_")) { roots = collection.select{|c| c.parent_id.nil?} } unless roots
-    else
-      collection ||= @menu_pages
-      # TODO: fix for rails 3.1
-      # roots = local_assigns[:roots] || collection.select{|c| c.parent_id.nil?}
-    end
-
-    # Select top menu items unless 'roots' is supplied.
-    if roots.present?
-      css = [(css || 'menu'), 'clearfix'].flatten.join(' ')
-      hide_children = ::Refinery::Setting.find_or_set(:menu_hide_children, false) if hide_children.nil?
-  -%>
-      <nav id='<%= dom_id %>' class='<%= css %>'>
-        <ul>
-          <%= render :partial => '/shared/menu_branch',
-                     :collection => roots,
-                     :locals => {
-                       :hide_children => hide_children,
-                       :sibling_count => (roots.length - 1),
-                       :apply_css => true #if you don't care about class='first' class='last' or class='selected' set apply_css to false for speed.
-                     } -%>
-        </ul>
-      </nav>
-  <% end -%>
+  # Collect the root items.
+  # Refinery::Menu is smart enough to remember all of the items in the original collection.
+  if (roots = local_assigns[:roots] || (collection ||= @menu_pages).roots).present?
+    dom_id ||= 'menu'
+    css = [(css || 'menu'), 'clearfix'].flatten.join(' ')
+    hide_children = ::Refinery::Setting.find_or_set(:menu_hide_children, false) if hide_children.nil?
+-%>
+<nav id='<%= dom_id %>' class='<%= css %>'>
+  <ul>
+    <%= render :partial => '/shared/menu_branch', :collection => roots,
+               :locals => {
+                 :hide_children => hide_children,
+                 :sibling_count => (roots.length - 1),
+                 :apply_css => true #if you don't care about class='first' class='last' or class='selected' set apply_css to false for speed.
+               } -%>
+  </ul>
+</nav>
 <% end -%>
