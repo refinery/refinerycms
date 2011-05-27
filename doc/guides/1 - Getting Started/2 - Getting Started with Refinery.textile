@@ -271,7 +271,9 @@ body {
 }
 </erb>
 
-TIP: When on the home page of your site, Refinery automatically loads an extra stylesheet located in +public/stylesheets/home.css+ as often sites have a different style on the home page.
+TIP: When on the home page of your site, Refinery automatically loads an extra stylesheet located in +public/stylesheets/home.css+ as often sites have a different style on the home page. 
+
+TIP: Note that 'refinery/application.css' is a stylesheet located in the refinery folder, which is in the refinerycms gem. Without it, front end pages do not include refinery/applications.css by default. Feel free to leave out this import.
 
 Now when you view your front end at "http://localhost:3000":http://localhost:3000 you'll notice your site has a grey background, with a horizontal menu and two white content areas.
 
