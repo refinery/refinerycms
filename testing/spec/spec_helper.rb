@@ -27,6 +27,11 @@ def setup_environment
     # instead of true.
     config.use_transactional_fixtures = true
     config.use_instantiated_fixtures  = false
+
+    config.include Devise::TestHelpers, :type => :controller
+
+    Factory.definition_file_paths = [File.join(Rails.root, 'testing', 'spec', 'factories')]
+    Factory.find_definitions
   end
 end
 
