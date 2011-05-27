@@ -9,9 +9,8 @@ if RUBY_PLATFORM == 'java'
   gem 'activerecord-jdbcsqlite3-adapter', '>= 1.0.2', :platform => :jruby
 else
   gem 'sqlite3'
+  gem 'mysql2', '~> 0.2.7'
 end
-
-gem 'mysql2', '~> 0.2.7'
 
 # Use unicorn as the web server
 # gem 'unicorn'
@@ -50,9 +49,9 @@ end
 
 # Specify additional Refinery CMS Engines here (all optional):
 # gem 'refinerycms-inquiries',    '~> 1.0'
-# gem "refinerycms-news",         '~> 1.1'
+# gem "refinerycms-news",         '~> 1.2'
 # gem 'refinerycms-portfolio',    '~> 0.9.9'
-# gem 'refinerycms-blog',         '~> 1.3'
+# gem 'refinerycms-blog',         '~> 1.5'
 # gem 'refinerycms-page-images',  '~> 1.0'
 
 # Add i18n support (optional, you can remove this if you really want to).
