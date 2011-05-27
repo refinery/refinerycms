@@ -68,6 +68,7 @@ Gem::Specification.new do |s|
     'spec/rcov.opts',
     'spec/spec_helper.rb',
     'spec/support',
-    'spec/support/controller_macros.rb'
+    'spec/support/refinery',
+    'spec/support/refinery/controller_macros.rb'
   ]
 end
