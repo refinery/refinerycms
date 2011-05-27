@@ -8,8 +8,6 @@ This guide covers getting your system ready for Refinery. Afterwards you will ha
 
 endprologue.
 
-On Linux, ImageMagick is usually included by default. On Mac OS X, use this "install script":https://github.com/maddox/magick-installer.
-
 h3. Checklist
 
 If you are already a Rails developer, you will most likely not have to install anything else. Here's the requirements for Refinery:
