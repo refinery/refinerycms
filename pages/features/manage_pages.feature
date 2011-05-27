@@ -14,6 +14,7 @@ Feature: Manage Pages
     Then I should see "Home"
     And I should see "About"
 
+  @wip
   Scenario: Create Valid Page
     When I go to the list of pages
     And I follow "Add new page"
