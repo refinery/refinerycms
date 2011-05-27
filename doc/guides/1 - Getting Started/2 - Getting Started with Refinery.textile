@@ -22,7 +22,7 @@ TIP: Ruby 1.9.1 is not usable because it outright segfaults on Rails 3.0, so if 
 * A working installation of the "SQLite3 Database":http://www.sqlite.org
 * A working installation of "ImageMagick":http://www.imagemagick.org/script/install-source.php
 
-TIP: On Linux, ImageMagick is usually included by default. On Mac OS X, use this "install script":https://github.com/maddox/magick-installer.
+TIP: If you don't already have these things, then you will need to follow the "Installing Refinery Prerequisites":/guides/installing-refinery-prerequisites guide.
 
 TIP: It is recommended that developers use RVM to manage Ruby versions and gems. Once RVM is installed on your system, and you've created a gemset for the project, create an .rvmrc file in the site's root directory. Its contents should look something like:
 
