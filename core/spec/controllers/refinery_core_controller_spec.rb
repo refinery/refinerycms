@@ -9,8 +9,9 @@ module Admin
 
       post 'update_plugin_positions', :menu => plugins
 
+      @refinery_user.plugins.reload
       @refinery_user.plugins.each_with_index do |plugin, idx|
-        plugin.position.should == idx
+        plugin.name.should eql(plugins[idx])
       end
     end
   end
