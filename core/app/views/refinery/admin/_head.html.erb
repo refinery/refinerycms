@@ -5,15 +5,19 @@
   <title><%= ::Refinery::Setting.find_or_set(:site_name, 'Company Name') -%> - Refinery</title>
   <%= csrf_meta_tag %>
 
-  <%= stylesheet_link_tag 'refinery/site_bar',
-                          'refinery/refinery',
-                          'refinery/ui',
-                          'refinery/submenu',
-                          'refinery/tooltips',
-                          'wymeditor/skins/refinery/skin',
-                          :cache => ("cache/refinery" if Rails.root.writable? and
-                                                         ::Refinery::Setting.find_or_set(:use_resource_caching, true) and
-                                                         request.env['HTTP_USER_AGENT'] !~ /MSIE/) -%>
+  <%# TODO: remove comment %>
+  <%# I seperated these because at the time I was going over this there was an exception thrown
+      by stylesheet_link_tag about argument count mismatch <c> ugis %>
+  <%= stylesheet_link_tag 'refinery/site_bar' %>
+  <%= stylesheet_link_tag 'refinery/refinery' %>
+  <%= stylesheet_link_tag 'refinery/ui' %>
+  <%= stylesheet_link_tag 'refinery/submenu' %>
+  <%= stylesheet_link_tag 'refinery/tooltips' %>
+  <%= stylesheet_link_tag 'wymeditor/skins/refinery/skin' %>
+  <%# TODO: remove caching because sprockets will do it for us
+    :cache => ("cache/refinery" if Rails.root.writable? and
+                                   ::Refinery::Setting.find_or_set(:use_resource_caching, true) and
+                                   request.env['HTTP_USER_AGENT'] !~ /MSIE/) -%>
 
   <%= yield :stylesheets %>
 
