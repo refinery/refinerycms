@@ -4,7 +4,8 @@ end
 
 # Add any parts of routes as reserved words.
 if Page.use_marketable_urls?
-  Page.friendly_id_config.reserved_words |= ::Refinery::Application.routes.named_routes.map { |name, route|
-    route.path.gsub(/^\//, '').to_s.split('(').first.to_s.split(':').first.to_s.split('/')
+  named_routes = ::Refinery::Application.routes.named_routes
+  Page.friendly_id_config.reserved_words |= named_routes.map { |name|
+    named_routes[name].path.gsub(/^\//, '').to_s.split('(').first.to_s.split(':').first.to_s.split('/')
   }.flatten.reject{|w| w =~ /\_/}.uniq
 end
