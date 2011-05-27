@@ -20,7 +20,7 @@ module Refinery
       end
 
       def site_bar_translate_locale_args
-        if defined?(::Refinery::I18n)
+        if ::Refinery.i18n_enabled?
           {:locale => ::Refinery::I18n.current_locale}
         else
           {}

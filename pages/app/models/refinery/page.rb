@@ -35,7 +35,7 @@ module Refinery
         # Wrap up the logic of finding the pages based on the translations table.
         def self.with_globalize(conditions = {})
           conditions = {:locale => Globalize.locale}.merge(conditions)
-          where(:id => translation_class.where(conditions).select('page_id AS id')).includes(:children, :slugs)
+          where(:id => translation_class.where(conditions).select('refinery_page_id AS id')).includes(:children, :slugs)
         end
       else
         # No translations, just default to normal behaviour.
@@ -121,19 +121,17 @@ module Refinery
     # Before destroying a page we check to see if it's a deletable page or not
     # Refinery system pages are not deletable.
     def destroy
-      if deletable?
-        super
-      else
-        unless Rails.env.test?
-          # give useful feedback when trying to delete from console
-          puts "This page is not deletable. Please use .destroy! if you really want it deleted "
-          puts "unset .link_url," if link_url.present?
-          puts "unset .menu_match," if menu_match.present?
-          puts "set .deletable to true" unless deletable
-        end
+      return super if deletable?
 
-        return false
+      unless Rails.env.test?
+        # give useful feedback when trying to delete from console
+        puts "This page is not deletable. Please use .destroy! if you really want it deleted "
+        puts "unset .link_url," if link_url.present?
+        puts "unset .menu_match," if menu_match.present?
+        puts "set .deletable to true" unless deletable
       end
+
+      return false
     end
 
     # If you want to destroy a page that is set to be not deletable this is the way to do it.
@@ -262,6 +260,19 @@ module Refinery
       siblings.reject(&:not_in_menu?)
     end
 
+    def to_refinery_menu_item
+      {
+        :id => id,
+        :lft => lft,
+        :menu_match => menu_match,
+        :parent_id => parent_id,
+        :rgt => rgt,
+        :title => (page_title if respond_to?(:page_title)) || title,
+        :type => self.class.name,
+        :url => url
+      }
+    end
+
     class << self
       # Accessor to find out the default page parts created for each new page
       def default_parts
@@ -314,10 +325,24 @@ module Refinery
       part.try(:body)
     end
 
+    def [](part_title)
+      # Allow for calling attributes with [] shorthand (eg page[:parent_id])
+      return super if self.respond_to?(part_title.to_s.to_sym) or self.attributes.has_key?(part_title.to_s)
+
+      Refinery.deprecate({
+        :what => "page[#{part_title.inspect}]",
+        :when => '1.1',
+        :replacement => "content_for(#{part_title.inspect})",
+        :caller => caller
+      })
+
+      content_for(part_title)
+    end
+
     # In the admin area we use a slightly different title to inform the which pages are draft or hidden pages
     def title_with_meta
       title = if self.title.nil?
-        [self.class.with_globalize(:page_id => self.id).first.try(:title).to_s]
+        [self.class.with_globalize(:page_id => self.id, :locale => Globalize.locale).first.try(:title).to_s]
       else
         [self.title.to_s]
       end

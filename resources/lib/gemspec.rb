@@ -25,7 +25,7 @@ Gem::Specification.new do |s|
     }.map{|d| d.relative_path_from(gempath)}.uniq.sort.join("',\n    '")}'
   ]
 
-  s.add_dependency 'refinerycms-core', '~> #{::Refinery::Version}'
+  s.add_dependency 'refinerycms-core', '= #{::Refinery::Version}'
   s.add_dependency 'dragonfly',        '~> 0.9.0'
   s.add_dependency 'rack-cache',       '>= 0.5.3'
 end

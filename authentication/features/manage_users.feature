@@ -11,7 +11,7 @@ Feature: Manage Users
     When I go to the home page
     Then I should see "There are no users yet, so we'll set you up first."
 
-  @users-add @add
+  @users-add @add @wip
   Scenario: When there are no users, you can create a user
     When I go to the home page
     And I follow "Continue..."

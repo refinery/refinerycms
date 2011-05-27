@@ -13,8 +13,29 @@ module Refinery
       @base_cache_key ||= :refinery
     end
 
+    def deprecate(options = {})
+      # Build a warning.
+      warning = "\n-- DEPRECATION WARNING --"
+      warning << "\nThe use of '#{options[:what]}' is deprecated"
+      warning << " and will be removed at version #{options[:when]}." if options[:when]
+      warning << "\nPlease use #{options[:replacement]} instead." if options[:replacement]
+
+      # See if we can trace where this happened
+      if options[:caller]
+        whos_calling = options[:caller].detect{|c| c =~ %r{#{Rails.root.to_s}}}.inspect.to_s.split(':in').first
+        warning << "\nCalled from: #{whos_calling}\n"
+      end
+
+      # Give stern talking to.
+      warn warning
+    end
+
     def engines
       @engines ||= []
+    end
+
+    def i18n_enabled?
+      defined?(::Refinery::I18n) && ::Refinery::I18n.enabled?
     end
 
     def rescue_not_found
