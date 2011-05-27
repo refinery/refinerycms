@@ -36,6 +36,7 @@ gem 'mysql2', '~> 0.2.7'
 group :development, :test do
   # To use refinerycms-testing, uncomment it (if it's commented out) and run 'bundle install'
   # Then, run 'rails generate refinerycms_testing' which will copy its support files.
+  # Finally, run 'rake' to run the tests.
   gem 'refinerycms-testing',    '~> 1.0.0'
 end
 
