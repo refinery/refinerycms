@@ -61,7 +61,7 @@ Ruby 1.8.7 and Rubygems come installed by default on a mac. Lucky you!
 
 h4. Database
 
-(unknown)
+SQLite is most likely already installed.
 
 h4. ImageMagick
 
