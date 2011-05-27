@@ -41,6 +41,9 @@ class CreateSeoMeta < ActiveRecord::Migration
         }
       )
     end
+
+    # Reset column information again because otherwise the old columns will still exist.
+    ::Page.reset_column_information
   end
 
   def self.down
@@ -75,6 +78,9 @@ class CreateSeoMeta < ActiveRecord::Migration
         end
       }
     end
+
+    # Reset column information again because otherwise the old columns will still exist.
+    ::Page.reset_column_information
 
     drop_table :seo_meta
   end

@@ -41,6 +41,9 @@ class CreateSeoMeta < ActiveRecord::Migration
         }
       )
     end
+
+    # Reset column information again because otherwise the old columns will still exist.
+    ::Page.reset_column_information
   end
 
   def self.down
@@ -59,12 +62,25 @@ class CreateSeoMeta < ActiveRecord::Migration
 
     # Migrate data
     existing_translations.each do |translation|
-      ::Page::Translation.find(translation['id']).update_attributes(
+      ::Page::Translation.update_all(
         ::SeoMeta.attributes.keys.inject({}) {|attributes, name|
           attributes.merge(name => translation[name.to_s])
-        }
+        }, :id => translation['id']
       )
     end
+
+    ::SeoMeta.attributes.keys.each do |k|
+      ::Page::Translation.module_eval %{
+        def #{k}
+        end
+
+        def #{k}=(*args)
+        end
+      }
+    end
+
+    # Reset column information again because otherwise the old columns will still exist.
+    ::Page.reset_column_information
 
     drop_table :seo_meta
   end
