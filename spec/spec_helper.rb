@@ -33,9 +33,6 @@ def setup_environment
 
     config.include Devise::TestHelpers, :type => :controller
     config.extend ControllerMacros, :type => :controller
-
-    Factory.definition_file_paths = [File.join(Rails.root, 'testing', 'spec', 'factories')]
-    Factory.find_definitions
   end
 end
 
