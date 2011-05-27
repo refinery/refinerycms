@@ -1,4 +1,32 @@
 require 'rbconfig'
+require 'factory_girl'
+
+module ControllerMacros
+  def login_user
+    before (:each) do
+      @user = Factory(:user)
+      @request.env["devise.mapping"] = Devise.mappings[:admin]
+      sign_in @user
+    end
+  end
+
+  def login_refinery_user
+    before (:each) do
+      @refinery_user = Factory(:refinery_user)
+      @request.env["devise.mapping"] = Devise.mappings[:admin]
+      sign_in @refinery_user
+    end
+  end
+
+  def login_refinery_translator
+    before (:each) do
+      @refinery_translator = Factory(:refinery_translator)
+      @request.env["devise.mapping"] = Devise.mappings[:admin]
+      sign_in @refinery_translator
+    end
+  end
+end
+
 def setup_environment
   # This file is copied to ~/spec when you run 'rails generate rspec'
   # from the project root directory.
@@ -27,6 +55,9 @@ def setup_environment
     # instead of true.
     config.use_transactional_fixtures = true
     config.use_instantiated_fixtures  = false
+
+    config.include Devise::TestHelpers, :type => :controller
+    config.extend ControllerMacros, :type => :controller
   end
 end
 
