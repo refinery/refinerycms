@@ -1,4 +1,4 @@
-@refinerycms @dialogs
+@refinerycms @dialogs @wip
 Feature: Dialogs
   In order to manage images and links when editing a page
   As an administrator
