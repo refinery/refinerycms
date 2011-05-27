@@ -73,7 +73,7 @@ module Refinery
         page.url[:id].should be_nil
         page.url[:path].should == ['rspec-is-great-for-testing-too']
       end
-
+      
       it 'returns its path underneath its parent with marketable urls' do
         child.url[:id].should be_nil
         child.url[:path].should == [page.url[:path].first, 'the-child-page']
@@ -108,7 +108,7 @@ module Refinery
     context 'content sections (page parts)' do
       before { create_page_parts }
 
-      it 'return the content when using []' do
+      it 'return the content when using content_for' do
         page.content_for(:body).should == "<p>I'm the first page part for this page.</p>"
         page.content_for('BoDY').should == "<p>I'm the first page part for this page.</p>"
       end
@@ -143,13 +143,16 @@ module Refinery
       end
     end
 
-    context 'should add url suffix' do
+    context "should add url suffix" do
       let(:reserved_word) { Page.friendly_id_config.reserved_words.last }
       let(:page_with_reserved_title) do
         Page.create!({
           :title => reserved_word,
           :deletable => true
         })
+      end
+      let(:child_with_reserved_title_parent) do
+        page_with_reserved_title.children.create(:title => 'reserved title child page')
       end
 
       before { turn_on_marketable_urls }
@@ -158,9 +161,8 @@ module Refinery
         page_with_reserved_title.url[:path].should == ["#{reserved_word}-page"]
       end
 
-      it 'when parent page title is set to a reserved word' do
-        child = page_with_reserved_title.children.create(:title => 'The child page')
-        child.url[:path].should == ["#{reserved_word}-page", 'the-child-page']
+      it "when parent page title is set to a reserved word" do
+        child_with_reserved_title_parent.url[:path].should == ["#{reserved_word}-page", 'reserved-title-child-page']
       end
     end
 

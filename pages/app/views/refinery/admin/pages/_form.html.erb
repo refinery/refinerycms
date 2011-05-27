@@ -10,7 +10,7 @@
   <%= render :partial => "locale_picker",
              :locals => {
                :current_locale => Thread.current[:globalize_locale]
-             } if defined?(::Refinery::I18n) %>
+             } if ::Refinery.i18n_enabled? %>
 
   <div class="field">
     <%= f.label :title %>

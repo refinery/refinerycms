@@ -5,6 +5,16 @@
 * Moved everything under Refinery namespace. [wakeless](https://github.com/wakeless)
 * Renamed `RefinerySetting` to `Refinery::Setting`. [Philip Arndt](https://github.com/parndt)
 
+## 1.0.0 [Unreleased]
+
+* New `::Refinery::Menu` API implemented which speeds up menu generation by many times. [Philip Arndt](https://github.com/parndt)
+* Removed caching from menu because it's so much faster now. Probably in future it will be added to `::Refinery::Menu` itself in a transparent manner. [Philip Arndt](https://github.com/parndt)
+* Deprecated `Page#[]` in favour of `Page#content_for` e.g. instead of `@page[:body]` use `@page.content_for(:body)`. [Philip Arndt](https://github.com/parndt)
+* Noisily deprecated many other features that still function in 1.0.0 but won't be present in 1.1.0. [Philip Arndt](https://github.com/parndt)
+* A hidden page can no longer mark the ancestor pages as selected in the menu. [Philip Arndt](https://github.com/parndt)
+* Rcov added to `refinerycms-testing` gem. [Rodrigo Dominguez](https://github.com/rorra)
+* [See full list](https://github.com/resolve/refinerycms/compare/0.9.9.22...1.0.0)
+
 ## 0.9.9.22 [22 May 2011]
 
 * Fixed issue introduced with `rake 0.9.0`. [Philip Arndt](https://github.com/parndt)

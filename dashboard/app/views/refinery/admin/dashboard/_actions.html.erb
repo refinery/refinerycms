@@ -32,7 +32,7 @@
   <%= render :partial => 'additional_dashboard_menu_items' %>
 </ul>
 
-<% if defined?(::Refinery::I18n) and ::Refinery::I18n.enabled? %>
+<% if ::Refinery.i18n_enabled? %>
   <% locales = ::Refinery::I18n.locales.clone %>
   <% current_locale = ::I18n.locale %>
   <% current_locale_title = locales.delete(current_locale) %>

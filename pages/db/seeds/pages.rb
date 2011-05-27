@@ -3,7 +3,6 @@ page_position = -1
 home_page = Page.create(:title => "Home",
             :deletable => false,
             :link_url => "/",
-            :menu_match => "^/$",
             :position => (page_position += 1))
 home_page.parts.create({
               :title => "Body",

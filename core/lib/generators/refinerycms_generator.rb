@@ -108,7 +108,7 @@ class ::Refinery::RefinerycmsGenerator < ::Refinery::Generators::EngineInstaller
     end
 
     # Ensure i18n exists and is up to date.
-    if defined?(::Refinery::I18n)
+    if ::Refinery.i18n_enabled?
       require 'generators/refinerycms_i18n_generator'
       ::RefinerycmsI18n.new.generate
     end

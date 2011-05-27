@@ -18,9 +18,9 @@ module ::Refinery
       }
 
       def new
-        @page = Page.new
-        Page.default_parts.each_with_index do |page_part, index|
-          @page.parts << PagePart.new(:title => page_part, :position => index)
+        @page = ::Refinery::Page.new
+        ::Refinery::Page.default_parts.each_with_index do |page_part, index|
+          @page.parts << ::Refinery::PagePart.new(:title => page_part, :position => index)
         end
       end
 
@@ -51,7 +51,7 @@ module ::Refinery
           find_page
           render :edit
         else
-          @page = Page.new(params[:page])
+          @page = ::Refinery::Page.new(params[:page])
           render :new
         end
       end

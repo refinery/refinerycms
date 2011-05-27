@@ -1,17 +1,16 @@
+<% require 'ruby-debug' %>
 <%
   if !!local_assigns[:apply_css] and (classes = menu_branch_css(local_assigns)).any?
     css = "class='#{classes.join(' ')}'".html_safe
   end
+  # dom_id DEPRECATED: REMOVE AT 1.1, serves no purpose same with css attributes 'first' and 'last'
   dom_id = "id='item_#{menu_branch_counter}'".html_safe if menu_branch.parent_id.nil?
-
-  children = menu_branch.children.live.in_menu unless hide_children or menu_branch.rgt == menu_branch.lft + 1
 -%>
 <li<%= ['', css, dom_id].compact.join(' ').gsub(/\ *$/, '').html_safe %>>
-  <%= link_to menu_branch.title, menu_branch.url -%>
-  <% if children.present? -%>
+<%= link_to(menu_branch.title, main_app.url_for(menu_branch.url)) -%>
+  <% if (children = menu_branch.children unless hide_children).present? -%>
     <ul class='clearfix'>
-      <%= render :partial => '/shared/menu_branch',
-                 :collection => children,
+      <%= render :partial => '/shared/menu_branch', :collection => children,
                  :locals => {
                    :apply_css => local_assigns[:apply_css],
                    :hide_children => !!hide_children
