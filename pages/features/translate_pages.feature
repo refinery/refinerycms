@@ -1,4 +1,4 @@
-@refinerycms @pages @pages-translate @i18n
+@refinerycms @pages @pages-translate @i18n @wip
 Feature: Translate Pages
   In order to make the content on my website accessible in many countries
   As a translator

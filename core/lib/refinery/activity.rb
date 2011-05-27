@@ -29,8 +29,12 @@ module Refinery
       "#{"#{@url_prefix}_".gsub("__", "_") if @url_prefix.present?}"
     end
 
+    def base_class_name
+      self.class.name.split("::").last
+    end
+
     def url
-      "#{self.url_prefix}#{@url ||= "main_app.refinery_admin_#{self.class.name.underscore.downcase}_path"}"
+      "#{self.url_prefix}#{@url ||= "refinery_admin_#{self.base_class_name.underscore.downcase}_path"}"
     end
 
     def class
