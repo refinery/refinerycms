@@ -5,7 +5,7 @@ Gem::Specification.new do |s|
   s.version           = %q{1.0.0}
   s.summary           = %q{Core engine for Refinery CMS}
   s.description       = %q{The core of Refinery CMS. This handles the common functionality and is required by most engines}
-  s.date              = %q{2011-05-26}
+  s.date              = %q{2011-05-28}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
   s.rubyforge_project = %q{refinerycms}
@@ -420,6 +420,10 @@ Gem::Specification.new do |s|
     'public/wymeditor/README',
     'refinerycms-core.gemspec',
     'spec',
+    'spec/controllers',
+    'spec/controllers/fast_controller_spec.rb',
+    'spec/controllers/refinery_core_controller_spec.rb',
+    'spec/controllers/sitemap_controller_spec.rb',
     'spec/lib',
     'spec/lib/refinery',
     'spec/lib/refinery/plugin_spec.rb',
