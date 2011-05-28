@@ -1,5 +1,6 @@
 module Admin
   class PagesController < Admin::BaseController
+    cache_sweeper :page_sweeper
 
     crudify :page,
             :conditions => nil,
