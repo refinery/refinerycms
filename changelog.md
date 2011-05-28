@@ -4,6 +4,7 @@
 * Migrated to [Kaminari](https://github.com/amatsuda/kaminari) for pagination. [Uģis Ozols](https://github.com/ugisozols)
 * Moved everything under Refinery namespace. [wakeless](https://github.com/wakeless)
 * Renamed `RefinerySetting` to `Refinery::Setting`. [Philip Arndt](https://github.com/parndt)
+* Added `--trace` option to bin/refinerycms. [Steven Heidel](http://github.com/stevenheidel)
 * [See full list](https://github.com/resolve/refinerycms/compare/1.0.0...1.1.0)
 
 ## 1.0.0 [28 May 2011]

@@ -39,7 +39,8 @@ module Refinery
         :duostack => false,
         :force => false,
         :gems => [],
-        :heroku => false
+        :heroku => false,
+        :trace => false
       }
 
       @optparse = OptionParser.new do |opts|
@@ -100,6 +101,10 @@ module Refinery
 
         opts.on("-c", "--confirm", "Confirm any prompts that require input") do
           @options[:confirm] = true
+        end
+        
+        opts.on("-t", "--trace", "Investigate any problems with the installer") do
+          @options[:trace] = true
         end
 
         opts.separator ""
@@ -298,7 +303,7 @@ module Refinery
     def output!
       unless @options[:database][:skip]
         puts "\n\nSetting up your development database..\n"
-        run_command("rake -f \"#{@app_path.join('Rakefile')}\" db:migrate")
+        run_command("rake -f \"#{@app_path.join('Rakefile')}\" db:migrate #{' --trace' if @options[:trace]}")
       end
 
       # Deploy to Heroku
