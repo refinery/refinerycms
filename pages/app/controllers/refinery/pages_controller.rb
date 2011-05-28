@@ -1,5 +1,7 @@
 module Refinery
   class PagesController < ::ApplicationController
+    # Save whole Page after delivery
+    after_filter { |c| c.write_cache? }
 
     # This action is usually accessed with the root path, normally '/'
     def home
@@ -28,6 +30,17 @@ module Refinery
         end
       else
         error_404
+      end
+    end
+
+  protected
+    def write_cache?
+      if RefinerySetting.find_or_set(:cache_pages_full, {
+        :restricted => true,
+        :value => false,
+        :form_value_type => 'check_box'
+      })
+        cache_page(response.body, File.join('', 'refinery', 'cache', 'pages', request.path).to_s)
       end
     end
   end

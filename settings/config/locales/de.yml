@@ -37,6 +37,7 @@ de:
           use_marketable_urls: Ändert Urls von /pages/about auf /about und behebt automatisch Konflikte mit anderen Erweiterungen.
           use_resource_caching: Es wird empfohlen, dies in der Produktionsumgebung zu verwenden, da es Javascript- und Stylesheet Dateien zusammenfasst, um die Anzahl an Web-Anfragen zu verringern und die Geschwindigkeit zu erhöhen.
           approximate_ascii: Setzen Sie dies auf wahr, wenn Sie lateinische Zeichen mit Akzenten oder anderen diakritischen Zeichen in Seitentiteln verwenden. Es wird Zeichen wie ā, č, ž in a, c, z konvertieren und dadurch werden diese in der Adresszeile mancher Browser nicht seltsam angezeigt.
+          cache_pages_full: Aktiviert den Full-Page-Cache. Damit können die Seiten mit einer .htaccess-Rewrite-Regel vom Apache oder Nginx ausgeliefert werden.
   activerecord:
     models:
       setting: Einstellungen

@@ -19,12 +19,18 @@ Gem::Specification.new do |s|
     'app/controllers',
     'app/controllers/admin',
     'app/controllers/admin/pages_controller.rb',
+<<<<<<< HEAD
     'app/controllers/refinery',
     'app/controllers/refinery/admin',
     'app/controllers/refinery/admin/page_parts_controller.rb',
     'app/controllers/refinery/admin/pages_controller.rb',
     'app/controllers/refinery/admin/pages_dialogs_controller.rb',
     'app/controllers/refinery/pages_controller.rb',
+=======
+    'app/controllers/admin/pages_dialogs_controller.rb',
+    'app/controllers/pages_controller.rb',
+    'app/controllers/page_sweeper.rb',
+>>>>>>> koa/master
     'app/helpers',
     'app/helpers/refinery',
     'app/helpers/refinery/pages_helper.rb',
