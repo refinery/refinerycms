@@ -246,27 +246,27 @@ module Refinery
             # Based upon http://github.com/matenia/jQuery-Awesome-Nested-Set-Drag-and-Drop
             def update_positions
               previous = nil
-              # The list doesn't come to us in the correct order. Frustration.
-              0.upto((newlist ||= params[:ul]).length - 1) do |index|
-                hash = newlist[index.to_s]
-                moved_item_id = hash['id'].split(/#{singular_name}\\_?/)
-                @current_#{singular_name} = #{class_name}.where(:id => moved_item_id).first
+              params[:ul].each do |_, list|
+                list.each do |index, hash|
+                  moved_item_id = hash['id'].split(/#{singular_name}\\_?/)
+                  @current_#{singular_name} = #{class_name}.find_by_id(moved_item_id)
 
-                if @current_#{singular_name}.respond_to?(:move_to_root)
-                  if previous.present?
-                    @current_#{singular_name}.move_to_right_of(#{class_name}.where(:id => previous).first)
+                  if @current_#{singular_name}.respond_to?(:move_to_root)
+                    if previous.present?
+                      @current_#{singular_name}.move_to_right_of(#{class_name}.find_by_id(previous))
+                    else
+                      @current_#{singular_name}.move_to_root
+                    end
                   else
-                    @current_#{singular_name}.move_to_root
+                    @current_#{singular_name}.update_attribute(:position, index)
                   end
-                else
-                  @current_#{singular_name}.update_attribute(:position, index)
-                end
 
-                if hash['children'].present?
-                  update_child_positions(hash, @current_#{singular_name})
-                end
+                  if hash['children'].present?
+                    update_child_positions(hash, @current_#{singular_name})
+                  end
 
-                previous = moved_item_id
+                  previous = moved_item_id
+                end
               end
 
               #{class_name}.rebuild! if #{class_name}.respond_to?(:rebuild!)
@@ -274,8 +274,7 @@ module Refinery
             end
 
             def update_child_positions(node, #{singular_name})
-              0.upto(node['children'].length - 1) do |child_index|
-                child = node['children'][child_index.to_s]
+              node['children']['0'].each do |_, child|
                 child_id = child['id'].split(/#{singular_name}\_?/)
                 child_#{singular_name} = #{class_name}.where(:id => child_id).first
                 child_#{singular_name}.move_to_child_of(#{singular_name})
@@ -285,7 +284,6 @@ module Refinery
                 end
               end
             end
-
           )
         end
 

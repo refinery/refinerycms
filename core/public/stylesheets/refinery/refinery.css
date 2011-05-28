@@ -521,11 +521,11 @@ header p {
   background-color: inherit;
 }
 */
-#records ul#sortable_list {
+#records ul#sortable_list, #records ul.sortable_list {
   margin-top: 6px;
 }
 
-#sortable_list.reordering > li {
+#sortable_list.reordering > li, .sortable_list.reordering > li {
   cursor: move;
 }
 
