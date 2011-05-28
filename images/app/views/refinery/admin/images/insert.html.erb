@@ -1,0 +1,47 @@
+<% user_can_modify_images = ::Refinery::Plugins.active.names.include?("refinery_images") %>
+<div id='dialog_menu_left'>
+  <% if (any_images = @images.any?) or searching? %>
+    <span id="existing_image_radio" class="radio<%= " selected_radio" if (no_errors = @image.errors.empty?) %>">
+      <input type='radio' name='image_type' value='existing_image' id='image_type_existing'<%= " checked='true'" if no_errors or searching? %> />
+      <label for='image_type_existing' class='stripped'><%= t('.existing_image') %></label>
+    </span>
+  <% end %>
+  <% if user_can_modify_images %>
+    <span id="upload_image_radio" class="radio<%= " selected_radio" if !no_errors and !any_images %>">
+      <input type='radio' name='image_type' value='upload_image' id='image_type_upload'<%= " checked='true'" if (!any_images or !no_errors) and !searching? %> />
+      <label for='image_type_upload' class='stripped'><%= t('.new_image') %></label>
+    </span>
+  <% end %>
+</div>
+
+<div id='dialog_main'>
+  <% if any_images or user_can_modify_images %>
+    <%= render :partial => "existing_image" if any_images or searching? %>
+
+    <% if user_can_modify_images %>
+      <div id='upload_image_area' class='dialog_area'<%= " style='display:none;'" if any_images and (no_errors or searching?) %>>
+        <%= render :partial => "form", :locals => {:insert => true} %>
+      </div>
+    <% end %>
+  <% else %>
+    <% flash.now[:error] = t('no_images_yet', :scope => 'refinery.admin.images.records').split('.').first.html_safe + "." %>
+    <%= render :partial => "/shared/admin/form_actions",
+               :locals => {
+                 :f => nil,
+                 :cancel_url => '',
+                 :hide_cancel => false,
+                 :hide_delete => true,
+                 :hide_submit => true,
+                 :cancel_button_text => t('close', :scope => 'shared.admin.form_actions'),
+                 :cancel_title => nil
+               } %>
+  <% end %>
+</div>
+
+<% content_for :javascripts do %>
+  <script>
+    $(document).ready(function(){
+      image_dialog.init(<%= @callback.present? ? "self.parent.#{@callback}" : "null" %>);
+    });
+  </script>
+<% end %>

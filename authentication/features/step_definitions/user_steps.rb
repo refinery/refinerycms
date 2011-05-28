@@ -32,10 +32,11 @@ Given /^I have a refinery user named "(.*)"$/i do |name|
   Factory(:refinery_user, :username => name)
 end
 
-Given /^I have no users$/i do
-  User.delete_all
+Given /^I have no users$/ do
+  ::Refinery::User.delete_all
 end
 
-Then /^I should have ([0-9]+) users?$/i do |count|
-  User.count.should == count.to_i
+Then /^I should have ([0-9]+) users?$/ do |count|
+  ::Refinery::User.count.should == count.to_i
+
 end

@@ -1,3 +1,5 @@
+require 'rdoc/task'
+
 namespace :doc do
 
   task :app => [:refinery]
@@ -20,7 +22,7 @@ namespace :doc do
                              'vendor/engines/pages/**/*.rb',
                              'vendor/engines/refinery/**/*.rb',
                              'vendor/engines/refinery_dialogs/**/*.rb',
-                             'vendor/engines/refinery_settings/**/*.rb',
+                             'vendor/engines/settings/**/*.rb',
                              'vendor/engines/resources/**/*.rb',
                              'vendor/engines/themes/**/*.rb',
                              'readme.md', 'license.md', 'vendor/engines/themes/readme.md')

@@ -69,3 +69,6 @@ ru:
   time:
     formats:
       short: "%A, %d %B %Y"
+  pagination:
+    next: "&raquo;"
+    previous: "&laquo;"

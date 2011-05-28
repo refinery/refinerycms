@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |s|
   s.name              = %q{refinerycms-resources}
-  s.version           = %q{1.0.0}
+  s.version           = %q{1.1.0}
   s.summary           = %q{Resources engine for Refinery CMS}
   s.description       = %q{Handles all file upload and processing functionality in Refinery CMS.}
   s.date              = %q{2011-05-28}
@@ -17,23 +17,26 @@ Gem::Specification.new do |s|
   s.files             = [
     'app',
     'app/controllers',
-    'app/controllers/admin',
-    'app/controllers/admin/resources_controller.rb',
+    'app/controllers/refinery',
+    'app/controllers/refinery/admin',
+    'app/controllers/refinery/admin/resources_controller.rb',
     'app/models',
-    'app/models/resource.rb',
+    'app/models/refinery',
+    'app/models/refinery/resource.rb',
     'app/views',
-    'app/views/admin',
-    'app/views/admin/resources',
-    'app/views/admin/resources/_actions.html.erb',
-    'app/views/admin/resources/_existing_resource.html.erb',
-    'app/views/admin/resources/_form.html.erb',
-    'app/views/admin/resources/_records.html.erb',
-    'app/views/admin/resources/_resource.html.erb',
-    'app/views/admin/resources/_resources.html.erb',
-    'app/views/admin/resources/edit.html.erb',
-    'app/views/admin/resources/index.html.erb',
-    'app/views/admin/resources/insert.html.erb',
-    'app/views/admin/resources/new.html.erb',
+    'app/views/refinery',
+    'app/views/refinery/admin',
+    'app/views/refinery/admin/resources',
+    'app/views/refinery/admin/resources/_actions.html.erb',
+    'app/views/refinery/admin/resources/_existing_resource.html.erb',
+    'app/views/refinery/admin/resources/_form.html.erb',
+    'app/views/refinery/admin/resources/_records.html.erb',
+    'app/views/refinery/admin/resources/_resource.html.erb',
+    'app/views/refinery/admin/resources/_resources.html.erb',
+    'app/views/refinery/admin/resources/edit.html.erb',
+    'app/views/refinery/admin/resources/index.html.erb',
+    'app/views/refinery/admin/resources/insert.html.erb',
+    'app/views/refinery/admin/resources/new.html.erb',
     'config',
     'config/locales',
     'config/locales/cs.yml',
@@ -78,6 +81,9 @@ Gem::Specification.new do |s|
     'lib/gemspec.rb',
     'lib/generators',
     'lib/generators/refinerycms_resources_generator.rb',
+    'lib/refinery',
+    'lib/refinery/resources',
+    'lib/refinery/resources/dragonfly.rb',
     'lib/refinerycms-resources.rb',
     'license.md',
     'refinerycms-resources.gemspec',
@@ -88,7 +94,7 @@ Gem::Specification.new do |s|
     'spec/uploads/refinery_is_awesome.txt'
   ]
 
-  s.add_dependency 'refinerycms-core', '= 1.0.0'
+  s.add_dependency 'refinerycms-core', '= 1.1.0'
   s.add_dependency 'dragonfly',        '~> 0.9.0'
   s.add_dependency 'rack-cache',       '>= 0.5.3'
 end

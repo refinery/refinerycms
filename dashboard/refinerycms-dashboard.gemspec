@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |s|
   s.name              = %q{refinerycms-dashboard}
-  s.version           = %q{1.0.0}
+  s.version           = %q{1.1.0}
   s.summary           = %q{Dashboard engine for Refinery CMS}
   s.description       = %q{The dashboard is usually the first engine the user sees in the backend of Refinery CMS. It displays useful information and contains links to common functionality.}
   s.date              = %q{2011-05-28}
@@ -17,21 +17,24 @@ Gem::Specification.new do |s|
   s.files             = [
     'app',
     'app/controllers',
-    'app/controllers/admin',
-    'app/controllers/admin/dashboard_controller.rb',
+    'app/controllers/refinery',
+    'app/controllers/refinery/admin',
+    'app/controllers/refinery/admin/dashboard_controller.rb',
     'app/helpers',
-    'app/helpers/admin',
-    'app/helpers/admin/dashboard_helper.rb',
+    'app/helpers/refinery',
+    'app/helpers/refinery/admin',
+    'app/helpers/refinery/admin/dashboard_helper.rb',
     'app/views',
-    'app/views/admin',
-    'app/views/admin/dashboard',
-    'app/views/admin/dashboard/_actions.html.erb',
-    'app/views/admin/dashboard/_additional_dashboard_menu_items.html.erb',
-    'app/views/admin/dashboard/_recent_activity.html.erb',
-    'app/views/admin/dashboard/_recent_inquiries.html.erb',
-    'app/views/admin/dashboard/_records.html.erb',
-    'app/views/admin/dashboard/index.html.erb',
-    'app/views/admin/dashboard/index.rss.builder',
+    'app/views/refinery',
+    'app/views/refinery/admin',
+    'app/views/refinery/admin/dashboard',
+    'app/views/refinery/admin/dashboard/_actions.html.erb',
+    'app/views/refinery/admin/dashboard/_additional_dashboard_menu_items.html.erb',
+    'app/views/refinery/admin/dashboard/_recent_activity.html.erb',
+    'app/views/refinery/admin/dashboard/_recent_inquiries.html.erb',
+    'app/views/refinery/admin/dashboard/_records.html.erb',
+    'app/views/refinery/admin/dashboard/index.html.erb',
+    'app/views/refinery/admin/dashboard/index.rss.builder',
     'config',
     'config/locales',
     'config/locales/cs.yml',
@@ -72,5 +75,5 @@ Gem::Specification.new do |s|
     'refinerycms-dashboard.gemspec'
   ]
 
-  s.add_dependency 'refinerycms-core', '= 1.0.0'
+  s.add_dependency 'refinerycms-core', '= 1.1.0'
 end

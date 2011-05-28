@@ -1,28 +1,28 @@
 en:
-  js:
-    admin:
-      confirm_changes: Any changes you've made will be lost. Are you sure you want to continue without saving?
-  plugins:
-    refinery_core:
-      title: Refinery
-      description: Core refinery plugin
-    refinery_dialogs:
-      title: Dialogs
-      description: Refinery dialogs plugin
-  welcome:
-    there_are_no_users: "There are no users yet, so we'll set you up first."
-    remember_admin_location: "Remember your Refinery admin area is at:"
-    lets_start: Alright let's get you setup so you can login...
-    continue: Continue...
-  admin:
-    menu:
-      reorder_menu: Reorder menu
-      reorder_menu_done: I'm done reordering the menu
-    dialogs:
-      show:
-        save: Save
-        cancel: Cancel
   refinery:
+    js:
+      admin:
+        confirm_changes: Any changes you've made will be lost. Are you sure you want to continue without saving?
+    plugins:
+      refinery_core:
+        title: Refinery
+        description: Core refinery plugin
+      refinery_dialogs:
+        title: Dialogs
+        description: Refinery dialogs plugin
+    welcome:
+      there_are_no_users: "There are no users yet, so we'll set you up first."
+      remember_admin_location: "Remember your Refinery admin area is at:"
+      lets_start: Alright let's get you setup so you can login...
+      continue: Continue...
+    admin:
+      menu:
+        reorder_menu: Reorder menu
+        reorder_menu_done: I'm done reordering the menu
+      dialogs:
+        show:
+          save: Save
+          cancel: Cancel
     crudify:
       created: '%{what} was successfully added.'
       updated: '%{what} was successfully updated.'
@@ -76,3 +76,6 @@ en:
   time:
     formats:
       short: "%A, %d %B %Y"
+  pagination:
+    next: "&raquo;"
+    previous: "&laquo;"

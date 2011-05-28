@@ -38,12 +38,12 @@ module Refinery
 
     # Returns the internationalized version of the title
     def title
-      ::I18n.translate(['plugins', name, 'title'].join('.'))
+      ::I18n.translate(['refinery', 'plugins', name, 'title'].join('.'))
     end
 
     # Returns the internationalized version of the description
     def description
-      ::I18n.translate(['plugins', name, 'description'].join('.'))
+      ::I18n.translate(['refinery', 'plugins', name, 'description'].join('.'))
     end
 
     # Retrieve information about how to access the latest activities of this plugin.

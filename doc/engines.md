@@ -59,7 +59,7 @@ and ``page_parts_controller.rb`` for now and let's just focus on the ``admin/pag
 file. Here's what that looks like inside at a basic level:
 
     module Admin
-      class PagesController < Admin::BaseController
+      class PagesController < ::Admin::BaseController
 
         crudify :page, :conditions => {:parent_id => nil},
                        :order => "position ASC", :paging => false
@@ -148,7 +148,7 @@ Here's what the different activity options mean:
     # When it says "'About' page was updated about 4 hours ago", the page title "About"
     # is linked to that page in a way we specify.  So by setting "_edit" as a :url_prefix what
     # we're doing is making it link to the page that allows us to edit this page.
-    # So the next result is edit_admin_page_url(page)
+    # So the next result is edit_refinery_admin_page_path(page)
 
     :title
     # which attribute on the :class should be in the activty message. In our case it's "title"

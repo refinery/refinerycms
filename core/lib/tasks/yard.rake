@@ -16,7 +16,7 @@ begin
                'pages/**/*.rb',
                'refinery/**/*.rb',
                'refinery_dialogs/**/*.rb',
-               'refinery_settings/**/*.rb',
+               'settings/**/*.rb',
                'resources/**/*.rb',
                '-', 'License']
   end

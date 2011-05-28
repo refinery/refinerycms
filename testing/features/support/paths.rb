@@ -42,7 +42,7 @@ module NavigationHelpers
     case page_name
 
     when /the admin root/
-      admin_root_path
+      refinery_admin_root_path
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:

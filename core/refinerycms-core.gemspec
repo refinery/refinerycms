@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |s|
   s.name              = %q{refinerycms-core}
-  s.version           = %q{1.0.0}
+  s.version           = %q{1.1.0}
   s.summary           = %q{Core engine for Refinery CMS}
   s.description       = %q{The core of Refinery CMS. This handles the common functionality and is required by most engines}
   s.date              = %q{2011-05-28}
@@ -14,16 +14,16 @@ Gem::Specification.new do |s|
   s.require_paths     = %w(lib)
   s.executables       = %w()
 
-  s.add_dependency 'refinerycms-base',            '= 1.0.0'
-  s.add_dependency 'refinerycms-settings',        '= 1.0.0'
+  s.add_dependency 'refinerycms-base',            '= 1.1.0'
+  s.add_dependency 'refinerycms-settings',        '= 1.1.0'
   s.add_dependency 'refinerycms-generators',      '~> 1.0'
   s.add_dependency 'acts_as_indexed',             '~> 0.7'
   s.add_dependency 'friendly_id_globalize3',      '~> 3.2.1'
   s.add_dependency 'globalize3',                  '~> 0.1'
   s.add_dependency 'awesome_nested_set',          '~> 2.0'
-  s.add_dependency 'rails',                       '~> 3.0.7'
+  s.add_dependency 'rails',                       '>= 3.1.0.rc1'
   s.add_dependency 'truncate_html',               '~> 0.5'
-  s.add_dependency 'will_paginate',               '~> 3.0.pre'
+  s.add_dependency 'kaminari',                    '~> 0.12'
 
   s.files             = [
     'app',
@@ -31,24 +31,35 @@ Gem::Specification.new do |s|
     'app/controllers/admin',
     'app/controllers/admin/base_controller.rb',
     'app/controllers/admin/dialogs_controller.rb',
-    'app/controllers/admin/refinery_core_controller.rb',
     'app/controllers/application_controller.rb',
     'app/controllers/refinery',
+    'app/controllers/refinery/admin',
+    'app/controllers/refinery/admin/dialogs_controller.rb',
+    'app/controllers/refinery/admin/refinery_core_controller.rb',
     'app/controllers/refinery/fast_controller.rb',
+    'app/controllers/refinery/sitemap_controller.rb',
     'app/controllers/sitemap_controller.rb',
     'app/helpers',
     'app/helpers/application_helper.rb',
     'app/views',
-    'app/views/admin',
-    'app/views/admin/_head.html.erb',
-    'app/views/admin/_javascripts.html.erb',
-    'app/views/admin/_menu.html.erb',
-    'app/views/admin/dialogs',
-    'app/views/admin/dialogs/show.html.erb',
+    'app/views/kaminari',
+    'app/views/kaminari/_next_page.html.erb',
+    'app/views/kaminari/_paginator.html.erb',
+    'app/views/kaminari/_prev_page.html.erb',
     'app/views/layouts',
-    'app/views/layouts/admin.html.erb',
-    'app/views/layouts/admin_dialog.html.erb',
     'app/views/layouts/application.html.erb',
+    'app/views/layouts/refinery',
+    'app/views/layouts/refinery/admin.html.erb',
+    'app/views/layouts/refinery/admin_dialog.html.erb',
+    'app/views/refinery',
+    'app/views/refinery/admin',
+    'app/views/refinery/admin/_head.html.erb',
+    'app/views/refinery/admin/_javascripts.html.erb',
+    'app/views/refinery/admin/_menu.html.erb',
+    'app/views/refinery/admin/dialogs',
+    'app/views/refinery/admin/dialogs/show.html.erb',
+    'app/views/refinery/welcome.html.erb',
+    'app/views/refinery/wymiframe.html.erb',
     'app/views/shared',
     'app/views/shared/_content_page.html.erb',
     'app/views/shared/_draft_page_message.html.erb',
@@ -74,8 +85,6 @@ Gem::Specification.new do |s|
     'app/views/shared/admin/_search.html.erb',
     'app/views/shared/admin/_sortable_list.html.erb',
     'app/views/shared/admin/_tabbed_fields.html.erb',
-    'app/views/welcome.html.erb',
-    'app/views/wymiframe.html.erb',
     'config',
     'config/locales',
     'config/locales/cs.yml',
@@ -142,7 +151,6 @@ Gem::Specification.new do |s|
     'lib/refinery/activity.rb',
     'lib/refinery/admin',
     'lib/refinery/admin/base_controller.rb',
-    'lib/refinery/admin_base_controller.rb',
     'lib/refinery/application.rb',
     'lib/refinery/application_controller.rb',
     'lib/refinery/application_helper.rb',
@@ -163,7 +171,6 @@ Gem::Specification.new do |s|
     'lib/refinery/helpers/site_bar_helper.rb',
     'lib/refinery/helpers/tag_helper.rb',
     'lib/refinery/helpers/translation_helper.rb',
-    'lib/refinery/link_renderer.rb',
     'lib/refinery/menu.rb',
     'lib/refinery/menu_item.rb',
     'lib/refinery/plugin.rb',
@@ -421,8 +428,10 @@ Gem::Specification.new do |s|
     'refinerycms-core.gemspec',
     'spec',
     'spec/controllers',
-    'spec/controllers/fast_controller_spec.rb',
-    'spec/controllers/refinery_core_controller_spec.rb',
+    'spec/controllers/refinery',
+    'spec/controllers/refinery/admin',
+    'spec/controllers/refinery/admin/refinery_core_controller_spec.rb',
+    'spec/controllers/refinery/fast_controller_spec.rb',
     'spec/controllers/sitemap_controller_spec.rb',
     'spec/lib',
     'spec/lib/refinery',

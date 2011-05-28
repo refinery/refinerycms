@@ -63,8 +63,8 @@ class Page < ActiveRecord::Base
   has_friendly_id :title, :use_slug => true,
                   :default_locale => (::Refinery::I18n.default_frontend_locale rescue :en),
                   :reserved_words => %w(index new session login logout users refinery admin images wymiframe),
-                  :approximate_ascii => RefinerySetting.find_or_set(:approximate_ascii, false, :scoping => "pages"),
-                  :strip_non_ascii => RefinerySetting.find_or_set(:strip_non_ascii, false, :scoping => "pages")
+                  :approximate_ascii => ::Refinery::Setting.find_or_set(:approximate_ascii, false, :scoping => "pages"),
+                  :strip_non_ascii => ::Refinery::Setting.find_or_set(:strip_non_ascii, false, :scoping => "pages")
 
   has_many :parts,
            :class_name => "PagePart",
@@ -284,7 +284,7 @@ class Page < ActiveRecord::Base
   class << self
     # Accessor to find out the default page parts created for each new page
     def default_parts
-      RefinerySetting.find_or_set(:default_page_parts, ["Body", "Side Body"])
+      ::Refinery::Setting.find_or_set(:default_page_parts, ["Body", "Side Body"])
     end
 
     # Wraps up all the checks that we need to do to figure out whether
@@ -300,7 +300,7 @@ class Page < ActiveRecord::Base
     end
 
     def use_marketable_urls?
-      RefinerySetting.find_or_set(:use_marketable_urls, true, :scoping => 'pages')
+      ::Refinery::Setting.find_or_set(:use_marketable_urls, true, :scoping => 'pages')
     end
 
     def expire_page_caching

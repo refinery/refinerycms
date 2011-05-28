@@ -8,7 +8,7 @@ module Refinery
         [
           (yield_title if yield_title.present?),
           @meta.browser_title.present? ? @meta.browser_title : @meta.path,
-          RefinerySetting.find_or_set(:site_name, "Company Name")
+          ::Refinery::Setting.find_or_set(:site_name, "Company Name")
         ].compact.join(" - ")
       end
 
@@ -17,7 +17,7 @@ module Refinery
       def page_title(options = {})
         object = options.fetch(:object, @meta)
         options.delete(:object)
-        options = RefinerySetting.find_or_set(:page_title, {
+        options = ::Refinery::Setting.find_or_set(:page_title, {
           :chain_page_title => false,
           :ancestors => {
             :separator => " | ",

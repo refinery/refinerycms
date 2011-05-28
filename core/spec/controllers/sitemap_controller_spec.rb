@@ -1,6 +1,5 @@
 require 'spec_helper'
 
-
 describe SitemapController do
   login_refinery_user
 

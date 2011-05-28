@@ -1,0 +1,17 @@
+<li class='clearfix record <%= cycle("on", "on-hover") %>'>
+  <span class='title <%= resource.ext %>'>
+    <%= resource.title %>.<%= resource.ext %>
+    <span class="preview">- <%= number_to_human_size(resource.size) %></span>
+  </span>
+  <span class='actions'>
+    <%= link_to refinery_icon_tag('page_white_put.png'),  resource.url,
+                :title => t('.download', :size => number_to_human_size(resource.size)) %>
+    <%= link_to refinery_icon_tag('application_edit.png'), main_app.edit_refinery_admin_resource_path(resource),
+                :title => t('edit', :scope => 'refinery.admin.resources') %>
+    <%= link_to refinery_icon_tag('delete.png'), main_app.refinery_admin_resource_path(resource),
+                :class => "cancel confirm-delete",
+                :title => t('delete', :scope => 'refinery.admin.resources'),
+                :confirm => t('message', :scope => 'shared.admin.delete', :title => resource.title),
+                :method => :delete %>
+  </span>
+</li>

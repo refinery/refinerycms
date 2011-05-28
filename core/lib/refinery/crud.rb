@@ -10,17 +10,18 @@
 # Full documentation about CRUD and resources go here:
 # -> http://api.rubyonrails.org/classes/ActionDispatch/Routing/Mapper/Resources.html#method-i-resources
 # Example (add to your controller):
-# crudify :foo, {:title_attribute => 'name'} for CRUD on Foo model
-# crudify 'foo/bar', :{title_attribute => 'name'} for CRUD on Foo::Bar model
+# crudify :foo, :title_attribute => 'name' for CRUD on Foo model
+# crudify :'foo/bar', :title_attribute => 'name' for CRUD on Foo::Bar model
+# Note: @singular_name will result in @foo for :foo and @bar for :'foo/bar'
 
 module Refinery
   module Crud
 
     def self.default_options(model_name)
-      class_name = model_name.to_s.include?("/") ? "::#{model_name.to_s.camelize}" : model_name.to_s.camelize
+      singular_name = model_name.to_s.split('/').last
+      class_name = "::#{model_name.to_s.camelize.gsub('/', '::')}".gsub('::::', '::')
+      plural_name = singular_name.to_s.gsub('/', '_').pluralize
       this_class = class_name.constantize.base_class
-      singular_name = model_name.to_s.underscore.gsub("/","_")
-      plural_name = singular_name.pluralize
 
       {
         :conditions => '',
@@ -28,7 +29,7 @@ module Refinery
         :order => ('position ASC' if this_class.table_exists? and this_class.column_names.include?('position')),
         :paging => true,
         :per_page => false,
-        :redirect_to_url => "admin_#{model_name.to_s.gsub('/', '_').pluralize}_url",
+        :redirect_to_url => "main_app.refinery_admin_#{plural_name}_path",
         :searchable => true,
         :search_conditions => '',
         :sortable => true,
@@ -168,17 +169,13 @@ module Refinery
             # If we have already found a set then we don't need to again
             find_all_#{plural_name} if @#{plural_name}.nil?
 
-            paging_options = {:page => params[:page]}
-
-            # Use per_page from crudify options.
-            if #{options[:per_page].present?.inspect}
-              paging_options.update({:per_page => #{options[:per_page].inspect}})
-            # Seems will_paginate doesn't always use the implicit method.
+            per_page = if #{options[:per_page].present?.inspect}
+              #{options[:per_page].inspect}
             elsif #{class_name}.methods.map(&:to_sym).include?(:per_page)
-              paging_options.update({:per_page => #{class_name}.per_page})
+              #{class_name}.per_page
             end
 
-            @#{plural_name} = @#{plural_name}.paginate(paging_options)
+            @#{plural_name} = @#{plural_name}.page(params[:page]).per(per_page)
           end
 
           # Returns a weighted set of results based on the query specified by the user.

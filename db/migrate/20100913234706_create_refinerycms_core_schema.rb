@@ -1,6 +1,6 @@
 class CreateRefinerycmsCoreSchema < ActiveRecord::Migration
   def self.up
-    unless ::Slug.table_exists?
+    unless Slug.table_exists?
       create_table ::Slug.table_name, :force => true do |t|
         t.string   "name"
         t.integer  "sluggable_id"

@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |s|
   s.name              = %q{refinerycms-pages}
-  s.version           = %q{1.0.0}
+  s.version           = %q{1.1.0}
   s.summary           = %q{Pages engine for Refinery CMS}
   s.description       = %q{The default content engine of Refinery CMS. This engine handles the administration and display of user-editable pages.}
   s.date              = %q{2011-05-28}
@@ -18,41 +18,49 @@ Gem::Specification.new do |s|
     'app',
     'app/controllers',
     'app/controllers/admin',
-    'app/controllers/admin/page_parts_controller.rb',
     'app/controllers/admin/pages_controller.rb',
-    'app/controllers/admin/pages_dialogs_controller.rb',
-    'app/controllers/pages_controller.rb',
+    'app/controllers/refinery',
+    'app/controllers/refinery/admin',
+    'app/controllers/refinery/admin/page_parts_controller.rb',
+    'app/controllers/refinery/admin/pages_controller.rb',
+    'app/controllers/refinery/admin/pages_dialogs_controller.rb',
+    'app/controllers/refinery/pages_controller.rb',
     'app/helpers',
-    'app/helpers/pages_helper.rb',
+    'app/helpers/refinery',
+    'app/helpers/refinery/pages_helper.rb',
     'app/models',
     'app/models/page.rb',
-    'app/models/page_part.rb',
+    'app/models/refinery',
+    'app/models/refinery/page.rb',
+    'app/models/refinery/page_part.rb',
     'app/presenters',
-    'app/presenters/page_presenter.rb',
+    'app/presenters/refinery',
+    'app/presenters/refinery/page_presenter.rb',
     'app/views',
-    'app/views/admin',
-    'app/views/admin/pages',
-    'app/views/admin/pages/_actions.html.erb',
-    'app/views/admin/pages/_form.html.erb',
-    'app/views/admin/pages/_form_advanced_options.html.erb',
-    'app/views/admin/pages/_form_advanced_options_seo.html.erb',
-    'app/views/admin/pages/_form_fields_after_title.html.erb',
-    'app/views/admin/pages/_form_new_page_parts.html.erb',
-    'app/views/admin/pages/_form_page_parts.html.erb',
-    'app/views/admin/pages/_locale_picker.html.erb',
-    'app/views/admin/pages/_page.html.erb',
-    'app/views/admin/pages/_page_part_field.html.erb',
-    'app/views/admin/pages/_records.html.erb',
-    'app/views/admin/pages/_sortable_list.html.erb',
-    'app/views/admin/pages/edit.html.erb',
-    'app/views/admin/pages/index.html.erb',
-    'app/views/admin/pages/new.html.erb',
-    'app/views/admin/pages_dialogs',
-    'app/views/admin/pages_dialogs/_page_link.html.erb',
-    'app/views/admin/pages_dialogs/link_to.html.erb',
-    'app/views/pages',
-    'app/views/pages/home.html.erb',
-    'app/views/pages/show.html.erb',
+    'app/views/refinery',
+    'app/views/refinery/admin',
+    'app/views/refinery/admin/pages',
+    'app/views/refinery/admin/pages/_actions.html.erb',
+    'app/views/refinery/admin/pages/_form.html.erb',
+    'app/views/refinery/admin/pages/_form_advanced_options.html.erb',
+    'app/views/refinery/admin/pages/_form_advanced_options_seo.html.erb',
+    'app/views/refinery/admin/pages/_form_fields_after_title.html.erb',
+    'app/views/refinery/admin/pages/_form_new_page_parts.html.erb',
+    'app/views/refinery/admin/pages/_form_page_parts.html.erb',
+    'app/views/refinery/admin/pages/_locale_picker.html.erb',
+    'app/views/refinery/admin/pages/_page.html.erb',
+    'app/views/refinery/admin/pages/_page_part_field.html.erb',
+    'app/views/refinery/admin/pages/_records.html.erb',
+    'app/views/refinery/admin/pages/_sortable_list.html.erb',
+    'app/views/refinery/admin/pages/edit.html.erb',
+    'app/views/refinery/admin/pages/index.html.erb',
+    'app/views/refinery/admin/pages/new.html.erb',
+    'app/views/refinery/admin/pages_dialogs',
+    'app/views/refinery/admin/pages_dialogs/_page_link.html.erb',
+    'app/views/refinery/admin/pages_dialogs/link_to.html.erb',
+    'app/views/refinery/pages',
+    'app/views/refinery/pages/home.html.erb',
+    'app/views/refinery/pages/show.html.erb',
     'config',
     'config/locales',
     'config/locales/cs.yml',
@@ -119,7 +127,7 @@ Gem::Specification.new do |s|
     'spec/models/page_spec.rb'
   ]
 
-  s.add_dependency 'refinerycms-core',            '= 1.0.0'
+  s.add_dependency 'refinerycms-core',            '= 1.1.0'
   s.add_dependency 'friendly_id_globalize3',      '~> 3.2.1'
   s.add_dependency 'globalize3',                  '~> 0.1'
   s.add_dependency 'awesome_nested_set',          '~> 2.0'

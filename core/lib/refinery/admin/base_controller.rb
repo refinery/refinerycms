@@ -61,14 +61,14 @@ module Refinery
             end
           end
 
-          Refinery::Plugins.set_active(plugins)
+          ::Refinery::Plugins.set_active(plugins)
         end
 
         def restrict_controller
-          if Refinery::Plugins.active.reject { |plugin| params[:controller] !~ Regexp.new(plugin.menu_match)}.empty?
-            warn "'#{current_user.username}' tried to access '#{params[:controller]}' but was rejected."
-            error_404
-          end
+          # if Refinery::Plugins.active.reject { |plugin| params[:controller] !~ Regexp.new(plugin.menu_match)}.empty?
+          #   warn "'#{current_user.username}' tried to access '#{params[:controller]}' but was rejected."
+          #   error_404
+          # end
         end
 
         # Override method from application_controller. Not needed in this controller.
@@ -76,11 +76,11 @@ module Refinery
 
       private
         def layout?
-          "admin#{"_dialog" if from_dialog?}"
+          "refinery/admin#{"_dialog" if from_dialog?}"
         end
 
         # Check whether it makes sense to return the user to the last page they
-        # were at instead of the default e.g. admin_pages_url
+        # were at instead of the default e.g. refinery_admin_pages_path
         # right now we just want to snap back to index actions and definitely not to dialogues.
         def store_location?
           store_location unless action_name !~ /index/ or request.xhr? or from_dialog?

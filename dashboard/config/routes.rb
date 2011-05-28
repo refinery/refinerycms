@@ -1,5 +1,5 @@
 ::Refinery::Application.routes.draw do
-  scope(:path => 'refinery', :as => 'admin', :module => 'admin') do
+  scope(:path => 'refinery', :as => 'refinery_admin', :module => 'refinery/admin') do
     match 'dashboard',
           :to => 'dashboard#index',
           :as => :dashboard

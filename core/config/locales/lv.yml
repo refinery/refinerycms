@@ -70,3 +70,6 @@ lv:
       enable_javascript: Lai lapa pilnībā funkcionalētu ir nepieciešams iespējot JavaScript.
       here_are: Šeit ir
       instructions_enable_javascript: instrukcija kā iespējot JavaScript jūsu pārlūkprogrammā
+  pagination:
+    next: "&raquo;"
+    previous: "&laquo;"

@@ -16,26 +16,26 @@ class CreateSeoMeta < ActiveRecord::Migration
     add_index :seo_meta, [:seo_meta_id, :seo_meta_type]
 
     # Grab the attributes of the records that currently exist
-    existing_translations = ::Page::Translation.all.map(&:attributes)
+    existing_translations = ::Refinery::Page::Translation.all.map(&:attributes)
 
     # Remove columns
     ::SeoMeta.attributes.keys.each do |field|
-      if ::Page::Translation.column_names.map(&:to_sym).include?(field)
-        remove_column ::Page::Translation.table_name, field
+      if ::Refinery::Page::Translation.column_names.map(&:to_sym).include?(field)
+        remove_column ::Refinery::Page::Translation.table_name, field
       end
     end
 
     # Reset column information because otherwise the old columns will still exist.
-    ::Page::Translation.reset_column_information
+    ::Refinery::Page::Translation.reset_column_information
 
     # Re-attach seo_meta
-    ::Page::Translation.module_eval do
+    ::Refinery::Page::Translation.module_eval do
       is_seo_meta
     end
 
     # Migrate data
     existing_translations.each do |translation|
-      ::Page::Translation.find(translation['id']).update_attributes(
+      ::Refinery::Page::Translation.find(translation['id']).update_attributes(
         ::SeoMeta.attributes.keys.inject({}) {|attributes, name|
           attributes.merge(name => translation[name.to_s])
         }
@@ -48,29 +48,29 @@ class CreateSeoMeta < ActiveRecord::Migration
 
   def self.down
     # Grab the attributes of the records that currently exist
-    existing_translations = ::Page::Translation.all.map(&:attributes)
+    existing_translations = ::Refinery::Page::Translation.all.map(&:attributes)
 
     # Add columns back to your model
-    ::SeoMeta.attributes.each do |field, field_type|
-      unless ::Page::Translation.column_names.map(&:to_sym).include?(field)
-        add_column ::Page::Translation.table_name, field, field_type
+    ::Refinery::SeoMeta.attributes.each do |field, field_type|
+      unless ::Refinery::Page::Translation.column_names.map(&:to_sym).include?(field)
+        add_column ::Refinery::Page::Translation.table_name, field, field_type
       end
     end
 
     # Reset column information because otherwise the new columns won't exist yet.
-    ::Page::Translation.reset_column_information
+    ::Refinery::Page::Translation.reset_column_information
 
     # Migrate data
     existing_translations.each do |translation|
-      ::Page::Translation.update_all(
-        ::SeoMeta.attributes.keys.inject({}) {|attributes, name|
+      ::Refinery::Page::Translation.update_all(
+        ::Refinery::SeoMeta.attributes.keys.inject({}) {|attributes, name|
           attributes.merge(name => translation[name.to_s])
         }, :id => translation['id']
       )
     end
 
-    ::SeoMeta.attributes.keys.each do |k|
-      ::Page::Translation.module_eval %{
+    ::Refinery::SeoMeta.attributes.keys.each do |k|
+      ::Refinery::Page::Translation.module_eval %{
         def #{k}
         end
 

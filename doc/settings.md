@@ -53,7 +53,7 @@ until next year. This is what my ``application.html.erb`` file might look like:
     <div id='header'>
       <h1>My Company</h1>
 
-      <% if RefinerySetting.find_or_set(:show_trade_show_banner, false) %>
+      <% if ::Refinery::Setting.find_or_set(:show_trade_show_banner, false) %>
         <%= image_tag ('trade-show-banner.jpg') %>
       <% end %>
     </div>

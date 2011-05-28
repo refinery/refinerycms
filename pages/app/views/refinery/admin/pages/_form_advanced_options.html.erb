@@ -1,0 +1,79 @@
+<div id='more_options_field'>
+  <p>
+    <%= link_to t('.advanced_options'), "#",
+                :id => 'toggle_advanced_options',
+                :title => t('.toggle_advanced_options') %>
+  </p>
+  <span id='draft_field'>
+    <%= f.check_box :draft %>
+    <%= f.label :draft, t('.save_as_draft'),
+                :class => "stripped" %>
+  </span>
+</div>
+<div id='more_options' style="display:none;">
+  <div class="hemisquare">
+    <h2><%= t('.page_options') %></h2>
+    <div class='field'>
+      <span class='label_with_help'>
+        <%= f.label :parent_id, t('.parent_page') %>
+        <%= refinery_help_tag t('.parent_page_help') %>
+      </span>
+      <%= f.select :parent_id, nested_set_options(::Refinery::Page, @page) {|i| "#{'-' * i.level} #{i.title}" },
+                   :include_blank => true %>
+    </div>
+    <div class='field'>
+      <span class='label_with_help'>
+        <%= label_tag :custom_title, t('.custom_title') %>
+        <%= refinery_help_tag t('.custom_title_help') %>
+      </span>
+      <% %w(none text).each do |type| %>
+        <%= f.radio_button :custom_title_type, type %>
+        <%= label_tag "page_custom_title_type_#{type}", t(type.downcase.gsub(" ", "_"), :scope => 'refinery.admin.pages.form_advanced_options.title_types'),
+                      :class => "stripped" %>
+      <% end %>
+      <div id='custom_title_none'></div>
+      <div id='custom_title_text' style='display: <%= @page.custom_title_type == 'text' ? 'block' : 'none' %>'>
+        <%= f.text_field :custom_title, :class => 'widest' %>
+      </div>
+    </div>
+    <div class='field'>
+      <span class='label_with_help'>
+        <%= f.label :skip_to_first_child?, t('.skip_to_first_child') %>
+        <%= refinery_help_tag t('.skip_to_first_child_help') %>
+      </span>
+      <%= f.check_box :skip_to_first_child %>
+      <%= f.label :skip_to_first_child, t('.skip_to_first_child_label'),
+                  :class => "stripped" %>
+    </div>
+    <div class='field'>
+      <span class='label_with_help'>
+        <%= f.label :link_url, t('.link_url') %>
+        <%= refinery_help_tag t('.link_url_help') %>
+      </span>
+      <%= f.text_field :link_url, :style=> 'width:400px;' %>
+      <% content_for :javascripts do %>
+      <script>
+        $(document).ready(function(){
+          link_tester.init('<%= main_app.test_url_refinery_admin_pages_dialogs_path %>',
+                           '<%= main_app.test_email_refinery_admin_pages_dialogs_path %>');
+
+          link_tester.validate_url_textbox("#page_link_url")
+        });
+      </script>
+      <% end %>
+    </div>
+    <div class='field'>
+      <span class='label_with_help'>
+        <%= f.label :show_in_menu, t('.show_in_menu_title'),
+                    :id => 'page_show_in_menu_heading' %>
+        <%= refinery_help_tag t('.show_in_menu_help') %>
+      </span>
+      <%= f.check_box :show_in_menu %>
+      <%= f.label :show_in_menu, t('.show_in_menu_description'),
+                  :class => "stripped" %>
+    </div>
+  </div>
+
+  <%= render :partial => "form_advanced_options_seo",
+             :locals => {:f => f} %>
+</div>

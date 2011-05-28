@@ -15,8 +15,7 @@
       cancel_title = t('.cancel_lose_changes')
     end
     cancel_button_id    ||= "cancel_button"
-
-    cancel_url          ||= (((back = url_for(:back)).include?('javascript') or action_name =~ /^(create|update)$/) ? send("admin_#{f.object_name.to_s.pluralize}_url") : back)
+    cancel_url          ||= (((back = url_for(:back)).include?('javascript') or action_name =~ /^(create|update)$/) ? send("main_app.refinery_admin_#{f.object_name.to_s.pluralize}_path") : back)
   end
 
   continue_editing = defined?(continue_editing) ? continue_editing : (f.object.present? and f.object.persisted?)
@@ -32,14 +31,8 @@
     delete_title        ||= nil
     delete_confirmation ||= nil
     delete_button_id    ||= "delete_button"
-    delete_url          ||= eval("admin_#{f.object_name}_path(#{f.object.id})")
+    delete_url          ||= eval("main_app.refinery_admin_#{f.object_name}_path(#{f.object.id})")
   end
-
-  paginate_collection = nil
-  if (paginate ||= {}).length > 0 && paginate.keys.include?(:collection)
-    paginate_collection = paginate.delete(:collection)
-  end
-  paginate.delete(:url) # We used to have a LinkRenderer that did this
 -%>
 <% if from_dialog? %>
 <input type='hidden' name='modal' value='true' />
@@ -69,7 +62,5 @@
                 :method => :delete,
                 :confirm => delete_confirmation,
                 :class => "button confirm-delete") unless hide_delete %>
-
-    <%= will_paginate paginate_collection, paginate unless paginate_collection.nil? %>
   </div>
 </div>

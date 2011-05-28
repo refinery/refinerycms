@@ -1,10 +1,10 @@
 pt-BR:
   plugins:
-    refinery_settings:
+    settings:
       title: Configuração
       description: Gerenciar configurações
   admin:
-    refinery_settings:
+    settings:
       delete: 'Remover esta configuração para sempre'
       edit: 'Editar esta configuração'
       actions:
@@ -37,9 +37,9 @@ pt-BR:
           use_resource_caching: "Recomendado habilitar está opção em produção pois os javascript e stylesheet serão colocados em um único arquivo, o que diminui o número de requisições e aumenta a velocidade do site."
   activerecord:
     models:
-      refinery_setting: setting
+      setting: setting
     attributes:
-      refinery_setting:
+      setting:
         name: Nome
         value: Valor
         restricted: Restrito

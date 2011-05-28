@@ -6,9 +6,9 @@ module NavigationHelpers
         when /the home\s?page/
           root_path
         when /the list of pages/
-          admin_pages_path
+          refinery_admin_pages_path
         when /the new page form/
-          new_admin_page_path
+          new_refinery_admin_page_path
         else
           begin
             if page_name =~ /the page titled "?([^\"]*)"?/ and (page = Page.by_title($1).first).present?

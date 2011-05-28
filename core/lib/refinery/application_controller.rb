@@ -61,7 +61,7 @@ module Refinery
       end
 
       def home_page?
-        root_path == request.path
+        main_app.root_path == request.path
       end
 
       def just_installed?
@@ -91,7 +91,7 @@ module Refinery
 
       def show_welcome_page?
         if just_installed? and controller_name != 'users'
-          render :template => '/welcome', :layout => 'login'
+          render :template => 'refinery/welcome', :layout => 'login'
         end
       end
 

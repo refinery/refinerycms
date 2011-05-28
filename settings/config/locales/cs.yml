@@ -1,10 +1,10 @@
 cs:
   plugins:
-    refinery_settings:
+    settings:
       title: Nastavení
       description: Spravovat nastavení webu
   admin:
-    refinery_settings:
+    settings:
       delete: Smazat tuto volbu
       edit: Upravit tuto volbu
       actions:
@@ -38,9 +38,9 @@ cs:
           use_resource_caching: Doporučujeme zapnout toto nastavení v produkčním módu, protože rapidně urychlí načítání stránek. Komprimuje JavaSript a kaskádové styly do jednotlivých souborů, což vám ušetří požadavky na server.
   activerecord:
     models:
-      refinery_setting: nastavení
+      setting: nastavení
     attributes:
-      refinery_setting:
+      setting:
         name: Jméno
         value: Hodnota
         restricted: Omezení

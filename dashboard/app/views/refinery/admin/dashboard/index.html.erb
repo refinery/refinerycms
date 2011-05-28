@@ -1,0 +1,13 @@
+<div class='clearfix'>
+  <section id='records' class='clearfix<%= ' one_list' if @recent_activity.empty? or @recent_inquiries.empty? %>'>
+    <%= render :partial => 'records' %>
+  </section>
+  <aside id='actions'>
+    <h2><%= t('.quick_tasks') %></h2>
+    <%= render :partial => 'actions' %>
+  </aside>
+</div>
+<% if request.env["HTTP_USER_AGENT"] =~ /MSIE/ and
+        ::Refinery::Setting.find_or_set(:show_internet_explorer_upgrade_message, true, :scoping => 'refinery') %>
+  <% flash.now[:message] = render(:partial => "/shared/ie6check")  %>
+<% end %>

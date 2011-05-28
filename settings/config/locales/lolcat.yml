@@ -1,10 +1,10 @@
 lolcat:
   plugins:
-    refinery_settings:
+    settings:
       title: SETTINGS
       description: MANAGE REFINERY SETTINGS
   admin:
-    refinery_settings:
+    settings:
       delete: REMOOV DIS SETTIN FOREVR
       edit: EDIT DIS SETTIN
       actions:
@@ -36,9 +36,9 @@ lolcat:
           use_resource_caching: RECOMMENDD 2 ENABLE DIS IN PRODUCSHUN MODE AS IT BUNDLEZ JAVASCRIPT ASSETS AN STYLESHEET ASSETS INTO SINGLE FILE PACKAGEZ 2 REDUCE TEH NUMBR OV WEB REQUESTS ON UR SIET AN SPED IT UP.
   activerecord:
     models:
-      refinery_setting: SETTIN
+      setting: SETTIN
     attributes:
-      refinery_setting:
+      setting:
         name: NAYM
         value: VALUE
         restricted: RESTRICTD

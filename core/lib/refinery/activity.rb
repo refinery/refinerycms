@@ -19,7 +19,7 @@ module Refinery
       }.merge(options).each { |key,value| self.instance_variable_set(:"@#{key}", value) }
     end
 
-    # to use in a URL like edit_admin_group_individuals_url(record.group, record)
+    # to use in a URL like edit_refinery_admin_group_individuals_path(record.group, record)
     # which will help you if you're using nested routed.
     def nesting(record_string="record")
       self.nested_with.inject("") { |nest_chain, nesting| nest_chain << "#{record_string}.#{nesting}," }
@@ -30,7 +30,7 @@ module Refinery
     end
 
     def url
-      "#{self.url_prefix}#{@url ||= "admin_#{self.class.name.underscore.downcase}_path"}"
+      "#{self.url_prefix}#{@url ||= "main_app.refinery_admin_#{self.class.name.underscore.downcase}_path"}"
     end
 
     def class

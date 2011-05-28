@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |s|
   s.name              = %q{refinerycms-images}
-  s.version           = %q{1.0.0}
+  s.version           = %q{1.1.0}
   s.summary           = %q{Images engine for Refinery CMS}
   s.description       = %q{Handles all image upload and processing functionality in Refinery CMS.}
   s.date              = %q{2011-05-28}
@@ -17,28 +17,32 @@ Gem::Specification.new do |s|
   s.files             = [
     'app',
     'app/controllers',
-    'app/controllers/admin',
-    'app/controllers/admin/images_controller.rb',
+    'app/controllers/refinery',
+    'app/controllers/refinery/admin',
+    'app/controllers/refinery/admin/images_controller.rb',
     'app/helpers',
-    'app/helpers/admin',
-    'app/helpers/admin/images_helper.rb',
+    'app/helpers/refinery',
+    'app/helpers/refinery/admin',
+    'app/helpers/refinery/admin/images_helper.rb',
     'app/models',
-    'app/models/image.rb',
+    'app/models/refinery',
+    'app/models/refinery/image.rb',
     'app/views',
-    'app/views/admin',
-    'app/views/admin/images',
-    'app/views/admin/images/_actions.html.erb',
-    'app/views/admin/images/_existing_image.html.erb',
-    'app/views/admin/images/_form.html.erb',
-    'app/views/admin/images/_grid_view.html.erb',
-    'app/views/admin/images/_images.html.erb',
-    'app/views/admin/images/_list_view.html.erb',
-    'app/views/admin/images/_list_view_image.html.erb',
-    'app/views/admin/images/_records.html.erb',
-    'app/views/admin/images/edit.html.erb',
-    'app/views/admin/images/index.html.erb',
-    'app/views/admin/images/insert.html.erb',
-    'app/views/admin/images/new.html.erb',
+    'app/views/refinery',
+    'app/views/refinery/admin',
+    'app/views/refinery/admin/images',
+    'app/views/refinery/admin/images/_actions.html.erb',
+    'app/views/refinery/admin/images/_existing_image.html.erb',
+    'app/views/refinery/admin/images/_form.html.erb',
+    'app/views/refinery/admin/images/_grid_view.html.erb',
+    'app/views/refinery/admin/images/_images.html.erb',
+    'app/views/refinery/admin/images/_list_view.html.erb',
+    'app/views/refinery/admin/images/_list_view_image.html.erb',
+    'app/views/refinery/admin/images/_records.html.erb',
+    'app/views/refinery/admin/images/edit.html.erb',
+    'app/views/refinery/admin/images/index.html.erb',
+    'app/views/refinery/admin/images/insert.html.erb',
+    'app/views/refinery/admin/images/new.html.erb',
     'config',
     'config/locales',
     'config/locales/cs.yml',
@@ -85,6 +89,9 @@ Gem::Specification.new do |s|
     'lib/gemspec.rb',
     'lib/generators',
     'lib/generators/refinerycms_images_generator.rb',
+    'lib/refinery',
+    'lib/refinery/images',
+    'lib/refinery/images/dragonfly.rb',
     'lib/refinerycms-images.rb',
     'license.md',
     'refinerycms-images.gemspec',
@@ -95,7 +102,7 @@ Gem::Specification.new do |s|
     'spec/uploads/beach.jpeg'
   ]
 
-  s.add_dependency 'refinerycms-core', '= 1.0.0'
+  s.add_dependency 'refinerycms-core', '= 1.1.0'
   s.add_dependency 'dragonfly',        '~> 0.9.0'
   s.add_dependency 'rack-cache',       '>= 0.5.3'
 end

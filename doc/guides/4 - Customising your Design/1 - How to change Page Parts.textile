@@ -47,7 +47,7 @@ NOTE: Your "middle body" content won't show on the front end yet. You need to ou
 Now in your +app/views/pages/home.html.erb+ view you'll be able to put:
 
 <erb>
-<%= @page[:middle_body] %>
+<%= @page.content_for(:middle_body) %>
 </erb>
 
 to output this new content area in the view.

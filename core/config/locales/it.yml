@@ -92,5 +92,8 @@ it:
       image: immagine
       inquiry: richiesta
       resource: risorsa
-      refinery_setting: impostazione di Refinery
+      setting: impostazione di Refinery
       inquiry_setting: impostazione della richiesta
+  pagination:
+    next: "&raquo;"
+    previous: "&laquo;"

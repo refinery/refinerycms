@@ -15,11 +15,11 @@
 
       <div id='site_bar_branding'>
         <span id='site_bar_company_name'>
-          <%= RefinerySetting.find_or_set(:site_name, 'Company Name') %>
+          <%= ::Refinery::Setting.find_or_set(:site_name, 'Company Name') %>
         </span>
 
         <%= link_to t('.log_out', site_bar_translate_locale_args),
-                    destroy_user_session_path, :id => 'logout' %>
+                    main_app.destroy_user_session_path, :id => 'logout' %>
       </div>
     </div>
   </div>

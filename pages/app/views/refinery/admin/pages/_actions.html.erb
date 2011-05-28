@@ -1,0 +1,20 @@
+<ul>
+  <li>
+    <%= render :partial => "/shared/admin/search", :locals => {:url => main_app.refinery_admin_pages_path} %>
+  </li>
+  <li>
+    <%= link_to t('.create_new_page'), main_app.new_refinery_admin_page_path, :class => "add_icon" %>
+  </li>
+<% if @pages.many? and !searching? %>
+  <li>
+    <%= link_to t('.reorder_pages'), main_app.refinery_admin_pages_path,
+                :id => "reorder_action",
+                :class => "reorder_icon" %>
+
+    <%= link_to t('.reorder_pages_done'), main_app.refinery_admin_pages_path,
+                :id => "reorder_action_done",
+                :style => "display: none;",
+                :class => "reorder_icon" %>
+  </li>
+<% end %>
+</ul>

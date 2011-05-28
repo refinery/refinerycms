@@ -1,4 +1,4 @@
-module Refinery
+module ::Refinery
   class FastController < ActionController::Base
 
     def wymiframe

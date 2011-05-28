@@ -24,7 +24,7 @@ If I wanted to replace all the images inside a content section without the user
 having to resize images in the editor then I would use the built in ``content_fu``
 command like this in my view:
 
-    <%= content_fu @page[:body], '400x300' %>
+    <%= content_fu @page.content_for(:body), '400x300' %>
 
 ``content_fu`` is a command we have created that automatically changes all images
 with the url /system/images to use a particular size.

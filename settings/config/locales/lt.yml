@@ -1,10 +1,10 @@
 lt:
   plugins:
-    refinery_settings:
+    settings:
       title: Nustatymai
       description: Valdyti Refinery nustatymus
   admin:
-    refinery_settings:
+    settings:
       delete: Visiškai pašalinti šį nustatymą
       edit: Redaguoti šį nustatymą
       actions:
@@ -39,9 +39,9 @@ lt:
           use_resource_caching: "Rekomenduojama įjungti šį nustatymą paleidus svetainę darbiniu režimu, nes supakuos javascript ir stilių failus į vieną failą, kad sumažinti užklausų skaičių jūsų svetainė ir pagreitinti jos veikimą."
   activerecord:
     models:
-      refinery_setting: nustatymas
+      setting: nustatymas
     attributes:
-      refinery_setting:
+      setting:
         name: Pavadinimas
         value: Reikšmė
         restricted: Apribotas

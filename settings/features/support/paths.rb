@@ -4,7 +4,7 @@ module NavigationHelpers
       def path_to(page_name)
         case page_name
         when /the list of (?:|refinery )settings/
-          admin_refinery_settings_path
+          refinery_admin_settings_path
         else
           nil
         end

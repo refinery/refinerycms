@@ -20,6 +20,8 @@ module Refinery
     end
 
     class Engine < ::Rails::Engine
+      isolate_namespace ::Refinery
+
       initializer 'serve static assets' do |app|
         app.middleware.insert_after ::ActionDispatch::Static, ::ActionDispatch::Static, "#{root}/public"
       end
@@ -33,18 +35,19 @@ module Refinery
         ::Admin::BaseController.send :include, ::Refinery::Pages::Admin::InstanceMethods
       end
 
-      config.after_initialize do
+      initializer "init plugin", :after => :set_routes_reloader do |app|
         ::Refinery::Plugin.register do |plugin|
           plugin.name = 'refinery_pages'
           plugin.directory = 'pages'
           plugin.version = %q{1.0.0}
           plugin.menu_match = /(refinery|admin)\/page(_part)?s(_dialogs)?$/
+          plugin.url = app.routes.url_helpers.refinery_admin_pages_path
           plugin.activity = {
-            :class => Page,
-            :url_prefix => 'edit',
-            :title => 'title',
-            :created_image => 'page_add.png',
-            :updated_image => 'page_edit.png'
+            :class => Refinery::Page,
+            :url_prefix => "edit",
+            :title => "title",
+            :created_image => "page_add.png",
+            :updated_image => "page_edit.png"
           }
         end
       end

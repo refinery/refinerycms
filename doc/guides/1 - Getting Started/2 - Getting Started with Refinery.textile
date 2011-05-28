@@ -205,10 +205,10 @@ Replace the contents of +app/views/pages/show.html.erb+ with this:
 
 <erb>
 <section id='body_content'>
-  <%=raw @page[:body] %>
+  <%=raw @page.content_for(:body) %>
 </section>
 <section id='side_body_content'>
-  <%=raw @page[:side_body] %>
+  <%=raw @page.content_for(:side_body) %>
 </section>
 </erb>
 
@@ -223,7 +223,7 @@ When you edit the about page you'll see something like this:
 You'll notice two tabs on the page "Body" and "Side Body". These are +Page Parts+, or in other words a single piece of content attached to this page that you can render in your view. There is a "Body" tab with some content on this screen, to render that same content in your view you put:
 
 <erb>
-<%=raw @page[:body] %>
+<%=raw @page.content_for(:body) %>
 </erb>
 
 h4. Styling your views
@@ -394,7 +394,7 @@ Any Refinery engine, even the built-in ones, that focus on Create, Read, Update 
 Open up +vendor/engines/events/app/controllers/admin/events_controller.rb+ and look at it's contents:
 
 <ruby>
-class Admin::EventsController < Admin::BaseController
+class Admin::EventsController < ::Admin::BaseController
   crudify :event
 end
 </ruby>
@@ -404,7 +404,7 @@ Most of the time crudify's defaults are bang on, but if you need to, you can eas
 But default +crudify+ assumes your records will be sortable. But events are not manually sortable, it makes more sense to order them by their event date. Update the contents of the file to this:
 
 <ruby>
-class Admin::EventsController < Admin::BaseController
+class Admin::EventsController < ::Admin::BaseController
   crudify :event, :order => "date DESC",
                    :sortable => false
 end

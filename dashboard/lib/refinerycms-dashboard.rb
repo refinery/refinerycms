@@ -8,15 +8,16 @@ module Refinery
     end
 
     class Engine < ::Rails::Engine
+      isolate_namespace ::Refinery
 
       initializer 'serve static assets' do |app|
         app.middleware.insert_after ::ActionDispatch::Static, ::ActionDispatch::Static, "#{root}/public"
       end
 
-      config.after_initialize do
+      initializer "init plugin", :after => :set_routes_reloader do |app|
         ::Refinery::Plugin.register do |plugin|
-          plugin.name = 'refinery_dashboard'
-          plugin.url = {:controller => '/admin/dashboard', :action => 'index'}
+          plugin.name = "refinery_dashboard"
+          plugin.url = app.routes.url_helpers.refinery_admin_dashboard_path
           plugin.menu_match = /(admin|refinery)\/(refinery_)?dashboard$/
           plugin.directory = 'dashboard'
           plugin.version = %q{1.0.0}

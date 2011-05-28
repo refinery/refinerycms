@@ -1,17 +1,17 @@
 class RemovePasswordSaltFromUsers < ActiveRecord::Migration
   def self.up
-    remove_column :users, :password_salt
+    remove_column ::Refinery::User.table_name, :password_salt
     # Make the current password invalid :(
-    ::User.all.each do |u|
+    ::Refinery::User.all.each do |u|
       u.update_attribute(:encrypted_password, u.encrypted_password[29..-1])
     end
 
-    ::User.reset_column_information
+    ::Refinery::User.reset_column_information
   end
 
   def self.down
-    add_column :users, :password_salt, :string
+    add_column ::Refinery::User.table_name, :password_salt, :string
 
-    ::User.reset_column_information
+    ::Refinery::User.reset_column_information
   end
 end
