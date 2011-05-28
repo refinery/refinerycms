@@ -1045,7 +1045,6 @@ var image_picker = {
     $(this.container).find(this.picker.options.field).val('');
     $(this.container).find(this.picker.options.no_image_message).show();
     $(this.container).find(this.picker.options.remove_image_button).hide();
-    $(this).hide();
   }
 
   , toggle_image: function(e) {
