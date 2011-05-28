@@ -65,6 +65,10 @@ Rubygems also comes installed by default, however, it is an old version which wi
 
 <shell>gem update --system</shell>
 
+Also, due to an RDoc bug, you'll need to update it as well:
+
+<shell>gem install rdoc</shell>
+
 h4. Database
 
 SQLite is most likely already installed.
