@@ -53,11 +53,17 @@ h4. ImageMagick
 
 h3. Mac OS X
 
-h4. Ruby and Rubygems
+h4. Ruby
 
 TIP. If you're planning on using Ruby a lot, the best way to install it is using the "Ruby Version Manager":https://rvm.beginrescueend.com/ (RVM)
 
-Ruby 1.8.7 and Rubygems come installed by default on a mac. Lucky you!
+Ruby 1.8.7 comes installed by default on a mac. Lucky you!
+
+h4. Rubygems
+
+Rubygems also comes installed by default, however, it is an old version which will cause problems. Update using:
+
+<shell>gem update --system</shell>
 
 h4. Database
 
