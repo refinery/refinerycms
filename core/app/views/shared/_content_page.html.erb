@@ -1,41 +1,18 @@
-<%
-  # provide a default array for collecting CSS for sections
+<%- sections = page_sections(@page, local_assigns) -%>
+
+<%#= page_body_content do -%>
+  <%#- sections.collect{|section| section[:html] = yield(section[:yield])} -%>
+  <%#- sections.collect do |section| -%>
+    <%#= page_html(section, local_assigns) -%>
+  <%#- end -%>
+<%#- end -%>
+
+<%#- Backwards compatibility block:
+     Remove the following section and uncomment
+     the above page helpers on new applications.
+-%>
+<%-
   css = []
-
-  # if 'sections' is passed in as a local_assigns, all of this is ignored.
-  if local_assigns[:sections].blank?
-    # always have a title
-    sections = [{:yield => :body_content_title, :fallback => page_title, :title => true}]
-
-    # append sections from this page.
-    @page.parts.inject(sections) do |s, part|
-      # we have some default yields, body_content_left and body_content_right
-      # these map to 'body' and 'side_body' fields in default Refinery.
-      section = {:fallback => part.body}
-      section[:yield] = case (title_symbol = part.title.to_s.gsub(/\ /, '').underscore.to_sym)
-        when :body then :body_content_left
-        when :side_body then :body_content_right
-        else title_symbol
-        end
-
-      # add section to the list unless we were specifically requested not to.
-      # otherwise, add css saying it's been removed.
-      unless (local_assigns[:hide_sections]||=[]).include?(section[:yield])
-        s << section
-      else
-        css << "no_#{section[:yield]}"
-      end
-    end unless @page.nil? or @page.parts.blank?
-
-    # Ensure that even without @page.parts we still have body_content_left and body_content_right
-    all_yields = sections.collect{|s| s[:yield]}
-    sections << {:yield => :body_content_left} unless all_yields.include?(:body_content_left)
-    sections << {:yield => :body_content_right} unless all_yields.include?(:body_content_right)
-  end
-
-  # you can add more sections to the list using something like this:
-  # sections |= [{:yield => :something_else, :fallback => another_method, :id => 'something'}]
-
   sections.each do |section|
     section[:html] = yield(section[:yield]) if section[:yield].present?
 
@@ -57,7 +34,10 @@
     end
   end
 -%>
+
 <section id='body_content'<%= " class='#{css.join(' ')}'" if css.present? %>>
   <%= raw sections.map{|section| section[:html]}.join("\n") -%>
 </section>
+<%#- End BC -%>
+
 <%= render :partial => '/shared/draft_page_message' unless @page.nil? or @page.live? -%>
