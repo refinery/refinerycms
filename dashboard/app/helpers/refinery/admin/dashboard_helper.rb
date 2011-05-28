@@ -16,7 +16,7 @@ module ::Refinery
           link_to t(".latest_activity_message",
                     :what => record.send(activity.title),
                     :kind => record.class.model_name.human,
-                    :action => t("with_article \"#{article}\"", :scope => action)
+                    :action => t("with_article \"#{article}\"", :scope => "refinery.#{action}")
                    ).downcase.capitalize, eval("main_app.#{activity.url}(#{activity.nesting("record")}record)")
         end
       end

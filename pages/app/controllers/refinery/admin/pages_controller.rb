@@ -60,7 +60,7 @@ module ::Refinery
         if current_user.has_role?(:translator) && !current_user.has_role?(:superuser) &&
              (params[:switch_locale].blank? || params[:switch_locale] == ::Refinery::I18n.default_frontend_locale.to_s)
           flash[:error] = t('translator_access', :scope => 'refinery.admin.pages')
-          redirect_to :action => 'index' and return
+          redirect_to main_app.url_for(:action => 'index') and return
         end
 
         return true
