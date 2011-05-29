@@ -4,7 +4,7 @@
 
 At the heart of Refinery's user management is the authentication engine located in ``authentication/``
 
-What this really is is just a standard [Devise](http://github.com/platformatec/devise)
+What this really is is just a standard [Devise](https://github.com/plataformatec/devise)
 install extended with a few extra features like "I forgot my password" and hooked directly
 into the heart of Refinery's engine system.
 
