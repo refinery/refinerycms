@@ -5,7 +5,7 @@ Gem::Specification.new do |s|
   s.version           = %q{1.1.0}
   s.summary           = %q{Pages engine for Refinery CMS}
   s.description       = %q{The default content engine of Refinery CMS. This engine handles the administration and display of user-editable pages.}
-  s.date              = %q{2011-05-28}
+  s.date              = %q{2011-05-29}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
   s.rubyforge_project = %q{refinerycms}
@@ -17,8 +17,6 @@ Gem::Specification.new do |s|
   s.files             = [
     'app',
     'app/controllers',
-    'app/controllers/admin',
-    'app/controllers/admin/pages_controller.rb',
     'app/controllers/refinery',
     'app/controllers/refinery/admin',
     'app/controllers/refinery/admin/page_parts_controller.rb',

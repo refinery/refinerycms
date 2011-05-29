@@ -1,6 +1,7 @@
 module ::Refinery
   module Admin
     class PagesController < ::Admin::BaseController
+      cache_sweeper ::Refinery::PageSweeper
 
       crudify :'refinery/page',
               :conditions => nil,
