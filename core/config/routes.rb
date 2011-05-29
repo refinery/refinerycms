@@ -3,7 +3,7 @@
   scope(:module => 'refinery') do
     root :to => 'pages#home'
 
-    match 'wymiframe(/:id)', :to => 'refinery/fast#wymiframe', :as => :wymiframe
+    match 'wymiframe(/:id)', :to => 'fast#wymiframe', :as => :wymiframe
 
     scope(:path => 'refinery', :as => 'refinery_admin', :module => 'admin') do
       resources :dialogs, :only => :show
