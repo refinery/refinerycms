@@ -5,7 +5,7 @@ module Refinery
 
     let(:resource) do
       Resource.create!(:id => 1,
-                       :file => File.new(File.expand_path('../../uploads/refinery_is_awesome.txt', __FILE__)))
+                       :file => File.new(File.expand_path('../../../uploads/refinery_is_awesome.txt', __FILE__)))
     end
 
     context "with valid attributes" do
@@ -55,7 +55,7 @@ module Refinery
     end
 
     describe ".create_resources" do
-      let(:file) { File.new(File.expand_path('../../uploads/refinery_is_awesome.txt', __FILE__)) }
+      let(:file) { File.new(File.expand_path('../../../uploads/refinery_is_awesome.txt', __FILE__)) }
 
       context "only one resource uploaded" do
         it "returns an array containing one resource" do

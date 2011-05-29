@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-Dir[File.expand_path('../../../features/support/factories.rb', __FILE__)].each {|f| require f}
+Dir[File.expand_path('../../../../features/support/factories.rb', __FILE__)].each {|f| require f}
 module Refinery
   describe User do
 

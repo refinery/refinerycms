@@ -34,7 +34,6 @@ module Refinery
         page_cannot_be_destroyed
       end
 
-
       it 'if refinery team deems it so' do
         page.deletable = false
         page_cannot_be_destroyed
@@ -51,7 +50,6 @@ module Refinery
     end
 
     context 'page urls' do
-
       it 'return a full path' do
         page.path.should == 'RSpec is great for testing too'
       end

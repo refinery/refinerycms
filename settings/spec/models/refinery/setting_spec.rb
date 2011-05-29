@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 module Refinery
-  describe ::Refinery::Setting do
+  describe Setting do
 
     before(:each) do
       ::Refinery::Setting.set(:creating_from_scratch, nil)

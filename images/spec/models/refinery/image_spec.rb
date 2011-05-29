@@ -4,7 +4,7 @@ module Refinery
   describe Image do
     let(:image) do
       Refinery::Image.create!(:id => 1,
-                    :image => File.new(File.expand_path('../../uploads/beach.jpeg', __FILE__)))
+                    :image => File.new(File.expand_path('../../../uploads/beach.jpeg', __FILE__)))
     end
 
     context "with valid attributes" do
