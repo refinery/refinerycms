@@ -95,8 +95,8 @@ module Refinery
           refinery_user.can_delete?(super_user).should be_false
         end
 
-        it "if user count with refinery role <= 1" do
-          Role[:refinery].users.delete(refinery_user)
+        it "if user count with refinery role < 1" do
+          Role[:refinery].users.delete([ refinery_user, super_user ])
           super_user.can_delete?(refinery_user).should be_false
         end
 
@@ -106,6 +106,11 @@ module Refinery
       end
 
       context "allow to delete" do
+        it "if user count with refinery role = 1" do
+          Role[:refinery].users.delete(refinery_user)
+          super_user.can_delete?(refinery_user).should be_true
+        end
+
         it "if all conditions return true" do
           super_user.can_delete?(refinery_user).should be_true
         end
