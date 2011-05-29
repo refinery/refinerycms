@@ -3,6 +3,15 @@ require 'globalize3'
 module Refinery
   class Page < ActiveRecord::Base
 
+    # when a dialog pops up to link to a page, how many pages per page should there be
+    PAGES_PER_DIALOG = 14
+
+    # when listing pages out in the admin area, how many pages should show per page
+    PAGES_PER_ADMIN_INDEX = 20
+
+    # when collecting the pages path how is each of the pages seperated?
+    PATH_SEPARATOR = " - "
+
     if self.respond_to?(:translates)
       translates :title, :custom_title, :meta_keywords, :meta_description, :browser_title, :include => :seo_meta
 
@@ -22,7 +31,7 @@ module Refinery
             @translation
           end
 
-          # Instruct the translation_class model to have meta tags.
+          # Instruct the Translation model to have meta tags.
           self.translation_class.send :is_seo_meta
 
           fields = ::SeoMeta.attributes.keys.reject{|f|
@@ -35,18 +44,23 @@ module Refinery
         # Wrap up the logic of finding the pages based on the translations table.
         def self.with_globalize(conditions = {})
           conditions = {:locale => Globalize.locale}.merge(conditions)
-          where(:id => translation_class.where(conditions).select('page_id AS id')).includes(:children, :slugs)
+          globalized_conditions = {}
+          conditions.keys.each do |key|
+            if (translated_attribute_names.map(&:to_s) | %w(locale)).include?(key.to_s)
+              globalized_conditions["#{self.translation_class.table_name}.#{key}"] = conditions.delete(key)
+            end
+          end
+          # A join implies readonly which we don't really want.
+          joins(:translations).where(globalized_conditions).where(conditions).readonly(false)
         end
       else
         # No translations, just default to normal behaviour.
         def self.with_globalize(conditions = {})
-          where(conditions).includes(:children, :slugs)
+          where(conditions)
         end
       end
 
-      before_create :ensure_locale, :if => proc { |c|
-        defined?(::Refinery::I18n) && ::Refinery::I18n.enabled?
-      }
+      before_create :ensure_locale, :if => proc { |c| ::Refinery.i18n_enabled? }
     end
 
     attr_accessible :id, :deletable, :link_url, :menu_match, :meta_keywords,
@@ -69,8 +83,9 @@ module Refinery
                     :strip_non_ascii => ::Refinery::Setting.find_or_set(:strip_non_ascii, false, :scoping => "pages")
 
     has_many :parts,
-             :class_name => "::Refinery::PagePart",
-             :order => "position ASC",
+             :foreign_key => :refinery_page_id,
+             :class_name => '::Refinery::PagePart',
+             :order => 'position ASC',
              :inverse_of => :page,
              :dependent => :destroy,
              :include => ((:translations) if ::Refinery::PagePart.respond_to?(:translation_class))
@@ -82,7 +97,7 @@ module Refinery
                                 :custom_title, :browser_title, :all_page_part_content]
 
     before_destroy :deletable?
-    after_save :reposition_parts!, :invalidate_child_cached_url, :expire_page_caching
+    after_save :reposition_parts!, :invalidate_cached_urls, :expire_page_caching
     after_destroy :expire_page_caching
 
     scope :live, where(:draft => false)
@@ -93,15 +108,6 @@ module Refinery
     # This works using a query against the translated content first and then
     # using all of the page_ids we further filter against this model's table.
     scope :in_menu, proc { where(:show_in_menu => true).with_globalize }
-
-    # when a dialog pops up to link to a page, how many pages per page should there be
-    PAGES_PER_DIALOG = 14
-
-    # when listing pages out in the admin area, how many pages should show per page
-    PAGES_PER_ADMIN_INDEX = 20
-
-    # when collecting the pages path how is each of the pages seperated?
-    PATH_SEPARATOR = " - "
 
     # Am I allowed to delete this page?
     # If a link_url is set we don't want to break the link so we don't allow them to delete
@@ -121,19 +127,17 @@ module Refinery
     # Before destroying a page we check to see if it's a deletable page or not
     # Refinery system pages are not deletable.
     def destroy
-      if deletable?
-        super
-      else
-        unless Rails.env.test?
-          # give useful feedback when trying to delete from console
-          puts "This page is not deletable. Please use .destroy! if you really want it deleted "
-          puts "unset .link_url," if link_url.present?
-          puts "unset .menu_match," if menu_match.present?
-          puts "set .deletable to true" unless deletable
-        end
+      return super if deletable?
 
-        return false
+      unless Rails.env.test?
+        # give useful feedback when trying to delete from console
+        puts "This page is not deletable. Please use .destroy! if you really want it deleted "
+        puts "unset .link_url," if link_url.present?
+        puts "unset .menu_match," if menu_match.present?
+        puts "set .deletable to true" unless deletable
       end
+
+      return false
     end
 
     # If you want to destroy a page that is set to be not deletable this is the way to do it.
@@ -151,7 +155,7 @@ module Refinery
       # Override default options with any supplied.
       options = {:reversed => true}.merge(options)
 
-      unless parent.nil?
+      unless parent_id.nil?
         parts = [title, parent.path(options)]
         parts.reverse! if options[:reversed]
         parts.join(PATH_SEPARATOR)
@@ -178,7 +182,7 @@ module Refinery
     end
 
     def link_url_localised?
-      return link_url unless defined?(::Refinery::I18n)
+      return link_url unless ::Refinery.i18n_enabled?
 
       current_url = link_url
 
@@ -207,7 +211,7 @@ module Refinery
 
     # Returns an array with all ancestors to_param, allow with its own
     # Ex: with an About page and a Mission underneath,
-    # Page.find('mission').nested_url would return:
+    # ::Refinery::Page.find('mission').nested_url would return:
     #
     #   ['about', 'mission']
     #
@@ -234,7 +238,7 @@ module Refinery
     end
 
     def cache_key
-      [Refinery.base_cache_key, ::I18n.locale, super].compact.join('/')
+      [Refinery.base_cache_key, ::I18n.locale, to_param].compact.join('/')
     end
 
     # Returns true if this page is "published"
@@ -254,12 +258,25 @@ module Refinery
 
     # Returns true if this page is the home page or links to it.
     def home?
-      link_url == "/"
+      link_url == '/'
     end
 
     # Returns all visible sibling pages that can be rendered for the menu
     def shown_siblings
       siblings.reject(&:not_in_menu?)
+    end
+
+    def to_refinery_menu_item
+      {
+        :id => id,
+        :lft => lft,
+        :menu_match => menu_match,
+        :parent_id => parent_id,
+        :rgt => rgt,
+        :title => (page_title if respond_to?(:page_title)) || title,
+        :type => self.class.name,
+        :url => url
+      }
     end
 
     class << self
@@ -272,9 +289,7 @@ module Refinery
       # the current frontend locale is different to the current one set by ::I18n.locale.
       # This terminates in a false if i18n engine is not defined or enabled.
       def different_frontend_locale?
-        defined?(::Refinery::I18n) &&
-          ::Refinery::I18n.enabled? &&
-          ::Refinery::I18n.current_frontend_locale != ::I18n.locale
+        ::Refinery.i18n_enabled? && ::Refinery::I18n.current_frontend_locale != ::I18n.locale
       end
 
       # Returns how many pages per page should there be when paginating pages
@@ -299,14 +314,14 @@ module Refinery
     # Accessor method to get a page part from a page.
     # Example:
     #
-    #    Page.first.content_for(:body)
+    #    ::Refinery::Page.first.content_for(:body)
     #
     # Will return the body page part of the first page.
     def content_for(part_title)
-      # the way that we call page parts seems flawed, will probably revert to page.parts[:title] in a future release.
-      # self.parts is already eager loaded so we can now just grab the first element matching the title we specified.
+      # self.parts is usually already eager loaded so we can now just grab
+      # the first element matching the title we specified.
       part = self.parts.detect do |part|
-        part.title.present? and #protecting against the problem that occurs when have nil title
+        part.title.present? and # protecting against the problem that occurs when have nil title
         part.title == part_title.to_s or
         part.title.downcase.gsub(" ", "_") == part_title.to_s.downcase.gsub(" ", "_")
       end
@@ -349,14 +364,15 @@ module Refinery
 
   private
 
-    def invalidate_child_cached_url
+    def invalidate_cached_urls
       return true unless self.class.use_marketable_urls?
 
-      children.each do |child|
-        Rails.cache.delete(child.url_cache_key)
-        Rails.cache.delete(child.path_cache_key)
+      [self, children].flatten.each do |page|
+        Rails.cache.delete(page.url_cache_key)
+        Rails.cache.delete(page.path_cache_key)
       end
     end
+    alias_method :invalidate_child_cached_url, :invalidate_cached_urls
 
     def ensure_locale
       unless self.translations.present?
