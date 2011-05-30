@@ -1,4 +1,4 @@
-``::Refinery::Application.routes.draw do
+::Refinery::Application.routes.draw do
 
   match '/system/images/*dragonfly', :to => Dragonfly[:images]
 
