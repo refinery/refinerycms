@@ -16,7 +16,7 @@ module ::Refinery
       if params[:reset_password_token] and (@user = User.where(:reset_password_token => params[:reset_password_token]).first).present?
         render_with_scope :edit
       else
-        redirect_to(new_user_password_url, :flash => ({
+        redirect_to(main_app.new_user_password_url, :flash => ({
           :error => t('code_invalid', :scope => 'refinery.users.reset')
         }))
       end

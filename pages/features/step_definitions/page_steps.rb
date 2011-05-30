@@ -32,8 +32,7 @@ Given /^I (only )?have a page titled "?([^\"]*)"?$/ do |only, title|
 end
 
 Given /^the page titled "?([^\"]*)"? is a child of "?([^\"]*)"?$/ do |title, parent_title|
-  parent_page = ::Refinery::Page.by_title(parent_title).first
-  ::Refinery::Page.by_title(title).first.update_attribute(:parent_id, parent_page.id)
+  ::Refinery::Page.by_title(title).first.update_attribute(:parent, ::Refinery::Page.by_title(parent_title).first)
 end
 
 Given /^the page titled "?([^\"]*)"? is not shown in the menu$/ do |title|

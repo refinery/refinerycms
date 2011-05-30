@@ -78,6 +78,8 @@ module Refinery
 
         # TODO: Is there a better way to cache assets in engines?
         # Also handles a change in Rails 3.1 with AssetIncludeTag being invented.
+        # TODO: can we remove this?
+=begin
         tag_helper_class = if defined?(::ActionView::Helpers::AssetTagHelper::AssetIncludeTag)
           ::ActionView::Helpers::AssetTagHelper::AssetIncludeTag
         else
@@ -96,6 +98,7 @@ module Refinery
             return_path.to_s
           end
         end
+=end
       end
 
       # Register the plugin

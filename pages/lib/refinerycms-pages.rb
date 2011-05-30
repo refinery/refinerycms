@@ -43,7 +43,7 @@ module Refinery
           plugin.menu_match = /(refinery|admin)\/page(_part)?s(_dialogs)?$/
           plugin.url = app.routes.url_helpers.refinery_admin_pages_path
           plugin.activity = {
-            :class => Refinery::Page,
+            :class => ::Refinery::Page,
             :url_prefix => "edit",
             :title => "title",
             :created_image => "page_add.png",

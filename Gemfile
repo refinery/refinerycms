@@ -16,6 +16,11 @@ else
   gem 'mysql2'
 end
 
+# Asset template engines
+gem 'sass'
+gem 'coffee-script'
+gem 'uglifier'
+
 # Use unicorn as the web server
 # gem 'unicorn'
 # gem 'mongrel'

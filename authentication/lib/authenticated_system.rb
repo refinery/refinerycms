@@ -29,7 +29,7 @@ module Refinery
     protected :store_location, :redirect_back_or_default, :refinery_user?
 
     def self.included(base)
-      base.send :helper_method, :current_refinery_user, :current_user_session, 
+      base.send :helper_method, :current_refinery_user, :current_user_session,
         :refinery_user_signed_in?, :refinery_user? if base.respond_to? :helper_method
     end
   end

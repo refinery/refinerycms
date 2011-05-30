@@ -1,3 +1,4 @@
+<% require 'ruby-debug' %>
 <%
   if !!local_assigns[:apply_css] and (classes = menu_branch_css(local_assigns)).any?
     css = "class='#{classes.join(' ')}'".html_safe
@@ -6,7 +7,7 @@
   dom_id = "id='item_#{menu_branch_counter}'".html_safe if menu_branch.parent_id.nil?
 -%>
 <li<%= ['', css, dom_id].compact.join(' ').gsub(/\ *$/, '').html_safe %>>
-  <%= link_to menu_branch.title, menu_branch.url -%>
+<%= link_to(menu_branch.title, main_app.url_for(menu_branch.url)) -%>
   <% if (children = menu_branch.children unless hide_children).present? -%>
     <ul class='clearfix'>
       <%= render :partial => '/shared/menu_branch', :collection => children,
