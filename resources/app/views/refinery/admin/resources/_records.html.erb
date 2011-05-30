@@ -1,5 +1,5 @@
 <% if searching? %>
-  <h2><%= t('results_for', :scope => 'shared.admin.search', :query => params[:search]) %></h2>
+  <h2><%= t('results_for', :scope => 'refinery.admin.search', :query => params[:search]) %></h2>
 <% end %>
 <% if @resources.any? %>
   <div class='pagination_container'>
@@ -10,7 +10,7 @@
     <% unless searching? %>
       <strong><%= t('.no_files_yet') %></strong>
     <% else %>
-      <%= t('no_results', :scope => 'shared.admin.search') %>
+      <%= t('no_results', :scope => 'refinery.admin.search') %>
     <% end %>
   </p>
 <% end %>

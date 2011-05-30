@@ -41,7 +41,7 @@
       <%= link_to "#", :style => "background-image: url('/images/refinery/icons/flags/#{current_locale}.png');" do %>
         <%= current_locale_title.respond_to?(:force_encoding) ? current_locale_title.force_encoding('utf-8') : current_locale_title %>
         <span><%= t('.change_language') %></span>
-        <span style='display:none;'><%= t('cancel', :scope => 'shared.admin.form_actions') %></span>
+        <span style='display:none;'><%= t('cancel', :scope => 'refinery.admin.form_actions') %></span>
       <% end %>
     </li>
   </ul>

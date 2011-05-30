@@ -48,7 +48,7 @@
                :hide_cancel => from_dialog?,
                :submit_button_title => t('.restart_may_be_in_order_html'),
                :delete_title => t('delete', :scope => 'refinery.admin.settings'),
-               :delete_confirmation => t('message', :scope => 'shared.admin.delete',
+               :delete_confirmation => t('message', :scope => 'refinery.admin.delete',
                                          :title => @setting.title),
                :hide_delete => (!@setting.persisted? or !@setting.destroyable or from_dialog?)
               } %>

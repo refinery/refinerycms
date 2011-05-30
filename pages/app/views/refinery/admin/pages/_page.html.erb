@@ -23,7 +23,7 @@
       <%= link_to refinery_icon_tag('delete.png'), main_app.refinery_admin_page_path(page),
                   :class => "cancel confirm-delete",
                   :title => t('delete', :scope => 'refinery.admin.pages'),
-                  :confirm => t('message', :scope => 'shared.admin.delete', :title => page.title_with_meta.gsub(/\ ?<em>.*<\/em>/, "")),
+                  :confirm => t('message', :scope => 'refinery.admin.delete', :title => page.title_with_meta.gsub(/\ ?<em>.*<\/em>/, "")),
                   :method => :delete if page.deletable? %>
     </span>
   </div>

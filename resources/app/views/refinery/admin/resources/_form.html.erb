@@ -32,7 +32,7 @@
                :continue_editing => false,
                :hide_cancel => (@app_dialog or action_name == "insert" or from_dialog?),
                :delete_title => t('delete', :scope => 'refinery.admin.resources'),
-               :delete_confirmation => (t('message', :scope => 'shared.admin.delete',
+               :delete_confirmation => (t('message', :scope => 'refinery.admin.delete',
                                         :title => @resource.title) if @resource.persisted?)
              } %>
 
