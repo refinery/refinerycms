@@ -3,7 +3,7 @@
 <%= form_for(resource, :as => resource_name, :url => main_app.password_path(resource_name), :html => { :method => :put }) do |f| %>
   <%= f.hidden_field :reset_password_token %>
 
-  <%= render :partial => "/shared/admin/error_messages",
+  <%= render :partial => "/refinery/admin/error_messages",
              :locals => {
                :object => @user,
                :include_object_name => true
@@ -19,7 +19,7 @@
     <%= f.password_field :password_confirmation, :class => 'larger widest' %>
   </div>
 
-  <%= render :partial => "/shared/admin/form_actions",
+  <%= render :partial => "/refinery/admin/form_actions",
              :locals => {
                :f => f,
                :continue_editing => false,

@@ -1,7 +1,7 @@
 <% url_opts = action_name == 'edit' ? {:url => main_app.refinery_admin_page_path(@page.id), :as => :page} : {:url => main_app.refinery_admin_pages_path, :as => :page} %>
 <%= form_for [:admin, @page], url_opts do |f| %>
 
-  <%= render :partial => "/shared/admin/error_messages",
+  <%= render :partial => "/refinery/admin/error_messages",
              :locals => {
                :object => @page,
                :include_object_name => true
@@ -34,7 +34,7 @@
                 :f => f
               } %>
 
-  <%= render :partial => "/shared/admin/form_actions",
+  <%= render :partial => "/refinery/admin/form_actions",
              :locals => {
                :f => f,
                :continue_editing => true,

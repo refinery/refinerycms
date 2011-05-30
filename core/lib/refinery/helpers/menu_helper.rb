@@ -14,7 +14,7 @@ module Refinery
         nil
       end
 
-      # This was extracted from app/views/shared/_menu_branch.html.erb
+      # This was extracted from app/views/refinery/_menu_branch.html.erb
       # to remove the complexity of that template by reducing logic in the view.
       def css_for_menu_branch(item, counter, sibling_count = nil, collection = nil, selected_item = nil, warning = true)
 

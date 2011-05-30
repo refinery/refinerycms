@@ -17,7 +17,7 @@
   <%= stylesheet_link_tag "home", :theme => theme if home_page? %>
 
   <%= yield :stylesheets %>
-  <%= render :partial => '/shared/google_analytics' unless local_request? %>
+  <%= render :partial => '/refinery/google_analytics' unless local_request? %>
 
   <%= javascript_include_tag 'modernizr-min' %>
 </head>

@@ -1,6 +1,6 @@
 <ul>
   <li>
-    <%= render :partial => "/shared/admin/search", :locals => {:url => main_app.refinery_admin_resources_path} %>
+    <%= render :partial => "/refinery/admin/search", :locals => {:url => main_app.refinery_admin_resources_path} %>
   </li>
   <li>
     <%= link_to t('.upload_new'), main_app.new_refinery_admin_resource_path(:dialog => true,

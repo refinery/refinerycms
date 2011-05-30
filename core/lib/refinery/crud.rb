@@ -83,7 +83,7 @@ module Refinery
                   unless request.xhr?
                     redirect_to :back
                   else
-                    render :partial => "/shared/message"
+                    render :partial => "/refinery/message"
                   end
                 end
               else
@@ -93,7 +93,7 @@ module Refinery
               unless request.xhr?
                 render :action => 'new'
               else
-                render :partial => "/shared/admin/error_messages",
+                render :partial => "/refinery/admin/error_messages",
                        :locals => {
                          :object => @#{singular_name},
                          :include_object_name => true
@@ -120,7 +120,7 @@ module Refinery
                   unless request.xhr?
                     redirect_to :back
                   else
-                    render :partial => "/shared/message"
+                    render :partial => "/refinery/message"
                   end
                 end
               else
@@ -130,7 +130,7 @@ module Refinery
               unless request.xhr?
                 render :action => 'edit'
               else
-                render :partial => "/shared/admin/error_messages",
+                render :partial => "/refinery/admin/error_messages",
                        :locals => {
                          :object => @#{singular_name},
                          :include_object_name => true

@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<%= render :partial => "/shared/html_tag" %>
+<%= render :partial => "/refinery/html_tag" %>
   <% content_for :meta, "<meta refinerycms='#{Refinery.version}' />".html_safe %>
   <%= render :partial => "refinery/admin/head" %>
   <body class='<%= action_name %> <%= I18n.locale %>'>
-    <%= render :partial => '/shared/site_bar' %>
+    <%= render :partial => '/refinery/site_bar' %>
     <div id='tooltip_container'></div>
     <header>
       <%= render :partial => "refinery/admin/menu" %>
@@ -12,8 +12,8 @@
       <div id="page">
         <div id="content" class="clearfix">
           <div id="flash_container">
-            <%= render :partial => '/shared/no_script' %>
-            <%= render :partial => "/shared/message" %>
+            <%= render :partial => '/refinery/no_script' %>
+            <%= render :partial => "/refinery/message" %>
           </div>
           <%= yield %>
         </div>

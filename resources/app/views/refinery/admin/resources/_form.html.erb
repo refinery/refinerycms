@@ -2,7 +2,7 @@
                                   :html => {:multipart => true},
                                   :as => "resource" do |f| -%>
 
-  <%= render :partial => "/shared/admin/error_messages",
+  <%= render :partial => "/refinery/admin/error_messages",
              :locals => {
                :object => @resource,
                :include_object_name => false
@@ -26,7 +26,7 @@
     </label>
   </div>
 
-  <%= render :partial => "/shared/admin/form_actions",
+  <%= render :partial => "/refinery/admin/form_actions",
              :locals => {
                :f => f,
                :continue_editing => false,

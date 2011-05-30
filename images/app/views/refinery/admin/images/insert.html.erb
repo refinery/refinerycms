@@ -25,7 +25,7 @@
     <% end %>
   <% else %>
     <% flash.now[:error] = t('no_images_yet', :scope => 'refinery.admin.images.records').split('.').first.html_safe + "." %>
-    <%= render :partial => "/shared/admin/form_actions",
+    <%= render :partial => "/refinery/admin/form_actions",
                :locals => {
                  :f => nil,
                  :cancel_url => '',

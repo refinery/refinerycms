@@ -1,6 +1,6 @@
 <%= form_for [:admin, @user], {:url => @user.new_record? ? main_app.refinery_admin_users_path : main_app.refinery_admin_user_path(@user), :as => :user} do |f| %>
 
-  <%= render :partial => "/shared/admin/error_messages",
+  <%= render :partial => "/refinery/admin/error_messages",
              :locals => {
                :object => @user,
                :include_object_name => true
@@ -70,7 +70,7 @@
     </div>
   <% end %>
 
-  <%= render :partial => "/shared/admin/form_actions",
+  <%= render :partial => "/refinery/admin/form_actions",
              :locals => {
                :f => f,
                :continue_editing => false,

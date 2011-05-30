@@ -1,5 +1,5 @@
 <div id='existing_image_area' class='dialog_area' <%= "style='display:none;'" if @image.errors.any? %>>
-  <%= render :partial => '/shared/admin/search',
+  <%= render :partial => '/refinery/admin/search',
              :locals => {:url => main_app.insert_refinery_admin_images_path(params.dup.delete(:image))} %>
   <input type='hidden' name='selected_image' id='selected_image' />
   <div id='existing_image_area_content' class='clearfix'>
@@ -60,7 +60,7 @@
     </div>
   <% end %>
 
-  <%= render :partial => "/shared/admin/form_actions",
+  <%= render :partial => "/refinery/admin/form_actions",
              :locals => {
                :f => nil,
                :cancel_url => '',
