@@ -102,8 +102,8 @@ module Refinery
         opts.on("-c", "--confirm", "Confirm any prompts that require input") do
           @options[:confirm] = true
         end
-        
-        opts.on("-t", "--trace", "Investigate any problems with the installer") do
+
+        opts.on("--trace", "Investigate any problems with the installer") do
           @options[:trace] = true
         end
 
