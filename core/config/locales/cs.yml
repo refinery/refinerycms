@@ -11,15 +11,15 @@ cs:
     remember_admin_location: "Zapamatujte si adresu k Refinery administraci:"
     lets_start: Nejdříve vytvoříme uživatelský účet, ať se máme jak přihlásit...
     continue: Pokračovat...
-  admin:
-    menu:
-      reorder_menu: Přeuspořádat menu
-      reorder_menu_done: Uložit toto pořadí
-    dialogs:
-      show:
-        save: Uložit
-        cancel: Storno
-  refinery:
+  refinery:  
+    admin:
+      menu:
+        reorder_menu: Přeuspořádat menu
+        reorder_menu_done: Uložit toto pořadí
+      dialogs:
+        show:
+          save: Uložit
+          cancel: Storno
     crudify:
       created: '%{what} byl úspěšně vytvořen.'
       updated: '%{what} byl úspěšně aktualizován.'
