@@ -1,7 +1,7 @@
 class TranslateCustomTitleOnPages < ActiveRecord::Migration
   def self.up
-    unless ::Refinery::Page::Translation.column_names.map(&:to_sym).include?(:custom_title)
-      add_column ::Refinery::Page::Translation.table_name, :custom_title, :string
+    unless ::Refinery::Page.translation_class.column_names.map(&:to_sym).include?(:custom_title)
+      add_column ::Refinery::Page.translation_class.table_name, :custom_title, :string
 
       say_with_time("Re-save custom_title") do
         ::Refinery::Page.all.each do |page|
@@ -10,10 +10,10 @@ class TranslateCustomTitleOnPages < ActiveRecord::Migration
         end
       end
     else
-      say "Nothing done, ::Refinery::Page::Translation table already includes a custom_title field"
+      say "Nothing done, ::Refinery::Page.translation_class table already includes a custom_title field"
     end
 
-    ::Refinery::Page::Translation.reset_column_information
+    ::Refinery::Page.translation_class.reset_column_information
   end
 
   def self.down
@@ -32,10 +32,10 @@ class TranslateCustomTitleOnPages < ActiveRecord::Migration
       end
     end
 
-    remove_column ::Refinery::Page::Translation.table_name, :custom_title
+    remove_column ::Refinery::Page.translation_class.table_name, :custom_title
 
     ::Refinery::Page.translated_attribute_names.delete(:custom_title)
 
-    ::Refinery::Page::Translation.reset_column_information
+    ::Refinery::Page.translation_class.reset_column_information
   end
 end

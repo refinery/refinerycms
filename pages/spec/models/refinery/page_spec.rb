@@ -4,7 +4,7 @@ module Refinery
   describe Page do
 
     let(:page) do
-      Page.create!({
+      ::Refinery::Page.create!({
         :title => 'RSpec is great for testing too',
         :deletable => true
       })
@@ -142,9 +142,9 @@ module Refinery
     end
 
     context "should add url suffix" do
-      let(:reserved_word) { Page.friendly_id_config.reserved_words.last }
+      let(:reserved_word) { ::Refinery::Page.friendly_id_config.reserved_words.last }
       let(:page_with_reserved_title) do
-        Page.create!({
+        ::Refinery::Page.create!({
           :title => reserved_word,
           :deletable => true
         })

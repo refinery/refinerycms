@@ -14,7 +14,7 @@ module Refinery
         def self.included(c)
           c.layout :layout?
 
-          c.before_filter :authenticate_user!, :restrict_plugins, :restrict_controller
+          c.before_filter :authenticate_refinery_user!, :restrict_plugins, :restrict_controller
           c.after_filter :store_location?, :except => [:new, :create, :edit, :update, :destroy, :update_positions] # for redirect_back_or_default
 
           c.helper_method :searching?, :group_by_date
@@ -52,12 +52,12 @@ module Refinery
         end
 
         def restrict_plugins
-          current_length = (plugins = current_user.authorized_plugins).length
+          current_length = (plugins = current_refinery_user.authorized_plugins).length
 
           # Superusers get granted access if they don't already have access.
-          if current_user.has_role?(:superuser)
+          if current_refinery_user.has_role?(:superuser)
             if (plugins = plugins | ::Refinery::Plugins.registered.names).length > current_length
-              current_user.plugins = plugins
+              current_refinery_user.plugins = plugins
             end
           end
 
@@ -66,7 +66,7 @@ module Refinery
 
         def restrict_controller
           # if Refinery::Plugins.active.reject { |plugin| params[:controller] !~ Regexp.new(plugin.menu_match)}.empty?
-          #   warn "'#{current_user.username}' tried to access '#{params[:controller]}' but was rejected."
+          #   warn "'#{current_refinery_user.username}' tried to access '#{params[:controller]}' but was rejected."
           #   error_404
           # end
         end

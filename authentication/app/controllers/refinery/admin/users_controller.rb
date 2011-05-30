@@ -23,7 +23,7 @@ module Refinery
           @user.plugins = @selected_plugin_names
           # if the user is a superuser and can assign roles according to this site's
           # settings then the roles are set with the POST data.
-          unless current_user.has_role?(:superuser) and ::Refinery::Setting.find_or_set(:superuser_can_assign_roles, false)
+          unless current_refinery_user.has_role?(:superuser) and ::Refinery::Setting.find_or_set(:superuser_can_assign_roles, false)
             @user.add_role(:refinery)
           else
             @user.roles = @selected_role_names.collect{|r| Role[r.downcase.to_sym]}
@@ -43,13 +43,13 @@ module Refinery
       def update
         # Store what the user selected.
         @selected_role_names = params[:user].delete(:roles) || []
-        unless current_user.has_role?(:superuser) and ::Refinery::Setting.find_or_set(:superuser_can_assign_roles, false)
+        unless current_refinery_user.has_role?(:superuser) and ::Refinery::Setting.find_or_set(:superuser_can_assign_roles, false)
           @selected_role_names = @user.roles.collect{|r| r.title}
         end
         @selected_plugin_names = params[:user][:plugins]
 
         # Prevent the current user from locking themselves out of the User manager
-        if current_user.id == @user.id and (params[:user][:plugins].exclude?("refinery_users") || @selected_role_names.map(&:downcase).exclude?("refinery"))
+        if current_refinery_user.id == @user.id and (params[:user][:plugins].exclude?("refinery_users") || @selected_role_names.map(&:downcase).exclude?("refinery"))
           flash.now[:error] = t('cannot_remove_user_plugin_from_current_user', :scope => 'refinery.admin.users.update')
           render :action => "edit"
         else

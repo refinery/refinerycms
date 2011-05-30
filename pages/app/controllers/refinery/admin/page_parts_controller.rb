@@ -4,14 +4,14 @@ module ::Refinery
 
       def new
         render :partial => "/refinery/admin/pages/page_part_field", :locals => {
-          :part => PagePart.new(:title => params[:title], :body => params[:body]),
+          :part => ::Refinery::PagePart.new(:title => params[:title], :body => params[:body]),
           :new_part => true,
           :part_index => params[:part_index]
         }
       end
 
       def destroy
-        part = PagePart.find(params[:id])
+        part = ::Refinery::PagePart.find(params[:id])
         page = part.page
         if part.destroy
           page.reposition_parts!

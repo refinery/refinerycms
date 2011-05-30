@@ -16,7 +16,7 @@
     </label>
     <span class="preview">- (<%= @setting.name %>)</span>
   <% end %>
-  <% if current_user.has_role?(:superuser) and !@setting.persisted? %>
+  <% if current_refinery_user.has_role?(:superuser) and !@setting.persisted? %>
     <div class='field'>
       <%= f.label :form_value_type %>
       <%= f.select :form_value_type, ::Refinery::Setting::FORM_VALUE_TYPES -%>
@@ -27,7 +27,7 @@
       <span><%= help %></span>
     </p>
   <% end %>
-  <% if current_user.has_role?(:superuser) %>
+  <% if current_refinery_user.has_role?(:superuser) %>
     <span class='label_with_help'>
       <%= f.label :restricted %>
       <%= refinery_help_tag t('restricted', :scope => 'refinery.admin.settings.form.help') %>
@@ -59,4 +59,4 @@
       window.location = location_url + ((location_url.indexOf("?") > -1 ? "&" : "?") + "form_value_type=" + $(this).val());
     });
   </script>
-<% end if current_user.has_role?(:superuser) %>
+<% end if current_refinery_user.has_role?(:superuser) %>

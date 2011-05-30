@@ -5,7 +5,7 @@ module Refinery
 
     # This action is usually accessed with the root path, normally '/'
     def home
-      error_404 unless (@page = Page.where(:link_url => '/').first).present?
+      error_404 unless (@page = ::Refinery::Page.where(:link_url => '/').first).present?
     end
 
     # This action can be accessed normally, or as nested pages.
@@ -19,9 +19,9 @@ module Refinery
     #   GET /about/mission
     #
     def show
-      @page = Page.find("#{params[:path]}/#{params[:id]}".split('/').last)
+      @page = ::Refinery::Page.find("#{params[:path]}/#{params[:id]}".split('/').last)
 
-      if @page.try(:live?) || (refinery_user? && current_user.authorized_plugins.include?("refinery_pages"))
+      if @page.try(:live?) || (refinery_user? && current_refinery_user.authorized_plugins.include?("refinery_pages"))
         # if the admin wants this to be a "placeholder" page which goes to its first child, go to that instead.
         if @page.skip_to_first_child && (first_live_child = @page.children.order('lft ASC').live.first).present?
           redirect_to first_live_child.url
@@ -35,7 +35,7 @@ module Refinery
 
   protected
     def write_cache?
-      if RefinerySetting.find_or_set(:cache_pages_full, {
+      if ::Refinery::Setting.find_or_set(:cache_pages_full, {
         :restricted => true,
         :value => false,
         :form_value_type => 'check_box'

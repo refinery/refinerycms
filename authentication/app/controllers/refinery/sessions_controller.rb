@@ -8,7 +8,7 @@ module Refinery
       super
     rescue ::BCrypt::Errors::InvalidSalt, ::BCrypt::Errors::InvalidHash
       flash[:error] = t('password_encryption', :scope => 'refinery.users.forgot')
-      redirect_to main_app.new_user_password_path
+      redirect_to main_app.new_refinery_user_password_path
     end
 
   protected

@@ -3,7 +3,7 @@
   # Add Devise necessary routes.
   # For Devise routes, see: https://github.com/plataformatec/devise
   scope(:module => 'refinery') do
-    devise_for :users, :class_name => "Refinery::User", :module => 'refinery', :controllers => {
+    devise_for :'refinery/users', :class_name => "Refinery::User", :module => 'refinery', :controllers => {
       :sessions => 'refinery/sessions',
       :registrations => 'refinery/users',
       :passwords => 'refinery/passwords'
@@ -14,7 +14,8 @@
     }
   end
 
-  # Override Devise's default after login redirection route.  This will pushed a logged in user to the dashboard.
+  # Override Devise's default after login redirection route. 
+  # This will push a logged in user to the dashboard.
   scope(:module => 'refinery/admin') do
     get 'refinery', :to => 'dashboard#index', :as => :refinery_root
     get 'refinery', :to => 'dashboard#index', :as => :user_root

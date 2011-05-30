@@ -13,7 +13,7 @@ module ::Refinery
       after_filter :fire_setting_callback, :only => [:update]
 
       def new
-        form_value_type = ((current_user.has_role?(:superuser) && params[:form_value_type]) || 'text_area')
+        form_value_type = ((current_refinery_user.has_role?(:superuser) && params[:form_value_type]) || 'text_area')
         @setting = ::Refinery::Setting.new(:form_value_type => form_value_type)
       end
 
@@ -27,7 +27,7 @@ module ::Refinery
       def find_all_settings
         @settings = ::Refinery::Setting.order('name ASC')
 
-        unless current_user.has_role?(:superuser)
+        unless current_refinery_user.has_role?(:superuser)
           @settings = @settings.where("restricted <> ? ", true)
         end
 

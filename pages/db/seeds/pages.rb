@@ -1,6 +1,6 @@
 page_position = -1
 
-home_page = Page.create(:title => "Home",
+home_page = ::Refinery::Page.create(:title => "Home",
             :deletable => false,
             :link_url => "/",
             :position => (page_position += 1))
@@ -27,7 +27,7 @@ page_not_found_page.parts.create({
               :position => 0
             })
 
-about_us_page = Page.create(:title => "About",
+about_us_page = ::Refinery::Page.create(:title => "About",
             :deletable => true,
             :position => (page_position += 1))
 about_us_page.parts.create({

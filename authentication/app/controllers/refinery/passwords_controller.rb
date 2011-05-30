@@ -30,7 +30,7 @@ module ::Refinery
         # Call devise reset function.
         user.send(:generate_reset_password_token!)
         UserMailer.reset_notification(user, request).deliver
-        redirect_to main_app.new_user_session_path, :notice => t('email_reset_sent', :scope => 'refinery.users.forgot') and return
+        redirect_to main_app.new_refinery_user_session_path, :notice => t('email_reset_sent', :scope => 'refinery.users.forgot') and return
       else
         @user = User.new(params[:user])
         flash.now[:error] = if (email = params[:user][:email]).blank?

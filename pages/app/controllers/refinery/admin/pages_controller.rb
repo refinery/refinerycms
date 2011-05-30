@@ -19,9 +19,9 @@ module ::Refinery
       }
 
       def new
-        @page = Page.new
-        Page.default_parts.each_with_index do |page_part, index|
-          @page.parts << PagePart.new(:title => page_part, :position => index)
+        @page = ::Refinery::Page.new
+        ::Refinery::Page.default_parts.each_with_index do |page_part, index|
+          @page.parts << ::Refinery::PagePart.new(:title => page_part, :position => index)
         end
       end
 
@@ -52,13 +52,13 @@ module ::Refinery
           find_page
           render :edit
         else
-          @page = Page.new(params[:page])
+          @page = ::Refinery::Page.new(params[:page])
           render :new
         end
       end
 
       def restrict_access
-        if current_user.has_role?(:translator) && !current_user.has_role?(:superuser) &&
+        if current_refinery_user.has_role?(:translator) && !current_refinery_user.has_role?(:superuser) &&
              (params[:switch_locale].blank? || params[:switch_locale] == ::Refinery::I18n.default_frontend_locale.to_s)
           flash[:error] = t('translator_access', :scope => 'refinery.admin.pages')
           redirect_to :action => 'index' and return

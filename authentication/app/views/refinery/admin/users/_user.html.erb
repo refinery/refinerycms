@@ -14,6 +14,6 @@
                 :class => "cancel confirm-delete",
                 :title => t('delete', :scope => 'refinery.admin.users'),
                 :method => :delete,
-                :confirm => t('message', :scope => 'shared.admin.delete', :title => user.username) if current_user.can_delete?(user) %>
+                :confirm => t('message', :scope => 'shared.admin.delete', :title => user.username) if current_refinery_user.can_delete?(user) %>
   </span>
 </li>

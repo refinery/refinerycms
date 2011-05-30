@@ -1,6 +1,6 @@
 # Login stuff
 Given %r`not logged in$` do
-  visit destroy_user_session_path
+  visit destroy_refinery_user_session_path
 end
 
 Given /locale is (.+?)$/ do |locale|

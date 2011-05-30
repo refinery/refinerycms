@@ -190,7 +190,7 @@ the ``find_all_pages`` method.
       crudify :page
 
       def find_all_pages
-        @pages = Page.find(...) # apply any logic I want here to get all pages.
+        @pages = ::Refinery::Page.find(...) # apply any logic I want here to get all pages.
       end
 
     end

@@ -22,18 +22,15 @@ module Refinery
       respond_to?(home_path, true) ? main_app.send(home_path) : main_app.root_path
     end
 
-    #def current_user
-      #current_user
-    #end
-
     def refinery_user?
-      user_signed_in? && current_user.has_role?(:refinery)
+      refinery_user_signed_in? && current_refinery_user.has_role?(:refinery)
     end
 
     protected :store_location, :redirect_back_or_default, :refinery_user?
 
     def self.included(base)
-      base.send :helper_method, :current_user, :current_user_session, :user_signed_in?, :refinery_user? if base.respond_to? :helper_method
+      base.send :helper_method, :current_refinery_user, :current_user_session, 
+        :refinery_user_signed_in?, :refinery_user? if base.respond_to? :helper_method
     end
   end
 end

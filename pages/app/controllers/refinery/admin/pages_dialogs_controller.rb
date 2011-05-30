@@ -5,7 +5,7 @@ module ::Refinery
     class PagesDialogsController < ::Refinery::Admin::DialogsController
 
       def link_to
-        @pages = Page.page(params[:page]).
+        @pages = ::Refinery::Page.page(params[:page]).
                       where(:parent_id => nil).
                       order('position').
                       per(Page.per_page(true))

@@ -2,7 +2,7 @@ class CreateRefinerycmsPagesSchema < ActiveRecord::Migration
   def self.up
     unless ::Refinery::PagePart.table_exists?
       create_table ::Refinery::PagePart.table_name, :force => true do |t|
-        t.integer  "page_id"
+        t.integer  "refinery_page_id"
         t.string   "title"
         t.text     "body"
         t.integer  "position"
@@ -11,7 +11,7 @@ class CreateRefinerycmsPagesSchema < ActiveRecord::Migration
       end
 
       add_index ::Refinery::PagePart.table_name, ["id"], :name => "index_#{::Refinery::PagePart.table_name}_on_id"
-      add_index ::Refinery::PagePart.table_name, ["page_id"], :name => "index_#{::Refinery::PagePart.table_name}_on_page_id"
+      add_index ::Refinery::PagePart.table_name, ["refinery_page_id"], :name => "index_#{::Refinery::PagePart.table_name}_on_page_id"
     end
 
     unless ::Refinery::Page.table_exists?

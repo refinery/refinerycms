@@ -9,7 +9,7 @@ Given /^the page titled "?([^\"]*)"? has a menu match "?([^\"]*)"?$/ do |title, 
 end
 
 Given /^the page titled "?([^\"]*)"? is set to skip to first child$/ do |title|
-  Page.by_title(title).first.update_attribute(:skip_to_first_child, true)
+  ::Refinery::Page.by_title(title).first.update_attribute(:skip_to_first_child, true)
 end
 
 Given /^I (only )?have pages titled "?([^\"]*)"?$/ do |only, titles|
