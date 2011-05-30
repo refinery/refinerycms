@@ -24,7 +24,6 @@ vi:
       created: '%{what} vừa được thêm vào.'
       updated: '%{what} vừa được cập nhật.'
       destroyed: '%{what} vừa được xóa bỏ.'
-  shared:
     site_bar:
       log_out: Đăng xuất
       switch_to_your_website: Chuyển đến website của bạn

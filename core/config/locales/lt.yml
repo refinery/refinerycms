@@ -24,7 +24,6 @@ lt:
       created: '%{what} buvo sėkmingai pridėtas.'
       updated: '%{what} buvo sėkmingai atnaujintas.'
       destroyed: '%{what} buvo sėkmingai pašalintas.'
-  shared:
     site_bar:
       log_out: Atsijungti
       switch_to_your_website: Pereiti į jūsų svetainę

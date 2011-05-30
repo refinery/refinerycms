@@ -17,7 +17,6 @@ es:
       created: '%{what} fue creado correctamente.'
       updated: '%{what} fue actualizado correctamente.'
       destroyed: '%{what} fue borrado correctamente.'
-  shared:
     site_bar:
       log_out: Salir
       switch_to_your_website: Ver tu web

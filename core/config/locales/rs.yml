@@ -24,7 +24,6 @@ rs:
       created: '%{what} je uspešno dodat(a).'
       updated: '%{what} je uspešno izmenjen(a).'
       destroyed: '%{what} je uspešno uklonjen(a).'
-  shared:
     site_bar:
       log_out: Log out
       switch_to_your_website: Prebaci se na sajt

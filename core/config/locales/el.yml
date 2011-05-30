@@ -24,7 +24,6 @@ el:
       created: '%{what} προστέθηκε επιτυχώς.'
       updated: '%{what} επεξεργάστηκε επιτυχώς.'
       destroyed: '%{what} αφαιρέθηκε επιτυχώς.'
-  shared:
     site_bar:
       log_out: Αποσύνδεση
       switch_to_your_website: Δες τον ιστότοπο

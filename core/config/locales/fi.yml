@@ -27,7 +27,6 @@ fi:
       created: '%{what} lisättiin onnistuneesti.'
       updated: '%{what} päivitettiin onnistuneesti.'
       destroyed: '%{what} poistettiin onnistuneesti.'
-  shared:
     site_bar:
       log_out: Kirjaudu ulos
       switch_to_your_website: Siirry nettisivustollesi

@@ -24,7 +24,6 @@ pt-BR:
       created: "%{what} foi criado com sucesso"
       updated: "%{what} foi atualizado com sucesso"
       destroyed: "%{what} foi apagado com sucesso"
-  shared:
     site_bar:
       log_out: Sair
       switch_to_your_website: Mudar para o seu website

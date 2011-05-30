@@ -24,7 +24,6 @@ sv:
       created: '%{what} lades till.'
       updated: '%{what} uppdaterades.'
       destroyed: '%{what} togs bort.'
-  shared:
     site_bar:
       log_out: Logga ut
       switch_to_your_website: Byt till din webbplats

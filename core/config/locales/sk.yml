@@ -24,7 +24,6 @@ sk:
       created: '%{what} bol úspešne vytvorený.'
       updated: '%{what} bol úspešne aktualizovaný.'
       destroyed: '%{what} bol úspešne zmazaný.'
-  shared:
     site_bar:
       log_out: Odhlásiť 
       switch_to_your_website: Prepnúť na verejnú časť

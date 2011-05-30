@@ -24,7 +24,6 @@ nl:
       created: "%{what} is met success aangemaakt"
       updated: "%{what} is met success aangepast"
       destroyed: "%{what} is met success verwijderd"
-  shared:
     site_bar:
       log_out: Afmelden
       switch_to_your_website: Ga naar de website

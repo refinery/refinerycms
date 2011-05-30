@@ -24,7 +24,6 @@ zh-TW:
       created: '%{what} 成功地加入.'
       updated: '%{what} 成功地更新.'
       destroyed: '%{what} 成功地移除.'
-  shared:
     site_bar:
       log_out: 登出
       switch_to_your_website: 切換到您的網站

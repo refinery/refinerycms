@@ -24,7 +24,6 @@ cs:
       created: '%{what} byl úspěšně vytvořen.'
       updated: '%{what} byl úspěšně aktualizován.'
       destroyed: '%{what} byl úspěšně smazán.'
-  shared:
     site_bar:
       log_out: Odhlásit
       switch_to_your_website: Přepnout na web

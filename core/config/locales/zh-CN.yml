@@ -24,7 +24,6 @@ zh-CN:
       created: '%{what} 添加成功.'
       updated: '%{what} 编辑成功.'
       destroyed: '%{what} 删除成功.'
-  shared:
     site_bar:
       log_out: 注销
       switch_to_your_website: 切换到你的网站

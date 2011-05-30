@@ -24,7 +24,6 @@ jp:
       created: '%{what} を追加しました。'
       updated: '%{what}を更新しました。'
       destroyed: '%{what} を削除しました。'
-  shared:
     site_bar:
       log_out: ログアウト
       switch_to_your_website: サイトに移行

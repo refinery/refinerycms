@@ -24,7 +24,6 @@ pl:
       created: Skutecznie dodano %{what}.
       updated: Skutecznie uaktualniono %{what}.
       destroyed: Skutecznie usunięto %{what}.
-  shared:
     site_bar:
       log_out: Wyloguj
       switch_to_your_website: Przełącz na Twoją stronę

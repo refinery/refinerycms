@@ -24,7 +24,6 @@ nb:
       created: "%{what} ble opprettet."
       updated: "%{what} ble oppdatert."
       destroyed: "%{what} ble slettet"
-  shared:
     site_bar:
       log_out: Logg ut
       switch_to_your_website: Bytt til din webside

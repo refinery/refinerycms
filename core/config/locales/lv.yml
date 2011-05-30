@@ -24,7 +24,6 @@ lv:
       created: '%{what} tika veiksmīgi izveidots.'
       updated: '%{what} tika veiksmīgi atjaunots.'
       destroyed: '%{what} tika veiksmīgi izdzēsts.'
-  shared:
     site_bar:
       log_out: Iziet
       switch_to_your_website: Pārslēgties uz jūsu saitu

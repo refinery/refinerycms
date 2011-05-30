@@ -24,7 +24,6 @@ de:
       created: '%{what} wurde erfolgreich angelegt.'
       updated: '%{what} wurde erfolgreich aktualisiert.'
       destroyed: '%{what} wurde erfolgreich gelöscht.'
-  shared:
     site_bar:
       log_out: Abmelden
       switch_to_your_website: Zu Ihrer Webseite wechseln

@@ -24,7 +24,6 @@ da:
       created: '%{what} er oprettet.'
       updated: '%{what} er opdateret.'
       destroyed: '%{what} er slettet.'
-  shared:
     site_bar:
       log_out: Log af
       switch_to_your_website: Vis website

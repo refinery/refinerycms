@@ -27,7 +27,6 @@ en:
       created: '%{what} was successfully added.'
       updated: '%{what} was successfully updated.'
       destroyed: '%{what} was successfully removed.'
-  shared:
     site_bar:
       log_out: Log out
       switch_to_your_website: Switch to your website

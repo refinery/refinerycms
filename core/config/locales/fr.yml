@@ -24,7 +24,6 @@ fr:
       created: '%{what} a été correctement créé.'
       updated: '%{what} a été correctement mis à jour.'
       destroyed: '%{what} a été correctement supprimé.'
-  shared:
     site_bar:
       log_out: Me déconnecter
       switch_to_your_website: Voir le site

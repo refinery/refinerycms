@@ -24,7 +24,6 @@ ru:
       created: "%{what} создан(а)."
       updated: "%{what} отредактирован(а)."
       destroyed: "%{what} уничтожен(а)."
-  shared:
     site_bar:
       log_out: Выйти
       switch_to_your_website: Перейти на сайт

@@ -20,7 +20,6 @@ sl:
       created: "%{what} je bil uspešno ustvarjen"
       updated: "%{what} je bil uspešno ustvarjen"
       destroyed: "%{what} je bil uspešno odstranjen"
-  shared:
     site_bar:
       log_out: Odjavite se
       switch_to_your_website: "Preklopite na vašo spletno stran"
