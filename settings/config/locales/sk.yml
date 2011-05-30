@@ -1,10 +1,10 @@
 sk:
   plugins:
-    settings:
+    refinery_settings:
       title: Nastavenia
       description: Správa nastavení
   admin:
-    settings:
+    refinery_settings:
       delete: Zmazať voľbu
       edit: Upraviť voľbu
       actions:

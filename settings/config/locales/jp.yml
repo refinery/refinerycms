@@ -1,10 +1,10 @@
 jp:
   plugins:
-    settings:
+    refinery_settings:
       title: 環境設定
       description: Refinery環境設定
   admin:
-    settings:
+    refinery_settings:
       delete: この設定を削除する
       edit: 設定を変更
       actions:

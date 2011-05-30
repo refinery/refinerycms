@@ -1,10 +1,10 @@
 sv:
   plugins:
-    settings:
+    refinery_settings:
       title: Inställningar
       description: Hantera inställningar i Refinery
   admin:
-    settings:
+    refinery_settings:
       delete: Ta bort den här inställningen för alltid
       edit: Redigera den här inställningen
       actions:

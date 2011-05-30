@@ -1,10 +1,10 @@
 vi:
   plugins:
-    settings:
+    refinery_settings:
       title: Settings
       description: Quản lý các thiết lập của Refinery
   admin:
-    settings:
+    refinery_settings:
       delete: Xóa thiết lập này vĩnh viễn
       edit: Chỉnh sửa thiết lập này
       actions:

@@ -1,10 +1,10 @@
 nb:
   plugins:
-    settings:
+    refinery_settings:
       title: Innstillinger
       description: Styr Refinery sine innstillinger
   admin:
-    settings:
+    refinery_settings:
       delete: Fjern denne innstillingen permanent
       edit: Rediger denne innstillingen
       actions:

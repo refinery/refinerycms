@@ -1,10 +1,10 @@
 lt:
   plugins:
-    settings:
+    refinery_settings:
       title: Nustatymai
       description: Valdyti Refinery nustatymus
   admin:
-    settings:
+    refinery_settings:
       delete: Visiškai pašalinti šį nustatymą
       edit: Redaguoti šį nustatymą
       actions:

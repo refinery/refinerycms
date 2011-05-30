@@ -1,10 +1,10 @@
 rs:
   plugins:
-    settings:
+    refinery_settings:
       title: Podešavanja
       description: Menjaj Refinery podešavanja
   admin:
-    settings:
+    refinery_settings:
       delete: Ukloni ovo podešavanje zauvek
       edit: Izmeni ovo podešavanje
       actions:

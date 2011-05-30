@@ -1,11 +1,11 @@
 en:
   refinery:
     plugins:
-      settings:
+      refinery_settings:
         title: Settings
         description: Manage Refinery settings
     admin:
-      settings:
+      refinery_settings:
         delete: Remove this setting forever
         edit: Edit this setting
         actions:

@@ -1,10 +1,10 @@
 pt-BR:
   plugins:
-    settings:
+    refinery_settings:
       title: Configuração
       description: Gerenciar configurações
   admin:
-    settings:
+    refinery_settings:
       delete: 'Remover esta configuração para sempre'
       edit: 'Editar esta configuração'
       actions:

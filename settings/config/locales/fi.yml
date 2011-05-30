@@ -1,10 +1,10 @@
 fi:
   plugins:
-    settings:
+    refinery_settings:
       title: Asetukset
       description: Hallitse Refineryn asetuksia
   admin:
-    settings:
+    refinery_settings:
       delete: Poista tämä asetus ikuisesti
       edit: Muokkaa tätä asetusta
       actions:

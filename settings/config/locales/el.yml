@@ -1,10 +1,10 @@
 el:
   plugins:
-    settings:
+    refinery_settings:
       title: Settings
       description: Διαχείριση ρυθμίσεων του Refinery 
   admin:
-    settings:
+    refinery_settings:
       delete: Διαγραφή ρυθμίσης
       edit: Επεξεργασία ρύθμισης
       actions:

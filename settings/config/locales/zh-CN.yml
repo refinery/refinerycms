@@ -1,10 +1,10 @@
 zh-CN:
   plugins:
-    settings:
+    refinery_settings:
       title: 设置
       description: Refinery 设置管理
   admin:
-    settings:
+    refinery_settings:
       delete: 永久删除此设置
       edit: 编辑此设置
       actions:

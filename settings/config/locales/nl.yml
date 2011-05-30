@@ -1,10 +1,10 @@
 nl:
   plugins:
-    settings:
+    refinery_settings:
       title: Instellingen
       description: Wijzig de instellingen van Refinery
   admin:
-    settings:
+    refinery_settings:
       delete: Verwijder deze instelling voorgoed
       edit: Bewerk deze instelling
       actions:

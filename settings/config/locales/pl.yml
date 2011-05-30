@@ -1,11 +1,11 @@
 pl:
   plugins:
-    settings:
+    refinery_settings:
       title: Ustawienia
       description: Zarządzaj ustawieniami Refinery
       article: neutral
   admin:
-    settings:
+    refinery_settings:
       delete: Na zawsze usuń to ustawienie
       edit: Zmień to ustawienie
       actions:

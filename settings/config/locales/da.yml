@@ -1,10 +1,10 @@
 da:
   plugins:
-    settings:
+    refinery_settings:
       title: Indstillinger
       description: Vedligehold Refinery indstillinger
   admin:
-    settings:
+    refinery_settings:
       delete: Slet indstilling
       edit: Redigér indstilling
       actions:

@@ -1,11 +1,11 @@
 es:
   plugins:
-    settings:
+    refinery_settings:
       title: Configuración
       description: Gestionar opciones de Refinery
       article: femenino
   admin:
-    settings:
+    refinery_settings:
       delete: Eliminar esta opción para siempre
       edit: Editar esta opción
       actions:

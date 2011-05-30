@@ -1,10 +1,10 @@
 lv:
   plugins:
-    settings:
+    refinery_settings:
       title: Uzstādījumi
       description: Refinery uzstādījumu pārvaldīšana
   admin:
-    settings:
+    refinery_settings:
       delete: Dzēst šo uzstādījumu
       edit: Labot šo uzstādījumu
       actions:

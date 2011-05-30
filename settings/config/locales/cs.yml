@@ -1,10 +1,10 @@
 cs:
   plugins:
-    settings:
+    refinery_settings:
       title: Nastavení
       description: Spravovat nastavení webu
   admin:
-    settings:
+    refinery_settings:
       delete: Smazat tuto volbu
       edit: Upravit tuto volbu
       actions:

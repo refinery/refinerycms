@@ -1,10 +1,10 @@
 fr:
   plugins:
-    settings:
+    refinery_settings:
       title: Paramètres
       description: Gestion des paramètres de Refinery
   admin:
-    settings:
+    refinery_settings:
       delete: Supprimer définitivement ce paramètre
       edit: Modifier ce paramètre
       actions:

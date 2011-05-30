@@ -1,10 +1,10 @@
 lolcat:
   plugins:
-    settings:
+    refinery_settings:
       title: SETTINGS
       description: MANAGE REFINERY SETTINGS
   admin:
-    settings:
+    refinery_settings:
       delete: REMOOV DIS SETTIN FOREVR
       edit: EDIT DIS SETTIN
       actions:

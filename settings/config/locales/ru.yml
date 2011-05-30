@@ -1,10 +1,10 @@
 ru:
   plugins:
-    settings:
+    refinery_settings:
       title: Параметры
       description: Управление параметрами Refinery
   admin:
-    settings:
+    refinery_settings:
       delete: Удалить этот параметр навсегда
       edit: Редактировать параметр
       actions:
