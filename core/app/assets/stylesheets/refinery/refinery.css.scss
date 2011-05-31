@@ -213,23 +213,8 @@ a#site_bar_refinery_cms_logo {
 #content, #page_container {
   background-color: white;
 }
-body.login #site_bar_content {
-  width: 650px;
-}
-body.login #page_container {
-  width: 620px;
-}
-body.login header {
-  background: #eaeaea;
-  width: 620px;
-  padding: 0px 15px 1em;
-  height: auto;
-}
 header, footer, nav {
   display: block;
-}
-body.login #site_bar_content a#site_bar_refinery_cms_logo {
-  left: 247px;
 }
 #page_container .login #page h1 {
   margin: 0;
@@ -237,41 +222,85 @@ body.login #site_bar_content a#site_bar_refinery_cms_logo {
   font-size: 20px;
   line-height:22px
 }
-body.login #page_container div.remember_me label, label.inline {
-  display: inline;
-}
-body.login #page_container div.actions {
-  margin-top: 12px;
-}
-body.login label {
-  margin-top: 0px;
-}
-body.login .field {
-  margin-bottom: 20px;
-}
-body.login .field.remember_me, body.login .field.forgot_password {
-  margin-bottom: 0px;
-  margin-top: 0px;
-}
-body.login .field.forgot_password {
-  text-align: right;
-}
-body.login .field.remember_me label {
-  margin-top: 20px;
-}
-body.login #page_container div.remember_me {
-  width: 300px;
-  float: left;
-}
-body.login #page_container div.forgot_password {
-  float: right;
-  width: 250px;
-}
-body.login label, body.login a {
-  font-size: 14px;
-}
-body.login #flash_container, body.login .errorExplanation {
-  margin-bottom: 12px;
+body.login {
+  #site_bar_content {
+    width: 650px;
+
+    a#site_bar_refinery_cms_logo {
+      left: 247px;
+    }
+  }
+  #page_container {
+    width: 620px;
+
+    div.remember_me label, label.inline {
+      display: inline;
+    }
+    div.actions {
+      margin-top: 12px;
+    }
+    div.remember_me {
+      width: 300px;
+      float: left;
+    }
+    div.forgot_password {
+      float: right;
+      width: 250px;
+    }
+  }
+  header {
+    background: #eaeaea;
+    width: 620px;
+    padding: 0px 15px 1em;
+    height: auto;
+
+    h1 {
+      color: #41403c;
+      vertical-align: middle;
+      text-align: center;
+      font-weight: bold;
+      font-size: 18px;
+      padding-bottom: 0px;
+      line-height: 30px;
+      padding-top: 15px;
+    }
+  }
+  label {
+    margin-top: 0px;
+  }
+  label, a {
+    font-size: 14px;
+  }
+  .field {
+    margin-bottom: 20px;
+
+    &.remember_me, &.forgot_password {
+      margin-bottom: 0px;
+      margin-top: 0px;
+    }
+
+    &.forgot_password {
+      text-align: right;
+    }
+    &.remember_me label {
+      margin-top: 20px;
+    }
+  }
+  #flash_container, .errorExplanation {
+    margin-bottom: 12px;
+  }
+  /* Works in Firefox, Safari, Chrome, IE8+ */
+  input.larger {
+    background: url('/assets/refinery/text_field_background.png') repeat-x white;
+    height: 31px;
+  }
+  input.larger:focus {
+    background-position: 0px -41px;
+  }
+  .fieldWithErrors input.larger {
+    background-position: 0px -82px;
+    border: 1px solid red;
+  }
 }
 div.field.checkbox_access ul.checkboxes li {
   margin-top: 3px;
@@ -282,32 +311,10 @@ div.field.checkbox_access {
 div.field.checkbox_access .label_with_help a {
   font-weight: normal;
 }
-/* Works in Firefox, Safari, Chrome, IE8+ */
-body.login input.larger {
-  background: url('/assets/refinery/text_field_background.png') repeat-x white;
-  height: 31px;
-}
-body.login input.larger:focus {
-  background-position: 0px -41px;
-}
-body.login .fieldWithErrors input.larger {
-  background-position: 0px -82px;
-  border: 1px solid red;
-}
 header {
   height: 60px;
   position: relative;
   margin-bottom: 0px;
-}
-body.login header h1 {
-  color: #41403c;
-  vertical-align: middle;
-  text-align: center;
-  font-weight: bold;
-  font-size: 18px;
-  padding-bottom: 0px;
-  line-height: 30px;
-  padding-top: 15px;
 }
 #menu, header .jcarousel-container {
   display: block;
