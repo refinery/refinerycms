@@ -17,7 +17,7 @@ body {
   font-size: 10px;
   font-family: Verdana;
   line-height: 1.5em;
-  background: #303030 url('/images/refinery/page_bg.png') repeat;
+  background: #303030 url('/assets/refinery/page_bg.png') repeat;
 }
 acronym {
   cursor: help;
@@ -99,7 +99,7 @@ hr {
   text-decoration: none;
 }
 .errorExplanation {
-  background: 7px 10px no-repeat url('/images/refinery/icons/cancel.png') #FFB1B1;
+  background: 7px 10px no-repeat url('/assets/refinery/icons/cancel.png') #FFB1B1;
   padding: 0px 5px 5px 30px;
   font-weight: bold;
   margin-top: 5px;
@@ -129,7 +129,7 @@ hr {
 .flash_notice, .flash_message {
   border: 1px solid #00A017;
   color: #00A017;
-  background: 7px 7px no-repeat url('/images/refinery/icons/accept.png') #E0F5E0;
+  background: 7px 7px no-repeat url('/assets/refinery/icons/accept.png') #E0F5E0;
 }
 .flash_notice, .flash_notice * {
   color: #00A017;
@@ -137,7 +137,7 @@ hr {
 .flash_error, .flash_alert {
   border: 1px solid #A00027;
   color: #A00027;
-  background: 7px 7px no-repeat url('/images/refinery/icons/cancel.png') #FFB1B1;
+  background: 7px 7px no-repeat url('/assets/refinery/icons/cancel.png') #FFB1B1;
 }
 .flash.flash_notice #flash_close, .flash.flash_error #flash_close, .flash.flash_alert #flash_close {
   text-transform: lowercase;
@@ -284,7 +284,7 @@ div.field.checkbox_access .label_with_help a {
 }
 /* Works in Firefox, Safari, Chrome, IE8+ */
 body.login input.larger {
-  background: url('/images/refinery/text_field_background.png') repeat-x white;
+  background: url('/assets/refinery/text_field_background.png') repeat-x white;
   height: 31px;
 }
 body.login input.larger:focus {
@@ -348,7 +348,7 @@ header .jcarousel-container .jcarousel-prev-disabled,
   display: block;
   padding: 9px 13px;
   font-size: 13px;
-  background: url('/images/refinery/nav_inactive_background.png') transparent repeat;
+  background: url('/assets/refinery/nav_inactive_background.png') transparent repeat;
   margin-top:4px;
   color: white;
   font-weight: normal;
@@ -482,7 +482,7 @@ header p {
   background-color: white;
 }
 #pagination ul a:hover, #pagination .on {
-  background: url('/images/refinery/hover-gradient.jpg') repeat-x bottom #D4D4C6;
+  background: url('/assets/refinery/hover-gradient.jpg') repeat-x bottom #D4D4C6;
 }
 #records ul.empty {
   display: none;
@@ -493,19 +493,19 @@ header p {
 #records.tree ul li, .tree ul li {
   margin: 0px;
   padding: 4px 0 0 40px;
-  background: url('/images/refinery/branch.gif') no-repeat 15px 0px;
+  background: url('/assets/refinery/branch.gif') no-repeat 15px 0px;
 }
 #records.tree li.record ul {
   margin-left: 0;
 }
 #records.tree .on-hover, #pagination ul.tree a:hover, #pagination .tree .on {
-  background: url('/images/refinery/branch.gif') no-repeat 15px 0px;
+  background: url('/assets/refinery/branch.gif') no-repeat 15px 0px;
 }
 #records.tree ul li.branch_start, .tree ul li.branch_start {
-  background-image: url('/images/refinery/branch-start.gif');
+  background-image: url('/assets/refinery/branch-start.gif');
 }
 #records.tree ul li.branch_end, .tree ul li.branch_end {
-  background-image: url('/images/refinery/branch-end.gif');
+  background-image: url('/assets/refinery/branch-end.gif');
 }
 #records.tree li {
   line-height: 25px;
@@ -631,32 +631,32 @@ label.stripped {
   min-height:16px;
   background-repeat:no-repeat;
   background-position:left;
-  background-image: url('/images/refinery/icons/folder_page_white.png');
+  background-image: url('/assets/refinery/icons/folder_page_white.png');
 }
 #dialog_main #resource_file_area .pages_list ul li a.page_link{
   background-position:5px center;
   display:block;
 }
 #records.files .record .title.pdf, #dialog_main #resource_file_area .pages_list ul li a.page_link.pdf {
-	background-image: url('/images/refinery/icons/pdf.png');
+	background-image: url('/assets/refinery/icons/pdf.png');
 }
 #records.files .record .title.jpg, #records.files .record .title.gif, #records.files .record .title.jpeg, #records.files .record .title.png, #records.files .record .title.tiff, #dialog_main #resource_file_area .pages_list ul li a.page_link.jpg, #dialog_main #resource_file_area .pages_list ul li a.page_link.jpeg, #dialog_main #resource_file_area .pages_list ul li a.page_link.gif, #dialog_main #resource_file_area .pages_list ul li a.page_link.png, #dialog_main #resource_file_area .pages_list ul li a.page_link.tiff {
-	background-image: url('/images/refinery/icons/img.png');
+	background-image: url('/assets/refinery/icons/img.png');
 }
 #records.files .record .title.doc, #records.files .record .title.pages, #records.files .record .title.docx, #dialog_main #resource_file_area .pages_list ul li a.page_link.doc, #dialog_main #resource_file_area .pages_list ul li a.page_link.docx, #dialog_main #resource_file_area .pages_list ul li a.page_link.pages {
-	background-image: url('/images/refinery/icons/doc.png');
+	background-image: url('/assets/refinery/icons/doc.png');
 }
 #records.files .record .title.ppt, #records.files .record .title.keynote, #dialog_main #resource_file_area .pages_list ul li a.page_link.ppt, #dialog_main #resource_file_area .pages_list ul li a.page_link.keynote {
-	background-image: url('/images/refinery/icons/ppt.png');
+	background-image: url('/assets/refinery/icons/ppt.png');
 }
 #records.files .record .title.xls, #records.files .record .title.numbers, #dialog_main #resource_file_area .pages_list ul li a.page_link.xls, #dialog_main #resource_file_area .pages_list ul li a.page_link.numbers {
-	background-image: url('/images/refinery/icons/xls.png');
+	background-image: url('/assets/refinery/icons/xls.png');
 }
 #records.files .record .title.zip, #records.files .record .title.rar, #dialog_main #resource_file_area .pages_list ul li a.page_link.zip, #dialog_main #resource_file_area .pages_list ul li a.page_link.rar {
-	background-image: url('/images/refinery/icons/zip.png');
+	background-image: url('/assets/refinery/icons/zip.png');
 }
 #records.files .record .title.mp3, #records.files .record .title.wav, #records.files .record .title.aiff, #records.files .record .title.m4a, #dialog_main #resource_file_area .pages_list ul li a.page_link.mp3, #dialog_main #resource_file_area .pages_list ul li a.page_link.wav, #dialog_main #resource_file_area .pages_list ul li a.page_link.aiff, #dialog_main #resource_file_area .pages_list ul li a.page_link.m4a {
-  background-image: url('/images/refinery/icons/music.png');
+  background-image: url('/assets/refinery/icons/music.png');
 }
 #records .actions {
   position: absolute;
@@ -927,7 +927,7 @@ body.dialog form {
 #dialog_main .pages_list .linked a, #dialog_main .pages_list .linked a:hover {
   border: 1px solid #00A017;
   color: #00A017;
-  background: 7px 7px no-repeat url('/images/refinery/icons/accept.png') #E0F5E0;
+  background: 7px 7px no-repeat url('/assets/refinery/icons/accept.png') #E0F5E0;
 }
 #dialog_main .pages_list .linked a em {
   color: #00A017;
@@ -1002,47 +1002,47 @@ a img {
 }
 /* icons */
 .add_icon {
-  background-image: url('/images/refinery/icons/add.png');
+  background-image: url('/assets/refinery/icons/add.png');
 }
 .delete_icon {
-  background-image: url('/images/refinery/icons/delete.png');
+  background-image: url('/assets/refinery/icons/delete.png');
 }
 .edit_icon {
-  background-image: url('/images/refinery/icons/application_edit.png');
+  background-image: url('/assets/refinery/icons/application_edit.png');
 }
 .reorder_icon {
-   background-image: url('/images/refinery/icons/arrow_switch.png');
+   background-image: url('/assets/refinery/icons/arrow_switch.png');
 }
 .reorder_icon.loading{
-  background-image:url('/images/refinery/icons/ajax-loader.gif');
+  background-image:url('/assets/refinery/icons/ajax-loader.gif');
 }
 .user_comment_icon {
-  background-image: url('/images/refinery/icons/user_comment.png');
+  background-image: url('/assets/refinery/icons/user_comment.png');
 }
 .edit_email_icon {
-  background-image: url('/images/refinery/icons/email_edit.png');
+  background-image: url('/assets/refinery/icons/email_edit.png');
 }
 .spam_icon {
-  background-image: url('/images/refinery/icons/bin.png');
+  background-image: url('/assets/refinery/icons/bin.png');
 }
 .spam_empty_icon {
-	background-image: url('/images/refinery/icons/bin_closed.png');
+	background-image: url('/assets/refinery/icons/bin_closed.png');
 }
 .email_icon {
-  background-image: url('/images/refinery/icons/email.png');
+  background-image: url('/assets/refinery/icons/email.png');
 }
 .back_icon {
-  background-image: url('/images/refinery/icons/arrow_left.png');
+  background-image: url('/assets/refinery/icons/arrow_left.png');
 }
 .go_icon {
-  background-image: url('/images/refinery/icons/application_go.png');
+  background-image: url('/assets/refinery/icons/application_go.png');
 }
 .success_icon {
-  background-image: url('/images/refinery/icons/tick.png');
+  background-image: url('/assets/refinery/icons/tick.png');
   padding: 0px 8px;
 }
 .failure_icon {
-  background-image: url('/images/refinery/icons/cross.png');
+  background-image: url('/assets/refinery/icons/cross.png');
   padding: 0px 8px;
 }
 /* page parts */
@@ -1076,7 +1076,7 @@ ul#page_parts_controls img {
 /*  min-height: 446px;*/
 }
 a#toggle_advanced_options {
-	background: url('/images/refinery/icons/page_white_gear.png') no-repeat 0px 3px;
+	background: url('/assets/refinery/icons/page_white_gear.png') no-repeat 0px 3px;
 	padding: 5px 5px 5px 22px;
 	border-bottom: none;
 }

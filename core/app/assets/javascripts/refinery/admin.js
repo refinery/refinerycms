@@ -134,8 +134,8 @@ init_interface = function() {
     $menu.jcarousel({
       vertical: false
       , scroll: 1
-      , buttonNextHTML: "<img src='/images/refinery/carousel-right.png' alt='down' height='15' width='10' />"
-      , buttonPrevHTML: "<img src='/images/refinery/carousel-left.png' alt='up' height='15' width='10' />"
+      , buttonNextHTML: "<img src='/assets/refinery/carousel-right.png' alt='down' height='15' width='10' />"
+      , buttonPrevHTML: "<img src='/assets/refinery/carousel-left.png' alt='up' height='15' width='10' />"
       , listTag: $menu.get(0).tagName.toLowerCase()
       , itemTag: $menu.children(':first').get(0).tagName.toLowerCase()
     });
@@ -165,7 +165,7 @@ init_interface = function() {
   });
 
   $('.form-actions .form-actions-left input:submit#submit_button').click(function(e) {
-    $("<img src='/images/refinery/ajax-loader.gif' width='16' height='16' class='save-loader' />").appendTo($(this).parent());
+    $("<img src='/assets/refinery/ajax-loader.gif' width='16' height='16' class='save-loader' />").appendTo($(this).parent());
   });
 
   $('a.suppress').live('click', function(e){
@@ -330,7 +330,7 @@ init_tooltips = function(args){
           }
 
           tooltip_nib_image = $.browser.msie ? 'tooltip-nib.gif' : 'tooltip-nib.png';
-          nib = $("<img src='/images/refinery/"+tooltip_nib_image+"' class='tooltip-nib'/>").appendTo('#tooltip_container');
+          nib = $("<img src='/assets/refinery/"+tooltip_nib_image+"' class='tooltip-nib'/>").appendTo('#tooltip_container');
 
           tooltip.css({
             'opacity': 0
@@ -434,7 +434,7 @@ var link_tester = {
 
   validate_textbox: function(validation_method, textbox_id, callback) {
     var icon = '';
-    var loader_img  = $("<img id='" + textbox_id.replace('#','') + "_test_loader' src='/images/refinery/ajax-loader.gif' alt='Testing...' style='display: none;'/>");
+    var loader_img  = $("<img id='" + textbox_id.replace('#','') + "_test_loader' src='/assets/refinery/ajax-loader.gif' alt='Testing...' style='display: none;'/>");
     var result_span = $("<span id='" + textbox_id.replace('#','') + "_test_result'></span>");
 
     loader_img.insertAfter($(textbox_id));
