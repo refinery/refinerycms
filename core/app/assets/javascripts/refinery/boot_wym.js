@@ -35,10 +35,10 @@ var form_actions =
 var wymeditor_boot_options = $.extend({
   skin: 'refinery'
   , basePath: "/"
-  , wymPath: "/javascripts/wymeditor/jquery.refinery.wymeditor.js"
-  , cssSkinPath: "/stylesheets/wymeditor/skins/"
-  , jsSkinPath: "/javascripts/wymeditor/skins/"
-  , langPath: "/javascripts/wymeditor/lang/"
+  , wymPath: "/assets/wymeditor/jquery.refinery.wymeditor.js"
+  , cssSkinPath: "/assets/wymeditor/skins/"
+  , jsSkinPath: "/assets/wymeditor/skins/"
+  , langPath: "/assets/wymeditor/lang/"
   , iframeBasePath: '/'
   , classesItems: [
     {name: 'text-align', rules:[{name: 'left', title: '{Left}'}, {name: 'center', title: '{Center}'}, {name: 'right', title: '{Right}'}, {name: 'justify', title: '{Justify}'}], join: '-', title: '{Text_Align}'}
@@ -252,7 +252,7 @@ WYMeditor.editor.prototype.loadIframe = function(iframe) {
 
     var doc_head = doc.head || $(doc).find('head').get(0);
     $.each(["wymeditor/skins/refinery/wymiframe", "formatting", "refinery/theme", "theme"], function(i, href) {
-      $("<link href='/stylesheets/" + href + ".css?"+Math.random().toString().split('.')[1]+"' media='all' rel='stylesheet' />").appendTo(doc_head);
+      $("<link href='/assets/" + href + ".css?"+Math.random().toString().split('.')[1]+"' media='all' rel='stylesheet' />").appendTo(doc_head);
     });
   }
   if ((id_of_editor = wym._element.parent().attr('id')) != null) {
