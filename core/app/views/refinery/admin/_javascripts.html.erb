@@ -1,37 +1,9 @@
 <%
-  # TODO: remove js caching because sprockets will do it for us
-  # js_caching = Rails.root.writable? and ::Refinery::Setting.find_or_set(:use_resource_caching, true)
   login = login? unless defined?(login)
 -%>
 <%= yield :before_javascript_libraries -%>
-<%= javascript_include_tag 'refinery/i18n' -%>
+<%= javascript_include_tag 'refinery/refinery' -%>
 <script>I18n.locale = '<%= I18n.locale %>';</script>
-
-<%# TODO: this should be generated in assets folder in order to include it %>
-<%#= javascript_include_tag 'translations' if Rails.root.join('public', 'javascripts', 'translations.js').exist? -%>
-
-<%# FIXME: I've included jquery libs here for now. After rails 3.1.0.rc2 we should be able to use jquery_include_tags again %>
-<%#= jquery_include_tags    :caching => js_caching -%>
-<%= javascript_include_tag "jquery#{"-min" if Rails.env.production?}" %>
-<%= javascript_include_tag "jquery-ui-custom-min" %>
-<%= javascript_include_tag 'rails.js' %>
-<%= javascript_include_tag 'jquery/jquery.corner.js' %>
-<%= javascript_include_tag 'jquery/jquery.textTruncate.js' %>
-<%= javascript_include_tag 'jquery/jquery.html5-placeholder-shim.js' %>
-<%= javascript_include_tag 'jquery/jquery.timers.js' %>
-<%= javascript_include_tag 'jquery/jquery.jcarousel.js' %>
-<%# TODO: remove caching because sprockets will do it for us %>
-<%# :cache => ("cache/jquery-plugins" if js_caching) unless login -%>
-<%= javascript_include_tag 'wymeditor/jquery.refinery.wymeditor.js' %>
-<%= javascript_include_tag 'admin' %>
 <%= yield :after_javascript_libraries -%>
-<%= javascript_include_tag 'refinery/boot_wym' %>
-<%= javascript_include_tag 'refinery/core' %>
-<%= javascript_include_tag 'refinery/site_bar' %>
-<%= javascript_include_tag 'refinery/admin' %>
-<%= javascript_include_tag 'refinery/submenu' %>
-<%# TODO: remove caching because sprockets will do it for us %>
-<%# :cache => ("cache/admin" if js_caching) unless login -%>
 <%= javascript_include_tag 'refinery/core' if login -%>
-
 <%= yield :javascripts -%>

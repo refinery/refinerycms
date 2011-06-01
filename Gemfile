@@ -22,6 +22,8 @@ gem 'sass'
 gem 'coffee-script'
 gem 'uglifier'
 
+gem 'jquery-rails'
+
 # Use unicorn as the web server
 # gem 'unicorn'
 # gem 'mongrel'

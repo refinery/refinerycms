@@ -170,6 +170,9 @@ GEM
       activerecord (>= 3.0.0)
     hike (1.0.0)
     i18n (0.6.0)
+    jquery-rails (1.0.9)
+      railties (~> 3.0)
+      thor (~> 0.14)
     json (1.5.1)
     json_pure (1.5.1)
     kaminari (0.12.4)
@@ -283,6 +286,7 @@ DEPENDENCIES
   arel
   coffee-script
   friendly_id_globalize3
+  jquery-rails
   mysql2
   rack
   rails
