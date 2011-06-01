@@ -51,38 +51,53 @@ input.widest, textarea.widest {
 select.widest {
   max-width: 99%;
 }
+#records {
+  float: left;
+  width: 67.7%;
+}
 #actions {
   float: right;
   width: 30.7%;
   padding-left: 15px;
   padding-top: 0px;
-}
-#records {
-  float: left;
-  width: 67.7%;
-}
-#actions ul {
-  margin: 0px 0px 18px 0px;
-  padding: 0;
-  list-style: none;
-}
-#actions li a {
-  background-color: #dbedff;
-  background-position: 12px;
-  background-repeat: no-repeat;
-  border: 1px solid #65C3F7;
-  display: block;
-  padding: 9px 12px 9px 36px;
-}
-#actions li a:hover {
-  background-color: #cae7fb;
-}
-#actions li a:active, #actions li.selected a {
-  background-color: #22A7F2;
-	color: white;
-}
-#actions li {
-  margin-top: 10px;
+
+  ul {
+    margin: 0px 0px 18px 0px;
+    padding: 0;
+    list-style: none;
+
+    &#current_locale {
+      margin-top: 30px;
+    }
+  }
+  li {
+    margin-top: 10px;
+
+    a {
+      background-color: #dbedff;
+      background-position: 12px;
+      background-repeat: no-repeat;
+      border: 1px solid #65C3F7;
+      display: block;
+      padding: 9px 12px 9px 36px;
+
+      &:hover {
+        background-color: #cae7fb;
+      }
+      &:active {
+        background-color: #22A7F2;
+        color: white;
+      }
+      img {
+        vertical-align: bottom;
+        border: 0;
+      }
+    }
+    &.selected a {
+      background-color: #22A7F2;
+      color: white;
+    }
+  }
 }
 #sort-status {
   padding: 5px 5px 5px 0px;
@@ -105,14 +120,15 @@ hr {
   margin-top: 5px;
   margin-bottom: 5px;
   border: 1px solid red;
-}
-.errorExplanation h2 {
-  color: red;
-  text-transform: none;
-  display: none;
-}
-.errorExplanation p {
-  font-weight: normal;
+
+  h2 {
+    color: red;
+    text-transform: none;
+    display: none;
+  }
+  p {
+    font-weight: normal;
+  }
 }
 .fieldWithErrors input, .fieldWithErrors textarea {
   border: 1px solid red !important;
@@ -186,9 +202,6 @@ a {
 a:hover {
   color: #000;
   border-bottom: 1px solid #727272;
-}
-header a, header a:hover {
-  border-bottom: 0px none;
 }
 #content .wym_box a, #content .ui-tabs a {
   border-bottom: 0px none;
@@ -302,19 +315,15 @@ body.login {
     border: 1px solid red;
   }
 }
-div.field.checkbox_access ul.checkboxes li {
-  margin-top: 3px;
-}
 div.field.checkbox_access {
   margin-top: 20px;
-}
-div.field.checkbox_access .label_with_help a {
-  font-weight: normal;
-}
-header {
-  height: 60px;
-  position: relative;
-  margin-bottom: 0px;
+
+  ul.checkboxes li {
+    margin-top: 3px;
+  }
+  .label_with_help a {
+    font-weight: normal;
+  }
 }
 #menu, header .jcarousel-container {
   display: block;
@@ -326,50 +335,80 @@ header {
   right: 0px;
   background: transparent;
 }
-header .jcarousel-container {
-  position: absolute !important;
-}
-header .jcarousel-container .jcarousel-prev,
-  header .jcarousel-container .jcarousel-next {
-  position: absolute;
-  top: 13px;
-  cursor: pointer;
-}
-header .jcarousel-container .jcarousel-prev {
-  left: -20px;
-}
-header .jcarousel-container .jcarousel-next {
-  right: -20px;
-}
-header .jcarousel-container .jcarousel-prev-disabled,
-  header .jcarousel-container .jcarousel-next-disabled {
-  display: none !important;
-}
-#menu.ui-sortable a {
-  cursor: move;
-}
-#menu.ui-sortable-disabled a {
-  cursor: pointer;
-}
-#menu a {
-  display: block;
-  padding: 9px 13px;
-  font-size: 13px;
-  background: url('/assets/refinery/nav_inactive_background.png') transparent repeat;
-  margin-top:4px;
-  color: white;
-  font-weight: normal;
-  float: left;
-  margin-right: 2px;
+header {
+  height: 60px;
   position: relative;
+  margin-bottom: 0px;
+
+  a, a:hover {
+    border-bottom: 0px none;
+  }
+  .jcarousel-container {
+    position: absolute !important;
+
+    .jcarousel-prev, .jcarousel-next {
+      position: absolute;
+      top: 13px;
+      cursor: pointer;
+    }
+    .jcarousel-prev {
+      left: -20px;
+    }
+    .jcarousel-next {
+      right: -20px;
+    }
+    .jcarousel-prev-disabled, .jcarousel-next-disabled {
+      display: none !important;
+    }
+  }
+  #logo {
+    position: absolute;
+    right: 20px;
+    top: 25px;
+  }
+  h1, h1 a {
+    color: white;
+    font-size: 20px;
+    font-weight: normal;
+    margin-bottom: 0;
+    padding-bottom: 4px;
+    margin-top: 0;
+  }
+  p {
+    color: white;
+    font-size: 90%;
+    padding: 0;
+    margin: 0;
+  }
 }
-#menu a.active, #menu a:hover, #menu a:focus {
-  background-color: white;
-  color: #ff5500;
-}
-#menu a.active {
-  padding: 11px 13px;
-  margin-top: 0px;
+#menu {
+  &.ui-sortable a {
+    cursor: move;
+  }
+  &.ui-sortable-disabled a {
+    cursor: pointer;
+  }
+  a {
+    display: block;
+    padding: 9px 13px;
+    font-size: 13px;
+    background: url('/assets/refinery/nav_inactive_background.png') transparent repeat;
+    margin-top:4px;
+    color: white;
+    font-weight: normal;
+    float: left;
+    margin-right: 2px;
+    position: relative;
+
+    &.active, &:hover, &:focus {
+      background-color: white;
+      color: #ff5500;
+    }
+    &.active {
+      padding: 11px 13px;
+      margin-top: 0px;
+    }
+  }
 }
 #menu a#menu_reorder, header #menu a#menu_reorder_done {
   height: 14px;
@@ -398,25 +437,6 @@ pre {
 }
 #site_link:hover {
   text-decoration: underline;
-}
-header #logo {
-  position: absolute;
-  right: 20px;
-  top: 25px;
-}
-header h1, header h1 a {
-  color: white;
-  font-size: 20px;
-  font-weight: normal;
-  margin-bottom: 0;
-  padding-bottom: 4px;
-  margin-top: 0;
-}
-header p {
-  color: white;
-  font-size: 90%;
-  padding: 0;
-  margin: 0;
 }
 .filter {
   float: right;
@@ -740,10 +760,6 @@ label.stripped {
 }
 .larger {
   font-size: 200%;
-}
-#actions a img {
-  vertical-align: bottom;
-  border: 0;
 }
 .brown_border {
   border: 1px solid #99998B;
@@ -1412,10 +1428,6 @@ input.button.close_dialog:active, a.button.close_dialog:active, #content a.butto
 }
 #upgrade_wrapper li a {
   line-height: 20px;
-}
-
-#actions ul#current_locale {
-  margin-top: 30px;
 }
 #current_locale li a {
   position: relative;
