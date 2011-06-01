@@ -255,7 +255,7 @@ GEM
       rubyzip
     seo_meta (1.1.1)
       refinerycms-generators (~> 1.0.1)
-    sprockets (2.0.0.beta.8)
+    sprockets (2.0.0.beta.9)
       hike (~> 1.0)
       rack (~> 1.0)
       tilt (!= 1.3.0, ~> 1.1)
