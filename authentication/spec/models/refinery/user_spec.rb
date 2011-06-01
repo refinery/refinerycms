@@ -154,5 +154,27 @@ module Refinery
       end
     end
 
+    describe "#create_first" do
+      before { user.create_first }
+
+      it "have a refinery role" do
+        user.roles.collect(&:title).should include("Refinery")
+      end
+
+      it "have a superuser role" do
+        user.roles.collect(&:title).should include("Superuser")
+      end
+
+      it "returns true on success" do
+        user.stub(:valid?).and_return(true)
+        user.create_first.should == true
+      end
+
+      it "returns false on failure" do
+        user.stub(:valid?).and_return(false)
+        user.create_first.should == false
+      end
+    end
+    
   end
 end

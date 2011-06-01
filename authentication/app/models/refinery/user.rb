@@ -60,5 +60,32 @@ module Refinery
       roles.any?{|r| r.title == title.to_s.camelize}
     end
 
+    def create_first
+      if valid?
+        # first we need to save user
+        save
+
+        # add refinery role
+        add_role(:refinery)
+
+        if Role[:refinery].users.count == 1
+          # this is the superuser if this user is the only user.
+          add_role(:superuser)
+
+          # set this user as the recipient of inquiry notifications, if we're using that engine.
+          if defined?(InquirySetting) and
+            (notification_recipients = InquirySetting.find_or_create_by_name("Notification Recipients")).present?
+            notification_recipients.update_attributes({
+              :value => email,
+              :destroyable => false
+            })
+          end
+        end
+      end
+
+      # return true/false based on validations
+      valid?
+    end
+
   end
 end
