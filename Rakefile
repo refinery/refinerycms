@@ -6,6 +6,8 @@ unless File.exist?(db_yml = File.expand_path('../config/database.yml', __FILE__)
   puts "Migrating..."
   puts `rake -f #{__FILE__} db:migrate`
 end
+
+# Continue on with Rails.
 require File.expand_path('../config/application', __FILE__)
 require 'rake'
 
