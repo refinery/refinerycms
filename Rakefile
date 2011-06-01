@@ -4,7 +4,7 @@ unless File.exist?(db_yml = File.expand_path('../config/database.yml', __FILE__)
   FileUtils.cp "#{db_yml}.sqlite3", db_yml
   puts "Copied #{db_yml}.sqlite3 to #{db_yml}"
   puts "Migrating..."
-  puts `rake -f #{__FILE__} db:migrate`
+  puts `bundle exec rake -f #{__FILE__} db:migrate`
 end
 
 # Continue on with Rails.
