@@ -45,7 +45,7 @@ cs:
         delete_content_section: Smazat sekci
       form_advanced_options:
         toggle_advanced_options: Zpřístupní nastavení menu a meta tagů
-        page_options: Nastavení sránky
+        page_options: Nastavení stránky
         parent_page: Nadřazená stránka
         advanced_options: Rozšířené nastavení
         custom_title: Titulek
