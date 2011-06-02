@@ -12,7 +12,7 @@ module ::Refinery
 
       rescue_from FriendlyId::ReservedError, :with => :show_errors_for_reserved_slug
 
-      after_filter lambda{::Page.expire_page_caching}, :only => [:update_positions]
+      after_filter lambda{::Refinery::Page.expire_page_caching}, :only => [:update_positions]
 
       before_filter :restrict_access, :only => [:create, :update, :update_positions, :destroy], :if => proc {|c|
         defined?(::Refinery::I18n) && ::Refinery::I18n.enabled?
