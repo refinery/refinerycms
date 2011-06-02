@@ -4,7 +4,7 @@ Gem::Specification.new do |s|
   s.name              = %q{refinerycms}
   s.version           = %q{1.1.0}
   s.description       = %q{A Ruby on Rails CMS that supports Rails 3. It's easy to extend and sticks to 'the Rails way' where possible.}
-  s.date              = %q{2011-05-30}
+  s.date              = %q{2011-06-02}
   s.summary           = %q{A Ruby on Rails CMS that supports Rails 3}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
@@ -33,10 +33,6 @@ Gem::Specification.new do |s|
     '.yardopts',
     'Gemfile',
     'Gemfile',
-    'Gemfile.BACKUP.30891',
-    'Gemfile.BASE.30891',
-    'Gemfile.LOCAL.30891',
-    'Gemfile.REMOTE.30891',
     'Gemfile.lock',
     'Rakefile',
     'app',
