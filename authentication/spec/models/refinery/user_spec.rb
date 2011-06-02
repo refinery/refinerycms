@@ -175,6 +175,6 @@ module Refinery
         user.create_first.should == false
       end
     end
-    
+
   end
 end

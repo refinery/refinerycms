@@ -18,7 +18,7 @@ Factory.define :refinery_user, :parent => :user do |u|
 end
 
 Factory.define :refinery_translator, :parent => :user do |u|
-  u.roles { [ Role[:refinery], Role[:translator] ] }
+  u.roles { [ Refinery::Role[:refinery], Refinery::Role[:translator] ] }
 
   u.after_create do |user|
     user.plugins.create(:name => 'refinery_pages', :position => 0)

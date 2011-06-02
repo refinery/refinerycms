@@ -1,7 +1,5 @@
 ::Refinery::Application.routes.draw do
-  scope(:as => 'refinery_page', :module => 'refinery') do
-    match '*path' => 'pages#show'
-  end
+  match '*path' => 'refinery/pages#show'
 end
 
 # Add any parts of routes as reserved words.
