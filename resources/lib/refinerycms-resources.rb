@@ -30,7 +30,7 @@ module Refinery
           plugin.name = "refinery_files"
           plugin.url = app.routes.url_helpers.refinery_admin_resources_path
           plugin.menu_match = /(refinery|admin)\/(refinery_)?(files|resources)$/
-          plugin.version = %q{1.0.0}
+          plugin.version = %q{1.1.0}
           plugin.activity = {
             :class => ::Refinery::Resource
           }

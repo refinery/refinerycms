@@ -39,7 +39,7 @@ module Refinery
         ::Refinery::Plugin.register do |plugin|
           plugin.name = 'refinery_pages'
           plugin.directory = 'pages'
-          plugin.version = %q{1.0.0}
+          plugin.version = %q{1.1.0}
           plugin.menu_match = /(refinery|admin)\/page(_part)?s(_dialogs)?$/
           plugin.url = app.routes.url_helpers.refinery_admin_pages_path
           plugin.activity = {

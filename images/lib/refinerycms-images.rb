@@ -29,7 +29,7 @@ module Refinery
         ::Refinery::Plugin.register do |plugin|
           plugin.name = 'refinery_images'
           plugin.directory = 'images'
-          plugin.version = %q{1.0.0}
+          plugin.version = %q{1.1.0}
           plugin.menu_match = /(refinery|admin)\/image(_dialog)?s$/
           plugin.activity = {
             :class => Image
