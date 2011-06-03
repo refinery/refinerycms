@@ -1,4 +1,4 @@
-<%= form_for [:admin, @setting], :url => main_app.refinery_admin_settings_path do |f| %>
+<%= form_for [:admin, @setting], :url => @setting.persisted? ? main_app.refinery_admin_setting_path(@setting) : main_app.refinery_admin_settings_path do |f| %>
 
   <%= render :partial => "/refinery/admin/error_messages",
              :locals => {
