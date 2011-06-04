@@ -43,6 +43,8 @@ Now you can simply run the RefineryCMS generator:
 
 h4. Migrate your database
 
+WARNING. Doing this will overwrite any tables that you have of the same name; please backup first.
+
 After the previous step you should have a number of new migrations in your db/migrate directory.
 To use these just run:
 
