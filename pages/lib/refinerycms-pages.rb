@@ -35,6 +35,7 @@ module Refinery
 
       config.after_initialize do
         ::Refinery::Plugin.register do |plugin|
+          plugin.pathname = root
           plugin.name = 'refinery_pages'
           plugin.directory = 'pages'
           plugin.version = %q{1.0.0}

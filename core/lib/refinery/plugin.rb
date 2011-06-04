@@ -95,9 +95,6 @@ module Refinery
     end
 
     def initialize
-      # save the pathname to where this plugin is using its lib directory which is standard now.
-      depth = RUBY_VERSION >= "1.9.2" ? 4 : 3
-      self.pathname = Pathname.new(caller(depth).first.match("(.*)#{File::SEPARATOR}lib")[1])
       Refinery::Plugins.registered << self # add me to the collection of registered plugins
     end
   end
