@@ -58,6 +58,7 @@ module Refinery
 
       config.after_initialize do
         ::Refinery::Plugin.register do |plugin|
+          plugin.pathname = root
           plugin.name = 'refinery_files'
           plugin.url = {:controller => '/admin/resources', :action => 'index'}
           plugin.menu_match = /(refinery|admin)\/(refinery_)?(files|resources)$/

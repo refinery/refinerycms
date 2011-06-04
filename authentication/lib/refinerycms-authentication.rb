@@ -15,6 +15,7 @@ module Refinery
 
       config.after_initialize do
         ::Refinery::Plugin.register do |plugin|
+          plugin.pathname = root
           plugin.name = 'refinery_users'
           plugin.version = %q{1.0.0}
           plugin.menu_match = /(refinery|admin)\/users$/

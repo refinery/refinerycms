@@ -100,6 +100,7 @@ module Refinery
       # Register the plugin
       config.after_initialize do
         ::Refinery::Plugin.register do |plugin|
+          plugin.pathname = root
           plugin.name = 'refinery_core'
           plugin.class_name = 'RefineryEngine'
           plugin.version = ::Refinery.version
@@ -110,6 +111,7 @@ module Refinery
 
         # Register the dialogs plugin
         ::Refinery::Plugin.register do |plugin|
+          plugin.pathname = root
           plugin.name = 'refinery_dialogs'
           plugin.version = ::Refinery.version
           plugin.hide_from_menu = true

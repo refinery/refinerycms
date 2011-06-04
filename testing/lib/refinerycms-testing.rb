@@ -36,6 +36,7 @@ module Refinery
 
       config.after_initialize do
         ::Refinery::Plugin.register do |plugin|
+          plugin.pathname = root
           plugin.name = 'refinerycms_testing_plugin'
           plugin.version = ::Refinery.version
           plugin.hide_from_menu = true

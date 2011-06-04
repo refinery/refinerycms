@@ -59,6 +59,7 @@ module Refinery
 
       config.after_initialize do
         ::Refinery::Plugin.register do |plugin|
+          plugin.pathname = root
           plugin.name = 'refinery_images'
           plugin.directory = 'images'
           plugin.version = %q{1.0.0}
