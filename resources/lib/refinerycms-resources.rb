@@ -27,7 +27,8 @@ module Refinery
 
       initializer "init plugin", :after => :set_routes_reloader do |app|
         ::Refinery::Plugin.register do |plugin|
-          plugin.name = "refinery_files"
+          plugin.pathname = root
+          plugin.name = 'refinery_files'
           plugin.url = app.routes.url_helpers.refinery_admin_resources_path
           plugin.menu_match = /(refinery|admin)\/(refinery_)?(files|resources)$/
           plugin.version = %q{1.1.0}

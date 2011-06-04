@@ -16,7 +16,8 @@ module Refinery
 
       initializer "init plugin", :after => :set_routes_reloader do |app|
         ::Refinery::Plugin.register do |plugin|
-          plugin.name = "refinery_dashboard"
+          plugin.pathname = root
+          plugin.name = 'refinery_dashboard'
           plugin.url = app.routes.url_helpers.refinery_admin_dashboard_path
           plugin.menu_match = /(admin|refinery)\/(refinery_)?dashboard$/
           plugin.directory = 'dashboard'

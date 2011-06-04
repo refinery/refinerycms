@@ -25,6 +25,7 @@ module Refinery
 
       config.after_initialize do
         ::Refinery::Plugin.register do |plugin|
+          plugin.pathname = root
           plugin.name = 'refinerycms_base'
           plugin.class_name = 'RefineryBaseEngine'
           plugin.version = ::Refinery.version

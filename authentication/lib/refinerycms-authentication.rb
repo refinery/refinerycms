@@ -16,6 +16,7 @@ module Refinery
 
       initializer "init plugin", :after => :set_routes_reloader do |app|
         ::Refinery::Plugin.register do |plugin|
+          plugin.pathname = root
           plugin.name = 'refinery_users'
           plugin.version = %q{1.1.0}
           plugin.menu_match = /(refinery|admin)\/users$/
