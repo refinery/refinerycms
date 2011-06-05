@@ -61,6 +61,29 @@ module Refinery
 
     end
 
+    describe '#pathname' do
+      it 'should be set by default' do
+        plugin.pathname.should_not == nil
+      end
+    end
+
+    describe '#pathname=' do
+      it 'converts string input to pathname' do
+        plugin.pathname = Rails.root.to_s
+        plugin.pathname.should == Rails.root
+      end
+
+      it 'overrides the default pathname' do
+        current_pathname = plugin.pathname
+        new_pathname = current_pathname.join('tmp', 'path')
+
+        current_pathname.should_not == new_pathname
+
+        plugin.pathname = new_pathname
+        plugin.pathname.should == new_pathname
+      end
+    end
+
     describe '#always_allow_access?' do
       it 'returns false if @always_allow_access is not set or its set to false' do
         plugin.always_allow_access?.should be_false
