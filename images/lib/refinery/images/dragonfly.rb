@@ -28,7 +28,9 @@ module Refinery
 
           app_images.define_macro(::ActiveRecord::Base, :image_accessor)
           app_images.analyser.register(::Dragonfly::ImageMagick::Analyser)
-          app_images.analyser.register(::Dragonfly::Analysis::FileCommandAnalyser)
+          app_images.analyser.register(::Dragonfly::Analysis::FileCommandAnalyser) do |a|
+            a.use_filesystem = true #prevents IO::Pipe errors in analysis
+          end
         end
 
         def attach!(app)
