@@ -87,5 +87,9 @@ module Refinery
       valid?
     end
 
+    def to_s
+      username
+    end
+
   end
 end
