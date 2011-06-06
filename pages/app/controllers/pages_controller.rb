@@ -29,14 +29,12 @@ class PagesController < ApplicationController
       error_404
     end
 
-    use_multi_layout = RefinerySetting.where(:name => "Multi Layout").first.value
-    use_page_templates = RefinerySetting.where(:name => "Per Page Templates").first.value
-    logger.debug("Use Multi Layout: #{use_multi_layout}")
-    logger.debug("Use Per Page Templates #{use_multi_layout}")
+    use_layout_templates = RefinerySetting.where(:name => "use_layout_templates").first.value
+    use_page_templates = RefinerySetting.where(:name => "use_page_templates").first.value
 
     render_options = {}
-    if use_multi_layout == 1 and not @page.layout.nil?
-      render_options[:layout] = @page.layout.template_name
+    if use_layout_templates == 1 and not @page.layout_template.nil?
+      render_options[:layout] = @page.layout_template
     end
 
     if use_page_templates == 1 and not @page.view_template.nil?

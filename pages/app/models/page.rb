@@ -42,7 +42,7 @@ class Page < ActiveRecord::Base
                   :skip_to_first_child, :position, :show_in_menu, :draft,
                   :parts_attributes, :browser_title, :meta_description,
                   :custom_title_type, :parent_id, :custom_title,
-                  :created_at, :updated_at, :page_id, :layout_id, :view_template
+                  :created_at, :updated_at, :page_id, :layout_template, :view_template
 
   attr_accessor :locale # to hold temporarily
   validates :title, :presence => true

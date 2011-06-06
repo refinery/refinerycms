@@ -1,17 +1,25 @@
 require 'spec_helper'
 
 describe "page and layout templates", :type => :request do
-  RefinerySetting.create(:name => "use_multi_layout",           :value => 0, :destroyable => false)
-  RefinerySetting.create(:name => "use_per_page_templates",     :value => 0, :destroyable => false)
+  RefinerySetting.create(:name => "use_layout_templates",       :value => 0, :destroyable => false)
+  RefinerySetting.create(:name => "use_page_templates",         :value => 0, :destroyable => false)
   RefinerySetting.create(:name => "layout_template_whitelist",  :value => ['application'], :destroyable => false)
   RefinerySetting.create(:name => "view_template_whitelist",    :value => ['home','show'], :destroyable => false)
+
   let(:home) do
-    Page.create(:title => 'Home', :deletable => true)
+    Page.create!(:title => 'Home', :deletable => true)
   end
+
+  home.parts.create(:title => 'body', :content => "I'm the first page part for this page.")
+  home.parts.create(:title => 'side body', :content => "Closely followed by the second page part.")
+
   let (:about) do
-    Page.create({:title => 'About', :deletable => true})
+    Page.create!({:title => 'About', :deletable => true})
   end
-  page.parts << PagePart.new(:title => 'testing', :position => 0)
+
+  about.parts.create(:title => 'body', :content => "I'm the first page part for this page.")
+  about.parts.create(:title => 'side body', :content => "Closely followed by the second page part.")
+
   let(:page) do
     Page.create!({
       :title => "RSpec is great for testing too",
@@ -20,19 +28,12 @@ describe "page and layout templates", :type => :request do
   end
   let(:child) { page.children.create(:title => 'The child page') }
 
-  def page_cannot_be_destroyed
-    page.destroy.should == false
-  end
-
   def turn_on_layout_templates
-    RefinerySetting.set(:use_marketable_urls, {:value => false, :scoping => 'pages'})
+    RefinerySetting.set(:use_multi_layout, {:value => false, :scoping => 'pages'})
   end
 
   def turn_off_layout_templates
     RefinerySetting.set(:use_marketable_urls, {:value => true})
-  end
-
-  before :each do
   end
 
   it "can sign in to the admin" do
