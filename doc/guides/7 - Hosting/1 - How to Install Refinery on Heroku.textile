@@ -111,4 +111,5 @@ Try forcing +s3_backend+ to be true by adding the following line to the _end_ of
 Refinery.s3_backend = true
 </ruby>
 
-Otherwise, hop on to the IRC Channel and ask either stevenheidel or parndt for help. Or, run heroku logs and see if you can spot the error yourself.
+Otherwise, run `heroku logs` or `heroku logs --tail` and see if you can spot the error yourself.
+Or you could explore the [help options available](/guides/how-to-get-help-with-refinery).
