@@ -22,13 +22,12 @@ h3. Google Group
 
 The "Refinery CMS Google Group":http://group.refinerycms.org is a great place to ask for help if you don't get a response on IRC.
 
-h3. People
+h3. Core Team
 
 * Philip Arndt (parndt) - Resolve Digital
 * David Jones (dgjones) - Resolve Digital
 * Steven Heidel (stevenheidel)
-* Maarten Hoogendoorn (moretea)
-* Joe Sak (hubble)
+* Uģis Ozols (ugisozols)
 
 h3. Other places
 
