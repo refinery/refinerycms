@@ -21,34 +21,22 @@
       <%= f.select :parent_id, nested_set_options(::Refinery::Page, @page) {|i| "#{'-' * i.level} #{i.title}" },
                    :include_blank => true %>
     </div>
-    <% use_layout_templates = RefinerySetting.where(:name => "use_page_layout_templates").first.value %>
-    <% if use_layout_templates == 1 %>
-    <%
-      layout_whitelist     = RefinerySetting.where(:name => "page_layout_template_whitelist").first.value
-      existing_layouts     = [Rails.root, Refinery::Plugins.registered.pathnames].flatten.uniq.map{|p| p.join('app', 'views', 'layouts', '*html*')}.map(&:to_s).map{ |p| Dir[p] }.select {|p| p.count > 0}.flatten.map{|f| File.basename(f)}.map {|p| p.split('.').first }
-      valid_layouts        = layout_whitelist & existing_layouts
-    %>
+    <% if ::Refinery::Setting.find_or_set(:use_layout_templates, false, :scope => 'pages') %>
     <div class='field'>
       <span class='label_with_help'>
         <%= label_tag :layout_template, t('.layout_template') %>
         <%= refinery_help_tag t('.layout_template_help') %>
       </span>
-      <%= f.select(:layout_template, valid_layouts) %>
+      <%= f.select(:layout_template, @valid_layout_templates) %>
     </div>
     <% end %>
-    <% use_view_templates = RefinerySetting.where(:name => "use_page_view_templates").first.value %>
-    <% if use_view_templates == 1 %>
-    <%
-      template_whitelist = RefinerySetting.where(:name => "page_view_template_whitelist").first.value
-      existing_templates = [Rails.root, Refinery::Plugins.registered.pathnames].flatten.uniq.map{|p| p.join('app', 'views', 'pages', '*html*')}.map(&:to_s).map{ |p| Dir[p] }.select {|p| p.count > 0}.flatten.map{|f| File.basename(f)}.map {|p| p.split('.').first }
-      valid_templates    = template_whitelist & existing_templates
-    %>
+    <% if ::Refinery::Setting.find_or_set(:use_view_templates, false, :scope => 'pages') %>
     <div class='field'>
       <span class='label_with_help'>
         <%= label_tag :view_template, t('.view_template') %>
         <%= refinery_help_tag t('.view_template_help') %>
       </span>
-      <%= f.select(:view_template, valid_templates) %>
+      <%= f.select(:view_template, @valid_view_templates) %>
     </div>
     <% end %>
 
