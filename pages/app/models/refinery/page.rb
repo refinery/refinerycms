@@ -107,7 +107,7 @@ module Refinery
     # page.reload.title => "Refinery CMS"
     # page.valid? => true
     after_save { reload }
-        
+
     scope :live, where(:draft => false)
     scope :by_title, proc {|t| with_globalize(:title => t)}
 
