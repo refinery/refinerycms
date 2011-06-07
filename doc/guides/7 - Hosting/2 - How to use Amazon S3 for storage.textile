@@ -20,7 +20,7 @@ gem 'fog'
 
 h3. Telling Refinery to use S3
 
-Refinery will use S3 for storage if it finds the +S3_KEY+, +S3_SECRET+ and +S3_BUCKET+ environment variables.
+Refinery will use S3 for storage if it finds the +S3_KEY+, +S3_SECRET+, and +S3_BUCKET+ environment variables.
 
 There are a number of ways to set these with your credentials, including unix variables
 or settings them manually through Ruby using ENV.
