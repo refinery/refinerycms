@@ -14,6 +14,8 @@ module ::Refinery
 
       after_filter lambda{::Refinery::Page.expire_page_caching}, :only => [:update_positions]
 
+      before_filter :load_valid_templates, :only => [:edit, :new]
+
       before_filter :restrict_access, :only => [:create, :update, :update_positions, :destroy], :if => proc {|c|
         defined?(::Refinery::I18n) && ::Refinery::I18n.enabled?
       }
@@ -65,6 +67,16 @@ module ::Refinery
         end
 
         return true
+      end
+
+      def load_valid_templates
+        layout_whitelist        = ::Refinery::Setting.find_or_set(:layout_template_whitelist, %w(application), :scoping => 'pages')
+        existing_layouts        = [::Rails.root, ::Refinery::Plugins.registered.pathnames].flatten.uniq.map{|p| p.join('app', 'views', 'layouts', '*html*')}.map(&:to_s).map{ |p| Dir[p] }.select {|p| p.count > 0}.flatten.map{|f| File.basename(f)}.map {|p| p.split('.').first }
+        @valid_layout_templates = layout_whitelist & existing_layouts
+
+        template_whitelist    = ::Refinery::Setting.find_or_set(:view_template_whitelist, %w(home show), :scoping => 'pages')
+        existing_templates    = [::Rails.root, ::Refinery::Plugins.registered.pathnames].flatten.uniq.map{|p| p.join('app', 'views', 'pages', '*html*')}.map(&:to_s).map{ |p| Dir[p] }.select {|p| p.count > 0}.flatten.map{|f| File.basename(f)}.map {|p| p.split('.').first }
+        @valid_view_templates = template_whitelist & existing_templates
       end
 
     end
