@@ -47,7 +47,6 @@
 <% content_for :javascripts do %>
   <script>
     $(document).ready(function(){
-      link_dialog.init();
       resource_picker.init(<%= @callback.present? ? "self.parent.#{@callback}" : "null" %>);
     });
   </script>
