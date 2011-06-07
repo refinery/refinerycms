@@ -50,8 +50,9 @@ ENV['S3_BUCKET']='fill_in_your_bucket_name_here'
 
 h3. Turning S3 on and off
 
-To turn on s3 storage, add this line to the _end_ of the appropriate environment file, for
-example with production use +config/environments/production.rb+:
+S3 should automatically sense that it is enabled based on these ENV variables
+but if it is not you can add this code to the _end_ of the appropriate environment file, for
+example with the production environment +config/environments/production.rb+:
 
 <ruby>
 Refinery.s3_backend = true
