@@ -31,6 +31,20 @@ module Refinery
       else
         error_404
       end
+
+      use_layout_templates = RefinerySetting.where(:name => "use_page_layout_templates").first.value
+      use_view_templates   = RefinerySetting.where(:name => "use_page_view_templates").first.value
+
+      render_options = {}
+      if use_page_layout_templates == 1 and not @page.layout_template.nil?
+        render_options[:layout] = @page.layout_template
+      end
+
+      if use_page_view_templates == 1 and not @page.view_template.nil?
+        render_options[:action] = @page.view_template
+      end
+
+      render render_options
     end
 
   protected
