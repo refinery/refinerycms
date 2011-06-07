@@ -112,4 +112,4 @@ Refinery.s3_backend = true
 </ruby>
 
 Otherwise, run `heroku logs` or `heroku logs --tail` and see if you can spot the error yourself.
-Or you could explore the [help options available](/guides/how-to-get-help-with-refinery).
+Or you could explore the "help options available":/guides/how-to-get-help-with-refinery.
