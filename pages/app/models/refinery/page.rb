@@ -344,7 +344,7 @@ module Refinery
       Refinery.deprecate({
         :what => "page[#{part_title.inspect}]",
         :when => '1.1',
-        :replacement => "@page.content_for(#{part_title.inspect})",
+        :replacement => "page.content_for(#{part_title.inspect})",
         :caller => caller
       })
 
