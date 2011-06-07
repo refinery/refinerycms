@@ -105,11 +105,7 @@ Double check your S3_ information and make sure that the right buckets actually 
 
 h4. Other problems?
 
-Try forcing +s3_backend+ to be true by adding the following line to the _end_ of +config/environments/production.rb+:
-
-<ruby>
-Refinery.s3_backend = true
-</ruby>
+See the "How to use Amazon S3 for storage":http://refinerycms.com/guides/how-to-use-amazon-s3-for-storage guide for more specific information.
 
 Otherwise, run `heroku logs` or `heroku logs --tail` and see if you can spot the error yourself.
 Or you could explore the "help options available":/guides/how-to-get-help-with-refinery.
