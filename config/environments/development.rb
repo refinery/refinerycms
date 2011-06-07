@@ -25,6 +25,7 @@ RefineryApp::Application.configure do
 end
 
 Refinery.rescue_not_found = false
+
 # When true will use Amazon's Simple Storage Service on your production machine
 # instead of the default file system for resources and images
 Refinery.s3_backend = !(ENV['S3_KEY'].nil? || ENV['S3_SECRET'].nil?)
