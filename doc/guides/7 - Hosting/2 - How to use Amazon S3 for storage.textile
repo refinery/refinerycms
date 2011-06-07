@@ -43,7 +43,13 @@ ENV['S3_SECRET']='fill_in_your_secret_key_here'
 ENV['S3_BUCKET']='fill_in_your_bucket_name_here'
 </ruby>
 
-h3. Turn off S3
+h3. Turning S3 on and off
+
+To turn on s3 storage, add this line to the _end_ of +config/environment.rb+:  
+
+<ruby>
+Refinery.s3_backend = true
+</ruby>
 
 There are some cases where you have these three variables set but do not want to use S3. You can always manually set S3 to either false or true in any environment. For example, forcing S3 to always be off in development is as simple as adding the following line to the _end_ of +config/environments/development.rb+:
 
