@@ -31,6 +31,21 @@ module Refinery
       else
         error_404
       end
+
+      use_layout_templates = ::Refinery::Setting.find_or_set(:use_layout_templates, false, :scoping => 'pages')
+      use_view_templates   = ::Refinery::Setting.find_or_set(:use_view_templates, false, :scoping => 'pages')
+
+      render_options = {}
+
+      if use_layout_templates && @page.layout_template.present?
+        render_options[:layout] = @page.layout_template
+      end
+
+      if use_view_templates && @page.view_template.present?
+        render_options[:action] = @page.view_template
+      end
+
+      render render_options
     end
 
   protected
