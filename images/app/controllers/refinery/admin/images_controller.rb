@@ -97,7 +97,7 @@ module ::Refinery
       end
 
       def paginate_images
-        @images = @images.page(@paginate_page_number ||= params[:page])
+        @images = @images.page(params[:page])
                          .per(Image.per_page(from_dialog?, !@app_dialog))
       end
 

@@ -79,7 +79,7 @@ module ::Refinery
       end
 
       def paginate_resources(conditions={})
-        @resources = Resource.page(@paginate_page_number ||= params[:page]).
+        @resources = Resource.page(params[:page]).
                               where(conditions).
                               order('created_at DESC').
                               per(Resource.per_page(from_dialog?))
