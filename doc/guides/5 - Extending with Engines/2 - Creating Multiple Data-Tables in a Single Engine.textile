@@ -1,6 +1,5 @@
 h2. Creating Multiple Data-Tables in a Single Engine
 
-You create multiples of data-tables in a single engine.
 This guide will show you how to:
 
 * Creating multiple tables on one single engine
@@ -136,3 +135,22 @@ rake db:migrate
 </shell>
 
 Run all the command provided like the above. Notice +rails generate refinerycms_events places+. This is where it will all took place for your new migration file. 
+
+The bundle install command will run the normal rails bundle install.
+
+The +rails generate refinerycms_events places+ will run and create the migration file with timestamp. Example:
+
+<shell>
+$ rails generate refinerycms_events places
+
+You already have a migration called create_events
+      create  db/migrate/20110608043313_create_places.rb
+   identical  db/seeds/events.rb
+      create  db/seeds/places.rb
+------------------------
+Now run:
+rake db:migrate
+------------------------
+</shell>
+
+Lastly, run rake db:migrate as usual.
