@@ -2,10 +2,10 @@
 
 Gem::Specification.new do |s|
   s.name              = %q{refinerycms-core}
-  s.version           = %q{1.0.0}
+  s.version           = %q{1.0.1}
   s.summary           = %q{Core engine for Refinery CMS}
   s.description       = %q{The core of Refinery CMS. This handles the common functionality and is required by most engines}
-  s.date              = %q{2011-05-28}
+  s.date              = %q{2011-06-08}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
   s.rubyforge_project = %q{refinerycms}
@@ -14,14 +14,14 @@ Gem::Specification.new do |s|
   s.require_paths     = %w(lib)
   s.executables       = %w()
 
-  s.add_dependency 'refinerycms-base',            '= 1.0.0'
-  s.add_dependency 'refinerycms-settings',        '= 1.0.0'
+  s.add_dependency 'refinerycms-base',            '= 1.0.1'
+  s.add_dependency 'refinerycms-settings',        '= 1.0.1'
   s.add_dependency 'refinerycms-generators',      '~> 1.0'
   s.add_dependency 'acts_as_indexed',             '~> 0.7'
   s.add_dependency 'friendly_id_globalize3',      '~> 3.2.1'
   s.add_dependency 'globalize3',                  '~> 0.1'
   s.add_dependency 'awesome_nested_set',          '~> 2.0'
-  s.add_dependency 'rails',                       '~> 3.0.7'
+  s.add_dependency 'rails',                       '~> 3.0.8'
   s.add_dependency 'truncate_html',               '~> 0.5'
   s.add_dependency 'will_paginate',               '~> 3.0.pre'
 
