@@ -2,8 +2,6 @@ module ::Refinery
   module Admin
     class ImagesController < ::Admin::BaseController
 
-      helper_method :change_list_mode_if_specified
-
       crudify :'refinery/image',
               :order => "created_at DESC",
               :sortable => false,
@@ -91,7 +89,9 @@ module ::Refinery
       end
 
       def change_list_mode_if_specified
-        if action_name == 'index' and params[:view].present? and image_views.include?(params[:view].to_sym)
+        if action_name == 'index' and
+           params[:view].present? and
+           ::Refinery::Setting.get(:image_views).include?(params[:view].to_sym)
           ::Refinery::Setting.set(:preferred_image_view, params[:view])
         end
       end
