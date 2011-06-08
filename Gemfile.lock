@@ -1,7 +1,6 @@
 GIT
   remote: git://github.com/resolve/refinerycms-i18n
   revision: 49bfdf53af016a3aa82ef76c05f3aae98e8f48f5
-  branch: rails-3-1
   specs:
     refinerycms-i18n (1.1.0)
       refinerycms-core (~> 1.1.0)

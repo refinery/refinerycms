@@ -66,7 +66,5 @@ end
 # gem 'refinerycms-page-images',  '~> 1.0'
 
 # Add i18n support (optional, you can remove this if you really want to).
-gem 'refinerycms-i18n',           '~> 1.1.0',
-                                  :git => 'git://github.com/resolve/refinerycms-i18n',
-                                  :branch => 'rails-3-1'
+gem 'refinerycms-i18n',           '~> 1.1.0', :git => 'git://github.com/resolve/refinerycms-i18n'
 # END USER DEFINED
