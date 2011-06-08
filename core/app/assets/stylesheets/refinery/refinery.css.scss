@@ -1605,8 +1605,8 @@ a.information:hover {
   padding-bottom: 6px;
 }
 
-@import 'site_bar.css.scss';
-@import 'ui.css.scss';
-@import 'submenu.css.scss';
-@import 'tooltips.css.scss';
-@import '../wymeditor/skins/refinery/skin.css.scss';
+@import 'refinery/site_bar';
+@import 'refinery/ui';
+@import 'refinery/submenu';
+@import 'refinery/tooltips';
+@import 'wymeditor/skins/refinery/skin';

@@ -18,7 +18,7 @@ else
 end
 
 # Asset template engines
-gem 'sass'
+gem 'sass-rails', '~> 3.1.0.rc'
 gem 'coffee-script'
 gem 'uglifier'
 
