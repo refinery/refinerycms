@@ -7,7 +7,7 @@ sl:
         name: Ime
         value: Vrednost
   admin:
-    refinery_settings:
+    settings:
       delete: Odstrani nastavitev
       edit: Uredi nastavitev
       actions:

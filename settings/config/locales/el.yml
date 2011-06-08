@@ -4,7 +4,7 @@ el:
       title: Settings
       description: Διαχείριση ρυθμίσεων του Refinery 
   admin:
-    refinery_settings:
+    settings:
       delete: Διαγραφή ρυθμίσης
       edit: Επεξεργασία ρύθμισης
       actions:

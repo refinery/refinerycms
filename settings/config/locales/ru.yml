@@ -4,7 +4,7 @@ ru:
       title: Параметры
       description: Управление параметрами Refinery
   admin:
-    refinery_settings:
+    settings:
       delete: Удалить этот параметр навсегда
       edit: Редактировать параметр
       actions:

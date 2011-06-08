@@ -4,7 +4,7 @@ lolcat:
       title: SETTINGS
       description: MANAGE REFINERY SETTINGS
   admin:
-    refinery_settings:
+    settings:
       delete: REMOOV DIS SETTIN FOREVR
       edit: EDIT DIS SETTIN
       actions:

@@ -4,7 +4,7 @@ lv:
       title: Uzstādījumi
       description: Refinery uzstādījumu pārvaldīšana
   admin:
-    refinery_settings:
+    settings:
       delete: Dzēst šo uzstādījumu
       edit: Labot šo uzstādījumu
       actions:

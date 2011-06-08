@@ -4,7 +4,7 @@ de:
       title: Einstellungen
       description: Refinery-Einstellungen verwalten
   admin:
-    refinery_settings:
+    settings:
       delete: Diese Einstellung für immer löschen
       edit: Diese Einstellung bearbeiten
       actions:

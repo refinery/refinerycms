@@ -4,7 +4,7 @@ vi:
       title: Settings
       description: Quản lý các thiết lập của Refinery
   admin:
-    refinery_settings:
+    settings:
       delete: Xóa thiết lập này vĩnh viễn
       edit: Chỉnh sửa thiết lập này
       actions:

@@ -4,7 +4,7 @@ sk:
       title: Nastavenia
       description: Správa nastavení
   admin:
-    refinery_settings:
+    settings:
       delete: Zmazať voľbu
       edit: Upraviť voľbu
       actions:

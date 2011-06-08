@@ -4,7 +4,7 @@ zh-CN:
       title: 设置
       description: Refinery 设置管理
   admin:
-    refinery_settings:
+    settings:
       delete: 永久删除此设置
       edit: 编辑此设置
       actions:

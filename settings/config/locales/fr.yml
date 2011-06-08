@@ -4,7 +4,7 @@ fr:
       title: Paramètres
       description: Gestion des paramètres de Refinery
   admin:
-    refinery_settings:
+    settings:
       delete: Supprimer définitivement ce paramètre
       edit: Modifier ce paramètre
       actions:

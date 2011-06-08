@@ -5,7 +5,7 @@ pl:
       description: Zarządzaj ustawieniami Refinery
       article: neutral
   admin:
-    refinery_settings:
+    settings:
       delete: Na zawsze usuń to ustawienie
       edit: Zmień to ustawienie
       actions:

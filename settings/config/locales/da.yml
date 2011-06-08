@@ -4,7 +4,7 @@ da:
       title: Indstillinger
       description: Vedligehold Refinery indstillinger
   admin:
-    refinery_settings:
+    settings:
       delete: Slet indstilling
       edit: Redigér indstilling
       actions:

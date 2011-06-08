@@ -4,7 +4,7 @@ nl:
       title: Instellingen
       description: Wijzig de instellingen van Refinery
   admin:
-    refinery_settings:
+    settings:
       delete: Verwijder deze instelling voorgoed
       edit: Bewerk deze instelling
       actions:

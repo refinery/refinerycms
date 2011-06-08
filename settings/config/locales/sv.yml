@@ -4,7 +4,7 @@ sv:
       title: Inställningar
       description: Hantera inställningar i Refinery
   admin:
-    refinery_settings:
+    settings:
       delete: Ta bort den här inställningen för alltid
       edit: Redigera den här inställningen
       actions:

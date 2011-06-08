@@ -4,7 +4,7 @@ cs:
       title: Nastavení
       description: Spravovat nastavení webu
   admin:
-    refinery_settings:
+    settings:
       delete: Smazat tuto volbu
       edit: Upravit tuto volbu
       actions:

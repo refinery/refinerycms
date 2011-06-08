@@ -4,7 +4,7 @@ fi:
       title: Asetukset
       description: Hallitse Refineryn asetuksia
   admin:
-    refinery_settings:
+    settings:
       delete: Poista tämä asetus ikuisesti
       edit: Muokkaa tätä asetusta
       actions:

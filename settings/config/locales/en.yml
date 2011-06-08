@@ -5,7 +5,7 @@ en:
         title: Settings
         description: Manage Refinery settings
     admin:
-      refinery_settings:
+      settings:
         delete: Remove this setting forever
         edit: Edit this setting
         actions:
