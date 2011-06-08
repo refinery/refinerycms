@@ -148,22 +148,6 @@ module Refinery
           config.min_word_size = 3
         end
       end
-
-      initializer 'fix rack <= 1.2.1' do |app|
-        ::Rack::Utils.module_eval do
-          def escape(s)
-            regexp = case
-              when RUBY_VERSION >= '1.9' && s.encoding === Encoding.find('UTF-8')
-                /([^ a-zA-Z0-9_.-]+)/u
-              else
-                /([^ a-zA-Z0-9_.-]+)/n
-              end
-            s.to_s.gsub(regexp) {
-              '%'+$1.unpack('H2'*bytesize($1)).join('%').upcase
-            }.tr(' ', '+')
-          end
-        end if ::Rack.version <= '1.2.1'
-      end
     end
   end
 
