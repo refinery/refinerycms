@@ -1,9 +1,6 @@
-<%
-  login = login? unless defined?(login)
--%>
+<% login = login? unless defined?(login) -%>
 <%= yield :before_javascript_libraries -%>
 <%= javascript_include_tag 'refinery/refinery' -%>
-<script>I18n.locale = '<%= I18n.locale %>';</script>
 <%= yield :after_javascript_libraries -%>
 <%= javascript_include_tag 'refinery/core' if login -%>
 <%= yield :javascripts -%>
