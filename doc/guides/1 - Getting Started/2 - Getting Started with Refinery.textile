@@ -80,6 +80,8 @@ The easiest way to install Refinery is to take advantage of RubyGems.
 # gem install refinerycms
 </shell>
 
+NOTE: This step may take some time to load as it needs to download and install all the ruby gems Refinery depends on.
+
 TIP. If you're working on Windows, you should be aware that the vast majority of Refinery development is done in Unix environments. If at all possible, we suggest that you develop on a Linux based operating system.
 
 h4. Creating a Refinery application
@@ -91,8 +93,6 @@ To begin, open a terminal, navigate to a folder where you have rights to create 
 <shell>
 $ refinerycms rickrockstar
 </shell>
-
-NOTE: This step may take some time to load as it needs to download and install all the ruby gems Refinery depends on.
 
 TIP: You can see all of the switches that the +refinerycms+ command accepts by running +refinerycms+ with no options or arguements.
 
