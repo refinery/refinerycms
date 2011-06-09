@@ -1,0 +1,80 @@
+ko:
+  refinery:
+    js:
+      admin:
+        confirm_changes: 계속하면 현재 변경사항을 잃게 됩니다. 저장하지 않고 계속하시겠습니까?
+    plugins:
+      refinery_core:
+        title: Refinery
+        description: Refinery의 주요 기능을 제공하는 플러그인입니다.
+      refinery_dialogs:
+        title: 대화창
+        description: Refinery 대화창 플러그인
+    welcome:
+      there_are_no_users: 아무런 사용자도 존재하지 않기 때문에 새 사용자를 생성합니다.
+      remember_admin_location: "Refinery 관리 페이지의 주소를 기억해주세요:"
+      lets_start: 로그인을 위한 계정을 생성해주세요.
+      continue: 계속...
+    admin:
+      menu:
+        reorder_menu: 메뉴 재배치
+        reorder_menu_done: 메뉴 배치를 마쳤습니다
+      dialogs:
+        show:
+          save: 저장
+          cancel: 취소
+    crudify:
+      created: '%{what}을(를) 생성했습니다.'
+      updated: '%{what}을(를) 수정했습니다.'
+      destroyed: '%{what}을(를) 삭제했습니다.'
+    site_bar:
+      log_out: 로그아웃
+      switch_to_your_website: 웹사이트 보기
+      switch_to_your_website_editor: 관리 페이지 보기
+    admin:
+      continue_editing:
+        save_and_continue_editing: '저장하고 계속 편집'
+      form_actions:
+        save: 저장
+        cancel: 취소
+        cancel_lose_changes: 취소하면 모든 변경사항을 잃게 됩니다
+        delete: 삭제
+        close: 닫기
+      image_picker:
+        none_selected: '아무런 %{what}도 선택하지 않았습니다. 여기를 클릭하여 추가하세요.'
+        remove_current: '현재 선택된 %{what} 제거'
+        change: 여기를 클릭하여 이미지를 선택하세요
+        show: 보기
+      resource_picker:
+        download_current: 현재 파일 다운로드
+        opens_in_new_window: 새 창에서 열기
+        remove_current: 현재 파일 제거
+        no_resource_selected: 아무런 파일도 선택하지 않았습니다. 여기를 클릭하여 추가하세요.
+        name: 파일 추가
+        current: 현재 파일
+      search:
+        button_text: 검색
+        results_for: "'%{query}'에 대한 검색 결과"
+        no_results: 죄송합니다. 아무런 결과도 찾을 수 없습니다.
+      delete:
+        message: "'%{title}'을(를) 삭제하시겠습니까?"
+      error_messages:
+        problems_in_following_fields: 다음 항목에서 문제를 발견했습니다
+      help: 도움말
+    message:
+      close: 닫기
+      close_this_message: 이 메시지 닫기
+    draft_page_message:
+      not_live: 이 페이지는 공개되지 않습니다.
+    footer:
+      copyright: "Copyright © %{year} %{site_name}"
+    no_script:
+      enable_javascript: 이 페이지의 모든 기능을 이용하려면 Javascript를 활성화해야 합니다.
+      here_are: ""
+      instructions_enable_javascript: 이용 중인 브라우저에서 Javascript를 활성화하는 방법
+  time:
+    formats:
+      short: "%Y년 %m월 %d일 (%a)"
+  pagination:
+    next: "&raquo;"
+    previous: "&laquo;"

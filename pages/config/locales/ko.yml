@@ -1,0 +1,87 @@
+ko:
+  refinery:
+    plugins:
+      refinery_pages:
+        title: 페이지
+        description: 컨텐츠 페이지를 관리합니다.
+    admin:
+      pages_dialogs:
+        page_link:
+          link_to_this_page: 이 페이지로 링크
+        link_to:
+          insert: 삽입
+          your_page:
+            tab_name: 이 사이트의 페이지
+          web_address:
+            tab_name: 웹사이트
+            location: 주소
+            new_window: 새 창
+            new_window_label: 체크하면 이 링크가 새 창에서 열립니다.
+            not_sure: 무엇을 입력할지 잘 모르시겠다구요?
+            step1: 링크할 페이지를 웹에서 찾으세요.
+            step2: 브라우저의 주소 창에 있는 내용을 위에 붙여 넣으세요.
+          email_address:
+            tab_name: 메일 주소
+            subject_line_optional: 메일 제목 (선택)
+            body_optional: 메일 내용 (선택)
+            not_sure: 무엇을 입력할지 잘 모르시겠다구요?
+            step1_html: "'<strong>메일 주소</strong>'에 링크할 메일 주소를 쓰거나 주소록으로부터 붙여 넣으세요."
+            step2_html: 새 메일의 제목을 <strong>미리 지정</strong>하려면 '<strong>메일 제목 (선택)</strong>'을 채워 주세요.
+            step3_html: 새 메일의 내용을 <strong>미리 지정</strong>하려면 '<strong>메일 내용 (선택)</strong>'을 채워 주세요.
+          your_resource:
+            tab_name: 업로드한 파일
+            link_to_this_resource: 이 파일로 링크
+      pages:
+        delete: 이 페이지 삭제
+        edit: 이 페이지 수정
+        reserved_system_word: "죄송합니다. 시스템 내부에서 사용 중인 이름은 사용할 수 없습니다."
+        page:
+          view_live_html: 실제 페이지 보기 <br/><em>(새 창에서 열림)</em>
+          hidden: 숨김
+          draft: 초안
+        form_new_page_parts:
+          title: 제목
+        form_page_parts:
+          create_content_section: 컨텐츠 영역 생성
+          delete_content_section: 컨텐츠 영역 삭제
+        form_advanced_options:
+          toggle_advanced_options: 메타 태그 및 메뉴 설정 변경
+          page_options: 페이지 설정
+          parent_page: 상위 페이지
+          advanced_options: 고급 설정
+          custom_title: 임의 제목 설정
+          title_types:
+            none: 없음
+            text: 텍스트
+          show_in_menu_title: 메뉴에 보이기
+          show_in_menu_description: 이 페이지를 사이트 메뉴에 포함시킵니다.
+          show_in_menu_help: 사이트 메뉴에 페이지가 보이지 않도록 하려면 이 설정을 해제하세요. 직접 링크는 가능하지만 메뉴에 보이기 원치 않는 페이지에 사용하면 유용합니다.
+          save_as_draft: 초안 저장
+          skip_to_first_child: 상위 페이지 건너뛰기
+          skip_to_first_child_label: 방문자들을 첫 하위 페이지로 보냅니다.
+          skip_to_first_child_help: 이것을 설정하면 이 페이지가 첫 하위 페이지로 링크됩니다. 여러 페이지를 한 데 묶을 때 유용한 옵션입니다.
+          link_url: 다른 웹 사이트나 페이지로 포워딩
+          link_url_help: 이 페이지를 클릭했을 때 다른 웹사이트나 페이지로 이동하게 하려면 여기에 http://google.com과 같은 주소를 입력하세요.
+          parent_page_help: 이 페이지의 상위 페이지를 목록에서 선택할 수 있습니다. 이 페이지를 최상위 페이지로 만들고 싶다면 빈 칸으로 남겨 두세요.
+          custom_title_help: 페이지가 메뉴에서 보이는 것과 다른 제목을 가지도록 하고 싶다면 &apos;텍스트&apos;를 선택하여 새 제목을 입력하세요.
+        form_advanced_options_seo:
+          seo: 검색엔진 최적화
+          seo_override_title: 브라우저 제목
+          seo_override_title_help: 이 페이지의 내용을 요약하는 제목을 5-10어절 길이로 입력하세요.
+          meta_keywords_title: 메타 키워드
+          meta_keywords_help: 이 페이지의 연관 키워드 5-10개를 쉼표로 구분하여 입력하세요.
+          meta_description_title: 메타 설명
+          meta_description_help: 이 페이지에 대한 간략한 설명을 2-3 문장으로 정리하세요.
+        actions:
+          create_new_page: 새 페이지
+          reorder_pages: 페이지 재정렬
+          reorder_pages_done: 재정렬 완료
+        records:
+          no_pages_yet: 페이지가 없습니다. "새 페이지"를 클릭하여 페이지를 추가하세요.
+        translator_access: 해당 언어로 페이지를 수정할 권한이 없습니다.
+  activerecord:
+    models:
+      page: 페이지
+    attributes:
+      page:
+        title: 제목
