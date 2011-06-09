@@ -1,0 +1,49 @@
+ko:
+  refinery:
+    plugins:
+      refinery_settings:
+        title: 설정
+        description: Refinery 설정을 관리합니다.
+    admin:
+      settings:
+        delete: 이 설정 삭제
+        edit: 이 설정 수정
+        actions:
+          new: 새 설정 추가
+        records:
+          empty_set: 설정이 없습니다.
+          create_first: "'%{link}'를 클릭하여 설정을 추가하세요."
+        form:
+          enabled: "예, 이 설정을 활성화합니다."
+          restart_may_be_in_order_html: <strong>주의</strong> 이 설정을 적용하려면 웹 사이트를 재시작해야 합니다.
+          yes_make_this_setting_restricted: "예, 이 설정의 수정 권한을 관리자로 제한합니다."
+          help:
+            restricted: 이 설정을 관리자 권한이 있는 사용자(당신과 같은 권한의 사용자)들만 보거나 수정할 수 있게 합니다.
+            activity_show_limit: 대시보드에 나올 항목의 수를 제한합니다.
+            analytics_page_code: 이 코드를 설정하여 Google Analytics 추적을 활성화합니다. 빈 칸이나 UA-xxxxxx-x로 설정되어 있으면 Google Analytics는 비활성화됩니다.
+            frontend_refinery_stylesheets_enabled: Refinery의 기본 CSS를 프론트엔드에 적용할지 결정합니다.
+            image_dialogue_sizes: 이 설정은 이미지 삽입 대화창에 적용됩니다. 이 설정을 변경하면 다른 크기의 섬네일 이미지를 생성해야 합니다.
+            image_thumbnails: 이 설정을 변경하면 rake images:regenerate (새 섬네일 이미지만 추가했을 경우에는 rake:images:update)를 실행해야 기존의 이미지에도 설정이 적용됩니다.
+            menu_hide_children: 하위 페이지를 메뉴에서 숨깁니다.
+            new_page_parts: 페이지 편집기에서 새 페이지 파트(컨텐츠 영역)를 추가할 수 있도록 합니다.
+            page_title: 페이지 제목을 위한 매우 복잡한 설정입니다. 임의의 CSS 클래스를 지정하거나 태그를 변경할 수 있고, 사이트 이동 경로 형식으로 제목을 표시하도록 할 수도 있습니다.
+            pages_advanced_options_include_seo: 검색엔진 최적화 설정을 페이지 고급 설정에 포함시킬지 결정합니다.
+            preferred_image_view: 이미지 플러그인에서 업로드된 이미지를 어떻게 볼 지 결정합니다. '격자 형식'으로 보려면 grid를, '목록 형식'으로 보려면 list를 설정하세요. 이미지 플러그인에서 선택하는 것도 가능합니다.
+            refinery_enable_backend_reordering: 이 설정으로 플러그인들의 출력 순서 변경 기능을 비활성화할 수 있습니다.
+            refinery_menu_cache_action_suffix: 사이트 메뉴를 캐싱하는 데 쓰이는 키를 변경합니다. 테마를 사용한다면 기본으로 놓아두는 것이 좋습니다.
+            show_contact_privacy_link: 문의 페이지의 제출 버튼 옆에 개인정보 취급 방침 페이지의 링크를 표시할지 결정합니다.
+            site_name: 페이지 제목과 관리자 페이지, Footer 및 일부 테마의 저작권 문구에 쓰일 사이트 이름을 설정합니다.
+            theme: 적용하기 원하는 테마 이름을 써 주세요. 설정은 즉시 적용되며 제대로 동작하기 위해서는 존재하는 테마의 이름을 정확히 입력해야 합니다.
+            use_google_ajax_libraries: Google의 AJAX CDN을 사용하려면 이 항목을 true로 설정하세요.
+            use_marketable_urls: URL을 /pages/about 형식에서 /about 형식로 변경하고 다른 플러그인과의 중복을 자동으로 관리합니다.
+            use_resource_caching: HTTP 요청을 줄여 페이지 로딩 시간을 향상시키기 위해 Javascript와 CSS 파일을 한 데 묶습니다. production 환경에서는 활성화하는 것을 권장합닏다.
+            approximate_ascii: "일부 웹 브라우저의 주소 창에서 ā, č, ž같은 라틴 문자가 이상하게 출력되는 것을 방지하기 위해, 이 문자들이 페이지 제목에 나타나면 a, c, z와 같이 변경합니다."
+            cache_pages_full: 전체 페이지 캐싱 기능을 활성화합니다. Apache의 .htaccess 파일이나 Nginx를 통해 페이지 캐시를 이용할 수 있습니다.
+  activerecord:
+    models:
+      setting: 설정
+    attributes:
+      setting:
+        name: 항목
+        value: 값
+        restricted: 접근 제한
