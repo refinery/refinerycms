@@ -1,0 +1,36 @@
+ko:
+  refinery:
+    plugins:
+      refinery_files:
+        title: 파일
+        description: 새 파일을 업로드하거나 업로드된 파일을 링크합니다.
+    admin:
+      resources:
+        delete: 이 파일 삭제
+        edit: 이 파일 편집
+        form:
+          download_current: 현재 파일 다운로드
+          or: 또는
+          replace: " 이 파일로 대체..."
+          maximum_file_size: 파일의 최대 크기는 %{megabytes}MB입니다.
+        resource:
+          download: 이 파일 다운로드 (%{size})
+        actions:
+          upload_new: 새 파일 업로드
+        records:
+          no_files_yet: 파일이 없습니다. "새 파일 업로드"를 클릭하여 파일을 추가하세요.
+        insert:
+          existing: 기존 파일
+          new: 새 파일
+          no_files: 파일이 없습니다.
+        existing_resource:
+          link_to_file: 이 파일로 링크
+          button_text: 삽입
+  activerecord:
+    models:
+      resource: 파일
+    errors:
+      models:
+        resource:
+          blank: 업로드할 파일을 선택해주세요.
+          too_long: 파일의 크기는 %{count} 이하여야 합니다.
