@@ -1,5 +1,5 @@
 ::Refinery::Application.routes.draw do
-  scope(:as => 'refinery_page', :module => 'refinery') do
+  scope(:module => 'refinery') do
     match '*path' => 'pages#show'
   end
 end
