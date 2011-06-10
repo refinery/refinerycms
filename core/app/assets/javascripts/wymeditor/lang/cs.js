@@ -42,7 +42,7 @@ WYMeditor.STRINGS['cs'] = {
 	Status:			 'Stav',
 	Source_Code:		'Zdrojový kód',
 	Apply_Style: 'Styl',
-	Insert: 'Vložit'
+	Insert: 'Vložit',
 	Text_Align:       'Zarovnání textu',
 	Image_Align:      'Zarovnání obrázku',
 	Font_Size:        'Velikost písma',
