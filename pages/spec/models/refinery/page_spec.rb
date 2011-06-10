@@ -116,6 +116,10 @@ module Refinery
       end
 
       it 'reposition correctly' do
+        # TODO: remove this
+        # can someone explain why without next line test is failing?
+        page.parts.inspect
+
         page.parts.first.position = 6
         page.parts.last.position = 4
 
