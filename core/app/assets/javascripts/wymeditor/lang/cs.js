@@ -43,5 +43,16 @@ WYMeditor.STRINGS['cs'] = {
 	Source_Code:		'Zdrojový kód',
 	Apply_Style: 'Styl',
 	Insert: 'Vložit'
+	Text_Align:       'Zarovnání textu',
+	Image_Align:      'Zarovnání obrázku',
+	Font_Size:        'Velikost písma',
+	Left:             'Vlevo',
+	Right:            'Vpravo',
+	Center:           'Na střed',
+	Justify:          'Do bloku',
+	Small:            'Malé',
+	Normal:           'Normální',
+	Large:            'Velké',
+	Apply_Style:      'Styl'
 };
 
