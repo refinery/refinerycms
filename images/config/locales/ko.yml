@@ -21,7 +21,7 @@ ko:
           no_images_yet: 이미지가 없습니다. "새 이미지 추가"를 클릭하여 이미지를 추가하세요.
         index:
           view:
-            switch_to: %{view_name} 형식으로 보기
+            switch_to: "%{view_name} 형식으로 보기"
             list: 목록
             grid: 격자
         grid_view:
