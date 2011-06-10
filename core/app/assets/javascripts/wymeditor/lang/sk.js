@@ -40,6 +40,17 @@ WYMeditor.STRINGS['sk'] = {
 	Containers:		 'Typy obsahu',
 	Classes:			'Triedy',
 	Status:			 'Stav',
-	Source_Code:		'Zdrojový kód'
+	Source_Code:		'Zdrojový kód',
+	Text_Align: 'Zarovnanie textu',
+	Image_Align: 'Zarovnanie obrázku',
+	Font_Size: 'Veľkosť písma',
+	Left: 'Vľavo',
+	Right: 'Vpravo',
+	Center: 'Na stred',
+	Justify: 'Do bloku',
+	Small: 'Malé',
+	Normal: 'Normálna',
+	Large: 'Veľké',
+	Apply_Style: 'Štýl'
 };
 
