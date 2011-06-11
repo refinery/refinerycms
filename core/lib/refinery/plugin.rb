@@ -10,7 +10,7 @@ module Refinery
     attr_reader   :description
 
     def self.register(&block)
-      yield (plugin = self.new)
+      yield(plugin = self.new)
 
       raise "A plugin MUST have a name!: #{plugin.inspect}" if plugin.name.blank?
 
