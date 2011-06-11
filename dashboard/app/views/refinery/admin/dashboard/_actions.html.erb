@@ -1,5 +1,5 @@
 <ul>
-  <% if Refinery::Plugins.active.names.include?("refinery_pages") %>
+  <% if ::Refinery::Plugins.active.names.include?("refinery_pages") %>
     <li>
       <%= link_to t('.add_a_new_page'),
                   main_app.new_refinery_admin_page_path,
@@ -11,7 +11,7 @@
                   :class => "edit_icon" %>
     </li>
   <% end %>
-  <% if Refinery::Plugins.active.names.include?("refinery_files") %>
+  <% if ::Refinery::Plugins.active.names.include?("refinery_files") %>
     <li>
       <%= link_to t('.upload_a_file'),
                   main_app.new_refinery_admin_resource_path(:dialog => true,
@@ -20,7 +20,7 @@
                   :class => "add_icon" %>
     </li>
   <% end %>
-  <% if Refinery::Plugins.active.names.include?("refinery_images") %>
+  <% if ::Refinery::Plugins.active.names.include?("refinery_images") %>
     <li>
       <%= link_to t('.upload_a_image'),
                   main_app.new_refinery_admin_image_path(:dialog => true,

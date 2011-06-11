@@ -407,7 +407,7 @@ module Refinery
 
       to_run << command
 
-      if Refinery::WINDOWS
+      if ::Refinery::WINDOWS
         to_run = ['"'] + to_run + ['"']
         to_run = %w(cmd /c) + to_run.map{|c| c.gsub(/\//m, '\\')}
       end
@@ -448,4 +448,4 @@ module Refinery
   end
 end
 
-Refinery::AppGenerator.new(ARGV).run! if $0 =~ %r{refinerycms$}
+::Refinery::AppGenerator.new(ARGV).run! if $0 =~ %r{refinerycms$}

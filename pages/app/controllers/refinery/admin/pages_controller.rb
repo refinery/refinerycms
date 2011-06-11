@@ -29,7 +29,7 @@ module ::Refinery
 
     protected
 
-      # We can safely assume Refinery::I18n is defined because this method only gets
+      # We can safely assume ::Refinery::I18n is defined because this method only gets
       # Invoked when the before_filter from the plugin is run.
       def globalize!
         unless action_name.to_s == 'index'
@@ -37,7 +37,7 @@ module ::Refinery
 
           # Check whether we need to override e.g. on the pages form.
           unless params[:switch_locale] || @page.nil? || @page.new_record? || @page.slugs.where({
-            :locale => Refinery::I18n.current_locale
+            :locale => ::Refinery::I18n.current_locale
           }).nil?
             @page.slug = @page.slugs.first if @page.slug.nil? && @page.slugs.any?
             Thread.current[:globalize_locale] = @page.slug.locale if @page.slug

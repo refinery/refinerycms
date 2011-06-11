@@ -3,7 +3,7 @@ module ::Refinery
     module DashboardHelper
 
       def activity_message_for(record)
-        plugin = Refinery::Plugins.active.find_by_model(record.class)
+        plugin = ::Refinery::Plugins.active.find_by_model(record.class)
 
         if (activity = plugin.activity.first).present?
           # work out which action occured

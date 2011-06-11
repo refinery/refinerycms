@@ -6,7 +6,7 @@ namespace :refinery do
 
     if (view = ENV["view"]).present?
       pattern = "#{view.split("/").join(File::SEPARATOR)}*.{erb,builder}"
-      looking_for = Refinery::Plugins.registered.pathnames.map{|p| p.join("app", "views", pattern).to_s}
+      looking_for = ::Refinery::Plugins.registered.pathnames.map{|p| p.join("app", "views", pattern).to_s}
 
       # copy in the matches
       matches = looking_for.collect{|d| Dir[d]}.flatten.compact.uniq
@@ -31,7 +31,7 @@ namespace :refinery do
       end
     elsif (controller = ENV["controller"]).present?
       pattern = "#{controller.split("/").join(File::SEPARATOR)}*.rb"
-      looking_for = Refinery::Plugins.registered.pathnames.map{|p| p.join("app", "controllers", pattern).to_s}
+      looking_for = ::Refinery::Plugins.registered.pathnames.map{|p| p.join("app", "controllers", pattern).to_s}
 
       # copy in the matches
       matches = looking_for.collect{|d| Dir[d]}.flatten.compact.uniq
@@ -52,7 +52,7 @@ namespace :refinery do
       end
     elsif (model = ENV["model"]).present?
       pattern = "#{model.split("/").join(File::SEPARATOR)}*.rb"
-      looking_for = Refinery::Plugins.registered.pathnames.map{|p| p.join("app", "models", pattern).to_s}
+      looking_for = ::Refinery::Plugins.registered.pathnames.map{|p| p.join("app", "models", pattern).to_s}
 
       # copy in the matches
       matches = looking_for.collect{|d| Dir[d]}.flatten.compact.uniq
@@ -73,7 +73,7 @@ namespace :refinery do
       end
     elsif (javascripts = ENV["javascript"]).present?
       pattern = "#{javascripts.split("/").join(File::SEPARATOR)}*.js"
-      looking_for = Refinery::Plugins.registered.pathnames.map{|p| p.join("public", "javascripts", pattern).to_s}
+      looking_for = ::Refinery::Plugins.registered.pathnames.map{|p| p.join("public", "javascripts", pattern).to_s}
 
       # copy in the matches
       matches = looking_for.collect{|d| Dir[d]}.flatten.compact.uniq
@@ -94,7 +94,7 @@ namespace :refinery do
       end
     elsif (stylesheets = ENV["stylesheet"]).present?
       pattern = "#{stylesheets.split("/").join(File::SEPARATOR)}*.css"
-      looking_for = Refinery::Plugins.registered.pathnames.map{|p| p.join("public", "stylesheets", pattern).to_s}
+      looking_for = ::Refinery::Plugins.registered.pathnames.map{|p| p.join("public", "stylesheets", pattern).to_s}
 
       # copy in the matches
       matches = looking_for.collect{|d| Dir[d]}.flatten.compact.uniq

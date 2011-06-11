@@ -40,7 +40,7 @@ module Refinery
     end
 
     def authorized_plugins
-      plugins.collect { |p| p.name } | Refinery::Plugins.always_allowed.names
+      plugins.collect { |p| p.name } | ::Refinery::Plugins.always_allowed.names
     end
 
     def can_delete?(user_to_delete = self)

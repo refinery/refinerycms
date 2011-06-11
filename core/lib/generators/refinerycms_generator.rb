@@ -84,7 +84,7 @@ module ::Refinery
                   "",
                   :verbose => self.options[:update]
 
-        gsub_file admin_base, "< Refinery::AdminBaseController", "< ActionController::Base",
+        gsub_file admin_base, "< ::Refinery::AdminBaseController", "< ActionController::Base",
                   :verbose => self.options[:update]
       end
 

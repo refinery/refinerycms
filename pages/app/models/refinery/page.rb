@@ -101,7 +101,7 @@ module Refinery
     after_destroy :expire_page_caching
     # FIXME: after creating page it's returning nil when asked for title until it gets reloaded.
     # This is just a temporary fix!
-    # page = Refinery::Page.create :title => "Refinery CMS"
+    # page = ::Refinery::Page.create :title => "Refinery CMS"
     # page.title => nil
     # page.valid? => false
     # page.reload.title => "Refinery CMS"

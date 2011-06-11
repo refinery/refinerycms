@@ -6,7 +6,7 @@
           <%= link_to "#{field.to_s.humanize}", "\##{field}" %>
         </li>
       <% end %>
-      <% pages_tabs = Refinery::Pages.tabs
+      <% pages_tabs = ::Refinery::Pages.tabs
          tabs_to_show = (refinery_pages_tabs ||= []).map!(&:to_s)
          pages_tabs.reject!{|t| refinery_pages_tabs.exclude?(t.name.to_s) } unless tabs_to_show.include?('all')
          pages_tabs.each_with_index do |tab, tab_index| %>
