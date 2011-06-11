@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<%= render :partial => "/refinery/html_tag" %>
+<%= render :partial => '/refinery/html_tag' %>
   <% content_for :meta, "<meta refinerycms='#{Refinery.version}' />".html_safe %>
   <%= render :partial => "refinery/admin/head" %>
-  <body class='<%= action_name %> <%= I18n.locale %>'>
+  <body class="<%= action_name %> <%= I18n.locale %>">
     <%= render :partial => '/refinery/site_bar' %>
     <div id='tooltip_container'></div>
-    <header>
+    <header id="header">
       <%= render :partial => "refinery/admin/menu" %>
     </header>
     <div id="page_container">
@@ -13,7 +13,7 @@
         <div id="content" class="clearfix">
           <div id="flash_container">
             <%= render :partial => '/refinery/no_script' %>
-            <%= render :partial => "/refinery/message" %>
+            <%= render :partial => '/refinery/message' %>
           </div>
           <%= yield %>
         </div>
