@@ -23,11 +23,6 @@ module Refinery
       ::Refinery::Setting.set(:use_marketable_urls, {:value => true, :scoping => 'pages'})
     end
 
-    def create_page_parts
-      page.parts.create(:title => 'body', :content => "I'm the first page part for this page.")
-      page.parts.create(:title => 'side body', :content => 'Closely followed by the second page part.')
-    end
-
     context 'cannot be deleted under certain rules' do
       it 'if link_url is present' do
         page.link_url = '/plugin-name'
@@ -104,7 +99,11 @@ module Refinery
     end
 
     context 'content sections (page parts)' do
-      before { create_page_parts }
+      before do
+        page.parts.create(:title => 'body', :content => "I'm the first page part for this page.")
+        page.parts.create(:title => 'side body', :content => 'Closely followed by the second page part.')
+        page.parts.reload
+      end
 
       it 'return the content when using content_for' do
         page.content_for(:body).should == "<p>I'm the first page part for this page.</p>"
@@ -116,12 +115,8 @@ module Refinery
       end
 
       it 'reposition correctly' do
-        # TODO: remove this
-        # can someone explain why without next line test is failing?
-        page.parts.inspect
-
-        page.parts.first.position = 6
-        page.parts.last.position = 4
+        page.parts.first.update_attribute(:position, 6)
+        page.parts.last.update_attribute(:position, 4)
 
         page.parts.first.position.should == 6
         page.parts.last.position.should == 4
