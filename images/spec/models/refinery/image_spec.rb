@@ -3,7 +3,7 @@ require 'spec_helper'
 module Refinery
   describe Image do
     let(:image) do
-      Refinery::Image.create!(:id => 1,
+      ::Refinery::Image.create!(:id => 1,
                     :image => File.new(File.expand_path('../../../uploads/beach.jpeg', __FILE__)))
     end
 
@@ -31,7 +31,7 @@ module Refinery
       end
 
       it "should use right geometry when given a thumbnail name" do
-        name, geometry = Refinery::Image.user_image_sizes.first
+        name, geometry = ::Refinery::Image.user_image_sizes.first
         image.thumbnail(name).url.should == image.thumbnail(geometry).url
       end
     end
@@ -46,27 +46,27 @@ module Refinery
       context "dialog is true" do
         context "has_size_options is true" do
           it "returns image count specified by PAGES_PER_DIALOG_THAT_HAS_SIZE_OPTIONS constant" do
-            Refinery::Image.per_page(true, true).should == Image::PAGES_PER_DIALOG_THAT_HAS_SIZE_OPTIONS
+            ::Refinery::Image.per_page(true, true).should == Image::PAGES_PER_DIALOG_THAT_HAS_SIZE_OPTIONS
           end
         end
 
         context "has_size_options is false" do
           it "returns image count specified by PAGES_PER_DIALOG constant" do
-            Refinery::Image.per_page(true).should == Image::PAGES_PER_DIALOG
+            ::Refinery::Image.per_page(true).should == Image::PAGES_PER_DIALOG
           end
         end
       end
 
       context "dialog is false" do
         it "returns image count specified by PAGES_PER_ADMIN_INDEX constant" do
-          Refinery::Image.per_page.should == Image::PAGES_PER_ADMIN_INDEX
+          ::Refinery::Image.per_page.should == Image::PAGES_PER_ADMIN_INDEX
         end
       end
     end
 
     describe ".user_image_sizes" do
       it "sets and returns a hash consisting of the keys contained in the ::Refinery::Setting" do
-        Refinery::Image.user_image_sizes.should == ::Refinery::Setting.get(:user_image_sizes)
+        ::Refinery::Image.user_image_sizes.should == ::Refinery::Setting.get(:user_image_sizes)
       end
     end
 

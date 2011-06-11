@@ -30,7 +30,7 @@
     </span>
     <ul id='plugins' class='checkboxes'>
       <% @available_plugins.each do |plugin| -%>
-        <% if Refinery::Plugins.always_allowed.names.include?(plugin[:name]) or
+        <% if ::Refinery::Plugins.always_allowed.names.include?(plugin[:name]) or
               (plugin[:name] == 'refinery_users' and @user.id == current_refinery_user.id) %>
           <%= hidden_field_tag 'user[plugins][]', plugin[:name],
                                :id => "plugins_#{plugin[:name]}" %>

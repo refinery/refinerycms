@@ -14,7 +14,7 @@ end
 module Refinery
   describe Plugin do
 
-    let(:plugin) { Refinery::Plugins.registered.detect { |plugin| plugin.name == 'refinery_rspec' } }
+    let(:plugin) { ::Refinery::Plugins.registered.detect { |plugin| plugin.name == 'refinery_rspec' } }
 
     def setup_i18n
       ::I18n.backend = ::I18n::Backend::Simple.new

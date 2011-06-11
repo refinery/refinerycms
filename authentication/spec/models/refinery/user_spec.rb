@@ -130,7 +130,7 @@ module Refinery
         ["refinery_one", "refinery_two", "refinery_three"].each_with_index do |name, index|
           user.plugins.create!(:name => name, :position => index)
         end
-        user.authorized_plugins.should == user.plugins.collect { |p| p.name } | Refinery::Plugins.always_allowed.names
+        user.authorized_plugins.should == user.plugins.collect { |p| p.name } | ::Refinery::Plugins.always_allowed.names
       end
     end
 

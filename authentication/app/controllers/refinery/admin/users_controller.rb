@@ -63,7 +63,8 @@ module Refinery
           end
 
           if @user.update_attributes(params[:user])
-            redirect_to main_app.refinery_admin_users_path, :notice => t('updated', :what => @user.username, :scope => 'refinery.crudify')
+            redirect_to main_app.refinery_admin_users_path,
+                        :notice => t('updated', :what => @user.username, :scope => 'refinery.crudify')
           else
             @user.plugins = @previously_selected_plugin_names
             @user.roles = @previously_selected_roles

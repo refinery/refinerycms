@@ -1,6 +1,6 @@
 <%
   # Collect the root items.
-  # Refinery::Menu is smart enough to remember all of the items in the original collection.
+  # ::Refinery::Menu is smart enough to remember all of the items in the original collection.
   if (roots = local_assigns[:roots] || (collection ||= @menu_pages).roots).present?
     dom_id ||= 'menu'
     css = [(css || 'menu'), 'clearfix'].flatten.join(' ')
