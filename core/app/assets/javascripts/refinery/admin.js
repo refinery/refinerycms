@@ -2,7 +2,6 @@ var shiftHeld = false;
 var initialLoad = true;
 $(document).ready(function(){
   init_interface();
-  init_sortable_menu();
   init_submit_continue();
   init_modal_dialogs();
   init_tooltips();
@@ -129,24 +128,6 @@ init_interface = function() {
     }
   });
 
-  // ensure that the menu isn't wider than the page_container or else it looks silly to round that corner.
-  if (($menu = $('#menu')).length > 0) {
-    $menu.jcarousel({
-      vertical: false
-      , scroll: 1
-      , buttonNextHTML: "<img src='/assets/refinery/carousel-right.png' alt='down' height='15' width='10' />"
-      , buttonPrevHTML: "<img src='/assets/refinery/carousel-left.png' alt='up' height='15' width='10' />"
-      , listTag: $menu.get(0).tagName.toLowerCase()
-      , itemTag: $menu.children(':first').get(0).tagName.toLowerCase()
-    });
-
-    if ($menu.outerWidth() < $('#page_container').outerWidth()) {
-      $("#page_container:not('.login #page_container')").corner('5px tr');
-    } else {
-      $("#page_container:not('.login #page_container')").uncorner();
-    }
-  }
-
   $('#current_locale li a').click(function(e) {
     $('#current_locale li a span').each(function(span){
       $(this).css('display', $(this).css('display') == 'none' ? '' : 'none');
@@ -207,52 +188,6 @@ init_modal_dialogs = function(){
       e.preventDefault();
     });
   });
-};
-
-init_sortable_menu = function(){
-  var $menu = $('#menu');
-
-  if($menu.length === 0){return;}
-
-  $menu.sortable({
-    axis: 'x',
-    cursor: 'crosshair',
-    connectWith: '.nested',
-    update: function(){
-      $.post('/refinery/update_menu_positions', $menu.sortable('serialize', {
-                key: 'menu[]'
-                , expression: /plugin_([\w]*)$/
-              }));
-    }
-  }).tabs();
-  //Initial status disabled
-  $menu.sortable('disable');
-
-  $menu.find('#menu_reorder').click(function(e){
-    trigger_reordering(e, true);
-  });
-
-  $menu.find('#menu_reorder_done').click(function(e){
-    trigger_reordering(e, false);
-  });
-
-  $menu.find('> a').corner('top 5px');
-};
-
-trigger_reordering = function(e, enable) {
-  e.preventDefault();
-  $('#menu_reorder, #menu_reorder_done').toggle();
-  $('#site_bar, #content').fadeTo(500, enable ? 0.35 : 1);
-
-  if(enable) {
-    $menu.find('.tab a').click(function(ev){
-      ev.preventDefault();
-    });
-  } else {
-    $menu.find('.tab a').unbind('click');
-  }
-
-  $menu.sortable(enable ? 'enable' : 'disable');
 };
 
 init_submit_continue = function(){

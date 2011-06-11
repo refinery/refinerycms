@@ -1,0 +1,26 @@
+/* styles for the main navigation of the Refinery backend */
+
+header nav#menu {
+  margin-top: -5px;
+  padding-top: 45px;
+  background: url('/assets/refinery/menu-top-panel.png') no-repeat;
+  
+  a {
+    display: block;
+    text-align: right;
+    text-decoration: none;
+    line-height: 40px;
+    background: #EAEAEA url('/assets/refinery/menu-band.png') repeat-y 175px 0px;
+    padding-right: 20px;
+    border-top: 1px solid #DADADA;
+    border-right: 1px solid #DADADA;
+    color: #0770AD;
+    text-shadow: 0px 1px 1px white;
+    
+    &.active {
+      background: #F7F7F7;
+      color: #3F3F3F;
+      border-right: none;
+    }
+  }
+}

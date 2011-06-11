@@ -28,9 +28,11 @@ en:
       updated: '%{what} was successfully updated.'
       destroyed: '%{what} was successfully removed.'
     site_bar:
-      log_out: Log out
-      switch_to_your_website: Switch to your website
-      switch_to_your_website_editor: Switch to your website editor
+      log_out: Sign out
+      greeting: Hello
+      help: Help
+      switch_to_your_website: Switch to website
+      switch_to_your_website_editor: Switch to website editor
     admin:
       continue_editing:
         save_and_continue_editing: 'Save & continue editing'
