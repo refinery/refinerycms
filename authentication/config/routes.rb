@@ -4,9 +4,7 @@
   # For Devise routes, see: https://github.com/plataformatec/devise
   scope(:module => 'refinery') do
     devise_for :'refinery/users', :class_name => "::Refinery::User", :module => 'refinery', :controllers => {
-      :sessions => 'refinery/sessions',
-      :registrations => 'refinery/users',
-      :passwords => 'refinery/passwords'
+      :registrations => 'refinery/users'
     }, :path_names => {
       :sign_out => 'logout',
       :sign_in => 'login',
@@ -18,6 +16,7 @@
     scope(:module => 'admin') do
       get 'refinery', :to => 'dashboard#index', :as => :refinery_root
       get 'refinery', :to => 'dashboard#index', :as => :user_root
+
 
       scope(:path => 'refinery', :as => 'refinery_admin') do
         resources :users, :except => :show
