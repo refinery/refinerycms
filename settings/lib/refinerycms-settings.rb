@@ -24,6 +24,11 @@ module Refinery
           plugin.url = app.routes.url_helpers.refinery_admin_settings_path
           plugin.version = %q{1.1.0}
           plugin.menu_match = /(refinery|admin)\/settings$/
+          
+          plugin.submenu_items = {"Add a Setting" => app.routes.url_helpers.new_refinery_admin_setting_path({
+                                  :dialog => true,
+                                  :width => 725,
+                                  :height => 565})}
         end
       end
     end

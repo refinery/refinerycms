@@ -3,8 +3,13 @@
   <% group_by_date(@resources).each do |container|
        date = Date.parse((resource_group = container.last).first.created_at.to_s) %>
     <h3><%= l(date, :format => :long ) %></h3>
-    <ul>
+    <table>
+      <tr>
+        <th>Filename</th>
+        <th>Size</th>
+        <th>Options</th>
+      </tr>
       <%= render :partial => "resource", :collection => resource_group %>
-    </ul>
+    </table>
   <% end %>
 </div>

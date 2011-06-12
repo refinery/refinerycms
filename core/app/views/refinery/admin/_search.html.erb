@@ -1,6 +1,6 @@
 <form method='GET' action='<%= url %>' class='search_form'>
-  <input id='search' name='search' size='22' type='search' value='<%= params[:search] %>' />
+  <input id='search' name='search' size='22' placeholder='<%= t('placeholder_text', :scope => 'refinery.admin.search') %>' type='search' value='<%= params[:search] %>' />
   <% if params[:wymeditor].presence %><input name='wymeditor' value='true' type='hidden'><% end %>
   <% if from_dialog? %><input id='dialog' name='dialog' type='hidden' value='true' /><% end %>
-  <%= submit_tag t('button_text', :scope => 'refinery.admin.search'), :name => nil %>
+  <%= submit_tag t('button_text', :scope => 'refinery.admin.search'), :name => nil, :id => "search_button" %>
 </form>

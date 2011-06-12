@@ -5,8 +5,8 @@ module Refinery
 
     attr_accessor :name, :class_name, :controller, :directory, :url,
                   :version, :dashboard, :always_allow_access,
-                  :menu_match, :hide_from_menu,
-                  :pathname, :plugin_activity
+                  :menu_match, :hide_from_menu, :pathname,
+                  :plugin_activity, :submenu_items
     attr_reader   :description
 
     def self.register(&block)
@@ -52,6 +52,11 @@ module Refinery
     # Retrieve information about how to access the latest activities of this plugin.
     def activity
       self.plugin_activity ||= []
+    end
+    
+    # Returns a list of items to display in the submenu for this plugin.
+    def submenu_items
+      @submenu_items ||= []
     end
 
     # Stores information that can be used to retrieve the latest activities of this plugin

@@ -20,7 +20,7 @@ module ::Refinery
     PAGES_PER_DIALOG = 12
 
     # when listing resources out in the admin area, how many resources should show per page
-    PAGES_PER_ADMIN_INDEX = 20
+    PAGES_PER_ADMIN_INDEX = 15
 
     delegate :ext, :size, :mime_type, :url, :to => :file
 

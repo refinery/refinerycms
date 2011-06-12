@@ -17,7 +17,7 @@ en:
           see_home_page: See home page
         recent_activity:
           empty: There has not been any activity recently.
-          latest_activity: Latest Activity
+          latest_activity: Recent activity
           latest_activity_message: '%{what} %{kind} was %{action}'
         recent_inquiries:
           latest_inquiries: Latest Inquiries

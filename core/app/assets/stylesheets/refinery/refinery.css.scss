@@ -20,11 +20,24 @@ body {
   margin-bottom: 30px;
 }
 
+#page h2 {
+  font-size: 18px;
+  font-weight: bold;
+  border-bottom: 1px solid #DEDEDE;
+  padding-bottom: 8px;
+  box-shadow: 0px 1px 0px white;
+  color: #3F3F3F;
+}
+
+
 @import 'refinery/icons';
+@import 'refinery/browser-hacks';
+@import 'refinery/dashboard';
 @import 'refinery/site_bar';
 @import 'refinery/dialogs';
 @import 'refinery/forms';
 @import 'refinery/menu';
 @import 'refinery/submenu';
 @import 'refinery/tooltips';
+@import 'refinery/records';
 @import 'wymeditor/skins/refinery/skin';

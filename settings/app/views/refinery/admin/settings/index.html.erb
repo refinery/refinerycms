@@ -1,9 +1,10 @@
-<div id='records'>
+<%= render :partial => "/refinery/admin/search",
+           :locals => {
+             :url => main_app.refinery_admin_settings_path
+           } %>
+<section id='records'>
   <%= render :partial => 'records' %>
-</div>
-<div id='actions'>
-  <%= render :partial => 'actions' %>
-</div>
+</section>
 <% content_for :javascripts do %>
   <script>
     $(document).ready(function() {

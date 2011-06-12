@@ -1,0 +1,22 @@
+.clearfix:after {
+  content:".";
+  display:block;
+  height:0;
+  clear:both;
+  visibility:hidden;
+}
+.clearfix {display:inline-block;}
+/* Hide from IE Mac \*/
+.clearfix {display:block;}
+/* End hide from IE Mac */
+
+/*
+Firefox Dotted Line Fix
+  - http://sonspring.com/journal/removing-dotted-links
+*/
+a:focus {
+  outline: none;
+}
+a img {
+  border: 0px none;
+}

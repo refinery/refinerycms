@@ -23,4 +23,15 @@ header nav#menu {
       border-right: none;
     }
   }
+  
+  &>nav {
+    a {
+        color: white;
+        background: #29ACF6 url('/assets/refinery/menu-stripes.png');
+        text-shadow: 0px 1px 1px #1693DA;
+        border-top: 1px solid #1693DA;
+        box-shadow: inset -3px 3px 0px rgba(22,147,218,0.4);
+    }
+  }
+
 }

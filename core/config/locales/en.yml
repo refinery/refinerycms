@@ -55,7 +55,8 @@ en:
         name: Add File
         current: Current File
       search:
-        button_text: Search
+        placeholder_text: Search
+        button_text: GO
         results_for: "Search results for '%{query}'"
         no_results: 'Sorry, no results found'
       delete:
@@ -78,5 +79,6 @@ en:
     formats:
       short: "%A, %d %B %Y"
   pagination:
+    pages: Pages
     next: "&raquo;"
     previous: "&laquo;"

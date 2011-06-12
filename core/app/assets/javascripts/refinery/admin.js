@@ -6,6 +6,7 @@ $(document).ready(function(){
   init_modal_dialogs();
   init_tooltips();
   init_ajaxy_pagination();
+  init_pjax();
 });
 
 if(typeof(window.onpopstate) == "object"){
@@ -1087,4 +1088,8 @@ parseURL = function(url)
 
 iframed = function() {
   return (parent && parent.document && parent.document.location.href != document.location.href && $.isFunction(parent.$));
+};
+
+init_pjax = function(){
+  alert("test");
 };

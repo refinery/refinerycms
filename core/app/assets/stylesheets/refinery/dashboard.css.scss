@@ -1,0 +1,54 @@
+#current_locale {
+  float: right;
+}
+
+#recent_activity {
+  ul {
+    margin: 0px;
+    padding: 0px;
+    
+    li {
+      list-style: none;
+      margin-bottom: 10px;
+      
+      a {
+        color: #0E87CD;
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+#quick_tasks {
+  margin-bottom: 30px;
+  
+
+  ul {
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+
+    li {
+      float: left;
+  
+      a {
+        color: #222;
+        display: block;
+        width: 150px;
+        height: 70px;
+        line-height: 70px;
+        text-align: center;
+        text-decoration: none;
+        text-shadow: 0px 1px 0px white;
+        border: 1px solid #C1C1C1;
+        border-radius: 5px;
+        margin-right: 10px;
+        margin-bottom: 10px;
+        font-weight: bold;
+        font-size: 14px;
+    
+        background-image: -webkit-gradient(linear,left top,left bottom,from(#F8F8F8),to(#E2E2E2));
+      }
+    }
+  }
+}

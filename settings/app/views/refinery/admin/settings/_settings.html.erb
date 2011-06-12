@@ -1,5 +1,15 @@
+<table class="<%= ['pagination_frame', pagination_css_class].compact.join(' ') %>">
+  <tr>
+    <th>
+      Name
+    </th>
+    <th>
+      Value
+    </th>
+    <th>
+      Options
+    </th>
+  </tr>
+  <%= render :partial => 'setting', :collection => @settings %>
+</table>
 <%= paginate @settings %>
-<ul class="<%= ['pagination_frame', pagination_css_class].compact.join(' ') %>">
-  <%= render :partial => 'setting',
-             :collection => @settings %>
-</ul>

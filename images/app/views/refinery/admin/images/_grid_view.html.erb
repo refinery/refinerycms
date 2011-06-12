@@ -3,14 +3,9 @@
     <li id="image_<%= image.id %>" class='image_<%= index % 5 %>'>
       <%= image_fu image, '135x135#c', :title => image.title %>
       <span class='actions'>
-        <%= link_to refinery_icon_tag('eye.png'), image.url,
-                    :target => "_blank",
-                    :title => t('.view_live_html') %>
-        <%= link_to refinery_icon_tag('application_edit.png'), main_app.edit_refinery_admin_image_path(image),
-                    :title => t('edit', :scope => 'refinery.admin.images') %>
-        <%= link_to refinery_icon_tag('delete.png'), main_app.refinery_admin_image_path(image),
+        <%= link_to "Edit", main_app.edit_refinery_admin_image_path(image) %> | 
+        <%= link_to "Delete", main_app.refinery_admin_image_path(image),
                     :class => "cancel confirm-delete",
-                    :title => t('delete', :scope => 'refinery.admin.images'),
                     :confirm => t('message', :scope => 'refinery.admin.delete', :title => image.title),
                     :method => :delete %>
       </span>

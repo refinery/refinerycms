@@ -35,6 +35,11 @@ module Refinery
           plugin.activity = {
             :class => ::Refinery::Resource
           }
+          plugin.submenu_items = {
+            "Upload a file" => app.routes.url_helpers.new_refinery_admin_resource_path(:dialog => true,
+                                                                                       :width => 600,
+                                                                                       :height => 300)
+          }
         end
       end
     end
