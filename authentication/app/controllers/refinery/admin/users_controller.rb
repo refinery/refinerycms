@@ -26,7 +26,7 @@ module Refinery
           unless current_refinery_user.has_role?(:superuser) and ::Refinery::Setting.find_or_set(:superuser_can_assign_roles, false)
             @user.add_role(:refinery)
           else
-            @user.roles = @selected_role_names.collect{|r| Role[r.downcase.to_sym]}
+            @user.roles = @selected_role_names.collect{|r| ::Refinery::Role[r.downcase.to_sym]}
           end
 
           redirect_to(main_app.refinery_admin_users_path, :notice => t('created', :what => @user.username, :scope => 'refinery.crudify'))
@@ -56,7 +56,7 @@ module Refinery
           # Store the current plugins and roles for this user.
           @previously_selected_plugin_names = @user.plugins.collect{|p| p.name}
           @previously_selected_roles = @user.roles
-          @user.roles = @selected_role_names.collect{|r| Role[r.downcase.to_sym]}
+          @user.roles = @selected_role_names.collect{|r| ::Refinery::Role[r.downcase.to_sym]}
           if params[:user][:password].blank? and params[:user][:password_confirmation].blank?
             params[:user].except!(:password, :password_confirmation)
           end
@@ -80,7 +80,7 @@ module Refinery
           {:name => a.name, :title => a.title}
         }.sort_by {|a| a[:title]}
 
-        @available_roles = Role.all
+        @available_roles =::Refinery::Role.all
       end
 
     end

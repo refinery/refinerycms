@@ -1,12 +1,12 @@
 class CreateRefinerycmsAuthenticationSchema < ActiveRecord::Migration
   def self.up
     # Postgres apparently requires the roles_users table to exist before creating the roles table.
-    create_table ::RolesUsers.table_name, :id => false, :force => true do |t|
+    create_table ::Refinery::RolesUsers.table_name, :id => false, :force => true do |t|
       t.integer "user_id"
       t.integer "role_id"
     end
 
-    create_table ::Role.table_name, :force => true do |t|
+    create_table ::Refinery::Role.table_name, :force => true do |t|
       t.string "title"
     end
 

@@ -46,13 +46,13 @@ module Refinery
     def can_delete?(user_to_delete = self)
       user_to_delete.persisted? and
       !user_to_delete.has_role?(:superuser) and
-      Role[:refinery].users.count >= 1 and
+      ::Refinery::Role[:refinery].users.count >= 1 and
       id != user_to_delete.id
     end
 
     def add_role(title)
       raise ArgumentException, "Role should be the title of the role not a role object." if title.is_a?(Role)
-      roles << Role[title] unless has_role?(title)
+      roles << ::Refinery::Role[title] unless has_role?(title)
     end
 
     def has_role?(title)
@@ -68,7 +68,7 @@ module Refinery
         # add refinery role
         add_role(:refinery)
 
-        if Role[:refinery].users.count == 1
+        if ::Refinery::Role[:refinery].users.count == 1
           # this is the superuser if this user is the only user.
           add_role(:superuser)
 

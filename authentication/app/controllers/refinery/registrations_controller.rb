@@ -21,7 +21,7 @@ module ::Refinery
         @user.add_role(:refinery)
         @user.plugins = @selected_plugin_titles
         @user.save
-        if Role[:refinery].users.count == 1
+        if ::Refinery::Role[:refinery].users.count == 1
           # this is the superuser if this user is the only user.
           @user.add_role(:superuser)
           @user.save
@@ -39,7 +39,7 @@ module ::Refinery
         flash[:message] = "<h2>#{t('welcome', :scope => 'refinery.users.create', :who => @user.username).gsub(/\.$/, '')}.</h2>".html_safe
 
         site_name_setting = ::Refinery::Setting.find_or_create_by_name('site_name', :value => "Company Name")
-        if site_name_setting.value.to_s =~ /^(|Company\ Name)$/ or Role[:refinery].users.count == 1
+        if site_name_setting.value.to_s =~ /^(|Company\ Name)$/ or ::Refinery::Role[:refinery].users.count == 1
           flash[:message] << "<p>#{t('setup_website_name_html', :scope => 'refinery.users',
                                      :link => main_app.edit_refinery_admin_setting_path(site_name_setting, :dialog => true),
                                      :title => t('edit', :scope => 'refinery.admin.settings'))}</p>".html_safe
@@ -62,7 +62,7 @@ module ::Refinery
     end
 
     def refinery_users_exist?
-      Role[:refinery].users.any?
+      ::Refinery::Role[:refinery].users.any?
     end
 
   end

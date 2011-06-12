@@ -10,7 +10,7 @@ module Refinery
     context "Roles" do
       context "add_role" do
         it "raises Exception when Role object is passed" do
-          proc {user.add_role(Role.new)}.should raise_exception
+          proc {user.add_role(Refinery::Role.new)}.should raise_exception
         end
 
         it "adds a Role to the User when role not yet assigned to User" do
@@ -30,7 +30,7 @@ module Refinery
 
       context "has_role" do
         it "raises Exception when Role object is passed" do
-          proc{ user.has_role?(Role.new)}.should raise_exception
+          proc{ user.has_role?(Refinery::Role.new)}.should raise_exception
         end
 
         it "returns the true if user has Role" do
@@ -96,7 +96,7 @@ module Refinery
         end
 
         it "if user count with refinery role < 1" do
-          Role[:refinery].users.delete([ refinery_user, super_user ])
+          ::Refinery::Role[:refinery].users.delete([ refinery_user, super_user ])
           super_user.can_delete?(refinery_user).should be_false
         end
 
@@ -107,7 +107,7 @@ module Refinery
 
       context "allow to delete" do
         it "if user count with refinery role = 1" do
-          Role[:refinery].users.delete(refinery_user)
+          ::Refinery::Role[:refinery].users.delete(refinery_user)
           super_user.can_delete?(refinery_user).should be_true
         end
 
