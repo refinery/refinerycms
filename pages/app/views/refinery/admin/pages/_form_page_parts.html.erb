@@ -14,8 +14,8 @@
     </li>
   </ul>
 <% end %>
-<div id='page-tabs' class='clearfix ui-tabs ui-widget ui-widget-content ui-corner-all'>
-  <ul id='page_parts'>
+<div id='tab_wrapper' class='clearfix'>
+  <ul id='tabs'>
     <% @page.parts.each_with_index do |part, part_index| %>
       <li class='ui-state-default<%= ' ui-state-active' if part_index == 0 %>'>
         <%= link_to part.title, "##{@page.persisted? ? part.to_param : "page_part_new_#{part_index}"}" %>

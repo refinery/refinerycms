@@ -1,0 +1,118 @@
+.field {
+  label {
+    font-size: 14px;
+    display: block;
+    margin-bottom: 5px;
+  }
+  .larger {
+    font-size: 18px;
+    line-height: 28px;
+    height: 28px;
+    padding-left: 5px;
+  }
+  .widest {
+    width: 99%;
+  }
+  input {
+    border: 1px solid #CBCBCB;
+    box-shadow: inset 0px 0px 4px #CCCCCC;
+  }
+  input:focus {
+    outline: 5px solid #CEE8F7;
+  }
+}
+
+.form-actions {
+  input, a {
+    display: inline-block;
+    border: 1px solid #979797;
+    height: 27px;
+    font-size: 13px;
+    line-height: 27px;
+    background: #F4F4F4;
+    border-radius: 5px;
+    padding: 0px 9px;
+    color: #006699;
+    text-align: center;
+    font-weight: bold;
+    text-shadow: 0px 1px 1px white;
+    text-decoration: none;
+    background-image: -webkit-gradient(linear,left top,left bottom,from(#f6f6f6),to(#C2C2C2));
+  }
+  
+  input {
+    height: 29px;
+  }
+  
+  #cancel_button {
+    margin-left: 10px;
+  }
+  
+  #submit_button {
+    border: 1px solid #308606;
+    color: white;
+    
+    text-shadow: 0px -1px 1px #308606;
+    background-image: -webkit-gradient(linear,left top,left bottom,from(#79E544),to(#308606));
+  }
+  
+  #submit_button:focus {
+    background-image: -webkit-gradient(linear,left top,left bottom,from(#308606),to(#79E544));
+  }
+}
+
+#tab_wrapper {
+  margin-top: 15px;
+}
+
+#tabs {
+  margin: 0px;
+  padding: 0px;
+  
+  li {
+    float: left;
+    list-style: none;
+    
+    a {
+      background: #E7E7E7;
+      height: 30px;
+      display: block;
+      line-height: 30px;
+      padding: 0px 10px;
+      color: #3F3F3F;
+      text-decoration: none;
+      border: 1px solid #F7F7F7;
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
+      border-bottom: 0px;
+    }
+    &.ui-state-active a {
+      border: 1px solid #CBCBCB;
+      border-bottom: 0px;
+    }
+  } 
+}
+
+#more_options_field {
+  background: #E7E7E7;
+  border-radius: 5px;
+  
+  a {
+    display: block;
+    padding: 11px;
+    color: #0770AD;
+    text-decoration: none;
+    text-shadow: 0px 1px 1px white;
+  }
+}
+
+/* Should potentially be moved into pages, as it's specific to pages */
+#draft_field {
+  position: absolute;
+  bottom: -68px;
+  margin-left: 10px;
+}
+
+#more_options_field {
+  position: relative;
+}

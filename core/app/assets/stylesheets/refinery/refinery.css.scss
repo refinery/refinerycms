@@ -5,6 +5,7 @@ body {
   font-size: 13px;
   margin: 0px;
   background: #DADADA url('/assets/refinery/page-background.png') repeat-y;
+  color: #222;
   
   & > header {
     float: left;
@@ -14,11 +15,15 @@ body {
 
 #page {
   float: left;
+  padding: 30px 35px;
+  width: 70%;
+  margin-bottom: 30px;
 }
 
 @import 'refinery/icons';
 @import 'refinery/site_bar';
 @import 'refinery/dialogs';
+@import 'refinery/forms';
 @import 'refinery/menu';
 @import 'refinery/submenu';
 @import 'refinery/tooltips';

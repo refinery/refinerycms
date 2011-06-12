@@ -35,7 +35,7 @@ en:
       switch_to_your_website_editor: Switch to website editor
     admin:
       continue_editing:
-        save_and_continue_editing: 'Save & continue editing'
+        save_and_continue_editing: 'Save & keep editing'
       form_actions:
         save: Save
         cancel: Cancel

@@ -1,6 +1,6 @@
 <div class='field'>
-  <div id='page-tabs' class='clearfix ui-tabs ui-widget ui-widget-content ui-corner-all'>
-    <ul id='page_parts'>
+  <div id='tab_wrapper' class='clearfix'>
+    <ul id='tabs'>
       <% tabbed_fields.each_with_index do |field, index| %>
         <li class="ui-state-default <%= 'ui-state-active' if index == 0 %>">
           <%= link_to "#{field.to_s.humanize}", "\##{field}" %>

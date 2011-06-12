@@ -1,5 +1,3 @@
-<%= current_user.inspect %>
-<%= current_user.roles.inspect %>
 <% if refinery_user? %>
   <% unless admin? # all required JS included by backend. %>
     <% content_for :stylesheets, stylesheet_link_tag('refinery/site_bar') unless !!local_assigns[:exclude_css] %>
