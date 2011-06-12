@@ -29,9 +29,7 @@ module Refinery
         Refinery.deprecate(:what => 'selected_item', :when => '1.1', :caller => caller) if selected_item
 
         css = []
-        css << "selected" if selected_page_or_descendant_page_selected?(item, collection, selected_item)
-        css << "first" if counter == 0
-        css << "last" if counter == (sibling_count ||= (item.shown_siblings.length - 1))
+        css << 'selected' if selected_page_or_descendant_page_selected?(item, collection, selected_item)
         css
       end
 
