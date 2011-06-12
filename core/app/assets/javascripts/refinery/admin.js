@@ -1,12 +1,36 @@
 var shiftHeld = false;
 var initialLoad = true;
+
+
+
 $(document).ready(function(){
   init_interface();
   init_submit_continue();
   init_modal_dialogs();
   init_tooltips();
   init_ajaxy_pagination();
-  init_pjax();
+
+  $('#menu a').live('click', function(e) {
+    var $the_link = $(this);
+    var $the_href = $the_link.attr('href');
+    $.pjax({
+      url: $the_href,
+      container: '#records',
+      timeout: 1500,
+      data: {container: true},
+      success: function() {
+        $('#menu a.active').removeClass('active');
+        $('#menu ul li ul').hide();
+        
+        $the_link.addClass('active');
+        $("#loader").fadeOut(400);
+        $the_link.next().slideDown(300);
+      }
+    });
+    $("#loader").prependTo($the_link);
+    $("#loader").fadeIn(400);
+    e.preventDefault();
+  });
 });
 
 if(typeof(window.onpopstate) == "object"){
@@ -89,13 +113,6 @@ init_interface = function() {
   }
   $('input:submit:not(.button)').addClass('button');
 
-  if (!$.browser.msie) {
-    $('#page_container, .wym_box').corner('5px bottom');
-    $('.wym_box').corner('5px tr');
-    $('.field > .wym_box').corner('5px tl');
-    $('.wym_iframe iframe').corner('2px');
-    $('.form-actions:not(".form-actions-dialog")').corner('5px');
-  }
   $('#recent_activity li a, #recent_inquiries li a').each(function(i, a) {
     $(this).textTruncate({
       width: $(this).width()
@@ -173,7 +190,6 @@ init_modal_dialogs = function(){
                    + 'app_dialog=true&dialog=true';
 
       iframe = $("<iframe id='dialog_iframe' frameborder='0' marginheight='0' marginwidth='0' border='0'></iframe>");
-      if(!$.browser.msie) { iframe.corner('8px'); }
       iframe.dialog({
         title: $anchor.data('dialog-title')
         , modal: true
@@ -261,10 +277,6 @@ init_tooltips = function(args){
           $('.tooltip').remove();
           tooltip = $("<div class='tooltip'><div><span></span></div></div>").appendTo('#tooltip_container');
           tooltip.find("span").html($(this).attr('tooltip'));
-          if(!$.browser.msie) {
-            tooltip.corner('6px').find('span').corner('6px');
-          }
-
           tooltip_nib_image = $.browser.msie ? 'tooltip-nib.gif' : 'tooltip-nib.png';
           nib = $("<img src='/assets/refinery/"+tooltip_nib_image+"' class='tooltip-nib'/>").appendTo('#tooltip_container');
 
@@ -577,7 +589,6 @@ var page_options = {
       // set the page tabs up, but ensure that all tabs are shown so that when wymeditor loads it has a proper height.
       page_options.tabs = $('#page-tabs');
       page_options.tabs.tabs({tabTemplate: '<li><a href="#{href}">#{label}</a></li>'});
-      page_options.tabs.find(' > ul li a').corner('top 5px');
 
       part_shown = $('#page-tabs .page_part.field').not('.ui-tabs-hide');
       $('#page-tabs .page_part.field').removeClass('ui-tabs-hide');
@@ -591,7 +602,6 @@ var page_options = {
       $(document).ready($.proxy(function(){
         // hide the tabs that are supposed to be hidden.
         $('#page-tabs .page_part.field').not(this).addClass('ui-tabs-hide');
-        $('#page-tabs > ul li a').corner('top 5px');
       }, part_shown));
 
       if(this.enable_parts){
@@ -666,9 +676,6 @@ var page_options = {
               // Wipe the title and increment the index counter by one.
               $('#new_page_part_index').val(parseInt($('#new_page_part_index').val(), 10) + 1);
               $('#new_page_part_title').val('');
-
-              page_options.tabs.find('> ul li a').corner('top 5px');
-
               $('#new_page_part_dialog').dialog('close');
             }
           );
@@ -1090,6 +1097,4 @@ iframed = function() {
   return (parent && parent.document && parent.document.location.href != document.location.href && $.isFunction(parent.$));
 };
 
-init_pjax = function(){
-  alert("test");
-};
+

@@ -1,16 +1,23 @@
+<div id='loader' style='display: none;'>
+  <%= image_tag 'refinery/loader.gif'%>
+</div>
 <nav id="menu">
-  <% ::Refinery::Plugins.active.in_menu.each do |plugin| -%>
-    <% active = plugin.highlighted?(params) %>
-    <%= link_to plugin.title, plugin.url,
-                :class => ("active" if active),
-                :id => "plugin_#{plugin.name}" %>
+  <ul>
+    <% ::Refinery::Plugins.active.in_menu.each do |plugin| -%>
+      <% active = plugin.highlighted?(params) %>
+      <li>
+        <%= link_to plugin.title, plugin.url,
+                    :class => ("active" if active),
+                    :id => "plugin_#{plugin.name}" %>
 
-    <% if plugin.submenu_items.any? && active %>
-      <nav>
-        <% plugin.submenu_items.each do |title, url| %>
-          <%= link_to title, url %>
+        <% if plugin.submenu_items.any? %>
+          <ul<%= " style='display: none'" unless active %>>
+            <% plugin.submenu_items.each do |title, url| %>
+              <li><%= link_to title, url %></li>
+            <% end %>
+          </ul>
         <% end %>
-      </nav>
-    <% end %>
-  <% end -%>
+      </li>
+    <% end -%>
+  </ul>
 </nav>

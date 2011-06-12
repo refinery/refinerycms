@@ -22,7 +22,20 @@
   }
 }
 
+.wym_box {
+  /* bug here where the internal wymeditor white
+  area, doesn't expand width this width */
+  width: 99% !important;
+  min-width: 860px;
+}
+
 .form-actions {
+  .form-actions-right {
+    float: right;
+  }
+  .form-actions-left {
+    float: left;
+  }
   input, a {
     display: inline-block;
     border: 1px solid #979797;
@@ -57,6 +70,9 @@
   
   #submit_button:focus {
     background-image: -webkit-gradient(linear,left top,left bottom,from(#308606),to(#79E544));
+  }
+  #delete_button {
+    color: #f00808;
   }
 }
 

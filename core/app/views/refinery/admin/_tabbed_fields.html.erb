@@ -1,6 +1,6 @@
 <div class='field'>
   <div id='tab_wrapper' class='clearfix'>
-    <ul id='tabs'>
+    <ul id='tabs' class='clearfix'>
       <% tabbed_fields.each_with_index do |field, index| %>
         <li class="ui-state-default <%= 'ui-state-active' if index == 0 %>">
           <%= link_to "#{field.to_s.humanize}", "\##{field}" %>

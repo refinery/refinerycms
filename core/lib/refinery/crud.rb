@@ -223,8 +223,14 @@ module Refinery
             module_eval %(
               def index
                 paginate_all_#{plural_name}
-
-                render :partial => '#{plural_name}' if #{options[:xhr_paging].inspect} && request.xhr?
+                
+                if #{options[:xhr_paging].inspect} && request.xhr?
+                  if params[:container]
+                    render :partial => 'records'
+                  else
+                    render :partial => '#{plural_name}'
+                  end
+                end
               end
             )
           else
