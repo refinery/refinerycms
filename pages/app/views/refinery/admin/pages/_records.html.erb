@@ -1,8 +1,12 @@
-<% if searching? %>
-  <h2><%= t('results_for', :scope => 'refinery.admin.search', :query => params[:search]) %></h2>
-<% end %>
+<%= render :partial => "/refinery/admin/search", :locals => {:url => main_app.refinery_admin_pages_path} %>
+<h2>
+  <% if searching? %>
+    <%= t('results_for', :scope => 'refinery.admin.search', :query => params[:search]) %>
+  <% else %>
+    Pages
+  <% end %>
+</h2>
 <% if @pages.any? %>
-  <%= render :partial => "/refinery/admin/search", :locals => {:url => main_app.refinery_admin_pages_path} %>
   <%= render :partial => 'sortable_list' %>
 <% else %>
   <p>

@@ -7,11 +7,19 @@
     line-height: 34px;
     padding-right: 12px;
     
-    a {
-      color: #0770AD;
-      text-shadow: 0px 1px 0px white;
-      text-decoration: none;
-      padding: 0px 3px;
+    span {
+      a {
+        color: #0770AD;
+        text-shadow: 0px 1px 0px white;
+        text-decoration: none;
+        display: inline-block;
+        padding: 0px 5px;
+        margin: 2px 0px;
+      }
+
+      &:hover {
+        background: white;
+      }
     }
   }
   

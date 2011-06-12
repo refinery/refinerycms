@@ -8,7 +8,7 @@ module Refinery
               :xhr_paging => true
 
       before_filter :load_available_plugins_and_roles, :only => [:new, :create, :edit, :update]
-
+      
       def new
         @user = User.new
         @selected_plugin_names = []

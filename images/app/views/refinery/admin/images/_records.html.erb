@@ -1,8 +1,18 @@
-<% if searching? %>
-  <h2>
-    <%= t('results_for', :scope => 'refinery.admin.search', :query => params[:search]) %>
-  </h2>
+<%= render :partial => "/refinery/admin/search", :locals => {:url => main_app.refinery_admin_images_path} %>
+<% other_image_views.each do |image_view| %>
+  <%= link_to t('switch_to', :scope => 'refinery.admin.images.index.view',
+                             :view_name => t("#{image_view}",
+                             :scope => 'refinery.admin.images.index.view')),
+              main_app.refinery_admin_images_path(:view => image_view,
+                                                  :page => params[:page])  %>
 <% end %>
+<h2>
+  <% if searching? %>
+    <%= t('results_for', :scope => 'refinery.admin.search', :query => params[:search]) %>
+  <% else %>
+    Images
+  <% end %>
+</h2>
 <% if @images.any? %>
   <div class='pagination_container'>
     <%= render :partial => 'images' %>

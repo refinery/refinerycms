@@ -25,6 +25,9 @@ module ::Refinery
         }.first(activity_show_limit=::Refinery::Setting.find_or_set(:activity_show_limit, 7))
 
         @recent_inquiries = defined?(Inquiry) ? Inquiry.latest(activity_show_limit) : []
+        
+        # support pjax requests
+        render :partial => 'records', :layout => false if params[:container]
       end
 
       def disable_upgrade_message

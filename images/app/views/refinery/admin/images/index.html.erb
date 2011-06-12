@@ -1,11 +1,3 @@
-<%= render :partial => "/refinery/admin/search", :locals => {:url => main_app.refinery_admin_images_path} %>
-<% other_image_views.each do |image_view| %>
-  <%= link_to t('switch_to', :scope => 'refinery.admin.images.index.view',
-                             :view_name => t("#{image_view}",
-                             :scope => 'refinery.admin.images.index.view')),
-              main_app.refinery_admin_images_path(:view => image_view,
-                                                  :page => params[:page])  %>
-<% end %>
 <section id='records'>
   <%= render :partial => 'records' %>
 </section>

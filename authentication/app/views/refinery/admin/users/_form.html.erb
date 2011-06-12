@@ -8,20 +8,23 @@
 
   <div class='field'>
     <%= f.label :username %>
-    <%= f.text_field :username %>
+    <%= f.text_field :username, :class => "larger" %>
   </div>
   <div class='field'>
     <%= f.label :email %>
-    <%= f.text_field :email %>
+    <%= f.text_field :email, :class => "larger" %>
   </div>
-  <div class='field'>
-    <%= f.label :password %>
-    <%= f.password_field :password, :autocomplete => 'off' %>
-    <%= "<br /><span class='preview'>#{t('.blank_password_keeps_current')}</span>".html_safe if @user.persisted? %>
-  </div>
-  <div class='field'>
-    <%= f.label :password_confirmation %>
-    <%= f.password_field :password_confirmation, :autocomplete => 'off' %>
+  <%= link_to "Change my password", "#", :id => "password_change" %>
+  <div id='password_change_fields' style='display: none'>
+    <div class='field'>
+      <%= f.label :password %>
+      <%= f.password_field :password, :autocomplete => 'off' %>
+      <%= "<br /><span class='preview'>#{t('.blank_password_keeps_current')}</span>".html_safe if @user.persisted? %>
+    </div>
+    <div class='field'>
+      <%= f.label :password_confirmation %>
+      <%= f.password_field :password_confirmation, :autocomplete => 'off' %>
+    </div>
   </div>
   <div class='field plugin_access'>
     <span class='label_with_help'>

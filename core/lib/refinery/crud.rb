@@ -203,7 +203,11 @@ module Refinery
                 search_all_#{plural_name} if searching?
                 paginate_all_#{plural_name}
 
-                render :partial => '#{plural_name}' if #{options[:xhr_paging].inspect} && request.xhr?
+                if params[:container]
+                  render :partial => 'records'
+                else
+                  render :partial => '#{plural_name}' if #{options[:xhr_paging].inspect} && request.xhr?
+                end
               end
             )
           else

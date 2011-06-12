@@ -31,6 +31,10 @@ $(document).ready(function(){
     $("#loader").fadeIn(400);
     e.preventDefault();
   });
+  
+  $('#password_change').click(function(){
+    $('#password_change_fields').toggle();
+  });
 });
 
 if(typeof(window.onpopstate) == "object"){

@@ -1,8 +1,15 @@
-<% if searching? %>
-  <h2>
+<%= render :partial => "/refinery/admin/search",
+           :locals => {
+             :url => main_app.refinery_admin_settings_path
+           } %>
+
+<h2>
+  <% if searching? %>
     <%= t('results_for', :scope => 'refinery.admin.search', :query => params[:search]) %>
-  </h2>
-<% end %>
+  <% else %>
+    Settings
+  <% end %>
+</h2>
 <% if @settings.any? %>
   <div class='pagination_container'>
     <%= render :partial => 'settings' %>

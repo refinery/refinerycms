@@ -21,7 +21,6 @@
 /*TYPO*/
 .wym_skin_refinery {
   font-size: 62.5%;
-  font-family: Verdana, Arial, sans-serif;
 }
 .wym_skin_refinery h2 {
   font-size: 110%; /* = 11px */
@@ -317,6 +316,15 @@ background-image: url('/assets/wymeditor/skins/refinery/eye.png');
   margin: 0px 0px 5px 0px;
 }
 
+
+.wym_classes {
+    border: 1px solid #CBCBCB !important;
+}
+
+.wym_tools_class .wym_classes li, .wym_classes {
+  background: #e7e7e7 !important;
+}
+
 /* image replacements for containers */
 .wym_skin_refinery .wym_containers li {
   float: left;
@@ -475,6 +483,7 @@ a.wym_wymeditor_link {
   top: 23px;
   padding-top: 6px !important;
   width: 200px;
+
 }
 .wym_classes_hidden {
   display: none;
@@ -499,10 +508,8 @@ a.wym_wymeditor_link {
   display: block;
   cursor: auto;
   font-size: 13px;
-  font-weight: bold;
-  font-style: italic;
+  padding: 3px ;
   margin: 3px 0px 0px 6px;
-  background: #EDEEDE;
 }
 .wym_skin_refinery .wym_tools_class .wym_tools_class_multiple_rules ul li {
 }
