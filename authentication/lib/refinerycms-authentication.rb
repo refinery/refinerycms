@@ -8,10 +8,6 @@ module Refinery
     class Engine < ::Rails::Engine
       isolate_namespace ::Refinery
 
-      initializer 'serve static assets' do |app|
-        app.middleware.insert_after ::ActionDispatch::Static, ::ActionDispatch::Static, "#{root}/public"
-      end
-
       config.autoload_paths += %W( #{config.root}/lib )
 
       initializer "init plugin", :after => :set_routes_reloader do |app|

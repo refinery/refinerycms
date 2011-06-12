@@ -124,11 +124,6 @@ module Refinery
         end
       end
 
-      # Run other initializer code that used to be in config/initializers/
-      initializer 'serve static assets' do |app|
-        app.middleware.insert_after ::ActionDispatch::Static, ::ActionDispatch::Static, "#{root}/public"
-      end
-
       initializer 'add catch all routes' do |app|
         app.routes_reloader.paths << File.expand_path('../refinery/catch_all_routes.rb', __FILE__)
       end
