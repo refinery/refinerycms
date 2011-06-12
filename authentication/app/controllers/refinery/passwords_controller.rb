@@ -2,6 +2,12 @@ module ::Refinery
   class PasswordsController < ::Devise::PasswordsController
     layout 'login'
 
+    before_filter :store_password_reset_return_to, :only => [:update]
+    def store_password_reset_return_to
+      session[:'refinery_user_return_to'] = main_app.refinery_admin_root_path
+    end
+    protected :store_password_reset_return_to
+
     # Rather than overriding devise, it seems better to just apply the notice here.
     after_filter :give_notice, :only => [:update]
     def give_notice

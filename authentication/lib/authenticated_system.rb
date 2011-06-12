@@ -22,6 +22,10 @@ module Refinery
       respond_to?(home_path, true) ? main_app.send(home_path) : main_app.root_path
     end
 
+    def after_sign_out_path_for(resource_or_scope)
+      main_app.root_path
+    end
+
     def refinery_user?
       refinery_user_signed_in? && current_refinery_user.has_role?(:refinery)
     end
