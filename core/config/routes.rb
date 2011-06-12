@@ -15,4 +15,6 @@
     # Marketable URLs should be appended to routes by the Pages Engine.
     # Catch all routes should be appended to routes by the Core Engine.
   end
+
+  get '/favicon.ico' => redirect('/assets/favicon.ico')
 end
