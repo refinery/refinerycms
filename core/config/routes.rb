@@ -1,8 +1,6 @@
 ::Refinery::Application.routes.draw do
   filter(:refinery_locales) if defined?(RoutingFilter::RefineryLocales) # optionally use i18n.
   scope(:module => 'refinery') do
-    root :to => 'pages#home'
-
     match 'wymiframe(/:id)', :to => 'fast#wymiframe', :as => :wymiframe
 
     scope(:path => 'refinery', :as => 'refinery_admin', :module => 'admin') do
