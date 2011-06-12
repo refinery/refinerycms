@@ -58,8 +58,7 @@ module Refinery
           @previously_selected_roles = @user.roles
           @user.roles = @selected_role_names.collect{|r| Role[r.downcase.to_sym]}
           if params[:user][:password].blank? and params[:user][:password_confirmation].blank?
-            params[:user].delete(:password)
-            params[:user].delete(:password_confirmation)
+            params[:user].except!(:password, :password_confirmation)
           end
 
           if @user.update_attributes(params[:user])
