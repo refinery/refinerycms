@@ -1,6 +1,6 @@
 /*
  *= require jquery
- *= require ../rails
+ *= require jquery_ujs
  *= require ../modernizr-min
  *= require ./i18n
  *= require ../jquery-ui-custom-min
