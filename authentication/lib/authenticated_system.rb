@@ -25,6 +25,11 @@ module Refinery
     def after_sign_out_path_for(resource_or_scope)
       main_app.root_path
     end
+    
+    # The path used after sign up. 
+    def after_sign_up_path_for(resource)
+      admin_refinery_user_path
+    end
 
     def refinery_user?
       refinery_user_signed_in? && current_refinery_user.has_role?(:refinery)
