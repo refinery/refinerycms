@@ -30,11 +30,11 @@ module Refinery
     end
 
     def base_class_name
-      self.class.name.split("::").last
+      self.class.name.demodulize
     end
 
     def url
-      "#{self.url_prefix}#{@url ||= "refinery_admin_#{self.base_class_name.underscore.downcase}_path"}"
+      "#{self.url_prefix}#{@url ||= "refinery_admin_#{self.base_class_name.underscore}_path"}"
     end
 
     def class
