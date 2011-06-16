@@ -2,7 +2,7 @@ source 'http://rubygems.org'
 
 gemspec
 
-gem 'rails'
+gem 'rails', '3.1.0.rc4'
 gem "rack"#, :git => "git://github.com/rack/rack.git"
 gem "arel"#, :git => "https://github.com/rails/arel.git"
 gem 'friendly_id_globalize3'#, :path => "../tmp/friendly_id"
@@ -21,6 +21,7 @@ end
 gem 'sass-rails', '~> 3.1.0.rc'
 gem 'coffee-script'
 gem 'uglifier'
+gem "pjax-rails", "~> 0.1.4"
 
 gem 'jquery-rails'
 
