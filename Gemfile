@@ -32,9 +32,9 @@ gem 'jquery-rails'
 # gem 'capistrano'
 
 # To use debugger
-gem 'ruby-debug', :platform => :mri_18
+# gem 'ruby-debug', :platform => :mri_18
 # or in 1.9.x:
-gem 'ruby-debug19', :platform => :mri_19
+# gem 'ruby-debug19', :platform => :mri_19
 
 # For Heroku/s3:
 # gem 'fog'

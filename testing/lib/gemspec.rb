@@ -44,7 +44,11 @@ Gem::Specification.new do |s|
   s.add_dependency 'autotest-notification'
 
   # RCov
-  s.add_dependency 'rcov'
+  if RUBY_VERSION < '1.9'
+    s.add_dependency 'rcov'
+  else
+    s.add_dependency 'simplecov'
+  end
 
   s.files             = [
     '#{%w( **/{*,.rspec,.gitignore,.yardopts} ).map { |file| Pathname.glob(gempath.join(file)) }.flatten.reject{|f|
