@@ -904,6 +904,7 @@ var list_reorder = {
         list_reorder.sortable_list.find('li').addClass('no-nest');
       }
       list_reorder.sortable_list.nestedSortable({
+        listType: 'ul',
         disableNesting: 'no-nest',
         forcePlaceholderSize: true,
         handle: list_reorder.tree ? 'div' : null,
