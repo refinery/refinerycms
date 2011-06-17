@@ -5,7 +5,7 @@ Gem::Specification.new do |s|
   s.version           = %q{1.1.0}
   s.summary           = %q{Dashboard engine for Refinery CMS}
   s.description       = %q{The dashboard is usually the first engine the user sees in the backend of Refinery CMS. It displays useful information and contains links to common functionality.}
-  s.date              = %q{2011-06-09}
+  s.date              = %q{2011-06-17}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
   s.rubyforge_project = %q{refinerycms}
@@ -47,6 +47,7 @@ Gem::Specification.new do |s|
     'config/locales/fr.yml',
     'config/locales/it.yml',
     'config/locales/jp.yml',
+    'config/locales/ko.yml',
     'config/locales/lolcat.yml',
     'config/locales/lt.yml',
     'config/locales/lv.yml',

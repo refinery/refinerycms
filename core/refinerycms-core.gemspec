@@ -5,7 +5,7 @@ Gem::Specification.new do |s|
   s.version           = %q{1.1.0}
   s.summary           = %q{Core engine for Refinery CMS}
   s.description       = %q{The core of Refinery CMS. This handles the common functionality and is required by most engines}
-  s.date              = %q{2011-06-10}
+  s.date              = %q{2011-06-17}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
   s.rubyforge_project = %q{refinerycms}
@@ -29,6 +29,7 @@ Gem::Specification.new do |s|
     'app',
     'app/assets',
     'app/assets/images',
+    'app/assets/images/favicon.ico',
     'app/assets/images/refinery',
     'app/assets/images/refinery/add.png',
     'app/assets/images/refinery/admin_bg.png',
@@ -196,7 +197,6 @@ Gem::Specification.new do |s|
     'app/assets/javascripts/jquery/jquery.timers.js',
     'app/assets/javascripts/jquery-ui-custom-min.js',
     'app/assets/javascripts/modernizr-min.js',
-    'app/assets/javascripts/rails.js',
     'app/assets/javascripts/refinery',
     'app/assets/javascripts/refinery/admin.js',
     'app/assets/javascripts/refinery/boot_wym.js',
@@ -418,7 +418,6 @@ Gem::Specification.new do |s|
     'public/404.html',
     'public/422.html',
     'public/500.html',
-    'public/favicon.ico',
     'public/robots.txt',
     'public/wymeditor',
     'public/wymeditor/GPL-license.txt',
@@ -434,6 +433,7 @@ Gem::Specification.new do |s|
     'spec/controllers/refinery/sitemap_controller_spec.rb',
     'spec/lib',
     'spec/lib/refinery',
+    'spec/lib/refinery/activity_spec.rb',
     'spec/lib/refinery/plugin_spec.rb',
     'spec/lib/refinery/plugins_spec.rb'
   ]

@@ -5,7 +5,7 @@ Gem::Specification.new do |s|
   s.version           = %q{1.1.0}
   s.summary           = %q{Testing plugin for Refinery CMS}
   s.description       = %q{This plugin adds the ability to run cucumber and rspec against the RefineryCMS gem while inside a RefineryCMS project}
-  s.date              = %q{2011-06-09}
+  s.date              = %q{2011-06-17}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
   s.rubyforge_project = %q{refinerycms}
@@ -52,6 +52,7 @@ Gem::Specification.new do |s|
     'features/support/factories.rb',
     'features/support/negative_expectations_helper.rb',
     'features/support/paths.rb',
+    'features/support/selectors.rb',
     'lib',
     'lib/gemspec.rb',
     'lib/generators',

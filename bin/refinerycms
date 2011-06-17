@@ -3,6 +3,7 @@
 begin
   require 'rubygems'
   require 'bundler'
+  ENV["BUNDLE_GEMFILE"] = File.expand_path('../../Gemfile', __FILE__)
 rescue LoadError
   puts "\n=== ACTION REQUIRED ===\n\n"
   puts "Could not load the bundler gem. This is a required dependency of Refinery CMS."
@@ -218,7 +219,7 @@ module Refinery
       rails_command << " --skip-bundle" # Rails automatically installs the bundle, but so do we!
       rails_command << " -m http://jruby.org" if defined? JRUBY_VERSION
 
-      rails_output = run_command(rails_command, {:cd => false})
+      rails_output = run_command(rails_command, {:cd => false, :bundler => true})
 
       # Detect non-success or a blank rails output or starting with "Can't initialize" or "Error"
       if !$?.success? or rails_output.to_s.length == 0 or rails_output =~ /^(Can't\ initialize|Error)/
@@ -228,6 +229,9 @@ module Refinery
         if defined? JRUBY_VERSION
           find_and_replace(@app_path.join('Gemfile'), /['|"]sqlite3['|"]/, "'activerecord-jdbcsqlite3-adapter'")
         end
+
+        # Remove rails from the Gemfile so that Refinery can manage it
+        find_and_replace('Gemfile', %r{^gem 'rails'}, "# gem 'rails'")
 
         # Override username and password
         if @options[:database][:ident]

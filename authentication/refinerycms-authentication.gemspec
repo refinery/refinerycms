@@ -5,7 +5,7 @@ Gem::Specification.new do |s|
   s.version           = %q{1.1.0}
   s.summary           = %q{Authentication engine for Refinery CMS}
   s.description       = %q{The default authentication engine for Refinery CMS}
-  s.date              = %q{2011-06-09}
+  s.date              = %q{2011-06-17}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
   s.rubyforge_project = %q{refinerycms}
@@ -77,6 +77,7 @@ Gem::Specification.new do |s|
     'config/locales/fr.yml',
     'config/locales/it.yml',
     'config/locales/jp.yml',
+    'config/locales/ko.yml',
     'config/locales/lolcat.yml',
     'config/locales/lt.yml',
     'config/locales/lv.yml',
@@ -103,12 +104,12 @@ Gem::Specification.new do |s|
     'features',
     'features/lost_password.feature',
     'features/manage_users.feature',
+    'features/sign_up.feature',
     'features/step_definitions',
     'features/step_definitions/lost_password.rb',
     'features/step_definitions/user_steps.rb',
     'features/support',
     'features/support/factories.rb',
-    'features/support/hooks.rb',
     'features/support/paths.rb',
     'lib',
     'lib/authenticated_system.rb',
