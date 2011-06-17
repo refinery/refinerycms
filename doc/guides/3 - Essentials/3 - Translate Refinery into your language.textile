@@ -30,8 +30,8 @@ The output of this will look like this
 
 <pre>
 Searching for missing translations for the locale: nl
-admin.pages.form_advanced_options.page_options in vendor/refinerycms/pages/app/views/admin/pages/_form_advanced_options.html.erb      is not in any nl locale file
-admin.pages_dialogs.link_to.insert in vendor/refinerycms/pages/app/views/admin/pages_dialogs/link_to.html.erb     is not in any nl locale file
+admin.pages.form_advanced_options.page_options in pages/app/views/admin/pages/_form_advanced_options.html.erb      is not in any nl locale file
+admin.pages_dialogs.link_to.insert in pages/app/views/admin/pages_dialogs/link_to.html.erb     is not in any nl locale file
 Number of missing translations for nl: 2
 </pre>
 
@@ -39,7 +39,7 @@ As you can see, there are two missing keys: +admin.pages.form_advanced_options.p
 
 h3. Adding the keys
 
-Each plugin has its own locale YAML files. The one we'll have to fix is +vendor/refinerycms/pages/config/locales/nl.yml+. Note that it is important to put the right key in the right file.
+Each plugin has its own locale YAML files. The one we'll have to fix is +pages/config/locales/nl.yml+. Note that it is important to put the right key in the right file.
 
 The key +admin.pages_dialogs.link_to.insert+, is to be represented in YAML like this:
 
@@ -62,7 +62,7 @@ h3. Commit & Push
 Add the modified files to the git repository
 
 <shell>
-$ git add vendor/refinerycms/pages/config/locales/nl.yml
+$ git add pages/config/locales/nl.yml
 </shell>
 
 Commit your changes
