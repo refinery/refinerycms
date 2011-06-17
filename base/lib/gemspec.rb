@@ -1,3 +1,4 @@
+# Encoding: UTF-8
 require 'pathname'
 require File.expand_path('../base/refinery', __FILE__)
 gempath = Pathname.new(File.expand_path('../../', __FILE__))
