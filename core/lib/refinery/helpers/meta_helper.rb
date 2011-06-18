@@ -40,7 +40,11 @@ module Refinery
               when "text"
                 obj.custom_title
               when "image"
-                image_fu(obj.custom_title_image, nil, {:alt => obj.title}) rescue obj.title
+                if obj.custom_title_image.present?
+                  image_fu(obj.custom_title_image, nil, {:alt => obj.title})
+                else
+                  obj.title
+                end
               else
                 obj.title
               end
