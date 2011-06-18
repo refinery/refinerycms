@@ -107,6 +107,7 @@ module Refinery
 
         opts.on("--trace", "Investigate any problems with the installer") do
           @options[:trace] = true
+        end
 
         opts.on('-t', '--testing', "Automatically set up the project with refinerycms-testing support.") do
           @options[:testing] = true
