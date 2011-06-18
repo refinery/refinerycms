@@ -216,7 +216,7 @@ module Refinery
       rails_command = "rails new \"#{@app_path}\""
       rails_command << " --database #{@options[:database][:adapter]}"
       rails_command << " --force" if @options[:force]
-      rails_command << " --skip-test-unit --skip-prototype"
+      rails_command << " --skip-test-unit"
       rails_command << " --skip-bundle" # Rails automatically installs the bundle, but so do we!
       rails_command << " -m http://jruby.org" if defined? JRUBY_VERSION
 
