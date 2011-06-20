@@ -40,7 +40,7 @@ module Refinery
               when "text"
                 obj.custom_title
               when "image"
-                if obj.custom_title_image.present?
+                if obj.respond_to?(:custom_title_image) && obj.custom_title_image.present?
                   image_fu(obj.custom_title_image, nil, {:alt => obj.title})
                 else
                   obj.title
