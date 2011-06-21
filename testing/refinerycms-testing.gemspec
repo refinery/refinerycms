@@ -37,7 +37,11 @@ Gem::Specification.new do |s|
   s.add_dependency 'autotest-notification'
 
   # RCov
-  s.add_dependency 'rcov'
+  if RUBY_VERSION < '1.9'
+    s.add_dependency 'rcov'
+  else
+    s.add_dependency 'simplecov'
+  end
 
   s.files             = [
     '.rspec',
