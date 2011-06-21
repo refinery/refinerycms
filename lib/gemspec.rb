@@ -66,8 +66,19 @@ end
 EOF
 
 
-(gemfile = gempath.join("#{gemname}.gemspec")).open('w') {|f| f.puts(gemspec)}
-puts `cd #{gempath} && gem build #{gemfile}` if ARGV.any?{|a| a == "BUILD=true"}
+(gemspecfile = gempath.join("#{gemname}.gemspec")).open('w') {|f| f.puts(gemspec)}
+
+if ARGV.any?{|a| a == "BUILD=true"}
+  gemfile = gempath.join("Gemfile")
+  old_gemfile = File.read(gemfile)
+  new_gemfile = old_gemfile.gsub(/\n# REFINERY CMS DEVELOPMENT ====================================================.+# END REFINERY CMS DEVELOPMENT ================================================\n/m, '')
+  
+  File.open(gemfile, 'w') {|f| f.puts(new_gemfile)}
+  puts `cat #{gemfile}`
+  #puts `cd #{gempath} && gem build #{gemspecfile}`
+  File.open(gemfile, 'w') {|f| f.puts(old_gemfile)}
+  puts `cat #{gemfile}`
+end
 
 unless ARGV.any?{|a| a == "ALL=false"}
   Pathname.glob('**/lib/gemspec.rb').reject{|g| g.to_s == __FILE__}.each do |spec|
