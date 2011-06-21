@@ -50,7 +50,6 @@ module Refinery
       end
 
       initializer 'add marketable routes' do |app|
-        require File.expand_path('../pages/marketable_routes.rb', __FILE__)
         app.routes_reloader.paths << File.expand_path('../pages/marketable_routes.rb', __FILE__)
       end
 
