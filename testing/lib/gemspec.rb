@@ -48,7 +48,7 @@ Gem::Specification.new do |s|
   else
     s.add_dependency 'simplecov'
   end
-  
+
   s.files             = [
     '#{%w( **/{*,.rspec,.gitignore,.yardopts} ).map { |file| Pathname.glob(gempath.join(file)) }.flatten.reject{|f|
       !f.exist? or f.to_s =~ /\.gem$/ or (f.directory? and f.children.empty?)
