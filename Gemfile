@@ -55,7 +55,7 @@ end
 
 # REFINERY CMS DEVELOPMENT ====================================================
 
-# END REFINERY CMS DEVELOPMENT =================================================
+# END REFINERY CMS DEVELOPMENT ================================================
 
 # USER DEFINED
 
