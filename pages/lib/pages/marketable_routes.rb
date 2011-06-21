@@ -2,7 +2,7 @@
 if ::Refinery::Page.use_marketable_urls?
   ::Refinery::Application.routes.draw do
     scope(:module => 'refinery') do
-      match '*path' => 'pages#show'
+      match '*catchall' => 'pages#show'
     end
   end
 

@@ -203,11 +203,11 @@ module Refinery
 
     def url_marketable
       # :id => nil is important to prevent any other params[:id] from interfering with this route.
-      url_normal.merge(:path => nested_url).except(:id)
+      url_normal.merge(:catchall => nested_url).except(:id)
     end
 
     def url_normal
-      {:controller => '/refinery/pages', :action => 'show', :path => nil, :id => to_param}
+      {:controller => '/refinery/pages', :action => 'show', :catchall => nil, :id => to_param}
     end
 
     def with_locale_param(url_hash)
