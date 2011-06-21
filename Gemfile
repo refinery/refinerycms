@@ -37,7 +37,7 @@ if RUBY_PLATFORM == 'java'
   gem 'activerecord-jdbcsqlite3-adapter', '>= 1.0.2', :platform => :jruby
 else
   gem 'sqlite3'
-  gem 'mysql2', '~> 0.2.7'
+  gem 'mysql2'
 end
 
 gem 'rails'
