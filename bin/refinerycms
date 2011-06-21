@@ -212,6 +212,9 @@ module Refinery
     end
 
     def generate!
+      # First, ensure dependencies are satisfied
+      run_command('bundle install', {:cd => false, :bundler => false})
+
       # Generate a rails application
       rails_command = "rails new \"#{@app_path}\""
       rails_command << " --database #{@options[:database][:adapter]}"
