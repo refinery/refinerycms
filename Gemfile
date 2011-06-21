@@ -5,13 +5,6 @@ gemspec
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails'
 
-if RUBY_PLATFORM == 'java'
-  gem 'activerecord-jdbcsqlite3-adapter', '>= 1.0.2', :platform => :jruby
-else
-  gem 'sqlite3'
-  gem 'mysql2', '~> 0.2.7'
-end
-
 # Use unicorn as the web server
 # gem 'unicorn'
 # gem 'mongrel'
@@ -42,7 +35,12 @@ end
 # END REFINERY CMS ============================================================
 
 # REFINERY CMS DEVELOPMENT ====================================================
-
+if RUBY_PLATFORM == 'java'
+  gem 'activerecord-jdbcsqlite3-adapter', '>= 1.0.2', :platform => :jruby
+else
+  gem 'sqlite3'
+  gem 'mysql2', '~> 0.2.7'
+end
 # END REFINERY CMS DEVELOPMENT =================================================
 
 # USER DEFINED
