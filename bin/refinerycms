@@ -249,6 +249,9 @@ module Refinery
         puts "\n---------"
         puts "Refinery successfully installed in '#{@app_path}'!\n\n"
       end
+    ensure
+      # Now switch to the app's Gemfile.
+      ENV["BUNDLE_GEMFILE"] = @app_path.join('Gemfile').to_s
     end
 
     def bundle!

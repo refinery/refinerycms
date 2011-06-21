@@ -2,21 +2,6 @@ source 'http://rubygems.org'
 
 gemspec
 
-gem 'rails'
-gem "rack"#, :git => "git://github.com/rack/rack.git"
-gem "arel"#, :git => "https://github.com/rails/arel.git"
-gem 'friendly_id_globalize3'#, :path => "../tmp/friendly_id"
-gem 'therubyracer'
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails'
-
-# Asset template engines
-gem 'sass-rails', '~> 3.1.0.rc'
-gem 'coffee-script'
-gem 'uglifier'
-
-gem 'jquery-rails'
-
 # Use unicorn as the web server
 # gem 'unicorn'
 # gem 'mongrel'
@@ -54,6 +39,21 @@ else
   gem 'sqlite3'
   gem 'mysql2', '~> 0.2.7'
 end
+
+gem 'rails'
+gem 'rack'#, :git => "git://github.com/rack/rack.git"
+gem 'arel'#, :git => "https://github.com/rails/arel.git"
+gem 'friendly_id_globalize3'#, :path => "../tmp/friendly_id"
+gem 'therubyracer'
+# Bundle edge Rails instead:
+# gem 'rails', :git => 'git://github.com/rails/rails'
+
+# Asset template engines
+gem 'sass-rails', '~> 3.1.0.rc'
+gem 'coffee-script'
+gem 'uglifier'
+
+gem 'jquery-rails'
 
 # END REFINERY CMS DEVELOPMENT ================================================
 
