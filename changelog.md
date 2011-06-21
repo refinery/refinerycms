@@ -1,3 +1,13 @@
+## 1.0.1 [21 June 2011]
+
+* Added `-t` / `--testing` option to `bin/refinerycms` which adds `refinerycms-testing` support by default when installing. [Philip Arndt](https://github.com/parndt)
+* Set rails dependency to `~> 3.0.9`. [Philip Arndt](https://github.com/parndt)
+* Re-enabled the magic `s3_backend` setting controlled by `ENV` variables. [Philip Arndt](https://github.com/parndt)
+* `bin/refinerycms` installer now generates rails using `bundle exec` so that you can have multiple Rails versions installed and they won't clash. [Philip Arndt](https://github.com/parndt)
+* Fixed problems with `rcov` and `simplecov` in Ruby 1.9.2. [Joe Sak](https://github.com/joemsak)
+* Make the catch-all pages route for marketable URLs be controlled by the configuration switch. [Kyle Wilkinson](https://github.com/wikyd)
+* [See full list](https://github.com/resolve/refinerycms/compare/1.0.0...1.0.1)
+
 ## 1.0.0 [28 May 2011]
 
 * New `::Refinery::Menu` API implemented which speeds up menu generation by many times. [Philip Arndt](https://github.com/parndt)
