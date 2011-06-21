@@ -72,12 +72,10 @@ if ARGV.any?{|a| a == "BUILD=true"}
   gemfile = gempath.join("Gemfile")
   old_gemfile = File.read(gemfile)
   new_gemfile = old_gemfile.gsub(/\n# REFINERY CMS DEVELOPMENT ====================================================.+# END REFINERY CMS DEVELOPMENT ================================================\n/m, '')
-  
+
   File.open(gemfile, 'w') {|f| f.puts(new_gemfile)}
-  puts `cat #{gemfile}`
-  #puts `cd #{gempath} && gem build #{gemspecfile}`
+  puts `cd #{gempath} && gem build #{gemspecfile}`
   File.open(gemfile, 'w') {|f| f.puts(old_gemfile)}
-  puts `cat #{gemfile}`
 end
 
 unless ARGV.any?{|a| a == "ALL=false"}
@@ -85,4 +83,9 @@ unless ARGV.any?{|a| a == "ALL=false"}
     puts "Loading #{spec}..."
     load spec
   end
+end
+
+if ARGV.any?{|a| a == "BUILD=true"}
+  puts "Moving gem files to the current directory"
+  `mv ./**/*.gem ./`
 end
