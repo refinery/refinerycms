@@ -46,4 +46,4 @@ unless Cucumber::RUBY_1_9
       Rake::Task["rcov:cucumber_run"].invoke
     end
   end
-end
+end if RUBY_VERSION.to_f < 1.9
