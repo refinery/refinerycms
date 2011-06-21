@@ -1,7 +1,10 @@
 require 'rbconfig'
 require 'factory_girl'
 require File.expand_path('../support/refinery/controller_macros', __FILE__)
-require "simplecov"
+
+if RUBY_VERSION > "1.9"
+  require "simplecov"
+end
 
 def setup_simplecov
   SimpleCov.start do
@@ -17,6 +20,7 @@ def setup_simplecov
     add_filter "/testing/"
     add_filter "/config/"
     add_filter "/spec/"
+    add_filter "/vendor/"
   end
 end
 
@@ -24,7 +28,7 @@ def setup_environment
   # This file is copied to ~/spec when you run 'rails generate rspec'
   # from the project root directory.
   ENV["RAILS_ENV"] ||= 'test'
-  setup_simplecov # simplecov should be loaded _before_ models, controllers, etc are loaded.
+  setup_simplecov if defined?(SimpleCov) # simplecov should be loaded _before_ models, controllers, etc are loaded.
   require File.expand_path("../../config/environment", __FILE__)
   require 'rspec/rails'
 
