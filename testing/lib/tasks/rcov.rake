@@ -44,4 +44,4 @@ namespace :rcov do
     rm "coverage.data" if File.exist?("coverage.data")
     Rake::Task["rcov:cucumber_run"].invoke
   end
-end if RUBY_VERSION.to_f < 1.9
+end if RUBY_VERSION < '1.9'
