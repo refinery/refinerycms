@@ -82,7 +82,7 @@ module Refinery
 
         # Find the first url that is a string.
         url = [page.url]
-        url << ['', page.url[:catchall]].compact.flatten.join('/') if page.url.respond_to?(:keys)
+        url << ['', page.url[:path]].compact.flatten.join('/') if page.url.respond_to?(:keys)
         url = url.detect{|u| u.is_a?(String)}
 
         # Now use all possible vectors to try to find a valid match,

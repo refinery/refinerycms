@@ -48,7 +48,7 @@ Then /^I should have ([0-9]+) pages?$/ do |count|
 end
 
 Then /^I should have a page at \/(.+)$/ do |url|
-  ::Refinery::Page.all.count{|page| page.url[:catchall].to_s.include?(url)}.should == 1
+  ::Refinery::Page.all.count{|page| page.url[:path].to_s.include?(url)}.should == 1
 end
 
 Then /^I should have (\d+) page_parts$/ do |count|

@@ -64,17 +64,17 @@ module Refinery
 
       it 'returns its path with marketable urls' do
         page.url[:id].should be_nil
-        page.url[:catchall].should == ['rspec-is-great-for-testing-too']
+        page.url[:path].should == ['rspec-is-great-for-testing-too']
       end
 
       it 'returns its path underneath its parent with marketable urls' do
         child.url[:id].should be_nil
-        child.url[:catchall].should == [page.url[:catchall].first, 'the-child-page']
+        child.url[:path].should == [page.url[:path].first, 'the-child-page']
       end
 
       it 'no path parameter without marketable urls' do
         turn_off_marketable_urls
-        page.url[:catchall].should be_nil
+        page.url[:path].should be_nil
         page.url[:id].should == 'rspec-is-great-for-testing-too'
         turn_on_marketable_urls
       end
@@ -82,7 +82,7 @@ module Refinery
       it "doesn't mention its parent without marketable urls" do
         turn_off_marketable_urls
         child.url[:id].should == 'the-child-page'
-        child.url[:catchall].should be_nil
+        child.url[:path].should be_nil
         turn_on_marketable_urls
       end
     end
@@ -155,11 +155,11 @@ module Refinery
       before { turn_on_marketable_urls }
 
       it 'when title is set to a reserved word' do
-        page_with_reserved_title.url[:catchall].should == ["#{reserved_word}-page"]
+        page_with_reserved_title.url[:path].should == ["#{reserved_word}-page"]
       end
 
       it "when parent page title is set to a reserved word" do
-        child_with_reserved_title_parent.url[:catchall].should == ["#{reserved_word}-page", 'reserved-title-child-page']
+        child_with_reserved_title_parent.url[:path].should == ["#{reserved_word}-page", 'reserved-title-child-page']
       end
     end
 

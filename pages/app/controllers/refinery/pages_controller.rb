@@ -19,7 +19,7 @@ module Refinery
     #   GET /about/mission
     #
     def show
-      @page ||= ::Refinery::Page.find("#{params[:catchall]}/#{params[:id]}".split('/').last)
+      @page ||= ::Refinery::Page.find("#{params[:path]}/#{params[:id]}".split('/').last)
 
       if @page.try(:live?) || (refinery_user? && current_refinery_user.authorized_plugins.include?("refinery_pages"))
         # if the admin wants this to be a "placeholder" page which goes to its first child, go to that instead.
