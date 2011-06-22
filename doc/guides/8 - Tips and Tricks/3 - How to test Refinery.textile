@@ -9,6 +9,10 @@ endprologue.
 
 h3. Running the Tests
 
+Edit your Gemfile to un-comment the line with the refinerycms_testing gem (around line 42) 
+Then type @bundle install@
+then, @rails generate refinerycms_testing@
+
 At your application root run:
 
 <shell>
@@ -31,7 +35,7 @@ $ rake spec
 
 h3. What do I do if tests fail?
 
-Check the error message to see if it is a problem on your end.
+Check the error message to see if it is a problem on your end. Check local versions of gems and consider creating a fresh gemset if using RVM. You may need to use @bundle exec rake@
 
 If not, then "file an issue on GitHub":https://github.com/resolve/refinerycms/issues, with your version of Ruby and OS included. Bonus points if you fix it yourself!
 
