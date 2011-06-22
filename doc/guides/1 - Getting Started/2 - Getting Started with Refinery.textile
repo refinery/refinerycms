@@ -108,6 +108,16 @@ $ cd rickrockstar
 
 Open up that folder and explore its contents. You'll notice what you have is a very standard Rails application.
 
+h4. Running the tests
+
+At your application root:
+
+<shell>
+$ rake
+</shell>
+
+This will run cucumber and rspec tests. If tests don't run, check this guide * *"this guide":https://github.com/resolve/refinerycms/blob/master/doc/guides/8%20-%20Tips%20and%20Tricks/6%20-%20How%20to%20enable%20testing%20in%20your%20application.textile*
+
 h3. Hello, Refinery!
 
 One of the traditional places to start with a new project is by getting some text up on screen quickly, to do this, you need to get your Refinery application server running.
