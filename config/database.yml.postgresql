@@ -1,23 +1,24 @@
 # PostgreSQL. Versions 7.4 and 8.x are supported.
 #
-# Install the ruby-postgres driver:
-#   gem install ruby-postgres
-# On Mac OS X:
-#   gem install ruby-postgres -- --include=/usr/local/pgsql
+# Install the pg driver:
+#   gem install pg
+# On Mac OS X with macports:
+#   gem install pg -- --with-pg-config=/opt/local/lib/postgresql84/bin/pg_config
 # On Windows:
-#   gem install ruby-postgres
+#   gem install pg
 #       Choose the win32 build.
 #       Install PostgreSQL and put its /bin directory on your path.
-login: &login
+#
+# Configure Using Gemfile
+# gem 'pg'
+#
+development:
   adapter: postgresql
   encoding: unicode
+  database: refinery_database_development
+  pool: 5
   username: postgres
   password: postgres
-  pool: 5
-  
-development: &development
-  database: your_local_database
-  <<: *login
 
   # Connect on a TCP socket. Omitted by default since the client uses a
   # domain socket that doesn't need configuration. Windows does not have
@@ -37,21 +38,18 @@ development: &development
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
-test: &test
-  database: your_test_database
-  <<: *login
-
-# Warning: The database defined as "cucumber" will be erased and
-# re-generated from your development database when you run "rake".
-# Do not set this db to the same as development or production.
-cucumber: &cucumber
-  database: your_cucumber_database
-  <<: *login
-
-production: &production
+test:
   adapter: postgresql
   encoding: unicode
+  database: refinery_database_test
   pool: 5
-  database: your_production_database
-  username: your_production_database_login
-  password: your_production_database_password
+  username: postgres
+  password: postgres
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: refinery_database_production
+  pool: 5
+  username: postgres
+  password: postgres
