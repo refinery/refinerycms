@@ -33,7 +33,7 @@ h3. Running the Tests
 At your application root run:
 
 <shell>
-$ rake
+$ bundle exec rake
 </shell>
 
 This will run the cucumber and rspec tests.
@@ -41,13 +41,13 @@ This will run the cucumber and rspec tests.
 To run just cucumber:
 
 <shell>
-$ rake cucumber
+$ bundle exec cucumber
 </shell>
 
 To run just rspec:
 
 <shell>
-$ rake spec
+$ bundle exec rake spec
 </shell>
 
 h3. Where are the tests?
