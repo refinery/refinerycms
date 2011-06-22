@@ -170,7 +170,7 @@ module Refinery
         puts "\nPlease generate your new project from outside the Refinery directory and any Rails directory."
         puts "\n"
         exit(1)
-      elsif %w(refinery refinerycms test testing rails).include?(@input.first)
+      elsif %w(refinery refinerycms test testing rails).include?(@input.first.downcase)
         puts "\nYou can't use '#{@input.first}' as a name for your project, this is a reserved word that will cause conflicts."
         puts "Please choose another name for your new project."
         puts "\n"
