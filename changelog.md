@@ -1,6 +1,7 @@
 ## 1.0.3 [23 June 2011]
 
 * Fixes corruption in the 1.0.2 gem. [Philip Arndt](https://github.com/parndt)
+* [See full list](https://github.com/resolve/refinerycms/compare/1.0.2...1.0.3)
 
 ## 1.0.2 [23 June 2011]
 
