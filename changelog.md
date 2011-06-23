@@ -1,3 +1,7 @@
+## 1.0.3 [23 June 2011]
+
+* Fixes corruption in the 1.0.2 gem. [Philip Arndt](https://github.com/parndt)
+
 ## 1.0.2 [23 June 2011]
 
 * Ensure that `refinerycms-testing` is not enabled by default when installing an application. [Philip Arndt](https://github.com/parndt)
