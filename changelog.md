@@ -8,6 +8,16 @@
 * Moved `/shared/*` to `/refinery/*` instead, including `/shared/admin/*` to `/refinery/admin/*` as it makes more sense. [Philip Arndt](https://github.com/parndt)
 * [See full list](https://github.com/resolve/refinerycms/compare/1.0.0...1.1.0)
 
+## 1.0.3 [23 June 2011]
+
+* Fixes corruption in the 1.0.2 gem. [Philip Arndt](https://github.com/parndt)
+* [See full list](https://github.com/resolve/refinerycms/compare/1.0.2...1.0.3)
+
+## 1.0.2 [23 June 2011]
+
+* Ensure that `refinerycms-testing` is not enabled by default when installing an application. [Philip Arndt](https://github.com/parndt)
+* [See full list](https://github.com/resolve/refinerycms/compare/1.0.1...1.0.2)
+
 ## 1.0.1 [21 June 2011]
 
 * Added `-t` / `--testing` option to `bin/refinerycms` which adds `refinerycms-testing` support by default when installing. [Philip Arndt](https://github.com/parndt)
