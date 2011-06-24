@@ -13,11 +13,6 @@ module Refinery
       yield(plugin = self.new)
 
       raise "A plugin MUST have a name!: #{plugin.inspect}" if plugin.name.blank?
-
-      # provide a default pathname to where this plugin is using its lib directory.
-      depth = RUBY_VERSION >= "1.9.2" ? 4 : 3
-      plugin.pathname ||= Pathname.new(caller(depth).first.match("(.*)#{File::SEPARATOR}lib")[1])
-      ::Refinery::Plugins.registered << plugin # add me to the collection of registered plugins
     end
 
     # Returns the class name of the plugin
@@ -86,6 +81,13 @@ module Refinery
 
     def add_activity(options)
       (self.plugin_activity ||= []) << Activity::new(options)
+    end
+      
+    def initialize
+      # provide a default pathname to where this plugin is using its lib directory.
+      depth = RUBY_VERSION >= "1.9.2" ? 4 : 3
+      self.pathname ||= Pathname.new(caller(depth).first.match("(.*)#{File::SEPARATOR}lib")[1])
+      ::Refinery::Plugins.registered << self # add me to the collection of registered plugins
     end
   end
 end
