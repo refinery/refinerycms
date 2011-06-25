@@ -175,7 +175,7 @@ module Refinery
         puts "\nPlease generate your new project from outside the Refinery directory and any Rails directory."
         puts "\n"
         exit(1)
-      elsif %w(refinery test testing).include?(@input.first.downcase)
+      elsif %w(refinery refinerycms test testing rails).include?(@input.first.downcase)
         puts "\nYou can't use '#{@input.first}' as a name for your project, this is a reserved word that will cause conflicts."
         puts "Please choose another name for your new project."
         puts "\n"
@@ -212,6 +212,9 @@ module Refinery
     end
 
     def generate!
+      # First, ensure dependencies are satisfied
+      run_command('bundle install', {:cd => false, :bundler => false})
+
       # Generate a rails application
       rails_command = "rails new \"#{@app_path}\""
       rails_command << " --database #{@options[:database][:adapter]}"
@@ -246,6 +249,9 @@ module Refinery
         puts "\n---------"
         puts "Refinery successfully installed in '#{@app_path}'!\n\n"
       end
+    ensure
+      # Now switch to the app's Gemfile.
+      ENV["BUNDLE_GEMFILE"] = @app_path.join('Gemfile').to_s
     end
 
     def bundle!
@@ -253,8 +259,8 @@ module Refinery
       refinery_gemfile_contents = Refinery.root.join('Gemfile').read
       refinery_gems = refinery_gemfile_contents.match(/# REFINERY CMS =+.*# END REFINERY CMS =+/m)[0]
       refinery_gems.gsub!("# gem 'refinerycms'", "gem 'refinerycms'") # Enable refinerycms
-      unless @options[:testing] # Disable testing
-        refinery_gems.gsub!("gem 'refinerycms-testing'", "# gem 'refinerycms-testing'")
+      if @options[:testing] # Enable testing
+        refinery_gems.gsub!("# gem 'refinerycms-testing'", "gem 'refinerycms-testing'")
       end
 
       app_gemfile = @app_path.join('Gemfile')
@@ -276,7 +282,6 @@ module Refinery
       find_and_replace('Gemfile', "# gem 'fog'", "gem 'fog'") if @options[:heroku]
 
       # Automate
-      # TODO: Check exit codes to see whether or not these worked
       puts "Installing gem requirements using bundler..\n"
 
       # Install!

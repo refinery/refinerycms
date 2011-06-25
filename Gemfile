@@ -2,28 +2,6 @@ source 'http://rubygems.org'
 
 gemspec
 
-gem 'rails'
-gem "rack"#, :git => "git://github.com/rack/rack.git"
-gem "arel"#, :git => "https://github.com/rails/arel.git"
-gem 'friendly_id_globalize3'#, :path => "../tmp/friendly_id"
-gem 'therubyracer'
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails'
-
-if RUBY_PLATFORM == 'java'
-  gem 'activerecord-jdbcsqlite3-adapter', '>= 1.0.2', :platform => :jruby
-else
-  gem 'sqlite3'
-  gem 'mysql2'
-end
-
-# Asset template engines
-gem 'sass-rails', '~> 3.1.0.rc'
-gem 'coffee-script'
-gem 'uglifier'
-
-gem 'jquery-rails'
-
 # Use unicorn as the web server
 # gem 'unicorn'
 # gem 'mongrel'
@@ -55,14 +33,36 @@ end
 
 # REFINERY CMS DEVELOPMENT ====================================================
 
-# END REFINERY CMS DEVELOPMENT =================================================
+if RUBY_PLATFORM == 'java'
+  gem 'activerecord-jdbcsqlite3-adapter', '>= 1.0.2', :platform => :jruby
+else
+  gem 'sqlite3'
+  gem 'mysql2'
+end
+
+gem 'rails'
+gem 'rack'#, :git => "git://github.com/rack/rack.git"
+gem 'arel'#, :git => "https://github.com/rails/arel.git"
+gem 'friendly_id_globalize3'#, :path => "../tmp/friendly_id"
+gem 'therubyracer'
+# Bundle edge Rails instead:
+# gem 'rails', :git => 'git://github.com/rails/rails'
+
+# Asset template engines
+gem 'sass-rails', '~> 3.1.0.rc'
+gem 'coffee-script'
+gem 'uglifier'
+
+gem 'jquery-rails'
+
+# END REFINERY CMS DEVELOPMENT ================================================
 
 # USER DEFINED
 
 # Specify additional Refinery CMS Engines here (all optional):
 # gem 'refinerycms-inquiries',    '~> 1.0'
 # gem "refinerycms-news",         '~> 1.2'
-# gem 'refinerycms-blog',         '~> 1.5'
+# gem 'refinerycms-blog',         '~> 1.6'
 # gem 'refinerycms-page-images',  '~> 1.0'
 
 # Add i18n support (optional, you can remove this if you really want to).

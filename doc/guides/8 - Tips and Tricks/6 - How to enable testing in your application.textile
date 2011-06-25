@@ -1,0 +1,57 @@
+h2. How to enable testing in your application
+
+Refinery ships with a range of specs and cucumbers to test it. This guide will show you how to:
+
+* Run the tests that come built in with Refinery to ensure your install is working correctly
+* Run the engines tests
+
+endprologue.
+
+h3. Setup test enviroment
+
+At the Gemfile uncomment the refinerycms-testing line
+
+<shell>
+  gem 'refinerycms-testing'
+</shell>
+
+And run
+
+<shell>
+$ bundle install
+</shell>
+
+Now we will configure our test environment with
+
+<shell>
+$ rails generate refinerycms_testing
+</shell>
+
+
+h3. Running the Tests
+
+At your application root run:
+
+<shell>
+$ bundle exec rake
+</shell>
+
+This will run the cucumber and rspec tests.
+
+To run just cucumber:
+
+<shell>
+$ bundle exec cucumber
+</shell>
+
+To run just rspec:
+
+<shell>
+$ bundle exec rake spec
+</shell>
+
+h3. Where are the tests?
+
+Refinery tests are located inside each engine in two locations: +/features+ and +/spec+.
+
+Third-party engines should have their own tests in their respective engine folders (which may be inside their gem).

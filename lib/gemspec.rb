@@ -67,12 +67,27 @@ end
 EOF
 
 
-(gemfile = gempath.join("#{gemname}.gemspec")).open('w') {|f| f.puts(gemspec)}
-puts `cd #{gempath} && gem build #{gemfile}` if ARGV.any?{|a| a == "BUILD=true"}
+(gemspecfile = gempath.join("#{gemname}.gemspec")).open('w') {|f| f.puts(gemspec)}
+
+if ARGV.any?{|a| a == "BUILD=true"}
+  gemfile = gempath.join("Gemfile")
+  old_gemfile = File.read(gemfile)
+  new_gemfile = old_gemfile.gsub(/\n# REFINERY CMS DEVELOPMENT [=]*.+# END REFINERY CMS DEVELOPMENT [=]*\n/m, '')
+  new_gemfile = new_gemfile.gsub("gem 'refinerycms-testing'", "# gem 'refinerycms-testing'")
+
+  File.open(gemfile, 'w') {|f| f.puts(new_gemfile)}
+  puts `cd #{gempath} && gem build #{gemspecfile}`
+  File.open(gemfile, 'w') {|f| f.puts(old_gemfile)}
+end
 
 unless ARGV.any?{|a| a == "ALL=false"}
   Pathname.glob('**/lib/gemspec.rb').reject{|g| g.to_s == __FILE__}.each do |spec|
     puts "Loading #{spec}..."
     load spec
   end
+end
+
+if ARGV.any?{|a| a == "BUILD=true"}
+  puts "Moving gem files to the current directory"
+  `mv ./**/*.gem ./`
 end
