@@ -195,7 +195,16 @@ module Refinery
       current_url = link_url
 
       if current_url =~ %r{^/} && ::Refinery::I18n.current_frontend_locale != ::Refinery::I18n.default_frontend_locale
-        current_url = "/#{::Refinery::I18n.current_frontend_locale}#{current_url}"
+        current_url = if home?
+          "/#{::Refinery::I18n.current_frontend_locale}#{current_url}"
+        else
+          if slug = slugs.detect { |slug| slug.sluggable_id == id and
+                                          slug.locale == ::Refinery::I18n.current_frontend_locale.to_s }
+            "/#{::Refinery::I18n.current_frontend_locale}/#{slug.name}"
+          else
+            "/#{::Refinery::I18n.current_frontend_locale}#{current_url}"
+          end
+        end
       end
 
       current_url
