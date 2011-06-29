@@ -76,7 +76,7 @@ Another is to create a replacement ApplicationController, different from the one
 
 h4. Devise
 
-While Refinery's use of Devise should not effect your own, since you can declare scopes, you may find issues are caused by
+While Refinery's use of Devise should not affect your own, since you can declare scopes, you may find issues are caused by
 Devise using your ApplicationController, which as previously mentioned is modified by Refinery.
 
 h3. Getting Help
