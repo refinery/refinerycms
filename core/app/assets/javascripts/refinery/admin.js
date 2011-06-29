@@ -421,15 +421,19 @@ var link_tester = {
   },
 
   email: function(value, callback) {
-    $.getJSON(link_tester.test_email, {email: value}, function(data){
-      callback(data.result == 'success');
-    });
+    if (value != "") {
+      $.getJSON(link_tester.test_email, {email: value}, function(data){
+        callback(data.result == 'success');
+      });
+    }
   },
 
   url: function(value, callback) {
-    $.getJSON(link_tester.test_url, {'url': value}, function(data){
-      callback(data.result == 'success');
-    });
+    if (value != "") {
+      $.getJSON(link_tester.test_url, {'url': value}, function(data){
+        callback(data.result == 'success');
+      });
+    }
   },
 
   validate_textbox: function(validation_method, textbox_id, callback) {
@@ -446,26 +450,28 @@ var link_tester = {
       $(textbox_id + '_test_result').hide();
       $(textbox_id + '_test_result').removeClass('success_icon').removeClass('failure_icon');
 
-      // Wait 300ms before checking.
-      $(textbox_id).delay(300).queue(function () {
-        $(textbox_id + '_test_loader').show();
-        $(textbox_id + '_test_result').hide();
-        $(textbox_id + '_test_result').removeClass('success_icon').removeClass('failure_icon');
+      if (this.value != "") {
+        // Wait 300ms before checking.
+        $(textbox_id).delay(300).queue(function () {
+          $(textbox_id + '_test_loader').show();
+          $(textbox_id + '_test_result').hide();
+          $(textbox_id + '_test_result').removeClass('success_icon').removeClass('failure_icon');
 
-        validation_method(this.value, function (success) {
-          if (success) {
-            icon = 'success_icon';
-          }else{
-            icon = 'failure_icon';
-          }
-          $(textbox_id + '_test_result').addClass(icon).show();
-          $(textbox_id + '_test_loader').hide();
-        });
+          validation_method(this.value, function (success) {
+            if (success) {
+              icon = 'success_icon';
+            }else{
+              icon = 'failure_icon';
+            }
+            $(textbox_id + '_test_result').addClass(icon).show();
+            $(textbox_id + '_test_loader').hide();
+          });
 
-        if (callback) { callback($(textbox_id)); }
+          if (callback) { callback($(textbox_id)); }
 
-        $(this).dequeue();
-      }); // queue
+          $(this).dequeue();
+        }); // queue
+      }
     }); // bind
   },
 
