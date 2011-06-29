@@ -449,8 +449,8 @@ var link_tester = {
       $(textbox_id + '_test_loader').hide();
       $(textbox_id + '_test_result').hide();
       $(textbox_id + '_test_result').removeClass('success_icon').removeClass('failure_icon');
-
-      if (this.value != "") {
+      
+      if (this.value != "" && this.value[0] != "/") {
         // Wait 300ms before checking.
         $(textbox_id).delay(300).queue(function () {
           $(textbox_id + '_test_loader').show();
