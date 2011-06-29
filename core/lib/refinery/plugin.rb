@@ -10,28 +10,9 @@ module Refinery
     attr_reader   :description
 
     def self.register(&block)
-      yield (plugin = self.new)
+      yield(plugin = self.new)
 
       raise "A plugin MUST have a name!: #{plugin.inspect}" if plugin.name.blank?
-
-      # Set the root as Rails::Engine.called_from will always be
-      #                 vendor/engines/refinery/lib/refinery
-      new_called_from = begin
-        # Remove the line number from backtraces making sure we don't leave anything behind
-        call_stack = caller.map { |p| p.split(':')[0..-2].join(':') }
-        File.dirname(call_stack.detect { |p| p !~ %r[railties[\w\-\.]*/lib/rails|rack[\w\-\.]*/lib/rack] })
-      end
-
-      klass = Class.new(Rails::Engine)
-      klass.class_eval <<-RUBY
-        def self.called_from; "#{new_called_from}"; end
-      RUBY
-      Object.const_set(plugin.class_name.to_sym, klass)
-
-      # provide a default pathname to where this plugin is using its lib directory.
-      depth = RUBY_VERSION >= "1.9.2" ? 4 : 3
-      plugin.pathname ||= Pathname.new(caller(depth).first.match("(.*)#{File::SEPARATOR}lib")[1])
-      ::Refinery::Plugins.registered << plugin # add me to the collection of registered plugins
     end
 
     # Returns the class name of the plugin
@@ -105,6 +86,13 @@ module Refinery
 
     def add_activity(options)
       (self.plugin_activity ||= []) << Activity::new(options)
+    end
+      
+    def initialize
+      # provide a default pathname to where this plugin is using its lib directory.
+      depth = RUBY_VERSION >= "1.9.2" ? 4 : 3
+      self.pathname ||= Pathname.new(caller(depth).first.match("(.*)#{File::SEPARATOR}lib")[1])
+      ::Refinery::Plugins.registered << self # add me to the collection of registered plugins
     end
   end
 end

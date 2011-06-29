@@ -8,6 +8,26 @@
 * Moved `/shared/*` to `/refinery/*` instead, including `/shared/admin/*` to `/refinery/admin/*` as it makes more sense. [Philip Arndt](https://github.com/parndt)
 * [See full list](https://github.com/resolve/refinerycms/compare/1.0.0...1.1.0)
 
+## 1.0.3 [23 June 2011]
+
+* Fixes corruption in the 1.0.2 gem. [Philip Arndt](https://github.com/parndt)
+* [See full list](https://github.com/resolve/refinerycms/compare/1.0.2...1.0.3)
+
+## 1.0.2 [23 June 2011]
+
+* Ensure that `refinerycms-testing` is not enabled by default when installing an application. [Philip Arndt](https://github.com/parndt)
+* [See full list](https://github.com/resolve/refinerycms/compare/1.0.1...1.0.2)
+
+## 1.0.1 [21 June 2011]
+
+* Added `-t` / `--testing` option to `bin/refinerycms` which adds `refinerycms-testing` support by default when installing. [Philip Arndt](https://github.com/parndt)
+* Set rails dependency to `~> 3.0.9`. [Philip Arndt](https://github.com/parndt)
+* Re-enabled the magic `s3_backend` setting controlled by `ENV` variables. [Philip Arndt](https://github.com/parndt)
+* `bin/refinerycms` installer now generates rails using `bundle exec` so that you can have multiple Rails versions installed and they won't clash. [Philip Arndt](https://github.com/parndt)
+* Fixed problems with `rcov` and `simplecov` in Ruby 1.9.2. [Joe Sak](https://github.com/joemsak)
+* Make the catch-all pages route for marketable URLs be controlled by the configuration switch. [Kyle Wilkinson](https://github.com/wikyd)
+* [See full list](https://github.com/resolve/refinerycms/compare/1.0.0...1.0.1)
+
 ## 1.0.0 [28 May 2011]
 
 * New `::Refinery::Menu` API implemented which speeds up menu generation by many times. [Philip Arndt](https://github.com/parndt)
@@ -255,7 +275,7 @@
 
 ## 0.9.8.8 [16 December 2010]
 
-* Prevented ::Refinery::RefinerySetting from accessing its database table before it is created. [Philip Arndt](https://github.com/parndt)
+* Prevented ::Refinery::Setting from accessing its database table before it is created. [Philip Arndt](https://github.com/parndt)
 * Added more options to `bin/refinerycms` like ability to specify database username and password. [Philip Arndt](https://github.com/parndt)
 * [See full list](https://github.com/resolve/refinerycms/compare/0.9.8.7...0.9.8.8)
 
@@ -417,7 +437,7 @@
 * Documentation improved [David Jones](https://github.com/djones), [Philip Arndt](https://github.com/parndt) and [Steven Heidel](https://github.com/stevenheidel)
 * Installed spork for use with systems that support forking for performance improvements. Doesn't run on Windows. [Philip Arndt](https://github.com/parndt) and [James Fiderlick](https://github.com/jamesfid)
 * Improvements and new translations for Norsk Bokmål localisation. [Ken Paulsen](https://github.com/ken-guru)
-* Ensured that ::Refinery::RefinerySetting restrictions work properly using a before_save handler. [Joe Sak](https://github.com/joemsak)
+* Ensured that ::Refinery::Setting restrictions work properly using a before_save handler. [Joe Sak](https://github.com/joemsak)
 * Updated jquery-html5-placeholder-shim to latest version. [Amanda Wagener](https://github.com/awagener)
 * [See full list](https://github.com/resolve/refinerycms/compare/0.9.7.7...0.9.7.8)
 
@@ -493,7 +513,7 @@
 * Marketable URLs, such as "/contact". [Joshua Davey](https://github.com/jgdavey) and [Joe Sak](https://github.com/joemsak).
 * Switched to bundler and rack. [Alex Coles](https://github.com/myabc) and [Philip Arndt](https://github.com/parndt)
 * Added options to Refinery Settings :restricted, :scoping, :callback_proc_as_string. [Steven Heidel](https://github.com/stevenheidel) and [Philip Arndt](https://github.com/parndt)
-* Added caching abilities to frontend and to ::Refinery::RefinerySetting to drastically speed up the application under certain conditions. [Philip Arndt](https://github.com/parndt)
+* Added caching abilities to frontend and to ::Refinery::Setting to drastically speed up the application under certain conditions. [Philip Arndt](https://github.com/parndt)
 * Added spam filtering to contact form. [David Jones](https://github.com/djones)
 * Full Refinery UI redesign. [Resolve Digital](https://github.com/resolve)
 * User Role support. [Amanda Wagener](https://github.com/awagener) and [Philip Arndt](https://github.com/parndt)

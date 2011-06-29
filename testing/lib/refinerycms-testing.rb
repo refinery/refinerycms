@@ -14,10 +14,6 @@ module Refinery
     class Engine < ::Rails::Engine
       isolate_namespace ::Refinery
 
-      initializer 'serve static assets' do |app|
-        app.middleware.insert_after ::ActionDispatch::Static, ::ActionDispatch::Static, "#{root}/public"
-      end
-
       config.before_configuration do
         ::Refinery::Application.module_eval do
           def load_tasks

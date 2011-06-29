@@ -32,23 +32,21 @@ module Refinery
         error_404
       end
 
-      use_layout_templates = ::Refinery::Setting.find_or_set(:use_layout_templates, false, :scoping => 'pages')
-      use_view_templates   = ::Refinery::Setting.find_or_set(:use_view_templates, false, :scoping => 'pages')
-
-      render_options = {}
-
-      if use_layout_templates && @page.layout_template.present?
-        render_options[:layout] = @page.layout_template
-      end
-
-      if use_view_templates && @page.view_template.present?
-        render_options[:action] = @page.view_template
-      end
-
-      render render_options
+      render_with_templates?
     end
 
   protected
+    def render_with_templates?
+      layouts = ::Refinery::Setting.find_or_set(:use_layout_templates, false, :scoping => 'pages')
+      views   = ::Refinery::Setting.find_or_set(:use_view_templates, false, :scoping => 'pages')
+
+      render_options = {}
+      render_options[:layout] = @page.layout_template if layouts && @page.layout_template.present?
+      render_options[:action] = @page.view_template if views && @page.view_template.present?
+
+      render render_options if render_options.any?
+    end
+
     def write_cache?
       if ::Refinery::Setting.find_or_set(:cache_pages_full, {
         :restricted => true,

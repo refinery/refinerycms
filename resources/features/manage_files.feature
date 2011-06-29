@@ -7,6 +7,7 @@ Feature: Manage Files
   Background:
     Given I am a logged in refinery user
     And I have no files
+    When I go to the list of files
 
   @files-valid @valid
   Scenario: Create Valid File

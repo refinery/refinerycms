@@ -70,7 +70,7 @@ module ::Refinery
             @image_id = @image.id if @image.persisted?
             @image = nil
 
-            redirect_to request.query_parameters.merge(:action => 'insert')
+            redirect_to main_app.insert_refinery_admin_images_path(request.query_parameters)
           else
             self.insert
           end
@@ -97,8 +97,7 @@ module ::Refinery
       end
 
       def paginate_images
-        @images = @images.page(params[:page])
-                         .per(Image.per_page(from_dialog?, !@app_dialog))
+        @images = @images.page(params[:page]).per(Image.per_page(from_dialog?, !@app_dialog))
       end
 
       def restrict_controller

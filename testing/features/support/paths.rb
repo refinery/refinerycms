@@ -41,7 +41,7 @@ module NavigationHelpers
   def path_to(page_name)
     case page_name
 
-    when /the admin root/
+    when /the refinery admin root/
       refinery_admin_root_path
 
     # Add more mappings here.

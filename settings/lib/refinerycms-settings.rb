@@ -13,10 +13,6 @@ module Refinery
     class Engine < ::Rails::Engine
       isolate_namespace ::Refinery
 
-      initializer 'serve static assets' do |app|
-        app.middleware.insert_after ::ActionDispatch::Static, ::ActionDispatch::Static, "#{root}/public"
-      end
-
       initializer "init plugin", :after => :set_routes_reloader do |app|
         ::Refinery::Plugin.register do |plugin|
           plugin.pathname = root

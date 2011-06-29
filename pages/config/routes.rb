@@ -1,23 +1,24 @@
 ::Refinery::Application.routes.draw do
-  scope(:as => 'refinery_page', :module => 'refinery') do
-    get '/pages/:id', :to => 'pages#show'
-  end
+  scope(:module => 'refinery') do
+    root :to => 'pages#home'
+    get '/pages/:id', :to => 'pages#show', :as => 'refinery_page'
 
-  scope(:path => 'refinery', :as => 'refinery_admin', :module => 'refinery/admin') do
-    resources :pages, :except => :show do
-      collection do
-        post :update_positions
+    scope(:module => 'admin', :path => 'refinery', :as => 'refinery_admin') do
+      resources :pages, :except => :show do
+        collection do
+          post :update_positions
+        end
       end
-    end
 
-    resources :pages_dialogs, :only => [] do
-      collection do
-        get :link_to
-        get :test_url
-        get :test_email
+      resources :pages_dialogs, :only => [] do
+        collection do
+          get :link_to
+          get :test_url
+          get :test_email
+        end
       end
-    end
 
-    resources :page_parts, :only => [:new, :create, :destroy]
+      resources :page_parts, :only => [:new, :create, :destroy]
+    end
   end
 end

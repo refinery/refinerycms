@@ -17,7 +17,7 @@ Feature: Lost Password
     Scenario: Forgot Password page (non existing email entered)
       Given I am on the forgot password page
       And I have a user with email "green@cukes.com"
-      When I fill in "user_email" with "none@cukes.com"
+      When I fill in "refinery_user_email" with "none@cukes.com"
       And I press "Reset password"
       Then I should see "Sorry, 'none@cukes.com' isn't associated with any accounts."
       And I should see "Are you sure you typed the correct email address?"
@@ -26,7 +26,7 @@ Feature: Lost Password
     Scenario: Forgot Password page (existing email entered)
       Given I am on the forgot password page
       And I have a user with email "green@cukes.com"
-      When I fill in "user_email" with "green@cukes.com"
+      When I fill in "refinery_user_email" with "green@cukes.com"
       And I press "Reset password"
       Then I should see "An email has been sent to you with a link to reset your password."
 
@@ -45,5 +45,5 @@ Feature: Lost Password
       And I fill in "Password" with "cukes"
       And I fill in "Password confirmation" with "cukes"
       And I press "Reset password"
-      Then I should be on the admin root
+      Then I should be on the refinery admin root
       And I should see "Password reset successfully for"

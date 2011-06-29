@@ -3,6 +3,7 @@
 begin
   require 'rubygems'
   require 'bundler'
+  ENV["BUNDLE_GEMFILE"] = File.expand_path('../../Gemfile', __FILE__)
 rescue LoadError
   puts "\n=== ACTION REQUIRED ===\n\n"
   puts "Could not load the bundler gem. This is a required dependency of Refinery CMS."
@@ -106,6 +107,7 @@ module Refinery
 
         opts.on("--trace", "Investigate any problems with the installer") do
           @options[:trace] = true
+        end
 
         opts.on('-t', '--testing', "Automatically set up the project with refinerycms-testing support.") do
           @options[:testing] = true
@@ -173,7 +175,7 @@ module Refinery
         puts "\nPlease generate your new project from outside the Refinery directory and any Rails directory."
         puts "\n"
         exit(1)
-      elsif %w(refinery test testing).include?(@input.first.downcase)
+      elsif %w(refinery refinerycms test testing rails).include?(@input.first.downcase)
         puts "\nYou can't use '#{@input.first}' as a name for your project, this is a reserved word that will cause conflicts."
         puts "Please choose another name for your new project."
         puts "\n"
@@ -210,15 +212,18 @@ module Refinery
     end
 
     def generate!
+      # First, ensure dependencies are satisfied
+      run_command('bundle install', {:cd => false, :bundler => false})
+
       # Generate a rails application
       rails_command = "rails new \"#{@app_path}\""
       rails_command << " --database #{@options[:database][:adapter]}"
       rails_command << " --force" if @options[:force]
-      rails_command << " --skip-test-unit --skip-prototype"
+      rails_command << " --skip-test-unit"
       rails_command << " --skip-bundle" # Rails automatically installs the bundle, but so do we!
       rails_command << " -m http://jruby.org" if defined? JRUBY_VERSION
 
-      rails_output = run_command(rails_command, {:cd => false})
+      rails_output = run_command(rails_command, {:cd => false, :bundler => true})
 
       # Detect non-success or a blank rails output or starting with "Can't initialize" or "Error"
       if !$?.success? or rails_output.to_s.length == 0 or rails_output =~ /^(Can't\ initialize|Error)/
@@ -228,6 +233,9 @@ module Refinery
         if defined? JRUBY_VERSION
           find_and_replace(@app_path.join('Gemfile'), /['|"]sqlite3['|"]/, "'activerecord-jdbcsqlite3-adapter'")
         end
+
+        # Remove rails from the Gemfile so that Refinery can manage it
+        find_and_replace('Gemfile', %r{^gem 'rails'}, "# gem 'rails'")
 
         # Override username and password
         if @options[:database][:ident]
@@ -241,6 +249,9 @@ module Refinery
         puts "\n---------"
         puts "Refinery successfully installed in '#{@app_path}'!\n\n"
       end
+    ensure
+      # Now switch to the app's Gemfile.
+      ENV["BUNDLE_GEMFILE"] = @app_path.join('Gemfile').to_s
     end
 
     def bundle!
@@ -248,20 +259,13 @@ module Refinery
       refinery_gemfile_contents = Refinery.root.join('Gemfile').read
       refinery_gems = refinery_gemfile_contents.match(/# REFINERY CMS =+.*# END REFINERY CMS =+/m)[0]
       refinery_gems.gsub!("# gem 'refinerycms'", "gem 'refinerycms'") # Enable refinerycms
-      unless @options[:testing] # Disable testing
-        refinery_gems.gsub!("gem 'refinerycms-testing'", "# gem 'refinerycms-testing'")
+      if @options[:testing] # Enable testing
+        refinery_gems.gsub!("# gem 'refinerycms-testing'", "gem 'refinerycms-testing'")
       end
 
       app_gemfile = @app_path.join('Gemfile')
       refinery_user_defined_gems = refinery_gemfile_contents.match(/# USER DEFINED(.*)# END USER DEFINED/m)
       refinery_user_defined_gems = refinery_user_defined_gems[1] unless refinery_user_defined_gems.nil?
-
-      if @options[:database][:adapter] == 'mysql'
-        app_gemfile_contents = app_gemfile.read
-        app_gemfile.open('w') do |f|
-          f.write app_gemfile_contents.gsub %r{gem 'mysql2'.*}, "gem 'mysql2', '~> 0.2.7'"
-        end
-      end
 
       app_gemfile.open('a') do |f|
         f.write "\n#{refinery_gems}\n"
@@ -278,7 +282,6 @@ module Refinery
       find_and_replace('Gemfile', "# gem 'fog'", "gem 'fog'") if @options[:heroku]
 
       # Automate
-      # TODO: Check exit codes to see whether or not these worked
       puts "Installing gem requirements using bundler..\n"
 
       # Install!

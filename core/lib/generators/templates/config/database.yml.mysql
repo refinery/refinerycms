@@ -1,16 +1,16 @@
-login: &login
+development: &development
   adapter: mysql2
   host: localhost
   username: root
   password:
-
-development: &development
   database: your_local_database
-  <<: *login
 
 test: &test
+  adapter: mysql2
+  host: localhost
+  username: root
+  password:
   database: your_test_database
-  <<: *login
 
 production: &production
   adapter: mysql2

@@ -17,10 +17,6 @@ module Refinery
     class Engine < ::Rails::Engine
       isolate_namespace ::Refinery
 
-      initializer 'serve static assets' do |app|
-        app.middleware.insert_after ::ActionDispatch::Static, ::ActionDispatch::Static, "#{root}/public"
-      end
-
       initializer 'resources-with-dragonfly', :before => "init plugin" do |app|
         ::Refinery::Resources::Dragonfly.attach!(app)
       end
