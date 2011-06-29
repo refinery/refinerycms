@@ -16,6 +16,8 @@ It's easy to get a copy of this file to modify locally. For example, for the foo
 $ rake refinery:override view=shared/_footer.html
 </shell>
 
+You can see all the Refinery view files that may be overridden by looking in the app/views directory of the refinerycms-core gem.
+
 Or, if you are using an old version of Refinery with a theme installed, try:
 
 <shell>
