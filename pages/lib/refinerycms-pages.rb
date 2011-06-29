@@ -29,6 +29,7 @@ module Refinery
       refinery.after_inclusion do
         ::ApplicationController.send :include, ::Refinery::Pages::InstanceMethods
         ::Admin::BaseController.send :include, ::Refinery::Pages::Admin::InstanceMethods
+        require File.expand_path('../pages/marketable_routes.rb', __FILE__)
       end
 
       initializer "init plugin", :after => :set_routes_reloader do |app|
