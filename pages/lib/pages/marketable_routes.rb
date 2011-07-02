@@ -1,6 +1,6 @@
 # Determines whether marketable urls are in use.
 if ::Refinery::Page.use_marketable_urls?
-  ::Refinery::Application.routes.draw do
+  ::Refinery::Application.routes.append do
     scope(:module => 'refinery') do
       match '*path' => 'pages#show'
     end
