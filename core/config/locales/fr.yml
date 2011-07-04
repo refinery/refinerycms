@@ -1,25 +1,17 @@
 fr:
-  plugins:
-    refinery_core:
-      title: Refinery
-      description: Base de Refinery
-    refinery_dialogs:
-      title: Boîtes de dialogue
-      description: Plugin de boîtes de dialogue pour Refinery
-  welcome:
-    there_are_no_users: Il n'y actuellement aucun utilisateur enregistré, nous allons donc vous enregistrer pour commencer.
-    remember_admin_location: "Souvenez-vous que votre tableau de bord se situe à l'adresse : "
-    lets_start: Procédons à votre enregistrement afin que vous puissiez vous identifier...
-    continue: Continuer...
-  admin:
-    menu:
-      reorder_menu: Réorganiser le menu
-      reorder_menu_done: J'ai fini de réorganiser le menu
-    dialogs:
-      show:
-        save: Enregistrer
-        cancel: Annuler
   refinery:
+    plugins:
+      refinery_core:
+        title: Refinery
+        description: Base de Refinery
+      refinery_dialogs:
+        title: Boîtes de dialogue
+        description: Plugin de boîtes de dialogue pour Refinery
+    welcome:
+      there_are_no_users: Il n'y actuellement aucun utilisateur enregistré, nous allons donc vous enregistrer pour commencer.
+      remember_admin_location: "Souvenez-vous que votre tableau de bord se situe à l'adresse : "
+      lets_start: Procédons à votre enregistrement afin que vous puissiez vous identifier...
+      continue: Continuer...
     crudify:
       created: '%{what} a été correctement créé.'
       updated: '%{what} a été correctement mis à jour.'
@@ -29,6 +21,13 @@ fr:
       switch_to_your_website: Voir le site
       switch_to_your_website_editor: Voir le tableau de bord
     admin:
+      menu:
+        reorder_menu: Réorganiser le menu
+        reorder_menu_done: J'ai fini de réorganiser le menu
+      dialogs:
+        show:
+          save: Enregistrer
+          cancel: Annuler
       continue_editing:
         save_and_continue_editing: Enregistrer et continuer d'éditer
       form_actions:

@@ -1,25 +1,17 @@
 lt:
-  plugins:
-    refinery_core:
-      title: Refinery
-      description: Refinery šerdies įskiepiai
-    refinery_dialogs:
-      title: Dialogai
-      description: Refinery dialogų įskiepis
-  welcome:
-    there_are_no_users: "Dar nėra vartotojų, tai jums sukursime pirmąjį."
-    remember_admin_location: "Prisiminkite, kad jūsų Refinery administravimas yra adresu:"
-    lets_start: "Taigi sukurkime jums vartotoją, kad galėtumėte prisijungti..."
-    continue: Tęsti...
-  admin:
-    menu:
-      reorder_menu: Keisti meniu pozicijas
-      reorder_menu_done: Baigiau keisti meniu pozicijas
-    dialogs:
-      show:
-        save: Išsaugoti
-        cancel: Atšaukti
   refinery:
+    plugins:
+      refinery_core:
+        title: Refinery
+        description: Refinery šerdies įskiepiai
+      refinery_dialogs:
+        title: Dialogai
+        description: Refinery dialogų įskiepis
+    welcome:
+      there_are_no_users: "Dar nėra vartotojų, tai jums sukursime pirmąjį."
+      remember_admin_location: "Prisiminkite, kad jūsų Refinery administravimas yra adresu:"
+      lets_start: "Taigi sukurkime jums vartotoją, kad galėtumėte prisijungti..."
+      continue: Tęsti...
     crudify:
       created: '%{what} buvo sėkmingai pridėtas.'
       updated: '%{what} buvo sėkmingai atnaujintas.'
@@ -29,6 +21,13 @@ lt:
       switch_to_your_website: Pereiti į jūsų svetainę
       switch_to_your_website_editor: Pereiti į svetainės redaktorių
     admin:
+      menu:
+        reorder_menu: Keisti meniu pozicijas
+        reorder_menu_done: Baigiau keisti meniu pozicijas
+      dialogs:
+        show:
+          save: Išsaugoti
+          cancel: Atšaukti
       continue_editing:
         save_and_continue_editing: Išsaugoti ir tęsti redagavimą
       form_actions:

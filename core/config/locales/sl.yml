@@ -1,21 +1,10 @@
 sl:
-  welcome:
-    there_are_no_users: "Trenutno še ni nobenega uporabnika, zato vas moramo najprej namestiti."
-    remember_admin_location: "Zapomnite si vaše administracijsko področje v Refinery je:"
-    lets_start: "Vredu najprej vas bomo namestili, da se boste potem lahko prijavili..."
-    continue: "Nadaljuj..."
-  admin:
-    menu:
-      reorder_menu: Spremeni vrsti red zavihkov
-      reorder_menu_done: "Končaj s prerazporeditvijo zavihkov."
-    dialogs:
-      show:
-        save: Shrani
-        cancel: Prekliči
   refinery:
-    other: "Drugo %{what}"
-    reorder: "Spremeni vrstni red %{what}"
-    reorder_done: "Končaj s prerazporeditvijo %{what}"
+    welcome:
+      there_are_no_users: "Trenutno še ni nobenega uporabnika, zato vas moramo najprej namestiti."
+      remember_admin_location: "Zapomnite si vaše administracijsko področje v Refinery je:"
+      lets_start: "Vredu najprej vas bomo namestili, da se boste potem lahko prijavili..."
+      continue: "Nadaljuj..."
     crudify:
       created: "%{what} je bil uspešno ustvarjen"
       updated: "%{what} je bil uspešno ustvarjen"
@@ -25,6 +14,13 @@ sl:
       switch_to_your_website: "Preklopite na vašo spletno stran"
       switch_to_your_website_editor: "Preklopite na urejevalnik spletne strani"
     admin:
+      menu:
+        reorder_menu: Spremeni vrsti red zavihkov
+        reorder_menu_done: "Končaj s prerazporeditvijo zavihkov."
+      dialogs:
+        show:
+          save: Shrani
+          cancel: Prekliči
       message:
         close: Zapri
       continue_editing:

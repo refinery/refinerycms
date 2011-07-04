@@ -1,25 +1,17 @@
 rs:
-  plugins:
-    refinery_core:
-      title: Refinery
-      description: Glavni refinery plugin
-    refinery_dialogs:
-      title: Dijalozi
-      description: Refinery plugin za dijaloge
-  welcome:
-    there_are_no_users: Trenutno ne postoje administratori, tako da ćemo krenuti s unosom glavnog administratora.
-    remember_admin_location: 'Zapamti, Refinery administracija se nalazi na:'
-    lets_start: U redu, hajde da podesimo da možeš da se uloguješ...
-    continue: Nastavi...
-  admin:
-    menu:
-      reorder_menu: Promeni redosled menija
-      reorder_menu_done: Završio sam sa promenom
-    dialogs:
-      show:
-        save: Sačuvaj
-        cancel: Poništi
   refinery:
+    plugins:
+      refinery_core:
+        title: Refinery
+        description: Glavni refinery plugin
+      refinery_dialogs:
+        title: Dijalozi
+        description: Refinery plugin za dijaloge
+    welcome:
+      there_are_no_users: Trenutno ne postoje administratori, tako da ćemo krenuti s unosom glavnog administratora.
+      remember_admin_location: 'Zapamti, Refinery administracija se nalazi na:'
+      lets_start: U redu, hajde da podesimo da možeš da se uloguješ...
+      continue: Nastavi...
     crudify:
       created: '%{what} je uspešno dodat(a).'
       updated: '%{what} je uspešno izmenjen(a).'
@@ -29,6 +21,13 @@ rs:
       switch_to_your_website: Prebaci se na sajt
       switch_to_your_website_editor: Prebaci se na editor
     admin:
+      menu:
+        reorder_menu: Promeni redosled menija
+        reorder_menu_done: Završio sam sa promenom
+      dialogs:
+        show:
+          save: Sačuvaj
+          cancel: Poništi
       continue_editing:
         save_and_continue_editing: Sačuvaj i nastavi sa izmenama
       form_actions:

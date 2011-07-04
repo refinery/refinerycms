@@ -1,25 +1,17 @@
 de:
-  plugins:
-    refinery_core:
-      title: Refinery
-      description: Core Refinery Erweiterung
-    refinery_dialogs:
-      title: Dialoge
-      description: Refinery Dialog Erweiterung
-  welcome:
-    there_are_no_users: Es sind noch keine Benutzer vorhanden, darum lassen wir uns Ihren zuerst anlegen.
-    remember_admin_location: "Merken Sie sich Ihren Refinery Administrationsbereich:"
-    lets_start: Alles klar, lassen wir uns Ihren Benutzer anlegen, damit Sie sich anmelden können...
-    continue: Weiter...
-  admin:
-    menu:
-      reorder_menu: Menü umsortieren
-      reorder_menu_done: Ich bin mit dem Umsortieren fertig
-    dialogs:
-      show:
-        save: Speichern
-        cancel: Abbrechen
   refinery:
+    plugins:
+      refinery_core:
+        title: Refinery
+        description: Core Refinery Erweiterung
+      refinery_dialogs:
+        title: Dialoge
+        description: Refinery Dialog Erweiterung
+    welcome:
+      there_are_no_users: Es sind noch keine Benutzer vorhanden, darum lassen wir uns Ihren zuerst anlegen.
+      remember_admin_location: "Merken Sie sich Ihren Refinery Administrationsbereich:"
+      lets_start: Alles klar, lassen wir uns Ihren Benutzer anlegen, damit Sie sich anmelden können...
+      continue: Weiter...
     crudify:
       created: '%{what} wurde erfolgreich angelegt.'
       updated: '%{what} wurde erfolgreich aktualisiert.'
@@ -29,6 +21,13 @@ de:
       switch_to_your_website: Zu Ihrer Webseite wechseln
       switch_to_your_website_editor: Zum Editor Ihrer Webseite wechseln
     admin:
+      menu:
+        reorder_menu: Menü umsortieren
+        reorder_menu_done: Ich bin mit dem Umsortieren fertig
+      dialogs:
+        show:
+          save: Speichern
+          cancel: Abbrechen
       continue_editing:
         save_and_continue_editing: Speichern & Bearbeiten fortsetzen
       form_actions:

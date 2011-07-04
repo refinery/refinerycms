@@ -1,25 +1,17 @@
 lv:
-  plugins:
-    refinery_core:
-      title: Refinery
-      description: Refinery kodola spraudnis
-    refinery_dialogs:
-      title: Dialogi
-      description: Refinery dialogu spraudnis
-  welcome:
-    there_are_no_users: Vēl nav neviena lietotāja, līdz ar to mēs Jums palīdzēsim izveidot pirmo.
-    remember_admin_location: "Atcerieties, jūsu Refinery administrācijas panelis atrodas šeit:"
-    lets_start: Tātad turpināsim, lai jūs varētu pieslēgties...
-    continue: Turpināt...
-  admin:
-    menu:
-      reorder_menu: Pārkārtot izvēlni
-      reorder_menu_done: Esmu beidzis pārkārtot izvēlni
-    dialogs:
-      show:
-        save: Saglabāt
-        cancel: Atcelt
   refinery:
+    plugins:
+      refinery_core:
+        title: Refinery
+        description: Refinery kodola spraudnis
+      refinery_dialogs:
+        title: Dialogi
+        description: Refinery dialogu spraudnis
+    welcome:
+      there_are_no_users: Vēl nav neviena lietotāja, līdz ar to mēs Jums palīdzēsim izveidot pirmo.
+      remember_admin_location: "Atcerieties, jūsu Refinery administrācijas panelis atrodas šeit:"
+      lets_start: Tātad turpināsim, lai jūs varētu pieslēgties...
+      continue: Turpināt...
     crudify:
       created: '%{what} tika veiksmīgi izveidots.'
       updated: '%{what} tika veiksmīgi atjaunots.'
@@ -29,6 +21,13 @@ lv:
       switch_to_your_website: Pārslēgties uz jūsu saitu
       switch_to_your_website_editor: Pārslēgties uz jūsu saita administrācijas paneli
     admin:
+      menu:
+        reorder_menu: Pārkārtot izvēlni
+        reorder_menu_done: Esmu beidzis pārkārtot izvēlni
+      dialogs:
+        show:
+          save: Saglabāt
+          cancel: Atcelt
       continue_editing:
         save_and_continue_editing: Saglabāt un turpināt rediģēt
       form_actions:

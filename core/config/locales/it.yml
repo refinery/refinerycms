@@ -1,42 +1,33 @@
 it:
-  plugins:
-    refinery_core:
-      title: Refinery CMS
-      description: Core refinery plugin
-    refinery_dialogs:
-      title: Dialogs
-      description: Refinery dialogs plugin
-  welcome:
-    there_are_no_users: "Non ci sono ancora utenti registrati, occorre crearne uno."
-    remember_admin_location: "Ricorda che l'area di amministrazione di Refinery è:"
-    lets_start: "Va bene! Impostiamo un utente in modo da poter accedere..."
-    continue: "Continuare..."
-  admin:
-    menu:
-      reorder_menu: "Modifica l'ordinamento"
-      reorder_menu_done: "Termina la modifica dell'ordinamento"
-    dialogs:
-      show:
-        save: Salva
-        cancel: Annulla
   refinery:
-    other: "Altro %{what}"
-    reorder: "Riordina %{what}"
-    reorder_done: "Ordinamento di %{what} terminato"
+    plugins:
+      refinery_core:
+        title: Refinery CMS
+        description: Core refinery plugin
+      refinery_dialogs:
+        title: Dialogs
+        description: Refinery dialogs plugin
+    welcome:
+      there_are_no_users: "Non ci sono ancora utenti registrati, occorre crearne uno."
+      remember_admin_location: "Ricorda che l'area di amministrazione di Refinery è:"
+      lets_start: "Va bene! Impostiamo un utente in modo da poter accedere..."
+      continue: "Continuare..."
     crudify:
       created: "%{what} creato con successo"
       updated: "%{what} modificato con successo"
       destroyed: "%{what} eliminato con successo"
-  layouts:
-    admin:
-      view_public_site: Vai alla zona pubblica
-      welcome_to_refinery: Benvenuto in Refinery CMS
-  shared:
     site_bar:
       log_out: Esci
       switch_to_your_website: Vai al sito web
       switch_to_your_website_editor: Vai alla gestione del sito web
     admin:
+      menu:
+        reorder_menu: "Modifica l'ordinamento"
+        reorder_menu_done: "Termina la modifica dell'ordinamento"
+      dialogs:
+        show:
+          save: Salva
+          cancel: Annulla
       message:
         close: Fine
       continue_editing:

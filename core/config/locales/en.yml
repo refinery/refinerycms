@@ -15,14 +15,6 @@ en:
       remember_admin_location: "Remember your Refinery admin area is at:"
       lets_start: Alright let's get you setup so you can login...
       continue: Continue...
-    admin:
-      menu:
-        reorder_menu: Reorder menu
-        reorder_menu_done: I'm done reordering the menu
-      dialogs:
-        show:
-          save: Save
-          cancel: Cancel
     crudify:
       created: '%{what} was successfully added.'
       updated: '%{what} was successfully updated.'
@@ -32,6 +24,13 @@ en:
       switch_to_your_website: Switch to your website
       switch_to_your_website_editor: Switch to your website editor
     admin:
+      menu:
+        reorder_menu: Reorder menu
+        reorder_menu_done: I'm done reordering the menu
+      dialogs:
+        show:
+          save: Save
+          cancel: Cancel
       continue_editing:
         save_and_continue_editing: 'Save & continue editing'
       form_actions:

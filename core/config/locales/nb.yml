@@ -1,25 +1,17 @@
 nb:
-  plugins:
-    refinery_core:
-      title: Refinery
-      description: Refinery kjernetillegg
-    refinery_dialogs:
-      title: Dialoger
-      description: Refinery tillegg for dialoger
-  welcome:
-    there_are_no_users: "Det finnes ingen brukere enda, så la oss sette opp en bruker for deg først."
-    remember_admin_location: "Husk at adressen for å administrere din Refinery er:"
-    lets_start: "Ok, la oss få deg satt opp slik at du kan logge inn..."
-    continue: "Fortsett..."
-  admin:
-    menu:
-      reorder_menu: Endre rekkefølgen på menyen
-      reorder_menu_done: "Jeg er ferdig å endre rekkefølgen på menyen"
-    dialogs:
-      show:
-        save: Lagre
-        cancel: Avbryt
   refinery:
+    plugins:
+      refinery_core:
+        title: Refinery
+        description: Refinery kjernetillegg
+      refinery_dialogs:
+        title: Dialoger
+        description: Refinery tillegg for dialoger
+    welcome:
+      there_are_no_users: "Det finnes ingen brukere enda, så la oss sette opp en bruker for deg først."
+      remember_admin_location: "Husk at adressen for å administrere din Refinery er:"
+      lets_start: "Ok, la oss få deg satt opp slik at du kan logge inn..."
+      continue: "Fortsett..."
     crudify:
       created: "%{what} ble opprettet."
       updated: "%{what} ble oppdatert."
@@ -29,6 +21,13 @@ nb:
       switch_to_your_website: Bytt til din webside
       switch_to_your_website_editor: Bytt til redigering av din webside
     admin:
+      menu:
+        reorder_menu: Endre rekkefølgen på menyen
+        reorder_menu_done: "Jeg er ferdig å endre rekkefølgen på menyen"
+      dialogs:
+        show:
+          save: Lagre
+          cancel: Avbryt
       continue_editing:
         save_and_continue_editing: "Lagre og fortsett med redigeringen"
       form_actions:

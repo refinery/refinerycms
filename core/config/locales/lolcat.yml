@@ -1,25 +1,17 @@
 lolcat:
-  plugins:
-    refinery_core:
-      title: REFINERY
-      description: CORE REFINERY PLUGIN
-    refinery_dialogs:
-      title: DIALOGS
-      description: REFINERY DIALOGS PLUGIN
-  welcome:
-    there_are_no_users: THAR R NO USERS YET, SO WELL SET U UP FURST.
-    remember_admin_location: "REMEMBR UR REFINERY ADMIN AREA IZ AT:"
-    lets_start: ALRIGHT LETS GIT U SETUP SO U CAN LOGIN...
-    continue: CONTINUE...
-  admin:
-    menu:
-      reorder_menu: REORDR MENU
-      reorder_menu_done: IM DUN REORDERIN TEH MENU
-    dialogs:
-      show:
-        save: SAVE
-        cancel: CANCEL
   refinery:
+    plugins:
+      refinery_core:
+        title: REFINERY
+        description: CORE REFINERY PLUGIN
+      refinery_dialogs:
+        title: DIALOGS
+        description: REFINERY DIALOGS PLUGIN
+    welcome:
+      there_are_no_users: THAR R NO USERS YET, SO WELL SET U UP FURST.
+      remember_admin_location: "REMEMBR UR REFINERY ADMIN AREA IZ AT:"
+      lets_start: ALRIGHT LETS GIT U SETUP SO U CAN LOGIN...
+      continue: CONTINUE...
     crudify:
       created: '%{what} WUZ SUCCESFULLY ADDD.'
       updated: '%{what} WUZ SUCCESFULLY UPDATD.'
@@ -29,6 +21,13 @@ lolcat:
       switch_to_your_website: SWITCH 2 UR WEBSIET
       switch_to_your_website_editor: SWITCH 2 UR WEBSIET EDITOR
     admin:
+      menu:
+        reorder_menu: REORDR MENU
+        reorder_menu_done: IM DUN REORDERIN TEH MENU
+      dialogs:
+        show:
+          save: SAVE
+          cancel: CANCEL
       continue_editing:
         save_and_continue_editing: SAVE & CONTINUE EDITIN
       form_actions:

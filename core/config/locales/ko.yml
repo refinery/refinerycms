@@ -15,14 +15,6 @@ ko:
       remember_admin_location: "Refinery 관리 페이지의 주소를 기억해주세요:"
       lets_start: 로그인을 위한 계정을 생성해주세요.
       continue: 계속...
-    admin:
-      menu:
-        reorder_menu: 메뉴 재배치
-        reorder_menu_done: 메뉴 배치를 마쳤습니다
-      dialogs:
-        show:
-          save: 저장
-          cancel: 취소
     crudify:
       created: '%{what}을(를) 생성했습니다.'
       updated: '%{what}을(를) 수정했습니다.'
@@ -32,6 +24,13 @@ ko:
       switch_to_your_website: 웹사이트 보기
       switch_to_your_website_editor: 관리 페이지 보기
     admin:
+      menu:
+        reorder_menu: 메뉴 재배치
+        reorder_menu_done: 메뉴 배치를 마쳤습니다
+      dialogs:
+        show:
+          save: 저장
+          cancel: 취소
       continue_editing:
         save_and_continue_editing: '저장하고 계속 편집'
       form_actions:
