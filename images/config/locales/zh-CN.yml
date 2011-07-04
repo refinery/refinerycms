@@ -1,37 +1,38 @@
 zh-CN:
-  plugins:
-    refinery_images:
-      title: 图片
-      description: 图片管理
-  admin:
-    images:
-      delete: 永久删除此图片
-      edit: 编辑此图片
-      form:
-        image: 图片
-        use_current_image: 使用当前图片
-        or: 或
-        replace_image: " 使用这个去覆盖..."
-        current_image: 当前图片
-        maximum_image_size: 最大的图片大小为 %{megabytes} MB.
-      actions:
-        create_new_image: 添加新图片
-      records:
-        no_images_yet: 这里还没有图片. 点击 "添加新图片" 去添加您的第一张图片.
-      index:
-        view:
-          switch_to: 切换到 %{view_name} 视图
-          list: 列表
-          grid: 表格
-      grid_view:
-        view_live_html: 查看此图片 <br/><em>新窗口打开</em>
-      existing_image:
-        button_text: 插入
-        resize_image: 调整图片尺寸?
-        size: 大小
-      insert:
-        existing_image: 图片库
-        new_image: 上传
+  refinery:
+    plugins:
+      refinery_images:
+        title: 图片
+        description: 图片管理
+    admin:
+      images:
+        delete: 永久删除此图片
+        edit: 编辑此图片
+        form:
+          image: 图片
+          use_current_image: 使用当前图片
+          or: 或
+          replace_image: " 使用这个去覆盖..."
+          current_image: 当前图片
+          maximum_image_size: 最大的图片大小为 %{megabytes} MB.
+        actions:
+          create_new_image: 添加新图片
+        records:
+          no_images_yet: 这里还没有图片. 点击 "添加新图片" 去添加您的第一张图片.
+        index:
+          view:
+            switch_to: 切换到 %{view_name} 视图
+            list: 列表
+            grid: 表格
+        grid_view:
+          view_live_html: 查看此图片 <br/><em>新窗口打开</em>
+        existing_image:
+          button_text: 插入
+          resize_image: 调整图片尺寸?
+          size: 大小
+        insert:
+          existing_image: 图片库
+          new_image: 上传
   activerecord:
     models:
       image: 图片

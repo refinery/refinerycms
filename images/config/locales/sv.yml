@@ -1,37 +1,38 @@
 sv:
-  plugins:
-    refinery_images:
-      title: Bilder
-      description: Hantera bilder
-  admin:
-    images:
-      delete: Ta bort den här bilden för alltid
-      edit: Redigera den här bilden
-      form:
-        image: Bild
-        use_current_image: Använd denna bild
-        or: eller
-        replace_image: " ersätt den med den här..."
-        current_image: Denna bild
-        maximum_image_size: Maximal filstorlek för bilden är %{megabytes} megabytes.
-      actions:
-        create_new_image: Ladda upp en bild
-      records:
-        no_images_yet: Det finns inga bilder än. Klicka på "Ladda upp en bild" för att ladda upp en bild.
-      index:
-        view:
-          switch_to: Byt till %{view_name} vyn
-          list: lista
-          grid: rutnät
-      grid_view:
-        view_live_html: Visa den här bilden <br/><em>Öppnas i nytt fönster</em>
-      existing_image:
-        button_text: Klistra in
-        resize_image: Ändra storlek på bilden?
-        size: Storlek
-      insert:
-        existing_image: Redan existerande bild
-        new_image: Ny bild
+  refinery:
+    plugins:
+      refinery_images:
+        title: Bilder
+        description: Hantera bilder
+    admin:
+      images:
+        delete: Ta bort den här bilden för alltid
+        edit: Redigera den här bilden
+        form:
+          image: Bild
+          use_current_image: Använd denna bild
+          or: eller
+          replace_image: " ersätt den med den här..."
+          current_image: Denna bild
+          maximum_image_size: Maximal filstorlek för bilden är %{megabytes} megabytes.
+        actions:
+          create_new_image: Ladda upp en bild
+        records:
+          no_images_yet: Det finns inga bilder än. Klicka på "Ladda upp en bild" för att ladda upp en bild.
+        index:
+          view:
+            switch_to: Byt till %{view_name} vyn
+            list: lista
+            grid: rutnät
+        grid_view:
+          view_live_html: Visa den här bilden <br/><em>Öppnas i nytt fönster</em>
+        existing_image:
+          button_text: Klistra in
+          resize_image: Ändra storlek på bilden?
+          size: Storlek
+        insert:
+          existing_image: Redan existerande bild
+          new_image: Ny bild
   activerecord:
     models:
       image: bild

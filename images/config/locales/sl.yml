@@ -1,36 +1,37 @@
 sl:
-  plugins:
-    refinery_images:
-      title: Slike
-  admin:
-    images:
-      delete: Odstrani sliko
-      edit: Uredi sliko
-      form:
-        image: Slika
-        use_current_image: Uporabi tretnutno sliko
-        or: ali
-        replace_image: " zamenjaj jo s tole..."
-        current_image: Trenutna Slika
-        maximum_image_size: "Največja dovoljena velikost slike je lahko %{megabytes} megabajtov."
-      actions:
-        create_new_image: Ustvari Novo Sliko
-      records:
-        no_images_yet: Trenutno še ni nobene slike. Za prenos prve slike kliknite "Ustvari Novo Sliko".
-      index:
-        view:
-          switch_to: Preklopi pogled v %{view_name}
-          list: seznam
-          grid: mrežo
-      grid_view:
-        view_live_html: Poglej sliko <br/><em>Odpre se v novem oknu</em>
-      existing_image:
-        button_text: Vstavi
-        resize_image: Spremeni velikost slike?
-        size: Velikost
-      insert:
-        existing_image: Obstoječa Slika
-        new_image: Nova Slika
+  refinery:
+    plugins:
+      refinery_images:
+        title: Slike
+    admin:
+      images:
+        delete: Odstrani sliko
+        edit: Uredi sliko
+        form:
+          image: Slika
+          use_current_image: Uporabi tretnutno sliko
+          or: ali
+          replace_image: " zamenjaj jo s tole..."
+          current_image: Trenutna Slika
+          maximum_image_size: "Največja dovoljena velikost slike je lahko %{megabytes} megabajtov."
+        actions:
+          create_new_image: Ustvari Novo Sliko
+        records:
+          no_images_yet: Trenutno še ni nobene slike. Za prenos prve slike kliknite "Ustvari Novo Sliko".
+        index:
+          view:
+            switch_to: Preklopi pogled v %{view_name}
+            list: seznam
+            grid: mrežo
+        grid_view:
+          view_live_html: Poglej sliko <br/><em>Odpre se v novem oknu</em>
+        existing_image:
+          button_text: Vstavi
+          resize_image: Spremeni velikost slike?
+          size: Velikost
+        insert:
+          existing_image: Obstoječa Slika
+          new_image: Nova Slika
   activerecord:
     models:
       image: slika

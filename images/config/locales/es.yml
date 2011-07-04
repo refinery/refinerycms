@@ -1,38 +1,39 @@
 es:
-  plugins:
-    refinery_images:
-      title: Imágenes
-      description: Gestionar imágenes
-      article: femenino
-  admin:
-    images:
-      delete: Borrar esta imagen para siempre
-      edit: Editar esta imagen
-      form:
-        image: Imagen
-        use_current_image: Usar imagen actual
-        or: o
-        replace_image: " reemplazarla con esta otra..."
-        current_image: Imagen actual
-        maximum_image_size: El peso máximo para una imagen son  %{megabytes} megabytes.
-      actions:
-        create_new_image: Crear nueva imagen
-      records:
-        no_images_yet: Aún no hay imágenes. Haz click en "Crear nueva imagen" para añadir la primera.
-      index:
-        view:
-          switch_to: Cambiar a vista %{view_name}
-          list: lista
-          grid: cuadrícula
-      grid_view:
-        view_live_html: Ver imagen <br/><em>Abre en ventana nueva</em>
-      existing_image:
-        button_text: Insertar
-        resize_image: ¿Redimensionar la imagen?
-        size: Tamaño
-      insert:
-        existing_image: Imagen existente
-        new_image: Nueva imagen
+  refinery:
+    plugins:
+      refinery_images:
+        title: Imágenes
+        description: Gestionar imágenes
+        article: femenino
+    admin:
+      images:
+        delete: Borrar esta imagen para siempre
+        edit: Editar esta imagen
+        form:
+          image: Imagen
+          use_current_image: Usar imagen actual
+          or: o
+          replace_image: " reemplazarla con esta otra..."
+          current_image: Imagen actual
+          maximum_image_size: El peso máximo para una imagen son  %{megabytes} megabytes.
+        actions:
+          create_new_image: Crear nueva imagen
+        records:
+          no_images_yet: Aún no hay imágenes. Haz click en "Crear nueva imagen" para añadir la primera.
+        index:
+          view:
+            switch_to: Cambiar a vista %{view_name}
+            list: lista
+            grid: cuadrícula
+        grid_view:
+          view_live_html: Ver imagen <br/><em>Abre en ventana nueva</em>
+        existing_image:
+          button_text: Insertar
+          resize_image: ¿Redimensionar la imagen?
+          size: Tamaño
+        insert:
+          existing_image: Imagen existente
+          new_image: Nueva imagen
   activerecord:
     models:
       image: imagen

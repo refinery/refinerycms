@@ -1,37 +1,38 @@
 sk:
-  plugins:
-    refinery_images:
-      title: Obrázky
-      description: Spravovať obrázky
-  admin:
-    images:
-      delete: Zmazať tento obrázok
-      edit: Upraviť tento obrázok
-      form:
-        image: Obrázok
-        use_current_image: Použiť vybraný obrázok
-        or: or
-        replace_image: " nahradiť ho týmto..."
-        current_image: Vybraný obrázok
-        maximum_image_size: Maximálna veľkosť obrázku je %{megabytes}MB.
-      actions:
-        create_new_image: Pridať nový obrázok
-      records:
-        no_images_yet: Zatiaľ nebol nahraný žiadny obrázok. Klikni na "Pridať nový obrázok" pre pridanie.
-      index:
-        view:
-          switch_to: Prepnúť pohľad na %{view_name}
-          list: zoznam
-          grid: tabuľka
-      grid_view:
-        view_live_html: Zobraziť obrázok. <br/><em>Otvorí sa v novom okne.</em>
-      existing_image:
-        button_text: Vložiť
-        resize_image: Upraviť veľkosť?
-        size: Veľkosť
-      insert:
-        existing_image: Knižnica
-        new_image: Nový obrázok
+  refinery:
+    plugins:
+      refinery_images:
+        title: Obrázky
+        description: Spravovať obrázky
+    admin:
+      images:
+        delete: Zmazať tento obrázok
+        edit: Upraviť tento obrázok
+        form:
+          image: Obrázok
+          use_current_image: Použiť vybraný obrázok
+          or: or
+          replace_image: " nahradiť ho týmto..."
+          current_image: Vybraný obrázok
+          maximum_image_size: Maximálna veľkosť obrázku je %{megabytes}MB.
+        actions:
+          create_new_image: Pridať nový obrázok
+        records:
+          no_images_yet: Zatiaľ nebol nahraný žiadny obrázok. Klikni na "Pridať nový obrázok" pre pridanie.
+        index:
+          view:
+            switch_to: Prepnúť pohľad na %{view_name}
+            list: zoznam
+            grid: tabuľka
+        grid_view:
+          view_live_html: Zobraziť obrázok. <br/><em>Otvorí sa v novom okne.</em>
+        existing_image:
+          button_text: Vložiť
+          resize_image: Upraviť veľkosť?
+          size: Veľkosť
+        insert:
+          existing_image: Knižnica
+          new_image: Nový obrázok
   activerecord:
     models:
       image: obrázok

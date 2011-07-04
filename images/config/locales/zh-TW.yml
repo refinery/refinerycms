@@ -1,37 +1,38 @@
 zh-TW:
-  plugins:
-    refinery_images:
-      title: 圖片
-      description: 管理圖片
-  admin:
-    images:
-      delete: 永遠地移除這張圖片
-      edit: 編輯圖片
-      form:
-        image: 圖片
-        use_current_image: 使用目前圖片
-        or: 或
-        replace_image: " 用這個來取代..."
-        current_image: 目前圖片
-        maximum_image_size: 圖片大小限制為 %{megabytes} MB.
-      actions:
-        create_new_image: 新增圖片
-      records:
-        no_images_yet: 目前沒有任何圖片. 點選 "新增圖片" 來加入您的第一張圖片.
-      index:
-        view:
-          switch_to: 切換到%{view_name}模式
-          list: 列表
-          grid: 格狀
-      grid_view:
-        view_live_html: 瀏覽圖片 <br/><em>在新視窗中開啟</em>
-      existing_image:
-        button_text: 插入
-        resize_image: 調整圖片大小?
-        size: 大小
-      insert:
-        existing_image: 圖片庫
-        new_image: 上傳
+  refinery:
+    plugins:
+      refinery_images:
+        title: 圖片
+        description: 管理圖片
+    admin:
+      images:
+        delete: 永遠地移除這張圖片
+        edit: 編輯圖片
+        form:
+          image: 圖片
+          use_current_image: 使用目前圖片
+          or: 或
+          replace_image: " 用這個來取代..."
+          current_image: 目前圖片
+          maximum_image_size: 圖片大小限制為 %{megabytes} MB.
+        actions:
+          create_new_image: 新增圖片
+        records:
+          no_images_yet: 目前沒有任何圖片. 點選 "新增圖片" 來加入您的第一張圖片.
+        index:
+          view:
+            switch_to: 切換到%{view_name}模式
+            list: 列表
+            grid: 格狀
+        grid_view:
+          view_live_html: 瀏覽圖片 <br/><em>在新視窗中開啟</em>
+        existing_image:
+          button_text: 插入
+          resize_image: 調整圖片大小?
+          size: 大小
+        insert:
+          existing_image: 圖片庫
+          new_image: 上傳
   activerecord:
     models:
       image: 圖片

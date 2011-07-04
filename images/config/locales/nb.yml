@@ -1,37 +1,38 @@
 nb:
-  plugins:
-    refinery_images:
-      title: Bilder
-      description: Behandle bilder
-  admin:
-    images:
-      delete: Fjern dette bildet permanent
-      edit: Rediger dette bildet
-      form:
-        image: Bilde
-        use_current_image: Bruk gjeldende bilde
-        or: eller
-        replace_image: Erstatt det med dette ...
-        current_image: Gjeldende bilde
-        maximum_image_size: "Den største tillatte størrelsen på et bilde er %{megabytes} MB."
-      actions:
-        create_new_image: Lag et nytt bilde
-      records:
-        no_images_yet: Det er ingen bilder her enda. Trykk på "Lag et nytt bilde" for å legge til ditt første bilde.
-      index:
-        view:
-          switch_to: "Endre til %{view_name} visning"
-          list: liste
-          grid: rutenett
-      grid_view:
-        view_live_html: Vis dette bildet <br/><em>Åpner i et nytt vindu</em>
-      existing_image:
-        button_text: Sett inn
-        resize_image: "Endre størrelsen på bildet? <em>(Anbefales)</em>"
-        size: Størrelse
-      insert:
-        existing_image: Eksisterende bilde
-        new_image: Nytt bilde
+  refinery:
+    plugins:
+      refinery_images:
+        title: Bilder
+        description: Behandle bilder
+    admin:
+      images:
+        delete: Fjern dette bildet permanent
+        edit: Rediger dette bildet
+        form:
+          image: Bilde
+          use_current_image: Bruk gjeldende bilde
+          or: eller
+          replace_image: Erstatt det med dette ...
+          current_image: Gjeldende bilde
+          maximum_image_size: "Den største tillatte størrelsen på et bilde er %{megabytes} MB."
+        actions:
+          create_new_image: Lag et nytt bilde
+        records:
+          no_images_yet: Det er ingen bilder her enda. Trykk på "Lag et nytt bilde" for å legge til ditt første bilde.
+        index:
+          view:
+            switch_to: "Endre til %{view_name} visning"
+            list: liste
+            grid: rutenett
+        grid_view:
+          view_live_html: Vis dette bildet <br/><em>Åpner i et nytt vindu</em>
+        existing_image:
+          button_text: Sett inn
+          resize_image: "Endre størrelsen på bildet? <em>(Anbefales)</em>"
+          size: Størrelse
+        insert:
+          existing_image: Eksisterende bilde
+          new_image: Nytt bilde
   activerecord:
     models:
       image: bilde
@@ -41,4 +42,3 @@ nb:
           blank: Du må angi bildet som skal lastet opp
           too_long: Bildet må være mindre enn %{count}
           incorrect_format: 'Bildefilen må være av filtypen JPG, PNG eller GIF'
-        

@@ -1,37 +1,38 @@
 lolcat:
-  plugins:
-    refinery_images:
-      title: IMAGEZ
-      description: MANAGE IMAGEZ
-  admin:
-    images:
-      delete: REMOOV DIS IMAGE FOREVR
-      edit: EDIT DIS IMAGE
-      form:
-        image: IMAGE
-        use_current_image: USE CURRENT IMAGE
-        or: OR
-        replace_image: " REPLACE IT WIF DIS WAN..."
-        current_image: CURRENT IMAGE
-        maximum_image_size: TEH MAXIMUM IMAGE SIZE IZ %{megabytes} MEGABYTEZ.
-      actions:
-        create_new_image: ADD NEW IMAGE
-      records:
-        no_images_yet: THAR R NO IMAGEZ YET. CLICK "ADD NEW IMAGE" 2 ADD UR FURST IMAGE.
-      index:
-        view:
-          switch_to: SWITCH 2 %{view_name} VIEW
-          list: LIST
-          grid: GRID
-      grid_view:
-        view_live_html: VIEW DIS IMAGE <BR/><EM>OPENS IN NEW WINDOW</EM>
-      existing_image:
-        button_text: INSERT
-        resize_image: RESIZE TEH IMAGE?
-        size: SIZE
-      insert:
-        existing_image: EXISTIN IMAGE
-        new_image: NEW IMAGE
+  refinery:
+    plugins:
+      refinery_images:
+        title: IMAGEZ
+        description: MANAGE IMAGEZ
+    admin:
+      images:
+        delete: REMOOV DIS IMAGE FOREVR
+        edit: EDIT DIS IMAGE
+        form:
+          image: IMAGE
+          use_current_image: USE CURRENT IMAGE
+          or: OR
+          replace_image: " REPLACE IT WIF DIS WAN..."
+          current_image: CURRENT IMAGE
+          maximum_image_size: TEH MAXIMUM IMAGE SIZE IZ %{megabytes} MEGABYTEZ.
+        actions:
+          create_new_image: ADD NEW IMAGE
+        records:
+          no_images_yet: THAR R NO IMAGEZ YET. CLICK "ADD NEW IMAGE" 2 ADD UR FURST IMAGE.
+        index:
+          view:
+            switch_to: SWITCH 2 %{view_name} VIEW
+            list: LIST
+            grid: GRID
+        grid_view:
+          view_live_html: VIEW DIS IMAGE <BR/><EM>OPENS IN NEW WINDOW</EM>
+        existing_image:
+          button_text: INSERT
+          resize_image: RESIZE TEH IMAGE?
+          size: SIZE
+        insert:
+          existing_image: EXISTIN IMAGE
+          new_image: NEW IMAGE
   activerecord:
     models:
       image: IMAGE

@@ -1,37 +1,38 @@
 da:
-  plugins:
-    refinery_images:
-      title: Billeder
-      description: Vedligehold billeder
-  admin:
-    images:
-      delete: Slet billedet
-      edit: Redigér billede
-      form:
-        image: Billede
-        use_current_image: Behold nuværende billede
-        or: eller
-        replace_image: " erstat med dette..."
-        current_image: Nuværende billede
-        maximum_image_size: Billedet må maksimalt fylde %{megabytes} megabytes.
-      actions:
-        create_new_image: Tilføj et nyt billede
-      records:
-        no_images_yet: Der er ingen billeder endnu. Klik "Tilføj et nyt billede" for at oprette det første.
-      index:
-        view:
-          switch_to: Skift til %{view_name}visning
-          list: liste
-          grid: gitter
-      grid_view:
-        view_live_html: Vis billede<br/><em>(åbner i nyt vindue)</em>
-      existing_image:
-        button_text: Indsæt
-        resize_image: Skalér billedet?
-        size: Størrelse
-      insert:
-        existing_image: Arkiv
-        new_image: Upload
+  refinery:
+    plugins:
+      refinery_images:
+        title: Billeder
+        description: Vedligehold billeder
+    admin:
+      images:
+        delete: Slet billedet
+        edit: Redigér billede
+        form:
+          image: Billede
+          use_current_image: Behold nuværende billede
+          or: eller
+          replace_image: " erstat med dette..."
+          current_image: Nuværende billede
+          maximum_image_size: Billedet må maksimalt fylde %{megabytes} megabytes.
+        actions:
+          create_new_image: Tilføj et nyt billede
+        records:
+          no_images_yet: Der er ingen billeder endnu. Klik "Tilføj et nyt billede" for at oprette det første.
+        index:
+          view:
+            switch_to: Skift til %{view_name}visning
+            list: liste
+            grid: gitter
+        grid_view:
+          view_live_html: Vis billede<br/><em>(åbner i nyt vindue)</em>
+        existing_image:
+          button_text: Indsæt
+          resize_image: Skalér billedet?
+          size: Størrelse
+        insert:
+          existing_image: Arkiv
+          new_image: Upload
   activerecord:
     models:
       image: billede

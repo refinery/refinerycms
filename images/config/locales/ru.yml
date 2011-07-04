@@ -1,8 +1,38 @@
 ru:
-  plugins:
-    refinery_images:
-      title: Изображения
-      article: neuter
+  refinery:
+    plugins:
+      refinery_images:
+        title: Изображения
+        article: neuter
+    admin:
+      images:
+        delete: Удалить это изображение навсегда
+        edit: Редактировать это изображение
+        form:
+          image: Изображение
+          use_current_image: Использовать текущее изображение
+          or: или
+          replace_image: " заменить его этим"
+          current_image: Текущее изображение
+          maximum_image_size: "Максимальный размер изображения — %{megabytes} МБ."
+        actions:
+          create_new_image: Создать новое изображение
+        records:
+          no_images_yet: "Изображений пока что нет. Нажмите «Создать новое изображение», чтобы добавить ваше первое изображение."
+        index:
+          view:
+            switch_to: Показать %{view_name}
+            list: списком
+            grid: сеткой
+        grid_view:
+          view_live_html: Показать это изображение <br/><em>Откроется в новом окне</em>
+        existing_image:
+          button_text: Вставить
+          resize_image: Изменить размер изображения?
+          size: Размер
+        insert:
+          existing_image: Существующее изображение
+          new_image: Новое изображение
   activerecord:
     models:
       image: изображение
@@ -12,32 +42,3 @@ ru:
           blank: Вы должны выбрать файл для загрузки
           too_long: "Файлы должны быть меньше по размеру, чем %{count}"
           incorrect_format: "Ваше изображение может быть только в форматах JPG, PNG или GIF"
-  admin:
-    images:
-      delete: Удалить это изображение навсегда
-      edit: Редактировать это изображение
-      form:
-        image: Изображение
-        use_current_image: Использовать текущее изображение
-        or: или
-        replace_image: " заменить его этим"
-        current_image: Текущее изображение
-        maximum_image_size: "Максимальный размер изображения — %{megabytes} МБ."
-      actions:
-        create_new_image: Создать новое изображение
-      records:
-        no_images_yet: "Изображений пока что нет. Нажмите «Создать новое изображение», чтобы добавить ваше первое изображение."
-      index:
-        view:
-          switch_to: Показать %{view_name}
-          list: списком
-          grid: сеткой
-      grid_view:
-        view_live_html: Показать это изображение <br/><em>Откроется в новом окне</em>
-      existing_image:
-        button_text: Вставить
-        resize_image: Изменить размер изображения?
-        size: Размер
-      insert:
-        existing_image: Существующее изображение
-        new_image: Новое изображение

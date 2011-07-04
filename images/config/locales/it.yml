@@ -1,45 +1,46 @@
 it:
-  plugins:
-    refinery_images:
-      title: Immagini
-      description: Gestione immagini
-  admin:
-    images:
-      delete: "Elimina l'immagine corrente"
-      edit: "Modifica l'immagine corrente"
-      form:
-        image: Immagine
-        use_current_image: "Usa l'immagine corrente"
-        or: o
-        replace_image: Sostituirla con questa...
-        current_image: Immagine corrente
-        maximum_image_size: "La dimensione massima per l'immagine è di %{megabytes} megabytes."
-      actions:
-        create_new_image: Carica una nuova immagine
-      records:
-        no_images_yet: "Nessuna immagine presente. Fare clic su \"Carica una nuova immagine\" per aggiungere un'immagine."
-      index:
-        view:
-          switch_to: 'Passa alla modalità di visualizzazione "%{view_name}"'
-          list: Lista
-          grid: Griglia
-      grid_view:
-        edit: Modifica questa immagine
-        view_live_html: Visualizza questa immagine <br/><em>Apri in una nuova finestra</em>
-      existing_image:
-        button_text: Inserisci
-        resize_image: "Ridimensionare l'immagine?"
-        size: Dimensioni
-      list_view_image:
-        edit_this_image: Modifica questa immagine
-      insert:
-        existing_image: Immagine Esistente
-        new_image: Nuova immagine
-        previous: Precedente
-        next: Successivo
-        submit_insert: Inserire
-        or: o
-        cancel: Annullare
+  refinery:
+    plugins:
+      refinery_images:
+        title: Immagini
+        description: Gestione immagini
+    admin:
+      images:
+        delete: "Elimina l'immagine corrente"
+        edit: "Modifica l'immagine corrente"
+        form:
+          image: Immagine
+          use_current_image: "Usa l'immagine corrente"
+          or: o
+          replace_image: Sostituirla con questa...
+          current_image: Immagine corrente
+          maximum_image_size: "La dimensione massima per l'immagine è di %{megabytes} megabytes."
+        actions:
+          create_new_image: Carica una nuova immagine
+        records:
+          no_images_yet: "Nessuna immagine presente. Fare clic su \"Carica una nuova immagine\" per aggiungere un'immagine."
+        index:
+          view:
+            switch_to: 'Passa alla modalità di visualizzazione "%{view_name}"'
+            list: Lista
+            grid: Griglia
+        grid_view:
+          edit: Modifica questa immagine
+          view_live_html: Visualizza questa immagine <br/><em>Apri in una nuova finestra</em>
+        existing_image:
+          button_text: Inserisci
+          resize_image: "Ridimensionare l'immagine?"
+          size: Dimensioni
+        list_view_image:
+          edit_this_image: Modifica questa immagine
+        insert:
+          existing_image: Immagine Esistente
+          new_image: Nuova immagine
+          previous: Precedente
+          next: Successivo
+          submit_insert: Inserire
+          or: o
+          cancel: Annullare
   activerecord:
     errors:
       models:

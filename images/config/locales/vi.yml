@@ -1,37 +1,38 @@
 vi:
-  plugins:
-    refinery_images:
-      title: Hình ảnh
-      description: Quản lý các hình ảnh
-  admin:
-    images:
-      delete: Xóa ảnh này vĩnh viễn
-      edit: Sửa ảnh này
-      form:
-        image: Ảnh
-        use_current_image: Dùng ảnh hiện tại
-        or: hoặc
-        replace_image: " thay bằng ảnh khác..."
-        current_image: Ảnh hiện tại
-        maximum_image_size: Dung lượng ảnh tối đa là %{megabytes} megabytes.
-      actions:
-        create_new_image: Tạo ảnh mới
-      records:
-        no_images_yet: Hiện chưa có ảnh nào. Ấn vào "Tạo ảnh mới" để tạo ảnh.
-      index:
-        view:
-          switch_to: Đổi sang kiểu xem %{view_name}
-          list: danh sách
-          grid: lưới
-      grid_view:
-        view_live_html: Xem ảnh này <br/><em>Mở trong cửa sổ mới</em>
-      existing_image:
-        button_text: Chèn
-        resize_image: Đổi kích thước ảnh?
-        size: Kích thước
-      insert:
-        existing_image: Thư viện
-        new_image: Tải lên
+  refinery:
+    plugins:
+      refinery_images:
+        title: Hình ảnh
+        description: Quản lý các hình ảnh
+    admin:
+      images:
+        delete: Xóa ảnh này vĩnh viễn
+        edit: Sửa ảnh này
+        form:
+          image: Ảnh
+          use_current_image: Dùng ảnh hiện tại
+          or: hoặc
+          replace_image: " thay bằng ảnh khác..."
+          current_image: Ảnh hiện tại
+          maximum_image_size: Dung lượng ảnh tối đa là %{megabytes} megabytes.
+        actions:
+          create_new_image: Tạo ảnh mới
+        records:
+          no_images_yet: Hiện chưa có ảnh nào. Ấn vào "Tạo ảnh mới" để tạo ảnh.
+        index:
+          view:
+            switch_to: Đổi sang kiểu xem %{view_name}
+            list: danh sách
+            grid: lưới
+        grid_view:
+          view_live_html: Xem ảnh này <br/><em>Mở trong cửa sổ mới</em>
+        existing_image:
+          button_text: Chèn
+          resize_image: Đổi kích thước ảnh?
+          size: Kích thước
+        insert:
+          existing_image: Thư viện
+          new_image: Tải lên
   activerecord:
     models:
       image: ảnh

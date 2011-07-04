@@ -1,37 +1,38 @@
 fr:
-  plugins:
-    refinery_images:
-      title: Images
-      description: Gestion des images
-  admin:
-    images:
-      delete: Supprimer définitivement cette image
-      edit: Modifier cette image
-      form:
-        image: Image
-        use_current_image: Utiliser l'image actuelle
-        or: ou
-        replace_image: " la remplacer par celle-ci..."
-        current_image: Image actuelle
-        maximum_image_size: "La taille de l'image ne doit pas excéder %{megabytes} megaoctets."
-      actions:
-        create_new_image: Ajouter une image
-      records:
-        no_images_yet: "Il n'y a pas encore d'image. Cliquer sur 'Ajouter une image' pour en ajouter une."
-      index:
-        view:
-          switch_to: Afficher sous forme de %{view_name}
-          list: liste
-          grid: grille
-      grid_view:
-        view_live_html: "Voir cette image<br/><em>Ouvre une nouvelle fenêtre</em>"
-      existing_image:
-        button_text: Insérer
-        resize_image: Redimensionner l'image ?
-        size: Taille
-      insert:
-        existing_image: Image existante
-        new_image: Nouvelle image
+  refinery:
+    plugins:
+      refinery_images:
+        title: Images
+        description: Gestion des images
+    admin:
+      images:
+        delete: Supprimer définitivement cette image
+        edit: Modifier cette image
+        form:
+          image: Image
+          use_current_image: Utiliser l'image actuelle
+          or: ou
+          replace_image: " la remplacer par celle-ci..."
+          current_image: Image actuelle
+          maximum_image_size: "La taille de l'image ne doit pas excéder %{megabytes} megaoctets."
+        actions:
+          create_new_image: Ajouter une image
+        records:
+          no_images_yet: "Il n'y a pas encore d'image. Cliquer sur 'Ajouter une image' pour en ajouter une."
+        index:
+          view:
+            switch_to: Afficher sous forme de %{view_name}
+            list: liste
+            grid: grille
+        grid_view:
+          view_live_html: "Voir cette image<br/><em>Ouvre une nouvelle fenêtre</em>"
+        existing_image:
+          button_text: Insérer
+          resize_image: Redimensionner l'image ?
+          size: Taille
+        insert:
+          existing_image: Image existante
+          new_image: Nouvelle image
   activerecord:
     models:
       image: image
