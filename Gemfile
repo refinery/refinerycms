@@ -44,7 +44,7 @@ gem 'rails'
 gem 'rack'#, :git => "git://github.com/rack/rack.git"
 gem 'arel'#, :git => "https://github.com/rails/arel.git"
 gem 'friendly_id_globalize3'#, :path => "../tmp/friendly_id"
-gem 'therubyracer'
+gem 'mustang'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails'
 
