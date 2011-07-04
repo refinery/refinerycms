@@ -1,64 +1,65 @@
 sk:
-  plugins:
-    refinery_users:
-      title: Užívatelia
-      description: Spravovať užívateľov
-  admin:
+  refinery:
+    plugins:
+      refinery_users:
+        title: Užívatelia
+        description: Spravovať užívateľov
+    admin:
+      users:
+        delete: Zmazať tohto užívateľa
+        edit: Editovať tohto užívateľa
+        update:
+          cannot_remove_user_plugin_from_current_user: Nemôžete odstrániť modul 'Users' z aktuálne prihláseného konta.
+        form:
+          blank_password_keeps_current: Ak necháte toto pole prázdne bude zachované súčasné heslo.
+          plugin_access: Prístup k modulom
+          role_access: Priradiť role
+          enable_all: povoliť všetko
+        actions:
+          create_new_user: Pridať nového užívateľa
+        user:
+          email_user: Poslať užívateľovi email
+          preview: '(%{who}) pridaný %{created_at}'
+    sessions:
+      new:
+        hello_please_sign_in: Prosím prihláste sa.
+        sign_in: Prihlásenie
+        forgot_password: Zabudol som heslo
     users:
-      delete: Zmazať tohto užívateľa
-      edit: Editovať tohto užívateľa
-      update:
-        cannot_remove_user_plugin_from_current_user: Nemôžete odstrániť modul 'Users' z aktuálne prihláseného konta.
-      form:
-        blank_password_keeps_current: Ak necháte toto pole prázdne bude zachované súčasné heslo.
-        plugin_access: Prístup k modulom
-        role_access: Priradiť role
-        enable_all: povoliť všetko
-      actions:
-        create_new_user: Pridať nového užívateľa
-      user:
-        email_user: Poslať užívateľovi email
-        preview: '(%{who}) pridaný %{created_at}'
-  sessions:
-    new:
-      hello_please_sign_in: Prosím prihláste sa.
-      sign_in: Prihlásenie
-      forgot_password: Zabudol som heslo
-  users:
-    setup_website_name_html: "Dajte vášmu webu meno. <a href='%{link}' name='%{title}'>Tu môžete meno editovať</a>."
-    new:
-      fill_form: Vyplňte údaje a môžeme začať. 
-      sign_up: Registrácia
-    create:
-      welcome: Vitajte, %{who}
-    forgot:
-      email_address: Emailová adresa
-      enter_email_address: Prosím zadajte emailovú adresu.
-      reset_password: Resetovať heslo
-      blank_email: Musíte zadať emailovú adresu.
-      email_not_associated_with_account_html: "Email '%{email}' nie je asociovaný z žiadnym užívateľským kontom.<br />Ste si istí, že ste použili správnu adresu?"
-      email_reset_sent: Bol vám zaslaný email s odkazom na resetovanie hesla.
-      password_encryption: 'Musíte si zmeniť heslo, pretože nastala zmena v šifrovacie metóde uložených hesiel. Refinery sa stáva viac bezpečnejšie ako predtým.'
-    reset:
-      code_invalid: "Ospravedlňujeme sa, ale kód pre resetovanie hesla je buď chybný alebo expirovaný. Skúste skopírovať adresu pre resetovanie hesle z emailu ktorý ste obdržal/a, alebo si nechajte email zaslať znova."
-      successful: "Heslo bolo úspešne resetované pre '%{email}'"
-      pick_new_password_for: "Zadajte nové heslo pre %{email}"
-      reset_password: Reset hesla
-  user_mailer:
-    reset_notification:
-      subject: Odkaz pre reset hesla
-      reset_request_received_for: "Požiadavka na vytvorenie nového hesla pre používateľské konto %{username}"
-      visit_this_url: Navštívte túto URL pre zvolenie nového hesla.
-      remain_same_if_no_action: 'Vaše heslo zostane nezmenené, ak nevykonáte žiadnu akciu.'
+      setup_website_name_html: "Dajte vášmu webu meno. <a href='%{link}' name='%{title}'>Tu môžete meno editovať</a>."
+      new:
+        fill_form: Vyplňte údaje a môžeme začať.
+        sign_up: Registrácia
+      create:
+        welcome: Vitajte, %{who}
+      forgot:
+        email_address: Emailová adresa
+        enter_email_address: Prosím zadajte emailovú adresu.
+        reset_password: Resetovať heslo
+        blank_email: Musíte zadať emailovú adresu.
+        email_not_associated_with_account_html: "Email '%{email}' nie je asociovaný z žiadnym užívateľským kontom.<br />Ste si istí, že ste použili správnu adresu?"
+        email_reset_sent: Bol vám zaslaný email s odkazom na resetovanie hesla.
+        password_encryption: 'Musíte si zmeniť heslo, pretože nastala zmena v šifrovacie metóde uložených hesiel. Refinery sa stáva viac bezpečnejšie ako predtým.'
+      reset:
+        code_invalid: "Ospravedlňujeme sa, ale kód pre resetovanie hesla je buď chybný alebo expirovaný. Skúste skopírovať adresu pre resetovanie hesle z emailu ktorý ste obdržal/a, alebo si nechajte email zaslať znova."
+        successful: "Heslo bolo úspešne resetované pre '%{email}'"
+        pick_new_password_for: "Zadajte nové heslo pre %{email}"
+        reset_password: Reset hesla
+    user_mailer:
+      reset_notification:
+        subject: Odkaz pre reset hesla
+        reset_request_received_for: "Požiadavka na vytvorenie nového hesla pre používateľské konto %{username}"
+        visit_this_url: Navštívte túto URL pre zvolenie nového hesla.
+        remain_same_if_no_action: 'Vaše heslo zostane nezmenené, ak nevykonáte žiadnu akciu.'
+    roles:
+      superuser: Superužívateľ
+      refinery: Refinery
   devise:
     failure:
       unauthenticated: Pre pokračovanie sa musíte prihlásiť.
       invalid: "Prepáčte, vaše užívateľské meno alebo heslo je neplatné."
     sessions:
       signed_in: Úspešné prihlásenie.
-  roles:
-    superuser: Superužívateľ
-    refinery: Refinery
   activerecord:
     models:
       user: užívateľ

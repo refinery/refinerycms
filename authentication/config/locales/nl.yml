@@ -1,64 +1,65 @@
 nl:
-  plugins:
-    refinery_users:
-      title: Gebruikers
-      describe: Beheer gebruikers
-  admin:
+  refinery:
+    plugins:
+      refinery_users:
+        title: Gebruikers
+        describe: Beheer gebruikers
+    admin:
+      users:
+        delete: Verwijder deze gebruiker voorgoed
+        edit: Bewerk deze gebruiker
+        update:
+          cannot_remove_user_plugin_from_current_user: "U kunt de 'Gebruikers' plugin niet deactiveren voor uw huidige ingelogde account."
+        form:
+          blank_password_keeps_current: 'Als u dit veld leeg laat, blijft het oude wachtwoord behouden.'
+          plugin_access: Toegang tot een plugin
+          role_access: Rol toegang
+          enable_all: maak alles beschikbaar
+        actions:
+          create_new_user: Maak een nieuwe gebruiker
+        user:
+          email_user: Email deze gebruiker
+          preview: '(%{who}) is aangemaakt op %{created_at}'
+    sessions:
+      new:
+        hello_please_sign_in: Hallo! Log in om verder te kunnen.
+        sign_in: Log in
+        forgot_password: Ik ben mijn wachtwoord vergeten
     users:
-      delete: Verwijder deze gebruiker voorgoed
-      edit: Bewerk deze gebruiker
-      update:
-        cannot_remove_user_plugin_from_current_user: "U kunt de 'Gebruikers' plugin niet deactiveren voor uw huidige ingelogde account."
-      form:
-        blank_password_keeps_current: 'Als u dit veld leeg laat, blijft het oude wachtwoord behouden.'
-        plugin_access: Toegang tot een plugin
-        role_access: Rol toegang
-        enable_all: maak alles beschikbaar
-      actions:
-        create_new_user: Maak een nieuwe gebruiker
-      user:
-        email_user: Email deze gebruiker
-        preview: '(%{who}) is aangemaakt op %{created_at}'
-  sessions:
-    new:
-      hello_please_sign_in: Hallo! Log in om verder te kunnen.
-      sign_in: Log in
-      forgot_password: Ik ben mijn wachtwoord vergeten
-  users:
-    setup_website_name_html: "Laten we eerst de website een naam geven. <a href='%{link}' name='%{title}'>Klik hier</a> om de naam van de website te bewerken"
-    new:
-      fill_form: 'Vul het onderstaande formulier in, zodat u kan beginnen.'
-      sign_up: Registreer
-    create:
-      welcome: 'Welkom bij Refinery, %{who}'
-    forgot:
-      email_address: E-mailadres
-      enter_email_address: Vul het e-mailadres voor uw account.
-      reset_password: Verander wachtwoord
-      blank_email: Je hebt geen e-mail adres.
-      email_not_associated_with_account_html: "Sorry, '%{email}' is niet geassocieerd met alle rekeningen. <br/>Weet u zeker dat u typte het juiste e-mailadres?"
-      email_reset_sent: Een e-mail is naar u verzonden met een link om je wachtwoord te resetten.
-      password_encryption: 'Je moet je wachtwoord resetten, omdat er wijzigingen zijn gemaakt in de cryptografische methoden waarop wachtwoorden worden opgeslagen, zodat ze nog veilger bewaard worden.'
-    reset:
-      code_invalid: "Het spijt ons, maar dit reset code is verlopen of ongeldig. Als u problemen hebt proberen te kopiëren en plakken van de URL van uw e-mail in uw browser of het herstarten van de reset wachtwoord proces."
-      successful: "Wachtwoord resetten succes voor %{email}"
-      pick_new_password_for: 'Kiees een nieuw wachtwoord voor %{email}'
-      reset_password: Reset het wachtwoord
-  user_mailer:
-    reset_notification:
-      subject: Link om uw wachtwoord te resetten
-      reset_request_received_for: 'Aanvraag om het wachtwoord te resetten ontvangen voor %{username}'
-      visit_this_url: Bezoek dit adres om een nieuw wachtwoord in te stellen
-      remain_same_if_no_action: 'Je wachtwoord blijft hetzelfde, als je niet op dit bericht reageert'
+      setup_website_name_html: "Laten we eerst de website een naam geven. <a href='%{link}' name='%{title}'>Klik hier</a> om de naam van de website te bewerken"
+      new:
+        fill_form: 'Vul het onderstaande formulier in, zodat u kan beginnen.'
+        sign_up: Registreer
+      create:
+        welcome: 'Welkom bij Refinery, %{who}'
+      forgot:
+        email_address: E-mailadres
+        enter_email_address: Vul het e-mailadres voor uw account.
+        reset_password: Verander wachtwoord
+        blank_email: Je hebt geen e-mail adres.
+        email_not_associated_with_account_html: "Sorry, '%{email}' is niet geassocieerd met alle rekeningen. <br/>Weet u zeker dat u typte het juiste e-mailadres?"
+        email_reset_sent: Een e-mail is naar u verzonden met een link om je wachtwoord te resetten.
+        password_encryption: 'Je moet je wachtwoord resetten, omdat er wijzigingen zijn gemaakt in de cryptografische methoden waarop wachtwoorden worden opgeslagen, zodat ze nog veilger bewaard worden.'
+      reset:
+        code_invalid: "Het spijt ons, maar dit reset code is verlopen of ongeldig. Als u problemen hebt proberen te kopiëren en plakken van de URL van uw e-mail in uw browser of het herstarten van de reset wachtwoord proces."
+        successful: "Wachtwoord resetten succes voor %{email}"
+        pick_new_password_for: 'Kiees een nieuw wachtwoord voor %{email}'
+        reset_password: Reset het wachtwoord
+    user_mailer:
+      reset_notification:
+        subject: Link om uw wachtwoord te resetten
+        reset_request_received_for: 'Aanvraag om het wachtwoord te resetten ontvangen voor %{username}'
+        visit_this_url: Bezoek dit adres om een nieuw wachtwoord in te stellen
+        remain_same_if_no_action: 'Je wachtwoord blijft hetzelfde, als je niet op dit bericht reageert'
+    roles:
+      superuser: Beheerder
+      refinery: Refinery gebruiker
   devise:
     failure:
       unauthenticated: Je moet inloggen om verder te kunnen
       invalid: 'Sorry, je wachtwoord, of gebruikersnaam is onjuist.'
     sessions:
       signed_in: Je bent ingelogd.
-  roles:
-    superuser: Beheerder
-    refinery: Refinery gebruiker
   activerecord:
     models:
       user: gebruiker

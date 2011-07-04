@@ -1,64 +1,65 @@
 nb:
-  plugins:
-    refinery_users:
-      title: Brukere
-      description: Behandle brukere
-  admin:
+  refinery:
+    plugins:
+      refinery_users:
+        title: Brukere
+        description: Behandle brukere
+    admin:
+      users:
+        delete: Fjern denne brukeren permanent
+        edit: Rediger denne brukeren
+        update:
+          cannot_remove_user_plugin_from_current_user: "Du kan ikke fjerne tillegget 'Brukere' når du er logget inn med denne brukeren"
+        form:
+          blank_password_keeps_current: La feltet forbli tomt om du ikke ønsker å endre passordet
+          plugin_access: Tilgang til komponenter
+          role_access: Rolletilgang
+          enable_all: merk alle
+        actions:
+          create_new_user: Lag ny bruker
+        user:
+          email_user: Send en e-post til denne brukeren
+          preview: '(%{who}) opprettet %{created_at}'
+    sessions:
+      new:
+        hello_please_sign_in: "Hei! Vennligst logg inn."
+        sign_in: Logg inn
+        forgot_password: Jeg glemte passordet mitt
     users:
-      delete: Fjern denne brukeren permanent
-      edit: Rediger denne brukeren
-      update:
-        cannot_remove_user_plugin_from_current_user: "Du kan ikke fjerne tillegget 'Brukere' når du er logget inn med denne brukeren"
-      form:
-        blank_password_keeps_current: La feltet forbli tomt om du ikke ønsker å endre passordet
-        plugin_access: Tilgang til komponenter
-        role_access: Rolletilgang
-        enable_all: merk alle
-      actions:
-        create_new_user: Lag ny bruker
-      user:
-        email_user: Send en e-post til denne brukeren
-        preview: '(%{who}) opprettet %{created_at}'
-  sessions:
-    new:
-      hello_please_sign_in: "Hei! Vennligst logg inn."
-      sign_in: Logg inn
-      forgot_password: Jeg glemte passordet mitt
-  users:
-    setup_website_name_html: "Først, la oss gi siden et navn. <a href='%{link}' name='%{title}'>Gå hit</a> for å endre navnet på websiden din"
-    new:
-      fill_form: Fyll ut detaljene dine nedenfor slik at vi kan komme i gang.
-      sign_up: Registrer deg
-    create:
-      welcome: 'Velkommen til Refinery, %{who}'
-    forgot:
-      email_address: E-post Adresse
-      enter_email_address: Vennligst tast inn e-post adressen for din konto.
-      reset_password: Tilbakestill passord
-      blank_email: Du har ikke oppgitt noen e-post adresse.
-      email_not_associated_with_account_html: "Beklager, '%{email}' er ikke tilknyttet noen konto.<br/>Er du sikker på at du tastet inn riktig e-post adresse?"
-      email_reset_sent: En e-post har blitt sendt til deg med en lenke for å tilbakestille passordet ditt.
-      password_encryption: Du må tilbakestille ditt passord da det er gjort endringer i krypteringsteknologien som Refinery benttter. Endringene gjør at passordene lagres med en enda sterkere kryptering enn tidlgere.
-    reset:
-      code_invalid: "Beklager, men denne koden for å tilbakestille passordet har utløpt eller er ugyldig. Om du opplever problemer så kan du forsøker å kopiere og lime inn lenken fra e-posten du mottok, eller start prosessen med å tilbakestille passordet på nytt."
-      successful: "Passordet for %{email} er nå tilbakestilt"
-      pick_new_password_for: "Velg et nytt passord for %{email}"
-      reset_password: Tilbakestill passord
-  user_mailer:
-    reset_notification:
-      subject: Lenke for å tilbakestille passordet ditt
-      reset_request_received_for: "Forespørsel om å tilbakestille passordet er mottatt for %{username}"
-      visit_this_url: Åpne denne lenken for å velge ditt nye passord
-      remain_same_if_no_action: Ditt passord vil ikke bli endret om du ikke gjør noe
+      setup_website_name_html: "Først, la oss gi siden et navn. <a href='%{link}' name='%{title}'>Gå hit</a> for å endre navnet på websiden din"
+      new:
+        fill_form: Fyll ut detaljene dine nedenfor slik at vi kan komme i gang.
+        sign_up: Registrer deg
+      create:
+        welcome: 'Velkommen til Refinery, %{who}'
+      forgot:
+        email_address: E-post Adresse
+        enter_email_address: Vennligst tast inn e-post adressen for din konto.
+        reset_password: Tilbakestill passord
+        blank_email: Du har ikke oppgitt noen e-post adresse.
+        email_not_associated_with_account_html: "Beklager, '%{email}' er ikke tilknyttet noen konto.<br/>Er du sikker på at du tastet inn riktig e-post adresse?"
+        email_reset_sent: En e-post har blitt sendt til deg med en lenke for å tilbakestille passordet ditt.
+        password_encryption: Du må tilbakestille ditt passord da det er gjort endringer i krypteringsteknologien som Refinery benttter. Endringene gjør at passordene lagres med en enda sterkere kryptering enn tidlgere.
+      reset:
+        code_invalid: "Beklager, men denne koden for å tilbakestille passordet har utløpt eller er ugyldig. Om du opplever problemer så kan du forsøker å kopiere og lime inn lenken fra e-posten du mottok, eller start prosessen med å tilbakestille passordet på nytt."
+        successful: "Passordet for %{email} er nå tilbakestilt"
+        pick_new_password_for: "Velg et nytt passord for %{email}"
+        reset_password: Tilbakestill passord
+    user_mailer:
+      reset_notification:
+        subject: Lenke for å tilbakestille passordet ditt
+        reset_request_received_for: "Forespørsel om å tilbakestille passordet er mottatt for %{username}"
+        visit_this_url: Åpne denne lenken for å velge ditt nye passord
+        remain_same_if_no_action: Ditt passord vil ikke bli endret om du ikke gjør noe
+    roles:
+      superuser: Superbruker
+      refinery: Refinery
   devise:
     failure:
       unauthenticated: Du må logge deg inn før du kan fortsette.
       invalid: "Beklager, brukernavnet eller passordet du oppga var ikke riktig."
     sessions:
       signed_in: Du er nå logget inn.
-  roles:
-    superuser: Superbruker
-    refinery: Refinery
   activerecord:
       models:
         user: bruker

@@ -51,15 +51,15 @@ en:
         successful: "Password reset successfully for '%{email}'"
         pick_new_password_for: "Pick a new password for %{email}"
         reset_password: Reset password
+    roles:
+      superuser: Superuser
+      refinery: Refinery
   devise:
     failure:
       unauthenticated: You need to sign in before continuing.
       invalid: "Sorry, your login or password was incorrect."
     sessions:
       signed_in: Signed in successfully.
-  roles:
-    superuser: Superuser
-    refinery: Refinery
   activerecord:
     models:
       user: user
