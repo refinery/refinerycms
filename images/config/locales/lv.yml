@@ -35,10 +35,12 @@ lv:
           new_image: Jauna Bilde
   activerecord:
     models:
-      image: bilde
+      refinery:
+        image: bilde
     errors:
       models:
-        image:
-          blank: Jānorāda bilde pirms augšupielādes
-          too_long: Bildes izmēram jābūt mazākam par %{count}
-          incorrect_format: "Bilde drīkst būt tikai sekojošos formātos: JPG, PNG vai GIF"
+        refinery:
+          image:
+            blank: Jānorāda bilde pirms augšupielādes
+            too_long: Bildes izmēram jābūt mazākam par %{count}
+            incorrect_format: "Bilde drīkst būt tikai sekojošos formātos: JPG, PNG vai GIF"

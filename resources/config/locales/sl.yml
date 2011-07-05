@@ -27,9 +27,11 @@ sl:
           button_text: Vstavi
   activerecord:
     models:
-      resource: datoteka
+      refinery:
+        resource: datoteka
     errors:
       models:
-        resource:
-          blank: Izbrati morate datoteko za prenos
-          too_long: Velikost datoteke mora biti manjša od %{count}
+        refinery:
+          resource:
+            blank: Izbrati morate datoteko za prenos
+            too_long: Velikost datoteke mora biti manjša od %{count}

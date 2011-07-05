@@ -35,10 +35,12 @@ fr:
           new_image: Nouvelle image
   activerecord:
     models:
-      image: image
+      refinery:
+        image: image
     errors:
       models:
-        image:
-          blank: Vous devez sélectionner une image à télécharger
-          too_long: L'image doit être plus petite que %{count}
-          incorrect_format: 'Seules les images aux formats JPG, PNG or GIF sont acceptées'
+        refinery:
+          image:
+            blank: Vous devez sélectionner une image à télécharger
+            too_long: L'image doit être plus petite que %{count}
+            incorrect_format: 'Seules les images aux formats JPG, PNG or GIF sont acceptées'

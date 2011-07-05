@@ -28,9 +28,11 @@ pt-BR:
           button_text: Inserir
   activerecord:
     models:
-      resource: Arquivo
+      refinery:
+        resource: Arquivo
     errors:
       models:
-        resource:
-          blank: Você deve escolher um arquivo para enviar
-          too_long: "Arquivos devem ser menores que %{count} em tamanho"
+        refinery:
+          resource:
+            blank: Você deve escolher um arquivo para enviar
+            too_long: "Arquivos devem ser menores que %{count} em tamanho"

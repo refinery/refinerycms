@@ -62,12 +62,14 @@ jp:
       signed_in: サインインしました。
   activerecord:
     models:
-      user: ユーザ
+      refinery:
+        user: ユーザ
     attributes:
-      user:
-        login: ログイン
-        username: アカウント名
-        password: パスワード
-        password_confirmation: パスワードの確認
-        email: メールアドレス
-        remember_me: ユーザ情報を記憶する
+      refinery:
+        user:
+          login: ログイン
+          username: アカウント名
+          password: パスワード
+          password_confirmation: パスワードの確認
+          email: メールアドレス
+          remember_me: ユーザ情報を記憶する

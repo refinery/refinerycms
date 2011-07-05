@@ -89,5 +89,6 @@ it:
           no_pages_yet: Non è stata ancora creata nessuna pagina. Clicca su "Crea nuova pagina" per aggiungere la tua prima pagina.
   activerecord:
     attributes:
-      page:
-        skip_to_first_child: "Salta al primo figlio?"
+      refinery:
+        page:
+          skip_to_first_child: "Salta al primo figlio?"

@@ -47,10 +47,12 @@ lt:
         subject: Nuoroda slaptažodžio keitimui
   activerecord:
     models:
-      user: vartotojas
+      refinery:
+        user: vartotojas
     attributes:
-      user:
-        login: Prisijungti
-        email: El. paštas
-        password: Slaptažodis
-        remember_me: Prisiminti mane
+      refinery:
+        user:
+          login: Prisijungti
+          email: El. paštas
+          password: Slaptažodis
+          remember_me: Prisiminti mane

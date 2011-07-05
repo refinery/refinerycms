@@ -40,9 +40,11 @@ rs:
             approximate_ascii: Podesi ovo na true ako koristiš Latin karaktere u naslovu. Konvertovaće karaktere kao što su ā, č, ž u a, c, z i na ovaj način će se ova slova ispravno prikazivati u  URL adresama.
   activerecord:
     models:
-      setting: podešavanje
+      refinery:
+        setting: podešavanje
     attributes:
-      setting:
-        name: Naziv
-        value: Vrednost
-        restricted: Ograničeno
+      refinery:
+        setting:
+          name: Naziv
+          value: Vrednost
+          restricted: Ograničeno

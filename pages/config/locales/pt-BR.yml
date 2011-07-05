@@ -73,7 +73,9 @@ pt-BR:
           no_pages_yet: Ainda não existem páginas. Clique em "Criar Nova Página" para adicionar sua primeira página.
   activerecord:
     models:
-      page: Página
+      refinery:
+        page: Página
     attributes:
-      page:
-        title: Título
+      refinery:
+        page:
+          title: Título

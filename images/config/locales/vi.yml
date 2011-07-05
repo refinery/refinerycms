@@ -35,10 +35,12 @@ vi:
           new_image: Tải lên
   activerecord:
     models:
-      image: ảnh
+      refinery:
+        image: ảnh
     errors:
       models:
-        image:
-          blank: Bạn phải chọn ảnh để tải lên
-          too_long: Ảnh phải có kích thước nhỏ hơn %{count}
-          incorrect_format: 'Ảnh phải ở một trong các định dạng JPG, PNG hoặc GIF'
+        refinery:
+          image:
+            blank: Bạn phải chọn ảnh để tải lên
+            too_long: Ảnh phải có kích thước nhỏ hơn %{count}
+            incorrect_format: 'Ảnh phải ở một trong các định dạng JPG, PNG hoặc GIF'

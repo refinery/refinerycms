@@ -72,7 +72,9 @@ sk:
           no_pages_yet: Zatiaľ neboli vytvorené žiadne stránky. Kliknite na "Pridať novú stránku" pre pridanie prvej.
   activerecord:
     models:
-      page: stránka
+      refinery:
+        page: stránka
     attributes:
-      page:
-        title: Názov
+      refinery:
+        page:
+          title: Názov

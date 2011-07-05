@@ -41,9 +41,11 @@ es:
             approximate_ascii: Ponlo a true si usas caracteres latinos con tildes y otros signos diacríticos en los títulos de página. Convertirá caracteres como ā, č, ž en a, c, z y así estos caracteres no aparecerán como símbolos extraños en la barra de direcciones de algunos navegadores.
   activerecord:
     models:
-      setting: opción
+      refinery:
+        setting: opción
     attributes:
-      setting:
-        name: Nombre
-        value: Valor
-        restricted: Restringido
+      refinery:
+        setting:
+          name: Nombre
+          value: Valor
+          restricted: Restringido

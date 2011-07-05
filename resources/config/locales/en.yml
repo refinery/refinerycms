@@ -28,9 +28,11 @@ en:
           button_text: Insert
   activerecord:
     models:
-      resource: file
+      refinery:
+        resource: file
     errors:
       models:
-        resource:
-          blank: You must specify file for upload
-          too_long: File should be smaller than %{count} in size
+        refinery:
+          resource:
+            blank: You must specify file for upload
+            too_long: File should be smaller than %{count} in size

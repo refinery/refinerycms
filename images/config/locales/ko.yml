@@ -35,10 +35,12 @@ ko:
           new_image: 새 이미지
   activerecord:
     models:
-      image: 이미지
+      refinery:
+        image: 이미지
     errors:
       models:
-        image:
-          blank: 업로드할 이미지를 선택해주세요.
-          too_long: 이미지의 크기는 %{count} 이하여야 합니다.
-          incorrect_format: 'JPG, PNG 또는 GIF 형식의 이미지만 업로드할 수 있습니다.'
+        refinery:
+          image:
+            blank: 업로드할 이미지를 선택해주세요.
+            too_long: 이미지의 크기는 %{count} 이하여야 합니다.
+            incorrect_format: 'JPG, PNG 또는 GIF 형식의 이미지만 업로드할 수 있습니다.'

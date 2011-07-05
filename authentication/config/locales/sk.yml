@@ -62,12 +62,14 @@ sk:
       signed_in: Úspešné prihlásenie.
   activerecord:
     models:
-      user: užívateľ
+      refinery:
+        user: užívateľ
     attributes:
-      user:
-        login: Prihlásiť
-        username: Užívateľské meno
-        password: Heslo
-        password_confirmation: Potvrdiť heslo
-        email: Email
-        remember_me: Zapamätať heslo
+      refinery:
+        user:
+          login: Prihlásiť
+          username: Užívateľské meno
+          password: Heslo
+          password_confirmation: Potvrdiť heslo
+          email: Email
+          remember_me: Zapamätať heslo

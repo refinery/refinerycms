@@ -35,10 +35,12 @@ de:
           new_image: Neues Bild
   activerecord:
     models:
-      image: Bild
+      refinery:
+        image: Bild
     errors:
       models:
-        image:
-          blank: Sie müssen ein Bild zum Hochladen angeben
-          too_long: Bild sollte kleiner als %{count} sein
-          incorrect_format: 'Ihr Bild sollte ein JPG, PNG oder GIF sein'
+        refinery:
+          image:
+            blank: Sie müssen ein Bild zum Hochladen angeben
+            too_long: Bild sollte kleiner als %{count} sein
+            incorrect_format: 'Ihr Bild sollte ein JPG, PNG oder GIF sein'

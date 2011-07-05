@@ -81,7 +81,9 @@ ko:
         translator_access: 해당 언어로 페이지를 수정할 권한이 없습니다.
   activerecord:
     models:
-      page: 페이지
+      refinery:
+        page: 페이지
     attributes:
-      page:
-        title: 제목
+      refinery:
+        page:
+          title: 제목

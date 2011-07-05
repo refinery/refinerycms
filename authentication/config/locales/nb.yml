@@ -62,12 +62,14 @@ nb:
       signed_in: Du er nå logget inn.
   activerecord:
       models:
-        user: bruker
+        refinery:
+          user: bruker
       attributes:
-        user:
-          login: Logg inn
-          username: Brukernavn
-          password: Passord
-          password_confirmation: Bekreft passord
-          email: E-post
-          remember_me: Husk meg
+        refinery:
+          user:
+            login: Logg inn
+            username: Brukernavn
+            password: Passord
+            password_confirmation: Bekreft passord
+            email: E-post
+            remember_me: Husk meg

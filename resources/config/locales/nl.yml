@@ -27,9 +27,11 @@ nl:
           button_text: Invoegen
   activerecord:
     models:
-      resource: bestand
+      refinery:
+        resource: bestand
     errors:
       models:
-        resource:
-          blank: U moet een bestand kiezen dat u wilt uploaden.
-          too_long: Bestanden mogen niet groter dan %{count} zijn.
+        refinery:
+          resource:
+            blank: U moet een bestand kiezen dat u wilt uploaden.
+            too_long: Bestanden mogen niet groter dan %{count} zijn.

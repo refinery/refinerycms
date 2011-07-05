@@ -70,7 +70,9 @@ jp:
           no_pages_yet: まだページはありません。"新規ページを追加"をクリックして下さい。
   activerecord:
     models:
-      page: ページ
+      refinery:
+        page: ページ
     attributes:
-      page:
-        title: タイトル
+      refinery:
+        page:
+          title: タイトル

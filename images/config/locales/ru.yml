@@ -35,10 +35,12 @@ ru:
           new_image: Новое изображение
   activerecord:
     models:
-      image: изображение
+      refinery:
+        image: изображение
     errors:
       models:
-        image:
-          blank: Вы должны выбрать файл для загрузки
-          too_long: "Файлы должны быть меньше по размеру, чем %{count}"
-          incorrect_format: "Ваше изображение может быть только в форматах JPG, PNG или GIF"
+        refinery:
+          image:
+            blank: Вы должны выбрать файл для загрузки
+            too_long: "Файлы должны быть меньше по размеру, чем %{count}"
+            incorrect_format: "Ваше изображение может быть только в форматах JPG, PNG или GIF"

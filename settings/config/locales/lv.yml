@@ -40,9 +40,11 @@ lv:
             approximate_ascii: "Ja izmantojat Latīņu burtus ar mīkstinājuma zīmēm, akcentiem utml., tad iespējojot šo uzstādījumu (vērtība: true) burti ā, č, ž u.c. tiks pārkonvertēti attiecīgi uz a, c un z, tāda veidā šie burti neizskatīsies savādi dažu parlūku adreses laukā."
   activerecord:
     models:
-      setting: uzstādījums
+      refinery:
+        setting: uzstādījums
     attributes:
-      setting:
-        name: Nosaukums
-        value: Vērtība
-        restricted: Ierobežots
+      refinery:
+        setting:
+          name: Nosaukums
+          value: Vērtība
+          restricted: Ierobežots

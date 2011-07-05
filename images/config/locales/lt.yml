@@ -35,10 +35,12 @@ lt:
           new_image: Naujas paveikslėlis
   activerecord:
     models:
-      image: paveikslėlis
+      refinery:
+        image: paveikslėlis
     errors:
       models:
-        image:
-          blank: Turite nurodyti paveikslėlį įkėlimui
-          too_long: "Paveikslėlio dydis turėtų būti mažesnis, nei %{count}"
-          incorrect_format: 'Paveikslėlis turi būti JPG, PNG arba GIF formatu'
+        refinery:
+          image:
+            blank: Turite nurodyti paveikslėlį įkėlimui
+            too_long: "Paveikslėlio dydis turėtų būti mažesnis, nei %{count}"
+            incorrect_format: 'Paveikslėlis turi būti JPG, PNG arba GIF formatu'

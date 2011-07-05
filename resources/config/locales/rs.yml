@@ -28,10 +28,11 @@ rs:
           button_text: Unesi
   activerecord:
     models:
-      resource: fajl
+      refinery:
+        resource: fajl
     errors:
       models:
-        resource:
-          blank: Moraš izabrati fajl za upload
-          too_long: Fajl bi trebalo da je manji od %{count}
-
+        refinery:
+          resource:
+            blank: Moraš izabrati fajl za upload
+            too_long: Fajl bi trebalo da je manji od %{count}

@@ -40,9 +40,11 @@ zh-CN:
             approximate_ascii: 如果您使用带有口音或是变音符号的拉丁字母请设定为 true. 它会将像是 ā, č, ž 的字母转为 a, c, z , 在某些网页浏览器中, 这些字母就不会奇怪地出现在网址列上.
   activerecord:
     models:
-      setting: 设置
+      refinery:
+        setting: 设置
     attributes:
-      setting:
-        name: 名称
-        value: 设置值
-        restricted: 限制
+      refinery:
+        setting:
+          name: 名称
+          value: 设置值
+          restricted: 限制

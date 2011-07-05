@@ -28,9 +28,11 @@ lolcat:
           button_text: INSERT
   activerecord:
     models:
-      resource: FILE
+      refinery:
+        resource: FILE
     errors:
       models:
-        resource:
-          blank: U MUST SPECIFY FILE 4 UPLOAD
-          too_long: FILE SHUD BE SMALLR THAN %{count} IN SIZE
+        refinery:
+          resource:
+            blank: U MUST SPECIFY FILE 4 UPLOAD
+            too_long: FILE SHUD BE SMALLR THAN %{count} IN SIZE

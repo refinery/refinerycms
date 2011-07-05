@@ -71,7 +71,9 @@ lolcat:
           no_pages_yet: THAR R NO PAGEZ YET. CLICK "ADD NEW PAEG" 2 ADD UR FURST PAEG.
   activerecord:
     models:
-      page: PAEG
+      refinery:
+        page: PAEG
     attributes:
-      page:
-        title: TITLE
+      refinery:
+        page:
+          title: TITLE

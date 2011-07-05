@@ -40,9 +40,11 @@ pl:
             use_resource_caching: Zaleca się uaktywnienie tego ustawienia w produkcji, ponieważ powoduje zebranie zasobów CSS i Javascript w pojedyncze pliki, zmniejszając ilość zapytań HTTP i szybkość działania strony.
   activerecord:
     models:
-      setting: ustawienie
+      refinery:
+        setting: ustawienie
     attributes:
-      setting:
-        name: Nazwa
-        value: Wartość
-        restricted: Zastrzeżone
+      refinery:
+        setting:
+          name: Nazwa
+          value: Wartość
+          restricted: Zastrzeżone

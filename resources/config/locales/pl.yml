@@ -29,9 +29,11 @@ pl:
           button_text: Wstaw
   activerecord:
     models:
-      resource: plik
+      refinery:
+        resource: plik
     errors:
       models:
-        resource:
-          blank: Musisz określić plik do wgrania
-          too_long: Plik powinien być mniejszy niż %{count}
+        refinery:
+          resource:
+            blank: Musisz określić plik do wgrania
+            too_long: Plik powinien być mniejszy niż %{count}

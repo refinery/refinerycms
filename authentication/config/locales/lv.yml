@@ -62,12 +62,14 @@ lv:
       signed_in: Autentifikācija noritēja veiksmīgi.
   activerecord:
     models:
-      user: lietotājs
+      refinery:
+        user: lietotājs
     attributes:
-      user:
-        login: Lietotāja vārds/Epasts
-        username: Lietotāja vārds
-        password: Parole
-        password_confirmation: Parole atkārtoti
-        email: Epasts
-        remember_me: Atcerēties mani
+      refinery:
+        user:
+          login: Lietotāja vārds/Epasts
+          username: Lietotāja vārds
+          password: Parole
+          password_confirmation: Parole atkārtoti
+          email: Epasts
+          remember_me: Atcerēties mani

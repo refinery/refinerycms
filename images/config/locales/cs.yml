@@ -35,10 +35,12 @@ cs:
           new_image: Nový obrázek
   activerecord:
     models:
-      image: obrázek
+      refinery:
+        image: obrázek
     errors:
       models:
-        image:
-          blank: Musíte zadat obrázek který chcete nahrát
-          too_long: Maximální velikost obrázku je %{count}
-          incorrect_format: 'Obrázek musí být ve formátu JPG, PNG nebo GIF'
+        refinery:
+          image:
+            blank: Musíte zadat obrázek který chcete nahrát
+            too_long: Maximální velikost obrázku je %{count}
+            incorrect_format: 'Obrázek musí být ve formátu JPG, PNG nebo GIF'

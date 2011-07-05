@@ -28,9 +28,11 @@ jp:
           button_text: 挿入
   activerecord:
     models:
-      resource: ファイル
+      refinery:
+        resource: ファイル
     errors:
       models:
-        resource:
-          blank: アップロードするファイルを指定して下さい。
-          too_long: "ファイルは最大で%{count}までです。"
+        refinery:
+          resource:
+            blank: アップロードするファイルを指定して下さい。
+            too_long: "ファイルは最大で%{count}までです。"

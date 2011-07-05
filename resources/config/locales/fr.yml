@@ -28,9 +28,11 @@ fr:
           button_text: Insertion
   activerecord:
     models:
-      resource: fichier
+      refinery:
+        resource: fichier
     errors:
       models:
-        resource:
-          blank: Vous devez spécifier un fichier à télécharger
-          too_long: Le poids maximal des fichiers est de %{count}
+        refinery:
+          resource:
+            blank: Vous devez spécifier un fichier à télécharger
+            too_long: Le poids maximal des fichiers est de %{count}

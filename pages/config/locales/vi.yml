@@ -72,7 +72,9 @@ vi:
           no_pages_yet: Hiện chưa có trang nào. Ấn vào "Tạo trang mới" để tạo trang.
   activerecord:
     models:
-      page: trang
+      refinery:
+        page: trang
     attributes:
-      page:
-        title: Tiêu đề
+      refinery:
+        page:
+          title: Tiêu đề

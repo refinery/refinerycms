@@ -35,10 +35,12 @@ en:
           new_image: Upload
   activerecord:
     models:
-      image: image
+      refinery:
+        image: image
     errors:
       models:
-        image:
-          blank: You must specify an image for upload
-          too_long: Image should be smaller than %{count} in size
-          incorrect_format: 'Your image must be either a JPG, PNG or GIF'
+        refinery:
+          image:
+            blank: You must specify an image for upload
+            too_long: Image should be smaller than %{count} in size
+            incorrect_format: 'Your image must be either a JPG, PNG or GIF'

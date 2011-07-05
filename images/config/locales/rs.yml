@@ -35,11 +35,13 @@ rs:
           new_image: Upload
   activerecord:
     models:
-      image: slika
+      refinery:
+        image: slika
     errors:
       models:
-        image:
-          blank: Moraš izabrati sliku za upload
-          too_long: Slika bi trebalo da bude manja od %{count}
-          incorrect_format: 'Slika mora biti u JPG, PNG ili GIF formatu'
+        refinery:
+          image:
+            blank: Moraš izabrati sliku za upload
+            too_long: Slika bi trebalo da bude manja od %{count}
+            incorrect_format: 'Slika mora biti u JPG, PNG ili GIF formatu'
 

@@ -72,7 +72,9 @@ zh-CN:
           no_pages_yet: 这里还没有页面. 点击 "添加新页面" 去添加您的第一个页面.
   activerecord:
     models:
-      page: 页面
+      refinery:
+        page: 页面
     attributes:
-      page:
-        title: 标题
+      refinery:
+        page:
+          title: 标题

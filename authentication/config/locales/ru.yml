@@ -82,12 +82,14 @@ ru:
       signed_in: 'Вы вошли.'
   activerecord:
     models:
-      user: пользователь
+      refinery:
+        user: пользователь
     attributes:
-      user:
-        login: Имя или почта пользователя
-        username: Имя пользователя
-        email: Эл. почта
-        password: Пароль
-        password_confirmation: Подтверждение пароля
-        remember_me: Запомнить меня
+      refinery:
+        user:
+          login: Имя или почта пользователя
+          username: Имя пользователя
+          email: Эл. почта
+          password: Пароль
+          password_confirmation: Подтверждение пароля
+          remember_me: Запомнить меня

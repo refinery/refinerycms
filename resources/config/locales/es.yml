@@ -29,9 +29,11 @@ es:
           button_text: Insertar
   activerecord:
     models:
-      resource: archivo
+      refinery:
+        resource: archivo
     errors:
       models:
-        resource:
-          blank: Selecciona qué archivo quieres subir
-          too_long: El archivo debe pesar menos de %{count}
+        refinery:
+          resource:
+            blank: Selecciona qué archivo quieres subir
+            too_long: El archivo debe pesar menos de %{count}

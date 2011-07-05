@@ -72,7 +72,9 @@ cs:
           no_pages_yet: Zatím nebyly vytvořeny žádné stránky.
   activerecord:
     models:
-      page: stránka
+      refinery:
+        page: stránka
     attributes:
-      page:
-        title: Název
+      refinery:
+        page:
+          title: Název

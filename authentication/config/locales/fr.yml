@@ -62,12 +62,14 @@ fr:
       signed_in: Réussite de la connexion.
   activerecord:
     models:
-      user: utilisateur
+      refinery:
+        user: utilisateur
     attributes:
-      user:
-        login: Nom d'utilisateur
-        username: Nom d'utilisateur
-        email: E-mail
-        password: Mot de passe
-        password_confirmation: Confirmer mot de passe
-        remember_me: Se souvenir de moi
+      refinery:
+        user:
+          login: Nom d'utilisateur
+          username: Nom d'utilisateur
+          email: E-mail
+          password: Mot de passe
+          password_confirmation: Confirmer mot de passe
+          remember_me: Se souvenir de moi

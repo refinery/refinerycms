@@ -62,12 +62,14 @@ el:
       signed_in: Συνδεθείκατε επιτυχώς.
   activerecord:
     models:
-      user: χρήστης
+      refinery:
+        user: χρήστης
     attributes:
-      user:
-        login: Login
-        username: Όνομα χρήστη
-        password: Κωδικός
-        password_confirmation: Επιβεβαίωση Κωδικού
-        email: Email
-        remember_me: Θυμήσου με
+      refinery:
+        user:
+          login: Login
+          username: Όνομα χρήστη
+          password: Κωδικός
+          password_confirmation: Επιβεβαίωση Κωδικού
+          email: Email
+          remember_me: Θυμήσου με

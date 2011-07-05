@@ -5,12 +5,6 @@ ru:
         title: Страницы
         article: feminine
         description: Управление страницами с содежимым
-    activerecord:
-      models:
-        page: страница
-      attributes:
-        page:
-          title: Заголовок
     admin:
       dashboard:
         recent_activity:
@@ -79,3 +73,11 @@ ru:
           reorder_pages_done: Сохранить такой порядок страниц
         records:
           no_pages_yet: Страниц ещё нет.
+  activerecord:
+    models:
+      refinery:
+        page: страница
+    attributes:
+      refinery:
+        page:
+          title: Заголовок

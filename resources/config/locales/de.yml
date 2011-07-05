@@ -28,9 +28,11 @@ de:
           button_text: Einfügen
   activerecord:
     models:
-      resource: Datei
+      refinery:
+        resource: Datei
     errors:
       models:
-        resource:
-          blank: Sie müssen eine Datei zum Hochladen angeben
-          too_long: Die Dateien sollten kleiner als %{count} sein
+        refinery:
+          resource:
+            blank: Sie müssen eine Datei zum Hochladen angeben
+            too_long: Die Dateien sollten kleiner als %{count} sein

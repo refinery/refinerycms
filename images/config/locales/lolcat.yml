@@ -35,10 +35,12 @@ lolcat:
           new_image: NEW IMAGE
   activerecord:
     models:
-      image: IMAGE
+      refinery:
+        image: IMAGE
     errors:
       models:
-        image:
-          blank: U MUST SPECIFY AN IMAGE 4 UPLOAD
-          too_long: IMAGE SHUD BE SMALLR THAN %{count} IN SIZE
-          incorrect_format: UR IMAGE MUST BE EITHR JPG, PNG OR GIF
+        refinery:
+          image:
+            blank: U MUST SPECIFY AN IMAGE 4 UPLOAD
+            too_long: IMAGE SHUD BE SMALLR THAN %{count} IN SIZE
+            incorrect_format: UR IMAGE MUST BE EITHR JPG, PNG OR GIF

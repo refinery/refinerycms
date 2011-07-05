@@ -72,7 +72,9 @@ zh-TW:
           no_pages_yet: 目前沒有任何頁面. 點選 "新增頁面" 來加入您的第一個頁面.
   activerecord:
     models:
-      page: 頁面
+      refinery:
+        page: 頁面
     attributes:
-      page:
-        title: 標題
+      refinery:
+        page:
+          title: 標題

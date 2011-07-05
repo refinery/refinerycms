@@ -72,4 +72,5 @@ nl:
           no_pages_yet: "Er zijn nog geen pagina's. Druk op 'Maak een nieuwe pagina' om de eerste aan te maken."
   activerecord:
     models:
-      page: Pagina
+      refinery:
+        page: Pagina

@@ -36,10 +36,12 @@ pl:
           new_image: Nowy obraz
   activerecord:
     models:
-      image: obraz
+      refinery:
+        image: obraz
     errors:
       models:
-        image:
-          blank: Musisz określić obraz do wgrania
-          too_long: Obraz powinien być mniejszy niż %{count}
-          incorrect_format: 'Obraz musi być plikiem typu JPG, PNG lub GIF'
+        refinery:
+          image:
+            blank: Musisz określić obraz do wgrania
+            too_long: Obraz powinien być mniejszy niż %{count}
+            incorrect_format: 'Obraz musi być plikiem typu JPG, PNG lub GIF'

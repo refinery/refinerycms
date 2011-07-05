@@ -28,9 +28,11 @@ cs:
           button_text: Vložit
   activerecord:
     models:
-      resource: soubor
+      refinery:
+        resource: soubor
     errors:
       models:
-        resource:
-          blank: Musíte vybrat soubor pro nahrání
-          too_long: Maximální velikost souboru je %{count}
+        refinery:
+          resource:
+            blank: Musíte vybrat soubor pro nahrání
+            too_long: Maximální velikost souboru je %{count}

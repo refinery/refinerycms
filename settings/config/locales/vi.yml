@@ -40,9 +40,11 @@ vi:
             approximate_ascii: "Thiết lập này cho đúng nếu bạn sử dụng ký tự Latin với dấu và bỏ dấu trong tiêu đề của trang. Nó sẽ chuyển đổi các ký tự như ā, č, ž into a, c, z và bằng cách này những ký tự sẽ không xuất hiện kỳ lạ trong thanh địa chỉ của một số trình duyệt web."
   activerecord:
     models:
-      setting: Thiết lập
+      refinery:
+        setting: Thiết lập
     attributes:
-      setting:
-        name: Tên
-        value: Giá trị
-        restricted: Giới hạn
+      refinery:
+        setting:
+          name: Tên
+          value: Giá trị
+          restricted: Giới hạn

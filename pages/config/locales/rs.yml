@@ -72,7 +72,9 @@ rs:
           no_pages_yet: Ne postoji nijedna strana. Klinki na "Dodaj novu stranu" da dodaš prvu stranu.
   activerecord:
     models:
-      page: strana
+      refinery:
+        page: strana
     attributes:
-      page:
-        title: Naslov
+      refinery:
+        page:
+          title: Naslov

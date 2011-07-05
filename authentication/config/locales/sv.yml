@@ -56,10 +56,12 @@ sv:
       unauthenticated: Du måste logga in innan du kan fortsätta.
   activerecord:
     models:
-      user: användare
+      refinery:
+        user: användare
     attributes:
-      user:
-        login: Inloggningsnamn
-        email: E-postadress
-        password: Lösenord
-        remember_me: Kom ihåg mig
+      refinery:
+        user:
+          login: Inloggningsnamn
+          email: E-postadress
+          password: Lösenord
+          remember_me: Kom ihåg mig

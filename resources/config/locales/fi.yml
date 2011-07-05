@@ -28,9 +28,11 @@ fi:
           button_text: Lisää
   activerecord:
     models:
-      resource: tiedosto
+      refinery:
+        resource: tiedosto
     errors:
       models:
-        resource:
-          blank: Sinun pitää lähettää tiedosto
-          too_long: Tiedoston tulee olla pienempi kuin %{count} kooltaan
+        refinery:
+          resource:
+            blank: Sinun pitää lähettää tiedosto
+            too_long: Tiedoston tulee olla pienempi kuin %{count} kooltaan

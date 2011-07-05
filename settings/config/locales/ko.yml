@@ -41,9 +41,11 @@ ko:
             cache_pages_full: 전체 페이지 캐싱 기능을 활성화합니다. Apache의 .htaccess 파일이나 Nginx를 통해 페이지 캐시를 이용할 수 있습니다.
   activerecord:
     models:
-      setting: 설정
+      refinery:
+        setting: 설정
     attributes:
-      setting:
-        name: 항목
-        value: 값
-        restricted: 접근 제한
+      refinery:
+        setting:
+          name: 항목
+          value: 값
+          restricted: 접근 제한

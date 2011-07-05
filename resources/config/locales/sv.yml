@@ -28,9 +28,11 @@ sv:
           button_text: Lägg till
   activerecord:
     models:
-      resource: fil
+      refinery:
+        resource: fil
     errors:
       models:
-        resource:
-          blank: Du måste ange en fil att ladda upp
-          too_long: Filen måste vara mindre än %{count} stor
+        refinery:
+          resource:
+            blank: Du måste ange en fil att ladda upp
+            too_long: Filen måste vara mindre än %{count} stor

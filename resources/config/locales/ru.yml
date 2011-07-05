@@ -28,9 +28,11 @@ ru:
           button_text: Вставить
   activerecord:
     models:
-      resource: файл
+      refinery:
+        resource: файл
     errors:
       models:
-        resource:
-          blank: Вы должны выбрать файл для загрузки
-          too_long: "Файлы должны быть по размеру меньше чем %{count}"
+        refinery:
+          resource:
+            blank: Вы должны выбрать файл для загрузки
+            too_long: "Файлы должны быть по размеру меньше чем %{count}"

@@ -28,9 +28,11 @@ lv:
           button_text: Ievietot
   activerecord:
     models:
-      resource: fails
+      refinery:
+        resource: fails
     errors:
       models:
-        resource:
-          blank: Jānorāda fails pirms augšupielādes
-          too_long: Faila izmēram jābūt mazākam par %{count}
+        refinery:
+          resource:
+            blank: Jānorāda fails pirms augšupielādes
+            too_long: Faila izmēram jābūt mazākam par %{count}

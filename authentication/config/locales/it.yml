@@ -53,17 +53,12 @@ it:
         remain_same_if_no_action: "La password rimarrà la stessa se non si effettua una scelta"
   activerecord:
     attributes:
-      user:
-        login: accesso
-        email: email
-        password: password
-        remember_me: Ricordati di me
-  errors:
-    messages:
-      not_found: "non trovato"
-      already_confirmed: "è stato già confermato"
-      not_locked: "non era bloccato"
-
+      refinery:
+        user:
+          login: accesso
+          email: email
+          password: password
+          remember_me: Ricordati di me
   devise:
     failure:
       unauthenticated: "Devi accedere o registrarti per continuare."

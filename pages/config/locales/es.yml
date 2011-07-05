@@ -73,7 +73,9 @@ es:
           no_pages_yet: "Aún no hay páginas. Pulsa \"Crear nueva página\" para añadir tu primera página."
   activerecord:
     models:
-      page: página
+      refinery:
+        page: página
     attributes:
-      page:
-        title: Título
+      refinery:
+        page:
+          title: Título

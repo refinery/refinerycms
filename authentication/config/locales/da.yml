@@ -62,12 +62,14 @@ da:
       signed_in: Du er nu logget ind.
   activerecord:
     models:
-      user: bruger
+      refinery:
+        user: bruger
     attributes:
-      user:
-        login: Log ind
-        username: Brugernavn
-        password: Adgangskode
-        password_confirmation: Bekræft adgangskode
-        email: Email
-        remember_me: Husk mig
+      refinery:
+        user:
+          login: Log ind
+          username: Brugernavn
+          password: Adgangskode
+          password_confirmation: Bekræft adgangskode
+          email: Email
+          remember_me: Husk mig

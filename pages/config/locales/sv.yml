@@ -72,7 +72,9 @@ sv:
           no_pages_yet: Det finns inga sidor ännu. Klicka på "Lägg till en ny sida" för att skapa din första sida.
   activerecord:
     models:
-      page: sida
+      refinery:
+        page: sida
     attributes:
-      page:
-        title: Titel
+      refinery:
+        page:
+          title: Titel

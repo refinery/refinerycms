@@ -44,7 +44,8 @@ it:
   activerecord:
     errors:
       models:
-        image:
-          blank: "Devi selezionare un'immagine da caricare"
-          too_long: 'I files devono essere di dimensioni inferiori a %{count}'
-          incorrect_format: "L'immagine deve essere in formato JPEG, PNG o GIF"
+        refinery:
+          image:
+            blank: "Devi selezionare un'immagine da caricare"
+            too_long: 'I files devono essere di dimensioni inferiori a %{count}'
+            incorrect_format: "L'immagine deve essere in formato JPEG, PNG o GIF"

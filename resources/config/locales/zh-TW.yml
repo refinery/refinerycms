@@ -28,9 +28,11 @@ zh-TW:
           button_text: 插入
   activerecord:
     models:
-      resource: 檔案
+      refinery:
+        resource: 檔案
     errors:
       models:
-        resource:
-          blank: 您必須選取檔案來上傳
-          too_long: 檔案必須要小於 %{count} 這個大小
+        refinery:
+          resource:
+            blank: 您必須選取檔案來上傳
+            too_long: 檔案必須要小於 %{count} 這個大小

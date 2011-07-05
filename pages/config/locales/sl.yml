@@ -71,7 +71,9 @@ sl:
           no_pages_yet: Trenutno še ni nobene strani. Za dodajanje prve strani kliknite "Dodaj novo stran".
   activerecord:
     models:
-      page: stran
+      refinery:
+        page: stran
     attributes:
-      page:
-        title: Naslov
+      refinery:
+        page:
+          title: Naslov

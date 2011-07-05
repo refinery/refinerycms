@@ -35,10 +35,12 @@ el:
           new_image: Ανέβασμα
   activerecord:
     models:
-      image: εικόνα
+      refinery:
+        image: εικόνα
     errors:
       models:
-        image:
-          blank: Πρέπει να επιλέξετε εικόνα για ανέβασμα
-          too_long: Η εικόνα πρέπει να είναι μικρότερη από %{count} σε μέγεθος
-          incorrect_format: 'Η εικόνα σας πρέπει να είναι JPG, PNG ή GIF'
+        refinery:
+          image:
+            blank: Πρέπει να επιλέξετε εικόνα για ανέβασμα
+            too_long: Η εικόνα πρέπει να είναι μικρότερη από %{count} σε μέγεθος
+            incorrect_format: 'Η εικόνα σας πρέπει να είναι JPG, PNG ή GIF'

@@ -54,19 +54,15 @@ pl:
         remain_same_if_no_action: Twoje hasło nie zostanie zmienione jeśli nie odwiedzisz strony
   activerecord:
     models:
-      user: użytkownik
+      refinery:
+        user: użytkownik
     attributes:
-      user:
-        login: Login
-        email: E-mail
-        password: Hasło
-        remember_me: Zapamiętaj mnie
-  errors:
-    messages:
-      not_found: "nie znaleziono"
-      already_confirmed: "już został aktywowany"
-      not_locked: "nie był zablokowany"
-
+      refinery:
+        user:
+          login: Login
+          email: E-mail
+          password: Hasło
+          remember_me: Zapamiętaj mnie
   devise:
     failure:
       unauthenticated: 'Musisz się zalogować lub zarejestrować aby kontynuować.'

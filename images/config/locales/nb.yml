@@ -35,10 +35,12 @@ nb:
           new_image: Nytt bilde
   activerecord:
     models:
-      image: bilde
+      refinery:
+        image: bilde
     errors:
       models:
-        image:
-          blank: Du må angi bildet som skal lastet opp
-          too_long: Bildet må være mindre enn %{count}
-          incorrect_format: 'Bildefilen må være av filtypen JPG, PNG eller GIF'
+        refinery:
+          image:
+            blank: Du må angi bildet som skal lastet opp
+            too_long: Bildet må være mindre enn %{count}
+            incorrect_format: 'Bildefilen må være av filtypen JPG, PNG eller GIF'

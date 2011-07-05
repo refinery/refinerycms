@@ -55,8 +55,9 @@ sl:
       unauthenticated: Za nadaljevanje se morate prijaviti.
   activerecord:
     attributes:
-      user:
-        login: Uporabniško ime
-        email: Email
-        password: Geslo
-        remember_me: zapomni se me
+      refinery:
+        user:
+          login: Uporabniško ime
+          email: Email
+          password: Geslo
+          remember_me: zapomni se me

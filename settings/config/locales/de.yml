@@ -41,9 +41,11 @@ de:
             cache_pages_full: Aktiviert den Full-Page-Cache. Damit können die Seiten mit einer .htaccess-Rewrite-Regel vom Apache oder Nginx ausgeliefert werden.
   activerecord:
     models:
-      setting: Einstellungen
+      refinery:
+        setting: Einstellungen
     attributes:
-      setting:
-        name: Name
-        value: Wert
-        restricted: Eingeschränkt
+      refinery:
+        setting:
+          name: Name
+          value: Wert
+          restricted: Eingeschränkt

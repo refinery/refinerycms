@@ -40,6 +40,7 @@ it:
   activerecord:
     errors:
       models:
-        resource:
-          blank: Devi selezionare un file da caricare
-          too_long: Le dimensioni del file devono essere inferiori a %{count}
+        refinery:
+          resource:
+            blank: Devi selezionare un file da caricare
+            too_long: Le dimensioni del file devono essere inferiori a %{count}

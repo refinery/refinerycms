@@ -38,9 +38,11 @@ pt-BR:
             use_resource_caching: "Recomendado habilitar está opção em produção pois os javascript e stylesheet serão colocados em um único arquivo, o que diminui o número de requisições e aumenta a velocidade do site."
   activerecord:
     models:
-      setting: setting
+      refinery:
+        setting: setting
     attributes:
-      setting:
-        name: Nome
-        value: Valor
-        restricted: Restrito
+      refinery:
+        setting:
+          name: Nome
+          value: Valor
+          restricted: Restrito
