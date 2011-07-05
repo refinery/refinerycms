@@ -10,10 +10,7 @@
   <%  stylesheets_for_head(stylesheets||=%w(application formatting theme), theme ||= nil).each do |ss| %>
     <%= stylesheet_link_tag ss %>
   <% end %>
-  <%# TODO: remove caching because sprockets will do it for us
-      :cache => ("cache/application" if Rails.root.writable? and
-                                        ::Refinery::Setting.find_or_set(:use_resource_caching, true) and
-                                        request.env['HTTP_USER_AGENT'] !~ /MSIE/ and (theme ||= nil).blank?) %>
+
   <%= stylesheet_link_tag "home", :theme => theme if home_page? %>
 
   <%= yield :stylesheets %>
