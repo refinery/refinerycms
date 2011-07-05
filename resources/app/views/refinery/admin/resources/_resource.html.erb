@@ -1,5 +1,5 @@
 <li class='clearfix record <%= cycle("on", "on-hover") %>'>
-  <span class='title <%= resource.ext %>'>
+  <span class='title <%= resource.ext.downcase %>'>
     <%= resource.title %>.<%= resource.ext %>
     <span class="preview">- <%= number_to_human_size(resource.size) %></span>
   </span>
