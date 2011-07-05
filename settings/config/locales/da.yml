@@ -1,42 +1,43 @@
 da:
-  plugins:
-    refinery_settings:
-      title: Indstillinger
-      description: Vedligehold Refinery indstillinger
-  admin:
-    settings:
-      delete: Slet indstilling
-      edit: Redigér indstilling
-      actions:
-        new: Tilføj en ny indstilling
-      records:
-        empty_set: Der er ingen indstillinger endnu.
-        create_first: "Klik '%{link}' for at oprette den første indstilling."
-      form:
-        enabled: "Ja, slå indstillingen til."
-        restart_may_be_in_order_html: <strong>Bemærk:</strong> Du skal muligvis genstarte websitet for at ændringen træder i kraft.
-        yes_make_this_setting_restricted: "Ja, begræns adgang til administratorer."
-        help:
-          restricted: Gør at indstillingen kun kan ses og redigeres af administratorer (som dig).
-          activity_show_limit: Hvor mange 'Seneste aktiviter' skal vises
-          analytics_page_code: Google Analytics kode; aktiverer Google Analytics på websitet. Hvis indstillingen er tom eller sat til UA-xxxxxx-x så er Google Analytics slået fra.
-          frontend_refinery_stylesheets_enabled: "Refinery inkluderer som standard sine egne stylesheets på alle sider. Dette kan slås til eller fra med denne indstilling."
-          image_dialogue_sizes: Denne indstilling benyttes af 'Tilføj et nyt billede' dialogboksen. Du skal også opdatere thumbnails størrelser hvis du ændrer denne indstilling.
-          image_thumbnails: Hvis du opdaterer denne indstilling skal du generere alle billeder igen ved at køre rake images:regenerate (eller rake images:update hvis du kun har tilføjet nye formater). Ellers vil ændringen kun gælde for nye billeder.
-          menu_hide_children: Skjul undermenuer i menuen.
-          new_page_parts: Tillad oprettelse af nye indholdsektioner på sider.
-          page_title: Avancerede indstillinger for konfiguration af sidetitel. Her kan du angive CSS klasse eller et alternativt tag samt angive at sidehierarkiet skal vises i brødkrummen.
-          pages_advanced_options_include_seo: Vis søgemaskineoptimering under avancerede indstillinger for sider.
-          preferred_image_view: Standard billedvisning, 'gittervisning' eller 'listevisning'. Dette kan også ændres under fanebladet 'Billeder'.
-          refinery_enable_backend_reordering: Du fjerne muligheden for at ændre rækkefølgen af fanebladene her.
-          refinery_menu_cache_action_suffix: Nøglen, der benyttes til caching af menuen. Hvis du bruger et tema, bør du undgå at ændre denne indstilling.
-          show_contact_privacy_link: Vis link til privatlivspolitik på kontaktformularen.
-          site_name: Navn på websitet.
-          theme: Navn på det tema du vil bruge. Ændringen træder i kraft med det samme.
-          use_google_ajax_libraries: Brug Googles AJAX CDN.
-          use_marketable_urls: Benyt URLer som /about i stedet for /pages/about og håndtér automatisk sammenfald med URLer fra andre plugins.
-          use_resource_caching: Anbefalet i produktion. Bundler henholdsvis javascript og stylesheet assets til en enkelt fil.
-          approximate_ascii: Sæt til 'true', hvis du vil konvertere karakterer som ā, č og ž til a, c og z i side-URLer.
+  refinery:
+    plugins:
+      refinery_settings:
+        title: Indstillinger
+        description: Vedligehold Refinery indstillinger
+    admin:
+      settings:
+        delete: Slet indstilling
+        edit: Redigér indstilling
+        actions:
+          new: Tilføj en ny indstilling
+        records:
+          empty_set: Der er ingen indstillinger endnu.
+          create_first: "Klik '%{link}' for at oprette den første indstilling."
+        form:
+          enabled: "Ja, slå indstillingen til."
+          restart_may_be_in_order_html: <strong>Bemærk:</strong> Du skal muligvis genstarte websitet for at ændringen træder i kraft.
+          yes_make_this_setting_restricted: "Ja, begræns adgang til administratorer."
+          help:
+            restricted: Gør at indstillingen kun kan ses og redigeres af administratorer (som dig).
+            activity_show_limit: Hvor mange 'Seneste aktiviter' skal vises
+            analytics_page_code: Google Analytics kode; aktiverer Google Analytics på websitet. Hvis indstillingen er tom eller sat til UA-xxxxxx-x så er Google Analytics slået fra.
+            frontend_refinery_stylesheets_enabled: "Refinery inkluderer som standard sine egne stylesheets på alle sider. Dette kan slås til eller fra med denne indstilling."
+            image_dialogue_sizes: Denne indstilling benyttes af 'Tilføj et nyt billede' dialogboksen. Du skal også opdatere thumbnails størrelser hvis du ændrer denne indstilling.
+            image_thumbnails: Hvis du opdaterer denne indstilling skal du generere alle billeder igen ved at køre rake images:regenerate (eller rake images:update hvis du kun har tilføjet nye formater). Ellers vil ændringen kun gælde for nye billeder.
+            menu_hide_children: Skjul undermenuer i menuen.
+            new_page_parts: Tillad oprettelse af nye indholdsektioner på sider.
+            page_title: Avancerede indstillinger for konfiguration af sidetitel. Her kan du angive CSS klasse eller et alternativt tag samt angive at sidehierarkiet skal vises i brødkrummen.
+            pages_advanced_options_include_seo: Vis søgemaskineoptimering under avancerede indstillinger for sider.
+            preferred_image_view: Standard billedvisning, 'gittervisning' eller 'listevisning'. Dette kan også ændres under fanebladet 'Billeder'.
+            refinery_enable_backend_reordering: Du fjerne muligheden for at ændre rækkefølgen af fanebladene her.
+            refinery_menu_cache_action_suffix: Nøglen, der benyttes til caching af menuen. Hvis du bruger et tema, bør du undgå at ændre denne indstilling.
+            show_contact_privacy_link: Vis link til privatlivspolitik på kontaktformularen.
+            site_name: Navn på websitet.
+            theme: Navn på det tema du vil bruge. Ændringen træder i kraft med det samme.
+            use_google_ajax_libraries: Brug Googles AJAX CDN.
+            use_marketable_urls: Benyt URLer som /about i stedet for /pages/about og håndtér automatisk sammenfald med URLer fra andre plugins.
+            use_resource_caching: Anbefalet i produktion. Bundler henholdsvis javascript og stylesheet assets til en enkelt fil.
+            approximate_ascii: Sæt til 'true', hvis du vil konvertere karakterer som ā, č og ž til a, c og z i side-URLer.
   activerecord:
     models:
       setting: indstilling

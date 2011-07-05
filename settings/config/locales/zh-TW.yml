@@ -1,42 +1,43 @@
 zh-TW:
-  plugins:
-    refinery_settings:
-      title: 設定
-      description: 管理 Refinery 設定值
-  admin:
-    settings:
-      delete: 永遠地移除這項設定值
-      edit: 編輯這項設定值
-      actions:
-        new: 增加新設定值
-      records:
-        empty_set: 目前沒有任何設定值.
-        create_first: "請按這兒 '%{link}' 加入您的第一個設定值."
-      form:
-        enabled: "是的, 啟動這項設定值."
-        restart_may_be_in_order_html: <strong>請注意</strong> 您必須重新啟動這個網站來讓設定值生效.
-        yes_make_this_setting_restricted: "是的, 讓這項設定只能被管理者修改."
-        help:
-          restricted: 這讓這項設定只能給有管理者權限的使用者 (像您一樣) 看見以及編輯.
-          activity_show_limit: 這可以限制在控制面板列出項目的數目.
-          analytics_page_code: 這個代碼可啟動 Google Analytics 來追蹤您的網站. 如果這項設定留白或是設為 UA-xxxxxx-x 表示為關閉這項功能並且不會有任何遠端的 Google Analytics 呼叫發生.
-          frontend_refinery_stylesheets_enabled: "在預設的情況, Refinery 包含了不影響您個人樣式表的預設 CSS 樣式表給前端使用, 可藉由這個設定來開啟或是關閉這個選項."
-          image_dialogue_sizes: 這個設定可以生效插入圖片的對話方框. 您必須完成不同大小的縮圖並且改變它.
-          image_thumbnails: 如果您修改了這個選項, 您必須執行 rake images:regenerate (或是 rake image:update, 如果您只是增加了更多縮圖), 否則這個設定將不會影響任何已存在網站上的圖片.
-          menu_hide_children: 從選單中隱藏任何次頁面, 即使它們是存在的.
-          new_page_parts: 開啟在頁面編輯器可新增新頁面區塊 (內容區) 的功能.
-          page_title: 提供非常複雜的選項讓您設定頁面標題. 在這裡你可以設定自訂的 CSS 類別或是不同的標籤, 或是加上紀錄著頁面層級關係的導覽列.
-          pages_advanced_options_include_seo: 這可控制是否 SEO 選項會顯示在頁面上的進階選項中.
-          preferred_image_view: 這可控制圖片插件如何呈現目前這些已存在網站上的圖片 - grid 表示 '格狀模式' 以及 list 表示 '列表模式'. 圖片插件本身提供一個按鈕可以自動切換這些模式.
-          refinery_enable_backend_reordering: 您可以移除可以重新排列插件顯示順序的功能.
-          refinery_menu_cache_action_suffix: 這可控制用來使用在快取網站選單的金鑰. 如果您正在使用佈景主題, 那最不要改變預設值, 讓佈景主題來為您處裡.
-          show_contact_privacy_link: 您可以隱藏或是顯示在聯絡人表單確認按鈕旁的隱私條款頁面連結.
-          site_name: 這是您的網站名稱, 它將會顯示在網站標題, Refinery 的後台管理系統, 以及部份有頁尾版權宣告的佈景主題中.
-          theme: 輸入您想要開啟的佈景主題名稱. 它將會馬上生效並且確認為是有效的名稱.
-          use_google_ajax_libraries: 如果您想要使用 Google 的 AJAX CDN 請設定為 true.
-          use_marketable_urls: 將網址從 /pages/about 改變為 /about 並且自動處理與其他插件的衝突.
-          use_resource_caching: 建議在 production 模式中開啟這個選項, 它會將 javascript assets 與樣式表 assets 包裹成一個單一檔案來減少您網站被請求的次數並且達到加速的效果.
-          approximate_ascii: 如果您使用帶有口音或是變音符號的拉丁字母請設定為 true. 它會將像是 ā, č, ž 的字母轉為 a, c, z , 在某些網頁瀏覽器中, 這些字母就不會奇怪地出現在網址列上.
+  refinery:
+    plugins:
+      refinery_settings:
+        title: 設定
+        description: 管理 Refinery 設定值
+    admin:
+      settings:
+        delete: 永遠地移除這項設定值
+        edit: 編輯這項設定值
+        actions:
+          new: 增加新設定值
+        records:
+          empty_set: 目前沒有任何設定值.
+          create_first: "請按這兒 '%{link}' 加入您的第一個設定值."
+        form:
+          enabled: "是的, 啟動這項設定值."
+          restart_may_be_in_order_html: <strong>請注意</strong> 您必須重新啟動這個網站來讓設定值生效.
+          yes_make_this_setting_restricted: "是的, 讓這項設定只能被管理者修改."
+          help:
+            restricted: 這讓這項設定只能給有管理者權限的使用者 (像您一樣) 看見以及編輯.
+            activity_show_limit: 這可以限制在控制面板列出項目的數目.
+            analytics_page_code: 這個代碼可啟動 Google Analytics 來追蹤您的網站. 如果這項設定留白或是設為 UA-xxxxxx-x 表示為關閉這項功能並且不會有任何遠端的 Google Analytics 呼叫發生.
+            frontend_refinery_stylesheets_enabled: "在預設的情況, Refinery 包含了不影響您個人樣式表的預設 CSS 樣式表給前端使用, 可藉由這個設定來開啟或是關閉這個選項."
+            image_dialogue_sizes: 這個設定可以生效插入圖片的對話方框. 您必須完成不同大小的縮圖並且改變它.
+            image_thumbnails: 如果您修改了這個選項, 您必須執行 rake images:regenerate (或是 rake image:update, 如果您只是增加了更多縮圖), 否則這個設定將不會影響任何已存在網站上的圖片.
+            menu_hide_children: 從選單中隱藏任何次頁面, 即使它們是存在的.
+            new_page_parts: 開啟在頁面編輯器可新增新頁面區塊 (內容區) 的功能.
+            page_title: 提供非常複雜的選項讓您設定頁面標題. 在這裡你可以設定自訂的 CSS 類別或是不同的標籤, 或是加上紀錄著頁面層級關係的導覽列.
+            pages_advanced_options_include_seo: 這可控制是否 SEO 選項會顯示在頁面上的進階選項中.
+            preferred_image_view: 這可控制圖片插件如何呈現目前這些已存在網站上的圖片 - grid 表示 '格狀模式' 以及 list 表示 '列表模式'. 圖片插件本身提供一個按鈕可以自動切換這些模式.
+            refinery_enable_backend_reordering: 您可以移除可以重新排列插件顯示順序的功能.
+            refinery_menu_cache_action_suffix: 這可控制用來使用在快取網站選單的金鑰. 如果您正在使用佈景主題, 那最不要改變預設值, 讓佈景主題來為您處裡.
+            show_contact_privacy_link: 您可以隱藏或是顯示在聯絡人表單確認按鈕旁的隱私條款頁面連結.
+            site_name: 這是您的網站名稱, 它將會顯示在網站標題, Refinery 的後台管理系統, 以及部份有頁尾版權宣告的佈景主題中.
+            theme: 輸入您想要開啟的佈景主題名稱. 它將會馬上生效並且確認為是有效的名稱.
+            use_google_ajax_libraries: 如果您想要使用 Google 的 AJAX CDN 請設定為 true.
+            use_marketable_urls: 將網址從 /pages/about 改變為 /about 並且自動處理與其他插件的衝突.
+            use_resource_caching: 建議在 production 模式中開啟這個選項, 它會將 javascript assets 與樣式表 assets 包裹成一個單一檔案來減少您網站被請求的次數並且達到加速的效果.
+            approximate_ascii: 如果您使用帶有口音或是變音符號的拉丁字母請設定為 true. 它會將像是 ā, č, ž 的字母轉為 a, c, z , 在某些網頁瀏覽器中, 這些字母就不會奇怪地出現在網址列上.
   activerecord:
     models:
       setting: 設定

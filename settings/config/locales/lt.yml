@@ -1,42 +1,43 @@
 lt:
-  plugins:
-    refinery_settings:
-      title: Nustatymai
-      description: Valdyti Refinery nustatymus
-  admin:
-    settings:
-      delete: Visiškai pašalinti šį nustatymą
-      edit: Redaguoti šį nustatymą
-      actions:
-        new: Pridėti naują nustatymą
-      records:
-        empty_set: Kol kas nėra nustatymų.
-        create_first: "Paspauskite '%{link}' norėdami pridėti pirmąjį nustatymą."
-      form:
-        enabled: "Aktyvuoti nustatymą."
-        restart_may_be_in_order_html: <strong>Please note</strong> that you may need to restart the website for this setting to take effect.
-        restart_may_be_in_order_html: "<strong>Pastaba</strong> Jums gali reikėti iš naujo paleisti sveatainę, kad šis nustatymas įsigaliotų."
-        yes_make_this_setting_restricted: "Leisti šį nustatymą keisti tik super vartotojams."
-        help:
-          restricted: "Tai padarys šį nustatymą matomą ir redaguojamą tik vartotojams kurie yra super vartotojai (kaip Jūs)."
-          activity_show_limit: "Tai apriboja įvykių skaičių, kuris gali būti rodomas Valdymo skydelio sąraše."
-          analytics_page_code: "Šis kodas aktyvuoja Google Analytics statistikos fiksavimą jūsų svetainėje. Jei šis nustatymas paliktas tuščias arba nustatyta UA-xxxxxx-x, tai jis yra išjungtas ir jokie kreipiniai į Google Analytics sistemą nevykdomi."
-          frontend_refinery_stylesheets_enabled: "Standartiškai Refinery įterpia stilių failus svetainės interfeisui, kurie pateikia CSS nesikirsdami su jūsų stilių failais nepriklausomai nuo to ar šis nustatymas įjungtas ar išjungtas."
-          image_dialogue_sizes: "Šis nustatymas taikomas Įterpti Paveikslėlį dialoge. Jūs turite nurodyti ir skirtingus thumbnail dydžius, netik pakeisti šį nustatymą."
-          image_thumbnails: "Jei jūs pakeisite šį nustatymą, tai turėsite pergeneruoti savo paveikslėlius paleisdami rake images:regenerate (arba rake images:update jeigu jūs tik pridėjo daugiau thumbnails) kitaip šis nustatymas nebus taikomas jau egzistuojantiems paveikslėliams."
-          menu_hide_children: "Meniu nerodys jokių sub puslapių, net jeigu jie egzistuoja."
-          new_page_parts: "Leisti pridėti naujas puslapio dalis (turinio skyrius) puslapio redagavime."
-          page_title: "Labai sudėtinti nustatymai nurodant puslapio antraštę. Čia galite nurodyti kitokią CSS klasę ar kitokią html žymę ar nurodyti puslapiui naršymo kelią su jo protėviais."
-          pages_advanced_options_include_seo: "Čia valdoma ar puslapio SEO nustatymai yra rodomi pasirinkus papildomus puslapio nustatymus."
-          preferred_image_view: "Čia valdoma kokį vaizdą rodys paveikslėlių įskiepis. Tinklelį 'Rodyti kaip tinklelį' ar sąrašą 'Rodyti kaip sąrašą'. Procesui automatizuoti ir pačiame paveikslėlių įskiepyje yra mygtukas."
-          refinery_enable_backend_reordering: Čia jūs galite pašalinti galimybę pakeisti įskiepių rikiavimo tvarką.
-          refinery_menu_cache_action_suffix: "Čia nustatomas identifikatorius naudojamas saugant svetainės meniu į podėlį. Jei jūs naudojate temą, tai geriau čia palikti standartinį nustatymą, nes tema tai valdys."
-          show_contact_privacy_link: Jūs galite paslėpti arba rodyti nuorodą į svetainės privatumo politikos puslapį kontaktų formoje prie siuntimo mygtuko.
-          site_name: "Svetainės pavadinimas, kuris bus rodomas antraštėje ir Refinery valdyme ir puslapio apačioje, kai kuriose temose."
-          theme: "Nurodykite temos pavadinimą, kurią norite naudoti. Šis nustatymas įsigalios nedelsiant ir turi teisingai identifikuoti egzistuojančią temą, kad tai veiktų."
-          use_google_ajax_libraries: Jei norite naudoti Google AJAX CDN tai nustatykite šį nustatymą kaip true.
-          use_marketable_urls: Pakeisti adresus iš /pages/apie-mus į /apie-mus ir automatiškai valdyti konfliktus su kitais įskiepiais.
-          use_resource_caching: "Rekomenduojama įjungti šį nustatymą paleidus svetainę darbiniu režimu, nes supakuos javascript ir stilių failus į vieną failą, kad sumažinti užklausų skaičių jūsų svetainė ir pagreitinti jos veikimą."
+  refinery:
+    plugins:
+      refinery_settings:
+        title: Nustatymai
+        description: Valdyti Refinery nustatymus
+    admin:
+      settings:
+        delete: Visiškai pašalinti šį nustatymą
+        edit: Redaguoti šį nustatymą
+        actions:
+          new: Pridėti naują nustatymą
+        records:
+          empty_set: Kol kas nėra nustatymų.
+          create_first: "Paspauskite '%{link}' norėdami pridėti pirmąjį nustatymą."
+        form:
+          enabled: "Aktyvuoti nustatymą."
+          restart_may_be_in_order_html: <strong>Please note</strong> that you may need to restart the website for this setting to take effect.
+          restart_may_be_in_order_html: "<strong>Pastaba</strong> Jums gali reikėti iš naujo paleisti sveatainę, kad šis nustatymas įsigaliotų."
+          yes_make_this_setting_restricted: "Leisti šį nustatymą keisti tik super vartotojams."
+          help:
+            restricted: "Tai padarys šį nustatymą matomą ir redaguojamą tik vartotojams kurie yra super vartotojai (kaip Jūs)."
+            activity_show_limit: "Tai apriboja įvykių skaičių, kuris gali būti rodomas Valdymo skydelio sąraše."
+            analytics_page_code: "Šis kodas aktyvuoja Google Analytics statistikos fiksavimą jūsų svetainėje. Jei šis nustatymas paliktas tuščias arba nustatyta UA-xxxxxx-x, tai jis yra išjungtas ir jokie kreipiniai į Google Analytics sistemą nevykdomi."
+            frontend_refinery_stylesheets_enabled: "Standartiškai Refinery įterpia stilių failus svetainės interfeisui, kurie pateikia CSS nesikirsdami su jūsų stilių failais nepriklausomai nuo to ar šis nustatymas įjungtas ar išjungtas."
+            image_dialogue_sizes: "Šis nustatymas taikomas Įterpti Paveikslėlį dialoge. Jūs turite nurodyti ir skirtingus thumbnail dydžius, netik pakeisti šį nustatymą."
+            image_thumbnails: "Jei jūs pakeisite šį nustatymą, tai turėsite pergeneruoti savo paveikslėlius paleisdami rake images:regenerate (arba rake images:update jeigu jūs tik pridėjo daugiau thumbnails) kitaip šis nustatymas nebus taikomas jau egzistuojantiems paveikslėliams."
+            menu_hide_children: "Meniu nerodys jokių sub puslapių, net jeigu jie egzistuoja."
+            new_page_parts: "Leisti pridėti naujas puslapio dalis (turinio skyrius) puslapio redagavime."
+            page_title: "Labai sudėtinti nustatymai nurodant puslapio antraštę. Čia galite nurodyti kitokią CSS klasę ar kitokią html žymę ar nurodyti puslapiui naršymo kelią su jo protėviais."
+            pages_advanced_options_include_seo: "Čia valdoma ar puslapio SEO nustatymai yra rodomi pasirinkus papildomus puslapio nustatymus."
+            preferred_image_view: "Čia valdoma kokį vaizdą rodys paveikslėlių įskiepis. Tinklelį 'Rodyti kaip tinklelį' ar sąrašą 'Rodyti kaip sąrašą'. Procesui automatizuoti ir pačiame paveikslėlių įskiepyje yra mygtukas."
+            refinery_enable_backend_reordering: Čia jūs galite pašalinti galimybę pakeisti įskiepių rikiavimo tvarką.
+            refinery_menu_cache_action_suffix: "Čia nustatomas identifikatorius naudojamas saugant svetainės meniu į podėlį. Jei jūs naudojate temą, tai geriau čia palikti standartinį nustatymą, nes tema tai valdys."
+            show_contact_privacy_link: Jūs galite paslėpti arba rodyti nuorodą į svetainės privatumo politikos puslapį kontaktų formoje prie siuntimo mygtuko.
+            site_name: "Svetainės pavadinimas, kuris bus rodomas antraštėje ir Refinery valdyme ir puslapio apačioje, kai kuriose temose."
+            theme: "Nurodykite temos pavadinimą, kurią norite naudoti. Šis nustatymas įsigalios nedelsiant ir turi teisingai identifikuoti egzistuojančią temą, kad tai veiktų."
+            use_google_ajax_libraries: Jei norite naudoti Google AJAX CDN tai nustatykite šį nustatymą kaip true.
+            use_marketable_urls: Pakeisti adresus iš /pages/apie-mus į /apie-mus ir automatiškai valdyti konfliktus su kitais įskiepiais.
+            use_resource_caching: "Rekomenduojama įjungti šį nustatymą paleidus svetainę darbiniu režimu, nes supakuos javascript ir stilių failus į vieną failą, kad sumažinti užklausų skaičių jūsų svetainė ir pagreitinti jos veikimą."
   activerecord:
     models:
       setting: nustatymas

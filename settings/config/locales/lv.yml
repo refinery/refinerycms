@@ -1,42 +1,43 @@
 lv:
-  plugins:
-    refinery_settings:
-      title: Uzstādījumi
-      description: Refinery uzstādījumu pārvaldīšana
-  admin:
-    settings:
-      delete: Dzēst šo uzstādījumu
-      edit: Labot šo uzstādījumu
-      actions:
-        new: Izveidot jaunu uzstādījumu
-      records:
-        empty_set: Vēl nav neviena uzstādījuma.
-        create_first: Spied uz '%{link}', lai pievienotu pirmo uzstādījumu.
-      form:
-        enabled: Jā, iespējot šo uzstādījumu.
-        restart_may_be_in_order_html: <strong>Ievērībai</strong> - iespējams būs nepieciešams web servera restarts, lai šis uzstādījums stātos spēkā.
-        yes_make_this_setting_restricted: Jā, padarīt šo uzstādījumu pieejamu tikai superlietotājiem.
-        help:
-          restricted: Šī opcija padara uzstādījumu redzamu un rediģējamu tikai superlietotājiem (tādi kā jūs).
-          activity_show_limit: Šī opcija limitē vienību skaitu, kas tiek atspoguļotas vadības panelī.
-          analytics_page_code: Šis kods aktivizē Google Analytics uzskaiti jūsu lapā. Ja šī uzstādījuma vērtības lauks tiek atstāts tukšs vai tajā tiek ievadīts UA-xxxxxx-x, tas nozīmē, ka šis uzstādījums nav aktīvs un attālināti pieprasījumi uz Google Analytics netiek veikti.
-          frontend_refinery_stylesheets_enabled: Pēc noklusējuma Refinery iekļauj priekšgala interfeisa stila lapas, kuras nodrošina noklusējuma CSS, tādā veidā netraucējot jūsu stila lapām, kuras ir iespējotas/atspējotas ar šī uzstādījuma palīdzību.
-          image_dialogue_sizes: Šis uzstādījums attiecas uz bildes ievietošanas dialoga logu. Pēc šī uzstādījuma rediģēšanas, lūdzu, pārliecinieties par to, ka sīkattēlu izmēri ir tādi kā norādīti šeit.
-          image_thumbnails: Ja jūs veicat izmaiņas šajā uzstādījumā, tad ir nepieciešams izveidot bilžu sīkattēlus no jauna. To var izdarīt izmantojot komandu rake images:regenerate (vai arī rake images:update, ja pievienojat tikai jaunus sīkattēlu izmērus), pretējā gadījumā šis uzstādījums neietekmēs esošās bildes.
-          menu_hide_children: Paslēpt visas apakšlapas no izvēlnes, ja tās ir.
-          new_page_parts: Atļaut pievienot jaunas lapas daļas (satura sadaļas) lapu redaktorā.
-          page_title: Kompleksas opcijas lapas nosaukuma uzstādīšanai. Šeit jūs varat personalizēt CSS klasi, uzstādīt citu birku vai arī sadalīt lapu fragmentos atkarībā no tās izcelsmes.
-          pages_advanced_options_include_seo: Šis uzstādījums nosaka, vai rādīt OIM (Optimizēšana Interneta Meklētājiem) iespējas pie papildus opcijām lapas redaktorā.
-          preferred_image_view: Šis uzstādījums kontrolē, kurš skats tiek izmantots bilžu spraudnī - grid 'Režģa skatam' un list 'Saraksta skatam'. Bilžu spraudnī ir poga, kas automatizē šo procesu.
-          refinery_enable_backend_reordering: Ar šīs opcijas palīdzību jūs varat atslēgt spraudņu skata pārkārtošanu.
-          refinery_menu_cache_action_suffix: Šī opcija kontrolē atslēgas nosaukumu, kas tiek izmantota saita izvēlnes kešošanai. Ja izmantojiet tēmu, tad labāk atstājiet šo atslēgu pēc noklusējuma, jo tēma ar to tiks galā.
-          show_contact_privacy_link: Jūs varat noslēpt vai atstāt redzamu privātuma politikas saiti kontaktformas lapā.
-          site_name: Šis ir jūsu saita nosaukums, kas tiks rādīts galvenē, Refinery administrācijas panelī, kā arī dažās tēmās šis nosaukums tiek rādīts arī kājenē.
-          theme: Ievadiet tēmas nosaukumu, kuru vēlaties izmantot. Lai šis uzstādījums nekavējoties sāktu darboties, pārliecinieties, vai tēma eksistē un tās nosaukums ir norādīts pareizi.
-          use_google_ajax_libraries: Ja vēlaties izmantot Googles AJAX CDN, tad šim parametram nomainiet vērtību uz true.
-          use_marketable_urls: Šī opcija maina saites no /pages/about uz /about un automātiski novērš konfliktus ar citiem spraudņiem.
-          use_resource_caching: Šo opciju ieteicams iespējot produkcijas režīmā, jo tā nodrošina javascript un stylesheet failu apkopošanu vienā failu paketē, tādā veidā samazinot pieprasījumu skaitu uz jūsu lapu un paātrinot tās darbību.
-          approximate_ascii: "Ja izmantojat Latīņu burtus ar mīkstinājuma zīmēm, akcentiem utml., tad iespējojot šo uzstādījumu (vērtība: true) burti ā, č, ž u.c. tiks pārkonvertēti attiecīgi uz a, c un z, tāda veidā šie burti neizskatīsies savādi dažu parlūku adreses laukā."
+  refinery:
+    plugins:
+      refinery_settings:
+        title: Uzstādījumi
+        description: Refinery uzstādījumu pārvaldīšana
+    admin:
+      settings:
+        delete: Dzēst šo uzstādījumu
+        edit: Labot šo uzstādījumu
+        actions:
+          new: Izveidot jaunu uzstādījumu
+        records:
+          empty_set: Vēl nav neviena uzstādījuma.
+          create_first: Spied uz '%{link}', lai pievienotu pirmo uzstādījumu.
+        form:
+          enabled: Jā, iespējot šo uzstādījumu.
+          restart_may_be_in_order_html: <strong>Ievērībai</strong> - iespējams būs nepieciešams web servera restarts, lai šis uzstādījums stātos spēkā.
+          yes_make_this_setting_restricted: Jā, padarīt šo uzstādījumu pieejamu tikai superlietotājiem.
+          help:
+            restricted: Šī opcija padara uzstādījumu redzamu un rediģējamu tikai superlietotājiem (tādi kā jūs).
+            activity_show_limit: Šī opcija limitē vienību skaitu, kas tiek atspoguļotas vadības panelī.
+            analytics_page_code: Šis kods aktivizē Google Analytics uzskaiti jūsu lapā. Ja šī uzstādījuma vērtības lauks tiek atstāts tukšs vai tajā tiek ievadīts UA-xxxxxx-x, tas nozīmē, ka šis uzstādījums nav aktīvs un attālināti pieprasījumi uz Google Analytics netiek veikti.
+            frontend_refinery_stylesheets_enabled: Pēc noklusējuma Refinery iekļauj priekšgala interfeisa stila lapas, kuras nodrošina noklusējuma CSS, tādā veidā netraucējot jūsu stila lapām, kuras ir iespējotas/atspējotas ar šī uzstādījuma palīdzību.
+            image_dialogue_sizes: Šis uzstādījums attiecas uz bildes ievietošanas dialoga logu. Pēc šī uzstādījuma rediģēšanas, lūdzu, pārliecinieties par to, ka sīkattēlu izmēri ir tādi kā norādīti šeit.
+            image_thumbnails: Ja jūs veicat izmaiņas šajā uzstādījumā, tad ir nepieciešams izveidot bilžu sīkattēlus no jauna. To var izdarīt izmantojot komandu rake images:regenerate (vai arī rake images:update, ja pievienojat tikai jaunus sīkattēlu izmērus), pretējā gadījumā šis uzstādījums neietekmēs esošās bildes.
+            menu_hide_children: Paslēpt visas apakšlapas no izvēlnes, ja tās ir.
+            new_page_parts: Atļaut pievienot jaunas lapas daļas (satura sadaļas) lapu redaktorā.
+            page_title: Kompleksas opcijas lapas nosaukuma uzstādīšanai. Šeit jūs varat personalizēt CSS klasi, uzstādīt citu birku vai arī sadalīt lapu fragmentos atkarībā no tās izcelsmes.
+            pages_advanced_options_include_seo: Šis uzstādījums nosaka, vai rādīt OIM (Optimizēšana Interneta Meklētājiem) iespējas pie papildus opcijām lapas redaktorā.
+            preferred_image_view: Šis uzstādījums kontrolē, kurš skats tiek izmantots bilžu spraudnī - grid 'Režģa skatam' un list 'Saraksta skatam'. Bilžu spraudnī ir poga, kas automatizē šo procesu.
+            refinery_enable_backend_reordering: Ar šīs opcijas palīdzību jūs varat atslēgt spraudņu skata pārkārtošanu.
+            refinery_menu_cache_action_suffix: Šī opcija kontrolē atslēgas nosaukumu, kas tiek izmantota saita izvēlnes kešošanai. Ja izmantojiet tēmu, tad labāk atstājiet šo atslēgu pēc noklusējuma, jo tēma ar to tiks galā.
+            show_contact_privacy_link: Jūs varat noslēpt vai atstāt redzamu privātuma politikas saiti kontaktformas lapā.
+            site_name: Šis ir jūsu saita nosaukums, kas tiks rādīts galvenē, Refinery administrācijas panelī, kā arī dažās tēmās šis nosaukums tiek rādīts arī kājenē.
+            theme: Ievadiet tēmas nosaukumu, kuru vēlaties izmantot. Lai šis uzstādījums nekavējoties sāktu darboties, pārliecinieties, vai tēma eksistē un tās nosaukums ir norādīts pareizi.
+            use_google_ajax_libraries: Ja vēlaties izmantot Googles AJAX CDN, tad šim parametram nomainiet vērtību uz true.
+            use_marketable_urls: Šī opcija maina saites no /pages/about uz /about un automātiski novērš konfliktus ar citiem spraudņiem.
+            use_resource_caching: Šo opciju ieteicams iespējot produkcijas režīmā, jo tā nodrošina javascript un stylesheet failu apkopošanu vienā failu paketē, tādā veidā samazinot pieprasījumu skaitu uz jūsu lapu un paātrinot tās darbību.
+            approximate_ascii: "Ja izmantojat Latīņu burtus ar mīkstinājuma zīmēm, akcentiem utml., tad iespējojot šo uzstādījumu (vērtība: true) burti ā, č, ž u.c. tiks pārkonvertēti attiecīgi uz a, c un z, tāda veidā šie burti neizskatīsies savādi dažu parlūku adreses laukā."
   activerecord:
     models:
       setting: uzstādījums
