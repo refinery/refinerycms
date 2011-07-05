@@ -1,75 +1,76 @@
 pl:
-  plugins:
-    refinery_pages:
-      title: Strony
-      description: Zarządzaj stronami z zawartością
-      article: feminine
-  admin:
-    pages_dialogs:
-      page_link:
-        link_to_this_page: Link do tej strony
-      link_to:
-        insert: Wstaw
-        your_page:
-          tab_name: Twoja strona
-        web_address:
-          tab_name: Witryna
-          location: Lokacja
-          new_window: Nowe okno
-          new_window_label: Zaznacz tę kratkę aby link otwierał się w nowym oknie.
-          not_sure: Nie wiesz, co wstawić w pole powyżej?
-          step1: Znajdź stronę w sieci do której chcesz linkować.
-          step2: Wklej adres z pola adresu Twojej przeglądarki i wklej go do pola powyżej.
-        email_address:
-          tab_name: Adres e-mail
-          subject_line_optional: Opcjonalny temat
-          body_optional: Opcjonalna treść
-          not_sure: Nie wiesz, co wstawić w pola powyżej?
-          step1_html: Wpisz lub wklej (np. z książki adresowej) adres e-mail do którego ma prowadzić link w pole '<stron>Adres e-mail</strong> powyżej.
-          step2_html: Użyj pola '<strong>Temat</strong> aby wiadomość miała wstępnie określony temat.
-          step3_html: Użyj pola '<strong>Treść</strong> aby wiadomość miała wstępnie określoną treść.
-        your_resource:
-          tab_name: Twój plik
-          link_to_this_resource: Link do tego pliku
-    pages:
-      delete: Na zawsze usuń tę stronę
-      edit: Zmień tę stronę
-      reserved_system_word: "Przepraszamy, ale tytuł zawiera zabronione wyrazy."
-      page:
-        view_live_html: Obejrzyj tę stronę na żywo <br/><em>(zostanie otwarta w nowym oknie)</em>
-        hidden: ukryta
-        draft: szkic
-      form_new_page_parts:
-        title: Tytuł
-      form_page_parts:
-        create_content_section: Dodaj sekcję zawartości
-        delete_content_section: Usuń sekcję zawartości
-      form_advanced_options:
-        toggle_advanced_options: Kliknij aby uzyskać dostęp do zawartości tagów meta oraz opcji menu
-        page_options: Opcje strony
-        parent_page: Strona nadrzędna
-        advanced_options: Opcje zaawansowane
-        custom_title: Inny tytuł
-        title_types:
-          none: Żaden
-          text: Tekst
-        show_in_menu_title: Pokaż w menu
-        show_in_menu_description: Wyświetl tę stronę w menu witryny
-        show_in_menu_help: Odznacz tę kratkę aby usunąć tę stronę z menu witryny. To może być przydatne jeżeli chcesz linkować do tej strony, ale nie chcesz aby była widoczna w menu.
-        save_as_draft: Zapisz jako szkic
-        skip_to_first_child: Pomiń stronę najwyższego poziomu
-        skip_to_first_child_label: Przekieruj odwiedzających do pierwszej strony potomnej.
-        skip_to_first_child_help: Ta opcja sprawia, że ta strona kieruje do pierwszej strony pod nią. To może być przydatne przy grupowaniu stron razem.
-        link_url: Przekieruj tę stronę do innej strony lub witryny
-        link_url_help: Jeżeli chcesz, aby ta strona prowadziła do innej strony lub witryny kiedy klikniesz ją w menu, wpisz tu adres URL, na przykład http://google.com.W innym wypadku pozostaw to pole pustym.
-        parent_page_help: Możesz umieścić tę stronę pod inną wybierając stronę nadrzędną z listy. Jeżeli ta strona ma być stroną najwyższego poziomu pozostaw to pole pustym.
-        custom_title_help: Jeżeli chcesz aby ta strona miała inny tytuł niż ten widoczny w menu wybierz &apos;Tekst&apos; i wpisz go tutaj.
-      actions:
-        create_new_page: Dodaj nową stronę
-        reorder_pages: Zmień kolejność stron
-        reorder_pages_done: Zakończono zmianę kolejności stron
-      records:
-        no_pages_yet: Nie ma jeszcze żadnej strony. Kliknij "Dodaj nową stronę" aby stworzyć pierwszą.
+  refinery:
+    plugins:
+      refinery_pages:
+        title: Strony
+        description: Zarządzaj stronami z zawartością
+        article: feminine
+    admin:
+      pages_dialogs:
+        page_link:
+          link_to_this_page: Link do tej strony
+        link_to:
+          insert: Wstaw
+          your_page:
+            tab_name: Twoja strona
+          web_address:
+            tab_name: Witryna
+            location: Lokacja
+            new_window: Nowe okno
+            new_window_label: Zaznacz tę kratkę aby link otwierał się w nowym oknie.
+            not_sure: Nie wiesz, co wstawić w pole powyżej?
+            step1: Znajdź stronę w sieci do której chcesz linkować.
+            step2: Wklej adres z pola adresu Twojej przeglądarki i wklej go do pola powyżej.
+          email_address:
+            tab_name: Adres e-mail
+            subject_line_optional: Opcjonalny temat
+            body_optional: Opcjonalna treść
+            not_sure: Nie wiesz, co wstawić w pola powyżej?
+            step1_html: Wpisz lub wklej (np. z książki adresowej) adres e-mail do którego ma prowadzić link w pole '<stron>Adres e-mail</strong> powyżej.
+            step2_html: Użyj pola '<strong>Temat</strong> aby wiadomość miała wstępnie określony temat.
+            step3_html: Użyj pola '<strong>Treść</strong> aby wiadomość miała wstępnie określoną treść.
+          your_resource:
+            tab_name: Twój plik
+            link_to_this_resource: Link do tego pliku
+      pages:
+        delete: Na zawsze usuń tę stronę
+        edit: Zmień tę stronę
+        reserved_system_word: "Przepraszamy, ale tytuł zawiera zabronione wyrazy."
+        page:
+          view_live_html: Obejrzyj tę stronę na żywo <br/><em>(zostanie otwarta w nowym oknie)</em>
+          hidden: ukryta
+          draft: szkic
+        form_new_page_parts:
+          title: Tytuł
+        form_page_parts:
+          create_content_section: Dodaj sekcję zawartości
+          delete_content_section: Usuń sekcję zawartości
+        form_advanced_options:
+          toggle_advanced_options: Kliknij aby uzyskać dostęp do zawartości tagów meta oraz opcji menu
+          page_options: Opcje strony
+          parent_page: Strona nadrzędna
+          advanced_options: Opcje zaawansowane
+          custom_title: Inny tytuł
+          title_types:
+            none: Żaden
+            text: Tekst
+          show_in_menu_title: Pokaż w menu
+          show_in_menu_description: Wyświetl tę stronę w menu witryny
+          show_in_menu_help: Odznacz tę kratkę aby usunąć tę stronę z menu witryny. To może być przydatne jeżeli chcesz linkować do tej strony, ale nie chcesz aby była widoczna w menu.
+          save_as_draft: Zapisz jako szkic
+          skip_to_first_child: Pomiń stronę najwyższego poziomu
+          skip_to_first_child_label: Przekieruj odwiedzających do pierwszej strony potomnej.
+          skip_to_first_child_help: Ta opcja sprawia, że ta strona kieruje do pierwszej strony pod nią. To może być przydatne przy grupowaniu stron razem.
+          link_url: Przekieruj tę stronę do innej strony lub witryny
+          link_url_help: Jeżeli chcesz, aby ta strona prowadziła do innej strony lub witryny kiedy klikniesz ją w menu, wpisz tu adres URL, na przykład http://google.com.W innym wypadku pozostaw to pole pustym.
+          parent_page_help: Możesz umieścić tę stronę pod inną wybierając stronę nadrzędną z listy. Jeżeli ta strona ma być stroną najwyższego poziomu pozostaw to pole pustym.
+          custom_title_help: Jeżeli chcesz aby ta strona miała inny tytuł niż ten widoczny w menu wybierz &apos;Tekst&apos; i wpisz go tutaj.
+        actions:
+          create_new_page: Dodaj nową stronę
+          reorder_pages: Zmień kolejność stron
+          reorder_pages_done: Zakończono zmianę kolejności stron
+        records:
+          no_pages_yet: Nie ma jeszcze żadnej strony. Kliknij "Dodaj nową stronę" aby stworzyć pierwszą.
   activerecord:
     models:
       page: strona

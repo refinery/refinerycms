@@ -1,91 +1,92 @@
 it:
-  plugins:
-    refinery_pages:
-      title: Pagine
-      description: Gestione dei contenuti del sito
-  admin:
-    pages_dialogs:
-      page_link:
-        link_to_this_page: Link a questa pagina
-      link_to:
-        insert: Inserire
-        your_page:
-          tab_name: La tua pagina
-        web_address:
-          tab_name: Website
-          location: URL
-          new_window: Nuova finestra
-          new_window_label: Seleziona questa casella per fare in modo che la pagina linkata si apra in una nuova finestra/scheda del browser.
-          not_sure: Se non sei sicuro di cosa sia corretto inserire...
-          step1: Apri la pagina che desideri linkare.
-          step2: "Copia l'URL dalla barra degli indirizzi del browser ed incollalo nella casella."
-        email_address:
-          tab_name: Indirizzo e-mail
-          subject_line_optional: Oggetto del messaggio (facoltativo)
-          body_optional: Testo del messaggio (facoltativo)
-          not_sure: Se non sei sicuro di cosa sia corretto inserire...
-          step1_html: "Inserisci l'indirizzo e-mail da linkare nella casella di testo '<strong>Indirizzo e-mail</strong>'."
-          step2_html: "Utilizzare la casella '<strong>Oggetto del messaggio</strong>' se si desidera che il messaggio abbia un <strong>oggetto predefinito</ strong>."
-          step3_html: "Utilizzare la casella <strong>Testo del messaggio</strong> se si desidera che il messaggio sia composto con un <strong>messaggio predefinito </strong>."
-        your_resource:
-          tab_name: File
-          link_to_this_resource: Link a questo file
-    pages:
-      delete: Eliminare per sempre questa pagina
-      edit: Modificare questa pagina
-      reserved_system_word: "Il titolo è una parola di sistema riservata."
-      page:
-        view_live_html: Visualizza questa pagina<br/><em>(apre una nuova finestra del browser)</em>
-        hidden: nascosto
-        draft: bozza
-      form_new_page_parts:
-        title: Titolo
-      form_page_parts:
-        create_content_section: Aggiungi la sezione dei contenuti
-        delete_content_section: Elimina la sezione dei contenuti
-      form_advanced_options:
-        toggle_advanced_options: Cliccare per accedere alle impostazioni dei meta tags e del menu.
-        page_options: Opzioni avanzate
-        parent_page: Pagina Superiore
-        title: Titolo
-        create_content_section: Crea la sezione dei contenuti
-        delete_content_section: Elimina la sezione dei contenuti
-        advanced_options: Mostra/nascondi opzioni avanzate
-        explain_page_different_title: Se si desidera che la pagina abbia un titolo diverso da quello mostrato nel menu e dal titolo del browser, scriverlo qui.
-        redirect_to_first_child: "Seleziona questa casella se vuoi che il visitatore sia reindirizzato alla prima pagina figlia di questa pagina, se questa pagina è selezionata."
-        parent_id_title: Genitore
-        custom_title: Titolo personalizzato
-        title_types:
-          none: Nessuno
-          text: Testo
-          image: Immagine
-        custom_url: URL personalizzato
-        custom_url_explanation_html: "Inserisci un URL, se desideri che questa pagina sia collegata ad un sito esterno o ad una risorsa preesistente, ad esempio una pagina contatti. <br/> Nota: L'URL inserito dovrà puntare ad una posizione già esistente."
-        show_in_menu_title: Mostra nel menu
-        show_in_menu_description: Seleziona questa casella se si desidera che questa pagina sia visibile nel menu del sito
-        show_in_menu_help: Deselezionare questa casella se si desidera rimuovere una pagina dal menu del sito. Questo può essere utile nel caso si disponga di una pagina a cui ci si può collegare direttamente ma che non si vuole mostrare nel menu.
-        save_as_draft: Salva come bozza
-        skip_to_first_child: Salta alla prima pagina di livello inferiore
-        skip_to_first_child_label: Reindirizza i visitatori verso la prima pagina di livello inferiore.
-        skip_to_first_child_help: Questa opzione rende questo pagina collegata alla prima pagina sotto. Ciò può essere utile quando si raggruppano pagine.
-        link_url: Inoltra questa pagina ad un altro sito o pagina
-        link_url_help: Inserire un URL se si desidera che questa pagina punti ad un altro sito o pagina quando si fa clic sul suo nome nel menu; altrimenti lasciare vuoto
-        parent_page_help: "Si può fare in modo che questa pagina sia figlia di un'altra pagina selezionandola dalla lista; se invece si desidera che questa pagina sia una pagina di primo livello, lasciare in bianco."
-        custom_title_help: "Se si desidera che la pagina abbia un titolo diverso da quello mostrato nel menu, selezionare 'Testo' e inserirlo qui."
-      form_advanced_options_seo:
-        js:
-          content_section:
-            create: Crea sezione dei contenuti
-            already_exists: Una sezione di contenuti con quel titolo e già esistente, si prega di modificarlo.
-            title_empty: Non è stato inserito un titolo per la sezione dei contenuti, inseriscine uno.
-            confirm_delete: Ciò eliminerà la sezione dei contenuti %{section_name} e cancellerà tutti i contenuti che sono stati inseriti al suo interno. Sei sicuro?
-      actions:
-        create_new_page: Crea una nuova pagina
-        reorder_pages: Riordina le pagine
-        reorder_pages_done: Riordino Pagine terminato
-        sorry_no_results: La ricerca non ha prodotto risultati.
-      records:
-        no_pages_yet: Non è stata ancora creata nessuna pagina. Clicca su "Crea nuova pagina" per aggiungere la tua prima pagina.
+  refinery:
+    plugins:
+      refinery_pages:
+        title: Pagine
+        description: Gestione dei contenuti del sito
+    admin:
+      pages_dialogs:
+        page_link:
+          link_to_this_page: Link a questa pagina
+        link_to:
+          insert: Inserire
+          your_page:
+            tab_name: La tua pagina
+          web_address:
+            tab_name: Website
+            location: URL
+            new_window: Nuova finestra
+            new_window_label: Seleziona questa casella per fare in modo che la pagina linkata si apra in una nuova finestra/scheda del browser.
+            not_sure: Se non sei sicuro di cosa sia corretto inserire...
+            step1: Apri la pagina che desideri linkare.
+            step2: "Copia l'URL dalla barra degli indirizzi del browser ed incollalo nella casella."
+          email_address:
+            tab_name: Indirizzo e-mail
+            subject_line_optional: Oggetto del messaggio (facoltativo)
+            body_optional: Testo del messaggio (facoltativo)
+            not_sure: Se non sei sicuro di cosa sia corretto inserire...
+            step1_html: "Inserisci l'indirizzo e-mail da linkare nella casella di testo '<strong>Indirizzo e-mail</strong>'."
+            step2_html: "Utilizzare la casella '<strong>Oggetto del messaggio</strong>' se si desidera che il messaggio abbia un <strong>oggetto predefinito</ strong>."
+            step3_html: "Utilizzare la casella <strong>Testo del messaggio</strong> se si desidera che il messaggio sia composto con un <strong>messaggio predefinito </strong>."
+          your_resource:
+            tab_name: File
+            link_to_this_resource: Link a questo file
+      pages:
+        delete: Eliminare per sempre questa pagina
+        edit: Modificare questa pagina
+        reserved_system_word: "Il titolo è una parola di sistema riservata."
+        page:
+          view_live_html: Visualizza questa pagina<br/><em>(apre una nuova finestra del browser)</em>
+          hidden: nascosto
+          draft: bozza
+        form_new_page_parts:
+          title: Titolo
+        form_page_parts:
+          create_content_section: Aggiungi la sezione dei contenuti
+          delete_content_section: Elimina la sezione dei contenuti
+        form_advanced_options:
+          toggle_advanced_options: Cliccare per accedere alle impostazioni dei meta tags e del menu.
+          page_options: Opzioni avanzate
+          parent_page: Pagina Superiore
+          title: Titolo
+          create_content_section: Crea la sezione dei contenuti
+          delete_content_section: Elimina la sezione dei contenuti
+          advanced_options: Mostra/nascondi opzioni avanzate
+          explain_page_different_title: Se si desidera che la pagina abbia un titolo diverso da quello mostrato nel menu e dal titolo del browser, scriverlo qui.
+          redirect_to_first_child: "Seleziona questa casella se vuoi che il visitatore sia reindirizzato alla prima pagina figlia di questa pagina, se questa pagina è selezionata."
+          parent_id_title: Genitore
+          custom_title: Titolo personalizzato
+          title_types:
+            none: Nessuno
+            text: Testo
+            image: Immagine
+          custom_url: URL personalizzato
+          custom_url_explanation_html: "Inserisci un URL, se desideri che questa pagina sia collegata ad un sito esterno o ad una risorsa preesistente, ad esempio una pagina contatti. <br/> Nota: L'URL inserito dovrà puntare ad una posizione già esistente."
+          show_in_menu_title: Mostra nel menu
+          show_in_menu_description: Seleziona questa casella se si desidera che questa pagina sia visibile nel menu del sito
+          show_in_menu_help: Deselezionare questa casella se si desidera rimuovere una pagina dal menu del sito. Questo può essere utile nel caso si disponga di una pagina a cui ci si può collegare direttamente ma che non si vuole mostrare nel menu.
+          save_as_draft: Salva come bozza
+          skip_to_first_child: Salta alla prima pagina di livello inferiore
+          skip_to_first_child_label: Reindirizza i visitatori verso la prima pagina di livello inferiore.
+          skip_to_first_child_help: Questa opzione rende questo pagina collegata alla prima pagina sotto. Ciò può essere utile quando si raggruppano pagine.
+          link_url: Inoltra questa pagina ad un altro sito o pagina
+          link_url_help: Inserire un URL se si desidera che questa pagina punti ad un altro sito o pagina quando si fa clic sul suo nome nel menu; altrimenti lasciare vuoto
+          parent_page_help: "Si può fare in modo che questa pagina sia figlia di un'altra pagina selezionandola dalla lista; se invece si desidera che questa pagina sia una pagina di primo livello, lasciare in bianco."
+          custom_title_help: "Se si desidera che la pagina abbia un titolo diverso da quello mostrato nel menu, selezionare 'Testo' e inserirlo qui."
+        form_advanced_options_seo:
+          js:
+            content_section:
+              create: Crea sezione dei contenuti
+              already_exists: Una sezione di contenuti con quel titolo e già esistente, si prega di modificarlo.
+              title_empty: Non è stato inserito un titolo per la sezione dei contenuti, inseriscine uno.
+              confirm_delete: Ciò eliminerà la sezione dei contenuti %{section_name} e cancellerà tutti i contenuti che sono stati inseriti al suo interno. Sei sicuro?
+        actions:
+          create_new_page: Crea una nuova pagina
+          reorder_pages: Riordina le pagine
+          reorder_pages_done: Riordino Pagine terminato
+          sorry_no_results: La ricerca non ha prodotto risultati.
+        records:
+          no_pages_yet: Non è stata ancora creata nessuna pagina. Clicca su "Crea nuova pagina" per aggiungere la tua prima pagina.
   activerecord:
     attributes:
       page:

@@ -1,99 +1,81 @@
 ru:
-  plugins:
-    refinery_pages:
-      title: Страницы
-      article: feminine
-      description: Управление страницами с содежимым
-  activerecord:
-    models:
-      page: страница
-    attributes:
-      page:
-        title: Заголовок
-  admin:
-    dashboard:
-      recent_activity:
-        empty: Пустой
-    pages_dialogs:
-      page_link:
-        link_to_this_page: Ссылка на эту страницу
-      link_to:
-        insert: Вставить
-        your_page:
-          tab_name: Ваша страница
-        web_address:
-          tab_name: Сайт
-          location: Адрес
-          new_window: Новое окно
-          new_window_label: Открывать ссылку в новом окне
-          not_sure: "Не уверены, что ввести в поле выше?"
-          step1: "Найдите страницу, на которую хотите поставить ссылку."
-          step2: "Скопируйте адрес из адресной строки браузера и вставьте его в поле выше"
-        email_address:
-          tab_name: Эл. почта
-          subject_line_optional: Тема (необязательно)
-          body_optional: Сообщение (необязательно)
-          not_sure: "Не уверены, что ввести в поля выше?"
-          step1_html: "Впишите или скопируйте и вставьте (например, из вашей адресной книги) адрес электронной почты, на который хотите поставить ссылку, в поле <strong>«Эл. почта»</strong>"
-          step2_html: "Используйте поле <strong>«Тема»</strong>, если хотите, чтобы в сообщении была автоматически заполнена тема письма"
-          step3_html: "Используйте поле <strong>«Сообщение»</strong>, если хотите, чтобы в сообщении была автоматически заполнено содержание письма"
-        your_resource:
-          tab_name: Ваш файл
-          link_to_this_resource: Ссылка на этот файл
-    pages:
-      delete: Удалить эту страницу навсегда
-      edit: Редактировать эту страницу
-      page:
-        view_live_html: Показать эту страницу вживую <br/><em>(откроется в новом окне)</em>
-        hidden: скрытая
-        draft: черновик
-      form_new_page_parts:
-        title: Заголовок
-      form_page_parts:
-        create_content_section: Добавить колонку
-        delete_content_section: Удалить колонку
-      form_advanced_options:
-        toggle_advanced_options: Настройка мета-тегов, меню и др.
-        page_options: Настройка страницы
-        parent_page: Родительская страница
-        advanced_options: Дополнительная настройка
-        custom_title: Другой заголовок
-        title_types:
-          none: Нет
-          text: Текст
-        show_in_menu_title: Показ в меню
-        show_in_menu_description: Отображать эту страницу в меню сайта
-        show_in_menu_help: "Снимите отметку, если вы хотите убрать страницу из меню вашего сайта."
-        save_as_draft: Сохранить как черновик
-        skip_to_first_child: Пропуск страницы верхнего уровня
-        skip_to_first_child_label: Перенаправлять посетителей на первую страницу нижнего уровня
-        skip_to_first_child_help: "Эта опция делает страницу связаннной с первой подстраницей. Это может быть полезно при группировке страниц."
-        link_url: Переадресовывать на другой сайт или страницу
-        link_url_help: "Если вы хотите, чтобы при переходе на эту страницу пользователь переадресовывался на другой сайт или страницу, введите адрес, например, http://google.com, иначе оставьте поле пустым"
-        parent_page_help: "Вы можете поместить эту страницу под другую, выбрав ее в списке. Если вы хотите, чтобы эта страница была самого верхнего уровня, оставьте выбранное пустым"
-        custom_title_help: "Если вы хотите, чтобы страница имела заголовок, отличный от того, что в меню или в заголовке браузера, выберите «Текст» и введите его здесь."
-      actions:
-        create_new_page: Создать новую страницу
-        reorder_pages: Изменить порядок страниц
-        reorder_pages_done: Сохранить такой порядок страниц
-      records:
-        no_pages_yet: Страниц ещё нет.
-      reserved_system_word: Защищены системой слова
-    settings:
-      form:
-        enabled: Включено
-    users:
-      form:
-        plugin_access: Доступ к модулю
-        role_access: Роль доступа
-  user_mailer:
-    reset_notification:
-      reset_request_received_for: Запрос включать повторно получен для
-      visit_this_url: Посетите этот URL
-      remain_same_if_no_action: Остаются неизменными если никаких действий
   refinery:
-    no_script:
-      enable_javascript: Включите JavaScript
-      here_are: Вот
-      instructions_enable_javascript: Чтобы включить JavaScript
-
+    plugins:
+      refinery_pages:
+        title: Страницы
+        article: feminine
+        description: Управление страницами с содежимым
+    activerecord:
+      models:
+        page: страница
+      attributes:
+        page:
+          title: Заголовок
+    admin:
+      dashboard:
+        recent_activity:
+          empty: Пустой
+      pages_dialogs:
+        page_link:
+          link_to_this_page: Ссылка на эту страницу
+        link_to:
+          insert: Вставить
+          your_page:
+            tab_name: Ваша страница
+          web_address:
+            tab_name: Сайт
+            location: Адрес
+            new_window: Новое окно
+            new_window_label: Открывать ссылку в новом окне
+            not_sure: "Не уверены, что ввести в поле выше?"
+            step1: "Найдите страницу, на которую хотите поставить ссылку."
+            step2: "Скопируйте адрес из адресной строки браузера и вставьте его в поле выше"
+          email_address:
+            tab_name: Эл. почта
+            subject_line_optional: Тема (необязательно)
+            body_optional: Сообщение (необязательно)
+            not_sure: "Не уверены, что ввести в поля выше?"
+            step1_html: "Впишите или скопируйте и вставьте (например, из вашей адресной книги) адрес электронной почты, на который хотите поставить ссылку, в поле <strong>«Эл. почта»</strong>"
+            step2_html: "Используйте поле <strong>«Тема»</strong>, если хотите, чтобы в сообщении была автоматически заполнена тема письма"
+            step3_html: "Используйте поле <strong>«Сообщение»</strong>, если хотите, чтобы в сообщении была автоматически заполнено содержание письма"
+          your_resource:
+            tab_name: Ваш файл
+            link_to_this_resource: Ссылка на этот файл
+      pages:
+        delete: Удалить эту страницу навсегда
+        edit: Редактировать эту страницу
+        page:
+          view_live_html: Показать эту страницу вживую <br/><em>(откроется в новом окне)</em>
+          hidden: скрытая
+          draft: черновик
+        form_new_page_parts:
+          title: Заголовок
+        form_page_parts:
+          create_content_section: Добавить колонку
+          delete_content_section: Удалить колонку
+        form_advanced_options:
+          toggle_advanced_options: Настройка мета-тегов, меню и др.
+          page_options: Настройка страницы
+          parent_page: Родительская страница
+          advanced_options: Дополнительная настройка
+          custom_title: Другой заголовок
+          title_types:
+            none: Нет
+            text: Текст
+          show_in_menu_title: Показ в меню
+          show_in_menu_description: Отображать эту страницу в меню сайта
+          show_in_menu_help: "Снимите отметку, если вы хотите убрать страницу из меню вашего сайта."
+          save_as_draft: Сохранить как черновик
+          skip_to_first_child: Пропуск страницы верхнего уровня
+          skip_to_first_child_label: Перенаправлять посетителей на первую страницу нижнего уровня
+          skip_to_first_child_help: "Эта опция делает страницу связаннной с первой подстраницей. Это может быть полезно при группировке страниц."
+          link_url: Переадресовывать на другой сайт или страницу
+          link_url_help: "Если вы хотите, чтобы при переходе на эту страницу пользователь переадресовывался на другой сайт или страницу, введите адрес, например, http://google.com, иначе оставьте поле пустым"
+          parent_page_help: "Вы можете поместить эту страницу под другую, выбрав ее в списке. Если вы хотите, чтобы эта страница была самого верхнего уровня, оставьте выбранное пустым"
+          custom_title_help: "Если вы хотите, чтобы страница имела заголовок, отличный от того, что в меню или в заголовке браузера, выберите «Текст» и введите его здесь."
+        actions:
+          create_new_page: Создать новую страницу
+          reorder_pages: Изменить порядок страниц
+          reorder_pages_done: Сохранить такой порядок страниц
+        records:
+          no_pages_yet: Страниц ещё нет.

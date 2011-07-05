@@ -1,74 +1,75 @@
 sk:
-  plugins:
-    refinery_pages:
-      title: Stránky
-      description: Spravovať obsahové stránky
-  admin:
-    pages_dialogs:
-      page_link:
-        link_to_this_page: Odkaz na túto stránku
-      link_to:
-        insert: Vložiť
-        your_page:
-          tab_name: Vaša stránka
-        web_address:
-          tab_name: Web
-          location: Umiestnenie
-          new_window: Nové okno
-          new_window_label: Zaškrtnite ak chcete odkaz otvoriť v novom okne prehliadača.
-          not_sure: Nie ste si istí čo zadať do tohto poľa?
-          step1: Nájdite na webe stránku na ktorú chcete odkázať.
-          step2: Skopírujte adresu z adresného riadku vášho prehliadača a vložte jej to tohto poľa.
-        email_address:
-          tab_name: Emailová adresa
-          subject_line_optional: Voliteľný predmet
-          body_optional: Voliteľný obsah správy
-          not_sure: Nie ste si istí čo zadať do týchto polí?
-          step1_html: Napíšte, alebo skopírujte a vložte (napr. z vášho zoznamu kontaktov) emailovú adresu do poľa '<strong>Emailová adresa</strong>'.
-          step2_html: Použite '<strong>Voliteľný predmet</ strong>' ak chcete aby emailová správa obsahovala <strong>preddefinovaný predmet</strong>.
-          step3_html: Použite '<strong>Voliteľný obsah správy</strong>' ak chcete aby mailová správa obsahovala <strong>preddefinovaný obsah správy</strong>.
-        your_resource:
-          tab_name: Váš súbor
-          link_to_this_resource: Odkaz na tento súbor
-    pages:
-      delete: Zmazať túto stránku
-      edit: Upraviť túto stránku
-      reserved_system_word: "Prepáčte, ale tento titulok je rezervované systémové slovo."
-      page:
-        view_live_html: Zobraziť stránku <br/><em>(otvorí sa v novom okne)</em>
-        hidden: skrytá
-        draft: pracovná verzia
-      form_new_page_parts:
-        title: Názov
-      form_page_parts:
-        create_content_section: Pridať sekciu
-        delete_content_section: Zmazať sekciu
-      form_advanced_options:
-        toggle_advanced_options: Sprístupní nastavenia menu a meta tagov.
-        page_options: Nastavenie stránky
-        parent_page: Nadradená stránka
-        advanced_options: Rozšírené nastavenia
-        custom_title: Titulok
-        title_types:
-          none: Žiadny
-          text: Text
-        show_in_menu_title: Zobraziť v menu
-        show_in_menu_description: Zobraziť túto stránku v menu webu
-        show_in_menu_help: Odznačte ak chcete odstrániť odkaz na túto stránku z menu webu. Toto je užitočné ak máte stránku, na ktorú chcete mať priamy odkaz, ale nechcete zobrazovať stránku v menu.
-        save_as_draft: Uložiť ako pracovnú verziu
-        skip_to_first_child: Prejsť na prvú  podstránku 
-        skip_to_first_child_label: Presmeruje návštevníka na prvú podstránku sekcie.
-        skip_to_first_child_help: Táto stránka sa nezobrazí, namiesto toho bude odkaz na nej presmerovaný na jej prvú podstránku. To sa môže hodiť pre zoskupovanie stránok.
-        link_url: Presmerovať túto stránku na iný web alebo stránku. 
-        link_url_help: Ak chcete, aby po kliknutí na odkaz na tútu stránku bol návštevník presmerovaný na iný web, vložte adresu (napr. http://google.com), inak ponechajte prázdne.
-        parent_page_help: Môžete umiestniť túto stránku v hierarchii pod inú stránku. Ak nevyberiete nič, bude táto stránka umiestnená na prvej úrovni.
-        custom_title_help: Ak chcete aby stránka mala iný titulok než ten ktorý sa zobrazuje v menu vyberte &apos;Text&apos; a vložte ho tu.
-      actions:
-        create_new_page: Pridať novú stránku
-        reorder_pages: Zmeniť usporiadanie stránok
-        reorder_pages_done: Uložiť usporiadanie
-      records:
-        no_pages_yet: Zatiaľ neboli vytvorené žiadne stránky. Kliknite na "Pridať novú stránku" pre pridanie prvej.
+  refinery:
+    plugins:
+      refinery_pages:
+        title: Stránky
+        description: Spravovať obsahové stránky
+    admin:
+      pages_dialogs:
+        page_link:
+          link_to_this_page: Odkaz na túto stránku
+        link_to:
+          insert: Vložiť
+          your_page:
+            tab_name: Vaša stránka
+          web_address:
+            tab_name: Web
+            location: Umiestnenie
+            new_window: Nové okno
+            new_window_label: Zaškrtnite ak chcete odkaz otvoriť v novom okne prehliadača.
+            not_sure: Nie ste si istí čo zadať do tohto poľa?
+            step1: Nájdite na webe stránku na ktorú chcete odkázať.
+            step2: Skopírujte adresu z adresného riadku vášho prehliadača a vložte jej to tohto poľa.
+          email_address:
+            tab_name: Emailová adresa
+            subject_line_optional: Voliteľný predmet
+            body_optional: Voliteľný obsah správy
+            not_sure: Nie ste si istí čo zadať do týchto polí?
+            step1_html: Napíšte, alebo skopírujte a vložte (napr. z vášho zoznamu kontaktov) emailovú adresu do poľa '<strong>Emailová adresa</strong>'.
+            step2_html: Použite '<strong>Voliteľný predmet</ strong>' ak chcete aby emailová správa obsahovala <strong>preddefinovaný predmet</strong>.
+            step3_html: Použite '<strong>Voliteľný obsah správy</strong>' ak chcete aby mailová správa obsahovala <strong>preddefinovaný obsah správy</strong>.
+          your_resource:
+            tab_name: Váš súbor
+            link_to_this_resource: Odkaz na tento súbor
+      pages:
+        delete: Zmazať túto stránku
+        edit: Upraviť túto stránku
+        reserved_system_word: "Prepáčte, ale tento titulok je rezervované systémové slovo."
+        page:
+          view_live_html: Zobraziť stránku <br/><em>(otvorí sa v novom okne)</em>
+          hidden: skrytá
+          draft: pracovná verzia
+        form_new_page_parts:
+          title: Názov
+        form_page_parts:
+          create_content_section: Pridať sekciu
+          delete_content_section: Zmazať sekciu
+        form_advanced_options:
+          toggle_advanced_options: Sprístupní nastavenia menu a meta tagov.
+          page_options: Nastavenie stránky
+          parent_page: Nadradená stránka
+          advanced_options: Rozšírené nastavenia
+          custom_title: Titulok
+          title_types:
+            none: Žiadny
+            text: Text
+          show_in_menu_title: Zobraziť v menu
+          show_in_menu_description: Zobraziť túto stránku v menu webu
+          show_in_menu_help: Odznačte ak chcete odstrániť odkaz na túto stránku z menu webu. Toto je užitočné ak máte stránku, na ktorú chcete mať priamy odkaz, ale nechcete zobrazovať stránku v menu.
+          save_as_draft: Uložiť ako pracovnú verziu
+          skip_to_first_child: Prejsť na prvú  podstránku
+          skip_to_first_child_label: Presmeruje návštevníka na prvú podstránku sekcie.
+          skip_to_first_child_help: Táto stránka sa nezobrazí, namiesto toho bude odkaz na nej presmerovaný na jej prvú podstránku. To sa môže hodiť pre zoskupovanie stránok.
+          link_url: Presmerovať túto stránku na iný web alebo stránku.
+          link_url_help: Ak chcete, aby po kliknutí na odkaz na tútu stránku bol návštevník presmerovaný na iný web, vložte adresu (napr. http://google.com), inak ponechajte prázdne.
+          parent_page_help: Môžete umiestniť túto stránku v hierarchii pod inú stránku. Ak nevyberiete nič, bude táto stránka umiestnená na prvej úrovni.
+          custom_title_help: Ak chcete aby stránka mala iný titulok než ten ktorý sa zobrazuje v menu vyberte &apos;Text&apos; a vložte ho tu.
+        actions:
+          create_new_page: Pridať novú stránku
+          reorder_pages: Zmeniť usporiadanie stránok
+          reorder_pages_done: Uložiť usporiadanie
+        records:
+          no_pages_yet: Zatiaľ neboli vytvorené žiadne stránky. Kliknite na "Pridať novú stránku" pre pridanie prvej.
   activerecord:
     models:
       page: stránka

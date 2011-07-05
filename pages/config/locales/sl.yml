@@ -1,73 +1,74 @@
 sl:
-  plugins:
-    refinery_pages:
-      title: Strani
-  admin:
-    pages_dialogs:
-      page_link:
-        link_to_this_page: Naredi povezavo do te strani
-      link_to:
-        insert: Vstavi
-        your_page:
-          tab_name: Stran
-        web_address:
-          tab_name: Spletna stran
-          location: Lokacija
-          new_window: Novo okno
-          new_window_label: Obkljukajte tukaj, če želite da se povezava odpre v novem oknu.
-          not_sure: Niste prepričani kaj vnesti v zgornje okno?
-          step1: Poiščite stran na spletu na katero želite da kaže povezava.
-          step2: "Prekopirajte spletni naslov iz naslovne vrstice vašega brskalnika in jo prilepite v zgornje okno."
-        email_address:
-          tab_name: Email naslov
-          subject_line_optional: Opcijska zadeva
-          body_optional: Opcijsko telo
-          not_sure: Niste prepričani kaj vnesti v zgornja okna?
-          step1_html: "Vnesite ali kopirajte ter prilepite (npr. iz vašega imenika) email naslov, ki ga želite kot '<strong>Email Naslov</strong>' v zgornjem oknu."
-          step2_html: "Uporabite '<strong>Zadeva</strong>' v zgornjem oknu, če želite nova sporočila s <strong>predhodno nastavljeno zadevo</strong>."
-          step3_html: "Uporabite <strong>Email Telo</strong> v zgornjem oknu, če želite novo sporočilo s <strong>predhodno nastavljenim sporočilom</strong>."
-        your_resource:
-          tab_name: Vir
-          link_to_this_resource: Povezava do tega vira
-    pages:
-      delete: Odstrani stran
-      edit: Uredi stran
-      reserved_system_word: Oprostite, vendar je ta naslov rezervirana sistemska beseda.
-      page:
-        view_live_html: Poglej si to stran v živo <br/><em>(odpre se v novem oknu)</em>
-        hidden: skrito
-        draft: osnutek
-      form_new_page_parts:
-        title: Naslov
-      form_page_parts:
-        create_content_section: Ustvari vsebinski sklop
-        delete_content_section: Odstrani vsebinski sklop
-      form_advanced_options:
-        toggle_advanced_options: Klinite za dostop do nastavitev meta značk in opcij menija
-        page_options: Možnosti Strani
-        parent_page: Matična stran
-        advanced_options: Napredne Možnosti
-        custom_title: Naslov po meri
-        title_types:
-          none: Brez
-          text: Tekst
-        show_in_menu_title: Prikaži v meniju
-        show_in_menu_description: Obkljukajte, če želite da se stran pojavi v glavnem meniju.
-        show_in_menu_help: "Odkljukate, če želite da se stran ne prikaže v glavnem meniju. To je lahko zelo priročno, če imate stran za katero želite da se uporabniki povežejo neposredno vendar ne želite da prikaže v glavnem meniju."
-        save_as_draft: Shrani kot Osnutek
-        skip_to_first_child: Preskoči na prvo podstran
-        skip_to_first_child_label: Preusmeri obiskovalce na prvo podstran.
-        skip_to_first_child_help: "Ta opcija poveže to stran s prvo podstranjo. To je lahko priročno pri združevanju strani."
-        link_url: "Preusmeri to stran na drugo spletno stran ali stran"
-        link_url_help: "Če želite da stran kaže na drugo spletno stran ali stran, ko boste kliknili na njo v meniju, vnesite URL naslov npr. http://google.com v nasprotnem primeru pustite prazno."
-        parent_page_help: "Stran lahko postavite pod neko drugo, tako da jo izberite iz seznama. Če želite da je ta stran na najvišjem nivoju, pustite prazno."
-        custom_title_help: "Če želite da ima stran drugačen naslov od tistega, ki se prikaže v meniju potem izberite &apos;Tekst&apos; in ga vnesite tukaj."
-      actions:
-        create_new_page: Dodaj novo stran
-        reorder_pages: Spremeni vrstni red Strani
-        reorder_pages_done: Končaj s prerazporeditvijo Strani
-      records:
-        no_pages_yet: Trenutno še ni nobene strani. Za dodajanje prve strani kliknite "Dodaj novo stran".
+  refinery:
+    plugins:
+      refinery_pages:
+        title: Strani
+    admin:
+      pages_dialogs:
+        page_link:
+          link_to_this_page: Naredi povezavo do te strani
+        link_to:
+          insert: Vstavi
+          your_page:
+            tab_name: Stran
+          web_address:
+            tab_name: Spletna stran
+            location: Lokacija
+            new_window: Novo okno
+            new_window_label: Obkljukajte tukaj, če želite da se povezava odpre v novem oknu.
+            not_sure: Niste prepričani kaj vnesti v zgornje okno?
+            step1: Poiščite stran na spletu na katero želite da kaže povezava.
+            step2: "Prekopirajte spletni naslov iz naslovne vrstice vašega brskalnika in jo prilepite v zgornje okno."
+          email_address:
+            tab_name: Email naslov
+            subject_line_optional: Opcijska zadeva
+            body_optional: Opcijsko telo
+            not_sure: Niste prepričani kaj vnesti v zgornja okna?
+            step1_html: "Vnesite ali kopirajte ter prilepite (npr. iz vašega imenika) email naslov, ki ga želite kot '<strong>Email Naslov</strong>' v zgornjem oknu."
+            step2_html: "Uporabite '<strong>Zadeva</strong>' v zgornjem oknu, če želite nova sporočila s <strong>predhodno nastavljeno zadevo</strong>."
+            step3_html: "Uporabite <strong>Email Telo</strong> v zgornjem oknu, če želite novo sporočilo s <strong>predhodno nastavljenim sporočilom</strong>."
+          your_resource:
+            tab_name: Vir
+            link_to_this_resource: Povezava do tega vira
+      pages:
+        delete: Odstrani stran
+        edit: Uredi stran
+        reserved_system_word: Oprostite, vendar je ta naslov rezervirana sistemska beseda.
+        page:
+          view_live_html: Poglej si to stran v živo <br/><em>(odpre se v novem oknu)</em>
+          hidden: skrito
+          draft: osnutek
+        form_new_page_parts:
+          title: Naslov
+        form_page_parts:
+          create_content_section: Ustvari vsebinski sklop
+          delete_content_section: Odstrani vsebinski sklop
+        form_advanced_options:
+          toggle_advanced_options: Klinite za dostop do nastavitev meta značk in opcij menija
+          page_options: Možnosti Strani
+          parent_page: Matična stran
+          advanced_options: Napredne Možnosti
+          custom_title: Naslov po meri
+          title_types:
+            none: Brez
+            text: Tekst
+          show_in_menu_title: Prikaži v meniju
+          show_in_menu_description: Obkljukajte, če želite da se stran pojavi v glavnem meniju.
+          show_in_menu_help: "Odkljukate, če želite da se stran ne prikaže v glavnem meniju. To je lahko zelo priročno, če imate stran za katero želite da se uporabniki povežejo neposredno vendar ne želite da prikaže v glavnem meniju."
+          save_as_draft: Shrani kot Osnutek
+          skip_to_first_child: Preskoči na prvo podstran
+          skip_to_first_child_label: Preusmeri obiskovalce na prvo podstran.
+          skip_to_first_child_help: "Ta opcija poveže to stran s prvo podstranjo. To je lahko priročno pri združevanju strani."
+          link_url: "Preusmeri to stran na drugo spletno stran ali stran"
+          link_url_help: "Če želite da stran kaže na drugo spletno stran ali stran, ko boste kliknili na njo v meniju, vnesite URL naslov npr. http://google.com v nasprotnem primeru pustite prazno."
+          parent_page_help: "Stran lahko postavite pod neko drugo, tako da jo izberite iz seznama. Če želite da je ta stran na najvišjem nivoju, pustite prazno."
+          custom_title_help: "Če želite da ima stran drugačen naslov od tistega, ki se prikaže v meniju potem izberite &apos;Tekst&apos; in ga vnesite tukaj."
+        actions:
+          create_new_page: Dodaj novo stran
+          reorder_pages: Spremeni vrstni red Strani
+          reorder_pages_done: Končaj s prerazporeditvijo Strani
+        records:
+          no_pages_yet: Trenutno še ni nobene strani. Za dodajanje prve strani kliknite "Dodaj novo stran".
   activerecord:
     models:
       page: stran

@@ -1,74 +1,75 @@
 sv:
-  plugins:
-    refinery_pages:
-      title: Sidor
-      description: Hantera sidor och dess innehåll
-  admin:
-    pages_dialogs:
-      page_link:
-        link_to_this_page: Länk till den här sidan
-      link_to:
-        insert: Lägg in
-        your_page:
-          tab_name: Din sida
-        web_address:
-          tab_name: Webbplats
-          location: Plats
-          new_window: Nytt fönster
-          new_window_label: Markera den här rutan om du vill att länken öppnar i ett nytt fönster.
-          not_sure: Inte säker på vad du ska skriva i rutan ovanför?
-          step1: Hitta sidan på nätet som du vill länka till.
-          step2: Kopiera adressen från adressfältet i din webbläsare. Klistra sedan in i rutan ovanför.
-        email_address:
-          tab_name: E-postadress
-          subject_line_optional: Valfritt ämne
-          body_optional: Valfritt innehåll
-          not_sure: Inte säker på vad du ska skriva i rutan ovanför?
-          step1_html: Skriv eller kopiera och klistra in (tex. från din adressbok) den e-postadress i '<strong>E-postadress</strong>'-fältet ovanför.
-          step2_html: Använd '<strong>Ämne</strong>'-rutan ovanför om du vill att meddelandet ska skrivas med en <strong>fördefinerad ämnesrad</strong>.
-          step3_html: Använd <strong>Innehåll</strong>-rutan ovanför om du vill att meddelandet ska skrivas med ett<strong>fördefinerat innehåll</strong>.
-        your_resource:
-          tab_name: Din fil
-          link_to_this_resource: Länk till den här filen
-    pages:
-      delete: Ta bort den här sidan för alltid
-      edit: Redigera den här sidan
-      reserved_system_word: Tyvärr är titlen ett reserverat ord i systemet
-      page:
-        view_live_html: Visa den här sidan live <br/><em>(öppnas i ett nytt fönster)</em>
-        hidden: dold
-        draft: utkast
-      form_new_page_parts:
-        title: Titel
-      form_page_parts:
-        create_content_section: Lägg till ny innehållssektion
-        delete_content_section: Ta bort innehållssektion
-      form_advanced_options:
-        toggle_advanced_options: Klicka för att få tillgång till meta-taggar och menyval
-        page_options: Sidalternativ
-        parent_page: Ovanliggande sida
-        advanced_options: Avancerade alternativ
-        custom_title: Annan titel
-        title_types:
-          none: Ingen
-          text: Text
-        show_in_menu_title: Visa i huvudmeny
-        show_in_menu_description: Visa den här sidan i huvudmeny
-        show_in_menu_help: Avmarkera den här rutan om du vill ta bort en sida från huvudmeny. Det här är användbart för de sidor du vill man ska komma till på annat vis än genom huvudmeny. Tex genom länkar.
-        save_as_draft: Spara som Utkast
-        skip_to_first_child: Sida som hoppar över topp-nivå
-        skip_to_first_child_label: Vidarebefodrar besökare till den första undersidan.
-        skip_to_first_child_help: Det här alternativet vidarebefodrar besökaren till den första undersidan. Detta alternativ kan vara användbart vid gruppering av sidor.
-        link_url: Vidarebefodra från den här sidan till en annan sida eller webbplats
-        link_url_help: Om du vill att den här sidan vidarebefodrar till en annan sida när du väljer den i menyn, fyll i en URL. Tex. http://www.google.com/. Annars lämna tom.
-        parent_page_help: Du kan låta sidor bli undersidor till varandra. Om du vill att den här sidan ska vara en toppnivåsida, lämna tom.
-        custom_title_help: Om du vill att sidan har en annan huvudrubrik än den som visas i menyn, välj Text, och fyll i här.
-      actions:
-        create_new_page: Lägg till en ny sida
-        reorder_pages: Ändra ordning på sidor
-        reorder_pages_done: Spara ny ordning på sidor
-      records:
-        no_pages_yet: Det finns inga sidor ännu. Klicka på "Lägg till en ny sida" för att skapa din första sida.
+  refinery:
+    plugins:
+      refinery_pages:
+        title: Sidor
+        description: Hantera sidor och dess innehåll
+    admin:
+      pages_dialogs:
+        page_link:
+          link_to_this_page: Länk till den här sidan
+        link_to:
+          insert: Lägg in
+          your_page:
+            tab_name: Din sida
+          web_address:
+            tab_name: Webbplats
+            location: Plats
+            new_window: Nytt fönster
+            new_window_label: Markera den här rutan om du vill att länken öppnar i ett nytt fönster.
+            not_sure: Inte säker på vad du ska skriva i rutan ovanför?
+            step1: Hitta sidan på nätet som du vill länka till.
+            step2: Kopiera adressen från adressfältet i din webbläsare. Klistra sedan in i rutan ovanför.
+          email_address:
+            tab_name: E-postadress
+            subject_line_optional: Valfritt ämne
+            body_optional: Valfritt innehåll
+            not_sure: Inte säker på vad du ska skriva i rutan ovanför?
+            step1_html: Skriv eller kopiera och klistra in (tex. från din adressbok) den e-postadress i '<strong>E-postadress</strong>'-fältet ovanför.
+            step2_html: Använd '<strong>Ämne</strong>'-rutan ovanför om du vill att meddelandet ska skrivas med en <strong>fördefinerad ämnesrad</strong>.
+            step3_html: Använd <strong>Innehåll</strong>-rutan ovanför om du vill att meddelandet ska skrivas med ett<strong>fördefinerat innehåll</strong>.
+          your_resource:
+            tab_name: Din fil
+            link_to_this_resource: Länk till den här filen
+      pages:
+        delete: Ta bort den här sidan för alltid
+        edit: Redigera den här sidan
+        reserved_system_word: Tyvärr är titlen ett reserverat ord i systemet
+        page:
+          view_live_html: Visa den här sidan live <br/><em>(öppnas i ett nytt fönster)</em>
+          hidden: dold
+          draft: utkast
+        form_new_page_parts:
+          title: Titel
+        form_page_parts:
+          create_content_section: Lägg till ny innehållssektion
+          delete_content_section: Ta bort innehållssektion
+        form_advanced_options:
+          toggle_advanced_options: Klicka för att få tillgång till meta-taggar och menyval
+          page_options: Sidalternativ
+          parent_page: Ovanliggande sida
+          advanced_options: Avancerade alternativ
+          custom_title: Annan titel
+          title_types:
+            none: Ingen
+            text: Text
+          show_in_menu_title: Visa i huvudmeny
+          show_in_menu_description: Visa den här sidan i huvudmeny
+          show_in_menu_help: Avmarkera den här rutan om du vill ta bort en sida från huvudmeny. Det här är användbart för de sidor du vill man ska komma till på annat vis än genom huvudmeny. Tex genom länkar.
+          save_as_draft: Spara som Utkast
+          skip_to_first_child: Sida som hoppar över topp-nivå
+          skip_to_first_child_label: Vidarebefodrar besökare till den första undersidan.
+          skip_to_first_child_help: Det här alternativet vidarebefodrar besökaren till den första undersidan. Detta alternativ kan vara användbart vid gruppering av sidor.
+          link_url: Vidarebefodra från den här sidan till en annan sida eller webbplats
+          link_url_help: Om du vill att den här sidan vidarebefodrar till en annan sida när du väljer den i menyn, fyll i en URL. Tex. http://www.google.com/. Annars lämna tom.
+          parent_page_help: Du kan låta sidor bli undersidor till varandra. Om du vill att den här sidan ska vara en toppnivåsida, lämna tom.
+          custom_title_help: Om du vill att sidan har en annan huvudrubrik än den som visas i menyn, välj Text, och fyll i här.
+        actions:
+          create_new_page: Lägg till en ny sida
+          reorder_pages: Ändra ordning på sidor
+          reorder_pages_done: Spara ny ordning på sidor
+        records:
+          no_pages_yet: Det finns inga sidor ännu. Klicka på "Lägg till en ny sida" för att skapa din första sida.
   activerecord:
     models:
       page: sida

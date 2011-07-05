@@ -1,74 +1,75 @@
 de:
-  plugins:
-    refinery_pages:
-      title: Seiten
-      description: Verwaltet Inhaltsseiten
-  admin:
-    pages_dialogs:
-      page_link:
-        link_to_this_page: Link zu dieser Seite
-      link_to:
-        insert: Einfügen
-        your_page:
-          tab_name: Ihre Seite
-        web_address:
-          tab_name: Webseite
-          location: Zieladresse
-          new_window: Neues Fenster
-          new_window_label: Setzen Sie dieses Häkchen, damit sich der Link in einem neuen Browserfenster öffnet.
-          not_sure: Nicht sicher, was Sie in das obrige Feld eingeben sollen?
-          step1: Finden Sie die Seite im Web, die Sie verlinken möchten.
-          step2: Kopieren Sie die Adresse aus der Adressleiste ihres Browsers und fügen Sie diese in das Feld oben ein.
-        email_address:
-          tab_name: E-Mail-Adresse
-          subject_line_optional: Optionaler Betreff
-          body_optional: Optionaler Inhaltstext
-          not_sure: Nicht sicher, was in Felder oben rein soll?
-          step1_html: Schreiben oder kopieren Sie die E-Mail-Adresse (z.B. aus Ihrem Adressbuch), die verlinkt werden soll, in das obrige Feld <strong>E-Mail-Adresse</strong>.
-          step2_html: Verwenden Sie das Feld '<strong>Optionaler Betreff</strong>', wenn der Betreff schon <strong>vorher mit einer Zeile verfasst</strong> werden soll.
-          step3_html: Verwenden Sie das Feld '<strong>Optionaler Inhaltstext</strong>', wenn die E-Mail bereits <strong>mit einem Text verfasst</strong> werden soll.
-        your_resource:
-          tab_name: Ihre Datei
-          link_to_this_resource: Link zu dieser Datei
-    pages:
-      delete: Diese Seite dauerhaft entfernen
-      edit: Diese Seite bearbeiten
-      reserved_system_word: Tut mir leid, aber dieser Titel ist ein reserviertes Wort des Systems.
-      page:
-        view_live_html: Diese Seite live betrachten <br/><em>(öffnet sich in einem neuen Fenster)</em>
-        hidden: Versteckt
-        draft: Entwurf
-      form_new_page_parts:
-        title: Titel
-      form_page_parts:
-        create_content_section: Inhaltsabschnitt anlegen
-        delete_content_section: Inhaltsabschnitt löschen
-      form_advanced_options:
-        toggle_advanced_options: Klicken Sie hier, für die Meta-Tag-Einstellungen und Menüoptionen
-        page_options: Seitenoptionen
-        parent_page: Übergeordnete Seite
-        advanced_options: Erweiterte Optionen
-        custom_title: Angepasster Titel
-        title_types:
-          none: Keinen
-          text: Text
-        show_in_menu_title: Im Menü anzeigen
-        show_in_menu_description: Zeigt diese Seite im Seitenmenü an
-        show_in_menu_help: Entfernen Sie dieses Häckchen, wenn die Seite nicht im Menü erscheinen soll. Dies kann nützlich sein, wenn Sie eine Seite direkt verlinken jedoch nicht im Menü anzeigen lassen möchten.
-        save_as_draft: Als Entwurf speichern
-        skip_to_first_child: Überspringen der obersten Ebene
-        skip_to_first_child_label: Auf erste untergeordnete Seite weiterleiten
-        skip_to_first_child_help: Diese Option verlinkt die Seite zu der ersten untergeordneten Seite. Dies kann nützlich sein, wenn Seiten gruppiert werden sollen.
-        link_url: Diese Seite auf eine andere Seite weiterleiten
-        link_url_help: Wenn diese Seite zu einer anderen Seite weitergeleitet werden soll, geben Sie hier eine Adresse an, sonst lassen Sie dieses Feld leer.
-        parent_page_help: Sie können eine Seite einer anderen unterordnen, indem Sie diese aus der Liste wählen. Soll die Seite auf die oberste Ebene, lassen Sie dieses Feld leer.
-        custom_title_help: Wenn die Seite einen anderen Titel haben soll, als der im Menü angezeigte, so wählen Sie 'Text' und geben Sie ihn hier ein.
-      actions:
-        create_new_page: Neue Seite anlegen
-        reorder_pages: Seiten umsortieren
-        reorder_pages_done: Umsortieren erledigt
-      records:
-        no_pages_yet: Es sind noch keine Seiten vorhanden. Klicken Sie auf "Neue Seite anlegen", um Ihre erste Seite zu erstellen.
+  refinery:
+    plugins:
+      refinery_pages:
+        title: Seiten
+        description: Verwaltet Inhaltsseiten
+    admin:
+      pages_dialogs:
+        page_link:
+          link_to_this_page: Link zu dieser Seite
+        link_to:
+          insert: Einfügen
+          your_page:
+            tab_name: Ihre Seite
+          web_address:
+            tab_name: Webseite
+            location: Zieladresse
+            new_window: Neues Fenster
+            new_window_label: Setzen Sie dieses Häkchen, damit sich der Link in einem neuen Browserfenster öffnet.
+            not_sure: Nicht sicher, was Sie in das obrige Feld eingeben sollen?
+            step1: Finden Sie die Seite im Web, die Sie verlinken möchten.
+            step2: Kopieren Sie die Adresse aus der Adressleiste ihres Browsers und fügen Sie diese in das Feld oben ein.
+          email_address:
+            tab_name: E-Mail-Adresse
+            subject_line_optional: Optionaler Betreff
+            body_optional: Optionaler Inhaltstext
+            not_sure: Nicht sicher, was in Felder oben rein soll?
+            step1_html: Schreiben oder kopieren Sie die E-Mail-Adresse (z.B. aus Ihrem Adressbuch), die verlinkt werden soll, in das obrige Feld <strong>E-Mail-Adresse</strong>.
+            step2_html: Verwenden Sie das Feld '<strong>Optionaler Betreff</strong>', wenn der Betreff schon <strong>vorher mit einer Zeile verfasst</strong> werden soll.
+            step3_html: Verwenden Sie das Feld '<strong>Optionaler Inhaltstext</strong>', wenn die E-Mail bereits <strong>mit einem Text verfasst</strong> werden soll.
+          your_resource:
+            tab_name: Ihre Datei
+            link_to_this_resource: Link zu dieser Datei
+      pages:
+        delete: Diese Seite dauerhaft entfernen
+        edit: Diese Seite bearbeiten
+        reserved_system_word: Tut mir leid, aber dieser Titel ist ein reserviertes Wort des Systems.
+        page:
+          view_live_html: Diese Seite live betrachten <br/><em>(öffnet sich in einem neuen Fenster)</em>
+          hidden: Versteckt
+          draft: Entwurf
+        form_new_page_parts:
+          title: Titel
+        form_page_parts:
+          create_content_section: Inhaltsabschnitt anlegen
+          delete_content_section: Inhaltsabschnitt löschen
+        form_advanced_options:
+          toggle_advanced_options: Klicken Sie hier, für die Meta-Tag-Einstellungen und Menüoptionen
+          page_options: Seitenoptionen
+          parent_page: Übergeordnete Seite
+          advanced_options: Erweiterte Optionen
+          custom_title: Angepasster Titel
+          title_types:
+            none: Keinen
+            text: Text
+          show_in_menu_title: Im Menü anzeigen
+          show_in_menu_description: Zeigt diese Seite im Seitenmenü an
+          show_in_menu_help: Entfernen Sie dieses Häckchen, wenn die Seite nicht im Menü erscheinen soll. Dies kann nützlich sein, wenn Sie eine Seite direkt verlinken jedoch nicht im Menü anzeigen lassen möchten.
+          save_as_draft: Als Entwurf speichern
+          skip_to_first_child: Überspringen der obersten Ebene
+          skip_to_first_child_label: Auf erste untergeordnete Seite weiterleiten
+          skip_to_first_child_help: Diese Option verlinkt die Seite zu der ersten untergeordneten Seite. Dies kann nützlich sein, wenn Seiten gruppiert werden sollen.
+          link_url: Diese Seite auf eine andere Seite weiterleiten
+          link_url_help: Wenn diese Seite zu einer anderen Seite weitergeleitet werden soll, geben Sie hier eine Adresse an, sonst lassen Sie dieses Feld leer.
+          parent_page_help: Sie können eine Seite einer anderen unterordnen, indem Sie diese aus der Liste wählen. Soll die Seite auf die oberste Ebene, lassen Sie dieses Feld leer.
+          custom_title_help: Wenn die Seite einen anderen Titel haben soll, als der im Menü angezeigte, so wählen Sie 'Text' und geben Sie ihn hier ein.
+        actions:
+          create_new_page: Neue Seite anlegen
+          reorder_pages: Seiten umsortieren
+          reorder_pages_done: Umsortieren erledigt
+        records:
+          no_pages_yet: Es sind noch keine Seiten vorhanden. Klicken Sie auf "Neue Seite anlegen", um Ihre erste Seite zu erstellen.
   activerecord:
     models:
       page: Seite

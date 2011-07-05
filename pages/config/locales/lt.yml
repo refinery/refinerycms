@@ -1,75 +1,76 @@
 lt:
-  plugins:
-    refinery_pages:
-      title: Puslapiai
-      description: Tvarkyti puslapių turinį
-  admin:
-    pages_dialogs:
-      page_link:
-        link_to_this_page: Nuoroda į šį puslapį
-      link_to:
-        insert: Įterpti
-        your_page:
-          tab_name: Jūsų puslapis
-        web_address:
-          tab_name: Svetainė
-          location: Vieta
-          new_window: Naujame lange
-          new_window_label: Check this box to have the link open in a new browser window.
-          new_window_label: "Pažymėkite, jei norite, kad nuoroda atsidarytų naujame naršyklės lange."
-          not_sure: Nesate tikri ką įrašyti į aukščiau esanti laukelį?
-          step1: Suraskite puslapį internete į kurį norite nukreipti
-          step2: Nukopijuokite puslapio adresą iš naršyklės adreso laukelio ir įterpkite į aukščiau esantį laukelį.
-        email_address:
-          tab_name: El. pašto adresas
-          subject_line_optional: Neprivaloma antraštė
-          body_optional: Neprivalomas tekstas
-          not_sure: Nesate tikri ką įvesti į aukščiau esančius laukelius?
-          step1_html: "Įrašykite arba nukopijuokite (pvz. iš savo adresų knygelės) el. pašto adresą į kurį bus nurodomą '<strong>El. pašto adresas</strong>' laukelyje aukščiau."
-          step2_html: "Naudokite '<strong>Antraštė</strong> laukelį aukščiau, jeigu norite, kad jūsų žinutė būtų kuriame su <strong>iš anksto numatyta antrašte</strong>."
-          step3_html: "Naudokite '<strong>Laiško tekstas</strong> laukelį aukščiau jei norite, kad žinutė būtų kuriama su <strong>iš anksto numatytu tekstu</strong>."
-        your_resource:
-          tab_name: Jūsų failas
-          link_to_this_resource: Nuoroda į šį failą
-    pages:
-      delete: Visiškai pašalinti puslapį
-      edit: Redaguoti puslapį
-      page:
-        view_live_html: Peržiūrėti puslapį gyvai <br /><em>(atsidarys naujame lange)</em>
-        hidden: nematomas
-        draft: juodraštis
-      form_new_page_parts:
-        title: Antraštė
-      form_page_parts:
-        create_content_section: Pridėti turinio skiltį
-        delete_content_section: Trinti turinio skiltį
-      form_advanced_options:
-        toggle_advanced_options: Paspauskite norėdami matyti puslapio meta nustatymus ir meniu pasirinkimus
-        page_options: Puslapio nustatymai
-        parent_page: Tėvinis puslapis
-        advanced_options: Papildomi nustatymai
-        custom_title: Kitokia puslapio antraštė
-        title_types:
-          none: Nėra
-          text: Tekstas
-        show_in_menu_title: Rodyti meniu
-        show_in_menu_description: Rodyti šį puslapį svetainės meniu
-        show_in_menu_help: "Atžymėkite šią varnelę jei norite pašalinti šį puslapį iš svetainės meniu. Tai gali būti naudinga, jeigu turite puslapį į kurį norite leisti nuorodas tiesiogiai, bet nenorite jo rodyti svetainės meniu."
-        save_as_draft: Išsaugoti kaip juodraštį
-        skip_to_first_child: Praleisti aukštesnio lygio puslapį
-        skip_to_first_child_label: Nukreipti lankytojus į pirmą žemesnio lygio puslapį.
-        skip_to_first_child_help: This option makes this page link to the first page underneath. This can be useful when grouping pages together.
-        skip_to_first_child_help: Šis nustatymas leidžia puslapiui nukreipti į pirmą puslapį žemesniame lygyje. Tai gali būti naudinga grupuojant puslapius.
-        link_url: Nukreipti šį puslapį į kitą puslapį ar svetainę
-        link_url_help: "Jei norite, kad šis puslapis vestų į kitą svetainę ar puslapį, kai jį paspaudžiate meniu, tai įveskite adresą pvz. http://google.com arba palikite tuščią"
-        parent_page_help: "Galite sukurti puslapį, po kitu puslapių, tai pasirinkite jį sąraše. Jei norite, kad šis puslapis taptų aukščiausio lygio puslapiu, tiesiog palikite tuščią."
-        custom_title_help: "Jei norite, kad puslapio antraštė būtų kitokia, nei naudojama meniu, tai pasirinkite &apos;Tekstas&apos; ir įveskite antraštę."
-      actions:
-        create_new_page: Pridėti naują puslapį
-        reorder_pages: Keisti puslapių tvarką
-        reorder_pages_done: Baigti keisti puslapių tvarką
-      records:
-        no_pages_yet: Dar nėra puslapių. Paspauskite "Pridėti naują puslapį" norėdami sukurti pirmą puslapį.
+  refinery:
+    plugins:
+      refinery_pages:
+        title: Puslapiai
+        description: Tvarkyti puslapių turinį
+    admin:
+      pages_dialogs:
+        page_link:
+          link_to_this_page: Nuoroda į šį puslapį
+        link_to:
+          insert: Įterpti
+          your_page:
+            tab_name: Jūsų puslapis
+          web_address:
+            tab_name: Svetainė
+            location: Vieta
+            new_window: Naujame lange
+            new_window_label: Check this box to have the link open in a new browser window.
+            new_window_label: "Pažymėkite, jei norite, kad nuoroda atsidarytų naujame naršyklės lange."
+            not_sure: Nesate tikri ką įrašyti į aukščiau esanti laukelį?
+            step1: Suraskite puslapį internete į kurį norite nukreipti
+            step2: Nukopijuokite puslapio adresą iš naršyklės adreso laukelio ir įterpkite į aukščiau esantį laukelį.
+          email_address:
+            tab_name: El. pašto adresas
+            subject_line_optional: Neprivaloma antraštė
+            body_optional: Neprivalomas tekstas
+            not_sure: Nesate tikri ką įvesti į aukščiau esančius laukelius?
+            step1_html: "Įrašykite arba nukopijuokite (pvz. iš savo adresų knygelės) el. pašto adresą į kurį bus nurodomą '<strong>El. pašto adresas</strong>' laukelyje aukščiau."
+            step2_html: "Naudokite '<strong>Antraštė</strong> laukelį aukščiau, jeigu norite, kad jūsų žinutė būtų kuriame su <strong>iš anksto numatyta antrašte</strong>."
+            step3_html: "Naudokite '<strong>Laiško tekstas</strong> laukelį aukščiau jei norite, kad žinutė būtų kuriama su <strong>iš anksto numatytu tekstu</strong>."
+          your_resource:
+            tab_name: Jūsų failas
+            link_to_this_resource: Nuoroda į šį failą
+      pages:
+        delete: Visiškai pašalinti puslapį
+        edit: Redaguoti puslapį
+        page:
+          view_live_html: Peržiūrėti puslapį gyvai <br /><em>(atsidarys naujame lange)</em>
+          hidden: nematomas
+          draft: juodraštis
+        form_new_page_parts:
+          title: Antraštė
+        form_page_parts:
+          create_content_section: Pridėti turinio skiltį
+          delete_content_section: Trinti turinio skiltį
+        form_advanced_options:
+          toggle_advanced_options: Paspauskite norėdami matyti puslapio meta nustatymus ir meniu pasirinkimus
+          page_options: Puslapio nustatymai
+          parent_page: Tėvinis puslapis
+          advanced_options: Papildomi nustatymai
+          custom_title: Kitokia puslapio antraštė
+          title_types:
+            none: Nėra
+            text: Tekstas
+          show_in_menu_title: Rodyti meniu
+          show_in_menu_description: Rodyti šį puslapį svetainės meniu
+          show_in_menu_help: "Atžymėkite šią varnelę jei norite pašalinti šį puslapį iš svetainės meniu. Tai gali būti naudinga, jeigu turite puslapį į kurį norite leisti nuorodas tiesiogiai, bet nenorite jo rodyti svetainės meniu."
+          save_as_draft: Išsaugoti kaip juodraštį
+          skip_to_first_child: Praleisti aukštesnio lygio puslapį
+          skip_to_first_child_label: Nukreipti lankytojus į pirmą žemesnio lygio puslapį.
+          skip_to_first_child_help: This option makes this page link to the first page underneath. This can be useful when grouping pages together.
+          skip_to_first_child_help: Šis nustatymas leidžia puslapiui nukreipti į pirmą puslapį žemesniame lygyje. Tai gali būti naudinga grupuojant puslapius.
+          link_url: Nukreipti šį puslapį į kitą puslapį ar svetainę
+          link_url_help: "Jei norite, kad šis puslapis vestų į kitą svetainę ar puslapį, kai jį paspaudžiate meniu, tai įveskite adresą pvz. http://google.com arba palikite tuščią"
+          parent_page_help: "Galite sukurti puslapį, po kitu puslapių, tai pasirinkite jį sąraše. Jei norite, kad šis puslapis taptų aukščiausio lygio puslapiu, tiesiog palikite tuščią."
+          custom_title_help: "Jei norite, kad puslapio antraštė būtų kitokia, nei naudojama meniu, tai pasirinkite &apos;Tekstas&apos; ir įveskite antraštę."
+        actions:
+          create_new_page: Pridėti naują puslapį
+          reorder_pages: Keisti puslapių tvarką
+          reorder_pages_done: Baigti keisti puslapių tvarką
+        records:
+          no_pages_yet: Dar nėra puslapių. Paspauskite "Pridėti naują puslapį" norėdami sukurti pirmą puslapį.
   activerecord:
     models:
       page: puslapis

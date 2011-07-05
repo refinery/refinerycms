@@ -1,74 +1,75 @@
 nl:
-  plugins:
-    refinery_pages:
-      title: "Pagina's"
-      description: Beheer de inhoud van de pagina's
-  admin:
-    pages_dialogs:
-      page_link:
-        link_to_this_page: Link naar deze pagina
-      link_to:
-        insert: Invoegen
-        your_page:
-          tab_name: Jouw pagina
-        web_address:
-          tab_name: Website
-          location: Locatie
-          new_window: Nieuw venster
-          new_window_label: Vink dit vakje, om de link in een nieuw venster te laten openen.
-          not_sure: Niet zeker wat je in de veld hierboven moet invullen?
-          step1: Zoek de pagina op het internet, waar je naartoe wilt linken.
-          step2: Kopieer het adres uit de adresbalk van de browser, en plak het in het tekstveld hierboven.
-        email_address:
-          tab_name: Email adres
-          subject_line_optional: Optioneel onderwerp
-          body_optional: Optionele inhoud
-          not_sure: Niet zeker wat je in de veld hierboven moet invullen?
-          step1_html: Schrijf, of kopieer en plak (bijv. uit je adresboek), het email adres waar je naar wilt linken, en vul het in de '<strong>Email adres</strong>' box hierboven in.
-          step2_html: Gebruik het '<strong>Onderwerp</strong>' invoerveld hierboven, als je het bericht met een vooraf bepaald onderwerp wilt versturen.
-          step3_html: Gebruik het '<strong>Email inhoud</strong>' invoervoeld hierboven, als  je het bericht met een vooraf bepaalde inhoud wilt versturen.
-        your_resource:
-          tab_name: Je bestand
-          link_to_this_resource: Link naar dit bestand
-    pages:
-      delete: Verwijder de pagina permanent
-      edit: Bewerk deze pagina
-      reserved_system_word: Sorry, maar de ingevoerde titel is een gereserveerd voor het systeem.
-      page:
-        view_live_html: Bekijk deze pagina 'live' <br/><em>(opent in een nieuw venster)</em>
-        hidden: verborgen
-        draft: concept
-      form_new_page_parts:
-        title: Titel
-      form_page_parts:
-        create_content_section: Maak een inhoudsectie
-        delete_content_section: Verwijder een inhoudsectie
-      form_advanced_options:
-        toggle_advanced_options: Klik om extra opties voor de metadata- en menuopties te bewerken
-        parent_page: Ouder pagina
-        page_options: Pagina opties
-        advanced_options: Uitgebreide opties
-        custom_title: Aangepaste titel
-        title_types:
-          none: Geen
-          text: Tekst
-        show_in_menu_title: Toon in menu
-        show_in_menu_description: Vink deze box aan als de pagina in het menu moet worden getoond.
-        show_in_menu_help: Laat deze box, om de pagina niet in het menu te laten tonen. Dit kan handig zijn als je een pagina hebt, waar je naar wilt linken, zonder dat de pagina in het menu geplaatst wordt.
-        save_as_draft: Sla op als concept
-        skip_to_first_child: Spring naar de eerste subpagina
-        skip_to_first_child_label: Redirect bezoekers naar de de eerste subpagina van deze pagina.
-        skip_to_first_child_help: Deze optie veroorzaakt dat deze pagina verwijst naar de eerste pagina die er 'onder ligt'. Dit kan handig zijn om pagina's bij elkaar te groeperen.
-        link_url: Stuur de bezoeker naar een andere pagina door, als ze deze pagina bezoeken.
-        link_url_help: Als je wilt dat deze pagina naar een andere website, of pagina verwijst, wanneer je deze pagina in het menu selecteerd, vul dan een adres in. Laat het leeg om de pagina zelf te laten zien.
-        parent_page_help: Je kunt een pagina onder een andere pagina hangen, door de "ouder" pagina te selecteren in deze lijst. Als het een "top level" pagina moet worden, kunt u de lege optie selecteren.
-        custom_title_help: If you want the page to have a different title than the one that shows in the menu then select &apos;Text&apos; and enter it here.
-      actions:
-        create_new_page: Maak een nieuwe pagina
-        reorder_pages: "Wijzig de volgorde van de pagina's"
-        reorder_pages_done: "Klaar met het wijzingen van de volgorde van de pagina's"
-      records:
-        no_pages_yet: "Er zijn nog geen pagina's. Druk op 'Maak een nieuwe pagina' om de eerste aan te maken."
+  refinery:
+    plugins:
+      refinery_pages:
+        title: "Pagina's"
+        description: Beheer de inhoud van de pagina's
+    admin:
+      pages_dialogs:
+        page_link:
+          link_to_this_page: Link naar deze pagina
+        link_to:
+          insert: Invoegen
+          your_page:
+            tab_name: Jouw pagina
+          web_address:
+            tab_name: Website
+            location: Locatie
+            new_window: Nieuw venster
+            new_window_label: Vink dit vakje, om de link in een nieuw venster te laten openen.
+            not_sure: Niet zeker wat je in de veld hierboven moet invullen?
+            step1: Zoek de pagina op het internet, waar je naartoe wilt linken.
+            step2: Kopieer het adres uit de adresbalk van de browser, en plak het in het tekstveld hierboven.
+          email_address:
+            tab_name: Email adres
+            subject_line_optional: Optioneel onderwerp
+            body_optional: Optionele inhoud
+            not_sure: Niet zeker wat je in de veld hierboven moet invullen?
+            step1_html: Schrijf, of kopieer en plak (bijv. uit je adresboek), het email adres waar je naar wilt linken, en vul het in de '<strong>Email adres</strong>' box hierboven in.
+            step2_html: Gebruik het '<strong>Onderwerp</strong>' invoerveld hierboven, als je het bericht met een vooraf bepaald onderwerp wilt versturen.
+            step3_html: Gebruik het '<strong>Email inhoud</strong>' invoervoeld hierboven, als  je het bericht met een vooraf bepaalde inhoud wilt versturen.
+          your_resource:
+            tab_name: Je bestand
+            link_to_this_resource: Link naar dit bestand
+      pages:
+        delete: Verwijder de pagina permanent
+        edit: Bewerk deze pagina
+        reserved_system_word: Sorry, maar de ingevoerde titel is een gereserveerd voor het systeem.
+        page:
+          view_live_html: Bekijk deze pagina 'live' <br/><em>(opent in een nieuw venster)</em>
+          hidden: verborgen
+          draft: concept
+        form_new_page_parts:
+          title: Titel
+        form_page_parts:
+          create_content_section: Maak een inhoudsectie
+          delete_content_section: Verwijder een inhoudsectie
+        form_advanced_options:
+          toggle_advanced_options: Klik om extra opties voor de metadata- en menuopties te bewerken
+          parent_page: Ouder pagina
+          page_options: Pagina opties
+          advanced_options: Uitgebreide opties
+          custom_title: Aangepaste titel
+          title_types:
+            none: Geen
+            text: Tekst
+          show_in_menu_title: Toon in menu
+          show_in_menu_description: Vink deze box aan als de pagina in het menu moet worden getoond.
+          show_in_menu_help: Laat deze box, om de pagina niet in het menu te laten tonen. Dit kan handig zijn als je een pagina hebt, waar je naar wilt linken, zonder dat de pagina in het menu geplaatst wordt.
+          save_as_draft: Sla op als concept
+          skip_to_first_child: Spring naar de eerste subpagina
+          skip_to_first_child_label: Redirect bezoekers naar de de eerste subpagina van deze pagina.
+          skip_to_first_child_help: Deze optie veroorzaakt dat deze pagina verwijst naar de eerste pagina die er 'onder ligt'. Dit kan handig zijn om pagina's bij elkaar te groeperen.
+          link_url: Stuur de bezoeker naar een andere pagina door, als ze deze pagina bezoeken.
+          link_url_help: Als je wilt dat deze pagina naar een andere website, of pagina verwijst, wanneer je deze pagina in het menu selecteerd, vul dan een adres in. Laat het leeg om de pagina zelf te laten zien.
+          parent_page_help: Je kunt een pagina onder een andere pagina hangen, door de "ouder" pagina te selecteren in deze lijst. Als het een "top level" pagina moet worden, kunt u de lege optie selecteren.
+          custom_title_help: If you want the page to have a different title than the one that shows in the menu then select &apos;Text&apos; and enter it here.
+        actions:
+          create_new_page: Maak een nieuwe pagina
+          reorder_pages: "Wijzig de volgorde van de pagina's"
+          reorder_pages_done: "Klaar met het wijzingen van de volgorde van de pagina's"
+        records:
+          no_pages_yet: "Er zijn nog geen pagina's. Druk op 'Maak een nieuwe pagina' om de eerste aan te maken."
   activerecord:
     models:
       page: Pagina

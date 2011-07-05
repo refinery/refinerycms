@@ -1,74 +1,75 @@
 vi:
-  plugins:
-    refinery_pages:
-      title: Trang
-      description: Quản lý các trang nội dung
-  admin:
-    pages_dialogs:
-      page_link:
-        link_to_this_page: Liên kết tới trang này
-      link_to:
-        insert: Chèn
-        your_page:
-          tab_name: Trang nội dung
-        web_address:
-          tab_name: Địa chỉ Website
-          location: Địa chỉ
-          new_window: Cửa sổ mới
-          new_window_label: Đánh dấu ô này để liên kết được mở trong một cửa sổ mới
-          not_sure: Bạn không chắc cần nhập gì vào ô trên?
-          step1: Tìm trang web mà bạn muốn liên kết tới.
-          step2: Sao chép địa chỉ trang web từ thanh địa chỉ trình duyệt của bạn và dán vào ô trên.
-        email_address:
-          tab_name: Địa chỉ email
-          subject_line_optional: Tiêu đề (không bắt buộc)
-          body_optional: Nội dung (không bắt buộc)
-          not_sure: Bạn không chắc cần nhập gì vào các ô trên?
-          step1_html: Hãy viết (hoặc sao chép rồi dán, từ sổ điạ chỉ của bạn chẳng hạn) địa chỉ email để liên kết tới vào ô '<strong>Địa chỉ Email</strong>' ở trên.
-          step2_html: Nhập dữ liệu vào ô '<strong>Tiêu đề</strong>' ở trên nếu bạn muốn email sẽ được <strong>soạn sẵn tiêu đề</strong>.
-          step3_html: Nhập dữ liệu vào ô '<strong>Nội dung</strong>' ở trên nếu bạn muốn email sẽ được <strong>soạn sẵn nội dung</strong>.
-        your_resource:
-          tab_name: File của bạn
-          link_to_this_resource: Liên kết tới file này.
-    pages:
-      delete: Xóa trang này vĩnh viễn
-      edit: Sửa trang
-      reserved_system_word: "Xin lỗi, nhưng tên trang này trùng với từ khóa mà hệ thống đã dành trước"
-      page:
-        view_live_html: Xem trực tiếp trang này <br/><em>(sẽ mở trong cửa sổ mới)</em>
-        hidden: ẩn
-        draft: phác thảo
-      form_new_page_parts:
-        title: Tiêu đề
-      form_page_parts:
-        create_content_section: Tạo một khu vực nội dung
-        delete_content_section: Xóa khu vực nội dung
-      form_advanced_options:
-        toggle_advanced_options: Mở các thiết lập meta-tag và menu
-        page_options: Các tùy chọn về Trang
-        parent_page: Trang cha
-        advanced_options: Các tùy chọn nâng cao
-        custom_title: Tiêu đề khác
-        title_types:
-          none: Không
-          text: Chữ
-        show_in_menu_title: Hiển thị trong menu
-        show_in_menu_description: Hiển thị trang này trong menu của trang web
-        show_in_menu_help: Bỏ chọn ô này nếu bạn muốn xóa trang khỏi menu của trang web. Đây là trường hợp bạn muốn Trang này tồn tại (có thể truy cập vào được) nhưng không muốn nó hiện trong menu của trang web. 
-        save_as_draft: Lưu trữ dưới dạng bản thảo
-        skip_to_first_child: Bỏ qua trang lớp ngoài cùng
-        skip_to_first_child_label: Chuyển hướng truy cập của người dùng tới trang con đầu tiên.
-        skip_to_first_child_help: Tùy chọn này cho phép trang này được chuyển hướng tới trang con đầu tiên. Điều này có thể hữu ích khi bạn muốn nhóm các trang lại với nhau.
-        link_url: Chuyển hướng truy cập vào trang này sang mội trang khác hoặc một website khác
-        link_url_help: Nếu bạn muốn khi ấn vào trang này trên menu, người dùng sẽ được đưa tới một trang kháchay website khác, bạn hãy nhập vào một địa chỉ (ví dụ http://google.com), nếu không để trống ô này.
-        parent_page_help: Bạn có thể đặt trang này ở dưới (làm con) một trang khác bằng cách chọn trang cha từ danh sách dưới đây. Hãy để trống nếu bạn muốn trang này là trang ở lớp ngoài cùng.
-        custom_title_help: Nếu bạn muốn trang này có một tiêu đề khác tiêu đề hiện trong menu, hãy chọn &apos;Chữ&apos; và nhập vào đây.
-      actions:
-        create_new_page: Tạo trang mới
-        reorder_pages: Sắp xếp lại các trang
-        reorder_pages_done: Tôi xếp xong rồi
-      records:
-        no_pages_yet: Hiện chưa có trang nào. Ấn vào "Tạo trang mới" để tạo trang.
+  refinery:
+    plugins:
+      refinery_pages:
+        title: Trang
+        description: Quản lý các trang nội dung
+    admin:
+      pages_dialogs:
+        page_link:
+          link_to_this_page: Liên kết tới trang này
+        link_to:
+          insert: Chèn
+          your_page:
+            tab_name: Trang nội dung
+          web_address:
+            tab_name: Địa chỉ Website
+            location: Địa chỉ
+            new_window: Cửa sổ mới
+            new_window_label: Đánh dấu ô này để liên kết được mở trong một cửa sổ mới
+            not_sure: Bạn không chắc cần nhập gì vào ô trên?
+            step1: Tìm trang web mà bạn muốn liên kết tới.
+            step2: Sao chép địa chỉ trang web từ thanh địa chỉ trình duyệt của bạn và dán vào ô trên.
+          email_address:
+            tab_name: Địa chỉ email
+            subject_line_optional: Tiêu đề (không bắt buộc)
+            body_optional: Nội dung (không bắt buộc)
+            not_sure: Bạn không chắc cần nhập gì vào các ô trên?
+            step1_html: Hãy viết (hoặc sao chép rồi dán, từ sổ điạ chỉ của bạn chẳng hạn) địa chỉ email để liên kết tới vào ô '<strong>Địa chỉ Email</strong>' ở trên.
+            step2_html: Nhập dữ liệu vào ô '<strong>Tiêu đề</strong>' ở trên nếu bạn muốn email sẽ được <strong>soạn sẵn tiêu đề</strong>.
+            step3_html: Nhập dữ liệu vào ô '<strong>Nội dung</strong>' ở trên nếu bạn muốn email sẽ được <strong>soạn sẵn nội dung</strong>.
+          your_resource:
+            tab_name: File của bạn
+            link_to_this_resource: Liên kết tới file này.
+      pages:
+        delete: Xóa trang này vĩnh viễn
+        edit: Sửa trang
+        reserved_system_word: "Xin lỗi, nhưng tên trang này trùng với từ khóa mà hệ thống đã dành trước"
+        page:
+          view_live_html: Xem trực tiếp trang này <br/><em>(sẽ mở trong cửa sổ mới)</em>
+          hidden: ẩn
+          draft: phác thảo
+        form_new_page_parts:
+          title: Tiêu đề
+        form_page_parts:
+          create_content_section: Tạo một khu vực nội dung
+          delete_content_section: Xóa khu vực nội dung
+        form_advanced_options:
+          toggle_advanced_options: Mở các thiết lập meta-tag và menu
+          page_options: Các tùy chọn về Trang
+          parent_page: Trang cha
+          advanced_options: Các tùy chọn nâng cao
+          custom_title: Tiêu đề khác
+          title_types:
+            none: Không
+            text: Chữ
+          show_in_menu_title: Hiển thị trong menu
+          show_in_menu_description: Hiển thị trang này trong menu của trang web
+          show_in_menu_help: Bỏ chọn ô này nếu bạn muốn xóa trang khỏi menu của trang web. Đây là trường hợp bạn muốn Trang này tồn tại (có thể truy cập vào được) nhưng không muốn nó hiện trong menu của trang web.
+          save_as_draft: Lưu trữ dưới dạng bản thảo
+          skip_to_first_child: Bỏ qua trang lớp ngoài cùng
+          skip_to_first_child_label: Chuyển hướng truy cập của người dùng tới trang con đầu tiên.
+          skip_to_first_child_help: Tùy chọn này cho phép trang này được chuyển hướng tới trang con đầu tiên. Điều này có thể hữu ích khi bạn muốn nhóm các trang lại với nhau.
+          link_url: Chuyển hướng truy cập vào trang này sang mội trang khác hoặc một website khác
+          link_url_help: Nếu bạn muốn khi ấn vào trang này trên menu, người dùng sẽ được đưa tới một trang kháchay website khác, bạn hãy nhập vào một địa chỉ (ví dụ http://google.com), nếu không để trống ô này.
+          parent_page_help: Bạn có thể đặt trang này ở dưới (làm con) một trang khác bằng cách chọn trang cha từ danh sách dưới đây. Hãy để trống nếu bạn muốn trang này là trang ở lớp ngoài cùng.
+          custom_title_help: Nếu bạn muốn trang này có một tiêu đề khác tiêu đề hiện trong menu, hãy chọn &apos;Chữ&apos; và nhập vào đây.
+        actions:
+          create_new_page: Tạo trang mới
+          reorder_pages: Sắp xếp lại các trang
+          reorder_pages_done: Tôi xếp xong rồi
+        records:
+          no_pages_yet: Hiện chưa có trang nào. Ấn vào "Tạo trang mới" để tạo trang.
   activerecord:
     models:
       page: trang
