@@ -1,30 +1,31 @@
 zh-CN:
-  plugins:
-    refinery_files:
-      title: 文件
-      description: 上传与连接文件
-  admin:
-    resources:
-      delete: 永久删除此文件
-      edit: 编辑此文件
-      form:
-        download_current: 下载当前文件
-        or: 或
-        replace: " 用这个来替换..."
-        maximum_file_size: 最大的文件大小是 %{megabytes} MB.
-      resource:
-        download: 下载此文件 (%{size})
-      actions:
-        upload_new: 上传新文件
-      records:
-        no_files_yet: 这里还没有文件. 点击 "上传新文件" 去添加您第一个文件.
-      insert:
-        existing: 已存在的文件
-        new: 新文件
-        no_files: 没有文件.
-      existing_resource:
-        link_to_file: 连接到此文件
-        button_text: 插入
+  refinery:
+    plugins:
+      refinery_files:
+        title: 文件
+        description: 上传与连接文件
+    admin:
+      resources:
+        delete: 永久删除此文件
+        edit: 编辑此文件
+        form:
+          download_current: 下载当前文件
+          or: 或
+          replace: " 用这个来替换..."
+          maximum_file_size: 最大的文件大小是 %{megabytes} MB.
+        resource:
+          download: 下载此文件 (%{size})
+        actions:
+          upload_new: 上传新文件
+        records:
+          no_files_yet: 这里还没有文件. 点击 "上传新文件" 去添加您第一个文件.
+        insert:
+          existing: 已存在的文件
+          new: 新文件
+          no_files: 没有文件.
+        existing_resource:
+          link_to_file: 连接到此文件
+          button_text: 插入
   activerecord:
     models:
       resource: 文件

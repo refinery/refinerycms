@@ -1,30 +1,31 @@
 lv:
-  plugins:
-    refinery_files:
-      title: Faili
-      description: Failu augšupielāde un sasaiste
-  admin:
-    resources:
-      delete: Dzēst šo failu
-      edit: Labot šo failu
-      form:
-        download_current: Lejupielādēt pašreizējo failu
-        or: vai
-        replace: " aizstāt to ar šo..."
-        maximum_file_size: Maksimāli pieļaujamais faila izmērs ir %{megabytes} megabaiti.
-      resource:
-        download: Lejupielādēt šo failu (%{size})
-      actions:
-        upload_new: Augšupielādēt failu
-      records:
-        no_files_yet: Vēl nav neviena faila. Spied "Augšupielādēt failu", lai ielādētu failu.
-      insert:
-        existing: Esošs Fails
-        new: Jauns Fails
-        no_files: Nav neviena faila.
-      existing_resource:
-        link_to_file: Saite uz šo failu
-        button_text: Ievietot
+  refinery:
+    plugins:
+      refinery_files:
+        title: Faili
+        description: Failu augšupielāde un sasaiste
+    admin:
+      resources:
+        delete: Dzēst šo failu
+        edit: Labot šo failu
+        form:
+          download_current: Lejupielādēt pašreizējo failu
+          or: vai
+          replace: " aizstāt to ar šo..."
+          maximum_file_size: Maksimāli pieļaujamais faila izmērs ir %{megabytes} megabaiti.
+        resource:
+          download: Lejupielādēt šo failu (%{size})
+        actions:
+          upload_new: Augšupielādēt failu
+        records:
+          no_files_yet: Vēl nav neviena faila. Spied "Augšupielādēt failu", lai ielādētu failu.
+        insert:
+          existing: Esošs Fails
+          new: Jauns Fails
+          no_files: Nav neviena faila.
+        existing_resource:
+          link_to_file: Saite uz šo failu
+          button_text: Ievietot
   activerecord:
     models:
       resource: fails

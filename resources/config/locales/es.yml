@@ -1,31 +1,32 @@
 es:
-  plugins:
-    refinery_files:
-      title: Archivos
-      description: Subir y enlazar archivos
-      article: masculino
-  admin:
-    resources:
-      delete: Borrar este archivo para siempre
-      edit: Editar este archivo
-      form:
-        download_current: Descargar archivo actual
-        or: o
-        replace: " reemplazarlo por este otro..."
-        maximum_file_size: El peso máximo para el archivo es de %{megabytes} megabytes.
-      resource:
-        download: Descargar este archivo (%{size})
-      actions:
-        upload_new: Subir nuevo archivo
-      records:
-        no_files_yet: Aún no hay archivos. Pulsa "Subir nuevo archivo" para añadir tu primer archivo.
-      insert:
-        existing: Archivo existente
-        new: Nuevo archivo
-        no_files: No hay archivos.
-      existing_resource:
-        link_to_file: Enlazar este archivo
-        button_text: Insertar
+  refinery:
+    plugins:
+      refinery_files:
+        title: Archivos
+        description: Subir y enlazar archivos
+        article: masculino
+    admin:
+      resources:
+        delete: Borrar este archivo para siempre
+        edit: Editar este archivo
+        form:
+          download_current: Descargar archivo actual
+          or: o
+          replace: " reemplazarlo por este otro..."
+          maximum_file_size: El peso máximo para el archivo es de %{megabytes} megabytes.
+        resource:
+          download: Descargar este archivo (%{size})
+        actions:
+          upload_new: Subir nuevo archivo
+        records:
+          no_files_yet: Aún no hay archivos. Pulsa "Subir nuevo archivo" para añadir tu primer archivo.
+        insert:
+          existing: Archivo existente
+          new: Nuevo archivo
+          no_files: No hay archivos.
+        existing_resource:
+          link_to_file: Enlazar este archivo
+          button_text: Insertar
   activerecord:
     models:
       resource: archivo

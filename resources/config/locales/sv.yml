@@ -1,30 +1,31 @@
 sv:
-  plugins:
-    refinery_files:
-      title: Filer
-      description: Ladda upp och länka till filer
-  admin:
-    resources:
-      delete: Ta bort den här filen för alltid
-      edit: Redigera den här filen
-      form:
-        download_current: Ladda ner den här filen
-        or: eller
-        replace: " ersätt med den här..."
-        maximum_file_size: Maximal storlek är %{megabytes} megabytes.
-      resource:
-        download: Ladda ner den här filen (%{size})
-      actions:
-        upload_new: Ladda upp en fil
-      records:
-        no_files_yet: Det finns inga filer ännu. Klicka på "Ladda upp en fil" för att ladda upp din första fil.
-      insert:
-        existing: Redan existerande fil
-        new: Ny fil
-        no_files: Det finns inga filer.
-      existing_resource:
-        link_to_file: Länk till den här filen
-        button_text: Lägg till
+  refinery:
+    plugins:
+      refinery_files:
+        title: Filer
+        description: Ladda upp och länka till filer
+    admin:
+      resources:
+        delete: Ta bort den här filen för alltid
+        edit: Redigera den här filen
+        form:
+          download_current: Ladda ner den här filen
+          or: eller
+          replace: " ersätt med den här..."
+          maximum_file_size: Maximal storlek är %{megabytes} megabytes.
+        resource:
+          download: Ladda ner den här filen (%{size})
+        actions:
+          upload_new: Ladda upp en fil
+        records:
+          no_files_yet: Det finns inga filer ännu. Klicka på "Ladda upp en fil" för att ladda upp din första fil.
+        insert:
+          existing: Redan existerande fil
+          new: Ny fil
+          no_files: Det finns inga filer.
+        existing_resource:
+          link_to_file: Länk till den här filen
+          button_text: Lägg till
   activerecord:
     models:
       resource: fil

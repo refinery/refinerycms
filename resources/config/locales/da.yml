@@ -1,30 +1,31 @@
 da:
-  plugins:
-    refinery_files:
-      title: Filer
-      description: Upload og link til filer
-  admin:
-    resources:
-      delete: Slet fil
-      edit: Redigér fil
-      form:
-        download_current: Download filen
-        or: eller
-        replace: " erstat den med denne fil..."
-        maximum_file_size: Filen må maksimalt fylde %{megabytes} megabytes.
-      resource:
-        download: Download fil (%{size})
-      actions:
-        upload_new: Tilføj en ny fil
-      records:
-        no_files_yet: Der er ingen filer endnu. Klik på "Tilføj en ny fil" for at oprette den første.
-      insert:
-        existing: Eksisterende fil
-        new: Ny fil
-        no_files: Der er ingen filer endnu. Klik "Upload en ny fil" for at tilføje den første.
-      existing_resource:
-        link_to_file: Link til denne fil
-        button_text: Indsæt
+  refinery:
+    plugins:
+      refinery_files:
+        title: Filer
+        description: Upload og link til filer
+    admin:
+      resources:
+        delete: Slet fil
+        edit: Redigér fil
+        form:
+          download_current: Download filen
+          or: eller
+          replace: " erstat den med denne fil..."
+          maximum_file_size: Filen må maksimalt fylde %{megabytes} megabytes.
+        resource:
+          download: Download fil (%{size})
+        actions:
+          upload_new: Tilføj en ny fil
+        records:
+          no_files_yet: Der er ingen filer endnu. Klik på "Tilføj en ny fil" for at oprette den første.
+        insert:
+          existing: Eksisterende fil
+          new: Ny fil
+          no_files: Der er ingen filer endnu. Klik "Upload en ny fil" for at tilføje den første.
+        existing_resource:
+          link_to_file: Link til denne fil
+          button_text: Indsæt
   activerecord:
     models:
       resource: fil

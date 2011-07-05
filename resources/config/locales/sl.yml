@@ -1,29 +1,30 @@
 sl:
-  plugins:
-    refinery_files:
-      title: Datoteke
-  admin:
-    resources:
-      delete: Odstrani datoteko
-      edit: Uredi datoteko
-      form:
-        download_current: Prenesi tretnutno datoteko
-        or: ali
-        replace: " jo zamenjaj s tole..."
-        maximum_file_size: "Največja dovoljena velikost datoteke je %{megabytes} megabajtov."
-      resource:
-        download: Prenesi datoteko (%{size})
-      actions:
-        upload_new: Prenesi Novo Datoteko
-      records:
-        no_files_yet: Trenutno še ni nobene datoteke. Za prenos prve datoteke kliknite "Prenesi Novo Datoteko".
-      insert:
-        existing: Obstoječo Datoteko
-        new: Novo Datoteko
-        no_files: Trenutno še ni datotek.
-      existing_resource:
-        link_to_file: Povezava do te datoteke
-        button_text: Vstavi
+  refinery:
+    plugins:
+      refinery_files:
+        title: Datoteke
+    admin:
+      resources:
+        delete: Odstrani datoteko
+        edit: Uredi datoteko
+        form:
+          download_current: Prenesi tretnutno datoteko
+          or: ali
+          replace: " jo zamenjaj s tole..."
+          maximum_file_size: "Največja dovoljena velikost datoteke je %{megabytes} megabajtov."
+        resource:
+          download: Prenesi datoteko (%{size})
+        actions:
+          upload_new: Prenesi Novo Datoteko
+        records:
+          no_files_yet: Trenutno še ni nobene datoteke. Za prenos prve datoteke kliknite "Prenesi Novo Datoteko".
+        insert:
+          existing: Obstoječo Datoteko
+          new: Novo Datoteko
+          no_files: Trenutno še ni datotek.
+        existing_resource:
+          link_to_file: Povezava do te datoteke
+          button_text: Vstavi
   activerecord:
     models:
       resource: datoteka

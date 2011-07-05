@@ -1,30 +1,31 @@
 sk:
-  plugins:
-    refinery_files:
-      title: Súbory
-      description: Správa súborov
-  admin:
-    resources:
-      delete: Zmazať súbor
-      edit: Upraviť súbor
-      form:
-        download_current: Stiahnuť vybraný súbor
-        or: alebo
-        replace: " nahradiť tímto..."
-        maximum_file_size: Maximálna veľkosť súboru je %{megabytes} MB.
-      resource:
-        download: Stiahnuť súbor (%{size})
-      actions:
-        upload_new: Nahrať nový súbor
-      records:
-        no_files_yet: Zatiaľ neboli nahraté žiadne súbory.
-      insert:
-        existing: Existujúci súbor
-        new: Nový súbor
-        no_files: Nie sú tu žiadne súbory.
-      existing_resource:
-        link_to_file: Odkaz na tento súbor.
-        button_text: Vložiť
+  refinery:
+    plugins:
+      refinery_files:
+        title: Súbory
+        description: Správa súborov
+    admin:
+      resources:
+        delete: Zmazať súbor
+        edit: Upraviť súbor
+        form:
+          download_current: Stiahnuť vybraný súbor
+          or: alebo
+          replace: " nahradiť tímto..."
+          maximum_file_size: Maximálna veľkosť súboru je %{megabytes} MB.
+        resource:
+          download: Stiahnuť súbor (%{size})
+        actions:
+          upload_new: Nahrať nový súbor
+        records:
+          no_files_yet: Zatiaľ neboli nahraté žiadne súbory.
+        insert:
+          existing: Existujúci súbor
+          new: Nový súbor
+          no_files: Nie sú tu žiadne súbory.
+        existing_resource:
+          link_to_file: Odkaz na tento súbor.
+          button_text: Vložiť
   activerecord:
     models:
       resource: súbor

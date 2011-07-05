@@ -1,30 +1,31 @@
 fr:
-  plugins:
-    refinery_files:
-      title: Fichiers
-      description: Gestion des fichiers
-  admin:
-    resources:
-      delete: Supprimer définitivement ce fichier
-      edit: Modifier ce fichier
-      form:
-        download_current: Télécharger ce fichier
-        or: ou
-        replace: " le remplacer par celui-ci..."
-        maximum_file_size: "La taille du fichier ne doit pas excéder %{megabytes} megaoctets."
-      resource:
-        download: Télécharger ce fichier (%{size})
-      actions:
-        upload_new: Ajouter un nouveau fichier
-      records:
-        no_files_yet: Il n'y a actuellement aucun fichier. Cliquez sur 'Ajouter un nouveau fichier' afin d'en ajouter un.
-      insert:
-        existing: Fichier existant
-        new: Nouveau fichier
-        no_files: Il n'y a aucun fichier.
-      existing_resource:
-        link_to_file: Lien vers ce fichier
-        button_text: Insertion
+  refinery:
+    plugins:
+      refinery_files:
+        title: Fichiers
+        description: Gestion des fichiers
+    admin:
+      resources:
+        delete: Supprimer définitivement ce fichier
+        edit: Modifier ce fichier
+        form:
+          download_current: Télécharger ce fichier
+          or: ou
+          replace: " le remplacer par celui-ci..."
+          maximum_file_size: "La taille du fichier ne doit pas excéder %{megabytes} megaoctets."
+        resource:
+          download: Télécharger ce fichier (%{size})
+        actions:
+          upload_new: Ajouter un nouveau fichier
+        records:
+          no_files_yet: Il n'y a actuellement aucun fichier. Cliquez sur 'Ajouter un nouveau fichier' afin d'en ajouter un.
+        insert:
+          existing: Fichier existant
+          new: Nouveau fichier
+          no_files: Il n'y a aucun fichier.
+        existing_resource:
+          link_to_file: Lien vers ce fichier
+          button_text: Insertion
   activerecord:
     models:
       resource: fichier

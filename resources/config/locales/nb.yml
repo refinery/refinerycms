@@ -1,30 +1,31 @@
 nb:
-  plugins:
-    refinery_files:
-      title: Filer
-      description: Last opp og link til filer
-  admin:
-    resources:
-      delete: Fjern denne filen permanent
-      edit: Rediger denne filen
-      form:
-        download_current: Last ned gjeldende fil
-        or: eller
-        replace: " erstatt den med denne..."
-        maximum_file_size: Største tillatte filstørrelse er %{megabytes} MB.
-      resource:
-        download: Last ned denne filen (%{size})
-      actions:
-        upload_new: Last opp en ny fil
-      records:
-        no_files_yet: Det er ingen filer her enda. Klikk på "Last opp en ny fil" for å legge til din første fil.
-      insert:
-        existing: Eksisterende fil
-        new: Ny fil
-        no_files: Det er ingen filer.
-      existing_resource:
-        link_to_file: Link til denne filen
-        button_text: Legg inn
+  refinery:
+    plugins:
+      refinery_files:
+        title: Filer
+        description: Last opp og link til filer
+    admin:
+      resources:
+        delete: Fjern denne filen permanent
+        edit: Rediger denne filen
+        form:
+          download_current: Last ned gjeldende fil
+          or: eller
+          replace: " erstatt den med denne..."
+          maximum_file_size: Største tillatte filstørrelse er %{megabytes} MB.
+        resource:
+          download: Last ned denne filen (%{size})
+        actions:
+          upload_new: Last opp en ny fil
+        records:
+          no_files_yet: Det er ingen filer her enda. Klikk på "Last opp en ny fil" for å legge til din første fil.
+        insert:
+          existing: Eksisterende fil
+          new: Ny fil
+          no_files: Det er ingen filer.
+        existing_resource:
+          link_to_file: Link til denne filen
+          button_text: Legg inn
   activerecord:
     models:
       resource: fil

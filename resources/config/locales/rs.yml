@@ -1,30 +1,31 @@
 rs:
-  plugins:
-    refinery_files:
-      title: Fajlovi
-      description: Upload-uj i linkuj fajlove
-  admin:
-    resources:
-      delete: Ukloni ovaj fajl zauvek
-      edit: Izmeni fajl
-      form:
-        download_current: Download-uj fajl
-        or: ili
-        replace: " zameni sa ovim..."
-        maximum_file_size: Maksimalna veličina fajla je %{megabytes} megabajta.
-      resource:
-        download: Download-uj fajl (%{size})
-      actions:
-        upload_new: Upload-uj novi fajl
-      records:
-        no_files_yet: Ne postoje fajlovi. Klikni "Upload-uj novi fajl" da dodaš.
-      insert:
-        existing: Postojeći fajl
-        new: Novi fajl
-        no_files: Ne postoje fajlovi.
-      existing_resource:
-        link_to_file: Linkuj na ovaj fajl
-        button_text: Unesi
+  refinery:
+    plugins:
+      refinery_files:
+        title: Fajlovi
+        description: Upload-uj i linkuj fajlove
+    admin:
+      resources:
+        delete: Ukloni ovaj fajl zauvek
+        edit: Izmeni fajl
+        form:
+          download_current: Download-uj fajl
+          or: ili
+          replace: " zameni sa ovim..."
+          maximum_file_size: Maksimalna veličina fajla je %{megabytes} megabajta.
+        resource:
+          download: Download-uj fajl (%{size})
+        actions:
+          upload_new: Upload-uj novi fajl
+        records:
+          no_files_yet: Ne postoje fajlovi. Klikni "Upload-uj novi fajl" da dodaš.
+        insert:
+          existing: Postojeći fajl
+          new: Novi fajl
+          no_files: Ne postoje fajlovi.
+        existing_resource:
+          link_to_file: Linkuj na ovaj fajl
+          button_text: Unesi
   activerecord:
     models:
       resource: fajl

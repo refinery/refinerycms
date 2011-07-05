@@ -1,30 +1,31 @@
 ru:
-  plugins:
-    refinery_files:
-      title: Файлы
-      article: masculine
-  admin:
-    resources:
-      delete: Удалить этот файл навсегда
-      edit: Редактировать этот файл
-      form:
-        download_current: Скачать текущий файл
-        or: или
-        replace: " заменить его этим"
-        maximum_file_size: "Максимальный размер файла — %{megabytes} МБ."
-      resource:
-        download: "Скачать файл (%{size})"
-      actions:
-        upload_new: Загрузить новый файл
-      records:
-        no_files_yet: "Здесь пока нет файлов. Нажмите «Загрузить новые файлы», чтобы добавить первый файл."
-      insert:
-        existing: Существующий файл
-        new: Новый файл
-        no_files: Файлов нет.
-      existing_resource:
-        link_to_file: Поставить ссылку на этот файл
-        button_text: Вставить
+  refinery:
+    plugins:
+      refinery_files:
+        title: Файлы
+        article: masculine
+    admin:
+      resources:
+        delete: Удалить этот файл навсегда
+        edit: Редактировать этот файл
+        form:
+          download_current: Скачать текущий файл
+          or: или
+          replace: " заменить его этим"
+          maximum_file_size: "Максимальный размер файла — %{megabytes} МБ."
+        resource:
+          download: "Скачать файл (%{size})"
+        actions:
+          upload_new: Загрузить новый файл
+        records:
+          no_files_yet: "Здесь пока нет файлов. Нажмите «Загрузить новые файлы», чтобы добавить первый файл."
+        insert:
+          existing: Существующий файл
+          new: Новый файл
+          no_files: Файлов нет.
+        existing_resource:
+          link_to_file: Поставить ссылку на этот файл
+          button_text: Вставить
   activerecord:
     models:
       resource: файл

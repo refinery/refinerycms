@@ -1,30 +1,31 @@
 pt-BR:
-  plugins:
-    refinery_files:
-      title: Arquivos
-      description: Gerenciar arquivos
-  admin:
-    resources:
-      delete: Remover este arquivo para sempre
-      edit: Editar este arquivo
-      form:
-        download_current: Baixar arquivo atual
-        or: or
-        replace: " substituir por este..."
-        maximum_file_size: "O tamanho máximo permitido é de %{megabytes} megabytes."
-      resource:
-        download: Baixar este arquivo (%{size})
-      actions:
-        upload_new: Enviar Novo Arquivo
-      records:
-        no_files_yet: Ainda não existem arquivos. Clique em "Enviar Novo Arquivo" para adicionar seu primeiro arquivo.
-      insert:
-        existing: O Arquivo já existe.
-        new: Novo Arquivo
-        no_files: TNão há arquivos.
-      existing_resource:
-        link_to_file: Link para este Arquivo
-        button_text: Inserir
+  refinery:
+    plugins:
+      refinery_files:
+        title: Arquivos
+        description: Gerenciar arquivos
+    admin:
+      resources:
+        delete: Remover este arquivo para sempre
+        edit: Editar este arquivo
+        form:
+          download_current: Baixar arquivo atual
+          or: or
+          replace: " substituir por este..."
+          maximum_file_size: "O tamanho máximo permitido é de %{megabytes} megabytes."
+        resource:
+          download: Baixar este arquivo (%{size})
+        actions:
+          upload_new: Enviar Novo Arquivo
+        records:
+          no_files_yet: Ainda não existem arquivos. Clique em "Enviar Novo Arquivo" para adicionar seu primeiro arquivo.
+        insert:
+          existing: O Arquivo já existe.
+          new: Novo Arquivo
+          no_files: TNão há arquivos.
+        existing_resource:
+          link_to_file: Link para este Arquivo
+          button_text: Inserir
   activerecord:
     models:
       resource: Arquivo

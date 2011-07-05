@@ -1,30 +1,31 @@
 de:
-  plugins:
-    refinery_files:
-      title: Dateien
-      description: Dateien hochladen und verlinken
-  admin:
-    resources:
-      delete: Diese Datei für immer löschen
-      edit: Diese Datei bearbeiten    
-      form:
-        download_current: Download der aktuellen Datei
-        or: oder
-        replace: ", mit dieser ersetzen..."
-        maximum_file_size: "Die maximale Dateigröße beträgt %{megabytes} Megabyte."
-      resource:
-        download: Diese Datei herunterladen (%{size})
-      actions:
-        upload_new: Neue Datei Hochladen
-      records:
-        no_files_yet: Keine Dateien vorhanden. Klicken Sie auf "Neue Datei Hochladen" um Ihre erste Datei hinzuzufügen.
-      insert:
-        existing: Vorhandene Datei
-        new: Neue Datei
-        no_files: Keine Dateien vorhanden.
-      existing_resource:
-        link_to_file: Link zu dieser Datei
-        button_text: Einfügen
+  refinery:
+    plugins:
+      refinery_files:
+        title: Dateien
+        description: Dateien hochladen und verlinken
+    admin:
+      resources:
+        delete: Diese Datei für immer löschen
+        edit: Diese Datei bearbeiten
+        form:
+          download_current: Download der aktuellen Datei
+          or: oder
+          replace: ", mit dieser ersetzen..."
+          maximum_file_size: "Die maximale Dateigröße beträgt %{megabytes} Megabyte."
+        resource:
+          download: Diese Datei herunterladen (%{size})
+        actions:
+          upload_new: Neue Datei Hochladen
+        records:
+          no_files_yet: Keine Dateien vorhanden. Klicken Sie auf "Neue Datei Hochladen" um Ihre erste Datei hinzuzufügen.
+        insert:
+          existing: Vorhandene Datei
+          new: Neue Datei
+          no_files: Keine Dateien vorhanden.
+        existing_resource:
+          link_to_file: Link zu dieser Datei
+          button_text: Einfügen
   activerecord:
     models:
       resource: Datei

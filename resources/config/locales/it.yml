@@ -1,41 +1,42 @@
 it:
-  plugins:
-    refinery_files:
-      title: Risorse
-  admin:
-    resources:
-      delete: Elimina il file corrente
-      edit: Modifica il file corrente
-      form:
-        file_to_upload: File da caricare
-        download_current: Scarica il file corrente
-        or: o
-        replace: ", sostituirlo con questo..."
-        maximum_file_size: "La dimensione massima consentita è %{megabytes} megabytes."
-      resource:
-        download: Scarica il file corrente (%{size})
+  refinery:
+    plugins:
+      refinery_files:
+        title: Risorse
+    admin:
+      resources:
+        delete: Elimina il file corrente
         edit: Modifica il file corrente
-        delete:
-          message: Sei sicuro di voler eliminare '%{title}'?
-          title: Elimina il file corrente
-      actions:
-        upload_new: Carica un nuovo file
-      records:
-        no_files_yet: Nessun file presente. Fai clic su "Carica un nuovo file" per aggiungere un file.
-      insert:
-        existing: File esistente
-        new: Nuovo file
-        no_files: Non ci sono files.
-        existing_file: File esistente
-        link_to_resource: 'Link a questa risorsa'
-        previous: Precedente
-        next: Successivo
-        submit_insert: Carica
-        or: o
-        cancel: Annulla
-      existing_resource:
-        link_to_file: Collegamento a questo file
-        button_text: Inserisci
+        form:
+          file_to_upload: File da caricare
+          download_current: Scarica il file corrente
+          or: o
+          replace: ", sostituirlo con questo..."
+          maximum_file_size: "La dimensione massima consentita è %{megabytes} megabytes."
+        resource:
+          download: Scarica il file corrente (%{size})
+          edit: Modifica il file corrente
+          delete:
+            message: Sei sicuro di voler eliminare '%{title}'?
+            title: Elimina il file corrente
+        actions:
+          upload_new: Carica un nuovo file
+        records:
+          no_files_yet: Nessun file presente. Fai clic su "Carica un nuovo file" per aggiungere un file.
+        insert:
+          existing: File esistente
+          new: Nuovo file
+          no_files: Non ci sono files.
+          existing_file: File esistente
+          link_to_resource: 'Link a questa risorsa'
+          previous: Precedente
+          next: Successivo
+          submit_insert: Carica
+          or: o
+          cancel: Annulla
+        existing_resource:
+          link_to_file: Collegamento a questo file
+          button_text: Inserisci
   activerecord:
     errors:
       models:

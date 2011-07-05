@@ -1,30 +1,31 @@
 vi:
-  plugins:
-    refinery_files:
-      title: Các tập tin
-      description: Tải lên và liên kết đến tập tin
-  admin:
-    resources:
-      delete: Hủy bỏ tập tin này mãi mãi
-      edit: Sửa tập tin này
-      form:
-        download_current: Tải tập tin hiện tại
-        or: hoặc
-        replace: " thay thế nó bằng này..."
-        maximum_file_size: Kích thước file tối đa là %{megabytes} megabytes.
-      resource:
-        download: Tải về file này (%{size})
-      actions:
-        upload_new: Tải lên tập tin mới
-      records:
-        no_files_yet: Chưa có tập tin nào. Nhấp vào "Tải lên tập tin mới" để thêm tập tin đầu tiên của bạn.
-      insert:
-        existing: Tập tin đang tồn tại
-        new: Tập tin mới
-        no_files: Không có tập tin nào.
-      existing_resource:
-        link_to_file: Liên kết đến tập tin này.
-        button_text: Chèn
+  refinery:
+    plugins:
+      refinery_files:
+        title: Các tập tin
+        description: Tải lên và liên kết đến tập tin
+    admin:
+      resources:
+        delete: Hủy bỏ tập tin này mãi mãi
+        edit: Sửa tập tin này
+        form:
+          download_current: Tải tập tin hiện tại
+          or: hoặc
+          replace: " thay thế nó bằng này..."
+          maximum_file_size: Kích thước file tối đa là %{megabytes} megabytes.
+        resource:
+          download: Tải về file này (%{size})
+        actions:
+          upload_new: Tải lên tập tin mới
+        records:
+          no_files_yet: Chưa có tập tin nào. Nhấp vào "Tải lên tập tin mới" để thêm tập tin đầu tiên của bạn.
+        insert:
+          existing: Tập tin đang tồn tại
+          new: Tập tin mới
+          no_files: Không có tập tin nào.
+        existing_resource:
+          link_to_file: Liên kết đến tập tin này.
+          button_text: Chèn
   activerecord:
     models:
       resource: tập tin
