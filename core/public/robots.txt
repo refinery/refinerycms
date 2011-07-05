@@ -1,3 +1,2 @@
 User-Agent: *
-Disallow: /admin/
 Disallow: /refinery/
