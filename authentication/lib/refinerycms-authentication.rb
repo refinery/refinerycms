@@ -15,7 +15,7 @@ module Refinery
           plugin.pathname = root
           plugin.name = 'refinery_users'
           plugin.version = %q{1.1.0}
-          plugin.menu_match = /(refinery|admin)\/users$/
+          plugin.menu_match = /refinery\/users$/
           plugin.activity = {
             :class => User,
             :title => 'username'

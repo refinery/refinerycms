@@ -27,7 +27,7 @@ module Refinery
           plugin.version = ::Refinery.version
           plugin.hide_from_menu = true
           plugin.always_allow_access = true
-          plugin.menu_match = /(refinery|admin)\/(refinery_base)$/
+          plugin.menu_match = /refinery\/(refinery_base)$/
         end
       end
     end

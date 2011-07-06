@@ -111,7 +111,7 @@ module Refinery
 
     describe '#menu_match' do
       it 'returns regexp based on plugin name' do
-        plugin.menu_match.should == /(admin|refinery)\/refinery_rspec$/
+        plugin.menu_match.should == /refinery\/refinery_rspec$/
       end
     end
 

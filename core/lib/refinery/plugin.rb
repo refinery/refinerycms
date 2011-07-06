@@ -57,7 +57,7 @@ module Refinery
 
     # Returns a RegExp that matches, if the current page is part of the plugin.
     def menu_match
-      @menu_match ||= /(admin|refinery)\/#{self.name}$/
+      @menu_match ||= /refinery\/#{self.name}$/
     end
 
     def pathname=(value)
