@@ -1,3 +1,5 @@
+require 'spec_helper'
+
 module ::Refinery
   describe FastController do
     it "should render the wymiframe template" do
