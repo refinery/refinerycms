@@ -3,6 +3,7 @@ require 'awesome_nested_set'
 require 'globalize3'
 require 'friendly_id'
 require 'seo_meta'
+require File.expand_path('../generators/refinerycms_pages_generator', __FILE__)
 
 module Refinery
   module Pages

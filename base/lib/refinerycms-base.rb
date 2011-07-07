@@ -3,6 +3,7 @@ unless defined? ::Rails
   require 'action_controller/railtie'
 end
 require File.expand_path('../base/refinery', __FILE__)
+require File.expand_path('../generators/refinerycms_base_generator', __FILE__)
 
 module Refinery
 

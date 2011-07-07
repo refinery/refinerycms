@@ -1,6 +1,7 @@
 require 'dragonfly'
 require 'rack/cache'
 require 'refinerycms-core'
+require File.expand_path('../generators/refinerycms_resources_generator', __FILE__)
 
 module Refinery
   module Resources
