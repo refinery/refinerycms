@@ -42,7 +42,8 @@
       <div id='web_address_content'>
         <label for='web_address_text'><%= t('location', :scope => 'refinery.admin.pages_dialogs.link_to.web_address') %></label>
         <%= text_field :web_address, :text, :value => @web_address_text, :style => "width: 70%" %>
-
+        <img id='web_address_test_loader' src='/assets/refinery/ajax-loader.gif' alt='Testing...' style='display: none;'/>
+        <span id='web_address_test_result'></span>
         <label><%= t('new_window', :scope => 'refinery.admin.pages_dialogs.link_to.web_address') %></label>
         <input type='checkbox' name='web_address_target_blank' id='web_address_target_blank' <%= "checked='checked'" if @web_address_target_blank %> />
         <label for='web_address_target_blank' class='stripped'><%= t('new_window_label', :scope => 'refinery.admin.pages_dialogs.link_to.web_address') %></label>

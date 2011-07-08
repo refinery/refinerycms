@@ -575,15 +575,26 @@ var link_dialog = {
   },
 
   web_tab: function(){
-    link_tester.validate_url_textbox("#web_address_text",  function() {
-      link_dialog.update_parent( $('#web_address_text').val(),
-                                 $('#web_address_text').val(),
-                                 ($('#web_address_target_blank').get(0).checked ? "_blank" : "")
-                               );
-    });
+    $('#web_address_text, #web_address_target_blank').change(function(){
+      var url = $('#web_address_text').val(),
+          target_blank = $('#web_address_target_blank').get(0).checked ? "_blank" : "",
+          icon = '';
 
-    $('#web_address_target_blank').click(function(){
-      parent.document.getElementById('wym_target').value = this.checked ? "_blank" : "";
+      $('#web_address_test_loader').show();
+      $('#web_address_test_result').hide();
+      $('#web_address_test_result').removeClass('success_icon').removeClass('failure_icon');
+
+      link_tester.url(url, function (success) {
+        if (success) {
+          icon = 'success_icon';
+        }else{
+          icon = 'failure_icon';
+        }
+        $('#web_address_test_result').addClass(icon).show();
+        $('#web_address_test_loader').hide();
+      });
+
+      link_dialog.update_parent(url, url, target_blank);
     });
   },
 
