@@ -1,4 +1,5 @@
 require 'refinerycms-base'
+require File.expand_path('../generators/refinerycms_settings_generator', __FILE__)
 
 module Refinery
   module Settings
