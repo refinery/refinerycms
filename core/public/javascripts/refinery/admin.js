@@ -569,52 +569,37 @@ var link_dialog = {
   },
 
   web_tab: function(){
-    link_tester.validate_url_textbox("#web_address_text",  function() {
+    link_tester.validate_url_textbox("#web_address_text", function(){});
+
+    $('#web_address_text, #web_address_target_blank').change(function(){
       link_dialog.update_parent( $('#web_address_text').val(),
                                  $('#web_address_text').val(),
-                                 ($('#web_address_target_blank').get(0).checked ? "_blank" : "")
-                               );
-    });
-
-    $('#web_address_target_blank').click(function(){
-      parent.document.getElementById('wym_target').value = this.checked ? "_blank" : "";
+                                 $('#web_address_target_blank').get(0).checked ? "_blank" : ""
+      );
     });
   },
 
   email_tab: function() {
+    link_tester.validate_email_textbox("#email_address_text", function(){});
+
     $('#email_address_text, #email_default_subject_text, #email_default_body_text').change(function(e){
       var default_subject = $('#email_default_subject_text').val(),
           default_body = $('#email_default_body_text').val(),
           mailto = "mailto:" + $('#email_address_text').val(),
           modifier = "?",
-          icon = '';
-
-      $('#email_address_test_loader').show();
-      $('#email_address_test_result').hide();
-      $('#email_address_test_result').removeClass('success_icon').removeClass('failure_icon');
-
-
-      link_tester.email(mailto, function (success) {
-        if (success) {
-          icon = 'success_icon';
-        }else{
-          icon = 'failure_icon';
-        }
-        $('#email_address_test_result').addClass(icon).show();
-        $('#email_address_test_loader').hide();
-      });
+          additional = "";
 
       if(default_subject.length > 0){
-        mailto += modifier + "subject=" + default_subject;
+        additional += modifier + "subject=" + default_subject;
         modifier = "&";
       }
 
       if(default_body.length > 0){
-        mailto += modifier + "body=" + default_body;
+        additional += modifier + "body=" + default_body;
         modifier = "&";
       }
 
-      link_dialog.update_parent(mailto, mailto.replace('mailto:', ''));
+      link_dialog.update_parent(mailto + additional, mailto.replace('mailto:', ''));
     });
   },
 
