@@ -1,3 +1,5 @@
+::Page.reset_column_information
+
 page_position = -1
 
 home_page = Page.create(:title => "Home",
