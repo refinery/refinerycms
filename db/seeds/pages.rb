@@ -1,4 +1,6 @@
 module Refinery
+  ::Refinery::Page.reset_column_information
+
   page_position = -1
   home_page = ::Refinery::Page.create!({:title => "Home",
               :deletable => false,
