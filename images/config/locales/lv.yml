@@ -42,5 +42,5 @@ lv:
         refinery:
           image:
             blank: Jānorāda bilde pirms augšupielādes
-            too_long: Bildes izmēram jābūt mazākam par %{count}
+            too_big: Bildes izmēram jābūt mazākam par %{size} megabaitiem
             incorrect_format: "Bilde drīkst būt tikai sekojošos formātos: JPG, PNG vai GIF"

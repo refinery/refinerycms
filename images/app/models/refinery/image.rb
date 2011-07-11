@@ -9,8 +9,9 @@ module Refinery
     MAX_SIZE_IN_MB = 5
     image_accessor :image
 
-    validates :image, :presence  => {},
-                      :length    => { :maximum => MAX_SIZE_IN_MB.megabytes }
+    validates :image, :presence  => true
+    validates_size_of :image, :maximum => MAX_SIZE_IN_MB.megabytes,
+                              :message => :too_big, :size => MAX_SIZE_IN_MB
     validates_property :mime_type, :of => :image, :in => %w(image/jpeg image/png image/gif image/tiff),
                        :message => :incorrect_format
 

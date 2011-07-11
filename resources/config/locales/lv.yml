@@ -35,4 +35,4 @@ lv:
         refinery:
           resource:
             blank: Jānorāda fails pirms augšupielādes
-            too_long: Faila izmēram jābūt mazākam par %{count}
+            too_big: Faila izmēram jābūt mazākam par %{size} megabaitiem

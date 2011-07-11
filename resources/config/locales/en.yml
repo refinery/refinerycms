@@ -35,4 +35,4 @@ en:
         refinery:
           resource:
             blank: You must specify file for upload
-            too_long: File should be smaller than %{count} in size
+            too_big: File should be smaller than %{size} megabytes in size
