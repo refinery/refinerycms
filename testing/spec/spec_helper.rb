@@ -1,17 +1,38 @@
 require 'rbconfig'
 require 'factory_girl'
-require File.expand_path('../support/refinery/controller_macros', __FILE__)
+
+if RUBY_VERSION > "1.9"
+  require "simplecov"
+end
+
+def setup_simplecov
+  SimpleCov.start do
+    Dir[File.expand_path('../../**/*.gemspec')].map{|g| g.split('/')[-2]}.each do |dir|
+      add_group dir.capitalize, "#{dir}/"
+    end
+    add_filter "/testing/"
+    add_filter "/config/"
+    add_filter "/spec/"
+    add_filter "/vendor/"
+  end
+end
 
 def setup_environment
   # This file is copied to ~/spec when you run 'rails generate rspec'
   # from the project root directory.
   ENV["RAILS_ENV"] ||= 'test'
+  setup_simplecov if defined?(SimpleCov) # simplecov should be loaded _before_ models, controllers, etc are loaded.
   require File.expand_path("../../config/environment", __FILE__)
   require 'rspec/rails'
 
   # Requires supporting files with custom matchers and macros, etc,
-  # in ./support/ and its subdirectories.
-  Dir[File.expand_path('../support/**/*.rb', __FILE__)].each {|f| require f}
+  # in ./support/ and its subdirectories including factories.
+  ([Rails.root] | ::Refinery::Plugins.registered.pathnames).map{|p|
+    Dir[p.join('spec', 'support', '**', '*.rb').to_s] +
+    Dir[p.join('features/support/factories{/*.rb,*.rb}').to_s]
+  }.flatten.each do |support_file|
+    require support_file if File.exist?(support_file)
+  end
 
   RSpec.configure do |config|
     # == Mock Framework
