@@ -1,5 +1,4 @@
-<% url_opts = action_name == 'edit' ? {:url => main_app.refinery_admin_page_path(@page.id), :as => :page} : {:url => main_app.refinery_admin_pages_path, :as => :page} %>
-<%= form_for [:admin, @page], url_opts do |f| %>
+<%= form_for [main_app, :refinery_admin, @page] do |f| %>
 
   <%= render :partial => "/refinery/admin/error_messages",
              :locals => {
