@@ -10,7 +10,7 @@ module Refinery
       it "asks user to specify email address" do
         visit new_refinery_user_session_url
         click_link "I forgot my password"
-        find("h1", :text => "Please enter the email address for your account.").should be_true
+        find("h1", :text => "Please enter the email address for your account.")
       end
 
       context "when existing email specified" do

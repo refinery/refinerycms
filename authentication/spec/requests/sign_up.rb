@@ -11,15 +11,14 @@ module Refinery
       describe 'when there are no users' do
         it 'invites us to create a user' do
           visit root_url
-          save_and_open_page
-          find("h1", :text => "There are no users yet, so we'll set you up first").should be_true
+          find("h1", :text => "There are no users yet, so we'll set you up first")
         end
         
         it 'allows user creation' do
           # Verify that we can access the sign up page.
           visit root_url
           click_link "Continue..."
-          find("h1", :text => "Fill out your details below so that we can get you started.").should be_true
+          find("h1", :text => "Fill out your details below so that we can get you started.")
           
           # Fill in user details.
           fill_in 'Username', :with => 'rspec'
@@ -29,8 +28,8 @@ module Refinery
           
           # Sign up and verify!
           click_button "Sign up"
-          find("h2", :text => "Welcome to Refinery, rspec.").should be_true
-          find("h2", :text => "Latest Activity").should be_true
+          find("h2", :text => "Welcome to Refinery, rspec.")
+          find("h2", :text => "Latest Activity")
           User.count.should == 1
         end
       end
