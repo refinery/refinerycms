@@ -42,5 +42,5 @@ sk:
         refinery:
           image:
             blank: Musíte zadať obrázok ktorý chcete nahrať.
-            too_long: Maximálna veľkosť obrázku %{count} in size.
+            too_big: Maximálna veľkosť obrázku %{size}MB in size.
             incorrect_format: 'Obrázok musí byť vo formáte JPG, PNG alebo GIF.'

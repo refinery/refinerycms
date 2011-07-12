@@ -42,5 +42,5 @@ cs:
         refinery:
           image:
             blank: Musíte zadat obrázek který chcete nahrát
-            too_long: Maximální velikost obrázku je %{count}
+            too_big: Maximální velikost obrázku je %{size} MB
             incorrect_format: 'Obrázek musí být ve formátu JPG, PNG nebo GIF'

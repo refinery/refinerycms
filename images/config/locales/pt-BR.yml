@@ -43,5 +43,5 @@ pt-BR:
         refinery:
           image:
             blank: Você deve escolher uma imagem para enviar
-            too_long: "Imagem deve possuir menos de %{count} de tamanho"
+            too_big: "Imagem deve possuir menos de %{size} megabytes de tamanho"
             incorrect_format: 'Sua imagem deve ser uma JPG, PNG ou GIF'

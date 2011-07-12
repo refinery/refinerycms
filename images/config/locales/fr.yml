@@ -42,5 +42,5 @@ fr:
         refinery:
           image:
             blank: Vous devez sélectionner une image à télécharger
-            too_long: L'image doit être plus petite que %{count}
+            too_big: L'image doit être plus petite que %{size} megaoctets
             incorrect_format: 'Seules les images aux formats JPG, PNG or GIF sont acceptées'

@@ -35,4 +35,4 @@ pt-BR:
         refinery:
           resource:
             blank: Você deve escolher um arquivo para enviar
-            too_long: "Arquivos devem ser menores que %{count} em tamanho"
+            too_big: "Arquivos devem ser menores que %{size} megabytes em tamanho"

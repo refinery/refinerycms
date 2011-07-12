@@ -35,4 +35,4 @@ lolcat:
         refinery:
           resource:
             blank: U MUST SPECIFY FILE 4 UPLOAD
-            too_long: FILE SHUD BE SMALLR THAN %{count} IN SIZE
+            too_big: FILE SHUD BE SMALLR THAN %{size} MEGABYTEZ IN SIZE

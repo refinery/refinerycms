@@ -41,5 +41,5 @@ sl:
         refinery:
           image:
             blank: Izbrati morate datoteko, ki jo želite naložiti
-            too_long: Velikost slike mora biti manjša od %{count}
+            too_big: Velikost slike mora biti manjša od %{size} megabajtov
             incorrect_format: Slika mora biti tipa JPG, PNG ali GIF

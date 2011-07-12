@@ -42,5 +42,5 @@ nb:
         refinery:
           image:
             blank: Du må angi bildet som skal lastet opp
-            too_long: Bildet må være mindre enn %{count}
+            too_big: Bildet må være mindre enn %{size} MB
             incorrect_format: 'Bildefilen må være av filtypen JPG, PNG eller GIF'

@@ -35,4 +35,4 @@ da:
         refinery:
           resource:
             blank: Du skal vælge en fil, der skal uploades
-            too_long: Filer må højest være på %{count}
+            too_big: Filer må højest være på %{size} megabytes

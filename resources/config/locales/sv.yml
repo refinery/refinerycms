@@ -35,4 +35,4 @@ sv:
         refinery:
           resource:
             blank: Du måste ange en fil att ladda upp
-            too_long: Filen måste vara mindre än %{count} stor
+            too_big: Filen måste vara mindre än %{size} megabytes stor

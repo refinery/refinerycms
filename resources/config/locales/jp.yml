@@ -35,4 +35,4 @@ jp:
         refinery:
           resource:
             blank: アップロードするファイルを指定して下さい。
-            too_long: "ファイルは最大で%{count}までです。"
+            too_big: "ファイルは最大で%{size}MBまでです。"

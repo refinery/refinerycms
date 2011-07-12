@@ -35,4 +35,4 @@ fi:
         refinery:
           resource:
             blank: Sinun pitää lähettää tiedosto
-            too_long: Tiedoston tulee olla pienempi kuin %{count} kooltaan
+            too_big: Tiedoston tulee olla pienempi kuin %{count} megatavua kooltaan

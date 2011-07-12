@@ -41,5 +41,5 @@ nl:
         refinery:
           image:
             blank: U moet een afbeelding kiezen om te uploaden.
-            too_long: Afbeeldingen mogen niet groter dan %{count} zijn.
+            too_big: Afbeeldingen mogen niet groter dan %{size} megabytes zijn.
             incorrect_format: Uw afbeelding moet een JPG, PNG of GIF zijn.

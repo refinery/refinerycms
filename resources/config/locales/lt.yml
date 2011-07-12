@@ -35,4 +35,4 @@ lt:
         refinery:
           resource:
             blank: Nurodykite failą įkėlimui
-            too_long: Failas turėtų būti mažesnio dydžio nei %{count}
+            too_big: Failas turėtų būti mažesnio dydžio nei %{size} megabaitų

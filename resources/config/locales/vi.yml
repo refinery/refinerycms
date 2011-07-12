@@ -35,4 +35,4 @@ vi:
         refinery:
           resource:
             blank: Bạn phải xác định tập tin để tải lên
-            too_long: Tập tin phải nhỏ hơn %{count} về kích thước
+            too_big: Tập tin phải nhỏ hơn %{size} megabytes về kích thước

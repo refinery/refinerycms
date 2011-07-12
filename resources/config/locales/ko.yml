@@ -35,4 +35,4 @@ ko:
         refinery:
           resource:
             blank: 업로드할 파일을 선택해주세요.
-            too_long: 파일의 크기는 %{count} 이하여야 합니다.
+            too_big: 파일의 크기는 %{size}MB 이하여야 합니다.

@@ -42,5 +42,5 @@ de:
         refinery:
           image:
             blank: Sie müssen ein Bild zum Hochladen angeben
-            too_long: Bild sollte kleiner als %{count} sein
+            too_big: Bild sollte kleiner als %{size} Megabytes sein
             incorrect_format: 'Ihr Bild sollte ein JPG, PNG oder GIF sein'

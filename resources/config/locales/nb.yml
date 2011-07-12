@@ -35,4 +35,4 @@ nb:
         refinery:
           resource:
             blank: Du må angi en fil som skal lastes opp
-            too_long: Filstørrelsen må være mindre enn %{count}
+            too_big: Filstørrelsen må være mindre enn %{size} MB

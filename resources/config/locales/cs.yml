@@ -35,4 +35,4 @@ cs:
         refinery:
           resource:
             blank: Musíte vybrat soubor pro nahrání
-            too_long: Maximální velikost souboru je %{count}
+            too_big: Maximální velikost souboru je %{size} MB

@@ -42,5 +42,5 @@ vi:
         refinery:
           image:
             blank: Bạn phải chọn ảnh để tải lên
-            too_long: Ảnh phải có kích thước nhỏ hơn %{count}
+            too_big: Ảnh phải có kích thước nhỏ hơn %{size} megabytes
             incorrect_format: 'Ảnh phải ở một trong các định dạng JPG, PNG hoặc GIF'

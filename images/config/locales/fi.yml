@@ -42,5 +42,5 @@ fi:
         refinery:
           image:
             blank: Sinun pitää lähettää kuva
-            too_long: Kuvan tulee olla pienempi kuin %{count} kooltaan
+            too_big: Kuvan tulee olla pienempi kuin %{size} megatavua kooltaan
             incorrect_format: 'Kuvan pitää olla joko JPG, PNG tai GIF- muodossa'

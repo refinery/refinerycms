@@ -42,5 +42,5 @@ zh-CN:
         refinery:
           image:
             blank: 你必须选择一个图片来上传
-            too_long: 图片应该小于 %{count} 大小
+            too_big: 图片应该小于 %{size} MB 大小
             incorrect_format: '你的图片必须是JPG, PNG 或者 GIF'

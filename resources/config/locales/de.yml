@@ -35,4 +35,4 @@ de:
         refinery:
           resource:
             blank: Sie müssen eine Datei zum Hochladen angeben
-            too_long: Die Dateien sollten kleiner als %{count} sein
+            too_big: Die Dateien sollten kleiner als %{size} Megabyte sein

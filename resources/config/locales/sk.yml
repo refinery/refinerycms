@@ -35,4 +35,4 @@ sk:
         refinery:
           resource:
             blank: Musíte vybrať súbor pre nahranie.
-            too_long: Maximálna veľkosť súboru je %{count}.
+            too_big: Maximálna veľkosť súboru je %{size} MB.

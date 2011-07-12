@@ -35,4 +35,4 @@ zh-TW:
         refinery:
           resource:
             blank: 您必須選取檔案來上傳
-            too_long: 檔案必須要小於 %{count} 這個大小
+            too_big: 檔案必須要小於 %{size} MB 這個大小

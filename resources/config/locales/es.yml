@@ -36,4 +36,4 @@ es:
         refinery:
           resource:
             blank: Selecciona qué archivo quieres subir
-            too_long: El archivo debe pesar menos de %{count}
+            too_big: El archivo debe pesar menos de %{size} megabytes

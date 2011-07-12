@@ -42,5 +42,5 @@ da:
         refinery:
           image:
             blank: Du skal angive et billede, der skal uploades
-            too_long: Filer må højest være på %{count}
+            too_big: Filer må højest være på %{size} megabytes
             incorrect_format: 'Dit billede skal være enten JPG, PNG eller GIF format'

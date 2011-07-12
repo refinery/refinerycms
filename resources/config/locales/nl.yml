@@ -34,4 +34,4 @@ nl:
         refinery:
           resource:
             blank: U moet een bestand kiezen dat u wilt uploaden.
-            too_long: Bestanden mogen niet groter dan %{count} zijn.
+            too_big: Bestanden mogen niet groter dan %{size} megabytes zijn.

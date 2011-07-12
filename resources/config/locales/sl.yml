@@ -34,4 +34,4 @@ sl:
         refinery:
           resource:
             blank: Izbrati morate datoteko za prenos
-            too_long: Velikost datoteke mora biti manjša od %{count}
+            too_big: Velikost datoteke mora biti manjša od %{size} megabajtov

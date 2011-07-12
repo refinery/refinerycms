@@ -35,4 +35,4 @@ rs:
         refinery:
           resource:
             blank: Moraš izabrati fajl za upload
-            too_long: Fajl bi trebalo da je manji od %{count}
+            too_big: Fajl bi trebalo da je manji od %{size} megabajta

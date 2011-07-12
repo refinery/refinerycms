@@ -36,4 +36,4 @@ pl:
         refinery:
           resource:
             blank: Musisz określić plik do wgrania
-            too_long: Plik powinien być mniejszy niż %{count}
+            too_big: Plik powinien być mniejszy niż %{size} megabajtów

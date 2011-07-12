@@ -42,5 +42,5 @@ sv:
         refinery:
           image:
             blank: Du måste ange en bild att ladda upp
-            too_long: Bilden ska vara mindre än %{count} stor
+            too_big: Bilden ska vara mindre än %{size} megabytes stor
             incorrect_format: 'Din bild måste vara antingen JPG, PNG eller GIF'

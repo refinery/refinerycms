@@ -42,5 +42,5 @@ lt:
         refinery:
           image:
             blank: Turite nurodyti paveikslėlį įkėlimui
-            too_long: "Paveikslėlio dydis turėtų būti mažesnis, nei %{count}"
+            too_big: "Paveikslėlio dydis turėtų būti mažesnis, nei %{size} megabaitų"
             incorrect_format: 'Paveikslėlis turi būti JPG, PNG arba GIF formatu'

@@ -42,5 +42,5 @@ zh-TW:
         refinery:
           image:
             blank: 您必須指定一張圖片來上傳
-            too_long: 圖片必須小於 %{count} 這個大小
+            too_big: 圖片必須小於 %{size} MB 這個大小
             incorrect_format: '您的圖片必須是 JPG, PNG 或是 GIF'

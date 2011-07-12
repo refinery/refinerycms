@@ -43,4 +43,4 @@ it:
         refinery:
           resource:
             blank: Devi selezionare un file da caricare
-            too_long: Le dimensioni del file devono essere inferiori a %{count}
+            too_big: Le dimensioni del file devono essere inferiori a %{size} megabytes
