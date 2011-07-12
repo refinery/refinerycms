@@ -4,7 +4,7 @@ $(document).ready(function(){
     $('nav#actions.multilist > ul:not(.search_list) li a:nth(1)').parent().addClass('selected');
   }
 
-  $('nav#actions.multilist > ul:not(.search_list) li > a').not('.not_a_link a').each(function(i,a){
+  $('nav#actions.multilist > ul:not(.search_list) li > a').not('.not_a_link a').not('a.reorder_icon').each(function(i,a){
     if ($(this).data('dialog-title') == null) {
       $(this).bind('click', function(){
         $(this).css('background-image', "url('/images/refinery/ajax-loader.gif') !important");
