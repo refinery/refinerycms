@@ -33,20 +33,20 @@ end
 
 # REFINERY CMS DEVELOPMENT ====================================================
 
+gem 'friendly_id_globalize3'#, :path => "../tmp/friendly_id"
+gem 'therubyracer'
+
+# Bundle edge Rails instead:
+# gem 'rails', :git => 'git://github.com/rails/rails.git', :branch => '3-1-stable'
+# gem 'rack', :git => 'git://github.com/rack/rack.git'
+# gem 'arel', :git => 'git://github.com/rails/arel.git'
+
 if RUBY_PLATFORM == 'java'
   gem 'activerecord-jdbcsqlite3-adapter', '>= 1.0.2', :platform => :jruby
 else
   gem 'sqlite3'
   gem 'mysql2'
 end
-
-gem 'rails'
-gem 'rack'#, :git => "git://github.com/rack/rack.git"
-gem 'arel'#, :git => "https://github.com/rails/arel.git"
-gem 'friendly_id_globalize3'#, :path => "../tmp/friendly_id"
-gem 'therubyracer'
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails'
 
 # Asset template engines
 gem 'sass-rails', '~> 3.1.0.rc'
