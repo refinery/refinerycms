@@ -18,21 +18,23 @@ describe 'page frontend' do
   describe 'when marketable urls are' do
     describe 'enabled' do
       before(:all) do
-        ::Refinery::Page.use_marketable_urls = true
+        ::Refinery::Pages.use_marketable_urls = true
       end
 
       it 'shows the homepage' do
+        pending # this requires a server restart to enable the setting.
         visit '/'
       end
 
-      it 'shows the show page' do
+      it 'shows a show page' do
+        pending # this requires a server restart to enable the setting.
         visit url_for(::Refinery::Page.find('About').url)
       end
     end
 
     describe 'disabled' do
       before(:all) do
-        ::Refinery::Page.use_marketable_urls = false
+        ::Refinery::Pages.use_marketable_urls = false
       end
 
       it 'shows the homepage' do

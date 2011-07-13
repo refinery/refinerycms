@@ -17,13 +17,26 @@ module Refinery
       def root
         @root ||= Pathname.new(File.expand_path('../../', __FILE__))
       end
+
+      def use_marketable_urls?
+        ::Refinery::Setting.find_or_set(:use_marketable_urls, true, :scoping => 'pages')
+      end
+
+      def use_marketable_urls=(value)
+        ::Refinery::Setting.set(:use_marketable_urls, {:value => value, :scoping => 'pages'})
+      end
     end
 
     class Engine < ::Rails::Engine
       isolate_namespace ::Refinery
 
+      config.before_initialize do
+        require File.expand_path('../pages/marketable_urls', __FILE__)
+      end
+
       config.to_prepare do
         require File.expand_path('../pages/tabs', __FILE__)
+        require File.expand_path('../pages/marketable_urls', __FILE__)
       end
 
       refinery.after_inclusion do
@@ -46,24 +59,6 @@ module Refinery
             :created_image => "page_add.png",
             :updated_image => "page_edit.png"
           }
-        end
-      end
-
-      initializer 'add marketable routes', :after => :set_routes_reloader do |app|
-        if ::Refinery::Page.use_marketable_urls?
-          app.routes.append do
-            scope(:module => 'refinery') do
-              get '*path' => 'pages#show'
-            end
-          end
-
-          app.config.after_initialize do
-            # Add any parts of routes as reserved words.
-            route_paths = ::Refinery::Application.routes.named_routes.routes.map{|name, route| route.path}
-            ::Refinery::Page.friendly_id_config.reserved_words |= route_paths.map { |path|
-              path.to_s.gsub(/^\//, '').to_s.split('(').first.to_s.split(':').first.to_s.split('/')
-            }.flatten.reject{|w| w =~ /\_/}.uniq
-          end
         end
       end
 
