@@ -22,12 +22,12 @@ describe 'page frontend' do
       end
 
       it 'shows the homepage' do
-        pending # this requires a server restart to enable the setting.
+        pending "this requires a server restart to enable the setting."
         visit '/'
       end
 
       it 'shows a show page' do
-        pending # this requires a server restart to enable the setting.
+        pending "this requires a server restart to enable the setting."
         visit url_for(::Refinery::Page.find('About').url)
       end
     end
