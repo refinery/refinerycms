@@ -15,13 +15,33 @@ describe 'page frontend' do
     ::Refinery::Page.create(:title => 'Draft', :draft => true)
   end
 
-  describe 'with marketable urls' do
-    it 'shows the homepage' do
-      visit '/'
+  describe 'when marketable urls are' do
+    describe 'enabled' do
+      before(:all) do
+        ::Refinery::Page.use_marketable_urls = true
+      end
+
+      it 'shows the homepage' do
+        visit '/'
+      end
+
+      it 'shows the show page' do
+        visit url_for(::Refinery::Page.find('About').url)
+      end
     end
 
-    it 'shows the show page' do
-      visit url_for(::Refinery::Page.find('About').url)
+    describe 'disabled' do
+      before(:all) do
+        ::Refinery::Page.use_marketable_urls = false
+      end
+
+      it 'shows the homepage' do
+        visit '/'
+      end
+
+      it 'does not route to /about for About page' do
+        url_for(::Refinery::Page.find('About').url).should =~ %r{/pages/about$}
+      end
     end
   end
 

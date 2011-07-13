@@ -309,6 +309,10 @@ module Refinery
         ::Refinery::Setting.find_or_set(:use_marketable_urls, true, :scoping => 'pages')
       end
 
+      def use_marketable_urls=(value)
+        ::Refinery::Setting.set(:use_marketable_urls, {:value => value, :scoping => 'pages'})
+      end
+
       def expire_page_caching
         begin
           Rails.cache.delete_matched(/.*pages.*/)
