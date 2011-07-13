@@ -10,25 +10,25 @@ module Refinery
       it "asks user to specify email address" do
         visit new_refinery_user_session_url
         click_link "I forgot my password"
-        find("h1", :text => "Please enter the email address for your account.")
+        has_content?("Please enter the email address for your account.").should be_true
       end
 
       context "when existing email specified" do
-        it "shows success flash message" do
+        it "shows success message" do
           visit new_refinery_user_password_url
           fill_in "refinery_user_email", :with => user.email
           click_button "Reset password"
-          find(".flash_notice", :text => "An email has been sent to you with a link to reset your password.")
+          has_content?("An email has been sent to you with a link to reset your password.").should be_true
         end
       end
 
       context "when non-existing email specified" do
-        it "shows failure flash message" do
+        it "shows failure message" do
           visit new_refinery_user_password_url
           fill_in "refinery_user_email", :with => "none@refinerycms.com"
           click_button "Reset password"
-          find(".flash_error", :text => "Sorry, 'none@refinerycms.com' isn't associated with any accounts.")
-          find(".flash_error", :text => "Are you sure you typed the correct email address?")
+          has_content?("Sorry, 'none@refinerycms.com' isn't associated with any accounts.").should be_true
+          has_content?("Are you sure you typed the correct email address?").should be_true
         end
       end
     end
