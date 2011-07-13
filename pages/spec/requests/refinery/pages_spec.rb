@@ -17,32 +17,28 @@ describe 'page frontend' do
 
   describe 'when marketable urls are' do
     describe 'enabled' do
-      before(:all) do
-        ::Refinery::Pages.use_marketable_urls = true
-      end
+      before { ::Refinery::Pages.stub(:use_marketable_urls).and_return(true) }
 
       it 'shows the homepage' do
-        pending "this requires a server restart to enable the setting."
+        #pending "this requires a server restart to enable the setting."
         visit '/'
       end
 
       it 'shows a show page' do
-        pending "this requires a server restart to enable the setting."
-        visit url_for(::Refinery::Page.find('About').url)
+        #pending "this requires a server restart to enable the setting."
+        visit url_for(::Refinery::Page.find('about').url)
       end
     end
 
     describe 'disabled' do
-      before(:all) do
-        ::Refinery::Pages.use_marketable_urls = false
-      end
+      before { ::Refinery::Pages.stub(:use_marketable_urls).and_return(false) }
 
       it 'shows the homepage' do
         visit '/'
       end
 
       it 'does not route to /about for About page' do
-        url_for(::Refinery::Page.find('About').url).should =~ %r{/pages/about$}
+        url_for(::Refinery::Page.find('about').url).should =~ %r{/pages/about$}
       end
     end
   end
