@@ -18,7 +18,7 @@ module Refinery
           # Verify that we can access the sign up page.
           visit root_url
           click_link "Continue..."
-          find("h1", :text => "Fill out your details below so that we can get you started.")
+          has_css?("h1", :text => "Fill out your details below so that we can get you started.").should be_true
           
           # Fill in user details.
           fill_in 'Username', :with => 'rspec'
@@ -28,8 +28,8 @@ module Refinery
           
           # Sign up and verify!
           click_button "Sign up"
-          find("h2", :text => "Welcome to Refinery, rspec.")
-          find("h2", :text => "Latest Activity")
+          has_css?("h2", :text => "Welcome to Refinery, rspec.").should be_true
+          has_css?("h2", :text => "Latest Activity").should be_true
           User.count.should == 1
         end
       end
