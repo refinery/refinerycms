@@ -24,7 +24,7 @@ module ::Refinery
 
       unless self.options[:update]
         # First, effectively move / rename files that get in the way of Refinery CMS
-        %w(app/assets/index.html app/views/layouts/application.html.erb app/assets/javascripts/rails.js).each do |roadblock|
+        %w(public/index.html app/views/layouts/application.html.erb app/assets/javascripts/rails.js app/assets/stylesheets/application.css).each do |roadblock|
           if (roadblock_path = Rails.root.join(roadblock)).file?
             create_file "#{roadblock}.backup",
                         :verbose => true do roadblock_path.read end
