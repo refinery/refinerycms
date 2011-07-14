@@ -1,7 +1,7 @@
 require 'devise'
 require 'refinerycms-core'
 require 'friendly_id'
-require File.expand_path('../generators/refinerycms_authentication_generator', __FILE__)
+require File.expand_path('../generators/authentication_generator', __FILE__)
 
 module Refinery
   module Authentication

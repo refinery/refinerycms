@@ -1,7 +1,7 @@
 require 'dragonfly'
 require 'rack/cache'
 require 'refinerycms-core'
-require File.expand_path('../generators/refinerycms_images_generator', __FILE__)
+require File.expand_path('../generators/images_generator', __FILE__)
 
 module Refinery
   module Images
