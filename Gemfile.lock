@@ -1,4 +1,17 @@
 GIT
+  remote: git://github.com/parndt/seo_meta.git
+  revision: 384b08a8cc6b742b6c5c12b1807ce378362ea712
+  specs:
+    seo_meta (1.1.1)
+      refinerycms-generators (~> 1.1.0)
+
+GIT
+  remote: git://github.com/resolve/refinerycms-generators.git
+  revision: 33e33cad1ed89623950dfd833a8dcdc58c2c047b
+  specs:
+    refinerycms-generators (1.1.0)
+
+GIT
   remote: git://github.com/resolve/refinerycms-i18n
   revision: f34c5ee6141303051251cb7d040c2a965155f12f
   specs:
@@ -32,7 +45,7 @@ PATH
       kaminari (~> 0.12)
       rails (>= 3.1.0.rc4)
       refinerycms-base (= 1.1.0)
-      refinerycms-generators (~> 1.0)
+      refinerycms-generators (~> 1.1)
       refinerycms-settings (= 1.1.0)
       truncate_html (~> 0.5)
     refinerycms-dashboard (1.1.0)
@@ -215,7 +228,6 @@ GEM
       thor (~> 0.14.6)
     rake (0.9.2)
     rdoc (3.8)
-    refinerycms-generators (1.0.2)
     routing-filter (0.2.3)
       actionpack
     rspec (2.6.0)
@@ -245,8 +257,6 @@ GEM
       ffi (>= 1.0.7)
       json_pure
       rubyzip
-    seo_meta (1.1.1)
-      refinerycms-generators (~> 1.0.1)
     simplecov (0.4.2)
       simplecov-html (~> 0.4.4)
     simplecov-html (0.4.5)
@@ -277,13 +287,14 @@ PLATFORMS
 
 DEPENDENCIES
   coffee-script
-  friendly_id_globalize3
   jquery-rails
   mysql2
   refinerycms!
+  refinerycms-generators (~> 1.1.0)!
   refinerycms-i18n (~> 1.1.0)!
   refinerycms-testing (~> 1.1.0)
-  sass-rails (~> 3.1.0.rc)
+  sass-rails (>= 3.1.0.rc.4)
+  seo_meta!
   sqlite3
   therubyracer
   uglifier

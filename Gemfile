@@ -21,6 +21,8 @@ gemspec
 # Anything you put in here will be overridden when the app gets updated.
 
 # gem 'refinerycms', '~> 1.1.0'
+gem 'refinerycms-generators', '~> 1.1.0', :git => 'git://github.com/resolve/refinerycms-generators.git'
+gem 'seo_meta', :git => 'git://github.com/parndt/seo_meta.git'
 
 group :development, :test do
   # To use refinerycms-testing, uncomment it (if it's commented out) and run 'bundle install'
@@ -33,7 +35,6 @@ end
 
 # REFINERY CMS DEVELOPMENT ====================================================
 
-gem 'friendly_id_globalize3'#, :path => "../tmp/friendly_id"
 gem 'therubyracer'
 
 # Bundle edge Rails instead:
@@ -49,7 +50,7 @@ else
 end
 
 # Asset template engines
-gem 'sass-rails', '~> 3.1.0.rc'
+gem 'sass-rails', '>= 3.1.0.rc.4'
 gem 'coffee-script'
 gem 'uglifier'
 
