@@ -88,7 +88,6 @@ module ::Refinery
                   :verbose => self.options[:update]
       end
 
-
       # Append seeds.
       create_file "db/seeds.rb" unless Rails.root.join('db', 'seeds.rb').file?
       append_file 'db/seeds.rb', :verbose => true do

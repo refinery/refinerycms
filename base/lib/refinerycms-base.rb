@@ -3,7 +3,7 @@ unless defined? ::Rails
   require 'action_controller/railtie'
 end
 require File.expand_path('../base/refinery', __FILE__)
-unless REFINERYCMS_INSTALLER
+unless defined?(REFINERYCMS_INSTALLER)
   require File.expand_path('../generators/base_generator', __FILE__)
 end
 
