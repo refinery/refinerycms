@@ -117,8 +117,8 @@ module ::Refinery
 
       # Ensure i18n exists and is up to date.
       if ::Refinery.i18n_enabled?
-        require 'generators/refinerycms_i18n_generator'
-        ::RefinerycmsI18n.new.generate
+        require 'generators/i18n_generator'
+        ::Refinery::I18nGenerator.new.generate
       end
     end
 
