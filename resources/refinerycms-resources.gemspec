@@ -83,7 +83,7 @@ Gem::Specification.new do |s|
     'lib',
     'lib/gemspec.rb',
     'lib/generators',
-    'lib/generators/refinerycms_resources_generator.rb',
+    'lib/generators/resources_generator.rb',
     'lib/refinery',
     'lib/refinery/resources',
     'lib/refinery/resources/dragonfly.rb',

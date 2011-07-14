@@ -25,7 +25,7 @@ Gem::Specification.new do |s|
     'lib/base/refinery.rb',
     'lib/gemspec.rb',
     'lib/generators',
-    'lib/generators/refinerycms_base_generator.rb',
+    'lib/generators/base_generator.rb',
     'lib/refinery',
     'lib/refinery/version.rb',
     'lib/refinerycms-base.rb',

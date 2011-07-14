@@ -91,7 +91,7 @@ Gem::Specification.new do |s|
     'lib',
     'lib/gemspec.rb',
     'lib/generators',
-    'lib/generators/refinerycms_images_generator.rb',
+    'lib/generators/images_generator.rb',
     'lib/refinery',
     'lib/refinery/images',
     'lib/refinery/images/dragonfly.rb',

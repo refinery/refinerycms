@@ -115,7 +115,7 @@ Gem::Specification.new do |s|
     'lib',
     'lib/gemspec.rb',
     'lib/generators',
-    'lib/generators/refinerycms_pages_generator.rb',
+    'lib/generators/pages_generator.rb',
     'lib/pages',
     'lib/pages/marketable_urls.rb',
     'lib/pages/tabs.rb',

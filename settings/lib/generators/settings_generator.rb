@@ -1,10 +1,10 @@
 require 'refinery/generators'
 
 module ::Refinery
-  class RefinerycmsPages < ::Refinery::Generators::EngineInstaller
+  class Settings < ::Refinery::Generators::EngineInstaller
 
     source_root File.expand_path('../../../', __FILE__)
-    engine_name "pages"
+    engine_name "settings"
 
   end
 end

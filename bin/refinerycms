@@ -319,18 +319,18 @@ module Refinery
 
     def generators!
       # Run the newly activated Refinery CMS generator.
-      puts "\n\nPreparing your application using the refinerycms generator..\n"
-      run_command("rails generate refinerycms", {
+      puts "\n\nPreparing your application using the refinery:cms generator..\n"
+      run_command("rails generate refinery:cms", {
         :cd => true,
-        :fail => "Could not run the refinerycms generator successfully.",
+        :fail => "Could not run the refinery:cms generator successfully.",
         :bundler => true
       })
 
       if @options[:testing]
-        puts "\n\nAdding testing support files using the refinerycms_testing generator..\n"
-        run_command("rails generate refinerycms_testing", {
+        puts "\n\nAdding testing support files using the refinery:testing generator..\n"
+        run_command("rails generate refinery:testing", {
           :cd => true,
-          :fail => "Could not run the refinerycms_testing generator successfully.",
+          :fail => "Could not run the refinery:testing generator successfully.",
           :bundler => true
         })
       end

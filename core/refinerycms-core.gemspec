@@ -365,7 +365,7 @@ Gem::Specification.new do |s|
     'lib',
     'lib/gemspec.rb',
     'lib/generators',
-    'lib/generators/refinerycms_generator.rb',
+    'lib/generators/cms_generator.rb',
     'lib/generators/templates',
     'lib/generators/templates/.gitignore',
     'lib/generators/templates/app',

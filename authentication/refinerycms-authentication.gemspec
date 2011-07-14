@@ -116,7 +116,7 @@ Gem::Specification.new do |s|
     'lib/authenticated_system.rb',
     'lib/gemspec.rb',
     'lib/generators',
-    'lib/generators/refinerycms_authentication_generator.rb',
+    'lib/generators/authentication_generator.rb',
     'lib/refinerycms-authentication.rb',
     'license.md',
     'refinerycms-authentication.gemspec',

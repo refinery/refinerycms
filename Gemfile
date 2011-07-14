@@ -67,5 +67,5 @@ gem 'jquery-rails'
 # gem 'refinerycms-page-images',  '~> 1.0'
 
 # Add i18n support (optional, you can remove this if you really want to).
-gem 'refinerycms-i18n',           '~> 1.1.0', :git => 'git://github.com/resolve/refinerycms-i18n'
+gem 'refinerycms-i18n',           '~> 1.1.0', :git => 'git://github.com/parndt/refinerycms-i18n'
 # END USER DEFINED

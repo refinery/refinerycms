@@ -1,7 +1,7 @@
 require 'refinery/generators'
 
 module ::Refinery
-  class RefinerycmsGenerator < ::Refinery::Generators::EngineInstaller
+  class CmsGenerator < ::Refinery::Generators::EngineInstaller
 
     engine_name :refinerycms
     source_root Pathname.new(File.expand_path('../templates', __FILE__))

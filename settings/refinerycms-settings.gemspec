@@ -83,7 +83,7 @@ Gem::Specification.new do |s|
     'lib',
     'lib/gemspec.rb',
     'lib/generators',
-    'lib/generators/refinerycms_settings_generator.rb',
+    'lib/generators/settings_generator.rb',
     'lib/refinerycms-settings.rb',
     'license.md',
     'refinerycms-settings.gemspec',
