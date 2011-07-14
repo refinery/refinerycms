@@ -101,7 +101,7 @@ Gem::Specification.new do |s|
     'db/migrate/20110307025652_translate_custom_title_on_pages.rb',
     'db/migrate/20110314213540_remove_translated_fields_from_pages.rb',
     'db/migrate/20110329080451_create_seo_meta.rb',
-    'db/migrate/20110606151235_add_template_columns.rb',
+    'db/migrate/20110606151235_create_add_template_columns.rb',
     'db/seeds',
     'db/seeds/pages.rb',
     'features',

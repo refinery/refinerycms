@@ -41,6 +41,8 @@ Gem::Specification.new do |s|
     'app/views/refinery',
     'app/views/refinery/sitemap',
     'app/views/refinery/sitemap/index.xml.builder',
+    'app/views/sitemap',
+    'app/views/sitemap/index.xml.builder',
     'autotest',
     'autotest/autotest.rb',
     'autotest/discover.rb',
