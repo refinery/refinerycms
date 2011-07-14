@@ -9,7 +9,7 @@
       :sign_out => 'logout',
       :sign_in => 'login',
       :sign_up => 'register'
-    }
+    } if ::Refinery::User.respond_to?(:devise)
 
     scope(:module => 'admin', :path => 'refinery') do
       # Override Devise's default after login redirection route.
