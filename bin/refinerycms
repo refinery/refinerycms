@@ -320,7 +320,7 @@ module Refinery
     def generators!
       # Run the newly activated Refinery CMS generator.
       puts "\n\nPreparing your application using the refinery:cms generator..\n"
-      run_command("rails generate refinery:cms", {
+      run_command("rails generate refinery:cms --force", {
         :cd => true,
         :fail => "Could not run the refinery:cms generator successfully.",
         :bundler => true
