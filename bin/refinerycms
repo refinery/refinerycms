@@ -260,7 +260,7 @@ module Refinery
       refinery_gems = refinery_gemfile_contents.match(/# REFINERY CMS =+.*# END REFINERY CMS =+/m)[0]
       refinery_gems.gsub!("# gem 'refinerycms'", "gem 'refinerycms'") # Enable refinerycms
       if @options[:testing] # Enable testing
-        refinery_gems.gsub!("# gem 'refinerycms-testing'", "gem 'refinerycms-testing'")
+        refinery_gems.gsub!("# gem 'refinerycms-testing'", "gem 'refinerycms-testing', :git => 'git://github.com/resolve/refinerycms.git'")
       end
 
       app_gemfile = @app_path.join('Gemfile')
@@ -275,7 +275,8 @@ module Refinery
       end
 
       # Specify the correct version of the Refinery CMS gem (may be git source).
-      src = Refinery.version !~ /\.pre$/ ? "'~> #{Refinery.version}'" : ":git => 'git://github.com/resolve/refinerycms'"
+      #src = Refinery.version !~ /\.pre$/ ? "'~> #{Refinery.version}'" : ":git => 'git://github.com/resolve/refinerycms'"
+      src = ":git => 'git://github.com/resolve/refinerycms.git'"
       find_and_replace('Gemfile', %r{gem 'refinerycms',.*}, "gem 'refinerycms',              #{src}")
 
       # Add in fog gem for Heroku
