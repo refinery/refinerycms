@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.version           = %q{1.1.0}
   s.summary           = %q{Core engine for Refinery CMS}
   s.description       = %q{The core of Refinery CMS. This handles the common functionality and is required by most engines}
-  s.date              = %q{2011-06-23}
+  s.date              = %q{2011-07-14}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
   s.rubyforge_project = %q{refinerycms}
@@ -318,8 +318,10 @@ Gem::Specification.new do |s|
     'app/views/refinery/wymiframe.html.erb',
     'config',
     'config/initializers',
+    'config/initializers/dragonfly_monkeypatch.rb',
     'config/initializers/kaminari_monkeypatches.rb',
     'config/locales',
+    'config/locales/bg.yml',
     'config/locales/cs.yml',
     'config/locales/da.yml',
     'config/locales/de.yml',

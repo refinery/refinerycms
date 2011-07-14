@@ -7,8 +7,7 @@ require gempath.join('base', 'lib', 'base', 'refinery')
 files = %w( Gemfile *.md **/**/{*,.rspec,.gitignore,.yardopts} ).map { |file| Pathname.glob(file) }.flatten
 rejection_patterns = [
   "^(authentication|base|core|dashboard|images|pages|resources|settings|testing)",
-  "^public/system",
-  "^public/.*/cache",
+  "^public/(system|.*/cache|refinery)",
   "^config/(application|boot|environment).rb$",
   "^config/initializers(\/.*\.rb)?$",
   "^config/(database|i18n\-js).yml$",
@@ -22,7 +21,8 @@ rejection_patterns = [
   "\.rbc$",
   "^tmp(|/.+?)$",
   ".gem$",
-  "^doc($|\/)"
+  "^doc($|\/)",
+  "^coverage($|\/)"
 ]
 
 files.reject! do |f|

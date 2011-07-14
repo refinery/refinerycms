@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.version           = %q{1.1.0}
   s.summary           = %q{Authentication engine for Refinery CMS}
   s.description       = %q{The default authentication engine for Refinery CMS}
-  s.date              = %q{2011-07-08}
+  s.date              = %q{2011-07-14}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
   s.rubyforge_project = %q{refinerycms}
@@ -67,6 +67,7 @@ Gem::Specification.new do |s|
     'app/views/refinery/users/new.html.erb',
     'config',
     'config/locales',
+    'config/locales/bg.yml',
     'config/locales/cs.yml',
     'config/locales/da.yml',
     'config/locales/de.yml',
@@ -126,6 +127,9 @@ Gem::Specification.new do |s|
     'spec/controllers/refinery/admin/users_controller_spec.rb',
     'spec/models',
     'spec/models/refinery',
-    'spec/models/refinery/user_spec.rb'
+    'spec/models/refinery/user_spec.rb',
+    'spec/requests',
+    'spec/requests/lost_password.rb',
+    'spec/requests/sign_up.rb'
   ]
 end
