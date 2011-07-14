@@ -129,7 +129,7 @@ Gem::Specification.new do |s|
     'spec/models/refinery',
     'spec/models/refinery/user_spec.rb',
     'spec/requests',
-    'spec/requests/lost_password.rb',
-    'spec/requests/sign_up.rb'
+    'spec/requests/lost_password_spec.rb',
+    'spec/requests/sign_up_spec.rb'
   ]
 end

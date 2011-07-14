@@ -5,7 +5,7 @@ require File.expand_path("../../../features/support/factories", __FILE__)
 module Refinery
   module Users
     describe "password recovery form" do
-      let(:user) { Factory(:user, :email => "refinery@refinerycms.com") }
+      let!(:user) { Factory(:refinery_user, :email => "refinery@refinerycms.com") }
 
       it "asks user to specify email address" do
         visit new_refinery_user_session_url
