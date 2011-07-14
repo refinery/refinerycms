@@ -22,6 +22,7 @@ require 'refinerycms-generators'
 require 'refinerycms-settings'
 require 'rails/generators'
 require 'rails/generators/migration'
+require File.expand_path('../generators/refinerycms_generator', __FILE__)
 
 module Refinery
 
