@@ -61,6 +61,13 @@ module ::Refinery
           s3_backend_string << "Refinery.s3_backend = !(ENV['S3_KEY'].nil? || ENV['S3_SECRET'].nil?)\n"
           append_file env, s3_backend_string.join("\n")
         end
+
+        unless env_file_contents =~ %r{Refinery.cloudfiles_backend}
+          cloudfiles_backend_string = ["# When true will use Rackspace Cloudfiles on your production machine"]
+          cloudfiles_backend_string << "# instead of the default file system for resources and images"
+          cloudfiles_backend_string << "Refinery.cloudfiles_backend = !(ENV['RACKSPACE_KEY'].nil? || ENV['RACKSPACE_USERNAME'].nil?)\n"
+          append_file env, cloudfiles_backend_string.join("\n")
+        end
       end
 
       # Stop pretending

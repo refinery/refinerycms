@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/parndt/refinerycms-i18n
-  revision: de08e18fa03b12b460555cfdfa26ef9ad71ca359
+  revision: 06f738bfc472086df40b77845fd900f3e95b5adb
   specs:
     refinerycms-i18n (1.1.0)
       refinerycms-core (~> 1.1.0)
@@ -15,9 +15,16 @@ GIT
 
 GIT
   remote: git://github.com/resolve/refinerycms-generators.git
-  revision: 3a70723575c1ce7f0ca9c1925d0f1d15c4879e13
+  revision: c01f6e7bfbff55e302c9741bc5d2ba8d386112f0
   specs:
     refinerycms-generators (1.1.0)
+
+GIT
+  remote: http://github.com/isotope11/dragonfly.git
+  revision: 523f24d72a4e6836cfd96ce2374ad1d14e8687e9
+  specs:
+    dragonfly (0.9.4)
+      rack
 
 PATH
   remote: .
@@ -161,8 +168,6 @@ GEM
       orm_adapter (~> 0.0.3)
       warden (~> 1.0.3)
     diff-lcs (1.1.2)
-    dragonfly (0.9.4)
-      rack
     erubis (2.7.0)
     execjs (1.2.0)
       multi_json (~> 1.0)
@@ -287,6 +292,7 @@ PLATFORMS
 
 DEPENDENCIES
   coffee-script
+  dragonfly!
   jquery-rails
   mysql2
   refinerycms!
