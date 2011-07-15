@@ -15,14 +15,6 @@ bg:
       remember_admin_location: "Запомнете, че административната зона на Refinery се намира в:"
       lets_start: Добре, нека да направим настройките Ви за вход...
       continue: Продължение...
-    admin:
-      menu:
-        reorder_menu: Пренареждане на менюто
-        reorder_menu_done: Запис на текущото подреждане на менюто
-      dialogs:
-        show:
-          save: Запис
-          cancel: Отказ
     crudify:
       created: 'Елемента "%{what}" бе създаден успешно.'
       updated: 'Елемента "%{what}" бе актуализиран успешно.'
@@ -32,6 +24,13 @@ bg:
       switch_to_your_website: Превключване към Вашия сайт
       switch_to_your_website_editor: Превключване към редактора на Вашия сайт
     admin:
+      menu:
+        reorder_menu: Пренареждане на менюто
+        reorder_menu_done: Запис на текущото подреждане на менюто
+      dialogs:
+        show:
+          save: Запис
+          cancel: Отказ
       continue_editing:
         save_and_continue_editing: 'Запис и продължение'
       form_actions:
