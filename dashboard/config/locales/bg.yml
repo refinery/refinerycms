@@ -18,7 +18,7 @@ bg:
         recent_activity:
           empty: Скоро не е извършвана дейност.
           latest_activity: Последни действия
-          latest_activity_message: 'Елемента %{what}(%{kind}) бе %{action}'
+          latest_activity_message: 'Елемента "%{what}(%{kind})" бе %{action}'
         recent_inquiries:
           latest_inquiries: Последни запитвания
     updated:
