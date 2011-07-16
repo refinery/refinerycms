@@ -61,29 +61,7 @@ heroku config:add S3_KEY=123key S3_SECRET=456secret S3_BUCKET=my_app_production
 If you have created your bucket in a region other than 'us-east-1' you need to add S3_REGION=s3region also.
 That's it! Heroku will restart your site and it should be live with S3 support.
 
-h3. Caching
 
-Setting the 'Cache Menu' setting to true will improve performance on Heroku but before doing this you will need to use the memcache addon which is free for up to 5 MB. 
-
-To add support for memcache you will need to do the following:
-
-<shell>
-heroku addons:add memcache 
-</shell>
-
-In your Gemfile add:
-
-<ruby>
-gem 'dalli'
-</ruby>
-
-And in your production.rb file add:
-
-<ruby>
-config.cache_store = :dalli_store
-</ruby> 
-
-For more information on the memcache addon, see http://devcenter.heroku.com/articles/memcache
 
 h3. Troubleshooting
 
