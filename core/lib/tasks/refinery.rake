@@ -157,14 +157,6 @@ namespace :refinery do
     end
   end
 
-  desc "Update the core files with the gem"
-  task :update => :environment do
-    puts "\nThe rake refinery:update task is DEPRECATED."
-    puts "Please use the generator instead:"
-    puts "rails generate refinerycms --update"
-    puts "\n"
-  end
-
   namespace :cache do
     desc "Eliminate existing cache files for javascript and stylesheet resources in default directories"
     task :clear => :environment do
