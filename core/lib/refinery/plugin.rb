@@ -96,7 +96,7 @@ module Refinery
     def add_activity(options)
       (self.plugin_activity ||= []) << Activity::new(options)
     end
-      
+
     def initialize
       # provide a default pathname to where this plugin is using its lib directory.
       depth = RUBY_VERSION >= "1.9.2" ? 4 : 3
