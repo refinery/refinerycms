@@ -2,6 +2,12 @@ require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
 
+# Performance patch from http://dev.theconversation.edu.au/post/7100138372
+if File.exists?(File.expand_path('../ideal_load_path'))
+  order = File.open('config/ideal_load_path').lines.map(&:chomp)
+  $LOAD_PATH.sort_by! {|x| order.index(x).to_i * -1 }
+end
+
 # If you have a Gemfile, require the gems listed there, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(:default, Rails.env) if defined?(Bundler)

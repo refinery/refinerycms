@@ -186,3 +186,15 @@ task :whitespace do
     puts "This doesn't work on systems other than OSX or Linux. Please use a custom whitespace tool for your platform '#{Config::CONFIG["host_os"]}'."
   end
 end
+
+desc "Recalculate $LOAD_PATH frequencies."
+task :recalculate_loaded_features_frequency => :environment do
+  require 'load_path_analyzer'
+
+  frequencies     = LoadPathAnalyzer.new($LOAD_PATH, $LOADED_FEATURES).frequencies
+  ideal_load_path = frequencies.to_a.sort_by(&:last).map(&:first)
+
+  Rails.root.join('config', 'ideal_load_path').open("w") do |f|
+    f.puts ideal_load_path
+  end
+end
