@@ -18,7 +18,8 @@ module Refinery
     class Engine < ::Rails::Engine
       isolate_namespace ::Refinery
 
-      initializer 'images-with-dragonfly' do |app|
+      initializer 'images-with-dragonfly', :before => :load_config_initializers do |app|
+        ::Refinery::Images::Dragonfly.setup!
         ::Refinery::Images::Dragonfly.attach!(app)
       end
 
