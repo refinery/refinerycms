@@ -131,7 +131,7 @@ namespace :refinery do
 
   desc "Un-crudify a method on a controller that uses crudify"
   task :uncrudify => :environment do
-    if (model_name = ENV["model"]).present? and (action = ENV["action"]).present?
+    if (controller_name = ENV["controller"]).present? and (action = ENV["action"]).present?
 
       crud_lines = Refinery.roots('core').join('lib', 'refinery', 'crud.rb').read
       if (matches = crud_lines.scan(/(\ +)(def #{action}.+?protected)/m).first).present? and
@@ -139,21 +139,21 @@ namespace :refinery do
         indent = method_lines.second.index(%r{[^ ]})
         crud_method = method_lines.join("\n").gsub(/^#{" " * indent}/, "  ")
 
-        default_crud_options = ::Refinery::Crud.default_options(model_name)
-        crud_method.gsub!('#{options[:redirect_to_url]}', default_crud_options[:redirect_to_url])
-        crud_method.gsub!('#{options[:conditions].inspect}', default_crud_options[:conditions].inspect)
-        crud_method.gsub!('#{options[:title_attribute]}', default_crud_options[:title_attribute])
-        crud_method.gsub!('#{singular_name}', default_crud_options[:singular_name])
-        crud_method.gsub!('#{class_name}', default_crud_options[:class_name])
-        crud_method.gsub!('#{plural_name}', default_crud_options[:plural_name])
+        crud_options = "#{controller_name}_controller".classify.constantize.try(:crudify_options) || {}
+        crud_method.gsub!('#{options[:redirect_to_url]}', crud_options[:redirect_to_url].to_s)
+        crud_method.gsub!('#{options[:conditions].inspect}', crud_options[:conditions].inspect)
+        crud_method.gsub!('#{options[:title_attribute]}', crud_options[:title_attribute])
+        crud_method.gsub!('#{singular_name}', crud_options[:singular_name])
+        crud_method.gsub!('#{class_name}', crud_options[:class_name])
+        crud_method.gsub!('#{plural_name}', crud_options[:plural_name])
         crud_method.gsub!('\\#{', '#{')
 
         puts crud_method
       end
     else
       puts "You didn't specify anything to uncrudify. Here's some examples:"
-      puts "rake refinery:uncrudify model=page action=create"
-      puts "rake refinery:uncrudify model=product action=new"
+      puts "rake refinery:uncrudify controller=refinery/admin/pages action=create"
+      puts "rake refinery:uncrudify controller=products action=new"
     end
   end
 
