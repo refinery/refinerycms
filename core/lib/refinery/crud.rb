@@ -55,6 +55,10 @@ module Refinery
         plural_name = options[:plural_name]
 
         module_eval %(
+          def self.crudify_options
+            #{options.inspect}
+          end
+
           prepend_before_filter :find_#{singular_name},
                                 :only => [:update, :destroy, :edit, :show]
 
