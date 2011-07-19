@@ -31,6 +31,11 @@ module Refinery
       end
 
       it "should use right geometry when given a thumbnail name" do
+        ::Refinery::Setting.find_or_set(:user_image_sizes, {
+          :small => '110x110>',
+          :medium => '225x255>',
+          :large => '450x450>'
+        }, :destroyable => false)
         name, geometry = ::Refinery::Image.user_image_sizes.first
         image.thumbnail(name).url.should == image.thumbnail(geometry).url
       end

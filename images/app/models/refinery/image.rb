@@ -1,7 +1,3 @@
-# encoding: utf-8
-require 'refinery/images/dragonfly'
-::Refinery::Images::Dragonfly.setup!
-
 module Refinery
   class Image < ActiveRecord::Base
 
