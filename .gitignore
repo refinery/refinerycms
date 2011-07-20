@@ -82,5 +82,7 @@ config/rackspace_cloudfiles.yml
 your_*.*
 db/schema.rb
 coverage
+public/refinery
+config/ideal_load_path
 
 # END REFINERY CMS DEVELOPMENT =================================================
