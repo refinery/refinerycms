@@ -25,11 +25,26 @@ module Refinery
       # <%= image_fu @model.image, '200x200' %> or with no thumbnail: <%= image_fu @model.image %>
       def image_fu(image, geometry = nil, options={})
         if image.present?
+          original_width = image.image_width
+          original_height = image.image_height
+          aspect_ratio = original_width / original_height
+          
+          if !geometry.nil? and geometry.match(/#$/)
+            new_width = geometry.split('x').first
+            new_height = geometry.split('x').last
+          elsif !geometry.nil?
+            new_width = geometry.split('x').first
+            new_height = geometry.split('x').last
+            new_aspect_ratio = width / height
+          else
+            new_width = original_width
+            new_height = original_height
+          end
           generated_image = image.thumbnail(geometry)
           image_tag(generated_image.url, {
             :alt => image.respond_to?(:title) ? image.title : image.image_name,
-            :width => generated_image.width,
-            :height => generated_image.height
+            :width => new_width,
+            :height => new_height
           }.merge(options))
         end
       end
