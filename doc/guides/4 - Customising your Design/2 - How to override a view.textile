@@ -13,7 +13,7 @@ If you want to override one of the views Refinery comes built with (_for example
 It's easy to get a copy of this file to modify locally. For example, for the footer, just run in the terminal:
 
 <shell>
-$ rake refinery:override view=shared/_footer.html
+$ rake refinery:override view=refinery/_footer.html
 </shell>
 
 Or, if you are using an old version of Refinery with a theme installed, try:
@@ -27,9 +27,9 @@ h3. Common Examples
 These are files we often override when creating a Refinery site.
 
 <shell>
-$ rake refinery:override view=pages/show
-$ rake refinery:override view=pages/home
-$ rake refinery:override view=shared/_content_page
+$ rake refinery:override view=refinery/pages/show
+$ rake refinery:override view=refinery/pages/home
+$ rake refinery:override view=refinery/_content_page
 </shell>
 
 h3. Tips and Tricks
