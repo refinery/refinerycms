@@ -69,7 +69,6 @@ class Image < ActiveRecord::Base
   # Intelligently works out dimensions for a thumbnail of this image based on the Dragonfly geometry string.
   def thumbnail_dimensions(geometry)
     geometry = geometry.to_s
-    aspect_ratio = nil
     width = self.image_width.to_f
     height = self.image_height.to_f
     geometry_width, geometry_height = geometry.to_s.split(%r{\#{1,2}|\+|>|!|x}im)[0..1].map(&:to_f)
