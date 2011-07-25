@@ -8,7 +8,7 @@ module Refinery
   end
 
   page_position = -1
-  
+
   unless ::Refinery::Page.where(:menu_match => "^/$").any?
     home_page = ::Refinery::Page.create!({:title => "Home",
                 :deletable => false,
@@ -40,7 +40,7 @@ module Refinery
   else
     page_position += 1
   end
-  
+
   unless ::Refinery::Page.by_title("About").any?
     about_us_page = ::Refinery::Page.create(:title => "About",
                 :deletable => true,

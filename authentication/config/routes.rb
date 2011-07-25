@@ -5,8 +5,8 @@
   scope(:module => 'refinery') do
     devise_for :'refinery/users', :class_name => "::Refinery::User", :module => 'refinery', :controllers => {
       :registrations => 'refinery/users'
-    }, 
-    :skip => [:registrations], 
+    },
+    :skip => [:registrations],
     :path_names => {
       :sign_out => 'logout',
       :sign_in => 'login',
