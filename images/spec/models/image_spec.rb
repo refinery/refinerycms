@@ -69,4 +69,30 @@ describe Image do
     end
   end
 
+  describe '#thumbnail_dimensions' do
+    it 'returns the correct dimensions for crop' do
+      dimensions = image.thumbnail_dimensions('200x200#ne')
+      dimensions.width.should == 200
+      dimensions.height.should == 200
+    end
+
+    it 'returns the correct dimensions for crop' do
+      dimensions = image.thumbnail_dimensions('100x150#c')
+      dimensions.width.should == 100
+      dimensions.height.should == 150
+    end
+
+    it 'returns the correct dimensions for resize' do
+      dimensions = image.thumbnail_dimensions('250x250>')
+      dimensions.width.should == 250
+      dimensions.height.should == 188
+    end
+
+    it 'returns the correct dimensions for resize' do
+      dimensions = image.thumbnail_dimensions('600x375>')
+      dimensions.width.should == 500
+      dimensions.height.should == 375
+    end
+  end
+
 end
