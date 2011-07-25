@@ -21,7 +21,7 @@
       # This will push a logged in user to the dashboard.
       get '/', :to => 'dashboard#index', :as => :refinery_root
 
-      scope(:path => 'refinery', :as => 'refinery_admin') do
+      scope(:as => 'refinery_admin') do
         resources :users, :except => :show
       end
     end
