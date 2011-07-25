@@ -5,11 +5,16 @@
   scope(:module => 'refinery') do
     devise_for :'refinery/users', :class_name => "::Refinery::User", :module => 'refinery', :controllers => {
       :registrations => 'refinery/users'
-    }, :path_names => {
+    }, 
+    :skip => [:registrations], 
+    :path_names => {
       :sign_out => 'logout',
       :sign_in => 'login',
       :sign_up => 'register'
-    } if ::Refinery::User.respond_to?(:devise)
+    } do
+      get '/refinery/users/register' => 'users#new', :as => :new_refinery_user_registration
+      post '/refinery/users' => 'users#create', :as => :refinery_user_registration
+    end if ::Refinery::User.respond_to?(:devise)
 
     scope(:module => 'admin', :path => 'refinery') do
       # Override Devise's default after login redirection route.
