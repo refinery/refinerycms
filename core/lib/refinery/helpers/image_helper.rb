@@ -1,3 +1,5 @@
+require 'ostruct'
+
 module Refinery
   module Helpers
     module ImageHelper
@@ -28,12 +30,12 @@ module Refinery
           original_width = image.image_width
           original_height = image.image_height
 
-          new_width, new_height = image_dimensions_for_geometry(image, geometry) if geometry
+          dimensions = image_dimensions_for_geometry(image, geometry) if geometry
 
           image_tag(image.thumbnail(geometry).url, {
             :alt => image.respond_to?(:title) ? image.title : image.image_name,
-            :width => new_width,
-            :height => new_height
+            :width => (dimensions.width if dimensions),
+            :height => (dimensions.height if dimensions)
           }.merge(options))
         end
       end
@@ -70,7 +72,7 @@ module Refinery
           end
         end
 
-        [width.to_i, height.to_i]
+        OpenStruct.new(:width => width.to_i, :height => height.to_i)
       end
     end
   end
