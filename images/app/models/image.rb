@@ -98,7 +98,7 @@ class Image < ActiveRecord::Base
       end
     end
 
-    OpenStruct.new(:width => width.to_i, :height => height.to_i)
+    {:width => width.to_i, :height => height.to_i}
   end
 
   # Returns a titleized version of the filename

@@ -30,13 +30,11 @@ module Refinery
           original_width = image.image_width
           original_height = image.image_height
 
-          dimensions = image.thumbnail_dimensions(geometry) if geometry
+          dimensions = (image.thumbnail_dimensions(geometry) rescue {})
 
           image_tag(image.thumbnail(geometry).url, {
             :alt => image.respond_to?(:title) ? image.title : image.image_name,
-            :width => (dimensions.width if dimensions),
-            :height => (dimensions.height if dimensions)
-          }.merge(options))
+          }.merge(dimensions).merge(options))
         end
       end
     end
