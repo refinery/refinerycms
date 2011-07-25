@@ -1,7 +1,5 @@
 require "spec_helper"
 
-#require File.expand_path("../../../features/support/factories", __FILE__)
-
 module Refinery
   module Users
     describe "password recovery" do
