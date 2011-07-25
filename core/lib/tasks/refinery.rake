@@ -116,7 +116,7 @@ namespace :refinery do
     else
       puts "You didn't specify anything to override. Here's some examples:"
       {
-        :view => ['pages/home', 'pages/home theme=demolicious', '**/*menu', 'shared/_menu_branch'],
+        :view => ['refinery/pages/home', 'refinery/pages/home theme=demolicious', '**/*menu', 'refinery/_menu_branch'],
         :javascript => %w(jquery),
         :stylesheet => %w(refinery/site_bar),
         :controller => %w(pages),
