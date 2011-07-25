@@ -27,21 +27,10 @@ module Refinery
         if image.present?
           original_width = image.image_width
           original_height = image.image_height
-          aspect_ratio = original_width / original_height
-          
-          if !geometry.nil? and geometry.match(/#$/)
-            new_width = geometry.split('x').first
-            new_height = geometry.split('x').last
-          elsif !geometry.nil?
-            new_width = geometry.split('x').first
-            new_height = geometry.split('x').last
-            new_aspect_ratio = width / height
-          else
-            new_width = original_width
-            new_height = original_height
-          end
-          generated_image = image.thumbnail(geometry)
-          image_tag(generated_image.url, {
+
+          new_width, new_height = image_dimensions_for_geometry(image, geometry) if geometry
+
+          image_tag(image.thumbnail(geometry).url, {
             :alt => image.respond_to?(:title) ? image.title : image.image_name,
             :width => new_width,
             :height => new_height
@@ -49,6 +38,40 @@ module Refinery
         end
       end
 
+      def image_dimensions_for_geometry(image, geometry)
+        geometry = geometry.to_s
+        aspect_ratio = nil
+        width = image.image_width.to_f
+        height = image.image_height.to_f
+        geometry_width, geometry_height = geometry.to_s.split(%r{\#{1,2}|\+|>|!|x}im)[0..1].map(&:to_f)
+        if (width * height > 0) && geometry =~ ::Dragonfly::ImageMagick::Processor::THUMB_GEOMETRY
+          if geometry =~ ::Dragonfly::ImageMagick::Processor::RESIZE_GEOMETRY
+            if geometry !~ %r{\d+x\d+>} || (geometry =~ %r{\d+x\d+>} && (width > geometry_width.to_f || height > geometry_height.to_f))
+              if geometry_width > geometry_height
+                width = if (aspect = (width / height)) >= 1
+                  geometry_height * aspect
+                else
+                  geometry_height / aspect
+                end
+                height = geometry_height
+              else
+                height = if (aspect = (height / width)) >= 1
+                  geometry_width * aspect
+                else
+                  geometry_width / aspect
+                end
+                width = geometry_width
+              end
+            end
+          else
+            # cropping
+            width = geometry_width
+            height = geometry_height
+          end
+        end
+
+        [width.to_i, height.to_i]
+      end
     end
   end
 end
