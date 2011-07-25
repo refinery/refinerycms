@@ -13,7 +13,7 @@
       :sign_up => 'register'
     } do
       get '/refinery/users/register' => 'users#new', :as => :new_refinery_user_registration
-      post '/refinery/users' => 'users#create', :as => :refinery_user_registration
+      post '/refinery/users/register' => 'users#create', :as => :refinery_user_registration
     end if ::Refinery::User.respond_to?(:devise)
 
     scope(:module => 'admin', :path => 'refinery') do
