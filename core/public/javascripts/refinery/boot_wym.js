@@ -263,8 +263,7 @@ WYMeditor.editor.prototype.loadIframe = function(iframe) {
 };
 
 WYMeditor.init = function() {
-  wymeditor_inputs = $('.wymeditor');
-  wymeditor_inputs = wymeditor_inputs.filter(function(index) {
+  wymeditor_inputs = $('.wymeditor').filter(function(index) {
     for (i=0; i < WYMeditor.INSTANCES.length; i++) {
       if (WYMeditor.INSTANCES[i]._element.attr('id') == $(this).attr('id')) {
         return false;
@@ -275,7 +274,7 @@ WYMeditor.init = function() {
   });
 
   wymeditor_inputs.each(function(input) {
-    if ((containing_field = $(this).parents('.field')).length > 0 && containing_field.get(0).style.height === '') {
+    if ((containing_field = $(this).parents('.field')).length > 0 && containing_field.get(0).style.height.replace('auto', '') === '') {
       containing_field.addClass('hide-overflow')
                       .css('height', $(this).outerHeight() - containing_field.offset().top + $(this).offset().top + 45);
     }
