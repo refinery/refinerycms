@@ -142,7 +142,7 @@ module Refinery
     # site_name becomes Site Name
     def title
       result = name.to_s.titleize
-      result += ' (' + scoping.titleize + ')' if scoping.is_a?(String)
+      result << " (#{scoping.titleize})" if scoping.is_a?(String)
       result
     end
 
