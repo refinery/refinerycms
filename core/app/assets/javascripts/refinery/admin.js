@@ -412,7 +412,7 @@ init_tooltips = function(args){
 var link_tester = {
   initialised: false
   , init: function(test_url, test_email) {
-    
+
     if (!this.initialised) {
       this.test_url    = test_url;
       this.test_email  = test_email;
@@ -488,7 +488,7 @@ var link_tester = {
 var link_dialog = {
   initialised: false
   , init: function(){
-    
+
     if (!this.initialised) {
       this.init_tabs();
       this.init_resources_submit();
@@ -627,7 +627,7 @@ var link_dialog = {
 var page_options = {
   initialised: false
   , init: function(enable_parts, new_part_url, del_part_url){
-    
+
     if (!this.initialised) {
       // set the page tabs up, but ensure that all tabs are shown so that when wymeditor loads it has a proper height.
       page_options.tabs = $('#page-tabs');
@@ -705,17 +705,17 @@ var page_options = {
             }, function(data, status){
               $('#submit_continue_button').remove();
               // Add a new tab for the new content section.
-              $(data).appendTo('#page_part_editors');
+              $('#page_part_editors').append(data);
               page_options.tabs.tabs('add', '#page_part_new_' + $('#new_page_part_index').val(), part_title);
               page_options.tabs.tabs('select', $('#new_page_part_index').val());
 
-              // hook into wymedtior to instruct it to select this new tab again once it has loaded.
+              // hook into wymeditor to instruct it to select this new tab again once it has loaded.
               WYMeditor.onload_functions.push(function() {
-                $('#page_part_new_' + $('#new_page_part_index').val()).appendTo('#page_part_editors');
                 page_options.tabs.tabs('select', $('#new_page_part_index').val());
               });
 
               // turn the new textarea into a wymeditor.
+              $('#page_part_new_' + $('#new_page_part_index').val()).appendTo('#page_part_editors')
               WYMeditor.init();
 
               // Wipe the title and increment the index counter by one.
@@ -766,7 +766,7 @@ var image_dialog = {
   , callback: null
 
   , init: function(callback){
-    
+
     if (!this.initialised) {
       this.callback = callback;
       this.init_tabs();
@@ -887,7 +887,7 @@ var image_dialog = {
 var list_reorder = {
   initialised: false
   , init: function() {
-    
+
     if (!this.initialised) {
       $('#reorder_action').click(list_reorder.enable_reordering);
       $('#reorder_action_done').click(list_reorder.disable_reordering);
@@ -981,12 +981,7 @@ var list_reorder = {
   }
 
   , restore_controls: function(e) {
-    if (list_reorder.tree && !$.browser.msie) {
-      list_reorder.sortable_list.add(list_reorder.sortable_list.find('ul, li, div')).draggable({ disabled: true });
-    } else {
-      $(list_reorder.sortable_list).sortable('destroy');
-    }
-    $(list_reorder.sortable_list).removeClass('reordering, ui-sortable');
+    $(list_reorder.sortable_list).removeClass('reordering');
 
     $('#sortable_list .actions, .sortable_list .actions, #site_bar, header > *:not(script)').fadeTo(250, 1);
     $('#actions *:not("#reorder_action_done, #reorder_action")').not($('#reorder_action_done').parents('li, ul, div')).fadeTo(250, 1, function() {
@@ -1012,7 +1007,7 @@ var image_picker = {
   }
 
   , init: function(new_options){
-    
+
     if (!this.initialised) {
       this.options = $.extend(this.options, new_options);
       $(this.options.picker_container).find(this.options.remove_image_button)
@@ -1069,7 +1064,7 @@ var resource_picker = {
   , callback: null
 
   , init: function(callback) {
-    
+
     if (!this.initialised) {
       this.callback = callback;
       this.initialised = true;

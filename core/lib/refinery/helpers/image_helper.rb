@@ -1,3 +1,5 @@
+require 'ostruct'
+
 module Refinery
   module Helpers
     module ImageHelper
@@ -25,25 +27,16 @@ module Refinery
       # <%= image_fu @model.image, '200x200' %> or with no thumbnail: <%= image_fu @model.image %>
       def image_fu(image, geometry = nil, options={})
         if image.present?
-          # call rails' image tag function with default alt tag.
-          # if any other options were supplied these are merged in and can replace the defaults.
-          # if the geomtry is nil, then we know the image height and width already.
-          # detect nil geometry or cropping presence which is where we can guess the dimensions
-          unless geometry.nil? or !(split_geometry = geometry.to_s.split('#')).many? or !(split_geometry = split_geometry.first.split('x')).many?
-            image_width, image_height = split_geometry
-          else
-            image_width = nil
-            image_height = nil
-          end
+          original_width = image.image_width
+          original_height = image.image_height
+
+          dimensions = (image.thumbnail_dimensions(geometry) rescue {})
 
           image_tag(image.thumbnail(geometry).url, {
             :alt => image.respond_to?(:title) ? image.title : image.image_name,
-            :width => image_width,
-            :height => image_height
-          }.merge(options))
+          }.merge(dimensions).merge(options))
         end
       end
-
     end
   end
 end
