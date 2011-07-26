@@ -116,7 +116,7 @@ module Refinery
         return (value.is_a?(Hash) ? value[:value] : value) unless (table_exists? rescue false)
 
         scoping = (value[:scoping] if value.is_a?(Hash) and value.has_key?(:scoping))
-        setting = find_or_initialize_by_name_and_scoping(:name => name.to_s, :scoping => scoping)
+        setting = find_or_initialize_by_name_and_scoping(name.to_s, scoping)
 
         # you could also pass in {:value => 'something', :scoping => 'somewhere'}
         unless value.is_a?(Hash) and value.has_key?(:value)
