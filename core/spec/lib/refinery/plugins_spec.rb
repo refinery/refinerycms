@@ -6,6 +6,7 @@ module Refinery
       isolate_namespace ::Refinery
       ::Refinery::Plugin.register do |plugin|
         plugin.name = "my_plugin"
+        plugin.hide_from_menu = true
       end
     end
   end
@@ -15,6 +16,7 @@ module Refinery
       isolate_namespace ::Refinery
       ::Refinery::Plugin.register do |plugin|
         plugin.name = "my_other_plugin"
+        plugin.hide_from_menu = true
       end
     end
   end
