@@ -23,6 +23,7 @@ gemspec
 # gem 'refinerycms', '~> 1.1.0'
 gem 'refinerycms-generators', '~> 1.1.0', :git => 'git://github.com/resolve/refinerycms-generators.git'
 gem 'seo_meta', :git => 'git://github.com/parndt/seo_meta.git'
+gem 'globalize3', :git => 'git://github.com/svenfuchs/globalize3.git'
 
 group :development, :test do
   # To use refinerycms-testing, uncomment it (if it's commented out) and run 'bundle install'
