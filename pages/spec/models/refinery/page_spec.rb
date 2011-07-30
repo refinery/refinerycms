@@ -3,12 +3,9 @@ require 'spec_helper'
 module Refinery
   describe Page do
 
-    let(:page) do
-      ::Refinery::Page.create!({
-        :title => 'RSpec is great for testing too',
-        :deletable => true
-      })
-    end
+    let(:page) {
+      ::Refinery::Page.create!(:title => 'RSpec is great for testing too', :deletable => true)
+    }
     let(:child) { page.children.create(:title => 'The child page') }
 
     def page_cannot_be_destroyed
@@ -54,7 +51,7 @@ module Refinery
       end
 
       it 'or normally ;-)' do
-        child.path({:reversed => false}).should == 'The child page - RSpec is great for testing too'
+        child.path(:reversed => false).should == 'The child page - RSpec is great for testing too'
       end
 
       it 'returns its url' do
@@ -142,15 +139,12 @@ module Refinery
 
     context "should add url suffix" do
       let(:reserved_word) { ::Refinery::Page.friendly_id_config.reserved_words.last }
-      let(:page_with_reserved_title) do
-        ::Refinery::Page.create!({
-          :title => reserved_word,
-          :deletable => true
-        })
-      end
-      let(:child_with_reserved_title_parent) do
+      let(:page_with_reserved_title) {
+        ::Refinery::Page.create!(:title => reserved_word, :deletable => true)
+      }
+      let(:child_with_reserved_title_parent) {
         page_with_reserved_title.children.create(:title => 'reserved title child page')
-      end
+      }
 
       before { turn_on_marketable_urls }
 
