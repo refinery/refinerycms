@@ -10,13 +10,7 @@
                     :class => ("active" if active),
                     :id => "plugin_#{plugin.name}" %>
 
-        <% if plugin.submenu_items.any? %>
-          <ul<%= " style='display: none'" unless active %>>
-            <% plugin.submenu_items.each do |title, url| %>
-              <li><%= link_to title, url %></li>
-            <% end %>
-          </ul>
-        <% end %>
+        <%= render plugin.actions if plugin.actions.present? %>
       </li>
     <% end -%>
   </ul>

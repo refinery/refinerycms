@@ -22,7 +22,6 @@ module Refinery
             :title => 'username'
           }
           plugin.url = app.routes.url_helpers.refinery_admin_users_path
-          plugin.submenu_items = {'Add a user' => app.routes.url_helpers.new_refinery_admin_user_path}
         end
       end
 

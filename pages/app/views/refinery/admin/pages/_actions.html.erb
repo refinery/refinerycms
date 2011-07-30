@@ -1,11 +1,8 @@
 <ul>
   <li>
-    <%= render :partial => "/refinery/admin/search", :locals => {:url => main_app.refinery_admin_pages_path} %>
-  </li>
-  <li>
     <%= link_to t('.create_new_page'), main_app.new_refinery_admin_page_path, :class => "add_icon" %>
   </li>
-<% if @pages.many? and !searching? %>
+<% if @design_finalised && @pages && @pages.many? and !searching? %>
   <li>
     <%= link_to t('.reorder_pages'), main_app.refinery_admin_pages_path,
                 :id => "reorder_action",

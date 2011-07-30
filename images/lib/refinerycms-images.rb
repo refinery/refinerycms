@@ -34,8 +34,6 @@ module Refinery
             :class => Image
           }
           plugin.url = app.routes.url_helpers.refinery_admin_images_path
-          plugin.submenu_items = {"Upload an image" => app.routes.url_helpers.new_refinery_admin_image_path(:dialog => true, :width => 600, :height => 300)}
-
         end
       end
     end

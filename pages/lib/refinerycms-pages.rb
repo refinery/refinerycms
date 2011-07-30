@@ -60,9 +60,6 @@ module Refinery
             :created_image => "page_add.png",
             :updated_image => "page_edit.png"
           }
-          plugin.submenu_items = {
-            'Create a Page' => app.routes.url_helpers.new_refinery_admin_page_path
-          }
         end
       end
 
