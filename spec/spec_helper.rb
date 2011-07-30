@@ -20,7 +20,10 @@ def setup_environment
   # This file is copied to ~/spec when you run 'rails generate rspec'
   # from the project root directory.
   ENV["RAILS_ENV"] ||= 'test'
-  setup_simplecov if defined?(SimpleCov) # simplecov should be loaded _before_ models, controllers, etc are loaded.
+
+  # simplecov should be loaded _before_ models, controllers, etc are loaded.
+  setup_simplecov unless ENV["SKIP_COV"] || !defined?(SimpleCov)
+
   require File.expand_path("../../config/environment", __FILE__)
   require 'rspec/rails'
 
