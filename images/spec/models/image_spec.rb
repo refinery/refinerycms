@@ -69,35 +69,46 @@ describe Image do
     end
   end
 
-  describe '#thumbnail_dimensions' do
-    it 'returns its own dimensions with nil geometry' do
-      dimensions = image.thumbnail_dimensions(nil)
-      dimensions[:width].should == 500
-      dimensions[:height].should == 375
+  # The sample image has dimensions 500x375
+  describe '#thumbnail_dimensions returns correctly with' do
+    it 'nil' do
+      image.thumbnail_dimensions(nil).values.should == [500, 375]
     end
 
-    it 'returns the correct dimensions for crop' do
-      dimensions = image.thumbnail_dimensions('200x200#ne')
-      dimensions[:width].should == 200
-      dimensions[:height].should == 200
-
-      dimensions = image.thumbnail_dimensions('100x150#c')
-      dimensions[:width].should == 100
-      dimensions[:height].should == 150
+    it '200x200#ne' do
+      image.thumbnail_dimensions('200x200#ne').values.should == [200, 200]
     end
 
-    it 'returns the correct dimensions for resize' do
-      dimensions = image.thumbnail_dimensions('250x250>')
-      dimensions[:width].should == 250
-      dimensions[:height].should == 188
+    it '100x150#c' do
+      image.thumbnail_dimensions('100x150#c').values.should == [100, 150]
+    end
 
-      dimensions = image.thumbnail_dimensions('600x375>')
-      dimensions[:width].should == 500
-      dimensions[:height].should == 375
+    it '250x250>' do
+      image.thumbnail_dimensions('250x250>').values.should == [250, 188]
+    end
 
-      dimensions = image.thumbnail_dimensions('200x150')
-      dimensions[:width].should == 126
-      dimensions[:height].should == 150
+    it '600x375>' do
+      image.thumbnail_dimensions('600x375>').values.should == [500, 375]
+    end
+    
+    it '100x475>' do
+      image.thumbnail_dimensions('100x475>').values.should == [100, 75]
+    end
+
+    it '100x150' do
+      image.thumbnail_dimensions('100x150').values.should == [100, 75]
+    end
+
+    it '200x150' do
+      image.thumbnail_dimensions('200x150').values.should == [200, 150]
+    end
+
+    it '300x150' do
+      image.thumbnail_dimensions('300x150').values.should == [200, 150]
+    end
+    
+    it '5x5' do
+      image.thumbnail_dimensions('5x5').values.should == [5, 4]
     end
   end
 
