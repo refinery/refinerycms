@@ -1,28 +1,20 @@
 fi:
-  js:
-    admin:
-      confirm_changes: "Kaikki muutoksesi menetetään. Oletko varma, että haluat jatkaa tallentamatta?"
-  plugins:
-    refinery_core:
-      title: Refinery
-      description: Refineryn keskuspalikka
-    refinery_dialogs:
-      title: Dialogit
-      description: Refineryn dialogipalikka
-  welcome:
-    there_are_no_users: "Käyttäjiä ei vielä ole, joten asennetaan sinut ensin."
-    remember_admin_location: "Muista, että Refineryn ylläpito on seuraavassa osoitteessa:"
-    lets_start: "Tehdään sinulle käyttäjä, että voit kirjautua..."
-    continue: Jatka...
-  admin:
-    menu:
-      reorder_menu: Muuta valikon järjestystä
-      reorder_menu_done: Tallenna
-    dialogs:
-      show:
-        save: Tallenna
-        cancel: Peru
   refinery:
+    js:
+      admin:
+        confirm_changes: "Kaikki muutoksesi menetetään. Oletko varma, että haluat jatkaa tallentamatta?"
+    plugins:
+      refinery_core:
+        title: Refinery
+        description: Refineryn keskuspalikka
+      refinery_dialogs:
+        title: Dialogit
+        description: Refineryn dialogipalikka
+    welcome:
+      there_are_no_users: "Käyttäjiä ei vielä ole, joten asennetaan sinut ensin."
+      remember_admin_location: "Muista, että Refineryn ylläpito on seuraavassa osoitteessa:"
+      lets_start: "Tehdään sinulle käyttäjä, että voit kirjautua..."
+      continue: Jatka...
     crudify:
       created: '%{what} lisättiin onnistuneesti.'
       updated: '%{what} päivitettiin onnistuneesti.'
@@ -32,6 +24,13 @@ fi:
       switch_to_your_website: Siirry nettisivustollesi
       switch_to_your_website_editor: Siirry sivueditoriin
     admin:
+      menu:
+        reorder_menu: Muuta valikon järjestystä
+        reorder_menu_done: Tallenna
+      dialogs:
+        show:
+          save: Tallenna
+          cancel: Peru
       continue_editing:
         save_and_continue_editing: 'Tallenna & jatka muokkausta'
       form_actions:

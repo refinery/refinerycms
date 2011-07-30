@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.version           = %q{1.1.0}
   s.summary           = %q{Core engine for Refinery CMS}
   s.description       = %q{The core of Refinery CMS. This handles the common functionality and is required by most engines}
-  s.date              = %q{2011-06-23}
+  s.date              = %q{2011-07-26}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
   s.rubyforge_project = %q{refinerycms}
@@ -17,12 +17,12 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'refinerycms-base',            '= 1.1.0'
   s.add_dependency 'refinerycms-settings',        '= 1.1.0'
-  s.add_dependency 'refinerycms-generators',      '~> 1.0'
+  s.add_dependency 'refinerycms-generators',      '~> 1.1'
   s.add_dependency 'acts_as_indexed',             '~> 0.7'
   s.add_dependency 'friendly_id_globalize3',      '~> 3.2.1'
   s.add_dependency 'globalize3',                  '~> 0.1'
   s.add_dependency 'awesome_nested_set',          '~> 2.0'
-  s.add_dependency 'rails',                       '>= 3.1.0.rc4'
+  s.add_dependency 'rails',                       '>= 3.1.0.rc5'
   s.add_dependency 'truncate_html',               '~> 0.5'
   s.add_dependency 'kaminari',                    '~> 0.12'
 
@@ -318,8 +318,10 @@ Gem::Specification.new do |s|
     'app/views/refinery/wymiframe.html.erb',
     'config',
     'config/initializers',
+    'config/initializers/dragonfly_monkeypatch.rb',
     'config/initializers/kaminari_monkeypatches.rb',
     'config/locales',
+    'config/locales/bg.yml',
     'config/locales/cs.yml',
     'config/locales/da.yml',
     'config/locales/de.yml',
@@ -363,7 +365,7 @@ Gem::Specification.new do |s|
     'lib',
     'lib/gemspec.rb',
     'lib/generators',
-    'lib/generators/refinerycms_generator.rb',
+    'lib/generators/cms_generator.rb',
     'lib/generators/templates',
     'lib/generators/templates/.gitignore',
     'lib/generators/templates/app',

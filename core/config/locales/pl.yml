@@ -1,25 +1,17 @@
 pl:
-  plugins:
-    refinery_core:
-      title: Refinery
-      description: Podstawa Refinery
-    refinery_dialogs:
-      title: Okienka dialogowe
-      description: Refinery dialogs plugin
-  welcome:
-    there_are_no_users: Nie ma jeszcze żadnych użytkowników, więc na początek pomożemy Ci się przygotować.
-    remember_admin_location: "Pamiętaj, strefa administracyjna Refinery ma następujący adres: "
-    lets_start: OK, przygotujmy Cię tak, żeby można było Cię zalogować...
-    continue: Kontynuuj...
-  admin:
-    menu:
-      reorder_menu: Zmień kolejność menu
-      reorder_menu_done: Zmiana kolejności zakończona
-    dialogs:
-      show:
-        save: Zapisz
-        cancel: Zrezygnuj
   refinery:
+    plugins:
+      refinery_core:
+        title: Refinery
+        description: Podstawa Refinery
+      refinery_dialogs:
+        title: Okienka dialogowe
+        description: Refinery dialogs plugin
+    welcome:
+      there_are_no_users: Nie ma jeszcze żadnych użytkowników, więc na początek pomożemy Ci się przygotować.
+      remember_admin_location: "Pamiętaj, strefa administracyjna Refinery ma następujący adres: "
+      lets_start: OK, przygotujmy Cię tak, żeby można było Cię zalogować...
+      continue: Kontynuuj...
     crudify:
       created: Skutecznie dodano %{what}.
       updated: Skutecznie uaktualniono %{what}.
@@ -29,6 +21,13 @@ pl:
       switch_to_your_website: Przełącz na Twoją stronę
       switch_to_your_website_editor: Przełącz na edytor strony
     admin:
+      menu:
+        reorder_menu: Zmień kolejność menu
+        reorder_menu_done: Zmiana kolejności zakończona
+      dialogs:
+        show:
+          save: Zapisz
+          cancel: Zrezygnuj
       continue_editing:
         save_and_continue_editing: Zapisz i kontynuuj edycję
       form_actions:

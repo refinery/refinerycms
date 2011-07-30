@@ -21,6 +21,9 @@ gemspec
 # Anything you put in here will be overridden when the app gets updated.
 
 # gem 'refinerycms', '~> 1.1.0'
+gem 'refinerycms-generators', '~> 1.1.0', :git => 'git://github.com/resolve/refinerycms-generators.git'
+gem 'seo_meta', :git => 'git://github.com/parndt/seo_meta.git'
+gem 'globalize3', :git => 'git://github.com/svenfuchs/globalize3.git'
 
 group :development, :test do
   # To use refinerycms-testing, uncomment it (if it's commented out) and run 'bundle install'
@@ -33,6 +36,13 @@ end
 
 # REFINERY CMS DEVELOPMENT ====================================================
 
+gem 'therubyracer'
+
+# Bundle edge Rails instead:
+# gem 'rails', :git => 'git://github.com/rails/rails.git', :branch => '3-1-stable'
+# gem 'rack', :git => 'git://github.com/rack/rack.git'
+# gem 'arel', :git => 'git://github.com/rails/arel.git'
+
 if RUBY_PLATFORM == 'java'
   gem 'activerecord-jdbcsqlite3-adapter', '>= 1.0.2', :platform => :jruby
 else
@@ -40,16 +50,8 @@ else
   gem 'mysql2'
 end
 
-gem 'rails'
-gem 'rack'#, :git => "git://github.com/rack/rack.git"
-gem 'arel'#, :git => "https://github.com/rails/arel.git"
-gem 'friendly_id_globalize3'#, :path => "../tmp/friendly_id"
-gem 'therubyracer'
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails'
-
 # Asset template engines
-gem 'sass-rails', '~> 3.1.0.rc'
+gem 'sass-rails', '>= 3.1.0.rc.5'
 gem 'coffee-script'
 gem 'uglifier'
 gem "pjax-rails", "~> 0.1.4"
@@ -67,5 +69,5 @@ gem 'jquery-rails'
 # gem 'refinerycms-page-images',  '~> 1.0'
 
 # Add i18n support (optional, you can remove this if you really want to).
-gem 'refinerycms-i18n',           '~> 1.1.0', :git => 'git://github.com/resolve/refinerycms-i18n'
+gem 'refinerycms-i18n',           '~> 1.1.0', :git => 'git://github.com/parndt/refinerycms-i18n'
 # END USER DEFINED

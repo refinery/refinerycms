@@ -1,25 +1,17 @@
 da:
-  plugins:
-    refinery_core:
-      title: Refinery
-      description: Core refinery plugin
-    refinery_dialogs:
-      title: Dialogs
-      description: Refinery dialogs plugin
-  welcome:
-    there_are_no_users: Der er ingen brugere endnu, så vi begynder med at oprette en bruger til dig.
-    remember_admin_location: "Husk, du logger på Refinerys administration her:"
-    lets_start: Lad os få dig oprettet, så du kan logge på...
-    continue: Fortsæt...
-  admin:
-    menu:
-      reorder_menu: Omorganisér menuen
-      reorder_menu_done: Jeg er færdig med omorganiseringen
-    dialogs:
-      show:
-        save: Gem
-        cancel: Annullér
   refinery:
+    plugins:
+      refinery_core:
+        title: Refinery
+        description: Core refinery plugin
+      refinery_dialogs:
+        title: Dialogs
+        description: Refinery dialogs plugin
+    welcome:
+      there_are_no_users: Der er ingen brugere endnu, så vi begynder med at oprette en bruger til dig.
+      remember_admin_location: "Husk, du logger på Refinerys administration her:"
+      lets_start: Lad os få dig oprettet, så du kan logge på...
+      continue: Fortsæt...
     crudify:
       created: '%{what} er oprettet.'
       updated: '%{what} er opdateret.'
@@ -29,6 +21,13 @@ da:
       switch_to_your_website: Vis website
       switch_to_your_website_editor: Redigér website
     admin:
+      menu:
+        reorder_menu: Omorganisér menuen
+        reorder_menu_done: Jeg er færdig med omorganiseringen
+      dialogs:
+        show:
+          save: Gem
+          cancel: Annullér
       continue_editing:
         save_and_continue_editing: Gem og fortsæt med redigering
       form_actions:

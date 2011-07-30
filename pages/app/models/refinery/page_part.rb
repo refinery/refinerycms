@@ -15,14 +15,12 @@ module Refinery
     end
 
     before_save :normalise_text_fields
-    if defined?(::PagePart::Translation)
-      ::Refinery::PagePart::Translation.module_eval do
-        attr_accessible :locale
-      end
-    end
+
+    self.translation_class.send :attr_accessible, :locale if self.respond_to?(:translation_class)
+
   protected
     def normalise_text_fields
-      unless body.blank? or body =~ /^\</
+      if body.present? && body !~ /^\</
         self.body = "<p>#{body.gsub("\r\n\r\n", "</p><p>").gsub("\r\n", "<br/>")}</p>"
       end
     end

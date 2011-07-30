@@ -1,7 +1,7 @@
 require 'refinery/generators'
 
 module ::Refinery
-  class RefinerycmsGenerator < ::Refinery::Generators::EngineInstaller
+  class CmsGenerator < ::Refinery::Generators::EngineInstaller
 
     engine_name :refinerycms
     source_root Pathname.new(File.expand_path('../templates', __FILE__))
@@ -24,7 +24,7 @@ module ::Refinery
 
       unless self.options[:update]
         # First, effectively move / rename files that get in the way of Refinery CMS
-        %w(public/index.html app/views/layouts/application.html.erb public/javascripts/rails.js).each do |roadblock|
+        %w(public/index.html app/views/layouts/application.html.erb app/assets/javascripts/rails.js app/assets/stylesheets/application.css).each do |roadblock|
           if (roadblock_path = Rails.root.join(roadblock)).file?
             create_file "#{roadblock}.backup",
                         :verbose => true do roadblock_path.read end
@@ -34,14 +34,14 @@ module ::Refinery
 
         # Copy asset files (JS, CSS) so they're ready to use.
         %w(application.css formatting.css home.css theme.css).map{ |ss|
-          Refinery.roots('core').join('public', 'stylesheets', ss)
+          Refinery.roots('core').join('app', 'assets', 'stylesheets', ss)
         }.reject{|ss| !ss.file?}.each do |stylesheet|
           copy_file stylesheet,
-                    Rails.root.join('public', 'stylesheets', stylesheet.basename),
+                    Rails.root.join('app', 'assets', 'stylesheets', stylesheet.basename),
                     :verbose => true
         end
-        copy_file Refinery.roots('core').join('public', 'javascripts', 'admin.js'),
-                  Rails.root.join('public', 'javascripts', 'admin.js'),
+        copy_file Refinery.roots('core').join('app', 'assets', 'javascripts', 'admin.js'),
+                  Rails.root.join('app', 'assets', 'javascripts', 'admin.js'),
                   :verbose => true
       end
 
@@ -88,7 +88,6 @@ module ::Refinery
                   :verbose => self.options[:update]
       end
 
-
       # Append seeds.
       create_file "db/seeds.rb" unless Rails.root.join('db', 'seeds.rb').file?
       append_file 'db/seeds.rb', :verbose => true do
@@ -117,8 +116,8 @@ module ::Refinery
 
       # Ensure i18n exists and is up to date.
       if ::Refinery.i18n_enabled?
-        require 'generators/refinerycms_i18n_generator'
-        ::RefinerycmsI18n.new.generate
+        require 'generators/i18n_generator'
+        ::Refinery::I18nGenerator.new.generate
       end
     end
 

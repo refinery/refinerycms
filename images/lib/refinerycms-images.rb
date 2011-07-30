@@ -1,6 +1,7 @@
 require 'dragonfly'
 require 'rack/cache'
 require 'refinerycms-core'
+require File.expand_path('../generators/images_generator', __FILE__)
 
 module Refinery
   module Images
@@ -17,7 +18,8 @@ module Refinery
     class Engine < ::Rails::Engine
       isolate_namespace ::Refinery
 
-      initializer 'images-with-dragonfly' do |app|
+      initializer 'images-with-dragonfly', :before => :load_config_initializers do |app|
+        ::Refinery::Images::Dragonfly.setup!
         ::Refinery::Images::Dragonfly.attach!(app)
       end
 
@@ -27,7 +29,7 @@ module Refinery
           plugin.name = 'refinery_images'
           plugin.directory = 'images'
           plugin.version = %q{1.1.0}
-          plugin.menu_match = /(refinery|admin)\/image(_dialog)?s$/
+          plugin.menu_match = /refinery\/image(_dialog)?s$/
           plugin.activity = {
             :class => Image
           }

@@ -1,25 +1,17 @@
 sv:
-  plugins:
-    refinery_core:
-      title: Refinery
-      description: Kärntillågsprogram för Refinery
-    refinery_dialogs:
-      title: Dialoger
-      description: Refinery dialoger tillägsprogram
-  welcome:
-    there_are_no_users: Det finns inga användare ännu, så vi skapar en för dig först.
-    remember_admin_location: "Kom ihåg att kontrollpanelen nås via:"
-    lets_start: Okej, låt oss skapa en användare för dig så du kan logga in...
-    continue: Fortsätt...
-  admin:
-    menu:
-      reorder_menu: Ändra ordning på meny
-      reorder_menu_done: Ordningen på menyn ändrades
-    dialogs:
-      show:
-        save: Spara
-        cancel: Avbryt
   refinery:
+    plugins:
+      refinery_core:
+        title: Refinery
+        description: Kärntillågsprogram för Refinery
+      refinery_dialogs:
+        title: Dialoger
+        description: Refinery dialoger tillägsprogram
+    welcome:
+      there_are_no_users: Det finns inga användare ännu, så vi skapar en för dig först.
+      remember_admin_location: "Kom ihåg att kontrollpanelen nås via:"
+      lets_start: Okej, låt oss skapa en användare för dig så du kan logga in...
+      continue: Fortsätt...
     crudify:
       created: '%{what} lades till.'
       updated: '%{what} uppdaterades.'
@@ -29,6 +21,13 @@ sv:
       switch_to_your_website: Byt till din webbplats
       switch_to_your_website_editor: Byt till din webbplats-redigerare
     admin:
+      menu:
+        reorder_menu: Ändra ordning på meny
+        reorder_menu_done: Ordningen på menyn ändrades
+      dialogs:
+        show:
+          save: Spara
+          cancel: Avbryt
       continue_editing:
         save_and_continue_editing: Spara & fortsätt redigera
       form_actions:

@@ -1,25 +1,17 @@
 cs:
-  plugins:
-    refinery_core:
-      title: Refinery
-      description: Core refinery plugin
-    refinery_dialogs:
-      title: Dialogs
-      description: Refinery dialogs plugin
-  welcome:
-    there_are_no_users: Nemáme žádné uživatele, proto nyní jednoho vytvoříme.
-    remember_admin_location: "Zapamatujte si adresu k Refinery administraci:"
-    lets_start: Nejdříve vytvoříme uživatelský účet, ať se máme jak přihlásit...
-    continue: Pokračovat...
-  refinery:  
-    admin:
-      menu:
-        reorder_menu: Přeuspořádat menu
-        reorder_menu_done: Uložit toto pořadí
-      dialogs:
-        show:
-          save: Uložit
-          cancel: Storno
+  refinery:
+    plugins:
+      refinery_core:
+        title: Refinery
+        description: Core refinery plugin
+      refinery_dialogs:
+        title: Dialogs
+        description: Refinery dialogs plugin
+    welcome:
+      there_are_no_users: Nemáme žádné uživatele, proto nyní jednoho vytvoříme.
+      remember_admin_location: "Zapamatujte si adresu k Refinery administraci:"
+      lets_start: Nejdříve vytvoříme uživatelský účet, ať se máme jak přihlásit...
+      continue: Pokračovat...
     crudify:
       created: '%{what} byl úspěšně vytvořen.'
       updated: '%{what} byl úspěšně aktualizován.'
@@ -29,6 +21,13 @@ cs:
       switch_to_your_website: Přepnout na web
       switch_to_your_website_editor: Přepnout do editoru
     admin:
+      menu:
+        reorder_menu: Přeuspořádat menu
+        reorder_menu_done: Uložit toto pořadí
+      dialogs:
+        show:
+          save: Uložit
+          cancel: Storno
       continue_editing:
         save_and_continue_editing: Uložit a pokračovat v editaci
       form_actions:

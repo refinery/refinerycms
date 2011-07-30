@@ -31,6 +31,11 @@ module Refinery
       end
 
       it "should use right geometry when given a thumbnail name" do
+        ::Refinery::Setting.find_or_set(:user_image_sizes, {
+          :small => '110x110>',
+          :medium => '225x255>',
+          :large => '450x450>'
+        }, :destroyable => false)
         name, geometry = ::Refinery::Image.user_image_sizes.first
         image.thumbnail(name).url.should == image.thumbnail(geometry).url
       end
@@ -67,6 +72,38 @@ module Refinery
     describe ".user_image_sizes" do
       it "sets and returns a hash consisting of the keys contained in the ::Refinery::Setting" do
         ::Refinery::Image.user_image_sizes.should == ::Refinery::Setting.get(:user_image_sizes)
+      end
+    end
+
+    describe '#thumbnail_dimensions' do
+      it 'returns its own dimensions with nil geometry' do
+        dimensions = image.thumbnail_dimensions(nil)
+        dimensions[:width].should == 500
+        dimensions[:height].should == 375
+      end
+
+      it 'returns the correct dimensions for crop' do
+        dimensions = image.thumbnail_dimensions('200x200#ne')
+        dimensions[:width].should == 200
+        dimensions[:height].should == 200
+
+        dimensions = image.thumbnail_dimensions('100x150#c')
+        dimensions[:width].should == 100
+        dimensions[:height].should == 150
+      end
+
+      it 'returns the correct dimensions for resize' do
+        dimensions = image.thumbnail_dimensions('250x250>')
+        dimensions[:width].should == 250
+        dimensions[:height].should == 188
+
+        dimensions = image.thumbnail_dimensions('600x375>')
+        dimensions[:width].should == 500
+        dimensions[:height].should == 375
+
+        dimensions = image.thumbnail_dimensions('200x150')
+        dimensions[:width].should == 126
+        dimensions[:height].should == 150
       end
     end
 

@@ -1,25 +1,17 @@
 ru:
-  plugins:
-    refinery_core:
-      title: Refinery
-      description: Ядро Refinery
-    refinery_dialogs:
-      title: Dialogs
-      description: Refinery dialogs plugin
-  welcome:
-    there_are_no_users: "Ни одного пользователя не создано. Вы будете первым."
-    remember_admin_location: "Запомнить администратора как:" 
-    lets_start: "Ок, давайте введем настройки для входа в систему..."
-    continue: "Далее..."
-  admin:
-    menu:
-      reorder_menu: Изменить порядок в меню
-      reorder_menu_done: Сохранить такой порядок в меню
-    dialogs:
-      show:
-        save: Сохранить
-        cancel: Отменить
   refinery:
+    plugins:
+      refinery_core:
+        title: Refinery
+        description: Ядро Refinery
+      refinery_dialogs:
+        title: Dialogs
+        description: Refinery dialogs plugin
+    welcome:
+      there_are_no_users: "Ни одного пользователя не создано. Вы будете первым."
+      remember_admin_location: "Запомнить администратора как:"
+      lets_start: "Ок, давайте введем настройки для входа в систему..."
+      continue: "Далее..."
     crudify:
       created: "%{what} создан(а)."
       updated: "%{what} отредактирован(а)."
@@ -29,6 +21,13 @@ ru:
       switch_to_your_website: Перейти на сайт
       switch_to_your_website_editor: Перейти в панель управления
     admin:
+      menu:
+        reorder_menu: Изменить порядок в меню
+        reorder_menu_done: Сохранить такой порядок в меню
+      dialogs:
+        show:
+          save: Сохранить
+          cancel: Отменить
       continue_editing:
         save_and_continue_editing: Сохранить и продолжить
       form_actions:

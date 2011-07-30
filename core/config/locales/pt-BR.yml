@@ -1,25 +1,17 @@
 pt-BR:
-  plugins:
-    refinery_core:
-      title: Refinery
-      description: Core refinery plugin
-    refinery_dialogs:
-      title: Dialogs
-      description: Refinery dialogs plugin
-  welcome:
-    there_are_no_users: "Ainda não existem usuários, então primeiro vamos te deixar pronto."
-    remember_admin_location: "Lembre-se que sua área de admin fica em:"
-    lets_start: "Beleza, vamos te cadastrar pra que você possa fazer login..."
-    continue: "Continuar..."
-  admin:
-    menu:
-      reorder_menu: Reordenar o menu
-      reorder_menu_done: "Terminei de reordenar o menu"
-    dialogs:
-      show:
-        save: Salvar
-        cancel: Cancelar
   refinery:
+    plugins:
+      refinery_core:
+        title: Refinery
+        description: Core refinery plugin
+      refinery_dialogs:
+        title: Dialogs
+        description: Refinery dialogs plugin
+    welcome:
+      there_are_no_users: "Ainda não existem usuários, então primeiro vamos te deixar pronto."
+      remember_admin_location: "Lembre-se que sua área de admin fica em:"
+      lets_start: "Beleza, vamos te cadastrar pra que você possa fazer login..."
+      continue: "Continuar..."
     crudify:
       created: "%{what} foi criado com sucesso"
       updated: "%{what} foi atualizado com sucesso"
@@ -29,6 +21,13 @@ pt-BR:
       switch_to_your_website: Mudar para o seu website
       switch_to_your_website_editor: Mudar para o editor do seu website
     admin:
+      menu:
+        reorder_menu: Reordenar o menu
+        reorder_menu_done: "Terminei de reordenar o menu"
+      dialogs:
+        show:
+          save: Salvar
+          cancel: Cancelar
       continue_editing:
         save_and_continue_editing: Salvar E continuar editando
       form_actions:

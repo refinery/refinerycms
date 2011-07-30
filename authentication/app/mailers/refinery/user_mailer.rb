@@ -11,7 +11,7 @@ module ::Refinery
       domain = request.domain(::Refinery::Setting.find_or_set(:tld_length, 1))
 
       mail(:to => user.email,
-           :subject => t('subject', :scope => 'user_mailer.reset_notification'),
+           :subject => t('subject', :scope => 'refinery.user_mailer.reset_notification'),
            :from => "\"#{::Refinery::Setting[:site_name]}\" <no-reply@#{domain}>")
     end
 

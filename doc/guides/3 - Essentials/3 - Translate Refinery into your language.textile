@@ -57,6 +57,16 @@ TIP: If you're starting a new translation, copy +en.yml+ to "your_locale".yml</p
 
 WARNING: Make sure you change +en:+ to your locale's key at the top of "your_locale".yml to avoid overriding the English translation (e.g. +nl:+)
 
+h3. Run the Refinery tests
+
+Run the Refinery tests to be sure you produced valid YAML or didn't break something.
+
+<shell>
+$ rake
+</shell>
+
+If this doesn't work. Follow the "How to test Refinery guide":/guides/how-to-test-refinery
+
 h3. Commit & Push
 
 Add the modified files to the git repository

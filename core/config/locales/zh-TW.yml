@@ -1,25 +1,17 @@
 zh-TW:
-  plugins:
-    refinery_core:
-      title: Refinery
-      description: 核心 refinery 插件
-    refinery_dialogs:
-      title: 對話方框
-      description: Refinery 對話方框插件
-  welcome:
-    there_are_no_users: 目前沒有任何的使用者, 我們會先替您進行設定.
-    remember_admin_location: "記住您的 Refinery 管理者頁面在:"
-    lets_start: 好了, 讓我們協助您設定, 然後您就能登入了...
-    continue: 繼續...
-  admin:
-    menu:
-      reorder_menu: 重新編排選單
-      reorder_menu_done: 我已經完成了選單的編排
-    dialogs:
-      show:
-        save: 儲存
-        cancel: 取消
   refinery:
+    plugins:
+      refinery_core:
+        title: Refinery
+        description: 核心 refinery 插件
+      refinery_dialogs:
+        title: 對話方框
+        description: Refinery 對話方框插件
+    welcome:
+      there_are_no_users: 目前沒有任何的使用者, 我們會先替您進行設定.
+      remember_admin_location: "記住您的 Refinery 管理者頁面在:"
+      lets_start: 好了, 讓我們協助您設定, 然後您就能登入了...
+      continue: 繼續...
     crudify:
       created: '%{what} 成功地加入.'
       updated: '%{what} 成功地更新.'
@@ -29,6 +21,13 @@ zh-TW:
       switch_to_your_website: 切換到您的網站
       switch_to_your_website_editor: 切換到您的網站編輯器
     admin:
+      menu:
+        reorder_menu: 重新編排選單
+        reorder_menu_done: 我已經完成了選單的編排
+      dialogs:
+        show:
+          save: 儲存
+          cancel: 取消
       continue_editing:
         save_and_continue_editing: 儲存然後繼續編輯
       form_actions:

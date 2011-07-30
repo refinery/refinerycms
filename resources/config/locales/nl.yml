@@ -1,34 +1,37 @@
 nl:
-  plugins:
-    refinery_files:
-      title: Bestanden
-  admin:
-    resources:
-      delete: Verwijder dit bestand voorgoed
-      edit: Bewerk dit bestand
-      form:
-        download_current: Download het huidige bestand
-        or: of
-        replace: ", vervang het door dit..."
-        maximum_file_size: "The maximum file size is %{megabytes} megabytes."
-      resource:
-        download: Download dit bestand (%{size})
-      actions:
-        upload_new: Upload een nieuw bestand.
-      records:
-        no_files_yet: Er zijn nog geen bestanden. Klik op "Upload een nieuw bestand" om uw eerste bestand toe te voegen.
-      insert:
-        existing: Bestaand bestand
-        new: Nieuw bestand
-        no_files: Er zijn geen bestanden
-      existing_resource:
-        link_to_file: Link naar dit bestand
-        button_text: Invoegen
+  refinery:
+    plugins:
+      refinery_files:
+        title: Bestanden
+    admin:
+      resources:
+        delete: Verwijder dit bestand voorgoed
+        edit: Bewerk dit bestand
+        form:
+          download_current: Download het huidige bestand
+          or: of
+          replace: ", vervang het door dit..."
+          maximum_file_size: "The maximum file size is %{megabytes} megabytes."
+        resource:
+          download: Download dit bestand (%{size})
+        actions:
+          upload_new: Upload een nieuw bestand.
+        records:
+          no_files_yet: Er zijn nog geen bestanden. Klik op "Upload een nieuw bestand" om uw eerste bestand toe te voegen.
+        insert:
+          existing: Bestaand bestand
+          new: Nieuw bestand
+          no_files: Er zijn geen bestanden
+        existing_resource:
+          link_to_file: Link naar dit bestand
+          button_text: Invoegen
   activerecord:
     models:
-      resource: bestand
+      refinery:
+        resource: bestand
     errors:
       models:
-        resource:
-          blank: U moet een bestand kiezen dat u wilt uploaden.
-          too_long: Bestanden mogen niet groter dan %{count} zijn.
+        refinery:
+          resource:
+            blank: U moet een bestand kiezen dat u wilt uploaden.
+            too_big: Bestanden mogen niet groter dan %{size} megabytes zijn.

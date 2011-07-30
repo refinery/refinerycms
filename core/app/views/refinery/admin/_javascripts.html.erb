@@ -1,6 +1,4 @@
-<% login = login? unless defined?(login) -%>
 <%= yield :before_javascript_libraries -%>
 <%= javascript_include_tag 'refinery/refinery' -%>
 <%= yield :after_javascript_libraries -%>
-<%= javascript_include_tag 'refinery/core' if login -%>
 <%= yield :javascripts -%>

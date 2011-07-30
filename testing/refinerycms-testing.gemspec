@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.version           = %q{1.1.0}
   s.summary           = %q{Testing plugin for Refinery CMS}
   s.description       = %q{This plugin adds the ability to run cucumber and rspec against the RefineryCMS gem while inside a RefineryCMS project}
-  s.date              = %q{2011-06-23}
+  s.date              = %q{2011-07-14}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
   s.rubyforge_project = %q{refinerycms}
@@ -61,11 +61,11 @@ Gem::Specification.new do |s|
     'lib',
     'lib/gemspec.rb',
     'lib/generators',
-    'lib/generators/refinerycms_testing_generator.rb',
     'lib/generators/templates',
     'lib/generators/templates/features',
     'lib/generators/templates/features/support',
     'lib/generators/templates/features/support/paths.rb',
+    'lib/generators/testing_generator.rb',
     'lib/refinerycms-testing.rb',
     'lib/tasks',
     'lib/tasks/cucumber.rake',

@@ -1,42 +1,45 @@
 nl:
-  plugins:
-    refinery_images:
-      title: Afbeeldingen
-  admin:
-    images:
-      delete: Verwijder deze afbeelding permanent
-      edit: Bewerk deze afbeelding
-      form:
-        image: Afbeelding
-        use_current_image: Gebruik huidige afbeelding
-        or: of
-        replace_image: Vervang de afbeelding door deze
-        current_image: Huidige afbeelding
-        maximum_image_size: "The maximum image size is %{megabytes} megabytes."
-      actions:
-        create_new_image: Upload een nieuwe afbeelding
-      records:
-        no_images_yet: Er zijn nog geen afbeeldingen. Klik op "Upload een nieuwe afbeelding" om uw eerste afbleelding toe te voegen.
-      index:
-        view:
-          switch_to: Bekijk de %{view_name} versie
-          list: lijst
-          grid: tabel
-      grid_view:
-        view_live_html: Bekijk deze afbeelding <br/><em>(opent een nieuw venster)</em>
-      existing_image:
-        button_text: Invoegen
-        resize_image: Schaal de afbeelding
-        size: Grootte
-      insert:
-        existing_image: Bibliotheek
-        new_image: Uploaden
+  refinery:
+    plugins:
+      refinery_images:
+        title: Afbeeldingen
+    admin:
+      images:
+        delete: Verwijder deze afbeelding permanent
+        edit: Bewerk deze afbeelding
+        form:
+          image: Afbeelding
+          use_current_image: Gebruik huidige afbeelding
+          or: of
+          replace_image: Vervang de afbeelding door deze
+          current_image: Huidige afbeelding
+          maximum_image_size: "The maximum image size is %{megabytes} megabytes."
+        actions:
+          create_new_image: Upload een nieuwe afbeelding
+        records:
+          no_images_yet: Er zijn nog geen afbeeldingen. Klik op "Upload een nieuwe afbeelding" om uw eerste afbleelding toe te voegen.
+        index:
+          view:
+            switch_to: Bekijk de %{view_name} versie
+            list: lijst
+            grid: tabel
+        grid_view:
+          view_live_html: Bekijk deze afbeelding <br/><em>(opent een nieuw venster)</em>
+        existing_image:
+          button_text: Invoegen
+          resize_image: Schaal de afbeelding
+          size: Grootte
+        insert:
+          existing_image: Bibliotheek
+          new_image: Uploaden
   activerecord:
     models:
-      image: afbeelding
+      refinery:
+        image: afbeelding
     errors:
       models:
-        image:
-          blank: U moet een afbeelding kiezen om te uploaden.
-          too_long: Afbeeldingen mogen niet groter dan %{count} zijn.
-          incorrect_format: Uw afbeelding moet een JPG, PNG of GIF zijn.
+        refinery:
+          image:
+            blank: U moet een afbeelding kiezen om te uploaden.
+            too_big: Afbeeldingen mogen niet groter dan %{size} megabytes zijn.
+            incorrect_format: Uw afbeelding moet een JPG, PNG of GIF zijn.

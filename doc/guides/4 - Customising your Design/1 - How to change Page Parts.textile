@@ -16,7 +16,7 @@ In Refinery's backend, go to the "Settings" tab. Look for a setting called "Defa
 NOTE: If you don't have this setting, try creating a new page and then restarting your web server.
 
 <yaml>
---- 
+---
 - Body
 - Side Body
 </yaml>
@@ -26,7 +26,7 @@ Edit this YAML to have the names of the default page parts you want, click +Save
 Here's a sample of a site that would have three content areas on most of its pages.
 
 <yaml>
---- 
+---
 - Left Body
 - Middle Body
 - Right Body

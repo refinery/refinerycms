@@ -3,6 +3,9 @@ unless defined? ::Rails
   require 'action_controller/railtie'
 end
 require File.expand_path('../base/refinery', __FILE__)
+unless defined?(REFINERYCMS_INSTALLER)
+  require File.expand_path('../generators/base_generator', __FILE__)
+end
 
 module Refinery
 
@@ -27,7 +30,7 @@ module Refinery
           plugin.version = ::Refinery.version
           plugin.hide_from_menu = true
           plugin.always_allow_access = true
-          plugin.menu_match = /(refinery|admin)\/(refinery_base)$/
+          plugin.menu_match = /refinery\/(refinery_base)$/
         end
       end
     end

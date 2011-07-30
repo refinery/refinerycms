@@ -1,25 +1,17 @@
 el:
-  plugins:
-    refinery_core:
-      title: Refinery
-      description: Core refinery plugin
-    refinery_dialogs:
-      title: Διάλογοι
-      description: Refinery dialogs plugin
-  welcome:
-    there_are_no_users: Δεν υπάρχουν χρήστες προς το παρόν, οπότε θα φτιάξουμε έναν για εσένα.
-    remember_admin_location: "Θυμήσου ότι η διεύθυνση διαχείρισης του Refinery είναι:"
-    lets_start: Τέλεια, ας φτιάξουμε ένα λογαριασμό για να συνδεθείς...
-    continue: Συνέχεια...
-  admin:
-    menu:
-      reorder_menu: Αναδιάταξη μενού
-      reorder_menu_done: Μόλις αναδιάταξα το μενού
-    dialogs:
-      show:
-        save: Αποθήκευση
-        cancel: Ακύρωση
   refinery:
+    plugins:
+      refinery_core:
+        title: Refinery
+        description: Core refinery plugin
+      refinery_dialogs:
+        title: Διάλογοι
+        description: Refinery dialogs plugin
+    welcome:
+      there_are_no_users: Δεν υπάρχουν χρήστες προς το παρόν, οπότε θα φτιάξουμε έναν για εσένα.
+      remember_admin_location: "Θυμήσου ότι η διεύθυνση διαχείρισης του Refinery είναι:"
+      lets_start: Τέλεια, ας φτιάξουμε ένα λογαριασμό για να συνδεθείς...
+      continue: Συνέχεια...
     crudify:
       created: '%{what} προστέθηκε επιτυχώς.'
       updated: '%{what} επεξεργάστηκε επιτυχώς.'
@@ -29,6 +21,13 @@ el:
       switch_to_your_website: Δες τον ιστότοπο
       switch_to_your_website_editor: Δες τη διαχείριση
     admin:
+      menu:
+        reorder_menu: Αναδιάταξη μενού
+        reorder_menu_done: Μόλις αναδιάταξα το μενού
+      dialogs:
+        show:
+          save: Αποθήκευση
+          cancel: Ακύρωση
       continue_editing:
         save_and_continue_editing: Αποθήκευση και συνέχισε
       form_actions:

@@ -1,18 +1,10 @@
 es:
-  welcome:
-    there_are_no_users: "No hay usuarios registrados, así que debemos registrar al primero."
-    remember_admin_location: "Recuerda que tu área administrativa de Refinery esta en:"
-    lets_start: "Excelente, ahora vamos a configurar tu cuenta para poder entrar..."
-    continue: "Continuar..."
-  admin:
-    menu:
-      reorder_menu: Reordenar menú
-      reorder_menu_done: He terminado de reordenar el menú
-    dialogs:
-      show:
-        save: Guardar
-        cancel: Cancelar
   refinery:
+    welcome:
+      there_are_no_users: "No hay usuarios registrados, así que debemos registrar al primero."
+      remember_admin_location: "Recuerda que tu área administrativa de Refinery esta en:"
+      lets_start: "Excelente, ahora vamos a configurar tu cuenta para poder entrar..."
+      continue: "Continuar..."
     crudify:
       created: '%{what} fue creado correctamente.'
       updated: '%{what} fue actualizado correctamente.'
@@ -22,6 +14,13 @@ es:
       switch_to_your_website: Ver tu web
       switch_to_your_website_editor: Editar tu web
     admin:
+      menu:
+        reorder_menu: Reordenar menú
+        reorder_menu_done: He terminado de reordenar el menú
+      dialogs:
+        show:
+          save: Guardar
+          cancel: Cancelar
       continue_editing:
         save_and_continue_editing: Guardar y seguir editando
       form_actions:

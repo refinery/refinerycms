@@ -23,12 +23,12 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'refinerycms-base',            '= #{::Refinery::Version}'
   s.add_dependency 'refinerycms-settings',        '= #{::Refinery::Version}'
-  s.add_dependency 'refinerycms-generators',      '~> 1.0'
+  s.add_dependency 'refinerycms-generators',      '~> 1.1'
   s.add_dependency 'acts_as_indexed',             '~> 0.7'
   s.add_dependency 'friendly_id_globalize3',      '~> 3.2.1'
   s.add_dependency 'globalize3',                  '~> 0.1'
   s.add_dependency 'awesome_nested_set',          '~> 2.0'
-  s.add_dependency 'rails',                       '>= 3.1.0.rc4'
+  s.add_dependency 'rails',                       '>= 3.1.0.rc5'
   s.add_dependency 'truncate_html',               '~> 0.5'
   s.add_dependency 'kaminari',                    '~> 0.12'
 

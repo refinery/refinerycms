@@ -29,9 +29,7 @@ class CreateSeoMeta < ActiveRecord::Migration
     ::Refinery::Page.translation_class.reset_column_information
 
     # Re-attach seo_meta
-    ::Refinery::Page.translation_class.module_eval do
-      is_seo_meta
-    end
+    ::Refinery::Page.translation_class.send :is_seo_meta
 
     # Migrate data
     existing_translations.each do |translation|

@@ -1,25 +1,17 @@
 vi:
-  plugins:
-    refinery_core:
-      title: Refinery
-      description: Core refinery plugin
-    refinery_dialogs:
-      title: Dialogs
-      description: Refinery dialogs plugin
-  welcome:
-    there_are_no_users: Hiện không có user nào, chúng tôi sẽ tiến hành chi đặt cho bạn trước.
-    remember_admin_location: "Hãy nhớ rằng trang quản trị Refinery được đặt tại:"
-    lets_start: Bây giờ hãy cùng thiết lập cấu hình để bạn có thể đăng nhập hệ thống…
-    continue: Tiếp tục...
-  admin:
-    menu:
-      reorder_menu: Sắp xếp lại menu
-      reorder_menu_done: Đã hoàn thành việc sắp xếp lại menu
-    dialogs:
-      show:
-        save: Lưu
-        cancel: Bỏ qua
   refinery:
+    plugins:
+      refinery_core:
+        title: Refinery
+        description: Core refinery plugin
+      refinery_dialogs:
+        title: Dialogs
+        description: Refinery dialogs plugin
+    welcome:
+      there_are_no_users: Hiện không có user nào, chúng tôi sẽ tiến hành chi đặt cho bạn trước.
+      remember_admin_location: "Hãy nhớ rằng trang quản trị Refinery được đặt tại:"
+      lets_start: Bây giờ hãy cùng thiết lập cấu hình để bạn có thể đăng nhập hệ thống…
+      continue: Tiếp tục...
     crudify:
       created: '%{what} vừa được thêm vào.'
       updated: '%{what} vừa được cập nhật.'
@@ -29,6 +21,13 @@ vi:
       switch_to_your_website: Chuyển đến website của bạn
       switch_to_your_website_editor: Chuyển đến website nhập liệu của bạn
     admin:
+      menu:
+        reorder_menu: Sắp xếp lại menu
+        reorder_menu_done: Đã hoàn thành việc sắp xếp lại menu
+      dialogs:
+        show:
+          save: Lưu
+          cancel: Bỏ qua
       continue_editing:
         save_and_continue_editing: Lưu & tiếp tục soạn thảo
       form_actions:

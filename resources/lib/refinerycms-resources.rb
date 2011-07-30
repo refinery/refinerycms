@@ -1,6 +1,7 @@
 require 'dragonfly'
 require 'rack/cache'
 require 'refinerycms-core'
+require File.expand_path('../generators/resources_generator', __FILE__)
 
 module Refinery
   module Resources
@@ -17,7 +18,8 @@ module Refinery
     class Engine < ::Rails::Engine
       isolate_namespace ::Refinery
 
-      initializer 'resources-with-dragonfly', :before => "init plugin" do |app|
+      initializer 'resources-with-dragonfly', :before => :load_config_initializers do |app|
+        ::Refinery::Resources::Dragonfly.setup!
         ::Refinery::Resources::Dragonfly.attach!(app)
       end
 
@@ -26,7 +28,7 @@ module Refinery
           plugin.pathname = root
           plugin.name = 'refinery_files'
           plugin.url = app.routes.url_helpers.refinery_admin_resources_path
-          plugin.menu_match = /(refinery|admin)\/(refinery_)?(files|resources)$/
+          plugin.menu_match = /refinery\/(refinery_)?(files|resources)$/
           plugin.version = %q{1.1.0}
           plugin.activity = {
             :class => ::Refinery::Resource

@@ -22,6 +22,7 @@ require 'refinerycms-generators'
 require 'refinerycms-settings'
 require 'rails/generators'
 require 'rails/generators/migration'
+require File.expand_path('../generators/cms_generator', __FILE__)
 
 module Refinery
 
@@ -55,9 +56,7 @@ module Refinery
       end
     end
 
-    ::Rails::Engine.module_eval do
-      include ::Refinery::Engine
-    end
+    ::Rails::Engine.send :include, ::Refinery::Engine
 
     class Engine < ::Rails::Engine
       isolate_namespace ::Refinery
@@ -75,30 +74,6 @@ module Refinery
         ActionView::Base.field_error_proc = Proc.new do |html_tag, instance|
           "<span class=\"fieldWithErrors\">#{html_tag}</span>".html_safe
         end
-
-        # TODO: Is there a better way to cache assets in engines?
-        # Also handles a change in Rails 3.1 with AssetIncludeTag being invented.
-        # TODO: can we remove this?
-=begin
-        tag_helper_class = if defined?(::ActionView::Helpers::AssetTagHelper::AssetIncludeTag)
-          ::ActionView::Helpers::AssetTagHelper::AssetIncludeTag
-        else
-          ::ActionView::Helpers::AssetTagHelper
-        end
-        tag_helper_class.module_eval do
-          def asset_file_path(path)
-            unless (return_path = Pathname.new(File.join(config.assets_dir, path.split('?').first))).exist?
-              this_asset_filename = path.split('?').first.to_s.gsub(/^\//, '')
-              ::Refinery::Plugins.registered.pathnames.each do |pathname|
-                if (pathname_asset_path = pathname.join('public', this_asset_filename)).exist?
-                  return_path = pathname_asset_path
-                end
-              end
-            end
-            return_path.to_s
-          end
-        end
-=end
       end
 
       # Register the plugin
@@ -110,7 +85,7 @@ module Refinery
           plugin.version = ::Refinery.version
           plugin.hide_from_menu = true
           plugin.always_allow_access = true
-          plugin.menu_match = /(refinery|admin)\/(refinery_core)$/
+          plugin.menu_match = /refinery\/(refinery_core)$/
         end
 
         # Register the dialogs plugin
@@ -120,7 +95,7 @@ module Refinery
           plugin.version = ::Refinery.version
           plugin.hide_from_menu = true
           plugin.always_allow_access = true
-          plugin.menu_match = /(refinery|admin)\/(refinery_)?dialogs/
+          plugin.menu_match = /refinery\/(refinery_)?dialogs/
         end
       end
 

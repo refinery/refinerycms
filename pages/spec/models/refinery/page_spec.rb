@@ -16,11 +16,11 @@ module Refinery
     end
 
     def turn_off_marketable_urls
-      ::Refinery::Setting.set(:use_marketable_urls, {:value => false, :scoping => 'pages'})
+      ::Refinery::Pages.stub(:use_marketable_urls?).and_return(false)
     end
 
     def turn_on_marketable_urls
-      ::Refinery::Setting.set(:use_marketable_urls, {:value => true, :scoping => 'pages'})
+      ::Refinery::Pages.stub(:use_marketable_urls?).and_return(true)
     end
 
     context 'cannot be deleted under certain rules' do

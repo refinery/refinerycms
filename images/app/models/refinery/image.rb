@@ -1,7 +1,3 @@
-# encoding: utf-8
-require 'refinery/images/dragonfly'
-::Refinery::Images::Dragonfly.setup!
-
 module Refinery
   class Image < ActiveRecord::Base
 
@@ -9,8 +5,9 @@ module Refinery
     MAX_SIZE_IN_MB = 5
     image_accessor :image
 
-    validates :image, :presence  => {},
-                      :length    => { :maximum => MAX_SIZE_IN_MB.megabytes }
+    validates :image, :presence  => true
+    validates_size_of :image, :maximum => MAX_SIZE_IN_MB.megabytes,
+                              :message => :too_big, :size => MAX_SIZE_IN_MB
     validates_property :mime_type, :of => :image, :in => %w(image/jpeg image/png image/gif image/tiff),
                        :message => :incorrect_format
 
@@ -66,6 +63,41 @@ module Refinery
       else
         image
       end
+    end
+
+    # Intelligently works out dimensions for a thumbnail of this image based on the Dragonfly geometry string.
+    def thumbnail_dimensions(geometry)
+      geometry = geometry.to_s
+      width = self.image_width.to_f
+      height = self.image_height.to_f
+      geometry_width, geometry_height = geometry.to_s.split(%r{\#{1,2}|\+|>|!|x}im)[0..1].map(&:to_f)
+      if (width * height > 0) && geometry =~ ::Dragonfly::ImageMagick::Processor::THUMB_GEOMETRY
+        if geometry =~ ::Dragonfly::ImageMagick::Processor::RESIZE_GEOMETRY
+          if geometry !~ %r{\d+x\d+>} || (geometry =~ %r{\d+x\d+>} && (width > geometry_width.to_f || height > geometry_height.to_f))
+            if geometry_width > geometry_height
+              width = if (aspect = (width / height)) >= 1
+                geometry_height * aspect
+              else
+                geometry_height / aspect
+              end
+              height = geometry_height
+            else
+              height = if (aspect = (height / width)) >= 1
+                geometry_width * aspect
+              else
+                geometry_width / aspect
+              end
+              width = geometry_width
+            end
+          end
+        else
+          # cropping
+          width = geometry_width
+          height = geometry_height
+        end
+      end
+
+      {:width => width.to_i, :height => height.to_i}
     end
 
     # Returns a titleized version of the filename

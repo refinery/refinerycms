@@ -1,6 +1,7 @@
 require 'devise'
 require 'refinerycms-core'
 require 'friendly_id'
+require File.expand_path('../generators/authentication_generator', __FILE__)
 
 module Refinery
   module Authentication
@@ -15,7 +16,7 @@ module Refinery
           plugin.pathname = root
           plugin.name = 'refinery_users'
           plugin.version = %q{1.1.0}
-          plugin.menu_match = /(refinery|admin)\/users$/
+          plugin.menu_match = /refinery\/users$/
           plugin.activity = {
             :class => User,
             :title => 'username'

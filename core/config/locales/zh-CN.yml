@@ -1,25 +1,17 @@
 zh-CN:
-  plugins:
-    refinery_core:
-      title: Refinery
-      description: 核心 refinery 插件
-    refinery_dialogs:
-      title: 对话框
-      description: Refinery 对话框插件
-  welcome:
-    there_are_no_users: 现在还没有用户, 因此我们先来设置一个.
-    remember_admin_location: "记住你的 Refinery 后台管理页面在:"
-    lets_start: 好了, 让我们协助您设置, 然后您就能够登录了...
-    continue: 继续...
-  admin:
-    menu:
-      reorder_menu: 重新编排菜单
-      reorder_menu_done: 我排好了
-    dialogs:
-      show:
-        save: 保存
-        cancel: 取消
   refinery:
+    plugins:
+      refinery_core:
+        title: Refinery
+        description: 核心 refinery 插件
+      refinery_dialogs:
+        title: 对话框
+        description: Refinery 对话框插件
+    welcome:
+      there_are_no_users: 现在还没有用户, 因此我们先来设置一个.
+      remember_admin_location: "记住你的 Refinery 后台管理页面在:"
+      lets_start: 好了, 让我们协助您设置, 然后您就能够登录了...
+      continue: 继续...
     crudify:
       created: '%{what} 添加成功.'
       updated: '%{what} 编辑成功.'
@@ -29,6 +21,13 @@ zh-CN:
       switch_to_your_website: 切换到你的网站
       switch_to_your_website_editor: 切换到管理后台
     admin:
+      menu:
+        reorder_menu: 重新编排菜单
+        reorder_menu_done: 我排好了
+      dialogs:
+        show:
+          save: 保存
+          cancel: 取消
       continue_editing:
         save_and_continue_editing: 保存并且继续编辑
       form_actions:

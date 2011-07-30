@@ -260,7 +260,7 @@ module Refinery
       refinery_gems = refinery_gemfile_contents.match(/# REFINERY CMS =+.*# END REFINERY CMS =+/m)[0]
       refinery_gems.gsub!("# gem 'refinerycms'", "gem 'refinerycms'") # Enable refinerycms
       if @options[:testing] # Enable testing
-        refinery_gems.gsub!("# gem 'refinerycms-testing'", "gem 'refinerycms-testing'")
+        refinery_gems.gsub!("# gem 'refinerycms-testing'", "gem 'refinerycms-testing', :git => 'git://github.com/resolve/refinerycms.git'")
       end
 
       app_gemfile = @app_path.join('Gemfile')
@@ -275,7 +275,8 @@ module Refinery
       end
 
       # Specify the correct version of the Refinery CMS gem (may be git source).
-      src = Refinery.version !~ /\.pre$/ ? "'~> #{Refinery.version}'" : ":git => 'git://github.com/resolve/refinerycms'"
+      #src = Refinery.version !~ /\.pre$/ ? "'~> #{Refinery.version}'" : ":git => 'git://github.com/resolve/refinerycms'"
+      src = ":git => 'git://github.com/resolve/refinerycms.git'"
       find_and_replace('Gemfile', %r{gem 'refinerycms',.*}, "gem 'refinerycms',              #{src}")
 
       # Add in fog gem for Heroku
@@ -318,18 +319,18 @@ module Refinery
 
     def generators!
       # Run the newly activated Refinery CMS generator.
-      puts "\n\nPreparing your application using the refinerycms generator..\n"
-      run_command("rails generate refinerycms", {
+      puts "\n\nPreparing your application using the refinery:cms generator..\n"
+      run_command("rails generate refinery:cms", {
         :cd => true,
-        :fail => "Could not run the refinerycms generator successfully.",
+        :fail => "Could not run the refinery:cms generator successfully.",
         :bundler => true
       })
 
       if @options[:testing]
-        puts "\n\nAdding testing support files using the refinerycms_testing generator..\n"
-        run_command("rails generate refinerycms_testing", {
+        puts "\n\nAdding testing support files using the refinery:testing generator..\n"
+        run_command("rails generate refinery:testing", {
           :cd => true,
-          :fail => "Could not run the refinerycms_testing generator successfully.",
+          :fail => "Could not run the refinery:testing generator successfully.",
           :bundler => true
         })
       end

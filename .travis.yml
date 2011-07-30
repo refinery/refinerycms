@@ -2,3 +2,11 @@ script: "bundle exec rake db:drop db:create db:migrate spec cucumber"
 notifications:
   recipients:
     - parndt@gmail.com
+    - ugis.ozolss@gmail.com
+rvm:
+  - 1.9.2
+  - 1.8.7
+  - rbx
+  - rbx-2.0
+  - ree
+  - jruby
