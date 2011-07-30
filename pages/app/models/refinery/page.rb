@@ -335,20 +335,6 @@ module Refinery
       part.try(:body)
     end
 
-    def [](part_title)
-      # Allow for calling attributes with [] shorthand (eg page[:parent_id])
-      return super if self.respond_to?(part_title.to_s.to_sym) or self.attributes.has_key?(part_title.to_s)
-
-      Refinery.deprecate({
-        :what => "page[#{part_title.inspect}]",
-        :when => '1.1',
-        :replacement => "page.content_for(#{part_title.inspect})",
-        :caller => caller
-      })
-
-      content_for(part_title)
-    end
-
     # In the admin area we use a slightly different title to inform the which pages are draft or hidden pages
     def title_with_meta
       title = if self.title.nil?

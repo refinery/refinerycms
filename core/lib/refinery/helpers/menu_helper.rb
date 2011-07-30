@@ -16,52 +16,27 @@ module Refinery
 
       # This was extracted from app/views/refinery/_menu_branch.html.erb
       # to remove the complexity of that template by reducing logic in the view.
-      def css_for_menu_branch(item, counter, sibling_count = nil, collection = nil, selected_item = nil, warning = true)
-
-        Refinery.deprecate({
-          :what => 'css_for_menu_branch',
-          :when => '1.1',
-          :replacement => 'menu_branch_css(local_assigns)',
-          :caller => caller
-        }) if warning
-
-        Refinery.deprecate(:what => 'collection', :when => '1.1', :caller => caller) if collection
-        Refinery.deprecate(:what => 'selected_item', :when => '1.1', :caller => caller) if selected_item
-
-        css = []
-        css << 'selected' if selected_page_or_descendant_page_selected?(item, collection, selected_item)
-        css
-      end
-
-      # New method which accepts the local_assigns hash.
-      # This maps to the older css_for_menu_branch method.
       def menu_branch_css(local_assigns)
         options = local_assigns.dup
         options.update(:sibling_count => options[:menu_branch].shown_siblings.length) unless options[:sibling_count]
 
-        css_for_menu_branch(options[:menu_branch],
-                            options[:menu_branch_counter],
-                            options[:sibling_count],
-                            options[:collection],
-                            options[:selected_item], # TODO: DEPRECATED, remove at 1.1
-                            false)
+        css = []
+        css << 'selected' if selected_page_or_descendant_page_selected?(local_assigns[:menu_branch], local_assigns[:collection])
+        css
       end
 
       # Determines whether any page underneath the supplied page is the current page according to rails.
       # Just calls selected_page? for each descendant of the supplied page.
       # if you pass a collection it won't check its own descendants but use the collection supplied.
-      def descendant_page_selected?(page, collection = nil, selected_item = nil)
+      def descendant_page_selected?(page, collection = nil)
         return false if page.rgt == page.lft + 1
-        return false unless selected_item.nil? or !selected_item.in_menu?
 
-        page.descendants.any? { |descendant|
-          !selected_item ? selected_page?(descendant) : selected_item == descendant
-        }
+        page.descendants.any? { |descendant| selected_page?(descendant) }
       end
 
-      def selected_page_or_descendant_page_selected?(page, collection = nil, selected_item = nil)
-        return true if selected_page?(page) || selected_item === page
-        return true if descendant_page_selected?(page, collection, selected_item)
+      def selected_page_or_descendant_page_selected?(page, collection = nil)
+        return true if selected_page?(page)
+        return true if descendant_page_selected?(page, collection)
         false
       end
 
