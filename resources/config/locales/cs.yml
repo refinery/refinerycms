@@ -28,8 +28,7 @@ cs:
           button_text: Vložit
   activerecord:
     models:
-      refinery:
-        resource: soubor
+      refinery/resource: soubor
     errors:
       models:
         refinery:

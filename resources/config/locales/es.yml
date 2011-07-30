@@ -29,11 +29,9 @@ es:
           button_text: Insertar
   activerecord:
     models:
-      refinery:
-        resource: archivo
+      refinery/resource: archivo
     errors:
       models:
-        refinery:
-          resource:
-            blank: Selecciona qué archivo quieres subir
-            too_big: El archivo debe pesar menos de %{size} megabytes
+        refinery/resource:
+          blank: Selecciona qué archivo quieres subir
+          too_big: El archivo debe pesar menos de %{size} megabytes

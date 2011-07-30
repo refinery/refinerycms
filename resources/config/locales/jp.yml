@@ -28,11 +28,9 @@ jp:
           button_text: 挿入
   activerecord:
     models:
-      refinery:
-        resource: ファイル
+      refinery/resource: ファイル
     errors:
       models:
-        refinery:
-          resource:
-            blank: アップロードするファイルを指定して下さい。
-            too_big: "ファイルは最大で%{size}MBまでです。"
+        refinery/resource:
+          blank: アップロードするファイルを指定して下さい。
+          too_big: "ファイルは最大で%{size}MBまでです。"

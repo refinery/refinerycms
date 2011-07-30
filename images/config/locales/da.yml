@@ -35,12 +35,10 @@ da:
           new_image: Upload
   activerecord:
     models:
-      refinery:
-        image: billede
+      refinery/image: billede
     errors:
       models:
-        refinery:
-          image:
-            blank: Du skal angive et billede, der skal uploades
-            too_big: Filer må højest være på %{size} megabytes
-            incorrect_format: 'Dit billede skal være enten JPG, PNG eller GIF format'
+        refinery/image:
+          blank: Du skal angive et billede, der skal uploades
+          too_big: Filer må højest være på %{size} megabytes
+          incorrect_format: 'Dit billede skal være enten JPG, PNG eller GIF format'

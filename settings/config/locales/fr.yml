@@ -38,11 +38,9 @@ fr:
             use_resource_caching: Il est recommandé de cocher cette option en production. Cela permet de regrouper les fichiers javascripts et CSS dans deux fichiers uniques afin d'augmenter la vitesse de service des pages et diminuer la charge sur le serveur.
   activerecord:
     models:
-      refinery:
-        setting: paramètre
+      refinery/setting: paramètre
     attributes:
-      refinery:
-        setting:
-          name: Nom
-          value: Valeur
-          restricted: Restriction
+      refinery/setting:
+        name: Nom
+        value: Valeur
+        restricted: Restriction

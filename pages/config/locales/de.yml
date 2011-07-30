@@ -72,9 +72,7 @@ de:
           no_pages_yet: Es sind noch keine Seiten vorhanden. Klicken Sie auf "Neue Seite anlegen", um Ihre erste Seite zu erstellen.
   activerecord:
     models:
-      refinery:
-        page: Seite
+      refinery/page: Seite
     attributes:
-      refinery:
-        page:
-          title: Titel
+      refinery/page:
+        title: Titel

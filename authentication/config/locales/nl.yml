@@ -62,12 +62,10 @@ nl:
       signed_in: Je bent ingelogd.
   activerecord:
     models:
-      refinery:
-        user: gebruiker
+      refinery/user: gebruiker
     attributes:
-      refinery:
-        user:
-          login: Gebruikersnaam
-          email: e-mail
-          password: Wachtwoord
-          remember_me: Onthoud mijn gegevens
+      refinery/user:
+        login: Gebruikersnaam
+        email: e-mail
+        password: Wachtwoord
+        remember_me: Onthoud mijn gegevens

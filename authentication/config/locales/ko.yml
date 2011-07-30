@@ -62,14 +62,12 @@ ko:
       signed_in: 로그인에 성공했습니다.
   activerecord:
     models:
-      refinery:
-        user: 사용자
+      refinery/user: 사용자
     attributes:
-      refinery:
-        user:
-          login: 아이디
-          username: 아이디
-          password: 비밀번호
-          password_confirmation: 비밀번호 확인
-          email: 이메일
-          remember_me: 자동접속
+      refinery/user:
+        login: 아이디
+        username: 아이디
+        password: 비밀번호
+        password_confirmation: 비밀번호 확인
+        email: 이메일
+        remember_me: 자동접속

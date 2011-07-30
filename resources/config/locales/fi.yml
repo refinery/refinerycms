@@ -28,11 +28,9 @@ fi:
           button_text: Lisää
   activerecord:
     models:
-      refinery:
-        resource: tiedosto
+      refinery/resource: tiedosto
     errors:
       models:
-        refinery:
-          resource:
-            blank: Sinun pitää lähettää tiedosto
-            too_big: Tiedoston tulee olla pienempi kuin %{count} megatavua kooltaan
+        refinery/resource:
+          blank: Sinun pitää lähettää tiedosto
+          too_big: Tiedoston tulee olla pienempi kuin %{count} megatavua kooltaan

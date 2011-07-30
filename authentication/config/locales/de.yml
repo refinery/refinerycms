@@ -62,14 +62,12 @@ de:
       signed_in: Erfolgreich angemeldet.
   activerecord:
     models:
-      refinery:
-        user: Benutzer
+      refinery/user: Benutzer
     attributes:
-      refinery:
-        user:
-          login: Login
-          username: Benutzername
-          password: Passwort
-          password_confirmation: Passwort Bestätigung
-          email: E-Mail
-          remember_me: Login merken
+      refinery/user:
+        login: Login
+        username: Benutzername
+        password: Passwort
+        password_confirmation: Passwort Bestätigung
+        email: E-Mail
+        remember_me: Login merken

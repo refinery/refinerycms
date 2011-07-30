@@ -40,11 +40,9 @@ zh-TW:
             approximate_ascii: 如果您使用帶有口音或是變音符號的拉丁字母請設定為 true. 它會將像是 ā, č, ž 的字母轉為 a, c, z , 在某些網頁瀏覽器中, 這些字母就不會奇怪地出現在網址列上.
   activerecord:
     models:
-      refinery:
-        setting: 設定
+      refinery/setting: 設定
     attributes:
-      refinery:
-        setting:
-          name: 名稱
-          value: 設定值
-          restricted: 限制
+      refinery/setting:
+        name: 名稱
+        value: 設定值
+        restricted: 限制
