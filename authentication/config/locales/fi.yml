@@ -62,14 +62,12 @@ fi:
       signed_in: Kirjautuminen onnistui.
   activerecord:
     models:
-      refinery:
-        user: käyttäjä
+      refinery/user: käyttäjä
     attributes:
-      refinery:
-        user:
-          login: Käyttäjätunnus
-          username: Käyttäjätunnus
-          password: Salasana
-          password_confirmation: Salasana (uudelleen)
-          email: Sähköpostiosoite
-          remember_me: Muista kirjautumiseni tällä tietokoneella
+      refinery/user:
+        login: Käyttäjätunnus
+        username: Käyttäjätunnus
+        password: Salasana
+        password_confirmation: Salasana (uudelleen)
+        email: Sähköpostiosoite
+        remember_me: Muista kirjautumiseni tällä tietokoneella

@@ -28,11 +28,9 @@ nb:
           button_text: Legg inn
   activerecord:
     models:
-      refinery:
-        resource: fil
+      refinery/resource: fil
     errors:
       models:
-        refinery:
-          resource:
-            blank: Du må angi en fil som skal lastes opp
-            too_big: Filstørrelsen må være mindre enn %{size} MB
+        refinery/resource:
+          blank: Du må angi en fil som skal lastes opp
+          too_big: Filstørrelsen må være mindre enn %{size} MB

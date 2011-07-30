@@ -73,9 +73,7 @@ pl:
           no_pages_yet: Nie ma jeszcze żadnej strony. Kliknij "Dodaj nową stronę" aby stworzyć pierwszą.
   activerecord:
     models:
-      refinery:
-        page: strona
+      refinery/page: strona
     attributes:
-      refinery:
-        page:
-          title: Tytuł
+      refinery/page:
+        title: Tytuł

@@ -35,12 +35,10 @@ jp:
           new_image: アップロード
   activerecord:
     models:
-      refinery:
-        image: 画像
+      refinery/image: 画像
     errors:
       models:
-        refinery:
-          image:
-            blank: アップロードする画像を選択して下さい。
-            too_big: '画像は最大で%{size}MBまでです。'
-            incorrect_format: '使用出来る画像のフォーマットはJPG、GIFまたはPNGです。'
+        refinery/image:
+          blank: アップロードする画像を選択して下さい。
+          too_big: '画像は最大で%{size}MBまでです。'
+          incorrect_format: '使用出来る画像のフォーマットはJPG、GIFまたはPNGです。'

@@ -62,8 +62,7 @@ rs:
       signed_in: Uspešno logovanje.
   activerecord:
     models:
-      refinery:
-        user: administrator
+      refinery/user: administrator
     attributes:
       refinery:
         user:

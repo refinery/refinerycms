@@ -40,11 +40,9 @@ lt:
             use_resource_caching: "Rekomenduojama įjungti šį nustatymą paleidus svetainę darbiniu režimu, nes supakuos javascript ir stilių failus į vieną failą, kad sumažinti užklausų skaičių jūsų svetainė ir pagreitinti jos veikimą."
   activerecord:
     models:
-      refinery:
-        setting: nustatymas
+      refinery/setting: nustatymas
     attributes:
-      refinery:
-        setting:
-          name: Pavadinimas
-          value: Reikšmė
-          restricted: Apribotas
+      refinery/setting:
+        name: Pavadinimas
+        value: Reikšmė
+        restricted: Apribotas

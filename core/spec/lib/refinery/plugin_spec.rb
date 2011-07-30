@@ -6,6 +6,7 @@ module Refinery
       isolate_namespace ::Refinery
       ::Refinery::Plugin.register do |plugin|
         plugin.name = 'refinery_rspec'
+        plugin.hide_from_menu = true
       end
     end
   end

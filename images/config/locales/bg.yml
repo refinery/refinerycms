@@ -18,7 +18,7 @@ bg:
         actions:
           create_new_image: Добавяне на ново изображение
         records:
-          no_images_yet: Все още няма изображения. За да качите, натиснете "Добавяне на ново изображение".
+          no_images_yet: Все още няма изображения. Натиснете "Добавяне на ново изображение", за да качите ново.
         index:
           view:
             switch_to: Преглед като %{view_name}
@@ -35,10 +35,10 @@ bg:
           new_image: Качване
   activerecord:
     models:
-      image: изображение
+      refinery/image: изображение
     errors:
       models:
-        image:
+        refinery/image:
           blank: Трябва да укажете изображение за качване
           too_big: Размерът на изображението трябва да бъде по-малък от %{size} мегабайта
           incorrect_format: 'Вашето изображение трябва да бъде JPG, PNG или GIF'

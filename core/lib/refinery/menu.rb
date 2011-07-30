@@ -44,24 +44,5 @@ module Refinery
 
     # The delegation is specified so crazily so that it works on 1.8.x and 1.9.x
     delegate *((Array.instance_methods - Object.instance_methods) << {:to => :items})
-
-    # Ensure that things still work from how the menu partials worked before.
-    def live
-      Refinery.deprecate({
-        :what => "'live' on a ::Refinery::Menu instance",
-        :when => '1.1 with no replacement'
-      })
-
-      self
-    end
-
-    def in_menu
-      Refinery.deprecate({
-        :what => "'in_menu' on a ::Refinery::Menu instance",
-        :when => '1.1 with no replacement'
-      })
-
-      self
-    end
   end
 end

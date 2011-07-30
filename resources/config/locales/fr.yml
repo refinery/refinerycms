@@ -28,11 +28,9 @@ fr:
           button_text: Insertion
   activerecord:
     models:
-      refinery:
-        resource: fichier
+      refinery/resource: fichier
     errors:
       models:
-        refinery:
-          resource:
-            blank: Vous devez spécifier un fichier à télécharger
-            too_big: Le poids maximal des fichiers est de %{size} megaoctets
+        refinery/resource:
+          blank: Vous devez spécifier un fichier à télécharger
+          too_big: Le poids maximal des fichiers est de %{size} megaoctets

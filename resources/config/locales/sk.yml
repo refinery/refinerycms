@@ -28,11 +28,9 @@ sk:
           button_text: Vložiť
   activerecord:
     models:
-      refinery:
-        resource: súbor
+      refinery/resource: súbor
     errors:
       models:
-        refinery:
-          resource:
-            blank: Musíte vybrať súbor pre nahranie.
-            too_big: Maximálna veľkosť súboru je %{size} MB.
+        refinery/resource:
+          blank: Musíte vybrať súbor pre nahranie.
+          too_big: Maximálna veľkosť súboru je %{size} MB.

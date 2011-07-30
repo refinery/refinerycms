@@ -73,9 +73,7 @@ fi:
         translator_access: Sinulla ei ole lupaa muokata sivuja tällä kielellä.
   activerecord:
     models:
-      refinery:
-        page: sivu
+      refinery/page: sivu
     attributes:
-      refinery:
-        page:
-          title: Otsikko
+      refinery/page:
+        title: Otsikko

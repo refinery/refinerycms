@@ -15,6 +15,14 @@ bg:
       remember_admin_location: "Запомнете, че административната зона на Refinery се намира в:"
       lets_start: Добре, нека да направим настройките Ви за вход...
       continue: Продължение...
+    crudify:
+      created: 'Елемента "%{what}" бе създаден успешно.'
+      updated: 'Елемента "%{what}" бе актуализиран успешно.'
+      destroyed: 'Елемента "%{what}" бе премахнат успешно.'
+    site_bar:
+      log_out: Изход
+      switch_to_your_website: Превключване към Вашия сайт
+      switch_to_your_website_editor: Превключване към редактора на Вашия сайт
     admin:
       menu:
         reorder_menu: Пренареждане на менюто
@@ -23,26 +31,17 @@ bg:
         show:
           save: Запис
           cancel: Отказ
-    crudify:
-      created: 'Елемента %{what} бе успешно създаден.'
-      updated: 'Елемента %{what} бе успешно актуализиран.'
-      destroyed: 'Елемента %{what} бе успешно премахнат.'
-    site_bar:
-      log_out: Изход
-      switch_to_your_website: Превключване към Вашия сайт
-      switch_to_your_website_editor: Превключване към редактора на Вашия сайт
-    admin:
       continue_editing:
         save_and_continue_editing: 'Запис и продължение'
       form_actions:
         save: Запис
         cancel: Отказ
         cancel_lose_changes: При отказ, ще загубите всички промени, които сте направили тук
-        delete: Премахване
+        delete: Изтриване
         close: Затваряне
       image_picker:
         none_selected: 'Все още няма избран(а) %(what). Моля, цъкнете тук, за да добавите един(а).'
-        remove_current: 'Премахване на текущия(та) %{what}'
+        remove_current: 'Премахване на текущия(ата) %{what}'
         change: Цъкнете тук, за да изберете изображение
         show: Показване
       resource_picker:
@@ -54,10 +53,10 @@ bg:
         current: Текущ файл
       search:
         button_text: Търсене
-        results_for: "Резултати от търсене на '%{query}'"
+        results_for: 'Резултати от търсене на "%{query}"'
         no_results: 'За съжаление нищо не бе намерено'
       delete:
-        message: "Сигурни ли сте, че искате да премахнете '%{title}'?"
+        message: 'Сигурни ли сте, че искате да изтриете "%{title}"?'
       error_messages:
         problems_in_following_fields: Има проблем със следните полета
       help: помощ

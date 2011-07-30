@@ -28,11 +28,9 @@ da:
           button_text: Indsæt
   activerecord:
     models:
-      refinery:
-        resource: fil
+      refinery/resource: fil
     errors:
       models:
-        refinery:
-          resource:
-            blank: Du skal vælge en fil, der skal uploades
-            too_big: Filer må højest være på %{size} megabytes
+        refinery/resource:
+          blank: Du skal vælge en fil, der skal uploades
+          too_big: Filer må højest være på %{size} megabytes

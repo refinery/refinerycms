@@ -74,9 +74,7 @@ lv:
           no_pages_yet: Vēl nav nevienas lapas. Spied "Izveidot jaunu lapu", lai izveidotu pirmo lapu.
   activerecord:
     models:
-      refinery:
-        page: lapa
+      refinery/page: lapa
     attributes:
-      refinery:
-        page:
-          title: Nosaukums
+      refinery/page:
+        title: Nosaukums

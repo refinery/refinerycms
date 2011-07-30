@@ -28,11 +28,9 @@ pt-BR:
           button_text: Inserir
   activerecord:
     models:
-      refinery:
-        resource: Arquivo
+      refinery/resource: Arquivo
     errors:
       models:
-        refinery:
-          resource:
-            blank: Você deve escolher um arquivo para enviar
-            too_big: "Arquivos devem ser menores que %{size} megabytes em tamanho"
+        refinery/resource:
+          blank: Você deve escolher um arquivo para enviar
+          too_big: "Arquivos devem ser menores que %{size} megabytes em tamanho"

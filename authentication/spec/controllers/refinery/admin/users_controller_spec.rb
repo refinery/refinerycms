@@ -1,5 +1,4 @@
 require "spec_helper"
-require File.expand_path("./authentication/features/support/factories.rb")
 
 describe Refinery::Admin::UsersController, :type => :controller do
   login_refinery_user

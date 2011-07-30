@@ -18,7 +18,8 @@ module Refinery
     class Engine < ::Rails::Engine
       isolate_namespace ::Refinery
 
-      initializer 'resources-with-dragonfly', :before => "init plugin" do |app|
+      initializer 'resources-with-dragonfly', :before => :load_config_initializers do |app|
+        ::Refinery::Resources::Dragonfly.setup!
         ::Refinery::Resources::Dragonfly.attach!(app)
       end
 

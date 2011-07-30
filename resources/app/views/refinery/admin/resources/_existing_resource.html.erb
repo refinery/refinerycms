@@ -1,7 +1,7 @@
 <div id='existing_resource_area' class='dialog_area' <%= "style='display:none;'" if @resource.errors.any? %>>
   <input type='hidden' name='linked_resource' id='linked_resource' />
   <div id='existing_resource_area_content' class='clearfix'>
-    <div id='pages_list'>
+    <div id='pages_list' class='pages_list'>
       <ul class='link_list'>
         <% @resources.each do |resource| -%>
           <% resource_linked = (resource.url == params[:current_link]) if params[:current_link].present? %>

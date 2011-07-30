@@ -75,9 +75,7 @@ ru:
           no_pages_yet: Страниц ещё нет.
   activerecord:
     models:
-      refinery:
-        page: страница
+      refinery/page: страница
     attributes:
-      refinery:
-        page:
-          title: Заголовок
+      refinery/page:
+        title: Заголовок

@@ -36,12 +36,10 @@ pt-BR:
           new_image: Nova Imagem
   activerecord:
     models:
-      refinery:
-        image: Imagem
+      refinery/image: Imagem
     errors:
       models:
-        refinery:
-          image:
-            blank: Você deve escolher uma imagem para enviar
-            too_big: "Imagem deve possuir menos de %{size} megabytes de tamanho"
-            incorrect_format: 'Sua imagem deve ser uma JPG, PNG ou GIF'
+        refinery/image:
+          blank: Você deve escolher uma imagem para enviar
+          too_big: "Imagem deve possuir menos de %{size} megabytes de tamanho"
+          incorrect_format: 'Sua imagem deve ser uma JPG, PNG ou GIF'

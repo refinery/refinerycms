@@ -28,11 +28,9 @@ de:
           button_text: Einfügen
   activerecord:
     models:
-      refinery:
-        resource: Datei
+      refinery/resource: Datei
     errors:
       models:
-        refinery:
-          resource:
-            blank: Sie müssen eine Datei zum Hochladen angeben
-            too_big: Die Dateien sollten kleiner als %{size} Megabyte sein
+        refinery/resource:
+          blank: Sie müssen eine Datei zum Hochladen angeben
+          too_big: Die Dateien sollten kleiner als %{size} Megabyte sein

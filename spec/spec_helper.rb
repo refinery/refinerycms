@@ -20,7 +20,10 @@ def setup_environment
   # This file is copied to ~/spec when you run 'rails generate rspec'
   # from the project root directory.
   ENV["RAILS_ENV"] ||= 'test'
-  setup_simplecov if defined?(SimpleCov) # simplecov should be loaded _before_ models, controllers, etc are loaded.
+
+  # simplecov should be loaded _before_ models, controllers, etc are loaded.
+  setup_simplecov unless ENV["SKIP_COV"] || !defined?(SimpleCov)
+
   require File.expand_path("../../config/environment", __FILE__)
   require 'rspec/rails'
 
@@ -42,8 +45,6 @@ def setup_environment
     # config.mock_with :flexmock
     # config.mock_with :rr
     config.mock_with :rspec
-
-    config.fixture_path = ::Rails.root.join('spec', 'fixtures').to_s
 
     # If you're not using ActiveRecord, or you'd prefer not to run each of your
     # examples within a transaction, comment the following line or assign false

@@ -56,9 +56,7 @@ module Refinery
       end
     end
 
-    ::Rails::Engine.module_eval do
-      include ::Refinery::Engine
-    end
+    ::Rails::Engine.send :include, ::Refinery::Engine
 
     class Engine < ::Rails::Engine
       isolate_namespace ::Refinery
