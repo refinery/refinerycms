@@ -8,7 +8,7 @@ This guide covers getting up and running with Refinery CMS. After reading it, yo
 
 endprologue.
 
-WARNING. This guide is based on Refinery CMS 1.0.0 so some of the code shown here may not work in earlier versions of Refinery.
+WARNING. This guide is based on Refinery CMS 2.0.0 so some of the code shown here may not work in earlier versions of Refinery.
 
 h3. Guide Assumptions
 
@@ -281,7 +281,7 @@ body {
 }
 </erb>
 
-TIP: When on the home page of your site, Refinery automatically loads an extra stylesheet located in +public/stylesheets/home.css+ as often sites have a different style on the home page. 
+TIP: When on the home page of your site, Refinery automatically loads an extra stylesheet located in +public/stylesheets/home.css+ as often sites have a different style on the home page.
 
 TIP: Note that 'refinery/application.css' is a stylesheet located in the refinery folder, which is in the refinerycms gem. Without it, front end pages do not include refinery/applications.css by default. Feel free to leave out this import.
 

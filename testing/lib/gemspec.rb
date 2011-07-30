@@ -25,6 +25,7 @@ Gem::Specification.new do |s|
   # RSpec
   s.add_dependency 'rspec-rails',       '~> 2.6'
   s.add_dependency 'fuubar'
+  s.add_dependency 'rspec-instafail'
 
   # Cucumber
   s.add_dependency 'capybara',          '~> 1.0.0'
