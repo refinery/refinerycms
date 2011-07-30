@@ -65,11 +65,34 @@
     border: 1px solid #308606;
     color: white;
     text-shadow: 0px -1px 1px #308606;
-    background-image: -webkit-gradient(linear,left top,left bottom,from(#79E544),to(#308606));
+
+    background-image: -webkit-gradient(
+        linear,
+        left bottom,
+        left top,
+        color-stop(0, rgb(49,134,6)),
+        color-stop(1, rgb(122,229,68))
+    );
+    background-image: -moz-linear-gradient(
+        center bottom,
+        rgb(49,134,6) 0%,
+        rgb(122,229,68) 100%
+    );
   }
   
   #submit_button:focus {
-    background-image: -webkit-gradient(linear,left top,left bottom,from(#308606),to(#79E544));
+    background-image: -webkit-gradient(
+        linear,
+        left bottom,
+        left top,
+        color-stop(0, rgb(122,229,68)),
+        color-stop(1, rgb(49,134,6))
+    );
+    background-image: -moz-linear-gradient(
+        center bottom,
+        rgb(122,229,68) 0%,
+        rgb(49,134,6) 100%
+    );
   }
   #delete_button {
     color: #f00808;

@@ -47,7 +47,18 @@
         font-weight: bold;
         font-size: 14px;
     
-        background-image: -webkit-gradient(linear,left top,left bottom,from(#F8F8F8),to(#E2E2E2));
+        background-image: -webkit-gradient(
+            linear,
+            left bottom,
+            left top,
+            color-stop(0, rgb(226,226,226)),
+            color-stop(1, rgb(248,248,248))
+        );
+        background-image: -moz-linear-gradient(
+            center bottom,
+            rgb(226,226,226) 0%,
+            rgb(248,248,248) 100%
+        );
       }
     }
   }
