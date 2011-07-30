@@ -79,13 +79,11 @@ PATH
       autotest
       autotest-notification
       autotest-rails
-      capybara (>= 0.4.1.1)
-      cucumber
-      cucumber-rails (>= 0.4)
+      capybara (~> 1.0.0)
+      cucumber-rails (~> 1.0.0)
       database_cleaner
       factory_girl
       fuubar
-      gherkin
       json_pure
       launchy
       rack-test (>= 0.5.6)
