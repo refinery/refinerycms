@@ -35,10 +35,10 @@ bg:
           new_image: Качване
   activerecord:
     models:
-      image: изображение
+      refinery/image: изображение
     errors:
       models:
-        image:
+        refinery/image:
           blank: Трябва да укажете изображение за качване
           too_big: Размерът на изображението трябва да бъде по-малък от %{size} мегабайта
           incorrect_format: 'Вашето изображение трябва да бъде JPG, PNG или GIF'

@@ -76,15 +76,6 @@ it:
       enable_javascript: È necessario che JavaScript sia abilitato per poter visualizzare correttamente questa pagina.
       here_are: ""
       instructions_enable_javascript: Istruzioni su come attivare JavaScript nel tuo browser
-  activerecord:
-    models:
-      page: pagina
-      user: utente
-      image: immagine
-      inquiry: richiesta
-      resource: risorsa
-      setting: impostazione di Refinery
-      inquiry_setting: impostazione della richiesta
   pagination:
     next: "&raquo;"
     previous: "&laquo;"

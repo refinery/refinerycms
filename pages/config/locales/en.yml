@@ -81,9 +81,7 @@ en:
         translator_access: You do not have the required permission to modify pages in this language.
   activerecord:
     models:
-      refinery:
-        page: page
+      refinery/page: page
     attributes:
-      refinery:
-        page:
-          title: Title
+      refinery/page:
+        title: Title

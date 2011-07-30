@@ -28,11 +28,9 @@ el:
           button_text: Εισαγωγή
   activerecord:
     models:
-      refinery:
-        resource: αρχείο
+      refinery/resource: αρχείο
     errors:
       models:
-        refinery:
-          resource:
-            blank: Πρέπει να διαλέξετε αρχείο για ανέβασμα
-            too_big: Το αρχείο πρέπει να είναι μικρότερο από %{size} megabytes σε μέγεθος
+        refinery/resource:
+          blank: Πρέπει να διαλέξετε αρχείο για ανέβασμα
+          too_big: Το αρχείο πρέπει να είναι μικρότερο από %{size} megabytes σε μέγεθος

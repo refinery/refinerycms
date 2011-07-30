@@ -35,12 +35,10 @@ sv:
           new_image: Ny bild
   activerecord:
     models:
-      refinery:
-        image: bild
+      refinery/image: bild
     errors:
       models:
-        refinery:
-          image:
-            blank: Du måste ange en bild att ladda upp
-            too_big: Bilden ska vara mindre än %{size} megabytes stor
-            incorrect_format: 'Din bild måste vara antingen JPG, PNG eller GIF'
+        refinery/image:
+          blank: Du måste ange en bild att ladda upp
+          too_big: Bilden ska vara mindre än %{size} megabytes stor
+          incorrect_format: 'Din bild måste vara antingen JPG, PNG eller GIF'

@@ -34,12 +34,10 @@ sl:
           new_image: Nova Slika
   activerecord:
     models:
-      refinery:
-        image: slika
+      refinery/image: slika
     errors:
       models:
-        refinery:
-          image:
-            blank: Izbrati morate datoteko, ki jo želite naložiti
-            too_big: Velikost slike mora biti manjša od %{size} megabajtov
-            incorrect_format: Slika mora biti tipa JPG, PNG ali GIF
+        refinery/image:
+          blank: Izbrati morate datoteko, ki jo želite naložiti
+          too_big: Velikost slike mora biti manjša od %{size} megabajtov
+          incorrect_format: Slika mora biti tipa JPG, PNG ali GIF

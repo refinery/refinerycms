@@ -56,17 +56,15 @@ es:
       refinery: Refinery
   activerecord:
     models:
-      refinery:
-        user: usuario
+      refinery/user: usuario
     attributes:
-      refinery:
-        user:
-          login: Usuario
-          username: Usuario
-          email: E-mail
-          password: Contraseña
-          password_confirmation: Confirmar contraseña
-          remember_me: Recordarme
+      refinery/user:
+        login: Usuario
+        username: Usuario
+        email: E-mail
+        password: Contraseña
+        password_confirmation: Confirmar contraseña
+        remember_me: Recordarme
   devise:
     failure:
       unauthenticated: 'Necesitas acceder a tu cuenta o registrarte antes de continuar.'

@@ -28,11 +28,9 @@ lt:
           button_text: Įterpti
   activerecord:
     models:
-      refinery:
-        resource: failas
+      refinery/resource: failas
     errors:
       models:
-        refinery:
-          resource:
-            blank: Nurodykite failą įkėlimui
-            too_big: Failas turėtų būti mažesnio dydžio nei %{size} megabaitų
+        refinery/resource:
+          blank: Nurodykite failą įkėlimui
+          too_big: Failas turėtų būti mažesnio dydžio nei %{size} megabaitų

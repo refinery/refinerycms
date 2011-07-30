@@ -72,9 +72,7 @@ fr:
           no_pages_yet: "Il n'y a actuellement aucune page. Cliquer sur 'Créer une nouvelle page' pour en ajouter une."
   activerecord:
     models:
-      refinery:
-        page: page
+      refinery/page: page
     attributes:
-      refinery:
-        page:
-          title: Titre
+      refinery/page:
+        title: Titre

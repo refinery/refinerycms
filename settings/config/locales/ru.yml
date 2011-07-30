@@ -37,11 +37,9 @@ ru:
             use_resource_caching: "Рекомендуется включить этот параметр в рабочем режиме сайта, чтобы файлы джаваскриптов и таблиц стилей собирались в единый пакет, что снизит число запросов к вашему сайту, тем самым увеличится его скорость."
   activerecord:
     models:
-      refinery:
-        setting: Параметр системы
+      refinery/setting: Параметр системы
     attributes:
-      refinery:
-        setting:
-          name: Имя
-          value: Значение
-          restricted: Ограничение доступа
+      refinery/setting:
+        name: Имя
+        value: Значение
+        restricted: Ограничение доступа

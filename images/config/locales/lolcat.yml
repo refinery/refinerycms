@@ -35,12 +35,10 @@ lolcat:
           new_image: NEW IMAGE
   activerecord:
     models:
-      refinery:
-        image: IMAGE
+      refinery/image: IMAGE
     errors:
       models:
-        refinery:
-          image:
-            blank: U MUST SPECIFY AN IMAGE 4 UPLOAD
-            too_big: IMAGE SHUD BE SMALLR THAN %{size} MEGABYTEZ IN SIZE
-            incorrect_format: UR IMAGE MUST BE EITHR JPG, PNG OR GIF
+        refinery/image:
+          blank: U MUST SPECIFY AN IMAGE 4 UPLOAD
+          too_big: IMAGE SHUD BE SMALLR THAN %{size} MEGABYTEZ IN SIZE
+          incorrect_format: UR IMAGE MUST BE EITHR JPG, PNG OR GIF

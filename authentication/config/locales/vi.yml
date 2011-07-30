@@ -62,14 +62,12 @@ vi:
       signed_in: Đăng nhập thành công.
   activerecord:
     models:
-      refinery:
-        user: người dùng
+      refinery/user: người dùng
     attributes:
-      refinery:
-        user:
-          login: Đăng nhập
-          username: Tên người dùng
-          password: Mật khẩu
-          password_confirmation: Kiểm định mật khẩu
-          email: Thư điện tử
-          remember_me: Nhớ đăng nhập cho lần sau
+      refinery/user:
+        login: Đăng nhập
+        username: Tên người dùng
+        password: Mật khẩu
+        password_confirmation: Kiểm định mật khẩu
+        email: Thư điện tử
+        remember_me: Nhớ đăng nhập cho lần sau

@@ -35,13 +35,10 @@ rs:
           new_image: Upload
   activerecord:
     models:
-      refinery:
-        image: slika
+      refinery/image: slika
     errors:
       models:
-        refinery:
-          image:
-            blank: Moraš izabrati sliku za upload
-            too_big: Slika bi trebalo da bude manja od %{size} megabajta
-            incorrect_format: 'Slika mora biti u JPG, PNG ili GIF formatu'
-
+        refinery/image:
+          blank: Moraš izabrati sliku za upload
+          too_big: Slika bi trebalo da bude manja od %{size} megabajta
+          incorrect_format: 'Slika mora biti u JPG, PNG ili GIF formatu'

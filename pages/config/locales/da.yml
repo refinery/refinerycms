@@ -72,9 +72,7 @@ da:
           no_pages_yet: Der er ingen sider endnu. Klik på "Tilføj en ny side" for at oprette den første."
   activerecord:
     models:
-      refinery:
-        page: side
+      refinery/page: side
     attributes:
-      refinery:
-        page:
-          title: Titel
+      refinery/page:
+        title: Titel

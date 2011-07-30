@@ -72,9 +72,7 @@ el:
           no_pages_yet: There are no pages yet. Click "Add new page" to add your first page.
   activerecord:
     models:
-      refinery:
-        page: σελίδα
+      refinery/page: σελίδα
     attributes:
-      refinery:
-        page:
-          title: τίτλος
+      refinery/page:
+        title: τίτλος

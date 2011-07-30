@@ -81,7 +81,7 @@ bg:
         translator_access: Нямате нужните права да променяте страници на този език.
   activerecord:
     models:
-      page: страница
+      refinery/page: страница
     attributes:
-      page:
+      refinery/page:
         title: Заглавие

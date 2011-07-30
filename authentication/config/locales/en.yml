@@ -62,14 +62,12 @@ en:
       signed_in: Signed in successfully.
   activerecord:
     models:
-      refinery:
-        user: user
+      refinery/user: user
     attributes:
-      refinery:
-        user:
-          login: Login
-          username: Username
-          password: Password
-          password_confirmation: Password confirmation
-          email: Email
-          remember_me: Remember me
+      refinery/user:
+        login: Login
+        username: Username
+        password: Password
+        password_confirmation: Password confirmation
+        email: Email
+        remember_me: Remember me

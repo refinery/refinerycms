@@ -28,11 +28,9 @@ ko:
           button_text: 삽입
   activerecord:
     models:
-      refinery:
-        resource: 파일
+      refinery/resource: 파일
     errors:
       models:
-        refinery:
-          resource:
-            blank: 업로드할 파일을 선택해주세요.
-            too_big: 파일의 크기는 %{size}MB 이하여야 합니다.
+        refinery/resource:
+          blank: 업로드할 파일을 선택해주세요.
+          too_big: 파일의 크기는 %{size}MB 이하여야 합니다.

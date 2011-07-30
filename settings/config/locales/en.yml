@@ -41,11 +41,9 @@ en:
             cache_pages_full: Activates the full-page-cache. It allows cached page delivery via Nginx or .htaccess file from Apache.
   activerecord:
     models:
-      refinery:
-        setting: setting
+      refinery/setting: setting
     attributes:
-      refinery:
-        setting:
-          name: Name
-          value: Value
-          restricted: Restricted
+      refinery/setting:
+        name: Name
+        value: Value
+        restricted: Restricted

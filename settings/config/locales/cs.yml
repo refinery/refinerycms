@@ -39,11 +39,9 @@ cs:
             use_resource_caching: Doporučujeme zapnout toto nastavení v produkčním módu, protože rapidně urychlí načítání stránek. Komprimuje JavaSript a kaskádové styly do jednotlivých souborů, což vám ušetří požadavky na server.
   activerecord:
     models:
-      refinery:
-        setting: nastavení
+      refinery/setting: nastavení
     attributes:
-      refinery:
-        setting:
-          name: Jméno
-          value: Hodnota
-          restricted: Omezení
+      refinery/setting:
+        name: Jméno
+        value: Hodnota
+        restricted: Omezení
