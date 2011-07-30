@@ -1,6 +1,6 @@
 <tr class='record <%= cycle("on", "on-hover") %>'>
-  <td class='title <%= resource.ext.downcase %>'>
-    <%= resource.title %>.<%= resource.ext %>
+  <td class='title <%= resource.ext.try(:downcase) %>'>
+    <%= resource.title %><%= ".#{resource.ext}" if resource.ext %>
   </td>
   <td>
     <%= number_to_human_size(resource.size) %>
