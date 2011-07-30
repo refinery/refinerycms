@@ -27,12 +27,10 @@ Gem::Specification.new do |s|
   s.add_dependency 'fuubar'
 
   # Cucumber
-  s.add_dependency 'capybara',          '>= 0.4.1.1'
+  s.add_dependency 'capybara',          '~> 1.0.0'
   s.add_dependency 'database_cleaner'
-  s.add_dependency 'cucumber-rails',    '>= 0.4'
-  s.add_dependency 'cucumber'
+  s.add_dependency 'cucumber-rails',    '~> 1.0.0'
   s.add_dependency 'launchy'
-  s.add_dependency 'gherkin'
   s.add_dependency 'rack-test',         '>= 0.5.6'
   s.add_dependency 'json_pure'
 
