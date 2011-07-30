@@ -11,9 +11,10 @@
 <% else %>
   <p>
     <% unless searching? %>
-      <strong><%=t('.no_pages_yet')%></strong>
+      <strong><%= t('.no_pages_yet') %></strong>
     <% else %>
       <%= t('no_results', :scope => 'refinery.admin.search') %>
     <% end %>
   </p>
 <% end %>
+<% content_for :stylesheets, stylesheet_link_tag('refinery/pages') %>
