@@ -35,12 +35,10 @@ zh-CN:
           new_image: 上传
   activerecord:
     models:
-      refinery:
-        image: 图片
+      refinery/image: 图片
     errors:
       models:
-        refinery:
-          image:
-            blank: 你必须选择一个图片来上传
-            too_big: 图片应该小于 %{size} MB 大小
-            incorrect_format: '你的图片必须是JPG, PNG 或者 GIF'
+        refinery/image:
+          blank: 你必须选择一个图片来上传
+          too_big: 图片应该小于 %{size} MB 大小
+          incorrect_format: '你的图片必须是JPG, PNG 或者 GIF'

@@ -62,14 +62,12 @@ zh-CN:
       signed_in: 登录成功.
   activerecord:
     models:
-      refinery:
-        user: 用户
+      refinery/user: 用户
     attributes:
-      refinery:
-        user:
-          login: 登录
-          username: 用户名
-          password: 密码
-          password_confirmation: 确认密码
-          email: Email
-          remember_me: 记住我
+      refinery/user:
+        login: 登录
+        username: 用户名
+        password: 密码
+        password_confirmation: 确认密码
+        email: Email
+        remember_me: 记住我

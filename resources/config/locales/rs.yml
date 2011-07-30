@@ -28,11 +28,9 @@ rs:
           button_text: Unesi
   activerecord:
     models:
-      refinery:
-        resource: fajl
+      refinery/resource: fajl
     errors:
       models:
-        refinery:
-          resource:
-            blank: Moraš izabrati fajl za upload
-            too_big: Fajl bi trebalo da je manji od %{size} megabajta
+        refinery/resource:
+          blank: Moraš izabrati fajl za upload
+          too_big: Fajl bi trebalo da je manji od %{size} megabajta

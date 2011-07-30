@@ -28,11 +28,9 @@ vi:
           button_text: Chèn
   activerecord:
     models:
-      refinery:
-        refinery:resource: tập tin
+      refinery/resource: tập tin
     errors:
       models:
-        refinery:
-          resource:
-            blank: Bạn phải xác định tập tin để tải lên
-            too_big: Tập tin phải nhỏ hơn %{size} megabytes về kích thước
+        refinery/resource:
+          blank: Bạn phải xác định tập tin để tải lên
+          too_big: Tập tin phải nhỏ hơn %{size} megabytes về kích thước

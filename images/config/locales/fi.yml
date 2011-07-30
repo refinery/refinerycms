@@ -35,12 +35,10 @@ fi:
           new_image: Lisää
   activerecord:
     models:
-      refinery:
-        image: kuva
+      refinery/image: kuva
     errors:
       models:
-        refinery:
-          image:
-            blank: Sinun pitää lähettää kuva
-            too_big: Kuvan tulee olla pienempi kuin %{size} megatavua kooltaan
-            incorrect_format: 'Kuvan pitää olla joko JPG, PNG tai GIF- muodossa'
+        refinery/image:
+          blank: Sinun pitää lähettää kuva
+          too_big: Kuvan tulee olla pienempi kuin %{size} megatavua kooltaan
+          incorrect_format: 'Kuvan pitää olla joko JPG, PNG tai GIF- muodossa'

@@ -65,14 +65,12 @@ cs:
       signed_in: Úspěšné přihlášení.
   activerecord:
     models:
-      refinery:
-        user: uživatel
+      refinery/user: uživatel
     attributes:
-      refinery:
-        user:
-          login: Přihlásit
-          email: Email
-          username: Uživatelské jméno
-          password: Heslo
-          password_confirmation: Potvrdit heslo
-          remember_me: Zapamatovat heslo
+      refinery/user:
+        login: Přihlásit
+        email: Email
+        username: Uživatelské jméno
+        password: Heslo
+        password_confirmation: Potvrdit heslo
+        remember_me: Zapamatovat heslo

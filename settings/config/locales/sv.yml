@@ -39,11 +39,9 @@ sv:
             use_resource_caching: Rekomenderat att aktivera den här inställningen i produktionsläget då den buffrar javascript, stilmallar m.m. till ett enskilt paket att skicka vilket minimerar antalet kopplingar till din webbplats och snabbar upp laddningstiden.
   activerecord:
     models:
-      refinery:
-        setting: inställning
+      refinery/setting: inställning
     attributes:
-      refinery:
-        setting:
-          name: Namn
-          value: Värde
-          restricted: Begränsad
+      refinery/setting:
+        name: Namn
+        value: Värde
+        restricted: Begränsad

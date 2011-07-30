@@ -47,12 +47,10 @@ lolcat:
         subject: LINK 2 RESET UR PASWORD
   activerecord:
     models:
-      refinery:
-        user: USR
+      refinery/user: USR
     attributes:
-      refinery:
-        user:
-          login: LOGIN
-          email: EMAIL
-          password: PASWORD
-          remember_me: REMEMBR ME
+      refinery/user:
+        login: LOGIN
+        email: EMAIL
+        password: PASWORD
+        remember_me: REMEMBR ME

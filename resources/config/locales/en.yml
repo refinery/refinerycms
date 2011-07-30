@@ -28,11 +28,9 @@ en:
           button_text: Insert
   activerecord:
     models:
-      refinery:
-        resource: file
+      refinery/resource: file
     errors:
       models:
-        refinery:
-          resource:
-            blank: You must specify file for upload
-            too_big: File should be smaller than %{size} megabytes in size
+        refinery/resource:
+          blank: You must specify file for upload
+          too_big: File should be smaller than %{size} megabytes in size

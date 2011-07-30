@@ -40,11 +40,9 @@ da:
             approximate_ascii: Sæt til 'true', hvis du vil konvertere karakterer som ā, č og ž til a, c og z i side-URLer.
   activerecord:
     models:
-      refinery:
-        setting: indstilling
+      refinery/setting: indstilling
     attributes:
-      refinery:
-        setting:
-          name: Navn
-          value: Værdi
-          restricted: Begrænset adgang
+      refinery/setting:
+        name: Navn
+        value: Værdi
+        restricted: Begrænset adgang

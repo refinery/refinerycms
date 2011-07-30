@@ -41,11 +41,9 @@ bg:
             cache_pages_full: Активиране на пълно кеширане на страници (full-page-cache). Тази настройка осъществява кеширането на страници чрез Nginx или чрез файла .htaccess в Apache.
   activerecord:
     models:
-      refinery:
-        setting: настройка
+      refinery/setting: настройка
     attributes:
-      refinery:
-        setting:
-          name: Наименование
-          value: Стойност
-          restricted: Ограничена
+      refinery/setting:
+        name: Наименование
+        value: Стойност
+        restricted: Ограничена

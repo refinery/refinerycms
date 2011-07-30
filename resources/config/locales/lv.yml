@@ -28,11 +28,9 @@ lv:
           button_text: Ievietot
   activerecord:
     models:
-      refinery:
-        resource: fails
+      refinery/resource: fails
     errors:
       models:
-        refinery:
-          resource:
-            blank: Jānorāda fails pirms augšupielādes
-            too_big: Faila izmēram jābūt mazākam par %{size} megabaitiem
+        refinery/resource:
+          blank: Jānorāda fails pirms augšupielādes
+          too_big: Faila izmēram jābūt mazākam par %{size} megabaitiem

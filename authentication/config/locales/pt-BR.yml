@@ -59,13 +59,11 @@ pt-BR:
       signed_in: Fez login com sucesso.
   activerecord:
     models:
-      refinery:
-        user: Usuário
+      refinery/user: Usuário
     attributes:
-      refinery:
-        user:
-          login: Login
-          email: Email
-          password: Senha
-          password_confirmation: Confirmação da senha
-          remember_me: Lembrar de mim
+      refinery/user:
+        login: Login
+        email: Email
+        password: Senha
+        password_confirmation: Confirmação da senha
+        remember_me: Lembrar de mim

@@ -40,11 +40,9 @@ nl:
             approximate_ascii: Zet dit aan, als je Latijnse karakters gebruikt met accenten en dergelijke in de pagina titels. Het converteert karakters zoals ā, č, ž naar a, c, z zodat ze er niet raar uitzien in de adresbalk van browsers.
   activerecord:
     models:
-      refinery:
-        setting: installing
+      refinery/setting: installing
     attributes:
-      refinery:
-        setting:
-          name: Naam
-          value: Waarde
-          restricted: Beveligd
+      refinery/setting:
+        name: Naam
+        value: Waarde
+        restricted: Beveligd

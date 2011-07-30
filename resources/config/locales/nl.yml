@@ -27,11 +27,9 @@ nl:
           button_text: Invoegen
   activerecord:
     models:
-      refinery:
-        resource: bestand
+      refinery/resource: bestand
     errors:
       models:
-        refinery:
-          resource:
-            blank: U moet een bestand kiezen dat u wilt uploaden.
-            too_big: Bestanden mogen niet groter dan %{size} megabytes zijn.
+        refinery/resource:
+          blank: U moet een bestand kiezen dat u wilt uploaden.
+          too_big: Bestanden mogen niet groter dan %{size} megabytes zijn.

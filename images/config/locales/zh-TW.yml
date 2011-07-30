@@ -35,12 +35,10 @@ zh-TW:
           new_image: 上傳
   activerecord:
     models:
-      refinery:
-        image: 圖片
+      refinery/image: 圖片
     errors:
       models:
-        refinery:
-          image:
-            blank: 您必須指定一張圖片來上傳
-            too_big: 圖片必須小於 %{size} MB 這個大小
-            incorrect_format: '您的圖片必須是 JPG, PNG 或是 GIF'
+        refinery/image:
+          blank: 您必須指定一張圖片來上傳
+          too_big: 圖片必須小於 %{size} MB 這個大小
+          incorrect_format: '您的圖片必須是 JPG, PNG 或是 GIF'

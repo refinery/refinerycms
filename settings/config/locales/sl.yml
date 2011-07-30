@@ -20,10 +20,8 @@ sl:
             restricted: To omogoča da nastavitev lahko vidijo in urejajo samo super-uporabniki (kot ste vi).
   activerecord:
     models:
-      refinery:
-        setting: Refinery nastavitve
+      refinery/setting: Refinery nastavitve
     attributes:
-      refinery:
-        setting:
-          name: Ime
-          value: Vrednost
+      refinery/setting:
+        name: Ime
+        value: Vrednost
