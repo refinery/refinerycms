@@ -26,18 +26,14 @@ module Refinery
       end
 
       # Determines whether any page underneath the supplied page is the current page according to rails.
-      # Just calls selected_page? for each descendant of the supplied page.
-      # if you pass a collection it won't check its own descendants but use the collection supplied.
-      def descendant_page_selected?(page, collection = nil)
-        return false if page.rgt == page.lft + 1
-
-        page.descendants.any? { |descendant| selected_page?(descendant) }
+      # Just calls selected_page? for each descendant of the supplied page
+      # unless it first quickly determines that there are no descendants.
+      def descendant_page_selected?(page)
+        (page.rgt != page.lft + 1) && page.descendants.any? { |descendant| selected_page?(descendant) }
       end
 
-      def selected_page_or_descendant_page_selected?(page, collection = nil)
-        return true if selected_page?(page)
-        return true if descendant_page_selected?(page, collection)
-        false
+      def selected_page_or_descendant_page_selected?(page)
+        selected_page?(page) || descendant_page_selected?(page)
       end
 
       # Determine whether the supplied page is the currently open page according to Refinery.
