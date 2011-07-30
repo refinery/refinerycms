@@ -9,8 +9,9 @@ $(document).ready(function(){
   init_modal_dialogs();
   init_tooltips();
   init_ajaxy_pagination();
-
-  $('#menu a').live('click', function(e) {
+  
+  // Get all menu items except ones that open in a dialog
+  $('#menu a:not([href*="dialog=true"])').live('click', function(e) {
     var $the_link = $(this);
     var $the_href = $the_link.attr('href');
     $.pjax({
@@ -182,8 +183,7 @@ init_modal_dialogs = function(){
       'dialog-width': parseInt($($(anchor).attr('href').match("width=([0-9]*)")).last().get(0), 10)||928
       , 'dialog-height': parseInt($($(anchor).attr('href').match("height=([0-9]*)")).last().get(0), 10)||473
       , 'dialog-title': ($(anchor).attr('title') || $(anchor).attr('name') || $(anchor).html() || null)
-    }).attr('href', $(anchor).attr('href').replace(/(\&(amp\;)?)?dialog\=true/, '')
-                                          .replace(/(\&(amp\;)?)?width\=\d+/, '')
+    }).attr('href', $(anchor).attr('href').replace(/(\&(amp\;)?)?width\=\d+/, '')
                                           .replace(/(\&(amp\;)?)?height\=\d+/, '')
                                           .replace(/(\?&(amp\;)?)/, '?')
                                           .replace(/\?$/, ''))
