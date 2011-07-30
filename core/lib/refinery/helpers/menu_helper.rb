@@ -21,7 +21,7 @@ module Refinery
         options.update(:sibling_count => options[:menu_branch].shown_siblings.length) unless options[:sibling_count]
 
         css = []
-        css << 'selected' if selected_page_or_descendant_page_selected?(local_assigns[:menu_branch], local_assigns[:collection])
+        css << 'selected' if selected_page_or_descendant_page_selected?(local_assigns[:menu_branch])
         css
       end
 
