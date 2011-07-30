@@ -21,7 +21,7 @@ GIT
 
 GIT
   remote: git://github.com/svenfuchs/globalize3.git
-  revision: ca5ba146b70543f22c7bfdcd7455b0d4c560449a
+  revision: 0469dc3e245feffed84ddd767b2974853187062f
   specs:
     globalize3 (0.2.0.beta1)
       activemodel (>= 3.0.0)
@@ -194,7 +194,7 @@ GEM
     json_pure (1.5.3)
     kaminari (0.12.4)
       rails (>= 3.0.0)
-    launchy (2.0.4)
+    launchy (2.0.5)
       addressable (~> 2.2.6)
     libv8 (3.3.10.2)
     mail (2.3.0)

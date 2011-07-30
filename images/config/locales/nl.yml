@@ -34,12 +34,10 @@ nl:
           new_image: Uploaden
   activerecord:
     models:
-      refinery:
-        image: afbeelding
+      refinery/image: afbeelding
     errors:
       models:
-        refinery:
-          image:
-            blank: U moet een afbeelding kiezen om te uploaden.
-            too_big: Afbeeldingen mogen niet groter dan %{size} megabytes zijn.
-            incorrect_format: Uw afbeelding moet een JPG, PNG of GIF zijn.
+        refinery/image:
+          blank: U moet een afbeelding kiezen om te uploaden.
+          too_big: Afbeeldingen mogen niet groter dan %{size} megabytes zijn.
+          incorrect_format: Uw afbeelding moet een JPG, PNG of GIF zijn.

@@ -73,9 +73,7 @@ lt:
           no_pages_yet: Dar nėra puslapių. Paspauskite "Pridėti naują puslapį" norėdami sukurti pirmą puslapį.
   activerecord:
     models:
-      refinery:
-        page: puslapis
+      refinery/page: puslapis
     attributes:
-      refinery:
-        page:
-          title: Antraštė
+      refinery/page:
+        title: Antraštė

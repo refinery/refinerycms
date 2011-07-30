@@ -40,11 +40,9 @@ fi:
             approximate_ascii: "Pistä tämä asetus päälle, jos käytät merkkejä joissa on aksentteja ja muita erikoismerkkejä sivujen otsikoissa. Se muuntaa merkit kuten ā, č, ž muotoihin a, c, z, jotta nämä merkit eivät näytä oudoilta joittenkin selainten osoitepalkeissa."
   activerecord:
     models:
-      refinery:
-        setting: asetus
+      refinery/setting: asetus
     attributes:
-      refinery:
-        setting:
-          name: Nimi
-          value: Arvo
-          restricted: Rajoitettu
+      refinery/setting:
+        name: Nimi
+        value: Arvo
+        restricted: Rajoitettu

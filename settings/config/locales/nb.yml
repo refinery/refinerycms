@@ -40,12 +40,10 @@ nb:
             approximate_ascii: Sett denne verdien til true dersom du benytter Latinske bokstavar med aksenter eller andre varianter i sidetitler. Jeg vil da konvertere bokstaver som ā, č, ž til a, c, z. På denne måten vil ikke disse bokstavene oppføre seg merkelig i noen nettlesere.
   activerecord:
     models:
-      refinery:
-        setting: innstilling
+      refinery/setting: innstilling
     attributes:
-      refinery:
-        setting:
-          name: Navn
-          value: Verdi
-          restricted: Begrenset
+      refinery/setting:
+        name: Navn
+        value: Verdi
+        restricted: Begrenset
           

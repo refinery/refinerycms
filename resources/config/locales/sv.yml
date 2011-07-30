@@ -28,11 +28,9 @@ sv:
           button_text: Lägg till
   activerecord:
     models:
-      refinery:
-        resource: fil
+      refinery/resource: fil
     errors:
       models:
-        refinery:
-          resource:
-            blank: Du måste ange en fil att ladda upp
-            too_big: Filen måste vara mindre än %{size} megabytes stor
+        refinery/resource:
+          blank: Du måste ange en fil att ladda upp
+          too_big: Filen måste vara mindre än %{size} megabytes stor

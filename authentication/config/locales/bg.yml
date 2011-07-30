@@ -62,14 +62,12 @@ bg:
       signed_in: Успешен вход в системата.
   activerecord:
     models:
-      refinery:
-        user: потребител
+      refinery/user: потребител
     attributes:
-      refinery:
-        user:
-          login: Вход
-          username: Потребителско име
-          password: Парола
-          password_confirmation: Потвърждение на паролата
-          email: Е-поща
-          remember_me: Запомняне данните за вход
+      refinery/user:
+        login: Вход
+        username: Потребителско име
+        password: Парола
+        password_confirmation: Потвърждение на паролата
+        email: Е-поща
+        remember_me: Запомняне данните за вход

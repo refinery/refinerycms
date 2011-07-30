@@ -40,11 +40,9 @@ jp:
             approximate_ascii: 'ラテン文字にアクセント記号を付けたものをページのタイトルに使用する際にはこれを有効にして下さい。ā, č, žをa, c, zへと変換します。'
   activerecord:
     models:
-      refinery:
-        setting: 設定
+      refinery/setting: 設定
     attributes:
-      refinery:
-        setting:
-          name: 名前
-          value: 値
-          restricted: 制限あり
+      refinery/setting:
+        name: 名前
+        value: 値
+        restricted: 制限あり

@@ -28,11 +28,9 @@ zh-CN:
           button_text: 插入
   activerecord:
     models:
-      refinery:
-        resource: 文件
+      refinery/resource: 文件
     errors:
       models:
-        refinery:
-          resource:
-            blank: 您必须选择一个文件来上传
-            too_big: 文件应该小于 %{size} MB 大小
+        refinery/resource:
+          blank: 您必须选择一个文件来上传
+          too_big: 文件应该小于 %{size} MB 大小

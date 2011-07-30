@@ -72,10 +72,8 @@ nb:
           no_pages_yet: Det er ingen sider her enda. Klikk på "Legg til ny side" for å legge til din første side.
   activerecord:
     models:
-      refinery:
-        page: side
+      refinery/page: side
     attributes:
-      refinery:
-        page:
-          title: Tittel
+      refinery/page:
+        title: Tittel
         

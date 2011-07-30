@@ -29,11 +29,9 @@ pl:
           button_text: Wstaw
   activerecord:
     models:
-      refinery:
-        resource: plik
+      refinery/resource: plik
     errors:
       models:
-        refinery:
-          resource:
-            blank: Musisz określić plik do wgrania
-            too_big: Plik powinien być mniejszy niż %{size} megabajtów
+        refinery/resource:
+          blank: Musisz określić plik do wgrania
+          too_big: Plik powinien być mniejszy niż %{size} megabajtów

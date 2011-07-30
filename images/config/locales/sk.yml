@@ -35,12 +35,10 @@ sk:
           new_image: Nový obrázok
   activerecord:
     models:
-      refinery:
-        image: obrázok
+      refinery/image: obrázok
     errors:
       models:
-        refinery:
-          image:
-            blank: Musíte zadať obrázok ktorý chcete nahrať.
-            too_big: Maximálna veľkosť obrázku %{size}MB in size.
-            incorrect_format: 'Obrázok musí byť vo formáte JPG, PNG alebo GIF.'
+        refinery/image:
+          blank: Musíte zadať obrázok ktorý chcete nahrať.
+          too_big: Maximálna veľkosť obrázku %{size}MB in size.
+          incorrect_format: 'Obrázok musí byť vo formáte JPG, PNG alebo GIF.'
