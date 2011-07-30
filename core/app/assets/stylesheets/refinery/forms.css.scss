@@ -13,7 +13,7 @@
   .widest {
     width: 99%;
   }
-  input {
+  input:not([type='file']) {
     border: 1px solid #CBCBCB;
     box-shadow: inset 0px 0px 4px #CCCCCC;
   }
