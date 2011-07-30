@@ -4,10 +4,10 @@ $flash-green: #308606;
   margin-bottom: 10px;
 
   .flash_notice {
-    padding: 7px;
+    padding: 7px 7px 7px 27px;
     border: 1px solid $flash-green;
     border-radius: 5px;
-    background: #CEF5BA;
+    background: #CEF5BA url('/assets/refinery/icons/accept.png') no-repeat 6px 6px;
   }
   
   .flash_notice, .flash_notice a {
