@@ -1,0 +1,20 @@
+$flash-green: #308606;
+
+#flash_container {
+  margin-bottom: 10px;
+
+  .flash_notice {
+    padding: 7px;
+    border: 1px solid $flash-green;
+    border-radius: 5px;
+    background: #CEF5BA;
+  }
+  
+  .flash_notice, .flash_notice a {
+    color: $flash-green;
+  }
+  
+  #flash_close {
+    float: right;
+  }
+}
