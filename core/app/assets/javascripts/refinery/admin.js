@@ -582,11 +582,11 @@ var page_options = {
 
     if (!this.initialised) {
       // set the page tabs up, but ensure that all tabs are shown so that when wymeditor loads it has a proper height.
-      page_options.tabs = $('#page-tabs');
+      page_options.tabs = $('#tab_wrapper');
       page_options.tabs.tabs({tabTemplate: '<li><a href="#{href}">#{label}</a></li>'});
 
-      part_shown = $('#page-tabs .page_part.field').not('.ui-tabs-hide');
-      $('#page-tabs .page_part.field').removeClass('ui-tabs-hide');
+      part_shown = $('#tab_wrapper .page_part.field').not('.ui-tabs-hide');
+      $('#tab_wrapper .page_part.field').removeClass('ui-tabs-hide');
 
       this.enable_parts = enable_parts;
       this.new_part_url = new_part_url;
@@ -596,7 +596,7 @@ var page_options = {
 
       $(document).ready($.proxy(function(){
         // hide the tabs that are supposed to be hidden.
-        $('#page-tabs .page_part.field').not(this).addClass('ui-tabs-hide');
+        $('#tab_wrapper .page_part.field').not(this).addClass('ui-tabs-hide');
       }, part_shown));
 
       if(this.enable_parts){
