@@ -10,6 +10,8 @@ $off-white: #f1f1f1;
   padding: 8px 21px 0px 14px;
   background: #454545;
   border-bottom: #3B3B3B 5px solid;
+  font-family: Arial, sans-serif;
+  font-size: 13px;
   
   #site_bar_content {
     margin-top: 2px;
@@ -29,7 +31,7 @@ $off-white: #f1f1f1;
       color: $off-white;
       box-shadow: inset -1px -1px 0px #656565;
       border-radius: 15px;
-      width: 117px;
+      min-width: 117px;
     }
   }
   #site_name {
