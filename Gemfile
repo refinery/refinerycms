@@ -14,7 +14,10 @@ gemspec
 # or in 1.9.x:
 # gem 'ruby-debug19', :platform => :mri_19
 
-# For Heroku/s3:
+# Use isotope11 dragonfly so we get rackspace support
+gem 'dragonfly', :git => 'http://github.com/isotope11/dragonfly.git'
+
+# For Heroku/s3 or rackspace cloudfiles:
 # gem 'fog'
 
 # REFINERY CMS ================================================================

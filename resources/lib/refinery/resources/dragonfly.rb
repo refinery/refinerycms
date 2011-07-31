@@ -25,6 +25,10 @@ module Refinery
             end
           end
 
+          if ::Refinery.cloudfiles_backend
+            app_resources.configure_with(:rackspace, ENV['RACKSPACE_DIRECTORY'])
+          end
+
           app_resources.define_macro(::ActiveRecord::Base, :resource_accessor)
           app_resources.analyser.register(::Dragonfly::Analysis::FileCommandAnalyser)
           app_resources.content_disposition = :attachment

@@ -1,5 +1,6 @@
 ## 1.1.0 [unreleased]
 
+* Added cloudfiles_backend for assets in addition to s3_backend
 * Finally removed `Page#[]` in favour of `Page#content_for` so instead of `@page[:body]` it's `@page.content_for(:body)`. [Philip Arndt](https://github.com/parndt)
 * Migrated to [Kaminari](https://github.com/amatsuda/kaminari) for pagination. [Uģis Ozols](https://github.com/ugisozols)
 * Moved everything under Refinery namespace. [wakeless](https://github.com/wakeless)

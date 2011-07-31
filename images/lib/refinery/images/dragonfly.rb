@@ -7,7 +7,10 @@ module Refinery
           app_images = ::Dragonfly[:images]
           app_images.configure_with(:imagemagick)
           app_images.configure_with(:rails) do |c|
-            c.datastore.root_path = Rails.root.join('public', 'system', 'images').to_s
+            unless ::Refinery.cloudfiles_backend
+              # This was causing problems in dev
+              c.datastore.root_path = Rails.root.join('public', 'system', 'images').to_s
+            end
             # This url_format it so that dragonfly urls work in traditional
             # situations where the filename and extension are required, e.g. lightbox.
             # What this does is takes the url that is about to be produced e.g.
@@ -24,6 +27,10 @@ module Refinery
             app_images.datastore.configure do |d|
               d.region = ENV['S3_REGION'] if ENV['S3_REGION'] # otherwise defaults to 'us-east-1'
             end
+          end
+
+          if ::Refinery.cloudfiles_backend
+            app_images.configure_with(:rackspace, ENV['RACKSPACE_DIRECTORY'])
           end
 
           app_images.define_macro(::ActiveRecord::Base, :image_accessor)

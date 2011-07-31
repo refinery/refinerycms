@@ -7,7 +7,7 @@ module Refinery
   autoload :Version, File.expand_path('../../refinery/version', __FILE__)
 
   class << self
-    attr_accessor :base_cache_key, :gems, :rescue_not_found, :root, :roots, :s3_backend
+    attr_accessor :base_cache_key, :gems, :rescue_not_found, :root, :roots, :s3_backend, :cloudfiles_backend
 
     def base_cache_key
       @base_cache_key ||= :refinery
@@ -58,6 +58,10 @@ module Refinery
 
     def s3_backend
       @s3_backend ||= false
+    end
+
+    def cloudfiles_backend
+      @cloudfiles_backend ||= false
     end
 
     def version
