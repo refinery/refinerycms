@@ -2,7 +2,7 @@
 
 __An open source Ruby on Rails content management system for Rails 3.__
 
-Refinery also supports Rails 2.x using the [Rails 2.x stable branch](http://github.com/resolve/refinerycms/tree/rails2-stable). More information at [http://refinerycms.com](http://refinerycms.com)
+More information at [http://refinerycms.com](http://refinerycms.com)
 
 ## Requirements
 
