@@ -1,4 +1,11 @@
 GIT
+  remote: git://github.com/collectiveidea/awesome_nested_set.git
+  revision: c2954b307ad66ac47078de2f9fcf921ca425603e
+  specs:
+    awesome_nested_set (2.0.1)
+      activerecord (>= 3.0.0)
+
+GIT
   remote: git://github.com/parndt/refinerycms-i18n
   revision: 21d766b4ca9b84df68f5e686a521f7f8e94cc40c
   specs:
@@ -135,8 +142,6 @@ GEM
     autotest-rails (4.1.0)
       ZenTest
     autotest-standalone (4.5.5)
-    awesome_nested_set (2.0.1)
-      activerecord (>= 3.0.0)
     babosa (0.3.5)
     bcrypt-ruby (2.1.4)
     builder (3.0.0)
@@ -293,6 +298,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  awesome_nested_set!
   coffee-script
   globalize3!
   jquery-rails
