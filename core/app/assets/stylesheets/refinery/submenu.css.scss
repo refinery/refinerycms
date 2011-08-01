@@ -11,10 +11,10 @@ ul.collapsible_menu li span.arrow {
   cursor: pointer;
 }
 ul.collapsible_menu li span.arrow {
-  background-image: url('/assets/refinery/icons/up.gif');
+  background-image: asset_url('refinery/icons/up.gif', image);
 }
 ul.collapsible_menu li.closed span.arrow {
-  background-image: url('/assets/refinery/icons/down.gif');
+  background-image: asset_url('refinery/icons/down.gif', image);
 }
 ul.collapsible_menu > div {
   width: 93%;
