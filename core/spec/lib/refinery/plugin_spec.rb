@@ -42,19 +42,21 @@ module Refinery
     end
 
     describe '#title' do
-      before { setup_i18n }
+      pending "spec is way too slow... fix asap"
+      # before { setup_i18n }
 
-      it 'returns plugin title defined by I18n' do
-        plugin.title.should == 'RefineryCMS RSpec'
-      end
+      # it 'returns plugin title defined by I18n' do
+      #   plugin.title.should == 'RefineryCMS RSpec'
+      # end
     end
 
     describe '#description' do
-      before { setup_i18n }
+      pending "spec is way too slow... fix asap"
+      # before { setup_i18n }
 
-      it 'returns plugin description defined by I18n' do
-        plugin.description.should == 'RSpec tests for plugin.rb'
-      end
+      # it 'returns plugin description defined by I18n' do
+      #   plugin.description.should == 'RSpec tests for plugin.rb'
+      # end
     end
 
     describe '#activity' do
