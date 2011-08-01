@@ -30,8 +30,7 @@ def setup_environment
   # Requires supporting files with custom matchers and macros, etc,
   # in ./support/ and its subdirectories including factories.
   ([Rails.root] | ::Refinery::Plugins.registered.pathnames).map{|p|
-    Dir[p.join('spec', 'support', '**', '*.rb').to_s] +
-    Dir[p.join('features/support/factories{/*.rb,*.rb}').to_s]
+    Dir[p.join('spec', 'support', '**', '*.rb').to_s]
   }.flatten.each do |support_file|
     require support_file if File.exist?(support_file)
   end
