@@ -33,7 +33,7 @@ def setup_environment
     Dir[p.join('spec', 'support', '**', '*.rb').to_s] +
     Dir[p.join('features/support/factories{/*.rb,*.rb}').to_s]
   }.flatten.each do |support_file|
-    require support_file if File.exist?(support_file)
+    require support_file
   end
 
   RSpec.configure do |config|
@@ -51,9 +51,6 @@ def setup_environment
     # instead of true.
     config.use_transactional_fixtures = true
     config.use_instantiated_fixtures  = false
-
-    config.include ::Devise::TestHelpers, :type => :controller
-    config.extend ::Refinery::ControllerMacros, :type => :controller
   end
 end
 

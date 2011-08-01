@@ -1,6 +1,6 @@
 module Refinery
   ::Refinery::Page.reset_column_information
-  
+
   # Check whether all columns are applied yet by seo_meta.
   unless !defined?(::SeoMeta) || ::SeoMeta.attributes.keys.all? { |k|
     ::Refinery::Page.translation_class.instance_methods.include?(k)

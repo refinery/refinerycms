@@ -1,20 +1,14 @@
 require "spec_helper"
 
 describe "manage users" do
-  # TODO: share this with other request specs
+  it_should_behave_like 'refinery admin'
+
   before(:each) do
-    Factory(:refinery_user, :username => "refinerycms",
-                            :password => "123456",
-                            :password_confirmation => "123456")
-    visit new_refinery_user_session_url
-    fill_in "Login", :with => "refinerycms"
-    fill_in "Password", :with => "123456"
-    click_button "Sign in"
+    visit refinery_admin_users_url
   end
 
   describe "new/create" do
     it "allows to create user" do
-      visit refinery_admin_users_url
       click_link "Add new user"
 
       fill_in "Username", :with => "test"
@@ -30,7 +24,6 @@ describe "manage users" do
 
   describe "edit/update" do
     it "allows to update user" do
-      visit refinery_admin_users_url
       click_link "Edit this user"
 
       fill_in "Username", :with => "cmsrefinery"

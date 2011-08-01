@@ -1,9 +1,9 @@
 require 'spec_helper'
-
+require Refinery.roots('authentication').join('spec/support/refinery/authentication/macros')
 module Refinery
   module Admin
     describe RefineryCoreController do
-      login_refinery_user
+      before(:each) { login_refinery_user }
 
       it "should update the plugin positions" do
         plugins = @refinery_user.plugins.reverse.collect {|p| p.name}

@@ -1,23 +1,19 @@
 module Refinery
-  module ControllerMacros
-    def login_user
-      before (:each) do
+  module Authentication
+    module Macros
+      def login_user
         @user = Factory(:user)
         @request.env["devise.mapping"] = Devise.mappings[:admin]
         sign_in @user
       end
-    end
 
-    def login_refinery_user
-      before (:each) do
+      def login_refinery_user
         @refinery_user = Factory(:refinery_user)
         @request.env["devise.mapping"] = Devise.mappings[:admin]
         sign_in @refinery_user
       end
-    end
 
-    def login_refinery_translator
-      before (:each) do
+      def login_refinery_translator
         @refinery_translator = Factory(:refinery_translator)
         @request.env["devise.mapping"] = Devise.mappings[:admin]
         sign_in @refinery_translator

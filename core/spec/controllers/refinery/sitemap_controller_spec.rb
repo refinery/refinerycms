@@ -2,7 +2,7 @@ require 'spec_helper'
 
 module Refinery
   describe SitemapController do
-    login_refinery_user
+    it_should_behave_like 'refinery admin'
 
     before (:each) do
       @request.env['HTTP_ACCEPT'] = 'application/xml'

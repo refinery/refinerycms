@@ -438,6 +438,10 @@ Gem::Specification.new do |s|
     'spec/lib/refinery',
     'spec/lib/refinery/activity_spec.rb',
     'spec/lib/refinery/plugin_spec.rb',
-    'spec/lib/refinery/plugins_spec.rb'
+    'spec/lib/refinery/plugins_spec.rb',
+    'spec/support',
+    'spec/support/refinery',
+    'spec/support/refinery/shared',
+    'spec/support/refinery/shared/admin.rb'
   ]
 end
