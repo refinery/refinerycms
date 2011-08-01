@@ -3,7 +3,7 @@ require 'spec_helper'
 module Refinery
   module Admin
     describe RefineryCoreController do
-      before(:each) { login_refinery_user }
+      login_refinery_user
 
       it "should update the plugin positions" do
         plugins = @refinery_user.plugins.reverse.collect {|p| p.name}

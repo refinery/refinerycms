@@ -3,8 +3,7 @@ require "spec_helper"
 module Refinery
   module Admin
     describe UsersController do
-
-      it_should_behave_like 'refinery admin'
+      login_refinery_user
 
       shared_examples_for "new, create, update, edit and update actions" do
         it "should load roles" do

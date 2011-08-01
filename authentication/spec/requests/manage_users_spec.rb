@@ -1,7 +1,7 @@
 require "spec_helper"
 
 describe "manage users" do
-  it_should_behave_like 'refinery admin'
+  login_refinery_user
 
   before(:each) do
     visit refinery_admin_users_url
