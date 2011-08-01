@@ -1,5 +1,5 @@
 require 'spec_helper'
-require Refinery.roots('authentication').join('spec/support/refinery/authentication/macros')
+
 module Refinery
   module Admin
     describe RefineryCoreController do
