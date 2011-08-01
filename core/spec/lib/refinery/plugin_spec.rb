@@ -17,13 +17,12 @@ module Refinery
 
     let(:plugin) { ::Refinery::Plugins.registered.detect { |plugin| plugin.name == 'refinery_rspec' } }
 
-    def setup_i18n
-      ::I18n.backend = ::I18n::Backend::Simple.new
+    before do
       ::I18n.backend.store_translations :en, :refinery => {
         :plugins => {
           :refinery_rspec => {
-            :title => 'RefineryCMS RSpec',
-            :description => 'RSpec tests for plugin.rb'
+            :title => "RefineryCMS RSpec",
+            :description => "RSpec tests for plugin.rb"
           }
         }
       }
@@ -42,21 +41,15 @@ module Refinery
     end
 
     describe '#title' do
-      pending "spec is way too slow... fix asap"
-      # before { setup_i18n }
-
-      # it 'returns plugin title defined by I18n' do
-      #   plugin.title.should == 'RefineryCMS RSpec'
-      # end
+      it 'returns plugin title defined by I18n' do
+        plugin.title.should == 'RefineryCMS RSpec'
+      end
     end
 
     describe '#description' do
-      pending "spec is way too slow... fix asap"
-      # before { setup_i18n }
-
-      # it 'returns plugin description defined by I18n' do
-      #   plugin.description.should == 'RSpec tests for plugin.rb'
-      # end
+      it 'returns plugin description defined by I18n' do
+        plugin.description.should == 'RSpec tests for plugin.rb'
+      end
     end
 
     describe '#activity' do
