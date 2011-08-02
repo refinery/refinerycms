@@ -41,4 +41,26 @@ describe 'page frontend' do
     end
   end
 
+  describe 'when a page has multiple friendly_id slugs' do
+    before(:all) do
+      # Create a page, then change the page title, creating a new slug
+      page = ::Refinery::Page.create(:title => 'News')
+      page.title = "Recent News"
+      page.save
+    end
+
+    describe 'page accessed via current slug' do
+      it 'shows the page' do
+        visit '/recent-news'
+      end
+    end
+
+    describe 'page is access via old slug' do
+      it '301 redirects to current url' do
+        visit '/news'
+        # capybara follows the 301 redirect to the current url
+        current_path.should == '/recent-news'
+      end
+    end
+  end
 end
