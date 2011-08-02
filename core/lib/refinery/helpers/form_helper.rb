@@ -6,17 +6,18 @@ ActionView::Helpers::FormHelper.module_eval do
   def required_label(object_name, method, text = nil, options = {})
     options = {:class => "required"}.merge!(options)
 
-    label(object_name, method, "#{label_humanize_text(object_name, method, text, options)} *", options)
+    label(object_name, method, "#{label_humanize_text(object_name, method, text)} *", options)
   end
 
 
-  def label_humanize_text object_name, method, text = nil, options = {}
-    if text.blank?
-      text = object_name.classify.constantize.respond_to?(:human_attribute_name) ? object_name.classify.constantize.human_attribute_name(method) : method.to_s
+  def label_humanize_text object_name, method, text = nil
+    content = text unless text.is_a?(Hash)
+    if content.blank?
+      content = object_name.classify.constantize.respond_to?(:human_attribute_name) ? object_name.classify.constantize.human_attribute_name(method) : method.to_s
     else
-      text = text.to_s
+      content = content.to_s
     end
-    text.humanize
+    content.humanize
   end
 
 end
@@ -39,7 +40,6 @@ ActionView::Helpers::FormTagHelper.module_eval do
   end
 
 end
-
 
 # I18n labels automatically
 module ActionView
