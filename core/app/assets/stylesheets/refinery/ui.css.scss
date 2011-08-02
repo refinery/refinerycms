@@ -51,7 +51,7 @@
 .ui-dialog .ui-dialog-titlebar-close span {
   display: block;
   margin: 1px;
-  background: transparent asset_url('refinery/cross.png', image) top left no-repeat;
+  background: transparent image_url('refinery/cross.png') top left no-repeat;
   text-indent:-10000px;
 }
 .ui-dialog .ui-dialog-titlebar-close:hover, .ui-dialog .ui-dialog-titlebar-close:focus {
