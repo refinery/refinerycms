@@ -97,7 +97,6 @@ PATH
       refinerycms-core (= 1.1.0)
       rspec-instafail
       rspec-rails (~> 2.6)
-      simplecov
 
 GEM
   remote: http://rubygems.org/
@@ -238,6 +237,7 @@ GEM
       rdoc (~> 3.4)
       thor (~> 0.14.6)
     rake (0.9.2)
+    rcov (0.9.9)
     rdoc (3.8)
     routing-filter (0.2.4)
       actionpack
@@ -303,12 +303,14 @@ DEPENDENCIES
   globalize3!
   jquery-rails
   mysql2
+  rcov
   refinerycms!
   refinerycms-generators (~> 1.1.0)!
   refinerycms-i18n (~> 1.1.0)!
   refinerycms-testing (~> 1.1.0)
   sass-rails (>= 3.1.0.rc.5)
   seo_meta!
+  simplecov
   sqlite3
   therubyracer
   uglifier
