@@ -174,7 +174,7 @@ GEM
       orm_adapter (~> 0.0.3)
       warden (~> 1.0.3)
     diff-lcs (1.1.2)
-    dragonfly (0.9.4)
+    dragonfly (0.9.5)
       rack
     erubis (2.7.0)
     execjs (1.2.1)
