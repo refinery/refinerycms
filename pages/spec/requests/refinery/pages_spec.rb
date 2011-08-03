@@ -1,11 +1,9 @@
 require 'spec_helper'
 
 describe 'page frontend' do
+  login_refinery_user
 
-  before(:all) do
-    # Delete all pages and their slugs.
-    ::Refinery::Page.all.each(&:destroy!)
-
+  before(:each) do
     # Create some pages for these specs
     Factory(:page, :title => 'Home', :link_url => '/')
     Factory(:page, :title => 'About')
@@ -39,7 +37,7 @@ describe 'page frontend' do
   end
 
   describe 'when a page has multiple friendly_id slugs' do
-    before(:all) do
+    before(:each) do
       # Create a page, then change the page title, creating a new slug
       page = ::Refinery::Page.create(:title => 'News')
       page.title = "Recent News"

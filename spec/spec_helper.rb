@@ -44,12 +44,6 @@ def setup_environment
     # config.mock_with :flexmock
     # config.mock_with :rr
     config.mock_with :rspec
-
-    # If you're not using ActiveRecord, or you'd prefer not to run each of your
-    # examples within a transaction, comment the following line or assign false
-    # instead of true.
-    config.use_transactional_fixtures = true
-    config.use_instantiated_fixtures  = false
   end
 end
 
