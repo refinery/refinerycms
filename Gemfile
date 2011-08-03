@@ -43,6 +43,9 @@ else
   gem 'mysql2', '~> 0.2.7'
 end
 
+gem 'rcov', :platform => :mri_18
+gem 'simplecov', :platform => :mri_19
+
 # END REFINERY CMS DEVELOPMENT ================================================
 
 # USER DEFINED

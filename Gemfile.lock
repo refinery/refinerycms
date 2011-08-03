@@ -60,7 +60,6 @@ PATH
       refinerycms-core (= 1.0.4)
       rspec-instafail
       rspec-rails (~> 2.6)
-      simplecov
 
 GEM
   remote: http://rubygems.org/
@@ -133,19 +132,19 @@ GEM
       orm_adapter (~> 0.0.3)
       warden (~> 1.0.3)
     diff-lcs (1.1.2)
-    dragonfly (0.9.4)
+    dragonfly (0.9.5)
       rack
     erubis (2.6.6)
       abstract (>= 1.0.0)
-    factory_girl (2.0.2)
+    factory_girl (2.0.3)
     ffi (1.0.9)
     friendly_id_globalize3 (3.2.1.4)
       babosa (~> 0.3.0)
-    fuubar (0.0.5)
+    fuubar (0.0.6)
       rspec (~> 2.0)
-      rspec-instafail (~> 0.1.4)
+      rspec-instafail (~> 0.1.8)
       ruby-progressbar (~> 0.0.10)
-    gherkin (2.4.5)
+    gherkin (2.4.6)
       json (>= 1.4.6)
     globalize3 (0.1.0)
       activemodel (>= 3.0.0)
@@ -187,7 +186,8 @@ GEM
       rdoc (~> 3.4)
       thor (~> 0.14.4)
     rake (0.9.2)
-    rdoc (3.8)
+    rcov (0.9.10)
+    rdoc (3.9.1)
     refinerycms-generators (1.0.2)
     refinerycms-i18n (1.0.0)
       refinerycms-core (>= 0.9.9.12)
@@ -239,7 +239,9 @@ PLATFORMS
 
 DEPENDENCIES
   mysql2 (~> 0.2.7)
+  rcov
   refinerycms!
   refinerycms-i18n (~> 1.0.0)
   refinerycms-testing (~> 1.0.4)
+  simplecov
   sqlite3
