@@ -24,6 +24,9 @@ module ::Refinery
 
       copy_file 'lib/generators/templates/Guardfile',
                 Rails.root.join('Guardfile')
+                
+      copy_file 'lib/generators/templates/Rakefile',
+                Rails.root.join('Rakefile')
     end
 
   end
