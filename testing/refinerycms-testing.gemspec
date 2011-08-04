@@ -16,26 +16,40 @@ Gem::Specification.new do |s|
   s.executables       = %w()
 
   s.add_dependency 'refinerycms-core',  '= 1.1.0'
-
-  # RSpec
-  s.add_dependency 'rspec-rails',       '~> 2.6'
-  s.add_dependency 'fuubar'
-  s.add_dependency 'rspec-instafail'
-
-  # Factory Girl
-  s.add_dependency 'factory_girl'
-
-  # Helpful libraries
-  s.add_dependency 'capybara',          '~> 1.0.0'
+  
+  s.add_dependency 'spork', '0.9.0.rc9'
   s.add_dependency 'database_cleaner'
   s.add_dependency 'launchy'
+  s.add_dependency 'factory_girl',      '~> 2.0.2'
+  s.add_dependency 'json_pure'
+  s.add_dependency 'rack-test',         '>= 0.5.6'
+  s.add_dependency 'sqlite3'
+  
+  # RSpec
+  s.add_dependency 'rspec-rails',       '2.6.1.beta1'
+  s.add_dependency 'fuubar'
+  s.add_dependency 'rspec-instafail'
+  s.add_dependency 'capybara',          '~> 1.0.0'
 
   # Cucumber
   s.add_dependency 'cucumber-rails',    '~> 1.0.0'
-  s.add_dependency 'rack-test',         '>= 0.5.6'
+
+  # Autotest
+  s.add_dependency 'autotest'
+  s.add_dependency 'autotest-rails'
+  s.add_dependency 'autotest-notification'
+  
+  # Guard
+  s.add_dependency 'guard-spork'
+  s.add_dependency 'guard-rspec'
+  s.add_dependency 'guard-cucumber'
+  s.add_dependency 'rb-fsevent'
+  s.add_dependency 'growl'
 
   s.files             = [
     '.rspec',
+    'assets',
+    'assets/beach.jpeg',
     'config',
     'config/cucumber.yml',
     'features',
@@ -54,7 +68,18 @@ Gem::Specification.new do |s|
     'lib/generators/templates/features',
     'lib/generators/templates/features/support',
     'lib/generators/templates/features/support/paths.rb',
+    'lib/generators/templates/spec',
+    'lib/generators/templates/spec/spec_helper.rb',
     'lib/generators/testing_generator.rb',
+    'lib/refinery',
+    'lib/refinery/tasks',
+    'lib/refinery/tasks/testing.rake',
+    'lib/refinery/testing',
+    'lib/refinery/testing/factories',
+    'lib/refinery/testing/factories/image.rb',
+    'lib/refinery/testing/factories/page.rb',
+    'lib/refinery/testing/factories/user.rb',
+    'lib/refinery/testing/factories.rb',
     'lib/refinerycms-testing.rb',
     'lib/tasks',
     'lib/tasks/cucumber.rake',
