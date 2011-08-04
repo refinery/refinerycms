@@ -16,9 +16,6 @@ module ::Refinery
       copy_file 'spec/rcov.opts',
                 Rails.root.join('spec', 'rcov.opts')
 
-      copy_file 'spec/support/refinery/controller_macros.rb',
-                Rails.root.join('spec', 'support', 'refinery', 'controller_macros.rb')
-
       copy_file '.rspec',
                 Rails.root.join('.rspec')
 
