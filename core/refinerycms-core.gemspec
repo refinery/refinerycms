@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.version           = %q{1.0.4}
   s.summary           = %q{Core engine for Refinery CMS}
   s.description       = %q{The core of Refinery CMS. This handles the common functionality and is required by most engines}
-  s.date              = %q{2011-08-01}
+  s.date              = %q{2011-08-04}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
   s.rubyforge_project = %q{refinerycms}
@@ -24,7 +24,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'awesome_nested_set',          '~> 2.0'
   s.add_dependency 'rails',                       '~> 3.0.9'
   s.add_dependency 'truncate_html',               '~> 0.5'
-  s.add_dependency 'will_paginate',               '~> 3.0.pre2'
+  s.add_dependency 'will_paginate',               '= 3.0.pre2'
 
   s.files             = [
     'app',
