@@ -75,18 +75,21 @@ Gem::Specification.new do |s|
     'lib/refinery/tasks',
     'lib/refinery/tasks/testing.rake',
     'lib/refinery/testing',
+    'lib/refinery/testing/controller_macros',
+    'lib/refinery/testing/controller_macros/authentication.rb',
+    'lib/refinery/testing/controller_macros.rb',
     'lib/refinery/testing/factories',
     'lib/refinery/testing/factories/image.rb',
     'lib/refinery/testing/factories/page.rb',
     'lib/refinery/testing/factories/user.rb',
     'lib/refinery/testing/factories.rb',
+    'lib/refinery/testing/request_macros',
+    'lib/refinery/testing/request_macros/authentication.rb',
+    'lib/refinery/testing/request_macros.rb',
     'lib/refinerycms-testing.rb',
     'lib/tasks',
     'lib/tasks/cucumber.rake',
     'lib/tasks/rcov.rake',
-    'refinerycms-testing.gemspec',
-    'spec',
-    'spec/rcov.opts',
-    'spec/spec_helper.rb'
+    'refinerycms-testing.gemspec'
   ]
 end

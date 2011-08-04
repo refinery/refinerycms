@@ -15,6 +15,10 @@ Spork.prefork do
   require 'factory_girl'
   require 'devise'
   require 'database_cleaner'
+  
+  require 'refinery/testing/factories'
+  require 'refinery/testing/controller_macros'
+  require 'refinery/testing/request_macros'
 
   Rails.backtrace_cleaner.remove_silencers!
 

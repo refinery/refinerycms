@@ -1,6 +1,6 @@
 module Refinery
-  module Authentication
-    module ControllerMacros
+  module ControllerMacros
+    module Authentication
       def login_user
         before(:each) do
           @user = Factory(:user)

@@ -37,7 +37,10 @@ Spork.prefork do
 
   require File.expand_path("../../config/environment", __FILE__)
   require 'rspec/rails'
+  
   require 'refinery/testing/factories'
+  require 'refinery/testing/controller_macros'
+  require 'refinery/testing/request_macros'
 
   # Requires supporting files with custom matchers and macros, etc,
   # in ./support/ and its subdirectories including factories.
