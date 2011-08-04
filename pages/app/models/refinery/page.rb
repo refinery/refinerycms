@@ -99,14 +99,6 @@ module Refinery
     before_destroy :deletable?
     after_save :reposition_parts!, :invalidate_cached_urls, :expire_page_caching
     after_destroy :expire_page_caching
-    # FIXME: after creating page it's returning nil when asked for title until it gets reloaded.
-    # This is just a temporary fix!
-    # page = ::Refinery::Page.create :title => "Refinery CMS"
-    # page.title => nil
-    # page.valid? => false
-    # page.reload.title => "Refinery CMS"
-    # page.valid? => true
-    after_save { reload }
 
     scope :live, where(:draft => false)
     scope :by_title, proc {|t| with_globalize(:title => t)}
