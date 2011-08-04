@@ -66,6 +66,7 @@ Gem::Specification.new do |s|
     'lib/generators',
     'lib/generators/templates',
     'lib/generators/templates/Guardfile',
+    'lib/generators/templates/Rakefile',
     'lib/generators/templates/features',
     'lib/generators/templates/features/support',
     'lib/generators/templates/features/support/paths.rb',
