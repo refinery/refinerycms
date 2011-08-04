@@ -3,7 +3,7 @@ module Refinery
     module Authentication
       def login_refinery_user
         before(:each) do
-          Factory(:refinery_user, :username => "refinerycms",
+          @refinery_user = Factory(:refinery_user, :username => "refinerycms",
                                   :password => "123456",
                                   :password_confirmation => "123456",
                                   :email => "refinerycms@refinerycms.com")
