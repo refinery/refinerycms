@@ -1,6 +1,6 @@
 module Refinery
-  module Authentication
-    module RequestMacros
+  module RequestMacros
+    module Authentication
       def login_refinery_user
         before(:each) do
           Factory(:refinery_user, :username => "refinerycms",
