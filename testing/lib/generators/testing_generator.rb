@@ -10,7 +10,7 @@ module ::Refinery
       copy_file 'config/cucumber.yml',
                 Rails.root.join('config', 'cucumber.yml')
 
-      copy_file 'spec/spec_helper.rb',
+      copy_file 'lib/generators/templates/spec/spec_helper.rb',
                 Rails.root.join('spec', 'spec_helper.rb')
 
       copy_file 'spec/rcov.opts',
