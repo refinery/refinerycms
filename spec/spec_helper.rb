@@ -1,5 +1,6 @@
 require 'rbconfig'
 require 'factory_girl'
+require 'database_cleaner'
 
 if RUBY_VERSION > "1.9"
   require "simplecov"
@@ -44,6 +45,16 @@ def setup_environment
     # config.mock_with :flexmock
     # config.mock_with :rr
     config.mock_with :rspec
+
+    DatabaseCleaner.strategy = :truncation
+
+    config.before(:each) do
+      DatabaseCleaner.start
+    end
+
+    config.after(:each) do
+      DatabaseCleaner.clean
+    end
   end
 end
 
