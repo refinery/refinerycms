@@ -31,7 +31,7 @@ def setup_environment
   # in ./support/ and its subdirectories including factories.
   ([Rails.root] | ::Refinery::Plugins.registered.pathnames).map{|p|
     Dir[p.join('spec', 'support', '**', '*.rb').to_s]
-  }.flatten.each do |support_file|
+  }.flatten.sort.each do |support_file|
     require support_file
   end
 
