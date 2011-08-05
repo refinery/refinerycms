@@ -31,4 +31,4 @@ load 'refinery/tasks/testing.rake'
 
 Bundler::GemHelper.install_tasks
 
-task :default => 'refinery:testing:setup'
+task :default => 'refinery:testing:engine:setup'
