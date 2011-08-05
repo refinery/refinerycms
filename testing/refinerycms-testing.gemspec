@@ -89,6 +89,7 @@ Gem::Specification.new do |s|
     'lib/refinery/testing/request_macros',
     'lib/refinery/testing/request_macros/authentication.rb',
     'lib/refinery/testing/request_macros.rb',
+    'lib/refinery/testing/task_helpers.rb',
     'lib/refinerycms-testing.rb',
     'lib/tasks',
     'lib/tasks/cucumber.rake',
