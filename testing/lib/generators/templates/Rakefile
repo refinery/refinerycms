@@ -23,7 +23,7 @@ end
 require 'rspec/core/rake_task'
 
 desc "Run specs"
-RSpec::Core::RakeTask.new
+RSpec::Core::RakeTask.new(:spec => 'refinery:testing:engine:init_test_database')
 
 APP_RAKEFILE = File.expand_path("../spec/dummy/Rakefile", __FILE__)
 load 'rails/tasks/engine.rake'
