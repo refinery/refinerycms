@@ -47,7 +47,9 @@ gem 'therubyracer'
 # gem 'arel', :git => 'git://github.com/rails/arel.git'
 
 if RUBY_PLATFORM == 'java'
-  gem 'activerecord-jdbcsqlite3-adapter', '>= 1.0.2', :platform => :jruby
+  gem 'activerecord-jdbcsqlite3-adapter',
+      :git => 'git://github.com/nicksieger/activerecord-jdbc-adapter.git'
+  gem 'jruby-openssl'
 else
   gem 'sqlite3'
   gem 'mysql2'
