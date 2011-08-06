@@ -103,10 +103,7 @@ module Refinery
         end
       end
 
-      dimensions = ActiveSupport::OrderedHash.new
-      dimensions[:width] = width.to_i
-      dimensions[:height] = height.to_i
-      dimensions
+      { :width => width.to_i, :height => height.to_i }
     end
 
     # Returns a titleized version of the filename
