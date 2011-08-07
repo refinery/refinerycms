@@ -2,5 +2,6 @@
   <input id='search' name='search' size='22' type='search' value='<%= params[:search] %>' />
   <% if params[:wymeditor].presence %><input name='wymeditor' value='true' type='hidden'><% end %>
   <% if from_dialog? %><input id='dialog' name='dialog' type='hidden' value='true' /><% end %>
+  <% if @callback.presence %><input name='callback' value='<%= @callback %>' type='hidden'><% end %>
   <%= submit_tag t('button_text', :scope => 'shared.admin.search'), :name => nil %>
 </form>
