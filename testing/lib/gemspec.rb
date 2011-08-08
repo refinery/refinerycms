@@ -22,26 +22,23 @@ Gem::Specification.new do |s|
   s.executables       = %w(#{Pathname.glob(gempath.join('bin/*')).map{|d| d.relative_path_from(gempath)}.sort.join(" ")})
 
   s.add_dependency 'refinerycms-core',  '= #{::Refinery::Version}'
+
   # RSpec
   s.add_dependency 'rspec-rails',       '~> 2.6'
   s.add_dependency 'fuubar'
   s.add_dependency 'rspec-instafail'
 
-  # Cucumber
-  s.add_dependency 'capybara',          '~> 1.0.0'
-  s.add_dependency 'database_cleaner'
-  s.add_dependency 'cucumber-rails',    '~> 1.0.0'
-  s.add_dependency 'launchy'
-  s.add_dependency 'rack-test',         '>= 0.5.6'
-  s.add_dependency 'json_pure'
-
   # Factory Girl
   s.add_dependency 'factory_girl'
 
-  # Autotest
-  s.add_dependency 'autotest'
-  s.add_dependency 'autotest-rails'
-  s.add_dependency 'autotest-notification'
+  # Helpful libraries
+  s.add_dependency 'capybara',          '~> 1.0.0'
+  s.add_dependency 'database_cleaner'
+  s.add_dependency 'launchy'
+
+  # Cucumber
+  s.add_dependency 'cucumber-rails',    '~> 1.0.0'
+  s.add_dependency 'rack-test',         '>= 0.5.6'
 
   s.files             = [
     '#{%w( **/{*,.rspec,.gitignore,.yardopts} ).map { |file| Pathname.glob(gempath.join(file)) }.flatten.reject{|f|

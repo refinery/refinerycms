@@ -83,15 +83,11 @@ PATH
     refinerycms-settings (1.1.0)
       refinerycms-base (= 1.1.0)
     refinerycms-testing (1.1.0)
-      autotest
-      autotest-notification
-      autotest-rails
       capybara (~> 1.0.0)
       cucumber-rails (~> 1.0.0)
       database_cleaner
       factory_girl
       fuubar
-      json_pure
       launchy
       rack-test (>= 0.5.6)
       refinerycms-core (= 1.1.0)
@@ -101,7 +97,6 @@ PATH
 GEM
   remote: http://rubygems.org/
   specs:
-    ZenTest (4.6.0)
     actionmailer (3.1.0.rc5)
       actionpack (= 3.1.0.rc5)
       mail (~> 2.3.0)
@@ -134,13 +129,6 @@ GEM
     acts_as_indexed (0.7.3)
     addressable (2.2.6)
     arel (2.1.4)
-    autotest (4.4.6)
-      ZenTest (>= 4.4.1)
-    autotest-notification (2.3.3)
-      autotest-standalone (~> 4.5)
-    autotest-rails (4.1.0)
-      ZenTest
-    autotest-standalone (4.5.5)
     babosa (0.3.5)
     bcrypt-ruby (2.1.4)
     builder (3.0.0)
@@ -178,7 +166,7 @@ GEM
     erubis (2.7.0)
     execjs (1.2.4)
       multi_json (~> 1.0)
-    factory_girl (2.0.2)
+    factory_girl (2.0.3)
     ffi (1.0.9)
     friendly_id_globalize3 (3.2.1.4)
       babosa (~> 0.3.0)
@@ -186,7 +174,7 @@ GEM
       rspec (~> 2.0)
       rspec-instafail (~> 0.1.4)
       ruby-progressbar (~> 0.0.10)
-    gherkin (2.4.5)
+    gherkin (2.4.6)
       json (>= 1.4.6)
     hike (1.2.0)
     i18n (0.6.0)
