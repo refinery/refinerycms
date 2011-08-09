@@ -3,27 +3,78 @@ require "spec_helper"
 describe "manage resources" do
   login_refinery_user
 
-  before(:each) { visit refinery_admin_resources_path }
-
   context "when no files" do
     it "invites to upload file" do
+      visit refinery_admin_resources_path
       page.should have_content("There are no files yet. Click \"Upload new file\" to add your first file.")
     end
   end
 
   it "shows upload file link" do
+    visit refinery_admin_resources_path
     page.should have_content("Upload new file")
     page.should have_selector("a[href*='/refinery/resources/new']")
   end
 
-  it "uploads file", :js => true do
-    click_link "Upload new file"
+  context "new/create" do
+    it "uploads file", :js => true do
+      visit refinery_admin_resources_path
+      click_link "Upload new file"
 
-    within_frame "dialog_iframe" do
-      attach_file "resource_file", File.expand_path("../../uploads/refinery_is_awesome.txt", __FILE__)
-      click_button "Save"
+      within_frame "dialog_iframe" do
+        attach_file "resource_file", File.expand_path("../../uploads/refinery_is_awesome.txt", __FILE__)
+        click_button "Save"
+      end
+
+      page.should have_content("Refinery Is Awesome.txt")
+      Refinery::Resource.count.should == 1
     end
+  end
 
-    page.should have_content("Refinery Is Awesome.txt")
+  context "edit/update" do
+    let!(:resource) { Factory(:resource) }
+
+    it "updates file" do
+      visit refinery_admin_resources_path
+      page.should have_content("Refinery Is Awesome.txt")
+      page.should have_selector("a[href='/refinery/resources/#{resource.id}/edit']")
+
+      click_link "Edit this file"
+
+      page.should have_content("Download current file or replace it with this one...")
+      page.should have_selector("a[href='/refinery/resources']")
+
+      attach_file "resource_file", File.expand_path("../../uploads/refinery_is_awesome2.txt", __FILE__)
+      click_button "Save"
+
+      page.should have_content("Refinery Is Awesome2")
+      Refinery::Resource.count.should == 1
+    end
+  end
+
+  context "destroy" do
+    let!(:resource) { Factory(:resource) }
+
+    it "removes file" do
+      visit refinery_admin_resources_path
+      page.should have_selector("a[href='/refinery/resources/#{resource.id}']")
+
+      click_link "Remove this file forever"
+
+      page.should have_content("'Refinery Is Awesome' was successfully removed.")
+      Refinery::Resource.count.should == 0
+    end
+  end
+
+  context "download" do
+    let!(:resource) { Factory(:resource) }
+
+    it "succeedes" do
+      visit refinery_admin_resources_path
+
+      click_link "Download this file"
+
+      page.should have_content("http://www.refineryhq.com/")
+    end
   end
 end
