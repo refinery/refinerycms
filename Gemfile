@@ -38,7 +38,7 @@ end
 # END REFINERY CMS ============================================================
 
 # REFINERY CMS DEVELOPMENT ====================================================
-gem 'bundler', '>= 1.0.17'
+gem 'bundler', '~> 1.0.15'
 gem 'arel', '2.1.4' # 2.1.5 was broken. see https://github.com/rails/arel/issues/72
 gem 'therubyracer'
 gem 'capybara-webkit', :git => "git://github.com/thoughtbot/capybara-webkit.git"
