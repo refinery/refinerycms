@@ -32,6 +32,7 @@ module Refinery
         :confirm => false,
         :database => {
           :adapter => 'sqlite3',
+          :host => 'localhost',
           :ident => false,
           :password => nil,
           :username => 'root',
@@ -78,6 +79,10 @@ module Refinery
 
         opts.on("-p PASSWORD", '--database-password PASSWORD', String, "Set the database password", "  (default '')") do |password|
           @options[:database][:password] = password
+        end
+
+        opts.on('-h', '--database-host', String, "Set the database hostname", "  (default localhost)") do |host|
+          @options[:database][:host] = host
         end
 
         opts.on('--skip-db', "Skip any database creation or migration tasks") do
@@ -232,7 +237,10 @@ module Refinery
         # Remove rails from the Gemfile so that Refinery can manage it
         find_and_replace('Gemfile', %r{^gem 'rails'}, "# gem 'rails'")
 
-        # Override username and password
+        # Override database host
+        find_and_replace('config/database.yml', %r{host: localhost}, "host: #{@options[:database][:host]}")
+
+        # Override database username and password
         if @options[:database][:ident]
           find_and_replace('config/database.yml', %r{username:}, '#username:')
           find_and_replace('config/database.yml', %r{password:}, '#password:')
