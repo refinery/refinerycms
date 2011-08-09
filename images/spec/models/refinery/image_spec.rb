@@ -78,43 +78,43 @@ module Refinery
     # The sample image has dimensions 500x375
     describe '#thumbnail_dimensions returns correctly with' do
       it 'nil' do
-        image.thumbnail_dimensions(nil).values.should == [500, 375]
+        image.thumbnail_dimensions(nil).should == { :width => 500, :height => 375 }
       end
 
       it '200x200#ne' do
-        image.thumbnail_dimensions('200x200#ne').values.should == [200, 200]
+        image.thumbnail_dimensions('200x200#ne').should == { :width => 200, :height => 200 }
       end
 
       it '100x150#c' do
-        image.thumbnail_dimensions('100x150#c').values.should == [100, 150]
+        image.thumbnail_dimensions('100x150#c').should == { :width => 100, :height => 150 }
       end
 
       it '250x250>' do
-        image.thumbnail_dimensions('250x250>').values.should == [250, 188]
+        image.thumbnail_dimensions('250x250>').should == { :width => 250, :height => 188 }
       end
 
       it '600x375>' do
-        image.thumbnail_dimensions('600x375>').values.should == [500, 375]
+        image.thumbnail_dimensions('600x375>').should == { :width => 500, :height => 375 }
       end
 
       it '100x475>' do
-        image.thumbnail_dimensions('100x475>').values.should == [100, 75]
+        image.thumbnail_dimensions('100x475>').should == { :width => 100, :height => 75 }
       end
 
       it '100x150' do
-        image.thumbnail_dimensions('100x150').values.should == [100, 75]
+        image.thumbnail_dimensions('100x150').should == { :width => 100, :height => 75 }
       end
 
       it '200x150' do
-        image.thumbnail_dimensions('200x150').values.should == [200, 150]
+        image.thumbnail_dimensions('200x150').should == { :width => 200, :height => 150 }
       end
 
       it '300x150' do
-        image.thumbnail_dimensions('300x150').values.should == [200, 150]
+        image.thumbnail_dimensions('300x150').should == { :width => 200, :height => 150 }
       end
 
       it '5x5' do
-        image.thumbnail_dimensions('5x5').values.should == [5, 4]
+        image.thumbnail_dimensions('5x5').should == { :width => 5, :height => 4 }
       end
     end
   end

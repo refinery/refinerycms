@@ -2,7 +2,7 @@
 
 __An open source Ruby on Rails content management system for Rails 3.__
 
-Refinery also supports Rails 2.x using the [Rails 2.x stable branch](http://github.com/resolve/refinerycms/tree/rails2-stable). More information at [http://refinerycms.com](http://refinerycms.com)
+More information at [http://refinerycms.com](http://refinerycms.com)
 
 ## Requirements
 
@@ -93,7 +93,7 @@ Extend Refinery easily by running the Refinery engine generator
 
     rails generate refinery_engine
 
-to get help on how to use that. Or read the full documentation on [writing engines for Refinery](http://github.com/resolve/refinerycms/blob/master/docengines.md#readme)
+to get help on how to use that. Or read the full documentation on [writing engines for Refinery](https://github.com/resolve/refinerycms-generators/blob/master/readme.md)
 
 ### Popular Engines
 

@@ -1,5 +1,3 @@
-require 'factory_girl'
-
 Factory.define :user, :class => ::Refinery::User do |u|
   u.sequence(:username) { |n| "person#{n}" }
   u.sequence(:email) { |n| "person#{n}@cucumber.com" }

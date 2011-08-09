@@ -1,5 +1,6 @@
 require 'rbconfig'
 require 'factory_girl'
+require 'database_cleaner'
 
 if RUBY_VERSION > "1.9"
   require "simplecov"
@@ -30,10 +31,9 @@ def setup_environment
   # Requires supporting files with custom matchers and macros, etc,
   # in ./support/ and its subdirectories including factories.
   ([Rails.root] | ::Refinery::Plugins.registered.pathnames).map{|p|
-    Dir[p.join('spec', 'support', '**', '*.rb').to_s] +
-    Dir[p.join('features/support/factories{/*.rb,*.rb}').to_s]
-  }.flatten.each do |support_file|
-    require support_file if File.exist?(support_file)
+    Dir[p.join('spec', 'support', '**', '*.rb').to_s]
+  }.flatten.sort.each do |support_file|
+    require support_file
   end
 
   RSpec.configure do |config|
@@ -46,14 +46,15 @@ def setup_environment
     # config.mock_with :rr
     config.mock_with :rspec
 
-    # If you're not using ActiveRecord, or you'd prefer not to run each of your
-    # examples within a transaction, comment the following line or assign false
-    # instead of true.
-    config.use_transactional_fixtures = true
-    config.use_instantiated_fixtures  = false
+    DatabaseCleaner.strategy = :truncation
 
-    config.include ::Devise::TestHelpers, :type => :controller
-    config.extend ::Refinery::ControllerMacros, :type => :controller
+    config.before(:each) do
+      DatabaseCleaner.start
+    end
+
+    config.after(:each) do
+      DatabaseCleaner.clean
+    end
   end
 end
 

@@ -66,23 +66,10 @@ module Refinery
       if valid?
         # first we need to save user
         save
-
         # add refinery role
         add_role(:refinery)
-
-        if ::Refinery::Role[:refinery].users.count == 1
-          # this is the superuser if this user is the only user.
-          add_role(:superuser)
-
-          # set this user as the recipient of inquiry notifications, if we're using that engine.
-          if defined?(InquirySetting) and
-            (notification_recipients = InquirySetting.find_or_create_by_name("Notification Recipients")).present?
-            notification_recipients.update_attributes({
-              :value => email,
-              :destroyable => false
-            })
-          end
-        end
+        # add superuser role
+        add_role(:superuser) if ::Refinery::Role[:refinery].users.count == 1
       end
 
       # return true/false based on validations

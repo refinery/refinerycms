@@ -40,3 +40,36 @@ h3. Where are the tests?
 Refinery tests are located inside each engine in two locations: +/features+ and +/spec+.
 
 Third-party engines should have their own tests in their respective engine folders (which may be inside their gem).
+
+h3. Fixtures
+
+In case if you go with fixtures, and want to test your refinery based project custom code - you need to create next fixtures to avoid Refinery generate "Welcome Page" on it's start.
+
+roles.yml
+
+<pre><code>
+refinery:
+  id: 1
+  title: "Refinery"
+superuser:
+  id: 2
+  title: "Superuser"
+</code></pre>
+
+roles_users.yml
+
+<pre><code>
+one:
+  user_id: 1
+  role_id: 1
+</code></pre>
+
+users.yml
+
+<pre><code>
+admin:
+  id: 1
+  username: "username"
+  email: "some@email.com"
+  encrypted_password: "1234567"
+</code></pre>

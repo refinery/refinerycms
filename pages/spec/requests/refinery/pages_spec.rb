@@ -1,18 +1,13 @@
 require 'spec_helper'
 
 describe 'page frontend' do
+  login_refinery_user
 
-  before(:all) do
-    # Create a refinery user unless we have one.
-    Factory.create :refinery_user if ::Refinery::Role[:refinery].users.empty?
-
-    # Delete all pages and their slugs.
-    ::Refinery::Page.all.each(&:destroy!)
-
+  before(:each) do
     # Create some pages for these specs
-    ::Refinery::Page.create(:title => 'Home', :link_url => '/')
-    ::Refinery::Page.create(:title => 'About')
-    ::Refinery::Page.create(:title => 'Draft', :draft => true)
+    Factory(:page, :title => 'Home', :link_url => '/')
+    Factory(:page, :title => 'About')
+    Factory(:page, :title => 'Draft', :draft => true)
   end
 
   describe 'when marketable urls are' do
@@ -41,4 +36,26 @@ describe 'page frontend' do
     end
   end
 
+  describe 'when a page has multiple friendly_id slugs' do
+    before(:each) do
+      # Create a page, then change the page title, creating a new slug
+      page = ::Refinery::Page.create(:title => 'News')
+      page.title = "Recent News"
+      page.save
+    end
+
+    describe 'page accessed via current slug' do
+      it 'shows the page' do
+        visit '/recent-news'
+      end
+    end
+
+    describe 'page is access via old slug' do
+      it '301 redirects to current url' do
+        visit '/news'
+        # capybara follows the 301 redirect to the current url
+        current_path.should == '/recent-news'
+      end
+    end
+  end
 end

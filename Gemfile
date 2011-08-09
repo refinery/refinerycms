@@ -24,12 +24,15 @@ gemspec
 gem 'refinerycms-generators', '~> 1.1.0', :git => 'git://github.com/resolve/refinerycms-generators.git'
 gem 'seo_meta', :git => 'git://github.com/parndt/seo_meta.git'
 gem 'globalize3', :git => 'git://github.com/svenfuchs/globalize3.git'
+gem 'awesome_nested_set', :git => 'git://github.com/collectiveidea/awesome_nested_set.git'
 
 group :development, :test do
   # To use refinerycms-testing, uncomment it (if it's commented out) and run 'bundle install'
   # Then, run 'rails generate refinerycms_testing' which will copy its support files.
   # Finally, run 'rake' to run the tests.
   gem 'refinerycms-testing',    '~> 1.1.0'
+  gem 'rcov', :platform => :mri_18
+  gem 'simplecov', :platform => :mri_19
 end
 
 # END REFINERY CMS ============================================================
@@ -43,8 +46,10 @@ gem 'therubyracer'
 # gem 'rack', :git => 'git://github.com/rack/rack.git'
 # gem 'arel', :git => 'git://github.com/rails/arel.git'
 
-if RUBY_PLATFORM == 'java'
-  gem 'activerecord-jdbcsqlite3-adapter', '>= 1.0.2', :platform => :jruby
+if defined? JRUBY_VERSION
+  gem 'activerecord-jdbcsqlite3-adapter',
+      :git => 'git://github.com/nicksieger/activerecord-jdbc-adapter.git'
+  gem 'jruby-openssl'
 else
   gem 'sqlite3'
   gem 'mysql2'

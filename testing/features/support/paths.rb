@@ -43,6 +43,8 @@ module NavigationHelpers
 
     when /the refinery admin root/
       refinery_admin_root_path
+    when /the (d|D)ashboard/
+      refinery_admin_dashboard_path
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:

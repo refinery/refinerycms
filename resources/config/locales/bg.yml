@@ -28,9 +28,9 @@ bg:
           button_text: Вмъкване
   activerecord:
     models:
-      resource: файл
+      refinery/resource: файл
     errors:
       models:
-        resource:
+        refinery/resource:
           blank: Трябва да укажете файл за качване
           too_big: Размерът на файла трябва да бъде по-малък от %{size} мегабайта
