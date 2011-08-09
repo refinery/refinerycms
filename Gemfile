@@ -38,7 +38,7 @@ end
 # END REFINERY CMS ============================================================
 
 # REFINERY CMS DEVELOPMENT ====================================================
-gem 'bundler', '>= 1.0.17'
+gem 'bundler', '= 1.0.17'
 gem 'therubyracer'
 
 # Bundle edge Rails instead:

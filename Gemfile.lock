@@ -287,7 +287,7 @@ PLATFORMS
 
 DEPENDENCIES
   awesome_nested_set!
-  bundler (>= 1.0.17)
+  bundler (= 1.0.17)
   coffee-script
   globalize3!
   jquery-rails
