@@ -39,6 +39,7 @@ end
 
 # REFINERY CMS DEVELOPMENT ====================================================
 gem 'bundler', '>= 1.0.17'
+gem 'arel', '2.1.4' # 2.1.5 was broken. see https://github.com/rails/arel/issues/72
 gem 'therubyracer'
 
 # Bundle edge Rails instead:

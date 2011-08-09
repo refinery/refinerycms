@@ -128,7 +128,7 @@ GEM
       multi_json (~> 1.0)
     acts_as_indexed (0.7.3)
     addressable (2.2.6)
-    arel (2.1.5)
+    arel (2.1.4)
     babosa (0.3.5)
     bcrypt-ruby (2.1.4)
     builder (3.0.0)
@@ -286,6 +286,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  arel (= 2.1.4)
   awesome_nested_set!
   bundler (>= 1.0.17)
   coffee-script
