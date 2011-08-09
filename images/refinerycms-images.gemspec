@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.version           = %q{1.1.0}
   s.summary           = %q{Images engine for Refinery CMS}
   s.description       = %q{Handles all image upload and processing functionality in Refinery CMS.}
-  s.date              = %q{2011-08-01}
+  s.date              = %q{2011-08-09}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
   s.rubyforge_project = %q{refinerycms}
@@ -82,7 +82,6 @@ Gem::Specification.new do |s|
     'features/step_definitions',
     'features/step_definitions/image_steps.rb',
     'features/support',
-    'features/support/factories.rb',
     'features/support/paths.rb',
     'features/uploads',
     'features/uploads/beach.jpeg',
@@ -102,6 +101,9 @@ Gem::Specification.new do |s|
     'spec/models',
     'spec/models/refinery',
     'spec/models/refinery/image_spec.rb',
+    'spec/support',
+    'spec/support/refinery',
+    'spec/support/refinery/factories.rb',
     'spec/uploads',
     'spec/uploads/beach.jpeg'
   ]

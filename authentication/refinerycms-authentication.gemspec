@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.version           = %q{1.1.0}
   s.summary           = %q{Authentication engine for Refinery CMS}
   s.description       = %q{The default authentication engine for Refinery CMS}
-  s.date              = %q{2011-08-01}
+  s.date              = %q{2011-08-09}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
   s.rubyforge_project = %q{refinerycms}
@@ -110,7 +110,6 @@ Gem::Specification.new do |s|
     'features/step_definitions/lost_password.rb',
     'features/step_definitions/user_steps.rb',
     'features/support',
-    'features/support/factories.rb',
     'features/support/paths.rb',
     'lib',
     'lib/authenticated_system.rb',
@@ -132,11 +131,14 @@ Gem::Specification.new do |s|
     'spec/requests/lost_password_spec.rb',
     'spec/requests/manage_resources_spec.rb',
     'spec/requests/manage_users_spec.rb',
+    'spec/requests/sign_in_spec.rb',
     'spec/requests/sign_up_spec.rb',
     'spec/support',
     'spec/support/refinery',
     'spec/support/refinery/authentication',
-    'spec/support/refinery/authentication/macros.rb',
-    'spec/support/refinery/authentication/rspec_configuration.rb'
+    'spec/support/refinery/authentication/controller_macros.rb',
+    'spec/support/refinery/authentication/request_macros.rb',
+    'spec/support/refinery/factories.rb',
+    'spec/support/refinery/rspec_configuration.rb'
   ]
 end
