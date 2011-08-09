@@ -241,5 +241,5 @@ DEPENDENCIES
   mysql2 (~> 0.2.7)
   refinerycms!
   refinerycms-i18n (~> 1.0.0)
-  refinerycms-testing (~> 1.0.1)
+  refinerycms-testing (~> 1.0.4)
   sqlite3
