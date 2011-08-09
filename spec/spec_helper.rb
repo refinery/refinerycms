@@ -56,6 +56,9 @@ def setup_environment
       DatabaseCleaner.clean
     end
   end
+
+  # set javascript driver for capybara
+  Capybara.javascript_driver = :webkit
 end
 
 def each_run

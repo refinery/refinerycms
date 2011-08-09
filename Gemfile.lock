@@ -35,6 +35,13 @@ GIT
       activerecord (>= 3.0.0)
       paper_trail (~> 2)
 
+GIT
+  remote: git://github.com/thoughtbot/capybara-webkit.git
+  revision: 612028dc6fd5fc08eb9c5d33553fac6c88b890b0
+  specs:
+    capybara-webkit (0.5.0)
+      capybara (~> 1.0.0)
+
 PATH
   remote: .
   specs:
@@ -289,6 +296,7 @@ DEPENDENCIES
   arel (= 2.1.4)
   awesome_nested_set!
   bundler (>= 1.0.17)
+  capybara-webkit!
   coffee-script
   globalize3!
   jquery-rails

@@ -41,6 +41,7 @@ end
 gem 'bundler', '>= 1.0.17'
 gem 'arel', '2.1.4' # 2.1.5 was broken. see https://github.com/rails/arel/issues/72
 gem 'therubyracer'
+gem 'capybara-webkit', :git => "git://github.com/thoughtbot/capybara-webkit.git"
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git', :branch => '3-1-stable'
