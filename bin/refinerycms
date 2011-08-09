@@ -270,13 +270,6 @@ module Refinery
       refinery_user_defined_gems = refinery_gemfile_contents.match(/# USER DEFINED(.*)# END USER DEFINED/m)
       refinery_user_defined_gems = refinery_user_defined_gems[1] unless refinery_user_defined_gems.nil?
 
-      if @options[:database][:adapter] == 'mysql'
-        app_gemfile_contents = app_gemfile.read
-        app_gemfile.open('w') do |f|
-          f.write app_gemfile_contents.gsub %r{gem 'mysql2'.*}, "gem 'mysql2', '~> 0.2.7'"
-        end
-      end
-
       app_gemfile.open('a') do |f|
         f.write "\n#{refinery_gems}\n"
         @options[:gems] = ([refinery_user_defined_gems] | [@options[:gems]]).flatten.compact
