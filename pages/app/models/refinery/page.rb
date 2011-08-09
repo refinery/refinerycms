@@ -22,15 +22,6 @@ module Refinery
         self.translation_class.send :attr_accessible, :browser_title, :meta_description, :meta_keywords, :locale
 
         if self.translation_class.table_exists?
-          def translation
-            if @translation.nil? or @translation.try(:locale) != ::Globalize.locale
-              @translation = translations.with_locale(::Globalize.locale).first
-              @translation ||= translations.build(:locale => ::Globalize.locale)
-            end
-
-            @translation
-          end
-
           # Instruct the Translation model to have meta tags.
           self.translation_class.send :is_seo_meta
 
