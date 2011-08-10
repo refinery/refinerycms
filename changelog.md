@@ -1,3 +1,12 @@
+## 1.0.4 [10 August 2011]
+
+* Added support for figuring out dimensions in resized images to `image_fu`. [Philip Arndt](https://github.com/parndt) and [Joe Sak](https://github.com/joemsak)
+* Fixed issues installing Refinery due to lack of permissions to the gem directories. [Philip Arndt](https://github.com/parndt)
+* Added ability to specify a different database host in the `bin/refinerycms` installer. [Philip Arndt](https://github.com/parndt)
+* Lock `will_paginate` to `3.0.pre2` in core gemspec. [Kris Forbes](https://github.com/krisf) and [Uģis Ozols](https://github.com/ugisozols)
+* Patch required_label helper so it would pick up I18n model attribute translations. [Uģis Ozols](https://github.com/ugisozols)
+* [See full list](https://github.com/resolve/refinerycms/compare/1.0.3...1.0.4)
+
 ## 1.0.3 [23 June 2011]
 
 * Fixes corruption in the 1.0.2 gem. [Philip Arndt](https://github.com/parndt)
