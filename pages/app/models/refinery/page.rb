@@ -58,7 +58,8 @@ module Refinery
                     :skip_to_first_child, :position, :show_in_menu, :draft,
                     :parts_attributes, :browser_title, :meta_description,
                     :custom_title_type, :parent_id, :custom_title,
-                    :created_at, :updated_at, :page_id, :layout_template, :view_template
+                    :created_at, :updated_at, :page_id, :layout_template,
+                    :view_template, :custom_slug
 
     attr_accessor :locale # to hold temporarily
     validates :title, :presence => true
@@ -67,11 +68,15 @@ module Refinery
     acts_as_nested_set :dependent => :destroy # rather than :delete_all
 
     # Docs for friendly_id http://github.com/norman/friendly_id
-    has_friendly_id :title, :use_slug => true,
+    has_friendly_id :custom_slug_or_title, :use_slug => true,
                     :default_locale => (::Refinery::I18n.default_frontend_locale rescue :en),
                     :reserved_words => %w(index new session login logout users refinery admin images wymiframe),
                     :approximate_ascii => ::Refinery::Setting.find_or_set(:approximate_ascii, false, :scoping => "pages"),
                     :strip_non_ascii => ::Refinery::Setting.find_or_set(:strip_non_ascii, false, :scoping => "pages")
+    
+    def custom_slug_or_title
+      custom_slug.blank? ? title : custom_slug
+    end
 
     has_many :parts,
              :foreign_key => :refinery_page_id,

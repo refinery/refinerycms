@@ -84,6 +84,23 @@ module Refinery
       end
     end
 
+    context 'custom slugs' do
+      let(:page_with_custom_slug) {
+        ::Refinery::Page.create!(:title => 'RSpec is great for testing too', :custom_slug => 'custom-page-slug')
+      }
+      let(:child_with_custom_slug) { page.children.create(:title => 'The child page', :custom_slug => 'custom-child-slug') }
+      
+      it 'returns its path with custom slug' do
+        page_with_custom_slug.url[:id].should be_nil
+        page_with_custom_slug.url[:path].should == ['custom-page-slug']
+      end
+
+      it 'returns its path underneath its parent with custom urls' do
+        child_with_custom_slug.url[:id].should be_nil
+        child_with_custom_slug.url[:path].should == [page.url[:path].first, 'custom-child-slug']
+      end
+    end
+    
     context 'home page' do
       it 'responds as the home page' do
         page.link_url = '/'

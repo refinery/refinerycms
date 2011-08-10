@@ -36,6 +36,7 @@ class CreateRefinerycmsPagesSchema < ActiveRecord::Migration
         t.integer  "lft"
         t.integer  "rgt"
         t.integer  "depth"
+        t.string   "custom_slug"
       end
 
       add_index ::Refinery::Page.table_name, ["depth"], :name => "index_#{::Refinery::Page.table_name}_on_depth"
