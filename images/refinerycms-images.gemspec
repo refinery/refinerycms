@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.version           = %q{1.1.0}
   s.summary           = %q{Images engine for Refinery CMS}
   s.description       = %q{Handles all image upload and processing functionality in Refinery CMS.}
-  s.date              = %q{2011-08-09}
+  s.date              = %q{2011-08-10}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
   s.rubyforge_project = %q{refinerycms}
@@ -77,16 +77,6 @@ Gem::Specification.new do |s|
     'db',
     'db/migrate',
     'db/migrate/20100913234707_create_refinerycms_images_schema.rb',
-    'features',
-    'features/manage_images.feature',
-    'features/step_definitions',
-    'features/step_definitions/image_steps.rb',
-    'features/support',
-    'features/support/paths.rb',
-    'features/uploads',
-    'features/uploads/beach.jpeg',
-    'features/uploads/id-rather-be-here.jpg',
-    'features/uploads/refinery_is_awesome.txt',
     'lib',
     'lib/gemspec.rb',
     'lib/generators',
@@ -101,11 +91,14 @@ Gem::Specification.new do |s|
     'spec/models',
     'spec/models/refinery',
     'spec/models/refinery/image_spec.rb',
+    'spec/requests',
+    'spec/requests/manage_images_spec.rb',
     'spec/support',
     'spec/support/refinery',
     'spec/support/refinery/factories.rb',
     'spec/uploads',
-    'spec/uploads/beach.jpeg'
+    'spec/uploads/beach.jpeg',
+    'spec/uploads/id-rather-be-here.jpg'
   ]
 
   s.add_dependency 'refinerycms-core', '= 1.1.0'
