@@ -1,4 +1,4 @@
-script: "bundle exec rake db:drop db:create db:migrate spec cucumber"
+script: "Xvfb :12345678 -ac && DISPLAY=12345678 bundle exec rake db:drop db:create db:migrate spec cucumber"
 notifications:
   recipients:
     - parndt@gmail.com
