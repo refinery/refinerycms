@@ -84,7 +84,7 @@ module Refinery
           @options[:database][:password] = password
         end
 
-        opts.on('-h', '--database-host', String, "Set the database hostname", "  (default localhost)") do |host|
+        opts.on('-h', '--database-host HOST', String, "Set the database hostname", "  (default localhost)") do |host|
           @options[:database][:host] = host
         end
 
