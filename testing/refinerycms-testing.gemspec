@@ -24,7 +24,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'json_pure'
   s.add_dependency 'rack-test',         '>= 0.5.6'
   s.add_dependency 'sqlite3'
-  
+
   # RSpec
   s.add_dependency 'rspec-rails',       '2.6.1.beta1'
   s.add_dependency 'fuubar'
@@ -70,8 +70,11 @@ Gem::Specification.new do |s|
     'lib/generators/files/features',
     'lib/generators/files/features/support',
     'lib/generators/files/features/support/paths.rb',
+    'lib/generators/files/script',
+    'lib/generators/files/script/rails',
     'lib/generators/files/spec',
     'lib/generators/files/spec/dummy',
+    'lib/generators/files/spec/dummy/.gitignore',
     'lib/generators/files/spec/dummy/Rakefile',
     'lib/generators/files/spec/dummy/app',
     'lib/generators/files/spec/dummy/app/assets',
@@ -136,6 +139,10 @@ Gem::Specification.new do |s|
     'lib/generators/files/spec/dummy/version.rb',
     'lib/generators/files/spec/rcov.opts',
     'lib/generators/files/spec/spec_helper.rb',
+    'lib/generators/files/spec/support',
+    'lib/generators/files/spec/support/database_cleaner.rb',
+    'lib/generators/files/spec/support/devise.rb',
+    'lib/generators/files/spec/support/refinery.rb',
     'lib/generators/templates',
     'lib/generators/templates/spec',
     'lib/generators/templates/spec/dummy',
@@ -161,6 +168,8 @@ Gem::Specification.new do |s|
     'lib/tasks',
     'lib/tasks/cucumber.rake',
     'lib/tasks/rcov.rake',
-    'refinerycms-testing.gemspec'
+    'refinerycms-testing.gemspec',
+    'spec',
+    'spec/spec_helper.rb'
   ]
 end
