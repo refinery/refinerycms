@@ -13,7 +13,7 @@ module Refinery
     PATH_SEPARATOR = " - "
 
     if self.respond_to?(:translates)
-      translates :title, :custom_title, :meta_keywords, :meta_description, :browser_title, :include => :seo_meta
+      translates :title, :custom_title, :meta_keywords, :meta_description, :browser_title, :custom_slug, :include => :seo_meta
 
       # Set up support for meta tags through translations.
       if self.respond_to?(:translation_class)
@@ -94,6 +94,7 @@ module Refinery
 
     before_destroy :deletable?
     after_save :reposition_parts!, :invalidate_cached_urls, :expire_page_caching
+    after_update :invalidate_cached_urls
     after_destroy :expire_page_caching
 
     scope :live, where(:draft => false)
