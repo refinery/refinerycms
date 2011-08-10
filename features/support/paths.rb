@@ -7,6 +7,10 @@ module NavigationHelpers
           refinery_admin_resources_path
         when /the new file form/
           new_refinery_admin_resource_path
+        when /the list of images/
+          refinery_admin_images_path
+        when /the new image form/
+          new_refinery_admin_image_path
         else
           nil
         end
