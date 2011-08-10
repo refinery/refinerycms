@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.version           = %q{1.1.0}
   s.summary           = %q{Resources engine for Refinery CMS}
   s.description       = %q{Handles all file upload and processing functionality in Refinery CMS.}
-  s.date              = %q{2011-08-09}
+  s.date              = %q{2011-08-10}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
   s.rubyforge_project = %q{refinerycms}
@@ -71,15 +71,6 @@ Gem::Specification.new do |s|
     'db',
     'db/migrate',
     'db/migrate/20100913234709_create_refinerycms_resources_schema.rb',
-    'features',
-    'features/manage_files.feature',
-    'features/step_definitions',
-    'features/step_definitions/file_steps.rb',
-    'features/support',
-    'features/support/paths.rb',
-    'features/uploads',
-    'features/uploads/beach.jpeg',
-    'features/uploads/refinery_is_awesome.txt',
     'lib',
     'lib/gemspec.rb',
     'lib/generators',
@@ -94,8 +85,14 @@ Gem::Specification.new do |s|
     'spec/models',
     'spec/models/refinery',
     'spec/models/refinery/resource_spec.rb',
+    'spec/requests',
+    'spec/requests/manage_resources_spec.rb',
+    'spec/support',
+    'spec/support/refinery',
+    'spec/support/refinery/factories.rb',
     'spec/uploads',
-    'spec/uploads/refinery_is_awesome.txt'
+    'spec/uploads/refinery_is_awesome.txt',
+    'spec/uploads/refinery_is_awesome2.txt'
   ]
 
   s.add_dependency 'refinerycms-core', '= 1.1.0'
