@@ -125,6 +125,7 @@ Gem::Specification.new do |s|
     'spec/requests/sign_up_spec.rb',
     'spec/support',
     'spec/support/refinery',
+    'spec/support/refinery/factories.rb',
     'spec/support/refinery/rspec_configuration.rb'
   ]
 end

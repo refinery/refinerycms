@@ -5,11 +5,7 @@ Gem::Specification.new do |s|
   s.name              = %q{refinerycms}
   s.version           = %q{1.1.0}
   s.description       = %q{A Ruby on Rails CMS that supports Rails 3. It's easy to extend and sticks to 'the Rails way' where possible.}
-<<<<<<< HEAD
-  s.date              = %q{2011-08-09}
-=======
-  s.date              = %q{2011-08-04}
->>>>>>> Move factories into testing engine to share with engines
+  s.date              = %q{2011-08-10}
   s.summary           = %q{A Ruby on Rails CMS that supports Rails 3}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
@@ -39,6 +35,7 @@ Gem::Specification.new do |s|
     'Gemfile',
     'Gemfile',
     'Gemfile.lock',
+    'Guardfile',
     'Rakefile',
     'app',
     'app/views',
@@ -66,6 +63,8 @@ Gem::Specification.new do |s|
     'config/routes.rb',
     'config.ru',
     'features',
+    'features/step_definitions',
+    'features/step_definitions/steps.rb',
     'features/support',
     'features/support/paths.rb',
     'lib',
