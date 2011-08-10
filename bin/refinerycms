@@ -252,7 +252,7 @@ module Refinery
         find_and_replace('Gemfile', %r{^gem 'rails'}, "# gem 'rails'")
 
         # Override database host
-        find_and_replace('config/database.yml', %r{host: localhost}, "host: #{@options[:database][:host]}")
+        find_and_replace('config/database.yml', "\n  adapter: mysql2", "\n  adapter: mysql2\n  host: #{@options[:database][:host]}")
 
         # Override database username and password
         if @options[:database][:ident]
