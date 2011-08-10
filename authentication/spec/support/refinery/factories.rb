@@ -1,6 +1,6 @@
 Factory.define :user, :class => ::Refinery::User do |u|
   u.sequence(:username) { |n| "person#{n}" }
-  u.sequence(:email) { |n| "person#{n}@cucumber.com" }
+  u.sequence(:email) { |n| "person#{n}@refinerycms.com" }
   u.password  "greenandjuicy"
   u.password_confirmation "greenandjuicy"
 end
