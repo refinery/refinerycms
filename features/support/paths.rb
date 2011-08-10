@@ -11,6 +11,8 @@ module NavigationHelpers
           refinery_admin_images_path
         when /the new image form/
           new_refinery_admin_image_path
+        when /the list of (?:|refinery )settings/
+          refinery_admin_settings_path
         else
           nil
         end
