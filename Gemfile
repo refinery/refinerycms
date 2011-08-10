@@ -26,22 +26,17 @@ gem 'seo_meta', :git => 'git://github.com/parndt/seo_meta.git'
 gem 'globalize3', :git => 'git://github.com/svenfuchs/globalize3.git'
 gem 'awesome_nested_set', :git => 'git://github.com/collectiveidea/awesome_nested_set.git'
 
-group :development, :test do
-  # To use refinerycms-testing, uncomment it (if it's commented out) and run 'bundle install'
-  # Then, run 'rails generate refinerycms_testing' which will copy its support files.
-  # Finally, run 'rake' to run the tests.
-  gem 'refinerycms-testing',    '~> 1.1.0'
-  gem 'rcov', :platform => :mri_18
-  gem 'simplecov', :platform => :mri_19
-end
-
 # END REFINERY CMS ============================================================
 
 # REFINERY CMS DEVELOPMENT ====================================================
 
 gem 'arel', '2.1.4' # 2.1.5 was broken. see https://github.com/rails/arel/issues/72
 gem 'therubyracer'
+
 group :development, :test do
+  gem 'refinerycms-testing',    '~> 1.1.0'
+  gem 'rcov', :platform => :mri_18
+  gem 'simplecov', :platform => :mri_19
   gem 'capybara-webkit', :git => 'git://github.com/thoughtbot/capybara-webkit.git'
 end
 
@@ -59,10 +54,13 @@ else
   gem 'mysql2'
 end
 
-# Asset template engines
-gem 'sass-rails', '>= 3.1.0.rc.5'
-gem 'coffee-script'
-gem 'uglifier'
+# Gems used only for assets and not required
+# in production environments by default.
+group :assets do
+  gem 'sass-rails', "~> 3.1.0.rc"
+  gem 'coffee-rails', "~> 3.1.0.rc"
+  gem 'uglifier'
+end
 
 gem 'jquery-rails'
 
