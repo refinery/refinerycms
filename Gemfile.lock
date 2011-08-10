@@ -63,14 +63,18 @@ PATH
     refinerycms-core (1.1.0)
       acts_as_indexed (~> 0.7)
       awesome_nested_set (~> 2.0)
+      coffee-rails (>= 3.1.0.rc5)
       friendly_id_globalize3 (~> 3.2.1)
       globalize3 (~> 0.1)
+      jquery-rails
       kaminari (~> 0.12)
       rails (>= 3.1.0.rc5)
       refinerycms-base (= 1.1.0)
       refinerycms-generators (~> 1.1)
       refinerycms-settings (= 1.1.0)
+      sass-rails (>= 3.1.0.rc5)
       truncate_html (~> 0.5)
+      uglifier
     refinerycms-dashboard (1.1.0)
       refinerycms-core (= 1.1.0)
     refinerycms-images (1.1.0)
@@ -90,19 +94,19 @@ PATH
     refinerycms-settings (1.1.0)
       refinerycms-base (= 1.1.0)
     refinerycms-testing (1.1.0)
+      autotest
+      autotest-notification
+      autotest-rails
       capybara (~> 1.0.0)
       cucumber-rails (~> 1.0.0)
       database_cleaner
       factory_girl (~> 2.0.2)
       fuubar
-<<<<<<< HEAD
-=======
       growl
       guard-cucumber
       guard-rspec
       guard-spork
       json_pure
->>>>>>> Move common controller and request macros into testing engine
       launchy
       rack-test (>= 0.5.6)
       rb-fsevent
@@ -115,6 +119,7 @@ PATH
 GEM
   remote: http://rubygems.org/
   specs:
+    ZenTest (4.6.0)
     actionmailer (3.1.0.rc5)
       actionpack (= 3.1.0.rc5)
       mail (~> 2.3.0)
@@ -147,6 +152,13 @@ GEM
     acts_as_indexed (0.7.3)
     addressable (2.2.6)
     arel (2.1.4)
+    autotest (4.4.6)
+      ZenTest (>= 4.4.1)
+    autotest-notification (2.3.3)
+      autotest-standalone (~> 4.5)
+    autotest-rails (4.1.0)
+      ZenTest
+    autotest-standalone (4.5.5)
     babosa (0.3.5)
     bcrypt-ruby (2.1.4)
     builder (3.0.0)
@@ -159,6 +171,11 @@ GEM
       xpath (~> 0.1.4)
     childprocess (0.2.0)
       ffi (~> 1.0.6)
+    coffee-rails (3.1.0.rc.5)
+      actionpack (~> 3.1.0.rc1)
+      coffee-script (>= 2.2.0)
+      railties (~> 3.1.0.rc1)
+      sprockets (>= 2.0.0.beta.9)
     coffee-script (2.2.0)
       coffee-script-source
       execjs
@@ -200,7 +217,7 @@ GEM
     guard-cucumber (0.5.2)
       cucumber (>= 0.10)
       guard (>= 0.4.0)
-    guard-rspec (0.4.0)
+    guard-rspec (0.4.1)
       guard (>= 0.4.0)
     guard-spork (0.2.1)
       guard (>= 0.2.2)
@@ -232,7 +249,7 @@ GEM
     rack (1.3.2)
     rack-cache (1.0.2)
       rack (>= 0.4)
-    rack-mount (0.8.1)
+    rack-mount (0.8.2)
       rack (>= 1.0.0)
     rack-ssl (1.3.2)
       rack
@@ -254,14 +271,9 @@ GEM
       rdoc (~> 3.4)
       thor (~> 0.14.6)
     rake (0.9.2)
-<<<<<<< HEAD
+    rb-fsevent (0.4.2)
     rcov (0.9.10)
     rdoc (3.9.1)
-=======
-    rb-fsevent (0.4.2)
-    rcov (0.9.9)
-    rdoc (3.8)
->>>>>>> Move common controller and request macros into testing engine
     routing-filter (0.2.4)
       actionpack
     rspec (2.6.0)
@@ -294,12 +306,8 @@ GEM
     simplecov (0.4.2)
       simplecov-html (~> 0.4.4)
     simplecov-html (0.4.5)
-<<<<<<< HEAD
-    sprockets (2.0.0.beta.13)
-=======
     spork (0.9.0.rc9)
-    sprockets (2.0.0.beta.12)
->>>>>>> Move common controller and request macros into testing engine
+    sprockets (2.0.0.beta.13)
       hike (~> 1.2)
       rack (~> 1.0)
       tilt (!= 1.3.0, ~> 1.1)
@@ -329,7 +337,7 @@ DEPENDENCIES
   arel (= 2.1.4)
   awesome_nested_set!
   capybara-webkit!
-  coffee-script
+  coffee-rails (~> 3.1.0.rc)
   globalize3!
   jquery-rails
   mysql2
@@ -338,7 +346,7 @@ DEPENDENCIES
   refinerycms-generators (~> 1.1.0)!
   refinerycms-i18n (~> 1.1.0)!
   refinerycms-testing (~> 1.1.0)
-  sass-rails (>= 3.1.0.rc.5)
+  sass-rails (~> 3.1.0.rc)
   seo_meta!
   simplecov
   sqlite3
