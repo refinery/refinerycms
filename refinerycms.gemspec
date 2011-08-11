@@ -3,9 +3,9 @@
 
 Gem::Specification.new do |s|
   s.name              = %q{refinerycms}
-  s.version           = %q{1.1.0}
+  s.version           = %q{2.0.0}
   s.description       = %q{A Ruby on Rails CMS that supports Rails 3. It's easy to extend and sticks to 'the Rails way' where possible.}
-  s.date              = %q{2011-08-11}
+  s.date              = %q{2011-08-12}
   s.summary           = %q{A Ruby on Rails CMS that supports Rails 3}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
@@ -19,14 +19,14 @@ Gem::Specification.new do |s|
   s.add_dependency    'bundler',                    '~> 1.0'
 
   # Refinery CMS
-  s.add_dependency    'refinerycms-authentication', '= 1.1.0'
-  s.add_dependency    'refinerycms-base',           '= 1.1.0'
-  s.add_dependency    'refinerycms-core',           '= 1.1.0'
-  s.add_dependency    'refinerycms-dashboard',      '= 1.1.0'
-  s.add_dependency    'refinerycms-images',         '= 1.1.0'
-  s.add_dependency    'refinerycms-pages',          '= 1.1.0'
-  s.add_dependency    'refinerycms-resources',      '= 1.1.0'
-  s.add_dependency    'refinerycms-settings',       '= 1.1.0'
+  s.add_dependency    'refinerycms-authentication', '= 2.0.0'
+  s.add_dependency    'refinerycms-base',           '= 2.0.0'
+  s.add_dependency    'refinerycms-core',           '= 2.0.0'
+  s.add_dependency    'refinerycms-dashboard',      '= 2.0.0'
+  s.add_dependency    'refinerycms-images',         '= 2.0.0'
+  s.add_dependency    'refinerycms-pages',          '= 2.0.0'
+  s.add_dependency    'refinerycms-resources',      '= 2.0.0'
+  s.add_dependency    'refinerycms-settings',       '= 2.0.0'
 
   s.files             = [
     '.gitignore',
@@ -35,7 +35,6 @@ Gem::Specification.new do |s|
     'Gemfile',
     'Gemfile',
     'Gemfile.lock',
-    'Guardfile',
     'Rakefile',
     'app',
     'app/views',
@@ -80,7 +79,6 @@ Gem::Specification.new do |s|
     'public/javascripts/translations.js',
     'readme.md',
     'readme.md',
-    'refinerycms.gemspec',
-    'vendor'
+    'refinerycms.gemspec'
   ]
 end

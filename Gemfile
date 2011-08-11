@@ -34,7 +34,7 @@ gem 'arel', '2.1.4' # 2.1.5 was broken. see https://github.com/rails/arel/issues
 gem 'therubyracer'
 
 group :development, :test do
-  gem 'refinerycms-testing',    '~> 1.1.0'
+  gem 'refinerycms-testing',    '~> 2.0.0'
   gem 'rcov', :platform => :mri_18
   gem 'simplecov', :platform => :mri_19
   gem 'capybara-webkit', :git => 'git://github.com/thoughtbot/capybara-webkit.git'
@@ -77,5 +77,5 @@ gem 'jquery-rails'
 # gem 'refinerycms-page-images',  '~> 1.0'
 
 # Add i18n support (optional, you can remove this if you really want to).
-gem 'refinerycms-i18n',           '~> 1.1.0', :git => 'git://github.com/parndt/refinerycms-i18n'
+gem 'refinerycms-i18n',           '~> 2.0.0', :git => 'git://github.com/parndt/refinerycms-i18n'
 # END USER DEFINED
