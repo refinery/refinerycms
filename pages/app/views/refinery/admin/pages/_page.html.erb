@@ -18,6 +18,8 @@
       <%= link_to refinery_icon_tag('application_go.png'), main_app.refinery_page_path(page),
                   :target => "_blank",
                   :title => t('.view_live_html') %>
+      <%= link_to refinery_icon_tag('page_add.png'), main_app.new_refinery_admin_page_path(:parent_id => page.id),
+                  :title => t('new', :scope => 'refinery.admin.pages') %>
       <%= link_to refinery_icon_tag('application_edit.png'), main_app.edit_refinery_admin_page_path(page),
                   :title => t('edit', :scope => 'refinery.admin.pages') %>
       <%= link_to refinery_icon_tag('delete.png'), main_app.refinery_admin_page_path(page),
