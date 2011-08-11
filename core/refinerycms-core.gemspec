@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.version           = %q{1.1.0}
   s.summary           = %q{Core engine for Refinery CMS}
   s.description       = %q{The core of Refinery CMS. This handles the common functionality and is required by most engines}
-  s.date              = %q{2011-08-09}
+  s.date              = %q{2011-08-11}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
   s.rubyforge_project = %q{refinerycms}
@@ -351,12 +351,9 @@ Gem::Specification.new do |s|
     'doc',
     'doc/included-jquery-ui-packages.jpg',
     'features',
-    'features/dialogs.feature',
     'features/search.feature',
     'features/step_definitions',
     'features/step_definitions/core_steps.rb',
-    'features/support',
-    'features/support/paths.rb',
     'features/uploads',
     'features/uploads/beach.jpeg',
     'features/uploads/refinery_is_awesome.txt',
@@ -438,6 +435,7 @@ Gem::Specification.new do |s|
     'spec/lib/refinery/plugin_spec.rb',
     'spec/lib/refinery/plugins_spec.rb',
     'spec/requests',
+    'spec/requests/dialogs_spec.rb',
     'spec/requests/site_bar_spec.rb'
   ]
 end
