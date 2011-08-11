@@ -1781,7 +1781,13 @@ WYMeditor.INIT_DIALOG = function(wym, selected, isIframe) {
   // focus first textarea or input type text element
   dialog.find('input[type=text], textarea').first().focus();
 
+  // init close_dialog when user clicks on cancel button
   doc.find('body').addClass('wym_iframe_body').find('#cancel_button').add(dialog.find('.close_dialog')).click(function(e){
+    wym.close_dialog(e, true);
+  });
+
+  // init close_dialog when user clicks on small x icon at the top of dialog
+  $('.ui-dialog-titlebar .ui-dialog-titlebar-close').click(function(e){
     wym.close_dialog(e, true);
   });
 
