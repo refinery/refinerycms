@@ -38,6 +38,8 @@ group :development, :test do
   gem 'rcov', :platform => :mri_18
   gem 'simplecov', :platform => :mri_19
   gem 'capybara-webkit', :git => 'git://github.com/thoughtbot/capybara-webkit.git'
+  gem 'spork', '0.9.0.rc9', :platforms => :ruby
+  gem 'guard-spork', :platforms => :ruby
 end
 
 # Bundle edge Rails instead:
