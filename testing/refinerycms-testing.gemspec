@@ -17,7 +17,6 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'refinerycms-core',  '= 1.1.0'
   
-  s.add_dependency 'spork', '0.9.0.rc9'
   s.add_dependency 'database_cleaner'
   s.add_dependency 'launchy'
   s.add_dependency 'factory_girl',      '~> 2.0.2'
@@ -35,7 +34,6 @@ Gem::Specification.new do |s|
   s.add_dependency 'cucumber-rails',    '~> 1.0.0'
   
   # Guard
-  s.add_dependency 'guard-spork'
   s.add_dependency 'guard-rspec'
   s.add_dependency 'guard-cucumber'
   s.add_dependency 'rb-fsevent'
@@ -60,6 +58,7 @@ Gem::Specification.new do |s|
     'lib/gemspec.rb',
     'lib/generators',
     'lib/generators/files',
+    'lib/generators/files/Gemfile',
     'lib/generators/files/Guardfile',
     'lib/generators/files/Rakefile',
     'lib/generators/files/features',
