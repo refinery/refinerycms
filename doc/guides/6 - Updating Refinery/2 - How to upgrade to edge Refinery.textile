@@ -18,12 +18,24 @@ First clone the git source in order to get the newest app generator.
 $ git clone git://github.com/resolve/refinerycms.git ~/refinerycms-edge
 </shell>
 
-h3. Overwrite your current application
+h3. Upgrade your current application
 
-Now use that generator to overwrite your current application.
+Replace the line that looks like this:
+
+<ruby>
+gem 'refinerycms'
+</ruby>
+
+With a line that looks like this:
+
+<ruby>
+gem 'refinerycms', :path => '~/refinerycms-edge'
+</ruby>
+
+Now use the refinerycms generator to update your application:
 
 <shell>
-$ ~/refinerycms-edge/bin/refinerycms path/to/my/app --update
+$ bundle exec rails generate refinery:cms --update
 </shell>
 
 h3. Solve any deprecation problems.
