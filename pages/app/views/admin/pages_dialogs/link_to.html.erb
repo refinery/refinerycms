@@ -35,7 +35,6 @@
           </ul>
           <%= will_paginate @pages,
                             :param_name => :page,
-                            :renderer => Refinery::LinkRenderer,
                             :id => 'pages_paginate' %>
         </div>
       </div>
@@ -108,7 +107,6 @@
           </ul>
           <%= will_paginate @resources,
                             :param_name => :resource_page,
-                            :renderer => Refinery::LinkRenderer,
                             :params => {:paginating => "resource_file"},
                             :id => 'resouces_paginate' %>
         </div>

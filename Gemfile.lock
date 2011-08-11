@@ -26,7 +26,7 @@ PATH
       refinerycms-generators (~> 1.0)
       refinerycms-settings (= 1.0.4)
       truncate_html (~> 0.5)
-      will_paginate (= 3.0.pre2)
+      will_paginate (= 3.0.0)
     refinerycms-dashboard (1.0.4)
       refinerycms-core (= 1.0.4)
     refinerycms-images (1.0.4)
@@ -230,7 +230,7 @@ GEM
     tzinfo (0.3.29)
     warden (1.0.5)
       rack (>= 1.0)
-    will_paginate (3.0.pre2)
+    will_paginate (3.0.0)
     xpath (0.1.4)
       nokogiri (~> 1.3)
 

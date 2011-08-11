@@ -39,7 +39,7 @@
   if (paginate ||= {}).length > 0 && paginate.keys.include?(:collection)
     paginate_collection = paginate.delete(:collection)
   end
-  paginate.delete(:url) # We used to have a LinkRenderer that did this
+  paginate.delete(:url)
 -%>
 <% if from_dialog? %>
 <input type='hidden' name='modal' value='true' />

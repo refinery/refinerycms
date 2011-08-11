@@ -30,7 +30,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'awesome_nested_set',          '~> 2.0'
   s.add_dependency 'rails',                       '~> 3.0.9'
   s.add_dependency 'truncate_html',               '~> 0.5'
-  s.add_dependency 'will_paginate',               '= 3.0.pre2'
+  s.add_dependency 'will_paginate',               '3.0.0'
 
   s.files             = [
     '#{%w( **/{*,.rspec,.gitignore,.yardopts} ).map { |file| Pathname.glob(gempath.join(file)) }.flatten.reject{|f|
