@@ -58,7 +58,7 @@ module Refinery
           puts "To update your application:"
           puts "- Change the version of the 'refinerycms' gem in your Gemfile."
           puts "- Run bundle install"
-          puts "- Run bundle exec rails generate refinerycms --update"
+          puts "- Run bundle exec rails generate refinery:cms --update"
           puts "\n"
           exit(1)
         end
