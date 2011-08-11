@@ -1,4 +1,4 @@
-## 1.0.4 [10 August 2011]
+## 1.0.4 [11 August 2011]
 
 * Added support for figuring out dimensions in resized images to `image_fu`. [Philip Arndt](https://github.com/parndt) and [Joe Sak](https://github.com/joemsak)
 * Fixed issues installing Refinery due to lack of permissions to the gem directories. [Philip Arndt](https://github.com/parndt)
