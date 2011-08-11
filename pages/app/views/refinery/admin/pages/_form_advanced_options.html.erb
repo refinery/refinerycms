@@ -55,6 +55,7 @@
         <%= f.text_field :custom_title, :class => 'widest' %>
       </div>
     </div>
+    <% if ::Refinery::Setting.find_or_set(:use_custom_slugs, false, :scope => 'pages') %>
     <div class='field'>
       <span class='label_with_help'>
         <%= f.label :custom_slug, t('.custom_slug') %>
@@ -62,6 +63,7 @@
       </span>
       <%= f.text_field :custom_slug, :style=> 'width:400px;' %>
     </div>
+    <% end %> 
     <div class='field'>
       <span class='label_with_help'>
         <%= f.label :skip_to_first_child?, t('.skip_to_first_child') %>
