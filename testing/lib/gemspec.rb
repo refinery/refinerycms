@@ -39,11 +39,6 @@ Gem::Specification.new do |s|
 
   # Cucumber
   s.add_dependency 'cucumber-rails',    '~> 1.0.0'
-
-  # Autotest
-  s.add_dependency 'autotest'
-  s.add_dependency 'autotest-rails'
-  s.add_dependency 'autotest-notification'
   
   # Guard
   s.add_dependency 'guard-spork'
