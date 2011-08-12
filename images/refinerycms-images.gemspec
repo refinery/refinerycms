@@ -92,10 +92,7 @@ Gem::Specification.new do |s|
     'spec/models/refinery',
     'spec/models/refinery/image_spec.rb',
     'spec/requests',
-    'spec/requests/manage_images_spec.rb',
-    'spec/uploads',
-    'spec/uploads/beach.jpeg',
-    'spec/uploads/id-rather-be-here.jpg'
+    'spec/requests/manage_images_spec.rb'
   ]
 
   s.add_dependency 'refinerycms-core', '= 2.0.0'

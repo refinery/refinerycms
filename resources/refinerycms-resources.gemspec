@@ -86,10 +86,7 @@ Gem::Specification.new do |s|
     'spec/models/refinery',
     'spec/models/refinery/resource_spec.rb',
     'spec/requests',
-    'spec/requests/manage_resources_spec.rb',
-    'spec/uploads',
-    'spec/uploads/refinery_is_awesome.txt',
-    'spec/uploads/refinery_is_awesome2.txt'
+    'spec/requests/manage_resources_spec.rb'
   ]
 
   s.add_dependency 'refinerycms-core', '= 2.0.0'
