@@ -39,7 +39,7 @@ describe 'page frontend' do
   describe 'when a page has multiple friendly_id slugs' do
     before(:each) do
       # Create a page, then change the page title, creating a new slug
-      page = ::Refinery::Page.create(:title => 'News')
+      page = Factory(:page, :title => "News")
       page.title = "Recent News"
       page.save
     end
