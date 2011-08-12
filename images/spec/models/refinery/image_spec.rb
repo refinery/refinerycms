@@ -2,10 +2,8 @@ require 'spec_helper'
 
 module Refinery
   describe Image do
-    let(:image) do
-      ::Refinery::Image.create!(:id => 1,
-                    :image => File.new(File.expand_path('../../../uploads/beach.jpeg', __FILE__)))
-    end
+
+    let(:image) { Factory(:image) }
 
     context "with valid attributes" do
       it "should create successfully" do

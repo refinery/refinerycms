@@ -1,5 +1,5 @@
 FactoryGirl.define do
   factory :image, :class => ::Refinery::Image do |i|
-    i.image File.new(File.expand_path('../../../../../assets/beach.jpeg', __FILE__))
+    i.image Refinery.roots("testing").join("assets/beach.jpeg")
   end
 end

@@ -22,7 +22,7 @@ describe "manage resources" do
       click_link "Upload new file"
 
       within_frame "dialog_iframe" do
-        attach_file "resource_file", File.expand_path("../../uploads/refinery_is_awesome.txt", __FILE__)
+        attach_file "resource_file", Refinery.roots("testing").join("assets/refinery_is_awesome.txt")
         click_button "Save"
       end
 
@@ -44,7 +44,7 @@ describe "manage resources" do
       page.should have_content("Download current file or replace it with this one...")
       page.should have_selector("a[href='/refinery/resources']")
 
-      attach_file "resource_file", File.expand_path("../../uploads/refinery_is_awesome2.txt", __FILE__)
+      attach_file "resource_file", Refinery.roots("testing").join("assets/refinery_is_awesome2.txt")
       click_button "Save"
 
       page.should have_content("Refinery Is Awesome2")
