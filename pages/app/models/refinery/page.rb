@@ -13,7 +13,7 @@ module Refinery
     PATH_SEPARATOR = " - "
 
     if self.respond_to?(:translates)
-      translates :title, :custom_title, :meta_keywords, :meta_description, :browser_title, :custom_slug, :include => :seo_meta
+      translates :title, :menu_title, :meta_keywords, :meta_description, :browser_title, :custom_slug, :include => :seo_meta
 
       # Set up support for meta tags through translations.
       if self.respond_to?(:translation_class)
@@ -57,7 +57,7 @@ module Refinery
     attr_accessible :id, :deletable, :link_url, :menu_match, :meta_keywords,
                     :skip_to_first_child, :position, :show_in_menu, :draft,
                     :parts_attributes, :browser_title, :meta_description,
-                    :custom_title_type, :parent_id, :custom_title,
+                    :menu_title_type, :parent_id, :menu_title,
                     :created_at, :updated_at, :page_id, :layout_template,
                     :view_template, :custom_slug
 
@@ -90,7 +90,7 @@ module Refinery
 
     # Docs for acts_as_indexed http://github.com/dougal/acts_as_indexed
     acts_as_indexed :fields => [:title, :meta_keywords, :meta_description,
-                                :custom_title, :browser_title, :all_page_part_content]
+                                :menu_title, :browser_title, :all_page_part_content]
 
     before_destroy :deletable?
     after_save :reposition_parts!, :invalidate_cached_urls, :expire_page_caching
@@ -270,7 +270,7 @@ module Refinery
         :menu_match => menu_match,
         :parent_id => parent_id,
         :rgt => rgt,
-        :title => (page_title if respond_to?(:page_title)) || title,
+        :title => menu_title || (page_title if respond_to?(:page_title)) || title,
         :type => self.class.name,
         :url => url
       }

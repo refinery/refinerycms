@@ -1,7 +1,7 @@
 class PagePresenter < ::Refinery::BasePresenter
 
-  def custom_title_type
-    @model.custom_title_type
+  def menu_title_type
+    @model.menu_title_type
   end
 
 end
