@@ -25,7 +25,7 @@ Gem::Specification.new do |s|
   
   s.add_dependency 'database_cleaner'
   s.add_dependency 'launchy'
-  s.add_dependency 'factory_girl',      '~> 2.0.2'
+  s.add_dependency 'factory_girl',      '~> 2.0.3'
   s.add_dependency 'json_pure'
   s.add_dependency 'rack-test',         '>= 0.5.6'
   s.add_dependency 'sqlite3'
