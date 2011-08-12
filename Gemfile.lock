@@ -97,7 +97,7 @@ PATH
       capybara (~> 1.0.0)
       cucumber-rails (~> 1.0.0)
       database_cleaner
-      factory_girl (~> 2.0.2)
+      factory_girl (~> 2.0.3)
       fuubar
       growl
       guard-cucumber
@@ -258,7 +258,7 @@ GEM
       rdoc (~> 3.4)
       thor (~> 0.14.6)
     rake (0.9.2)
-    rb-fsevent (0.4.2)
+    rb-fsevent (0.4.3)
     rcov (0.9.10)
     rdoc (3.9.2)
     routing-filter (0.2.4)

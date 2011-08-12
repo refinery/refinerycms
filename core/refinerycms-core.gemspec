@@ -354,13 +354,6 @@ Gem::Specification.new do |s|
     'config/routes.rb',
     'doc',
     'doc/included-jquery-ui-packages.jpg',
-    'features',
-    'features/search.feature',
-    'features/step_definitions',
-    'features/step_definitions/core_steps.rb',
-    'features/uploads',
-    'features/uploads/beach.jpeg',
-    'features/uploads/refinery_is_awesome.txt',
     'lib',
     'lib/gemspec.rb',
     'lib/generators',
@@ -440,6 +433,7 @@ Gem::Specification.new do |s|
     'spec/lib/refinery/plugins_spec.rb',
     'spec/requests',
     'spec/requests/dialogs_spec.rb',
+    'spec/requests/search_spec.rb',
     'spec/requests/site_bar_spec.rb'
   ]
 end
