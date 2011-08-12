@@ -1,4 +1,5 @@
 require 'refinery/generators'
+require 'pathname'
 
 module ::Refinery
   class TestingGenerator < ::Refinery::Generators::EngineInstaller
@@ -7,24 +8,45 @@ module ::Refinery
     engine_name "testing"
 
     def generate
-      copy_file 'config/cucumber.yml',
-                Rails.root.join('config', 'cucumber.yml')
-
-      copy_file 'spec/spec_helper.rb',
-                Rails.root.join('spec', 'spec_helper.rb')
-
-      copy_file 'spec/rcov.opts',
-                Rails.root.join('spec', 'rcov.opts')
-
-      copy_file 'spec/support/refinery/controller_macros.rb',
-                Rails.root.join('spec', 'support', 'refinery', 'controller_macros.rb')
-
-      copy_file '.rspec',
-                Rails.root.join('.rspec')
-
-      copy_file 'lib/generators/templates/features/support/paths.rb',
-                Rails.root.join('features', 'support', 'paths.rb')
+      # Render and copy templates
+      Pathname.glob(templates_path.join("**", "**")).reject{|f| f.directory?}.each do |src_path|
+        template src_path, destination_path.join(src_path.relative_path_from(templates_path))
+      end
+      
+      # Copy files
+      Pathname.glob(files_path.join("**", "**")).reject{|f| f.directory?}.each do |src_path|
+        copy_file src_path, destination_path.join(src_path.relative_path_from(files_path))
+      end
+      
+      # Run Refinery generators to build dummy app
+      dummy_app_destination = destination_path.join("spec", "dummy")
+      [
+        BaseGenerator,
+        AuthenticationGenerator,
+        SettingsGenerator,
+        ResourcesGenerator,
+        PagesGenerator,
+        ImagesGenerator
+      ].each do |klass|
+        klass.send(:new, [], {}, :destination_root => dummy_app_destination).generate
+      end
     end
-
+    
+    private
+    
+    def gem_name
+      return @gem_name if @gem_name
+      gemspec_file = Pathname.glob(destination_path.join("*.gemspec")).first
+      gemspec = File.read(gemspec_file)
+      @gem_name = eval(gemspec).name
+    end
+    
+    def templates_path
+      Pathname.new(self.class.source_root).join("lib", "generators", "templates")
+    end
+    
+    def files_path
+      Pathname.new(self.class.source_root).join("lib", "generators", "files")
+    end
   end
 end

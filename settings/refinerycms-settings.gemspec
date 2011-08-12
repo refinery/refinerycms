@@ -3,10 +3,10 @@
 
 Gem::Specification.new do |s|
   s.name              = %q{refinerycms-settings}
-  s.version           = %q{1.1.0}
+  s.version           = %q{2.0.0}
   s.summary           = %q{Settings engine for Refinery CMS}
   s.description       = %q{The default settings engine that is required by Refinery CMS core. Adds programmer creatable, user editable settings for each engine.}
-  s.date              = %q{2011-08-09}
+  s.date              = %q{2011-08-12}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
   s.rubyforge_project = %q{refinerycms}
@@ -74,12 +74,6 @@ Gem::Specification.new do |s|
     'db/migrate',
     'db/migrate/20100913234710_create_refinerycms_settings_schema.rb',
     'db/migrate/20100926142529_add_value_type_to_refinery_settings.rb',
-    'features',
-    'features/manage_refinery_settings.feature',
-    'features/step_definitions',
-    'features/step_definitions/setting_steps.rb',
-    'features/support',
-    'features/support/paths.rb',
     'lib',
     'lib/gemspec.rb',
     'lib/generators',
@@ -90,8 +84,10 @@ Gem::Specification.new do |s|
     'spec',
     'spec/models',
     'spec/models/refinery',
-    'spec/models/refinery/setting_spec.rb'
+    'spec/models/refinery/setting_spec.rb',
+    'spec/requests',
+    'spec/requests/manage_settings_spec.rb'
   ]
 
-  s.add_dependency 'refinerycms-base', '= 1.1.0'
+  s.add_dependency 'refinerycms-base', '= 2.0.0'
 end

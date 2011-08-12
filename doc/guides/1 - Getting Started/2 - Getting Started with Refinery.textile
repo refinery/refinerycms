@@ -108,16 +108,6 @@ $ cd rickrockstar
 
 Open up that folder and explore its contents. You'll notice what you have is a very standard Rails application.
 
-h4. Running the tests
-
-At your application root:
-
-<shell>
-$ bundle exec rake
-</shell>
-
-This will run cucumber and rspec tests. If tests don't run, check * *"this guide"/guides/how-to-enable-testing-in-your-application*
-
 h3. Hello, Refinery!
 
 One of the traditional places to start with a new project is by getting some text up on screen quickly, to do this, you need to get your Refinery application server running.
@@ -396,6 +386,10 @@ You'll notice not only has Refinery generated the backend "Events" tab but also 
 As you can see, Refinery makes it insanely easy to quickly add new engines to manage various areas of a site.
 
 But I've noticed one problem. The "2011 Music Awards" is showing up in the middle when it makes more sense to order the events with the latest event at the top. To fix this we need to understand what's happening under the hood of a Refinery engine. Let's dive in.
+
+h4. Testing your engine
+
+There is a separate guide which covers this subject found at "How to Test Your Engine":/guides/how-to-enable-testing-in-your-application
 
 h4. Crudify: The Backbone of Refinery Engines
 

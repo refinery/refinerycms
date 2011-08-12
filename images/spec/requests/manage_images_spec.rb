@@ -22,7 +22,7 @@ describe "manage images" do
       click_link "Add new image"
 
       within_frame "dialog_iframe" do
-        attach_file "image_image", File.expand_path("../../uploads/beach.jpeg", __FILE__)
+        attach_file "image_image", Refinery.roots("testing").join("assets/beach.jpeg")
         click_button "Save"
       end
 
@@ -43,7 +43,7 @@ describe "manage images" do
       page.should have_content("Use current image or replace it with this one...")
       page.should have_selector("a[href='/refinery/images']")
 
-      attach_file "image_image", File.expand_path("../../uploads/id-rather-be-here.jpg", __FILE__)
+      attach_file "image_image", Refinery.roots("testing").join("assets/id-rather-be-here.jpg")
       click_button "Save"
 
       page.should have_content("'Id Rather Be Here' was successfully updated.")

@@ -1,6 +1,4 @@
-require 'rbconfig'
-require 'factory_girl'
-require 'database_cleaner'
+require 'rubygems'
 
 if RUBY_VERSION > "1.9"
   require "simplecov"
@@ -18,15 +16,21 @@ def setup_simplecov
 end
 
 def setup_environment
-  # This file is copied to ~/spec when you run 'rails generate rspec'
-  # from the project root directory.
+  # Configure Rails Environment
   ENV["RAILS_ENV"] ||= 'test'
-
   # simplecov should be loaded _before_ models, controllers, etc are loaded.
   setup_simplecov unless ENV["SKIP_COV"] || !defined?(SimpleCov)
 
   require File.expand_path("../../config/environment", __FILE__)
+    
   require 'rspec/rails'
+  require 'capybara/rspec'
+  
+  require 'refinery/testing/factories'
+  require 'refinery/testing/controller_macros'
+  require 'refinery/testing/request_macros'
+
+  Rails.backtrace_cleaner.remove_silencers!
 
   # Requires supporting files with custom matchers and macros, etc,
   # in ./support/ and its subdirectories including factories.
@@ -37,37 +41,18 @@ def setup_environment
   end
 
   RSpec.configure do |config|
-    # == Mock Framework
-    #
-    # If you prefer to use mocha, flexmock or RR, uncomment the appropriate line:
-    #
-    # config.mock_with :mocha
-    # config.mock_with :flexmock
-    # config.mock_with :rr
     config.mock_with :rspec
-
-    DatabaseCleaner.strategy = :truncation
-
-    config.before(:each) do
-      DatabaseCleaner.start
-    end
-
-    config.after(:each) do
-      DatabaseCleaner.clean
-    end
+        
+    # set javascript driver for capybara
+    Capybara.javascript_driver = :webkit
   end
-
-  # set javascript driver for capybara
-  Capybara.javascript_driver = :webkit
 end
 
 def each_run
 end
 
-require 'rubygems'
 # If spork is available in the Gemfile it'll be used but we don't force it.
 unless (begin; require 'spork'; rescue LoadError; nil end).nil?
-
   Spork.prefork do
     # Loading more in this block will cause your tests to run faster. However,
     # if you change any configuration or code from libraries loaded here, you'll
@@ -79,17 +64,6 @@ unless (begin; require 'spork'; rescue LoadError; nil end).nil?
     # This code will be run each time you run your specs.
     each_run
   end
-
-  # --- Instructions ---
-  # - Sort through your spec_helper file. Place as much environment loading
-  #   code that you don't normally modify during development in the
-  #   Spork.prefork block.
-  # - Place the rest under Spork.each_run block
-  # - Any code that is left outside of the blocks will be ran during preforking
-  #   and during each_run!
-  # - These instructions should self-destruct in 10 seconds.  If they don't,
-  #   feel free to delete them.
-  #
 else
   setup_environment
   each_run

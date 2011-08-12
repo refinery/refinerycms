@@ -1,0 +1,71 @@
+h2. How to test your engine
+
+Refinery ships with an optional testing Railtie in the form of a gem called +refinerycms-testing+ will add generators and rake tasks to your engine that provide it with the same RSpec2/Cucumber testing environment we use to test Refinery. We abstract common test helpers, controller macros, and factories into this railtie so you can use these in tests of your own.
+
+This guide will show you how to:
+
+* Bootstrap your engine with the Refinery RSpec2/Cucumber testing environment
+* Run the test suite with Rake for a one time run
+* Run the test suite with Guard for quick TDD iterations
+
+endprologue.
+
+h3. Bootstrap the test enviroment
+
+In your engine's Gemfile uncomment or add the following line
+
+<shell>
+  gem 'refinerycms-testing'
+</shell>
+
+And run
+
+<shell>
+$ bundle install
+</shell>
+
+Now we will configure our test environment with
+
+<shell>
+$ rails generate refinerycms_testing
+</shell>
+
+And prepare our dummy refinerycms app and database with
+
+<shell>
+$ bundle exec rake refinery:testing:engine:setup
+</shell>
+
+h3. Running the tests with Rake
+
+At your project's root run:
+
+<shell>
+$ bundle exec rake
+</shell>
+
+This will run the cucumber and rspec tests.
+
+To run just cucumber:
+
+<shell>
+$ bundle exec cucumber
+</shell>
+
+To run just rspec:
+
+<shell>
+$ bundle exec rake spec
+</shell>
+
+This is the most simple way to execute the test suite and useful for a one time run.
+
+h3. Running the tests with Guard
+
+We recommend using Guard if you like to develop using TDD. Guard will load your test environment and watch for changes in files. If a change is made to a spec, feature, or a file that is tested against, it will re-run only the necessary specs or features. Because your environment is loaded at all times, this is a much faster way to get test results.
+
+At your project's root run:
+
+<shell>
+$ bundle exec guard start
+</shell>

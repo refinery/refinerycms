@@ -1,4 +1,4 @@
-script: "bundle exec rake db:drop db:create db:migrate spec cucumber"
+script: "DISPLAY=':313' Xvfb :313 -ac -screen 0 1024x768x8 && DISPLAY=':313' bundle exec rake db:drop db:create db:migrate spec cucumber && DISPLAY=':313' Xvfb stop"
 notifications:
   recipients:
     - parndt@gmail.com

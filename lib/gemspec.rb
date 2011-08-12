@@ -23,7 +23,8 @@ rejection_patterns = [
   "^tmp(|/.+?)$",
   ".gem$",
   "^doc($|\/)",
-  "^coverage($|\/)"
+  "^coverage($|\/)",
+  "^spec($|\/)"
 ]
 
 files.reject! do |f|

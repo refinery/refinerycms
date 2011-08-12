@@ -3,10 +3,7 @@ require 'spec_helper'
 module Refinery
   describe Resource do
 
-    let(:resource) do
-      Resource.create!(:id => 1,
-                       :file => File.new(File.expand_path('../../../uploads/refinery_is_awesome.txt', __FILE__)))
-    end
+    let(:resource) { Factory(:resource) }
 
     context "with valid attributes" do
       it "should create successfully" do
@@ -55,7 +52,7 @@ module Refinery
     end
 
     describe ".create_resources" do
-      let(:file) { File.new(File.expand_path('../../../uploads/refinery_is_awesome.txt', __FILE__)) }
+      let(:file) { Refinery.roots("testing").join("assets/refinery_is_awesome.txt") }
 
       context "only one resource uploaded" do
         it "returns an array containing one resource" do
