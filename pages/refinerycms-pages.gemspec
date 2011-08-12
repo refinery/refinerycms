@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.version           = %q{2.0.0}
   s.summary           = %q{Pages engine for Refinery CMS}
   s.description       = %q{The default content engine of Refinery CMS. This engine handles the administration and display of user-editable pages.}
-  s.date              = %q{2011-08-12}
+  s.date              = %q{2011-08-13}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
   s.rubyforge_project = %q{refinerycms}
@@ -104,14 +104,6 @@ Gem::Specification.new do |s|
     'db/migrate/20110606151235_create_add_template_columns.rb',
     'db/seeds',
     'db/seeds/pages.rb',
-    'features',
-    'features/manage_pages.feature',
-    'features/step_definitions',
-    'features/step_definitions/page_steps.rb',
-    'features/support',
-    'features/support/paths.rb',
-    'features/translate_pages.feature',
-    'features/visit_pages.feature',
     'lib',
     'lib/gemspec.rb',
     'lib/generators',
@@ -132,8 +124,9 @@ Gem::Specification.new do |s|
     'spec/models/refinery',
     'spec/models/refinery/page_spec.rb',
     'spec/requests',
-    'spec/requests/refinery',
-    'spec/requests/refinery/pages_spec.rb'
+    'spec/requests/manage_pages_spec.rb',
+    'spec/requests/page_frontend_spec.rb',
+    'spec/requests/translate_pages_spec.rb'
   ]
 
   s.add_dependency 'refinerycms-core',            '= 2.0.0'

@@ -35,13 +35,9 @@ Gem::Specification.new do |s|
   s.add_dependency 'fuubar'
   s.add_dependency 'rspec-instafail'
   s.add_dependency 'capybara',          '~> 1.0.0'
-
-  # Cucumber
-  s.add_dependency 'cucumber-rails',    '~> 1.0.0'
   
   # Guard
   s.add_dependency 'guard-rspec'
-  s.add_dependency 'guard-cucumber'
   s.add_dependency 'rb-fsevent'
   s.add_dependency 'growl'
 

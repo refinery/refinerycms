@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.version           = %q{2.0.0}
   s.summary           = %q{Testing plugin for Refinery CMS}
   s.description       = %q{This plugin adds the ability to run cucumber and rspec against the RefineryCMS gem while inside a RefineryCMS project}
-  s.date              = %q{2011-08-12}
+  s.date              = %q{2011-08-13}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
   s.rubyforge_project = %q{refinerycms}
@@ -29,13 +29,9 @@ Gem::Specification.new do |s|
   s.add_dependency 'fuubar'
   s.add_dependency 'rspec-instafail'
   s.add_dependency 'capybara',          '~> 1.0.0'
-
-  # Cucumber
-  s.add_dependency 'cucumber-rails',    '~> 1.0.0'
   
   # Guard
   s.add_dependency 'guard-rspec'
-  s.add_dependency 'guard-cucumber'
   s.add_dependency 'rb-fsevent'
   s.add_dependency 'growl'
 
@@ -46,17 +42,6 @@ Gem::Specification.new do |s|
     'assets/id-rather-be-here.jpg',
     'assets/refinery_is_awesome.txt',
     'assets/refinery_is_awesome2.txt',
-    'config',
-    'config/cucumber.yml',
-    'features',
-    'features/step_definitions',
-    'features/step_definitions/web_steps.rb',
-    'features/support',
-    'features/support/env.rb',
-    'features/support/factories.rb',
-    'features/support/negative_expectations_helper.rb',
-    'features/support/paths.rb',
-    'features/support/selectors.rb',
     'lib',
     'lib/gemspec.rb',
     'lib/generators',
@@ -64,9 +49,6 @@ Gem::Specification.new do |s|
     'lib/generators/files/Gemfile',
     'lib/generators/files/Guardfile',
     'lib/generators/files/Rakefile',
-    'lib/generators/files/features',
-    'lib/generators/files/features/support',
-    'lib/generators/files/features/support/paths.rb',
     'lib/generators/files/script',
     'lib/generators/files/script/rails',
     'lib/generators/files/spec',
@@ -163,7 +145,6 @@ Gem::Specification.new do |s|
     'lib/refinery/testing/request_macros.rb',
     'lib/refinerycms-testing.rb',
     'lib/tasks',
-    'lib/tasks/cucumber.rake',
     'lib/tasks/rcov.rake',
     'refinerycms-testing.gemspec',
     'spec',
