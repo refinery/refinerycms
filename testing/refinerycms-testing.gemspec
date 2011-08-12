@@ -25,7 +25,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'sqlite3'
 
   # RSpec
-  s.add_dependency 'rspec-rails',       '2.6.1.beta1'
+  s.add_dependency 'rspec-rails',       '2.6.1'
   s.add_dependency 'fuubar'
   s.add_dependency 'rspec-instafail'
   s.add_dependency 'capybara',          '~> 1.0.0'
@@ -152,6 +152,7 @@ Gem::Specification.new do |s|
     'lib/refinery/testing/factories',
     'lib/refinery/testing/factories/image.rb',
     'lib/refinery/testing/factories/page.rb',
+    'lib/refinery/testing/factories/resource.rb',
     'lib/refinery/testing/factories/user.rb',
     'lib/refinery/testing/factories.rb',
     'lib/refinery/testing/request_macros',

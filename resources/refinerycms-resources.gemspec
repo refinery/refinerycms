@@ -87,9 +87,6 @@ Gem::Specification.new do |s|
     'spec/models/refinery/resource_spec.rb',
     'spec/requests',
     'spec/requests/manage_resources_spec.rb',
-    'spec/support',
-    'spec/support/refinery',
-    'spec/support/refinery/factories.rb',
     'spec/uploads',
     'spec/uploads/refinery_is_awesome.txt',
     'spec/uploads/refinery_is_awesome2.txt'

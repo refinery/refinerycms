@@ -31,7 +31,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'sqlite3'
 
   # RSpec
-  s.add_dependency 'rspec-rails',       '2.6.1.beta1'
+  s.add_dependency 'rspec-rails',       '2.6.1'
   s.add_dependency 'fuubar'
   s.add_dependency 'rspec-instafail'
   s.add_dependency 'capybara',          '~> 1.0.0'
