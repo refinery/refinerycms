@@ -58,6 +58,7 @@ $ rails new ExistingApp
 $ cd ExistingApp
 </shell>
 
++Gemfile+
 <ruby>
 ...
   gem 'devise', '=1.1.8' #Not recommending a specific version, just saying perhaps your app used an older version than refinery requires, and you aren't quite ready to upgrade, just to demonstrate...
@@ -132,6 +133,7 @@ rm public/index.html
 
 +public/stylesheets/front_end_styles.css
 <erb>
+/* not pretty, but you'll know it when you see it*/
 body {
   background-color: #1100aa
 }
@@ -367,9 +369,9 @@ To keep ExistingApp in control of user administration, we'll block the routes to
 We also need to ensure that the devise routes point to where ExistingApp is expecting them to (which may be customized), and not to where refinery wants to route them.  We want some of the refinery routes defined, just not all. But we don't want to modify the refinery gems so we can upgrade more easily. The solution is to modify the routes after they are loaded, and there is probably a better way to find and remove the refinery added devise routes than this. But here is a method that worked.
 
 First, to find the routes refinery is adding, recognize that not all are in routes.rb files....
-<script>
+<shell>
 grep -R "routes.draw" $(rvm gemdir)
-</script>
+</shell>
 
 The next problem is that because refinery devise routes after ExistingApp adds the same routes, recognize_path and url_for won't agree.
 ExistingApp's routes take precedence, but the url_for helpers in the refinery code won't point to them yet.
