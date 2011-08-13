@@ -3,9 +3,12 @@ require "spec_helper"
 
 describe "translate pages" do
   before(:each) do
+    Factory(:refinery_user)
     user = Factory(:refinery_translator, :password => "123456",
                                          :password_confirmation => "123456")
+
     visit new_refinery_user_session_path
+
     fill_in "Login", :with => user.username
     fill_in "Password", :with => "123456"
     click_button "Sign in"
