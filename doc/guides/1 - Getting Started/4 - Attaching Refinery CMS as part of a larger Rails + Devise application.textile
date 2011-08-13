@@ -182,8 +182,10 @@ $ cp app/views/devise/sessions/new.html.erb app/views/users/sessions/.
 <erb>
 ...
 Our custom new session view
+#Leave the rest unchanged
 ...
 </erb>
+<shell>
 $ rails c
 ruby> me = User.new(:email=>"my_email@my_company.com", :password=>"my_pa$$word")
 ...
@@ -340,7 +342,7 @@ $ grep -R "username" refinerycms*/.
 
 Most of those "username" occurances will be in parts of refinery involving user administration, which we are going to avoid, because we are assuming ExistingApp is handling user administration. (In this guide, that's just by using the console to keep things simple.)
 
-For the refinery gem versions used in this guide, it was helpful to override a method in the admin base controller.
+For the refinery gem versions used in this guide, it was helpful to override a method in the admin base controller and associated view partial.
 
 <shell>
 $ rake refinery:override controller=admin/base
@@ -375,7 +377,7 @@ grep -R "routes.draw" $(rvm gemdir)
 
 The next problem is that because refinery devise routes after ExistingApp adds the same routes, recognize_path and url_for won't agree.
 ExistingApp's routes take precedence, but the url_for helpers in the refinery code won't point to them yet.
-(This would be a problem if ExistingApp had custom routes for devise user sessions, for example. That was left out of this guide to keep things simpler.)
+(The will be a problem for ExistingApp's custom routes for devise user sessions, for example.)
 
 The fix is to reload the named routes after everything else since ruby follows the "last to define wins" rule for named route url_for methods:
 +config/named_routes_overrides.rb+
