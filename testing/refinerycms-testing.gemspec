@@ -32,8 +32,6 @@ Gem::Specification.new do |s|
   
   # Guard
   s.add_dependency 'guard-rspec'
-  s.add_dependency 'rb-fsevent'
-  s.add_dependency 'growl'
 
   s.files             = [
     '.rspec',
@@ -114,6 +112,7 @@ Gem::Specification.new do |s|
     'lib/generators/files/spec/dummy/public/favicon.ico',
     'lib/generators/files/spec/dummy/script',
     'lib/generators/files/spec/dummy/script/rails',
+    'lib/generators/files/spec/dummy/tmp',
     'lib/generators/files/spec/dummy/version.rb',
     'lib/generators/files/spec/rcov.opts',
     'lib/generators/files/spec/spec_helper.rb',
