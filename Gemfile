@@ -38,6 +38,10 @@ group :development, :test do
   gem 'rcov', :platform => :mri_18
   gem 'simplecov', :platform => :mri_19
   gem 'capybara-webkit', :git => 'git://github.com/thoughtbot/capybara-webkit.git'
+  gem 'spork', '0.9.0.rc9', :platforms => :ruby
+  gem 'guard-spork', :platforms => :ruby
+  # Guard::RSpec spec_paths option added in this commit. Specified because Gem has not been cut yet.
+  gem 'guard-rspec', :git => "git://github.com/guard/guard-rspec.git", :branch => "23476db8d97ceae44f5d6efb51411e717645e76d"
 
   require 'rbconfig'
   
