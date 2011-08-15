@@ -82,6 +82,15 @@ module Refinery
         child.url[:path].should be_nil
         turn_on_marketable_urls
       end
+      
+      it 'returns its path with slug set by menu_title' do
+        page.menu_title = 'Rspec is great'
+        page.save
+        page.reload
+
+        page.url[:id].should be_nil
+        page.url[:path].should == ['rspec-is-great']
+      end
     end
 
     context 'custom slugs' do

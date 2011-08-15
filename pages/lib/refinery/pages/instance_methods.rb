@@ -26,7 +26,9 @@ module Refinery
         # If we have translations then we get the title from that table.
         pages = if ::Refinery::Page.respond_to?(:translation_class)
           pages.joins(:translations).select(
-            "#{::Refinery::Page.translation_class.table_name}.title as page_title"
+            %w(title menu_title).each do |column|
+              "#{::Refinery::Page.translation_class.arel_table[column.to_sym]}"  
+            end
           )
         else
           pages.select('title as page_title')

@@ -74,7 +74,13 @@ module Refinery
                     :strip_non_ascii => ::Refinery::Setting.find_or_set(:strip_non_ascii, false, :scoping => "pages")
     
     def custom_slug_or_title
-      custom_slug.blank? ? title : custom_slug
+      if custom_slug.blank? == false
+        custom_slug
+      elsif menu_title.blank? == false
+        menu_title
+      else 
+        title
+      end
     end
 
     has_many :parts,
@@ -269,7 +275,7 @@ module Refinery
         :menu_match => menu_match,
         :parent_id => parent_id,
         :rgt => rgt,
-        :title => menu_title || (page_title if respond_to?(:page_title)) || title,
+        :title => menu_title.blank? ? title : menu_title,
         :type => self.class.name,
         :url => url
       }
