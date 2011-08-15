@@ -38,8 +38,6 @@ Gem::Specification.new do |s|
   
   # Guard
   s.add_dependency 'guard-rspec'
-  s.add_dependency 'rb-fsevent'
-  s.add_dependency 'growl'
 
   s.files             = [
     '#{%w( **/{*,.rspec,.gitignore,.yardopts} ).map { |file| Pathname.glob(gempath.join(file)) }.flatten.reject{|f|
