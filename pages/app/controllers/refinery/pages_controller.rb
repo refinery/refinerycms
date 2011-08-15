@@ -6,6 +6,7 @@ module Refinery
     # This action is usually accessed with the root path, normally '/'
     def home
       error_404 unless (@page = ::Refinery::Page.where(:link_url => '/').first).present?
+      render_with_templates?
     end
 
     # This action can be accessed normally, or as nested pages.
