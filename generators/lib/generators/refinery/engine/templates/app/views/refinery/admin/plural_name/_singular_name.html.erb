@@ -1,0 +1,18 @@
+<li class='clearfix record <%%= cycle("on", "on-hover") %>' id="<%%= dom_id(<%= singular_name %>) -%>">
+  <span class='title'>
+    <%%= <%= singular_name %><% if (title = attributes.detect { |a| a.type.to_s == "string" }).present? -%>.<%= title.name %><% else %>.title<%end %> %>
+    <span class="preview">&nbsp;</span>
+  </span>
+  <span class='actions'>
+    <%%= link_to refinery_icon_tag("application_go.png"), main_app.refinery_<%= singular_name %>_path(<%= singular_name %>),
+        :title => t('.view_live_html'),
+        :target => "_blank" %>
+    <%%= link_to refinery_icon_tag("application_edit.png"), main_app.edit_refinery_admin_<%= singular_name %>_path(<%= singular_name %>),
+         :title => t('.edit') %>
+    <%%= link_to refinery_icon_tag("delete.png"), main_app.refinery_admin_<%= singular_name %>_path(<%= singular_name %>),
+        :class => "cancel confirm-delete",
+        :title => t('.delete'),
+        :confirm => t('message', :scope => 'refinery.admin.delete', :title => <%= singular_name %><% if (title = attributes.detect { |a| a.type.to_s == "string" }).present? %>.<%= title.name %><% else %>.title<% end %>),
+        :method => :delete %>
+  </span>
+</li>
