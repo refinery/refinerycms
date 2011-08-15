@@ -22,7 +22,7 @@ Gem::Specification.new do |s|
   s.executables       = %w(#{Pathname.glob(gempath.join('bin/*')).map{|d| d.relative_path_from(gempath)}.sort.join(" ")})
 
   s.add_dependency 'refinerycms-core',  '= #{::Refinery::Version}'
-  
+
   s.add_dependency 'database_cleaner'
   s.add_dependency 'launchy'
   s.add_dependency 'factory_girl',      '~> 2.0.3'
@@ -35,7 +35,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'fuubar'
   s.add_dependency 'rspec-instafail'
   s.add_dependency 'capybara',          '~> 1.0.0'
-  
+
   # Guard
   s.add_dependency 'guard-rspec'
 

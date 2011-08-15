@@ -36,7 +36,7 @@ module Refinery
           ::ActiveRecord::Generators::Base.next_migration_number(dirname)
         end
       end
-      
+
       def initialize(args = [], options = {}, config = {})
         config[:destination_root] = config[:destination_root] || Rails.root.to_s
         super(args, options, config)
@@ -69,9 +69,9 @@ module Refinery
           })
         end
       end
-      
+
       protected
-      
+
         # Helper method to quickly convert destination_root to a Pathname for easy file path manipulation
         def destination_path
           @destination_path ||= Pathname.new(self.destination_root)

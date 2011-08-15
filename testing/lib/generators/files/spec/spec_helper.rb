@@ -1,10 +1,10 @@
 require 'rubygems'
 
-def setup_environment  
+def setup_environment
   # Configure Rails Environment
   ENV["RAILS_ENV"] ||= 'test'
   require File.expand_path("../dummy/config/environment.rb",  __FILE__)
-    
+
   require 'rspec/rails'
   require 'capybara/rspec'
   require 'factory_girl'

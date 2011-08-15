@@ -2,7 +2,7 @@ require "spec_helper"
 
 describe "site bar" do
   login_refinery_user
-  
+
   it "have logout link" do
     page.should have_content("Log out")
     page.should have_selector("a[href='/refinery/users/logout']")
@@ -29,7 +29,7 @@ describe "site bar" do
     before(:each) do
       # make a page in order to avoid 404
       Factory(:page, :link_url => "/")
-      
+
       visit root_path
     end
 

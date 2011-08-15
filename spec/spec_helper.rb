@@ -22,10 +22,10 @@ def setup_environment
   setup_simplecov unless ENV["SKIP_COV"] || !defined?(SimpleCov)
 
   require File.expand_path("../../config/environment", __FILE__)
-    
+
   require 'rspec/rails'
   require 'capybara/rspec'
-  
+
   require 'refinery/testing/factories'
   require 'refinery/testing/controller_macros'
   require 'refinery/testing/request_macros'
