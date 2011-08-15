@@ -60,6 +60,55 @@ describe 'page frontend' do
     end
   end
 
+  describe 'when menu_title is' do
+    let!(:special_page) { Factory(:page, :title => 'Company News') }
+    
+    describe 'set' do
+      before do
+        special_page.menu_title = "News"
+        special_page.save
+      end
+      
+      it 'shows the menu_title in the menu and changes the slug' do
+        visit '/news'
+        within ".selected" do
+          page.should have_content("News")
+        end
+      end
+    end
+
+    describe 'not set' do
+      it 'the slug and menu title are not changed' do
+        visit '/company-news'
+        within ".selected" do
+          page.should have_content("Company News")
+        end
+      end
+    end
+
+    describe 'set and then unset' do
+      before(:each) do 
+        special_page.menu_title = "News"
+        special_page.save
+        special_page.menu_title = ""
+        special_page.save
+      end
+
+      it 'the slug and menu are reverted to match the title' do
+        visit '/company-news'
+        within ".selected" do
+          page.should have_content("Company News")
+        end
+      end
+      
+      it '301 redirects to current url' do
+        visit '/news'
+        # capybara follows the 301 redirect to the current url
+        current_path.should == '/company-news'
+      end
+    end
+  end
+
   # Following specs are converted from one of the cucumber features.
   # Maybe we should clean up this spec file a bit...
   describe "home page" do

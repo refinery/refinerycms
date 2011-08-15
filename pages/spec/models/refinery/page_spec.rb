@@ -82,8 +82,57 @@ module Refinery
         child.url[:path].should be_nil
         turn_on_marketable_urls
       end
+      
+      it 'returns its path with slug set by menu_title' do
+        page.menu_title = 'Rspec is great'
+        page.save
+        page.reload
+
+        page.url[:id].should be_nil
+        page.url[:path].should == ['rspec-is-great']
+      end
     end
 
+    context 'custom slugs' do
+      let(:page_with_custom_slug) {
+        ::Refinery::Page.create!(:title => 'RSpec is great for testing too', :custom_slug => 'custom-page-slug')
+      }
+      let(:child_with_custom_slug) { page.children.create(:title => 'The child page', :custom_slug => 'custom-child-slug') }
+      
+      it 'returns its path with custom slug' do
+        page_with_custom_slug.url[:id].should be_nil
+        page_with_custom_slug.url[:path].should == ['custom-page-slug']
+      end
+
+      it 'returns its path underneath its parent with custom urls' do
+        child_with_custom_slug.url[:id].should be_nil
+        child_with_custom_slug.url[:path].should == [page.url[:path].first, 'custom-child-slug']
+      end
+
+      it 'returns its path with custom slug when using different locale' do
+        ::Refinery::I18n.current_frontend_locale = :ru
+        ::Refinery::I18n.current_locale = :ru
+        page_with_custom_slug.custom_slug = 'custom-page-slug-ru'
+        page_with_custom_slug.save
+        page_with_custom_slug.reload
+        
+        page_with_custom_slug.url[:id].should be_nil
+        page_with_custom_slug.url[:path].should == ['custom-page-slug-ru']
+      end
+      
+      it 'returns path underneath its parent with custom urls when using different locale' do
+        ::Refinery::I18n.current_frontend_locale = :ru
+        ::Refinery::I18n.current_locale = :ru
+        child_with_custom_slug.custom_slug = 'custom-child-slug-ru'
+        child_with_custom_slug.save
+        child_with_custom_slug.reload
+        
+        child_with_custom_slug.url[:id].should be_nil
+        child_with_custom_slug.url[:path].should == [page.url[:path].first, 'custom-child-slug-ru']
+      end
+
+    end
+    
     context 'home page' do
       it 'responds as the home page' do
         page.link_url = '/'

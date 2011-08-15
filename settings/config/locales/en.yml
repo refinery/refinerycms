@@ -39,6 +39,7 @@ en:
             use_resource_caching: Recommended to enable this in production mode as it bundles javascript assets and stylesheet assets into single file packages to reduce the number of web requests on your site and speed it up.
             approximate_ascii: "Set this to true if you use Latin characters with accents and other diacritics in page titles. It'll convert characters like ā, č, ž into a, c, z and this way those characters won't appear strangely in the address bar of some web browsers."
             cache_pages_full: Activates the full-page-cache. It allows cached page delivery via Nginx or .htaccess file from Apache.
+            use_custom_slugs: A slug is a human-readable ID used to create a page&apos;s full URL, for example &apos;about-us&apos;. To enable the ability to override the slugs that are automatically created by Refinery, set this to true.
   activerecord:
     models:
       refinery/setting: setting
