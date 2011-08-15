@@ -21,7 +21,6 @@ gemspec
 # Anything you put in here will be overridden when the app gets updated.
 
 # gem 'refinerycms', '~> 2.0.0'
-gem 'refinerycms-generators', '~> 2.0.0', :git => 'git://github.com/resolve/refinerycms-generators.git'
 gem 'seo_meta', :git => 'git://github.com/parndt/seo_meta.git'
 gem 'globalize3', :git => 'git://github.com/svenfuchs/globalize3.git'
 gem 'awesome_nested_set', :git => 'git://github.com/collectiveidea/awesome_nested_set.git'
