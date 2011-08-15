@@ -166,7 +166,7 @@ class Users::SessionsController < Devise::SessionsController
   end
 </ruby>
 
-+app/config/initializers/db_maintenance.rb+
++config/initializers/db_maintenance.rb+
 <ruby>
 DB_UNDER_MAINTENANCE = false
 </ruby>
