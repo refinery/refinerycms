@@ -5,7 +5,8 @@ module Refinery
 
     # This action is usually accessed with the root path, normally '/'
     def home
-      error_404 unless (@page = ::Refinery::Page.where(:link_url => '/').first).present?
+      error_404 and return unless (@page = ::Refinery::Page.where(:link_url => '/').first).present?
+
       render_with_templates?
     end
 
@@ -30,11 +31,11 @@ module Refinery
           redirect_to @page.link_url and return
         end
         # 301 redirect if there is a newer slug
-        unless "#{params[:path]}/#{params[:id]}".split('/').last == @page.slug.name 
+        unless "#{params[:path]}/#{params[:id]}".split('/').last == @page.slug.name
           redirect_to main_app.url_for(@page.url), :status => 301 and return
         end
       else
-        error_404
+        error_404 and return
       end
 
       render_with_templates?
