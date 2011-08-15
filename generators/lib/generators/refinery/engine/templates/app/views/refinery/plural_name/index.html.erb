@@ -1,0 +1,11 @@
+<%% content_for :body_content_left do %>
+  <ul id="<%= plural_name %>">
+    <%% @<%= "all_" if plural_name == singular_name%><%= plural_name %>.each do |<%= singular_name %>| %>
+      <li>
+        <%%= link_to <%= singular_name %><% if (title = attributes.detect { |a| a.type.to_s == "string" }).present? %>.<%= title.name %><% end %>, main_app.refinery_<%= singular_name %>_path(<%= singular_name %>) %>
+      </li>
+    <%% end %>
+  </ul>
+<%% end %>
+
+<%%= render :partial => "/refinery/content_page" %>

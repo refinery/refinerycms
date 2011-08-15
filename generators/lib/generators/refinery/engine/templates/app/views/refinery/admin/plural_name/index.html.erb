@@ -1,0 +1,10 @@
+<section id='records'>
+  <%%= render :partial => 'records' %>
+</section>
+<aside id='actions'>
+  <%%= render :partial => 'actions' %>
+</aside>
+<%%= render :partial => '/refinery/admin/make_sortable',
+            :locals => {
+              :tree => false
+            } if !searching? and ::Refinery::Admin::<%= class_name.pluralize %>Controller.sortable? and ::Refinery::<%= class_name %>.count > 1 %>

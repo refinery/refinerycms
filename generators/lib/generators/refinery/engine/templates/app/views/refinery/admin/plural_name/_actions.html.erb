@@ -1,0 +1,28 @@
+<ul>
+  <%% if ::Refinery::Admin::<%= class_name.pluralize %>Controller.searchable? %>
+    <li>
+      <%%= render :partial => "/refinery/admin/search",
+                  :locals => {
+                    :url => main_app.refinery_admin_<%= plural_name %><%= "_index" if plural_name == singular_name%>_path
+                  } %>
+    </li>
+  <%% end %>
+  <li>
+    <%%= link_to t('.create_new'), main_app.new_refinery_admin_<%= singular_name %>_path,
+                 :class => "add_icon" %>
+  </li>
+<%% if !searching? and ::Refinery::Admin::<%= class_name.pluralize %>Controller.sortable? and ::Refinery::<%= class_name %>.count > 1 %>
+  <li>
+    <%%= link_to t('.reorder', :what => "<%= singular_name.titleize.pluralize %>"),
+                 main_app.refinery_admin_<%= plural_name %><%= "_index" if plural_name == singular_name%>_path,
+                 :id => "reorder_action",
+                 :class => "reorder_icon" %>
+
+    <%%= link_to t('.reorder_done', :what => "<%= singular_name.titleize.pluralize %>"),
+                 main_app.refinery_admin_<%= plural_name %><%= "_index" if plural_name == singular_name%>_path,
+                 :id => "reorder_action_done",
+                 :style => "display: none;",
+                 :class => "reorder_icon" %>
+  </li>
+<%% end %>
+</ul>
