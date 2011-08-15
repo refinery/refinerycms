@@ -326,7 +326,7 @@ module Refinery
     # In the admin area we use a slightly different title to inform the which pages are draft or hidden pages
     def title_with_meta
       title = if self.title.nil?
-        [self.class.with_globalize(:page_id => self.id, :locale => Globalize.locale).first.try(:title).to_s]
+        [self.class.with_globalize(:id => self.id, :locale => Globalize.locale).first.try(:title).to_s]
       else
         [self.title.to_s]
       end

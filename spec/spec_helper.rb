@@ -42,10 +42,10 @@ def setup_environment
 
   RSpec.configure do |config|
     config.mock_with :rspec
-        
-    # set javascript driver for capybara
-    Capybara.javascript_driver = :webkit
   end
+
+  # set javascript driver for capybara
+  Capybara.javascript_driver = :webkit
 end
 
 def each_run

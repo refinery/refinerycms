@@ -25,7 +25,7 @@ Gem::Specification.new do |s|
   
   s.add_dependency 'database_cleaner'
   s.add_dependency 'launchy'
-  s.add_dependency 'factory_girl',      '~> 2.0.2'
+  s.add_dependency 'factory_girl',      '~> 2.0.3'
   s.add_dependency 'json_pure'
   s.add_dependency 'rack-test',         '>= 0.5.6'
   s.add_dependency 'sqlite3'
@@ -35,15 +35,9 @@ Gem::Specification.new do |s|
   s.add_dependency 'fuubar'
   s.add_dependency 'rspec-instafail'
   s.add_dependency 'capybara',          '~> 1.0.0'
-
-  # Cucumber
-  s.add_dependency 'cucumber-rails',    '~> 1.0.0'
   
   # Guard
   s.add_dependency 'guard-rspec'
-  s.add_dependency 'guard-cucumber'
-  s.add_dependency 'rb-fsevent'
-  s.add_dependency 'growl'
 
   s.files             = [
     '#{%w( **/{*,.rspec,.gitignore,.yardopts} ).map { |file| Pathname.glob(gempath.join(file)) }.flatten.reject{|f|

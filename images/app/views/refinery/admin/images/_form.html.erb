@@ -1,4 +1,6 @@
-<%= form_for [main_app, :refinery_admin, @image], :html => {:multipart => true} do |f| %>
+<%= form_for [main_app, :refinery_admin, @image],
+             :url => (@url_override or @image.persisted? ? main_app.refinery_admin_image_path(@image) : main_app.refinery_admin_images_path),
+             :html => { :multipart => true } do |f| %>
 
   <%= render :partial => "/refinery/admin/error_messages",
              :locals => {
