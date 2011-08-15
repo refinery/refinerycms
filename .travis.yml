@@ -1,4 +1,4 @@
-script: "DISPLAY=':313' bundle exec rake db:drop db:create db:migrate spec cucumber"
+script: "DISPLAY=':313' bundle exec rake db:drop db:create db:migrate spec"
 notifications:
   email:
     - parndt@gmail.com
