@@ -16,7 +16,7 @@ Gem::Specification.new do |s|
   s.executables       = %w()
 
   s.add_dependency 'refinerycms-core',  '= 2.0.0'
-  
+
   s.add_dependency 'database_cleaner'
   s.add_dependency 'launchy'
   s.add_dependency 'factory_girl',      '~> 2.0.3'
@@ -29,9 +29,9 @@ Gem::Specification.new do |s|
   s.add_dependency 'fuubar'
   s.add_dependency 'rspec-instafail'
   s.add_dependency 'capybara',          '~> 1.0.0'
-  
+
   # Guard
-  s.add_dependency 'guard-rspec'
+  s.add_dependency 'guard-rspec'        '~> 0.4.2'
 
   s.files             = [
     '.rspec',
