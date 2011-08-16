@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.version           = %q{2.0.0}
   s.summary           = %q{Pages engine for Refinery CMS}
   s.description       = %q{The default content engine of Refinery CMS. This engine handles the administration and display of user-editable pages.}
-  s.date              = %q{2011-08-14}
+  s.date              = %q{2011-08-15}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
   s.rubyforge_project = %q{refinerycms}
@@ -131,7 +131,6 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'refinerycms-core',            '= 2.0.0'
   s.add_dependency 'friendly_id_globalize3',      '~> 3.2.1'
-  s.add_dependency 'globalize3',                  '~> 0.1'
   s.add_dependency 'awesome_nested_set',          '~> 2.0'
   s.add_dependency 'seo_meta',                    '~> 1.1'
 end

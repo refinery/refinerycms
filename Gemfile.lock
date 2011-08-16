@@ -29,15 +29,6 @@ GIT
       refinerycms-generators (~> 2.0)
 
 GIT
-  remote: git://github.com/svenfuchs/globalize3.git
-  revision: f2022afe9729517834a0e929ec0df93447b24906
-  specs:
-    globalize3 (0.2.0.beta1)
-      activemodel (>= 3.0.0)
-      activerecord (>= 3.0.0)
-      paper_trail (~> 2)
-
-GIT
   remote: git://github.com/thoughtbot/capybara-webkit.git
   revision: 82ae0c298f11098e3393806a595d1ffa8615c4fc
   specs:
@@ -67,7 +58,7 @@ PATH
       awesome_nested_set (~> 2.0)
       coffee-rails (>= 3.1.0.rc5)
       friendly_id_globalize3 (~> 3.2.1)
-      globalize3 (~> 0.1)
+      globalize3 (~> 0.2.0.beta3)
       jquery-rails
       kaminari (~> 0.12)
       rails (>= 3.1.0.rc5)
@@ -87,7 +78,6 @@ PATH
     refinerycms-pages (2.0.0)
       awesome_nested_set (~> 2.0)
       friendly_id_globalize3 (~> 3.2.1)
-      globalize3 (~> 0.1)
       refinerycms-core (= 2.0.0)
       seo_meta (~> 1.1)
     refinerycms-resources (2.0.0)
@@ -185,6 +175,10 @@ GEM
       rspec (~> 2.0)
       rspec-instafail (~> 0.1.8)
       ruby-progressbar (~> 0.0.10)
+    globalize3 (0.2.0.beta3)
+      activemodel (>= 3.0.0)
+      activerecord (>= 3.0.0)
+      paper_trail (~> 2)
     growl (1.0.3)
     guard (0.6.0)
       thor (~> 0.14.6)
@@ -302,7 +296,6 @@ DEPENDENCIES
   awesome_nested_set!
   capybara-webkit!
   coffee-rails (~> 3.1.0.rc)
-  globalize3!
   growl (~> 1.0.3)
   guard-rspec!
   guard-spork
