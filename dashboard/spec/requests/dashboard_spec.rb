@@ -33,7 +33,7 @@ describe "dashboard" do
 
   describe "latest activity" do
     before(:each) do
-      4.times { |n| Factory(:refinery_user, :username => "ugisozols#{n}") }
+      3.times { |n| Factory(:refinery_user, :username => "ugisozols#{n}") }
       3.times { |n| Factory(:page, :title => "Refinery CMS #{n}") }
     end
 
@@ -41,8 +41,20 @@ describe "dashboard" do
       visit refinery_admin_dashboard_path
 
       page.should have_content("Latest Activity")
-      4.times { |n| page.should have_content("Ugisozols#{n} user was added") }
+      # This comes from login_refinery_user
+      page.should have_content("Refinerycms user was added")
+      3.times { |n| page.should have_content("Ugisozols#{n} user was added") }
       3.times { |n| page.should have_content("Refinery cms #{n} page was added") }
+    end
+  end
+
+  describe "javascript" do
+    it "suggests enabling when it is disabled" do
+      page.should have_content("For full functionality of this page it is necessary to enable JavaScript")
+    end
+
+    it "doesn't say anything of the sort when it is enabled", :js => true do
+      page.should_not have_content("For full functionality of this page it is necessary to enable JavaScript")
     end
   end
 end
