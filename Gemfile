@@ -35,7 +35,7 @@ group :development, :test do
   gem 'refinerycms-testing',    '~> 2.0.0'
   gem 'rcov', :platform => :mri_18
   gem 'simplecov', :platform => :mri_19
-  gem 'capybara-webkit', :git => 'git://github.com/thoughtbot/capybara-webkit.git'
+  gem 'capybara-webkit'
   gem 'spork', '0.9.0.rc9', :platforms => :ruby
   gem 'guard-spork', :platforms => :ruby
 

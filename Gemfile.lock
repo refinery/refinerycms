@@ -20,13 +20,6 @@ GIT
     seo_meta (1.1.1)
       refinerycms-generators (~> 2.0)
 
-GIT
-  remote: git://github.com/thoughtbot/capybara-webkit.git
-  revision: 82ae0c298f11098e3393806a595d1ffa8615c4fc
-  specs:
-    capybara-webkit (0.5.0)
-      capybara (~> 1.0.0)
-
 PATH
   remote: .
   specs:
@@ -137,6 +130,8 @@ GEM
       rack-test (>= 0.5.4)
       selenium-webdriver (~> 2.0)
       xpath (~> 0.1.4)
+    capybara-webkit (0.6.0)
+      capybara (~> 1.0.0)
     childprocess (0.2.1)
       ffi (~> 1.0.6)
     coffee-rails (3.1.0.rc.5)
@@ -291,7 +286,7 @@ PLATFORMS
 DEPENDENCIES
   arel (= 2.1.4)
   awesome_nested_set!
-  capybara-webkit!
+  capybara-webkit
   coffee-rails (~> 3.1.0.rc)
   growl (~> 1.0.3)
   guard-spork
