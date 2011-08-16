@@ -1,4 +1,4 @@
-script: "bundle exec rake db:setup spec"
+script: "bundle exec rake db:create db:migrate spec"
 notifications:
   email:
     - parndt@gmail.com
