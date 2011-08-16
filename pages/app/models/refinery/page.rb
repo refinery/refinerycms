@@ -17,7 +17,7 @@ module Refinery
     # Delegate SEO Attributes to globalize3 translation
     seo_fields = ::SeoMeta.attributes.keys.map{|a| [a, :"#{a}="]}.flatten
     delegate *(seo_fields << {:to => :translation})
-    
+
     after_save proc {|m| m.translation.save}
 
     # Wrap up the logic of finding the pages based on the translations table.

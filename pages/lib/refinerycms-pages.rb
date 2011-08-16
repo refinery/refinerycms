@@ -62,7 +62,7 @@ module Refinery
           }
         end
       end
-      
+
       initializer "extend globalize3 with seo_meta", :after => :load_config_initializers do
         Page.translation_class.send(:is_seo_meta)
         # set allowed attributes for mass assignment
