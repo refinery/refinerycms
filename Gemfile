@@ -40,7 +40,7 @@ group :development, :test do
   gem 'guard-spork', :platforms => :ruby
 
   require 'rbconfig'
-  
+
   platforms :mswin, :mingw do
     gem 'win32console'
     gem 'rb-fchange', '~> 0.0.5'
@@ -50,7 +50,7 @@ group :development, :test do
   platforms :ruby do
     gem 'spork', '0.9.0.rc9'
     gem 'guard-spork'
-    
+
     unless ENV['TRAVIS']
       if Config::CONFIG['target_os'] =~ /darwin/i
         gem 'rb-fsevent', '>= 0.3.9'
@@ -93,8 +93,8 @@ end
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails', "~> 3.1.0.rc"
-  gem 'coffee-rails', "~> 3.1.0.rc"
+  gem 'sass-rails', ">= 3.1.0.rc"
+  gem 'coffee-rails', ">= 3.1.0.rc"
   gem 'uglifier'
 end
 
