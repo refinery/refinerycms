@@ -28,9 +28,6 @@ class CreateSeoMeta < ActiveRecord::Migration
     # Reset column information because otherwise the old columns will still exist.
     ::Refinery::Page.translation_class.reset_column_information
 
-    # Re-attach seo_meta
-    ::Refinery::Page.translation_class.send :is_seo_meta
-
     # Migrate data
     existing_translations.each do |translation|
       ::Refinery::Page.translation_class.find(translation['id']).update_attributes(
