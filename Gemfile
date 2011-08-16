@@ -28,9 +28,6 @@ gem 'awesome_nested_set', :git => 'git://github.com/collectiveidea/awesome_neste
 
 # REFINERY CMS DEVELOPMENT ====================================================
 
-gem 'arel', '2.1.4' # 2.1.5 was broken. see https://github.com/rails/arel/issues/72
-gem 'therubyracer'
-
 group :development, :test do
   gem 'refinerycms-testing',    '~> 2.0.0'
   gem 'rcov', :platform => :mri_18
