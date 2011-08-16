@@ -21,7 +21,6 @@ gemspec
 # Anything you put in here will be overridden when the app gets updated.
 
 # gem 'refinerycms', '~> 2.0.0'
-gem 'seo_meta', :git => 'git://github.com/parndt/seo_meta.git'
 gem 'awesome_nested_set', :git => 'git://github.com/collectiveidea/awesome_nested_set.git'
 
 # END REFINERY CMS ============================================================
@@ -90,8 +89,8 @@ end
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails', ">= 3.1.0.rc"
-  gem 'coffee-rails', ">= 3.1.0.rc"
+  gem 'sass-rails', ">= 3.1.0.rc.6"
+  gem 'coffee-rails', ">= 3.1.0.rc.6"
   gem 'uglifier'
 end
 

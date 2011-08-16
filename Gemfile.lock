@@ -13,13 +13,6 @@ GIT
       refinerycms-core (~> 2.0.0)
       routing-filter (>= 0.2.3)
 
-GIT
-  remote: git://github.com/parndt/seo_meta.git
-  revision: c4cdc4ab7b2bdde5f5614077be86ab01e2b1776f
-  specs:
-    seo_meta (1.1.1)
-      refinerycms-generators (~> 2.0)
-
 PATH
   remote: .
   specs:
@@ -64,7 +57,7 @@ PATH
       awesome_nested_set (~> 2.0)
       friendly_id_globalize3 (~> 3.2.1)
       refinerycms-core (= 2.0.0)
-      seo_meta (~> 1.1)
+      seo_meta (>= 1.2.0.rc1)
     refinerycms-resources (2.0.0)
       dragonfly (~> 0.9.0)
       rack-cache (>= 0.5.3)
@@ -97,7 +90,7 @@ GEM
       builder (~> 3.0.0)
       erubis (~> 2.7.0)
       i18n (~> 0.6)
-      rack (~> 1.3.1)
+      rack (~> 1.3.2)
       rack-cache (~> 1.0.2)
       rack-mount (~> 0.8.1)
       rack-test (~> 0.6.0)
@@ -134,11 +127,9 @@ GEM
       capybara (~> 1.0.0)
     childprocess (0.2.1)
       ffi (~> 1.0.6)
-    coffee-rails (3.1.0.rc.5)
-      actionpack (~> 3.1.0.rc1)
+    coffee-rails (3.1.0.rc.6)
       coffee-script (>= 2.2.0)
       railties (~> 3.1.0.rc1)
-      sprockets (>= 2.0.0.beta.9)
     coffee-script (2.2.0)
       coffee-script-source
       execjs
@@ -243,19 +234,20 @@ GEM
     ruby-progressbar (0.0.10)
     rubyzip (0.9.4)
     sass (3.1.7)
-    sass-rails (3.1.0.rc.5)
-      actionpack (~> 3.1.0.rc1)
-      railties (~> 3.1.0.rc1)
+    sass-rails (3.1.0.rc.6)
+      actionpack (~> 3.1.0.rc6)
+      railties (~> 3.1.0.rc6)
       sass (>= 3.1.4)
-      sprockets (>= 2.0.0.beta.9)
     selenium-webdriver (2.4.0)
       childprocess (>= 0.2.1)
       ffi (>= 1.0.7)
       json_pure
       rubyzip
+    seo_meta (1.2.0.rc1)
+      refinerycms-generators (~> 2.0)
     simplecov (0.4.2)
       simplecov-html (~> 0.4.4)
-    simplecov-html (0.4.4)
+    simplecov-html (0.4.5)
     spork (0.9.0.rc9)
     sprockets (2.0.0.beta.13)
       hike (~> 1.2)
@@ -283,7 +275,7 @@ PLATFORMS
 DEPENDENCIES
   awesome_nested_set!
   capybara-webkit
-  coffee-rails (>= 3.1.0.rc)
+  coffee-rails (>= 3.1.0.rc.6)
   growl (~> 1.0.3)
   guard-spork
   jquery-rails
@@ -295,8 +287,7 @@ DEPENDENCIES
   refinerycms!
   refinerycms-i18n (~> 2.0.0)!
   refinerycms-testing (~> 2.0.0)
-  sass-rails (>= 3.1.0.rc)
-  seo_meta!
+  sass-rails (>= 3.1.0.rc.6)
   simplecov
   spork (= 0.9.0.rc9)
   sqlite3
