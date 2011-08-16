@@ -37,7 +37,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'capybara',          '~> 1.0.0'
 
   # Guard
-  s.add_dependency 'guard-rspec'
+  s.add_dependency 'guard-rspec'        '~> 0.4.2'
 
   s.files             = [
     '#{%w( **/{*,.rspec,.gitignore,.yardopts} ).map { |file| Pathname.glob(gempath.join(file)) }.flatten.reject{|f|
