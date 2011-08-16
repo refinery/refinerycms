@@ -45,7 +45,7 @@ def setup_environment
   end
 
   # set javascript driver for capybara
-  Capybara.javascript_driver = (:webkit unless ENV['TRAVIS'])
+  Capybara.javascript_driver = :webkit
 end
 
 def each_run
