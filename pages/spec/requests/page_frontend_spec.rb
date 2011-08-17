@@ -58,77 +58,138 @@ describe 'page frontend' do
     end
   end
 
-  describe 'when a page has multiple friendly_id slugs' do
-    before(:each) do
-      # Create a page, then change the page title, creating a new slug
-      news_page = Factory(:page, :title => "News")
-      news_page.title = "Recent News"
-      news_page.save
+  describe 'title set (without menu title or browser title)' do
+    it "shows title at the top of the page" do
+      visit "/about"
+    
+      find("#body_content_title").text.should == "About"
     end
 
-    describe 'page accessed via current slug' do
-      it 'shows the page' do
-        visit '/recent-news'
-
-        standard_page_menu_items_exist?
-      end
+    it "uses title in the menu" do
+      visit "/about"
+    
+      find(".selected").text.strip.should == "About"
     end
 
-    describe 'page is access via old slug' do
-      it '301 redirects to current url' do
-        visit '/news'
-
-        # capybara follows the 301 redirect to the current url
-        current_path.should == '/recent-news'
-      end
+    it "uses title in browser title" do
+      visit "/about"
+    
+      find("title").should have_content("About")
     end
   end
 
   describe 'when menu_title is' do
-    let!(:special_page) { Factory(:page, :title => 'Company News') }
-    
+    let!(:page_mt) { Factory(:page, :title => 'Company News') }
+
     describe 'set' do
       before do
-        special_page.menu_title = "News"
-        special_page.save
+        page_mt.menu_title = "News"
+        page_mt.save
+      end
+
+      it 'changes the friendly_id and redirects the old one' do
+        visit '/company-news'
+
+        current_path.should == '/news'
       end
       
-      it 'shows the menu_title in the menu and changes the slug' do
+      it 'shows the menu_title in the menu' do
         visit '/news'
-        within ".selected" do
-          page.should have_content("News")
-        end
-      end
-    end
 
-    describe 'not set' do
-      it 'the slug and menu title are not changed' do
-        visit '/company-news'
-        within ".selected" do
-          page.should have_content("Company News")
-        end
+        find(".selected").text.strip.should == "News"
+      end
+
+      it "does not effect browser title and page title" do
+        visit "/news"
+      
+        find("title").should have_content("Company News")
+        find("#body_content_title").text.should == "Company News"
       end
     end
 
     describe 'set and then unset' do
-      before(:each) do 
-        special_page.menu_title = "News"
-        special_page.save
-        special_page.menu_title = ""
-        special_page.save
+      before do 
+        page_mt.menu_title = "News"
+        page_mt.save
+        page_mt.menu_title = ""
+        page_mt.save
       end
 
-      it 'the slug and menu are reverted to match the title' do
+      it 'the friendly_id and menu are reverted to match the title' do
         visit '/company-news'
-        within ".selected" do
-          page.should have_content("Company News")
-        end
+
+        current_path.should == '/company-news'
+        find(".selected").text.strip.should == "Company News"
       end
       
-      it '301 redirects to current url' do
+      it '301 redirects old friendly_id to current url' do
         visit '/news'
-        # capybara follows the 301 redirect to the current url
+
         current_path.should == '/company-news'
+      end
+    end
+  end
+
+  describe 'when browser_title is set' do
+    let!(:page_bt) { Factory(:page, :title => 'About Us', :browser_title => 'About Our Company') }
+
+    it 'should have the browser_title in the title tag' do
+      visit '/about-us'
+
+      page.find("title").text == "About Our Company"
+    end
+
+    it 'should not effect page title and menu title' do
+      visit '/about-us'
+
+      find("#body_content_title").text.should == "About Us"
+      find(".selected").text.strip.should == "About Us"
+    end
+  end
+
+  describe 'custom_slug' do
+    let!(:page_cs) { Factory(:page, :title => 'About Us') }
+
+    describe 'not set' do
+      it 'makes friendly_id from title' do
+        visit '/about-us'
+
+        current_path.should == '/about-us'
+      end
+    end
+
+    describe 'set' do
+      before do
+        page_cs.custom_slug = "about-custom"
+        page_cs.save
+      end
+
+      it 'should make and use a new friendly_id' do
+        visit '/about-custom'
+
+        current_path.should == '/about-custom'
+      end
+
+      it 'old url should 301 redirect to current url' do
+        visit '/about-us'
+
+        current_path.should == '/about-custom'
+      end
+    end
+
+    describe 'set and unset' do
+      before do 
+        page_cs.custom_slug = "about-custom"
+        page_cs.save
+        page_cs.custom_slug = ""
+        page_cs.save
+        page_cs.reload
+      end
+
+      it 'should revert to old friendly_id and redirect' do
+        visit '/about-custom'
+
+        current_path.should == '/about-us'
       end
     end
   end
