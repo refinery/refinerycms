@@ -8,11 +8,11 @@
 <%
       @images.each do |image|
         thumbnail_urls = {
-          :"data-original" => compute_public_path(image.url, ''),
-          :"data-grid" => compute_public_path(image.thumbnail('135x135#c').url, '')
+          :"data-original" => asset_paths.compute_public_path(image.url, ''),
+          :"data-grid" => asset_paths.compute_public_path(image.thumbnail('135x135#c').url, '')
         }
         ::Refinery::Image.user_image_sizes.sort_by{|key,geometry| geometry}.each do |size, pixels|
-          thumbnail_urls[:"data-#{size.to_s.parameterize}"] = compute_public_path(image.thumbnail(pixels).url, '')
+          thumbnail_urls[:"data-#{size.to_s.parameterize}"] = asset_paths.compute_public_path(image.thumbnail(pixels).url, '')
         end
 -%>
         <li<%= " class='selected'" if @image_id == image.id %>>
