@@ -1,17 +1,28 @@
 module Refinery
   class MenuItem < HashWithIndifferentAccess
 
-    (ATTRIBUTES = [:id, :title, :parent_id, :lft, :rgt, :depth, :url, :menu_id, :menu_match, :type]).each do |attribute|
-      class_eval %{
-        def #{attribute}
-          @#{attribute} ||= self[:#{attribute}]
-        end
+    class << self
+      def attributes
+        [:id, :title, :parent_id, :lft, :rgt, :depth, :url, :menu_id, :menu_match, :type]
+      end
 
-        def #{attribute}=(attr)
-          @#{attribute} = attr
+      def apply_attributes!
+        attributes.each do |attribute|
+          class_eval %{
+            def #{attribute}
+              @#{attribute} ||= self[:#{attribute}]
+            end
+          } unless self.respond_to?(attribute)
+          class_eval %{
+            def #{attribute}=(attr)
+              @#{attribute} = attr
+            end
+          } unless self.respond_to?(:"#{attribute}=")
         end
-      }
+      end
     end
+
+    apply_attributes!
 
     def ancestors
       return @ancestors if @ancestors
@@ -51,11 +62,11 @@ module Refinery
     def inspect
       hash = {}
 
-      ATTRIBUTES.each do |attribute|
+      self.class.attributes.each do |attribute|
         hash[attribute] = self[attribute]
       end
 
-      hash
+      hash.inspect
     end
 
     def menu
@@ -70,6 +81,5 @@ module Refinery
       @siblings ||= ((has_parent? ? parent.children : menu.roots) - [self])
     end
     alias_method :shown_siblings, :siblings
-
   end
 end
