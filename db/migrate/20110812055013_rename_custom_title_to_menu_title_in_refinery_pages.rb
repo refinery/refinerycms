@@ -10,6 +10,6 @@ class RenameCustomTitleToMenuTitleInRefineryPages < ActiveRecord::Migration
     if ::Refinery::Page::Translation.column_names.map(&:to_sym).include?(:menu_title)
       rename_column ::Refinery::Page::Translation.table_name, :menu_title, :custom_title
     end
-    add_column ::Refinery::Page.table_name, :custom_title_type
+    add_column ::Refinery::Page.table_name, :custom_title_type, :string
   end
 end
