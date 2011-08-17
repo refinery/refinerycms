@@ -50,7 +50,6 @@ Gem::Specification.new do |s|
     'bin',
     'bin/refinerycms',
     'changelog.md',
-    'changelog.md',
     'config',
     'config/database.yml.mysql',
     'config/database.yml.postgresql',
@@ -151,11 +150,10 @@ Gem::Specification.new do |s|
     'lib/refinerycms/all.rb',
     'lib/refinerycms.rb',
     'license.md',
-    'license.md',
+    'nil',
     'public',
     'public/javascripts',
     'public/javascripts/translations.js',
-    'readme.md',
     'readme.md',
     'refinerycms.gemspec'
   ]
