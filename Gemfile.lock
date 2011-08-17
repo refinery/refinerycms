@@ -76,7 +76,6 @@ PATH
       refinerycms-core (= 2.0.0)
       rspec-instafail
       rspec-rails (= 2.6.1)
-      sqlite3
 
 GEM
   remote: http://rubygems.org/

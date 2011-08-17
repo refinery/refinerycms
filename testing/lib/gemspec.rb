@@ -28,7 +28,6 @@ Gem::Specification.new do |s|
   s.add_dependency 'factory_girl',      '~> 2.0.3'
   s.add_dependency 'json_pure'
   s.add_dependency 'rack-test',         '>= 0.5.6'
-  s.add_dependency 'sqlite3'
 
   # RSpec
   s.add_dependency 'rspec-rails',       '2.6.1'
