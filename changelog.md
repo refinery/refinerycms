@@ -1,4 +1,4 @@
-## 1.1.0 [unreleased]
+## 2.0.0 [unreleased]
 
 * Finally removed `Page#[]` in favour of `Page#content_for` so instead of `@page[:body]` it's `@page.content_for(:body)`. [Philip Arndt](https://github.com/parndt)
 * Migrated to [Kaminari](https://github.com/amatsuda/kaminari) for pagination. [Uģis Ozols](https://github.com/ugisozols)
@@ -6,7 +6,16 @@
 * Renamed `RefinerySetting` to `Refinery::Setting`. [Philip Arndt](https://github.com/parndt)
 * Added `--trace` option to bin/refinerycms. [Steven Heidel](http://github.com/stevenheidel)
 * Moved `/shared/*` to `/refinery/*` instead, including `/shared/admin/*` to `/refinery/admin/*` as it makes more sense. [Philip Arndt](https://github.com/parndt)
-* [See full list](https://github.com/resolve/refinerycms/compare/1.0.0...1.1.0)
+* [See full list](https://github.com/resolve/refinerycms/compare/1.0.4...master)
+
+## 1.0.4 [11 August 2011]
+
+* Added support for figuring out dimensions in resized images to `image_fu`. [Philip Arndt](https://github.com/parndt) and [Joe Sak](https://github.com/joemsak)
+* Fixed issues installing Refinery due to lack of permissions to the gem directories. [Philip Arndt](https://github.com/parndt)
+* Added ability to specify a different database host in the `bin/refinerycms` installer. [Philip Arndt](https://github.com/parndt)
+* Lock `will_paginate` to `3.0.pre2` in core gemspec. [Kris Forbes](https://github.com/krisf) and [Uģis Ozols](https://github.com/ugisozols)
+* Patch required_label helper so it would pick up I18n model attribute translations. [Uģis Ozols](https://github.com/ugisozols)
+* [See full list](https://github.com/resolve/refinerycms/compare/1.0.3...1.0.4)
 
 ## 1.0.3 [23 June 2011]
 

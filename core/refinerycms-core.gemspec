@@ -25,8 +25,8 @@ Gem::Specification.new do |s|
   s.add_dependency 'rails',                       '>= 3.1.0.rc6'
   s.add_dependency 'truncate_html',               '~> 0.5'
   s.add_dependency 'kaminari',                    '~> 0.12'
-  s.add_dependency 'sass-rails',                  '>= 3.1.0.rc5'
-  s.add_dependency 'coffee-rails',                '>= 3.1.0.rc5'
+  s.add_dependency 'sass-rails',                  '>= 3.1.0.rc.6'
+  s.add_dependency 'coffee-rails',                '>= 3.1.0.rc.6'
   s.add_dependency 'uglifier'
   s.add_dependency 'jquery-rails'
 

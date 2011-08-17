@@ -34,7 +34,7 @@ PATH
     refinerycms-core (2.0.0)
       acts_as_indexed (~> 0.7)
       awesome_nested_set (~> 2.0)
-      coffee-rails (>= 3.1.0.rc5)
+      coffee-rails (>= 3.1.0.rc.6)
       friendly_id_globalize3 (~> 3.2.1)
       globalize3 (~> 0.2.0.beta3)
       jquery-rails
@@ -43,7 +43,7 @@ PATH
       refinerycms-base (= 2.0.0)
       refinerycms-generators (= 2.0.0)
       refinerycms-settings (= 2.0.0)
-      sass-rails (>= 3.1.0.rc5)
+      sass-rails (>= 3.1.0.rc.6)
       truncate_html (~> 0.5)
       uglifier
     refinerycms-dashboard (2.0.0)
@@ -275,7 +275,7 @@ PLATFORMS
 DEPENDENCIES
   awesome_nested_set!
   capybara-webkit
-  coffee-rails (>= 3.1.0.rc.6)
+  coffee-rails
   growl (~> 1.0.3)
   guard-spork
   jquery-rails
@@ -287,7 +287,7 @@ DEPENDENCIES
   refinerycms!
   refinerycms-i18n (~> 2.0.0)!
   refinerycms-testing (~> 2.0.0)
-  sass-rails (>= 3.1.0.rc.6)
+  sass-rails
   simplecov
   spork (= 0.9.0.rc9)
   sqlite3
