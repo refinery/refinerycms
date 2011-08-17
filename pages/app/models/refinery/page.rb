@@ -40,7 +40,7 @@ module Refinery
     attr_accessible :id, :deletable, :link_url, :menu_match, :meta_keywords,
                     :skip_to_first_child, :position, :show_in_menu, :draft,
                     :parts_attributes, :browser_title, :meta_description,
-                    :parent_id, :menu_title, :created_at, :updated_at, 
+                    :parent_id, :menu_title, :created_at, :updated_at,
                     :page_id, :layout_template, :view_template, :custom_slug
 
     attr_accessor :locale # to hold temporarily
@@ -55,13 +55,13 @@ module Refinery
                     :reserved_words => %w(index new session login logout users refinery admin images wymiframe),
                     :approximate_ascii => ::Refinery::Setting.find_or_set(:approximate_ascii, false, :scoping => "pages"),
                     :strip_non_ascii => ::Refinery::Setting.find_or_set(:strip_non_ascii, false, :scoping => "pages")
-    
+
     def custom_slug_or_title
       if custom_slug.blank? == false
         custom_slug
       elsif menu_title.blank? == false
         menu_title
-      else 
+      else
         title
       end
     end
@@ -275,6 +275,12 @@ module Refinery
       # This terminates in a false if i18n engine is not defined or enabled.
       def different_frontend_locale?
         ::Refinery.i18n_enabled? && ::Refinery::I18n.current_frontend_locale != ::I18n.locale
+      end
+
+      # Override this method to change which columns you want to select to render your menu.
+      # title and menu_title are always retrieved so omit these.
+      def menu_columns
+        %w(id depth parent_id lft rgt link_url menu_match)
       end
 
       # Returns how many pages per page should there be when paginating pages

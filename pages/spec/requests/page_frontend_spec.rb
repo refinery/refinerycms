@@ -61,19 +61,19 @@ describe 'page frontend' do
   describe 'title set (without menu title or browser title)' do
     it "shows title at the top of the page" do
       visit "/about"
-    
+
       find("#body_content_title").text.should == "About"
     end
 
     it "uses title in the menu" do
       visit "/about"
-    
+
       find(".selected").text.strip.should == "About"
     end
 
     it "uses title in browser title" do
       visit "/about"
-    
+
       find("title").should have_content("About")
     end
   end
@@ -92,7 +92,7 @@ describe 'page frontend' do
 
         current_path.should == '/news'
       end
-      
+
       it 'shows the menu_title in the menu' do
         visit '/news'
 
@@ -101,14 +101,14 @@ describe 'page frontend' do
 
       it "does not effect browser title and page title" do
         visit "/news"
-      
+
         find("title").should have_content("Company News")
         find("#body_content_title").text.should == "Company News"
       end
     end
 
     describe 'set and then unset' do
-      before do 
+      before do
         page_mt.menu_title = "News"
         page_mt.save
         page_mt.menu_title = ""
@@ -121,7 +121,7 @@ describe 'page frontend' do
         current_path.should == '/company-news'
         find(".selected").text.strip.should == "Company News"
       end
-      
+
       it '301 redirects old friendly_id to current url' do
         visit '/news'
 
@@ -178,7 +178,7 @@ describe 'page frontend' do
     end
 
     describe 'set and unset' do
-      before do 
+      before do
         page_cs.custom_slug = "about-custom"
         page_cs.save
         page_cs.custom_slug = ""
