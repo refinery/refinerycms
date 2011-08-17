@@ -449,7 +449,7 @@ var link_tester = {
       $(textbox_id + '_test_loader').hide();
       $(textbox_id + '_test_result').hide();
       $(textbox_id + '_test_result').removeClass('success_icon').removeClass('failure_icon');
-      
+
       if (this.value != "" && this.value[0] != "/") {
         // Wait 300ms before checking.
         $(textbox_id).delay(300).queue(function () {
@@ -641,7 +641,6 @@ var page_options = {
       this.new_part_url = new_part_url;
       this.del_part_url = del_part_url;
       this.show_options();
-      this.title_type();
 
       $(document).ready($.proxy(function(){
         // hide the tabs that are supposed to be hidden.
@@ -941,13 +940,13 @@ var list_reorder = {
 
   ,enable_reordering: function(e) {
     if(e) { e.preventDefault(); }
-    
+
     $('#sortable_list, .sortable_list').addClass("reordering");
     $('#sortable_list .actions, .sortable_list .actions, #site_bar, header > *:not(script)').fadeTo(500, 0.3);
     $('#actions *:not("#reorder_action_done, #reorder_action")').not($('#reorder_action_done').parents('li, ul, div')).fadeTo(500, 0.55);
 
     list_reorder.sortable_list.nestedSortable("enable");
-    
+
     $('#reorder_action').hide();
     $('#reorder_action_done').show();
   }
@@ -957,7 +956,7 @@ var list_reorder = {
 
     if($('#reorder_action_done').hasClass('loading')) { return false; }
     $('#reorder_action_done').addClass('loading');
-    
+
     list_reorder.sortable_list.nestedSortable("disable");
 
     $('#sortable_list, .sortable_list').removeClass("reordering");
