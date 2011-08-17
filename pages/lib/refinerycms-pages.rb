@@ -38,6 +38,9 @@ module Refinery
       config.to_prepare do
         require File.expand_path('../pages/tabs', __FILE__)
         require File.expand_path('../pages/marketable_urls', __FILE__)
+        ::Refinery::Page.translation_class.send(:is_seo_meta)
+        # set allowed attributes for mass assignment
+        ::Refinery::Page.translation_class.send :attr_accessible, :browser_title, :meta_description, :meta_keywords, :locale
       end
 
       refinery.after_inclusion do

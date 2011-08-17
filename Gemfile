@@ -21,29 +21,22 @@ gemspec
 # Anything you put in here will be overridden when the app gets updated.
 
 # gem 'refinerycms', '~> 2.0.0'
-gem 'seo_meta', :git => 'git://github.com/parndt/seo_meta.git'
-gem 'globalize3', :git => 'git://github.com/svenfuchs/globalize3.git'
 gem 'awesome_nested_set', :git => 'git://github.com/collectiveidea/awesome_nested_set.git'
 
 # END REFINERY CMS ============================================================
 
 # REFINERY CMS DEVELOPMENT ====================================================
 
-gem 'arel', '2.1.4' # 2.1.5 was broken. see https://github.com/rails/arel/issues/72
-gem 'therubyracer'
-
 group :development, :test do
   gem 'refinerycms-testing',    '~> 2.0.0'
   gem 'rcov', :platform => :mri_18
   gem 'simplecov', :platform => :mri_19
-  gem 'capybara-webkit', :git => 'git://github.com/thoughtbot/capybara-webkit.git'
+  gem 'capybara-webkit'
   gem 'spork', '0.9.0.rc9', :platforms => :ruby
   gem 'guard-spork', :platforms => :ruby
-  # Guard::RSpec spec_paths option added in this commit. Specified because Gem has not been cut yet.
-  gem 'guard-rspec', :git => "git://github.com/guard/guard-rspec.git", :branch => "23476db8d97ceae44f5d6efb51411e717645e76d"
 
   require 'rbconfig'
-  
+
   platforms :mswin, :mingw do
     gem 'win32console'
     gem 'rb-fchange', '~> 0.0.5'
@@ -53,24 +46,28 @@ group :development, :test do
   platforms :ruby do
     gem 'spork', '0.9.0.rc9'
     gem 'guard-spork'
-    
-    if Config::CONFIG['target_os'] =~ /darwin/i
-      gem 'rb-fsevent', '>= 0.3.9'
-      gem 'growl',      '~> 1.0.3'
-    end
-    if Config::CONFIG['target_os'] =~ /linux/i
-      gem 'rb-inotify', '>= 0.5.1'
-      gem 'libnotify',  '~> 0.1.3'
+
+    unless ENV['TRAVIS']
+      if Config::CONFIG['target_os'] =~ /darwin/i
+        gem 'rb-fsevent', '>= 0.3.9'
+        gem 'growl',      '~> 1.0.3'
+      end
+      if Config::CONFIG['target_os'] =~ /linux/i
+        gem 'rb-inotify', '>= 0.5.1'
+        gem 'libnotify',  '~> 0.1.3'
+      end
     end
   end
 
   platforms :jruby do
-    if Config::CONFIG['target_os'] =~ /darwin/i
-      gem 'growl',      '~> 1.0.3'
-    end
-    if Config::CONFIG['target_os'] =~ /linux/i
-      gem 'rb-inotify', '>= 0.5.1'
-      gem 'libnotify',  '~> 0.1.3'
+    unless ENV['TRAVIS']
+      if Config::CONFIG['target_os'] =~ /darwin/i
+        gem 'growl',      '~> 1.0.3'
+      end
+      if Config::CONFIG['target_os'] =~ /linux/i
+        gem 'rb-inotify', '>= 0.5.1'
+        gem 'libnotify',  '~> 0.1.3'
+      end
     end
   end
 end
@@ -92,8 +89,8 @@ end
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails', "~> 3.1.0.rc"
-  gem 'coffee-rails', "~> 3.1.0.rc"
+  gem 'sass-rails'
+  gem 'coffee-rails'
   gem 'uglifier'
 end
 

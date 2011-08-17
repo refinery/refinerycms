@@ -21,7 +21,6 @@ nb:
             restricted: "Dette gjør det slik at denne innstillingen kun kan sees og endres av brukere som er superbrukere (som deg)."
             activity_show_limit: Dette begrenser antall hendelser som vises på Skrivebordet.
             analytics_page_code: "Denne koden aktiverer Google Analytics på websiden din. Om denne verdien er satt til blank eller 'UA-xxxxxx-x' så er Google Analytics ikke aktivert, og ingen hendelser blir sporet."
-            frontend_refinery_stylesheets_enabled: "Standardinnstillingene gjør at Refinery inkluderer stilark for utseende som inneholder standard CSS uten å komme i veien for dine egne stilark. Disse stilarkene aktiveres eller deaktiveres med denne innstillingen."
             image_dialogue_sizes: "Denne innstillingen gjelder 'Sett inn Bilde' dialogen. Du må implementere de forskjellige bildestørrelsene i tillegg til å endre dette."
             image_thumbnails: "Om du endrer denne innstillingen så må du regenerere bildene ved å kjøre 'rake images:regenerate' (eller 'rake images:update' om du kun har lagt til flere bildestørrelser). Ellers vil denne innstillingen ikke gjelde for eksisterende bilder."
             menu_hide_children: "Gjem alle undersider fra menyen (om noen finnes)."

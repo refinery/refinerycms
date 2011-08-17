@@ -3,7 +3,6 @@
 begin
   require 'rubygems'
   require 'bundler'
-  ENV["BUNDLE_GEMFILE"] = File.expand_path('../../Gemfile', __FILE__)
 rescue LoadError
   puts "\n=== ACTION REQUIRED ===\n\n"
   puts "Could not load the bundler gem. This is a required dependency of Refinery CMS."
@@ -13,6 +12,7 @@ end
 
 # Let the application have a constant it can detect installation with.
 REFINERYCMS_INSTALLER = true
+RAILS_MINOR_VERSION = '3.0'
 
 # Load refinerycms
 require File.expand_path(File.dirname(__FILE__) << "/../lib/refinery")
@@ -32,6 +32,7 @@ module Refinery
         :confirm => false,
         :database => {
           :adapter => 'sqlite3',
+          :host => 'localhost',
           :ident => false,
           :password => nil,
           :username => 'root',
@@ -42,7 +43,10 @@ module Refinery
         :gems => [],
         :heroku => false,
         :testing => false,
-        :trace => false
+        :trace => false,
+        :rails => {
+          :version => nil
+        }
       }
 
       @optparse = OptionParser.new do |opts|
@@ -81,6 +85,10 @@ module Refinery
           @options[:database][:password] = password
         end
 
+        opts.on('-h', '--database-host HOST', String, "Set the database hostname", "  (default localhost)") do |host|
+          @options[:database][:host] = host
+        end
+
         opts.on('--skip-db', "Skip any database creation or migration tasks") do
           @options[:database][:skip] = true
         end
@@ -107,6 +115,10 @@ module Refinery
 
         opts.on("--trace", "Investigate any problems with the installer") do
           @options[:trace] = true
+        end
+        
+        opts.on('-r', "--rails-version VERSION", String, "Override the version of rails used to generate your application.") do |version|
+          @options[:rails][:version] = version
         end
 
         opts.on('-t', '--testing', "Automatically set up the project with refinerycms-testing support.") do
@@ -164,6 +176,15 @@ module Refinery
         exit(1)
       end
 
+      rails_version_in_path = run_command('rails --version', {:cd => false, :bundler => false, :puts => false}).to_s.gsub(/(Rails |\n)/, '')
+      @rails_version_to_use = @options[:rails][:version] || rails_version_in_path
+      if @rails_version_to_use !~ %r{\b#{RAILS_MINOR_VERSION}}
+        puts "\nRails #{@rails_version_to_use} is not supported by Refinery #{::Refinery.version}, " \
+             "please use Rails #{RAILS_MINOR_VERSION}.x instead."
+        puts "\n"
+        exit(1)
+      end
+
       # Get the name and path of the new application
       @app_path = Pathname.new(File.expand_path(@input.first))
       @app_name = @app_path.to_s.split(File::SEPARATOR).last
@@ -212,22 +233,20 @@ module Refinery
     end
 
     def generate!
-      # First, ensure dependencies are satisfied
-      run_command('bundle install', {:cd => false, :bundler => false})
-
       # Generate a rails application
-      rails_command = "rails new \"#{@app_path}\""
+      rails_command = "rails _#{@rails_version_to_use}_ new \"#{@app_path}\""
       rails_command << " --database #{@options[:database][:adapter]}"
       rails_command << " --force" if @options[:force]
       rails_command << " --skip-test-unit"
       rails_command << " --skip-bundle" # Rails automatically installs the bundle, but so do we!
       rails_command << " -m http://jruby.org" if defined? JRUBY_VERSION
 
-      rails_output = run_command(rails_command, {:cd => false, :bundler => true})
+      rails_output = run_command(rails_command, {:cd => false, :bundler => false})
 
       # Detect non-success or a blank rails output or starting with "Can't initialize" or "Error"
       if !$?.success? or rails_output.to_s.length == 0 or rails_output =~ /^(Can't\ initialize|Error)/
-        puts "Generating Rails application failed. Exiting..."
+        puts "\nGenerating Rails application failed. Exiting..."
+        puts "\n"
         exit(1)
       else
         if defined? JRUBY_VERSION
@@ -237,7 +256,13 @@ module Refinery
         # Remove rails from the Gemfile so that Refinery can manage it
         find_and_replace('Gemfile', %r{^gem 'rails'}, "# gem 'rails'")
 
-        # Override username and password
+        # Override database host
+        if @options[:database][:host] != 'localhost' && (adapter = @options[:database][:adapter]) != 'sqlite3'
+          adapter = 'mysql2' if adapter == 'mysql'
+          find_and_replace('config/database.yml', "\n  adapter: #{adapter}", "\n  adapter: #{adapter}\n  host: #{@options[:database][:host]}")
+        end
+
+        # Override database username and password
         if @options[:database][:ident]
           find_and_replace('config/database.yml', %r{username:}, '#username:')
           find_and_replace('config/database.yml', %r{password:}, '#password:')
@@ -249,9 +274,6 @@ module Refinery
         puts "\n---------"
         puts "Refinery successfully installed in '#{@app_path}'!\n\n"
       end
-    ensure
-      # Now switch to the app's Gemfile.
-      ENV["BUNDLE_GEMFILE"] = @app_path.join('Gemfile').to_s
     end
 
     def bundle!

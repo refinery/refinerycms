@@ -21,7 +21,6 @@ lv:
             restricted: Šī opcija padara uzstādījumu redzamu un rediģējamu tikai superlietotājiem (tādi kā jūs).
             activity_show_limit: Šī opcija limitē vienību skaitu, kas tiek atspoguļotas vadības panelī.
             analytics_page_code: Šis kods aktivizē Google Analytics uzskaiti jūsu lapā. Ja šī uzstādījuma vērtības lauks tiek atstāts tukšs vai tajā tiek ievadīts UA-xxxxxx-x, tas nozīmē, ka šis uzstādījums nav aktīvs un attālināti pieprasījumi uz Google Analytics netiek veikti.
-            frontend_refinery_stylesheets_enabled: Pēc noklusējuma Refinery iekļauj priekšgala interfeisa stila lapas, kuras nodrošina noklusējuma CSS, tādā veidā netraucējot jūsu stila lapām, kuras ir iespējotas/atspējotas ar šī uzstādījuma palīdzību.
             image_dialogue_sizes: Šis uzstādījums attiecas uz bildes ievietošanas dialoga logu. Pēc šī uzstādījuma rediģēšanas, lūdzu, pārliecinieties par to, ka sīkattēlu izmēri ir tādi kā norādīti šeit.
             image_thumbnails: Ja jūs veicat izmaiņas šajā uzstādījumā, tad ir nepieciešams izveidot bilžu sīkattēlus no jauna. To var izdarīt izmantojot komandu rake images:regenerate (vai arī rake images:update, ja pievienojat tikai jaunus sīkattēlu izmērus), pretējā gadījumā šis uzstādījums neietekmēs esošās bildes.
             menu_hide_children: Paslēpt visas apakšlapas no izvēlnes, ja tās ir.

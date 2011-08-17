@@ -21,7 +21,6 @@ de:
             restricted: Macht diese Einstellung nur für Administratoren sichtbar und veränderbar.
             activity_show_limit: Dies schränkt die Anzahl der Einträge im Amaturenbrett ein.
             analytics_page_code: Dieser Code aktiviert Google Analytics innerhalb Ihrer Webseite. Wenn diese Einstellung leer gelassen wird oder auf UA-xxxxxx-x gesetzt wird, ist diese Funktion deaktiviert und es werden keine Verbindungsaufrufe zu Google Analytics gemacht.
-            frontend_refinery_stylesheets_enabled: "Standardmäßig enthält Refinery Stylesheets für das Frontend, welche standard CSS bereitstellen und durch diese Einstellung ein- oder ausgeschaltet werden, ohne dabei Ihren eigenen Stylesheets in die Quere zu kommen."
             image_dialogue_sizes: Diese Einstellung wirkt sich auf den "Bild einfügen" Dialog aus. Sie müssen für die verschiedenen Miniaturansichten sorgen, sowie diesen Wert hier ändern.
             image_thumbnails: Wenn Sie diese Einstellung verändern, müssen Sie Ihre Bilder neu erzeugen lassen, indem Sie "rake images:regenerate" (oder "rake images:update" wenn Sie nur neue Miniaturansichten hinzugefügt haben), sonst wird diese Einstellung nicht für bereits vorhandene Bilder angewendet.
             menu_hide_children: Versteckt alle Unterseiten auf dem Menü, auch wenn diese vorhanden sind.

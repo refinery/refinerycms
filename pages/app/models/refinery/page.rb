@@ -1,5 +1,3 @@
-require 'globalize3'
-
 module Refinery
   class Page < ActiveRecord::Base
 
@@ -15,44 +13,28 @@ module Refinery
     if self.respond_to?(:translates)
       translates :title, :menu_title, :meta_keywords, :meta_description, :browser_title, :custom_slug, :include => :seo_meta
 
-      # Set up support for meta tags through translations.
-      if self.respond_to?(:translation_class)
-        attr_accessible :title
-        # set allowed attributes for mass assignment
-        self.translation_class.send :attr_accessible, :browser_title, :meta_description, :meta_keywords, :locale
+    attr_accessible :title
 
-        if self.translation_class.table_exists?
-          # Instruct the Translation model to have meta tags.
-          self.translation_class.send :is_seo_meta
+    # Delegate SEO Attributes to globalize3 translation
+    seo_fields = ::SeoMeta.attributes.keys.map{|a| [a, :"#{a}="]}.flatten
+    delegate *(seo_fields << {:to => :translation})
 
-          fields = ::SeoMeta.attributes.keys.reject{|f|
-            self.column_names.map(&:to_sym).include?(f)
-          }.map{|a| [a, :"#{a}="]}.flatten
-          delegate *(fields << {:to => :translation})
-          after_save proc {|m| m.translation.save}
-        end
+    after_save proc {|m| m.translation.save}
 
-        # Wrap up the logic of finding the pages based on the translations table.
-        def self.with_globalize(conditions = {})
-          conditions = {:locale => Globalize.locale}.merge(conditions)
-          globalized_conditions = {}
-          conditions.keys.each do |key|
-            if (translated_attribute_names.map(&:to_s) | %w(locale)).include?(key.to_s)
-              globalized_conditions["#{self.translation_class.table_name}.#{key}"] = conditions.delete(key)
-            end
-          end
-          # A join implies readonly which we don't really want.
-          joins(:translations).where(globalized_conditions).where(conditions).readonly(false)
-        end
-      else
-        # No translations, just default to normal behaviour.
-        def self.with_globalize(conditions = {})
-          where(conditions)
+    # Wrap up the logic of finding the pages based on the translations table.
+    def self.with_globalize(conditions = {})
+      conditions = {:locale => Globalize.locale}.merge(conditions)
+      globalized_conditions = {}
+      conditions.keys.each do |key|
+        if (translated_attribute_names.map(&:to_s) | %w(locale)).include?(key.to_s)
+          globalized_conditions["#{self.translation_class.table_name}.#{key}"] = conditions.delete(key)
         end
       end
-
-      before_create :ensure_locale, :if => proc { |c| ::Refinery.i18n_enabled? }
+      # A join implies readonly which we don't really want.
+      joins(:translations).where(globalized_conditions).where(conditions).readonly(false)
     end
+
+    before_create :ensure_locale, :if => proc { |c| ::Refinery.i18n_enabled? }
 
     attr_accessible :id, :deletable, :link_url, :menu_match, :meta_keywords,
                     :skip_to_first_child, :position, :show_in_menu, :draft,

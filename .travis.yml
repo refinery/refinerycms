@@ -1,4 +1,4 @@
-script: "DISPLAY=':313' bundle exec rake db:drop db:create db:migrate spec cucumber"
+script: "bundle exec rake db:create db:migrate spec"
 notifications:
   email:
     - parndt@gmail.com
@@ -6,7 +6,6 @@ notifications:
 env:
   - DB=postgres
   - DB=mysql
-  - DB=sqlite3
 rvm:
   - 1.8.7
   - 1.9.2

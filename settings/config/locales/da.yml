@@ -21,7 +21,6 @@ da:
             restricted: Gør at indstillingen kun kan ses og redigeres af administratorer (som dig).
             activity_show_limit: Hvor mange 'Seneste aktiviter' skal vises
             analytics_page_code: Google Analytics kode; aktiverer Google Analytics på websitet. Hvis indstillingen er tom eller sat til UA-xxxxxx-x så er Google Analytics slået fra.
-            frontend_refinery_stylesheets_enabled: "Refinery inkluderer som standard sine egne stylesheets på alle sider. Dette kan slås til eller fra med denne indstilling."
             image_dialogue_sizes: Denne indstilling benyttes af 'Tilføj et nyt billede' dialogboksen. Du skal også opdatere thumbnails størrelser hvis du ændrer denne indstilling.
             image_thumbnails: Hvis du opdaterer denne indstilling skal du generere alle billeder igen ved at køre rake images:regenerate (eller rake images:update hvis du kun har tilføjet nye formater). Ellers vil ændringen kun gælde for nye billeder.
             menu_hide_children: Skjul undermenuer i menuen.

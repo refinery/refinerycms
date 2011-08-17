@@ -21,7 +21,6 @@ jp:
             restricted: 管理人のみが変更出来るようにします。
             activity_show_limit: ダッシュボードで表示されるアイテムの数を制限します。
             analytics_page_code: Google Analyticsを有効にします。空白か、「UA-xxxxxx-x」という形の場合には無効で、Google Analyticsへの呼び出しは為されません。
-            frontend_refinery_stylesheets_enabled: "Refineryには、カスタマイズされたスタイルシートの邪魔にならないようなスタイルシートが標準で配布されています。このスタイルシートを有効にしたり、無効にしたりします。"
             image_dialogue_sizes: 「画像を挿入する」時に使われるダイアログに影響を及ぼす設定です。様々なサイズのサムネイルと併せて使用して下さい。
             image_thumbnails: この設定を変更した際には、rake images:regenerate (サムネイルを追加した場合にはrake images:update)を走らせて画像を再び生成して下さい。 再生成されなければ、既存の映像についてのみこの設定は有効です。
             menu_hide_children: 傘下のページを、存在するか否かに関わらず隠します。
