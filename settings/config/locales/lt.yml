@@ -22,7 +22,6 @@ lt:
             restricted: "Tai padarys šį nustatymą matomą ir redaguojamą tik vartotojams kurie yra super vartotojai (kaip Jūs)."
             activity_show_limit: "Tai apriboja įvykių skaičių, kuris gali būti rodomas Valdymo skydelio sąraše."
             analytics_page_code: "Šis kodas aktyvuoja Google Analytics statistikos fiksavimą jūsų svetainėje. Jei šis nustatymas paliktas tuščias arba nustatyta UA-xxxxxx-x, tai jis yra išjungtas ir jokie kreipiniai į Google Analytics sistemą nevykdomi."
-            frontend_refinery_stylesheets_enabled: "Standartiškai Refinery įterpia stilių failus svetainės interfeisui, kurie pateikia CSS nesikirsdami su jūsų stilių failais nepriklausomai nuo to ar šis nustatymas įjungtas ar išjungtas."
             image_dialogue_sizes: "Šis nustatymas taikomas Įterpti Paveikslėlį dialoge. Jūs turite nurodyti ir skirtingus thumbnail dydžius, netik pakeisti šį nustatymą."
             image_thumbnails: "Jei jūs pakeisite šį nustatymą, tai turėsite pergeneruoti savo paveikslėlius paleisdami rake images:regenerate (arba rake images:update jeigu jūs tik pridėjo daugiau thumbnails) kitaip šis nustatymas nebus taikomas jau egzistuojantiems paveikslėliams."
             menu_hide_children: "Meniu nerodys jokių sub puslapių, net jeigu jie egzistuoja."

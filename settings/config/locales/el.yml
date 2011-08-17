@@ -21,7 +21,6 @@ el:
             restricted: This makes the setting only visible and editable by users who are superusers (like you).
             activity_show_limit: This limits the number of items that can display in the Dashboard listing.
             analytics_page_code: This code activates Google Analytics tracking within your website. If the setting is left blank or set to UA-xxxxxx-x then this is disabled and no remote calls to Google Analytics are made.
-            frontend_refinery_stylesheets_enabled: "By default, Refinery includes stylesheets for the frontend which provide default CSS without getting in the way of your own stylesheets, enabled or disabled by this setting."
             image_dialogue_sizes: This setting applies to the Insert Image dialogue. You must implement the different thumbnail sizes as well as changing this.
             image_thumbnails: If you modify this setting you will have to regenerate your images by running rake images:regenerate (or rake images:update if you only added more thumbnails) otherwise the setting will not apply to existing images.
             menu_hide_children: Hide any subpages from the menu even if they are present.

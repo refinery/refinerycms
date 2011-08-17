@@ -21,7 +21,6 @@ vi:
             restricted: Điều này làm cho các thiết lập chỉ hiển thị và chỉnh sửa bởi superusers (những người như bạn).
             activity_show_limit: Điều này hạn chế số lượng hàng có thể hiển thị trong danh sách Bảng điều khiển.
             analytics_page_code: "Mã này kích hoạt Google Analytics theo dõi trong trang web của bạn. Nếu thiết lập được để trống, hoặc có dạng UA-xxxxxx-x có nghĩa là vô hiệu hoá và không có tương tác với Google Analytics được thực hiện."
-            frontend_refinery_stylesheets_enabled: "Theo mặc định, Refinery bao gồm các stylesheets cho frontend, mà sẽ không ảnh hưởng các stylesheets riêng của bạn, kích hoạt hay vô hiệu hóa bằng cách thiết lập này."
             image_dialogue_sizes: Thiết lập này áp dụng cho các Insert Image box. Bạn phải làm các kích thước thumbnail khác nhau cũng như thay đổi thiết lập này.
             image_thumbnails: "Nếu bạn thay đổi cài đặt này, bạn sẽ phải tạo lại hình ảnh của bạn bằng cách chạy  rake images:regenerate (hoặc rake images:update nếu bạn chỉ thêm vào hình thu nhỏ khác) nếu không thiết lập sẽ không áp dụng cho hình ảnh hiện tại."
             menu_hide_children: Ẩn bất kỳ trang con từ trình đơn ngay cả khi nó có mặt.

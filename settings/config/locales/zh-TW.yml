@@ -21,7 +21,6 @@ zh-TW:
             restricted: 這讓這項設定只能給有管理者權限的使用者 (像您一樣) 看見以及編輯.
             activity_show_limit: 這可以限制在控制面板列出項目的數目.
             analytics_page_code: 這個代碼可啟動 Google Analytics 來追蹤您的網站. 如果這項設定留白或是設為 UA-xxxxxx-x 表示為關閉這項功能並且不會有任何遠端的 Google Analytics 呼叫發生.
-            frontend_refinery_stylesheets_enabled: "在預設的情況, Refinery 包含了不影響您個人樣式表的預設 CSS 樣式表給前端使用, 可藉由這個設定來開啟或是關閉這個選項."
             image_dialogue_sizes: 這個設定可以生效插入圖片的對話方框. 您必須完成不同大小的縮圖並且改變它.
             image_thumbnails: 如果您修改了這個選項, 您必須執行 rake images:regenerate (或是 rake image:update, 如果您只是增加了更多縮圖), 否則這個設定將不會影響任何已存在網站上的圖片.
             menu_hide_children: 從選單中隱藏任何次頁面, 即使它們是存在的.

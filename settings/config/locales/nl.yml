@@ -21,7 +21,6 @@ nl:
             restricted: Maak deze instelling alleen maar zichtbaar en bewerkbaar voor gebruikers die super-gebruikers zijn (zoals jij).
             activity_show_limit: Dit limiteerd het aantal items dat weergegeven kan worden in de lijst op het Dashboard.
             analytics_page_code: deze code activeerd Google Analytics trakcing binnen de website. Als u niets invuld, of als hij ingesteld is op UA-xxxxxx-x, dan wordt de google analytics uitgeschakeld.
-            frontend_refinery_stylesheets_enabled:  Standaard voegt Refinery stylesheets toe voor de frontend, met een standaard CSS opmaak, die als het goed is niet in de weg zit van je eigen opmaak code.
             image_dialogue_sizes: Deze instelling is van toepassing op "Voeg een afbeelding in"-dialoogvenster. Je moet verschillende thumbnail grootten ook in deze instelling plaatsen.
             image_thumbnails: Als je deze instelling wijzigd, moet je de thumbnails opnieuw genereren door rake images:regenerate (of rake images:update als je alleen maar meer thumbnails hebt toegevoegd), anders zal de instelling niet toegepast worden op de bestaande afbeeldingen.
             menu_hide_children: Verberg elke subpagina in het menu, zelfs als ze er wel in weergegeven zouden moeten worden.

@@ -21,7 +21,6 @@ fi:
             restricted: "Rajoittaa asetuksen niin, että vain superkäyttäjät (kuten sinä) näkevät sen ja voivat muokata sitä."
             activity_show_limit: Etusivunäkymässä näkyvien tapahtumien lukumäärä.
             analytics_page_code: "Aktivoi Google Analytics- seurannan nettisivustollasi. Jos tämä asetus on tyhjä, se on pois päältä ja Google Analyticsin kanssa ei kommunikoida."
-            frontend_refinery_stylesheets_enabled: "Refineryn mukana tulee tyylitiedostoja nettisivustollesi, jotka sisältävät Refineryn tyylittelytietoja. Voit ottaa ne pois käytöstä tällä asetuksella."
             image_dialogue_sizes: "Tämä asetus vaikuttaa 'Lisää kuva-' dialogiin. Sinun täytyy myös asettaa eri pienkuvakoot tämän asetuksen vaihtamisen lisäksi."
             image_thumbnails: "Jos muokkaat tätä asetusta, sinun täytyy uudelleengeneroida kuvasi suorittamalla rake images:renegerate- toiminto (tai rake images:update, jos lisäsit vain lisää pienkuvia), tai muuten asetus ei vaikuta nykyisiin kuviin."
             menu_hide_children: "Piilota mahdolliset alisivut valikosta"

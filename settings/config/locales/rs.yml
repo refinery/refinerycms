@@ -21,7 +21,6 @@ rs:
             restricted: Ovo podešavanje vidljivo je samo superuser-ima(poput tebe).
             activity_show_limit: Ovo ograničava broj stavki koje se istovremeno prikazuju na Kontrolnoj tabli.
             analytics_page_code: Ovaj kod aktivira kodove za Google Analitiku tvog websajta. Ako se podešavanje ostavi prazno ili se podesi kao UA-xxxxxx-x onda je ovo podešavanje isključeno i ne šalju se nikakvi zahtevi ka Google-ovom servisu.
-            frontend_refinery_stylesheets_enabled: "Podrazumevano, Refinery učitava stilove koji se ne suočavaju sa ostalim tvojim CSS fajlovima. Ovde se može promeniti to podešavanje."
             image_dialogue_sizes: Ovo podešavanje se odnosi na Unesi Sliku dijalog. Možeš implementirati različite veličine slika na sajtu.
             image_thumbnails: Ako menjaš ovo podešavanje, morećeš da regenerišeš svoje slike tako što ćeš pokrenuti rake images:regenerate (ili rake images:update ako si samo dodavao još veličina za slike). U suprotnom ovo podešavanje se neće odraziti na postojeće slike.
             menu_hide_children: Sakrij sve podstrane iz menija, čak i ako su prisutne u meniju.
