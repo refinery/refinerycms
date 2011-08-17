@@ -13,7 +13,6 @@ module Refinery
       end
 
       # you can override the object used for the title by supplying options[:object]
-      # this object must support custom_title_type if you want custom titles.
       def page_title(options = {})
         object = options.fetch(:object, @meta)
         options.delete(:object)
@@ -35,22 +34,7 @@ module Refinery
         objects = (options[:chain_page_title] and object.respond_to?(:ancestors)) ? [object.ancestors, object] : [object]
 
         objects.flatten.compact.each do |obj|
-          obj_title = if obj.respond_to?(:custom_title_type)
-            case obj.custom_title_type
-              when "text"
-                obj.custom_title
-              when "image"
-                if obj.respond_to?(:custom_title_image) && obj.custom_title_image.present?
-                  image_fu(obj.custom_title_image, nil, {:alt => obj.title})
-                else
-                  obj.title
-                end
-              else
-                obj.title
-              end
-          else
-            obj.title
-          end
+          obj_title = obj.title if obj.title
 
           # Only link when the object responds to a url method.
           if options[:link] && obj.respond_to?(:url)

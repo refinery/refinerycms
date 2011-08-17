@@ -667,13 +667,6 @@ var page_options = {
     });
   },
 
-  title_type: function(){
-    $('input#page_custom_title').parents('.field').find('input:radio').change(function(){
-      $('#custom_title_text, #custom_title_image').hide();
-      $('#custom_title_' + this.value).show();
-    });
-  },
-
   page_part_dialog: function(){
     $('#new_page_part_dialog').dialog({
       title: 'Create Content Section',

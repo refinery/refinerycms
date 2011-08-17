@@ -18,18 +18,20 @@ module Refinery
         pages = ::Refinery::Page.live.in_menu.includes(:slug).order('lft ASC')
 
         # Now we only want to select particular columns to avoid any further queries.
-        # Title is retrieved in the next block below so it's not here.
+        # Title and menu_title are retrieved in the next block below so they are not here.
         %w(id depth parent_id lft rgt link_url menu_match).each do |column|
           pages = pages.select(::Refinery::Page.arel_table[column.to_sym])
         end
 
-        # If we have translations then we get the title from that table.
-        pages = if ::Refinery::Page.respond_to?(:translation_class)
-          pages.joins(:translations).select(
-            "#{::Refinery::Page.translation_class.table_name}.title as page_title"
-          )
-        else
-          pages.select('title as page_title')
+
+        # We have to get title and menu_title from the translations table.
+        # To avoid calling globalize3 an extra time, we get title as page_title
+        # and we get menu_title as page_menu_title.  
+        # These is used in 'to_refinery_menu_item' in the Page model.
+        %w(title menu_title).each do |column|
+          pages = pages.joins(:translations).select(
+              "#{::Refinery::Page.translation_class.table_name}.#{column} as page_#{column}"
+            )
         end
 
         # Compile the menu

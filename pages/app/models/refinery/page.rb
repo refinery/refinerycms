@@ -10,7 +10,9 @@ module Refinery
     # when collecting the pages path how is each of the pages seperated?
     PATH_SEPARATOR = " - "
 
-    translates :title, :custom_title, :meta_keywords, :meta_description, :browser_title, :include => :seo_meta
+    if self.respond_to?(:translates)
+      translates :title, :menu_title, :meta_keywords, :meta_description, :browser_title, :custom_slug, :include => :seo_meta
+    end
 
     attr_accessible :title
 
@@ -38,8 +40,8 @@ module Refinery
     attr_accessible :id, :deletable, :link_url, :menu_match, :meta_keywords,
                     :skip_to_first_child, :position, :show_in_menu, :draft,
                     :parts_attributes, :browser_title, :meta_description,
-                    :custom_title_type, :parent_id, :custom_title,
-                    :created_at, :updated_at, :page_id, :layout_template, :view_template
+                    :parent_id, :menu_title, :created_at, :updated_at, 
+                    :page_id, :layout_template, :view_template, :custom_slug
 
     attr_accessor :locale # to hold temporarily
     validates :title, :presence => true
@@ -48,11 +50,21 @@ module Refinery
     acts_as_nested_set :dependent => :destroy # rather than :delete_all
 
     # Docs for friendly_id http://github.com/norman/friendly_id
-    has_friendly_id :title, :use_slug => true,
+    has_friendly_id :custom_slug_or_title, :use_slug => true,
                     :default_locale => (::Refinery::I18n.default_frontend_locale rescue :en),
                     :reserved_words => %w(index new session login logout users refinery admin images wymiframe),
                     :approximate_ascii => ::Refinery::Setting.find_or_set(:approximate_ascii, false, :scoping => "pages"),
                     :strip_non_ascii => ::Refinery::Setting.find_or_set(:strip_non_ascii, false, :scoping => "pages")
+    
+    def custom_slug_or_title
+      if custom_slug.blank? == false
+        custom_slug
+      elsif menu_title.blank? == false
+        menu_title
+      else 
+        title
+      end
+    end
 
     has_many :parts,
              :foreign_key => :refinery_page_id,
@@ -66,10 +78,11 @@ module Refinery
 
     # Docs for acts_as_indexed http://github.com/dougal/acts_as_indexed
     acts_as_indexed :fields => [:title, :meta_keywords, :meta_description,
-                                :custom_title, :browser_title, :all_page_part_content]
+                                :menu_title, :browser_title, :all_page_part_content]
 
     before_destroy :deletable?
     after_save :reposition_parts!, :invalidate_cached_urls, :expire_page_caching
+    after_update :invalidate_cached_urls
     after_destroy :expire_page_caching
 
     scope :live, where(:draft => false)
@@ -245,7 +258,7 @@ module Refinery
         :menu_match => menu_match,
         :parent_id => parent_id,
         :rgt => rgt,
-        :title => (page_title if respond_to?(:page_title)) || title,
+        :title => page_menu_title.blank? ? page_title : page_menu_title,
         :type => self.class.name,
         :url => url
       }

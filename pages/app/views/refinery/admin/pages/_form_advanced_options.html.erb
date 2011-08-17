@@ -42,19 +42,20 @@
 
     <div class='field'>
       <span class='label_with_help'>
-        <%= label_tag :custom_title, t('.custom_title') %>
-        <%= refinery_help_tag t('.custom_title_help') %>
+        <%= label_tag :menu_title, t('.menu_title') %>
+        <%= refinery_help_tag t('.menu_title_help') %>
       </span>
-      <% %w(none text).each do |type| %>
-        <%= f.radio_button :custom_title_type, type %>
-        <%= label_tag "page_custom_title_type_#{type}", t(type.downcase.gsub(" ", "_"), :scope => 'refinery.admin.pages.form_advanced_options.title_types'),
-                      :class => "stripped" %>
-      <% end %>
-      <div id='custom_title_none'></div>
-      <div id='custom_title_text' style='display: <%= @page.custom_title_type == 'text' ? 'block' : 'none' %>'>
-        <%= f.text_field :custom_title, :class => 'widest' %>
-      </div>
+      <%= f.text_field :menu_title, :style=> 'width:400px;' %>
     </div>
+    <% if ::Refinery::Setting.find_or_set(:use_custom_slugs, false, :scope => 'pages') %>
+    <div class='field'>
+      <span class='label_with_help'>
+        <%= f.label :custom_slug, t('.custom_slug') %>
+        <%= refinery_help_tag t('.custom_slug_help') %>
+      </span>
+      <%= f.text_field :custom_slug, :style=> 'width:400px;' %>
+    </div>
+    <% end %> 
     <div class='field'>
       <span class='label_with_help'>
         <%= f.label :skip_to_first_child?, t('.skip_to_first_child') %>

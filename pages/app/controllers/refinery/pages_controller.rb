@@ -31,7 +31,7 @@ module Refinery
           redirect_to @page.link_url and return
         end
         # 301 redirect if there is a newer slug
-        unless "#{params[:path]}/#{params[:id]}".split('/').last == @page.slug.name
+        unless "#{params[:path]}/#{params[:id]}".split('/').last == @page.friendly_id 
           redirect_to main_app.url_for(@page.url), :status => 301 and return
         end
       else
