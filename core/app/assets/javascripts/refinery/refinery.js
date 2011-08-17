@@ -9,9 +9,7 @@
  *= require ../jquery/jquery.html5-placeholder-shim
  *= require ../jquery/jquery.timers
  *= require ../jquery/jquery.jcarousel
- *= require ../wymeditor/jquery.refinery.wymeditor
  *= require ../admin
- *= require ./boot_wym
  *= require ./core
  *= require ./site_bar
  *= require ./admin
