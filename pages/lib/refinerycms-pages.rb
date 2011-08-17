@@ -38,6 +38,9 @@ module Refinery
       config.to_prepare do
         require File.expand_path('../pages/tabs', __FILE__)
         require File.expand_path('../pages/marketable_urls', __FILE__)
+        ::Refinery::Page.translation_class.send(:is_seo_meta)
+        # set allowed attributes for mass assignment
+        ::Refinery::Page.translation_class.send :attr_accessible, :browser_title, :meta_description, :meta_keywords, :locale
       end
 
       refinery.after_inclusion do
@@ -61,12 +64,6 @@ module Refinery
             :updated_image => "page_edit.png"
           }
         end
-      end
-
-      initializer "extend globalize3 with seo_meta", :after => :load_config_initializers do
-        Page.translation_class.send(:is_seo_meta)
-        # set allowed attributes for mass assignment
-        Page.translation_class.send :attr_accessible, :browser_title, :meta_description, :meta_keywords, :locale
       end
 
     end
