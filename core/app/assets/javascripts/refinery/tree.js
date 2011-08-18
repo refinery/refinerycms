@@ -15,6 +15,7 @@ $(function() {
       $nested.load(contentUrl, function() {
         $nested.find('li:last').addClass('branch_end');
         $icon.addClass('expanded');
+        init_tooltips();
         $nested.slideDown(); 
       });
     }
