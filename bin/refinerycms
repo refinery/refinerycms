@@ -38,7 +38,6 @@ module Refinery
           :username => 'root',
           :skip => false
         },
-        :duostack => false,
         :force => false,
         :gems => [],
         :heroku => false,
@@ -103,10 +102,6 @@ module Refinery
 
         opts.on("--heroku [APP_NAME]", "Set up and deploy to Heroku") do |app_name|
           @options[:heroku] = app_name || ''
-        end
-
-        opts.on("--duostack APP_NAME", String, "Set up and deploy to Duostack") do |app_name|
-          @options[:duostack] = app_name
         end
 
         opts.on("-c", "--confirm", "Confirm any prompts that require input") do
@@ -362,13 +357,12 @@ module Refinery
       # Deploy to Heroku
       hosting = nil
       hosting = "Heroku" if @options[:heroku]
-      hosting = "Duostack" if @options[:duostack]
       unless hosting.nil?
         puts "\n\nInitializing and committing to git..\n"
         run_command("git init && git add . && git commit -am 'Initial Commit'", :ruby => false)
 
         puts "\n\nCreating #{hosting} app..\n"
-        run_command("#{hosting.downcase} create #{@options[:heroku] || @options[:duostack]}")
+        run_command("#{hosting.downcase} create #{@options[:heroku]}")
 
         puts "\n\nPushing to #{hosting} (this takes time, be patient)..\n"
         run_command("git push #{hosting.downcase} master", :ruby => false)
