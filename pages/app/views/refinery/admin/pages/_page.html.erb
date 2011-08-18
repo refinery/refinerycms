@@ -1,6 +1,6 @@
 <li class='clearfix record' id="<%= dom_id(page) -%>">
   <div class='clearfix'>
-    <span class="icon <%= 'toggle expanded' if page.children.present? %>"></span>
+    <span class="icon <%= 'toggle' if page.children.present? %>"></span>
     <span class='title'>
       <%= page.title_with_meta.html_safe %>
       <% if ::Refinery.i18n_enabled? and ::Refinery::I18n.frontend_locales.many? %>
@@ -31,7 +31,6 @@
                   :method => :delete if page.deletable? %>
     </span>
   </div>
-  <ul class='nested'>
-    <%= render :partial => 'page', :collection => page.children %>
+  <ul class='nested' data-ajax-content="<%= main_app.children_refinery_admin_page_path(page)  %>">
   </ul>
 </li>
