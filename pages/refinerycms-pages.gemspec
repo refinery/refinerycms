@@ -96,7 +96,6 @@ Gem::Specification.new do |s|
     'db',
     'db/migrate',
     'db/migrate/20100913234708_create_refinerycms_pages_schema.rb',
-    'db/migrate/20101214040815_translate_page_plugin.rb',
     'db/migrate/20101216194133_remove_cached_slug_from_pages.rb',
     'db/migrate/20101217113425_translate_page_plugin.rb',
     'db/migrate/20110307025652_translate_custom_title_on_pages.rb',
