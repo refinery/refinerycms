@@ -8,16 +8,16 @@ body {
 #body_content_left {
   float: left;
   width: 600px;
+  .inner {
+    padding-right: 10px;
+  }
 }
 #body_content_right {
   float: right;
   width: 400px;
-}
-#body_content_left .inner {
-  padding-right: 10px;
-}
-#body_content_right .inner {
-  padding-left: 10px;
+  .inner {
+    padding-left: 10px;
+  }
 }
 #body_content.no_body_content_left #body_content_right,
   #body_content.no_body_content_right #body_content_left {
@@ -25,47 +25,46 @@ body {
   padding-left: 0px;
   padding-right: 0px;
 }
-.menu ul {
-  margin: 0px;
-  padding: 0px;
-}
-.menu li {
-  padding: 0px;
-  margin: 0px 9px 0px 0px;
-  list-style: none;
-  float: left;
-}
-.menu li.last {
-  margin-right: 0px;
-}
-.menu li.selected > a {
-  font-weight: bold;
-}
-.inquiries form label {
-  width: 150px;
-  float: left;
-}
-.inquiries form input {
-  width: 200px;
-}
-.inquiries form input, .inquiries form textarea {
-
-}
-.inquiries form textarea {
-
-}
-.inquiries form .actions {
-  margin-left: 150px;
-}
-.inquiries form .actions input {
-  width: auto;
-}
-.inquiries .field {
-  margin: 12px 0px;
+.menu {
+  ul {
+    margin: 0px;
+    padding: 0px;
+  }
+  li {
+    padding: 0px;
+    margin: 0px 9px 0px 0px;
+    list-style: none;
+    float: left;
+    &.last {
+      margin-right: 0px;
+    }
+    &.selected {
+      > a {
+        font-weight: bold;
+      }
+    }
+  }
 }
 .inquiries form {
   padding-top: 12px;
+  label {
+    width: 150px;
+    float: left;
+  }
+  input {
+    width: 200px;
+  }
+  .field {
+    margin: 12px 0px;
+  }
+  .actions {
+    margin-left: 150px;
+    input {
+      width: auto;
+    }
+  }
 }
+
 .page_not_live {
   border: 1px solid #A00027;
   color: #A00027;

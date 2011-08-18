@@ -1,7 +1,6 @@
 /* Default error colouring */
-
 article, nav, header, footer, aside, hgroup, section{
-	display:block;
+  display:block;
 }
 
 div.fieldWithErrors {
@@ -19,19 +18,18 @@ div.fieldWithErrors {
 }
 
 /* Browser Hacks */
-
-/* remove borders from images */
-
-a img {
-  border: 0px none;
-}
-
-/*
-Firefox Dotted Line Fix
-  - http://sonspring.com/journal/removing-dotted-links
-*/
-a:focus {
-  outline: none;
+a {
+  /* remove borders from images */
+  img {
+    border: 0px none;
+  }
+  /*
+  Firefox Dotted Line Fix
+    - http://sonspring.com/journal/removing-dotted-links
+  */
+  &:focus {
+    outline: none;
+  }
 }
 
 /*
@@ -39,15 +37,15 @@ Clearfix docs
  - Main docs: http://positioniseverything.net/easyclearing.html
  - IE7 change: http://www.456bereastreet.com/archive/200603/new_clearing_method_needed_for_ie7/
 */
-.clearfix:after, section:after {
-  content: ".";
-  display: block;
-  height: 0;
-  clear: both;
-  visibility: hidden;
-}
 .clearfix, section {
   display: inline-block;
+  &:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+  }
 }
 
 /* Hide from IE Mac \*/
