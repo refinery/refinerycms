@@ -94,6 +94,30 @@ module Refinery
     # using all of the page_ids we further filter against this model's table.
     scope :in_menu, proc { where(:show_in_menu => true).with_globalize }
 
+    scope :fast_menu, proc {
+      # First, apply a filter to determine which pages to show.
+      # We need to join to the page's slug to avoid multiple queries.
+      pages = live.in_menu.includes(:slug).order('lft ASC')
+
+      # Now we only want to select particular columns to avoid any further queries.
+      # Title and menu_title are retrieved in the next block below so they are not here.
+      menu_columns.each do |column|
+        pages = pages.select(arel_table[column.to_sym])
+      end
+
+      # We have to get title and menu_title from the translations table.
+      # To avoid calling globalize3 an extra time, we get title as page_title
+      # and we get menu_title as page_menu_title.
+      # These is used in 'to_refinery_menu_item' in the Page model.
+      %w(title menu_title).each do |column|
+        pages = pages.joins(:translations).select(
+          "#{translation_class.table_name}.#{column} as page_#{column}"
+        )
+      end
+
+      pages
+    }
+
     # Am I allowed to delete this page?
     # If a link_url is set we don't want to break the link so we don't allow them to delete
     # If deletable is set to false then we don't allow this page to be deleted. These are often Refinery system pages
