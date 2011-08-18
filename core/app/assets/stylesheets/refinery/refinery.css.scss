@@ -713,6 +713,11 @@ label.stripped {
   display: block;
   line-height: 28px;
 }
+#records.tree .title {
+  display: block;
+  margin: 0 120px 0 20px;
+  cursor: pointer;
+}
 #records.tree .actions {
   line-height: 22px;
   top: 1px;
@@ -742,9 +747,9 @@ label.stripped {
   height: 16px;
   margin: 3px 3px 0 0;
   background: image_url('refinery/icons/page.png') center center no-repeat;
-  cursor: pointer;
 
   &.toggle {
+    cursor: pointer;
     background-image: image_url('refinery/icons/folder.png');
   }
   &.toggle.expanded {
