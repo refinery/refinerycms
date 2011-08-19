@@ -30,14 +30,14 @@ TIP: It is recommended that developers use RVM to manage Ruby versions and gems.
 rvm use --create ruby-1.9.2@refinery
 </shell>
 
-Refinery is a Ruby on Rails web application. If you have no prior experience with Rails, you will find a very steep learning curve diving straight into Refinery.  There are some good free resources on the Internet for learning Rails, including:
+Refinery is a Ruby on Rails web application. If you have no prior experience with Rails, you will find a very steep learning curve diving straight into Refinery. There are some good free resources on the Internet for learning Rails, including:
 
 * "Getting Started with Rails":http://guides.rubyonrails.org/getting_started.html
 * "Rails for Zombies":http://railsforzombies.org
 
 h3. What is Refinery CMS?
 
-Refinery CMS, often shortened to Refinery, is an open source content management system written in Ruby as a Ruby on Rails web application with JQuery used as the JavaScript library. Refinery runs on Rails 3.0.
+Refinery CMS, often shortened to Refinery, is an open source content management system written in Ruby as a Ruby on Rails web application with JQuery used as the JavaScript library. Refinery runs on Rails 3.1.
 
 Refinery differs from similar projects by targeting a non-technical end user and allowing the developer to create a flexible website rapidly by staying as close as possible to the conventions of the Ruby on Rails framework.
 
@@ -50,7 +50,7 @@ The Refinery philosophy includes several guiding principles:
 
 h4. Refinery's architecture
 
-Refinery comprises of several Rails Engines that sit under +/vendor/refinerycms+. Each engine acts like a mini Rails application with their own routes and views. Refinery is architected like this so that it keeps out of the way of any custom development you will do in the +/app+ directory.
+Refinery comprises of several Rails Engines. Each engine acts like a mini Rails application with their own routes and views. Refinery is architected like this so that it keeps out of the way of any custom development you will do in the +/app+ directory.
 
 h4. Core engines
 
@@ -178,7 +178,7 @@ TIP: Overriding Refinery views is a common pattern which is worth keeping in min
 
 If you request +http://localhost:3000/about+ this maps by default to Refinery's +pages_controller.rb+ show action.
 
-So as you would expect the view for this action is located in +app/views/pages/show.html.erb+. You won't be able to see this file because Refinery is providing it for you. Next let's override that view and replace it with our own.
+So as you would expect the view for this action is located in +app/views/refinery/pages/show.html.erb+. You won't be able to see this file because Refinery is providing it for you. Next let's override that view and replace it with our own.
 
 h4. Overriding your first view
 
@@ -186,10 +186,10 @@ Refinery comes with a rake task called +refinery:override+ which allows you to c
 
 <shell>
 $ rake refinery:override view=pages/show
-$ Copied view template file to app/views/pages/show.html.erb
+$ Copied view template file to app/views/refinery/pages/show.html.erb
 </shell>
 
-Now edit +app/views/pages/show.html.erb+ and it will look like this:
+Now edit +app/views/refinery/pages/show.html.erb+ and it will look like this:
 
 <erb>
 <%= render :partial => "/refinery/content_page" %>
@@ -201,7 +201,7 @@ h4. Rendering content using @page
 
 Every view in Refinery has an instance variable called +@page+ available. The best way to explain how this works is just to show you.
 
-Replace the contents of +app/views/pages/show.html.erb+ with this:
+Replace the contents of +app/views/refinery/pages/show.html.erb+ with this:
 
 <erb>
 <section id='body_content'>
@@ -228,13 +228,11 @@ You'll notice two tabs on the page "Body" and "Side Body". These are +Page Parts
 
 h4. Styling your views
 
-As mentioned earlier, a key principle in Refinery is to stick to "The Rails Way" where possible. This is apparent in the way you style your views too. You style your site exactly how you would style any Rails application, using +public/stylesheets/application.css+
+As mentioned earlier, a key principle in Refinery is to stick to "The Rails Way" where possible. This is apparent in the way you style your views too. You style your site exactly how you would style any Rails 3.1 application, using +app/assets/stylesheets/application.css.scss+
 
-Open up +public/stylesheets/application.css+ and add this:
+Open up +app/assets/stylesheets/application.css.scss+ and add this:
 
 <erb>
-@import url('refinery/application.css');
-
 body {
   background: #DDD;
   font-family: Verdana;
@@ -253,27 +251,22 @@ body {
 #menu ul {
   list-style: none;
   padding: 0px;
-}
-
-#menu ul li {
-  float: left;
-  margin-right: 10px;
-}
-
-#menu ul li a {
-  display: block;
-  padding: 5px 10px;
-  text-decoration: none;
-}
-
-#menu ul li.selected a, #menu ul li a:hover {
-  background: #CCC;
+  li {
+    float: left;
+    margin-right: 10px;
+    a {
+      display: block;
+      padding: 5px 10px;
+      text-decoration: none;
+    }
+    &.selected a, a:hover {
+      background: #CCC;
+    }
+  }
 }
 </erb>
 
-TIP: When on the home page of your site, Refinery automatically loads an extra stylesheet located in +public/stylesheets/home.css+ as often sites have a different style on the home page.
-
-TIP: Note that 'refinery/application.css' is a stylesheet located in the refinery folder, which is in the refinerycms gem. Without it, front end pages do not include refinery/applications.css by default. Feel free to leave out this import.
+TIP: When on the home page of your site, Refinery automatically loads an extra stylesheet located in +app/assets/stylesheets/home.css.scss+ as often sites have a different style on the home page.
 
 Now when you view your front end at "http://localhost:3000":http://localhost:3000 you'll notice your site has a grey background, with a horizontal menu and two white content areas.
 
@@ -289,17 +282,17 @@ h3. Extending Refinery with your first Engine
 
 h4. The Anatomy of an Engine
 
-Think of a Refinery engine as a mini Rails application running in your +vendor/engines+ directory. Each engine specifies its own routes in the config directory and has its own views and controllers in its own app directory. Engines can even serve up their own images, stylesheets and javascripts from the engines public directory.
+Think of a Refinery engine as a mini Rails application running in your +vendor/engines+ directory. Each engine specifies its own routes in the config directory and has its own views and controllers in its own app directory. Engines can even serve up their own images, stylesheets and javascripts by utilizing asset pipeline which got introduced in Rails 3.1.
 
 h4. Generating an engine
 
 Refinery ships with an engine generator that makes adding your own functionality a breeze. It works just like the Rails scaffold generator.
 
 <shell>
-$ rails generate refinery_engine singular_model_name attribute:type [attribute:type ...]
+$ rails generate refinery:engine singular_model_name attribute:type [attribute:type ...]
 </shell>
 
-TIP: to see all the options supported by the +refinery_engine+ generator just run +rails g refinery_engine+
+TIP: to see all the options supported by the +refinery:engine+ generator just run +rails g refinery:engine+
 
 Here is a list of the different field types are what they give you:
 
@@ -321,19 +314,23 @@ Rick is going to want to enter the following information about each event:
 Run this command to generate the events engine for Rick[1]:
 
 <shell>
-$ rails generate refinery_engine event title:string date:datetime photo:image blurb:text
-      create  vendor/engines/events/app/controllers/admin/events_controller.rb
-      create  vendor/engines/events/app/controllers/events_controller.rb
-      create  vendor/engines/events/app/models/event.rb
-      create  vendor/engines/events/app/views/admin/events/_form.html.erb
-      create  vendor/engines/events/app/views/admin/events/_event.html.erb
-      create  vendor/engines/events/app/views/admin/events/_sortable_list.html.erb
-      create  vendor/engines/events/app/views/admin/events/edit.html.erb
-      create  vendor/engines/events/app/views/admin/events/index.html.erb
-      create  vendor/engines/events/app/views/admin/events/new.html.erb
-      create  vendor/engines/events/app/views/events/index.html.erb
-      create  vendor/engines/events/app/views/events/show.html.erb
+$ rails generate refinery:engine event title:string date:datetime photo:image blurb:text
+create  vendor/engines/events/app/controllers/refinery/admin/events_controller.rb
+      create  vendor/engines/events/app/controllers/refinery/events_controller.rb
+      create  vendor/engines/events/app/models/refinery/event.rb
+      create  vendor/engines/events/app/views/refinery/admin/events/_actions.html.erb
+      create  vendor/engines/events/app/views/refinery/admin/events/_form.html.erb
+      create  vendor/engines/events/app/views/refinery/admin/events/_events.html.erb
+      create  vendor/engines/events/app/views/refinery/admin/events/_records.html.erb
+      create  vendor/engines/events/app/views/refinery/admin/events/_event.html.erb
+      create  vendor/engines/events/app/views/refinery/admin/events/_sortable_list.html.erb
+      create  vendor/engines/events/app/views/refinery/admin/events/edit.html.erb
+      create  vendor/engines/events/app/views/refinery/admin/events/index.html.erb
+      create  vendor/engines/events/app/views/refinery/admin/events/new.html.erb
+      create  vendor/engines/events/app/views/refinery/events/index.html.erb
+      create  vendor/engines/events/app/views/refinery/events/show.html.erb
       create  vendor/engines/events/config/locales/en.yml
+      create  vendor/engines/events/config/locales/fr.yml
       create  vendor/engines/events/config/locales/lolcat.yml
       create  vendor/engines/events/config/locales/nb.yml
       create  vendor/engines/events/config/locales/nl.yml
@@ -343,16 +340,16 @@ $ rails generate refinery_engine event title:string date:datetime photo:image bl
       create  vendor/engines/events/features/manage_events.feature
       create  vendor/engines/events/features/step_definitions/event_steps.rb
       create  vendor/engines/events/features/support/paths.rb
-      create  vendor/engines/events/lib/generators/refinerycms_events_generator.rb
-      create  vendor/engines/events/lib/events.rb
+      create  vendor/engines/events/lib/generators/refinery/events_generator.rb
+      create  vendor/engines/events/lib/refinerycms-events.rb
       create  vendor/engines/events/lib/tasks/events.rake
-      create  vendor/engines/events/public/.gitkeep
       create  vendor/engines/events/readme.md
       create  vendor/engines/events/refinerycms-events.gemspec
+      ...
 ------------------------
 Now run:
 bundle install
-rails generate refinerycms_events
+rails generate refinery:events
 rake db:migrate
 ------------------------
 </shell>
@@ -361,11 +358,11 @@ As the output shows next run:
 
 <shell>
 $ bundle install
-$ rails generate refinerycms_events
+$ rails generate refinery:events
 $ rake db:migrate
 </shell>
 
-A +refinerycms_events+ generator is created for you to install the migration to create the events table.
+A +refinery:events+ generator is created for you to install the migration to create the events table.
 
 TIP: When new engines are added it's a good idea to restart your server for new changes to be loaded in.
 
@@ -379,7 +376,7 @@ Add a couple of mock events to your events engine.
 
 Now click on "Switch to your website", and navigate to "http://localhost:3000/events":http://localhost:3000/events
 
-You'll notice not only has Refinery generated the backend "Events" tab but also a new menu item called "Events" and two new front end views +index.html.erb+ and +show.html.erb+ located in +vendor/engines/events/app/events/+ for you to customise.
+You'll notice not only has Refinery generated the backend "Events" tab but also a new menu item called "Events" and two new front end views +index.html.erb+ and +show.html.erb+ located in +vendor/engines/events/app/views/refinery/events/+ for you to customise.
 
 !/system/images/BAhbBlsHOgZmSSI0MjAxMC8xMi8wMi8xNF8yNF81MV80MTVfZXZlbnRzX2VuZ2luZV9zbWFsbC5wbmcGOgZFVA/14_24_51_415_events_engine_small.png!
 
@@ -395,11 +392,15 @@ h4. Crudify: The Backbone of Refinery Engines
 
 Any Refinery engine, even the built-in ones, that focus on Create, Read, Update and Delete are driven by crudify. Crudify is a highly reusable module included with Refinery that gives you all the standard CRUD actions as well as reordering, searching and paging.
 
-Open up +vendor/engines/events/app/controllers/admin/events_controller.rb+ and look at it's contents:
+Open up +vendor/engines/events/app/controllers/refinery/admin/events_controller.rb+ and look at it's contents:
 
 <ruby>
-class Admin::EventsController < ::Admin::BaseController
-  crudify :event
+module ::Refinery
+  module Admin
+    class EventsController < ::Admin::BaseController
+      crudify :'refinery/event', :xhr_paging => true
+    end
+  end
 end
 </ruby>
 
@@ -408,30 +409,37 @@ Most of the time crudify's defaults are bang on, but if you need to, you can eas
 But default +crudify+ assumes your records will be sortable. But events are not manually sortable, it makes more sense to order them by their event date. Update the contents of the file to this:
 
 <ruby>
-class Admin::EventsController < ::Admin::BaseController
-  crudify :event, :order => "date DESC",
-                   :sortable => false
+module ::Refinery
+  module Admin
+    class EventsController < ::Admin::BaseController
+      crudify :'refinery/event', :xhr_paging => true,
+                                 :order => "date DESC",
+                                 :sortable => false
+    end
+  end
 end
 </ruby>
 
 This will tell +crudify+ to sort by our event date field and to turn off manual sorting by the user.
 
-Finally edit +vendor/engines/events/app/controllers/events_controller.rb+ and replace the +find_all_events+ method with this one:
+Finally edit +vendor/engines/events/app/controllers/refinery/events_controller.rb+ and replace the +find_all_events+ method with this one:
 
 <ruby>
-class EventsController < ApplicationController
+module ::Refinery
+  class EventsController < ::ApplicationController
 
-  # code
+    # code
 
-protected
+  protected
 
-  def find_all_events
-    # Order by event date
-    @events = Event.order("date DESC")
+    def find_all_events
+      # Order by event date
+      @events = Refinery::Event.order("date DESC")
+    end
+
+    # code
+
   end
-
-  # code
-
 end
 </ruby>
 
