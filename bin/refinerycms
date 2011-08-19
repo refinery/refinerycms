@@ -12,7 +12,7 @@ end
 
 # Let the application have a constant it can detect installation with.
 REFINERYCMS_INSTALLER = true
-RAILS_MINOR_VERSION = '3.0'
+RAILS_MINOR_VERSION = '3.1'
 
 # Load refinerycms
 require File.expand_path(File.dirname(__FILE__) << "/../lib/refinery")
