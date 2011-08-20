@@ -143,7 +143,6 @@ Gem::Specification.new do |s|
     'lib/refinerycms/all.rb',
     'lib/refinerycms.rb',
     'license.md',
-    'nil',
     'public',
     'public/javascripts',
     'public/javascripts/translations.js',
