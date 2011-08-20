@@ -5,7 +5,7 @@ Gem::Specification.new do |s|
   s.name              = %q{refinerycms}
   s.version           = %q{2.0.0}
   s.description       = %q{A Ruby on Rails CMS that supports Rails 3. It's easy to extend and sticks to 'the Rails way' where possible.}
-  s.date              = %q{2011-08-18}
+  s.date              = %q{2011-08-20}
   s.summary           = %q{A Ruby on Rails CMS that supports Rails 3}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
@@ -37,13 +37,6 @@ Gem::Specification.new do |s|
     'Gemfile.lock',
     'Guardfile',
     'Rakefile',
-    'app',
-    'app/views',
-    'app/views/refinery',
-    'app/views/refinery/sitemap',
-    'app/views/refinery/sitemap/index.xml.builder',
-    'app/views/sitemap',
-    'app/views/sitemap/index.xml.builder',
     'autotest',
     'autotest/autotest.rb',
     'autotest/discover.rb',

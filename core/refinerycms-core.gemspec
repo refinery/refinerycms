@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.version           = %q{2.0.0}
   s.summary           = %q{Core engine for Refinery CMS}
   s.description       = %q{The core of Refinery CMS. This handles the common functionality and is required by most engines}
-  s.date              = %q{2011-08-18}
+  s.date              = %q{2011-08-20}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
   s.rubyforge_project = %q{refinerycms}
@@ -315,6 +315,8 @@ Gem::Specification.new do |s|
     'app/views/refinery/admin/_tabbed_fields.html.erb',
     'app/views/refinery/admin/dialogs',
     'app/views/refinery/admin/dialogs/show.html.erb',
+    'app/views/refinery/sitemap',
+    'app/views/refinery/sitemap/index.xml.builder',
     'app/views/refinery/welcome.html.erb',
     'app/views/refinery/wymiframe.html.erb',
     'config',
