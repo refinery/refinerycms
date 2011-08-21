@@ -57,9 +57,9 @@ module Refinery
                     :strip_non_ascii => ::Refinery::Setting.find_or_set(:strip_non_ascii, false, :scoping => "pages")
 
     def custom_slug_or_title
-      if custom_slug.blank? == false
+      if !custom_slug.blank?
         custom_slug
-      elsif menu_title.blank? == false
+      elsif !menu_title.blank?
         menu_title
       else
         title
