@@ -40,9 +40,9 @@ en:
         delete: Remove
         close: Close
       image_picker:
-        none_selected: 'There is currently no %{what} selected, please click here to add one.'
-        remove_current: 'Remove current %{what}'
-        change: Click here to pick a image
+        none_selected: There is currently no image selected, please click here to add one.
+        remove_current: Remove current image
+        change: Click here to pick an image
         show: Show
       resource_picker:
         download_current: Download current file

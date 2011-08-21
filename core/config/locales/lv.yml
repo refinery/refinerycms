@@ -37,8 +37,8 @@ lv:
         delete: Dzēst
         close: Aizvērt
       image_picker:
-        none_selected: Pašlaik nav izvēlēta neviena %{what}. Lūdzu, spied šeit, lai pievienotu.
-        remove_current: Dzēst pašreizējo %{what}
+        none_selected: Pašlaik nav izvēlēta neviena bilde. Lūdzu, spied šeit, lai pievienotu.
+        remove_current: Dzēst pašreizējo bildi
         change: Spied šeit, lai izvēlētos bildi
         show: Rādīt
       resource_picker:
