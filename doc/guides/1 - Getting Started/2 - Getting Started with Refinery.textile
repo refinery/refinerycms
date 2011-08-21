@@ -184,7 +184,7 @@ So as you would expect the view for this action is located in +app/views/refiner
 
 h4. Overriding your first view
 
-Refinery comes with a rake task called +refinery:override+ which allows you to copy files out of Refinery and into your own application to change. Let's override the pages show view:
+Refinery comes with a rake task called +refinery:override+ which allows you to copy files out of Refinery and into your own application to change. To see a list of possible commands simply run <tt>rake refinery:override</tt> in the console. Let's override the pages show view:
 
 <shell>
 $ rake refinery:override view=pages/show
