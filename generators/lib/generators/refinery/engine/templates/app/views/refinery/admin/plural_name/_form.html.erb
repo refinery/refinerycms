@@ -2,8 +2,7 @@
   text_areas = attributes.reject{|a| a.field_type.to_s != 'text_area'}
   generated_text_areas = false
 -%>
-<%% url_opts = action_name == 'edit' ? {:url => main_app.refinery_admin_<%= singular_name %>_path(@<%= singular_name %>.id), :as => :<%= singular_name %>} : {:url => main_app.refinery_admin_<%= plural_name %>_path, :as => :<%= singular_name %>} %>
-<%%= form_for [:admin, @<%= singular_name %>], url_opts do |f| -%>
+<%%= form_for [main_app, :refinery_admin, @<%= singular_name %>] do |f| -%>
   <%%= render :partial => "/refinery/admin/error_messages", :locals => {
           :object => @<%= singular_name %>,
           :include_object_name => true
