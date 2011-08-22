@@ -187,7 +187,7 @@ h4. Overriding your first view
 Refinery comes with a rake task called +refinery:override+ which allows you to copy files out of Refinery and into your own application to change. To see a list of possible commands simply run <tt>rake refinery:override</tt> in the console. Let's override the pages show view:
 
 <shell>
-$ rake refinery:override view=pages/show
+$ rake refinery:override view=refinery/pages/show
 $ Copied view template file to app/views/refinery/pages/show.html.erb
 </shell>
 
