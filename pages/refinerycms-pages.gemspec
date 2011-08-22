@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.version           = %q{2.0.0}
   s.summary           = %q{Pages engine for Refinery CMS}
   s.description       = %q{The default content engine of Refinery CMS. This engine handles the administration and display of user-editable pages.}
-  s.date              = %q{2011-08-18}
+  s.date              = %q{2011-08-22}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
   s.rubyforge_project = %q{refinerycms}
@@ -100,8 +100,8 @@ Gem::Specification.new do |s|
     'db/migrate/20101217113425_translate_page_plugin.rb',
     'db/migrate/20110307025652_translate_custom_title_on_pages.rb',
     'db/migrate/20110314213540_remove_translated_fields_from_pages.rb',
-    'db/migrate/20110329080451_create_seo_meta.rb',
-    'db/migrate/20110606151235_create_add_template_columns.rb',
+    'db/migrate/20110329222114_create_seo_meta.rb',
+    'db/migrate/20110714071142_create_add_template_columns.rb',
     'db/migrate/20110810070753_add_custom_slug_to_refinery_page_translations.rb',
     'db/migrate/20110812055013_rename_custom_title_to_menu_title_in_refinery_pages.rb',
     'db/seeds',
