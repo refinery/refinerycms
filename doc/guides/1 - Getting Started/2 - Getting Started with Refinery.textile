@@ -96,6 +96,8 @@ NOTE: This step may take some time to load as it needs to download and install a
 
 TIP: You can see all of the switches that the +refinerycms+ command accepts by running +refinerycms+ with no options or arguements.
 
+TIP: You can run <tt>$ refinery rickrockstar -r _3.0.9_</tt> to generate a refinery stack with any specific version of rails you need.
+
 This will create a new Rails application with Refinery built in called Rick Rock Star in a directory called +rickrockstar+. It also automatically runs +bundle install+ which will find and install all Refinery's ruby gem dependencies. Finally, it creates your database and seeds it with some basic defaults to get you started.
 
 NOTE: In this guide we are using an SQLite3 database for data storage, because it is a zero configuration database that just works. Refinery also supports MySQL and PostgreSQL "out of the box".
@@ -192,7 +194,7 @@ So as you would expect the view for this action is located in +app/views/pages/s
 
 h4. Overriding your first view
 
-Refinery comes with a rake task called +refinery:override+ which allows you to copy files out of Refinery and into your own application to change. Let's override the pages show view:
+Refinery comes with a rake task called +refinery:override+ which allows you to copy files out of Refinery and into your own application to change. To see a list of possible commands simply run <tt>rake refinery:override</tt> in the console. Let's override the pages show view:
 
 <shell>
 $ rake refinery:override view=pages/show
