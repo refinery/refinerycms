@@ -1,3 +1,5 @@
+require 'refinery/testing/factories/user'
+
 module Refinery
   module Testing
     module RequestMacros
