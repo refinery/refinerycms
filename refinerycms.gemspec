@@ -3,9 +3,9 @@
 
 Gem::Specification.new do |s|
   s.name              = %q{refinerycms}
-  s.version           = %q{1.1.0}
+  s.version           = %q{2.0.0}
   s.description       = %q{A Ruby on Rails CMS that supports Rails 3. It's easy to extend and sticks to 'the Rails way' where possible.}
-  s.date              = %q{2011-08-01}
+  s.date              = %q{2011-08-20}
   s.summary           = %q{A Ruby on Rails CMS that supports Rails 3}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
@@ -19,14 +19,14 @@ Gem::Specification.new do |s|
   s.add_dependency    'bundler',                    '~> 1.0'
 
   # Refinery CMS
-  s.add_dependency    'refinerycms-authentication', '= 1.1.0'
-  s.add_dependency    'refinerycms-base',           '= 1.1.0'
-  s.add_dependency    'refinerycms-core',           '= 1.1.0'
-  s.add_dependency    'refinerycms-dashboard',      '= 1.1.0'
-  s.add_dependency    'refinerycms-images',         '= 1.1.0'
-  s.add_dependency    'refinerycms-pages',          '= 1.1.0'
-  s.add_dependency    'refinerycms-resources',      '= 1.1.0'
-  s.add_dependency    'refinerycms-settings',       '= 1.1.0'
+  s.add_dependency    'refinerycms-authentication', '= 2.0.0'
+  s.add_dependency    'refinerycms-base',           '= 2.0.0'
+  s.add_dependency    'refinerycms-core',           '= 2.0.0'
+  s.add_dependency    'refinerycms-dashboard',      '= 2.0.0'
+  s.add_dependency    'refinerycms-images',         '= 2.0.0'
+  s.add_dependency    'refinerycms-pages',          '= 2.0.0'
+  s.add_dependency    'refinerycms-resources',      '= 2.0.0'
+  s.add_dependency    'refinerycms-settings',       '= 2.0.0'
 
   s.files             = [
     '.gitignore',
@@ -35,23 +35,15 @@ Gem::Specification.new do |s|
     'Gemfile',
     'Gemfile',
     'Gemfile.lock',
+    'Guardfile',
     'Rakefile',
-    'app',
-    'app/views',
-    'app/views/refinery',
-    'app/views/refinery/sitemap',
-    'app/views/refinery/sitemap/index.xml.builder',
-    'app/views/sitemap',
-    'app/views/sitemap/index.xml.builder',
     'autotest',
     'autotest/autotest.rb',
     'autotest/discover.rb',
     'bin',
     'bin/refinerycms',
     'changelog.md',
-    'changelog.md',
     'config',
-    'config/cucumber.yml',
     'config/database.yml.mysql',
     'config/database.yml.postgresql',
     'config/database.yml.sqlite3',
@@ -59,12 +51,91 @@ Gem::Specification.new do |s|
     'config/environments/development.rb',
     'config/environments/production.rb',
     'config/environments/test.rb',
-    'config/ideal_load_path',
     'config/routes.rb',
     'config.ru',
-    'features',
-    'features/support',
-    'features/support/paths.rb',
+    'generators',
+    'generators/features',
+    'generators/features/engine_generator.feature',
+    'generators/features/step_definitions',
+    'generators/features/step_definitions/engine_generator_steps.rb',
+    'generators/features/step_definitions/generator_steps.rb',
+    'generators/features/support',
+    'generators/features/support/paths.rb',
+    'generators/lib',
+    'generators/lib/gemspec.rb',
+    'generators/lib/generators',
+    'generators/lib/generators/refinery',
+    'generators/lib/generators/refinery/engine',
+    'generators/lib/generators/refinery/engine/USAGE',
+    'generators/lib/generators/refinery/engine/clash_keywords.yml',
+    'generators/lib/generators/refinery/engine/engine_generator.rb',
+    'generators/lib/generators/refinery/engine/templates',
+    'generators/lib/generators/refinery/engine/templates/app',
+    'generators/lib/generators/refinery/engine/templates/app/controllers',
+    'generators/lib/generators/refinery/engine/templates/app/controllers/refinery',
+    'generators/lib/generators/refinery/engine/templates/app/controllers/refinery/admin',
+    'generators/lib/generators/refinery/engine/templates/app/controllers/refinery/admin/plural_name_controller.rb',
+    'generators/lib/generators/refinery/engine/templates/app/controllers/refinery/plural_name_controller.rb',
+    'generators/lib/generators/refinery/engine/templates/app/models',
+    'generators/lib/generators/refinery/engine/templates/app/models/refinery',
+    'generators/lib/generators/refinery/engine/templates/app/models/refinery/singular_name.rb',
+    'generators/lib/generators/refinery/engine/templates/app/views',
+    'generators/lib/generators/refinery/engine/templates/app/views/refinery',
+    'generators/lib/generators/refinery/engine/templates/app/views/refinery/admin',
+    'generators/lib/generators/refinery/engine/templates/app/views/refinery/admin/plural_name',
+    'generators/lib/generators/refinery/engine/templates/app/views/refinery/admin/plural_name/_actions.html.erb',
+    'generators/lib/generators/refinery/engine/templates/app/views/refinery/admin/plural_name/_form.html.erb',
+    'generators/lib/generators/refinery/engine/templates/app/views/refinery/admin/plural_name/_plural_name.html.erb',
+    'generators/lib/generators/refinery/engine/templates/app/views/refinery/admin/plural_name/_records.html.erb',
+    'generators/lib/generators/refinery/engine/templates/app/views/refinery/admin/plural_name/_singular_name.html.erb',
+    'generators/lib/generators/refinery/engine/templates/app/views/refinery/admin/plural_name/_sortable_list.html.erb',
+    'generators/lib/generators/refinery/engine/templates/app/views/refinery/admin/plural_name/edit.html.erb',
+    'generators/lib/generators/refinery/engine/templates/app/views/refinery/admin/plural_name/index.html.erb',
+    'generators/lib/generators/refinery/engine/templates/app/views/refinery/admin/plural_name/new.html.erb',
+    'generators/lib/generators/refinery/engine/templates/app/views/refinery/plural_name',
+    'generators/lib/generators/refinery/engine/templates/app/views/refinery/plural_name/index.html.erb',
+    'generators/lib/generators/refinery/engine/templates/app/views/refinery/plural_name/show.html.erb',
+    'generators/lib/generators/refinery/engine/templates/config',
+    'generators/lib/generators/refinery/engine/templates/config/locales',
+    'generators/lib/generators/refinery/engine/templates/config/locales/en.yml',
+    'generators/lib/generators/refinery/engine/templates/config/locales/fr.yml',
+    'generators/lib/generators/refinery/engine/templates/config/locales/lolcat.yml',
+    'generators/lib/generators/refinery/engine/templates/config/locales/nb.yml',
+    'generators/lib/generators/refinery/engine/templates/config/locales/nl.yml',
+    'generators/lib/generators/refinery/engine/templates/config/routes.rb',
+    'generators/lib/generators/refinery/engine/templates/db',
+    'generators/lib/generators/refinery/engine/templates/db/migrate',
+    'generators/lib/generators/refinery/engine/templates/db/migrate/create_plural_name.rb',
+    'generators/lib/generators/refinery/engine/templates/db/seeds',
+    'generators/lib/generators/refinery/engine/templates/db/seeds/plural_name.rb',
+    'generators/lib/generators/refinery/engine/templates/features',
+    'generators/lib/generators/refinery/engine/templates/features/manage_plural_name.feature',
+    'generators/lib/generators/refinery/engine/templates/features/step_definitions',
+    'generators/lib/generators/refinery/engine/templates/features/step_definitions/singular_name_steps.rb',
+    'generators/lib/generators/refinery/engine/templates/features/support',
+    'generators/lib/generators/refinery/engine/templates/features/support/paths.rb',
+    'generators/lib/generators/refinery/engine/templates/lib',
+    'generators/lib/generators/refinery/engine/templates/lib/generators',
+    'generators/lib/generators/refinery/engine/templates/lib/generators/refinery',
+    'generators/lib/generators/refinery/engine/templates/lib/generators/refinery/plural_name_generator.rb',
+    'generators/lib/generators/refinery/engine/templates/lib/refinerycms-plural_name.rb',
+    'generators/lib/generators/refinery/engine/templates/lib/tasks',
+    'generators/lib/generators/refinery/engine/templates/lib/tasks/plural_name.rake',
+    'generators/lib/generators/refinery/engine/templates/public',
+    'generators/lib/generators/refinery/engine/templates/readme.md',
+    'generators/lib/generators/refinery/engine/templates/refinerycms-plural_name.gemspec',
+    'generators/lib/generators/refinery/engine/templates/spec',
+    'generators/lib/generators/refinery/engine/templates/spec/models',
+    'generators/lib/generators/refinery/engine/templates/spec/models/refinery',
+    'generators/lib/generators/refinery/engine/templates/spec/models/refinery/singular_name_spec.rb',
+    'generators/lib/refinery',
+    'generators/lib/refinery/generators',
+    'generators/lib/refinery/generators/engine_installer.rb',
+    'generators/lib/refinery/generators/migrations.rb',
+    'generators/lib/refinery/generators.rb',
+    'generators/lib/refinerycms-generators.rb',
+    'generators/readme.md',
+    'generators/refinerycms-generators.gemspec',
     'lib',
     'lib/load_path_analyzer.rb',
     'lib/refinery.rb',
@@ -72,15 +143,10 @@ Gem::Specification.new do |s|
     'lib/refinerycms/all.rb',
     'lib/refinerycms.rb',
     'license.md',
-    'license.md',
     'public',
     'public/javascripts',
     'public/javascripts/translations.js',
     'readme.md',
-    'readme.md',
-    'refinerycms.gemspec',
-    'spec',
-    'spec/rcov.opts',
-    'spec/spec_helper.rb'
+    'refinerycms.gemspec'
   ]
 end

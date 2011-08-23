@@ -1,5 +1,7 @@
 # Refinery CMS
 
+[![Travis CI Build Status](http://travis-ci.org/resolve/refinerycms.png)](http://travis-ci.org/resolve/refinerycms)
+
 __An open source Ruby on Rails content management system for Rails 3.__
 
 More information at [http://refinerycms.com](http://refinerycms.com)

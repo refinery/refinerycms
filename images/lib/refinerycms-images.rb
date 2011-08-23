@@ -28,7 +28,7 @@ module Refinery
           plugin.pathname = root
           plugin.name = 'refinery_images'
           plugin.directory = 'images'
-          plugin.version = %q{1.1.0}
+          plugin.version = %q{2.0.0}
           plugin.menu_match = /refinery\/image(_dialog)?s$/
           plugin.activity = {
             :class => Image

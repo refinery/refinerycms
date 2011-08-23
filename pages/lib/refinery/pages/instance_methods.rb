@@ -13,27 +13,8 @@ module Refinery
 
     protected
       def find_pages_for_menu
-        # First, apply a filter to determine which pages to show.
-        # We need to join to the page's slug to avoid multiple queries.
-        pages = ::Refinery::Page.live.in_menu.includes(:slug).order('lft ASC')
-
-        # Now we only want to select particular columns to avoid any further queries.
-        # Title is retrieved in the next block below so it's not here.
-        %w(id depth parent_id lft rgt link_url menu_match).each do |column|
-          pages = pages.select(::Refinery::Page.arel_table[column.to_sym])
-        end
-
-        # If we have translations then we get the title from that table.
-        pages = if ::Refinery::Page.respond_to?(:translation_class)
-          pages.joins(:translations).select(
-            "#{::Refinery::Page.translation_class.table_name}.title as page_title"
-          )
-        else
-          pages.select('title as page_title')
-        end
-
         # Compile the menu
-        @menu_pages = ::Refinery::Menu.new(pages)
+        @menu_pages = ::Refinery::Menu.new(::Refinery::Page.fast_menu)
       end
 
       def render(*args)

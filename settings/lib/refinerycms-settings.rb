@@ -19,8 +19,8 @@ module Refinery
           plugin.pathname = root
           plugin.name = 'refinery_settings'
           plugin.url = app.routes.url_helpers.refinery_admin_settings_path
-          plugin.version = %q{1.1.0}
-          plugin.menu_match = /(refinery)\/settings$/
+          plugin.version = %q{2.0.0}
+          plugin.menu_match = /refinery\/settings$/
         end
       end
     end

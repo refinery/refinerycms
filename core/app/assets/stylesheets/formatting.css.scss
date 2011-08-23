@@ -1,0 +1,55 @@
+/* Default error colouring */
+article, nav, header, footer, aside, hgroup, section{
+  display:block;
+}
+
+div.fieldWithErrors {
+  display: inline;
+}
+
+#errorExplanation {
+  border-top: 3px solid #F27F7F;
+  background: #FFBEBE;
+  padding: 10px;
+}
+
+#errorExplanation, #errorExplanation *, .fieldWithErrors, .fieldWithErrors * {
+  color: #9C2626;
+}
+
+/* Browser Hacks */
+a {
+  /* remove borders from images */
+  img {
+    border: 0px none;
+  }
+  /*
+  Firefox Dotted Line Fix
+    - http://sonspring.com/journal/removing-dotted-links
+  */
+  &:focus {
+    outline: none;
+  }
+}
+
+/*
+Clearfix docs
+ - Main docs: http://positioniseverything.net/easyclearing.html
+ - IE7 change: http://www.456bereastreet.com/archive/200603/new_clearing_method_needed_for_ie7/
+*/
+.clearfix, section {
+  display: inline-block;
+  &:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+  }
+}
+
+/* Hide from IE Mac \*/
+.clearfix, section {
+  display:block;
+}
+/* End hide from IE Mac */

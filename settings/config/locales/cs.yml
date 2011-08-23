@@ -21,7 +21,6 @@ cs:
             restricted: Volba bude viditelná a editovatelné pouze pro adminstrátory (jako jste vy).
             activity_show_limit: Omezuje počet akcí viditelných na nástěnce.
             analytics_page_code: Tento kód aktivuje sledování webu pomocí Googla Analytics. Pokud je ponechán prázdný nebo ve tvaru UA-xxxxxx-x je sledování vypnuto a žádné informace se do Google Analytics neposílají.
-            frontend_refinery_stylesheets_enabled: "Ve výchozím stavu, Refinery používá na stránkách (Frontend) své základní kaskádové styly. Tímto nastavením můžete tomuto chování zabránit."
             image_dialogue_sizes: Toto nastavení se používá v dialogu vkládání obrázku. Musíte implementovat rozdílné velikosti náhledů, pokud toto nastavení změníte.
             image_thumbnails: Pokud změnite toto nastavení, budete muset také přegenerovat obrázky příkazem rake images:regenerate (nebo rake images:update pokud jste pouze přidáváte náhledy) jinak se vaše změny neprojeví na stávájících obrázcích.
             menu_hide_children: Skrýt podstránky z menu i když jsou dostupné.

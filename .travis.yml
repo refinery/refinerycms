@@ -1,11 +1,15 @@
-script: "bundle exec rake db:drop db:create db:migrate spec cucumber"
+script: "bundle exec rake db:create db:migrate spec"
 notifications:
-  recipients:
+  email:
     - parndt@gmail.com
     - ugis.ozolss@gmail.com
+env:
+  - DB=postgres
+  - DB=mysql
 rvm:
-  - 1.9.2
   - 1.8.7
+  - 1.9.2
+  - 1.9.3
   - rbx
   - rbx-2.0
   - ree

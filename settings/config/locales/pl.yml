@@ -22,7 +22,6 @@ pl:
             restricted: Czyni ustawienie widocznym i edytowalnym wyłącznie dla superużytkowników (takich jak Ty).
             activity_show_limit: Ogranicza ilość rzeczy widocznych na liście pulpitu.
             analytics_page_code: Aktywuje Google Analytics wewnątrz tej witryny. Jeżeli wartością tego ustawienia jest UA-xxxxxx-x albo nic, to Google Analytics pozostanie całkowicie wyłączone.
-            frontend_refinery_stylesheets_enabled: "Domyślnie Refinery załącza własne arkusze CSS, dostarczające domyślny wygląd strony. Tym ustawieniem można je wyłączyć."
             image_dialogue_sizes: To ustawienie odnosi się do okienka dialogowego Wstaw obraz. Zmieniając je musisz również zaimplementować inne rozmiary miniaturek obrazów.
             image_thumbnails: Po zmianie tego ustawienia konieczna jest regeneracja miniaturek, polegająca na wywołaniu polecenia rake images:regenerate (albo rake images:update, jeżeli zmiana ograniczyła się do dodoania nowych rozmiarów miniaturek), w przeciwnym wypadku zmiany odniosą się wyłącznie do nowych obrazów.
             menu_hide_children: Ukryj wszelkie podstrony z menu nawet jeżeli są obecne.

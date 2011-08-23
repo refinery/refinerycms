@@ -1,5 +1,3 @@
-require 'globalize3'
-
 module Refinery
   class Page < ActiveRecord::Base
 
@@ -13,61 +11,37 @@ module Refinery
     PATH_SEPARATOR = " - "
 
     if self.respond_to?(:translates)
-      translates :title, :custom_title, :meta_keywords, :meta_description, :browser_title, :include => :seo_meta
+      translates :title, :menu_title, :meta_keywords, :meta_description, :browser_title, :custom_slug, :include => :seo_meta
+    end
 
-      # Set up support for meta tags through translations.
-      if self.respond_to?(:translation_class)
-        attr_accessible :title
-        # set allowed attributes for mass assignment
-        self.translation_class.send :attr_accessible, :browser_title, :meta_description, :meta_keywords, :locale
+    attr_accessible :title
 
-        if self.translation_class.table_exists?
-          def translation
-            if @translation.nil? or @translation.try(:locale) != ::Globalize.locale
-              @translation = translations.with_locale(::Globalize.locale).first
-              @translation ||= translations.build(:locale => ::Globalize.locale)
-            end
+    # Delegate SEO Attributes to globalize3 translation
+    seo_fields = ::SeoMeta.attributes.keys.map{|a| [a, :"#{a}="]}.flatten
+    delegate *(seo_fields << {:to => :translation})
 
-            @translation
-          end
+    after_save proc {|m| m.translation.save}
 
-          # Instruct the Translation model to have meta tags.
-          self.translation_class.send :is_seo_meta
-
-          fields = ::SeoMeta.attributes.keys.reject{|f|
-            self.column_names.map(&:to_sym).include?(f)
-          }.map{|a| [a, :"#{a}="]}.flatten
-          delegate *(fields << {:to => :translation})
-          after_save proc {|m| m.translation.save}
-        end
-
-        # Wrap up the logic of finding the pages based on the translations table.
-        def self.with_globalize(conditions = {})
-          conditions = {:locale => Globalize.locale}.merge(conditions)
-          globalized_conditions = {}
-          conditions.keys.each do |key|
-            if (translated_attribute_names.map(&:to_s) | %w(locale)).include?(key.to_s)
-              globalized_conditions["#{self.translation_class.table_name}.#{key}"] = conditions.delete(key)
-            end
-          end
-          # A join implies readonly which we don't really want.
-          joins(:translations).where(globalized_conditions).where(conditions).readonly(false)
-        end
-      else
-        # No translations, just default to normal behaviour.
-        def self.with_globalize(conditions = {})
-          where(conditions)
+    # Wrap up the logic of finding the pages based on the translations table.
+    def self.with_globalize(conditions = {})
+      conditions = {:locale => Globalize.locale}.merge(conditions)
+      globalized_conditions = {}
+      conditions.keys.each do |key|
+        if (translated_attribute_names.map(&:to_s) | %w(locale)).include?(key.to_s)
+          globalized_conditions["#{self.translation_class.table_name}.#{key}"] = conditions.delete(key)
         end
       end
-
-      before_create :ensure_locale, :if => proc { |c| ::Refinery.i18n_enabled? }
+      # A join implies readonly which we don't really want.
+      joins(:translations).where(globalized_conditions).where(conditions).readonly(false)
     end
+
+    before_create :ensure_locale, :if => proc { |c| ::Refinery.i18n_enabled? }
 
     attr_accessible :id, :deletable, :link_url, :menu_match, :meta_keywords,
                     :skip_to_first_child, :position, :show_in_menu, :draft,
                     :parts_attributes, :browser_title, :meta_description,
-                    :custom_title_type, :parent_id, :custom_title,
-                    :created_at, :updated_at, :page_id, :layout_template, :view_template
+                    :parent_id, :menu_title, :created_at, :updated_at,
+                    :page_id, :layout_template, :view_template, :custom_slug
 
     attr_accessor :locale # to hold temporarily
     validates :title, :presence => true
@@ -76,11 +50,21 @@ module Refinery
     acts_as_nested_set :dependent => :destroy # rather than :delete_all
 
     # Docs for friendly_id http://github.com/norman/friendly_id
-    has_friendly_id :title, :use_slug => true,
+    has_friendly_id :custom_slug_or_title, :use_slug => true,
                     :default_locale => (::Refinery::I18n.default_frontend_locale rescue :en),
                     :reserved_words => %w(index new session login logout users refinery admin images wymiframe),
                     :approximate_ascii => ::Refinery::Setting.find_or_set(:approximate_ascii, false, :scoping => "pages"),
                     :strip_non_ascii => ::Refinery::Setting.find_or_set(:strip_non_ascii, false, :scoping => "pages")
+
+    def custom_slug_or_title
+      if custom_slug.present?
+        custom_slug
+      elsif menu_title.present?
+        menu_title
+      else
+        title
+      end
+    end
 
     has_many :parts,
              :foreign_key => :refinery_page_id,
@@ -94,10 +78,11 @@ module Refinery
 
     # Docs for acts_as_indexed http://github.com/dougal/acts_as_indexed
     acts_as_indexed :fields => [:title, :meta_keywords, :meta_description,
-                                :custom_title, :browser_title, :all_page_part_content]
+                                :menu_title, :browser_title, :all_page_part_content]
 
     before_destroy :deletable?
     after_save :reposition_parts!, :invalidate_cached_urls, :expire_page_caching
+    after_update :invalidate_cached_urls
     after_destroy :expire_page_caching
 
     scope :live, where(:draft => false)
@@ -108,6 +93,30 @@ module Refinery
     # This works using a query against the translated content first and then
     # using all of the page_ids we further filter against this model's table.
     scope :in_menu, proc { where(:show_in_menu => true).with_globalize }
+
+    scope :fast_menu, proc {
+      # First, apply a filter to determine which pages to show.
+      # We need to join to the page's slug to avoid multiple queries.
+      pages = live.in_menu.includes(:slug).order('lft ASC')
+
+      # Now we only want to select particular columns to avoid any further queries.
+      # Title and menu_title are retrieved in the next block below so they are not here.
+      menu_columns.each do |column|
+        pages = pages.select(arel_table[column.to_sym])
+      end
+
+      # We have to get title and menu_title from the translations table.
+      # To avoid calling globalize3 an extra time, we get title as page_title
+      # and we get menu_title as page_menu_title.
+      # These is used in 'to_refinery_menu_item' in the Page model.
+      %w(title menu_title).each do |column|
+        pages = pages.joins(:translations).select(
+          "#{translation_class.table_name}.#{column} as page_#{column}"
+        )
+      end
+
+      pages
+    }
 
     # Am I allowed to delete this page?
     # If a link_url is set we don't want to break the link so we don't allow them to delete
@@ -273,7 +282,7 @@ module Refinery
         :menu_match => menu_match,
         :parent_id => parent_id,
         :rgt => rgt,
-        :title => (page_title if respond_to?(:page_title)) || title,
+        :title => page_menu_title.blank? ? page_title : page_menu_title,
         :type => self.class.name,
         :url => url
       }
@@ -290,6 +299,12 @@ module Refinery
       # This terminates in a false if i18n engine is not defined or enabled.
       def different_frontend_locale?
         ::Refinery.i18n_enabled? && ::Refinery::I18n.current_frontend_locale != ::I18n.locale
+      end
+
+      # Override this method to change which columns you want to select to render your menu.
+      # title and menu_title are always retrieved so omit these.
+      def menu_columns
+        %w(id depth parent_id lft rgt link_url menu_match)
       end
 
       # Returns how many pages per page should there be when paginating pages
@@ -330,7 +345,7 @@ module Refinery
     # In the admin area we use a slightly different title to inform the which pages are draft or hidden pages
     def title_with_meta
       title = if self.title.nil?
-        [self.class.with_globalize(:page_id => self.id, :locale => Globalize.locale).first.try(:title).to_s]
+        [self.class.with_globalize(:id => self.id, :locale => Globalize.locale).first.try(:title).to_s]
       else
         [self.title.to_s]
       end

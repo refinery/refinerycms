@@ -38,6 +38,9 @@ module Refinery
       config.to_prepare do
         require File.expand_path('../pages/tabs', __FILE__)
         require File.expand_path('../pages/marketable_urls', __FILE__)
+        ::Refinery::Page.translation_class.send(:is_seo_meta)
+        # set allowed attributes for mass assignment
+        ::Refinery::Page.translation_class.send :attr_accessible, :browser_title, :meta_description, :meta_keywords, :locale
       end
 
       refinery.after_inclusion do
@@ -50,7 +53,7 @@ module Refinery
           plugin.pathname = root
           plugin.name = 'refinery_pages'
           plugin.directory = 'pages'
-          plugin.version = %q{1.1.0}
+          plugin.version = %q{2.0.0}
           plugin.menu_match = /refinery\/page(_part)?s(_dialogs)?$/
           plugin.url = app.routes.url_helpers.refinery_admin_pages_path
           plugin.activity = {

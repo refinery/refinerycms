@@ -22,11 +22,11 @@
         <img class="current_picked_image" src="" alt="" style='display: none' />
       <% end -%>
       <span class='no_picked_image_selected nothing_selected' <%= "style='display: none;'" if image.present? %>>
-        <%= t('.none_selected', :what => t('.' + description )) %>
+        <%= t('.none_selected') %>
       </span>
     </a>
     <br/>
-    <%= link_to t('.remove_current', :what => t('.' + description )), "#",
+    <%= link_to t('.remove_current'), "#",
                 :class => "remove_picked_image",
                 :style => "#{"display:none;" if image.nil?}" %>
   </div>

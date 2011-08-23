@@ -3,10 +3,10 @@
 
 Gem::Specification.new do |s|
   s.name              = %q{refinerycms-dashboard}
-  s.version           = %q{1.1.0}
+  s.version           = %q{2.0.0}
   s.summary           = %q{Dashboard engine for Refinery CMS}
   s.description       = %q{The dashboard is usually the first engine the user sees in the backend of Refinery CMS. It displays useful information and contains links to common functionality.}
-  s.date              = %q{2011-08-01}
+  s.date              = %q{2011-08-18}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
   s.rubyforge_project = %q{refinerycms}
@@ -66,17 +66,15 @@ Gem::Specification.new do |s|
     'config/locales/zh-CN.yml',
     'config/locales/zh-TW.yml',
     'config/routes.rb',
-    'features',
-    'features/dashboard.feature',
-    'features/step_definitions',
-    'features/support',
-    'features/support/paths.rb',
     'lib',
     'lib/gemspec.rb',
     'lib/refinerycms-dashboard.rb',
     'license.md',
-    'refinerycms-dashboard.gemspec'
+    'refinerycms-dashboard.gemspec',
+    'spec',
+    'spec/requests',
+    'spec/requests/dashboard_spec.rb'
   ]
 
-  s.add_dependency 'refinerycms-core', '= 1.1.0'
+  s.add_dependency 'refinerycms-core', '= 2.0.0'
 end

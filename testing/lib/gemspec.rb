@@ -23,22 +23,20 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'refinerycms-core',  '= #{::Refinery::Version}'
 
-  # RSpec
-  s.add_dependency 'rspec-rails',       '~> 2.6'
-  s.add_dependency 'fuubar'
-  s.add_dependency 'rspec-instafail'
-
-  # Factory Girl
-  s.add_dependency 'factory_girl'
-
-  # Helpful libraries
-  s.add_dependency 'capybara',          '~> 1.0.0'
   s.add_dependency 'database_cleaner'
   s.add_dependency 'launchy'
-
-  # Cucumber
-  s.add_dependency 'cucumber-rails',    '~> 1.0.0'
+  s.add_dependency 'factory_girl',      '~> 2.0.3'
+  s.add_dependency 'json_pure'
   s.add_dependency 'rack-test',         '>= 0.5.6'
+
+  # RSpec
+  s.add_dependency 'rspec-rails',       '2.6.1'
+  s.add_dependency 'fuubar'
+  s.add_dependency 'rspec-instafail'
+  s.add_dependency 'capybara',          '~> 1.0.0'
+
+  # Guard
+  s.add_dependency 'guard-rspec',       '~> 0.4.2'
 
   s.files             = [
     '#{%w( **/{*,.rspec,.gitignore,.yardopts} ).map { |file| Pathname.glob(gempath.join(file)) }.flatten.reject{|f|

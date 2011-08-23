@@ -3,10 +3,10 @@
 
 Gem::Specification.new do |s|
   s.name              = %q{refinerycms-core}
-  s.version           = %q{1.1.0}
+  s.version           = %q{2.0.0}
   s.summary           = %q{Core engine for Refinery CMS}
   s.description       = %q{The core of Refinery CMS. This handles the common functionality and is required by most engines}
-  s.date              = %q{2011-08-01}
+  s.date              = %q{2011-08-20}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
   s.rubyforge_project = %q{refinerycms}
@@ -15,16 +15,20 @@ Gem::Specification.new do |s|
   s.require_paths     = %w(lib)
   s.executables       = %w()
 
-  s.add_dependency 'refinerycms-base',            '= 1.1.0'
-  s.add_dependency 'refinerycms-settings',        '= 1.1.0'
-  s.add_dependency 'refinerycms-generators',      '~> 1.1'
+  s.add_dependency 'refinerycms-base',            '= 2.0.0'
+  s.add_dependency 'refinerycms-settings',        '= 2.0.0'
+  s.add_dependency 'refinerycms-generators',      '= 2.0.0'
   s.add_dependency 'acts_as_indexed',             '~> 0.7'
   s.add_dependency 'friendly_id_globalize3',      '~> 3.2.1'
-  s.add_dependency 'globalize3',                  '~> 0.1'
+  s.add_dependency 'globalize3',                  '~> 0.2.0.beta3'
   s.add_dependency 'awesome_nested_set',          '~> 2.0'
-  s.add_dependency 'rails',                       '>= 3.1.0.rc5'
+  s.add_dependency 'rails',                       '>= 3.1.0.rc6'
   s.add_dependency 'truncate_html',               '~> 0.5'
   s.add_dependency 'kaminari',                    '~> 0.12'
+  s.add_dependency 'sass-rails',                  '>= 3.1.0.rc.6'
+  s.add_dependency 'coffee-rails',                '>= 3.1.0.rc.6'
+  s.add_dependency 'uglifier'
+  s.add_dependency 'jquery-rails'
 
   s.files             = [
     'app',
@@ -208,6 +212,7 @@ Gem::Specification.new do |s|
     'app/assets/javascripts/refinery/serializelist.js',
     'app/assets/javascripts/refinery/site_bar.js',
     'app/assets/javascripts/refinery/submenu.js',
+    'app/assets/javascripts/refinery/wymeditor.js',
     'app/assets/javascripts/wymeditor',
     'app/assets/javascripts/wymeditor/jquery.refinery.wymeditor.js',
     'app/assets/javascripts/wymeditor/lang',
@@ -243,20 +248,16 @@ Gem::Specification.new do |s|
     'app/assets/javascripts/wymeditor/skins/refinery',
     'app/assets/javascripts/wymeditor/skins/refinery/skin.js',
     'app/assets/stylesheets',
-    'app/assets/stylesheets/application.css',
-    'app/assets/stylesheets/formatting.css',
-    'app/assets/stylesheets/home.css',
+    'app/assets/stylesheets/application.css.scss',
+    'app/assets/stylesheets/formatting.css.scss',
+    'app/assets/stylesheets/home.css.scss',
     'app/assets/stylesheets/refinery',
-    'app/assets/stylesheets/refinery/application.css.scss',
-    'app/assets/stylesheets/refinery/formatting.css.scss',
-    'app/assets/stylesheets/refinery/home.css.scss',
     'app/assets/stylesheets/refinery/refinery.css.scss',
     'app/assets/stylesheets/refinery/site_bar.css.scss',
     'app/assets/stylesheets/refinery/submenu.css.scss',
-    'app/assets/stylesheets/refinery/theme.css.scss',
     'app/assets/stylesheets/refinery/tooltips.css.scss',
     'app/assets/stylesheets/refinery/ui.css.scss',
-    'app/assets/stylesheets/theme.css',
+    'app/assets/stylesheets/theme.css.scss',
     'app/assets/stylesheets/wymeditor',
     'app/assets/stylesheets/wymeditor/skins',
     'app/assets/stylesheets/wymeditor/skins/refinery',
@@ -314,11 +315,12 @@ Gem::Specification.new do |s|
     'app/views/refinery/admin/_tabbed_fields.html.erb',
     'app/views/refinery/admin/dialogs',
     'app/views/refinery/admin/dialogs/show.html.erb',
+    'app/views/refinery/sitemap',
+    'app/views/refinery/sitemap/index.xml.builder',
     'app/views/refinery/welcome.html.erb',
     'app/views/refinery/wymiframe.html.erb',
     'config',
     'config/initializers',
-    'config/initializers/dragonfly_monkeypatch.rb',
     'config/initializers/kaminari_monkeypatches.rb',
     'config/locales',
     'config/locales/bg.yml',
@@ -351,17 +353,6 @@ Gem::Specification.new do |s|
     'config/routes.rb',
     'doc',
     'doc/included-jquery-ui-packages.jpg',
-    'features',
-    'features/dialogs.feature',
-    'features/search.feature',
-    'features/site_bar.feature',
-    'features/step_definitions',
-    'features/step_definitions/core_steps.rb',
-    'features/support',
-    'features/support/paths.rb',
-    'features/uploads',
-    'features/uploads/beach.jpeg',
-    'features/uploads/refinery_is_awesome.txt',
     'lib',
     'lib/gemspec.rb',
     'lib/generators',
@@ -439,9 +430,9 @@ Gem::Specification.new do |s|
     'spec/lib/refinery/activity_spec.rb',
     'spec/lib/refinery/plugin_spec.rb',
     'spec/lib/refinery/plugins_spec.rb',
-    'spec/support',
-    'spec/support/refinery',
-    'spec/support/refinery/shared',
-    'spec/support/refinery/shared/admin.rb'
+    'spec/requests',
+    'spec/requests/dialogs_spec.rb',
+    'spec/requests/search_spec.rb',
+    'spec/requests/site_bar_spec.rb'
   ]
 end

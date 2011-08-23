@@ -70,7 +70,7 @@ TIP: if you've filed an issue on Github add "Closes GH-999" (replace 999 with yo
 $ git push origin master
 </shell>
 
-Now to go "http://github.com/resolve/refinerycms":http://github.com/resolve/refinerycms and click "Pull Request". Type a nice message explaining what you've done and send the request.
+Now go to "http://github.com/resolve/refinerycms":http://github.com/resolve/refinerycms and click "Pull Request". Type a nice message explaining what you've done and send the request.
 
 We'll merge it in if it's all good.
 

@@ -4,13 +4,14 @@ require 'pathname'
 gempath = Pathname.new(File.expand_path('../../', __FILE__))
 require gempath.join('base', 'lib', 'base', 'refinery')
 
-files = %w( Gemfile *.md **/**/{*,.rspec,.gitignore,.yardopts} ).map { |file| Pathname.glob(file) }.flatten
+files = %w( Gemfile **/**/{*,.rspec,.gitignore,.yardopts} ).map { |file| Pathname.glob(file) }.flatten
 rejection_patterns = [
   "^(authentication|base|core|dashboard|images|pages|resources|settings|testing)",
   "^public/(system|.*/cache|refinery)",
   "^config/(application|boot|environment).rb$",
   "^config/initializers(\/.*\.rb)?$",
   "^config/(database|i18n\-js).yml$",
+  "^config/ideal_load_path$",
   "^lib\/gemspec\.rb",
   "^index\/*",
   ".*\/cache\/",
@@ -22,7 +23,8 @@ rejection_patterns = [
   "^tmp(|/.+?)$",
   ".gem$",
   "^doc($|\/)",
-  "^coverage($|\/)"
+  "^coverage($|\/)",
+  "^spec($|\/)"
 ]
 
 files.reject! do |f|

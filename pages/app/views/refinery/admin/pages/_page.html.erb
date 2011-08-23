@@ -15,11 +15,9 @@
     </span>
 
     <span class='options'>
-      <%= link_to "View", main_app.refinery_page_path(page),
-                  :target => "_blank",
-                  :title => t('.view_live_html') %>
-      <%= link_to "Edit", main_app.edit_refinery_admin_page_path(page),
-                  :title => t('edit', :scope => 'refinery.admin.pages') %>
+      <%= link_to t('.view_live_html'), main_app.refinery_page_path(page), :target => "_blank" %>
+
+      <%= link_to t('edit', :scope => 'refinery.admin.pages'), main_app.edit_refinery_admin_page_path(page) %>
     </span>
   </div>
   <ul class='nested'>
