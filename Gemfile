@@ -73,7 +73,7 @@ group :development, :test do
 end
 
 # Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git', :branch => '3-1-stable'
+gem 'rails', :git => 'git://github.com/rails/rails.git', :branch => '3-1-stable'
 # gem 'rack', :git => 'git://github.com/rack/rack.git'
 # gem 'arel', :git => 'git://github.com/rails/arel.git'
 
