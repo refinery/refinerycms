@@ -75,7 +75,7 @@ in the routes.
 
 Refinery is backed by [WYMeditor](http://www.wymeditor.org/)
 
-You can read about this in the [WYMeditor documentation](../wymeditor.md)
+You can read about this our [WYMeditor documentation](../doc/wymeditor.md)
 
 ## Refinery Default Pages
 
