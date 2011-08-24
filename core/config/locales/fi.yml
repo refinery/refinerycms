@@ -74,3 +74,6 @@ fi:
   time:
     formats:
       short: "%A, %d %B %Y"
+  will_paginate:
+    previous_label: "&laquo;"
+    next_label: "&raquo;"

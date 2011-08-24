@@ -68,6 +68,6 @@ fr:
       enable_javascript: Pour obtenir l'ensemble des fonctionnalités de cette page il est nécessaire d'activer JavaScript.
       here_are: Ici sont les
       instructions_enable_javascript: instructions pour activer JavaScript dans votre navigateur
-  pagination:
-    next: "&raquo;"
-    previous: "&laquo;"
+  will_paginate:
+    previous_label: "&laquo;"
+    next_label: "&raquo;"

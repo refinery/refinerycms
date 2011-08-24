@@ -76,6 +76,6 @@ it:
       enable_javascript: È necessario che JavaScript sia abilitato per poter visualizzare correttamente questa pagina.
       here_are: ""
       instructions_enable_javascript: Istruzioni su come attivare JavaScript nel tuo browser
-  pagination:
-    next: "&raquo;"
-    previous: "&laquo;"
+  will_paginate:
+    previous_label: "&laquo;"
+    next_label: "&raquo;"

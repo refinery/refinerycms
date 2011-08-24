@@ -1,4 +1,4 @@
-<%= paginate @settings %>
+<%= will_paginate @settings %>
 <ul class="<%= ['pagination_frame', pagination_css_class].compact.join(' ') %>">
   <%= render :partial => 'setting',
              :collection => @settings %>

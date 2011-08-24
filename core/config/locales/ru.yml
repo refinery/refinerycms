@@ -67,6 +67,6 @@ ru:
   time:
     formats:
       short: "%A, %d %B %Y"
-  pagination:
-    next: "&raquo;"
-    previous: "&laquo;"
+  will_paginate:
+    previous_label: "&laquo;"
+    next_label: "&raquo;"

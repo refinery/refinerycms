@@ -64,6 +64,6 @@ sl:
       enable_javascript: Za polno funkcionalnost te strani je potrebno omogočiti JavaScript.
       here_are: Tukaj so
       instructions_enable_javascript: navodila, kako omogočite JavaScript v vašem brskalniku
-  pagination:
-    next: "&raquo;"
-    previous: "&laquo;"
+  will_paginate:
+    previous_label: "&laquo;"
+    next_label: "&raquo;"

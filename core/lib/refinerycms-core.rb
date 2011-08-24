@@ -1,6 +1,6 @@
 require 'acts_as_indexed'
 require 'truncate_html'
-require 'kaminari'
+require 'will_paginate'
 
 module Refinery
   autoload :Activity, File.expand_path('../refinery/activity', __FILE__)

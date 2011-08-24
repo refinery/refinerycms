@@ -1,9 +1,3 @@
-# Have to explicitly require kaminari here so it injects its
-# ActiveRecord::Base.inherited magic before Setting subclasses.
-require 'kaminari'
-require 'kaminari/models/active_record_extension'
-::ActiveRecord::Base.send :include, Kaminari::ActiveRecordExtension
-
 module Refinery
   class Setting < ActiveRecord::Base
 
@@ -33,7 +27,7 @@ module Refinery
     end
 
     class << self
-      # Number of settings to show per page when using kaminari
+      # Number of settings to show per page when using will_paginate
       def per_page
         12
       end

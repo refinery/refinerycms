@@ -17,7 +17,7 @@
     </div>
   </div>
 
-  <%= paginate @resources %>
+  <%= will_paginate @resources %>
 
   <%= render :partial => "/refinery/admin/form_actions",
              :locals => {

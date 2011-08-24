@@ -74,6 +74,6 @@ ko:
   time:
     formats:
       short: "%Y년 %m월 %d일 (%a)"
-  pagination:
-    next: "&raquo;"
-    previous: "&laquo;"
+  will_paginate:
+    previous_label: "&laquo;"
+    next_label: "&raquo;"

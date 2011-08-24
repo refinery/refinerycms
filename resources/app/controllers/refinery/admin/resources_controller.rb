@@ -2,7 +2,6 @@ module ::Refinery
   module Admin
     class ResourcesController < ::Admin::BaseController
 
-
       crudify :'refinery/resource',
               :order => "updated_at DESC",
               :xhr_paging => true
@@ -79,10 +78,9 @@ module ::Refinery
       end
 
       def paginate_resources(conditions={})
-        @resources = Resource.page(params[:page]).
-                              where(conditions).
-                              order('created_at DESC').
-                              per(Resource.per_page(from_dialog?))
+        @resources = Resource.where(conditions).
+                              paginate(:page => params[:page], :per_page => Resource.per_page(from_dialog?)).
+                              order('created_at DESC')
       end
 
     end

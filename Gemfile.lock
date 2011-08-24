@@ -1,13 +1,13 @@
 GIT
   remote: git://github.com/collectiveidea/awesome_nested_set.git
-  revision: 75cfe9015f69bf2cc4953a9215da118f18148997
+  revision: 3f19d9ae9f02877dce3342f91d9be36dc3b7ab2f
   specs:
     awesome_nested_set (2.0.1)
       activerecord (>= 3.0.0)
 
 GIT
   remote: git://github.com/parndt/refinerycms-i18n
-  revision: fd9cefe199f05005354ae0838763660cee968493
+  revision: 7548b3be85baba5edc5a57429db05740afce8062
   specs:
     refinerycms-i18n (2.0.0)
       refinerycms-core (~> 2.0.0)
@@ -31,7 +31,7 @@ GIT
       rack-cache (~> 1.0.2)
       rack-mount (~> 0.8.1)
       rack-test (~> 0.6.0)
-      sprockets (~> 2.0.0.beta.12)
+      sprockets (~> 2.0.0.beta.14)
     activemodel (3.1.0.rc6)
       activesupport (= 3.1.0.rc6)
       bcrypt-ruby (~> 2.1.4)
@@ -88,7 +88,6 @@ PATH
       friendly_id_globalize3 (~> 3.2.1)
       globalize3 (~> 0.2.0.beta3)
       jquery-rails
-      kaminari (~> 0.12)
       rails (>= 3.1.0.rc6)
       refinerycms-base (= 2.0.0)
       refinerycms-generators (= 2.0.0)
@@ -96,6 +95,7 @@ PATH
       sass-rails (>= 3.1.0.rc.6)
       truncate_html (~> 0.5)
       uglifier
+      will_paginate (~> 3.0)
     refinerycms-dashboard (2.0.0)
       refinerycms-core (= 2.0.0)
     refinerycms-generators (2.0.0)
@@ -191,8 +191,6 @@ GEM
       railties (~> 3.0)
       thor (~> 0.14)
     json_pure (1.5.3)
-    kaminari (0.12.4)
-      rails (>= 3.0.0)
     launchy (2.0.5)
       addressable (~> 2.2.6)
     mail (2.3.0)
@@ -219,7 +217,7 @@ GEM
     rake (0.9.2)
     rb-fsevent (0.4.3.1)
     rcov (0.9.10)
-    rdoc (3.9.2)
+    rdoc (3.9.3)
     routing-filter (0.2.4)
       actionpack
     rspec (2.6.0)
@@ -243,7 +241,7 @@ GEM
       actionpack (~> 3.1.0.rc6)
       railties (~> 3.1.0.rc6)
       sass (>= 3.1.4)
-    selenium-webdriver (2.4.0)
+    selenium-webdriver (2.5.0)
       childprocess (>= 0.2.1)
       ffi (>= 1.0.7)
       json_pure
@@ -271,6 +269,7 @@ GEM
       multi_json (>= 1.0.2)
     warden (1.0.5)
       rack (>= 1.0)
+    will_paginate (3.0.0)
     xpath (0.1.4)
       nokogiri (~> 1.3)
 

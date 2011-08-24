@@ -30,7 +30,7 @@
 <% end %>
   </div>
 
-  <%= paginate @images %>
+  <%= will_paginate @images %>
 
   <% unless @app_dialog or @images.empty? %>
     <div id='existing_image_size_area' class='clearfix'>
