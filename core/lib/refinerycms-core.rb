@@ -76,6 +76,11 @@ module Refinery
         end
       end
 
+      # set per_page globally
+      config.to_prepare do
+        WillPaginate.per_page = 20
+      end
+
       # Register the plugin
       config.after_initialize do
         ::Refinery::Plugin.register do |plugin|
