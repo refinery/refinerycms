@@ -9,7 +9,7 @@ describe "pages with translations" do
                            {:value => [:en, :ru], :scoping => 'refinery'})
 
     # Create a home page in both locales (needed to test menus)    
-    home_page =  Factory(:page, :title => 'Home', :link_url => '/')
+    home_page =  ::Refinery::Page.create!(:title => 'Home', :link_url => '/', :menu_match => "^/$")
     Globalize.locale = :ru
     home_page.title = 'Домашняя страница'
     home_page.save
@@ -52,7 +52,6 @@ describe "pages with translations" do
     end
 
     it "should not show in frontend menu for 'ru' locale" do
-      p = ::Refinery::Page.find('news')
       visit "/ru"
 
       within "#menu" do
@@ -125,6 +124,7 @@ describe "pages with translations" do
       fill_in "Title", :with => "Новости"
       click_button "Save"
     end
+
     it "should succeed" do
       page.should have_content("'Новости' was successfully added.")
       Refinery::Page.count.should == 2
@@ -160,7 +160,6 @@ describe "pages with translations" do
     end
 
     it "should not show in frontend menu for 'en' locale" do
-      p = ::Refinery::Page.find('новости')
       visit "/"
 
       within "#menu" do

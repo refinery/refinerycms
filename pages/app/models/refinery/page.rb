@@ -106,13 +106,13 @@ module Refinery
       end
 
       # We have to get title and menu_title from the translations table.
-      # To avoid calling globalize3 an extra time, we get title as page_title
-      # and we get menu_title as page_menu_title.
-      # These is used in 'to_refinery_menu_item' in the Page model.
+      # To avoid calling globalize3 an extra time, we get title as page_title and we
+      # get menu_title as page_menu_title. These is used in 'to_refinery_menu_item'.
+      # Only get pages where the title translation is not null.
       %w(title menu_title).each do |column|
         pages = pages.joins(:translations).select(
           "#{translation_class.table_name}.#{column} as page_#{column}"
-        )
+        ).where("#{translation_class.table_name}.title IS NOT NULL")
       end
 
       pages
@@ -344,10 +344,16 @@ module Refinery
 
     # In the admin area we use a slightly different title to inform the which pages are draft or hidden pages
     def title_with_meta
-      title = if self.title.nil?
-        [self.class.with_globalize(:id => self.id, :locale => Globalize.locale).first.try(:title).to_s]
+      title = []
+      if self.title.present?
+        title << [self.title.to_s]
       else
-        [self.title.to_s]
+        self.translations.each do |t|
+          if t.title
+            title << t.title
+            break
+          end
+        end
       end
 
       title << "<em>(#{::I18n.t('hidden', :scope => 'refinery.admin.pages.page')})</em>" unless show_in_menu?
