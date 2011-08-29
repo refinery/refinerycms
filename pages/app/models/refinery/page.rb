@@ -351,7 +351,7 @@ module Refinery
     # We show the title from the next available locale if there is no title for the current locale
     def title_with_meta
       if self.title.present?
-        title = [self.title.to_s]
+        title = [self.title]
       else
         self.translations.each do |t|
           if t.title.present?
