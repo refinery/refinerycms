@@ -114,7 +114,6 @@ module Refinery
       # We have to get title and menu_title from the translations table.
       # To avoid calling globalize3 an extra time, we get title as page_title and we
       # get menu_title as page_menu_title. These is used in 'to_refinery_menu_item'.
-      # Only get pages where the title translation is not null.
       %w(title menu_title).each do |column|
         pages = pages.joins(:translations).select(
           "#{translation_class.table_name}.#{column} as page_#{column}"
@@ -355,7 +354,7 @@ module Refinery
         title = [self.title.to_s]
       else
         self.translations.each do |t|
-          if t.title
+          if t.title.present?
             title = [t.title]
             break
           end
