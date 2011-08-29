@@ -1,6 +1,6 @@
 class Create<%= class_name.pluralize %> < ActiveRecord::Migration
 
-  def self.up
+  def up
     create_table :refinery_<%= table_name %> do |t|
 <%
   attributes.each do |attribute|
@@ -22,7 +22,7 @@ class Create<%= class_name.pluralize %> < ActiveRecord::Migration
     load(Rails.root.join('db', 'seeds', '<%= class_name.pluralize.underscore.downcase %>.rb'))
   end
 
-  def self.down
+  def down
     if defined?(::Refinery::UserPlugin)
       ::Refinery::UserPlugin.destroy_all({:name => "<%= class_name.pluralize.underscore.downcase %>"})
     end
