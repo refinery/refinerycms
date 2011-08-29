@@ -24,8 +24,6 @@ module Refinery
 
     # Wrap up the logic of finding the pages based on the translations table.
     def self.with_globalize(conditions = {})
-      # We need to remove null translations
-      remove_nulls = "#{self.translation_class.table_name}.title IS NOT NULL"
       conditions = {:locale => Globalize.locale}.merge(conditions)
       globalized_conditions = {}
       conditions.keys.each do |key|
@@ -33,7 +31,8 @@ module Refinery
           globalized_conditions["#{self.translation_class.table_name}.#{key}"] = conditions.delete(key)
         end
       end
-
+      # We need to remove null translations
+      remove_nulls = "#{self.translation_class.table_name}.title IS NOT NULL"
       # A join implies readonly which we don't really want.
       joins(:translations).where(globalized_conditions).where(conditions).where(remove_nulls).readonly(false)
     end
