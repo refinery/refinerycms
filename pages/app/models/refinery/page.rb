@@ -24,15 +24,21 @@ module Refinery
 
     # Wrap up the logic of finding the pages based on the translations table.
     def self.with_globalize(conditions = {})
+      # We need to remove null translations
+      remove_nulls = ["#{self.translation_class.table_name}.title IS NOT NULL"]
       conditions = {:locale => Globalize.locale}.merge(conditions)
       globalized_conditions = {}
       conditions.keys.each do |key|
         if (translated_attribute_names.map(&:to_s) | %w(locale)).include?(key.to_s)
           globalized_conditions["#{self.translation_class.table_name}.#{key}"] = conditions.delete(key)
         end
+          remove_nulls << ["#{self.translation_class.table_name}.#{key} IS NOT NULL"]
       end
+
+      remove_nulls = remove_nulls.join(' AND ')
+
       # A join implies readonly which we don't really want.
-      joins(:translations).where(globalized_conditions).where(conditions).readonly(false)
+      joins(:translations).where(globalized_conditions).where(conditions).where(remove_nulls).readonly(false)
     end
 
     before_create :ensure_locale, :if => proc { |c| ::Refinery.i18n_enabled? }
@@ -112,7 +118,7 @@ module Refinery
       %w(title menu_title).each do |column|
         pages = pages.joins(:translations).select(
           "#{translation_class.table_name}.#{column} as page_#{column}"
-        ).where("#{translation_class.table_name}.title IS NOT NULL")
+        )
       end
 
       pages
@@ -343,14 +349,14 @@ module Refinery
     end
 
     # In the admin area we use a slightly different title to inform the which pages are draft or hidden pages
+    # We show the title from the next available locale if there is no title for the current locale
     def title_with_meta
-      title = []
       if self.title.present?
-        title << [self.title.to_s]
+        title = [self.title.to_s]
       else
         self.translations.each do |t|
           if t.title
-            title << t.title
+            title = [t.title]
             break
           end
         end
