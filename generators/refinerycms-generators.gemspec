@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.version           = %q{2.0.0}
   s.summary           = %q{Core generators for Refinery CMS including refinery:engine.}
   s.description       = %q{Core generators for Refinery CMS including refinery:engine.}
-  s.date              = %q{2011-08-18}
+  s.date              = %q{2011-08-29}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
   s.rubyforge_project = %q{refinerycms}
@@ -83,7 +83,6 @@ Gem::Specification.new do |s|
     'lib/generators/refinery/engine/templates/lib/refinerycms-plural_name.rb',
     'lib/generators/refinery/engine/templates/lib/tasks',
     'lib/generators/refinery/engine/templates/lib/tasks/plural_name.rake',
-    'lib/generators/refinery/engine/templates/public',
     'lib/generators/refinery/engine/templates/readme.md',
     'lib/generators/refinery/engine/templates/refinerycms-plural_name.gemspec',
     'lib/generators/refinery/engine/templates/spec',
