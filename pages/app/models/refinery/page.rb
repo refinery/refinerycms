@@ -31,8 +31,10 @@ module Refinery
           globalized_conditions["#{self.translation_class.table_name}.#{key}"] = conditions.delete(key)
         end
       end
+      # We need to remove null translations
+      remove_nulls = "#{self.translation_class.table_name}.title IS NOT NULL"
       # A join implies readonly which we don't really want.
-      joins(:translations).where(globalized_conditions).where(conditions).readonly(false)
+      joins(:translations).where(globalized_conditions).where(conditions).where(remove_nulls).readonly(false)
     end
 
     before_create :ensure_locale, :if => proc { |c| ::Refinery.i18n_enabled? }
@@ -106,9 +108,8 @@ module Refinery
       end
 
       # We have to get title and menu_title from the translations table.
-      # To avoid calling globalize3 an extra time, we get title as page_title
-      # and we get menu_title as page_menu_title.
-      # These is used in 'to_refinery_menu_item' in the Page model.
+      # To avoid calling globalize3 an extra time, we get title as page_title and we
+      # get menu_title as page_menu_title. These is used in 'to_refinery_menu_item'.
       %w(title menu_title).each do |column|
         pages = pages.joins(:translations).select(
           "#{translation_class.table_name}.#{column} as page_#{column}"
@@ -343,11 +344,17 @@ module Refinery
     end
 
     # In the admin area we use a slightly different title to inform the which pages are draft or hidden pages
+    # We show the title from the next available locale if there is no title for the current locale
     def title_with_meta
-      title = if self.title.nil?
-        [self.class.with_globalize(:id => self.id, :locale => Globalize.locale).first.try(:title).to_s]
+      if self.title.present?
+        title = [self.title]
       else
-        [self.title.to_s]
+        self.translations.each do |t|
+          if t.title.present?
+            title = [t.title]
+            break
+          end
+        end
       end
 
       title << "<em>(#{::I18n.t('hidden', :scope => 'refinery.admin.pages.page')})</em>" unless show_in_menu?
