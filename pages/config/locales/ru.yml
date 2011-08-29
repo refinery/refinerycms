@@ -93,9 +93,9 @@ ru:
       remain_same_if_no_action: Остаются неизменными если никаких действий
   shared:
     no_script:
-      enable_javascript: Включите JavaScript
+      enable_javascript_html: Включите JavaScript
       here_are: Вот
-      instructions_enable_javascript: Чтобы включить JavaScript
+      instructions_enable_javascript_html: Чтобы включить JavaScript
 
 
 
