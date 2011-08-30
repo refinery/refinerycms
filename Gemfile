@@ -76,7 +76,6 @@ end
 # gem 'rails', :git => 'git://github.com/rails/rails.git', :branch => '3-1-stable'
 # gem 'rack', :git => 'git://github.com/rack/rack.git'
 # gem 'arel', :git => 'git://github.com/rails/arel.git'
-gem 'devise', :git => 'git://github.com/plataformatec/devise.git'
 
 if defined? JRUBY_VERSION
   gem 'activerecord-jdbcsqlite3-adapter',
