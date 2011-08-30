@@ -1,3 +1,11 @@
+## 1.0.5 [31 August 2011]
+
+* jQuery UI updated to `1.8.15` from `1.8.9`. [Uģis Ozols](https://github.com/ugisozols)
+* Removed Duostack hosting option from the installer because the platform isn't online anymore. [Philip Arndt](https://github.com/parndt)
+* Fixed non raw output into noscript section of the backend. [Philip Arndt](https://github.com/parndt)
+* `will_paginate` updated to `~> 3.0.0` now that it has gone final. [Uģis Ozols](https://github.com/ugisozols)
+* [See full list](https://github.com/resolve/refinerycms/compare/1.0.4...1.0.5)
+
 ## 1.0.4 [11 August 2011]
 
 * Added support for figuring out dimensions in resized images to `image_fu`. [Philip Arndt](https://github.com/parndt) and [Joe Sak](https://github.com/joemsak)
