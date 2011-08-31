@@ -5,7 +5,7 @@ Gem::Specification.new do |s|
   s.name              = %q{refinerycms}
   s.version           = %q{2.0.0}
   s.description       = %q{A Ruby on Rails CMS that supports Rails 3. It's easy to extend and sticks to 'the Rails way' where possible.}
-  s.date              = %q{2011-08-20}
+  s.date              = %q{2011-08-31}
   s.summary           = %q{A Ruby on Rails CMS that supports Rails 3}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
@@ -121,13 +121,17 @@ Gem::Specification.new do |s|
     'generators/lib/generators/refinery/engine/templates/lib/refinerycms-plural_name.rb',
     'generators/lib/generators/refinery/engine/templates/lib/tasks',
     'generators/lib/generators/refinery/engine/templates/lib/tasks/plural_name.rake',
-    'generators/lib/generators/refinery/engine/templates/public',
     'generators/lib/generators/refinery/engine/templates/readme.md',
     'generators/lib/generators/refinery/engine/templates/refinerycms-plural_name.gemspec',
     'generators/lib/generators/refinery/engine/templates/spec',
     'generators/lib/generators/refinery/engine/templates/spec/models',
     'generators/lib/generators/refinery/engine/templates/spec/models/refinery',
     'generators/lib/generators/refinery/engine/templates/spec/models/refinery/singular_name_spec.rb',
+    'generators/lib/generators/refinery/engine/templates/spec/requests',
+    'generators/lib/generators/refinery/engine/templates/spec/requests/manage_plural_name_spec.rb',
+    'generators/lib/generators/refinery/engine/templates/spec/support',
+    'generators/lib/generators/refinery/engine/templates/spec/support/refinery',
+    'generators/lib/generators/refinery/engine/templates/spec/support/refinery/factories.rb',
     'generators/lib/refinery',
     'generators/lib/refinery/generators',
     'generators/lib/refinery/generators/engine_installer.rb',
