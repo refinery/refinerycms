@@ -2,13 +2,14 @@
   <div class='clearfix'>
     <span class='title'>
       <%= page.title_with_meta.html_safe %>
-      <% if ::Refinery.i18n_enabled? and ::Refinery::I18n.frontend_locales.many? and
-            (locales = page.translations.map(&:locale)).present? %>
+      <% if ::Refinery.i18n_enabled? and ::Refinery::I18n.frontend_locales.many? %>
         <span class='preview'>
-          <% ([page.translation.try(:locale)] | locales).each do |locale| %>
-            <%= link_to refinery_icon_tag("flags/#{locale}.png", :size => '16x11'),
+          <% page.translations.each do |translation| %>
+            <% if translation.title.present? %>
+              <%= link_to refinery_icon_tag("flags/#{translation.locale}.png", :size => '16x11'),
                         main_app.edit_refinery_admin_page_path(page, :switch_locale => locale),
                         :class => 'locale' %>
+            <% end %>
           <% end %>
         </span>
       <% end %>
