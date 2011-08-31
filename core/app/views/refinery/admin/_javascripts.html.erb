@@ -1,5 +1,5 @@
 <%= yield :before_javascript_libraries -%>
 <%= javascript_include_tag 'refinery/refinery' -%>
-<%= javascript_include_tag 'refinery/wymeditor' %>
+<%= javascript_include_tag 'refinery/wymeditor', "wymeditor/lang/#{::I18n.locale}", "wymeditor/skins/refinery/skin" %>
 <%= yield :after_javascript_libraries -%>
 <%= yield :javascripts -%>
