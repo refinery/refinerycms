@@ -51,9 +51,6 @@ PATH
       activerecord (~> 3.0.10)
       refinerycms-base (= 1.0.8)
     refinerycms-testing (1.0.8)
-      autotest
-      autotest-notification
-      autotest-rails
       capybara (~> 1.0.0)
       cucumber-rails (~> 1.0.0)
       database_cleaner
@@ -69,7 +66,6 @@ PATH
 GEM
   remote: http://rubygems.org/
   specs:
-    ZenTest (4.6.2)
     abstract (1.0.0)
     actionmailer (3.0.10)
       actionpack (= 3.0.10)
@@ -100,13 +96,6 @@ GEM
     acts_as_indexed (0.7.3)
     addressable (2.2.6)
     arel (2.0.10)
-    autotest (4.4.6)
-      ZenTest (>= 4.4.1)
-    autotest-notification (2.3.3)
-      autotest-standalone (~> 4.5)
-    autotest-rails (4.1.0)
-      ZenTest
-    autotest-standalone (4.5.6)
     awesome_nested_set (2.0.1)
       activerecord (>= 3.0.0)
     babosa (0.3.5)

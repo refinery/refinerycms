@@ -1,6 +1,7 @@
 ## 1.0.8 [1 September 2011]
 
 * `refinerycms-core` now depends on rails so that users of 1.0.x can be confident of the entire stack being present as before. [Philip Arndt](https://github.com/parndt)
+* No longer requiring autotest as a dependency of `refinerycms-testing`. [Philip Arndt](https://github.com/parndt)
 * [See full list](https://github.com/resolve/refinerycms/compare/1.0.7...1.0.8)
 
 ## 1.0.7 [31 August 2011]

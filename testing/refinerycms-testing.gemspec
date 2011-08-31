@@ -33,11 +33,6 @@ Gem::Specification.new do |s|
   # Factory Girl
   s.add_dependency 'factory_girl'
 
-  # Autotest
-  s.add_dependency 'autotest'
-  s.add_dependency 'autotest-rails'
-  s.add_dependency 'autotest-notification'
-
   s.files             = [
     '.rspec',
     'config',

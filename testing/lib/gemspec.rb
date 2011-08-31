@@ -39,11 +39,6 @@ Gem::Specification.new do |s|
   # Factory Girl
   s.add_dependency 'factory_girl'
 
-  # Autotest
-  s.add_dependency 'autotest'
-  s.add_dependency 'autotest-rails'
-  s.add_dependency 'autotest-notification'
-
   s.files             = [
     '#{%w( **/{*,.rspec,.gitignore,.yardopts} ).map { |file| Pathname.glob(gempath.join(file)) }.flatten.reject{|f|
       !f.exist? or f.to_s =~ /\.gem$/ or (f.directory? and f.children.empty?)
