@@ -3,7 +3,7 @@
 
 Gem::Specification.new do |s|
   s.name              = %q{refinerycms-base}
-  s.version           = %q{1.0.5}
+  s.version           = %q{1.0.6}
   s.summary           = %q{Base engine for Refinery CMS}
   s.description       = %q{This provides a base for Refinery CMS which handles things like settings on the Refinery namespace.}
   s.date              = %q{2011-08-31}

@@ -3,7 +3,7 @@
 
 Gem::Specification.new do |s|
   s.name              = %q{refinerycms-authentication}
-  s.version           = %q{1.0.5}
+  s.version           = %q{1.0.6}
   s.summary           = %q{Authentication engine for Refinery CMS}
   s.description       = %q{The default authentication engine for Refinery CMS}
   s.date              = %q{2011-08-31}
@@ -15,8 +15,8 @@ Gem::Specification.new do |s|
   s.require_paths     = %w(lib)
   s.executables       = %w()
 
-  s.add_dependency 'refinerycms-core',            '= 1.0.5'
-  s.add_dependency 'devise',                      '~> 1.3.0'
+  s.add_dependency 'refinerycms-core',            '= 1.0.6'
+  s.add_dependency 'devise',                      '~> 1.4.3'
   s.add_dependency 'friendly_id_globalize3',      '~> 3.2.1'
 
   s.files             = [
