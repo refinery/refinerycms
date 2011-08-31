@@ -125,7 +125,7 @@ module Refinery
       end
       
       initializer "refinery.assets.precompile" do |app|
-         app.config.assets.precompile += ["refinery/*", "refinery/icons/*", "wymeditor/lang/*", "wymeditor/skins/refinery/**/*"]
+         app.config.assets.precompile += ["refinery/*", "refinery/icons/*", "wymeditor/lang/*", "wymeditor/skins/refinery/*", "wymeditor/skins/refinery/**/*"]
       end
     end
   end
