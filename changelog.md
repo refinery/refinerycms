@@ -1,6 +1,7 @@
 ## 1.0.6 [31 August 2011]
 
 * Added support for Devise `~> 1.4.3`. [Philip Arndt](https://github.com/parndt)
+* Removed dependency on Rails but added dependencies to its components, like activerecord, where they are used. [Philip Arndt](https://github.com/parndt)
 * [See full list](https://github.com/resolve/refinerycms/compare/1.0.5...1.0.6)
 
 ## 1.0.5 [31 August 2011]
