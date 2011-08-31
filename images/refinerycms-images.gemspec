@@ -3,10 +3,10 @@
 
 Gem::Specification.new do |s|
   s.name              = %q{refinerycms-images}
-  s.version           = %q{1.0.7}
+  s.version           = %q{1.0.8}
   s.summary           = %q{Images engine for Refinery CMS}
   s.description       = %q{Handles all image upload and processing functionality in Refinery CMS.}
-  s.date              = %q{2011-08-31}
+  s.date              = %q{2011-09-01}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
   s.rubyforge_project = %q{refinerycms}
@@ -96,7 +96,7 @@ Gem::Specification.new do |s|
     'spec/uploads/beach.jpeg'
   ]
 
-  s.add_dependency 'refinerycms-core', '= 1.0.7'
+  s.add_dependency 'refinerycms-core', '= 1.0.8'
   s.add_dependency 'activerecord',     '~> 3.0.10'
   s.add_dependency 'dragonfly',        '~> 0.9.0'
   s.add_dependency 'rack-cache',       '>= 0.5.3'

@@ -3,10 +3,10 @@
 
 Gem::Specification.new do |s|
   s.name              = %q{refinerycms-settings}
-  s.version           = %q{1.0.7}
+  s.version           = %q{1.0.8}
   s.summary           = %q{Settings engine for Refinery CMS}
   s.description       = %q{The default settings engine that is required by Refinery CMS core. Adds programmer creatable, user editable settings for each engine.}
-  s.date              = %q{2011-08-31}
+  s.date              = %q{2011-09-01}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
   s.rubyforge_project = %q{refinerycms}
@@ -87,5 +87,5 @@ Gem::Specification.new do |s|
     'spec/models/refinery_setting_spec.rb'
   ]
 
-  s.add_dependency 'refinerycms-base', '= 1.0.7'
+  s.add_dependency 'refinerycms-base', '= 1.0.8'
 end
