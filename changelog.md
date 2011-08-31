@@ -1,3 +1,8 @@
+## 1.0.7 [31 August 2011]
+
+* No change, just fixing corruption in the 1.0.6 gem caused by Syck. [Philip Arndt](https://github.com/parndt)
+* [See full list](https://github.com/resolve/refinerycms/compare/1.0.6...1.0.7)
+
 ## 1.0.6 [31 August 2011]
 
 * Added support for Devise `~> 1.4.3`. [Philip Arndt](https://github.com/parndt)
