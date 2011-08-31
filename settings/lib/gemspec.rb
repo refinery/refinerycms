@@ -21,6 +21,8 @@ Gem::Specification.new do |s|
   s.require_paths     = %w(lib)
   s.executables       = %w(#{Pathname.glob(gempath.join('bin/*')).map{|d| d.relative_path_from(gempath)}.sort.join(" ")})
 
+  s.add_dependency    'activerecord', '~> 3.0.10'
+
   s.files             = [
     '#{%w( **/{*,.rspec,.gitignore,.yardopts} ).map { |file| Pathname.glob(gempath.join(file)) }.flatten.reject{|f|
       !f.exist? or f.to_s =~ /\.gem$/ or (f.directory? and f.children.empty?)

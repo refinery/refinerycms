@@ -15,6 +15,8 @@ Gem::Specification.new do |s|
   s.require_paths     = %w(lib)
   s.executables       = %w()
 
+  s.add_dependency    'activerecord', '~> 3.0.10'
+
   s.files             = [
     'app',
     'app/controllers',
