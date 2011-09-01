@@ -7,7 +7,7 @@
           <% page.translations.each do |translation| %>
             <% if translation.title.present? %>
               <%= link_to refinery_icon_tag("flags/#{translation.locale}.png", :size => '16x11'),
-                        main_app.edit_refinery_admin_page_path(page, :switch_locale => locale),
+                        main_app.edit_refinery_admin_page_path(page, :switch_locale => translation.locale),
                         :class => 'locale' %>
             <% end %>
           <% end %>

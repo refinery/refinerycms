@@ -40,6 +40,7 @@ describe "pages with translations" do
       p = ::Refinery::Page.find('news')
       within "#refinery_page_#{p.id}" do
         page.should have_content('News')
+        page.find_link('Edit this page')[:href].should include('news')
       end
     end
 
@@ -66,22 +67,25 @@ describe "pages with translations" do
     before do
       visit refinery_admin_pages_path
       click_link "Add new page"
-      fill_in "Title", :with => "News"
-      click_button "Save"
-
-      p = ::Refinery::Page.find('news')
-      within "#refinery_page_#{p.id}" do
-        click_link "Application_edit"
-      end
       within "#switch_locale_picker" do
         click_link "Ru"
       end
       fill_in "Title", :with => "Новости"
       click_button "Save"
+
+      p = ::Refinery::Page.last
+      within "#refinery_page_#{p.id}" do
+        click_link "Application_edit"
+      end
+      within "#switch_locale_picker" do
+        click_link "En"
+      end
+      fill_in "Title", :with => "News"
+      click_button "Save"
     end
 
     it "should succeed" do
-      page.should have_content("'Новости' was successfully updated.")
+      page.should have_content("'News' was successfully updated.")
       Refinery::Page.count.should == 2
     end
 
@@ -100,18 +104,26 @@ describe "pages with translations" do
       end
     end
 
-    it "should show correct language in frontend menu" do
+    it "should use the slug from the default locale in admin" do
+      p = ::Refinery::Page.find('news')
+      within "#refinery_page_#{p.id}" do
+        page.find_link('Edit this page')[:href].should include('news')
+      end
+    end
+
+    it "should show correct language and slugs for default locale" do
       visit "/"
 
       within "#menu" do
-        page.should have_content('News')
-        page.should have_css('a', :href => 'news')
+        page.find_link('News')[:href].should include('news')
       end
+    end
 
+    it "should show correct language and slugs for second locale" do
       visit "/ru"
 
       within "#menu" do
-        page.should have_content('Новости')
+        page.find_link('Новости')[:href].should include('%D0%BD%D0%BE%D0%B2%D0%BE%D1%81%D1%82%D0%B8')
       end
     end
   end
@@ -153,11 +165,19 @@ describe "pages with translations" do
       end
     end
 
+    it "should use use ID instead of slug in admin" do
+      p = ::Refinery::Page.find('новости')
+      within "#refinery_page_#{p.id}" do
+        page.find_link('Edit this page')[:href].should include(p.id.to_s)
+      end
+    end
+
     it "should show in frontend menu for 'ru' locale" do
       visit "/ru"
 
       within "#menu" do
         page.should have_content('Новости')
+        page.should have_css('a', :href => 'новости')
       end
     end
 
