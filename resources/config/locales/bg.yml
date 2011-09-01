@@ -1,0 +1,35 @@
+bg:
+  plugins:
+    refinery_files:
+      title: Файлове
+      description: Качване на файлове и връзки към тях
+  admin:
+    resources:
+      delete: Изтриване на тази файл завинаги
+      edit: Редактиране на този файл
+      form:
+        download_current: Изтеглете текущия файл
+        or: или
+        replace: " го заменете с нов..."
+        maximum_file_size: Максималната големина на файл е %{megabytes} мегабайта.
+      resource:
+        download: Изтегляне на този файл (%{size})
+      actions:
+        upload_new: Качване на нов файл
+      records:
+        no_files_yet: Все още няма файлове. Натиснете "Качване на нов файл", за да добавите нов.
+      insert:
+        existing: Текущ файл
+        new: Нов файл
+        no_files: Няма файлове.
+      existing_resource:
+        link_to_file: Връзка към този файл
+        button_text: Вмъкване
+  activerecord:
+    models:
+      resource: файл
+    errors:
+      models:
+        resource:
+          blank: Трябва да укажете файл за качване
+          too_long: Размерът на файла трябва да бъде по-малък от %{count}
