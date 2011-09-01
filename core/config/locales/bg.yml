@@ -1,0 +1,78 @@
+bg:
+  js:
+    admin:
+      confirm_changes: Всички промени, които сте направили ще бъдат загубени. Сигурни ли сте, че искате да продължите без запис?
+  plugins:
+    refinery_core:
+      title: Refinery
+      description: Основна добавка за Refinery
+    refinery_dialogs:
+      title: Dialogs
+      description: Добавка за диалози за Refinery
+  welcome:
+    there_are_no_users: "Все още няма потребители, затова ще създадем първо Вашия."
+    remember_admin_location: "Запомнете, че административната зона на Refinery се намира в:"
+    lets_start: Добре, нека да направим настройките Ви за вход...
+    continue: Продължение...
+  admin:
+    menu:
+      reorder_menu: Пренареждане на менюто
+      reorder_menu_done: Запис на текущото подреждане на менюто
+    dialogs:
+      show:
+        save: Запис
+        cancel: Отказ
+  refinery:
+    crudify:
+      created: 'Елемента "%{what}" бе създаден успешно.'
+      updated: 'Елемента "%{what}" бе актуализиран успешно.'
+      destroyed: 'Елемента "%{what}" бе премахнат успешно.'
+  shared:
+    site_bar:
+      log_out: Изход
+      switch_to_your_website: Превключване към Вашия сайт
+      switch_to_your_website_editor: Превключване към редактора на Вашия сайт
+    admin:
+      continue_editing:
+        save_and_continue_editing: 'Запис и продължение'
+      form_actions:
+        save: Запис
+        cancel: Отказ
+        cancel_lose_changes: При отказ, ще загубите всички промени, които сте направили тук
+        delete: Изтриване
+        close: Затваряне
+      image_picker:
+        none_selected: 'Все още няма избран(а) %(what). Моля, цъкнете тук, за да добавите един(а).'
+        remove_current: 'Премахване на текущия(ата) %{what}'
+        change: Цъкнете тук, за да изберете изображение
+        show: Показване
+      resource_picker:
+        download_current: Изтегляне на текущия файл
+        opens_in_new_window: Отваряне в нов прозорец
+        remove_current: "Премахване на текущия файл"
+        no_resource_selected: 'В момента няма избран файл. Моля, цъкнете тук за да добавите един.'
+        name: Добавяне на файл
+        current: Текущ файл
+      search:
+        button_text: Търсене
+        results_for: 'Резултати от търсене на "%{query}"'
+        no_results: 'За съжаление нищо не бе намерено'
+      delete:
+        message: 'Сигурни ли сте, че искате да изтриете "%{title}"?'
+      error_messages:
+        problems_in_following_fields: Има проблем със следните полета
+      help: помощ
+    message:
+      close: Затваряне
+      close_this_message: Затваряне на това съобщение
+    draft_page_message:
+      not_live: Тази страница все още е чернова и не е готова за публично преглеждане.
+    footer:
+      copyright: "© %{year} %{site_name} Всички права запазени."
+    no_script:
+      enable_javascript_html: За да работи напълно тази страница е необходим JavaScript.
+      here_are: Ето
+      instructions_enable_javascript_html: инструкции, как да разрешите използването на JavaScript във Вашия уеб браузър.
+  time:
+    formats:
+      short: "%A, %d %B %Y"

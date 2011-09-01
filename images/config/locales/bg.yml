@@ -1,0 +1,43 @@
+bg:
+  plugins:
+    refinery_images:
+      title: Изображения
+      description: Управление на изображения
+  admin:
+    images:
+      delete: Изтриване на това изображение завинаги
+      edit: Редактиране на това изображение
+      form:
+        image: Изображение
+        use_current_image: Използвайте текущото изображение
+        or: или
+        replace_image: " го заменете с ново..."
+        current_image: Текущо изображение
+        maximum_image_size: Максималната големина на изображението е %{megabytes} мегабайта.
+      actions:
+        create_new_image: Добавяне на ново изображение
+      records:
+        no_images_yet: Все още няма изображения. Натиснете "Добавяне на ново изображение", за да качите ново.
+      index:
+        view:
+          switch_to: Преглед като %{view_name}
+          list: списък
+          grid: решетка
+      grid_view:
+        view_live_html: Преглед на това изображение <br/><em>(ще се отвори в нов прозорец)</em>
+      existing_image:
+        button_text: Вмъкване
+        resize_image: Оразмеряване на изображението?
+        size: Големина
+      insert:
+        existing_image: Галерия
+        new_image: Качване
+  activerecord:
+    models:
+      image: изображение
+    errors:
+      models:
+        image:
+          blank: Трябва да укажете изображение за качване
+          too_long: Размерът на изображението трябва да бъде по-малък от %{count}
+          incorrect_format: 'Вашето изображение трябва да бъде JPG, PNG или GIF'
