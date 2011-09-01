@@ -19,7 +19,7 @@ Take a look at "http://rubygems.org/gems/refinerycms":http://rubygems.org/gems/r
 Edit your +Gemfile+ to reference the latest version of Refinery (a later version than the one shown "may exist":https://rubygems.org/gems/refinerycms/versions).
 
 <ruby>
-gem 'refinerycms', '= 1.0.0'
+gem 'refinerycms', '= 1.0.8'
 </ruby>
 
 Now install the new gems using bundler ('bundle install' is outdated):
@@ -29,6 +29,8 @@ $ bundle update
 </shell>
 
 Use the rails generator to update your Refinery installation:
+
+TIP: You only need to run the below step when upgrading between major or minor versions. Bug fix releases should not change the database structure. For example, if you are going from 1.0.3 -> 1.0.8 (Bugfix) you do not need to run this command. 
 
 <shell>
 $ rails generate refinerycms --update
