@@ -348,12 +348,7 @@ module Refinery
       if self.title.present?
         title = [self.title]
       else
-        self.translations.each do |t|
-          if t.title.present?
-            title = [t.title]
-            break
-          end
-        end
+        title = [self.translations.detect {|t| t.title.present?}.title]
       end
 
       title << "<em>(#{::I18n.t('hidden', :scope => 'refinery.admin.pages.page')})</em>" unless show_in_menu?
