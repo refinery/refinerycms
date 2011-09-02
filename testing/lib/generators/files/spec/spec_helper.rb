@@ -8,6 +8,7 @@ def setup_environment
   require 'rspec/rails'
   require 'capybara/rspec'
   require 'factory_girl'
+  require 'refinerycms-testing'
 
   Rails.backtrace_cleaner.remove_silencers!
 
