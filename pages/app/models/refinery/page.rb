@@ -81,8 +81,8 @@ module Refinery
                                 :menu_title, :browser_title, :all_page_part_content]
 
     before_destroy :deletable?
-    after_save :reposition_parts!, :invalidate_cached_urls, :expire_page_caching
-    after_update :invalidate_cached_urls
+    after_save :reposition_parts!, :invalidate_cached_urls, :expire_page_caching, :delete_invalid_translations
+    after_update :invalidate_cached_urls, :delete_invalid_translations
     after_destroy :expire_page_caching
 
     scope :live, where(:draft => false)
@@ -343,11 +343,12 @@ module Refinery
     end
 
     # In the admin area we use a slightly different title to inform the which pages are draft or hidden pages
+    # We show the title from the next available locale if there is no title for the current locale
     def title_with_meta
-      title = if self.title.nil?
-        [self.class.with_globalize(:id => self.id, :locale => Globalize.locale).first.try(:title).to_s]
+      if self.title.present?
+        title = [self.title]
       else
-        [self.title.to_s]
+        title = [self.translations.detect {|t| t.title.present?}.title]
       end
 
       title << "<em>(#{::I18n.t('hidden', :scope => 'refinery.admin.pages.page')})</em>" unless show_in_menu?
@@ -395,6 +396,13 @@ module Refinery
 
     def expire_page_caching
       self.class.expire_page_caching
+    end
+
+    # Needed until globalize3 has validation checking
+    def delete_invalid_translations
+      translations.each do |t|
+        t.delete unless t.title
+      end
     end
   end
 end
