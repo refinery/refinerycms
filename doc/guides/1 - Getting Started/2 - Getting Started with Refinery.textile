@@ -217,10 +217,10 @@ Replace the contents of +app/views/pages/show.html.erb+ with this:
 
 <erb>
 <section id='body_content'>
-  <%=raw @page[:body] %>
+  <%=raw @page.content_for(:body) %>
 </section>
 <section id='side_body_content'>
-  <%=raw @page[:side_body] %>
+  <%=raw @page.content_for(:side_body) %>
 </section>
 </erb>
 
@@ -235,7 +235,7 @@ When you edit the about page you'll see something like this:
 You'll notice two tabs on the page "Body" and "Side Body". These are +Page Parts+, or in other words a single piece of content attached to this page that you can render in your view. There is a "Body" tab with some content on this screen, to render that same content in your view you put:
 
 <erb>
-<%=raw @page[:body] %>
+<%=raw @page.content_for(:body) %>
 </erb>
 
 h4. Styling your views
