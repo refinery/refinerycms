@@ -4,7 +4,7 @@ class CreateRefinerycmsCoreSchema < ActiveRecord::Migration
       create_table ::Slug.table_name, :force => true do |t|
         t.string   "name"
         t.integer  "sluggable_id"
-        t.integer  "sequence",                     :default => 1, :null => false
+        t.integer  "sequence",       :default => 1, :null => false
         t.string   "sluggable_type", :limit => 40
         t.string   "scope",          :limit => 40
         t.datetime "created_at"
