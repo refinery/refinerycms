@@ -37,8 +37,8 @@ module Refinery
 
           app.config.middleware.insert_before 'Dragonfly::Middleware', 'Rack::Cache', {
             :verbose     => Rails.env.development?,
-            :metastore   => "file:#{Rails.root.join('tmp', 'dragonfly', 'cache', 'meta')}",
-            :entitystore => "file:#{Rails.root.join('tmp', 'dragonfly', 'cache', 'body')}"
+            :metastore   => "file:#{URI.encode(Rails.root.join('tmp', 'dragonfly', 'cache', 'meta').to_s)}",
+            :entitystore => "file:#{URI.encode(Rails.root.join('tmp', 'dragonfly', 'cache', 'body').to_s)}"
           }
         end
       end
