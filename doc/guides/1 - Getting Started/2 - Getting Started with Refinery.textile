@@ -118,7 +118,7 @@ At your application root:
 $ bundle exec rake
 </shell>
 
-This will run cucumber and rspec tests. If tests don't run, check *"this guide":/guides/how-to-enable-testing-in-your-application*
+This will run cucumber and rspec tests. If tests don't run, check *"this guide":/guides/how-to-enable-testing-in-your-application*.
 
 h3. Hello, Refinery!
 
