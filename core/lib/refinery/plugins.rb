@@ -13,49 +13,49 @@ module Refinery
 
     def find_by_model(model)
       model = model.constantize if model.is_a? String
-      self.detect { |plugin| plugin.activity.any? {|activity| activity.class == model } }
+      detect { |plugin| plugin.activity.any? {|activity| activity.class == model } }
     end
 
     def find_by_name(name)
-      self.detect { |plugin| plugin.name == name }
+      detect { |plugin| plugin.name == name }
     end
     alias :[] :find_by_name
 
     def find_by_title(title)
-      self.detect { |plugin| plugin.title == title }
+      detect { |plugin| plugin.title == title }
     end
 
     def in_menu
       _in_menu = self.class.new
-      self.each { |p| _in_menu << p unless p.hide_from_menu }
+      each { |p| _in_menu << p unless p.hide_from_menu }
       _in_menu
     end
 
     def names
-      self.map(&:name)
+      map(&:name)
     end
 
     def pathnames
-      self.map(&:pathname).compact.uniq
+      map(&:pathname).compact.uniq
     end
 
     def titles
-      self.map(&:title)
+      map(&:title)
     end
 
     class << self
       def active
-        @active_plugins ||= self.new
+        @active_plugins ||= new
       end
 
       def always_allowed
-        _always_allowed = self.new
+        _always_allowed = new
         registered.each { |p| _always_allowed << p if p.always_allow_access? }
         _always_allowed
       end
 
       def registered
-        @registered_plugins ||= self.new
+        @registered_plugins ||= new
       end
 
       def activate(name)
@@ -67,7 +67,7 @@ module Refinery
       end
 
       def set_active(names)
-        @active_plugins = self.new
+        @active_plugins = new
 
         names.each do |name|
           activate(name)
