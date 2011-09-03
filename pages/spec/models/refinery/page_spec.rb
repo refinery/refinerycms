@@ -4,7 +4,7 @@ module Refinery
   describe Page do
 
     let(:page) {
-      ::Refinery::Page.create!(:title => 'RSpec is great for testing too', :deletable => true)
+      subject.class.create!(:title => 'RSpec is great for testing too', :deletable => true)
     }
     let(:child) { page.children.create(:title => 'The child page') }
 
@@ -95,7 +95,7 @@ module Refinery
 
     context 'custom slugs' do
       let(:page_with_custom_slug) {
-        ::Refinery::Page.create!(:title => 'RSpec is great for testing too', :custom_slug => 'custom-page-slug')
+        subject.class.create!(:title => 'RSpec is great for testing too', :custom_slug => 'custom-page-slug')
       }
       let(:child_with_custom_slug) { page.children.create(:title => 'The child page', :custom_slug => 'custom-child-slug') }
 
@@ -187,9 +187,9 @@ module Refinery
     end
 
     context "should add url suffix" do
-      let(:reserved_word) { ::Refinery::Page.friendly_id_config.reserved_words.last }
+      let(:reserved_word) { subject.class.friendly_id_config.reserved_words.last }
       let(:page_with_reserved_title) {
-        ::Refinery::Page.create!(:title => reserved_word, :deletable => true)
+        subject.class.create!(:title => reserved_word, :deletable => true)
       }
       let(:child_with_reserved_title_parent) {
         page_with_reserved_title.children.create(:title => 'reserved title child page')
