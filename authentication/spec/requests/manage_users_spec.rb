@@ -34,7 +34,7 @@ describe "manage users" do
   end
 
   describe "destroy" do
-    let!(:user) { Factory(:user, :username => "ugisozols") }
+    let!(:user) { FactoryGirl.create(:user, :username => "ugisozols") }
 
     it "allows to destroy only regular user" do
       visit refinery_admin_users_path

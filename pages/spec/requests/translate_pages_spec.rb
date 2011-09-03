@@ -3,8 +3,8 @@ require "spec_helper"
 
 describe "translate pages" do
   before(:each) do
-    Factory(:refinery_user)
-    user = Factory(:refinery_translator, :password => "123456",
+    FactoryGirl.create(:refinery_user)
+    user = FactoryGirl.create(:refinery_translator, :password => "123456",
                                          :password_confirmation => "123456")
 
     visit new_refinery_user_session_path
@@ -30,7 +30,7 @@ describe "translate pages" do
   describe "add page to second locale" do
     before(:each) do
       Refinery::I18n.stub(:frontend_locales).and_return([:en, :lv])
-      Factory(:page)
+      FactoryGirl.create(:page)
     end
 
     it "should succeed" do
@@ -50,7 +50,7 @@ describe "translate pages" do
   end
 
   describe "delete page from main locale" do
-    before(:each) { Factory(:page) }
+    before(:each) { FactoryGirl.create(:page) }
 
     it "should not succeed" do
       visit refinery_admin_pages_path

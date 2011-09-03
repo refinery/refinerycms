@@ -32,7 +32,7 @@ describe "manage images" do
   end
 
   context "edit/update" do
-    let!(:image) { Factory(:image) }
+    let!(:image) { FactoryGirl.create(:image) }
 
     it "updates image" do
       visit refinery_admin_images_path
@@ -52,7 +52,7 @@ describe "manage images" do
   end
 
   context "destroy" do
-    let!(:image) { Factory(:image) }
+    let!(:image) { FactoryGirl.create(:image) }
 
     it "removes image" do
       visit refinery_admin_images_path
@@ -66,7 +66,7 @@ describe "manage images" do
   end
 
   describe "switch view" do
-    let!(:image) { Factory(:image) }
+    let!(:image) { FactoryGirl.create(:image) }
 
     it "shows images in grid" do
       visit refinery_admin_images_path

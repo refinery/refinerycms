@@ -3,8 +3,8 @@ require 'spec_helper'
 module Refinery
   describe User do
 
-    let(:user) { Factory(:user) }
-    let(:refinery_user) { Factory(:refinery_user) }
+    let(:user) { FactoryGirl.create(:user) }
+    let(:refinery_user) { FactoryGirl.create(:refinery_user) }
 
     context "Roles" do
       context "add_role" do
@@ -78,9 +78,9 @@ module Refinery
     end
 
     describe "#can_delete?" do
-      let(:user_not_persisted) { Factory.build(:refinery_user) }
+      let(:user_not_persisted) { FactoryGirl.build(:refinery_user) }
       let(:super_user) do
-        super_user = Factory(:refinery_user)
+        super_user = FactoryGirl.create(:refinery_user)
         super_user.add_role(:superuser)
         super_user
       end

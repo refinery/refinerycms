@@ -5,7 +5,7 @@ describe "search" do
 
   context "when searched item exists" do
     describe "image engine" do
-      before(:each) { Factory(:image) }
+      before(:each) { FactoryGirl.create(:image) }
 
       it "returns found image" do
         visit refinery_admin_images_path
@@ -16,7 +16,7 @@ describe "search" do
     end
 
     describe "resource engine" do
-      before(:each) { Factory(:resource) }
+      before(:each) { FactoryGirl.create(:resource) }
 
       it "returns found resource" do
         visit refinery_admin_resources_path
@@ -27,7 +27,7 @@ describe "search" do
     end
 
     describe "page engine" do
-      before(:each) { Factory(:page, :title => "Ugis Ozols") }
+      before(:each) { FactoryGirl.create(:page, :title => "Ugis Ozols") }
 
       it "returns found page" do
         visit refinery_admin_pages_path

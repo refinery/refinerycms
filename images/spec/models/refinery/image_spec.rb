@@ -3,7 +3,7 @@ require 'spec_helper'
 module Refinery
   describe Image do
 
-    let(:image) { Factory(:image) }
+    let(:image) { FactoryGirl.create(:image) }
 
     context "with valid attributes" do
       it "should create successfully" do

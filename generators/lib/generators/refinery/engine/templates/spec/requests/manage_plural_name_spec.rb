@@ -5,8 +5,8 @@ describe "manage <%= plural_name %>" do
 <% if (title = attributes.detect { |a| a.type.to_s == "string" }).present? %>
   describe "<%= plural_name %> list" do
     before(:each) do
-      Factory(:<%= singular_name %>, :<%= title.name %> => "UniqueTitleOne")
-      Factory(:<%= singular_name %>, :<%= title.name %> => "UniqueTitleTwo")
+      FactoryGirl.create(:<%= singular_name %>, :<%= title.name %> => "UniqueTitleOne")
+      FactoryGirl.create(:<%= singular_name %>, :<%= title.name %> => "UniqueTitleTwo")
     end
 
     it "shows two items" do
