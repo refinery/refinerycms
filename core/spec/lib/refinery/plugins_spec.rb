@@ -100,7 +100,7 @@ module Refinery
       it 'identifies as Refinery::Plugins' do
         subject.class.active.class.should == subject.class
       end
-      
+
       it 'only contains items that are registered' do
         subject.class.set_active(%w(my_plugin))
         subject.class.active.any?.should be_true

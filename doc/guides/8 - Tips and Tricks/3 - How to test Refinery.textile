@@ -6,6 +6,10 @@ Refinery ships with a range of specs and cucumbers to test it. This guide will s
 
 endprologue.
 
+h3. First configure your Refinery application for testing
+<shell>
+rails g refinerycms_testing
+</shell>
 
 h3. Running the Tests
 

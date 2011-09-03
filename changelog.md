@@ -5,7 +5,33 @@
 * Renamed `RefinerySetting` to `Refinery::Setting`. [Philip Arndt](https://github.com/parndt)
 * Added `--trace` option to bin/refinerycms. [Steven Heidel](http://github.com/stevenheidel)
 * Moved `/shared/*` to `/refinery/*` instead, including `/shared/admin/*` to `/refinery/admin/*` as it makes more sense. [Philip Arndt](https://github.com/parndt)
-* [See full list](https://github.com/resolve/refinerycms/compare/1.0.4...master)
+* [See full list](https://github.com/resolve/refinerycms/compare/1.0.8...master)
+
+## 1.0.8 [1 September 2011]
+
+* `refinerycms-core` now depends on rails so that users of 1.0.x can be confident of the entire stack being present as before. [Philip Arndt](https://github.com/parndt)
+* No longer requiring autotest as a dependency of `refinerycms-testing`. [Philip Arndt](https://github.com/parndt)
+* Improved 'wrong rails version' error message on install with a more helpful guide on how to specify a rails version. [Philip Arndt](https://github.com/parndt)
+* [See full list](https://github.com/resolve/refinerycms/compare/1.0.7...1.0.8)
+
+## 1.0.7 [31 August 2011]
+
+* No change, just fixing corruption in the 1.0.6 gem caused by Syck. [Philip Arndt](https://github.com/parndt)
+* [See full list](https://github.com/resolve/refinerycms/compare/1.0.6...1.0.7)
+
+## 1.0.6 [31 August 2011]
+
+* Added support for Devise `~> 1.4.3`. [Philip Arndt](https://github.com/parndt)
+* Removed dependency on Rails but added dependencies to its components, like activerecord, where they are used. [Philip Arndt](https://github.com/parndt)
+* [See full list](https://github.com/resolve/refinerycms/compare/1.0.5...1.0.6)
+
+## 1.0.5 [31 August 2011]
+
+* jQuery UI updated to `1.8.15` from `1.8.9`. [Uģis Ozols](https://github.com/ugisozols)
+* Removed Duostack hosting option from the installer because the platform isn't online anymore. [Philip Arndt](https://github.com/parndt)
+* Fixed non raw output into noscript section of the backend. [Philip Arndt](https://github.com/parndt)
+* `will_paginate` updated to `~> 3.0.0` now that it has gone final. [Uģis Ozols](https://github.com/ugisozols)
+* [See full list](https://github.com/resolve/refinerycms/compare/1.0.4...1.0.5)
 
 ## 1.0.4 [11 August 2011]
 
