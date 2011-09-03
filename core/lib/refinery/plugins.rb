@@ -1,10 +1,6 @@
 module Refinery
   class Plugins < Array
 
-    def initialize
-      @plugins = []
-    end
-
     def find_activity_by_model(model)
       unless (plugin = find_by_model(model)).nil?
         plugin.activity.detect {|activity| activity.class == model}
