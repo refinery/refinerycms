@@ -4,7 +4,7 @@ require File.expand_path('../generators/testing_generator', __FILE__)
 
 module Refinery
   module Testing
-    
+
     autoload :ControllerMacros, 'refinery/testing/controller_macros'
     autoload :RequestMacros, 'refinery/testing/request_macros'
 

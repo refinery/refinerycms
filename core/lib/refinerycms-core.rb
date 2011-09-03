@@ -123,7 +123,7 @@ module Refinery
           config.min_word_size = 3
         end
       end
-      
+
       initializer "refinery.assets.precompile" do |app|
          app.config.assets.precompile += ["refinery/*", "refinery/icons/*", "wymeditor/lang/*", "wymeditor/skins/refinery/*", "wymeditor/skins/refinery/**/*"]
       end

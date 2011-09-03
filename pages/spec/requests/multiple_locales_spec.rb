@@ -5,10 +5,10 @@ describe "pages with translations" do
   login_refinery_user
 
   before(:each) do
-    ::Refinery::Setting.set(:i18n_translation_frontend_locales, 
+    ::Refinery::Setting.set(:i18n_translation_frontend_locales,
                            {:value => [:en, :ru], :scoping => 'refinery'})
 
-    # Create a home page in both locales (needed to test menus)    
+    # Create a home page in both locales (needed to test menus)
     home_page =  ::Refinery::Page.create!(:title => 'Home', :link_url => '/', :menu_match => "^/$")
     Globalize.locale = :ru
     home_page.title = 'Домашняя страница'
@@ -190,5 +190,5 @@ describe "pages with translations" do
       end
     end
   end
- 
+
 end

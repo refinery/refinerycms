@@ -36,7 +36,7 @@ module ::Refinery
       # Massage environment files
       %w(development test production).map{|e| "config/environments/#{e}.rb"}.each do |env|
         gsub_file env, "config.assets.compile = false", "config.assets.compile = true", :verbose => false
-                
+
         unless (env_file_contents = Rails.root.join(env).read) =~ %r{Refinery.rescue_not_found}
           append_file env, "Refinery.rescue_not_found = #{env.split('/').last.split('.rb').first == 'production'}\n"
         end
