@@ -47,7 +47,7 @@ module Refinery
       end
 
       def always_allowed
-        new(registered.reject { |p| !p.always_allow_access? })
+        new registered.select(&:"always_allow_access?")
       end
 
       def registered
