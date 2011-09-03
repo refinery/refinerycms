@@ -26,7 +26,9 @@ module Refinery
     end
 
     def in_menu
-      self.reject{ |p| p.hide_from_menu }
+      _in_menu = self.class.new
+      self.each { |p| _in_menu << p unless p.hide_from_menu }
+      _in_menu
     end
 
     def names
@@ -47,7 +49,9 @@ module Refinery
       end
 
       def always_allowed
-        registered.reject { |p| !p.always_allow_access? }
+        _always_allowed = self.new
+        registered.each { |p| _always_allowed << p if p.always_allow_access? }
+        _always_allowed
       end
 
       def registered
