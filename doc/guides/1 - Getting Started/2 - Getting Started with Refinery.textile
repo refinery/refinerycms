@@ -8,7 +8,7 @@ This guide covers getting up and running with Refinery CMS. After reading it, yo
 
 endprologue.
 
-WARNING. This guide is based on Refinery CMS 1.0.3 so some of the code shown here may not work in earlier versions of Refinery.
+WARNING. This guide is based on Refinery CMS 1.0.8 so some of the code shown here may not work in earlier versions of Refinery.
 
 h3. Guide Assumptions
 
