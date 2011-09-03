@@ -37,7 +37,9 @@ module Refinery
       end
 
       it 'unless you really want it to! >:]' do
-        page.destroy.should be
+        page.deletable = false
+        page_cannot_be_destroyed
+        page.destroy!.should be
       end
     end
 
