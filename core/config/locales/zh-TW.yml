@@ -65,12 +65,12 @@ zh-TW:
     footer:
       copyright: Copyright © %{year} %{site_name}
     no_script:
-      enable_javascript: 您必須要啟動支援 JavaScript 才能夠看到這個頁面提供的所有功能.
+      enable_javascript_html: 您必須要啟動支援 JavaScript 才能夠看到這個頁面提供的所有功能.
       here_are: 這裡是
-      instructions_enable_javascript: 如果讓您的瀏覽器啟動支援 JavaScript 的說明
+      instructions_enable_javascript_html: 如果讓您的瀏覽器啟動支援 JavaScript 的說明
   time:
     formats:
       short: "%A, %d %B %Y"
-  pagination:
-    next: "&raquo;"
-    previous: "&laquo;"
+  will_paginate:
+    previous_label: "&laquo;"
+    next_label: "&raquo;"

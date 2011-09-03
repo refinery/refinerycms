@@ -24,32 +24,18 @@ module ::Refinery
 
       unless self.options[:update]
         # First, effectively move / rename files that get in the way of Refinery CMS
-        %w(public/index.html app/views/layouts/application.html.erb app/assets/stylesheets/application.css app/assets/stylesheets/application.css.scss).each do |roadblock|
+        %w(public/index.html app/views/layouts/application.html.erb).each do |roadblock|
           if (roadblock_path = Rails.root.join(roadblock)).file?
             create_file "#{roadblock}.backup",
                         :verbose => true do roadblock_path.read end
             remove_file roadblock_path, :verbose => true
           end
         end
-
-        # Copy asset files (JS, CSS) so they're ready to use.
-        %w(application.css.scss formatting.css.scss home.css.scss theme.css.scss).map{ |ss|
-          Refinery.roots('core').join('app', 'assets', 'stylesheets', ss)
-        }.reject{|ss| !ss.file?}.each do |stylesheet|
-          copy_file stylesheet,
-                    Rails.root.join('app', 'assets', 'stylesheets', stylesheet.basename),
-                    :verbose => true
-        end
-        copy_file Refinery.roots('core').join('app', 'assets', 'javascripts', 'admin.js'),
-                  Rails.root.join('app', 'assets', 'javascripts', 'admin.js'),
-                  :verbose => true
       end
 
-      # Ensure the config.serve_static_assets setting is present and enabled
+      # Massage environment files
       %w(development test production).map{|e| "config/environments/#{e}.rb"}.each do |env|
-        gsub_file env, %r{#.*config.serve_static_assets}, 'config.serve_static_assets', :verbose => false
-
-        gsub_file env, "serve_static_assets = false", "serve_static_assets = true # Refinery CMS requires this to be true", :verbose => false
+        gsub_file env, "config.assets.compile = false", "config.assets.compile = true", :verbose => false
 
         unless (env_file_contents = Rails.root.join(env).read) =~ %r{Refinery.rescue_not_found}
           append_file env, "Refinery.rescue_not_found = #{env.split('/').last.split('.rb').first == 'production'}\n"

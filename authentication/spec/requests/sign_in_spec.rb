@@ -2,7 +2,7 @@ require "spec_helper"
 
 describe "sign in" do
   before(:each) do
-    Factory(:refinery_user, :username => "ugisozols",
+    FactoryGirl.create(:refinery_user, :username => "ugisozols",
                             :password => "123456",
                             :password_confirmation => "123456")
     visit new_refinery_user_session_path

@@ -1,4 +1,4 @@
-<%= paginate @resources %>
+<%= will_paginate @resources %>
 <div class="<%= ['clearfix', 'pagination_frame', pagination_css_class].compact.join(' ') %>">
   <% group_by_date(@resources).each do |container|
        date = Date.parse((resource_group = container.last).first.created_at.to_s) %>

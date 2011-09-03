@@ -33,7 +33,7 @@
                          :link_to_arguments => {}
                        } %>
           </ul>
-          <%= paginate @pages, :id => 'pages_paginate' %>
+          <%= will_paginate @pages, :id => 'pages_paginate' %>
         </div>
       </div>
     </div>
@@ -100,10 +100,10 @@
               </li>
             <% end %>
           </ul>
-          <%= paginate @resources,
-                       :param_name => :resource_page,
-                       :params => {:paginating => "resource_file"},
-                       :id => 'resouces_paginate' %>
+          <%= will_paginate @resources,
+                           :param_name => :resource_page,
+                           :params => {:paginating => "resource_file"},
+                           :id => 'resouces_paginate' %>
         </div>
       </div>
     <% end %>

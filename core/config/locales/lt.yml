@@ -65,12 +65,12 @@ lt:
     footer:
       copyright: Teisės saugomos © %{year} %{site_name}
     no_script:
-      enable_javascript: Pilnam puslapio funkcionalumui reikia įjungti Javascript palaikymą.
+      enable_javascript_html: Pilnam puslapio funkcionalumui reikia įjungti Javascript palaikymą.
       here_are: Čia yra
-      instructions_enable_javascript: instrukcijos kaip įjungti Javascript palaikymą jūsų naršyklėje
+      instructions_enable_javascript_html: instrukcijos kaip įjungti Javascript palaikymą jūsų naršyklėje
   time:
     formats:
       short: "%A, %d %B %Y"
-  pagination:
-    next: "&raquo;"
-    previous: "&laquo;"
+  will_paginate:
+    previous_label: "&laquo;"
+    next_label: "&raquo;"

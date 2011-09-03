@@ -65,12 +65,12 @@ jp:
     footer:
       copyright: '著作権© %{year} %{site_name}'
     no_script:
-      enable_javascript: このページを快適にお使いになるにはJavaScriptを有効にする必要があります。
+      enable_javascript_html: このページを快適にお使いになるにはJavaScriptを有効にする必要があります。
       here_are:
-      instructions_enable_javascript: お使いのブラウザでJavaScriptを有効にする方法はこちら
+      instructions_enable_javascript_html: お使いのブラウザでJavaScriptを有効にする方法はこちら
   time:
     formats:
       short: "%A, %d %B %Y"
-  pagination:
-    next: "&raquo;"
-    previous: "&laquo;"
+  will_paginate:
+    previous_label: "&laquo;"
+    next_label: "&raquo;"

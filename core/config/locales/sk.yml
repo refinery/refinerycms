@@ -65,12 +65,12 @@ sk:
     footer:
       copyright: Copyright © %{year} %{site_name}
     no_script:
-      enable_javascript: Pre plnú funkčnosť tohto webu je nutné povoliť JavaScript.
+      enable_javascript_html: Pre plnú funkčnosť tohto webu je nutné povoliť JavaScript.
       here_are: Tu sú
-      instructions_enable_javascript: inštrukcie ako povoliť JavaScript vo vašom prehliadači
+      instructions_enable_javascript_html: inštrukcie ako povoliť JavaScript vo vašom prehliadači
   time:
     formats:
       short: "%A, %d %B %Y"
-  pagination:
-    next: "&raquo;"
-    previous: "&laquo;"
+  will_paginate:
+    previous_label: "&laquo;"
+    next_label: "&raquo;"

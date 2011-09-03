@@ -20,4 +20,4 @@ Additional Supported Field Types
   resource        - link to a resource picker dialogue
 
 Example:
-    rails generate refinery_engine product title:string description:text image:image brochure:resource
+    rails generate refinery:engine product title:string description:text image:image brochure:resource

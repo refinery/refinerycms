@@ -32,7 +32,7 @@ describe "manage resources" do
   end
 
   context "edit/update" do
-    let!(:resource) { Factory(:resource) }
+    let!(:resource) { FactoryGirl.create(:resource) }
 
     it "updates file" do
       visit refinery_admin_resources_path
@@ -53,7 +53,7 @@ describe "manage resources" do
   end
 
   context "destroy" do
-    let!(:resource) { Factory(:resource) }
+    let!(:resource) { FactoryGirl.create(:resource) }
 
     it "removes file" do
       visit refinery_admin_resources_path
@@ -67,7 +67,7 @@ describe "manage resources" do
   end
 
   context "download" do
-    let!(:resource) { Factory(:resource) }
+    let!(:resource) { FactoryGirl.create(:resource) }
 
     it "succeedes" do
       visit refinery_admin_resources_path

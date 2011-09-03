@@ -65,12 +65,12 @@ el:
     footer:
       copyright: Copyright © %{year} %{site_name}
     no_script:
-      enable_javascript: Για καλύτερα αποτελέσματα παρακαλώ ενεργοποιήστε την JavaScript.
+      enable_javascript_html: Για καλύτερα αποτελέσματα παρακαλώ ενεργοποιήστε την JavaScript.
       here_are: Εδώ είναι οι
-      instructions_enable_javascript: οδηγίες για να ενεργοποιήσετε την JavaScript στον browser σας
+      instructions_enable_javascript_html: οδηγίες για να ενεργοποιήσετε την JavaScript στον browser σας
   time:
     formats:
       short: "%A, %d %B %Y"
-  pagination:
-    next: "&raquo;"
-    previous: "&laquo;"
+  will_paginate:
+    previous_label: "&laquo;"
+    next_label: "&raquo;"

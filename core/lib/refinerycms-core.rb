@@ -1,6 +1,6 @@
 require 'acts_as_indexed'
 require 'truncate_html'
-require 'kaminari'
+require 'will_paginate'
 
 module Refinery
   autoload :Activity, File.expand_path('../refinery/activity', __FILE__)
@@ -76,6 +76,11 @@ module Refinery
         end
       end
 
+      # set per_page globally
+      config.to_prepare do
+        WillPaginate.per_page = 20
+      end
+
       # Register the plugin
       config.after_initialize do
         ::Refinery::Plugin.register do |plugin|
@@ -117,6 +122,10 @@ module Refinery
           config.index_file_depth = 3
           config.min_word_size = 3
         end
+      end
+
+      initializer "refinery.assets.precompile" do |app|
+         app.config.assets.precompile += ["refinery/*", "refinery/icons/*", "wymeditor/lang/*", "wymeditor/skins/refinery/*", "wymeditor/skins/refinery/**/*"]
       end
     end
   end

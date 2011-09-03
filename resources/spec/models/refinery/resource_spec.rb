@@ -3,7 +3,7 @@ require 'spec_helper'
 module Refinery
   describe Resource do
 
-    let(:resource) { Factory(:resource) }
+    let(:resource) { FactoryGirl.create(:resource) }
 
     context "with valid attributes" do
       it "should create successfully" do

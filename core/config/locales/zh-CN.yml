@@ -65,12 +65,12 @@ zh-CN:
     footer:
       copyright: 版权所有 © %{year} %{site_name}
     no_script:
-      enable_javascript: 这个页面需要打开Javascript以执行所有功能.
+      enable_javascript_html: 这个页面需要打开Javascript以执行所有功能.
       here_are: 这里是
-      instructions_enable_javascript: 打开Javascript的指引
+      instructions_enable_javascript_html: 打开Javascript的指引
   time:
     formats:
       short: "%A, %d %B %Y"
-  pagination:
-    next: "&raquo;"
-    previous: "&laquo;"
+  will_paginate:
+    previous_label: "&laquo;"
+    next_label: "&raquo;"

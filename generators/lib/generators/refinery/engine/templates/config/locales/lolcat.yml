@@ -1,9 +1,5 @@
 lolcat:
   refinery:
-    shared:
-      admin:
-        image_picker:
-          image: IMAGE
     plugins:
       <%= class_name.pluralize.underscore.downcase %>:
         title: <%= plural_name.titleize %>

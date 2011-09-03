@@ -32,7 +32,7 @@ describe "manage pages" do
     end
 
     context "when some pages exist" do
-      before(:each) { 2.times { Factory(:page) } }
+      before(:each) { 2.times { FactoryGirl.create(:page) } }
 
       it "shows reorder pages link" do
         visit refinery_admin_pages_path
@@ -77,7 +77,7 @@ describe "manage pages" do
   end
 
   describe "edit/update" do
-    before(:each) { Factory(:page, :title => "Update me") }
+    before(:each) { FactoryGirl.create(:page, :title => "Update me") }
 
     it "updates page" do
       visit refinery_admin_pages_path
@@ -95,7 +95,7 @@ describe "manage pages" do
 
   describe "destroy" do
     context "when page can be deleted" do
-      before(:each) { Factory(:page, :title => "Delete me") }
+      before(:each) { FactoryGirl.create(:page, :title => "Delete me") }
 
       it "will show delete button" do
         visit refinery_admin_pages_path
@@ -109,7 +109,7 @@ describe "manage pages" do
     end
 
     context "when page can't be deleted" do
-      before(:each) { Factory(:page, :title => "Indestructible",
+      before(:each) { FactoryGirl.create(:page, :title => "Indestructible",
                                      :deletable => false) }
 
       it "wont show delete button" do
@@ -122,7 +122,7 @@ describe "manage pages" do
   end
 
   context "duplicate page titles" do
-    before(:each) { Factory(:page, :title => "I was here first") }
+    before(:each) { FactoryGirl.create(:page, :title => "I was here first") }
 
     it "will append nr to url path" do
       visit new_refinery_admin_page_path

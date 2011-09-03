@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.version           = %q{2.0.0}
   s.summary           = %q{Core engine for Refinery CMS}
   s.description       = %q{The core of Refinery CMS. This handles the common functionality and is required by most engines}
-  s.date              = %q{2011-08-20}
+  s.date              = %q{2011-08-31}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
   s.rubyforge_project = %q{refinerycms}
@@ -22,11 +22,11 @@ Gem::Specification.new do |s|
   s.add_dependency 'friendly_id_globalize3',      '~> 3.2.1'
   s.add_dependency 'globalize3',                  '~> 0.2.0.beta3'
   s.add_dependency 'awesome_nested_set',          '~> 2.0'
-  s.add_dependency 'rails',                       '>= 3.1.0.rc6'
+  s.add_dependency 'rails',                       '~> 3.1.0'
   s.add_dependency 'truncate_html',               '~> 0.5'
-  s.add_dependency 'kaminari',                    '~> 0.12'
-  s.add_dependency 'sass-rails',                  '>= 3.1.0.rc.6'
-  s.add_dependency 'coffee-rails',                '>= 3.1.0.rc.6'
+  s.add_dependency 'will_paginate',               '~> 3.0'
+  s.add_dependency 'sass-rails',                  '~> 3.1.0'
+  s.add_dependency 'coffee-rails',                '~> 3.1.0'
   s.add_dependency 'uglifier'
   s.add_dependency 'jquery-rails'
 
@@ -276,10 +276,6 @@ Gem::Specification.new do |s|
     'app/helpers',
     'app/helpers/application_helper.rb',
     'app/views',
-    'app/views/kaminari',
-    'app/views/kaminari/_next_page.html.erb',
-    'app/views/kaminari/_paginator.html.erb',
-    'app/views/kaminari/_prev_page.html.erb',
     'app/views/layouts',
     'app/views/layouts/application.html.erb',
     'app/views/layouts/refinery',
@@ -321,7 +317,7 @@ Gem::Specification.new do |s|
     'app/views/refinery/wymiframe.html.erb',
     'config',
     'config/initializers',
-    'config/initializers/kaminari_monkeypatches.rb',
+    'config/initializers/will_paginate_monkeypatch.rb',
     'config/locales',
     'config/locales/bg.yml',
     'config/locales/cs.yml',

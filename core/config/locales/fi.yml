@@ -68,9 +68,12 @@ fi:
     footer:
       copyright: "Copyright © %{year} %{site_name}"
     no_script:
-      enable_javascript: Sivuston täydelliseen toimimiseen vaaditaan JavaScript- tuen päälle pistäminen
+      enable_javascript_html: Sivuston täydelliseen toimimiseen vaaditaan JavaScript- tuen päälle pistäminen
       here_are: Täällä on
-      instructions_enable_javascript: ohjeet JavaScriptin päälle pistämiseen selaimessasi
+      instructions_enable_javascript_html: ohjeet JavaScriptin päälle pistämiseen selaimessasi
   time:
     formats:
       short: "%A, %d %B %Y"
+  will_paginate:
+    previous_label: "&laquo;"
+    next_label: "&raquo;"

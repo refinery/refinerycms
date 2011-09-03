@@ -64,6 +64,6 @@ lolcat:
       not_live: DIS PAEG IZ NOT LIV 4 PUBLIC VIEWIN.
     footer:
       copyright: COPYRIGHT © %{year} %{site_name}
-  pagination:
-    next: "&raquo;"
-    previous: "&laquo;"
+  will_paginate:
+    previous_label: "&laquo;"
+    next_label: "&raquo;"

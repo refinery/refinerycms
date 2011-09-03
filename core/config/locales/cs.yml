@@ -67,12 +67,12 @@ cs:
     footer:
       copyright: Copyright © %{year} %{site_name}
     no_script:
-      enable_javascript: Pro plnou funkčnost tohoto webu je nutno povolit JavaScript.
+      enable_javascript_html: Pro plnou funkčnost tohoto webu je nutno povolit JavaScript.
       here_are: Tady jsou
-      instructions_enable_javascript: instrukce jak povolit JavaScript ve vašem prohlížeči
+      instructions_enable_javascript_html: instrukce jak povolit JavaScript ve vašem prohlížeči
   time:
     formats:
       short: "%A, %d %B %Y"
-  pagination:
-    next: "&raquo;"
-    previous: "&laquo;"
+  will_paginate:
+    previous_label: "&laquo;"
+    next_label: "&raquo;"

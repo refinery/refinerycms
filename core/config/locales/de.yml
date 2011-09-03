@@ -65,12 +65,12 @@ de:
     footer:
       copyright: Copyright © %{year} %{site_name}
     no_script:
-      enable_javascript: Um den vollen Funktionsumfang der Seite zu nutzen, ist es notwendig, JavaScript zu aktivieren.
+      enable_javascript_html: Um den vollen Funktionsumfang der Seite zu nutzen, ist es notwendig, JavaScript zu aktivieren.
       here_are: Hier sind die
-      instructions_enable_javascript: Anweisungen, wie Sie JavaScript in ihrem Web-Browser aktivieren
+      instructions_enable_javascript_html: Anweisungen, wie Sie JavaScript in ihrem Web-Browser aktivieren
   time:
     formats:
       short: "%A, %d %B %Y"
-  pagination:
-    next: "&raquo;"
-    previous: "&laquo;"
+  will_paginate:
+    previous_label: "&laquo;"
+    next_label: "&raquo;"

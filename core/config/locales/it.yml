@@ -73,9 +73,9 @@ it:
     footer:
       copyright: "Tutti i diritti sono riservati © %{year} %{site_name}"
     no_script:
-      enable_javascript: È necessario che JavaScript sia abilitato per poter visualizzare correttamente questa pagina.
+      enable_javascript_html: È necessario che JavaScript sia abilitato per poter visualizzare correttamente questa pagina.
       here_are: ""
-      instructions_enable_javascript: Istruzioni su come attivare JavaScript nel tuo browser
-  pagination:
-    next: "&raquo;"
-    previous: "&laquo;"
+      instructions_enable_javascript_html: Istruzioni su come attivare JavaScript nel tuo browser
+  will_paginate:
+    previous_label: "&laquo;"
+    next_label: "&raquo;"

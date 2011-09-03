@@ -65,12 +65,12 @@ sv:
     footer:
       copyright: Copyright © %{year} %{site_name}
     no_script:
-      enable_javascript: För att få full funktionalitet på den här sidan behöver JavaScript vara aktiverat i din webbläsare.
+      enable_javascript_html: För att få full funktionalitet på den här sidan behöver JavaScript vara aktiverat i din webbläsare.
       here_are: Här är
-      instructions_enable_javascript: instruktioner om hur du aktiverar JavaScript i din webbläsare
+      instructions_enable_javascript_html: instruktioner om hur du aktiverar JavaScript i din webbläsare
   time:
     formats:
       short: "%A, %d %B %Y"
-  pagination:
-    next: "&raquo;"
-    previous: "&laquo;"
+  will_paginate:
+    previous_label: "&laquo;"
+    next_label: "&raquo;"

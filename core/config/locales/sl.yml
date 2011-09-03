@@ -61,9 +61,9 @@ sl:
     footer:
       copyright: Vse pravice pridržane © %{year} %{site_name}
     no_script:
-      enable_javascript: Za polno funkcionalnost te strani je potrebno omogočiti JavaScript.
+      enable_javascript_html: Za polno funkcionalnost te strani je potrebno omogočiti JavaScript.
       here_are: Tukaj so
-      instructions_enable_javascript: navodila, kako omogočite JavaScript v vašem brskalniku
-  pagination:
-    next: "&raquo;"
-    previous: "&laquo;"
+      instructions_enable_javascript_html: navodila, kako omogočite JavaScript v vašem brskalniku
+  will_paginate:
+    previous_label: "&laquo;"
+    next_label: "&raquo;"

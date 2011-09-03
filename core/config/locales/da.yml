@@ -65,12 +65,12 @@ da:
     footer:
       copyright: Copyright © %{year} %{site_name}
     no_script:
-      enable_javascript: JavaScript skal slås til, for at få det fulde udbytte af denne side.
+      enable_javascript_html: JavaScript skal slås til, for at få det fulde udbytte af denne side.
       here_are: Her er
-      instructions_enable_javascript: information om hvordan du slår JavaScript til i den browser
+      instructions_enable_javascript_html: information om hvordan du slår JavaScript til i den browser
   time:
     formats:
       short: "%A, %e. %B %Y"
-  pagination:
-    next: "&raquo;"
-    previous: "&laquo;"
+  will_paginate:
+    previous_label: "&laquo;"
+    next_label: "&raquo;"

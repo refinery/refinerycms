@@ -1,3 +1,4 @@
+<%= will_paginate @settings %>
 <table class="<%= ['pagination_frame', pagination_css_class].compact.join(' ') %>">
   <tr>
     <th>
@@ -12,4 +13,3 @@
   </tr>
   <%= render :partial => 'setting', :collection => @settings %>
 </table>
-<%= paginate @settings %>

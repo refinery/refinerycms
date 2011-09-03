@@ -5,15 +5,13 @@ module ::Refinery
     class PagesDialogsController < ::Refinery::Admin::DialogsController
 
       def link_to
-        @pages = ::Refinery::Page.page(params[:page]).
-                      where(:parent_id => nil).
-                      order('position').
-                      per(Page.per_page(true))
+        @pages = ::Refinery::Page.where(:parent_id => nil).
+                                  paginate(:page => params[:page], :per_page => Page.per_page(true)).
+                                  order('position')
 
         if ::Refinery::Plugins.registered.names.include?('refinery_files')
-            @resources = Resource.page(params[:resource_page]).
-                                order('created_at DESC').
-                                per(Resource.per_page(true))
+            @resources = Resource.paginate(:page => params[:resource_page], :per_page => Resource.per_page(true)).
+                                  order('created_at DESC')
 
           # resource link
           if params[:current_link].present?

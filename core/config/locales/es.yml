@@ -58,12 +58,12 @@ es:
     footer:
       copyright: Copyright © %{year} %{site_name}
     no_script:
-      enable_javascript: Para obtener una funcionalidad completa de esta página es necesario activar JavaScript.
+      enable_javascript_html: Para obtener una funcionalidad completa de esta página es necesario activar JavaScript.
       here_are: Aquí están las
-      instructions_enable_javascript: instrucciones de cómo habilitar JavaScript en su navegador web
+      instructions_enable_javascript_html: instrucciones de cómo habilitar JavaScript en su navegador web
   time:
     formats:
       short: "%A, %d %B %Y"
-  pagination:
-    next: "&raquo;"
-    previous: "&laquo;"
+  will_paginate:
+    previous_label: "&laquo;"
+    next_label: "&raquo;"

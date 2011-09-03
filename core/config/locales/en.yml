@@ -71,13 +71,12 @@ en:
     footer:
       copyright: "Copyright © %{year} %{site_name}"
     no_script:
-      enable_javascript: For full functionality of this page it is necessary to enable JavaScript.
+      enable_javascript_html: For full functionality of this page it is necessary to enable JavaScript.
       here_are: Here are the
-      instructions_enable_javascript: instructions for how to enable JavaScript in your web browser
+      instructions_enable_javascript_html: instructions for how to enable JavaScript in your web browser
   time:
     formats:
       short: "%A, %d %B %Y"
-  pagination:
-    pages: Pages
-    next: "&raquo;"
-    previous: "&laquo;"
+  will_paginate:
+    previous_label: "&laquo;"
+    next_label: "&raquo;"

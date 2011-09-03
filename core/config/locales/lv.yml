@@ -65,9 +65,9 @@ lv:
     footer:
       copyright: Visas tiesības paturētas © %{year} %{site_name}
     no_script:
-      enable_javascript: Lai lapa pilnībā funkcionalētu ir nepieciešams iespējot JavaScript.
+      enable_javascript_html: Lai lapa pilnībā funkcionalētu ir nepieciešams iespējot JavaScript.
       here_are: Šeit ir
-      instructions_enable_javascript: instrukcija kā iespējot JavaScript jūsu pārlūkprogrammā
-  pagination:
-    next: "&raquo;"
-    previous: "&laquo;"
+      instructions_enable_javascript_html: instrukcija kā iespējot JavaScript jūsu pārlūkprogrammā
+  will_paginate:
+    previous_label: "&laquo;"
+    next_label: "&raquo;"

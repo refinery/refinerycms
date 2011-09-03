@@ -65,12 +65,12 @@ rs:
     footer:
       copyright: Copyright © %{year} %{site_name}. Sva prava zadržana.
     no_script:
-      enable_javascript: Za potpunu funkcionalnost ove strane neophodno je omogućiti JavaScript.
+      enable_javascript_html: Za potpunu funkcionalnost ove strane neophodno je omogućiti JavaScript.
       here_are: Evo
-      instructions_enable_javascript: instrukcija za omogućavanje JavaScript-a u tvom brauzeru
+      instructions_enable_javascript_html: instrukcija za omogućavanje JavaScript-a u tvom brauzeru
   time:
     formats:
       short: "%A, %d %B %Y"
-  pagination:
-    next: "&raquo;"
-    previous: "&laquo;"
+  will_paginate:
+    previous_label: "&laquo;"
+    next_label: "&raquo;"

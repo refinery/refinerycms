@@ -16,11 +16,7 @@ namespace :refinery do
           file = dir.pop # get rid of the file.
           dir = dir.join(File::SEPARATOR) # join directory back together
 
-          unless (theme = ENV["theme"]).present?
-            destination_dir = Rails.root.join("app", "views", dir)
-          else
-            destination_dir = Rails.root.join("themes", theme, "views", dir)
-          end
+          destination_dir = Rails.root.join("app", "views", dir)
           FileUtils.mkdir_p(destination_dir)
           FileUtils.cp match, (destination = File.join(destination_dir, file))
 
@@ -73,17 +69,17 @@ namespace :refinery do
       end
     elsif (javascripts = ENV["javascript"]).present?
       pattern = "#{javascripts.split("/").join(File::SEPARATOR)}*.js"
-      looking_for = ::Refinery::Plugins.registered.pathnames.map{|p| p.join("public", "javascripts", pattern).to_s}
+      looking_for = ::Refinery::Plugins.registered.pathnames.map{|p| p.join("app", "assets", "javascripts", pattern).to_s}
 
       # copy in the matches
       matches = looking_for.collect{|d| Dir[d]}.flatten.compact.uniq
       if matches.any?
         matches.each do |match|
-          dir = match.split("/public/javascripts/").last.split('/')
+          dir = match.split("/app/assets/javascripts/").last.split('/')
           file = dir.pop # get rid of the file.
           dir = dir.join(File::SEPARATOR) # join directory back together
 
-          destination_dir = Rails.root.join("public", "javascripts", dir)
+          destination_dir = Rails.root.join("app", "assets", "javascripts", dir)
           FileUtils.mkdir_p(destination_dir)
           FileUtils.cp match, (destination = File.join(destination_dir, file))
 
@@ -93,18 +89,18 @@ namespace :refinery do
         puts "Couldn't match any javascript files in any engines like #{javascript}"
       end
     elsif (stylesheets = ENV["stylesheet"]).present?
-      pattern = "#{stylesheets.split("/").join(File::SEPARATOR)}*.css"
-      looking_for = ::Refinery::Plugins.registered.pathnames.map{|p| p.join("public", "stylesheets", pattern).to_s}
+      pattern = "#{stylesheets.split("/").join(File::SEPARATOR)}*.css.scss"
+      looking_for = ::Refinery::Plugins.registered.pathnames.map{|p| p.join("app", "assets", "stylesheets", pattern).to_s}
 
       # copy in the matches
       matches = looking_for.collect{|d| Dir[d]}.flatten.compact.uniq
       if matches.any?
         matches.each do |match|
-          dir = match.split("/public/stylesheets/").last.split('/')
+          dir = match.split("/app/assets/stylesheets/").last.split('/')
           file = dir.pop # get rid of the file.
           dir = dir.join(File::SEPARATOR) # join directory back together
 
-          destination_dir = Rails.root.join("public", "stylesheets", dir)
+          destination_dir = Rails.root.join("app", "assets", "stylesheets", dir)
           FileUtils.mkdir_p(destination_dir)
           FileUtils.cp match, (destination = File.join(destination_dir, file))
 
@@ -116,11 +112,11 @@ namespace :refinery do
     else
       puts "You didn't specify anything to override. Here's some examples:"
       {
-        :view => ['refinery/pages/home', 'refinery/pages/home theme=demolicious', '**/*menu', 'refinery/_menu_branch'],
-        :javascript => %w(jquery),
-        :stylesheet => %w(refinery/site_bar),
-        :controller => %w(pages),
-        :model => %w(page)
+        :view => ['refinery/pages/home', '**/*menu', 'refinery/_menu_branch'],
+        :javascript => %w(admin refinery/site_bar),
+        :stylesheet => %w(home refinery/site_bar),
+        :controller => %w(refinery/pages),
+        :model => %w(refinery/page)
       }.each do |type, examples|
         examples.each do |example|
           puts "rake refinery:override #{type}=#{example}"
@@ -178,12 +174,12 @@ end
 desc 'Removes trailing whitespace across the entire application.'
 task :whitespace do
   require 'rbconfig'
-  if Config::CONFIG['host_os'] =~ /linux/
+  if RbConfig::CONFIG['host_os'] =~ /linux/
     sh %{find . -name '*.*rb' -exec sed -i 's/\t/  /g' {} \\; -exec sed -i 's/ *$//g' {} \\; }
-  elsif Config::CONFIG['host_os'] =~ /darwin/
+  elsif RbConfig::CONFIG['host_os'] =~ /darwin/
     sh %{find . -name '*.*rb' -exec sed -i '' 's/\t/  /g' {} \\; -exec sed -i '' 's/ *$//g' {} \\; }
   else
-    puts "This doesn't work on systems other than OSX or Linux. Please use a custom whitespace tool for your platform '#{Config::CONFIG["host_os"]}'."
+    puts "This doesn't work on systems other than OSX or Linux. Please use a custom whitespace tool for your platform '#{RbConfig::CONFIG["host_os"]}'."
   end
 end
 

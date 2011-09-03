@@ -68,12 +68,12 @@ bg:
     footer:
       copyright: "© %{year} %{site_name} Всички права запазени."
     no_script:
-      enable_javascript: За да работи напълно тази страница е необходим JavaScript.
+      enable_javascript_html: За да работи напълно тази страница е необходим JavaScript.
       here_are: Ето
-      instructions_enable_javascript: инструкции, как да разрешите използването на JavaScript във Вашия уеб браузър.
+      instructions_enable_javascript_html: инструкции, как да разрешите използването на JavaScript във Вашия уеб браузър.
   time:
     formats:
       short: "%A, %d %B %Y"
-  pagination:
-    next: "&raquo;"
-    previous: "&laquo;"
+  will_paginate:
+    previous_label: "&laquo;"
+    next_label: "&raquo;"

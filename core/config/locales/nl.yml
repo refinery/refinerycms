@@ -65,12 +65,12 @@ nl:
     footer:
       copyright: Copyright © %{year} %{site_name}
     no_script:
-      enable_javascript: Om alle functies van deze pagina te gebruiken, is het noodzakelijk om JavaScript in te schakelen.
+      enable_javascript_html: Om alle functies van deze pagina te gebruiken, is het noodzakelijk om JavaScript in te schakelen.
       here_are: Hier zijn de
-      instructions_enable_javascript: instructies m.b.t. het inschakelen van JavaScript in de browser.
+      instructions_enable_javascript_html: instructies m.b.t. het inschakelen van JavaScript in de browser.
   time:
     formats:
       short: "%A, %d %B %Y"
-  pagination:
-    next: "&raquo;"
-    previous: "&laquo;"
+  will_paginate:
+    previous_label: "&laquo;"
+    next_label: "&raquo;"

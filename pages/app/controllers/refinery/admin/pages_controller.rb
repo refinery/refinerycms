@@ -38,7 +38,7 @@ module ::Refinery
           # Check whether we need to override e.g. on the pages form.
           unless params[:switch_locale] || @page.nil? || @page.new_record? || @page.slugs.where({
             :locale => ::Refinery::I18n.current_locale
-          }).nil?
+          }).empty?
             @page.slug = @page.slugs.first if @page.slug.nil? && @page.slugs.any?
             Thread.current[:globalize_locale] = @page.slug.locale if @page.slug
           end

@@ -4,12 +4,12 @@ require 'spec_helper'
 describe 'page frontend' do
   before(:each) do
     # So that we can use Refinery.
-    Factory(:refinery_user)
+    FactoryGirl.create(:refinery_user)
 
     # Create some pages for these specs
-    Factory(:page, :title => 'Home', :link_url => '/')
-    Factory(:page, :title => 'About')
-    Factory(:page, :title => 'Draft', :draft => true)
+    FactoryGirl.create(:page, :title => 'Home', :link_url => '/')
+    FactoryGirl.create(:page, :title => 'About')
+    FactoryGirl.create(:page, :title => 'Draft', :draft => true)
   end
 
   def standard_page_menu_items_exist?
@@ -79,7 +79,7 @@ describe 'page frontend' do
   end
 
   describe 'when menu_title is' do
-    let!(:page_mt) { Factory(:page, :title => 'Company News') }
+    let!(:page_mt) { FactoryGirl.create(:page, :title => 'Company News') }
 
     describe 'set' do
       before do
@@ -131,7 +131,7 @@ describe 'page frontend' do
   end
 
   describe 'when browser_title is set' do
-    let!(:page_bt) { Factory(:page, :title => 'About Us', :browser_title => 'About Our Company') }
+    let!(:page_bt) { FactoryGirl.create(:page, :title => 'About Us', :browser_title => 'About Our Company') }
 
     it 'should have the browser_title in the title tag' do
       visit '/about-us'
@@ -148,7 +148,7 @@ describe 'page frontend' do
   end
 
   describe 'custom_slug' do
-    let!(:page_cs) { Factory(:page, :title => 'About Us') }
+    let!(:page_cs) { FactoryGirl.create(:page, :title => 'About Us') }
 
     describe 'not set' do
       it 'makes friendly_id from title' do
@@ -219,7 +219,7 @@ describe 'page frontend' do
   end
 
   describe "special characters title" do
-    let(:special_page) { Factory(:page, :title => 'ä ö ü spéciål chåråctÉrs') }
+    let(:special_page) { FactoryGirl.create(:page, :title => 'ä ö ü spéciål chåråctÉrs') }
 
     it "succeeds" do
       visit url_for(special_page.url)
@@ -233,7 +233,7 @@ describe 'page frontend' do
   end
 
   describe "special characters title as submenu page" do
-    let(:special_page) { Factory(:page, :title => 'ä ö ü spéciål chåråctÉrs',
+    let(:special_page) { FactoryGirl.create(:page, :title => 'ä ö ü spéciål chåråctÉrs',
                                         :parent_id => Refinery::Page.find("about").id) }
 
     it "succeeds" do
@@ -248,7 +248,7 @@ describe 'page frontend' do
   end
 
   describe "hidden page" do
-    let(:hidden_page) { Factory(:page, :title => "Hidden", :show_in_menu => false) }
+    let(:hidden_page) { FactoryGirl.create(:page, :title => "Hidden", :show_in_menu => false) }
 
     it "succeeds" do
       visit url_for(hidden_page.url)
@@ -267,7 +267,7 @@ describe 'page frontend' do
      about = Refinery::Page.find('about')
      about.skip_to_first_child = true
      about.save!
-     Factory(:page, :title => "Child Page", :parent_id => about.id)
+     FactoryGirl.create(:page, :title => "Child Page", :parent_id => about.id)
     end
 
     it "succeeds" do

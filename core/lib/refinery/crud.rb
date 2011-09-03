@@ -179,7 +179,7 @@ module Refinery
               #{class_name}.per_page
             end
 
-            @#{plural_name} = @#{plural_name}.page(params[:page]).per(per_page)
+            @#{plural_name} = @#{plural_name}.paginate(:page => params[:page], :per_page => per_page)
           end
 
           # Returns a weighted set of results based on the query specified by the user.

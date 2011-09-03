@@ -65,12 +65,12 @@ vi:
     footer:
       copyright: Copyright © %{year} %{site_name}
     no_script:
-      enable_javascript: Để website có thể hoạt động với đầy đủ các tính năng, bạn cần phải cho phép JavaScript hoạt động.
+      enable_javascript_html: Để website có thể hoạt động với đầy đủ các tính năng, bạn cần phải cho phép JavaScript hoạt động.
       here_are: Đây là
-      instructions_enable_javascript: các chỉ dẫn cách kích hoạt cho Javascript hoạt động.
+      instructions_enable_javascript_html: các chỉ dẫn cách kích hoạt cho Javascript hoạt động.
   time:
     formats:
       short: "%A, %d %B %Y"
-  pagination:
-    next: "&raquo;"
-    previous: "&laquo;"
+  will_paginate:
+    previous_label: "&laquo;"
+    next_label: "&raquo;"

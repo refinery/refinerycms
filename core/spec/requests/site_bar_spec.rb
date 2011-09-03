@@ -28,7 +28,7 @@ describe "site bar" do
   context "when in frontend" do
     before(:each) do
       # make a page in order to avoid 404
-      Factory(:page, :link_url => "/")
+      FactoryGirl.create(:page, :link_url => "/")
 
       visit root_path
     end

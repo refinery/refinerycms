@@ -33,8 +33,8 @@ describe "dashboard" do
 
   describe "latest activity" do
     before(:each) do
-      3.times { |n| Factory(:refinery_user, :username => "ugisozols#{n}") }
-      3.times { |n| Factory(:page, :title => "Refinery CMS #{n}") }
+      3.times { |n| FactoryGirl.create(:refinery_user, :username => "ugisozols#{n}") }
+      3.times { |n| FactoryGirl.create(:page, :title => "Refinery CMS #{n}") }
     end
 
     it "shows 7 recent actions" do
@@ -42,7 +42,7 @@ describe "dashboard" do
 
       page.should have_content("Latest Activity")
       # This comes from login_refinery_user
-      page.should have_content("Refinerycms user was updated")
+      page.should have_content("Refinerycms user was")
       3.times { |n| page.should have_content("Ugisozols#{n} user was added") }
       3.times { |n| page.should have_content("Refinery cms #{n} page was added") }
     end
