@@ -142,6 +142,9 @@ module Refinery
 
       # Run any database migrations
       migrate! unless @options[:database][:skip]
+      
+      # Deploy to a hosting provider
+      deploy!
 
       # Output helpful messages to user
       output!
