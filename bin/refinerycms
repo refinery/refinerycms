@@ -147,6 +147,9 @@ module Refinery
 
       # Run any database migrations
       migrate! unless @options[:database][:skip]
+      
+      # Deploy to a hosting provider
+      deploy!
 
       # Output helpful messages to user
       output!
@@ -171,18 +174,20 @@ module Refinery
         exit(1)
       end
 
+      # Get the name and path of the new application
+      @app_path = Pathname.new(File.expand_path(@input.first))
+      @app_name = @app_path.to_s.split(File::SEPARATOR).last
+
       rails_version_in_path = run_command('rails --version', {:cd => false, :bundler => false, :puts => false}).to_s.gsub(/(Rails |\n)/, '')
       @rails_version_to_use = @options[:rails][:version] || rails_version_in_path
       if @rails_version_to_use !~ %r{\b#{RAILS_MINOR_VERSION}}
         puts "\nRails #{@rails_version_to_use} is not supported by Refinery #{::Refinery.version}, " \
              "please use Rails #{RAILS_MINOR_VERSION}.x instead."
+        puts "\nYou can tell Refinery CMS an installed and compatible rails version to use like so:\n"
+        puts "\nrefinerycms #{@app_name} --rails-version #{RAILS_MINOR_VERSION}"
         puts "\n"
         exit(1)
       end
-
-      # Get the name and path of the new application
-      @app_path = Pathname.new(File.expand_path(@input.first))
-      @app_name = @app_path.to_s.split(File::SEPARATOR).last
 
       # Get the refinery path based on this file
       @refinery_path = Pathname.new(File.expand_path('../../', __FILE__))
@@ -241,6 +246,9 @@ module Refinery
       # Detect non-success or a blank rails output or starting with "Can't initialize" or "Error"
       if !$?.success? or rails_output.to_s.length == 0 or rails_output =~ /^(Can't\ initialize|Error)/
         puts "\nGenerating Rails application failed. Exiting..."
+        if run_command('gem list rails', {:cd => false, :puts => false, :ruby => false}) !~ %r{[( ]#{@rails_version_to_use}(.0)*[,\)]}
+          puts "\nDo you have Rails #{@rails_version_to_use} installed?"
+        end
         puts "\n"
         exit(1)
       else

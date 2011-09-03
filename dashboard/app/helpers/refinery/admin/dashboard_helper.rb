@@ -3,8 +3,8 @@ module ::Refinery
     module DashboardHelper
 
       def activity_message_for(record)
-        if (plugin = ::Refinery::Plugins.active.find_by_model(record.class)).present? &&
-           (activity = plugin.activity.first).present?
+        if (plugin = ::Refinery::Plugins.active.find_by_model(record.class)) &&
+           (activity = plugin.activity.first)
           # work out which action occured
           action = record.updated_at.eql?(record.created_at) ? 'created' : 'updated'
 
