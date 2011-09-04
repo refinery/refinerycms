@@ -71,7 +71,7 @@ PATH
     refinerycms-testing (2.0.0)
       capybara (~> 1.0.0)
       database_cleaner
-      factory_girl (~> 2.0.3)
+      factory_girl_rails (~> 1.2.0)
       fuubar
       guard-rspec (~> 0.4.2)
       json_pure
@@ -148,7 +148,10 @@ GEM
     erubis (2.7.0)
     execjs (1.2.4)
       multi_json (~> 1.0)
-    factory_girl (2.0.5)
+    factory_girl (2.1.0)
+    factory_girl_rails (1.2.0)
+      factory_girl (~> 2.1.0)
+      railties (>= 3.0.0)
     ffi (1.0.9)
     friendly_id_globalize3 (3.2.1.5)
       babosa (~> 0.3.0)
@@ -278,8 +281,8 @@ PLATFORMS
 
 DEPENDENCIES
   awesome_nested_set!
-  capybara-webkit
-  coffee-rails
+  capybara-webkit (~> 0.6.1)
+  coffee-rails (~> 3.1.0)
   growl (~> 1.0.3)
   guard-spork
   jquery-rails
@@ -291,7 +294,7 @@ DEPENDENCIES
   refinerycms!
   refinerycms-i18n (~> 2.0.0)!
   refinerycms-testing (~> 2.0.0)
-  sass-rails
+  sass-rails (~> 3.1.0)
   simplecov
   spork (= 0.9.0.rc9)
   sqlite3

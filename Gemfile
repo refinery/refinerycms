@@ -31,7 +31,7 @@ group :development, :test do
   gem 'refinerycms-testing',    '~> 2.0.0'
   gem 'rcov', :platform => :mri_18
   gem 'simplecov', :platform => :mri_19
-  gem 'capybara-webkit'
+  gem 'capybara-webkit', '~> 0.6.1'
   gem 'spork', '0.9.0.rc9', :platforms => :ruby
   gem 'guard-spork', :platforms => :ruby
 
@@ -89,8 +89,8 @@ end
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails'
-  gem 'coffee-rails'
+  gem 'sass-rails', '~> 3.1.0'
+  gem 'coffee-rails', '~> 3.1.0'
   gem 'uglifier'
 end
 
