@@ -399,7 +399,7 @@ Open up +vendor/engines/events/app/controllers/refinery/admin/events_controller.
 <ruby>
 module ::Refinery
   module Admin
-    class EventsController < ::Admin::BaseController
+    class EventsController < ::Refinery::AdminController
       crudify :'refinery/event', :xhr_paging => true
     end
   end
@@ -413,7 +413,7 @@ But default +crudify+ assumes your records will be sortable. But events are not 
 <ruby>
 module ::Refinery
   module Admin
-    class EventsController < ::Admin::BaseController
+    class EventsController < ::Refinery::AdminController
       crudify :'refinery/event', :xhr_paging => true,
                                  :order => "date DESC",
                                  :sortable => false

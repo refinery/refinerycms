@@ -64,7 +64,7 @@ module ::Refinery
       append_file ".gitignore", our_ignore_rules
 
       # If the admin/base_controller.rb file exists, ensure it does not do the old inheritance
-      if (admin_base = Rails.root.join('app', 'controllers', 'admin', 'base_controller.rb')).file?
+      if (admin_base = Rails.root.join('app', 'controllers', 'refinery', 'admin_controller.rb')).file?
         gsub_file admin_base,
                   "# You can extend refinery backend with your own functions here and they will likely not get overriden in an update.",
                   "",
