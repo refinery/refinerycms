@@ -1,0 +1,14 @@
+development:
+  refinery:
+    resources:
+      max_client_body_size: 50
+
+test:
+  refinery:
+    resources:
+      max_client_body_size: 50
+
+production:
+  refinery:
+    resources:
+      max_client_body_size: 50

@@ -34,6 +34,7 @@ group :development, :test do
   gem 'capybara-webkit', '~> 0.6.1'
   gem 'spork', '0.9.0.rc9', :platforms => :ruby
   gem 'guard-spork', :platforms => :ruby
+  gem 'generator_spec'
 
   require 'rbconfig'
 
