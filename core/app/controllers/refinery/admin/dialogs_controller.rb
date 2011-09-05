@@ -1,6 +1,6 @@
 module ::Refinery
   module Admin
-    class DialogsController < ::Admin::BaseController
+    class DialogsController < ::Refinery::AdminController
       def show
         @dialog_type = params[:id].downcase
 
