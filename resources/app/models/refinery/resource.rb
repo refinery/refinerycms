@@ -52,7 +52,7 @@ module ::Refinery
       end
       
       def max_client_body_size
-        @@max_client_body_size ||= 50.megabytes
+        @@max_client_body_size
       end
       
       def max_client_body_size=(value)
