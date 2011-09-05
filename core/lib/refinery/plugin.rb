@@ -45,12 +45,12 @@ module Refinery
 
     # Returns true, if the user doesn't require plugin access
     def always_allow_access?
-      @always_allow_access ||= false
+      @always_allow_access || false
     end
 
     # Special property to indicate that this plugin is the dashboard plugin.
     def dashboard?
-      @dashboard ||= false
+      @dashboard || false
     end
 
     # Used to highlight the current tab in the admin interface
