@@ -1,8 +1,0 @@
-development:
-  max_client_body_size: 52428800
-
-test:
-  max_client_body_size: 52428800
-
-production:
-  max_client_body_size: 52428800
