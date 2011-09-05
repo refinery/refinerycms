@@ -1938,9 +1938,17 @@ WYMeditor.editor.prototype.close_dialog = function(e, cancelled) {
     if ((span = $(this._doc.body).find('span#' + this._current_unique_stamp)).length > 0) {
       span.parent().html(span.parent().html().replace(new RegExp(["<span(.+?)", span.attr('id'), "(.+?)<\/span>"].join("")), span.html()));
     }
-    (remove_id = $(this._doc.body).find('#' + this._current_unique_stamp))
-      .attr('id', (remove_id.attr('_id_before_replaceable') || ""))
-      .replaceWith(remove_id.html());
+    // see https://github.com/resolve/refinerycms/issues/888
+    // there's also an issue with _id_before_replaceable - it's not (re)created
+    // (remove_id = $(this._doc.body).find('#' + this._current_unique_stamp))
+    //   .attr('id', (remove_id.attr('_id_before_replaceable') || ""))
+    //   .replaceWith(remove_id.html());
+
+    // ... for now remove id altogether
+    if (remove_id = $(this._doc.body).find('#' + this._current_unique_stamp)) {
+      remove_id.removeAttr("id");
+    }
+
     if (this._undo_on_cancel == true) {
       this._exec("undo");
     }
