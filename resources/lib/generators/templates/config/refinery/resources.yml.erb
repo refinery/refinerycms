@@ -1,0 +1,7 @@
+<% %w( development test production ).each do |environment| -%>
+<%= environment %>:
+  <% Refinery::Resources.send(:defaults).each do |key, value| -%>
+  <%= key %>: <%= value %>
+  <% end -%>
+
+<% end -%>

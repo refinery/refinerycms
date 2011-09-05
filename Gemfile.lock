@@ -159,6 +159,9 @@ GEM
       rspec (~> 2.0)
       rspec-instafail (~> 0.1.8)
       ruby-progressbar (~> 0.0.10)
+    generator_spec (0.8.4)
+      rails (< 4.0, >= 3.0)
+      rspec-rails
     globalize3 (0.2.0.beta3)
       activemodel (>= 3.0.0)
       activerecord (>= 3.0.0)
@@ -283,6 +286,7 @@ DEPENDENCIES
   awesome_nested_set!
   capybara-webkit (~> 0.6.1)
   coffee-rails (~> 3.1.0)
+  generator_spec
   growl (~> 1.0.3)
   guard-spork
   jquery-rails
