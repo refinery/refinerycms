@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe "manage resources" do
+describe "AdminResources" do
   login_refinery_user
 
   context "when no files" do
