@@ -14,6 +14,7 @@ module Refinery
     end
 
     autoload :Dragonfly, File.expand_path('../refinery/resources/dragonfly', __FILE__)
+    autoload :Validators, 'refinery/resources/validators'
 
     class Engine < ::Rails::Engine
       isolate_namespace ::Refinery

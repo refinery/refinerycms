@@ -33,4 +33,4 @@ en:
       models:
         refinery/resource:
           blank: You must specify file for upload
-          too_big: File should be smaller than %{size} megabytes in size
+          too_big: File should be smaller than %{size} bytes in size
