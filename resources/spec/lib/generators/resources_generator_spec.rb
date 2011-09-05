@@ -13,9 +13,14 @@ module Refinery
     
     specify do
       destination_root.should have_structure {
+        directory "db" do
+          directory "migrate"
+        end
         directory "config" do
-          file "refinery_resource_config.yml" do
-            contains "max_client_body_size:"
+          directory "refinery" do
+            file "resources.yml" do
+              contains "max_client_body_size:"
+            end
           end
         end
       }

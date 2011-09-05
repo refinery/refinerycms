@@ -3,11 +3,11 @@ require 'refinery/generators'
 module ::Refinery
   class ResourcesGenerator < ::Refinery::Generators::EngineInstaller
 
-    source_root File.expand_path('../templates', __FILE__)
+    source_root File.expand_path('../../../', __FILE__)
     engine_name "resources"
     
     def generate_resource_config_files
-      template "config/refinery_resource_config.yml", destination_path.join("config", "refinery_resource_config.yml")
+      template "lib/generators/templates/config/refinery/resources.yml", destination_path.join("config", "refinery","resources.yml")
     end
 
   end

@@ -44,22 +44,20 @@ module Refinery
       private
         def defaults
           { 
-            'max_client_body_size' => 50.megabytes
+            'max_client_body_size' => 52428800
           }
         end
         
-        def load_config
+        def resources_config
           config = {}
           begin
-            config = YAML.load_file(File.join(Rails.root, 'config', 'refinery_resource_config.yml'))[Rails.env]['refinery']['resources']
+            config = YAML.load_file(File.join(Rails.root, 'config', 'refinery', 'resources.yml'))[Rails.env]
           rescue; end
-          config
+          defaults.merge(config)
         end
         
         def configure!
-          config = load_config
-          config.merge!(defaults)
-          ::Refinery::Resource.max_client_body_size = config['max_client_body_size']
+          ::Refinery::Resource.max_client_body_size = resources_config['max_client_body_size']
         end
     end
   end
