@@ -43,7 +43,7 @@ describe "manage <%= plural_name %>" do
     end
 
     context "duplicate" do
-      before(:each) { Factory(:<%= singular_name %>, :<%= title.name %> => "UniqueTitle") }
+      before(:each) { FactoryGirl.create(:<%= singular_name %>, :<%= title.name %> => "UniqueTitle") }
 
       it "should fail" do
         visit refinery_admin_<%= plural_name %>_path
@@ -60,7 +60,7 @@ describe "manage <%= plural_name %>" do
   end
 
   describe "edit" do
-    before(:each) { Factory(:<%= singular_name %>, :<%= title.name %> => "A <%= title.name %>") }
+    before(:each) { FactoryGirl.create(:<%= singular_name %>, :<%= title.name %> => "A <%= title.name %>") }
 
     it "should succeed" do
       visit refinery_admin_<%= plural_name %>_path
@@ -78,7 +78,7 @@ describe "manage <%= plural_name %>" do
   end
 
   describe "destroy" do
-    before(:each) { Factory(:<%= singular_name %>, :<%= title.name %> => "UniqueTitleOne") }
+    before(:each) { FactoryGirl.create(:<%= singular_name %>, :<%= title.name %> => "UniqueTitleOne") }
 
     it "should succeed" do
       visit refinery_admin_<%= plural_name %>_path
