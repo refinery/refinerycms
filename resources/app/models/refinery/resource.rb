@@ -1,15 +1,13 @@
 module ::Refinery
   class Resource < ActiveRecord::Base
-
+    include Resources::Validators
+    
     attr_accessible :id, :file
-    # What is the max resource size a user can upload
-    MAX_SIZE_IN_MB = 50
 
     resource_accessor :file
 
     validates :file, :presence => true
-    validates_size_of :file, :maximum => MAX_SIZE_IN_MB.megabytes,
-                             :message => :too_big, :size => MAX_SIZE_IN_MB
+    validates_with FileSizeValidator
 
     # Docs for acts_as_indexed http://github.com/dougal/acts_as_indexed
     acts_as_indexed :fields => [:file_name, :title, :type_of_content]
@@ -51,6 +49,14 @@ module ::Refinery
         end
 
         resources
+      end
+      
+      def max_client_body_size
+        @@max_client_body_size
+      end
+      
+      def max_client_body_size=(value)
+        @@max_client_body_size = value
       end
     end
   end
