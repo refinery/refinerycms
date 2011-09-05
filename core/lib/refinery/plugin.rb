@@ -55,12 +55,12 @@ module Refinery
 
     # Used to highlight the current tab in the admin interface
     def highlighted?(params)
-      (params[:controller] =~ self.menu_match) or (self.dashboard? and params[:action] == 'error_404')
+      (params[:controller] =~ menu_match) or (dashboard? and params[:action] == 'error_404')
     end
 
     # Returns a RegExp that matches, if the current page is part of the plugin.
     def menu_match
-      @menu_match ||= /refinery\/#{self.name}$/
+      @menu_match ||= /refinery\/#{name}$/
     end
 
     def pathname=(value)
@@ -70,12 +70,12 @@ module Refinery
 
     # Returns a hash that can be used to create a url that points to the administration part of the plugin.
     def url
-      @url ||= if self.controller.present?
-        {:controller => "/admin/#{self.controller}"}
-      elsif self.directory.present?
-        {:controller => "/admin/#{self.directory.split('/').pop}"}
+      @url ||= if controller.present?
+        {:controller => "/admin/#{controller}"}
+      elsif directory.present?
+        {:controller => "/admin/#{directory.split('/').pop}"}
       else
-        {:controller => "/admin/#{self.name}"}
+        {:controller => "/admin/#{name}"}
       end
     end
 
