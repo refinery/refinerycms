@@ -65,7 +65,7 @@ file. Here's what that looks like inside at a basic level:
 
     module ::Refinery
       module Admin
-        class PagesController < ::Admin::BaseController
+        class PagesController < ::Refinery::AdminController
 
           crudify :'refinery/page',
                   :conditions => nil,
