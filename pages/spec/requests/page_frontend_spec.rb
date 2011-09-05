@@ -218,6 +218,21 @@ describe 'page frontend' do
     end
   end
 
+  describe "submenu page" do
+    let(:submenu_page) { FactoryGirl.create(:page, :title => 'Sample Submenu',
+                                        :parent_id => Refinery::Page.find("about").id) }
+
+    it "succeeds" do
+      visit url_for(submenu_page.url)
+
+      page.should have_content("Home")
+      page.should have_content("About")
+      within ".selected * > .selected a" do
+        page.should have_content(submenu_page.title)
+      end
+    end
+  end
+
   describe "special characters title" do
     let(:special_page) { FactoryGirl.create(:page, :title => 'ä ö ü spéciål chåråctÉrs') }
 
