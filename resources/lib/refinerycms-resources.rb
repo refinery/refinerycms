@@ -23,6 +23,12 @@ module Refinery
         ::Refinery::Resources::Dragonfly.setup!
         ::Refinery::Resources::Dragonfly.attach!(app)
       end
+      
+      initializer 'resources-configuration', :before => :load_config_initializers do |app|
+        begin
+          configure!
+        rescue; end
+      end
 
       initializer "init plugin", :after => :set_routes_reloader do |app|
         ::Refinery::Plugin.register do |plugin|
@@ -36,6 +42,16 @@ module Refinery
           }
         end
       end
+      
+      private      
+        def load_config
+          YAML.load_file(File.join(Rails.root, 'config', 'refinery_resource_config.yml'))[Rails.env]
+        end
+        
+        def configure!
+          config = load_config
+          ::Refinery::Resource.max_client_body_size = config['refinery']['resources']['max_client_body_size']
+        end
     end
   end
 end
