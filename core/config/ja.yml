@@ -1,3 +1,5 @@
+# Updated by Rei Kagetsuki of Genshin Souzou K.K. (zero@genshin.org)
+
 ja:
   refinery:
     plugins:
@@ -11,7 +13,7 @@ ja:
       there_are_no_users: あなたを最初のユーザとして登録します。
       remember_admin_location: "Refineryの管理画面は"
       lets_start: それでは始めましょう。
-      continue: 続く…
+      continue: 続行
     crudify:
       created: '%{what} を追加しました。'
       updated: '%{what}を更新しました。'
@@ -26,14 +28,14 @@ ja:
         reorder_menu_done: 並べ替えを終了
       dialogs:
         show:
-          save: セーブ
+          save: 保存
           cancel: キャンセル
       continue_editing:
-        save_and_continue_editing: セーブして更に更新する
+        save_and_continue_editing: 保存して更に編集する
       form_actions:
-        save: セーブ
+        save: 保存
         cancel: キャンセル
-        cancel_lose_changes: セーブされていない更新が無くなってしまいますが宜しいですか。
+        cancel_lose_changes: 保存されていない変更内容が無くなってしまいますが、宜しいでしょうか?
         delete: 削除
         close: 閉じる
       image_picker:
