@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.version           = %q{2.0.0}
   s.summary           = %q{Core engine for Refinery CMS}
   s.description       = %q{The core of Refinery CMS. This handles the common functionality and is required by most engines}
-  s.date              = %q{2011-09-03}
+  s.date              = %q{2011-09-05}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
   s.rubyforge_project = %q{refinerycms}
@@ -264,13 +264,12 @@ Gem::Specification.new do |s|
     'app/assets/stylesheets/wymeditor/skins/refinery/skin.css.scss',
     'app/assets/stylesheets/wymeditor/skins/refinery/wymiframe.css.scss',
     'app/controllers',
-    'app/controllers/admin',
-    'app/controllers/admin/base_controller.rb',
     'app/controllers/application_controller.rb',
     'app/controllers/refinery',
     'app/controllers/refinery/admin',
     'app/controllers/refinery/admin/dialogs_controller.rb',
     'app/controllers/refinery/admin/refinery_core_controller.rb',
+    'app/controllers/refinery/admin_controller.rb',
     'app/controllers/refinery/fast_controller.rb',
     'app/controllers/refinery/sitemap_controller.rb',
     'app/helpers',
