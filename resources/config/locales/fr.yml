@@ -12,7 +12,7 @@ fr:
           download_current: Télécharger ce fichier
           or: ou
           replace: " le remplacer par celui-ci..."
-          maximum_file_size: "La taille du fichier ne doit pas excéder %{megabytes} megaoctets."
+          maximum_file_size: "La taille du fichier ne doit pas excéder %{bytes} megaoctets."
         resource:
           download: Télécharger ce fichier (%{size})
         actions:

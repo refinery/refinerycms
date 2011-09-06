@@ -12,7 +12,7 @@ bg:
           download_current: Изтеглете текущия файл
           or: или
           replace: " го заменете с нов..."
-          maximum_file_size: Максималната големина на файл е %{megabytes} мегабайта.
+          maximum_file_size: Максималната големина на файл е %{bytes} мегабайта.
         resource:
           download: Изтегляне на този файл (%{size})
         actions:

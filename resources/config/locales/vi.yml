@@ -12,7 +12,7 @@ vi:
           download_current: Tải tập tin hiện tại
           or: hoặc
           replace: " thay thế nó bằng này..."
-          maximum_file_size: Kích thước file tối đa là %{megabytes} megabytes.
+          maximum_file_size: Kích thước file tối đa là %{bytes} bytes.
         resource:
           download: Tải về file này (%{size})
         actions:
@@ -33,4 +33,4 @@ vi:
       models:
         refinery/resource:
           blank: Bạn phải xác định tập tin để tải lên
-          too_big: Tập tin phải nhỏ hơn %{size} megabytes về kích thước
+          too_big: Tập tin phải nhỏ hơn %{size} bytes về kích thước

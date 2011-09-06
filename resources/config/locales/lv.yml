@@ -12,7 +12,7 @@ lv:
           download_current: Lejupielādēt pašreizējo failu
           or: vai
           replace: " aizstāt to ar šo..."
-          maximum_file_size: Maksimāli pieļaujamais faila izmērs ir %{megabytes} megabaiti.
+          maximum_file_size: Maksimāli pieļaujamais faila izmērs ir %{bytes} megabaiti.
         resource:
           download: Lejupielādēt šo failu (%{size})
         actions:
