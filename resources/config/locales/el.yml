@@ -12,7 +12,7 @@ el:
           download_current: Μεταφόρτωση τρέχοντος αρχείου
           or: ή
           replace: " αντικατάσταση με νέο..."
-          maximum_file_size: Το μέγιστο μέγεθος του αρχείου είναι %{megabytes} megabytes.
+          maximum_file_size: Το μέγιστο μέγεθος του αρχείου είναι %{bytes} bytes.
         resource:
           download: Μεταφόρτωση αυτού του αρχείου (%{size})
         actions:
@@ -33,4 +33,4 @@ el:
       models:
         refinery/resource:
           blank: Πρέπει να διαλέξετε αρχείο για ανέβασμα
-          too_big: Το αρχείο πρέπει να είναι μικρότερο από %{size} megabytes σε μέγεθος
+          too_big: Το αρχείο πρέπει να είναι μικρότερο από %{size} bytes σε μέγεθος

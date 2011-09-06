@@ -13,7 +13,7 @@ pl:
           download_current: Pobierz obecny plik
           or: or
           replace: " zastąp go tym..."
-          maximum_file_size: Maksymalny rozmiaj plik to %{megabytes} megabajtów.
+          maximum_file_size: Maksymalny rozmiaj plik to %{bytes} megabajtów.
         resource:
           download: Pobierz ten plik (%{size})
         actions:

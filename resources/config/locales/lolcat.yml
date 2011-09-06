@@ -12,7 +12,7 @@ lolcat:
           download_current: DOWNLOAD CURRENT FILE
           or: OR
           replace: " REPLACE IT WIF DIS WAN..."
-          maximum_file_size: TEH MAXIMUM FILE SIZE IZ %{megabytes} MEGABYTEZ.
+          maximum_file_size: TEH MAXIMUM FILE SIZE IZ %{bytes} MEGABYTEZ.
         resource:
           download: DOWNLOAD DIS FILE (%{size})
         actions:

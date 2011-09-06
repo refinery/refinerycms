@@ -13,7 +13,7 @@ es:
           download_current: Descargar archivo actual
           or: o
           replace: " reemplazarlo por este otro..."
-          maximum_file_size: El peso máximo para el archivo es de %{megabytes} megabytes.
+          maximum_file_size: El peso máximo para el archivo es de %{bytes} bytes.
         resource:
           download: Descargar este archivo (%{size})
         actions:
@@ -34,4 +34,4 @@ es:
       models:
         refinery/resource:
           blank: Selecciona qué archivo quieres subir
-          too_big: El archivo debe pesar menos de %{size} megabytes
+          too_big: El archivo debe pesar menos de %{size} bytes

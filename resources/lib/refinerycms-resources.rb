@@ -43,7 +43,7 @@ module Refinery
         ::Refinery::Resources::Dragonfly.attach!(app)
       end
       
-      initializer 'resources-configuration', :before => :load_config_initializers do |app|
+      initializer 'resources-configuration' do |app|
         Refinery::Resources.configure!
       end
 

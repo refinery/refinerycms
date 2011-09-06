@@ -12,7 +12,7 @@ rs:
           download_current: Download-uj fajl
           or: ili
           replace: " zameni sa ovim..."
-          maximum_file_size: Maksimalna veličina fajla je %{megabytes} megabajta.
+          maximum_file_size: Maksimalna veličina fajla je %{bytes} megabajta.
         resource:
           download: Download-uj fajl (%{size})
         actions:
