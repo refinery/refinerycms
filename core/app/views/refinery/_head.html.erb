@@ -4,7 +4,7 @@
   <title><%= browser_title(yield(:title)) %></title>
   <%= raw "<meta name=\"description\" content=\"#{@meta.meta_description}\" />" if @meta.meta_description.present? -%>
   <%= raw "<meta name=\"keywords\" content=\"#{@meta.meta_keywords}\">" if @meta.meta_keywords.present? -%>
-  <%= csrf_meta_tag if ::Refinery::Setting.find_or_set(:authenticity_token_on_frontend, true)-%>
+  <%= csrf_meta_tags if ::Refinery::Setting.find_or_set(:authenticity_token_on_frontend, true)-%>
   <%= yield :meta %>
 
   <%  stylesheets_for_head(stylesheets||=%w(application formatting theme), theme ||= nil).each do |ss| %>
