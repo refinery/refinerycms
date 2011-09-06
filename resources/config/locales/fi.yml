@@ -12,7 +12,7 @@ fi:
           download_current: Lataa nykyinen tiedosto
           or: tai
           replace: " vaihda se tähän tiedostoon..."
-          maximum_file_size: Suurin mahdollinen tiedostokoko on %{megabytes} megatavua.
+          maximum_file_size: Suurin mahdollinen tiedostokoko on %{bytes} megatavua.
         resource:
           download: Lataa tämä tiedosto (%{size})
         actions:

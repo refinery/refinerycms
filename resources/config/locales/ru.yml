@@ -12,7 +12,7 @@ ru:
           download_current: Скачать текущий файл
           or: или
           replace: " заменить его этим"
-          maximum_file_size: "Максимальный размер файла — %{megabytes} МБ."
+          maximum_file_size: "Максимальный размер файла — %{bytes} МБ."
         resource:
           download: "Скачать файл (%{size})"
         actions:

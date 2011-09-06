@@ -4,11 +4,11 @@ describe "AdminResources" do
   login_refinery_user
   
   before(:all) do
-    @max_client_body_size = Refinery::Resource.max_client_body_size
+    @max_client_body_size = Refinery::Resources.max_client_body_size
   end
   
   after(:all) do
-    Refinery::Resource.max_client_body_size = @max_client_body_size
+    Refinery::Resources.max_client_body_size = @max_client_body_size
   end
 
   context "when no files" do

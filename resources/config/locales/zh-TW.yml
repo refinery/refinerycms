@@ -12,7 +12,7 @@ zh-TW:
           download_current: 下載目前檔案
           or: 或
           replace: " 用這個來取代..."
-          maximum_file_size: 檔案大小限制為 %{megabytes} MB.
+          maximum_file_size: 檔案大小限制為 %{bytes} MB.
         resource:
           download: 下載這個檔案 (%{size})
         actions:

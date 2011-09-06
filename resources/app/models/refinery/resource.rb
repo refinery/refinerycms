@@ -50,14 +50,6 @@ module ::Refinery
 
         resources
       end
-      
-      def max_client_body_size
-        @@max_client_body_size
-      end
-      
-      def max_client_body_size=(value)
-        @@max_client_body_size = value
-      end
     end
   end
 end
