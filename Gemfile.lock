@@ -1,13 +1,6 @@
 GIT
-  remote: git://github.com/collectiveidea/awesome_nested_set.git
-  revision: 99ddcfa45d038336c53ece0ca122cc89e5e73388
-  specs:
-    awesome_nested_set (2.0.2)
-      activerecord (>= 3.0.0)
-
-GIT
   remote: git://github.com/parndt/refinerycms-i18n
-  revision: d05cd63e62394343c29f7417e2a1b61acde2e8fd
+  revision: 95c7082260fa821d15de6f0d543fbeea0f141c1f
   specs:
     refinerycms-i18n (2.0.0)
       refinerycms-core (~> 2.0.0)
@@ -116,6 +109,8 @@ GEM
     acts_as_indexed (0.7.3)
     addressable (2.2.6)
     arel (2.2.1)
+    awesome_nested_set (2.0.2)
+      activerecord (>= 3.0.0)
     babosa (0.3.5)
     bcrypt-ruby (3.0.0)
     builder (3.0.0)
@@ -270,7 +265,7 @@ GEM
       polyglot (>= 0.3.1)
     truncate_html (0.5.1)
     tzinfo (0.3.29)
-    uglifier (1.0.2)
+    uglifier (1.0.3)
       execjs (>= 0.3.0)
       multi_json (>= 1.0.2)
     warden (1.0.5)
@@ -283,7 +278,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  awesome_nested_set!
   capybara-webkit (~> 0.6.1)
   coffee-rails (~> 3.1.0)
   generator_spec
