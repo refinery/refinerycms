@@ -5,6 +5,8 @@ notifications:
   email:
     - parndt@gmail.com
     - ugis.ozolss@gmail.com
+  irc:
+    - irc.freenode.org#refinerycms
 env:
   - DB=postgres
   - DB=mysql
