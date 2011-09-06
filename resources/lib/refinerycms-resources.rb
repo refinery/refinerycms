@@ -5,6 +5,8 @@ require File.expand_path('../generators/resources_generator', __FILE__)
 
 module Refinery
   module Resources
+    
+    mattr_accessor :max_client_body_size
 
     class << self
       attr_accessor :root
@@ -13,7 +15,7 @@ module Refinery
       end
       
       def configure!
-        ::Refinery::Resource.max_client_body_size = config['max_client_body_size']
+        Resources.max_client_body_size = config['max_client_body_size']
       end
       
       def config
@@ -44,7 +46,7 @@ module Refinery
       end
       
       initializer 'resources-configuration' do |app|
-        Refinery::Resources.configure!
+        ::Refinery::Resources.configure!
       end
 
       initializer "init plugin", :after => :set_routes_reloader do |app|
