@@ -7,7 +7,7 @@ module Refinery
     engine_name "images"
 
     def generate_resource_config_files
-      template "lib/generators/files/config/initializers/refinery_images.rb", destination_path.join("config", "initializers", "refinery_images.rb")
+      template "lib/generators/templates/config/initializers/refinery_images.rb.erb", destination_path.join("config", "initializers", "refinery_images.rb")
     end
     
   end
