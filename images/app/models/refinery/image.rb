@@ -12,9 +12,6 @@ module Refinery
     # Docs for acts_as_indexed http://github.com/dougal/acts_as_indexed
     acts_as_indexed :fields => [:title]
 
-    # when listing images out in the admin area, how many images should show per page
-    PAGES_PER_ADMIN_INDEX = 20
-
     # allows Mass-Assignment
     attr_accessible :id, :image, :image_size
 
@@ -30,7 +27,7 @@ module Refinery
             Images::Options.pages_per_dialog_that_have_size_options
           end
         else
-          PAGES_PER_ADMIN_INDEX
+          Images::Options.pages_per_admin_index
         end
       end
 

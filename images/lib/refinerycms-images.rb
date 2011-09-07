@@ -19,6 +19,9 @@ module Refinery
       
       cattr_accessor :pages_per_dialog_that_have_size_options
       self.pages_per_dialog_that_have_size_options = 12
+      
+      cattr_accessor :pages_per_admin_index
+      self.pages_per_admin_index = 20
     end
 
     class << self
