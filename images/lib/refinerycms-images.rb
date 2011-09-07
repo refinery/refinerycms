@@ -13,6 +13,9 @@ module Refinery
       
       cattr_accessor :max_image_size
       self.max_image_size = 5242880
+      
+      cattr_accessor :pages_per_dialog
+      self.pages_per_dialog = 18
     end
 
     class << self
