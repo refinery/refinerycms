@@ -96,7 +96,7 @@ NOTE: This step may take some time to load as it needs to download and install a
 
 TIP: You can see all of the switches that the +refinerycms+ command accepts by running +refinerycms+ with no options or arguements.
 
-TIP: You can run <tt>$ refinery rickrockstar -r _3.0.9_</tt> to generate a refinery stack with any specific version of rails you need.
+TIP: You can run <tt>$ refinerycms rickrockstar -r 3.0.9</tt> to generate a refinery stack with any specific version of rails you need.
 
 This will create a new Rails application with Refinery built in called Rick Rock Star in a directory called +rickrockstar+. It also automatically runs +bundle install+ which will find and install all Refinery's ruby gem dependencies. Finally, it creates your database and seeds it with some basic defaults to get you started.
 
