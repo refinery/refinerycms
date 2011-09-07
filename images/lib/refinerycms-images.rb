@@ -7,22 +7,7 @@ module Refinery
   module Images    
     autoload :Dragonfly, 'refinery/images/dragonfly'
     autoload :Validators, 'refinery/images/validators'
-    
-    class Options
-      include Rails::Railtie::Configurable
-      
-      cattr_accessor :max_image_size
-      self.max_image_size = 5242880
-      
-      cattr_accessor :pages_per_dialog
-      self.pages_per_dialog = 18
-      
-      cattr_accessor :pages_per_dialog_that_have_size_options
-      self.pages_per_dialog_that_have_size_options = 12
-      
-      cattr_accessor :pages_per_admin_index
-      self.pages_per_admin_index = 20
-    end
+    autoload :Options, 'refinery/images/options'
 
     class << self
       attr_accessor :root

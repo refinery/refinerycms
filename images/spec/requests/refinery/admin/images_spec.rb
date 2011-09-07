@@ -3,14 +3,6 @@ require "spec_helper"
 module Refinery
   describe "AdminImages" do
     login_refinery_user
-    
-    before(:all) do
-      @max_image_size = Images::Options.max_image_size
-    end
-    
-    after(:all) do
-      Images::Options.max_image_size = @max_image_size
-    end
 
     context "when no images" do
       it "invites to add one" do
