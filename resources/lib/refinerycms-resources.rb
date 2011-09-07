@@ -7,10 +7,9 @@ module Refinery
   module Resources
     autoload :Dragonfly, 'refinery/resources/dragonfly'
     autoload :Validators, 'refinery/resources/validators'
-    autoload :Engine, 'refinery/resources/engine'
     
     module Config
-      mattr_accessor :max_client_body_size
+      mattr_accessor :max_file_size
     end
 
     class << self
@@ -20,7 +19,7 @@ module Refinery
       end
       
       def configure!
-        Config.max_client_body_size = config['max_client_body_size']
+        Config.max_file_size = config['max_file_size']
       end
       
       def config
@@ -34,7 +33,7 @@ module Refinery
       protected
         def defaults
           { 
-            'max_client_body_size' => 52428800
+            'max_file_size' => 52428800
           }
         end
     end

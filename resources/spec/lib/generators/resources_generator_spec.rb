@@ -19,7 +19,7 @@ module Refinery
         directory "config" do
           directory "refinery" do
             file "resources.yml" do
-              contains "max_client_body_size:"
+              contains "max_file_size:"
             end
           end
         end

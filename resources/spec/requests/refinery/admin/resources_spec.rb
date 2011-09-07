@@ -4,14 +4,6 @@ module Refinery
   module Admin
     describe "Resources" do
       login_refinery_user
-  
-      before(:all) do
-        @max_client_body_size = Resources::Config.max_client_body_size
-      end
-  
-      after(:all) do
-        Resources::Config.max_client_body_size = @max_client_body_size
-      end
 
       context "when no files" do
         it "invites to upload file" do
