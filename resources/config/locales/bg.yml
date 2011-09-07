@@ -12,7 +12,7 @@ bg:
           download_current: Изтеглете текущия файл
           or: или
           replace: " го заменете с нов..."
-          maximum_file_size: Максималната големина на файл е %{bytes} мегабайта.
+          maximum_file_size: Максималната големина на файл е %{bytes} байта.
         resource:
           download: Изтегляне на този файл (%{size})
         actions:
@@ -33,4 +33,4 @@ bg:
       models:
         refinery/resource:
           blank: Трябва да укажете файл за качване
-          too_big: Размерът на файла трябва да бъде по-малък от %{size} мегабайта
+          too_big: Размерът на файла трябва да бъде по-малък от %{size} байта
