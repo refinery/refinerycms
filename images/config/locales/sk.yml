@@ -14,7 +14,7 @@ sk:
           or: or
           replace_image: " nahradiť ho týmto..."
           current_image: Vybraný obrázok
-          maximum_image_size: Maximálna veľkosť obrázku je %{megabytes}MB.
+          maximum_image_size: Maximálna veľkosť obrázku je %{bytes}MB.
         actions:
           create_new_image: Pridať nový obrázok
         records:

@@ -14,7 +14,7 @@ fi:
           or: tai
           replace_image: " korvaa se tällä..."
           current_image: Nykyinen kuva
-          maximum_image_size: Kuvan suurin mahdollinen koko on %{megabytes} megatavua.
+          maximum_image_size: Kuvan suurin mahdollinen koko on %{bytes} megatavua.
         actions:
           create_new_image: Lisää uusi kuva
         records:

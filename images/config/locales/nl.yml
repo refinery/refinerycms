@@ -13,7 +13,7 @@ nl:
           or: of
           replace_image: Vervang de afbeelding door deze
           current_image: Huidige afbeelding
-          maximum_image_size: "The maximum image size is %{megabytes} megabytes."
+          maximum_image_size: "The maximum image size is %{bytes} bytes."
         actions:
           create_new_image: Upload een nieuwe afbeelding
         records:
@@ -39,5 +39,5 @@ nl:
       models:
         refinery/image:
           blank: U moet een afbeelding kiezen om te uploaden.
-          too_big: Afbeeldingen mogen niet groter dan %{size} megabytes zijn.
+          too_big: Afbeeldingen mogen niet groter dan %{size} bytes zijn.
           incorrect_format: Uw afbeelding moet een JPG, PNG of GIF zijn.

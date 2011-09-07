@@ -4,8 +4,16 @@ require 'refinerycms-core'
 require File.expand_path('../generators/images_generator', __FILE__)
 
 module Refinery
-  module Images
+  module Images    
     autoload :Dragonfly, 'refinery/images/dragonfly'
+    autoload :Validators, 'refinery/images/validators'
+    
+    class Options
+      include Rails::Railtie::Configurable
+      
+      cattr_accessor :max_image_size
+      self.max_image_size = 5242880
+    end
 
     class << self
       attr_accessor :root

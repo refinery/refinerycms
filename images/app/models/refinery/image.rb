@@ -1,13 +1,11 @@
 module Refinery
   class Image < ActiveRecord::Base
-
-    # What is the max image size a user can upload
-    MAX_SIZE_IN_MB = 5
+    include Images::Validators
+    
     image_accessor :image
 
     validates :image, :presence  => true
-    validates_size_of :image, :maximum => MAX_SIZE_IN_MB.megabytes,
-                              :message => :too_big, :size => MAX_SIZE_IN_MB
+    validates_with ImageSizeValidator
     validates_property :mime_type, :of => :image, :in => %w(image/jpeg image/png image/gif image/tiff),
                        :message => :incorrect_format
 

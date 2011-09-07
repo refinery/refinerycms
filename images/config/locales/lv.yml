@@ -14,7 +14,7 @@ lv:
           or: vai
           replace_image: " aizstāt to ar šo..."
           current_image: Pašreizējā Bilde
-          maximum_image_size: Maksimāli pieļaujamais bildes izmērs ir %{megabytes} megabaiti.
+          maximum_image_size: Maksimāli pieļaujamais bildes izmērs ir %{bytes} megabaiti.
         actions:
           create_new_image: Augšupielādēt bildi
         records:

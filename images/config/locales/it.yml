@@ -14,7 +14,7 @@ it:
           or: o
           replace_image: Sostituirla con questa...
           current_image: Immagine corrente
-          maximum_image_size: "La dimensione massima per l'immagine è di %{megabytes} megabytes."
+          maximum_image_size: "La dimensione massima per l'immagine è di %{bytes} bytes."
         actions:
           create_new_image: Carica una nuova immagine
         records:
@@ -47,5 +47,5 @@ it:
         refinery:
           image:
             blank: "Devi selezionare un'immagine da caricare"
-            too_big: 'I files devono essere di dimensioni inferiori a %{size} megabytes'
+            too_big: 'I files devono essere di dimensioni inferiori a %{size} bytes'
             incorrect_format: "L'immagine deve essere in formato JPEG, PNG o GIF"

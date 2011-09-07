@@ -115,5 +115,36 @@ module Refinery
         image.thumbnail_dimensions('5x5').should == { :width => 5, :height => 4 }
       end
     end
+    
+    describe "validations" do  
+      describe "valid #image" do
+        before(:each) do
+          @file = Refinery.roots("testing").join("assets/beach.jpeg")
+          Images::Options.max_image_size = (File.read(@file).size + 10.megabytes)
+        end
+
+        it "should be valid when size does not exceed .max_image_size" do
+          Image.new(:image => @file).should be_valid
+        end
+      end
+
+      describe "invalid #image" do
+        before(:each) do
+          @file = Refinery.roots("testing").join("assets/beach.jpeg")
+          Images::Options.max_image_size = 0
+          @image = Image.new(:image => @file)
+        end
+
+        it "should be valid when size does not exceed .max_image_size" do
+          @image.should_not be_valid
+        end
+
+        it "should contain an error message" do
+          @image.valid?
+          @image.errors.should_not be_empty
+          @image.errors[:image].should == ["Image should be smaller than #{Images::Options.max_image_size} bytes in size"]
+        end
+      end
+    end
   end
 end
