@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.version           = %q{1.0.8}
   s.summary           = %q{Core engine for Refinery CMS}
   s.description       = %q{The core of Refinery CMS. This handles the common functionality and is required by most engines}
-  s.date              = %q{2011-09-01}
+  s.date              = %q{2011-09-07}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
   s.rubyforge_project = %q{refinerycms}
@@ -79,6 +79,7 @@ Gem::Specification.new do |s|
     'app/views/wymiframe.html.erb',
     'config',
     'config/locales',
+    'config/locales/bg.yml',
     'config/locales/cs.yml',
     'config/locales/da.yml',
     'config/locales/de.yml',
@@ -362,6 +363,7 @@ Gem::Specification.new do |s|
     'public/javascripts/wymeditor',
     'public/javascripts/wymeditor/jquery.refinery.wymeditor.js',
     'public/javascripts/wymeditor/lang',
+    'public/javascripts/wymeditor/lang/bg.js',
     'public/javascripts/wymeditor/lang/ca.js',
     'public/javascripts/wymeditor/lang/cs.js',
     'public/javascripts/wymeditor/lang/da.js',

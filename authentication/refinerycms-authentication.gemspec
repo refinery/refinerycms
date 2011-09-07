@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.version           = %q{1.0.8}
   s.summary           = %q{Authentication engine for Refinery CMS}
   s.description       = %q{The default authentication engine for Refinery CMS}
-  s.date              = %q{2011-09-01}
+  s.date              = %q{2011-09-07}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
   s.rubyforge_project = %q{refinerycms}
@@ -63,6 +63,7 @@ Gem::Specification.new do |s|
     'app/views/users/new.html.erb',
     'config',
     'config/locales',
+    'config/locales/bg.yml',
     'config/locales/cs.yml',
     'config/locales/da.yml',
     'config/locales/de.yml',

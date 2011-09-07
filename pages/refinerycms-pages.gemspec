@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.version           = %q{1.0.8}
   s.summary           = %q{Pages engine for Refinery CMS}
   s.description       = %q{The default content engine of Refinery CMS. This engine handles the administration and display of user-editable pages.}
-  s.date              = %q{2011-09-01}
+  s.date              = %q{2011-09-07}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
   s.rubyforge_project = %q{refinerycms}
@@ -56,6 +56,7 @@ Gem::Specification.new do |s|
     'app/views/pages/show.html.erb',
     'config',
     'config/locales',
+    'config/locales/bg.yml',
     'config/locales/cs.yml',
     'config/locales/da.yml',
     'config/locales/de.yml',

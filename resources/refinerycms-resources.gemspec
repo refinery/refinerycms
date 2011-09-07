@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.version           = %q{1.0.8}
   s.summary           = %q{Resources engine for Refinery CMS}
   s.description       = %q{Handles all file upload and processing functionality in Refinery CMS.}
-  s.date              = %q{2011-09-01}
+  s.date              = %q{2011-09-07}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
   s.rubyforge_project = %q{refinerycms}
@@ -37,6 +37,7 @@ Gem::Specification.new do |s|
     'app/views/admin/resources/new.html.erb',
     'config',
     'config/locales',
+    'config/locales/bg.yml',
     'config/locales/cs.yml',
     'config/locales/da.yml',
     'config/locales/de.yml',
@@ -83,6 +84,14 @@ Gem::Specification.new do |s|
     'license.md',
     'refinerycms-resources.gemspec',
     'spec',
+    'spec/lib',
+    'spec/lib/tmp',
+    'spec/lib/tmp/config',
+    'spec/lib/tmp/config/refinery',
+    'spec/lib/tmp/config/refinery/resources.yml',
+    'spec/lib/tmp/db',
+    'spec/lib/tmp/db/migrate',
+    'spec/lib/tmp/db/migrate/20110907130938_create_refinerycms_resources_schema.rb',
     'spec/models',
     'spec/models/resource_spec.rb',
     'spec/uploads',
