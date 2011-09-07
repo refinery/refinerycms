@@ -12,10 +12,6 @@ module Refinery
     # Docs for acts_as_indexed http://github.com/dougal/acts_as_indexed
     acts_as_indexed :fields => [:title]
 
-    # when a dialog pops up with images, but that dialog has image resize options
-    # how many images per page should there be
-    PAGES_PER_DIALOG_THAT_HAS_SIZE_OPTIONS = 12
-
     # when listing images out in the admin area, how many images should show per page
     PAGES_PER_ADMIN_INDEX = 20
 
@@ -31,7 +27,7 @@ module Refinery
           unless has_size_options
             Images::Options.pages_per_dialog
           else
-            PAGES_PER_DIALOG_THAT_HAS_SIZE_OPTIONS
+            Images::Options.pages_per_dialog_that_have_size_options
           end
         else
           PAGES_PER_ADMIN_INDEX

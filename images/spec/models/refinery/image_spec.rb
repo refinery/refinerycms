@@ -48,8 +48,8 @@ module Refinery
     describe ".per_page" do
       context "dialog is true" do
         context "has_size_options is true" do
-          it "returns image count specified by PAGES_PER_DIALOG_THAT_HAS_SIZE_OPTIONS constant" do
-            ::Refinery::Image.per_page(true, true).should == Image::PAGES_PER_DIALOG_THAT_HAS_SIZE_OPTIONS
+          it "returns image count specified by Images::Options.pages_per_dialog_that_have_size_options option" do
+            ::Refinery::Image.per_page(true, true).should == Images::Options.pages_per_dialog_that_have_size_options
           end
         end
 
