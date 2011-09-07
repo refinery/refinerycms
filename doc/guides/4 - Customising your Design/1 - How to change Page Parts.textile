@@ -32,7 +32,7 @@ Here's a sample of a site that would have three content areas on most of its pag
 - Right Body
 </yaml>
 
-h3. Changing Part Parts for a single page
+h3. Changing Page Parts for a single page
 
 Often we find our home pages have three or more page parts but the rest of the site only needs two. In this situation you just want to have the default page parts set to Body and Side Body and your home page setup to have an extra one.
 
