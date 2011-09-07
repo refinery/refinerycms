@@ -9,7 +9,9 @@ module Refinery
     autoload :Validators, 'refinery/resources/validators'
     autoload :Engine, 'refinery/resources/engine'
     
-    mattr_accessor :max_client_body_size
+    module Config
+      mattr_accessor :max_client_body_size
+    end
 
     class << self
       attr_accessor :root
@@ -18,7 +20,7 @@ module Refinery
       end
       
       def configure!
-        Resources.max_client_body_size = config['max_client_body_size']
+        Config.max_client_body_size = config['max_client_body_size']
       end
       
       def config
@@ -39,4 +41,5 @@ module Refinery
   end
 end
 
+require 'refinery/resources/engine'
 ::Refinery.engines << 'resources'

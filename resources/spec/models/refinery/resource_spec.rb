@@ -3,11 +3,11 @@ require 'spec_helper'
 module Refinery
   describe Resource do
     before(:all) do
-      @max_client_body_size = Resources.max_client_body_size
+      @max_client_body_size = Resources::Config.max_client_body_size
     end
     
     after(:all) do
-      Resources.max_client_body_size = @max_client_body_size
+      Resources::Config.max_client_body_size = @max_client_body_size
     end
 
     let(:resource) { FactoryGirl.create(:resource) }
@@ -80,22 +80,11 @@ module Refinery
       end
     end
     
-    describe ".max_client_body_size" do
-      it "should return a default value of 50 megabytes" do
-        Resources.max_client_body_size.should == 50.megabytes
-      end
-      
-      it "should return configured value" do
-        Resources.max_client_body_size = 1.megabytes
-        Resources.max_client_body_size.should == 1.megabytes
-      end
-    end
-    
     describe "validations" do  
       describe "valid #file" do
         before(:each) do
           @file = Refinery.roots("testing").join("assets/refinery_is_awesome.txt")
-          Resources.max_client_body_size = (File.read(@file).size + 10)
+          Resources::Config.max_client_body_size = (File.read(@file).size + 10)
         end
         
         it "should be valid when size does not exceed .max_client_body_size" do
@@ -106,7 +95,7 @@ module Refinery
       describe "invalid #file" do
         before(:each) do
           @file = Refinery.roots("testing").join("assets/refinery_is_awesome.txt")
-          Resources.max_client_body_size = (File.read(@file).size - 10)
+          Resources::Config.max_client_body_size = (File.read(@file).size - 10)
           @resource = Resource.new(:file => @file)
         end
         
@@ -117,7 +106,7 @@ module Refinery
         it "should contain an error message" do
           @resource.valid?
           @resource.errors.should_not be_empty
-          @resource.errors[:file].should == ["File should be smaller than #{Resources.max_client_body_size} bytes in size"]
+          @resource.errors[:file].should == ["File should be smaller than #{Resources::Config.max_client_body_size} bytes in size"]
         end
       end
     end
