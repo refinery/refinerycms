@@ -7,7 +7,7 @@ module ::Refinery
     engine_name "resources"
     
     def generate_resource_config_files
-      template "lib/generators/templates/config/refinery/resources.yml.erb", destination_path.join("config", "refinery","resources.yml")
+      template "lib/generators/templates/config/initializers/refinery_resources.rb.erb", destination_path.join("config", "initializers", "refinery_resources.rb")
     end
 
   end

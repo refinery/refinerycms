@@ -7,10 +7,6 @@ module Refinery
         ::Refinery::Resources::Dragonfly.setup!
         ::Refinery::Resources::Dragonfly.attach!(app)
       end
-  
-      initializer 'resources-configuration' do |app|
-        ::Refinery::Resources.configure!
-      end
 
       initializer "init plugin", :after => :set_routes_reloader do |app|
         ::Refinery::Plugin.register do |plugin|

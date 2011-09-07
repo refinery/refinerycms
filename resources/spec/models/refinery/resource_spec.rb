@@ -3,11 +3,11 @@ require 'spec_helper'
 module Refinery
   describe Resource do
     before(:all) do
-      @max_file_size = Resources::Config.max_file_size
+      @max_file_size = Resources::Options.max_file_size
     end
     
     after(:all) do
-      Resources::Config.max_file_size = @max_file_size
+      Resources::Options.max_file_size = @max_file_size
     end
 
     let(:resource) { FactoryGirl.create(:resource) }
@@ -84,7 +84,7 @@ module Refinery
       describe "valid #file" do
         before(:each) do
           @file = Refinery.roots("testing").join("assets/refinery_is_awesome.txt")
-          Resources::Config.max_file_size = (File.read(@file).size + 10)
+          Resources::Options.max_file_size = (File.read(@file).size + 10)
         end
         
         it "should be valid when size does not exceed .max_file_size" do
@@ -95,7 +95,7 @@ module Refinery
       describe "invalid #file" do
         before(:each) do
           @file = Refinery.roots("testing").join("assets/refinery_is_awesome.txt")
-          Resources::Config.max_file_size = (File.read(@file).size - 10)
+          Resources::Options.max_file_size = (File.read(@file).size - 10)
           @resource = Resource.new(:file => @file)
         end
         
@@ -106,7 +106,7 @@ module Refinery
         it "should contain an error message" do
           @resource.valid?
           @resource.errors.should_not be_empty
-          @resource.errors[:file].should == ["File should be smaller than #{Resources::Config.max_file_size} bytes in size"]
+          @resource.errors[:file].should == ["File should be smaller than #{Resources::Options.max_file_size} bytes in size"]
         end
       end
     end
