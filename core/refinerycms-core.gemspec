@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.version           = %q{2.0.0}
   s.summary           = %q{Core engine for Refinery CMS}
   s.description       = %q{The core of Refinery CMS. This handles the common functionality and is required by most engines}
-  s.date              = %q{2011-09-06}
+  s.date              = %q{2011-09-09}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
   s.rubyforge_project = %q{refinerycms}
@@ -216,6 +216,7 @@ Gem::Specification.new do |s|
     'app/assets/javascripts/wymeditor',
     'app/assets/javascripts/wymeditor/jquery.refinery.wymeditor.js',
     'app/assets/javascripts/wymeditor/lang',
+    'app/assets/javascripts/wymeditor/lang/bg.js',
     'app/assets/javascripts/wymeditor/lang/ca.js',
     'app/assets/javascripts/wymeditor/lang/cs.js',
     'app/assets/javascripts/wymeditor/lang/da.js',
@@ -407,6 +408,10 @@ Gem::Specification.new do |s|
     'public/404.html',
     'public/422.html',
     'public/500.html',
+    'public/javascripts',
+    'public/javascripts/wymeditor',
+    'public/javascripts/wymeditor/lang',
+    'public/javascripts/wymeditor/lang/bg.js',
     'public/robots.txt',
     'public/wymeditor',
     'public/wymeditor/GPL-license.txt',
