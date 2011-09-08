@@ -2,14 +2,6 @@ require 'spec_helper'
 
 module Refinery
   describe Resource do
-    before(:all) do
-      @max_file_size = Resources::Options.max_file_size
-    end
-    
-    after(:all) do
-      Resources::Options.max_file_size = @max_file_size
-    end
-
     let(:resource) { FactoryGirl.create(:resource) }
 
     context "with valid attributes" do
