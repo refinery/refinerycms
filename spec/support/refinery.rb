@@ -1,6 +1,4 @@
-require 'refinery/testing/factories'
-require 'refinery/testing/controller_macros'
-require 'refinery/testing/request_macros'
+require 'refinerycms-testing'
 
 RSpec.configure do |config|
   config.extend Refinery::Testing::ControllerMacros::Authentication, :type => :controller
@@ -9,10 +7,12 @@ RSpec.configure do |config|
   config.before(:each) do
     Refinery::Images::Options.reset!
     Refinery::Resources::Options.reset!
+    Refinery::Pages::Options.reset!
   end
   
   config.after(:each) do
     Refinery::Images::Options.reset!
     Refinery::Resources::Options.reset!
+    Refinery::Pages::Options.reset!
   end
 end
