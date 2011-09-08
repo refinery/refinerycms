@@ -46,8 +46,8 @@ module Refinery
 
     describe ".per_page" do
       context "dialog is true" do
-        it "returns resource count specified by PAGES_PER_DIALOG constant" do
-          Resource.per_page(true).should == Resource::PAGES_PER_DIALOG
+        it "returns resource count specified by Resources::Options.pages_per_dialog option" do
+          Resource.per_page(true).should == Resources::Options.pages_per_dialog
         end
       end
 
