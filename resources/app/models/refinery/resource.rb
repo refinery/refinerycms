@@ -12,9 +12,6 @@ module Refinery
     # Docs for acts_as_indexed http://github.com/dougal/acts_as_indexed
     acts_as_indexed :fields => [:file_name, :title, :type_of_content]
 
-    # when listing resources out in the admin area, how many resources should show per page
-    PAGES_PER_ADMIN_INDEX = 20
-
     delegate :ext, :size, :mime_type, :url, :to => :file
 
     # used for searching
@@ -31,7 +28,7 @@ module Refinery
     class << self
       # How many resources per page should be displayed?
       def per_page(dialog = false)
-        dialog ? Resources::Options.pages_per_dialog : PAGES_PER_ADMIN_INDEX
+        dialog ? Resources::Options.pages_per_dialog : Resources::Options.pages_per_admin_index
       end
 
       def create_resources(params)

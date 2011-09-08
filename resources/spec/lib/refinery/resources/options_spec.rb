@@ -18,6 +18,14 @@ module Refinery
         Resources::Options.reset!
         Resources::Options.pages_per_dialog.should == Resources::Options::DEFAULT_PAGES_PER_DIALOG
       end
+      
+      it "should set pages_per_admin_index back to the default value" do
+        Resources::Options.pages_per_admin_index.should == Resources::Options::DEFAULT_PAGES_PER_ADMIN_INDEX
+        Resources::Options.pages_per_admin_index += 1
+        Resources::Options.pages_per_admin_index.should_not == Resources::Options::DEFAULT_PAGES_PER_ADMIN_INDEX
+        Resources::Options.reset!
+        Resources::Options.pages_per_admin_index.should == Resources::Options::DEFAULT_PAGES_PER_ADMIN_INDEX
+      end
     end
   end
 end

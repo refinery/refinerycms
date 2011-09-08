@@ -52,8 +52,8 @@ module Refinery
       end
 
       context "dialog is false" do
-        it "returns resource count specified by PAGES_PER_ADMIN_INDEX constant" do
-          Resource.per_page.should == Resource::PAGES_PER_ADMIN_INDEX
+        it "returns resource count specified by Resources::Options.pages_per_admin_index constant" do
+          Resource.per_page.should == Resources::Options.pages_per_admin_index
         end
       end
     end
