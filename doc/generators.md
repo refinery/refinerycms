@@ -1,9 +1,5 @@
 # RefineryCMS Generators
 
-## Dependencies
-
-This version is targeted at RefineryCMS versions 2.0.0 and higher.
-
 ## Engine Generator
 
 The Refinery generator is a standard Rails generator that functions just like the

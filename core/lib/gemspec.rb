@@ -23,7 +23,6 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'refinerycms-base',            '= #{::Refinery::Version}'
   s.add_dependency 'refinerycms-settings',        '= #{::Refinery::Version}'
-  s.add_dependency 'refinerycms-generators',      '= #{::Refinery::Version}'
   s.add_dependency 'acts_as_indexed',             '~> 0.7'
   s.add_dependency 'friendly_id_globalize3',      '~> 3.2.1'
   s.add_dependency 'globalize3',                  '~> 0.2.0.beta3'
