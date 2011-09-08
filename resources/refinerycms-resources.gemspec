@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.version           = %q{2.0.0}
   s.summary           = %q{Resources engine for Refinery CMS}
   s.description       = %q{Handles all file upload and processing functionality in Refinery CMS.}
-  s.date              = %q{2011-09-06}
+  s.date              = %q{2011-09-07}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
   s.rubyforge_project = %q{refinerycms}
@@ -77,11 +77,13 @@ Gem::Specification.new do |s|
     'lib/generators/resources_generator.rb',
     'lib/generators/templates',
     'lib/generators/templates/config',
-    'lib/generators/templates/config/refinery',
-    'lib/generators/templates/config/refinery/resources.yml.erb',
+    'lib/generators/templates/config/initializers',
+    'lib/generators/templates/config/initializers/refinery_resources.rb.erb',
     'lib/refinery',
     'lib/refinery/resources',
     'lib/refinery/resources/dragonfly.rb',
+    'lib/refinery/resources/engine.rb',
+    'lib/refinery/resources/options.rb',
     'lib/refinery/resources/validators',
     'lib/refinery/resources/validators/file_size_validator.rb',
     'lib/refinery/resources/validators.rb',
@@ -92,6 +94,16 @@ Gem::Specification.new do |s|
     'spec/lib',
     'spec/lib/generators',
     'spec/lib/generators/resources_generator_spec.rb',
+    'spec/lib/refinery',
+    'spec/lib/refinery/resources',
+    'spec/lib/refinery/resources/options_spec.rb',
+    'spec/lib/tmp',
+    'spec/lib/tmp/config',
+    'spec/lib/tmp/config/initializers',
+    'spec/lib/tmp/config/initializers/refinery_resources.rb',
+    'spec/lib/tmp/db',
+    'spec/lib/tmp/db/migrate',
+    'spec/lib/tmp/db/migrate/20110908011052_create_refinerycms_resources_schema.rb',
     'spec/models',
     'spec/models/refinery',
     'spec/models/refinery/resource_spec.rb',
