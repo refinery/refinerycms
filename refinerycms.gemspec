@@ -34,6 +34,7 @@ Gem::Specification.new do |s|
     '.yardopts',
     'Gemfile',
     'Gemfile',
+    'Gemfile.lock',
     'Guardfile',
     'Rakefile',
     'bin',
