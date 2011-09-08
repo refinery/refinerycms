@@ -1,12 +1,5 @@
 module Refinery
   class Page < ActiveRecord::Base
-
-    # when a dialog pops up to link to a page, how many pages per page should there be
-    PAGES_PER_DIALOG = 14
-
-    # when listing pages out in the admin area, how many pages should show per page
-    PAGES_PER_ADMIN_INDEX = 20
-
     # when collecting the pages path how is each of the pages seperated?
     PATH_SEPARATOR = " - "
 
@@ -309,7 +302,7 @@ module Refinery
 
       # Returns how many pages per page should there be when paginating pages
       def per_page(dialog = false)
-        dialog ? PAGES_PER_DIALOG : PAGES_PER_ADMIN_INDEX
+        dialog ? Pages::Options.pages_per_dialog : Pages::Options.pages_per_admin_index
       end
 
       def expire_page_caching

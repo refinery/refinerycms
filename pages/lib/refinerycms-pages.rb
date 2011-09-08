@@ -12,6 +12,7 @@ module Refinery
     end
     
     autoload :InstanceMethods, 'refinery/pages/instance_methods'
+    autoload :Options, 'refinery/pages/options'
 
     class << self
       attr_accessor :root
