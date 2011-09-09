@@ -16,7 +16,7 @@ module Refinery
             click_button "Sign in"
           end
         end
-        
+
         def login_refinery_translator
           before(:each) do
             FactoryGirl.create(:refinery_user)

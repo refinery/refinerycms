@@ -5,7 +5,7 @@ module Refinery
     before(:all) do
       @max_client_body_size = Resources.max_client_body_size
     end
-    
+
     after(:all) do
       Resources.max_client_body_size = @max_client_body_size
     end
@@ -79,41 +79,41 @@ module Refinery
         end
       end
     end
-    
+
     describe ".max_client_body_size" do
       it "should return a default value of 50 megabytes" do
         Resources.max_client_body_size.should == 50.megabytes
       end
-      
+
       it "should return configured value" do
         Resources.max_client_body_size = 1.megabytes
         Resources.max_client_body_size.should == 1.megabytes
       end
     end
-    
-    describe "validations" do  
+
+    describe "validations" do
       describe "valid #file" do
         before(:each) do
           @file = Refinery.roots("testing").join("assets/refinery_is_awesome.txt")
           Resources.max_client_body_size = (File.read(@file).size + 10)
         end
-        
+
         it "should be valid when size does not exceed .max_client_body_size" do
           Resource.new(:file => @file).should be_valid
         end
       end
-      
+
       describe "invalid #file" do
         before(:each) do
           @file = Refinery.roots("testing").join("assets/refinery_is_awesome.txt")
           Resources.max_client_body_size = (File.read(@file).size - 10)
           @resource = Resource.new(:file => @file)
         end
-        
+
         it "should be valid when size does not exceed .max_client_body_size" do
           @resource.should_not be_valid
         end
-        
+
         it "should contain an error message" do
           @resource.valid?
           @resource.errors.should_not be_empty

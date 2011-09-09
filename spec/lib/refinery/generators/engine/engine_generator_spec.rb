@@ -5,12 +5,12 @@ module Refinery
   describe Generators::EngineGenerator do
     include GeneratorSpec::TestCase
     destination File.expand_path("../../tmp", __FILE__)
-    
+
     before(:each) do
       prepare_destination
       run_generator %w{ rspec_product_test title:string description:text image:image brochure:resource }
     end
-    
+
     specify do
       destination_root.should have_structure {
         directory "vendor" do

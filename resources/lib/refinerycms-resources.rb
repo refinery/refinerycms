@@ -5,7 +5,7 @@ require File.expand_path('../generators/resources_generator', __FILE__)
 
 module Refinery
   module Resources
-    
+
     mattr_accessor :max_client_body_size
 
     class << self
@@ -13,11 +13,11 @@ module Refinery
       def root
         @root ||= Pathname.new(File.expand_path('../../', __FILE__))
       end
-      
+
       def configure!
         Resources.max_client_body_size = config['max_client_body_size']
       end
-      
+
       def config
         config = {}
         begin
@@ -25,10 +25,10 @@ module Refinery
         rescue; end
         defaults.merge(config)
       end
-      
+
       protected
         def defaults
-          { 
+          {
             'max_client_body_size' => 52428800
           }
         end
@@ -44,7 +44,7 @@ module Refinery
         ::Refinery::Resources::Dragonfly.setup!
         ::Refinery::Resources::Dragonfly.attach!(app)
       end
-      
+
       initializer 'resources-configuration' do |app|
         ::Refinery::Resources.configure!
       end
