@@ -71,30 +71,30 @@ module Refinery
         end
       end
     end
-    
-    describe "validations" do  
+
+    describe "validations" do
       describe "valid #file" do
         before(:each) do
           @file = Refinery.roots("testing").join("assets/refinery_is_awesome.txt")
           Resources::Options.max_file_size = (File.read(@file).size + 10)
         end
-        
+
         it "should be valid when size does not exceed .max_file_size" do
           Resource.new(:file => @file).should be_valid
         end
       end
-      
+
       describe "invalid #file" do
         before(:each) do
           @file = Refinery.roots("testing").join("assets/refinery_is_awesome.txt")
           Resources::Options.max_file_size = (File.read(@file).size - 10)
           @resource = Resource.new(:file => @file)
         end
-        
+
         it "should be valid when size does not exceed .max_file_size" do
           @resource.should_not be_valid
         end
-        
+
         it "should contain an error message" do
           @resource.valid?
           @resource.errors.should_not be_empty

@@ -10,7 +10,7 @@ module Refinery
     module Admin
       autoload :InstanceMethods, 'refinery/pages/admin/instance_methods'
     end
-    
+
     autoload :InstanceMethods, 'refinery/pages/instance_methods'
     autoload :Options, 'refinery/pages/options'
 

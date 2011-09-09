@@ -5,12 +5,12 @@ module Refinery
   describe ImagesGenerator do
     include GeneratorSpec::TestCase
     destination File.expand_path("../../tmp", __FILE__)
-    
+
     before(:each) do
       prepare_destination
       run_generator
     end
-    
+
     specify do
       destination_root.should have_structure {
         directory "db" do

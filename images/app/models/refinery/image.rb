@@ -1,7 +1,7 @@
 module Refinery
   class Image < ActiveRecord::Base
     include Images::Validators
-    
+
     image_accessor :image
 
     validates :image, :presence  => true

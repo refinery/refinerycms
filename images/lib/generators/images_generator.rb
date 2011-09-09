@@ -9,6 +9,6 @@ module Refinery
     def generate_images_initializer
       template "lib/generators/templates/config/initializers/refinery_images.rb.erb", destination_path.join("config", "initializers", "refinery_images.rb")
     end
-    
+
   end
 end

@@ -4,7 +4,7 @@ require 'refinerycms-core'
 require File.expand_path('../generators/images_generator', __FILE__)
 
 module Refinery
-  module Images    
+  module Images
     autoload :Dragonfly, 'refinery/images/dragonfly'
     autoload :Validators, 'refinery/images/validators'
     autoload :Options, 'refinery/images/options'

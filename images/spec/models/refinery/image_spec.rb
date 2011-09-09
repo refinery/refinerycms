@@ -115,8 +115,8 @@ module Refinery
         image.thumbnail_dimensions('5x5').should == { :width => 5, :height => 4 }
       end
     end
-    
-    describe "validations" do  
+
+    describe "validations" do
       describe "valid #image" do
         before(:each) do
           @file = Refinery.roots("testing").join("assets/beach.jpeg")
