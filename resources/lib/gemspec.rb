@@ -23,7 +23,7 @@ Gem::Specification.new do |s|
 
   s.files             = [
     '#{%w( **/{*,.rspec,.gitignore,.yardopts} ).map { |file| Pathname.glob(gempath.join(file)) }.flatten.reject{|f|
-      !f.exist? or f.to_s =~ /\.gem$/ or (f.directory? and f.children.empty?)
+      !f.exist? or f.to_s =~ /\.(gem|rbc)$/ or (f.directory? and f.children.empty?)
     }.map{|d| d.relative_path_from(gempath)}.uniq.sort.join("',\n    '")}'
   ]
 
