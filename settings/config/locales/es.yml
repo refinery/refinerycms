@@ -52,7 +52,6 @@ es:
             menu_hide_children: "Esconde todas las subpáginas del menú, aunque estén presentes."
             new_page_parts: Permite añadir nuevas partes (secciones de contenido) en los editores de páginas.
             page_title: 'Opciones muy complejas para fijar el título de la página. Aquí puedes fijar alguna clase CSS personalizada, o alguna etiqueta diferente, o añadirlo a las "migas de pan" con los antecesores de cada página.'
-            page_advanced_options_include_seo: Controla si las opciones SEO se muestran en las opciones avanzadas de cada página.
             preferred_image_view: Controla con qué vista se muestran las imágenes existentes - grid para 'Ver como cuadrícula' y list para 'Ver como lista'. Hay un botón para automatizar este proceso en el propio plugin de las imágenes.
             show_contact_privacy_link: Puedes ocultar o mostrar el enlace a la página de política de privacidad en el formulario de contacto.
             site_name: "Este es el nombre de tu web y se mostrará en la cabecera, en el panel de control y en la frase de Copyright del pie de página en algunos temas."
