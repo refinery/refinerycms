@@ -1,7 +1,8 @@
-require File.expand_path('../../generators', __FILE__)
+require 'refinery/generators'
 require 'rails/generators'
 require 'rails/generators/named_base'
 require 'rails/generators/migration'
+require 'rails/generators/active_record'
 
 module Refinery
   module Generators
