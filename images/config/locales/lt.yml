@@ -14,7 +14,7 @@ lt:
           or: arba
           replace_image: " pakeisti jį šiuo..."
           current_image: Pasirinktas paveikslėlis
-          maximum_image_size: Maksimalus paveikslėlio dydis yra %{megabytes} megabaitų.
+          maximum_image_size: Maksimalus paveikslėlio dydis yra %{bytes} megabaitų.
         actions:
           create_new_image: Pridėti naują paveikslėlį
         records:

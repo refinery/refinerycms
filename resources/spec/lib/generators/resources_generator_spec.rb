@@ -17,9 +17,9 @@ module Refinery
           directory "migrate"
         end
         directory "config" do
-          directory "refinery" do
-            file "resources.yml" do
-              contains "max_client_body_size:"
+          directory "initializers" do
+            file "refinery_resources.rb" do
+              contains "Refinery::Resources::Options.configure"
             end
           end
         end
