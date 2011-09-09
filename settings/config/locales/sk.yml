@@ -21,15 +21,10 @@ sk:
             restricted: Voľba bude viditeľná a editovateľná len pre adminstrátorov (ako ste vy).
             activity_show_limit: Obmedzuje počet položiek viditeľných na nástenke.
             analytics_page_code: Tento kód aktivuje sledovanie návštevníkov webu pomocou Google Analytics. Pokiaľ je ponechaný prázdny, alebo v tvare UA-xxxxxx-x je sledovanie vypnuté a žiadne informácie sa do Google Analytics neposielajú.
-            image_dialogue_sizes: Toto nastavenie sa používa v dialógu vkladanie obrázku. Musíte implementovať rozdielne veľkosti náhľadov, ak toto nastavenie zmeníte.
-            image_thumbnails: Ak zmeníte toto nastavenie, budete musieť tiež pregenerovať obrázky príkazom rake images:regenerate (alebo rake images:update ak ste len pridával náhľady) inak sa vaše zmeny neprejavia na existujúcich obrázkoch.
             menu_hide_children: Skryť podstránky z menu aj keď sú dostupné.
             new_page_parts: Povoliť pridávanie nových častí stránok (obsahové sekcie) v editore stránky.
             page_title: Veľmi komplexná voľba pre nastavenie titulky stránky. Môžete nastaviť vlastné CSS triedy, iný tag alebo ho poslať do drobečkového menu so stránkami s rovnakým predkom.
-            pages_advanced_options_include_seo: Táto voľba určuje, či sú zobrazené SEO nastavenia v rozšírenom nastavení stránky.
             preferred_image_view: Nastavuje preferovaný pohľad na existujúce obrázky. Vyberte grid pre zobrazenie v mriežke, alebo list pre zobrazenie zoznamu. Nastavenie sa dá prepínať tlačidlom i v samotnom pohľade.
-            refinery_enable_backend_reordering: Môžete odstrániť možnosť radiť záložky v administrácii.
-            refinery_menu_cache_action_suffix: Nastavuje kľúč, ktorý je používaný na ukladanie menu do medzipamäte. Ak používate nejaký tému je lepšie nechať toto nastavenie v pôvodnom stave a vzhľad sa o toto nastavenie postará.
             show_contact_privacy_link: Môžete zobraziť alebo skryť odkaz na stránku 'Zásady ochrany osobných údajov' u kontaktného formulára vedľa tlačidla 'Odoslať'.
             site_name: Názov vášho webu, ktorý sa zobrazuje v hlavičke stránky, v administrácii a niekedy (podľa témy) sa používa aj v pätičke.
             theme: Zadajte názov témy, ktorá má byť aktívna. Zmena sa prejavý okamžite a musí byť nastavený platný názov témy!

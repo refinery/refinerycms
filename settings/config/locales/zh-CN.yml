@@ -21,15 +21,10 @@ zh-CN:
             restricted: 这使得设置只能由超级用户(像您一样)可见和修改.
             activity_show_limit: 这能限制控制面板列表项所显示的数量.
             analytics_page_code: 这个代码可启动 Google Analytics 来跟踪您的网站. 如果这项设定留白或是设为 UA-xxxxxx-x 则表示为关闭这项功能并且不会有任何远程的 Google Analytics 呼叫发生.
-            image_dialogue_sizes: 这个设定可以生效插入图片的对话方框. 您必须完成不同大小的缩图并且改变它.
-            image_thumbnails: 如果您修改了这个选项, 您必须执行 rake images:regenerate (或是 rake image:update, 如果您只是增加了更多缩图), 否则这个设定将不会影响任何已存在网站上的图片.
             menu_hide_children: 从选单中隐藏任何子页面, 即使它们是存在的.
             new_page_parts: 开启在页面编辑器可新增新页面区块 (内容区) 的功能.
             page_title: 提供非常复杂的选项让您设定页面标题. 在这里您可以设定自订的 CSS 类別或是不同的标签, 或是加上记录着页面层级关系的导览列.
-            pages_advanced_options_include_seo: 这可控制是否 SEO 选项会显示在页面上的高级选项中.
             preferred_image_view: 这可控制图片插件如何呈现目前这些已存在网站上的图片 - grid 表示 '网格模式' 以及 list 表示 '列表模式'. 图片插件本身提供一个按钮可以自动切换这些模式.
-            refinery_enable_backend_reordering: 您可以移除可以重新排列插件显示顺序的功能.
-            refinery_menu_cache_action_suffix: 这可控制用来使用在快取网站选单的金钥. 如果您正在使用布景主题, 那最好不要改变默认值, 让布景主题来为您处里.
             show_contact_privacy_link: 您可以隐藏或是显示在联络人表单确认按钮旁的隐私条款页面链接.
             site_name: 这是您的网站名称, 它将会显示在网站标题, Refinery 的后台管理系统, 以及部份有页尾版权宣告的布景主题中.
             theme: 输入您想要开启的布景主题名称. 它将会马上生效并且确认为是有效的名称.

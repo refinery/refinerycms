@@ -49,15 +49,11 @@ es:
             restricted: Hace que sólo los superusuarios (como tu) puedan ver y editar esta opción.
             activity_show_limit: Limita el número de items que se muestran en el listado del panel de control.
             analytics_page_code: Este código activa Google Analytics en tu web. Si se deja en blanco o se indica UA-xxxxxx-x quedará desactivado y no se harán peticiones a Google Analytics.
-            image_dialogue_sizes: Esta opción se aplica al apartado de Insertar Imagen. Debes implementar los distintos tamaños de imágenes además de cambiar esta opción.
-            image_thumbnails: "Si modificas esta opción tendrás que regenerar tus imágenes ejecutando rake images:regenerate (o rake images:update si sólo has añadido tamaños), de lo contrario esta opción no se aplicará a las imágenes actuales."
             menu_hide_children: "Esconde todas las subpáginas del menú, aunque estén presentes."
             new_page_parts: Permite añadir nuevas partes (secciones de contenido) en los editores de páginas.
             page_title: 'Opciones muy complejas para fijar el título de la página. Aquí puedes fijar alguna clase CSS personalizada, o alguna etiqueta diferente, o añadirlo a las "migas de pan" con los antecesores de cada página.'
             page_advanced_options_include_seo: Controla si las opciones SEO se muestran en las opciones avanzadas de cada página.
             preferred_image_view: Controla con qué vista se muestran las imágenes existentes - grid para 'Ver como cuadrícula' y list para 'Ver como lista'. Hay un botón para automatizar este proceso en el propio plugin de las imágenes.
-            refinery_enable_backend_reordering: Puedes eliminar la capacidad de reordenar el orden en que se muestran los plugins.
-            refinery_menu_cache_action_suffix: Controla la clave que se usa para cachear el menú de la web. Si estás usando un tema personalizado es mejor dejar esta opción con su valor por defecto para que el propio tema lo gestione.
             show_contact_privacy_link: Puedes ocultar o mostrar el enlace a la página de política de privacidad en el formulario de contacto.
             site_name: "Este es el nombre de tu web y se mostrará en la cabecera, en el panel de control y en la frase de Copyright del pie de página en algunos temas."
             theme: Escribe el nombre del tema que quieres activar. Hará efecto inmediatamente y debe identificar correctamente un tema existente para que funcione.
