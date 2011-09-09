@@ -21,6 +21,7 @@ gemspec
 # Anything you put in here will be overridden when the app gets updated.
 
 # gem 'refinerycms', '~> 2.0.0'
+gem 'seo_meta', :git => 'git://github.com/parndt/seo_meta.git'
 
 # END REFINERY CMS ============================================================
 

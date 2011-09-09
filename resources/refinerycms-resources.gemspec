@@ -98,7 +98,7 @@ Gem::Specification.new do |s|
     'spec/lib/tmp/config/refinery/resources.yml',
     'spec/lib/tmp/db',
     'spec/lib/tmp/db/migrate',
-    'spec/lib/tmp/db/migrate/20110907041114_create_refinerycms_resources_schema.rb',
+    'spec/lib/tmp/db/migrate/20110908232046_create_refinerycms_resources_schema.rb',
     'spec/models',
     'spec/models/refinery',
     'spec/models/refinery/resource_spec.rb',
