@@ -14,7 +14,7 @@ en:
           or: or
           replace_image: " replace it with this one..."
           current_image: Current Image
-          maximum_image_size: The maximum image size is %{megabytes} megabytes.
+          maximum_image_size: The maximum image size is %{bytes} bytes.
         actions:
           create_new_image: Add new image
         records:
@@ -40,5 +40,5 @@ en:
       models:
         refinery/image:
           blank: You must specify an image for upload
-          too_big: Image should be smaller than %{size} megabytes in size
+          too_big: Image should be smaller than %{size} bytes in size
           incorrect_format: 'Your image must be either a JPG, PNG or GIF'

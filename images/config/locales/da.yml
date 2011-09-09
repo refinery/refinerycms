@@ -14,7 +14,7 @@ da:
           or: eller
           replace_image: " erstat med dette..."
           current_image: Nuværende billede
-          maximum_image_size: Billedet må maksimalt fylde %{megabytes} megabytes.
+          maximum_image_size: Billedet må maksimalt fylde %{bytes} bytes.
         actions:
           create_new_image: Tilføj et nyt billede
         records:
@@ -40,5 +40,5 @@ da:
       models:
         refinery/image:
           blank: Du skal angive et billede, der skal uploades
-          too_big: Filer må højest være på %{size} megabytes
+          too_big: Filer må højest være på %{size} bytes
           incorrect_format: 'Dit billede skal være enten JPG, PNG eller GIF format'

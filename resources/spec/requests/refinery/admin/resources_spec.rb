@@ -5,14 +5,6 @@ module Refinery
     describe "Resources" do
       login_refinery_user
 
-      before(:all) do
-        @max_client_body_size = Refinery::Resources.max_client_body_size
-      end
-
-      after(:all) do
-        Refinery::Resources.max_client_body_size = @max_client_body_size
-      end
-
       context "when no files" do
         it "invites to upload file" do
           visit refinery_admin_resources_path
