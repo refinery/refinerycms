@@ -1,7 +1,7 @@
 ::Page.reset_column_information
 # Check whether all columns are applied yet by seo_meta.
 unless !defined?(::SeoMeta) || ::SeoMeta.attributes.keys.all? { |k|
-  ::Page.translation_class.instance_methods.include?(k)
+  ::Page.translation_class.instance_methods.include?(RUBY_VERSION =~ /^1\.8\./ ? k.to_s : k)
 }
   # Make pages model seo_meta because not all columns are accessible.
   ::Page.translation_class.send :is_seo_meta
