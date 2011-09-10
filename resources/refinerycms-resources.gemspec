@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.version           = %q{2.0.0}
   s.summary           = %q{Resources engine for Refinery CMS}
   s.description       = %q{Handles all file upload and processing functionality in Refinery CMS.}
-  s.date              = %q{2011-09-09}
+  s.date              = %q{2011-09-10}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
   s.rubyforge_project = %q{refinerycms}
@@ -103,7 +103,7 @@ Gem::Specification.new do |s|
     'spec/lib/tmp/config/refinery/resources.yml',
     'spec/lib/tmp/db',
     'spec/lib/tmp/db/migrate',
-    'spec/lib/tmp/db/migrate/20110909004214_create_refinerycms_resources_schema.rb',
+    'spec/lib/tmp/db/migrate/20110909015653_create_refinerycms_resources_schema.rb',
     'spec/models',
     'spec/models/refinery',
     'spec/models/refinery/resource_spec.rb',

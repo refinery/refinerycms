@@ -5,7 +5,7 @@ Gem::Specification.new do |s|
   s.name              = %q{refinerycms}
   s.version           = %q{2.0.0}
   s.description       = %q{A Ruby on Rails CMS that supports Rails 3. It's easy to extend and sticks to 'the Rails way' where possible.}
-  s.date              = %q{2011-09-09}
+  s.date              = %q{2011-09-10}
   s.summary           = %q{A Ruby on Rails CMS that supports Rails 3}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
@@ -87,6 +87,7 @@ Gem::Specification.new do |s|
     'lib/refinery/generators/engine/templates/config',
     'lib/refinery/generators/engine/templates/config/locales',
     'lib/refinery/generators/engine/templates/config/locales/en.yml',
+    'lib/refinery/generators/engine/templates/config/locales/es.yml',
     'lib/refinery/generators/engine/templates/config/locales/fr.yml',
     'lib/refinery/generators/engine/templates/config/locales/lolcat.yml',
     'lib/refinery/generators/engine/templates/config/locales/nb.yml',
