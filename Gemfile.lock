@@ -6,13 +6,6 @@ GIT
       refinerycms-core (~> 2.0.0)
       routing-filter (>= 0.2.3)
 
-GIT
-  remote: git://github.com/parndt/seo_meta.git
-  revision: 151e1e83a3bb6607f6191be5410b0bec1bebe93f
-  specs:
-    seo_meta (1.2.0.rc1)
-      rails (>= 3.0.0)
-
 PATH
   remote: .
   specs:
@@ -57,7 +50,7 @@ PATH
       awesome_nested_set (~> 2.0)
       friendly_id_globalize3 (~> 3.2.1)
       refinerycms-core (= 2.0.0)
-      seo_meta (>= 1.2.0.rc1)
+      seo_meta (>= 1.2.0.rc2)
     refinerycms-resources (2.0.0)
       activerecord (~> 3.1.0)
       dragonfly (~> 0.9.8)
@@ -251,9 +244,11 @@ GEM
       ffi (>= 1.0.7)
       json_pure
       rubyzip
-    simplecov (0.4.2)
-      simplecov-html (~> 0.4.4)
-    simplecov-html (0.4.5)
+    seo_meta (1.2.0.rc2)
+      rails (>= 3.0.0)
+    simplecov (0.5.0)
+      simplecov-html (~> 0.5.0)
+    simplecov-html (0.5.0)
     spork (0.9.0.rc9)
     sprockets (2.0.0)
       hike (~> 1.2)
@@ -296,7 +291,6 @@ DEPENDENCIES
   refinerycms-i18n (~> 2.0.0)!
   refinerycms-testing (~> 2.0.0)
   sass-rails (~> 3.1.0)
-  seo_meta!
   simplecov
   spork (= 0.9.0.rc9)
   sqlite3

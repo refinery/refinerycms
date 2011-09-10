@@ -31,7 +31,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'activerecord',                '~> 3.1.0'
   s.add_dependency 'friendly_id_globalize3',      '~> 3.2.1'
   s.add_dependency 'awesome_nested_set',          '~> 2.0'
-  s.add_dependency 'seo_meta',                    '>= 1.2.0.rc1'
+  s.add_dependency 'seo_meta',                    '>= 1.2.0.rc2'
 end
 EOF
 
