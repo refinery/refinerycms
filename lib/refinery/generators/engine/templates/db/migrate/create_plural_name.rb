@@ -17,8 +17,6 @@ class Create<%= class_name.pluralize %> < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index :refinery_<%= table_name %>, :id
-
     load(Rails.root.join('db', 'seeds', '<%= class_name.pluralize.underscore.downcase %>.rb'))
   end
 
