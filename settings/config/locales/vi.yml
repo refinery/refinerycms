@@ -21,15 +21,10 @@ vi:
             restricted: Điều này làm cho các thiết lập chỉ hiển thị và chỉnh sửa bởi superusers (những người như bạn).
             activity_show_limit: Điều này hạn chế số lượng hàng có thể hiển thị trong danh sách Bảng điều khiển.
             analytics_page_code: "Mã này kích hoạt Google Analytics theo dõi trong trang web của bạn. Nếu thiết lập được để trống, hoặc có dạng UA-xxxxxx-x có nghĩa là vô hiệu hoá và không có tương tác với Google Analytics được thực hiện."
-            image_dialogue_sizes: Thiết lập này áp dụng cho các Insert Image box. Bạn phải làm các kích thước thumbnail khác nhau cũng như thay đổi thiết lập này.
-            image_thumbnails: "Nếu bạn thay đổi cài đặt này, bạn sẽ phải tạo lại hình ảnh của bạn bằng cách chạy  rake images:regenerate (hoặc rake images:update nếu bạn chỉ thêm vào hình thu nhỏ khác) nếu không thiết lập sẽ không áp dụng cho hình ảnh hiện tại."
             menu_hide_children: Ẩn bất kỳ trang con từ trình đơn ngay cả khi nó có mặt.
             new_page_parts: Kích hoạt tính năng bổ sung thêm bộ phận mới của trang (các phần nội dung) trong các phần để chỉnh sửa trang.
             page_title: Đây là các tùy chọn rất phức tạp để thiết lập tiêu đề trang. Tại đây bạn có thể tùy chỉnh CSS hoặc tag hoặc thay đổi cấu trúc breadcrumb.
-            pages_advanced_options_include_seo: Các tùy chọn SEO được hiển thị trong các tùy chọn nâng cao cho một trang.
             preferred_image_view: Thiết lập này điều khiển các trang mà các plugin về hình ảnh có thể hiển thị hình ảnh hiện có - dạng lưới cho 'Grid View" và dạng danh sách cho "List View". Có một nút để tự động hóa quá trình này trên những hình ảnh plugin chính nó.
-            refinery_enable_backend_reordering: Bạn có thể loại bỏ khả năng sắp xếp lại thứ tự hiển thị của plugin này.
-            refinery_menu_cache_action_suffix: Thiết lập này điều khiển phím được sử dụng để cache menu của trang web. Nếu bạn đang sử dụng một theme thì tốt hơn là để như mặc định bởi vì theme sẽ xử lý nó.
             show_contact_privacy_link: Bạn có thể ẩn hoặc hiển thị các liên kết đến trang privacy policy trên các form liên lạc bằng nút Submit.
             site_name: "Đây là tên trang web của bạn và sẽ hiển thị trong phần đầu, trong trang admin của Refinery và trong phần bản quyền ở phần footer cho một số theme."
             theme: Nhập tên của theme mà bạn muốn hiển thị. Điều này sẽ có hiệu lực ngay lập tức. Nhớ là  bạn phải viết tên theme chính các thì tùy chỉnh này mới hoạt động.

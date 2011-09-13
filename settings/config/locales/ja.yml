@@ -21,15 +21,10 @@ ja:
             restricted: 管理人のみが変更出来るようにします。
             activity_show_limit: ダッシュボードで表示されるアイテムの数を制限します。
             analytics_page_code: Google Analyticsを有効にします。空白か、「UA-xxxxxx-x」という形の場合には無効で、Google Analyticsへの呼び出しは為されません。
-            image_dialogue_sizes: 「画像を挿入する」時に使われるダイアログに影響を及ぼす設定です。様々なサイズのサムネイルと併せて使用して下さい。
-            image_thumbnails: この設定を変更した際には、rake images:regenerate (サムネイルを追加した場合にはrake images:update)を走らせて画像を再び生成して下さい。 再生成されなければ、既存の映像についてのみこの設定は有効です。
             menu_hide_children: 傘下のページを、存在するか否かに関わらず隠します。
             new_page_parts: ページエディタでページ片を追加出来るようにする
             page_title: ページのタイトルを設定します。CSSのカスタムクラス、異るタグ、或いはブレッドクラム等の使用を設定出来ます。
-            pages_advanced_options_include_seo: 検索エンジン最適化オプションの表示・非表示を切り替えます。
             preferred_image_view: 画像のレイアウト（グリッド又はリスト）を設定します。プラグイン自体にもこれを設定するボタンがあります。
-            refinery_enable_backend_reordering: プラグインを表示する順番を変更する機能を取り除く事が出来ます。
-            refinery_menu_cache_action_suffix: サイトメニューをキャッシュする為に用いられるキーを変更します。テーマを使用する場合は、テーマがこのキーを管理しているのでデフォルトのままの使用をお勧めします。
             show_contact_privacy_link: お問い合わせフォームで、個人情報保護方針のページのリンクを表示するかどうかを決定します。
             site_name: このサイトの名前です。ヘッダに表示されます。テーマによっては、Refineryの管理画面や著作権表示のフッタでもこれが表示される場合があります。
             theme: 使用可能なテーマの名前。これは直ぐに発効するので、現存するテーマの名前を指定する必要があります。

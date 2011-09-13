@@ -136,7 +136,7 @@ module Refinery
           Refinery::Page.last.url[:path].should == ["i-was-here-first--2"]
         end
       end
-    
+
       context "with translations" do
         before(:each) do
           ::Refinery::Setting.set(:i18n_translation_frontend_locales,
@@ -326,10 +326,10 @@ module Refinery
         end
       end
     end
-  
+
     describe "TranslatePages" do
       login_refinery_translator
-      
+
       describe "add page to main locale" do
         it "should not succeed" do
           visit refinery_admin_pages_path

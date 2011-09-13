@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.version           = %q{2.0.0}
   s.summary           = %q{Pages engine for Refinery CMS}
   s.description       = %q{The default content engine of Refinery CMS. This engine handles the administration and display of user-editable pages.}
-  s.date              = %q{2011-09-07}
+  s.date              = %q{2011-09-10}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
   s.rubyforge_project = %q{refinerycms}
@@ -111,6 +111,10 @@ Gem::Specification.new do |s|
     'lib/gemspec.rb',
     'lib/generators',
     'lib/generators/pages_generator.rb',
+    'lib/generators/templates',
+    'lib/generators/templates/config',
+    'lib/generators/templates/config/initializers',
+    'lib/generators/templates/config/initializers/refinery_pages.rb.erb',
     'lib/pages',
     'lib/pages/marketable_urls.rb',
     'lib/pages/tabs.rb',
@@ -118,11 +122,17 @@ Gem::Specification.new do |s|
     'lib/refinery/pages',
     'lib/refinery/pages/admin',
     'lib/refinery/pages/admin/instance_methods.rb',
+    'lib/refinery/pages/engine.rb',
     'lib/refinery/pages/instance_methods.rb',
+    'lib/refinery/pages/options.rb',
     'lib/refinerycms-pages.rb',
     'license.md',
     'refinerycms-pages.gemspec',
     'spec',
+    'spec/lib',
+    'spec/lib/refinery',
+    'spec/lib/refinery/pages',
+    'spec/lib/refinery/pages/options_spec.rb',
     'spec/models',
     'spec/models/refinery',
     'spec/models/refinery/page_spec.rb',
@@ -137,5 +147,5 @@ Gem::Specification.new do |s|
   s.add_dependency 'activerecord',                '~> 3.1.0'
   s.add_dependency 'friendly_id_globalize3',      '~> 3.2.1'
   s.add_dependency 'awesome_nested_set',          '~> 2.0'
-  s.add_dependency 'seo_meta',                    '>= 1.2.0.rc1'
+  s.add_dependency 'seo_meta',                    '>= 1.2.0.rc2'
 end

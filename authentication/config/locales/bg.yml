@@ -70,4 +70,4 @@ bg:
         password: Парола
         password_confirmation: Потвърждение на паролата
         email: Е-поща
-        remember_me: Запомняне данните за вход
+        remember_me: Запомняне на данните за вход

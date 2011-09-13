@@ -21,15 +21,10 @@ rs:
             restricted: Ovo podešavanje vidljivo je samo superuser-ima(poput tebe).
             activity_show_limit: Ovo ograničava broj stavki koje se istovremeno prikazuju na Kontrolnoj tabli.
             analytics_page_code: Ovaj kod aktivira kodove za Google Analitiku tvog websajta. Ako se podešavanje ostavi prazno ili se podesi kao UA-xxxxxx-x onda je ovo podešavanje isključeno i ne šalju se nikakvi zahtevi ka Google-ovom servisu.
-            image_dialogue_sizes: Ovo podešavanje se odnosi na Unesi Sliku dijalog. Možeš implementirati različite veličine slika na sajtu.
-            image_thumbnails: Ako menjaš ovo podešavanje, morećeš da regenerišeš svoje slike tako što ćeš pokrenuti rake images:regenerate (ili rake images:update ako si samo dodavao još veličina za slike). U suprotnom ovo podešavanje se neće odraziti na postojeće slike.
             menu_hide_children: Sakrij sve podstrane iz menija, čak i ako su prisutne u meniju.
             new_page_parts: Omogućava dodavanje novih delova strane (sadržajnih sekcija) u editorima za strane.
             page_title: Vrlo kompleksne opcije za podešavanje naslova strane. Ovde možeš postaviti svoju CSS klasu ili drugi tag ili ostaviti da se naslov sam prilagodi sadržaju.
-            pages_advanced_options_include_seo: Ovo podešavanje kontroliše da li su SEO opcije prikazane kao napredna podešavanja za strane.
             preferred_image_view: Ovo kontroliše na koje sve načine mogu da se pregledaju slike  - 'Mrežasti prikaz' ili 'Lista'. Postoji dugme za automatizaciju ovog procesa na strani za manipulaciju slika.
-            refinery_enable_backend_reordering: Možeš onemogućiti premeštanje pozicija plugin-ova pri prikazu.
-            refinery_menu_cache_action_suffix: Ovo kontroliše kluč koji se koristi za keširanje menija sajta. Ako koristiš temu, onda je najbolje da ne menjaš ovo podešavanje.
             show_contact_privacy_link: Možeš sakriti ili prikazati link za politiku privatnosti na kontakt formi pored dugmeta za unos .
             site_name: Ovo je ime tvog websajta koje se pojavljuje u headeru i footeru pored autorskih prava.
             theme: Unesi ime teme koju želiš da omogućiš. Ovo podešavanje se odmah primenjuje i mora voditi do postojeće teme da bi se omogućilo.

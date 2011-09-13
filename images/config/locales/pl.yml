@@ -15,7 +15,7 @@ pl:
           or: lub
           replace_image: " zastąp go tym..."
           current_image: Obecny obraz
-          maximum_image_size: Maksymalny rozmiar obrazu to %{megabytes} megabajtów.
+          maximum_image_size: Maksymalny rozmiar obrazu to %{bytes} megabajtów.
         actions:
           create_new_image: Dodaj nowy obraz
         records:

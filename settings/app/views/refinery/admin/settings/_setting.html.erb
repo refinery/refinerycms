@@ -1,6 +1,6 @@
 <li class='clearfix record <%= cycle("on", "on-hover") %>'>
   <span class='title'>
-    <%= t(setting.name, :default => setting.title) %>
+    <%= t(setting.name, :scope => 'refinery.admin.settings.form.title', :default => setting.title) %>
     <span class="preview">- <%= truncate(setting.value.to_s, :length => 40) %></span>
   </span>
   <span class='actions'>

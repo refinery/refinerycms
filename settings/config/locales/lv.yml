@@ -21,15 +21,10 @@ lv:
             restricted: Šī opcija padara uzstādījumu redzamu un rediģējamu tikai superlietotājiem (tādi kā jūs).
             activity_show_limit: Šī opcija limitē vienību skaitu, kas tiek atspoguļotas vadības panelī.
             analytics_page_code: Šis kods aktivizē Google Analytics uzskaiti jūsu lapā. Ja šī uzstādījuma vērtības lauks tiek atstāts tukšs vai tajā tiek ievadīts UA-xxxxxx-x, tas nozīmē, ka šis uzstādījums nav aktīvs un attālināti pieprasījumi uz Google Analytics netiek veikti.
-            image_dialogue_sizes: Šis uzstādījums attiecas uz bildes ievietošanas dialoga logu. Pēc šī uzstādījuma rediģēšanas, lūdzu, pārliecinieties par to, ka sīkattēlu izmēri ir tādi kā norādīti šeit.
-            image_thumbnails: Ja jūs veicat izmaiņas šajā uzstādījumā, tad ir nepieciešams izveidot bilžu sīkattēlus no jauna. To var izdarīt izmantojot komandu rake images:regenerate (vai arī rake images:update, ja pievienojat tikai jaunus sīkattēlu izmērus), pretējā gadījumā šis uzstādījums neietekmēs esošās bildes.
             menu_hide_children: Paslēpt visas apakšlapas no izvēlnes, ja tās ir.
             new_page_parts: Atļaut pievienot jaunas lapas daļas (satura sadaļas) lapu redaktorā.
             page_title: Kompleksas opcijas lapas nosaukuma uzstādīšanai. Šeit jūs varat personalizēt CSS klasi, uzstādīt citu birku vai arī sadalīt lapu fragmentos atkarībā no tās izcelsmes.
-            pages_advanced_options_include_seo: Šis uzstādījums nosaka, vai rādīt OIM (Optimizēšana Interneta Meklētājiem) iespējas pie papildus opcijām lapas redaktorā.
             preferred_image_view: Šis uzstādījums kontrolē, kurš skats tiek izmantots bilžu spraudnī - grid 'Režģa skatam' un list 'Saraksta skatam'. Bilžu spraudnī ir poga, kas automatizē šo procesu.
-            refinery_enable_backend_reordering: Ar šīs opcijas palīdzību jūs varat atslēgt spraudņu skata pārkārtošanu.
-            refinery_menu_cache_action_suffix: Šī opcija kontrolē atslēgas nosaukumu, kas tiek izmantota saita izvēlnes kešošanai. Ja izmantojiet tēmu, tad labāk atstājiet šo atslēgu pēc noklusējuma, jo tēma ar to tiks galā.
             show_contact_privacy_link: Jūs varat noslēpt vai atstāt redzamu privātuma politikas saiti kontaktformas lapā.
             site_name: Šis ir jūsu saita nosaukums, kas tiks rādīts galvenē, Refinery administrācijas panelī, kā arī dažās tēmās šis nosaukums tiek rādīts arī kājenē.
             theme: Ievadiet tēmas nosaukumu, kuru vēlaties izmantot. Lai šis uzstādījums nekavējoties sāktu darboties, pārliecinieties, vai tēma eksistē un tās nosaukums ir norādīts pareizi.

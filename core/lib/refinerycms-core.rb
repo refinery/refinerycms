@@ -18,7 +18,6 @@ end
 # These have to be specified after the autoload to correct load issues on some systems.
 # As per commit 12af0e3e83a147a87c97bf7b29f343254c5fcb3c
 require 'refinerycms-base'
-require 'refinerycms-generators'
 require 'refinerycms-settings'
 require 'rails/generators'
 require 'rails/generators/migration'

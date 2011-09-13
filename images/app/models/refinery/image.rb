@@ -1,28 +1,16 @@
 module Refinery
   class Image < ActiveRecord::Base
+    include Images::Validators
 
-    # What is the max image size a user can upload
-    MAX_SIZE_IN_MB = 5
     image_accessor :image
 
     validates :image, :presence  => true
-    validates_size_of :image, :maximum => MAX_SIZE_IN_MB.megabytes,
-                              :message => :too_big, :size => MAX_SIZE_IN_MB
+    validates_with ImageSizeValidator
     validates_property :mime_type, :of => :image, :in => %w(image/jpeg image/png image/gif image/tiff),
                        :message => :incorrect_format
 
     # Docs for acts_as_indexed http://github.com/dougal/acts_as_indexed
     acts_as_indexed :fields => [:title]
-
-    # when a dialog pops up with images, how many images per page should there be
-    PAGES_PER_DIALOG = 18
-
-    # when a dialog pops up with images, but that dialog has image resize options
-    # how many images per page should there be
-    PAGES_PER_DIALOG_THAT_HAS_SIZE_OPTIONS = 12
-
-    # when listing images out in the admin area, how many images should show per page
-    PAGES_PER_ADMIN_INDEX = 20
 
     # allows Mass-Assignment
     attr_accessible :id, :image, :image_size
@@ -34,12 +22,12 @@ module Refinery
       def per_page(dialog = false, has_size_options = false)
         if dialog
           unless has_size_options
-            PAGES_PER_DIALOG
+            Images::Options.pages_per_dialog
           else
-            PAGES_PER_DIALOG_THAT_HAS_SIZE_OPTIONS
+            Images::Options.pages_per_dialog_that_have_size_options
           end
         else
-          PAGES_PER_ADMIN_INDEX
+          Images::Options.pages_per_admin_index
         end
       end
 
