@@ -8,7 +8,19 @@ endprologue.
 
 To use sass templates with your theme you just need to add the location of your theme to the SASS plugin configuration.
 
-Create the +sass+ directory within your theme’s stylesheets directory, usually in:
+First make sure that you have the SASS gem installed by adding it to your gemfile:
+
+<ruby>
+gem 'sass'
+</ruby>
+
+Then run:
+
+<ruby>
+bundle install
+</ruby>
+
+Next create the +sass+ directory within your theme’s stylesheets directory, usually in:
 
 <ruby>
 Rails.root.join('public/stylesheets')
