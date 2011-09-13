@@ -481,6 +481,7 @@ a.wym_wymeditor_link {
 }
 .wym_tools_class.activated {
   position: relative;
+  padding-bottom: 5px;
 }
 .wym_skin_refinery .wym_buttons .wym_tools_class .wym_classes li {
   float: left;
