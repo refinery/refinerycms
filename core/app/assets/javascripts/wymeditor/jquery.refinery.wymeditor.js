@@ -1182,10 +1182,10 @@ WYMeditor.editor.prototype.switchTo = function(selectionOrNode,sType) {
   // we have a node.
   var html = $(selectionOrNode).html();
   var newNode = this._doc.createElement(sType);
-  var class = $(selectionOrNode).attr('class');
+  var klass = $(selectionOrNode).attr('class');
 
   // copy across the css class names.
-  if(typeof class !== 'undefined'){
+  if(typeof klass !== 'undefined'){
       $.each($(selectionOrNode).attr('class').split(" "), function(index, className) {
         $(newNode).addClass(className);
       });
