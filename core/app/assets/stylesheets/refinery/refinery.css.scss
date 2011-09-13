@@ -780,13 +780,13 @@ body.dialog form {
 .wym_dialog_table {
 	height: 250px;
 }
+#dialog_main {
+  float: left;
+  margin-left: 130px;
+  min-height: 405px;
+  width: 696px;
+}
 .dialog { 
-  #dialog_main {
-    float: left;
-    margin-left: 130px;
-    min-height: 405px;
-    width: 696px;
-  }
   span.radio {
     display: block;
     line-height: 18px;
