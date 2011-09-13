@@ -19,4 +19,4 @@ module Refinery
 end
 
 require 'refinery/images/engine'
-::Refinery.engines << 'dashboard'
+::Refinery.engines << 'images'
