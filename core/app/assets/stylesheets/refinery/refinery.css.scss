@@ -1,3 +1,26 @@
+/*==================================
+=     Mixins
+==================================*/
+@mixin rounded($radius) {
+  border-radius: $radius;
+  -moz-border-radius: $radius;
+  -webkit-border-radius: $radius;
+}
+@mixin top-rounded($radius) {
+  border-radius-top: $radius;
+  -moz-border-radius-topleft: $radius;
+  -moz-border-radius-topright: $radius;
+  -webkit-border-top-left-radius: $radius;
+  -webkit-border-top-right-radius: $radius;
+}
+@mixin bottom-rounded($radius) {
+  border-radius-bottom: $radius;
+  -moz-border-radius-bottomleft: $radius;
+  -moz-border-radius-bottomright: $radius;
+  -webkit-border-bottom-left-radius: $radius;
+  -webkit-border-bottom-right-radius: $radius;
+}
+
 * {
   color: #41403C;
   font-family: Arial;
@@ -233,11 +256,12 @@ a:hover {
   }
   .actions {
     a {
-    display: block;
-    float: right;
-    margin: 3px 3px;
-    line-height: inherit;
-    border-bottom: 0px none;
+      display: block;
+      float: right;
+      margin: 3px 3px;
+      line-height: inherit;
+      border-bottom: 0px none;
+    }
   }
 }
 .less-important {
@@ -486,6 +510,7 @@ pre {
           border-bottom: 0px none;
         }
       }
+    }
   }
   .left-column {
     float: left;
@@ -849,15 +874,17 @@ body.dialog form {
           border: 1px solid #999999;
           font-size: 10px;
         }
-      &.selected {
-        a {
-          border-color: #22A7F2;
-          background: #22A7F2;
-          color: white;
-          font-weight: bold;
+        &.selected {
+          a {
+            border-color: #22A7F2;
+            background: #22A7F2;
+            color: white;
+            font-weight: bold;
+          }
         }
       }
     }
+  }
   #existing_image_size_area {
     #image_dialog_size_0 a { height: 30px; width: 30px; line-height: 30px; margin-top: 10px }
     #image_dialog_size_1 a { height: 50px; width: 50px; line-height: 50px; margin-top:  0px }
@@ -1504,28 +1531,6 @@ a.information:hover {
 }
 .ie8 .pagination a, .ie8 #content .pagination a, .ie8 .pagination .current, .ie8 .disabled, .ie8 .pagination em {
   padding-bottom: 6px;
-}
-/*==================================
-=     Mixins
-==================================*/
-@mixin rounded($radius) {
-  border-radius: $radius;
-  -moz-border-radius: $radius;
-  -webkit-border-radius: $radius;
-}
-@mixin top-rounded($radius) {
-  border-radius-top: $radius;
-  -moz-border-radius-topleft: $radius;
-  -moz-border-radius-topright: $radius;
-  -webkit-border-top-left-radius: $radius;
-  -webkit-border-top-right-radius: $radius;
-}
-@mixin bottom-rounded($radius) {
-  border-radius-bottom: $radius;
-  -moz-border-radius-bottomleft: $radius;
-  -moz-border-radius-bottomright: $radius;
-  -webkit-border-bottom-left-radius: $radius;
-  -webkit-border-bottom-right-radius: $radius;
 }
 
 @import 'refinery/site_bar';
