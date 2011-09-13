@@ -1,22 +1,24 @@
-ul.collapsible_menu li {
-  position: relative;
-}
-ul.collapsible_menu li span.arrow {
-  background-repeat: no-repeat;
-  position: absolute;
-  right: 10px;
-  top: 13px;
-  width: 11px;
-  height: 7px;
-  cursor: pointer;
-}
-ul.collapsible_menu li span.arrow {
-  background-image: image_url('refinery/icons/up.gif');
-}
-ul.collapsible_menu li.closed span.arrow {
-  background-image: image_url('refinery/icons/down.gif');
-}
-ul.collapsible_menu > div {
-  width: 93%;
-  margin: 0px auto;
+ul {
+  &.collapsible_menu {
+    li {
+      position: relative;
+      span.arrow {
+        background-repeat: no-repeat;
+        background-image: image_url('refinery/icons/up.gif');
+        position: absolute;
+        right: 10px;
+        top: 13px;
+        width: 11px;
+        height: 7px;
+        cursor: pointer;
+      }
+      &.closed span.arrow {
+        background-image: image_url('refinery/icons/down.gif');
+      }
+    }
+    > div {
+      width: 93%;
+      margin: 0px auto;
+    }
+  }
 }
