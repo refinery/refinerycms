@@ -6,9 +6,24 @@ Refinery ships with a range of specs and cucumbers to test it. This guide will s
 
 endprologue.
 
-h3. First configure your Refinery application for testing
+h3. First setup test enviroment
+
+At the Gemfile uncomment the refinerycms-testing line
+
 <shell>
-rails g refinerycms_testing
+  gem 'refinerycms-testing'
+</shell>
+
+And run
+
+<shell>
+$ bundle install
+</shell>
+
+Now we will configure our test environment with
+
+<shell>
+$ rails generate refinerycms_testing
 </shell>
 
 h3. Running the Tests
