@@ -1,26 +1,38 @@
+@mixin rounded($radius) {
+  border-radius: $radius;
+  -moz-border-radius: $radius;
+  -webkit-border-radius: $radius;
+}
 #site_bar, #site_bar * {
   color: white;
   font-family: Arial;
   font-size: 14px;
   font-weight: normal;
 }
-#editor_switch, #site_bar_branding, a#site_bar_refinery_cms_logo {
-  position: absolute;
-}
+#editor_switch, #site_bar_branding, a#site_bar_refinery_cms_logo { position: absolute; }
 #editor_switch {
   left: 0px;
-}
-#site_bar_branding {
-  right: 0px;
-}
-#site_bar #site_bar_company_name {
-  font-weight: bold;
-}
-#site_bar #site_bar_branding a {
-  font-weight: normal;
-}
-#site_bar #site_bar_branding a#logout {
-  margin-left: 12px;
+  a, a:hover {
+    color: white;
+    background: #e7682c image_url('refinery/orange_button.png') repeat-x;
+    border-bottom: 0px none;
+    padding: 4px 14px;
+    border: 1px solid #fca87f;
+    height: 24px;
+    line-height: 24px;
+    cursor: pointer;
+  }
+  span {
+    border: 1px solid #0280c7;
+    height: 26px;
+    line-height: 26px;
+    margin-top: 9px;
+    display: block;
+    cursor: pointer;
+  }
+  a, span {
+    @include rounded(6px);
+  }
 }
 #site_bar * {
   line-height: 47px;
@@ -29,16 +41,28 @@
   height: 47px;
   background: #22a7f2;
   padding: 0px;
-}
-#site_bar a {
-  border-bottom: 1px dotted white;
-  text-decoration: none;
-}
-#site_bar a:hover {
-  border-bottom: 1px solid white;
+  a {
+    border-bottom: 1px dotted white;
+    text-decoration: none;
+    &:hover {
+      border-bottom: 1px solid white;
+    }
+  }
+  #site_bar_branding {
+    right: 0px;
+    a {
+      font-weight: normal;
+      &#logout {
+        margin-left: 12px;
+      }
+    }
+  }
+  #site_bar_company_name {
+    font-weight: bold;
+  }
 }
 #site_bar_content {
-	height:47px;
+  height:47px;
   position: relative;
 }
 a#site_bar_refinery_cms_logo {
@@ -48,39 +72,14 @@ a#site_bar_refinery_cms_logo {
   height: 29px;
   margin-top: 9px;
   overflow: hidden;
+  &:hover {
+    border-bottom: none;
+    opacity: 1;
+    img {
+      margin-top: -29px;
+    }
+  }
 }
-a#site_bar_refinery_cms_logo:hover {
-  border-bottom: none;
-  opacity: 1;
-}
-a#site_bar_refinery_cms_logo:hover img {
-  margin-top: -29px;
-}
-#editor_switch a, #editor_switch a:hover {
-  color: white;
-  background: #e7682c image_url('refinery/orange_button.png') repeat-x;
-  border-bottom: 0px none;
-  padding: 4px 14px;
-  border: 1px solid #fca87f;
-  height: 24px;
-  line-height: 24px;
-  cursor: pointer;
-}
-#editor_switch span {
-  border: 1px solid #0280c7;
-  height: 26px;
-  line-height: 26px;
-  margin-top: 9px;
-  display: block;
-  cursor: pointer;
-}
-
-#editor_switch a, #editor_switch span {
-  border-radius: 6px;
-  -moz-border-radius: 6px;
-  -webkit-border-radius: 6px;
-}
-
 .ie7 #site_bar #editor_switch a {
   height: 26px;
   line-height: 26px;
