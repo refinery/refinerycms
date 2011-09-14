@@ -35,10 +35,6 @@ module Refinery
       refinery_user_signed_in? && current_refinery_user.has_role?(:refinery)
     end
 
-    def current_user
-      current_refinery_user
-    end
-
     protected :store_location, :redirect_back_or_default, :refinery_user?
 
     def self.included(base)
