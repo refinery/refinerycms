@@ -3,14 +3,14 @@
   # Add Devise necessary routes.
   # For Devise routes, see: https://github.com/plataformatec/devise
   scope(:module => 'refinery') do
-    devise_for :refinery_user, :class_name => "::Refinery::User", :module => 'refinery', :controllers => {
-      :registrations => 'refinery/users'
+    devise_for :refinery_user, :class_name => "::Refinery::User", :path => "refinery/users", :module => 'refinery', :controllers => {
+      :registrations => 'refinery/users', 
     },
     :skip => [:registrations],
     :path_names => {
-      :sign_out => 'refinery_logout',
-      :sign_in => 'refinery_login',
-      :sign_up => 'refinery_register'
+      :sign_out => 'logout',
+      :sign_in => 'login',
+      :sign_up => 'register'
     } do
       get '/refinery/users/register' => 'users#new', :as => :new_refinery_user_registration
       post '/refinery/users/register' => 'users#create', :as => :refinery_user_registration
@@ -28,9 +28,7 @@
   end
 
   # Override Devise's other routes for convenience methods.
-  #get 'refinery/login', :to => "sessions#new", :as => :new_user_session
-  #get 'refinery/login', :to => "sessions#new", :as => :refinery_login
-  #get 'refinery/logout', :to => "sessions#destroy", :as => :destroy_user_session
-  #get 'refinery/logout', :to => "sessions#destroy", :as => :logout
+  get 'refinery/login', :to => "sessions#new", :as => :refinery_login
+  get 'refinery/logout', :to => "sessions#destroy", :as => :refinery_logout
 
 end
