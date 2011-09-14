@@ -6,15 +6,22 @@ Some developers prefer to use "SASS":http://sass-lang.com/ to generate their CSS
 
 endprologue.
 
-To use sass templates with your theme you just need to add the location of your theme to the SASS plugin configuration.
+To use sass templates with your project first add the SASS gem to your gemfile
+<ruby>
+gem 'sass'
+</ruby>
+then run:
+<ruby>
+bundle install
+</ruby>
 
-Create the +sass+ directory within your theme’s stylesheets directory, usually in:
+Next create the +sass+ directory within your theme’s stylesheets directory, usually in:
 
 <ruby>
 Rails.root.join('public/stylesheets')
 </ruby>
 
-In your +config/application.rb+ or +config/environment.rb+ add this line:
+Then in your +config/application.rb+ or +config/environment.rb+ add this line:
 
 <ruby>
 Sass::Plugin.add_template_location(
