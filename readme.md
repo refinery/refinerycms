@@ -10,6 +10,7 @@ More information at [http://refinerycms.com](http://refinerycms.com)
 
 * [Bundler](http://gembundler.com)
 * [ImageMagick](http://www.imagemagick.org/script/install-source.php)
+  * Mac OS X users should use [homebrew's](https://github.com/mxcl/homebrew/wiki/installation) `brew install imagemagick` or the [magick-installer](https://github.com/maddox/magick-installer).
 
 ## How to
 
