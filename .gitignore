@@ -50,6 +50,7 @@ nbproject
 
 # Rubinius
 *.rbc
+*.rbx
 
 # Vim
 *.swp

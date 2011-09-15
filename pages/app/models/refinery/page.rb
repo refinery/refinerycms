@@ -74,8 +74,8 @@ module Refinery
                                 :menu_title, :browser_title, :all_page_part_content]
 
     before_destroy :deletable?
-    after_save :reposition_parts!, :invalidate_cached_urls, :expire_page_caching, :delete_invalid_translations
-    after_update :invalidate_cached_urls, :delete_invalid_translations
+    after_save :reposition_parts!, :invalidate_cached_urls, :expire_page_caching
+    after_update :invalidate_cached_urls
     after_destroy :expire_page_caching
 
     scope :live, where(:draft => false)
@@ -389,13 +389,6 @@ module Refinery
 
     def expire_page_caching
       self.class.expire_page_caching
-    end
-
-    # Needed until globalize3 has validation checking
-    def delete_invalid_translations
-      translations.each do |t|
-        t.delete unless t.title
-      end
     end
   end
 end

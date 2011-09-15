@@ -110,7 +110,7 @@ namespace :refinery do
         puts "Couldn't match any stylesheet files in any engines like #{stylesheets}"
       end
     else
-      puts "You didn't specify anything to override. Here's some examples:"
+      puts "You didn't specify anything to override. Here are some examples:"
       {
         :view => ['refinery/pages/home', '**/*menu', 'refinery/_menu_branch'],
         :javascript => %w(admin refinery/site_bar),

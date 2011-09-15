@@ -346,7 +346,7 @@ init_tooltips = function(args){
           }
 
           tooltip.css({
-            'top': $(this).offset().top - tooltip.outerHeight() - 2
+            'top': $(this).offset().top - tooltip.outerHeight() - 10
           });
 
           nib.css({
