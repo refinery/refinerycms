@@ -37,31 +37,31 @@ ru:
         delete: Удалить
         close: Закрыть
       image_picker:
-        none_selected: There is currently no %{what} selected, please click here to add one.
-        remove_current: Remove current %{what}
-        change: Click here to pick a image
-        show: Show
+        none_selected: Ни одно изображение не выбрано. Пожалуйста, нажмите здесь, чтобы добавить изображение.
+        remove_current: Удалить текущее изображение
+        change: Нажмите здесь, чтобы выбрать изображение
+        show: Показать
       resource_picker:
-        download_current: Download current file
-        opens_in_new_window: Opens in a new window
-        remove_current: "Remove current file"
-        no_resource_selected: There is currently no file selected, click here to add one.
-        name: Add File
-        current: Current File     
+        download_current: Скачать текущий файл
+        opens_in_new_window: Откроется в новом окне
+        remove_current: "Удалить текущий файл"
+        no_resource_selected: Ни один файл не выбран, нажмите здесь, чтобы добавить файл.
+        name: Добавить файл
+        current: Текущий файл
       search:
         button_text: Поиск
         results_for: "Результаты поиска для «%{query}»"
         no_results: Ничего не найдено
       delete:
-        message: Are you sure you want to remove '%{title}'?
+        message: Вы уверены, что хотите удалить '%{title}'?
       error_messages:
-        problems_in_following_fields: There were problems with the following fields
-      help: help
+        problems_in_following_fields: Обнаружены проблемы со следующими полями
+      help: Помощь
     message:
       close: Закрыть
       close_this_message: Закрыть это сообщение
     draft_page_message:
-      not_live: This page is NOT live for public viewing.
+      not_live: Эта страница не предназначена для публичного просмотра.
     footer:
       copyright: © %{site_name}, %{year}
   time:
