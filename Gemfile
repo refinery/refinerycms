@@ -26,6 +26,8 @@ gemspec
 
 # REFINERY CMS DEVELOPMENT ====================================================
 
+gem "rails", "= 3.1.1.rc1"
+
 group :development, :test do
   gem 'refinerycms-testing',    '~> 2.0.0'
   gem 'rcov', :platform => :mri_18
