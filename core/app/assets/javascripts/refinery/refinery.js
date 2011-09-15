@@ -14,10 +14,10 @@
  *= require ./site_bar
  *= require ./admin
  *= require ./submenu
- *= require ./init_ajaxy_pagination
- *= require ./init_interface
- *= require ./init_modal_dialogs
- *= require ./init_sortable_menu
- *= require ./init_submit_continue
- *= require ./init_tooltips
+ *= require ./ajaxy_pagination
+ *= require ./interface
+ *= require ./modal_dialogs
+ *= require ./sortable_menu
+ *= require ./submit_continue
+ *= require ./tooltips
 */
