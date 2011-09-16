@@ -1,5 +1,7 @@
-before_script: "sh -e /etc/init.d/xvfb start"
-script: "DISPLAY=:99.0 bundle exec rake db:create db:migrate spec"
+before_script:
+  - "sh -e /etc/init.d/xvfb start"
+  - "bundle exec rake db:create db:migrate"
+script: "DISPLAY=:99.0 bundle exec rspec ./**/spec"
 notifications:
   email:
     - parndt@gmail.com
@@ -13,5 +15,5 @@ rvm:
   - 1.8.7
   - 1.9.2
   - 1.9.3
-  - rbx-master
+  - rbx
 #  - jruby
