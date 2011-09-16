@@ -5,7 +5,7 @@ notifications:
     - parndt@gmail.com
     - ugis.ozolss@gmail.com
   irc:
-    - irc.freenode.org#refinerycms
+    - "irc.freenode.org#refinerycms"
 env:
   - DB=postgres
   - DB=mysql
@@ -13,5 +13,5 @@ rvm:
   - 1.8.7
   - 1.9.2
   - 1.9.3
-  - rbx-2.0
-  - jruby
+  - rbx-master
+#  - jruby
