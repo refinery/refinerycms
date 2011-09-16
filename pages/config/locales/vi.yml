@@ -50,9 +50,6 @@ vi:
           parent_page: Trang cha
           advanced_options: Các tùy chọn nâng cao
           custom_title: Tiêu đề khác
-          title_types:
-            none: Không
-            text: Chữ
           show_in_menu_title: Hiển thị trong menu
           show_in_menu_description: Hiển thị trang này trong menu của trang web
           show_in_menu_help: Bỏ chọn ô này nếu bạn muốn xóa trang khỏi menu của trang web. Đây là trường hợp bạn muốn Trang này tồn tại (có thể truy cập vào được) nhưng không muốn nó hiện trong menu của trang web.

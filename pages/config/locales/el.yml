@@ -50,9 +50,6 @@ el:
           parent_page: Ανήκει
           advanced_options: Προχωρημένες Επιλογές
           custom_title: Προσαρμοσμένος τίτλος
-          title_types:
-            none: Κανένα
-            text: Κείμενο
           show_in_menu_title: Εμφάνιση στο μενού
           show_in_menu_description: Να εμφανίζεται αυτή η σελίδα στο μενού
           show_in_menu_help: Uncheck this box if you want to remove a page from your site menu. This can be handy if you have a page you want to link people to directly but don&apos;t want to show the page in the menu.

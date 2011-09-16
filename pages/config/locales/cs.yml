@@ -50,9 +50,6 @@ cs:
           parent_page: Nadřazená stránka
           advanced_options: Rozšířené nastavení
           custom_title: Titulek
-          title_types:
-            none: Žádný
-            text: Text
           show_in_menu_title: Zobrazit v menu
           show_in_menu_description: Zobrazit tuto stránku v menu webu
           show_in_menu_help: Odškrtněte pokud chcete odstranit odkaz na tuto stránku z menu webu.

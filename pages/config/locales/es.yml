@@ -51,9 +51,6 @@ es:
           parent_page: Página padre
           advanced_options: Opciones avanzadas
           custom_title: Título personalizado
-          title_types:
-            none: Ninguno
-            text: Texto
           show_in_menu_title: Ver en menú
           show_in_menu_description: Mostrar esta página en el menú de la web
           show_in_menu_help: Deja sin marcar esta casilla para eliminar una página del menú de tu web. Puede ser útil si tienes una página que quieres que la gente enlace directamente pero no quieres mostrarla en el menú.

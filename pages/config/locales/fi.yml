@@ -50,9 +50,6 @@ fi:
           parent_page: Yläsivu
           advanced_options: Lisäasetukset
           custom_title: Kustomoitu otsikko
-          title_types:
-            none: Ei mitään
-            text: Teksti
           show_in_menu_title: Näytä valikossa
           show_in_menu_description: Näytä tämä sivu nettisivuston valikossa
           show_in_menu_help: "Poista rasti tästä kentästä, jos haluat poistaa sivun valikosta. Tämä voi olla hyödyllinen ominaisuus, jos haluat näkymättömän sivun jonka linkin voit antaa tietyille ihmisille."
