@@ -49,9 +49,6 @@ lolcat:
           parent_page: PARENT PAEG
           advanced_options: ADVANCD OPSHUNS
           custom_title: CUSTOM TITLE
-          title_types:
-            none: NONE
-            text: TEXT
           show_in_menu_title: SHOW IN MENU
           show_in_menu_description: DISPLAY DIS PAEG IN DA SIET MENU
           show_in_menu_help: UNCHECK DIS BOX IF U WANTS 2 REMOOV PAEG FRUM UR SIET MENU. DIS CAN BE HANDY IF U HAS PAEG U WANTS 2 LINK PEEPS 2 DIRECTLY BUT DON&APOS;T WANTS 2 SHOW TEH PAEG IN DA MENU.

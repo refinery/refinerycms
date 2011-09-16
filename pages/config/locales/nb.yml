@@ -50,9 +50,6 @@ nb:
           parent_page: Overliggende side
           advanced_options: Avanserte Innstillinger
           custom_title: Valgfri tittel
-          title_types:
-            none: Ingen
-            text: Tekst
           show_in_menu_title: Vis i meny
           show_in_menu_description: Vis denne siden i menyen
           show_in_menu_help: Fjern markeringen i denne boksen om du ønsker å fjerne en side fra menyen. Dette kan være praktisk dersom du har en underside som du ønsker å lenke besøkende til, men ikke ønsker å vise i menyen.

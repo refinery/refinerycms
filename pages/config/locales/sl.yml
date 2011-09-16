@@ -49,9 +49,6 @@ sl:
           parent_page: Matična stran
           advanced_options: Napredne Možnosti
           custom_title: Naslov po meri
-          title_types:
-            none: Brez
-            text: Tekst
           show_in_menu_title: Prikaži v meniju
           show_in_menu_description: Obkljukajte, če želite da se stran pojavi v glavnem meniju.
           show_in_menu_help: "Odkljukate, če želite da se stran ne prikaže v glavnem meniju. To je lahko zelo priročno, če imate stran za katero želite da se uporabniki povežejo neposredno vendar ne želite da prikaže v glavnem meniju."

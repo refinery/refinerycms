@@ -52,9 +52,6 @@ lv:
           parent_page: Parent page
           advanced_options: Papildu Opcijas
           custom_title: Cits nosaukums
-          title_types:
-            none: Nav definēts
-            text: Teksts
           show_in_menu_title: Rādīt izvēlnē
           show_in_menu_description: Rādīt šo lapu saita izvēlnē
           show_in_menu_help: Izņemiet ķeksi no šī loga, ja vēlaties, lai šī lapa nebūtu redzama saita izvēlnē. Šī opcija noder gadījumos, kad vēlaties iesaitēt šo lapu, bet nevēlaties, lai šī lapa parādītos saita izvēlnē.

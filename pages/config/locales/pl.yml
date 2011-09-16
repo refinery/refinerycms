@@ -51,9 +51,6 @@ pl:
           parent_page: Strona nadrzędna
           advanced_options: Opcje zaawansowane
           custom_title: Inny tytuł
-          title_types:
-            none: Żaden
-            text: Tekst
           show_in_menu_title: Pokaż w menu
           show_in_menu_description: Wyświetl tę stronę w menu witryny
           show_in_menu_help: Odznacz tę kratkę aby usunąć tę stronę z menu witryny. To może być przydatne jeżeli chcesz linkować do tej strony, ale nie chcesz aby była widoczna w menu.

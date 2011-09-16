@@ -50,9 +50,6 @@ nl:
           page_options: Pagina opties
           advanced_options: Uitgebreide opties
           custom_title: Aangepaste titel
-          title_types:
-            none: Geen
-            text: Tekst
           show_in_menu_title: Toon in menu
           show_in_menu_description: Vink deze box aan als de pagina in het menu moet worden getoond.
           show_in_menu_help: Laat deze box, om de pagina niet in het menu te laten tonen. Dit kan handig zijn als je een pagina hebt, waar je naar wilt linken, zonder dat de pagina in het menu geplaatst wordt.
