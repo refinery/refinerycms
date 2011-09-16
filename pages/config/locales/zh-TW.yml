@@ -50,9 +50,6 @@ zh-TW:
           parent_page: 父頁面
           advanced_options: 進階選項
           custom_title: 自訂標題
-          title_types:
-            none: 無
-            text: 文字
           show_in_menu_title: 在選單中顯示
           show_in_menu_description: 在網站選單中顯示這個頁面
           show_in_menu_help: 如果您想要將這個頁面移除您的網站選單請不要勾選這個框框. 如果您想要有個可以直接連結的頁面但又不想讓它出現在選單上, 這是個便利的功能.

@@ -48,9 +48,6 @@ ja:
           parent_page: 親ページ
           advanced_options: その他の設定
           custom_title: カスタマイズしたタイトル
-          title_types:
-            none: 無し
-            text: テキスト
           show_in_menu_title: メニューで表示する
           show_in_menu_description: このページをサイトメニューで表示する
           show_in_menu_help: サイトメニューからこのページを削除する時はこのチェックボックスのチェックを外して下さい。ユーザに直接アクセスしてもらいたいページで、サイトメニューには表示したくないページがある場合などに便利です。
