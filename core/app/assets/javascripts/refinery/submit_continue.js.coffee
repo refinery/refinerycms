@@ -9,6 +9,7 @@ init_submit_continue = () ->
       if $('form[data-changes-made]').length > 0
         if not confirm(I18n.t('js.admin.confirm_changes'))
           e.preventDefault()
+          false
 
 submit_and_continue = (e, redirect_to) ->
   # ensure wymeditors are up to date.
@@ -42,3 +43,4 @@ submit_and_continue = (e, redirect_to) ->
       init_flash_messages()
     
   e.preventDefault()
+  false
