@@ -15,4 +15,9 @@
  *= require ./admin
  *= require ./submenu
  *= require ./ajaxy_pagination
+ *= require ./interface
+ *= require ./modal_dialogs
+ *= require ./sortable_menu
+ *= require ./submit_continue
+ *= require ./tooltips
 */
