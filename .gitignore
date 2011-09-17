@@ -76,6 +76,9 @@ capybara-*html
 .rvmrc
 .rvmrc.*
 
+#Sprockets
+public/assets
+
 # REFINERY CMS DEVELOPMENT ====================================================
 # Always keep this section at the bottom.
 
