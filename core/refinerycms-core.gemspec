@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.version           = %q{2.0.0}
   s.summary           = %q{Core engine for Refinery CMS}
   s.description       = %q{The core of Refinery CMS. This handles the common functionality and is required by most engines}
-  s.date              = %q{2011-09-15}
+  s.date              = %q{2011-09-16}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
   s.rubyforge_project = %q{refinerycms}
@@ -21,7 +21,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'friendly_id_globalize3',      '~> 3.2.1'
   s.add_dependency 'globalize3',                  '~> 0.2.0.beta3'
   s.add_dependency 'awesome_nested_set',          '~> 2.0'
-  s.add_dependency 'rails',                       '>= 3.1.0'
+  s.add_dependency 'rails',                       '>= 3.1.1.rc1'
   s.add_dependency 'truncate_html',               '~> 0.5'
   s.add_dependency 'will_paginate',               '~> 3.0'
   s.add_dependency 'sass-rails',                  '~> 3.1.0'
@@ -203,14 +203,20 @@ Gem::Specification.new do |s|
     'app/assets/javascripts/modernizr-min.js',
     'app/assets/javascripts/refinery',
     'app/assets/javascripts/refinery/admin.js',
+    'app/assets/javascripts/refinery/ajaxy_pagination.js',
     'app/assets/javascripts/refinery/boot_wym.js',
     'app/assets/javascripts/refinery/core.js',
     'app/assets/javascripts/refinery/i18n.js.erb',
+    'app/assets/javascripts/refinery/interface.js',
+    'app/assets/javascripts/refinery/modal_dialogs.js',
     'app/assets/javascripts/refinery/nestedsortables.js',
     'app/assets/javascripts/refinery/refinery.js',
     'app/assets/javascripts/refinery/serializelist.js',
     'app/assets/javascripts/refinery/site_bar.js',
+    'app/assets/javascripts/refinery/sortable_menu.js',
     'app/assets/javascripts/refinery/submenu.js',
+    'app/assets/javascripts/refinery/submit_continue.js.coffee',
+    'app/assets/javascripts/refinery/tooltips.js',
     'app/assets/javascripts/refinery/wymeditor.js',
     'app/assets/javascripts/wymeditor',
     'app/assets/javascripts/wymeditor/jquery.refinery.wymeditor.js',
@@ -354,6 +360,7 @@ Gem::Specification.new do |s|
     'lib/generators/cms_generator.rb',
     'lib/generators/templates',
     'lib/generators/templates/.gitignore',
+    'lib/generators/templates/Guardfile',
     'lib/generators/templates/app',
     'lib/generators/templates/app/views',
     'lib/generators/templates/app/views/sitemap',
