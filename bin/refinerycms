@@ -271,7 +271,7 @@ module Refinery
           find_and_replace('config/database.yml', %r{password:}, '#password:')
         else
           find_and_replace('config/database.yml', %r{username:.*}, "username: #{@options[:database][:username]}")
-          find_and_replace('config/database.yml', %r{password:.*}, "password: #{@options[:database][:password]}")
+          find_and_replace('config/database.yml', %r{password:.*}, "password: \"#{@options[:database][:password]}\"")
         end
 
         puts "\n---------"
