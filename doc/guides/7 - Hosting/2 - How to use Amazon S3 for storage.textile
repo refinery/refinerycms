@@ -12,7 +12,7 @@ h3. Setting Up
 
 If you want to use Refinery's image and resource support on S3 instead of the local
 file system, you'll need an additional gem. Create a bucket called "my_app_production"
-and uncomment this line in your Gemfile:
+and add this line in your Gemfile:
 
 <ruby>
 gem 'fog'
