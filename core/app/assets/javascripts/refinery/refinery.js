@@ -14,4 +14,8 @@
  *= require ./site_bar
  *= require ./admin
  *= require ./submenu
+ *= require ./interface
+ *= require ./sortable_menu
+ *= require ./submit_continue
+ *= require ./ajaxy_pagination
 */
