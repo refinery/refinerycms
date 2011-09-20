@@ -14,4 +14,5 @@
  *= require ./site_bar
  *= require ./admin
  *= require ./submenu
+ *= require ./interface
 */
