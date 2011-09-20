@@ -91,7 +91,15 @@ module Refinery
         # finally passing to rails' "current_page?" method.
         [path, URI.decode(path)].include?(url) || path == "/#{page.id}" || current_page?(page)
       end
-
+	  
+	  # Provide default css or use custom for Menu
+	  def menu_css_class
+		RefinerySetting.find_or_set(:menu_css_class, ['menu', 'clearfix' ])
+      end
+     # Provide default css or use custom for Submenu
+	  def menu_subtree_css_class
+		RefinerySetting.find_or_set(:menu_subtree_css_class, [ 'clearfix' ])
+      end
     end
   end
 end
