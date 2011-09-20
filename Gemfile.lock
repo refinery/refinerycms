@@ -31,7 +31,7 @@ PATH
       friendly_id_globalize3 (~> 3.2.1)
       globalize3 (~> 0.2.0.beta3)
       jquery-rails
-      rails (>= 3.1.0)
+      rails (>= 3.1.1.rc1)
       refinerycms-base (= 2.0.0)
       refinerycms-settings (= 2.0.0)
       sass-rails (~> 3.1.0)
@@ -267,7 +267,7 @@ GEM
       multi_json (>= 1.0.2)
     warden (1.0.5)
       rack (>= 1.0)
-    will_paginate (3.0.0)
+    will_paginate (3.0.1)
     xpath (0.1.4)
       nokogiri (~> 1.3)
 

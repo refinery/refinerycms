@@ -2,13 +2,21 @@ module Refinery
   module Core
     class Engine < ::Rails::Engine
       isolate_namespace ::Refinery
-
+      
+      def self.load_decorators        
+        Dir.glob(File.join(Rails.root, "app/decorators/**/*_decorator.rb")) do |c|
+          require(c)
+        end
+      end
+      
       config.autoload_paths += %W( #{config.root}/lib )
 
       # Attach ourselves to the Rails application.
       config.before_configuration do
         ::Refinery::Core.attach_to_application!
       end
+      
+      refinery.after_inclusion &method(:load_decorators).to_proc
 
       # Wrap errors in spans and cache vendored assets.
       config.to_prepare do
@@ -47,7 +55,7 @@ module Refinery
       end
 
       initializer 'add catch all routes' do |app|
-        app.routes_reloader.paths << File.expand_path('../refinery/catch_all_routes.rb', __FILE__)
+        app.routes_reloader.paths << File.expand_path('../../catch_all_routes.rb', __FILE__)
       end
 
       initializer 'add presenters' do |app|
