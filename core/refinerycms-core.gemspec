@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.version           = %q{2.0.0}
   s.summary           = %q{Core engine for Refinery CMS}
   s.description       = %q{The core of Refinery CMS. This handles the common functionality and is required by most engines}
-  s.date              = %q{2011-09-19}
+  s.date              = %q{2011-09-20}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
   s.rubyforge_project = %q{refinerycms}
@@ -203,15 +203,19 @@ Gem::Specification.new do |s|
     'app/assets/javascripts/modernizr-min.js',
     'app/assets/javascripts/refinery',
     'app/assets/javascripts/refinery/admin.js',
+    'app/assets/javascripts/refinery/ajaxy_pagination.js.coffee',
     'app/assets/javascripts/refinery/boot_wym.js',
     'app/assets/javascripts/refinery/core.js',
     'app/assets/javascripts/refinery/i18n.js.erb',
+    'app/assets/javascripts/refinery/interface.js.coffee',
     'app/assets/javascripts/refinery/modal_dialogs.js',
     'app/assets/javascripts/refinery/nestedsortables.js',
     'app/assets/javascripts/refinery/refinery.js',
     'app/assets/javascripts/refinery/serializelist.js',
     'app/assets/javascripts/refinery/site_bar.js',
+    'app/assets/javascripts/refinery/sortable_menu.js.coffee',
     'app/assets/javascripts/refinery/submenu.js',
+    'app/assets/javascripts/refinery/submit_continue.js.coffee',
     'app/assets/javascripts/refinery/wymeditor.js',
     'app/assets/javascripts/wymeditor',
     'app/assets/javascripts/wymeditor/jquery.refinery.wymeditor.js',
