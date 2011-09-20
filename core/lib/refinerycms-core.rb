@@ -116,7 +116,7 @@ module Refinery
           plugin.version = ::Refinery.version
           plugin.hide_from_menu = true
           plugin.always_allow_access = true
-          plugin.menu_match = /(refinery|admin)\/(refinery_)?dialogs/
+          plugin.menu_match = /(refinery|admin)\/(refinery_|pages_)?dialogs/
         end
       end
 
