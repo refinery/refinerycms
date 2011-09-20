@@ -16,4 +16,5 @@
  *= require ./submenu
  *= require ./interface
  *= require ./sortable_menu
+ *= require ./submit_continue
 */
