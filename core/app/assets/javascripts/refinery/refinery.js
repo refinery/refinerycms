@@ -17,4 +17,5 @@
  *= require ./interface
  *= require ./sortable_menu
  *= require ./submit_continue
+ *= require ./ajaxy_pagination
 */
