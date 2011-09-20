@@ -1,0 +1,134 @@
+es:
+<<<<<<< HEAD
+  refinery:
+    plugins:
+      refinery_settings:
+        title: Configuración
+        description: Gestionar opciones de Refinery
+        article: femenino
+    admin:
+      settings:
+        delete: Eliminar esta opción para siempre
+        edit: Editar esta opción
+        actions:
+          new: Crear nueva opción
+        records:
+          empty_set: Aún no hay opciones
+          create_first: "Haz click en '%{link}' para añadir tu primera opción."
+        form:
+          enabled: "Si, habilita esta funcionalidad"
+          restart_may_be_in_order_html: <strong>Recuerda</strong> que puede que necesites reiniciar tu web para que esta opción haga efecto.
+          yes_make_this_setting_restricted: "Sí, restringir esta opción sólo para superusuarios."
+          title:
+            activity_show_limit: Nº elementos en panel de control
+            analytics_page_code: Código de Google Analytics
+            approximate_ascii: Aproximar a ASCII (Páginas)
+            cache_pages_backend: Cachear páginas en el panel
+            default_page_parts: Secciones de página por defecto
+            dragonfly_secret: Secreto de dragonfly
+            frontend_refinery_stylesheets_enabled: Hojas de estilo de refinery en el frontend
+            i18n_translation_current_locale: Idioma actual (Refinery)
+            i18n_translation_default_frontend_locale: Idioma por defecto en el frontend (Refinery)
+            i18n_translation_default_locale: Idioma por defecto (Refinery)
+            i18n_translation_enabled: Traducción activada (Refinery)
+            i18n_translation_frontend_locales: Idiomas disponibles en el frontend (Refinery)
+            i18n_translation_locales: Idiomas disponibles (Refinery)
+            image_views: Vistas de imagen
+            menu_hide_children: Ocultar subpáginas en el menú
+            new_page_parts: Añadir secciones a las páginas
+            page_title: Título de página
+            preferred_image_view: Vista de imágenes preferida
+            strip_non_ascii: Eliminar caracteres no ASCII (Páginas)
+            site_name: Nombre del sitio
+            tld_length: Niveles del dominio
+            superuser_can_assign_roles: Superusuario puede asignar roles
+            use_google_ajax_libraries: Usar bibliotecas AJAX de Google
+            use_marketable_urls: Usar URLs cortas (Páginas)
+            use_resource_caching: Compactar recursos
+            user_image_sizes: Tamaños de imagen de usuario
+          help:
+            restricted: Hace que sólo los superusuarios (como tu) puedan ver y editar esta opción.
+            activity_show_limit: Limita el número de items que se muestran en el listado del panel de control.
+            analytics_page_code: Este código activa Google Analytics en tu web. Si se deja en blanco o se indica UA-xxxxxx-x quedará desactivado y no se harán peticiones a Google Analytics.
+            menu_hide_children: "Esconde todas las subpáginas del menú, aunque estén presentes."
+            new_page_parts: Permite añadir nuevas partes (secciones de contenido) en los editores de páginas.
+            page_title: 'Opciones muy complejas para fijar el título de la página. Aquí puedes fijar alguna clase CSS personalizada, o alguna etiqueta diferente, o añadirlo a las "migas de pan" con los antecesores de cada página.'
+            preferred_image_view: Controla con qué vista se muestran las imágenes existentes - grid para 'Ver como cuadrícula' y list para 'Ver como lista'. Hay un botón para automatizar este proceso en el propio plugin de las imágenes.
+            show_contact_privacy_link: Puedes ocultar o mostrar el enlace a la página de política de privacidad en el formulario de contacto.
+            site_name: "Este es el nombre de tu web y se mostrará en la cabecera, en el panel de control y en la frase de Copyright del pie de página en algunos temas."
+            theme: Escribe el nombre del tema que quieres activar. Hará efecto inmediatamente y debe identificar correctamente un tema existente para que funcione.
+            use_google_ajax_libraries: Ponlo a true si quieres usar la CDN de Google para librerías Ajax.
+            use_marketable_urls: Cambia las urls de /pages/about a /about y automáticamente gestiona conflictos que puedan surgir con otros plugins.
+            use_resource_caching: "Recomendado activarlo en producción ya que empaqueta los archivos javascript y CSS en un único archivo, lo que reducirá el número de peticiones a tu web y la acelerará."
+            approximate_ascii: Ponlo a true si usas caracteres latinos con tildes y otros signos diacríticos en los títulos de página. Convertirá caracteres como ā, č, ž en a, c, z y así estos caracteres no aparecerán como símbolos extraños en la barra de direcciones de algunos navegadores.
+=======
+  plugins:
+    refinery_settings:
+      title: Configuración
+      description: Gestionar opciones de Refinery
+      article: femenino
+  admin:
+    refinery_settings:
+      delete: Eliminar esta opción para siempre
+      edit: Editar esta opción
+      actions:
+        new: Crear nueva opción
+      records:
+        empty_set: Aún no hay opciones
+        create_first: "Haz click en '%{link}' para añadir tu primera opción."
+      form:
+        enabled: "Si, habilita esta funcionalidad"
+        restart_may_be_in_order_html: <strong>Recuerda</strong> que puede que necesites reiniciar tu web para que esta opción haga efecto.
+        yes_make_this_setting_restricted: "Sí, restringir esta opción sólo para superusuarios."
+        title:
+          activity_show_limit: Nº elementos en panel de control
+          analytics_page_code: Código de Google Analytics
+          approximate_ascii: Aproximar a ASCII (Páginas)
+          cache_pages_backend: Cachear páginas en el panel
+          default_page_parts: Secciones de página por defecto
+          dragonfly_secret: Secreto de dragonfly
+          frontend_refinery_stylesheets_enabled: Hojas de estilo de refinery en el frontend
+          i18n_translation_current_locale: Idioma actual (Refinery)
+          i18n_translation_default_frontend_locale: Idioma por defecto en el frontend (Refinery)
+          i18n_translation_default_locale: Idioma por defecto (Refinery)
+          i18n_translation_enabled: Traducción activada (Refinery)
+          i18n_translation_frontend_locales: Idiomas disponibles en el frontend (Refinery)
+          i18n_translation_locales: Idiomas disponibles (Refinery)
+          image_views: Vistas de imagen
+          menu_hide_children: Ocultar subpáginas en el menú
+          new_page_parts: Añadir secciones a las páginas
+          page_title: Título de página
+          preferred_image_view: Vista de imágenes preferida
+          strip_non_ascii: Eliminar caracteres no ASCII (Páginas)
+          site_name: Nombre del sitio
+          tld_length: Niveles del dominio
+          superuser_can_assign_roles: Superusuario puede asignar roles
+          use_google_ajax_libraries: Usar bibliotecas AJAX de Google
+          use_marketable_urls: Usar URLs cortas (Páginas)
+          use_resource_caching: Compactar recursos
+          user_image_sizes: Tamaños de imagen de usuario
+        help:
+          restricted: Hace que sólo los superusuarios (como tu) puedan ver y editar esta opción.
+          activity_show_limit: Limita el número de items que se muestran en el listado del panel de control.
+          analytics_page_code: Este código activa Google Analytics en tu web. Si se deja en blanco o se indica UA-xxxxxx-x quedará desactivado y no se harán peticiones a Google Analytics.
+          frontend_refinery_stylesheets_enabled: "Por defecto Refinery incluye hojas de estilo para la parte pública que proporcionan CSS por defecto sin interferir con tus propias hojas de estilo, se activa o desactiva con esta opción."
+          menu_hide_children: "Esconde todas las subpáginas del menú, aunque estén presentes."
+          new_page_parts: Permite añadir nuevas partes (secciones de contenido) en los editores de páginas.
+          page_title: 'Opciones muy complejas para fijar el título de la página. Aquí puedes fijar alguna clase CSS personalizada, o alguna etiqueta diferente, o añadirlo a las "migas de pan" con los antecesores de cada página.'
+          preferred_image_view: Controla con qué vista se muestran las imágenes existentes - grid para 'Ver como cuadrícula' y list para 'Ver como lista'. Hay un botón para automatizar este proceso en el propio plugin de las imágenes.
+          show_contact_privacy_link: Puedes ocultar o mostrar el enlace a la página de política de privacidad en el formulario de contacto.
+          site_name: "Este es el nombre de tu web y se mostrará en la cabecera, en el panel de control y en la frase de Copyright del pie de página en algunos temas."
+          theme: Escribe el nombre del tema que quieres activar. Hará efecto inmediatamente y debe identificar correctamente un tema existente para que funcione.
+          use_google_ajax_libraries: Ponlo a true si quieres usar la CDN de Google para bibliotecas AJAX.
+          use_marketable_urls: Cambia las urls de /pages/about a /about y automáticamente gestiona conflictos que puedan surgir con otros plugins.
+          use_resource_caching: "Recomendado activarlo en producción ya que empaqueta los archivos javascript y CSS en un único archivo, lo que reducirá el número de peticiones a tu web y la acelerará."
+          approximate_ascii: Ponlo a true si usas caracteres latinos con tildes y otros signos diacríticos en los títulos de página. Convertirá caracteres como ā, č, ž en a, c, z y así estos caracteres no aparecerán como símbolos extraños en la barra de direcciones de algunos navegadores.
+>>>>>>> 0356e8fd5863a4f5919fbba776cb0ad0df01236e
+  activerecord:
+    models:
+      refinery/setting: opción
+    attributes:
+      refinery/setting:
+        name: Nombre
+        value: Valor
+        restricted: Restringido

@@ -1,0 +1,40 @@
+h2. How to add custom JavaScript files
+
+Refinery by default will provide you with the required javascript files you need.  Sometimes you want to provide your own files and this guide will show you how to:
+
+*Add your own files to be included on a per page basis.
+
+endprologue.
+
+h3. Including your own JavasScript files
+
+If you want to include your own javascript files you just have to include this in your home.html.erb:
+
+<shell>
+<% content_for :javascripts do %>
+  <% javascript_include_tag('jquery.cycle.all.js', 'jquery.super_awesome.plugin.js', 'moreAwesome.js') %>
+<% end %>
+</shell>
+
+This will add the javascript files that you specified to your home page. 
+If you want to add different files for your other pages, you can override that view and pass in the files you need.
+
+h3. Different ways to change files
+Refinery provides you with four unique ways of adding JavaScript files. 
+
+<shell>
+<% content_for :before_javascript_libraries, javascript_include_tag('init.js') %>
+<% content_for :javascript_libraries, jquery_include_tags(:jquery_ui => false) %>
+<% content_for :after_javascript_libraries, javascript_include_tag('jquery.cycle.all.js') %>
+<% content_for :javascripts do %>
+  <% javascript_include_tag('jquery.cycle.all.js', 'jquery.super_awesome.plugin.js', 'more.js') %>
+<% end %>
+</shell>
+
+What they do:
+*<tt>before_javascript_libraries</tt> will include a file before any libraries have been loaded.  
+*<tt>javascript_libraries</tt> provides you options of being able to specify your own javascript libraries
+*<tt>after_javascript_libraries</tt> will load any files you wish to include directly below your libraries
+*<tt>javascripts</tt> will load all the files you wish to include on your page
+
+TIP. You can change the files that are loaded on a per page basis by simply overriding the corresponding views to include only what you need. 

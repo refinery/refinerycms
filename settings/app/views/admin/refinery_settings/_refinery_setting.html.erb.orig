@@ -1,0 +1,23 @@
+<li class='clearfix record <%= cycle("on", "on-hover") %>'>
+  <span class='title'>
+    <%= t(refinery_setting.name, :scope => 'admin.refinery_settings.form.title', :default => refinery_setting.title) %>
+    <span class="preview">- <%= truncate(refinery_setting.value.to_s, :length => 40) %></span>
+  </span>
+  <span class='actions'>
+    <%= link_to refinery_icon_tag('application_edit.png'),
+                edit_admin_refinery_setting_path(refinery_setting, :dialog => true, :width => 725, :height => 525),
+                :title => t('edit', :scope => 'admin.refinery_settings') %>
+    <%= link_to refinery_icon_tag('delete.png'),
+                admin_refinery_setting_path(refinery_setting),
+                :class => 'cancel confirm-delete',
+                :title => t('delete', :scope => 'admin.refinery_settings'),
+                :confirm => t('message', :scope => 'shared.admin.delete', :title => refinery_setting.title),
+                :method => :delete if refinery_setting.destroyable %>
+
+    <% unless (help = t(refinery_setting.name, :scope => 'admin.refinery_settings.form.help', :default => '')).blank? %>
+      <%= link_to refinery_icon_tag('information.png'), '#',
+                  :tooltip => help,
+                  :class => 'information suppress' %>
+    <% end %>
+  </span>
+</li>

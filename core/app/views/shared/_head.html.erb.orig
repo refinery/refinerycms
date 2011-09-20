@@ -1,0 +1,20 @@
+<head>
+  <meta charset='<%= ::Refinery::Application.config.encoding %>' />
+  <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><![endif]-->
+  <title><%= browser_title(yield(:title)) %></title>
+  <%= raw "<meta name=\"description\" content=\"#{@meta.meta_description}\" />" if @meta.meta_description.present? -%>
+  <%= raw "<meta name=\"keywords\" content=\"#{@meta.meta_keywords}\">" if @meta.meta_keywords.present? -%>
+  <%= csrf_meta_tag if RefinerySetting.find_or_set(:authenticity_token_on_frontend, true)-%>
+  <%= yield :meta %>
+
+  <%= stylesheet_link_tag stylesheets_for_head(stylesheets||=%w(application formatting theme), theme ||= nil),
+                          :cache => ("cache/application" if Rails.root.writable? and
+                                                            RefinerySetting.find_or_set(:use_resource_caching, true) and
+                                                            request.env['HTTP_USER_AGENT'] !~ /MSIE/ and (theme ||= nil).blank?) %>
+  <%= stylesheet_link_tag "home", :theme => theme if home_page? %>
+
+  <%= yield :stylesheets %>
+  <%= render :partial => '/shared/google_analytics' unless local_request? %>
+
+  <%= javascript_include_tag 'modernizr-min' %>
+</head>

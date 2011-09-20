@@ -1,0 +1,80 @@
+en:
+<<<<<<< HEAD
+  refinery:
+    plugins:
+      refinery_settings:
+        title: Settings
+        description: Manage Refinery settings
+    admin:
+      settings:
+        delete: Remove this setting forever
+        edit: Edit this setting
+        actions:
+          new: Add new setting
+        records:
+          empty_set: There are no settings yet.
+          create_first: "Click '%{link}' to add your first setting."
+        form:
+          enabled: "Yes, enable this setting."
+          restart_may_be_in_order_html: <strong>Please note</strong> that you may need to restart the website for this setting to take effect.
+          yes_make_this_setting_restricted: "Yes, make this setting restricted only to superusers."
+          help:
+            restricted: This makes the setting only visible and editable by users who are superusers (like you).
+            activity_show_limit: This limits the number of items that can display in the Dashboard listing.
+            analytics_page_code: This code activates Google Analytics tracking within your website. If the setting is left blank or set to UA-xxxxxx-x then this is disabled and no remote calls to Google Analytics are made.
+            menu_hide_children: Hide any subpages from the menu even if they are present.
+            new_page_parts: Enable adding new page parts (content sections) in the page editors.
+            page_title: Very complex options for setting the page title. Here you can set custom CSS class or a different tag or tell it to breadcrumb with pages in its ancestry.
+            preferred_image_view: This controls which view the images plugin displays existing images in - grid for 'Grid View' and list for 'List View'. There is a button to automate this process on the images plugin itself.
+            show_contact_privacy_link: You can hide or show the link to the privacy policy page on the contact form by the submit button.
+            site_name: This is the name for your website and will display in the header and in the Refinery backend and in the footer copyright statement for some themes.
+            theme: Enter the name for the theme that you want to be enabled. This will take effect immediately and must correctly identify an existing theme for this to work.
+            use_google_ajax_libraries: If you want to use Google's AJAX CDN then set this to true.
+            use_marketable_urls: Change urls from /pages/about to /about and automatically manage conflicts with other plugins.
+            use_resource_caching: Recommended to enable this in production mode as it bundles javascript assets and stylesheet assets into single file packages to reduce the number of web requests on your site and speed it up.
+            approximate_ascii: "Set this to true if you use Latin characters with accents and other diacritics in page titles. It'll convert characters like ā, č, ž into a, c, z and this way those characters won't appear strangely in the address bar of some web browsers."
+            cache_pages_full: Activates the full-page-cache. It allows cached page delivery via Nginx or .htaccess file from Apache.
+            use_custom_slugs: A slug is a human-readable ID used to create a page&apos;s full URL, for example &apos;about-us&apos;. To enable the ability to override the slugs that are automatically created by Refinery, set this to true.
+=======
+  plugins:
+    refinery_settings:
+      title: Settings
+      description: Manage Refinery settings
+  admin:
+    refinery_settings:
+      delete: Remove this setting forever
+      edit: Edit this setting
+      actions:
+        new: Add new setting
+      records:
+        empty_set: There are no settings yet.
+        create_first: "Click '%{link}' to add your first setting."
+      form:
+        enabled: "Yes, enable this setting."
+        restart_may_be_in_order_html: <strong>Please note</strong> that you may need to restart the website for this setting to take effect.
+        yes_make_this_setting_restricted: "Yes, make this setting restricted only to superusers."
+        help:
+          restricted: This makes the setting only visible and editable by users who are superusers (like you).
+          activity_show_limit: This limits the number of items that can display in the Dashboard listing.
+          analytics_page_code: This code activates Google Analytics tracking within your website. If the setting is left blank or set to UA-xxxxxx-x then this is disabled and no remote calls to Google Analytics are made.
+          frontend_refinery_stylesheets_enabled: "By default, Refinery includes stylesheets for the frontend which provide default CSS without getting in the way of your own stylesheets, enabled or disabled by this setting."
+          menu_hide_children: Hide any subpages from the menu even if they are present.
+          new_page_parts: Enable adding new page parts (content sections) in the page editors.
+          page_title: Very complex options for setting the page title. Here you can set custom CSS class or a different tag or tell it to breadcrumb with pages in its ancestry.
+          preferred_image_view: This controls which view the images plugin displays existing images in - grid for 'Grid View' and list for 'List View'. There is a button to automate this process on the images plugin itself.
+          show_contact_privacy_link: You can hide or show the link to the privacy policy page on the contact form by the submit button.
+          site_name: This is the name for your website and will display in the header and in the Refinery backend and in the footer copyright statement for some themes.
+          theme: Enter the name for the theme that you want to be enabled. This will take effect immediately and must correctly identify an existing theme for this to work.
+          use_google_ajax_libraries: If you want to use Google's AJAX CDN then set this to true.
+          use_marketable_urls: Change urls from /pages/about to /about and automatically manage conflicts with other plugins.
+          use_resource_caching: Recommended to enable this in production mode as it bundles javascript assets and stylesheet assets into single file packages to reduce the number of web requests on your site and speed it up.
+          approximate_ascii: "Set this to true if you use Latin characters with accents and other diacritics in page titles. It'll convert characters like ā, č, ž into a, c, z and this way those characters won't appear strangely in the address bar of some web browsers."
+>>>>>>> 0356e8fd5863a4f5919fbba776cb0ad0df01236e
+  activerecord:
+    models:
+      refinery/setting: setting
+    attributes:
+      refinery/setting:
+        name: Name
+        value: Value
+        restricted: Restricted
