@@ -14,7 +14,7 @@ module ::Refinery
       self.silence_puts = true
 
       # Only pretend to do the next actions if this is Refinery to stay DRY
-      if destination_path == Refinery.root.to_s
+      if destination_path == Refinery.root
         say_status :'-- pretending to make changes that happen in an actual installation --', nil, :yellow
         old_pretend = self.options[:pretend]
         new_options = self.options.dup
@@ -52,7 +52,7 @@ module ::Refinery
       end
 
       # Stop pretending
-      if destination_path == Refinery.root.to_s
+      if destination_path == Refinery.root
         say_status :'-- finished pretending --', nil, :yellow
         new_options = self.options.dup
         new_options[:pretend] = old_pretend
@@ -62,7 +62,7 @@ module ::Refinery
       # Ensure .gitignore exists and append our rules to it.
       create_file ".gitignore" unless destination_path.join('.gitignore').file?
       our_ignore_rules = self.class.source_root.join('.gitignore').read
-      our_ignore_rules = our_ignore_rules.split('# REFINERY CMS DEVELOPMENT').first if destination_path != Refinery.root.to_s
+      our_ignore_rules = our_ignore_rules.split('# REFINERY CMS DEVELOPMENT').first if destination_path != Refinery.root
       append_file ".gitignore", our_ignore_rules
 
       # If the admin/base_controller.rb file exists, ensure it does not do the old inheritance
