@@ -1,8 +1,8 @@
 h2. How to add custom JavaScript files
 
-Refinery by default will provide you with the required javascript files you need.  Sometimes you want to provide your own files and this guide will show you how to:
+By default, Refinery does not load any javascript files on the frontend of your website.
 
-*Add your own files to be included on a per page basis.
+However, most of the time you want to provide your own files so this guide will show you how to achieve this.
 
 endprologue.
 
