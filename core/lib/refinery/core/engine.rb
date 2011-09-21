@@ -5,7 +5,7 @@ module Refinery
       
       def self.load_decorators        
         Dir.glob(File.join(Rails.root, "app/decorators/**/*_decorator.rb")) do |c|
-          require(c)
+          Rails.application.config.cache_classes ? require(c) : load(c)
         end
       end
       
