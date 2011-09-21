@@ -3,7 +3,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <%= yield :meta %>
   <title><%= ::Refinery::Setting.find_or_set(:site_name, 'Company Name') -%> - Refinery</title>
-  <%= csrf_meta_tag %>
+  <%= csrf_meta_tags %>
   <%= stylesheet_link_tag 'refinery/refinery' %>
   <%= yield :stylesheets %>
   <%= render :partial => "refinery/admin/javascripts" %>

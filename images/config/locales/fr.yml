@@ -14,7 +14,7 @@ fr:
           or: ou
           replace_image: " la remplacer par celle-ci..."
           current_image: Image actuelle
-          maximum_image_size: "La taille de l'image ne doit pas excéder %{megabytes} megaoctets."
+          maximum_image_size: "La taille de l'image ne doit pas excéder %{bytes} megaoctets."
         actions:
           create_new_image: Ajouter une image
         records:

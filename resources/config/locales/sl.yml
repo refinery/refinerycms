@@ -11,7 +11,7 @@ sl:
           download_current: Prenesi tretnutno datoteko
           or: ali
           replace: " jo zamenjaj s tole..."
-          maximum_file_size: "Največja dovoljena velikost datoteke je %{megabytes} megabajtov."
+          maximum_file_size: "Največja dovoljena velikost datoteke je %{bytes} megabajtov."
         resource:
           download: Prenesi datoteko (%{size})
         actions:

@@ -50,9 +50,6 @@ rs:
           parent_page: Roditelj strana
           advanced_options: Napredne opcije
           custom_title: Prilagođen naslov
-          title_types:
-            none: Nijedan
-            text: Tekst
           show_in_menu_title: Prikaži u meniju
           show_in_menu_description: Prikaži ovu stranu u meniju sajta
           show_in_menu_help: Ostavi prazno polje ako želiš da ukloniš ovu stranu iz menija sajta. Ovo može biti korisno ukoliko je potrebno da strana postoji, ali da se ne može izabrati iz glavnog menija.

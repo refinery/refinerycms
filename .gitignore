@@ -50,6 +50,7 @@ nbproject
 
 # Rubinius
 *.rbc
+*.rbx
 
 # Vim
 *.swp
@@ -74,6 +75,9 @@ capybara-*html
 #rvm
 .rvmrc
 .rvmrc.*
+
+#Sprockets
+public/assets
 
 # REFINERY CMS DEVELOPMENT ====================================================
 # Always keep this section at the bottom.

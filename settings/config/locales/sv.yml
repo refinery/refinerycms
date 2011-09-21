@@ -21,15 +21,10 @@ sv:
             restricted: Det här gör inställnigen synlig och redigerbar av huvudanvändare (tex. du).
             activity_show_limit: Det här begränsar antalet rader som kan visas i din Dashboard.
             analytics_page_code: Den här koden aktiverar Google Analytics på din webbplats. Om den här inställningen lämnas tom eller är installd till UA-xxxxx-x så är den avstängd.
-            image_dialogue_sizes: Den här inställningen gäller dialogen för att "Ladda upp en bild". Du behöver implementera olika tumnagelstorlekar såväl som ändra den här.
-            image_thumbnails: Om du ändrar den här inställningen så måste du återskapa dina bilder genom att köra rake images:regenerate (eller rake images:update om du bara har lagt till nya tumnaglar). Annars kommer inställningen inte gälla bilder som fanns innan ändringen
             menu_hide_children: Dölj alla undersidor från huvudmenyn även om de är tillgängliga.
             new_page_parts: Tillåt att lägga till nya innehållssektioner i sidredigeraren.
             page_title: Här kan du ställa in CSS eller html tag. Du kan även ställa in brödsmulor (s.k. breadcrumbs) för sidans ursprung
-            pages_advanced_options_include_seo: Den här styr om huruvida sökmotoroptimering visas i de avancerade alternativen för en sida
             preferred_image_view: Den här styr vilken vy tillägsprogrammet för bilder väljer att visa bilder i. 'Grid View' för rutnät eller 'List View' för lista. Det finns en knapp för att automatisera denna process i tillägsprogrammet.
-            refinery_enable_backend_reordering: Du kan ta bort möjligheten att ändra ordningen på plugins med den här inställningen.
-            refinery_menu_cache_action_suffix: Den här inställningen kontrollerar nyckeln som används för att buffra sidans meny. Om du använder ett tema är det bättre att lämna den här som standard för temat kommer hantera det ändå.
             show_contact_privacy_link: Du kan välja att visa eller dölja Registerbeskrivning (privacy policy) bredvid skicka knappen.
             site_name: Det här är webbplatsens namn och den kommer visas i huvudrubryken, Refinery och i foten på hemsidan.
             theme: Fyll i namnet på det tema du vill aktivera. Det här tar effekt direkt och måste hitta ett existerande tema för att fungera.

@@ -50,9 +50,6 @@ de:
           parent_page: Übergeordnete Seite
           advanced_options: Erweiterte Optionen
           custom_title: Angepasster Titel
-          title_types:
-            none: Keinen
-            text: Text
           show_in_menu_title: Im Menü anzeigen
           show_in_menu_description: Zeigt diese Seite im Seitenmenü an
           show_in_menu_help: Entfernen Sie dieses Häckchen, wenn die Seite nicht im Menü erscheinen soll. Dies kann nützlich sein, wenn Sie eine Seite direkt verlinken jedoch nicht im Menü anzeigen lassen möchten.

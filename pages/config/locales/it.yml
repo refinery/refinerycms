@@ -59,10 +59,6 @@ it:
           redirect_to_first_child: "Seleziona questa casella se vuoi che il visitatore sia reindirizzato alla prima pagina figlia di questa pagina, se questa pagina è selezionata."
           parent_id_title: Genitore
           custom_title: Titolo personalizzato
-          title_types:
-            none: Nessuno
-            text: Testo
-            image: Immagine
           custom_url: URL personalizzato
           custom_url_explanation_html: "Inserisci un URL, se desideri che questa pagina sia collegata ad un sito esterno o ad una risorsa preesistente, ad esempio una pagina contatti. <br/> Nota: L'URL inserito dovrà puntare ad una posizione già esistente."
           show_in_menu_title: Mostra nel menu

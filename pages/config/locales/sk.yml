@@ -50,9 +50,6 @@ sk:
           parent_page: Nadradená stránka
           advanced_options: Rozšírené nastavenia
           custom_title: Titulok
-          title_types:
-            none: Žiadny
-            text: Text
           show_in_menu_title: Zobraziť v menu
           show_in_menu_description: Zobraziť túto stránku v menu webu
           show_in_menu_help: Odznačte ak chcete odstrániť odkaz na túto stránku z menu webu. Toto je užitočné ak máte stránku, na ktorú chcete mať priamy odkaz, ale nechcete zobrazovať stránku v menu.

@@ -50,9 +50,6 @@ ko:
           parent_page: 상위 페이지
           advanced_options: 고급 설정
           custom_title: 임의 제목 설정
-          title_types:
-            none: 없음
-            text: 텍스트
           show_in_menu_title: 메뉴에 보이기
           show_in_menu_description: 이 페이지를 사이트 메뉴에 포함시킵니다.
           show_in_menu_help: 사이트 메뉴에 페이지가 보이지 않도록 하려면 이 설정을 해제하세요. 직접 링크는 가능하지만 메뉴에 보이기 원치 않는 페이지에 사용하면 유용합니다.

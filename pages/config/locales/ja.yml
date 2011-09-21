@@ -1,0 +1,73 @@
+ja:
+  refinery:
+    plugins:
+      refinery_pages:
+        title: ページ
+        description: ページの管理
+    admin:
+      pages_dialogs:
+        page_link:
+          link_to_this_page: このページへのリンク
+        link_to:
+          insert: 挿入
+          your_page:
+            tab_name: Your page
+          web_address:
+            tab_name: サイト
+            location: 場所
+            new_window: 新規ウィンドウ
+            step1: リンクするページを探す
+            step2: ブラウザのアドレスバーに表示されているアドレスをコピーして上欄にペーストする
+          email_address:
+            tab_name: メールアドレス
+            subject_line_optional: 件名（無くても可）
+            body_optional: 本文（無くても可）
+            not_sure: 何を記入すべきか解りませんか？
+            step1_html: "メールアドレスを上の'<strong>メールアドレス</strong>'欄に直接書き込むかアドレス帳などからコピーしたものをペーストする"
+            step2_html: "<strong>予め決められた件名</strong>を使ってメールを作成するには上の'<strong>件名</strong>'欄を使います"
+            step3_html: "<strong>予め決められた本文</strong>を使ってメールを作成するには上の'<strong>本文</strong>'欄を使います"
+          your_resource:
+            tab_name: ファイル
+            link_to_this_resource: このファイルへのリンク
+      pages:
+        delete: ページを削除
+        edit: ページを編集
+        reserved_system_word: "このタイトルはシステム用ですので使用出来ません。"
+        page:
+          view_live_html: "このページを表示する<br/><em>（新しいウィンドウが開きます）</em>"
+          hidden: 非表示
+          draft: 準備稿
+        form_new_page_parts:
+          title: タイトル
+        form_page_parts:
+          create_content_section: コンテンツを追加
+          delete_content_section: コンテンツを削除
+        form_advanced_options:
+          toggle_advanced_options: メタタグの設定とメニューオプションの設定
+          page_options: ページの設定
+          parent_page: 親ページ
+          advanced_options: その他の設定
+          custom_title: カスタマイズしたタイトル
+          show_in_menu_title: メニューで表示する
+          show_in_menu_description: このページをサイトメニューで表示する
+          show_in_menu_help: サイトメニューからこのページを削除する時はこのチェックボックスのチェックを外して下さい。ユーザに直接アクセスしてもらいたいページで、サイトメニューには表示したくないページがある場合などに便利です。
+          save_as_draft: 準備稿として保存する
+          skip_to_first_child: トップレベルのページを飛ばす
+          skip_to_first_child_label: この直ぐ下の階層のページにユーザを飛ばす
+          skip_to_first_child_help: このオプションを使うと、リンクは直ぐ下の階層のページのうちの先頭のものにリンクします。幾つかのページを一まとめにする場合などに便利です。
+          link_url: 他のウェブサイトやページに転送する
+          link_url_help: メニューでこのページへのリンクをクリックした時、他のウェブサイトやページに転送するようにするにはURL（例 http://google.com）を書き入れます。そうでない場合は空欄のままにします。
+          parent_page_help: リストから選んで、ページを他のページの下に置く事が出来ます。空にするとこのページは一番上の階層のページとして扱われます。
+          custom_title_help: このページにメニューに表示されているもの以外のタイトルを付けたい時にはここに書いて下さい。
+        actions:
+          create_new_page: 新規ページを追加
+          reorder_pages: ページを並べ替える
+          reorder_pages_done: 並べ替えを終了する
+        records:
+          no_pages_yet: まだページはありません。"新規ページを追加"をクリックして下さい。
+  activerecord:
+    models:
+      refinery/page: ページ
+    attributes:
+      refinery/page:
+        title: タイトル

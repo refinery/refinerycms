@@ -14,7 +14,7 @@ vi:
           or: hoặc
           replace_image: " thay bằng ảnh khác..."
           current_image: Ảnh hiện tại
-          maximum_image_size: Dung lượng ảnh tối đa là %{megabytes} megabytes.
+          maximum_image_size: Dung lượng ảnh tối đa là %{bytes} bytes.
         actions:
           create_new_image: Tạo ảnh mới
         records:
@@ -40,5 +40,5 @@ vi:
       models:
         refinery/image:
           blank: Bạn phải chọn ảnh để tải lên
-          too_big: Ảnh phải có kích thước nhỏ hơn %{size} megabytes
+          too_big: Ảnh phải có kích thước nhỏ hơn %{size} bytes
           incorrect_format: 'Ảnh phải ở một trong các định dạng JPG, PNG hoặc GIF'

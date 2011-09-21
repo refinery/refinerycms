@@ -12,7 +12,7 @@ de:
           download_current: Download der aktuellen Datei
           or: oder
           replace: ", mit dieser ersetzen..."
-          maximum_file_size: "Die maximale Dateigröße beträgt %{megabytes} Megabyte."
+          maximum_file_size: "Die maximale Dateigröße beträgt %{bytes} Megabyte."
         resource:
           download: Diese Datei herunterladen (%{size})
         actions:

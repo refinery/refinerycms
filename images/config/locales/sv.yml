@@ -14,7 +14,7 @@ sv:
           or: eller
           replace_image: " ersätt den med den här..."
           current_image: Denna bild
-          maximum_image_size: Maximal filstorlek för bilden är %{megabytes} megabytes.
+          maximum_image_size: Maximal filstorlek för bilden är %{bytes} bytes.
         actions:
           create_new_image: Ladda upp en bild
         records:
@@ -40,5 +40,5 @@ sv:
       models:
         refinery/image:
           blank: Du måste ange en bild att ladda upp
-          too_big: Bilden ska vara mindre än %{size} megabytes stor
+          too_big: Bilden ska vara mindre än %{size} bytes stor
           incorrect_format: 'Din bild måste vara antingen JPG, PNG eller GIF'

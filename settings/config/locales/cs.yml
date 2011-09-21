@@ -21,15 +21,10 @@ cs:
             restricted: Volba bude viditelná a editovatelné pouze pro adminstrátory (jako jste vy).
             activity_show_limit: Omezuje počet akcí viditelných na nástěnce.
             analytics_page_code: Tento kód aktivuje sledování webu pomocí Googla Analytics. Pokud je ponechán prázdný nebo ve tvaru UA-xxxxxx-x je sledování vypnuto a žádné informace se do Google Analytics neposílají.
-            image_dialogue_sizes: Toto nastavení se používá v dialogu vkládání obrázku. Musíte implementovat rozdílné velikosti náhledů, pokud toto nastavení změníte.
-            image_thumbnails: Pokud změnite toto nastavení, budete muset také přegenerovat obrázky příkazem rake images:regenerate (nebo rake images:update pokud jste pouze přidáváte náhledy) jinak se vaše změny neprojeví na stávájících obrázcích.
             menu_hide_children: Skrýt podstránky z menu i když jsou dostupné.
             new_page_parts: Povolit přidávání nových částí stránek (obsahové sekce) v editorech.
             page_title: Velmi komplexní volba pro nastavení titulky stránky. Můžete nastavit vlastní CSS třídu, jiný tag nebo ho poslat do drobečkového menu se stránkami se stejným předkem.
-            pages_advanced_options_include_seo: Tato volba nastavuje, zda je zobrazeno SEO nastavení v rozšířeném nastavení stránky.
             preferred_image_view: Nastavuje preferovaný pohled na existující obrázky. Zvolte grid pro zobrazení mřížky nebo list pro zobrazení seznamu. Nastavení se dá přepínat tlačítkem i v samotném pohledu.
-            refinery_enable_backend_reordering: Můžete odebrat možnost řadit záložky v administraci.
-            refinery_menu_cache_action_suffix: Nastavuje klíč, který je používán k ukládání menu do mezipaměti. Pokud používáte nějáký vzhled je lepší nechat toto nastavení v původním stavu a vzhled se o toto nastavení postará.
             show_contact_privacy_link: Můžete zobrazit či srýt odkaz na stránku 'zásady ochrany osobních údajů' u kontaktnícho formuláře vedle tlačítka 'Odeslat'.
             site_name: Název vašeho webu, který se zobrazuje v hlavičce stránky, v adminstraci a někdy (podle vzhledu) se používá i v patičce.
             theme: Zadejte název zhledu který má být aktivní. Efekt je okamžitý a musí být nastaveno platné jméno vzhledu!

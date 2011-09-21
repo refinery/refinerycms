@@ -50,9 +50,6 @@ lt:
           parent_page: Tėvinis puslapis
           advanced_options: Papildomi nustatymai
           custom_title: Kitokia puslapio antraštė
-          title_types:
-            none: Nėra
-            text: Tekstas
           show_in_menu_title: Rodyti meniu
           show_in_menu_description: Rodyti šį puslapį svetainės meniu
           show_in_menu_help: "Atžymėkite šią varnelę jei norite pašalinti šį puslapį iš svetainės meniu. Tai gali būti naudinga, jeigu turite puslapį į kurį norite leisti nuorodas tiesiogiai, bet nenorite jo rodyti svetainės meniu."

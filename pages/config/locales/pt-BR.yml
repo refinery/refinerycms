@@ -51,9 +51,6 @@ pt-BR:
           parent_page: Página pai
           advanced_options: Opções avançadas
           custom_title: Título opcional
-          title_types:
-            none: Nenhum
-            text: Texto
           show_in_menu_title: Mostrar no menu
           show_in_menu_description: Mostra esta página no menu do site
           show_in_menu_help: "Desmarque está opção caso queira remover a página do menu do site. Pode ser útil caso queira linkar um outra página para esta, mas não quer que esta apareça no menu do site."

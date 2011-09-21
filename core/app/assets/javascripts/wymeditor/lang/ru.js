@@ -4,7 +4,7 @@ WYMeditor.STRINGS['ru'] = {
   Superscript:      'Надстрочный',
   Subscript:        'Подстрочный',
   Ordered_List:     'Нумерованый список',
-  Unordered_List:   'Ненумерованый список',
+  Unordered_List:   'Список',
   Indent:           'Увеличить отступ',
   Outdent:          'Уменьшить отступ',
   Undo:             'Отменить',
@@ -13,7 +13,7 @@ WYMeditor.STRINGS['ru'] = {
   Unlink:           'Удалить ссылку',
   Image:            'Изображение',
   Table:            'Таблица',
-  HTML:             'Править HTML',
+  HTML:             'HTML',
   Paragraph:        'Параграф',
   Heading_1:        'Заголовок 1',
   Heading_2:        'Заголовок 2',
@@ -40,6 +40,17 @@ WYMeditor.STRINGS['ru'] = {
   Containers:       'Контейнеры',
   Classes:          'Классы',
   Status:           'Статус',
-  Source_Code:      'Исходный код'
+  Source_Code:      'Исходный код',
+  Text_Align:       'Выровнять текст',
+  Image_Align:      'Выровнять изображение',
+  Font_Size:        'Размер шрифта',
+  Left:             'По левому краю',
+  Right:            'По правому краю',
+  Center:           'По центру',
+  Justify:          'По ширине',
+  Small:            'Маленький',
+  Normal:           'Нормальный',
+  Large:            'Большой',
+  Apply_Style:      'Стиль'
 };
 

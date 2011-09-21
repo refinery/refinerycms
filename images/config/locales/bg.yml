@@ -14,7 +14,7 @@ bg:
           or: или
           replace_image: " го заменете с ново..."
           current_image: Текущо изображение
-          maximum_image_size: Максималната големина на изображението е %{megabytes} мегабайта.
+          maximum_image_size: Максималната големина на изображението е %{bytes} байта.
         actions:
           create_new_image: Добавяне на ново изображение
         records:
@@ -40,5 +40,5 @@ bg:
       models:
         refinery/image:
           blank: Трябва да укажете изображение за качване
-          too_big: Размерът на изображението трябва да бъде по-малък от %{size} мегабайта
+          too_big: Размерът на изображението трябва да бъде по-малък от %{size} байта
           incorrect_format: 'Вашето изображение трябва да бъде JPG, PNG или GIF'

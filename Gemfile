@@ -21,11 +21,12 @@ gemspec
 # Anything you put in here will be overridden when the app gets updated.
 
 # gem 'refinerycms', '~> 2.0.0'
-gem 'awesome_nested_set', :git => 'git://github.com/collectiveidea/awesome_nested_set.git'
 
 # END REFINERY CMS ============================================================
 
 # REFINERY CMS DEVELOPMENT ====================================================
+
+gem "rails", "= 3.1.1.rc1"
 
 group :development, :test do
   gem 'refinerycms-testing',    '~> 2.0.0'
@@ -34,6 +35,7 @@ group :development, :test do
   gem 'capybara-webkit', '~> 0.6.1'
   gem 'spork', '0.9.0.rc9', :platforms => :ruby
   gem 'guard-spork', :platforms => :ruby
+  gem 'generator_spec'
 
   require 'rbconfig'
 

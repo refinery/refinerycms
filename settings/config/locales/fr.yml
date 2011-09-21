@@ -21,15 +21,10 @@ fr:
             restricted: Ceci permet de restreindre la consultation et la modification de ce paramètre uniquement aux administrateurs (comme vous actuellement).
             activity_show_limit: Ceci limite la taille de la liste du tableau de bord.
             analytics_page_code: Ce code permet d'activer le service Google Analitics. Si vous laissez le code vide ou à la valeur UA-xxxxxx-x, le service sera déactivé et aucune requête vers Google Analytics ne sera effectuée.
-            image_dialogue_sizes: Ce paramètre s'applique au dialogue d'insertion d'image. Lorsque vous modifiez ce paramètre, vous devez également coder les différentes tailles de miniatures.
-            image_thumbnails: "Si vous modifiez ce paramètre vous devrez régénérer les images en exécutant la tâche 'rake images:regenerate' (ou 'rake images:update' si vous n'avez fait qu'ajouter un nouveau format."
             menu_hide_children: Cache toutes les pages filles du menu, même si elles sont présentes.
             new_page_parts: "Permet d'ajouter de nouvelles parties de page (sections de contenu) dans les éditeurs de pages."
             page_title: "Options avancée pour le titre de la page. Vous pouvez ici définir des classes CSS personnalisées, ajouter différentes étiquettes ou spécifier l'ajout d'un chemin de navigation avec les pages parentes."
-            pages_advanced_options_include_seo: Ceci contrôle si les options SEO sont affichées dans les options avancées pour une page.
             preferred_image_view: "Cette option permet de personnaliser l'affichage des images dans les vues 'Vue en grille' et 'Vue en liste'. Il existe un boutton permettant de générer cettte valeur automatiquement directement dans la gestion du plugin d'images."
-            refinery_enable_backend_reordering: Ceci permet de supprimer la possibilité de modifier  l'ordre d'affichage des plugins.
-            refinery_menu_cache_action_suffix: Cette option permet de définir un préfixe utilisé par le système de mise en cache pour le menu. Si vous utilisez un thème, il vaut mieux laisser ce champ par défaut, puisqu'il sera défini par le thème.
             show_contact_privacy_link: Vous pouvez afficher ou non le lien vers votre politique de gestion des données utilisateurs au bas du formulaire de contact.
             site_name: Ceci est le nom de votre site. Il s'affichera dans l'en-tête, dans le Refinery backend et dans la notice de copyright de pied de page en fonction des thèmes.
             theme: Entrez le nom du thème que vous souhaitez activer. Cette modification sera prise en compte immédiatement. La valeur doit correspondre à un thème existant.

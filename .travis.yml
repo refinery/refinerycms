@@ -1,10 +1,14 @@
-#before_script: "sh -e /etc/init.d/xvfb start"
-before_script: "/sbin/start-stop-daemon --start --quiet --pidfile /tmp/refinery_capybara_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1024x768x16"
-script: "DISPLAY=:99.0 bundle exec rake db:create db:migrate spec"
+before_script:
+  - "ruby --version"
+  - "sh -e /etc/init.d/xvfb start"
+  - "bundle exec rake db:create db:migrate"
+script: "DISPLAY=:99.0 bundle exec rspec ./**/spec"
 notifications:
   email:
     - parndt@gmail.com
     - ugis.ozolss@gmail.com
+  irc:
+    - "irc.freenode.org#refinerycms"
 env:
   - DB=postgres
   - DB=mysql
@@ -12,5 +16,5 @@ rvm:
   - 1.8.7
   - 1.9.2
   - 1.9.3
-  - rbx-2.0
-  - jruby
+  - rbx
+#  - jruby

@@ -22,15 +22,10 @@ pl:
             restricted: Czyni ustawienie widocznym i edytowalnym wyłącznie dla superużytkowników (takich jak Ty).
             activity_show_limit: Ogranicza ilość rzeczy widocznych na liście pulpitu.
             analytics_page_code: Aktywuje Google Analytics wewnątrz tej witryny. Jeżeli wartością tego ustawienia jest UA-xxxxxx-x albo nic, to Google Analytics pozostanie całkowicie wyłączone.
-            image_dialogue_sizes: To ustawienie odnosi się do okienka dialogowego Wstaw obraz. Zmieniając je musisz również zaimplementować inne rozmiary miniaturek obrazów.
-            image_thumbnails: Po zmianie tego ustawienia konieczna jest regeneracja miniaturek, polegająca na wywołaniu polecenia rake images:regenerate (albo rake images:update, jeżeli zmiana ograniczyła się do dodoania nowych rozmiarów miniaturek), w przeciwnym wypadku zmiany odniosą się wyłącznie do nowych obrazów.
             menu_hide_children: Ukryj wszelkie podstrony z menu nawet jeżeli są obecne.
             new_page_parts: Uaktywnij dodawanie nowych części strony (sekcji zawartości) w edytorach stron.
             page_title: Bardzo skomplikowane opcje opisujące tytuł strony. Można tutaj ustawić własną klasę CSS, inny tag albo kazać stworzyć fragmenty ze stron nadrzędnych.
-            pages_advanced_options_include_seo: To określa, czy opcje SEO są widoczne w opcjach zaawansowanych strony.
             preferred_image_view: To ustawienie określa w jakim widoku wtyczka obrazów wyświetla istniejące obrazy - grid dla widoku siatki, list dla listy. We wtyczce obrazy znajduje się przycisk automatyzujący tę zmianę.
-            refinery_enable_backend_reordering: Możliwe jest usunięcie możliwości zmiany kolejności wtyczek.
-            refinery_menu_cache_action_suffix: To ustawienie określa klucz stosowany w trakcie buforowania menu strony. Jeżeli używasz motywów lepiej nie zmieniać tej opcji, ponieważ motyw samodzielnie się tym zajmie.
             show_contact_privacy_link: Pokaż lub ukryj link do polityki bezpieczeństwa na stronie kontaktowej.
             site_name: Nazwa witryny, widoczna w nagłówku i stopce.
             theme: Nazwa motywu użytego na tej stronie. To ustawienie zadziała natychmiast, i wybrany motyw musi koniecznie istnieć.

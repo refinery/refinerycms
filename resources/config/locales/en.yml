@@ -12,7 +12,7 @@ en:
           download_current: Download current file
           or: or
           replace: " replace it with this one..."
-          maximum_file_size: The maximum file size is %{megabytes} megabytes.
+          maximum_file_size: The maximum file size is %{bytes} bytes.
         resource:
           download: Download this file (%{size})
         actions:
@@ -33,4 +33,4 @@ en:
       models:
         refinery/resource:
           blank: You must specify file for upload
-          too_big: File should be smaller than %{size} megabytes in size
+          too_big: File should be smaller than %{size} bytes in size
