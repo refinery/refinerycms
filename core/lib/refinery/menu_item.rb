@@ -67,7 +67,7 @@ module Refinery
     end
 
     def siblings
-      @siblings ||= ((has_parent? ? children : menu.roots) - [self])
+      @siblings ||= ((has_parent? ? parent.children : menu.roots) - [self])
     end
     alias_method :shown_siblings, :siblings
 
