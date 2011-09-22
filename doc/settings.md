@@ -73,4 +73,4 @@ client could change the value as their trade show approaches. Easy as pie!
 
 ### In Controller
 
-    limit = RefinerySetting.find_or_set(:list_limit, 20)
+    limit = Refinery::Setting.find_or_set(:list_limit, 20)
