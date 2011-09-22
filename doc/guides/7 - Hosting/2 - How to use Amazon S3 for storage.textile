@@ -50,6 +50,16 @@ ENV['S3_BUCKET']='fill_in_your_bucket_name_here'
 
 (Note: For Heroku, you should use config-vars to set your environment variables using Heroku's command line utility. Documentation for this can be found here: http://devcenter.heroku.com/articles/config-vars)
 
+h4. Via Pow Configuration File (for Pow users only)
+
+You will need to create +~/.powconfig+ and fill it with the following:
+
+pre. export S3_KEY=fill_in_your_key_here
+export S3_SECRET=fill_in_your_secret_key_here
+export S3_BUCKET=fill_in_your_bucket_name_here
+
+Then you must restart Pow to apply these settings. You can do this by finding the Pow process in OS X's Activity Monitor and clicking 'Quit Process'.
+
 h3. Turning S3 on and off
 
 S3 should automatically sense that it is enabled based on these ENV variables
