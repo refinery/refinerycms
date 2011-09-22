@@ -96,7 +96,7 @@ Extend Refinery easily by running the Refinery engine generator
 
     rails generate refinery:engine
 
-to get help on how to use that. Or read the full documentation on [writing engines for Refinery](https://github.com/resolve/refinerycms/blob/master/dec/generators.md)
+to get help on how to use that. Or read the full documentation on [writing engines for Refinery](https://github.com/resolve/refinerycms/blob/master/doc/generators.md)
 
 ### Popular Engines
 
