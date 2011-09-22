@@ -39,6 +39,8 @@ will be cached and delivery as quickly as possible.
 
 ## How do I Make my Own Settings?
 
+### In view
+
 Settings can be really useful, especially when you have custom display logic or
 new plugins that need to behave in different ways.
 
@@ -68,3 +70,7 @@ So as you can see this is quite clever because you can quickly define new settin
 
 This setting would then show up in the backend in the 'Settings' area where the
 client could change the value as their trade show approaches. Easy as pie!
+
+### In Controller
+
+    limit = RefinerySetting.find_or_set(:list_limit, 20)
