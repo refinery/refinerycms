@@ -52,10 +52,8 @@ ru:
           page_options: Настройка страницы
           parent_page: Родительская страница
           advanced_options: Дополнительная настройка
-          custom_title: Другой заголовок
-          title_types:
-            none: Нет
-            text: Текст
+          menu_title: Заголовок в меню
+          custom_slug: Пользовательский slug
           show_in_menu_title: Показ в меню
           show_in_menu_description: Отображать эту страницу в меню сайта
           show_in_menu_help: "Снимите отметку, если вы хотите убрать страницу из меню вашего сайта."

@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.version           = %q{2.0.0}
   s.summary           = %q{Core engine for Refinery CMS}
   s.description       = %q{The core of Refinery CMS. This handles the common functionality and is required by most engines}
-  s.date              = %q{2011-09-03}
+  s.date              = %q{2011-09-20}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
   s.rubyforge_project = %q{refinerycms}
@@ -17,12 +17,11 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'refinerycms-base',            '= 2.0.0'
   s.add_dependency 'refinerycms-settings',        '= 2.0.0'
-  s.add_dependency 'refinerycms-generators',      '= 2.0.0'
   s.add_dependency 'acts_as_indexed',             '~> 0.7'
   s.add_dependency 'friendly_id_globalize3',      '~> 3.2.1'
   s.add_dependency 'globalize3',                  '~> 0.2.0.beta3'
   s.add_dependency 'awesome_nested_set',          '~> 2.0'
-  s.add_dependency 'rails',                       '~> 3.1.0'
+  s.add_dependency 'rails',                       '>= 3.1.1.rc1'
   s.add_dependency 'truncate_html',               '~> 0.5'
   s.add_dependency 'will_paginate',               '~> 3.0'
   s.add_dependency 'sass-rails',                  '~> 3.1.0'
@@ -204,18 +203,24 @@ Gem::Specification.new do |s|
     'app/assets/javascripts/modernizr-min.js',
     'app/assets/javascripts/refinery',
     'app/assets/javascripts/refinery/admin.js',
+    'app/assets/javascripts/refinery/ajaxy_pagination.js.coffee',
     'app/assets/javascripts/refinery/boot_wym.js',
     'app/assets/javascripts/refinery/core.js',
     'app/assets/javascripts/refinery/i18n.js.erb',
+    'app/assets/javascripts/refinery/interface.js.coffee',
+    'app/assets/javascripts/refinery/modal_dialogs.js',
     'app/assets/javascripts/refinery/nestedsortables.js',
     'app/assets/javascripts/refinery/refinery.js',
     'app/assets/javascripts/refinery/serializelist.js',
     'app/assets/javascripts/refinery/site_bar.js',
+    'app/assets/javascripts/refinery/sortable_menu.js.coffee',
     'app/assets/javascripts/refinery/submenu.js',
+    'app/assets/javascripts/refinery/submit_continue.js.coffee',
     'app/assets/javascripts/refinery/wymeditor.js',
     'app/assets/javascripts/wymeditor',
     'app/assets/javascripts/wymeditor/jquery.refinery.wymeditor.js',
     'app/assets/javascripts/wymeditor/lang',
+    'app/assets/javascripts/wymeditor/lang/bg.js',
     'app/assets/javascripts/wymeditor/lang/ca.js',
     'app/assets/javascripts/wymeditor/lang/cs.js',
     'app/assets/javascripts/wymeditor/lang/da.js',
@@ -228,7 +233,7 @@ Gem::Specification.new do |s|
     'app/assets/javascripts/wymeditor/lang/he.js',
     'app/assets/javascripts/wymeditor/lang/hu.js',
     'app/assets/javascripts/wymeditor/lang/it.js',
-    'app/assets/javascripts/wymeditor/lang/jp.js',
+    'app/assets/javascripts/wymeditor/lang/ja.js',
     'app/assets/javascripts/wymeditor/lang/lv.js',
     'app/assets/javascripts/wymeditor/lang/nb.js',
     'app/assets/javascripts/wymeditor/lang/nl.js',
@@ -264,13 +269,12 @@ Gem::Specification.new do |s|
     'app/assets/stylesheets/wymeditor/skins/refinery/skin.css.scss',
     'app/assets/stylesheets/wymeditor/skins/refinery/wymiframe.css.scss',
     'app/controllers',
-    'app/controllers/admin',
-    'app/controllers/admin/base_controller.rb',
     'app/controllers/application_controller.rb',
     'app/controllers/refinery',
     'app/controllers/refinery/admin',
     'app/controllers/refinery/admin/dialogs_controller.rb',
     'app/controllers/refinery/admin/refinery_core_controller.rb',
+    'app/controllers/refinery/admin_controller.rb',
     'app/controllers/refinery/fast_controller.rb',
     'app/controllers/refinery/sitemap_controller.rb',
     'app/helpers',
@@ -329,7 +333,7 @@ Gem::Specification.new do |s|
     'config/locales/fi.yml',
     'config/locales/fr.yml',
     'config/locales/it.yml',
-    'config/locales/jp.yml',
+    'config/locales/ja.yml',
     'config/locales/ko.yml',
     'config/locales/lolcat.yml',
     'config/locales/lt.yml',
@@ -356,6 +360,11 @@ Gem::Specification.new do |s|
     'lib/generators/templates',
     'lib/generators/templates/.gitignore',
     'lib/generators/templates/app',
+    'lib/generators/templates/app/decorators',
+    'lib/generators/templates/app/decorators/controllers',
+    'lib/generators/templates/app/decorators/controllers/refinery',
+    'lib/generators/templates/app/decorators/models',
+    'lib/generators/templates/app/decorators/models/refinery',
     'lib/generators/templates/app/views',
     'lib/generators/templates/app/views/sitemap',
     'lib/generators/templates/app/views/sitemap/index.xml.builder',
@@ -380,6 +389,8 @@ Gem::Specification.new do |s|
     'lib/refinery/base_presenter.rb',
     'lib/refinery/catch_all_routes.rb',
     'lib/refinery/configuration.rb',
+    'lib/refinery/core',
+    'lib/refinery/core/engine.rb',
     'lib/refinery/crud.rb',
     'lib/refinery/engine.rb',
     'lib/refinery/helpers',
@@ -422,13 +433,17 @@ Gem::Specification.new do |s|
     'spec/controllers/refinery/fast_controller_spec.rb',
     'spec/controllers/refinery/sitemap_controller_spec.rb',
     'spec/lib',
+    'spec/lib/generators',
+    'spec/lib/generators/cms_generator_spec.rb',
     'spec/lib/refinery',
     'spec/lib/refinery/activity_spec.rb',
     'spec/lib/refinery/plugin_spec.rb',
     'spec/lib/refinery/plugins_spec.rb',
     'spec/requests',
-    'spec/requests/dialogs_spec.rb',
-    'spec/requests/search_spec.rb',
-    'spec/requests/site_bar_spec.rb'
+    'spec/requests/refinery',
+    'spec/requests/refinery/admin',
+    'spec/requests/refinery/admin/dialogs_spec.rb',
+    'spec/requests/refinery/search_spec.rb',
+    'spec/requests/refinery/site_bar_spec.rb'
   ]
 end

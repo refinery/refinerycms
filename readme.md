@@ -10,6 +10,7 @@ More information at [http://refinerycms.com](http://refinerycms.com)
 
 * [Bundler](http://gembundler.com)
 * [ImageMagick](http://www.imagemagick.org/script/install-source.php)
+  * Mac OS X users should use [homebrew's](https://github.com/mxcl/homebrew/wiki/installation) `brew install imagemagick` or the [magick-installer](https://github.com/maddox/magick-installer).
 
 ## How to
 
@@ -93,9 +94,9 @@ Wanna see Refinery for yourself? [Try the demo](http://demo.refinerycms.com/refi
 
 Extend Refinery easily by running the Refinery engine generator
 
-    rails generate refinery_engine
+    rails generate refinery:engine
 
-to get help on how to use that. Or read the full documentation on [writing engines for Refinery](https://github.com/resolve/refinerycms-generators/blob/master/readme.md)
+to get help on how to use that. Or read the full documentation on [writing engines for Refinery](https://github.com/resolve/refinerycms/blob/master/dec/generators.md)
 
 ### Popular Engines
 

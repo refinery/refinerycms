@@ -14,7 +14,7 @@ lolcat:
           or: OR
           replace_image: " REPLACE IT WIF DIS WAN..."
           current_image: CURRENT IMAGE
-          maximum_image_size: TEH MAXIMUM IMAGE SIZE IZ %{megabytes} MEGABYTEZ.
+          maximum_image_size: TEH MAXIMUM IMAGE SIZE IZ %{bytes} MEGABYTEZ.
         actions:
           create_new_image: ADD NEW IMAGE
         records:

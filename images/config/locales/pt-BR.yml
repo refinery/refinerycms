@@ -15,7 +15,7 @@ pt-BR:
           or: ou
           replace_image: " substituir por esta..."
           current_image: Imagem atual
-          maximum_image_size: "O tamanho máximo permitido é de %{megabytes} megabytes."
+          maximum_image_size: "O tamanho máximo permitido é de %{bytes} bytes."
         actions:
           create_new_image: Criar Nova Imagem
         records:
@@ -41,5 +41,5 @@ pt-BR:
       models:
         refinery/image:
           blank: Você deve escolher uma imagem para enviar
-          too_big: "Imagem deve possuir menos de %{size} megabytes de tamanho"
+          too_big: "Imagem deve possuir menos de %{size} bytes de tamanho"
           incorrect_format: 'Sua imagem deve ser uma JPG, PNG ou GIF'

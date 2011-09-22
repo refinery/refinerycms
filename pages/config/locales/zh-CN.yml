@@ -53,9 +53,6 @@ zh-CN:
           menu_title: 菜单项名称
           custom_slug: 自定义slug
           custom_title: 自定义标题
-          title_types:
-            none: 没有
-            text: 文字
           show_in_menu_title: 在菜单中显示
           show_in_menu_description: 在网站菜单中显示这个页面
           show_in_menu_help: 如果您想在网站菜单中去除一个页面, 不勾选这个选项. 如果您想有个可以直接访问的页面但又不想显示在菜单里, 这个很方便的选项.

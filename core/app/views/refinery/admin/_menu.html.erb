@@ -2,13 +2,15 @@
   <%= image_tag 'refinery/loader.gif'%>
 </div>
 <nav id="menu">
-  <ul>
-    <% ::Refinery::Plugins.active.in_menu.each do |plugin| -%>
-      <% active = plugin.highlighted?(params) %>
-      <li>
-        <%= link_to plugin.title, plugin.url,
-                    :class => ("active" if active),
-                    :id => "plugin_#{plugin.name}" %>
+  <% ::Refinery::Plugins.active.in_menu.each do |plugin| -%>
+    <%= link_to plugin.title, plugin.url,
+                :class => ("active" if plugin.highlighted?(params)),
+                :id => "plugin_#{plugin.name}" %>
+  <% end -%>
+  <% if ::Refinery::Plugins.active.in_menu.many? -%>
+    <%= link_to refinery_icon_tag('arrow_switch.png'), "",
+                :id => "menu_reorder",
+                :title => t('.reorder_menu') %>
 
         <%= render plugin.actions if plugin.actions.present? %>
       </li>

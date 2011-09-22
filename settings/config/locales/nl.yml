@@ -21,15 +21,10 @@ nl:
             restricted: Maak deze instelling alleen maar zichtbaar en bewerkbaar voor gebruikers die super-gebruikers zijn (zoals jij).
             activity_show_limit: Dit limiteerd het aantal items dat weergegeven kan worden in de lijst op het Dashboard.
             analytics_page_code: deze code activeerd Google Analytics trakcing binnen de website. Als u niets invuld, of als hij ingesteld is op UA-xxxxxx-x, dan wordt de google analytics uitgeschakeld.
-            image_dialogue_sizes: Deze instelling is van toepassing op "Voeg een afbeelding in"-dialoogvenster. Je moet verschillende thumbnail grootten ook in deze instelling plaatsen.
-            image_thumbnails: Als je deze instelling wijzigd, moet je de thumbnails opnieuw genereren door rake images:regenerate (of rake images:update als je alleen maar meer thumbnails hebt toegevoegd), anders zal de instelling niet toegepast worden op de bestaande afbeeldingen.
             menu_hide_children: Verberg elke subpagina in het menu, zelfs als ze er wel in weergegeven zouden moeten worden.
             new_page_parts: Maak het mogelijk dat er nieuw content-secties in de pagina editor gemaakt kunnen worden.
             page_title: Zeer complexe opties voor het instellen van de titel van de pagina. Hier kun je eigen CSS klassen, of een andere tag gebruiken, of aangeven dat er broodkruimels met de pagina en de bovenliggende pagina's gebruikt moet worden.
-            pages_advanced_options_include_seo: Dit bepaald of de geavanceerde SEO opties weergegeven worden in de geavanceerde opties voor een pagina.
             preferred_image_view: Dit bepaald wat voor interface de afbeeldingen plugin gebruikt om de afbeedlingen te laten zin. Gebruik 'grid' voor de tabel interface, en 'list' voor de lijst interface. Er is een knop bij de afbeeldingen plugin om dit automatisch te doen.
-            refinery_enable_backend_reordering: Hiermee voorkom je dat gebruikers de volgorde van plugins in het menu kunnen veranderen.
-            refinery_menu_cache_action_suffix: Dit bepaald wat de cache key is voor het cachen van het menu van de website. Als je een thema gebruikt, dan is het beter om dit op het origineel te laten s taan, sinds het thema het zal afhandelen.
             show_contact_privacy_link: Hiermee kun je de link naar de privacy policy onder aan de contactpagina verbergen of laten zien.
             site_name: Dit is de naam van de website, die in de header en in de backend van Refinery, en in de footer bij het copyright bericht zal worden geplaatst.
             theme: Type de naam in van het thema dat u wilt inschakelen. Dit zal meteen in effect gaan, en moet een correcte naam van een thema bevatten, om dit te laten werken.

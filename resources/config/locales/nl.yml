@@ -11,7 +11,7 @@ nl:
           download_current: Download het huidige bestand
           or: of
           replace: ", vervang het door dit..."
-          maximum_file_size: "The maximum file size is %{megabytes} megabytes."
+          maximum_file_size: "The maximum file size is %{bytes} bytes."
         resource:
           download: Download dit bestand (%{size})
         actions:
@@ -32,4 +32,4 @@ nl:
       models:
         refinery/resource:
           blank: U moet een bestand kiezen dat u wilt uploaden.
-          too_big: Bestanden mogen niet groter dan %{size} megabytes zijn.
+          too_big: Bestanden mogen niet groter dan %{size} bytes zijn.

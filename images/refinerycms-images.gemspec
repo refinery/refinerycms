@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.version           = %q{2.0.0}
   s.summary           = %q{Images engine for Refinery CMS}
   s.description       = %q{Handles all image upload and processing functionality in Refinery CMS.}
-  s.date              = %q{2011-09-03}
+  s.date              = %q{2011-09-15}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
   s.rubyforge_project = %q{refinerycms}
@@ -56,7 +56,7 @@ Gem::Specification.new do |s|
     'config/locales/fi.yml',
     'config/locales/fr.yml',
     'config/locales/it.yml',
-    'config/locales/jp.yml',
+    'config/locales/ja.yml',
     'config/locales/ko.yml',
     'config/locales/lolcat.yml',
     'config/locales/lt.yml',
@@ -81,22 +81,39 @@ Gem::Specification.new do |s|
     'lib/gemspec.rb',
     'lib/generators',
     'lib/generators/images_generator.rb',
+    'lib/generators/templates',
+    'lib/generators/templates/config',
+    'lib/generators/templates/config/initializers',
+    'lib/generators/templates/config/initializers/refinery_images.rb.erb',
     'lib/refinery',
     'lib/refinery/images',
     'lib/refinery/images/dragonfly.rb',
+    'lib/refinery/images/engine.rb',
+    'lib/refinery/images/options.rb',
+    'lib/refinery/images/validators',
+    'lib/refinery/images/validators/image_size_validator.rb',
+    'lib/refinery/images/validators.rb',
     'lib/refinerycms-images.rb',
     'license.md',
     'refinerycms-images.gemspec',
     'spec',
+    'spec/lib',
+    'spec/lib/generators',
+    'spec/lib/generators/images_generator_spec.rb',
+    'spec/lib/refinery',
+    'spec/lib/refinery/images',
+    'spec/lib/refinery/images/options_spec.rb',
     'spec/models',
     'spec/models/refinery',
     'spec/models/refinery/image_spec.rb',
     'spec/requests',
-    'spec/requests/manage_images_spec.rb'
+    'spec/requests/refinery',
+    'spec/requests/refinery/admin',
+    'spec/requests/refinery/admin/images_spec.rb'
   ]
 
   s.add_dependency 'refinerycms-core', '= 2.0.0'
   s.add_dependency 'activerecord',     '~> 3.1.0'
-  s.add_dependency 'dragonfly',        '~> 0.9.0'
+  s.add_dependency 'dragonfly',        '~> 0.9.8'
   s.add_dependency 'rack-cache',       '>= 0.5.3'
 end

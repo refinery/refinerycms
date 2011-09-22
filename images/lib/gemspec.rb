@@ -23,13 +23,13 @@ Gem::Specification.new do |s|
 
   s.files             = [
     '#{%w( **/{*,.rspec,.gitignore,.yardopts} ).map { |file| Pathname.glob(gempath.join(file)) }.flatten.reject{|f|
-      !f.exist? or f.to_s =~ /\.gem$/ or (f.directory? and f.children.empty?)
+      !f.exist? or f.to_s =~ /(\.(gem|rbc)|spec\/lib\/tmp(\/.*)?)$/ or (f.directory? and f.children.empty?)
     }.map{|d| d.relative_path_from(gempath)}.uniq.sort.join("',\n    '")}'
   ]
 
   s.add_dependency 'refinerycms-core', '= #{::Refinery::Version}'
   s.add_dependency 'activerecord',     '~> 3.1.0'
-  s.add_dependency 'dragonfly',        '~> 0.9.0'
+  s.add_dependency 'dragonfly',        '~> 0.9.8'
   s.add_dependency 'rack-cache',       '>= 0.5.3'
 end
 EOF

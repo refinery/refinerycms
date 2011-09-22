@@ -1,13 +1,10 @@
-<tr class='record <%= cycle("on", "on-hover") %>'>
-  <td class='title'>
-    <%= t(setting.name, :default => setting.title) %>
-    
-  </td>
-  <td class='preview'>
-    <%= truncate(setting.value.to_s, :length => 40) %>
-  </td>
-  <td class='actions'>
-    <%= link_to "Edit",
+<li class='clearfix record <%= cycle("on", "on-hover") %>'>
+  <span class='title'>
+    <%= t(setting.name, :scope => 'refinery.admin.settings.form.title', :default => setting.title) %>
+    <span class="preview">- <%= truncate(setting.value.to_s, :length => 40) %></span>
+  </span>
+  <span class='actions'>
+    <%= link_to refinery_icon_tag('application_edit.png'),
                 main_app.edit_refinery_admin_setting_path(setting, :dialog => true, :width => 725, :height => 525),
                 :title => t('edit', :scope => 'refinery.admin.settings') %>
     |

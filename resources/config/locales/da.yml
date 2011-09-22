@@ -12,7 +12,7 @@ da:
           download_current: Download filen
           or: eller
           replace: " erstat den med denne fil..."
-          maximum_file_size: Filen må maksimalt fylde %{megabytes} megabytes.
+          maximum_file_size: Filen må maksimalt fylde %{bytes} bytes.
         resource:
           download: Download fil (%{size})
         actions:
@@ -33,4 +33,4 @@ da:
       models:
         refinery/resource:
           blank: Du skal vælge en fil, der skal uploades
-          too_big: Filer må højest være på %{size} megabytes
+          too_big: Filer må højest være på %{size} bytes

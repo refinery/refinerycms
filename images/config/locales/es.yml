@@ -15,7 +15,7 @@ es:
           or: o
           replace_image: " reemplazarla con esta otra..."
           current_image: Imagen actual
-          maximum_image_size: El peso máximo para una imagen son  %{megabytes} megabytes.
+          maximum_image_size: El peso máximo para una imagen son  %{bytes} bytes.
         actions:
           create_new_image: Crear nueva imagen
         records:
@@ -41,5 +41,5 @@ es:
       models:
         refinery/image:
           blank: Debes indicar qué imagen quieres subir
-          too_big: La imagen debe pesar menos de %{size} megabytes
+          too_big: La imagen debe pesar menos de %{size} bytes
           incorrect_format: Tu imagen debe ser un archivo JPG, PNG o GIF

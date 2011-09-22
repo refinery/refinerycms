@@ -12,7 +12,7 @@ pt-BR:
           download_current: Baixar arquivo atual
           or: or
           replace: " substituir por este..."
-          maximum_file_size: "O tamanho máximo permitido é de %{megabytes} megabytes."
+          maximum_file_size: "O tamanho máximo permitido é de %{bytes} bytes."
         resource:
           download: Baixar este arquivo (%{size})
         actions:
@@ -33,4 +33,4 @@ pt-BR:
       models:
         refinery/resource:
           blank: Você deve escolher um arquivo para enviar
-          too_big: "Arquivos devem ser menores que %{size} megabytes em tamanho"
+          too_big: "Arquivos devem ser menores que %{size} bytes em tamanho"

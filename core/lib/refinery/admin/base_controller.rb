@@ -5,20 +5,15 @@ module Refinery
   module Admin
     module BaseController
 
-      def self.included(controller)
-        controller.send :include, ::Refinery::Admin::BaseController::InstanceMethods
-        controller.send :include, ::Refinery::Admin::BaseController::ClassMethods
-      end
+      extend ActiveSupport::Concern
 
-      module ClassMethods
-        def self.included(c)
-          c.layout :layout?
+      included do
+        layout :layout?
 
-          c.before_filter :authenticate_refinery_user!, :restrict_plugins, :restrict_controller
-          c.after_filter :store_location?, :except => [:new, :create, :edit, :update, :destroy, :update_positions] # for redirect_back_or_default
+        before_filter :authenticate_refinery_user!, :restrict_plugins, :restrict_controller
+        after_filter :store_location?, :except => [:new, :create, :edit, :update, :destroy, :update_positions] # for redirect_back_or_default
 
-          c.helper_method :searching?, :group_by_date
-        end
+        helper_method :searching?, :group_by_date
       end
 
       module InstanceMethods

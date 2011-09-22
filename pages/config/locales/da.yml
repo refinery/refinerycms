@@ -50,9 +50,6 @@ da:
           parent_page: Overordnet side
           advanced_options: Avancerede indstillinger
           custom_title: Brugerdefineret titel
-          title_types:
-            none: Ingen
-            text: Tekst
           show_in_menu_title: Vis i menuen
           show_in_menu_description: Vis siden i menuen på sitet
           show_in_menu_help: Afkryds ikke, hvis du vil fjerne siden fra menuen på sitet. Dette kan benyttes, hvis du vil have en side, du kan linke til direkte, men som ikke skal vises i menuen.

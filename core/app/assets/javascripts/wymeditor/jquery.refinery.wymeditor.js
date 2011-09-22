@@ -1182,11 +1182,14 @@ WYMeditor.editor.prototype.switchTo = function(selectionOrNode,sType) {
   // we have a node.
   var html = $(selectionOrNode).html();
   var newNode = this._doc.createElement(sType);
+  var klass = $(selectionOrNode).attr('class');
 
   // copy across the css class names.
-  $.each($(selectionOrNode).attr('class').split(" "), function(index, className) {
-    $(newNode).addClass(className);
-  });
+  if(typeof klass !== 'undefined'){
+      $.each($(selectionOrNode).attr('class').split(" "), function(index, className) {
+        $(newNode).addClass(className);
+      });
+  }
 
   selectionOrNode.parentNode.replaceChild(newNode,selectionOrNode);
 
@@ -1394,6 +1397,7 @@ WYMeditor.editor.prototype.dialog = function( dialogType ) {
       if (!wym._selected_image) {
         parent_node._id_before_replaceable = parent_node.id;
         parent_node.id = '' + this._current_unique_stamp;
+        $(parent_node).attr("_id_before_replaceable", parent_node._id_before_replaceable);
       }
 
       if (dialogType != WYMeditor.DIALOG_PASTE && dialogType != WYMeditor.DIALOG_TABLE) {
@@ -1935,9 +1939,12 @@ WYMeditor.editor.prototype.close_dialog = function(e, cancelled) {
     if ((span = $(this._doc.body).find('span#' + this._current_unique_stamp)).length > 0) {
       span.parent().html(span.parent().html().replace(new RegExp(["<span(.+?)", span.attr('id'), "(.+?)<\/span>"].join("")), span.html()));
     }
-    (remove_id = $(this._doc.body).find('#' + this._current_unique_stamp))
-      .attr('id', (remove_id.attr('_id_before_replaceable') || ""))
-      .replaceWith(remove_id.html());
+    // https://github.com/resolve/refinerycms/issues/888
+    if (node = $(this._doc.body).find('#' + this._current_unique_stamp)) {
+      node.attr("id", (node.attr('_id_before_replaceable') || ""));
+      node.removeAttr("_id_before_replaceable");
+    }
+
     if (this._undo_on_cancel == true) {
       this._exec("undo");
     }

@@ -50,9 +50,6 @@ fr:
           parent_page: Page parente
           advanced_options: Options avancées
           custom_title: Titre personnalisé
-          title_types:
-            none: Aucun
-            text: Texte
           show_in_menu_title: Placer dans le menu
           show_in_menu_description: Placer cette page dans le menu du site
           show_in_menu_help: Décochez cette case si vous souhaitez supprimer une page du menu de votre site. Ceci peut être utile si vous voulez diriger les utilisateurs directement vers une page, sans qu'elle n'apparaisse dans le menu.

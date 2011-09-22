@@ -1,0 +1,103 @@
+.ui-widget-overlay {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  width: auto !important;
+  opacity: .75;
+  filter:Alpha(Opacity=75);
+  background: #000;
+}
+.ui-dialog {
+  position: absolute;
+  background-color: #fff;
+  color: #000;
+  border: 4px solid #22A7F2;
+  width: auto;
+  #dialog_loading {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 208px;
+    height: 13px;
+    margin: -6px 0 0 -104px;
+  }
+  .ui-dialog-titlebar {
+    position: relative;
+    width: 100%;
+    height: 33px;
+    background-color: #22A7F2;
+  }
+  .ui-dialog-title {
+    float: left;
+    height: 33px;
+    line-height: 33px;
+    font-size: 16px;
+    padding-left: 10px;
+    color: white;
+  }
+  .ui-dialog-titlebar-close {
+    position: absolute;
+    right: 10px;
+    top: 5px;
+    width: 19px;
+    border: none;
+    span {
+      display: block;
+      margin: 1px;
+      background: transparent image_url('refinery/cross.png') top left no-repeat;
+      text-indent:-10000px;
+    }
+  }
+  .ui-dialog-titlebar-close:hover, .ui-dialog-titlebar-close:focus {
+    padding: 0;
+  }
+  iframe {
+    clear:both;
+    border: 0px none;
+    margin-bottom:-1px;
+    margin-top:1px;
+    width: 100% !important;
+  }
+}
+/** Hide the tab without using display:none; This is required to hide flash embeds etc.**/
+.ui-tabs-hide {
+  display: block !important;
+  height: 0 !important;
+  width: 0 !important;
+  border: 0px none !important;
+  visibility: hidden !important;
+  position: absolute;
+  left: -10000px;
+  top: -10000px;
+  object,
+  embed {
+    height: 0px !important;
+    width: 0px !important;
+  }
+}
+.ie7 .ui-tabs-hide {
+  display: none !important !important;
+  height: auto !important !important;
+  width: auto !important !important;
+  position: static;
+}
+.ui-tabs li.ui-state-default {
+  float: left;
+  list-style: none;
+  margin-right: 2px;
+}
+.ui-tabs .ui-state-default a {
+  background-color: #bcbcbc;
+  color: white;
+  padding: 8px 13px;
+  border-bottom: none;
+  display: block;
+  margin-top: 6px;
+}
+.ui-tabs .ui-state-active a {
+  background-color: #808080;
+  padding: 11px 13px;
+  margin-top: 0px;
+}

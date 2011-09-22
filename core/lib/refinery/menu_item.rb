@@ -3,7 +3,7 @@ module Refinery
 
     class << self
       def attributes
-        [:id, :title, :parent_id, :lft, :rgt, :depth, :url, :menu_id, :menu_match, :type]
+        [:title, :parent_id, :lft, :rgt, :depth, :url, :menu_id, :menu_match]
       end
 
       def apply_attributes!
@@ -22,6 +22,14 @@ module Refinery
       end
     end
 
+    def original_id
+      @original_id ||= self[:id]
+    end
+
+    def original_type
+      @original_type ||= self[:type]
+    end
+
     apply_attributes!
 
     def ancestors
@@ -35,7 +43,7 @@ module Refinery
 
     def children
       @children ||= if has_children?
-        menu.select{|item| item.type == type && item.parent_id == id}
+        menu.select { |item| item.original_type == original_type && item.parent_id == original_id }
       else
         []
       end
@@ -43,7 +51,7 @@ module Refinery
 
     def descendants
       @descendants ||= if has_descendants?
-        menu.select{|item| item.type == type && item.lft > lft && item.rgt < rgt}
+        menu.select{|item| item.original_type == original_type && item.lft > lft && item.rgt < rgt}
       else
         []
       end
@@ -74,7 +82,7 @@ module Refinery
     end
 
     def parent
-      @parent ||= (menu.detect{|item| item.type == type && item.id == parent_id} if has_parent?)
+      @parent ||= (menu.detect{|item| item.original_type == original_type && item.original_id == parent_id} if has_parent?)
     end
 
     def siblings

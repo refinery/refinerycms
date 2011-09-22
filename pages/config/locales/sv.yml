@@ -50,9 +50,6 @@ sv:
           parent_page: Ovanliggande sida
           advanced_options: Avancerade alternativ
           custom_title: Annan titel
-          title_types:
-            none: Ingen
-            text: Text
           show_in_menu_title: Visa i huvudmeny
           show_in_menu_description: Visa den här sidan i huvudmeny
           show_in_menu_help: Avmarkera den här rutan om du vill ta bort en sida från huvudmeny. Det här är användbart för de sidor du vill man ska komma till på annat vis än genom huvudmeny. Tex genom länkar.

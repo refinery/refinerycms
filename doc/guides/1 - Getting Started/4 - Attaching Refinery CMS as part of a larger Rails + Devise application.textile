@@ -96,7 +96,7 @@ end
     <title>ExistingApp</title>
     <%= stylesheet_link_tag :all %>
     <%= javascript_include_tag :defaults %>
-    <%= csrf_meta_tag %>
+    <%= csrf_meta_tags %>
   </head>
   <body>
     <p class="notice"><%= notice %></p>
@@ -349,10 +349,10 @@ $ rake refinery:override controller=admin/base
 $ rake refinery:override view=admin/blog/posts/_post
 </shell>
 
-+app/controller/admin/base_controller.rb
++app/controller/refinery/admin_controller.rb
 <ruby>
-module Admin
-  class BaseController < ActionController::Base
+module Refinery
+  class AdminController < ActionController::Base
     #need to override a loadtime modification to this controller that used username column
     def restrict_controller
       if Refinery::Plugins.active.reject { |plugin| params[:controller] !~ Regexp.new(plugin.menu_match)}.empty?
@@ -484,8 +484,8 @@ module ExistingApp
       BlogController.send :before_filter, :restrict_refinery_to_refinery_users
 
       #restrict access to refinery admin controllers and views to refinery users
-      Admin::BaseController.send :include, RestrictRefineryToRefineryUsers
-      Admin::BaseController.send :before_filter, :restrict_refinery_to_refinery_users
+      Refinery::AdminController.send :include, RestrictRefineryToRefineryUsers
+      Refinery::AdminController.send :before_filter, :restrict_refinery_to_refinery_users
 
       Admin::RefinerySettingsController.send :include, RestrictRefineryToRefineryUsers
       Admin::RefinerySettingsController.send :before_filter, :restrict_refinery_to_refinery_users

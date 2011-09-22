@@ -1,62 +1,86 @@
-/* styles for the top site bar that appears on the front and backend */
-
-$off-white: #f1f1f1;
-
+@mixin rounded($radius) {
+  border-radius: $radius;
+  -moz-border-radius: $radius;
+  -webkit-border-radius: $radius;
+}
+#site_bar, #site_bar * {
+  color: white;
+  font-family: Arial;
+  font-size: 14px;
+  font-weight: normal;
+}
+#editor_switch, #site_bar_branding, a#site_bar_refinery_cms_logo { position: absolute; }
+#editor_switch {
+  left: 0px;
+  a, a:hover {
+    color: white;
+    background: #e7682c image_url('refinery/orange_button.png') repeat-x;
+    border-bottom: 0px none;
+    padding: 4px 14px;
+    border: 1px solid #fca87f;
+    height: 24px;
+    line-height: 24px;
+    cursor: pointer;
+  }
+  span {
+    border: 1px solid #0280c7;
+    height: 26px;
+    line-height: 26px;
+    margin-top: 9px;
+    display: block;
+    cursor: pointer;
+  }
+  a, span {
+    @include rounded(6px);
+  }
+}
+#site_bar * {
+  line-height: 47px;
+}
 #site_bar {
-  color: $off-white;
-  height: 27px;
-  text-align: center;
-  text-shadow: 0px -1px 1px black;
-  padding: 8px 21px 0px 14px;
-  background: #454545;
-  border-bottom: #3B3B3B 5px solid;
-  font-family: Arial, sans-serif;
-  font-size: 13px;
-  
-  #site_bar_content {
-    margin-top: 2px;
-  }
-  
+  height: 47px;
+  background: #22a7f2;
+  padding: 0px;
   a {
-    color: #48bcff;
+    border-bottom: 1px dotted white;
     text-decoration: none;
-  }
-  #switch {
-    float: left;
-    
-    a {
-      background: #3b3b3b;
-      display: inline-block;
-      padding: 5px 15px;
-      color: $off-white;
-      box-shadow: inset -1px -1px 0px #656565;
-      border-radius: 15px;
-      min-width: 117px;
+    &:hover {
+      border-bottom: 1px solid white;
     }
   }
-  #site_name {
+  #site_bar_branding {
+    right: 0px;
+    a {
+      font-weight: normal;
+      &#logout {
+        margin-left: 12px;
+      }
+    }
+  }
+  #site_bar_company_name {
     font-weight: bold;
-    font-size: 14px;
-    
-    a {
-      color: $off-white;
-      background: url('/assets/refinery/refinery-flame.png') no-repeat 0px 1px;
-      padding-left: 36px;
-    }
   }
-  #account_info {
-    float: right;
-    
-    span.separator {
-      color: #5c5c5c;
-      padding: 0px 6px;
-    }
-    
+}
+#site_bar_content {
+  height:47px;
+  position: relative;
+}
+a#site_bar_refinery_cms_logo {
+  left: 44.5%;
+  border-bottom: none;
+  line-height: 29px;
+  height: 29px;
+  margin-top: 9px;
+  overflow: hidden;
+  &:hover {
+    border-bottom: none;
+    opacity: 1;
     img {
-      display: inline-block;
-      vertical-align: middle;
-      margin: -4px 9px 0px 0px;
-      
+      margin-top: -29px;
     }
   }
+}
+.ie7 #site_bar #editor_switch a {
+  height: 26px;
+  line-height: 26px;
 }

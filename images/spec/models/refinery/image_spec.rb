@@ -48,21 +48,21 @@ module Refinery
     describe ".per_page" do
       context "dialog is true" do
         context "has_size_options is true" do
-          it "returns image count specified by PAGES_PER_DIALOG_THAT_HAS_SIZE_OPTIONS constant" do
-            ::Refinery::Image.per_page(true, true).should == Image::PAGES_PER_DIALOG_THAT_HAS_SIZE_OPTIONS
+          it "returns image count specified by Images::Options.pages_per_dialog_that_have_size_options option" do
+            ::Refinery::Image.per_page(true, true).should == Images::Options.pages_per_dialog_that_have_size_options
           end
         end
 
         context "has_size_options is false" do
-          it "returns image count specified by PAGES_PER_DIALOG constant" do
-            ::Refinery::Image.per_page(true).should == Image::PAGES_PER_DIALOG
+          it "returns image count specified by Images::Options.pages_per_dialog option" do
+            ::Refinery::Image.per_page(true).should == Images::Options.pages_per_dialog
           end
         end
       end
 
       context "dialog is false" do
-        it "returns image count specified by PAGES_PER_ADMIN_INDEX constant" do
-          ::Refinery::Image.per_page.should == Image::PAGES_PER_ADMIN_INDEX
+        it "returns image count specified by Images::Options.pages_per_admin_index option" do
+          ::Refinery::Image.per_page.should == Images::Options.pages_per_admin_index
         end
       end
     end
@@ -113,6 +113,37 @@ module Refinery
 
       it '5x5' do
         image.thumbnail_dimensions('5x5').should == { :width => 5, :height => 4 }
+      end
+    end
+
+    describe "validations" do
+      describe "valid #image" do
+        before(:each) do
+          @file = Refinery.roots("testing").join("assets/beach.jpeg")
+          Images::Options.max_image_size = (File.read(@file).size + 10.megabytes)
+        end
+
+        it "should be valid when size does not exceed .max_image_size" do
+          Image.new(:image => @file).should be_valid
+        end
+      end
+
+      describe "invalid #image" do
+        before(:each) do
+          @file = Refinery.roots("testing").join("assets/beach.jpeg")
+          Images::Options.max_image_size = 0
+          @image = Image.new(:image => @file)
+        end
+
+        it "should be valid when size does not exceed .max_image_size" do
+          @image.should_not be_valid
+        end
+
+        it "should contain an error message" do
+          @image.valid?
+          @image.errors.should_not be_empty
+          @image.errors[:image].should == ["Image should be smaller than #{Images::Options.max_image_size} bytes in size"]
+        end
       end
     end
   end

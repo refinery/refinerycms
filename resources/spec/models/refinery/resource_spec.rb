@@ -2,7 +2,6 @@ require 'spec_helper'
 
 module Refinery
   describe Resource do
-
     let(:resource) { FactoryGirl.create(:resource) }
 
     context "with valid attributes" do
@@ -39,14 +38,14 @@ module Refinery
 
     describe ".per_page" do
       context "dialog is true" do
-        it "returns resource count specified by PAGES_PER_DIALOG constant" do
-          Resource.per_page(true).should == Resource::PAGES_PER_DIALOG
+        it "returns resource count specified by Resources::Options.pages_per_dialog option" do
+          Resource.per_page(true).should == Resources::Options.pages_per_dialog
         end
       end
 
       context "dialog is false" do
-        it "returns resource count specified by PAGES_PER_ADMIN_INDEX constant" do
-          Resource.per_page.should == Resource::PAGES_PER_ADMIN_INDEX
+        it "returns resource count specified by Resources::Options.pages_per_admin_index constant" do
+          Resource.per_page.should == Resources::Options.pages_per_admin_index
         end
       end
     end
@@ -73,5 +72,35 @@ module Refinery
       end
     end
 
+    describe "validations" do
+      describe "valid #file" do
+        before(:each) do
+          @file = Refinery.roots("testing").join("assets/refinery_is_awesome.txt")
+          Resources::Options.max_file_size = (File.read(@file).size + 10)
+        end
+
+        it "should be valid when size does not exceed .max_file_size" do
+          Resource.new(:file => @file).should be_valid
+        end
+      end
+
+      describe "invalid #file" do
+        before(:each) do
+          @file = Refinery.roots("testing").join("assets/refinery_is_awesome.txt")
+          Resources::Options.max_file_size = (File.read(@file).size - 10)
+          @resource = Resource.new(:file => @file)
+        end
+
+        it "should be valid when size does not exceed .max_file_size" do
+          @resource.should_not be_valid
+        end
+
+        it "should contain an error message" do
+          @resource.valid?
+          @resource.errors.should_not be_empty
+          @resource.errors[:file].should == ["File should be smaller than #{Resources::Options.max_file_size} bytes in size"]
+        end
+      end
+    end
   end
 end

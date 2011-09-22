@@ -10,7 +10,7 @@ The main way of extending Refinery is through adding new engines to your app.
 By default you can edit pages in Refinery's backend, but how do you add a new
 section to manage like products?
 
-See: [The Refinery Engine Generator](https://github.com/resolve/refinerycms/blob/master/generators/readme.md)
+See: [The Refinery Engine Generator](https://github.com/resolve/refinerycms/blob/master/doc/generators.md)
 
 ## The Structure of an Engine
 
@@ -65,7 +65,7 @@ file. Here's what that looks like inside at a basic level:
 
     module ::Refinery
       module Admin
-        class PagesController < ::Admin::BaseController
+        class PagesController < ::Refinery::AdminController
 
           crudify :'refinery/page',
                   :conditions => nil,

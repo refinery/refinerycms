@@ -9,36 +9,31 @@ end
 module Refinery
   module ApplicationController
 
-    def self.included(controller)
-      controller.send :include, ::Refinery::ApplicationController::InstanceMethods
-      controller.send :include, ::Refinery::ApplicationController::ClassMethods
-    end
+    extend ActiveSupport::Concern
 
-    module ClassMethods
-      def self.included(c) # Extend controller
-        c.helper_method :home_page?,
-                        :local_request?,
-                        :just_installed?,
-                        :from_dialog?,
-                        :admin?,
-                        :login?
+    included do # Extend controller
+      helper_method :home_page?,
+                    :local_request?,
+                    :just_installed?,
+                    :from_dialog?,
+                    :admin?,
+                    :login?
 
-        c.protect_from_forgery # See ActionController::RequestForgeryProtection
+      protect_from_forgery # See ActionController::RequestForgeryProtection
 
-        c.send :include, Crud # basic create, read, update and delete methods
+      send :include, Crud # basic create, read, update and delete methods
 
-        c.send :before_filter, :find_pages_for_menu,
-                               :show_welcome_page?
+      send :before_filter, :find_pages_for_menu,
+                             :show_welcome_page?
 
-        c.send :after_filter, :store_current_location!,
-                              :if => Proc.new {|c| c.send(:refinery_user?) }
+      send :after_filter, :store_current_location!,
+                            :if => Proc.new {|c| send(:refinery_user?) }
 
-        if Refinery.rescue_not_found
-          c.send :rescue_from, ActiveRecord::RecordNotFound,
-                               ActionController::UnknownAction,
-                               ActionView::MissingTemplate,
-                               :with => :error_404
-        end
+      if Refinery.rescue_not_found
+        send :rescue_from, ActiveRecord::RecordNotFound,
+                           ActionController::UnknownAction,
+                           ActionView::MissingTemplate,
+                           :with => :error_404
       end
     end
 

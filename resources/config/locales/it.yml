@@ -12,7 +12,7 @@ it:
           download_current: Scarica il file corrente
           or: o
           replace: ", sostituirlo con questo..."
-          maximum_file_size: "La dimensione massima consentita è %{megabytes} megabytes."
+          maximum_file_size: "La dimensione massima consentita è %{bytes} bytes."
         resource:
           download: Scarica il file corrente (%{size})
           edit: Modifica il file corrente
@@ -43,4 +43,4 @@ it:
         refinery:
           resource:
             blank: Devi selezionare un file da caricare
-            too_big: Le dimensioni del file devono essere inferiori a %{size} megabytes
+            too_big: Le dimensioni del file devono essere inferiori a %{size} bytes

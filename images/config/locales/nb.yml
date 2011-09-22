@@ -14,7 +14,7 @@ nb:
           or: eller
           replace_image: Erstatt det med dette ...
           current_image: Gjeldende bilde
-          maximum_image_size: "Den største tillatte størrelsen på et bilde er %{megabytes} MB."
+          maximum_image_size: "Den største tillatte størrelsen på et bilde er %{bytes} MB."
         actions:
           create_new_image: Lag et nytt bilde
         records:

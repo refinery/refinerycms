@@ -58,7 +58,7 @@ module Refinery
 
         # Now use all possible vectors to try to find a valid match,
         # finally passing to rails' "current_page?" method.
-        [path, URI.decode(path)].include?(url) || path == "/#{page.id}"
+        [path, URI.decode(path)].include?(url) || path == "/#{page.original_id}"
       end
 
     end

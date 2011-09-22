@@ -1,6 +1,6 @@
 module ::Refinery
   module Admin
-    class ImagesController < ::Admin::BaseController
+    class ImagesController < ::Refinery::AdminController
 
       crudify :'refinery/image',
               :order => "created_at DESC",
