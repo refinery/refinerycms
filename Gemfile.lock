@@ -6,6 +6,12 @@ GIT
       refinerycms-core (~> 2.0.0)
       routing-filter (>= 0.2.3)
 
+GIT
+  remote: git://github.com/thedarkone/rails-dev-boost.git
+  revision: 216de40f33fe794e19c492c283d69d4911cab741
+  specs:
+    rails-dev-boost (0.1.1)
+
 PATH
   remote: .
   specs:
@@ -130,7 +136,7 @@ GEM
       execjs
     coffee-script-source (1.1.2)
     database_cleaner (0.6.7)
-    devise (1.4.6)
+    devise (1.4.7)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.0.3)
       warden (~> 1.0.3)
@@ -284,6 +290,7 @@ DEPENDENCIES
   jquery-rails
   mysql2
   rails (= 3.1.1.rc1)
+  rails-dev-boost!
   rb-fchange (~> 0.0.5)
   rb-fsevent (>= 0.3.9)
   rb-notifu (~> 0.0.4)

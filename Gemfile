@@ -28,6 +28,11 @@ gemspec
 
 gem "rails", "= 3.1.1.rc1"
 
+group :development do
+  gem 'rails-dev-boost', :git => 'git://github.com/thedarkone/rails-dev-boost.git',
+                         :require => 'rails_development_boost'
+end
+
 group :development, :test do
   gem 'refinerycms-testing',    '~> 2.0.0'
   gem 'rcov', :platform => :mri_18
