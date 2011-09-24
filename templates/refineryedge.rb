@@ -2,7 +2,7 @@
 # rails new app_name -m http://refinerycms.com/latest.rb
 # Pratical -> 
 # rails new app_name -m https://raw.github.com/gist/1237830/cda5dfb7459092ee41f2f77816812d844f6e3005/gistfile1.rb
-gem 'refinerycms'
+gem 'refinerycms', :git => 'git://github.com/resolve/refinerycms.git'
 run 'bundle install'
 
 generate 'refinery:cms' 
