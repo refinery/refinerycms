@@ -16,6 +16,7 @@ ru:
           change_language: Сменить язык
           see_home_page: Просмотреть домашнюю страницу
         recent_activity:
+          empty: В последнее время не было активности.
           latest_activity: Последние действия
           latest_activity_message: "%{action} %{kind} «%{what}»"
         recent_inquiries:
