@@ -4,7 +4,7 @@ ru:
       refinery_pages:
         title: Страницы
         article: feminine
-        description: Управление страницами с содежимым
+        description: Управление страницами с содержимым
     admin:
       dashboard:
         recent_activity:
