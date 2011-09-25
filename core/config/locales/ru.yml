@@ -64,6 +64,10 @@ ru:
       not_live: Эта страница не предназначена для публичного просмотра.
     footer:
       copyright: © %{site_name}, %{year}
+    no_script:
+      enable_javascript_html: Для использования всех возможностей этой страницы необходимо включить JavaScript
+      here_are: Вот
+      instructions_enable_javascript_html: инструкции как включить Javascript в вашем браузере
   time:
     formats:
       short: "%A, %d %B %Y"
