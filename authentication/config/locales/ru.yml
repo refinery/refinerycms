@@ -12,6 +12,8 @@ ru:
           cannot_remove_user_plugin_from_current_user: "Нельзя отключить модуль «Пользователи» у самого себя."
         form:
           blank_password_keeps_current: 'Оставьте поле пустым, если не хотите изменить пароль'
+          plugin_access: Доступ к плагинам
+          role_access: Роли
           enable_all: включить все
         actions:
           create_new_user: Создать нового пользователя
@@ -46,6 +48,9 @@ ru:
     user_mailer:
       reset_notification:
         subject: Ссылка для сброса пароля
+        reset_request_received_for: "Получен запрос на сброс пароля для %{username}"
+        visit_this_url: Для ввода нового пароля пройдите по этой ссылке
+        remain_same_if_no_action: Вы также можете проигнорировать это письмо. В этом случае пароль не будет изменён.
   devise:
     failure:
       unauthenticated: "Вам необходимо войти в систему или зарегистрироваться."
