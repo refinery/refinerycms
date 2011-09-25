@@ -96,6 +96,7 @@ init_modal_dialogs = function(){
 };
 
 trigger_reordering = function(e, enable) {
+  $menu = $("#menu");
   e.preventDefault();
   $('#menu_reorder, #menu_reorder_done').toggle();
   $('#site_bar, #content').fadeTo(500, enable ? 0.35 : 1);
