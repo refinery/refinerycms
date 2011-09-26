@@ -25,20 +25,9 @@ def setup_environment
 
   require 'rspec/rails'
   require 'capybara/rspec'
-
-  require 'refinery/testing/factories'
-  require 'refinery/testing/controller_macros'
-  require 'refinery/testing/request_macros'
+  require 'factory_girl_rails'
 
   Rails.backtrace_cleaner.remove_silencers!
-
-  # Requires supporting files with custom matchers and macros, etc,
-  # in ./support/ and its subdirectories including factories.
-  ([Rails.root] | ::Refinery::Plugins.registered.pathnames).map{|p|
-    Dir[p.join('spec', 'support', '**', '*.rb').to_s]
-  }.flatten.sort.each do |support_file|
-    require support_file
-  end
 
   RSpec.configure do |config|
     config.mock_with :rspec
@@ -49,6 +38,15 @@ def setup_environment
 end
 
 def each_run
+  FactoryGirl.reload
+  
+  # Requires supporting files with custom matchers and macros, etc,
+  # in ./support/ and its subdirectories including factories.
+  ([Rails.root] | ::Refinery::Plugins.registered.pathnames).map{|p|
+    Dir[p.join('spec', 'support', '**', '*.rb').to_s]
+  }.flatten.sort.each do |support_file|
+    require support_file
+  end
 end
 
 # If spork is available in the Gemfile it'll be used but we don't force it.

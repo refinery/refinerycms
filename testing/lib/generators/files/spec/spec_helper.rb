@@ -7,15 +7,9 @@ def setup_environment
 
   require 'rspec/rails'
   require 'capybara/rspec'
-  require 'factory_girl'
-  require 'refinerycms-testing'
+  require 'factory_girl_rails'
 
   Rails.backtrace_cleaner.remove_silencers!
-
-  Dir[
-    File.expand_path("../support/**/*.rb", __FILE__),
-    File.expand_path("../factories/**/*.rb", __FILE__)
-  ].each {|f| require f}
 
   RSpec.configure do |config|
     config.mock_with :rspec
@@ -24,6 +18,12 @@ def setup_environment
 end
 
 def each_run
+  FactoryGirl.reload
+  
+  Dir[
+    Rails.root.join('spec/support/**/*.rb'),
+    Rails.root.join('spec/factories/**/*.rb')
+  ].each { |f| require f }
 end
 
 # If spork is available in the Gemfile it'll be used but we don't force it.
