@@ -1,10 +1,9 @@
-require 'refinerycms-core'
+require 'refinerycms'
 require 'rspec-rails'
 require File.expand_path('../generators/testing_generator', __FILE__)
 
 module Refinery
-  module Testing
-
+  module Testing    
     autoload :ControllerMacros, 'refinery/testing/controller_macros'
     autoload :RequestMacros, 'refinery/testing/request_macros'
 
@@ -49,3 +48,4 @@ module Refinery
 end
 
 ::Refinery.engines << 'testing'
+require 'refinery/testing/factories'
