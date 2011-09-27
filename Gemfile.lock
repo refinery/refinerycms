@@ -68,7 +68,7 @@ PATH
       json_pure
       launchy
       rack-test (>= 0.5.6)
-      refinerycms (= 2.0.0)
+      refinerycms-core (= 2.0.0)
       rspec-instafail
       rspec-rails (= 2.6.1)
 
