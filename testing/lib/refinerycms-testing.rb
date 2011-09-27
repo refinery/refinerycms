@@ -1,4 +1,4 @@
-require 'refinerycms'
+require 'refinerycms-core'
 require 'rspec-rails'
 require File.expand_path('../generators/testing_generator', __FILE__)
 
@@ -48,4 +48,3 @@ module Refinery
 end
 
 ::Refinery.engines << 'testing'
-require 'refinery/testing/factories'
