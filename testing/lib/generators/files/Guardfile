@@ -1,3 +1,12 @@
+guard 'spork', :wait => 60, :cucumber => false, :rspec_env => { 'RAILS_ENV' => 'test' } do
+  watch('config/application.rb')
+  watch('config/environment.rb')
+  watch(%r{^config/environments/.+\.rb$})
+  watch(%r{^config/initializers/.+\.rb$})
+  watch('spec/spec_helper.rb')
+  watch(%r{^spec/support/.+\.rb$})
+end
+
 guard 'rspec', :version => 2, :cli => "--format Fuubar --color --drb" do
   watch(%r{^spec/.+_spec\.rb$})
   watch(%r{^app/(.+)\.rb$})                           { |m| "spec/#{m[1]}_spec.rb" }
@@ -9,12 +18,4 @@ guard 'rspec', :version => 2, :cli => "--format Fuubar --color --drb" do
   watch('app/controllers/application_controller.rb')  { "spec/controllers" }
   # Capybara request specs
   watch(%r{^app/views/(.+)/.*\.(erb|haml)$})          { |m| "spec/requests/#{m[1]}_spec.rb" }
-end
-
-guard 'spork', :wait => 60, :cucumber => false, :rspec_env => { 'RAILS_ENV' => 'test' } do
-  watch('config/application.rb')
-  watch('config/environment.rb')
-  watch(%r{^config/environments/.+\.rb$})
-  watch(%r{^config/initializers/.+\.rb$})
-  watch('spec/spec_helper.rb')
 end

@@ -1,9 +1,5 @@
-require 'refinery/user'
-require 'refinery/role'
-
 FactoryGirl.define do
-
-  factory :user, :class => ::Refinery::User do
+  factory :user, :class => Refinery::User do
     sequence(:username) { |n| "refinery#{n}" }
     sequence(:email) { |n| "refinery#{n}@refinerycms.com" }
     password  "refinerycms"
@@ -27,5 +23,4 @@ FactoryGirl.define do
       user.plugins.create(:name => 'refinery_pages', :position => 0)
     end
   end
-
 end

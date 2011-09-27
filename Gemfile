@@ -33,7 +33,7 @@ group :development do
 end
 
 group :development, :test do
-  gem 'refinerycms-testing',    '~> 2.0.0'
+  gem 'refinerycms-testing',    '~> 2.0.0', :require => false
   gem 'rcov', :platform => :mri_18
   gem 'simplecov', :platform => :mri_19
   gem 'capybara-webkit', '~> 0.6.1'

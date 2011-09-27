@@ -68,7 +68,7 @@ PATH
       json_pure
       launchy
       rack-test (>= 0.5.6)
-      refinerycms-core (= 2.0.0)
+      refinerycms (= 2.0.0)
       rspec-instafail
       rspec-rails (= 2.6.1)
 
@@ -140,7 +140,8 @@ GEM
     erubis (2.7.0)
     execjs (1.2.7)
       multi_json (~> 1.0)
-    factory_girl (2.1.0)
+    factory_girl (2.1.2)
+      activesupport
     factory_girl_rails (1.2.0)
       factory_girl (~> 2.1.0)
       railties (>= 3.0.0)
@@ -203,6 +204,8 @@ GEM
       activesupport (= 3.1.1.rc1)
       bundler (~> 1.0)
       railties (= 3.1.1.rc1)
+    rails-dev-tweaks (0.5.0)
+      rails (~> 3.1.0)
     railties (3.1.1.rc1)
       actionpack (= 3.1.1.rc1)
       activesupport (= 3.1.1.rc1)
@@ -284,6 +287,7 @@ DEPENDENCIES
   jquery-rails
   mysql2
   rails (= 3.1.1.rc1)
+  rails-dev-tweaks (~> 0.5.0)
   rb-fchange (~> 0.0.5)
   rb-fsevent (>= 0.3.9)
   rb-notifu (~> 0.0.4)

@@ -1,13 +1,28 @@
+engines = [ 
+  'authentication',
+  'core',
+  'dashboard',
+  'images',
+  'pages',
+  'resources',
+  'settings'
+]
+
+guard 'spork', :wait => 60, :cucumber => false, :rspec_env => { 'RAILS_ENV' => 'test' } do
+  watch('config/application.rb')
+  watch('config/environment.rb')
+  watch(%r{^config/environments/.+\.rb$})
+  watch(%r{^config/initializers/.+\.rb$})
+  watch('spec/spec_helper.rb')
+  watch(%r{^spec/support/.+\.rb$})
+  
+  engines.each do |engine|
+    watch(%r{^#{engine}/spec/support/.+\.rb$})
+  end
+end
+
 guard 'rspec', :version => 2, :spec_paths => ['authentication/spec', 'core/spec', 'dashboard/spec', 'images/spec', 'pages/spec', 'resources/spec', 'settings/spec'], :cli => "--format Fuubar --color --drb" do
-  [ 
-    'authentication',
-    'core',
-    'dashboard',
-    'images',
-    'pages',
-    'resources',
-    'settings'
-  ].each do |engine|
+  engines.each do |engine|
     watch(%r{^#{engine}/spec/.+_spec\.rb$})
     watch(%r{^#{engine}/app/(.+)\.rb$})                           { |m| "#{engine}/spec/#{m[1]}_spec.rb" }
     watch(%r{^#{engine}/lib/(.+)\.rb$})                           { |m| "#{engine}/spec/lib/#{m[1]}_spec.rb" }
@@ -19,12 +34,4 @@ guard 'rspec', :version => 2, :spec_paths => ['authentication/spec', 'core/spec'
     # Capybara request specs
     watch(%r{^#{engine}/app/views/(.+)/.*\.(erb|haml)$})          { |m| "#{engine}/spec/requests/#{m[1]}_spec.rb" }
   end
-end
-
-guard 'spork', :wait => 60, :cucumber => false, :rspec_env => { 'RAILS_ENV' => 'test' } do
-  watch('config/application.rb')
-  watch('config/environment.rb')
-  watch(%r{^config/environments/.+\.rb$})
-  watch(%r{^config/initializers/.+\.rb$})
-  watch('spec/spec_helper.rb')
 end
