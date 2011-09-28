@@ -3,6 +3,15 @@
   -moz-border-radius: $radius;
   -webkit-border-radius: $radius;
 }
+#site_bar {
+  background: #22a7f2;
+  border-bottom: 0px none;
+}
+#site_bar_content {
+  margin: 0px auto 10px auto;
+  text-align: left;
+  width: 990px;
+}
 #site_bar, #site_bar * {
   color: white;
   font-family: Arial;
