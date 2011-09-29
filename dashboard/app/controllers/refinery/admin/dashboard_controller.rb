@@ -24,7 +24,11 @@ module ::Refinery
           y.updated_at <=> x.updated_at
         }.first(activity_show_limit=::Refinery::Setting.find_or_set(:activity_show_limit, 7))
 
-        @recent_inquiries = defined?(Inquiry) ? Inquiry.latest(activity_show_limit) : []
+        @recent_inquiries = if Refinery::Plugins.active.detect {|p| p.name == "refinery_inquiries"}
+          Inquiry.latest(activity_show_limit)
+        else
+          []
+        end
       end
 
       def disable_upgrade_message
