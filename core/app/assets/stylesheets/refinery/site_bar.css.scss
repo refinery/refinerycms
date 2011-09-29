@@ -4,6 +4,8 @@
   -webkit-border-radius: $radius;
 }
 #site_bar_content {
+  height:47px;
+  position: relative;
   margin: 0px auto 10px auto;
   text-align: left;
   width: 990px;
@@ -11,9 +13,6 @@
 #site_bar {
   background: #22a7f2;
   border-bottom: 0px none;
-}
-#site_bar_content {
-  margin-bottom: 0px;
 }
 a#site_bar_refinery_cms_logo {
   left: 448px;
@@ -49,13 +48,13 @@ a#site_bar_refinery_cms_logo {
     @include rounded(6px);
   }
 }
-#site_bar * {
-  line-height: 47px;
-}
 #site_bar {
   height: 47px;
   background: #22a7f2;
   padding: 0px;
+  * {
+    line-height: 47px;
+  }
   a {
     border-bottom: 1px dotted white;
     text-decoration: none;
@@ -75,10 +74,6 @@ a#site_bar_refinery_cms_logo {
   #site_bar_company_name {
     font-weight: bold;
   }
-}
-#site_bar_content {
-  height:47px;
-  position: relative;
 }
 a#site_bar_refinery_cms_logo {
   left: 44.5%;
