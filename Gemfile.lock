@@ -204,8 +204,6 @@ GEM
       activesupport (= 3.1.1.rc1)
       bundler (~> 1.0)
       railties (= 3.1.1.rc1)
-    rails-dev-tweaks (0.5.0)
-      rails (~> 3.1.0)
     railties (3.1.1.rc1)
       actionpack (= 3.1.1.rc1)
       activesupport (= 3.1.1.rc1)
@@ -287,7 +285,6 @@ DEPENDENCIES
   jquery-rails
   mysql2
   rails (= 3.1.1.rc1)
-  rails-dev-tweaks (~> 0.5.0)
   rb-fchange (~> 0.0.5)
   rb-fsevent (>= 0.3.9)
   rb-notifu (~> 0.0.4)
