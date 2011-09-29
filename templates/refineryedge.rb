@@ -16,7 +16,7 @@ append_file 'Gemfile' do
   #  gem 'refinerycms-search', :git => 'git://github.com/resolve/refinerycms-search.git', :branch => 'rails-3-1'
   #  gem 'refinerycms-page-images', :git => 'git://github.com/resolve/refinerycms-page-images.git', :branch => 'rails-3-1'
 
-  #  END USESR DEFINED"
+  #  END USER DEFINED"
 end
 
 remove_file 'public/index.html'
