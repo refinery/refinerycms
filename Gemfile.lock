@@ -6,6 +6,13 @@ GIT
       refinerycms-core (~> 2.0.0)
       routing-filter (>= 0.2.3)
 
+GIT
+  remote: https://github.com/nevir/routing-filter
+  revision: 1049885b01f5cfb09cee8ec7aad66abedaeb6847
+  specs:
+    routing-filter (0.2.4)
+      actionpack
+
 PATH
   remote: .
   specs:
@@ -204,6 +211,8 @@ GEM
       activesupport (= 3.1.1.rc1)
       bundler (~> 1.0)
       railties (= 3.1.1.rc1)
+    rails-dev-tweaks (0.5.0)
+      rails (~> 3.1.0)
     railties (3.1.1.rc1)
       actionpack (= 3.1.1.rc1)
       activesupport (= 3.1.1.rc1)
@@ -215,8 +224,6 @@ GEM
     rb-fsevent (0.4.3.1)
     rcov (0.9.10)
     rdoc (3.9.4)
-    routing-filter (0.2.4)
-      actionpack
     rspec (2.6.0)
       rspec-core (~> 2.6.0)
       rspec-expectations (~> 2.6.0)
@@ -285,6 +292,7 @@ DEPENDENCIES
   jquery-rails
   mysql2
   rails (= 3.1.1.rc1)
+  rails-dev-tweaks (~> 0.5.0)
   rb-fchange (~> 0.0.5)
   rb-fsevent (>= 0.3.9)
   rb-notifu (~> 0.0.4)
@@ -292,6 +300,7 @@ DEPENDENCIES
   refinerycms!
   refinerycms-i18n (~> 2.0.0)!
   refinerycms-testing (~> 2.0.0)
+  routing-filter!
   sass-rails (~> 3.1.0)
   simplecov
   spork (= 0.9.0.rc9)
