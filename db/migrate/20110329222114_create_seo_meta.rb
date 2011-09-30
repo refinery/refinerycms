@@ -12,7 +12,6 @@ class CreateSeoMeta < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index :seo_meta, :id
     add_index :seo_meta, [:seo_meta_id, :seo_meta_type]
 
     # Grab the attributes of the records that currently exist
