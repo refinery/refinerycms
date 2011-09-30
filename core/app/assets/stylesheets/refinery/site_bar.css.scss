@@ -3,6 +3,10 @@
   -moz-border-radius: $radius;
   -webkit-border-radius: $radius;
 }
+body {
+  margin: 0px;
+  padding: 0px;
+}
 #site_bar_content {
   height:47px;
   position: relative;
