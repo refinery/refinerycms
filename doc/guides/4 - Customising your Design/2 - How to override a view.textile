@@ -16,12 +16,6 @@ It's easy to get a copy of this file to modify locally. For example, for the foo
 $ rake refinery:override view=refinery/_footer.html
 </shell>
 
-Or, if you are using an old version of Refinery with a theme installed, try:
-
-<shell>
-$ rake refinery:override view=shared/_footer.html theme=mytheme
-</shell>
-
 h3. Common Examples
 
 These are files we often override when creating a Refinery site.
@@ -34,7 +28,7 @@ $ rake refinery:override view=refinery/_content_page
 
 h3. Tips and Tricks
 
-* Trim the '.erb' from the end of the view file name
+* Trim the '.html.erb' from the end of the view file name
 * Only override when you really need to, as it makes upgrading to future versions of Refinery trickier
 * You only need the path to the view from inside the 'views' folder, regardless of which engine the file is in
 * This will also work to override views in plugins you've created locally
