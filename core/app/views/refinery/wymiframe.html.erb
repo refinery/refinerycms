@@ -5,7 +5,7 @@
     <meta charset='<%= ::Refinery::Application.config.encoding %>' />
     <meta httpequiv="XUACompatible" content="IE=edge,chrome=1" />
     <%= stylesheet_link_tag "wymeditor/skins/refinery/wymiframe", :media => "all" %>
-    <%= stylesheet_link_tag "formatting", :theme => ::Refinery::Setting.get(:theme).present?, :media => "all" %>
+    <%= stylesheet_link_tag "formatting", :media => "all" %>
     <%= stylesheet_link_tag "theme", :media => "all" %>
     <%= javascript_include_tag 'modernizr-min' %>
   </head>
