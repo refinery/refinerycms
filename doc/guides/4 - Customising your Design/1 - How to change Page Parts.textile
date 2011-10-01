@@ -44,12 +44,12 @@ Now go to your "Pages" tab in Refinery and edit your home page. You'll notice a 
 
 NOTE: Your "middle body" content won't show on the front end yet. You need to output the content of that page part in the view.
 
-Now in your +app/views/pages/home.html.erb+ view you'll be able to put:
+Now in your +app/views/refinery/pages/home.html.erb+ view you'll be able to put:
 
 <erb>
-<%= @page.content_for(:middle_body) %>
+<%= raw @page.content_for(:middle_body) %>
 </erb>
 
 to output this new content area in the view.
 
-NOTE: If you don't have a +app/views/pages/home.html.erb+ view already, run +rake refinery:override view=pages/home+ to copy it into your app.
+NOTE: If you don't have a +app/views/refinery/pages/home.html.erb+ view already, run +rake refinery:override view=refinery/pages/home+ to copy it into your app.
