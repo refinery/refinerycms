@@ -27,7 +27,6 @@ vi:
             preferred_image_view: Thiết lập này điều khiển các trang mà các plugin về hình ảnh có thể hiển thị hình ảnh hiện có - dạng lưới cho 'Grid View" và dạng danh sách cho "List View". Có một nút để tự động hóa quá trình này trên những hình ảnh plugin chính nó.
             show_contact_privacy_link: Bạn có thể ẩn hoặc hiển thị các liên kết đến trang privacy policy trên các form liên lạc bằng nút Submit.
             site_name: "Đây là tên trang web của bạn và sẽ hiển thị trong phần đầu, trong trang admin của Refinery và trong phần bản quyền ở phần footer cho một số theme."
-            theme: Nhập tên của theme mà bạn muốn hiển thị. Điều này sẽ có hiệu lực ngay lập tức. Nhớ là  bạn phải viết tên theme chính các thì tùy chỉnh này mới hoạt động.
             use_google_ajax_libraries: Nếu bạn muốn sử dụng Google AJAX CDN thì đặt thiết lập này là true.
             use_marketable_urls: Thay đổi url từ /pages/about thành /about và tự động quản lý xung đột với các plugin khác.
             use_resource_caching: Khuyến nghị để cho phép điều này trong chế độ production vì nó đóng gói javascript và stylesheet thành một gói tập tin duy nhất để giảm bớt số lượng web requests và tăng tốc độ site của bạn lên.

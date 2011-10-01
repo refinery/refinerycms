@@ -27,7 +27,6 @@ ja:
             preferred_image_view: 画像のレイアウト（グリッド又はリスト）を設定します。プラグイン自体にもこれを設定するボタンがあります。
             show_contact_privacy_link: お問い合わせフォームで、個人情報保護方針のページのリンクを表示するかどうかを決定します。
             site_name: このサイトの名前です。ヘッダに表示されます。テーマによっては、Refineryの管理画面や著作権表示のフッタでもこれが表示される場合があります。
-            theme: 使用可能なテーマの名前。これは直ぐに発効するので、現存するテーマの名前を指定する必要があります。
             use_google_ajax_libraries: GoogleのAJAX CDNを使用される場合はこれを有効にして下さい。
             use_marketable_urls: URLを/pages/aboutから/aboutに変更して、他のプラグインのと名前の衝突を自動的に管理します。
             use_resource_caching: プロダクションモードではこれを有効にする事を推奨します。JavaScriptやスタイルシート等のリソースをまとめて転送する事でサーバへのアクセスの回数を減らします。

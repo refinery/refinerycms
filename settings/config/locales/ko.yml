@@ -27,7 +27,6 @@ ko:
             preferred_image_view: 이미지 플러그인에서 업로드된 이미지를 어떻게 볼 지 결정합니다. '격자 형식'으로 보려면 grid를, '목록 형식'으로 보려면 list를 설정하세요. 이미지 플러그인에서 선택하는 것도 가능합니다.
             show_contact_privacy_link: 문의 페이지의 제출 버튼 옆에 개인정보 취급 방침 페이지의 링크를 표시할지 결정합니다.
             site_name: 페이지 제목과 관리자 페이지, Footer 및 일부 테마의 저작권 문구에 쓰일 사이트 이름을 설정합니다.
-            theme: 적용하기 원하는 테마 이름을 써 주세요. 설정은 즉시 적용되며 제대로 동작하기 위해서는 존재하는 테마의 이름을 정확히 입력해야 합니다.
             use_google_ajax_libraries: Google의 AJAX CDN을 사용하려면 이 항목을 true로 설정하세요.
             use_marketable_urls: URL을 /pages/about 형식에서 /about 형식로 변경하고 다른 플러그인과의 중복을 자동으로 관리합니다.
             use_resource_caching: HTTP 요청을 줄여 페이지 로딩 시간을 향상시키기 위해 Javascript와 CSS 파일을 한 데 묶습니다. production 환경에서는 활성화하는 것을 권장합닏다.

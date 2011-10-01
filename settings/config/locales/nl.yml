@@ -27,7 +27,6 @@ nl:
             preferred_image_view: Dit bepaald wat voor interface de afbeeldingen plugin gebruikt om de afbeedlingen te laten zin. Gebruik 'grid' voor de tabel interface, en 'list' voor de lijst interface. Er is een knop bij de afbeeldingen plugin om dit automatisch te doen.
             show_contact_privacy_link: Hiermee kun je de link naar de privacy policy onder aan de contactpagina verbergen of laten zien.
             site_name: Dit is de naam van de website, die in de header en in de backend van Refinery, en in de footer bij het copyright bericht zal worden geplaatst.
-            theme: Type de naam in van het thema dat u wilt inschakelen. Dit zal meteen in effect gaan, en moet een correcte naam van een thema bevatten, om dit te laten werken.
             use_google_ajax_libraries: Als je de Google AJAX CDN bestanden wilt gebruiken, stel dit dan in op "true"
             use_marketable_urls: Verander urls van "/pages/about" naar "/about" en laat conflicten met andere plugins automagisch opgelost worden.
             use_resource_caching: Aanbevolen om tijdens productie aan te zetten, gezien het de javascript- en stylesheet bestanden in slechts een bestand plaatst, om het aantal requests naar de website te verminderen.

@@ -27,7 +27,6 @@ fi:
             preferred_image_view: "Missä näkymässä kuvapalikka näyttää kuvat: lista- vai ruudukkonäkymässä. Kuvapalikassa on oma nappi näkymien vaihtamiseen."
             show_contact_privacy_link: "Voit piilottaa linkin yksityisyydensuojasivulle yhteydenottolomakkeessa."
             site_name: "Tämä on nettisivusi nimi. Se näytetään sivuston otsakealueella, Refineryn hallintapaneelissa ja alaotsakkeen tekijänoikeustekstissä joissain teemoissa."
-            theme: "Kirjoita teeman nimi, jota haluat sivuston käyttävän. Tämä muutos tulee voimaan välittömästi, ja teeman nimen pitää olla oikein, että asetus toimii."
             use_google_ajax_libraries: "Jos haluat käyttää Googlen AJAX- sisällönjakeluverkkoa, pistä tämä asetus päälle."
             use_marketable_urls: "Vaihda sivujen osoitteet muodosta /pages/about muotoon /about, ja hallitse ristiriitoja palikkojen välillä automaattisesti."
             use_resource_caching: "Kun nettisivusi ovat julkisesti käytössä, on suositeltavaa että tämä asetus on päällä. Paketoi JavaScript- ja tyylitiedostot pieniin paketteihin, joka vähentää palvelimeen kohdistuvaa rasitusta."

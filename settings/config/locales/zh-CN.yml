@@ -27,7 +27,6 @@ zh-CN:
             preferred_image_view: 这可控制图片插件如何呈现目前这些已存在网站上的图片 - grid 表示 '网格模式' 以及 list 表示 '列表模式'. 图片插件本身提供一个按钮可以自动切换这些模式.
             show_contact_privacy_link: 您可以隐藏或是显示在联络人表单确认按钮旁的隐私条款页面链接.
             site_name: 这是您的网站名称, 它将会显示在网站标题, Refinery 的后台管理系统, 以及部份有页尾版权宣告的布景主题中.
-            theme: 输入您想要开启的布景主题名称. 它将会马上生效并且确认为是有效的名称.
             use_google_ajax_libraries: 如果您想要使用 Google 的 AJAX CDN 请设定为 true.
             use_marketable_urls: 将网址从 /pages/about 改变为 /about 并且自动处理与其他插件的冲突.
             use_resource_caching: 建议在 production 模式中开启这个选项, 它会将 javascript assets 与样式表 assets 包裹成一个单一文件来减少您网站被请求的次数并且达到加速的效果.

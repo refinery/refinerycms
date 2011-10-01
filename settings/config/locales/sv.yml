@@ -27,7 +27,6 @@ sv:
             preferred_image_view: Den här styr vilken vy tillägsprogrammet för bilder väljer att visa bilder i. 'Grid View' för rutnät eller 'List View' för lista. Det finns en knapp för att automatisera denna process i tillägsprogrammet.
             show_contact_privacy_link: Du kan välja att visa eller dölja Registerbeskrivning (privacy policy) bredvid skicka knappen.
             site_name: Det här är webbplatsens namn och den kommer visas i huvudrubryken, Refinery och i foten på hemsidan.
-            theme: Fyll i namnet på det tema du vill aktivera. Det här tar effekt direkt och måste hitta ett existerande tema för att fungera.
             use_google_ajax_libraries: Om du vill använda Googles AJAX CDN så välj true
             use_marketable_urls: Ändra URLer från /pages/about till /about och hantera automatiskt konflikter med andra plugin
             use_resource_caching: Rekomenderat att aktivera den här inställningen i produktionsläget då den buffrar javascript, stilmallar m.m. till ett enskilt paket att skicka vilket minimerar antalet kopplingar till din webbplats och snabbar upp laddningstiden.

@@ -28,7 +28,6 @@ lt:
             preferred_image_view: "Čia valdoma kokį vaizdą rodys paveikslėlių įskiepis. Tinklelį 'Rodyti kaip tinklelį' ar sąrašą 'Rodyti kaip sąrašą'. Procesui automatizuoti ir pačiame paveikslėlių įskiepyje yra mygtukas."
             show_contact_privacy_link: Jūs galite paslėpti arba rodyti nuorodą į svetainės privatumo politikos puslapį kontaktų formoje prie siuntimo mygtuko.
             site_name: "Svetainės pavadinimas, kuris bus rodomas antraštėje ir Refinery valdyme ir puslapio apačioje, kai kuriose temose."
-            theme: "Nurodykite temos pavadinimą, kurią norite naudoti. Šis nustatymas įsigalios nedelsiant ir turi teisingai identifikuoti egzistuojančią temą, kad tai veiktų."
             use_google_ajax_libraries: Jei norite naudoti Google AJAX CDN tai nustatykite šį nustatymą kaip true.
             use_marketable_urls: Pakeisti adresus iš /pages/apie-mus į /apie-mus ir automatiškai valdyti konfliktus su kitais įskiepiais.
             use_resource_caching: "Rekomenduojama įjungti šį nustatymą paleidus svetainę darbiniu režimu, nes supakuos javascript ir stilių failus į vieną failą, kad sumažinti užklausų skaičių jūsų svetainė ir pagreitinti jos veikimą."

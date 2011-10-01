@@ -27,7 +27,6 @@ el:
             preferred_image_view: This controls which view the images plugin displays existing images in - grid for 'Grid View' and list for 'List View'. There is a button to automate this process on the images plugin itself.
             show_contact_privacy_link: You can hide or show the link to the privacy policy page on the contact form by the submit button.
             site_name: This is the name for your website and will display in the header and in the Refinery backend and in the footer copyright statement for some themes.
-            theme: Enter the name for the theme that you want to be enabled. This will take effect immediately and must correctly identify an existing theme for this to work.
             use_google_ajax_libraries: If you want to use Google's AJAX CDN then set this to true.
             use_marketable_urls: Change urls from /pages/about to /about and automatically manage conflicts with other plugins.
             use_resource_caching: Recommended to enable this in production mode as it bundles javascript assets and stylesheet assets into single file packages to reduce the number of web requests on your site and speed it up.

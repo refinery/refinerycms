@@ -27,7 +27,6 @@ pt-BR:
             preferred_image_view: Habilita o tipo de visualição da seção imagens - grid para 'Visualizar em Grid' e list para 'Visualizar em Lista'. Há um botão para automatizar este processo no plugin de imagens.
             show_contact_privacy_link: Você pode esconder ou mostrar o link para a política de privacidade no formulário de contato.
             site_name: "Nome do site, que será mostrado no topo e rodapé do seu website e também na área administrativa."
-            theme: Tema utilizado pelo site. Será trocado o tema imediatamente e deverá ser um tema válido e existente no sitema para que funcione.
             use_google_ajax_libraries: Se você quer usar as bibliotecas AJAX CDN externas oferecidas pelo Google configure como true.
             use_marketable_urls: Muda as urls de /pages/about para /about e automaticamente gerencia conflitos com outros plugins.
             use_resource_caching: "Recomendado habilitar está opção em produção pois os javascript e stylesheet serão colocados em um único arquivo, o que diminui o número de requisições e aumenta a velocidade do site."
