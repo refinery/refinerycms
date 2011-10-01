@@ -8,12 +8,8 @@
   <%= csrf_meta_tags if ::Refinery::Setting.find_or_set(:authenticity_token_on_frontend, true)-%>
   <%= yield :meta %>
 
-  <%  stylesheets_for_head(stylesheets||=%w(application formatting theme)).each do |ss| %>
-    <%= stylesheet_link_tag ss %>
-  <% end %>
-
+  <%= stylesheet_link_tag "application", "formatting", "theme" %>
   <%= stylesheet_link_tag "home" if home_page? %>
-
   <%= yield :stylesheets %>
 
   <%= render :partial => '/refinery/google_analytics' %>

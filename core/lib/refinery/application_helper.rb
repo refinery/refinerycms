@@ -4,7 +4,6 @@ Dir[File.expand_path('../helpers/*.rb', __FILE__).to_s].each {|helper| require h
 module Refinery
   module ApplicationHelper
     def self.included(base)
-      base.send :include, ::Refinery::Helpers::HeadHelper
       base.send :include, ::Refinery::Helpers::HtmlTruncationHelper
       base.send :include, ::Refinery::Helpers::ImageHelper
       base.send :include, ::Refinery::Helpers::MenuHelper
