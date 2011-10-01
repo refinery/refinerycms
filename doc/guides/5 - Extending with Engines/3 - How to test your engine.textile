@@ -1,16 +1,16 @@
 h2. How to test your engine
 
-Refinery ships with an optional testing Railtie in the form of a gem called +refinerycms-testing+ will add generators and rake tasks to your engine that provide it with the same RSpec2/Cucumber testing environment we use to test Refinery. We abstract common test helpers, controller macros, and factories into this railtie so you can use these in tests of your own.
+Refinery ships with an optional testing engine in the form of a gem called +refinerycms-testing+ which will add generators and rake tasks to your engine that provide it with the same RSpec2 testing environment we use to test Refinery. We abstract common test helpers, controller macros, and factories into this engine so you can use these in tests of your own.
 
 This guide will show you how to:
 
-* Bootstrap your engine with the Refinery RSpec2/Cucumber testing environment
+* Bootstrap your engine with the Refinery RSpec2 testing environment
 * Run the test suite with Rake for a one time run
 * Run the test suite with Guard for quick TDD iterations
 
 endprologue.
 
-h3. Bootstrap the test enviroment
+h3. Bootstrap the test environment
 
 In your engine's Gemfile uncomment or add the following line
 
@@ -44,25 +44,13 @@ At your project's root run:
 $ bundle exec rake
 </shell>
 
-This will run the cucumber and rspec tests.
-
-To run just cucumber:
-
-<shell>
-$ bundle exec cucumber
-</shell>
-
-To run just rspec:
-
-<shell>
-$ bundle exec rake spec
-</shell>
+This will run the rspec specs.
 
 This is the most simple way to execute the test suite and useful for a one time run.
 
 h3. Running the tests with Guard
 
-We recommend using Guard if you like to develop using TDD. Guard will load your test environment and watch for changes in files. If a change is made to a spec, feature, or a file that is tested against, it will re-run only the necessary specs or features. Because your environment is loaded at all times, this is a much faster way to get test results.
+We recommend using Guard if you like to develop using TDD. Guard will load your test environment and watch for changes in files. If a change is made to a spec or a file that is tested against, it will re-run only the necessary specs. Because your environment is loaded at all times, this is a much faster way to get test results.
 
 At your project's root run:
 
