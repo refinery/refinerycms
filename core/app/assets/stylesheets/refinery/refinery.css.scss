@@ -1419,9 +1419,9 @@ input.button.close_dialog:active, a.button.close_dialog:active, #content a.butto
         display: block;
       }
     }
-  }
-  &.selected a img {
-    border-color: #22A7F2;
+    &.selected a img {
+      border-color: #22A7F2;
+    }
   }
 }
 #content #records .title .preview a.locale {
