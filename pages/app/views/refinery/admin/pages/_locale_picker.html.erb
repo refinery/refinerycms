@@ -3,7 +3,7 @@
   <ul id='switch_locale_picker' class='clearfix'>
     <% locales.each do |locale| %>
       <li<%= " class='selected'" if locale.to_s == local_assigns[:current_locale].to_s %>>
-        <%= link_to refinery_icon_tag("flags/#{locale}.png", '16x11'),
+        <%= link_to refinery_icon_tag("flags/#{locale}.png", :size => '16x11'),
                     main_app.url_for(:switch_locale => locale) %>
       </li>
     <% end %>
