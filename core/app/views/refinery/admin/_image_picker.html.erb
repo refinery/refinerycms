@@ -36,7 +36,8 @@
   <script>
   var image_picker_<%= randomiser %> = null;
     $(document).ready(function(e) {
-      image_picker_<%= randomiser %> = image_picker.init({
+      image_picker_<%= randomiser %> = $.extend({}, {}, image_picker);
+      image_picker_<%= randomiser %>.init({
         thumbnail: '<%= thumbnail.html_safe %>'
         , image_toggler: '<%= toggle_image_display ? ".current_image_toggler" : "null" %>'
         , description: '<%= description %>'
@@ -44,7 +45,7 @@
         , image_display: '.current_picked_image'
         , no_image_message: '.no_picked_image_selected'
         , remove_image_button: '.remove_picked_image'
-        , picker_container: '#image_picker_container_<%= randomiser %>'
+        , picker_container: '#image_picker_container_<%= (lambda {randomiser}).call %>'
         , image_container: '.current_image_container'
         , image_link: '.current_image_link'
       });
@@ -59,3 +60,4 @@
     };
   </script>
 <% end %>
+
