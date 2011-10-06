@@ -38,7 +38,7 @@ h4. Generate support files and migrations
 Now you can simply run the RefineryCMS generator:
 
 <shell>
-  rails generate refinerycms
+  rails g refinery:cms
 </shell>
 
 h4. Migrate your database
