@@ -1,6 +1,6 @@
 require 'refinerycms-core'
 require 'rspec-rails'
-require File.expand_path('../generators/testing_generator', __FILE__)
+require 'refinery/generators/testing_generator'
 
 module Refinery
   module Testing    
