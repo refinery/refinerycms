@@ -1,5 +1,3 @@
-require 'refinerycms-base'
-
 module Refinery
   module Generators
     require 'refinery/generators/engine_installer'
