@@ -1,5 +1,4 @@
 require 'refinerycms-core'
-require 'rspec-rails'
 require 'refinery/generators/testing_generator'
 
 module Refinery
@@ -16,23 +15,6 @@ module Refinery
 
     class Engine < ::Rails::Engine
       isolate_namespace ::Refinery
-
-      config.before_configuration do
-        ::Refinery::Application.module_eval do
-          def load_tasks
-            super
-
-            # To get specs from all Refinery engines, not just those in Rails.root/spec/
-            ::RSpec::Core::RakeTask.module_eval do
-              def pattern
-                [@pattern] | ::Refinery::Plugins.registered.pathnames.map{|p|
-                               p.join('spec', '**', '*_spec.rb').to_s
-                             }
-              end
-            end if defined?(::RSpec::Core::RakeTask)
-          end
-        end
-      end
 
       config.after_initialize do
         ::Refinery::Plugin.register do |plugin|
