@@ -58,7 +58,7 @@ h3. Refreshing All Existing Entries
 Each entry must be re-saved to generate its slug. You can do this quickly from the Rails console (obviously, replace +StaffMember+ with your model's name):
 
 <ruby>
-  StaffMember.all.map(&save)
+  StaffMember.all.map(&:save)
 </ruby>
 
 If all entries in the resulting array return true, everything is complete! If you have an entry return false, you may have some individual issues that prevent saving, and you can update these manually using the RefineryCMS administrative interface.
