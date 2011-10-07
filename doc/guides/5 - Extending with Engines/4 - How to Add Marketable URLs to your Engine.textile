@@ -1,0 +1,64 @@
+h2. Marketable URLs for Engines
+
+It's very important for Search Engine Optimization (SEO) purposes to have your URLs be human-readable. RefineryCMS ships with software (FriendlyID) that enables these marketing-friendly URLs with only minor modifications.
+
+This guide will show you how to:
+
+* Implement marketable URLs on a custom engine.
+
+endprologue.
+
+WARNING: This method is tested with RefineryCMS v. 1.0.8 only, but should be applicable to other versions. Always ensure your code is backed up or under version control before making substantial change.
+
+h3. Implementing Cached Slugs
+
+FriendlyID requires that you create a string field entitled +cached_slug+ on any model that you wish to convert. It's better to do this as a separate migration after creating the engine, because you will have to remove the administrative text fields RefineryCMS auto-generates.
+
+To do so, create a new migration file in the +db/migrate+ folder of your engine. Since this depends on the previous migration, it's best to rename the other migrations to include a sequence reference in the filename -- for example, +create_staff_members.rb+ becomes +001_create_staff_members.rb+. When you re-run the generator that will move these migrations over to your main +db/migrate+ folder, they will be moved in this order. Don't worry if you've already run these migrations; Rails will auto-detect that it has been run, even though the filename has been changed.
+
+Inside your migration, write something like this:
+<ruby>
+  class AddCachedSlugToStaffMembers < ActiveRecord::Migration
+    def self.up
+      add_column :staff_members, :cached_slug, :string
+    end
+
+    def self.down
+      remove_column :staff_members, :cached_slug
+    end
+  end
+</ruby>
+
+Run the generator that you ran initially to create your engine, and then migrate.. In the above example, since the engine is named +staff_members+, one would run:
+
+<shell>
+$ rails generate refinerycms_staff_members
+$ rake db:migrate
+</shell>
+
+h3. Adding Friendly ID
+
+In your model, add the following lines, replacing +staff_member+ where appropriate:
+
+<ruby>
+  has_friendly_id :name, :use_slug => true,
+                  :default_locale => (::Refinery::I18n.default_frontend_locale rescue :en),
+                  :approximate_ascii => RefinerySetting.find_or_set(:approximate_ascii, false, :scoping => 'staff_member'),
+                  :strip_non_ascii => RefinerySetting.find_or_set(:strip_non_ascii, false, :scoping => 'staff_member')
+</ruby>
+
+If you want to use a different field than +name+ from which to generate the URL, be sure to change the first symbol after +has_friendly_id+ to be in accordance (for example, many engines use +title+ instead).
+
+Also be sure to remove any +to_param+ method that exists, or this will interfere.
+
+Restart your server.
+
+h3. Refreshing All Existing Entries
+
+Each entry must be re-saved to generate its slug. You can do this quickly from the Rails console (obviously, replace +StaffMember+ with your model's name):
+
+<ruby>
+  StaffMember.all.map(&save)
+</ruby>
+
+If all entries in the resulting array return true, everything is complete! If you have an entry return false, you may have some individual issues that prevent saving, and you can update these manually using the RefineryCMS administrative interface.
