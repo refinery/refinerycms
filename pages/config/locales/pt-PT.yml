@@ -1,0 +1,76 @@
+pt-PT:
+  refinery:
+    plugins:
+      refinery_pages:
+        title: Páginas
+        article: a
+        description: Gerir páginas
+    admin:
+      pages_dialogs:
+        page_link:
+          link_to_this_page: Link para esta página
+        link_to:
+          insert: Inserir
+          your_page:
+            tab_name: Sua página
+          web_address:
+            tab_name: Website
+            location: Localização
+            new_window: Nova janela
+            new_window_label: Marque esta opção para que o link abra uma nova janela.
+            not_sure: Não sabe ao certo o que colocar na caixa acima?
+            step1: Procure o site na web para onde quer redirecionar.
+            step2: "Copie o endereço do site da barra de navegação do seu browser e cole na caixa acima."
+          email_address:
+            tab_name: Endereço de email
+            subject_line_optional: Título opcional
+            body_optional: Corpo opcional
+            not_sure: Não sabe ao certo o que colocar na caixa acima?
+            step1_html: "Escreva ou copie e cole (ex. do seu catálogo de email) o endereço de email e coloque dentro do <strong>Endereço de email</strong> na caixa acima."
+            step2_html: "Use o <strong>Título opcional</strong> na caixa acima se você quer que a mensagem seja composta por <strong>título pré-preenchido</strong>."
+            step3_html: "Use o <strong>Corpo opcional</strong> na caixa acima se você quer que a mensagem seja composta por uma  <strong>mensagem pré-preenchida</strong>."
+          your_resource:
+            tab_name: Seu ficheiro
+            link_to_this_resource: Link para este ficheiro
+      pages:
+        delete: Remover esta página para sempre
+        edit: Editar esta página
+        reserved_system_word: Desculpe, esse título é uma palavra reservada do sistema.
+        page:
+          view_live_html: Ver esta página agora <br/><em>(uma nova janela será aberta)</em>
+          hidden: escondida
+          draft: Rascunho
+        form_new_page_parts:
+          title: Título
+        form_page_parts:
+          create_content_section: Criar secção de conteúdo
+          delete_content_section: Apagar secção de conteúdo
+        form_advanced_options:
+          toggle_advanced_options: Clique aqui para aceder às configurações de meta tag e opções do menu
+          page_options: Opções de página
+          parent_page: Página pai
+          advanced_options: Opções avançadas
+          custom_title: Título opcional
+          show_in_menu_title: Mostrar no menu
+          show_in_menu_description: Mostra esta página no menu do site
+          show_in_menu_help: "Desmarque esta opção caso queira remover a página do menu do site. Pode ser útil caso queira ligar outra página a esta, mas não quer que esta apareça no menu do site."
+          save_as_draft: Guardar como rascunho
+          skip_to_first_child: Saltar esta página
+          skip_to_first_child_label: Redireciona os visitante para a primeira página abaixo desta no menu.
+          skip_to_first_child_help: "Esta opção faz com que o link desta página aponte para o primeiro link do menu abaixo dessa. Usado quando existem sub-páginas."
+          link_url: "Redirecionar esta página para outro site ou página."
+          link_url_help: "Se você quer que esta página seja redicionada para outro site ou página quando você clicar nesta página no menu, escreva o URL. ex. http://google.com ou deixe em branco."
+          parent_page_help: "Se você quer colocar esta página abaixo de outra página no menu, selecione aqui qual é a página ou deixe em branco caso queria a página na raiz do menu."
+          custom_title_help: "Se você quer que a página tenha um título diferente do que é mostrado no menu então selecione &apos;Texto&apos; e escreva o novo título."
+        actions:
+          create_new_page: Criar uma nova página
+          reorder_pages: Reordenar as Páginas
+          reorder_pages_done: Terminei de reordenar as Páginas
+        records:
+          no_pages_yet: Ainda não existem páginas. Clique em "Criar Nova Página" para adicionar a sua primeira página.
+  activerecord:
+    models:
+      refinery/page: Página
+    attributes:
+      refinery/page:
+        title: Título
