@@ -79,6 +79,9 @@ capybara-*html
 #Sprockets
 public/assets
 
+#Gemfile's lock file
+Gemfile.lock
+
 # REFINERY CMS DEVELOPMENT ====================================================
 # Always keep this section at the bottom.
 
