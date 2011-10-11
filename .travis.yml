@@ -2,7 +2,7 @@ before_script:
   - "ruby --version"
   - "sh -e /etc/init.d/xvfb start"
   - "bundle exec rake db:create db:migrate"
-script: "DISPLAY=:99.0 bundle exec rake spec"
+script: "DISPLAY=:99.0 bundle exec rspec ./*/spec"
 notifications:
   email:
     - parndt@gmail.com
