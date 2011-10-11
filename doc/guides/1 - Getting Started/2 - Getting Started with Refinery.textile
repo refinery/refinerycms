@@ -88,10 +88,10 @@ NOTE: This step may take some time to load as it needs to download and install a
 TIP. If you're working on Windows, you should be aware that the vast majority of Refinery development is done in Unix environments. If at all possible, we suggest that you develop on a Linux based operating system.
 
 h5. Rails Application Templates
-These application templates are another very easy way to install Refinery, and allow for a great deal of control of your installation.  You can specific which version of Refinery that you wish to install simply by passing it to the command.
+These application templates are another very easy way to install Refinery, and allow for a great deal of control of your installation.  You can specify which version of Refinery that you wish to install simply by passing it to the command.
 
 <shell>
-$ rails new rickrockstar -m http://refinerycms.com/2-0
+$ rails new rickrockstar -m http://refinerycms.com/2.0
 </shell>
 
 TIP. You can specify other versions of Refinery in the same fashion.  <tt>$ rails new rickrockstar -m http://refinerycms.com/edge</tt>
