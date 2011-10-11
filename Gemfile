@@ -33,7 +33,7 @@ end
 gem 'routing-filter', :git => "https://github.com/nevir/routing-filter"
 
 group :development, :test do
-  gem 'refinerycms-testing',    '~> 2.0.0', :require => false
+  gem 'refinerycms-testing', '~> 2.0.0'
   gem 'rcov', :platform => :mri_18
   gem 'simplecov', :platform => :mri_19
   gem 'capybara-webkit', '~> 0.6.1'

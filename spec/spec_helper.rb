@@ -25,7 +25,6 @@ def setup_environment
 
   require 'rspec/rails'
   require 'capybara/rspec'
-  require 'factory_girl_rails'
 
   Rails.backtrace_cleaner.remove_silencers!
 
@@ -50,8 +49,6 @@ def each_run
   }.flatten.sort.each do |support_file|
     require support_file
   end
-
-  require 'refinery/testing/factories'
 end
 
 # If spork is available in the Gemfile it'll be used but we don't force it.

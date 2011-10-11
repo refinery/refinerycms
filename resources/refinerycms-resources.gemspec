@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.version           = %q{2.0.0}
   s.summary           = %q{Resources engine for Refinery CMS}
   s.description       = %q{Handles all file upload and processing functionality in Refinery CMS.}
-  s.date              = %q{2011-10-11}
+  s.date              = %q{2011-10-10}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
   s.rubyforge_project = %q{refinerycms}
@@ -91,6 +91,8 @@ Gem::Specification.new do |s|
     'license.md',
     'refinerycms-resources.gemspec',
     'spec',
+    'spec/factories',
+    'spec/factories/resource.rb',
     'spec/lib',
     'spec/lib/generators',
     'spec/lib/generators/resources_generator_spec.rb',

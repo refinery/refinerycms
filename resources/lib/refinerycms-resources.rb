@@ -14,6 +14,10 @@ module Refinery
       def root
         @root ||= Pathname.new(File.expand_path('../../', __FILE__))
       end
+
+      def factory_paths
+        @factory_paths ||= [ File.expand_path("../../spec/factories", __FILE__) ]
+      end
     end
   end
 end

@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.version           = %q{2.0.0}
   s.summary           = %q{Testing plugin for Refinery CMS}
   s.description       = %q{This plugin adds the ability to run cucumber and rspec against the RefineryCMS gem while inside a RefineryCMS project}
-  s.date              = %q{2011-10-11}
+  s.date              = %q{2011-10-10}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
   s.rubyforge_project = %q{refinerycms}
@@ -132,12 +132,6 @@ Gem::Specification.new do |s|
     'lib/refinery/testing/controller_macros',
     'lib/refinery/testing/controller_macros/authentication.rb',
     'lib/refinery/testing/controller_macros.rb',
-    'lib/refinery/testing/factories',
-    'lib/refinery/testing/factories/image.rb',
-    'lib/refinery/testing/factories/page.rb',
-    'lib/refinery/testing/factories/resource.rb',
-    'lib/refinery/testing/factories/user.rb',
-    'lib/refinery/testing/factories.rb',
     'lib/refinery/testing/request_macros',
     'lib/refinery/testing/request_macros/authentication.rb',
     'lib/refinery/testing/request_macros.rb',
