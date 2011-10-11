@@ -10,13 +10,14 @@ h3. Setup
 
 Before you start translating, you should clone a fresh copy of Refinery from GitHub. See "this guide":/guides/how-to-contribute-to-refinery for information how to do that.
 
-To make things a bit easier for the guys at Resolve, please create a branch like i18n_LOCALE (example: i18n_nl). This makes it much easier for it to be merged in.
+It's not required but we like to create separate branch when adding new feature. You can create
+new branch by typing
 
 <shell>
 $ git checkout -b i18n_nl
 </shell>
 
-And you're ready to roll!
+in the terminal.
 
 h3. Finding missing keys
 
@@ -30,25 +31,26 @@ The output of this will look like this
 
 <pre>
 Searching for missing translations for the locale: nl
-admin.pages.form_advanced_options.page_options in pages/app/views/admin/pages/_form_advanced_options.html.erb      is not in any nl locale file
-admin.pages_dialogs.link_to.insert in pages/app/views/admin/pages_dialogs/link_to.html.erb     is not in any nl locale file
+refinery.admin.pages.form_advanced_options.page_options in pages/app/views/refinery/admin/pages/_form_advanced_options.html.erb      is not in any nl locale file
+refinery.admin.pages_dialogs.link_to.insert in pages/app/views/refinery/admin/pages_dialogs/link_to.html.erb     is not in any nl locale file
 Number of missing translations for nl: 2
 </pre>
 
-As you can see, there are two missing keys: +admin.pages.form_advanced_options.page_options+ and +admin.pages_dialogs.link_to.insert+
+As you can see, there are two missing keys: +refinery.admin.pages.form_advanced_options.page_options+ and +refinery.admin.pages_dialogs.link_to.insert+
 
 h3. Adding the keys
 
 Each plugin has its own locale YAML files. The one we'll have to fix is +pages/config/locales/nl.yml+. Note that it is important to put the right key in the right file.
 
-The key +admin.pages_dialogs.link_to.insert+, is to be represented in YAML like this:
+The key +refinery.admin.pages_dialogs.link_to.insert+, is to be represented in YAML like this:
 
 <yaml>
 nl:
-  admin:
-    pages_dialogs:
-      link_to:
-        insert: Voeg in
+  refinery:
+    admin:
+      pages_dialogs:
+        link_to:
+          insert: Voeg in
 </yaml>
 
 We'd love to see you order the keys exactly like the en.yml version. This way, you can use a diff-enabled-editor, to open both the +en.yml+ and +nl.yml+ file, and blazingly fast update the locale.
@@ -62,10 +64,8 @@ h3. Run the Refinery tests
 Run the Refinery tests to be sure you produced valid YAML or didn't break something.
 
 <shell>
-$ rake
+$ bundle exec rspec ./*/spec
 </shell>
-
-If this doesn't work. Follow the "How to test Refinery guide":/guides/how-to-test-refinery
 
 h3. Commit & Push
 
