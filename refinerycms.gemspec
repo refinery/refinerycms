@@ -33,8 +33,6 @@ Gem::Specification.new do |s|
     '.rspec',
     '.yardopts',
     'Gemfile',
-    'Gemfile',
-    'Gemfile.lock',
     'Guardfile',
     'Rakefile',
     'bin',
