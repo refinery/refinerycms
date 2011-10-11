@@ -2,20 +2,20 @@ module Refinery
   module Core
     class Engine < ::Rails::Engine
       isolate_namespace ::Refinery
-      
-      def self.load_decorators        
+
+      def self.load_decorators
         Dir.glob(File.join(Rails.root, "app/decorators/**/*_decorator.rb")) do |c|
           Rails.application.config.cache_classes ? require(c) : load(c)
         end
       end
-      
+
       config.autoload_paths += %W( #{config.root}/lib )
 
       # Attach ourselves to the Rails application.
       config.before_configuration do
         ::Refinery::Core.attach_to_application!
       end
-      
+
       refinery.after_inclusion &method(:load_decorators).to_proc
 
       # Wrap errors in spans and cache vendored assets.
@@ -76,10 +76,10 @@ module Refinery
 
       initializer "refinery.assets.precompile" do |app|
          app.config.assets.precompile += [
-           "refinery/*", 
-           "refinery/icons/*", 
-           "wymeditor/lang/*", 
-           "wymeditor/skins/refinery/*", 
+           "refinery/*",
+           "refinery/icons/*",
+           "wymeditor/lang/*",
+           "wymeditor/skins/refinery/*",
            "wymeditor/skins/refinery/**/*",
            "modernizr-min.js",
            "dd_belatedpng.js"

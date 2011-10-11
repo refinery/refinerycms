@@ -8,7 +8,7 @@ def setup_environment
   require 'rspec/rails'
   require 'capybara/rspec'
   require 'factory_girl_rails'
-  
+
   Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 
   Rails.backtrace_cleaner.remove_silencers!
@@ -24,7 +24,7 @@ end
 
 def each_run
   FactoryGirl.reload
-  
+
   Dir[Rails.root.join('spec/factories/**/*.rb')].each { |f| require f }
 end
 

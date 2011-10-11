@@ -2,7 +2,7 @@ require 'refinerycms-core'
 require 'refinery/generators/testing_generator'
 
 module Refinery
-  module Testing    
+  module Testing
     autoload :ControllerMacros, 'refinery/testing/controller_macros'
     autoload :RequestMacros, 'refinery/testing/request_macros'
 

@@ -36,7 +36,7 @@ module ::Refinery
       # Massage environment files
       %w(development test production).map{|e| "config/environments/#{e}.rb"}.each do |env|
         next unless destination_path.join(env).file?
-        
+
         gsub_file env, "config.assets.compile = false", "config.assets.compile = true", :verbose => false
 
         unless (env_file_contents = destination_path.join(env).read) =~ %r{Refinery.rescue_not_found}
@@ -101,7 +101,7 @@ module ::Refinery
       }.sort.each do |path|
         copy_file path, path.to_s.gsub(self.class.source_root.to_s, destination_path.to_s)
       end
-      
+
       # Create decorator directories
       ['controllers', 'models'].each do |decorator_namespace|
         src_file_path = "app/decorators/#{decorator_namespace}/refinery/.gitkeep"

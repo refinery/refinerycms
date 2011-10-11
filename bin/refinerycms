@@ -111,7 +111,7 @@ module Refinery
         opts.on("--trace", "Investigate any problems with the installer") do
           @options[:trace] = true
         end
-        
+
         opts.on('-r', "--rails-version VERSION", String, "Override the version of rails used to generate your application.") do |version|
           @options[:rails][:version] = version
         end
@@ -147,7 +147,7 @@ module Refinery
 
       # Run any database migrations
       migrate! unless @options[:database][:skip]
-      
+
       # Deploy to a hosting provider
       deploy!
 

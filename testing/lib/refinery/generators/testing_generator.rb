@@ -18,10 +18,10 @@ module Refinery
           copy_file src_path, destination_path.join(src_path.relative_path_from(files_path))
         end
       end
-      
+
       def dummy_app
         self.silence_puts = true
-        
+
         # Run Refinery generators to build dummy app
         dummy_app_destination = destination_path.join("spec", "dummy")
         [
@@ -38,7 +38,7 @@ module Refinery
       end
 
       private
-      
+
       # Return destination application's name from it's gemfile
       def gem_name
         return @gem_name if @gem_name
