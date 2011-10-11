@@ -20,12 +20,11 @@ def setup_environment
   ENV["RAILS_ENV"] ||= 'test'
   # simplecov should be loaded _before_ models, controllers, etc are loaded.
   setup_simplecov unless ENV["SKIP_COV"] || !defined?(SimpleCov)
-
+  
   require File.expand_path("../../config/environment", __FILE__)
 
   require 'rspec/rails'
   require 'capybara/rspec'
-  require 'factory_girl_rails'
 
   Rails.backtrace_cleaner.remove_silencers!
 
@@ -50,8 +49,6 @@ def each_run
   }.flatten.sort.each do |support_file|
     require support_file
   end
-  
-  require 'refinery/testing/factories'
 end
 
 # If spork is available in the Gemfile it'll be used but we don't force it.

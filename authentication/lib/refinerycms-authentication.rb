@@ -5,7 +5,12 @@ require File.expand_path('../generators/authentication_generator', __FILE__)
 
 module Refinery
   module Authentication
-
+    class << self
+      def factory_paths
+        @factory_paths ||= [ File.expand_path("../../spec/factories", __FILE__) ]
+      end
+    end
+    
     class Engine < ::Rails::Engine
       isolate_namespace ::Refinery
 
