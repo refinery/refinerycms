@@ -10,7 +10,7 @@ module Refinery
         @factory_paths ||= [ File.expand_path("../../spec/factories", __FILE__) ]
       end
     end
-    
+
     class Engine < ::Rails::Engine
       isolate_namespace ::Refinery
 

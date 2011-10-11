@@ -27,7 +27,7 @@ module Refinery
       def use_marketable_urls=(value)
         ::Refinery::Setting.set(:use_marketable_urls, :value => value, :scoping => 'pages')
       end
-      
+
       def factory_paths
         @factory_paths ||= [ File.expand_path("../../spec/factories", __FILE__) ]
       end
