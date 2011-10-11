@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.version           = %q{2.0.0}
   s.summary           = %q{Authentication engine for Refinery CMS}
   s.description       = %q{The default authentication engine for Refinery CMS}
-  s.date              = %q{2011-10-11}
+  s.date              = %q{2011-10-10}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
   s.rubyforge_project = %q{refinerycms}
@@ -115,6 +115,8 @@ Gem::Specification.new do |s|
     'spec/controllers/refinery',
     'spec/controllers/refinery/admin',
     'spec/controllers/refinery/admin/users_controller_spec.rb',
+    'spec/factories',
+    'spec/factories/user.rb',
     'spec/models',
     'spec/models/refinery',
     'spec/models/refinery/user_spec.rb',
