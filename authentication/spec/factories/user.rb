@@ -1,7 +1,7 @@
 # This is a temporary hack to get around some fuckery with Devise when
 # using the authentication macros in request specs that are defined in
 # refinerycms-testing. If you remove this line ensure that tests pass
-# in an engine that is testing against this Factory via the 
+# in an engine that is testing against this Factory via the
 # authentication macros in refinerycms-testing.
 # 10-11-2011 - Jamie Winsor - jamie@enmasse.com
 require Refinery.roots("authentication").join("app/models/refinery/role.rb")

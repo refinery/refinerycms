@@ -4,7 +4,7 @@ require "generator_spec/test_case"
 module Refinery
   describe ImagesGenerator do
     include GeneratorSpec::TestCase
-    destination File.expand_path("../../tmp", __FILE__)
+    destination File.expand_path("../../../../tmp", __FILE__)
 
     before(:each) do
       prepare_destination
