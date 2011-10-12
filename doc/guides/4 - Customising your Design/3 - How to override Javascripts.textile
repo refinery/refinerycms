@@ -25,7 +25,7 @@ It is easy to override the files that are provided by default. You simply have t
 <% content_for :javascripts do %>
   <% javascript_include_tag('jquery.cycle.all.js', 'jquery.super_awesome.plugin.js', 'more.js') %>
 <% end %>
-</shel>
+</shell>
 
 This will override the javascript files that are included on your home page. If you want to override the files for other pages you can override show.html.erb and include or exclude any files you desire.
 
