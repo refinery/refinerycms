@@ -145,25 +145,7 @@ Gem::Specification.new do |s|
     'spec/requests/refinery',
     'spec/requests/refinery/admin',
     'spec/requests/refinery/admin/pages_spec.rb',
-    'spec/requests/refinery/pages_spec.rb',
-    'spec/tmp',
-    'spec/tmp/config',
-    'spec/tmp/config/initializers',
-    'spec/tmp/config/initializers/refinery_pages.rb',
-    'spec/tmp/db',
-    'spec/tmp/db/migrate',
-    'spec/tmp/db/migrate/20111012004801_create_refinerycms_pages_schema.rb',
-    'spec/tmp/db/migrate/20111012004802_remove_cached_slug_from_pages.rb',
-    'spec/tmp/db/migrate/20111012004803_translate_page_plugin.rb',
-    'spec/tmp/db/migrate/20111012004804_translate_custom_title_on_pages.rb',
-    'spec/tmp/db/migrate/20111012004805_remove_translated_fields_from_pages.rb',
-    'spec/tmp/db/migrate/20111012004806_create_seo_meta.rb',
-    'spec/tmp/db/migrate/20111012004807_create_add_template_columns.rb',
-    'spec/tmp/db/migrate/20111012004808_add_custom_slug_to_refinery_page_translations.rb',
-    'spec/tmp/db/migrate/20111012004809_rename_custom_title_to_menu_title_in_refinery_pages.rb',
-    'spec/tmp/db/migrate/20111012004810_remove_custom_title_from_refinery_pages.rb',
-    'spec/tmp/db/seeds',
-    'spec/tmp/db/seeds/pages.rb'
+    'spec/requests/refinery/pages_spec.rb'
   ]
 
   s.add_dependency 'refinerycms-core',            '= 2.0.0'
