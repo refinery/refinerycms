@@ -3,12 +3,6 @@ require 'factory_girl_rails'
 
 module Refinery
   module Testing
-    require 'refinery/testing/railtie' if defined?(Rails)
-    require 'refinery/generators/testing_generator'
-
-    autoload :ControllerMacros, 'refinery/testing/controller_macros'
-    autoload :RequestMacros, 'refinery/testing/request_macros'
-
     class << self
       attr_accessor :root
       def root
@@ -28,5 +22,11 @@ module Refinery
         FactoryGirl.find_definitions
       end
     end
+    
+    require 'refinery/testing/railtie' if defined?(Rails)
+    require 'refinery/generators/testing_generator'
+
+    autoload :ControllerMacros, 'refinery/testing/controller_macros'
+    autoload :RequestMacros, 'refinery/testing/request_macros'
   end
 end
