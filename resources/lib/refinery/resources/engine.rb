@@ -23,7 +23,7 @@ module Refinery
           }
         end
       end
-      
+
       config.after_initialize do
         Refinery.engines << 'resources'
       end

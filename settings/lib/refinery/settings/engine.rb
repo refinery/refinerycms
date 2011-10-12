@@ -15,7 +15,7 @@ module Refinery
           plugin.menu_match = /refinery\/settings$/
         end
       end
-      
+
       config.after_initialize do
         Refinery.engines << 'settings'
       end

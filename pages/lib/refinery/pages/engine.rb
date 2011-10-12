@@ -37,7 +37,7 @@ module Refinery
           }
         end
       end
-      
+
       config.after_initialize do
         Refinery.engines << 'pages'
       end

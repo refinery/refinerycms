@@ -8,7 +8,7 @@ module Refinery
   module Pages
     require 'refinery/pages/engine' if defined?(Rails)
     require 'refinery/generators/pages_generator'
-    
+
     module Admin
       autoload :InstanceMethods, 'refinery/pages/admin/instance_methods'
     end
