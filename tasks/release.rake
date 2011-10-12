@@ -4,7 +4,8 @@ require File.expand_path('../../core/lib/refinery/version', __FILE__)
 version = Refinery::Version.to_s
 root = File.expand_path('../../', __FILE__)
 
-mkdir_p "#{root}/pkg"
+pkg_dir = "#{root}/pkg"
+mkdir_p "#{root}/pkg" unless File.exists?(pkg_dir)
 
 (ENGINES + ['refinerycms']).each do |engine|
   namespace engine do
