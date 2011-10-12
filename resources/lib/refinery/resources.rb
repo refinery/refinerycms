@@ -9,7 +9,7 @@ module Refinery
 
     autoload :Dragonfly, 'refinery/resources/dragonfly'
     autoload :Validators, 'refinery/resources/validators'
-    
+
     DEFAULT_MAX_FILE_SIZE = 52428800
     DEFAULT_PAGES_PER_DIALOG = 12
     DEFAULT_PAGES_PER_ADMIN_INDEX = 20
@@ -41,7 +41,7 @@ module Refinery
         self.pages_per_dialog = DEFAULT_PAGES_PER_DIALOG
         self.pages_per_admin_index = DEFAULT_PAGES_PER_ADMIN_INDEX
       end
-      
+
       attr_accessor :root
       def root
         @root ||= Pathname.new(File.expand_path('../../../', __FILE__))
