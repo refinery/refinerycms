@@ -7,12 +7,12 @@ RSpec.configure do |config|
   config.before(:each) do
     Refinery::Images.reset!
     Refinery::Resources::Options.reset!
-    Refinery::Pages::Options.reset!
+    Refinery::Pages.reset!
   end
 
   config.after(:each) do
     Refinery::Images.reset!
     Refinery::Resources::Options.reset!
-    Refinery::Pages::Options.reset!
+    Refinery::Pages.reset!
   end
 end
