@@ -22,7 +22,7 @@ module Refinery
         directory "config" do
           directory "initializers" do
             file "refinery_pages.rb" do
-              contains "Refinery::Pages::Options.configure"
+              contains "Refinery::Pages.configure"
             end
           end
         end

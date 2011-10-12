@@ -5,14 +5,14 @@ RSpec.configure do |config|
   config.extend Refinery::Testing::RequestMacros::Authentication, :type => :request
 
   config.before(:each) do
-    Refinery::Images::Options.reset!
-    Refinery::Resources::Options.reset!
-    Refinery::Pages::Options.reset!
+    Refinery::Images.reset!
+    Refinery::Resources.reset!
+    Refinery::Pages.reset!
   end
 
   config.after(:each) do
-    Refinery::Images::Options.reset!
-    Refinery::Resources::Options.reset!
-    Refinery::Pages::Options.reset!
+    Refinery::Images.reset!
+    Refinery::Resources.reset!
+    Refinery::Pages.reset!
   end
 end

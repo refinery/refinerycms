@@ -28,7 +28,7 @@ module Refinery
     class << self
       # How many resources per page should be displayed?
       def per_page(dialog = false)
-        dialog ? Resources::Options.pages_per_dialog : Resources::Options.pages_per_admin_index
+        dialog ? Resources.pages_per_dialog : Resources.pages_per_admin_index
       end
 
       def create_resources(params)
