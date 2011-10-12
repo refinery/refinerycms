@@ -22,7 +22,7 @@ module Refinery
         FactoryGirl.find_definitions
       end
     end
-    
+
     require 'refinery/testing/railtie' if defined?(Rails)
     require 'refinery/generators/testing_generator'
 

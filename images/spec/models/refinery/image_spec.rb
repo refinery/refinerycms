@@ -48,21 +48,21 @@ module Refinery
     describe ".per_page" do
       context "dialog is true" do
         context "has_size_options is true" do
-          it "returns image count specified by Images::Options.pages_per_dialog_that_have_size_options option" do
-            ::Refinery::Image.per_page(true, true).should == Images::Options.pages_per_dialog_that_have_size_options
+          it "returns image count specified by Images.pages_per_dialog_that_have_size_options option" do
+            ::Refinery::Image.per_page(true, true).should == Images.pages_per_dialog_that_have_size_options
           end
         end
 
         context "has_size_options is false" do
-          it "returns image count specified by Images::Options.pages_per_dialog option" do
-            ::Refinery::Image.per_page(true).should == Images::Options.pages_per_dialog
+          it "returns image count specified by Images.pages_per_dialog option" do
+            ::Refinery::Image.per_page(true).should == Images.pages_per_dialog
           end
         end
       end
 
       context "dialog is false" do
-        it "returns image count specified by Images::Options.pages_per_admin_index option" do
-          ::Refinery::Image.per_page.should == Images::Options.pages_per_admin_index
+        it "returns image count specified by Images.pages_per_admin_index option" do
+          ::Refinery::Image.per_page.should == Images.pages_per_admin_index
         end
       end
     end
@@ -119,8 +119,8 @@ module Refinery
     describe "validations" do
       describe "valid #image" do
         before(:each) do
-          @file = Refinery.roots("testing").join("assets/beach.jpeg")
-          Images::Options.max_image_size = (File.read(@file).size + 10.megabytes)
+          @file = Refinery.roots("images").join("spec/fixtures/beach.jpeg")
+          Images.max_image_size = (File.read(@file).size + 10.megabytes)
         end
 
         it "should be valid when size does not exceed .max_image_size" do
@@ -130,8 +130,8 @@ module Refinery
 
       describe "invalid #image" do
         before(:each) do
-          @file = Refinery.roots("testing").join("assets/beach.jpeg")
-          Images::Options.max_image_size = 0
+          @file = Refinery.roots("images").join("spec/fixtures/beach.jpeg")
+          Images.max_image_size = 0
           @image = Image.new(:image => @file)
         end
 
@@ -142,7 +142,7 @@ module Refinery
         it "should contain an error message" do
           @image.valid?
           @image.errors.should_not be_empty
-          @image.errors[:image].should == ["Image should be smaller than #{Images::Options.max_image_size} bytes in size"]
+          @image.errors[:image].should == ["Image should be smaller than #{Images.max_image_size} bytes in size"]
         end
       end
     end

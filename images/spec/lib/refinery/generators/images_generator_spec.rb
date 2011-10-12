@@ -19,7 +19,7 @@ module Refinery
         directory "config" do
           directory "initializers" do
             file "refinery_images.rb" do
-              contains "Refinery::Images::Options.configure"
+              contains "Refinery::Images.configure"
             end
           end
         end

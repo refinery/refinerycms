@@ -19,7 +19,7 @@ module Refinery
         directory "config" do
           directory "initializers" do
             file "refinery_resources.rb" do
-              contains "Refinery::Resources::Options.configure"
+              contains "Refinery::Resources.configure"
             end
           end
         end
