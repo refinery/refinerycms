@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.version           = %q{2.0.0}
   s.summary           = %q{Resources engine for Refinery CMS}
   s.description       = %q{Handles all file upload and processing functionality in Refinery CMS.}
-  s.date              = %q{2011-10-10}
+  s.date              = %q{2011-10-11}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
   s.rubyforge_project = %q{refinerycms}
@@ -73,13 +73,13 @@ Gem::Specification.new do |s|
     'db/migrate/20100913234709_create_refinerycms_resources_schema.rb',
     'lib',
     'lib/gemspec.rb',
-    'lib/generators',
-    'lib/generators/resources_generator.rb',
-    'lib/generators/templates',
-    'lib/generators/templates/config',
-    'lib/generators/templates/config/initializers',
-    'lib/generators/templates/config/initializers/refinery_resources.rb.erb',
     'lib/refinery',
+    'lib/refinery/generators',
+    'lib/refinery/generators/resources_generator.rb',
+    'lib/refinery/generators/templates',
+    'lib/refinery/generators/templates/config',
+    'lib/refinery/generators/templates/config/initializers',
+    'lib/refinery/generators/templates/config/initializers/refinery_resources.rb.erb',
     'lib/refinery/resources',
     'lib/refinery/resources/dragonfly.rb',
     'lib/refinery/resources/engine.rb',
@@ -94,9 +94,9 @@ Gem::Specification.new do |s|
     'spec/factories',
     'spec/factories/resource.rb',
     'spec/lib',
-    'spec/lib/generators',
-    'spec/lib/generators/resources_generator_spec.rb',
     'spec/lib/refinery',
+    'spec/lib/refinery/generators',
+    'spec/lib/refinery/generators/resources_generator_spec.rb',
     'spec/lib/refinery/resources',
     'spec/lib/refinery/resources/options_spec.rb',
     'spec/models',

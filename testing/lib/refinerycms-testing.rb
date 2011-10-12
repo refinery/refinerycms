@@ -1,9 +1,11 @@
 require 'refinerycms-core'
-require 'refinery/generators/testing_generator'
 require 'factory_girl_rails'
 
 module Refinery
   module Testing
+    require 'refinery/testing/railtie' if defined?(Rails)
+    require 'refinery/generators/testing_generator'
+
     autoload :ControllerMacros, 'refinery/testing/controller_macros'
     autoload :RequestMacros, 'refinery/testing/request_macros'
 
@@ -26,20 +28,5 @@ module Refinery
         FactoryGirl.find_definitions
       end
     end
-
-    class Engine < ::Rails::Engine
-      isolate_namespace ::Refinery
-
-      config.after_initialize do
-        ::Refinery::Plugin.register do |plugin|
-          plugin.pathname = root
-          plugin.name = 'refinerycms_testing_plugin'
-          plugin.version = ::Refinery.version
-          plugin.hide_from_menu = true
-        end
-      end
-    end
   end
 end
-
-::Refinery.engines << 'testing'

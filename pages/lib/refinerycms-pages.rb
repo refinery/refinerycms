@@ -3,10 +3,12 @@ require 'awesome_nested_set'
 require 'globalize3'
 require 'friendly_id'
 require 'seo_meta'
-require File.expand_path('../generators/pages_generator', __FILE__)
 
 module Refinery
   module Pages
+    require 'refinery/pages/engine' if defined?(Rails)
+    require 'refinery/generators/pages_generator'
+
     module Admin
       autoload :InstanceMethods, 'refinery/pages/admin/instance_methods'
     end
@@ -34,6 +36,3 @@ module Refinery
     end
   end
 end
-
-require 'refinery/pages/engine'
-::Refinery.engines << 'pages'
