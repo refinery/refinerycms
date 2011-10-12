@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.version           = %q{2.0.0}
   s.summary           = %q{Pages engine for Refinery CMS}
   s.description       = %q{The default content engine of Refinery CMS. This engine handles the administration and display of user-editable pages.}
-  s.date              = %q{2011-10-10}
+  s.date              = %q{2011-10-11}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
   s.rubyforge_project = %q{refinerycms}
@@ -110,16 +110,16 @@ Gem::Specification.new do |s|
     'db/seeds/pages.rb',
     'lib',
     'lib/gemspec.rb',
-    'lib/generators',
-    'lib/generators/pages_generator.rb',
-    'lib/generators/templates',
-    'lib/generators/templates/config',
-    'lib/generators/templates/config/initializers',
-    'lib/generators/templates/config/initializers/refinery_pages.rb.erb',
     'lib/pages',
     'lib/pages/marketable_urls.rb',
     'lib/pages/tabs.rb',
     'lib/refinery',
+    'lib/refinery/generators',
+    'lib/refinery/generators/pages_generator.rb',
+    'lib/refinery/generators/templates',
+    'lib/refinery/generators/templates/config',
+    'lib/refinery/generators/templates/config/initializers',
+    'lib/refinery/generators/templates/config/initializers/refinery_pages.rb.erb',
     'lib/refinery/pages',
     'lib/refinery/pages/admin',
     'lib/refinery/pages/admin/instance_methods.rb',
@@ -134,6 +134,8 @@ Gem::Specification.new do |s|
     'spec/factories/pages.rb',
     'spec/lib',
     'spec/lib/refinery',
+    'spec/lib/refinery/generators',
+    'spec/lib/refinery/generators/pages_generator_spec.rb',
     'spec/lib/refinery/pages',
     'spec/lib/refinery/pages/options_spec.rb',
     'spec/models',
@@ -143,7 +145,25 @@ Gem::Specification.new do |s|
     'spec/requests/refinery',
     'spec/requests/refinery/admin',
     'spec/requests/refinery/admin/pages_spec.rb',
-    'spec/requests/refinery/pages_spec.rb'
+    'spec/requests/refinery/pages_spec.rb',
+    'spec/tmp',
+    'spec/tmp/config',
+    'spec/tmp/config/initializers',
+    'spec/tmp/config/initializers/refinery_pages.rb',
+    'spec/tmp/db',
+    'spec/tmp/db/migrate',
+    'spec/tmp/db/migrate/20111012004801_create_refinerycms_pages_schema.rb',
+    'spec/tmp/db/migrate/20111012004802_remove_cached_slug_from_pages.rb',
+    'spec/tmp/db/migrate/20111012004803_translate_page_plugin.rb',
+    'spec/tmp/db/migrate/20111012004804_translate_custom_title_on_pages.rb',
+    'spec/tmp/db/migrate/20111012004805_remove_translated_fields_from_pages.rb',
+    'spec/tmp/db/migrate/20111012004806_create_seo_meta.rb',
+    'spec/tmp/db/migrate/20111012004807_create_add_template_columns.rb',
+    'spec/tmp/db/migrate/20111012004808_add_custom_slug_to_refinery_page_translations.rb',
+    'spec/tmp/db/migrate/20111012004809_rename_custom_title_to_menu_title_in_refinery_pages.rb',
+    'spec/tmp/db/migrate/20111012004810_remove_custom_title_from_refinery_pages.rb',
+    'spec/tmp/db/seeds',
+    'spec/tmp/db/seeds/pages.rb'
   ]
 
   s.add_dependency 'refinerycms-core',            '= 2.0.0'

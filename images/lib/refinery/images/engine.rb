@@ -1,3 +1,6 @@
+require 'refinerycms-images'
+require 'rails'
+
 module Refinery
   module Images
     class Engine < ::Rails::Engine
@@ -20,6 +23,10 @@ module Refinery
           }
           plugin.url = app.routes.url_helpers.refinery_admin_images_path
         end
+      end
+
+      config.after_initialize do
+        Refinery.engines << 'images'
       end
     end
   end

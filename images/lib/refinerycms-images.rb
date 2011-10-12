@@ -1,10 +1,12 @@
+require 'refinerycms-core'
 require 'dragonfly'
 require 'rack/cache'
-require 'refinerycms-core'
-require File.expand_path('../generators/images_generator', __FILE__)
 
 module Refinery
   module Images
+    require 'refinery/images/engine' if defined?(Rails)
+    require 'refinery/generators/images_generator'
+
     autoload :Dragonfly, 'refinery/images/dragonfly'
     autoload :Validators, 'refinery/images/validators'
     autoload :Options, 'refinery/images/options'
@@ -21,6 +23,3 @@ module Refinery
     end
   end
 end
-
-require 'refinery/images/engine'
-::Refinery.engines << 'images'

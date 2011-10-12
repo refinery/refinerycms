@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.version           = %q{2.0.0}
   s.summary           = %q{Authentication engine for Refinery CMS}
   s.description       = %q{The default authentication engine for Refinery CMS}
-  s.date              = %q{2011-10-10}
+  s.date              = %q{2011-10-11}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
   s.rubyforge_project = %q{refinerycms}
@@ -103,10 +103,13 @@ Gem::Specification.new do |s|
     'db/migrate/20110106184757_add_remember_created_at_to_users.rb',
     'db/migrate/20110325213325_remove_password_salt_from_users.rb',
     'lib',
-    'lib/authenticated_system.rb',
     'lib/gemspec.rb',
-    'lib/generators',
-    'lib/generators/authentication_generator.rb',
+    'lib/refinery',
+    'lib/refinery/authenticated_system.rb',
+    'lib/refinery/authentication',
+    'lib/refinery/authentication/engine.rb',
+    'lib/refinery/generators',
+    'lib/refinery/generators/authentication_generator.rb',
     'lib/refinerycms-authentication.rb',
     'license.md',
     'refinerycms-authentication.gemspec',
@@ -117,6 +120,10 @@ Gem::Specification.new do |s|
     'spec/controllers/refinery/admin/users_controller_spec.rb',
     'spec/factories',
     'spec/factories/user.rb',
+    'spec/lib',
+    'spec/lib/refinery',
+    'spec/lib/refinery/generators',
+    'spec/lib/refinery/generators/authentication_generator_spec.rb',
     'spec/models',
     'spec/models/refinery',
     'spec/models/refinery/user_spec.rb',

@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.version           = %q{2.0.0}
   s.summary           = %q{Settings engine for Refinery CMS}
   s.description       = %q{The default settings engine that is required by Refinery CMS core. Adds programmer creatable, user editable settings for each engine.}
-  s.date              = %q{2011-10-10}
+  s.date              = %q{2011-10-11}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
   s.rubyforge_project = %q{refinerycms}
@@ -79,12 +79,19 @@ Gem::Specification.new do |s|
     'db/migrate/20110117053357_remove_duplicate_user_image_sizes_setting.rb',
     'lib',
     'lib/gemspec.rb',
-    'lib/generators',
-    'lib/generators/settings_generator.rb',
+    'lib/refinery',
+    'lib/refinery/generators',
+    'lib/refinery/generators/settings_generator.rb',
+    'lib/refinery/settings',
+    'lib/refinery/settings/engine.rb',
     'lib/refinerycms-settings.rb',
     'license.md',
     'refinerycms-settings.gemspec',
     'spec',
+    'spec/lib',
+    'spec/lib/refinery',
+    'spec/lib/refinery/generators',
+    'spec/lib/refinery/generators/settings_generator_spec.rb',
     'spec/models',
     'spec/models/refinery',
     'spec/models/refinery/setting_spec.rb',

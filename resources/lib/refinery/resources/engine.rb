@@ -1,3 +1,6 @@
+require 'refinerycms-resources'
+require 'rails'
+
 module Refinery
   module Resources
     class Engine < ::Rails::Engine
@@ -19,6 +22,10 @@ module Refinery
             :class => ::Refinery::Resource
           }
         end
+      end
+
+      config.after_initialize do
+        Refinery.engines << 'resources'
       end
     end
   end
