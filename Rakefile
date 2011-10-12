@@ -10,3 +10,8 @@ require File.expand_path('../config/application', __FILE__)
 require 'rake'
 
 ::RefineryApp::Application.load_tasks
+
+load 'tasks/release.rake'
+
+desc "Build gem files for all projects"
+task :build => "all:build"
