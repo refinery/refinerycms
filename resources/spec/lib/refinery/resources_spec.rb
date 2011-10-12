@@ -11,7 +11,7 @@ module Refinery
         subject.max_file_size.should == 8201984
       end
     end
-    
+
     describe "#reset!" do
       it "should set max_file_size back to the default value" do
         subject.max_file_size.should == subject::DEFAULT_MAX_FILE_SIZE
