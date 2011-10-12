@@ -23,7 +23,7 @@ module Refinery
         click_link "Add new image"
 
         within_frame "dialog_iframe" do
-          attach_file "image_image", Refinery.roots("testing").join("assets/beach.jpeg")
+          attach_file "image_image", Refinery.roots("images").join("spec/fixtures/beach.jpeg")
           click_button "Save"
         end
 
