@@ -51,7 +51,7 @@ module Refinery
     end
 
     describe ".create_resources" do
-      let(:file) { RRefinery.roots("resources").join("spec/fixtures/refinery_is_awesome.txt") }
+      let(:file) { Refinery.roots("resources").join("spec/fixtures/refinery_is_awesome.txt") }
 
       context "only one resource uploaded" do
         it "returns an array containing one resource" do
@@ -75,7 +75,7 @@ module Refinery
     describe "validations" do
       describe "valid #file" do
         before(:each) do
-          @file = RRefinery.roots("resources").join("spec/fixtures/refinery_is_awesome.txt")
+          @file = Refinery.roots("resources").join("spec/fixtures/refinery_is_awesome.txt")
           Resources.max_file_size = (File.read(@file).size + 10)
         end
 
@@ -86,7 +86,7 @@ module Refinery
 
       describe "invalid #file" do
         before(:each) do
-          @file = RRefinery.roots("resources").join("spec/fixtures/refinery_is_awesome.txt")
+          @file = Refinery.roots("resources").join("spec/fixtures/refinery_is_awesome.txt")
           Resources.max_file_size = (File.read(@file).size - 10)
           @resource = Resource.new(:file => @file)
         end
