@@ -100,6 +100,4 @@ Gem::Specification.new do |s|
     'spec/requests/refinery/admin',
     'spec/requests/refinery/admin/settings_spec.rb'
   ]
-
-  s.add_dependency 'refinerycms-base', '= 2.0.0'
 end

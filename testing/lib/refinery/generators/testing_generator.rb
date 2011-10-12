@@ -24,7 +24,6 @@ module Refinery
       # Run Refinery generators to build dummy app
       dummy_app_destination = destination_path.join("spec", "dummy")
       [
-        Refinery::BaseGenerator,
         Refinery::AuthenticationGenerator,
         Refinery::SettingsGenerator,
         Refinery::ResourcesGenerator,

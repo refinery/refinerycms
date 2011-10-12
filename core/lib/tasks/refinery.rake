@@ -185,7 +185,7 @@ end
 
 desc "Recalculate $LOAD_PATH frequencies."
 task :recalculate_loaded_features_frequency => :environment do
-  require 'load_path_analyzer'
+  require 'refinery/load_path_analyzer'
 
   frequencies     = LoadPathAnalyzer.new($LOAD_PATH, $LOADED_FEATURES).frequencies
   ideal_load_path = frequencies.to_a.sort_by(&:last).map(&:first)

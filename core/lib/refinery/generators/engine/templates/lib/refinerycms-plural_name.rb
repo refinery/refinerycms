@@ -1,4 +1,4 @@
-require 'refinerycms-base'
+require 'refinerycms-core'
 
 module Refinery
   module <%= class_name.pluralize %><%= 'Engine' if plural_name == singular_name %>

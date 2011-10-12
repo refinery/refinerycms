@@ -76,6 +76,9 @@ capybara-*html
 .rvmrc
 .rvmrc.*
 
+#rbenv
+.rbenv-version
+
 #Sprockets
 public/assets
 

@@ -4,6 +4,8 @@ require 'rails'
 module Refinery
   module Resources
     class Engine < ::Rails::Engine
+      include Refinery::Engine
+      
       isolate_namespace ::Refinery
 
       initializer 'resources-with-dragonfly', :before => :load_config_initializers do |app|

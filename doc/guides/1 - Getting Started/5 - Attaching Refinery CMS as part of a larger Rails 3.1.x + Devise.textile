@@ -194,7 +194,6 @@ Now that we have a baseline example working ExistingApp using Devise, it's time 
 ...
   gem 'devise' #temporarily commented out,'~> 1.4.0'
 
-  gem 'refinerycms-base',       :git => 'git://github.com/resolve/refinerycms.git'
   gem 'refinerycms-core',       :git => 'git://github.com/resolve/refinerycms.git'
   gem 'refinerycms-dashboard',  :git => 'git://github.com/resolve/refinerycms.git'
   gem 'refinerycms-images',     :git => 'git://github.com/resolve/refinerycms.git'

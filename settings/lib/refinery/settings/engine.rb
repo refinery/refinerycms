@@ -4,6 +4,8 @@ require 'rails'
 module Refinery
   module Settings
     class Engine < ::Rails::Engine
+      include Refinery::Engine
+      
       isolate_namespace ::Refinery
 
       initializer "init plugin", :after => :set_routes_reloader do |app|

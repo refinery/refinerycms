@@ -28,8 +28,6 @@ Gem::Specification.new do |s|
       !f.exist? or f.to_s =~ /(\.(gem|rbc)|tmp(\/.*)?|spec\/tmp(\/.*)?)$/ or (f.directory? and f.children.empty?)
     }.map{|d| d.relative_path_from(gempath)}.uniq.sort.join("',\n    '")}'
   ]
-
-  s.add_dependency 'refinerycms-base', '= #{::Refinery::Version}'
 end
 EOF
 

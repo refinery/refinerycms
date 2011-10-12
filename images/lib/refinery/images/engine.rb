@@ -4,6 +4,8 @@ require 'rails'
 module Refinery
   module Images
     class Engine < ::Rails::Engine
+      include Refinery::Engine
+      
       isolate_namespace ::Refinery
 
       initializer 'images-with-dragonfly', :before => :load_config_initializers do |app|

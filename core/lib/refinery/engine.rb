@@ -1,20 +1,18 @@
-require 'rails/engine'
+require 'active_support/concern'
 
 module Refinery
   module Engine
-    class << self
-      def included(base)
-        base.module_eval do
-          class << self
-            def refinery
-              ::Refinery.config
-            end
-          end
-
-          def refinery
-            self.class.refinery
-          end
-        end
+    extend ActiveSupport::Concern
+    
+    module ClassMethods
+      def refinery
+        Refinery.config
+      end
+    end
+    
+    module InstanceMethods
+      def refinery
+        self.class.refinery
       end
     end
   end
