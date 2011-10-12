@@ -14,6 +14,7 @@ module Refinery
 
       config.after_initialize do
         Refinery.engines << 'testing'
+        Testing.load_factories
       end
     end
   end
