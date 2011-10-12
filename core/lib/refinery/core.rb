@@ -6,7 +6,7 @@ require 'will_paginate'
 
 module Refinery
   WINDOWS = !!(RbConfig::CONFIG['host_os'] =~ %r!(msdos|mswin|djgpp|mingw)!) unless defined? WINDOWS
-  
+
   autoload :Activity, 'refinery/activity'
   autoload :Application, 'refinery/application'
   autoload :ApplicationController, 'refinery/application_controller'
@@ -18,7 +18,7 @@ module Refinery
   autoload :Plugin,  'refinery/plugin'
   autoload :Plugins, 'refinery/plugins'
   autoload :Version, 'refinery/version'
-  
+
   # These have to be specified after the autoload to correct load issues on some systems.
   # As per commit 12af0e3e83a147a87c97bf7b29f343254c5fcb3c
   require 'refinerycms-settings'
@@ -90,7 +90,7 @@ module Refinery
   module Core
     require 'refinery/core/engine' if defined?(Rails)
     require 'refinery/generators/core_generator'
-    
+
     class << self
       def attach_to_application!
         ::Rails::Application.subclasses.each do |subclass|

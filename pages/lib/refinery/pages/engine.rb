@@ -5,7 +5,7 @@ module Refinery
   module Pages
     class Engine < ::Rails::Engine
       include Refinery::Engine
-      
+
       isolate_namespace ::Refinery
 
       config.before_initialize do

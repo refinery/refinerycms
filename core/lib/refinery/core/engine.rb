@@ -5,7 +5,7 @@ module Refinery
   module Core
     class Engine < ::Rails::Engine
       include Refinery::Engine
-      
+
       isolate_namespace ::Refinery
 
       def self.load_decorators
@@ -39,9 +39,9 @@ module Refinery
       # Register the plugin
       config.after_initialize do
         Rails::Engine.send :include, Refinery::Engine
-        
+
         Refinery.engines << 'core'
-        
+
         ::Refinery::Plugin.register do |plugin|
           plugin.pathname = root
           plugin.name = 'refinery_core'
