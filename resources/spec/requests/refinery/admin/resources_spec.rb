@@ -24,7 +24,7 @@ module Refinery
           click_link "Upload new file"
 
           within_frame "dialog_iframe" do
-            attach_file "resource_file", RRefinery.roots("resources").join("spec/fixtures/refinery_is_awesome.txt")
+            attach_file "resource_file", Refinery.roots("resources").join("spec/fixtures/refinery_is_awesome.txt")
             click_button "Save"
           end
 
