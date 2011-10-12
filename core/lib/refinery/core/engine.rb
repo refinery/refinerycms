@@ -64,7 +64,7 @@ module Refinery
       end
 
       initializer 'add catch all routes' do |app|
-        app.routes_reloader.paths << File.expand_path('refinery/catch_all_routes.rb', __FILE__)
+        app.routes_reloader.paths << File.expand_path('../../catch_all_routes.rb', __FILE__)
       end
 
       initializer 'add presenters' do |app|
