@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.version           = %q{2.0.0}
   s.summary           = %q{Resources engine for Refinery CMS}
   s.description       = %q{Handles all file upload and processing functionality in Refinery CMS.}
-  s.date              = %q{2011-10-11}
+  s.date              = %q{2011-10-12}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
   s.rubyforge_project = %q{refinerycms}
@@ -83,22 +83,24 @@ Gem::Specification.new do |s|
     'lib/refinery/resources',
     'lib/refinery/resources/dragonfly.rb',
     'lib/refinery/resources/engine.rb',
-    'lib/refinery/resources/options.rb',
     'lib/refinery/resources/validators',
     'lib/refinery/resources/validators/file_size_validator.rb',
     'lib/refinery/resources/validators.rb',
+    'lib/refinery/resources.rb',
     'lib/refinerycms-resources.rb',
     'license.md',
     'refinerycms-resources.gemspec',
     'spec',
     'spec/factories',
     'spec/factories/resource.rb',
+    'spec/fixtures',
+    'spec/fixtures/refinery_is_awesome.txt',
+    'spec/fixtures/refinery_is_awesome2.txt',
     'spec/lib',
     'spec/lib/refinery',
     'spec/lib/refinery/generators',
     'spec/lib/refinery/generators/resources_generator_spec.rb',
-    'spec/lib/refinery/resources',
-    'spec/lib/refinery/resources/options_spec.rb',
+    'spec/lib/refinery/resources_spec.rb',
     'spec/models',
     'spec/models/refinery',
     'spec/models/refinery/resource_spec.rb',
