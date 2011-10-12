@@ -111,14 +111,7 @@ Gem::Specification.new do |s|
     'spec/requests',
     'spec/requests/refinery',
     'spec/requests/refinery/admin',
-    'spec/requests/refinery/admin/images_spec.rb',
-    'spec/tmp',
-    'spec/tmp/config',
-    'spec/tmp/config/initializers',
-    'spec/tmp/config/initializers/refinery_images.rb',
-    'spec/tmp/db',
-    'spec/tmp/db/migrate',
-    'spec/tmp/db/migrate/20111012004751_create_refinerycms_images_schema.rb'
+    'spec/requests/refinery/admin/images_spec.rb'
   ]
 
   s.add_dependency 'refinerycms-core', '= 2.0.0'
