@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.version           = %q{2.0.0}
   s.summary           = %q{Images engine for Refinery CMS}
   s.description       = %q{Handles all image upload and processing functionality in Refinery CMS.}
-  s.date              = %q{2011-10-10}
+  s.date              = %q{2011-10-11}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
   s.rubyforge_project = %q{refinerycms}
@@ -79,13 +79,13 @@ Gem::Specification.new do |s|
     'db/migrate/20100913234707_create_refinerycms_images_schema.rb',
     'lib',
     'lib/gemspec.rb',
-    'lib/generators',
-    'lib/generators/images_generator.rb',
-    'lib/generators/templates',
-    'lib/generators/templates/config',
-    'lib/generators/templates/config/initializers',
-    'lib/generators/templates/config/initializers/refinery_images.rb.erb',
     'lib/refinery',
+    'lib/refinery/generators',
+    'lib/refinery/generators/images_generator.rb',
+    'lib/refinery/generators/templates',
+    'lib/refinery/generators/templates/config',
+    'lib/refinery/generators/templates/config/initializers',
+    'lib/refinery/generators/templates/config/initializers/refinery_images.rb.erb',
     'lib/refinery/images',
     'lib/refinery/images/dragonfly.rb',
     'lib/refinery/images/engine.rb',
@@ -100,9 +100,9 @@ Gem::Specification.new do |s|
     'spec/factories',
     'spec/factories/image.rb',
     'spec/lib',
-    'spec/lib/generators',
-    'spec/lib/generators/images_generator_spec.rb',
     'spec/lib/refinery',
+    'spec/lib/refinery/generators',
+    'spec/lib/refinery/generators/images_generator_spec.rb',
     'spec/lib/refinery/images',
     'spec/lib/refinery/images/options_spec.rb',
     'spec/models',
@@ -111,7 +111,14 @@ Gem::Specification.new do |s|
     'spec/requests',
     'spec/requests/refinery',
     'spec/requests/refinery/admin',
-    'spec/requests/refinery/admin/images_spec.rb'
+    'spec/requests/refinery/admin/images_spec.rb',
+    'spec/tmp',
+    'spec/tmp/config',
+    'spec/tmp/config/initializers',
+    'spec/tmp/config/initializers/refinery_images.rb',
+    'spec/tmp/db',
+    'spec/tmp/db/migrate',
+    'spec/tmp/db/migrate/20111012004751_create_refinerycms_images_schema.rb'
   ]
 
   s.add_dependency 'refinerycms-core', '= 2.0.0'
