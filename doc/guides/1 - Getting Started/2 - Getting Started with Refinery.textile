@@ -91,7 +91,7 @@ h5. Rails Application Templates
 These application templates are another very easy way to install Refinery, and allow for a great deal of control of your installation.  You can specify which version of Refinery that you wish to install simply by passing it to the command.
 
 <shell>
-$ rails new rickrockstar -m http://refinerycms.com/2.0.0
+$ rails new rickrockstar -m http://refinerycms.com/templates/2.0.0
 </shell>
 
 TIP. You can specify other versions of Refinery in the same fashion.  <tt>$ rails new rickrockstar -m http://refinerycms.com/edge</tt>
