@@ -17,7 +17,6 @@ module Refinery
         @factory_paths ||= [ File.expand_path("../../spec/factories", __FILE__) ]
       end
 
-      attr_accessor :root
       def root
         @root ||= Pathname.new(File.expand_path('../../', __FILE__))
       end

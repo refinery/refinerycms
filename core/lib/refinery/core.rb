@@ -25,7 +25,7 @@ module Refinery
   require 'refinery/generators'
 
   class << self
-    attr_accessor :base_cache_key, :gems, :rescue_not_found, :root, :roots, :s3_backend
+    attr_accessor :base_cache_key, :gems, :rescue_not_found, :s3_backend
 
     def base_cache_key
       @base_cache_key ||= :refinery
@@ -107,7 +107,6 @@ module Refinery
         end
       end
 
-      attr_accessor :root
       def root
         @root ||= Pathname.new(File.expand_path('../../../', __FILE__))
       end
