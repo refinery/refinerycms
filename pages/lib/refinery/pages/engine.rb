@@ -13,7 +13,6 @@ module Refinery
       end
 
       config.to_prepare do
-        require 'pages/tabs'
         require 'pages/marketable_urls'
         ::Refinery::Page.translation_class.send(:is_seo_meta)
         # set allowed attributes for mass assignment

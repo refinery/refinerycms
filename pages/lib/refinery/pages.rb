@@ -8,6 +8,7 @@ module Refinery
   module Pages
     require 'refinery/pages/engine' if defined?(Rails)
     require 'refinery/generators/pages_generator'
+    require 'refinery/pages/tab'
 
     autoload :InstanceMethods, 'refinery/pages/instance_methods'
 
