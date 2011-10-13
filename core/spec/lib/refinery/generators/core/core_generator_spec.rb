@@ -16,6 +16,13 @@ module Refinery
         directory "db" do
           directory "migrate"
         end
+        directory "config" do
+          directory "initializers" do
+            file "refinery.rb" do
+              contains "Refinery::Core.configure do |config|"
+            end
+          end
+        end
       }
     end
   end

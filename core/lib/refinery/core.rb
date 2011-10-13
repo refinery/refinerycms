@@ -89,7 +89,6 @@ module Refinery
 
   module Core
     require 'refinery/core/engine' if defined?(Rails)
-    require 'refinery/generators/core_generator'
 
     class << self
       def attach_to_application!
