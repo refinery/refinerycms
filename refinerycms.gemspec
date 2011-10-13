@@ -1,3 +1,4 @@
+# Encoding: UTF-8
 require File.expand_path('../core/lib/refinery/version.rb', __FILE__)
 version = Refinery::Version.to_s
 
