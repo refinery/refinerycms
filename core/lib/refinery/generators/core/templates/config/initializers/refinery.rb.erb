@@ -1,3 +1,8 @@
 Refinery::Core.configure do |config|
-  # Configuration options for Refinery::Core
+  # When true will rescue all not found errors and display a friendly error page
+  config.rescue_not_found = (Rails.env == 'production')
+  
+  # When true will use Amazon's Simple Storage Service instead of 
+  # the default file system for storing resources and images
+  config.s3_backend = !(ENV['S3_KEY'].nil? || ENV['S3_SECRET'].nil?)
 end

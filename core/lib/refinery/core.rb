@@ -25,10 +25,24 @@ module Refinery
   require 'refinery/generators'
 
   class << self
-    attr_accessor :base_cache_key, :gems, :rescue_not_found, :s3_backend
+    attr_accessor :gems
 
+    # Convenience method for Refinery::Core#rescue_not_found
+    #
+    def rescue_not_found
+      Core.rescue_not_found
+    end
+
+    # Convenience method for Refinery::Core#s3_backend
+    #
+    def s3_backend
+      Core.s3_backend
+    end
+
+    # Convenience method for Refinery::Core#base_cache_key
+    #
     def base_cache_key
-      @base_cache_key ||= :refinery
+      Core.base_cache_key
     end
 
     def deprecate(options = {})
@@ -56,10 +70,6 @@ module Refinery
       !!(defined?(::Refinery::I18n) && ::Refinery::I18n.enabled?)
     end
 
-    def rescue_not_found
-      !!@rescue_not_found
-    end
-
     def root
       @root ||= Pathname.new(File.expand_path('../../../../', __FILE__))
     end
@@ -74,10 +84,6 @@ module Refinery
       end
     end
 
-    def s3_backend
-      @s3_backend ||= false
-    end
-
     def version
       ::Refinery::Version.to_s
     end
@@ -90,7 +96,38 @@ module Refinery
   module Core
     require 'refinery/core/engine' if defined?(Rails)
 
+    DEFAULT_RESCUE_NOT_FOUND = false
+    DEFAULT_S3_BACKEND = false
+    DEFAULT_BASE_CACHE_KEY = :refinery
+
+    mattr_accessor :rescue_not_found
+    self.rescue_not_found = DEFAULT_RESCUE_NOT_FOUND
+
+    mattr_accessor :s3_backend
+    self.s3_backend = DEFAULT_S3_BACKEND
+
+    mattr_accessor :base_cache_key
+    self.base_cache_key = DEFAULT_BASE_CACHE_KEY
+
     class << self
+      # Configure the options of Refinery::Pages.
+      #
+      #   Refinery::Core.configure do |config|
+      #     config.rescue_not_found = false
+      #   end
+      #
+      def configure(&block)
+        yield Refinery::Core
+      end
+
+      # Reset Refinery::Core options to their default values
+      #
+      def reset!
+        self.rescue_not_found = DEFAULT_RESCUE_NOT_FOUND
+        self.s3_backend = DEFAULT_S3_BACKEND
+        self.base_cache_key = DEFAULT_BASE_CACHE_KEY
+      end
+
       def attach_to_application!
         ::Rails::Application.subclasses.each do |subclass|
           begin
