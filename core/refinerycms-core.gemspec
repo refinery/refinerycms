@@ -1,5 +1,7 @@
 # Encoding: UTF-8
-require File.expand_path('../lib/refinery/version.rb', __FILE__)
+$:.push File.expand_path('../../core/lib', __FILE__)
+require 'refinery/version'
+
 version = Refinery::Version.to_s
 
 Gem::Specification.new do |s|
@@ -14,8 +16,11 @@ Gem::Specification.new do |s|
   s.authors           = ['Resolve Digital', 'Philip Arndt', 'David Jones', 'Steven Heidel', 'Uģis Ozols']
   s.license           = %q{MIT}
   s.require_paths     = %w(lib)
-  s.executables       = %w()
 
+  s.files             = `git ls-files`.split("\n")
+  s.test_files        = `git ls-files -- spec/*`.split("\n")
+  s.executables       = `git ls-files -- bin/*`.split("\n").map { |f| File.basename(f) }
+  
   s.add_dependency 'acts_as_indexed',             '~> 0.7'
   s.add_dependency 'friendly_id_globalize3',      '~> 3.2.1'
   s.add_dependency 'globalize3',                  '~> 0.2.0.beta3'
@@ -28,6 +33,4 @@ Gem::Specification.new do |s|
   s.add_dependency 'uglifier'
   s.add_dependency 'jquery-rails'
   s.add_dependency 'refinerycms-settings',        version
-
-  s.files = Dir['license.md', 'app/**/*', 'config/**/*', 'doc/**/*', 'lib/**/*', 'public/**/*', 'spec/**/*']
 end

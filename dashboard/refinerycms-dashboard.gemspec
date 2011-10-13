@@ -1,5 +1,7 @@
 # Encoding: UTF-8
-require File.expand_path('../../core/lib/refinery/version.rb', __FILE__)
+$:.push File.expand_path('../../core/lib', __FILE__)
+require 'refinery/version'
+
 version = Refinery::Version.to_s
 
 Gem::Specification.new do |s|
@@ -14,9 +16,10 @@ Gem::Specification.new do |s|
   s.authors           = ['Resolve Digital', 'Philip Arndt', 'David Jones', 'Steven Heidel', 'Uģis Ozols']
   s.license           = %q{MIT}
   s.require_paths     = %w(lib)
-  s.executables       = %w()
+  
+  s.files             = `git ls-files`.split("\n")
+  s.test_files        = `git ls-files -- spec/*`.split("\n")
+  s.executables       = `git ls-files -- bin/*`.split("\n").map { |f| File.basename(f) }
 
   s.add_dependency 'refinerycms-core', version
-  
-  s.files = Dir['license.md', 'app/**/*', 'config/**/*', 'lib/**/*', 'spec/**/*']
 end
