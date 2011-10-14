@@ -27,7 +27,7 @@ module Refinery
       end
 
       config.after_initialize do
-        Refinery.engines << 'resources'
+        Refinery.register_engine(Refinery::Resources)
       end
     end
   end

@@ -7,6 +7,7 @@ module Refinery
       include Refinery::Engine
 
       isolate_namespace ::Refinery
+      engine_name "refinery_core"
 
       def self.load_decorators
         Dir.glob(File.join(Rails.root, "app/decorators/**/*_decorator.rb")) do |c|
@@ -40,7 +41,7 @@ module Refinery
       config.after_initialize do
         Rails::Engine.send :include, Refinery::Engine
 
-        Refinery.engines << 'core'
+        Refinery.register_engine(Refinery::Core)
 
         ::Refinery::Plugin.register do |plugin|
           plugin.pathname = root

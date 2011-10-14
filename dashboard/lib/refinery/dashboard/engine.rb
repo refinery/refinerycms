@@ -22,7 +22,7 @@ module Refinery
       end
 
       config.after_initialize do
-        ::Refinery.engines << 'dashboard'
+        Refinery.register_engine(Refinery::Dashboard)
       end
     end
   end

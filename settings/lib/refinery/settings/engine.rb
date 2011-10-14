@@ -19,7 +19,7 @@ module Refinery
       end
 
       config.after_initialize do
-        Refinery.engines << 'settings'
+        Refinery.register_engine(Refinery::Settings)
       end
     end
   end

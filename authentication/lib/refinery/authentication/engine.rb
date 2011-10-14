@@ -34,7 +34,7 @@ module Refinery
       end
 
       config.after_initialize do
-        Refinery.engines << 'authentication'
+        Refinery.register_engine(Refinery::Authentication)
       end
     end
   end

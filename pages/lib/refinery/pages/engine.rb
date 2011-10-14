@@ -43,7 +43,7 @@ module Refinery
       end
 
       config.after_initialize do
-        Refinery.engines << 'pages'
+        Refinery.register_engine(Refinery::Pages)
       end
     end
   end

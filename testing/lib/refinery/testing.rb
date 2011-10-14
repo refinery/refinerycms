@@ -10,8 +10,7 @@ module Refinery
 
       # Load the factories of all currently loaded engines
       def load_factories
-        Refinery.engines.each do |engine|
-          engine_const = "Refinery::#{engine.camelize}".constantize
+        Refinery.engines.each do |engine_const|
           if engine_const.respond_to?(:factory_paths)
             engine_const.send(:factory_paths).each do |path|
               FactoryGirl.definition_file_paths << path

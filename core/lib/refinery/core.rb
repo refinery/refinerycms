@@ -7,6 +7,8 @@ require 'will_paginate'
 module Refinery
   WINDOWS = !!(RbConfig::CONFIG['host_os'] =~ %r!(msdos|mswin|djgpp|mingw)!) unless defined? WINDOWS
 
+  require 'refinery/errors'
+
   autoload :Activity, 'refinery/activity'
   autoload :Application, 'refinery/application'
   autoload :ApplicationController, 'refinery/application_controller'
@@ -27,22 +29,57 @@ module Refinery
   class << self
     attr_accessor :gems
 
+    @@engines = []
+
     # Convenience method for Refinery::Core#rescue_not_found
-    #
     def rescue_not_found
       Core.rescue_not_found
     end
 
     # Convenience method for Refinery::Core#s3_backend
-    #
     def s3_backend
       Core.s3_backend
     end
 
     # Convenience method for Refinery::Core#base_cache_key
-    #
     def base_cache_key
       Core.base_cache_key
+    end
+    
+    # Returns an array of modules representing currently registered Refinery Engines
+    #
+    # Example:
+    #   Refinery.engines  =>  [Refinery::Core, Refinery::Pages]
+    def engines
+      @@engines
+    end
+
+    # Register an engine into the Refinery namespace
+    #
+    # Example:
+    #   Refinery.register_engine(Refinery::Core)
+    def register_engine(const)
+      return if engine_registered?(const)
+      
+      validate_engine!(const)
+
+      @@engines << const
+    end
+
+    # Unregister an engine from the Refinery namespace
+    #
+    # Example:
+    #   Refinery.unregister_engine(Refinery::Core)
+    def unregister_engine(const)
+      @@engines.delete(const)
+    end
+
+    # Returns true if an engine is currently registered in the Refinery namespace
+    #
+    # Example:
+    #   Refinery.engine_registered?(Refinery::Core)
+    def engine_registered?(const)
+      @@engines.include?(const)
     end
 
     def deprecate(options = {})
@@ -62,35 +99,50 @@ module Refinery
       warn warning
     end
 
-    def engines
-      @engines ||= []
-    end
-
     def i18n_enabled?
       !!(defined?(::Refinery::I18n) && ::Refinery::I18n.enabled?)
     end
 
+    # Returns a Pathname to the root of the RefineryCMS project
     def root
       @root ||= Pathname.new(File.expand_path('../../../../', __FILE__))
     end
 
+    # Returns an array of Pathnames pointing to the root directory of each engine that
+    # has been registered with Refinery.
+    #
+    # Example:
+    #   Refinery.roots => [#<Pathname:/Users/Reset/Code/refinerycms/core>, #<Pathname:/Users/Reset/Code/refinerycms/pages>]
+    #
+    # An optional engine_name parameter can be specified to return just the Pathname for
+    # the specified engine. This can be represented in Constant, Symbol, or String form.
+    #
+    # Example:
+    #   Refinery.roots(Refinery::Core)    =>  #<Pathname:/Users/Reset/Code/refinerycms/core>
+    #   Refinery.roots(:'refinery/core')  =>  #<Pathname:/Users/Reset/Code/refinerycms/core>
+    #   Refinery.roots("refinery/core")   =>  #<Pathname:/Users/Reset/Code/refinerycms/core>
     def roots(engine_name = nil)
       if engine_name.nil?
-        @roots ||= self.engines.map {|engine| "::Refinery::#{engine.camelize}".constantize.root }.uniq
-      else
-        unless (engine_name = self.engines.detect{|engine| engine.to_s == engine_name.to_s}).nil?
-          "::Refinery::#{engine_name.camelize}".constantize.root
-        end
+        return @roots ||= self.engines.map { |engine| engine.root }
       end
+
+      engine_name.to_s.camelize.constantize.root
     end
 
     def version
-      ::Refinery::Version.to_s
+      Refinery::Version.to_s
     end
 
     def config
-      @@config ||= ::Refinery::Configuration.new
+      @@config ||= Refinery::Configuration.new
     end
+
+    private
+      def validate_engine!(const)
+        unless const.respond_to?(:root) && const.root.is_a?(Pathname)
+          raise InvalidEngineError, "Engine must define a root accessor that returns a pathname to it it's root"
+        end
+      end
   end
 
   module Core
@@ -129,13 +181,13 @@ module Refinery
       end
 
       def attach_to_application!
-        ::Rails::Application.subclasses.each do |subclass|
+        Rails::Application.subclasses.each do |subclass|
           begin
             # Fix Rake 0.9.0 issue
             subclass.send :include, ::Rake::DSL if defined?(::Rake::DSL)
 
             # Include our logic inside your logic
-            subclass.send :include, ::Refinery::Application
+            subclass.send :include, Refinery::Application
           rescue
             $stdout.puts "Refinery CMS couldn't attach to #{subclass.name}."
             $stdout.puts "Error was: #{$!.message}"
