@@ -54,7 +54,7 @@ module Refinery
       @@engines
     end
 
-    # Register an engine into the Refinery namespace
+    # Register an engine with Refinery
     #
     # Example:
     #   Refinery.register_engine(Refinery::Core)
@@ -66,7 +66,7 @@ module Refinery
       @@engines << const
     end
 
-    # Unregister an engine from the Refinery namespace
+    # Unregister an engine from Refinery
     #
     # Example:
     #   Refinery.unregister_engine(Refinery::Core)
@@ -74,7 +74,7 @@ module Refinery
       @@engines.delete(const)
     end
 
-    # Returns true if an engine is currently registered in the Refinery namespace
+    # Returns true if an engine is currently registered with Refinery
     #
     # Example:
     #   Refinery.engine_registered?(Refinery::Core)
