@@ -82,11 +82,27 @@ module Refinery
       @@engines.include?(const)
     end
 
-    def deprecate(options = {})
+    # Constructs a deprecation warning message and warns with Kernel#warn
+    #
+    # Example:
+    #   Refinery.deprecate('foo') => "The use of 'foo' is deprecated"
+    #
+    # An options parameter can be specified to construct a more detailed deprecation message
+    #
+    # Options:
+    #   when - version that this deprecated feature will be removed
+    #   replacement - a replacement for what is being deprecated
+    #   caller - who called the deprecated feature
+    #
+    # Example:
+    #   Refinery.deprecate('foo', :when => 'tomorrow', :replacement => 'bar') => 
+    #       "The use of 'foo' is deprecated and will be removed at version 2.0. Please use 'bar' instead."
+    def deprecate(what, options = {})
       # Build a warning.
-      warning = "\n-- DEPRECATION WARNING --"
-      warning << "\nThe use of '#{options[:what]}' is deprecated"
-      warning << " and will be removed at version #{options[:when]}." if options[:when]
+      warning = "\n-- DEPRECATION WARNING --\n"
+      warning << "The use of '#{what}' is deprecated"
+      warning << " and will be removed at version #{options[:when]}" if options[:when]
+      warning << "."
       warning << "\nPlease use #{options[:replacement]} instead." if options[:replacement]
 
       # See if we can trace where this happened
