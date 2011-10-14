@@ -7,6 +7,7 @@ module Refinery
       include Refinery::Engine
 
       isolate_namespace ::Refinery
+      engine_name :refinery_pages
 
       config.before_initialize do
         require 'refinery/pages/marketable_urls'

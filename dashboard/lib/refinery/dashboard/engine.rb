@@ -7,6 +7,7 @@ module Refinery
       include Refinery::Engine
 
       isolate_namespace ::Refinery
+      engine_name :refinery_dashboard
 
       initializer "init plugin", :after => :set_routes_reloader do |app|
         ::Refinery::Plugin.register do |plugin|
