@@ -251,7 +251,7 @@ WYMeditor.editor.prototype.loadIframe = function(iframe) {
     doc.close();
 
     var doc_head = doc.head || $(doc).find('head').get(0);
-    $.each(["wymeditor/skins/refinery/wymiframe", "formatting", "refinery/theme", "theme"], function(i, href) {
+    $.each(["wymeditor/skins/refinery/wymiframe", "formatting", "theme"], function(i, href) {
       $("<link href='/assets/" + href + ".css?"+Math.random().toString().split('.')[1]+"' media='all' rel='stylesheet' />").appendTo(doc_head);
     });
   }
