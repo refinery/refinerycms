@@ -45,7 +45,7 @@ module Refinery
     def base_cache_key
       Core.base_cache_key
     end
-    
+
     # Returns an array of modules representing currently registered Refinery Engines
     #
     # Example:
@@ -60,7 +60,7 @@ module Refinery
     #   Refinery.register_engine(Refinery::Core)
     def register_engine(const)
       return if engine_registered?(const)
-      
+
       validate_engine!(const)
 
       @@engines << const
