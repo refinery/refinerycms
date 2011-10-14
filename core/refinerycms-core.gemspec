@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.version           = %q{2.0.0}
   s.summary           = %q{Core engine for Refinery CMS}
   s.description       = %q{The core of Refinery CMS. This handles the common functionality and is required by most engines}
-  s.date              = %q{2011-10-12}
+  s.date              = %q{2011-10-14}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
   s.rubyforge_project = %q{refinerycms}
@@ -199,7 +199,6 @@ Gem::Specification.new do |s|
     'app/assets/javascripts/jquery/jquery.jcarousel.js',
     'app/assets/javascripts/jquery/jquery.textTruncate.js',
     'app/assets/javascripts/jquery/jquery.timers.js',
-    'app/assets/javascripts/jquery-ui-custom-min.js',
     'app/assets/javascripts/modernizr-min.js',
     'app/assets/javascripts/refinery',
     'app/assets/javascripts/refinery/admin.js',
