@@ -12,7 +12,7 @@ module Refinery
   autoload :Activity, 'refinery/activity'
   autoload :Application, 'refinery/application'
   autoload :ApplicationController, 'refinery/application_controller'
-  autoload :ApplicationHelper, 'refinery/application_helper'
+  autoload :Helpers, 'refinery/helpers'
   autoload :Configuration, 'refinery/configuration'
   autoload :Engine, 'refinery/engine'
   autoload :Menu, 'refinery/menu'
@@ -95,7 +95,7 @@ module Refinery
     #   caller - who called the deprecated feature
     #
     # Example:
-    #   Refinery.deprecate('foo', :when => 'tomorrow', :replacement => 'bar') => 
+    #   Refinery.deprecate('foo', :when => 'tomorrow', :replacement => 'bar') =>
     #       "The use of 'foo' is deprecated and will be removed at version 2.0. Please use 'bar' instead."
     def deprecate(what, options = {})
       # Build a warning.
@@ -147,10 +147,6 @@ module Refinery
 
     def version
       Refinery::Version.to_s
-    end
-
-    def config
-      @@config ||= Refinery::Configuration.new
     end
 
     private

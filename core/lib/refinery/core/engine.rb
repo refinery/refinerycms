@@ -15,11 +15,15 @@ module Refinery
             Rails.application.config.cache_classes ? require(c) : load(c)
           end
         end
-        
-        def include_refinery!
+
+        # Performs the Refinery inclusion process which extends the currently loaded Rails
+        # applications with Refinery's controllers and helpers. The process is wrapped by
+        # a before_inclusion and after_inclusion step that calls procs registered by the
+        # Refinery::Engine#before_inclusion and Refinery::Engine#after_inclusion class methods
+        def refinery_inclusion!
           before_inclusion_procs.each(&:call)
 
-          ::ApplicationHelper.send :include, ::Refinery::ApplicationHelper
+          ::ApplicationHelper.send :include, ::Refinery::Helpers
 
           [::ApplicationController, ::Refinery::AdminController].each do |c|
             c.send :include, Refinery::ApplicationController
@@ -36,9 +40,9 @@ module Refinery
 
       # Attach ourselves to the Rails application.
       config.before_configuration { Refinery::Core.attach_to_application! }
-      
+
       # Include the refinery controllers and helpers dynamically
-      config.to_prepare &method(:include_refinery!).to_proc
+      config.to_prepare &method(:refinery_inclusion!).to_proc
 
       after_inclusion &method(:load_decorators).to_proc
 
@@ -55,8 +59,6 @@ module Refinery
 
       # Register the plugin
       config.after_initialize do
-        Rails::Engine.send :include, Refinery::Engine
-
         Refinery.register_engine(Refinery::Core)
 
         ::Refinery::Plugin.register do |plugin|
@@ -79,7 +81,7 @@ module Refinery
           plugin.menu_match = /refinery\/(refinery_)?dialogs/
         end
       end
-      
+
       initializer "refinery.configuration" do |app|
         app.config.refinery = Refinery::Configuration.new
       end
@@ -116,21 +118,21 @@ module Refinery
           "dd_belatedpng.js"
         ]
       end
-      
+
       # Disable asset debugging - it's a performance killer in dev mode
       initializer "refinery.assets.pipeline" do |app|
         app.config.assets.debug = false
       end
-      
+
       # active model fields which may contain sensitive data to filter
       initializer "refinery.params.filter" do |app|
         app.config.filter_parameters += [:password, :password_confirmation]
       end
-      
+
       initializer "refinery.encoding" do |app|
         app.config.encoding = 'utf-8'
       end
-      
+
       initializer "refinery.memory_store" do |app|
         app.config.cache_store = :memory_store
       end

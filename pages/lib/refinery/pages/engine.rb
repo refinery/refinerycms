@@ -45,7 +45,7 @@ module Refinery
             }.flatten.reject{|w| w =~ /\_/}.uniq
           end
         end
-        
+
         ::Refinery::Page.translation_class.send(:is_seo_meta)
         # set allowed attributes for mass assignment
         ::Refinery::Page.translation_class.send(:attr_accessible, :browser_title, :meta_description, :meta_keywords, :locale)

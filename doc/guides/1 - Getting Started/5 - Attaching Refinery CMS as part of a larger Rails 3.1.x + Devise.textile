@@ -351,7 +351,7 @@ module ExistingApp
     end
     
     config.to_prepare do    
-      [::Refinery::ApplicationController, ::Refinery::ApplicationHelper].each do |c|
+      [::Refinery::ApplicationController, Refinery::Helpers].each do |c|
         c.send :include, ::RefineryPatch
       end
     
