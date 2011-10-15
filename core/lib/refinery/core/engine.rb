@@ -15,6 +15,21 @@ module Refinery
             Rails.application.config.cache_classes ? require(c) : load(c)
           end
         end
+        
+        def include_refinery!
+          before_inclusion_procs.each(&:call)
+
+          ::ApplicationHelper.send :include, ::Refinery::ApplicationHelper
+
+          [::ApplicationController, ::Refinery::AdminController].each do |c|
+            c.send :include, Refinery::ApplicationController
+            c.send :helper, :application
+          end
+
+          Refinery::AdminController.send :include, Refinery::Admin::BaseController
+
+          after_inclusion_procs.each(&:call)
+        end
       end
 
       config.autoload_paths += %W( #{config.root}/lib )
@@ -23,20 +38,20 @@ module Refinery
       config.before_configuration { Refinery::Core.attach_to_application! }
       
       # Include the refinery controllers and helpers dynamically
-      config.to_prepare { Refinery::Application.refinery! }
+      config.to_prepare &method(:include_refinery!).to_proc
 
-      refinery.after_inclusion &method(:load_decorators).to_proc
+      after_inclusion &method(:load_decorators).to_proc
 
-      # Wrap errors in spans and cache vendored assets.
+      # Wrap errors in spans
       config.to_prepare do
-        # This wraps errors in span not div
         ActionView::Base.field_error_proc = Proc.new do |html_tag, instance|
           "<span class=\"fieldWithErrors\">#{html_tag}</span>".html_safe
         end
       end
 
-      # set per_page globally
-      config.to_prepare { WillPaginate.per_page = 20 }
+      initializer "refinery.will_paginate" do
+        WillPaginate.per_page = 20
+      end
 
       # Register the plugin
       config.after_initialize do
@@ -63,6 +78,10 @@ module Refinery
           plugin.always_allow_access = true
           plugin.menu_match = /refinery\/(refinery_)?dialogs/
         end
+      end
+      
+      initializer "refinery.configuration" do |app|
+        app.config.refinery = Refinery::Configuration.new
       end
 
       initializer "refinery.routes" do |app|

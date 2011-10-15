@@ -27,7 +27,7 @@ module Refinery
         end
       end
 
-      refinery.before_inclusion do
+      before_inclusion do
         [::Refinery::ApplicationController, ::Refinery::ApplicationHelper].each do |c|
           c.send :require, 'refinery/authenticated_system'
           c.send :include, ::Refinery::AuthenticatedSystem
