@@ -192,22 +192,6 @@ module Refinery
         self.base_cache_key = DEFAULT_BASE_CACHE_KEY
       end
 
-      def attach_to_application!
-        Rails::Application.subclasses.each do |subclass|
-          begin
-            # Fix Rake 0.9.0 issue
-            subclass.send :include, ::Rake::DSL if defined?(::Rake::DSL)
-
-            # Include our logic inside your logic
-            subclass.send :include, Refinery::Application
-          rescue
-            $stdout.puts "Refinery CMS couldn't attach to #{subclass.name}."
-            $stdout.puts "Error was: #{$!.message}"
-            $stdout.puts $!.backtrace
-          end
-        end
-      end
-
       def root
         @root ||= Pathname.new(File.expand_path('../../../', __FILE__))
       end

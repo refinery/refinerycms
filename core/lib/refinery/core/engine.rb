@@ -38,9 +38,6 @@ module Refinery
 
       config.autoload_paths += %W( #{config.root}/lib )
 
-      # Attach ourselves to the Rails application.
-      config.before_configuration { Refinery::Core.attach_to_application! }
-
       # Include the refinery controllers and helpers dynamically
       config.to_prepare &method(:refinery_inclusion!).to_proc
 
