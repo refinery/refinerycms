@@ -13,8 +13,8 @@ module Refinery
 
       config.autoload_paths += %W( #{config.root}/lib )
 
-      initializer "init plugin", :after => :set_routes_reloader do |app|
-        ::Refinery::Plugin.register do |plugin|
+      initializer "register refinery_user plugin", :after => :set_routes_reloader do |app|
+        Refinery::Plugin.register do |plugin|
           plugin.pathname = root
           plugin.name = 'refinery_users'
           plugin.version = %q{2.0.0}

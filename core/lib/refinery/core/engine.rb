@@ -56,26 +56,24 @@ module Refinery
       initializer "refinery.will_paginate" do
         WillPaginate.per_page = 20
       end
-
-      # Register the plugin
-      config.after_initialize do
-        Refinery.register_engine(Refinery::Core)
-
-        ::Refinery::Plugin.register do |plugin|
+      
+      initializer "register refinery_core plugin", :after => :set_routes_reloader do |app|
+        Refinery::Plugin.register do |plugin|
           plugin.pathname = root
           plugin.name = 'refinery_core'
           plugin.class_name = 'RefineryEngine'
-          plugin.version = ::Refinery.version
+          plugin.version = Refinery.version
           plugin.hide_from_menu = true
           plugin.always_allow_access = true
           plugin.menu_match = /refinery\/(refinery_core)$/
         end
-
-        # Register the dialogs plugin
-        ::Refinery::Plugin.register do |plugin|
+      end
+      
+      initializer "register refinery_dialogs plugin", :after => :set_routes_reloader do |app|
+        Refinery::Plugin.register do |plugin|
           plugin.pathname = root
           plugin.name = 'refinery_dialogs'
-          plugin.version = ::Refinery.version
+          plugin.version = Refinery.version
           plugin.hide_from_menu = true
           plugin.always_allow_access = true
           plugin.menu_match = /refinery\/(refinery_)?dialogs/
@@ -135,6 +133,10 @@ module Refinery
 
       initializer "refinery.memory_store" do |app|
         app.config.cache_store = :memory_store
+      end
+      
+      config.after_initialize do
+        Refinery.register_engine(Refinery::Core)
       end
     end
   end

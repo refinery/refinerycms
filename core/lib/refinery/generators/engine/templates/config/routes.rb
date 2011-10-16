@@ -1,4 +1,4 @@
-::Refinery::Application.routes.draw do
+::Rails.application.routes.draw do
   scope(:as => 'refinery', :module => 'refinery') do
     resources :<%= class_name.pluralize.underscore.downcase %>, :only => [:index, :show]
   end

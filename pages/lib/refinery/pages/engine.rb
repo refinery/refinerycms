@@ -56,8 +56,8 @@ module Refinery
         ::Refinery::AdminController.send :include, ::Refinery::Pages::Admin::InstanceMethods
       end
 
-      initializer "init plugin", :after => :set_routes_reloader do |app|
-        ::Refinery::Plugin.register do |plugin|
+      initializer "register refinery_pages plugin", :after => :set_routes_reloader do |app|
+        Refinery::Plugin.register do |plugin|
           plugin.pathname = root
           plugin.name = 'refinery_pages'
           plugin.directory = 'pages'
@@ -65,7 +65,7 @@ module Refinery
           plugin.menu_match = /refinery\/page(_part)?s(_dialogs)?$/
           plugin.url = app.routes.url_helpers.refinery_admin_pages_path
           plugin.activity = {
-            :class => ::Refinery::Page,
+            :class => Refinery::Page,
             :url_prefix => "edit",
             :title => "title",
             :created_image => "page_add.png",

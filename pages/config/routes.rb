@@ -1,4 +1,4 @@
-::Refinery::Application.routes.draw do
+Rails.application.routes.draw do
   scope(:module => 'refinery') do
     root :to => 'pages#home'
     get '/pages/:id', :to => 'pages#show', :as => 'refinery_page'

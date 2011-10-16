@@ -9,8 +9,8 @@ module Refinery
       isolate_namespace ::Refinery
       engine_name :refinery_dashboard
 
-      initializer "init plugin", :after => :set_routes_reloader do |app|
-        ::Refinery::Plugin.register do |plugin|
+      initializer "register refinery_dashboard plugin", :after => :set_routes_reloader do |app|
+        Refinery::Plugin.register do |plugin|
           plugin.pathname = root
           plugin.name = 'refinery_dashboard'
           plugin.url = app.routes.url_helpers.refinery_admin_dashboard_path

@@ -14,8 +14,8 @@ module Refinery
         ::Refinery::Images::Dragonfly.attach!(app)
       end
 
-      initializer "init plugin", :after => :set_routes_reloader do |app|
-        ::Refinery::Plugin.register do |plugin|
+      initializer "register refinery_images plugin", :after => :set_routes_reloader do |app|
+        Refinery::Plugin.register do |plugin|
           plugin.pathname = root
           plugin.name = 'refinery_images'
           plugin.directory = 'images'

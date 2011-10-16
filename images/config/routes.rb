@@ -1,5 +1,4 @@
-::Refinery::Application.routes.draw do
-
+Rails.application.routes.draw do
   match '/system/images/*dragonfly', :to => Dragonfly[:images]
 
   scope(:path => 'refinery', :as => 'refinery_admin', :module => 'refinery/admin') do
