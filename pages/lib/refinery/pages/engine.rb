@@ -6,8 +6,8 @@ module Refinery
     class Engine < ::Rails::Engine
       include Refinery::Engine
 
-      isolate_namespace ::Refinery
-      engine_name :refinery_pages
+      isolate_namespace Refinery
+      engine_name :pages
 
       config.before_initialize do |app|
         # You need to restart the server after changing this setting.

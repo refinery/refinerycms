@@ -8,8 +8,8 @@ module Refinery
     class Engine < ::Rails::Engine
       include Refinery::Engine
 
-      isolate_namespace ::Refinery
-      engine_name :refinery_authentication
+      isolate_namespace Refinery
+      engine_name :authentication
 
       config.autoload_paths += %W( #{config.root}/lib )
 

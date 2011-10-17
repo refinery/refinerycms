@@ -6,8 +6,8 @@ module Refinery
     class Engine < ::Rails::Engine
       include Refinery::Engine
 
-      isolate_namespace ::Refinery
-      engine_name :refinery_settings
+      isolate_namespace Refinery
+      engine_name :settings
 
       initializer "register refinery_settings plugin", :after => :set_routes_reloader do |app|
         Refinery::Plugin.register do |plugin|
