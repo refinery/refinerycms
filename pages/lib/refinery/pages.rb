@@ -43,6 +43,7 @@ module Refinery
         @root ||= Pathname.new(File.expand_path('../../../', __FILE__))
       end
 
+      # You need to restart the server after changing this setting.
       def use_marketable_urls?
         ::Refinery::Setting.find_or_set(:use_marketable_urls, true, :scoping => 'pages')
       end

@@ -51,7 +51,7 @@ module Refinery
       initializer "refinery.will_paginate" do
         WillPaginate.per_page = 20
       end
-      
+
       initializer "register refinery_core plugin", :after => :set_routes_reloader do |app|
         Refinery::Plugin.register do |plugin|
           plugin.pathname = root
@@ -63,7 +63,7 @@ module Refinery
           plugin.menu_match = /refinery\/(refinery_core)$/
         end
       end
-      
+
       initializer "register refinery_dialogs plugin", :after => :set_routes_reloader do |app|
         Refinery::Plugin.register do |plugin|
           plugin.pathname = root
@@ -129,7 +129,7 @@ module Refinery
       initializer "refinery.memory_store" do |app|
         app.config.cache_store = :memory_store
       end
-      
+
       config.after_initialize do
         Refinery.register_engine(Refinery::Core)
       end

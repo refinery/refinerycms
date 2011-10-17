@@ -24,7 +24,7 @@ module Refinery
   # As per commit 12af0e3e83a147a87c97bf7b29f343254c5fcb3c
   require 'refinerycms-settings'
   require 'refinery/generators'
-  
+
   require 'refinery/ext/action_view/helpers/form_builder'
   require 'refinery/ext/action_view/helpers/form_helper'
   require 'refinery/ext/action_view/helpers/form_tag_helper'
