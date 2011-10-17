@@ -1,6 +1,3 @@
-require 'action_view'
-require 'action_view/helpers'
-
 ActionView::Helpers::FormHelper.module_eval do
 
   def required_label(object_name, method, options = {})
@@ -18,25 +15,6 @@ ActionView::Helpers::FormHelper.module_eval do
     end
 
     content ||= method.humanize
-  end
-
-end
-
-ActionView::Helpers::FormBuilder.module_eval do
-
-  def required_label(method, options = {})
-    @template.required_label(@object_name, method, objectify_options(options))
-  end
-
-end
-
-ActionView::Helpers::FormTagHelper.module_eval do
-
-  def required_label_tag(name, text = nil, options = {})
-    options = {:class => "required"}.merge!(options)
-    text ||= "#{name.to_s.humanize} *"
-
-    label_tag(name, text, options)
   end
 
 end

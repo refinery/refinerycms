@@ -6,8 +6,8 @@ module Refinery
     class Engine < ::Rails::Engine
       include Refinery::Engine
 
-      isolate_namespace ::Refinery
-      engine_name :refinery_core
+      isolate_namespace Refinery
+      engine_name :core
 
       class << self
         def load_decorators
@@ -23,11 +23,9 @@ module Refinery
         def refinery_inclusion!
           before_inclusion_procs.each(&:call)
 
-          ::ApplicationHelper.send :include, ::Refinery::Helpers
-
-          [::ApplicationController, ::Refinery::AdminController].each do |c|
+          [::ApplicationController, Refinery::AdminController].each do |c|
             c.send :include, Refinery::ApplicationController
-            c.send :helper, :application
+            c.send :helper, Refinery::Core::Engine.helpers
           end
 
           Refinery::AdminController.send :include, Refinery::Admin::BaseController
