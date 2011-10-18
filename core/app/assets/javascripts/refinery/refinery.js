@@ -1,9 +1,9 @@
 /*
  *= require jquery
  *= require jquery_ujs
+ *= require jquery-ui
  *= require ../modernizr-min
  *= require ./i18n
- *= require ../jquery-ui-custom-min
  *= require ../jquery/jquery.corner
  *= require ../jquery/jquery.textTruncate
  *= require ../jquery/jquery.html5-placeholder-shim
