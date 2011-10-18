@@ -20,7 +20,7 @@ append_file 'Gemfile' do
 end
 
 remove_file 'public/index.html'
-remove_file 'public/images/rails.png'
+remove_file 'app/assets/images/rails.png'
 
 say <<-eos
   ============================================================================
