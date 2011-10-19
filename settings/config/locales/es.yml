@@ -41,9 +41,7 @@ es:
             site_name: Nombre del sitio
             tld_length: Niveles del dominio
             superuser_can_assign_roles: Superusuario puede asignar roles
-            use_google_ajax_libraries: Usar bibliotecas AJAX de Google
             use_marketable_urls: Usar URLs cortas (Páginas)
-            use_resource_caching: Compactar recursos
             user_image_sizes: Tamaños de imagen de usuario
           help:
             restricted: Hace que sólo los superusuarios (como tu) puedan ver y editar esta opción.
@@ -55,9 +53,7 @@ es:
             preferred_image_view: Controla con qué vista se muestran las imágenes existentes - grid para 'Ver como cuadrícula' y list para 'Ver como lista'. Hay un botón para automatizar este proceso en el propio plugin de las imágenes.
             show_contact_privacy_link: Puedes ocultar o mostrar el enlace a la página de política de privacidad en el formulario de contacto.
             site_name: "Este es el nombre de tu web y se mostrará en la cabecera, en el panel de control y en la frase de Copyright del pie de página en algunos temas."
-            use_google_ajax_libraries: Ponlo a true si quieres usar la CDN de Google para librerías Ajax.
             use_marketable_urls: Cambia las urls de /pages/about a /about y automáticamente gestiona conflictos que puedan surgir con otros plugins.
-            use_resource_caching: "Recomendado activarlo en producción ya que empaqueta los archivos javascript y CSS en un único archivo, lo que reducirá el número de peticiones a tu web y la acelerará."
             approximate_ascii: Ponlo a true si usas caracteres latinos con tildes y otros signos diacríticos en los títulos de página. Convertirá caracteres como ā, č, ž en a, c, z y así estos caracteres no aparecerán como símbolos extraños en la barra de direcciones de algunos navegadores.
   activerecord:
     models:

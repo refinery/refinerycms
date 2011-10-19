@@ -27,9 +27,7 @@ rs:
             preferred_image_view: Ovo kontroliše na koje sve načine mogu da se pregledaju slike  - 'Mrežasti prikaz' ili 'Lista'. Postoji dugme za automatizaciju ovog procesa na strani za manipulaciju slika.
             show_contact_privacy_link: Možeš sakriti ili prikazati link za politiku privatnosti na kontakt formi pored dugmeta za unos .
             site_name: Ovo je ime tvog websajta koje se pojavljuje u headeru i footeru pored autorskih prava.
-            use_google_ajax_libraries: Ako želiš da korisitiš Google-ov AJAX CDN podesi ovo podešavanje na true.
             use_marketable_urls: Promeni url-ove sa npr. /pages/about na /about i automatski izbegni konflikt sa drugim pluginovima.
-            use_resource_caching: Preporučujemo da omogućite ovo u production mode-u zato što ova opocija pakuje JS i CSS fajlove u jedinstven paket, tako da smanji zahteve koji se šalju i ubrza rad web strane.
             approximate_ascii: Podesi ovo na true ako koristiš Latin karaktere u naslovu. Konvertovaće karaktere kao što su ā, č, ž u a, c, z i na ovaj način će se ova slova ispravno prikazivati u  URL adresama.
   activerecord:
     models:

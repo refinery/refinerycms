@@ -27,9 +27,7 @@ lv:
             preferred_image_view: Šis uzstādījums kontrolē, kurš skats tiek izmantots bilžu spraudnī - grid 'Režģa skatam' un list 'Saraksta skatam'. Bilžu spraudnī ir poga, kas automatizē šo procesu.
             show_contact_privacy_link: Jūs varat noslēpt vai atstāt redzamu privātuma politikas saiti kontaktformas lapā.
             site_name: Šis ir jūsu saita nosaukums, kas tiks rādīts galvenē, Refinery administrācijas panelī, kā arī dažās tēmās šis nosaukums tiek rādīts arī kājenē.
-            use_google_ajax_libraries: Ja vēlaties izmantot Googles AJAX CDN, tad šim parametram nomainiet vērtību uz true.
             use_marketable_urls: Šī opcija maina saites no /pages/about uz /about un automātiski novērš konfliktus ar citiem spraudņiem.
-            use_resource_caching: Šo opciju ieteicams iespējot produkcijas režīmā, jo tā nodrošina javascript un stylesheet failu apkopošanu vienā failu paketē, tādā veidā samazinot pieprasījumu skaitu uz jūsu lapu un paātrinot tās darbību.
             approximate_ascii: "Ja izmantojat Latīņu burtus ar mīkstinājuma zīmēm, akcentiem utml., tad iespējojot šo uzstādījumu (vērtība: true) burti ā, č, ž u.c. tiks pārkonvertēti attiecīgi uz a, c un z, tāda veidā šie burti neizskatīsies savādi dažu parlūku adreses laukā."
   activerecord:
     models:
