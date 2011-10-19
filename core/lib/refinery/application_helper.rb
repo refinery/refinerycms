@@ -9,7 +9,6 @@ module Refinery
       base.send :include, ::Refinery::Helpers::MenuHelper
       base.send :include, ::Refinery::Helpers::MetaHelper
       base.send :include, ::Refinery::Helpers::PaginationHelper
-      base.send :include, ::Refinery::Helpers::ScriptHelper
       base.send :include, ::Refinery::Helpers::SiteBarHelper
       base.send :include, ::Refinery::Helpers::TagHelper
       base.send :include, ::Refinery::Helpers::TranslationHelper
