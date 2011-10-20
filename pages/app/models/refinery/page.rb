@@ -40,14 +40,17 @@ module Refinery
     validates :title, :presence => true
 
     # Docs for acts_as_nested_set https://github.com/collectiveidea/awesome_nested_set
-    acts_as_nested_set :dependent => :destroy # rather than :delete_all
+    # rather than :delete_all we want :destroy
+    unless $rake_assets_precompiling
+      acts_as_nested_set :dependent => :destroy
 
-    # Docs for friendly_id http://github.com/norman/friendly_id
-    has_friendly_id :custom_slug_or_title, :use_slug => true,
-                    :default_locale => (::Refinery::I18n.default_frontend_locale rescue :en),
-                    :reserved_words => %w(index new session login logout users refinery admin images wymiframe),
-                    :approximate_ascii => ::Refinery::Setting.find_or_set(:approximate_ascii, false, :scoping => "pages"),
-                    :strip_non_ascii => ::Refinery::Setting.find_or_set(:strip_non_ascii, false, :scoping => "pages")
+      # Docs for friendly_id http://github.com/norman/friendly_id
+      has_friendly_id :custom_slug_or_title, :use_slug => true,
+                      :default_locale => (::Refinery::I18n.default_frontend_locale rescue :en),
+                      :reserved_words => %w(index new session login logout users refinery admin images wymiframe),
+                      :approximate_ascii => ::Refinery::Setting.find_or_set(:approximate_ascii, false, :scoping => "pages"),
+                      :strip_non_ascii => ::Refinery::Setting.find_or_set(:strip_non_ascii, false, :scoping => "pages")
+    end
 
     def custom_slug_or_title
       if custom_slug.present?

@@ -4,15 +4,17 @@ module Refinery
       isolate_namespace ::Refinery
 
       config.before_initialize do
-        require 'pages/marketable_urls'
+        require 'pages/marketable_urls' unless $rake_assets_precompiling
       end
 
       config.to_prepare do
         require 'pages/tabs'
-        require 'pages/marketable_urls'
-        ::Refinery::Page.translation_class.send(:is_seo_meta)
-        # set allowed attributes for mass assignment
-        ::Refinery::Page.translation_class.send(:attr_accessible, :browser_title, :meta_description, :meta_keywords, :locale)
+        unless $rake_assets_precompiling
+          require 'pages/marketable_urls'
+          ::Refinery::Page.translation_class.send(:is_seo_meta)
+          # set allowed attributes for mass assignment
+          ::Refinery::Page.translation_class.send(:attr_accessible, :browser_title, :meta_description, :meta_keywords, :locale)
+        end
       end
 
       refinery.after_inclusion do
