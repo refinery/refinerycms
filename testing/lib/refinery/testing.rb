@@ -22,7 +22,6 @@ module Refinery
     end
 
     require 'refinery/testing/railtie' if defined?(Rails)
-    require 'refinery/generators/testing_generator'
 
     autoload :ControllerMacros, 'refinery/testing/controller_macros'
     autoload :RequestMacros, 'refinery/testing/request_macros'

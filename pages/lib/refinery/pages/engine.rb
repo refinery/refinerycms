@@ -9,19 +9,7 @@ module Refinery
       isolate_namespace Refinery
       engine_name :pages
 
-      config.before_initialize do |app|
-        if Refinery::Pages.use_marketable_urls?
-          append_marketable_routes(app)
-        end
-      end
-
-      config.after_initialize do |app|
-        if Refinery::Pages.use_marketable_urls?
-          add_route_parts_as_reserved_words(app)
-        end
-      end
-
-      config.to_prepare do |app|
+      config.to_prepare do |app|        
         Refinery::Page.translation_class.send(:is_seo_meta)
         Refinery::Page.translation_class.send(:attr_accessible, :browser_title, :meta_description, :meta_keywords, :locale)
       end
@@ -29,6 +17,12 @@ module Refinery
       after_inclusion do
         ::ApplicationController.send :include, Refinery::Pages::InstanceMethods
         Refinery::AdminController.send :include, Refinery::Pages::Admin::InstanceMethods
+      end
+      
+      initializer "append marketable routes", :before => :set_routes_reloader do |app|
+        if Refinery::Pages.use_marketable_urls?
+          append_marketable_routes(app)
+        end
       end
 
       initializer "register refinery_pages plugin", :after => :set_routes_reloader do |app|
@@ -48,12 +42,18 @@ module Refinery
           }
         end
       end
+      
+      initializer "add marketable route parts to reserved words" do |app|
+        if Refinery::Pages.use_marketable_urls?
+          add_route_parts_as_reserved_words(app)
+        end
+      end
 
       config.after_initialize do
         Refinery.register_engine(Refinery::Pages)
       end
 
-      private
+      protected
 
         def append_marketable_routes(app)
           app.routes.append do

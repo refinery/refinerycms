@@ -7,4 +7,5 @@ module Refinery
   autoload :EngineGenerator, 'refinery/generators/engine/engine_generator'
   autoload :CmsGenerator, 'refinery/generators/cms/cms_generator'
   autoload :CoreGenerator, 'refinery/generators/core/core_generator'
+  autoload :DummyGenerator, 'refinery/generators/dummy/dummy_generator'
 end

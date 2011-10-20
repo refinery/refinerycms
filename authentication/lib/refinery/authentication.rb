@@ -1,6 +1,8 @@
 require 'refinerycms-core'
 
 module Refinery
+  autoload :AuthenticatedSystem, 'refinery/authenticated_system'
+  
   class << self
     attr_accessor :authentication_login_field
     def authentication_login_field

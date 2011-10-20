@@ -1,6 +1,6 @@
 module Refinery
   module Admin
-    class UsersController < ::Refinery::AdminController
+    class UsersController < Refinery::AdminController
 
       crudify :'refinery/user',
               :order => 'username ASC',
