@@ -24,13 +24,13 @@ def setup_environment
     config.mock_with :rspec
 
     config.fixture_path = ::Rails.root.join('spec', 'fixtures').to_s
-
+    config.filter_run :focus => true
     # If you're not using ActiveRecord, or you'd prefer not to run each of your
     # examples within a transaction, comment the following line or assign false
     # instead of true.
     config.use_transactional_fixtures = true
     config.use_instantiated_fixtures  = false
-
+    
     config.include ::Devise::TestHelpers, :type => :controller
     config.extend ::Refinery::ControllerMacros, :type => :controller
   end
