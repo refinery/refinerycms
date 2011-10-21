@@ -5,7 +5,7 @@ namespace :refinery do
       require "refinerycms"
 
       params = []
-      params << "--database=#{ENV['DB_NAME']}" if ENV['DB_NAME']
+      params << "--database=#{ENV['DB']}" if ENV['DB']
 
       Refinery::DummyGenerator.start params
       
