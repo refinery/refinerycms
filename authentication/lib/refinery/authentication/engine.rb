@@ -9,7 +9,7 @@ module Refinery
       include Refinery::Engine
 
       isolate_namespace Refinery
-      engine_name :authentication
+      engine_name :refinery_authentication
 
       config.autoload_paths += %W( #{config.root}/lib )
 

@@ -7,7 +7,7 @@ module Refinery
       include Refinery::Engine
 
       isolate_namespace Refinery
-      engine_name :pages
+      engine_name :refinery_pages
 
       config.to_prepare do |app|        
         Refinery::Page.translation_class.send(:is_seo_meta)

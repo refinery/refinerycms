@@ -7,7 +7,7 @@ module Refinery
       include Refinery::Engine
 
       isolate_namespace Refinery
-      engine_name :core
+      engine_name :refinery_core
 
       class << self
         def load_decorators

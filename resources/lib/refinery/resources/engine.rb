@@ -7,7 +7,7 @@ module Refinery
       include Refinery::Engine
 
       isolate_namespace Refinery
-      engine_name :resources
+      engine_name :refinery_resources
 
       initializer 'resources-with-dragonfly', :before => :load_config_initializers do |app|
         ::Refinery::Resources::Dragonfly.setup!
