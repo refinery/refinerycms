@@ -12,6 +12,14 @@ def setup_environment
   # Requires supporting files with custom matchers and macros, etc,
   # in ./support/ and its subdirectories.
   Dir[File.expand_path('../support/**/*.rb', __FILE__)].each {|f| require f}
+  
+  engines = [ 
+    'authentication',
+    'images',
+  ]
+  engines.each do |engine|
+    require "#{Rails.root}/#{engine}/features/support/factories.rb"
+  end
 
   RSpec.configure do |config|
     # == Mock Framework
@@ -24,13 +32,13 @@ def setup_environment
     config.mock_with :rspec
 
     config.fixture_path = ::Rails.root.join('spec', 'fixtures').to_s
-
+    config.filter_run :focus => true
     # If you're not using ActiveRecord, or you'd prefer not to run each of your
     # examples within a transaction, comment the following line or assign false
     # instead of true.
     config.use_transactional_fixtures = true
     config.use_instantiated_fixtures  = false
-
+    
     config.include ::Devise::TestHelpers, :type => :controller
     config.extend ::Refinery::ControllerMacros, :type => :controller
   end
