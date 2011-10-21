@@ -119,8 +119,7 @@ module Refinery
     end
 
     def i18n_enabled?
-      # !!(defined?(::Refinery::I18n) && ::Refinery::I18n.enabled?)
-      true
+      !!(defined?(::Refinery::I18n) && ::Refinery::I18n.enabled?)
     end
 
     # Returns a Pathname to the root of the RefineryCMS project
