@@ -24,6 +24,7 @@ namespace :refinery do
       system "bundle exec rake -f #{Refinery.root.join('Rakefile')} app:db:drop app:db:create app:db:migrate app:db:seed app:db:test:prepare RAILS_ENV=development"
     end
     
+    desc "Remove the dummy app used for testing"
     task :clean_dummy_app do
       system "rm -Rdf #{Refinery.root.join('spec/dummy')}"
     end
