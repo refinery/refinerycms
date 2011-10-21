@@ -1,9 +1,9 @@
 namespace :refinery do  
   namespace :testing do
     desc "Generates a dummy app for testing"
-    task :dummy_app do
+    task :dummy_app do      
       require "refinerycms"
-
+      
       params = []
       params << "--database=#{ENV['DB']}" if ENV['DB']
 
@@ -22,6 +22,10 @@ namespace :refinery do
       Refinery::ImagesGenerator.start
       
       system "bundle exec rake -f #{Refinery.root.join('Rakefile')} app:db:drop app:db:create app:db:migrate app:db:seed app:db:test:prepare RAILS_ENV=development"
+    end
+    
+    task :clean_dummy_app do
+      system "rm -Rdf #{Refinery.root.join('spec/dummy')}"
     end
     
     namespace :engine do
