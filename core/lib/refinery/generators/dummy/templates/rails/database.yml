@@ -7,6 +7,13 @@ login: &login
   username: root
   password:
   #socket: /tmp/mysql.sock
+<% elsif database == 'postgresql' %>
+  adapter: postgresql
+  encoding: unicode
+  database: refinery_database_development
+  pool: 5
+  username: postgres
+  password: postgres
 <% else %>
   adapter: sqlite3
   pool: 5
