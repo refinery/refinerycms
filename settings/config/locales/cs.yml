@@ -27,9 +27,7 @@ cs:
             preferred_image_view: Nastavuje preferovaný pohled na existující obrázky. Zvolte grid pro zobrazení mřížky nebo list pro zobrazení seznamu. Nastavení se dá přepínat tlačítkem i v samotném pohledu.
             show_contact_privacy_link: Můžete zobrazit či srýt odkaz na stránku 'zásady ochrany osobních údajů' u kontaktnícho formuláře vedle tlačítka 'Odeslat'.
             site_name: Název vašeho webu, který se zobrazuje v hlavičce stránky, v adminstraci a někdy (podle vzhledu) se používá i v patičce.
-            use_google_ajax_libraries: Chcete používat Google AJAX CDN ?
             use_marketable_urls: Změní adresy URL z /pages/about na /about a automaticky opraví konflikty s ostaními pluginy.
-            use_resource_caching: Doporučujeme zapnout toto nastavení v produkčním módu, protože rapidně urychlí načítání stránek. Komprimuje JavaSript a kaskádové styly do jednotlivých souborů, což vám ušetří požadavky na server.
   activerecord:
     models:
       refinery/setting: nastavení

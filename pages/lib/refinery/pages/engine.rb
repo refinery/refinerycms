@@ -44,7 +44,9 @@ module Refinery
       end
       
       initializer "add marketable route parts to reserved words" do |app|
-        if Refinery::Pages.use_marketable_urls?
+        # $rake_assets_precompiling is a temporary hack to avoid initializing the database during
+        # assets precompile for issue https://github.com/resolve/refinerycms/issues/1059
+        if $rake_assets_precompiling && Refinery::Pages.use_marketable_urls?
           add_route_parts_as_reserved_words(app)
         end
       end

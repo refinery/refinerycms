@@ -27,9 +27,7 @@ nb:
             preferred_image_view: "Dette kontrollerer hvilken visning bilde-tillegget viser eksisterende bilder i - rute for 'Rutenett', og liste for 'Liste'. Det er en knapp som automatiserer dene prosessen under bilde-tillegget."
             show_contact_privacy_link: "Du kan gjemme eller vise lenken til din 'privacy policy' på forespørsel skjemaet, ved siden av 'Send Forespørsel' knappen."
             site_name: "Dette er navnet på websiden din, og det vil vises i headeren, i Refinery kontrollpanelet, og i footeren sammen med copyright teksten i noen temaer."
-            use_google_ajax_libraries: "Om du ønsker å bruke Google sin AJAX CDN (Content Delivery Network) så setter du denne til 'true'."
             use_marketable_urls: "Forander adressene på websiden fra '/pages/om' til '/om', og behandler automatisk konflikter med andre tillegg."
-            use_resource_caching: "Det er anbefalt å aktivere dette i produksjon ettersom det pakker inn javascript og stylesheet filer i enkeltpakker for å redusere antall forespørsler som må gjøres, og dermed øke hastigheten på websiden."
             approximate_ascii: Sett denne verdien til true dersom du benytter Latinske bokstavar med aksenter eller andre varianter i sidetitler. Jeg vil da konvertere bokstaver som ā, č, ž til a, c, z. På denne måten vil ikke disse bokstavene oppføre seg merkelig i noen nettlesere.
   activerecord:
     models:

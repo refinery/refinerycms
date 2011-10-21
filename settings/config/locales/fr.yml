@@ -27,9 +27,7 @@ fr:
             preferred_image_view: "Cette option permet de personnaliser l'affichage des images dans les vues 'Vue en grille' et 'Vue en liste'. Il existe un boutton permettant de générer cettte valeur automatiquement directement dans la gestion du plugin d'images."
             show_contact_privacy_link: Vous pouvez afficher ou non le lien vers votre politique de gestion des données utilisateurs au bas du formulaire de contact.
             site_name: Ceci est le nom de votre site. Il s'affichera dans l'en-tête, dans le Refinery backend et dans la notice de copyright de pied de page en fonction des thèmes.
-            use_google_ajax_libraries: Si vous voulez utiliser Google's AJAX CDN mettez cette valeur à vrai (true) sinon à faux (false).
             use_marketable_urls: "Change les urls /pages/about en /about, et gère automatiquement les conflits avec d'autres plugins."
-            use_resource_caching: Il est recommandé de cocher cette option en production. Cela permet de regrouper les fichiers javascripts et CSS dans deux fichiers uniques afin d'augmenter la vitesse de service des pages et diminuer la charge sur le serveur.
   activerecord:
     models:
       refinery/setting: paramètre

@@ -27,9 +27,7 @@ sk:
             preferred_image_view: Nastavuje preferovaný pohľad na existujúce obrázky. Vyberte grid pre zobrazenie v mriežke, alebo list pre zobrazenie zoznamu. Nastavenie sa dá prepínať tlačidlom i v samotnom pohľade.
             show_contact_privacy_link: Môžete zobraziť alebo skryť odkaz na stránku 'Zásady ochrany osobných údajov' u kontaktného formulára vedľa tlačidla 'Odoslať'.
             site_name: Názov vášho webu, ktorý sa zobrazuje v hlavičke stránky, v administrácii a niekedy (podľa témy) sa používa aj v pätičke.
-            use_google_ajax_libraries: Ak chcete používať Google AJAX CDN nastavte túto voľbu na true.
             use_marketable_urls: Zmení adresy URL z /pages/about na /about a automaticky opraví konflikty s ostanými pluginmi.
-            use_resource_caching: Odporúčame zapnúť toto nastavenie v produkčnom móde, pretože rapídne urýchli načítanie stránok. Komprimuje JavaSript a kaskádové štýly do jednotlivých súborov, čo vám ušetrí požiadavky na server.
             approximate_ascii: Nastavte na hodnotu true, ak používaťe latinské znaky s akcentmi a diakritikou v názvoch stránok. Pokúsi sa previesť znaky, ako je ā, č, ž na a, c, z, a tak sa tieto znaky nezobrazia podivne v adresnom riadku niektorých webových prehliadačov.
   activerecord:
     models:

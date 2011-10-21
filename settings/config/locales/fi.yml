@@ -27,9 +27,7 @@ fi:
             preferred_image_view: "Missä näkymässä kuvapalikka näyttää kuvat: lista- vai ruudukkonäkymässä. Kuvapalikassa on oma nappi näkymien vaihtamiseen."
             show_contact_privacy_link: "Voit piilottaa linkin yksityisyydensuojasivulle yhteydenottolomakkeessa."
             site_name: "Tämä on nettisivusi nimi. Se näytetään sivuston otsakealueella, Refineryn hallintapaneelissa ja alaotsakkeen tekijänoikeustekstissä joissain teemoissa."
-            use_google_ajax_libraries: "Jos haluat käyttää Googlen AJAX- sisällönjakeluverkkoa, pistä tämä asetus päälle."
             use_marketable_urls: "Vaihda sivujen osoitteet muodosta /pages/about muotoon /about, ja hallitse ristiriitoja palikkojen välillä automaattisesti."
-            use_resource_caching: "Kun nettisivusi ovat julkisesti käytössä, on suositeltavaa että tämä asetus on päällä. Paketoi JavaScript- ja tyylitiedostot pieniin paketteihin, joka vähentää palvelimeen kohdistuvaa rasitusta."
             approximate_ascii: "Pistä tämä asetus päälle, jos käytät merkkejä joissa on aksentteja ja muita erikoismerkkejä sivujen otsikoissa. Se muuntaa merkit kuten ā, č, ž muotoihin a, c, z, jotta nämä merkit eivät näytä oudoilta joittenkin selainten osoitepalkeissa."
   activerecord:
     models:

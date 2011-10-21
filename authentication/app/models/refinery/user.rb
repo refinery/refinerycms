@@ -6,7 +6,7 @@ module Refinery
     has_and_belongs_to_many :roles, :join_table => ::Refinery::RolesUsers.table_name
 
     has_many :plugins, :class_name => "UserPlugin", :order => "position ASC", :dependent => :destroy
-    has_friendly_id :username, :use_slug => true
+    has_friendly_id :username, :use_slug => true unless $rake_assets_precompiling
 
     # Include default devise modules. Others available are:
     # :token_authenticatable, :confirmable, :lockable and :timeoutable
@@ -46,10 +46,10 @@ module Refinery
     end
 
     def can_delete?(user_to_delete = self)
-      user_to_delete.persisted? and
-      !user_to_delete.has_role?(:superuser) and
-      ::Refinery::Role[:refinery].users.count >= 1 and
-      id != user_to_delete.id
+      user_to_delete.persisted? &&
+        !user_to_delete.has_role?(:superuser) &&
+        ::Refinery::Role[:refinery].users.any? &&
+        id != user_to_delete.id
     end
 
     def add_role(title)
