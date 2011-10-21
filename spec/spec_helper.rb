@@ -12,6 +12,14 @@ def setup_environment
   # Requires supporting files with custom matchers and macros, etc,
   # in ./support/ and its subdirectories.
   Dir[File.expand_path('../support/**/*.rb', __FILE__)].each {|f| require f}
+  
+  engines = [ 
+    'authentication',
+    'images',
+  ]
+  engines.each do |engine|
+    require "#{Rails.root}/#{engine}/features/support/factories.rb"
+  end
 
   RSpec.configure do |config|
     # == Mock Framework
