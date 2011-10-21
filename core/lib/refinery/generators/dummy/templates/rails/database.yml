@@ -28,10 +28,6 @@ test:
   <<: *login
   database: dummy_test
 
-cucumber:
-  <<: *login
-  database: dummy_test
-
 production:
   <<: *login
   database: dummy_prod
