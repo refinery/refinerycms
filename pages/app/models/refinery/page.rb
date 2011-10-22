@@ -199,7 +199,7 @@ module Refinery
     end
 
     def url_marketable
-      # :id => nil is important to prevent any other params[:id] from interfering with this route.
+      # except(:id) is important to prevent any other params[:id] from interfering with this route.
       url_normal.merge(:path => nested_url).except(:id)
     end
 
