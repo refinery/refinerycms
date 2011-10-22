@@ -142,7 +142,7 @@ module Refinery
         puts "set .deletable to true" unless deletable
       end
 
-      return false
+      false
     end
 
     # If you want to destroy a page that is set to be not deletable this is the way to do it.
