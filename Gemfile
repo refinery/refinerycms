@@ -36,8 +36,8 @@ group :development, :test do
   gem 'refinerycms-testing', '~> 2.0.0'
   gem 'rcov', :platform => :mri_18
   gem 'simplecov', :platform => :mri_19
-  gem 'capybara-webkit', '~> 0.6.1'
-  gem 'spork', '0.9.0.rc9', :platforms => :ruby
+  gem 'capybara-webkit', '~> 0.7.0'
+  gem 'spork', '~> 0.9.0.rc', :platforms => :ruby
   gem 'guard-spork', :platforms => :ruby
   gem 'generator_spec'
 
@@ -50,7 +50,7 @@ group :development, :test do
   end
 
   platforms :ruby do
-    gem 'spork', '0.9.0.rc9'
+    gem 'spork', '~> 0.9.0.rc'
     gem 'guard-spork'
 
     unless ENV['TRAVIS']
