@@ -31,6 +31,7 @@ group :development, :test do
   # Finally, run 'rake' to run the tests.
   gem 'refinerycms-testing',    '~> 1.0.8'
   gem 'capybara', '~> 1.0.0'
+  gem 'growl'
   gem 'spork', '0.9.0.rc9', :platforms => :ruby
   gem 'guard-spork', :platforms => :ruby
   gem 'guard-rspec', :platforms => :ruby
