@@ -299,7 +299,7 @@ module Refinery
             end
           end
 
-          it "should use use ID instead of slug in admin" do
+          it "should use ID instead of slug in admin" do
             p = ::Refinery::Page.find('новости')
             within "#refinery_page_#{p.id}" do
               page.find_link('Edit this page')[:href].should include(p.id.to_s)
