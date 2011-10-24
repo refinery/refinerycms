@@ -5,9 +5,9 @@ module Refinery
 
       # Require/load (based on config) all decorators from app/decorators/ and vendor/engines/*
       def self.load_decorators
-        [Dir.glob(File.join(Rails.root, "app/decorators/**/*_decorator.rb")) +
-         Dir.glob(File.join(Rails.root,
-                  "vendor/engines/*/app/decorators/**/*_decorator.rb"))].flatten.each do |decorator|
+        [Rails.root, Refinery::Plugins.registered.pathnames].flatten.map { |p|
+          Dir[p.join('app', 'decorators', '**', '*_decorator.rb')]
+        }.flatten.uniq.each do |decorators|
           Rails.application.config.cache_classes ? require(decorator) : load(decorator)
         end
       end
