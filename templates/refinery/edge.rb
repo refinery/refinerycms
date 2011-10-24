@@ -1,9 +1,9 @@
 gem 'refinerycms', :git => 'git://github.com/resolve/refinerycms.git'
 run 'bundle install'
-generate 'refinery:cms' 
+generate 'refinery:cms'
 rake 'db:migrate'
 
-append_file 'Gemfile' do 
+append_file 'Gemfile' do
 " #  group :development, :test do
   #    gem 'refinerycms-testing', '~> 2.0'
   #  end
