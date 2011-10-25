@@ -10,7 +10,6 @@ module Refinery
   require 'refinery/errors'
 
   autoload :Activity, 'refinery/activity'
-  autoload :Application, 'refinery/application'
   autoload :ApplicationController, 'refinery/application_controller'
   autoload :Configuration, 'refinery/configuration'
   autoload :Engine, 'refinery/engine'
