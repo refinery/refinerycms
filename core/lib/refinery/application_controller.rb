@@ -21,7 +21,7 @@ module Refinery
 
       protect_from_forgery # See ActionController::RequestForgeryProtection
 
-      send :include, Crud # basic create, read, update and delete methods
+      send :include, Refinery::Crud # basic create, read, update and delete methods
 
       send :before_filter, :find_pages_for_menu,
                              :show_welcome_page?
