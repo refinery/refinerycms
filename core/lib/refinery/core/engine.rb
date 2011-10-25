@@ -10,9 +10,12 @@ module Refinery
       engine_name :refinery_core
 
       class << self
+        # Require/load (based on Rails app.config) all decorators from app/decorators/ and vendor/engines/*
         def load_decorators
-          Dir.glob(File.join(Rails.root, "app/decorators/**/*_decorator.rb")) do |c|
-            Rails.application.config.cache_classes ? require(c) : load(c)
+          [Rails.root, Refinery::Plugins.registered.pathnames].flatten.map { |p|
+            Dir[p.join('app', 'decorators', '**', '*_decorator.rb')]
+          }.flatten.uniq.each do |decorators|
+            Rails.application.config.cache_classes ? require(decorator) : load(decorator)
           end
         end
 

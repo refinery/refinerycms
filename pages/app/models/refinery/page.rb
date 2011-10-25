@@ -142,7 +142,7 @@ module Refinery
         puts "set .deletable to true" unless deletable
       end
 
-      return false
+      false
     end
 
     # If you want to destroy a page that is set to be not deletable this is the way to do it.
@@ -199,7 +199,7 @@ module Refinery
     end
 
     def url_marketable
-      # :id => nil is important to prevent any other params[:id] from interfering with this route.
+      # except(:id) is important to prevent any other params[:id] from interfering with this route.
       url_normal.merge(:path => nested_url).except(:id)
     end
 
