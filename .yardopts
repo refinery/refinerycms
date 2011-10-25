@@ -13,11 +13,4 @@ settings/**/*.rb
 readme.md
 license.md
 changelog.md
-authentication/readme.md
-core/crud.md
-core/engines.md
-dashboard/readme.md
-images/readme.md
-pages/readme.md
-resources/readme.md
-settings/readme.md
+doc/*.md
