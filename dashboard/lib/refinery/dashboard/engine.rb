@@ -8,6 +8,8 @@ module Refinery
 
       isolate_namespace Refinery
       engine_name :refinery_dashboard
+      
+      config.autoload_paths += %W( #{config.root}/lib )
 
       initializer "register refinery_dashboard plugin", :after => :set_routes_reloader do |app|
         Refinery::Plugin.register do |plugin|

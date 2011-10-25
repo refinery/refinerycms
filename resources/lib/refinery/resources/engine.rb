@@ -8,6 +8,8 @@ module Refinery
 
       isolate_namespace Refinery
       engine_name :refinery_resources
+      
+      config.autoload_paths += %W( #{config.root}/lib )
 
       initializer 'resources-with-dragonfly', :before => :load_config_initializers do |app|
         ::Refinery::Resources::Dragonfly.setup!

@@ -37,6 +37,8 @@ module Refinery
         end
       end
 
+      config.autoload_paths += %W( #{config.root}/lib )
+      
       # Include the refinery controllers and helpers dynamically
       config.to_prepare &method(:refinery_inclusion!).to_proc
 
@@ -90,8 +92,6 @@ module Refinery
           Rails.root.join('vendor', '**', '**', 'app', 'presenters'),
           Refinery.roots.map{|r| r.join('**', 'app', 'presenters')}
         ].flatten
-        
-        app.config.autoload_paths += %W( #{config.root}/lib )
       end
 
       initializer "refinery.acts_as_indexed" do
