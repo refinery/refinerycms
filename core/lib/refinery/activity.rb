@@ -1,10 +1,45 @@
 module Refinery
   class Activity
 
-    attr_accessor :class, :conditions, :created_image, :limit, :nested_with, :order, :title, :updated_image, :url, :url_prefix
+    # Constant representing the class which this instance of activity is recording
+    attr_accessor :class
+    
+    attr_accessor :conditions
+    
+    # Image asset to use to represent newly created instances of the class this activity
+    # represents
+    attr_accessor :created_image
+    
+    # Total number of activies to show for a given class of activity
+    attr_accessor :limit
+    
+    attr_accessor :nested_with
+    
+    # SQL order by string to specify how to order the activities in the activity feed for
+    # the given activities class
+    attr_accessor :order
+    
+    # The title to be displayed for each item of this activity
+    attr_accessor :title
+    
+    # Image asset to use to represent updated instance of the class thisa activity represents
+    attr_accessor :updated_image
+    
+    attr_accessor :url
+    attr_accessor :url_prefix
 
-    # for nested_with, pass in the reverse order of ancestry e.g. [parent.parent_of_parent, parent]
-    def initialize(options={})
+    # Creates a new instance of Activity for a registered Refinery Plugin. An optional
+    # hash of options can be specified to customize the values of each attribute
+    # accessor defined on this class. Each key specified in the options hash should be a
+    # symbol representation of the accessor name you wish to customize the value for.
+    # 
+    # Example:
+    #   To override the limit and title of the activity:
+    #   Activity.new(:limit => 10, :title => "Newest Activity!")
+    #
+    # Warning:
+    #  for the nested_with option, pass in the reverse order of ancestry e.g. [parent.parent_of_parent, parent]
+    def initialize(options = {})
       {
         :class => nil,
         :conditions => nil,
@@ -16,7 +51,7 @@ module Refinery
         :updated_image => "edit.png",
         :url => nil,
         :url_prefix => "edit"
-      }.merge(options).each { |key,value| self.instance_variable_set(:"@#{key}", value) }
+      }.merge(options).each { |key,value| self.send(:"#{key}=", value) }
     end
 
     # to use in a URL like edit_refinery_admin_group_individuals_path(record.group, record)
