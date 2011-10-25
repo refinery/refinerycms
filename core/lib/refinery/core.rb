@@ -35,8 +35,6 @@ module Refinery
   end
 
   class << self
-    attr_accessor :gems
-
     @@engines = []
 
     # Convenience method for Refinery::Core#rescue_not_found
