@@ -24,7 +24,7 @@ module Refinery
           plugin.version = %q{2.0.0}
           plugin.menu_match = /refinery\/image(_dialog)?s$/
           plugin.activity = {
-            :class => Image
+            :class_name => :'refinery/image'
           }
           plugin.url = app.routes.url_helpers.refinery_admin_images_path
         end

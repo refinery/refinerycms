@@ -20,7 +20,7 @@ module Refinery
           plugin.version = %q{2.0.0}
           plugin.menu_match = /refinery\/users$/
           plugin.activity = {
-            :class => User,
+            :class_name => :'refinery/user',
             :title => 'username'
           }
           plugin.url = app.routes.url_helpers.refinery_admin_users_path

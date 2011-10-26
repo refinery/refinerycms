@@ -114,7 +114,7 @@ to Report Activity in the Dashboard")
         plugin.menu_match = /refinery\/page(_part)?s(_dialogs)?$/
         plugin.url = app.routes.url_helpers.refinery_admin_pages_path
         plugin.activity = {
-          :class => ::Refinery::Page,
+          :class_name => "Refinery::Page",
           :url_prefix => "edit",
           :title => "title",
           :created_image => "page_add.png",
@@ -147,7 +147,7 @@ In our example above we showed the use of ``plugin.activity`` for the pages engi
       plugin.menu_match = /refinery\/page(_part)?s(_dialogs)?$/
       plugin.url = app.routes.url_helpers.refinery_admin_pages_path
       plugin.activity = {
-        :class => ::Refinery::Page,
+        :class_name => "Refinery::Page",
         :url_prefix => "edit",
         :title => "title",
         :created_image => "page_add.png",
