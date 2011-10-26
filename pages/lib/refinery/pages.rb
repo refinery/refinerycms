@@ -8,6 +8,7 @@ module Refinery
   module Pages
     require 'refinery/pages/engine' if defined?(Rails)
     require 'refinery/generators/pages_generator'
+    require 'refinery/pages/tab'
 
     autoload :InstanceMethods, 'refinery/pages/instance_methods'
 
@@ -38,11 +39,11 @@ module Refinery
         self.pages_per_admin_index = DEFAULT_PAGES_PER_ADMIN_INDEX
       end
 
-      attr_accessor :root
       def root
         @root ||= Pathname.new(File.expand_path('../../../', __FILE__))
       end
 
+      # You need to restart the server after changing this setting.
       def use_marketable_urls?
         ::Refinery::Setting.find_or_set(:use_marketable_urls, true, :scoping => 'pages')
       end

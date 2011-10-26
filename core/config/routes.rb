@@ -1,4 +1,4 @@
-::Refinery::Application.routes.draw do
+Rails.application.routes.draw do
   filter(:refinery_locales) if defined?(RoutingFilter::RefineryLocales) # optionally use i18n.
   scope(:module => 'refinery') do
     match 'wymiframe(/:id)', :to => 'fast#wymiframe', :as => :wymiframe

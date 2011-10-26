@@ -4,10 +4,15 @@ require 'rails'
 module Refinery
   module Dashboard
     class Engine < ::Rails::Engine
-      isolate_namespace ::Refinery
+      include Refinery::Engine
 
-      initializer "init plugin", :after => :set_routes_reloader do |app|
-        ::Refinery::Plugin.register do |plugin|
+      isolate_namespace Refinery
+      engine_name :refinery_dashboard
+      
+      config.autoload_paths += %W( #{config.root}/lib )
+
+      initializer "register refinery_dashboard plugin", :after => :set_routes_reloader do |app|
+        Refinery::Plugin.register do |plugin|
           plugin.pathname = root
           plugin.name = 'refinery_dashboard'
           plugin.url = app.routes.url_helpers.refinery_admin_dashboard_path
@@ -20,7 +25,7 @@ module Refinery
       end
 
       config.after_initialize do
-        ::Refinery.engines << 'dashboard'
+        Refinery.register_engine(Refinery::Dashboard)
       end
     end
   end

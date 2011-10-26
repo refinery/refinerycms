@@ -3,7 +3,7 @@ module Refinery
 
     def find_by_model(model)
       model = model.constantize if model.is_a? String
-      detect { |plugin| plugin.activity.any? {|activity| activity.class == model } }
+      detect { |plugin| plugin.activity.any? {|activity| activity.klass == model } }
     end
 
     def find_by_name(name)

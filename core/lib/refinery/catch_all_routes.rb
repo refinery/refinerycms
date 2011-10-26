@@ -1,3 +1,3 @@
-::Refinery::Application.routes.draw do
+::Rails.application.routes.draw do
   match '/refinery/*path' => 'admin/base#error_404'
 end

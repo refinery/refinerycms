@@ -53,11 +53,11 @@ module Refinery
     end
 
     describe '#activity' do
-
+      pending
     end
 
     describe '#activity=' do
-
+      pending
     end
 
     describe '#pathname' do
