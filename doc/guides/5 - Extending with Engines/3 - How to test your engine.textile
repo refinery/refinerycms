@@ -24,16 +24,26 @@ And run
 $ bundle install
 </shell>
 
-Now we will configure our test environment with
+Now we will configure our test environment by preparing a dummy refinerycms app
+
+Add the following lines to your engine's Rakefile
+
+<ruby>
+  ENGINE_PATH = File.dirname(__FILE__)
+  APP_RAKEFILE = File.expand_path("../spec/dummy/Rakefile", __FILE__)
+
+  if File.exists?(APP_RAKEFILE)
+    load 'rails/tasks/engine.rake'
+  end
+
+  require "refinerycms-testing"
+  Refinery::Testing::Railtie.load_tasks
+</ruby>
+
+And run the dummy application generator
 
 <shell>
-$ rails generate refinerycms_testing
-</shell>
-
-And prepare our dummy refinerycms app and database with
-
-<shell>
-$ bundle exec rake refinery:testing:engine:setup
+$ bundle exec rake refinery:testing:dummy_app
 </shell>
 
 h3. Running the tests with Rake
