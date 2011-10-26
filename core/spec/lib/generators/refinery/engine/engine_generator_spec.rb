@@ -1,5 +1,6 @@
 require 'spec_helper'
-require "generator_spec/test_case"
+require 'generator_spec/test_case'
+require 'generators/refinery/engine/engine_generator'
 
 module Refinery
   describe EngineGenerator do

@@ -1,5 +1,6 @@
 require 'spec_helper'
-require "generator_spec/test_case"
+require 'generator_spec/test_case'
+require 'generators/refinery/cms/cms_generator'
 
 module Refinery
   describe CmsGenerator do

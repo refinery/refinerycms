@@ -1,10 +1,11 @@
 require 'spec_helper'
-require "generator_spec/test_case"
+require 'generator_spec/test_case'
+require 'generators/refinery/pages/pages_generator'
 
 module Refinery
-  describe CoreGenerator do
+  describe PagesGenerator do
     include GeneratorSpec::TestCase
-    destination File.expand_path("../../../../../tmp", __FILE__)
+    destination File.expand_path("../../../../tmp", __FILE__)
 
     before(:each) do
       prepare_destination
@@ -15,11 +16,14 @@ module Refinery
       destination_root.should have_structure {
         directory "db" do
           directory "migrate"
+          directory "seeds" do
+            file "pages.rb"
+          end
         end
         directory "config" do
           directory "initializers" do
-            file "refinery.rb" do
-              contains "Refinery::Core.configure do |config|"
+            file "refinery_pages.rb" do
+              contains "Refinery::Pages.configure"
             end
           end
         end

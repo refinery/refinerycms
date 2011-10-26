@@ -5,7 +5,6 @@ require 'rack/cache'
 module Refinery
   module Images
     require 'refinery/images/engine' if defined?(Rails)
-    require 'refinery/generators/images_generator'
 
     autoload :Dragonfly, 'refinery/images/dragonfly'
     autoload :Validators, 'refinery/images/validators'

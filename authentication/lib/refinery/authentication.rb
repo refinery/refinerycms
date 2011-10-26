@@ -12,7 +12,6 @@ module Refinery
 
   module Authentication
     require 'refinery/authentication/engine' if defined?(Rails)
-    require 'refinery/generators/authentication_generator'
 
     class << self
       def factory_paths
