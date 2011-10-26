@@ -1,7 +1,11 @@
+if !defined?(ENGINE_PATH) || !ENGINE_PATH
+  abort("ERROR: ENGINE_PATH must be defined and contain a path pointing to your engine's root.")
+end
+
 namespace :refinery do  
   namespace :testing do
     desc "Generates a dummy app for testing"
-    task :dummy_app do      
+    task :dummy_app do
       require "refinerycms"
       
       params = []
@@ -11,7 +15,7 @@ namespace :refinery do
       
       # Load generated dummy app after generation - some of the follow
       # generators depend on Rails.root being available
-      load File.join(ENGINE_ROOT, 'spec/dummy/config/environment.rb')
+      load File.join(ENGINE_PATH, 'spec/dummy/config/environment.rb')
       
       Refinery::CmsGenerator.start
       Refinery::CoreGenerator.start
@@ -21,12 +25,12 @@ namespace :refinery do
       Refinery::PagesGenerator.start
       Refinery::ImagesGenerator.start
       
-      system "bundle exec rake -f #{File.join(ENGINE_ROOT, 'Rakefile')} app:db:drop app:db:create app:db:migrate app:db:seed app:db:test:prepare RAILS_ENV=development"
+      system "bundle exec rake -f #{File.join(ENGINE_PATH, 'Rakefile')} app:db:drop app:db:create app:db:migrate app:db:seed app:db:test:prepare RAILS_ENV=development"
     end
     
     desc "Remove the dummy app used for testing"
     task :clean_dummy_app do
-      system "rm -Rdf #{File.join(ENGINE_ROOT, 'spec/dummy')}"
+      system "rm -Rdf #{File.join(ENGINE_PATH, 'spec/dummy')}"
     end
     
     namespace :engine do
