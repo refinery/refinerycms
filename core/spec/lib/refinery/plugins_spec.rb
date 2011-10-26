@@ -5,7 +5,7 @@ module Refinery
     class Engine < ::Rails::Engine
       ::Refinery::Plugin.register do |plugin|
         plugin.name = "my_plugin"
-        plugin.url = {:controller => '/admin/dashboard', :action => 'index'}
+        plugin.hide_from_menu = true
       end
     end
   end
@@ -14,7 +14,7 @@ module Refinery
     class Engine < ::Rails::Engine
       ::Refinery::Plugin.register do |plugin|
         plugin.name = "my_other_plugin"
-        plugin.url = {:controller => '/admin/dashboard', :action => 'index'}
+        plugin.hide_from_menu = true
       end
     end
   end
