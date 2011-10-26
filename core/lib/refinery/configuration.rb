@@ -1,29 +1,23 @@
 module Refinery
   class Configuration
 
-    def after_inclusion_procs
-      @@after_inclusion_procs ||= []
-    end
+    def add_class(name)
+      self.instance_variable_set("@#{name}", Set.new)
 
-    def after_inclusion(&blk)
-      if blk && blk.respond_to?(:call)
-        after_inclusion_procs << blk
-      else
-        raise 'Anything added to be called before_inclusion must be callable.'
+      create_method("#{name}=".to_sym) do |value|
+        instance_variable_set("@#{name}", value)
+      end
+
+      create_method(name.to_sym) do
+        instance_variable_get("@#{name}")
       end
     end
 
-    def before_inclusion_procs
-      @@before_inclusion_procs ||= []
-    end
+    private
 
-    def before_inclusion(&blk)
-      if blk && blk.respond_to?(:call)
-        before_inclusion_procs << blk
-      else
-        raise 'Anything added to be called before_inclusion must be callable.'
+      def create_method(name, &block)
+        self.class.send(:define_method, name, &block)
       end
-    end
 
   end
 end

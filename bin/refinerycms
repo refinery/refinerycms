@@ -1,21 +1,25 @@
 #!/usr/bin/env ruby
-# Load bundler
+
+gemfile = File.expand_path('../../Gemfile', __FILE__)
 begin
-  require 'rubygems'
+  ENV['BUNDLE_GEMFILE'] = gemfile
   require 'bundler'
-rescue LoadError
+  Bundler.setup
+rescue Bundler::GemNotFound => e
   puts "\n=== ACTION REQUIRED ===\n\n"
   puts "Could not load the bundler gem. This is a required dependency of Refinery CMS."
   puts "Please install it with `gem install bundler`.\n\n"
   exit(1)
 end
+require 'rubygems'
+require 'bundler/setup'
+Bundler.require
 
 # Let the application have a constant it can detect installation with.
 REFINERYCMS_INSTALLER = true
 RAILS_MINOR_VERSION = '3.1'
 
-# Load refinerycms
-require File.expand_path(File.dirname(__FILE__) << "/../lib/refinery")
+require 'refinerycms-core'
 
 # Load other required libraries
 require 'pathname'

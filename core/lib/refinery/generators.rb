@@ -1,8 +1,13 @@
+require 'rails/generators'
+
 module Refinery
   module Generators
-    require 'refinery/generators/engine_installer'
-    require 'refinery/generators/migrations'
-    require 'refinery/generators/engine/engine_generator'
-    require 'refinery/generators/cms/cms_generator'
+    autoload :EngineInstaller, 'refinery/generators/engine_installer'
+    autoload :Migrations, 'refinery/generators/migrations'
   end
+
+  require 'refinery/generators/engine/engine_generator'
+  require 'refinery/generators/cms/cms_generator'
+  require 'refinery/generators/core/core_generator'
+  require 'refinery/generators/dummy/dummy_generator'
 end

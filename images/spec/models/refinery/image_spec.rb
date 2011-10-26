@@ -119,7 +119,7 @@ module Refinery
     describe "validations" do
       describe "valid #image" do
         before(:each) do
-          @file = Refinery.roots("images").join("spec/fixtures/beach.jpeg")
+          @file = Refinery.roots(:'refinery/images').join("spec/fixtures/beach.jpeg")
           Images.max_image_size = (File.read(@file).size + 10.megabytes)
         end
 
@@ -130,7 +130,7 @@ module Refinery
 
       describe "invalid #image" do
         before(:each) do
-          @file = Refinery.roots("images").join("spec/fixtures/beach.jpeg")
+          @file = Refinery.roots(:'refinery/images').join("spec/fixtures/beach.jpeg")
           Images.max_image_size = 0
           @image = Image.new(:image => @file)
         end

@@ -23,7 +23,7 @@ module Refinery
         click_link "Add new image"
 
         within_frame "dialog_iframe" do
-          attach_file "image_image", Refinery.roots("images").join("spec/fixtures/beach.jpeg")
+          attach_file "image_image", Refinery.roots(:'refinery/images').join("spec/fixtures/beach.jpeg")
           click_button "Save"
         end
 
@@ -44,7 +44,7 @@ module Refinery
         page.should have_content("Use current image or replace it with this one...")
         page.should have_selector("a[href='/refinery/images']")
 
-        attach_file "image_image", Refinery.roots("images").join("spec/fixtures/id-rather-be-here.jpg")
+        attach_file "image_image", Refinery.roots(:'refinery/images').join("spec/fixtures/id-rather-be-here.jpg")
         click_button "Save"
 
         page.should have_content("'Id Rather Be Here' was successfully updated.")

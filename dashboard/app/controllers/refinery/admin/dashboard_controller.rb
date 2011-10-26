@@ -1,4 +1,4 @@
-module ::Refinery
+module Refinery
   module Admin
     class DashboardController < ::Refinery::AdminController
 
@@ -8,7 +8,7 @@ module ::Refinery
         ::Refinery::Plugins.active.each do |plugin|
           begin
             plugin.activity.each do |activity|
-              @recent_activity << activity.class.where(activity.conditions).
+              @recent_activity << activity.klass.where(activity.conditions).
                                                  order(activity.order).
                                                  limit(activity.limit).
                                                  all

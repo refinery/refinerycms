@@ -42,7 +42,6 @@ module Refinery
         self.pages_per_admin_index = DEFAULT_PAGES_PER_ADMIN_INDEX
       end
 
-      attr_accessor :root
       def root
         @root ||= Pathname.new(File.expand_path('../../../', __FILE__))
       end

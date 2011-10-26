@@ -1,29 +1,34 @@
+require 'refinerycms-pages'
+require 'rails'
+
 module Refinery
   module Pages
     class Engine < ::Rails::Engine
-      isolate_namespace ::Refinery
+      include Refinery::Engine
 
-      config.before_initialize do
-        require 'pages/marketable_urls' unless $rake_assets_precompiling
+      isolate_namespace Refinery
+      engine_name :refinery_pages
+      
+      config.autoload_paths += %W( #{config.root}/lib )
+
+      config.to_prepare do |app|        
+        Refinery::Page.translation_class.send(:is_seo_meta)
+        Refinery::Page.translation_class.send(:attr_accessible, :browser_title, :meta_description, :meta_keywords, :locale)
       end
 
-      config.to_prepare do
-        require 'pages/tabs'
-        unless $rake_assets_precompiling
-          require 'pages/marketable_urls'
-          ::Refinery::Page.translation_class.send(:is_seo_meta)
-          # set allowed attributes for mass assignment
-          ::Refinery::Page.translation_class.send(:attr_accessible, :browser_title, :meta_description, :meta_keywords, :locale)
+      after_inclusion do
+        ::ApplicationController.send :include, Refinery::Pages::InstanceMethods
+        Refinery::AdminController.send :include, Refinery::Pages::Admin::InstanceMethods
+      end
+      
+      initializer "append marketable routes", :before => :set_routes_reloader do |app|
+        if Refinery::Pages.use_marketable_urls?
+          append_marketable_routes(app)
         end
       end
 
-      refinery.after_inclusion do
-        ::ApplicationController.send :include, ::Refinery::Pages::InstanceMethods
-        ::Refinery::AdminController.send :include, ::Refinery::Pages::Admin::InstanceMethods
-      end
-
-      initializer "init plugin", :after => :set_routes_reloader do |app|
-        ::Refinery::Plugin.register do |plugin|
+      initializer "register refinery_pages plugin", :after => :set_routes_reloader do |app|
+        Refinery::Plugin.register do |plugin|
           plugin.pathname = root
           plugin.name = 'refinery_pages'
           plugin.directory = 'pages'
@@ -31,7 +36,7 @@ module Refinery
           plugin.menu_match = /refinery\/page(_part)?s(_dialogs)?$/
           plugin.url = app.routes.url_helpers.refinery_admin_pages_path
           plugin.activity = {
-            :class => ::Refinery::Page,
+            :class_name => :'refinery/page',
             :url_prefix => "edit",
             :title => "title",
             :created_image => "page_add.png",
@@ -39,10 +44,36 @@ module Refinery
           }
         end
       end
+      
+      initializer "add marketable route parts to reserved words" do |app|
+        if Refinery::Pages.use_marketable_urls?
+          # $rake_assets_precompiling is a temporary hack to avoid initializing the database during
+          # assets precompile for issue https://github.com/resolve/refinerycms/issues/1059
+          add_route_parts_as_reserved_words(app) unless $rake_assets_precompiling
+        end
+      end
 
       config.after_initialize do
-        Refinery.engines << 'pages'
+        Refinery.register_engine(Refinery::Pages)
       end
+
+      protected
+
+        def append_marketable_routes(app)
+          app.routes.append do
+            scope(:module => 'refinery') do
+              get '*path', :to => 'pages#show'
+            end
+          end
+        end
+
+        # Add any parts of routes as reserved words.
+        def add_route_parts_as_reserved_words(app)
+          route_paths = app.routes.named_routes.routes.map { |name, route| route.path }
+          Refinery::Page.friendly_id_config.reserved_words |= route_paths.map { |path|
+            path.to_s.gsub(/^\//, '').to_s.split('(').first.to_s.split(':').first.to_s.split('/')
+          }.flatten.reject { |w| w =~ /\_/ }.uniq
+        end
     end
   end
 end

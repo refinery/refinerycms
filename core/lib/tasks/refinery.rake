@@ -142,7 +142,7 @@ namespace :refinery do
       abort "#{controller_class_name} is not defined"
     end
 
-    crud_lines = Refinery.roots('core').join('lib', 'refinery', 'crud.rb').read
+    crud_lines = Refinery.roots(:'refinery/core').join('lib', 'refinery', 'crud.rb').read
     if (matches = crud_lines.scan(/(\ +)(def #{action}.+?protected)/m).first).present? and
        (method_lines = "#{matches.last.split(%r{^#{matches.first}end}).first.strip}\nend".split("\n")).many?
       indent = method_lines.second.index(%r{[^ ]})
@@ -185,7 +185,7 @@ end
 
 desc "Recalculate $LOAD_PATH frequencies."
 task :recalculate_loaded_features_frequency => :environment do
-  require 'load_path_analyzer'
+  require 'refinery/load_path_analyzer'
 
   frequencies     = LoadPathAnalyzer.new($LOAD_PATH, $LOADED_FEATURES).frequencies
   ideal_load_path = frequencies.to_a.sort_by(&:last).map(&:first)

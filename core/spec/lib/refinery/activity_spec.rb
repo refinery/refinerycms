@@ -8,7 +8,7 @@ describe Refinery::Activity do
         end
       end
     end
-    @activity = Refinery::Activity.new(:class => Y::Y::Z, :url_prefix => "rush")
+    @activity = Refinery::Activity.new(:class_name => "Y::Y::Z", :url_prefix => "rush")
   end
 
   describe "#base_class_name" do

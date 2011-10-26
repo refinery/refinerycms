@@ -5,6 +5,8 @@ db/*.sqlite3-journal
 *.log
 tmp
 tmp/**/*
+pkg
+spec/dummy
 
 # Documentation
 doc/api
@@ -76,20 +78,11 @@ capybara-*html
 .rvmrc
 .rvmrc.*
 
+#rbenv
+.rbenv-version
+
 #Sprockets
 public/assets
 
 #Gemfile's lock file
 Gemfile.lock
-
-# REFINERY CMS DEVELOPMENT ====================================================
-# Always keep this section at the bottom.
-
-config/database.yml
-config/rackspace_cloudfiles.yml
-your_*.*
-db/schema.rb
-public/refinery
-config/ideal_load_path
-
-# END REFINERY CMS DEVELOPMENT =================================================

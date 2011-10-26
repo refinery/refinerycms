@@ -13,7 +13,7 @@ module Refinery
       end
 
       config.after_initialize do
-        Refinery.engines << 'testing'
+        Refinery.register_engine(Refinery::Testing)
         Testing.load_factories
       end
     end

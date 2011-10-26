@@ -1,4 +1,4 @@
-::Refinery::Application.routes.draw do
+Rails.application.routes.draw do
 
   # Add Devise necessary routes.
   # For Devise routes, see: https://github.com/plataformatec/devise
