@@ -1,14 +1,9 @@
-require 'refinery/generators'
-
 module Refinery
-  class CoreGenerator < ::Refinery::Generators::EngineInstaller
-
-    source_root File.expand_path('../../../../../', __FILE__)
-    engine_name "core"
+  class CoreGenerator < Rails::Generators::Base
+    source_root File.expand_path('../templates', __FILE__)
 
     def generate_refinery_initializer
-      template "lib/refinery/generators/core/templates/config/initializers/refinery.rb.erb", destination_path.join("config", "initializers", "refinery.rb")
+      template "config/initializers/refinery.rb.erb", File.join(destination_root, "config", "initializers", "refinery.rb")
     end
-
   end
 end

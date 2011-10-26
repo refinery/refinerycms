@@ -1,18 +1,11 @@
-require 'refinery/generators'
-
 module Refinery
-  class CmsGenerator < ::Refinery::Generators::EngineInstaller
-
-    engine_name :refinerycms
+  class CmsGenerator < Rails::Generators::Base
     source_root Pathname.new(File.expand_path('../templates', __FILE__))
 
     class_option :update, :type => :boolean, :aliases => nil, :group => :runtime,
                           :desc => "Update an existing Refinery CMS based application"
 
     def generate
-      # Ensure the generator doesn't output anything using 'puts'
-      self.silence_puts = true
-
       # Only pretend to do the next actions if this is Refinery to stay DRY
       if destination_path == Refinery.root
         say_status :'-- pretending to make changes that happen in an actual installation --', nil, :yellow
@@ -94,6 +87,12 @@ module Refinery
         Refinery::I18nGenerator.start
       end
     end
+    
+    protected
 
+      # Helper method to quickly convert destination_root to a Pathname for easy file path manipulation
+      def destination_path
+        @destination_path ||= Pathname.new(self.destination_root)
+      end
   end
 end

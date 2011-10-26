@@ -1,13 +1,9 @@
-require 'refinery/generators'
-
 module Refinery
-  class ImagesGenerator < ::Refinery::Generators::EngineInstaller
-
-    source_root File.expand_path('../../../../', __FILE__)
-    engine_name "images"
+  class ImagesGenerator < Rails::Generators::Base
+    source_root File.expand_path('../templates', __FILE__)
 
     def generate_images_initializer
-      template "lib/refinery/generators/templates/config/initializers/refinery_images.rb.erb", destination_path.join("config", "initializers", "refinery_images.rb")
+      template "config/initializers/refinery_images.rb.erb", File.join(destination_root, "config", "initializers", "refinery_images.rb")
     end
 
   end

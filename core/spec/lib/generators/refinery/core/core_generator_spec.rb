@@ -14,9 +14,6 @@ module Refinery
 
     specify do
       destination_root.should have_structure {
-        directory "db" do
-          directory "migrate"
-        end
         directory "config" do
           directory "initializers" do
             file "refinery.rb" do

@@ -1,13 +1,9 @@
-require 'refinery/generators'
-
-module ::Refinery
-  class ResourcesGenerator < ::Refinery::Generators::EngineInstaller
-
-    source_root File.expand_path('../../../../', __FILE__)
-    engine_name "resources"
+module Refinery
+  class ResourcesGenerator < Rails::Generators::Base
+    source_root File.expand_path('../templates', __FILE__)
 
     def generate_resources_initializer
-      template "lib/refinery/generators/templates/config/initializers/refinery_resources.rb.erb", destination_path.join("config", "initializers", "refinery_resources.rb")
+      template "config/initializers/refinery_resources.rb.erb", File.join(destination_root, "config", "initializers", "refinery_resources.rb")
     end
 
   end
