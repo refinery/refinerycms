@@ -74,15 +74,6 @@ module Refinery
       force_options = self.options.dup
       force_options[:force] = self.options[:force] || self.options[:update]
       self.options = force_options
-      # Seeds and migrations now need to be copied from their various engines.
-      existing_source_root = self.class.source_root
-      ::Refinery::Plugins.registered.pathnames.reject{|p| !p.join('db').directory?}.each do |pathname|
-        self.class.source_root pathname
-        super
-      end
-      self.class.source_root existing_source_root
-
-      super
 
       # The engine installer only installs database templates.
       Pathname.glob(self.class.source_root.join('**', '*')).reject{|f|
