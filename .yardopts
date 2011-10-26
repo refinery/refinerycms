@@ -1,4 +1,6 @@
 --title "Refinery CMS"
+--exclude /templates/
+--exclude /migrate/
 Gemfile
 lib/**/*
 Rakefile
