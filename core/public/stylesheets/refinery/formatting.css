@@ -43,6 +43,7 @@ Clearfix docs
   content: ".";
   display: block;
   height: 0;
+  overflow: hidden; /* for height 0, is necesary force with overflow hidden */
   clear: both;
   visibility: hidden;
 }
