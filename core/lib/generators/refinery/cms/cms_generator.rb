@@ -87,7 +87,7 @@ module Refinery
         Refinery::I18nGenerator.start
       end
     end
-    
+
     protected
 
       # Helper method to quickly convert destination_root to a Pathname for easy file path manipulation
