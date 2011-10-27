@@ -8,7 +8,7 @@ module Refinery
 
       isolate_namespace Refinery
       engine_name :refinery_images
-      
+
       config.autoload_paths += %W( #{config.root}/lib )
 
       initializer 'images-with-dragonfly', :before => :load_config_initializers do |app|

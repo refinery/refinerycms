@@ -1,23 +1,23 @@
 module Refinery
   class Activity
     attr_accessor :conditions
-    
+
     # Image asset to use to represent newly created instances of the class this activity
     # represents
     attr_accessor :created_image
-    
+
     # Total number of activies to show for a given class of activity
     attr_accessor :limit
-    
+
     attr_accessor :nested_with
-    
+
     # SQL order by string to specify how to order the activities in the activity feed for
     # the given activities class
     attr_accessor :order
-    
+
     # The title to be displayed for each item of this activity
     attr_accessor :title
-    
+
     # Image asset to use to represent updated instance of the class thisa activity represents
     attr_accessor :updated_image
 
@@ -25,7 +25,7 @@ module Refinery
     # hash of options can be specified to customize the values of each attribute
     # accessor defined on this class. Each key specified in the options hash should be a
     # symbol representation of the accessor name you wish to customize the value for.
-    # 
+    #
     # Example:
     #   To override the limit and title of the activity:
     #   Activity.new(:limit => 10, :title => "Newest Activity!")
@@ -46,10 +46,10 @@ module Refinery
         :url_prefix => "edit"
       }.merge(options).each { |key, value| self.send(:"#{key}=", value) }
     end
-    
+
     # Returns a string representation of the Class name of the object which this instance is recording
     attr_reader :class_name
-    
+
     # Sets the class_name instance variable. Takes one parameter which must be a Class Constant, String, or Symbol.
     #
     # Example:
@@ -59,8 +59,8 @@ module Refinery
     def class_name=(value)
       @class_name = value.to_s.camelize
     end
-    
-    # Returns a string containing the base class name (everything to the right of the last :: in the class definition) 
+
+    # Returns a string containing the base class name (everything to the right of the last :: in the class definition)
     # of the Class this instance is recording
     #
     # Example:
@@ -70,7 +70,7 @@ module Refinery
     def base_class_name
       self.klass.name.demodulize
     end
-    
+
     # Returns the Class Constant for the Class which this instance is recording
     #
     # Example:
@@ -84,7 +84,7 @@ module Refinery
     def nesting(record_string = "record")
       self.nested_with.inject("") { |nest_chain, nesting| nest_chain << "#{record_string}.#{nesting}," }
     end
-    
+
     attr_writer :url_prefix
 
     def url_prefix
@@ -92,7 +92,7 @@ module Refinery
     end
 
     attr_writer :url
-    
+
     def url
       "#{self.url_prefix}#{@url ||= "refinery_admin_#{self.base_class_name.underscore}_path"}"
     end
