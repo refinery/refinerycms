@@ -1,4 +1,5 @@
-require "rails/generators/rails/app/app_generator"
+require 'rails/generators'
+require 'rails/generators/rails/app/app_generator'
 
 module Refinery
   class DummyGenerator < Rails::Generators::Base

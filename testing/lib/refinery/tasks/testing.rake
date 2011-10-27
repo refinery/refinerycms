@@ -6,7 +6,7 @@ namespace :refinery do
   namespace :testing do
     desc "Generates a dummy app for testing"
     task :dummy_app do
-      require "refinerycms"
+      require 'refinerycms'
       
       params = []
       params << "--database=#{ENV['DB']}" if ENV['DB']
@@ -19,13 +19,11 @@ namespace :refinery do
       
       Refinery::CmsGenerator.start
       Refinery::CoreGenerator.start
-      Refinery::AuthenticationGenerator.start
-      Refinery::SettingsGenerator.start
       Refinery::ResourcesGenerator.start
       Refinery::PagesGenerator.start
       Refinery::ImagesGenerator.start
       
-      system "bundle exec rake -f #{File.join(ENGINE_PATH, 'Rakefile')} app:db:drop app:db:create app:db:migrate app:db:seed app:db:test:prepare RAILS_ENV=development"
+      system "bundle exec rake -f #{File.join(ENGINE_PATH, 'Rakefile')} app:railties:install:migrations app:db:drop app:db:create app:db:migrate app:db:seed app:db:test:prepare RAILS_ENV=development"
     end
     
     desc "Remove the dummy app used for testing"
