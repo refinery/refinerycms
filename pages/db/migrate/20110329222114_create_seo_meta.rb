@@ -49,7 +49,7 @@ class CreateSeoMeta < ActiveRecord::Migration
     existing_translations = ::Refinery::Page.translation_class.all.map(&:attributes)
 
     # Add columns back to your model
-    ::Refinery::SeoMeta.attributes.each do |field, field_type|
+    ::SeoMeta.attributes.each do |field, field_type|
       unless ::Refinery::Page.translation_class.column_names.map(&:to_sym).include?(field)
         add_column ::Refinery::Page.translation_class.table_name, field, field_type
       end
@@ -61,13 +61,13 @@ class CreateSeoMeta < ActiveRecord::Migration
     # Migrate data
     existing_translations.each do |translation|
       ::Refinery::Page.translation_class.update_all(
-        ::Refinery::SeoMeta.attributes.keys.inject({}) {|attributes, name|
+        ::SeoMeta.attributes.keys.inject({}) {|attributes, name|
           attributes.merge(name => translation[name.to_s])
         }, :id => translation['id']
       )
     end
 
-    ::Refinery::SeoMeta.attributes.keys.each do |k|
+    ::SeoMeta.attributes.keys.each do |k|
       ::Refinery::Page.translation_class.module_eval %{
         def #{k}
         end

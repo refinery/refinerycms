@@ -12,7 +12,7 @@ class CreateRefinerycmsResourcesSchema < ActiveRecord::Migration
   end
 
   def self.down
-    [::Resource].reject{|m|
+    [::Refinery::Resource].reject{|m|
       !(defined?(m) and m.respond_to?(:table_name))
     }.each do |model|
       drop_table model.table_name if model.table_exists?

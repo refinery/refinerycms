@@ -3,6 +3,9 @@ class TranslateCustomTitleOnPages < ActiveRecord::Migration
     unless ::Refinery::Page.translation_class.column_names.map(&:to_sym).include?(:menu_title)
       add_column ::Refinery::Page.translation_class.table_name, :menu_title, :string
 
+      ::Refinery::Page.reset_column_information
+      ::Refinery::Page.translation_class.reset_column_information
+
       say_with_time("Re-save menu_title") do
         ::Refinery::Page.all.each do |page|
           say "updating menu_title field for page##{page.id}"
@@ -18,17 +21,21 @@ class TranslateCustomTitleOnPages < ActiveRecord::Migration
 
   def self.down
     say_with_time("Re-save menu_title") do
-      ::Refinery::Page.all.each do |page|
-        if page.attributes['menu_title'].nil?
-          say "Nothing done, page##{page.id} menu_title field is nil"
-        else
-          say "updating menu_title field for page #{page.id}"
-          ::Refinery::Page.update_all({
-            :menu_title => page.attributes['menu_title']
-          }, {
-            :id => page.id.to_s
-          })
+      if ::Refinery::Page.translation_class.column_names.include?(:menu_title)
+        ::Refinery::Page.all.each do |page|
+          if page.attributes['menu_title'].nil?
+            say "Nothing done, page##{page.id} menu_title field is nil"
+          else
+            say "updating menu_title field for page #{page.id}"
+            ::Refinery::Page.update_all({
+              :menu_title => page.attributes['menu_title']
+            }, {
+              :id => page.id.to_s
+            })
+          end
         end
+      else
+        say "Translation table for pages did not have a menu_title column."
       end
     end
 

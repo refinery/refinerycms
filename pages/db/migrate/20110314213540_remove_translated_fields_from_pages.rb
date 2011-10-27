@@ -9,7 +9,9 @@ class RemoveTranslatedFieldsFromPages < ActiveRecord::Migration
 
   def self.down
     ::Refinery::Page.translated_attribute_names.map(&:to_sym).each do |column_name|
-      add_column ::Refinery::Page.table_name, column_name, Page::Translation.columns.detect{|c| c.name.to_sym == column_name}.type
+      if (translated_column = ::Refinery::Page.translation_class.columns.detect{|c| c.name.to_sym == column_name})
+        add_column ::Refinery::Page.table_name, column_name, translated_column.type
+      end
     end
 
     ::Refinery::Page.reset_column_information
