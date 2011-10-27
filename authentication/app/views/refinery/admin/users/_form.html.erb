@@ -18,8 +18,8 @@
     <%= f.label :password %>
     <%= f.password_field :password, :autocomplete => 'off' %>
     <% if @user.persisted? %>
-    <%= content_tag(:br) %>
-    <%= content_tag(:span, t('.blank_password_keeps_current')) %>
+      <%= content_tag(:br) %>
+      <%= content_tag(:span, t('.blank_password_keeps_current')) %>
     <% end %>
   </div>
   <div class='field'>
