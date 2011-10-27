@@ -1,5 +1,6 @@
 module Refinery
   ::Refinery::Page.reset_column_information
+  ::Refinery::Page.translation_class.reset_column_information
 
   page_position = -1
 

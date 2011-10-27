@@ -8,10 +8,10 @@ module Refinery
 
       isolate_namespace Refinery
       engine_name :refinery_pages
-      
+
       config.autoload_paths += %W( #{config.root}/lib )
 
-      config.to_prepare do |app|        
+      config.to_prepare do |app|
         Refinery::Page.translation_class.send(:is_seo_meta)
         Refinery::Page.translation_class.send(:attr_accessible, :browser_title, :meta_description, :meta_keywords, :locale)
       end
@@ -20,7 +20,7 @@ module Refinery
         ::ApplicationController.send :include, Refinery::Pages::InstanceMethods
         Refinery::AdminController.send :include, Refinery::Pages::Admin::InstanceMethods
       end
-      
+
       initializer "append marketable routes", :before => :set_routes_reloader do |app|
         if Refinery::Pages.use_marketable_urls?
           append_marketable_routes(app)
@@ -44,7 +44,7 @@ module Refinery
           }
         end
       end
-      
+
       initializer "add marketable route parts to reserved words" do |app|
         if Refinery::Pages.use_marketable_urls?
           # $rake_assets_precompiling is a temporary hack to avoid initializing the database during

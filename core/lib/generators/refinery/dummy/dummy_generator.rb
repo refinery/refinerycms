@@ -55,7 +55,7 @@ module Refinery
     attr :database
 
     protected
-    
+
       def dummy_path
         'spec/dummy'
       end

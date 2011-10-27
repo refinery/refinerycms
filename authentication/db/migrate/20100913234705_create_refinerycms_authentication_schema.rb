@@ -39,7 +39,7 @@ class CreateRefinerycmsAuthenticationSchema < ActiveRecord::Migration
   end
 
   def self.down
-    [::User].reject{|m|
+    [::Refinery::User].reject{|m|
       !(defined?(m) and m.respond_to?(:table_name))
     }.each do |model|
       drop_table model.table_name if model.table_exists? if model.table_exists?

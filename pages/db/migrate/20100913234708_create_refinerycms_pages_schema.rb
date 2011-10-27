@@ -47,7 +47,7 @@ class CreateRefinerycmsPagesSchema < ActiveRecord::Migration
   end
 
   def self.down
-    [::Page, ::Refinery::PagePart].reject{|m|
+    [::Refinery::Page, ::Refinery::PagePart].reject{|m|
       !(defined?(m) and m.respond_to?(:table_name))
     }.each do |model|
       drop_table model.table_name if model.table_exists?

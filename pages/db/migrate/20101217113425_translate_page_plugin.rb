@@ -32,6 +32,11 @@ class TranslatePagePlugin < ActiveRecord::Migration
   end
 
   def self.down
+    # Delete attributes from migration list that are already rolled back.
+    (Refinery::Page.translated_attribute_names - ::Refinery::Page.translation_class.column_names.map(&:to_sym)).each do |attribute|
+      Refinery::Page.translated_attribute_names.delete(attribute)
+    end
+
     say_with_time("Dropping ::Refinery::Page and ::Refinery::PagePart translation tables") do
       ::Refinery::Page.drop_translation_table! :migrate_data => true
       ::Refinery::PagePart.drop_translation_table! :migrate_data => true

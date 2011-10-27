@@ -12,7 +12,8 @@ if File.exists?(APP_RAKEFILE)
   load 'rails/tasks/engine.rake'
 end
 
-load File.expand_path('../tasks/release.rake', __FILE__)
+load 'tasks/common.rake'
+load 'tasks/release.rake'
 
 require "refinerycms-testing"
 Refinery::Testing::Railtie.load_tasks
