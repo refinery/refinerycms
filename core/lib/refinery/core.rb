@@ -158,7 +158,7 @@ module Refinery
     private
       def validate_engine!(const)
         unless const.respond_to?(:root) && const.root.is_a?(Pathname)
-          raise InvalidEngineError, "Engine must define a root accessor that returns a pathname to it it's root"
+          raise InvalidEngineError, "Engine must define a root accessor that returns a pathname to its root"
         end
       end
   end
@@ -180,7 +180,7 @@ module Refinery
     self.base_cache_key = DEFAULT_BASE_CACHE_KEY
 
     class << self
-      # Configure the options of Refinery::Pages.
+      # Configure the options of Refinery::Core.
       #
       #   Refinery::Core.configure do |config|
       #     config.rescue_not_found = false
