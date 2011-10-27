@@ -61,7 +61,7 @@ module Refinery
       end
 
       def home_page?
-        root_path == request.path
+        root_path =~ /^#{request.path}\/?/
       end
 
       def just_installed?
