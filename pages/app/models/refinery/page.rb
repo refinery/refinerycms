@@ -13,7 +13,7 @@ module Refinery
     seo_fields = ::SeoMeta.attributes.keys.map{|a| [a, :"#{a}="]}.flatten
     delegate *(seo_fields << {:to => :translation})
 
-    after_save proc {|m| m.translation.save}
+    before_save { |m| m.translation.save }
 
     # Wrap up the logic of finding the pages based on the translations table.
     def self.with_globalize(conditions = {})
