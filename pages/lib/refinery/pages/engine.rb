@@ -12,7 +12,7 @@ module Refinery
       config.autoload_paths += %W( #{config.root}/lib )
 
       config.to_prepare do |app|
-        Refinery::Page.translation_class.send(:is_seo_meta)
+        Refinery::Page.translation_class.send(:is_seo_meta) unless $rake_assets_precompiling
         Refinery::Page.translation_class.send(:attr_accessible, :browser_title, :meta_description, :meta_keywords, :locale)
       end
 
