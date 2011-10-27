@@ -3,6 +3,8 @@ require 'dragonfly'
 require 'rack/cache'
 
 module Refinery
+  autoload :ImagesGenerator, 'generators/refinery/images/images_generator'
+  
   module Images
     require 'refinery/images/engine' if defined?(Rails)
 

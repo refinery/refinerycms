@@ -5,6 +5,8 @@ require 'friendly_id'
 require 'seo_meta'
 
 module Refinery
+  autoload :PagesGenerator, 'generators/refinery/pages/pages_generator'
+  
   module Pages
     require 'refinery/pages/engine' if defined?(Rails)
     require 'refinery/pages/tab'

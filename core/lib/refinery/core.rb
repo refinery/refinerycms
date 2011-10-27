@@ -32,6 +32,11 @@ module Refinery
   module Admin
     autoload :BaseController, 'refinery/admin/base_controller'
   end
+  
+  autoload :CmsGenerator, 'generators/refinery/cms/cms_generator'
+  autoload :DummyGenerator, 'generators/refinery/dummy/dummy_generator'
+  autoload :CoreGenerator, 'generators/refinery/core/core_generator'
+  autoload :EngineGenerator, 'generators/refinery/engine/engine_generator'
 
   class << self
     @@engines = []
