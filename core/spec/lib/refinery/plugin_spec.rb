@@ -5,7 +5,7 @@ module Refinery
     class Engine < ::Rails::Engine
       ::Refinery::Plugin.register do |plugin|
         plugin.name = 'refinery_rspec'
-        plugin.url = {:controller => '/admin/dashboard', :action => 'index'}
+        plugin.hide_from_menu = true
       end
     end
   end

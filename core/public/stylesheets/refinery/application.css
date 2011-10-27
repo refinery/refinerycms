@@ -1,7 +1,7 @@
 body {
   margin: 0px;
 }
-#page, #site_bar_content, footer, header {
+#page, #site_bar_content, #page_container > footer, #page_container > header {
   width: 1000px;
   margin: 0px auto;
 }
