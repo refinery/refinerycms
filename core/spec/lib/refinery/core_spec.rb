@@ -70,7 +70,7 @@ describe Refinery do
       it "should raise invalid engine exception" do
         lambda {
           subject.send(:validate_engine!, Refinery::InvalidEngine)
-        }.should raise_error(Refinery::InvalidEngineError, "Engine must define a root accessor that returns a pathname to it it's root")
+        }.should raise_error(Refinery::InvalidEngineError, "Engine must define a root accessor that returns a pathname to its root")
       end
     end
   end
