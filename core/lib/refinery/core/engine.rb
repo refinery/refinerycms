@@ -38,7 +38,7 @@ module Refinery
       end
 
       config.autoload_paths += %W( #{config.root}/lib )
-      
+
       # Include the refinery controllers and helpers dynamically
       config.to_prepare &method(:refinery_inclusion!).to_proc
 
