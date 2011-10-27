@@ -4,9 +4,6 @@ require File.expand_path('../../core/lib/refinery/version', __FILE__)
 version = Refinery::Version.to_s
 root = File.expand_path('../../', __FILE__)
 
-pkg_dir = "#{root}/pkg"
-mkdir_p "#{root}/pkg" unless File.exists?(pkg_dir)
-
 (ENGINES + ['refinerycms']).each do |engine|
   namespace engine do
     engine_name = engine
@@ -16,6 +13,8 @@ mkdir_p "#{root}/pkg" unless File.exists?(pkg_dir)
     gemspec = "#{engine_name}.gemspec"
     
     task :clean do
+      package_dir = "#{root}/pkg"
+      mkdir_p package_dir unless File.exists?(package_dir)
       rm_f gem_filename
     end
     
