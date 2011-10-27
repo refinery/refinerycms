@@ -209,36 +209,37 @@ textarea.wymeditor, .wym_skin_refinery .wym_iframe iframe {
 }
 
 /* image replacements */
-.wym_skin_refinery .wym_section li.wym_tools_ordered_list a
-, .wym_skin_refinery .wym_section li.wym_tools_unordered_list a
-, .wym_skin_refinery .wym_section li.wym_tools_link a
-, .wym_skin_refinery .wym_section li.wym_tools_unlink a
-, .wym_skin_refinery .wym_section li.wym_tools_image a
-, .wym_skin_refinery .wym_section li.wym_tools_table a
-, .wym_skin_refinery .wym_section li.wym_tools_html a
-, .wym_skin_refinery .wym_section li.wym_tools_class a {
-  padding-left: 24px;
-}
-.wym_skin_refinery .wym_section li.wym_tools_ordered_list a {
-  background-image: image_url('wymeditor/skins/refinery/text_list_numbers.png');
-}
-.wym_skin_refinery .wym_section li.wym_tools_unordered_list a {
-  background-image: image_url('wymeditor/skins/refinery/text_list_bullets.png');
-}
-.wym_skin_refinery .wym_section li.wym_tools_link a {
-  background-image: image_url('wymeditor/skins/refinery/link_add.png');
-}
-.wym_skin_refinery .wym_section li.wym_tools_unlink a {
-  background-image: image_url('wymeditor/skins/refinery/link_break.png');
-}
-.wym_skin_refinery .wym_section li.wym_tools_image a {
-  background-image: image_url('wymeditor/skins/refinery/photo_add.png');
-}
-.wym_skin_refinery .wym_section li.wym_tools_table a {
-  background-image: image_url('wymeditor/skins/refinery/table_add.png');
-}
-.wym_skin_refinery .wym_section li.wym_tools_html a {
-  background-image: image_url('wymeditor/skins/refinery/page_code.png');
+.wym_skin_refinery {
+  .wym_section {
+    li {
+      &.wym_tools_ordered_list, &.wym_tools_unordered_list, &.wym_tools_link, &.wym_tools_unlink, &.wym_tools_image, &.wym_tools_table, &.wym_tools_html, &.wym_tools_class {
+        a {
+          padding-left: 24px;
+        }
+      }
+    }
+    li.wym_tools_ordered_list a {
+      background-image: image_url('wymeditor/skins/refinery/text_list_numbers.png');
+    }
+    li.wym_tools_unordered_list a {
+      background-image: image_url('wymeditor/skins/refinery/text_list_bullets.png');
+    }
+    li.wym_tools_link a {
+      background-image: image_url('wymeditor/skins/refinery/link_add.png');
+    }
+    li.wym_tools_unlink a {
+      background-image: image_url('wymeditor/skins/refinery/link_break.png');
+    }
+    li.wym_tools_image a {
+      background-image: image_url('wymeditor/skins/refinery/photo_add.png');
+    }
+    li.wym_tools_table a {
+      background-image: image_url('wymeditor/skins/refinery/table_add.png');
+    }
+    li.wym_tools_html a {
+      background-image: image_url('wymeditor/skins/refinery/page_code.png');
+    }
+  }
 }
 
 /*image replacements
