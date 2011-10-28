@@ -7,7 +7,6 @@ module Refinery
       railtie_name :refinerycms_testing
 
       rake_tasks do
-        load 'refinery/tasks/rcov.rake'
         load 'refinery/tasks/testing.rake'
       end
 
