@@ -82,10 +82,10 @@ module Refinery
       end
 
       # Ensure i18n exists and is up to date.
-      if Refinery.i18n_enabled?
-        require 'generators/i18n_generator'
-        Refinery::I18nGenerator.start
-      end
+      # if Refinery.i18n_enabled?
+      #   require 'generators/i18n_generator'
+      #   Refinery::I18nGenerator.start
+      # end
     end
 
     protected
