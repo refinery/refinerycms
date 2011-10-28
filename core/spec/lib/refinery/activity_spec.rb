@@ -8,7 +8,7 @@ describe Refinery::Activity do
         end
       end
     end
-    @activity = Refinery::Activity.new(:class_name => "Y::Y::Z", :url_prefix => "rush")
+    @activity = Refinery::Activity.new(:class_name => "Y::Y::Z")
   end
 
   describe "#base_class_name" do
@@ -17,9 +17,28 @@ describe Refinery::Activity do
     end
   end
 
+  describe "#klass" do
+    it "returns class constant" do
+      @activity.klass.should == Y::Y::Z
+    end
+  end
+
+  describe "#url_prefix" do
+    it "returns edit_ by default" do
+      @activity.url_prefix.should == "edit_"
+    end
+
+    it "returns user specified prefix" do
+      @activity.url_prefix = "testy"
+      @activity.url_prefix.should == "testy_"
+      @activity.url_prefix = "testy_"
+      @activity.url_prefix.should == "testy_"
+    end
+  end
+
   describe "#url" do
     it "should return the url" do
-      @activity.url.should == "rush_refinery_admin_z_path"
+      @activity.url.should == "edit_refinery_admin_z_path"
     end
   end
 end

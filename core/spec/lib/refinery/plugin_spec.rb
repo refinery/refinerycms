@@ -52,14 +52,6 @@ module Refinery
       end
     end
 
-    describe '#activity' do
-      pending
-    end
-
-    describe '#activity=' do
-      pending
-    end
-
     describe '#pathname' do
       it 'should be set by default' do
         plugin.pathname.should_not == nil
