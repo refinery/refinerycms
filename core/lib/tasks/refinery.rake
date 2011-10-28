@@ -1,4 +1,4 @@
-namespace :refinery do
+namespace :refinery do  
   desc "Override files for use in an application"
   task :override => :environment do
     require 'fileutils'
