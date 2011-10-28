@@ -14,7 +14,7 @@ module Refinery
         def load_decorators
           [Rails.root, Refinery::Plugins.registered.pathnames].flatten.map { |p|
             Dir[p.join('app', 'decorators', '**', '*_decorator.rb')]
-          }.flatten.uniq.each do |decorators|
+          }.flatten.uniq.each do |decorator|
             Rails.application.config.cache_classes ? require(decorator) : load(decorator)
           end
         end
