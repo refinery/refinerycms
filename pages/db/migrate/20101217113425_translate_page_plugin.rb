@@ -21,9 +21,8 @@ class TranslatePagePlugin < ActiveRecord::Migration
       })
     end
 
-    puts "seeds pages"
-    if (seed_file = Rails.root.join('db', 'seeds', 'pages.rb')).file?
-      load seed_file.to_s unless ::Refinery::Page.where(:link_url => '/').any?
+    unless Refinery::Page.where(:link_url => '/').any?
+      say_with_time("Seeding pages") { Refinery::Pages::Engine.load_seed }
     end
 
     say_with_time("Updating slugs") do
