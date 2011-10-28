@@ -14,6 +14,7 @@ end
 
 load File.expand_path('../tasks/common.rake', __FILE__)
 load File.expand_path('../tasks/release.rake', __FILE__)
+load File.expand_path('../tasks/rspec.rake', __FILE__)
 
 require "refinerycms-testing"
 Refinery::Testing::Railtie.load_tasks
