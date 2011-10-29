@@ -325,15 +325,23 @@ module Refinery
     #
     # Will return the body page part of the first page.
     def content_for(part_title)
+      part_by_title(part_title).try(:body)
+    end
+    
+    # Accessor method to get a page part object from a page.
+    # Example:
+    #
+    #    ::Refinery::Page.first.part_with_title(:body)
+    #
+    # Will return the Refinery::PagePart object with that title using the first page.
+    def part_by_title(part_title)
       # self.parts is usually already eager loaded so we can now just grab
       # the first element matching the title we specified.
-      part = self.parts.detect do |part|
+      self.parts.detect do |part|
         part.title.present? and # protecting against the problem that occurs when have nil title
         part.title == part_title.to_s or
         part.title.downcase.gsub(" ", "_") == part_title.to_s.downcase.gsub(" ", "_")
       end
-
-      part.try(:body)
     end
 
     # In the admin area we use a slightly different title to inform the which pages are draft or hidden pages
