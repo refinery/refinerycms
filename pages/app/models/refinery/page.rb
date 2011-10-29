@@ -325,7 +325,7 @@ module Refinery
     #
     # Will return the body page part of the first page.
     def content_for(part_title)
-      part_by_title(part_title).try(:body)
+      part_with_title(part_title).try(:body)
     end
     
     # Accessor method to get a page part object from a page.
@@ -334,7 +334,7 @@ module Refinery
     #    ::Refinery::Page.first.part_with_title(:body)
     #
     # Will return the Refinery::PagePart object with that title using the first page.
-    def part_by_title(part_title)
+    def part_with_title(part_title)
       # self.parts is usually already eager loaded so we can now just grab
       # the first element matching the title we specified.
       self.parts.detect do |part|
