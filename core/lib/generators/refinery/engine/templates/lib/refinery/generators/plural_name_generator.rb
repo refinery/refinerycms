@@ -1,5 +1,3 @@
-require 'refinery/generators'
-
 module Refinery
   class <%= class_name.pluralize %>Generator < Refinery::Generators::EngineInstaller
 
