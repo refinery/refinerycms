@@ -160,13 +160,6 @@ namespace :refinery do
     end
   end
 
-  namespace :cache do
-    desc "Eliminate existing cache files for javascript and stylesheet resources in default directories"
-    task :clear => :environment do
-      FileUtils.rm(Dir[Rails.root.join("public", "javascripts", "cache", "[^.]*").cleanpath.to_s])
-      FileUtils.rm(Dir[Rails.root.join("public", "stylesheets", "cache", "[^.]*").cleanpath.to_s])
-    end
-  end
 end
 
 desc "Recalculate $LOAD_PATH frequencies."
