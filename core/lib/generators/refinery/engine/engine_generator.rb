@@ -40,7 +40,7 @@ module Refinery
         if engine.present?
           # go through all of the temporary files and merge what we need into the current files.
           tmp_directories = []
-          Dir.glob(File.expand_path('../templates/{config/locales/*.yml,config/routes.rb,features/support/paths.rb}', __FILE__), File::FNM_DOTMATCH).sort.each do |path|
+          Dir.glob(File.expand_path('../templates/{config/locales/*.yml,config/routes.rb}', __FILE__), File::FNM_DOTMATCH).sort.each do |path|
             # get the path to the current tmp file.
             new_file_path = Rails.root.join(engine_path_for(path, engine))
             tmp_directories << Pathname.new(new_file_path.to_s.split(File::SEPARATOR)[0..-2].join(File::SEPARATOR)) # save for later
@@ -117,7 +117,7 @@ module Refinery
       # Detect whether this is a special file that needs to get merged not overwritten.
       # This is important only when nesting engines.
       if engine.present? and File.exist?(path)
-        path = if path =~ %r{/locales/.*\.yml$} or path =~ %r{/routes.rb$} or path =~ %r{/features/support/paths.rb$}
+        path = if path =~ %r{/locales/.*\.yml$} or path =~ %r{/routes.rb$}
           # put new translations into a tmp directory
           path.split(File::SEPARATOR).insert(-2, "tmp").join(File::SEPARATOR)
         elsif path =~ %r{/readme.md$} or path =~ %r{/#{plural_name}.rb$}
