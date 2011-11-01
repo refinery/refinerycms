@@ -17,7 +17,7 @@ class Create<%= class_name.pluralize %> < ActiveRecord::Migration
       t.timestamps
     end
 
-    load(Rails.root.join('db', 'seeds', '<%= class_name.pluralize.underscore.downcase %>.rb'))
+    Refinery::<%= class_name.pluralize %>::Engine.load_seed
   end
 
   def down
