@@ -45,7 +45,7 @@ When the products engine was generated a products generator was also created.
 This installs any migrations and seeds into your Rails app.
 Here's how to finish off the install:
 
-    rake refinery_products:install:migrations
+    rails generate refinery:products
     rake db:migrate
 
 Start up your app by running ``rails server`` go to [http://localhost:3000](http://localhost:3000)

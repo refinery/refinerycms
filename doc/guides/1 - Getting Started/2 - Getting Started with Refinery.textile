@@ -76,7 +76,7 @@ h4. Installing Refinery
 
 There are two popular ways to install Refinery: RubyGems and Rails Application Templates.  We will discuss both and how you can get up and running with either.
 
-h5. RubyGems
+h5. RubyGems 
 The easiest way to install Refinery is to take advantage of RubyGems.
 
 <shell>
@@ -361,7 +361,7 @@ $ rails generate refinery:engine event title:string date:datetime photo:image bl
 ------------------------
 Now run:
 bundle install
-rake refinery_events:install:migrations
+rails generate refinery:events
 rake db:migrate
 ------------------------
 </shell>
@@ -370,11 +370,11 @@ As the output shows next run:
 
 <shell>
 $ bundle install
-$ rake refinery_events:install:migrations
+$ rails generate refinery:events
 $ rake db:migrate
 </shell>
 
-The +refinery_events:install:migrations+ rake task will copy the migration into your app to create the events table.
+A +refinery:events+ generator is created for you to install the migration to create the events table.
 
 TIP: When new engines are added it's a good idea to restart your server for new changes to be loaded in.
 
