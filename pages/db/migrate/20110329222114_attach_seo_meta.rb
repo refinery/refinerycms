@@ -20,7 +20,9 @@ class AttachSeoMeta < ActiveRecord::Migration
     # Migrate data
     existing_translations.each do |translation|
       ::Refinery::Page.translation_class.find(translation['id']).update_attributes(
-        ::SeoMeta.attributes.keys.inject({}) {|attributes, name|
+        ::SeoMeta.attributes.keys.reject{|k|
+          ::Refinery::Page.translation_class.column_names.map(&:to_sym).exclude?(k)
+        }.inject({}) {|attributes, name|
           attributes.merge(name => translation[name.to_s])
         }
       )
