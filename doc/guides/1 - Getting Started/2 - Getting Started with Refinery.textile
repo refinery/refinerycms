@@ -76,7 +76,7 @@ h4. Installing Refinery
 
 There are two popular ways to install Refinery: RubyGems and Rails Application Templates.  We will discuss both and how you can get up and running with either.
 
-h5. RubyGems 
+h5. RubyGems
 The easiest way to install Refinery is to take advantage of RubyGems.
 
 <shell>
@@ -329,7 +329,7 @@ Run this command to generate the events engine for Rick[1]:
 
 <shell>
 $ rails generate refinery:engine event title:string date:datetime photo:image blurb:text
-create  vendor/engines/events/app/controllers/refinery/admin/events_controller.rb
+      create  vendor/engines/events/app/controllers/refinery/admin/events_controller.rb
       create  vendor/engines/events/app/controllers/refinery/events_controller.rb
       create  vendor/engines/events/app/models/refinery/event.rb
       create  vendor/engines/events/app/views/refinery/admin/events/_actions.html.erb
@@ -344,16 +344,14 @@ create  vendor/engines/events/app/controllers/refinery/admin/events_controller.r
       create  vendor/engines/events/app/views/refinery/events/index.html.erb
       create  vendor/engines/events/app/views/refinery/events/show.html.erb
       create  vendor/engines/events/config/locales/en.yml
+      create  vendor/engines/events/config/locales/es.yml
       create  vendor/engines/events/config/locales/fr.yml
       create  vendor/engines/events/config/locales/lolcat.yml
       create  vendor/engines/events/config/locales/nb.yml
       create  vendor/engines/events/config/locales/nl.yml
       create  vendor/engines/events/config/routes.rb
-      create  vendor/engines/events/db/migrate/create_events.rb
-      create  vendor/engines/events/db/seeds/events.rb
-      create  vendor/engines/events/features/manage_events.feature
-      create  vendor/engines/events/features/step_definitions/event_steps.rb
-      create  vendor/engines/events/features/support/paths.rb
+      create  vendor/engines/events/db/migrate/20111031210430_create_events.rb
+      create  vendor/engines/events/db/seeds.rb
       create  vendor/engines/events/lib/generators/refinery/events_generator.rb
       create  vendor/engines/events/lib/refinerycms-events.rb
       create  vendor/engines/events/lib/tasks/events.rake
@@ -363,7 +361,7 @@ create  vendor/engines/events/app/controllers/refinery/admin/events_controller.r
 ------------------------
 Now run:
 bundle install
-rails generate refinery:events
+rake refinery_events:install:migrations
 rake db:migrate
 ------------------------
 </shell>
@@ -372,11 +370,11 @@ As the output shows next run:
 
 <shell>
 $ bundle install
-$ rails generate refinery:events
+$ rake refinery_events:install:migrations
 $ rake db:migrate
 </shell>
 
-A +refinery:events+ generator is created for you to install the migration to create the events table.
+The +refinery_events:install:migrations+ rake task will copy the migration into your app to create the events table.
 
 TIP: When new engines are added it's a good idea to restart your server for new changes to be loaded in.
 
