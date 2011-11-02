@@ -95,6 +95,18 @@ describe Refinery do
       end
     end
   end
+
+  describe "#i18n_enabled?" do
+    it "returns true when Refinery::I18n.enabled? is true" do
+      Refinery::I18n.stub(:enabled?).and_return(true)
+      subject.i18n_enabled?.should == true
+    end
+  
+    it "returns false when Refinery::I18n.enabled? is false" do
+      Refinery::I18n.stub(:enabled?).and_return(false)
+      subject.i18n_enabled?.should == false
+    end
+  end
 end
 
 module Refinery
