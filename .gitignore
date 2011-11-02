@@ -79,6 +79,9 @@ capybara-*html
 #Gemfile's lock file
 Gemfile.lock
 
+# Future Refinery
+spec/dummy
+
 # REFINERY CMS DEVELOPMENT ====================================================
 # Always keep this section at the bottom.
 
