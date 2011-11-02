@@ -26,9 +26,6 @@ module Refinery
     # <%= image_fu @model.image, '200x200' %> or with no thumbnail: <%= image_fu @model.image %>
     def image_fu(image, geometry = nil, options={})
       if image.present?
-        original_width = image.image_width
-        original_height = image.image_height
-
         dimensions = (image.thumbnail_dimensions(geometry) rescue {})
 
         image_tag(image.thumbnail(geometry).url, {
