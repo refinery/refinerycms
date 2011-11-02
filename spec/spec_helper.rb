@@ -8,7 +8,9 @@ def setup_environment
   ENV["RAILS_ENV"] ||= 'test'
   require File.expand_path("../../config/environment", __FILE__)
   require 'rspec/rails'
-
+  require 'capybara/rspec'
+  
+  Capybara.javascript_driver = :webkit
   # Requires supporting files with custom matchers and macros, etc,
   # in ./support/ and its subdirectories.
   Dir[File.expand_path('../support/**/*.rb', __FILE__)].each {|f| require f}
