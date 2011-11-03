@@ -96,6 +96,34 @@ describe Refinery do
     end
   end
 
+  describe "#deprecate" do
+    before(:each) do
+      @errors = StringIO.new
+      @old_err = $stderr
+      $stderr = @errors
+    end
+
+    after(:each) { $stderr = @old_err }
+
+    it "shows a deprecation warning" do
+      Refinery.deprecate("ugis")
+      @errors.rewind
+      @errors.read.should == "\n-- DEPRECATION WARNING --\nThe use of 'ugis' is deprecated.\n"
+    end
+
+    it "takes when option" do
+      Refinery.deprecate("ugis", :when => "10.0")
+      @errors.rewind
+      @errors.read.should == "\n-- DEPRECATION WARNING --\nThe use of 'ugis' is deprecated and will be removed at version 10.0.\n"
+    end
+
+    it "takes replacement option" do
+      Refinery.deprecate("ugis", :when => "10.0", :replacement => "philip")
+      @errors.rewind
+      @errors.read.should == "\n-- DEPRECATION WARNING --\nThe use of 'ugis' is deprecated and will be removed at version 10.0.\nPlease use philip instead.\n"
+    end
+  end
+
   describe "#i18n_enabled?" do
     it "returns true when Refinery::I18n.enabled? is true" do
       Refinery::I18n.stub(:enabled?).and_return(true)
