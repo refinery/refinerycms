@@ -142,7 +142,7 @@ module Refinery
 
       # Run any database migrations
       migrate! unless @options[:database][:skip]
-      
+
       # Deploy to a hosting provider
       deploy!
 
@@ -280,7 +280,8 @@ module Refinery
       refinery_gems = refinery_gemfile_contents.match(/# REFINERY CMS =+.*# END REFINERY CMS =+/m)[0]
       refinery_gems.gsub!("# gem 'refinerycms'", "gem 'refinerycms'") # Enable refinerycms
       if @options[:testing] # Enable testing
-        refinery_gems.gsub!("# gem 'refinerycms-testing'", "gem 'refinerycms-testing'")
+        refinery_gems.gsub!("\n=begin #testing", '')
+        refinery_gems.gsub!("\n=end #testing", '')
       end
 
       app_gemfile = @app_path.join('Gemfile')

@@ -75,7 +75,7 @@ if ARGV.any?{|a| a == "BUILD=true"}
   gemfile = gempath.join("Gemfile")
   old_gemfile = File.read(gemfile)
   new_gemfile = old_gemfile.gsub(/\n# REFINERY CMS DEVELOPMENT [=]*.+# END REFINERY CMS DEVELOPMENT [=]*\n/m, '')
-  new_gemfile = new_gemfile.gsub("gem 'refinerycms-testing'", "# gem 'refinerycms-testing'")
+  new_gemfile = new_gemfile.gsub(/(group\ :development\,\ :test\ do.+?)(# END REFINERY CMS)/m, "=begin #testing\n\\1=end #testing\n\n\\2")
 
   File.open(gemfile, 'w') {|f| f.puts(new_gemfile)}
   puts `cd #{gempath} && gem build #{gemspecfile}`
