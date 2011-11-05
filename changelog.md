@@ -1,8 +1,11 @@
-## 1.0.9 [UNRELEASED]
+## 1.0.9 [5 November 2011]
 
 * `guard` testing strategy ported from edge for testing refinery from its own directory without a dummy app. [Jamie Winsor](https://github.com/resetexistence) & [Joe Sak](https://github.com/joemsak)
 * WYMEditor bug fixes [Nic Haynes](https://github.com/nicinabox)
-* [See full list](https://github.com/resolve/refinerycms/compare/1.0.8...1.0.9) 
+* Bulgarian translations added. [Miroslav Rachev](https://github.com/mirosr)
+* Fixed --heroku command. [Garrett Heinlen](https://github.com/gogogarrett)
+* Refactored plugins code to add Ruby 1.9.3 support. [Amanda Wagener](https://github.com/awagener)
+* [See full list](https://github.com/resolve/refinerycms/compare/1.0.8...1.0.9)
 
 ## 1.0.8 [1 September 2011]
 
