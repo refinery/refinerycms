@@ -1,21 +1,16 @@
-require 'refinery'
+require 'refinerycms-core'
 
 module Refinery
-  module <%= class_name.pluralize %>
-    class Engine < Rails::Engine
-      initializer "static assets" do |app|
-        app.middleware.insert_after ::ActionDispatch::Static, ::ActionDispatch::Static, "#{root}/public"
+  module <%= class_name.pluralize %><%= 'Engine' if plural_name == singular_name %>
+    require 'refinery/<%= plural_name %>/engine' if defined?(Rails)
+
+    class << self
+      def root
+        @root ||= Pathname.new(File.expand_path('../../../', __FILE__))
       end
 
-      config.after_initialize do
-        Refinery::Plugin.register do |plugin|
-          plugin.name = "<%= class_name.pluralize.underscore.downcase %>"
-          plugin.menu_match = %r{(admin|refinery)/(<%= plural_name %>|<%= singular_name %>_settings)/?}
-          plugin.activity = {
-            :class => <%= class_name %><% if (title = attributes.detect { |a| a.type.to_s == "string" }).present? and title.name != 'title' %>,
-            :title => '<%= title.name %>'
-          <% end %>}
-        end
+      def factory_paths
+        @factory_paths ||= [ root.join("spec/factories").to_s ]
       end
     end
   end
