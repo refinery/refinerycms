@@ -7,4 +7,10 @@ Gem::Specification.new do |s|
   s.summary           = '<%= plural_name.titleize %> forms-engine for Refinery CMS'
   s.require_paths     = %w(lib)
   s.files             = Dir['lib/**/*', 'config/**/*', 'app/**/*']
+
+  # Runtime dependencies
+  s.add_dependency             'refinerycms-core',    '~> <%= Refinery::Version %>'
+
+  # Development dependencies (usually to test the application with)
+  s.add_development_dependency 'refinerycms-testing', '~> <%= Refinery::Version %>'
 end
