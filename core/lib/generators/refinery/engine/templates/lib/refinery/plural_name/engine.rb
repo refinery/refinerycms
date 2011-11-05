@@ -1,5 +1,4 @@
 require 'refinerycms-<%= plural_name %>'
-require 'rails'
 
 module Refinery
   module <%= class_name.pluralize %><%= 'Engine' if plural_name == singular_name %>
