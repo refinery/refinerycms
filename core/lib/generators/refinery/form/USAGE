@@ -17,4 +17,4 @@ Additional Supported Field Types
   select          - creates a select list with options using Model::FIELD_NAMES
 
 Example:
-    rails generate refinery_form job_inquiry name:string message:text job_type:radio brochure:checkbox
+    rails generate refinery:form job_inquiry name:string message:text job_type:radio brochure:checkbox qualification:select
