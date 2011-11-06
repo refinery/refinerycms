@@ -1,4 +1,4 @@
-Refinery::Application.routes.draw do
+Rails.application.routes.draw do
   resources :<%= class_name.pluralize.underscore.downcase %>, :only => [:new, :create] do
     collection do
       get :thank_you
