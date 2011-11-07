@@ -1866,7 +1866,7 @@ WYMeditor.INIT_DIALOG = function(wym, selected, isIframe) {
       (image = $(wym._doc.createElement("IMG")))
         .attr(WYMeditor.SRC, url)
         .attr(WYMeditor.TITLE, form.find(wym._options.titleSelector).val())
-        .attr(WYMeditor.ALT, form.find(wym._options.titleSelector).val())
+        .attr(WYMeditor.ALT, form.find(wym._options.altSelector).val())
         .attr(WYMeditor.REL, form.find(wym._options.sizeSelector).val())
         .load(function(e){
           $(this).attr({
