@@ -50,7 +50,7 @@
       if section[:title]
         section[:html] = content_tag(:h1,section[:html], :id => dom_id)
       else
-        section[:html] = content_tag(:section, content_tag(:div, section[:html], :class => 'inner'), id: dom_id)
+        section[:html] = content_tag(:section, content_tag(:div, section[:html], :class => 'inner'), :id => dom_id)
       end
     else
       css << "no_#{dom_id}"
