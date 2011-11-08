@@ -1,4 +1,4 @@
-class Admin::<%= class_name %>SettingsController < Admin::BaseController
+class Admin::<%= class_name %>SettingsController < Refinery::AdminController
 
   crudify :refinery_setting,
           :title_attribute => 'name',
