@@ -1,4 +1,4 @@
-class Admin::<%= class_name.pluralize %>Controller < Admin::BaseController
+class Admin::<%= class_name.pluralize %>Controller < Refinery::AdminController
 
   crudify :<%= singular_name %>, <% if (title = attributes.detect { |a| a.type.to_s == "string" }).present? %>
           :title_attribute => "<%= title.name %>", <% end %>
