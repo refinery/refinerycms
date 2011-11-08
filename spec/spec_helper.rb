@@ -44,12 +44,10 @@ end
 def each_run
   FactoryGirl.reload
 
-  Dir[File.join(ENGINE_RAILS_ROOT, "spec/support/**/*.rb")].each { |f| require f }
-
   # Requires supporting files with custom matchers and macros, etc,
   # in ./support/ and its subdirectories including factories.
-  ([Rails.root] | ::Refinery::Plugins.registered.pathnames).map{|p|
-    Dir[p.join('spec', 'support', '**', '*.rb').to_s]
+  ([ENGINE_RAILS_ROOT, Rails.root.to_s].uniq | ::Refinery::Plugins.registered.pathnames).map{|p|
+    Dir[File.join(p, 'spec', 'support', '**', '*.rb').to_s]
   }.flatten.sort.each do |support_file|
     require support_file
   end

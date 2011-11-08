@@ -1,27 +1,26 @@
 require 'refinerycms-<%= plural_name %>'
 
 module Refinery
-  module <%= class_name.pluralize %><%= 'Engine' if plural_name == singular_name %>
+  module <%= class_name.pluralize %>
     class Engine < Rails::Engine
       include Refinery::Engine
-
       isolate_namespace Refinery
       engine_name :refinery_<%= plural_name %>
 
-      config.after_initialize do
-        Refinery.register_engine(Refinery::<%= class_name.pluralize %>)
-      end
-
-      config.after_initialize do
+      initializer "register refinerycms_<%= plural_name %> plugin" do |app|
         Refinery::Plugin.register do |plugin|
           plugin.name = "<%= class_name.pluralize.underscore.downcase %>"
           plugin.url = {:controller => '/refinery/<%= plural_name %>'}
           plugin.pathname = root
+
           plugin.activity = {
-            :class_name => "Refinery::<%= class_name %>"<% if (title = attributes.detect { |a| a.type.to_s == "string" }).present? and title.name != 'title' %>,
-            :title => '<%= title.name %>'<% end %>
+            :class_name => :'refinery/<%= singular_name %>'
           }
         end
+      end
+
+      config.after_initialize do
+        Refinery.register_engine(Refinery::<%= class_name.pluralize %>)
       end
     end
   end

@@ -1,1 +1,1 @@
-require 'refinerycms-<%= plural_name %>'
+require 'refinery/<%= plural_name %>'

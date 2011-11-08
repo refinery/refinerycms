@@ -1,5 +1,6 @@
 require 'yaml'
 require 'pathname'
+require 'rails/generators'
 
 module Refinery
   class EngineGenerator < Rails::Generators::NamedBase
