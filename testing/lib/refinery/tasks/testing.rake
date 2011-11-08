@@ -9,16 +9,16 @@ namespace :refinery do
 
     task :setup_dummy_app do
       require 'refinerycms'
-      
+
       params = []
       params << "--database=#{ENV['DB']}" if ENV['DB']
 
       Refinery::DummyGenerator.start params
-      
+
       # Load generated dummy app after generation - some of the follow
       # generators depend on Rails.root being available
-      load File.join(ENGINE_PATH, 'spec/dummy/config/environment.rb')
-      
+      # load File.join(ENGINE_PATH, 'spec/dummy/config/environment.rb')
+
       Refinery::CmsGenerator.start
       Refinery::CoreGenerator.start
       Refinery::ResourcesGenerator.start
@@ -43,7 +43,7 @@ namespace :refinery do
     task :clean_dummy_app do
       system "rm -Rdf #{File.join(ENGINE_PATH, 'spec/dummy')}"
     end
-    
+
     namespace :engine do
       desc "Initialize the testing environment"
       task :setup => [:init_test_database]
