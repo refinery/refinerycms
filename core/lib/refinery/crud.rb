@@ -18,15 +18,14 @@ module Refinery
   module Crud
 
     def self.default_options(model_name)
-      singular_name = model_name.to_s.split('/').last
       class_name = "::#{model_name.to_s.camelize.gsub('/', '::')}".gsub('::::', '::')
-      plural_name = singular_name.to_s.gsub('/', '_').pluralize
       this_class = class_name.constantize.base_class
-
+      singular_name = ActiveModel::Naming.param_key(this_class)
+      plural_name = singular_name.pluralize
       {
         :conditions => '',
         :include => [],
-        :order => ('position ASC' if this_class.table_exists? and this_class.column_names.include?('position')),
+        :order => ('position ASC' if this_class.table_exists? && this_class.column_names.include?('position')),
         :paging => true,
         :per_page => false,
         :redirect_to_url => "main_app.refinery_admin_#{plural_name}_path",
