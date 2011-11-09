@@ -7,7 +7,7 @@ class <%= class_name.pluralize %>Controller < ApplicationController
   end
 
   def thank_you
-    @page = Page.find_by_link_url("/<%= plural_name %>/thank_you", :include => [:parts, :slugs])
+    @page = Refinery::Page.find_by_link_url("/<%= plural_name %>/thank_you", :include => [:parts, :slugs])
   end
 
   def new
@@ -39,7 +39,7 @@ class <%= class_name.pluralize %>Controller < ApplicationController
 protected
 
   def find_page
-    @page = Page.find_by_link_url('/<%= plural_name %>/new', :include => [:parts, :slugs])
+    @page = Refinery::Page.find_by_link_url('/<%= plural_name %>/new', :include => [:parts, :slugs])
   end
 
 end
