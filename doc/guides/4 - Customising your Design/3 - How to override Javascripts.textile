@@ -22,8 +22,9 @@ If you want to override one of the javascript files refinery comes built with (f
 It is easy to override the files that are provided by default. You simply have to include this in your home.html.erb:
 
 <shell>
+<% content_for :javascript_libraries, javascript_include_tag('jquery') %>
 <% content_for :javascripts do %>
-  <% javascript_include_tag('jquery.cycle.all.js', 'jquery.super_awesome.plugin.js', 'more.js') %>
+  <% javascript_include_tag('jquery.cycle.all', 'jquery.super_awesome.plugin', 'more') %>
 <% end %>
 </shell>
 
@@ -33,9 +34,9 @@ h3. Possible combinations of overriding
 Refinery provides you with four unique ways of overriding the default JavaScript files, two we have already seen. 
 
 <shell>
-<% content_for :before_javascript_libraries, javascript_include_tag('jquery.cycle.all.js') %>
-<% content_for :javascript_libraries, jquery_include_tags(:jquery_ui => false) %>
-<% content_for :after_javascript_libraries, javascript_include_tag('jquery.cycle.all.js') %>
+<% content_for :before_javascript_libraries, javascript_include_tag('jquery.cycle.all') %>
+<% content_for :javascript_libraries, javascript_include_tag('jquery') %>
+<% content_for :after_javascript_libraries, javascript_include_tag('jquery.cycle.all') %>
 <% content_for :javascripts do %>
 </shell>
 
