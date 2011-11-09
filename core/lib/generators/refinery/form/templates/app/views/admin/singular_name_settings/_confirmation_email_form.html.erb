@@ -20,7 +20,7 @@
         <label class='stripped'><%%= t('.from') %></label>
       </td>
       <td>
-        <%%= "#{RefinerySetting[:site_name]} &lt;no-reply@#{request.domain(RefinerySetting.find_or_set(:tld_length, 1))}&gt;".html_safe %>
+        <%%= "#{Refinery::Setting.get(:site_name)} &lt;no-reply@#{request.domain(Refinery::Setting.find_or_set(:tld_length, 1))}&gt;".html_safe %>
       </td>
     </tr>
     <tr>
@@ -28,19 +28,16 @@
         <label class='stripped'><%%= t('.subject') %></label>
       </td>
       <td>
-        <%%= text_field_tag 'subject', <%= class_name %>Setting.confirmation_subject,
+        <%%= text_field_tag 'subject', <%= class_name %>::Setting.confirmation_subject,
                            :class => 'widest' %>
       </td>
     </tr>
     <tr>
       <td valign='top'>
-        <%%= f.label :value, t('.message'),
-                    :class => 'stripped' %>
+        <%%= f.label :value, t('.message'), :class => 'stripped' %>
       </td>
       <td>
-        <%%= f.text_area :value,
-                        :rows => "5",
-                        :class => 'widest' %>
+        <%%= f.text_area :value, :rows => "5", :class => 'widest' %>
         <br/>
         <em><%%= t('.note') %></em>
       </td>

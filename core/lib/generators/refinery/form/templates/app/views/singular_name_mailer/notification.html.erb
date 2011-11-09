@@ -12,6 +12,6 @@
 <%%= t('.<%= singular_name %>_ends') %>
 
 <%%= t('.closing_line') %>,
-<%%= RefinerySetting[:site_name] %>
+<%%= Refinery::Setting.get(:site_name) %>
 
 <%%= t('.ps_html') %>
