@@ -88,6 +88,34 @@ module Refinery
       
       puts "\n---------"
       puts "Refinery successfully installed in '#{@app_path}'!\n\n"
+      
+      heroku_deploy! if options[:heroku]
+      
+      note = ["\n=== ACTION REQUIRED ==="]
+      if options[:skip_db]
+        note << "Because you elected to skip database creation and migration in the installer"
+        note << "you will need to run the following tasks manually to maintain correct operation:"
+        note << "\ncd #{app_path}"
+        note << "bundle exec rake db:create"
+        note << "bundle exec rails generate refinerycms"
+        note << "bundle exec rake db:migrate"
+        note << "\n---------\n"
+      end
+      note << "Now you can launch your webserver using:"
+      note << "\ncd #{app_path}"
+      note << "rails server"
+      note << "\nThis will launch the built-in webserver at port 3000."
+      note << "You can now see your site running in your browser at http://localhost:3000"
+
+      if options[:heroku]
+        note << "\nIf you want files and images to work on heroku, you will need setup S3:"
+        note << "heroku config:add S3_BUCKET=XXXXXXXXX S3_KEY=XXXXXXXXX S3_SECRET=XXXXXXXXXX S3_REGION=XXXXXXXXXX"
+      end
+
+      note << "\nThanks for installing Refinery, enjoy creating your new application!"
+      note << "---------\n\n"
+
+      puts note.join("\n")
     end
         
     protected
@@ -214,6 +242,23 @@ module Refinery
       
       def migrate!
         rake("db:migrate#{' --trace' if options[:trace]}")
+      end
+      
+      def heroku_deploy!
+        puts "\n\nInitializing and committing to git..\n"
+        run_command("git init && git add . && git commit -am 'Initial Commit'", :ruby => false)
+
+        puts "\n\nCreating Heroku app..\n"
+        run("heroku create #{options[:heroku]}")
+
+        puts "\n\nPushing to Heroku (this takes time, be patient)..\n"
+        run("git push heroku master", :ruby => false)
+
+        puts "\n\nSetting up the Heroku database..\n"
+        run("heroku rake db:migrate")
+
+        puts "\n\nRestarting servers...\n"
+        run("heroku restart")
       end
       
     private
