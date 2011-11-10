@@ -2,43 +2,56 @@ require 'rails/generators'
 require 'rails/generators/rails/app/app_generator'
 
 module Refinery
-  class AppGenerator < Rails::Generators::Base
-    
-    argument :app_path
-    
+  class AppGenerator < Rails::Generators::AppBase
+          
     source_root Pathname.new(File.expand_path('../templates', __FILE__))
+      
+    add_shared_options_for("RefineryCMS")
 
     # General options
-    class_option :force, :type => :boolean, :aliases => ['-f'], :default => false,
-      :desc => "Force overwriting of directory"
-    class_option :gems, :type => :array, :aliases => ['-g'],
-      :desc => "Additional gems to install"
-    class_option :heroku, :type => :string, :default => nil,
-      :desc => "Set up and deploy to Heroku"
-    class_option :confirm, :type => :boolean, :aliases => ['-c'], :default => false,
-      :desc => "Confirm any prompts that require input"
-    class_option :testing, :type => :boolean, :aliases => ['-t'], :default => true,
-      :desc => "Automatically set up the project with refinerycms-testing support"
-    class_option :trace, :type => :boolean, :default => false,
-      :desc => "Investigate any problems with the installer"
-    class_option :version, :type => :boolean, :default => false,
-      :desc => "Display the installed version of RefineryCMS"
-    
-    # Database options
-    class_option :adapter, :group => 'database', :type => :string, :aliases => ['-d'], :default => 'sqlite3',
-      :desc => "Select the database adapter (default: sqlite3)"
-    class_option :ident, :group => 'database', :type => :boolean, :default => false,
-      :desc => "Use ident database authentication (for mysql or postgresql)"
-    class_option :host, :group => 'database', :type => :string, :aliases => ['-h'], :default => 'localhost',
-      :desc => "Set the database hostname"
-    class_option :password, :group => 'database', :type => :string, :aliases => ['-p'], :default => 'refinery',
-      :desc => "Set the database password"
-    class_option :skip_db, :group => 'database', :type => :boolean, :default => false,
-      :desc => "Skip any database creation or migration tasks"
+    class_option :force,          :type => :boolean, :aliases => ['-f'], :default => false,
+                                  :desc => "Force overwriting of directory"
+                                  
+    class_option :gems,           :type => :array, :aliases => ['-g'],
+                                  :desc => "Additional gems to install"
+                                  
+    class_option :heroku,         :type => :string, :default => nil,
+                                  :desc => "Set up and deploy to Heroku"
+                                  
+    class_option :confirm,        :type => :boolean, :aliases => ['-c'], :default => false,
+                                  :desc => "Confirm any prompts that require input"
+                                  
+    class_option :testing,        :type => :boolean, :aliases => ['-t'], :default => true,
+                                  :desc => "Automatically set up the project with refinerycms-testing support"
+                                  
+    class_option :trace,          :type => :boolean, :default => false,
+                                  :desc => "Investigate any problems with the installer"
+                                  
+    class_option :version,        :type => :boolean, :default => false,
+                                  :desc => "Display the installed version of RefineryCMS"
+                                  
+    # Database options            
+    class_option :adapter,        :group => 'database', :type => :string, :aliases => ['-d'], :default => 'sqlite3',
+                                  :desc => "Select the database adapter (default: sqlite3)"
+                                  
+    class_option :ident,          :group => 'database', :type => :boolean, :default => false,
+                                  :desc => "Use ident database authentication (for mysql or postgresql)"
+                                  
+    class_option :host,           :group => 'database', :type => :string, :aliases => ['-h'], :default => 'localhost',
+                                  :desc => "Set the database hostname"
+                                  
+    class_option :password,       :group => 'database', :type => :string, :aliases => ['-p'], :default => 'refinery',
+                                  :desc => "Set the database password"
+                                  
+    class_option :skip_db,        :group => 'database', :type => :boolean, :default => false,
+                                  :desc => "Skip any database creation or migration tasks"
     
     # Rails options
-    class_option :rails_version, :group => 'rails', :type => :string, :aliases => ['-r'],
-      :desc => "Override the version of rails used to generate your application"
+    class_option :rails_version,  :group => 'rails', :type => :string, :aliases => ['-r'],
+                                  :desc => "Override the version of rails used to generate your application"
+    
+    # Remove overridden or non-relevant class options
+    remove_class_option(:skip_test_unit, :skip_bundle, :skip_gemfile, :skip_active_record, :skip_sprockets)
     
     RAILS_MINOR_VERSION = '3.1'
     
@@ -59,6 +72,10 @@ module Refinery
       
       validate_options!
       generate_rails!
+      run_bundle
+      
+      puts "\n---------"
+      puts "Refinery successfully installed in '#{@app_path}'!\n\n"
     end
     
     protected
@@ -116,18 +133,13 @@ module Refinery
       end
       
       def generate_rails!        
-        rails_options = [
-          app_path,
-          "--database #{options[:adapter]}",
-          "--skip-test-unit",
-          "--skip-bundle" # Rails automatically runs bundle install, but so do we
-        ]
-        rails_options << "-m http://jruby.org" if defined?(JRUBY_VERSION)
-        rails_options << "--force" if options[:force]
+        rails_options = options.dup
+        rails_options[:skip_test_unit] = true
+        rails_options[:skip_bundle]    = true
         
-        Rails::Generators::AppGenerator.start(rails_options)
-
-        if defined? JRUBY_VERSION
+        Rails::Generators::AppGenerator.new([app_path], rails_options).invoke_all
+        
+        if defined?(JRUBY_VERSION)
           find_and_replace(app_path.join('Gemfile'), /['|"]sqlite3['|"]/, "'activerecord-jdbcsqlite3-adapter'")
         end
 
@@ -148,9 +160,6 @@ module Refinery
           find_and_replace('config/database.yml', %r{username:.*}, "username: #{options[:username]}")
           find_and_replace('config/database.yml', %r{password:.*}, "password: \"#{options[:password]}\"")
         end
-
-        puts "\n---------"
-        puts "Refinery successfully installed in '#{@app_path}'!\n\n"
       end
       
     private
@@ -177,13 +186,18 @@ module Refinery
   end
 end
 
+# Yes, this is really how you set exit_on_failure to true in Thor.
 module Rails
   module Generators
-    class AppGenerator
-      # We want to exit on failure to be kind to other libraries
-      # This is only when accessing via CLI
+    class AppBase
       def self.exit_on_failure?
-        false
+        true
+      end
+    end
+    
+    class AppGenerator
+      def self.exit_on_failure?
+        true
       end
     end
   end
