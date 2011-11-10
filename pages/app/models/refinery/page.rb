@@ -361,7 +361,7 @@ module Refinery
 
     # Used to index all the content on this page so it can be easily searched.
     def all_page_part_content
-      parts.sort.map(&:body).join(" ")
+      parts.map(&:body).join(" ")
     end
 
     ##

@@ -7,6 +7,8 @@ module Refinery
       login_refinery_user
 
       context "when no pages" do
+        before(:each) { Refinery::Page.destroy_all }
+
         it "invites to create one" do
           visit refinery_admin_pages_path
           page.should have_content("There are no pages yet. Click \"Add new page\" to add your first page.")
@@ -24,6 +26,8 @@ module Refinery
         end
 
         context "when no pages" do
+          before(:each) { Refinery::Page.destroy_all }
+
           it "doesn't show reorder pages link" do
             visit refinery_admin_pages_path
 
@@ -143,7 +147,9 @@ module Refinery
                                  {:value => [:en, :ru], :scoping => 'refinery'})
 
           # Create a home page in both locales (needed to test menus)
-          home_page =  ::Refinery::Page.create!(:title => 'Home', :link_url => '/', :menu_match => "^/$")
+          home_page = FactoryGirl.create(:page, :title => 'Home',
+                                                :link_url => '/',
+                                                :menu_match => "^/$")
           Globalize.locale = :ru
           home_page.title = 'Домашняя страница'
           home_page.save
