@@ -1,5 +1,6 @@
 require 'rails/generators'
 require 'rails/generators/rails/app/app_generator'
+require 'rails/version'
 
 module Refinery
   class AppGenerator < Rails::Generators::AppBase
@@ -49,14 +50,11 @@ module Refinery
     class_option :skip_db,        :group => 'database', :type => :boolean, :default => false,
                                   :desc => "Skip any database creation or migration tasks"
     
-    # Rails options
-    class_option :rails_version,  :group => 'rails', :type => :string, :aliases => ['-r'],
-                                  :desc => "Override the version of rails used to generate your application"
-    
     # Remove overridden or non-relevant class options
     remove_class_option(:skip_test_unit, :skip_bundle, :skip_gemfile, :skip_active_record, :skip_sprockets)
     
-    RAILS_MINOR_VERSION = '3.1'
+    TARGET_MAJOR_VERSION = 3
+    TARGET_MINOR_VERSION = 1
     
     class << self
       def reserved_app_names
@@ -72,8 +70,6 @@ module Refinery
     
     def run!
       self.destination_root = app_path
-      
-      @rails_version_to_use = options[:rails_version] || rails_version_in_path
       
       validate_options!
       generate_rails!
@@ -123,12 +119,9 @@ module Refinery
       def validate_options!
         app_name = app_path.split(File::SEPARATOR).last
         
-        unless valid_rails_version?(@rails_version_to_use)
-          puts "\nRails #{@rails_version_to_use} is not supported by Refinery #{Refinery.version}, " \
-               "please use Rails #{RAILS_MINOR_VERSION}.x instead."
-          puts "\nYou can tell Refinery CMS an installed and compatible rails version to use like so:\n"
-          puts "\nrefinerycms #{app_name} --rails-version #{RAILS_MINOR_VERSION}"
-          puts "\n"
+        unless valid_rails_version?
+          puts "\nRails #{Rails::VERSION::STRING} is not supported by Refinery #{Refinery.version}, " \
+               "please use Rails #{TARGET_MAJOR_VERSION}.#{TARGET_MINOR_VERSION}.x instead."
           exit(1)
         end
         
@@ -270,17 +263,12 @@ module Refinery
         end
       end
       
-      def valid_rails_version?(rails_version)
-        !rails_version !~ %r{\b#{RAILS_MINOR_VERSION}}
+      def valid_rails_version?
+        Rails::VERSION::MAJOR >= TARGET_MAJOR_VERSION && Rails::VERSION::MINOR >= TARGET_MINOR_VERSION
       end
       
       def valid_app_name?(app_name)
         !self.class.reserved_app_names.include?(app_name.downcase)
-      end
-      
-      # Returns a string representation of the rails version of what is currently found in your path
-      def rails_version_in_path
-        @rails_version_in_path ||= run('rails --version', :verbose => false, :capture => true).to_s.gsub(/(Rails |\n)/, '')
       end
   end
 end
