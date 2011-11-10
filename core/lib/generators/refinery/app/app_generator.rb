@@ -80,6 +80,12 @@ module Refinery
       prepare_gemfile!
       run_bundle
       
+      create_database!
+      
+      Refinery::CmsGenerator.start
+            
+      migrate!
+      
       puts "\n---------"
       puts "Refinery successfully installed in '#{@app_path}'!\n\n"
     end
@@ -186,6 +192,28 @@ module Refinery
         end
         
         gem 'fog' if options[:heroku]
+      end
+      
+      def create_database!
+        unless options[:adapter] == 'sqlite3'
+          # Ensure the database exists so that queries like .table_exists? don't fail.
+          puts "\nCreating a new database.."
+  
+          # Warn about incorrect username or password.
+          if options[:ident]
+            note = "NOTE: If ident authentication fails then the installer will stall or fail here.\n\n"
+          else
+            note = "NOTE: if your database username is not '#{options[:username]}'"
+            note << " or your password is not '#{options[:password]}' then the installer will stall here.\n\n"
+          end
+          puts note
+          
+          rake("db:create#{' --trace' if options[:trace]}")
+        end
+      end
+      
+      def migrate!
+        rake("db:migrate#{' --trace' if options[:trace]}")
       end
       
     private
