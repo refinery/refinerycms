@@ -37,7 +37,7 @@ module Refinery
       context "pagination" do
         before(:each) do
           (Refinery::Setting.per_page + 1).times do
-            Refinery::Setting.create! :name => "Refinery CMS"
+            FactoryGirl.create(:setting)
           end
         end
 
