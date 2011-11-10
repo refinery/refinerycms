@@ -9,7 +9,6 @@ module Refinery
       
     add_shared_options_for("RefineryCMS")
 
-    # General options
     class_option :force,          :type => :boolean, :aliases => ['-f'], :default => false,
                                   :desc => "Force overwriting of directory"
                                   
@@ -34,21 +33,8 @@ module Refinery
     class_option :refinery_edge,  :type => :boolean, :default => false,
                                   :desc => "Setup your application's Gemfile to point to the RefineryCMS repository"
                                   
-    # Database options            
-    class_option :adapter,        :group => 'database', :type => :string, :aliases => ['-d'], :default => 'sqlite3',
-                                  :desc => "Select the database adapter (default: sqlite3)"
-                                  
-    class_option :ident,          :group => 'database', :type => :boolean, :default => false,
-                                  :desc => "Use ident database authentication (for mysql or postgresql)"
-                                  
-    class_option :host,           :group => 'database', :type => :string, :aliases => ['-h'], :default => 'localhost',
-                                  :desc => "Set the database hostname"
-                                  
-    class_option :password,       :group => 'database', :type => :string, :aliases => ['-p'], :default => 'refinery',
-                                  :desc => "Set the database password"
-                                  
-    class_option :skip_db,        :group => 'database', :type => :boolean, :default => false,
-                                  :desc => "Skip any database creation or migration tasks"
+    class_option :skip_db,        :type => :boolean, :default => false,
+                                  :desc => "Skip database creation and migration tasks"
     
     # Remove overridden or non-relevant class options
     remove_class_option(:skip_test_unit, :skip_bundle, :skip_gemfile, :skip_active_record, :skip_sprockets)
@@ -178,21 +164,6 @@ module Refinery
 
         # Remove rails from the Gemfile so that Refinery can manage it
         find_and_replace('Gemfile', %r{^gem 'rails'}, "# gem 'rails'")
-
-        # Override database host
-        if options[:host] != 'localhost' && (adapter = options[:adapter]) != 'sqlite3'
-          adapter = 'mysql2' if adapter == 'mysql'
-          find_and_replace('config/database.yml', "\n  adapter: #{adapter}", "\n  adapter: #{adapter}\n  host: #{options[:host]}")
-        end
-
-        # Override database username and password
-        if options[:ident]
-          find_and_replace('config/database.yml', %r{username:}, '#username:')
-          find_and_replace('config/database.yml', %r{password:}, '#password:')
-        else
-          find_and_replace('config/database.yml', %r{username:.*}, "username: #{options[:username]}")
-          find_and_replace('config/database.yml', %r{password:.*}, "password: \"#{options[:password]}\"")
-        end
       end
       
       def prepare_gemfile!
@@ -216,7 +187,7 @@ module Refinery
       end
       
       def create_database!
-        unless options[:adapter] == 'sqlite3'
+        unless options[:database] == 'sqlite3'
           # Ensure the database exists so that queries like .table_exists? don't fail.
           puts "\nCreating a new database.."
   
@@ -239,13 +210,13 @@ module Refinery
       
       def heroku_deploy!
         puts "\n\nInitializing and committing to git..\n"
-        run_command("git init && git add . && git commit -am 'Initial Commit'", :ruby => false)
+        run("git init && git add . && git commit -am 'Initial Commit'")
 
         puts "\n\nCreating Heroku app..\n"
         run("heroku create #{options[:heroku]}")
 
         puts "\n\nPushing to Heroku (this takes time, be patient)..\n"
-        run("git push heroku master", :ruby => false)
+        run("git push heroku master")
 
         puts "\n\nSetting up the Heroku database..\n"
         run("heroku rake db:migrate")
