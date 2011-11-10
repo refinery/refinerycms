@@ -1,12 +1,10 @@
-require 'thor'
-require 'thor/group'
 require 'rails/generators'
+require 'rails/generators/rails/app/app_generator'
 
 module Refinery
   class AppGenerator < Rails::Generators::Base
     
     argument :app_path
-    desc File.read(File.expand_path('../USAGE', __FILE__))
     
     source_root Pathname.new(File.expand_path('../templates', __FILE__))
 
@@ -117,56 +115,42 @@ module Refinery
         end
       end
       
-      def generate_rails!
-        # Generate a rails application
-        rails_command = "rails _#{@rails_version_to_use}_ new \"#{app_path}\""
-        rails_command << " --database #{options[:adapter]}"
-        rails_command << " --force" if options[:force]
-        rails_command << " --skip-test-unit"
-        rails_command << " --skip-bundle" # Rails automatically installs the bundle, but so do we!
-        rails_command << " -m http://jruby.org" if defined? JRUBY_VERSION
+      def generate_rails!        
+        rails_options = [
+          app_path,
+          "--database #{options[:adapter]}",
+          "--skip-test-unit",
+          "--skip-bundle" # Rails automatically runs bundle install, but so do we
+        ]
+        rails_options << "-m http://jruby.org" if defined?(JRUBY_VERSION)
+        rails_options << "--force" if options[:force]
         
-        rails_output = nil
-        inside(app_path) do
-          rails_output = run(rails_command, :verbose => false, :capture => true)
-        end
-        puts app_path
-        puts rails_output
-  
-        # Detect non-success or a blank rails output or starting with "Can't initialize" or "Error"
-        if !$?.success? or rails_output.to_s.length == 0 or rails_output =~ /^(Can't\ initialize|Error)/
-          puts "\nGenerating Rails application failed. Exiting..."
-          if run('gem list rails', :verbose => false, :capture => true) !~ %r{[( ]#{@rails_version_to_use}(.0)*[,\)]}
-            puts "\nDo you have Rails #{@rails_version_to_use} installed?"
-          end
-          puts "\n"
-          exit(1)
-        else
-          if defined? JRUBY_VERSION
-            find_and_replace(app_path.join('Gemfile'), /['|"]sqlite3['|"]/, "'activerecord-jdbcsqlite3-adapter'")
-          end
+        Rails::Generators::AppGenerator.start(rails_options)
 
-          # Remove rails from the Gemfile so that Refinery can manage it
-          find_and_replace('Gemfile', %r{^gem 'rails'}, "# gem 'rails'")
-  
-          # Override database host
-          if options[:host] != 'localhost' && (adapter = options[:adapter]) != 'sqlite3'
-            adapter = 'mysql2' if adapter == 'mysql'
-            find_and_replace('config/database.yml', "\n  adapter: #{adapter}", "\n  adapter: #{adapter}\n  host: #{options[:host]}")
-          end
-  
-          # Override database username and password
-          if options[:ident]
-            find_and_replace('config/database.yml', %r{username:}, '#username:')
-            find_and_replace('config/database.yml', %r{password:}, '#password:')
-          else
-            find_and_replace('config/database.yml', %r{username:.*}, "username: #{options[:username]}")
-            find_and_replace('config/database.yml', %r{password:.*}, "password: \"#{options[:password]}\"")
-          end
-  
-          puts "\n---------"
-          puts "Refinery successfully installed in '#{@app_path}'!\n\n"
+        if defined? JRUBY_VERSION
+          find_and_replace(app_path.join('Gemfile'), /['|"]sqlite3['|"]/, "'activerecord-jdbcsqlite3-adapter'")
         end
+
+        # Remove rails from the Gemfile so that Refinery can manage it
+        find_and_replace('Gemfile', %r{^gem 'rails'}, "# gem 'rails'")
+
+        # Override database host
+        if options[:host] != 'localhost' && (adapter = options[:adapter]) != 'sqlite3'
+          adapter = 'mysql2' if adapter == 'mysql'
+          find_and_replace('config/database.yml', "\n  adapter: #{adapter}", "\n  adapter: #{adapter}\n  host: #{options[:host]}")
+        end
+
+        # Override database username and password
+        if options[:ident]
+          find_and_replace('config/database.yml', %r{username:}, '#username:')
+          find_and_replace('config/database.yml', %r{password:}, '#password:')
+        else
+          find_and_replace('config/database.yml', %r{username:.*}, "username: #{options[:username]}")
+          find_and_replace('config/database.yml', %r{password:.*}, "password: \"#{options[:password]}\"")
+        end
+
+        puts "\n---------"
+        puts "Refinery successfully installed in '#{@app_path}'!\n\n"
       end
       
     private
@@ -190,5 +174,17 @@ module Refinery
       def rails_version_in_path
         @rails_version_in_path ||= run('rails --version', :verbose => false, :capture => true).to_s.gsub(/(Rails |\n)/, '')
       end
+  end
+end
+
+module Rails
+  module Generators
+    class AppGenerator
+      # We want to exit on failure to be kind to other libraries
+      # This is only when accessing via CLI
+      def self.exit_on_failure?
+        false
+      end
+    end
   end
 end
