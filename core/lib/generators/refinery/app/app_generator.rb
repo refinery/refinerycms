@@ -29,6 +29,9 @@ module Refinery
                                   
     class_option :version,        :type => :boolean, :default => false,
                                   :desc => "Display the installed version of RefineryCMS"
+
+    class_option :refinery_edge,  :type => :boolean, :default => false,
+                                  :desc => "Setup your application's Gemfile to point to the RefineryCMS repository"
                                   
     # Database options            
     class_option :adapter,        :group => 'database', :type => :string, :aliases => ['-d'], :default => 'sqlite3',
@@ -68,16 +71,19 @@ module Refinery
     end
     
     def run!
+      self.destination_root = app_path
+      
       @rails_version_to_use = options[:rails_version] || rails_version_in_path
       
       validate_options!
       generate_rails!
+      prepare_gemfile!
       run_bundle
       
       puts "\n---------"
       puts "Refinery successfully installed in '#{@app_path}'!\n\n"
     end
-    
+        
     protected
     
       def validate_options!
@@ -160,6 +166,26 @@ module Refinery
           find_and_replace('config/database.yml', %r{username:.*}, "username: #{options[:username]}")
           find_and_replace('config/database.yml', %r{password:.*}, "password: \"#{options[:password]}\"")
         end
+      end
+      
+      def prepare_gemfile!
+        if options[:refinery_edge]
+          gem 'refinerycms', :git => 'git://github.com/resolve/refinerycms.git'
+        else
+          gem 'refinerycms'
+        end
+
+        if options[:testing]
+          gem 'refinerycms-testing', :git => 'git://github.com/resolve/refinerycms.git'
+        end
+        
+        if options[:gems].present?
+          options[:gems].each do |g|
+            gem g
+          end
+        end
+        
+        gem 'fog' if options[:heroku]
       end
       
     private
