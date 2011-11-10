@@ -1,7 +1,3 @@
-if !defined?(ENGINE_PATH) || !ENGINE_PATH
-  abort("ERROR: ENGINE_PATH must be defined and contain a path pointing to your engine's root.")
-end
-
 namespace :refinery do 
   namespace :testing do
     desc "Generates a dummy app for testing"
@@ -27,6 +23,10 @@ namespace :refinery do
     end
 
     task :migrate_dummy_app do
+      if !defined?(ENGINE_PATH) || !ENGINE_PATH
+        abort("ERROR: ENGINE_PATH must be defined and contain a path pointing to your engine's root.")
+      end
+      
       engines = [
         'refinery_core',
         'refinery_settings',
@@ -41,6 +41,10 @@ namespace :refinery do
 
     desc "Remove the dummy app used for testing"
     task :clean_dummy_app do
+      if !defined?(ENGINE_PATH) || !ENGINE_PATH
+        abort("ERROR: ENGINE_PATH must be defined and contain a path pointing to your engine's root.")
+      end
+      
       system "rm -Rdf #{File.join(ENGINE_PATH, 'spec/dummy')}"
     end
 
