@@ -33,6 +33,20 @@ module Refinery
           page.should have_content("Test Setting - true")
         end
       end
+
+      context "pagination" do
+        before(:each) do
+          (Refinery::Setting.per_page + 1).times do
+            FactoryGirl.create(:setting)
+          end
+        end
+
+        specify "page links" do
+          visit refinery_admin_settings_path
+
+          page.should have_selector("a[href*='settings?page=2']")
+        end
+      end
     end
   end
 end
