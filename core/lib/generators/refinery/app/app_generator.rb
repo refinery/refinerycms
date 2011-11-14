@@ -174,7 +174,7 @@ module Refinery
         end
 
         # Remove rails from the Gemfile so that Refinery can manage it
-        find_and_replace('Gemfile', %r{^gem 'rails'}, "# gem 'rails'")
+        find_and_replace(app_path.join('Gemfile'), %r{^gem 'rails'}, "# gem 'rails'")
       end
       
       def prepare_gemfile!
