@@ -56,7 +56,6 @@ module Refinery
 
     def run!
       self.destination_root = app_path
-      @app_pathname = Pathname.new(File.expand_path(app_path))
 
       validate_options!
       generate_rails!
@@ -81,7 +80,7 @@ module Refinery
       rake("db:migrate#{' --trace' if options[:trace]}")
 
       puts "\n---------"
-      puts "Refinery successfully installed in '#{@app_pathname}'!\n\n"
+      puts "Refinery successfully installed in '#{app_pathname}'!\n\n"
 
       heroku_deploy! if options[:heroku]
 
@@ -89,14 +88,14 @@ module Refinery
       if options[:skip_db]
         note << "Because you elected to skip database creation and migration in the installer"
         note << "you will need to run the following tasks manually to maintain correct operation:"
-        note << "\ncd #{@app_pathname}"
+        note << "\ncd #{app_pathname}"
         note << "bundle exec rake db:create"
         note << "bundle exec rails generate refinerycms"
         note << "bundle exec rake db:migrate"
         note << "\n---------\n"
       end
       note << "Now you can launch your webserver using:"
-      note << "\ncd #{@app_pathname}"
+      note << "\ncd #{app_pathname}"
       note << "rails server"
       note << "\nThis will launch the built-in webserver at port 3000."
       note << "You can now see your site running in your browser at http://localhost:3000"
@@ -113,9 +112,13 @@ module Refinery
     end
 
     protected
+      # Returns an instance of Pathname representing the required parameter app_path
+      def app_pathname
+        @app_pathname ||= Pathname.new(File.expand_path(app_path))
+      end
 
       def validate_options!
-        app_name = @app_pathname.split.last.to_s
+        app_name = app_pathname.split.last.to_s
 
         unless valid_rails_version?
           puts "\nRails #{Rails::VERSION::STRING} is not supported by Refinery #{Refinery.version}, " \
@@ -130,8 +133,8 @@ module Refinery
           exit(1)
         end
 
-        unless options[:force] || !@app_pathname.directory?
-          puts "\nThe directory '#{@app_pathname}' that you specified already exists."
+        unless options[:force] || !app_pathname.directory?
+          puts "\nThe directory '#{app_pathname}' that you specified already exists."
           puts "Use --force to overwrite an existing directory."
           puts "\n"
           exit(1)
@@ -236,8 +239,8 @@ module Refinery
     private
 
       def find_and_replace(file, find, replace)
-        contents = @app_pathname.join(file).read.gsub!(find, replace)
-        @app_pathname.join(file).open("w") do |f|
+        contents = app_pathname.join(file).read.gsub!(find, replace)
+        app_pathname.join(file).open("w") do |f|
           f.puts contents
         end
       end
