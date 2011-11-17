@@ -189,7 +189,11 @@ module Refinery
         end
 
         if options[:testing]
-          gem 'refinerycms-testing', :git => 'git://github.com/resolve/refinerycms.git'
+          if options[:refinery_edge]
+            gem 'refinerycms-testing', :git => 'git://github.com/resolve/refinerycms.git'
+          else
+            gem 'refinerycms-testing'
+          end
         end
 
         if options[:gems].present?
