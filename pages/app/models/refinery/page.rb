@@ -327,7 +327,7 @@ module Refinery
     def content_for(part_title)
       part_with_title(part_title).try(:body)
     end
-    
+
     # Accessor method to get a page part object from a page.
     # Example:
     #

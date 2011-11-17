@@ -12,7 +12,7 @@ module Refinery
           plugin.pathname = root
           plugin.name = '<%= class_name.pluralize.underscore.downcase %>'
           plugin.url = '/refinery/<%= plural_name %>'
-          
+
           plugin.activity = {
             :class_name => :'refinery/<%= singular_name %>'
           }
