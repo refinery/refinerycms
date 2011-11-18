@@ -8,6 +8,7 @@ namespace :refinery do
 
       params = []
       params << "--database=#{ENV['DB']}" if ENV['DB']
+      params << "--quiet"
 
       Refinery::DummyGenerator.start params
 
@@ -15,11 +16,11 @@ namespace :refinery do
       # generators depend on Rails.root being available
       # load File.join(ENGINE_PATH, 'spec/dummy/config/environment.rb')
 
-      Refinery::CmsGenerator.start
-      Refinery::CoreGenerator.start
-      Refinery::ResourcesGenerator.start
-      Refinery::PagesGenerator.start
-      Refinery::ImagesGenerator.start
+      Refinery::CmsGenerator.start ['--quiet']
+      Refinery::CoreGenerator.start ['--quiet']
+      Refinery::ResourcesGenerator.start ['--quiet']
+      Refinery::PagesGenerator.start ['--quiet']
+      Refinery::ImagesGenerator.start ['--quiet']
     end
 
     task :migrate_dummy_app do
@@ -32,7 +33,7 @@ namespace :refinery do
         'refinery_images',
         'refinery_resources'
       ]
-      system %Q{ bundle exec rake -f #{File.join(Refinery::Testing::Railtie.target_engine_path, 'Rakefile')} app:railties:install:migrations FROM="#{engines.join(', ')}" app:db:drop app:db:create app:db:migrate app:db:seed app:db:test:prepare RAILS_ENV=development }
+      system %Q{ bundle exec rake -f #{File.join(Refinery::Testing::Railtie.target_engine_path, 'Rakefile')} app:railties:install:migrations FROM="#{engines.join(', ')}" app:db:drop app:db:create app:db:migrate app:db:seed app:db:test:prepare RAILS_ENV=development --quiet }
     end
 
     desc "Remove the dummy app used for testing"
