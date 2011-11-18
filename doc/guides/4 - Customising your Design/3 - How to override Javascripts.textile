@@ -15,7 +15,7 @@ Refinery uses jQuery by default, but if you would like to override the javascrip
 <% content_for :javascript_libraries, javascript_include_tag('https://ajax.googleapis.com/ajax/libs/dojo/1.6.1/dojo/dojo.xd.js') %>
 </shell>
 
-h3. Overriding the JavasScript files included
+h3. Overriding the JavaScript files included
 
 If you want to override one of the javascript files refinery comes built with (for example, to add your own jQuery plugin for the home page), you'll need to override the files Refinery is including. 
 
