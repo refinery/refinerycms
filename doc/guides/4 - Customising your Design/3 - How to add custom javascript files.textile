@@ -6,7 +6,7 @@ However, most of the time you want to provide your own files so this guide will 
 
 endprologue.
 
-h3. Including your own JavasScript files
+h3. Including your own JavaScript files
 
 If you want to include your own javascript files you just have to include this in your home.html.erb:
 
