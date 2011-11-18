@@ -148,8 +148,8 @@ module Refinery
 
     context 'content sections (page parts)' do
       before do
-        page.parts.create(:title => 'body', :content => "I'm the first page part for this page.")
-        page.parts.create(:title => 'side body', :content => 'Closely followed by the second page part.')
+        page.parts.create(:title => 'body', :content => "I'm the first page part for this page.", :position => 0)
+        page.parts.create(:title => 'side body', :content => 'Closely followed by the second page part.', :position => 1)
         page.parts.reload
       end
 
