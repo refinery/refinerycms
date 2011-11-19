@@ -41,8 +41,6 @@ group :development, :test do
   gem 'guard-spork', :platforms => :ruby
   gem 'generator_spec'
 
-  require 'rbconfig'
-
   platforms :mswin, :mingw do
     gem 'win32console'
     gem 'rb-fchange', '~> 0.0.5'
@@ -54,6 +52,7 @@ group :development, :test do
     gem 'guard-spork'
 
     unless ENV['TRAVIS']
+      require 'rbconfig'
       if RbConfig::CONFIG['target_os'] =~ /darwin/i
         gem 'rb-fsevent', '>= 0.3.9'
         gem 'growl',      '~> 1.0.3'
@@ -67,6 +66,7 @@ group :development, :test do
 
   platforms :jruby do
     unless ENV['TRAVIS']
+      require 'rbconfig'
       if RbConfig::CONFIG['target_os'] =~ /darwin/i
         gem 'growl',      '~> 1.0.3'
       end
