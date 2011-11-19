@@ -2,21 +2,6 @@ source 'http://rubygems.org'
 
 gemspec
 
-# Use unicorn as the web server
-# gem 'unicorn'
-# gem 'mongrel'
-
-# Deploy with Capistrano
-# gem 'capistrano'
-
-# To use debugger
-# gem 'ruby-debug', :platform => :mri_18
-# or in 1.9.x:
-# gem 'ruby-debug19', :platform => :mri_19
-
-# For Heroku/s3:
-# gem 'fog'
-
 # REFINERY CMS ================================================================
 # Anything you put in here will be overridden when the app gets updated.
 
@@ -78,11 +63,6 @@ group :development, :test do
   end
 end
 
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git', :branch => '3-1-stable'
-# gem 'rack', :git => 'git://github.com/rack/rack.git'
-# gem 'arel', :git => 'git://github.com/rails/arel.git'
-
 if defined? JRUBY_VERSION
   gem 'activerecord-jdbcsqlite3-adapter',
       :git => 'git://github.com/nicksieger/activerecord-jdbc-adapter.git'
@@ -116,3 +96,23 @@ gem 'jquery-rails'
 # Add i18n support (optional, you can remove this if you really want to).
 gem 'refinerycms-i18n',           '~> 2.0.0', :git => 'git://github.com/parndt/refinerycms-i18n'
 # END USER DEFINED
+
+# Use unicorn as the web server
+# gem 'unicorn'
+# gem 'mongrel'
+
+# Deploy with Capistrano
+# gem 'capistrano'
+
+# To use debugger
+# gem 'ruby-debug', :platform => :mri_18
+# or in 1.9.x:
+# gem 'ruby-debug19', :platform => :mri_19
+
+# For Heroku/s3:
+# gem 'fog'
+
+# Bundle edge Rails instead:
+# gem 'rails', :git => 'git://github.com/rails/rails.git', :branch => '3-1-stable'
+# gem 'rack', :git => 'git://github.com/rack/rack.git'
+# gem 'arel', :git => 'git://github.com/rails/arel.git'
