@@ -11,6 +11,17 @@ gemspec
 
 # REFINERY CMS DEVELOPMENT ====================================================
 
+# Database Configuration
+if defined? JRUBY_VERSION
+  gem 'activerecord-jdbcsqlite3-adapter',
+      :git => 'git://github.com/nicksieger/activerecord-jdbc-adapter.git'
+  gem 'jruby-openssl'
+else
+  gem 'sqlite3'
+  gem 'mysql2'
+  gem 'pg'
+end
+
 group :development do
   gem 'rails-dev-tweaks', '~> 0.5.0'
 end
@@ -19,12 +30,16 @@ gem 'routing-filter', :git => "https://github.com/nevir/routing-filter"
 
 group :development, :test do
   gem 'refinerycms-testing', '~> 2.0.0'
-  gem 'rcov', :platform => :mri_18
-  gem 'simplecov', :platform => :mri_19
   gem 'capybara-webkit', '~> 0.7.0'
-  gem 'spork', '~> 0.9.0.rc', :platforms => :ruby
-  gem 'guard-spork', :platforms => :ruby
   gem 'generator_spec'
+
+  platforms :mri_18 do
+    gem 'rcov'
+  end
+
+  platforms :mri_19 do
+    gem 'simplecov'
+  end
 
   platforms :mswin, :mingw do
     gem 'win32console'
@@ -61,16 +76,6 @@ group :development, :test do
       end
     end
   end
-end
-
-if defined? JRUBY_VERSION
-  gem 'activerecord-jdbcsqlite3-adapter',
-      :git => 'git://github.com/nicksieger/activerecord-jdbc-adapter.git'
-  gem 'jruby-openssl'
-else
-  gem 'sqlite3'
-  gem 'mysql2'
-  gem 'pg'
 end
 
 # Gems used only for assets and not required
