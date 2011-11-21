@@ -1,14 +1,7 @@
 require "spec_helper"
 
 describe Refinery::Activity do
-  before do
-    module X
-      module Y
-        class Z
-        end
-      end
-    end
-  end
+  before { module X; module Y; class Z; end; end; end }
 
   let(:activity) { Refinery::Activity.new(:class_name => "X::Y::Z") }
 
@@ -39,7 +32,12 @@ describe Refinery::Activity do
 
   describe "#url" do
     it "should return the url" do
-      activity.url.should == "edit_refinery_admin_z_path"
+      # we're stubbing here because X::Y::Z is just namespaced dummy class
+      # which isn't inheriting from AR::Base and it doesn't have any routes
+      # associated with it
+      X::Y::Z.stub_chain(:model_name, :param_key).and_return("y_z")
+
+      activity.url.should == "edit_refinery_admin_y_z_path"
     end
   end
 end
