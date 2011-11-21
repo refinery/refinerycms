@@ -12,6 +12,7 @@
                :locals => {
                  :hide_children => hide_children,
                  :sibling_count => (roots.length - 1),
+                 :menu_levels => local_assigns[:menu_levels],
                  :apply_css => true #if you don't care about class='first' class='last' or class='selected' set apply_css to false for speed.
                } -%>
   </ul>
