@@ -4,78 +4,79 @@ en:
     formats:
       short: "%A, %d %B %Y"
 <% end -%>
-  plugins:
-    <%= class_name.pluralize.underscore.downcase %>:
-      title: <%= plural_name.titleize %>
-      description: Provides a contact form and stores <%= plural_name.humanize.downcase %>
-  <%= plural_name %>:
-    new:
-      send: Send message
-      privacy_policy: We value your privacy
-  admin:
-    <%= plural_name %>:
-      delete: Remove this <%= singular_name.humanize.downcase %> forever
-      <%= singular_name %>:
-        read_<%= singular_name %>: Read the <%= singular_name.humanize.downcase %>
-        said: said
-        mark_as_spam: Mark as spam
-        mark_as_ham: Move to inbox
-      submenu:
-        inbox: Inbox
-        spam: Spam
-        update_notified: Update who gets notified
-        edit_confirmation_email: Edit confirmation email
-      index:
-        no_<%= plural_name %>: You have not received any <%= plural_name.humanize.downcase %> yet.
-      spam:
-        no_spam: Hooray! You don't have any spam.
-      show:
-        details: Details
-        age: Age
-        actions: Actions
-        back_to_all_<%= plural_name %>: Back to all <%= plural_name.humanize.downcase %>
-        spam: Spam
-        spam_yes: 'yes'
-        <%= singular_name %>: <%= class_name.underscore.titleize %>
-        to: To
-        from: From
-        click_to_email: Click to email this address
-        phone: Phone
-        date: Date
-        message: Message
-    <%= singular_name %>_settings:
-      notification_recipients_form:
-        <%= singular_name %>_settings_value_name: Send notifications to
-        explanation: Every time someone contacts you on your website, Refinery sends out an email to say there is a new <%= singular_name.humanize.downcase %>.
-        hint: When a new <%= singular_name.humanize.downcase %> is submitted, Refinery will send an email notification to you.
-        example: "Enter your email address(es) like: jack@work.com, jill@office.com"
-      confirmation_email_form:
-        to: To
-        from: From
-        subject: Subject
-        click_to_edit_subject: Click here to edit the subject
-        explanation: Every time someone contacts you on your website, Refinery sends out an email to confirm the <%= singular_name.humanize.downcase %> with the person who made it.
-        below_edit_email_sent: Below you can edit the email that is sent out.
-        the_customer_making_<%= singular_name %>: The customer making the <%= singular_name.humanize.downcase %>
-        message: Message
-        note: "Note: place the text %name% where you'd like the customer's name to appear in the email"
-  <%= singular_name %>_mailer:
-    notification:
-      greeting: Hi there
-      you_recieved_new_<%= singular_name %>: You just received a new <%= singular_name.humanize.downcase %> on your website.
-      <%= singular_name %>_starts: --- <%= singular_name.humanize.downcase %> starts ---
-      <%= singular_name %>_ends: --- <%= singular_name.humanize.downcase %> ends ---
-      from: From
-      email: Email
-      phone: Phone
-      message: Message
-      closing_line: Kind Regards
-      ps_html: P.S. All your <%= plural_name.humanize.downcase %> are stored in the "<%= plural_name.titleize %>" section of Refinery should you ever want to view it later there.
-  activerecord:
-    models:
-      <%= singular_name %>: <%= class_name.underscore.titleize %>
-    attributes:
-      <%= singular_name %>:
-<% attributes.each do |a| -%>
-        <%= a.name %>: <%= a.name.humanize %>
-<% end -%>
+  refinery:
+      plugins:
+        <%= class_name.pluralize.underscore.downcase %>:
+          title: <%= plural_name.titleize %>
+          description: Provides a contact form and stores <%= plural_name.humanize.downcase %>
+      <%= plural_name %>:
+        new:
+          send: Send message
+          privacy_policy: We value your privacy
+      admin:
+        <%= plural_name %>:
+          delete: Remove this <%= singular_name.humanize.downcase %> forever
+          <%= singular_name %>:
+            read_<%= singular_name %>: Read the <%= singular_name.humanize.downcase %>
+            said: said
+            mark_as_spam: Mark as spam
+            mark_as_ham: Move to inbox
+          submenu:
+            inbox: Inbox
+            spam: Spam
+            update_notified: Update who gets notified
+            edit_confirmation_email: Edit confirmation email
+          index:
+            no_<%= plural_name %>: You have not received any <%= plural_name.humanize.downcase %> yet.
+          spam:
+            no_spam: Hooray! You don't have any spam.
+          show:
+            details: Details
+            age: Age
+            actions: Actions
+            back_to_all_<%= plural_name %>: Back to all <%= plural_name.humanize.downcase %>
+            spam: Spam
+            spam_yes: 'yes'
+            <%= singular_name %>: <%= class_name.underscore.titleize %>
+            to: To
+            from: From
+            click_to_email: Click to email this address
+            phone: Phone
+            date: Date
+            message: Message
+        <%= singular_name %>_settings:
+          notification_recipients_form:
+            <%= singular_name %>_settings_value_name: Send notifications to
+            explanation: Every time someone contacts you on your website, Refinery sends out an email to say there is a new <%= singular_name.humanize.downcase %>.
+            hint: When a new <%= singular_name.humanize.downcase %> is submitted, Refinery will send an email notification to you.
+            example: "Enter your email address(es) like: jack@work.com, jill@office.com"
+          confirmation_email_form:
+            to: To
+            from: From
+            subject: Subject
+            click_to_edit_subject: Click here to edit the subject
+            explanation: Every time someone contacts you on your website, Refinery sends out an email to confirm the <%= singular_name.humanize.downcase %> with the person who made it.
+            below_edit_email_sent: Below you can edit the email that is sent out.
+            the_customer_making_<%= singular_name %>: The customer making the <%= singular_name.humanize.downcase %>
+            message: Message
+            note: "Note: place the text %name% where you'd like the customer's name to appear in the email"
+      <%= singular_name %>_mailer:
+        notification:
+          greeting: Hi there
+          you_recieved_new_<%= singular_name %>: You just received a new <%= singular_name.humanize.downcase %> on your website.
+          <%= singular_name %>_starts: --- <%= singular_name.humanize.downcase %> starts ---
+          <%= singular_name %>_ends: --- <%= singular_name.humanize.downcase %> ends ---
+          from: From
+          email: Email
+          phone: Phone
+          message: Message
+          closing_line: Kind Regards
+          ps_html: P.S. All your <%= plural_name.humanize.downcase %> are stored in the "<%= plural_name.titleize %>" section of Refinery should you ever want to view it later there.
+      activerecord:
+        models:
+          <%= singular_name %>: <%= class_name.underscore.titleize %>
+        attributes:
+          <%= singular_name %>:
+    <% attributes.each do |a| -%>
+            <%= a.name %>: <%= a.name.humanize %>
+    <% end -%>

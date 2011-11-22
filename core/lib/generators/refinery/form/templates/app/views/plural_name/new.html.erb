@@ -1,9 +1,9 @@
 <%% content_for :body_content_left do %>
   <div class='<%= plural_name %>'>
-    <%%=raw @page[Page.default_parts.first.to_sym] %>
+    <%%=raw @page.content_for(Page.default_parts.first.to_sym) %>
 
     <%%= form_for @<%= singular_name %> do |f| %>
-      <%%= render :partial => "/shared/admin/error_messages",
+      <%%= render :partial => "/refinery/admin/error_messages",
                  :locals => {
                    :object => @<%= singular_name %>,
                    :include_object_name => true
@@ -30,9 +30,9 @@
       </div>
       <% end %>
       <div class='actions'>
-        <%%= f.submit t('.send') %>
+        <%%= f.submit t('.send', :scope => 'refinery') %>
       </div>
     <%% end %>
   </div>
 <%% end %>
-<%%= render :partial => "/shared/content_page" %>
+<%%= render :partial => "/refinery/content_page" %>
