@@ -9,22 +9,22 @@
       </li>
     <%% end %>
     <li <%%= "class='selected'" if params[:action] == "index" %>>
-      <%%= link_to t('.inbox'), admin_<%= plural_name %>_url, :class => "email_icon" %>
+      <%%= link_to t('.inbox', :scope => 'refinery'), admin_<%= plural_name %>_url, :class => "email_icon" %>
     </li><% if @includes_spam %>
     <li <%%= "class='selected'" if params[:action] == "spam" %>>
       <%% if @spam_count.any?  %>
-        <%%= link_to "#{t('.spam')} (#{@spam_count})", spam_admin_<%= plural_name %>_url, :class => "spam_icon" %>
+        <%%= link_to "#{t('.spam'), :scope=> 'refinery'} (#{@spam_count})", spam_admin_<%= plural_name %>_url, :class => "spam_icon" %>
       <%% else %>
-        <%%= link_to t('.spam'), spam_admin_<%= plural_name %>_url, :class => "spam_empty_icon" %>
+        <%%= link_to t('.spam', :scope => 'refinery'), spam_admin_<%= plural_name %>_url, :class => "spam_empty_icon" %>
       <%% end %>
     </li><% end %>
     <li>
-      <%%= link_to t('.update_notified'),
+      <%%= link_to t('.update_notified', :scope => 'refinery'),
                     edit_admin_<%= singular_name %>_setting_url(:<%= singular_name %>_notification_recipients, :dialog => true, :height => 300),
                     :class => "user_comment_icon" %>
     </li>
     <li>
-      <%%= link_to t('.edit_confirmation_email'),
+      <%%= link_to t('.edit_confirmation_email', :scope => 'refinery'),
                   edit_admin_<%= singular_name %>_setting_url(:<%= singular_name %>_confirmation_body, :dialog => true),
                   :class => "edit_email_icon" %>
     </li>
