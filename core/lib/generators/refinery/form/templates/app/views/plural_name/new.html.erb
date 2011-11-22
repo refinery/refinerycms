@@ -1,0 +1,38 @@
+<%% content_for :body_content_left do %>
+  <div class='<%= plural_name %>'>
+    <%%=raw @page[Page.default_parts.first.to_sym] %>
+
+    <%%= form_for @<%= singular_name %> do |f| %>
+      <%%= render :partial => "/shared/admin/error_messages",
+                 :locals => {
+                   :object => @<%= singular_name %>,
+                   :include_object_name => true
+                 } %>
+      <% attributes.each do |attribute| %>
+      <div class='field <%= attribute.name %>_field <%= attribute.type %>_field'>
+        <%%= f.label :<%= attribute.name %> %>
+<% case attribute.type
+   when :string -%>
+        <%%= f.text_field :<%= attribute.name %> %>
+<% when :text -%>
+        <%%= f.text_area :<%= attribute.name %>, :rows => 8 %>
+<% when :radio -%>
+        <%% <%= class_name %>::<%= attribute.name.pluralize.upcase %>.each do |value, name| %>
+          <%%= f.radio_button :<%= attribute.name %>, (name || value), :value => value %>
+          <%%= f.label :"<%= attribute.name %>_#{(name || value)}", value.humanize %>
+        <%% end %>
+<% when :checkbox -%>
+        <%%= f.check_box :<%= attribute.name %> %>
+<% when :select -%>
+        <%%= f.select :<%= attribute.name %>, <%= class_name %>::<%= attribute.name.pluralize.upcase %>,
+                      :include_blank => true %>
+<% end -%>
+      </div>
+      <% end %>
+      <div class='actions'>
+        <%%= f.submit t('.send') %>
+      </div>
+    <%% end %>
+  </div>
+<%% end %>
+<%%= render :partial => "/shared/content_page" %>

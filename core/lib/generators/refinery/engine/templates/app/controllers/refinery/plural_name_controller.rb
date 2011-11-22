@@ -11,7 +11,7 @@ module ::Refinery
     end
 
     def show
-      @<%= singular_name %> = ::Refinery::<%= class_name %>.find(params[:id])
+      @<%= singular_name %> = ::Refinery::<%= class_name.pluralize %>::<%= class_name %>.find(params[:id])
 
       # you can use meta fields from your model instead (e.g. browser_title)
       # by swapping @page for @<%= singular_name %> in the line below:
@@ -21,7 +21,7 @@ module ::Refinery
   protected
 
     def find_all_<%= plural_name %>
-      @<%= "all_" if plural_name == singular_name %><%= plural_name %> = ::Refinery::<%= class_name %>.order('position ASC')
+      @<%= "all_" if plural_name == singular_name %><%= plural_name %> = ::Refinery::<%= class_name.pluralize %>::<%= class_name %>.order('position ASC')
     end
 
     def find_page

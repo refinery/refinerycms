@@ -1,0 +1,67 @@
+it:
+  plugins:
+    <%= class_name.pluralize.underscore.downcase %>:
+      title: <%= plural_name.titleize %>
+  activerecord:
+    models:
+      <%= singular_name %>: <%= class_name.underscore.titleize %>
+    attributes:
+      <%= singular_name %>:
+        to: A
+        from: Da
+        click_to_email: Clicca per questo indirizzo e-mail
+        phone: Telefono
+        date: Data
+        message: Messaggio
+  <%= plural_name %>:
+    new:
+      header_message: "Un problema si è verificato"
+      message: "I seguenti problemi devono essere corretti:"
+      send: Invia messaggio
+      privacy_policy: "Noi diamo valore alla tua privacy"
+  admin:
+    <%= plural_name %>:
+      <%= singular_name %>:
+        move_<%= singular_name %>_to_closed: Spostare questa inchiesta chiusa
+        move_<%= singular_name %>_to_open: Spostare questa indagine per aprire
+        read_<%= singular_name %>: Leggi l'inchiesta
+        remove_<%= singular_name %>: "Sei sicuro di voler cancellare la richiesta di '%{name}'?"
+        title: <%= plural_name.titleize %>
+      toggle_status:
+        closed: "Inchiesta '%{<%= singular_name %>}' è chiuso"
+        reopened: "Inchiesta '%{<%= singular_name %>}' si riapre"
+      index:
+        no_<%= plural_name %>: Non hai ancora ricevuto alcuna richiesta in.
+      show:
+        details: Dettagli
+        click_to_email: Clicca per e-mail
+        status: Stato
+        open: Aperto
+        closed: Chiuso
+        age: Età
+        actions: Azioni
+        back_to_all_<%= plural_name %>: Torna a tutte le richieste
+        <%= singular_name %>: <%= class_name.underscore.titleize %>
+      submenu:
+        update_notified: Aggiornamento chi viene notificata
+        edit_confirmation_email: Modifica email di conferma
+    <%= singular_name %>_settings:
+      update:
+        updated: "'%{setting}' stato aggiornato con successo."
+      notification_recipients_form:
+        <%= singular_name %>_settings_value_name: Invia a notifiche
+        explanation: "Ogni volta che qualcuno ti contatti sul suo sito web, Refinery invia una mail a dire che c'è una nuova indagine."
+        hint: "Inserisci un indirizzo email di cui sopra. Vuoi la notifica di andare a più di una persona? Inserisci più indirizzi email separati da virgole."
+        example: "E.g. me@domain.com, friend@msn.com, workmate@work.com"
+      confirmation_email_form:
+        to: A
+        from: Da
+        subject: Soggetto
+        click_to_edit_subject: Clicca qui per modificare l'oggetto
+        explanation: "Ogni volta che qualcuno ti contatti sul suo sito web, Refinery invia una e-mail per confermare la richiesta con la persona che ha reso."
+        below_edit_email_sent: Qui di seguito è possibile modificare l'e-mail che viene inviata.
+        the_customer_making_<%= singular_name %>: Il cliente rendendo l'indagine
+        message: Messaggio
+        note: "Nota: inserire il testo %name% dove desideri che il nome del cliente a comparire nella e-mail"
+      subject_form:
+        subject_value_name: Soggetto

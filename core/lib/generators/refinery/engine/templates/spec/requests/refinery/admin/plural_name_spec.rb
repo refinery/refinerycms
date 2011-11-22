@@ -31,7 +31,7 @@ describe Refinery
             click_button "Save"
 
             page.should have_content("'This is a test of the first string field' was successfully added.")
-            Refinery::<%= class_name %>.count.should == 1
+            Refinery::<%= class_name.pluralize %>::<%= class_name %>.count.should == 1
           end
         end
 
@@ -40,7 +40,7 @@ describe Refinery
             click_button "Save"
 
             page.should have_content("<%= title.name.titleize %> can't be blank")
-            Refinery::<%= class_name %>.count.should == 0
+            Refinery::<%= class_name.pluralize %>::<%= class_name %>.count.should == 0
           end
         end
 
@@ -56,7 +56,7 @@ describe Refinery
             click_button "Save"
 
             page.should have_content("There were problems")
-            Refinery::<%= class_name %>.count.should == 1
+            Refinery::<%= class_name.pluralize %>::<%= class_name %>.count.should == 1
           end
         end
       end
@@ -88,7 +88,7 @@ describe Refinery
           click_link "Remove this <%= singular_name.titleize.downcase %> forever"
 
           page.should have_content("'UniqueTitleOne' was successfully removed.")
-          Refinery::<%= class_name %>.count.should == 0
+          Refinery::<%= class_name.pluralize %>::<%= class_name %>.count.should == 0
         end
       end
 <% end %>

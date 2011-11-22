@@ -50,7 +50,7 @@
                :delete_title => t('delete', :scope => 'refinery.admin.settings'),
                :delete_confirmation => t('message', :scope => 'refinery.admin.delete',
                                          :title => @setting.title),
-               :hide_delete => (!@setting.persisted? or !@setting.destroyable or from_dialog?)
+               :hide_delete => (@setting.new_record? or !@setting.destroyable or from_dialog?)
               } %>
 <% end -%>
 <% content_for :javascripts do %>
