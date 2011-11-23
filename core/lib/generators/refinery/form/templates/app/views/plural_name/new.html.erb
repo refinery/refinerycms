@@ -1,6 +1,6 @@
 <%% content_for :body_content_left do %>
   <div class='<%= plural_name %>'>
-    <%%=raw @page.content_for(Page.default_parts.first.to_sym) %>
+    <%%=raw @page.content_for(Refinery::Page.default_parts.first.to_sym) %>
 
     <%%= form_for @<%= singular_name %> do |f| %>
       <%%= render :partial => "/refinery/admin/error_messages",
