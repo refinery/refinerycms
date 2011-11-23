@@ -94,7 +94,7 @@ module Refinery
     attr_writer :url
 
     def url
-      "#{self.url_prefix}#{@url ||= "refinery_admin_#{self.base_class_name.underscore}_path"}"
+      "#{self.url_prefix}#{@url ||= "refinery_admin_#{self.klass.model_name.param_key}_path"}"
     end
   end
 end
