@@ -4,7 +4,9 @@ module Refinery
       class FileSizeValidator < ActiveModel::Validator
 
         def validate(record)
-          if record.file.length > Resources.max_file_size
+          file = record.file
+
+          if file.respond_to?(:length) && file.length > Resources.max_file_size
             record.errors[:file] << ::I18n.t('too_big',
                                              :scope => 'activerecord.errors.models.refinery/resource',
                                              :size => Resources.max_file_size)
