@@ -84,14 +84,14 @@ module Refinery
         end
       end
 
-      describe "invalid #file" do
+      describe "too large #file" do
         before(:each) do
           @file = Refinery.roots(:'refinery/resources').join("spec/fixtures/refinery_is_awesome.txt")
           Resources.max_file_size = (File.read(@file).size - 10)
           @resource = Resource.new(:file => @file)
         end
 
-        it "should be valid when size does not exceed .max_file_size" do
+        it "should not be valid when size exceeds .max_file_size" do
           @resource.should_not be_valid
         end
 
@@ -99,6 +99,24 @@ module Refinery
           @resource.valid?
           @resource.errors.should_not be_empty
           @resource.errors[:file].should == ["File should be smaller than #{Resources.max_file_size} bytes in size"]
+        end
+      end
+
+      describe "invalid argument for #file" do
+        before(:each) do
+          @resource = Resource.new
+        end
+
+        it "does not raise an exception" do
+          expect {
+            @resource.valid?
+          }.should_not raise_error(NoMethodError)
+        end
+
+        it "has an error message" do
+          @resource.valid?
+          @resource.errors.should_not be_empty
+          @resource.errors[:file].should == ["You must specify file for upload"]
         end
       end
     end
