@@ -82,7 +82,9 @@ module Refinery
     # to use in a URL like edit_refinery_admin_group_individuals_path(record.group, record)
     # which will help you if you're using nested routed.
     def nesting(record_string = "record")
-      self.nested_with.inject("") { |nest_chain, nesting| nest_chain << "#{record_string}.#{nesting}," }
+      self.nested_with.inject("") { |nest_chain, nesting|
+        nest_chain << "#{record_string}.#{nesting},"
+      }
     end
 
     attr_writer :url_prefix
@@ -94,7 +96,8 @@ module Refinery
     attr_writer :url
 
     def url
-      "#{self.url_prefix}#{@url ||= "refinery_admin_#{self.klass.model_name.param_key}_path"}"
+      "#{self.url_prefix}#{@url ||= [ 'refinery', klass.model_name.param_key.to_s.pluralize,
+                                      'admin', klass.model_name.param_key, 'path' ].join('_')}"
     end
   end
 end
