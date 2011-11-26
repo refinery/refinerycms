@@ -43,7 +43,7 @@ module Refinery
 
   protected
     def find_page
-      @page ||= case params[:action]
+      @page ||= case action_name
       when "home"
         ::Refinery::Page.where(:link_url => '/').first
       when "show"
