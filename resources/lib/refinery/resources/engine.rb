@@ -24,7 +24,8 @@ module Refinery
           plugin.menu_match = /refinery\/(refinery_)?(files|resources)$/
           plugin.version = %q{2.0.0}
           plugin.activity = {
-            :class_name => :'refinery/resource'
+            :class_name => :'refinery/resource',
+            :url => "refinery_admin_resource_path" # temp hack for namespacees
           }
         end
       end

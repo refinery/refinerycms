@@ -40,7 +40,8 @@ module Refinery
             :url_prefix => "edit",
             :title => "title",
             :created_image => "page_add.png",
-            :updated_image => "page_edit.png"
+            :updated_image => "page_edit.png",
+            :url => "refinery_admin_page_path" # temp hack for namespacees
           }
         end
       end

@@ -5,6 +5,10 @@ module Refinery
     require 'refinery/<%= plural_name %>/engine' if defined?(Rails)
 
     class << self
+      def table_name_prefix
+        'refinery_'
+      end
+
       def root
         @root ||= Pathname.new(File.expand_path('../../../', __FILE__))
       end
