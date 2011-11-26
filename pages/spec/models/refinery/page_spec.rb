@@ -268,5 +268,89 @@ module Refinery
 
     end
 
+    describe "#to_refinery_menu_item" do
+      let(:page) do
+        Refinery::Page.new(
+          :id => 5,
+          :parent_id => 8,
+          :url => "/foo",
+          :menu_match => "^/foo$"
+
+        # Refinery::Page does not allow setting lft and rgt, so stub them.
+        ).tap do |p|
+          p[:lft] = 6
+          p[:rgt] = 7
+        end
+      end
+
+      subject { page.to_refinery_menu_item }
+
+      shared_examples_for("Refinery menu item hash") do
+        [ [:id, 5],
+          [:lft, 6],
+          [:rgt, 7],
+          [:parent_id, 8],
+          [:menu_match, "^/foo$"]
+        ].each do |attr, value|
+          it "returns the correct :#{attr}" do
+            subject[attr].should eq(value)
+          end
+        end
+
+        it "returns the correct :url" do
+          subject[:url].should be_a(Hash) # guard against nil
+          subject[:url].should eq(page.url)
+        end
+      end
+
+      context "with #page_menu_title" do
+        before do
+          page[:page_menu_title] = "Page Menu Title"
+        end
+
+        it_should_behave_like "Refinery menu item hash"
+
+        it "returns the page_menu_title for :title" do
+          subject[:title].should eq("Page Menu Title")
+        end
+      end
+
+      context "with #page_title" do
+        before do
+          page[:page_title] = "Page Title"
+        end
+
+        it_should_behave_like "Refinery menu item hash"
+
+        it "returns the page_title for :title" do
+          subject[:title].should eq("Page Title")
+        end
+      end
+
+      context "with #menu_title" do
+        before do
+          page[:menu_title] = "Menu Title"
+        end
+
+        it_should_behave_like "Refinery menu item hash"
+
+        it "returns the menu_title for :title" do
+          subject[:title].should eq("Menu Title")
+        end
+      end
+
+      context "with #title" do
+        before do
+          page[:title] = "Title"
+        end
+
+        it_should_behave_like "Refinery menu item hash"
+
+        it "returns the title for :title" do
+          subject[:title].should eq("Title")
+        end
+      end
+    end
+
   end
 end
