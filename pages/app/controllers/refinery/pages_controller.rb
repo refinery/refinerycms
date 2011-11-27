@@ -1,11 +1,13 @@
 module Refinery
   class PagesController < ::ApplicationController
+    before_filter :find_page
+
     # Save whole Page after delivery
     after_filter { |c| c.write_cache? }
 
     # This action is usually accessed with the root path, normally '/'
     def home
-      error_404 and return unless (@page = ::Refinery::Page.where(:link_url => '/').first).present?
+      error_404 and return unless @page
 
       render_with_templates?
     end
@@ -21,8 +23,6 @@ module Refinery
     #   GET /about/mission
     #
     def show
-      @page ||= ::Refinery::Page.find("#{params[:path]}/#{params[:id]}".split('/').last)
-
       if @page.try(:live?) || (refinery_user? && current_refinery_user.authorized_plugins.include?("refinery_pages"))
         # if the admin wants this to be a "placeholder" page which goes to its first child, go to that instead.
         if @page.skip_to_first_child && (first_live_child = @page.children.order('lft ASC').live.first).present?
@@ -42,6 +42,17 @@ module Refinery
     end
 
   protected
+    def find_page
+      @page ||= case action_name
+      when "home"
+        ::Refinery::Page.where(:link_url => '/').first
+      when "show"
+        ::Refinery::Page.find("#{params[:path]}/#{params[:id]}".split('/').last)
+      end
+    end
+
+    alias_method :page, :find_page
+
     def render_with_templates?
       layouts = ::Refinery::Setting.find_or_set(:use_layout_templates, false, :scoping => 'pages')
       views   = ::Refinery::Setting.find_or_set(:use_view_templates, false, :scoping => 'pages')
