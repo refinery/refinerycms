@@ -19,50 +19,50 @@ sl:
       message: "Prosimo odpravite sledeče napake:"
       send: Pošlji sporočilo
       privacy_policy: "Cenimo vašo zasebnost"
-  admin:
-    <%= plural_name %>:
-      <%= singular_name %>:
-        said: pravi
-        move_<%= singular_name %>_to_closed: Premakni povpraševanje v zaprto
-        move_<%= singular_name %>_to_open: Premakni povpraševanje v odprto
-        read_<%= singular_name %>: Preberi povpraševanje
-        remove_<%= singular_name %>: "Ali ste prepričani da želite odstraniti povpraševanje od '%{name}'?"
-        title: <%= plural_name.titleize %>
-      toggle_status:
-        closed: "Povpraševanje '%{<%= singular_name %>}' je zaprto"
-        reopened: "Povpraševanje '%{<%= singular_name %>}' je ponovno odprto"
-      index:
-        no_<%= plural_name %>: Trenutno še ni nobenega povpraševanja.
-      submenu:
-        update_notified: Uredi prejemnike obvestila
-        edit_confirmation_email: Uredni potrditveni email
-      show:
-        details: Podrobnosti
-        click_to_email: Pošlji email sporočilo
-        status: Status
-        open: Odprto
-        closed: Zaprto
-        age: Starost
-        actions: Možnosti
-        back_to_all_<%= plural_name %>: Nazaj na vsa povpraševanja
-        <%= singular_name %>: <%= class_name.underscore.titleize %>
-    <%= singular_name %>_settings:
-      update:
-        updated: "'%{setting}' je bila uspešno posodobljena."
-      notification_recipients_form:
-        <%= singular_name %>_settings_value_name: Pošlji obvestilo na
-        explanation: "Vedno ko vas nekdo kontaktira na vaši spletni strani, vam Refinery pošlje email obvestilo o novem povpraševanju."
-        hint: "V zgornje polje vnesite email naslov. Želite da obvestila prejme več oseb? Vnesite več email naslovov ločenih z vejicami."
-        example: "Primer: jaz@domena.com, prijatelj@msn.com, sodelavec@work.com"
-      confirmation_email_form:
-        to: Za
-        from: Od
-        subject: Zadeva
-        click_to_edit_subject: Uredi zadevo
-        explanation: "Vedno ko vas nekdo kontaktira na vaši spletni strani mu Refinery pošlje email obvestilo o prejetem povpraševanju."
-        below_edit_email_sent: Spodaj lahko uredite vsebino email sporočila.
-        the_customer_making_<%= singular_name %>: Stranka, ki je poslala povpraševanje
-        message: Sporočilo
-        note: "Opomba: vstavite tekst %name% kjer želite, da se pojavi ime stranke v email sporočilu."
-      subject_form:
-        subject_value_name: Zadeva
+    admin:
+      <%= plural_name %>:
+        <%= singular_name %>:
+          said: pravi
+          move_<%= singular_name %>_to_closed: Premakni povpraševanje v zaprto
+          move_<%= singular_name %>_to_open: Premakni povpraševanje v odprto
+          read_<%= singular_name %>: Preberi povpraševanje
+          remove_<%= singular_name %>: "Ali ste prepričani da želite odstraniti povpraševanje od '%{name}'?"
+          title: <%= plural_name.titleize %>
+        toggle_status:
+          closed: "Povpraševanje '%{<%= singular_name %>}' je zaprto"
+          reopened: "Povpraševanje '%{<%= singular_name %>}' je ponovno odprto"
+        index:
+          no_<%= plural_name %>: Trenutno še ni nobenega povpraševanja.
+        submenu:
+          update_notified: Uredi prejemnike obvestila
+          edit_confirmation_email: Uredni potrditveni email
+        show:
+          details: Podrobnosti
+          click_to_email: Pošlji email sporočilo
+          status: Status
+          open: Odprto
+          closed: Zaprto
+          age: Starost
+          actions: Možnosti
+          back_to_all_<%= plural_name %>: Nazaj na vsa povpraševanja
+          <%= singular_name %>: <%= class_name.underscore.titleize %>
+      settings:
+        update:
+          updated: "'%{setting}' je bila uspešno posodobljena."
+        notification_recipients_form:
+          <%= singular_name %>_settings_value_name: Pošlji obvestilo na
+          explanation: "Vedno ko vas nekdo kontaktira na vaši spletni strani, vam Refinery pošlje email obvestilo o novem povpraševanju."
+          hint: "V zgornje polje vnesite email naslov. Želite da obvestila prejme več oseb? Vnesite več email naslovov ločenih z vejicami."
+          example: "Primer: jaz@domena.com, prijatelj@msn.com, sodelavec@work.com"
+        confirmation_email_form:
+          to: Za
+          from: Od
+          subject: Zadeva
+          click_to_edit_subject: Uredi zadevo
+          explanation: "Vedno ko vas nekdo kontaktira na vaši spletni strani mu Refinery pošlje email obvestilo o prejetem povpraševanju."
+          below_edit_email_sent: Spodaj lahko uredite vsebino email sporočila.
+          the_customer_making_<%= singular_name %>: Stranka, ki je poslala povpraševanje
+          message: Sporočilo
+          note: "Opomba: vstavite tekst %name% kjer želite, da se pojavi ime stranke v email sporočilu."
+        subject_form:
+          subject_value_name: Zadeva

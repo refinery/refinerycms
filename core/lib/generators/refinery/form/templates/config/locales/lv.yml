@@ -6,65 +6,65 @@ lv:
     new:
       send: Sūtīt ziņu
       privacy_policy: Mēs cienam Jūsu privātumu
-  admin:
-    <%= plural_name %>:
-      delete: Dzēst šo pieprasījumu
-      <%= singular_name %>:
-        read_<%= singular_name %>: Lasīt pieprasījumu
-        said: sacīja
-        mark_as_spam: Atzīmēt kā spamu
-        mark_as_ham: Pārvietot uz ienākošajiem
-      submenu:
-        inbox: Ienākošie
-        spam: Spams
-        update_notified: Atjaunot paziņojumu saņēmēju
-        edit_confirmation_email: Labot apstiprinājuma epastu
-      index:
-        no_<%= plural_name %>: Nav saņemts neviens pieprasījums.
-      spam:
-        no_spam: Urā! Jums nav neviens pieprasījums, kas būtu spams.
-      show:
-        details: Detaļas
-        age: Vecums
-        actions: Darbības
-        back_to_all_<%= plural_name %>: Atgriezties pie visiem pieprasījumiem
-        spam: Spams
-        spam_yes: jā
-        <%= singular_name %>: <%= class_name.underscore.titleize %>
-        to: Kam
+    admin:
+      <%= plural_name %>:
+        delete: Dzēst šo pieprasījumu
+        <%= singular_name %>:
+          read_<%= singular_name %>: Lasīt pieprasījumu
+          said: sacīja
+          mark_as_spam: Atzīmēt kā spamu
+          mark_as_ham: Pārvietot uz ienākošajiem
+        submenu:
+          inbox: Ienākošie
+          spam: Spams
+          update_notified: Atjaunot paziņojumu saņēmēju
+          edit_confirmation_email: Labot apstiprinājuma epastu
+        index:
+          no_<%= plural_name %>: Nav saņemts neviens pieprasījums.
+        spam:
+          no_spam: Urā! Jums nav neviens pieprasījums, kas būtu spams.
+        show:
+          details: Detaļas
+          age: Vecums
+          actions: Darbības
+          back_to_all_<%= plural_name %>: Atgriezties pie visiem pieprasījumiem
+          spam: Spams
+          spam_yes: jā
+          <%= singular_name %>: <%= class_name.underscore.titleize %>
+          to: Kam
+          from: 'No'
+          click_to_email: Click to email this address
+          phone: Tālrunis
+          date: Datums
+          message: Ziņa
+      settings:
+        notification_recipients_form:
+          <%= singular_name %>_settings_value_name: Sūtīt paziņojumu uz
+          explanation: Katru reizi, kad kāds ar tevi sazinās izmantojot kontaktformu, Refinery nosūta epastu par to, ka ir jauns pieprasījums.
+          hint: Kad tiek iesniegts jauns pieprasījums, tad Refinery nosūtīs paziņojumu uz šo epastu.
+          example: "Ievadi savu epasta(-u) adresi(-es) šādā formātā: janis.ozols@test.lv, juris@test.lv"
+        confirmation_email_form:
+          to: Saņēmējs
+          from: Adresāts
+          subject: Tēma
+          click_to_edit_subject: Spied šeit, lai labotu tēmu
+          explanation: Katru reizi, kad kāds sazinās ar tevi izmantojot kontakformu Refinery nosūta apstiprinājuma epastu personai, kura iesniegusi pieprasījumu.
+          below_edit_email_sent: Zemāk vari labot epasta saturu, kas tiek izsūtīts.
+          the_customer_making_<%= singular_name %>: Klients, kurš izveidoja pieprasījumu
+          message: Ziņa
+          note: "Piezīme: ievieto šo tektstu %name% tur, kur tu epastā vēlies norādīt klienta vārdu"
+    mailer:
+      notification:
+        greeting: Sveicināts(-a)
+        you_recieved_new_<%= singular_name %>: Jūs nupat saņēmāt jaunu piperasījumu Jūsu saitā.
+        <%= singular_name %>_starts: --- pieprasījuma sākums ---
+        <%= singular_name %>_ends: --- pieprasījuma beigas ---
         from: 'No'
-        click_to_email: Click to email this address
+        email: Epasts
         phone: Tālrunis
-        date: Datums
         message: Ziņa
-    <%= singular_name %>_settings:
-      notification_recipients_form:
-        <%= singular_name %>_settings_value_name: Sūtīt paziņojumu uz
-        explanation: Katru reizi, kad kāds ar tevi sazinās izmantojot kontaktformu, Refinery nosūta epastu par to, ka ir jauns pieprasījums.
-        hint: Kad tiek iesniegts jauns pieprasījums, tad Refinery nosūtīs paziņojumu uz šo epastu.
-        example: "Ievadi savu epasta(-u) adresi(-es) šādā formātā: janis.ozols@test.lv, juris@test.lv"
-      confirmation_email_form:
-        to: Saņēmējs
-        from: Adresāts
-        subject: Tēma
-        click_to_edit_subject: Spied šeit, lai labotu tēmu
-        explanation: Katru reizi, kad kāds sazinās ar tevi izmantojot kontakformu Refinery nosūta apstiprinājuma epastu personai, kura iesniegusi pieprasījumu.
-        below_edit_email_sent: Zemāk vari labot epasta saturu, kas tiek izsūtīts.
-        the_customer_making_<%= singular_name %>: Klients, kurš izveidoja pieprasījumu
-        message: Ziņa
-        note: "Piezīme: ievieto šo tektstu %name% tur, kur tu epastā vēlies norādīt klienta vārdu"
-  <%= singular_name %>_mailer:
-    notification:
-      greeting: Sveicināts(-a)
-      you_recieved_new_<%= singular_name %>: Jūs nupat saņēmāt jaunu piperasījumu Jūsu saitā.
-      <%= singular_name %>_starts: --- pieprasījuma sākums ---
-      <%= singular_name %>_ends: --- pieprasījuma beigas ---
-      from: 'No'
-      email: Epasts
-      phone: Tālrunis
-      message: Ziņa
-      closing_line: Ar cieņu
-      ps_html: P.S. Ja vēlaties skatīt šo un citus pieprasījumus vēlāk, tad tos var atrast zem sadaļas "Pieprasījumi".
+        closing_line: Ar cieņu
+        ps_html: P.S. Ja vēlaties skatīt šo un citus pieprasījumus vēlāk, tad tos var atrast zem sadaļas "Pieprasījumi".
   activerecord:
     models:
       <%= singular_name %>: <%= class_name.underscore.titleize %>

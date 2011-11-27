@@ -7,65 +7,65 @@ pt-BR:
     new:
       send: Enviar mensagem
       privacy_policy: "Nós valorizamos sua privacidade"
-  admin:
-    <%= plural_name %>:
-      delete: Remover esta mensagem para sempre
-      <%= singular_name %>:
-        read_<%= singular_name %>: Ler a mensagem
-        said: disse
-        mark_as_spam: Marcar como spam
-        mark_as_ham: Marcar como segura
-      submenu:
-        inbox: Caixa de Entrada
-        spam: Spam
-        update_notified: Atualizar quem recebe a notificação
-        edit_confirmation_email: Editar email de confirmação
-      index:
-        no_<%= plural_name %>: "Não exitem mensagens."
-      spam:
-        no_spam: Não existem mensagens de spam.
-      show:
-        details: Detalhes
-        age: Quando
-        actions: Ações
-        back_to_all_<%= plural_name %>: Voltar para todas as Mensagens
-        spam: Spam
-        spam_yes: 'sim'
-        <%= singular_name %>: <%= class_name.underscore.titleize %>
-        to: Para
+    admin:
+      <%= plural_name %>:
+        delete: Remover esta mensagem para sempre
+        <%= singular_name %>:
+          read_<%= singular_name %>: Ler a mensagem
+          said: disse
+          mark_as_spam: Marcar como spam
+          mark_as_ham: Marcar como segura
+        submenu:
+          inbox: Caixa de Entrada
+          spam: Spam
+          update_notified: Atualizar quem recebe a notificação
+          edit_confirmation_email: Editar email de confirmação
+        index:
+          no_<%= plural_name %>: "Não exitem mensagens."
+        spam:
+          no_spam: Não existem mensagens de spam.
+        show:
+          details: Detalhes
+          age: Quando
+          actions: Ações
+          back_to_all_<%= plural_name %>: Voltar para todas as Mensagens
+          spam: Spam
+          spam_yes: 'sim'
+          <%= singular_name %>: <%= class_name.underscore.titleize %>
+          to: Para
+          from: De
+          click_to_email: Clique para enviar email
+          phone: Telefone
+          date: Data
+          message: Mensagem
+      settings:
+        notification_recipients_form:
+          <%= singular_name %>_settings_value_name: Enviar notificações para
+          explanation: "Toda vez que alguém contactar você no seu website, enviamos um email para notificar a essa pessoa o recebimento de uma mensagem."
+          hint: "Digite um endereço de email acima. Deseja que a notificação vá para mais de uma pessoa? Digite vários endereços de email separados por vírgulas."
+          example: "Digite os endereços da seguinte forma: eu@dominio.com, amigo@msn.com, colegadetrabalho@trabalho.com"
+        confirmation_email_form:
+          to: Para
+          from: De
+          subject: Assunto
+          click_to_edit_subject: Clique aqui para editar o assunto
+          explanation: "Toda vez que alguém contatar você no seu website, enviamos um email para confirmar o recebimento da mensagem para esta pessoa."
+          below_edit_email_sent: Abaixo você pode editar o texto a ser enviado no e-mail.
+          the_customer_making_<%= singular_name %>: O cliente fazendo o contato
+          message: Mensagem
+          note: "Nota: posicione o texto %name% onde você desejar que o nome do cliente apareça no email."
+    mailer:
+      notification:
+        greeting: Olá
+        you_recieved_new_<%= singular_name %>: Você recebeu um novo contato pelo website.
+        <%= singular_name %>_starts: --- começo da mensagem ---
+        <%= singular_name %>_ends: --- fim da mensagem ---
         from: De
-        click_to_email: Clique para enviar email
+        email: Email
         phone: Telefone
-        date: Data
         message: Mensagem
-    <%= singular_name %>_settings:
-      notification_recipients_form:
-        <%= singular_name %>_settings_value_name: Enviar notificações para
-        explanation: "Toda vez que alguém contactar você no seu website, enviamos um email para notificar a essa pessoa o recebimento de uma mensagem."
-        hint: "Digite um endereço de email acima. Deseja que a notificação vá para mais de uma pessoa? Digite vários endereços de email separados por vírgulas."
-        example: "Digite os endereços da seguinte forma: eu@dominio.com, amigo@msn.com, colegadetrabalho@trabalho.com"
-      confirmation_email_form:
-        to: Para
-        from: De
-        subject: Assunto
-        click_to_edit_subject: Clique aqui para editar o assunto
-        explanation: "Toda vez que alguém contatar você no seu website, enviamos um email para confirmar o recebimento da mensagem para esta pessoa."
-        below_edit_email_sent: Abaixo você pode editar o texto a ser enviado no e-mail.
-        the_customer_making_<%= singular_name %>: O cliente fazendo o contato
-        message: Mensagem
-        note: "Nota: posicione o texto %name% onde você desejar que o nome do cliente apareça no email."
-  <%= singular_name %>_mailer:
-    notification:
-      greeting: Olá
-      you_recieved_new_<%= singular_name %>: Você recebeu um novo contato pelo website.
-      <%= singular_name %>_starts: --- começo da mensagem ---
-      <%= singular_name %>_ends: --- fim da mensagem ---
-      from: De
-      email: Email
-      phone: Telefone
-      message: Mensagem
-      closing_line: Atenciosamente
-      ps_html: OBS. Todos os contatos são armazenados na seção "Contatos" do website.
+        closing_line: Atenciosamente
+        ps_html: OBS. Todos os contatos são armazenados na seção "Contatos" do website.
   activerecord:
     models:
       <%= singular_name %>: <%= class_name.underscore.titleize %>

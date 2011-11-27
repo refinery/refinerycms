@@ -7,65 +7,65 @@ fr:
     new:
       send: Envoyer un message
       privacy_policy: Nous respectons votre vie privée
-  admin:
-    <%= plural_name %>:
-      delete: Supprimer définitivement cette requête
-      <%= singular_name %>:
-        read_<%= singular_name %>: Lire la requête
-        said: a dit
-        mark_as_spam: Marquer comme spam
-        mark_as_ham: Déplacer dans la boîte de réception
-      submenu:
-        inbox: Boîte de réception
-        spam: Spam
-        update_notified: Choisir qui reçoit les notifications
-        edit_confirmation_email: Modifier l'e-mail de confirmation
-      index:
-        no_<%= plural_name %>: Vous n'avez reçu aucune requête.
-      spam:
-        no_spam: Vous n'avez aucun spam.
-      show:
-        details: Détails
-        age: Age
-        actions: Actions
-        back_to_all_<%= plural_name %>: Retourner à la liste des requêtes
-        spam: Spam
-        spam_yes: 'oui'
-        <%= singular_name %>: <%= class_name.underscore.titleize %>
-        to: À
+    admin:
+      <%= plural_name %>:
+        delete: Supprimer définitivement cette requête
+        <%= singular_name %>:
+          read_<%= singular_name %>: Lire la requête
+          said: a dit
+          mark_as_spam: Marquer comme spam
+          mark_as_ham: Déplacer dans la boîte de réception
+        submenu:
+          inbox: Boîte de réception
+          spam: Spam
+          update_notified: Choisir qui reçoit les notifications
+          edit_confirmation_email: Modifier l'e-mail de confirmation
+        index:
+          no_<%= plural_name %>: Vous n'avez reçu aucune requête.
+        spam:
+          no_spam: Vous n'avez aucun spam.
+        show:
+          details: Détails
+          age: Age
+          actions: Actions
+          back_to_all_<%= plural_name %>: Retourner à la liste des requêtes
+          spam: Spam
+          spam_yes: 'oui'
+          <%= singular_name %>: <%= class_name.underscore.titleize %>
+          to: À
+          from: De
+          click_to_email: Cliquer ici pour enyoyer un e-mail à cette adresse
+          phone: Téléphone
+          date: Date
+          message: Message
+      settings:
+        notification_recipients_form:
+          <%= singular_name %>_settings_value_name: Envoyer une notification à
+          explanation: Chaque fois qu'une demande de contact est rédigée sur votre site, Refinery envoie un e-mail pour le signaler.
+          hint: Quand une nouvelle requête est soumise, Refinery vous envoie un e-mail d'avertissement.
+          example: "Entrez votre/vos addresse(s) e-mail comme il suit: jack@work.com, jill@office.com"
+        confirmation_email_form:
+          to: À
+          from: De
+          subject: Sujet
+          click_to_edit_subject: Cliquez ici pour modifier le sujet
+          explanation: Chaque fois qu'une demande de contact est rédigée sur votre site, Refinery envoie un e-mail pour le signaler.
+          below_edit_email_sent: Ci-dessous vous pouvez modifier l'e-mail qui sera envoyé.
+          the_customer_making_<%= singular_name %>: Le client à l'origine de la requête
+          message: Message
+          note: "Note: Utilisez %name% à l'endroit où vous souhaitez voir apparaître le nom du client dans l'e-mail"
+    mailer:
+      notification:
+        greeting: Bonjour
+        you_recieved_new_<%= singular_name %>: Vous avez reçu une nouvelle requête sur votre site.
+        <%= singular_name %>_starts: --- Début des requêtes ---
+        <%= singular_name %>_ends: --- Fin des requêtes ---
         from: De
-        click_to_email: Cliquer ici pour enyoyer un e-mail à cette adresse
+        email: E-mail
         phone: Téléphone
-        date: Date
         message: Message
-    <%= singular_name %>_settings:
-      notification_recipients_form:
-        <%= singular_name %>_settings_value_name: Envoyer une notification à
-        explanation: Chaque fois qu'une demande de contact est rédigée sur votre site, Refinery envoie un e-mail pour le signaler.
-        hint: Quand une nouvelle requête est soumise, Refinery vous envoie un e-mail d'avertissement.
-        example: "Entrez votre/vos addresse(s) e-mail comme il suit: jack@work.com, jill@office.com"
-      confirmation_email_form:
-        to: À
-        from: De
-        subject: Sujet
-        click_to_edit_subject: Cliquez ici pour modifier le sujet
-        explanation: Chaque fois qu'une demande de contact est rédigée sur votre site, Refinery envoie un e-mail pour le signaler.
-        below_edit_email_sent: Ci-dessous vous pouvez modifier l'e-mail qui sera envoyé.
-        the_customer_making_<%= singular_name %>: Le client à l'origine de la requête
-        message: Message
-        note: "Note: Utilisez %name% à l'endroit où vous souhaitez voir apparaître le nom du client dans l'e-mail"
-  <%= singular_name %>_mailer:
-    notification:
-      greeting: Bonjour
-      you_recieved_new_<%= singular_name %>: Vous avez reçu une nouvelle requête sur votre site.
-      <%= singular_name %>_starts: --- Début des requêtes ---
-      <%= singular_name %>_ends: --- Fin des requêtes ---
-      from: De
-      email: E-mail
-      phone: Téléphone
-      message: Message
-      closing_line: Cordialement
-      ps_html: P.S. Toutes les requêtes sont stockées dans la section 'Requêtes' afin que vous puissiez les consulter ultérieurement.
+        closing_line: Cordialement
+        ps_html: P.S. Toutes les requêtes sont stockées dans la section 'Requêtes' afin que vous puissiez les consulter ultérieurement.
   activerecord:
     models:
       <%= singular_name %>: <%= class_name.underscore.titleize %>
