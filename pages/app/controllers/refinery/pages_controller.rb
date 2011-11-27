@@ -51,7 +51,7 @@ module Refinery
       end
     end
 
-    alias page find_page
+    alias_method :page, :find_page
 
     def render_with_templates?
       layouts = ::Refinery::Setting.find_or_set(:use_layout_templates, false, :scoping => 'pages')
