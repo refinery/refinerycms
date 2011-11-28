@@ -27,6 +27,12 @@
     <label><%= t('.maximum_image_size', :bytes => ::Refinery::Images.max_image_size) %></label>
   </div>
 
+
+  <div class='field'>
+    <%= f.label :alt %>
+    <%= f.text_field :alt, :class => 'widest' %>
+  </div>
+
   <input type='hidden' name='wymeditor' value='<%= params[:wymeditor] %>'>
 
   <%= render :partial => "/refinery/admin/form_actions",
