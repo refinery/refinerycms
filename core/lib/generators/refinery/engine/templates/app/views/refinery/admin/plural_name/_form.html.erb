@@ -43,7 +43,6 @@
           </div>
         <%% end %>
       </div>
-    </div>
 <% generated_text_areas = true -%>
 <% elsif attribute.field_type.to_s != 'text_area' -%>
     <%%= f.<%= attribute.field_type -%> :<%= attribute.name -%><%= ", :class => 'larger widest'" if (index == 0 && attribute.field_type == :text_field) -%><%= ", :checked => @#{singular_name}[:#{attribute.name}]" if attribute.field_type == :check_box %>  -%>
