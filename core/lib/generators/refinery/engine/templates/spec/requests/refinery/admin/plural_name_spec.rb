@@ -68,7 +68,7 @@ describe Refinery do
           visit refinery_admin_<%= plural_name %>_path
 
           within ".actions" do
-            click_link "Edit this <%= singular_name %>"
+            click_link "Edit this <%= singular_name.titleize.downcase %>"
           end
 
           fill_in "<%= title.name.titleize %>", :with => "A different <%= title.name %>"
