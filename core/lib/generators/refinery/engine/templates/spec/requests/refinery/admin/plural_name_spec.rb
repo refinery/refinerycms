@@ -1,7 +1,7 @@
 require "spec_helper"
 
-describe Refinery
-  describe Admin
+describe Refinery do
+  describe "Admin" do
     describe "<%= plural_name %>" do
       login_refinery_user
 <% if (title = attributes.detect { |a| a.type.to_s == "string" }).present? %>

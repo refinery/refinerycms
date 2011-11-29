@@ -233,8 +233,8 @@ module Refinery
     end
 
     def url_marketable
-      # except(:id) is important to prevent any other params[:id] from interfering with this route.
-      url_normal.merge(:path => nested_url).except(:id)
+      # :id => nil is important to prevent any other params[:id] from interfering with this route.
+      url_normal.merge(:path => nested_url, :id => nil)
     end
 
     def url_normal
@@ -305,6 +305,13 @@ module Refinery
       siblings.reject(&:not_in_menu?)
     end
 
+    def refinery_menu_title
+      self[:page_menu_title].presence ||
+        self[:page_title].presence ||
+        self[:menu_title].presence ||
+        self[:title]
+    end
+
     def to_refinery_menu_item
       {
         :id => id,
@@ -312,7 +319,7 @@ module Refinery
         :menu_match => menu_match,
         :parent_id => parent_id,
         :rgt => rgt,
-        :title => page_menu_title.blank? ? page_title : page_menu_title,
+        :title => refinery_menu_title,
         :type => self.class.name,
         :url => url
       }
