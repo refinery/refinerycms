@@ -13,7 +13,7 @@ module Refinery
     acts_as_indexed :fields => [:title]
 
     # allows Mass-Assignment
-    attr_accessible :id, :image, :image_size
+    attr_accessible :id, :image, :image_size, :alt
 
     delegate :size, :mime_type, :url, :width, :height, :to => :image
 
@@ -94,10 +94,10 @@ module Refinery
       { :width => width.to_i, :height => height.to_i }
     end
 
-    # Returns a titleized version of the filename
-    # my_file.jpg returns My File
+    # If the image has alt text, return that. Otherwise, return a titleized
+    # version of the filename, ie, my_file.jpg returns My File
     def title
-      CGI::unescape(image_name.to_s).gsub(/\.\w+$/, '').titleize
+      alt.presence || CGI::unescape(image_name.to_s).gsub(/\.\w+$/, '').titleize
     end
 
   end

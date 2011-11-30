@@ -42,3 +42,6 @@ en:
           blank: You must specify an image for upload
           too_big: Image should be smaller than %{size} bytes in size
           incorrect_format: 'Your image must be either a JPG, PNG or GIF'
+    attributes:
+      refinery/image:
+        alt: "Alt Text"

@@ -40,8 +40,24 @@ module Refinery
     end
 
     describe "#title" do
-      it "returns a titleized version of the filename" do
-        image.title.should == "Beach"
+      context "with alt text" do
+        before do
+          image.alt = "Alt text"
+        end
+
+        it "returns the alt text" do
+          image.title.should == "Alt text"
+        end
+      end
+
+      context "with no alt text" do
+        before do
+          image.alt = ""
+        end
+
+        it "returns a titleized version of the filename" do
+          image.title.should == "Beach"
+        end
       end
     end
 
