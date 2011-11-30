@@ -5,19 +5,28 @@ rake 'railties:install:migrations'
 rake 'db:migrate'
 
 append_file 'Gemfile' do
-" #  group :development, :test do
-  #    gem 'refinerycms-testing', '~> 2.0'
-  #  end
+" 
+#  group :development, :test do
+#    gem 'refinerycms-testing', '~> 2.0'
+#  end
 
-  #   USER DEFINED
+group :development do
+  gem 'rails-dev-tweaks', '~> 0.5.0'
+end
 
-  # Specify additional Refinery CMS Engines here (all optional):
-  #  gem 'refinerycms-blog', :git => 'git://github.com/resolve/refinerycms-blog.git', :branch => 'rails-3-1'
-  #  gem 'refinerycms-inquiries', :git => 'git://github.com/resolve/refinerycms-inquiries.git', :branch => 'rails-3-1'
-  #  gem 'refinerycms-search', :git => 'git://github.com/resolve/refinerycms-search.git', :branch => 'rails-3-1'
-  #  gem 'refinerycms-page-images', :git => 'git://github.com/resolve/refinerycms-page-images.git', :branch => 'rails-3-1'
+# USER DEFINED
 
-  #  END USER DEFINED"
+# Add i18n support (optional, you can remove this if you really want to but it is advised to keep it).
+gem 'refinerycms-i18n',   '~> 2.0.0', :git => 'git://github.com/parndt/refinerycms-i18n.git'
+
+# Specify additional Refinery CMS Engines here (all optional):
+#  gem 'refinerycms-blog', :git => 'git://github.com/resolve/refinerycms-blog.git', :branch => 'rails-3-1'
+#  gem 'refinerycms-inquiries', :git => 'git://github.com/resolve/refinerycms-inquiries.git', :branch => 'rails-3-1'
+#  gem 'refinerycms-search', :git => 'git://github.com/resolve/refinerycms-search.git', :branch => 'rails-3-1'
+#  gem 'refinerycms-page-images', :git => 'git://github.com/resolve/refinerycms-page-images.git', :branch => 'rails-3-1'
+
+# END USER DEFINED
+"
 end
 
 remove_file 'public/index.html'
