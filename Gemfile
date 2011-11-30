@@ -16,6 +16,8 @@ if defined? JRUBY_VERSION
   gem 'activerecord-jdbcsqlite3-adapter',
       :git => 'git://github.com/nicksieger/activerecord-jdbc-adapter.git'
   gem 'jruby-openssl'
+  gem 'database_cleaner', :git => 'git://github.com/dnagir/database_cleaner.git',
+                          :branch => 'postgre_jruby_issue'
 else
   gem 'sqlite3'
   gem 'mysql2'
