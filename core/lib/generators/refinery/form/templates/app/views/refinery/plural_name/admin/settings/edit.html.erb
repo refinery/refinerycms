@@ -1,0 +1,5 @@
+<%% if @refinery_setting.name.to_s.titleize =~ /R|recipients$/ %>
+  <%%= render :partial => "notification_recipients_form", :locals => {:edit => true} -%>
+<%% else %>
+  <%%= render :partial => "confirmation_email_form", :locals => {:edit => true} -%>
+<%% end %>

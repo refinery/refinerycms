@@ -9,6 +9,8 @@ module Refinery
 
       initializer "register refinerycms_<%= plural_name %> plugin" do |app|
         Refinery::Plugin.register do |plugin|
+          plugin.name = "<%= class_name.pluralize.underscore.downcase %>"
+          plugin.url = {:controller => '/refinery/<%= plural_name %>'}
           plugin.pathname = root
           plugin.name = '<%= class_name.pluralize.underscore.downcase %>'
           plugin.url = '/refinery/<%= plural_name %>'

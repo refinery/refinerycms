@@ -1,0 +1,24 @@
+<%%= form_for([:admin, @refinery_setting], :url => (@url_override || @url)) do |f| %>
+
+  <div class='field'>
+    <span class='label_with_help'>
+      <%%= f.label :value, t('.<%= singular_name %>_settings_value_name') %>
+    </span>
+    <%%= f.text_field :value, :class => "larger widest" %>
+  </div>
+
+  <p>
+    <%%= t('.hint') %>
+  </p>
+  <p>
+    <%%= t('.example') %>
+  </p>
+
+  <%%= render :partial => "/shared/admin/form_actions",
+             :locals => {
+               :f => f,
+               :continue_editing => false,
+               :cancel_url => admin_<%= plural_name %>_url,
+               :hide_delete => true
+             } %>
+<%% end %>

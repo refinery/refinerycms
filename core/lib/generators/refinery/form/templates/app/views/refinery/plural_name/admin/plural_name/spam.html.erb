@@ -1,0 +1,26 @@
+<%%= render :partial => "submenu" %>
+<div id='records'>
+  <%% if searching? %>
+    <h2><%%= t('shared.admin.search.results_for', :query => params[:search]) %></h2>
+    <%% if @<%%= plural_name %>.any? %>
+      <ul>
+        <%%= render :partial => "<%= singular_name %>", :collection => @<%%= plural_name %> %>
+      </ul>
+    <%% else %>
+      <p><%%= t('shared.admin.search.no_results') %></p>
+    <%% end %>
+  <%% else %>
+    <%% if @grouped_<%%= plural_name %>.any? -%>
+      <%% @grouped_<%%= plural_name %>.each do |container| %>
+        <h3><%%= l((<%= singular_name %>_group = container.last).first.created_at) %></h3>
+        <ul>
+          <%%= render :partial => '<%= singular_name %>', :collection => <%= singular_name %>_group %>
+        </ul>
+      <%% end %>
+    <%% else -%>
+      <p>
+        <strong><%%= t('.no_spam') %></strong>
+      </p>
+    <%% end -%>
+  <%% end %>
+</div>

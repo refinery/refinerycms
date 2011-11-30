@@ -1,0 +1,77 @@
+nb:
+  plugins:
+    <%= class_name.pluralize.underscore.downcase %>:
+      title: <%= plural_name.titleize %>
+  activerecord:
+    models:
+      <%= singular_name %>: <%= class_name.underscore.titleize %>
+      <%= singular_name %>_setting: Innstillinger for Forespørsler
+    attributes:
+      <%= singular_name %>:
+        to: Til
+        from: Fra
+        click_to_email: Trykk for å sende en e-post til denne adressen
+        phone: Telefon
+        date: Dato
+        message: Melding
+  <%= plural_name %>:
+    new:
+      header_message: "Ooops, det oppsto et lite problem"
+      message: "Følgende problemer må løses:"
+      send: Send melding
+      privacy_policy: "Vi respekterer ditt privatliv"
+    admin:
+      <%= plural_name %>:
+        <%= singular_name %>:
+          move_<%= singular_name %>_to_closed: Flytt denne forespørselen til lukket
+          move_<%= singular_name %>_to_open: Flytt denne forespørselen til åpen
+          read_<%= singular_name %>: Les forespørselen
+          remove_<%= singular_name %>: "Er du sikker på at du ønsker å slette denne forespørselen fra '%{name}'?"
+          title: <%= plural_name.titleize %>
+          said: sa
+          mark_as_spam: Merk som søppel
+          mark_as_ham: Flytt til innboksen
+        toggle_status:
+          closed: "Forespørselen '%{<%= singular_name %>}' er lukket"
+          reopened: "Forespørselen '%{<%= singular_name %>}' er gjenåpnet"
+        submenu:
+          update_notified: Oppdater hvem som blir informert
+          edit_confirmation_email: Rediger bekreftelses e-posten
+        index:
+          search_results_for: Søkeresultater for %{query}
+          no_<%= plural_name %>: Du har ikke mottatt noen forespørsler enda.
+        spam:
+          no_spam: Hurra! Du har ikke noen søppelpost.
+        show:
+          details: Detaljer
+          click_to_email: Trykk for å sende e-post
+          status: Status
+          open: Åpen
+          closed: Lukket
+          age: Alder
+          actions: Handlinger
+          back_to_all_<%= plural_name %>: Tilbake til alle forespørslene
+          spam: Søppel
+          spam_yes: 'ja'
+          <%= singular_name %>: <%= class_name.underscore.titleize %>
+          title: <%= plural_name.titleize %>
+      settings:
+        update:
+          updated: "'%{setting}' ble endret."
+        notification_recipients_form:
+          <%= singular_name %>_settings_value_name: Send oppdateringer til
+          explanation: "Hver gang noen kontakter deg på websiden din, så vil Refinery sende ut en e-post for å si ifra at det er ny forespørsel."
+          hint: "Når en ny forespørsel er lagt inn, så vil Refinery sende deg en e-post for å si i fra."
+          example: "Legg inn din(e) e-post adresse(r) slik: jack@jobb.no, jill@kontoret.no"
+        confirmation_email_form:
+          to: Til
+          from: Fra
+          subject: Emne
+          click_to_edit_subject: Trykk her for å redigere emnet
+          explanation: "Hver gang noen sender inn en forespørsel gjennom din webside, så sender Refinery en e-post til personen som la inn forespørselen for å bekrefte at forespørselen er mottatt."
+          below_edit_email_sent: Du kan redigere e-posten som blir sendt ut nedenfor.
+          the_customer_making_<%= singular_name %>: Kunden som skrev forespørselen
+          message: Melding
+          note: "Merk: plasser teksten %name% der du ønsker at kundens navn skal vises i e-posten"
+        subject_form:
+          subject_value_name: Enme
