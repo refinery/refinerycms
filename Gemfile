@@ -12,7 +12,7 @@ gemspec
 # REFINERY CMS DEVELOPMENT ====================================================
 
 # Database Configuration
-platform :jruby do
+platforms :jruby do
   gem 'activerecord-jdbcsqlite3-adapter'
   gem 'jruby-openssl'
   gem 'database_cleaner', :git => 'git://github.com/dnagir/database_cleaner.git',
