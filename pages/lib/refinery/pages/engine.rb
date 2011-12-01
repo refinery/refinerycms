@@ -12,7 +12,7 @@ module Refinery
       config.autoload_paths += %W( #{config.root}/lib )
 
       config.to_prepare do |app|
-        Refinery::Page.translation_class.send(:is_seo_meta) unless $rake_assets_precompiling
+        Refinery::Page.translation_class.send(:is_seo_meta) unless ENV['RAILS_ASSETS_PRECOMPILE']
         Refinery::Page.translation_class.send(:attr_accessible, :browser_title, :meta_description, :meta_keywords, :locale)
       end
 
@@ -48,9 +48,9 @@ module Refinery
 
       initializer "add marketable route parts to reserved words" do |app|
         if Refinery::Pages.use_marketable_urls?
-          # $rake_assets_precompiling is a temporary hack to avoid initializing the database during
+          # ENV['RAILS_ASSETS_PRECOMPILE'] is a temporary hack to avoid initializing the database during
           # assets precompile for issue https://github.com/resolve/refinerycms/issues/1059
-          add_route_parts_as_reserved_words(app) unless $rake_assets_precompiling
+          add_route_parts_as_reserved_words(app) unless ENV['RAILS_ASSETS_PRECOMPILE']
         end
       end
 

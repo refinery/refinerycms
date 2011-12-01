@@ -24,7 +24,7 @@ module Refinery
 
     # Docs for acts_as_nested_set https://github.com/collectiveidea/awesome_nested_set
     # rather than :delete_all we want :destroy
-    unless $rake_assets_precompiling
+    unless ENV['RAILS_ASSETS_PRECOMPILE']
       acts_as_nested_set :dependent => :destroy
 
       # Docs for friendly_id http://github.com/norman/friendly_id
