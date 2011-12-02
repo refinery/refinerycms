@@ -15,8 +15,6 @@ gemspec
 platforms :jruby do
   gem 'activerecord-jdbcsqlite3-adapter'
   gem 'jruby-openssl'
-  gem 'database_cleaner', :git => 'git://github.com/dnagir/database_cleaner.git',
-                          :branch => 'postgre_jruby_issue'
 end
 
 unless defined?(JRUBY_VERSION)
