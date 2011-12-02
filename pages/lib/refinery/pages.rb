@@ -13,26 +13,17 @@ module Refinery
 
     autoload :InstanceMethods, 'refinery/pages/instance_methods'
 
+    include ActiveSupport::Configurable
+
+    config_accessor :pages_per_dialog, :pages_per_admin_index
+
     DEFAULT_PAGES_PER_DIALOG = 14
     DEFAULT_PAGES_PER_ADMIN_INDEX = 20
 
-    mattr_accessor :pages_per_dialog
     self.pages_per_dialog = DEFAULT_PAGES_PER_DIALOG
-
-    mattr_accessor :pages_per_admin_index
     self.pages_per_admin_index = DEFAULT_PAGES_PER_ADMIN_INDEX
 
     class << self
-      # Configure the options of Refinery::Pages.
-      #
-      #   Refinery::Pages.configure do |config|
-      #     config.pages_per_dialog = 27
-      #   end
-      #
-      def configure(&block)
-        yield Refinery::Pages
-      end
-
       # Reset Refinery::Pages options to their default values
       #
       def reset!

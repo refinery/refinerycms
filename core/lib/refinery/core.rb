@@ -171,30 +171,19 @@ module Refinery
   module Core
     require 'refinery/core/engine' if defined?(Rails)
 
+    include ActiveSupport::Configurable
+
+    config_accessor :s3_backend, :rescue_not_found, :base_cache_key
+
     DEFAULT_RESCUE_NOT_FOUND = false
     DEFAULT_S3_BACKEND = false
     DEFAULT_BASE_CACHE_KEY = :refinery
 
-    mattr_accessor :rescue_not_found
     self.rescue_not_found = DEFAULT_RESCUE_NOT_FOUND
-
-    mattr_accessor :s3_backend
     self.s3_backend = DEFAULT_S3_BACKEND
-
-    mattr_accessor :base_cache_key
     self.base_cache_key = DEFAULT_BASE_CACHE_KEY
 
     class << self
-      # Configure the options of Refinery::Core.
-      #
-      #   Refinery::Core.configure do |config|
-      #     config.rescue_not_found = false
-      #   end
-      #
-      def configure(&block)
-        yield Refinery::Core
-      end
-
       # Reset Refinery::Core options to their default values
       #
       def reset!

@@ -11,30 +11,19 @@ module Refinery
     autoload :Dragonfly, 'refinery/resources/dragonfly'
     autoload :Validators, 'refinery/resources/validators'
 
+    include ActiveSupport::Configurable
+
+    config_accessor :max_file_size, :pages_per_dialog, :pages_per_admin_index
+
     DEFAULT_MAX_FILE_SIZE = 52428800
     DEFAULT_PAGES_PER_DIALOG = 12
     DEFAULT_PAGES_PER_ADMIN_INDEX = 20
 
-    mattr_accessor :max_file_size
     self.max_file_size = DEFAULT_MAX_FILE_SIZE
-
-    mattr_accessor :pages_per_dialog
     self.pages_per_dialog = DEFAULT_PAGES_PER_DIALOG
-
-    mattr_accessor :pages_per_admin_index
     self.pages_per_admin_index = DEFAULT_PAGES_PER_ADMIN_INDEX
 
     class << self
-      # Configure the options of Refinery::Resources.
-      #
-      #   Refinery::Resources.configure do |config|
-      #     config.max_file_size = 8201984
-      #   end
-      #
-      def configure(&block)
-        yield Refinery::Resources
-      end
-
       # Reset Refinery::Resources options to their default values
       #
       def reset!
