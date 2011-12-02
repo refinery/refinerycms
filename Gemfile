@@ -27,9 +27,9 @@ end
 
 group :development do
   gem 'rails-dev-tweaks', '~> 0.5.0'
+  # see https://github.com/wavii/rails-dev-tweaks/issues/3
+  gem 'routing-filter', :git => 'git://github.com/nevir/routing-filter.git'
 end
-# see https://github.com/wavii/rails-dev-tweaks/issues/3
-gem 'routing-filter', :git => "https://github.com/nevir/routing-filter"
 
 group :development, :test do
   gem 'refinerycms-testing', '~> 2.0.0'
