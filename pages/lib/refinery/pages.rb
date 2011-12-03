@@ -15,39 +15,32 @@ module Refinery
 
     include ActiveSupport::Configurable
 
-    config_accessor :pages_per_dialog, :pages_per_admin_index
-
-    DEFAULT_PAGES_PER_DIALOG = 14
-    DEFAULT_PAGES_PER_ADMIN_INDEX = 20
-
-    self.pages_per_dialog = DEFAULT_PAGES_PER_DIALOG
-    self.pages_per_admin_index = DEFAULT_PAGES_PER_ADMIN_INDEX
+    # Define configurable settings along with their default values.
+    (DEFAULTS = {
+      :pages_per_dialog => 14,
+      :pages_per_admin_index => 20,
+      :new_page_parts => false,
+      :marketable_urls => true
+    }).each { |name, value| config_accessor name } unless defined?(DEFAULTS)
 
     class << self
       # Reset Refinery::Pages options to their default values
-      #
       def reset!
-        self.pages_per_dialog = DEFAULT_PAGES_PER_DIALOG
-        self.pages_per_admin_index = DEFAULT_PAGES_PER_ADMIN_INDEX
+        DEFAULTS.each do |name, value|
+          self.send :"#{name}=", value
+        end
       end
 
       def root
         @root ||= Pathname.new(File.expand_path('../../../', __FILE__))
       end
 
-      # You need to restart the server after changing this setting.
-      def use_marketable_urls?
-        ::Refinery::Setting.find_or_set(:use_marketable_urls, true, :scoping => 'pages')
-      end
-
-      def use_marketable_urls=(value)
-        ::Refinery::Setting.set(:use_marketable_urls, :value => value, :scoping => 'pages')
-      end
-
       def factory_paths
-        @factory_paths ||= [ root.join("spec/factories").to_s ]
+        @factory_paths ||= [ root.join('spec', 'factories').to_s ]
       end
     end
+
+    reset!
 
     module Admin
       autoload :InstanceMethods, 'refinery/pages/admin/instance_methods'

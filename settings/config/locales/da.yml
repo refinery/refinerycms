@@ -27,7 +27,7 @@ da:
             preferred_image_view: Standard billedvisning, 'gittervisning' eller 'listevisning'. Dette kan også ændres under fanebladet 'Billeder'.
             show_contact_privacy_link: Vis link til privatlivspolitik på kontaktformularen.
             site_name: Navn på websitet.
-            use_marketable_urls: Benyt URLer som /about i stedet for /pages/about og håndtér automatisk sammenfald med URLer fra andre plugins.
+            marketable_urls: Benyt URLer som /about i stedet for /pages/about og håndtér automatisk sammenfald med URLer fra andre plugins.
             approximate_ascii: Sæt til 'true', hvis du vil konvertere karakterer som ā, č og ž til a, c og z i side-URLer.
   activerecord:
     models:

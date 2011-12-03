@@ -27,7 +27,7 @@ vi:
             preferred_image_view: Thiết lập này điều khiển các trang mà các plugin về hình ảnh có thể hiển thị hình ảnh hiện có - dạng lưới cho 'Grid View" và dạng danh sách cho "List View". Có một nút để tự động hóa quá trình này trên những hình ảnh plugin chính nó.
             show_contact_privacy_link: Bạn có thể ẩn hoặc hiển thị các liên kết đến trang privacy policy trên các form liên lạc bằng nút Submit.
             site_name: "Đây là tên trang web của bạn và sẽ hiển thị trong phần đầu, trong trang admin của Refinery và trong phần bản quyền ở phần footer cho một số theme."
-            use_marketable_urls: Thay đổi url từ /pages/about thành /about và tự động quản lý xung đột với các plugin khác.
+            marketable_urls: Thay đổi url từ /pages/about thành /about và tự động quản lý xung đột với các plugin khác.
             approximate_ascii: "Thiết lập này cho đúng nếu bạn sử dụng ký tự Latin với dấu và bỏ dấu trong tiêu đề của trang. Nó sẽ chuyển đổi các ký tự như ā, č, ž into a, c, z và bằng cách này những ký tự sẽ không xuất hiện kỳ lạ trong thanh địa chỉ của một số trình duyệt web."
   activerecord:
     models:

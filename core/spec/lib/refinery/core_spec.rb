@@ -151,11 +151,11 @@ module Refinery
 
     describe ".reset!" do
       it "should set rescue_not_found back to the default value" do
-        subject.rescue_not_found.should == subject::DEFAULT_RESCUE_NOT_FOUND
-        subject.rescue_not_found = !subject::DEFAULT_RESCUE_NOT_FOUND
-        subject.rescue_not_found.should_not == subject::DEFAULT_RESCUE_NOT_FOUND
+        subject.rescue_not_found.should == subject::DEFAULTS[:rescue_not_found]
+        subject.rescue_not_found = !subject::DEFAULTS[:rescue_not_found]
+        subject.rescue_not_found.should_not == subject::DEFAULTS[:rescue_not_found]
         subject.reset!
-        subject.rescue_not_found.should == subject::DEFAULT_RESCUE_NOT_FOUND
+        subject.rescue_not_found.should == subject::DEFAULTS[:rescue_not_found]
       end
     end
   end

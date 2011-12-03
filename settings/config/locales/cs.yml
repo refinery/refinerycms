@@ -27,7 +27,7 @@ cs:
             preferred_image_view: Nastavuje preferovaný pohled na existující obrázky. Zvolte grid pro zobrazení mřížky nebo list pro zobrazení seznamu. Nastavení se dá přepínat tlačítkem i v samotném pohledu.
             show_contact_privacy_link: Můžete zobrazit či srýt odkaz na stránku 'zásady ochrany osobních údajů' u kontaktnícho formuláře vedle tlačítka 'Odeslat'.
             site_name: Název vašeho webu, který se zobrazuje v hlavičce stránky, v adminstraci a někdy (podle vzhledu) se používá i v patičce.
-            use_marketable_urls: Změní adresy URL z /pages/about na /about a automaticky opraví konflikty s ostaními pluginy.
+            marketable_urls: Změní adresy URL z /pages/about na /about a automaticky opraví konflikty s ostaními pluginy.
   activerecord:
     models:
       refinery/setting: nastavení

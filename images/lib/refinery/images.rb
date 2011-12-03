@@ -13,6 +13,9 @@ module Refinery
 
     include ActiveSupport::Configurable
 
+    (DEFAULTS = {
+
+    }).each {|name, value| config_accessor name}
     config_accessor :max_image_size, :pages_per_dialog, :pages_per_admin_index,
                     :pages_per_dialog_that_have_size_options
 
@@ -30,6 +33,10 @@ module Refinery
       # Reset Refinery::Images options to their default values
       #
       def reset!
+        DEFAULTS.each do |name, value|
+          self.send :"#{name}=", value
+        end
+        
         self.max_image_size = DEFAULT_MAX_IMAGE_SIZE
         self.pages_per_dialog = DEFAULT_PAGES_PER_DIALOG
         self.pages_per_dialog_that_have_size_options = DEFAULT_PAGES_PER_DIALOG_THAT_HAVE_SIZE_OPTIONS
@@ -44,5 +51,7 @@ module Refinery
         @factory_paths ||= [ root.join("spec/factories").to_s ]
       end
     end
+
+    reset!
   end
 end

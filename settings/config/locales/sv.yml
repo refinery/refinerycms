@@ -27,7 +27,7 @@ sv:
             preferred_image_view: Den här styr vilken vy tillägsprogrammet för bilder väljer att visa bilder i. 'Grid View' för rutnät eller 'List View' för lista. Det finns en knapp för att automatisera denna process i tillägsprogrammet.
             show_contact_privacy_link: Du kan välja att visa eller dölja Registerbeskrivning (privacy policy) bredvid skicka knappen.
             site_name: Det här är webbplatsens namn och den kommer visas i huvudrubryken, Refinery och i foten på hemsidan.
-            use_marketable_urls: Ändra URLer från /pages/about till /about och hantera automatiskt konflikter med andra plugin
+            marketable_urls: Ändra URLer från /pages/about till /about och hantera automatiskt konflikter med andra plugin
   activerecord:
     models:
       refinery/setting: inställning

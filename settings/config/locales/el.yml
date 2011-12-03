@@ -27,7 +27,7 @@ el:
             preferred_image_view: This controls which view the images plugin displays existing images in - grid for 'Grid View' and list for 'List View'. There is a button to automate this process on the images plugin itself.
             show_contact_privacy_link: You can hide or show the link to the privacy policy page on the contact form by the submit button.
             site_name: This is the name for your website and will display in the header and in the Refinery backend and in the footer copyright statement for some themes.
-            use_marketable_urls: Change urls from /pages/about to /about and automatically manage conflicts with other plugins.
+            marketable_urls: Change urls from /pages/about to /about and automatically manage conflicts with other plugins.
             approximate_ascii: Set this to true if you use Latin characters with accents and other diacritics in page titles. It'll convert characters like ā, č, ž into a, c, z and this way those characters won't appear strangely in the address bar of some web browsers.
   activerecord:
     models:

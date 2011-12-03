@@ -27,7 +27,7 @@ zh-TW:
             preferred_image_view: 這可控制圖片插件如何呈現目前這些已存在網站上的圖片 - grid 表示 '格狀模式' 以及 list 表示 '列表模式'. 圖片插件本身提供一個按鈕可以自動切換這些模式.
             show_contact_privacy_link: 您可以隱藏或是顯示在聯絡人表單確認按鈕旁的隱私條款頁面連結.
             site_name: 這是您的網站名稱, 它將會顯示在網站標題, Refinery 的後台管理系統, 以及部份有頁尾版權宣告的佈景主題中.
-            use_marketable_urls: 將網址從 /pages/about 改變為 /about 並且自動處理與其他插件的衝突.
+            marketable_urls: 將網址從 /pages/about 改變為 /about 並且自動處理與其他插件的衝突.
             approximate_ascii: 如果您使用帶有口音或是變音符號的拉丁字母請設定為 true. 它會將像是 ā, č, ž 的字母轉為 a, c, z , 在某些網頁瀏覽器中, 這些字母就不會奇怪地出現在網址列上.
   activerecord:
     models:

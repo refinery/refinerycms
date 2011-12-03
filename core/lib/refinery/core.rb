@@ -149,9 +149,7 @@ module Refinery
     #   Refinery.roots(:'refinery/core')  =>  #<Pathname:/Users/Reset/Code/refinerycms/core>
     #   Refinery.roots("refinery/core")   =>  #<Pathname:/Users/Reset/Code/refinerycms/core>
     def roots(engine_name = nil)
-      if engine_name.nil?
-        return @roots ||= self.engines.map { |engine| engine.root }
-      end
+      return @roots ||= self.engines.map { |engine| engine.root } if engine_name.nil?
 
       engine_name.to_s.camelize.constantize.root
     end
@@ -173,28 +171,25 @@ module Refinery
 
     include ActiveSupport::Configurable
 
-    config_accessor :s3_backend, :rescue_not_found, :base_cache_key
-
-    DEFAULT_RESCUE_NOT_FOUND = false
-    DEFAULT_S3_BACKEND = false
-    DEFAULT_BASE_CACHE_KEY = :refinery
-
-    self.rescue_not_found = DEFAULT_RESCUE_NOT_FOUND
-    self.s3_backend = DEFAULT_S3_BACKEND
-    self.base_cache_key = DEFAULT_BASE_CACHE_KEY
+    (DEFAULTS = {
+      :rescue_not_found => false,
+      :s3_backend => false,
+      :base_cache_key => :refinery
+    }).each {|name, value| config_accessor name} unless defined?(DEFAULTS)
 
     class << self
       # Reset Refinery::Core options to their default values
-      #
       def reset!
-        self.rescue_not_found = DEFAULT_RESCUE_NOT_FOUND
-        self.s3_backend = DEFAULT_S3_BACKEND
-        self.base_cache_key = DEFAULT_BASE_CACHE_KEY
+        DEFAULTS.each do |name, value|
+          self.send :"#{name}=", value
+        end
       end
 
       def root
         @root ||= Pathname.new(File.expand_path('../../../', __FILE__))
       end
     end
+
+    reset!
   end
 end

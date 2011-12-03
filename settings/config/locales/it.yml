@@ -27,4 +27,4 @@ it:
             preferred_image_view: "Questa opzione permette di impostare la visualizzazione di default nella sezione della gestione immagini (griglia per la visualizzazione 'Griglia' e lista per la visualizzazione 'Lista'). C'è un bottone per automatizzare questo processo nell'area della gestione immagini."
             show_contact_privacy_link: È possibile nascondere o mostrare il collegamento alla pagina informativa sulla privacy nel modulo di contatto con il bottone di invio.
             site_name: "Questo è il nome dato al tuo sito e verrà visualizzato nell'intestazione, nel backend di Refinery e nella dichiarazione dei copyright visualizzati nel footer di alcuni temi."
-            use_marketable_urls: "Modifica l'url da /pages/about ad /about e automaticamente gestisce i conflitti con altri plugin."
+            marketable_urls: "Modifica l'url da /pages/about ad /about e automaticamente gestisce i conflitti con altri plugin."

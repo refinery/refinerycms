@@ -23,7 +23,7 @@ module Refinery
 
     describe 'when marketable urls are' do
       describe 'enabled' do
-        before { ::Refinery::Pages.stub(:use_marketable_urls?).and_return(true) }
+        before { ::Refinery::Pages.stub(:marketable_urls).and_return(true) }
 
         it 'shows the homepage' do
           visit '/'
@@ -39,7 +39,7 @@ module Refinery
       end
 
       describe 'disabled' do
-        before { ::Refinery::Pages.stub(:use_marketable_urls?).and_return(false) }
+        before { ::Refinery::Pages.stub(:marketable_urls).and_return(false) }
 
         it 'shows the homepage' do
           visit '/'

@@ -27,7 +27,7 @@ zh-CN:
             preferred_image_view: 这可控制图片插件如何呈现目前这些已存在网站上的图片 - grid 表示 '网格模式' 以及 list 表示 '列表模式'. 图片插件本身提供一个按钮可以自动切换这些模式.
             show_contact_privacy_link: 您可以隐藏或是显示在联络人表单确认按钮旁的隐私条款页面链接.
             site_name: 这是您的网站名称, 它将会显示在网站标题, Refinery 的后台管理系统, 以及部份有页尾版权宣告的布景主题中.
-            use_marketable_urls: 将网址从 /pages/about 改变为 /about 并且自动处理与其他插件的冲突.
+            marketable_urls: 将网址从 /pages/about 改变为 /about 并且自动处理与其他插件的冲突.
             approximate_ascii: 如果您使用带有口音或是变音符号的拉丁字母请设定为 true. 它会将像是 ā, č, ž 的字母转为 a, c, z , 在某些网页浏览器中, 这些字母就不会奇怪地出现在网址列上.
   activerecord:
     models:

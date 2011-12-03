@@ -1,4 +1,4 @@
-<% if ::Refinery::Setting.find_or_set(:new_page_parts, false) %>
+<% if ::Refinery::Pages.new_page_parts %>
   <ul id="page_parts_controls">
     <li>
       <%= link_to refinery_icon_tag('add.png'), '#',
@@ -35,7 +35,7 @@
                  :locals => {
                    :part => p.object,
                    :part_index => (part_index += 1),
-                   :new_part => !@page.persisted?
+                   :new_part => @page.new_record?
                  } -%>
     <% end %>
     <% ::Refinery::Pages.tabs.each_with_index do |tab, tab_index| %>

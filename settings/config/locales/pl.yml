@@ -28,7 +28,7 @@ pl:
             preferred_image_view: To ustawienie określa w jakim widoku wtyczka obrazów wyświetla istniejące obrazy - grid dla widoku siatki, list dla listy. We wtyczce obrazy znajduje się przycisk automatyzujący tę zmianę.
             show_contact_privacy_link: Pokaż lub ukryj link do polityki bezpieczeństwa na stronie kontaktowej.
             site_name: Nazwa witryny, widoczna w nagłówku i stopce.
-            use_marketable_urls: Zmień adresy url z /pages/about na /about, i automatycznie zarządzaj konfliktami z innymi wtyczkami.
+            marketable_urls: Zmień adresy url z /pages/about na /about, i automatycznie zarządzaj konfliktami z innymi wtyczkami.
   activerecord:
     models:
       refinery/setting: ustawienie

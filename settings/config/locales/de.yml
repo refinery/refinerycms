@@ -27,7 +27,7 @@ de:
             preferred_image_view: Dies legt fest, welche Ansicht des Bilder-Erweiterung für vorhandene Bilder verwendet werden soll - "grid" für eine Gitter-Ansicht und "list" für eine Listen-Ansicht. Es gibt einen Knopf in der Erweiterung selbst, um diesen Vorgang zu automatisieren.
             show_contact_privacy_link: Sie können den Link zu den Datenschutzbestimmungen beim Kontaktformular verstecken oder beim Absenden-Knopf anzeigen lassen.
             site_name: Dies ist der Name Ihrer Webseite, der im Kopfbereich, im Administrationsbereich und bei manchen Themen im Fußbereich beim Copyright angezeigt wird.
-            use_marketable_urls: Ändert Urls von /pages/about auf /about und behebt automatisch Konflikte mit anderen Erweiterungen.
+            marketable_urls: Ändert Urls von /pages/about auf /about und behebt automatisch Konflikte mit anderen Erweiterungen.
             approximate_ascii: Setzen Sie dies auf wahr, wenn Sie lateinische Zeichen mit Akzenten oder anderen diakritischen Zeichen in Seitentiteln verwenden. Es wird Zeichen wie ā, č, ž in a, c, z konvertieren und dadurch werden diese in der Adresszeile mancher Browser nicht seltsam angezeigt.
             cache_pages_full: Aktiviert den Full-Page-Cache. Damit können die Seiten mit einer .htaccess-Rewrite-Regel vom Apache oder Nginx ausgeliefert werden.
   activerecord:
