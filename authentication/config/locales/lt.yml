@@ -24,7 +24,6 @@ lt:
         sign_in: Prisijungti
         forgot_password: Aš pamiršau slaptažodį
     users:
-      setup_website_name_html: "Pirmiausiai nurodykime svetainės pavadinimą. <a href='%{link}' name='%{title}'>Eikite čia</a> norėdami pakeisti svetainės pavadinimą"
       new:
         fill_form: 'Įveskite savo informaciją, kad galėtume pradėti.'
         sign_up: Registruotis

@@ -26,7 +26,6 @@ vi:
         sign_in: Đăng nhập
         forgot_password: Quên mật khẩu
     users:
-      setup_website_name_html: "Xin vui lòng đặt tên cho trang web. <a href='%{link}' name='%{title}'>Nhấn vào đây</a> để chỉnh sửa tên trang web cuả bạn."
       new:
         fill_form: Điền thông tin chi tiết cuả bạn để có thể bắt đầu.
         sign_up: Đăng ký

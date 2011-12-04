@@ -26,7 +26,6 @@ lv:
         sign_in: Ienākt
         forgot_password: Aizmirsu paroli
     users:
-      setup_website_name_html: "Pirmkārt šim saitam vajadzētu uzstādīt nosaukumu. <a href='%{link}' name='%{title}'>Spiediet šeit</a>, lai uzstādītu sava saita nosaukumu"
       new:
         fill_form: 'Aizpildiet zemāk redzamos laukus, lai varam sākt.'
         sign_up: Izveidot

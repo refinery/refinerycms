@@ -26,7 +26,6 @@ fi:
         sign_in: Kirjaudu
         forgot_password: Unohdin salasanani
     users:
-      setup_website_name_html: "Annetaan nettisivustolle ensimmäiseksi nimi. <a href='%{link}' name='%{title}'>Mene tänne</a> muokataksesi nettisivusi nimeä"
       new:
         fill_form: "Täytä alhaalla olevat tiedot, että voimme aloittaa."
         sign_up: Rekisteröidy

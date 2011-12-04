@@ -32,7 +32,6 @@ ko:
         visit_this_url: 아래 주소의 페이지를 방문하여 비밀번호를 초기화하세요.
         remain_same_if_no_action: 아무런 요청이 없다면 비밀번호는 변경되지 않습니다.
     users:
-      setup_website_name_html: "먼저 사이트에 이름을 지어주세요. <a href='%{link}' name='%{title}'>이곳</a> 에서 이름을 정할 수 있습니다."
       new:
         fill_form: 시작하기 전에 아래의 정보를 채워주세요.
         sign_up: 회원가입

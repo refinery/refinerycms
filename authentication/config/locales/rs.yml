@@ -26,7 +26,6 @@ rs:
         sign_in: Uloguj se
         forgot_password: Zaboravio sam lozinku
     users:
-      setup_website_name_html: "Kao prvo, hajde da damo sajtu ime. <a href='%{link}' name='%{title}'>Klikni ovde</a> da promeniš naziv sajta"
       new:
         fill_form: 'Popuni polja dole, da bi mogli da počnemo.'
         sign_up: Prijavi se

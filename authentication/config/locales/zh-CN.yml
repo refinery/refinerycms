@@ -26,7 +26,6 @@ zh-CN:
         sign_in: 登录
         forgot_password: 找回密码
     users:
-      setup_website_name_html: "首先让我们给这个站点一个名字. <a href='%{link}' name='%{title}'>点击这里</a> 去编辑您的站点名."
       new:
         fill_form: 在下面填写您的详细信息以做好开始的准备.
         sign_up: 注册

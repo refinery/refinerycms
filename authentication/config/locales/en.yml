@@ -32,7 +32,6 @@ en:
         visit_this_url: Visit this URL to choose a new password
         remain_same_if_no_action: Your password will remain the same if no action is taken
     users:
-      setup_website_name_html: "First let's give the site a name. <a href='%{link}' name='%{title}'>Go here</a> to edit your website's name"
       new:
         fill_form: Fill out your details below so that we can get you started.
         sign_up: Sign up

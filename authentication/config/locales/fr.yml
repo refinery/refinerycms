@@ -26,7 +26,6 @@ fr:
         sign_in: Authentification
         forgot_password: J'ai oublié mon mot de passe
     users:
-      setup_website_name_html: "Donnez, tout d'abord, un nom à votre site. <a href='%{link}' name='%{title}'>Cliquer ici</a> pour changer le nom de votre site."
       new:
         fill_form: Remplissez vos coordonnées ci-dessous pour commencer.
         sign_up: Enregistrement

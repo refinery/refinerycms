@@ -26,7 +26,6 @@ nb:
         sign_in: Logg inn
         forgot_password: Jeg glemte passordet mitt
     users:
-      setup_website_name_html: "Først, la oss gi siden et navn. <a href='%{link}' name='%{title}'>Gå hit</a> for å endre navnet på websiden din"
       new:
         fill_form: Fyll ut detaljene dine nedenfor slik at vi kan komme i gang.
         sign_up: Registrer deg

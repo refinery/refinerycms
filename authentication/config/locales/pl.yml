@@ -27,7 +27,6 @@ pl:
         sign_in: Zaloguj się
         forgot_password: Zapomniane hasło
     users:
-      setup_website_name_html: "Na początek, nazwijmy tę stronę. <a href='%{link}' name='%{title}'>Wejdź tutaj</a> aby je zmienić."
       new:
         fill_form: Uzupełnij dane poniżej aby zacząć używać tej strony.
         sign_up: Zarejestruj się

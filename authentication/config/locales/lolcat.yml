@@ -24,7 +24,6 @@ lolcat:
         sign_in: SIGN IN
         forgot_password: I FORGOT MAH PASWORD
     users:
-      setup_website_name_html: "FURST LETS GIV TEH SIET NAYM. <A HREF=%{link}' name='%{title}>GO HER</A> 2 EDIT UR WEBSIETS NAYM"
       new:
         fill_form: FILL OUT UR DETAILS BELOW SO DAT WE CAN GIT U STARTD.
         sign_up: SIGN UP

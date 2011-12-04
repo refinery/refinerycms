@@ -26,7 +26,6 @@ it:
         sign_in: Entra
         hello_please_sign_in: Ciao! Accedi per favore.
     users:
-      setup_website_name_html: "Prima di tutto <a href='%{link}' name='%{title}'>modifica il nome del sito</a>"
       new:
         fill_form: Compila il form sottostante con i tuoi dati
         sign_up: Registrati

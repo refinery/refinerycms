@@ -26,7 +26,6 @@ de:
         sign_in: Anmelden
         forgot_password: Ich habe mein Passwort vergessen
     users:
-      setup_website_name_html: "Als ersten können wir der Seite einen Namen geben. <a href='%{link}' name='%{title}'>Hier klicken</a>, um den Namen der Webseite zu bearbeiten"
       new:
         fill_form: 'Füllen Sie die Details unten aus, damit wir anfangen können.'
         sign_up: Anmelden

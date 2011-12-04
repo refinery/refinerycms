@@ -1,4 +1,4 @@
 <p>
   <%= t('.copyright', :year => Time.now.year,
-                      :site_name => ::Refinery::Setting.find_or_set(:site_name, "Company Name")) %>
+                      :site_name => Refinery::Core.site_name) %>
 </p>

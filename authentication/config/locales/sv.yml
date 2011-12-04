@@ -26,7 +26,6 @@ sv:
         sign_in: Logga in
         forgot_password: Jag har glömt mitt lösenord
     users:
-      setup_website_name_html: "Låt oss först ge webbplatsen ett namn. <a href='%{link}' name='%{title}'>Klicka här</a> för att redigera din webbplats namn."
       new:
         fill_form: Fyll i detaljerna nedan så vi kan sätta igång.
         sign_up: Registrera

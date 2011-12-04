@@ -26,7 +26,6 @@ ja:
         sign_in: サインイン
         forgot_password: パスワードを無くしました
     users:
-      setup_website_name_html: "サイトに名前を付けます。<a href='%{link}' name='%{title}'>ここ</a>をクリックして下さい。"
       new:
         fill_form: 記入して下さい。
         sign_up: サインアップ

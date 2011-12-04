@@ -26,7 +26,6 @@ da:
         sign_in: Log ind
         forgot_password: Jeg har glemt mit password
     users:
-      setup_website_name_html: "Lad os først give websitet et navn. <a href='%{link}' name='%{title}'>Her</a> kan du rette navnet"
       new:
         fill_form: 'Indtast dine oplysninger, så vi kan få dig i gang med Refinery.'
         sign_up: Opret bruger

@@ -26,7 +26,6 @@ pt-BR:
         sign_in: Entrar
         forgot_password: Esqueci minha senha
     users:
-      setup_website_name_html: "Primeiro vamos dar um nome ao site. <a href='%{link}' name='%{title}'>Clique aqui</a> para editar o nome do seu site."
       new:
         fill_form: Preencha o formulário abaixo com seus detalhes pra que você possa começar.
         sign_up: Cadastrar

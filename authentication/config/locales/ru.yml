@@ -26,7 +26,6 @@ ru:
         sign_in: Войти
         forgot_password: Я забыл свой пароль
     users:
-      setup_website_name_html: "Для начала, назовите сайт. <a href='%{link}' name='%{title}'>Перейдите сюда</a>, чтобы отредактировать название сайта."
       new:
         fill_form: Заполните данные ниже.
         sign_up: Зарегистрироваться

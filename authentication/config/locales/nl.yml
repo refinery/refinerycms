@@ -26,7 +26,6 @@ nl:
         sign_in: Log in
         forgot_password: Ik ben mijn wachtwoord vergeten
     users:
-      setup_website_name_html: "Laten we eerst de website een naam geven. <a href='%{link}' name='%{title}'>Klik hier</a> om de naam van de website te bewerken"
       new:
         fill_form: 'Vul het onderstaande formulier in, zodat u kan beginnen.'
         sign_up: Registreer

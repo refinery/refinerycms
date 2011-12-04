@@ -174,7 +174,8 @@ module Refinery
     (DEFAULTS = {
       :rescue_not_found => false,
       :s3_backend => false,
-      :base_cache_key => :refinery
+      :base_cache_key => :refinery,
+      :site_name => "Company Name"
     }).each {|name, value| config_accessor name} unless defined?(DEFAULTS)
 
     class << self

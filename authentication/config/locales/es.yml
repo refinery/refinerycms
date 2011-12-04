@@ -26,7 +26,6 @@ es:
         sign_in: Entrar
         forgot_password: He olvidado mi contraseña
     users:
-      setup_website_name_html: "Para empezar dale un nombre a tu web. Desde <a href='%{link}' name='%{title}'>aquí</a> puedes editar el nombre de tu web"
       new:
         fill_form: Rellena los detalles siguientes para poder comenzar.
         sign_up: Registrarme

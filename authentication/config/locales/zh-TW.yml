@@ -26,7 +26,6 @@ zh-TW:
         sign_in: 登入
         forgot_password: 我忘記了密碼
     users:
-      setup_website_name_html: "先給這個網站一個名字吧. <a href='%{link}' name='%{title}'>到這裡</a>來編輯您的網站名稱"
       new:
         fill_form: 在底下填入您的資料好繼續之後的流程.
         sign_up: 登入

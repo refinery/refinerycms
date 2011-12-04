@@ -26,7 +26,6 @@ cs:
         sign_in: Přihlášení
         forgot_password: Zapomenuté heslo
     users:
-      setup_website_name_html: "Dejte vašemu webu jméno. <a href='%{link}' name='%{title}'>Zde</a> můžete jméno editovat"
       new:
         fill_form: Vyplňte údaje níže a můžeme začít.
         sign_up: Registrace

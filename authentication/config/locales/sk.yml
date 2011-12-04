@@ -26,7 +26,6 @@ sk:
         sign_in: Prihlásenie
         forgot_password: Zabudol som heslo
     users:
-      setup_website_name_html: "Dajte vášmu webu meno. <a href='%{link}' name='%{title}'>Tu môžete meno editovať</a>."
       new:
         fill_form: Vyplňte údaje a môžeme začať.
         sign_up: Registrácia

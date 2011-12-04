@@ -25,7 +25,6 @@ sl:
         sign_in: Prijavi se
         forgot_password: Pozabil sem geslo
     users:
-      setup_website_name_html: "Najprej morate poimenovati stran. <a href='%{link}' name='%{title}'>Pojdite sem</a> kjer lahko uredite naslov vaše strani."
       new:
         fill_form: Izpolnite spodnji obrazec z vašimi podatki.
         sign_up: Registriraj se
