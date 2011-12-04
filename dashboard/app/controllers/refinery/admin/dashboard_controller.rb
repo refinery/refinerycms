@@ -22,10 +22,10 @@ module Refinery
 
         @recent_activity = @recent_activity.flatten.compact.sort { |x,y|
           y.updated_at <=> x.updated_at
-        }.first(activity_show_limit=::Refinery::Setting.find_or_set(:activity_show_limit, 7))
+        }.first(Refinery::Dashboard.activity_show_limit)
 
-        @recent_inquiries = if Refinery::Plugins.active.detect {|p| p.name == "refinery_inquiries"}
-          Inquiry.latest(activity_show_limit)
+        @recent_inquiries = if Refinery::Plugins.active.detect { |p| p.name == "refinery_inquiries" }
+          Inquiry.latest(Refinery::Dashboard.activity_show_limit)
         else
           []
         end
