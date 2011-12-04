@@ -21,6 +21,10 @@ unless defined?(JRUBY_VERSION)
   gem 'sqlite3'
   gem 'mysql2'
   gem 'pg'
+else
+  # see https://github.com/bmabey/database_cleaner/issues/11
+  gem 'database_cleaner', :git => 'git://github.com/dnagir/database_cleaner.git',
+                          :branch => 'postgre_jruby_issue'
 end
 
 group :development do
