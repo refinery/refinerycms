@@ -44,7 +44,7 @@
   <%= render :partial => "form_new_page_parts",
              :locals => {
                :f => f
-             } if ::Refinery::Setting.find_or_set(:new_page_parts, false) %>
+             } if Refinery::Pages.new_page_parts %>
 <% end %>
 
 <% content_for :javascripts do %>
