@@ -19,15 +19,11 @@ sk:
           yes_make_this_setting_restricted: "Umožniť zmenu tejto voľby len administrátorom."
           help:
             restricted: Voľba bude viditeľná a editovateľná len pre adminstrátorov (ako ste vy).
-            activity_show_limit: Obmedzuje počet položiek viditeľných na nástenke.
             analytics_page_code: Tento kód aktivuje sledovanie návštevníkov webu pomocou Google Analytics. Pokiaľ je ponechaný prázdny, alebo v tvare UA-xxxxxx-x je sledovanie vypnuté a žiadne informácie sa do Google Analytics neposielajú.
             menu_hide_children: Skryť podstránky z menu aj keď sú dostupné.
-            new_page_parts: Povoliť pridávanie nových častí stránok (obsahové sekcie) v editore stránky.
             page_title: Veľmi komplexná voľba pre nastavenie titulky stránky. Môžete nastaviť vlastné CSS triedy, iný tag alebo ho poslať do drobečkového menu so stránkami s rovnakým predkom.
             preferred_image_view: Nastavuje preferovaný pohľad na existujúce obrázky. Vyberte grid pre zobrazenie v mriežke, alebo list pre zobrazenie zoznamu. Nastavenie sa dá prepínať tlačidlom i v samotnom pohľade.
             show_contact_privacy_link: Môžete zobraziť alebo skryť odkaz na stránku 'Zásady ochrany osobných údajov' u kontaktného formulára vedľa tlačidla 'Odoslať'.
-            site_name: Názov vášho webu, ktorý sa zobrazuje v hlavičke stránky, v administrácii a niekedy (podľa témy) sa používa aj v pätičke.
-            marketable_urls: Zmení adresy URL z /pages/about na /about a automaticky opraví konflikty s ostanými pluginmi.
             approximate_ascii: Nastavte na hodnotu true, ak používaťe latinské znaky s akcentmi a diakritikou v názvoch stránok. Pokúsi sa previesť znaky, ako je ā, č, ž na a, c, z, a tak sa tieto znaky nezobrazia podivne v adresnom riadku niektorých webových prehliadačov.
   activerecord:
     models:

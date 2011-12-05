@@ -19,15 +19,11 @@ fi:
           yes_make_this_setting_restricted: "Kyllä, rajoita tämä asetus vain superkäyttäjille."
           help:
             restricted: "Rajoittaa asetuksen niin, että vain superkäyttäjät (kuten sinä) näkevät sen ja voivat muokata sitä."
-            activity_show_limit: Etusivunäkymässä näkyvien tapahtumien lukumäärä.
             analytics_page_code: "Aktivoi Google Analytics- seurannan nettisivustollasi. Jos tämä asetus on tyhjä, se on pois päältä ja Google Analyticsin kanssa ei kommunikoida."
             menu_hide_children: "Piilota mahdolliset alisivut valikosta"
-            new_page_parts: "Aktivoi uusien sivuosioiden (sisältöosioiden) lisääminen sivumuokkaajissa."
             page_title: "Teknisiä ominaisuuksia sivun otsikon näyttämiseen. Voit asettaa omia CSS-luokkia tai tageja."
             preferred_image_view: "Missä näkymässä kuvapalikka näyttää kuvat: lista- vai ruudukkonäkymässä. Kuvapalikassa on oma nappi näkymien vaihtamiseen."
             show_contact_privacy_link: "Voit piilottaa linkin yksityisyydensuojasivulle yhteydenottolomakkeessa."
-            site_name: "Tämä on nettisivusi nimi. Se näytetään sivuston otsakealueella, Refineryn hallintapaneelissa ja alaotsakkeen tekijänoikeustekstissä joissain teemoissa."
-            marketable_urls: "Vaihda sivujen osoitteet muodosta /pages/about muotoon /about, ja hallitse ristiriitoja palikkojen välillä automaattisesti."
             approximate_ascii: "Pistä tämä asetus päälle, jos käytät merkkejä joissa on aksentteja ja muita erikoismerkkejä sivujen otsikoissa. Se muuntaa merkit kuten ā, č, ž muotoihin a, c, z, jotta nämä merkit eivät näytä oudoilta joittenkin selainten osoitepalkeissa."
   activerecord:
     models:

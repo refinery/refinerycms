@@ -19,15 +19,11 @@ pt-BR:
           yes_make_this_setting_restricted: "Permitir acesso apenas à super-usuários."
           help:
             restricted: Isso faz com que essa opção só seja vista ou editada por super-usuários (como você).
-            activity_show_limit: Número de itens mostrados na lista de atividades do Dashboard.
             analytics_page_code: Habilita o código do Google Analytics em seu website. Se deixar em branco ou digitar UA-xxxxxx-x será considerado desabilitado e a chamada remota para o Google Analytics não será feita.
             menu_hide_children: Esconde qualquer sub-página do menu mesmo se estiver presente.
-            new_page_parts: Habilita a criação de novos pedaços de página (seção de conteúdo) no editor de páginas.
             page_title: Opções avançadas de configuração do título da página. Você pode colocar um CSS customizado ou uma tag diferente ou pedir para navegar entre as páginas pais.
             preferred_image_view: Habilita o tipo de visualição da seção imagens - grid para 'Visualizar em Grid' e list para 'Visualizar em Lista'. Há um botão para automatizar este processo no plugin de imagens.
             show_contact_privacy_link: Você pode esconder ou mostrar o link para a política de privacidade no formulário de contato.
-            site_name: "Nome do site, que será mostrado no topo e rodapé do seu website e também na área administrativa."
-            marketable_urls: Muda as urls de /pages/about para /about e automaticamente gerencia conflitos com outros plugins.
   activerecord:
     models:
       refinery/setting: setting

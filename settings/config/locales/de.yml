@@ -19,15 +19,11 @@ de:
           yes_make_this_setting_restricted: Ja, diese Einstellung auf Administratoren einschränken.
           help:
             restricted: Macht diese Einstellung nur für Administratoren sichtbar und veränderbar.
-            activity_show_limit: Dies schränkt die Anzahl der Einträge im Amaturenbrett ein.
             analytics_page_code: Dieser Code aktiviert Google Analytics innerhalb Ihrer Webseite. Wenn diese Einstellung leer gelassen wird oder auf UA-xxxxxx-x gesetzt wird, ist diese Funktion deaktiviert und es werden keine Verbindungsaufrufe zu Google Analytics gemacht.
             menu_hide_children: Versteckt alle Unterseiten auf dem Menü, auch wenn diese vorhanden sind.
-            new_page_parts: Erlaubt das Hinzufügen neuer Teilbereiche (Inhalts-Abschnitte) im Seiten-Editor.
             page_title: Sehr umfangreiche Möglichkeit zum Setzen des Seitentitels. Hier können Sie eine angepasste CSS-Klasse oder ein HTML-Tag angeben, oder auch eine Brotkrumen-Navigation erzeugen.
             preferred_image_view: Dies legt fest, welche Ansicht des Bilder-Erweiterung für vorhandene Bilder verwendet werden soll - "grid" für eine Gitter-Ansicht und "list" für eine Listen-Ansicht. Es gibt einen Knopf in der Erweiterung selbst, um diesen Vorgang zu automatisieren.
             show_contact_privacy_link: Sie können den Link zu den Datenschutzbestimmungen beim Kontaktformular verstecken oder beim Absenden-Knopf anzeigen lassen.
-            site_name: Dies ist der Name Ihrer Webseite, der im Kopfbereich, im Administrationsbereich und bei manchen Themen im Fußbereich beim Copyright angezeigt wird.
-            marketable_urls: Ändert Urls von /pages/about auf /about und behebt automatisch Konflikte mit anderen Erweiterungen.
             approximate_ascii: Setzen Sie dies auf wahr, wenn Sie lateinische Zeichen mit Akzenten oder anderen diakritischen Zeichen in Seitentiteln verwenden. Es wird Zeichen wie ā, č, ž in a, c, z konvertieren und dadurch werden diese in der Adresszeile mancher Browser nicht seltsam angezeigt.
             cache_pages_full: Aktiviert den Full-Page-Cache. Damit können die Seiten mit einer .htaccess-Rewrite-Regel vom Apache oder Nginx ausgeliefert werden.
   activerecord:

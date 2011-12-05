@@ -19,15 +19,11 @@ el:
           yes_make_this_setting_restricted: "Yes, make this setting restricted only to superusers."
           help:
             restricted: This makes the setting only visible and editable by users who are superusers (like you).
-            activity_show_limit: This limits the number of items that can display in the Dashboard listing.
             analytics_page_code: This code activates Google Analytics tracking within your website. If the setting is left blank or set to UA-xxxxxx-x then this is disabled and no remote calls to Google Analytics are made.
             menu_hide_children: Hide any subpages from the menu even if they are present.
-            new_page_parts: Enable adding new page parts (content sections) in the page editors.
             page_title: Very complex options for setting the page title. Here you can set custom CSS class or a different tag or tell it to breadcrumb with pages in its ancestry.
             preferred_image_view: This controls which view the images plugin displays existing images in - grid for 'Grid View' and list for 'List View'. There is a button to automate this process on the images plugin itself.
             show_contact_privacy_link: You can hide or show the link to the privacy policy page on the contact form by the submit button.
-            site_name: This is the name for your website and will display in the header and in the Refinery backend and in the footer copyright statement for some themes.
-            marketable_urls: Change urls from /pages/about to /about and automatically manage conflicts with other plugins.
             approximate_ascii: Set this to true if you use Latin characters with accents and other diacritics in page titles. It'll convert characters like ā, č, ž into a, c, z and this way those characters won't appear strangely in the address bar of some web browsers.
   activerecord:
     models:

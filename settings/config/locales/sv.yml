@@ -19,15 +19,11 @@ sv:
           yes_make_this_setting_restricted: "Ja, gör så att enbart huvudanvändare kan komma åt den här inställningen."
           help:
             restricted: Det här gör inställnigen synlig och redigerbar av huvudanvändare (tex. du).
-            activity_show_limit: Det här begränsar antalet rader som kan visas i din Dashboard.
             analytics_page_code: Den här koden aktiverar Google Analytics på din webbplats. Om den här inställningen lämnas tom eller är installd till UA-xxxxx-x så är den avstängd.
             menu_hide_children: Dölj alla undersidor från huvudmenyn även om de är tillgängliga.
-            new_page_parts: Tillåt att lägga till nya innehållssektioner i sidredigeraren.
             page_title: Här kan du ställa in CSS eller html tag. Du kan även ställa in brödsmulor (s.k. breadcrumbs) för sidans ursprung
             preferred_image_view: Den här styr vilken vy tillägsprogrammet för bilder väljer att visa bilder i. 'Grid View' för rutnät eller 'List View' för lista. Det finns en knapp för att automatisera denna process i tillägsprogrammet.
             show_contact_privacy_link: Du kan välja att visa eller dölja Registerbeskrivning (privacy policy) bredvid skicka knappen.
-            site_name: Det här är webbplatsens namn och den kommer visas i huvudrubryken, Refinery och i foten på hemsidan.
-            marketable_urls: Ändra URLer från /pages/about till /about och hantera automatiskt konflikter med andra plugin
   activerecord:
     models:
       refinery/setting: inställning

@@ -19,15 +19,11 @@ da:
           yes_make_this_setting_restricted: "Ja, begræns adgang til administratorer."
           help:
             restricted: Gør at indstillingen kun kan ses og redigeres af administratorer (som dig).
-            activity_show_limit: Hvor mange 'Seneste aktiviter' skal vises
             analytics_page_code: Google Analytics kode; aktiverer Google Analytics på websitet. Hvis indstillingen er tom eller sat til UA-xxxxxx-x så er Google Analytics slået fra.
             menu_hide_children: Skjul undermenuer i menuen.
-            new_page_parts: Tillad oprettelse af nye indholdsektioner på sider.
             page_title: Avancerede indstillinger for konfiguration af sidetitel. Her kan du angive CSS klasse eller et alternativt tag samt angive at sidehierarkiet skal vises i brødkrummen.
             preferred_image_view: Standard billedvisning, 'gittervisning' eller 'listevisning'. Dette kan også ændres under fanebladet 'Billeder'.
             show_contact_privacy_link: Vis link til privatlivspolitik på kontaktformularen.
-            site_name: Navn på websitet.
-            marketable_urls: Benyt URLer som /about i stedet for /pages/about og håndtér automatisk sammenfald med URLer fra andre plugins.
             approximate_ascii: Sæt til 'true', hvis du vil konvertere karakterer som ā, č og ž til a, c og z i side-URLer.
   activerecord:
     models:

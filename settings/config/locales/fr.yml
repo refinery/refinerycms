@@ -19,15 +19,11 @@ fr:
           yes_make_this_setting_restricted: Restreindre ce paramètre aux administrateurs uniquement.
           help:
             restricted: Ceci permet de restreindre la consultation et la modification de ce paramètre uniquement aux administrateurs (comme vous actuellement).
-            activity_show_limit: Ceci limite la taille de la liste du tableau de bord.
             analytics_page_code: Ce code permet d'activer le service Google Analitics. Si vous laissez le code vide ou à la valeur UA-xxxxxx-x, le service sera déactivé et aucune requête vers Google Analytics ne sera effectuée.
             menu_hide_children: Cache toutes les pages filles du menu, même si elles sont présentes.
-            new_page_parts: "Permet d'ajouter de nouvelles parties de page (sections de contenu) dans les éditeurs de pages."
             page_title: "Options avancée pour le titre de la page. Vous pouvez ici définir des classes CSS personnalisées, ajouter différentes étiquettes ou spécifier l'ajout d'un chemin de navigation avec les pages parentes."
             preferred_image_view: "Cette option permet de personnaliser l'affichage des images dans les vues 'Vue en grille' et 'Vue en liste'. Il existe un boutton permettant de générer cettte valeur automatiquement directement dans la gestion du plugin d'images."
             show_contact_privacy_link: Vous pouvez afficher ou non le lien vers votre politique de gestion des données utilisateurs au bas du formulaire de contact.
-            site_name: Ceci est le nom de votre site. Il s'affichera dans l'en-tête, dans le Refinery backend et dans la notice de copyright de pied de page en fonction des thèmes.
-            marketable_urls: "Change les urls /pages/about en /about, et gère automatiquement les conflits avec d'autres plugins."
   activerecord:
     models:
       refinery/setting: paramètre

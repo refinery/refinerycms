@@ -19,12 +19,8 @@ it:
           yes_make_this_setting_restricted: "Sì, rendi questa impostazione accessibile solo all'utente amministratore."
           help:
             restricted: "Questo rende l'impostazione visibile e modificabile solo da utenti amministratori (come te)."
-            activity_show_limit: Limite del numero di elementi da visualizzare nella scheda principale.
             analytics_page_code: "Attivazione del monitoraggio di Google Analytics sul tuo sito web. Se l'impostazione viene lasciata vuota o impostata su UA-xxxxxx-x allora questo servizio sarà impostato come disabilitato e non ci saranno chiamate remote a Google Analytics."
             menu_hide_children: Nascondi le sottopagine dal menu anche se sono presenti.
-            new_page_parts: "Attiva l'aggiunta di nuove parti della pagina (sezioni di contenuto) nell'editor delle pagine."
             page_title: Opzioni molto complesse per impostare il titolo della pagina. Qui è possibile impostare classi CSS personalizzate o un tag differente.
             preferred_image_view: "Questa opzione permette di impostare la visualizzazione di default nella sezione della gestione immagini (griglia per la visualizzazione 'Griglia' e lista per la visualizzazione 'Lista'). C'è un bottone per automatizzare questo processo nell'area della gestione immagini."
             show_contact_privacy_link: È possibile nascondere o mostrare il collegamento alla pagina informativa sulla privacy nel modulo di contatto con il bottone di invio.
-            site_name: "Questo è il nome dato al tuo sito e verrà visualizzato nell'intestazione, nel backend di Refinery e nella dichiarazione dei copyright visualizzati nel footer di alcuni temi."
-            marketable_urls: "Modifica l'url da /pages/about ad /about e automaticamente gestisce i conflitti con altri plugin."
