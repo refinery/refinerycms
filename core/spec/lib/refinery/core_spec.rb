@@ -136,27 +136,3 @@ describe Refinery do
     end
   end
 end
-
-module Refinery
-  describe Core do
-    describe "#configure" do
-      it "should set configurable option" do
-        subject.configure do |config|
-          config.rescue_not_found = true
-        end
-
-        subject.rescue_not_found.should == true
-      end
-    end
-
-    describe ".reset!" do
-      it "should set rescue_not_found back to the default value" do
-        subject.config.rescue_not_found.should == subject::DEFAULTS[:rescue_not_found]
-        subject.config.rescue_not_found = !subject::DEFAULTS[:rescue_not_found]
-        subject.config.rescue_not_found.should_not == subject::DEFAULTS[:rescue_not_found]
-        subject.reset!
-        subject.config.rescue_not_found.should == subject::DEFAULTS[:rescue_not_found]
-      end
-    end
-  end
-end

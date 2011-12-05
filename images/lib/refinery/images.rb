@@ -13,36 +13,15 @@ module Refinery
 
     include ActiveSupport::Configurable
 
-    (DEFAULTS = {
-
-    }).each {|name, value| config_accessor name}
     config_accessor :max_image_size, :pages_per_dialog, :pages_per_admin_index,
                     :pages_per_dialog_that_have_size_options
 
-    DEFAULT_MAX_IMAGE_SIZE = 5242880
-    DEFAULT_PAGES_PER_DIALOG = 18
-    DEFAULT_PAGES_PER_DIALOG_THAT_HAVE_SIZE_OPTIONS = 12
-    DEFAULT_PAGES_PER_ADMIN_INDEX = 20
-
-    self.max_image_size = DEFAULT_MAX_IMAGE_SIZE
-    self.pages_per_dialog = DEFAULT_PAGES_PER_DIALOG
-    self.pages_per_dialog_that_have_size_options = DEFAULT_PAGES_PER_DIALOG_THAT_HAVE_SIZE_OPTIONS
-    self.pages_per_admin_index = DEFAULT_PAGES_PER_ADMIN_INDEX
+    self.max_image_size = 5242880
+    self.pages_per_dialog = 18
+    self.pages_per_dialog_that_have_size_options = 12
+    self.pages_per_admin_index = 20
 
     class << self
-      # Reset Refinery::Images options to their default values
-      #
-      def reset!
-        DEFAULTS.each do |name, value|
-          self.send :"#{name}=", value
-        end
-        
-        self.max_image_size = DEFAULT_MAX_IMAGE_SIZE
-        self.pages_per_dialog = DEFAULT_PAGES_PER_DIALOG
-        self.pages_per_dialog_that_have_size_options = DEFAULT_PAGES_PER_DIALOG_THAT_HAVE_SIZE_OPTIONS
-        self.pages_per_admin_index = DEFAULT_PAGES_PER_ADMIN_INDEX
-      end
-
       def root
         @root ||= Pathname.new(File.expand_path('../../../', __FILE__))
       end
@@ -51,7 +30,5 @@ module Refinery
         @factory_paths ||= [ root.join("spec/factories").to_s ]
       end
     end
-
-    reset!
   end
 end

@@ -171,26 +171,17 @@ module Refinery
 
     include ActiveSupport::Configurable
 
-    (DEFAULTS = {
-      :rescue_not_found => false,
-      :s3_backend => false,
-      :base_cache_key => :refinery,
-      :site_name => "Company Name"
-    }).each {|name, value| config_accessor name} unless defined?(DEFAULTS)
+    config_accessor :rescue_not_found, :s3_backend, :base_cache_key, :site_name
+
+    self.rescue_not_found = false
+    self.s3_backend = false
+    self.base_cache_key = :refinery
+    self.site_name = "Company Name"
 
     class << self
-      # Reset Refinery::Core options to their default values
-      def reset!
-        DEFAULTS.each do |name, value|
-          self.send :"#{name}=", value
-        end
-      end
-
       def root
         @root ||= Pathname.new(File.expand_path('../../../', __FILE__))
       end
     end
-
-    reset!
   end
 end

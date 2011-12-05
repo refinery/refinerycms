@@ -15,22 +15,15 @@ module Refinery
 
     include ActiveSupport::Configurable
 
-    # Define configurable settings along with their default values.
-    (DEFAULTS = {
-      :pages_per_dialog => 14,
-      :pages_per_admin_index => 20,
-      :new_page_parts => false,
-      :marketable_urls => true
-    }).each { |name, value| config_accessor name } unless defined?(DEFAULTS)
+    config_accessor :pages_per_dialog, :pages_per_admin_index, :new_page_parts,
+                    :marketable_urls
+
+    self.pages_per_dialog = 14
+    self.pages_per_admin_index = 20
+    self.new_page_parts = false
+    self.marketable_urls = true
 
     class << self
-      # Reset Refinery::Pages options to their default values
-      def reset!
-        DEFAULTS.each do |name, value|
-          self.send :"#{name}=", value
-        end
-      end
-
       def root
         @root ||= Pathname.new(File.expand_path('../../../', __FILE__))
       end
@@ -39,8 +32,6 @@ module Refinery
         @factory_paths ||= [ root.join('spec', 'factories').to_s ]
       end
     end
-
-    reset!
 
     module Admin
       autoload :InstanceMethods, 'refinery/pages/admin/instance_methods'

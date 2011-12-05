@@ -61,8 +61,8 @@ module Refinery
       end
 
       context "dialog is false" do
-        it "returns image count specified by Images.pages_per_admin_index option" do
-          ::Refinery::Image.per_page.should == Images.pages_per_admin_index
+        it "returns image count specified by Images.config.pages_per_admin_index option" do
+          ::Refinery::Image.per_page.should == Images.config.pages_per_admin_index
         end
       end
     end
