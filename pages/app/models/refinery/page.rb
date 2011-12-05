@@ -158,7 +158,7 @@ module Refinery
     # Repositions the child page_parts that belong to this page.
     # This ensures that they are in the correct 0,1,2,3,4... etc order.
     def reposition_parts!
-      parts.each_with_index do |part, index|
+      reload.parts.each_with_index do |part, index|
         part.update_attribute(:position, index)
       end
     end

@@ -34,7 +34,7 @@ el:
       pages:
         delete: Διαγραφή σελίδας
         edit: Επεξεργασία σελίδας
-        reserved_system_word: Συγγνώμη, αλλά αυτός ο τίτλος δεν είναι διαθέσιμος.
+        reserved_system_word: 'Συγγνώμη, αλλά αυτός ο τίτλος δεν είναι διαθέσιμος.'
         page:
           view_live_html: Δείτε αυτή τη σελίδα live <br/><em>(ανοίγει σε νέο παράθυρο)</em>
           hidden: κρυφό
@@ -44,6 +44,7 @@ el:
         form_page_parts:
           create_content_section: Προσθήκη περιοχής περιεχομένου
           delete_content_section: Διαγραφή περιοχής περιεχομένου
+          reorder_content_section: Αναδιάταξη περιοχής περιεχομένου
         form_advanced_options:
           toggle_advanced_options: Access meta tag settings and menu options
           page_options: Επιλογές Σελίδας
@@ -58,9 +59,9 @@ el:
           skip_to_first_child_label: Redirect visitors to the first sub-level page.
           skip_to_first_child_help: This option makes this page link to the first page underneath. This can be useful when grouping pages together.
           link_url: Forward this page to another website or page
-          link_url_help: If you want this page to go to another website or page when you click this page in the menu, enter a URL. e.g. http://google.com otherwise leave it blank
-          parent_page_help: You can put a page under another page by selecting it in the list. If you want this page to be a top-level page, just leave it blank.
-          custom_title_help: If you want the page to have a different title than the one that shows in the menu then select &apos;Text&apos; and enter it here.
+          link_url_help: 'If you want this page to go to another website or page when you click this page in the menu, enter a URL. e.g. http://google.com otherwise leave it blank'
+          parent_page_help: 'You can put a page under another page by selecting it in the list. If you want this page to be a top-level page, just leave it blank.'
+          custom_title_help: 'If you want the page to have a different title than the one that shows in the menu then select &apos;Text&apos; and enter it here.'
         actions:
           create_new_page: Προσθήκη νέας σελίδας
           reorder_pages: Αναδιάταξη σελιδών

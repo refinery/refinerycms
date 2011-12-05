@@ -16,9 +16,8 @@ module ::Refinery
 
       before_filter :load_valid_templates, :only => [:edit, :new]
 
-      before_filter :restrict_access, :only => [:create, :update, :update_positions, :destroy], :if => proc {|c|
-        defined?(::Refinery::I18n) && ::Refinery::I18n.enabled?
-      }
+      before_filter :restrict_access, :only => [:create, :update, :update_positions, :destroy],
+                    :if => proc {|c| ::Refinery.i18n_enabled? }
 
       def new
         @page = ::Refinery::Page.new(params)
@@ -48,15 +47,12 @@ module ::Refinery
         end
       end
 
-      def show_errors_for_reserved_slug(exception)
-        flash[:error] = t('reserved_system_word', :scope => 'refinery.admin.pages')
-        if action_name == 'update'
-          find_page
-          render :edit
-        else
-          @page = ::Refinery::Page.new(params[:page])
-          render :new
-        end
+      def load_valid_templates
+        layout_whitelist        = ::Refinery::Setting.find_or_set(:layout_template_whitelist, %w(application), :scoping => 'pages')
+        @valid_layout_templates = layout_whitelist & valid_templates('app', 'views', '{layouts,refinery/layouts}', '*html*')
+
+        template_whitelist    = ::Refinery::Setting.find_or_set(:view_template_whitelist, %w(home show), :scoping => 'pages')
+        @valid_view_templates = template_whitelist & valid_templates('app', 'views', '{pages,refinery/pages}', '*html*')
       end
 
       def restrict_access
@@ -69,12 +65,15 @@ module ::Refinery
         return true
       end
 
-      def load_valid_templates
-        layout_whitelist        = ::Refinery::Setting.find_or_set(:layout_template_whitelist, %w(application), :scoping => 'pages')
-        @valid_layout_templates = layout_whitelist & valid_templates('app', 'views', '{layouts,refinery/layouts}', '*html*')
-
-        template_whitelist    = ::Refinery::Setting.find_or_set(:view_template_whitelist, %w(home show), :scoping => 'pages')
-        @valid_view_templates = template_whitelist & valid_templates('app', 'views', '{pages,refinery/pages}', '*html*')
+      def show_errors_for_reserved_slug(exception)
+        flash[:error] = t('reserved_system_word', :scope => 'refinery.admin.pages')
+        if action_name == 'update'
+          find_page
+          render :edit
+        else
+          @page = ::Refinery::Page.new(params[:page])
+          render :new
+        end
       end
 
       def valid_templates(*pattern)

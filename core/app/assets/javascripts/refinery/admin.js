@@ -112,6 +112,31 @@ trigger_reordering = function(e, enable) {
   $menu.sortable(enable ? 'enable' : 'disable');
 };
 
+trigger_reordering_content_section = function(e, enable) {
+  $menu = $("#page-tabs");
+  e.preventDefault();
+  $('#reorder_page_part, #reorder_page_part_done').toggle();
+  $('#site_bar, #menu, .field:not(:has(#page-tabs)), .page_part, #more_options_field, .form-actions')
+    .fadeTo(500, enable ? 0.35 : 1);
+
+  if(enable) {
+    $menu.addClass('reordering').find('.tab a').click(function(ev){
+      ev.preventDefault();
+    });
+  } else {
+    $menu.removeClass('reordering').find('.tab a').unbind('click');
+  }
+
+  $menu.sortable(enable ? 'enable' : 'disable').sortable({
+    items: 'li',
+    stop: function(event, ui) {
+      $('#page-tabs li[data-index]').each(function(i, li){
+        $('#page_parts_attributes_' + $(this).data('index') + '_position').val(i + 1);
+      });
+    }
+  });
+};
+
 submit_and_continue = function(e, redirect_to) {
   // ensure wymeditors are up to date.
   if ($(this).hasClass('wymupdate')) {
@@ -588,6 +613,12 @@ var page_options = {
 
     });
 
+    $('#reorder_page_part').click(function(e){
+      trigger_reordering_content_section(e, true);
+    });
+    $('#reorder_page_part_done').click(function(e){
+      trigger_reordering_content_section(e, false);
+    });
   }
 
 };

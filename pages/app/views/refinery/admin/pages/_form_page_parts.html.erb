@@ -1,6 +1,15 @@
 <% if ::Refinery::Pages.config.new_page_parts %>
   <ul id="page_parts_controls">
     <li>
+      <%= link_to refinery_icon_tag('arrow_switch.png'), '#',
+                  :id => 'reorder_page_part',
+                  :title => t('.reorder_content_section') %>
+      <%= link_to refinery_icon_tag('tick.png'), "",
+                  :id => 'reorder_page_part_done',
+                  :title => t('.reorder_content_section_done'),
+                  :style => "display: none;" %>
+    </li>
+    <li>
       <%= link_to refinery_icon_tag('add.png'), '#',
                   :id => 'add_page_part',
                   :title => t('.create_content_section') %>
@@ -12,12 +21,13 @@
                   :name => t('.delete_content_section'),
                   :id => 'delete_page_part' %>
     </li>
+    <li>
   </ul>
 <% end %>
 <div id='page-tabs' class='clearfix ui-tabs ui-widget ui-widget-content ui-corner-all'>
   <ul id='page_parts'>
     <% @page.parts.each_with_index do |part, part_index| %>
-      <li class='ui-state-default<%= ' ui-state-active' if part_index == 0 %>'>
+      <li class='ui-state-default<%= ' ui-state-active' if part_index == 0 %>' data-index='<%= part_index %>'>
         <%= link_to part.title, "##{@page.persisted? ? part.to_param : "page_part_new_#{part_index}"}" %>
       </li>
     <% end %>

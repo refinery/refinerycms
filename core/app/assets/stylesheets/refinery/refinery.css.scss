@@ -804,7 +804,7 @@ body.dialog form {
 .wym_dialog_table {
 	height: 250px;
 }
-.dialog { 
+.dialog {
   #dialog_main {
     float: left;
     margin-left: 130px;
@@ -901,7 +901,7 @@ body.dialog form {
   width: 940px;
   padding: 6px;
 }
-#dialog_main { 
+#dialog_main {
   .pagination {
     margin: 0px;
     position: fixed;
@@ -1044,7 +1044,7 @@ a img {
 /* page parts */
 ul#page_parts {
   float: left;
-  width: 94%;
+  width: 92%;
 }
 ul#page_parts, ul#page_parts_controls {
   margin: 20px 0 0 0;
@@ -1052,7 +1052,7 @@ ul#page_parts, ul#page_parts_controls {
 }
 ul#page_parts_controls {
   float: right;
-  width: 5%;
+  width: 7%;
   margin-right: 3px;
 }
 ul#page_parts_controls li {
@@ -1065,6 +1065,14 @@ ul#page_parts_controls li a {
 }
 ul#page_parts_controls img {
   vertical-align: middle;
+}
+#page-tabs.ui-sortable.reordering {
+  li {
+    cursor: move;
+    a {
+      cursor: move;
+    }
+  }
 }
 #page_part_editors {
   clear:left;
