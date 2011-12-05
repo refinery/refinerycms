@@ -1,5 +1,5 @@
 <h1 id='logo'>
-  <%= link_to Refinery::Core.site_name, main_app.root_path %>
+  <%= link_to Refinery::Core.config.site_name, main_app.root_path %>
 </h1>
 <%= render(:partial => "/refinery/menu", :locals => {
              :dom_id => 'menu',

@@ -22,7 +22,7 @@ module Refinery
       end
 
       initializer "append marketable routes", :before => :set_routes_reloader do |app|
-        if Refinery::Pages.marketable_urls
+        if Refinery::Pages.config.marketable_urls
           append_marketable_routes(app)
         end
       end
@@ -47,7 +47,7 @@ module Refinery
       end
 
       initializer "add marketable route parts to reserved words" do |app|
-        if Refinery::Pages.marketable_urls
+        if Refinery::Pages.config.marketable_urls
           # ENV['RAILS_ASSETS_PRECOMPILE'] is a temporary hack to avoid initializing the database during
           # assets precompile for issue https://github.com/resolve/refinerycms/issues/1059
           add_route_parts_as_reserved_words(app) unless ENV['RAILS_ASSETS_PRECOMPILE']

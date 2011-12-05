@@ -44,14 +44,14 @@
   <%= render :partial => "form_new_page_parts",
              :locals => {
                :f => f
-             } if Refinery::Pages.new_page_parts %>
+             } if Refinery::Pages.config.new_page_parts %>
 <% end %>
 
 <% content_for :javascripts do %>
   <script>
     $(document).ready(function(){
       page_options.init(
-        <%= ::Refinery::Setting.find_or_set(:new_page_parts, false).to_s %>
+        <%= Refinery::Pages.config.new_page_parts.to_s %>
         , "<%= main_app.new_refinery_admin_page_part_path %>"
         , "<%= main_app.refinery_admin_page_parts_path %>"
       );

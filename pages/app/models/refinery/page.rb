@@ -123,7 +123,7 @@ module Refinery
 
       # Returns how many pages per page should there be when paginating pages
       def per_page(dialog = false)
-        dialog ? Pages.pages_per_dialog : Pages.pages_per_admin_index
+        dialog ? Pages.config.pages_per_dialog : Pages.config.pages_per_admin_index
       end
 
       def expire_page_caching
@@ -213,7 +213,7 @@ module Refinery
     def url
       if link_url.present?
         link_url_localised?
-      elsif ::Refinery::Pages.marketable_urls
+      elsif Refinery::Pages.config.marketable_urls
         with_locale_param url_marketable
       elsif to_param.present?
         with_locale_param url_normal
@@ -379,7 +379,7 @@ module Refinery
     def normalize_friendly_id(slug_string)
       slug_string.gsub!('_', '-')
       sluggified = super
-      if ::Refinery::Pages.marketable_urls && self.class.friendly_id_config.reserved_words.include?(sluggified)
+      if Refinery::Pages.config.marketable_urls && self.class.friendly_id_config.reserved_words.include?(sluggified)
         sluggified << "-page"
       end
       sluggified
@@ -388,7 +388,7 @@ module Refinery
     private
 
       def invalidate_cached_urls
-        return true unless ::Refinery::Pages.marketable_urls
+        return true unless Refinery::Pages.config.marketable_urls
 
         [self, children].flatten.each do |page|
           Rails.cache.delete(page.url_cache_key)

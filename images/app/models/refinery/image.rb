@@ -22,12 +22,12 @@ module Refinery
       def per_page(dialog = false, has_size_options = false)
         if dialog
           unless has_size_options
-            Images.pages_per_dialog
+            Images.config.pages_per_dialog
           else
-            Images.pages_per_dialog_that_have_size_options
+            Images.config.pages_per_dialog_that_have_size_options
           end
         else
-          Images.pages_per_admin_index
+          Images.config.pages_per_admin_index
         end
       end
 

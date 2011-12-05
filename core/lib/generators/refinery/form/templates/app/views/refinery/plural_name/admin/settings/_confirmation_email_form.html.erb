@@ -20,7 +20,7 @@
         <label class='stripped'><%%= t('.from') %></label>
       </td>
       <td>
-        <%%= "#{Refinery::Core.site_name} &lt;no-reply@#{request.domain(Refinery::Setting.find_or_set(:tld_length, 1))}&gt;".html_safe %>
+        <%%= "#{Refinery::Core.config.site_name} &lt;no-reply@#{request.domain(Refinery::Setting.find_or_set(:tld_length, 1))}&gt;".html_safe %>
       </td>
     </tr>
     <tr>
