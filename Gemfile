@@ -14,6 +14,8 @@ gemspec
 # Database Configuration
 platforms :jruby do
   gem 'activerecord-jdbcsqlite3-adapter'
+  gem 'activerecord-jdbcmysql-adapter'
+  gem 'activerecord-jdbcpostgresql-adapter'
   gem 'jruby-openssl'
 end
 
@@ -21,10 +23,6 @@ unless defined?(JRUBY_VERSION)
   gem 'sqlite3'
   gem 'mysql2'
   gem 'pg'
-else
-  # see https://github.com/bmabey/database_cleaner/issues/11
-  gem 'database_cleaner', :git => 'git://github.com/dnagir/database_cleaner.git',
-                          :branch => 'postgre_jruby_issue'
 end
 
 group :development do
@@ -37,6 +35,7 @@ group :development, :test do
   gem 'refinerycms-testing', '~> 2.0.0'
   gem 'capybara-webkit', '~> 0.7.0'
   gem 'generator_spec'
+  gem 'database_cleaner', :git => 'git://github.com/ugisozols/database_cleaner.git'
 
   platforms :mri_18 do
     gem 'rcov'
