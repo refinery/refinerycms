@@ -35,7 +35,7 @@ group :development, :test do
   gem 'refinerycms-testing', '~> 2.0.0'
   gem 'capybara-webkit', '~> 0.7.0'
   gem 'generator_spec'
-  gem 'database_cleaner', :git => 'git://github.com/ugisozols/database_cleaner.git'
+  gem 'database_cleaner', :git => 'git://github.com/bmabey/database_cleaner.git'
 
   platforms :mri_18 do
     gem 'rcov'
