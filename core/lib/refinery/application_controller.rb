@@ -56,7 +56,7 @@ module Refinery
       end
 
       def home_page?
-        main_app.root_path =~ /^#{request.path}\/?/
+        main_app.root_path =~ /^#{Regexp.escape(request.path)}\/?/
       end
 
       def just_installed?
