@@ -23,7 +23,7 @@ module Refinery
           @user.plugins = @selected_plugin_names
           # if the user is a superuser and can assign roles according to this site's
           # settings then the roles are set with the POST data.
-          unless current_refinery_user.has_role?(:superuser) and ::Refinery::Setting.find_or_set(:superuser_can_assign_roles, false)
+          unless current_refinery_user.has_role?(:superuser) and Refinery::Authentication.config.superuser_can_assign_roles
             @user.add_role(:refinery)
           else
             @user.roles = @selected_role_names.collect{|r| ::Refinery::Role[r.downcase.to_sym]}
@@ -43,7 +43,7 @@ module Refinery
       def update
         # Store what the user selected.
         @selected_role_names = params[:user].delete(:roles) || []
-        unless current_refinery_user.has_role?(:superuser) and ::Refinery::Setting.find_or_set(:superuser_can_assign_roles, false)
+        unless current_refinery_user.has_role?(:superuser) and Refinery::Authentication.config.superuser_can_assign_roles
           @selected_role_names = @user.roles.collect{|r| r.title}
         end
         @selected_plugin_names = params[:user][:plugins]

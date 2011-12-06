@@ -37,7 +37,6 @@ es:
             preferred_image_view: Vista de imágenes preferida
             strip_non_ascii: Eliminar caracteres no ASCII (Páginas)
             tld_length: Niveles del dominio
-            superuser_can_assign_roles: Superusuario puede asignar roles
             user_image_sizes: Tamaños de imagen de usuario
           help:
             restricted: Hace que sólo los superusuarios (como tu) puedan ver y editar esta opción.
