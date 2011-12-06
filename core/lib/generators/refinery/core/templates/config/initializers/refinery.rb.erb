@@ -5,4 +5,9 @@ Refinery::Core.configure do |config|
   # When true will use Amazon's Simple Storage Service instead of
   # the default file system for storing resources and images
   config.s3_backend = !(ENV['S3_KEY'].nil? || ENV['S3_SECRET'].nil?)
+
+  config.base_cache_key = :refinery
+
+  # Site name
+  config.site_name = "Company Name"
 end
