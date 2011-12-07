@@ -1,4 +1,7 @@
 da:
+  will_paginate:
+    previous_label: "&laquo;"
+    next_label: "&raquo;"
   plugins:
     refinery_core:
       title: Refinery

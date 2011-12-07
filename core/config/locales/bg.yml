@@ -1,4 +1,7 @@
 bg:
+  will_paginate:
+    previous_label: "&laquo;"
+    next_label: "&raquo;"
   js:
     admin:
       confirm_changes: Всички промени, които сте направили ще бъдат загубени. Сигурни ли сте, че искате да продължите без запис?

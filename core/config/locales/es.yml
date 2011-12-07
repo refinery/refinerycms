@@ -1,4 +1,7 @@
 es:
+  will_paginate:
+    previous_label: "&laquo;"
+    next_label: "&raquo;"
   welcome:
     there_are_no_users: "No hay usuarios registrados, así que debemos registrar al primero."
     remember_admin_location: "Recuerda que tu área administrativa de Refinery esta en:"
