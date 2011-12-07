@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   end
 
   scope(:path => :'refinery/<%= class_name.pluralize.underscore.downcase %>', 
-        :as => :'refinery_<%=class_name.pluralize.underscore.downcase %>_admin', 
+        :as => :refinery_<%=class_name.pluralize.underscore.downcase %>_admin, 
         :module => :'refinery/<%= class_name.pluralize.underscore.downcase %>/admin') do
     resources :<%= class_name.pluralize.underscore.downcase %>, :path => '' <% if @includes_spam %> do
       collection do
