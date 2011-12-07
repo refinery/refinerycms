@@ -53,7 +53,7 @@ en:
               click_to_edit_subject: Click here to edit the subject
               explanation: Every time someone contacts you on your website, Refinery sends out an email to confirm the <%= singular_name.humanize.downcase %> with the person who made it.
               below_edit_email_sent: Below you can edit the email that is sent out.
-            the_customer_making_<%= singular_name %>: The customer making the <%= singular_name.humanize.downcase %>
+              the_customer_making_<%= singular_name %>: The customer making the <%= singular_name.humanize.downcase %>
               message: Message
               note: "Note: place the text %name% where you'd like the customer's name to appear in the email"
         mailer:
