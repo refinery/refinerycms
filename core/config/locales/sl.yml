@@ -1,4 +1,7 @@
 sl:
+  will_paginate:
+    previous_label: "&laquo;"
+    next_label: "&raquo;"
   welcome:
     there_are_no_users: "Trenutno še ni nobenega uporabnika, zato vas moramo najprej namestiti."
     remember_admin_location: "Zapomnite si vaše administracijsko področje v Refinery je:"

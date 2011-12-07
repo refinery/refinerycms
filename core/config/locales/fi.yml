@@ -1,4 +1,7 @@
 fi:
+  will_paginate:
+    previous_label: "&laquo;"
+    next_label: "&raquo;"
   js:
     admin:
       confirm_changes: "Kaikki muutoksesi menetetään. Oletko varma, että haluat jatkaa tallentamatta?"

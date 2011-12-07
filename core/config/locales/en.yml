@@ -1,4 +1,7 @@
 en:
+  will_paginate:
+    previous_label: "&laquo;"
+    next_label: "&raquo;"
   js:
     admin:
       confirm_changes: Any changes you've made will be lost. Are you sure you want to continue without saving?
@@ -76,3 +79,4 @@ en:
   time:
     formats:
       short: "%A, %d %B %Y"
+      
