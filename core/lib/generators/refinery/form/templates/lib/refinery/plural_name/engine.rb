@@ -5,7 +5,7 @@ module Refinery
     class Engine < Rails::Engine
       include Refinery::Engine
 
-      isolate_namespace Refinery::<%= class_name.plural_name %>
+      isolate_namespace Refinery::<%= class_name.pluralize %>
       engine_name :refinery_<%= plural_name %>
 
       config.after_initialize do
