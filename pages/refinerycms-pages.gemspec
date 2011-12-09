@@ -25,5 +25,6 @@ Gem::Specification.new do |s|
   s.add_dependency 'friendly_id_globalize3',      '~> 3.2.1'
   s.add_dependency 'awesome_nested_set',          '~> 2.0'
   s.add_dependency 'seo_meta',                    '>= 1.2.0.rc2'
+  s.add_dependency 'draper',					  '~> 0.9.5'
   s.add_dependency 'refinerycms-core',            version
 end
