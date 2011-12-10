@@ -19,7 +19,6 @@ de:
           yes_make_this_setting_restricted: Ja, diese Einstellung auf Administratoren einschränken.
           help:
             restricted: Macht diese Einstellung nur für Administratoren sichtbar und veränderbar.
-            analytics_page_code: Dieser Code aktiviert Google Analytics innerhalb Ihrer Webseite. Wenn diese Einstellung leer gelassen wird oder auf UA-xxxxxx-x gesetzt wird, ist diese Funktion deaktiviert und es werden keine Verbindungsaufrufe zu Google Analytics gemacht.
             menu_hide_children: Versteckt alle Unterseiten auf dem Menü, auch wenn diese vorhanden sind.
             page_title: Sehr umfangreiche Möglichkeit zum Setzen des Seitentitels. Hier können Sie eine angepasste CSS-Klasse oder ein HTML-Tag angeben, oder auch eine Brotkrumen-Navigation erzeugen.
             preferred_image_view: Dies legt fest, welche Ansicht des Bilder-Erweiterung für vorhandene Bilder verwendet werden soll - "grid" für eine Gitter-Ansicht und "list" für eine Listen-Ansicht. Es gibt einen Knopf in der Erweiterung selbst, um diesen Vorgang zu automatisieren.

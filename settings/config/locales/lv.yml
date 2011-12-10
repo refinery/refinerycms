@@ -19,7 +19,6 @@ lv:
           yes_make_this_setting_restricted: Jā, padarīt šo uzstādījumu pieejamu tikai superlietotājiem.
           help:
             restricted: Šī opcija padara uzstādījumu redzamu un rediģējamu tikai superlietotājiem (tādi kā jūs).
-            analytics_page_code: Šis kods aktivizē Google Analytics uzskaiti jūsu lapā. Ja šī uzstādījuma vērtības lauks tiek atstāts tukšs vai tajā tiek ievadīts UA-xxxxxx-x, tas nozīmē, ka šis uzstādījums nav aktīvs un attālināti pieprasījumi uz Google Analytics netiek veikti.
             menu_hide_children: Paslēpt visas apakšlapas no izvēlnes, ja tās ir.
             page_title: Kompleksas opcijas lapas nosaukuma uzstādīšanai. Šeit jūs varat personalizēt CSS klasi, uzstādīt citu birku vai arī sadalīt lapu fragmentos atkarībā no tās izcelsmes.
             preferred_image_view: Šis uzstādījums kontrolē, kurš skats tiek izmantots bilžu spraudnī - grid 'Režģa skatam' un list 'Saraksta skatam'. Bilžu spraudnī ir poga, kas automatizē šo procesu.

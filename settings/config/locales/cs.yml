@@ -19,7 +19,6 @@ cs:
           yes_make_this_setting_restricted: "Ano, umožnit změnu této volby jenom administrátorům."
           help:
             restricted: Volba bude viditelná a editovatelné pouze pro adminstrátory (jako jste vy).
-            analytics_page_code: Tento kód aktivuje sledování webu pomocí Googla Analytics. Pokud je ponechán prázdný nebo ve tvaru UA-xxxxxx-x je sledování vypnuto a žádné informace se do Google Analytics neposílají.
             menu_hide_children: Skrýt podstránky z menu i když jsou dostupné.
             page_title: Velmi komplexní volba pro nastavení titulky stránky. Můžete nastavit vlastní CSS třídu, jiný tag nebo ho poslat do drobečkového menu se stránkami se stejným předkem.
             preferred_image_view: Nastavuje preferovaný pohled na existující obrázky. Zvolte grid pro zobrazení mřížky nebo list pro zobrazení seznamu. Nastavení se dá přepínat tlačítkem i v samotném pohledu.

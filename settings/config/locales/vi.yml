@@ -19,7 +19,6 @@ vi:
           yes_make_this_setting_restricted: "OK, thiết lập này bị giới hạn cho superusers."
           help:
             restricted: Điều này làm cho các thiết lập chỉ hiển thị và chỉnh sửa bởi superusers (những người như bạn).
-            analytics_page_code: "Mã này kích hoạt Google Analytics theo dõi trong trang web của bạn. Nếu thiết lập được để trống, hoặc có dạng UA-xxxxxx-x có nghĩa là vô hiệu hoá và không có tương tác với Google Analytics được thực hiện."
             menu_hide_children: Ẩn bất kỳ trang con từ trình đơn ngay cả khi nó có mặt.
             page_title: Đây là các tùy chọn rất phức tạp để thiết lập tiêu đề trang. Tại đây bạn có thể tùy chỉnh CSS hoặc tag hoặc thay đổi cấu trúc breadcrumb.
             preferred_image_view: Thiết lập này điều khiển các trang mà các plugin về hình ảnh có thể hiển thị hình ảnh hiện có - dạng lưới cho 'Grid View" và dạng danh sách cho "List View". Có một nút để tự động hóa quá trình này trên những hình ảnh plugin chính nó.

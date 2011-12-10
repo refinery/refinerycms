@@ -20,7 +20,6 @@ lt:
           yes_make_this_setting_restricted: "Leisti šį nustatymą keisti tik super vartotojams."
           help:
             restricted: "Tai padarys šį nustatymą matomą ir redaguojamą tik vartotojams kurie yra super vartotojai (kaip Jūs)."
-            analytics_page_code: "Šis kodas aktyvuoja Google Analytics statistikos fiksavimą jūsų svetainėje. Jei šis nustatymas paliktas tuščias arba nustatyta UA-xxxxxx-x, tai jis yra išjungtas ir jokie kreipiniai į Google Analytics sistemą nevykdomi."
             menu_hide_children: "Meniu nerodys jokių sub puslapių, net jeigu jie egzistuoja."
             page_title: "Labai sudėtinti nustatymai nurodant puslapio antraštę. Čia galite nurodyti kitokią CSS klasę ar kitokią html žymę ar nurodyti puslapiui naršymo kelią su jo protėviais."
             preferred_image_view: "Čia valdoma kokį vaizdą rodys paveikslėlių įskiepis. Tinklelį 'Rodyti kaip tinklelį' ar sąrašą 'Rodyti kaip sąrašą'. Procesui automatizuoti ir pačiame paveikslėlių įskiepyje yra mygtukas."

@@ -19,7 +19,6 @@ rs:
           yes_make_this_setting_restricted: "Da, dozvoli ovo podešavanje samo superuser-ima."
           help:
             restricted: Ovo podešavanje vidljivo je samo superuser-ima(poput tebe).
-            analytics_page_code: Ovaj kod aktivira kodove za Google Analitiku tvog websajta. Ako se podešavanje ostavi prazno ili se podesi kao UA-xxxxxx-x onda je ovo podešavanje isključeno i ne šalju se nikakvi zahtevi ka Google-ovom servisu.
             menu_hide_children: Sakrij sve podstrane iz menija, čak i ako su prisutne u meniju.
             page_title: Vrlo kompleksne opcije za podešavanje naslova strane. Ovde možeš postaviti svoju CSS klasu ili drugi tag ili ostaviti da se naslov sam prilagodi sadržaju.
             preferred_image_view: Ovo kontroliše na koje sve načine mogu da se pregledaju slike  - 'Mrežasti prikaz' ili 'Lista'. Postoji dugme za automatizaciju ovog procesa na strani za manipulaciju slika.

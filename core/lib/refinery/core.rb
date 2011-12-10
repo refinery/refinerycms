@@ -171,12 +171,14 @@ module Refinery
 
     include ActiveSupport::Configurable
 
-    config_accessor :rescue_not_found, :s3_backend, :base_cache_key, :site_name
+    config_accessor :rescue_not_found, :s3_backend, :base_cache_key, :site_name,
+                    :analytics_page_code
 
     self.rescue_not_found = false
     self.s3_backend = false
     self.base_cache_key = :refinery
     self.site_name = "Company Name"
+    self.analytics_page_code = "UA-xxxxxx-x"
 
     class << self
       def root

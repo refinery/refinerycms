@@ -19,7 +19,6 @@ el:
           yes_make_this_setting_restricted: "Yes, make this setting restricted only to superusers."
           help:
             restricted: This makes the setting only visible and editable by users who are superusers (like you).
-            analytics_page_code: This code activates Google Analytics tracking within your website. If the setting is left blank or set to UA-xxxxxx-x then this is disabled and no remote calls to Google Analytics are made.
             menu_hide_children: Hide any subpages from the menu even if they are present.
             page_title: Very complex options for setting the page title. Here you can set custom CSS class or a different tag or tell it to breadcrumb with pages in its ancestry.
             preferred_image_view: This controls which view the images plugin displays existing images in - grid for 'Grid View' and list for 'List View'. There is a button to automate this process on the images plugin itself.

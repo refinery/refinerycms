@@ -19,7 +19,6 @@ es:
           restart_may_be_in_order_html: <strong>Recuerda</strong> que puede que necesites reiniciar tu web para que esta opción haga efecto.
           yes_make_this_setting_restricted: "Sí, restringir esta opción sólo para superusuarios."
           title:
-            analytics_page_code: Código de Google Analytics
             approximate_ascii: Aproximar a ASCII (Páginas)
             cache_pages_backend: Cachear páginas en el panel
             default_page_parts: Secciones de página por defecto
@@ -41,7 +40,6 @@ es:
           help:
             restricted: Hace que sólo los superusuarios (como tu) puedan ver y editar esta opción.
             analytics_page_code: Este código activa Google Analytics en tu web. Si se deja en blanco o se indica UA-xxxxxx-x quedará desactivado y no se harán peticiones a Google Analytics.
-            menu_hide_children: "Esconde todas las subpáginas del menú, aunque estén presentes."
             page_title: 'Opciones muy complejas para fijar el título de la página. Aquí puedes fijar alguna clase CSS personalizada, o alguna etiqueta diferente, o añadirlo a las "migas de pan" con los antecesores de cada página.'
             preferred_image_view: Controla con qué vista se muestran las imágenes existentes - grid para 'Ver como cuadrícula' y list para 'Ver como lista'. Hay un botón para automatizar este proceso en el propio plugin de las imágenes.
             show_contact_privacy_link: Puedes ocultar o mostrar el enlace a la página de política de privacidad en el formulario de contacto.
