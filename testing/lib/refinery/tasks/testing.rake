@@ -6,9 +6,8 @@ namespace :refinery do
     task :setup_dummy_app do
       require 'refinerycms'
 
-      params = []
+      params = %w(--quiet)
       params << "--database=#{ENV['DB']}" if ENV['DB']
-      params << "--quiet"
 
       Refinery::DummyGenerator.start params
 
@@ -24,21 +23,27 @@ namespace :refinery do
     end
 
     task :migrate_dummy_app do
-      engines = [
-        'refinery_core',
-        'refinery_settings',
-        'refinery_authentication',
-        'seo_meta_engine',
-        'refinery_pages',
-        'refinery_images',
-        'refinery_resources'
-      ]
-      system %Q{ bundle exec rake -f #{File.join(Refinery::Testing::Railtie.target_engine_path, 'Rakefile')} app:railties:install:migrations FROM="#{engines.join(', ')}" app:db:drop app:db:create app:db:migrate app:db:seed app:db:test:prepare RAILS_ENV=development --quiet }
+      engines = %w(
+        refinery_core
+        refinery_settings
+        refinery_authentication
+        seo_meta_engine
+        refinery_pages
+        refinery_images
+        refinery_resources
+      )
+
+      task_params = [%Q{ bundle exec rake -f #{Refinery::Testing::Railtie.target_engine_path.join('Rakefile')} }]
+      task_params << %Q{ app:railties:install:migrations FROM="#{engines.join(', ')}" }
+      task_params << %Q{ app:db:drop app:db:create app:db:migrate app:db:seed app:db:test:prepare }
+      task_params << %Q{ RAILS_ENV=development --quiet }
+
+      system task_params.join(' ')
     end
 
     desc "Remove the dummy app used for testing"
     task :clean_dummy_app do
-      FileUtils.rm_rf File.join(Refinery::Testing::Railtie.target_engine_path, 'spec/dummy')
+      Refinery::Testing::Railtie.target_engine_path.join('spec', 'dummy').rmdir
     end
 
     namespace :engine do
