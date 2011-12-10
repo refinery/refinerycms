@@ -1,7 +1,7 @@
 before_install: gem install bundler --pre
 before_script:
   - "sh -e /etc/init.d/xvfb start"
-  - "bundle exec rake refinery:testing:dummy_app --quiet"
+  - "bundle exec rake refinery:testing:dummy_app > /dev/null"
 script: "DISPLAY=:99.0 bundle exec rspec ./*/spec"
 notifications:
   email:
