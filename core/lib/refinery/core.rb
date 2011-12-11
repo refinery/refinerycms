@@ -178,7 +178,7 @@ module Refinery
     self.s3_backend = false
     self.base_cache_key = :refinery
     self.site_name = "Company Name"
-    self.google_google_analytics_page_code = "UA-xxxxxx-x"
+    self.google_analytics_page_code = "UA-xxxxxx-x"
 
     class << self
       def root
