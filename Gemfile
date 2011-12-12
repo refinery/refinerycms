@@ -64,6 +64,7 @@ group :development, :test do
       if RbConfig::CONFIG['target_os'] =~ /linux/i
         gem 'rb-inotify', '>= 0.5.1'
         gem 'libnotify',  '~> 0.1.3'
+        gem 'therubyracer', '~> 0.9.9'
       end
     end
   end
