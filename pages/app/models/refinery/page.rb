@@ -234,7 +234,8 @@ module Refinery
 
     def url_marketable
       # :id => nil is important to prevent any other params[:id] from interfering with this route.
-      url_normal.merge(:path => nested_url, :id => nil)
+      full_url_marketable = ::Refinery::Setting.find_or_set(:full_url_marketable, true, :scoping => "pages")
+      url_normal.merge(:path => full_url_marketable ? nested_url : nested_url.last, :id => nil)
     end
 
     def url_normal
