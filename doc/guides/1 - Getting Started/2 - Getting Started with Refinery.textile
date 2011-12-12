@@ -313,7 +313,7 @@ $ rails generate refinery_engine singular_model_name attribute:type [attribute:t
 
 TIP: to see all the options supported by the +refinery_engine+ generator just run +rails g refinery_engine+
 
-Here is a list of the different field types are what they give you:
+Here is a list of the different field types and what they give you:
 
 |*field type*|*description*|
 |text|a multiline visual editor|
