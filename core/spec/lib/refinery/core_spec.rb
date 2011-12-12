@@ -61,8 +61,8 @@ describe Refinery do
 
   describe "#validate_engine!" do
     context "with a valid engine" do
-      it "should return true" do
-        subject.send(:validate_engine!, Refinery::ValidEngine)
+      it "should return nil" do
+        subject.send(:validate_engine!, Refinery::ValidEngine).should be_nil
       end
     end
 
