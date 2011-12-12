@@ -2,7 +2,7 @@
   <div class='<%= plural_name %>'>
     <%%=raw @page.content_for(Refinery::Page.default_parts.first.to_sym) %>
 
-    <%%= form_for @<%= singular_name %> do |f| %>
+    <%%= form_for [main_app, :refinery, <%= singular_name %>, @<%= singular_name %>] do |f| %>
       <%%= render :partial => "/refinery/admin/error_messages",
                  :locals => {
                    :object => @<%= singular_name %>,
@@ -24,13 +24,13 @@
 <% when :checkbox -%>
         <%%= f.check_box :<%= attribute.name %> %>
 <% when :select -%>
-        <%%= f.select :<%= attribute.name %>, <%= class_name %>::<%= attribute.name.pluralize.upcase %>,
+        <%%= f.select :<%= attribute.name %>, Refinery::<%= class_name.pluralize %>::<%= class_name %>::<%= attribute.name.pluralize.upcase %>,
                       :include_blank => true %>
 <% end -%>
       </div>
       <% end %>
       <div class='actions'>
-        <%%= f.submit t('.send', :scope => 'refinery') %>
+        <%%= f.submit t('.send') %>
       </div>
     <%% end %>
   </div>
