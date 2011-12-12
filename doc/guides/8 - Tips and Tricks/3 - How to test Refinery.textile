@@ -6,7 +6,7 @@ Refinery ships with a range of specs and cucumbers to test it. This guide will s
 
 endprologue.
 
-h3. First setup test enviroment
+h3. First set up test enviroment
 
 At the Gemfile uncomment the refinerycms-testing line
 
