@@ -11,7 +11,7 @@
           :"data-original" => asset_paths.compute_public_path(image.url, ''),
           :"data-grid" => asset_paths.compute_public_path(image.thumbnail('135x135#c').url, '')
         }
-        ::Refinery::Image.user_image_sizes.sort_by{|key,geometry| geometry}.each do |size, pixels|
+        Refinery::Images.config.user_image_sizes.sort_by{|key,geometry| geometry}.each do |size, pixels|
           thumbnail_urls[:"data-#{size.to_s.parameterize}"] = asset_paths.compute_public_path(image.thumbnail(pixels).url, '')
         end
 -%>
@@ -43,7 +43,7 @@
       </p>
       <ul>
         <%
-          ::Refinery::Image.user_image_sizes.sort_by { |key, geometry| geometry }.each_with_index do |(size, pixels), index|
+          Refinery::Images.config.user_image_sizes.sort_by { |key, geometry| geometry }.each_with_index do |(size, pixels), index|
             safe_pixels = pixels.to_s.gsub(/[<>=]/, '')
             # (parndt): ' selected' if size.to_s == 'medium' is not very generic, but I
             # can't think of a decent way of making it so for even sets (e.g. 2,4,6,8,etc image sizes).

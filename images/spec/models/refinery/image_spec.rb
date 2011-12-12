@@ -29,12 +29,7 @@ module Refinery
       end
 
       it "should use right geometry when given a thumbnail name" do
-        ::Refinery::Setting.find_or_set(:user_image_sizes, {
-          :small => '110x110>',
-          :medium => '225x255>',
-          :large => '450x450>'
-        }, :destroyable => false)
-        name, geometry = ::Refinery::Image.user_image_sizes.first
+        name, geometry = Refinery::Images.config.user_image_sizes.first
         image.thumbnail(name).url.should == image.thumbnail(geometry).url
       end
     end
@@ -68,8 +63,8 @@ module Refinery
     end
 
     describe ".user_image_sizes" do
-      it "sets and returns a hash consisting of the keys contained in the ::Refinery::Setting" do
-        ::Refinery::Image.user_image_sizes.should == ::Refinery::Setting.get(:user_image_sizes)
+      it "returns a hash" do
+        Refinery::Images.config.user_image_sizes.should be_a_kind_of(Hash)
       end
     end
 

@@ -30,20 +30,12 @@ module Refinery
           Images.config.pages_per_admin_index
         end
       end
-
-      def user_image_sizes
-        ::Refinery::Setting.find_or_set(:user_image_sizes, {
-          :small => '110x110>',
-          :medium => '225x255>',
-          :large => '450x450>'
-        }, :destroyable => false)
-      end
     end
 
     # Get a thumbnail job object given a geometry.
     def thumbnail(geometry = nil)
-      if geometry.is_a?(Symbol) and self.class.user_image_sizes.keys.include?(geometry)
-        geometry = self.class.user_image_sizes[geometry]
+      if geometry.is_a?(Symbol) and Refinery::Images.config.user_image_sizes.keys.include?(geometry)
+        geometry = Refinery::Images.config.user_image_sizes[geometry]
       end
 
       if geometry.present? && !geometry.is_a?(Symbol)

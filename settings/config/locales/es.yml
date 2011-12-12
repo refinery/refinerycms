@@ -36,7 +36,6 @@ es:
             preferred_image_view: Vista de imágenes preferida
             strip_non_ascii: Eliminar caracteres no ASCII (Páginas)
             tld_length: Niveles del dominio
-            user_image_sizes: Tamaños de imagen de usuario
           help:
             restricted: Hace que sólo los superusuarios (como tu) puedan ver y editar esta opción.
             page_title: 'Opciones muy complejas para fijar el título de la página. Aquí puedes fijar alguna clase CSS personalizada, o alguna etiqueta diferente, o añadirlo a las "migas de pan" con los antecesores de cada página.'
