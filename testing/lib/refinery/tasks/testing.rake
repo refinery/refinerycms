@@ -43,7 +43,7 @@ namespace :refinery do
 
     desc "Remove the dummy app used for testing"
     task :clean_dummy_app do
-      Refinery::Testing::Railtie.target_engine_path.join('spec', 'dummy').rmdir
+      Refinery::Testing::Railtie.target_engine_path.join('spec', 'dummy').rmtree
     end
 
     namespace :engine do
