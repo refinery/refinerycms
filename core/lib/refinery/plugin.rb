@@ -55,7 +55,7 @@ module Refinery
 
     # Used to highlight the current tab in the admin interface
     def highlighted?(params)
-      (params[:controller].try(:gsub, "admin/", "") =~ menu_match) or (dashboard? and params[:action] == 'error_404')
+      !!(params[:controller].try(:gsub, "admin/", "") =~ menu_match) or (dashboard? and params[:action] == 'error_404')
     end
 
     # Returns a RegExp that matches, if the current page is part of the plugin.
