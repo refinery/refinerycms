@@ -2,8 +2,6 @@ module Refinery
   module <%= class_name.pluralize %>
     class <%= class_name %> < ActiveRecord::Base
 
-      set_table_name :refinery_<%= plural_name %>
-
       acts_as_indexed :fields => [:<%= attributes.collect{ |a| a.name if a.type.to_s =~ /string|text/ }.compact.uniq.join(", :") %>]
 
       # Add some validation here if you want to validate the user's input

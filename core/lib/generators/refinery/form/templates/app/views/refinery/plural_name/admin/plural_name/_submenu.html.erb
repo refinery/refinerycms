@@ -4,12 +4,12 @@
       <li>
         <%%= render :partial => "/refinery/admin/search",
                     :locals => {
-                      :url => main_app.refinery_admin_<%= plural_name %><%= "_index" if plural_name == singular_name%>_path
+                      :url => main_app.refinery_<%= plural_name %>_admin_<%= "_index" if plural_name == singular_name%>_path
                     } %>
       </li>
     <%% end %>
     <li <%%= "class='selected'" if params[:action] == "index" %>>
-      <%%= link_to t('.inbox', :scope => 'refinery'), admin_<%= plural_name %>_url, :class => "email_icon" %>
+      <%%= link_to t('.inbox'), main_app.refinery_<%= plural_name %>_admin_<%= plural_name %>_path, :class => "email_icon" %>
     </li><% if @includes_spam %>
     <li <%%= "class='selected'" if params[:action] == "spam" %>>
       <%% if @spam_count.any?  %>
@@ -20,12 +20,12 @@
     </li><% end %>
     <li>
       <%%= link_to t('.update_notified', :scope => 'refinery'),
-                    edit_admin_<%= singular_name %>_setting_url(:<%= singular_name %>_notification_recipients, :dialog => true, :height => 300),
+                    main_app.edit_refinery_<%= plural_name %>_admin_setting_path(:<%= singular_name %>_notification_recipients, :dialog => true, :height => 300),
                     :class => "user_comment_icon" %>
     </li>
     <li>
       <%%= link_to t('.edit_confirmation_email', :scope => 'refinery'),
-                  edit_admin_<%= singular_name %>_setting_url(:<%= singular_name %>_confirmation_body, :dialog => true),
+                  main_app.edit_refinery_<%= plural_name %>_admin_setting_path(:<%= singular_name %>_confirmation_body, :dialog => true),
                   :class => "edit_email_icon" %>
     </li>
   </ul>
