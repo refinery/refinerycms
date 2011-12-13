@@ -16,7 +16,8 @@ module Refinery
     include ActiveSupport::Configurable
 
     config_accessor :pages_per_dialog, :pages_per_admin_index, :new_page_parts,
-                    :marketable_urls, :approximate_ascii, :strip_non_ascii
+                    :marketable_urls, :approximate_ascii, :strip_non_ascii,
+                    :default_parts
 
     self.pages_per_dialog = 14
     self.pages_per_admin_index = 20
@@ -24,6 +25,7 @@ module Refinery
     self.marketable_urls = true
     self.approximate_ascii = false
     self.strip_non_ascii = false
+    self.default_parts = ["Body", "Side Body"]
 
     class << self
       def root

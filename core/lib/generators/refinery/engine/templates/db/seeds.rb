@@ -15,7 +15,7 @@ if defined?(::Refinery::Page)
     :position => ((::Refinery::Page.maximum(:position, :conditions => {:parent_id => nil}) || -1)+1),
     :menu_match => '^/<%= plural_name %>(\/|\/.+?|)$'
   )
-  ::Refinery::Page.default_parts.each do |default_page_part|
+  Refinery::Pages.config.default_parts.each do |default_page_part|
     page.parts.create(:title => default_page_part, :body => nil)
   end
 end

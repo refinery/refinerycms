@@ -23,7 +23,7 @@ if defined?(::Refinery::Page)
     :show_in_menu => false,
     :position => page.children.count
   )
-  ::Refinery::Page.default_parts.each do |default_page_part|
+  Refinery::Pages.config.default_parts.each do |default_page_part|
     page.parts.create(:title => default_page_part, :body => nil)
     thank_you_page.parts.create(:title => default_page_part, :body => nil)
   end

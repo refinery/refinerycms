@@ -103,11 +103,6 @@ module Refinery
         joins(:translations).where(globalized_conditions).where(conditions).readonly(false)
       end
 
-      # Accessor to find out the default page parts created for each new page
-      def default_parts
-        ::Refinery::Setting.find_or_set(:default_page_parts, ["Body", "Side Body"])
-      end
-
       # Wraps up all the checks that we need to do to figure out whether
       # the current frontend locale is different to the current one set by ::I18n.locale.
       # This terminates in a false if i18n engine is not defined or enabled.
