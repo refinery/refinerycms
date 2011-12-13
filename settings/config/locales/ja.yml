@@ -23,7 +23,6 @@ ja:
             page_title: ページのタイトルを設定します。CSSのカスタムクラス、異るタグ、或いはブレッドクラム等の使用を設定出来ます。
             preferred_image_view: 画像のレイアウト（グリッド又はリスト）を設定します。プラグイン自体にもこれを設定するボタンがあります。
             show_contact_privacy_link: お問い合わせフォームで、個人情報保護方針のページのリンクを表示するかどうかを決定します。
-            approximate_ascii: 'ラテン文字にアクセント記号を付けたものをページのタイトルに使用する際にはこれを有効にして下さい。ā, č, žをa, c, zへと変換します。'
   activerecord:
     models:
       refinery/setting: 設定

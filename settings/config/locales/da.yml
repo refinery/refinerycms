@@ -22,7 +22,6 @@ da:
             page_title: Avancerede indstillinger for konfiguration af sidetitel. Her kan du angive CSS klasse eller et alternativt tag samt angive at sidehierarkiet skal vises i brødkrummen.
             preferred_image_view: Standard billedvisning, 'gittervisning' eller 'listevisning'. Dette kan også ændres under fanebladet 'Billeder'.
             show_contact_privacy_link: Vis link til privatlivspolitik på kontaktformularen.
-            approximate_ascii: Sæt til 'true', hvis du vil konvertere karakterer som ā, č og ž til a, c og z i side-URLer.
   activerecord:
     models:
       refinery/setting: indstilling

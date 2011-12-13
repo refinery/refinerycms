@@ -22,7 +22,6 @@ rs:
             page_title: Vrlo kompleksne opcije za podešavanje naslova strane. Ovde možeš postaviti svoju CSS klasu ili drugi tag ili ostaviti da se naslov sam prilagodi sadržaju.
             preferred_image_view: Ovo kontroliše na koje sve načine mogu da se pregledaju slike  - 'Mrežasti prikaz' ili 'Lista'. Postoji dugme za automatizaciju ovog procesa na strani za manipulaciju slika.
             show_contact_privacy_link: Možeš sakriti ili prikazati link za politiku privatnosti na kontakt formi pored dugmeta za unos .
-            approximate_ascii: Podesi ovo na true ako koristiš Latin karaktere u naslovu. Konvertovaće karaktere kao što su ā, č, ž u a, c, z i na ovaj način će se ova slova ispravno prikazivati u  URL adresama.
   activerecord:
     models:
       refinery/setting: podešavanje

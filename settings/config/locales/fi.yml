@@ -22,7 +22,6 @@ fi:
             page_title: "Teknisiä ominaisuuksia sivun otsikon näyttämiseen. Voit asettaa omia CSS-luokkia tai tageja."
             preferred_image_view: "Missä näkymässä kuvapalikka näyttää kuvat: lista- vai ruudukkonäkymässä. Kuvapalikassa on oma nappi näkymien vaihtamiseen."
             show_contact_privacy_link: "Voit piilottaa linkin yksityisyydensuojasivulle yhteydenottolomakkeessa."
-            approximate_ascii: "Pistä tämä asetus päälle, jos käytät merkkejä joissa on aksentteja ja muita erikoismerkkejä sivujen otsikoissa. Se muuntaa merkit kuten ā, č, ž muotoihin a, c, z, jotta nämä merkit eivät näytä oudoilta joittenkin selainten osoitepalkeissa."
   activerecord:
     models:
       refinery/setting: asetus

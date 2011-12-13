@@ -22,7 +22,6 @@ nl:
             page_title: Zeer complexe opties voor het instellen van de titel van de pagina. Hier kun je eigen CSS klassen, of een andere tag gebruiken, of aangeven dat er broodkruimels met de pagina en de bovenliggende pagina's gebruikt moet worden.
             preferred_image_view: Dit bepaald wat voor interface de afbeeldingen plugin gebruikt om de afbeedlingen te laten zin. Gebruik 'grid' voor de tabel interface, en 'list' voor de lijst interface. Er is een knop bij de afbeeldingen plugin om dit automatisch te doen.
             show_contact_privacy_link: Hiermee kun je de link naar de privacy policy onder aan de contactpagina verbergen of laten zien.
-            approximate_ascii: Zet dit aan, als je Latijnse karakters gebruikt met accenten en dergelijke in de pagina titels. Het converteert karakters zoals ā, č, ž naar a, c, z zodat ze er niet raar uitzien in de adresbalk van browsers.
   activerecord:
     models:
       refinery/setting: installing

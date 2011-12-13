@@ -31,7 +31,7 @@ module Refinery
       has_friendly_id :custom_slug_or_title, :use_slug => true,
                       :default_locale => (::Refinery::I18n.default_frontend_locale rescue :en),
                       :reserved_words => %w(index new session login logout users refinery admin images wymiframe),
-                      :approximate_ascii => ::Refinery::Setting.find_or_set(:approximate_ascii, false, :scoping => "pages"),
+                      :approximate_ascii => Refinery::Pages.config.approximate_ascii,
                       :strip_non_ascii => ::Refinery::Setting.find_or_set(:strip_non_ascii, false, :scoping => "pages")
     end
 

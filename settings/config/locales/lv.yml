@@ -22,7 +22,6 @@ lv:
             page_title: Kompleksas opcijas lapas nosaukuma uzstādīšanai. Šeit jūs varat personalizēt CSS klasi, uzstādīt citu birku vai arī sadalīt lapu fragmentos atkarībā no tās izcelsmes.
             preferred_image_view: Šis uzstādījums kontrolē, kurš skats tiek izmantots bilžu spraudnī - grid 'Režģa skatam' un list 'Saraksta skatam'. Bilžu spraudnī ir poga, kas automatizē šo procesu.
             show_contact_privacy_link: Jūs varat noslēpt vai atstāt redzamu privātuma politikas saiti kontaktformas lapā.
-            approximate_ascii: "Ja izmantojat Latīņu burtus ar mīkstinājuma zīmēm, akcentiem utml., tad iespējojot šo uzstādījumu (vērtība: true) burti ā, č, ž u.c. tiks pārkonvertēti attiecīgi uz a, c un z, tāda veidā šie burti neizskatīsies savādi dažu parlūku adreses laukā."
   activerecord:
     models:
       refinery/setting: uzstādījums

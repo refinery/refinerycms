@@ -19,7 +19,6 @@ es:
           restart_may_be_in_order_html: <strong>Recuerda</strong> que puede que necesites reiniciar tu web para que esta opción haga efecto.
           yes_make_this_setting_restricted: "Sí, restringir esta opción sólo para superusuarios."
           title:
-            approximate_ascii: Aproximar a ASCII (Páginas)
             cache_pages_backend: Cachear páginas en el panel
             default_page_parts: Secciones de página por defecto
             frontend_refinery_stylesheets_enabled: Hojas de estilo de refinery en el frontend
@@ -38,7 +37,6 @@ es:
             page_title: 'Opciones muy complejas para fijar el título de la página. Aquí puedes fijar alguna clase CSS personalizada, o alguna etiqueta diferente, o añadirlo a las "migas de pan" con los antecesores de cada página.'
             preferred_image_view: Controla con qué vista se muestran las imágenes existentes - grid para 'Ver como cuadrícula' y list para 'Ver como lista'. Hay un botón para automatizar este proceso en el propio plugin de las imágenes.
             show_contact_privacy_link: Puedes ocultar o mostrar el enlace a la página de política de privacidad en el formulario de contacto.
-            approximate_ascii: Ponlo a true si usas caracteres latinos con tildes y otros signos diacríticos en los títulos de página. Convertirá caracteres como ā, č, ž en a, c, z y así estos caracteres no aparecerán como símbolos extraños en la barra de direcciones de algunos navegadores.
   activerecord:
     models:
       refinery/setting: opción
