@@ -14,9 +14,9 @@ h3. Guide Assumptions
 
 This guide is designed for beginners who want to get started with a Refinery CMS site from scratch. It does not assume that you have any prior experience with Refinery. However, to get the most out of it, you need to have some prerequisites installed:
 
-* The "Ruby":http://www.ruby-lang.org/en/downloads language version 1.8.7 or higher (1.9.2 recommended)
+* The "Ruby":http://www.ruby-lang.org/en/downloads language version 1.8.7 or higher (1.9.3 recommended)
 
-TIP: Ruby 1.9.1 is not usable because it outright segfaults on Rails 3.0, so if you want to use Rails 3 with 1.9.x jump on 1.9.2 for smooth sailing.
+TIP: Ruby 1.9.1 is not usable because it outright segfaults on Rails 3.0, so if you want to use Rails 3 with 1.9.x jump on 1.9.3 for smooth sailing.
 
 * The "RubyGems":http://rubyforge.org/frs/?group_id=126 packaging system
 * A working installation of the "SQLite3 Database":http://www.sqlite.org
@@ -27,7 +27,7 @@ TIP: If you don't already have these things, then you will need to follow the "I
 TIP: It is recommended that developers use RVM to manage Ruby versions and gems. Once RVM is installed on your system, and you've created a gemset for the project, create an .rvmrc file in the site's root directory. Its contents should look something like:
 
 <shell>
-rvm use --create ruby-1.9.2@refinery
+rvm use --create ruby-1.9.3@refinery
 </shell>
 
 Refinery is a Ruby on Rails web application. If you have no prior experience with Rails, you will find a very steep learning curve diving straight into Refinery. There are some good free resources on the Internet for learning Rails, including:
