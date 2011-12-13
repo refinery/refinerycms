@@ -143,8 +143,7 @@ module Refinery
 
       context "with translations" do
         before(:each) do
-          ::Refinery::Setting.set(:i18n_translation_frontend_locales,
-                                 {:value => [:en, :ru], :scoping => 'refinery'})
+          Refinery::I18n.config.frontend_locales = [:en, :ru]
 
           # Create a home page in both locales (needed to test menus)
           home_page = FactoryGirl.create(:page, :title => 'Home',
