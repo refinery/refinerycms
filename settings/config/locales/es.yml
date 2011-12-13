@@ -22,7 +22,6 @@ es:
             approximate_ascii: Aproximar a ASCII (Páginas)
             cache_pages_backend: Cachear páginas en el panel
             default_page_parts: Secciones de página por defecto
-            dragonfly_secret: Secreto de dragonfly
             frontend_refinery_stylesheets_enabled: Hojas de estilo de refinery en el frontend
             i18n_translation_current_locale: Idioma actual (Refinery)
             i18n_translation_default_frontend_locale: Idioma por defecto en el frontend (Refinery)

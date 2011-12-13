@@ -173,7 +173,7 @@ module Refinery
 
     config_accessor :rescue_not_found, :s3_backend, :base_cache_key, :site_name,
                     :google_analytics_page_code, :authenticity_token_on_frontend,
-                    :menu_hide_children
+                    :menu_hide_children, :dragonfly_secret
 
     self.rescue_not_found = false
     self.s3_backend = false
@@ -182,6 +182,7 @@ module Refinery
     self.google_analytics_page_code = "UA-xxxxxx-x"
     self.authenticity_token_on_frontend = true
     self.menu_hide_children = false
+    self.dragonfly_secret = Array.new(24) { rand(256) }.pack('C*').unpack('H*').first
 
     class << self
       def root
