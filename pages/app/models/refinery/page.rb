@@ -32,7 +32,7 @@ module Refinery
                       :default_locale => (::Refinery::I18n.default_frontend_locale rescue :en),
                       :reserved_words => %w(index new session login logout users refinery admin images wymiframe),
                       :approximate_ascii => Refinery::Pages.config.approximate_ascii,
-                      :strip_non_ascii => ::Refinery::Setting.find_or_set(:strip_non_ascii, false, :scoping => "pages")
+                      :strip_non_ascii => Refinery::Pages.config.strip_non_ascii
     end
 
     # Docs for acts_as_indexed http://github.com/dougal/acts_as_indexed
