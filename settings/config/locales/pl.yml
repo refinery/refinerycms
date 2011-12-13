@@ -20,7 +20,6 @@ pl:
           yes_make_this_setting_restricted: "Tak, uczyń to ustawienie ograniczonym wyłącznie do superużytkowników."
           help:
             restricted: Czyni ustawienie widocznym i edytowalnym wyłącznie dla superużytkowników (takich jak Ty).
-            menu_hide_children: Ukryj wszelkie podstrony z menu nawet jeżeli są obecne.
             page_title: Bardzo skomplikowane opcje opisujące tytuł strony. Można tutaj ustawić własną klasę CSS, inny tag albo kazać stworzyć fragmenty ze stron nadrzędnych.
             preferred_image_view: To ustawienie określa w jakim widoku wtyczka obrazów wyświetla istniejące obrazy - grid dla widoku siatki, list dla listy. We wtyczce obrazy znajduje się przycisk automatyzujący tę zmianę.
             show_contact_privacy_link: Pokaż lub ukryj link do polityki bezpieczeństwa na stronie kontaktowej.

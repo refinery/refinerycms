@@ -19,7 +19,6 @@ pt-BR:
           yes_make_this_setting_restricted: "Permitir acesso apenas à super-usuários."
           help:
             restricted: Isso faz com que essa opção só seja vista ou editada por super-usuários (como você).
-            menu_hide_children: Esconde qualquer sub-página do menu mesmo se estiver presente.
             page_title: Opções avançadas de configuração do título da página. Você pode colocar um CSS customizado ou uma tag diferente ou pedir para navegar entre as páginas pais.
             preferred_image_view: Habilita o tipo de visualição da seção imagens - grid para 'Visualizar em Grid' e list para 'Visualizar em Lista'. Há um botão para automatizar este processo no plugin de imagens.
             show_contact_privacy_link: Você pode esconder ou mostrar o link para a política de privacidade no formulário de contato.

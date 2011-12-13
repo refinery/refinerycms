@@ -172,7 +172,8 @@ module Refinery
     include ActiveSupport::Configurable
 
     config_accessor :rescue_not_found, :s3_backend, :base_cache_key, :site_name,
-                    :google_analytics_page_code, :authenticity_token_on_frontend
+                    :google_analytics_page_code, :authenticity_token_on_frontend,
+                    :menu_hide_children
 
     self.rescue_not_found = false
     self.s3_backend = false
@@ -180,6 +181,7 @@ module Refinery
     self.site_name = "Company Name"
     self.google_analytics_page_code = "UA-xxxxxx-x"
     self.authenticity_token_on_frontend = true
+    self.menu_hide_children = false
 
     class << self
       def root

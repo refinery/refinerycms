@@ -19,7 +19,6 @@ sv:
           yes_make_this_setting_restricted: "Ja, gör så att enbart huvudanvändare kan komma åt den här inställningen."
           help:
             restricted: Det här gör inställnigen synlig och redigerbar av huvudanvändare (tex. du).
-            menu_hide_children: Dölj alla undersidor från huvudmenyn även om de är tillgängliga.
             page_title: Här kan du ställa in CSS eller html tag. Du kan även ställa in brödsmulor (s.k. breadcrumbs) för sidans ursprung
             preferred_image_view: Den här styr vilken vy tillägsprogrammet för bilder väljer att visa bilder i. 'Grid View' för rutnät eller 'List View' för lista. Det finns en knapp för att automatisera denna process i tillägsprogrammet.
             show_contact_privacy_link: Du kan välja att visa eller dölja Registerbeskrivning (privacy policy) bredvid skicka knappen.

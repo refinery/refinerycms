@@ -31,7 +31,6 @@ es:
             i18n_translation_frontend_locales: Idiomas disponibles en el frontend (Refinery)
             i18n_translation_locales: Idiomas disponibles (Refinery)
             image_views: Vistas de imagen
-            menu_hide_children: Ocultar subpáginas en el menú
             page_title: Título de página
             preferred_image_view: Vista de imágenes preferida
             strip_non_ascii: Eliminar caracteres no ASCII (Páginas)

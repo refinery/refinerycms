@@ -19,7 +19,6 @@ zh-TW:
           yes_make_this_setting_restricted: "是的, 讓這項設定只能被管理者修改."
           help:
             restricted: 這讓這項設定只能給有管理者權限的使用者 (像您一樣) 看見以及編輯.
-            menu_hide_children: 從選單中隱藏任何次頁面, 即使它們是存在的.
             page_title: 提供非常複雜的選項讓您設定頁面標題. 在這裡你可以設定自訂的 CSS 類別或是不同的標籤, 或是加上紀錄著頁面層級關係的導覽列.
             preferred_image_view: 這可控制圖片插件如何呈現目前這些已存在網站上的圖片 - grid 表示 '格狀模式' 以及 list 表示 '列表模式'. 圖片插件本身提供一個按鈕可以自動切換這些模式.
             show_contact_privacy_link: 您可以隱藏或是顯示在聯絡人表單確認按鈕旁的隱私條款頁面連結.
