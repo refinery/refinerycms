@@ -1774,7 +1774,7 @@ WYMeditor.INIT_DIALOG = function(wym, selected, isIframe) {
 
   var selected = selected || wym.selected();
   var dialog = $("#"+wym._options.dialogId);
-  var doc = $((isIframe ? dialog.find('iframe').contents() : document));
+  var doc = $(dialog.find('iframe').contents());
   var dialogType = dialog.find('#wym_dialog_type').val();
   if (wym._selected_image) {
     var replaceable = $(wym._selected_image);
