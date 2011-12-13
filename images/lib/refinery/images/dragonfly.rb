@@ -33,8 +33,8 @@ module Refinery
 
         def attach!(app)
           ### Extend active record ###
-
-          app.config.middleware.insert_after 'Rack::Lock', 'Dragonfly::Middleware', :images
+          app.config.middleware.insert_before Refinery::Resources.config.dragonfly_insert_before,
+                                              'Dragonfly::Middleware', :images
 
           app.config.middleware.insert_before 'Dragonfly::Middleware', 'Rack::Cache', {
             :verbose     => Rails.env.development?,

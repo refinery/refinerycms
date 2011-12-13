@@ -13,9 +13,10 @@ module Refinery
 
     include ActiveSupport::Configurable
 
-    config_accessor :max_image_size, :pages_per_dialog, :pages_per_admin_index,
+    config_accessor :dragonfly_insert_before, :max_image_size, :pages_per_dialog, :pages_per_admin_index,
                     :pages_per_dialog_that_have_size_options, :user_image_sizes
 
+    self.dragonfly_insert_before = 'ActionDispatch::Callbacks'
     self.max_image_size = 5242880
     self.pages_per_dialog = 18
     self.pages_per_dialog_that_have_size_options = 12
