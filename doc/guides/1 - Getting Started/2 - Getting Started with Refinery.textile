@@ -91,7 +91,7 @@ h5. Rails Application Templates
 These application templates are another very easy way to install Refinery, and allow for a great deal of control of your installation.  You can specify which version of Refinery that you wish to install simply by passing it to the command.
 
 <shell>
-$ rails new rickrockstar -m http://refinerycms.com/v/2.0.0
+$ rails new rickrockstar -m https://raw.github.com/resolve/refinerycms/master/templates/refinery/edge.rb
 </shell>
 
 TIP. You can specify other versions of Refinery in the same fashion.  <tt>$ rails new rickrockstar -m http://refinerycms.com/v/edge</tt>
@@ -108,7 +108,7 @@ $ refinerycms rickrockstar
 
 TIP: You can see all of the switches that the +refinerycms+ command accepts by running +refinerycms+ with no options or arguements.
 
-TIP: You can run <tt>$ refinerycms rickrockstar -r 3.0.9</tt> to generate a refinery stack with any specific version of rails you need.
+TIP: You can run <tt>$ refinerycms rickrockstar -r 3.1.3</tt> to generate a refinery stack with any specific version of rails you need.
 
 This will create a new Rails application with Refinery built in called Rick Rock Star in a directory called +rickrockstar+. It also automatically runs +bundle install+ which will find and install all Refinery's ruby gem dependencies. Finally, it creates your database and seeds it with some basic defaults to get you started.
 
