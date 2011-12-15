@@ -23,7 +23,6 @@ en:
             preferred_image_view: This controls which view the images plugin displays existing images in - grid for 'Grid View' and list for 'List View'. There is a button to automate this process on the images plugin itself.
             show_contact_privacy_link: You can hide or show the link to the privacy policy page on the contact form by the submit button.
             cache_pages_full: Activates the full-page-cache. It allows cached page delivery via Nginx or .htaccess file from Apache.
-            use_custom_slugs: A slug is a human-readable ID used to create a page&apos;s full URL, for example &apos;about-us&apos;. To enable the ability to override the slugs that are automatically created by Refinery, set this to true.
   activerecord:
     models:
       refinery/setting: setting

@@ -47,7 +47,7 @@
       </span>
       <%= f.text_field :menu_title, :style=> 'width:400px;' %>
     </div>
-    <% if ::Refinery::Setting.find_or_set(:use_custom_slugs, false, :scope => 'pages') %>
+    <% if Refinery::Pages.config.use_custom_slugs %>
     <div class='field'>
       <span class='label_with_help'>
         <%= f.label :custom_slug, t('.custom_slug') %>
