@@ -65,11 +65,7 @@ module Refinery
     end
 
     def write_cache?
-      if ::Refinery::Setting.find_or_set(:cache_pages_full, {
-        :restricted => true,
-        :value => false,
-        :form_value_type => 'check_box'
-      })
+      if Refinery::Pages.config.cache_pages_full
         cache_page(response.body, File.join('', 'refinery', 'cache', 'pages', request.path).to_s)
       end
     end

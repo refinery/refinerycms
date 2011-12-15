@@ -22,7 +22,6 @@ en:
             page_title: Very complex options for setting the page title. Here you can set custom CSS class or a different tag or tell it to breadcrumb with pages in its ancestry.
             preferred_image_view: This controls which view the images plugin displays existing images in - grid for 'Grid View' and list for 'List View'. There is a button to automate this process on the images plugin itself.
             show_contact_privacy_link: You can hide or show the link to the privacy policy page on the contact form by the submit button.
-            cache_pages_full: Activates the full-page-cache. It allows cached page delivery via Nginx or .htaccess file from Apache.
   activerecord:
     models:
       refinery/setting: setting

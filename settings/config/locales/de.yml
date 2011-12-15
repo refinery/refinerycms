@@ -22,7 +22,6 @@ de:
             page_title: Sehr umfangreiche Möglichkeit zum Setzen des Seitentitels. Hier können Sie eine angepasste CSS-Klasse oder ein HTML-Tag angeben, oder auch eine Brotkrumen-Navigation erzeugen.
             preferred_image_view: Dies legt fest, welche Ansicht des Bilder-Erweiterung für vorhandene Bilder verwendet werden soll - "grid" für eine Gitter-Ansicht und "list" für eine Listen-Ansicht. Es gibt einen Knopf in der Erweiterung selbst, um diesen Vorgang zu automatisieren.
             show_contact_privacy_link: Sie können den Link zu den Datenschutzbestimmungen beim Kontaktformular verstecken oder beim Absenden-Knopf anzeigen lassen.
-            cache_pages_full: Aktiviert den Full-Page-Cache. Damit können die Seiten mit einer .htaccess-Rewrite-Regel vom Apache oder Nginx ausgeliefert werden.
   activerecord:
     models:
       refinery/setting: Einstellungen
