@@ -39,7 +39,7 @@ module Refinery
     end
 
     def activity_by_class_name(class_name)
-      self.activity.select{ |a| a.class_name == class_name.to_s.camelize } 
+      self.activity.select{ |a| a.class_name == class_name.to_s.camelize }
     end
 
     # Stores information that can be used to retrieve the latest activities of this plugin
@@ -64,7 +64,7 @@ module Refinery
 
     # Returns a RegExp that matches, if the current page is part of the plugin.
     def menu_match
-      @menu_match ||= /refinery\/#{name}$/
+      @menu_match ||= %r{refinery/#{name}(/.+?)?$}
     end
 
     def pathname=(value)
