@@ -10,9 +10,8 @@ notifications:
   irc:
     - "irc.freenode.org#refinerycms"
 env:
-  - DB=postgresql
-  - DB=mysql
-  - SKIP_COV=true
+  - DB=postgresql SKIP_COV=true
+  - DB=mysql SKIP_COV=true
 rvm:
   - 1.8.7
   - 1.9.2
