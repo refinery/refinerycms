@@ -153,5 +153,16 @@ module Refinery
       end
     end
 
+    describe '#activity_by_class_name' do
+      before { plugin.activity = [ { :class_name => "X::Y::Z" }, { :class_name => "X::Y::ZZ" }] }
+
+      context 'when the plugin have diferents activities' do
+        it 'returns the correct activity' do
+          plugin.activity_by_class_name("X::Y::Z").first.should == plugin.activity.first
+          plugin.activity_by_class_name("X::Y::ZZ").first.should == plugin.activity.last
+        end
+      end
+    end
+
   end
 end

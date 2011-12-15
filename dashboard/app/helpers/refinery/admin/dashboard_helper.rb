@@ -4,7 +4,7 @@ module ::Refinery
 
       def activity_message_for(record)
         if (plugin = ::Refinery::Plugins.active.find_by_model(record.class)) &&
-           (activity = plugin.activity.first)
+           (activity = plugin.activity_by_class_name(record.class.name).first)
           # work out which action occured
           action = record.updated_at.eql?(record.created_at) ? 'created' : 'updated'
 
