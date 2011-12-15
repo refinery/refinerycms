@@ -38,6 +38,10 @@ module Refinery
       self.plugin_activity ||= []
     end
 
+    def activity_by_class_name(class_name)
+      self.activity.select{ |a| a.class_name == class_name.to_s.camelize } 
+    end
+
     # Stores information that can be used to retrieve the latest activities of this plugin
     def activity=(activities)
       [activities].flatten.each { |activity| add_activity(activity) }
