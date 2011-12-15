@@ -1,6 +1,5 @@
 <section id='records' class='tree'>
-  <% caching = ::Refinery::Setting.find_or_set(:cache_pages_backend, false) %>
-  <% cache_if(caching, [Refinery.base_cache_key, "pages_backend", Globalize.locale].join('_')) do %>
+  <% cache_if(Refinery::Pages.config.cache_pages_backend, [Refinery.base_cache_key, "pages_backend", Globalize.locale].join('_')) do %>
     <%= render :partial => 'records' %>
   <% end %>
 </section>
