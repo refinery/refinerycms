@@ -12,12 +12,7 @@ module Refinery
 
   module Authentication
     require 'refinery/authentication/engine' if defined?(Rails)
-
-    include ActiveSupport::Configurable
-
-    config_accessor :superuser_can_assign_roles
-
-    self.superuser_can_assign_roles = false
+    require 'refinery/authentication/configuration'
 
     class << self
       def factory_paths
