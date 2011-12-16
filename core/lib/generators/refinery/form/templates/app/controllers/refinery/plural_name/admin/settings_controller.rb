@@ -6,7 +6,7 @@ module Refinery
         crudify :'refinery/setting',
                 :title_attribute => 'name',
                 :order => 'name ASC',
-                :redirect_to_url => 'refinery_<%= plural_name %>_admin_<%= plural_name %>_url'
+                :redirect_to_url => 'refinery_<%= plural_name %>_admin_<%= plural_name %>_path'
 
         before_filter :redirect_back_to_<%= plural_name %>?, :only => [:index]
         before_filter :set_url_override?, :only => [:edit, :update]
