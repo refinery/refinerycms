@@ -18,6 +18,8 @@ module Refinery
                     :scoping, :restricted, :callback_proc_as_string,
                     :form_value_type
 
+    has_friendly_id :name, :use_slug => true
+
     before_save do |setting|
       setting.restricted = false if setting.restricted.nil?
     end
