@@ -71,7 +71,7 @@ group :development, :test do
         gem 'libnotify',  '~> 0.1.3'
         gem 'therubyracer', '~> 0.9.9'
       end
-    end@hi
+    end
   end
 
   platforms :jruby do
