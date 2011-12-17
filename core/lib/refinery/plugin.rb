@@ -4,23 +4,22 @@ module Refinery
   class Plugin
 
     attr_accessor :name, :class_name, :controller, :directory, :url,
-                  :version, :dashboard, :always_allow_access,
-                  :menu_match, :hide_from_menu,
-                  :pathname, :plugin_activity
-    attr_reader   :description
+                  :version, :dashboard, :always_allow_access, :menu_match,
+                  :hide_from_menu, :pathname, :plugin_activity
 
     def self.register(&block)
       yield(plugin = self.new)
 
       raise "A plugin MUST have a name!: #{plugin.inspect}" if plugin.name.blank?
 
+      # Set defaults.
+      plugin.menu_match ||= %r{refinery/#{name}(/.+?)?$}
+      plugin.always_allow_access ||= false
+      plugin.dashboard ||= false
+      plugin.class_name ||= plugin.name.camelize
+
       # add the new plugin to the collection of registered plugins
       ::Refinery::Plugins.registered << plugin
-    end
-
-    # Returns the class name of the plugin
-    def class_name
-      @class_name ||= name.camelize
     end
 
     # Returns the internationalized version of the title
@@ -38,33 +37,19 @@ module Refinery
       self.plugin_activity ||= []
     end
 
-    def activity_by_class_name(class_name)
-      self.activity.select{ |a| a.class_name == class_name.to_s.camelize }
-    end
-
     # Stores information that can be used to retrieve the latest activities of this plugin
     def activity=(activities)
       [activities].flatten.each { |activity| add_activity(activity) }
     end
 
-    # Returns true, if the user doesn't require plugin access
-    def always_allow_access?
-      @always_allow_access || false
-    end
-
-    # Special property to indicate that this plugin is the dashboard plugin.
-    def dashboard?
-      @dashboard || false
+    # Given a record's class name, find the related activity object.
+    def activity_by_class_name(class_name)
+      self.activity.select{ |a| a.class_name == class_name.to_s.camelize }
     end
 
     # Used to highlight the current tab in the admin interface
     def highlighted?(params)
-      !!(params[:controller].try(:gsub, "admin/", "") =~ menu_match) or (dashboard? and params[:action] == 'error_404')
-    end
-
-    # Returns a RegExp that matches, if the current page is part of the plugin.
-    def menu_match
-      @menu_match ||= %r{refinery/#{name}(/.+?)?$}
+      !!(params[:controller].try(:gsub, "admin/", "") =~ menu_match) || (dashboard && params[:action] == 'error_404')
     end
 
     def pathname=(value)

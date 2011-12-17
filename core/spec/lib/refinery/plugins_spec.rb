@@ -124,7 +124,7 @@ module Refinery
 
       it 'only contains items that are always allowed' do
         subject.class.always_allowed.any?.should be_true
-        subject.class.always_allowed.all? { |p| p.always_allow_access? }.should be_true
+        subject.class.always_allowed.all? { |p| p.always_allow_access }.should be_true
       end
     end
 

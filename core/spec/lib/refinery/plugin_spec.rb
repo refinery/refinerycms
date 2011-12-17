@@ -75,18 +75,18 @@ module Refinery
       end
     end
 
-    describe '#always_allow_access?' do
+    describe '#always_allow_access' do
       it 'returns false if @always_allow_access is not set or its set to false' do
-        plugin.always_allow_access?.should be_false
+        plugin.always_allow_access.should be_false
       end
 
       it 'returns true if set so' do
-        plugin.stub(:always_allow_access?).and_return(true)
-        plugin.always_allow_access?.should be
+        plugin.stub(:always_allow_access).and_return(true)
+        plugin.always_allow_access.should be
       end
     end
 
-    describe '#dashboard?' do
+    describe '#dashboard' do
       it 'returns false if @dashboard is not set or its set to false' do
         plugin.dashboard.should be_false
       end
@@ -109,8 +109,8 @@ module Refinery
         plugin.highlighted?({:controller => 'refinery/refinery_rspec'}).should be
       end
 
-      it 'returns true if dashboard? is true and params[:action] == error_404' do
-        plugin.stub(:dashboard?).and_return(true)
+      it 'returns true if dashboard is true and params[:action] == error_404' do
+        plugin.stub(:dashboard).and_return(true)
         plugin.highlighted?({:action => 'error_404'}).should be
       end
     end

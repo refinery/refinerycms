@@ -1,3 +1,5 @@
+$VERBOSE = ENV['VERBOSE'] || false
+
 require 'rubygems'
 
 if RUBY_VERSION > "1.9"
@@ -38,7 +40,7 @@ def setup_environment
   end
 
   # set javascript driver for capybara
-  Capybara.javascript_driver = :webkit
+  Capybara.default_driver = Capybara.javascript_driver = :webkit
 end
 
 def each_run
