@@ -90,7 +90,7 @@ module Refinery
         note << "you will need to run the following tasks manually to maintain correct operation:"
         note << "\ncd #{app_pathname}"
         note << "bundle exec rake db:create"
-        note << "bundle exec rails generate refinerycms"
+        note << "bundle exec rails generate refinery:cms"
         note << "bundle exec rake db:migrate"
         note << "\n---------\n"
       end
