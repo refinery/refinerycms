@@ -13,7 +13,7 @@ module Refinery
       raise "A plugin MUST have a name!: #{plugin.inspect}" if plugin.name.blank?
 
       # Set defaults.
-      plugin.menu_match ||= %r{refinery/#{name}(/.+?)?$}
+      plugin.menu_match ||= %r{refinery/#{plugin.name}(/.+?)?$}
       plugin.always_allow_access ||= false
       plugin.dashboard ||= false
       plugin.class_name ||= plugin.name.camelize
