@@ -21,7 +21,7 @@
       <%= f.select :parent_id, nested_set_options(::Refinery::Page, @page) {|i| "#{'-' * i.level} #{i.title}" },
                    :include_blank => true %>
     </div>
-    <% if ::Refinery::Setting.find_or_set(:use_layout_templates, false, :scoping => 'pages') %>
+    <% if Refinery::Pages.config.use_layout_templates %>
     <div class='field'>
       <span class='label_with_help'>
         <%= label_tag :layout_template, t('.layout_template') %>
@@ -30,7 +30,7 @@
       <%= f.select(:layout_template, @valid_layout_templates) %>
     </div>
     <% end %>
-    <% if ::Refinery::Setting.find_or_set(:use_view_templates, false, :scoping => 'pages') %>
+    <% if Refinery::Pages.config.use_view_templates %>
     <div class='field'>
       <span class='label_with_help'>
         <%= label_tag :view_template, t('.view_template') %>

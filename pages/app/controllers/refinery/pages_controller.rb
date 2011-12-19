@@ -54,13 +54,13 @@ module Refinery
     alias_method :page, :find_page
 
     def render_with_templates?
-      layouts = ::Refinery::Setting.find_or_set(:use_layout_templates, false, :scoping => 'pages')
-      views   = ::Refinery::Setting.find_or_set(:use_view_templates, false, :scoping => 'pages')
-
       render_options = {}
-      render_options[:layout] = @page.layout_template if layouts && @page.layout_template.present?
-      render_options[:action] = @page.view_template if views && @page.view_template.present?
-
+      if Refinery::Pages.config.use_layout_templates && @page.layout_template.present?
+        render_options[:layout] = @page.layout_template
+      end
+      if Refinery::Pages.config.use_view_templates && @page.view_template.present?
+        render_options[:action] = @page.view_template
+      end
       render render_options if render_options.any?
     end
 

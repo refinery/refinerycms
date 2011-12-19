@@ -48,11 +48,11 @@ module ::Refinery
       end
 
       def load_valid_templates
-        layout_whitelist        = ::Refinery::Setting.find_or_set(:layout_template_whitelist, %w(application), :scoping => 'pages')
-        @valid_layout_templates = layout_whitelist & valid_templates('app', 'views', '{layouts,refinery/layouts}', '*html*')
+        @valid_layout_templates = Refinery::Pages.config.layout_template_whitelist &
+                                  valid_templates('app', 'views', '{layouts,refinery/layouts}', '*html*')
 
-        template_whitelist    = ::Refinery::Setting.find_or_set(:view_template_whitelist, %w(home show), :scoping => 'pages')
-        @valid_view_templates = template_whitelist & valid_templates('app', 'views', '{pages,refinery/pages}', '*html*')
+        @valid_view_templates = Refinery::Pages.config.view_template_whitelist &
+                                valid_templates('app', 'views', '{pages,refinery/pages}', '*html*')
       end
 
       def restrict_access
