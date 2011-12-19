@@ -377,5 +377,43 @@ module Refinery
         end
       end
     end
+
+    describe ".in_menu?" do
+      context "when live? and show_in_menu? returns true" do
+        it "returns true" do
+          page.stub(:live?).and_return(true)
+          page.stub(:show_in_menu?).and_return(true)
+          page.in_menu?.should be_true
+        end
+      end
+
+      context "when live? or show_in_menu? doesn't return true" do
+        it "returns false" do
+          page.stub(:live?).and_return(true)
+          page.stub(:show_in_menu?).and_return(false)
+          page.in_menu?.should be_false
+
+          page.stub(:live?).and_return(false)
+          page.stub(:show_in_menu?).and_return(true)
+          page.in_menu?.should be_false
+        end
+      end
+    end
+
+    describe ".not_in_menu?" do
+      context "when in_menu? returns true" do
+        it "returns false" do
+          page.stub(:in_menu?).and_return(true)
+          page.not_in_menu?.should be_false
+        end
+      end
+
+      context "when in_menu? returns false" do
+        it "returns true" do
+          page.stub(:in_menu?).and_return(false)
+          page.not_in_menu?.should be_true
+        end
+      end
+    end
   end
 end
