@@ -49,10 +49,10 @@ module ::Refinery
 
       def load_valid_templates
         @valid_layout_templates = Refinery::Pages.config.layout_template_whitelist &
-                                  valid_templates('app', 'views', '{layouts,refinery/layouts}', '*html*')
+                                  Refinery::Page.valid_templates('app', 'views', '{layouts,refinery/layouts}', '*html*')
 
         @valid_view_templates = Refinery::Pages.config.view_template_whitelist &
-                                valid_templates('app', 'views', '{pages,refinery/pages}', '*html*')
+                                Refinery::Page.valid_templates('app', 'views', '{pages,refinery/pages}', '*html*')
       end
 
       def restrict_access
@@ -74,14 +74,6 @@ module ::Refinery
           @page = ::Refinery::Page.new(params[:page])
           render :new
         end
-      end
-
-      def valid_templates(*pattern)
-        [::Rails.root, ::Refinery::Plugins.registered.pathnames].flatten.uniq.map{|p|
-          p.join(*pattern)
-        }.map(&:to_s).map{ |p| Dir[p] }.select(&:any?).flatten.map{|f|
-          File.basename(f)}.map {|p| p.split('.').first
-        }
       end
     end
   end

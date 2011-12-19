@@ -357,5 +357,25 @@ module Refinery
       end
     end
 
+    describe ".valid_templates" do
+      before do
+        File.open(File.join(Refinery::Pages.root, "spec", "ugisozols.html"), "w+") do
+        end
+      end
+
+      after { File.delete(File.join(Refinery::Pages.root, "spec", "ugisozols.html")) }
+
+      context "when pattern match valid templates" do
+        it "returns an array of valid templates" do
+          Refinery::Page.valid_templates('spec', '*html*').should include("ugisozols")
+        end
+      end
+
+      context "when pattern doesn't match valid templates" do
+        it "returns empty array" do
+          Refinery::Page.valid_templates('huh', '*html*').should == []
+        end
+      end
+    end
   end
 end
