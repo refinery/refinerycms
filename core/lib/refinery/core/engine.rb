@@ -78,10 +78,6 @@ module Refinery
         end
       end
 
-      initializer "refinery.configuration" do |app|
-        app.config.refinery = Refinery::Configuration.new
-      end
-
       initializer "refinery.routes" do |app|
         app.routes_reloader.paths << File.expand_path('../../catch_all_routes.rb', __FILE__)
       end

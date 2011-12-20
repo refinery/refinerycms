@@ -11,7 +11,6 @@ module Refinery
 
   autoload :Activity, 'refinery/activity'
   autoload :ApplicationController, 'refinery/application_controller'
-  autoload :Configuration, 'refinery/configuration'
   autoload :Engine, 'refinery/engine'
   autoload :Menu, 'refinery/menu'
   autoload :MenuItem, 'refinery/menu_item'
