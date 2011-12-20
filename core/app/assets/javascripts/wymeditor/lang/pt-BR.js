@@ -43,7 +43,7 @@ WYMeditor.STRINGS['pt-BR'] = {
 	Classes:          'Classes',
 	Status:           'Estado',
 	Source_Code:      'Código fonte',
-	Css_Class:        'Aplicar classe CSS'
+	Css_Class:        'Aplicar classe CSS',
   Text_Align:       'Alinhamento de texto',
   Image_Align:      'Alinhamento de imagem',
   Font_Size:        'Tamanho da fonte',
