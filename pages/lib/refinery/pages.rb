@@ -22,6 +22,18 @@ module Refinery
       def factory_paths
         @factory_paths ||= [ root.join('spec', 'factories').to_s ]
       end
+
+      def valid_templates(*pattern)
+        [Rails.root, Refinery::Plugins.registered.pathnames].flatten.uniq.map do |p|
+          p.join(*pattern)
+        end.map(&:to_s).map do |p|
+          Dir[p]
+        end.select(&:any?).flatten.map do |f|
+          File.basename(f)
+        end.map do |p|
+          p.split('.').first
+        end
+      end
     end
 
     module Admin

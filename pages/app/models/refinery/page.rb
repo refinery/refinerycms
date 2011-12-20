@@ -131,18 +131,6 @@ module Refinery
           return true # so that other callbacks process.
         end
       end
-
-      def valid_templates(*pattern)
-        [Rails.root, Refinery::Plugins.registered.pathnames].flatten.uniq.map do |p|
-          p.join(*pattern)
-        end.map(&:to_s).map do |p|
-          Dir[p]
-        end.select(&:any?).flatten.map do |f|
-          File.basename(f)
-        end.map do |p|
-          p.split('.').first
-        end
-      end
     end
 
     def custom_slug_or_title
