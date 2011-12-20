@@ -382,6 +382,35 @@ module Refinery
           Refinery::Page.count.should == 1
         end
       end
+
+      describe "Pages Link-to Dialog" do
+        before do
+          Refinery::I18n.config.frontend_locales = [:en, :ru]
+
+          # Create a page in both locales
+          about_page = FactoryGirl.create(:page, :title => 'About')
+          Globalize.locale = :ru
+          about_page.title = 'About Ru'
+          about_page.save
+          Globalize.locale = :en
+        end
+
+        describe "adding page link" do
+          it "should show Russian pages if we're editing the Russian locale" do
+            visit 'refinery/pages_dialogs/link_to?wymeditor=true&switch_locale=ru'
+
+            page.should have_content("About Ru")
+            page.should have_selector("a[href='http://www.example.com/ru/about-ru']")
+          end
+
+          it "should show default to the default locale if no query string is added" do
+            visit 'refinery/pages_dialogs/link_to?wymeditor=true'
+
+            page.should have_content("About")
+            page.should have_selector("a[href='http://www.example.com/about']")
+          end
+        end
+      end
     end
   end
 end

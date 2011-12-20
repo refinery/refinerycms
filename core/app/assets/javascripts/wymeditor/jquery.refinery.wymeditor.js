@@ -1281,7 +1281,7 @@ WYMeditor.editor.prototype.dialog = function( dialogType ) {
   var wym = this;
 
   wym.update();
-  var path = this._wym._options.dialogPath + dialogType + '?wymeditor=true';
+  var path = this._wym._options.dialogPath + dialogType + '?wymeditor=true&' + window.location.href.match(/switch_locale=[a-z]{2}/);
 
   wym._current_unique_stamp = wym.uniqueStamp();
   // change undo or redo on cancel to true to have this happen when a user closes (cancels) a dialogue
