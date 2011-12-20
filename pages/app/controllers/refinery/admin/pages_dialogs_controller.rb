@@ -5,9 +5,17 @@ module ::Refinery
     class PagesDialogsController < ::Refinery::Admin::DialogsController
 
       def link_to
+        # Get the switch_local variable to determine the locale we're currently editing
+        # Set up Globalize with our current locale
+        if ::Refinery.i18n_enabled?
+          Thread.current[:globalize_locale] = params[:switch_locale] || Refinery::I18n.default_locale
+        end
+
         @pages = ::Refinery::Page.where(:parent_id => nil).
                                   paginate(:page => params[:page], :per_page => Page.per_page(true)).
                                   order('position')
+
+        @pages = @pages.with_globalize if ::Refinery.i18n_enabled?
 
         if ::Refinery::Plugins.registered.names.include?('refinery_files')
             @resources = Resource.paginate(:page => params[:resource_page], :per_page => Resource.per_page(true)).
