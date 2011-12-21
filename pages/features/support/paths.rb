@@ -11,13 +11,15 @@ module NavigationHelpers
           new_admin_page_path
         else
           begin
-            if page_name =~ /the page titled "?([^\"]*)"?/ and (page = Page.by_title($1).first).present?
+            if page_name =~ /the page titled "?([^\"]*)"? with locale "?([^\"]*)"?/ and (page = Page.by_title($1).first).present?
+              self.url_for(page.url.is_a?(String) ? "/#{$2}#{page.url}" : page.url.merge(:locale => $2))
+            elsif page_name =~ /the page titled "?([^\"]*)"?/ and (page = Page.by_title($1).first).present?
               self.url_for(page.url)
             else
               nil
             end
           rescue
-            nil
+           nil
           end
         end
       end

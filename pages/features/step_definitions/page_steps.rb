@@ -36,6 +36,17 @@ Given /^the page titled "?([^\"]*)"? is a child of "?([^\"]*)"?$/ do |title, par
   Page.by_title(title).first.update_attribute(:parent_id, parent_page.id)
 end
 
+Given /^the page titled "?([^\"]*)"? is fully translated$/ do |title|
+  page = Page.by_title(title).first
+  Refinery::I18n.frontend_locales.each do |locale|
+    old_locale = Thread.current[:globalize_locale]
+    Thread.current[:globalize_locale] = locale
+    page.title = title
+    page.save
+    Thread.current[:globalize_locale] = old_locale
+  end
+end
+
 Given /^the page titled "?([^\"]*)"? is not shown in the menu$/ do |title|
   Page.by_title(title).first.update_attribute(:show_in_menu, false)
 end
