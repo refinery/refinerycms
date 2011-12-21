@@ -21,7 +21,6 @@ cs:
             restricted: Volba bude viditelná a editovatelné pouze pro adminstrátory (jako jste vy).
             page_title: Velmi komplexní volba pro nastavení titulky stránky. Můžete nastavit vlastní CSS třídu, jiný tag nebo ho poslat do drobečkového menu se stránkami se stejným předkem.
             preferred_image_view: Nastavuje preferovaný pohled na existující obrázky. Zvolte grid pro zobrazení mřížky nebo list pro zobrazení seznamu. Nastavení se dá přepínat tlačítkem i v samotném pohledu.
-            show_contact_privacy_link: Můžete zobrazit či srýt odkaz na stránku 'zásady ochrany osobních údajů' u kontaktnícho formuláře vedle tlačítka 'Odeslat'.
   activerecord:
     models:
       refinery/setting: nastavení

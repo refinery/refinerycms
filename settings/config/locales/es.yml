@@ -33,7 +33,6 @@ es:
             restricted: Hace que sólo los superusuarios (como tu) puedan ver y editar esta opción.
             page_title: 'Opciones muy complejas para fijar el título de la página. Aquí puedes fijar alguna clase CSS personalizada, o alguna etiqueta diferente, o añadirlo a las "migas de pan" con los antecesores de cada página.'
             preferred_image_view: Controla con qué vista se muestran las imágenes existentes - grid para 'Ver como cuadrícula' y list para 'Ver como lista'. Hay un botón para automatizar este proceso en el propio plugin de las imágenes.
-            show_contact_privacy_link: Puedes ocultar o mostrar el enlace a la página de política de privacidad en el formulario de contacto.
   activerecord:
     models:
       refinery/setting: opción

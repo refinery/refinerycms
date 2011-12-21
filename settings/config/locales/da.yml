@@ -21,7 +21,6 @@ da:
             restricted: Gør at indstillingen kun kan ses og redigeres af administratorer (som dig).
             page_title: Avancerede indstillinger for konfiguration af sidetitel. Her kan du angive CSS klasse eller et alternativt tag samt angive at sidehierarkiet skal vises i brødkrummen.
             preferred_image_view: Standard billedvisning, 'gittervisning' eller 'listevisning'. Dette kan også ændres under fanebladet 'Billeder'.
-            show_contact_privacy_link: Vis link til privatlivspolitik på kontaktformularen.
   activerecord:
     models:
       refinery/setting: indstilling

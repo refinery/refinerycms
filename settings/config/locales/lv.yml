@@ -21,7 +21,6 @@ lv:
             restricted: Šī opcija padara uzstādījumu redzamu un rediģējamu tikai superlietotājiem (tādi kā jūs).
             page_title: Kompleksas opcijas lapas nosaukuma uzstādīšanai. Šeit jūs varat personalizēt CSS klasi, uzstādīt citu birku vai arī sadalīt lapu fragmentos atkarībā no tās izcelsmes.
             preferred_image_view: Šis uzstādījums kontrolē, kurš skats tiek izmantots bilžu spraudnī - grid 'Režģa skatam' un list 'Saraksta skatam'. Bilžu spraudnī ir poga, kas automatizē šo procesu.
-            show_contact_privacy_link: Jūs varat noslēpt vai atstāt redzamu privātuma politikas saiti kontaktformas lapā.
   activerecord:
     models:
       refinery/setting: uzstādījums

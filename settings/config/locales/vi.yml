@@ -21,7 +21,6 @@ vi:
             restricted: Điều này làm cho các thiết lập chỉ hiển thị và chỉnh sửa bởi superusers (những người như bạn).
             page_title: Đây là các tùy chọn rất phức tạp để thiết lập tiêu đề trang. Tại đây bạn có thể tùy chỉnh CSS hoặc tag hoặc thay đổi cấu trúc breadcrumb.
             preferred_image_view: Thiết lập này điều khiển các trang mà các plugin về hình ảnh có thể hiển thị hình ảnh hiện có - dạng lưới cho 'Grid View" và dạng danh sách cho "List View". Có một nút để tự động hóa quá trình này trên những hình ảnh plugin chính nó.
-            show_contact_privacy_link: Bạn có thể ẩn hoặc hiển thị các liên kết đến trang privacy policy trên các form liên lạc bằng nút Submit.
   activerecord:
     models:
       refinery/setting: Thiết lập

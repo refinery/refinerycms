@@ -21,7 +21,6 @@ nb:
             restricted: "Dette gjør det slik at denne innstillingen kun kan sees og endres av brukere som er superbrukere (som deg)."
             page_title: "Svært avanserte alternativer for å sette tittelen på siden. Her kan du legge inn tilpassede CSS klasser eller en annen tag for å legge til brødsmuler."
             preferred_image_view: "Dette kontrollerer hvilken visning bilde-tillegget viser eksisterende bilder i - rute for 'Rutenett', og liste for 'Liste'. Det er en knapp som automatiserer dene prosessen under bilde-tillegget."
-            show_contact_privacy_link: "Du kan gjemme eller vise lenken til din 'privacy policy' på forespørsel skjemaet, ved siden av 'Send Forespørsel' knappen."
   activerecord:
     models:
       refinery/setting: innstilling

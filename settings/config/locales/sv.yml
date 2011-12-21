@@ -21,7 +21,6 @@ sv:
             restricted: Det här gör inställnigen synlig och redigerbar av huvudanvändare (tex. du).
             page_title: Här kan du ställa in CSS eller html tag. Du kan även ställa in brödsmulor (s.k. breadcrumbs) för sidans ursprung
             preferred_image_view: Den här styr vilken vy tillägsprogrammet för bilder väljer att visa bilder i. 'Grid View' för rutnät eller 'List View' för lista. Det finns en knapp för att automatisera denna process i tillägsprogrammet.
-            show_contact_privacy_link: Du kan välja att visa eller dölja Registerbeskrivning (privacy policy) bredvid skicka knappen.
   activerecord:
     models:
       refinery/setting: inställning

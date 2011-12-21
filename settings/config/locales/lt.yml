@@ -22,7 +22,6 @@ lt:
             restricted: "Tai padarys šį nustatymą matomą ir redaguojamą tik vartotojams kurie yra super vartotojai (kaip Jūs)."
             page_title: "Labai sudėtinti nustatymai nurodant puslapio antraštę. Čia galite nurodyti kitokią CSS klasę ar kitokią html žymę ar nurodyti puslapiui naršymo kelią su jo protėviais."
             preferred_image_view: "Čia valdoma kokį vaizdą rodys paveikslėlių įskiepis. Tinklelį 'Rodyti kaip tinklelį' ar sąrašą 'Rodyti kaip sąrašą'. Procesui automatizuoti ir pačiame paveikslėlių įskiepyje yra mygtukas."
-            show_contact_privacy_link: Jūs galite paslėpti arba rodyti nuorodą į svetainės privatumo politikos puslapį kontaktų formoje prie siuntimo mygtuko.
   activerecord:
     models:
       refinery/setting: nustatymas

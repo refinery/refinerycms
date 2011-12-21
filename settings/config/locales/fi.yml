@@ -21,7 +21,6 @@ fi:
             restricted: "Rajoittaa asetuksen niin, että vain superkäyttäjät (kuten sinä) näkevät sen ja voivat muokata sitä."
             page_title: "Teknisiä ominaisuuksia sivun otsikon näyttämiseen. Voit asettaa omia CSS-luokkia tai tageja."
             preferred_image_view: "Missä näkymässä kuvapalikka näyttää kuvat: lista- vai ruudukkonäkymässä. Kuvapalikassa on oma nappi näkymien vaihtamiseen."
-            show_contact_privacy_link: "Voit piilottaa linkin yksityisyydensuojasivulle yhteydenottolomakkeessa."
   activerecord:
     models:
       refinery/setting: asetus
