@@ -7,7 +7,7 @@ module Refinery
                     :default_parts, :use_custom_slugs, :cache_pages_backend,
                     :cache_pages_full, :layout_template_whitelist,
                     :view_template_whitelist, :use_layout_templates,
-                    :use_view_templates
+                    :use_view_templates, :page_title
 
     self.pages_per_dialog = 14
     self.pages_per_admin_index = 20
@@ -23,5 +23,18 @@ module Refinery
     self.view_template_whitelist = ["home", "show"]
     self.use_layout_templates = false
     self.use_view_templates = false
+    self.page_title = {
+      :chain_page_title => false,
+      :ancestors => {
+        :separator => " | ",
+        :class => 'ancestors',
+        :tag => 'span'
+      },
+      :page_title => {
+        :class => nil,
+        :tag => nil,
+        :wrap_if_not_chained => false
+      }
+    }
   end
 end

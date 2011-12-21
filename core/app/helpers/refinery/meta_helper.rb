@@ -15,19 +15,7 @@ module Refinery
     def page_title(options = {})
       object = options.fetch(:object, @meta)
       options.delete(:object)
-      options = ::Refinery::Setting.find_or_set(:page_title, {
-        :chain_page_title => false,
-        :ancestors => {
-          :separator => " | ",
-          :class => 'ancestors',
-          :tag => 'span'
-        },
-        :page_title => {
-          :class => nil,
-          :tag => nil,
-          :wrap_if_not_chained => false
-        }
-      }).merge(options)
+      options = Refinery::Pages.config.page_title.merge(options)
 
       title = []
       objects = (options[:chain_page_title] and object.respond_to?(:ancestors)) ? [object.ancestors, object] : [object]

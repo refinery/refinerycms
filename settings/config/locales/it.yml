@@ -19,5 +19,4 @@ it:
           yes_make_this_setting_restricted: "Sì, rendi questa impostazione accessibile solo all'utente amministratore."
           help:
             restricted: "Questo rende l'impostazione visibile e modificabile solo da utenti amministratori (come te)."
-            page_title: Opzioni molto complesse per impostare il titolo della pagina. Qui è possibile impostare classi CSS personalizzate o un tag differente.
             preferred_image_view: "Questa opzione permette di impostare la visualizzazione di default nella sezione della gestione immagini (griglia per la visualizzazione 'Griglia' e lista per la visualizzazione 'Lista'). C'è un bottone per automatizzare questo processo nell'area della gestione immagini."

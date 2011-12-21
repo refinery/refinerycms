@@ -19,7 +19,6 @@ zh-CN:
           yes_make_this_setting_restricted: "是的, 使此设置限制为只能由超级用户修改."
           help:
             restricted: 这使得设置只能由超级用户(像您一样)可见和修改.
-            page_title: 提供非常复杂的选项让您设定页面标题. 在这里您可以设定自订的 CSS 类別或是不同的标签, 或是加上记录着页面层级关系的导览列.
             preferred_image_view: 这可控制图片插件如何呈现目前这些已存在网站上的图片 - grid 表示 '网格模式' 以及 list 表示 '列表模式'. 图片插件本身提供一个按钮可以自动切换这些模式.
   activerecord:
     models:
