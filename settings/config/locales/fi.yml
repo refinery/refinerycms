@@ -19,7 +19,6 @@ fi:
           yes_make_this_setting_restricted: "Kyllä, rajoita tämä asetus vain superkäyttäjille."
           help:
             restricted: "Rajoittaa asetuksen niin, että vain superkäyttäjät (kuten sinä) näkevät sen ja voivat muokata sitä."
-            preferred_image_view: "Missä näkymässä kuvapalikka näyttää kuvat: lista- vai ruudukkonäkymässä. Kuvapalikassa on oma nappi näkymien vaihtamiseen."
   activerecord:
     models:
       refinery/setting: asetus

@@ -18,7 +18,6 @@ lolcat:
           yes_make_this_setting_restricted: YEZ, MAK DIS SETTIN RESTRICTD ONLY 2 SUPERUSERS.
           help:
             restricted: DIS MAKEZ TEH SETTIN ONLY VISIBLE AN EDITABLE BY USERS HOO R SUPERUSERS (LIEK U).
-            preferred_image_view: DIS CONTROLS WHICH VIEW TEH IMAGEZ PLUGIN DISPLAYS EXISTIN IMAGEZ IN - GRID 4 GRID VIEW AN LIST 4 LIST VIEW. THAR IZ BUTN 2 AUTOMATE DIS PROCES ON TEH IMAGEZ PLUGIN ITSELF.
   activerecord:
     models:
       refinery/setting: SETTIN

@@ -19,7 +19,6 @@ nl:
           yes_make_this_setting_restricted: Ja, maak deze instelling alleen maar beschikbaar voor super-gebruikers.
           help:
             restricted: Maak deze instelling alleen maar zichtbaar en bewerkbaar voor gebruikers die super-gebruikers zijn (zoals jij).
-            preferred_image_view: Dit bepaald wat voor interface de afbeeldingen plugin gebruikt om de afbeedlingen te laten zin. Gebruik 'grid' voor de tabel interface, en 'list' voor de lijst interface. Er is een knop bij de afbeeldingen plugin om dit automatisch te doen.
   activerecord:
     models:
       refinery/setting: installing

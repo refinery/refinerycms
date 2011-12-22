@@ -20,7 +20,6 @@ pl:
           yes_make_this_setting_restricted: "Tak, uczyń to ustawienie ograniczonym wyłącznie do superużytkowników."
           help:
             restricted: Czyni ustawienie widocznym i edytowalnym wyłącznie dla superużytkowników (takich jak Ty).
-            preferred_image_view: To ustawienie określa w jakim widoku wtyczka obrazów wyświetla istniejące obrazy - grid dla widoku siatki, list dla listy. We wtyczce obrazy znajduje się przycisk automatyzujący tę zmianę.
   activerecord:
     models:
       refinery/setting: ustawienie

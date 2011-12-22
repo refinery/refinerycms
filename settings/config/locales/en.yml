@@ -19,7 +19,6 @@ en:
           yes_make_this_setting_restricted: "Yes, make this setting restricted only to superusers."
           help:
             restricted: This makes the setting only visible and editable by users who are superusers (like you).
-            preferred_image_view: This controls which view the images plugin displays existing images in - grid for 'Grid View' and list for 'List View'. There is a button to automate this process on the images plugin itself.
   activerecord:
     models:
       refinery/setting: setting

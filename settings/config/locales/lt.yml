@@ -20,7 +20,6 @@ lt:
           yes_make_this_setting_restricted: "Leisti šį nustatymą keisti tik super vartotojams."
           help:
             restricted: "Tai padarys šį nustatymą matomą ir redaguojamą tik vartotojams kurie yra super vartotojai (kaip Jūs)."
-            preferred_image_view: "Čia valdoma kokį vaizdą rodys paveikslėlių įskiepis. Tinklelį 'Rodyti kaip tinklelį' ar sąrašą 'Rodyti kaip sąrašą'. Procesui automatizuoti ir pačiame paveikslėlių įskiepyje yra mygtukas."
   activerecord:
     models:
       refinery/setting: nustatymas

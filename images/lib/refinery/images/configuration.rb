@@ -4,7 +4,7 @@ module Refinery
 
     config_accessor :dragonfly_insert_before, :max_image_size, :pages_per_dialog,
                     :pages_per_admin_index, :pages_per_dialog_that_have_size_options,
-                    :user_image_sizes
+                    :user_image_sizes, :image_views, :preferred_image_view
 
     self.dragonfly_insert_before = 'ActionDispatch::Callbacks'
     self.max_image_size = 5242880
@@ -14,5 +14,7 @@ module Refinery
     self.user_image_sizes = { :small => '110x110>',
                               :medium => '225x255>',
                               :large => '450x450>' }
+    self.image_views = [:grid, :list]
+    self.preferred_image_view = :grid
   end
 end

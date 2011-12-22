@@ -20,7 +20,6 @@ ja:
           help:
             restricted: 管理人のみが変更出来るようにします。
             activity_show_limit: ダッシュボードで表示されるアイテムの数を制限します。
-            preferred_image_view: 画像のレイアウト（グリッド又はリスト）を設定します。プラグイン自体にもこれを設定するボタンがあります。
   activerecord:
     models:
       refinery/setting: 設定

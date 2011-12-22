@@ -19,7 +19,6 @@ nb:
           yes_make_this_setting_restricted: "Ja, gjør denne innstillingen tilgjengelig kun for superbrukere."
           help:
             restricted: "Dette gjør det slik at denne innstillingen kun kan sees og endres av brukere som er superbrukere (som deg)."
-            preferred_image_view: "Dette kontrollerer hvilken visning bilde-tillegget viser eksisterende bilder i - rute for 'Rutenett', og liste for 'Liste'. Det er en knapp som automatiserer dene prosessen under bilde-tillegget."
   activerecord:
     models:
       refinery/setting: innstilling

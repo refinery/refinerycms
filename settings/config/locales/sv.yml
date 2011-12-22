@@ -19,7 +19,6 @@ sv:
           yes_make_this_setting_restricted: "Ja, gör så att enbart huvudanvändare kan komma åt den här inställningen."
           help:
             restricted: Det här gör inställnigen synlig och redigerbar av huvudanvändare (tex. du).
-            preferred_image_view: Den här styr vilken vy tillägsprogrammet för bilder väljer att visa bilder i. 'Grid View' för rutnät eller 'List View' för lista. Det finns en knapp för att automatisera denna process i tillägsprogrammet.
   activerecord:
     models:
       refinery/setting: inställning

@@ -19,7 +19,6 @@ lv:
           yes_make_this_setting_restricted: Jā, padarīt šo uzstādījumu pieejamu tikai superlietotājiem.
           help:
             restricted: Šī opcija padara uzstādījumu redzamu un rediģējamu tikai superlietotājiem (tādi kā jūs).
-            preferred_image_view: Šis uzstādījums kontrolē, kurš skats tiek izmantots bilžu spraudnī - grid 'Režģa skatam' un list 'Saraksta skatam'. Bilžu spraudnī ir poga, kas automatizē šo procesu.
   activerecord:
     models:
       refinery/setting: uzstādījums

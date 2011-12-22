@@ -19,7 +19,6 @@ pt-BR:
           yes_make_this_setting_restricted: "Permitir acesso apenas à super-usuários."
           help:
             restricted: Isso faz com que essa opção só seja vista ou editada por super-usuários (como você).
-            preferred_image_view: Habilita o tipo de visualição da seção imagens - grid para 'Visualizar em Grid' e list para 'Visualizar em Lista'. Há um botão para automatizar este processo no plugin de imagens.
   activerecord:
     models:
       refinery/setting: setting

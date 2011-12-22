@@ -19,4 +19,3 @@ it:
           yes_make_this_setting_restricted: "Sì, rendi questa impostazione accessibile solo all'utente amministratore."
           help:
             restricted: "Questo rende l'impostazione visibile e modificabile solo da utenti amministratori (come te)."
-            preferred_image_view: "Questa opzione permette di impostare la visualizzazione di default nella sezione della gestione immagini (griglia per la visualizzazione 'Griglia' e lista per la visualizzazione 'Lista'). C'è un bottone per automatizzare questo processo nell'area della gestione immagini."
