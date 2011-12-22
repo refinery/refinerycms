@@ -1,4 +1,4 @@
-<% if ::Refinery::Setting.find_or_set(:ie6_upgrade_message_enabled, true) -%>
+<% if Refinery::Core.config.ie6_upgrade_message_enabled -%>
   <% unless admin? %>
   <!--[if lte IE 6]>
     <div id="ie6msg_wrapper">

@@ -32,10 +32,7 @@ module Refinery
       end
 
       def disable_upgrade_message
-        ::Refinery::Setting.set(:show_internet_explorer_upgrade_message, {
-          :value => false,
-          :scoping => 'refinery'
-        })
+        Refinery::Core.config.show_internet_explorer_upgrade_message = false
         render :nothing => true
       end
 

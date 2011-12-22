@@ -8,6 +8,6 @@
   </aside>
 </div>
 <% if request.env["HTTP_USER_AGENT"] =~ /MSIE/ and
-        ::Refinery::Setting.find_or_set(:show_internet_explorer_upgrade_message, true, :scoping => 'refinery') %>
+        Refinery::Core.config.show_internet_explorer_upgrade_message %>
   <% flash.now[:message] = render(:partial => "/refinery/ie6check")  %>
 <% end %>
