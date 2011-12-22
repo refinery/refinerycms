@@ -19,7 +19,6 @@ el:
           yes_make_this_setting_restricted: "Yes, make this setting restricted only to superusers."
           help:
             restricted: This makes the setting only visible and editable by users who are superusers (like you).
-            page_title: Very complex options for setting the page title. Here you can set custom CSS class or a different tag or tell it to breadcrumb with pages in its ancestry.
   activerecord:
     models:
       refinery/setting: ρύθμιση

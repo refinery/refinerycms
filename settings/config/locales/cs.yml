@@ -19,7 +19,6 @@ cs:
           yes_make_this_setting_restricted: "Ano, umožnit změnu této volby jenom administrátorům."
           help:
             restricted: Volba bude viditelná a editovatelné pouze pro adminstrátory (jako jste vy).
-            page_title: Velmi komplexní volba pro nastavení titulky stránky. Můžete nastavit vlastní CSS třídu, jiný tag nebo ho poslat do drobečkového menu se stránkami se stejným předkem.
   activerecord:
     models:
       refinery/setting: nastavení

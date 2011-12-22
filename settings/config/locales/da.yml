@@ -19,7 +19,6 @@ da:
           yes_make_this_setting_restricted: "Ja, begræns adgang til administratorer."
           help:
             restricted: Gør at indstillingen kun kan ses og redigeres af administratorer (som dig).
-            page_title: Avancerede indstillinger for konfiguration af sidetitel. Her kan du angive CSS klasse eller et alternativt tag samt angive at sidehierarkiet skal vises i brødkrummen.
   activerecord:
     models:
       refinery/setting: indstilling

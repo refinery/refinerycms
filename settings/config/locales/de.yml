@@ -19,7 +19,6 @@ de:
           yes_make_this_setting_restricted: Ja, diese Einstellung auf Administratoren einschränken.
           help:
             restricted: Macht diese Einstellung nur für Administratoren sichtbar und veränderbar.
-            page_title: Sehr umfangreiche Möglichkeit zum Setzen des Seitentitels. Hier können Sie eine angepasste CSS-Klasse oder ein HTML-Tag angeben, oder auch eine Brotkrumen-Navigation erzeugen.
   activerecord:
     models:
       refinery/setting: Einstellungen
