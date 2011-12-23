@@ -1,6 +1,3 @@
-require 'refinerycms-pages'
-require 'rails'
-
 module Refinery
   module Pages
     class Engine < ::Rails::Engine

@@ -8,7 +8,7 @@ module Refinery
   autoload :PagesGenerator, 'generators/refinery/pages/pages_generator'
 
   module Pages
-    require 'refinery/pages/engine' if defined?(Rails)
+    require 'refinery/pages/engine'
     require 'refinery/pages/configuration'
     require 'refinery/pages/tab'
 

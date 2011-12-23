@@ -1,6 +1,3 @@
-require 'refinerycms-dashboard'
-require 'rails'
-
 module Refinery
   module Dashboard
     class Engine < ::Rails::Engine

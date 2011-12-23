@@ -1,6 +1,3 @@
-require 'refinerycms-images'
-require 'rails'
-
 module Refinery
   module Images
     class Engine < ::Rails::Engine

@@ -2,7 +2,7 @@ require 'refinerycms-core'
 
 module Refinery
   module <%= class_name.pluralize %><%= 'Engine' if plural_name == singular_name %>
-    require 'refinery/<%= plural_name %>/engine' if defined?(Rails)
+    require 'refinery/<%= plural_name %>/engine'
 
     class << self
       def table_name_prefix

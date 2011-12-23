@@ -1,6 +1,3 @@
-require 'refinerycms-testing'
-require 'rails'
-
 module Refinery
   module Testing
     class Railtie < Rails::Railtie

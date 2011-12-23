@@ -1,4 +1,6 @@
 require 'refinerycms-core'
+require 'devise'
+require 'friendly_id'
 
 module Refinery
   autoload :AuthenticatedSystem, 'refinery/authenticated_system'
@@ -11,7 +13,7 @@ module Refinery
   end
 
   module Authentication
-    require 'refinery/authentication/engine' if defined?(Rails)
+    require 'refinery/authentication/engine'
     require 'refinery/authentication/configuration'
 
     class << self

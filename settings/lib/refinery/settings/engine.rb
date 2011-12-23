@@ -1,4 +1,3 @@
-require 'refinerycms-settings'
 require 'rails'
 
 module Refinery

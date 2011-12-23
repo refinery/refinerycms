@@ -1,8 +1,3 @@
-require 'refinerycms-authentication'
-require 'rails'
-require 'devise'
-require 'friendly_id'
-
 module Refinery
   module Authentication
     class Engine < ::Rails::Engine

@@ -6,7 +6,7 @@ module Refinery
   autoload :ResourcesGenerator, 'generators/refinery/resources/resources_generator'
 
   module Resources
-    require 'refinery/resources/engine' if defined?(Rails)
+    require 'refinery/resources/engine'
     require 'refinery/resources/configuration'
 
     autoload :Dragonfly, 'refinery/resources/dragonfly'

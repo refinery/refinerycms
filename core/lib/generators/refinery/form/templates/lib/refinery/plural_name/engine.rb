@@ -1,5 +1,3 @@
-require 'refinerycms-<%= plural_name %>'
-
 module Refinery
   module <%= class_name.pluralize %><%= 'Engine' if plural_name == singular_name %>
     class Engine < Rails::Engine

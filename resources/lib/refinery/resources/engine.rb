@@ -1,6 +1,3 @@
-require 'refinerycms-resources'
-require 'rails'
-
 module Refinery
   module Resources
     class Engine < ::Rails::Engine

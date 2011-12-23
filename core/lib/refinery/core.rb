@@ -166,7 +166,7 @@ module Refinery
   end
 
   module Core
-    require 'refinery/core/engine' if defined?(Rails)
+    require 'refinery/core/engine'
     require 'refinery/core/configuration'
 
     class << self
