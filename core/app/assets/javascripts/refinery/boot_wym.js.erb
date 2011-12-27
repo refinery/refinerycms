@@ -1,3 +1,5 @@
+I18n.locale = "<%= I18n.locale %>";
+
 onOpenDialog = function(dialog) {
   (dialog = $('.ui-dialog')).find('.ui-dialog-titlebar').corner('1px top');
   if(!$.browser.msie){
@@ -224,7 +226,7 @@ var wymeditor_boot_options = $.extend({
       );
     }
   }
-  , lang: (typeof(I18n.locale) != "undefined" ? I18n.locale : 'en')
+  , lang: (I18n.locale != null ? I18n.locale : 'en')
 }, custom_wymeditor_boot_options);
 
 WYMeditor.editor.prototype.loadIframe = function(iframe) {
