@@ -26,7 +26,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'factory_girl_rails',      '~> 1.4.0'
   s.add_dependency 'json_pure'
   s.add_dependency 'rack-test',               '~> 0.6.0'
-  s.add_dependency 'rspec-rails',             '~> 2.7.0'
+  s.add_dependency 'rspec-rails',             '~> 2.8.0.rc'
   s.add_dependency 'fuubar'
   s.add_dependency 'rspec-instafail'
   s.add_dependency 'capybara',                '~> 1.1.0'
