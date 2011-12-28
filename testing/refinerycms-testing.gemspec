@@ -23,7 +23,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'database_cleaner'
   s.add_dependency 'launchy'
-  s.add_dependency 'factory_girl_rails',      '~> 1.3.0'
+  s.add_dependency 'factory_girl_rails',      '~> 1.4.0'
   s.add_dependency 'json_pure'
   s.add_dependency 'rack-test',               '~> 0.6.0'
   s.add_dependency 'rspec-rails',             '~> 2.7.0'
