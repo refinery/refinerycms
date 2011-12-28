@@ -27,6 +27,8 @@ end
 
 # https://github.com/svenfuchs/routing-filter/issues/31
 gem 'routing-filter', :git => 'git://github.com/svenfuchs/routing-filter.git'
+# remove this after i18n-js gets past version 2.1.2
+gem 'i18n-js', :git => 'git://github.com/fnando/i18n-js.git'
 
 group :development, :test do
   gem 'refinerycms-testing', '~> 2.0.0'

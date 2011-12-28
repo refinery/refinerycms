@@ -10,6 +10,9 @@ append_file 'Gemfile' do
 #    gem 'refinerycms-testing', '~> 2.0'
 #  end
 
+# remove this after i18n-js gets past version 2.1.2
+gem 'i18n-js', :git => 'git://github.com/fnando/i18n-js.git'
+
 group :development do
   gem 'rails-dev-tweaks', '~> 0.5.2'
   # see https://github.com/wavii/rails-dev-tweaks/issues/3
