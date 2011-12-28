@@ -105,7 +105,7 @@ menu and how to render recent activity on the Dashboard (see "Getting your Engin
 to Report Activity in the Dashboard")
 
 # engine/lib/pages.rb
-    initializer "init plugin", :after => :set_routes_reloader do |app|
+    initializer "init plugin", :after => :set_routes_reloader_hook do |app|
       ::Refinery::Plugin.register do |plugin|
         plugin.pathname = root
         plugin.name = 'refinery_pages'

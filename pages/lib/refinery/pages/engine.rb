@@ -18,13 +18,13 @@ module Refinery
         Refinery::AdminController.send :include, Refinery::Pages::Admin::InstanceMethods
       end
 
-      initializer "append marketable routes", :before => :set_routes_reloader do |app|
+      initializer "append marketable routes", :before => :set_routes_reloader_hook do |app|
         if Refinery::Pages.config.marketable_urls
           append_marketable_routes(app)
         end
       end
 
-      initializer "register refinery_pages plugin", :after => :set_routes_reloader do |app|
+      initializer "register refinery_pages plugin", :after => :set_routes_reloader_hook do |app|
         Refinery::Plugin.register do |plugin|
           plugin.pathname = root
           plugin.name = 'refinery_pages'

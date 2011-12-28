@@ -52,7 +52,7 @@ module Refinery
         WillPaginate.per_page = 20
       end
 
-      initializer "register refinery_core plugin", :after => :set_routes_reloader do |app|
+      initializer "register refinery_core plugin", :after => :set_routes_reloader_hook do |app|
         Refinery::Plugin.register do |plugin|
           plugin.pathname = root
           plugin.name = 'refinery_core'
@@ -64,7 +64,7 @@ module Refinery
         end
       end
 
-      initializer "register refinery_dialogs plugin", :after => :set_routes_reloader do |app|
+      initializer "register refinery_dialogs plugin", :after => :set_routes_reloader_hook do |app|
         Refinery::Plugin.register do |plugin|
           plugin.pathname = root
           plugin.name = 'refinery_dialogs'

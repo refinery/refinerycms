@@ -13,7 +13,7 @@ module Refinery
         ::Refinery::Resources::Dragonfly.attach!(app)
       end
 
-      initializer "register refinery_files plugin", :after => :set_routes_reloader do |app|
+      initializer "register refinery_files plugin", :after => :set_routes_reloader_hook do |app|
         Refinery::Plugin.register do |plugin|
           plugin.pathname = root
           plugin.name = 'refinery_files'
