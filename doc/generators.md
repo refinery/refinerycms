@@ -29,7 +29,7 @@ So go to the root of your project and run
 This will output the help on how to use the generator. To generate the new section
 we want to manage products we run:
 
-    rails generate refinery:engine product title:string description:text image:image brochure:resource
+    rails generate refinery_engine product title:string description:text image:image brochure:resource
 
 The generator will output a list of files it generated. You'll notice there is a
 new engine that has been added in `vendor/engines/products`.
