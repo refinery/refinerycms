@@ -8,7 +8,7 @@ Refinery backend and get the front end views for free.
 
 To see how to use the generator run
 
-    rails generate refinery:engine
+    rails generate refinery_engine
 
 Usage instructions should appear.
 
@@ -24,7 +24,7 @@ to show on the right of the page.
 
 So go to the root of your project and run
 
-    rails generate refinery:engine
+    rails generate refinery_engine
 
 This will output the help on how to use the generator. To generate the new section
 we want to manage products we run:
