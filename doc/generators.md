@@ -45,7 +45,7 @@ When the products engine was generated a products generator was also created.
 This installs any migrations and seeds into your Rails app.
 Here's how to finish off the install:
 
-    rails generate refinery:products
+    rails generate refinerycms_products
     rake db:migrate
 
 Start up your app by running ``rails server`` go to [http://localhost:3000](http://localhost:3000)
@@ -67,5 +67,5 @@ See: [The Structure of an Engine](https://github.com/resolve/refinerycms/blob/ma
 
 Say you have an existing Products engine and you wanted to add a Categories engine inside it so the projects can be sorted in categories.
 
-    rails generate refinery:engine category title:string product:engine
+    rails generate refinery_engine category title:string product:engine
 
