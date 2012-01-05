@@ -8,9 +8,11 @@
   <span class='actions'>
     <%= mail_to user.email, refinery_icon_tag('email_go.png'),
                 :title => t('.email_user') %>
-    <%= link_to refinery_icon_tag('application_edit.png'), main_app.edit_refinery_admin_user_path(user),
-                :title => t('edit', :scope => 'refinery.admin.users')%>
-    <%= link_to refinery_icon_tag('delete.png'), main_app.refinery_admin_user_path(user),
+    <%= link_to refinery_icon_tag('application_edit.png'),
+                refinery.edit_admin_user_path(user),
+                :title => t('edit', :scope => 'refinery.admin.users') %>
+    <%= link_to refinery_icon_tag('delete.png'),
+                refinery.admin_user_path(user),
                 :class => "cancel confirm-delete",
                 :title => t('delete', :scope => 'refinery.admin.users'),
                 :method => :delete,

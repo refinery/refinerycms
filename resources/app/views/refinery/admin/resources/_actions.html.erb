@@ -1,11 +1,13 @@
 <ul>
   <li>
-    <%= render :partial => "/refinery/admin/search", :locals => {:url => main_app.refinery_admin_resources_path} %>
+    <%= render :partial => "/refinery/admin/search",
+               :locals => { :url => refinery.admin_resources_path } %>
   </li>
   <li>
-    <%= link_to t('.upload_new'), main_app.new_refinery_admin_resource_path(:dialog => true,
-                                                         :width => 600,
-                                                         :height => 300),
+    <%= link_to t('.upload_new'),
+                refinery.new_admin_resource_path(:dialog => true,
+                                                 :width => 600,
+                                                 :height => 300),
                 :class => "add_icon" %>
   </li>
 </ul>

@@ -14,7 +14,7 @@ describe "Refinery::ApplicationController" do
       end
 
       it "matches localised root url" do
-        controller.main_app.stub(:root_path).and_return("/en/")
+        controller.refinery.stub(:root_path).and_return("/en/")
         request.stub(:path).and_return("/en")
         controller.home_page?.should be_true
       end

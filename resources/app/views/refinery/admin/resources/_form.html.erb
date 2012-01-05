@@ -1,6 +1,6 @@
-<%= form_for [:admin, @resource], :url => @url_override || @resource.new_record? ? main_app.refinery_admin_resources_path : main_app.refinery_admin_resource_path(@resource),
-                                  :html => {:multipart => true},
-                                  :as => "resource" do |f| -%>
+<%= form_for @resource, :url => (@url_override || @resource.new_record? ? refinery.admin_resources_path : refinery.admin_resource_path(@resource)),
+                        :html => { :multipart => true },
+                        :as => "resource" do |f| -%>
 
   <%= render :partial => "/refinery/admin/error_messages",
              :locals => {

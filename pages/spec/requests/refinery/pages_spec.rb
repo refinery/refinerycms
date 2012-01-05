@@ -32,7 +32,7 @@ module Refinery
         end
 
         it 'shows a show page' do
-          visit url_for(::Refinery::Page.find('about').url)
+          visit refinery.page_path(Refinery::Page.find('about'))
 
           standard_page_menu_items_exist?
         end
@@ -48,11 +48,11 @@ module Refinery
         end
 
         it 'does not route to /about for About page' do
-          url_for(::Refinery::Page.find('about').url).should =~ %r{/pages/about$}
+          refinery.page_path(Refinery::Page.find('about')).should =~ %r{/pages/about$}
         end
 
         it 'shows the about page' do
-          visit url_for(::Refinery::Page.find('about').url)
+          visit refinery.page_path(Refinery::Page.find('about'))
 
           standard_page_menu_items_exist?
         end
@@ -224,7 +224,7 @@ module Refinery
                                           :parent_id => Refinery::Page.find("about").id) }
 
       it "succeeds" do
-        visit url_for(submenu_page.url)
+        visit refinery.url_for(submenu_page.url.merge(:only_path => true))
 
         page.should have_content("Home")
         page.should have_content("About")
@@ -238,7 +238,7 @@ module Refinery
       let(:special_page) { FactoryGirl.create(:page, :title => 'ä ö ü spéciål chåråctÉrs') }
 
       it "succeeds" do
-        visit url_for(special_page.url)
+        visit refinery.url_for(special_page.url.merge(:only_path => true))
 
         page.should have_content("Home")
         page.should have_content("About")
@@ -253,7 +253,7 @@ module Refinery
                                           :parent_id => Refinery::Page.find("about").id) }
 
       it "succeeds" do
-        visit url_for(special_page.url)
+        visit refinery.url_for(special_page.url.merge(:only_path => true))
 
         page.should have_content("Home")
         page.should have_content("About")
@@ -267,7 +267,7 @@ module Refinery
       let(:hidden_page) { FactoryGirl.create(:page, :title => "Hidden", :show_in_menu => false) }
 
       it "succeeds" do
-        visit url_for(hidden_page.url)
+        visit refinery.page_path(hidden_page)
 
         page.should have_content("Home")
         page.should have_content("About")

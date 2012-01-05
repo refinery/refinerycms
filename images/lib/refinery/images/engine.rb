@@ -17,18 +17,16 @@ module Refinery
         ::Refinery::Images::Dragonfly.attach!(app)
       end
 
-      initializer "register refinery_images plugin", :after => :set_routes_reloader do |app|
+      initializer "register refinery_images plugin" do
         Refinery::Plugin.register do |plugin|
           plugin.pathname = root
           plugin.name = 'refinery_images'
-          plugin.directory = 'images'
           plugin.version = %q{2.0.0}
           plugin.menu_match = /refinery\/image(_dialog)?s$/
           plugin.activity = {
-            :class_name => :'refinery/image',
-            :url => "refinery_admin_image_path" # temp hack for namespacees
+            :class_name => :'refinery/image'
           }
-          plugin.url = app.routes.url_helpers.refinery_admin_images_path
+          plugin.url = { :controller => '/refinery/admin/images' }
         end
       end
 
