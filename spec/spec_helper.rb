@@ -48,7 +48,7 @@ def each_run
 
   # Requires supporting files with custom matchers and macros, etc,
   # in ./support/ and its subdirectories including factories.
-  ([ENGINE_RAILS_ROOT, Rails.root.to_s].uniq | ::Refinery::Plugins.registered.pathnames).map{|p|
+  ([ENGINE_RAILS_ROOT, Rails.root.to_s].uniq | Refinery::Plugins.registered.pathnames).map{|p|
     Dir[File.join(p, 'spec', 'support', '**', '*.rb').to_s]
   }.flatten.sort.each do |support_file|
     require support_file

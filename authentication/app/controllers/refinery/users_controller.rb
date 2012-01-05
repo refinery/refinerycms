@@ -1,10 +1,10 @@
 module Refinery
-  class UsersController < ::Devise::RegistrationsController
+  class UsersController < Devise::RegistrationsController
 
     # Protect these actions behind an admin login
     before_filter :redirect?, :only => [:new, :create]
 
-    layout 'login'
+    layout 'refinery/layouts/login'
 
     def new
       @user = User.new
@@ -18,24 +18,24 @@ module Refinery
         flash[:message] = "<h2>#{t('welcome', :scope => 'refinery.users.create', :who => @user.username).gsub(/\.$/, '')}.</h2>".html_safe
 
         sign_in(@user)
-        redirect_back_or_default(main_app.refinery_admin_root_path)
+        redirect_back_or_default(refinery.admin_root_path)
       else
-        render :action => 'new'
+        render :new
       end
     end
 
-  protected
+    protected
 
     def redirect?
       if refinery_user?
-        redirect_to main_app.refinery_admin_users_path
+        redirect_to refinery.admin_users_path
       elsif refinery_users_exist?
-        redirect_to main_app.new_refinery_user_session_path
+        redirect_to refinery.new_refinery_user_session_path
       end
     end
 
     def refinery_users_exist?
-      ::Refinery::Role[:refinery].users.any?
+      Refinery::Role[:refinery].users.any?
     end
 
   end

@@ -6,20 +6,20 @@ module Refinery
 
     context "when no images" do
       it "invites to add one" do
-        visit refinery_admin_images_path
+        visit refinery.admin_images_path
         page.should have_content("There are no images yet. Click \"Add new image\" to add your first image.")
       end
     end
 
     it "shows add new image link" do
-      visit refinery_admin_images_path
+      visit refinery.admin_images_path
       page.should have_content("Add new image")
       page.should have_selector("a[href*='/refinery/images/new']")
     end
 
     context "new/create" do
       it "uploads image", :js => true do
-        visit refinery_admin_images_path
+        visit refinery.admin_images_path
         click_link "Add new image"
 
         within_frame "dialog_iframe" do
@@ -36,13 +36,13 @@ module Refinery
       let!(:image) { FactoryGirl.create(:image) }
 
       it "updates image" do
-        visit refinery_admin_images_path
+        visit refinery.admin_images_path
         page.should have_selector("a[href='/refinery/images/#{image.id}/edit']")
 
         click_link "Edit this image"
 
         page.should have_content("Use current image or replace it with this one...")
-        page.should have_selector("a[href='/refinery/images']")
+        page.should have_selector("a[href*='/refinery/images']")
 
         attach_file "image_image", Refinery.roots(:'refinery/images').join("spec/fixtures/id-rather-be-here.jpg")
         click_button "Save"
@@ -56,7 +56,7 @@ module Refinery
       let!(:image) { FactoryGirl.create(:image) }
 
       it "removes image" do
-        visit refinery_admin_images_path
+        visit refinery.admin_images_path
         page.should have_selector("a[href='/refinery/images/#{image.id}']")
 
         click_link "Remove this image forever"
@@ -70,7 +70,7 @@ module Refinery
       let!(:image) { FactoryGirl.create(:image) }
 
       it "shows images in grid" do
-        visit refinery_admin_images_path
+        visit refinery.admin_images_path
         page.should have_content("Switch to list view")
         page.should have_selector("a[href='/refinery/images?view=list']")
 

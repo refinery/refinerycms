@@ -1,5 +1,5 @@
-Rails.application.routes.draw do
-  scope(:path => 'refinery', :as => 'refinery_admin', :module => 'refinery/admin') do
+Refinery::Core::Engine.routes.draw do
+  namespace :admin, :path => 'refinery' do
     resources :settings, :except => :show
   end
 end

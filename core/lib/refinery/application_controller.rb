@@ -56,11 +56,11 @@ module Refinery
       end
 
       def home_page?
-        main_app.root_path =~ /^#{Regexp.escape(request.path)}\/?/
+        refinery.root_path =~ /^#{Regexp.escape(request.path.sub("//", "/"))}\/?/
       end
 
       def just_installed?
-        ::Refinery::Role[:refinery].users.empty?
+        Refinery::Role[:refinery].users.empty?
       end
 
       def local_request?
@@ -86,7 +86,7 @@ module Refinery
 
       def show_welcome_page?
         if just_installed? and controller_name != 'users'
-          render :template => 'refinery/welcome', :layout => 'login'
+          render :template => 'refinery/welcome', :layout => 'refinery/layouts/login'
         end
       end
 
@@ -94,7 +94,8 @@ module Refinery
       def store_current_location!
         if admin? and request.get? and !request.xhr? and !from_dialog?
           # ensure that we don't redirect to AJAX or POST/PUT/DELETE urls
-          session[:refinery_return_to] = request.path
+          path = request.path.sub("//", "/")
+          session[:refinery_return_to] = path
         end
       end
     end

@@ -6,9 +6,11 @@
         <%= link_to refinery_icon_tag('eye.png'), image.url,
                     :target => "_blank",
                     :title => t('.view_live_html') %>
-        <%= link_to refinery_icon_tag('application_edit.png'), main_app.edit_refinery_admin_image_path(image),
+        <%= link_to refinery_icon_tag('application_edit.png'),
+                    refinery.edit_admin_image_path(image),
                     :title => t('edit', :scope => 'refinery.admin.images') %>
-        <%= link_to refinery_icon_tag('delete.png'), main_app.refinery_admin_image_path(image),
+        <%= link_to refinery_icon_tag('delete.png'),
+                    refinery.admin_image_path(image),
                     :class => "cancel confirm-delete",
                     :title => t('delete', :scope => 'refinery.admin.images'),
                     :confirm => t('message', :scope => 'refinery.admin.delete', :title => image.title),

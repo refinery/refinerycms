@@ -10,7 +10,7 @@ module WillPaginate
         url_params = @base_url_params.dup
         add_current_page_param(url_params, page)
 
-        @template.main_app.url_for(url_params)
+        @template.refinery.url_for(url_params)
       end
     end
   end

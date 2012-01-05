@@ -1,10 +1,10 @@
-module ::Refinery
-  class PasswordsController < ::Devise::PasswordsController
-    layout 'login'
+module Refinery
+  class PasswordsController < Devise::PasswordsController
+    layout 'refinery/layouts/login'
 
     before_filter :store_password_reset_return_to, :only => [:update]
     def store_password_reset_return_to
-      session[:'refinery_user_return_to'] = main_app.refinery_admin_root_path
+      session[:'refinery_user_return_to'] = refinery.admin_root_path
     end
     protected :store_password_reset_return_to
 
@@ -22,9 +22,8 @@ module ::Refinery
       if params[:reset_password_token] and (@refinery_user = User.where(:reset_password_token => params[:reset_password_token]).first).present?
         render_with_scope :edit
       else
-        redirect_to(main_app.new_refinery_user_password_url, :flash => ({
-          :error => t('code_invalid', :scope => 'refinery.users.reset')
-        }))
+        redirect_to refinery.new_refinery_user_password_path,
+                    :flash => ({ :error => t('code_invalid', :scope => 'refinery.users.reset') })
       end
     end
 
@@ -36,7 +35,8 @@ module ::Refinery
         # Call devise reset function.
         user.send(:generate_reset_password_token!)
         UserMailer.reset_notification(user, request).deliver
-        redirect_to main_app.new_refinery_user_session_path, :notice => t('email_reset_sent', :scope => 'refinery.users.forgot') and return
+        redirect_to refinery.new_refinery_user_session_path,
+                    :notice => t('email_reset_sent', :scope => 'refinery.users.forgot')
       else
         @refinery_user = User.new(params[:refinery_user])
         flash.now[:error] = if @refinery_user.email.blank?
