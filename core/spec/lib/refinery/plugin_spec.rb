@@ -126,15 +126,15 @@ module Refinery
 
       context 'when @url is already defined' do
         it 'returns hash' do
-          plugin.stub(:url).and_return({:controller => '/admin/testa'})
-          plugin.url.should == {:controller => '/admin/testa'}
+          plugin.stub(:url).and_return({:controller => 'refinery/admin/testa'})
+          plugin.url.should == {:controller => 'refinery/admin/testa'}
         end
       end
 
       context 'when controller is present' do
         it 'returns hash based on it' do
           plugin.stub(:controller).and_return('testb')
-          plugin.url.should == {:controller => '/admin/testb'}
+          plugin.url.should == {:controller => 'refinery/admin/testb'}
         end
       end
 
@@ -142,13 +142,13 @@ module Refinery
 
         it 'returns hash based on it' do
           plugin.stub(:directory).and_return('first/second/testc')
-          plugin.url.should == {:controller => '/admin/testc'}
+          plugin.url.should == {:controller => 'refinery/admin/testc'}
         end
       end
 
       context 'when controller and directory not present' do
         it 'returns hash based on plugins name' do
-          plugin.url.should == {:controller => '/admin/refinery_rspec'}
+          plugin.url.should == {:controller => 'refinery/admin/refinery_rspec'}
         end
       end
     end

@@ -26,13 +26,13 @@ module Refinery
       if @page.try(:live?) || (refinery_user? && current_refinery_user.authorized_plugins.include?("refinery_pages"))
         # if the admin wants this to be a "placeholder" page which goes to its first child, go to that instead.
         if @page.skip_to_first_child && (first_live_child = @page.children.order('lft ASC').live.first).present?
-          redirect_to main_app.url_for(first_live_child.url) and return
+          redirect_to refinery.url_for(first_live_child.url) and return
         elsif @page.link_url.present?
           redirect_to @page.link_url and return
         end
         # 301 redirect if there is a newer slug
         unless "#{params[:path]}/#{params[:id]}".split('/').last == @page.friendly_id
-          redirect_to main_app.url_for(@page.url), :status => 301 and return
+          redirect_to refinery.url_for(@page.url), :status => 301 and return
         end
       else
         error_404 and return
@@ -45,9 +45,9 @@ module Refinery
     def find_page
       @page ||= case action_name
       when "home"
-        ::Refinery::Page.where(:link_url => '/').first
+        Refinery::Page.where(:link_url => '/').first
       when "show"
-        ::Refinery::Page.find("#{params[:path]}/#{params[:id]}".split('/').last)
+        Refinery::Page.find("#{params[:path]}/#{params[:id]}".split('/').last)
       end
     end
 
@@ -66,7 +66,7 @@ module Refinery
 
     def write_cache?
       if Refinery::Pages.cache_pages_full
-        cache_page(response.body, File.join('', 'refinery', 'cache', 'pages', request.path).to_s)
+        cache_page(response.body, File.join('', 'refinery', 'cache', 'pages', request.path.sub("//", "/")).to_s)
       end
     end
   end

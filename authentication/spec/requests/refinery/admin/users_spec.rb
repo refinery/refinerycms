@@ -5,7 +5,7 @@ describe "manage users" do
 
   describe "new/create" do
     it "allows to create user" do
-      visit refinery_admin_users_path
+      visit refinery.admin_users_path
       click_link "Add new user"
 
       fill_in "Username", :with => "test"
@@ -21,7 +21,7 @@ describe "manage users" do
 
   describe "edit/update" do
     it "allows to update user" do
-      visit refinery_admin_users_path
+      visit refinery.admin_users_path
       click_link "Edit this user"
 
       fill_in "Username", :with => "cmsrefinery"
@@ -37,7 +37,7 @@ describe "manage users" do
     let!(:user) { FactoryGirl.create(:user, :username => "ugisozols") }
 
     it "allows to destroy only regular user" do
-      visit refinery_admin_users_path
+      visit refinery.admin_users_path
       page.should have_selector("a[href='/refinery/users/#{user.username}']")
       page.should have_no_selector("a[href='/refinery/users/refinerycms']")
 

@@ -37,7 +37,7 @@ describe Refinery::Activity do
       # associated with it
       X::Y::Z.stub_chain(:model_name, :param_key).and_return("y_z")
 
-      activity.url.should == "edit_x_y_z_admin_y_z_path"
+      activity.url.should == "refinery.edit_admin_y_z_path"
     end
   end
 end

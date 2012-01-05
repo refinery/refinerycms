@@ -2,7 +2,7 @@
   <div class='<%= plural_name %>'>
     <%%=raw @page.content_for(Refinery::Pages.default_parts.first.to_sym) %>
 
-    <%%= form_for [main_app, :refinery, <%= singular_name %>, @<%= singular_name %>] do |f| %>
+    <%%= form_for [refinery, <%= singular_name %>, @<%= singular_name %>] do |f| %>
       <%%= render :partial => "/refinery/admin/error_messages",
                  :locals => {
                    :object => @<%= singular_name %>,

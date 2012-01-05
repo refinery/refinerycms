@@ -12,12 +12,11 @@ module Refinery
         Refinery::Plugin.register do |plugin|
           plugin.pathname = root
           plugin.name = 'refinery_dashboard'
-          plugin.url = {:controller => '/refinery/admin/dashboard'}
-          plugin.menu_match = %r{refinery/(refinery_)?dashboard$}
-          plugin.directory = 'dashboard'
+          plugin.menu_match = /refinery\/(refinery_)?dashboard$/
           plugin.version = %q{2.0.0}
           plugin.always_allow_access = true
           plugin.dashboard = true
+          plugin.url = { :controller => '/refinery/admin/dashboard' }
         end
       end
 

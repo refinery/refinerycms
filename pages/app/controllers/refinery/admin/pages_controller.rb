@@ -1,12 +1,10 @@
-module ::Refinery
+module Refinery
   module Admin
-    class PagesController < ::Refinery::AdminController
-      cache_sweeper ::Refinery::PageSweeper
+    class PagesController < Refinery::AdminController
+      cache_sweeper Refinery::PageSweeper
 
       crudify :'refinery/page',
-              :conditions => nil,
               :order => "lft ASC",
-              :redirect_to_url => 'main_app.refinery_admin_pages_path',
               :include => [:slugs, :translations, :children],
               :paging => false
 
@@ -36,14 +34,14 @@ module ::Refinery
 
           # Check whether we need to override e.g. on the pages form.
           unless params[:switch_locale] || @page.nil? || @page.new_record? || @page.slugs.where({
-            :locale => ::Refinery::I18n.current_locale
+            :locale => Refinery::I18n.current_locale
           }).empty?
             @page.slug = @page.slugs.first if @page.slug.nil? && @page.slugs.any?
             Thread.current[:globalize_locale] = @page.slug.locale if @page.slug
           end
         else
           # Always display the tree of pages from the default frontend locale.
-          Thread.current[:globalize_locale] = params[:switch_locale].try(:to_sym) || ::Refinery::I18n.default_frontend_locale
+          Thread.current[:globalize_locale] = params[:switch_locale].try(:to_sym) || Refinery::I18n.default_frontend_locale
         end
       end
 
@@ -57,9 +55,9 @@ module ::Refinery
 
       def restrict_access
         if current_refinery_user.has_role?(:translator) && !current_refinery_user.has_role?(:superuser) &&
-             (params[:switch_locale].blank? || params[:switch_locale] == ::Refinery::I18n.default_frontend_locale.to_s)
+             (params[:switch_locale].blank? || params[:switch_locale] == Refinery::I18n.default_frontend_locale.to_s)
           flash[:error] = t('translator_access', :scope => 'refinery.admin.pages')
-          redirect_to main_app.url_for(:action => 'index') and return
+          redirect_to refinery.admin_pages_path
         end
 
         return true
