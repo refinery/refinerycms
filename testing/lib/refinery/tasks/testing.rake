@@ -24,7 +24,7 @@ namespace :refinery do
 
     task :migrate_dummy_app do
       engines = %w(
-        refinery_core
+        refinery
         refinery_settings
         refinery_authentication
         seo_meta_engine
