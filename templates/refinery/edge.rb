@@ -2,7 +2,7 @@ gem 'refinerycms', :git => 'git://github.com/resolve/refinerycms.git'
 run 'bundle install'
 generate 'refinery:cms'
 rake 'railties:install:migrations'
-rake 'db:migrate'
+rake 'db:create db:migrate'
 
 append_file 'Gemfile' do
 " 
