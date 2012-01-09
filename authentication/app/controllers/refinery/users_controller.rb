@@ -1,6 +1,8 @@
 module Refinery
   class UsersController < Devise::RegistrationsController
 
+    skip_before_filter :find_pages_for_menu
+
     # Protect these actions behind an admin login
     before_filter :redirect?, :only => [:new, :create]
 
