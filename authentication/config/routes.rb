@@ -12,16 +12,12 @@ Refinery::Core::Engine.routes.draw do
   end if Refinery::User.respond_to?(:devise)
 
   namespace :admin, :path => 'refinery' do
-    # Override Devise's default after login redirection route.
-    # This will push a logged in user to the dashboard.
-    get '/' => 'dashboard#index', :as => :refinery_user_root
-
     resources :users, :except => :show
   end
 
   # Override Devise's other routes for convenience methods.
   devise_scope :refinery_user do
-    get 'refinery/login', :to => "sessions#new"
-    get 'refinery/logout', :to => "sessions#destroy"
+    get 'refinery/login', :to => "sessions#new", :as => :new_refinery_user_session
+    get 'refinery/logout', :to => "sessions#destroy", :as => :destroy_refinery_user_session
   end
 end
