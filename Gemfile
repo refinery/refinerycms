@@ -25,6 +25,8 @@ unless defined?(JRUBY_VERSION)
   gem 'pg'
 end
 
+gem 'devise', :git => 'git://github.com/plataformatec/devise.git'
+
 group :development do
   gem 'rails-dev-tweaks', '~> 0.5.2'
 end
