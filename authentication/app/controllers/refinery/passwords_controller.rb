@@ -22,7 +22,7 @@ module Refinery
     # GET /registrations/password/edit?reset_password_token=abcdef
     def edit
       if params[:reset_password_token] and (@refinery_user = User.where(:reset_password_token => params[:reset_password_token]).first).present?
-        render_with_scope :edit
+        respond_with(@refinery_user)
       else
         redirect_to refinery.new_refinery_user_password_path,
                     :flash => ({ :error => t('code_invalid', :scope => 'refinery.users.reset') })
@@ -46,7 +46,7 @@ module Refinery
         else
           t('email_not_associated_with_account_html', :email => @refinery_user.email, :scope => 'refinery.users.forgot').html_safe
         end
-        render_with_scope :new
+        render :new
       end
     end
   end
