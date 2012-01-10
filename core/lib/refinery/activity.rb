@@ -96,7 +96,8 @@ module Refinery
     attr_writer :url
 
     def url
-      @url ||= "refinery.#{self.url_prefix}admin_#{klass.model_name.param_key}_path"
+      "#{self.url_prefix}#{@url ||= [ class_name.underscore.gsub(%r{/?#{klass.model_name.param_key}}, '').gsub('/', '_'),
+                                      'admin', klass.model_name.param_key, 'path' ].join('_')}"
     end
   end
 end
