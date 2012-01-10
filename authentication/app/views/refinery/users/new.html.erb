@@ -1,5 +1,5 @@
 <% content_for :header, t('fill_form', :scope => 'refinery.users.new') %>
-<%= form_for :user, :url => main_app.refinery_user_registration_path do |f| -%>
+<%= form_for :user, :url => refinery.refinery_user_registration_path do |f| -%>
 
   <%= render :partial => "/refinery/admin/error_messages",
              :locals => {

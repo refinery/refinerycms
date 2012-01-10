@@ -4,7 +4,7 @@ module Refinery
       include Refinery::Engine
 
       isolate_namespace Refinery
-      engine_name :refinery_core
+      engine_name :refinery
 
       class << self
         # Require/load (based on Rails app.config) all decorators from app/decorators/ and vendor/engines/*
@@ -52,7 +52,7 @@ module Refinery
         WillPaginate.per_page = 20
       end
 
-      initializer "register refinery_core plugin", :after => :set_routes_reloader do |app|
+      initializer "register refinery_core plugin" do
         Refinery::Plugin.register do |plugin|
           plugin.pathname = root
           plugin.name = 'refinery_core'
@@ -63,8 +63,8 @@ module Refinery
           plugin.menu_match = /refinery\/(refinery_core)$/
         end
       end
-
-      initializer "register refinery_dialogs plugin", :after => :set_routes_reloader do |app|
+      
+      initializer "register refinery_dialogs plugin" do
         Refinery::Plugin.register do |plugin|
           plugin.pathname = root
           plugin.name = 'refinery_dialogs'

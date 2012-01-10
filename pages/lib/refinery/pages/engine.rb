@@ -18,27 +18,24 @@ module Refinery
         Refinery::AdminController.send :include, Refinery::Pages::Admin::InstanceMethods
       end
 
-      initializer "append marketable routes", :before => :set_routes_reloader do |app|
-        if Refinery::Pages.config.marketable_urls
-          append_marketable_routes(app)
-        end
-      end
-
-      initializer "register refinery_pages plugin", :after => :set_routes_reloader do |app|
+      initializer "register refinery_pages plugin" do
         Refinery::Plugin.register do |plugin|
           plugin.pathname = root
           plugin.name = 'refinery_pages'
-          plugin.directory = 'pages'
           plugin.version = %q{2.0.0}
           plugin.menu_match = /refinery\/page(_part)?s(_dialogs)?$/
-          plugin.url = app.routes.url_helpers.refinery_admin_pages_path
           plugin.activity = {
             :class_name => :'refinery/page',
-            :url_prefix => "edit",
-            :title => "title",
             :created_image => "page_add.png",
             :updated_image => "page_edit.png"
           }
+          plugin.url = { :controller => '/refinery/admin/pages' }
+        end
+      end
+
+      initializer "append marketable routes" do
+        if Refinery::Pages.config.marketable_urls
+          append_marketable_routes
         end
       end
 
@@ -48,13 +45,12 @@ module Refinery
 
       protected
 
-        def append_marketable_routes(app)
-          app.routes.append do
-            scope(:module => 'refinery') do
-              get '*path', :to => 'pages#show'
-            end
-          end
+
+      def append_marketable_routes
+        Refinery::Core::Engine.routes.append do
+          get '*path', :to => 'pages#show'
         end
+      end
     end
   end
 end

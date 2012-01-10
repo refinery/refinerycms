@@ -28,7 +28,7 @@ module Refinery
         :order => ('position ASC' if this_class.table_exists? && this_class.column_names.include?('position')),
         :paging => true,
         :per_page => false,
-        :redirect_to_url => "main_app.refinery_admin_#{plural_name}_path",
+        :redirect_to_url => "refinery.admin_#{plural_name}_path",
         :searchable => true,
         :search_conditions => '',
         :sortable => true,

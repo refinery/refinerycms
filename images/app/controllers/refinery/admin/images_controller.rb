@@ -12,14 +12,14 @@ module ::Refinery
       def new
         @image = ::Refinery::Image.new if @image.nil?
 
-        @url_override = main_app.refinery_admin_images_path(:dialog => from_dialog?)
+        @url_override = refinery.admin_images_path(:dialog => from_dialog?)
       end
 
       # This renders the image insert dialog
       def insert
         self.new if @image.nil?
 
-        @url_override = main_app.refinery_admin_images_path(request.query_parameters.merge(:insert => true))
+        @url_override = refinery.admin_images_path(request.query_parameters.merge(:insert => true))
 
         if params[:conditions].present?
           extra_condition = params[:conditions].split(',')
@@ -56,9 +56,9 @@ module ::Refinery
           if @images.all?{|i| i.valid?}
             flash.notice = t('created', :scope => 'refinery.crudify', :what => "'#{@images.collect{|i| i.title}.join("', '")}'")
             unless from_dialog?
-              redirect_to main_app.url_for(:action => 'index')
+              redirect_to refinery.admin_images_path
             else
-              render :text => "<script>parent.window.location = '#{main_app.refinery_admin_images_path}';</script>"
+              render :text => "<script>parent.window.location = '#{refinery.admin_images_path}';</script>"
             end
           else
             self.new # important for dialogs
@@ -70,7 +70,7 @@ module ::Refinery
             @image_id = @image.id if @image.persisted?
             @image = nil
 
-            redirect_to main_app.insert_refinery_admin_images_path(request.query_parameters)
+            redirect_to refinery.insert_admin_images_path(request.query_parameters)
           else
             self.insert
           end

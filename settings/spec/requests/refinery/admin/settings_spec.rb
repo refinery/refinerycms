@@ -9,20 +9,20 @@ module Refinery
         before(:each) { Refinery::Setting.destroy_all }
 
         it "invites to create one" do
-          visit refinery_admin_settings_path
+          visit refinery.admin_settings_path
           page.should have_content("There are no settings yet. Click 'Add new setting' to add your first setting.")
         end
       end
 
       it "shows add new setting link" do
-        visit refinery_admin_settings_path
+        visit refinery.admin_settings_path
         page.should have_content("Add new setting")
         page.should have_selector("a[href*='/refinery/settings/new']")
       end
 
       context "new/create" do
         it "adds setting", :js => true do
-          visit refinery_admin_settings_path
+          visit refinery.admin_settings_path
           click_link "Add new setting"
 
           fill_in "Name", :with => "test setting"
@@ -42,7 +42,7 @@ module Refinery
         end
 
         specify "page links" do
-          visit refinery_admin_settings_path
+          visit refinery.admin_settings_path
 
           page.should have_selector("a[href*='settings?page=2']")
         end

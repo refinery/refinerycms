@@ -25,7 +25,7 @@
     <ul id="<%= plural_name %>">
       <%% @<%= "all_" if plural_name == singular_name%><%= plural_name %>.each do |<%= singular_name %>| %>
         <li>
-          <%%= link_to <%= singular_name %><% if (title = attributes.detect { |a| a.type.to_s == "string" }).present? %>.<%= title.name %><% else %>.title<% end %>, main_app.refinery_<%= singular_name %>_path(<%= singular_name %>) %>
+          <%%= link_to <%= singular_name %><% if (title = attributes.detect { |a| a.type.to_s == "string" }).present? %>.<%= title.name %><% else %>.title<% end %>, refinery.<%= singular_name %>_path(<%= singular_name %>) %>
         </li>
       <%% end %>
     </ul>

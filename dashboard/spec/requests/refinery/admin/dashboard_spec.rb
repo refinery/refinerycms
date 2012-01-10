@@ -5,7 +5,7 @@ describe "dashboard" do
 
   describe "quick tasks" do
     specify "buttons" do
-      visit refinery_admin_dashboard_path
+      visit refinery.admin_dashboard_path
 
       page.should have_content("Quick Tasks")
 
@@ -38,7 +38,7 @@ describe "dashboard" do
     end
 
     it "shows 7 recent actions" do
-      visit refinery_admin_dashboard_path
+      visit refinery.admin_dashboard_path
 
       page.should have_content("Latest Activity")
       # This comes from login_refinery_user

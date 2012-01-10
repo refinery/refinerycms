@@ -54,7 +54,7 @@
         $(document).ready(function() {
           $('#flash.flash_message:has("#upgrade_wrapper") #flash_close').click(function(e) {
             e.preventDefault();
-            $.get('<%= main_app.refinery_admin_disable_upgrade_message_path %>');
+            $.get('<%= refinery.admin_disable_upgrade_message_path %>');
           });
         });
       </script>
