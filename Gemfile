@@ -63,6 +63,7 @@ group :development, :test do
       if RbConfig::CONFIG['target_os'] =~ /darwin/i
         gem 'rb-fsevent', '>= 0.3.9'
         gem 'growl',      '~> 1.0.3'
+        gem 'growl_notify'
       end
       if RbConfig::CONFIG['target_os'] =~ /linux/i
         gem 'rb-inotify', '>= 0.5.1'
