@@ -8,9 +8,10 @@
     <%%= link_to refinery_icon_tag("application_go.png"), refinery.<%= singular_name %>_path(<%= singular_name %>),
         :title => t('.view_live_html'),
         :target => "_blank" %>
-    <%%= link_to refinery_icon_tag("application_edit.png"), refinery.edit_admin_<%= singular_name %>_path(<%= singular_name %>),
+
+    <%%= link_to refinery_icon_tag("application_edit.png"), main_app.edit_refinery_<%= plural_name %>_admin_<%= singular_name %>_path(<%= singular_name %>),
          :title => t('.edit') %>
-    <%%= link_to refinery_icon_tag("delete.png"), refinery.admin_<%= singular_name %>_path(<%= singular_name %>),
+    <%%= link_to refinery_icon_tag("delete.png"), main_app.refinery_<%= plural_name %>_admin_<%= singular_name %>_path(<%= singular_name %>),
         :class => "cancel confirm-delete",
         :title => t('.delete'),
         :confirm => t('message', :scope => 'refinery.admin.delete', :title => <%= singular_name %><% if (title = attributes.detect { |a| a.type.to_s == "string" }).present? %>.<%= title.name %><% else %>.title<% end %>),
