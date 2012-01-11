@@ -1,7 +1,7 @@
 <% linked = (url_for(page_link.url) == params[:current_link]) if params[:current_link].present? -%>
 <% link_args = defined?(link_to_arguments) ? link_to_arguments : {} %>
 <li class='clearfix<%= " child#{child}" if child %><%= " linked" if linked%>' id="<%= dom_id(page_link) -%>">
-  <%= link_to page_link.title_with_meta.html_safe, page_link.url,
+  <%= link_to page_link.title_with_meta.html_safe, compute_public_path(url_for(page_link.url), ''),
               { :title => t('.link_to_this_page'),
               :rel => page_link.title,
               :class => 'page_link' }.merge(link_args) %>
