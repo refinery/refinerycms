@@ -96,7 +96,12 @@ module Refinery
     attr_writer :url
 
     def url
+<<<<<<< HEAD
       @url ||= "refinery.#{url_prefix}#{Refinery.namespace(klass)}"
+=======
+      "#{self.url_prefix}#{@url ||= [ class_name.underscore.gsub(%r{/?#{klass.model_name.param_key}($|/)}, '').gsub('/', '_'),
+                                      'admin', klass.model_name.param_key, 'path' ].join('_')}"
+>>>>>>> Restructured engine generator according to namespacing conventions. Made form_actions, activity and crud forward and backward compatible in this regard
     end
   end
 end
