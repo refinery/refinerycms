@@ -31,4 +31,8 @@ module Refinery
 
     end
   end
+<<<<<<< HEAD
 end
+=======
+end
+>>>>>>> Restructured engine generator according to namespacing conventions. Made form_actions, activity and crud forward and backward compatible in this regard
