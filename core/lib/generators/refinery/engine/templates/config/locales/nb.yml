@@ -3,20 +3,21 @@ nb:
     plugins:
       <%= class_name.pluralize.underscore.downcase %>:
         title: <%= plural_name.titleize %>
-    admin:
-      <%= plural_name %>:
-        actions:
-          create_new: Lag en ny <%= singular_name.titleize %>
-          reorder: Endre rekkefølgen på <%= singular_name.titleize.pluralize %>
-          reorder_done: Ferdig å endre rekkefølgen <%= singular_name.titleize.pluralize %>
-        records:
-          title: <%= plural_name.titleize %>
-          sorry_no_results: Beklager! Vi fant ikke noen resultater.
-          no_items_yet: Det er ingen <%= singular_name.titleize.pluralize %> enda. Klikk på "Lag en ny <%= singular_name.titleize %>" for å legge til din første <%= singular_name.titleize.downcase %>.
-        <%= singular_name %>:
-          view_live_html: Vis hvordan denne <%= singular_name.titleize.downcase %> ser ut offentlig <br/><em>(åpner i et nytt vindu)</em>
-          edit: Rediger denne <%= singular_name.titleize.downcase %>
-          delete: Fjern denne <%= singular_name.titleize.downcase %> permanent
     <%= plural_name %>:
-      show:
-        other: Andre <%= singular_name.titleize.pluralize %>
+      admin:
+        <%= plural_name %>:
+          actions:
+            create_new: Lag en ny <%= singular_name.titleize %>
+            reorder: Endre rekkefølgen på <%= singular_name.titleize.pluralize %>
+            reorder_done: Ferdig å endre rekkefølgen <%= singular_name.titleize.pluralize %>
+          records:
+            title: <%= plural_name.titleize %>
+            sorry_no_results: Beklager! Vi fant ikke noen resultater.
+            no_items_yet: Det er ingen <%= singular_name.titleize.pluralize %> enda. Klikk på "Lag en ny <%= singular_name.titleize %>" for å legge til din første <%= singular_name.titleize.downcase %>.
+          <%= singular_name %>:
+            view_live_html: Vis hvordan denne <%= singular_name.titleize.downcase %> ser ut offentlig <br/><em>(åpner i et nytt vindu)</em>
+            edit: Rediger denne <%= singular_name.titleize.downcase %>
+            delete: Fjern denne <%= singular_name.titleize.downcase %> permanent
+      <%= plural_name %>:
+        show:
+          other: Andre <%= singular_name.titleize.pluralize %>

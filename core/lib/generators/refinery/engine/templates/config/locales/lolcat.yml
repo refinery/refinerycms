@@ -3,20 +3,21 @@ lolcat:
     plugins:
       <%= class_name.pluralize.underscore.downcase %>:
         title: <%= plural_name.titleize %>
-    admin:
-      <%= plural_name %>:
-        actions:
-          create_new: CREATE NEW <%= singular_name.titleize %>
-          reorder: REORDR <%= singular_name.titleize.pluralize %>
-          reorder_done: DUN REORDERIN <%= singular_name.titleize.pluralize %>
-        records:
-          title: <%= plural_name.titleize %>
-          sorry_no_results: SRY! THAR R NO RESULTS FINDZ.
-          no_items_yet: THAR R NO <%= singular_name.titleize.pluralize %> YET. CLICK "CREATE NEW <%= singular_name.titleize %>" 2 ADD UR FURST <%= singular_name.titleize.downcase %>.
-        <%= singular_name %>:
-          view_live_html: VIEW DIS <%= singular_name.titleize.downcase %> LIV <BR/><EM>(OPENS IN NEW WINDOW)</EM>
-          edit: EDIT DIS <%= singular_name.titleize.downcase %>
-          delete: REMOOV DIS <%= singular_name.titleize.downcase %> FOREVR
     <%= plural_name %>:
-      show:
-        other: OTHR <%= singular_name.titleize.pluralize %>
+      admin:
+        <%= plural_name %>:
+          actions:
+            create_new: CREATE NEW <%= singular_name.titleize %>
+            reorder: REORDR <%= singular_name.titleize.pluralize %>
+            reorder_done: DUN REORDERIN <%= singular_name.titleize.pluralize %>
+          records:
+            title: <%= plural_name.titleize %>
+            sorry_no_results: SRY! THAR R NO RESULTS FINDZ.
+            no_items_yet: THAR R NO <%= singular_name.titleize.pluralize %> YET. CLICK "CREATE NEW <%= singular_name.titleize %>" 2 ADD UR FURST <%= singular_name.titleize.downcase %>.
+          <%= singular_name %>:
+            view_live_html: VIEW DIS <%= singular_name.titleize.downcase %> LIV <BR/><EM>(OPENS IN NEW WINDOW)</EM>
+            edit: EDIT DIS <%= singular_name.titleize.downcase %>
+            delete: REMOOV DIS <%= singular_name.titleize.downcase %> FOREVR
+      <%= plural_name %>:
+        show:
+          other: OTHR <%= singular_name.titleize.pluralize %>

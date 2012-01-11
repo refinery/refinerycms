@@ -1,13 +1,17 @@
 <%
+  namespacing = if f && f.object.class.respond_to?(:model_name)
+    f.object.class.name.underscore.gsub(%r{/?#{f.object.class.model_name.param_key}($|/)}, '').gsub('/', '_')
+  else
+    'refinery'
+  end
+
   unless (hide_submit ||= false)
     submit_button_text  ||= t('.save')
     submit_button_id    ||= "submit_button"
     submit_button_title ||= nil
   end
 
-  unless defined?(hide_cancel).presence
-    hide_cancel = from_dialog?
-  end
+  hide_cancel = from_dialog? unless defined?(hide_cancel).presence
 
   unless hide_cancel
     cancel_button_text  ||= t('.cancel')
@@ -15,7 +19,7 @@
       cancel_title = t('.cancel_lose_changes')
     end
     cancel_button_id    ||= "cancel_button"
-    cancel_url          ||= (((back = url_for(:back)).include?('javascript') or action_name =~ /^(create|update)$/) ? main_app.send("refinery_admin_#{f.object_name.to_s.pluralize}_path") : back)
+    cancel_url          ||= (((back = url_for(:back)).include?('javascript') or action_name =~ /^(create|update)$/) ? main_app.send("#{namespacing}_admin_#{f.object_name.to_s.pluralize}_path") : back)
   end
 
   continue_editing = defined?(continue_editing) ? continue_editing : (f.object.present? and f.object.persisted?)
@@ -31,7 +35,8 @@
     delete_title        ||= nil
     delete_confirmation ||= nil
     delete_button_id    ||= "delete_button"
-    delete_url          ||= eval("main_app.refinery_admin_#{f.object_name}_path(#{f.object.id})")
+    # we have to use eval rather than main_app.send because this url may not exist for HTTP GET
+    delete_url          ||= eval("main_app.#{namespacing}_admin_#{f.object_name}_path(#{f.object.id})")
   end
 -%>
 <% if from_dialog? %>

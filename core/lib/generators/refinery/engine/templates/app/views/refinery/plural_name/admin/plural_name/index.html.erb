@@ -7,4 +7,4 @@
 <%%= render :partial => '/refinery/admin/make_sortable',
             :locals => {
               :tree => false
-            } if !searching? and ::Refinery::Admin::<%= class_name.pluralize %>Controller.sortable? and ::Refinery::<%= class_name.pluralize %>::<%= class_name %>.count > 1 %>
+            } if !searching? and ::Refinery::<%= class_name.pluralize %>::Admin::<%= class_name.pluralize %>Controller.sortable? and ::Refinery::<%= class_name.pluralize %>::<%= class_name %>.count > 1 %>

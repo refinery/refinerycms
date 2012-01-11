@@ -2,7 +2,8 @@ module Refinery
   module <%= class_name.pluralize %>
     class Engine < Rails::Engine
       include Refinery::Engine
-      isolate_namespace Refinery
+      isolate_namespace Refinery::Evolutions
+
       engine_name :refinery_<%= plural_name %>
 
       initializer "register refinerycms_<%= plural_name %> plugin" do |app|
@@ -14,7 +15,7 @@ module Refinery
           plugin.url = '/refinery/<%= plural_name %>'
 
           plugin.activity = {
-            :class_name => :'refinery/<%= singular_name %>'
+            :class_name => :'refinery/<%= plural_name%>/<%= singular_name %>'
           }
         end
       end

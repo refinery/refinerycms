@@ -12,7 +12,7 @@ describe Refinery do
         end
 
         it "shows two items" do
-          visit refinery_admin_<%= plural_name %>_path
+          visit refinery_<%= plural_name %>_admin_<%= plural_name %>_path
           page.should have_content("UniqueTitleOne")
           page.should have_content("UniqueTitleTwo")
         end
@@ -20,7 +20,7 @@ describe Refinery do
 
       describe "create" do
         before(:each) do
-          visit refinery_admin_<%= plural_name %>_path
+          visit refinery_<%= plural_name %>_admin_<%= plural_name %>_path
 
           click_link "Add New <%= singular_name.titleize %>"
         end
@@ -48,7 +48,7 @@ describe Refinery do
           before(:each) { FactoryGirl.create(:<%= singular_name %>, :<%= title.name %> => "UniqueTitle") }
 
           it "should fail" do
-            visit refinery_admin_<%= plural_name %>_path
+            visit refinery_<%= plural_name %>_admin_<%= plural_name %>_path
 
             click_link "Add New <%= singular_name.titleize %>"
 
@@ -65,7 +65,7 @@ describe Refinery do
         before(:each) { FactoryGirl.create(:<%= singular_name %>, :<%= title.name %> => "A <%= title.name %>") }
 
         it "should succeed" do
-          visit refinery_admin_<%= plural_name %>_path
+          visit refinery_<%= plural_name %>_admin_<%= plural_name %>_path
 
           within ".actions" do
             click_link "Edit this <%= singular_name.titleize.downcase %>"
@@ -83,7 +83,7 @@ describe Refinery do
         before(:each) { FactoryGirl.create(:<%= singular_name %>, :<%= title.name %> => "UniqueTitleOne") }
 
         it "should succeed" do
-          visit refinery_admin_<%= plural_name %>_path
+          visit refinery_<%= plural_name %>_admin_<%= plural_name %>_path
 
           click_link "Remove this <%= singular_name.titleize.downcase %> forever"
 

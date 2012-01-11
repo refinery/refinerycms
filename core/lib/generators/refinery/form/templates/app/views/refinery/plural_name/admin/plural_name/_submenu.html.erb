@@ -1,6 +1,6 @@
 <div id='actions'>
   <ul>
-    <%% if ::Refinery::Admin::<%= class_name.pluralize %>Controller.searchable? %>
+    <%% if ::Refinery::<%= class_name.pluralize %>::Admin::<%= class_name.pluralize %>Controller.searchable? %>
       <li>
         <%%= render :partial => "/refinery/admin/search",
                     :locals => {
