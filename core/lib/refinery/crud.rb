@@ -30,7 +30,11 @@ module Refinery
         :order => ('position ASC' if this_class.table_exists? && this_class.column_names.include?('position')),
         :paging => true,
         :per_page => false,
+<<<<<<< HEAD
         :redirect_to_url => "refinery.#{Refinery.namespace(class_name.constantize, true)}",
+=======
+        :redirect_to_url => "main_app.#{namespacing}_admin_#{plural_name}_path",
+>>>>>>> Restructured engine generator according to namespacing conventions. Made form_actions, activity and crud forward and backward compatible in this regard
         :searchable => true,
         :search_conditions => '',
         :sortable => true,
