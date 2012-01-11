@@ -94,12 +94,6 @@ module Refinery
           Rails.root.join('Gemfile').open('w').puts(lines.reject {|l|
             l =~ %r{refinerycms-#{plural_name}}
           }.join("\n"))
-
-          ::Refinery::Generators::Migrations.revoke({
-            :pattern => File.expand_path('../templates/db/migrate/*.rb', __FILE__),
-            :plural_name => plural_name,
-            :singular_name => singular_name
-          })
         end
       else
         puts "You must specify at least one field. For help: rails generate refinery:engine"
