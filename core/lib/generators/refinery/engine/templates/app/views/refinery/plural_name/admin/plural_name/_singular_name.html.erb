@@ -4,7 +4,7 @@
     <span class="preview">&nbsp;</span>
   </span>
   <span class='actions'>
-    <%%= link_to refinery_icon_tag("application_go.png"), main_app.refinery_<%= singular_name %>_path(<%= singular_name %>),
+    <%%= link_to refinery_icon_tag("application_go.png"), main_app.refinery_<%= plural_name %>_<%= singular_name %>_path(<%= singular_name %>),
         :title => t('.view_live_html'),
         :target => "_blank" %>
     <%%= link_to refinery_icon_tag("application_edit.png"), main_app.edit_refinery_<%= plural_name %>_admin_<%= singular_name %>_path(<%= singular_name %>),
