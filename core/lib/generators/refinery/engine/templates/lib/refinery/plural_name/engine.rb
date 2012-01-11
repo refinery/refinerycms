@@ -2,7 +2,7 @@ module Refinery
   module <%= class_name.pluralize %>
     class Engine < Rails::Engine
       include Refinery::Engine
-      isolate_namespace Refinery::Evolutions
+      isolate_namespace Refinery::<%= class_name.pluralize %>
 
       engine_name :refinery_<%= plural_name %>
 
