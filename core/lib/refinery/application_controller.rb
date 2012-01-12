@@ -1,11 +1,3 @@
-require 'action_controller'
-# require application helper so that we can include our helpers into it.
-if defined?(Rails) and !Rails.root.nil?
-  if (app_helper = Rails.root.join('app', 'helpers', 'application_helper.rb')).file?
-    require app_helper.to_s
-  end
-end
-
 module Refinery
   module ApplicationController
 
