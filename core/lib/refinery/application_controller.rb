@@ -23,8 +23,7 @@ module Refinery
 
       send :include, Refinery::Crud # basic create, read, update and delete methods
 
-      send :before_filter, :find_pages_for_menu,
-                             :show_welcome_page?
+      send :before_filter, :find_pages_for_menu, :refinery_user_required?
 
       send :after_filter, :store_current_location!,
                             :if => Proc.new {|c| send(:refinery_user?) }
@@ -46,9 +45,7 @@ module Refinery
         # fallback to the default 404.html page.
         file = Rails.root.join('public', '404.html')
         file = Refinery.roots(:'refinery/core').join('public', '404.html') unless file.exist?
-        render :file => file.cleanpath.to_s,
-               :layout => false,
-               :status => 404
+        render :file => file.cleanpath.to_s, :layout => false, :status => 404
       end
 
       def from_dialog?
@@ -84,9 +81,9 @@ module Refinery
         @meta = presenter.new(model)
       end
 
-      def show_welcome_page?
+      def refinery_user_required?
         if just_installed? and controller_name != 'users'
-          render :template => 'refinery/welcome', :layout => 'login'
+          redirect_to main_app.new_refinery_user_registration_path
         end
       end
 
