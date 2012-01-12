@@ -40,7 +40,7 @@ cs:
         close: Zavřít
       image_picker:
         none_selected: Zatím není vybrán žádný %{what}, klikněte zde pro přidání.
-        remove_current: Zmazat vybraný %{what}
+        remove_current: Smazat vybraný %{what}
         change: Klikněte zde pro vybrání obrázku
         show: Zobrazit
       resource_picker:
