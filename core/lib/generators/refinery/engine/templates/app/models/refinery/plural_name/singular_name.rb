@@ -16,11 +16,11 @@ module Refinery
       <% end -%>
     <% attributes.collect{|a| a if a.type.to_s == 'image'}.compact.uniq.each do |a| -%>
 
-      belongs_to :<%= a.name.gsub("_id", "") -%><%= ", :class_name => '::Refinery::Image'" unless a.name =~ /^image(_id)?$/ -%>
+      belongs_to :<%= a.name.gsub("_id", "") -%>, :class_name => '::Refinery::Image'
     <% end -%>
     <% attributes.collect{|a| a if a.type.to_s == 'resource'}.compact.uniq.each do |a| -%>
 
-      belongs_to :<%= a.name.gsub("_id", "") %><%= ", :class_name => '::Refinery::Resource'" unless a.name =~ /^resource(_id)?$/ -%>
+      belongs_to :<%= a.name.gsub("_id", "") %>, :class_name => '::Refinery::Resource'
     <% end %>
     end
   end

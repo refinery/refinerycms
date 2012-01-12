@@ -8,11 +8,11 @@ module Refinery
 
     <% attributes.collect{|a| a if a.type.to_s == 'image'}.compact.uniq.each do |a| -%>
 
-      belongs_to :<%= a.name.gsub("_id", "") -%><%= ", :class_name => 'Image'" unless a.name =~ /^image(_id)?$/ -%>
+      belongs_to :<%= a.name.gsub("_id", "") -%>, :class_name => '::Refinery::Image'
     <% end -%>
     <% attributes.collect{|a| a if a.type.to_s == 'resource'}.compact.uniq.each do |a| -%>
 
-      belongs_to :<%= a.name.gsub("_id", "") %><%= ", :class_name => 'Resource'" unless a.name =~ /^resource(_id)?$/ -%>
+      belongs_to :<%= a.name.gsub("_id", "") %>, :class_name => '::Refinery::Resource'
     <% end -%>
     <% attributes.collect{|a| a if a.type.to_s =~ /radio|select/}.compact.uniq.each do |a| %>
       <%= a.name.pluralize.upcase %> = []
