@@ -1,12 +1,7 @@
-gem 'refinerycms', :git => 'git://github.com/resolve/refinerycms.git'
-run 'bundle install'
-rake 'db:create'
-generate 'refinery:cms'
-rake 'railties:install:migrations'
-rake 'db:migrate'
-
 append_file 'Gemfile' do
 "
+gem 'refinerycms', :git => 'git://github.com/resolve/refinerycms.git'
+
 #  group :development, :test do
 #    gem 'refinerycms-testing', '~> 2.0'
 #  end
@@ -29,6 +24,18 @@ gem 'refinerycms-i18n',   '~> 2.0.0', :git => 'git://github.com/parndt/refineryc
 # END USER DEFINED
 "
 end
+
+run 'bundle install'
+rake 'db:create'
+generate 'refinery:cms'
+generate 'refinery:core'
+generate 'refinery:pages'
+generate 'refinery:images'
+generate 'refinery:resources'
+generate 'refinery:i18n'
+
+rake 'railties:install:migrations'
+rake 'db:migrate'
 
 remove_file 'public/index.html'
 remove_file 'app/assets/images/rails.png'
