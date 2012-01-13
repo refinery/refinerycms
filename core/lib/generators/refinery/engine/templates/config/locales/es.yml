@@ -22,3 +22,8 @@ es:
       <%= plural_name %>:
         show:
           other: Otros <%= singular_name.titleize.pluralize.downcase %>
+  activerecord:
+    attributes:
+      'refinery/<%= plural_name %>/<%= singular_name %>':<% attributes.each do |a| %>
+        <%= a.name %>: <%= a.name.titleize -%>
+<% end -%>
