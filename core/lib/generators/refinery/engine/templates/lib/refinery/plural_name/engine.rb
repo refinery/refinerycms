@@ -15,7 +15,8 @@ module Refinery
           plugin.url = '/refinery/<%= plural_name %>'
 
           plugin.activity = {
-            :class_name => :'refinery/<%= plural_name%>/<%= singular_name %>'
+            :class_name => :'refinery/<%= plural_name%>/<%= singular_name %>'<% if (title = attributes.detect { |a| a.type.to_s == "string" }).present? and title.name != 'title' %>,
+            :title => '<%= title.name %>'<% end %>
           }
         end
       end
