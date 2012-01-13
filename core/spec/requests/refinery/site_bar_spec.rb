@@ -8,7 +8,7 @@ module Refinery
       visit refinery.admin_dashboard_path
 
       page.should have_content("Log out")
-      page.should have_selector("a[href='/refinery/users/logout']")
+      page.should have_selector("a[href='/refinery/logout']")
     end
 
     context "when in backend" do
