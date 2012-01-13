@@ -23,8 +23,6 @@ en:
           other: Other <%= singular_name.titleize.pluralize %>
   activerecord:
     attributes:
-      refinery/<%= plural_name %>/<%= singular_name %>:
-      <% attributes.each do |a| %>
-        <%= a %>: <%= a.name.titleize %>
-      <% end %>
-
+      'refinery/<%= plural_name %>/<%= singular_name %>':<% attributes.each do |a| %>
+        <%= a.name %>: <%= a.name.titleize -%>
+<% end -%>
