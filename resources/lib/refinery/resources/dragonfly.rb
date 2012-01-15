@@ -16,13 +16,6 @@ module Refinery
           app_resources = ::Dragonfly[:refinery_resources]
           app_resources.configure_with(:rails) do |c|
             c.datastore.root_path = Refinery::Resources.datastore_root_path
-
-            # This url_format makes it so that dragonfly urls work in traditional
-            # situations where the filename and extension are required, e.g. lightbox.
-            # What this does is takes the url that is about to be produced e.g.
-            # /system/images/BAhbB1sHOgZmIiMyMDEwLzA5LzAxL1NTQ19DbGllbnRfQ29uZi5qcGdbCDoGcDoKdGh1bWIiDjk0MngzNjAjYw
-            # and adds the filename onto the end (say the file was 'refinery_is_awesome.pdf')
-            # /system/images/BAhbB1sHOgZmIiMyMDEwLzA5LzAxL1NTQ19DbGllbnRfQ29uZi5qcGdbCDoGcDoKdGh1bWIiDjk0MngzNjAjYw/refinery_is_awesome.pdf
             c.url_format = Refinery::Resources.config.dragonfly_url_format
             c.secret = Refinery::Resources.config.dragonfly_secret
           end
