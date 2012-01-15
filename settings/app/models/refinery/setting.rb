@@ -1,5 +1,5 @@
 module Refinery
-  class Setting < ActiveRecord::Base
+  class Setting < Refinery::Core::Base
 
     FORM_VALUE_TYPES = [
       ['Multi-line', 'text_area'],

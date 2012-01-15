@@ -29,7 +29,7 @@ module Refinery
             end
           end
 
-          app_images.define_macro(::ActiveRecord::Base, :image_accessor)
+          app_images.define_macro(::Refinery::Core::Base, :image_accessor)
           app_images.analyser.register(::Dragonfly::ImageMagick::Analyser)
           app_images.analyser.register(::Dragonfly::Analysis::FileCommandAnalyser)
         end

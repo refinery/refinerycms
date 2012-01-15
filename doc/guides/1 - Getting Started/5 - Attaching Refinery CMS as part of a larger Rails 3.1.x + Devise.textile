@@ -244,7 +244,7 @@ Now we have to fill in our models. Once again, we won't reinvent the wheel so we
 
 +app/model/role.rb+
 <ruby>
-class Role < ActiveRecord::Base
+class Role < Refinery::Core::Base
   # TODO: This works around a bug in rails habtm with namespaces.
   has_and_belongs_to_many :users, :join_table => ::RolesUsers.table_name
 
@@ -262,21 +262,21 @@ end
 </ruby>
 +app/model/roles_users.rb+
 <ruby>
-class RolesUsers < ActiveRecord::Base
+class RolesUsers < Refinery::Core::Base
   belongs_to :role
   belongs_to :user
 end
 </ruby>
 +app/model/user_plugin.rb+
 <ruby>
-class UserPlugin < ActiveRecord::Base
+class UserPlugin < Refinery::Core::Base
   belongs_to :user
   attr_accessible :user_id, :name, :position
 end
 </ruby>
 +app/model/user.rb+
 <ruby>
-class User < ActiveRecord::Base
+class User < Refinery::Core::Base
   #Your stuff
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable

@@ -28,7 +28,7 @@ module Refinery
             end
           end
 
-          app_resources.define_macro(::ActiveRecord::Base, :resource_accessor)
+          app_resources.define_macro(::Refinery::Core::Base, :resource_accessor)
           app_resources.analyser.register(::Dragonfly::Analysis::FileCommandAnalyser)
           app_resources.content_disposition = :attachment
         end

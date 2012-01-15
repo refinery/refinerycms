@@ -1,5 +1,5 @@
 module Refinery
-  class Resource < ActiveRecord::Base
+  class Resource < Refinery::Core::Base
     include Resources::Validators
 
     attr_accessible :id, :file

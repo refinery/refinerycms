@@ -1,5 +1,5 @@
 module Refinery
-  class Page < ActiveRecord::Base
+  class Page < Refinery::Core::Base
     # when collecting the pages path how is each of the pages seperated?
     PATH_SEPARATOR = " - "
 

@@ -1,7 +1,7 @@
 require 'devise'
 
 module Refinery
-  class User < ActiveRecord::Base
+  class User < Refinery::Core::Base
     # TODO: This works around a bug in rails habtm with namespaces.
     has_and_belongs_to_many :roles, :join_table => ::Refinery::RolesUsers.table_name
 

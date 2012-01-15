@@ -1,5 +1,5 @@
 module Refinery
-  class Image < ActiveRecord::Base
+  class Image < Refinery::Core::Base
     include Images::Validators
 
     image_accessor :image

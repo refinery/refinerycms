@@ -1,6 +1,6 @@
 module Refinery
   module <%= class_name.pluralize %>
-    class <%= class_name %> < ActiveRecord::Base
+    class <%= class_name %> < Refinery::Core::Base
       set_table_name :refinery_<%= plural_name %>
 
     <% if (string_attributes = attributes.map{ |attribute| attribute.name.to_sym if attribute.type.to_s =~ /string|text/ }.compact.uniq).any? %>
