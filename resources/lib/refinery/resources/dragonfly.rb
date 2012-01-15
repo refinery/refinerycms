@@ -14,14 +14,17 @@ module Refinery
             # and adds the filename onto the end (say the file was 'refinery_is_awesome.pdf')
             # /system/images/BAhbB1sHOgZmIiMyMDEwLzA5LzAxL1NTQ19DbGllbnRfQ29uZi5qcGdbCDoGcDoKdGh1bWIiDjk0MngzNjAjYw/refinery_is_awesome.pdf
             c.url_format = '/system/resources/:job/:basename.:format'
-            c.secret = Refinery::Core.config.dragonfly_secret
+            c.secret = Refinery::Resources.config.dragonfly_secret
           end
 
-          if ::Refinery::Core.config.s3_backend
-            app_resources.configure_with(:heroku, ENV['S3_BUCKET'])
-            # Dragonfly doesn't set the S3 region, so we have to do this manually
-            app_resources.datastore.configure do |d|
-              d.region = ENV['S3_REGION'] if ENV['S3_REGION'] # defaults to 'us-east-1'
+          if ::Refinery::Resources.config.s3_backend
+            app_resources.datastore = Dragonfly::DataStore::S3DataStore.new
+            app_resources.datastore.configure do |s3|
+              s3.bucket_name = Refinery::Resources.config.s3_bucket_name
+              s3.access_key_id = Refinery::Resources.config.s3_access_key_id
+              s3.secret_access_key = Refinery::Resources.config.s3_secret_access_key
+              # S3 Region otherwise defaults to 'us-east-1'
+              s3.region = Refinery::Resources.config.s3_region if Refinery::Resources.config.s3_region
             end
           end
 

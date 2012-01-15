@@ -2,11 +2,14 @@ module Refinery
   module Images
     include ActiveSupport::Configurable
 
-    config_accessor :dragonfly_insert_before, :max_image_size, :pages_per_dialog,
-                    :pages_per_admin_index, :pages_per_dialog_that_have_size_options,
-                    :user_image_sizes, :image_views, :preferred_image_view
+    config_accessor :dragonfly_insert_before, :dragonfly_secret, :max_image_size,
+                    :pages_per_dialog, :pages_per_admin_index, :pages_per_dialog_that_have_size_options,
+                    :user_image_sizes, :image_views, :preferred_image_view,
+                    :s3_backend, :s3_bucket_name, :s3_region,
+                    :s3_access_key_id, :s3_secret_access_key
 
     self.dragonfly_insert_before = 'ActionDispatch::Callbacks'
+    self.dragonfly_secret = Refinery::Core.config.dragonfly_secret
     self.max_image_size = 5242880
     self.pages_per_dialog = 18
     self.pages_per_dialog_that_have_size_options = 12
@@ -16,5 +19,10 @@ module Refinery
                               :large => '450x450>' }
     self.image_views = [:grid, :list]
     self.preferred_image_view = :grid
+
+    self.s3_backend = Refinery::Core.config.s3_backend
+    self.s3_bucket_name = ENV['S3_BUCKET']
+    self.s3_access_key_id = ENV['S3_KEY']
+    self.s3_secret_access_key = ENV['S3_SECRET']
   end
 end
