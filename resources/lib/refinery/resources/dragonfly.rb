@@ -17,7 +17,7 @@ module Refinery
             c.secret = Refinery::Core.config.dragonfly_secret
           end
 
-          if ::Refinery.s3_backend
+          if ::Refinery::Core.config.s3_backend
             app_resources.configure_with(:heroku, ENV['S3_BUCKET'])
             # Dragonfly doesn't set the S3 region, so we have to do this manually
             app_resources.datastore.configure do |d|

@@ -272,7 +272,7 @@ module Refinery
     end
 
     def cache_key
-      [Refinery.base_cache_key, ::I18n.locale, to_param].compact.join('/')
+      [Refinery::Core.config.base_cache_key, ::I18n.locale, to_param].compact.join('/')
     end
 
     # Returns true if this page is "published"
