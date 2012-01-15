@@ -4,16 +4,26 @@ module Refinery
 
       class << self
         def setup!
-          app_resources = ::Dragonfly[:resources]
+          app_resources = ::Dragonfly[:refinery_resources]
+
+          app_resources.define_macro(::Refinery::Core::Base, :resource_accessor)
+
+          app_resources.analyser.register(::Dragonfly::Analysis::FileCommandAnalyser)
+          app_resources.content_disposition = :attachment
+        end
+
+        def configure!
+          app_resources = ::Dragonfly[:refinery_resources]
           app_resources.configure_with(:rails) do |c|
-            c.datastore.root_path = Rails.root.join('public', 'system', 'resources').to_s
+            c.datastore.root_path = Refinery::Resources.datastore_root_path
+
             # This url_format makes it so that dragonfly urls work in traditional
             # situations where the filename and extension are required, e.g. lightbox.
             # What this does is takes the url that is about to be produced e.g.
             # /system/images/BAhbB1sHOgZmIiMyMDEwLzA5LzAxL1NTQ19DbGllbnRfQ29uZi5qcGdbCDoGcDoKdGh1bWIiDjk0MngzNjAjYw
             # and adds the filename onto the end (say the file was 'refinery_is_awesome.pdf')
             # /system/images/BAhbB1sHOgZmIiMyMDEwLzA5LzAxL1NTQ19DbGllbnRfQ29uZi5qcGdbCDoGcDoKdGh1bWIiDjk0MngzNjAjYw/refinery_is_awesome.pdf
-            c.url_format = '/system/resources/:job/:basename.:format'
+            c.url_format = Refinery::Resources.config.dragonfly_url_format
             c.secret = Refinery::Resources.config.dragonfly_secret
           end
 
@@ -27,16 +37,12 @@ module Refinery
               s3.region = Refinery::Resources.config.s3_region if Refinery::Resources.config.s3_region
             end
           end
-
-          app_resources.define_macro(::Refinery::Core::Base, :resource_accessor)
-          app_resources.analyser.register(::Dragonfly::Analysis::FileCommandAnalyser)
-          app_resources.content_disposition = :attachment
         end
 
         def attach!(app)
           ### Extend active record ###
           app.config.middleware.insert_before Refinery::Resources.config.dragonfly_insert_before,
-                                              'Dragonfly::Middleware', :resources
+                                              'Dragonfly::Middleware', :refinery_resources
 
           app.config.middleware.insert_before 'Dragonfly::Middleware', 'Rack::Cache', {
             :verbose     => Rails.env.development?,
