@@ -28,7 +28,7 @@ module Refinery
           @page.parts << ::Refinery::PagePart.new(:title => page_part, :position => index)
 =======
         @page = Refinery::Page.new(params)
-        Refinery::Pages.config.default_parts.each_with_index do |page_part, index|
+        Refinery::Pages.default_parts.each_with_index do |page_part, index|
           @page.parts << Refinery::PagePart.new(:title => page_part, :position => index)
 >>>>>>> Refinery CMS as mountable engine.
         end
