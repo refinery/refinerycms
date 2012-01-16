@@ -20,7 +20,7 @@ module Refinery
       end
 
       config.after_initialize do
-        Refinery.register_engine(Refinery::<%= namespacing %>)
+        Refinery.register_engine(Refinery::<%= class_name.pluralize %>)
       end
     end
   end
