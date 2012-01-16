@@ -1,6 +1,6 @@
 <nav id="menu">
   <% ::Refinery::Plugins.active.in_menu.each do |plugin| -%>
-    <%= link_to plugin.title, plugin.url,
+    <%= link_to plugin.title, main_app.url_for(plugin.url),
                 :class => ("active" if plugin.highlighted?(params)),
                 :id => "plugin_#{plugin.name}" %>
   <% end -%>
