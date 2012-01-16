@@ -4,7 +4,7 @@ es:
       <%= class_name.pluralize.underscore.downcase %>:
         title: <%= plural_name.titleize %>
 #        article: masculino/femenino
-    <%= namespacing %>:
+    <%= namespacing.underscore %>:
       admin:
         <%= plural_name %>:
           actions:

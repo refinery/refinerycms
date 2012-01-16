@@ -3,23 +3,23 @@
     <li>
       <%%= render :partial => "/refinery/admin/search",
                   :locals => {
-                    :url => main_app.refinery_<%= plural_name %>_admin_<%= plural_name %><%= "_index" if plural_name == singular_name%>_path
+                    :url => main_app.refinery_<%= namespacing.underscore %>_admin_<%= plural_name %><%= "_index" if plural_name == singular_name%>_path
                   } %>
     </li>
   <%% end %>
   <li>
-    <%%= link_to t('.create_new'), main_app.new_refinery_<%= plural_name %>_admin_<%= singular_name %>_path,
+    <%%= link_to t('.create_new'), main_app.new_refinery_<%= namespacing.underscore %>_admin_<%= singular_name %>_path,
                  :class => "add_icon" %>
   </li>
 <%% if !searching? && ::Refinery::<%= namespacing %>::Admin::<%= class_name.pluralize %>Controller.sortable? && ::Refinery::<%= namespacing %>::<%= class_name %>.any? %>
   <li>
     <%%= link_to t('.reorder', :what => "<%= singular_name.titleize.pluralize %>"),
-                 main_app.refinery_<%= plural_name %>_admin_<%= plural_name %><%= "_index" if plural_name == singular_name%>_path,
+                 main_app.refinery_<%= namespacing.underscore %>_admin_<%= plural_name %><%= "_index" if plural_name == singular_name%>_path,
                  :id => "reorder_action",
                  :class => "reorder_icon" %>
 
     <%%= link_to t('.reorder_done', :what => "<%= singular_name.titleize.pluralize %>"),
-                 main_app.refinery_<%= plural_name %>_admin_<%= plural_name %><%= "_index" if plural_name == singular_name%>_path,
+                 main_app.refinery_<%= namespacing.underscore %>_admin_<%= plural_name %><%= "_index" if plural_name == singular_name%>_path,
                  :id => "reorder_action_done",
                  :style => "display: none;",
                  :class => "reorder_icon" %>

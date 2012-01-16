@@ -9,7 +9,10 @@ module Refinery
       initializer "register refinerycms_<%= plural_name %> plugin" do |app|
         Refinery::Plugin.register do |plugin|
           plugin.name = "<%= plural_name %>"
-          plugin.url = {:controller => '/refinery/<%= namespacing.underscore.pluralize %>/<%= plural_name %>'}
+          plugin.url = {
+            :controller => 'refinery/<%= namespacing.underscore.pluralize %>/admin/<%= plural_name %>',
+            :action => 'index'
+          }
           plugin.pathname = root
 
           plugin.activity = {
