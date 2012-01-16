@@ -36,6 +36,10 @@ module Refinery
 
       config.autoload_paths += %W( #{config.root}/lib )
 
+      # We can't reload the base class because otherwise in development mode
+      # we lose any configuration that is applied to it like macros for Dragonfly.
+      config.autoload_once_paths += %W( #{config.root}/app/models/refinery/core )
+
       # Include the refinery controllers and helpers dynamically
       config.to_prepare &method(:refinery_inclusion!).to_proc
 
