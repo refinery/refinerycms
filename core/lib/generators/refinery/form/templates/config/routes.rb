@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  scope(:module => :'refinery/<%= class_name.pluralize.underscore.downcase %>', 
-        :as => :refinery_<%= class_name.pluralize.underscore.downcase %>) do 
+  scope(:module => :'refinery/<%= class_name.pluralize.underscore.downcase %>',
+        :as => :refinery_<%= class_name.pluralize.underscore.downcase %>) do
     resources :<%= class_name.pluralize.underscore.downcase %>, :only => [:new, :create] do
       collection do
         get :thank_you
@@ -8,8 +8,8 @@ Rails.application.routes.draw do
     end
   end
 
-  scope(:path => :'refinery/<%= class_name.pluralize.underscore.downcase %>', 
-        :as => :refinery_<%=class_name.pluralize.underscore.downcase %>_admin, 
+  scope(:path => :'refinery/<%= class_name.pluralize.underscore.downcase %>',
+        :as => :refinery_<%=class_name.pluralize.underscore.downcase %>_admin,
         :module => :'refinery/<%= class_name.pluralize.underscore.downcase %>/admin') do
     resources :<%= class_name.pluralize.underscore.downcase %>, :path => '' <% if @includes_spam %> do
       collection do
