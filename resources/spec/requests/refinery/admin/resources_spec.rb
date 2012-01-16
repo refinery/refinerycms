@@ -71,7 +71,7 @@ module Refinery
       context "download" do
         let!(:resource) { FactoryGirl.create(:resource) }
 
-        it "succeedes" do
+        it "succeeds" do
           visit refinery_admin_resources_path
 
           click_link "Download this file"
