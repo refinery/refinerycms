@@ -38,7 +38,6 @@ group :development, :test do
     gem 'capybara-webkit', '~> 0.7.2'
   end
   gem 'generator_spec'
-  gem 'database_cleaner', :git => 'git://github.com/bmabey/database_cleaner.git'
 
   platforms :mri_18 do
     gem 'rcov'
