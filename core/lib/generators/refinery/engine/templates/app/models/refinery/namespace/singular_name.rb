@@ -1,7 +1,7 @@
 module Refinery
-  module <%= class_name.pluralize %>
+  module <%= namespacing %>
     class <%= class_name %> < Refinery::Core::Base
-      set_table_name :refinery_<%= plural_name %>
+      set_table_name :refinery_<%= "#{namespacing.underscore.pluralize}_" if table_name != namespacing.underscore.pluralize -%><%= plural_name %>
 
     <% if (string_attributes = attributes.map{ |attribute| attribute.name.to_sym if attribute.type.to_s =~ /string|text/ }.compact.uniq).any? %>
       acts_as_indexed :fields => <%= string_attributes.inspect %>
@@ -11,7 +11,7 @@ module Refinery
       # def title was created automatically because you didn't specify a string field
       # when you ran the refinery:engine generator. <3 <3 Refinery CMS.
       def title
-        "Override def title in vendor/engines/<%= plural_name %>/app/models/refinery/<%= plural_name %>/<%= singular_name %>.rb"
+        "Override def title in vendor/engines/<%= namespacing %>/app/models/refinery/<%= namespacing %>/<%= singular_name %>.rb"
       end
       <% end -%>
     <% attributes.collect{|a| a if a.type.to_s == 'image'}.compact.uniq.each do |a| -%>

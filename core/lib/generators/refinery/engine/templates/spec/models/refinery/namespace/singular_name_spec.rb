@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 module Refinery
-  module <%= class_name.pluralize %>
+  module <%= namespacing %>
     describe <%= class_name %> do
       describe "validations" do
         subject do

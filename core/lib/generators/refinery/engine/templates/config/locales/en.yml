@@ -3,7 +3,7 @@ en:
     plugins:
       <%= class_name.pluralize.underscore.downcase %>:
         title: <%= plural_name.titleize %>
-    <%= plural_name %>:
+    <%= namespacing %>:
       admin:
         <%= plural_name %>:
           actions:
@@ -23,6 +23,6 @@ en:
           other: Other <%= singular_name.titleize.pluralize %>
   activerecord:
     attributes:
-      'refinery/<%= plural_name %>/<%= singular_name %>':<% attributes.each do |a| %>
+      'refinery/<%= namespacing %>/<%= singular_name %>':<% attributes.each do |a| %>
         <%= a.name %>: <%= a.name.titleize -%>
 <% end -%>

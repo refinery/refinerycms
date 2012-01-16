@@ -4,7 +4,7 @@ es:
       <%= class_name.pluralize.underscore.downcase %>:
         title: <%= plural_name.titleize %>
 #        article: masculino/femenino
-    <%= plural_name %>:
+    <%= namespacing %>:
       admin:
         <%= plural_name %>:
           actions:
@@ -24,6 +24,6 @@ es:
           other: Otros <%= singular_name.titleize.pluralize.downcase %>
   activerecord:
     attributes:
-      'refinery/<%= plural_name %>/<%= singular_name %>':<% attributes.each do |a| %>
+      'refinery/<%= namespacing %>/<%= singular_name %>':<% attributes.each do |a| %>
         <%= a.name %>: <%= a.name.titleize -%>
 <% end -%>
