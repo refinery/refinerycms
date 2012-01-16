@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  match '/system/resources/*dragonfly', :to => Dragonfly[:resources]
+  match '/system/resources/*dragonfly', :to => Dragonfly[:refinery_resources]
 
   scope(:path => 'refinery', :as => 'refinery_admin', :module => 'refinery/admin') do
     resources :resources, :except => :show do

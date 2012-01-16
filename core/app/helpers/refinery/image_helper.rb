@@ -9,7 +9,7 @@ module Refinery
       content.gsub(%r{<img.+?src=['"](/system/images/.+?)/.+?/>}) do |image_match|
          begin
            uid = Dragonfly::Job.from_path(
-                    "#{image_match.match(%r{(/system/images/.+?)/})[1]}", Dragonfly[:images]
+                    "#{image_match.match(%r{(/system/images/.+?)/})[1]}", Dragonfly[:refinery_images]
                  ).uid
 
            image_fu Image.where(:image_uid => uid).first, thumbnail

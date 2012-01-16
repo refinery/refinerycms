@@ -75,9 +75,7 @@ module Refinery
       it "succeeds" do
         visit refinery_admin_images_path
 
-        click_link "View this image"
-
-        response.should be_success
+        lambda { click_link "View this image" }.should_not raise_error
       end
     end
 
