@@ -4,7 +4,7 @@ Rails.application.routes.draw do
       resources :<%= class_name.pluralize.underscore.downcase %>, :only => [:index, :show]
 
       scope(:module => 'admin', :path => 'refinery/<%= namespacing.underscore.pluralize %>', :as => 'admin') do
-        resources :<%= class_name.pluralize.underscore.downcase %>, :path => '', :except => :show do
+        resources :<%= class_name.pluralize.underscore.downcase %><%= ", :path => ''" if namespacing.underscore.pluralize == class_name.pluralize.underscore.downcase %>, :except => :show do
           collection do
             post :update_positions
           end
