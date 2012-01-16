@@ -2,6 +2,10 @@ module Refinery
   module Testing
     module ControllerMacros
       module Authentication
+        def self.extended(base)
+          base.send(:include, Devise::TestHelpers)
+        end
+
         def login_user
           before(:each) do
             @user = FactoryGirl.create(:user)
