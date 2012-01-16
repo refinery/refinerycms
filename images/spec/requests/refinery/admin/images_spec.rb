@@ -69,6 +69,18 @@ module Refinery
       end
     end
 
+    context "download" do
+      let!(:image) { FactoryGirl.create(:image) }
+
+      it "succeeds" do
+        visit refinery_admin_images_path
+
+        click_link "View this image"
+
+        response.should be_success
+      end
+    end
+
     describe "switch view" do
       let!(:image) { FactoryGirl.create(:image) }
 
