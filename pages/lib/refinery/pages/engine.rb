@@ -19,7 +19,7 @@ module Refinery
       end
 
       initializer "append marketable routes", :before => :set_routes_reloader do |app|
-        if Refinery::Pages.config.marketable_urls
+        if Refinery::Pages.marketable_urls
           append_marketable_routes(app)
         end
       end

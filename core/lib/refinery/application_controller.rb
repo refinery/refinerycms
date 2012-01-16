@@ -20,7 +20,7 @@ module Refinery
       send :after_filter, :store_current_location!,
                             :if => Proc.new {|c| send(:refinery_user?) }
 
-      if Refinery::Core.config.rescue_not_found
+      if Refinery::Core.rescue_not_found
         send :rescue_from, ActiveRecord::RecordNotFound,
                            ActionController::UnknownAction,
                            ActionView::MissingTemplate,

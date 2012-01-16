@@ -29,7 +29,7 @@ module Refinery
       end
 
       it "should use right geometry when given a thumbnail name" do
-        name, geometry = Refinery::Images.config.user_image_sizes.first
+        name, geometry = Refinery::Images.user_image_sizes.first
         image.thumbnail(name).url.should == image.thumbnail(geometry).url
       end
     end
@@ -44,27 +44,27 @@ module Refinery
       context "dialog is true" do
         context "has_size_options is true" do
           it "returns image count specified by Images.config.pages_per_dialog_that_have_size_options option" do
-            ::Refinery::Image.per_page(true, true).should == Images.config.pages_per_dialog_that_have_size_options
+            ::Refinery::Image.per_page(true, true).should == Images.pages_per_dialog_that_have_size_options
           end
         end
 
         context "has_size_options is false" do
           it "returns image count specified by Images.config.pages_per_dialog option" do
-            ::Refinery::Image.per_page(true).should == Images.config.pages_per_dialog
+            ::Refinery::Image.per_page(true).should == Images.pages_per_dialog
           end
         end
       end
 
       context "dialog is false" do
         it "returns image count specified by Images.config.pages_per_admin_index option" do
-          ::Refinery::Image.per_page.should == Images.config.pages_per_admin_index
+          ::Refinery::Image.per_page.should == Images.pages_per_admin_index
         end
       end
     end
 
     describe ".user_image_sizes" do
       it "returns a hash" do
-        Refinery::Images.config.user_image_sizes.should be_a_kind_of(Hash)
+        Refinery::Images.user_image_sizes.should be_a_kind_of(Hash)
       end
     end
 

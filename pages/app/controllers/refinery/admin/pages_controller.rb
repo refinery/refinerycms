@@ -21,7 +21,7 @@ module ::Refinery
 
       def new
         @page = ::Refinery::Page.new(params)
-        Refinery::Pages.config.default_parts.each_with_index do |page_part, index|
+        Refinery::Pages.default_parts.each_with_index do |page_part, index|
           @page.parts << ::Refinery::PagePart.new(:title => page_part, :position => index)
         end
       end
@@ -48,10 +48,10 @@ module ::Refinery
       end
 
       def load_valid_templates
-        @valid_layout_templates = Refinery::Pages.config.layout_template_whitelist &
+        @valid_layout_templates = Refinery::Pages.layout_template_whitelist &
                                   Refinery::Pages.valid_templates('app', 'views', '{layouts,refinery/layouts}', '*html*')
 
-        @valid_view_templates = Refinery::Pages.config.view_template_whitelist &
+        @valid_view_templates = Refinery::Pages.view_template_whitelist &
                                 Refinery::Pages.valid_templates('app', 'views', '{pages,refinery/pages}', '*html*')
       end
 

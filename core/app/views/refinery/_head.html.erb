@@ -5,7 +5,7 @@
   <%= raw(%(<meta name="description" content="#{@meta.meta_description}" />)) if @meta.meta_description.present? -%>
   <%= raw(%(<meta name="keywords" content="#{@meta.meta_keywords}">)) if @meta.meta_keywords.present? -%>
   <%= raw(%(<link rel="canonical" content="#{@canonical}" />)) if @canonical.present? -%>
-  <%= csrf_meta_tags if Refinery::Core.config.authenticity_token_on_frontend -%>
+  <%= csrf_meta_tags if Refinery::Core.authenticity_token_on_frontend -%>
   <%= yield :meta %>
 
   <%= stylesheet_link_tag "application", "formatting", "theme" %>

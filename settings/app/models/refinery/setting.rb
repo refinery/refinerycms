@@ -83,7 +83,7 @@ module Refinery
       end
 
       def cache_key
-        [Refinery::Core.config.base_cache_key, 'settings_cache'].join('_')
+        [Refinery::Core.base_cache_key, 'settings_cache'].join('_')
       end
 
       # find_or_set offers a convenient way to

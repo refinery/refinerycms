@@ -10,7 +10,7 @@ module Refinery
                     :s3_access_key_id, :s3_secret_access_key
 
     self.dragonfly_insert_before = 'ActionDispatch::Callbacks'
-    self.dragonfly_secret = Refinery::Core.config.dragonfly_secret
+    self.dragonfly_secret = Refinery::Core.dragonfly_secret
     self.dragonfly_url_format = '/system/images/:job/:basename.:format'
 
     self.max_image_size = 5242880
@@ -23,7 +23,7 @@ module Refinery
     self.image_views = [:grid, :list]
     self.preferred_image_view = :grid
 
-    self.s3_backend = Refinery::Core.config.s3_backend
+    self.s3_backend = Refinery::Core.s3_backend
     self.s3_bucket_name = ENV['S3_BUCKET']
     self.s3_access_key_id = ENV['S3_KEY']
     self.s3_secret_access_key = ENV['S3_SECRET']

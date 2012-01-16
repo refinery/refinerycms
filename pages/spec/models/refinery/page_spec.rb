@@ -13,11 +13,11 @@ module Refinery
     end
 
     def turn_off_marketable_urls
-      Refinery::Pages.config.stub(:marketable_urls).and_return(false)
+      Refinery::Pages.stub(:marketable_urls).and_return(false)
     end
 
     def turn_on_marketable_urls
-      Refinery::Pages.config.stub(:marketable_urls).and_return(true)
+      Refinery::Pages.stub(:marketable_urls).and_return(true)
     end
 
     context 'cannot be deleted under certain rules' do
@@ -102,8 +102,8 @@ module Refinery
       let(:child_with_custom_slug) { page.children.create(:title => 'The child page', :custom_slug => 'custom-child-slug') }
 
       after(:each) do
-        ::Refinery::I18n.config.current_frontend_locale = Refinery::I18n.config.default_frontend_locale
-        ::Refinery::I18n.config.current_locale = Refinery::I18n.config.default_locale
+        ::Refinery::I18n.config.current_frontend_locale = Refinery::I18n.default_frontend_locale
+        ::Refinery::I18n.config.current_locale = Refinery::I18n.default_locale
       end
 
       it 'returns its path with custom slug' do

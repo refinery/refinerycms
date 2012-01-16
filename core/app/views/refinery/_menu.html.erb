@@ -4,7 +4,7 @@
   if (roots = local_assigns[:roots] || (collection ||= @menu_pages).roots).present?
     dom_id ||= 'menu'
     css = [(css || 'menu'), 'clearfix'].flatten.join(' ')
-    hide_children = Refinery::Core.config.menu_hide_children if hide_children.nil?
+    hide_children = Refinery::Core.menu_hide_children if hide_children.nil?
 -%>
 <nav id='<%= dom_id %>' class='<%= css %>'>
   <ul>

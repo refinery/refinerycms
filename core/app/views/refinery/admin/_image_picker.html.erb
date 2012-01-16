@@ -15,7 +15,7 @@
   <div class='current_image_container' style="margin-top: 10px<%= ";display: none" if toggle_image_display %>">
     <a class='current_image_link dialog' href="<%= current_image_link_href %>" style='border: 0px' title='<%= current_image_title  %>' name='<%= current_image_title %>'>
       <% unless image.nil? -%>
-        <%= image_fu image, Refinery::Images.config.user_image_sizes[thumbnail.to_sym],
+        <%= image_fu image, Refinery::Images.user_image_sizes[thumbnail.to_sym],
                      :class => "brown_border",
                      :class => "current_picked_image" %>
       <% else -%>

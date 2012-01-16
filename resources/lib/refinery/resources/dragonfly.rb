@@ -16,25 +16,25 @@ module Refinery
           app_resources = ::Dragonfly[:refinery_resources]
           app_resources.configure_with(:rails) do |c|
             c.datastore.root_path = Refinery::Resources.datastore_root_path
-            c.url_format = Refinery::Resources.config.dragonfly_url_format
-            c.secret = Refinery::Resources.config.dragonfly_secret
+            c.url_format = Refinery::Resources.dragonfly_url_format
+            c.secret = Refinery::Resources.dragonfly_secret
           end
 
-          if ::Refinery::Resources.config.s3_backend
+          if ::Refinery::Resources.s3_backend
             app_resources.datastore = Dragonfly::DataStore::S3DataStore.new
             app_resources.datastore.configure do |s3|
-              s3.bucket_name = Refinery::Resources.config.s3_bucket_name
-              s3.access_key_id = Refinery::Resources.config.s3_access_key_id
-              s3.secret_access_key = Refinery::Resources.config.s3_secret_access_key
+              s3.bucket_name = Refinery::Resources.s3_bucket_name
+              s3.access_key_id = Refinery::Resources.s3_access_key_id
+              s3.secret_access_key = Refinery::Resources.s3_secret_access_key
               # S3 Region otherwise defaults to 'us-east-1'
-              s3.region = Refinery::Resources.config.s3_region if Refinery::Resources.config.s3_region
+              s3.region = Refinery::Resources.s3_region if Refinery::Resources.s3_region
             end
           end
         end
 
         def attach!(app)
           ### Extend active record ###
-          app.config.middleware.insert_before Refinery::Resources.config.dragonfly_insert_before,
+          app.config.middleware.insert_before Refinery::Resources.dragonfly_insert_before,
                                               'Dragonfly::Middleware', :refinery_resources
 
           app.config.middleware.insert_before 'Dragonfly::Middleware', 'Rack::Cache', {
