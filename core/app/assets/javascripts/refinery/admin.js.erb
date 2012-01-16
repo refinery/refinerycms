@@ -432,7 +432,7 @@ var link_dialog = {
 
       var link = $(this).children('a.page_link').get(0);
       var port = (window.location.port.length > 0 ? (":" + window.location.port) : "");
-      var url = link.href.replace(window.location.protocol + "//" + window.location.hostname + port, "");
+      var url = link.href<%= %q{.replace(window.location.protocol + "//" + window.location.hostname + port, "")} unless Refinery::Pages.absolute_page_links %>;
 
       link_dialog.update_parent(url, link.rel.replace(/\ ?<em>.+?<\/em>/, ''));
     });

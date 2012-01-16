@@ -233,7 +233,7 @@ module Refinery
     end
 
     def url_normal
-      {:controller => '/refinery/pages', :action => 'show', :path => nil, :id => to_param}
+      {:controller => '/refinery/pages', :action => 'show', :path => nil, :id => to_param, :only_path => true}
     end
 
     def with_locale_param(url_hash)
