@@ -1,3 +1,5 @@
+require 'dragonfly'
+
 module Refinery
   module Images
     module Dragonfly
@@ -22,7 +24,7 @@ module Refinery
           end
 
           if ::Refinery::Images.s3_backend
-            app_images.datastore = Dragonfly::DataStore::S3DataStore.new
+            app_images.datastore = ::Dragonfly::DataStorage::S3DataStore.new
             app_images.datastore.configure do |s3|
               s3.bucket_name = Refinery::Images.s3_bucket_name
               s3.access_key_id = Refinery::Images.s3_access_key_id

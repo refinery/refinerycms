@@ -16,16 +16,19 @@ module Refinery
     self.pages_per_dialog = 12
     self.pages_per_admin_index = 20
 
-    self.s3_backend = Refinery::Core.s3_backend
     self.s3_bucket_name = ENV['S3_BUCKET']
     self.s3_access_key_id = ENV['S3_KEY']
     self.s3_secret_access_key = ENV['S3_SECRET']
 
-    # We have to configure this setting after Rails is available.
+    # We have to configure these settings after Rails is available.
     # But a non-nil custom option can still be provided
     class << self
       def datastore_root_path
         config.datastore_root_path ||= Rails.root.join('public', 'system', 'refinery', 'resources').to_s
+      end
+
+      def s3_backend
+        config.s3_backend.nil? ? Refinery::Core.s3_backend : config.s3_backend
       end
     end
   end

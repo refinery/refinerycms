@@ -1,3 +1,5 @@
+require 'dragonfly'
+
 module Refinery
   module Resources
     module Dragonfly
@@ -21,7 +23,7 @@ module Refinery
           end
 
           if ::Refinery::Resources.s3_backend
-            app_resources.datastore = Dragonfly::DataStore::S3DataStore.new
+            app_resources.datastore = ::Dragonfly::DataStorage::S3DataStore.new
             app_resources.datastore.configure do |s3|
               s3.bucket_name = Refinery::Resources.s3_bucket_name
               s3.access_key_id = Refinery::Resources.s3_access_key_id
