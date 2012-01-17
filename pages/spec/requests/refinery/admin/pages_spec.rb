@@ -396,18 +396,39 @@ module Refinery
         end
 
         describe "adding page link" do
-          it "should show Russian pages if we're editing the Russian locale" do
-            visit 'refinery/pages_dialogs/link_to?wymeditor=true&switch_locale=ru'
+          describe "with relative urls" do
+            before(:each) { Refinery::Pages.config.absolute_page_links = false }
 
-            page.should have_content("About Ru")
-            page.should have_selector("a[href='http://www.example.com/ru/about-ru']")
+            it "should show Russian pages if we're editing the Russian locale" do
+              visit 'refinery/pages_dialogs/link_to?wymeditor=true&switch_locale=ru'
+
+              page.should have_content("About Ru")
+              page.should have_selector("a[href='/ru/about-ru']")
+            end
+
+            it "should show default to the default locale if no query string is added" do
+              visit 'refinery/pages_dialogs/link_to?wymeditor=true'
+
+              page.should have_content("About")
+              page.should have_selector("a[href='/about']")
+            end
           end
+          describe "with absolute urls" do
+            before(:each) { Refinery::Pages.config.absolute_page_links = true }
 
-          it "should show default to the default locale if no query string is added" do
-            visit 'refinery/pages_dialogs/link_to?wymeditor=true'
+            it "should show Russian pages if we're editing the Russian locale" do
+              visit 'refinery/pages_dialogs/link_to?wymeditor=true&switch_locale=ru'
 
-            page.should have_content("About")
-            page.should have_selector("a[href='http://www.example.com/about']")
+              page.should have_content("About Ru")
+              page.should have_selector("a[href='http://www.example.com/ru/about-ru']")
+            end
+
+            it "should show default to the default locale if no query string is added" do
+              visit 'refinery/pages_dialogs/link_to?wymeditor=true'
+
+              page.should have_content("About")
+              page.should have_selector("a[href='http://www.example.com/about']")
+            end
           end
         end
       end
