@@ -8,29 +8,29 @@ Refinery::Core.configure do |config|
 
   # Whenever Refinery caches anything and can set a cache key, it will add
   # a prefix to the cache key containing the string you set here.
-  # config.base_cache_key = <%= Refinery::Core.base_cache_key %>
+  # config.base_cache_key = <%= Refinery::Core.base_cache_key.inspect %>
 
   # Site name
-  # config.site_name = <%= Refinery::Core.site_name %>
+  # config.site_name = <%= Refinery::Core.site_name.inspect %>
 
   # This activates Google Analytics tracking within your website. If this
   # config is left blank or set to UA-xxxxxx-x then no remote calls to
   # Google Analytics are made.
-  # config.google_analytics_page_code = <%= Refinery::Core.google_analytics_page_code %>
+  # config.google_analytics_page_code = <%= Refinery::Core.google_analytics_page_code.inspect %>
 
   # Enable/disable authenticity token on frontend
-  # config.authenticity_token_on_frontend = <%= Refinery::Core.authenticity_token_on_frontend %>
+  # config.authenticity_token_on_frontend = <%= Refinery::Core.authenticity_token_on_frontend.inspect %>
 
   # Hide/show child pages in menu
-  # config.menu_hide_children = <%= Refinery::Core.menu_hide_children %>
+  # config.menu_hide_children = <%= Refinery::Core.menu_hide_children.inspect %>
 
   # Should set this if concerned about DOS attacks. See
   # http://markevans.github.com/dragonfly/file.Configuration.html#Configuration
-  # config.dragonfly_secret = <%= Refinery::Core.dragonfly_secret %>
+  # config.dragonfly_secret = <%= Refinery::Core.dragonfly_secret.inspect %>
 
   # Show/hide IE6 upgrade message in the backend
-  # config.ie6_upgrade_message_enabled = <%= Refinery::Core.ie6_upgrade_message_enabled %>
+  # config.ie6_upgrade_message_enabled = <%= Refinery::Core.ie6_upgrade_message_enabled.inspect %>
 
   # Show/hide browser update message in the backend
-  # config.show_internet_explorer_upgrade_message = <%= Refinery::Core.show_internet_explorer_upgrade_message %>
+  # config.show_internet_explorer_upgrade_message = <%= Refinery::Core.show_internet_explorer_upgrade_message.inspect %>
 end
