@@ -34,7 +34,7 @@ module Refinery
       end
 
       initializer "append marketable routes" do
-        if Refinery::Pages.config.marketable_urls
+        if Refinery::Pages.marketable_urls
           append_marketable_routes
         end
       end
