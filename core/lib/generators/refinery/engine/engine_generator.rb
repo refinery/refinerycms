@@ -127,7 +127,7 @@ module Refinery
   protected
 
     def engine_path_for(path, engine)
-      engine_path = "vendor/engines/#{engine.present? ? engine : plural_name}/"
+      engine_path = "vendor/engines/#{engine.present? ? engine.underscore.pluralize : plural_name}/"
       path = path.to_s.gsub(File.expand_path('../templates', __FILE__), engine_path)
 
       path = path.gsub("engine_plural_name", engine_plural_name)
