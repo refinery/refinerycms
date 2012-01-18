@@ -109,7 +109,7 @@ module Refinery
             puts "------------------------"
             puts "Now run:"
             puts "bundle install"
-            puts "rails generate refinery:#{engine_name}"
+            puts "rails generate refinery:#{engine_plural_name}"
             puts "rake db:migrate"
             puts "------------------------"
           end
