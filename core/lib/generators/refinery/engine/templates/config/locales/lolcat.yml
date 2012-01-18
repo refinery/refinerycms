@@ -23,6 +23,6 @@ lolcat:
           other: OTHR <%= singular_name.titleize.pluralize %>
   activerecord:
     attributes:
-      'refinery/<%= namespacing %>/<%= singular_name %>':<% attributes.each do |a| %>
+      'refinery/<%= namespacing.underscore %>/<%= singular_name %>':<% attributes.each do |a| %>
         <%= a.name %>: <%= a.name.titleize.upcase -%>
 <% end -%>

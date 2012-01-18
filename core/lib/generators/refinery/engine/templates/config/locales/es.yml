@@ -24,6 +24,6 @@ es:
           other: Otros <%= singular_name.titleize.pluralize.downcase %>
   activerecord:
     attributes:
-      'refinery/<%= namespacing %>/<%= singular_name %>':<% attributes.each do |a| %>
+      'refinery/<%= namespacing.underscore %>/<%= singular_name %>':<% attributes.each do |a| %>
         <%= a.name %>: <%= a.name.titleize -%>
 <% end -%>
