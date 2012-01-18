@@ -17,9 +17,11 @@ module Refinery
     self.pages_per_dialog = 18
     self.pages_per_dialog_that_have_size_options = 12
     self.pages_per_admin_index = 20
-    self.user_image_sizes = { :small => '110x110>',
-                              :medium => '225x255>',
-                              :large => '450x450>' }
+    self.user_image_sizes = { 
+      :small => '110x110>',
+      :medium => '225x255>',
+      :large => '450x450>' 
+    }
     self.image_views = [:grid, :list]
     self.preferred_image_view = :grid
 
