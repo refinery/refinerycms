@@ -24,7 +24,7 @@ module Refinery
     # But a non-nil custom option can still be provided
     class << self
       def datastore_root_path
-        config.datastore_root_path ||= Rails.root.join('public', 'system', 'refinery', 'resources').to_s
+        config.datastore_root_path || (Rails.root.join('public', 'system', 'refinery', 'resources').to_s if Rails.root)
       end
 
       def s3_backend
