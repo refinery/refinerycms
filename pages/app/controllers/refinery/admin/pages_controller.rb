@@ -17,7 +17,7 @@ module ::Refinery
       before_filter :load_valid_templates, :only => [:edit, :new]
 
       before_filter :restrict_access, :only => [:create, :update, :update_positions, :destroy],
-                    :if => proc {|c| ::Refinery.i18n_enabled? }
+                    :if => proc { Refinery.i18n_enabled? }
 
       def new
         @page = ::Refinery::Page.new(params)
