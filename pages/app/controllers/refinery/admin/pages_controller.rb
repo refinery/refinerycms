@@ -5,10 +5,6 @@ module Refinery
 
       crudify :'refinery/page',
               :order => "lft ASC",
-<<<<<<< HEAD
-              :redirect_to_url => 'main_app.refinery_admin_pages_path',
-=======
->>>>>>> Refinery CMS as mountable engine.
               :include => [:slugs, :translations, :children],
               :paging => false
 
@@ -22,15 +18,9 @@ module Refinery
                     :if => proc { Refinery.i18n_enabled? }
 
       def new
-<<<<<<< HEAD
-        @page = ::Refinery::Page.new(params)
-        Refinery::Pages.default_parts_for(@page).each_with_index do |page_part, index|
-          @page.parts << ::Refinery::PagePart.new(:title => page_part, :position => index)
-=======
         @page = Refinery::Page.new(params)
         Refinery::Pages.default_parts_for(@page).each_with_index do |page_part, index|
           @page.parts << Refinery::PagePart.new(:title => page_part, :position => index)
->>>>>>> Refinery CMS as mountable engine.
         end
       end
 
