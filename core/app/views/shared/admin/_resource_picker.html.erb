@@ -1,6 +1,19 @@
 <%
   conditions ||= nil
-  insert_text = "<span id='no_resource_selected_#{field}' class='nothing_selected' #{"style='display: none;'" if resource.present?}>
+  if resource.present?
+    display_when_present = ""
+    hide_when_present = "display:none;"
+    file_title = "#{resource.title} (#{resource.file_name})"
+    resource_url = resource.url
+  else
+    display_when_present = "display:none;"
+    hide_when_present = ""
+    file_title = ""
+    resource_url = "#"
+    display = ""
+  end
+
+  insert_text = "<span id='no_resource_selected_#{field}' class='nothing_selected' style='#{hide_when_present}'>
                    #{t('.no_resource_selected')}
                  </span>".html_safe
   insert_link = insert_admin_resources_path({
@@ -9,32 +22,28 @@
                   :update_text => "current_resource_text_#{field}",
                   :callback => "resource_changed_#{field}",
                   :field => [f.object_name.gsub(/\]\[|[^-a-zA-Z0-9:.]/, "_").sub(/_$/, ""), field].join('_'),
-                  :current_link => "#{resource.url if resource.present?}",
+                  :current_link => resource_url,
                   :height => 480,
                   :conditions => conditions
                 })
-              %>
+  linked_html = "#{refinery_icon_tag('page_white_put.png')} " + content_tag(:span, file_title, :id => "current_resource_text_#{field}")
+%>
+
 <%= f.hidden_field field %>
 <div>
   <%= link_to insert_text, insert_link,
               :name => t('.name'),
-              :id => "current_resource_link_#{field}"
-  %>
-  <div id='current_resource_container_<%= field %>' style='margin-top: 10px<%= ";display: none" unless resource.present? %>'>
-    <%= link_to "#{refinery_icon_tag('page_white_put.png')} ".html_safe +
-                content_tag(
-                  :span,
-                  "#{resource.title} (#{resource.file_name})",
-                  :id => "current_resource_text_#{field}"
-                ),
-                resource.url,
+              :id => "current_resource_link_#{field}" %>
+
+  <div id='current_resource_container_<%= field %>' style='margin-top: 10px;<%= display_when_present %>'>
+    <%= link_to linked_html.html_safe, resource_url,
                 :id => "current_resource_#{field}",
-                :target => "_blank" if resource.present? %>
+                :target => "_blank" %>
   </div>
   <br/>
   <%= link_to t('.remove_current'), "",
               :id => "remove_resource_#{field}",
-              :style => "#{"display:none;" unless resource.present?}" %>
+              :style => display_when_present %>
 </div>
 
 <% content_for :javascripts do %>
