@@ -63,17 +63,16 @@ module Refinery
         end
 
         existing_engine = options[:engine].present? &&
-                          destination_pathname.join('vendor', 'engines', engine_name).directory? &&
-                          destination_pathname.join('Gemfile').read =~ %r{refinerycms-#{engine_plural_name}}
+                          destination_pathname.join('vendor', 'engines', engine_plural_name).directory? &&
+                          destination_pathname.join('Gemfile').read.scan(%r{refinerycms-#{engine_plural_name}}).any?
 
         if existing_engine
           # go through all of the temporary files and merge what we need into the current files.
           tmp_directories = []
-          Dir.glob(File.expand_path('../templates/{config/locales/*.yml,config/routes.rb}', __FILE__), File::FNM_DOTMATCH).sort.each do |path|
+          Dir.glob(File.expand_path("../templates/{config/locales/*.yml,config/routes.rb,lib/refinerycms-engine_plural_name.rb}", __FILE__), File::FNM_DOTMATCH).sort.each do |path|
             # get the path to the current tmp file.
             new_file_path = destination_pathname.join(engine_path_for(path, engine_name))
             tmp_directories << Pathname.new(new_file_path.to_s.split(File::SEPARATOR)[0..-2].join(File::SEPARATOR)) # save for later
-
             # get the path to the existing file and perform a deep hash merge.
             current_path = Pathname.new(new_file_path.to_s.split(File::SEPARATOR).reject{|f| f == 'tmp'}.join(File::SEPARATOR))
             new_contents = nil
@@ -87,16 +86,14 @@ module Refinery
               routes_file += new_file_path.read.to_s.split("\n")[1..-2]
               routes_file << file_parts.last
               new_contents = routes_file.join("\n")
+            elsif new_file_path.to_s =~ %r{/refinerycms-#{engine_plural_name}.rb$}
+              new_contents = current_path.read + new_file_path.read
             end
             # write to current file the merged results.
             current_path.open('w+') { |f| f.puts new_contents } unless new_contents.nil?
           end
 
-          if File.exist?(lib_file = engine_path_for(File.expand_path("../templates/lib/refinerycms-#{engine_plural_name}.rb", __FILE__), engine_name))
-            append_file lib_file, "\nrequire File.expand_path('../refinerycms-#{plural_name}', __FILE__)"
-          end
-
-          tmp_directories.uniq.each{|d| d.rmtree unless d.nil? or !d.exist?}
+          tmp_directories.uniq.each{|d| remove_dir(d) unless d.nil? or !d.exist?}
         end
 
         # Update the gem file
@@ -127,18 +124,26 @@ module Refinery
   protected
 
     def engine_path_for(path, engine)
-      engine_path = "vendor/engines/#{engine.present? ? engine.underscore.pluralize : plural_name}/"
+      engine_path = "vendor/engines/#{engine.present? ? engine.underscore.pluralize : plural_name}"
       path = path.to_s.gsub(File.expand_path('../templates', __FILE__), engine_path)
 
-      path = path.gsub("engine_plural_name", engine_plural_name)
-      path = path.gsub("plural_name", plural_name)
-      path = path.gsub("singular_name", singular_name)
-      path = path.gsub("namespace", namespacing.underscore)
+      path.gsub!("engine_plural_name", engine_plural_name)
+      path.gsub!("plural_name", plural_name)
+      path.gsub!("singular_name", singular_name)
+      path.gsub!("namespace", namespacing.underscore)
+
+      # Increment the migration file leading number
+      # Only relevant for nested engines, where a previous migration exists
+      if path =~ %r{/migrate/\d+\w*.rb\z}
+        if last_migration = Dir["#{File.join(self.destination_root, path.split(File::SEPARATOR)[0..-2], '*.rb')}"].sort.last
+          path.gsub!(%r{\d+_}) { |m| "#{last_migration.match(%r{migrate/(\d+)_})[1].to_i + 1}_" }
+        end
+      end
 
       # Detect whether this is a special file that needs to get merged not overwritten.
       # This is important only when nesting engines.
       if engine.present? and File.exist?(path)
-        path = if path =~ %r{/locales/.*\.yml$} or path =~ %r{/routes.rb$}
+        path = if path =~ %r{/locales/.*\.yml$} or path =~ %r{/routes.rb$} or path =~ %r{/refinerycms-#{engine_plural_name}.rb$}
           # put new translations into a tmp directory
           path.split(File::SEPARATOR).insert(-2, "tmp").join(File::SEPARATOR)
         elsif path =~ %r{/readme.md$} or path =~ %r{/#{plural_name}.rb$}
