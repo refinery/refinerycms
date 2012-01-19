@@ -1,5 +1,6 @@
 append_file 'Gemfile' do
 "
+gem 'therubyracer'
 gem 'refinerycms', :git => 'git://github.com/resolve/refinerycms.git'
 
 #  group :development, :test do
