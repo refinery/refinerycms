@@ -9,8 +9,12 @@ module Refinery
 
   module Pages
     require 'refinery/pages/engine'
-    require 'refinery/pages/configuration'
     require 'refinery/pages/tab'
+    require 'refinery/pages/type'
+    require 'refinery/pages/types'
+
+    # Load configuration last so that everything above is available to it.
+    require 'refinery/pages/configuration'
 
     autoload :InstanceMethods, 'refinery/pages/instance_methods'
 
@@ -33,6 +37,12 @@ module Refinery
         end.map do |p|
           p.split('.').first
         end
+      end
+
+      def default_parts_for(page)
+        return default_parts unless page.view_template.present?
+
+        types.find_by_name(page.view_template).parts.map &:titleize
       end
     end
 

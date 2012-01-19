@@ -21,7 +21,7 @@ module ::Refinery
 
       def new
         @page = ::Refinery::Page.new(params)
-        Refinery::Pages.default_parts.each_with_index do |page_part, index|
+        Refinery::Pages.default_parts_for(@page).each_with_index do |page_part, index|
           @page.parts << ::Refinery::PagePart.new(:title => page_part, :position => index)
         end
       end

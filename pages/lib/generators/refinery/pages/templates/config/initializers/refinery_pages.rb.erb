@@ -1,4 +1,14 @@
 Refinery::Pages.configure do |config|
+  # Configure specific page templates
+  # config.types do |types|
+  #   types.define :home do |home|
+  #     home.parts = %w[intro body]
+  #   end
+  # end
+
+  # Configure global page default parts
+  # config.default_parts = <%= Refinery::Pages.default_parts.inspect %>
+
   # Configure how many pages per page should be displayed when a dialog is presented that contains a links to pages
   # config.pages_per_dialog = <%= Refinery::Pages.pages_per_dialog.inspect %>
 
@@ -10,9 +20,6 @@ Refinery::Pages.configure do |config|
 
   # Configure whether to strip non-ASCII characters from the friendly_id string
   # config.strip_non_ascii = <%= Refinery::Pages.strip_non_ascii.inspect %>
-
-  # Configure page default parts
-  # config.default_parts = <%= Refinery::Pages.default_parts.inspect %>
 
   # Set this to true if you want to override slug which automatically gets generated
   # when you create a page
