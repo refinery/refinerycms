@@ -22,7 +22,6 @@ module Refinery
       this_class = class_name.constantize.base_class
       singular_name = ActiveModel::Naming.param_key(this_class)
       plural_name = singular_name.pluralize
-      namespacing = class_name.underscore.gsub(%r{/?#{this_class.model_name.param_key}($|/)}, '').gsub('/', '_')
 
       {
         :conditions => '',
@@ -30,7 +29,7 @@ module Refinery
         :order => ('position ASC' if this_class.table_exists? && this_class.column_names.include?('position')),
         :paging => true,
         :per_page => false,
-        :redirect_to_url => "refinery.#{Refinery.namespace(class_name.constantize, true)}",
+        :redirect_to_url => "refinery.#{Refinery.route_for_model(class_name.constantize, true)}",
         :searchable => true,
         :search_conditions => '',
         :sortable => true,

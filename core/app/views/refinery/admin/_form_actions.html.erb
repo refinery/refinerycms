@@ -13,7 +13,7 @@
       cancel_title = t('.cancel_lose_changes')
     end
     cancel_button_id    ||= "cancel_button"
-    cancel_url          ||= (((back = url_for(:back)).include?('javascript') or action_name =~ /^(create|update)$/) ? refinery.send(Refinery.namespace(f.object.class)) : back)
+    cancel_url          ||= (((back = url_for(:back)).include?('javascript') or action_name =~ /^(create|update)$/) ? refinery.send(Refinery.route_for_model(f.object.class)) : back)
   end
 
   continue_editing = defined?(continue_editing) ? continue_editing : (f.object.present? and f.object.persisted?)
@@ -30,7 +30,7 @@
     delete_confirmation ||= nil
     delete_button_id    ||= "delete_button"
     # we have to use eval rather than refinery.send because this url may not exist for HTTP GET
-    delete_url          ||= eval("refinery.#{Refinery.namespace(f.object.class)}(#{f.object.id})")
+    delete_url          ||= eval("refinery.#{Refinery.route_for_model(f.object.class)}(#{f.object.id})")
   end
 -%>
 <% if from_dialog? %>
