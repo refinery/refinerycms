@@ -102,8 +102,8 @@ module Refinery
       let(:child_with_custom_slug) { page.children.create(:title => 'The child page', :custom_slug => 'custom-child-slug') }
 
       after(:each) do
-        ::Refinery::I18n.config.current_frontend_locale = Refinery::I18n.default_frontend_locale
-        ::Refinery::I18n.config.current_locale = Refinery::I18n.default_locale
+        ::Refinery::I18n.stub(:current_frontend_locale).and_return(Refinery::I18n.default_frontend_locale)
+        ::Refinery::I18n.current_locale = Refinery::I18n.default_locale
       end
 
       it 'returns its path with custom slug' do
@@ -117,8 +117,8 @@ module Refinery
       end
 
       it 'returns its path with custom slug when using different locale' do
-        ::Refinery::I18n.config.current_frontend_locale = :ru
-        ::Refinery::I18n.config.current_locale = :ru
+        ::Refinery::I18n.stub(:current_frontend_locale).and_return(:ru)
+        ::Refinery::I18n.current_locale = :ru
         page_with_custom_slug.custom_slug = 'custom-page-slug-ru'
         page_with_custom_slug.save
         page_with_custom_slug.reload
@@ -128,8 +128,8 @@ module Refinery
       end
 
       it 'returns path underneath its parent with custom urls when using different locale' do
-        ::Refinery::I18n.config.current_frontend_locale = :ru
-        ::Refinery::I18n.config.current_locale = :ru
+        ::Refinery::I18n.stub(:current_frontend_locale).and_return(:ru)
+        ::Refinery::I18n.current_locale = :ru
         child_with_custom_slug.custom_slug = 'custom-child-slug-ru'
         child_with_custom_slug.save
         child_with_custom_slug.reload
