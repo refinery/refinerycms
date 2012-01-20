@@ -146,10 +146,10 @@ module Refinery
     # like Refinery::Image and Refinery::Blog::Post
     #
     # Example:
-    #   Refinery.namespace("Refinery::Image") => admin_image_path
-    #   Refinery.namespace(Refinery::Image, true) => admin_images_path
-    #   Refinery.namespace(Refinery::Blog::Post) => blog_admin_post_path
-    #   Refinery.namespace(Refinery::Blog::Post, true) => blog_admin_posts_path
+    #   Refinery.namespace("Refinery::Image") => "admin_image_path"
+    #   Refinery.namespace(Refinery::Image, true) => "admin_images_path"
+    #   Refinery.namespace(Refinery::Blog::Post) => "blog_admin_post_path"
+    #   Refinery.namespace(Refinery::Blog::Post, true) => "blog_admin_posts_path"
     def namespace(klass, plural = false)
       parts = klass.to_s.downcase.split("::").delete_if { |p| p.blank? }
 
