@@ -83,8 +83,7 @@ module Refinery
     def store_current_location!
       if admin? and request.get? and !request.xhr? and !from_dialog?
         # ensure that we don't redirect to AJAX or POST/PUT/DELETE urls
-        path = request.path.sub("//", "/")
-        session[:refinery_return_to] = path
+        session[:refinery_return_to] = request.path.sub('//', '/')
       end
     end
   end
