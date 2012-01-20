@@ -96,7 +96,7 @@ module Refinery
     attr_writer :url
 
     def url
-      @url ||= "refinery.#{url_prefix}#{Refinery.namespace(klass)}"
+      @url ||= "refinery.#{url_prefix}#{Refinery.route_for_model(klass)}"
     end
   end
 end
