@@ -143,7 +143,7 @@ module Refinery
 
       context "with translations" do
         before(:each) do
-          Refinery::I18n.config.stub(:frontend_locales).and_return([:en, :ru])
+          Refinery::I18n.stub(:frontend_locales).and_return([:en, :ru])
 
           # Create a home page in both locales (needed to test menus)
           home_page = FactoryGirl.create(:page, :title => 'Home',
@@ -350,7 +350,7 @@ module Refinery
 
       describe "add page to second locale" do
         before(:each) do
-          Refinery::I18n.config.stub(:frontend_locales).and_return([:en, :lv])
+          Refinery::I18n.stub(:frontend_locales).and_return([:en, :lv])
           FactoryGirl.create(:page)
         end
 
@@ -385,7 +385,7 @@ module Refinery
 
       describe "Pages Link-to Dialog" do
         before do
-          Refinery::I18n.config.frontend_locales = [:en, :ru]
+          Refinery::I18n.frontend_locales = [:en, :ru]
 
           # Create a page in both locales
           about_page = FactoryGirl.create(:page, :title => 'About')
@@ -397,7 +397,7 @@ module Refinery
 
         describe "adding page link" do
           describe "with relative urls" do
-            before(:each) { Refinery::Pages.config.absolute_page_links = false }
+            before(:each) { Refinery::Pages.absolute_page_links = false }
 
             it "should show Russian pages if we're editing the Russian locale" do
               visit 'refinery/pages_dialogs/link_to?wymeditor=true&switch_locale=ru'
@@ -414,7 +414,7 @@ module Refinery
             end
           end
           describe "with absolute urls" do
-            before(:each) { Refinery::Pages.config.absolute_page_links = true }
+            before(:each) { Refinery::Pages.absolute_page_links = true }
 
             it "should show Russian pages if we're editing the Russian locale" do
               visit 'refinery/pages_dialogs/link_to?wymeditor=true&switch_locale=ru'

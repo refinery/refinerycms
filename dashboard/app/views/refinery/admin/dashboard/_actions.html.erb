@@ -33,7 +33,7 @@
 </ul>
 
 <% if ::Refinery.i18n_enabled? %>
-  <% locales = Refinery::I18n.config.locales.clone %>
+  <% locales = Refinery::I18n.locales.clone %>
   <% current_locale = ::I18n.locale %>
   <% current_locale_title = locales.delete(current_locale) %>
   <ul id='current_locale'>

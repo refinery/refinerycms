@@ -2,7 +2,7 @@
   <div class='clearfix'>
     <span class='title'>
       <%= page.title_with_meta.html_safe %>
-      <% if Refinery.i18n_enabled? and Refinery::I18n.config.frontend_locales.many? %>
+      <% if Refinery.i18n_enabled? and Refinery::I18n.frontend_locales.many? %>
         <span class='preview'>
           <% page.translations.each do |translation| %>
             <% if translation.title.present? %>

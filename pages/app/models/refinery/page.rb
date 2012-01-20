@@ -137,7 +137,7 @@ module Refinery
 
       # Returns how many pages per page should there be when paginating pages
       def per_page(dialog = false)
-        dialog ? Pages.config.pages_per_dialog : Pages.config.pages_per_admin_index
+        dialog ? Pages.pages_per_dialog : Pages.config.pages_per_admin_index
       end
 
       def expire_page_caching
