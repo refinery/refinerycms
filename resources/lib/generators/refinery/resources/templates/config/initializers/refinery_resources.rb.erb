@@ -1,12 +1,12 @@
 Refinery::Resources.configure do |config|
   # Configures the maximum allowed upload size (in bytes) for a file upload
-  # config.max_file_size = <%= Refinery::Resources.max_file_size %>
+  # config.max_file_size = <%= Refinery::Resources.max_file_size.inspect %>
 
   # Configure how many resources per page should be displayed when a dialog is presented that contains resources
-  # config.pages_per_dialog = <%= Refinery::Resources.pages_per_dialog %>
+  # config.pages_per_dialog = <%= Refinery::Resources.pages_per_dialog.inspect %>
 
   # Configure how many resources per page should be displayed in the list of resources in the admin area
-  # config.pages_per_admin_index = <%= Refinery::Resources.pages_per_admin_index %>
+  # config.pages_per_admin_index = <%= Refinery::Resources.pages_per_admin_index.inspect %>
 
   # Configure S3 (you can also use ENV for this)
   # The s3_backend setting by default defers to the core setting for this but can be set just for resources.
@@ -18,9 +18,9 @@ Refinery::Resources.configure do |config|
 
   # Configure Dragonfly
   # This is where in the middleware stack to insert the Dragonfly middleware
-  # config.dragonfly_insert_before = <%= Refinery::Resources.dragonfly_insert_before %>
-  # config.dragonfly_secret = <%= Refinery::Resources.dragonfly_secret %>
-  # config.dragonfly_url_format = <%= Refinery::Resources.dragonfly_url_format %>
-  # config.datastore_root_path = <%= Refinery::Resources.datastore_root_path %>
+  # config.dragonfly_insert_before = <%= Refinery::Resources.dragonfly_insert_before.inspect %>
+  # config.dragonfly_secret = <%= Refinery::Resources.dragonfly_secret.inspect %>
+  # config.dragonfly_url_format = <%= Refinery::Resources.dragonfly_url_format.inspect %>
+  # config.datastore_root_path = <%= Refinery::Resources.datastore_root_path.inspect %>
 
 end

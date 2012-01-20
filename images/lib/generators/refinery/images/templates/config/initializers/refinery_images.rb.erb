@@ -1,25 +1,25 @@
 Refinery::Images.configure do |config|
   # Configures the maximum allowed upload size (in bytes) for an image
-  # config.max_image_size = <%= Refinery::Images.max_image_size %>
+  # config.max_image_size = <%= Refinery::Images.max_image_size.inspect %>
 
   # Configure how many images per page should be displayed when a dialog is presented that contains images
-  # config.pages_per_dialog = <%= Refinery::Images.pages_per_dialog %>
+  # config.pages_per_dialog = <%= Refinery::Images.pages_per_dialog.inspect %>
 
   # Configure how many images per page should be displayed when a dialog is presented that
   # contains images and image resize options
-  # config.pages_per_dialog_that_have_size_options = <%= Refinery::Images.pages_per_dialog_that_have_size_options %>
+  # config.pages_per_dialog_that_have_size_options = <%= Refinery::Images.pages_per_dialog_that_have_size_options.inspect %>
 
   # Configure how many images per page should be displayed in the list of images in the admin area
-  # config.pages_per_admin_index = <%= Refinery::Images.pages_per_admin_index %>
+  # config.pages_per_admin_index = <%= Refinery::Images.pages_per_admin_index.inspect %>
 
   # Configure image sizes
-  # config.user_image_sizes = <%= Refinery::Images.user_image_sizes %>
+  # config.user_image_sizes = <%= Refinery::Images.user_image_sizes.inspect %>
 
   # Configure image view options
-  # config.image_views = <%= Refinery::Images.image_views %>
+  # config.image_views = <%= Refinery::Images.image_views.inspect %>
 
   # Configure default image view
-  # config.preferred_image_view = <%= Refinery::Images.preferred_image_view %>
+  # config.preferred_image_view = <%= Refinery::Images.preferred_image_view.inspect %>
 
   # Configure S3 (you can also use ENV for this)
   # The s3_backend setting by default defers to the core setting for this but can be set just for images.
@@ -31,9 +31,9 @@ Refinery::Images.configure do |config|
 
   # Configure Dragonfly
   # This is where in the middleware stack to insert the Dragonfly middleware
-  # config.dragonfly_insert_before = <%= Refinery::Images.dragonfly_insert_before %>
-  # config.dragonfly_secret = <%= Refinery::Images.dragonfly_secret %>
-  # config.dragonfly_url_format = <%= Refinery::Images.dragonfly_url_format %>
-  # config.datastore_root_path = <%= Refinery::Images.datastore_root_path %>
+  # config.dragonfly_insert_before = <%= Refinery::Images.dragonfly_insert_before.inspect %>
+  # config.dragonfly_secret = <%= Refinery::Images.dragonfly_secret.inspect %>
+  # config.dragonfly_url_format = <%= Refinery::Images.dragonfly_url_format.inspect %>
+  # config.datastore_root_path = <%= Refinery::Images.datastore_root_path.inspect %>
 
 end
