@@ -31,12 +31,6 @@ end
 
 group :development, :test do
   gem 'refinerycms-testing', '~> 2.0.0'
-  # Fixes timeouts in JRuby - see https://github.com/thoughtbot/capybara-webkit/pull/220
-  if defined? JRUBY_VERSION
-    gem 'capybara-webkit', :git => 'git://github.com/dnagir/capybara-webkit.git' #'~> 0.7.0'
-  else
-    gem 'capybara-webkit', '~> 0.7.2'
-  end
   gem 'generator_spec'
 
   platforms :mri_18 do

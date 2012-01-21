@@ -29,6 +29,7 @@ def setup_environment
 
   require 'rspec/rails'
   require 'capybara/rspec'
+  require 'capybara/webkit'
 
   Rails.backtrace_cleaner.remove_silencers!
 
