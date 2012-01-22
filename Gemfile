@@ -35,7 +35,7 @@ group :development, :test do
   if defined? JRUBY_VERSION
     gem 'capybara-webkit', :git => 'git://github.com/dnagir/capybara-webkit.git' #'~> 0.7.0'
   else
-    gem 'capybara-webkit', '~> 0.7.2'
+    gem 'capybara-webkit', '~> 0.8.0'
   end
   gem 'generator_spec'
 
