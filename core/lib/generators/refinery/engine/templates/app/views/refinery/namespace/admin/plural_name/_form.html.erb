@@ -31,7 +31,7 @@
       <ul id='page_parts'>
         <%% <%= text_areas.map{|t| t.name.to_sym}.inspect -%>.each_with_index do |part, part_index| %>
           <li class='ui-state-default<%%= ' ui-state-active' if part_index == 0 %>'>
-            <%%= link_to part.to_s.titleize, "##{part}" %>
+            <%%= link_to t("#{part}", :scope => "activerecord.attributes.refinery/<%= namespacing.underscore %>/<%= singular_name %>", :default => part.to_s.titleize), "##{part}" %>
           </li>
         <%% end %>
       </ul>
