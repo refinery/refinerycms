@@ -146,12 +146,6 @@ module Refinery
           @image = Image.new
         end
 
-        it "does not raise an exception" do
-          expect {
-            @image.valid?
-          }.should_not raise_error(NoMethodError)
-        end
-
         it "has an error message" do
           @image.valid?
           @image.errors.should_not be_empty
