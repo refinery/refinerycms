@@ -26,7 +26,7 @@ unless defined?(JRUBY_VERSION)
 end
 
 group :development do
-  gem 'rails-dev-tweaks', '~> 0.5.2'
+  gem 'rails-dev-tweaks', :git => 'git://github.com/mjtko/rails-dev-tweaks', :branch => 'rails-3-2-asset-matcher-fix'
 end
 
 group :development, :test do
