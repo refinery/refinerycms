@@ -22,6 +22,14 @@ module Refinery
         end
       end
 
+      class << self
+        def load_seed
+          Dir[File.expand_path('../../../../db/seeds/*.rb', __FILE__)].each do |seed_file|
+            load(seed_file)
+          end
+        end
+      end
+
       config.after_initialize do
         Refinery.register_engine(Refinery::<%= class_name.pluralize %>)
       end
