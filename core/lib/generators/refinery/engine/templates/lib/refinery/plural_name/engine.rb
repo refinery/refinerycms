@@ -10,7 +10,7 @@ module Refinery
         Refinery::Plugin.register do |plugin|
           plugin.name = "<%= plural_name %>"
           plugin.url = {
-            :controller => 'refinery/<%= namespacing.underscore.pluralize %>/admin/<%= plural_name %>',
+            :controller => 'refinery/<%= namespacing.underscore %>/admin/<%= plural_name %>',
             :action => 'index'
           }
           plugin.pathname = root

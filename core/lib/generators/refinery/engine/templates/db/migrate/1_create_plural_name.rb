@@ -1,7 +1,7 @@
 class Create<%= class_name.pluralize %> < ActiveRecord::Migration
 
   def up
-    create_table :refinery_<%= "#{namespacing.underscore.pluralize}_" if table_name != namespacing.underscore.pluralize -%><%= table_name %> do |t|
+    create_table :refinery_<%= "#{namespacing.underscore}_" if table_name != namespacing.underscore.pluralize -%><%= table_name %> do |t|
 <%
   attributes.each do |attribute|
     # turn image or resource into what it was supposed to be which is an integer reference to an image or resource.
@@ -29,7 +29,7 @@ class Create<%= class_name.pluralize %> < ActiveRecord::Migration
       ::Refinery::Page.delete_all({:link_url => "/<%= plural_name %>"})
     end
 
-    drop_table :refinery_<%= "#{namespacing.underscore.pluralize}_" if table_name != namespacing.underscore.pluralize -%><%= table_name %>
+    drop_table :refinery_<%= "#{namespacing.underscore}_" if table_name != namespacing.underscore.pluralize -%><%= table_name %>
   end
 
 end
