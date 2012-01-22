@@ -7,7 +7,7 @@ if defined?(::Refinery::User)
   end
 end
 
-if defined?(::Refinery::Page)
+if defined?(::Refinery::Page) && ::Refinery::Page.where(:link_url => '/<%= plural_name %>').empty?
   page = ::Refinery::Page.create(
     :title => '<%= class_name.pluralize.underscore.titleize %>',
     :link_url => '/<%= plural_name %>',

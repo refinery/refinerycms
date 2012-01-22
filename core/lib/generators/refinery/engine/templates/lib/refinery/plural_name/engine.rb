@@ -10,7 +10,7 @@ module Refinery
         Refinery::Plugin.register do |plugin|
           plugin.name = "<%= plural_name %>"
           plugin.url = {
-            :controller => 'refinery/<%= namespacing.underscore.pluralize %>/admin/<%= plural_name %>',
+            :controller => 'refinery/<%= namespacing.underscore %>/admin/<%= plural_name %>',
             :action => 'index'
           }
           plugin.pathname = root
@@ -19,6 +19,14 @@ module Refinery
             :class_name => :'refinery/<%= namespacing.underscore %>/<%= singular_name %>'<% if (title = attributes.detect { |a| a.type.to_s == "string" }).present? and title.name != 'title' %>,
             :title => '<%= title.name %>'<% end %>
           }
+        end
+      end
+
+      class << self
+        def load_seed
+          Dir[File.expand_path('../../../../db/seeds/*.rb', __FILE__)].each do |seed_file|
+            load(seed_file)
+          end
         end
       end
 
