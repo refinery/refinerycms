@@ -107,12 +107,6 @@ module Refinery
           @resource = Resource.new
         end
 
-        it "does not raise an exception" do
-          expect {
-            @resource.valid?
-          }.should_not raise_error(NoMethodError)
-        end
-
         it "has an error message" do
           @resource.valid?
           @resource.errors.should_not be_empty
