@@ -78,7 +78,7 @@ module Refinery
             new_contents = nil
             if new_file_path.to_s =~ %r{.yml$}
               # merge translation files together.
-              new_contents = YAML::load(new_file_path.read).deep_merge(YAML::load(current_path.read)).to_yaml
+              new_contents = YAML::load(new_file_path.read).deep_merge(YAML::load(current_path.read)).to_yaml.gsub(%r{^---\n}, '')
             elsif new_file_path.to_s =~ %r{/routes.rb$}
               # append any routes from the new file to the current one.
               routes_file = [(file_parts = current_path.read.to_s.split("\n")).first]
