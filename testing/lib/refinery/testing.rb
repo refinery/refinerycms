@@ -1,4 +1,5 @@
 require 'refinerycms-core'
+require 'rspec-rails'
 require 'factory_girl_rails'
 
 module Refinery
