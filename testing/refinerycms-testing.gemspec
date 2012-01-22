@@ -29,7 +29,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'rspec-rails',             '~> 2.8.1'
   s.add_dependency 'fuubar'
   s.add_dependency 'rspec-instafail'
-  s.add_dependency 'capybara-webkit',         '~> 0.8.0'
+  s.add_dependency 'capybara',                '~> 1.1.0'
   s.add_dependency 'guard-rspec',             '~> 0.5.0'
   s.add_dependency 'refinerycms-core',        version
 end
