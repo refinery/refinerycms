@@ -62,9 +62,11 @@ module Refinery
           end
         end
 
+        gemfile_entry = destination_pathname.join('Gemfile').read.scan(%r{refinerycms-#{engine_plural_name}}).any?
+
         existing_engine = options[:engine].present? &&
                           destination_pathname.join('vendor', 'engines', engine_plural_name).directory? &&
-                          destination_pathname.join('Gemfile').read.scan(%r{refinerycms-#{engine_plural_name}}).any?
+                          gemfile_entry
 
         if existing_engine
           # go through all of the temporary files and merge what we need into the current files.
@@ -96,12 +98,12 @@ module Refinery
           tmp_directories.uniq.each{|d| remove_dir(d) unless d.nil? or !d.exist?}
         end
 
-        # Update the gem file
+        # Update the gem file (only if no gemfile_entry already)
         if self.behavior != :revoke and !self.options['pretend']
           unless Rails.env.test?
             destination_pathname.join('Gemfile').open('a') do |f|
               f.write "\ngem 'refinerycms-#{engine_plural_name}', :path => 'vendor/engines'"
-            end unless existing_engine
+            end unless gemfile_entry
 
             puts "------------------------"
             puts "Now run:"
