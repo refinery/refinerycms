@@ -19,6 +19,7 @@ module Refinery
             :class_name => :'refinery/<%= namespacing.underscore %>/<%= singular_name %>'<% if (title = attributes.detect { |a| a.type.to_s == "string" }).present? and title.name != 'title' %>,
             :title => '<%= title.name %>'<% end %>
           }
+          <% unless namespacing.underscore == plural_name -%>plugin.menu_match = %r{refinery/<%= namespacing.underscore %>/<%= plural_name %>(/.*)?$}<% end %>
         end
       end
 
