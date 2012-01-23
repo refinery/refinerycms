@@ -9,7 +9,7 @@ module Refinery
           (yield_title if yield_title.present?),
           @meta.browser_title.present? ? @meta.browser_title : @meta.path,
           RefinerySetting.find_or_set(:site_name, "Company Name")
-        ].compact.join(" - ")
+        ].compact.join(" - ").html_safe
       end
 
       # you can override the object used for the title by supplying options[:object]
