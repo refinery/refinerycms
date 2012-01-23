@@ -44,7 +44,7 @@ module Refinery
           click_link "Edit this file"
 
           page.should have_content("Download current file or replace it with this one...")
-          page.should have_selector("a[href='/refinery/resources']")
+          page.should have_selector("a[href*='/refinery/resources']")
 
           attach_file "resource_file", Refinery.roots(:'refinery/resources').join("spec/fixtures/refinery_is_awesome2.txt")
           click_button "Save"

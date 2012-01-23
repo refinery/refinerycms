@@ -45,7 +45,7 @@ module Refinery
         click_link "Edit this image"
 
         page.should have_content("Use current image or replace it with this one...")
-        page.should have_selector("a[href='/refinery/images']")
+        page.should have_selector("a[href*='/refinery/images']")
 
         attach_file "image_image", Refinery.roots(:'refinery/images').join("spec/fixtures/id-rather-be-here.jpg")
         click_button "Save"
