@@ -5080,9 +5080,6 @@ WYMeditor.WymClassSafari.prototype._exec = function(cmd,param) {
       else this._doc.execCommand(cmd,'',null);
     }
 
-    //set to P if parent = BODY
-    this.format_block();
-
 };
 
 /* @name selected
