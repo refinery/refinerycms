@@ -25,10 +25,6 @@ unless defined?(JRUBY_VERSION)
   gem 'pg'
 end
 
-group :development do
-  gem 'rails-dev-tweaks', :git => 'git://github.com/mjtko/rails-dev-tweaks', :branch => 'rails-3-2-asset-matcher-fix'
-end
-
 group :development, :test do
   gem 'refinerycms-testing', '~> 2.0.0'
   # Fixes timeouts in JRuby - see https://github.com/thoughtbot/capybara-webkit/pull/220
