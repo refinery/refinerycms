@@ -30,7 +30,7 @@ module Refinery
           plugin.name = 'refinery_pages'
           plugin.directory = 'pages'
           plugin.version = %q{2.0.0}
-          plugin.menu_match = /refinery\/page(_part)?s(_dialogs)?$/
+          plugin.menu_match = /refinery\/page(_part|s_dialog)?s$/
           plugin.url = app.routes.url_helpers.refinery_admin_pages_path
           plugin.activity = {
             :class_name => :'refinery/page',
