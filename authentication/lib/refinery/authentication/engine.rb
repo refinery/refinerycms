@@ -19,7 +19,7 @@ module Refinery
             :title => 'username',
             :url => "refinery_admin_user_path" # temp hack for namespacees
           }
-          plugin.url = {:controller => 'refinery/admin/users'}
+          plugin.url = {:controller => '/refinery/admin/users'}
         end
       end
 

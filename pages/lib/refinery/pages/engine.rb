@@ -31,7 +31,7 @@ module Refinery
           plugin.directory = 'pages'
           plugin.version = %q{2.0.0}
           plugin.menu_match = %r{refinery/page(_part|s_dialog)?s$}
-          plugin.url = {:controller => 'refinery/admin/pages'}
+          plugin.url = {:controller => '/refinery/admin/pages'}
           plugin.activity = {
             :class_name => :'refinery/page',
             :url_prefix => "edit",

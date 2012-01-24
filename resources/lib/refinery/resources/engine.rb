@@ -21,7 +21,7 @@ module Refinery
         Refinery::Plugin.register do |plugin|
           plugin.pathname = root
           plugin.name = 'refinery_files'
-          plugin.url = {:controller => 'refinery/admin/resources'}
+          plugin.url = {:controller => '/refinery/admin/resources'}
           plugin.menu_match = /refinery\/(refinery_)?(files|resources)$/
           plugin.version = %q{2.0.0}
           plugin.activity = {
