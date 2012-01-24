@@ -36,7 +36,7 @@
         <%= label_tag :view_template, t('.view_template') %>
         <%= refinery_help_tag t('.view_template_help') %>
       </span>
-      <%= f.select(:view_template, @valid_view_templates) %>
+      <%= f.select(:view_template, @valid_view_templates.map{|t| [t.titleize, t]}) %>
     </div>
     <% end %>
 

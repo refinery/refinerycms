@@ -15,7 +15,7 @@ module Refinery
           plugin.pathname = root
           plugin.name = 'refinery_settings'
           plugin.version = %q{2.0.0}
-          plugin.menu_match = /refinery\/settings$/
+          plugin.menu_match = %r{refinery/settings$}
           plugin.url = { :controller => '/refinery/admin/settings' }
         end
       end

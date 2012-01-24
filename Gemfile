@@ -27,17 +27,13 @@ end
 
 gem 'devise', :git => 'git://github.com/plataformatec/devise.git'
 
-group :development do
-  gem 'rails-dev-tweaks', '~> 0.5.2'
-end
-
 group :development, :test do
   gem 'refinerycms-testing', '~> 2.0.0'
   # Fixes timeouts in JRuby - see https://github.com/thoughtbot/capybara-webkit/pull/220
   if defined? JRUBY_VERSION
     gem 'capybara-webkit', :git => 'git://github.com/dnagir/capybara-webkit.git' #'~> 0.7.0'
   else
-    gem 'capybara-webkit', '~> 0.7.2'
+    gem 'capybara-webkit', '~> 0.8.0'
   end
   gem 'generator_spec'
 

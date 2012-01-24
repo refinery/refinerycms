@@ -9,10 +9,6 @@ gem 'refinerycms', :git => 'git://github.com/resolve/refinerycms.git'
 #    gem 'refinerycms-testing', '~> 2.0'
 #  end
 
-group :development do
-  gem 'rails-dev-tweaks', '~> 0.5.2'
-end
-
 # USER DEFINED
 
 # Add i18n support (optional, you can remove this if you really want to but it is advised to keep it).
