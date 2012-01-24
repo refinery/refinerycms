@@ -509,10 +509,11 @@ var link_dialog = {
   },
 
   init_resources_submit: function(){
+    var options = this.options;
     $('#existing_resource_area .form-actions-dialog #submit_button').click(function(e){
       e.preventDefault();
       if((resource_selected = $('#existing_resource_area_content ul li.linked a')).length > 0) {
-        if (this.options.include_host) {
+        if (options.include_host) {
           relevant_href = resource_selected.attr('href');
         } else {
           resourceUrl = parseURL(resource_selected.attr('href'));
@@ -560,6 +561,7 @@ var link_dialog = {
 
   //Same for resources tab
   page_tab: function(){
+    var options = this.options;
     $('.link_list li').click(function(e){
       e.preventDefault();
 
@@ -568,7 +570,7 @@ var link_dialog = {
 
       var link = $(this).children('a.page_link').get(0);
       var url = link.href;
-      if (!this.options.include_host) {
+      if (!options.include_host) {
         var port = (window.location.port.length > 0 ? (":" + window.location.port) : "");
         var url = url.replace(window.location.protocol + "//" + window.location.hostname + port, "");
       }
