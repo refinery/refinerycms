@@ -28,7 +28,7 @@ module Refinery
             :class_name => :'refinery/image',
             :url => "refinery_admin_image_path" # temp hack for namespacees
           }
-          plugin.url = {:controller => 'refinery/admin/images'}
+          plugin.url = {:controller => '/refinery/admin/images'}
         end
       end
 
