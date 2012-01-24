@@ -3,6 +3,8 @@ require 'rspec-rails'
 require 'factory_girl_rails'
 
 module Refinery
+  autoload :TestingGenerator, 'generators/refinery/testing/testing_generator'
+
   module Testing
     class << self
       def root
