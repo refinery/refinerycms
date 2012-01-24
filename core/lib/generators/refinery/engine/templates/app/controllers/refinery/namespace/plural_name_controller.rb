@@ -1,5 +1,5 @@
 module Refinery
-  module <%= class_name.pluralize %>
+  module <%= namespacing %>
     class <%= class_name.pluralize %>Controller < ::ApplicationController
 
       before_filter :find_all_<%= plural_name %>

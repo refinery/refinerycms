@@ -17,9 +17,5 @@ Refinery::Pages::Engine.load_seed
       end
     end
 
-    def install_seo_meta_migrations
-      rake('seo_meta_engine:install:migrations')
-    end
-
   end
 end

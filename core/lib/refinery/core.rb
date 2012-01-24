@@ -1,7 +1,6 @@
 require 'rails/all'
 require 'rbconfig'
 require 'acts_as_indexed'
-require 'truncate_html'
 require 'will_paginate'
 
 module Refinery

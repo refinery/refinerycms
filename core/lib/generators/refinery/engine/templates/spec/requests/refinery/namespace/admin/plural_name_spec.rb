@@ -1,7 +1,7 @@
 require "spec_helper"
 
 describe Refinery do
-  describe "<%= class_name.pluralize %>" do
+  describe "<%= namespacing %>" do
     describe "Admin" do
       describe "<%= plural_name %>" do
         login_refinery_user
@@ -13,7 +13,7 @@ describe Refinery do
           end
 
           it "shows two items" do
-            visit refinery_<%= plural_name %>_admin_<%= plural_name %>_path
+            visit refinery_<%= namespacing.underscore %>_admin_<%= plural_name %>_path
             page.should have_content("UniqueTitleOne")
             page.should have_content("UniqueTitleTwo")
           end
@@ -21,7 +21,7 @@ describe Refinery do
 
         describe "create" do
           before(:each) do
-            visit refinery_<%= plural_name %>_admin_<%= plural_name %>_path
+            visit refinery_<%= namespacing.underscore %>_admin_<%= plural_name %>_path
 
             click_link "Add New <%= singular_name.titleize %>"
           end
@@ -32,7 +32,7 @@ describe Refinery do
               click_button "Save"
 
               page.should have_content("'This is a test of the first string field' was successfully added.")
-              Refinery::<%= class_name.pluralize %>::<%= class_name %>.count.should == 1
+              Refinery::<%= namespacing %>::<%= class_name %>.count.should == 1
             end
           end
 
@@ -41,7 +41,7 @@ describe Refinery do
               click_button "Save"
 
               page.should have_content("<%= title.name.titleize %> can't be blank")
-              Refinery::<%= class_name.pluralize %>::<%= class_name %>.count.should == 0
+              Refinery::<%= namespacing %>::<%= class_name %>.count.should == 0
             end
           end
 
@@ -49,7 +49,7 @@ describe Refinery do
             before(:each) { FactoryGirl.create(:<%= singular_name %>, :<%= title.name %> => "UniqueTitle") }
 
             it "should fail" do
-              visit refinery_<%= plural_name %>_admin_<%= plural_name %>_path
+              visit refinery_<%= namespacing.underscore %>_admin_<%= plural_name %>_path
 
               click_link "Add New <%= singular_name.titleize %>"
 
@@ -57,7 +57,7 @@ describe Refinery do
               click_button "Save"
 
               page.should have_content("There were problems")
-              Refinery::<%= class_name.pluralize %>::<%= class_name %>.count.should == 1
+              Refinery::<%= namespacing %>::<%= class_name %>.count.should == 1
             end
           end
         end
@@ -66,7 +66,7 @@ describe Refinery do
           before(:each) { FactoryGirl.create(:<%= singular_name %>, :<%= title.name %> => "A <%= title.name %>") }
 
           it "should succeed" do
-            visit refinery_<%= plural_name %>_admin_<%= plural_name %>_path
+            visit refinery_<%= namespacing.underscore %>_admin_<%= plural_name %>_path
 
             within ".actions" do
               click_link "Edit this <%= singular_name.titleize.downcase %>"
@@ -84,12 +84,12 @@ describe Refinery do
           before(:each) { FactoryGirl.create(:<%= singular_name %>, :<%= title.name %> => "UniqueTitleOne") }
 
           it "should succeed" do
-            visit refinery_<%= plural_name %>_admin_<%= plural_name %>_path
+            visit refinery_<%= namespacing.underscore %>_admin_<%= plural_name %>_path
 
             click_link "Remove this <%= singular_name.titleize.downcase %> forever"
 
             page.should have_content("'UniqueTitleOne' was successfully removed.")
-            Refinery::<%= class_name.pluralize %>::<%= class_name %>.count.should == 0
+            Refinery::<%= namespacing %>::<%= class_name %>.count.should == 0
           end
         end
 <% end %>
