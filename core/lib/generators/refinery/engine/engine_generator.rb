@@ -62,7 +62,7 @@ module Refinery
           end
         end
 
-        gemfile_entry = destination_pathname.join('Gemfile').read.scan(%r{refinerycms-#{engine_plural_name}}).any?
+        gemfile_entry = File.read(engine_path_for('Gemfile', engine_name)).scan(%r{refinerycms-#{engine_plural_name}}).any?
 
         existing_engine = options[:engine].present? &&
                           destination_pathname.join('vendor', 'engines', engine_plural_name).directory? &&
