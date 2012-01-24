@@ -24,7 +24,7 @@ module Refinery
         end
       end
 
-      initializer "register refinery_pages plugin", :after => :set_routes_reloader do |app|
+      initializer "register refinery_pages plugin" do
         Refinery::Plugin.register do |plugin|
           plugin.pathname = root
           plugin.name = 'refinery_pages'
