@@ -48,7 +48,7 @@
   <script>
     $(document).ready(function(){
     <% unless user_can_modify_resources %>
-      link_dialog.init();
+      link_dialog.init({include_host: <%= controller.asset_host.present? %>});
     <% end %>
       resource_picker.init(<%= @callback.present? ? "self.parent.#{@callback}" : "null" %>);
     });
