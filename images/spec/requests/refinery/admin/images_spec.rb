@@ -47,11 +47,13 @@ module Refinery
         page.should have_content("Use current image or replace it with this one...")
         page.should have_selector("a[href*='/refinery/images']")
 
-        attach_file "image_image", Refinery.roots(:'refinery/images').join("spec/fixtures/id-rather-be-here.jpg")
+        attach_file "image_image", Refinery.roots(:'refinery/images').join("spec/fixtures/fathead.png")
         click_button "Save"
 
-        page.should have_content("'Id Rather Be Here' was successfully updated.")
+        page.should have_content("'Fathead' was successfully updated.")
         Refinery::Image.count.should == 1
+
+        lambda { click_link "View this image" }.should_not raise_error
       end
     end
 

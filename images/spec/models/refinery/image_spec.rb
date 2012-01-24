@@ -12,23 +12,23 @@ module Refinery
     end
 
     context "image url" do
-      it "should respond to .thumbnail" do
+      it "responds to .thumbnail" do
         image.should respond_to(:thumbnail)
       end
 
-      it "should contain its filename at the end" do
+      it "contains its filename at the end" do
         image.thumbnail(nil).url.split('/').last.should == image.image_name
       end
 
-      it "should be different when supplying geometry" do
+      it "becomes different when supplying geometry" do
         image.thumbnail(nil).url.should_not == image.thumbnail('200x200').url
       end
 
-      it "should have different urls for each geometry string" do
+      it "has different urls for each geometry string" do
         image.thumbnail('200x200').url.should_not == image.thumbnail('200x201').url
       end
 
-      it "should use right geometry when given a thumbnail name" do
+      it "uses right geometry when given a thumbnail name" do
         name, geometry = Refinery::Images.user_image_sizes.first
         image.thumbnail(name).url.should == image.thumbnail(geometry).url
       end

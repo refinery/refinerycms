@@ -11,7 +11,7 @@ module Refinery
 
     self.dragonfly_insert_before = 'ActionDispatch::Callbacks'
     self.dragonfly_secret = Refinery::Core.dragonfly_secret
-    self.dragonfly_url_format = '/system/images/:job/:basename.:format'
+    self.dragonfly_url_format = '/system/images/:job/:name.:format'
 
     self.max_image_size = 5242880
     self.pages_per_dialog = 18
