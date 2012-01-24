@@ -67,7 +67,7 @@ module Refinery
           plugin.menu_match = /refinery\/(refinery_core)$/
         end
       end
-      
+
       initializer "register refinery_dialogs plugin" do
         Refinery::Plugin.register do |plugin|
           plugin.pathname = root

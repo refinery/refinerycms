@@ -15,7 +15,7 @@ This guide is designed for those who want to attach Refinery CMS to an existing 
 Refinery is a Ruby on Rails web application. If you have no prior experience with Rails, you will find a very steep learning curve diving straight into Refinery.  There are some good free resources on the Internet for learning Rails, including:
 
 * "Getting Started with Rails":http://guides.rubyonrails.org/getting_started.html
-* "Rails for Zombies":http://railsforzombies.org/labs
+* "Rails for Zombies":http://railsforzombies.org
 
 h3. Steps to add Refinery CMS to your application
 

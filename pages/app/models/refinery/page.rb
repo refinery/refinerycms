@@ -50,46 +50,65 @@ module Refinery
     accepts_nested_attributes_for :parts, :allow_destroy => true
 
     before_save { |m| m.translation.save }
-    before_create :ensure_locale, :if => proc { |c| ::Refinery.i18n_enabled? }
+    before_create :ensure_locale, :if => proc { ::Refinery.i18n_enabled? }
     before_destroy :deletable?
     after_save :reposition_parts!, :invalidate_cached_urls, :expire_page_caching
     after_update :invalidate_cached_urls
     after_destroy :expire_page_caching
 
-    scope :live, where(:draft => false)
-    scope :by_title, proc {|t| with_globalize(:title => t)}
-
-    # Shows all pages with :show_in_menu set to true, but it also
-    # rejects any page that has not been translated to the current locale.
-    # This works using a query against the translated content first and then
-    # using all of the page_ids we further filter against this model's table.
-    scope :in_menu, proc { where(:show_in_menu => true).with_globalize }
-
-    scope :fast_menu, proc {
-      # First, apply a filter to determine which pages to show.
-      # We need to join to the page's slug to avoid multiple queries.
-      pages = live.in_menu.includes(:slug, :slugs).order('lft ASC')
-
-      # Now we only want to select particular columns to avoid any further queries.
-      # Title and menu_title are retrieved in the next block below so they are not here.
-      menu_columns.each do |column|
-        pages = pages.select(arel_table[column.to_sym])
-      end
-
-      # We have to get title and menu_title from the translations table.
-      # To avoid calling globalize3 an extra time, we get title as page_title
-      # and we get menu_title as page_menu_title.
-      # These is used in 'to_refinery_menu_item' in the Page model.
-      %w(title menu_title).each do |column|
-        pages = pages.joins(:translations).select(
-          "#{translation_class.table_name}.#{column} as page_#{column}"
-        )
-      end
-
-      pages
-    }
-
     class << self
+      # Live pages are 'allowed' to be shown in the frontend of your website.
+      # By default, this is all pages that are not set as 'draft'.
+      def live
+        where(:draft => false)
+      end
+
+      # Finds a page using its title.  This method is necessary because pages
+      # are translated which means the title attribute does not exist on the
+      # pages table thus requiring us to find the attribute on the translations table
+      # and then join to the pages table again to return the associated record.
+      def by_title(title)
+        with_globalize(:title => title)
+      end
+
+      # Shows all pages with :show_in_menu set to true, but it also
+      # rejects any page that has not been translated to the current locale.
+      # This works using a query against the translated content first and then
+      # using all of the page_ids we further filter against this model's table.
+      def in_menu
+        where(:show_in_menu => true).with_globalize
+      end
+
+      # Because pages are translated this can have a negative performance impact
+      # on your website and can introduce scaling issues. What fast_menu does is
+      # finds all of the columns necessary to render a +Refinery::Menu+ structure
+      # using only one SQL query. This has limitations, including not being able
+      # to access any other attributes of the pages but you can specify more columns
+      # by passing in an array e.g. fast_menu([:column1, :column2])
+      def fast_menu(columns = [])
+        # First, apply a filter to determine which pages to show.
+        # We need to join to the page's slug to avoid multiple queries.
+        pages = live.in_menu.includes(:slug, :slugs).order('lft ASC')
+
+        # Now we only want to select particular columns to avoid any further queries.
+        # Title and menu_title are retrieved in the next block below so they are not here.
+        (menu_columns | columns).each do |column|
+          pages = pages.select(arel_table[column.to_sym])
+        end
+
+        # We have to get title and menu_title from the translations table.
+        # To avoid calling globalize3 an extra time, we get title as page_title
+        # and we get menu_title as page_menu_title.
+        # These is used in 'to_refinery_menu_item' in the Page model.
+        %w(title menu_title).each do |column|
+          pages = pages.joins(:translations).select(
+            "#{translation_class.table_name}.#{column} as page_#{column}"
+          )
+        end
+
+        pages
+      end
+
       # Wrap up the logic of finding the pages based on the translations table.
       def with_globalize(conditions = {})
         conditions = {:locale => Globalize.locale}.merge(conditions)
@@ -133,6 +152,8 @@ module Refinery
       end
     end
 
+    # Returns in cascading order: custom_slug or menu_title or title depending on
+    # which attribute is first found to be present for this page.
     def custom_slug_or_title
       if custom_slug.present?
         custom_slug
@@ -215,6 +236,8 @@ module Refinery
       end
     end
 
+    # Adds the locale key into the URI for this page's link_url attribute, unless
+    # the current locale is set as the default locale.
     def link_url_localised?
       return link_url unless ::Refinery.i18n_enabled?
 
@@ -227,15 +250,22 @@ module Refinery
       current_url
     end
 
+    # Add 'marketable url' attributes into this page's url.
+    # This sets 'path' as the nested_url value and sets 'id' to nil.
+    # For example, this might evaluate to /about for the "About" page.
     def url_marketable
       # :id => nil is important to prevent any other params[:id] from interfering with this route.
       url_normal.merge(:path => nested_url, :id => nil)
     end
 
+    # Returns a url suitable to be used in url_for in Rails (such as link_to).
+    # For example, this might evaluate to /pages/about for the "About" page.
     def url_normal
       {:controller => '/refinery/pages', :action => 'show', :path => nil, :id => to_param, :only_path => true}
     end
 
+    # If the current locale is set to something other than the default locale
+    # then the :locale attribute will be set on the url hash, otherwise it won't be.
     def with_locale_param(url_hash)
       if self.class.different_frontend_locale?
         url_hash.update(:locale => ::Refinery::I18n.current_frontend_locale)
@@ -392,6 +422,8 @@ module Refinery
       end
       alias_method :invalidate_child_cached_url, :invalidate_cached_urls
 
+      # Make sures that a translation exists for this page.
+      # The translation is set to the default frontend locale.
       def ensure_locale
         unless self.translations.present?
           self.translations.build :locale => ::Refinery::I18n.default_frontend_locale
