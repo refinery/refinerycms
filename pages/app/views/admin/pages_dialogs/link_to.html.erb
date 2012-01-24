@@ -126,7 +126,7 @@
     $(document).ready(function(){
       link_tester.init('<%= test_url_admin_pages_dialogs_url %>',
                        '<%= test_email_admin_pages_dialogs_url %>');
-      link_dialog.init();
+      link_dialog.init({include_host: <%= controller.asset_host.present? %>});
 
       $('.link_list a').click(function(e){
         e.preventDefault();

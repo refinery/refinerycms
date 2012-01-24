@@ -481,7 +481,9 @@ var link_tester = {
 
 var link_dialog = {
   initialised: false
-  , init: function(){
+  , options: {}
+  , init: function(options){
+    this.options = $.extend(this.options, options);
 
     if (!this.initialised) {
       this.init_tabs();
@@ -510,12 +512,16 @@ var link_dialog = {
     $('#existing_resource_area .form-actions-dialog #submit_button').click(function(e){
       e.preventDefault();
       if((resource_selected = $('#existing_resource_area_content ul li.linked a')).length > 0) {
-        resourceUrl = parseURL(resource_selected.attr('href'));
-        relevant_href = resourceUrl.pathname;
+        if (this.options.include_host) {
+          relevant_href = resource_selected.attr('href');
+        } else {
+          resourceUrl = parseURL(resource_selected.attr('href'));
+          relevant_href = resourceUrl.pathname;
 
-        // Add any alternate resource stores that need a absolute URL in the regex below
-        if(resourceUrl.hostname.match(/s3.amazonaws.com/)) {
-          relevant_href = resourceUrl.protocol + '//' + resourceUrl.host + relevant_href;
+          // Add any alternate resource stores that need a absolute URL in the regex below
+          if(resourceUrl.hostname.match(/s3.amazonaws.com/)) {
+            relevant_href = resourceUrl.protocol + '//' + resourceUrl.host + relevant_href;
+          }
         }
 
         if (typeof(resource_picker.callback) == "function") {
@@ -561,8 +567,11 @@ var link_dialog = {
       $(this).addClass('linked');
 
       var link = $(this).children('a.page_link').get(0);
-      var port = (window.location.port.length > 0 ? (":" + window.location.port) : "");
-      var url = link.href.replace(window.location.protocol + "//" + window.location.hostname + port, "");
+      var url = link.href;
+      if (!this.options.include_host) {
+        var port = (window.location.port.length > 0 ? (":" + window.location.port) : "");
+        var url = url.replace(window.location.protocol + "//" + window.location.hostname + port, "");
+      }
 
       link_dialog.update_parent(url, link.rel.replace(/\ ?<em>.+?<\/em>/, ''));
     });
