@@ -20,10 +20,12 @@ module Refinery
               directory "app" do
                 directory "controllers" do
                   directory "refinery" do
-                    directory "admin" do
+                    directory "rspec_product_tests" do
+                      directory "admin" do
+                        file "rspec_product_tests_controller.rb"
+                      end
                       file "rspec_product_tests_controller.rb"
                     end
-                    file "rspec_product_tests_controller.rb"
                   end
                 end
                 directory "models" do

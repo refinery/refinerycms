@@ -57,7 +57,7 @@ but if it is not you can add this code to the _end_ of the appropriate environme
 example with the production environment +config/environments/production.rb+:
 
 <ruby>
-Refinery.s3_backend = true
+Refinery::Core.config.s3_backend = true
 </ruby>
 
 There are some cases where you have these three variables set but do not want to use S3.
@@ -66,5 +66,5 @@ For example, forcing S3 to always be off in development is as simple as adding t
 following line to the _end_ of +config/environments/development.rb+:
 
 <ruby>
-Refinery.s3_backend = false
+Refinery::Core.config.s3_backend = false
 </ruby>

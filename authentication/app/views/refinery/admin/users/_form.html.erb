@@ -52,7 +52,7 @@
     </ul>
   </div>
 
-  <% if current_refinery_user.has_role?(:superuser) and Refinery::Authentication.config.superuser_can_assign_roles %>
+  <% if current_refinery_user.has_role?(:superuser) and Refinery::Authentication.superuser_can_assign_roles %>
     <div class='field role_access'>
       <span class='label_with_help'>
         <%= f.label :role_access, t('.role_access'), :class => "title_label" %>

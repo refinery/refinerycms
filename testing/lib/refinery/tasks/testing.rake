@@ -43,7 +43,9 @@ namespace :refinery do
 
     desc "Remove the dummy app used for testing"
     task :clean_dummy_app do
-      Refinery::Testing::Railtie.target_engine_path.join('spec', 'dummy').rmtree
+      path = Refinery::Testing::Railtie.target_engine_path.join('spec', 'dummy')
+
+      path.rmtree if path.exist?
     end
 
     namespace :engine do

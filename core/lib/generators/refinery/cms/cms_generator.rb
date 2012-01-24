@@ -80,12 +80,6 @@ module Refinery
         src_file_path = "app/decorators/#{decorator_namespace}/refinery/.gitkeep"
         copy_file self.class.source_root.join(src_file_path), destination_path.join(src_file_path)
       end
-
-      # Ensure i18n exists and is up to date.
-      if Refinery.i18n_enabled?
-        require 'generators/refinery/i18n_generator'
-        Refinery::I18nGenerator.start
-      end
     end
 
     protected

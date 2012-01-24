@@ -1,4 +1,4 @@
-<% page_code = Refinery::Core.config.google_analytics_page_code.to_s.strip %>
+<% page_code = Refinery::Core.google_analytics_page_code.to_s.strip %>
 <% unless local_request? or refinery_user? or page_code =~ /^(UA-xxxxxx-x)?$/ -%>
 <!-- asynchronous google analytics: mathiasbynens.be/notes/async-analytics-snippet -->
 <script>var _gaq=[['_setAccount','<%= page_code %>'],['_trackPageview'],['_trackPageLoadTime']];(function(d,t){

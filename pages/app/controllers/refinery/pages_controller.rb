@@ -55,17 +55,17 @@ module Refinery
 
     def render_with_templates?
       render_options = {}
-      if Refinery::Pages.config.use_layout_templates && @page.layout_template.present?
+      if Refinery::Pages.use_layout_templates && @page.layout_template.present?
         render_options[:layout] = @page.layout_template
       end
-      if Refinery::Pages.config.use_view_templates && @page.view_template.present?
+      if Refinery::Pages.use_view_templates && @page.view_template.present?
         render_options[:action] = @page.view_template
       end
       render render_options if render_options.any?
     end
 
     def write_cache?
-      if Refinery::Pages.config.cache_pages_full
+      if Refinery::Pages.cache_pages_full
         cache_page(response.body, File.join('', 'refinery', 'cache', 'pages', request.path).to_s)
       end
     end

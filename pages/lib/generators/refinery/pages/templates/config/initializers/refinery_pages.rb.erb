@@ -1,34 +1,41 @@
 Refinery::Pages.configure do |config|
+  # Configure specific page templates
+  # config.types.register :home do |home|
+  #   home.parts = %w[intro body]
+  # end
+
+  # Configure global page default parts
+  # config.default_parts = <%= Refinery::Pages.default_parts.inspect %>
+
   # Configure how many pages per page should be displayed when a dialog is presented that contains a links to pages
-  # config.pages_per_dialog = <%= Refinery::Pages.config.pages_per_dialog %>
+  # config.pages_per_dialog = <%= Refinery::Pages.pages_per_dialog.inspect %>
 
   # Configure how many pages per page should be displayed in the list of pages in the admin area
-  # config.pages_per_admin_index = <%= Refinery::Pages.config.pages_per_admin_index %>
+  # config.pages_per_admin_index = <%= Refinery::Pages.pages_per_admin_index.inspect %>
 
   # Configure whether to strip diacritics from Western characters
-  # config.approximate_ascii = <%= Refinery::Pages.config.approximate_ascii %>
+  # config.approximate_ascii = <%= Refinery::Pages.approximate_ascii.inspect %>
 
   # Configure whether to strip non-ASCII characters from the friendly_id string
-  # config.strip_non_ascii = <%= Refinery::Pages.config.strip_non_ascii %>
-
-  # Configure page default parts
-  # config.default_parts = <%= Refinery::Pages.config.default_parts %>
+  # config.strip_non_ascii = <%= Refinery::Pages.strip_non_ascii.inspect %>
 
   # Set this to true if you want to override slug which automatically gets generated
   # when you create a page
-  # config.use_custom_slugs = <%= Refinery::Pages.config.use_custom_slugs %>
+  # config.use_custom_slugs = <%= Refinery::Pages.use_custom_slugs.inspect %>
 
   # Set this to true if you want backend pages to be cached
-  # config.cache_pages_backend = <%= Refinery::Pages.config.cache_pages_backend %>
+  # config.cache_pages_backend = <%= Refinery::Pages.cache_pages_backend.inspect %>
 
   # Set this to true to activate full-page-cache
-  # config.cache_pages_full = <%= Refinery::Pages.config.cache_pages_full %>
+  # config.cache_pages_full = <%= Refinery::Pages.cache_pages_full.inspect %>
 
-  # config.layout_template_whitelist = <%= Refinery::Pages.config.layout_template_whitelist %>
+  # config.layout_template_whitelist = <%= Refinery::Pages.layout_template_whitelist.inspect %>
 
-  # config.view_template_whitelist = <%= Refinery::Pages.config.view_template_whitelist %>
+  # config.view_template_whitelist = <%= Refinery::Pages.view_template_whitelist.inspect %>
 
-  # config.use_layout_templates = <%= Refinery::Pages.config.use_layout_templates %>
+  # config.use_layout_templates = <%= Refinery::Pages.use_layout_templates.inspect %>
 
-  # config.use_view_templates = <%= Refinery::Pages.config.use_view_templates %>
+  # config.use_view_templates = <%= Refinery::Pages.use_view_templates.inspect %>
+
+  # config.absolute_page_links = <%= Refinery::Pages.absolute_page_links.inspect %>
 end

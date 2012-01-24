@@ -47,14 +47,4 @@ describe "dashboard" do
       3.times { |n| page.should have_content("Refinery cms #{n} page was added") }
     end
   end
-
-  describe "javascript" do
-    it "suggests enabling when it is disabled" do
-      page.should have_content("For full functionality of this page it is necessary to enable JavaScript")
-    end
-
-    it "doesn't say anything of the sort when it is enabled", :js => true do
-      page.should_not have_content("For full functionality of this page it is necessary to enable JavaScript")
-    end
-  end
 end

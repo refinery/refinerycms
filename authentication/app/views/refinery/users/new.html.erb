@@ -1,4 +1,5 @@
-<% content_for :header, t('fill_form', :scope => 'refinery.users.new') %>
+<% content_for :header, t('there_are_no_users', :scope => 'refinery.welcome') %>
+
 <%= form_for :user, :url => main_app.refinery_user_registration_path do |f| -%>
 
   <%= render :partial => "/refinery/admin/error_messages",

@@ -14,9 +14,9 @@ module Refinery
         Refinery::Plugin.register do |plugin|
           plugin.pathname = root
           plugin.name = 'refinery_settings'
-          plugin.url = app.routes.url_helpers.refinery_admin_settings_path
+          plugin.url = {:controller => '/refinery/admin/settings'}
           plugin.version = %q{2.0.0}
-          plugin.menu_match = /refinery\/settings$/
+          plugin.menu_match = %r{refinery/settings$}
         end
       end
 

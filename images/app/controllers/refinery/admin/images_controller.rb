@@ -53,7 +53,7 @@ module ::Refinery
         end
 
         unless params[:insert]
-          if @images.all?{|i| i.valid?}
+          if @images.all?(&:valid?)
             flash.notice = t('created', :scope => 'refinery.crudify', :what => "'#{@images.collect{|i| i.title}.join("', '")}'")
             unless from_dialog?
               redirect_to main_app.url_for(:action => 'index')
@@ -66,12 +66,10 @@ module ::Refinery
           end
         else
           # if all uploaded images are ok redirect page back to dialog, else show current page with error
-          if @images.all?{|i| i.valid?}
+          if @images.all?(&:valid?)
             @image_id = @image.id if @image.persisted?
             @image = nil
 
-            redirect_to main_app.insert_refinery_admin_images_path(request.query_parameters)
-          else
             self.insert
           end
         end
@@ -89,9 +87,7 @@ module ::Refinery
       end
 
       def change_list_mode_if_specified
-        if action_name == 'index' and
-          params[:view].present? and
-          Refinery::Images.config.image_views.include?(params[:view].to_sym)
+        if action_name == 'index' && params[:view].present? && Refinery::Images.image_views.include?(params[:view].to_sym)
            Refinery::Images.config.preferred_image_view = params[:view]
         end
       end

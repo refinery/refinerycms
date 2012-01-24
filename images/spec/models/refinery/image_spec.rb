@@ -12,24 +12,24 @@ module Refinery
     end
 
     context "image url" do
-      it "should respond to .thumbnail" do
+      it "responds to .thumbnail" do
         image.should respond_to(:thumbnail)
       end
 
-      it "should contain its filename at the end" do
+      it "contains its filename at the end" do
         image.thumbnail(nil).url.split('/').last.should == image.image_name
       end
 
-      it "should be different when supplying geometry" do
+      it "becomes different when supplying geometry" do
         image.thumbnail(nil).url.should_not == image.thumbnail('200x200').url
       end
 
-      it "should have different urls for each geometry string" do
+      it "has different urls for each geometry string" do
         image.thumbnail('200x200').url.should_not == image.thumbnail('200x201').url
       end
 
-      it "should use right geometry when given a thumbnail name" do
-        name, geometry = Refinery::Images.config.user_image_sizes.first
+      it "uses right geometry when given a thumbnail name" do
+        name, geometry = Refinery::Images.user_image_sizes.first
         image.thumbnail(name).url.should == image.thumbnail(geometry).url
       end
     end
@@ -44,27 +44,27 @@ module Refinery
       context "dialog is true" do
         context "has_size_options is true" do
           it "returns image count specified by Images.config.pages_per_dialog_that_have_size_options option" do
-            ::Refinery::Image.per_page(true, true).should == Images.config.pages_per_dialog_that_have_size_options
+            ::Refinery::Image.per_page(true, true).should == Images.pages_per_dialog_that_have_size_options
           end
         end
 
         context "has_size_options is false" do
           it "returns image count specified by Images.config.pages_per_dialog option" do
-            ::Refinery::Image.per_page(true).should == Images.config.pages_per_dialog
+            ::Refinery::Image.per_page(true).should == Images.pages_per_dialog
           end
         end
       end
 
       context "dialog is false" do
         it "returns image count specified by Images.config.pages_per_admin_index option" do
-          ::Refinery::Image.per_page.should == Images.config.pages_per_admin_index
+          ::Refinery::Image.per_page.should == Images.pages_per_admin_index
         end
       end
     end
 
     describe ".user_image_sizes" do
       it "returns a hash" do
-        Refinery::Images.config.user_image_sizes.should be_a_kind_of(Hash)
+        Refinery::Images.user_image_sizes.should be_a_kind_of(Hash)
       end
     end
 
@@ -144,12 +144,6 @@ module Refinery
       describe "invalid argument for #image" do
         before(:each) do
           @image = Image.new
-        end
-
-        it "does not raise an exception" do
-          expect {
-            @image.valid?
-          }.should_not raise_error(NoMethodError)
         end
 
         it "has an error message" do

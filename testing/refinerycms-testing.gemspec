@@ -21,12 +21,12 @@ Gem::Specification.new do |s|
   s.test_files        = `git ls-files -- spec/*`.split("\n")
   s.executables       = `git ls-files -- bin/*`.split("\n").map { |f| File.basename(f) }
 
-  s.add_dependency 'database_cleaner'
+  s.add_dependency 'database_cleaner',        '~> 0.7.1'
   s.add_dependency 'launchy'
   s.add_dependency 'factory_girl_rails',      '~> 1.4.0'
   s.add_dependency 'json_pure'
   s.add_dependency 'rack-test',               '~> 0.6.0'
-  s.add_dependency 'rspec-rails',             '~> 2.8.0.rc'
+  s.add_dependency 'rspec-rails',             '~> 2.8.1'
   s.add_dependency 'fuubar'
   s.add_dependency 'rspec-instafail'
   s.add_dependency 'capybara',                '~> 1.1.0'

@@ -8,7 +8,7 @@ module Refinery
       context "when no files" do
         it "invites to upload file" do
           visit refinery_admin_resources_path
-          page.should have_content("There are no files yet. Click \"Upload new file\" to add your first file.")
+          page.should have_content(%q{There are no files yet. Click "Upload new file" to add your first file.})
         end
       end
 
@@ -44,7 +44,7 @@ module Refinery
           click_link "Edit this file"
 
           page.should have_content("Download current file or replace it with this one...")
-          page.should have_selector("a[href='/refinery/resources']")
+          page.should have_selector("a[href*='/refinery/resources']")
 
           attach_file "resource_file", Refinery.roots(:'refinery/resources').join("spec/fixtures/refinery_is_awesome2.txt")
           click_button "Save"
@@ -71,7 +71,7 @@ module Refinery
       context "download" do
         let!(:resource) { FactoryGirl.create(:resource) }
 
-        it "succeedes" do
+        it "succeeds" do
           visit refinery_admin_resources_path
 
           click_link "Download this file"

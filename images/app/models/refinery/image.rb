@@ -1,5 +1,5 @@
 module Refinery
-  class Image < ActiveRecord::Base
+  class Image < Refinery::Core::Base
     include Images::Validators
 
     image_accessor :image
@@ -34,8 +34,8 @@ module Refinery
 
     # Get a thumbnail job object given a geometry.
     def thumbnail(geometry = nil)
-      if geometry.is_a?(Symbol) and Refinery::Images.config.user_image_sizes.keys.include?(geometry)
-        geometry = Refinery::Images.config.user_image_sizes[geometry]
+      if geometry.is_a?(Symbol) and Refinery::Images.user_image_sizes.keys.include?(geometry)
+        geometry = Refinery::Images.user_image_sizes[geometry]
       end
 
       if geometry.present? && !geometry.is_a?(Symbol)

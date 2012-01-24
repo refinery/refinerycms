@@ -105,8 +105,8 @@ module Refinery
 
     describe '#highlighted?' do
       it 'returns true if params[:controller] match menu_match regexp' do
-        plugin.highlighted?({:controller => 'refinery/admin/refinery_rspec'}).should be
-        plugin.highlighted?({:controller => 'refinery/refinery_rspec'}).should be
+        plugin.highlighted?({:controller => '/refinery/admin/refinery_rspec'}).should be
+        plugin.highlighted?({:controller => '/refinery/refinery_rspec'}).should be
       end
 
       it 'returns true if dashboard is true and params[:action] == error_404' do

@@ -1,5 +1,5 @@
 module Refinery
-  class Page < ActiveRecord::Base
+  class Page < Refinery::Core::Base
     # when collecting the pages path how is each of the pages seperated?
     PATH_SEPARATOR = " - "
 
@@ -31,8 +31,8 @@ module Refinery
       has_friendly_id :custom_slug_or_title, :use_slug => true,
                       :default_locale => (::Refinery::I18n.default_frontend_locale rescue :en),
                       :reserved_words => %w(index new session login logout users refinery admin images wymiframe),
-                      :approximate_ascii => Refinery::Pages.config.approximate_ascii,
-                      :strip_non_ascii => Refinery::Pages.config.strip_non_ascii
+                      :approximate_ascii => Refinery::Pages.approximate_ascii,
+                      :strip_non_ascii => Refinery::Pages.strip_non_ascii
     end
 
     # Docs for acts_as_indexed http://github.com/dougal/acts_as_indexed
@@ -208,7 +208,7 @@ module Refinery
     def url
       if link_url.present?
         link_url_localised?
-      elsif Refinery::Pages.config.marketable_urls
+      elsif Refinery::Pages.marketable_urls
         with_locale_param url_marketable
       elsif to_param.present?
         with_locale_param url_normal
@@ -233,7 +233,7 @@ module Refinery
     end
 
     def url_normal
-      {:controller => '/refinery/pages', :action => 'show', :path => nil, :id => to_param}
+      {:controller => '/refinery/pages', :action => 'show', :path => nil, :id => to_param, :only_path => true}
     end
 
     def with_locale_param(url_hash)
@@ -272,7 +272,7 @@ module Refinery
     end
 
     def cache_key
-      [Refinery.base_cache_key, ::I18n.locale, to_param].compact.join('/')
+      [Refinery::Core.base_cache_key, ::I18n.locale, to_param].compact.join('/')
     end
 
     # Returns true if this page is "published"
@@ -374,7 +374,7 @@ module Refinery
     def normalize_friendly_id(slug_string)
       slug_string.gsub!('_', '-')
       sluggified = super
-      if Refinery::Pages.config.marketable_urls && self.class.friendly_id_config.reserved_words.include?(sluggified)
+      if Refinery::Pages.marketable_urls && self.class.friendly_id_config.reserved_words.include?(sluggified)
         sluggified << "-page"
       end
       sluggified
@@ -383,7 +383,7 @@ module Refinery
     private
 
       def invalidate_cached_urls
-        return true unless Refinery::Pages.config.marketable_urls
+        return true unless Refinery::Pages.marketable_urls
 
         [self, children].flatten.each do |page|
           Rails.cache.delete(page.url_cache_key)

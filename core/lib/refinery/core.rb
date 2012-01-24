@@ -1,7 +1,6 @@
 require 'rails/all'
 require 'rbconfig'
 require 'acts_as_indexed'
-require 'truncate_html'
 require 'will_paginate'
 
 module Refinery
@@ -40,21 +39,6 @@ module Refinery
 
   class << self
     @@engines = []
-
-    # Convenience method for Refinery::Core#rescue_not_found
-    def rescue_not_found
-      Core.config.rescue_not_found
-    end
-
-    # Convenience method for Refinery::Core#s3_backend
-    def s3_backend
-      Core.config.s3_backend
-    end
-
-    # Convenience method for Refinery::Core#base_cache_key
-    def base_cache_key
-      Core.config.base_cache_key
-    end
 
     # Returns an array of modules representing currently registered Refinery Engines
     #

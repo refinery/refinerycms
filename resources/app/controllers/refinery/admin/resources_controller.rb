@@ -35,8 +35,6 @@ module ::Refinery
             @resource_id = @resources.detect(&:persisted?).id
             @resource = nil
 
-            redirect_to request.query_parameters.merge(:action => 'insert')
-          else
             self.insert
           end
         end

@@ -1,10 +1,16 @@
-<% linked = (main_app.url_for(page_link.url) == params[:current_link]) if params[:current_link].present? -%>
-<% link_args = defined?(link_to_arguments) ? link_to_arguments : {} %>
+<%
+  link_args = defined?(link_to_arguments) ? link_to_arguments : {}
+  page_link_url = main_app.url_for(page_link.url)
+  # current_link is relative so check against the relative url portion before conditionally making it absolute
+  linked = params[:current_link].present? && page_link_url == params[:current_link]
+  page_link_url = "#{[request.protocol, request.host_with_port].join}#{page_link_url}" if Refinery::Pages.absolute_page_links
+-%>
 <li class='clearfix<%= " child#{child}" if child %><%= " linked" if linked%>' id="<%= dom_id(page_link) -%>">
-  <%= link_to page_link.title_with_meta.html_safe, main_app.url_for(page_link.url),
-              { :title => t('.link_to_this_page'),
-              :rel => page_link.title,
-              :class => 'page_link' }.merge(link_args) %>
+  <%= link_to page_link.title_with_meta.html_safe, page_link_url, {
+                :title => t('.link_to_this_page'),
+                :rel => page_link.title,
+                :class => 'page_link'
+              }.merge(link_args) %>
 </li>
 <%= render :partial => 'page_link',
            :collection => page_link.children,

@@ -1,0 +1,68 @@
+<%
+  text_areas = attributes.reject{|a| a.field_type.to_s != 'text_area'}
+  generated_text_areas = false
+-%>
+<%%= form_for [main_app, :refinery_<%= namespacing.underscore %>_admin, @<%= singular_name %>] do |f| -%>
+  <%%= render :partial => "/refinery/admin/error_messages", :locals => {
+          :object => @<%= singular_name %>,
+          :include_object_name => true
+        } %>
+  <% attributes.each_with_index do |attribute, index| %>
+<% if attribute.field_type.to_s != 'text_area' -%>
+  <div class='field'>
+    <%%= f.label :<%= attribute.name %> -%>
+<% end -%>
+<% if attribute.type.to_s == 'image' -%>
+    <%%= render :partial => "/refinery/admin/image_picker", :locals => {
+          :f => f,
+          :field => :<%= "#{attribute.name}_id".gsub("_id_id", "_id") %>,
+          :image => @<%= singular_name %>.<%= attribute.name.gsub("_id", "") %>,
+          :toggle_image_display => false
+        } %>
+<% elsif attribute.type.to_s == 'resource' -%>
+    <%%= render :partial => "/refinery/admin/resource_picker", :locals => {
+          :f => f,
+          :field => :<%= "#{attribute.name}_id".gsub("_id_id", "_id") %>,
+          :resource => @<%= singular_name %>.<%= attribute.name.gsub("_id", "") %>,
+        } %>
+<% elsif attribute.field_type.to_s == "text_area" and !generated_text_areas -%>
+  <div class='field'>
+    <div id='page-tabs' class='clearfix ui-tabs ui-widget ui-widget-content ui-corner-all'>
+      <ul id='page_parts'>
+        <%% <%= text_areas.map{|t| t.name.to_sym}.inspect -%>.each_with_index do |part, part_index| %>
+          <li class='ui-state-default<%%= ' ui-state-active' if part_index == 0 %>'>
+            <%%= link_to t("#{part}", :scope => "activerecord.attributes.refinery/<%= namespacing.underscore %>/<%= singular_name %>", :default => part.to_s.titleize), "##{part}" %>
+          </li>
+        <%% end %>
+      </ul>
+
+      <div id='page_part_editors'>
+        <%% <%= text_areas.map{|t| t.name.to_sym}.inspect -%>.each do |part| %>
+          <div class='page_part' id='<%%= part %>'>
+            <%%= f.text_area part, :rows => 20, :class => 'wymeditor widest' -%>
+          </div>
+        <%% end %>
+      </div>
+<% generated_text_areas = true -%>
+<% elsif attribute.field_type.to_s != 'text_area' -%>
+    <%%= f.<%= attribute.field_type -%> :<%= attribute.name -%><%= ", :class => 'larger widest'" if (index == 0 && attribute.field_type == :text_field) -%><%= ", :checked => @#{singular_name}[:#{attribute.name}]" if attribute.field_type == :check_box %>  -%>
+<% end -%>
+  </div>
+  <% end %>
+  <%%= render :partial => "/refinery/admin/form_actions",
+              :locals => {
+                :f => f,
+                :continue_editing => false,
+                :delete_title => t('delete', :scope => 'refinery.<%= plural_name %>.admin.<%= plural_name %>.<%= singular_name %>'),
+                :delete_confirmation => t('message', :scope => 'refinery.admin.delete'<% if (title = attributes.detect { |a| a.type.to_s == "string" }).present? %>, :title => @<%= singular_name %>.<%= title.name %><% end %>)
+              } %>
+<%% end -%>
+<% if text_areas.any? -%>
+<%% content_for :javascripts do %>
+  <script>
+    $(document).ready(function(){
+      page_options.init(false, '', '');
+    });
+  </script>
+<%% end %>
+<% end -%>

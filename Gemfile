@@ -25,21 +25,15 @@ unless defined?(JRUBY_VERSION)
   gem 'pg'
 end
 
-# https://github.com/svenfuchs/routing-filter/issues/31
-gem 'routing-filter', :git => 'git://github.com/svenfuchs/routing-filter.git'
-# remove this after i18n-js gets past version 2.1.2
-gem 'i18n-js', :git => 'git://github.com/fnando/i18n-js.git'
-
 group :development, :test do
   gem 'refinerycms-testing', '~> 2.0.0'
   # Fixes timeouts in JRuby - see https://github.com/thoughtbot/capybara-webkit/pull/220
   if defined? JRUBY_VERSION
     gem 'capybara-webkit', :git => 'git://github.com/dnagir/capybara-webkit.git' #'~> 0.7.0'
   else
-    gem 'capybara-webkit', '~> 0.7.2'
+    gem 'capybara-webkit', '~> 0.8.0'
   end
   gem 'generator_spec'
-  gem 'database_cleaner', :git => 'git://github.com/bmabey/database_cleaner.git'
 
   platforms :mri_18 do
     gem 'rcov'
@@ -64,6 +58,7 @@ group :development, :test do
       if RbConfig::CONFIG['target_os'] =~ /darwin/i
         gem 'rb-fsevent', '>= 0.3.9'
         gem 'growl',      '~> 1.0.3'
+        gem 'growl_notify'
       end
       if RbConfig::CONFIG['target_os'] =~ /linux/i
         gem 'rb-inotify', '>= 0.5.1'

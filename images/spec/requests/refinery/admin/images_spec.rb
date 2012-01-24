@@ -7,7 +7,7 @@ module Refinery
     context "when no images" do
       it "invites to add one" do
         visit refinery_admin_images_path
-        page.should have_content("There are no images yet. Click \"Add new image\" to add your first image.")
+        page.should have_content(%q{There are no images yet. Click "Add new image" to add your first image.})
       end
     end
 
@@ -20,9 +20,12 @@ module Refinery
     context "new/create" do
       it "uploads image", :js => true do
         visit refinery_admin_images_path
+
         click_link "Add new image"
 
-        within_frame "dialog_iframe" do
+        page.should have_selector('iframe#dialog_iframe')
+
+        page.within_frame "dialog_iframe" do
           attach_file "image_image", Refinery.roots(:'refinery/images').join("spec/fixtures/beach.jpeg")
           click_button "Save"
         end
@@ -42,13 +45,15 @@ module Refinery
         click_link "Edit this image"
 
         page.should have_content("Use current image or replace it with this one...")
-        page.should have_selector("a[href='/refinery/images']")
+        page.should have_selector("a[href*='/refinery/images']")
 
-        attach_file "image_image", Refinery.roots(:'refinery/images').join("spec/fixtures/id-rather-be-here.jpg")
+        attach_file "image_image", Refinery.roots(:'refinery/images').join("spec/fixtures/fathead.png")
         click_button "Save"
 
-        page.should have_content("'Id Rather Be Here' was successfully updated.")
+        page.should have_content("'Fathead' was successfully updated.")
         Refinery::Image.count.should == 1
+
+        lambda { click_link "View this image" }.should_not raise_error
       end
     end
 
@@ -63,6 +68,16 @@ module Refinery
 
         page.should have_content("'Beach' was successfully removed.")
         Refinery::Image.count.should == 0
+      end
+    end
+
+    context "download" do
+      let!(:image) { FactoryGirl.create(:image) }
+
+      it "succeeds" do
+        visit refinery_admin_images_path
+
+        lambda { click_link "View this image" }.should_not raise_error
       end
     end
 
