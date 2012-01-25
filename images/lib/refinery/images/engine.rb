@@ -17,7 +17,7 @@ module Refinery
         ::Refinery::Images::Dragonfly.attach!(app)
       end
 
-      initializer "register refinery_images plugin", :after => :set_routes_reloader_hook do |app|
+      initializer "register refinery_images plugin" do
         Refinery::Plugin.register do |plugin|
           plugin.pathname = root
           plugin.name = 'refinery_images'

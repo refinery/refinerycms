@@ -10,7 +10,7 @@ module Refinery
 
       config.autoload_paths += %W( #{config.root}/lib )
 
-      initializer "register refinery_settings plugin", :after => :set_routes_reloader_hook do |app|
+      initializer "register refinery_settings plugin" do
         Refinery::Plugin.register do |plugin|
           plugin.pathname = root
           plugin.name = 'refinery_settings'
