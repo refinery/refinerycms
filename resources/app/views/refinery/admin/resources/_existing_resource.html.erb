@@ -6,7 +6,7 @@
         <% @resources.each do |resource| -%>
           <% resource_linked = (resource.url == params[:current_link]) if params[:current_link].present? %>
           <li<%= " class='linked'" if resource_linked %>>
-            <%= link_to "#{resource.title} (#{resource.file_name})", resource.url,
+            <%= link_to "#{resource.title} (#{resource.file_name})", asset_paths.compute_public_path(resource.url, ''),
                         :title => t('.link_to_file'),
                         :rel => resource.title,
                         :class => 'page_link',

@@ -42,6 +42,14 @@ module Refinery
         end
       end
 
+      initializer "add marketable route parts to reserved words" do |app|
+        if Refinery::Pages.config.marketable_urls
+          # ENV['RAILS_ASSETS_PRECOMPILE'] is a temporary hack to avoid initializing the database during
+          # assets precompile for issue https://github.com/resolve/refinerycms/issues/1059
+          add_route_parts_as_reserved_words(app) unless ENV['RAILS_ASSETS_PRECOMPILE']
+        end
+      end
+
       config.after_initialize do
         Refinery.register_engine(Refinery::Pages)
       end
@@ -54,6 +62,14 @@ module Refinery
               get '*path', :to => 'pages#show'
             end
           end
+        end
+
+        # Add any parts of routes as reserved words.
+        def add_route_parts_as_reserved_words(app)
+          route_paths = app.routes.named_routes.routes.map { |name, route| route.path.spec }
+          Refinery::Page.friendly_id_config.reserved_words |= route_paths.map { |path|
+            path.to_s.gsub(/^\//, '').to_s.split('(').first.to_s.split(':').first.to_s.split('/')
+          }.flatten.reject { |w| w =~ /\_/ }.uniq
         end
     end
   end
