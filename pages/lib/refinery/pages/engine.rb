@@ -18,7 +18,7 @@ module Refinery
         Refinery::AdminController.send :include, Refinery::Pages::Admin::InstanceMethods
       end
 
-      initializer "append marketable routes", :before => :set_routes_reloader do |app|
+      initializer "append marketable routes", :before => :set_routes_reloader_hook do |app|
         if Refinery::Pages.marketable_urls
           append_marketable_routes(app)
         end

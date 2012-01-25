@@ -79,12 +79,12 @@ end
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails', '~> 3.1.0'
-  gem 'coffee-rails', '~> 3.1.0'
+  gem 'sass-rails', '~> 3.2.0'
+  gem 'coffee-rails', '~> 3.2.0'
   gem 'uglifier'
 end
 
-gem 'jquery-rails', '~> 1.0.19'
+gem 'jquery-rails', '~> 2.0.0'
 
 # END REFINERY CMS DEVELOPMENT ================================================
 
@@ -97,7 +97,7 @@ gem 'jquery-rails', '~> 1.0.19'
 # gem 'refinerycms-page-images',  '~> 1.0'
 
 # Add i18n support (optional, you can remove this if you really want to).
-gem 'refinerycms-i18n',           '~> 2.0.0', :git => 'git://github.com/parndt/refinerycms-i18n.git'
+gem 'refinerycms-i18n',           :git => 'git://github.com/parndt/refinerycms-i18n.git'
 # END USER DEFINED
 
 # Use unicorn as the web server

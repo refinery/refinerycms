@@ -20,9 +20,9 @@ module ::Refinery
                     :if => proc { Refinery.i18n_enabled? }
 
       def new
-        @page = ::Refinery::Page.new(params)
+        @page = Refinery::Page.new(params.except(:controller, :action, :switch_locale))
         Refinery::Pages.default_parts_for(@page).each_with_index do |page_part, index|
-          @page.parts << ::Refinery::PagePart.new(:title => page_part, :position => index)
+          @page.parts << Refinery::PagePart.new(:title => page_part, :position => index)
         end
       end
 
