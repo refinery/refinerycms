@@ -69,7 +69,7 @@ module Refinery
           route_paths = app.routes.named_routes.routes.map { |name, route| route.path.spec }
           Refinery::Page.friendly_id_config.reserved_words |= route_paths.map { |path|
             path.to_s.gsub(%r{^/}, '').to_s.split('(').first.to_s.split(':').first.to_s.split('/')
-          }.flatten.reject { |w| w =~ %r{_|.} }.uniq
+          }.flatten.reject { |w| w =~ %r{_|\.} }.uniq
         end
     end
   end
