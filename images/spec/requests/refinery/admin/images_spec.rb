@@ -26,12 +26,16 @@ module Refinery
         page.should have_selector('iframe#dialog_iframe')
 
         page.within_frame "dialog_iframe" do
-          attach_file "image_image", Refinery.roots(:'refinery/images').join("spec/fixtures/beach.jpeg")
+          attach_file "image_image", Refinery.roots(:'refinery/images').join("spec/fixtures/image-with-dashes.jpg")
           click_button "Save"
         end
 
-        page.should have_content("'Beach' was successfully added.")
+        page.should have_content("'Image With Dashes' was successfully added.")
         Refinery::Image.count.should == 1
+
+        get Refinery::Image.last.url
+
+        response.should be_success
       end
     end
 
