@@ -756,6 +756,9 @@ label.stripped {
     background-image: image_url('refinery/icons/folder_open.png');
   }
 }
+#records.tree li.loading > div > span.icon {
+  background-image: image_url('refinery/icons/ajax-loader.gif') !important;
+}
 #image_grid .actions a img {
   padding: 4px 4px 1px 4px;
   vertical-align: top;

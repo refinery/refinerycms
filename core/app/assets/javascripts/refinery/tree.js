@@ -11,12 +11,14 @@ $(function() {
     }
     else {
       var contentUrl = $nested.attr('data-ajax-content');
+      $li.addClass('loading');
       
       $nested.load(contentUrl, function() {
         $nested.find('li:last').addClass('branch_end');
         $icon.addClass('expanded');
         init_tooltips();
         $nested.slideDown(); 
+        $li.removeClass('loading');
       });
     }
   });
