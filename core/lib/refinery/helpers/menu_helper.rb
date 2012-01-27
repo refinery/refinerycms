@@ -86,6 +86,7 @@ module Refinery
         url = [page.url]
         url << ['', page.url[:path]].compact.flatten.join('/') if page.url.respond_to?(:keys)
         url = url.detect{|u| u.is_a?(String)}
+        url.chomp!('/') if url.size > 1
 
         # Now use all possible vectors to try to find a valid match,
         # finally passing to rails' "current_page?" method.

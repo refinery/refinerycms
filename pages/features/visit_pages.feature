@@ -59,3 +59,11 @@ Feature: Visit Pages
     And the page titled "About" is set to skip to first child
     When I go to the page titled "About"
     Then I should see "Child Page" within ".selected * > .selected a"
+
+  @pages-visit-i18n
+  Scenario: Translated URI
+    Given I have frontend locales "en, de"
+    And the page titled "Home" is fully translated
+    When I go to the page titled "Home" with locale "de"
+    Then show me the page
+    Then I should see "Home" within ".selected > a"

@@ -1,0 +1,12 @@
+<h1 id='logo'>
+  <%= link_to RefinerySetting.find_or_set(:site_name, "Company Name"), root_path %>
+</h1>
+<nav id='locale'>
+  <% ::Refinery::I18n.frontend_locales.each do |locale| %>
+    <%= link_to_if Globalize.locale.to_s != locale.to_s, locale, {:locale => locale} %>
+  <% end %>
+</nav>
+<%= render(:partial => "/shared/menu", :locals => {
+             :dom_id => 'menu',
+             :css => 'menu'
+           }) %>
