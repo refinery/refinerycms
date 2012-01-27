@@ -6,22 +6,20 @@
       <span class="icon"></span>
     <% end %>
 
-    <a href="<%= main_app.edit_refinery_admin_page_path(page) %>">
-      <span class='title'>
-        <%= page.title_with_meta.html_safe %>
-        <% if ::Refinery.i18n_enabled? and ::Refinery::I18n.frontend_locales.many? %>
-          <span class='preview'>
-            <% page.translations.each do |translation| %>
-              <% if translation.title.present? %>
-                <%= link_to refinery_icon_tag("flags/#{translation.locale}.png", :size => '16x11'),
-                          main_app.edit_refinery_admin_page_path(page, :switch_locale => translation.locale),
-                          :class => 'locale' %>
-              <% end %>
+    <span class='title <%= 'toggle' if page.children.present? %>'>
+      <%= page.title_with_meta.html_safe %>
+      <% if ::Refinery.i18n_enabled? and ::Refinery::I18n.frontend_locales.many? %>
+        <span class='preview'>
+          <% page.translations.each do |translation| %>
+            <% if translation.title.present? %>
+              <%= link_to refinery_icon_tag("flags/#{translation.locale}.png", :size => '16x11'),
+                        main_app.edit_refinery_admin_page_path(page, :switch_locale => translation.locale),
+                        :class => 'locale' %>
             <% end %>
-          </span>
-        <% end %>
-      </span>
-    </a>
+          <% end %>
+        </span>
+      <% end %>
+    </span>
 
     <span class='actions'>
       <%= link_to refinery_icon_tag('application_go.png'), main_app.refinery_page_path(page),

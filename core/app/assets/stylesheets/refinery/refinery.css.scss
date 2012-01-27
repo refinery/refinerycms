@@ -716,7 +716,10 @@ label.stripped {
 #records.tree .title {
   display: block;
   margin: 0 120px 0 20px;
-  cursor: pointer;
+
+  &.toggle {
+    cursor: pointer;
+  }
 }
 #records.tree .actions {
   line-height: 22px;
