@@ -38,5 +38,6 @@
     </span>
   </div>
   <ul class='nested' data-ajax-content="<%= main_app.children_refinery_admin_page_path(page)  %>">
+    <%= render(:partial => 'page', :collection => page.children) if Refinery::Pages.config.auto_expand_admin_tree %>
   </ul>
 </li>
