@@ -25,9 +25,11 @@ module Refinery
           visit refinery.admin_settings_path
           click_link "Add new setting"
 
-          fill_in "Name", :with => "test setting"
-          fill_in "Value", :with => "true"
-          click_button "Save"
+          within_frame("dialog_iframe") do
+            fill_in "Name", :with => "test setting"
+            fill_in "Value", :with => "true"
+            click_button "Save"
+          end
 
           page.should have_content("'Test Setting' was successfully added.")
           page.should have_content("Test Setting - true")

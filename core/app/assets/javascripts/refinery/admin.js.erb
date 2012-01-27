@@ -381,12 +381,14 @@ var link_dialog = {
       e.preventDefault();
       if((resource_selected = $('#existing_resource_area_content ul li.linked a')).length > 0) {
         resourceUrl = parseURL(resource_selected.attr('href'));
-        relevant_href = resourceUrl.pathname;
+        relevant_href = <%= Refinery::Pages.absolute_page_links ? "resource_selected.attr('href')" : "resourceUrl.pathname" %>;
 
+        <% unless Refinery::Pages.absolute_page_links %>
         // Add any alternate resource stores that need a absolute URL in the regex below
         if(resourceUrl.hostname.match(/s3.amazonaws.com/)) {
           relevant_href = resourceUrl.protocol + '//' + resourceUrl.host + relevant_href;
         }
+        <% end %>
 
         if (typeof(resource_picker.callback) == "function") {
           resource_picker.callback({

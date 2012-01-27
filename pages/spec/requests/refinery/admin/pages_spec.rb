@@ -170,14 +170,14 @@ module Refinery
 
           it "should show locale flag for page" do
             p = ::Refinery::Page.find('news')
-            within "#refinery_page_#{p.id}" do
+            within "#page_#{p.id}" do
               page.should have_css("img[src='/assets/refinery/icons/flags/en.png']")
             end
           end
 
           it "should show title in the admin menu" do
             p = ::Refinery::Page.find('news')
-            within "#refinery_page_#{p.id}" do
+            within "#page_#{p.id}" do
               page.should have_content('News')
               page.find_link('Edit this page')[:href].should include('news')
             end
@@ -213,7 +213,7 @@ module Refinery
             click_button "Save"
 
             p = ::Refinery::Page.last
-            within "#refinery_page_#{p.id}" do
+            within "#page_#{p.id}" do
               click_link "Application_edit"
             end
             within "#switch_locale_picker" do
@@ -230,7 +230,7 @@ module Refinery
 
           it "should show both locale flags for page" do
             p = ::Refinery::Page.find('news')
-            within "#refinery_page_#{p.id}" do
+            within "#page_#{p.id}" do
               page.should have_css("img[src='/assets/refinery/icons/flags/en.png']")
               page.should have_css("img[src='/assets/refinery/icons/flags/ru.png']")
             end
@@ -238,14 +238,14 @@ module Refinery
 
           it "should show title in admin menu in current admin locale" do
             p = ::Refinery::Page.find('news')
-            within "#refinery_page_#{p.id}" do
+            within "#page_#{p.id}" do
               page.should have_content('News')
             end
           end
 
           it "should use the slug from the default locale in admin" do
             p = ::Refinery::Page.find('news')
-            within "#refinery_page_#{p.id}" do
+            within "#page_#{p.id}" do
               page.find_link('Edit this page')[:href].should include('news')
             end
           end
@@ -285,28 +285,28 @@ module Refinery
 
           it "should show locale flag for page" do
             p = ::Refinery::Page.find('новости')
-            within "#refinery_page_#{p.id}" do
+            within "#page_#{p.id}" do
               page.should have_css("img[src='/assets/refinery/icons/flags/ru.png']")
             end
           end
 
           it "should not show locale flag for primary locale" do
             p = ::Refinery::Page.find('новости')
-            within "#refinery_page_#{p.id}" do
+            within "#page_#{p.id}" do
               page.should_not have_css("img[src='/assets/refinery/icons/flags/en.png']")
             end
           end
 
           it "should show title in the admin menu" do
             p = ::Refinery::Page.find('новости')
-            within "#refinery_page_#{p.id}" do
+            within "#page_#{p.id}" do
               page.should have_content('Новости')
             end
           end
 
           it "should use ID instead of slug in admin" do
             p = ::Refinery::Page.find('новости')
-            within "#refinery_page_#{p.id}" do
+            within "#page_#{p.id}" do
               page.find_link('Edit this page')[:href].should include(p.id.to_s)
             end
           end

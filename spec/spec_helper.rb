@@ -40,7 +40,7 @@ def setup_environment
   end
 
   # set javascript driver for capybara
-  Capybara.javascript_driver = :webkit
+  Capybara.javascript_driver = :selenium
 end
 
 def each_run
