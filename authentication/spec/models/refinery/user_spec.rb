@@ -116,6 +116,36 @@ module Refinery
       end
     end
 
+    describe "#can_edit?" do
+      let(:user_not_persisted) { FactoryGirl.build(:refinery_user) }
+      let(:super_user) do
+        super_user = FactoryGirl.create(:refinery_user)
+        super_user.add_role(:superuser)
+        super_user
+      end
+      let(:user_persisted) { FactoryGirl.create(:refinery_user)}
+
+      context "won't allow to edit" do
+        it "non-persisted user record" do
+          refinery_user.can_edit?(user_not_persisted).should be_false
+        end
+
+        it "user is not a super user" do
+          refinery_user.can_edit?(user_persisted).should be_false
+        end
+      end
+
+      context "allows to edit" do
+        it "when I am a user super" do
+          super_user.can_edit?(user_persisted).should be_true
+        end
+
+        it "if all conditions return true" do
+          super_user.can_edit?(refinery_user).should be_true
+        end
+      end
+    end
+
     describe "#plugins=" do
       it "assigns plugins to user" do
         plugin_list = ["refinery_one", "refinery_two", "refinery_three"]

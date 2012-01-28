@@ -52,6 +52,13 @@ module Refinery
         id != user_to_delete.id
     end
 
+    def can_edit?(user_to_edit = self)
+      user_to_edit.persisted? && (
+        user_to_edit == self ||
+        self.has_role?(:superuser)
+      )
+    end
+
     def add_role(title)
       raise ArgumentException, "Role should be the title of the role not a role object." if title.is_a?(::Refinery::Role)
       roles << ::Refinery::Role[title] unless has_role?(title)

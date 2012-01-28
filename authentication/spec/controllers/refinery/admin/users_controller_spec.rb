@@ -1,7 +1,7 @@
 require "spec_helper"
 
 describe Refinery::Admin::UsersController do
-  login_refinery_user
+  login_refinery_superuser
 
   shared_examples_for "new, create, update, edit and update actions" do
     it "should load roles" do
@@ -51,7 +51,7 @@ describe Refinery::Admin::UsersController do
 
   describe "#edit" do
     it "should render the edit template" do
-      Refinery::User.should_receive(:find).at_least(1).times{ Refinery::User.new }
+      Refinery::User.should_receive(:find).at_least(1).times{ @refinery_superuser }
       get :edit, :id => "1"
       response.should be_success
       response.should render_template("refinery/admin/users/edit")
@@ -62,10 +62,9 @@ describe Refinery::Admin::UsersController do
 
   describe "#update" do
     it "should update a user" do
-      user = ::Refinery::User.new
-      user.stub(:update_attributes) { true }
+      user = FactoryGirl.create(:refinery_user)
       Refinery::User.should_receive(:find).at_least(1).times{ user }
-      put :update, :id => "1", :user => {}
+      put "update", :id => user.id.to_s, :user => {}
       response.should be_redirect
     end
 

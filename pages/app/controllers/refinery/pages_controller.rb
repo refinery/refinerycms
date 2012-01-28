@@ -47,7 +47,11 @@ module Refinery
       when "home"
         Refinery::Page.where(:link_url => '/').first
       when "show"
-        Refinery::Page.find("#{params[:path]}/#{params[:id]}".split('/').last)
+        if params[:id]
+          Refinery::Page.find(params[:id])
+        elsif params[:path]
+          Refinery::Page.find_by_path(params[:path])
+        end
       end
     end
 

@@ -713,6 +713,14 @@ label.stripped {
   display: block;
   line-height: 28px;
 }
+#records.tree .title {
+  display: block;
+  margin: 0 120px 0 20px;
+
+  &.toggle {
+    cursor: pointer;
+  }
+}
 #records.tree .actions {
   line-height: 22px;
   top: 1px;
@@ -734,6 +742,25 @@ label.stripped {
 }
 #records.tree .actions a img {
   padding-top: 4px;
+}
+#records.tree li span.icon {
+  display: block;
+  float: left;
+  width: 16px;
+  height: 16px;
+  margin: 3px 3px 0 0;
+  background: image_url('refinery/icons/page.png') center center no-repeat;
+
+  &.toggle {
+    cursor: pointer;
+    background-image: image_url('refinery/icons/folder.png');
+  }
+  &.toggle.expanded {
+    background-image: image_url('refinery/icons/folder_open.png');
+  }
+}
+#records.tree li.loading > div > span.icon {
+  background-image: image_url('refinery/icons/ajax-loader.gif') !important;
 }
 #image_grid .actions a img {
   padding: 4px 4px 1px 4px;

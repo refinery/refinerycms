@@ -1,6 +1,12 @@
 <li class='clearfix record' id="<%= dom_id(page) -%>">
   <div class='clearfix'>
-    <span class='title'>
+    <% if page.children.present? %>
+      <span class="icon toggle <%= 'expanded' if Refinery::Pages.auto_expand_admin_tree %>" title="<%= t('expand_collapse', :scope => 'refinery.admin.pages') %>"></span>
+    <% else %>
+      <span class="icon"></span>
+    <% end %>
+
+    <span class='title <%= 'toggle' if page.children.present? %>'>
       <%= page.title_with_meta.html_safe %>
       <% if Refinery.i18n_enabled? and Refinery::I18n.frontend_locales.many? %>
         <span class='preview'>
@@ -8,7 +14,7 @@
             <% if translation.title.present? %>
               <%= link_to refinery_icon_tag("flags/#{translation.locale}.png", :size => '16x11'),
                           refinery.edit_admin_page_path(page, :switch_locale => translation.locale),
-                        :class => 'locale' %>
+                          :class => 'locale' %>
             <% end %>
           <% end %>
         </span>
@@ -23,18 +29,20 @@
       <%= link_to refinery_icon_tag('page_add.png'),
                   refinery.new_admin_page_path(:parent_id => page.id),
                   :title => t('new', :scope => 'refinery.admin.pages') %>
+                  
       <%= link_to refinery_icon_tag('application_edit.png'),
-                  refinery.edit_admin_page_path(page),
+                  refinery.edit_admin_page_path(page.uncached_nested_url),
                   :title => t('edit', :scope => 'refinery.admin.pages') %>
+                  
       <%= link_to refinery_icon_tag('delete.png'),
-                  refinery.admin_page_path(page),
+                  refinery.admin_page_path(page.uncached_nested_url),
                   :class => "cancel confirm-delete",
                   :title => t('delete', :scope => 'refinery.admin.pages'),
                   :confirm => t('message', :scope => 'refinery.admin.delete', :title => page.title_with_meta.gsub(/\ ?<em>.*<\/em>/, "")),
                   :method => :delete if page.deletable? %>
     </span>
   </div>
-  <ul class='nested'>
-    <%= render :partial => 'page', :collection => page.children %>
+  <ul class='nested' data-ajax-content="<%= main_app.children_refinery_admin_page_path(page.uncached_nested_url) %>">
+    <%= render(:partial => 'page', :collection => page.children) if Refinery::Pages.auto_expand_admin_tree %>
   </ul>
 </li>

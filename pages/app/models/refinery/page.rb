@@ -32,7 +32,8 @@ module Refinery
                       :default_locale => (::Refinery::I18n.default_frontend_locale rescue :en),
                       :reserved_words => %w(index new session login logout users refinery admin images wymiframe),
                       :approximate_ascii => Refinery::Pages.approximate_ascii,
-                      :strip_non_ascii => Refinery::Pages.strip_non_ascii
+                      :strip_non_ascii => Refinery::Pages.strip_non_ascii,
+                      :scope => :parent
     end
 
     # Docs for acts_as_indexed http://github.com/dougal/acts_as_indexed
@@ -61,6 +62,17 @@ module Refinery
       # By default, this is all pages that are not set as 'draft'.
       def live
         where(:draft => false)
+      end
+
+      # With slugs scoped to the parent page we need to find a page by its full path.
+      # For example with about/example we would need to find 'about' and then its child
+      # called 'example' otherwise it may clash with another page called /example.
+      def find_by_path(path)
+        split_path = path.to_s.split('/')
+        page = ::Refinery::Page.find(split_path.shift)
+        page = page.children.find(split_path.shift) until split_path.empty?
+
+        page
       end
 
       # Finds a page using its title.  This method is necessary because pages

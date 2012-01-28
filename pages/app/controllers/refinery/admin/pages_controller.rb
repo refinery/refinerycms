@@ -24,7 +24,20 @@ module Refinery
         end
       end
 
+      def children
+        @page = find_page
+        render :layout => false
+      end
+
     protected
+
+      def find_page
+        @page = if Refinery::Pages.marketable_urls && params[:path].present?
+          Refinery::Page.find_by_path(params[:path])
+        elsif params[:id].present?
+          Refinery::Page.find(params[:id])
+        end
+      end
 
       # We can safely assume ::Refinery::I18n is defined because this method only gets
       # Invoked when the before_filter from the plugin is run.

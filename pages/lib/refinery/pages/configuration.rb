@@ -7,7 +7,8 @@ module Refinery
                     :default_parts, :use_custom_slugs, :cache_pages_backend,
                     :cache_pages_full, :layout_template_whitelist,
                     :view_template_whitelist, :use_layout_templates,
-                    :use_view_templates, :page_title, :absolute_page_links, :types
+                    :use_view_templates, :page_title, :absolute_page_links, :types,
+                    :auto_expand_admin_tree
 
     self.pages_per_dialog = 14
     self.pages_per_admin_index = 20
@@ -38,5 +39,6 @@ module Refinery
     }
     self.absolute_page_links = false
     self.types = Types.registered
+    self.auto_expand_admin_tree = true
   end
 end

@@ -53,7 +53,7 @@ module Refinery
       # Find the first url that is a string.
       url = [page.url]
       url << ['', page.url[:path]].compact.flatten.join('/') if page.url.respond_to?(:keys)
-      url = url.detect{|u| u.is_a?(String)}
+      url = url.last.match(%r{^/#{::I18n.locale.to_s}(/.*)}) ? $1 : url.detect{|u| u.is_a?(String)}
 
       # Now use all possible vectors to try to find a valid match,
       # finally passing to rails' "current_page?" method.
