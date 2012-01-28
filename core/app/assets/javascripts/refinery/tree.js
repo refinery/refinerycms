@@ -1,8 +1,8 @@
 $(function() {
   $('.tree .toggle').live('click', function(e) { 
     e.preventDefault(); 
-    var $icon = $(this);
-    var $li   = $icon.parents('li:first');
+    var $li   = $(this).parents('li:first');
+    var $icon = $li.find('.icon.toggle');
     var $nested = $li.find('.nested');
 
     if ($icon.hasClass('expanded')) {
