@@ -80,7 +80,7 @@ module Refinery
 
           context "with auto expand option turned on" do
             before do
-              Refinery::Pages.config.auto_expand_admin_tree = true
+              Refinery::Pages.auto_expand_admin_tree = true
 
               visit refinery_admin_pages_path 
             end

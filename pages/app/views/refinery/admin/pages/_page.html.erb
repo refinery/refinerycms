@@ -1,7 +1,7 @@
 <li class='clearfix record' id="<%= dom_id(page) -%>">
   <div class='clearfix'>
     <% if page.children.present? %>
-      <span class="icon toggle" title="<%= t('expand_collapse', :scope => 'refinery.admin.pages') %>"></span>
+      <span class="icon toggle <%= 'expanded' if Refinery::Pages.auto_expand_admin_tree %>" title="<%= t('expand_collapse', :scope => 'refinery.admin.pages') %>"></span>
     <% else %>
       <span class="icon"></span>
     <% end %>
@@ -37,7 +37,7 @@
                   :method => :delete if page.deletable? %>
     </span>
   </div>
-  <ul class='nested' data-ajax-content="<%= main_app.children_refinery_admin_page_path(page)  %>">
-    <%= render(:partial => 'page', :collection => page.children) if Refinery::Pages.config.auto_expand_admin_tree %>
+  <ul class='nested' data-ajax-content="<%= main_app.children_refinery_admin_page_path(page) %>">
+    <%= render(:partial => 'page', :collection => page.children) if Refinery::Pages.auto_expand_admin_tree %>
   </ul>
 </li>
