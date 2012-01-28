@@ -5,14 +5,12 @@ Rails.application.routes.draw do
 
     scope(:module => 'admin', :path => 'refinery', :as => 'refinery_admin') do
       get 'pages/*path/edit', :to => 'pages#edit'
+      get 'pages/*path/children', :to => 'pages#children', :as => 'children_pages'
       put 'pages/*path', :to => 'pages#update'
       delete 'pages/*path', :to => 'pages#destroy'
       resources :pages, :except => [:show] do
         collection do
           post :update_positions
-        end
-        member do
-          get :children
         end
       end
 

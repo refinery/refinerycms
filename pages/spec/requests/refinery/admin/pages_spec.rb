@@ -53,9 +53,10 @@ module Refinery
 
         context "when sub pages exist" do
           before do
-            parent = FactoryGirl.create(:page, :title => "Our Company")
-            FactoryGirl.create(:page, :parent => parent, :title => 'Our Team')
-            FactoryGirl.create(:page, :parent => parent, :title => 'Our Locations')
+            @parent = FactoryGirl.create(:page, :title => "Our Company")
+            FactoryGirl.create(:page, :parent => @parent, :title => 'Our Team')
+            @locations = FactoryGirl.create(:page, :parent => @parent, :title => 'Our Locations')
+            FactoryGirl.create(:page, :parent => @locations, :title => 'New York')
           end
 
           context "with auto expand option turned off" do
@@ -79,6 +80,13 @@ module Refinery
 
               page.should have_content("Our Team")
               page.should have_content("Our Locations")
+            end
+
+            it "expands children when nested mutliple levels deep", :js => true do
+              find("#page_#{@parent.id} .toggle").click
+              find("#page_#{@locations.id} .toggle").click
+
+              page.should have_content("New York")
             end
           end
 
