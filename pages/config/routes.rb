@@ -4,11 +4,11 @@ Refinery::Core::Engine.routes.draw do
 
   namespace :admin, :path => 'refinery' do
     get 'pages/*path/edit', :to => 'pages#edit'
+    get 'pages/*path/children', :to => 'pages#children', :as => 'children_pages'
     put 'pages/*path', :to => 'pages#update'
     delete 'pages/*path', :to => 'pages#destroy'
     resources :pages, :except => :show do
       post :update_positions, :on => :collection
-      get :children, :on => :member
     end
 
     resources :pages_dialogs, :only => [] do
