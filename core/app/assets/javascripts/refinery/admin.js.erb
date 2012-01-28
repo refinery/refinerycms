@@ -780,6 +780,7 @@ var list_reorder = {
         stop: function () {
           if (list_reorder.tree) {
             list_reorder.reset_branch_classes(this);
+            list_reorder.reset_icon_classes(this);
           } else {
             list_reorder.reset_on_off_classes(this);
           }
@@ -808,6 +809,20 @@ var list_reorder = {
 
     var nested_ul = $("ul", ul);
     $("> li:last", nested_ul).addClass("branch_end");
+  }
+
+  , reset_icon_classes: function(ul) {
+    $('li', ul).each(function() {
+      var $li   = $(this);
+      var $icon = $li.find('.icon:first');
+
+      if ($li.find('ul li').size() > 0) {
+        $icon.addClass('toggle expanded');
+      }
+      else if ($icon.hasClass('expanded')){
+        $icon.removeClass('toggle expanded');
+      }
+    });
   }
 
   ,enable_reordering: function(e) {
