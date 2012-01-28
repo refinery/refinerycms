@@ -60,16 +60,16 @@ module Refinery
             visit refinery_admin_pages_path
           end
 
-          it "should show parent page" do
+          it "show parent page" do
             page.should have_content("Our Company")
           end
 
-          it "should not show children" do
+          it "doesnt show children" do
             page.should_not have_content("Our Team")
             page.should_not have_content("Our Locations")
           end
 
-          it "should expand children", :js => true do
+          it "expands children", :js => true do
             find(".toggle").click
 
             page.should have_content("Our Team")
