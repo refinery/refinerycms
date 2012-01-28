@@ -56,24 +56,39 @@ module Refinery
             parent = FactoryGirl.create(:page, :title => "Our Company")
             FactoryGirl.create(:page, :parent => parent, :title => 'Our Team')
             FactoryGirl.create(:page, :parent => parent, :title => 'Our Locations')
-
-            visit refinery_admin_pages_path
           end
 
-          it "show parent page" do
-            page.should have_content("Our Company")
+          context "with auto expand option turned off" do
+            before { visit refinery_admin_pages_path }
+
+            it "show parent page" do
+              page.should have_content("Our Company")
+            end
+
+            it "doesn't show children" do
+              page.should_not have_content("Our Team")
+              page.should_not have_content("Our Locations")
+            end
+
+            it "expands children", :js => true do
+              find(".toggle").click
+
+              page.should have_content("Our Team")
+              page.should have_content("Our Locations")
+            end
           end
 
-          it "doesnt show children" do
-            page.should_not have_content("Our Team")
-            page.should_not have_content("Our Locations")
-          end
+          context "with auto expand option turned on" do
+            before do
+              Refinery::Pages.config.auto_expand_admin_tree = true
 
-          it "expands children", :js => true do
-            find(".toggle").click
+              visit refinery_admin_pages_path 
+            end
 
-            page.should have_content("Our Team")
-            page.should have_content("Our Locations")
+            it "shows children" do
+              page.should have_content("Our Team")
+              page.should have_content("Our Locations")
+            end
           end
         end
       end
