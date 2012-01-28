@@ -28,6 +28,14 @@ module ::Refinery
 
     protected
 
+      def find_page
+        @page = if Refinery::Pages.marketable_urls
+          Refinery::Page.find_by_path(params[:path])
+        else
+          Refinery::Page.find(params[:id])
+        end
+      end
+
       # We can safely assume ::Refinery::I18n is defined because this method only gets
       # Invoked when the before_filter from the plugin is run.
       def globalize!

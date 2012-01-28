@@ -7,8 +7,8 @@
           <% page.translations.each do |translation| %>
             <% if translation.title.present? %>
               <%= link_to refinery_icon_tag("flags/#{translation.locale}.png", :size => '16x11'),
-                        main_app.edit_refinery_admin_page_path(page, :switch_locale => translation.locale),
-                        :class => 'locale' %>
+                          main_app.edit_refinery_admin_page_path(page, :switch_locale => translation.locale),
+                          :class => 'locale' %>
             <% end %>
           <% end %>
         </span>
@@ -16,14 +16,21 @@
     </span>
 
     <span class='actions'>
-      <%= link_to refinery_icon_tag('application_go.png'), main_app.refinery_page_path(page),
+      <%= link_to refinery_icon_tag('application_go.png'),
+                  main_app.refinery_page_path(page),
                   :target => "_blank",
                   :title => t('.view_live_html') %>
-      <%= link_to refinery_icon_tag('page_add.png'), main_app.new_refinery_admin_page_path(:parent_id => page.id),
+
+      <%= link_to refinery_icon_tag('page_add.png'),
+                  main_app.new_refinery_admin_page_path(:parent_id => page.id),
                   :title => t('new', :scope => 'refinery.admin.pages') %>
-      <%= link_to refinery_icon_tag('application_edit.png'), main_app.edit_refinery_admin_page_path(page),
+
+      <%= link_to refinery_icon_tag('application_edit.png'),
+                  main_app.edit_refinery_admin_page_path(page.uncached_nested_url),
                   :title => t('edit', :scope => 'refinery.admin.pages') %>
-      <%= link_to refinery_icon_tag('delete.png'), main_app.refinery_admin_page_path(page),
+
+      <%= link_to refinery_icon_tag('delete.png'),
+                  main_app.refinery_admin_page_path(page.uncached_nested_url),
                   :class => "cancel confirm-delete",
                   :title => t('delete', :scope => 'refinery.admin.pages'),
                   :confirm => t('message', :scope => 'refinery.admin.delete', :title => page.title_with_meta.gsub(/\ ?<em>.*<\/em>/, "")),

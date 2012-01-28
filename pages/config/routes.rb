@@ -4,7 +4,10 @@ Rails.application.routes.draw do
     get '/pages/:id', :to => 'pages#show', :as => 'refinery_page'
 
     scope(:module => 'admin', :path => 'refinery', :as => 'refinery_admin') do
-      resources :pages, :except => :show do
+      get 'pages/*path/edit', :to => 'pages#edit'
+      put 'pages/*path', :to => 'pages#update'
+      delete 'pages/*path', :to => 'pages#destroy'
+      resources :pages, :except => [:show] do
         collection do
           post :update_positions
         end

@@ -1,4 +1,5 @@
-<%= form_for [main_app, :refinery_admin, @page] do |f| %>
+<%= form_for [main_app, :refinery_admin, @page],
+             :url => (main_app.refinery_admin_page_path(@page.uncached_nested_url) unless action_name == 'new') do |f| %>
 
   <%= render :partial => "/refinery/admin/error_messages",
              :locals => {
