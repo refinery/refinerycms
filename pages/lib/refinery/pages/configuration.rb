@@ -39,6 +39,6 @@ module Refinery
     }
     self.absolute_page_links = false
     self.types = Types.registered
-    self.auto_expand_admin_tree = false
+    self.auto_expand_admin_tree = true
   end
 end
