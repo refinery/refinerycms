@@ -26,6 +26,11 @@ module ::Refinery
         end
       end
 
+      def children
+        @page = find_page
+        render :layout => false
+      end
+
     protected
 
       # We can safely assume ::Refinery::I18n is defined because this method only gets

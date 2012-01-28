@@ -1,6 +1,12 @@
 <li class='clearfix record' id="<%= dom_id(page) -%>">
   <div class='clearfix'>
-    <span class='title'>
+    <% if page.children.present? %>
+      <span class="icon toggle <%= 'expanded' if Refinery::Pages.auto_expand_admin_tree %>" title="<%= t('expand_collapse', :scope => 'refinery.admin.pages') %>"></span>
+    <% else %>
+      <span class="icon"></span>
+    <% end %>
+
+    <span class='title <%= 'toggle' if page.children.present? %>'>
       <%= page.title_with_meta.html_safe %>
       <% if ::Refinery.i18n_enabled? and ::Refinery::I18n.frontend_locales.many? %>
         <span class='preview'>
@@ -22,6 +28,7 @@
       <%= link_to refinery_icon_tag('page_add.png'), main_app.new_refinery_admin_page_path(:parent_id => page.id),
                   :title => t('new', :scope => 'refinery.admin.pages') %>
       <%= link_to refinery_icon_tag('application_edit.png'), main_app.edit_refinery_admin_page_path(page),
+                  :class => 'edit',
                   :title => t('edit', :scope => 'refinery.admin.pages') %>
       <%= link_to refinery_icon_tag('delete.png'), main_app.refinery_admin_page_path(page),
                   :class => "cancel confirm-delete",
@@ -30,7 +37,7 @@
                   :method => :delete if page.deletable? %>
     </span>
   </div>
-  <ul class='nested'>
-    <%= render :partial => 'page', :collection => page.children %>
+  <ul class='nested' data-ajax-content="<%= main_app.children_refinery_admin_page_path(page) %>">
+    <%= render(:partial => 'page', :collection => page.children) if Refinery::Pages.auto_expand_admin_tree %>
   </ul>
 </li>
