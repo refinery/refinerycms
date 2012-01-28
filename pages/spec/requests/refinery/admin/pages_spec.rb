@@ -50,6 +50,32 @@ module Refinery
             end
           end
         end
+
+        context "when sub pages exist" do
+          before do
+            parent = FactoryGirl.create(:page, :title => "Our Company")
+            FactoryGirl.create(:page, :parent => parent, :title => 'Our Team')
+            FactoryGirl.create(:page, :parent => parent, :title => 'Our Locations')
+
+            visit refinery_admin_pages_path
+          end
+
+          it "should show parent page" do
+            page.should have_content("Our Company")
+          end
+
+          it "should not show children" do
+            page.should_not have_content("Our Team")
+            page.should_not have_content("Our Locations")
+          end
+
+          it "should expand children", :js => true do
+            find(".toggle").click
+
+            page.should have_content("Our Team")
+            page.should have_content("Our Locations")
+          end
+        end
       end
 
       describe "new/create" do
