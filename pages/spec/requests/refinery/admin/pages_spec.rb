@@ -59,7 +59,11 @@ module Refinery
           end
 
           context "with auto expand option turned off" do
-            before { visit refinery_admin_pages_path }
+            before do
+              Refinery::Pages.auto_expand_admin_tree = false
+
+              visit refinery_admin_pages_path
+            end
 
             it "show parent page" do
               page.should have_content("Our Company")
@@ -82,7 +86,7 @@ module Refinery
             before do
               Refinery::Pages.auto_expand_admin_tree = true
 
-              visit refinery_admin_pages_path 
+              visit refinery_admin_pages_path
             end
 
             it "shows children" do
