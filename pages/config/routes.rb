@@ -11,6 +11,9 @@ Rails.application.routes.draw do
         collection do
           post :update_positions
         end
+        member do
+          get :children
+        end
       end
 
       resources :pages_dialogs, :only => [] do

@@ -26,6 +26,11 @@ module ::Refinery
         end
       end
 
+      def children
+        @page = find_page
+        render :layout => false
+      end
+
     protected
 
       def find_page
