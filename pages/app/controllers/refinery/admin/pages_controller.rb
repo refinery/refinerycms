@@ -34,9 +34,9 @@ module ::Refinery
     protected
 
       def find_page
-        @page = if Refinery::Pages.marketable_urls
+        @page = if Refinery::Pages.marketable_urls && params[:path].present?
           Refinery::Page.find_by_path(params[:path])
-        else
+        elsif params[:id].present?
           Refinery::Page.find(params[:id])
         end
       end

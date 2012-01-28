@@ -31,7 +31,7 @@
                   main_app.new_refinery_admin_page_path(:parent_id => page.id),
                   :title => t('new', :scope => 'refinery.admin.pages') %>
 
-      <%= link_to refinery_icon_tag('application_edit.png'), main_app.edit_refinery_admin_page_path(page),
+      <%= link_to refinery_icon_tag('application_edit.png'), main_app.edit_refinery_admin_page_path(page.uncached_nested_url),
                   :class => 'edit',
                   :title => t('edit', :scope => 'refinery.admin.pages') %>
 
@@ -43,7 +43,7 @@
                   :method => :delete if page.deletable? %>
     </span>
   </div>
-  <ul class='nested' data-ajax-content="<%= main_app.children_refinery_admin_page_path(page) %>">
+  <ul class='nested' data-ajax-content="<%= main_app.children_refinery_admin_page_path(page.uncached_nested_url) %>">
     <%= render(:partial => 'page', :collection => page.children) if Refinery::Pages.auto_expand_admin_tree %>
   </ul>
 </li>
