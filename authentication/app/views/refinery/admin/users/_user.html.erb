@@ -9,7 +9,7 @@
     <%= mail_to user.email, refinery_icon_tag('email_go.png'),
                 :title => t('.email_user') %>
     <%= link_to refinery_icon_tag('application_edit.png'), main_app.edit_refinery_admin_user_path(user),
-                :title => t('edit', :scope => 'refinery.admin.users')%>
+                :title => t('edit', :scope => 'refinery.admin.users') if current_refinery_user.can_edit?(user) %>
     <%= link_to refinery_icon_tag('delete.png'), main_app.refinery_admin_user_path(user),
                 :class => "cancel confirm-delete",
                 :title => t('delete', :scope => 'refinery.admin.users'),

@@ -22,6 +22,14 @@ module Refinery
           end
         end
 
+        def login_refinery_superuser
+          before(:each) do
+            @refinery_superuser = FactoryGirl.create(:refinery_superuser)
+            @request.env["devise.mapping"] = Devise.mappings[:admin]
+            sign_in @refinery_superuser
+          end
+        end
+
         def login_refinery_translator
           before(:each) do
             @refinery_translator = FactoryGirl.create(:refinery_translator)
