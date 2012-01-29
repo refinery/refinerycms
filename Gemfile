@@ -2,6 +2,8 @@ source 'http://rubygems.org'
 
 gemspec
 
+gem 'globalize3', :git => 'git://github.com/svenfuchs/globalize3.git'
+
 # REFINERY CMS ================================================================
 # Anything you put in here will be overridden when the app gets updated.
 
@@ -29,7 +31,7 @@ gem 'devise', :git => 'git://github.com/plataformatec/devise.git'
 
 group :development, :test do
   gem 'refinerycms-testing', '~> 2.0.0'
-  gem 'generator_spec'
+  gem 'generator_spec', '>= 0.8.5'
 
   platforms :mri_18 do
     gem 'rcov'
@@ -81,8 +83,8 @@ end
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails', '~> 3.2.0'
-  gem 'coffee-rails', '~> 3.2.0'
+  gem 'sass-rails'
+  gem 'coffee-rails'
   gem 'uglifier'
 end
 
