@@ -4348,30 +4348,28 @@ function titleize(words) {
  */
 
 WYMeditor.WymClassExplorer = function(wym) {
-
     this._wym = wym;
     this._class = "className";
     this._newLine = "\r\n";
-
 };
 
 WYMeditor.WymClassExplorer.prototype.format_block = function(selected) {
 
-  //'this' should be the wymeditor instance.
-  var wym = this;
-  var container = selected || wym.selected() || $(wym._iframe).contents().find('body').get(0);
-  var name = container.tagName.toLowerCase();
+    //'this' should be the wymeditor instance.
+    var wym = this;
+    var container = selected || wym.selected() || $(wym._iframe).contents().find('body').get(0);
+    var name = container.tagName.toLowerCase();
 
-  //fix forbidden main containers
-  if($.inArray(name, ['strong', 'b', 'em', 'i', 'sub', 'sup', 'a']) > -1) {
-    name = container.parentNode.tagName.toLowerCase();
-  }
+    //fix forbidden main containers
+    if($.inArray(name, ['strong', 'b', 'em', 'i', 'sub', 'sup', 'a']) > -1) {
+        name = container.parentNode.tagName.toLowerCase();
+    }
 
-  if(name == WYMeditor.BODY) {
-    wym._selected_image = null;
-    $(wym._iframe).contents().find('.selected_by_wym').removeClass('selected_by_wym');
-    wym._exec(WYMeditor.FORMAT_BLOCK, "<" + WYMeditor.P + ">");
-  }
+    if(name == WYMeditor.BODY) {
+        wym._selected_image = null;
+        $(wym._iframe).contents().find('.selected_by_wym').removeClass('selected_by_wym');
+        wym._exec(WYMeditor.FORMAT_BLOCK, "<" + WYMeditor.P + ">");
+    }
 };
 
 WYMeditor.WymClassExplorer.prototype.initIframe = function(iframe) {
@@ -4451,48 +4449,46 @@ WYMeditor.WymClassExplorer.prototype.initIframe = function(iframe) {
 
 WYMeditor.WymClassExplorer.prototype._exec = function(cmd,param) {
 
-    switch(cmd) {
+  var wym = this;
 
+  switch(cmd) {
     case WYMeditor.INDENT: case WYMeditor.OUTDENT:
-
-        var container = this.findUp(this.container(), WYMeditor.LI);
-        if(container) {
-            var ancestor = container.parentNode.parentNode;
-            if(container.parentNode.childNodes.length>1
-              || ancestor.tagName.toLowerCase() == WYMeditor.OL
-              || ancestor.tagName.toLowerCase() == WYMeditor.UL)
-              this._doc.execCommand(cmd);
+      var container = wym.findUp(wym.container(), WYMeditor.LI);
+      if(container) {
+        var ancestor = container.parentNode.parentNode;
+        if(container.parentNode.childNodes.length > 1 || $.inArray(ancestor.tagName.toLowerCase(), [WYMeditor.OL, WYMeditor.UL]) > -1) {
+          wym._doc.execCommand(cmd);
         }
-    break;
+      }
+      break;
     default:
-        if(param) this._doc.execCommand(cmd,false,param);
-        else this._doc.execCommand(cmd);
-    break;
+      if(param) {
+        wym._doc.execCommand(cmd,false,param);
+      }
+      else {
+        wym._doc.execCommand(cmd);
+      }
+      break;
   }
 
 };
 
 WYMeditor.WymClassExplorer.prototype.selected = function() {
-
     var caretPos = this._iframe.contentWindow.document.caretPos;
-        if(caretPos!=null) {
-            if(caretPos.parentElement!=undefined)
-              return(caretPos.parentElement());
-        }
+    if(caretPos != null && caretPos.parentElement != undefined)
+        return(caretPos.parentElement());
+    }
 };
 
 WYMeditor.WymClassExplorer.prototype.saveCaret = function() {
-
     this._doc.caretPos = this._doc.selection.createRange();
 };
 
 WYMeditor.WymClassExplorer.prototype.addCssRule = function(styles, oCss) {
-
     styles.addRule(oCss.name, oCss.css);
 };
 
 WYMeditor.WymClassExplorer.prototype.insert = function(html) {
-
     // Get the current selection
     var range = this._doc.selection.createRange();
 
@@ -4664,7 +4660,9 @@ WYMeditor.WymClassMozilla.prototype.html = function(html) {
     //re-init designMode
     this.enableDesignMode();
   }
-  else return($(this._doc.body).html());
+  else {
+    return($(this._doc.body).html());
+  }
 };
 
 WYMeditor.WymClassMozilla.prototype._exec = function(cmd,param) {
@@ -4699,8 +4697,9 @@ WYMeditor.WymClassMozilla.prototype._exec = function(cmd,param) {
 
     //set to P if parent = BODY
     var container = this.selected();
-    if(container.tagName.toLowerCase() == WYMeditor.BODY)
+    if(container.tagName.toLowerCase() == WYMeditor.BODY) {
         this._exec(WYMeditor.FORMAT_BLOCK, WYMeditor.P);
+    }
 };
 
 
@@ -4737,9 +4736,13 @@ WYMeditor.WymClassMozilla.prototype.selected = function(upgrade_text_nodes) {
           return node.parentNode;
         }
       }
-      else return(node);
+      else {
+        return(node);
+      }
   }
-  else return(null);
+  else {
+    return(null);
+  }
 };
 
 WYMeditor.WymClassMozilla.prototype.addCssRule = function(styles, oCss) {
@@ -4921,8 +4924,12 @@ WYMeditor.WymClassOpera.prototype.selected = function() {
   var sel=this._iframe.contentWindow.getSelection();
   var node=sel.focusNode;
   if(node) {
-    if(node.nodeName=="#text")return(node.parentNode);
-    else return(node);
+    if(node.nodeName=="#text") {
+      return(node.parentNode);
+    }
+    else {
+      return(node);
+    }
   } else {
     return(null);
   }
@@ -5036,29 +5043,33 @@ WYMeditor.WymClassSafari.prototype.initIframe = function(iframe) {
 
 WYMeditor.WymClassSafari.prototype._exec = function(cmd,param) {
 
-    if(!this.selected()) return(false);
+    var wym = this;
+    if(!wym.selected()) {
+      return(false);
+    }
 
     switch(cmd) {
 
     case WYMeditor.INDENT: case WYMeditor.OUTDENT:
 
-        var focusNode = this.selected();
-        var sel = this._iframe.contentWindow.getSelection();
+        var focusNode = wym.selected();
+        var sel = wym._iframe.contentWindow.getSelection();
         var anchorNode = sel.anchorNode;
-        if(anchorNode.nodeName == "#text") anchorNode = anchorNode.parentNode;
+        if(anchorNode.nodeName == "#text") {
+          anchorNode = anchorNode.parentNode;
+        }
 
-        focusNode = this.findUp(focusNode, WYMeditor.BLOCKS);
-        anchorNode = this.findUp(anchorNode, WYMeditor.BLOCKS);
+        focusNode = wym.findUp(focusNode, WYMeditor.BLOCKS);
+        anchorNode = wym.findUp(anchorNode, WYMeditor.BLOCKS);
 
         if(focusNode && focusNode == anchorNode
           && focusNode.tagName.toLowerCase() == WYMeditor.LI) {
 
             var ancestor = focusNode.parentNode.parentNode;
 
-            if(focusNode.parentNode.childNodes.length>1
-              || ancestor.tagName.toLowerCase() == WYMeditor.OL
-              || ancestor.tagName.toLowerCase() == WYMeditor.UL)
-                this._doc.execCommand(cmd,'',null);
+            if(focusNode.parentNode.childNodes.length > 1 || $.inArray(ancestor.tagName.toLowerCase(), [WYMeditor.OL, WYMeditor.UL]) > -1) {
+                wym._doc.execCommand(cmd,'',null);
+            }
         }
 
     break;
