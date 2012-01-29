@@ -1182,11 +1182,14 @@ WYMeditor.editor.prototype.switchTo = function(selectionOrNode,sType) {
   // we have a node.
   var html = $(selectionOrNode).html();
   var newNode = this._doc.createElement(sType);
+  var klass = $(selectionOrNode).attr('class');
 
   // copy across the css class names.
-  $.each($(selectionOrNode).attr('class').split(" "), function(index, className) {
-    $(newNode).addClass(className);
-  });
+  if(typeof klass !== 'undefined'){
+      $.each($(selectionOrNode).attr('class').split(" "), function(index, className) {
+        $(newNode).addClass(className);
+      });
+  }
 
   selectionOrNode.parentNode.replaceChild(newNode,selectionOrNode);
 
@@ -1278,7 +1281,7 @@ WYMeditor.editor.prototype.dialog = function( dialogType ) {
   var wym = this;
 
   wym.update();
-  var path = this._wym._options.dialogPath + dialogType + '?wymeditor=true';
+  var path = this._wym._options.dialogPath + dialogType + '?wymeditor=true&' + window.location.href.match(/switch_locale=[a-z]{2}/);
 
   wym._current_unique_stamp = wym.uniqueStamp();
   // change undo or redo on cancel to true to have this happen when a user closes (cancels) a dialogue
@@ -1394,6 +1397,7 @@ WYMeditor.editor.prototype.dialog = function( dialogType ) {
       if (!wym._selected_image) {
         parent_node._id_before_replaceable = parent_node.id;
         parent_node.id = '' + this._current_unique_stamp;
+        $(parent_node).attr("_id_before_replaceable", parent_node._id_before_replaceable);
       }
 
       if (dialogType != WYMeditor.DIALOG_PASTE && dialogType != WYMeditor.DIALOG_TABLE) {
@@ -1770,7 +1774,7 @@ WYMeditor.INIT_DIALOG = function(wym, selected, isIframe) {
 
   var selected = selected || wym.selected();
   var dialog = $("#"+wym._options.dialogId);
-  var doc = $((isIframe ? dialog.find('iframe').contents() : document));
+  var doc = $(dialog.find('iframe').contents());
   var dialogType = dialog.find('#wym_dialog_type').val();
   if (wym._selected_image) {
     var replaceable = $(wym._selected_image);
@@ -1938,9 +1942,12 @@ WYMeditor.editor.prototype.close_dialog = function(e, cancelled) {
     if ((span = $(this._doc.body).find('span#' + this._current_unique_stamp)).length > 0) {
       span.parent().html(span.parent().html().replace(new RegExp(["<span(.+?)", span.attr('id'), "(.+?)<\/span>"].join("")), span.html()));
     }
-    (remove_id = $(this._doc.body).find('#' + this._current_unique_stamp))
-      .attr('id', (remove_id.attr('_id_before_replaceable') || ""))
-      .replaceWith(remove_id.html());
+    // https://github.com/resolve/refinerycms/issues/888
+    if (node = $(this._doc.body).find('#' + this._current_unique_stamp)) {
+      node.attr("id", (node.attr('_id_before_replaceable') || ""));
+      node.removeAttr("_id_before_replaceable");
+    }
+
     if (this._undo_on_cancel == true) {
       this._exec("undo");
     }
@@ -2295,7 +2302,7 @@ WYMeditor.XhtmlValidator = {
         "2":"href",
         "3":"hreflang",
         "4":"name",
-        "rel":/^(alternate|designates|stylesheet|start|next|prev|contents|index|glossary|copyright|chapter|section|subsection|appendix|help|bookmark| |shortcut|icon|moodalbox)+$/,
+        "rel":/^(alternate|designates|stylesheet|start|next|nofollow|prev|contents|index|glossary|copyright|chapter|section|subsection|appendix|help|bookmark| |shortcut|icon|moodalbox)+$/,
         "rev":/^(alternate|designates|stylesheet|start|next|prev|contents|index|glossary|copyright|chapter|section|subsection|appendix|help|bookmark| |shortcut|icon|moodalbox)+$/,
         "shape":/^(rect|rectangle|circ|circle|poly|polygon)$/,
         "5":"type",
@@ -2484,7 +2491,7 @@ WYMeditor.XhtmlValidator = {
         "readonly":/^(readonly)$/,
         "size":/^(\d)+$/,
         "3":"src",
-        "type":/^(button|checkbox|file|hidden|image|password|radio|reset|submit|text|tel|search|url|email|datetime|date|month|week|time|datetime-local|number|range|color)$/,
+        "type":/^(button|checkbox|file|hidden|image|password|radio|reset|submit|text|tel|search|url|email|datetime|date|month|week|time|datetime-local|number|range|color|placeholder)$/,
         "4":"value"
       },
       "inside":"form"
@@ -2517,7 +2524,7 @@ WYMeditor.XhtmlValidator = {
         "media":/^(all|braille|print|projection|screen|speech|,|;| )+$/i,
         //next comment line required by Opera!
         /*"rel":/^(alternate|appendix|bookmark|chapter|contents|copyright|glossary|help|home|index|next|prev|section|start|stylesheet|subsection| |shortcut|icon)+$/i,*/
-        "rel":/^(alternate|appendix|bookmark|chapter|contents|copyright|glossary|help|home|index|next|prev|section|start|stylesheet|subsection| |shortcut|icon)+$/i,
+        "rel":/^(alternate|appendix|bookmark|chapter|contents|copyright|glossary|help|home|index|next|nofollow|prev|section|start|stylesheet|subsection| |shortcut|icon)+$/i,
         "rev":/^(alternate|appendix|bookmark|chapter|contents|copyright|glossary|help|home|index|next|prev|section|start|stylesheet|subsection| |shortcut|icon)+$/i,
         "3":"type"
       },
@@ -4341,30 +4348,28 @@ function titleize(words) {
  */
 
 WYMeditor.WymClassExplorer = function(wym) {
-
     this._wym = wym;
     this._class = "className";
     this._newLine = "\r\n";
-
 };
 
 WYMeditor.WymClassExplorer.prototype.format_block = function(selected) {
 
-  //'this' should be the wymeditor instance.
-  var wym = this;
-  var container = selected || wym.selected() || $(wym._iframe).contents().find('body').get(0);
-  var name = container.tagName.toLowerCase();
+    //'this' should be the wymeditor instance.
+    var wym = this;
+    var container = selected || wym.selected() || $(wym._iframe).contents().find('body').get(0);
+    var name = container.tagName.toLowerCase();
 
-  //fix forbidden main containers
-  if($.inArray(name, ['strong', 'b', 'em', 'i', 'sub', 'sup', 'a']) > -1) {
-    name = container.parentNode.tagName.toLowerCase();
-  }
+    //fix forbidden main containers
+    if($.inArray(name, ['strong', 'b', 'em', 'i', 'sub', 'sup', 'a']) > -1) {
+        name = container.parentNode.tagName.toLowerCase();
+    }
 
-  if(name == WYMeditor.BODY) {
-    wym._selected_image = null;
-    $(wym._iframe).contents().find('.selected_by_wym').removeClass('selected_by_wym');
-    wym._exec(WYMeditor.FORMAT_BLOCK, "<" + WYMeditor.P + ">");
-  }
+    if(name == WYMeditor.BODY) {
+        wym._selected_image = null;
+        $(wym._iframe).contents().find('.selected_by_wym').removeClass('selected_by_wym');
+        wym._exec(WYMeditor.FORMAT_BLOCK, "<" + WYMeditor.P + ">");
+    }
 };
 
 WYMeditor.WymClassExplorer.prototype.initIframe = function(iframe) {
@@ -4444,48 +4449,46 @@ WYMeditor.WymClassExplorer.prototype.initIframe = function(iframe) {
 
 WYMeditor.WymClassExplorer.prototype._exec = function(cmd,param) {
 
-    switch(cmd) {
+  var wym = this;
 
+  switch(cmd) {
     case WYMeditor.INDENT: case WYMeditor.OUTDENT:
-
-        var container = this.findUp(this.container(), WYMeditor.LI);
-        if(container) {
-            var ancestor = container.parentNode.parentNode;
-            if(container.parentNode.childNodes.length>1
-              || ancestor.tagName.toLowerCase() == WYMeditor.OL
-              || ancestor.tagName.toLowerCase() == WYMeditor.UL)
-              this._doc.execCommand(cmd);
+      var container = wym.findUp(wym.container(), WYMeditor.LI);
+      if(container) {
+        var ancestor = container.parentNode.parentNode;
+        if(container.parentNode.childNodes.length > 1 || $.inArray(ancestor.tagName.toLowerCase(), [WYMeditor.OL, WYMeditor.UL]) > -1) {
+          wym._doc.execCommand(cmd);
         }
-    break;
+      }
+      break;
     default:
-        if(param) this._doc.execCommand(cmd,false,param);
-        else this._doc.execCommand(cmd);
-    break;
+      if(param) {
+        wym._doc.execCommand(cmd,false,param);
+      }
+      else {
+        wym._doc.execCommand(cmd);
+      }
+      break;
   }
 
 };
 
 WYMeditor.WymClassExplorer.prototype.selected = function() {
-
     var caretPos = this._iframe.contentWindow.document.caretPos;
-        if(caretPos!=null) {
-            if(caretPos.parentElement!=undefined)
-              return(caretPos.parentElement());
-        }
+    if(caretPos != null && caretPos.parentElement != undefined)
+        return(caretPos.parentElement());
+    }
 };
 
 WYMeditor.WymClassExplorer.prototype.saveCaret = function() {
-
     this._doc.caretPos = this._doc.selection.createRange();
 };
 
 WYMeditor.WymClassExplorer.prototype.addCssRule = function(styles, oCss) {
-
     styles.addRule(oCss.name, oCss.css);
 };
 
 WYMeditor.WymClassExplorer.prototype.insert = function(html) {
-
     // Get the current selection
     var range = this._doc.selection.createRange();
 
@@ -4664,41 +4667,40 @@ WYMeditor.WymClassMozilla.prototype.html = function(html) {
 
 WYMeditor.WymClassMozilla.prototype._exec = function(cmd,param) {
 
-  if(!(container = this.selected())) return(false);
+    if(!this.selected()) return(false);
 
-  switch(cmd) {
+    switch(cmd) {
 
-  case WYMeditor.INDENT: case WYMeditor.OUTDENT:
-    var focusNode = this.selected();
-    var sel = this._iframe.contentWindow.getSelection();
-    var anchorNode = sel.anchorNode;
-    if(anchorNode.nodeName == "#text") {
-      anchorNode = anchorNode.parentNode;
-    }
-
-    focusNode = this.findUp(focusNode, WYMeditor.BLOCKS);
-    anchorNode = this.findUp(anchorNode, WYMeditor.BLOCKS);
-
-    if(focusNode && focusNode == anchorNode && focusNode.tagName.toLowerCase() == WYMeditor.LI) {
-      var ancestor = focusNode.parentNode.parentNode;
-
-      if(focusNode.parentNode.childNodes.length > 1
-         || ancestor.tagName.toLowerCase() == WYMeditor.OL
-         || ancestor.tagName.toLowerCase() == WYMeditor.UL) {
-        this._doc.execCommand(cmd,'',null);
+    case WYMeditor.INDENT: case WYMeditor.OUTDENT:
+      var focusNode = this.selected();
+      var sel = this._iframe.contentWindow.getSelection();
+      var anchorNode = sel.anchorNode;
+      if(anchorNode.nodeName == "#text") {
+        anchorNode = anchorNode.parentNode;
       }
+
+      focusNode = this.findUp(focusNode, WYMeditor.BLOCKS);
+      anchorNode = this.findUp(anchorNode, WYMeditor.BLOCKS);
+
+      if(focusNode && focusNode == anchorNode && focusNode.tagName.toLowerCase() == WYMeditor.LI) {
+        var ancestor = focusNode.parentNode.parentNode;
+
+        if(focusNode.parentNode.childNodes.length > 1 || $.inArray(ancestor.tagName.toLowerCase(), [WYMeditor.OL, WYMeditor.UL]) > -1) {
+          this._doc.execCommand(cmd,'',null);
+        }
+      }
+    break;
+
+    default:
+      if(param) this._doc.execCommand(cmd,'',param);
+      else this._doc.execCommand(cmd,'',null);
     }
-  break;
 
-  default:
-    if(param) this._doc.execCommand(cmd,'',param);
-    else this._doc.execCommand(cmd,'',null);
-  }
-
-  //set to P if parent = BODY
-  if(container.tagName.toLowerCase() == WYMeditor.BODY) {
-    this._exec(WYMeditor.FORMAT_BLOCK, WYMeditor.P);
-  }
+    //set to P if parent = BODY
+    var container = this.selected();
+    if(container.tagName.toLowerCase() == WYMeditor.BODY) {
+        this._exec(WYMeditor.FORMAT_BLOCK, WYMeditor.P);
+    }
 };
 
 
@@ -4735,13 +4737,17 @@ WYMeditor.WymClassMozilla.prototype.selected = function(upgrade_text_nodes) {
           return node.parentNode;
         }
       }
-      else return(node);
+      else {
+        return(node);
+      }
   }
-  else return(null);
+  else {
+    return(null);
+  }
 };
 
 WYMeditor.WymClassMozilla.prototype.addCssRule = function(styles, oCss) {
-  styles.insertRule(oCss.name + " {" + oCss.css + "}", styles.cssRules.length);
+    styles.insertRule(oCss.name + " {" + oCss.css + "}", styles.cssRules.length);
 };
 
 
@@ -4919,8 +4925,12 @@ WYMeditor.WymClassOpera.prototype.selected = function() {
   var sel=this._iframe.contentWindow.getSelection();
   var node=sel.focusNode;
   if(node) {
-    if(node.nodeName=="#text")return(node.parentNode);
-    else return(node);
+    if(node.nodeName=="#text") {
+      return(node.parentNode);
+    }
+    else {
+      return(node);
+    }
   } else {
     return(null);
   }
@@ -5034,50 +5044,54 @@ WYMeditor.WymClassSafari.prototype.initIframe = function(iframe) {
 
 WYMeditor.WymClassSafari.prototype._exec = function(cmd,param) {
 
-  var wym = this;
-  if(!(container = wym.selected())) return(false);
+    var wym = this;
+    if(!wym.selected()) {
+      return(false);
+    }
 
-  switch(cmd) {
+    switch(cmd) {
 
-  case WYMeditor.INDENT: case WYMeditor.OUTDENT:
+    case WYMeditor.INDENT: case WYMeditor.OUTDENT:
 
-      var focusNode = wym.selected();
-      var sel = wym._iframe.contentWindow.getSelection();
-      var anchorNode = sel.anchorNode;
-      if(anchorNode.nodeName == "#text") anchorNode = anchorNode.parentNode;
+        var focusNode = wym.selected();
+        var sel = wym._iframe.contentWindow.getSelection();
+        var anchorNode = sel.anchorNode;
+        if(anchorNode.nodeName == "#text") {
+          anchorNode = anchorNode.parentNode;
+        }
 
-      focusNode = wym.findUp(focusNode, WYMeditor.BLOCKS);
-      anchorNode = wym.findUp(anchorNode, WYMeditor.BLOCKS);
+        focusNode = wym.findUp(focusNode, WYMeditor.BLOCKS);
+        anchorNode = wym.findUp(anchorNode, WYMeditor.BLOCKS);
 
-      if(focusNode && focusNode == anchorNode && focusNode.tagName.toLowerCase() == WYMeditor.LI) {
+        if(focusNode && focusNode == anchorNode
+          && focusNode.tagName.toLowerCase() == WYMeditor.LI) {
 
-          var ancestor = focusNode.parentNode.parentNode;
+            var ancestor = focusNode.parentNode.parentNode;
 
-          if(focusNode.parentNode.childNodes.length>1
-            || ancestor.tagName.toLowerCase() == WYMeditor.OL
-            || ancestor.tagName.toLowerCase() == WYMeditor.UL) {
-              wym._doc.execCommand(cmd,'',null);
+            if(focusNode.parentNode.childNodes.length > 1 || $.inArray(ancestor.tagName.toLowerCase(), [WYMeditor.OL, WYMeditor.UL]) > -1) {
+                wym._doc.execCommand(cmd,'',null);
             }
-      }
+        }
 
-  break;
+    break;
 
-  case WYMeditor.INSERT_ORDEREDLIST: case WYMeditor.INSERT_UNORDEREDLIST:
+    case WYMeditor.INSERT_ORDEREDLIST: case WYMeditor.INSERT_UNORDEREDLIST:
 
-      wym._doc.execCommand(cmd,'',null);
+        this._doc.execCommand(cmd,'',null);
 
-      //Safari creates lists in e.g. paragraphs.
-      //Find the container, and remove it.
-      var focusNode = wym.selected();
-      var container = wym.findUp(focusNode, WYMeditor.MAIN_CONTAINERS);
-      if(container) $(container).replaceWith($(container).html());
+        //Safari creates lists in e.g. paragraphs.
+        //Find the container, and remove it.
+        var focusNode = this.selected();
+        var container = this.findUp(focusNode, WYMeditor.MAIN_CONTAINERS);
+        if(container) $(container).replaceWith($(container).html());
 
-  break;
+    break;
 
-  default:
-    if(param) wym._doc.execCommand(cmd,'',param);
-    else wym._doc.execCommand(cmd,'',null);
-  }
+    default:
+      if(param) this._doc.execCommand(cmd,'',param);
+      else this._doc.execCommand(cmd,'',null);
+    }
+
 };
 
 /* @name selected
@@ -5201,7 +5215,7 @@ WYMeditor.WymClassSafari.prototype.keyup = function(e) {
         name = container.parentNode.tagName.toLowerCase();
       }
 
-      if(name == WYMeditor.BODY || name == WYMeditor.DIV) {
+      if($.inArray(name, [WYMeditor.BODY, WYMeditor.DIV]) > -1) {
         wym._exec(WYMeditor.FORMAT_BLOCK, WYMeditor.P); //fix #110 for DIV
       }
     }
