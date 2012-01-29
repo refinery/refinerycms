@@ -2,7 +2,6 @@ require 'rbconfig'
 append_file 'Gemfile' do
 "
 #{"gem 'therubyracer'" if RbConfig::CONFIG['target_os'] =~ /linux/i}
-gem 'devise', :git => 'git://github.com/plataformatec/devise.git'
 gem 'refinerycms', :git => 'git://github.com/resolve/refinerycms.git'
 
 #  group :development, :test do

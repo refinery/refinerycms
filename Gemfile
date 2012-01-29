@@ -27,8 +27,6 @@ unless defined?(JRUBY_VERSION)
   gem 'pg'
 end
 
-gem 'devise', :git => 'git://github.com/plataformatec/devise.git'
-
 group :development, :test do
   gem 'refinerycms-testing', '~> 2.0.0'
   gem 'generator_spec', '>= 0.8.5'
