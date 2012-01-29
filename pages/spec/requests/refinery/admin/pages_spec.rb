@@ -63,7 +63,7 @@ module Refinery
             before do
               Refinery::Pages.auto_expand_admin_tree = false
 
-              visit refinery_admin_pages_path
+              visit refinery.admin_pages_path
             end
 
             it "show parent page" do
@@ -94,7 +94,7 @@ module Refinery
             before do
               Refinery::Pages.auto_expand_admin_tree = true
 
-              visit refinery_admin_pages_path
+              visit refinery.admin_pages_path
             end
 
             it "shows children" do

@@ -1,4 +1,4 @@
-<%= form_for [main_app, :admin, @page],
+<%= form_for [refinery, :admin, @page],
              :url => (refinery.admin_page_path(@page.uncached_nested_url) if @page.persisted?) do |f| %>
 
   <%= render :partial => "/refinery/admin/error_messages",
