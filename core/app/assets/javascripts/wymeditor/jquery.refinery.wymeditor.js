@@ -4675,7 +4675,9 @@ WYMeditor.WymClassMozilla.prototype._exec = function(cmd,param) {
       var focusNode = this.selected();
       var sel = this._iframe.contentWindow.getSelection();
       var anchorNode = sel.anchorNode;
-      if(anchorNode.nodeName == "#text") anchorNode = anchorNode.parentNode;
+      if(anchorNode.nodeName == "#text") {
+        anchorNode = anchorNode.parentNode;
+      }
 
       focusNode = this.findUp(focusNode, WYMeditor.BLOCKS);
       anchorNode = this.findUp(anchorNode, WYMeditor.BLOCKS);
@@ -4683,10 +4685,9 @@ WYMeditor.WymClassMozilla.prototype._exec = function(cmd,param) {
       if(focusNode && focusNode == anchorNode && focusNode.tagName.toLowerCase() == WYMeditor.LI) {
         var ancestor = focusNode.parentNode.parentNode;
 
-        if(focusNode.parentNode.childNodes.length>1
-        || ancestor.tagName.toLowerCase() == WYMeditor.OL
-        || ancestor.tagName.toLowerCase() == WYMeditor.UL)
-         this._doc.execCommand(cmd,'',null);
+        if(focusNode.parentNode.childNodes.length > 1 || $.inArray(ancestor.tagName.toLowerCase(), [WYMeditor.OL, WYMeditor.UL]) > -1) {
+          this._doc.execCommand(cmd,'',null);
+        }
       }
     break;
 
@@ -5214,7 +5215,7 @@ WYMeditor.WymClassSafari.prototype.keyup = function(e) {
         name = container.parentNode.tagName.toLowerCase();
       }
 
-      if(name == WYMeditor.BODY || name == WYMeditor.DIV) {
+      if($.inArray(name, [WYMeditor.BODY, WYMeditor.DIV]) > -1) {
         wym._exec(WYMeditor.FORMAT_BLOCK, WYMeditor.P); //fix #110 for DIV
       }
     }
