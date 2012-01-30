@@ -16,8 +16,10 @@ module Refinery
       destination_root.should have_structure {
         directory "config" do
           directory "initializers" do
-            file "refinery_resources.rb" do
-              contains "Refinery::Resources.configure"
+            directory "refinery" do
+              file "resources.rb" do
+                contains "Refinery::Resources.configure"
+              end
             end
           end
         end
