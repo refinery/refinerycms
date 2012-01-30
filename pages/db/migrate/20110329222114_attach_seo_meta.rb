@@ -12,7 +12,10 @@ class AttachSeoMeta < ActiveRecord::Migration
     end
 
     # Reset column information because otherwise the old columns will still exist.
-    ::Refinery::Page.translation_class.reset_column_information
+    [::Refinery::Page, ::Refinery::Page.translation_class].each do |model|
+      ActiveRecord::Base.connection.schema_cache.clear_table_cache!(model.table_name)
+      model.reset_column_information
+    end
 
     # Re-attach seo_meta
     ::Refinery::Page.translation_class.send :is_seo_meta
