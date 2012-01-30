@@ -215,7 +215,7 @@ $.extend(WYMeditor, {
      "section", "article", "aside", "details", "header", "footer",
      "nav", "dialog", "figure", "figcaption", "address", "hgroup",
      "mark", "time", "canvas", "audio", "video", "source", "output",
-     "progress", "ruby", "rt", "rp", "summary", "command"),
+     "progress", "ruby", "rt", "rp", "summary", "command"<%= ", #{Refinery::Core.wymeditor_whitelist_tags.keys.map{|k| %Q{"#{k}"}}.join(', ')}" if Refinery::Core.wymeditor_whitelist_tags.any? %>),
 
     KEY : {
       BACKSPACE: 8,
@@ -2161,7 +2161,7 @@ WYMeditor.XhtmlValidator = {
   {
     "core":
     {
-      "except":[
+      "except":<%= [
       "base",
       "head",
       "html",
@@ -2170,7 +2170,7 @@ WYMeditor.XhtmlValidator = {
       "script",
       "style",
       "title"
-      ],
+      ].reject{|a| Refinery::Core.wymeditor_whitelist_tags.keys.map(&:to_s).include?(a)}.inspect %>,
       "attributes":[
       "class",
       "id",
@@ -2184,14 +2184,14 @@ WYMeditor.XhtmlValidator = {
     },
     "language":
     {
-      "except":[
+      "except":<%= [
       "base",
       "br",
       "hr",
       "iframe",
       "param",
       "script"
-      ],
+      ].reject{|a| Refinery::Core.wymeditor_whitelist_tags.keys.map(&:to_s).include?(a)}.inspect %>,
       "attributes":
       {
         "dir":[
@@ -2245,7 +2245,7 @@ WYMeditor.XhtmlValidator = {
     },
     "keyboard":
     {
-      "except":[
+      "except":<%= [
       "base",
       "bdo",
       "br",
@@ -2259,7 +2259,7 @@ WYMeditor.XhtmlValidator = {
       "script",
       "style",
       "title"
-      ],
+      ].reject{|a| Refinery::Core.wymeditor_whitelist_tags.keys.map(&:to_s).include?(a)}.inspect %>,
       "attributes":[
       "onkeydown",
       "onkeypress",
@@ -2268,7 +2268,7 @@ WYMeditor.XhtmlValidator = {
     },
     "mouse":
     {
-      "except":[
+      "except":<%= [
       "base",
       "bdo",
       "br",
@@ -2279,7 +2279,7 @@ WYMeditor.XhtmlValidator = {
       "script",
       "style",
       "title"
-      ],
+      ].reject{|a| Refinery::Core.wymeditor_whitelist_tags.keys.map(&:to_s).include?(a)}.inspect %>,
       "attributes":[
       "onclick",
       "ondblclick",
@@ -2800,7 +2800,8 @@ WYMeditor.XhtmlValidator = {
     "62":"rt",
     "63":"rp",
     "64":"summary",
-    "65":"command"
+    "65":"command"<% Refinery::Core.wymeditor_whitelist_tags.each do |key, value| %>,
+    <%= key.inspect %>:<%= value.to_json %><% end %>
   },
 
   // Temporary skipped attributes
@@ -3873,7 +3874,7 @@ WYMeditor.XhtmlSaxListener = function()
     "section", "article", "aside", "details", "header", "footer",
     "nav", "dialog", "figure", "figcaption", "address", "hgroup",
     "mark", "time", "canvas", "audio", "video", "source", "output",
-    "progress", "ruby", "rt", "rp", "summary", "command"];
+    "progress", "ruby", "rt", "rp", "summary", "command"<%= ", #{Refinery::Core.wymeditor_whitelist_tags.keys.map{|k| %Q{"#{k}"}}.join(', ')}" if Refinery::Core.wymeditor_whitelist_tags.any? %>];
 
 
     // Defines self-closing tags.
