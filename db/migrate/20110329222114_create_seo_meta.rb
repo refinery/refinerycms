@@ -26,12 +26,12 @@ class CreateSeoMeta < ActiveRecord::Migration
     end
 
     # Reset column information because otherwise the old columns will still exist.
-    ::Page::Translation.reset_column_information
+    [::Page.translation_class].each do |model|
+      model.reset_column_information
+    end
 
     # Re-attach seo_meta
-    ::Page::Translation.module_eval do
-      is_seo_meta
-    end
+    ::Page.translation_class.send :is_seo_meta
 
     # Migrate data
     existing_translations.each do |translation|
@@ -41,9 +41,6 @@ class CreateSeoMeta < ActiveRecord::Migration
         }
       )
     end
-
-    # Reset column information again because otherwise the old columns will still exist.
-    ::Page.reset_column_information
   end
 
   def self.down

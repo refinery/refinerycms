@@ -1,12 +1,3 @@
-::Page.reset_column_information
-# Check whether all columns are applied yet by seo_meta.
-unless !defined?(::SeoMeta) || ::SeoMeta.attributes.keys.all? { |k|
-  ::Page.translation_class.instance_methods.map(&:to_sym).include?(k)
-}
-  # Make pages model seo_meta because not all columns are accessible.
-  ::Page.translation_class.send :is_seo_meta
-end
-
 page_position = -1
 
 home_page = Page.create(:title => "Home",
