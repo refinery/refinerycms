@@ -38,6 +38,8 @@ en:
         cancel: Cancel
         cancel_lose_changes: If you cancel you will lose any changes you have made here
         delete: Remove
+        preview: Preview
+        checkout_your_changes: Check out your changes before making them live
         close: Close
       image_picker:
         none_selected: There is currently no image selected, please click here to add one.

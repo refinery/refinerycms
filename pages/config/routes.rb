@@ -4,6 +4,9 @@ Rails.application.routes.draw do
     get '/pages/:id', :to => 'pages#show', :as => 'refinery_page'
 
     scope(:module => 'admin', :path => 'refinery', :as => 'refinery_admin') do
+      post   'pages/preview'     => 'pages#preview', :as => :preview_pages, :via => [:post]
+      match  'pages/:id/preview' => 'pages#preview', :as => :preview_page,  :via => [:get, :put]
+      
       get 'pages/*path/edit', :to => 'pages#edit'
       get 'pages/*path/children', :to => 'pages#children', :as => 'children_pages'
       put 'pages/*path', :to => 'pages#update'
