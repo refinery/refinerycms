@@ -2,6 +2,8 @@ module Refinery
   module Core
     include ActiveSupport::Configurable
 
+    mattr_reader :javascripts, :stylesheets
+
     config_accessor :rescue_not_found, :s3_backend, :base_cache_key, :site_name,
                     :google_analytics_page_code, :authenticity_token_on_frontend,
                     :menu_hide_children, :dragonfly_secret, :ie6_upgrade_message_enabled,
@@ -18,5 +20,39 @@ module Refinery
     self.ie6_upgrade_message_enabled = true
     self.show_internet_explorer_upgrade_message = false
     self.wymeditor_whitelist_tags = {}
+
+    def self.register_javascript(name)
+      @javascripts << name
+    end
+
+    def self.register_stylesheet(*args)
+      @stylesheets << Stylesheet.new(*args)
+    end
+
+    def self.clear_javascripts!
+      @javascripts = []
+    end
+
+    def self.clear_stylesheets!
+      @stylesheets = []
+    end
+
+    def self.javascripts
+      @javascripts ||= []
+    end
+
+    def self.stylesheets
+      @stylesheets ||= []
+    end
+
+    # wrapper for stylesheet registration
+    class Stylesheet
+      attr_reader :options, :path
+      def initialize(*args)
+        @options = args.extract_options!
+        @path = args.first if args.first
+      end
+    end
+
   end
 end
