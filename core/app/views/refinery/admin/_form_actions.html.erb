@@ -57,9 +57,10 @@
     
     <%= submit_tag t('.preview'),
                    :id => 'preview-button',
+                   :title => 'Preview page',
                    :name => nil,
                    :class => "wymupdate button",
-                   :tooltip => t('.checkout_your_changes') if defined?(f) && !f.nil? %>
+                   :tooltip => t('.checkout_your_changes') if defined?(f) && !f.nil? && f.object.is_a?(Refinery::Page) %>
                    
     <%= link_to(cancel_button_text, cancel_url,
                 :title => cancel_title,
@@ -79,7 +80,7 @@
 <% content_for :javascripts do %>
   <script type="text/javascript" charset="utf-8">
     $(document).ready(function(){
-      <% if defined?(f) && !f.nil? %>
+      <% if defined?(f) && !f.nil? && f.object.is_a?(Refinery::Page) %>
         $("#preview-button").click(function(evt){
           var form = $(this).parents('form')
           var prev_url = form.attr('action');
