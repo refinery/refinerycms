@@ -8,6 +8,7 @@ module Refinery
     argument :attributes, :type => :array, :default => [], :banner => "field:type field:type"
     class_option :namespace, :type => :string, :default => nil, :banner => 'NAMESPACE', :required => false
     class_option :engine, :type => :string, :default => nil, :banner => 'ENGINE', :required => false
+    class_option :skip_frontend, :type => :boolean, :default => false, :required => false, :desc => 'Generate engine without frontend'
     remove_class_option :skip_namespace
 
     def namespacing
@@ -50,6 +51,10 @@ module Refinery
       end
     end
 
+    def skip_frontend?
+      options[:skip_frontend]
+    end
+
     def generate
       destination_pathname = Pathname.new(self.destination_root)
       clash_file = Pathname.new(File.expand_path('../clash_keywords.yml', __FILE__))
@@ -72,7 +77,7 @@ module Refinery
       end
 
       unless attributes.empty? and self.behavior != :revoke
-        Pathname.glob(Pathname.new(self.class.source_root).join('**', '**')).reject{|f| f.directory?}.sort.each do |path|
+        Pathname.glob(Pathname.new(self.class.source_root).join('**', '**')).reject{|f| f.directory? or reject_file?(f) }.sort.each do |path|
           unless (engine_path = engine_path_for(path, engine_name)).nil?
             template path, engine_path
           end
@@ -178,5 +183,8 @@ module Refinery
       path
     end
 
+    def reject_file?(file)
+      skip_frontend? and (file.to_s.include?('app') and not file.to_s.scan(/admin|models/).any?)
+    end
   end
 end

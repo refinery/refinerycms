@@ -4,9 +4,11 @@
     <span class="preview">&nbsp;</span>
   </span>
   <span class='actions'>
+    <% unless skip_frontend? %>
     <%%= link_to refinery_icon_tag("application_go.png"), refinery.<%= namespacing.underscore %>_<%= singular_name %>_path(<%= singular_name %>),
         :title => t('.view_live_html'),
         :target => "_blank" %>
+    <% end %>
     <%%= link_to refinery_icon_tag("application_edit.png"), refinery.edit_<%= namespacing.underscore %>_admin_<%= singular_name %>_path(<%= singular_name %>),
          :title => t('.edit') %>
     <%%= link_to refinery_icon_tag("delete.png"), refinery.<%= namespacing.underscore %>_admin_<%= singular_name %>_path(<%= singular_name %>),

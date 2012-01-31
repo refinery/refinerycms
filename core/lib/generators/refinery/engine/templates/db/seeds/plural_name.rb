@@ -7,6 +7,7 @@ if defined?(::Refinery::User)
   end
 end
 
+<% unless skip_frontend? %>
 if defined?(::Refinery::Page) && ::Refinery::Page.where(:link_url => '/<%= plural_name %>').empty?
   page = ::Refinery::Page.create(
     :title => '<%= class_name.pluralize.underscore.titleize %>',
@@ -19,3 +20,4 @@ if defined?(::Refinery::Page) && ::Refinery::Page.where(:link_url => '/<%= plura
     page.parts.create(:title => default_page_part, :body => nil)
   end
 end
+<% end %>
