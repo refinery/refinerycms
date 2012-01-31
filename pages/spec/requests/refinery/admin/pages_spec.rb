@@ -152,6 +152,51 @@ module Refinery
           page.should have_content("'Updated' was successfully updated.")
         end
       end
+      
+      describe 'preview' do
+        context "an existing page" do
+          before(:each) { FactoryGirl.create(:page, :title => 'Preview me') }
+          
+          it 'will show the preview changes in a new window', :js => true do
+            visit refinery_admin_pages_path
+            
+            find('.edit').click
+            fill_in "Title", :with => "Some changes I'm unsure what they will look like"
+            
+            click_button "Preview"
+            
+            new_window = page.driver.browser.window_handles.last 
+            page.within_window new_window do
+              page.should have_content("Some changes I'm unsure what they will look like")
+            end
+            
+          end
+          
+          it 'will not save the preview changes', :js => true do
+            visit refinery_admin_pages_path
+            
+            find('.edit').click
+            fill_in "Title", :with => "Some changes I'm unsure what they will look like"
+            click_button "Preview"
+            
+            preview_page = Page.last
+            preview_page.title.should_not == "Some changes I'm unsure what they will look like"
+          end
+          
+        end
+        
+        context 'a brand new' do
+          it "will not save a new page when just previewing", :js => true do
+            visit refinery_admin_pages_path
+            
+            click_link "Add new page"
+            fill_in "Title", :with => "My first page"
+            click_button "Preview"
+            
+            Page.all.should be_empty
+          end
+        end
+      end
 
       describe "destroy" do
         context "when page can be deleted" do
