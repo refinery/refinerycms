@@ -14,7 +14,7 @@ env:
   - DB=postgresql SKIP_COV=true
   - DB=mysql SKIP_COV=true
 rvm:
-  - ree
+  - 1.8.7
   - 1.9.3
   - rbx
   - jruby
