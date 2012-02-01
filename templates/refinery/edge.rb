@@ -23,6 +23,11 @@ gem 'refinerycms-i18n',   '~> 2.0.0', :git => 'git://github.com/parndt/refineryc
 "
 end
 
+# temporary devise hack
+append_file 'config/application.rb' do
+  "require 'devise/orm/active_record'"
+end
+
 run 'bundle install'
 rake 'db:create'
 generate 'refinery:cms'
@@ -35,11 +40,16 @@ generate 'refinery:i18n'
 rake 'railties:install:migrations'
 rake 'db:migrate'
 
+inject_into_file 'config/routes.rb', "\n  mount Refinery::Core::Engine => '/'", :after => "Application.routes.draw do\n"
+
+gsub_file 'config/application.rb', "require 'devise/orm/active_record'", ""
+
 remove_file 'public/index.html'
 remove_file 'app/assets/images/rails.png'
 
+
 say <<-eos
   ============================================================================
-          Your new RefineryCMS application is now running on edge.
+    Your new RefineryCMS application is now running on edge and mounted to /.
   ============================================================================
 eos
