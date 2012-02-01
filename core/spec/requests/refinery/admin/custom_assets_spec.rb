@@ -11,7 +11,7 @@ module Refinery
 
       it "should be rendered when specified" do
         ::Refinery::Core.config.register_javascript('custom_js')
-        visit refinery_admin_dashboard_path
+        visit admin_dashboard_path
         page.body.include?('custom_js.js').should be
       end
     end
@@ -23,7 +23,7 @@ module Refinery
 
       it "should be rendered when specified" do
         ::Refinery::Core.config.register_stylesheet('custom_css')
-        visit refinery_admin_dashboard_path
+        visit admin_dashboard_path
         page.body.include?('custom_css.css').should be
       end
     end
