@@ -31,7 +31,7 @@ module Refinery
               :email => "refinerycms@refinerycms.com"
             })
 
-            visit new_refinery_user_session_path
+            visit refinery.new_refinery_user_session_path
 
             fill_in "Login", :with => refinery_superuser.username
             fill_in "Password", :with => password
