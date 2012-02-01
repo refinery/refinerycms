@@ -1,7 +1,7 @@
 module Refinery
   module <%= namespacing %>
     class <%= class_name %> < Refinery::Core::Base
-      <% if table_name == namespacing.underscore.pluralize -%>set_table_name :refinery_<%= plural_name %><% end -%>
+      <% if table_name == namespacing.underscore.pluralize -%>self.table_name = :refinery_<%= plural_name %><% end -%>
     <% if (string_attributes = attributes.map{ |attribute| attribute.name.to_sym if attribute.type.to_s =~ /string|text/ }.compact.uniq).any? %>
       acts_as_indexed :fields => <%= string_attributes.inspect %>
 

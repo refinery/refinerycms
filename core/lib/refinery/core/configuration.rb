@@ -5,7 +5,8 @@ module Refinery
     config_accessor :rescue_not_found, :s3_backend, :base_cache_key, :site_name,
                     :google_analytics_page_code, :authenticity_token_on_frontend,
                     :menu_hide_children, :dragonfly_secret, :ie6_upgrade_message_enabled,
-                    :show_internet_explorer_upgrade_message
+                    :show_internet_explorer_upgrade_message, :wymeditor_whitelist_tags,
+                    :javascripts, :stylesheets
 
     self.rescue_not_found = false
     self.s3_backend = false
@@ -17,5 +18,34 @@ module Refinery
     self.dragonfly_secret = Array.new(24) { rand(256) }.pack('C*').unpack('H*').first
     self.ie6_upgrade_message_enabled = true
     self.show_internet_explorer_upgrade_message = false
+    self.wymeditor_whitelist_tags = {}
+    self.javascripts = []
+    self.stylesheets = []
+
+    def config.register_javascript(name)
+      self.javascripts << name
+    end
+
+    def config.register_stylesheet(*args)
+      self.stylesheets << Stylesheet.new(*args)
+    end
+
+    def self.clear_javascripts!
+      self.javascripts = []
+    end
+
+    def self.clear_stylesheets!
+      self.stylesheets = []
+    end
+
+    # wrapper for stylesheet registration
+    class Stylesheet
+      attr_reader :options, :path
+      def initialize(*args)
+        @options = args.extract_options!
+        @path = args.first if args.first
+      end
+    end
+
   end
 end

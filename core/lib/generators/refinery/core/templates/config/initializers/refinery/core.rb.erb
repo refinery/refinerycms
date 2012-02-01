@@ -33,4 +33,13 @@ Refinery::Core.configure do |config|
 
   # Show/hide browser update message in the backend
   # config.show_internet_explorer_upgrade_message = <%= Refinery::Core.show_internet_explorer_upgrade_message.inspect %>
+
+  # Add extra tags to the wymeditor whitelist e.g. = {'tag' => {'attributes': '1': 'href'}} or just {'tag' => {}}
+  # config.wymeditor_whitelist_tags = <%= Refinery::Core.wymeditor_whitelist_tags.inspect %>
+
+  # Register extra javascript for backend
+  # config.register_javascript "prototype-rails"
+
+  # Register extra stylesheet for backend (optional options)
+  # config.register_stylesheet "custom", :media => 'screen'
 end
