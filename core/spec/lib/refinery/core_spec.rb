@@ -135,4 +135,30 @@ describe Refinery do
       subject.i18n_enabled?.should == false
     end
   end
+
+  describe ".route_for_model" do
+    context "when passed Refinery::Dummy" do
+      it "returns admin_image_path" do
+        Refinery.route_for_model("Refinery::Dummy").should == "admin_dummy_path"
+      end
+    end
+
+    context "when passed Refinery::Dummy and true" do
+      it "returns admin_image_path" do
+        Refinery.route_for_model("Refinery::Dummy", true).should == "admin_dummies_path"
+      end
+    end
+
+    context "when passed Refinery::Dummy::Name" do
+      it "returns admin_image_path" do
+        Refinery.route_for_model("Refinery::Dummy::Name").should == "dummy_admin_name_path"
+      end
+    end
+
+    context "when passed Refinery::Dummy::Name and true" do
+      it "returns admin_image_path" do
+        Refinery.route_for_model("Refinery::Dummy::Name", true).should == "dummy_admin_names_path"
+      end
+    end
+  end
 end

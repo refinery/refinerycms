@@ -1,10 +1,4 @@
 <%
-  namespacing = if f && f.object.class.respond_to?(:model_name)
-    f.object.class.name.underscore.gsub(%r{/?#{f.object.class.model_name.param_key}($|/)}, '').gsub('/', '_')
-  else
-    'refinery'
-  end
-
   unless (hide_submit ||= false)
     submit_button_text  ||= t('.save')
     submit_button_id    ||= "submit_button"
@@ -19,7 +13,7 @@
       cancel_title = t('.cancel_lose_changes')
     end
     cancel_button_id    ||= "cancel_button"
-    cancel_url          ||= (((back = url_for(:back)).include?('javascript') or action_name =~ /^(create|update)$/) ? main_app.send("#{namespacing}_admin_#{f.object_name.to_s.pluralize}_path") : back)
+    cancel_url          ||= (((back = url_for(:back)).include?('javascript') or action_name =~ /^(create|update)$/) ? refinery.send(Refinery.route_for_model(f.object.class)) : back)
   end
 
   continue_editing = defined?(continue_editing) ? continue_editing : (f.object.present? and f.object.persisted?)
@@ -35,8 +29,8 @@
     delete_title        ||= nil
     delete_confirmation ||= nil
     delete_button_id    ||= "delete_button"
-    # we have to use eval rather than main_app.send because this url may not exist for HTTP GET
-    delete_url          ||= eval("main_app.#{namespacing}_admin_#{f.object_name}_path(#{f.object.id})")
+    # we have to use eval rather than refinery.send because this url may not exist for HTTP GET
+    delete_url          ||= eval("refinery.#{Refinery.route_for_model(f.object.class)}(#{f.object.id})")
   end
 -%>
 <% if from_dialog? %>

@@ -44,7 +44,7 @@ module ::Refinery
 
     private
       def redirect_to_where?
-        (from_dialog? && session[:return_to].present?) ? session[:return_to] : main_app.refinery_admin_settings_path
+        (from_dialog? && session[:return_to].present?) ? session[:return_to] : refinery.admin_settings_path
       end
 
       # this fires before an update or create to remove any attempts to pass sensitive arguments.

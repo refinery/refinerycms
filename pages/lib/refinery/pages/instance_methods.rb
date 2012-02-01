@@ -26,7 +26,7 @@ module Refinery
       def store_current_location!
         return super if admin?
 
-        session[:website_return_to] = main_app.url_for(@page.url) if @page.try(:present?)
+        session[:website_return_to] = refinery.url_for(@page.url) if @page.try(:present?)
       end
 
     end

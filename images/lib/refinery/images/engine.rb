@@ -21,14 +21,12 @@ module Refinery
         Refinery::Plugin.register do |plugin|
           plugin.pathname = root
           plugin.name = 'refinery_images'
-          plugin.directory = 'images'
           plugin.version = %q{2.0.0}
           plugin.menu_match = %r{refinery/image(_dialog)?s$}
           plugin.activity = {
-            :class_name => :'refinery/image',
-            :url => "refinery_admin_image_path" # temp hack for namespacees
+            :class_name => :'refinery/image'
           }
-          plugin.url = {:controller => '/refinery/admin/images'}
+          plugin.url = { :controller => '/refinery/admin/images' }
         end
       end
 

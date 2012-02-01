@@ -5,10 +5,10 @@
   </span>
   <span class='actions'>
     <%= link_to refinery_icon_tag('application_edit.png'),
-                main_app.edit_refinery_admin_setting_path(setting, :dialog => true, :width => 725, :height => 525),
+                refinery.edit_admin_setting_path(setting, :dialog => true, :width => 725, :height => 525),
                 :title => t('edit', :scope => 'refinery.admin.settings') %>
     <%= link_to refinery_icon_tag('delete.png'),
-                main_app.refinery_admin_setting_path(setting),
+                refinery.admin_setting_path(setting),
                 :class => 'cancel confirm-delete',
                 :title => t('delete', :scope => 'refinery.admin.settings'),
                 :confirm => t('message', :scope => 'refinery.admin.delete', :title => setting.title),

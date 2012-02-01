@@ -10,14 +10,14 @@ module Refinery
         before(:each) { Refinery::Page.destroy_all }
 
         it "invites to create one" do
-          visit refinery_admin_pages_path
+          visit refinery.admin_pages_path
           page.should have_content(%q{There are no pages yet. Click "Add new page" to add your first page.})
         end
       end
 
       describe "action links" do
         it "shows add new page link" do
-          visit refinery_admin_pages_path
+          visit refinery.admin_pages_path
 
           within "#actions" do
             page.should have_content("Add new page")
@@ -29,7 +29,7 @@ module Refinery
           before(:each) { Refinery::Page.destroy_all }
 
           it "doesn't show reorder pages link" do
-            visit refinery_admin_pages_path
+            visit refinery.admin_pages_path
 
             within "#actions" do
               page.should have_no_content("Reorder pages")
@@ -42,7 +42,7 @@ module Refinery
           before(:each) { 2.times { FactoryGirl.create(:page) } }
 
           it "shows reorder pages link" do
-            visit refinery_admin_pages_path
+            visit refinery.admin_pages_path
 
             within "#actions" do
               page.should have_content("Reorder pages")
@@ -63,7 +63,7 @@ module Refinery
             before do
               Refinery::Pages.auto_expand_admin_tree = false
 
-              visit refinery_admin_pages_path
+              visit refinery.admin_pages_path
             end
 
             it "show parent page" do
@@ -94,7 +94,7 @@ module Refinery
             before do
               Refinery::Pages.auto_expand_admin_tree = true
 
-              visit refinery_admin_pages_path
+              visit refinery.admin_pages_path
             end
 
             it "shows children" do
@@ -107,7 +107,7 @@ module Refinery
 
       describe "new/create" do
         it "allows to create page" do
-          visit refinery_admin_pages_path
+          visit refinery.admin_pages_path
 
           click_link "Add new page"
 
@@ -140,7 +140,7 @@ module Refinery
         before(:each) { FactoryGirl.create(:page, :title => "Update me") }
 
         it "updates page" do
-          visit refinery_admin_pages_path
+          visit refinery.admin_pages_path
 
           page.should have_content("Update me")
 
@@ -158,7 +158,7 @@ module Refinery
           before(:each) { FactoryGirl.create(:page, :title => "Delete me") }
 
           it "will show delete button" do
-            visit refinery_admin_pages_path
+            visit refinery.admin_pages_path
 
             click_link "Remove this page forever"
 
@@ -173,7 +173,7 @@ module Refinery
                                          :deletable => false) }
 
           it "wont show delete button" do
-            visit refinery_admin_pages_path
+            visit refinery.admin_pages_path
 
             page.should have_no_content("Remove this page forever")
             page.should have_no_selector("a[href='/refinery/pages/indestructible']")
@@ -185,7 +185,7 @@ module Refinery
         before(:each) { FactoryGirl.create(:page, :title => "I was here first") }
 
         it "will append nr to url path" do
-          visit new_refinery_admin_page_path
+          visit refinery.new_admin_page_path
 
           fill_in "Title", :with => "I was here first"
           click_button "Save"
@@ -196,7 +196,7 @@ module Refinery
 
       context "with translations" do
         before(:each) do
-          Refinery::I18n.config.frontend_locales = [:en, :ru]
+          Refinery::I18n.stub(:frontend_locales).and_return([:en, :ru])
 
           # Create a home page in both locales (needed to test menus)
           home_page = FactoryGirl.create(:page, :title => 'Home',
@@ -210,7 +210,7 @@ module Refinery
 
         describe "add a page with title for default locale" do
           before do
-            visit refinery_admin_pages_path
+            visit refinery.admin_pages_path
             click_link "Add new page"
             fill_in "Title", :with => "News"
             click_button "Save"
@@ -257,7 +257,7 @@ module Refinery
 
         describe "add a page with title for both locales" do
           before do
-            visit refinery_admin_pages_path
+            visit refinery.admin_pages_path
             click_link "Add new page"
             within "#switch_locale_picker" do
               click_link "Ru"
@@ -322,7 +322,7 @@ module Refinery
 
         describe "add a page with title only for secondary locale" do
           before do
-            visit refinery_admin_pages_path
+            visit refinery.admin_pages_path
             click_link "Add new page"
             within "#switch_locale_picker" do
               click_link "Ru"
@@ -390,7 +390,7 @@ module Refinery
 
       describe "add page to main locale" do
         it "should not succeed" do
-          visit refinery_admin_pages_path
+          visit refinery.admin_pages_path
 
           click_link "Add new page"
 
@@ -408,7 +408,7 @@ module Refinery
         end
 
         it "should succeed" do
-          visit refinery_admin_pages_path
+          visit refinery.admin_pages_path
 
           click_link "Add new page"
 
@@ -427,7 +427,7 @@ module Refinery
         before(:each) { FactoryGirl.create(:page) }
 
         it "should not succeed" do
-          visit refinery_admin_pages_path
+          visit refinery.admin_pages_path
 
           click_link "Remove this page forever"
 
@@ -438,7 +438,7 @@ module Refinery
 
       describe "Pages Link-to Dialog" do
         before do
-          Refinery::I18n.config.frontend_locales = [:en, :ru]
+          Refinery::I18n.frontend_locales = [:en, :ru]
 
           # Create a page in both locales
           about_page = FactoryGirl.create(:page, :title => 'About')
@@ -450,7 +450,7 @@ module Refinery
 
         describe "adding page link" do
           describe "with relative urls" do
-            before(:each) { Refinery::Pages.config.absolute_page_links = false }
+            before(:each) { Refinery::Pages.absolute_page_links = false }
 
             it "should show Russian pages if we're editing the Russian locale" do
               visit 'refinery/pages_dialogs/link_to?wymeditor=true&switch_locale=ru'
@@ -467,7 +467,7 @@ module Refinery
             end
           end
           describe "with absolute urls" do
-            before(:each) { Refinery::Pages.config.absolute_page_links = true }
+            before(:each) { Refinery::Pages.absolute_page_links = true }
 
             it "should show Russian pages if we're editing the Russian locale" do
               visit 'refinery/pages_dialogs/link_to?wymeditor=true&switch_locale=ru'

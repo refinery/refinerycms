@@ -3,7 +3,7 @@
   insert_text = "<span id='no_resource_selected_#{field}' class='nothing_selected' #{"style='display: none;'" if resource.present?}>
                    #{t('.no_resource_selected')}
                  </span>".html_safe
-  insert_link = main_app.insert_refinery_admin_resources_path({
+  insert_link = refinery.insert_admin_resources_path({
                   :dialog => true,
                   :update_resource => "current_resource_#{field}",
                   :update_text => "current_resource_text_#{field}",

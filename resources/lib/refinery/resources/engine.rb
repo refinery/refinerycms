@@ -21,13 +21,12 @@ module Refinery
         Refinery::Plugin.register do |plugin|
           plugin.pathname = root
           plugin.name = 'refinery_files'
-          plugin.url = {:controller => '/refinery/admin/resources'}
           plugin.menu_match = /refinery\/(refinery_)?(files|resources)$/
           plugin.version = %q{2.0.0}
           plugin.activity = {
-            :class_name => :'refinery/resource',
-            :url => "refinery_admin_resource_path" # temp hack for namespacees
+            :class_name => :'refinery/resource'
           }
+          plugin.url = { :controller => '/refinery/admin/resources' }
         end
       end
 

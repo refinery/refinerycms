@@ -3,7 +3,7 @@ module Refinery
     module RequestMacros
       module Authentication
         def login_refinery_user
-          before(:each) do
+          before do
             password = '123456'
             refinery_user = FactoryGirl.create(:refinery_user, {
               :username => "refinerycms",
@@ -12,7 +12,7 @@ module Refinery
               :email => "refinerycms@refinerycms.com"
             })
 
-            visit new_refinery_user_session_path
+            visit refinery.new_refinery_user_session_path
 
             fill_in "Login", :with => refinery_user.username
             fill_in "Password", :with => password
@@ -31,7 +31,7 @@ module Refinery
               :email => "refinerycms@refinerycms.com"
             })
 
-            visit new_refinery_user_session_path
+            visit refinery.new_refinery_user_session_path
 
             fill_in "Login", :with => refinery_superuser.username
             fill_in "Password", :with => password
@@ -41,7 +41,7 @@ module Refinery
         end
 
         def login_refinery_translator
-          before(:each) do
+          before do
             password = '123456'
             FactoryGirl.create(:refinery_user)
             user = FactoryGirl.create(:refinery_translator, {
@@ -49,7 +49,7 @@ module Refinery
               :password_confirmation => password
             })
 
-            visit new_refinery_user_session_path
+            visit refinery.new_refinery_user_session_path
 
             fill_in "Login", :with => user.username
             fill_in "Password", :with => password

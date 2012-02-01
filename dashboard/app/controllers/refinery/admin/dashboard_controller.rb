@@ -1,6 +1,6 @@
 module Refinery
   module Admin
-    class DashboardController < ::Refinery::AdminController
+    class DashboardController < Refinery::AdminController
 
       def index
         @recent_activity = []
@@ -31,7 +31,7 @@ module Refinery
       end
 
       def disable_upgrade_message
-        Refinery::Core.config.show_internet_explorer_upgrade_message = false
+        Refinery::Core.show_internet_explorer_upgrade_message = false
         render :nothing => true
       end
 

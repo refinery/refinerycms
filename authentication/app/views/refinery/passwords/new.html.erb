@@ -1,6 +1,8 @@
 <% content_for :header, t('enter_email_address', :scope => 'refinery.users.forgot') %>
 
-<%= form_for(resource, :as => resource_name, :url => main_app.refinery_user_password_path, :html => { :method => :post }) do |f| %>
+<%= form_for resource, :as => resource_name,
+                       :url => refinery.refinery_user_password_path,
+                       :html => { :method => :post } do |f| %>
 
   <div class='field'>
     <%= f.text_field :email, :class => "larger widest",
@@ -12,7 +14,7 @@
                :f => f,
                :continue_editing => false,
                :submit_button_text => t('reset_password', :scope => 'refinery.users.forgot'),
-               :cancel_url => main_app.refinery_user_session_path,
+               :cancel_url => refinery.refinery_user_session_path,
                :cancel_title => nil
              } -%>
 <% end -%>

@@ -142,6 +142,26 @@ module Refinery
       Refinery::Version.to_s
     end
 
+    # Returns string version of url helper path. We need this to temporary support namespaces
+    # like Refinery::Image and Refinery::Blog::Post
+    #
+    # Example:
+    #   Refinery.route_for_model("Refinery::Image") => "admin_image_path"
+    #   Refinery.route_for_model(Refinery::Image, true) => "admin_images_path"
+    #   Refinery.route_for_model(Refinery::Blog::Post) => "blog_admin_post_path"
+    #   Refinery.route_for_model(Refinery::Blog::Post, true) => "blog_admin_posts_path"
+    def route_for_model(klass, plural = false)
+      parts = klass.to_s.downcase.split("::").delete_if { |p| p.blank? }
+
+      resource_name = plural ? parts[-1].pluralize : parts[-1]
+
+      if parts.size == 2
+        "admin_#{resource_name}_path"
+      elsif parts.size > 2
+        [parts[1..-2].join("_"), "admin", resource_name, "path"].join("_")
+      end
+    end
+
     private
       def validate_engine!(const)
         unless const.respond_to?(:root) && const.root.is_a?(Pathname)

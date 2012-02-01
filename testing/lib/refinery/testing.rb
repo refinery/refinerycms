@@ -25,6 +25,7 @@ module Refinery
     end
 
     require 'refinery/testing/railtie'
+    require 'refinery/testing/url_helper'
 
     autoload :ControllerMacros, 'refinery/testing/controller_macros'
     autoload :RequestMacros, 'refinery/testing/request_macros'

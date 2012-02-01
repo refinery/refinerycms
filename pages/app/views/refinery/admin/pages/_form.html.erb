@@ -1,5 +1,5 @@
-<%= form_for [main_app, :refinery_admin, @page],
-             :url => (main_app.refinery_admin_page_path(@page.uncached_nested_url) if @page.persisted?) do |f| %>
+<%= form_for [refinery, :admin, @page],
+             :url => (refinery.admin_page_path(@page.uncached_nested_url) if @page.persisted?) do |f| %>
 
   <%= render :partial => "/refinery/admin/error_messages",
              :locals => {
@@ -10,7 +10,7 @@
   <%= render :partial => "locale_picker",
              :locals => {
                :current_locale => Thread.current[:globalize_locale]
-             } if ::Refinery.i18n_enabled? %>
+             } if Refinery.i18n_enabled? %>
 
   <div class="field">
     <%= f.label :title %>
@@ -53,8 +53,8 @@
     $(document).ready(function(){
       page_options.init(
         <%= Refinery::Pages.new_page_parts.to_s %>
-        , "<%= main_app.new_refinery_admin_page_part_path %>"
-        , "<%= main_app.refinery_admin_page_parts_path %>"
+        , "<%= refinery.new_admin_page_part_path %>"
+        , "<%= refinery.admin_page_parts_path %>"
       );
     });
   </script>

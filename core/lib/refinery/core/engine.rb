@@ -4,7 +4,7 @@ module Refinery
       include Refinery::Engine
 
       isolate_namespace Refinery
-      engine_name :refinery_core
+      engine_name :refinery
 
       class << self
         # Require/load (based on Rails app.config) all decorators from app/decorators/ and vendor/engines/*

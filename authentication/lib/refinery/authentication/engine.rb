@@ -16,10 +16,9 @@ module Refinery
           plugin.menu_match = %r{refinery/users$}
           plugin.activity = {
             :class_name => :'refinery/user',
-            :title => 'username',
-            :url => "refinery_admin_user_path" # temp hack for namespacees
+            :title => 'username'
           }
-          plugin.url = {:controller => '/refinery/admin/users'}
+          plugin.url = { :controller => '/refinery/admin/users' }
         end
       end
 

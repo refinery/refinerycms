@@ -2,10 +2,6 @@ require 'rbconfig'
 append_file 'Gemfile' do
 "
 #{"gem 'therubyracer'" if RbConfig::CONFIG['target_os'] =~ /linux/i}
-
-# remove this after i18n-js gets past version 2.1.2
-gem 'i18n-js', :git => 'git://github.com/fnando/i18n-js.git'
-
 gem 'refinerycms', :git => 'git://github.com/resolve/refinerycms.git'
 
 #  group :development, :test do
