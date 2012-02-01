@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 Refinery::Core::Engine.routes.draw do
   <% unless skip_frontend? %>
   # Frontend routes
