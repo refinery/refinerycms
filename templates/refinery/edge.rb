@@ -40,7 +40,7 @@ generate 'refinery:i18n'
 rake 'railties:install:migrations'
 rake 'db:migrate'
 
-inject_into_file 'config/routes.rb', "\n  mount Refinery::Core::Engine => '/'", :after => "Application.routes.draw do\n"
+inject_into_file 'config/routes.rb', "\n  mount Refinery::Core::Engine => '/'\n", :after => "Application.routes.draw do\n"
 
 gsub_file 'config/application.rb', "require 'devise/orm/active_record'", ""
 
