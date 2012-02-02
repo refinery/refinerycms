@@ -1,5 +1,5 @@
 module Refinery
-  class <%= engine_class_name.pluralize %>Generator < Rails::Generators::Base
+  class <%= engine_plural_class_name %>Generator < Rails::Generators::Base
 
     source_root File.expand_path('../../../../', __FILE__)
 

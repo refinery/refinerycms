@@ -12,6 +12,7 @@ module Refinery
 
     def namespacing
       @namespacing ||= if options[:namespace].present?
+        # Use exactly what the user requested, not a pluralised version.
         options[:namespace].to_s.camelize
       else
         class_name.pluralize
@@ -20,6 +21,7 @@ module Refinery
 
     def engine_name
       @engine_name ||= if options[:engine].present?
+        # Use exactly what the user requested, not a made up version.
         options[:engine].to_s
       else
         singular_name
@@ -27,7 +29,16 @@ module Refinery
     end
 
     def engine_class_name
-      engine_name.camelize
+      @engine_class_name ||= engine_name.camelize
+    end
+
+    def engine_plural_class_name
+      @engine_plural_class_name ||= if options[:engine].present?
+        # Use exactly what the user requested, not a plural version.
+        engine_class_name
+      else
+        engine_class_name.pluralize
+      end
     end
 
     def engine_plural_name
