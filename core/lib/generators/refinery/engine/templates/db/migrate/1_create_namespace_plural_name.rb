@@ -1,4 +1,4 @@
-class Create<%= class_name.pluralize %> < ActiveRecord::Migration
+class Create<%= namespacing %><%= class_name.pluralize %> < ActiveRecord::Migration
 
   def up
     create_table :refinery_<%= "#{namespacing.underscore}_" if table_name != namespacing.underscore.pluralize -%><%= table_name %> do |t|
