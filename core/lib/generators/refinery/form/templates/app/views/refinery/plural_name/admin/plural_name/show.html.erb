@@ -43,7 +43,7 @@
     </li>
     <li>
       <%%= link_to t('admin.<%= plural_name %>.delete'),
-                  main_app.refinery_<%= plural_name %>_admin_<%= singular_name %>_path(@<%= singular_name %>),
+                  refinery.<%= plural_name %>_admin_<%= singular_name %>_path(@<%= singular_name %>),
                   :class => 'delete_icon no-tooltip confirm-delete',
                   :title => t('admin.<%= plural_name %>.delete'),
                   :'data-confirm' => t('shared.admin.delete.message', :title => @<%= singular_name %>.name),

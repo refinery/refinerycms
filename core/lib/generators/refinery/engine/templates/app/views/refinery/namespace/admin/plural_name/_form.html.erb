@@ -2,7 +2,7 @@
   text_areas = attributes.reject{|a| a.field_type.to_s != 'text_area'}
   generated_text_areas = false
 -%>
-<%%= form_for [main_app, :refinery_<%= plural_name %>_admin, @<%= singular_name %>] do |f| -%>
+<%%= form_for [refinery, :<%= namespacing.underscore %>_admin, @<%= singular_name %>] do |f| -%>
   <%%= render :partial => "/refinery/admin/error_messages", :locals => {
           :object => @<%= singular_name %>,
           :include_object_name => true
