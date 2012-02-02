@@ -25,11 +25,11 @@ class Create<%= class_name.pluralize %> < ActiveRecord::Migration
       ::Refinery::UserPlugin.destroy_all({:name => "<%= class_name.pluralize.underscore.downcase %>"})
     end
 
-    <% unless skip_frontend? %>
+<% unless skip_frontend? %>
     if defined?(::Refinery::Page)
-      ::Refinery::Page.delete_all({:link_url => "/<%= plural_name %>"})
+      ::Refinery::Page.delete_all({:link_url => refinery.<%= namespacing.underscore %>_<%= plural_name %>_path})
     end
-    <% end %>
+<% end %>
     drop_table :refinery_<%= "#{namespacing.underscore}_" if table_name != namespacing.underscore.pluralize -%><%= table_name %>
   end
 
