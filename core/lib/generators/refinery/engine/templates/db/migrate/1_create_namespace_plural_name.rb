@@ -16,8 +16,6 @@ class Create<%= namespacing %><%= class_name.pluralize %> < ActiveRecord::Migrat
 
       t.timestamps
     end
-
-    Refinery::<%= namespacing %>::Engine.load_seed
   end
 
   def down

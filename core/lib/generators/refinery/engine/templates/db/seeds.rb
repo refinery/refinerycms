@@ -22,5 +22,3 @@ if defined?(::Refinery::Page) && ::Refinery::Page.where(:link_url => url).empty?
   end
 end
 <% end %>
-
-
