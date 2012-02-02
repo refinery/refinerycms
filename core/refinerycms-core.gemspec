@@ -23,7 +23,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'acts_as_indexed',             '~> 0.7.7'
   s.add_dependency 'friendly_id_globalize3',      '~> 3.2.1'
-  s.add_dependency 'globalize3',                  '~> 0.2.0.beta6'
+  s.add_dependency 'globalize3',                  '~> 0.2.0.beta7'
   s.add_dependency 'awesome_nested_set',          '~> 2.1.0'
   s.add_dependency 'rails',                       ['>= 3.1.3', '< 3.3']
   s.add_dependency 'truncate_html',               '~> 0.5'

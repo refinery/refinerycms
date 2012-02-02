@@ -2,8 +2,6 @@ source 'http://rubygems.org'
 
 gemspec
 
-gem 'globalize3', :git => 'git://github.com/svenfuchs/globalize3.git'
-
 # REFINERY CMS ================================================================
 # Anything you put in here will be overridden when the app gets updated.
 
