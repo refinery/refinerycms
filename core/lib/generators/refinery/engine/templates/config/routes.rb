@@ -8,7 +8,7 @@ Refinery::Core::Engine.routes.draw do
 
   # Admin routes
   namespace :<%= namespacing.underscore %>, :path => '' do
-    namespace :admin, :path => 'refinery' do
+    namespace :admin, :path => 'refinery/<%= namespacing.underscore %>' do
       resources :<%= class_name.pluralize.underscore.downcase %><%= ", :path => ''" if namespacing.underscore.pluralize == class_name.pluralize.underscore.downcase %>, :except => :show do
         collection do
           post :update_positions
