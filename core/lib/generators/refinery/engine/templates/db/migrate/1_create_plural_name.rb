@@ -27,7 +27,7 @@ class Create<%= class_name.pluralize %> < ActiveRecord::Migration
 
 <% unless skip_frontend? %>
     if defined?(::Refinery::Page)
-      ::Refinery::Page.delete_all({:link_url => refinery.<%= namespacing.underscore %>_<%= plural_name %>_path})
+      ::Refinery::Page.delete_all({:link_url => "/<%= namespacing.underscore %>/<%= plural_name %>"})
     end
 <% end %>
     drop_table :refinery_<%= "#{namespacing.underscore}_" if table_name != namespacing.underscore.pluralize -%><%= table_name %>
