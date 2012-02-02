@@ -33,9 +33,6 @@ module Refinery
             end
           end
         end
-        directory "db" do
-          file "seeds.rb"
-        end
         directory "config" do
           file "database.yml.mysql"
           file "database.yml.postgresql"
