@@ -83,7 +83,8 @@ module Refinery
           end
         end
 
-        gemfile_entry = File.read(engine_path_for('Gemfile', engine_name)).scan(%r{refinerycms-#{engine_plural_name}}).any?
+        application_gemfile = Bundler.default_gemfile || destination_pathname.join('Gemfile')
+        gemfile_entry = application_gemfile.read.scan(%r{refinerycms-#{engine_plural_name}}).any?
 
         existing_engine = options[:engine].present? &&
                           destination_pathname.join('vendor', 'engines', engine_plural_name).directory? &&
@@ -119,13 +120,15 @@ module Refinery
           tmp_directories.uniq.each{|d| remove_dir(d) unless d.nil? or !d.exist?}
         end
 
+        unless Rails.env.test? || (self.behavior != :revoke && gemfile_entry)
+          path = destination_pathname.join('vendor', 'engines').relative_path_from(application_gemfile.parent)
+          append_file application_gemfile,
+                      "\ngem 'refinerycms-#{engine_plural_name}', :path => '#{path}'"
+        end
+
         # Update the gem file (only if no gemfile_entry already)
         if self.behavior != :revoke and !self.options['pretend']
           unless Rails.env.test?
-            destination_pathname.join('Gemfile').open('a') do |f|
-              f.write "\ngem 'refinerycms-#{engine_plural_name}', :path => 'vendor/engines'"
-            end unless gemfile_entry
-
             puts "------------------------"
             puts "Now run:"
             puts "bundle install"
@@ -133,11 +136,6 @@ module Refinery
             puts "rake db:migrate"
             puts "------------------------"
           end
-        elsif self.behavior == :revoke
-          lines = destination_pathname.join('Gemfile').open('r').read.split("\n")
-          destination_pathname.join('Gemfile').open('w').puts(lines.reject {|l|
-            l =~ %r{refinerycms-#{plural_name}}
-          }.join("\n"))
         end
       else
         puts "You must specify at least one field. For help: rails generate refinery:engine"
