@@ -76,7 +76,7 @@ module Refinery
         exit(1)
       end
 
-      unless attributes.empty? and self.behavior != :revoke
+      if attributes.any? || self.behavior == :revoke
         Pathname.glob(Pathname.new(self.class.source_root).join('**', '**')).reject{|f| f.directory? or reject_file?(f) }.sort.each do |path|
           unless (engine_path = engine_path_for(path, engine_name)).nil?
             template path, engine_path
@@ -135,6 +135,12 @@ module Refinery
             puts "rails generate refinery:#{engine_plural_name}"
             puts "rake db:migrate"
             puts "------------------------"
+          end
+        else
+          engine_path = destination_pathname.join('vendor', 'engines', engine_plural_name)
+          if Pathname.glob(engine_path.join('**', '*')).all?(&:directory?)
+            say_status :remove, relative_to_original_destination_root(engine_path.to_s), true
+            FileUtils.rm_rf engine_path unless options[:pretend]
           end
         end
       else
