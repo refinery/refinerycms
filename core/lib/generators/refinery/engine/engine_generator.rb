@@ -31,7 +31,12 @@ module Refinery
     end
 
     def engine_plural_name
-      @engine_plural_name ||= engine_name.pluralize
+      @engine_plural_name ||= if options[:engine].present?
+        # Use exactly what the user requested, not a plural version.
+        engine_name
+      else
+        engine_name.pluralize
+      end
     end
 
     def generate
