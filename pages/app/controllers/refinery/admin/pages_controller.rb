@@ -31,14 +31,14 @@ module Refinery
       
       def preview
         @menu_pages = ::Refinery::Menu.new(::Refinery::Page.fast_menu)
+        @page = find_page
         
-        begin # Preview existing pages
-          @page = Page.find(params[:id])
+        if @page
+          # Preview existing pages
           @page.attributes = params[:page]
           present(@page)
           render(:template => '/refinery/pages/show', :layout => 'preview') and return
-
-        rescue ActiveRecord::RecordNotFound => e
+        else
           # Preview a non-persisted page
           @page = Page.new(params[:page])
         end

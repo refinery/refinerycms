@@ -79,7 +79,7 @@
           var form = $(this).parents('form')
           var prev_url = form.attr('action');
           var prev_target = form.attr('target');
-          form.attr('action', '<%= f.object.new_record? ? main_app.refinery_admin_preview_pages_path : main_app.refinery_admin_preview_page_path(f.object) %>');
+          form.attr('action', '<%= f.object.new_record? ? refinery.admin_preview_pages_path : refinery.admin_preview_page_path(f.object) %>');
           form.attr('target', '_blank');
           form.submit();
           form.attr('action', prev_url);
