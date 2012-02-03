@@ -3,7 +3,9 @@ before_install:
 before_script:
   - "sh -e /etc/init.d/xvfb start"
   - "bundle exec rake refinery:testing:dummy_app > /dev/null"
-script: "DISPLAY=:99.0 bundle exec rspec ./*/spec"
+script:
+  - "ONLY_NON_JS=true bundle exec rspec ./*/spec"
+  - "DISPLAY=:99.0 ONLY_JS=true bundle exec rspec ./*/spec"
 notifications:
   email:
     - parndt@gmail.com
@@ -14,7 +16,7 @@ env:
   - DB=postgresql SKIP_COV=true
   - DB=mysql SKIP_COV=true
 rvm:
-  - ree
+  - 1.8.7
   - 1.9.3
   - rbx
   - jruby

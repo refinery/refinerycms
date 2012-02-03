@@ -6,10 +6,10 @@ module Refinery
         def validate(record)
           file = record.file
 
-          if file.respond_to?(:length) && file.length > Resources.config.max_file_size
+          if file.respond_to?(:length) && file.length > Resources.max_file_size
             record.errors[:file] << ::I18n.t('too_big',
                                              :scope => 'activerecord.errors.models.refinery/resource',
-                                             :size => Resources.config.max_file_size)
+                                             :size => Resources.max_file_size)
           end
         end
 

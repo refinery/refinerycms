@@ -1,6 +1,8 @@
 <div id='recent_activity'>
   <h2><%= t('.latest_activity') %></h2>
-  <% if (activity = @recent_activity.collect{|a| activity_message_for(a)}.reject(&:blank?)).present? %>
+  <% if (activity = @recent_activity.collect { |a|
+          activity_message_for(a)
+        }.reject(&:blank?)).present? %>
     <ul class='clickable'>
     <% activity.each do |message| %>
        <li class='<%= cycle("on", "on-hover", :name => 'recent_activity_cycle') %>'>

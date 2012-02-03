@@ -1,6 +1,6 @@
 <div id='existing_image_area' class='dialog_area' <%= "style='display:none;'" if @image.errors.any? %>>
   <%= render :partial => '/refinery/admin/search',
-             :locals => {:url => main_app.insert_refinery_admin_images_path(params.dup.delete(:image))} %>
+             :locals => {:url => refinery.insert_admin_images_path(params.dup.delete(:image))} %>
   <input type='hidden' name='selected_image' id='selected_image' />
   <div id='existing_image_area_content' class='clearfix'>
 <% if @images.any? %>

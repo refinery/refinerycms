@@ -9,7 +9,7 @@ module Refinery
         before(:each) { FactoryGirl.create(:image) }
 
         it "returns found image" do
-          visit refinery_admin_images_path
+          visit refinery.admin_images_path
           fill_in "search", :with => "beach"
           click_button "Search"
           page.should have_selector("img[src*='beach.jpeg']")
@@ -20,7 +20,7 @@ module Refinery
         before(:each) { FactoryGirl.create(:resource) }
 
         it "returns found resource" do
-          visit refinery_admin_resources_path
+          visit refinery.admin_resources_path
           fill_in "search", :with => "refinery"
           click_button "Search"
           page.should have_content("Refinery Is Awesome.txt")
@@ -31,7 +31,7 @@ module Refinery
         before(:each) { FactoryGirl.create(:page, :title => "Ugis Ozols") }
 
         it "returns found page" do
-          visit refinery_admin_pages_path
+          visit refinery.admin_pages_path
           fill_in "search", :with => "ugis"
           click_button "Search"
           page.should have_content("Ugis Ozols")
@@ -42,7 +42,7 @@ module Refinery
         before(:each) { Refinery::Setting.set(:testy, true) }
 
         it "returns found setting" do
-          visit refinery_admin_settings_path
+          visit refinery.admin_settings_path
           fill_in "search", :with => "testy"
           click_button "Search"
           page.should have_content("Testy - true")
@@ -59,28 +59,28 @@ module Refinery
 
       describe "image engine" do
         it "returns no results" do
-          visit refinery_admin_images_path
+          visit refinery.admin_images_path
           shared_stuff
         end
       end
 
       describe "resource engine" do
         it "returns no results" do
-          visit refinery_admin_resources_path
+          visit refinery.admin_resources_path
           shared_stuff
         end
       end
 
       describe "page engine" do
         it "returns no results" do
-          visit refinery_admin_pages_path
+          visit refinery.admin_pages_path
           shared_stuff
         end
       end
 
       describe "setting engine" do
         it "returns no results" do
-          visit refinery_admin_settings_path
+          visit refinery.admin_settings_path
           shared_stuff
         end
       end

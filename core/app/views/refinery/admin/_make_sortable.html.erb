@@ -7,7 +7,7 @@
 <% content_for :javascripts do %>
   <script>
     $(document).ready(function(){
-      list_reorder.update_url     = '<%= update_url ||= main_app.url_for(:action => "update_positions") %>';
+      list_reorder.update_url     = '<%= update_url ||= refinery.url_for(:action => "update_positions") %>';
       list_reorder.sortable_list  = $('#<%= list_id ||= "sortable_list" %>, .sortable_list');
       list_reorder.tree           = <%= tree %>;
       list_reorder.init();

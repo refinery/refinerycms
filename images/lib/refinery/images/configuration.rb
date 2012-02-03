@@ -27,10 +27,6 @@ module Refinery
     self.image_views = [:grid, :list]
     self.preferred_image_view = :grid
 
-    self.s3_bucket_name = ENV['S3_BUCKET']
-    self.s3_access_key_id = ENV['S3_KEY']
-    self.s3_secret_access_key = ENV['S3_SECRET']
-
     # We have to configure these settings after Rails is available.
     # But a non-nil custom option can still be provided
     class << self
@@ -40,6 +36,18 @@ module Refinery
 
       def s3_backend
         config.s3_backend.nil? ? Refinery::Core.s3_backend : config.s3_backend
+      end
+
+      def s3_bucket_name
+        config.s3_bucket_name.nil? ? Refinery::Core.s3_bucket_name : config.s3_bucket_name
+      end
+
+      def s3_access_key_id
+        config.s3_access_key_id.nil? ? Refinery::Core.s3_access_key_id : config.s3_access_key_id
+      end
+
+      def s3_secret_access_key
+        config.s3_secret_access_key.nil? ? Refinery::Core.s3_secret_access_key : config.s3_secret_access_key
       end
     end
   end

@@ -1,6 +1,6 @@
 <%
   link_args = defined?(link_to_arguments) ? link_to_arguments : {}
-  page_link_url = main_app.url_for(page_link.url)
+  page_link_url = refinery.url_for(page_link.url)
   # current_link is relative so check against the relative url portion before conditionally making it absolute
   linked = params[:current_link].present? && page_link_url == params[:current_link]
   page_link_url = "#{[request.protocol, request.host_with_port].join}#{page_link_url}" if Refinery::Pages.absolute_page_links

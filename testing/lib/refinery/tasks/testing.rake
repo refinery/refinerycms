@@ -1,7 +1,7 @@
 namespace :refinery do
   namespace :testing do
     desc "Generates a dummy app for testing"
-    task :dummy_app => [:setup_dummy_app, :migrate_dummy_app]
+    task :dummy_app => [:setup_dummy_app, :setup_extension, :migrate_dummy_app]
 
     task :setup_dummy_app do
       require 'refinerycms'
@@ -15,16 +15,31 @@ namespace :refinery do
       # generators depend on Rails.root being available
       # load File.join(ENGINE_PATH, 'spec/dummy/config/environment.rb')
 
-      Refinery::CmsGenerator.start ['--quiet']
-      Refinery::CoreGenerator.start ['--quiet']
-      Refinery::ResourcesGenerator.start ['--quiet']
-      Refinery::PagesGenerator.start ['--quiet']
-      Refinery::ImagesGenerator.start ['--quiet']
+      Refinery::CmsGenerator.start %w[--quiet]
+      Refinery::CoreGenerator.start %w[--quiet]
+      Refinery::ResourcesGenerator.start %w[--quiet]
+      Refinery::PagesGenerator.start %w[--quiet]
+      Refinery::ImagesGenerator.start %w[--quiet]
+    end
+
+    # This task is a hook to allow engines to pass configuration
+    # Just define this inside your engine's Rakefile or a .rake file
+    # and pass arbitrary code. Example:
+    #
+    # namespace :refinery do
+    #   namespace :testing do
+    #     task :setup_extension do
+    #       require 'refinerycms-my-engine'
+    #       Refinery::MyEngineGenerator.start %w[--quiet]
+    #     end
+    #   end
+    # end
+    task :setup_extension do
     end
 
     task :migrate_dummy_app do
       engines = %w(
-        refinery_core
+        refinery
         refinery_settings
         refinery_authentication
         seo_meta_engine

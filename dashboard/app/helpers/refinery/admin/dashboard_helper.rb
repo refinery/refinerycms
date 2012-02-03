@@ -1,9 +1,9 @@
-module ::Refinery
+module Refinery
   module Admin
     module DashboardHelper
 
       def activity_message_for(record)
-        if (plugin = ::Refinery::Plugins.active.find_by_model(record.class)) &&
+        if (plugin = Refinery::Plugins.active.find_by_model(record.class)) &&
            (activity = plugin.activity_by_class_name(record.class.name).first)
           # work out which action occured
           action = record.updated_at.eql?(record.created_at) ? 'created' : 'updated'
@@ -16,7 +16,7 @@ module ::Refinery
                     :what => record.send(activity.title),
                     :kind => record.class.model_name.human,
                     :action => t("with_article \"#{article}\"", :scope => "refinery.#{action}")
-                   ).downcase.capitalize, eval("main_app.#{activity.url}(#{activity.nesting("record")}record)")
+                   ).downcase.capitalize, eval("#{activity.url}(#{activity.nesting("record")}record)")
         end
       end
 

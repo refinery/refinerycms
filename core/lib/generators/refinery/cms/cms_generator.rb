@@ -58,12 +58,6 @@ module Refinery
                   :verbose => self.options[:update]
       end
 
-      # Append seeds.
-      create_file "db/seeds.rb" unless destination_path.join('db', 'seeds.rb').file?
-      append_file 'db/seeds.rb', :verbose => true do
-        self.class.source_root.join('db', 'seeds.rb').read
-      end
-
       force_options = self.options.dup
       force_options[:force] = self.options[:force] || self.options[:update]
       self.options = force_options

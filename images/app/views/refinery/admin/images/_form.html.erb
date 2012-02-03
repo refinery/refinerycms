@@ -1,5 +1,4 @@
-<%= form_for [main_app, :refinery_admin, @image],
-             :url => (@url_override or @image.persisted? ? main_app.refinery_admin_image_path(@image) : main_app.refinery_admin_images_path),
+<%= form_for @image, :url => (@url_override or @image.persisted? ? refinery.admin_image_path(@image) : refinery.admin_images_path),
              :html => { :multipart => true } do |f| %>
 
   <%= render :partial => "/refinery/admin/error_messages",
@@ -24,7 +23,7 @@
   </div>
 
   <div class='field'>
-    <label><%= t('.maximum_image_size', :bytes => ::Refinery::Images.max_image_size) %></label>
+    <label><%= t('.maximum_image_size', :bytes => Refinery::Images.max_image_size) %></label>
   </div>
 
   <input type='hidden' name='wymeditor' value='<%= params[:wymeditor] %>'>

@@ -36,7 +36,8 @@ module Refinery
       # fallback to the default 404.html page.
       file = Rails.root.join('public', '404.html')
       file = Refinery.roots(:'refinery/core').join('public', '404.html') unless file.exist?
-      render :file => file.cleanpath.to_s, :layout => false, :status => 404
+      render :file => file.cleanpath.to_s.gsub(%r{#{file.extname}$}, ''),
+             :layout => false, :status => 404, :formats => [:html]
     end
 
     def from_dialog?
@@ -44,11 +45,11 @@ module Refinery
     end
 
     def home_page?
-      main_app.root_path =~ /^#{Regexp.escape(request.path)}\/?/
+      refinery.root_path =~ /^#{Regexp.escape(request.path.sub("//", "/"))}\/?/
     end
 
     def just_installed?
-      ::Refinery::Role[:refinery].users.empty?
+      Refinery::Role[:refinery].users.empty?
     end
 
     def local_request?
@@ -74,7 +75,7 @@ module Refinery
 
     def refinery_user_required?
       if just_installed? and controller_name != 'users'
-        redirect_to main_app.new_refinery_user_registration_path
+        redirect_to refinery.new_refinery_user_registration_path
       end
     end
 
@@ -83,7 +84,7 @@ module Refinery
     def store_current_location!
       if admin? and request.get? and !request.xhr? and !from_dialog?
         # ensure that we don't redirect to AJAX or POST/PUT/DELETE urls
-        session[:refinery_return_to] = request.path
+        session[:refinery_return_to] = request.path.sub('//', '/')
       end
     end
   end

@@ -8,10 +8,12 @@ module Refinery
     argument :attributes, :type => :array, :default => [], :banner => "field:type field:type"
     class_option :namespace, :type => :string, :default => nil, :banner => 'NAMESPACE', :required => false
     class_option :engine, :type => :string, :default => nil, :banner => 'ENGINE', :required => false
+    class_option :skip_frontend, :type => :boolean, :default => false, :required => false, :desc => 'Generate engine without frontend'
     remove_class_option :skip_namespace
 
     def namespacing
       @namespacing ||= if options[:namespace].present?
+        # Use exactly what the user requested, not a pluralised version.
         options[:namespace].to_s.camelize
       else
         class_name.pluralize
@@ -20,6 +22,7 @@ module Refinery
 
     def engine_name
       @engine_name ||= if options[:engine].present?
+        # Use exactly what the user requested, not a made up version.
         options[:engine].to_s
       else
         singular_name
@@ -27,11 +30,29 @@ module Refinery
     end
 
     def engine_class_name
-      engine_name.camelize
+      @engine_class_name ||= engine_name.camelize
+    end
+
+    def engine_plural_class_name
+      @engine_plural_class_name ||= if options[:engine].present?
+        # Use exactly what the user requested, not a plural version.
+        engine_class_name
+      else
+        engine_class_name.pluralize
+      end
     end
 
     def engine_plural_name
-      @engine_plural_name ||= engine_name.pluralize
+      @engine_plural_name ||= if options[:engine].present?
+        # Use exactly what the user requested, not a plural version.
+        engine_name
+      else
+        engine_name.pluralize
+      end
+    end
+
+    def skip_frontend?
+      options[:skip_frontend]
     end
 
     def generate
@@ -55,14 +76,15 @@ module Refinery
         exit(1)
       end
 
-      unless attributes.empty? and self.behavior != :revoke
-        Pathname.glob(Pathname.new(self.class.source_root).join('**', '**')).reject{|f| f.directory?}.sort.each do |path|
+      if attributes.any? || self.behavior == :revoke
+        Pathname.glob(Pathname.new(self.class.source_root).join('**', '**')).reject{|f| f.directory? or reject_file?(f) }.sort.each do |path|
           unless (engine_path = engine_path_for(path, engine_name)).nil?
             template path, engine_path
           end
         end
 
-        gemfile_entry = File.read(engine_path_for('Gemfile', engine_name)).scan(%r{refinerycms-#{engine_plural_name}}).any?
+        application_gemfile = Bundler.default_gemfile || destination_pathname.join('Gemfile')
+        gemfile_entry = application_gemfile.read.scan(%r{refinerycms-#{engine_plural_name}}).any?
 
         existing_engine = options[:engine].present? &&
                           destination_pathname.join('vendor', 'engines', engine_plural_name).directory? &&
@@ -98,13 +120,15 @@ module Refinery
           tmp_directories.uniq.each{|d| remove_dir(d) unless d.nil? or !d.exist?}
         end
 
+        unless Rails.env.test? || (self.behavior != :revoke && gemfile_entry)
+          path = destination_pathname.join('vendor', 'engines').relative_path_from(application_gemfile.parent)
+          append_file application_gemfile,
+                      "\ngem 'refinerycms-#{engine_plural_name}', :path => '#{path}'"
+        end
+
         # Update the gem file (only if no gemfile_entry already)
         if self.behavior != :revoke and !self.options['pretend']
           unless Rails.env.test?
-            destination_pathname.join('Gemfile').open('a') do |f|
-              f.write "\ngem 'refinerycms-#{engine_plural_name}', :path => 'vendor/engines'"
-            end unless gemfile_entry
-
             puts "------------------------"
             puts "Now run:"
             puts "bundle install"
@@ -112,11 +136,12 @@ module Refinery
             puts "rake db:migrate"
             puts "------------------------"
           end
-        elsif self.behavior == :revoke
-          lines = destination_pathname.join('Gemfile').open('r').read.split("\n")
-          destination_pathname.join('Gemfile').open('w').puts(lines.reject {|l|
-            l =~ %r{refinerycms-#{plural_name}}
-          }.join("\n"))
+        else
+          engine_path = destination_pathname.join('vendor', 'engines', engine_plural_name)
+          if Pathname.glob(engine_path.join('**', '*')).all?(&:directory?)
+            say_status :remove, relative_to_original_destination_root(engine_path.to_s), true
+            FileUtils.rm_rf engine_path unless options[:pretend]
+          end
         end
       else
         puts "You must specify at least one field. For help: rails generate refinery:engine"
@@ -126,7 +151,7 @@ module Refinery
   protected
 
     def engine_path_for(path, engine)
-      engine_path = "vendor/engines/#{engine.present? ? engine.underscore.pluralize : plural_name}"
+      engine_path = "vendor/engines/#{engine_plural_name}"
       path = path.to_s.gsub(File.expand_path('../templates', __FILE__), engine_path)
 
       path.gsub!("engine_plural_name", engine_plural_name)
@@ -162,5 +187,8 @@ module Refinery
       path
     end
 
+    def reject_file?(file)
+      skip_frontend? and (file.to_s.include?('app') and not file.to_s.scan(/admin|models/).any?)
+    end
   end
 end
