@@ -1,5 +1,5 @@
 module Refinery
-  module <%= class_name.pluralize %>
+  module <%= namespacing %>
     class <%= class_name %> < Refinery::Core::Base
 
       acts_as_indexed :fields => [:<%= attributes.collect{ |a| a.name if a.type.to_s =~ /string|text/ }.compact.uniq.join(", :") %>]
