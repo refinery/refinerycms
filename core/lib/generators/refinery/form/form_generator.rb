@@ -6,6 +6,8 @@ module Refinery
 
     source_root File.expand_path('../templates', __FILE__)
     argument :attributes, :type => :array, :default => [], :banner => "field:type field:type"
+    class_option :namespace, :type => :string, :default => nil, :banner => 'NAMESPACE', :required => false
+    class_option :engine, :type => :string, :default => nil, :banner => 'ENGINE', :required => false
 
     def description
       "Generates an engine which is set up for frontend form submissions like a contact page."
@@ -47,6 +49,47 @@ module Refinery
         puts "You must specify a name and at least one field. For help: rails generate refinery_form"
       end
     end
+
+    def namespacing
+      @namespacing ||= if options[:namespace].present?
+        # Use exactly what the user requested, not a pluralised version.
+        options[:namespace].to_s.camelize
+      else
+        class_name.pluralize
+      end
+    end
+
+    def engine_name
+      @engine_name ||= if options[:engine].present?
+        # Use exactly what the user requested, not a made up version.
+        options[:engine].to_s
+      else
+        singular_name
+      end
+    end
+
+    def engine_class_name
+      @engine_class_name ||= engine_name.camelize
+    end
+
+    def engine_plural_class_name
+      @engine_plural_class_name ||= if options[:engine].present?
+        # Use exactly what the user requested, not a plural version.
+        engine_class_name
+      else
+        engine_class_name.pluralize
+      end
+    end
+
+    def engine_plural_name
+      @engine_plural_name ||= if options[:engine].present?
+        # Use exactly what the user requested, not a plural version.
+        engine_name
+      else
+        engine_name.pluralize
+      end
+    end
+
 
   protected
 
