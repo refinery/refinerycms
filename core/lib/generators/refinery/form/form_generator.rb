@@ -93,12 +93,40 @@ module Refinery
 
   protected
 
+
     def engine_path_for(path)
       engine_path = "vendor/engines/#{plural_name}/"
       path = path.gsub(File.dirname(__FILE__) + "/templates/", engine_path)
 
-      path = path.gsub("plural_name", plural_name)
-      path = path.gsub("singular_name", singular_name)
+      path.gsub!("engine_plural_name", engine_plural_name)
+      path.gsub!("plural_name", plural_name)
+      path.gsub!("singular_name", singular_name)
+      path.gsub!("namespace", namespacing.underscore)
+
+      if options[:namespace].present? || options[:engine].present?
+        # Increment the migration file leading number
+        # Only relevant for nested or namespaced engines, where a previous migration exists
+        if path =~ %r{/migrate/\d+\w*.rb\z}
+          if last_migration = Dir["#{File.join(self.destination_root, path.split(File::SEPARATOR)[0..-2], '*.rb')}"].sort.last
+            path.gsub!(%r{\d+_}) { |m| "#{last_migration.match(%r{migrate/(\d+)_})[1].to_i + 1}_" }
+          end
+        end
+
+        # Detect whether this is a special file that needs to get merged not overwritten.
+        # This is important only when nesting engines.
+        if engine.present? && File.exist?(path)
+          path = if path =~ %r{/locales/.*\.yml$} or path =~ %r{/routes.rb$} or path =~ %r{/refinerycms-#{engine_plural_name}.rb$}
+            # put new translations into a tmp directory
+            path.split(File::SEPARATOR).insert(-2, "tmp").join(File::SEPARATOR)
+          elsif path =~ %r{/readme.md$} or path =~ %r{/#{plural_name}.rb$}
+            nil
+          else
+            path
+          end
+        elsif engine.present? and path =~ /lib\/#{plural_name}.rb$/
+          path = nil
+        end
+      end
 
       path
     end
