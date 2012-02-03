@@ -51,11 +51,8 @@ mount = %Q{
 
 inject_into_file 'config/routes.rb', mount, :after => "Application.routes.draw do\n"
 
-gsub_file 'config/application.rb', "require 'devise/orm/active_record'", ""
-
 remove_file 'public/index.html'
 remove_file 'app/assets/images/rails.png'
-
 
 say <<-eos
   ============================================================================
