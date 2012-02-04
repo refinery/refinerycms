@@ -8,8 +8,6 @@ module Refinery
               :include => [:slugs, :translations, :children],
               :paging => false
 
-      rescue_from FriendlyId::ReservedError, :with => :show_errors_for_reserved_slug
-
       after_filter lambda{::Refinery::Page.expire_page_caching}, :only => [:update_positions]
 
       before_filter :load_valid_templates, :only => [:edit, :new]
@@ -76,16 +74,6 @@ module Refinery
         return true
       end
 
-      def show_errors_for_reserved_slug(exception)
-        flash[:error] = t('reserved_system_word', :scope => 'refinery.admin.pages')
-        if action_name == 'update'
-          find_page
-          render :edit
-        else
-          @page = ::Refinery::Page.new(params[:page])
-          render :new
-        end
-      end
     end
   end
 end

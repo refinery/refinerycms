@@ -34,7 +34,6 @@ nb:
       pages:
         delete: Fjern denne siden permanent
         edit: Rediger denne siden
-        reserved_system_word: Beklager, men den tittelen er reservert av systemet.
         page:
           view_live_html: Se hvordan denne siden ser ut fra utsiden <br/><em>(Åpner i et nytt vindu)</em>
           hidden: gjemt

@@ -34,7 +34,6 @@ zh-TW:
       pages:
         delete: 永遠地移除這個頁面
         edit: 編輯頁面
-        reserved_system_word: 抱歉, 這個標題被保留為系統使用
         page:
           view_live_html: 瀏覽這個頁面 <br/><em>(在新視窗中開啟)</em>
           hidden: 隱藏

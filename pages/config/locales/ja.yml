@@ -32,7 +32,6 @@ ja:
       pages:
         delete: ページを削除
         edit: ページを編集
-        reserved_system_word: "このタイトルはシステム用ですので使用出来ません。"
         page:
           view_live_html: "このページを表示する<br/><em>（新しいウィンドウが開きます）</em>"
           hidden: 非表示

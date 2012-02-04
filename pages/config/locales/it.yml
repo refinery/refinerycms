@@ -35,7 +35,6 @@ it:
         delete: Eliminare per sempre questa pagina
         edit: Modificare questa pagina
         new: Aggiungi una nuova sotto-pagina
-        reserved_system_word: "Il titolo è una parola di sistema riservata."
         page:
           view_live_html: Visualizza questa pagina<br/><em>(apre una nuova finestra del browser)</em>
           hidden: nascosto

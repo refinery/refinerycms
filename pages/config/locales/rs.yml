@@ -34,7 +34,6 @@ rs:
       pages:
         delete: Ukloni ovu stranu zauvek
         edit: Izmeni stranu
-        reserved_system_word: Izvinjavamo se, ali taj naslov je rezervisana sistemska reč.
         page:
           view_live_html: Otvori stranu <br/><em>(otvara se u novom prozoru)</em>
           hidden: skrivena

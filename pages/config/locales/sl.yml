@@ -33,7 +33,6 @@ sl:
       pages:
         delete: Odstrani stran
         edit: Uredi stran
-        reserved_system_word: Oprostite, vendar je ta naslov rezervirana sistemska beseda.
         page:
           view_live_html: Poglej si to stran v živo <br/><em>(odpre se v novem oknu)</em>
           hidden: skrito

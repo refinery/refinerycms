@@ -34,7 +34,6 @@ sk:
       pages:
         delete: Zmazať túto stránku
         edit: Upraviť túto stránku
-        reserved_system_word: "Prepáčte, ale tento titulok je rezervované systémové slovo."
         page:
           view_live_html: Zobraziť stránku <br/><em>(otvorí sa v novom okne)</em>
           hidden: skrytá
