@@ -149,6 +149,18 @@ describe Refinery do
       end
     end
 
+    context "when passed Refinery::DummyName" do
+      it "returns admin_image_path" do
+        Refinery.route_for_model("Refinery::DummyName").should == "admin_dummy_name_path"
+      end
+    end
+
+    context "when passed Refinery::DummyName and true" do
+      it "returns admin_image_path" do
+        Refinery.route_for_model("Refinery::DummyName", true).should == "admin_dummy_names_path"
+      end
+    end
+
     context "when passed Refinery::Dummy::Name" do
       it "returns admin_image_path" do
         Refinery.route_for_model("Refinery::Dummy::Name").should == "dummy_admin_name_path"
