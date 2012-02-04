@@ -48,7 +48,14 @@
 
     <%= render :partial => "/refinery/admin/continue_editing", :locals => {:f => f} if continue_editing -%>
     <%= hidden_field_tag :continue_editing, false if continue_editing %>
-
+    
+    <%= submit_tag t('.preview'),
+                   :id => 'preview-button',
+                   :title => 'Preview page',
+                   :name => nil,
+                   :class => "wymupdate button",
+                   :tooltip => t('.checkout_your_changes') if defined?(f) && !f.nil? && f.object.is_a?(Refinery::Page) %>
+                   
     <%= link_to(cancel_button_text, cancel_url,
                 :title => cancel_title,
                 :id => cancel_button_id,
@@ -63,3 +70,23 @@
                 :class => "button confirm-delete") unless hide_delete %>
   </div>
 </div>
+
+<% content_for :javascripts do %>
+  <script type="text/javascript" charset="utf-8">
+    $(document).ready(function(){
+      <% if defined?(f) && !f.nil? && f.object.is_a?(Refinery::Page) %>
+        $("#preview-button").click(function(evt){
+          var form = $(this).parents('form')
+          var prev_url = form.attr('action');
+          var prev_target = form.attr('target');
+          form.attr('action', '<%= f.object.new_record? ? refinery.admin_preview_pages_path : refinery.admin_preview_page_path(f.object) %>');
+          form.attr('target', '_blank');
+          form.submit();
+          form.attr('action', prev_url);
+          form.attr('target', prev_target);
+          return false;
+        });
+      <% end %>
+    });
+  </script>
+<% end %>

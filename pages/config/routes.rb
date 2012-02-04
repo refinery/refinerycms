@@ -1,8 +1,11 @@
 Refinery::Core::Engine.routes.draw do
   root :to => 'pages#home'
   get '/pages/:id', :to => 'pages#show', :as => :page
-
+  
   namespace :admin, :path => 'refinery' do
+    post   'pages/preview'     => 'pages#preview', :as => :preview_pages
+    match  'pages/*path/preview' => 'pages#preview', :as => :preview_page,  :via => [:get, :put]
+    
     get 'pages/*path/edit', :to => 'pages#edit'
     get 'pages/*path/children', :to => 'pages#children', :as => 'children_pages'
     put 'pages/*path', :to => 'pages#update'
@@ -10,7 +13,7 @@ Refinery::Core::Engine.routes.draw do
     resources :pages, :except => :show do
       post :update_positions, :on => :collection
     end
-
+    
     resources :pages_dialogs, :only => [] do
       collection do
         get :link_to
@@ -18,7 +21,7 @@ Refinery::Core::Engine.routes.draw do
         get :test_email
       end
     end
-
+    
     resources :page_parts, :only => [:new, :create, :destroy]
   end
 end
