@@ -13,7 +13,7 @@ module Refinery
 
     it "shows add new image link" do
       visit refinery.admin_images_path
-      page.should have_content("Add new image")
+      page.should have_content(::I18n.t('create_new_image', :scope => 'refinery.admin.images.actions'))
       page.should have_selector("a[href*='#{refinery.new_admin_image_path}']")
     end
 
@@ -89,12 +89,12 @@ module Refinery
       describe "switch view" do
         it "shows images in grid" do
           visit refinery.admin_images_path
-          page.should have_content("Switch to list view")
+          page.should have_content(::I18n.t('switch_to', :view_name => 'list', :scope => 'refinery.admin.images.index.view'))
           page.should have_selector("a[href='#{refinery.admin_images_path(:view => 'list')}']")
 
           click_link "Switch to list view"
 
-          page.should have_content("Switch to grid view")
+          page.should have_content(::I18n.t('switch_to', :view_name => 'grid', :scope => 'refinery.admin.images.index.view'))
           page.should have_selector("a[href='#{refinery.admin_images_path(:view => 'grid')}']")
         end
       end
