@@ -138,37 +138,37 @@ describe Refinery do
 
   describe ".route_for_model" do
     context "when passed Refinery::Dummy" do
-      it "returns admin_image_path" do
+      it "returns admin_dummy_path" do
         Refinery.route_for_model("Refinery::Dummy").should == "admin_dummy_path"
       end
     end
 
     context "when passed Refinery::Dummy and true" do
-      it "returns admin_image_path" do
+      it "returns admin_dummies_path" do
         Refinery.route_for_model("Refinery::Dummy", true).should == "admin_dummies_path"
       end
     end
 
     context "when passed Refinery::DummyName" do
-      it "returns admin_image_path" do
+      it "returns admin_dummy_name_path" do
         Refinery.route_for_model("Refinery::DummyName").should == "admin_dummy_name_path"
       end
     end
 
     context "when passed Refinery::DummyName and true" do
-      it "returns admin_image_path" do
+      it "returns admin_dummy_names_path" do
         Refinery.route_for_model("Refinery::DummyName", true).should == "admin_dummy_names_path"
       end
     end
 
     context "when passed Refinery::Dummy::Name" do
-      it "returns admin_image_path" do
+      it "returns dummy_admin_name_path" do
         Refinery.route_for_model("Refinery::Dummy::Name").should == "dummy_admin_name_path"
       end
     end
 
     context "when passed Refinery::Dummy::Name and true" do
-      it "returns admin_image_path" do
+      it "returns dummy_admin_names_path" do
         Refinery.route_for_model("Refinery::Dummy::Name", true).should == "dummy_admin_names_path"
       end
     end
