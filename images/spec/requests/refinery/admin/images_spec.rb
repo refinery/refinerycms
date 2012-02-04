@@ -42,64 +42,60 @@ module Refinery
       end
     end
 
-    context "edit/update" do
+    context "when an image exists" do
       let!(:image) { FactoryGirl.create(:image) }
 
-      it "updates image" do
-        visit refinery.admin_images_path
-        page.should have_selector("a[href='/refinery/images/#{image.id}/edit']")
+      context "edit/update" do
+        it "updates image" do
+          visit refinery.admin_images_path
+          page.should have_selector("a[href='/refinery/images/#{image.id}/edit']")
 
-        click_link "Edit this image"
+          click_link "Edit this image"
 
-        page.should have_content("Use current image or replace it with this one...")
-        page.should have_selector("a[href*='/refinery/images']")
+          page.should have_content("Use current image or replace it with this one...")
+          page.should have_selector("a[href*='/refinery/images']")
 
-        attach_file "image_image", Refinery.roots(:'refinery/images').join("spec/fixtures/fathead.png")
-        click_button "Save"
+          attach_file "image_image", Refinery.roots(:'refinery/images').join("spec/fixtures/fathead.png")
+          click_button "Save"
 
-        page.should have_content("'Fathead' was successfully updated.")
-        Refinery::Image.count.should == 1
+          page.should have_content("'Fathead' was successfully updated.")
+          Refinery::Image.count.should == 1
 
-        lambda { click_link "View this image" }.should_not raise_error
+          lambda { click_link "View this image" }.should_not raise_error
+        end
       end
-    end
 
-    context "destroy" do
-      let!(:image) { FactoryGirl.create(:image) }
+      context "destroy" do
+        it "removes image" do
+          visit refinery.admin_images_path
+          page.should have_selector("a[href='/refinery/images/#{image.id}']")
 
-      it "removes image" do
-        visit refinery.admin_images_path
-        page.should have_selector("a[href='/refinery/images/#{image.id}']")
+          click_link "Remove this image forever"
 
-        click_link "Remove this image forever"
-
-        page.should have_content("'Beach' was successfully removed.")
-        Refinery::Image.count.should == 0
+          page.should have_content("'Beach' was successfully removed.")
+          Refinery::Image.count.should == 0
+        end
       end
-    end
 
-    context "download" do
-      let!(:image) { FactoryGirl.create(:image) }
+      context "download" do
+        it "succeeds" do
+          visit refinery.admin_images_path
 
-      it "succeeds" do
-        visit refinery.admin_images_path
-
-        lambda { click_link "View this image" }.should_not raise_error
+          lambda { click_link "View this image" }.should_not raise_error
+        end
       end
-    end
 
-    describe "switch view" do
-      let!(:image) { FactoryGirl.create(:image) }
+      describe "switch view" do
+        it "shows images in grid" do
+          visit refinery.admin_images_path
+          page.should have_content("Switch to list view")
+          page.should have_selector("a[href='/refinery/images?view=list']")
 
-      it "shows images in grid" do
-        visit refinery.admin_images_path
-        page.should have_content("Switch to list view")
-        page.should have_selector("a[href='/refinery/images?view=list']")
+          click_link "Switch to list view"
 
-        click_link "Switch to list view"
-
-        page.should have_content("Switch to grid view")
-        page.should have_selector("a[href='/refinery/images?view=grid']")
+          page.should have_content("Switch to grid view")
+          page.should have_selector("a[href='/refinery/images?view=grid']")
+        end
       end
     end
   end
