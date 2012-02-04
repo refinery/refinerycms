@@ -29,14 +29,6 @@ group :development, :test do
   gem 'refinerycms-testing', '~> 2.0.0'
   gem 'generator_spec', '>= 0.8.5'
 
-  platforms :mri_18 do
-    gem 'rcov'
-  end
-
-  platforms :mri_19 do
-    gem 'simplecov'
-  end
-
   platforms :mswin, :mingw do
     gem 'win32console'
     gem 'rb-fchange', '~> 0.0.5'
