@@ -4,8 +4,8 @@ before_script:
   - "sh -e /etc/init.d/xvfb start"
   - "bundle exec rake refinery:testing:dummy_app > /dev/null"
 script:
-  - "ONLY_NON_JS=true bundle exec rspec ./*/spec"
-  - "DISPLAY=:99.0 ONLY_JS=true bundle exec rspec ./*/spec"
+  - "JS=false bundle exec rspec ./*/spec"
+  - "DISPLAY=:99.0 JS=true bundle exec rspec ./*/spec"
 notifications:
   email:
     - parndt@gmail.com
