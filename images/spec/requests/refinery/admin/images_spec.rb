@@ -32,8 +32,11 @@ module Refinery
 
         page.should have_content("'Image With Dashes' was successfully added.")
         Refinery::Image.count.should == 1
+      end
 
-        get Refinery::Image.last.url
+      it 'is accessible via url' do
+        image = Refinery::Image.create(:image => Refinery.roots(:'refinery/images').join("spec/fixtures/image-with-dashes.jpg"))
+        get image.url
 
         response.should be_success
       end
