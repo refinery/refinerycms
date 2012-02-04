@@ -3,11 +3,12 @@ require 'spec_helper'
 module Refinery
   describe Image do
 
-    let(:image) { FactoryGirl.create(:image) }
+    let(:image) { FactoryGirl.build(:image) }
+    let(:created_image) { FactoryGirl.create(:image) }
 
     context "with valid attributes" do
-      it "should create successfully" do
-        image.errors.should be_empty
+      it "should report being valid" do
+        image.valid?.should be_true
       end
     end
 
@@ -17,20 +18,20 @@ module Refinery
       end
 
       it "contains its filename at the end" do
-        image.thumbnail(nil).url.split('/').last.should == image.image_name
+        created_image.url.split('/').last.should == created_image.image_name
       end
 
       it "becomes different when supplying geometry" do
-        image.thumbnail(nil).url.should_not == image.thumbnail('200x200').url
+        created_image.url.should_not == created_image.thumbnail('200x200').url
       end
 
       it "has different urls for each geometry string" do
-        image.thumbnail('200x200').url.should_not == image.thumbnail('200x201').url
+        created_image.thumbnail('200x200').url.should_not == created_image.thumbnail('200x201').url
       end
 
       it "uses right geometry when given a thumbnail name" do
         name, geometry = Refinery::Images.user_image_sizes.first
-        image.thumbnail(name).url.should == image.thumbnail(geometry).url
+        created_image.thumbnail(name).url.should == created_image.thumbnail(geometry).url
       end
     end
 
@@ -71,43 +72,43 @@ module Refinery
     # The sample image has dimensions 500x375
     describe '#thumbnail_dimensions returns correctly with' do
       it 'nil' do
-        image.thumbnail_dimensions(nil).should == { :width => 500, :height => 375 }
+        created_image.thumbnail_dimensions(nil).should == { :width => 500, :height => 375 }
       end
 
       it '200x200#ne' do
-        image.thumbnail_dimensions('200x200#ne').should == { :width => 200, :height => 200 }
+        created_image.thumbnail_dimensions('200x200#ne').should == { :width => 200, :height => 200 }
       end
 
       it '100x150#c' do
-        image.thumbnail_dimensions('100x150#c').should == { :width => 100, :height => 150 }
+        created_image.thumbnail_dimensions('100x150#c').should == { :width => 100, :height => 150 }
       end
 
       it '250x250>' do
-        image.thumbnail_dimensions('250x250>').should == { :width => 250, :height => 188 }
+        created_image.thumbnail_dimensions('250x250>').should == { :width => 250, :height => 188 }
       end
 
       it '600x375>' do
-        image.thumbnail_dimensions('600x375>').should == { :width => 500, :height => 375 }
+        created_image.thumbnail_dimensions('600x375>').should == { :width => 500, :height => 375 }
       end
 
       it '100x475>' do
-        image.thumbnail_dimensions('100x475>').should == { :width => 100, :height => 75 }
+        created_image.thumbnail_dimensions('100x475>').should == { :width => 100, :height => 75 }
       end
 
       it '100x150' do
-        image.thumbnail_dimensions('100x150').should == { :width => 100, :height => 75 }
+        created_image.thumbnail_dimensions('100x150').should == { :width => 100, :height => 75 }
       end
 
       it '200x150' do
-        image.thumbnail_dimensions('200x150').should == { :width => 200, :height => 150 }
+        created_image.thumbnail_dimensions('200x150').should == { :width => 200, :height => 150 }
       end
 
       it '300x150' do
-        image.thumbnail_dimensions('300x150').should == { :width => 200, :height => 150 }
+        created_image.thumbnail_dimensions('300x150').should == { :width => 200, :height => 150 }
       end
 
       it '5x5' do
-        image.thumbnail_dimensions('5x5').should == { :width => 5, :height => 4 }
+        created_image.thumbnail_dimensions('5x5').should == { :width => 5, :height => 4 }
       end
     end
 
