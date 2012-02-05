@@ -39,7 +39,13 @@
                :f => f,
                :continue_editing => true,
                :delete_title => t('delete', :scope => 'refinery.admin.pages'),
-               :delete_confirmation => t('message', :scope => 'refinery.admin.delete', :title => @page.title)
+               :delete_confirmation => t('message', :scope => 'refinery.admin.delete', :title => @page.title),
+               :before_cancel_button => submit_tag(t('.preview'),
+                                                   :id => 'preview-button',
+                                                   :title => 'Preview page',
+                                                   :name => nil,
+                                                   :class => "wymupdate button",
+                                                   :tooltip => t('.preview_changes'))
              } %>
 
   <%= render :partial => "form_new_page_parts",
@@ -56,6 +62,22 @@
         , "<%= refinery.new_admin_page_part_path %>"
         , "<%= refinery.admin_page_parts_path %>"
       );
+
+      $("#preview-button").click(function(e) {
+        var form = $(this).parents('form')
+        var prev_url = form.attr('action');
+        var prev_target = form.attr('target');
+        form.attr({
+          'action': '<%= @page.persisted? ? refinery.admin_preview_page_path(@page.uncached_nested_url) : refinery.admin_preview_pages_path %>'
+          , 'target': '_blank'
+        });
+        form.submit();
+        form.attr({
+          'action': prev_url
+          , 'target': prev_target
+        });
+        e.preventDefault();
+      });
     });
   </script>
 <% end %>

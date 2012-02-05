@@ -40,6 +40,9 @@ en:
           view_live_html: View this page live <br/><em>(opens in a new window)</em>
           hidden: hidden
           draft: draft
+        form:
+          preview: Preview
+          preview_changes: Preview your changes before making them live
         form_new_page_parts:
           title: Title
         form_page_parts:
