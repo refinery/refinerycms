@@ -196,15 +196,13 @@ module Refinery
         end
 
         context 'a nested page' do
-          before(:each) do
-            @parent = FactoryGirl.create(:page, :title => "Our Parent Page")
-            @nested_page = FactoryGirl.create(:page, :parent => @parent, :title => 'Preview Me')
-          end
+          let!(:parent_page) { FactoryGirl.create(:page, :title => "Our Parent Page") }
+          let!(:nested_page) { FactoryGirl.create(:page, :parent => @parent, :title => 'Preview Me') }
 
           it "should work like an un-nested page", :js => true do
             visit refinery.admin_pages_path
 
-            within "#page_#{@nested_page.id}" do
+            within "#page_#{nested_page.id}" do
               find('a[tooltip^=Edit]').click
             end
 
