@@ -33,6 +33,10 @@ module Refinery
         gsub_file env, "config.assets.compile = false", "config.assets.compile = true", :verbose => false
       end
 
+      insert_into_file "config/environments/production.rb",
+                       "  # Refinery has set config.assets.initialize_on_precompile = false by default.\n  config.assets.initialize_on_precompile = false\n\n",
+                       :after => "Application.configure do\n"
+
       # Stop pretending
       if destination_path == Refinery.root
         say_status :'-- finished pretending --', nil, :yellow
