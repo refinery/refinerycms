@@ -16,7 +16,7 @@ module Refinery
 
     def body=(value)
       super
-      
+
       normalise_text_fields
     end
 

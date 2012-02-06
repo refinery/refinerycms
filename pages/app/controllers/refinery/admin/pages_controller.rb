@@ -9,7 +9,7 @@ module Refinery
               :paging => false
 
       after_filter lambda{::Refinery::Page.expire_page_caching}, :only => [:update_positions]
-      
+
       before_filter :load_valid_templates, :only => [:edit, :new]
 
       before_filter :restrict_access, :only => [:create, :update, :update_positions, :destroy],
@@ -26,11 +26,11 @@ module Refinery
         @page = find_page
         render :layout => false
       end
-      
+
       def preview
         @menu_pages = ::Refinery::Menu.new(::Refinery::Page.fast_menu)
         @page = find_page
-        
+
         if @page
           # Preview existing pages
           @page.attributes = params[:page]
