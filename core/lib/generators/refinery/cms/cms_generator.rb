@@ -99,6 +99,15 @@ module Refinery
           inject_into_file 'config/routes.rb', mount, :after => "Application.routes.draw do\n"
         end
       end
+
+      if self.options[:fresh_installation]
+        generator_args = []
+        generator_args << '--quiet' if self.options[:quiet]
+        Refinery::CoreGenerator.start generator_args
+        Refinery::ResourcesGenerator.start generator_args
+        Refinery::PagesGenerator.start generator_args
+        Refinery::ImagesGenerator.start generator_args
+      end
     end
 
   protected

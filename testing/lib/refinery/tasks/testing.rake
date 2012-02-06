@@ -16,10 +16,6 @@ namespace :refinery do
       # load File.join(ENGINE_PATH, 'spec/dummy/config/environment.rb')
 
       Refinery::CmsGenerator.start %w[--quiet --fresh-installation]
-      Refinery::CoreGenerator.start %w[--quiet]
-      Refinery::ResourcesGenerator.start %w[--quiet]
-      Refinery::PagesGenerator.start %w[--quiet]
-      Refinery::ImagesGenerator.start %w[--quiet]
     end
 
     # This task is a hook to allow engines to pass configuration
