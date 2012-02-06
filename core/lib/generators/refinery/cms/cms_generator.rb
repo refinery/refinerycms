@@ -63,7 +63,7 @@ module Refinery
                   "",
                   :verbose => self.options[:update]
 
-        gsub_file admin_base, "< ::Refinery::AdminBaseController", "< ActionController::Base",
+        gsub_file admin_base, '< ::Refinery::AdminBaseController', '< ActionController::Base',
                   :verbose => self.options[:update]
       end
 
@@ -79,7 +79,7 @@ module Refinery
       end
 
       # Create decorator directories
-      ['controllers', 'models'].each do |decorator_namespace|
+      %w[controllers models].each do |decorator_namespace|
         src_file_path = "app/decorators/#{decorator_namespace}/refinery/.gitkeep"
         copy_file self.class.source_root.join(src_file_path), destination_path.join(src_file_path)
       end
