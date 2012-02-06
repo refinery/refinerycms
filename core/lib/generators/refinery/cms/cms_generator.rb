@@ -31,11 +31,11 @@ module Refinery
         next unless destination_path.join(env).file?
 
         gsub_file env, "config.assets.compile = false", "config.assets.compile = true", :verbose => false
-      end
 
-      insert_into_file "config/environments/production.rb",
-                       "  # Refinery has set config.assets.initialize_on_precompile = false by default.\n  config.assets.initialize_on_precompile = false\n\n",
-                       :after => "Application.configure do\n"
+        insert_into_file env,
+                         "  # Refinery has set config.assets.initialize_on_precompile = false by default.\n  config.assets.initialize_on_precompile = false\n\n",
+                         :after => "Application.configure do\n" if env == 'production'
+      end
 
       # Stop pretending
       if destination_path == Refinery.root
