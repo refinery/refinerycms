@@ -107,6 +107,7 @@ module Refinery
         Refinery::ResourcesGenerator.start generator_args
         Refinery::PagesGenerator.start generator_args
         Refinery::ImagesGenerator.start generator_args
+        Refinery::I18nGenerator.start generator_args if defined?(Refinery::I18nGenerator)
       end
     end
 
