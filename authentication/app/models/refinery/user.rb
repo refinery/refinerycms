@@ -6,7 +6,7 @@ module Refinery
     has_and_belongs_to_many :roles, :join_table => ::Refinery::RolesUsers.table_name
 
     has_many :plugins, :class_name => "UserPlugin", :order => "position ASC", :dependent => :destroy
-    has_friendly_id :username, :use_slug => true unless ENV['RAILS_ASSETS_PRECOMPILE']
+    has_friendly_id :username, :use_slug => true
 
     # Include default devise modules. Others available are:
     # :token_authenticatable, :confirmable, :lockable and :timeoutable
