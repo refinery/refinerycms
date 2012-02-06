@@ -35,9 +35,11 @@ module Refinery
 
         gsub_file env, "config.assets.compile = false", "config.assets.compile = true", :verbose => false
 
-        insert_into_file env,
-                         "  # Refinery has set config.assets.initialize_on_precompile = false by default.\n  config.assets.initialize_on_precompile = false\n\n",
-                         :after => "Application.configure do\n" if env == 'production'
+        insert_into_file env, %Q{
+  # Refinery has set config.assets.initialize_on_precompile = false by default.
+  config.assets.initialize_on_precompile = false
+
+},                       :after => "Application.configure do\n" if env == 'production'
       end
 
       # Stop pretending
