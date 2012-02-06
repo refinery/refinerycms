@@ -15,7 +15,7 @@ namespace :refinery do
       # generators depend on Rails.root being available
       # load File.join(ENGINE_PATH, 'spec/dummy/config/environment.rb')
 
-      Refinery::CmsGenerator.start %w[--quiet]
+      Refinery::CmsGenerator.start %w[--quiet --fresh-installation]
       Refinery::CoreGenerator.start %w[--quiet]
       Refinery::ResourcesGenerator.start %w[--quiet]
       Refinery::PagesGenerator.start %w[--quiet]
