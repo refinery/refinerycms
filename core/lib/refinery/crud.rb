@@ -71,7 +71,7 @@ module Refinery
             if #{class_name}.column_names.include?("position")
               params[:#{singular_name}].merge!({
                 :position => ((#{class_name}.maximum(:position, :conditions => #{options[:conditions].inspect})||-1) + 1)
-              })
+              }) if params[:#{singular_name}].keys.exclude?(:position)
             end
 
             if (@#{singular_name} = #{class_name}.create(params[:#{singular_name}])).valid?
