@@ -908,7 +908,7 @@ var image_picker = {
       .attr({'src': '', 'width': '', 'height': ''})
       .css({'width': 'auto', 'height': 'auto'})
       .hide();
-    $(this.container).find(this.picker.options.field).val('');
+    $(this.container).find(this.picker.options.field).val('').trigger("change");
     $(this.container).find(this.picker.options.no_image_message).show();
     $(this.container).find(this.picker.options.remove_image_button).hide();
   }
@@ -924,7 +924,7 @@ var image_picker = {
   , changed: function(e) {
     $(this.container).find(this.picker.options.field).val(
       this.image.id.replace("image_", "")
-    );
+    ).trigger("change");
 
     var size = this.picker.options.thumbnail || 'original';
     this.image.src = $(this.image).attr('data-' + size);
