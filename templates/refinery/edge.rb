@@ -23,11 +23,6 @@ gem 'refinerycms-i18n',   '~> 2.0.0', :git => 'git://github.com/parndt/refineryc
 "
 end
 
-# temporary devise hack
-append_file 'config/application.rb' do
-  "require 'devise/orm/active_record'"
-end
-
 run 'bundle install'
 rake 'db:create'
 generate 'refinery:cms --fresh-installation'
