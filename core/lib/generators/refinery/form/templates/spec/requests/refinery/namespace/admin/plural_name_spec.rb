@@ -19,49 +19,6 @@ describe Refinery do
           end
         end
 
-        describe "create" do
-          before(:each) do
-            visit refinery.<%= namespacing.underscore %>_admin_<%= plural_name %>_path
-
-            click_link "Add New <%= singular_name.titleize %>"
-          end
-
-          context "valid data" do
-            it "should succeed" do
-              fill_in "<%= title.name.titleize %>", :with => "This is a test of the first string field"
-              click_button "Save"
-
-              page.should have_content("'This is a test of the first string field' was successfully added.")
-              Refinery::<%= namespacing %>::<%= class_name %>.count.should == 1
-            end
-          end
-
-          context "invalid data" do
-            it "should fail" do
-              click_button "Save"
-
-              page.should have_content("<%= title.name.titleize %> can't be blank")
-              Refinery::<%= namespacing %>::<%= class_name %>.count.should == 0
-            end
-          end
-
-          context "duplicate" do
-            before(:each) { FactoryGirl.create(:<%= singular_name %>, :<%= title.name %> => "UniqueTitle") }
-
-            it "should fail" do
-              visit refinery.<%= namespacing.underscore %>_admin_<%= plural_name %>_path
-
-              click_link "Add New <%= singular_name.titleize %>"
-
-              fill_in "<%= title.name.titleize %>", :with => "UniqueTitle"
-              click_button "Save"
-
-              page.should have_content("There were problems")
-              Refinery::<%= namespacing %>::<%= class_name %>.count.should == 1
-            end
-          end
-        end
-
         describe "edit" do
           before(:each) { FactoryGirl.create(:<%= singular_name %>, :<%= title.name %> => "A <%= title.name %>") }
 
