@@ -26,11 +26,6 @@ end
 run 'bundle install'
 rake 'db:create'
 generate 'refinery:cms --fresh-installation'
-generate 'refinery:core'
-generate 'refinery:pages'
-generate 'refinery:images'
-generate 'refinery:resources'
-generate 'refinery:i18n'
 
 rake 'railties:install:migrations db:migrate'
 
