@@ -34,10 +34,10 @@
 
 <% content_for :javascripts do -%>
   <script>
-  var image_picker_<%= randomiser %> = null;
+    var image_picker_<%= randomiser %> = {};
     $(document).ready(function(e) {
-      image_picker_<%= randomiser %> = $.extend({}, {}, image_picker);
-      image_picker_<%= randomiser %>.init({
+      $.extend(true, image_picker_<%= randomiser %>, image_picker)
+      image_picker_<%= randomiser %> = image_picker_<%= randomiser %>.init({
         thumbnail: '<%= thumbnail.html_safe %>'
         , image_toggler: '<%= toggle_image_display ? ".current_image_toggler" : "null" %>'
         , description: '<%= description %>'
@@ -60,4 +60,3 @@
     };
   </script>
 <% end %>
-
