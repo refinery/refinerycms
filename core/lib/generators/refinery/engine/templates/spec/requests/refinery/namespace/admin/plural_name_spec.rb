@@ -1,5 +1,5 @@
-require "spec_helper"
 # encoding: utf-8
+require "spec_helper"
 
 describe Refinery do
   describe "<%= namespacing %>" do
