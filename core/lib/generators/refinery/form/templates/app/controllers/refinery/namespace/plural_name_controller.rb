@@ -1,5 +1,5 @@
 module Refinery
-  module <%= class_name.pluralize %>
+  module <%= namespacing %>
     class <%= class_name.pluralize %>Controller < ::ApplicationController
 
       before_filter :find_page, :only => [:create, :new]
@@ -13,21 +13,21 @@ module Refinery
       end
 
       def new
-        @<%= singular_name %> = <%= class_name %>.new
+        @<%= singular_name %> = Refinery::<%= namespacing %>::<%= class_name %>.new
       end
 
       def create
-        @<%= singular_name %> = <%= class_name %>.new(params[:<%= singular_name %>])
+        @<%= singular_name %> = Refinery::<%= namespacing %>::<%= class_name %>.new(params[:<%= Refinery::<%= namespacing %>::singular_name %>])
 
         if @<%= singular_name %>.save
           begin
-            <%= class_name %>Mailer.notification(@<%= singular_name %>, request).deliver
+            Refinery::<%= namespacing %><%= class_name %>Mailer.notification(@<%= singular_name %>, request).deliver
           rescue
             logger.warn "There was an error delivering an <%= singular_name %> notification.\n#{$!}\n"
           end<% if @includes_spam %> if @<%= singular_name %>.ham?<% end %>
 
           begin
-            <%= class_name %>Mailer.confirmation(@<%= singular_name %>, request).deliver
+            Refinery::<%= namespacing %><%= class_name %>Mailer.confirmation(@<%= singular_name %>, request).deliver
           rescue
             logger.warn "There was an error delivering an <%= singular_name %> confirmation:\n#{$!}\n"
           end<% if @includes_spam %> if @<%= singular_name %>.ham?<% end %>

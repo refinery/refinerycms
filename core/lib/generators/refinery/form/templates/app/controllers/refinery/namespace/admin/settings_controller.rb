@@ -1,5 +1,5 @@
 module Refinery
-  module <%= class_name.pluralize %>
+  module <%= namespacing %>
     module Admin
       class SettingsController < Refinery::AdminController
 
