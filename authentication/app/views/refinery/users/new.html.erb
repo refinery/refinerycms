@@ -25,12 +25,6 @@
     <%= f.password_field :password_confirmation, :class => 'larger widest' %>
   </div>
 
-  <% if just_installed? %>
-    <% ::Refinery::Plugins.registered.in_menu.names.sort.each do |plugin| -%>
-      <%= hidden_field_tag 'user[plugins][]', plugin, :id => "plugins_#{plugin.downcase.gsub(" ", "_")}" %>
-    <% end -%>
-  <% end -%>
-
   <%= render :partial => "/refinery/admin/form_actions",
              :locals => {
                :f => f,

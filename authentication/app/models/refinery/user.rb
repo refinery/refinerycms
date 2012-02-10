@@ -77,6 +77,8 @@ module Refinery
         add_role(:refinery)
         # add superuser role
         add_role(:superuser) if ::Refinery::Role[:refinery].users.count == 1
+        # add plugins
+        self.plugins = Refinery::Plugins.registered.in_menu.names
       end
 
       # return true/false based on validations
