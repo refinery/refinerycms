@@ -6,6 +6,7 @@ module Refinery
         if (@page = ::Refinery::Page.where(:menu_match => "^/404$").includes(:parts, :slugs).first).present?
           # render the application's custom 404 page with layout and meta.
           render :template => '/refinery/pages/show', :formats => [:html], :status => 404
+          return false
         else
           super
         end

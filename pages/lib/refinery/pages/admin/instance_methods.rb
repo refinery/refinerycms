@@ -19,6 +19,7 @@ module Refinery
             render :template => "/pages/show",
                    :layout => layout?,
                    :status => 404
+             return false
           else
             super
           end
