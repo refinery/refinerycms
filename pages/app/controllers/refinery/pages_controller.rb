@@ -34,30 +34,30 @@ module Refinery
           else
             render_with_templates?
           end
-        end
+        end        
       else
         error_404
       end
     end
 
   protected
-  
+
     def requested_friendly_id
-      [params[:id], params[:path]].detect(&:present?)
+      "#{params[:path]}/#{params[:id]}".split('/').last
     end
-  
+
     def should_skip_to_first_child?
       @page.skip_to_first_child && first_live_child
     end
-  
+
     def current_user_can_view_page?
       @page.live? || current_refinery_user_can_access?("refinery_pages")
-    end
-  
+    end    
+
     def current_refinery_user_can_access?(plugin)
-      refinery_user? && current_refinery_user.authorized_plugins.include?(plugin))
+      refinery_user? && current_refinery_user.authorized_plugins.include?(plugin)
     end
-  
+
     def first_live_child
       @page.children.order('lft ASC').live.first
     end
