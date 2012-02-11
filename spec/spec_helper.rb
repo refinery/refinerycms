@@ -24,7 +24,7 @@ def setup_environment
     config.run_all_when_everything_filtered = true
   end
 
-  # set javascript driver for capybara
+  # Set javascript driver for capybara
   Capybara.javascript_driver = :selenium
 end
 
