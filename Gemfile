@@ -43,8 +43,7 @@ group :development, :test do
       require 'rbconfig'
       if RbConfig::CONFIG['target_os'] =~ /darwin/i
         gem 'rb-fsevent', '>= 0.3.9'
-        gem 'growl',      '~> 1.0.3'
-        gem 'growl_notify' unless defined?(RUBY_ENGINE) && RUBY_ENGINE == 'rbx'
+        gem 'ruby_gntp'
       end
       if RbConfig::CONFIG['target_os'] =~ /linux/i
         gem 'rb-inotify', '>= 0.5.1'
@@ -58,7 +57,7 @@ group :development, :test do
     unless ENV['TRAVIS']
       require 'rbconfig'
       if RbConfig::CONFIG['target_os'] =~ /darwin/i
-        gem 'growl',      '~> 1.0.3'
+        gem 'ruby_gntp'
       end
       if RbConfig::CONFIG['target_os'] =~ /linux/i
         gem 'rb-inotify', '>= 0.5.1'
