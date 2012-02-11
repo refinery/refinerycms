@@ -1,5 +1,5 @@
 module Refinery
-  class Page < Refinery::Core::Base
+  class Page < Refinery::Core::BaseModel
     # when collecting the pages path how is each of the pages seperated?
     PATH_SEPARATOR = " - "
 

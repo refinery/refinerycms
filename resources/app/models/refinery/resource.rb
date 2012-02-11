@@ -1,5 +1,5 @@
 module Refinery
-  class Resource < Refinery::Core::Base
+  class Resource < Refinery::Core::BaseModel
     include Resources::Validators
 
     attr_accessible :id, :file

@@ -299,7 +299,7 @@ Merge what you need from refinery's user model into app/models/user.rb.backup, r
 For the refinery and devise versions in this guide's ExistingApp, the additions look like this.
 +app/models/user.rb+
 <ruby>
-class User < Refinery::Core::Base
+class User < Refinery::Core::BaseModel
   ...
   has_and_belongs_to_many :roles
   has_many :plugins, :class_name => "UserPlugin", :order => "position ASC", :dependent => :destroy

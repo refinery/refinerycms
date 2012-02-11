@@ -1,5 +1,5 @@
 module Refinery
-  class PagePart < Refinery::Core::Base
+  class PagePart < Refinery::Core::BaseModel
 
     attr_accessible :title, :content, :position, :body, :created_at,
                     :updated_at, :refinery_page_id

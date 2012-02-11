@@ -1,4 +1,5 @@
 require 'rbconfig'
+gsub_file 'Gemfile', 'https://', 'http://'
 append_file 'Gemfile' do
 "
 #{"gem 'therubyracer'" if RbConfig::CONFIG['target_os'] =~ /linux/i}
