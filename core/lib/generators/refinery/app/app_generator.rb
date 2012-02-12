@@ -66,7 +66,7 @@ module Refinery
 
       Refinery::CmsGenerator.start %w[--fresh-installation], :destination_root => app_path
 
-      rake('railties:install:migrations db:migrate#{' --trace' if options[:trace]}"')
+      rake("railties:install:migrations db:migrate#{' --trace' if options[:trace]}")
 
       puts "\n---------"
       puts "Refinery successfully installed in '#{app_pathname}'!\n\n"
