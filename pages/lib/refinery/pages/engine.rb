@@ -50,8 +50,8 @@ module Refinery
       protected
 
       def append_marketable_routes
-        Refinery::Core::Engine.routes.append do
-          get '*path', :to => 'pages#show'
+        Rails.application.routes.append do
+          get '*path', :to => 'refinery/pages#show'
         end
       end
 
