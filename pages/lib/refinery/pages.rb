@@ -1,8 +1,4 @@
 require 'refinerycms-core'
-require 'awesome_nested_set'
-require 'globalize3'
-require 'friendly_id'
-require 'seo_meta'
 
 module Refinery
   autoload :PagesGenerator, 'generators/refinery/pages/pages_generator'
@@ -51,3 +47,8 @@ module Refinery
     end
   end
 end
+
+require 'awesome_nested_set'
+require 'globalize3'
+require 'friendly_id'
+require 'seo_meta'

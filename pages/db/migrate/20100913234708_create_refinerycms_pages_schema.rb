@@ -27,11 +27,6 @@ class CreateRefinerycmsPagesSchema < ActiveRecord::Migration
       t.integer   :depth
       t.string    :view_template
       t.string    :layout_template
-      # three following fields are just placeholders and they are removed
-      # after creating page_translation table
-      t.string    :meta_keywords
-      t.string    :meta_description
-      t.text      :browser_title
 
       t.timestamps
     end
@@ -51,18 +46,12 @@ class CreateRefinerycmsPagesSchema < ActiveRecord::Migration
       :custom_slug => :string,
       :menu_title => :string
     })
-
-    Refinery::Page.reset_column_information
-
-    [:meta_keywords, :meta_description, :browser_title].each do |field|
-      remove_column :refinery_pages, field
-    end
   end
 
   def down
     drop_table :refinery_page_parts
     drop_table :refinery_pages
-    # Refinery::PagePart.drop_translation_table!
-    # Refinery::Page.drop_translation_table!
+    Refinery::PagePart.drop_translation_table!
+    Refinery::Page.drop_translation_table!
   end
 end

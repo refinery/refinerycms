@@ -35,10 +35,16 @@ namespace :refinery do
 
       task_params = [%Q{ bundle exec rake -f #{Refinery::Testing::Railtie.target_engine_path.join('Rakefile')} }]
       task_params << %Q{ app:railties:install:migrations FROM="#{engines.join(', ')}" }
-      task_params << %Q{ app:db:drop app:db:create app:db:migrate app:db:seed app:db:test:prepare }
+      task_params << %Q{ app:db:drop app:db:create app:db:migrate }
       task_params << %Q{ RAILS_ENV=development --quiet }
 
       system task_params.join(' ')
+
+      task_params2 = [%Q{ bundle exec rake -f #{Refinery::Testing::Railtie.target_engine_path.join('Rakefile')} }]
+      task_params2 << %Q{ app:db:seed app:db:test:prepare }
+      task_params2 << %Q{ RAILS_ENV=development --quiet }
+
+      system task_params2.join(' ')
     end
 
     desc "Remove the dummy app used for testing"
