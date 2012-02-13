@@ -34,7 +34,6 @@ sv:
       pages:
         delete: Ta bort den här sidan för alltid
         edit: Redigera den här sidan
-        reserved_system_word: Tyvärr är titlen ett reserverat ord i systemet
         page:
           view_live_html: Visa den här sidan live <br/><em>(öppnas i ett nytt fönster)</em>
           hidden: dold

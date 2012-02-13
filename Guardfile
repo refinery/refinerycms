@@ -1,4 +1,4 @@
-engines = %w(
+engines = (ENV['ENGINES'] && ENV['ENGINES'].to_s.split(',')) || %w(
   authentication
   core
   dashboard

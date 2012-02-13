@@ -8,8 +8,6 @@ module Refinery
               :include => [:slugs, :translations, :children],
               :paging => false
 
-      rescue_from FriendlyId::ReservedError, :with => :show_errors_for_reserved_slug
-
       after_filter lambda{::Refinery::Page.expire_page_caching}, :only => [:update_positions]
 
       before_filter :load_valid_templates, :only => [:edit, :new]
@@ -27,6 +25,28 @@ module Refinery
       def children
         @page = find_page
         render :layout => false
+      end
+
+      def preview
+        @menu_pages = ::Refinery::Menu.new(::Refinery::Page.fast_menu)
+        @page = find_page
+
+        if @page
+          # Preview existing pages
+          @page.attributes = params[:page]
+          present(@page)
+          render(:template => '/refinery/pages/show', :layout => 'preview') and return
+        else
+          # Preview a non-persisted page
+          @page = Page.new(params[:page])
+        end
+
+        if @page.valid?
+          present(@page)
+          render :template => '/refinery/pages/show', :layout => 'preview'
+        else
+          render :action => :edit
+        end
       end
 
     protected
@@ -76,16 +96,6 @@ module Refinery
         return true
       end
 
-      def show_errors_for_reserved_slug(exception)
-        flash[:error] = t('reserved_system_word', :scope => 'refinery.admin.pages')
-        if action_name == 'update'
-          find_page
-          render :edit
-        else
-          @page = ::Refinery::Page.new(params[:page])
-          render :new
-        end
-      end
     end
   end
 end

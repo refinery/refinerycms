@@ -17,12 +17,11 @@
     </div>
   </div>
 
-  <%= will_paginate @resources %>
+  <%= will_paginate @resources, :params => params.dup %>
 
   <%= render :partial => "/refinery/admin/form_actions",
              :locals => {
                :f => nil,
-               :cancel_url => refinery.admin_resources_path,
                :submit_button_text => t('.button_text'),
                :hide_cancel => true,
                :hide_delete => true

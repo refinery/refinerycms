@@ -85,7 +85,7 @@ namespace :refinery do
           puts "Copied javascript file to #{destination.gsub("#{Rails.root.to_s}#{File::SEPARATOR}", '')}"
         end
       else
-        puts "Couldn't match any javascript files in any engines like #{javascript}"
+        puts "Couldn't match any javascript files in any engines like #{javascripts}"
       end
     elsif (stylesheets = ENV["stylesheet"]).present?
       pattern = "#{stylesheets.split("/").join(File::SEPARATOR)}*.css.scss"

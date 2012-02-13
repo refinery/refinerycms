@@ -151,7 +151,7 @@ module Refinery
     #   Refinery.route_for_model(Refinery::Blog::Post) => "blog_admin_post_path"
     #   Refinery.route_for_model(Refinery::Blog::Post, true) => "blog_admin_posts_path"
     def route_for_model(klass, plural = false)
-      parts = klass.to_s.downcase.split("::").delete_if { |p| p.blank? }
+      parts = klass.to_s.underscore.split('/').delete_if { |p| p.blank? }
 
       resource_name = plural ? parts[-1].pluralize : parts[-1]
 

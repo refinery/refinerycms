@@ -34,7 +34,6 @@ de:
       pages:
         delete: Diese Seite dauerhaft entfernen
         edit: Diese Seite bearbeiten
-        reserved_system_word: Tut mir leid, aber dieser Titel ist ein reserviertes Wort des Systems.
         page:
           view_live_html: Diese Seite live betrachten <br/><em>(öffnet sich in einem neuen Fenster)</em>
           hidden: Versteckt

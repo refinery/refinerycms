@@ -23,25 +23,45 @@ module Refinery
     #   GET /about/mission
     #
     def show
-      if @page.try(:live?) || (refinery_user? && current_refinery_user.authorized_plugins.include?("refinery_pages"))
-        # if the admin wants this to be a "placeholder" page which goes to its first child, go to that instead.
-        if @page.skip_to_first_child && (first_live_child = @page.children.order('lft ASC').live.first).present?
-          redirect_to refinery.url_for(first_live_child.url) and return
+      if current_user_can_view_page?
+        if should_skip_to_first_child?
+          redirect_to refinery.url_for(first_live_child.url)
         elsif @page.link_url.present?
-          redirect_to @page.link_url and return
-        end
-        # 301 redirect if there is a newer slug
-        unless "#{params[:path]}/#{params[:id]}".split('/').last == @page.friendly_id
-          redirect_to refinery.url_for(@page.url), :status => 301 and return
-        end
+          redirect_to @page.link_url
+        else
+          if requested_friendly_id != @page.friendly_id
+            redirect_to refinery.url_for(@page.url), :status => 301
+          else
+            render_with_templates?
+          end
+        end        
       else
-        error_404 and return
+        error_404
       end
-
-      render_with_templates?
     end
 
   protected
+
+    def requested_friendly_id
+      "#{params[:path]}/#{params[:id]}".split('/').last
+    end
+
+    def should_skip_to_first_child?
+      @page.skip_to_first_child && first_live_child
+    end
+
+    def current_user_can_view_page?
+      @page.live? || current_refinery_user_can_access?("refinery_pages")
+    end    
+
+    def current_refinery_user_can_access?(plugin)
+      refinery_user? && current_refinery_user.authorized_plugins.include?(plugin)
+    end
+
+    def first_live_child
+      @page.children.order('lft ASC').live.first
+    end
+  
     def find_page
       @page ||= case action_name
       when "home"
@@ -53,6 +73,7 @@ module Refinery
           Refinery::Page.find_by_path(params[:path])
         end
       end
+      @page || error_404
     end
 
     alias_method :page, :find_page

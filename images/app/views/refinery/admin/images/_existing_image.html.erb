@@ -30,7 +30,7 @@
 <% end %>
   </div>
 
-  <%= will_paginate @images %>
+  <%= will_paginate @images, :params => params.dup %>
 
   <% unless @app_dialog or @images.empty? %>
     <div id='existing_image_size_area' class='clearfix'>

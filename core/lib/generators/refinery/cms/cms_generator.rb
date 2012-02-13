@@ -4,6 +4,8 @@ module Refinery
 
     class_option :update, :type => :boolean, :aliases => nil, :group => :runtime,
                           :desc => "Update an existing Refinery CMS based application"
+    class_option :fresh_installation, :type => :boolean, :aliases => nil, :group => :runtime, :default => false,
+                          :desc => "Allow Refinery to remove default Rails files in a fresh installation"
 
     def generate
       # Only pretend to do the next actions if this is Refinery to stay DRY
@@ -16,12 +18,13 @@ module Refinery
       end
 
       unless self.options[:update]
-        # First, effectively move / rename files that get in the way of Refinery CMS
         %w(public/index.html app/views/layouts/application.html.erb).each do |roadblock|
           if (roadblock_path = destination_path.join(roadblock)).file?
-            create_file "#{roadblock}.backup",
-                        :verbose => true do roadblock_path.read end
-            remove_file roadblock_path, :verbose => true
+            if self.options[:fresh_installation]
+              remove_file roadblock_path, :verbose => true
+            else
+              say_status :"-- You may need to remove '#{roadblock}' for Refinery to function properly --", nil, :yellow
+            end
           end
         end
       end
@@ -31,6 +34,12 @@ module Refinery
         next unless destination_path.join(env).file?
 
         gsub_file env, "config.assets.compile = false", "config.assets.compile = true", :verbose => false
+
+        insert_into_file env, %Q{
+  # Refinery has set config.assets.initialize_on_precompile = false by default.
+  config.assets.initialize_on_precompile = false
+
+},                       :after => "Application.configure do\n" if env == 'production'
       end
 
       # Stop pretending
@@ -54,14 +63,8 @@ module Refinery
                   "",
                   :verbose => self.options[:update]
 
-        gsub_file admin_base, "< ::Refinery::AdminBaseController", "< ActionController::Base",
+        gsub_file admin_base, '< ::Refinery::AdminBaseController', '< ActionController::Base',
                   :verbose => self.options[:update]
-      end
-
-      # Append seeds.
-      create_file "db/seeds.rb" unless destination_path.join('db', 'seeds.rb').file?
-      append_file 'db/seeds.rb', :verbose => true do
-        self.class.source_root.join('db', 'seeds.rb').read
       end
 
       force_options = self.options.dup
@@ -76,17 +79,45 @@ module Refinery
       end
 
       # Create decorator directories
-      ['controllers', 'models'].each do |decorator_namespace|
+      %w[controllers models].each do |decorator_namespace|
         src_file_path = "app/decorators/#{decorator_namespace}/refinery/.gitkeep"
         copy_file self.class.source_root.join(src_file_path), destination_path.join(src_file_path)
       end
+
+      if self.behavior == :revoke || ((routes_file = destination_path.join('config/routes.rb')).file? && routes_file.read !~ %r{mount\ Refinery::Core::Engine})
+
+        if destination_path.join('config/routes.rb').file?
+          # Append routes
+          mount = %Q{
+  # This line mounts Refinery's routes at the root of your application.
+  # This means, any requests to the root URL of your application will go to Refinery::PagesController#home.
+  # If you would like to change where this engine is mounted, simply change the :at option to something different.
+  #
+  # We ask that you don't use the :as option here, as Refinery relies on it being the default of "refinery"
+  mount Refinery::Core::Engine, :at => '/'
+
+}
+
+          inject_into_file 'config/routes.rb', mount, :after => "Application.routes.draw do\n"
+        end
+      end
+
+      if self.options[:fresh_installation]
+        generator_args = []
+        generator_args << '--quiet' if self.options[:quiet]
+        Refinery::CoreGenerator.start generator_args
+        Refinery::ResourcesGenerator.start generator_args
+        Refinery::PagesGenerator.start generator_args
+        Refinery::ImagesGenerator.start generator_args
+        Refinery::I18nGenerator.start generator_args if defined?(Refinery::I18nGenerator)
+      end
     end
 
-    protected
+  protected
 
-      # Helper method to quickly convert destination_root to a Pathname for easy file path manipulation
-      def destination_path
-        @destination_path ||= Pathname.new(self.destination_root)
-      end
+    # Helper method to quickly convert destination_root to a Pathname for easy file path manipulation
+    def destination_path
+      @destination_path ||= Pathname.new(self.destination_root)
+    end
   end
 end

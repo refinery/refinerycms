@@ -9,7 +9,7 @@ module Refinery
           app_images = ::Dragonfly[:refinery_images]
           app_images.configure_with(:imagemagick)
 
-          app_images.define_macro(::Refinery::Core::Base, :image_accessor)
+          app_images.define_macro(::Refinery::Core::BaseModel, :image_accessor)
 
           app_images.analyser.register(::Dragonfly::ImageMagick::Analyser)
           app_images.analyser.register(::Dragonfly::Analysis::FileCommandAnalyser)

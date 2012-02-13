@@ -64,20 +64,9 @@ module Refinery
 
       create_database!
 
-      Refinery::CmsGenerator.start [], :destination_root => app_path
-      Refinery::CoreGenerator.start [], :destination_root => app_path
-      Refinery::ResourcesGenerator.start [], :destination_root => app_path
-      Refinery::PagesGenerator.start [], :destination_root => app_path
-      Refinery::ImagesGenerator.start [], :destination_root => app_path
+      Refinery::CmsGenerator.start %w[--fresh-installation], :destination_root => app_path
 
-      rake('refinery_core:install:migrations')
-      rake('refinery_authentication:install:migrations')
-      rake('refinery_settings:install:migrations')
-      rake('refinery_images:install:migrations')
-      rake('refinery_pages:install:migrations')
-      rake('refinery_resources:install:migrations')
-
-      rake("db:migrate#{' --trace' if options[:trace]}")
+      rake("railties:install:migrations db:migrate#{' --trace' if options[:trace]}")
 
       puts "\n---------"
       puts "Refinery successfully installed in '#{app_pathname}'!\n\n"

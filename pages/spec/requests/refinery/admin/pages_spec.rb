@@ -153,6 +153,70 @@ module Refinery
         end
       end
 
+      describe 'Previewing' do
+        context "an existing page" do
+          before(:each) { FactoryGirl.create(:page, :title => 'Preview me') }
+
+          it 'will show the preview changes in a new window', :js => true do
+            visit refinery.admin_pages_path
+
+            find('a[tooltip^=Edit]').click
+            fill_in "Title", :with => "Some changes I'm unsure what they will look like"
+            click_button "Preview"
+
+            new_window = page.driver.browser.window_handles.last
+            page.within_window new_window do
+              page.should have_content("Some changes I'm unsure what they will look like")
+            end
+
+          end
+
+          it 'will not save the preview changes', :js => true do
+            visit refinery.admin_pages_path
+
+            find('a[tooltip^=Edit]').click
+            fill_in "Title", :with => "Some changes I'm unsure what they will look like"
+            click_button "Preview"
+
+            Page.last.title.should_not == "Some changes I'm unsure what they will look like"
+          end
+
+        end
+
+        context 'a brand new page' do
+          it "will not save when just previewing", :js => true do
+            visit refinery.admin_pages_path
+
+            click_link "Add new page"
+            fill_in "Title", :with => "My first page"
+            click_button "Preview"
+
+            Page.count.should == 0
+          end
+        end
+
+        context 'a nested page' do
+          let!(:parent_page) { FactoryGirl.create(:page, :title => "Our Parent Page") }
+          let!(:nested_page) { FactoryGirl.create(:page, :parent => @parent, :title => 'Preview Me') }
+
+          it "should work like an un-nested page", :js => true do
+            visit refinery.admin_pages_path
+
+            within "#page_#{nested_page.id}" do
+              find('a[tooltip^=Edit]').click
+            end
+
+            fill_in "Title", :with => "Some changes I'm unsure what they will look like"
+            click_button "Preview"
+
+            new_window = page.driver.browser.window_handles.last
+            page.within_window new_window do
+              page.should have_content("Some changes I'm unsure what they will look like")
+            end
+          end
+        end
+      end
+
       describe "destroy" do
         context "when page can be deleted" do
           before(:each) { FactoryGirl.create(:page, :title => "Delete me") }

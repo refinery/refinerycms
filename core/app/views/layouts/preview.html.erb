@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<%= render :partial => '/refinery/html_tag' %>
+  <%= render :partial => '/refinery/head' %>
+  <body>
+    <%= render :partial => '/refinery/ie6check' if request.env['HTTP_USER_AGENT'] =~ /MSIE/ -%>
+    <div id="page_container">
+      <header id="header">
+        <%= render :partial => '/refinery/header' -%>
+      </header>
+      <section id="page">
+        <%= yield %>
+      </section>
+      <footer>
+        <%= render :partial => '/refinery/footer' -%>
+      </footer>
+    </div>
+    <%= render :partial => '/refinery/javascripts' %>
+  </body>
+</html>

@@ -35,7 +35,6 @@ pt-BR:
       pages:
         delete: Remover esta página para sempre
         edit: Editar esta página
-        reserved_system_word: Desculpe-nos, esse título é uma palavra reservada do sistema.
         page:
           view_live_html: Vizualizar essa página agora <br/><em>(irá abrir uma nova janela)</em>
           hidden: escondida

@@ -38,6 +38,7 @@ module Refinery
       file = Refinery.roots(:'refinery/core').join('public', '404.html') unless file.exist?
       render :file => file.cleanpath.to_s.gsub(%r{#{file.extname}$}, ''),
              :layout => false, :status => 404, :formats => [:html]
+      return false
     end
 
     def from_dialog?

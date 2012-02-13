@@ -1,6 +1,6 @@
 module Refinery
   module <%= class_name.pluralize %>
-    class Setting < Refinery::Core::Base
+    class Setting < Refinery::Core::BaseModel
 
       def self.confirmation_body
         Refinery::Setting.find_or_set(:<%= singular_name %>_confirmation_body,

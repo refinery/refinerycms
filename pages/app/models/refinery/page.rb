@@ -1,5 +1,5 @@
 module Refinery
-  class Page < Refinery::Core::Base
+  class Page < Refinery::Core::BaseModel
     # when collecting the pages path how is each of the pages seperated?
     PATH_SEPARATOR = " - "
 
@@ -24,17 +24,15 @@ module Refinery
 
     # Docs for acts_as_nested_set https://github.com/collectiveidea/awesome_nested_set
     # rather than :delete_all we want :destroy
-    unless ENV['RAILS_ASSETS_PRECOMPILE']
-      acts_as_nested_set :dependent => :destroy
+    acts_as_nested_set :dependent => :destroy
 
-      # Docs for friendly_id http://github.com/norman/friendly_id
-      has_friendly_id :custom_slug_or_title, :use_slug => true,
-                      :default_locale => (::Refinery::I18n.default_frontend_locale rescue :en),
-                      :reserved_words => %w(index new session login logout users refinery admin images wymiframe),
-                      :approximate_ascii => Refinery::Pages.approximate_ascii,
-                      :strip_non_ascii => Refinery::Pages.strip_non_ascii,
-                      :scope => :parent
-    end
+    # Docs for friendly_id http://github.com/norman/friendly_id
+    has_friendly_id :custom_slug_or_title, :use_slug => true,
+                    :default_locale => (::Refinery::I18n.default_frontend_locale rescue :en),
+                    :reserved_words => %w(index new session login logout users refinery admin images wymiframe),
+                    :approximate_ascii => Refinery::Pages.approximate_ascii,
+                    :strip_non_ascii => Refinery::Pages.strip_non_ascii,
+                    :scope => :parent
 
     # Docs for acts_as_indexed http://github.com/dougal/acts_as_indexed
     acts_as_indexed :fields => [:title, :meta_keywords, :meta_description,

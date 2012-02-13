@@ -1,5 +1,5 @@
 module Refinery
-  class Image < Refinery::Core::Base
+  class Image < Refinery::Core::BaseModel
     include Images::Validators
 
     image_accessor :image

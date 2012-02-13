@@ -16,9 +16,8 @@ module Refinery
                                  ).gsub("home page", "Dashboard")
 =end
 
-            render :template => "/pages/show",
-                   :layout => layout?,
-                   :status => 404
+            render :template => "/pages/show", :layout => layout?, :status => 404
+            return false
           else
             super
           end

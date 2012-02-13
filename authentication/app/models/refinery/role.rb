@@ -1,5 +1,5 @@
 module Refinery
-  class Role < Refinery::Core::Base
+  class Role < Refinery::Core::BaseModel
 
     # TODO: This works around a bug in rails habtm with namespaces.
     has_and_belongs_to_many :users, :join_table => ::Refinery::RolesUsers.table_name
