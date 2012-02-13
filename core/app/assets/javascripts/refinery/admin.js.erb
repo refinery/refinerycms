@@ -457,7 +457,7 @@ var link_dialog = {
     $('#email_address_text, #email_default_subject_text, #email_default_body_text').change(function(e){
       var default_subject = $('#email_default_subject_text').val(),
           default_body = $('#email_default_body_text').val(),
-          mailto = "mailto:" + $('#email_address_text').val(),
+          recipient = $('#email_address_text').val();
           modifier = "?",
           additional = "";
 
@@ -471,7 +471,11 @@ var link_dialog = {
         modifier = "&";
       }
 
-      link_dialog.update_parent(mailto + additional, mailto.replace('mailto:', ''));
+      var hex_recipient = '';
+      for (var i = 0; i < recipient.length; i++) {
+        hex_recipient += '%' + recipient.charCodeAt(i).toString(16);
+      }
+      link_dialog.update_parent("mailto:" + hex_recipient + additional, recipient);
     });
   },
 
