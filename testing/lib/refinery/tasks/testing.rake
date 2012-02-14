@@ -11,10 +11,6 @@ namespace :refinery do
 
       Refinery::DummyGenerator.start params
 
-      # Load generated dummy app after generation - some of the follow
-      # generators depend on Rails.root being available
-      # load File.join(ENGINE_PATH, 'spec/dummy/config/environment.rb')
-
       Refinery::CmsGenerator.start %w[--quiet --fresh-installation]
     end
 
