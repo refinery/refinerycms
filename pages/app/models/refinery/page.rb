@@ -4,7 +4,7 @@ module Refinery
     PATH_SEPARATOR = " - "
 
     if self.respond_to?(:translates)
-      translates :title, :menu_title, :meta_keywords, :meta_description, :browser_title, :custom_slug, :include => :seo_meta
+      translates :title, :menu_title, :custom_slug, :include => :seo_meta
     end
 
     attr_accessible :title
