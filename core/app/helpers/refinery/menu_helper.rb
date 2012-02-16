@@ -21,6 +21,11 @@ module Refinery
 
       css = []
       css << 'selected' if selected_page_or_descendant_page_selected?(local_assigns[:menu_branch])
+      css << if menu_branch_counter == 0
+               'first'
+             elsif menu_branch_counter == options[:sibling_count]
+               'last'
+             end
       css
     end
 
