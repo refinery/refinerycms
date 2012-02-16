@@ -34,7 +34,7 @@ module Refinery
           else
             render_with_templates?
           end
-        end        
+        end
       else
         error_404
       end
@@ -52,7 +52,7 @@ module Refinery
 
     def current_user_can_view_page?
       @page.live? || current_refinery_user_can_access?("refinery_pages")
-    end    
+    end
 
     def current_refinery_user_can_access?(plugin)
       refinery_user? && current_refinery_user.authorized_plugins.include?(plugin)
@@ -61,7 +61,7 @@ module Refinery
     def first_live_child
       @page.children.order('lft ASC').live.first
     end
-  
+
     def find_page
       @page ||= case action_name
       when "home"
