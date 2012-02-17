@@ -31,6 +31,7 @@ rake 'db:create'
 generate 'refinery:cms --fresh-installation'
 
 rake 'railties:install:migrations db:migrate'
+rake 'db:seed'
 
 say <<-eos
   ============================================================================
