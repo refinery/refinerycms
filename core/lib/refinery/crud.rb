@@ -91,7 +91,7 @@ module Refinery
                   end
                 end
               else
-                render :text => "<script>parent.window.location = '\#{#{options[:redirect_to_url]}}';</script>"
+                redirect_back_or_default(#{options[:redirect_to_url]})
               end
             else
               unless request.xhr?
@@ -128,7 +128,7 @@ module Refinery
                   end
                 end
               else
-                render :text => "<script>parent.window.location = '\#{#{options[:redirect_to_url]}}';</script>"
+                redirect_back_or_default(#{options[:redirect_to_url]})
               end
             else
               unless request.xhr?
