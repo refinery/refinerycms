@@ -1,15 +1,14 @@
-namespace :refinery do  
+namespace :refinery do
   desc "Override files for use in an application"
   task :override => :environment do
     require 'fileutils'
 
     if (view = ENV["view"]).present?
-      pattern = "#{view.split("/").join(File::SEPARATOR)}*.{erb,builder}"
+      pattern = "{refinery#{File::SEPARATOR},}#{view.split("/").join(File::SEPARATOR)}*.{erb,builder}"
       looking_for = ::Refinery::Plugins.registered.pathnames.map{|p| p.join("app", "views", pattern).to_s}
 
       # copy in the matches
-      matches = looking_for.collect{|d| Dir[d]}.flatten.compact.uniq
-      if matches.any?
+      if (matches = looking_for.map{|d| Dir[d]}.flatten.compact.uniq).any?
         matches.each do |match|
           dir = match.split("/app/views/").last.split('/')
           file = dir.pop # get rid of the file.
@@ -25,12 +24,11 @@ namespace :refinery do
         puts "Couldn't match any view template files in any engines like #{view}"
       end
     elsif (controller = ENV["controller"]).present?
-      pattern = "#{controller.split("/").join(File::SEPARATOR)}*.rb"
+      pattern = "{refinery#{File::SEPARATOR},}#{controller.split("/").join(File::SEPARATOR)}*.rb"
       looking_for = ::Refinery::Plugins.registered.pathnames.map{|p| p.join("app", "controllers", pattern).to_s}
 
       # copy in the matches
-      matches = looking_for.collect{|d| Dir[d]}.flatten.compact.uniq
-      if matches.any?
+      if (matches = looking_for.map{|d| Dir[d]}.flatten.compact.uniq).any?
         matches.each do |match|
           dir = match.split("/app/controllers/").last.split('/')
           file = dir.pop # get rid of the file.
@@ -46,12 +44,11 @@ namespace :refinery do
         puts "Couldn't match any controller files in any engines like #{controller}"
       end
     elsif (model = ENV["model"]).present?
-      pattern = "#{model.split("/").join(File::SEPARATOR)}*.rb"
+      pattern = "{refinery#{File::SEPARATOR},}#{model.split("/").join(File::SEPARATOR)}*.rb"
       looking_for = ::Refinery::Plugins.registered.pathnames.map{|p| p.join("app", "models", pattern).to_s}
 
       # copy in the matches
-      matches = looking_for.collect{|d| Dir[d]}.flatten.compact.uniq
-      if matches.any?
+      if (matches = looking_for.map{|d| Dir[d]}.flatten.compact.uniq).any?
         matches.each do |match|
           dir = match.split("/app/models/").last.split('/')
           file = dir.pop # get rid of the file.
@@ -71,8 +68,7 @@ namespace :refinery do
       looking_for = ::Refinery::Plugins.registered.pathnames.map{|p| p.join("app", "assets", "javascripts", pattern).to_s}
 
       # copy in the matches
-      matches = looking_for.collect{|d| Dir[d]}.flatten.compact.uniq
-      if matches.any?
+      if (matches = looking_for.map{|d| Dir[d]}.flatten.compact.uniq).any?
         matches.each do |match|
           dir = match.split("/app/assets/javascripts/").last.split('/')
           file = dir.pop # get rid of the file.
@@ -92,8 +88,7 @@ namespace :refinery do
       looking_for = ::Refinery::Plugins.registered.pathnames.map{|p| p.join("app", "assets", "stylesheets", pattern).to_s}
 
       # copy in the matches
-      matches = looking_for.collect{|d| Dir[d]}.flatten.compact.uniq
-      if matches.any?
+      if (matches = looking_for.map{|d| Dir[d]}.flatten.compact.uniq).any?
         matches.each do |match|
           dir = match.split("/app/assets/stylesheets/").last.split('/')
           file = dir.pop # get rid of the file.
@@ -111,11 +106,11 @@ namespace :refinery do
     else
       puts "You didn't specify anything to override. Here are some examples:"
       {
-        :view => ['refinery/pages/home', '**/*menu', 'refinery/_menu_branch'],
+        :view => ['pages/home', 'refinery/pages/home', '**/*menu', '_menu_branch'],
         :javascript => %w(admin refinery/site_bar),
         :stylesheet => %w(home refinery/site_bar),
-        :controller => %w(refinery/pages),
-        :model => %w(refinery/page)
+        :controller => %w(pages),
+        :model => %w(page refinery/page)
       }.each do |type, examples|
         examples.each do |example|
           puts "rake refinery:override #{type}=#{example}"
