@@ -1,0 +1,218 @@
+/*
+ * Function: WYMeditor.loadCss
+ *      Loads a stylesheet in the document.
+ *
+ * Parameters:
+ *      href - The CSS path.
+ */
+WYMeditor.loadCss = function(href) {
+  $("<link rel='stylesheet' />").attr('href', href).appendTo($('head').get(0));
+};
+
+/********** DIALOGS **********/
+
+WYMeditor.INIT_DIALOG = function(wym, selected, isIframe) {
+
+  var selected = selected || wym.selected();
+  var dialog = $("#"+wym._options.dialogId);
+  var doc = $(dialog.find('iframe').contents());
+  var dialogType = dialog.find('#wym_dialog_type').val();
+  if (wym._selected_image) {
+    var replaceable = $(wym._selected_image);
+  } else {
+    var replaceable = $(wym._doc.body).find('#' + wym._current_unique_stamp);
+  }
+
+  // focus first textarea or input type text element
+  dialog.find('input[type=text], textarea').first().focus();
+
+  // init close_dialog when user clicks on cancel button
+  doc.find('body').addClass('wym_iframe_body').find('#cancel_button').add(dialog.find('.close_dialog')).click(function(e){
+    wym.close_dialog(e, true);
+  });
+
+  // init close_dialog when user clicks on small x icon at the top of dialog
+  $('.ui-dialog-titlebar .ui-dialog-titlebar-close').click(function(e){
+    wym.close_dialog(e, true);
+  });
+
+    //pre-init functions
+  if($.isFunction(wym._options.preInitDialog)) {
+    wym._options.preInitDialog(wym, window);
+  }
+
+  $(wym._options.dialogLinkSelector).find(wym._options.submitSelector).click(function(e)
+  {
+    if ((sUrl = $(wym._options.hrefSelector).val()).length > 0)
+    {
+      if (replaceable.get(0) != null) {
+        var link = $('<a></a>').attr({href:sUrl, title: $(wym._options.titleSelector).val()})
+        if ((target = $(wym._options.targetSelector).val()) != null && target.length > 0) {
+          link.attr('target', target);
+        }
+
+        // now grab what was selected in the editor and chuck it inside the link.
+        if (!wym._selected_image)
+        {
+          // ensure some attributes are copied across to the new link.
+          link.attr({'style': replaceable.attr('style'), 'class': replaceable.attr('class')});
+
+          link.html(replaceable.html());
+          replaceable.replaceWith($('<div/>').append(link).html());
+        }
+        else
+        {
+          if ((parent = replaceable.parent().get(0)) != null && parent.tagName.toUpperCase() == "A") {
+            $(parent).attr({href: link.attr('href'), title: $(wym._options.titleSelector).val(), target: target});
+          }
+          else {
+            replaceable.before(link);
+            $(link).append(replaceable.get(0));
+          }
+        }
+      }
+      else {
+        wym._exec(WYMeditor.CREATE_LINK, wym._current_unique_stamp);
+
+        $("a[href=" + wym._current_unique_stamp + "]", wym._doc.body)
+          .attr(WYMeditor.HREF, sUrl)
+          .attr(WYMeditor.TITLE, $(wym._options.titleSelector).val())
+          .attr(WYMeditor.TARGET, $(wym._options.targetSelector).val());
+      }
+    }
+    // fire a click event on the dialogs close button
+    wym.close_dialog(e);
+  });
+
+  //auto populate image fields if selected image
+  if(wym._selected_image) {
+    imgDialog = $(wym._options.dialogImageSelector);
+    img = $(wym._selected_image);
+    size = ((img.attr(WYMeditor.REL) || doc.find('#existing_image_size_area li.selected a').attr('rel')) || "");
+    src = img.attr(WYMeditor.SRC);
+    if (size.length > 0) {
+      src = src.replace('_' + size + '.', '.');
+      doc.find('#existing_image_size_area li.selected').removeClass('selected');
+      doc.find("#existing_image_size_area li a[href='#" + size + "']").parents('li:first').addClass('selected');
+    }
+
+    imgDialog.find(wym._options.srcSelector).val(src);
+    imgDialog.find(wym._options.titleSelector).val(img.attr(WYMeditor.TITLE));
+    imgDialog.find(wym._options.altSelector).val(img.attr(WYMeditor.ALT));
+    imgDialog.find(wym._options.sizeSelector).val(size);
+
+    (src = src.split('.')).pop();
+    doc.find("#existing_image_area_content li img[src^='" + src + "']").parents('li:first').addClass('selected');
+  }
+
+  $(wym._options.dialogImageSelector).find(wym._options.submitSelector).click(function(e) {
+    form = $(this.form);
+    if ((url = form.find(wym._options.srcSelector).val()) != null && url.length > 0) {
+      (image = $(wym._doc.createElement("IMG")))
+        .attr(WYMeditor.SRC, url)
+        .attr(WYMeditor.TITLE, form.find(wym._options.titleSelector).val())
+        .attr(WYMeditor.ALT, form.find(wym._options.altSelector).val())
+        .attr(WYMeditor.REL, form.find(wym._options.sizeSelector).val())
+        .load(function(e){
+          $(this).attr({
+            'width': $(this).width()
+            , 'height': $(this).height()
+          });
+        });
+
+       // ensure we know where to put the image.
+       if (replaceable == null) {
+         replaceable = $(wym._doc.body).find("#" + wym._current_unique_stamp);
+       }
+       if (replaceable != null) {
+         replaceable.after(image).remove();
+       }
+
+      // fire a click event on the dialogs close button
+      wym.close_dialog(e);
+    } else {
+      // remove any save loader animations.
+      $('iframe').contents().find('.save-loader').remove();
+      // tell the user.
+      alert("Please select an image to insert.");
+    }
+    e.preventDefault();
+  });
+
+  $(wym._options.dialogTableSelector).find(wym._options.submitSelector).click(function(e) {
+    if((iRows = $(wym._options.rowsSelector).val()) > 0 && (iCols = $(wym._options.colsSelector).val()) > 0)
+    {
+      //create the table and the caption
+      (table = wym._doc.createElement(WYMeditor.TABLE)).createCaption().innerHTML = $(wym._options.captionSelector).val();
+
+      //create the rows and cells
+      for(x=0; x<iRows; x++) {
+        newRow = table.insertRow(x);
+        for(y=0; y<iCols; y++) {
+          newRow.insertCell(y);
+        }
+      }
+
+     //append the table after the selected container
+     var node = $(wym.findUp(wym.container(), WYMeditor.MAIN_CONTAINERS)).get(0);
+     if(!node || !node.parentNode) $(wym._doc.body).append(table);
+     else $(node).after(table);
+    }
+    // fire a click event on the dialogs close button
+    wym.close_dialog(e);
+  });
+
+  $(wym._options.dialogPasteSelector).find(wym._options.submitSelector).click(function(e) {
+    wym.paste($(wym._options.textSelector).val());
+
+    wym.close_dialog(e);
+  });
+
+  $(wym._options.dialogPreviewSelector).find(wym._options.previewSelector).html(wym.xhtml());
+
+  //post-init functions
+  if($.isFunction(wym._options.postInitDialog)) {
+    wym._options.postInitDialog(wym,window);
+  }
+};
+
+WYMeditor.editor.prototype.close_dialog = function(e, cancelled) {
+  if (cancelled)
+  {
+    // if replaceable exists, replace it with its own html contents.
+    if ((span = $(this._doc.body).find('span#' + this._current_unique_stamp)).length > 0) {
+      span.parent().html(span.parent().html().replace(new RegExp(["<span(.+?)", span.attr('id'), "(.+?)<\/span>"].join("")), span.html()));
+    }
+    // https://github.com/resolve/refinerycms/issues/888
+    if (node = $(this._doc.body).find('#' + this._current_unique_stamp)) {
+      node.attr("id", (node.attr('_id_before_replaceable') || ""));
+      node.removeAttr("_id_before_replaceable");
+    }
+
+    if (this._undo_on_cancel == true) {
+      this._exec("undo");
+    }
+    else if (this._redo_on_cancel == true) {
+      this._exec("redo");
+    }
+  }
+
+  if ($.browser.msie && parseInt($.browser.version) < 8)
+  {
+    this._iframe.contentWindow.focus();
+  }
+
+  $("#" + wym._options.dialogId).dialog("close").remove();
+
+  // ensure links can't be navigated to.
+  $(this._doc).find('a[href]').click(function(e){e.preventDefault();});
+
+  if (e) {
+    e.preventDefault();
+  }
+};
+
+// from http://simonwillison.net/2006/Jan/20/escape/#p-6
+RegExp.escape = function(text) {
+  return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
+};
