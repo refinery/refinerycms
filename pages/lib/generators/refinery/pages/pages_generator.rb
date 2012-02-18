@@ -11,7 +11,7 @@ module Refinery
       append_file 'db/seeds.rb', :verbose => true do
         <<-EOH
 
-# Added by RefineryCMS Pages engine
+# Added by Refinery CMS Pages engine
 Refinery::Pages::Engine.load_seed
         EOH
       end

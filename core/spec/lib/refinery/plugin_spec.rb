@@ -21,7 +21,7 @@ module Refinery
       ::I18n.backend.store_translations :en, :refinery => {
         :plugins => {
           :refinery_rspec => {
-            :title => "RefineryCMS RSpec",
+            :title => "Refinery CMS RSpec",
             :description => "RSpec tests for plugin.rb"
           }
         }
@@ -42,7 +42,7 @@ module Refinery
 
     describe '#title' do
       it 'returns plugin title defined by I18n' do
-        plugin.title.should == 'RefineryCMS RSpec'
+        plugin.title.should == 'Refinery CMS RSpec'
       end
     end
 

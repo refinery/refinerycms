@@ -7,7 +7,7 @@ module Refinery
 
     source_root Pathname.new(File.expand_path('../templates', __FILE__))
 
-    add_shared_options_for("RefineryCMS")
+    add_shared_options_for("Refinery CMS")
 
     class_option :force,          :type => :boolean, :aliases => ['-f'], :default => false,
                                   :desc => "Force overwriting of directory"
@@ -28,10 +28,10 @@ module Refinery
                                   :desc => "Investigate any problems with the installer"
 
     class_option :version,        :type => :boolean, :default => false,
-                                  :desc => "Display the installed version of RefineryCMS"
+                                  :desc => "Display the installed version of Refinery CMS"
 
     class_option :refinery_edge,  :type => :boolean, :default => false,
-                                  :desc => "Setup your application's Gemfile to point to the RefineryCMS repository"
+                                  :desc => "Setup your application's Gemfile to point to the Refinery CMS repository"
 
     class_option :skip_db,        :type => :boolean, :default => false,
                                   :desc => "Skip database creation and migration tasks"

@@ -53,7 +53,7 @@ module Refinery
       # module so those validations are not tested here
       let(:attr) do
         {
-          :username => "RefineryCMS",
+          :username => "Refinery CMS",
           :email => "refinery@cms.com",
           :password => "123456",
           :password_confirmation => "123456"

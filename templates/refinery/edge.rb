@@ -35,6 +35,6 @@ rake 'db:seed'
 
 say <<-eos
   ============================================================================
-    Your new RefineryCMS application is now running on edge and mounted to /.
+    Your new Refinery CMS application is now running on edge and mounted to /.
   ============================================================================
 eos

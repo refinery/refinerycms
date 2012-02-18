@@ -114,7 +114,7 @@ module Refinery
       !!(defined?(::Refinery::I18n) && ::Refinery::I18n.enabled?)
     end
 
-    # Returns a Pathname to the root of the RefineryCMS project
+    # Returns a Pathname to the root of the Refinery CMS project
     def root
       @root ||= Pathname.new(File.expand_path('../../../../', __FILE__))
     end
