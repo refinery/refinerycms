@@ -8,17 +8,4 @@ namespace :refinery do
   task :uncrudify => :environment do
     Refinery::CLI.new.uncrudify(ENV['controller'], ENV['action'])
   end
-
-end
-
-desc "Recalculate $LOAD_PATH frequencies."
-task :recalculate_loaded_features_frequency => :environment do
-  require 'refinery/load_path_analyzer'
-
-  frequencies     = LoadPathAnalyzer.new($LOAD_PATH, $LOADED_FEATURES).frequencies
-  ideal_load_path = frequencies.to_a.sort_by(&:last).map(&:first)
-
-  Rails.root.join('config', 'ideal_load_path').open("w") do |f|
-    f.puts ideal_load_path
-  end
 end
