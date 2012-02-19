@@ -1,27 +1,17 @@
 <div id='existing_image_area' class='dialog_area' <%= "style='display:none;'" if @image.errors.any? %>>
-  <%= render :partial => '/refinery/admin/search',
-             :locals => {:url => refinery.insert_admin_images_path(params.dup.delete(:image))} %>
+  <%= render '/refinery/admin/search', :url => refinery.insert_admin_images_path(params.dup.delete(:image)) %>
   <input type='hidden' name='selected_image' id='selected_image' />
   <div id='existing_image_area_content' class='clearfix'>
 <% if @images.any? %>
     <ul>
-<%
-      @images.each do |image|
-        thumbnail_urls = {
-          :"data-original" => asset_paths.compute_public_path(image.url, ''),
-          :"data-grid" => asset_paths.compute_public_path(image.thumbnail('135x135#c').url, '')
-        }
-        Refinery::Images.user_image_sizes.sort_by{|key,geometry| geometry}.each do |size, pixels|
-          thumbnail_urls[:"data-#{size.to_s.parameterize}"] = asset_paths.compute_public_path(image.thumbnail(pixels).url, '')
-        end
--%>
+      <% @images.each do |image| -%>
         <li<%= " class='selected'" if @image_id == image.id %>>
           <%= image_fu(image, '106x106#c', {
                          :alt => image.title,
                          :title => image.title,
                          :id => "image_#{image.id}",
                          :'data-id' => image.id
-                       }.merge(thumbnail_urls)) -%>
+                       }.merge(thumbnail_urls(image))) -%>
         </li>
       <% end -%>
     </ul>
@@ -60,7 +50,7 @@
     </div>
   <% end %>
 
-  <%= render :partial => "/refinery/admin/form_actions",
+  <%= render :partial => '/refinery/admin/form_actions',
              :locals => {
                :f => nil,
                :cancel_url => '',
