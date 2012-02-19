@@ -233,8 +233,7 @@ module Refinery
         end
 
         context "when page can't be deleted" do
-          before(:each) { FactoryGirl.create(:page, :title => "Indestructible",
-                                         :deletable => false) }
+          before(:each) { FactoryGirl.create(:page, :title => "Indestructible", :deletable => false) }
 
           it "wont show delete button" do
             visit refinery.admin_pages_path
