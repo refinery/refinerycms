@@ -3,11 +3,9 @@
     <%%=raw @page.content_for(Refinery::Pages.default_parts.first.to_sym) %>
 
     <%%= form_for [refinery, <%= singular_name %>, @<%= singular_name %>] do |f| %>
-      <%%= render :partial => "/refinery/admin/error_messages",
-                 :locals => {
-                   :object => @<%= singular_name %>,
-                   :include_object_name => true
-                 } %>
+      <%%= render '/refinery/admin/error_messages',
+                 :object => @<%= singular_name %>,
+                 :include_object_name => true  %>
       <% attributes.each do |attribute| %>
       <div class='field <%= attribute.name %>_field <%= attribute.type %>_field'>
         <%%= f.label :<%= attribute.name %> %>

@@ -21,7 +21,7 @@
 
   <div id='dialog_main'>
     <% if any_resources or user_can_modify_resources %>
-      <%= render :partial => 'existing_resource' if any_resources %>
+      <%= render 'existing_resource' if any_resources %>
 
       <% if user_can_modify_resources %>
         <div id='upload_resource_area' class='dialog_area' <%= "style='display:none;'" if any_resources and @resource.errors.empty? %>>
@@ -30,16 +30,13 @@
       <% end %>
     <% else %>
       <% flash.now[:error] = t('.no_files') %>
-      <%= render :partial => "/refinery/admin/form_actions",
-                 :locals => {
-                   :f => nil,
-                   :cancel_url => '',
-                   :hide_cancel => false,
-                   :hide_delete => true,
-                   :hide_submit => true,
-                   :cancel_button_text => t('close', :scope => 'refinery.admin.form_actions'),
-                   :cancel_title => nil
-                 } %>
+      <%= render '/refinery/admin/form_actions', :f => nil,
+                 :cancel_url => '',
+                 :hide_cancel => false,
+                 :hide_delete => true,
+                 :hide_submit => true,
+                 :cancel_button_text => t('close', :scope => 'refinery.admin.form_actions'),
+                 :cancel_title => nil %>
     <% end %>
   </div>
 </div>

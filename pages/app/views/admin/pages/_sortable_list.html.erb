@@ -5,5 +5,4 @@
                :collection => @pages
              }  %>
 </ul>
-<%= render :partial => "/refinery/admin/sortable_list",
-           :locals => {:continue_reordering => !!local_assigns[:continue_reordering]} %>
+<%= render '/refinery/admin/sortable_list', :continue_reordering => !!local_assigns[:continue_reordering] %>

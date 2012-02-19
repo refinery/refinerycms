@@ -3,28 +3,25 @@
   generated_text_areas = false
 -%>
 <%%= form_for [refinery, :<%= namespacing.underscore %>_admin, @<%= singular_name %>] do |f| -%>
-  <%%= render :partial => "/refinery/admin/error_messages", :locals => {
-          :object => @<%= singular_name %>,
-          :include_object_name => true
-        } %>
+  <%%= render '/refinery/admin/error_messages',
+              :object => @<%= singular_name %>,
+              :include_object_name => true %>
   <% attributes.each_with_index do |attribute, index| %>
 <% if attribute.field_type.to_s != 'text_area' -%>
   <div class='field'>
     <%%= f.label :<%= attribute.name %> -%>
 <% end -%>
 <% if attribute.type.to_s == 'image' -%>
-    <%%= render :partial => "/refinery/admin/image_picker", :locals => {
-          :f => f,
-          :field => :<%= "#{attribute.name}_id".gsub("_id_id", "_id") %>,
-          :image => @<%= singular_name %>.<%= attribute.name.gsub("_id", "") %>,
-          :toggle_image_display => false
-        } %>
+    <%%= render '/refinery/admin/image_picker',
+               :f => f,
+               :field => :<%= "#{attribute.name}_id".gsub("_id_id", "_id") %>,
+               :image => @<%= singular_name %>.<%= attribute.name.gsub("_id", "") %>,
+               :toggle_image_display => false %>
 <% elsif attribute.type.to_s == 'resource' -%>
-    <%%= render :partial => "/refinery/admin/resource_picker", :locals => {
-          :f => f,
-          :field => :<%= "#{attribute.name}_id".gsub("_id_id", "_id") %>,
-          :resource => @<%= singular_name %>.<%= attribute.name.gsub("_id", "") %>,
-        } %>
+    <%%= render '/refinery/admin/resource_picker',
+               :f => f,
+               :field => :<%= "#{attribute.name}_id".gsub("_id_id", "_id") %>,
+               :resource => @<%= singular_name %>.<%= attribute.name.gsub("_id", "") %> %>
 <% elsif attribute.field_type.to_s == "text_area" and !generated_text_areas -%>
   <div class='field'>
     <div id='page-tabs' class='clearfix ui-tabs ui-widget ui-widget-content ui-corner-all'>
@@ -49,13 +46,10 @@
 <% end -%>
   </div>
   <% end %>
-  <%%= render :partial => "/refinery/admin/form_actions",
-              :locals => {
-                :f => f,
-                :continue_editing => false,
-                :delete_title => t('delete', :scope => 'refinery.<%= plural_name %>.admin.<%= plural_name %>.<%= singular_name %>'),
-                :delete_confirmation => t('message', :scope => 'refinery.admin.delete'<% if (title = attributes.detect { |a| a.type.to_s == "string" }).present? %>, :title => @<%= singular_name %>.<%= title.name %><% end %>)
-              } %>
+  <%%= render '/refinery/admin/form_actions', :f => f,
+             :continue_editing => false,
+             :delete_title => t('delete', :scope => 'refinery.<%= plural_name %>.admin.<%= plural_name %>.<%= singular_name %>'),
+             :delete_confirmation => t('message', :scope => 'refinery.admin.delete'<% if (title = attributes.detect { |a| a.type.to_s == "string" }).present? %>, :title => @<%= singular_name %>.<%= title.name %><% end %>) %>
 <%% end -%>
 <% if text_areas.any? -%>
 <%% content_for :javascripts do %>

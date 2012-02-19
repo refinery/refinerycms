@@ -16,7 +16,7 @@
 
 <div id='dialog_main'>
   <% if any_images or user_can_modify_images %>
-    <%= render :partial => 'existing_image' if any_images or searching? %>
+    <%= render 'existing_image' if any_images or searching? %>
 
     <% if user_can_modify_images %>
       <div id='upload_image_area' class='dialog_area'<%= " style='display:none;'" if any_images and (no_errors or searching?) %>>
@@ -25,16 +25,13 @@
     <% end %>
   <% else %>
     <% flash.now[:error] = t('no_images_yet', :scope => 'refinery.admin.images.records').split('.').first.html_safe + "." %>
-    <%= render :partial => "/refinery/admin/form_actions",
-               :locals => {
-                 :f => nil,
-                 :cancel_url => '',
-                 :hide_cancel => false,
-                 :hide_delete => true,
-                 :hide_submit => true,
-                 :cancel_button_text => t('close', :scope => 'refinery.admin.form_actions'),
-                 :cancel_title => nil
-               } %>
+    <%= render '/refinery/admin/form_actions', :f => nil,
+               :cancel_url => '',
+               :hide_cancel => false,
+               :hide_delete => true,
+               :hide_submit => true,
+               :cancel_button_text => t('close', :scope => 'refinery.admin.form_actions'),
+               :cancel_title => nil %>
   <% end %>
 </div>
 

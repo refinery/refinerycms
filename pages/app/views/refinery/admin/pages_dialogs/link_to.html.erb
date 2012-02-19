@@ -108,15 +108,12 @@
       </div>
     <% end %>
   </div>
-  <%= render :partial => "/refinery/admin/form_actions",
-             :locals => {
-               :f => nil,
-               :cancel_url => '',
-               :submit_button_text => t('.insert'),
-               :hide_cancel => false,
-               :cancel_title => nil,
-               :hide_delete => true
-             } %>
+  <%= render '/refinery/admin/form_actions', :f => nil,
+             :cancel_url => '',
+             :submit_button_text => t('.insert'),
+             :hide_cancel => false,
+             :cancel_title => nil,
+             :hide_delete => true %>
 </div>
 
 <% content_for :javascripts do %>

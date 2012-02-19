@@ -2,10 +2,7 @@
   <ul>
     <%% if ::Refinery::<%= class_name.pluralize %>::Admin::<%= class_name.pluralize %>Controller.searchable? %>
       <li>
-        <%%= render :partial => "/refinery/admin/search",
-                    :locals => {
-                      :url => refinery.<%= plural_name %>_admin_<%= "_index" if plural_name == singular_name%>_path
-                    } %>
+        <%%= render '/refinery/admin/search', :url => refinery.<%= plural_name %>_admin_<%= "_index" if plural_name == singular_name%>_path %>
       </li>
     <%% end %>
     <li <%%= "class='selected'" if params[:action] == "index" %>>

@@ -1,7 +1,5 @@
 <ul id='sortable_list'>
   <%%= render :partial => '<%= singular_name %>', :collection => @<%= plural_name %> %>
 </ul>
-<%%= render :partial => "/refinery/admin/sortable_list",
-            :locals => {
-              :continue_reordering => (local_assigns.keys.include?(:continue_reordering)) ? continue_reordering : true
-            } %>
+<%%= render '/refinery/admin/sortable_list',
+            :continue_reordering => (local_assigns.keys.include?(:continue_reordering)) ? continue_reordering : true %>

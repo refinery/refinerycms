@@ -6,5 +6,4 @@
 <section id='actions'>
   <%= render 'actions' %>
 </section>
-<%= render :partial => "/refinery/admin/make_sortable",
-           :locals => {:tree => true} if @pages.many? -%>
+<%= render '/refinery/admin/make_sortable', :tree => true if @pages.many? -%>

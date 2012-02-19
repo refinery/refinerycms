@@ -4,11 +4,9 @@
     <input id='new_page_part_title' value='' class='larger widest' />
     <input id='new_page_part_index' type='hidden' value='<%= @page.parts.size %>' />
   </div>
-  <%= render :partial => "/refinery/admin/form_actions", :locals => {
-    :f => f,
-    :continue_editing => false,
-    :submit_button_id => "new_page_part_save",
-    :cancel_button_id => "new_page_part_cancel",
-    :hide_delete => true
-  } %>
+  <%= render '/refinery/admin/form_actions', :f => f,
+             :continue_editing => false,
+             :submit_button_id => "new_page_part_save",
+             :cancel_button_id => "new_page_part_cancel",
+             :hide_delete => true %>
 </div>

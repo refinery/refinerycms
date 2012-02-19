@@ -9,12 +9,9 @@
                      :placeholder => t('email_address', :scope => 'refinery.users.forgot') %>
   </div>
 
-  <%= render :partial => "/refinery/admin/form_actions",
-             :locals => {
-               :f => f,
-               :continue_editing => false,
-               :submit_button_text => t('reset_password', :scope => 'refinery.users.forgot'),
-               :cancel_url => refinery.refinery_user_session_path,
-               :cancel_title => nil
-             } -%>
+  <%= render '/refinery/admin/form_actions', :f => f,
+             :continue_editing => false,
+             :submit_button_text => t('reset_password', :scope => 'refinery.users.forgot'),
+             :cancel_url => refinery.refinery_user_session_path,
+             :cancel_title => nil -%>
 <% end -%>

@@ -1,4 +1,4 @@
-<%%= form_for([:admin, @refinery_setting], :url => (@url_override || @url)) do |f| %>
+<%%= form_for([refinery, :admin, @refinery_setting], :url => (@url_override || @url)) do |f| %>
 
   <p>
     <%%= t('.explanation') %>
@@ -44,11 +44,8 @@
     </tr>
   </table>
 
-  <%%= render :partial => "/shared/admin/form_actions",
-             :locals => {
-               :f => f,
-               :continue_editing => false,
-               :cancel_url => admin_<%= plural_name %>_url,
-               :hide_delete => true
-             } %>
+  <%%= render '/refinery/admin/form_actions', :f => f,
+             :continue_editing => false,
+             :cancel_url => refinery.admin_<%= plural_name %>_url,
+             :hide_delete => true %>
 <%% end %>
