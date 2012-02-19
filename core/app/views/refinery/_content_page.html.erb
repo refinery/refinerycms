@@ -28,7 +28,7 @@
     end unless @page.nil? or @page.parts.blank?
 
     # Ensure that even without @page.parts we still have body_content_left and body_content_right
-    all_yields = sections.collect{|s| s[:yield]}
+    all_yields = sections.map{|s| s[:yield]}
     sections << {:yield => :body_content_left} unless all_yields.include?(:body_content_left)
     sections << {:yield => :body_content_right} unless all_yields.include?(:body_content_right)
   end

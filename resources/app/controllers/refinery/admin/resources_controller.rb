@@ -20,7 +20,7 @@ module ::Refinery
 
         unless params[:insert]
           if @resources.all?(&:valid?)
-            flash.notice = t('created', :scope => 'refinery.crudify', :what => "'#{@resources.collect{|r| r.title}.join("', '")}'")
+            flash.notice = t('created', :scope => 'refinery.crudify', :what => "'#{@resources.map(&:title).join("', '")}'")
             redirect_to refinery.admin_resources_path
           else
             self.new # important for dialogs
