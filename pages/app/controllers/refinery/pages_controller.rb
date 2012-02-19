@@ -7,8 +7,6 @@ module Refinery
 
     # This action is usually accessed with the root path, normally '/'
     def home
-      error_404 and return unless @page
-
       render_with_templates?
     end
 
@@ -26,11 +24,11 @@ module Refinery
       if current_user_can_view_page?
         if should_skip_to_first_child?
           redirect_to refinery.url_for(first_live_child.url)
-        elsif @page.link_url.present?
-          redirect_to @page.link_url
+        elsif page.link_url.present?
+          redirect_to page.link_url
         else
-          if requested_friendly_id != @page.friendly_id
-            redirect_to refinery.url_for(@page.url), :status => 301
+          if requested_friendly_id != page.friendly_id
+            redirect_to refinery.url_for(page.url), :status => 301
           else
             render_with_templates?
           end
@@ -47,11 +45,11 @@ module Refinery
     end
 
     def should_skip_to_first_child?
-      @page.skip_to_first_child && first_live_child
+      page.skip_to_first_child && first_live_child
     end
 
     def current_user_can_view_page?
-      @page.live? || current_refinery_user_can_access?("refinery_pages")
+      page.live? || current_refinery_user_can_access?("refinery_pages")
     end
 
     def current_refinery_user_can_access?(plugin)
@@ -59,20 +57,20 @@ module Refinery
     end
 
     def first_live_child
-      @page.children.order('lft ASC').live.first
+      page.children.order('lft ASC').live.first
     end
 
     def find_page
       @page ||= case action_name
-      when "home"
-        Refinery::Page.where(:link_url => '/').first
-      when "show"
-        if params[:id]
-          Refinery::Page.find(params[:id])
-        elsif params[:path]
-          Refinery::Page.find_by_path(params[:path])
-        end
-      end
+                when "home"
+                  Refinery::Page.where(:link_url => '/').first
+                when "show"
+                  if params[:id]
+                    Refinery::Page.find(params[:id])
+                  elsif params[:path]
+                    Refinery::Page.find_by_path(params[:path])
+                  end
+                end
       @page || error_404
     end
 
@@ -80,11 +78,11 @@ module Refinery
 
     def render_with_templates?
       render_options = {}
-      if Refinery::Pages.use_layout_templates && @page.layout_template.present?
-        render_options[:layout] = @page.layout_template
+      if Refinery::Pages.use_layout_templates && page.layout_template.present?
+        render_options[:layout] = page.layout_template
       end
-      if Refinery::Pages.use_view_templates && @page.view_template.present?
-        render_options[:action] = @page.view_template
+      if Refinery::Pages.use_view_templates && page.view_template.present?
+        render_options[:action] = page.view_template
       end
       render render_options if render_options.any?
     end
