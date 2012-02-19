@@ -2,8 +2,8 @@ module Refinery
   module <%= namespacing %>
     class <%= class_name %> < Refinery::Core::BaseModel
       <% if table_name == namespacing.underscore.pluralize -%>self.table_name = :refinery_<%= plural_name %><% end -%>
-    <% if (string_attributes = attributes.select{ |a| a.type.to_s =~ /string|text/ }.uniq.map(&:to_sym)).any? %>
-      acts_as_indexed :fields => <%= string_attributes.inspect %>
+    <% if (string_attributes = attributes.select{ |a| a.type.to_s =~ /string|text/ }.uniq).any? %>
+      acts_as_indexed :fields => <%= string_attributes.map{|s| s.name.to_sym}.inspect %>
 
       validates <%= string_attributes.first.inspect %>, :presence => true, :uniqueness => true
       <% else %>

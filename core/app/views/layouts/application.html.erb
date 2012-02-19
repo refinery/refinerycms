@@ -1,21 +1,21 @@
 <!DOCTYPE html>
-<%= render :partial => '/refinery/html_tag' %>
-  <% site_bar = render(:partial => '/refinery/site_bar', :locals => {:head => true}) -%>
-  <%= render :partial => '/refinery/head' %>
+<%= render '/refinery/html_tag' %>
+  <% site_bar = render('/refinery/site_bar', :head => true) -%>
+  <%= render '/refinery/head' %>
   <body>
     <%= site_bar -%>
-    <%= render :partial => '/refinery/ie6check' if request.env['HTTP_USER_AGENT'] =~ /MSIE/ -%>
+    <%= render '/refinery/ie6check' if request.env['HTTP_USER_AGENT'] =~ /MSIE/ -%>
     <div id="page_container">
       <header id="header">
-        <%= render :partial => '/refinery/header' -%>
+        <%= render '/refinery/header' -%>
       </header>
       <section id="page">
         <%= yield %>
       </section>
       <footer>
-        <%= render :partial => '/refinery/footer' -%>
+        <%= render '/refinery/footer' -%>
       </footer>
     </div>
-    <%= render :partial => '/refinery/javascripts' %>
+    <%= render '/refinery/javascripts' %>
   </body>
 </html>

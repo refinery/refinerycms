@@ -7,7 +7,7 @@
                :include_object_name => true
              } %>
 
-  <%= render :partial => "locale_picker",
+  <%= render :partial => 'locale_picker',
              :locals => {
                :current_locale => Thread.current[:globalize_locale]
              } if Refinery.i18n_enabled? %>
@@ -17,19 +17,19 @@
     <%= f.text_field :title, :class => "larger widest" %>
   </div>
 
-  <%= render :partial => "form_fields_after_title",
+  <%= render :partial => 'form_fields_after_title',
              :locals => {
                :f => f
              } %>
 
   <div class='field'>
-    <%= render :partial => "form_page_parts",
+    <%= render :partial => 'form_page_parts',
                :locals => {
                  :f => f
                } %>
   </div>
 
-  <%= render :partial => "form_advanced_options",
+  <%= render :partial => 'form_advanced_options',
              :locals => {
                 :f => f
               } %>
@@ -48,7 +48,7 @@
                                                    :tooltip => t('.preview_changes'))
              } %>
 
-  <%= render :partial => "form_new_page_parts",
+  <%= render :partial => 'form_new_page_parts',
              :locals => {
                :f => f
              } if Refinery::Pages.new_page_parts %>

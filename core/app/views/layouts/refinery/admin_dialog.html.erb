@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<%= render :partial => "/refinery/html_tag" %>
-  <%= render :partial => "/refinery/admin/head" %>
+<%= render '/refinery/html_tag' %>
+  <%= render '/refinery/admin/head' %>
   <body id='dialog_container' class='dialog <%= I18n.locale %><%= ' wym_iframe_body' if params[:wymeditor].presence %>'>
     <div id='tooltip_container'></div>
     <div id="flash_container">
-      <%= render :partial => '/refinery/message' %>
+      <%= render '/refinery/message' %>
     </div>
     <div id='content' class='clearfix'>
       <%= yield %>

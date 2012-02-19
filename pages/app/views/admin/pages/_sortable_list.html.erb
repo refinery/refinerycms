@@ -1,5 +1,5 @@
 <ul class='sortable_list'>
-  <%= render :partial => "page",
+  <%= render :partial => 'page',
              :collection => @pages.select{|p| p.parent_id.nil?},
              :locals => {
                :collection => @pages

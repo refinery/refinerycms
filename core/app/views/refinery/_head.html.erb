@@ -12,7 +12,7 @@
   <%= stylesheet_link_tag "home" if home_page? %>
   <%= yield :stylesheets %>
 
-  <%= render :partial => '/refinery/google_analytics' %>
+  <%= render '/refinery/google_analytics' %>
 
   <%= javascript_include_tag 'modernizr-min' %>
 </head>

@@ -134,7 +134,7 @@ In above function we call load_gallery action which returns images for selected 
 def load_gallery
   @portfolio_entry = PortfolioEntry.find(params[:id])
   if request.xhr? and params[:id]
-    render :partial => 'gallery', :locals => {:gallery => @portfolio_entry }
+    render 'gallery', :gallery => @portfolio_entry
   else
     render :text => 'No params was sent!'
   end

@@ -1,7 +1,6 @@
 <ul>
   <li>
-    <%= render :partial => "/refinery/admin/search",
-               :locals => { :url => refinery.admin_images_path } %>
+    <%= render '/refinery/admin/search', :url => refinery.admin_images_path %>
   </li>
   <li>
     <%= link_to t('.create_new_image'),

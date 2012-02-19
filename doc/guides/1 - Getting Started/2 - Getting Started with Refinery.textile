@@ -204,7 +204,7 @@ $ Copied view template file to app/views/refinery/pages/show.html.erb
 Now edit +app/views/refinery/pages/show.html.erb+ and it will look like this:
 
 <erb>
-<%= render :partial => "/refinery/content_page" %>
+<%= render '/refinery/content_page' %>
 </erb>
 
 Refinery has a +content_page+ partial it uses just to get you started. But we'll soon remove this and use our own ERB view instead.

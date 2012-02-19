@@ -16,11 +16,11 @@
 
 <div id='dialog_main'>
   <% if any_images or user_can_modify_images %>
-    <%= render :partial => "existing_image" if any_images or searching? %>
+    <%= render :partial => 'existing_image' if any_images or searching? %>
 
     <% if user_can_modify_images %>
       <div id='upload_image_area' class='dialog_area'<%= " style='display:none;'" if any_images and (no_errors or searching?) %>>
-        <%= render :partial => "form", :locals => {:insert => true} %>
+        <%= render 'form', :insert => true %>
       </div>
     <% end %>
   <% else %>

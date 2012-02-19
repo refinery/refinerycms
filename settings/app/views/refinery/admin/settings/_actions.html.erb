@@ -1,9 +1,6 @@
 <ul>
   <li>
-    <%= render :partial => "/refinery/admin/search",
-               :locals => {
-                 :url => refinery.admin_settings_path
-               } %>
+    <%= render '/refinery/admin/search', :url => refinery.admin_settings_path %>
   </li>
   <li>
     <%= link_to t('.new'), refinery.new_admin_setting_path({
