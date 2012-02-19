@@ -3,13 +3,13 @@ module Refinery
     class SectionSetPresenter < Array
       def self.build_for_page(page, page_title)
         sections = self.new
-        sections.add_default_title_section(page_title)
+        sections.add_default_title_section(page_title) if page_title.present?
         sections.add_page_parts(page.parts) if page
         sections.add_default_post_page_sections
       end
 
       def blank_section_css_classes(allowed_to_use_fallback)
-        select {|section| section.has_content?(allowed_to_use_fallback)}.map(&:not_present_css_class)
+        reject {|section| section.has_content?(allowed_to_use_fallback)}.map(&:not_present_css_class)
       end
 
       def add_default_title_section(title)

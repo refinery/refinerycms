@@ -4,12 +4,11 @@ module Refinery
       include ActionView::Helpers::TagHelper
 
       def self.from_page_part(part)
-        result = self.new(:fallback_html => part.body)
-        result.title_symbol = part.title.to_s.gsub(/\ /, '').underscore.to_sym
+        result = self.new(:fallback_html => part.body, :title_symbol => part.title.to_s.gsub(/\ /, '').underscore.to_sym)
         result
       end
 
-      def initialize(initial_hash)
+      def initialize(initial_hash = {})
         initial_hash.map do |key, value|
           send("#{key}=", value)
         end
