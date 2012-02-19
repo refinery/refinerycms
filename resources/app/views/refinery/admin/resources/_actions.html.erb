@@ -3,10 +3,6 @@
     <%= render '/refinery/admin/search', :url => refinery.admin_resources_path %>
   </li>
   <li>
-    <%= link_to t('.upload_new'),
-                refinery.new_admin_resource_path(:dialog => true,
-                                                 :width => 600,
-                                                 :height => 300),
-                :class => "add_icon" %>
+    <%= link_to t('.upload_new'), refinery.new_admin_resource_path, :class => "add_icon" %>
   </li>
 </ul>
