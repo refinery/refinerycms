@@ -118,22 +118,14 @@ module Refinery
           click_button "Save"
 
           page.should have_content("'My first page' was successfully added.")
-          # TODO: figure out why these matchers fail?
-          # page.should have_content("Remove this page forever")
-          # page.should have_selector("a[href='/refinery/pages/my-first-page']")
-          # page.should have_content("Edit this page")
-          # page.should have_selector("a[href='/refinery/pages/my-first-page/edit']")
-          # page.should have_content("Add a new child page")
-          # page.should have_selector("a[href*='/refinery/pages/new?parent_id=']")
-          # page.should have_content("View this page live")
-          # page.should have_selector("a[href='/pages/my-first-page']")
+
           page.body.should =~ /Remove this page forever/
           page.body.should =~ /Edit this page/
-          page.body.should =~ /\/refinery\/pages\/my-first-page\/edit/
+          page.body.should =~ %r{/refinery/pages/my-first-page/edit}
           page.body.should =~ /Add a new child page/
-          page.body.should =~ /\/refinery\/pages\/new\?parent_id=/
+          page.body.should =~ %r{/refinery/pages/new\?parent_id=}
           page.body.should =~ /View this page live/
-          page.body.should =~ /\/pages\/my-first-page/
+          page.body.should =~ %r{/pages/my-first-page}
 
           Refinery::Page.count.should == 1
         end
@@ -202,7 +194,7 @@ module Refinery
           let!(:parent_page) { FactoryGirl.create(:page, :title => "Our Parent Page") }
           let!(:nested_page) { FactoryGirl.create(:page, :parent => @parent, :title => 'Preview Me') }
 
-          it "should work like an un-nested page", :js => true do
+          it "works like an un-nested page", :js => true do
             visit refinery.admin_pages_path
 
             within "#page_#{nested_page.id}" do
@@ -282,19 +274,19 @@ module Refinery
             click_button "Save"
           end
 
-          it "should succeed" do
+          it "succeeds" do
             page.should have_content("'News' was successfully added.")
             Refinery::Page.count.should == 2
           end
 
-          it "should show locale flag for page" do
+          it "shows locale flag for page" do
             p = ::Refinery::Page.find('news')
             within "#page_#{p.id}" do
               page.should have_css("img[src='/assets/refinery/icons/flags/en.png']")
             end
           end
 
-          it "should show title in the admin menu" do
+          it "shows title in the admin menu" do
             p = ::Refinery::Page.find('news')
             within "#page_#{p.id}" do
               page.should have_content('News')
@@ -302,7 +294,7 @@ module Refinery
             end
           end
 
-          it "should show in frontend menu for 'en' locale" do
+          it "shows in frontend menu for 'en' locale" do
             visit "/"
 
             within "#menu" do
@@ -311,7 +303,7 @@ module Refinery
             end
           end
 
-          it "should not show in frontend menu for 'ru' locale" do
+          it "doesn't show in frontend menu for 'ru' locale" do
             visit "/ru"
 
             within "#menu" do
@@ -342,12 +334,12 @@ module Refinery
             click_button "Save"
           end
 
-          it "should succeed" do
+          it "succeeds" do
             page.should have_content("'News' was successfully updated.")
             Refinery::Page.count.should == 2
           end
 
-          it "should show both locale flags for page" do
+          it "shows both locale flags for page" do
             p = ::Refinery::Page.find('news')
             within "#page_#{p.id}" do
               page.should have_css("img[src='/assets/refinery/icons/flags/en.png']")
@@ -355,21 +347,21 @@ module Refinery
             end
           end
 
-          it "should show title in admin menu in current admin locale" do
+          it "shows title in admin menu in current admin locale" do
             p = ::Refinery::Page.find('news')
             within "#page_#{p.id}" do
               page.should have_content('News')
             end
           end
 
-          it "should use the slug from the default locale in admin" do
+          it "uses the slug from the default locale in admin" do
             p = ::Refinery::Page.find('news')
             within "#page_#{p.id}" do
               page.find_link('Edit this page')[:href].should include('news')
             end
           end
 
-          it "should show correct language and slugs for default locale" do
+          it "shows correct language and slugs for default locale" do
             visit "/"
 
             within "#menu" do
@@ -377,7 +369,7 @@ module Refinery
             end
           end
 
-          it "should show correct language and slugs for second locale" do
+          it "shows correct language and slugs for second locale" do
             visit "/ru"
 
             within "#menu" do
@@ -397,40 +389,40 @@ module Refinery
             click_button "Save"
           end
 
-          it "should succeed" do
+          it "succeeds" do
             page.should have_content("'Новости' was successfully added.")
             Refinery::Page.count.should == 2
           end
 
-          it "should show locale flag for page" do
+          it "shows locale flag for page" do
             p = ::Refinery::Page.find('новости')
             within "#page_#{p.id}" do
               page.should have_css("img[src='/assets/refinery/icons/flags/ru.png']")
             end
           end
 
-          it "should not show locale flag for primary locale" do
+          it "doesn't show locale flag for primary locale" do
             p = ::Refinery::Page.find('новости')
             within "#page_#{p.id}" do
               page.should_not have_css("img[src='/assets/refinery/icons/flags/en.png']")
             end
           end
 
-          it "should show title in the admin menu" do
+          it "shows title in the admin menu" do
             p = ::Refinery::Page.find('новости')
             within "#page_#{p.id}" do
               page.should have_content('Новости')
             end
           end
 
-          it "should use ID instead of slug in admin" do
+          it "uses id instead of slug in admin" do
             p = ::Refinery::Page.find('новости')
             within "#page_#{p.id}" do
               page.find_link('Edit this page')[:href].should include(p.id.to_s)
             end
           end
 
-          it "should show in frontend menu for 'ru' locale" do
+          it "shows in frontend menu for 'ru' locale" do
             visit "/ru"
 
             within "#menu" do
@@ -439,7 +431,7 @@ module Refinery
             end
           end
 
-          it "should not show in frontend menu for 'en' locale" do
+          it "won't show in frontend menu for 'en' locale" do
             visit "/"
 
             within "#menu" do
@@ -455,7 +447,7 @@ module Refinery
       login_refinery_translator
 
       describe "add page to main locale" do
-        it "should not succeed" do
+        it "doesn't succeed" do
           visit refinery.admin_pages_path
 
           click_link "Add new page"
@@ -473,7 +465,7 @@ module Refinery
           FactoryGirl.create(:page)
         end
 
-        it "should succeed" do
+        it "succeeds" do
           visit refinery.admin_pages_path
 
           click_link "Add new page"
@@ -492,7 +484,7 @@ module Refinery
       describe "delete page from main locale" do
         before(:each) { FactoryGirl.create(:page) }
 
-        it "should not succeed" do
+        it "doesn't succeed" do
           visit refinery.admin_pages_path
 
           click_link "Remove this page forever"
@@ -518,14 +510,14 @@ module Refinery
           describe "with relative urls" do
             before(:each) { Refinery::Pages.absolute_page_links = false }
 
-            it "should show Russian pages if we're editing the Russian locale" do
+            it "shows Russian pages if we're editing the Russian locale" do
               visit 'refinery/pages_dialogs/link_to?wymeditor=true&switch_locale=ru'
 
               page.should have_content("About Ru")
               page.should have_selector("a[href='/ru/about-ru']")
             end
 
-            it "should show default to the default locale if no query string is added" do
+            it "shows default to the default locale if no query string is added" do
               visit 'refinery/pages_dialogs/link_to?wymeditor=true'
 
               page.should have_content("About")
@@ -535,14 +527,14 @@ module Refinery
           describe "with absolute urls" do
             before(:each) { Refinery::Pages.absolute_page_links = true }
 
-            it "should show Russian pages if we're editing the Russian locale" do
+            it "shows Russian pages if we're editing the Russian locale" do
               visit 'refinery/pages_dialogs/link_to?wymeditor=true&switch_locale=ru'
 
               page.should have_content("About Ru")
               page.should have_selector("a[href='http://www.example.com/ru/about-ru']")
             end
 
-            it "should show default to the default locale if no query string is added" do
+            it "shows default to the default locale if no query string is added" do
               visit 'refinery/pages_dialogs/link_to?wymeditor=true'
 
               page.should have_content("About")
