@@ -414,5 +414,39 @@ module Refinery
         end
       end
     end
+
+    # https://github.com/resolve/refinerycms/issues/1302
+    describe "saving nested page" do
+      before do
+        Refinery::I18n.configure do |config|
+          config.enabled = false
+          config.default_locale = :de
+          config.current_locale = :de
+          config.default_frontend_locale = :de
+          config.frontend_locales = [:de]
+          config.locales = { :de => "Deutsch" }
+        end
+
+        Refinery::Pages.configure do |config|
+          config.approximate_ascii = true
+          config.strip_non_ascii = true
+        end
+
+        Dummy::Application.config.i18n.default_locale = :de
+      end
+
+      let!(:root_page) { FactoryGirl.create(:page, :title => "Root page") }
+      let!(:nested_page) { FactoryGirl.create(:page, :title => "Nested page", :parent_id => root_page) }
+
+      it "doesn't delete slug" do
+        Slug.where(:name => nested_page.friendly_id).count.should be > 0
+        nested_page.parts.each do |part|
+          part.body = "test"
+        end
+        nested_page.save!
+        Slug.where(:name => nested_page.friendly_id).count.should be > 0
+      end
+    end
+
   end
 end
