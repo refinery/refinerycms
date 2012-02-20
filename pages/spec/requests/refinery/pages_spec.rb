@@ -239,7 +239,7 @@ module Refinery
       end
 
       it "succeeds" do
-        visit refinery.url_for(submenu_page.url.merge(:only_path => true))
+        visit refinery.url_for(submenu_page.url)
         page.should have_content(home_page.title)
         page.should have_content(about_page.title)
         within ".selected * > .selected a" do
@@ -255,7 +255,7 @@ module Refinery
       end
 
       it "succeeds" do
-        visit refinery.url_for(special_page.url.merge(:only_path => true))
+        visit refinery.url_for(special_page.url)
 
         page.should have_content(home_page.title)
         page.should have_content(about_page.title)
@@ -274,7 +274,7 @@ module Refinery
       end
 
       it "succeeds" do
-        visit refinery.url_for(special_page.url.merge(:only_path => true))
+        visit refinery.url_for(special_page.url)
 
         page.should have_content(home_page.title)
         page.should have_content(about_page.title)
