@@ -1,6 +1,6 @@
 module Refinery
   module Pages
-    class SectionSetPresenter < Array
+    class ContentPage < Array
       def self.build_for_page(page, page_title)
         sections = self.new
         sections.add_default_title_section(page_title) if page_title.present?
