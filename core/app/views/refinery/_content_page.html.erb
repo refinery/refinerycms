@@ -1,21 +1,21 @@
 <%
   # supported variables for this partial and their default values
   sections_to_hide = local_assigns[:hide_sections] || []
-  sections = local_assigns[:sections]
+  content_page = local_assigns[:sections]
   allowed_to_use_fallback = !local_assigns[:show_empty_sections] && !local_assigns[:remove_automatic_sections]
 
-  if sections
-    if !sections.is_a?(Refinery::Pages::ContentPage)
+  if content_page
+    if !content_page.is_a?(Refinery::Pages::ContentPage)
       raise ArgumentError.new("Sections passed to the content page partial must be Refinery::Pages::SectionPresenter objects inside a Refinery::Pages::ContentPage")
     end
   else
-    sections = Refinery::Pages::ContentPage.build_for_page(@page, page_title)
+    content_page = Refinery::Pages::ContentPage.build_for_page(@page, page_title)
   end
 
-  sections.hide_sections(sections_to_hide)
-  sections.fetch_template_overrides {|section_id| content_for(section_id)}
+  content_page.hide_sections(sections_to_hide)
+  content_page.fetch_template_overrides {|section_id| content_for(section_id)}
 -%>
-<section id='body_content' class='<%= sections.blank_section_css_classes(allowed_to_use_fallback).join(' ') %>'>
-  <%= safe_join sections.map {|section| section.wrapped_html(allowed_to_use_fallback)}, "\n" -%>
+<section id='body_content' class='<%= content_page.blank_section_css_classes(allowed_to_use_fallback).join(' ') %>'>
+  <%= content_page.to_html(allowed_to_use_fallback) -%>
 </section>
 <%= render :partial => '/refinery/draft_page_message' unless @page.nil? or @page.live? -%>
