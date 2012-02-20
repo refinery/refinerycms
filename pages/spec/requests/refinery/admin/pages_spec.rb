@@ -314,8 +314,23 @@ module Refinery
         end
 
         describe "add a page with title for both locales" do
-          before do
+          let!(:news_page) do
+            Refinery::I18n.stub(:frontend_locales).and_return([:en, :ru])
+
+            Globalize.locale = :en
+            page = FactoryGirl.create(:page, :title => 'News')
+            Globalize.locale = :ru
+            page.title = "Новости"
+            page.save
+            Globalize.locale = :en
+
+            page
+          end
+
+          it "succeeds" do
+            news_page.destroy!
             visit refinery.admin_pages_path
+
             click_link "Add new page"
             within "#switch_locale_picker" do
               click_link "Ru"
@@ -323,8 +338,7 @@ module Refinery
             fill_in "Title", :with => "Новости"
             click_button "Save"
 
-            p = ::Refinery::Page.last
-            within "#page_#{p.id}" do
+            within "#page_#{Page.last.id}" do
               click_link "Application_edit"
             end
             within "#switch_locale_picker" do
@@ -332,31 +346,32 @@ module Refinery
             end
             fill_in "Title", :with => "News"
             click_button "Save"
-          end
 
-          it "succeeds" do
             page.should have_content("'News' was successfully updated.")
             Refinery::Page.count.should == 2
           end
 
           it "shows both locale flags for page" do
-            p = ::Refinery::Page.find('news')
-            within "#page_#{p.id}" do
+            visit refinery.admin_pages_path
+
+            within "#page_#{news_page.id}" do
               page.should have_css("img[src='/assets/refinery/icons/flags/en.png']")
               page.should have_css("img[src='/assets/refinery/icons/flags/ru.png']")
             end
           end
 
           it "shows title in admin menu in current admin locale" do
-            p = ::Refinery::Page.find('news')
-            within "#page_#{p.id}" do
+            visit refinery.admin_pages_path
+
+            within "#page_#{news_page.id}" do
               page.should have_content('News')
             end
           end
 
           it "uses the slug from the default locale in admin" do
-            p = ::Refinery::Page.find('news')
-            within "#page_#{p.id}" do
+            visit refinery.admin_pages_path
+
+            within "#page_#{news_page.id}" do
               page.find_link('Edit this page')[:href].should include('news')
             end
           end
@@ -365,7 +380,7 @@ module Refinery
             visit "/"
 
             within "#menu" do
-              page.find_link('News')[:href].should include('news')
+              page.find_link(news_page.title)[:href].should include('news')
             end
           end
 
