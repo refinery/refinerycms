@@ -418,21 +418,15 @@ module Refinery
     # https://github.com/resolve/refinerycms/issues/1302
     describe "saving nested page" do
       before do
-        Refinery::I18n.configure do |config|
-          config.enabled = false
-          config.default_locale = :de
-          config.current_locale = :de
-          config.default_frontend_locale = :de
-          config.frontend_locales = [:de]
-          config.locales = { :de => "Deutsch" }
-        end
-
-        Refinery::Pages.configure do |config|
-          config.approximate_ascii = true
-          config.strip_non_ascii = true
-        end
-
-        Dummy::Application.config.i18n.default_locale = :de
+        Refinery::I18n.stub(:enabled).and_return(false)
+        Refinery::I18n.stub(:default_locale).and_return(:de)
+        Refinery::I18n.stub(:current_locale).and_return(:de)
+        Refinery::I18n.stub(:default_frontend_locale).and_return(:de)
+        Refinery::I18n.stub(:frontend_locales).and_return([:de])
+        Refinery::I18n.stub(:locales).and_return({ :de => "Deutsch" })
+        Refinery::Pages.stub(:approximate_ascii).and_return(true)
+        Refinery::Pages.stub(:strip_non_ascii).and_return(true)
+        Dummy::Application.config.i18n.stub(:default_locale).and_return(:de)
       end
 
       let!(:root_page) { FactoryGirl.create(:page, :title => "Root page") }
