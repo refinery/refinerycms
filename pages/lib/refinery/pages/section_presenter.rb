@@ -4,8 +4,7 @@ module Refinery
       include ActionView::Helpers::TagHelper
 
       def self.from_page_part(part)
-        result = self.new(:fallback_html => part.body, :title_symbol => part.title.to_s.gsub(/\ /, '').underscore.to_sym)
-        result
+        self.new(:fallback_html => part.body, :title_symbol => part.title.to_s.gsub(/\ /, '').underscore.to_sym)
       end
 
       def initialize(initial_hash = {})
@@ -14,28 +13,34 @@ module Refinery
         end
       end
 
-      attr_reader :id, :fallback_html, :is_title, :is_hidden
+      attr_reader :id, :fallback_html, :title, :hidden
+      alias_method :title?, :title
+      alias_method :hidden?, :hidden
       attr_accessor :override_html
 
+      def visible?
+        !hidden?
+      end
+
       def has_content?(allowed_to_use_fallback)
-        !is_hidden && content_html(allowed_to_use_fallback).present?
+        visible? && content_html(allowed_to_use_fallback).present?
       end
 
       def wrapped_html(allowed_to_use_fallback)
-        if !is_hidden
-          content = content_html(allowed_to_use_fallback)
-          if content.present?
-            if is_title
-              content_tag(:h1, content, :id => id)
-            else
-              content_tag(:section, content_tag(:div, content, :class => 'inner'), :id => id)
-            end
+        return if hidden?
+
+        content = content_html(allowed_to_use_fallback)
+        if content.present?
+          if title?
+            content_tag(:h1, content, :id => id)
+          else
+            content_tag(:section, content_tag(:div, content, :class => 'inner'), :id => id)
           end
         end
       end
 
       def hide
-        self.is_hidden = true
+        self.hidden = true
       end
 
       def not_present_css_class
@@ -62,7 +67,7 @@ module Refinery
 
       private
 
-        attr_writer :id, :fallback_html, :is_title, :is_hidden
+        attr_writer :id, :fallback_html, :title, :hidden
     end
   end
 end

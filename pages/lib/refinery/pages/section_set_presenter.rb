@@ -13,7 +13,7 @@ module Refinery
       end
 
       def add_default_title_section(title)
-        self << SectionPresenter.new(:id => :body_content_title, :fallback_html => title, :is_title => true)
+        self << SectionPresenter.new(:id => :body_content_title, :fallback_html => title, :title => true)
       end
 
       def add_default_post_page_sections

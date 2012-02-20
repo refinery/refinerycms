@@ -9,11 +9,11 @@ module Refinery
       end
 
       it "allows access to constructor arguments" do
-        section = SectionPresenter.new(:fallback_html => 'foobar', :id => 'mynode', :is_title => true, :is_hidden => true)
+        section = SectionPresenter.new(:fallback_html => 'foobar', :id => 'mynode', :title => true, :hidden => true)
         section.fallback_html.should == 'foobar'
         section.id.should == 'mynode'
-        section.is_title.should == true
-        section.is_hidden.should == true
+        section.should be_title
+        section.should be_hidden
       end
 
       it "can be built from a page part" do
@@ -23,9 +23,19 @@ module Refinery
         section.id.should == :a_wonderful_page_part
       end
 
+      it "should be visible if not hidden" do
+        section = SectionPresenter.new(:hidden => false)
+        section.should be_visible
+      end
+
+      it "should be not visible if hidden" do
+        section = SectionPresenter.new(:hidden => true)
+        section.should_not be_visible
+      end
+
       describe "when building html for a section" do
         it "wont show a hidden section" do
-          section = SectionPresenter.new(:fallback_html => 'foobar', :is_hidden => true)
+          section = SectionPresenter.new(:fallback_html => 'foobar', :hidden => true)
           section.has_content?(true).should be_false
           section.wrapped_html(true).should be_nil
         end
@@ -38,7 +48,7 @@ module Refinery
         end
 
         it "wraps a title section in a title element" do
-          section = SectionPresenter.new(:fallback_html => 'foobar', :is_title => true)
+          section = SectionPresenter.new(:fallback_html => 'foobar', :title => true)
           section.has_content?(true).should be_true
           section.wrapped_html(true).should == '<h1>foobar</h1>'
         end
@@ -50,7 +60,7 @@ module Refinery
         end
 
         it "will use the specified id on a title section" do
-          section = SectionPresenter.new(:fallback_html => 'foobar', :id => 'mynode', :is_title => true)
+          section = SectionPresenter.new(:fallback_html => 'foobar', :id => 'mynode', :title => true)
           section.has_content?(true).should be_true
           section.wrapped_html(true).should == '<h1 id="mynode">foobar</h1>'
         end

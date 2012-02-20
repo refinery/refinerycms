@@ -3,9 +3,9 @@ require "spec_helper"
 module Refinery
   module Pages
     describe SectionSetPresenter do
-      let(:part)             { double(PagePart, :body => 'part_body', :title => 'A Wonderful Page Part') }
-      let(:part2)            { double(PagePart, :body => 'part_body2', :title => 'Another Wonderful Page Part') }
-      let(:title)            { 'This Great Page' }
+      let(:part)  { double(PagePart, :body => 'part_body', :title => 'A Wonderful Page Part') }
+      let(:part2) { double(PagePart, :body => 'part_body2', :title => 'Another Wonderful Page Part') }
+      let(:title) { 'This Great Page' }
 
       describe "when building for page" do
         let(:page_with_one_part) { double(Page, :parts => [part]) }
@@ -40,7 +40,7 @@ module Refinery
       end
 
       describe "when building css classes for blank sections" do
-        let(:section)        { double(SectionPresenter, :not_present_css_class => 'no_section1') }
+        let(:section) { double(SectionPresenter, :not_present_css_class => 'no_section1') }
 
         it "includes css class for any section which doesnt have content" do
           section.stub(:has_content?).with(true).and_return(false)
@@ -60,8 +60,8 @@ module Refinery
       end
 
       describe "when hiding sections" do
-        let(:section1)  { double(SectionPresenter, :id => 'foo') }
-        let(:section2)  { double(SectionPresenter, :id => 'bar') }
+        let(:section1) { double(SectionPresenter, :id => 'foo') }
+        let(:section2) { double(SectionPresenter, :id => 'bar') }
 
         before do
           @set = SectionSetPresenter.new
