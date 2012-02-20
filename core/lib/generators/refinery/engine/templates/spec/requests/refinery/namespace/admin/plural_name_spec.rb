@@ -1,3 +1,4 @@
+# encoding: utf-8
 require "spec_helper"
 
 describe Refinery do
@@ -60,6 +61,106 @@ describe Refinery do
               Refinery::<%= namespacing %>::<%= class_name %>.count.should == 1
             end
           end
+<% if localized? %>
+          context "with translations" do
+            before(:each) do
+              Refinery::I18n.stub(:frontend_locales).and_return([:en, :cs])
+            end
+
+            describe "add a page with title for default locale" do
+              before do
+                visit refinery.<%= namespacing.underscore %>_admin_<%= plural_name %>_path
+                click_link "Add New <%= singular_name.titleize %>"
+                fill_in "<%= title.name.titleize %>", :with => "First column"
+                click_button "Save"
+              end
+
+              it "should succeed" do
+                Refinery::<%= namespacing %>::<%= class_name %>.count.should == 1
+              end
+
+              it "should show locale flag for page" do
+                p = Refinery::<%= namespacing %>::<%= class_name %>.last
+                within "#<%= singular_name %>_#{p.id}" do
+                  page.should have_css("img[src='/assets/refinery/icons/flags/en.png']")
+                end
+              end
+
+              it "should show <%= title.name %> in the admin menu" do
+                p = Refinery::<%= namespacing %>::<%= class_name %>.last
+                within "#<%= singular_name %>_#{p.id}" do
+                  page.should have_content('First column')
+                end
+              end
+            end
+
+            describe "add a <%= singular_name %> with title for primary and secondary locale" do
+              before do
+                visit refinery.<%= namespacing.underscore %>_admin_<%= plural_name %>_path
+                click_link "Add New <%= singular_name.titleize %>"
+                fill_in "<%= title.name.titleize %>", :with => "First column"
+                click_button "Save"
+
+                visit refinery.<%= namespacing.underscore %>_admin_<%= plural_name %>_path
+                within ".actions" do
+                  click_link "Edit this <%= singular_name %>"
+                end
+                within "#switch_locale_picker" do
+                  click_link "Cs"
+                end
+                fill_in "<%= title.name.titleize %>", :with => "First translated column"
+                click_button "Save"
+              end
+
+              it "should succeed" do
+                Refinery::<%= namespacing %>::<%= class_name %>.count.should == 1
+                Refinery::<%= namespacing %>::<%= class_name %>::Translation.count.should == 2
+              end
+
+              it "should show locale flag for page" do
+                p = Refinery::<%= namespacing %>::<%= class_name %>.last
+                within "#<%= singular_name %>_#{p.id}" do
+                  page.should have_css("img[src='/assets/refinery/icons/flags/en.png']")
+                  page.should have_css("img[src='/assets/refinery/icons/flags/cs.png']")
+                end
+              end
+
+              it "should show <%= title.name %> in backend locale in the admin menu" do
+                p = Refinery::<%= namespacing %>::<%= class_name %>.last
+                within "#<%= singular_name %>_#{p.id}" do
+                  page.should have_content('First column')
+                end
+              end
+            end
+
+            describe "add a <%= title.name %> with title only for secondary locale" do
+              before do
+                visit refinery.<%= namespacing.underscore %>_admin_<%= plural_name %>_path
+                click_link "Add New <%= singular_name.titleize %>"
+                within "#switch_locale_picker" do
+                  click_link "Cs"
+                end
+
+                fill_in "<%= title.name.titleize %>", :with => "First translated column"
+                click_button "Save"
+              end
+
+              it "should show title in backend locale in the admin menu" do
+                p = Refinery::<%= namespacing %>::<%= class_name %>.last
+                within "#<%= singular_name %>_#{p.id}" do
+                  page.should have_content('First translated column')
+                end
+              end
+
+              it "should show locale flag for page" do
+                p = Refinery::<%= namespacing %>::<%= class_name %>.last
+                within "#<%= singular_name %>_#{p.id}" do
+                  page.should have_css("img[src='/assets/refinery/icons/flags/cs.png']")
+                end
+              end
+            end
+          end
+<% end %>
         end
 
         describe "edit" do

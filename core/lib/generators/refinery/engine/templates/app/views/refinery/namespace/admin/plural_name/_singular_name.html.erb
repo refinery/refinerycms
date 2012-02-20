@@ -1,7 +1,19 @@
 <li class='clearfix record <%%= cycle("on", "on-hover") %>' id="<%%= dom_id(<%= singular_name %>) -%>">
   <span class='title'>
     <%%= <%= singular_name %><% if (title = attributes.detect { |a| a.type.to_s == "string" }).present? -%>.<%= title.name %><% else %>.title<%end %> %>
-    <span class="preview">&nbsp;</span>
+<% if localized? %>
+    <%% if Refinery.i18n_enabled? and Refinery::I18n.frontend_locales.many? %>
+      <span class='preview'>
+        <%% <%= singular_name %>.translations.each do |translation| %>
+          <%% if translation.title.present? %>
+            <%%= link_to refinery_icon_tag("flags/#{translation.locale}.png", :size => '16x11'),
+                         refinery.edit_<%= namespacing.underscore %>_admin_<%= singular_name %>_path(<%= singular_name %>, :switch_locale => translation.locale),
+                         :class => 'locale' %>
+          <%% end %>
+        <%% end %>
+      </span>
+    <%% end %>
+<% end %>
   </span>
   <span class='actions'>
     <% unless skip_frontend? %>

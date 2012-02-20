@@ -9,6 +9,7 @@ module Refinery
     class_option :namespace, :type => :string, :default => nil, :banner => 'NAMESPACE', :required => false
     class_option :engine, :type => :string, :default => nil, :banner => 'ENGINE', :required => false
     class_option :skip_frontend, :type => :boolean, :default => false, :required => false, :desc => 'Generate engine without frontend'
+    class_option :i18n, :type => :array, :default => [], :required => false, :banner => "field field", :desc => 'Indicates generated fields'
     remove_class_option :skip_namespace
 
     def namespacing
@@ -53,6 +54,18 @@ module Refinery
 
     def skip_frontend?
       options[:skip_frontend]
+    end
+
+    def localized?
+      localized_attributes.any?
+    end
+
+    def localized_attributes
+      @localized_attributes ||= attributes.select{|a| options[:i18n].include?(a.name)}
+    end
+
+    def attributes_for_translation_table
+      localized_attributes.inject([]) {|memo, attr| memo << ":#{attr.name} => :#{attr.type}"}.join(', ')
     end
 
     def generate
@@ -188,7 +201,7 @@ module Refinery
     end
 
     def reject_file?(file)
-      skip_frontend? and (file.to_s.include?('app') and not file.to_s.scan(/admin|models/).any?)
+      (skip_frontend? and (file.to_s.include?('app') and not file.to_s.scan(/admin|models/).any?)) or (not localized? and file.to_s.include?('locale_picker'))
     end
   end
 end
