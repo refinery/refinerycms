@@ -87,7 +87,7 @@ module Refinery
                   unless request.xhr?
                     redirect_to :back
                   else
-                    render '/refinery/message'
+                    render :partial => '/refinery/message'
                   end
                 end
               else
@@ -97,9 +97,10 @@ module Refinery
               unless request.xhr?
                 render :action => 'new'
               else
-                render '/refinery/admin/error_messages',
-                       :object => @#{singular_name},
-                       :include_object_name => true
+                render :partial => '/refinery/admin/error_messages', :locals => {
+                         :object => @#{singular_name},
+                         :include_object_name => true
+                       }
               end
             end
           end
@@ -122,7 +123,7 @@ module Refinery
                   unless request.xhr?
                     redirect_to :back
                   else
-                    render '/refinery/message'
+                    render :partial => '/refinery/message'
                   end
                 end
               else
@@ -132,9 +133,10 @@ module Refinery
               unless request.xhr?
                 render :action => 'edit'
               else
-                render '/refinery/admin/error_messages',
-                       :object => @#{singular_name},
-                       :include_object_name => true
+                render :partial => '/refinery/admin/error_messages', :locals => {
+                         :object => @#{singular_name},
+                         :include_object_name => true
+                       }
               end
             end
           end
@@ -203,7 +205,7 @@ module Refinery
                 search_all_#{plural_name} if searching?
                 paginate_all_#{plural_name}
 
-                render '#{plural_name}' if #{options[:xhr_paging].inspect} && request.xhr?
+                render :partial => '#{plural_name}' if #{options[:xhr_paging].inspect} && request.xhr?
               end
             )
           else
@@ -224,7 +226,7 @@ module Refinery
               def index
                 paginate_all_#{plural_name}
 
-                render '#{plural_name}' if #{options[:xhr_paging].inspect} && request.xhr?
+                render :partial => '#{plural_name}' if #{options[:xhr_paging].inspect} && request.xhr?
               end
             )
           else
