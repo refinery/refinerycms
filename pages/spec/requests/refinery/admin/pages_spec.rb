@@ -7,8 +7,6 @@ module Refinery
       login_refinery_user
 
       context "when no pages" do
-        before(:each) { Refinery::Page.destroy_all }
-
         it "invites to create one" do
           visit refinery.admin_pages_path
           page.should have_content(%q{There are no pages yet. Click "Add new page" to add your first page.})
@@ -26,8 +24,6 @@ module Refinery
         end
 
         context "when no pages" do
-          before(:each) { Refinery::Page.destroy_all }
-
           it "doesn't show reorder pages link" do
             visit refinery.admin_pages_path
 
@@ -52,39 +48,42 @@ module Refinery
         end
 
         context "when sub pages exist" do
-          before do
-            @parent = FactoryGirl.create(:page, :title => "Our Company")
-            FactoryGirl.create(:page, :parent => @parent, :title => 'Our Team')
-            @locations = FactoryGirl.create(:page, :parent => @parent, :title => 'Our Locations')
-            FactoryGirl.create(:page, :parent => @locations, :title => 'New York')
-          end
+          let(:company) { FactoryGirl.create(:page, :title => "Our Company") }
+          let(:team) { FactoryGirl.create(:page, :parent => company, :title => 'Our Team') }
+          let(:locations) { FactoryGirl.create(:page, :parent => company, :title => 'Our Locations')}
+          let(:location) { FactoryGirl.create(:page, :parent => locations, :title => 'New York') }
 
           context "with auto expand option turned off" do
             before do
               Refinery::Pages.auto_expand_admin_tree = false
 
+              # Pre load pages
+              location
+              team
+
               visit refinery.admin_pages_path
             end
 
             it "show parent page" do
-              page.should have_content("Our Company")
+
+              page.should have_content(company.title)
             end
 
             it "doesn't show children" do
-              page.should_not have_content("Our Team")
-              page.should_not have_content("Our Locations")
+              page.should_not have_content(team.title)
+              page.should_not have_content(locations.title)
             end
 
             it "expands children", :js => true do
               find(".toggle").click
 
-              page.should have_content("Our Team")
-              page.should have_content("Our Locations")
+              page.should have_content(team.title)
+              page.should have_content(locations.title)
             end
 
             it "expands children when nested mutliple levels deep", :js => true do
-              find("#page_#{@parent.id} .toggle").click
-              find("#page_#{@locations.id} .toggle").click
+              find("#page_#{company.id} .toggle").click
+              find("#page_#{locations.id} .toggle").click
 
               page.should have_content("New York")
             end
@@ -94,12 +93,16 @@ module Refinery
             before do
               Refinery::Pages.auto_expand_admin_tree = true
 
+              # Pre load pages
+              location
+              team
+
               visit refinery.admin_pages_path
             end
 
             it "shows children" do
-              page.should have_content("Our Team")
-              page.should have_content("Our Locations")
+              page.should have_content(team.title)
+              page.should have_content(locations.title)
             end
           end
         end
