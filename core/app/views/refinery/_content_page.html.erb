@@ -57,7 +57,6 @@
     end
   end
 -%>
-
 <section id='body_content'<%= " class='#{css.join(' ')}'" if css.present? %>>
   <%= raw sections.map{|section| section[:html]}.join("\n") -%>
 </section>

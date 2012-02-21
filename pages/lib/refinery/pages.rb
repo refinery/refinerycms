@@ -3,7 +3,6 @@ require 'awesome_nested_set'
 require 'globalize3'
 require 'friendly_id'
 require 'seo_meta'
-require 'draper'
 
 module Refinery
   autoload :PagesGenerator, 'generators/refinery/pages/pages_generator'

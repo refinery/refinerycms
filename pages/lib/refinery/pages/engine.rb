@@ -9,17 +9,6 @@ module Refinery
       isolate_namespace Refinery
       engine_name :refinery_pages
 
-	  class << self
-	  	# Require/load (based on Rails app.config) all decorators from app/decorators/ and vendor/engines/*
-        def load_decorators
-          [Rails.root, Refinery::Plugins.registered.pathnames].flatten.map { |p|
-            Dir[p.join('app', 'decorators', '**', '*_decorator.rb')]
-          }.flatten.uniq.each do |decorator|
-            Rails.application.config.cache_classes ? require(decorator) : load(decorator)
-          end
-        end
-	  end
-
       config.autoload_paths += %W( #{config.root}/lib )
 
       config.to_prepare do |app|
@@ -30,7 +19,6 @@ module Refinery
       after_inclusion do
         ::ApplicationController.send :include, Refinery::Pages::InstanceMethods
         Refinery::AdminController.send :include, Refinery::Pages::Admin::InstanceMethods
-        method(:load_decorators).to_proc
       end
 
       initializer "append marketable routes", :before => :set_routes_reloader do |app|

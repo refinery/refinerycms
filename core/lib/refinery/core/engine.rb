@@ -10,6 +10,15 @@ module Refinery
       engine_name :refinery_core
 
       class << self
+        # Require/load (based on Rails app.config) all decorators from app/decorators/ and vendor/engines/*
+        def load_decorators
+          [Rails.root, Refinery::Plugins.registered.pathnames].flatten.map { |p|
+            Dir[p.join('app', 'decorators', '**', '*_decorator.rb')]
+          }.flatten.uniq.each do |decorator|
+            Rails.application.config.cache_classes ? require(decorator) : load(decorator)
+          end
+        end
+
         # Performs the Refinery inclusion process which extends the currently loaded Rails
         # applications with Refinery's controllers and helpers. The process is wrapped by
         # a before_inclusion and after_inclusion step that calls procs registered by the
@@ -32,6 +41,8 @@ module Refinery
 
       # Include the refinery controllers and helpers dynamically
       config.to_prepare &method(:refinery_inclusion!).to_proc
+
+      after_inclusion &method(:load_decorators).to_proc
 
       # Wrap errors in spans
       config.to_prepare do
