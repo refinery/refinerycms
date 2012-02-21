@@ -1,6 +1,6 @@
 module Refinery
   module Admin
-    class DashboardController < ::Refinery::AdminController
+    class DashboardController < Refinery::AdminController
 
       def index
         @recent_activity = []
@@ -10,8 +10,7 @@ module Refinery
             plugin.activity.each do |activity|
               @recent_activity << activity.klass.where(activity.conditions).
                                                  order(activity.order).
-                                                 limit(activity.limit).
-                                                 all
+                                                 limit(activity.limit)
             end
           rescue
             logger.warn "#{$!.class.name} raised while getting recent activity for dashboard."
@@ -22,20 +21,17 @@ module Refinery
 
         @recent_activity = @recent_activity.flatten.compact.sort { |x,y|
           y.updated_at <=> x.updated_at
-        }.first(Refinery::Dashboard.config.activity_show_limit)
+        }.first(Refinery::Dashboard.activity_show_limit)
 
-        @recent_inquiries = if Refinery::Plugins.active.detect { |p| p.name == "refinery_inquiries" }
-          Inquiry.latest(Refinery::Dashboard.config.activity_show_limit)
+        @recent_inquiries = if Refinery::Plugins.active.find_by_name("refinery_inquiries")
+          Inquiry.latest(Refinery::Dashboard.activity_show_limit)
         else
           []
         end
       end
 
       def disable_upgrade_message
-        ::Refinery::Setting.set(:show_internet_explorer_upgrade_message, {
-          :value => false,
-          :scoping => 'refinery'
-        })
+        Refinery::Core.show_internet_explorer_upgrade_message = false
         render :nothing => true
       end
 

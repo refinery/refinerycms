@@ -2,6 +2,10 @@ module Refinery
   module Testing
     module ControllerMacros
       module Authentication
+        def self.extended(base)
+          base.send(:include, Devise::TestHelpers)
+        end
+
         def login_user
           before(:each) do
             @user = FactoryGirl.create(:user)
@@ -15,6 +19,14 @@ module Refinery
             @refinery_user = FactoryGirl.create(:refinery_user)
             @request.env["devise.mapping"] = Devise.mappings[:admin]
             sign_in @refinery_user
+          end
+        end
+
+        def login_refinery_superuser
+          before(:each) do
+            @refinery_superuser = FactoryGirl.create(:refinery_superuser)
+            @request.env["devise.mapping"] = Devise.mappings[:admin]
+            sign_in @refinery_superuser
           end
         end
 

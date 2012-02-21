@@ -1,11 +1,9 @@
-require 'refinerycms-<%= plural_name %>'
-
 module Refinery
   module <%= class_name.pluralize %><%= 'Engine' if plural_name == singular_name %>
     class Engine < Rails::Engine
       include Refinery::Engine
 
-      isolate_namespace Refinery
+      isolate_namespace Refinery::<%= class_name.pluralize %>
       engine_name :refinery_<%= plural_name %>
 
       config.after_initialize do

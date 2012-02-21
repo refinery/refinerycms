@@ -7,8 +7,6 @@ module Refinery
 
     # This action is usually accessed with the root path, normally '/'
     def home
-      error_404 and return unless @page
-
       render_with_templates?
     end
 
@@ -23,54 +21,75 @@ module Refinery
     #   GET /about/mission
     #
     def show
-      if @page.try(:live?) || (refinery_user? && current_refinery_user.authorized_plugins.include?("refinery_pages"))
-        # if the admin wants this to be a "placeholder" page which goes to its first child, go to that instead.
-        if @page.skip_to_first_child && (first_live_child = @page.children.order('lft ASC').live.first).present?
-          redirect_to main_app.url_for(first_live_child.url) and return
-        elsif @page.link_url.present?
-          redirect_to @page.link_url and return
-        end
-        # 301 redirect if there is a newer slug
-        unless "#{params[:path]}/#{params[:id]}".split('/').last == @page.friendly_id
-          redirect_to main_app.url_for(@page.url), :status => 301 and return
+      if current_user_can_view_page?
+        if should_skip_to_first_child?
+          redirect_to refinery.url_for(first_live_child.url)
+        elsif page.link_url.present?
+          redirect_to page.link_url
+        else
+          if requested_friendly_id != page.friendly_id
+            redirect_to refinery.url_for(page.url), :status => 301
+          else
+            render_with_templates?
+          end
         end
       else
-        error_404 and return
+        error_404
       end
-
-      render_with_templates?
     end
 
   protected
+
+    def requested_friendly_id
+      "#{params[:path]}/#{params[:id]}".split('/').last
+    end
+
+    def should_skip_to_first_child?
+      page.skip_to_first_child && first_live_child
+    end
+
+    def current_user_can_view_page?
+      page.live? || current_refinery_user_can_access?("refinery_pages")
+    end
+
+    def current_refinery_user_can_access?(plugin)
+      refinery_user? && current_refinery_user.authorized_plugins.include?(plugin)
+    end
+
+    def first_live_child
+      page.children.order('lft ASC').live.first
+    end
+
     def find_page
       @page ||= case action_name
-      when "home"
-        ::Refinery::Page.where(:link_url => '/').first
-      when "show"
-        ::Refinery::Page.find("#{params[:path]}/#{params[:id]}".split('/').last)
-      end
+                when "home"
+                  Refinery::Page.where(:link_url => '/').first
+                when "show"
+                  if params[:id]
+                    Refinery::Page.find(params[:id])
+                  elsif params[:path]
+                    Refinery::Page.find_by_path(params[:path])
+                  end
+                end
+      @page || error_404
     end
 
     alias_method :page, :find_page
 
     def render_with_templates?
-      layouts = ::Refinery::Setting.find_or_set(:use_layout_templates, false, :scoping => 'pages')
-      views   = ::Refinery::Setting.find_or_set(:use_view_templates, false, :scoping => 'pages')
-
       render_options = {}
-      render_options[:layout] = @page.layout_template if layouts && @page.layout_template.present?
-      render_options[:action] = @page.view_template if views && @page.view_template.present?
-
+      if Refinery::Pages.use_layout_templates && page.layout_template.present?
+        render_options[:layout] = page.layout_template
+      end
+      if Refinery::Pages.use_view_templates && page.view_template.present?
+        render_options[:action] = page.view_template
+      end
       render render_options if render_options.any?
     end
 
     def write_cache?
-      if ::Refinery::Setting.find_or_set(:cache_pages_full, {
-        :restricted => true,
-        :value => false,
-        :form_value_type => 'check_box'
-      })
-        cache_page(response.body, File.join('', 'refinery', 'cache', 'pages', request.path).to_s)
+      if Refinery::Pages.cache_pages_full
+        cache_page(response.body, File.join('', 'refinery', 'cache', 'pages', request.path.sub("//", "/")).to_s)
       end
     end
   end

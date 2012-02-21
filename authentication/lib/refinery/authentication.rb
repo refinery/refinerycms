@@ -1,4 +1,6 @@
 require 'refinerycms-core'
+require 'devise'
+require 'friendly_id'
 
 module Refinery
   autoload :AuthenticatedSystem, 'refinery/authenticated_system'
@@ -11,13 +13,8 @@ module Refinery
   end
 
   module Authentication
-    require 'refinery/authentication/engine' if defined?(Rails)
-
-    include ActiveSupport::Configurable
-
-    config_accessor :superuser_can_assign_roles
-
-    self.superuser_can_assign_roles = false
+    require 'refinery/authentication/engine'
+    require 'refinery/authentication/configuration'
 
     class << self
       def factory_paths

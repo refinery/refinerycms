@@ -20,18 +20,18 @@ Gem::Specification.new do |s|
   s.files             = `git ls-files`.split("\n")
   s.test_files        = `git ls-files -- spec/*`.split("\n")
   s.executables       = `git ls-files -- bin/*`.split("\n").map { |f| File.basename(f) }
-  
-  s.add_dependency 'acts_as_indexed',             '~> 0.7'
+
+  s.add_dependency 'acts_as_indexed',             '~> 0.7.7'
   s.add_dependency 'friendly_id_globalize3',      '~> 3.2.1'
-  s.add_dependency 'globalize3',                  '~> 0.2.0.beta3'
-  s.add_dependency 'awesome_nested_set',          '~> 2.0'
-  s.add_dependency 'rails',                       '>= 3.1.3'
+  s.add_dependency 'globalize3',                  '~> 0.2.0.beta8'
+  s.add_dependency 'awesome_nested_set',          '~> 2.1.0'
+  s.add_dependency 'rails',                       ['>= 3.1.3', '< 3.3']
   s.add_dependency 'truncate_html',               '~> 0.5'
   s.add_dependency 'will_paginate',               '~> 3.0.2'
-  s.add_dependency 'sass-rails',                  '~> 3.1.5'
-  s.add_dependency 'coffee-rails',                '~> 3.1.1'
-  s.add_dependency 'uglifier'
-  s.add_dependency 'jquery-rails'
+  s.add_dependency 'sass-rails',                  '~> 3.2.3'
+  s.add_dependency 'coffee-rails',                '~> 3.2.1'
+  s.add_dependency 'uglifier',                    '>= 1.0.3'
+  s.add_dependency 'jquery-rails',                '~> 2.0.0'
 
   s.add_dependency 'refinerycms-settings',        version
 end

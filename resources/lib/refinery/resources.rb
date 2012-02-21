@@ -6,18 +6,11 @@ module Refinery
   autoload :ResourcesGenerator, 'generators/refinery/resources/resources_generator'
 
   module Resources
-    require 'refinery/resources/engine' if defined?(Rails)
+    require 'refinery/resources/engine'
+    require 'refinery/resources/configuration'
 
     autoload :Dragonfly, 'refinery/resources/dragonfly'
     autoload :Validators, 'refinery/resources/validators'
-
-    include ActiveSupport::Configurable
-
-    config_accessor :max_file_size, :pages_per_dialog, :pages_per_admin_index
-
-    self.max_file_size = 52428800
-    self.pages_per_dialog = 12
-    self.pages_per_admin_index = 20
 
     class << self
       def root

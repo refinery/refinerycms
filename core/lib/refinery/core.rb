@@ -11,7 +11,6 @@ module Refinery
 
   autoload :Activity, 'refinery/activity'
   autoload :ApplicationController, 'refinery/application_controller'
-  autoload :Configuration, 'refinery/configuration'
   autoload :Engine, 'refinery/engine'
   autoload :Menu, 'refinery/menu'
   autoload :MenuItem, 'refinery/menu_item'
@@ -41,21 +40,6 @@ module Refinery
 
   class << self
     @@engines = []
-
-    # Convenience method for Refinery::Core#rescue_not_found
-    def rescue_not_found
-      Core.config.rescue_not_found
-    end
-
-    # Convenience method for Refinery::Core#s3_backend
-    def s3_backend
-      Core.config.s3_backend
-    end
-
-    # Convenience method for Refinery::Core#base_cache_key
-    def base_cache_key
-      Core.config.base_cache_key
-    end
 
     # Returns an array of modules representing currently registered Refinery Engines
     #
@@ -130,7 +114,7 @@ module Refinery
       !!(defined?(::Refinery::I18n) && ::Refinery::I18n.enabled?)
     end
 
-    # Returns a Pathname to the root of the RefineryCMS project
+    # Returns a Pathname to the root of the Refinery CMS project
     def root
       @root ||= Pathname.new(File.expand_path('../../../../', __FILE__))
     end
@@ -158,6 +142,26 @@ module Refinery
       Refinery::Version.to_s
     end
 
+    # Returns string version of url helper path. We need this to temporary support namespaces
+    # like Refinery::Image and Refinery::Blog::Post
+    #
+    # Example:
+    #   Refinery.route_for_model("Refinery::Image") => "admin_image_path"
+    #   Refinery.route_for_model(Refinery::Image, true) => "admin_images_path"
+    #   Refinery.route_for_model(Refinery::Blog::Post) => "blog_admin_post_path"
+    #   Refinery.route_for_model(Refinery::Blog::Post, true) => "blog_admin_posts_path"
+    def route_for_model(klass, plural = false)
+      parts = klass.to_s.underscore.split('/').delete_if { |p| p.blank? }
+
+      resource_name = plural ? parts[-1].pluralize : parts[-1]
+
+      if parts.size == 2
+        "admin_#{resource_name}_path"
+      elsif parts.size > 2
+        [parts[1..-2].join("_"), "admin", resource_name, "path"].join("_")
+      end
+    end
+
     private
       def validate_engine!(const)
         unless const.respond_to?(:root) && const.root.is_a?(Pathname)
@@ -167,16 +171,8 @@ module Refinery
   end
 
   module Core
-    require 'refinery/core/engine' if defined?(Rails)
-
-    include ActiveSupport::Configurable
-
-    config_accessor :rescue_not_found, :s3_backend, :base_cache_key, :site_name
-
-    self.rescue_not_found = false
-    self.s3_backend = false
-    self.base_cache_key = :refinery
-    self.site_name = "Company Name"
+    require 'refinery/core/engine'
+    require 'refinery/core/configuration'
 
     class << self
       def root

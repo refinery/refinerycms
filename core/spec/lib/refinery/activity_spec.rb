@@ -32,12 +32,7 @@ describe Refinery::Activity do
 
   describe "#url" do
     it "should return the url" do
-      # we're stubbing here because X::Y::Z is just namespaced dummy class
-      # which isn't inheriting from AR::Base and it doesn't have any routes
-      # associated with it
-      X::Y::Z.stub_chain(:model_name, :param_key).and_return("y_z")
-
-      activity.url.should == "edit_refinery_y_zs_admin_y_z_path"
+      activity.url.should == "refinery.edit_y_admin_z_path"
     end
   end
 end

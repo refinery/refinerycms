@@ -34,7 +34,6 @@ ko:
       pages:
         delete: 이 페이지 삭제
         edit: 이 페이지 수정
-        reserved_system_word: "죄송합니다. 시스템 내부에서 사용 중인 이름은 사용할 수 없습니다."
         page:
           view_live_html: 실제 페이지 보기 <br/><em>(새 창에서 열림)</em>
           hidden: 숨김

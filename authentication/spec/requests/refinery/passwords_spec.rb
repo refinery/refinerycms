@@ -6,14 +6,14 @@ module Refinery
       let!(:user) { FactoryGirl.create(:refinery_user, :email => "refinery@refinerycms.com") }
 
       it "asks user to specify email address" do
-        visit new_refinery_user_session_url
+        visit refinery.new_refinery_user_session_path
         click_link "I forgot my password"
         page.should have_content("Please enter the email address for your account.")
       end
 
       context "when existing email specified" do
         it "shows success message" do
-          visit new_refinery_user_password_url
+          visit refinery.new_refinery_user_password_path
           fill_in "refinery_user_email", :with => user.email
           click_button "Reset password"
           page.should have_content("An email has been sent to you with a link to reset your password.")
@@ -22,7 +22,7 @@ module Refinery
 
       context "when non-existing email specified" do
         it "shows failure message" do
-          visit new_refinery_user_password_url
+          visit refinery.new_refinery_user_password_path
           fill_in "refinery_user_email", :with => "none@refinerycms.com"
           click_button "Reset password"
           page.should have_content("Sorry, 'none@refinerycms.com' isn't associated with any accounts.")
@@ -32,12 +32,13 @@ module Refinery
 
       context "when good reset code" do
         before do
+          user.reset_password_sent_at = 5.minutes.ago
           user.reset_password_token = "refinerycms"
           user.save
         end
 
         it "allows to change password" do
-          visit edit_refinery_user_password_url(:reset_password_token => user.reset_password_token)
+          visit refinery.edit_refinery_user_password_path(:reset_password_token => user.reset_password_token)
           page.should have_content("Pick a new password for #{user.email}")
 
           fill_in "refinery_user_password", :with => "123456"
@@ -49,9 +50,33 @@ module Refinery
       end
 
       context "when invalid reset code" do
+        before do
+          user.reset_password_sent_at = 5.minutes.ago
+          user.reset_password_token = "refinerycms"
+          user.save
+        end
+
         it "shows error message" do
-          visit edit_refinery_user_password_url(:reset_password_token => "hmmm")
+          visit refinery.edit_refinery_user_password_path(:reset_password_token => "hmmm")
           page.should have_content("We're sorry, but this reset code has expired or is invalid.")
+        end
+      end
+
+      context "when expired reset code" do
+        before do
+          user.reset_password_sent_at = 1.day.ago
+          user.reset_password_token = "refinerycms"
+          user.save
+        end
+
+        it "shows error message" do
+          visit refinery.edit_refinery_user_password_path(:reset_password_token => "refinerycms")
+
+          fill_in "refinery_user_password", :with => "123456"
+          fill_in "refinery_user_password_confirmation", :with => "123456"
+          click_button "Reset password"
+
+          page.should have_content("Reset password token has expired, please request a new one")
         end
       end
     end

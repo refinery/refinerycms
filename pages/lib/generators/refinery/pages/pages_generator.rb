@@ -3,7 +3,7 @@ module Refinery
     source_root File.expand_path('../templates', __FILE__)
 
     def generate_pages_initializer
-      template "config/initializers/refinery_pages.rb.erb", File.join(destination_root, "config", "initializers", "refinery_pages.rb")
+      template "config/initializers/refinery/pages.rb.erb", File.join(destination_root, "config", "initializers", "refinery", "pages.rb")
     end
 
     def append_load_seed_data
@@ -11,14 +11,10 @@ module Refinery
       append_file 'db/seeds.rb', :verbose => true do
         <<-EOH
 
-# Added by RefineryCMS Pages engine
+# Added by Refinery CMS Pages engine
 Refinery::Pages::Engine.load_seed
         EOH
       end
-    end
-
-    def install_seo_meta_migrations
-      rake('seo_meta_engine:install:migrations')
     end
 
   end

@@ -6,7 +6,7 @@
         <% @resources.each do |resource| -%>
           <% resource_linked = (resource.url == params[:current_link]) if params[:current_link].present? %>
           <li<%= " class='linked'" if resource_linked %>>
-            <%= link_to "#{resource.title} (#{resource.file_name})", resource.url,
+            <%= link_to "#{resource.title} (#{resource.file_name})", asset_paths.compute_public_path(resource.url, ''),
                         :title => t('.link_to_file'),
                         :rel => resource.title,
                         :class => 'page_link',
@@ -17,14 +17,10 @@
     </div>
   </div>
 
-  <%= will_paginate @resources %>
+  <%= will_paginate @resources, :params => params.dup %>
 
-  <%= render :partial => "/refinery/admin/form_actions",
-             :locals => {
-               :f => nil,
-               :cancel_url => main_app.refinery_admin_resources_path,
-               :submit_button_text => t('.button_text'),
-               :hide_cancel => true,
-               :hide_delete => true
-             } if @app_dialog or @resources.any? %>
+  <%= render '/refinery/admin/form_actions', :f => nil,
+             :submit_button_text => t('.button_text'),
+             :hide_cancel => true,
+             :hide_delete => true if @app_dialog or @resources.any? %>
 </div>

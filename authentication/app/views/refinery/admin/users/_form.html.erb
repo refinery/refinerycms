@@ -1,10 +1,6 @@
-<%= form_for [main_app, :refinery_admin, @user] do |f| %>
+<%= form_for [refinery, :admin, @user] do |f| %>
 
-  <%= render :partial => "/refinery/admin/error_messages",
-             :locals => {
-               :object => @user,
-               :include_object_name => true
-             } %>
+  <%= render '/refinery/admin/error_messages', :object => @user, :include_object_name => true %>
 
   <div class='field'>
     <%= f.label :username %>
@@ -33,7 +29,7 @@
     </span>
     <ul id='plugins' class='checkboxes'>
       <% @available_plugins.each do |plugin| -%>
-        <% if ::Refinery::Plugins.always_allowed.names.include?(plugin[:name]) or
+        <% if Refinery::Plugins.always_allowed.names.include?(plugin[:name]) or
               (plugin[:name] == 'refinery_users' and @user.id == current_refinery_user.id) %>
           <%= hidden_field_tag 'user[plugins][]', plugin[:name],
                                :id => "plugins_#{plugin[:name]}" %>
@@ -52,7 +48,7 @@
     </ul>
   </div>
 
-  <% if current_refinery_user.has_role?(:superuser) and Refinery::Authentication.config.superuser_can_assign_roles %>
+  <% if current_refinery_user.has_role?(:superuser) and Refinery::Authentication.superuser_can_assign_roles %>
     <div class='field role_access'>
       <span class='label_with_help'>
         <%= f.label :role_access, t('.role_access'), :class => "title_label" %>
@@ -73,14 +69,11 @@
     </div>
   <% end %>
 
-  <%= render :partial => "/refinery/admin/form_actions",
-             :locals => {
-               :f => f,
-               :continue_editing => false,
-               :hide_delete => !current_refinery_user.can_delete?(@user),
-               :delete_title => t('delete', :scope => 'refinery.admin.users'),
-               :delete_confirmation => t('message', :scope => 'refinery.admin.delete', :title => @user.username)
-             } %>
+  <%= render '/refinery/admin/form_actions', :f => f,
+             :continue_editing => false,
+             :hide_delete => !current_refinery_user.can_delete?(@user),
+             :delete_title => t('delete', :scope => 'refinery.admin.users'),
+             :delete_confirmation => t('message', :scope => 'refinery.admin.delete', :title => @user.username) %>
 <% end %>
 
 <% content_for :javascripts do %>

@@ -1,5 +1,5 @@
 module Refinery
-  class Setting < ActiveRecord::Base
+  class Setting < Refinery::Core::BaseModel
 
     FORM_VALUE_TYPES = [
       ['Multi-line', 'text_area'],
@@ -17,6 +17,8 @@ module Refinery
     attr_accessible :name, :value, :destroyable,
                     :scoping, :restricted, :callback_proc_as_string,
                     :form_value_type
+
+    has_friendly_id :name, :use_slug => true
 
     before_save do |setting|
       setting.restricted = false if setting.restricted.nil?
@@ -81,7 +83,7 @@ module Refinery
       end
 
       def cache_key
-        [Refinery.base_cache_key, 'settings_cache'].join('_')
+        [Refinery::Core.base_cache_key, 'settings_cache'].join('_')
       end
 
       # find_or_set offers a convenient way to

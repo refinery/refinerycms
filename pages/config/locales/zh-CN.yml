@@ -35,7 +35,6 @@ zh-CN:
         delete: 永久删除此页面
         edit: 编辑此页面
         new: 新建子页面
-        reserved_system_word: "对不起, 这个标题被系统保留使用."
         page:
           view_live_html: 浏览这个页面 <br/><em>(在新窗口打开)</em>
           hidden: 隐藏

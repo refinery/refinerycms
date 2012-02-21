@@ -1,7 +1,7 @@
 class Create<%= class_name.pluralize %> < ActiveRecord::Migration
 
   def self.up
-    create_table :<%= table_name %> do |t|
+    create_table :refinery_<%= table_name %> do |t|
 <%
   attributes.each do |attribute|
     # turn image or resource into what it was supposed to be which is an integer reference to an image or resource.
@@ -20,7 +20,7 @@ class Create<%= class_name.pluralize %> < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index :<%= table_name %>, :id
+    add_index :refinery_<%= table_name %>, :id
 
     if (seed = Rails.root.join('db', 'seeds', '<%= class_name.pluralize.underscore.downcase %>.rb')).exist?
       load(seed)
@@ -36,7 +36,7 @@ class Create<%= class_name.pluralize %> < ActiveRecord::Migration
       ::Refinery::Page.delete_all({:link_url => "/<%= plural_name %>"})
     end
 
-    drop_table :<%= table_name %>
+    drop_table :refinery_<%= table_name %>
   end
 
 end

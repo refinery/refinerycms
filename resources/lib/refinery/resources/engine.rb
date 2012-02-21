@@ -1,6 +1,3 @@
-require 'refinerycms-resources'
-require 'rails'
-
 module Refinery
   module Resources
     class Engine < ::Rails::Engine
@@ -11,22 +8,25 @@ module Refinery
 
       config.autoload_paths += %W( #{config.root}/lib )
 
-      initializer 'resources-with-dragonfly', :before => :load_config_initializers do |app|
+      initializer 'setup-refinery-resources-with-dragonfly', :before => :load_config_initializers do |app|
         ::Refinery::Resources::Dragonfly.setup!
+      end
+
+      initializer 'attach-refinery-resources-with-dragonfly', :after => :load_config_initializers do |app|
+        ::Refinery::Resources::Dragonfly.configure!
         ::Refinery::Resources::Dragonfly.attach!(app)
       end
 
-      initializer "register refinery_files plugin", :after => :set_routes_reloader do |app|
+      initializer "register refinery_files plugin" do
         Refinery::Plugin.register do |plugin|
           plugin.pathname = root
           plugin.name = 'refinery_files'
-          plugin.url = app.routes.url_helpers.refinery_admin_resources_path
           plugin.menu_match = /refinery\/(refinery_)?(files|resources)$/
           plugin.version = %q{2.0.0}
           plugin.activity = {
-            :class_name => :'refinery/resource',
-            :url => "refinery_admin_resource_path" # temp hack for namespacees
+            :class_name => :'refinery/resource'
           }
+          plugin.url = { :controller => '/refinery/admin/resources' }
         end
       end
 

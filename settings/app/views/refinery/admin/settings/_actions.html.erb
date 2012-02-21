@@ -1,15 +1,8 @@
 <ul>
   <li>
-    <%= render :partial => "/refinery/admin/search",
-               :locals => {
-                 :url => main_app.refinery_admin_settings_path
-               } %>
+    <%= render '/refinery/admin/search', :url => refinery.admin_settings_path %>
   </li>
   <li>
-    <%= link_to t('.new'), main_app.new_refinery_admin_setting_path({
-                             :dialog => true,
-                             :width => 725,
-                             :height => 565
-                           }), :class => "add_icon" %>
+    <%= link_to t('.new'), refinery.new_admin_setting_path, :class => "add_icon" %>
   </li>
 </ul>

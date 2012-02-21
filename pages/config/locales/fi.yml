@@ -34,7 +34,6 @@ fi:
       pages:
         delete: Poista tämä sivu ikuisesti
         edit: Muokkaa tätä sivua
-        reserved_system_word: "Valitettavasti kirjoittamasi otsikko on rajoitettu Refineryn avainsana, ja sitä ei voida käyttää."
         page:
           view_live_html: Katsele tätä sivua <br/><em>(avautuu uudessa ikkunassa)</em>
           hidden: piilotettu

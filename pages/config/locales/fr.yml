@@ -34,7 +34,6 @@ fr:
       pages:
         delete: Supprimer définitivement cette page
         edit: Modifier cette page
-        reserved_system_word: "Désolé, mais ce titre est un mot réservé du système"
         page:
           view_live_html: Voir cette page<br/><em>(Ouvre une nouvelle fenêtre)</em>
           hidden: caché

@@ -2,13 +2,8 @@ require 'refinerycms-core'
 
 module Refinery
   module Dashboard
-    require 'refinery/dashboard/engine' if defined?(Rails)
-
-    include ActiveSupport::Configurable
-
-    config_accessor :activity_show_limit
-
-    self.activity_show_limit = 7
+    require 'refinery/dashboard/engine'
+    require 'refinery/dashboard/configuration'
 
     class << self
       def root

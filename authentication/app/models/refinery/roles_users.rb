@@ -1,5 +1,5 @@
 module Refinery
-  class RolesUsers < ActiveRecord::Base
+  class RolesUsers < Refinery::Core::BaseModel
 
     belongs_to :role
     belongs_to :user

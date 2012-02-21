@@ -1,4 +1,3 @@
-require 'refinerycms-settings'
 require 'rails'
 
 module Refinery
@@ -11,13 +10,13 @@ module Refinery
 
       config.autoload_paths += %W( #{config.root}/lib )
 
-      initializer "register refinery_settings plugin", :after => :set_routes_reloader do |app|
+      initializer "register refinery_settings plugin" do
         Refinery::Plugin.register do |plugin|
           plugin.pathname = root
           plugin.name = 'refinery_settings'
-          plugin.url = app.routes.url_helpers.refinery_admin_settings_path
           plugin.version = %q{2.0.0}
-          plugin.menu_match = /refinery\/settings$/
+          plugin.menu_match = %r{refinery/settings$}
+          plugin.url = { :controller => '/refinery/admin/settings' }
         end
       end
 

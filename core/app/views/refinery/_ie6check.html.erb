@@ -1,4 +1,4 @@
-<% if ::Refinery::Setting.find_or_set(:ie6_upgrade_message_enabled, true) -%>
+<% if Refinery::Core.ie6_upgrade_message_enabled -%>
   <% unless admin? %>
   <!--[if lte IE 6]>
     <div id="ie6msg_wrapper">
@@ -54,7 +54,7 @@
         $(document).ready(function() {
           $('#flash.flash_message:has("#upgrade_wrapper") #flash_close').click(function(e) {
             e.preventDefault();
-            $.get('<%= main_app.refinery_admin_disable_upgrade_message_path %>');
+            $.get('<%= refinery.admin_disable_upgrade_message_path %>');
           });
         });
       </script>

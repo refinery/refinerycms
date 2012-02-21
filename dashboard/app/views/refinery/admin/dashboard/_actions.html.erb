@@ -2,19 +2,19 @@
   <% if ::Refinery::Plugins.active.names.include?("refinery_pages") %>
     <li>
       <%= link_to t('.add_a_new_page'),
-                  main_app.new_refinery_admin_page_path,
+                  refinery.new_admin_page_path,
                   :class => "add_icon" %>
     </li>
     <li>
       <%= link_to t('.update_a_page'),
-                  main_app.refinery_admin_pages_path,
+                  refinery.admin_pages_path,
                   :class => "edit_icon" %>
     </li>
   <% end %>
   <% if ::Refinery::Plugins.active.names.include?("refinery_files") %>
     <li>
       <%= link_to t('.upload_a_file'),
-                  main_app.new_refinery_admin_resource_path(:dialog => true,
+                  refinery.new_admin_resource_path(:dialog => true,
                                          :width => 600,
                                          :height => 300),
                   :class => "add_icon" %>
@@ -23,17 +23,17 @@
   <% if ::Refinery::Plugins.active.names.include?("refinery_images") %>
     <li>
       <%= link_to t('.upload_a_image'),
-                  main_app.new_refinery_admin_image_path(:dialog => true,
+                  refinery.new_admin_image_path(:dialog => true,
                                       :width => 600,
                                       :height => 300),
                   :class => "add_icon" %>
     </li>
   <% end %>
-  <%= render :partial => 'additional_dashboard_menu_items' %>
+  <%= render 'additional_dashboard_menu_items' %>
 </ul>
 
 <% if ::Refinery.i18n_enabled? %>
-  <% locales = ::Refinery::I18n.locales.clone %>
+  <% locales = Refinery::I18n.locales.clone %>
   <% current_locale = ::I18n.locale %>
   <% current_locale_title = locales.delete(current_locale) %>
   <ul id='current_locale'>
@@ -49,7 +49,7 @@
     <% locales.sort_by{|key, value| value}.each do |locale, locale_title| %>
       <li>
         <%= link_to locale_title.respond_to?(:force_encoding) ? locale_title.force_encoding('utf-8') : locale_title,
-                    main_app.refinery_admin_dashboard_path(:set_locale => locale),
+                    refinery.admin_dashboard_path(:set_locale => locale),
                     :style => "background-image: url('/assets/refinery/icons/flags/#{locale}.png');" %>
       </li>
     <% end %>

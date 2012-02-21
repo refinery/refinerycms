@@ -1,6 +1,6 @@
 module Refinery
   module <%= class_name.pluralize %>
-    class <%= class_name.pluralize %>Controller < ApplicationController
+    class <%= class_name.pluralize %>Controller < ::ApplicationController
 
       before_filter :find_page, :only => [:create, :new]
 

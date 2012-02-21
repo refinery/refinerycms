@@ -21,7 +21,7 @@ module Refinery
       ::I18n.backend.store_translations :en, :refinery => {
         :plugins => {
           :refinery_rspec => {
-            :title => "RefineryCMS RSpec",
+            :title => "Refinery CMS RSpec",
             :description => "RSpec tests for plugin.rb"
           }
         }
@@ -42,7 +42,7 @@ module Refinery
 
     describe '#title' do
       it 'returns plugin title defined by I18n' do
-        plugin.title.should == 'RefineryCMS RSpec'
+        plugin.title.should == 'Refinery CMS RSpec'
       end
     end
 
@@ -75,18 +75,18 @@ module Refinery
       end
     end
 
-    describe '#always_allow_access?' do
+    describe '#always_allow_access' do
       it 'returns false if @always_allow_access is not set or its set to false' do
-        plugin.always_allow_access?.should be_false
+        plugin.always_allow_access.should be_false
       end
 
       it 'returns true if set so' do
-        plugin.stub(:always_allow_access?).and_return(true)
-        plugin.always_allow_access?.should be
+        plugin.stub(:always_allow_access).and_return(true)
+        plugin.always_allow_access.should be
       end
     end
 
-    describe '#dashboard?' do
+    describe '#dashboard' do
       it 'returns false if @dashboard is not set or its set to false' do
         plugin.dashboard.should be_false
       end
@@ -99,18 +99,18 @@ module Refinery
 
     describe '#menu_match' do
       it 'returns regexp based on plugin name' do
-        plugin.menu_match.should == /refinery\/refinery_rspec$/
+        plugin.menu_match.should == %r{refinery/refinery_rspec(/.+?)?$}
       end
     end
 
     describe '#highlighted?' do
       it 'returns true if params[:controller] match menu_match regexp' do
-        plugin.highlighted?({:controller => 'refinery/admin/refinery_rspec'}).should be
-        plugin.highlighted?({:controller => 'refinery/refinery_rspec'}).should be
+        plugin.highlighted?({:controller => '/refinery/admin/refinery_rspec'}).should be
+        plugin.highlighted?({:controller => '/refinery/refinery_rspec'}).should be
       end
 
-      it 'returns true if dashboard? is true and params[:action] == error_404' do
-        plugin.stub(:dashboard?).and_return(true)
+      it 'returns true if dashboard is true and params[:action] == error_404' do
+        plugin.stub(:dashboard).and_return(true)
         plugin.highlighted?({:action => 'error_404'}).should be
       end
     end
@@ -126,15 +126,15 @@ module Refinery
 
       context 'when @url is already defined' do
         it 'returns hash' do
-          plugin.stub(:url).and_return({:controller => '/admin/testa'})
-          plugin.url.should == {:controller => '/admin/testa'}
+          plugin.stub(:url).and_return({:controller => 'refinery/admin/testa'})
+          plugin.url[:controller].should == 'refinery/admin/testa'
         end
       end
 
       context 'when controller is present' do
         it 'returns hash based on it' do
           plugin.stub(:controller).and_return('testb')
-          plugin.url.should == {:controller => '/admin/testb'}
+          plugin.url[:controller].should == 'refinery/admin/testb'
         end
       end
 
@@ -142,13 +142,24 @@ module Refinery
 
         it 'returns hash based on it' do
           plugin.stub(:directory).and_return('first/second/testc')
-          plugin.url.should == {:controller => '/admin/testc'}
+          plugin.url[:controller].should == 'refinery/admin/testc'
         end
       end
 
       context 'when controller and directory not present' do
         it 'returns hash based on plugins name' do
-          plugin.url.should == {:controller => '/admin/refinery_rspec'}
+          plugin.url[:controller].should == 'refinery/admin/refinery_rspec'
+        end
+      end
+    end
+
+    describe '#activity_by_class_name' do
+      before { plugin.activity = [ { :class_name => "X::Y::Z" }, { :class_name => "X::Y::ZZ" }] }
+
+      context 'when the plugin have diferents activities' do
+        it 'returns the correct activity' do
+          plugin.activity_by_class_name("X::Y::Z").first.should == plugin.activity.first
+          plugin.activity_by_class_name("X::Y::ZZ").first.should == plugin.activity.last
         end
       end
     end

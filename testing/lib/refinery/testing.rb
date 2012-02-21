@@ -1,7 +1,10 @@
 require 'refinerycms-core'
+require 'rspec-rails'
 require 'factory_girl_rails'
 
 module Refinery
+  autoload :TestingGenerator, 'generators/refinery/testing/testing_generator'
+
   module Testing
     class << self
       def root
@@ -21,7 +24,8 @@ module Refinery
       end
     end
 
-    require 'refinery/testing/railtie' if defined?(Rails)
+    require 'refinery/testing/railtie'
+    require 'refinery/testing/url_helper'
 
     autoload :ControllerMacros, 'refinery/testing/controller_macros'
     autoload :RequestMacros, 'refinery/testing/request_macros'

@@ -20,9 +20,18 @@ module Refinery
       end
     end
   end
-end
 
-module Refinery
+  ::I18n.backend.store_translations :en, :refinery => {
+    :plugins => {
+      :my_plugin => {
+        :title => "my plugin"
+      },
+      :my_other_plugin => {
+        :title => "my other plugin"
+      }
+    }
+  }
+
   describe Plugins do
 
     before(:each) do
@@ -115,7 +124,7 @@ module Refinery
 
       it 'only contains items that are always allowed' do
         subject.class.always_allowed.any?.should be_true
-        subject.class.always_allowed.all? { |p| p.always_allow_access? }.should be_true
+        subject.class.always_allowed.all? { |p| p.always_allow_access }.should be_true
       end
     end
 
@@ -127,6 +136,20 @@ module Refinery
       it 'only contains items that are in the menu' do
         subject.class.registered.in_menu.any?.should be_true
         subject.class.registered.in_menu.all? { |p| !p.hide_from_menu }.should be_true
+      end
+    end
+
+    describe ".find_by_name" do
+      it "finds plugin by given name" do
+        subject.class.set_active(%w(my_plugin))
+        subject.class.active.find_by_name("my_plugin").name.should == "my_plugin"
+      end
+    end
+
+    describe ".find_by_title" do
+      it "finds plugin by given title" do
+        subject.class.set_active(%w(my_plugin))
+        subject.class.active.find_by_title("my plugin").title.should == "my plugin"
       end
     end
 

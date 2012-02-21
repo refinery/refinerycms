@@ -7,7 +7,7 @@ module Refinery
 
     source_root Pathname.new(File.expand_path('../templates', __FILE__))
 
-    add_shared_options_for("RefineryCMS")
+    add_shared_options_for("Refinery CMS")
 
     class_option :force,          :type => :boolean, :aliases => ['-f'], :default => false,
                                   :desc => "Force overwriting of directory"
@@ -28,10 +28,10 @@ module Refinery
                                   :desc => "Investigate any problems with the installer"
 
     class_option :version,        :type => :boolean, :default => false,
-                                  :desc => "Display the installed version of RefineryCMS"
+                                  :desc => "Display the installed version of Refinery CMS"
 
     class_option :refinery_edge,  :type => :boolean, :default => false,
-                                  :desc => "Setup your application's Gemfile to point to the RefineryCMS repository"
+                                  :desc => "Setup your application's Gemfile to point to the Refinery CMS repository"
 
     class_option :skip_db,        :type => :boolean, :default => false,
                                   :desc => "Skip database creation and migration tasks"
@@ -64,20 +64,9 @@ module Refinery
 
       create_database!
 
-      Refinery::CmsGenerator.start [], :destination_root => app_path
-      Refinery::CoreGenerator.start [], :destination_root => app_path
-      Refinery::ResourcesGenerator.start [], :destination_root => app_path
-      Refinery::PagesGenerator.start [], :destination_root => app_path
-      Refinery::ImagesGenerator.start [], :destination_root => app_path
+      Refinery::CmsGenerator.start %w[--fresh-installation], :destination_root => app_path
 
-      rake('refinery_core:install:migrations')
-      rake('refinery_authentication:install:migrations')
-      rake('refinery_settings:install:migrations')
-      rake('refinery_images:install:migrations')
-      rake('refinery_pages:install:migrations')
-      rake('refinery_resources:install:migrations')
-
-      rake("db:migrate#{' --trace' if options[:trace]}")
+      rake("railties:install:migrations db:migrate#{' --trace' if options[:trace]}")
 
       puts "\n---------"
       puts "Refinery successfully installed in '#{app_pathname}'!\n\n"
@@ -90,7 +79,7 @@ module Refinery
         note << "you will need to run the following tasks manually to maintain correct operation:"
         note << "\ncd #{app_pathname}"
         note << "bundle exec rake db:create"
-        note << "bundle exec rails generate refinerycms"
+        note << "bundle exec rails generate refinery:cms"
         note << "bundle exec rake db:migrate"
         note << "\n---------\n"
       end

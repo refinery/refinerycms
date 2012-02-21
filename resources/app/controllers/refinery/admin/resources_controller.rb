@@ -11,7 +11,7 @@ module ::Refinery
       def new
         @resource = Resource.new if @resource.nil?
 
-        @url_override = main_app.refinery_admin_resources_path(:dialog => from_dialog?)
+        @url_override = refinery.admin_resources_path(:dialog => from_dialog?)
       end
 
       def create
@@ -20,12 +20,8 @@ module ::Refinery
 
         unless params[:insert]
           if @resources.all?(&:valid?)
-            flash.notice = t('created', :scope => 'refinery.crudify', :what => "'#{@resources.collect{|r| r.title}.join("', '")}'")
-            unless from_dialog?
-              redirect_to main_app.url_for(:action => 'index')
-            else
-              render :text => "<script>parent.window.location = '#{main_app.refinery_admin_resources_path}';</script>"
-            end
+            flash.notice = t('created', :scope => 'refinery.crudify', :what => "'#{@resources.map(&:title).join("', '")}'")
+            redirect_to refinery.admin_resources_path
           else
             self.new # important for dialogs
             render :action => 'new'
@@ -35,8 +31,6 @@ module ::Refinery
             @resource_id = @resources.detect(&:persisted?).id
             @resource = nil
 
-            redirect_to request.query_parameters.merge(:action => 'insert')
-          else
             self.insert
           end
         end
@@ -45,7 +39,7 @@ module ::Refinery
       def insert
         self.new if @resource.nil?
 
-        @url_override = main_app.refinery_admin_resources_path(request.query_parameters.merge(:insert => true))
+        @url_override = refinery.admin_resources_path(request.query_parameters.merge(:insert => true))
 
         if params[:conditions].present?
           extra_condition = params[:conditions].split(',')

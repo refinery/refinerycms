@@ -1,6 +1,6 @@
 h2. Marketable URLs for Engines
 
-It's very important for Search Engine Optimization (SEO) purposes to have your URLs be human-readable. RefineryCMS ships with software (FriendlyID) that enables these marketing-friendly URLs with only minor modifications.
+It's very important for Search Engine Optimization (SEO) purposes to have your URLs be human-readable. Refinery CMS ships with software (FriendlyID) that enables these marketing-friendly URLs with only minor modifications.
 
 This guide will show you how to:
 
@@ -8,11 +8,11 @@ This guide will show you how to:
 
 endprologue.
 
-WARNING: This method is tested with RefineryCMS v. 1.0.8 only, but should be applicable to other versions. Always ensure your code is backed up or under version control before making substantial change.
+WARNING: This method is tested with Refinery CMS v. 1.0.8 only, but should be applicable to other versions. Always ensure your code is backed up or under version control before making substantial change.
 
 h3. Implementing Cached Slugs
 
-FriendlyID requires that you create a string field entitled +cached_slug+ on any model that you wish to convert. It's better to do this as a separate migration after creating the engine, because you will have to remove the administrative text fields RefineryCMS auto-generates.
+FriendlyID requires that you create a string field entitled +cached_slug+ on any model that you wish to convert. It's better to do this as a separate migration after creating the engine, because you will have to remove the administrative text fields Refinery CMS auto-generates.
 
 To do so, create a new migration file in the +db/migrate+ folder of your engine. Since this depends on the previous migration, it's best to rename the other migrations to include a sequence reference in the filename -- for example, +create_staff_members.rb+ becomes +001_create_staff_members.rb+. When you re-run the generator that will move these migrations over to your main +db/migrate+ folder, they will be moved in this order. Don't worry if you've already run these migrations; Rails will auto-detect that it has been run, even though the filename has been changed.
 
@@ -61,4 +61,4 @@ Each entry must be re-saved to generate its slug. You can do this quickly from t
   StaffMember.all.map(&:save)
 </ruby>
 
-If all entries in the resulting array return true, everything is complete! If you have an entry return false, you may have some individual issues that prevent saving, and you can update these manually using the RefineryCMS administrative interface.
+If all entries in the resulting array return true, everything is complete! If you have an entry return false, you may have some individual issues that prevent saving, and you can update these manually using the Refinery CMS administrative interface.

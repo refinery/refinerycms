@@ -1,12 +1,12 @@
 require 'devise'
 
 module Refinery
-  class User < ActiveRecord::Base
-    # TODO: This works around a bug in rails habtm with namespaces.
-    has_and_belongs_to_many :roles, :join_table => ::Refinery::RolesUsers.table_name
+  class User < Refinery::Core::BaseModel
+
+    has_and_belongs_to_many :roles, :join_table => :refinery_roles_users
 
     has_many :plugins, :class_name => "UserPlugin", :order => "position ASC", :dependent => :destroy
-    has_friendly_id :username, :use_slug => true unless ENV['RAILS_ASSETS_PRECOMPILE']
+    has_friendly_id :username, :use_slug => true
 
     # Include default devise modules. Others available are:
     # :token_authenticatable, :confirmable, :lockable and :timeoutable
@@ -52,6 +52,13 @@ module Refinery
         id != user_to_delete.id
     end
 
+    def can_edit?(user_to_edit = self)
+      user_to_edit.persisted? && (
+        user_to_edit == self ||
+        self.has_role?(:superuser)
+      )
+    end
+
     def add_role(title)
       raise ArgumentException, "Role should be the title of the role not a role object." if title.is_a?(::Refinery::Role)
       roles << ::Refinery::Role[title] unless has_role?(title)
@@ -70,6 +77,8 @@ module Refinery
         add_role(:refinery)
         # add superuser role
         add_role(:superuser) if ::Refinery::Role[:refinery].users.count == 1
+        # add plugins
+        self.plugins = Refinery::Plugins.registered.in_menu.names
       end
 
       # return true/false based on validations

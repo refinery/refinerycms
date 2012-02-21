@@ -16,7 +16,7 @@ xml.urlset "xmlns" => "http://www.sitemaps.org/schemas/sitemap/0.9" do
 
      # Add XML entry only if there is a valid page_url found above.
      xml.url do
-       xml.loc main_app.url_for(page_url)
+       xml.loc refinery.url_for(page_url)
        xml.lastmod page.updated_at.to_date
      end if page_url.present? and page.show_in_menu?
     end

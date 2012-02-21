@@ -1,10 +1,11 @@
 # Refinery CMS
 
-[![Travis CI Build Status](http://travis-ci.org/resolve/refinerycms.png)](http://travis-ci.org/resolve/refinerycms)
-
 __An open source Ruby on Rails content management system for Rails 3.__
 
 More information at [http://refinerycms.com](http://refinerycms.com)
+
+[![Donate to the project using Flattr](http://api.flattr.com/button/flattr-badge-large.png)](https://flattr.com/submit/auto?user_id=parndt&url=https://github.com/resolve/refinerycms&title=Refinery CMS&language=en_GB&tags=github&category=software)
+[![Build Status](https://secure.travis-ci.org/resolve/refinerycms.png)](http://travis-ci.org/resolve/refinerycms)
 
 ## Requirements
 

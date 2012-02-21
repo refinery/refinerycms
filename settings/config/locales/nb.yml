@@ -19,12 +19,6 @@ nb:
           yes_make_this_setting_restricted: "Ja, gjør denne innstillingen tilgjengelig kun for superbrukere."
           help:
             restricted: "Dette gjør det slik at denne innstillingen kun kan sees og endres av brukere som er superbrukere (som deg)."
-            analytics_page_code: "Denne koden aktiverer Google Analytics på websiden din. Om denne verdien er satt til blank eller 'UA-xxxxxx-x' så er Google Analytics ikke aktivert, og ingen hendelser blir sporet."
-            menu_hide_children: "Gjem alle undersider fra menyen (om noen finnes)."
-            page_title: "Svært avanserte alternativer for å sette tittelen på siden. Her kan du legge inn tilpassede CSS klasser eller en annen tag for å legge til brødsmuler."
-            preferred_image_view: "Dette kontrollerer hvilken visning bilde-tillegget viser eksisterende bilder i - rute for 'Rutenett', og liste for 'Liste'. Det er en knapp som automatiserer dene prosessen under bilde-tillegget."
-            show_contact_privacy_link: "Du kan gjemme eller vise lenken til din 'privacy policy' på forespørsel skjemaet, ved siden av 'Send Forespørsel' knappen."
-            approximate_ascii: Sett denne verdien til true dersom du benytter Latinske bokstavar med aksenter eller andre varianter i sidetitler. Jeg vil da konvertere bokstaver som ā, č, ž til a, c, z. På denne måten vil ikke disse bokstavene oppføre seg merkelig i noen nettlesere.
   activerecord:
     models:
       refinery/setting: innstilling

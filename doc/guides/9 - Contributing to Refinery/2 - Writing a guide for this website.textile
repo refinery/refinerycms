@@ -30,7 +30,7 @@ After we review it, we'll merge it into the master refinerycms repository, and t
 
 h3. Why submit a guide?
 
-The majority of RefineryCMS remains undocumented as development happens quickly. We'd appreciate it very much if you submitted a new guide or updated old ones. Here are some reasons for doing so:
+The majority of Refinery CMS remains undocumented as development happens quickly. We'd appreciate it very much if you submitted a new guide or updated old ones. Here are some reasons for doing so:
 
 * You will be listed as a contributor at "github":https://github.com/resolve/refinerycms/contributors
 * All contributors receive special status in the "IRC Channel":irc://irc.freenode.net/refinerycms

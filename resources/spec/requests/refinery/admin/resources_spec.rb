@@ -7,26 +7,24 @@ module Refinery
 
       context "when no files" do
         it "invites to upload file" do
-          visit refinery_admin_resources_path
-          page.should have_content("There are no files yet. Click \"Upload new file\" to add your first file.")
+          visit refinery.admin_resources_path
+          page.should have_content(%q{There are no files yet. Click "Upload new file" to add your first file.})
         end
       end
 
       it "shows upload file link" do
-        visit refinery_admin_resources_path
+        visit refinery.admin_resources_path
         page.should have_content("Upload new file")
         page.should have_selector("a[href*='/refinery/resources/new']")
       end
 
       context "new/create" do
-        it "uploads file", :js => true do
-          visit refinery_admin_resources_path
+        it "uploads file" do
+          visit refinery.admin_resources_path
           click_link "Upload new file"
 
-          within_frame "dialog_iframe" do
-            attach_file "resource_file", Refinery.roots(:'refinery/resources').join("spec/fixtures/refinery_is_awesome.txt")
-            click_button "Save"
-          end
+          attach_file "resource_file", Refinery.roots(:'refinery/resources').join("spec/fixtures/refinery_is_awesome.txt")
+          click_button "Save"
 
           page.should have_content("Refinery Is Awesome.txt")
           Refinery::Resource.count.should == 1
@@ -37,14 +35,14 @@ module Refinery
         let!(:resource) { FactoryGirl.create(:resource) }
 
         it "updates file" do
-          visit refinery_admin_resources_path
+          visit refinery.admin_resources_path
           page.should have_content("Refinery Is Awesome.txt")
           page.should have_selector("a[href='/refinery/resources/#{resource.id}/edit']")
 
           click_link "Edit this file"
 
           page.should have_content("Download current file or replace it with this one...")
-          page.should have_selector("a[href='/refinery/resources']")
+          page.should have_selector("a[href*='/refinery/resources']")
 
           attach_file "resource_file", Refinery.roots(:'refinery/resources').join("spec/fixtures/refinery_is_awesome2.txt")
           click_button "Save"
@@ -58,7 +56,7 @@ module Refinery
         let!(:resource) { FactoryGirl.create(:resource) }
 
         it "removes file" do
-          visit refinery_admin_resources_path
+          visit refinery.admin_resources_path
           page.should have_selector("a[href='/refinery/resources/#{resource.id}']")
 
           click_link "Remove this file forever"
@@ -71,8 +69,8 @@ module Refinery
       context "download" do
         let!(:resource) { FactoryGirl.create(:resource) }
 
-        it "succeedes" do
-          visit refinery_admin_resources_path
+        it "succeeds" do
+          visit refinery.admin_resources_path
 
           click_link "Download this file"
 

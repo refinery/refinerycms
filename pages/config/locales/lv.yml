@@ -35,7 +35,6 @@ lv:
       pages:
         delete: Dzēst šo lapu
         edit: Labot šo lapu
-        reserved_system_word: Atvainojiet, šis nosaukums ir rezervēts sistēmas vārds.
         page:
           view_live_html: Apskatīt šo lapu <br/><em>(tiks atvērta jaunā logā)</em>
           hidden: paslēpta

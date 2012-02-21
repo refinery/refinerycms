@@ -35,7 +35,6 @@ es:
       pages:
         delete: Borrar esta página para siempre
         edit: Editar esta página
-        reserved_system_word: "Lo sentimos, pero ese título es una palabra reservada del sistema."
         page:
           view_live_html: Ver esta página como abierta al público<br/><em>(la abre en ventana nueva)</em>
           hidden: oculta

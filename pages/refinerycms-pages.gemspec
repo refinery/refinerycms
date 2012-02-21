@@ -23,7 +23,7 @@ Gem::Specification.new do |s|
   s.executables       = `git ls-files -- bin/*`.split("\n").map { |f| File.basename(f) }
 
   s.add_dependency 'friendly_id_globalize3',      '~> 3.2.1'
-  s.add_dependency 'awesome_nested_set',          '~> 2.0'
-  s.add_dependency 'seo_meta',                    '>= 1.2.0.rc2'
+  s.add_dependency 'awesome_nested_set',          '~> 2.1.0'
+  s.add_dependency 'seo_meta',                    '>= 1.2.0.rc3'
   s.add_dependency 'refinerycms-core',            version
 end

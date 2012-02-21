@@ -3,7 +3,7 @@ require 'rails/generators/rails/app/app_generator'
 
 module Refinery
   class DummyGenerator < Rails::Generators::Base
-    desc "Creates blank Rails application, installs RefineryCMS, and all sample data"
+    desc "Creates blank Rails application, installs Refinery CMS, and all sample data"
 
     class_option :database, :default => ''
 

@@ -19,13 +19,6 @@ ko:
           yes_make_this_setting_restricted: "예, 이 설정의 수정 권한을 관리자로 제한합니다."
           help:
             restricted: 이 설정을 관리자 권한이 있는 사용자(당신과 같은 권한의 사용자)들만 보거나 수정할 수 있게 합니다.
-            analytics_page_code: 이 코드를 설정하여 Google Analytics 추적을 활성화합니다. 빈 칸이나 UA-xxxxxx-x로 설정되어 있으면 Google Analytics는 비활성화됩니다.
-            menu_hide_children: 하위 페이지를 메뉴에서 숨깁니다.
-            page_title: 페이지 제목을 위한 매우 복잡한 설정입니다. 임의의 CSS 클래스를 지정하거나 태그를 변경할 수 있고, 사이트 이동 경로 형식으로 제목을 표시하도록 할 수도 있습니다.
-            preferred_image_view: 이미지 플러그인에서 업로드된 이미지를 어떻게 볼 지 결정합니다. '격자 형식'으로 보려면 grid를, '목록 형식'으로 보려면 list를 설정하세요. 이미지 플러그인에서 선택하는 것도 가능합니다.
-            show_contact_privacy_link: 문의 페이지의 제출 버튼 옆에 개인정보 취급 방침 페이지의 링크를 표시할지 결정합니다.
-            approximate_ascii: "일부 웹 브라우저의 주소 창에서 ā, č, ž같은 라틴 문자가 이상하게 출력되는 것을 방지하기 위해, 이 문자들이 페이지 제목에 나타나면 a, c, z와 같이 변경합니다."
-            cache_pages_full: 전체 페이지 캐싱 기능을 활성화합니다. Apache의 .htaccess 파일이나 Nginx를 통해 페이지 캐시를 이용할 수 있습니다.
   activerecord:
     models:
       refinery/setting: 설정

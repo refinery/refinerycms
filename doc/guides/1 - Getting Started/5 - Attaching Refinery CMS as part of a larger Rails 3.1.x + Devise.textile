@@ -18,7 +18,7 @@ This guides takes an approach of leaving the Refinery Gems unmodified to make it
 
 h4. Assumptions About The Existing Application
 
-Refinery CMS edge assumes you want a content management system to control your site, which makes it very easy to build a RefineryCMS based application from scratch, and modify that.  Fortunately, it is also flexible enough to take on a smaller role to add functionality to your existing application. This guides focuses on those situations where there are large areas of your existing application that Refinery CMS should not be involved with at all. For example, you want to add a blog using refinery's blog engine, to your existing site, but don't want to otherwise alter your existing, perhaps complex, site.
+Refinery CMS edge assumes you want a content management system to control your site, which makes it very easy to build a Refinery CMS based application from scratch, and modify that.  Fortunately, it is also flexible enough to take on a smaller role to add functionality to your existing application. This guides focuses on those situations where there are large areas of your existing application that Refinery CMS should not be involved with at all. For example, you want to add a blog using refinery's blog engine, to your existing site, but don't want to otherwise alter your existing, perhaps complex, site.
 
 Since this guide can't anticipate the unique integration issues with your situation, we'll create a minimal Rails + Devise application to reference. We'll assume that the existing application already handles authentication and authorization in a way that must be maintained to avoid breaking existing functionality, and that there are models, controllers and views that you don't want Refinery CMS to be involved with. Specifically, we'll assume that the ExistingApp will handle administration of the User table records through a non-refinery interface (perhaps the console, perhaps some ExistingApp controller).
 
@@ -185,7 +185,7 @@ $ git add -A
 $ git commit
 </shell>
 
-h3. Integrating RefineryCMS into ExistingApp
+h3. Integrating Refinery CMS into ExistingApp
 
 Now that we have a baseline example working ExistingApp using Devise, it's time to integrate Refinery, using our existing front end styles, existing user models, and whatever specialized authentication and authorization code we may already have in place.
 
@@ -244,7 +244,7 @@ Now we have to fill in our models. Once again, we won't reinvent the wheel so we
 
 +app/model/role.rb+
 <ruby>
-class Role < ActiveRecord::Base
+class Role < Refinery::Core::BaseModel
   # TODO: This works around a bug in rails habtm with namespaces.
   has_and_belongs_to_many :users, :join_table => ::RolesUsers.table_name
 
@@ -262,21 +262,21 @@ end
 </ruby>
 +app/model/roles_users.rb+
 <ruby>
-class RolesUsers < ActiveRecord::Base
+class RolesUsers < Refinery::Core::BaseModel
   belongs_to :role
   belongs_to :user
 end
 </ruby>
 +app/model/user_plugin.rb+
 <ruby>
-class UserPlugin < ActiveRecord::Base
+class UserPlugin < Refinery::Core::BaseModel
   belongs_to :user
   attr_accessible :user_id, :name, :position
 end
 </ruby>
 +app/model/user.rb+
 <ruby>
-class User < ActiveRecord::Base
+class User < Refinery::Core::BaseModel
   #Your stuff
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable

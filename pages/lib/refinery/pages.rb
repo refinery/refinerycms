@@ -1,27 +1,18 @@
 require 'refinerycms-core'
-require 'awesome_nested_set'
-require 'globalize3'
-require 'friendly_id'
-require 'seo_meta'
 
 module Refinery
   autoload :PagesGenerator, 'generators/refinery/pages/pages_generator'
 
   module Pages
-    require 'refinery/pages/engine' if defined?(Rails)
+    require 'refinery/pages/engine'
     require 'refinery/pages/tab'
+    require 'refinery/pages/type'
+    require 'refinery/pages/types'
+
+    # Load configuration last so that everything above is available to it.
+    require 'refinery/pages/configuration'
 
     autoload :InstanceMethods, 'refinery/pages/instance_methods'
-
-    include ActiveSupport::Configurable
-
-    config_accessor :pages_per_dialog, :pages_per_admin_index, :new_page_parts,
-                    :marketable_urls
-
-    self.pages_per_dialog = 14
-    self.pages_per_admin_index = 20
-    self.new_page_parts = false
-    self.marketable_urls = true
 
     class << self
       def root
@@ -31,6 +22,24 @@ module Refinery
       def factory_paths
         @factory_paths ||= [ root.join('spec', 'factories').to_s ]
       end
+
+      def valid_templates(*pattern)
+        [Rails.root, Refinery::Plugins.registered.pathnames].flatten.uniq.map { |p|
+          p.join(*pattern)
+        }.map(&:to_s).map { |p|
+          Dir[p]
+        }.select(&:any?).flatten.map { |f|
+          File.basename(f)
+        }.map { |p|
+          p.split('.').first
+        }
+      end
+
+      def default_parts_for(page)
+        return default_parts unless page.view_template.present?
+
+        types.find_by_name(page.view_template).parts.map &:titleize
+      end
     end
 
     module Admin
@@ -38,3 +47,8 @@ module Refinery
     end
   end
 end
+
+require 'awesome_nested_set'
+require 'globalize3'
+require 'friendly_id'
+require 'seo_meta'

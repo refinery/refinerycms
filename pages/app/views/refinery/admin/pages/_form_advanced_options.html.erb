@@ -21,7 +21,7 @@
       <%= f.select :parent_id, nested_set_options(::Refinery::Page, @page) {|i| "#{'-' * i.level} #{i.title}" },
                    :include_blank => true %>
     </div>
-    <% if ::Refinery::Setting.find_or_set(:use_layout_templates, false, :scoping => 'pages') %>
+    <% if Refinery::Pages.use_layout_templates %>
     <div class='field'>
       <span class='label_with_help'>
         <%= label_tag :layout_template, t('.layout_template') %>
@@ -30,13 +30,13 @@
       <%= f.select(:layout_template, @valid_layout_templates) %>
     </div>
     <% end %>
-    <% if ::Refinery::Setting.find_or_set(:use_view_templates, false, :scoping => 'pages') %>
+    <% if Refinery::Pages.use_view_templates %>
     <div class='field'>
       <span class='label_with_help'>
         <%= label_tag :view_template, t('.view_template') %>
         <%= refinery_help_tag t('.view_template_help') %>
       </span>
-      <%= f.select(:view_template, @valid_view_templates) %>
+      <%= f.select(:view_template, @valid_view_templates.map{|t| [t.titleize, t]}) %>
     </div>
     <% end %>
 
@@ -47,7 +47,7 @@
       </span>
       <%= f.text_field :menu_title, :style=> 'width:400px;' %>
     </div>
-    <% if ::Refinery::Setting.find_or_set(:use_custom_slugs, false, :scope => 'pages') %>
+    <% if Refinery::Pages.use_custom_slugs %>
     <div class='field'>
       <span class='label_with_help'>
         <%= f.label :custom_slug, t('.custom_slug') %>
@@ -74,8 +74,8 @@
       <% content_for :javascripts do %>
       <script>
         $(document).ready(function(){
-          link_tester.init('<%= main_app.test_url_refinery_admin_pages_dialogs_path %>',
-                           '<%= main_app.test_email_refinery_admin_pages_dialogs_path %>');
+          link_tester.init('<%= refinery.test_url_admin_pages_dialogs_path %>',
+                           '<%= refinery.test_email_admin_pages_dialogs_path %>');
 
           link_tester.validate_url_textbox("#page_link_url")
         });
@@ -94,6 +94,5 @@
     </div>
   </div>
 
-  <%= render :partial => "form_advanced_options_seo",
-             :locals => {:f => f} %>
+  <%= render 'form_advanced_options_seo', :f => f %>
 </div>

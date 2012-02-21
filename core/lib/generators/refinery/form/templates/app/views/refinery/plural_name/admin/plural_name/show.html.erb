@@ -1,6 +1,6 @@
 <div id='records'>
   <h2><%%= t('.<%= singular_name %>') %></h2>
-  <table id='<%= Refinery.version < '0.9.9' ? 'inquiry' : singular_name %>' class='inquiry'>
+  <table id='<%= singular_name %>' class='inquiry'>
     <% attributes.each do |attribute| %>
       <tr>
         <td<%= " valign='top'" if attribute.type.to_s == 'text' %>>
@@ -43,7 +43,7 @@
     </li>
     <li>
       <%%= link_to t('admin.<%= plural_name %>.delete'),
-                  admin_<%= singular_name %>_url(@<%= singular_name %>),
+                  refinery.<%= plural_name %>_admin_<%= singular_name %>_path(@<%= singular_name %>),
                   :class => 'delete_icon no-tooltip confirm-delete',
                   :title => t('admin.<%= plural_name %>.delete'),
                   :'data-confirm' => t('shared.admin.delete.message', :title => @<%= singular_name %>.name),

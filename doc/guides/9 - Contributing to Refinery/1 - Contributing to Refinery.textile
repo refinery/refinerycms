@@ -33,9 +33,7 @@ h5. In terminal
 $ git clone git@github.com:USERNAME/refinerycms.git
 $ cd refinerycms
 $ bundle install
-$ cp config/database.yml.sqlite3 config/database.yml
-$ rake db:create
-$ rake db:migrate
+$ rake refinery:testing:dummy_app
 $ rails server
 </shell>
 
@@ -52,7 +50,7 @@ h4. Contributing a fix
 Make your changes to fix a bug. Next run the Refinery tests
 
 <shell>
-$ rake
+$ bundle exec rspec ./*/spec
 </shell>
 
 If this doesn't work. Follow the "How to test Refinery guide":/guides/how-to-test-refinery

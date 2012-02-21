@@ -1,20 +1,15 @@
-gem 'refinerycms', :git => 'git://github.com/resolve/refinerycms.git'
-run 'bundle install'
-generate 'refinery:cms'
-rake 'railties:install:migrations'
-rake 'db:migrate'
-
+require 'rbconfig'
 append_file 'Gemfile' do
-" 
+"
+# https://github.com/resolve/refinerycms/issues/1197#issuecomment-3289940
+gem 'i18n-js', :git => 'git://github.com/fnando/i18n-js.git'
+
+#{"gem 'therubyracer'" if RbConfig::CONFIG['target_os'] =~ /linux/i}
+gem 'refinerycms', :git => 'git://github.com/resolve/refinerycms.git'
+
 #  group :development, :test do
 #    gem 'refinerycms-testing', '~> 2.0'
 #  end
-
-group :development do
-  gem 'rails-dev-tweaks', '~> 0.5.0'
-  # see https://github.com/wavii/rails-dev-tweaks/issues/3
-  gem 'routing-filter', :git => 'git://github.com/nevir/routing-filter.git'
-end
 
 # USER DEFINED
 
@@ -31,11 +26,15 @@ gem 'refinerycms-i18n',   '~> 2.0.0', :git => 'git://github.com/parndt/refineryc
 "
 end
 
-remove_file 'public/index.html'
-remove_file 'app/assets/images/rails.png'
+run 'bundle install'
+rake 'db:create'
+generate 'refinery:cms --fresh-installation'
+
+rake 'railties:install:migrations db:migrate'
+rake 'db:seed'
 
 say <<-eos
   ============================================================================
-          Your new RefineryCMS application is now running on edge.
+    Your new Refinery CMS application is now running on edge and mounted to /.
   ============================================================================
 eos

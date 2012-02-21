@@ -34,7 +34,6 @@ da:
       pages:
         delete: Slet siden permanent
         edit: Redigér siden
-        reserved_system_word: Beklager, titlen er forbeholdt system-sider.
         page:
           view_live_html: Vis siden live <br/><em>(åbner i et nyt vindue)</em>
           hidden: skjult

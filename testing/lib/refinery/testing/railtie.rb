@@ -1,6 +1,3 @@
-require 'refinerycms-testing'
-require 'rails'
-
 module Refinery
   module Testing
     class Railtie < Rails::Railtie
@@ -19,7 +16,7 @@ module Refinery
         #
         #   Refinery::Testing::Railtie.load_dummy_tasks('/users/reset/code/mynew_app')
         def load_dummy_tasks(app_root)
-          @target_engine_path = app_root
+          @target_engine_path = Pathname.new(app_root.to_s)
           load 'refinery/tasks/testing.rake'
         end
       end

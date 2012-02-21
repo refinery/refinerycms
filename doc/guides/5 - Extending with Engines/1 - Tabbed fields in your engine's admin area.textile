@@ -14,7 +14,7 @@ h3. Changing your admin view to support multiple tabs
 If your engine has a number of text areas that you'd like to display as a series of tabs instead, simply edit the admin view (under +app/views/admin/engine_name/_form.html.erb+), and add:
 
 <erb>
-<%= render :partial => "/refinery/admin/tabbed_fields",
+<%= render :partial => '/refinery/admin/tabbed_fields',
            :locals => { :f => f,
                         :tabbed_fields => [:field, :list] } %>
 </erb>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<%= render '/refinery/html_tag' %>
+  <%= render '/refinery/admin/head' %>
+  <body class='login <%= I18n.locale %>'>
+    <div id='tooltip_container'></div>
+    <header>
+      <h1><%= yield :header %></h1>
+    </header>
+    <div id="page_container">
+      <div id="page">
+        <div id="content" class="clearfix">
+          <div id="flash_container">
+            <%= render '/refinery/message' %>
+          </div>
+          <%= yield %>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

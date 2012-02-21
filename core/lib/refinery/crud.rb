@@ -18,17 +18,18 @@ module Refinery
   module Crud
 
     def self.default_options(model_name)
-      class_name = "::#{model_name.to_s.camelize.gsub('/', '::')}".gsub('::::', '::')
+      class_name = "#{model_name.to_s.camelize.gsub('/', '::')}".gsub('::::', '::')
       this_class = class_name.constantize.base_class
       singular_name = ActiveModel::Naming.param_key(this_class)
       plural_name = singular_name.pluralize
+
       {
         :conditions => '',
         :include => [],
         :order => ('position ASC' if this_class.table_exists? && this_class.column_names.include?('position')),
         :paging => true,
         :per_page => false,
-        :redirect_to_url => "main_app.refinery_admin_#{plural_name}_path",
+        :redirect_to_url => "refinery.#{Refinery.route_for_model(class_name.constantize, true)}",
         :searchable => true,
         :search_conditions => '',
         :sortable => true,
@@ -67,7 +68,7 @@ module Refinery
 
           def create
             # if the position field exists, set this object as last object, given the conditions of this class.
-            if #{class_name}.column_names.include?("position")
+            if #{class_name}.column_names.include?("position") && params[:#{singular_name}][:position].nil?
               params[:#{singular_name}].merge!({
                 :position => ((#{class_name}.maximum(:position, :conditions => #{options[:conditions].inspect})||-1) + 1)
               })
@@ -86,18 +87,17 @@ module Refinery
                   unless request.xhr?
                     redirect_to :back
                   else
-                    render :partial => "/refinery/message"
+                    render :partial => '/refinery/message'
                   end
                 end
               else
-                render :text => "<script>parent.window.location = '\#{#{options[:redirect_to_url]}}';</script>"
+                redirect_back_or_default(#{options[:redirect_to_url]})
               end
             else
               unless request.xhr?
                 render :action => 'new'
               else
-                render :partial => "/refinery/admin/error_messages",
-                       :locals => {
+                render :partial => '/refinery/admin/error_messages', :locals => {
                          :object => @#{singular_name},
                          :include_object_name => true
                        }
@@ -123,18 +123,17 @@ module Refinery
                   unless request.xhr?
                     redirect_to :back
                   else
-                    render :partial => "/refinery/message"
+                    render :partial => '/refinery/message'
                   end
                 end
               else
-                render :text => "<script>parent.window.location = '\#{#{options[:redirect_to_url]}}';</script>"
+                redirect_back_or_default(#{options[:redirect_to_url]})
               end
             else
               unless request.xhr?
                 render :action => 'edit'
               else
-                render :partial => "/refinery/admin/error_messages",
-                       :locals => {
+                render :partial => '/refinery/admin/error_messages', :locals => {
                          :object => @#{singular_name},
                          :include_object_name => true
                        }
@@ -276,8 +275,8 @@ module Refinery
               render :nothing => true
             end
 
-            def update_child_positions(node, #{singular_name})
-              node['children']['0'].each do |_, child|
+            def update_child_positions(_node, #{singular_name})
+              _node['children']['0'].each do |_, child|
                 child_id = child['id'].split(/#{singular_name}\_?/)
                 child_#{singular_name} = #{class_name}.where(:id => child_id).first
                 child_#{singular_name}.move_to_child_of(#{singular_name})
@@ -299,7 +298,6 @@ module Refinery
             #{options[:searchable].to_s}
           end
         )
-
 
       end
 

@@ -29,7 +29,7 @@ module Refinery
         if block && block.respond_to?(:call)
           after_inclusion_procs << block
         else
-          raise 'Anything added to be called before_inclusion must be callable.'
+          raise 'Anything added to be called after_inclusion must be callable (respond to #call).'
         end
       end
 
@@ -57,7 +57,7 @@ module Refinery
         if block && block.respond_to?(:call)
           before_inclusion_procs << block
         else
-          raise 'Anything added to be called before_inclusion must be callable.'
+          raise 'Anything added to be called before_inclusion must be callable (respond to #call).'
         end
       end
     end

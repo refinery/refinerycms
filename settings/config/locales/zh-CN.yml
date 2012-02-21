@@ -19,12 +19,6 @@ zh-CN:
           yes_make_this_setting_restricted: "是的, 使此设置限制为只能由超级用户修改."
           help:
             restricted: 这使得设置只能由超级用户(像您一样)可见和修改.
-            analytics_page_code: 这个代码可启动 Google Analytics 来跟踪您的网站. 如果这项设定留白或是设为 UA-xxxxxx-x 则表示为关闭这项功能并且不会有任何远程的 Google Analytics 呼叫发生.
-            menu_hide_children: 从选单中隐藏任何子页面, 即使它们是存在的.
-            page_title: 提供非常复杂的选项让您设定页面标题. 在这里您可以设定自订的 CSS 类別或是不同的标签, 或是加上记录着页面层级关系的导览列.
-            preferred_image_view: 这可控制图片插件如何呈现目前这些已存在网站上的图片 - grid 表示 '网格模式' 以及 list 表示 '列表模式'. 图片插件本身提供一个按钮可以自动切换这些模式.
-            show_contact_privacy_link: 您可以隐藏或是显示在联络人表单确认按钮旁的隐私条款页面链接.
-            approximate_ascii: 如果您使用带有口音或是变音符号的拉丁字母请设定为 true. 它会将像是 ā, č, ž 的字母转为 a, c, z , 在某些网页浏览器中, 这些字母就不会奇怪地出现在网址列上.
   activerecord:
     models:
       refinery/setting: 设置

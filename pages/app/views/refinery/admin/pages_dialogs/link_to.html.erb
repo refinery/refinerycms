@@ -27,7 +27,7 @@
       <div id='your_page_content' class='clearfix'>
         <div id='pages_list' class='pages_list'>
           <ul class="link_list">
-            <%= render :partial => "page_link", :collection => @pages,
+            <%= render :partial => 'page_link', :collection => @pages,
                        :locals => {
                          :child => 0,
                          :link_to_arguments => {}
@@ -93,7 +93,7 @@
             <% @resources.each do |resource| -%>
               <% resource_linked = (resource.url == params[:current_link]) unless params[:current_link].blank? %>
               <li<%= " class='linked'" if resource_linked %>>
-                <%= link_to "#{resource.title}.#{resource.ext}", resource.url,
+                <%= link_to "#{resource.title}.#{resource.ext}", asset_paths.compute_public_path(resource.url, ''),
                             :title => t('link_to_this_resource', :scope => 'refinery.admin.pages_dialogs.link_to.your_resource'),
                             :rel => resource.title,
                             :class => "page_link #{resource.ext}" %>
@@ -108,22 +108,19 @@
       </div>
     <% end %>
   </div>
-  <%= render :partial => "/refinery/admin/form_actions",
-             :locals => {
-               :f => nil,
-               :cancel_url => '',
-               :submit_button_text => t('.insert'),
-               :hide_cancel => false,
-               :cancel_title => nil,
-               :hide_delete => true
-             } %>
+  <%= render '/refinery/admin/form_actions', :f => nil,
+             :cancel_url => '',
+             :submit_button_text => t('.insert'),
+             :hide_cancel => false,
+             :cancel_title => nil,
+             :hide_delete => true %>
 </div>
 
 <% content_for :javascripts do %>
   <script>
     $(document).ready(function(){
-      link_tester.init('<%= main_app.test_url_refinery_admin_pages_dialogs_path %>',
-                       '<%= main_app.test_email_refinery_admin_pages_dialogs_path %>');
+      link_tester.init('<%= refinery.test_url_admin_pages_dialogs_path %>',
+                       '<%= refinery.test_email_admin_pages_dialogs_path %>');
       link_dialog.init();
 
       $('.link_list a').click(function(e){

@@ -1,5 +1,5 @@
 module Refinery
-  class Resource < ActiveRecord::Base
+  class Resource < Refinery::Core::BaseModel
     include Resources::Validators
 
     attr_accessible :id, :file
@@ -28,7 +28,7 @@ module Refinery
     class << self
       # How many resources per page should be displayed?
       def per_page(dialog = false)
-        dialog ? Resources.config.pages_per_dialog : Resources.config.pages_per_admin_index
+        dialog ? Resources.pages_per_dialog : Resources.pages_per_admin_index
       end
 
       def create_resources(params)

@@ -1,60 +1,63 @@
-<%= form_for [main_app, :refinery_admin, @page] do |f| %>
+<%= form_for [refinery, :admin, @page],
+             :url => (refinery.admin_page_path(@page.uncached_nested_url) if @page.persisted?) do |f| %>
 
-  <%= render :partial => "/refinery/admin/error_messages",
-             :locals => {
-               :object => @page,
-               :include_object_name => true
-             } %>
+  <%= render '/refinery/admin/error_messages', :object => @page, :include_object_name => true %>
 
-  <%= render :partial => "locale_picker",
-             :locals => {
-               :current_locale => Thread.current[:globalize_locale]
-             } if ::Refinery.i18n_enabled? %>
+  <%= render 'locale_picker', :current_locale => Thread.current[:globalize_locale] if Refinery.i18n_enabled? %>
 
   <div class="field">
     <%= f.label :title %>
     <%= f.text_field :title, :class => "larger widest" %>
   </div>
 
-  <%= render :partial => "form_fields_after_title",
-             :locals => {
-               :f => f
-             } %>
+  <%= render 'form_fields_after_title', :f => f %>
 
   <div class='field'>
-    <%= render :partial => "form_page_parts",
-               :locals => {
-                 :f => f
-               } %>
+    <%= render 'form_page_parts', :f => f %>
   </div>
 
-  <%= render :partial => "form_advanced_options",
-             :locals => {
-                :f => f
-              } %>
+  <%= render 'form_advanced_options', :f => f %>
 
-  <%= render :partial => "/refinery/admin/form_actions",
-             :locals => {
-               :f => f,
-               :continue_editing => true,
-               :delete_title => t('delete', :scope => 'refinery.admin.pages'),
-               :delete_confirmation => t('message', :scope => 'refinery.admin.delete', :title => @page.title)
-             } %>
+  <%= render '/refinery/admin/form_actions', :f => f,
+             :continue_editing => true,
+             :delete_title => t('delete', :scope => 'refinery.admin.pages'),
+             :delete_confirmation => t('message', :scope => 'refinery.admin.delete', :title => @page.title),
+             :before_cancel_button => submit_tag(
+               t('.preview'),
+               :id => 'preview-button',
+               :title => 'Preview page',
+               :name => nil,
+               :class => "wymupdate button",
+               :tooltip => t('.preview_changes')
+             ) %>
 
-  <%= render :partial => "form_new_page_parts",
-             :locals => {
-               :f => f
-             } if Refinery::Pages.config.new_page_parts %>
+  <%= render 'form_new_page_parts', :f => f if Refinery::Pages.new_page_parts %>
 <% end %>
 
 <% content_for :javascripts do %>
   <script>
     $(document).ready(function(){
       page_options.init(
-        <%= Refinery::Pages.config.new_page_parts.to_s %>
-        , "<%= main_app.new_refinery_admin_page_part_path %>"
-        , "<%= main_app.refinery_admin_page_parts_path %>"
+        <%= Refinery::Pages.new_page_parts.to_s %>
+        , "<%= refinery.new_admin_page_part_path %>"
+        , "<%= refinery.admin_page_parts_path %>"
       );
+
+      $("#preview-button").click(function(e) {
+        var form = $(this).parents('form')
+        var prev_url = form.attr('action');
+        var prev_target = form.attr('target');
+        form.attr({
+          'action': '<%= @page.persisted? ? refinery.admin_preview_page_path(@page.uncached_nested_url) : refinery.admin_preview_pages_path %>'
+          , 'target': '_blank'
+        });
+        form.submit();
+        form.attr({
+          'action': prev_url
+          , 'target': prev_target
+        });
+        e.preventDefault();
+      });
     });
   </script>
 <% end %>

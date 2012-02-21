@@ -1,13 +1,11 @@
 <%% content_for :body_content_left do %>
   <div class='<%= plural_name %>'>
-    <%%=raw @page.content_for(Refinery::Page.default_parts.first.to_sym) %>
+    <%%=raw @page.content_for(Refinery::Pages.default_parts.first.to_sym) %>
 
-    <%%= form_for @<%= singular_name %> do |f| %>
-      <%%= render :partial => "/refinery/admin/error_messages",
-                 :locals => {
-                   :object => @<%= singular_name %>,
-                   :include_object_name => true
-                 } %>
+    <%%= form_for [refinery, <%= singular_name %>, @<%= singular_name %>] do |f| %>
+      <%%= render '/refinery/admin/error_messages',
+                 :object => @<%= singular_name %>,
+                 :include_object_name => true  %>
       <% attributes.each do |attribute| %>
       <div class='field <%= attribute.name %>_field <%= attribute.type %>_field'>
         <%%= f.label :<%= attribute.name %> %>
@@ -24,15 +22,15 @@
 <% when :checkbox -%>
         <%%= f.check_box :<%= attribute.name %> %>
 <% when :select -%>
-        <%%= f.select :<%= attribute.name %>, <%= class_name %>::<%= attribute.name.pluralize.upcase %>,
+        <%%= f.select :<%= attribute.name %>, Refinery::<%= class_name.pluralize %>::<%= class_name %>::<%= attribute.name.pluralize.upcase %>,
                       :include_blank => true %>
 <% end -%>
       </div>
       <% end %>
       <div class='actions'>
-        <%%= f.submit t('.send', :scope => 'refinery') %>
+        <%%= f.submit t('.send') %>
       </div>
     <%% end %>
   </div>
 <%% end %>
-<%%= render :partial => "/refinery/content_page" %>
+<%%= render '/refinery/content_page' %>

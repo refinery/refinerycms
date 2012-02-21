@@ -2,9 +2,12 @@
   <meta charset='<%= ::Rails.application.config.encoding %>' />
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <%= yield :meta %>
-  <title><%= Refinery::Core.config.site_name -%> - Refinery</title>
+  <title><%= Refinery::Core.site_name -%> - Refinery</title>
   <%= csrf_meta_tags %>
   <%= stylesheet_link_tag 'refinery/refinery' %>
+  <% custom_stylesheets.each do |css| %>
+    <%= stylesheet_link_tag css.path, css.options %>
+  <% end %>
   <%= yield :stylesheets %>
-  <%= render :partial => "refinery/admin/javascripts" %>
+  <%= render 'refinery/admin/javascripts' %>
 </head>

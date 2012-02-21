@@ -4,7 +4,7 @@
        date = Date.parse((resource_group = container.last).first.created_at.to_s) %>
     <h3><%= l(date, :format => :long ) %></h3>
     <ul>
-      <%= render :partial => "resource", :collection => resource_group %>
+      <%= render :partial => 'resource', :collection => resource_group %>
     </ul>
   <% end %>
 </div>

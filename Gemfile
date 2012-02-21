@@ -25,25 +25,9 @@ unless defined?(JRUBY_VERSION)
   gem 'pg'
 end
 
-group :development do
-  gem 'rails-dev-tweaks', '~> 0.5.0'
-  # see https://github.com/wavii/rails-dev-tweaks/issues/3
-  gem 'routing-filter', :git => 'git://github.com/nevir/routing-filter.git'
-end
-
 group :development, :test do
   gem 'refinerycms-testing', '~> 2.0.0'
-  gem 'capybara-webkit', '~> 0.7.0'
-  gem 'generator_spec'
-  gem 'database_cleaner', :git => 'git://github.com/bmabey/database_cleaner.git'
-
-  platforms :mri_18 do
-    gem 'rcov'
-  end
-
-  platforms :mri_19 do
-    gem 'simplecov'
-  end
+  gem 'generator_spec', '>= 0.8.5'
 
   platforms :mswin, :mingw do
     gem 'win32console'
@@ -59,11 +43,12 @@ group :development, :test do
       require 'rbconfig'
       if RbConfig::CONFIG['target_os'] =~ /darwin/i
         gem 'rb-fsevent', '>= 0.3.9'
-        gem 'growl',      '~> 1.0.3'
+        gem 'ruby_gntp'
       end
       if RbConfig::CONFIG['target_os'] =~ /linux/i
         gem 'rb-inotify', '>= 0.5.1'
         gem 'libnotify',  '~> 0.1.3'
+        gem 'therubyracer', '~> 0.9.9'
       end
     end
   end
@@ -72,7 +57,7 @@ group :development, :test do
     unless ENV['TRAVIS']
       require 'rbconfig'
       if RbConfig::CONFIG['target_os'] =~ /darwin/i
-        gem 'growl',      '~> 1.0.3'
+        gem 'ruby_gntp'
       end
       if RbConfig::CONFIG['target_os'] =~ /linux/i
         gem 'rb-inotify', '>= 0.5.1'
@@ -85,12 +70,12 @@ end
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails', '~> 3.1.0'
-  gem 'coffee-rails', '~> 3.1.0'
+  gem 'sass-rails'
+  gem 'coffee-rails'
   gem 'uglifier'
 end
 
-gem 'jquery-rails'
+gem 'jquery-rails', '~> 2.0.0'
 
 # END REFINERY CMS DEVELOPMENT ================================================
 
@@ -103,7 +88,7 @@ gem 'jquery-rails'
 # gem 'refinerycms-page-images',  '~> 1.0'
 
 # Add i18n support (optional, you can remove this if you really want to).
-gem 'refinerycms-i18n',           '~> 2.0.0', :git => 'git://github.com/parndt/refinerycms-i18n.git'
+gem 'refinerycms-i18n',           :git => 'git://github.com/parndt/refinerycms-i18n.git'
 # END USER DEFINED
 
 # Use unicorn as the web server

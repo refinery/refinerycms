@@ -96,8 +96,7 @@ module Refinery
     attr_writer :url
 
     def url
-      "#{self.url_prefix}#{@url ||= [ 'refinery', klass.model_name.param_key.to_s.pluralize,
-                                      'admin', klass.model_name.param_key, 'path' ].join('_')}"
+      @url ||= "refinery.#{url_prefix}#{Refinery.route_for_model(klass)}"
     end
   end
 end

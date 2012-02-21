@@ -1,4 +1,4 @@
-<% if ::Refinery::Pages.config.new_page_parts %>
+<% if ::Refinery::Pages.new_page_parts %>
   <ul id="page_parts_controls">
     <li>
       <%= link_to refinery_icon_tag('arrow_switch.png'), '#',
@@ -41,16 +41,14 @@
   <div id='page_part_editors'>
     <% part_index = -1 %>
     <%= f.fields_for :parts do |p| %>
-      <%= render :partial => 'page_part_field',
-                 :locals => {
-                   :part => p.object,
-                   :part_index => (part_index += 1),
-                   :new_part => @page.new_record?
-                 } -%>
+      <%= render 'page_part_field',
+                 :part => p.object,
+                 :part_index => (part_index += 1),
+                 :new_part => @page.new_record? -%>
     <% end %>
     <% ::Refinery::Pages.tabs.each_with_index do |tab, tab_index| %>
       <div class='page_part' id='<%= "custom_tab_#{tab_index}" %>'>
-        <%= render :partial => tab.partial, :locals => {:f => f} %>
+        <%= render tab.partial, :f => f %>
       </div>
     <% end %>
   </div>

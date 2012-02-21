@@ -10,15 +10,14 @@ module Refinery
             # and any references to "home page" to "Dashboard"
             # TODO
 =begin
-            part_symbol = ::Refinery::Page.default_parts.first.to_sym
+            part_symbol = Refinery::Pages.default_parts.first.to_sym
             @page.content_for(part_symbol) = @page.content_for(part_symbol).to_s.gsub(
                                    /href=(\'|\")\/(\'|\")/, "href='#{refinery_admin_root_path}'"
                                  ).gsub("home page", "Dashboard")
 =end
 
-            render :template => "/pages/show",
-                   :layout => layout?,
-                   :status => 404
+            render :template => "/pages/show", :layout => layout?, :status => 404
+            return false
           else
             super
           end

@@ -1,6 +1,7 @@
 <% content_for :header, t('.hello_please_sign_in') %>
 
-<%= form_for(resource, :as => resource_name, :url => main_app.refinery_user_session_path) do |f| %>
+<%= form_for resource, :as => resource_name,
+                       :url => refinery.refinery_user_session_path do |f| %>
   <div class='field session_username clearfix'>
     <%= f.label :login %>
     <%= f.text_field :login, :class => 'larger widest' %>
@@ -17,13 +18,10 @@
       </div>
     <% end %>
     <div class='field forgot_password'>
-      <%= link_to t('.forgot_password'), main_app.new_refinery_user_password_path %>
+      <%= link_to t('.forgot_password'), refinery.new_refinery_user_password_path %>
     </div>
   </div>
-  <%= render :partial => "/refinery/admin/form_actions",
-             :locals => {
-               :f => f,
-               :submit_button_text => t('.sign_in'),
-               :hide_cancel => true
-             } %>
+  <%= render '/refinery/admin/form_actions', :f => f,
+             :submit_button_text => t('.sign_in'),
+             :hide_cancel => true %>
 <% end -%>

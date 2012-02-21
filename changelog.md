@@ -81,7 +81,7 @@
 * Implemented `:translator` role which allows a particular user access only to translate pages. [Philip Arndt](https://github.com/parndt)
 * Added support for `Dragonfly 0.9.0` which uses the 'fog' gem. [Jesper Hvirring Henriksen](https://github.com/hvirring)
 * Updated all `refinery/admin.js` functions to make use of 'initialised'. [Mark Haylock](https://github.com/mhaylock)
-* Using SEO form from `seo_meta` inside pages' advanced options rather than having it duplicated in the RefineryCMS codebase too. [Uģis Ozols](https://github.com/ugisozols)
+* Using SEO form from `seo_meta` inside pages' advanced options rather than having it duplicated in the Refinery CMS codebase too. [Uģis Ozols](https://github.com/ugisozols)
 * [See full list](https://github.com/resolve/refinerycms/compare/0.9.9.21...0.9.9.22)
 
 ## 0.9.9.21 [03 May 2011]
@@ -504,7 +504,7 @@
 
 ## 0.9.7.5 [08 July 2010]
 
-* Wrote an upgrade task for migrating from 0.9.6.x releases of RefineryCMS. Just run refinery-update-096-to-097 inside your application's directory. [Philip Arndt](https://github.com/parndt)
+* Wrote an upgrade task for migrating from 0.9.6.x releases of Refinery CMS. Just run refinery-update-096-to-097 inside your application's directory. [Philip Arndt](https://github.com/parndt)
 * Improved code used to include gem rake tasks and script/generate tasks into the Refinery application to fix issue with these tasks not being found. [Philip Arndt](https://github.com/parndt)
 * Fixed a broken migration that would mean pages were missing upon upgrading. [Jesper Hvirring Henriksen](https://github.com/hvirring)
 * More pt-BR translation keys translated. [Kivanio Barbosa](https://github.com/kivanio)

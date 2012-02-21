@@ -1,4 +1,4 @@
-# RefineryCMS Generators
+# Refinery CMS Generators
 
 ## Engine Generator
 

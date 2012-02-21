@@ -34,7 +34,6 @@ vi:
       pages:
         delete: Xóa trang này vĩnh viễn
         edit: Sửa trang
-        reserved_system_word: "Xin lỗi, nhưng tên trang này trùng với từ khóa mà hệ thống đã dành trước"
         page:
           view_live_html: Xem trực tiếp trang này <br/><em>(sẽ mở trong cửa sổ mới)</em>
           hidden: ẩn
