@@ -36,14 +36,14 @@
           </li>
         <%% end %>
       </ul>
-
-      <div id='page_part_editors'>
-        <%% <%= text_areas.map{|t| t.name.to_sym}.inspect -%>.each do |part| %>
-          <div class='page_part' id='<%%= part %>'>
-            <%%= f.text_area part, :rows => 20, :class => 'wymeditor widest' -%>
-          </div>
-        <%% end %>
-      </div>
+    </div>
+    <div id='page_part_editors'>
+      <%% <%= text_areas.map{|t| t.name.to_sym}.inspect -%>.each do |part| %>
+        <div class='page_part' id='<%%= part %>'>
+          <%%= f.text_area part, :rows => 20, :class => 'wymeditor widest' -%>
+        </div>
+      <%% end %>
+    </div>
 <% generated_text_areas = true -%>
 <% elsif attribute.field_type.to_s != 'text_area' -%>
     <%%= f.<%= attribute.field_type -%> :<%= attribute.name -%><%= ", :class => 'larger widest'" if (index == 0 && attribute.field_type == :text_field) -%><%= ", :checked => @#{singular_name}[:#{attribute.name}]" if attribute.field_type == :check_box %>  -%>
