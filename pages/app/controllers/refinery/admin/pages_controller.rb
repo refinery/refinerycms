@@ -5,7 +5,7 @@ module Refinery
 
       crudify :'refinery/page',
               :order => "lft ASC",
-              :include => [:slugs, :translations, :children],
+              :include => [:translations, :children],
               :paging => false
 
       after_filter lambda{::Refinery::Page.expire_page_caching}, :only => [:update_positions]
@@ -65,13 +65,14 @@ module Refinery
         unless action_name.to_s == 'index'
           super
 
-          # Check whether we need to override e.g. on the pages form.
-          unless params[:switch_locale] || @page.nil? || @page.new_record? || @page.slugs.where({
-            :locale => Refinery::I18n.current_locale
-          }).empty?
-            @page.slug = @page.slugs.first if @page.slug.nil? && @page.slugs.any?
-            Thread.current[:globalize_locale] = @page.slug.locale if @page.slug
-          end
+          # Needs to take into account that slugs are translated now
+          # # Check whether we need to override e.g. on the pages form.
+          # unless params[:switch_locale] || @page.nil? || @page.new_record? || @page.slugs.where({
+          #   :locale => Refinery::I18n.current_locale
+          # }).empty?
+          #   @page.slug = @page.slugs.first if @page.slug.nil? && @page.slugs.any?
+          #   Thread.current[:globalize_locale] = @page.slug.locale if @page.slug
+          # end
         else
           # Always display the tree of pages from the default frontend locale.
           Thread.current[:globalize_locale] = params[:switch_locale].try(:to_sym) || Refinery::I18n.default_frontend_locale

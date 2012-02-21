@@ -4,7 +4,7 @@ module Refinery
       module InstanceMethods
 
         def error_404(exception=nil)
-          if (@page = ::Refinery::Page.where(:menu_match => "^/404$").includes(:parts, :slugs).first).present?
+          if (@page = ::Refinery::Page.where(:menu_match => "^/404$").includes(:parts).first).present?
             params[:action] = 'error_404'
             # change any links in the copy to the refinery_admin_root_path
             # and any references to "home page" to "Dashboard"

@@ -394,7 +394,7 @@ module Refinery
         end
 
         describe "add a page with title only for secondary locale" do
-          before do
+          before(:each) do
             visit refinery.admin_pages_path
             click_link "Add new page"
             within "#switch_locale_picker" do
@@ -410,29 +410,25 @@ module Refinery
           end
 
           it "shows locale flag for page" do
-            p = ::Refinery::Page.find('новости')
-            within "#page_#{p.id}" do
+            within "#page_#{::Refinery::Page.find('новости').id}" do
               page.should have_css("img[src='/assets/refinery/icons/flags/ru.png']")
             end
           end
 
           it "doesn't show locale flag for primary locale" do
-            p = ::Refinery::Page.find('новости')
-            within "#page_#{p.id}" do
+            within "#page_#{::Refinery::Page.find('новости').id}" do
               page.should_not have_css("img[src='/assets/refinery/icons/flags/en.png']")
             end
           end
 
           it "shows title in the admin menu" do
-            p = ::Refinery::Page.find('новости')
-            within "#page_#{p.id}" do
+            within "#page_#{::Refinery::Page.find('новости').id}" do
               page.should have_content('Новости')
             end
           end
 
           it "uses id instead of slug in admin" do
-            p = ::Refinery::Page.find('новости')
-            within "#page_#{p.id}" do
+            within "#page_#{::Refinery::Page.find('новости').id}" do
               page.find_link('Edit this page')[:href].should include(p.id.to_s)
             end
           end
