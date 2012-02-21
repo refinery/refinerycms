@@ -2,6 +2,8 @@ source 'http://rubygems.org'
 
 gemspec
 
+gem 'friendly_id', :git => 'git://github.com/pioz/friendly_id.git'
+
 # REFINERY CMS ================================================================
 # Anything you put in here will be overridden when the app gets updated.
 

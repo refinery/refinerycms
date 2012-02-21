@@ -2,11 +2,12 @@ require 'devise'
 
 module Refinery
   class User < Refinery::Core::BaseModel
+    extend FriendlyId
 
     has_and_belongs_to_many :roles, :join_table => :refinery_roles_users
 
     has_many :plugins, :class_name => "UserPlugin", :order => "position ASC", :dependent => :destroy
-    has_friendly_id :username, :use_slug => true
+    friendly_id :username, :use => :slugged
 
     # Include default devise modules. Others available are:
     # :token_authenticatable, :confirmable, :lockable and :timeoutable

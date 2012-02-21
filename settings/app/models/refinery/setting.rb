@@ -1,5 +1,6 @@
 module Refinery
   class Setting < Refinery::Core::BaseModel
+    extend FriendlyId
 
     FORM_VALUE_TYPES = [
       ['Multi-line', 'text_area'],
@@ -18,7 +19,7 @@ module Refinery
                     :scoping, :restricted, :callback_proc_as_string,
                     :form_value_type
 
-    has_friendly_id :name, :use_slug => true
+    friendly_id :name, :use => :slugged
 
     before_save do |setting|
       setting.restricted = false if setting.restricted.nil?
