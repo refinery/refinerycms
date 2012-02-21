@@ -5,9 +5,7 @@ module Refinery
     # when collecting the pages path how is each of the pages seperated?
     PATH_SEPARATOR = " - "
 
-    if self.respond_to?(:translates)
-      translates :title, :menu_title, :custom_slug, :include => :seo_meta
-    end
+    translates :title, :menu_title, :custom_slug, :slug, :include => :seo_meta
 
     attr_accessible :title
 
@@ -29,12 +27,12 @@ module Refinery
     acts_as_nested_set :dependent => :destroy
 
     # Docs for friendly_id http://github.com/norman/friendly_id
-    friendly_id :custom_slug_or_title, :use => :slugged
+    friendly_id :custom_slug_or_title, :use => [:slugged, :reserved, :globalize, :scoped],
                 # :default_locale => (::Refinery::I18n.default_frontend_locale rescue :en),
-                # :reserved_words => %w(index new session login logout users refinery admin images wymiframe),
+                :reserved_words => %w(index new session login logout users refinery admin images wymiframe),
                 # :approximate_ascii => Refinery::Pages.approximate_ascii,
                 # :strip_non_ascii => Refinery::Pages.strip_non_ascii,
-                # :scope => :parent
+                :scope => :parent
 
     # Docs for acts_as_indexed http://github.com/dougal/acts_as_indexed
     acts_as_indexed :fields => [:title, :meta_keywords, :meta_description,
@@ -123,7 +121,7 @@ module Refinery
 
       # Wrap up the logic of finding the pages based on the translations table.
       def with_globalize(conditions = {})
-        conditions = {:locale => Globalize.locale}.merge(conditions)
+        conditions = {:locale => ::Globalize.locale}.merge(conditions)
         globalized_conditions = {}
         conditions.keys.each do |key|
           if (translated_attribute_names.map(&:to_s) | %w(locale)).include?(key.to_s)

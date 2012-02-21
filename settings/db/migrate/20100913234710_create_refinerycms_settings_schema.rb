@@ -3,6 +3,7 @@ class CreateRefinerycmsSettingsSchema < ActiveRecord::Migration
     create_table :refinery_settings do |t|
       t.string    :name
       t.text      :value
+      t.string    :slug
       t.boolean   :destroyable,             :default => true
       t.string    :scoping
       t.boolean   :restricted,              :default => false
