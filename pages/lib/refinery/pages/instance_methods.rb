@@ -12,18 +12,18 @@ module Refinery
         end
       end
 
-      def render(*args)
-        present(@page) unless admin? or @meta.present?
-        super
-      end
-
-      protected
+    protected
       def find_pages_for_menu
         # Compile the menu
         @menu_pages = ::Refinery::Menu.new(::Refinery::Page.fast_menu)
       end
 
-      private
+      def render(*args)
+        present(@page) unless admin? or @meta.present?
+        super
+      end
+
+    private
       def store_current_location!
         return super if admin?
 
