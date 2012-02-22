@@ -1,3 +1,3 @@
-%w(core authentication dashboard images pages resources).each do |engine|
+%w(core authentication dashboard images resources pages).each do |engine|
   require "refinerycms-#{engine}"
 end
