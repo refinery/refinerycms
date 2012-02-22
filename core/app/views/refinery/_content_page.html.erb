@@ -9,7 +9,7 @@
       raise ArgumentError.new("Sections passed to the content page partial must be Refinery::Pages::SectionPresenter objects inside a Refinery::Pages::ContentPagePresenter")
     end
   else
-    content_page = Refinery::Pages::ContentPagePresenter.build_for_page(@page, page_title)
+    content_page = Refinery::Pages::ContentPagePresenter.new(@page, page_title)
   end
 
   content_page.hide_sections(sections_to_hide)

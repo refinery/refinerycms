@@ -9,18 +9,10 @@ module Refinery
       end
 
       it "allows access to constructor arguments" do
-        section = SectionPresenter.new(:fallback_html => 'foobar', :id => 'mynode', :title => true, :hidden => true)
+        section = SectionPresenter.new(:fallback_html => 'foobar', :id => 'mynode', :hidden => true)
         section.fallback_html.should == 'foobar'
         section.id.should == 'mynode'
-        section.should be_title
         section.should be_hidden
-      end
-
-      it "can be built from a page part" do
-        part = double(PagePart, :body => 'part_body', :title => 'A Wonderful Page Part')
-        section = SectionPresenter.from_page_part(part)
-        section.fallback_html.should == 'part_body'
-        section.id.should == :a_wonderful_page_part
       end
 
       it "should be visible if not hidden" do
@@ -47,22 +39,10 @@ module Refinery
           section.wrapped_html(true).should be_nil
         end
 
-        it "wraps a title section in a title element" do
-          section = SectionPresenter.new(:fallback_html => 'foobar', :title => true)
-          section.has_content?(true).should be_true
-          section.wrapped_html(true).should == '<h1>foobar</h1>'
-        end
-
         it "will use the specified id" do
           section = SectionPresenter.new(:fallback_html => 'foobar', :id => 'mynode')
           section.has_content?(true).should be_true
           section.wrapped_html(true).should == '<section id="mynode"><div class="inner">foobar</div></section>'
-        end
-
-        it "will use the specified id on a title section" do
-          section = SectionPresenter.new(:fallback_html => 'foobar', :id => 'mynode', :title => true)
-          section.has_content?(true).should be_true
-          section.wrapped_html(true).should == '<h1 id="mynode">foobar</h1>'
         end
 
         describe "if allowed to use fallback html" do

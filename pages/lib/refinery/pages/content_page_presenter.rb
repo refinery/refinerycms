@@ -1,10 +1,6 @@
 module Refinery
   module Pages
     class ContentPagePresenter < ContentPresenter
-      def self.build_for_page(page, page_title)
-        self.new(page, page_title)
-      end
-
       def initialize(page, page_title)
         super()
         add_default_title_section(page_title) if page_title.present?
@@ -15,7 +11,7 @@ module Refinery
       private
 
         def add_default_title_section(title)
-          add_section SectionPresenter.new(:id => :body_content_title, :fallback_html => title, :title => true)
+          add_section TitleSectionPresenter.new(:id => :body_content_title, :fallback_html => title)
         end
 
         def add_default_post_page_sections
@@ -25,7 +21,7 @@ module Refinery
 
         def add_page_parts(parts)
           parts.each do |part|
-            add_section SectionPresenter.from_page_part(part)
+            add_section PagePartSectionPresenter.new(part)
           end
         end
     end
