@@ -1,8 +1,6 @@
 require 'rbconfig'
 append_file 'Gemfile' do
 "
-# https://github.com/resolve/refinerycms/issues/1197#issuecomment-3289940
-gem 'i18n-js', :git => 'git://github.com/fnando/i18n-js.git'
 
 #{"gem 'therubyracer'" if RbConfig::CONFIG['target_os'] =~ /linux/i}
 gem 'refinerycms', :git => 'git://github.com/resolve/refinerycms.git'
