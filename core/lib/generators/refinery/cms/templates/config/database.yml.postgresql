@@ -19,6 +19,7 @@ development:
   pool: 5
   username: postgres
   password: postgres
+  min_messages: warning
 
   # Connect on a TCP socket. Omitted by default since the client uses a
   # domain socket that doesn't need configuration. Windows does not have
@@ -45,6 +46,7 @@ test:
   pool: 5
   username: postgres
   password: postgres
+  min_messages: warning
 
 production:
   adapter: postgresql
@@ -53,3 +55,4 @@ production:
   pool: 5
   username: postgres
   password: postgres
+  min_messages: warning
