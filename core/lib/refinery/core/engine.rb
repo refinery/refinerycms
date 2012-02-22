@@ -28,6 +28,10 @@ module Refinery
             c.send :helper, Refinery::Core::Engine.helpers
           end
 
+          [Refinery::UsersController, Refinery::SessionsController, Refinery::PasswordsController].each do |c|
+            c.send :helper, Refinery::Core::Engine.helpers
+          end
+
           Refinery::AdminController.send :include, Refinery::Admin::BaseController
 
           after_inclusion_procs.each(&:call)
