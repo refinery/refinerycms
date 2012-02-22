@@ -33,6 +33,7 @@ module Refinery
             puts "bundle install"
             puts "rails generate refinery:#{plural_name}"
             puts "rake db:migrate"
+            puts "rake db:seed"
             puts "------------------------"
           end
         else
