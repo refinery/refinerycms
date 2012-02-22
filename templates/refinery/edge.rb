@@ -1,6 +1,9 @@
 require 'rbconfig'
 append_file 'Gemfile' do
 "
+# https://github.com/resolve/refinerycms/issues/1197#issuecomment-3289940
+gem 'i18n-js', :git => 'git://github.com/fnando/i18n-js.git'
+
 #{"gem 'therubyracer'" if RbConfig::CONFIG['target_os'] =~ /linux/i}
 gem 'refinerycms', :git => 'git://github.com/resolve/refinerycms.git'
 
@@ -28,9 +31,10 @@ rake 'db:create'
 generate 'refinery:cms --fresh-installation'
 
 rake 'railties:install:migrations db:migrate'
+rake 'db:seed'
 
 say <<-eos
   ============================================================================
-    Your new RefineryCMS application is now running on edge and mounted to /.
+    Your new Refinery CMS application is now running on edge and mounted to /.
   ============================================================================
 eos

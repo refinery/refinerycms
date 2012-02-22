@@ -19,14 +19,12 @@ module Refinery
       end
 
       context "new/create" do
-        it "uploads file", :js => true do
+        it "uploads file" do
           visit refinery.admin_resources_path
           click_link "Upload new file"
 
-          within_frame "dialog_iframe" do
-            attach_file "resource_file", Refinery.roots(:'refinery/resources').join("spec/fixtures/refinery_is_awesome.txt")
-            click_button "Save"
-          end
+          attach_file "resource_file", Refinery.roots(:'refinery/resources').join("spec/fixtures/refinery_is_awesome.txt")
+          click_button "Save"
 
           page.should have_content("Refinery Is Awesome.txt")
           Refinery::Resource.count.should == 1

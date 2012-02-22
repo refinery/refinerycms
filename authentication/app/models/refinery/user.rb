@@ -2,8 +2,8 @@ require 'devise'
 
 module Refinery
   class User < Refinery::Core::BaseModel
-    # TODO: This works around a bug in rails habtm with namespaces.
-    has_and_belongs_to_many :roles, :join_table => ::Refinery::RolesUsers.table_name
+
+    has_and_belongs_to_many :roles, :join_table => :refinery_roles_users
 
     has_many :plugins, :class_name => "UserPlugin", :order => "position ASC", :dependent => :destroy
     has_friendly_id :username, :use_slug => true

@@ -46,7 +46,7 @@
                    :class => "wymupdate button",
                    :tooltip => submit_button_title unless hide_submit %>
 
-    <%= render :partial => "/refinery/admin/continue_editing", :locals => {:f => f} if continue_editing -%>
+    <%= render '/refinery/admin/continue_editing', :f => f if continue_editing -%>
     <%= hidden_field_tag :continue_editing, false if continue_editing %>
 
     <%= local_assigns[:before_cancel_button] -%>

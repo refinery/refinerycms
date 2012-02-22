@@ -25,7 +25,7 @@ This guides takes a third approach of leaving the Refinery Gems unmodified to ma
 
 h4. Assumptions About The Existing Application
 
-Refinery CMS 1.0.0 assumes you want a content management system to control your site, which makes it very easy to build a RefineryCMS based application from scratch, and modify that.  Fortunately, it is also flexible enough to take on a smaller role to add functionality to your existing application. This guides focuses on those situations where there are large areas of your existing application that Refinery CMS should not be involved with at all. For example, you want to add a blog using refinery's blog engine, to your existing site, but don't want to otherwise alter your existing, perhaps complex, site.
+Refinery CMS 1.0.0 assumes you want a content management system to control your site, which makes it very easy to build a Refinery CMS based application from scratch, and modify that.  Fortunately, it is also flexible enough to take on a smaller role to add functionality to your existing application. This guides focuses on those situations where there are large areas of your existing application that Refinery CMS should not be involved with at all. For example, you want to add a blog using refinery's blog engine, to your existing site, but don't want to otherwise alter your existing, perhaps complex, site.
 
 Since this guide can't anticipate the unique integration issues with your situation, we'll create a minimal Rails + Devise application to reference. We'll assume that the existing application already handles authentication and authorization in a way that must be maintained to avoid breaking existing functionality, and that there are models, controllers and views that you don't want Refinery CMS to be involved with. Specifically, we'll assume that the ExistingApp will handle administration of the User table records through a non-refinery interface (perhaps the console, perhaps some ExistingApp controller).
 
@@ -202,7 +202,7 @@ $ git add -A
 $ git commit
 </shell>
 
-h3. Integrating RefineryCMS into ExistingApp
+h3. Integrating Refinery CMS into ExistingApp
 
 Now that we have a baseline example working ExistingApp using Devise, it's time to integrate using Refinery, in this case, to add a blog engine, using our existing front end styles, existing user models, and whatever specialized authentication and authorization code we may already have in place.
 
@@ -442,9 +442,9 @@ ruby> me.plugins.where(:name=>"refinery_users").first.destroy
 ruby> exit
 </shell>
 
-Hopefully, now that you have seen the details for adding RefineryCMS to an ExistingApp already using Devise, you will have a starting point for dealing with your own unique ExistingApp situations.
+Hopefully, now that you have seen the details for adding Refinery CMS to an ExistingApp already using Devise, you will have a starting point for dealing with your own unique ExistingApp situations.
 
-h3. Adding Your Authentication And Authorization Rules To RefineryCMS Admin Or Front End Pages
+h3. Adding Your Authentication And Authorization Rules To Refinery CMS Admin Or Front End Pages
 
 You can add before_filters to the Refinery controllers without overriding them completely and locally in your app, by sending an include message with the module to mix in to the controllers.
 

@@ -19,10 +19,7 @@ def setup_environment
   end
 
   # set javascript driver for capybara
-  Capybara.javascript_driver = :webkit
-
-  # minimize password hashing stretches
-  Devise.stretches = 1
+  Capybara.javascript_driver = :selenium
 end
 
 def each_run

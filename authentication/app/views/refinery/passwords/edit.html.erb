@@ -1,16 +1,11 @@
 <% content_for :header, t('pick_new_password_for', :scope => 'refinery.users.reset', :email => @refinery_user.email) %>
 
-<%= form_for resource,
-            :as => resource_name,
-            :url => refinery.refinery_user_password_path,
-            :html => { :method => :put } do |f| %>
+<%= form_for resource, :as => resource_name,
+             :url => refinery.refinery_user_password_path,
+             :html => { :method => :put } do |f| %>
   <%= f.hidden_field :reset_password_token %>
 
-  <%= render :partial => "/refinery/admin/error_messages",
-             :locals => {
-               :object => @refinery_user,
-               :include_object_name => true
-             } %>
+  <%= render '/refinery/admin/error_messages', :object => @refinery_user, :include_object_name => true %>
 
   <div class='field'>
     <%= f.label :password %>
@@ -22,13 +17,10 @@
     <%= f.password_field :password_confirmation, :class => 'larger widest' %>
   </div>
 
-  <%= render :partial => "/refinery/admin/form_actions",
-             :locals => {
-               :f => f,
-               :continue_editing => false,
-               :submit_button_text => t('reset_password', :scope => 'refinery.users.reset'),
-               :cancel_url => refinery.new_refinery_user_session_path,
-               :cancel_title => nil,
-               :hide_delete => true
-             } -%>
+  <%= render '/refinery/admin/form_actions', :f => f,
+             :continue_editing => false,
+             :submit_button_text => t('reset_password', :scope => 'refinery.users.reset'),
+             :cancel_url => refinery.new_refinery_user_session_path,
+             :cancel_title => nil,
+             :hide_delete => true -%>
 <% end -%>

@@ -13,7 +13,7 @@ module Refinery
       redirect_to refinery.new_refinery_user_password_path
     end
 
-    protected
+  protected
 
     # We don't like this alert.
     def clear_unauthenticated_flash

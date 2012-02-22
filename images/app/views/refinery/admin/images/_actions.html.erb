@@ -1,12 +1,9 @@
 <ul>
   <li>
-    <%= render :partial => "/refinery/admin/search",
-               :locals => { :url => refinery.admin_images_path } %>
+    <%= render '/refinery/admin/search', :url => refinery.admin_images_path %>
   </li>
   <li>
-    <%= link_to t('.create_new_image'),
-                refinery.new_admin_image_path(:dialog => true, :width => 600, :height => 300),
-                :class => "add_icon" %>
+    <%= link_to t('.create_new_image'), refinery.new_admin_image_path, :class => "add_icon" %>
   </li>
   <% other_image_views.each do |image_view| %>
     <li>

@@ -1,10 +1,6 @@
 <%= form_for [refinery, :admin, @setting] do |f| %>
 
-  <%= render :partial => "/refinery/admin/error_messages",
-             :locals => {
-               :object => @setting,
-               :include_object_name => true
-             } %>
+  <%= render '/refinery/admin/error_messages', :object => @setting, :include_object_name => true %>
 
   <div class='field'>
     <%= f.label :name %>
@@ -41,17 +37,13 @@
     <%= setting_field(f, help) %>
   </div>
 
-  <%= render :partial => "/refinery/admin/form_actions",
-             :locals => {
-               :f => f,
-               :continue_editing => false,
-               :hide_cancel => from_dialog?,
-               :submit_button_title => t('.restart_may_be_in_order_html'),
-               :delete_title => t('delete', :scope => 'refinery.admin.settings'),
-               :delete_confirmation => t('message', :scope => 'refinery.admin.delete',
-                                         :title => @setting.title),
-               :hide_delete => (@setting.new_record? or !@setting.destroyable or from_dialog?)
-              } %>
+  <%= render '/refinery/admin/form_actions', :f => f,
+             :continue_editing => false,
+             :hide_cancel => from_dialog?,
+             :submit_button_title => t('.restart_may_be_in_order_html'),
+             :delete_title => t('delete', :scope => 'refinery.admin.settings'),
+             :delete_confirmation => t('message', :scope => 'refinery.admin.delete', :title => @setting.title),
+             :hide_delete => (@setting.new_record? or !@setting.destroyable or from_dialog?) %>
 <% end -%>
 <% content_for :javascripts do %>
   <script>

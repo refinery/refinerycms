@@ -1,9 +1,8 @@
 <ul class='sortable_list'>
-  <%= render :partial => "page",
+  <%= render :partial => 'page',
              :collection => @pages.select{|p| p.parent_id.nil?},
              :locals => {
                :collection => @pages
              }  %>
 </ul>
-<%= render :partial => "/refinery/admin/sortable_list",
-           :locals => {:continue_reordering => !!local_assigns[:continue_reordering]} %>
+<%= render '/refinery/admin/sortable_list', :continue_reordering => !!local_assigns[:continue_reordering] %>

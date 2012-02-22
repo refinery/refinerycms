@@ -1,22 +1,18 @@
 <ul>
   <li>
-    <%= render :partial => "/refinery/admin/search",
-               :locals => { :url => refinery.admin_pages_path } %>
+    <%= render '/refinery/admin/search', :url => refinery.admin_pages_path %>
   </li>
   <li>
-    <%= link_to t('.create_new_page'),
-                refinery.new_admin_page_path,
+    <%= link_to t('.create_new_page'), refinery.new_admin_page_path,
                 :class => "add_icon" %>
   </li>
 <% if @pages.many? and !searching? %>
   <li>
-    <%= link_to t('.reorder_pages'),
-                refinery.admin_pages_path,
+    <%= link_to t('.reorder_pages'), refinery.admin_pages_path,
                 :id => "reorder_action",
                 :class => "reorder_icon" %>
 
-    <%= link_to t('.reorder_pages_done'),
-                refinery.admin_pages_path,
+    <%= link_to t('.reorder_pages_done'), refinery.admin_pages_path,
                 :id => "reorder_action_done",
                 :style => "display: none;",
                 :class => "reorder_icon" %>

@@ -21,7 +21,7 @@ module Refinery
       ::I18n.backend.store_translations :en, :refinery => {
         :plugins => {
           :refinery_rspec => {
-            :title => "RefineryCMS RSpec",
+            :title => "Refinery CMS RSpec",
             :description => "RSpec tests for plugin.rb"
           }
         }
@@ -42,7 +42,7 @@ module Refinery
 
     describe '#title' do
       it 'returns plugin title defined by I18n' do
-        plugin.title.should == 'RefineryCMS RSpec'
+        plugin.title.should == 'Refinery CMS RSpec'
       end
     end
 
@@ -127,14 +127,14 @@ module Refinery
       context 'when @url is already defined' do
         it 'returns hash' do
           plugin.stub(:url).and_return({:controller => 'refinery/admin/testa'})
-          plugin.url.should == {:controller => 'refinery/admin/testa'}
+          plugin.url[:controller].should == 'refinery/admin/testa'
         end
       end
 
       context 'when controller is present' do
         it 'returns hash based on it' do
           plugin.stub(:controller).and_return('testb')
-          plugin.url.should == {:controller => 'refinery/admin/testb'}
+          plugin.url[:controller].should == 'refinery/admin/testb'
         end
       end
 
@@ -142,13 +142,13 @@ module Refinery
 
         it 'returns hash based on it' do
           plugin.stub(:directory).and_return('first/second/testc')
-          plugin.url.should == {:controller => 'refinery/admin/testc'}
+          plugin.url[:controller].should == 'refinery/admin/testc'
         end
       end
 
       context 'when controller and directory not present' do
         it 'returns hash based on plugins name' do
-          plugin.url.should == {:controller => 'refinery/admin/refinery_rspec'}
+          plugin.url[:controller].should == 'refinery/admin/refinery_rspec'
         end
       end
     end

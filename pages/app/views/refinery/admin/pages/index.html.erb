@@ -1,10 +1,9 @@
 <section id='records' class='tree'>
   <% cache_if(Refinery::Pages.cache_pages_backend, [Refinery::Core.base_cache_key, "pages_backend", Globalize.locale].join('_')) do %>
-    <%= render :partial => 'records' %>
+    <%= render 'records' %>
   <% end %>
 </section>
 <section id='actions'>
-  <%= render :partial => 'actions' %>
+  <%= render 'actions' %>
 </section>
-<%= render :partial => "/refinery/admin/make_sortable",
-           :locals => {:tree => true} if @pages.many? -%>
+<%= render '/refinery/admin/make_sortable', :tree => true if @pages.many? -%>

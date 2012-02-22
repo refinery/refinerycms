@@ -19,11 +19,8 @@
 
   <%= will_paginate @resources, :params => params.dup %>
 
-  <%= render :partial => "/refinery/admin/form_actions",
-             :locals => {
-               :f => nil,
-               :submit_button_text => t('.button_text'),
-               :hide_cancel => true,
-               :hide_delete => true
-             } if @app_dialog or @resources.any? %>
+  <%= render '/refinery/admin/form_actions', :f => nil,
+             :submit_button_text => t('.button_text'),
+             :hide_cancel => true,
+             :hide_delete => true if @app_dialog or @resources.any? %>
 </div>

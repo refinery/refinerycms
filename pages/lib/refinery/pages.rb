@@ -1,8 +1,4 @@
 require 'refinerycms-core'
-require 'awesome_nested_set'
-require 'globalize3'
-require 'friendly_id'
-require 'seo_meta'
 
 module Refinery
   autoload :PagesGenerator, 'generators/refinery/pages/pages_generator'
@@ -28,15 +24,15 @@ module Refinery
       end
 
       def valid_templates(*pattern)
-        [Rails.root, Refinery::Plugins.registered.pathnames].flatten.uniq.map do |p|
+        [Rails.root, Refinery::Plugins.registered.pathnames].flatten.uniq.map { |p|
           p.join(*pattern)
-        end.map(&:to_s).map do |p|
+        }.map(&:to_s).map { |p|
           Dir[p]
-        end.select(&:any?).flatten.map do |f|
+        }.select(&:any?).flatten.map { |f|
           File.basename(f)
-        end.map do |p|
+        }.map { |p|
           p.split('.').first
-        end
+        }
       end
 
       def default_parts_for(page)
@@ -51,3 +47,8 @@ module Refinery
     end
   end
 end
+
+require 'awesome_nested_set'
+require 'globalize3'
+require 'friendly_id'
+require 'seo_meta'

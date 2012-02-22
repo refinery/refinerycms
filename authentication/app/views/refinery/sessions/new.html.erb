@@ -21,10 +21,7 @@
       <%= link_to t('.forgot_password'), refinery.new_refinery_user_password_path %>
     </div>
   </div>
-  <%= render :partial => "/refinery/admin/form_actions",
-             :locals => {
-               :f => f,
-               :submit_button_text => t('.sign_in'),
-               :hide_cancel => true
-             } %>
+  <%= render '/refinery/admin/form_actions', :f => f,
+             :submit_button_text => t('.sign_in'),
+             :hide_cancel => true %>
 <% end -%>

@@ -35,7 +35,7 @@ Now, to install the gem run:
 
 h4. Generate support files and migrations
 
-Now you can simply run the RefineryCMS generator:
+Now you can simply run the Refinery CMS generator:
 
 <shell>
   rails generate refinery:cms

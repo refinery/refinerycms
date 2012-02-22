@@ -87,18 +87,17 @@ module Refinery
                   unless request.xhr?
                     redirect_to :back
                   else
-                    render :partial => "/refinery/message"
+                    render :partial => '/refinery/message'
                   end
                 end
               else
-                render :text => "<script>parent.window.location = '\#{#{options[:redirect_to_url]}}';</script>"
+                redirect_back_or_default(#{options[:redirect_to_url]})
               end
             else
               unless request.xhr?
                 render :action => 'new'
               else
-                render :partial => "/refinery/admin/error_messages",
-                       :locals => {
+                render :partial => '/refinery/admin/error_messages', :locals => {
                          :object => @#{singular_name},
                          :include_object_name => true
                        }
@@ -124,18 +123,17 @@ module Refinery
                   unless request.xhr?
                     redirect_to :back
                   else
-                    render :partial => "/refinery/message"
+                    render :partial => '/refinery/message'
                   end
                 end
               else
-                render :text => "<script>parent.window.location = '\#{#{options[:redirect_to_url]}}';</script>"
+                redirect_back_or_default(#{options[:redirect_to_url]})
               end
             else
               unless request.xhr?
                 render :action => 'edit'
               else
-                render :partial => "/refinery/admin/error_messages",
-                       :locals => {
+                render :partial => '/refinery/admin/error_messages', :locals => {
                          :object => @#{singular_name},
                          :include_object_name => true
                        }
@@ -300,7 +298,6 @@ module Refinery
             #{options[:searchable].to_s}
           end
         )
-
 
       end
 

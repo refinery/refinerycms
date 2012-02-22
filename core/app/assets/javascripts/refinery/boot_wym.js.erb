@@ -1,4 +1,6 @@
-I18n.locale = "<%= I18n.locale %>";
+if (typeof(I18n) != 'undefined') {
+  I18n.locale = "<%= I18n.locale %>";
+}
 
 onOpenDialog = function(dialog) {
   (dialog = $('.ui-dialog')).find('.ui-dialog-titlebar').corner('1px top');
@@ -226,7 +228,7 @@ var wymeditor_boot_options = $.extend({
       );
     }
   }
-  , lang: (I18n.locale != null ? I18n.locale : 'en')
+  , lang: ((typeof(I18n) != 'undefined' && I18n.locale != null) ? I18n.locale : 'en')
 }, custom_wymeditor_boot_options);
 
 WYMeditor.editor.prototype.loadIframe = function(iframe) {

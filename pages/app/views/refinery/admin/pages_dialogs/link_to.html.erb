@@ -27,7 +27,7 @@
       <div id='your_page_content' class='clearfix'>
         <div id='pages_list' class='pages_list'>
           <ul class="link_list">
-            <%= render :partial => "page_link", :collection => @pages,
+            <%= render :partial => 'page_link', :collection => @pages,
                        :locals => {
                          :child => 0,
                          :link_to_arguments => {}
@@ -108,15 +108,12 @@
       </div>
     <% end %>
   </div>
-  <%= render :partial => "/refinery/admin/form_actions",
-             :locals => {
-               :f => nil,
-               :cancel_url => '',
-               :submit_button_text => t('.insert'),
-               :hide_cancel => false,
-               :cancel_title => nil,
-               :hide_delete => true
-             } %>
+  <%= render '/refinery/admin/form_actions', :f => nil,
+             :cancel_url => '',
+             :submit_button_text => t('.insert'),
+             :hide_cancel => false,
+             :cancel_title => nil,
+             :hide_delete => true %>
 </div>
 
 <% content_for :javascripts do %>
