@@ -147,6 +147,7 @@ module Refinery
             puts "bundle install"
             puts "rails generate refinery:#{engine_plural_name}"
             puts "rake db:migrate"
+            puts "rake db:seed"
             puts "------------------------"
           end
         else
