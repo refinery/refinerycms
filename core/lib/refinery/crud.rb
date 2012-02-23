@@ -187,7 +187,10 @@ module Refinery
           # If the controller is being accessed via an ajax request
           # then render only the collection of items.
           def render_partial_response?
-            render :partial => '#{plural_name}' and return if request.xhr?
+            if request.xhr?
+              render :text => render_to_string(:partial => '#{plural_name}', :layout => false).html_safe,
+                     :layout => 'refinery/flash' and return false
+            end
           end
 
           # Returns a weighted set of results based on the query specified by the user.

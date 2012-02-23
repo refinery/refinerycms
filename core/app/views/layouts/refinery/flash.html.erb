@@ -1,1 +1,2 @@
-<%= render '/refinery/message' if request.xhr? %>
+<%= render :partial => '/refinery/message' if request.xhr? %>
+<%= yield %>
