@@ -32,6 +32,4 @@ Gem::Specification.new do |s|
   s.add_dependency 'coffee-rails',                '~> 3.2.1'
   s.add_dependency 'uglifier',                    '>= 1.0.3'
   s.add_dependency 'jquery-rails',                '~> 2.0.0'
-
-  s.add_dependency 'refinerycms-settings',        version
 end
