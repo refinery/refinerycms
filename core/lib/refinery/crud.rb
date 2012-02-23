@@ -75,7 +75,7 @@ module Refinery
             end
 
             if (@#{singular_name} = #{class_name}.create(params[:#{singular_name}])).valid?
-              (request.xhr? ? flash.now : flash).notice = t(
+              flash.notice = t(
                 'refinery.crudify.created',
                 :what => "'\#{@#{singular_name}.#{options[:title_attribute]}}'"
               )
@@ -91,7 +91,9 @@ module Refinery
                   end
                 end
               else
-                redirect_back_or_default(#{options[:redirect_to_url]})
+                self.index
+                @dialog_successful = true
+                render :index
               end
             else
               unless request.xhr?
@@ -111,7 +113,7 @@ module Refinery
 
           def update
             if @#{singular_name}.update_attributes(params[:#{singular_name}])
-              (request.xhr? ? flash.now : flash).notice = t(
+              flash.notice = t(
                 'refinery.crudify.updated',
                 :what => "'\#{@#{singular_name}.#{options[:title_attribute]}}'"
               )
@@ -127,7 +129,9 @@ module Refinery
                   end
                 end
               else
-                redirect_back_or_default(#{options[:redirect_to_url]})
+                self.index
+                @dialog_successful = true
+                render :index
               end
             else
               unless request.xhr?
@@ -183,7 +187,7 @@ module Refinery
           # If the controller is being accessed via an ajax request
           # then render only the collection of items.
           def render_partial_response?
-            render :partial => '#{plural_name}' if request.xhr?
+            render :partial => '#{plural_name}' and return if request.xhr?
           end
 
           # Returns a weighted set of results based on the query specified by the user.
@@ -300,12 +304,19 @@ module Refinery
         end
 
         module_eval %(
-          def self.sortable?
-            #{options[:sortable].to_s}
-          end
+          class << self
+            def pageable?
+              #{options[:paging].to_s}
+            end
+            alias_method :paging?, :pageable?
 
-          def self.searchable?
-            #{options[:searchable].to_s}
+            def sortable?
+              #{options[:sortable].to_s}
+            end
+
+            def searchable?
+              #{options[:searchable].to_s}
+            end
           end
         )
 

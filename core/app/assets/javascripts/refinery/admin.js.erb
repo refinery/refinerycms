@@ -95,6 +95,24 @@ init_modal_dialogs = function(){
   });
 };
 
+refinery_dialog_success = function(e) {
+  close_dialog();
+
+  $.ajax({
+    url: window.location.pathname,
+    cache: false,
+    success: function(data) {
+      $('.pagination_container').html(data);
+
+      $('#flash_container > #flash').remove();
+      $('#flash_container').append($('.pagination_container').find('#flash'));
+
+      $('#flash').css({'width': 'auto', 'visibility': ''}).fadeIn(550);
+      init_ajaxy_pagination();
+    }
+  });
+}
+
 trigger_reordering = function(e, enable) {
   $menu = $("#menu");
   e.preventDefault();
@@ -972,7 +990,9 @@ close_dialog = function(e) {
     the_body.removeClass('hide-overflow');
     the_dialog.filter(':data(dialog)').dialog('close');
     the_dialog.remove();
-    e.preventDefault();
+    if (e && e.preventDefault) {
+      e.preventDefault();
+    }
   }
 };
 

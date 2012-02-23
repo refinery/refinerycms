@@ -55,7 +55,12 @@ module ::Refinery
         unless params[:insert]
           if @images.all?(&:valid?)
             flash.notice = t('created', :scope => 'refinery.crudify', :what => "'#{@images.map(&:title).join("', '")}'")
-            redirect_to refinery.admin_images_path
+            unless from_dialog?
+              redirect_to refinery.admin_images_path
+            else
+              @dialog_successful = true
+              render :nothing => true, :layout => true
+            end
           else
             self.new # important for dialogs
             render :action => 'new'
