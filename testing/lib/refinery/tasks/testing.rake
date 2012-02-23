@@ -37,6 +37,7 @@ namespace :refinery do
         refinery_pages
         refinery_images
         refinery_resources
+        refinery_settings
       )
 
       task_params = [%Q{ bundle exec rake -f #{Refinery::Testing::Railtie.target_engine_path.join('Rakefile')} }]
