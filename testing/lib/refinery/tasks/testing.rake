@@ -32,12 +32,12 @@ namespace :refinery do
     task :migrate_dummy_app do
       engines = %w(
         refinery
-        refinery_settings
         refinery_authentication
         seo_meta_engine
         refinery_pages
         refinery_images
         refinery_resources
+        refinery_settings
       )
 
       task_params = [%Q{ bundle exec rake -f #{Refinery::Testing::Railtie.target_engine_path.join('Rakefile')} }]

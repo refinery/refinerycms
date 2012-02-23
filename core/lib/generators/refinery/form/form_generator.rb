@@ -45,7 +45,7 @@ module Refinery
           end
         end
       else
-        puts "You must specify a name and at least one field. For help: rails generate refinery_form"
+        puts "You must specify a name and at least one field. For help: rails generate refinery:form"
       end
     end
 

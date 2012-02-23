@@ -60,6 +60,9 @@ module Refinery
               directory "lib" do
                 file "refinerycms-rspec_product_tests.rb"
               end
+              directory "spec" do
+                file "spec_helper.rb"
+              end
               directory "tasks" do
                 file "testing.rake"
                 file "rspec.rake"

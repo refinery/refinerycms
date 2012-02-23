@@ -18,9 +18,9 @@ Gem::Specification.new do |s|
   s.bindir            = 'bin'
   s.executables       = %w(refinerycms)
   s.require_paths     = %w(lib)
-  
+
   s.files             = `git ls-files -- lib/*`.split("\n")
-  
+
   s.add_dependency    'bundler',                    '~> 1.0'
   s.add_dependency    'refinerycms-authentication', version
   s.add_dependency    'refinerycms-core',           version
@@ -28,5 +28,4 @@ Gem::Specification.new do |s|
   s.add_dependency    'refinerycms-images',         version
   s.add_dependency    'refinerycms-pages',          version
   s.add_dependency    'refinerycms-resources',      version
-  s.add_dependency    'refinerycms-settings',       version
 end
