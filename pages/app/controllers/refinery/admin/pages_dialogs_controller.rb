@@ -11,9 +11,7 @@ module ::Refinery
           Thread.current[:globalize_locale] = params[:switch_locale] || Refinery::I18n.default_locale
         end
 
-        @pages = ::Refinery::Page.where(:parent_id => nil).
-                                  paginate(:page => params[:page], :per_page => Page.per_page(true)).
-                                  order('position')
+        @pages = ::Refinery::Page.roots.paginate(:page => params[:page], :per_page => ::Refinery::Page.per_page(true))
 
         @pages = @pages.with_globalize if ::Refinery.i18n_enabled?
 
@@ -77,7 +75,7 @@ module ::Refinery
       end
 
       def test_email
-        unless params[:email].blank?
+        if params[:email].present?
           valid = params[:email] =~ /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i
 
           render :json => if valid
