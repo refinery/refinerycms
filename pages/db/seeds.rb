@@ -24,8 +24,6 @@ if Refinery::Page.where(:menu_match => "^/$").empty?
                 :body => "<h2>Sorry, there was a problem...</h2><p>The page you requested was not found.</p><p><a href='/'>Return to the home page</a></p>",
                 :position => 0
               })
-else
-  page_position += 1
 end
 
 if Refinery::Page.by_title("About").empty?
