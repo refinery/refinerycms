@@ -18,7 +18,6 @@ if defined?(::Refinery::Page)
     :title => "Thank You",
     :link_url => "/<%= plural_name %>/thank_you",
     :deletable => false,
-    :parent => page,
     :show_in_menu => false
   )
   Refinery::Pages.default_parts.each do |default_page_part|
