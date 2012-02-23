@@ -180,6 +180,12 @@ module Refinery
             @#{plural_name} = @#{plural_name}.paginate(:page => params[:page], :per_page => per_page)
           end
 
+          # If the controller is being accessed via an ajax request
+          # then render only the collection of items.
+          def render_partial_response?
+            render :partial => '#{plural_name}' if request.xhr?
+          end
+
           # Returns a weighted set of results based on the query specified by the user.
           def search_all_#{plural_name}
             # First find normal results.
@@ -194,6 +200,7 @@ module Refinery
           protected :find_#{singular_name},
                     :find_all_#{plural_name},
                     :paginate_all_#{plural_name},
+                    :render_partial_response?,
                     :search_all_#{plural_name}
         )
 
@@ -205,7 +212,7 @@ module Refinery
                 search_all_#{plural_name} if searching?
                 paginate_all_#{plural_name}
 
-                render :partial => '#{plural_name}' if #{options[:xhr_paging].inspect} && request.xhr?
+                render_partial_response?
               end
             )
           else
@@ -216,6 +223,8 @@ module Refinery
                 else
                   search_all_#{plural_name}
                 end
+
+                render_partial_response?
               end
             )
           end
@@ -226,13 +235,14 @@ module Refinery
               def index
                 paginate_all_#{plural_name}
 
-                render :partial => '#{plural_name}' if #{options[:xhr_paging].inspect} && request.xhr?
+                render_partial_response?
               end
             )
           else
             module_eval %(
               def index
                 find_all_#{plural_name}
+                render_partial_response?
               end
             )
           end
