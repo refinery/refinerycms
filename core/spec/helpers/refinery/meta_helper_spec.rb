@@ -48,7 +48,7 @@ module Refinery
 
       it "returns a base site_name if no I18n module present" do
         ::Refinery::Core.config.stub(:site_name => "Company Name")
-        ::Refinery.send(:remove_const, :I18n)
+        ::Refinery.stub(:I18n => nil)
         @meta = "Stubbed to avoid warnings"
         @meta.stub(:browser_title => "Закруглэ")
         helper.browser_title.should =~ /- Company Name/

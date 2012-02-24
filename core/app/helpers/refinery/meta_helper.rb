@@ -17,7 +17,7 @@ module Refinery
       [
           (yield_title if yield_title.present?),
           @meta.browser_title.present? ? @meta.browser_title : @meta.path,
-          Refinery.const_defined?(:I18n, false)  ? localized_title : Refinery::Core.config.site_name.to_s
+          Refinery.i18n_enabled? ? localized_title : Refinery::Core.config.site_name.to_s
       ].compact.join(" - ")
     end
 
