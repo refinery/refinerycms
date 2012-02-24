@@ -27,7 +27,7 @@ module Refinery
     acts_as_nested_set :dependent => :destroy
 
     # Docs for friendly_id http://github.com/norman/friendly_id
-    friendly_id :custom_slug_or_title, :use => [:slugged, :reserved, :globalize, :scoped],
+    friendly_id :custom_slug_or_title, :use => [:reserved, :globalize, :scoped],
                 # :default_locale => (::Refinery::I18n.default_frontend_locale rescue :en),
                 :reserved_words => %w(index new session login logout users refinery admin images wymiframe),
                 # :approximate_ascii => Refinery::Pages.approximate_ascii,
@@ -67,8 +67,8 @@ module Refinery
       # called 'example' otherwise it may clash with another page called /example.
       def find_by_path(path)
         split_path = path.to_s.split('/')
-        page = ::Refinery::Page.find(split_path.shift)
-        page = page.children.find(split_path.shift) until split_path.empty?
+        page = ::Refinery::Page.by_slug(split_path.shift).first
+        page = page.children.by_slug(split_path.shift).first until split_path.empty?
 
         page
       end
@@ -79,6 +79,11 @@ module Refinery
       # and then join to the pages table again to return the associated record.
       def by_title(title)
         with_globalize(:title => title)
+      end
+
+      # Finds a page using its slug.  See by_title
+      def by_slug(slug)
+        with_globalize(:slug => slug)
       end
 
       # Shows all pages with :show_in_menu set to true, but it also
@@ -412,7 +417,7 @@ module Refinery
     # Returns the sluggified string
     def normalize_friendly_id(slug_string)
       slug_string.gsub!('_', '-')
-      sluggified = super
+      sluggified = slug_string.to_slug.normalize!
       if Refinery::Pages.marketable_urls && self.class.friendly_id_config.reserved_words.include?(sluggified)
         sluggified << "-page"
       end
