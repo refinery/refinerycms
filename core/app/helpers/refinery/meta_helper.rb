@@ -5,14 +5,19 @@ module Refinery
     #
 
     def localized_title
-      Refinery::Setting.find_or_set("#{Refinery::I18n.current_frontend_locale.to_s}_site_name", "#{Refinery::I18n.current_frontend_locale} Site Name")
+      request_locale = Refinery::I18n.current_frontend_locale
+      if Refinery::Core.config.site_name.is_a?(Hash)
+        !!Refinery::Core.config.site_name[request_locale] ? Refinery::Core.config.site_name[request_locale] : "#{request_locale} Company Name"
+      else
+        Refinery::Core.config.site_name
+      end
     end
 
     def browser_title(yield_title=nil)
       [
           (yield_title if yield_title.present?),
           @meta.browser_title.present? ? @meta.browser_title : @meta.path,
-          Refinery.const_defined?(:I18n, false)  ? localized_title : Refinery::Core.config.site_name
+          Refinery.const_defined?(:I18n, false)  ? localized_title : Refinery::Core.config.site_name.to_s
       ].compact.join(" - ")
     end
 
