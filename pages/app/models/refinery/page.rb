@@ -67,8 +67,8 @@ module Refinery
       # called 'example' otherwise it may clash with another page called /example.
       def find_by_path(path)
         split_path = path.to_s.split('/')
-        page = ::Refinery::Page.find(split_path.shift)
-        page = page.children.find(split_path.shift) until split_path.empty?
+        page = ::Refinery::Page.find_by_slug(split_path.shift)
+        page = page.children.find_by_slug(split_path.shift) until split_path.empty?
 
         page
       end
