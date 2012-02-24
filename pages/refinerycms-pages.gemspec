@@ -25,4 +25,5 @@ Gem::Specification.new do |s|
   s.add_dependency 'awesome_nested_set',          '~> 2.1.0'
   s.add_dependency 'seo_meta',                    '>= 1.2.0.rc3'
   s.add_dependency 'refinerycms-core',            version
+  s.add_dependency 'babosa'
 end
