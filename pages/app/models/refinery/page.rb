@@ -430,14 +430,14 @@ module Refinery
     # This applies mostly to plugin-generated pages.
     #
     # Returns the sluggified string
-    def normalize_friendly_id(slug_string)
-      slug_string.gsub!('_', '-')
-      sluggified = slug_string.to_slug.normalize!
+    def normalize_friendly_id_with_marketable_urls(slug_string)
+      sluggified = normalize_friendly_id_without_marketable_urls(slug_string)
       if Refinery::Pages.marketable_urls && self.class.friendly_id_config.reserved_words.include?(sluggified)
         sluggified << "-page"
       end
       sluggified
     end
+    alias_method_chain :normalize_friendly_id, :marketable_urls
 
     private
 
