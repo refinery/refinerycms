@@ -3,21 +3,11 @@ module Refinery
 
     # This is used to display the title of the current object (normally a page) in the browser's titlebar.
     #
-
-    def localized_title
-      request_locale = Refinery::I18n.current_frontend_locale
-      if Refinery::Core.config.site_name.is_a?(Hash)
-        !!Refinery::Core.config.site_name[request_locale] ? Refinery::Core.config.site_name[request_locale] : "#{request_locale} Company Name"
-      else
-        Refinery::Core.config.site_name
-      end
-    end
-
     def browser_title(yield_title=nil)
       [
-          (yield_title if yield_title.present?),
-          @meta.browser_title.present? ? @meta.browser_title : @meta.path,
-          Refinery.i18n_enabled? ? localized_title : Refinery::Core.config.site_name.to_s
+        (yield_title if yield_title.present?),
+        @meta.browser_title.present? ? @meta.browser_title : @meta.path,
+        Refinery::Core.site_name
       ].compact.join(" - ")
     end
 
