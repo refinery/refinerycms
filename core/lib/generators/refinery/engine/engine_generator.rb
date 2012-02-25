@@ -71,9 +71,9 @@ module Refinery
     def generate
       destination_pathname = Pathname.new(self.destination_root)
       clash_file = Pathname.new(File.expand_path('../clash_keywords.yml', __FILE__))
-      clash_keywords = File.open(clash_file) { |f| doc = YAML.load(f) }
+      clash_keywords = YAML.load_file(clash_file)
       if clash_keywords.member?(singular_name.downcase)
-        puts "Please choose a different name.  Generated code would fail for class '#{singular_name}'"
+        puts "Please choose a different name. Generated code would fail for class '#{singular_name}'"
         puts ""
         exit(1)
       end
@@ -147,6 +147,7 @@ module Refinery
             puts "bundle install"
             puts "rails generate refinery:#{engine_plural_name}"
             puts "rake db:migrate"
+            puts "rake db:seed"
             puts "------------------------"
           end
         else

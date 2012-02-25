@@ -24,7 +24,7 @@ module Refinery
         params[:search].present?
       end
 
-      protected
+    protected
 
       def group_by_date(records)
         new_records = []

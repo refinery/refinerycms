@@ -6,7 +6,7 @@ module Refinery
     <% if (string_attributes = attributes.select{ |a| a.type.to_s =~ /string|text/ }.uniq).any? %>
       acts_as_indexed :fields => <%= string_attributes.map{|s| s.name.to_sym}.inspect %>
 
-      validates <%= string_attributes.first.inspect %>, :presence => true, :uniqueness => true
+      validates <%= string_attributes.first.name.to_sym.inspect %>, :presence => true, :uniqueness => true
       <% else %>
       # def title was created automatically because you didn't specify a string field
       # when you ran the refinery:engine generator. <3 <3 Refinery CMS.

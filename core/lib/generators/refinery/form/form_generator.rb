@@ -33,6 +33,7 @@ module Refinery
             puts "bundle install"
             puts "rails generate refinery:#{plural_name}"
             puts "rake db:migrate"
+            puts "rake db:seed"
             puts "------------------------"
           end
         else
@@ -44,7 +45,7 @@ module Refinery
           end
         end
       else
-        puts "You must specify a name and at least one field. For help: rails generate refinery_form"
+        puts "You must specify a name and at least one field. For help: rails generate refinery:form"
       end
     end
 

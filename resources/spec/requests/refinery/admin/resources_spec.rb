@@ -19,12 +19,17 @@ module Refinery
       end
 
       context "new/create" do
-        it "uploads file" do
+        it "uploads file", :js => true do
           visit refinery.admin_resources_path
           click_link "Upload new file"
 
-          attach_file "resource_file", Refinery.roots(:'refinery/resources').join("spec/fixtures/refinery_is_awesome.txt")
-          click_button "Save"
+          page.should have_selector 'iframe#dialog_iframe'
+
+          page.within_frame('dialog_iframe') do
+            attach_file "resource_file", Refinery.roots(:'refinery/resources').
+                                                  join("spec/fixtures/refinery_is_awesome.txt")
+            click_button ::I18n.t('save', :scope => 'refinery.admin.form_actions')
+          end
 
           page.should have_content("Refinery Is Awesome.txt")
           Refinery::Resource.count.should == 1
@@ -75,6 +80,29 @@ module Refinery
           click_link "Download this file"
 
           page.should have_content("http://www.refineryhq.com/")
+        end
+
+        context 'when the engine is mounted with a named space' do
+          before do
+            Rails.application.routes.draw do
+              mount Refinery::Core::Engine, :at => "/about"
+            end
+          end
+
+          after do
+            Rails.application.routes.draw do
+              mount Refinery::Core::Engine, :at => "/"
+            end
+          end
+
+          it "succeeds" do
+            visit refinery.admin_resources_path
+
+            click_link "Download this file"
+
+            page.should have_content("http://www.refineryhq.com/")
+          end
+
         end
       end
     end

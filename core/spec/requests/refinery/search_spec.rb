@@ -37,17 +37,6 @@ module Refinery
           page.should have_content("Ugis Ozols")
         end
       end
-
-      describe "setting engine" do
-        before(:each) { Refinery::Setting.set(:testy, true) }
-
-        it "returns found setting" do
-          visit refinery.admin_settings_path
-          fill_in "search", :with => "testy"
-          click_button "Search"
-          page.should have_content("Testy - true")
-        end
-      end
     end
 
     context "when searched item don't exist" do
@@ -74,13 +63,6 @@ module Refinery
       describe "page engine" do
         it "returns no results" do
           visit refinery.admin_pages_path
-          shared_stuff
-        end
-      end
-
-      describe "setting engine" do
-        it "returns no results" do
-          visit refinery.admin_settings_path
           shared_stuff
         end
       end

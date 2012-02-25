@@ -14,7 +14,6 @@ if defined?(::Refinery::Page) && ::Refinery::Page.where(:link_url => url).empty?
     :title => '<%= class_name.pluralize.underscore.titleize %>',
     :link_url => url,
     :deletable => false,
-    :position => ((::Refinery::Page.maximum(:position, :conditions => {:parent_id => nil}) || -1)+1),
     :menu_match => "^#{url}(\/|\/.+?|)$"
   )
   Refinery::Pages.default_parts.each do |default_page_part|

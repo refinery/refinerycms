@@ -14,7 +14,6 @@ class CreateRefinerycmsPagesSchema < ActiveRecord::Migration
 
     create_table :refinery_pages do |t|
       t.integer   :parent_id
-      t.integer   :position
       t.string    :path
       t.string    :slug
       t.boolean   :show_in_menu,        :default => true

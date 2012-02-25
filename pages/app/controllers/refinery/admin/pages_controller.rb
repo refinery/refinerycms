@@ -1,6 +1,8 @@
 module Refinery
   module Admin
     class PagesController < Refinery::AdminController
+      helper Pages::ContentPagesHelper
+
       cache_sweeper Refinery::PageSweeper
 
       crudify :'refinery/page',
@@ -29,13 +31,12 @@ module Refinery
 
       def preview
         @menu_pages = ::Refinery::Menu.new(::Refinery::Page.fast_menu)
-        @page = find_page
 
-        if @page
+        if @page ||= page
           # Preview existing pages
           @page.attributes = params[:page]
           present(@page)
-          render(:template => '/refinery/pages/show', :layout => 'preview') and return
+          render :template => '/refinery/pages/show', :layout => 'refinery/preview' and return
         else
           # Preview a non-persisted page
           @page = Page.new(params[:page])
@@ -43,7 +44,7 @@ module Refinery
 
         if @page.valid?
           present(@page)
-          render :template => '/refinery/pages/show', :layout => 'preview'
+          render :template => '/refinery/pages/show', :layout => 'refinery/preview'
         else
           render :action => :edit
         end
@@ -58,6 +59,7 @@ module Refinery
           Refinery::Page.find(params[:id])
         end
       end
+      alias_method :page, :find_page
 
       # We can safely assume ::Refinery::I18n is defined because this method only gets
       # Invoked when the before_filter from the plugin is run.

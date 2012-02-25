@@ -62,6 +62,9 @@ module Refinery
                   end
                 end
               end
+              directory "db" do
+                file "seeds.rb"
+              end
               directory "lib" do
                 file "refinerycms-rspec_form_tests.rb"
                 directory "refinery" do
