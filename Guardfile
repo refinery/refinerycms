@@ -5,7 +5,6 @@ engines = (ENV['ENGINES'] && ENV['ENGINES'].to_s.split(',')) || %w(
   images
   pages
   resources
-  settings
 )
 
 guard 'spork', :wait => 60, :cucumber => false, :rspec_env => { 'RAILS_ENV' => 'test' } do
