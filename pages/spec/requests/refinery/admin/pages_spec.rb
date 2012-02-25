@@ -314,13 +314,15 @@ module Refinery
         end
 
         describe "add a page with title for both locales" do
+          let(:en_page_title) { 'News' }
+          let(:ru_page_title) { 'Новости' }
           let!(:news_page) do
             Refinery::I18n.stub(:frontend_locales).and_return([:en, :ru])
 
             Globalize.locale = :en
-            page = FactoryGirl.create(:page, :title => 'News')
+            page = FactoryGirl.create(:page, :title => en_page_title)
             Globalize.locale = :ru
-            page.title = "Новости"
+            page.title = ru_page_title
             page.save
             Globalize.locale = :en
 
@@ -335,7 +337,7 @@ module Refinery
             within "#switch_locale_picker" do
               click_link "Ru"
             end
-            fill_in "Title", :with => "Новости"
+            fill_in "Title", :with => ru_page_title
             click_button "Save"
 
             within "#page_#{Page.last.id}" do
@@ -344,10 +346,10 @@ module Refinery
             within "#switch_locale_picker" do
               click_link "En"
             end
-            fill_in "Title", :with => "News"
+            fill_in "Title", :with => en_page_title
             click_button "Save"
 
-            page.should have_content("'News' was successfully updated.")
+            page.should have_content("'#{en_page_title}' was successfully updated.")
             Refinery::Page.count.should == 2
           end
 
@@ -364,7 +366,7 @@ module Refinery
             visit refinery.admin_pages_path
 
             within "#page_#{news_page.id}" do
-              page.should have_content('News')
+              page.should have_content(en_page_title)
             end
           end
 
@@ -388,48 +390,60 @@ module Refinery
             visit "/ru"
 
             within "#menu" do
-              page.find_link('Новости')[:href].should include('%D0%BD%D0%BE%D0%B2%D0%BE%D1%81%D1%82%D0%B8')
+              page.find_link(ru_page_title)[:href].should include('%D0%BD%D0%BE%D0%B2%D0%BE%D1%81%D1%82%D0%B8')
             end
           end
         end
 
         describe "add a page with title only for secondary locale" do
+          let(:ru_page) {
+            Globalize.locale = :ru
+            _page = FactoryGirl.create(:page, :title => ru_page_title)
+            Globalize.locale = :en
+            _page
+          }
+          let(:ru_page_id) { ru_page.id }
+          let(:ru_page_title) { 'Новости' }
+
           before(:each) do
+            ru_page
             visit refinery.admin_pages_path
+          end
+
+          it "succeeds" do
+            ru_page.destroy!
             click_link "Add new page"
             within "#switch_locale_picker" do
               click_link "Ru"
             end
-            fill_in "Title", :with => "Новости"
+            fill_in "Title", :with => ru_page_title
             click_button "Save"
-          end
 
-          it "succeeds" do
-            page.should have_content("'Новости' was successfully added.")
+            page.should have_content("'#{ru_page_title}' was successfully added.")
             Refinery::Page.count.should == 2
           end
 
           it "shows locale flag for page" do
-            within "#page_#{::Refinery::Page.by_slug('новости').first.id}" do
+            within "#page_#{ru_page_id}" do
               page.should have_css("img[src='/assets/refinery/icons/flags/ru.png']")
             end
           end
 
           it "doesn't show locale flag for primary locale" do
-            within "#page_#{::Refinery::Page.by_slug('новости').first.id}" do
+            within "#page_#{ru_page_id}" do
               page.should_not have_css("img[src='/assets/refinery/icons/flags/en.png']")
             end
           end
 
           it "shows title in the admin menu" do
-            within "#page_#{::Refinery::Page.by_slug('новости').first.id}" do
-              page.should have_content('Новости')
+            within "#page_#{ru_page_id}" do
+              page.should have_content(ru_page_title)
             end
           end
 
           it "uses id instead of slug in admin" do
-            within "#page_#{::Refinery::Page.by_slug('новости').first.id}" do
-              page.find_link('Edit this page')[:href].should include(p.id.to_s)
+            within "#page_#{ru_page_id}" do
+              page.find_link('Edit this page')[:href].should include(ru_page_id.to_s)
             end
           end
 
@@ -437,7 +451,7 @@ module Refinery
             visit "/ru"
 
             within "#menu" do
-              page.should have_content('Новости')
+              page.should have_content(ru_page_title)
               page.should have_css('a', :href => 'новости')
             end
           end
