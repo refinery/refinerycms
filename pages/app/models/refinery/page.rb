@@ -439,28 +439,28 @@ module Refinery
     end
     alias_method_chain :normalize_friendly_id, :marketable_urls
 
-    private
+  private
 
-      def invalidate_cached_urls
-        return true unless Refinery::Pages.marketable_urls
+    def invalidate_cached_urls
+      return true unless Refinery::Pages.marketable_urls
 
-        [self, children].flatten.each do |page|
-          Rails.cache.delete(page.url_cache_key)
-          Rails.cache.delete(page.path_cache_key)
-        end
+      [self, children].flatten.each do |page|
+        Rails.cache.delete(page.url_cache_key)
+        Rails.cache.delete(page.path_cache_key)
       end
-      alias_method :invalidate_child_cached_url, :invalidate_cached_urls
+    end
+    alias_method :invalidate_child_cached_url, :invalidate_cached_urls
 
-      # Make sures that a translation exists for this page.
-      # The translation is set to the default frontend locale.
-      def ensure_locale
-        unless self.translations.present?
-          self.translations.build :locale => ::Refinery::I18n.default_frontend_locale
-        end
+    # Make sures that a translation exists for this page.
+    # The translation is set to the default frontend locale.
+    def ensure_locale
+      unless self.translations.present?
+        self.translations.build :locale => ::Refinery::I18n.default_frontend_locale
       end
+    end
 
-      def expire_page_caching
-        self.class.expire_page_caching
-      end
+    def expire_page_caching
+      self.class.expire_page_caching
+    end
   end
 end
