@@ -1,6 +1,8 @@
 module Refinery
   module Admin
     class PagesController < Refinery::AdminController
+      helper Pages::ContentPagesHelper
+
       cache_sweeper Refinery::PageSweeper
 
       crudify :'refinery/page',

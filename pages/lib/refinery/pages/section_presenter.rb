@@ -1,5 +1,14 @@
 module Refinery
   module Pages
+    # Knows how to build the html for a section. A section is part of the visible html, that has
+    # content wrapped in some particular markup. Construct with the relevant options, and then
+    # call wrapped_html to get the resultant html.
+    #
+    # The content rendered will usually be the value of fallback_html, unless an override_html
+    # is specified. However, on rendering, you can elect not display sections that have no
+    # override_html by passing in false for can_use_fallback.
+    #
+    # Sections may be hidden, in which case they wont display at all.
     class SectionPresenter
       include ActionView::Helpers::TagHelper
 
@@ -17,14 +26,14 @@ module Refinery
         !hidden?
       end
 
-      def has_content?(allowed_to_use_fallback)
-        visible? && content_html(allowed_to_use_fallback).present?
+      def has_content?(can_use_fallback)
+        visible? && content_html(can_use_fallback).present?
       end
 
-      def wrapped_html(allowed_to_use_fallback)
+      def wrapped_html(can_use_fallback)
         return if hidden?
 
-        content = content_html(allowed_to_use_fallback)
+        content = content_html(can_use_fallback)
         if content.present?
           wrap_content_in_tag(content)
         end
@@ -40,12 +49,12 @@ module Refinery
 
       protected
 
-        def content_html(allowed_to_use_fallback)
-          override_html.present? ? override_html : html_from_fallback(allowed_to_use_fallback)
+        def content_html(can_use_fallback)
+          override_html.present? ? override_html : html_from_fallback(can_use_fallback)
         end
 
-        def html_from_fallback(allowed_to_use_fallback)
-          fallback_html if fallback_html.present? && allowed_to_use_fallback
+        def html_from_fallback(can_use_fallback)
+          fallback_html if fallback_html.present? && can_use_fallback
         end
 
       private

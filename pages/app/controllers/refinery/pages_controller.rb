@@ -1,5 +1,7 @@
 module Refinery
   class PagesController < ::ApplicationController
+    helper Pages::ContentPagesHelper
+
     before_filter :find_page
 
     # Save whole Page after delivery

@@ -3,8 +3,8 @@ require "spec_helper"
 module Refinery
   module Pages
     describe ContentPresenter do
-      let(:section1) { double(SectionPresenter, :id => 'foo') }
-      let(:section2) { double(SectionPresenter, :id => 'bar') }
+      let(:section1) { double(SectionPresenter, :id => 'foo', :has_content? => true) }
+      let(:section2) { double(SectionPresenter, :id => 'bar', :has_content? => true) }
 
       describe "when building css classes for blank sections" do
         let(:section) { double(SectionPresenter, :not_present_css_class => 'no_section1') }
@@ -67,19 +67,19 @@ module Refinery
       end
 
       describe "when rendering as html" do
-        it "is blank if it has no sections" do
+        it "is empty section tag if it has no sections" do
           content = ContentPresenter.new
-          content.to_html.should be_blank
+          content.to_html.should == "<section class=\"\" id=\"body_content\"></section>"
         end
 
-        it "returns sections joined by a newline" do
+        it "returns sections joined by a newline inside section tag" do
           section1.stub(:wrapped_html).and_return('foo')
           section2.stub(:wrapped_html).and_return('bar')
           content = ContentPresenter.new([section1, section2])
-          content.to_html.should == "foo\nbar"
+          content.to_html.should == "<section class=\"\" id=\"body_content\">foo\nbar</section>"
         end
 
-        it "passes allowed_to_use_fallback option on to sections" do
+        it "passes can_use_fallback option on to sections" do
           section1.should_receive(:wrapped_html).with(false).and_return('foo')
           content = ContentPresenter.new([section1])
           content.to_html(false)
