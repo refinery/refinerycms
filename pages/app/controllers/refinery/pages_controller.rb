@@ -67,11 +67,7 @@ module Refinery
                 when "home"
                   Refinery::Page.where(:link_url => '/').first
                 when "show"
-                  if params[:id]
-                    Refinery::Page.find(params[:id])
-                  elsif params[:path]
-                    Refinery::Page.find_by_path(params[:path])
-                  end
+                  Refinery::Page.find_by_path_or_id(params[:path], params[:id])
                 end
       @page || error_404
     end

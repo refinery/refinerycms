@@ -53,11 +53,7 @@ module Refinery
     protected
 
       def find_page
-        @page = if Refinery::Pages.marketable_urls && params[:path].present?
-          Refinery::Page.find_by_path(params[:path])
-        elsif params[:id].present?
-          Refinery::Page.find(params[:id])
-        end
+        @page = Refinery::Page.find_by_path_or_id(params[:path], params[:id])
       end
       alias_method :page, :find_page
 

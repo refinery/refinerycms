@@ -73,6 +73,21 @@ module Refinery
         page
       end
 
+      # Helps to resolve the situation where you have a path and an id
+      # and if the path is unfriendly then a different finder method is required
+      # than find_by_path.
+      def find_by_path_or_id(path, id)
+        if Refinery::Pages.marketable_urls && path.present?
+          if path.friendly_id?
+            find_by_path(path)
+          else
+            find(path)
+          end
+        elsif id.present?
+          find(id)
+        end
+      end
+
       # Finds a page using its title.  This method is necessary because pages
       # are translated which means the title attribute does not exist on the
       # pages table thus requiring us to find the attribute on the translations table
@@ -83,7 +98,7 @@ module Refinery
 
       # Finds a page using its slug.  See by_title
       def by_slug(slug)
-        with_globalize(:slug => slug)
+        with_globalize(:locale => Refinery::I18n.frontend_locales, :slug => slug)
       end
 
       # Shows all pages with :show_in_menu set to true, but it also
