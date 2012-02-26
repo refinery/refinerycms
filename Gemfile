@@ -19,7 +19,7 @@ platforms :jruby do
   gem 'jruby-openssl'
 end
 
-unless defined?(JRUBY_VERSION)
+platforms :ruby do
   gem 'sqlite3'
   gem 'mysql2'
   gem 'pg'
