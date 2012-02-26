@@ -19,7 +19,7 @@ module Refinery
                     :parent_id, :menu_title, :created_at, :updated_at,
                     :page_id, :layout_template, :view_template, :custom_slug
 
-    attr_accessor :locale # to hold temporarily
+    attr_accessor :locale, :page_title, :page_menu_title # to hold temporarily
     validates :title, :presence => true
 
     # Docs for acts_as_nested_set https://github.com/collectiveidea/awesome_nested_set
@@ -360,10 +360,7 @@ module Refinery
     end
 
     def refinery_menu_title
-      self[:page_menu_title].presence ||
-        self[:page_title].presence ||
-        self[:menu_title].presence ||
-        self[:title]
+      [page_menu_title, page_title, menu_title, title].detect(&:present?)
     end
 
     def to_refinery_menu_item
@@ -428,6 +425,7 @@ module Refinery
     ##
     # Protects generated slugs from title if they are in the list of reserved words
     # This applies mostly to plugin-generated pages.
+    # This only kicks in when Refinery::Pages.marketable_urls is enabled.
     #
     # Returns the sluggified string
     def normalize_friendly_id_with_marketable_urls(slug_string)

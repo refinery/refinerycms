@@ -1,2 +1,2 @@
-<%%= will_paginate @<%= plural_name %> if Refinery::<%= namespacing %>::Admin::<%= class_name.pluralize %>.pageable? %>
+<%%= will_paginate @<%= plural_name %> if Refinery::<%= namespacing %>::Admin::<%= class_name.pluralize %>Controller.pageable? %>
 <%%= render 'sortable_list' %>

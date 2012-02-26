@@ -2,8 +2,8 @@ module Refinery
   module Pages
     # A type of ContentPresenter which specifically knows how to render the html for a Refinery CMS
     # page object. Pass the page object into the constructor, and it will build sections from the
-    # pages parts. The page is not stored internally, so if the page changes, you need to rebuild
-    # this ContentPagePresenter
+    # page's parts. The page is not retained internally, so if the page changes, you need to rebuild
+    # this ContentPagePresenter.
     class ContentPagePresenter < ContentPresenter
       def initialize(page, page_title)
         super()
