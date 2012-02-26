@@ -3,7 +3,7 @@
 
   <%= render '/refinery/admin/error_messages', :object => @page, :include_object_name => true %>
 
-  <%= render 'locale_picker', :current_locale => Thread.current[:globalize_locale] if Refinery.i18n_enabled? %>
+  <%= render 'locale_picker', :current_locale => Globalize.locale if Refinery.i18n_enabled? %>
 
   <div class="field">
     <%= f.label :title %>
