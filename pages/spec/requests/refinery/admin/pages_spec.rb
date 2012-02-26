@@ -404,6 +404,7 @@ module Refinery
           }
           let(:ru_page_id) { ru_page.id }
           let(:ru_page_title) { 'Новости' }
+          let(:ru_page_slug) { 'новости' }
 
           before(:each) do
             ru_page
@@ -452,7 +453,7 @@ module Refinery
 
             within "#menu" do
               page.should have_content(ru_page_title)
-              page.should have_css('a', :href => 'новости')
+              page.should have_css('a', :href => ru_page_slug)
             end
           end
 
