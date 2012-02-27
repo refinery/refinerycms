@@ -15,6 +15,7 @@ class CreateRefinerycmsPagesSchema < ActiveRecord::Migration
     create_table :refinery_pages do |t|
       t.integer   :parent_id
       t.string    :path
+      t.string    :slug
       t.boolean   :show_in_menu,        :default => true
       t.string    :link_url
       t.string    :menu_match
@@ -43,7 +44,8 @@ class CreateRefinerycmsPagesSchema < ActiveRecord::Migration
     Refinery::Page.create_translation_table!({
       :title => :string,
       :custom_slug => :string,
-      :menu_title => :string
+      :menu_title => :string,
+      :slug => :string
     })
   end
 

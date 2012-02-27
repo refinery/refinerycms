@@ -93,12 +93,6 @@ module Refinery
           page_mt.save
         end
 
-        it 'changes the friendly_id and redirects the old one' do
-          visit '/company-news'
-
-          current_path.should == '/news'
-        end
-
         it 'shows the menu_title in the menu' do
           visit '/news'
 
@@ -126,12 +120,6 @@ module Refinery
 
           current_path.should == '/company-news'
           find(".selected").text.strip.should == page_mt.title
-        end
-
-        it '301 redirects old friendly_id to current url' do
-          visit '/news'
-
-          current_path.should == '/company-news'
         end
       end
     end
@@ -180,12 +168,6 @@ module Refinery
 
           current_path.should == '/about-custom'
         end
-
-        it 'old url should 301 redirect to current url' do
-          visit '/about-us'
-
-          current_path.should == '/about-custom'
-        end
       end
 
       describe 'set and unset' do
@@ -195,12 +177,6 @@ module Refinery
           page_cs.custom_slug = ""
           page_cs.save
           page_cs.reload
-        end
-
-        it 'should revert to old friendly_id and redirect' do
-          visit '/about-custom'
-
-          current_path.should == '/about-us'
         end
       end
     end
