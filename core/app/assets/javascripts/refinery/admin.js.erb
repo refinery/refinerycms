@@ -1,13 +1,16 @@
 var shiftHeld = false;
 var initialLoad = true;
-$(document).ready(function(){
+
+init_refinery_admin = function(){
   init_interface();
   init_sortable_menu();
   init_submit_continue();
   init_modal_dialogs();
   init_tooltips();
   init_ajaxy_pagination();
-});
+};
+
+$(document).ready(init_refinery_admin);
 
 if(typeof(window.onpopstate) == "object"){
   $(window).bind('popstate', function(e) {
@@ -108,7 +111,7 @@ refinery_dialog_success = function(e) {
       $('#flash_container').append($('.pagination_container').find('#flash'));
 
       $('#flash').css({'width': 'auto', 'visibility': ''}).fadeIn(550);
-      init_ajaxy_pagination();
+      init_refinery_admin();
     }
   });
 }
