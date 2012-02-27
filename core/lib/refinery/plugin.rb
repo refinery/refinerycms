@@ -27,7 +27,7 @@ module Refinery
         def self.called_from; "#{new_called_from}"; end
       RUBY
       Object.const_set(plugin.class_name.to_sym, klass)
-      
+
       # add the new plugin to the collection of registered plugins
       ::Refinery::Plugins.registered << plugin
     end
