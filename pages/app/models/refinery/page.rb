@@ -1,3 +1,5 @@
+# Encoding: utf-8
+
 module Refinery
   class Page < Refinery::Core::BaseModel
     extend FriendlyId
@@ -161,7 +163,7 @@ module Refinery
       # Override this method to change which columns you want to select to render your menu.
       # title and menu_title are always retrieved so omit these.
       def menu_columns
-        %w(id depth parent_id lft rgt link_url menu_match)
+        %w(id depth parent_id lft rgt link_url menu_match slug)
       end
 
       # Returns how many pages per page should there be when paginating pages
@@ -313,7 +315,7 @@ module Refinery
     end
 
     def uncached_nested_url
-      [parent.try(:nested_url), to_param].compact.flatten
+      [parent.try(:nested_url), to_param.to_s].compact.flatten
     end
 
     # Returns the string version of nested_url, i.e., the path that should be generated
@@ -429,7 +431,7 @@ module Refinery
     #
     # Returns the sluggified string
     def normalize_friendly_id_with_marketable_urls(slug_string)
-      sluggified = normalize_friendly_id_without_marketable_urls(slug_string)
+      sluggified = slug_string.to_slug.normalize!
       if Refinery::Pages.marketable_urls && self.class.friendly_id_config.reserved_words.include?(sluggified)
         sluggified << "-page"
       end

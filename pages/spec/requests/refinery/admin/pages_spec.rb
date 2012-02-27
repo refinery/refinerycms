@@ -315,18 +315,22 @@ module Refinery
 
         describe "add a page with title for both locales" do
           let(:en_page_title) { 'News' }
+          let(:en_page_slug) { 'news' }
           let(:ru_page_title) { 'Новости' }
+          let(:ru_page_slug) { 'новости' }
+          let(:ru_page_slug_encoded) { '%D0%BD%D0%BE%D0%B2%D0%BE%D1%81%D1%82%D0%B8' }
           let!(:news_page) do
             Refinery::I18n.stub(:frontend_locales).and_return([:en, :ru])
 
-            Globalize.locale = :en
-            page = FactoryGirl.create(:page, :title => en_page_title)
-            Globalize.locale = :ru
-            page.title = ru_page_title
-            page.save
-            Globalize.locale = :en
+            _page = Globalize.with_locale(:en) {
+              FactoryGirl.create(:page, :title => en_page_title)
+            }
+            Globalize.with_locale(:ru) do
+              _page.title = ru_page_title
+              _page.save
+            end
 
-            page
+            _page
           end
 
           it "succeeds" do
@@ -374,7 +378,7 @@ module Refinery
             visit refinery.admin_pages_path
 
             within "#page_#{news_page.id}" do
-              page.find_link('Edit this page')[:href].should include('news')
+              page.find_link('Edit this page')[:href].should include(en_page_slug)
             end
           end
 
@@ -382,7 +386,7 @@ module Refinery
             visit "/"
 
             within "#menu" do
-              page.find_link(news_page.title)[:href].should include('news')
+              page.find_link(news_page.title)[:href].should include(en_page_slug)
             end
           end
 
@@ -390,17 +394,16 @@ module Refinery
             visit "/ru"
 
             within "#menu" do
-              page.find_link(ru_page_title)[:href].should include('%D0%BD%D0%BE%D0%B2%D0%BE%D1%81%D1%82%D0%B8')
+              page.find_link(ru_page_title)[:href].should include(ru_page_slug_encoded)
             end
           end
         end
 
         describe "add a page with title only for secondary locale" do
           let(:ru_page) {
-            Globalize.locale = :ru
-            _page = FactoryGirl.create(:page, :title => ru_page_title)
-            Globalize.locale = :en
-            _page
+            Globalize.with_locale(:ru) {
+              FactoryGirl.create(:page, :title => ru_page_title)
+            }
           }
           let(:ru_page_id) { ru_page.id }
           let(:ru_page_title) { 'Новости' }
