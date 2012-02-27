@@ -16,6 +16,9 @@ module Refinery
       after_inclusion do
         ::ApplicationController.send :include, Refinery::Pages::InstanceMethods
         Refinery::AdminController.send :include, Refinery::Pages::Admin::InstanceMethods
+
+        ::ApplicationController.send :helper, Refinery::Pages::ContentPagesHelper
+        Refinery::AdminController.send :helper, Refinery::Pages::ContentPagesHelper
       end
 
       initializer "register refinery_pages plugin" do
