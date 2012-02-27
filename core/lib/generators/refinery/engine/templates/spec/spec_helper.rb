@@ -6,7 +6,6 @@ def setup_environment
 
   require 'rspec/rails'
   require 'capybara/rspec'
-  require 'factory_girl_rails'
 
   Rails.backtrace_cleaner.remove_silencers!
 
@@ -22,8 +21,8 @@ def setup_environment
 end
 
 def each_run
+  Rails.cache.clear
   ActiveSupport::Dependencies.clear
-
   FactoryGirl.reload
 
   # Requires supporting files with custom matchers and macros, etc,

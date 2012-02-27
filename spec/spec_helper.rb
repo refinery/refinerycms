@@ -29,6 +29,8 @@ def setup_environment
 end
 
 def each_run
+  Rails.cache.clear
+  ActiveSupport::Dependencies.clear
   FactoryGirl.reload
 
   # Requires supporting files with custom matchers and macros, etc,
