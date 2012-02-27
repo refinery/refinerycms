@@ -30,7 +30,7 @@ module Refinery
         visible? && content_html(can_use_fallback).present?
       end
 
-      def wrapped_html(can_use_fallback)
+      def wrapped_html(can_use_fallback = true)
         return if hidden?
 
         content = content_html(can_use_fallback)
