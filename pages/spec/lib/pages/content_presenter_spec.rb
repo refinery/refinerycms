@@ -84,6 +84,13 @@ module Refinery
           content = ContentPresenter.new([section1])
           content.to_html(false)
         end
+
+        it "doesnt include sections with nil content" do
+          section1.stub(:wrapped_html).and_return('foo')
+          section2.stub(:wrapped_html).and_return(nil)
+          content = ContentPresenter.new([section1, section2])
+          content.to_html.should == "<section class=\"\" id=\"body_content\">foo</section>"
+        end
       end
     end
   end
