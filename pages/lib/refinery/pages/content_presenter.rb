@@ -10,7 +10,7 @@ module Refinery
         @sections = initial_sections
       end
 
-      def blank_section_css_classes(can_use_fallback)
+      def blank_section_css_classes(can_use_fallback = true)
         @sections.reject {|section| section.has_content?(can_use_fallback)}.map(&:not_present_css_class)
       end
 
@@ -41,7 +41,7 @@ module Refinery
       private
 
         def sections_html(can_use_fallback)
-          @sections.map {|section| section.wrapped_html(can_use_fallback)}.join("\n").html_safe
+          @sections.map {|section| section.wrapped_html(can_use_fallback)}.compact.join("\n").html_safe
         end
 
         def add_section_if_missing(options)
