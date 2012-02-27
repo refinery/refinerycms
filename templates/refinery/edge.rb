@@ -3,6 +3,7 @@ append_file 'Gemfile' do
 "
 
 #{"gem 'therubyracer'" if RbConfig::CONFIG['target_os'] =~ /linux/i}
+gem 'refinerycms-settings', :git => 'git://github.com/parndt/refinerycms-settings.git'
 gem 'refinerycms', :git => 'git://github.com/resolve/refinerycms.git'
 
 #  group :development, :test do
