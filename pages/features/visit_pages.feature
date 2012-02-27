@@ -65,5 +65,4 @@ Feature: Visit Pages
     Given I have frontend locales "en, de"
     And the page titled "Home" is fully translated
     When I go to the page titled "Home" with locale "de"
-    Then show me the page
     Then I should see "Home" within ".selected > a"
