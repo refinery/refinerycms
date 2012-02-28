@@ -1,13 +1,13 @@
 Refinery::Core::Engine.routes.draw do
   root :to => 'pages#home'
+  post   'pages/preview'     => 'pages#preview', :as => :preview_pages
+  match  'pages/*path/preview' => 'pages#preview', :as => :preview_page,  :via => [:get, :put]
   get '/pages/:id', :to => 'pages#show', :as => :page
 
   namespace :admin, :path => 'refinery' do
-    post   'pages/preview'     => 'pages#preview', :as => :preview_pages
-    match  'pages/*path/preview' => 'pages#preview', :as => :preview_page,  :via => [:get, :put]
-
     get 'pages/*path/edit', :to => 'pages#edit'
     get 'pages/*path/children', :to => 'pages#children', :as => 'children_pages'
+    match 'pages/*path/validate', :to => 'pages#validate', :as => 'validate_page', :via => [:put, :post]
     put 'pages/*path', :to => 'pages#update'
     delete 'pages/*path', :to => 'pages#destroy'
     resources :pages, :except => :show do

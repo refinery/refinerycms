@@ -70,7 +70,7 @@ module Refinery
       def find_by_path(path)
         split_path = path.to_s.split('/')
         page = ::Refinery::Page.by_slug(split_path.shift).first
-        page = page.children.by_slug(split_path.shift).first until split_path.empty?
+        page = page.children.by_slug(split_path.shift).first until page.nil? || split_path.empty?
 
         page
       end
