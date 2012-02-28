@@ -9,9 +9,6 @@ zh-TW:
         description: Refinery 對話方框插件
     welcome:
       there_are_no_users: 目前沒有任何的使用者, 我們會先替您進行設定.
-      remember_admin_location: "記住您的 Refinery 管理者頁面在:"
-      lets_start: 好了, 讓我們協助您設定, 然後您就能登入了...
-      continue: 繼續...
     crudify:
       created: '%{what} 成功地加入.'
       updated: '%{what} 成功地更新.'

@@ -9,9 +9,6 @@ da:
         description: Refinery dialogs plugin
     welcome:
       there_are_no_users: Der er ingen brugere endnu, så vi begynder med at oprette en bruger til dig.
-      remember_admin_location: "Husk, du logger på Refinerys administration her:"
-      lets_start: Lad os få dig oprettet, så du kan logge på...
-      continue: Fortsæt...
     crudify:
       created: '%{what} er oprettet.'
       updated: '%{what} er opdateret.'

@@ -9,9 +9,6 @@ pt-BR:
         description: Refinery dialogs plugin
     welcome:
       there_are_no_users: "Ainda não existem usuários, então primeiro vamos te deixar pronto."
-      remember_admin_location: "Lembre-se que sua área de admin fica em:"
-      lets_start: "Beleza, vamos te cadastrar pra que você possa fazer login..."
-      continue: "Continuar..."
     crudify:
       created: "%{what} foi criado com sucesso"
       updated: "%{what} foi atualizado com sucesso"

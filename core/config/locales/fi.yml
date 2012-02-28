@@ -12,9 +12,6 @@ fi:
         description: Refineryn dialogipalikka
     welcome:
       there_are_no_users: "Käyttäjiä ei vielä ole, joten asennetaan sinut ensin."
-      remember_admin_location: "Muista, että Refineryn ylläpito on seuraavassa osoitteessa:"
-      lets_start: "Tehdään sinulle käyttäjä, että voit kirjautua..."
-      continue: Jatka...
     crudify:
       created: '%{what} lisättiin onnistuneesti.'
       updated: '%{what} päivitettiin onnistuneesti.'

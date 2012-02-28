@@ -9,9 +9,6 @@ lv:
         description: Refinery dialogu spraudnis
     welcome:
       there_are_no_users: Vēl nav neviena lietotāja, līdz ar to mēs Jums palīdzēsim izveidot pirmo.
-      remember_admin_location: "Atcerieties, jūsu Refinery administrācijas panelis atrodas šeit:"
-      lets_start: Tātad turpināsim, lai jūs varētu pieslēgties...
-      continue: Turpināt...
     crudify:
       created: '%{what} tika veiksmīgi izveidots.'
       updated: '%{what} tika veiksmīgi atjaunots.'

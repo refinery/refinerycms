@@ -9,9 +9,6 @@ it:
         description: Refinery dialogs plugin
     welcome:
       there_are_no_users: "Non ci sono ancora utenti registrati, occorre crearne uno."
-      remember_admin_location: "Ricorda che l'area di amministrazione di Refinery è:"
-      lets_start: "Va bene! Impostiamo un utente in modo da poter accedere..."
-      continue: "Continuare..."
     crudify:
       created: "%{what} creato con successo"
       updated: "%{what} modificato con successo"

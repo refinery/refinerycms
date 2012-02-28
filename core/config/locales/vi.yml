@@ -9,9 +9,6 @@ vi:
         description: Refinery dialogs plugin
     welcome:
       there_are_no_users: Hiện không có user nào, chúng tôi sẽ tiến hành chi đặt cho bạn trước.
-      remember_admin_location: "Hãy nhớ rằng trang quản trị Refinery được đặt tại:"
-      lets_start: Bây giờ hãy cùng thiết lập cấu hình để bạn có thể đăng nhập hệ thống…
-      continue: Tiếp tục...
     crudify:
       created: '%{what} vừa được thêm vào.'
       updated: '%{what} vừa được cập nhật.'

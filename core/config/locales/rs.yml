@@ -9,9 +9,6 @@ rs:
         description: Refinery plugin za dijaloge
     welcome:
       there_are_no_users: Trenutno ne postoje administratori, tako da ćemo krenuti s unosom glavnog administratora.
-      remember_admin_location: 'Zapamti, Refinery administracija se nalazi na:'
-      lets_start: U redu, hajde da podesimo da možeš da se uloguješ...
-      continue: Nastavi...
     crudify:
       created: '%{what} je uspešno dodat(a).'
       updated: '%{what} je uspešno izmenjen(a).'

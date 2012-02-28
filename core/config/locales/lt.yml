@@ -9,9 +9,6 @@ lt:
         description: Refinery dialogų įskiepis
     welcome:
       there_are_no_users: "Dar nėra vartotojų, tai jums sukursime pirmąjį."
-      remember_admin_location: "Prisiminkite, kad jūsų Refinery administravimas yra adresu:"
-      lets_start: "Taigi sukurkime jums vartotoją, kad galėtumėte prisijungti..."
-      continue: Tęsti...
     crudify:
       created: '%{what} buvo sėkmingai pridėtas.'
       updated: '%{what} buvo sėkmingai atnaujintas.'
