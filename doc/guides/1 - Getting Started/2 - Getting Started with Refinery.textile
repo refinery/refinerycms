@@ -16,7 +16,7 @@ This guide is designed for beginners who want to get started with a Refinery CMS
 
 * The "Ruby":http://www.ruby-lang.org/en/downloads language version 1.8.7 or higher (1.9.3 recommended)
 
-TIP: Ruby 1.9.1 is not usable because Rails 3.0 is not compatible with it. Use 1.9.3 for smooth sailing.
+TIP: Ruby 1.9.1 is not usable because Rails 3.x is not compatible with it. Use 1.9.3 for smooth sailing.
 
 * The "RubyGems":http://rubyforge.org/frs/?group_id=126 packaging system
 * A working installation of the "SQLite3 Database":http://www.sqlite.org
@@ -37,7 +37,7 @@ Refinery is a Ruby on Rails web application. If you have no prior experience wit
 
 h3. What is Refinery CMS?
 
-Refinery CMS, often shortened to Refinery, is an open source content management system written in Ruby as a Ruby on Rails web application with JQuery used as the JavaScript library. Refinery runs on Rails 3.1 or later.
+Refinery CMS, often shortened to Refinery, is an open source content management system written in Ruby as a Ruby on Rails web application with JQuery used as the JavaScript library. Refinery runs on Rails 3.2.
 
 Refinery differs from similar projects by targeting a non-technical end user and allowing the developer to create a flexible website rapidly by staying as close as possible to the conventions of the Ruby on Rails framework.
 
