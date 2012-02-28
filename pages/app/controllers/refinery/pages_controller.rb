@@ -1,7 +1,5 @@
 module Refinery
   class PagesController < ::ApplicationController
-    helper Pages::ContentPagesHelper
-
     before_filter :find_page, :except => [:preview]
 
     # Save whole Page after delivery
