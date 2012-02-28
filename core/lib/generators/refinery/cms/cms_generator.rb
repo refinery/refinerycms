@@ -39,7 +39,7 @@ module Refinery
   # Refinery has set config.assets.initialize_on_precompile = false by default.
   config.assets.initialize_on_precompile = false
 
-},                       :after => "Application.configure do\n" if env == 'production'
+},                       :after => "Application.configure do\n" if env =~ /production/
       end
 
       # Stop pretending
