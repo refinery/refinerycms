@@ -168,7 +168,7 @@ Now you're setup, click around the various tabs in the backend and become famili
 
 !>/system/images/BAhbBlsHOgZmSSIsMjAxMC8xMi8wMi8xMl81NF80Ml83M19yZW9yZGVyX3RhYnMucG5nBjoGRVQ/12_54_42_73_reorder_tabs.png!
 
-While exploring, one of the first things I do is reorder the tabs to reflect what I will be working on the most. Click the tab with the two green arrows, and then drag the backend tabs - for example, "Users" or "Settings" - into an order which makes the most sense to you.
+While exploring, one of the first things to do is reorder the tabs to reflect what you will be working on the most. Click the tab with the two green arrows, and then drag the backend tabs - for example, "Users" or "Settings" - into an order which makes the most sense to you.
 
 Click the reorder button again when you're done to save.
 
@@ -196,7 +196,7 @@ If you request +http://localhost:3000/about+, this maps by default to Refinery's
 
 So as you would expect according to Rails convention, the view for this action is located in +app/views/refinery/pages/show.html.erb+. You won't be able to see this file because Refinery is providing it for you. Next, let's override that view and replace it with our own.
 
-TIP: Overriding a file simply copies the file from Refinery's code into your +app/+ folder. Many people are confused as to what can be overridden initially. Any controller, helper, model, or view from any installed engine can be overridden, but the most commonly overridden ones are those in the "refinery":https://github.com/resolve/refinerycms/tree/master/core/app/views/refinery folder.
+TIP: Overriding a file simply copies the file from Refinery's code into your +app/+ folder. Many people are confused as to what can be overridden initially. Any controller, model, view, javascript, or stylesheet from any installed extension can be overridden, but the most commonly overridden ones are those in the "refinery":https://github.com/resolve/refinerycms/tree/master/core/app/views/refinery folder.
 
 h4. Overriding your first view
 
@@ -232,7 +232,7 @@ Replace the contents of +app/views/refinery/pages/show.html.erb+ with this:
 
 As you can see we're going to render a view with some HTML5 tags and along with some content coming from the CMS (those are the lines that mention +@page+).
 
-+@page+ has what we call +PageParts+ associated with it. To see what I mean, go to "http://localhost:3000/refinery/pages":http://localhost:3000/refinery/pages and then click "Edit" on the page titled "About".
++@page+ has what we call +PageParts+ associated with it. To see what we mean, go to "http://localhost:3000/refinery/pages":http://localhost:3000/refinery/pages and then click "Edit" on the page titled "About".
 
 When you edit the About page you'll see something like this:
 
