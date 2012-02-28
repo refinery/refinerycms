@@ -45,30 +45,17 @@
 
       $("#preview-button").click(function(e) {
         var form = $(this).parents('form');
-        $.ajax({
-          url: '<%= refinery.admin_validate_page_path %>'
-          , type: 'POST'
-          , cache: false
-          , dataType: 'json'
-          , data: form.serialize() 
-          , complete: function(data, textStatus){
-            if ($.parseJSON(data.responseText).valid) {
-              var prev_url = form.attr('action');
-              var prev_target = form.attr('target');
-              form.attr({
-                'action': '<%= @page.persisted? ? refinery.preview_page_path(@page.uncached_nested_url) : refinery.preview_pages_path %>'
-                , 'target': '_blank'
-              });
-              form.submit();
-              form.attr({
-                'action': prev_url
-                , 'target': prev_target
-              });
-            } else {
-              alert('Your page is not valid.');
-            }
-          }
-        })
+        var prev_url = form.attr('action');
+        var prev_target = form.attr('target');
+        form.attr({
+          'action': '<%= @page.persisted? ? refinery.preview_page_path(@page.uncached_nested_url) : refinery.preview_pages_path %>'
+          , 'target': '_blank'
+        });
+        form.submit();
+        form.attr({
+          'action': prev_url
+          , 'target': prev_target
+        });
         e.preventDefault();
       });
     });

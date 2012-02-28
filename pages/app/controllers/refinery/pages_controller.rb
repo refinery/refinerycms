@@ -2,7 +2,7 @@ module Refinery
   class PagesController < ::ApplicationController
     helper Pages::ContentPagesHelper
 
-    before_filter :find_page, :except => [:preview]
+    before_filter :find_page
 
     # Save whole Page after delivery
     after_filter { |c| c.write_cache? }
@@ -43,17 +43,13 @@ module Refinery
     def preview
       if page
         # Preview existing pages
-        page.attributes = params[:page]
-      else
+        @page.attributes = params[:page]
+      elsif params[:page]
         # Preview a non-persisted page
-        page = Page.new(params[:page])
+        @page = Page.new(params[:page])
       end
 
-      if page.valid?
-        render_with_templates?
-      else
-        render :action => :edit
-      end
+      render_with_templates?(:action => :show)
     end
 
   protected
@@ -82,7 +78,7 @@ module Refinery
       @page ||= case action_name
                 when "home"
                   Refinery::Page.where(:link_url => '/').first
-                when "show"
+                when "show", "preview"
                   Refinery::Page.find_by_path_or_id(params[:path], params[:id])
                 end
       @page || error_404
@@ -90,8 +86,7 @@ module Refinery
 
     alias_method :page, :find_page
 
-    def render_with_templates?
-      render_options = {}
+    def render_with_templates?(render_options = {})
       if Refinery::Pages.use_layout_templates && page.layout_template.present?
         render_options[:layout] = page.layout_template
       end

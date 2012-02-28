@@ -29,16 +29,6 @@ module Refinery
         render :layout => false
       end
 
-      def validate
-        find_page
-        if @page
-          @page.attributes = params[:page]
-        else
-          @page = Page.new(params[:page])
-        end
-        render :json => {:valid => @page.valid?, :errors => @page.errors}
-      end
-
     protected
 
       def find_page
