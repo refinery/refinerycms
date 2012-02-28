@@ -2,6 +2,10 @@ module Refinery
   module Pages
     module InstanceMethods
 
+      def self.included(base)
+        base.send :helper_method, :refinery_menu_pages
+      end
+
       def error_404(exception=nil)
         if (@page = ::Refinery::Page.where(:menu_match => "^/404$").includes(:parts).first).present?
           # render the application's custom 404 page with layout and meta.
@@ -12,12 +16,12 @@ module Refinery
         end
       end
 
-    protected
-      def find_pages_for_menu
-        # Compile the menu
-        @menu_pages = ::Refinery::Menu.new(::Refinery::Page.fast_menu)
+      # Compiles the default menu.
+      def refinery_menu_pages
+        ::Refinery::Menu.new(::Refinery::Page.fast_menu)
       end
 
+    protected
       def render(*args)
         present(@page) unless admin? or @meta.present?
         super
