@@ -29,25 +29,14 @@ module Refinery
         render :layout => false
       end
 
-      def preview
-        @menu_pages = ::Refinery::Menu.new(::Refinery::Page.fast_menu)
-
-        if @page ||= page
-          # Preview existing pages
+      def validate
+        find_page
+        if @page
           @page.attributes = params[:page]
-          present(@page)
-          render :template => '/refinery/pages/show', :layout => 'refinery/preview' and return
         else
-          # Preview a non-persisted page
           @page = Page.new(params[:page])
         end
-
-        if @page.valid?
-          present(@page)
-          render :template => '/refinery/pages/show', :layout => 'refinery/preview'
-        else
-          render :action => :edit
-        end
+        render :json => {:valid => @page.valid?, :errors => @page.errors}
       end
 
     protected

@@ -2,7 +2,7 @@ module Refinery
   class PagesController < ::ApplicationController
     helper Pages::ContentPagesHelper
 
-    before_filter :find_page
+    before_filter :find_page, :except => [:preview]
 
     # Save whole Page after delivery
     after_filter { |c| c.write_cache? }
@@ -37,6 +37,22 @@ module Refinery
         end
       else
         error_404
+      end
+    end
+
+    def preview
+      if page
+        # Preview existing pages
+        page.attributes = params[:page]
+      else
+        # Preview a non-persisted page
+        page = Page.new(params[:page])
+      end
+
+      if page.valid?
+        render_with_templates?
+      else
+        render :action => :edit
       end
     end
 
