@@ -5,8 +5,6 @@ require 'rails/version'
 module Refinery
   class AppGenerator < Rails::Generators::AppBase
 
-    source_root Pathname.new(File.expand_path('../templates', __FILE__))
-
     add_shared_options_for("Refinery CMS")
 
     class_option :force,          :type => :boolean, :aliases => ['-f'], :default => false,
@@ -21,14 +19,8 @@ module Refinery
     class_option :confirm,        :type => :boolean, :aliases => ['-c'], :default => false,
                                   :desc => "Confirm any prompts that require input"
 
-    class_option :testing,        :type => :boolean, :aliases => ['-t'], :default => true,
-                                  :desc => "Automatically set up the project with refinerycms-testing support"
-
     class_option :trace,          :type => :boolean, :default => false,
                                   :desc => "Investigate any problems with the installer"
-
-    class_option :version,        :type => :boolean, :default => false,
-                                  :desc => "Display the installed version of Refinery CMS"
 
     class_option :refinery_edge,  :type => :boolean, :default => false,
                                   :desc => "Setup your application's Gemfile to point to the Refinery CMS repository"
@@ -40,7 +32,7 @@ module Refinery
     remove_class_option(:skip_test_unit, :skip_bundle, :skip_gemfile, :skip_active_record, :skip_sprockets)
 
     TARGET_MAJOR_VERSION = 3
-    TARGET_MINOR_VERSION = 1
+    TARGET_MINOR_VERSION = 2
 
     class << self
       def reserved_app_names
@@ -64,9 +56,7 @@ module Refinery
 
       create_database!
 
-      Refinery::CmsGenerator.start %w[--fresh-installation], :destination_root => app_path
-
-      rake("railties:install:migrations db:migrate#{' --trace' if options[:trace]}")
+      Refinery::CmsGenerator.start %w[--fresh-installation]
 
       puts "\n---------"
       puts "Refinery successfully installed in '#{app_pathname}'!\n\n"
@@ -78,10 +68,14 @@ module Refinery
         note << "Because you elected to skip database creation and migration in the installer"
         note << "you will need to run the following tasks manually to maintain correct operation:"
         note << "\ncd #{app_pathname}"
+        note << "bundle exec rake railties:install:migrations"
         note << "bundle exec rake db:create"
-        note << "bundle exec rails generate refinery:cms"
         note << "bundle exec rake db:migrate"
+        note << "bundle exec rake db:seed"
         note << "\n---------\n"
+      else
+        rake("railties:install:migrations db:migrate#{' --trace' if options[:trace]}")
+        rake("db:seed#{' --trace' if options[:trace]}")
       end
       note << "Now you can launch your webserver using:"
       note << "\ncd #{app_pathname}"
@@ -175,14 +169,6 @@ module Refinery
           gem 'refinerycms', :git => 'git://github.com/resolve/refinerycms.git'
         else
           gem 'refinerycms'
-        end
-
-        if options[:testing]
-          if options[:refinery_edge]
-            gem 'refinerycms-testing', :git => 'git://github.com/resolve/refinerycms.git'
-          else
-            gem 'refinerycms-testing'
-          end
         end
 
         if options[:gems].present?
