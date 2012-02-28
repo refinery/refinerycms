@@ -2,7 +2,7 @@ module Refinery
   class PagesController < ::ApplicationController
     helper Pages::ContentPagesHelper
 
-    before_filter :find_page
+    before_filter :find_page, :except => [:preview]
 
     # Save whole Page after delivery
     after_filter { |c| c.write_cache? }
@@ -41,7 +41,7 @@ module Refinery
     end
 
     def preview
-      if page
+      if page(fallback_to_404 = false)
         # Preview existing pages
         @page.attributes = params[:page]
       elsif params[:page]
@@ -74,14 +74,14 @@ module Refinery
       page.children.order('lft ASC').live.first
     end
 
-    def find_page
+    def find_page(fallback_to_404 = true)
       @page ||= case action_name
                 when "home"
                   Refinery::Page.where(:link_url => '/').first
                 when "show", "preview"
                   Refinery::Page.find_by_path_or_id(params[:path], params[:id])
                 end
-      @page || error_404
+      @page || (error_404 if fallback_to_404)
     end
 
     alias_method :page, :find_page

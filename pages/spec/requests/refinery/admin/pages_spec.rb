@@ -1,6 +1,13 @@
 # encoding: utf-8
 require "spec_helper"
 
+def new_window_should_have_content(content)
+  new_window = page.driver.browser.window_handles.last
+  page.within_window new_window do
+    page.should have_content(content)
+  end
+end
+
 module Refinery
   module Admin
     describe "Pages" do
@@ -159,11 +166,7 @@ module Refinery
             fill_in "Title", :with => "Some changes I'm unsure what they will look like"
             click_button "Preview"
 
-            new_window = page.driver.browser.window_handles.last
-            page.within_window new_window do
-              page.should have_content("Some changes I'm unsure what they will look like")
-            end
-
+            new_window_should_have_content("Some changes I'm unsure what they will look like")
           end
 
           it 'will not save the preview changes', :js => true do
@@ -173,7 +176,9 @@ module Refinery
             fill_in "Title", :with => "Some changes I'm unsure what they will look like"
             click_button "Preview"
 
-            Page.last.title.should_not == "Some changes I'm unsure what they will look like"
+            new_window_should_have_content("Some changes I'm unsure what they will look like")
+
+            Page.by_title("Some changes I'm unsure what they will look like").should be_empty
           end
 
         end
@@ -185,6 +190,8 @@ module Refinery
             click_link "Add new page"
             fill_in "Title", :with => "My first page"
             click_button "Preview"
+
+            new_window_should_have_content("My first page")
 
             Page.count.should == 0
           end
@@ -204,10 +211,7 @@ module Refinery
             fill_in "Title", :with => "Some changes I'm unsure what they will look like"
             click_button "Preview"
 
-            new_window = page.driver.browser.window_handles.last
-            page.within_window new_window do
-              page.should have_content("Some changes I'm unsure what they will look like")
-            end
+            new_window_should_have_content("Some changes I'm unsure what they will look like")
           end
         end
       end
