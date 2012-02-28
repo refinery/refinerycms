@@ -14,7 +14,7 @@ This guide is designed for those who want to attach Refinery CMS to an existing 
 
 h3. Steps to add Refinery CMS to your application
 
-Refinery 2.0 comes as a mountable Rails engine. This is a change from previous versions, where Refinery would have to modify files in your application. Now, Refinery is completely namespaced and isolated from your existing application.
+Refinery now comes as a mountable Rails engine. This is a change from previous versions, where Refinery would have to modify files in your application. Now, Refinery is completely namespaced and isolated from your existing application.
 
 h4. Add Refinery CMS as a dependency in your Gemfile
 
