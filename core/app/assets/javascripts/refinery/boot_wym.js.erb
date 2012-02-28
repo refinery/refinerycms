@@ -35,10 +35,10 @@ var form_actions =
 var wymeditor_boot_options = $.extend({
   skin: 'refinery'
   , basePath: "/"
-  , wymPath: "/assets/wymeditor/jquery.refinery.wymeditor.js"
-  , cssSkinPath: "/assets/wymeditor/skins/"
-  , jsSkinPath: "/assets/wymeditor/skins/"
-  , langPath: "/assets/wymeditor/lang/"
+  , wymPath: "<%= asset_path 'wymeditor/jquery.refinery.wymeditor.js' %>"
+  , cssSkinPath: "<%= asset_path 'wymeditor/skins/' %>"
+  , jsSkinPath: "<%= asset_path 'wymeditor/skins/' %>"
+  , langPath: "<%= asset_path 'wymeditor/lang/' %>"
   , iframeBasePath: '/'
   , classesItems: [
     {name: 'text-align', rules:[{name: 'left', title: '{Left}'}, {name: 'center', title: '{Center}'}, {name: 'right', title: '{Right}'}, {name: 'justify', title: '{Justify}'}], join: '-', title: '{Text_Align}'}
@@ -251,9 +251,9 @@ WYMeditor.editor.prototype.loadIframe = function(iframe) {
     doc.close();
 
     var doc_head = doc.head || $(doc).find('head').get(0);
-    $.each(["wymeditor/skins/refinery/wymiframe", "formatting", "theme"], function(i, href) {
-      $("<link href='/assets/" + href + ".css?"+Math.random().toString().split('.')[1]+"' media='all' rel='stylesheet' />").appendTo(doc_head);
-    });
+    $("<link href='<%= asset_path 'wymeditor/skins/refinery/wymiframe.css' %>' media='all' rel='stylesheet' />").appendTo(doc_head);
+    $("<link href='<%= asset_path 'formatting.css' %>' media='all' rel='stylesheet' />").appendTo(doc_head);
+    $("<link href='<%= asset_path 'theme.css' %>' media='all' rel='stylesheet' />").appendTo(doc_head);
   }
   if ((id_of_editor = wym._element.parent().attr('id')) != null) {
     $(doc.body).addClass(id_of_editor);

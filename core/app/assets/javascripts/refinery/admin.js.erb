@@ -214,8 +214,8 @@ init_tooltips = function(args){
             tooltip.corner('6px').find('span').corner('6px');
           }
 
-          tooltip_nib_image = $.browser.msie ? 'tooltip-nib.gif' : 'tooltip-nib.png';
-          nib = $("<img src='/assets/refinery/"+tooltip_nib_image+"' class='tooltip-nib'/>").appendTo('#tooltip_container');
+          tooltip_nib_extension = $.browser.msie ? '.gif' : '.png';
+          nib = $("<img src='<%= asset_path 'refinery/tooltip-nib' %>" + tooltip_nib_extension + "' class='tooltip-nib'/>").appendTo('#tooltip_container');
 
           tooltip.css({
             'opacity': 0
@@ -323,7 +323,7 @@ var link_tester = {
 
   validate_textbox: function(validation_method, textbox_id, callback) {
     var icon = '';
-    var loader_img = $("<img id='" + textbox_id.replace('#','') + "_test_loader' src='/assets/refinery/ajax-loader.gif' alt='Testing...' style='display: none;'/>");
+    var loader_img = $("<img id='" + textbox_id.replace('#','') + "_test_loader' src='<%= asset_path 'refinery/ajax-loader.gif' %>' alt='Testing...' style='display: none;'/>");
     var result_span = $("<span id='" + textbox_id.replace('#','') + "_test_result'></span>");
 
     loader_img.insertAfter($(textbox_id));
