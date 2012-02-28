@@ -6,7 +6,7 @@ This guide covers integration with Refinery CMS. After reading it, you should be
 
 endprologue.
 
-WARNING. This guide is based on Refinery CMS 2.0. Much of the code shown here will not work in earlier versions of Refinery.
+WARNING. This guide is based on Refinery CMS 2.0.0. Much of the code shown here will not work in earlier versions of Refinery.
 
 h3. Guide Assumptions
 
