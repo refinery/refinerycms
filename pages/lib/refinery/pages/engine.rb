@@ -13,12 +13,14 @@ module Refinery
         Refinery::Page.translation_class.send(:attr_accessible, :browser_title, :meta_description, :meta_keywords, :locale)
       end
 
+      before_inclusion do
+        ::ApplicationController.send :helper, Refinery::Pages::ContentPagesHelper
+        Refinery::AdminController.send :helper, Refinery::Pages::ContentPagesHelper
+      end
+
       after_inclusion do
         ::ApplicationController.send :include, Refinery::Pages::InstanceMethods
         Refinery::AdminController.send :include, Refinery::Pages::Admin::InstanceMethods
-
-        ::ApplicationController.send :helper, Refinery::Pages::ContentPagesHelper
-        Refinery::AdminController.send :helper, Refinery::Pages::ContentPagesHelper
       end
 
       initializer "register refinery_pages plugin" do
