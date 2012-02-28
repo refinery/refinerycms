@@ -6,78 +6,55 @@ This guide covers integration with Refinery CMS. After reading it, you should be
 
 endprologue.
 
-WARNING. This guide is based on Refinery CMS 1.0.0. Some of the code shown here will not work in earlier versions of Refinery.
+WARNING. This guide is based on Refinery CMS 2.0. Much of the code shown here will not work in earlier versions of Refinery.
 
 h3. Guide Assumptions
 
-This guide is designed for those who want to attach Refinery CMS to an existing Rails application.
-
-Refinery is a Ruby on Rails web application. If you have no prior experience with Rails, you will find a very steep learning curve diving straight into Refinery.  There are some good free resources on the Internet for learning Rails, including:
-
-* "Getting Started with Rails":http://guides.rubyonrails.org/getting_started.html
-* "Rails for Zombies":http://railsforzombies.org
+This guide is designed for those who want to attach Refinery CMS to an existing Rails application. It assumes you have at least introductory knowledge of Refinery CMS.
 
 h3. Steps to add Refinery CMS to your application
+
+Refinery 2.0 comes as a mountable Rails engine. This is a change from previous versions, where Refinery would have to modify files in your application. Now, Refinery is completely namespaced and isolated from your existing application.
 
 h4. Add Refinery CMS as a dependency in your Gemfile
 
 Open up your Gemfile and add the latest version (a later version than the one shown "may exist":https://rubygems.org/gems/refinerycms/versions):
 
 <ruby>
-  gem 'refinerycms', '= 1.0.0'
+  gem 'refinerycms', '~> 2.0.0'
 </ruby>
 
-Now, to install the gem run:
+Now, to install the gem, run:
 
 <shell>
   bundle install
 </shell>
 
-h4. Generate support files and migrations
+h4. Generate support files and migrations, and prepare the database
 
-Now you can simply run the Refinery CMS generator:
+WARNING. Doing this will overwrite any tables that you have of the same name; please backup first. Refinery table names begin with +refinery_+, so the likelihood of a collision occurring is low, but it is nevertheless recommended you keep backups of your database and your code.
+
+WARNING. Running the +bundle exec rake railties:install:migrations+ task will copy migrations from any Rails engine you have listed in your Gemfile. It is recommended that you only install one engine at a time to prevent a massive influx of migrations that may conflict with each other.
+
+Generating Refinery on top of an existing application is marginally more complicated than it was before, but it's still quite simple:
 
 <shell>
   rails generate refinery:cms
 </shell>
 
-h4. Migrate your database
+This creates +config/initializers/refinery/+ and copies over all the required initializers from Refinery and Devise. It also injects Refinery's mounting line into your +config/routes.rb+ file. If you wish to customize where Refinery is mounted, you can change the path there.
 
-WARNING. Doing this will overwrite any tables that you have of the same name; please backup first.
-
-After the previous step you should have a number of new migrations in your db/migrate directory.
-To use these just run:
+h4. Migrate and seed the database.
 
 <shell>
-  rake db:migrate
+  bundle exec rake railties:install:migrations
+  bundle exec rake db:migrate
+  bundle exec rake db:seed
 </shell>
 
-After this, you should be all set.
+This copies the migrations from Refinery, migrates them, and adds the seed data to your database to provide you with the minimal Refinery installation.
 
-h3. Gotchas
-
-h4. Check your app for namespace collisions
-
-Refinery isn't entirely namespaced or decoupled from the application it becomes a part of, and this can cause problems in integrating with an existing app.
-The following notes may help.
-
-Modules and classes in the host application which have previously caused problems include Admin, Image and Page, though this is not an exhaustive list.
-While some of these collisions are not visible in the schema (e.g. an Admin class colliding with an Admin module) you may find tables and models which refinery and your app have in common.
-Having discovered this you may want to refactor your app to use different class and table names, or you may wish to remove the functionality and instead use that provided by Refinery.
-For example an admin model could probably be replaced with refinery's own admin authentication system.
-
-h4. ApplicationController
-
-Refinery hooks in to ApplicationController, adding before-filters and the like.
-This means any of your controllers inheriting from it will also be modified.
-This can have unexpected consequences, such as breaking your entire controller test-suite due to not having completed the initial Refinery user creation in the spec setup.
-One approach is to bootstrap the setup before executing your specs, or stubbing.
-Another is to create a replacement ApplicationController, different from the one Refinery will modify, and base your application on this instead.
-
-h4. Devise
-
-While Refinery's use of Devise should not affect your own, since you can declare scopes, you may find issues are caused by
-Devise using your ApplicationController, which as previously mentioned is modified by Refinery.
+After this, you should be all set. Don't forget to revisit the initializers in +config/initializers/refinery/+ to customize your experience.
 
 h3. Getting Help
 
