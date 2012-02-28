@@ -2,7 +2,7 @@ Refinery::Core::Engine.routes.draw do
 <% unless skip_frontend? %>
   # Frontend routes
   namespace :<%= namespacing.underscore %> do
-    resources :<%= class_name.pluralize.underscore.downcase %>, :only => [:index, :show]
+    resources :<%= class_name.pluralize.underscore.downcase %><%= ", :path => ''" if namespacing.underscore == class_name.pluralize.underscore.downcase %>, :only => [:index, :show]
   end
 <% end %>
   # Admin routes
