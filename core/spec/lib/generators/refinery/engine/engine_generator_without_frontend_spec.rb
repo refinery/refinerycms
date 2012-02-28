@@ -15,7 +15,7 @@ module Refinery
     specify do
       destination_root.should have_structure {
         directory "vendor" do
-          directory "engines" do
+          directory "extensions" do
             directory "rspec_product_tests" do
               directory "app" do
                 directory "controllers" do

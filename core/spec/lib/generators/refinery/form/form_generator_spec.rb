@@ -13,9 +13,9 @@ module Refinery
     end
 
     specify do
-      destination_root.should have_structure {
+      destination_root.should have_structure do
         directory "vendor" do
-          directory "engines" do
+          directory "extensions" do
             directory "rspec_form_tests" do
               directory "app" do
                 directory "controllers" do
@@ -83,7 +83,7 @@ module Refinery
             end
           end
         end
-      }
+      end
     end
   end
 end
