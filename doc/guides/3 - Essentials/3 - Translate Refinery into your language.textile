@@ -8,7 +8,7 @@ endprologue.
 
 h3. Setup
 
-Before you start translating, you should clone a fresh copy of Refinery from GitHub. See "this guide":/guides/how-to-contribute-to-refinery for information how to do that.
+Before you start translating, you should clone a fresh copy of Refinery from GitHub. See "this guide":/guides/how-to-contribute-to-refinery-development for information how to do that.
 
 To make things a bit easier for the "core team":http://refinerycms.com/about, please create a branch like i18n_LOCALE (example: i18n_nl). This makes it much easier for it to be merged in.
 
