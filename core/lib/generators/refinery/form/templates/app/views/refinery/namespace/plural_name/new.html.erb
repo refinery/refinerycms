@@ -23,8 +23,14 @@
 <% when :checkbox -%>
         <%%= f.check_box :<%= attribute.name %> %>
 <% when :select -%>
-        <%%= f.select :<%= attribute.name %>, Refinery::<%= class_name.pluralize %>::<%= class_name %>::<%= attribute.name.pluralize.upcase %>,
+        <%%= f.select :<%= attribute.name %>, Refinery::<%= namespacing %>::<%= class_name %>::<%= attribute.name.pluralize.upcase %>,
                       :include_blank => true %>
+<% when :datetime -%>
+        <%%= f.datetime_select :<%= attribute.name %> %>
+<% when :date -%>
+        <%%= f.date_select :<%= attribute.name %> %>
+<% when :time -%>
+        <%%= f.time_select :<%= attribute.name %> %>
 <% end -%>
       </div>
       <% end %>
