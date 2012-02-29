@@ -1,5 +1,7 @@
 #!/usr/bin/env ruby
-$:.push File.expand_path("../../lib", __FILE__)
-require 'refinerycms'
-
-Refinery::AppGenerator.start
+gem 'railties'
+require 'rails/generators'
+require 'rails/generators/rails/app/app_generator'
+template_path = File.expand_path('../../templates/refinery/installer.rb', __FILE__)
+puts "Generating your application using Rails..."
+Rails::Generators::AppGenerator.start [ARGV.shift, '-m', template_path, '--skip-test-unit', '--skip-layout']
