@@ -25,7 +25,7 @@ This guides takes a third approach of leaving the Refinery Gems unmodified to ma
 
 h4. Assumptions About The Existing Application
 
-Refinery CMS 1.0.0 assumes you want a content management system to control your site, which makes it very easy to build a Refinery CMS based application from scratch, and modify that.  Fortunately, it is also flexible enough to take on a smaller role to add functionality to your existing application. This guides focuses on those situations where there are large areas of your existing application that Refinery CMS should not be involved with at all. For example, you want to add a blog using refinery's blog engine, to your existing site, but don't want to otherwise alter your existing, perhaps complex, site.
+Refinery CMS 1.0.0 assumes you want a content management system to control your site, which makes it very easy to build a Refinery CMS based application from scratch, and modify that.  Fortunately, it is also flexible enough to take on a smaller role to add functionality to your existing application. This guides focuses on those situations where there are large areas of your existing application that Refinery CMS should not be involved with at all. For example, you want to add a blog using refinery's blog extension, to your existing site, but don't want to otherwise alter your existing, perhaps complex, site.
 
 Since this guide can't anticipate the unique integration issues with your situation, we'll create a minimal Rails + Devise application to reference. We'll assume that the existing application already handles authentication and authorization in a way that must be maintained to avoid breaking existing functionality, and that there are models, controllers and views that you don't want Refinery CMS to be involved with. Specifically, we'll assume that the ExistingApp will handle administration of the User table records through a non-refinery interface (perhaps the console, perhaps some ExistingApp controller).
 
@@ -204,7 +204,7 @@ $ git commit
 
 h3. Integrating Refinery CMS into ExistingApp
 
-Now that we have a baseline example working ExistingApp using Devise, it's time to integrate using Refinery, in this case, to add a blog engine, using our existing front end styles, existing user models, and whatever specialized authentication and authorization code we may already have in place.
+Now that we have a baseline example working ExistingApp using Devise, it's time to integrate using Refinery, in this case, to add a blog extension, using our existing front end styles, existing user models, and whatever specialized authentication and authorization code we may already have in place.
 
 +Gemfile+
 <ruby>
@@ -365,7 +365,7 @@ module Refinery
 end
 </ruby>
 
-Replace post.author.username with post.author.member_name in +app/views/admin/blog/posts/_post.html.erb+ and +app/views/blog/posts/_post.html.erb+.  If you are including other engines, just grep around in the gem source for user model fields that you may need to update, and override those views and/or controller methods.
+Replace post.author.username with post.author.member_name in +app/views/admin/blog/posts/_post.html.erb+ and +app/views/blog/posts/_post.html.erb+.  If you are including other extensions, just grep around in the gem source for user model fields that you may need to update, and override those views and/or controller methods.
 
 To keep ExistingApp in control of user administration, we'll block the routes to refinery controllers handling user admin.
 We also need to ensure that the devise routes point to where ExistingApp is expecting them to (which may be customized), and not to where refinery wants to route them.  We want some of the refinery routes defined, just not all. But we don't want to modify the refinery gems so we can upgrade more easily. The solution is to modify the routes after they are loaded, and there is probably a better way to find and remove the refinery added devise routes than this. But here is a method that worked.

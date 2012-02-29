@@ -6,7 +6,7 @@ module Refinery
         argument :attributes, :type => :array, :default => [], :banner => "field:type field:type"
 
         class_option :namespace, :type => :string, :default => nil, :banner => 'NAMESPACE', :required => false
-        class_option :engine, :type => :string, :default => nil, :banner => 'ENGINE', :required => false
+        class_option :extension, :type => :string, :default => nil, :banner => 'ENGINE', :required => false
         class_option :i18n, :type => :array, :default => [], :required => false, :banner => "field field", :desc => 'Indicates generated fields'
 
         remove_class_option :skip_namespace
@@ -20,34 +20,34 @@ module Refinery
           end
         end
 
-        def engine_name
-          @engine_name ||= if options[:engine].present?
+        def extension_name
+          @extension_name ||= if options[:extension].present?
             # Use exactly what the user requested, not a made up version.
-            options[:engine].to_s
+            options[:extension].to_s
           else
             singular_name
           end
         end
 
-        def engine_class_name
-          @engine_class_name ||= engine_name.camelize
+        def extension_class_name
+          @extension_class_name ||= extension_name.camelize
         end
 
-        def engine_plural_class_name
-          @engine_plural_class_name ||= if options[:engine].present?
+        def extension_plural_class_name
+          @extension_plural_class_name ||= if options[:extension].present?
             # Use exactly what the user requested, not a plural version.
-            engine_class_name
+            extension_class_name
           else
-            engine_class_name.pluralize
+            extension_class_name.pluralize
           end
         end
 
-        def engine_plural_name
-          @engine_plural_name ||= if options[:engine].present?
+        def extension_plural_name
+          @extension_plural_name ||= if options[:extension].present?
             # Use exactly what the user requested, not a plural version.
-            engine_name
+            extension_name
           else
-            engine_name.pluralize
+            extension_name.pluralize
           end
         end
 
@@ -67,7 +67,7 @@ module Refinery
 
         def append_extension_to_gemfile!
           unless Rails.env.test? || (self.behavior != :revoke && extension_in_gemfile?)
-            path = destination_pathname.join('vendor', 'engines').relative_path_from(gemfile.parent)
+            path = extension_pathname.parent.relative_path_from(gemfile.parent)
             append_file gemfile, "\ngem '#{gem_name}', :path => '#{path}'"
           end
         end
@@ -88,20 +88,20 @@ module Refinery
         end
 
         def extension_pathname
-          destination_pathname.join('vendor', 'extensions', engine_plural_name)
+          destination_pathname.join('vendor', 'extensions', extension_plural_name)
         end
 
-        def engine_path_for(path, engine)
+        def extension_path_for(path, extension)
           path = extension_pathname.join(path.to_s.gsub(%r{#{source_pathname}/?}, '')).to_s
 
-          path.gsub!('engine_plural_name', engine_plural_name)
+          path.gsub!('extension_plural_name', extension_plural_name)
           path.gsub!('plural_name', plural_name)
           path.gsub!('singular_name', singular_name)
           path.gsub!('namespace', namespacing.underscore)
 
-          if options[:namespace].present? || options[:engine].present?
+          if options[:namespace].present? || options[:extension].present?
             # Increment the migration file leading number
-            # Only relevant for nested or namespaced engines, where a previous migration exists
+            # Only relevant for nested or namespaced extensions, where a previous migration exists
             if path =~ %r{/migrate/\d+\w*.rb\z}
               if last_migration = Dir["#{destination_pathname.join(path.split(File::SEPARATOR)[0..-2], '*.rb')}"].sort.last
                 path.gsub!(%r{\d+_}) { |m| "#{last_migration.match(%r{migrate/(\d+)_})[1].to_i + 1}_" }
@@ -109,8 +109,8 @@ module Refinery
             end
 
             # Detect whether this is a special file that needs to get merged not overwritten.
-            # This is important only when nesting engines.
-            if engine.present? && File.exist?(path)
+            # This is important only when nesting extensions.
+            if extension.present? && File.exist?(path)
               path = if path =~ %r{/locales/.*\.yml$} or path =~ %r{/routes.rb$} or path =~ %r{/#{gem_name}.rb$}
                 # put new translations into a tmp directory
                 path.split(File::SEPARATOR).insert(-2, "tmp").join(File::SEPARATOR)
@@ -119,7 +119,7 @@ module Refinery
               else
                 path
               end
-            elsif engine.present? and path =~ /lib\/#{plural_name}.rb$/
+            elsif extension.present? and path =~ /lib\/#{plural_name}.rb$/
               path = nil
             end
           end
@@ -138,14 +138,14 @@ module Refinery
           Pathname.glob(source_pathname.join('**', '**')).reject{|f|
             reject_template?(f)
           }.sort.each do |path|
-            if (template_path = engine_path_for(path, engine_name)).present?
+            if (template_path = extension_path_for(path, extension_name)).present?
               template path, template_path
             end
           end
         end
 
         def existing_extension?
-          options[:engine].present? && extension_pathname.directory? && extension_in_gemfile?
+          options[:extension].present? && extension_pathname.directory? && extension_in_gemfile?
         end
 
         def exit_with_message!(message)
@@ -168,7 +168,7 @@ module Refinery
         end
 
         def gem_name
-          "refinerycms-#{engine_plural_name}"
+          "refinerycms-#{extension_plural_name}"
         end
 
         def gemfile
@@ -181,9 +181,9 @@ module Refinery
           if existing_extension?
             # go through all of the temporary files and merge what we need into the current files.
             tmp_directories = []
-            Dir.glob(source_pathname.join("{config/locales/*.yml,config/routes.rb,lib/refinerycms-engine_plural_name.rb}"), File::FNM_DOTMATCH).sort.each do |path|
+            Dir.glob(source_pathname.join("{config/locales/*.yml,config/routes.rb,lib/refinerycms-extension_plural_name.rb}"), File::FNM_DOTMATCH).sort.each do |path|
               # get the path to the current tmp file.
-              new_file_path = destination_pathname.join(engine_path_for(path, engine_name))
+              new_file_path = destination_pathname.join(extension_path_for(path, extension_name))
               tmp_directories << Pathname.new(new_file_path.to_s.split(File::SEPARATOR)[0..-2].join(File::SEPARATOR)) # save for later
               # get the path to the existing file and perform a deep hash merge.
               current_path = Pathname.new(new_file_path.to_s.split(File::SEPARATOR).reject{|f| f == 'tmp'}.join(File::SEPARATOR))
@@ -214,7 +214,7 @@ module Refinery
             puts "------------------------"
             puts "Now run:"
             puts "bundle install"
-            puts "rails generate refinery:#{engine_plural_name}"
+            puts "rails generate refinery:#{extension_plural_name}"
             puts "rake db:migrate"
             puts "rake db:seed"
             puts "------------------------"
@@ -222,8 +222,7 @@ module Refinery
         end
 
         def reject_file?(file)
-          (file.to_s.include?('app') && file.to_s.scan(/admin|models/).empty?) ||
-            (!localized? && file.to_s.include?('locale_picker'))
+          !localized? && file.to_s.include?('locale_picker')
         end
 
         def reject_template?(file)
@@ -237,7 +236,7 @@ module Refinery
 
           if singular_name == plural_name
             message = if singular_name.singularize == singular_name
-              "The engine name you specified will not work as the singular name is equal to the plural name."
+              "The extension name you specified will not work as the singular name is equal to the plural name."
             else
               "Please specify the singular name '#{singular_name.singularize}' instead of '#{plural_name}'."
             end

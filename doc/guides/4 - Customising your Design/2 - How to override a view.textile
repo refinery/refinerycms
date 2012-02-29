@@ -30,5 +30,5 @@ h3. Tips and Tricks
 
 * Trim the '.html.erb' from the end of the view file name
 * Only override when you really need to, as it makes upgrading to future versions of Refinery trickier
-* You only need the path to the view from inside the 'views' folder, regardless of which engine the file is in
+* You only need the path to the view from inside the 'views' folder, regardless of which extension the file is in
 * This will also work to override views in plugins you've created locally

@@ -8,7 +8,7 @@ Gem::Specification.new do |s|
   s.platform          = Gem::Platform::RUBY
   s.name              = %q{refinerycms-resources}
   s.version           = version
-  s.summary           = %q{Resources engine for Refinery CMS}
+  s.summary           = %q{Resources extension for Refinery CMS}
   s.description       = %q{Handles all file upload and processing functionality in Refinery CMS.}
   s.date              = %q{2011-10-12}
   s.email             = %q{info@refinerycms.com}

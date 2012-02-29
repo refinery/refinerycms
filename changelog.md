@@ -6,6 +6,7 @@
 * Renamed `RefinerySetting` to `Refinery::Setting`. [Philip Arndt](https://github.com/parndt)
 * Added `--trace` option to bin/refinerycms. [Steven Heidel](http://github.com/stevenheidel)
 * Moved `/shared/*` to `/refinery/*` instead, including `/shared/admin/*` to `/refinery/admin/*` as it makes more sense. [Philip Arndt](https://github.com/parndt)
+* `vendor/engines` is now `vendor/extensions` [Philip Arndt](https://github.com/parndt)
 * [See full list](https://github.com/resolve/refinerycms/compare/1.0.8...master)
 
 ## 1.0.8 [1 September 2011]

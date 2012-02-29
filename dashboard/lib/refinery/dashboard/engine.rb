@@ -21,7 +21,7 @@ module Refinery
       end
 
       config.after_initialize do
-        Refinery.register_engine(Refinery::Dashboard)
+        Refinery.register_extension(Refinery::Dashboard)
       end
     end
   end

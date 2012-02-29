@@ -14,7 +14,7 @@ This guide is designed for those who want to attach Refinery CMS to an existing 
 
 h3. Steps to add Refinery CMS to your application
 
-Refinery now comes as a mountable Rails engine. This is a change from previous versions, where Refinery would have to modify files in your application. Now, Refinery is completely namespaced and isolated from your existing application.
+Refinery now comes as a mountable Rails extension. This is a change from previous versions, where Refinery would have to modify files in your application. Now, Refinery is completely namespaced and isolated from your existing application.
 
 h4. Add Refinery CMS as a dependency in your Gemfile
 
@@ -34,7 +34,7 @@ h4. Generate support files and migrations, and prepare the database
 
 WARNING. Doing this will overwrite any tables that you have of the same name; please backup first. Refinery table names begin with +refinery_+, so the likelihood of a collision occurring is low, but it is nevertheless recommended you keep backups of your database and your code.
 
-WARNING. Running the +bundle exec rake railties:install:migrations+ task will copy migrations from any Rails engine you have listed in your Gemfile. It is recommended that you only install one engine at a time to prevent a massive influx of migrations that may conflict with each other. This will not overwrite any existing migrations you have, though, so you can run this command more than once without fear.
+WARNING. Running the +bundle exec rake railties:install:migrations+ task will copy migrations from any Rails extension you have listed in your Gemfile. It is recommended that you only install one extension at a time to prevent a massive influx of migrations that may conflict with each other. This will not overwrite any existing migrations you have, though, so you can run this command more than once without fear.
 
 Generating Refinery on top of an existing application is marginally more complicated than it was before, but it's still quite simple:
 

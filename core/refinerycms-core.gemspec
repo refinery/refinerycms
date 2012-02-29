@@ -8,8 +8,8 @@ Gem::Specification.new do |s|
   s.platform          = Gem::Platform::RUBY
   s.name              = %q{refinerycms-core}
   s.version           = version
-  s.summary           = %q{Core engine for Refinery CMS}
-  s.description       = %q{The core of Refinery CMS. This handles the common functionality and is required by most engines}
+  s.summary           = %q{Core extension for Refinery CMS}
+  s.description       = %q{The core of Refinery CMS. This handles the common functionality and is required by most extensions}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
   s.rubyforge_project = %q{refinerycms}

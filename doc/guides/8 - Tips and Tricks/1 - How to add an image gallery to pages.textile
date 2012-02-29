@@ -2,11 +2,11 @@ h2. How to add an image gallery to pages
 
 By default pages don't allow you to make galleries of images. This guide will show you how to:
 
-* Use the portfolio engine to display a gallery of images
+* Use the portfolio extension to display a gallery of images
 
 endprologue.
 
-WARNING: This guide is for Rails 2 implementations of Refinery. If you're using Rails 3 use the "refinerycms-page-images":https://github.com/resolve/refinerycms-page-images engine instead.
+WARNING: This guide is for Rails 2 implementations of Refinery. If you're using Rails 3 use the "refinerycms-page-images":https://github.com/resolve/refinerycms-page-images extension instead.
 
 h3. Introduction
 

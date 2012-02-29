@@ -159,7 +159,7 @@ module Refinery
 
       # Wraps up all the checks that we need to do to figure out whether
       # the current frontend locale is different to the current one set by ::I18n.locale.
-      # This terminates in a false if i18n engine is not defined or enabled.
+      # This terminates in a false if i18n extension is not defined or enabled.
       def different_frontend_locale?
         ::Refinery.i18n_enabled? && ::Refinery::I18n.current_frontend_locale != ::I18n.locale
       end

@@ -8,8 +8,8 @@ Gem::Specification.new do |s|
   s.platform          = Gem::Platform::RUBY
   s.name              = %q{refinerycms-authentication}
   s.version           = version
-  s.summary           = %q{Authentication engine for Refinery CMS}
-  s.description       = %q{The default authentication engine for Refinery CMS}
+  s.summary           = %q{Authentication extension for Refinery CMS}
+  s.description       = %q{The default authentication extension for Refinery CMS}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
   s.rubyforge_project = %q{refinerycms}

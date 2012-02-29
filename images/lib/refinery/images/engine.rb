@@ -31,7 +31,7 @@ module Refinery
       end
 
       config.after_initialize do
-        Refinery.register_engine(Refinery::Images)
+        Refinery.register_extension(Refinery::Images)
       end
     end
   end

@@ -82,7 +82,7 @@ module Refinery
           page.should have_content("http://www.refineryhq.com/")
         end
 
-        context 'when the engine is mounted with a named space' do
+        context 'when the extension is mounted with a named space' do
           before do
             Rails.application.routes.draw do
               mount Refinery::Core::Engine, :at => "/about"

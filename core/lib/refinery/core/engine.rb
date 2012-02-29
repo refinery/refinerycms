@@ -7,7 +7,8 @@ module Refinery
       engine_name :refinery
 
       class << self
-        # Require/load (based on Rails app.config) all decorators from app/decorators/ and vendor/engines/*
+        # Require/load (based on Rails app.config) all decorators from app/decorators/
+        # and from registered plugins' paths too.
         def load_decorators
           [Rails.root, Refinery::Plugins.registered.pathnames].flatten.map { |p|
             Dir[p.join('app', 'decorators', '**', '*_decorator.rb')]
@@ -135,7 +136,7 @@ module Refinery
       end
 
       config.after_initialize do
-        Refinery.register_engine(Refinery::Core)
+        Refinery.register_extension(Refinery::Core)
       end
     end
   end

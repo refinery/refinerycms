@@ -8,7 +8,7 @@ Gem::Specification.new do |s|
   s.platform          = Gem::Platform::RUBY
   s.name              = %q{refinerycms-images}
   s.version           = version
-  s.summary           = %q{Images engine for Refinery CMS}
+  s.summary           = %q{Images extension for Refinery CMS}
   s.description       = %q{Handles all image upload and processing functionality in Refinery CMS.}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}

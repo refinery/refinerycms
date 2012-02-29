@@ -24,7 +24,7 @@ module Refinery
             puts "Copied view template file to #{destination.gsub("#{Rails.root.to_s}#{File::SEPARATOR}", '')}"
           end
         else
-          puts "Couldn't match any view template files in any engines like #{view}"
+          puts "Couldn't match any view template files in any extensions like #{view}"
         end
       elsif (controller = env["controller"]).present?
         pattern = "{refinery#{File::SEPARATOR},}#{controller.split("/").join(File::SEPARATOR)}*.rb"
@@ -44,7 +44,7 @@ module Refinery
             puts "Copied controller file to #{destination.gsub("#{Rails.root.to_s}#{File::SEPARATOR}", '')}"
           end
         else
-          puts "Couldn't match any controller files in any engines like #{controller}"
+          puts "Couldn't match any controller files in any extensions like #{controller}"
         end
       elsif (model = env["model"]).present?
         pattern = "{refinery#{File::SEPARATOR},}#{model.split("/").join(File::SEPARATOR)}*.rb"
@@ -64,7 +64,7 @@ module Refinery
             puts "Copied model file to #{destination.gsub("#{Rails.root.to_s}#{File::SEPARATOR}", '')}"
           end
         else
-          puts "Couldn't match any model files in any engines like #{model}"
+          puts "Couldn't match any model files in any extensions like #{model}"
         end
       elsif (javascripts = env["javascript"]).present?
         pattern = "#{javascripts.split("/").join(File::SEPARATOR)}*.js"
@@ -84,7 +84,7 @@ module Refinery
             puts "Copied javascript file to #{destination.gsub("#{Rails.root.to_s}#{File::SEPARATOR}", '')}"
           end
         else
-          puts "Couldn't match any javascript files in any engines like #{javascripts}"
+          puts "Couldn't match any javascript files in any extensions like #{javascripts}"
         end
       elsif (stylesheets = env["stylesheet"]).present?
         pattern = "#{stylesheets.split("/").join(File::SEPARATOR)}*.css.scss"
@@ -104,7 +104,7 @@ module Refinery
             puts "Copied stylesheet file to #{destination.gsub("#{Rails.root.to_s}#{File::SEPARATOR}", '')}"
           end
         else
-          puts "Couldn't match any stylesheet files in any engines like #{stylesheets}"
+          puts "Couldn't match any stylesheet files in any extensions like #{stylesheets}"
         end
       else
         puts "You didn't specify anything to override. Here are some examples:"

@@ -1,10 +1,10 @@
-h2. How to test your engine
+h2. How to test your extension
 
-Refinery ships with an optional testing engine in the form of a gem called +refinerycms-testing+ which will add generators and rake tasks to your engine that provide it with the same RSpec2 testing environment we use to test Refinery. We abstract common test helpers, controller macros, and factories into this engine so you can use these in tests of your own.
+Refinery ships with an optional testing extension in the form of a gem called +refinerycms-testing+ which will add generators and rake tasks to your extension that provide it with the same RSpec2 testing environment we use to test Refinery. We abstract common test helpers, controller macros, and factories into this extension so you can use these in tests of your own.
 
 This guide will show you how to:
 
-* Bootstrap your engine with the Refinery RSpec2 testing environment
+* Bootstrap your extension with the Refinery RSpec2 testing environment
 * Run the test suite with Rake for a one time run
 * Run the test suite with Guard for quick TDD iterations
 
@@ -12,7 +12,7 @@ endprologue.
 
 h3. Bootstrap the test environment
 
-In your engine's Gemfile uncomment or add the following line
+In your extension's Gemfile uncomment or add the following line
 
 <shell>
   gem 'refinerycms-testing'
@@ -26,14 +26,14 @@ $ bundle install
 
 Now we will configure our test environment by preparing a dummy refinerycms app
 
-Add the following lines to your engine's Rakefile
+Add the following lines to your extension's Rakefile
 
 <ruby>
   ENGINE_PATH = File.dirname(__FILE__)
   APP_RAKEFILE = File.expand_path("../spec/dummy/Rakefile", __FILE__)
 
   if File.exists?(APP_RAKEFILE)
-    load 'rails/tasks/engine.rake'
+    load 'rails/tasks/extension.rake'
   end
 
   require "refinerycms-testing"

@@ -35,42 +35,43 @@ module Refinery
   autoload :EngineGenerator, 'generators/refinery/engine/engine_generator'
 
   class << self
-    @@engines = []
+    @@extensions = []
 
     # Returns an array of modules representing currently registered Refinery Engines
     #
     # Example:
-    #   Refinery.engines  =>  [Refinery::Core, Refinery::Pages]
-    def engines
-      @@engines
+    #   Refinery.extensions  =>  [Refinery::Core, Refinery::Pages]
+    def extensions
+      @@extensions
     end
 
-    # Register an engine with Refinery
+    # Register an extension with Refinery
     #
     # Example:
-    #   Refinery.register_engine(Refinery::Core)
-    def register_engine(const)
-      return if engine_registered?(const)
+    #   Refinery.register_extension(Refinery::Core)
+    def register_extension(const)
+      return if extension_registered?(const)
 
-      validate_engine!(const)
+      validate_extension!(const)
 
-      @@engines << const
+      @@extensions << const
+    end
+    alias_method :register_engine, :register_extension
+
+    # Unregister an extension from Refinery
+    #
+    # Example:
+    #   Refinery.unregister_extension(Refinery::Core)
+    def unregister_extension(const)
+      @@extensions.delete(const)
     end
 
-    # Unregister an engine from Refinery
+    # Returns true if an extension is currently registered with Refinery
     #
     # Example:
-    #   Refinery.unregister_engine(Refinery::Core)
-    def unregister_engine(const)
-      @@engines.delete(const)
-    end
-
-    # Returns true if an engine is currently registered with Refinery
-    #
-    # Example:
-    #   Refinery.engine_registered?(Refinery::Core)
-    def engine_registered?(const)
-      @@engines.include?(const)
+    #   Refinery.extension_registered?(Refinery::Core)
+    def extension_registered?(const)
+      @@extensions.include?(const)
     end
 
     # Constructs a deprecation warning message and warns with Kernel#warn
@@ -115,23 +116,23 @@ module Refinery
       @root ||= Pathname.new(File.expand_path('../../../../', __FILE__))
     end
 
-    # Returns an array of Pathnames pointing to the root directory of each engine that
+    # Returns an array of Pathnames pointing to the root directory of each extension that
     # has been registered with Refinery.
     #
     # Example:
     #   Refinery.roots => [#<Pathname:/Users/Reset/Code/refinerycms/core>, #<Pathname:/Users/Reset/Code/refinerycms/pages>]
     #
-    # An optional engine_name parameter can be specified to return just the Pathname for
-    # the specified engine. This can be represented in Constant, Symbol, or String form.
+    # An optional extension_name parameter can be specified to return just the Pathname for
+    # the specified extension. This can be represented in Constant, Symbol, or String form.
     #
     # Example:
     #   Refinery.roots(Refinery::Core)    =>  #<Pathname:/Users/Reset/Code/refinerycms/core>
     #   Refinery.roots(:'refinery/core')  =>  #<Pathname:/Users/Reset/Code/refinerycms/core>
     #   Refinery.roots("refinery/core")   =>  #<Pathname:/Users/Reset/Code/refinerycms/core>
-    def roots(engine_name = nil)
-      return @roots ||= self.engines.map { |engine| engine.root } if engine_name.nil?
+    def roots(extension_name = nil)
+      return @roots ||= self.extensions.map { |extension| extension.root } if extension_name.nil?
 
-      engine_name.to_s.camelize.constantize.root
+      extension_name.to_s.camelize.constantize.root
     end
 
     def version
@@ -159,7 +160,7 @@ module Refinery
     end
 
     private
-      def validate_engine!(const)
+      def validate_extension!(const)
         unless const.respond_to?(:root) && const.root.is_a?(Pathname)
           raise InvalidEngineError, "Engine must define a root accessor that returns a pathname to its root"
         end

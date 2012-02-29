@@ -49,7 +49,7 @@ module Refinery
       end
 
       config.after_initialize do
-        Refinery.register_engine(Refinery::Pages)
+        Refinery.register_extension(Refinery::Pages)
       end
 
       protected

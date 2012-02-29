@@ -8,8 +8,8 @@ Gem::Specification.new do |s|
   s.platform          = Gem::Platform::RUBY
   s.name              = %q{refinerycms-pages}
   s.version           = version
-  s.summary           = %q{Pages engine for Refinery CMS}
-  s.description       = %q{The default content engine of Refinery CMS. This engine handles the administration and display of user-editable pages.}
+  s.summary           = %q{Pages extension for Refinery CMS}
+  s.description       = %q{The default content extension of Refinery CMS. This extension handles the administration and display of user-editable pages.}
   s.date              = %q{2011-10-12}
   s.email             = %q{info@refinerycms.com}
   s.homepage          = %q{http://refinerycms.com}
