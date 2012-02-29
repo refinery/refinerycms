@@ -15,7 +15,6 @@ module Refinery
         end
 
         def confirmation_subject=(value)
-          # handles a change in Refinery API
           Refinery::Setting.set(:<%= singular_name %>_confirmation_subject, value)
         end
 
