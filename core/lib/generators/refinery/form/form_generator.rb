@@ -20,6 +20,8 @@ module Refinery
 
       evaluate_templates!
 
+      merge_locales!
+
       append_extension_to_gemfile!
 
       finalize_extension!
