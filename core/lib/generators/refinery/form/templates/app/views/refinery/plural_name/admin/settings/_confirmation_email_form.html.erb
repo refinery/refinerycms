@@ -1,4 +1,4 @@
-<%%= form_for([refinery, :admin, @refinery_setting], :url => (@url_override || @url)) do |f| %>
+<%%= form_for([refinery, :admin, @setting], :url => (@url_override || @url)) do |f| %>
 
   <p>
     <%%= t('.explanation') %>
@@ -28,7 +28,7 @@
         <label class='stripped'><%%= t('.subject') %></label>
       </td>
       <td>
-        <%%= text_field_tag 'subject', <%= class_name %>::Setting.confirmation_subject,
+        <%%= text_field_tag 'subject', Refinery::<%= namespacing %>::Setting.confirmation_subject,
                            :class => 'widest' %>
       </td>
     </tr>
@@ -37,7 +37,7 @@
         <%%= f.label :value, t('.message'), :class => 'stripped' %>
       </td>
       <td>
-        <%%= f.text_area :value, :rows => "5", :class => 'widest' %>
+        <%%= f.text_area :value, :value => @setting.value, :rows => "7", :class => 'widest' %>
         <br/>
         <em><%%= t('.note') %></em>
       </td>
@@ -46,6 +46,6 @@
 
   <%%= render '/refinery/admin/form_actions', :f => f,
              :continue_editing => false,
-             :cancel_url => refinery.admin_<%= plural_name %>_url,
+             :cancel_url => refinery.<%= namespacing.underscore %>_admin_<%= plural_name %>_url,
              :hide_delete => true %>
 <%% end %>

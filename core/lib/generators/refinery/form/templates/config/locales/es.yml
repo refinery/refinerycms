@@ -52,7 +52,7 @@ es:
         update:
           updated: "'%{setting}' fue actualizado exitosamente."
         notification_recipients_form:
-          <%= singular_name %>_settings_value_name: Mandar notificaciones a
+          settings_value_name: Mandar notificaciones a
           explanation: "Cada vez que alguien se comunique con usted en su sitio web, Refinery enviara un correo electrónico respecto a esta nueva consulta."
           hint: "Ingrese una dirección de correo. Ingrese la dirección de correo de las persona que vaya a ser notificada, si quiere que varias personas sean notificadas ingrese las direcciones de correo separadas por comas."
           example: "Ejemplo: me@domain.com, friend@msn.com, workmate@work.com"

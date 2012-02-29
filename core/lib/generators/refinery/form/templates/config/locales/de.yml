@@ -41,7 +41,7 @@ de:
           message: Nachricht
       settings:
         notification_recipients_form:
-          <%= singular_name %>_settings_value_name: Schicke Benachrichtigungen an
+          settings_value_name: Schicke Benachrichtigungen an
           explanation: Jedesmal wenn jemand Sie auf Ihrer Webseite kontaktiert, wird eine E-Mail mit einem Hinweis zu einer neuen Kontaktanfrage versendet.
           hint: Wenn eine neue Kontaktanfrage gestellt wurde, wird Refinery Ihnen eine E-Mail mit einem Hinweis schicken.
           example: "Geben Sie Ihre E-Mail-Adresse(n) an, z. B.: jack@work.com, jill@office.com"

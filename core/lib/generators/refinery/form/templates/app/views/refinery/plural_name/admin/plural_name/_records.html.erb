@@ -17,7 +17,7 @@
     <%% end %>
   <%% else -%>
     <p>
-      <strong><%%= t('.no_<%= plural_name %>') %></strong>
+      <strong><%%= t('no_things', :scope => 'refinery.<%= namespacing.underscore %>.admin.<%= plural_name %>.index') %></strong>
     </p>
   <%% end -%>
 <%% end %>

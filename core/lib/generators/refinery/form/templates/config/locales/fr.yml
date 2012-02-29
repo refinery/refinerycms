@@ -41,7 +41,7 @@ fr:
           message: Message
       settings:
         notification_recipients_form:
-          <%= singular_name %>_settings_value_name: Envoyer une notification à
+          settings_value_name: Envoyer une notification à
           explanation: Chaque fois qu'une demande de contact est rédigée sur votre site, Refinery envoie un e-mail pour le signaler.
           hint: Quand une nouvelle requête est soumise, Refinery vous envoie un e-mail d'avertissement.
           example: "Entrez votre/vos addresse(s) e-mail comme il suit: jack@work.com, jill@office.com"

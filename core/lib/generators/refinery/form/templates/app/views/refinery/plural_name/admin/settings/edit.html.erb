@@ -1,4 +1,4 @@
-<%% if @refinery_setting.name.to_s.titleize =~ /R|recipients$/ %>
+<%% if @setting.name.to_s.titleize =~ /R|recipients$/ %>
   <%%= render 'notification_recipients_form', :edit => true -%>
 <%% else %>
   <%%= render 'confirmation_email_form', :edit => true -%>

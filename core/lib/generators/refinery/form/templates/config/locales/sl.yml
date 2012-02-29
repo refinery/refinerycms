@@ -51,7 +51,7 @@ sl:
         update:
           updated: "'%{setting}' je bila uspešno posodobljena."
         notification_recipients_form:
-          <%= singular_name %>_settings_value_name: Pošlji obvestilo na
+          settings_value_name: Pošlji obvestilo na
           explanation: "Vedno ko vas nekdo kontaktira na vaši spletni strani, vam Refinery pošlje email obvestilo o novem povpraševanju."
           hint: "V zgornje polje vnesite email naslov. Želite da obvestila prejme več oseb? Vnesite več email naslovov ločenih z vejicami."
           example: "Primer: jaz@domena.com, prijatelj@msn.com, sodelavec@work.com"

@@ -1,10 +1,9 @@
 module Refinery
-  class <%= class_name.pluralize %>Generator < Rails::Generators::Base
-
-    source_root File.expand_path('../../../../', __FILE__)
+  class <%= extension_plural_class_name %>Generator < Rails::Generators::Base
 
     def rake_db
-      rake("refinery_<%= plural_name %>:install:migrations")
+      rake("refinery_<%= extension_plural_name %>:install:migrations")
+      rake("refinery_settings:install:migrations")
     end
 
     def append_load_seed_data
@@ -12,7 +11,7 @@ module Refinery
       append_file 'db/seeds.rb', :verbose => true do
         <<-EOH
 
-Refinery::<%= class_name.pluralize %>::Engine.load_seed
+Refinery::<%= namespacing %>::Engine.load_seed
         EOH
       end
     end

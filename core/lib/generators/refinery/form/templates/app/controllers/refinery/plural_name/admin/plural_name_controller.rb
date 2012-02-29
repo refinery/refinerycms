@@ -1,9 +1,9 @@
 module Refinery
-  module <%= class_name.pluralize %>
+  module <%= namespacing %>
     module Admin
       class <%= class_name.pluralize %>Controller < Refinery::AdminController
 
-        crudify :<%= singular_name %>, <% if (title = attributes.detect { |a| a.type.to_s == "string" }).present? %>
+        crudify :'refinery/<%= namespacing.underscore %>/<%= singular_name %>', <% if (title = attributes.detect { |a| a.type.to_s == "string" }).present? %>
                 :title_attribute => "<%= title.name %>", <% end %>
                 :order => "created_at DESC"
       <% if @includes_spam %>

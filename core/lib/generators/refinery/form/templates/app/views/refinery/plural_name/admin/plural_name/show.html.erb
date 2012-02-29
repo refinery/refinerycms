@@ -12,7 +12,7 @@
         <td>
 <% if attribute.type.to_s == 'text' -%>
           <p style='margin-top: 0px'>
-            <%% @<%= singular_name %>.message.gsub("\r\n\r\n", "\r\n").split("\r\n").each_with_index do |sentence, index| %>
+            <%% @<%= singular_name %>.message.to_s.gsub("\r\n\r\n", "\r\n").split("\r\n").each_with_index do |sentence, index| %>
               <%%=raw "</p><p>" unless index == 0 %>
               <%%= sentence %>
             <%% end %>
@@ -43,7 +43,7 @@
     </li>
     <li>
       <%%= link_to t('admin.<%= plural_name %>.delete'),
-                  refinery.<%= plural_name %>_admin_<%= singular_name %>_path(@<%= singular_name %>),
+                  refinery.<%= namespacing.underscore %>_admin_<%= singular_name %>_path(@<%= singular_name %>),
                   :class => 'delete_icon no-tooltip confirm-delete',
                   :title => t('admin.<%= plural_name %>.delete'),
                   :'data-confirm' => t('shared.admin.delete.message', :title => @<%= singular_name %>.name),

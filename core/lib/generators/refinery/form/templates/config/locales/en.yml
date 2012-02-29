@@ -42,7 +42,7 @@ en:
             message: Message
         settings:
           notification_recipients_form:
-            <%= singular_name %>_settings_value_name: Send notifications to
+            settings_value_name: Send notifications to
             explanation: Every time someone contacts you on your website, Refinery sends out an email to say there is a new <%= singular_name.humanize.downcase %>.
             hint: When a new <%= singular_name.humanize.downcase %> is submitted, Refinery will send an email notification to you.
             example: "Enter your email address(es) like: jack@work.com, jill@office.com"

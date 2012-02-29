@@ -51,7 +51,7 @@ da:
         update:
           updated: "'%{setting}' er opdateret."
         notification_recipients_form:
-          <%= singular_name %>_settings_value_name: Send besked til
+          settings_value_name: Send besked til
           explanation: "Hver gang kontaktformularen benyttes, sender Refinery en e-mail med besked om, at der er modtaget en ny henvendelse"
           hint: "Indtast en e-mail-adresse ovenfor. Skal beskeden sendes til mere end en person, så indtast flere adresser adskilt med kommaer."
           example: "Fx mig@domæne.dk, ven@hotmail.com, kollega@arbejde.dk"

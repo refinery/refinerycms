@@ -40,7 +40,7 @@ nl:
           message: Bericht
       settings:
         notification_recipients_form:
-          <%= singular_name %>_settings_value_name: Stuur notificaties naar
+          settings_value_name: Stuur notificaties naar
           explanation: "Iedere keer wanneer iemand het vraag formulier invult op uw website, stuurt Refinery een email waarin staat dat er een nieuwe vraag ontvangen is."
           hint: "Vul hierboven een email adres in. Wilt u naar meerdere adressen notificaties sturen? Vul dan meerdere email adressen in gescheiden door comma's"
           example: "Bijvoorbeeld: ik@domein.com, vrienden@msn.com, collegas@werk.com"
