@@ -68,11 +68,11 @@ en:
           message: Message
           closing_line: Kind Regards
           ps_html: P.S. All your <%= plural_name.humanize.downcase %> are stored in the "<%= plural_name.titleize %>" section of Refinery should you ever want to view it later there.
-      activerecord:
-        models:
-          <%= singular_name %>: <%= class_name.underscore.titleize %>
-        attributes:
-          <%= singular_name %>:
+  activerecord:
+    models:
+      <%= singular_name %>: <%= class_name.underscore.titleize %>
+    attributes:
+      <%= singular_name %>:
 <% attributes.each do |a| -%>
-            <%= a.name %>: <%= a.name.humanize %>
+        <%= a.name %>: <%= a.name.humanize %>
 <% end -%>
