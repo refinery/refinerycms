@@ -62,7 +62,6 @@ The extensions Refinery comes with are:
 * *Images* - handles image upload, insertion and processing images using "Dragonfly":https://github.com/markevans/dragonfly.
 * *Pages* - allows you to manage pages including the structure of your site displayed in the front end.
 * *Resources* - handles file upload and storage.
-* *Settings* - manages various settings you can configure in Refinery.
 
 h3. Creating a new Refinery project
 
@@ -74,7 +73,7 @@ Before you can start building this site, you need to make sure that you have Ref
 
 h4. Installing Refinery
 
-There are two popular ways to install Refinery: RubyGems and Rails Application Templates.  We will discuss both and how you can get up and running with either.
+There are two popular ways to install Refinery: RubyGems and Rails Application Templates. We will discuss both and how you can get up and running with either.
 
 h5. RubyGems 
 The easiest way to install Refinery is to take advantage of RubyGems.
@@ -88,10 +87,10 @@ NOTE: This step may take some time to load as it needs to download and install a
 TIP. If you're working on Windows, you should be aware that the vast majority of Refinery development is done in Unix environments. If at all possible, we suggest that you develop on a Linux based operating system.
 
 h5. Rails Application Templates
-These application templates are another very easy way to install Refinery, and allow for a great deal of control of your installation.  You can create a new Refienry application using the cutting edge version right now by typing:
+These application templates are another very easy way to install Refinery, and allow for a great deal of control of your installation. You can create a new Refienry application by typing:
 
 <shell>
-$ rails new rickrockstar -m https://raw.github.com/resolve/refinerycms/master/templates/refinery/edge.rb
+$ rails new rickrockstar -m http://refinerycms.com/t/2.0.0
 </shell>
 
 h4. Creating a Refinery application
@@ -103,10 +102,6 @@ To begin, open a terminal, navigate to a folder where you have rights to create 
 <shell>
 $ refinerycms rickrockstar
 </shell>
-
-TIP: You can see all of the switches that the +refinerycms+ command accepts by running +refinerycms+ with no options or arguments.
-
-TIP: You can run <tt>$ refinerycms rickrockstar -r 3.1.3</tt> to generate a refinery application with any specific version of rails you need.
 
 This will create a new Rails application with Refinery built in called RickRockStar in a directory called +rickrockstar+. It also automatically runs +bundle install+ which will find and install all Refinery's ruby gem dependencies. Finally, it creates your database and seeds it with some basic defaults to get you started.
 
@@ -168,7 +163,7 @@ Now you're setup, click around the various tabs in the backend and become famili
 
 !>/system/images/BAhbBlsHOgZmSSIsMjAxMC8xMi8wMi8xMl81NF80Ml83M19yZW9yZGVyX3RhYnMucG5nBjoGRVQ/12_54_42_73_reorder_tabs.png!
 
-While exploring, one of the first things to do is reorder the tabs to reflect what you will be working on the most. Click the tab with the two green arrows, and then drag the backend tabs - for example, "Users" or "Settings" - into an order which makes the most sense to you.
+While exploring, one of the first things to do is reorder the tabs to reflect what you will be working on the most. Click the tab with the two green arrows, and then drag the backend tabs - for example, "Users" or "Images" - into an order which makes the most sense to you.
 
 Click the reorder button again when you're done to save.
 
