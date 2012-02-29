@@ -4,10 +4,19 @@ module Refinery
 <% if table_name == namespacing.underscore.pluralize -%>
       self.table_name = :refinery_<%= plural_name %>
 <% end -%>
-<% if (string_fields = attributes.map{ |a| a.name if a.type.to_s =~ /string|text/ }.compact.uniq).any? %>
-      acts_as_indexed :fields => [:<%= string_fields.join(", :") %>]
+<% if (text_or_string_fields = attributes.map{ |a| a.name if a.type.to_s =~ /string|text/ }.compact.uniq).any? %>
+      acts_as_indexed :fields => [:<%= text_or_string_fields.join(", :") %>]
 <% end -%>
-<% unless string_fields.empty? || string_fields.detect{|f| f.to_s == 'name'} %>
+<% if (text_fields = attributes.map {|a| a.name if a.type.to_s == 'text'}.compact.uniq).any? && text_fields.detect{|a| a.to_s == 'message'}.nil? %>
+      alias_attribute :message, :<%= text_fields.first %>
+<% elsif text_fields.empty? %>
+      # def message was created automatically because you didn't specify a text field
+      # when you ran the refinery:form generator. <3 <3 Refinery CMS.
+      def message
+        "Override def message in vendor/extensions/<%= namespacing.underscore %>/app/models/refinery/<%= namespacing.underscore %>/<%= singular_name %>.rb"
+      end
+<% end %>
+<% unless (string_fields = attributes.map{ |a| a.name if a.type.to_s == 'string' }.compact.uniq).empty? || string_fields.detect{|f| f.to_s == 'name'} %>
       alias_attribute :name, :<%= string_fields.first %>
 <% end %>
       # Add some validation here if you want to validate the user's input
