@@ -12,7 +12,7 @@ pt-BR:
           download_current: Baixar arquivo atual
           or: or
           replace: " substituir por este..."
-          maximum_file_size: "O tamanho máximo permitido é de %{bytes} bytes."
+          maximum_file_size: "O tamanho máximo permitido é de %{bytes}."
         resource:
           download: Baixar este arquivo (%{size})
         actions:

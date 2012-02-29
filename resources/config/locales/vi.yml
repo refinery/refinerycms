@@ -12,7 +12,7 @@ vi:
           download_current: Tải tập tin hiện tại
           or: hoặc
           replace: " thay thế nó bằng này..."
-          maximum_file_size: Kích thước file tối đa là %{bytes} bytes.
+          maximum_file_size: Kích thước file tối đa là %{bytes}.
         resource:
           download: Tải về file này (%{size})
         actions:

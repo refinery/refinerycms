@@ -12,7 +12,7 @@ nb:
           download_current: Last ned gjeldende fil
           or: eller
           replace: " erstatt den med denne..."
-          maximum_file_size: Største tillatte filstørrelse er %{bytes} MB.
+          maximum_file_size: Største tillatte filstørrelse er %{bytes}.
         resource:
           download: Last ned denne filen (%{size})
         actions:

@@ -12,7 +12,7 @@ en:
           download_current: Download current file
           or: or
           replace: " replace it with this one..."
-          maximum_file_size: The maximum file size is %{bytes} bytes.
+          maximum_file_size: The maximum file size is %{bytes}.
         resource:
           download: Download this file (%{size})
         actions:

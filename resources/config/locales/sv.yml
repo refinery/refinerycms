@@ -12,7 +12,7 @@ sv:
           download_current: Ladda ner den här filen
           or: eller
           replace: " ersätt med den här..."
-          maximum_file_size: Maximal storlek är %{bytes} bytes.
+          maximum_file_size: Maximal storlek är %{bytes}.
         resource:
           download: Ladda ner den här filen (%{size})
         actions:
