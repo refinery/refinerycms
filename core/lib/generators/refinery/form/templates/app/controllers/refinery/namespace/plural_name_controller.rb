@@ -25,12 +25,16 @@ module Refinery
           rescue
             logger.warn "There was an error delivering an <%= singular_name %> notification.\n#{$!}\n"
           end<% if @includes_spam %> if @<%= singular_name %>.ham?<% end %>
-
-          begin
-            <%= class_name %>Mailer.confirmation(@<%= singular_name %>, request).deliver
-          rescue
-            logger.warn "There was an error delivering an <%= singular_name %> confirmation:\n#{$!}\n"
-          end<% if @includes_spam %> if @<%= singular_name %>.ham?<% end %>
+          
+          if <%= class_name %>.column_names.map(&:to_s).include?('email')
+            begin
+              <%= class_name %>Mailer.confirmation(@<%= singular_name %>, request).deliver
+            rescue
+              logger.warn "There was an error delivering an foo confirmation:\n#{$!}\n"
+            end<% if @includes_spam %> if @<%= singular_name %>.ham?<% end %>
+          else
+            logger.warn "Please add an 'email' field to <%= class_name %> if you wish to send confirmation emails when forms are submitted."
+          end
 
           redirect_to refinery.thank_you_<%= namespacing.underscore %>_<%= plural_name %>_path
         else
