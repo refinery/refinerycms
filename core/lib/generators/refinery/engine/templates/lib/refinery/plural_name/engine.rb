@@ -14,7 +14,6 @@ module Refinery
             :action => 'index'
           }
           plugin.pathname = root
-
           plugin.activity = {
             :class_name => :'refinery/<%= namespacing.underscore %>/<%= singular_name %>'<% if (title = attributes.detect { |a| a.type.to_s == "string" }).present? and title.name != 'title' %>,
             :title => '<%= title.name %>'<% end %>

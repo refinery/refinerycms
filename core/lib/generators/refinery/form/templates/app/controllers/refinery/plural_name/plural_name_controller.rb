@@ -32,7 +32,7 @@ module Refinery
             logger.warn "There was an error delivering an <%= singular_name %> confirmation:\n#{$!}\n"
           end<% if @includes_spam %> if @<%= singular_name %>.ham?<% end %>
 
-          redirect_to thank_you_<%= plural_name %>_url
+          redirect_to refinery.thank_you_<%= plural_name %>_path
         else
           render :action => 'new'
         end
