@@ -15,7 +15,7 @@ es:
           or: o
           replace_image: " reemplazarla con esta otra..."
           current_image: Imagen actual
-          maximum_image_size: El peso máximo para una imagen son  %{bytes} bytes.
+          maximum_image_size: El peso máximo para una imagen son %{bytes}.
         actions:
           create_new_image: Crear nueva imagen
         records:

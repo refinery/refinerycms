@@ -14,7 +14,7 @@ da:
           or: eller
           replace_image: " erstat med dette..."
           current_image: Nuværende billede
-          maximum_image_size: Billedet må maksimalt fylde %{bytes} bytes.
+          maximum_image_size: Billedet må maksimalt fylde %{bytes}.
         actions:
           create_new_image: Tilføj et nyt billede
         records:

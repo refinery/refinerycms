@@ -13,7 +13,7 @@ sl:
           or: ali
           replace_image: " zamenjaj jo s tole..."
           current_image: Trenutna Slika
-          maximum_image_size: "Največja dovoljena velikost slike je lahko %{bytes} megabajtov."
+          maximum_image_size: "Največja dovoljena velikost slike je lahko %{bytes}."
         actions:
           create_new_image: Ustvari Novo Sliko
         records:

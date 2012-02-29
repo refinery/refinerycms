@@ -14,7 +14,7 @@ el:
           or: or
           replace_image: " αλλαγή με αυτήν..."
           current_image: Τρέχουσα εικόνα
-          maximum_image_size: Το μέγιστο μέγεθος εικόνας είναι %{bytes} bytes.
+          maximum_image_size: Το μέγιστο μέγεθος εικόνας είναι %{bytes}.
         actions:
           create_new_image: Προσθήκη νέας εικόνας
         records:
