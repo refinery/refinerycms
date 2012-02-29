@@ -8,7 +8,7 @@ if defined?(::Refinery::User)
 end
 
 <% unless skip_frontend? %>
-url = "/<%= namespacing.underscore %>/<%= plural_name %>"
+url = "/<%= [(namespacing.underscore if namespacing.underscore != plural_name), plural_name].compact.join('/') %>"
 if defined?(::Refinery::Page) && ::Refinery::Page.where(:link_url => url).empty?
   page = ::Refinery::Page.create(
     :title => '<%= class_name.pluralize.underscore.titleize %>',
