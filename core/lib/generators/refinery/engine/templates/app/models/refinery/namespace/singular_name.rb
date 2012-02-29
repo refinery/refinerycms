@@ -12,7 +12,7 @@ module Refinery
       # def title was created automatically because you didn't specify a string field
       # when you ran the refinery:engine generator. <3 <3 Refinery CMS.
       def title
-        "Override def title in vendor/extensions/<%= namespacing %>/app/models/refinery/<%= namespacing %>/<%= singular_name %>.rb"
+        "Override def title in vendor/extensions/<%= namespacing.underscore %>/app/models/refinery/<%= namespacing.underscore %>/<%= singular_name %>.rb"
       end
       <% end -%>
     <% attributes.select{|a| a.type.to_s == 'image'}.uniq.each do |a| -%>

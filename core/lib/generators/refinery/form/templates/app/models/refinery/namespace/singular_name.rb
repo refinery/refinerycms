@@ -7,7 +7,7 @@ module Refinery
 <% if (string_fields = attributes.map{ |a| a.name if a.type.to_s =~ /string|text/ }.compact.uniq).any? %>
       acts_as_indexed :fields => [:<%= string_fields.join(", :") %>]
 <% end -%>
-<% unless string_fields.detect{|f| f.to_s == 'name'} %>
+<% unless string_fields.empty? || string_fields.detect{|f| f.to_s == 'name'} %>
       alias_attribute :name, :<%= string_fields.first %>
 <% end %>
       # Add some validation here if you want to validate the user's input
@@ -18,7 +18,7 @@ module Refinery
       # def name was created automatically because you didn't specify a string field
       # when you ran the refinery:form generator. <3 <3 Refinery CMS.
       def name
-        "Override def name in vendor/extensions/<%= namespacing %>/app/models/refinery/<%= namespacing %>/<%= singular_name %>.rb"
+        "Override def name in vendor/extensions/<%= namespacing.underscore %>/app/models/refinery/<%= namespacing.underscore %>/<%= singular_name %>.rb"
       end
 <% end -%>
 <% attributes.select{|a| a.type.to_s == 'image'}.uniq.each do |a| -%>
