@@ -12,7 +12,7 @@ ja:
           download_current: ファイルをダウンロード
           or: または
           replace: "このファイルと差し替える"
-          maximum_file_size: "ファイルは最大で%{bytes}MBまでです。"
+          maximum_file_size: "ファイルは最大で%{bytes}までです。"
         resource:
           download: "ファイルをダウンロードする(%{size})"
         actions:

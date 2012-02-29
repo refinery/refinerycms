@@ -12,7 +12,7 @@ zh-CN:
           download_current: 下载当前文件
           or: 或
           replace: " 用这个来替换..."
-          maximum_file_size: 最大的文件大小是 %{bytes} MB.
+          maximum_file_size: 最大的文件大小是 %{bytes}.
         resource:
           download: 下载此文件 (%{size})
         actions:

@@ -12,7 +12,7 @@ ko:
           download_current: 현재 파일 다운로드
           or: 또는
           replace: " 이 파일로 대체..."
-          maximum_file_size: 파일의 최대 크기는 %{bytes}MB입니다.
+          maximum_file_size: 파일의 최대 크기는 %{bytes}입니다.
         resource:
           download: 이 파일 다운로드 (%{size})
         actions:
