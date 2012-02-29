@@ -14,7 +14,7 @@ it:
           or: o
           replace_image: Sostituirla con questa...
           current_image: Immagine corrente
-          maximum_image_size: "La dimensione massima per l'immagine è di %{bytes} bytes."
+          maximum_image_size: "La dimensione massima per l'immagine è di %{bytes}."
         actions:
           create_new_image: Carica una nuova immagine
         records:

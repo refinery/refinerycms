@@ -14,7 +14,7 @@ en:
           or: or
           replace_image: " replace it with this one..."
           current_image: Current Image
-          maximum_image_size: The maximum image size is %{bytes} bytes.
+          maximum_image_size: The maximum image size is %{bytes}.
         actions:
           create_new_image: Add new image
         records:

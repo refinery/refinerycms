@@ -14,7 +14,7 @@ ja:
           or: または
           replace_image: " この画像と差し替える"
           current_image: 選択されている画像
-          maximum_image_size: '画像は最大で %{bytes}MB　までです。'
+          maximum_image_size: '画像は最大で %{bytes}　までです。'
         actions:
           create_new_image: 画像を追加する
         records:

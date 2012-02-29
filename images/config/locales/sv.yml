@@ -14,7 +14,7 @@ sv:
           or: eller
           replace_image: " ersätt den med den här..."
           current_image: Denna bild
-          maximum_image_size: Maximal filstorlek för bilden är %{bytes} bytes.
+          maximum_image_size: Maximal filstorlek för bilden är %{bytes}.
         actions:
           create_new_image: Ladda upp en bild
         records:

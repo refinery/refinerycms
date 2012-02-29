@@ -13,7 +13,7 @@ nl:
           or: of
           replace_image: Vervang de afbeelding door deze
           current_image: Huidige afbeelding
-          maximum_image_size: "The maximum image size is %{bytes} bytes."
+          maximum_image_size: "The maximum image size is %{bytes}."
         actions:
           create_new_image: Upload een nieuwe afbeelding
         records:
