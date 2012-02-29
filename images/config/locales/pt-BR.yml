@@ -15,7 +15,7 @@ pt-BR:
           or: ou
           replace_image: " substituir por esta..."
           current_image: Imagem atual
-          maximum_image_size: "O tamanho máximo permitido é de %{bytes} bytes."
+          maximum_image_size: "O tamanho máximo permitido é de %{bytes}."
         actions:
           create_new_image: Criar Nova Imagem
         records:

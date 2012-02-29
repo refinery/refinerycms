@@ -14,7 +14,7 @@ rs:
           or: ili
           replace_image: " zameni sa ovom..."
           current_image: Trenutna slika
-          maximum_image_size: Maksimalna veličina slike je %{bytes} megabajta.
+          maximum_image_size: Maksimalna veličina slike je %{bytes}.
         actions:
           create_new_image: Dodaj novu sliku
         records:

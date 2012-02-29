@@ -14,7 +14,7 @@ zh-TW:
           or: 或
           replace_image: " 用這個來取代..."
           current_image: 目前圖片
-          maximum_image_size: 圖片大小限制為 %{bytes} MB.
+          maximum_image_size: 圖片大小限制為 %{bytes}.
         actions:
           create_new_image: 新增圖片
         records:
