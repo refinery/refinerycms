@@ -153,7 +153,7 @@ gem 'fog'
 
     def migrate_database!
       rake 'railties:install:migrations'
-      rake 'db:migrate'
+      rake 'db:create db:migrate'
     end
 
     def mount!
