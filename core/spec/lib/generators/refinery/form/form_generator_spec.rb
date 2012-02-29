@@ -29,7 +29,11 @@ module Refinery
                   end
                 end
                 directory "mailers" do
-                  file "rspec_form_test_mailer.rb"
+                  directory "refinery" do
+                    directory "rspec_form_tests" do
+                      file "rspec_form_test_mailer.rb"
+                    end
+                  end
                 end
                 directory "models" do
                   directory "refinery" do
