@@ -2,7 +2,7 @@ module Refinery
   module <%= class_name.pluralize %>
     class <%= class_name %> < Refinery::Core::BaseModel
 <% if table_name == namespacing.underscore.pluralize -%>
-      self.table_name = :refinery_<%= plural_name %>
+      self.table_name = 'refinery_<%= plural_name %>'
 <% end -%>
 <% if (text_or_string_fields = attributes.map{ |a| a.name if a.type.to_s =~ /string|text/ }.compact.uniq).any? %>
       acts_as_indexed :fields => [:<%= text_or_string_fields.join(", :") %>]

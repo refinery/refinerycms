@@ -1,7 +1,7 @@
 module Refinery
   module <%= namespacing %>
     class <%= class_name %> < Refinery::Core::BaseModel
-      <% if table_name == namespacing.underscore.pluralize -%>self.table_name = :refinery_<%= plural_name %><% end -%>
+      <% if table_name == namespacing.underscore.pluralize -%>self.table_name = 'refinery_<%= plural_name %>'<% end -%>
       <% if localized? %>
       translates <%= localized_attributes.map{|a| ":#{a.name}"}.join(', ') %><% end %>
     <% if (string_attributes = attributes.select{ |a| a.type.to_s =~ /string|text/ }.uniq).any? %>
