@@ -7,7 +7,7 @@ module Refinery
 
     include Refinery::ExtensionGeneration
 
-    class_option :skip_frontend, :type => :boolean, :default => false, :required => false, :desc => 'Generate engine without frontend'
+    class_option :skip_frontend, :type => :boolean, :default => false, :required => false, :desc => 'Generate extension without frontend'
 
     def skip_frontend?
       options[:skip_frontend]
@@ -28,7 +28,8 @@ module Refinery
   protected
 
     def reject_file_with_skip_frontend?(file)
-      skip_frontend? && reject_file_without_skip_frontend?(file)
+      (skip_frontend? && (file.to_s.include?('app') && file.to_s.scan(/admin|models|mailers/).empty?)) ||
+        reject_file_without_skip_frontend?(file)
     end
     alias_method_chain :reject_file?, :skip_frontend
   end

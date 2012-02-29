@@ -1,7 +1,7 @@
 require 'refinerycms-core'
 
 module Refinery
-  autoload :<%= engine_plural_class_name %>Generator, 'generators/refinery/<%= engine_plural_name %>_generator'
+  autoload :<%= extension_plural_class_name %>Generator, 'generators/refinery/<%= extension_plural_name %>_generator'
 
   module <%= class_name.pluralize %><%= 'Engine' if plural_name == singular_name %>
     require 'refinery/<%= plural_name %>/engine'

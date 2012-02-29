@@ -5,7 +5,7 @@ guard 'spork', :wait => 60, :cucumber => false, :rspec_env => { 'RAILS_ENV' => '
   watch(%r{^config/initializers/.+\.rb$})
   watch('spec/spec_helper.rb')
   watch(%r{^spec/support/.+\.rb$})
-  watch(%r{^vendor/engines/(.+)/spec/support/.+\.rb$})
+  watch(%r{^vendor/extensions/(.+)/spec/support/.+\.rb$})
 end
 
 guard 'rspec', :version => 2, :cli => "--color --drb --format Fuubar", :all_on_start => false, :all_after_pass => false do

@@ -1,10 +1,10 @@
-# <%= engine_plural_name.titleize %> engine for Refinery CMS.
+# <%= extension_plural_name.titleize %> extension for Refinery CMS.
 
-## How to build this engine as a gem
+## How to build this extension as a gem
 
-    cd vendor/engines/<%= engine_plural_name %>
-    gem build refinerycms-<%= engine_plural_name %>.gemspec
-    gem install refinerycms-<%= engine_plural_name %>.gem
+    cd vendor/extensions/<%= extension_plural_name %>
+    gem build refinerycms-<%= extension_plural_name %>.gemspec
+    gem install refinerycms-<%= extension_plural_name %>.gem
 
     # Sign up for a http://rubygems.org/ account and publish the gem
-    gem push refinerycms-<%= engine_plural_name %>.gem
+    gem push refinerycms-<%= extension_plural_name %>.gem

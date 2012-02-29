@@ -4,7 +4,7 @@ module Refinery
       include Refinery::Engine
       isolate_namespace Refinery::<%= namespacing %>
 
-      engine_name :refinery_<%= engine_plural_name %>
+      engine_name :refinery_<%= extension_plural_name %>
 
       initializer "register refinerycms_<%= plural_name %> plugin" do |app|
         Refinery::Plugin.register do |plugin|
@@ -24,7 +24,7 @@ module Refinery
       end
 
       config.after_initialize do
-        Refinery.register_engine(Refinery::<%= class_name.pluralize %>)
+        Refinery.register_extension(Refinery::<%= class_name.pluralize %>)
       end
     end
   end

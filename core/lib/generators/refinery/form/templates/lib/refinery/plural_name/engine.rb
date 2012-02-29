@@ -7,7 +7,7 @@ module Refinery
       engine_name :refinery_<%= plural_name %>
 
       config.after_initialize do
-        Refinery.register_engine(Refinery::<%= class_name.pluralize %>)
+        Refinery.register_extension(Refinery::<%= class_name.pluralize %>)
       end
 
       config.after_initialize do

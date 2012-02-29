@@ -1,8 +1,8 @@
 module Refinery
-  class <%= engine_plural_class_name %>Generator < Rails::Generators::Base
+  class <%= extension_plural_class_name %>Generator < Rails::Generators::Base
 
     def rake_db
-      rake("refinery_<%= engine_plural_name %>:install:migrations")
+      rake("refinery_<%= extension_plural_name %>:install:migrations")
     end
 
     def append_load_seed_data
