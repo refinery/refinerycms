@@ -103,7 +103,7 @@ module Refinery
             # Increment the migration file leading number
             # Only relevant for nested or namespaced extensions, where a previous migration exists
             if path =~ %r{/migrate/\d+\w*.rb\z}
-              if last_migration = Dir["#{destination_pathname.join(path.split(File::SEPARATOR)[0..-2], '*.rb')}"].sort.last
+              if last_migration = Dir["#{destination_pathname.join(path.split(File::SEPARATOR)[0..-2].join(File::SEPARATOR), '*.rb')}"].sort.last
                 path.gsub!(%r{\d+_}) { |m| "#{last_migration.match(%r{migrate/(\d+)_})[1].to_i + 1}_" }
               end
             end
