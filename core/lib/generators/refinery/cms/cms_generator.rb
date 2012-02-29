@@ -6,6 +6,10 @@ module Refinery
                           :desc => "Update an existing Refinery CMS based application"
     class_option :fresh_installation, :type => :boolean, :aliases => nil, :group => :runtime, :default => false,
                           :desc => "Allow Refinery to remove default Rails files in a fresh installation"
+    class_option :heroku, :type => :string, :default => nil, :group => :runtime, :banner => 'APP_NAME',
+                          :desc => "Deploy to Heroku after the generator has run."
+    class_option :stack, :type => :string, :default => 'cedar', :group => :runtime,
+                          :desc => "Specify which Heroku stack you want to use. Requires --heroku option to function."
 
     def generate
       start_pretending?
@@ -27,6 +31,8 @@ module Refinery
       mount!
 
       run_additional_generators! if self.options[:fresh_installation]
+
+      deploy_to_hosting?
     end
 
   protected
@@ -54,6 +60,30 @@ module Refinery
         src_file_path = "app/decorators/#{decorator_namespace}/refinery/.gitkeep"
         copy_file self.class.source_root.join(src_file_path), destination_path.join(src_file_path)
       end
+    end
+
+    def deploy_to_hosting?
+      deploy_to_hosting_heroku! if options[:heroku]
+    end
+
+    def deploy_to_hosting_heroku!
+      puts "\n\nInitializing and committing to git..\n"
+      run("git init && git add . && git commit -am 'Created application using Refinery CMS #{Refinery.version}'")
+
+      puts "\n\nCreating Heroku app..\n"
+      run("heroku create #{options[:heroku]}#{"--stack #{options[:stack]}" if options[:stack]}")
+
+      puts "\n\nPushing to Heroku (this takes time, be patient)..\n"
+      run("git push heroku master")
+
+      puts "\n\nSetting up the Heroku database..\n"
+      run("heroku rake db:migrate")
+
+      puts "\n\nRestarting servers...\n"
+      run("heroku restart")
+
+      puts "\nIf you want files and images to work on heroku, you will need setup S3:"
+      puts "heroku config:add S3_BUCKET=XXXXXXXXX S3_KEY=XXXXXXXXX S3_SECRET=XXXXXXXXXX S3_REGION=XXXXXXXXXX"
     end
 
     # Helper method to quickly convert destination_root to a Pathname for easy file path manipulation
