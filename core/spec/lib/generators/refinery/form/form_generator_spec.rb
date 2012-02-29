@@ -31,7 +31,7 @@ module Refinery
                 directory "mailers" do
                   directory "refinery" do
                     directory "rspec_form_tests" do
-                      file "rspec_form_test_mailer.rb"
+                      file "mailer.rb"
                     end
                   end
                 end
