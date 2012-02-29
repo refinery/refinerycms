@@ -42,7 +42,7 @@ namespace :refinery do
 
       task :init_test_database do
         task_params = [%Q{ bundle exec rake -f #{Refinery::Testing::Railtie.target_extension_path.join('Rakefile')} }]
-        task_params << %Q{ app:db:test:preparerd }
+        task_params << %Q{ app:db:test:prepare }
 
         system task_params.join(' ')
       end
