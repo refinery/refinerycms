@@ -1,6 +1,6 @@
 module Refinery
   module <%= namespacing %>
-    class <%= class_name %>Mailer < ActionMailer::Base
+    class Mailer < ActionMailer::Base
 
       def confirmation(<%= singular_name %>, request)
         @<%= singular_name %> = <%= singular_name %>

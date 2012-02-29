@@ -6,7 +6,7 @@
 <br/>
 <% attributes.each do |attribute| -%>
 <%%= t('.<%= attribute.name %>', :default => t('activerecord.attributes.<%= singular_name %>.<%= attribute.name %>')) %>: <% if attribute.type.to_s == 'text' %>
-<% end %><%%= @<%= singular_name %>.<%= attribute.name %> %><%= "<br/>" unless attribute.type.to_s == 'text' -%>
+<% end %><%%= @<%= singular_name %>.<%= attribute.name %> %><%= "<br/>" unless attribute.type.to_s == 'text' %>
 <% end -%>
 <br/>
 <%%= t('.<%= singular_name %>_ends') %><br/>
