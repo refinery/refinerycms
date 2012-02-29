@@ -32,6 +32,10 @@ module Refinery
 
       run_additional_generators! if self.options[:fresh_installation]
 
+      migrate_database!
+
+      seed_database!
+
       deploy_to_hosting?
     end
 
@@ -43,6 +47,20 @@ module Refinery
       our_ignore_rules = self.class.source_root.join('.gitignore').read
       our_ignore_rules = our_ignore_rules.split('# REFINERY CMS DEVELOPMENT').first if destination_path != Refinery.root
       append_file ".gitignore", our_ignore_rules
+    end
+
+    def append_heroku_gems!
+      append_file 'Gemfile', %q{
+# The Heroku gem allows you to interface with Heroku's API
+gem 'heroku'
+
+# Fog allows you to use S3 assets (added for Heroku)
+gem 'fog'
+}
+    end
+
+    def bundle!
+      run 'bundle install'
     end
 
     def copy_files!
@@ -63,27 +81,36 @@ module Refinery
     end
 
     def deploy_to_hosting?
-      deploy_to_hosting_heroku! if options[:heroku]
+      if options[:heroku]
+        append_heroku_gems!
+
+        bundle!
+
+        # Sanity check the heroku application name and save whatever messages are produced.
+        message = sanity_check_heroku_application_name!
+
+        # Supply the deploy process with the previous messages to make them visible.
+        deploy_to_hosting_heroku!(message)
+      end
     end
 
-    def deploy_to_hosting_heroku!
-      puts "\n\nInitializing and committing to git..\n"
+    def deploy_to_hosting_heroku!(message = nil)
+      puts "\nInitializing and committing to git..\n"
       run("git init && git add . && git commit -am 'Created application using Refinery CMS #{Refinery.version}'")
 
-      puts "\n\nCreating Heroku app..\n"
+      puts message if message
+
+      puts "\nCreating Heroku app..\n"
       run("heroku create #{options[:heroku]}#{" --stack #{options[:stack]}" if options[:stack]}")
 
-      puts "\n\nPushing to Heroku (this takes time, be patient)..\n"
+      puts "\nPushing to Heroku (this takes time, be patient)..\n"
       run("git push heroku master")
 
-      puts "\n\nSetting up the Heroku database..\n"
-      run("heroku rake db:migrate")
+      puts "\nSetting up the Heroku database..\n"
+      run("heroku#{' run' if options[:stack] == 'cedar'} rake db:migrate")
 
-      puts "\n\nRestarting servers...\n"
+      puts "\nRestarting servers...\n"
       run("heroku restart")
-
-      puts "\nIf you want files and images to work on heroku, you will need setup S3:"
-      puts "heroku config:add S3_BUCKET=XXXXXXXXX S3_KEY=XXXXXXXXX S3_SECRET=XXXXXXXXXX S3_REGION=XXXXXXXXXX"
     end
 
     # Helper method to quickly convert destination_root to a Pathname for easy file path manipulation
@@ -124,6 +151,10 @@ module Refinery
       end
     end
 
+    def migrate_database!
+      rake 'railties:install:migrations db:migrate'
+    end
+
     def mount!
       if (routes_file = destination_path.join('config', 'routes.rb')).file? && (self.behavior == :revoke || (routes_file.read !~ %r{mount\ Refinery::Core::Engine}))
         # Append routes
@@ -149,6 +180,30 @@ module Refinery
       Refinery::PagesGenerator.start generator_args
       Refinery::ImagesGenerator.start generator_args
       Refinery::I18nGenerator.start generator_args if defined?(Refinery::I18nGenerator)
+    end
+
+    def sanity_check_heroku_application_name!
+      if options[:heroku].to_s.include?('_') || options[:heroku].to_s.length > 30
+        message = ["\nThe application name '#{options[:heroku]}' that you specified is invalid for Heroku."]
+        suggested_name = options[:heroku].dup.to_s
+        if suggested_name.include?('_')
+          message << "This is because it contains underscores which Heroku does not allow."
+          suggested_name.gsub!(/_/, '-')
+        end
+        if suggested_name.length > 30
+          message << "This is#{" also" unless suggested_name.nil?} because it is longer than 30 characters."
+          suggested_name = suggested_name[0..29]
+        end
+
+        options[:heroku] = suggested_name
+
+        message << "We have changed the name to '#{suggested_name}' for you, hope it suits you."
+        message.join("\n")
+      end
+    end
+
+    def seed_database!
+      rake 'db:seed'
     end
 
     def start_pretending?

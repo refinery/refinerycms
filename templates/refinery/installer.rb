@@ -19,9 +19,6 @@ run 'bundle install'
 rake 'db:create'
 generate "refinery:cms --fresh-installation #{ARGV.join(' ')}"
 
-rake 'railties:install:migrations db:migrate'
-rake 'db:seed'
-
 say <<-eos
   ============================================================================
     Your new Refinery CMS application is now installed and mounts at '/'
