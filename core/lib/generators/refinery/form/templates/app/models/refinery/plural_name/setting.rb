@@ -20,7 +20,7 @@ module Refinery
 
         def notification_recipients
           Refinery::Setting.find_or_set(:<%= singular_name %>_notification_recipients,
-                                        ((Role[:refinery].users.first.email rescue nil) if defined?(Role)).to_s)
+                                        (Role[:refinery].users.first.try(:email) if defined?(Role)).to_s)
         end
 
         def notification_subject
