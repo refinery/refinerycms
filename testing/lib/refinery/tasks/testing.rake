@@ -1,7 +1,7 @@
 namespace :refinery do
   namespace :testing do
     desc "Generates a dummy app for testing"
-    task :dummy_app => [:setup_dummy_app, :setup_extension, :migrate_dummy_app]
+    task :dummy_app => [:setup_dummy_app, :setup_extension, "extension:setup"]
 
     task :setup_dummy_app do
       require 'refinerycms'
@@ -29,30 +29,6 @@ namespace :refinery do
     task :setup_extension do
     end
 
-    task :migrate_dummy_app do
-      extensions = %w(
-        refinery
-        refinery_authentication
-        seo_meta_engine
-        refinery_pages
-        refinery_images
-        refinery_resources
-      )
-
-      task_params = [%Q{ bundle exec rake -f #{Refinery::Testing::Railtie.target_extension_path.join('Rakefile')} }]
-      task_params << %Q{ app:railties:install:migrations FROM="#{extensions.join(', ')}" }
-      task_params << %Q{ app:db:drop app:db:create app:db:migrate }
-      task_params << %Q{ RAILS_ENV=development --quiet }
-
-      system task_params.join(' ')
-
-      task_params2 = [%Q{ bundle exec rake -f #{Refinery::Testing::Railtie.target_extension_path.join('Rakefile')} }]
-      task_params2 << %Q{ app:db:seed app:db:test:prepare }
-      task_params2 << %Q{ RAILS_ENV=development --quiet }
-
-      system task_params2.join(' ')
-    end
-
     desc "Remove the dummy app used for testing"
     task :clean_dummy_app do
       path = Refinery::Testing::Railtie.target_extension_path.join('spec', 'dummy')
@@ -64,10 +40,12 @@ namespace :refinery do
       desc "Initialize the testing environment"
       task :setup => [:init_test_database]
 
-      task :init_test_database => [
-        'app:db:migrate',
-        'app:db:test:prepare'
-      ]
+      task :init_test_database do
+        task_params = [%Q{ bundle exec rake -f #{Refinery::Testing::Railtie.target_extension_path.join('Rakefile')} }]
+        task_params << %Q{ app:db:test:prepare --trace }
+
+        system task_params.join(' ')
+      end
     end
   end
 end
