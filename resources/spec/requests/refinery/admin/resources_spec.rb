@@ -1,3 +1,4 @@
+# Encoding: UTF-8
 require "spec_helper"
 
 module Refinery
@@ -18,6 +19,7 @@ module Refinery
         page.should have_selector("a[href*='/refinery/resources/new']")
       end
 
+
       context "new/create" do
         it "uploads file", :js => true do
           visit refinery.admin_resources_path
@@ -33,6 +35,42 @@ module Refinery
 
           page.should have_content("Refinery Is Awesome.txt")
           Refinery::Resource.count.should == 1
+        end
+        
+        describe "max file size" do
+          before(:each) do
+            ::Refinery::Resources.stub(:max_file_size).and_return('1224')
+          end
+
+          context "in english" do
+            it "is shown" do
+              visit refinery.admin_resources_path
+              click_link "Upload new file"
+              
+              within('#maximum_file_size') do
+                page.should have_content "1.2 KB"
+              end
+            end
+          end
+          context "in danish" do
+            it "is shown" do
+              visit refinery.admin_dashboard_path
+              within "#other_locales" do
+                click_link "Dansk"
+              end
+
+              click_link "Filer"
+              click_link "Tilføj en ny fil"
+              within "#maximum_file_size" do
+                page.should have_content "1,2 KB"
+              end
+
+              visit refinery.admin_dashboard_path
+              within "#other_locales" do
+                click_link "English"
+              end
+            end
+          end
         end
       end
 
