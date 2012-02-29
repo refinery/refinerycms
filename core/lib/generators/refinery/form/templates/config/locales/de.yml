@@ -1,12 +1,13 @@
 de:
   plugins:
-    <%= class_name.pluralize.underscore.downcase %>:
+    <%= plural_name %>:
       title: <%= plural_name.titleize %>
       description: Stellt ein Kontaktformular zur Verfügung und speichert Kontaktanfragen
-  <%= plural_name %>:
-    new:
-      send: Nachricht senden
-      privacy_policy: Ihre Privatsphäre ist uns wichtig
+  <%= namespacing.underscore %>:
+    <%= plural_name %>:
+      new:
+        send: Nachricht senden
+        privacy_policy: Ihre Privatsphäre ist uns wichtig
     admin:
       <%= plural_name %>:
         delete: Diese Kontaktanfrage für immer löschen

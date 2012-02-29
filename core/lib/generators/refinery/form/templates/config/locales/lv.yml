@@ -1,11 +1,12 @@
 lv:
   plugins:
-    <%= class_name.pluralize.underscore.downcase %>:
+    <%= plural_name %>:
       title: <%= plural_name.titleize %>
-  <%= plural_name %>:
-    new:
-      send: Sūtīt ziņu
-      privacy_policy: Mēs cienam Jūsu privātumu
+  <%= namespacing.underscore %>:
+    <%= plural_name %>:
+      new:
+        send: Sūtīt ziņu
+        privacy_policy: Mēs cienam Jūsu privātumu
     admin:
       <%= plural_name %>:
         delete: Dzēst šo pieprasījumu

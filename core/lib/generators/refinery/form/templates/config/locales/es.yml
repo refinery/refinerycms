@@ -1,6 +1,6 @@
 es:
   plugins:
-    <%= class_name.pluralize.underscore.downcase %>:
+    <%= plural_name %>:
       title: <%= plural_name.titleize %>
   activerecord:
     models:
@@ -14,12 +14,13 @@ es:
         date: Fecha
         name: Nombre
         message: Mensaje
-  <%= plural_name %>:
-    new:
-      header_message: "Mil disculpas hay un pequeño problema."
-      message: "Los siguientes problemas necesitan ser corregidos:"
-      send: Enviar mensaje
-      privacy_policy: "Nosotros valoramos tu privacidad"
+  <%= namespacing.underscore %>:
+    <%= plural_name %>:
+      new:
+        header_message: "Mil disculpas hay un pequeño problema."
+        message: "Los siguientes problemas necesitan ser corregidos:"
+        send: Enviar mensaje
+        privacy_policy: "Nosotros valoramos tu privacidad"
     admin:
       <%= plural_name %>:
         <%= singular_name %>:

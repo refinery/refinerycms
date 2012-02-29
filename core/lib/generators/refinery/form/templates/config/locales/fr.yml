@@ -1,12 +1,13 @@
 fr:
   plugins:
-    <%= class_name.pluralize.underscore.downcase %>:
+    <%= plural_name %>:
       title: <%= plural_name.titleize %>
       description: Fournit un formulaire de contact et gère les demandes de contacts.
-  <%= plural_name %>:
-    new:
-      send: Envoyer un message
-      privacy_policy: Nous respectons votre vie privée
+  <%= namespacing.underscore %>:
+    <%= plural_name %>:
+      new:
+        send: Envoyer un message
+        privacy_policy: Nous respectons votre vie privée
     admin:
       <%= plural_name %>:
         delete: Supprimer définitivement cette requête

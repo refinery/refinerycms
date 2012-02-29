@@ -1,6 +1,6 @@
 da:
   plugins:
-    <%= class_name.pluralize.underscore.downcase %>:
+    <%= plural_name %>:
       title: <%= plural_name.titleize %>
   activerecord:
     models:
@@ -13,12 +13,13 @@ da:
         phone: Telefon
         date: Dato
         message: Besked
-  <%= plural_name %>:
-    new:
-      header_message: "Der er et mindre problem"
-      message: "Følgende skal rettes:"
-      send: Send besked
-      privacy_policy: "Vi værner om dine personlige oplysninger"
+  <%= namespacing.underscore %>:
+    <%= plural_name %>:
+      new:
+        header_message: "Der er et mindre problem"
+        message: "Følgende skal rettes:"
+        send: Send besked
+        privacy_policy: "Vi værner om dine personlige oplysninger"
     admin:
       <%= plural_name %>:
         <%= singular_name %>:

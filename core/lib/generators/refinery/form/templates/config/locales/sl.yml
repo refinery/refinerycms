@@ -1,6 +1,6 @@
 sl:
   plugins:
-    <%= class_name.pluralize.underscore.downcase %>:
+    <%= plural_name %>:
       title: <%= plural_name.titleize %>
   activerecord:
     models:
@@ -13,12 +13,13 @@ sl:
         phone: Telefon
         date: Datum
         message: Sporočilo
-  <%= plural_name %>:
-    new:
-      header_message: "Ups prišlo je do majhnega problema"
-      message: "Prosimo odpravite sledeče napake:"
-      send: Pošlji sporočilo
-      privacy_policy: "Cenimo vašo zasebnost"
+  <%= namespacing.underscore %>:
+    <%= plural_name %>:
+      new:
+        header_message: "Ups prišlo je do majhnega problema"
+        message: "Prosimo odpravite sledeče napake:"
+        send: Pošlji sporočilo
+        privacy_policy: "Cenimo vašo zasebnost"
     admin:
       <%= plural_name %>:
         <%= singular_name %>:

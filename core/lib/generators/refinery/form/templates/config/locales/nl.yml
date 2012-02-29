@@ -1,11 +1,12 @@
 nl:
   plugins:
-    <%= class_name.pluralize.underscore.downcase %>:
+    <%= plural_name %>:
       title: <%= plural_name.titleize %>
-  <%= plural_name %>:
-    new:
-      send: Verstuur uw vraag
-      privacy_policy: Wij respecteren uw privacy
+  <%= namespacing.underscore %>:
+    <%= plural_name %>:
+      new:
+        send: Verstuur uw vraag
+        privacy_policy: Wij respecteren uw privacy
     admin:
       <%= plural_name %>:
         delete: Verwijder deze vraag voorgoed

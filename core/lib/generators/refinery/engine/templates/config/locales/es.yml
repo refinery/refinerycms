@@ -1,7 +1,7 @@
 es:
   refinery:
     plugins:
-      <%= class_name.pluralize.underscore.downcase %>:
+      <%= plural_name %>:
         title: <%= plural_name.titleize %>
 #        article: masculino/femenino
     <%= namespacing.underscore %>:

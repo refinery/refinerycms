@@ -1,6 +1,6 @@
 ru:
   plugins:
-    <%= class_name.pluralize.underscore.downcase %>:
+    <%= plural_name %>:
       title: <%= plural_name.titleize %>
   activerecord:
     models:
@@ -14,12 +14,13 @@ ru:
         phone: "Телефон"
         date: "Дата"
         message: "Сообщение"
-  <%= plural_name %>:
-    new:
-      header_message: "Упс. Возникла небольшая проблемка."
-      message: "Нужно исправить следующие ошибки:"
-      send: "Отправить сообщение"
-      privacy_policy: "Мы относимся с уважением к вашим личным данным"
+  <%= namespacing.underscore %>:
+    <%= plural_name %>:
+      new:
+        header_message: "Упс. Возникла небольшая проблемка."
+        message: "Нужно исправить следующие ошибки:"
+        send: "Отправить сообщение"
+        privacy_policy: "Мы относимся с уважением к вашим личным данным"
     admin:
       <%= plural_name %>:
         <%= singular_name %>:

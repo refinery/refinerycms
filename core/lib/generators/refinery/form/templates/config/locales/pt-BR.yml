@@ -1,12 +1,13 @@
 pt-BR:
   plugins:
-    <%= class_name.pluralize.underscore.downcase %>:
+    <%= plural_name %>:
       title: <%= plural_name.titleize %>
       description: Gerenciar contatos
-  <%= plural_name %>:
-    new:
-      send: Enviar mensagem
-      privacy_policy: "Nós valorizamos sua privacidade"
+  <%= namespacing.underscore %>:
+    <%= plural_name %>:
+      new:
+        send: Enviar mensagem
+        privacy_policy: "Nós valorizamos sua privacidade"
     admin:
       <%= plural_name %>:
         delete: Remover esta mensagem para sempre
