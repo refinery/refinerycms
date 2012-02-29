@@ -71,7 +71,7 @@ module Refinery
       run("git init && git add . && git commit -am 'Created application using Refinery CMS #{Refinery.version}'")
 
       puts "\n\nCreating Heroku app..\n"
-      run("heroku create #{options[:heroku]}#{"--stack #{options[:stack]}" if options[:stack]}")
+      run("heroku create #{options[:heroku]}#{" --stack #{options[:stack]}" if options[:stack]}")
 
       puts "\n\nPushing to Heroku (this takes time, be patient)..\n"
       run("git push heroku master")
