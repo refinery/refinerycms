@@ -36,7 +36,7 @@ module Refinery
           page.should have_content("Refinery Is Awesome.txt")
           Refinery::Resource.count.should == 1
         end
-        
+
         describe "max file size" do
           before(:each) do
             ::Refinery::Resources.stub(:max_file_size).and_return('1224')
@@ -46,7 +46,7 @@ module Refinery
             it "is shown" do
               visit refinery.admin_resources_path
               click_link "Upload new file"
-              
+
               within('#maximum_file_size') do
                 page.should have_content "1.2 KB"
               end
