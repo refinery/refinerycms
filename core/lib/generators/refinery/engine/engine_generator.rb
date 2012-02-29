@@ -22,7 +22,7 @@ module Refinery
 
       append_extension_to_gemfile!
 
-      #finalize_extension!
+      finalize_extension!
     end
 
   protected
