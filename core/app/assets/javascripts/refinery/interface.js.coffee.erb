@@ -60,7 +60,11 @@
   $(".form-actions .form-actions-left input:submit#submit_button").click (e) ->
     $("<img src='<%= asset_path 'refinery/ajax-loader.gif' %>' width='16' height='16' class='save-loader' />").appendTo $(this).parent()
 
-  $(".form-actions.form-actions-dialog .form-actions-left a.close_dialog", "body:not(.wym_iframe_body)").click close_dialog
+  $(".form-actions.form-actions-dialog .form-actions-left a.close_dialog").click (e) ->
+    titlebar_close_button = $('.ui-dialog-titlebar-close')
+    titlebar_close_button = parent.$('.ui-dialog-titlebar-close') if parent
+    titlebar_close_button.trigger('click')
+    e.preventDefault()
 
   $("a.suppress").live "click", (e) ->
     e.preventDefault()
