@@ -22,14 +22,14 @@ class Create<%= class_name.pluralize %> < ActiveRecord::Migration
 
     add_index :refinery_<%= table_name %>, :id
 
-    if (seed = Rails.root.join('db', 'seeds', '<%= class_name.pluralize.underscore.downcase %>.rb')).exist?
+    if (seed = Rails.root.join('db', 'seeds', '<%= plural_name %>.rb')).exist?
       load(seed)
     end
   end
 
   def self.down
     if defined?(::Refinery::UserPlugin)
-      ::Refinery::UserPlugin.destroy_all({:name => "<%= class_name.pluralize.underscore.downcase %>"})
+      ::Refinery::UserPlugin.destroy_all({:name => "<%= plural_name %>"})
     end
 
     if defined?(::Refinery::Page)

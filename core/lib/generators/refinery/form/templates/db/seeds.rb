@@ -1,7 +1,7 @@
 if defined?(::Refinery::User)
   ::Refinery::User.all.each do |user|
-    if user.plugins.find_by_name('<%= class_name.pluralize.underscore.downcase %>').nil?
-      user.plugins.create(:name => "<%= class_name.pluralize.underscore.downcase %>",
+    if user.plugins.find_by_name('<%= plural_name %>').nil?
+      user.plugins.create(:name => "<%= plural_name %>",
                           :position => (user.plugins.maximum(:position) || -1) +1)
     end
   end

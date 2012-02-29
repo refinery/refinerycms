@@ -1,6 +1,7 @@
 module Refinery
   module <%= class_name.pluralize %>
     class <%= class_name %> < Refinery::Core::BaseModel
+      <% if table_name == namespacing.underscore.pluralize -%>self.table_name = :refinery_<%= plural_name %><% end -%>
 
       acts_as_indexed :fields => [:<%= attributes.collect{ |a| a.name if a.type.to_s =~ /string|text/ }.compact.uniq.join(", :") %>]
 
