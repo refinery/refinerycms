@@ -12,7 +12,7 @@ da:
           download_current: Download filen
           or: eller
           replace: " erstat den med denne fil..."
-          maximum_file_size: Filen må maksimalt fylde %{bytes} bytes.
+          maximum_file_size: Filen må maksimalt fylde %{bytes}.
         resource:
           download: Download fil (%{size})
         actions:

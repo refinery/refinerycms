@@ -12,7 +12,7 @@ cs:
           download_current: Stáhnout vybraný soubor
           or: nebo
           replace: " nahradit tímto..."
-          maximum_file_size: Maximální velikost souboru je %{bytes} MB.
+          maximum_file_size: Maximální velikost souboru je %{bytes}.
         resource:
           download: Stáhnout soubor (%{size})
         actions:

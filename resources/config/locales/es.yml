@@ -13,7 +13,7 @@ es:
           download_current: Descargar archivo actual
           or: o
           replace: " reemplazarlo por este otro..."
-          maximum_file_size: El peso máximo para el archivo es de %{bytes} bytes.
+          maximum_file_size: El peso máximo para el archivo es de %{bytes}.
         resource:
           download: Descargar este archivo (%{size})
         actions:

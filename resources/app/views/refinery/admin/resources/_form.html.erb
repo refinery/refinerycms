@@ -18,9 +18,9 @@
     <% end %>
   </div>
 
-  <div class='field'>
+  <div class='field' id='maximum_file_size'>
     <label>
-      <%= t('.maximum_file_size', :bytes => Refinery::Resources.max_file_size) %>
+      <%= t('.maximum_file_size', :bytes => number_to_human_size(Refinery::Resources.max_file_size)) %>
     </label>
   </div>
 
