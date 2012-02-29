@@ -2,7 +2,6 @@ require 'rbconfig'
 append_file 'Gemfile' do
 "
 
-gem 'refinerycms-settings', :git => 'git://github.com/parndt/refinerycms-settings.git'
 gem 'refinerycms', :git => 'git://github.com/resolve/refinerycms.git'
 
 # USER DEFINED
