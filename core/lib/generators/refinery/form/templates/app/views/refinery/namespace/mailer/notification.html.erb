@@ -1,17 +1,17 @@
-<%%= t('.greeting') %>,
-
-<%%= t('.you_recieved_new_<%= singular_name %>') %>
-
-<%%= t('.<%= singular_name %>_starts') %>
-
+<%%= t('.greeting') %>,<br/>
+<br/>
+<%%= t('.you_recieved_new_<%= singular_name %>') %><br/>
+<br/>
+<%%= t('.<%= singular_name %>_starts') %><br/>
+<br/>
 <% attributes.each do |attribute| -%>
 <%%= t('.<%= attribute.name %>', :default => t('activerecord.attributes.<%= singular_name %>.<%= attribute.name %>')) %>: <% if attribute.type.to_s == 'text' %>
-<% end %><%%= @<%= singular_name %>.<%= attribute.name %> %>
+<% end %><%%= @<%= singular_name %>.<%= attribute.name %> %><%= "<br/>" unless attribute.type.to_s == 'text' -%>
 <% end -%>
-
-<%%= t('.<%= singular_name %>_ends') %>
-
-<%%= t('.closing_line') %>,
-<%%= Refinery::Core.site_name %>
-
+<br/>
+<%%= t('.<%= singular_name %>_ends') %><br/>
+<br/>
+<%%= t('.closing_line') %>,<br/>
+<%%= Refinery::Core.site_name %><br/>
+<br/>
 <%%= t('.ps_html') %>
