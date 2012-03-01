@@ -25,7 +25,7 @@ module Refinery
           rescue
             logger.warn "There was an error delivering an <%= singular_name %> notification.\n#{$!}\n"
           end<% if @includes_spam %> if @<%= singular_name %>.ham?<% end %>
-          
+
           if <%= class_name %>.column_names.map(&:to_s).include?('email')
             begin
               Mailer.confirmation(@<%= singular_name %>, request).deliver
