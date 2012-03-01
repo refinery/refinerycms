@@ -1,13 +1,24 @@
-## 2.0.0 [unreleased]
+## 2.0.0 [29 February 2012]
 
 * Remove jquery_include_tags helper in favor of using jquery from jquery-rails gem. [Uģis Ozols](https://github.com/ugisozols)
 * Finally removed `Page#[]` in favour of `Page#content_for` so instead of `@page[:body]` it's `@page.content_for(:body)`. [Philip Arndt](https://github.com/parndt)
 * Moved everything under Refinery namespace. [wakeless](https://github.com/wakeless)
 * Renamed `RefinerySetting` to `Refinery::Setting`. [Philip Arndt](https://github.com/parndt)
+* Added `rails g refinery:form` generator for form textensions. [Philip Arndt](https://github.com/parndt)
 * Added `--trace` option to bin/refinerycms. [Steven Heidel](http://github.com/stevenheidel)
 * Moved `/shared/*` to `/refinery/*` instead, including `/shared/admin/*` to `/refinery/admin/*` as it makes more sense. [Philip Arndt](https://github.com/parndt)
 * `vendor/engines` is now `vendor/extensions` [Philip Arndt](https://github.com/parndt)
-* [See full list](https://github.com/resolve/refinerycms/compare/1.0.8...master)
+* [See full list](https://github.com/resolve/refinerycms/compare/1.0.9...master)
+* [See explanation of changes](https://github.com/resolve/refinerycms/wiki/Changelog)
+
+## 1.0.9 [5 November 2011]
+
+* `guard` testing strategy ported from edge for testing refinery from its own directory without a dummy app. [Jamie Winsor](https://github.com/resetexistence) & [Joe Sak](https://github.com/joemsak)
+* WYMEditor bug fixes [Nic Haynes](https://github.com/nicinabox)
+* Bulgarian translations added. [Miroslav Rachev](https://github.com/mirosr)
+* Fixed --heroku command. [Garrett Heinlen](https://github.com/gogogarrett)
+* Refactored plugins code to add Ruby 1.9.3 support. [Amanda Wagener](https://github.com/awagener)
+* [See full list](https://github.com/resolve/refinerycms/compare/1.0.8...1.0.9)
 
 ## 1.0.8 [1 September 2011]
 
