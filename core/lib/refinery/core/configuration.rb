@@ -16,7 +16,7 @@ module Refinery
     self.google_analytics_page_code = "UA-xxxxxx-x"
     self.authenticity_token_on_frontend = true
     self.menu_hide_children = false
-    self.menu_css = { :selected => "active", :first => "first", :last => "last" }
+    self.menu_css = { :selected => "selected", :first => "first", :last => "last" }
     self.dragonfly_secret = Array.new(24) { rand(256) }.pack('C*').unpack('H*').first
     self.ie6_upgrade_message_enabled = true
     self.show_internet_explorer_upgrade_message = false
