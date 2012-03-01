@@ -1,9 +1,9 @@
 module Refinery
   class Version
     @major = 2
-    @minor = 0
+    @minor = 1
     @tiny  = 0
-    @build = nil
+    @build = 'dev'
 
     class << self
       attr_reader :major, :minor, :tiny, :build
