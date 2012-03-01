@@ -31,5 +31,6 @@ Gem::Specification.new do |s|
   s.add_dependency 'rspec-instafail'
   s.add_dependency 'capybara',                '~> 1.1.0'
   s.add_dependency 'guard-rspec',             '~> 0.6.0'
+  s.add_dependency 'guard-spork',             '~> 0.5.2'
   s.add_dependency 'refinerycms-core',        version
 end
