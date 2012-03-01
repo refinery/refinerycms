@@ -113,7 +113,7 @@ to get help on how to use that. Or read the full documentation on [writing exten
 
 ## License
 
-Refinery is released under the [MIT license](http://github.com/resolve/refinerycms/blob/master/license.md#readme) and is copyright (c) 2005-2011 [Resolve Digital](http://www.resolvedigital.com)
+Refinery is released under the [MIT license](http://github.com/resolve/refinerycms/blob/master/license.md#readme) and is copyright (c) 2005-2012 [Resolve Digital](http://www.resolvedigital.com)
 
 ### Credits
 
