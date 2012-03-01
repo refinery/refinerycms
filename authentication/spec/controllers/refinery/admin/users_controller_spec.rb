@@ -4,12 +4,12 @@ describe Refinery::Admin::UsersController do
   login_refinery_superuser
 
   shared_examples_for "new, create, update, edit and update actions" do
-    it "should load roles" do
+    it "loads roles" do
       Refinery::Role.should_receive(:all).once{ [] }
       get :new
     end
 
-    it "should load plugins" do
+    it "loads plugins" do
       plugins = Refinery::Plugins.new
       plugins.should_receive(:in_menu).once{ [] }
 
@@ -19,7 +19,7 @@ describe Refinery::Admin::UsersController do
   end
 
   describe "#new" do
-    it "should render the new template" do
+    it "renders the new template" do
       get :new
       response.should be_success
       response.should render_template("refinery/admin/users/new")
@@ -29,7 +29,7 @@ describe Refinery::Admin::UsersController do
   end
 
   describe "#create" do
-    it "should create a new user with valid params" do
+    it "creates a new user with valid params" do
       user = Refinery::User.new :username => "bob"
       user.should_receive(:save).once{ true }
       Refinery::User.should_receive(:new).once.with(instance_of(HashWithIndifferentAccess)){ user }
@@ -39,7 +39,7 @@ describe Refinery::Admin::UsersController do
 
     it_should_behave_like "new, create, update, edit and update actions"
 
-    it "should re-render #new if there are errors" do
+    it "re-renders #new if there are errors" do
       user = Refinery::User.new :username => "bob"
       user.should_receive(:save).once{ false }
       Refinery::User.should_receive(:new).once.with(instance_of(HashWithIndifferentAccess)){ user }
@@ -50,8 +50,7 @@ describe Refinery::Admin::UsersController do
   end
 
   describe "#edit" do
-    it "should render the edit template" do
-      Refinery::User.should_receive(:find).at_least(1).times{ @refinery_superuser }
+    it "renders the edit template" do
       get :edit, :id => "1"
       response.should be_success
       response.should render_template("refinery/admin/users/edit")
@@ -61,7 +60,7 @@ describe Refinery::Admin::UsersController do
   end
 
   describe "#update" do
-    it "should update a user" do
+    it "updates a user" do
       user = FactoryGirl.create(:refinery_user)
       Refinery::User.should_receive(:find).at_least(1).times{ user }
       put "update", :id => user.id.to_s, :user => {}
