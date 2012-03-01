@@ -57,6 +57,13 @@ gem 'heroku'
 # Fog allows you to use S3 assets (added for Heroku)
 gem 'fog'
 }
+      # If postgres is not the database in use, Heroku still needs it.
+      if destination_path.join('Gemfile').read !~ %r{gem ['"]pg['"]}
+        append_file 'Gemfile', %q{
+# Postgres support (added for Heroku)
+gem 'pg'
+}
+      end
     end
 
     def bundle!
@@ -95,22 +102,22 @@ gem 'fog'
     end
 
     def deploy_to_hosting_heroku!(message = nil)
-      puts "\nInitializing and committing to git..\n"
-      run("git init && git add . && git commit -am 'Created application using Refinery CMS #{Refinery.version}'")
+      say_status "Initializing and committing to git..", nil
+      run "git init && git add . && git commit -am 'Created application using Refinery CMS #{Refinery.version}'"
 
-      puts message if message
+      say_status message, nil, :yellow if message
 
-      puts "\nCreating Heroku app..\n"
-      run("heroku create #{options[:heroku]}#{" --stack #{options[:stack]}" if options[:stack]}")
+      say_status "Creating Heroku app..", nil
+      run "heroku create #{options[:heroku]}#{" --stack #{options[:stack]}" if options[:stack]}"
 
-      puts "\nPushing to Heroku (this takes time, be patient)..\n"
-      run("git push heroku master")
+      say_status "Pushing to Heroku (this takes time, be patient)..", nil
+      run "git push heroku master"
 
-      puts "\nSetting up the Heroku database..\n"
-      run("heroku#{' run' if options[:stack] == 'cedar'} rake db:migrate")
+      say_status "Setting up the Heroku database..", nil
+      run "heroku#{' run' if options[:stack] == 'cedar'} rake db:migrate"
 
-      puts "\nRestarting servers...\n"
-      run("heroku restart")
+      say_status "Restarting servers...", nil
+      run "heroku restart"
     end
 
     # Helper method to quickly convert destination_root to a Pathname for easy file path manipulation
@@ -198,7 +205,7 @@ gem 'fog'
 
         options[:heroku] = suggested_name
 
-        message << "We have changed the name to '#{suggested_name}' for you, hope it suits you."
+        message << "We have changed the name to '#{suggested_name}' for you, hope it suits you.\n"
         message.join("\n")
       end
     end
